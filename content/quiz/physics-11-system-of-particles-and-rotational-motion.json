@@ -1,0 +1,1003 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 11,
+  "chapter": "Chapter 6 — System of Particles and Rotational Motion",
+  "name": "System of Particles and Rotational Motion",
+  "slug": "physics-11-system-of-particles-and-rotational-motion",
+  "summary": "Bodies stop being points, and every law learnt so far acquires a twin: force gains torque, mass gains a quantity that depends on where the mass was put rather than how much there is, momentum gains a version a skater can change by folding her arms, and a spinning cylinder rolling downhill loses to a sliding one because part of its energy went into turning instead of travelling.",
+  "position": 6,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "कणों का निकाय तथा घूर्णी गति",
+      "summary": "पिंड बिंदु होना छोड़ देते हैं, और अब तक सीखा हर नियम अपना जुड़वाँ पा लेता है: बल को बल-आघूर्ण मिलता है, द्रव्यमान को ऐसी राशि मिलती है जो इस पर निर्भर है कि द्रव्यमान रखा कहाँ गया, कितना है इस पर नहीं, संवेग को ऐसा रूप मिलता है जिसे स्केटर बाँहें समेटकर बदल सकती है, और ढलान पर लुढ़कता घूमता बेलन फिसलते बेलन से हार जाता है क्योंकि उसकी कुछ ऊर्जा चलने के बजाय घूमने में चली गई।"
+    },
+    "mr": {
+      "name": "कणांची प्रणाली आणि परिवलनी गती",
+      "summary": "पिंड बिंदू असणे थांबतात, आणि आतापर्यंत शिकलेल्या प्रत्येक नियमाला जुळे मिळते: बलाला बलआघूर्ण मिळते, वस्तुमानाला अशी राशी मिळते जी वस्तुमान कुठे ठेवले यावर अवलंबून, किती आहे यावर नव्हे, संवेगाला असे रूप मिळते जे स्केटर हात मिटवून बदलू शकते, आणि उतारावर घरंगळणारा फिरता दंडगोल घसरणाऱ्या दंडगोलाकडून हरतो कारण त्याची काही ऊर्जा प्रवास करण्याऐवजी फिरण्यात गेली."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Throw a spanner spinning across a room and one particular point of it traces a clean parabola while every other point wobbles about that point. Which point is this?",
+      "choices": [
+        "Moment of inertia",
+        "Torque",
+        "The radius of gyration",
+        "The centre of mass"
+      ],
+      "answerIndex": 3,
+      "solution": "The centre of mass moves exactly as a single particle of the system's total mass would move under the total external force, whatever the internal forces are doing. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कमरे के आर-पार घूमता हुआ पाना फेंको और उसका एक विशेष बिंदु स्वच्छ परवलय खींचता है जबकि हर दूसरा बिंदु उसी के इर्द-गिर्द डोलता है। यह कौन-सा बिंदु है?",
+          "choices": [
+            "जड़त्व आघूर्ण",
+            "बल-आघूर्ण",
+            "घूर्णन त्रिज्या",
+            "द्रव्यमान केंद्र"
+          ],
+          "solution": "द्रव्यमान केंद्र ठीक वैसे चलता है जैसे निकाय के कुल द्रव्यमान का एक अकेला कण कुल बाह्य बल के अधीन चलता, आंतरिक बल चाहे जो कर रहे हों। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "खोलीत फिरता पाना फेका आणि त्याचा एक विशिष्ट बिंदू स्वच्छ परवलय काढतो तर बाकी प्रत्येक बिंदू त्याच्याभोवती डुलतो. हा कोणता बिंदू?",
+          "choices": [
+            "जडत्व आघूर्ण",
+            "बलआघूर्ण",
+            "परिवलन त्रिज्या",
+            "वस्तुमान केंद्र"
+          ],
+          "solution": "वस्तुमान केंद्र नेमके तसे चालते जसे प्रणालीच्या एकूण वस्तुमानाचा एकच कण एकूण बाह्य बलाखाली चालला असता, आंतरिक बले काहीही करत असोत. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Torque is correct?",
+      "choices": [
+        "Torque is the turning effect of a force, equal to the force times its perpendicular distance from the axis, so the same force applied further out turns a body harder.",
+        "The centre of mass moves exactly as a single particle of the system's total mass would move under the total external force, whatever the internal forces are doing.",
+        "Moment of inertia is the sum of each element of mass times the square of its distance from the axis, so it depends on where the mass sits and not merely on how much of it there is.",
+        "The radius of gyration k is defined by I = Mk², so it is the single distance at which the entire mass would have to be placed to give the body its actual moment of inertia."
+      ],
+      "answerIndex": 0,
+      "solution": "Torque is the turning effect of a force, equal to the force times its perpendicular distance from the axis, so the same force applied further out turns a body harder. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बल-आघूर्ण के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "बल-आघूर्ण बल का घुमाव-प्रभाव है, बल गुणा अक्ष से उसकी लंबवत दूरी के बराबर, अतः वही बल अधिक दूर लगाने पर पिंड को अधिक ज़ोर से घुमाता है।",
+            "द्रव्यमान केंद्र ठीक वैसे चलता है जैसे निकाय के कुल द्रव्यमान का एक अकेला कण कुल बाह्य बल के अधीन चलता, आंतरिक बल चाहे जो कर रहे हों।",
+            "जड़त्व आघूर्ण द्रव्यमान के हर अवयव गुणा अक्ष से उसकी दूरी के वर्ग का योग है, अतः वह इस पर निर्भर है कि द्रव्यमान बैठा कहाँ है, केवल इस पर नहीं कि वह कितना है।",
+            "घूर्णन त्रिज्या k को I = Mk² से परिभाषित किया जाता है, अतः वह वह अकेली दूरी है जिस पर पूरा द्रव्यमान रखने पर पिंड को उसका वास्तविक जड़त्व आघूर्ण मिलेगा।"
+          ],
+          "solution": "बल-आघूर्ण बल का घुमाव-प्रभाव है, बल गुणा अक्ष से उसकी लंबवत दूरी के बराबर, अतः वही बल अधिक दूर लगाने पर पिंड को अधिक ज़ोर से घुमाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "बलआघूर्ण विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "बलआघूर्ण म्हणजे बलाचा वळवण्याचा परिणाम, बल गुणिले अक्षापासूनचे त्याचे लंब अंतर, म्हणून तेच बल अधिक दूर लावल्यास पिंडाला अधिक जोराने वळवते.",
+            "वस्तुमान केंद्र नेमके तसे चालते जसे प्रणालीच्या एकूण वस्तुमानाचा एकच कण एकूण बाह्य बलाखाली चालला असता, आंतरिक बले काहीही करत असोत.",
+            "जडत्व आघूर्ण म्हणजे वस्तुमानाचा प्रत्येक घटक गुणिले अक्षापासूनच्या त्याच्या अंतराचा वर्ग यांची बेरीज, म्हणून ते वस्तुमान कुठे बसले आहे यावर अवलंबून, केवळ ते किती आहे यावर नाही.",
+            "परिवलन त्रिज्या k ही I = Mk² ने व्याख्यायित होते, म्हणून ते ते एकमेव अंतर ज्यावर संपूर्ण वस्तुमान ठेवल्यास पिंडाला त्याचे प्रत्यक्ष जडत्व आघूर्ण मिळेल."
+          ],
+          "solution": "बलआघूर्ण म्हणजे बलाचा वळवण्याचा परिणाम, बल गुणिले अक्षापासूनचे त्याचे लंब अंतर, म्हणून तेच बल अधिक दूर लावल्यास पिंडाला अधिक जोराने वळवते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The same body has different values about different axes, so it is meaningless to quote one without naming the axis — a rod about its centre has a quarter the value it has about one end.\" — which of these is this about?",
+      "choices": [
+        "Torque",
+        "The radius of gyration",
+        "Moment of inertia",
+        "The centre of mass"
+      ],
+      "answerIndex": 2,
+      "solution": "Moment of inertia is the sum of each element of mass times the square of its distance from the axis, so it depends on where the mass sits and not merely on how much of it there is. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"वही पिंड भिन्न अक्षों के परितः भिन्न मान रखता है, अतः अक्ष बताए बिना कोई मान कहना निरर्थक है — छड़ का केंद्र के परितः मान उसके एक सिरे के परितः मान का एक चौथाई है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "बल-आघूर्ण",
+            "घूर्णन त्रिज्या",
+            "जड़त्व आघूर्ण",
+            "द्रव्यमान केंद्र"
+          ],
+          "solution": "जड़त्व आघूर्ण द्रव्यमान के हर अवयव गुणा अक्ष से उसकी दूरी के वर्ग का योग है, अतः वह इस पर निर्भर है कि द्रव्यमान बैठा कहाँ है, केवल इस पर नहीं कि वह कितना है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तोच पिंड वेगवेगळ्या अक्षांभोवती वेगळी मूल्ये बाळगतो, म्हणून अक्ष न सांगता एखादे मूल्य सांगणे निरर्थक — दांडीचे केंद्राभोवतीचे मूल्य तिच्या एका टोकाभोवतीच्या मूल्याच्या एक चतुर्थांश.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "बलआघूर्ण",
+            "परिवलन त्रिज्या",
+            "जडत्व आघूर्ण",
+            "वस्तुमान केंद्र"
+          ],
+          "solution": "जडत्व आघूर्ण म्हणजे वस्तुमानाचा प्रत्येक घटक गुणिले अक्षापासूनच्या त्याच्या अंतराचा वर्ग यांची बेरीज, म्हणून ते वस्तुमान कुठे बसले आहे यावर अवलंबून, केवळ ते किती आहे यावर नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A skater spinning with arms outstretched pulls them in and speeds up sharply, having applied no torque about her own axis and touched nothing: the product Iω had to stay put, so ω rose as I fell. Which law is this?",
+      "choices": [
+        "Moment of inertia",
+        "Conservation of angular momentum",
+        "The centre of mass",
+        "Rolling without slipping"
+      ],
+      "answerIndex": 1,
+      "solution": "Angular momentum Iω is conserved when no external torque acts, so a body that redistributes its own mass closer to the axis must spin faster to compensate. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बाँहें फैलाए घूमती स्केटर उन्हें समेटती है और तेज़ी से घूमने लगती है, जबकि उसने अपने अक्ष के परितः कोई बल-आघूर्ण नहीं लगाया और किसी चीज़ को छुआ नहीं: गुणनफल Iω को टिका रहना था, अतः I घटते ही ω चढ़ गया। यह कौन-सा नियम है?",
+          "choices": [
+            "जड़त्व आघूर्ण",
+            "कोणीय संवेग का संरक्षण",
+            "द्रव्यमान केंद्र",
+            "बिना फिसले लोटन"
+          ],
+          "solution": "जब कोई बाह्य बल-आघूर्ण नहीं लगता तो कोणीय संवेग Iω संरक्षित रहता है, अतः जो पिंड अपना द्रव्यमान अक्ष के पास पुनर्वितरित करता है उसे भरपाई में तेज़ घूमना पड़ता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "हात पसरून फिरणारी स्केटर ते मिटवते आणि झपाट्याने वेगात फिरू लागते, तिने स्वतःच्या अक्षाभोवती कोणतेही बलआघूर्ण लावलेले नाही आणि कशालाही स्पर्श केलेला नाही: गुणाकार Iω ला टिकून राहावे लागले, म्हणून I घटताच ω चढला. हा कोणता नियम?",
+          "choices": [
+            "जडत्व आघूर्ण",
+            "कोनीय संवेगाचे संरक्षण",
+            "वस्तुमान केंद्र",
+            "न घसरता घरंगळणे"
+          ],
+          "solution": "जेव्हा कोणतेही बाह्य बलआघूर्ण लागत नाही तेव्हा कोनीय संवेग Iω संरक्षित राहतो, म्हणून जो पिंड आपले वस्तुमान अक्षाजवळ पुनर्वितरित करतो त्याला भरपाईसाठी अधिक वेगाने फिरावे लागते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Rolling without slipping is correct?",
+      "choices": [
+        "Rolling without slipping requires the contact point to be instantaneously at rest relative to the surface, which fixes the linear speed of the centre as v = ωR.",
+        "Angular momentum Iω is conserved when no external torque acts, so a body that redistributes its own mass closer to the axis must spin faster to compensate.",
+        "Torque is the turning effect of a force, equal to the force times its perpendicular distance from the axis, so the same force applied further out turns a body harder.",
+        "Moment of inertia is the sum of each element of mass times the square of its distance from the axis, so it depends on where the mass sits and not merely on how much of it there is."
+      ],
+      "answerIndex": 0,
+      "solution": "Rolling without slipping requires the contact point to be instantaneously at rest relative to the surface, which fixes the linear speed of the centre as v = ωR. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बिना फिसले लोटन के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "बिना फिसले लोटन के लिए संपर्क बिंदु का सतह के सापेक्ष तात्क्षणिक विराम में होना ज़रूरी है, जो केंद्र की रैखिक चाल को v = ωR पर बाँध देता है।",
+            "जब कोई बाह्य बल-आघूर्ण नहीं लगता तो कोणीय संवेग Iω संरक्षित रहता है, अतः जो पिंड अपना द्रव्यमान अक्ष के पास पुनर्वितरित करता है उसे भरपाई में तेज़ घूमना पड़ता है।",
+            "बल-आघूर्ण बल का घुमाव-प्रभाव है, बल गुणा अक्ष से उसकी लंबवत दूरी के बराबर, अतः वही बल अधिक दूर लगाने पर पिंड को अधिक ज़ोर से घुमाता है।",
+            "जड़त्व आघूर्ण द्रव्यमान के हर अवयव गुणा अक्ष से उसकी दूरी के वर्ग का योग है, अतः वह इस पर निर्भर है कि द्रव्यमान बैठा कहाँ है, केवल इस पर नहीं कि वह कितना है।"
+          ],
+          "solution": "बिना फिसले लोटन के लिए संपर्क बिंदु का सतह के सापेक्ष तात्क्षणिक विराम में होना ज़रूरी है, जो केंद्र की रैखिक चाल को v = ωR पर बाँध देता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "न घसरता घरंगळणे विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "न घसरता घरंगळण्यासाठी स्पर्शबिंदू पृष्ठभागाच्या सापेक्ष तात्कालिक स्थिर असणे आवश्यक, जे केंद्राची रेषीय चाल v = ωR वर बांधते.",
+            "जेव्हा कोणतेही बाह्य बलआघूर्ण लागत नाही तेव्हा कोनीय संवेग Iω संरक्षित राहतो, म्हणून जो पिंड आपले वस्तुमान अक्षाजवळ पुनर्वितरित करतो त्याला भरपाईसाठी अधिक वेगाने फिरावे लागते.",
+            "बलआघूर्ण म्हणजे बलाचा वळवण्याचा परिणाम, बल गुणिले अक्षापासूनचे त्याचे लंब अंतर, म्हणून तेच बल अधिक दूर लावल्यास पिंडाला अधिक जोराने वळवते.",
+            "जडत्व आघूर्ण म्हणजे वस्तुमानाचा प्रत्येक घटक गुणिले अक्षापासूनच्या त्याच्या अंतराचा वर्ग यांची बेरीज, म्हणून ते वस्तुमान कुठे बसले आहे यावर अवलंबून, केवळ ते किती आहे यावर नाही."
+          ],
+          "solution": "न घसरता घरंगळण्यासाठी स्पर्शबिंदू पृष्ठभागाच्या सापेक्ष तात्कालिक स्थिर असणे आवश्यक, जे केंद्राची रेषीय चाल v = ωR वर बांधते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It is a purely geometric length once the axis is fixed, independent of how heavy the body is, so two discs of different materials but the same shape share the same value.\" — which of these is this about?",
+      "choices": [
+        "The centre of mass",
+        "Moment of inertia",
+        "Torque",
+        "The radius of gyration"
+      ],
+      "answerIndex": 3,
+      "solution": "The radius of gyration k is defined by I = Mk², so it is the single distance at which the entire mass would have to be placed to give the body its actual moment of inertia. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"अक्ष तय हो जाने पर यह विशुद्ध ज्यामितीय लंबाई है, इस पर निर्भर नहीं कि पिंड कितना भारी है, अतः भिन्न पदार्थों की पर एक ही आकार की दो चकतियाँ वही मान साझा करती हैं।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "द्रव्यमान केंद्र",
+            "जड़त्व आघूर्ण",
+            "बल-आघूर्ण",
+            "घूर्णन त्रिज्या"
+          ],
+          "solution": "घूर्णन त्रिज्या k को I = Mk² से परिभाषित किया जाता है, अतः वह वह अकेली दूरी है जिस पर पूरा द्रव्यमान रखने पर पिंड को उसका वास्तविक जड़त्व आघूर्ण मिलेगा। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"अक्ष ठरल्यावर ही निव्वळ भूमितीय लांबी, पिंड किती जड आहे यावर अवलंबून नाही, म्हणून वेगळ्या पदार्थांच्या पण एकाच आकाराच्या दोन चकत्या तेच मूल्य वाटून घेतात.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "वस्तुमान केंद्र",
+            "जडत्व आघूर्ण",
+            "बलआघूर्ण",
+            "परिवलन त्रिज्या"
+          ],
+          "solution": "परिवलन त्रिज्या k ही I = Mk² ने व्याख्यायित होते, म्हणून ते ते एकमेव अंतर ज्यावर संपूर्ण वस्तुमान ठेवल्यास पिंडाला त्याचे प्रत्यक्ष जडत्व आघूर्ण मिळेल. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The one point of a thrown spanner that does not wobble\" goes correctly with which of these?",
+      "choices": [
+        "rolling without slipping",
+        "torque",
+        "the centre of mass",
+        "the radius of gyration"
+      ],
+      "answerIndex": 2,
+      "solution": "The centre of mass moves exactly as a single particle of the system's total mass would move under the total external force, whatever the internal forces are doing. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"फेंके गए पाने का एकमात्र बिंदु जो नहीं डोलता\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "बिना फिसले लोटन",
+            "बल-आघूर्ण",
+            "द्रव्यमान केंद्र",
+            "घूर्णन त्रिज्या"
+          ],
+          "solution": "द्रव्यमान केंद्र ठीक वैसे चलता है जैसे निकाय के कुल द्रव्यमान का एक अकेला कण कुल बाह्य बल के अधीन चलता, आंतरिक बल चाहे जो कर रहे हों। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"फेकलेल्या पान्याचा एकमेव बिंदू जो डुलत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "न घसरता घरंगळणे",
+            "बलआघूर्ण",
+            "वस्तुमान केंद्र",
+            "परिवलन त्रिज्या"
+          ],
+          "solution": "वस्तुमान केंद्र नेमके तसे चालते जसे प्रणालीच्या एकूण वस्तुमानाचा एकच कण एकूण बाह्य बलाखाली चालला असता, आंतरिक बले काहीही करत असोत. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Push at the hinge and nothing turns\" goes correctly with which of these?",
+      "choices": [
+        "the radius of gyration",
+        "torque",
+        "the centre of mass",
+        "conservation of angular momentum"
+      ],
+      "answerIndex": 1,
+      "solution": "Torque is the turning effect of a force, equal to the force times its perpendicular distance from the axis, so the same force applied further out turns a body harder. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"कब्ज़े पर धकेलो और कुछ नहीं घूमता\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "घूर्णन त्रिज्या",
+            "बल-आघूर्ण",
+            "द्रव्यमान केंद्र",
+            "कोणीय संवेग का संरक्षण"
+          ],
+          "solution": "बल-आघूर्ण बल का घुमाव-प्रभाव है, बल गुणा अक्ष से उसकी लंबवत दूरी के बराबर, अतः वही बल अधिक दूर लगाने पर पिंड को अधिक ज़ोर से घुमाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"बिजागरीवर ढकला आणि काहीही फिरत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "परिवलन त्रिज्या",
+            "बलआघूर्ण",
+            "वस्तुमान केंद्र",
+            "कोनीय संवेगाचे संरक्षण"
+          ],
+          "solution": "बलआघूर्ण म्हणजे बलाचा वळवण्याचा परिणाम, बल गुणिले अक्षापासूनचे त्याचे लंब अंतर, म्हणून तेच बल अधिक दूर लावल्यास पिंडाला अधिक जोराने वळवते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Same mass, same radius, twice as hard to spin\" goes correctly with which of these?",
+      "choices": [
+        "the radius of gyration",
+        "the centre of mass",
+        "moment of inertia",
+        "torque"
+      ],
+      "answerIndex": 2,
+      "solution": "Moment of inertia is the sum of each element of mass times the square of its distance from the axis, so it depends on where the mass sits and not merely on how much of it there is. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"वही द्रव्यमान, वही त्रिज्या, घुमाने में दुगुना कठिन\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "घूर्णन त्रिज्या",
+            "द्रव्यमान केंद्र",
+            "जड़त्व आघूर्ण",
+            "बल-आघूर्ण"
+          ],
+          "solution": "जड़त्व आघूर्ण द्रव्यमान के हर अवयव गुणा अक्ष से उसकी दूरी के वर्ग का योग है, अतः वह इस पर निर्भर है कि द्रव्यमान बैठा कहाँ है, केवल इस पर नहीं कि वह कितना है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तेच वस्तुमान, तीच त्रिज्या, फिरवायला दुप्पट कठीण\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "परिवलन त्रिज्या",
+            "वस्तुमान केंद्र",
+            "जडत्व आघूर्ण",
+            "बलआघूर्ण"
+          ],
+          "solution": "जडत्व आघूर्ण म्हणजे वस्तुमानाचा प्रत्येक घटक गुणिले अक्षापासूनच्या त्याच्या अंतराचा वर्ग यांची बेरीज, म्हणून ते वस्तुमान कुठे बसले आहे यावर अवलंबून, केवळ ते किती आहे यावर नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Fold the arms in and the spin speeds up by itself\" goes correctly with which of these?",
+      "choices": [
+        "the centre of mass",
+        "conservation of angular momentum",
+        "moment of inertia",
+        "torque"
+      ],
+      "answerIndex": 1,
+      "solution": "Angular momentum Iω is conserved when no external torque acts, so a body that redistributes its own mass closer to the axis must spin faster to compensate. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"बाँहें समेटो और घुमाव अपने आप तेज़ हो जाता है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "द्रव्यमान केंद्र",
+            "कोणीय संवेग का संरक्षण",
+            "जड़त्व आघूर्ण",
+            "बल-आघूर्ण"
+          ],
+          "solution": "जब कोई बाह्य बल-आघूर्ण नहीं लगता तो कोणीय संवेग Iω संरक्षित रहता है, अतः जो पिंड अपना द्रव्यमान अक्ष के पास पुनर्वितरित करता है उसे भरपाई में तेज़ घूमना पड़ता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"हात मिटवा आणि फिरणे आपोआप वेगवान होते\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "वस्तुमान केंद्र",
+            "कोनीय संवेगाचे संरक्षण",
+            "जडत्व आघूर्ण",
+            "बलआघूर्ण"
+          ],
+          "solution": "जेव्हा कोणतेही बाह्य बलआघूर्ण लागत नाही तेव्हा कोनीय संवेग Iω संरक्षित राहतो, म्हणून जो पिंड आपले वस्तुमान अक्षाजवळ पुनर्वितरित करतो त्याला भरपाईसाठी अधिक वेगाने फिरावे लागते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The friction that grips and yet does no work\" goes correctly with which of these?",
+      "choices": [
+        "the centre of mass",
+        "conservation of angular momentum",
+        "moment of inertia",
+        "rolling without slipping"
+      ],
+      "answerIndex": 3,
+      "solution": "Rolling without slipping requires the contact point to be instantaneously at rest relative to the surface, which fixes the linear speed of the centre as v = ωR. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"वह घर्षण जो पकड़ता है और फिर भी कार्य नहीं करता\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "द्रव्यमान केंद्र",
+            "कोणीय संवेग का संरक्षण",
+            "जड़त्व आघूर्ण",
+            "बिना फिसले लोटन"
+          ],
+          "solution": "बिना फिसले लोटन के लिए संपर्क बिंदु का सतह के सापेक्ष तात्क्षणिक विराम में होना ज़रूरी है, जो केंद्र की रैखिक चाल को v = ωR पर बाँध देता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ते घर्षण जे पकडते आणि तरीही कार्य करत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "वस्तुमान केंद्र",
+            "कोनीय संवेगाचे संरक्षण",
+            "जडत्व आघूर्ण",
+            "न घसरता घरंगळणे"
+          ],
+          "solution": "न घसरता घरंगळण्यासाठी स्पर्शबिंदू पृष्ठभागाच्या सापेक्ष तात्कालिक स्थिर असणे आवश्यक, जे केंद्राची रेषीय चाल v = ωR वर बांधते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A length that does not care what the body is made of\" goes correctly with which of these?",
+      "choices": [
+        "torque",
+        "conservation of angular momentum",
+        "the radius of gyration",
+        "the centre of mass"
+      ],
+      "answerIndex": 2,
+      "solution": "The radius of gyration k is defined by I = Mk², so it is the single distance at which the entire mass would have to be placed to give the body its actual moment of inertia. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ऐसी लंबाई जिसे इससे मतलब नहीं कि पिंड किसका बना है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "बल-आघूर्ण",
+            "कोणीय संवेग का संरक्षण",
+            "घूर्णन त्रिज्या",
+            "द्रव्यमान केंद्र"
+          ],
+          "solution": "घूर्णन त्रिज्या k को I = Mk² से परिभाषित किया जाता है, अतः वह वह अकेली दूरी है जिस पर पूरा द्रव्यमान रखने पर पिंड को उसका वास्तविक जड़त्व आघूर्ण मिलेगा। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"अशी लांबी जिला पिंड कशाचा बनला याची पर्वा नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "बलआघूर्ण",
+            "कोनीय संवेगाचे संरक्षण",
+            "परिवलन त्रिज्या",
+            "वस्तुमान केंद्र"
+          ],
+          "solution": "परिवलन त्रिज्या k ही I = Mk² ने व्याख्यायित होते, म्हणून ते ते एकमेव अंतर ज्यावर संपूर्ण वस्तुमान ठेवल्यास पिंडाला त्याचे प्रत्यक्ष जडत्व आघूर्ण मिळेल. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The centre of mass EXCEPT —",
+      "choices": [
+        "An exploding shell's fragments fly everywhere, yet their centre of mass continues along the original parabola, because an explosion is entirely internal and cannot shift it.",
+        "It need not lie inside the body at all: for a ring or a horseshoe it sits in empty space, and a high jumper's can pass under the bar while every part of the jumper goes over it.",
+        "The centre of mass moves exactly as a single particle of the system's total mass would move under the total external force, whatever the internal forces are doing.",
+        "Torque is the turning effect of a force, equal to the force times its perpendicular distance from the axis, so the same force applied further out turns a body harder."
+      ],
+      "answerIndex": 3,
+      "solution": "Torque is the turning effect of a force, equal to the force times its perpendicular distance from the axis, so the same force applied further out turns a body harder. That belongs to Torque, not The centre of mass — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "द्रव्यमान केंद्र के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "फटते गोले के टुकड़े हर ओर उड़ते हैं, फिर भी उनका द्रव्यमान केंद्र मूल परवलय पर चलता रहता है, क्योंकि विस्फोट पूरी तरह आंतरिक है और उसे खिसका नहीं सकता।",
+            "उसे पिंड के भीतर होना ही ज़रूरी नहीं: छल्ले या नाल के लिए वह खाली जगह में बैठता है, और ऊँची कूद लगाने वाले का द्रव्यमान केंद्र छड़ के नीचे से निकल सकता है जबकि कूदने वाले का हर हिस्सा उसके ऊपर से जाता है।",
+            "द्रव्यमान केंद्र ठीक वैसे चलता है जैसे निकाय के कुल द्रव्यमान का एक अकेला कण कुल बाह्य बल के अधीन चलता, आंतरिक बल चाहे जो कर रहे हों।",
+            "बल-आघूर्ण बल का घुमाव-प्रभाव है, बल गुणा अक्ष से उसकी लंबवत दूरी के बराबर, अतः वही बल अधिक दूर लगाने पर पिंड को अधिक ज़ोर से घुमाता है।"
+          ],
+          "solution": "बल-आघूर्ण बल का घुमाव-प्रभाव है, बल गुणा अक्ष से उसकी लंबवत दूरी के बराबर, अतः वही बल अधिक दूर लगाने पर पिंड को अधिक ज़ोर से घुमाता है। यह बल-आघूर्ण की बात है, द्रव्यमान केंद्र की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "वस्तुमान केंद्र विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "फुटणाऱ्या गोळ्याचे तुकडे सर्वत्र उडतात, तरीही त्यांचे वस्तुमान केंद्र मूळ परवलयावर चालत राहते, कारण स्फोट पूर्णपणे आंतरिक आहे आणि त्याला सरकवू शकत नाही.",
+            "तो पिंडाच्या आत असायलाच हवा असे नाही: कड्यासाठी वा नालासाठी तो रिकाम्या जागेत बसतो, आणि उंच उडी मारणाऱ्याचा तो दांडीखालून जाऊ शकतो तर उडी मारणाऱ्याचा प्रत्येक भाग तिच्यावरून जातो.",
+            "वस्तुमान केंद्र नेमके तसे चालते जसे प्रणालीच्या एकूण वस्तुमानाचा एकच कण एकूण बाह्य बलाखाली चालला असता, आंतरिक बले काहीही करत असोत.",
+            "बलआघूर्ण म्हणजे बलाचा वळवण्याचा परिणाम, बल गुणिले अक्षापासूनचे त्याचे लंब अंतर, म्हणून तेच बल अधिक दूर लावल्यास पिंडाला अधिक जोराने वळवते."
+          ],
+          "solution": "बलआघूर्ण म्हणजे बलाचा वळवण्याचा परिणाम, बल गुणिले अक्षापासूनचे त्याचे लंब अंतर, म्हणून तेच बल अधिक दूर लावल्यास पिंडाला अधिक जोराने वळवते. हे बलआघूर्ण चे आहे, वस्तुमान केंद्र चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Torque EXCEPT —",
+      "choices": [
+        "Torque is the turning effect of a force, equal to the force times its perpendicular distance from the axis, so the same force applied further out turns a body harder.",
+        "Two equal and opposite forces on different lines form a couple, which produces pure rotation with no net force at all, as when both hands turn a steering wheel.",
+        "The centre of mass moves exactly as a single particle of the system's total mass would move under the total external force, whatever the internal forces are doing.",
+        "A force whose line of action passes through the axis has zero perpendicular distance and therefore produces no rotation, however large it is — which is why pushing a door towards its hinge never opens it."
+      ],
+      "answerIndex": 2,
+      "solution": "The centre of mass moves exactly as a single particle of the system's total mass would move under the total external force, whatever the internal forces are doing. That belongs to The centre of mass, not Torque — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बल-आघूर्ण के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "बल-आघूर्ण बल का घुमाव-प्रभाव है, बल गुणा अक्ष से उसकी लंबवत दूरी के बराबर, अतः वही बल अधिक दूर लगाने पर पिंड को अधिक ज़ोर से घुमाता है।",
+            "भिन्न रेखाओं पर लगे दो बराबर और विपरीत बल एक बल-युग्म बनाते हैं, जो बिना किसी परिणामी बल के शुद्ध घूर्णन देता है, जैसे दोनों हाथ स्टियरिंग घुमाते हैं।",
+            "द्रव्यमान केंद्र ठीक वैसे चलता है जैसे निकाय के कुल द्रव्यमान का एक अकेला कण कुल बाह्य बल के अधीन चलता, आंतरिक बल चाहे जो कर रहे हों।",
+            "जिस बल की क्रिया-रेखा अक्ष से होकर गुज़रती है उसकी लंबवत दूरी शून्य है और इसलिए वह कोई घूर्णन नहीं देता, चाहे कितना ही बड़ा हो — इसीलिए दरवाज़े को कब्ज़े की ओर धकेलने से वह कभी नहीं खुलता।"
+          ],
+          "solution": "द्रव्यमान केंद्र ठीक वैसे चलता है जैसे निकाय के कुल द्रव्यमान का एक अकेला कण कुल बाह्य बल के अधीन चलता, आंतरिक बल चाहे जो कर रहे हों। यह द्रव्यमान केंद्र की बात है, बल-आघूर्ण की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "बलआघूर्ण विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "बलआघूर्ण म्हणजे बलाचा वळवण्याचा परिणाम, बल गुणिले अक्षापासूनचे त्याचे लंब अंतर, म्हणून तेच बल अधिक दूर लावल्यास पिंडाला अधिक जोराने वळवते.",
+            "वेगळ्या रेषांवरची दोन समान आणि विरुद्ध बले एक बलयुग्म बनवतात, जे कोणत्याही परिणामी बलाशिवाय शुद्ध परिवलन देते, जसे दोन्ही हात स्टिअरिंग फिरवतात.",
+            "वस्तुमान केंद्र नेमके तसे चालते जसे प्रणालीच्या एकूण वस्तुमानाचा एकच कण एकूण बाह्य बलाखाली चालला असता, आंतरिक बले काहीही करत असोत.",
+            "ज्या बलाची क्रियारेषा अक्षातून जाते त्याचे लंब अंतर शून्य आणि म्हणून ते कोणतेही परिवलन देत नाही, ते कितीही मोठे असो — म्हणूनच दार बिजागरीकडे ढकलल्याने ते कधीच उघडत नाही."
+          ],
+          "solution": "वस्तुमान केंद्र नेमके तसे चालते जसे प्रणालीच्या एकूण वस्तुमानाचा एकच कण एकूण बाह्य बलाखाली चालला असता, आंतरिक बले काहीही करत असोत. हे वस्तुमान केंद्र चे आहे, बलआघूर्ण चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Moment of inertia EXCEPT —",
+      "choices": [
+        "The same body has different values about different axes, so it is meaningless to quote one without naming the axis — a rod about its centre has a quarter the value it has about one end.",
+        "It plays the part in rotation that mass plays in straight-line motion, appearing in τ = Iα, in L = Iω and in the rotational kinetic energy ½Iω².",
+        "Moment of inertia is the sum of each element of mass times the square of its distance from the axis, so it depends on where the mass sits and not merely on how much of it there is.",
+        "The radius of gyration k is defined by I = Mk², so it is the single distance at which the entire mass would have to be placed to give the body its actual moment of inertia."
+      ],
+      "answerIndex": 3,
+      "solution": "The radius of gyration k is defined by I = Mk², so it is the single distance at which the entire mass would have to be placed to give the body its actual moment of inertia. That belongs to The radius of gyration, not Moment of inertia — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "जड़त्व आघूर्ण के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "वही पिंड भिन्न अक्षों के परितः भिन्न मान रखता है, अतः अक्ष बताए बिना कोई मान कहना निरर्थक है — छड़ का केंद्र के परितः मान उसके एक सिरे के परितः मान का एक चौथाई है।",
+            "घूर्णन में वह वही भूमिका निभाता है जो सरल-रेखीय गति में द्रव्यमान निभाता है, और τ = Iα, L = Iω तथा घूर्णी गतिज ऊर्जा ½Iω² में आता है।",
+            "जड़त्व आघूर्ण द्रव्यमान के हर अवयव गुणा अक्ष से उसकी दूरी के वर्ग का योग है, अतः वह इस पर निर्भर है कि द्रव्यमान बैठा कहाँ है, केवल इस पर नहीं कि वह कितना है।",
+            "घूर्णन त्रिज्या k को I = Mk² से परिभाषित किया जाता है, अतः वह वह अकेली दूरी है जिस पर पूरा द्रव्यमान रखने पर पिंड को उसका वास्तविक जड़त्व आघूर्ण मिलेगा।"
+          ],
+          "solution": "घूर्णन त्रिज्या k को I = Mk² से परिभाषित किया जाता है, अतः वह वह अकेली दूरी है जिस पर पूरा द्रव्यमान रखने पर पिंड को उसका वास्तविक जड़त्व आघूर्ण मिलेगा। यह घूर्णन त्रिज्या की बात है, जड़त्व आघूर्ण की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "जडत्व आघूर्ण विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "तोच पिंड वेगवेगळ्या अक्षांभोवती वेगळी मूल्ये बाळगतो, म्हणून अक्ष न सांगता एखादे मूल्य सांगणे निरर्थक — दांडीचे केंद्राभोवतीचे मूल्य तिच्या एका टोकाभोवतीच्या मूल्याच्या एक चतुर्थांश.",
+            "परिवलनात तो तीच भूमिका बजावतो जी सरळरेषीय गतीत वस्तुमान बजावते, आणि τ = Iα, L = Iω तसेच परिवलनी गतिज ऊर्जा ½Iω² मध्ये येतो.",
+            "जडत्व आघूर्ण म्हणजे वस्तुमानाचा प्रत्येक घटक गुणिले अक्षापासूनच्या त्याच्या अंतराचा वर्ग यांची बेरीज, म्हणून ते वस्तुमान कुठे बसले आहे यावर अवलंबून, केवळ ते किती आहे यावर नाही.",
+            "परिवलन त्रिज्या k ही I = Mk² ने व्याख्यायित होते, म्हणून ते ते एकमेव अंतर ज्यावर संपूर्ण वस्तुमान ठेवल्यास पिंडाला त्याचे प्रत्यक्ष जडत्व आघूर्ण मिळेल."
+          ],
+          "solution": "परिवलन त्रिज्या k ही I = Mk² ने व्याख्यायित होते, म्हणून ते ते एकमेव अंतर ज्यावर संपूर्ण वस्तुमान ठेवल्यास पिंडाला त्याचे प्रत्यक्ष जडत्व आघूर्ण मिळेल. हे परिवलन त्रिज्या चे आहे, जडत्व आघूर्ण चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Conservation of angular momentum EXCEPT —",
+      "choices": [
+        "The same law keeps a planet moving faster near the Sun than far from it, which is Kepler's second law restated, and it is why a bicycle wheel resists being tipped while it spins.",
+        "Kinetic energy is not conserved in the process: the skater's rotational energy rises, and the extra joules come from the muscular work she does pulling her arms inwards against their tendency to fly out.",
+        "Rolling without slipping requires the contact point to be instantaneously at rest relative to the surface, which fixes the linear speed of the centre as v = ωR.",
+        "Angular momentum Iω is conserved when no external torque acts, so a body that redistributes its own mass closer to the axis must spin faster to compensate."
+      ],
+      "answerIndex": 2,
+      "solution": "Rolling without slipping requires the contact point to be instantaneously at rest relative to the surface, which fixes the linear speed of the centre as v = ωR. That belongs to Rolling without slipping, not Conservation of angular momentum — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कोणीय संवेग का संरक्षण के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "यही नियम ग्रह को सूर्य के पास दूर की अपेक्षा तेज़ चलाए रखता है, जो केप्लर के दूसरे नियम का ही दूसरा कथन है, और इसी से घूमता साइकिल का पहिया झुकाए जाने का विरोध करता है।",
+            "इस प्रक्रिया में गतिज ऊर्जा संरक्षित नहीं रहती: स्केटर की घूर्णी ऊर्जा बढ़ती है, और अतिरिक्त जूल उस पेशीय कार्य से आते हैं जो वह बाँहों को बाहर उड़ने की प्रवृत्ति के विरुद्ध भीतर खींचने में करती है।",
+            "बिना फिसले लोटन के लिए संपर्क बिंदु का सतह के सापेक्ष तात्क्षणिक विराम में होना ज़रूरी है, जो केंद्र की रैखिक चाल को v = ωR पर बाँध देता है।",
+            "जब कोई बाह्य बल-आघूर्ण नहीं लगता तो कोणीय संवेग Iω संरक्षित रहता है, अतः जो पिंड अपना द्रव्यमान अक्ष के पास पुनर्वितरित करता है उसे भरपाई में तेज़ घूमना पड़ता है।"
+          ],
+          "solution": "बिना फिसले लोटन के लिए संपर्क बिंदु का सतह के सापेक्ष तात्क्षणिक विराम में होना ज़रूरी है, जो केंद्र की रैखिक चाल को v = ωR पर बाँध देता है। यह बिना फिसले लोटन की बात है, कोणीय संवेग का संरक्षण की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "कोनीय संवेगाचे संरक्षण विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "हाच नियम ग्रहाला सूर्याजवळ दूरच्या तुलनेत अधिक वेगाने चालवत ठेवतो, जे केप्लरच्या दुसऱ्या नियमाचेच दुसरे मांडणे, आणि यामुळेच फिरणारे सायकलचे चाक कलवले जाण्यास विरोध करते.",
+            "या प्रक्रियेत गतिज ऊर्जा संरक्षित राहत नाही: स्केटरची परिवलनी ऊर्जा वाढते, आणि जादा ज्यूल त्या स्नायुकार्यातून येतात जे ती हात बाहेर उडण्याच्या प्रवृत्तीविरुद्ध आत खेचताना करते.",
+            "न घसरता घरंगळण्यासाठी स्पर्शबिंदू पृष्ठभागाच्या सापेक्ष तात्कालिक स्थिर असणे आवश्यक, जे केंद्राची रेषीय चाल v = ωR वर बांधते.",
+            "जेव्हा कोणतेही बाह्य बलआघूर्ण लागत नाही तेव्हा कोनीय संवेग Iω संरक्षित राहतो, म्हणून जो पिंड आपले वस्तुमान अक्षाजवळ पुनर्वितरित करतो त्याला भरपाईसाठी अधिक वेगाने फिरावे लागते."
+          ],
+          "solution": "न घसरता घरंगळण्यासाठी स्पर्शबिंदू पृष्ठभागाच्या सापेक्ष तात्कालिक स्थिर असणे आवश्यक, जे केंद्राची रेषीय चाल v = ωR वर बांधते. हे न घसरता घरंगळणे चे आहे, कोनीय संवेगाचे संरक्षण चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A solid cylinder and a frictionless block of the same mass are released together from the same height on the same slope. The block reaches the bottom first. A student says friction slowed the cylinder down. Explain what actually happened, given that rolling friction here does no work.",
+      "choices": [
+        "No energy was lost at all. Both bodies arrive with exactly the same total kinetic energy, mgh. The block puts all of it into ½mv²; the cylinder must split it, because rolling without slipping forces ω = v/R, so part of the store goes into ½Iω² of turning. With I = ½mR² for a solid cylinder the split is two-thirds travelling and one-third turning, leaving the cylinder slower at the bottom. Friction here supplies the torque that makes it roll and does no work, since the contact point never slides",
+        "The student is right: friction converted part of the cylinder's energy into heat, which is why it arrived with less",
+        "The cylinder is slower because its mass is spread out, so gravity has to pull on a larger volume",
+        "The two must in fact arrive together, since energy conservation gives both v = √(2gh) regardless of shape"
+      ],
+      "answerIndex": 0,
+      "solution": "Begin with what is the same for both, because that is the surprising part. Each body starts at rest at height h and ends at the bottom, and in each case the only force doing work is gravity — for the block because the slope is frictionless, for the cylinder because rolling friction acts at a point that is instantaneously at rest and therefore does no work at all. So both arrive with total kinetic energy exactly mgh. Nothing has been lost by either. What differs is how that energy has to be spent. The block has only one way to hold kinetic energy: ½mv². Setting mgh = ½mv² gives v = √(2gh), the familiar result. The cylinder has two accounts, and the rolling condition means it cannot choose between them. Rolling without slipping ties ω to v by ω = v/R, so a cylinder moving at v is necessarily spinning at v/R — the two are not independent. Its total kinetic energy is ½mv² + ½Iω², and for a solid cylinder I = ½mR², so ½Iω² = ½ × ½mR² × v²/R² = ¼mv². The total is therefore ½mv² + ¼mv² = ¾mv². Setting that equal to mgh gives v = √(4gh/3), which is smaller than √(2gh) by a factor of √(2/3), about 0.82. The cylinder arrives at 82 per cent of the block's speed, and it does so having spent one third of its energy on rotation and two thirds on travel. So the cylinder is not slower because energy went missing. It is slower because a fixed budget had to be divided, and only the translational share shows up as speed along the slope. This is why the answer depends on shape and not on mass or radius: substitute a hollow ring, where I = mR², and the split becomes half and half, giving v = √(gh) — slower still. A race down a slope between a ring, a solid cylinder and a sphere is decided entirely by which has the smaller fraction of its mass far from the axis, and the sphere wins because its mass is most tightly gathered. Neither the mass nor the radius appears anywhere in the final speeds, so a marble and a cannonball of the same shape tie exactly. Two further points settle the wrong answers. Friction here is static, not kinetic: the contact point does not slide, so there is no relative motion at the point of application, and work is force times the displacement OF THE POINT WHERE THE FORCE ACTS, which is zero. That is why no heat is generated and why a rolling ball can roll for a long way. And the last option is a trap worth naming: energy conservation does apply to both, but it constrains the TOTAL kinetic energy, not the speed. Reading mgh = ½mv² for a rolling body is exactly the step that omits the rotational account. (The other wrong answers destroy energy that has been shown to be intact, or make gravity's pull depend on how the mass is arranged, which it never does.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "समान द्रव्यमान का ठोस बेलन और घर्षण-रहित गुटका उसी ढलान पर उसी ऊँचाई से साथ छोड़े जाते हैं। गुटका पहले तल पर पहुँचता है। एक विद्यार्थी कहता है कि घर्षण ने बेलन को धीमा किया। समझाओ वस्तुतः हुआ क्या, यह देखते हुए कि यहाँ लोटन-घर्षण कोई कार्य नहीं करता।",
+          "choices": [
+            "कोई ऊर्जा खोई ही नहीं। दोनों पिंड ठीक उसी कुल गतिज ऊर्जा mgh के साथ पहुँचते हैं। गुटका उसका सब ½mv² में डाल देता है; बेलन को बाँटना पड़ता है, क्योंकि बिना फिसले लोटन ω = v/R को बाध्य करता है, अतः भंडार का एक हिस्सा घूमने के ½Iω² में जाता है। ठोस बेलन के लिए I = ½mR² के साथ बँटवारा दो-तिहाई चलने में और एक-तिहाई घूमने में होता है, जिससे बेलन तल पर धीमा रहता है। यहाँ घर्षण वह बल-आघूर्ण देता है जो उसे लुढ़काता है और कोई कार्य नहीं करता, क्योंकि संपर्क बिंदु कभी फिसलता ही नहीं",
+            "विद्यार्थी सही है: घर्षण ने बेलन की कुछ ऊर्जा ऊष्मा में बदल दी, इसीलिए वह कम लेकर पहुँचा",
+            "बेलन इसलिए धीमा है कि उसका द्रव्यमान फैला हुआ है, अतः गुरुत्व को बड़े आयतन को खींचना पड़ता है",
+            "दोनों को वस्तुतः साथ ही पहुँचना चाहिए, क्योंकि ऊर्जा-संरक्षण आकार से परे दोनों को v = √(2gh) देता है"
+          ],
+          "solution": "पहले वह देखो जो दोनों के लिए एक-सा है, क्योंकि चौंकाने वाला हिस्सा वही है। हर पिंड ऊँचाई h पर विराम से चलता है और तल पर समाप्त होता है, और दोनों में कार्य करने वाला एकमात्र बल गुरुत्व है — गुटके के लिए इसलिए कि ढलान घर्षण-रहित है, बेलन के लिए इसलिए कि लोटन-घर्षण ऐसे बिंदु पर लगता है जो तात्क्षणिक रूप से विराम में है और इसलिए कोई कार्य करता ही नहीं। अतः दोनों ठीक mgh कुल गतिज ऊर्जा लेकर पहुँचते हैं। किसी ने कुछ खोया नहीं। भिन्न यह है कि वह ऊर्जा ख़र्च कैसे करनी पड़ती है। गुटके के पास गतिज ऊर्जा रखने का एक ही तरीक़ा है: ½mv². mgh = ½mv² रखने पर v = √(2gh) मिलता है, जाना-पहचाना परिणाम। बेलन के पास दो खाते हैं, और लोटन की शर्त का अर्थ है कि वह उनमें से चुन नहीं सकता। बिना फिसले लोटन ω को v से ω = v/R द्वारा बाँध देता है, अतः v से चलता बेलन अनिवार्यतः v/R से घूम रहा है — दोनों स्वतंत्र नहीं। उसकी कुल गतिज ऊर्जा ½mv² + ½Iω² है, और ठोस बेलन के लिए I = ½mR², अतः ½Iω² = ½ × ½mR² × v²/R² = ¼mv². कुल इसलिए ½mv² + ¼mv² = ¾mv². उसे mgh के बराबर रखने पर v = √(4gh/3) मिलता है, जो √(2gh) से √(2/3) यानी लगभग 0.82 गुना छोटा है। बेलन गुटके की चाल के 82 प्रतिशत पर पहुँचता है, और ऐसा वह अपनी एक तिहाई ऊर्जा घूर्णन पर और दो तिहाई चलने पर ख़र्च करके करता है। अतः बेलन इसलिए धीमा नहीं कि ऊर्जा लुप्त हुई। वह इसलिए धीमा है कि एक तय बजट बाँटना पड़ा, और केवल स्थानांतरण वाला हिस्सा ढलान पर चाल के रूप में दिखता है। इसीलिए उत्तर आकार पर निर्भर है, द्रव्यमान या त्रिज्या पर नहीं: खोखला छल्ला रखो, जहाँ I = mR², और बँटवारा आधा-आधा हो जाता है, जिससे v = √(gh) — और भी धीमा। ढलान पर छल्ले, ठोस बेलन और गोले की दौड़ पूरी तरह इससे तय होती है कि किसका द्रव्यमान अक्ष से दूर कम अनुपात में है, और गोला जीतता है क्योंकि उसका द्रव्यमान सबसे कसकर सिमटा है। अंतिम चालों में न द्रव्यमान कहीं आता है न त्रिज्या, अतः एक ही आकार के कंचे और तोप के गोले की ठीक बराबरी रहती है। दो और बातें ग़लत उत्तरों को निपटा देती हैं। यहाँ घर्षण स्थैतिक है, गतिज नहीं: संपर्क बिंदु फिसलता नहीं, अतः बल लगने के बिंदु पर कोई सापेक्ष गति नहीं, और कार्य बल गुणा उस बिंदु का विस्थापन है जहाँ बल लगता है, जो शून्य है। इसीलिए कोई ऊष्मा नहीं बनती और इसीलिए लुढ़कती गेंद दूर तक लुढ़क सकती है। और अंतिम विकल्प नाम लेने योग्य जाल है: ऊर्जा-संरक्षण दोनों पर लागू होता ही है, पर वह कुल गतिज ऊर्जा को बाँधता है, चाल को नहीं। लुढ़कते पिंड के लिए mgh = ½mv² पढ़ना ठीक वही क़दम है जो घूर्णी खाता छोड़ देता है। (बाक़ी ग़लत उत्तर उस ऊर्जा को नष्ट कर देते जो सलामत सिद्ध हो चुकी, या गुरुत्व के खिंचाव को इस पर निर्भर बना देते कि द्रव्यमान जमाया कैसे गया, जो वह कभी नहीं होता।)"
+        },
+        "mr": {
+          "stem": "समान वस्तुमानाचा भरीव दंडगोल आणि घर्षणविरहित ठोकळा त्याच उतारावर त्याच उंचीवरून एकत्र सोडले जातात. ठोकळा आधी तळाशी पोहोचतो. एक विद्यार्थी म्हणतो की घर्षणाने दंडगोल मंदावला. प्रत्यक्षात काय घडले ते समजावा, हे लक्षात घेऊन की इथले घरंगळ-घर्षण कोणतेही कार्य करत नाही.",
+          "choices": [
+            "कोणतीही ऊर्जा गमावलीच नाही. दोन्ही पिंड नेमक्या त्याच एकूण गतिज ऊर्जेसह — mgh — पोहोचतात. ठोकळा ती सर्व ½mv² मध्ये टाकतो; दंडगोलाला विभागावी लागते, कारण न घसरता घरंगळणे ω = v/R ला भाग पाडते, म्हणून साठ्याचा काही भाग फिरण्याच्या ½Iω² मध्ये जातो. भरीव दंडगोलासाठी I = ½mR² सह विभागणी दोन-तृतीयांश प्रवासात आणि एक-तृतीयांश फिरण्यात होते, ज्यामुळे दंडगोल तळाशी सावकाश राहतो. इथले घर्षण त्याला घरंगळवणारे बलआघूर्ण पुरवते आणि कोणतेही कार्य करत नाही, कारण स्पर्शबिंदू कधीही घसरत नाही",
+            "विद्यार्थी बरोबर: घर्षणाने दंडगोलाची काही ऊर्जा उष्णतेत बदलली, म्हणून तो कमी घेऊन पोहोचला",
+            "दंडगोल यामुळे सावकाश की त्याचे वस्तुमान पसरलेले आहे, म्हणून गुरुत्वाला मोठे घनफळ ओढावे लागते",
+            "दोघांनी प्रत्यक्षात एकत्रच पोहोचायला हवे, कारण ऊर्जा-संरक्षण आकाराची पर्वा न करता दोघांना v = √(2gh) देते"
+          ],
+          "solution": "आधी दोघांसाठी जे सारखे आहे ते पाहा, कारण चकित करणारा भागच तोच. प्रत्येक पिंड h उंचीवर स्थिरावस्थेतून सुरू होतो आणि तळाशी संपतो, आणि दोन्हींत कार्य करणारे एकमेव बल गुरुत्व — ठोकळ्यासाठी कारण उतार घर्षणविरहित, दंडगोलासाठी कारण घरंगळ-घर्षण अशा बिंदूवर लागते जो तात्कालिक स्थिर आहे आणि म्हणून कोणतेही कार्य करतच नाही. म्हणून दोघेही नेमकी mgh ही एकूण गतिज ऊर्जा घेऊन पोहोचतात. कोणीही काहीही गमावलेले नाही. वेगळे हे की ती ऊर्जा खर्च कशी करावी लागते. ठोकळ्याकडे गतिज ऊर्जा ठेवण्याचा एकच मार्ग: ½mv². mgh = ½mv² ठेवल्यास v = √(2gh), ओळखीचा निकाल. दंडगोलाकडे दोन खाती, आणि घरंगळण्याच्या अटीचा अर्थ तो त्यांतून निवडू शकत नाही. न घसरता घरंगळणे ω ला v शी ω = v/R ने बांधते, म्हणून v ने जाणारा दंडगोल अपरिहार्यपणे v/R ने फिरत आहे — दोन्ही स्वतंत्र नाहीत. त्याची एकूण गतिज ऊर्जा ½mv² + ½Iω², आणि भरीव दंडगोलासाठी I = ½mR², म्हणून ½Iω² = ½ × ½mR² × v²/R² = ¼mv². एकूण म्हणून ½mv² + ¼mv² = ¾mv². ते mgh इतके ठेवल्यास v = √(4gh/3), जे √(2gh) हून √(2/3) म्हणजे सुमारे 0.82 पट लहान. दंडगोल ठोकळ्याच्या चालीच्या 82 टक्क्यांवर पोहोचतो, आणि तो असे आपली एक तृतीयांश ऊर्जा परिवलनावर आणि दोन तृतीयांश प्रवासावर खर्चून करतो. म्हणून दंडगोल ऊर्जा हरवली म्हणून सावकाश नाही. तो यामुळे सावकाश की ठरलेला अर्थसंकल्प विभागावा लागला, आणि केवळ स्थानांतरणाचा वाटा उतारावर चाल म्हणून दिसतो. म्हणूनच उत्तर आकारावर अवलंबून, वस्तुमान वा त्रिज्येवर नाही: पोकळे कडे ठेवा, जिथे I = mR², आणि विभागणी अर्धी-अर्धी होते, ज्यातून v = √(gh) — आणखी सावकाश. उतारावरची कडे, भरीव दंडगोल आणि गोल यांची शर्यत पूर्णपणे कोणाचे वस्तुमान अक्षापासून दूर कमी प्रमाणात आहे यावरून ठरते, आणि गोल जिंकतो कारण त्याचे वस्तुमान सर्वांत घट्ट एकवटलेले. शेवटच्या चालींत ना वस्तुमान कुठे येते ना त्रिज्या, म्हणून एकाच आकाराची गोटी आणि तोफगोळा नेमकी बरोबरी करतात. आणखी दोन मुद्दे चुकीची उत्तरे निकाली काढतात. इथले घर्षण स्थितिक आहे, गतिज नव्हे: स्पर्शबिंदू घसरत नाही, म्हणून बल लागण्याच्या बिंदूवर कोणतीही सापेक्ष गती नाही, आणि कार्य म्हणजे बल गुणिले ज्या बिंदूवर बल लागते त्याचे विस्थापन, जे शून्य आहे. म्हणूनच कोणतीही उष्णता तयार होत नाही आणि म्हणूनच घरंगळणारा चेंडू दूरवर घरंगळू शकतो. आणि शेवटचा पर्याय नाव घेण्याजोगा सापळा: ऊर्जा-संरक्षण दोघांनाही लागू होतेच, पण ते एकूण गतिज ऊर्जेला बांधते, चालीला नाही. घरंगळणाऱ्या पिंडासाठी mgh = ½mv² वाचणे हेच नेमके ते पाऊल जे परिवलनी खाते वगळते. (उरलेली चुकीची उत्तरे शाबूत सिद्ध झालेली ऊर्जा नष्ट करतात, वा गुरुत्वाची ओढ वस्तुमान कसे मांडले यावर अवलंबून बनवतात, जे ती कधीही नसते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A skater spinning freely pulls her arms in, reducing her moment of inertia from 6 kg m² to 2 kg m². A student checks the numbers and finds her kinetic energy has tripled, and concludes that angular momentum cannot really have been conserved. Resolve this.",
+      "choices": [
+        "Angular momentum was conserved and kinetic energy was not, and there is no contradiction because nothing requires both. Iω is fixed, so ω triples when I falls to a third. But the energy is ½Iω², which carries ω squared, so it goes up by 3²/3 = 3. The extra energy is real and its source is identifiable: the skater's muscles did work pulling her arms inwards against the outward tendency of the rotating masses. Let her arms out again and she does negative work, the energy returns, and the spin slows to its original rate",
+        "The student is right: energy conservation is the deeper law, so angular momentum must have been supplied from outside by the ice",
+        "The energy did not really change; the student has forgotten that ½Iω² is independent of I once ω is known",
+        "Both quantities are conserved, and the apparent tripling comes from measuring in the rotating frame rather than the ground frame"
+      ],
+      "answerIndex": 0,
+      "solution": "Put the arithmetic down first. Angular momentum L = Iω is conserved because no external torque acts about the vertical axis — the ice is nearly frictionless, and the skater's own muscles are internal to her. So 6ω₀ = 2ω₁ and ω₁ = 3ω₀: the spin triples. Kinetic energy before is ½ × 6 × ω₀² = 3ω₀². After it is ½ × 2 × (3ω₀)² = ½ × 2 × 9ω₀² = 9ω₀². The energy has indeed tripled, and the student's arithmetic is impeccable. What is wrong is the inference. There is no law saying kinetic energy is conserved. The conservation laws are separate statements with separate conditions, and it is a mistake to expect them to move together. Linear momentum is conserved when no external force acts; angular momentum when no external torque acts; total energy always, but MECHANICAL energy only when the forces doing work are conservative. Here the muscles are doing work, so mechanical energy is under no obligation to stay put. Where the algebra makes it inevitable is worth seeing. Write the energy in terms of the conserved quantity: E = ½Iω² = ½(Iω)²/I = L²/(2I). With L fixed, energy is inversely proportional to I. Reduce I to a third and the energy triples, necessarily. This form makes the whole result transparent — you cannot change I at fixed L without changing the energy, so the question is never whether energy changes but only where it comes from. It comes from the skater. Consider what her arms are doing while she pulls them in. Each hand is moving in a circle, and to bring it closer to the axis she must exert an inward force on a mass that is going round; that force acts through an inward displacement, so it does positive work. In the rotating frame it feels like fighting a centrifugal pull, and the sensation is accurate about the effort even though the force is fictitious. The joules come from her metabolism, in exactly the same way as the joules for a jump. The process is reversible, which is the clinching evidence. Let the arms out again and the same forces act through outward displacements, so the work is now negative: the skater absorbs energy, her spin drops back to ω₀, and both L and E return to their initial values. Nothing was created or destroyed at any stage. Two applications are worth carrying. A planet in an elliptical orbit obeys the same relation, speeding up near the Sun where its distance from the focus is small — Kepler's second law is angular momentum conservation in disguise, and there the work is done by gravity rather than by muscles, so the mechanical energy does stay constant. And a collapsing star spins up spectacularly for the same reason: a stellar core the size of the Sun contracting to a neutron star twenty kilometres across increases its rotation rate by a factor of billions, which is why pulsars flash many times a second. (The wrong answers invent an external torque the ice cannot supply, misstate the energy formula, or hide a real physical change behind a change of frame.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "स्वतंत्र रूप से घूमती स्केटर बाँहें समेटती है, जिससे उसका जड़त्व आघूर्ण 6 kg m² से घटकर 2 kg m² हो जाता है। एक विद्यार्थी संख्याएँ जाँचकर पाता है कि उसकी गतिज ऊर्जा तीन गुनी हो गई, और निष्कर्ष निकालता है कि कोणीय संवेग वस्तुतः संरक्षित हो ही नहीं सकता। इसे सुलझाओ।",
+          "choices": [
+            "कोणीय संवेग संरक्षित रहा और गतिज ऊर्जा नहीं, और इसमें कोई विरोधाभास नहीं क्योंकि दोनों की माँग कहीं नहीं। Iω तय है, अतः I एक तिहाई होने पर ω तीन गुना हो जाता है। पर ऊर्जा ½Iω² है, जो ω का वर्ग ढोती है, अतः वह 3²/3 = 3 गुना बढ़ती है। अतिरिक्त ऊर्जा असली है और उसका स्रोत पहचाना जा सकता है: स्केटर की पेशियों ने घूमते द्रव्यमानों की बाहर जाने की प्रवृत्ति के विरुद्ध बाँहें भीतर खींचकर कार्य किया। बाँहें फिर फैलाओ और वह ऋणात्मक कार्य करती है, ऊर्जा लौट आती है, और घुमाव अपनी मूल दर पर धीमा हो जाता है",
+            "विद्यार्थी सही है: ऊर्जा-संरक्षण गहरा नियम है, अतः कोणीय संवेग बाहर से बर्फ़ द्वारा दिया गया होगा",
+            "ऊर्जा वस्तुतः बदली नहीं; विद्यार्थी भूल गया कि ω ज्ञात होने पर ½Iω² I से स्वतंत्र है",
+            "दोनों राशियाँ संरक्षित हैं, और तीन गुना दिखना ज़मीन के तंत्र के बजाय घूमते तंत्र में नापने से आता है"
+          ],
+          "solution": "पहले गणित रख दो। कोणीय संवेग L = Iω संरक्षित है क्योंकि ऊर्ध्वाधर अक्ष के परितः कोई बाह्य बल-आघूर्ण नहीं लगता — बर्फ़ लगभग घर्षण-रहित है, और स्केटर की अपनी पेशियाँ उसके लिए आंतरिक हैं। अतः 6ω₀ = 2ω₁ और ω₁ = 3ω₀: घुमाव तीन गुना। पहले गतिज ऊर्जा ½ × 6 × ω₀² = 3ω₀². बाद में ½ × 2 × (3ω₀)² = ½ × 2 × 9ω₀² = 9ω₀². ऊर्जा सचमुच तीन गुनी हुई, और विद्यार्थी का गणित निर्दोष है। ग़लत उसका अनुमान है। ऐसा कोई नियम नहीं जो कहे कि गतिज ऊर्जा संरक्षित है। संरक्षण-नियम भिन्न शर्तों वाले भिन्न कथन हैं, और उनसे साथ-साथ चलने की अपेक्षा करना भूल है। रैखिक संवेग तब संरक्षित है जब कोई बाह्य बल न लगे; कोणीय संवेग तब जब कोई बाह्य बल-आघूर्ण न लगे; कुल ऊर्जा सदा, पर यांत्रिक ऊर्जा केवल तब जब कार्य करने वाले बल संरक्षी हों। यहाँ पेशियाँ कार्य कर रही हैं, अतः यांत्रिक ऊर्जा पर टिके रहने की कोई बाध्यता नहीं। बीजगणित इसे कहाँ अनिवार्य बना देता है, यह देखने योग्य है। ऊर्जा को संरक्षित राशि के पदों में लिखो: E = ½Iω² = ½(Iω)²/I = L²/(2I). L तय हो तो ऊर्जा I के व्युत्क्रमानुपाती है। I को एक तिहाई करो और ऊर्जा अनिवार्यतः तीन गुनी हो जाती है। यह रूप पूरा परिणाम पारदर्शी कर देता है — तुम L स्थिर रखते हुए I बदल ही नहीं सकते बिना ऊर्जा बदले, अतः प्रश्न कभी यह नहीं कि ऊर्जा बदलती है या नहीं बल्कि केवल यह कि वह आती कहाँ से है। वह स्केटर से आती है। सोचो बाँहें समेटते समय वे कर क्या रही हैं। हर हाथ वृत्त में चल रहा है, और उसे अक्ष के पास लाने के लिए उसे ऐसे द्रव्यमान पर भीतरी बल लगाना पड़ता है जो घूम रहा है; वह बल भीतरी विस्थापन से होकर लगता है, अतः धनात्मक कार्य करता है। घूमते तंत्र में यह अपकेंद्री खिंचाव से लड़ने जैसा लगता है, और अनुभूति परिश्रम के बारे में सही है यद्यपि बल काल्पनिक है। जूल उसके उपापचय से आते हैं, ठीक वैसे जैसे कूद के जूल आते हैं। प्रक्रिया उत्क्रमणीय है, और यही निर्णायक प्रमाण है। बाँहें फिर फैलाओ और वही बल बाहरी विस्थापनों से होकर लगते हैं, अतः कार्य अब ऋणात्मक है: स्केटर ऊर्जा सोख लेती है, उसका घुमाव ω₀ पर लौट आता है, और L तथा E दोनों अपने आरंभिक मानों पर आ जाते हैं। किसी चरण पर कुछ न बना न नष्ट हुआ। दो अनुप्रयोग ले जाने योग्य हैं। दीर्घवृत्तीय कक्षा में ग्रह वही संबंध मानता है, सूर्य के पास तेज़ होता जहाँ नाभि से उसकी दूरी कम है — केप्लर का दूसरा नियम भेस बदले कोणीय संवेग का संरक्षण ही है, और वहाँ कार्य पेशियाँ नहीं गुरुत्व करता है, अतः यांत्रिक ऊर्जा अचर बनी रहती है। और ढहता तारा उसी कारण नाटकीय रूप से तेज़ घूमने लगता है: सूर्य के आकार का तारकीय क्रोड सिकुड़कर बीस किलोमीटर का न्यूट्रॉन तारा बने तो उसकी घूर्णन-दर अरबों गुना बढ़ जाती है, इसीलिए पल्सर सेकंड में कई बार चमकते हैं। (ग़लत उत्तर ऐसा बाह्य बल-आघूर्ण गढ़ते जो बर्फ़ दे नहीं सकती, ऊर्जा-सूत्र ग़लत कहते, या असली भौतिक परिवर्तन को तंत्र-परिवर्तन के पीछे छिपा देते हैं।)"
+        },
+        "mr": {
+          "stem": "मुक्तपणे फिरणारी स्केटर हात मिटवते, ज्यामुळे तिचे जडत्व आघूर्ण 6 kg m² वरून 2 kg m² होते. एक विद्यार्थी आकडे तपासून पाहतो की तिची गतिज ऊर्जा तिप्पट झाली, आणि निष्कर्ष काढतो की कोनीय संवेग खरोखर संरक्षित होऊच शकत नाही. हे सोडवा.",
+          "choices": [
+            "कोनीय संवेग संरक्षित राहिला आणि गतिज ऊर्जा नाही, आणि यात कोणताही विरोधाभास नाही कारण दोन्हींची मागणी कुठेही नाही. Iω ठरलेला, म्हणून I एक तृतीयांश होताच ω तिप्पट होतो. पण ऊर्जा ½Iω² आहे, जी ω चा वर्ग वाहते, म्हणून ती 3²/3 = 3 पट वाढते. जादा ऊर्जा खरी आहे आणि तिचा स्रोत ओळखता येतो: स्केटरच्या स्नायूंनी फिरणाऱ्या वस्तुमानांच्या बाहेर जाण्याच्या प्रवृत्तीविरुद्ध हात आत खेचून कार्य केले. हात पुन्हा पसरू द्या आणि ती ऋण कार्य करते, ऊर्जा परत येते, आणि फिरणे आपल्या मूळ दराने मंदावते",
+            "विद्यार्थी बरोबर: ऊर्जा-संरक्षण हा खोल नियम, म्हणून कोनीय संवेग बाहेरून बर्फाने दिला गेला असणार",
+            "ऊर्जा प्रत्यक्षात बदललीच नाही; विद्यार्थी विसरला की ω माहीत असल्यावर ½Iω² हे I पासून स्वतंत्र आहे",
+            "दोन्ही राशी संरक्षित आहेत, आणि तिप्पट दिसणे जमिनीच्या चौकटीऐवजी फिरत्या चौकटीत मोजल्याने येते"
+          ],
+          "solution": "आधी आकडेमोड मांडा. कोनीय संवेग L = Iω संरक्षित आहे कारण उभ्या अक्षाभोवती कोणतेही बाह्य बलआघूर्ण लागत नाही — बर्फ जवळपास घर्षणविरहित, आणि स्केटरचे स्वतःचे स्नायू तिच्यासाठी आंतरिक. म्हणून 6ω₀ = 2ω₁ आणि ω₁ = 3ω₀: फिरणे तिप्पट. आधीची गतिज ऊर्जा ½ × 6 × ω₀² = 3ω₀². नंतरची ½ × 2 × (3ω₀)² = ½ × 2 × 9ω₀² = 9ω₀². ऊर्जा खरोखर तिप्पट झाली, आणि विद्यार्थ्याचे गणित निर्दोष. चूक त्याच्या अनुमानात. गतिज ऊर्जा संरक्षित आहे असे सांगणारा कोणताही नियम नाही. संरक्षण-नियम वेगळ्या अटींची वेगळी विधाने आहेत, आणि त्यांनी एकत्र चालावे अशी अपेक्षा करणे चूक. रेषीय संवेग तेव्हा संरक्षित जेव्हा कोणतेही बाह्य बल लागत नाही; कोनीय संवेग तेव्हा जेव्हा कोणतेही बाह्य बलआघूर्ण लागत नाही; एकूण ऊर्जा नेहमी, पण यांत्रिक ऊर्जा केवळ तेव्हा जेव्हा कार्य करणारी बले संरक्षी असतात. इथे स्नायू कार्य करत आहेत, म्हणून यांत्रिक ऊर्जेवर टिकून राहण्याचे कोणतेही बंधन नाही. बीजगणित हे कुठे अपरिहार्य करते ते पाहण्याजोगे. ऊर्जा संरक्षित राशीच्या भाषेत लिहा: E = ½Iω² = ½(Iω)²/I = L²/(2I). L ठरलेला असल्यास ऊर्जा I च्या व्यस्तानुपाती. I एक तृतीयांश करा आणि ऊर्जा अपरिहार्यपणे तिप्पट होते. हे रूप अख्खा निकाल पारदर्शक करते — तुम्ही L स्थिर ठेवून I बदलूच शकत नाही ऊर्जा न बदलता, म्हणून प्रश्न कधीच ऊर्जा बदलते का हा नसतो तर ती येते कुठून हाच असतो. ती स्केटरकडून येते. हात आत खेचताना ते काय करत आहेत ते पाहा. प्रत्येक हात वर्तुळात फिरत आहे, आणि त्याला अक्षाजवळ आणायला तिला फिरणाऱ्या वस्तुमानावर आतले बल लावावे लागते; ते बल आतल्या विस्थापनातून लागते, म्हणून ते धन कार्य करते. फिरत्या चौकटीत हे अपकेंद्री ओढीशी लढल्यासारखे वाटते, आणि संवेदना श्रमाबद्दल बरोबर आहे जरी बल काल्पनिक असले तरी. ज्यूल तिच्या चयापचयातून येतात, नेमके तसेच जसे उडीचे ज्यूल येतात. प्रक्रिया उलट करता येते, आणि हाच निर्णायक पुरावा. हात पुन्हा पसरू द्या आणि तीच बले बाहेरच्या विस्थापनांतून लागतात, म्हणून कार्य आता ऋण: स्केटर ऊर्जा शोषून घेते, तिचे फिरणे ω₀ वर परतते, आणि L व E दोन्ही आपल्या सुरुवातीच्या मूल्यांवर येतात. कोणत्याही टप्प्यावर काहीही निर्माण वा नष्ट झाले नाही. दोन उपयोजने नेण्याजोगी. लंबवर्तुळाकार कक्षेतील ग्रह तोच संबंध पाळतो, सूर्याजवळ वेगवान होत जिथे नाभीपासूनचे त्याचे अंतर कमी — केप्लरचा दुसरा नियम हा वेष बदललेला कोनीय संवेगाचा संरक्षणच, आणि तिथे कार्य स्नायू नव्हे तर गुरुत्व करते, म्हणून यांत्रिक ऊर्जा अचल राहते. आणि कोसळणारा तारा त्याच कारणाने नाट्यमयरीत्या वेगात फिरू लागतो: सूर्याएवढा तारकीय गाभा आकुंचून वीस किलोमीटरचा न्यूट्रॉन तारा बनला तर त्याचा परिवलन-दर अब्जावधी पटींनी वाढतो, म्हणूनच पल्सार सेकंदाला अनेकदा चमकतात. (चुकीची उत्तरे बर्फ पुरवू शकत नाही असे बाह्य बलआघूर्ण घडवतात, ऊर्जा-सूत्र चुकीचे सांगतात, वा खरा भौतिक बदल चौकट-बदलामागे लपवतात.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Two point masses, 2 kg at x = 0 and 3 kg at x = 5 m, lie on a line. Where is their centre of mass?",
+      "choices": [
+        "3 m",
+        "5 m",
+        "2 m",
+        "2.5 m"
+      ],
+      "answerIndex": 0,
+      "solution": "x = (2 × 0 + 3 × 5)/(2 + 3) = 15/5 = 3 m. It sits nearer the heavier mass, as it must. (2.5 is the midpoint, which would be right only for equal masses, and 2 leans the wrong way.)",
+      "checkExpr": "(2*0+3*5)/(2+3)",
+      "translations": {
+        "hi": {
+          "stem": "दो बिंदु द्रव्यमान, x = 0 पर 2 kg और x = 5 m पर 3 kg, एक रेखा पर हैं। उनका द्रव्यमान केंद्र कहाँ है?",
+          "choices": [
+            "3 m",
+            "5 m",
+            "2 m",
+            "2.5 m"
+          ],
+          "solution": "x = (2 × 0 + 3 × 5)/(2 + 3) = 15/5 = 3 m. वह भारी द्रव्यमान के पास बैठता है, जैसा उसे होना चाहिए। (2.5 मध्यबिंदु है, जो केवल बराबर द्रव्यमानों के लिए सही होता, और 2 ग़लत ओर झुकता है।)"
+        },
+        "mr": {
+          "stem": "दोन बिंदू वस्तुमाने, x = 0 वर 2 kg आणि x = 5 m वर 3 kg, एका रेषेवर आहेत. त्यांचे वस्तुमान केंद्र कुठे?",
+          "choices": [
+            "3 m",
+            "5 m",
+            "2 m",
+            "2.5 m"
+          ],
+          "solution": "x = (2 × 0 + 3 × 5)/(2 + 3) = 15/5 = 3 m. तो जड वस्तुमानाजवळ बसतो, जसा त्याने असावा. (2.5 हा मध्यबिंदू, जो केवळ समान वस्तुमानांसाठी बरोबर ठरला असता, आणि 2 चुकीच्या बाजूला झुकतो.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A force of 10 N is applied perpendicular to a spanner at a distance of 0.5 m from the nut. What torque does it produce?",
+      "choices": [
+        "20",
+        "5",
+        "10.5",
+        "0.05"
+      ],
+      "answerIndex": 1,
+      "solution": "τ = F × r⊥ = 10 × 0.5 = 5 N m. Doubling the spanner's length would double the torque for the same effort, which is the whole reason long spanners exist. (20 divides instead of multiplying.)",
+      "checkExpr": "10*0.5",
+      "translations": {
+        "hi": {
+          "stem": "नट से 0.5 m दूरी पर पाने के लंबवत 10 N का बल लगाया जाता है। वह कितना बल-आघूर्ण देता है?",
+          "choices": [
+            "20",
+            "5",
+            "10.5",
+            "0.05"
+          ],
+          "solution": "τ = F × r⊥ = 10 × 0.5 = 5 N m. पाने की लंबाई दोगुनी करने पर उसी परिश्रम में बल-आघूर्ण दोगुना हो जाता, और लंबे पाने इसी कारण होते हैं। (20 गुणा के बजाय भाग देता है।)"
+        },
+        "mr": {
+          "stem": "नटपासून 0.5 m अंतरावर पान्याला लंब 10 N चे बल लावले जाते. ते किती बलआघूर्ण देते?",
+          "choices": [
+            "20",
+            "5",
+            "10.5",
+            "0.05"
+          ],
+          "solution": "τ = F × r⊥ = 10 × 0.5 = 5 N m. पान्याची लांबी दुप्पट केल्यास त्याच श्रमात बलआघूर्ण दुप्पट झाले असते, आणि लांब पाने याच कारणाने असतात. (20 गुणण्याऐवजी भागते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A point mass of 3 kg is fixed at a distance of 2 m from an axis. What is its moment of inertia about that axis?",
+      "choices": [
+        "24",
+        "12",
+        "1.5",
+        "6"
+      ],
+      "answerIndex": 1,
+      "solution": "I = mr² = 3 × 4 = 12 kg m². The distance is squared, so moving the same mass twice as far out quadruples the figure. (6 forgets to square the distance, which is the single commonest slip in this chapter.)",
+      "checkExpr": "3*2^2",
+      "translations": {
+        "hi": {
+          "stem": "3 kg का बिंदु द्रव्यमान किसी अक्ष से 2 m दूरी पर जड़ा है। उस अक्ष के परितः उसका जड़त्व आघूर्ण क्या है?",
+          "choices": [
+            "24",
+            "12",
+            "1.5",
+            "6"
+          ],
+          "solution": "I = mr² = 3 × 4 = 12 kg m². दूरी वर्ग में आती है, अतः वही द्रव्यमान दुगुना दूर ले जाने पर आँकड़ा चौगुना हो जाता है। (6 दूरी का वर्ग करना भूल जाता है, जो इस अध्याय की सबसे आम अकेली चूक है।)"
+        },
+        "mr": {
+          "stem": "3 kg चे बिंदू वस्तुमान एका अक्षापासून 2 m अंतरावर जडवलेले आहे. त्या अक्षाभोवती त्याचे जडत्व आघूर्ण किती?",
+          "choices": [
+            "24",
+            "12",
+            "1.5",
+            "6"
+          ],
+          "solution": "I = mr² = 3 × 4 = 12 kg m². अंतर वर्गात येते, म्हणून तेच वस्तुमान दुप्पट दूर नेल्यास आकडा चौपट होतो. (6 अंतराचा वर्ग करायचे विसरते, जी या प्रकरणातील सर्वांत नेहमीची एकमेव चूक.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A uniform disc of mass 4 kg and radius 3 m spins about its central axis, for which I = ½MR². What is its moment of inertia?",
+      "choices": [
+        "9",
+        "6",
+        "36",
+        "18"
+      ],
+      "answerIndex": 3,
+      "solution": "I = ½ × 4 × 9 = 18 kg m². A ring of the same mass and radius would give 36, twice as much, because all of a ring's mass sits at the full radius while a disc's is spread inwards. (36 is precisely that ring answer.)",
+      "checkExpr": "0.5*4*3^2",
+      "translations": {
+        "hi": {
+          "stem": "4 kg द्रव्यमान और 3 m त्रिज्या की समांग चकती अपने केंद्रीय अक्ष के परितः घूमती है, जिसके लिए I = ½MR². उसका जड़त्व आघूर्ण क्या है?",
+          "choices": [
+            "9",
+            "6",
+            "36",
+            "18"
+          ],
+          "solution": "I = ½ × 4 × 9 = 18 kg m². उसी द्रव्यमान और त्रिज्या का छल्ला 36 देता, दुगुना, क्योंकि छल्ले का सारा द्रव्यमान पूरी त्रिज्या पर बैठा है जबकि चकती का भीतर तक फैला है। (36 ठीक वही छल्ले वाला उत्तर है।)"
+        },
+        "mr": {
+          "stem": "4 kg वस्तुमान आणि 3 m त्रिज्येची एकसमान चकती आपल्या केंद्रीय अक्षाभोवती फिरते, जिच्यासाठी I = ½MR². तिचे जडत्व आघूर्ण किती?",
+          "choices": [
+            "9",
+            "6",
+            "36",
+            "18"
+          ],
+          "solution": "I = ½ × 4 × 9 = 18 kg m². त्याच वस्तुमान आणि त्रिज्येचे कडे 36 दिले असते, दुप्पट, कारण कड्याचे सर्व वस्तुमान पूर्ण त्रिज्येवर बसलेले तर चकतीचे आत पसरलेले. (36 हेच नेमके ते कड्याचे उत्तर.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A torque of 12 N m acts on a body whose moment of inertia is 4 kg m². What is its angular acceleration?",
+      "choices": [
+        "8",
+        "48",
+        "0.33",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "τ = Iα is the rotational twin of F = ma, so α = 12/4 = 3 rad/s². (48 multiplies where it should divide, and 0.33 inverts the ratio.)",
+      "checkExpr": "12/4",
+      "translations": {
+        "hi": {
+          "stem": "जिस पिंड का जड़त्व आघूर्ण 4 kg m² है उस पर 12 N m का बल-आघूर्ण लगता है। उसका कोणीय त्वरण क्या है?",
+          "choices": [
+            "8",
+            "48",
+            "0.33",
+            "3"
+          ],
+          "solution": "τ = Iα, F = ma का घूर्णी जुड़वाँ है, अतः α = 12/4 = 3 rad/s². (48 वहाँ गुणा करता है जहाँ भाग देना था, और 0.33 अनुपात उलट देता है।)"
+        },
+        "mr": {
+          "stem": "ज्या पिंडाचे जडत्व आघूर्ण 4 kg m² आहे त्यावर 12 N m चे बलआघूर्ण लागते. त्याचे कोनीय त्वरण किती?",
+          "choices": [
+            "8",
+            "48",
+            "0.33",
+            "3"
+          ],
+          "solution": "τ = Iα हे F = ma चे परिवलनी जुळे, म्हणून α = 12/4 = 3 rad/s². (48 जिथे भागायचे तिथे गुणते, आणि 0.33 गुणोत्तर उलटे करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A wheel of moment of inertia 3 kg m² spins at 4 rad/s. What is its rotational kinetic energy?",
+      "choices": [
+        "12",
+        "48",
+        "6",
+        "24"
+      ],
+      "answerIndex": 3,
+      "solution": "KE = ½Iω² = ½ × 3 × 16 = 24 J, the exact analogue of ½mv² with I for m and ω for v. (6 uses ω instead of ω², and 48 drops the half.)",
+      "checkExpr": "0.5*3*4^2",
+      "translations": {
+        "hi": {
+          "stem": "3 kg m² जड़त्व आघूर्ण वाला पहिया 4 rad/s से घूमता है। उसकी घूर्णी गतिज ऊर्जा क्या है?",
+          "choices": [
+            "12",
+            "48",
+            "6",
+            "24"
+          ],
+          "solution": "KE = ½Iω² = ½ × 3 × 16 = 24 J, जो ½mv² का ठीक समरूप है, m की जगह I और v की जगह ω. (6 ω² के बजाय ω लेता है, और 48 आधा गिरा देता है।)"
+        },
+        "mr": {
+          "stem": "3 kg m² जडत्व आघूर्ण असलेले चाक 4 rad/s ने फिरते. त्याची परिवलनी गतिज ऊर्जा किती?",
+          "choices": [
+            "12",
+            "48",
+            "6",
+            "24"
+          ],
+          "solution": "KE = ½Iω² = ½ × 3 × 16 = 24 J, जे ½mv² चे नेमके समरूप, m ऐवजी I आणि v ऐवजी ω. (6 हे ω² ऐवजी ω घेते, आणि 48 निम्मे गाळते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A skater spinning at 3 rad/s pulls her arms in, reducing her moment of inertia from 6 kg m² to 2 kg m². What is her new angular speed?",
+      "choices": [
+        "9",
+        "18",
+        "4.5",
+        "1"
+      ],
+      "answerIndex": 0,
+      "solution": "No external torque acts, so Iω is unchanged: 6 × 3 = 2ω, giving ω = 9 rad/s. (1 divides the wrong way, letting her slow down, and 4.5 halves the change instead of tripling the speed.)",
+      "checkExpr": "6*3/2",
+      "translations": {
+        "hi": {
+          "stem": "3 rad/s से घूमती स्केटर बाँहें समेटती है, जिससे उसका जड़त्व आघूर्ण 6 kg m² से घटकर 2 kg m² हो जाता है। उसकी नई कोणीय चाल क्या है?",
+          "choices": [
+            "9",
+            "18",
+            "4.5",
+            "1"
+          ],
+          "solution": "कोई बाह्य बल-आघूर्ण नहीं लगता, अतः Iω अपरिवर्तित है: 6 × 3 = 2ω, जिससे ω = 9 rad/s. (1 उलटा भाग देता है, जिससे वह धीमी हो जाती, और 4.5 चाल तीन गुनी करने के बजाय परिवर्तन आधा कर देता है।)"
+        },
+        "mr": {
+          "stem": "3 rad/s ने फिरणारी स्केटर हात मिटवते, ज्यामुळे तिचे जडत्व आघूर्ण 6 kg m² वरून 2 kg m² होते. तिची नवी कोनीय चाल किती?",
+          "choices": [
+            "9",
+            "18",
+            "4.5",
+            "1"
+          ],
+          "solution": "कोणतेही बाह्य बलआघूर्ण लागत नाही, म्हणून Iω अपरिवर्तित: 6 × 3 = 2ω, ज्यातून ω = 9 rad/s. (1 उलटे भागते, ज्याने ती मंदावली असती, आणि 4.5 चाल तिप्पट करण्याऐवजी बदल निम्मा करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A wheel of radius 0.4 m rolls without slipping while turning at 10 rad/s. How fast is its centre moving?",
+      "choices": [
+        "4 m/s",
+        "10.4 m/s",
+        "25 m/s",
+        "0.04 m/s"
+      ],
+      "answerIndex": 0,
+      "solution": "Rolling without slipping fixes v = ωR = 10 × 0.4 = 4 m/s. If the wheel were spinning on ice the two would be unrelated; it is the grip that ties them together. (25 divides ω by R and 0.04 divides the wrong way.)",
+      "checkExpr": "10*0.4",
+      "translations": {
+        "hi": {
+          "stem": "0.4 m त्रिज्या का पहिया 10 rad/s से घूमते हुए बिना फिसले लुढ़कता है। उसका केंद्र कितनी तेज़ चल रहा है?",
+          "choices": [
+            "4 m/s",
+            "10.4 m/s",
+            "25 m/s",
+            "0.04 m/s"
+          ],
+          "solution": "बिना फिसले लोटन v = ωR = 10 × 0.4 = 4 m/s तय कर देता है। यदि पहिया बर्फ़ पर घूम रहा होता तो दोनों असंबद्ध होते; उन्हें जोड़ती है पकड़। (25 ω को R से भाग देता है और 0.04 उलटा भाग देता है।)"
+        },
+        "mr": {
+          "stem": "0.4 m त्रिज्येचे चाक 10 rad/s ने फिरत न घसरता घरंगळते. त्याचे केंद्र किती वेगाने जात आहे?",
+          "choices": [
+            "4 m/s",
+            "10.4 m/s",
+            "25 m/s",
+            "0.04 m/s"
+          ],
+          "solution": "न घसरता घरंगळणे v = ωR = 10 × 0.4 = 4 m/s ठरवते. चाक बर्फावर फिरत असते तर दोन्ही असंबद्ध राहिली असती; त्यांना जोडते ती पकड. (25 हे ω ला R ने भागते आणि 0.04 उलटे भागते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A uniform rod of mass 3 kg and length 2 m rotates about a perpendicular axis through its centre, for which I = ML²/12. What is its moment of inertia?",
+      "choices": [
+        "1",
+        "0.5",
+        "4",
+        "3"
+      ],
+      "answerIndex": 0,
+      "solution": "I = 3 × 4/12 = 1 kg m². About one END the same rod gives ML²/3 = 4 kg m², four times as much, which is why quoting a moment of inertia without naming the axis says nothing at all. (4 is precisely that end-axis answer.)",
+      "checkExpr": "3*2^2/12",
+      "translations": {
+        "hi": {
+          "stem": "3 kg द्रव्यमान और 2 m लंबाई की समांग छड़ अपने केंद्र से गुज़रते लंबवत अक्ष के परितः घूमती है, जिसके लिए I = ML²/12. उसका जड़त्व आघूर्ण क्या है?",
+          "choices": [
+            "1",
+            "0.5",
+            "4",
+            "3"
+          ],
+          "solution": "I = 3 × 4/12 = 1 kg m². एक सिरे के परितः वही छड़ ML²/3 = 4 kg m² देती है, चार गुना, इसीलिए अक्ष बताए बिना जड़त्व आघूर्ण कहना कुछ भी नहीं कहता। (4 ठीक वही सिरे वाले अक्ष का उत्तर है।)"
+        },
+        "mr": {
+          "stem": "3 kg वस्तुमान आणि 2 m लांबीची एकसमान दांडी आपल्या केंद्रातून जाणाऱ्या लंब अक्षाभोवती फिरते, जिच्यासाठी I = ML²/12. तिचे जडत्व आघूर्ण किती?",
+          "choices": [
+            "1",
+            "0.5",
+            "4",
+            "3"
+          ],
+          "solution": "I = 3 × 4/12 = 1 kg m². एका टोकाभोवती तीच दांडी ML²/3 = 4 kg m² देते, चौपट, म्हणूनच अक्ष न सांगता जडत्व आघूर्ण सांगणे काहीच सांगत नाही. (4 हेच नेमके ते टोकाच्या अक्षाचे उत्तर.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A solid cylinder rolls without slipping, with I = ½MR². What percentage of its total kinetic energy is rotational?",
+      "choices": [
+        "25",
+        "66.666667",
+        "33.333333",
+        "50"
+      ],
+      "answerIndex": 2,
+      "solution": "Rolling ties ω to v by ω = v/R. The rotational share is ½Iω² = ½ × ½MR² × v²/R² = ¼Mv², and the translational share is ½Mv², so the total is ¾Mv². The rotational fraction is (¼)/(¾) = 1/3, or 33.333333 per cent. Notice that neither M nor R survives — a marble and a millstone of the same shape divide their energy identically, which is why a downhill race is decided by shape alone. A hollow ring, with I = MR², splits it 50–50 and is therefore slower still; a solid sphere, with I = ⅖MR², keeps only 2/7 in rotation and wins. (50 is the ring's answer and 66.666667 inverts the fraction, quoting the translational share instead.)",
+      "checkExpr": "100/3",
+      "translations": {
+        "hi": {
+          "stem": "ठोस बेलन बिना फिसले लुढ़कता है, जिसके लिए I = ½MR². उसकी कुल गतिज ऊर्जा का कितना प्रतिशत घूर्णी है?",
+          "choices": [
+            "25",
+            "66.666667",
+            "33.333333",
+            "50"
+          ],
+          "solution": "लोटन ω को v से ω = v/R द्वारा बाँधता है। घूर्णी हिस्सा ½Iω² = ½ × ½MR² × v²/R² = ¼Mv², और स्थानांतरण हिस्सा ½Mv², अतः कुल ¾Mv². घूर्णी अंश (¼)/(¾) = 1/3, यानी 33.333333 प्रतिशत। ध्यान दो न M बचता है न R — एक ही आकार का कंचा और चक्की का पाट अपनी ऊर्जा एक-सी बाँटते हैं, इसीलिए ढलान की दौड़ केवल आकार से तय होती है। खोखला छल्ला, जिसके लिए I = MR², उसे 50–50 बाँटता है और इसलिए और भी धीमा है; ठोस गोला, जिसके लिए I = ⅖MR², घूर्णन में केवल 2/7 रखता है और जीतता है। (50 छल्ले का उत्तर है और 66.666667 अंश उलट देता है, स्थानांतरण हिस्सा बता देता है।)"
+        },
+        "mr": {
+          "stem": "भरीव दंडगोल न घसरता घरंगळतो, ज्याच्यासाठी I = ½MR². त्याच्या एकूण गतिज ऊर्जेच्या किती टक्के परिवलनी आहे?",
+          "choices": [
+            "25",
+            "66.666667",
+            "33.333333",
+            "50"
+          ],
+          "solution": "घरंगळणे ω ला v शी ω = v/R ने बांधते. परिवलनी वाटा ½Iω² = ½ × ½MR² × v²/R² = ¼Mv², आणि स्थानांतरणी वाटा ½Mv², म्हणून एकूण ¾Mv². परिवलनी अंश (¼)/(¾) = 1/3, म्हणजे 33.333333 टक्के. लक्षात घ्या ना M टिकतो ना R — एकाच आकाराची गोटी आणि जात्याचा दगड आपली ऊर्जा सारखीच विभागतात, म्हणूनच उताराची शर्यत केवळ आकाराने ठरते. पोकळे कडे, ज्याच्यासाठी I = MR², ती 50–50 विभागते आणि म्हणून आणखी सावकाश; भरीव गोल, ज्याच्यासाठी I = ⅖MR², परिवलनात केवळ 2/7 ठेवतो आणि जिंकतो. (50 हे कड्याचे उत्तर आणि 66.666667 अंश उलटे करते, स्थानांतरणी वाटा सांगते.)"
+        }
+      }
+    }
+  ]
+}

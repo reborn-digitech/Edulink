@@ -1,0 +1,1038 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 11,
+  "chapter": "Chapter 5 — Work, Energy and Power",
+  "name": "Work, Energy and Power",
+  "slug": "physics-11-work-energy-and-power",
+  "summary": "A word borrowed from ordinary speech and then given a definition that refuses most of what the word usually means: a porter who carries a load along a platform does no work at all, a force that returns everything it took can be given a bank account and a force that does not cannot, energy is conserved in every collision while kinetic energy is not, and the whole apparatus exists because integrating a force over distance is easier than solving the motion.",
+  "position": 5,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "कार्य, ऊर्जा और शक्ति",
+      "summary": "साधारण बोलचाल से उधार लिया एक शब्द, जिसे फिर ऐसी परिभाषा दी गई जो उस शब्द के अधिकांश सामान्य अर्थ को नकारती है: प्लेटफ़ॉर्म पर बोझ ढोता कुली कोई कार्य नहीं करता, जो बल सब कुछ लौटा देता है उसे बहीखाता दिया जा सकता है और जो नहीं लौटाता उसे नहीं, हर टक्कर में ऊर्जा संरक्षित रहती है जबकि गतिज ऊर्जा नहीं, और यह पूरा तंत्र इसीलिए है कि दूरी पर बल का समाकलन करना गति हल करने से आसान है।"
+    },
+    "mr": {
+      "name": "कार्य, ऊर्जा आणि शक्ती",
+      "summary": "सामान्य बोलण्यातून उसना घेतलेला एक शब्द, ज्याला मग अशी व्याख्या दिली जी त्या शब्दाचा बहुतांश नेहमीचा अर्थ नाकारते: फलाटावर ओझे वाहणारा हमाल कोणतेही कार्य करत नाही, जे बल सर्व परत करते त्याला वहीखाते देता येते आणि जे करत नाही त्याला नाही, प्रत्येक टक्करीत ऊर्जा संरक्षित राहते तर गतिज ऊर्जा नाही, आणि हा सगळा डोलारा यासाठीच की अंतरावर बलाचे समाकलन करणे गती सोडवण्याहून सोपे आहे."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A porter walking a level platform with a trunk on his head exerts a large upward force and moves horizontally, and because the angle between them is a right angle the product is zero however tired he becomes. Which factor is responsible?",
+      "choices": [
+        "Power as a rate",
+        "The work–energy theorem",
+        "The cosine in the work formula",
+        "The perfectly inelastic collision"
+      ],
+      "answerIndex": 2,
+      "solution": "Work is force times displacement times the cosine of the angle between them, so a force perpendicular to the motion does no work at all and a force opposing it does negative work. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "सिर पर संदूक लिए समतल प्लेटफ़ॉर्म पर चलता कुली बड़ा ऊर्ध्वमुखी बल लगाता है और क्षैतिज चलता है, और चूँकि उनके बीच का कोण समकोण है, गुणनफल शून्य रहता है चाहे वह कितना ही थक जाए। इसके लिए कौन-सा गुणक ज़िम्मेदार है?",
+          "choices": [
+            "दर के रूप में शक्ति",
+            "कार्य-ऊर्जा प्रमेय",
+            "कार्य-सूत्र की कोज्या",
+            "पूर्णतः अप्रत्यास्थ टक्कर"
+          ],
+          "solution": "कार्य बल गुणा विस्थापन गुणा उनके बीच के कोण की कोज्या है, अतः गति के लंबवत बल कोई कार्य नहीं करता और उसका विरोध करने वाला बल ऋणात्मक कार्य करता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "डोक्यावर पेटी घेऊन सपाट फलाटावर चालणारा हमाल मोठे वरचे बल लावतो आणि आडवा चालतो, आणि त्यांच्यातील कोन काटकोन असल्याने गुणाकार शून्य राहतो, तो कितीही थकला तरी. यासाठी कोणता गुणक जबाबदार?",
+          "choices": [
+            "दर म्हणून शक्ती",
+            "कार्य-ऊर्जा प्रमेय",
+            "कार्य-सूत्रातील कोसाइन",
+            "पूर्णतः अप्रत्यास्थ टक्कर"
+          ],
+          "solution": "कार्य म्हणजे बल गुणिले विस्थापन गुणिले त्यांच्यातील कोनाचा कोसाइन, म्हणून गतीला लंब असलेले बल कोणतेही कार्य करत नाही आणि तिला विरोध करणारे बल ऋण कार्य करते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The work–energy theorem is correct?",
+      "choices": [
+        "Power is the rate at which work is done, equal to work divided by time or equivalently to force times velocity, and it is measured in watts rather than joules.",
+        "In a perfectly inelastic collision the bodies move off together with a common velocity, momentum is conserved exactly, and the kinetic energy lost is the greatest that momentum conservation permits.",
+        "Work is force times displacement times the cosine of the angle between them, so a force perpendicular to the motion does no work at all and a force opposing it does negative work.",
+        "The work–energy theorem states that the net work done by all forces on a body equals its change in kinetic energy, and it holds whether the forces are constant, varying, conservative or not."
+      ],
+      "answerIndex": 3,
+      "solution": "The work–energy theorem states that the net work done by all forces on a body equals its change in kinetic energy, and it holds whether the forces are constant, varying, conservative or not. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कार्य-ऊर्जा प्रमेय के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "शक्ति वह दर है जिससे कार्य किया जाता है, कार्य बटा समय या समतुल्य रूप से बल गुणा वेग, और उसे जूल में नहीं वाट में नापा जाता है।",
+            "पूर्णतः अप्रत्यास्थ टक्कर में पिंड एक साझा वेग से साथ चल पड़ते हैं, संवेग ठीक-ठीक संरक्षित रहता है, और खोई गतिज ऊर्जा उतनी सबसे अधिक होती है जितनी संवेग-संरक्षण अनुमति देता है।",
+            "कार्य बल गुणा विस्थापन गुणा उनके बीच के कोण की कोज्या है, अतः गति के लंबवत बल कोई कार्य नहीं करता और उसका विरोध करने वाला बल ऋणात्मक कार्य करता है।",
+            "कार्य-ऊर्जा प्रमेय कहता है कि किसी पिंड पर सब बलों द्वारा किया गया कुल कार्य उसकी गतिज ऊर्जा के परिवर्तन के बराबर है, और यह तब भी चलता है जब बल अचर हों, बदलते हों, संरक्षी हों या न हों।"
+          ],
+          "solution": "कार्य-ऊर्जा प्रमेय कहता है कि किसी पिंड पर सब बलों द्वारा किया गया कुल कार्य उसकी गतिज ऊर्जा के परिवर्तन के बराबर है, और यह तब भी चलता है जब बल अचर हों, बदलते हों, संरक्षी हों या न हों। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "कार्य-ऊर्जा प्रमेय विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "शक्ती म्हणजे कार्य केले जाण्याचा दर, कार्य भागिले काळ किंवा समतुल्यपणे बल गुणिले वेग, आणि ती ज्यूलमध्ये नव्हे तर वॉटमध्ये मोजली जाते.",
+            "पूर्णतः अप्रत्यास्थ टक्करीत पिंड एका सामायिक वेगाने एकत्र पुढे जातात, संवेग नेमका संरक्षित राहतो, आणि गमावलेली गतिज ऊर्जा संवेग-संरक्षण जितकी परवानगी देते तितकी सर्वाधिक असते.",
+            "कार्य म्हणजे बल गुणिले विस्थापन गुणिले त्यांच्यातील कोनाचा कोसाइन, म्हणून गतीला लंब असलेले बल कोणतेही कार्य करत नाही आणि तिला विरोध करणारे बल ऋण कार्य करते.",
+            "कार्य-ऊर्जा प्रमेय सांगते की एखाद्या पिंडावर सर्व बलांनी केलेले एकूण कार्य त्याच्या गतिज ऊर्जेतील बदलाइतके असते, आणि हे बले अचल असोत, बदलती असोत, संरक्षी असोत वा नसोत, तरीही चालते."
+          ],
+          "solution": "कार्य-ऊर्जा प्रमेय सांगते की एखाद्या पिंडावर सर्व बलांनी केलेले एकूण कार्य त्याच्या गतिज ऊर्जेतील बदलाइतके असते, आणि हे बले अचल असोत, बदलती असोत, संरक्षी असोत वा नसोत, तरीही चालते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"Gravity and the spring force qualify; friction does not, because dragging a block round a loop and back to its start costs energy every centimetre of the way.\" — which of these is this about?",
+      "choices": [
+        "The cosine in the work formula",
+        "The zero of potential energy",
+        "The perfectly inelastic collision",
+        "The conservative force"
+      ],
+      "answerIndex": 3,
+      "solution": "A conservative force does work that depends only on the endpoints and not on the path, so its work round any closed loop is zero and a potential energy can be defined for it. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"गुरुत्व और स्प्रिंग-बल इस कसौटी पर खरे उतरते हैं; घर्षण नहीं, क्योंकि गुटके को पाश में घुमाकर आरंभ पर लौटाने में हर सेंटीमीटर ऊर्जा ख़र्च होती है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "कार्य-सूत्र की कोज्या",
+            "स्थितिज ऊर्जा का शून्य",
+            "पूर्णतः अप्रत्यास्थ टक्कर",
+            "संरक्षी बल"
+          ],
+          "solution": "संरक्षी बल ऐसा कार्य करता है जो केवल सिरों पर निर्भर है, पथ पर नहीं, अतः किसी भी बंद पाश पर उसका कार्य शून्य होता है और उसके लिए स्थितिज ऊर्जा परिभाषित की जा सकती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"गुरुत्व आणि स्प्रिंग-बल या कसोटीवर उतरतात; घर्षण नाही, कारण ठोकळा फेऱ्यात फिरवून सुरुवातीला परत आणण्यात प्रत्येक सेंटिमीटरला ऊर्जा खर्च होते.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "कार्य-सूत्रातील कोसाइन",
+            "स्थितिज ऊर्जेचे शून्य",
+            "पूर्णतः अप्रत्यास्थ टक्कर",
+            "संरक्षी बल"
+          ],
+          "solution": "संरक्षी बल असे कार्य करते जे केवळ टोकांवर अवलंबून असते, मार्गावर नाही, म्हणून कोणत्याही बंद फेऱ्यावर त्याचे कार्य शून्य असते आणि त्यासाठी स्थितिज ऊर्जा व्याख्यायित करता येते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A book on a first-floor table has one value measured from the floor, another from the ground outside, and a negative one measured from the roof — and every prediction the physics makes comes out identical. Which freedom is this?",
+      "choices": [
+        "The conservative force",
+        "Power as a rate",
+        "The perfectly inelastic collision",
+        "The zero of potential energy"
+      ],
+      "answerIndex": 3,
+      "solution": "Only differences in potential energy are physically meaningful, so its zero may be placed anywhere convenient, and a negative potential energy means nothing worse than a badly chosen origin. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "पहली मंज़िल की मेज़ पर रखी किताब का एक मान फ़र्श से नापने पर, दूसरा बाहर की ज़मीन से, और छत से नापने पर ऋणात्मक — और भौतिकी जो भी भविष्यवाणी करती है वह एक-सी निकलती है। यह कौन-सी स्वतंत्रता है?",
+          "choices": [
+            "संरक्षी बल",
+            "दर के रूप में शक्ति",
+            "पूर्णतः अप्रत्यास्थ टक्कर",
+            "स्थितिज ऊर्जा का शून्य"
+          ],
+          "solution": "भौतिक रूप से केवल स्थितिज ऊर्जा के अंतर सार्थक हैं, अतः उसका शून्य कहीं भी सुविधानुसार रखा जा सकता है, और ऋणात्मक स्थितिज ऊर्जा का अर्थ बुरी तरह चुने गए मूल-बिंदु से बुरा कुछ नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "पहिल्या मजल्यावरील टेबलावरच्या पुस्तकाचे एक मूल्य जमिनीपासून मोजल्यास, दुसरे बाहेरच्या जमिनीपासून, आणि छतापासून मोजल्यास ऋण — आणि भौतिकी जे भाकीत करते ते सारखेच निघते. ही कोणती स्वतंत्रता?",
+          "choices": [
+            "संरक्षी बल",
+            "दर म्हणून शक्ती",
+            "पूर्णतः अप्रत्यास्थ टक्कर",
+            "स्थितिज ऊर्जेचे शून्य"
+          ],
+          "solution": "भौतिकदृष्ट्या केवळ स्थितिज ऊर्जेतील फरकच अर्थपूर्ण असतात, म्हणून तिचे शून्य कुठेही सोयीने ठेवता येते, आणि ऋण स्थितिज ऊर्जेचा अर्थ वाईटरीत्या निवडलेल्या आरंभबिंदूहून वाईट काहीही नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Power as a rate is correct?",
+      "choices": [
+        "The work–energy theorem states that the net work done by all forces on a body equals its change in kinetic energy, and it holds whether the forces are constant, varying, conservative or not.",
+        "Power is the rate at which work is done, equal to work divided by time or equivalently to force times velocity, and it is measured in watts rather than joules.",
+        "A conservative force does work that depends only on the endpoints and not on the path, so its work round any closed loop is zero and a potential energy can be defined for it.",
+        "Work is force times displacement times the cosine of the angle between them, so a force perpendicular to the motion does no work at all and a force opposing it does negative work."
+      ],
+      "answerIndex": 1,
+      "solution": "Power is the rate at which work is done, equal to work divided by time or equivalently to force times velocity, and it is measured in watts rather than joules. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दर के रूप में शक्ति के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "कार्य-ऊर्जा प्रमेय कहता है कि किसी पिंड पर सब बलों द्वारा किया गया कुल कार्य उसकी गतिज ऊर्जा के परिवर्तन के बराबर है, और यह तब भी चलता है जब बल अचर हों, बदलते हों, संरक्षी हों या न हों।",
+            "शक्ति वह दर है जिससे कार्य किया जाता है, कार्य बटा समय या समतुल्य रूप से बल गुणा वेग, और उसे जूल में नहीं वाट में नापा जाता है।",
+            "संरक्षी बल ऐसा कार्य करता है जो केवल सिरों पर निर्भर है, पथ पर नहीं, अतः किसी भी बंद पाश पर उसका कार्य शून्य होता है और उसके लिए स्थितिज ऊर्जा परिभाषित की जा सकती है।",
+            "कार्य बल गुणा विस्थापन गुणा उनके बीच के कोण की कोज्या है, अतः गति के लंबवत बल कोई कार्य नहीं करता और उसका विरोध करने वाला बल ऋणात्मक कार्य करता है।"
+          ],
+          "solution": "शक्ति वह दर है जिससे कार्य किया जाता है, कार्य बटा समय या समतुल्य रूप से बल गुणा वेग, और उसे जूल में नहीं वाट में नापा जाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "दर म्हणून शक्ती विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "कार्य-ऊर्जा प्रमेय सांगते की एखाद्या पिंडावर सर्व बलांनी केलेले एकूण कार्य त्याच्या गतिज ऊर्जेतील बदलाइतके असते, आणि हे बले अचल असोत, बदलती असोत, संरक्षी असोत वा नसोत, तरीही चालते.",
+            "शक्ती म्हणजे कार्य केले जाण्याचा दर, कार्य भागिले काळ किंवा समतुल्यपणे बल गुणिले वेग, आणि ती ज्यूलमध्ये नव्हे तर वॉटमध्ये मोजली जाते.",
+            "संरक्षी बल असे कार्य करते जे केवळ टोकांवर अवलंबून असते, मार्गावर नाही, म्हणून कोणत्याही बंद फेऱ्यावर त्याचे कार्य शून्य असते आणि त्यासाठी स्थितिज ऊर्जा व्याख्यायित करता येते.",
+            "कार्य म्हणजे बल गुणिले विस्थापन गुणिले त्यांच्यातील कोनाचा कोसाइन, म्हणून गतीला लंब असलेले बल कोणतेही कार्य करत नाही आणि तिला विरोध करणारे बल ऋण कार्य करते."
+          ],
+          "solution": "शक्ती म्हणजे कार्य केले जाण्याचा दर, कार्य भागिले काळ किंवा समतुल्यपणे बल गुणिले वेग, आणि ती ज्यूलमध्ये नव्हे तर वॉटमध्ये मोजली जाते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"Total energy is conserved in every collision without exception; it is kinetic energy alone that can vanish into heat, sound and permanent deformation.\" — which of these is this about?",
+      "choices": [
+        "The cosine in the work formula",
+        "The perfectly inelastic collision",
+        "The conservative force",
+        "The zero of potential energy"
+      ],
+      "answerIndex": 1,
+      "solution": "In a perfectly inelastic collision the bodies move off together with a common velocity, momentum is conserved exactly, and the kinetic energy lost is the greatest that momentum conservation permits. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"हर टक्कर में बिना किसी अपवाद के कुल ऊर्जा संरक्षित रहती है; केवल गतिज ऊर्जा ही ऊष्मा, ध्वनि और स्थायी विरूपण में लुप्त हो सकती है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "कार्य-सूत्र की कोज्या",
+            "पूर्णतः अप्रत्यास्थ टक्कर",
+            "संरक्षी बल",
+            "स्थितिज ऊर्जा का शून्य"
+          ],
+          "solution": "पूर्णतः अप्रत्यास्थ टक्कर में पिंड एक साझा वेग से साथ चल पड़ते हैं, संवेग ठीक-ठीक संरक्षित रहता है, और खोई गतिज ऊर्जा उतनी सबसे अधिक होती है जितनी संवेग-संरक्षण अनुमति देता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"प्रत्येक टक्करीत कोणत्याही अपवादाशिवाय एकूण ऊर्जा संरक्षित राहते; केवळ गतिज ऊर्जाच उष्णता, ध्वनी आणि कायमच्या विरूपणात लोप पावू शकते.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "कार्य-सूत्रातील कोसाइन",
+            "पूर्णतः अप्रत्यास्थ टक्कर",
+            "संरक्षी बल",
+            "स्थितिज ऊर्जेचे शून्य"
+          ],
+          "solution": "पूर्णतः अप्रत्यास्थ टक्करीत पिंड एका सामायिक वेगाने एकत्र पुढे जातात, संवेग नेमका संरक्षित राहतो, आणि गमावलेली गतिज ऊर्जा संवेग-संरक्षण जितकी परवानगी देते तितकी सर्वाधिक असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Exhausted, and by definition idle\" goes correctly with which of these?",
+      "choices": [
+        "the perfectly inelastic collision",
+        "the zero of potential energy",
+        "the work–energy theorem",
+        "the cosine in the work formula"
+      ],
+      "answerIndex": 3,
+      "solution": "Work is force times displacement times the cosine of the angle between them, so a force perpendicular to the motion does no work at all and a force opposing it does negative work. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"थका हुआ, और परिभाषा से निष्क्रिय\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "पूर्णतः अप्रत्यास्थ टक्कर",
+            "स्थितिज ऊर्जा का शून्य",
+            "कार्य-ऊर्जा प्रमेय",
+            "कार्य-सूत्र की कोज्या"
+          ],
+          "solution": "कार्य बल गुणा विस्थापन गुणा उनके बीच के कोण की कोज्या है, अतः गति के लंबवत बल कोई कार्य नहीं करता और उसका विरोध करने वाला बल ऋणात्मक कार्य करता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"थकलेला, आणि व्याख्येने निष्क्रिय\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "पूर्णतः अप्रत्यास्थ टक्कर",
+            "स्थितिज ऊर्जेचे शून्य",
+            "कार्य-ऊर्जा प्रमेय",
+            "कार्य-सूत्रातील कोसाइन"
+          ],
+          "solution": "कार्य म्हणजे बल गुणिले विस्थापन गुणिले त्यांच्यातील कोनाचा कोसाइन, म्हणून गतीला लंब असलेले बल कोणतेही कार्य करत नाही आणि तिला विरोध करणारे बल ऋण कार्य करते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Turns a dynamics problem into a subtraction\" goes correctly with which of these?",
+      "choices": [
+        "power as a rate",
+        "the perfectly inelastic collision",
+        "the zero of potential energy",
+        "the work–energy theorem"
+      ],
+      "answerIndex": 3,
+      "solution": "The work–energy theorem states that the net work done by all forces on a body equals its change in kinetic energy, and it holds whether the forces are constant, varying, conservative or not. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"गतिकी के प्रश्न को घटाव में बदल देता है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "दर के रूप में शक्ति",
+            "पूर्णतः अप्रत्यास्थ टक्कर",
+            "स्थितिज ऊर्जा का शून्य",
+            "कार्य-ऊर्जा प्रमेय"
+          ],
+          "solution": "कार्य-ऊर्जा प्रमेय कहता है कि किसी पिंड पर सब बलों द्वारा किया गया कुल कार्य उसकी गतिज ऊर्जा के परिवर्तन के बराबर है, और यह तब भी चलता है जब बल अचर हों, बदलते हों, संरक्षी हों या न हों। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"गतिकीचा प्रश्न वजाबाकीत बदलते\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "दर म्हणून शक्ती",
+            "पूर्णतः अप्रत्यास्थ टक्कर",
+            "स्थितिज ऊर्जेचे शून्य",
+            "कार्य-ऊर्जा प्रमेय"
+          ],
+          "solution": "कार्य-ऊर्जा प्रमेय सांगते की एखाद्या पिंडावर सर्व बलांनी केलेले एकूण कार्य त्याच्या गतिज ऊर्जेतील बदलाइतके असते, आणि हे बले अचल असोत, बदलती असोत, संरक्षी असोत वा नसोत, तरीही चालते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Zero work round any closed loop\" goes correctly with which of these?",
+      "choices": [
+        "the work–energy theorem",
+        "power as a rate",
+        "the conservative force",
+        "the cosine in the work formula"
+      ],
+      "answerIndex": 2,
+      "solution": "A conservative force does work that depends only on the endpoints and not on the path, so its work round any closed loop is zero and a potential energy can be defined for it. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"किसी भी बंद पाश पर शून्य कार्य\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "कार्य-ऊर्जा प्रमेय",
+            "दर के रूप में शक्ति",
+            "संरक्षी बल",
+            "कार्य-सूत्र की कोज्या"
+          ],
+          "solution": "संरक्षी बल ऐसा कार्य करता है जो केवल सिरों पर निर्भर है, पथ पर नहीं, अतः किसी भी बंद पाश पर उसका कार्य शून्य होता है और उसके लिए स्थितिज ऊर्जा परिभाषित की जा सकती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"कोणत्याही बंद फेऱ्यावर शून्य कार्य\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "कार्य-ऊर्जा प्रमेय",
+            "दर म्हणून शक्ती",
+            "संरक्षी बल",
+            "कार्य-सूत्रातील कोसाइन"
+          ],
+          "solution": "संरक्षी बल असे कार्य करते जे केवळ टोकांवर अवलंबून असते, मार्गावर नाही, म्हणून कोणत्याही बंद फेऱ्यावर त्याचे कार्य शून्य असते आणि त्यासाठी स्थितिज ऊर्जा व्याख्यायित करता येते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Negative only because of where the origin was put\" goes correctly with which of these?",
+      "choices": [
+        "the zero of potential energy",
+        "the conservative force",
+        "the work–energy theorem",
+        "the cosine in the work formula"
+      ],
+      "answerIndex": 0,
+      "solution": "Only differences in potential energy are physically meaningful, so its zero may be placed anywhere convenient, and a negative potential energy means nothing worse than a badly chosen origin. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ऋणात्मक केवल इसलिए कि मूल-बिंदु कहाँ रखा गया\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "स्थितिज ऊर्जा का शून्य",
+            "संरक्षी बल",
+            "कार्य-ऊर्जा प्रमेय",
+            "कार्य-सूत्र की कोज्या"
+          ],
+          "solution": "भौतिक रूप से केवल स्थितिज ऊर्जा के अंतर सार्थक हैं, अतः उसका शून्य कहीं भी सुविधानुसार रखा जा सकता है, और ऋणात्मक स्थितिज ऊर्जा का अर्थ बुरी तरह चुने गए मूल-बिंदु से बुरा कुछ नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ऋण केवळ यामुळे की आरंभबिंदू कुठे ठेवला\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "स्थितिज ऊर्जेचे शून्य",
+            "संरक्षी बल",
+            "कार्य-ऊर्जा प्रमेय",
+            "कार्य-सूत्रातील कोसाइन"
+          ],
+          "solution": "भौतिकदृष्ट्या केवळ स्थितिज ऊर्जेतील फरकच अर्थपूर्ण असतात, म्हणून तिचे शून्य कुठेही सोयीने ठेवता येते, आणि ऋण स्थितिज ऊर्जेचा अर्थ वाईटरीत्या निवडलेल्या आरंभबिंदूहून वाईट काहीही नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Same job, sixty times the figure\" goes correctly with which of these?",
+      "choices": [
+        "power as a rate",
+        "the zero of potential energy",
+        "the work–energy theorem",
+        "the conservative force"
+      ],
+      "answerIndex": 0,
+      "solution": "Power is the rate at which work is done, equal to work divided by time or equivalently to force times velocity, and it is measured in watts rather than joules. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"वही काम, साठ गुना आँकड़ा\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "दर के रूप में शक्ति",
+            "स्थितिज ऊर्जा का शून्य",
+            "कार्य-ऊर्जा प्रमेय",
+            "संरक्षी बल"
+          ],
+          "solution": "शक्ति वह दर है जिससे कार्य किया जाता है, कार्य बटा समय या समतुल्य रूप से बल गुणा वेग, और उसे जूल में नहीं वाट में नापा जाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तेच काम, साठपट आकडा\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "दर म्हणून शक्ती",
+            "स्थितिज ऊर्जेचे शून्य",
+            "कार्य-ऊर्जा प्रमेय",
+            "संरक्षी बल"
+          ],
+          "solution": "शक्ती म्हणजे कार्य केले जाण्याचा दर, कार्य भागिले काळ किंवा समतुल्यपणे बल गुणिले वेग, आणि ती ज्यूलमध्ये नव्हे तर वॉटमध्ये मोजली जाते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Momentum intact, kinetic energy at its greatest loss\" goes correctly with which of these?",
+      "choices": [
+        "power as a rate",
+        "the conservative force",
+        "the perfectly inelastic collision",
+        "the cosine in the work formula"
+      ],
+      "answerIndex": 2,
+      "solution": "In a perfectly inelastic collision the bodies move off together with a common velocity, momentum is conserved exactly, and the kinetic energy lost is the greatest that momentum conservation permits. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"संवेग सलामत, गतिज ऊर्जा की सबसे बड़ी हानि\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "दर के रूप में शक्ति",
+            "संरक्षी बल",
+            "पूर्णतः अप्रत्यास्थ टक्कर",
+            "कार्य-सूत्र की कोज्या"
+          ],
+          "solution": "पूर्णतः अप्रत्यास्थ टक्कर में पिंड एक साझा वेग से साथ चल पड़ते हैं, संवेग ठीक-ठीक संरक्षित रहता है, और खोई गतिज ऊर्जा उतनी सबसे अधिक होती है जितनी संवेग-संरक्षण अनुमति देता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"संवेग शाबूत, गतिज ऊर्जेची सर्वांत मोठी हानी\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "दर म्हणून शक्ती",
+            "संरक्षी बल",
+            "पूर्णतः अप्रत्यास्थ टक्कर",
+            "कार्य-सूत्रातील कोसाइन"
+          ],
+          "solution": "पूर्णतः अप्रत्यास्थ टक्करीत पिंड एका सामायिक वेगाने एकत्र पुढे जातात, संवेग नेमका संरक्षित राहतो, आणि गमावलेली गतिज ऊर्जा संवेग-संरक्षण जितकी परवानगी देते तितकी सर्वाधिक असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The cosine in the work formula EXCEPT —",
+      "choices": [
+        "The work–energy theorem states that the net work done by all forces on a body equals its change in kinetic energy, and it holds whether the forces are constant, varying, conservative or not.",
+        "The everyday sense of work is about effort and fatigue, and the physical sense is about displacement, so a man holding a weight motionless above his head is exhausted and has done nothing.",
+        "Work is force times displacement times the cosine of the angle between them, so a force perpendicular to the motion does no work at all and a force opposing it does negative work.",
+        "This is why the centripetal force in circular motion never changes the speed, and why the normal force on a sliding block appears in no energy equation."
+      ],
+      "answerIndex": 0,
+      "solution": "The work–energy theorem states that the net work done by all forces on a body equals its change in kinetic energy, and it holds whether the forces are constant, varying, conservative or not. That belongs to The work–energy theorem, not The cosine in the work formula — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कार्य-सूत्र की कोज्या के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "कार्य-ऊर्जा प्रमेय कहता है कि किसी पिंड पर सब बलों द्वारा किया गया कुल कार्य उसकी गतिज ऊर्जा के परिवर्तन के बराबर है, और यह तब भी चलता है जब बल अचर हों, बदलते हों, संरक्षी हों या न हों।",
+            "काम का रोज़मर्रा अर्थ श्रम और थकान का है, और भौतिक अर्थ विस्थापन का, अतः सिर के ऊपर बोझ स्थिर थामे व्यक्ति थक चुका है और उसने कुछ नहीं किया।",
+            "कार्य बल गुणा विस्थापन गुणा उनके बीच के कोण की कोज्या है, अतः गति के लंबवत बल कोई कार्य नहीं करता और उसका विरोध करने वाला बल ऋणात्मक कार्य करता है।",
+            "इसीलिए वृत्तीय गति में अभिकेंद्र बल चाल कभी नहीं बदलता, और इसीलिए फिसलते गुटके पर लगा अभिलंब बल किसी ऊर्जा-समीकरण में नहीं आता।"
+          ],
+          "solution": "कार्य-ऊर्जा प्रमेय कहता है कि किसी पिंड पर सब बलों द्वारा किया गया कुल कार्य उसकी गतिज ऊर्जा के परिवर्तन के बराबर है, और यह तब भी चलता है जब बल अचर हों, बदलते हों, संरक्षी हों या न हों। यह कार्य-ऊर्जा प्रमेय की बात है, कार्य-सूत्र की कोज्या की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "कार्य-सूत्रातील कोसाइन विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "कार्य-ऊर्जा प्रमेय सांगते की एखाद्या पिंडावर सर्व बलांनी केलेले एकूण कार्य त्याच्या गतिज ऊर्जेतील बदलाइतके असते, आणि हे बले अचल असोत, बदलती असोत, संरक्षी असोत वा नसोत, तरीही चालते.",
+            "कामाचा रोजचा अर्थ श्रम आणि थकव्याचा, आणि भौतिक अर्थ विस्थापनाचा, म्हणून डोक्यावर ओझे स्थिर धरलेला माणूस थकलेला असतो आणि त्याने काहीही केलेले नसते.",
+            "कार्य म्हणजे बल गुणिले विस्थापन गुणिले त्यांच्यातील कोनाचा कोसाइन, म्हणून गतीला लंब असलेले बल कोणतेही कार्य करत नाही आणि तिला विरोध करणारे बल ऋण कार्य करते.",
+            "म्हणूनच वर्तुळाकार गतीतले अभिकेंद्री बल चाल कधीही बदलत नाही, आणि म्हणूनच घसरणाऱ्या ठोकळ्यावरचे लंब बल कोणत्याही ऊर्जा-समीकरणात येत नाही."
+          ],
+          "solution": "कार्य-ऊर्जा प्रमेय सांगते की एखाद्या पिंडावर सर्व बलांनी केलेले एकूण कार्य त्याच्या गतिज ऊर्जेतील बदलाइतके असते, आणि हे बले अचल असोत, बदलती असोत, संरक्षी असोत वा नसोत, तरीही चालते. हे कार्य-ऊर्जा प्रमेय चे आहे, कार्य-सूत्रातील कोसाइन चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The work–energy theorem EXCEPT —",
+      "choices": [
+        "For a varying force the work is the area under the force–displacement graph, which is how the energy stored in a stretched spring comes out as ½kx² rather than kx².",
+        "Work is force times displacement times the cosine of the angle between them, so a force perpendicular to the motion does no work at all and a force opposing it does negative work.",
+        "The work–energy theorem states that the net work done by all forces on a body equals its change in kinetic energy, and it holds whether the forces are constant, varying, conservative or not.",
+        "It says nothing about how long the process took or what path was followed, which is exactly why it can answer questions where the force is unknown at every individual instant."
+      ],
+      "answerIndex": 1,
+      "solution": "Work is force times displacement times the cosine of the angle between them, so a force perpendicular to the motion does no work at all and a force opposing it does negative work. That belongs to The cosine in the work formula, not The work–energy theorem — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कार्य-ऊर्जा प्रमेय के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "बदलते बल के लिए कार्य बल-विस्थापन आलेख के नीचे का क्षेत्रफल है, और इसी से खिंची स्प्रिंग में संचित ऊर्जा kx² नहीं बल्कि ½kx² निकलती है।",
+            "कार्य बल गुणा विस्थापन गुणा उनके बीच के कोण की कोज्या है, अतः गति के लंबवत बल कोई कार्य नहीं करता और उसका विरोध करने वाला बल ऋणात्मक कार्य करता है।",
+            "कार्य-ऊर्जा प्रमेय कहता है कि किसी पिंड पर सब बलों द्वारा किया गया कुल कार्य उसकी गतिज ऊर्जा के परिवर्तन के बराबर है, और यह तब भी चलता है जब बल अचर हों, बदलते हों, संरक्षी हों या न हों।",
+            "यह इस बारे में कुछ नहीं कहता कि प्रक्रिया में कितना समय लगा या कौन-सा पथ लिया गया, और ठीक इसीलिए यह ऐसे प्रश्नों का उत्तर दे सकता है जहाँ हर अलग क्षण का बल अज्ञात हो।"
+          ],
+          "solution": "कार्य बल गुणा विस्थापन गुणा उनके बीच के कोण की कोज्या है, अतः गति के लंबवत बल कोई कार्य नहीं करता और उसका विरोध करने वाला बल ऋणात्मक कार्य करता है। यह कार्य-सूत्र की कोज्या की बात है, कार्य-ऊर्जा प्रमेय की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "कार्य-ऊर्जा प्रमेय विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "बदलत्या बलासाठी कार्य म्हणजे बल-विस्थापन आलेखाखालचे क्षेत्रफळ, आणि यामुळेच ताणलेल्या स्प्रिंगमधली साठलेली ऊर्जा kx² नव्हे तर ½kx² निघते.",
+            "कार्य म्हणजे बल गुणिले विस्थापन गुणिले त्यांच्यातील कोनाचा कोसाइन, म्हणून गतीला लंब असलेले बल कोणतेही कार्य करत नाही आणि तिला विरोध करणारे बल ऋण कार्य करते.",
+            "कार्य-ऊर्जा प्रमेय सांगते की एखाद्या पिंडावर सर्व बलांनी केलेले एकूण कार्य त्याच्या गतिज ऊर्जेतील बदलाइतके असते, आणि हे बले अचल असोत, बदलती असोत, संरक्षी असोत वा नसोत, तरीही चालते.",
+            "ते प्रक्रियेला किती वेळ लागला वा कोणता मार्ग घेतला याबद्दल काहीही सांगत नाही, आणि नेमके म्हणूनच ते अशा प्रश्नांची उत्तरे देऊ शकते जिथे प्रत्येक स्वतंत्र क्षणीचे बल अज्ञात असते."
+          ],
+          "solution": "कार्य म्हणजे बल गुणिले विस्थापन गुणिले त्यांच्यातील कोनाचा कोसाइन, म्हणून गतीला लंब असलेले बल कोणतेही कार्य करत नाही आणि तिला विरोध करणारे बल ऋण कार्य करते. हे कार्य-सूत्रातील कोसाइन चे आहे, कार्य-ऊर्जा प्रमेय चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The conservative force EXCEPT —",
+      "choices": [
+        "Gravity and the spring force qualify; friction does not, because dragging a block round a loop and back to its start costs energy every centimetre of the way.",
+        "In a perfectly inelastic collision the bodies move off together with a common velocity, momentum is conserved exactly, and the kinetic energy lost is the greatest that momentum conservation permits.",
+        "No potential energy can be written for a non-conservative force, which is why friction appears in an energy account as a loss to heat rather than as a stored quantity that could be recovered.",
+        "A conservative force does work that depends only on the endpoints and not on the path, so its work round any closed loop is zero and a potential energy can be defined for it."
+      ],
+      "answerIndex": 1,
+      "solution": "In a perfectly inelastic collision the bodies move off together with a common velocity, momentum is conserved exactly, and the kinetic energy lost is the greatest that momentum conservation permits. That belongs to The perfectly inelastic collision, not The conservative force — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "संरक्षी बल के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "गुरुत्व और स्प्रिंग-बल इस कसौटी पर खरे उतरते हैं; घर्षण नहीं, क्योंकि गुटके को पाश में घुमाकर आरंभ पर लौटाने में हर सेंटीमीटर ऊर्जा ख़र्च होती है।",
+            "पूर्णतः अप्रत्यास्थ टक्कर में पिंड एक साझा वेग से साथ चल पड़ते हैं, संवेग ठीक-ठीक संरक्षित रहता है, और खोई गतिज ऊर्जा उतनी सबसे अधिक होती है जितनी संवेग-संरक्षण अनुमति देता है।",
+            "असंरक्षी बल के लिए कोई स्थितिज ऊर्जा नहीं लिखी जा सकती, इसीलिए घर्षण ऊर्जा के हिसाब में ऐसी संचित राशि के रूप में नहीं आता जो वापस मिल सके, बल्कि ऊष्मा में हुई हानि के रूप में आता है।",
+            "संरक्षी बल ऐसा कार्य करता है जो केवल सिरों पर निर्भर है, पथ पर नहीं, अतः किसी भी बंद पाश पर उसका कार्य शून्य होता है और उसके लिए स्थितिज ऊर्जा परिभाषित की जा सकती है।"
+          ],
+          "solution": "पूर्णतः अप्रत्यास्थ टक्कर में पिंड एक साझा वेग से साथ चल पड़ते हैं, संवेग ठीक-ठीक संरक्षित रहता है, और खोई गतिज ऊर्जा उतनी सबसे अधिक होती है जितनी संवेग-संरक्षण अनुमति देता है। यह पूर्णतः अप्रत्यास्थ टक्कर की बात है, संरक्षी बल की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "संरक्षी बल विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "गुरुत्व आणि स्प्रिंग-बल या कसोटीवर उतरतात; घर्षण नाही, कारण ठोकळा फेऱ्यात फिरवून सुरुवातीला परत आणण्यात प्रत्येक सेंटिमीटरला ऊर्जा खर्च होते.",
+            "पूर्णतः अप्रत्यास्थ टक्करीत पिंड एका सामायिक वेगाने एकत्र पुढे जातात, संवेग नेमका संरक्षित राहतो, आणि गमावलेली गतिज ऊर्जा संवेग-संरक्षण जितकी परवानगी देते तितकी सर्वाधिक असते.",
+            "असंरक्षी बलासाठी कोणतीही स्थितिज ऊर्जा लिहिता येत नाही, म्हणूनच घर्षण ऊर्जेच्या हिशोबात परत मिळू शकणारी साठलेली राशी म्हणून येत नाही, तर उष्णतेत झालेली हानी म्हणून येते.",
+            "संरक्षी बल असे कार्य करते जे केवळ टोकांवर अवलंबून असते, मार्गावर नाही, म्हणून कोणत्याही बंद फेऱ्यावर त्याचे कार्य शून्य असते आणि त्यासाठी स्थितिज ऊर्जा व्याख्यायित करता येते."
+          ],
+          "solution": "पूर्णतः अप्रत्यास्थ टक्करीत पिंड एका सामायिक वेगाने एकत्र पुढे जातात, संवेग नेमका संरक्षित राहतो, आणि गमावलेली गतिज ऊर्जा संवेग-संरक्षण जितकी परवानगी देते तितकी सर्वाधिक असते. हे पूर्णतः अप्रत्यास्थ टक्कर चे आहे, संरक्षी बल चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The zero of potential energy EXCEPT —",
+      "choices": [
+        "The choice must be kept fixed throughout a calculation, and the commonest error in energy conservation is measuring the initial height from one level and the final from another.",
+        "In a perfectly inelastic collision the bodies move off together with a common velocity, momentum is conserved exactly, and the kinetic energy lost is the greatest that momentum conservation permits.",
+        "For gravitation on the astronomical scale the zero is conventionally placed at infinite separation, which makes every bound orbit's energy negative and gives that negative sign a real meaning: escape is impossible.",
+        "Only differences in potential energy are physically meaningful, so its zero may be placed anywhere convenient, and a negative potential energy means nothing worse than a badly chosen origin."
+      ],
+      "answerIndex": 1,
+      "solution": "In a perfectly inelastic collision the bodies move off together with a common velocity, momentum is conserved exactly, and the kinetic energy lost is the greatest that momentum conservation permits. That belongs to The perfectly inelastic collision, not The zero of potential energy — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "स्थितिज ऊर्जा का शून्य के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "यह चुनाव पूरी गणना में स्थिर रखना पड़ता है, और ऊर्जा-संरक्षण की सबसे आम भूल आरंभिक ऊँचाई एक स्तर से और अंतिम दूसरे से नापना है।",
+            "पूर्णतः अप्रत्यास्थ टक्कर में पिंड एक साझा वेग से साथ चल पड़ते हैं, संवेग ठीक-ठीक संरक्षित रहता है, और खोई गतिज ऊर्जा उतनी सबसे अधिक होती है जितनी संवेग-संरक्षण अनुमति देता है।",
+            "खगोलीय पैमाने पर गुरुत्व के लिए शून्य परंपरागत रूप से अनंत दूरी पर रखा जाता है, जिससे हर बद्ध कक्षा की ऊर्जा ऋणात्मक हो जाती है और उस ऋण चिह्न का असली अर्थ मिलता है: पलायन असंभव है।",
+            "भौतिक रूप से केवल स्थितिज ऊर्जा के अंतर सार्थक हैं, अतः उसका शून्य कहीं भी सुविधानुसार रखा जा सकता है, और ऋणात्मक स्थितिज ऊर्जा का अर्थ बुरी तरह चुने गए मूल-बिंदु से बुरा कुछ नहीं।"
+          ],
+          "solution": "पूर्णतः अप्रत्यास्थ टक्कर में पिंड एक साझा वेग से साथ चल पड़ते हैं, संवेग ठीक-ठीक संरक्षित रहता है, और खोई गतिज ऊर्जा उतनी सबसे अधिक होती है जितनी संवेग-संरक्षण अनुमति देता है। यह पूर्णतः अप्रत्यास्थ टक्कर की बात है, स्थितिज ऊर्जा का शून्य की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "स्थितिज ऊर्जेचे शून्य विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "ही निवड अख्ख्या गणनेत स्थिर ठेवावी लागते, आणि ऊर्जा-संरक्षणातील सर्वांत नेहमीची चूक म्हणजे सुरुवातीची उंची एका पातळीपासून आणि शेवटची दुसऱ्यापासून मोजणे.",
+            "पूर्णतः अप्रत्यास्थ टक्करीत पिंड एका सामायिक वेगाने एकत्र पुढे जातात, संवेग नेमका संरक्षित राहतो, आणि गमावलेली गतिज ऊर्जा संवेग-संरक्षण जितकी परवानगी देते तितकी सर्वाधिक असते.",
+            "खगोलीय प्रमाणावर गुरुत्वासाठी शून्य परंपरेने अनंत अंतरावर ठेवले जाते, ज्यामुळे प्रत्येक बद्ध कक्षेची ऊर्जा ऋण होते आणि त्या ऋण चिन्हाला खरा अर्थ मिळतो: सुटका अशक्य आहे.",
+            "भौतिकदृष्ट्या केवळ स्थितिज ऊर्जेतील फरकच अर्थपूर्ण असतात, म्हणून तिचे शून्य कुठेही सोयीने ठेवता येते, आणि ऋण स्थितिज ऊर्जेचा अर्थ वाईटरीत्या निवडलेल्या आरंभबिंदूहून वाईट काहीही नाही."
+          ],
+          "solution": "पूर्णतः अप्रत्यास्थ टक्करीत पिंड एका सामायिक वेगाने एकत्र पुढे जातात, संवेग नेमका संरक्षित राहतो, आणि गमावलेली गतिज ऊर्जा संवेग-संरक्षण जितकी परवानगी देते तितकी सर्वाधिक असते. हे पूर्णतः अप्रत्यास्थ टक्कर चे आहे, स्थितिज ऊर्जेचे शून्य चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A block slides down a rough slope from a height of 5 m and reaches the bottom at 8 m/s, where a frictionless slope would have delivered it at 10 m/s. A student says energy has been destroyed. Take g as 10 m/s² and correct them, saying what the missing energy is and what fraction of the initial store it represents.",
+      "choices": [
+        "Nothing was destroyed. Per kilogram the initial store is gh = 50 J and the arrival kinetic energy is ½v² = 32 J, so 18 J per kilogram — 36 per cent of the store — went into heating the block and the slope, and into the sound of the sliding. Total energy is conserved absolutely; what is not conserved is MECHANICAL energy, because friction is non-conservative and cannot be given a potential energy from which the joules could be recovered",
+        "The student is right: friction genuinely destroys energy, which is why the conservation law is only approximate",
+        "The missing 18 J per kilogram is stored as friction potential energy and is returned when the block slides back up",
+        "Nothing is missing, because the 10 m/s figure is wrong: a body released from 5 m arrives at 8 m/s even with no friction"
+      ],
+      "answerIndex": 0,
+      "solution": "Do the arithmetic per kilogram, since the mass cancels out of everything here. At the top, the store available to be converted is the gravitational potential energy relative to the bottom: gh = 10 × 5 = 50 J per kg. On a frictionless slope every joule of that becomes kinetic, so ½v² = 50 and v = 10 m/s — which is where the student's comparison figure comes from, and it is correct. What arrives instead is 8 m/s, carrying ½v² = ½ × 64 = 32 J per kg. The shortfall is 50 − 32 = 18 J per kg, which is 18/50 = 36 per cent of what was there to begin with. Now the important question: where did those 18 J go? Not out of existence. Rub two surfaces together and you can measure the temperature rise; both the block and the slope are very slightly warmer than they were, and a small amount left as sound. The joules are still fully accounted for. The total energy of block, slope and surrounding air is exactly what it was before the slide. What has failed is not conservation of energy but conservation of MECHANICAL energy, which is the sum of kinetic and potential and is a much narrower claim. That narrower claim holds only when every force doing work is conservative. Gravity is; friction is not. The chapter's definition makes the difference precise: a conservative force does zero work round a closed loop, so the energy it takes on the way out is returned on the way back, and a potential energy function can be written for it. Friction fails that test decisively. Drag the block up the slope again and friction takes energy from you on the way up too — it opposes the motion in both directions, so a round trip costs twice rather than nothing. That is exactly why option three is wrong, and it is wrong in an instructive way. There is no such thing as friction potential energy, and the reason is not that nobody has bothered to define one: it cannot be defined, because the work done depends on the path taken and not merely on the endpoints. Take a longer, more winding route down the same 5 m and more energy is lost, though the endpoints are unchanged. A potential energy that depended on which way you walked would not be a function of position at all. Three practical consequences are worth carrying. First, in any problem where friction acts, write energy conservation as initial mechanical energy = final mechanical energy + work done against friction, and treat that last term as a one-way payment. Second, the fraction lost is a property of the surfaces and the geometry, not of the mass, which is why the block's weight never appeared above. Third, the loss is irreversible in a strong sense: the 18 J are now spread among countless randomly moving molecules, and no arrangement of slopes will gather them back into the ordered motion of a sliding block. (The wrong answers abandon a conservation law that has never once failed, invent a potential energy for a path-dependent force, or reject an arithmetic that is straightforward and right.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक गुटका 5 m ऊँचाई से खुरदरी ढलान पर फिसलकर तल पर 8 m/s से पहुँचता है, जबकि घर्षण-रहित ढलान उसे 10 m/s पर पहुँचाती। एक विद्यार्थी कहता है कि ऊर्जा नष्ट हो गई। g को 10 m/s² लेकर उसे सुधारो, बताओ लुप्त ऊर्जा क्या है और आरंभिक भंडार का कितना अंश है।",
+          "choices": [
+            "कुछ नष्ट नहीं हुआ। प्रति किलोग्राम आरंभिक भंडार gh = 50 J है और पहुँचने पर गतिज ऊर्जा ½v² = 32 J, अतः प्रति किलोग्राम 18 J — भंडार का 36 प्रतिशत — गुटके तथा ढलान को गरम करने में और फिसलने की ध्वनि में गया। कुल ऊर्जा पूर्णतः संरक्षित है; जो संरक्षित नहीं वह यांत्रिक ऊर्जा है, क्योंकि घर्षण असंरक्षी है और उसे ऐसी स्थितिज ऊर्जा नहीं दी जा सकती जिससे जूल वापस मिल सकें",
+            "विद्यार्थी सही है: घर्षण सचमुच ऊर्जा नष्ट करता है, इसीलिए संरक्षण-नियम केवल सन्निकट है",
+            "प्रति किलोग्राम लुप्त 18 J घर्षण की स्थितिज ऊर्जा के रूप में संचित है और गुटके के वापस ऊपर फिसलने पर लौट आते हैं",
+            "कुछ लुप्त नहीं है, क्योंकि 10 m/s का आँकड़ा ग़लत है: 5 m से छोड़ा गया पिंड बिना घर्षण के भी 8 m/s पर पहुँचता है"
+          ],
+          "solution": "गणना प्रति किलोग्राम करो, क्योंकि यहाँ द्रव्यमान हर जगह कट जाता है। शिखर पर बदले जाने को उपलब्ध भंडार तल के सापेक्ष गुरुत्वीय स्थितिज ऊर्जा है: gh = 10 × 5 = 50 J प्रति kg. घर्षण-रहित ढलान पर उसका हर जूल गतिज बन जाता है, अतः ½v² = 50 और v = 10 m/s — विद्यार्थी का तुलना-आँकड़ा यहीं से आता है, और वह सही है। इसके बजाय जो पहुँचता है वह 8 m/s है, जो ½v² = ½ × 64 = 32 J प्रति kg ढोता है। कमी 50 − 32 = 18 J प्रति kg है, जो आरंभ में जो था उसका 18/50 = 36 प्रतिशत है। अब महत्वपूर्ण प्रश्न: वे 18 J गए कहाँ? अस्तित्व से बाहर नहीं। दो सतहें रगड़ो और तुम ताप-वृद्धि नाप सकते हो; गुटका और ढलान दोनों पहले से बहुत थोड़े गरम हैं, और थोड़ी मात्रा ध्वनि बनकर निकल गई। जूल अब भी पूरी तरह हिसाब में हैं। गुटके, ढलान और आसपास की हवा की कुल ऊर्जा ठीक वही है जो फिसलने से पहले थी। जो विफल हुआ वह ऊर्जा-संरक्षण नहीं बल्कि यांत्रिक ऊर्जा का संरक्षण है, जो गतिज और स्थितिज का योग है और कहीं संकरा दावा है। वह संकरा दावा तभी चलता है जब कार्य करने वाला हर बल संरक्षी हो। गुरुत्व है; घर्षण नहीं। अध्याय की परिभाषा भेद को सटीक बनाती है: संरक्षी बल बंद पाश पर शून्य कार्य करता है, अतः जाते समय जो ऊर्जा वह लेता है लौटते समय लौटा देता है, और उसके लिए स्थितिज ऊर्जा फलन लिखा जा सकता है। घर्षण उस जाँच में निर्णायक रूप से विफल है। गुटके को फिर ढलान पर ऊपर घसीटो और घर्षण ऊपर जाते समय भी तुमसे ऊर्जा लेता है — वह दोनों दिशाओं में गति का विरोध करता है, अतः वापसी-यात्रा शून्य नहीं बल्कि दुगुना ख़र्च कराती है। ठीक इसीलिए तीसरा विकल्प ग़लत है, और वह शिक्षाप्रद ढंग से ग़लत है। घर्षण की स्थितिज ऊर्जा जैसी कोई चीज़ नहीं, और कारण यह नहीं कि किसी ने परिभाषित करने की परवाह नहीं की: वह परिभाषित हो ही नहीं सकती, क्योंकि किया गया कार्य लिए गए पथ पर निर्भर है, केवल सिरों पर नहीं। उन्हीं 5 m का लंबा, अधिक घुमावदार रास्ता लो और अधिक ऊर्जा खोती है, जबकि सिरे अपरिवर्तित हैं। जो स्थितिज ऊर्जा इस पर निर्भर करे कि तुम किस रास्ते चले, वह स्थिति का फलन ही नहीं होती। तीन व्यावहारिक परिणाम ले जाने योग्य हैं। पहला, जिस भी प्रश्न में घर्षण लगे, ऊर्जा-संरक्षण यों लिखो: आरंभिक यांत्रिक ऊर्जा = अंतिम यांत्रिक ऊर्जा + घर्षण के विरुद्ध किया कार्य, और उस अंतिम पद को एकतरफ़ा भुगतान मानो। दूसरा, खोया अंश सतहों और ज्यामिति का गुण है, द्रव्यमान का नहीं, इसीलिए ऊपर गुटके का भार कभी आया ही नहीं। तीसरा, हानि प्रबल अर्थ में अनुत्क्रमणीय है: वे 18 J अब असंख्य यादृच्छिक गति वाले अणुओं में बिखर चुके हैं, और ढलानों की कोई व्यवस्था उन्हें फिसलते गुटके की व्यवस्थित गति में वापस नहीं बटोर सकती। (ग़लत उत्तर उस संरक्षण-नियम को छोड़ देते जो एक बार भी विफल नहीं हुआ, पथ-निर्भर बल के लिए स्थितिज ऊर्जा गढ़ते, या ऐसा गणित नकारते जो सीधा और सही है।)"
+        },
+        "mr": {
+          "stem": "एक ठोकळा 5 m उंचीवरून खरखरीत उतारावरून घसरून तळाशी 8 m/s ने पोहोचतो, तर घर्षणविरहित उतार त्याला 10 m/s वर पोहोचवला असता. एक विद्यार्थी म्हणतो की ऊर्जा नष्ट झाली. g हा 10 m/s² घेऊन त्याला दुरुस्त करा, हरवलेली ऊर्जा काय आणि सुरुवातीच्या साठ्याचा किती अंश ते सांगा.",
+          "choices": [
+            "काहीही नष्ट झाले नाही. प्रति किलोग्रॅम सुरुवातीचा साठा gh = 50 J आणि पोहोचताना गतिज ऊर्जा ½v² = 32 J, म्हणून प्रति किलोग्रॅम 18 J — साठ्याच्या 36 टक्के — ठोकळा व उतार तापवण्यात आणि घसरण्याच्या आवाजात गेले. एकूण ऊर्जा पूर्णपणे संरक्षित; जी संरक्षित नाही ती यांत्रिक ऊर्जा, कारण घर्षण असंरक्षी आहे आणि त्याला अशी स्थितिज ऊर्जा देता येत नाही जिच्यातून ज्यूल परत मिळतील",
+            "विद्यार्थी बरोबर: घर्षण खरोखर ऊर्जा नष्ट करते, म्हणूनच संरक्षण-नियम केवळ अंदाजे आहे",
+            "प्रति किलोग्रॅम हरवलेले 18 J घर्षणाची स्थितिज ऊर्जा म्हणून साठलेले असतात आणि ठोकळा परत वर घसरल्यावर परत मिळतात",
+            "काहीही हरवलेले नाही, कारण 10 m/s हा आकडा चुकीचा आहे: 5 m वरून सोडलेला पिंड घर्षणाशिवायही 8 m/s ने पोहोचतो"
+          ],
+          "solution": "गणना प्रति किलोग्रॅम करा, कारण इथे वस्तुमान सर्वत्र कापले जाते. शिखरावर बदलण्यासाठी उपलब्ध साठा तळाच्या सापेक्ष गुरुत्वीय स्थितिज ऊर्जा: gh = 10 × 5 = 50 J प्रति kg. घर्षणविरहित उतारावर त्यातले प्रत्येक ज्यूल गतिज बनते, म्हणून ½v² = 50 आणि v = 10 m/s — विद्यार्थ्याचा तुलना-आकडा इथूनच येतो, आणि तो बरोबर आहे. त्याऐवजी जे पोहोचते ते 8 m/s, जे ½v² = ½ × 64 = 32 J प्रति kg वाहते. तूट 50 − 32 = 18 J प्रति kg, जी सुरुवातीला जे होते त्याच्या 18/50 = 36 टक्के. आता महत्त्वाचा प्रश्न: ती 18 J गेली कुठे? अस्तित्वातून बाहेर नाही. दोन पृष्ठभाग घासा आणि तुम्ही तापमानवाढ मोजू शकता; ठोकळा आणि उतार दोन्ही आधीहून फार थोडे उबदार आहेत, आणि थोडे प्रमाण ध्वनी बनून निघाले. ज्यूल अजूनही पूर्णपणे हिशोबात आहेत. ठोकळा, उतार आणि आजूबाजूची हवा यांची एकूण ऊर्जा नेमकी तीच जी घसरण्याआधी होती. जे अपयशी ठरले ते ऊर्जा-संरक्षण नव्हे तर यांत्रिक ऊर्जेचे संरक्षण, जे गतिज आणि स्थितिजची बेरीज आणि कितीतरी अरुंद दावा आहे. तो अरुंद दावा तेव्हाच चालतो जेव्हा कार्य करणारे प्रत्येक बल संरक्षी असते. गुरुत्व आहे; घर्षण नाही. प्रकरणाची व्याख्या भेद नेमका करते: संरक्षी बल बंद फेऱ्यावर शून्य कार्य करते, म्हणून जाताना जी ऊर्जा ते घेते ती परतताना परत करते, आणि त्यासाठी स्थितिज ऊर्जा फलन लिहिता येते. घर्षण त्या परीक्षेत निर्णायकपणे नापास. ठोकळा पुन्हा उतारावर वर ओढा आणि घर्षण वर जातानाही तुमच्याकडून ऊर्जा घेते — ते दोन्ही दिशांना गतीला विरोध करते, म्हणून परतीचा प्रवास शून्य नव्हे तर दुप्पट खर्च करवतो. नेमके म्हणूनच तिसरा पर्याय चुकीचा, आणि तो शिकवणाऱ्या पद्धतीने चुकीचा. घर्षणाची स्थितिज ऊर्जा अशी कोणतीही गोष्ट नाही, आणि कारण हे नाही की कोणी व्याख्या करण्याची तसदी घेतली नाही: तिची व्याख्याच होऊ शकत नाही, कारण केलेले कार्य घेतलेल्या मार्गावर अवलंबून आहे, केवळ टोकांवर नाही. त्याच 5 m चा लांब, अधिक वळणदार मार्ग घ्या आणि अधिक ऊर्जा गमावली जाते, जरी टोके तीच असली तरी. जी स्थितिज ऊर्जा तुम्ही कोणत्या वाटेने चाललात यावर अवलंबून असेल, ती स्थानाचे फलनच नसेल. तीन व्यावहारिक परिणाम नेण्याजोगे. पहिला, ज्या प्रश्नात घर्षण लागते तिथे ऊर्जा-संरक्षण असे लिहा: सुरुवातीची यांत्रिक ऊर्जा = शेवटची यांत्रिक ऊर्जा + घर्षणाविरुद्ध केलेले कार्य, आणि ते शेवटचे पद एकतर्फी भरणा माना. दुसरा, गमावलेला अंश पृष्ठभाग आणि भूमितीचा गुणधर्म, वस्तुमानाचा नाही, म्हणूनच वर ठोकळ्याचे वजन कधी आलेच नाही. तिसरा, हानी प्रबळ अर्थाने अपरिवर्तनीय: ती 18 J आता असंख्य यादृच्छिक गतीच्या रेणूंत विखुरली आहेत, आणि उतारांची कोणतीही रचना ती घसरणाऱ्या ठोकळ्याच्या व्यवस्थित गतीत परत गोळा करू शकत नाही. (चुकीची उत्तरे एकदाही अपयशी न ठरलेला संरक्षण-नियम सोडून देतात, मार्ग-अवलंबी बलासाठी स्थितिज ऊर्जा घडवतात, वा सरळ आणि बरोबर असलेले गणित नाकारतात.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A 4 kg lump of clay moving at 5 m/s strikes a stationary 6 kg lump and the two move off together. A student computes the common velocity from kinetic energy conservation instead of momentum conservation and gets a different answer. Explain which law may be used here and why, and what happens to the difference.",
+      "choices": [
+        "Only momentum may be used. Momentum conservation follows from the third law and holds in every collision without exception, giving v = (4 × 5)/10 = 2 m/s. Kinetic energy is conserved only in an elastic collision, and clay is the opposite case: the initial kinetic energy is ½ × 4 × 25 = 50 J and the final is ½ × 10 × 4 = 20 J, so 30 J went into deforming the clay and warming it. The student's calculation assumed a conservation that the physical situation denies",
+        "Either law may be used, and the two must agree; the student has simply made an arithmetic slip",
+        "Only kinetic energy may be used, because momentum is not conserved when the bodies stick together and become one",
+        "Neither law applies, since conservation laws hold only for elastic collisions between rigid bodies"
+      ],
+      "answerIndex": 0,
+      "solution": "The two conservation statements are not equally available, and knowing which one to reach for is most of what collision problems test. Momentum first, because it is the secure one. During the impact the clay lumps exert forces on each other, and by the third law those two forces are equal and opposite at every instant. Whatever momentum one gains, the other loses, so the total is unchanged — and this argument used nothing about the material, the duration, or whether the lumps bounced or stuck. It holds for steel, for clay, for a bullet embedding in a block. The only requirement is that no significant EXTERNAL force acts during the brief contact, which is why a collision on a table is analysed without worrying about gravity: the collision lasts milliseconds and gravity has no time to change the momentum appreciably. So: total momentum before is 4 × 5 + 6 × 0 = 20 kg m/s, and afterwards the combined 10 kg moves at v, giving 10v = 20 and v = 2 m/s. Now the energy audit. Before: ½ × 4 × 5² = 50 J. After: ½ × 10 × 2² = 20 J. Thirty joules, sixty per cent of the original, have left the kinetic account. They are not gone from the universe. Wet clay squashes; that deformation is permanent work done against the internal forces holding the material together, and it ends as a temperature rise in both lumps and a thud in the air. Weigh the clay afterwards and nothing is missing; measure it with a sensitive enough thermometer and the energy is there. This is exactly the elastic–inelastic distinction. In an elastic collision the bodies deform and then spring back, returning the stored energy to kinetic form, so kinetic energy comes out the same as it went in and both conservation laws may be used together — which is what makes elastic problems solvable for two unknown final velocities. In a perfectly inelastic collision the bodies do not spring back at all; they move off as one, and the kinetic energy lost is the largest amount that momentum conservation will permit. Every real collision lies somewhere between, and the extreme cases are the ones with clean arithmetic. There is a useful check hiding in the numbers. Notice the loss can never be all of the kinetic energy: momentum conservation forbids the combined lump from being at rest, because 20 kg m/s has to go somewhere. The final kinetic energy of a perfectly inelastic collision is always exactly p²/2M, here 400/20 = 20 J, and it is the floor below which no collision can take the kinetic energy. Finally, note the asymmetry in what the two laws are worth. Momentum conservation is a theorem — it follows from Newton's third law and needs no assumption about the material. Kinetic energy conservation is a modelling assumption, true of billiard balls and gas molecules and false of clay, cars and catches. Treating them as interchangeable is the error the student made, and it is not an arithmetic slip but a physical one. (The wrong answers grant kinetic energy a conservation it does not have, deny momentum one it always has, or abandon both laws in a case where one of them is exact.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "5 m/s से चलता 4 kg मिट्टी का लोंदा 6 kg के स्थिर लोंदे से टकराता है और दोनों साथ चल पड़ते हैं। एक विद्यार्थी साझा वेग संवेग-संरक्षण के बजाय गतिज ऊर्जा-संरक्षण से निकालता है और भिन्न उत्तर पाता है। समझाओ यहाँ कौन-सा नियम प्रयोग हो सकता है और क्यों, और अंतर का होता क्या है।",
+          "choices": [
+            "केवल संवेग प्रयोग हो सकता है। संवेग-संरक्षण तीसरे नियम से निकलता है और बिना किसी अपवाद के हर टक्कर में चलता है, जिससे v = (4 × 5)/10 = 2 m/s. गतिज ऊर्जा केवल प्रत्यास्थ टक्कर में संरक्षित रहती है, और मिट्टी उलटी स्थिति है: आरंभिक गतिज ऊर्जा ½ × 4 × 25 = 50 J और अंतिम ½ × 10 × 4 = 20 J, अतः 30 J मिट्टी के विरूपण और उसे गरम करने में गए। विद्यार्थी की गणना ने ऐसा संरक्षण मान लिया जिसे भौतिक स्थिति नकारती है",
+            "कोई भी नियम प्रयोग हो सकता है, और दोनों को मिलना ही चाहिए; विद्यार्थी से बस गणना की चूक हुई है",
+            "केवल गतिज ऊर्जा प्रयोग हो सकती है, क्योंकि पिंडों के चिपककर एक हो जाने पर संवेग संरक्षित नहीं रहता",
+            "कोई भी नियम लागू नहीं, क्योंकि संरक्षण-नियम केवल दृढ़ पिंडों की प्रत्यास्थ टक्करों पर चलते हैं"
+          ],
+          "solution": "दोनों संरक्षण-कथन समान रूप से उपलब्ध नहीं हैं, और कौन-सा उठाना है यह जानना ही टक्कर के प्रश्नों की अधिकांश परीक्षा है। पहले संवेग, क्योंकि वही सुरक्षित है। टक्कर के दौरान मिट्टी के लोंदे एक-दूसरे पर बल लगाते हैं, और तीसरे नियम से वे दोनों बल हर क्षण बराबर और विपरीत हैं। एक जो संवेग पाता है वही दूसरा खोता है, अतः कुल अपरिवर्तित रहता है — और इस तर्क ने पदार्थ, अवधि, या लोंदे उछले या चिपके, इसमें से कुछ इस्तेमाल नहीं किया। वह इस्पात पर चलता है, मिट्टी पर, गुटके में धँसती गोली पर। एकमात्र शर्त यह कि उस अल्प संपर्क में कोई महत्वपूर्ण बाह्य बल न लगे, इसीलिए मेज़ पर हुई टक्कर का विश्लेषण गुरुत्व की चिंता किए बिना होता है: टक्कर मिलीसेकंड चलती है और गुरुत्व के पास संवेग उल्लेखनीय रूप से बदलने का समय नहीं। अतः: पहले कुल संवेग 4 × 5 + 6 × 0 = 20 kg m/s, और बाद में संयुक्त 10 kg वेग v से चलता है, जिससे 10v = 20 और v = 2 m/s. अब ऊर्जा का हिसाब। पहले: ½ × 4 × 5² = 50 J. बाद में: ½ × 10 × 2² = 20 J. तीस जूल, मूल का साठ प्रतिशत, गतिज खाते से निकल गए। वे ब्रह्मांड से नहीं गए। गीली मिट्टी चिपटती है; वह विरूपण पदार्थ को जोड़े रखने वाले आंतरिक बलों के विरुद्ध किया गया स्थायी कार्य है, और वह दोनों लोंदों में ताप-वृद्धि तथा हवा में एक धमक बनकर समाप्त होता है। बाद में मिट्टी तौलो और कुछ कम नहीं; पर्याप्त संवेदनशील तापमापी से नापो और ऊर्जा वहीं है। यही प्रत्यास्थ-अप्रत्यास्थ भेद है। प्रत्यास्थ टक्कर में पिंड विरूपित होकर वापस उछल आते हैं, संचित ऊर्जा गतिज रूप में लौटा देते हैं, अतः गतिज ऊर्जा वैसी ही निकलती है जैसी गई थी और दोनों संरक्षण-नियम साथ प्रयोग किए जा सकते हैं — इसी से प्रत्यास्थ प्रश्न दो अज्ञात अंतिम वेगों के लिए हल हो पाते हैं। पूर्णतः अप्रत्यास्थ टक्कर में पिंड बिलकुल वापस नहीं उछलते; वे एक होकर चल पड़ते हैं, और खोई गतिज ऊर्जा उतनी सबसे अधिक होती है जितनी संवेग-संरक्षण अनुमति देगा। हर असली टक्कर कहीं बीच में पड़ती है, और चरम स्थितियाँ ही स्वच्छ गणित वाली हैं। संख्याओं में एक उपयोगी जाँच छिपी है। ध्यान दो हानि कभी पूरी गतिज ऊर्जा नहीं हो सकती: संवेग-संरक्षण संयुक्त लोंदे को विराम में रहने से मना करता है, क्योंकि 20 kg m/s को कहीं तो जाना है। पूर्णतः अप्रत्यास्थ टक्कर की अंतिम गतिज ऊर्जा सदा ठीक p²/2M होती है, यहाँ 400/20 = 20 J, और वही वह फ़र्श है जिससे नीचे कोई टक्कर गतिज ऊर्जा नहीं ले जा सकती। अंत में, दोनों नियमों के मूल्य में असमानता पर ध्यान दो। संवेग-संरक्षण प्रमेय है — वह न्यूटन के तीसरे नियम से निकलता है और पदार्थ के बारे में कोई मान्यता नहीं माँगता। गतिज ऊर्जा का संरक्षण एक निदर्श-मान्यता है, बिलियर्ड गेंदों और गैस अणुओं पर सच और मिट्टी, कारों तथा कैचों पर झूठ। उन्हें अदल-बदल योग्य मानना ही वह भूल है जो विद्यार्थी ने की, और वह गणना की नहीं, भौतिकी की भूल है। (ग़लत उत्तर गतिज ऊर्जा को वह संरक्षण देते जो उसमें नहीं, संवेग से वह छीनते जो उसमें सदा है, या ऐसी स्थिति में दोनों नियम छोड़ देते जहाँ उनमें से एक ठीक-ठीक सही है।)"
+        },
+        "mr": {
+          "stem": "5 m/s ने जाणारा 4 kg मातीचा गोळा 6 kg च्या स्थिर गोळ्यावर आदळतो आणि दोघे एकत्र पुढे जातात. एक विद्यार्थी सामायिक वेग संवेग-संरक्षणाऐवजी गतिज ऊर्जा-संरक्षणातून काढतो आणि वेगळे उत्तर मिळवतो. समजावा इथे कोणता नियम वापरता येतो आणि का, आणि फरकाचे होते काय.",
+          "choices": [
+            "केवळ संवेग वापरता येतो. संवेग-संरक्षण तिसऱ्या नियमातून निघते आणि कोणत्याही अपवादाशिवाय प्रत्येक टक्करीत चालते, ज्यातून v = (4 × 5)/10 = 2 m/s. गतिज ऊर्जा केवळ प्रत्यास्थ टक्करीत संरक्षित राहते, आणि माती ही उलट स्थिती: सुरुवातीची गतिज ऊर्जा ½ × 4 × 25 = 50 J आणि शेवटची ½ × 10 × 4 = 20 J, म्हणून 30 J मातीच्या विरूपणात आणि तिला तापवण्यात गेले. विद्यार्थ्याच्या गणनेने असे संरक्षण गृहीत धरले जे भौतिक परिस्थिती नाकारते",
+            "कोणताही नियम वापरता येतो, आणि दोघे जुळलेच पाहिजेत; विद्यार्थ्याकडून फक्त आकडेमोडीची चूक झाली आहे",
+            "केवळ गतिज ऊर्जा वापरता येते, कारण पिंड चिकटून एक झाल्यावर संवेग संरक्षित राहत नाही",
+            "कोणताही नियम लागू नाही, कारण संरक्षण-नियम केवळ दृढ पिंडांच्या प्रत्यास्थ टक्करींनाच चालतात"
+          ],
+          "solution": "दोन्ही संरक्षण-विधाने सारखीच उपलब्ध नाहीत, आणि कोणते उचलायचे हे जाणणे हीच टक्करीच्या प्रश्नांची बहुतांश परीक्षा. आधी संवेग, कारण तोच सुरक्षित. टक्करीदरम्यान मातीचे गोळे एकमेकांवर बले लावतात, आणि तिसऱ्या नियमाने ती दोन्ही बले प्रत्येक क्षणी समान आणि विरुद्ध. एक जो संवेग मिळवतो तोच दुसरा गमावतो, म्हणून एकूण अपरिवर्तित — आणि या युक्तिवादाने पदार्थ, कालावधी, वा गोळे उसळले की चिकटले यांपैकी काहीही वापरले नाही. तो पोलादावर चालतो, मातीवर, ठोकळ्यात घुसणाऱ्या गोळीवर. एकमेव अट ही की त्या अल्प स्पर्शात कोणतेही महत्त्वाचे बाह्य बल लागू नये, म्हणूनच टेबलावरील टक्करीचे विश्लेषण गुरुत्वाची चिंता न करता होते: टक्कर मिलिसेकंद चालते आणि गुरुत्वाला संवेग लक्षणीयरीत्या बदलायला वेळ नाही. म्हणून: आधीचा एकूण संवेग 4 × 5 + 6 × 0 = 20 kg m/s, आणि नंतर एकत्रित 10 kg वेग v ने जाते, ज्यातून 10v = 20 आणि v = 2 m/s. आता ऊर्जेचा हिशोब. आधी: ½ × 4 × 5² = 50 J. नंतर: ½ × 10 × 2² = 20 J. तीस ज्यूल, मूळच्या साठ टक्के, गतिज खात्यातून निघून गेले. ती विश्वातून गेली नाहीत. ओली माती चपटते; ते विरूपण म्हणजे पदार्थाला एकत्र धरणाऱ्या आंतरिक बलांविरुद्ध केलेले कायमचे कार्य, आणि ते दोन्ही गोळ्यांत तापमानवाढ आणि हवेत एक धप बनून संपते. नंतर माती तोला आणि काहीही कमी नाही; पुरेशा संवेदनशील तापमापकाने मोजा आणि ऊर्जा तिथेच आहे. हाच तो प्रत्यास्थ-अप्रत्यास्थ भेद. प्रत्यास्थ टक्करीत पिंड विरूपित होऊन परत उसळतात, साठलेली ऊर्जा गतिज रूपात परत करतात, म्हणून गतिज ऊर्जा जशी गेली तशीच निघते आणि दोन्ही संरक्षण-नियम एकत्र वापरता येतात — यामुळेच प्रत्यास्थ प्रश्न दोन अज्ञात अंतिम वेगांसाठी सुटतात. पूर्णतः अप्रत्यास्थ टक्करीत पिंड मुळीच परत उसळत नाहीत; ते एक होऊन पुढे जातात, आणि गमावलेली गतिज ऊर्जा संवेग-संरक्षण जितकी परवानगी देईल तितकी सर्वाधिक असते. प्रत्येक खरी टक्कर कुठेतरी मध्ये पडते, आणि टोकाच्या स्थितीच स्वच्छ गणिताच्या. संख्यांत एक उपयुक्त तपासणी लपली आहे. लक्षात घ्या हानी कधीही अख्खी गतिज ऊर्जा असू शकत नाही: संवेग-संरक्षण एकत्रित गोळ्याला स्थिर राहण्यास मनाई करते, कारण 20 kg m/s ला कुठेतरी जावेच लागते. पूर्णतः अप्रत्यास्थ टक्करीची शेवटची गतिज ऊर्जा नेहमी नेमकी p²/2M असते, इथे 400/20 = 20 J, आणि तेच ते तळ ज्याखाली कोणतीही टक्कर गतिज ऊर्जा नेऊ शकत नाही. शेवटी, दोन्ही नियमांच्या मोलातील असमानता लक्षात घ्या. संवेग-संरक्षण हे प्रमेय — ते न्यूटनच्या तिसऱ्या नियमातून निघते आणि पदार्थाबद्दल कोणतेही गृहीतक मागत नाही. गतिज ऊर्जेचे संरक्षण हे प्रतिरूपण-गृहीतक, बिलियर्ड चेंडू व वायुरेणूंवर खरे आणि माती, मोटारी व झेलांवर खोटे. त्यांना अदलाबदल करण्याजोगे मानणे हीच ती चूक जी विद्यार्थ्याने केली, आणि ती आकडेमोडीची नव्हे तर भौतिकीची चूक. (चुकीची उत्तरे गतिज ऊर्जेला नसलेले संरक्षण देतात, संवेगाकडून नेहमी असलेले हिरावतात, वा ज्या स्थितीत त्यांपैकी एक नेमका बरोबर आहे तिथे दोन्ही नियम सोडून देतात.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A constant force of 50 N moves a crate 4 m in the direction of the force. How much work is done?",
+      "choices": [
+        "100",
+        "200",
+        "54",
+        "12.5"
+      ],
+      "answerIndex": 1,
+      "solution": "Force and displacement are in the same direction, so cos 0° = 1 and W = 50 × 4 = 200 J. (12.5 divides instead of multiplying, 54 adds, and 100 halves as though the force had built up from zero.)",
+      "checkExpr": "50*4",
+      "translations": {
+        "hi": {
+          "stem": "50 N का अचर बल एक पेटी को बल की दिशा में 4 m खिसकाता है। कितना कार्य होता है?",
+          "choices": [
+            "100",
+            "200",
+            "54",
+            "12.5"
+          ],
+          "solution": "बल और विस्थापन एक ही दिशा में हैं, अतः cos 0° = 1 और W = 50 × 4 = 200 J. (12.5 गुणा के बजाय भाग देता है, 54 जोड़ता है, और 100 आधा कर देता है मानो बल शून्य से बढ़ा हो।)"
+        },
+        "mr": {
+          "stem": "50 N चे अचल बल एका पेटीला बलाच्या दिशेने 4 m सरकवते. किती कार्य होते?",
+          "choices": [
+            "100",
+            "200",
+            "54",
+            "12.5"
+          ],
+          "solution": "बल आणि विस्थापन एकाच दिशेत, म्हणून cos 0° = 1 आणि W = 50 × 4 = 200 J. (12.5 गुणण्याऐवजी भागते, 54 जोडते, आणि 100 निम्मे करते जणू बल शून्यापासून वाढले असावे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A force of 10 N drags a box 5 m along the floor while acting at 60° to the floor. Taking cos 60° = 0.5, how much work does it do?",
+      "choices": [
+        "25",
+        "12.5",
+        "5",
+        "50"
+      ],
+      "answerIndex": 0,
+      "solution": "W = Fs cos θ = 10 × 5 × 0.5 = 25 J. Only the component of the force along the floor does work; the vertical component moves nothing. (50 is the answer for a horizontal pull, dropping the cosine entirely.)",
+      "checkExpr": "10*5*0.5",
+      "translations": {
+        "hi": {
+          "stem": "10 N का बल एक बक्से को फ़र्श पर 5 m तक घसीटता है, फ़र्श से 60° पर लगते हुए। cos 60° = 0.5 लेते हुए, वह कितना कार्य करता है?",
+          "choices": [
+            "25",
+            "12.5",
+            "5",
+            "50"
+          ],
+          "solution": "W = Fs cos θ = 10 × 5 × 0.5 = 25 J. केवल फ़र्श के अनुदिश बल का घटक कार्य करता है; ऊर्ध्वाधर घटक कुछ नहीं हिलाता। (50 क्षैतिज खिंचाव का उत्तर है, जो कोज्या पूरी तरह गिरा देता है।)"
+        },
+        "mr": {
+          "stem": "10 N चे बल एका खोक्याला जमिनीवर 5 m ओढते, जमिनीशी 60° वर लागत. cos 60° = 0.5 घेतल्यास, ते किती कार्य करते?",
+          "choices": [
+            "25",
+            "12.5",
+            "5",
+            "50"
+          ],
+          "solution": "W = Fs cos θ = 10 × 5 × 0.5 = 25 J. केवळ जमिनीच्या दिशेचा बलाचा घटक कार्य करतो; उभा घटक काहीही हलवत नाही. (50 हे आडव्या ओढीचे उत्तर, जे कोसाइन पूर्णपणे गाळते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the kinetic energy of a 2 kg body moving at 6 m/s?",
+      "choices": [
+        "6",
+        "12",
+        "72",
+        "36"
+      ],
+      "answerIndex": 3,
+      "solution": "KE = ½mv² = ½ × 2 × 36 = 36 J. (12 uses mv and forgets the square, and 72 is mv² with the half dropped — the same half that comes from the area under the force–displacement graph.)",
+      "checkExpr": "0.5*2*6^2",
+      "translations": {
+        "hi": {
+          "stem": "6 m/s से चलते 2 kg पिंड की गतिज ऊर्जा क्या है?",
+          "choices": [
+            "6",
+            "12",
+            "72",
+            "36"
+          ],
+          "solution": "KE = ½mv² = ½ × 2 × 36 = 36 J. (12 mv लेता है और वर्ग भूल जाता है, और 72 mv² है जिसमें आधा गिरा दिया गया — वही आधा जो बल-विस्थापन आलेख के नीचे के क्षेत्रफल से आता है।)"
+        },
+        "mr": {
+          "stem": "6 m/s ने जाणाऱ्या 2 kg पिंडाची गतिज ऊर्जा किती?",
+          "choices": [
+            "6",
+            "12",
+            "72",
+            "36"
+          ],
+          "solution": "KE = ½mv² = ½ × 2 × 36 = 36 J. (12 हे mv घेते आणि वर्ग विसरते, आणि 72 हे mv² ज्यातून निम्मे गाळले — तेच निम्मे जे बल-विस्थापन आलेखाखालच्या क्षेत्रफळातून येते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A 5 kg body speeds up from 2 m/s to 4 m/s. How much net work was done on it?",
+      "choices": [
+        "30",
+        "40",
+        "10",
+        "60"
+      ],
+      "answerIndex": 0,
+      "solution": "By the work–energy theorem the net work is the change in kinetic energy: ½ × 5 × (16 − 4) = ½ × 5 × 12 = 30 J. Nothing needed to be known about the force or the time. (40 is the final kinetic energy alone, forgetting the body already had 10 J.)",
+      "checkExpr": "0.5*5*(4^2-2^2)",
+      "translations": {
+        "hi": {
+          "stem": "5 kg का पिंड 2 m/s से बढ़कर 4 m/s हो जाता है। उस पर कितना कुल कार्य हुआ?",
+          "choices": [
+            "30",
+            "40",
+            "10",
+            "60"
+          ],
+          "solution": "कार्य-ऊर्जा प्रमेय से कुल कार्य गतिज ऊर्जा का परिवर्तन है: ½ × 5 × (16 − 4) = ½ × 5 × 12 = 30 J. बल या समय के बारे में कुछ जानने की ज़रूरत नहीं पड़ी। (40 केवल अंतिम गतिज ऊर्जा है, यह भूलकर कि पिंड के पास पहले से 10 J थे।)"
+        },
+        "mr": {
+          "stem": "5 kg चा पिंड 2 m/s वरून 4 m/s होतो. त्याच्यावर किती एकूण कार्य झाले?",
+          "choices": [
+            "30",
+            "40",
+            "10",
+            "60"
+          ],
+          "solution": "कार्य-ऊर्जा प्रमेयाने एकूण कार्य म्हणजे गतिज ऊर्जेतील बदल: ½ × 5 × (16 − 4) = ½ × 5 × 12 = 30 J. बल वा काळाबद्दल काहीही जाणण्याची गरज पडली नाही. (40 फक्त शेवटची गतिज ऊर्जा, हे विसरून की पिंडाकडे आधीच 10 J होते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A body of mass 2 kg is dropped from a height of 5 m. Taking g as 10 m/s² and ignoring air resistance, at what speed does it reach the ground?",
+      "choices": [
+        "10 m/s",
+        "100 m/s",
+        "5 m/s",
+        "50 m/s"
+      ],
+      "answerIndex": 0,
+      "solution": "Setting mgh = ½mv², the mass cancels and v = √(2gh) = √100 = 10 m/s — a heavier body would arrive at exactly the same speed. (100 is v² with the root forgotten, and 50 is the potential energy per kilogram in joules, not a speed.)",
+      "checkExpr": "(2*10*5)^0.5",
+      "translations": {
+        "hi": {
+          "stem": "2 kg द्रव्यमान का पिंड 5 m ऊँचाई से गिराया जाता है। g को 10 m/s² लेकर और वायु प्रतिरोध छोड़कर, वह ज़मीन पर किस चाल से पहुँचता है?",
+          "choices": [
+            "10 m/s",
+            "100 m/s",
+            "5 m/s",
+            "50 m/s"
+          ],
+          "solution": "mgh = ½mv² रखने पर द्रव्यमान कट जाता है और v = √(2gh) = √100 = 10 m/s — भारी पिंड ठीक उसी चाल से पहुँचता। (100 v² है जिसमें मूल भूला गया, और 50 प्रति किलोग्राम स्थितिज ऊर्जा है जूल में, चाल नहीं।)"
+        },
+        "mr": {
+          "stem": "2 kg वस्तुमानाचा पिंड 5 m उंचीवरून टाकला जातो. g हा 10 m/s² घेऊन आणि हवेचा विरोध सोडून, तो जमिनीवर कोणत्या चालीने पोहोचतो?",
+          "choices": [
+            "10 m/s",
+            "100 m/s",
+            "5 m/s",
+            "50 m/s"
+          ],
+          "solution": "mgh = ½mv² ठेवल्यास वस्तुमान कापले जाते आणि v = √(2gh) = √100 = 10 m/s — जड पिंड नेमक्या त्याच चालीने पोहोचला असता. (100 हे v² ज्यात मूळ विसरले, आणि 50 ही प्रति किलोग्रॅम स्थितिज ऊर्जा ज्यूलमध्ये, चाल नव्हे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A pump raises 100 kg of water through 10 m in 20 s. Taking g as 10 m/s², what is its output power?",
+      "choices": [
+        "500",
+        "1000",
+        "50",
+        "200"
+      ],
+      "answerIndex": 0,
+      "solution": "The work done is mgh = 100 × 10 × 10 = 10,000 J, and power is that divided by the time: 10000/20 = 500 W. (1000 forgets to divide by the time and then slips a decimal; 50 divides the height by the time instead.)",
+      "checkExpr": "100*10*10/20",
+      "translations": {
+        "hi": {
+          "stem": "एक पंप 100 kg पानी को 20 s में 10 m ऊपर उठाता है। g को 10 m/s² लेते हुए, उसकी निर्गत शक्ति क्या है?",
+          "choices": [
+            "500",
+            "1000",
+            "50",
+            "200"
+          ],
+          "solution": "किया गया कार्य mgh = 100 × 10 × 10 = 10,000 J है, और शक्ति उसे समय से भाग देने पर: 10000/20 = 500 W. (1000 समय से भाग देना भूलता है और फिर दशमलव खिसका देता है; 50 इसके बजाय ऊँचाई को समय से भाग देता है।)"
+        },
+        "mr": {
+          "stem": "एक पंप 100 kg पाणी 20 s मध्ये 10 m वर उचलतो. g हा 10 m/s² घेतल्यास, त्याची निर्गत शक्ती किती?",
+          "choices": [
+            "500",
+            "1000",
+            "50",
+            "200"
+          ],
+          "solution": "केलेले कार्य mgh = 100 × 10 × 10 = 10,000 J, आणि शक्ती म्हणजे ते काळाने भागिले: 10000/20 = 500 W. (1000 काळाने भागायचे विसरते आणि मग दशांश सरकवते; 50 त्याऐवजी उंची काळाने भागते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A spring of stiffness 200 N/m is compressed by 0.1 m. How much elastic potential energy is stored in it?",
+      "choices": [
+        "10",
+        "20",
+        "1",
+        "2"
+      ],
+      "answerIndex": 2,
+      "solution": "U = ½kx² = ½ × 200 × 0.01 = 1 J. The half is there because the force grows from zero to kx as the spring is compressed, so the work is the triangular area under the graph rather than the rectangle kx·x. (2 drops the half and 20 uses x rather than x².)",
+      "checkExpr": "0.5*200*0.1^2",
+      "translations": {
+        "hi": {
+          "stem": "200 N/m दृढ़ता वाली स्प्रिंग 0.1 m दबाई जाती है। उसमें कितनी प्रत्यास्थ स्थितिज ऊर्जा संचित होती है?",
+          "choices": [
+            "10",
+            "20",
+            "1",
+            "2"
+          ],
+          "solution": "U = ½kx² = ½ × 200 × 0.01 = 1 J. आधा इसलिए है कि स्प्रिंग दबते समय बल शून्य से बढ़कर kx होता है, अतः कार्य आलेख के नीचे का त्रिभुजाकार क्षेत्रफल है, आयत kx·x नहीं। (2 आधा गिरा देता है और 20 x² के बजाय x लेता है।)"
+        },
+        "mr": {
+          "stem": "200 N/m ताठरतेची स्प्रिंग 0.1 m दाबली जाते. तिच्यात किती प्रत्यास्थ स्थितिज ऊर्जा साठते?",
+          "choices": [
+            "10",
+            "20",
+            "1",
+            "2"
+          ],
+          "solution": "U = ½kx² = ½ × 200 × 0.01 = 1 J. निम्मे यासाठी की स्प्रिंग दाबताना बल शून्यापासून वाढून kx होते, म्हणून कार्य आलेखाखालचे त्रिकोणी क्षेत्रफळ, आयत kx·x नव्हे. (2 निम्मे गाळते आणि 20 हे x² ऐवजी x घेते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A 4 kg lump of clay moving at 5 m/s strikes a stationary 6 kg lump and they move off together. What is their common velocity?",
+      "choices": [
+        "5 m/s",
+        "2 m/s",
+        "0.5 m/s",
+        "3 m/s"
+      ],
+      "answerIndex": 1,
+      "solution": "Momentum is conserved whatever the collision does to the kinetic energy: 4 × 5 = 10v, so v = 2 m/s. (3 averages the two velocities by mass incorrectly, and 5 forgets that the moving lump now has to carry a passenger.)",
+      "checkExpr": "4*5/(4+6)",
+      "translations": {
+        "hi": {
+          "stem": "5 m/s से चलता 4 kg मिट्टी का लोंदा 6 kg के स्थिर लोंदे से टकराता है और वे साथ चल पड़ते हैं। उनका साझा वेग क्या है?",
+          "choices": [
+            "5 m/s",
+            "2 m/s",
+            "0.5 m/s",
+            "3 m/s"
+          ],
+          "solution": "टक्कर गतिज ऊर्जा का जो भी करे, संवेग संरक्षित रहता है: 4 × 5 = 10v, अतः v = 2 m/s. (3 दोनों वेगों का द्रव्यमान-भारित औसत ग़लत निकालता है, और 5 भूल जाता है कि चलते लोंदे को अब एक सवारी ढोनी है।)"
+        },
+        "mr": {
+          "stem": "5 m/s ने जाणारा 4 kg मातीचा गोळा 6 kg च्या स्थिर गोळ्यावर आदळतो आणि ते एकत्र पुढे जातात. त्यांचा सामायिक वेग किती?",
+          "choices": [
+            "5 m/s",
+            "2 m/s",
+            "0.5 m/s",
+            "3 m/s"
+          ],
+          "solution": "टक्कर गतिज ऊर्जेचे काहीही करो, संवेग संरक्षित राहतो: 4 × 5 = 10v, म्हणून v = 2 m/s. (3 दोन्ही वेगांची वस्तुमान-भारित सरासरी चुकीची काढते, आणि 5 विसरते की चालणाऱ्या गोळ्याला आता एक प्रवासी वाहायचा आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "In that same collision — 4 kg at 5 m/s sticking to a stationary 6 kg and moving off at 2 m/s — how much kinetic energy is lost?",
+      "choices": [
+        "10",
+        "20",
+        "50",
+        "30"
+      ],
+      "answerIndex": 3,
+      "solution": "Before: ½ × 4 × 25 = 50 J. After: ½ × 10 × 4 = 20 J. The loss is 50 − 20 = 30 J, which went into deforming and warming the clay. Total energy is still conserved; only the kinetic share fell. (50 and 20 are the two kinetic energies themselves rather than their difference.)",
+      "checkExpr": "0.5*4*5^2-0.5*10*2^2",
+      "translations": {
+        "hi": {
+          "stem": "उसी टक्कर में — 4 kg 5 m/s पर स्थिर 6 kg से चिपककर 2 m/s पर चलते हुए — कितनी गतिज ऊर्जा खोती है?",
+          "choices": [
+            "10",
+            "20",
+            "50",
+            "30"
+          ],
+          "solution": "पहले: ½ × 4 × 25 = 50 J. बाद में: ½ × 10 × 4 = 20 J. हानि 50 − 20 = 30 J है, जो मिट्टी के विरूपण और उसे गरम करने में गई। कुल ऊर्जा फिर भी संरक्षित है; केवल गतिज हिस्सा गिरा। (50 और 20 स्वयं दोनों गतिज ऊर्जाएँ हैं, उनका अंतर नहीं।)"
+        },
+        "mr": {
+          "stem": "त्याच टक्करीत — 4 kg 5 m/s ने स्थिर 6 kg ला चिकटून 2 m/s ने पुढे जात — किती गतिज ऊर्जा गमावली जाते?",
+          "choices": [
+            "10",
+            "20",
+            "50",
+            "30"
+          ],
+          "solution": "आधी: ½ × 4 × 25 = 50 J. नंतर: ½ × 10 × 4 = 20 J. हानी 50 − 20 = 30 J, जी मातीच्या विरूपणात आणि तिला तापवण्यात गेली. एकूण ऊर्जा तरीही संरक्षित; केवळ गतिज वाटा घटला. (50 आणि 20 या स्वतः दोन गतिज ऊर्जा, त्यांचा फरक नव्हे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A 1200 kg car travelling at 20 m/s is brought to rest by its brakes. How much work do the brakes do?",
+      "choices": [
+        "12000",
+        "24000",
+        "480000",
+        "240000"
+      ],
+      "answerIndex": 3,
+      "solution": "The brakes must remove all the kinetic energy: ½ × 1200 × 400 = 240,000 J. Note that the stopping distance is nowhere in the question and is not needed. Doubling the speed would quadruple this figure, which is the real argument behind speed limits. (480000 forgets the half.)",
+      "checkExpr": "0.5*1200*20^2",
+      "translations": {
+        "hi": {
+          "stem": "20 m/s से चलती 1200 kg की कार ब्रेक से विराम में लाई जाती है। ब्रेक कितना कार्य करते हैं?",
+          "choices": [
+            "12000",
+            "24000",
+            "480000",
+            "240000"
+          ],
+          "solution": "ब्रेक को पूरी गतिज ऊर्जा हटानी है: ½ × 1200 × 400 = 240,000 J. ध्यान दो रुकने की दूरी प्रश्न में कहीं नहीं है और चाहिए भी नहीं। चाल दोगुनी करने पर यह आँकड़ा चौगुना हो जाता, और गति-सीमाओं के पीछे यही असली तर्क है। (480000 आधा भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "20 m/s ने जाणारी 1200 kg ची कार ब्रेकने स्थिर केली जाते. ब्रेक किती कार्य करतात?",
+          "choices": [
+            "12000",
+            "24000",
+            "480000",
+            "240000"
+          ],
+          "solution": "ब्रेकना अख्खी गतिज ऊर्जा काढावी लागते: ½ × 1200 × 400 = 240,000 J. लक्षात घ्या थांबण्याचे अंतर प्रश्नात कुठेही नाही आणि लागतही नाही. चाल दुप्पट केल्यास हा आकडा चौपट झाला असता, आणि वेगमर्यादांमागचा खरा युक्तिवाद हाच. (480000 निम्मे विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A 60 kg athlete runs up a flight of stairs of vertical height 5 m in 4 s. Taking g as 10 m/s², what is their average useful power output?",
+      "choices": [
+        "300",
+        "750",
+        "3000",
+        "75"
+      ],
+      "answerIndex": 1,
+      "solution": "Only the vertical rise counts, because the horizontal part of the run is perpendicular to gravity and gravity does no work along it. The useful work is mgh = 60 × 10 × 5 = 3000 J, done in 4 s, so P = 750 W. Two things are worth noticing. The length of the staircase never entered — a longer, gentler flight to the same landing needs the same work, though it would take longer and so give a lower power. And 750 W is the USEFUL output only: a body is at best about a quarter efficient, so the athlete is actually burning energy at something like 3000 W, which is why the effort is exhausting and why they are hot afterwards. (300 divides the work by the height instead of the time, 3000 quotes the work as though it were a power, and 75 slips a factor of ten.)",
+      "checkExpr": "60*10*5/4",
+      "translations": {
+        "hi": {
+          "stem": "60 kg का खिलाड़ी 5 m ऊर्ध्वाधर ऊँचाई की सीढ़ियाँ 4 s में चढ़ता है। g को 10 m/s² लेते हुए, उसकी औसत उपयोगी निर्गत शक्ति क्या है?",
+          "choices": [
+            "300",
+            "750",
+            "3000",
+            "75"
+          ],
+          "solution": "केवल ऊर्ध्वाधर चढ़ाई गिनी जाती है, क्योंकि दौड़ का क्षैतिज भाग गुरुत्व के लंबवत है और गुरुत्व उस पर कोई कार्य नहीं करता। उपयोगी कार्य mgh = 60 × 10 × 5 = 3000 J है, जो 4 s में हुआ, अतः P = 750 W. दो बातें ध्यान देने योग्य हैं। सीढ़ी की लंबाई कभी आई ही नहीं — उसी छोर तक जाती लंबी, कम ढालू सीढ़ी उतना ही कार्य माँगती है, यद्यपि उसमें अधिक समय लगता और इसलिए शक्ति कम निकलती। और 750 W केवल उपयोगी निर्गत है: शरीर अधिक से अधिक लगभग एक चौथाई दक्ष होता है, अतः खिलाड़ी वस्तुतः 3000 W के आसपास ऊर्जा जला रहा है, इसीलिए यह परिश्रम थका देता है और इसीलिए बाद में उसे गर्मी लगती है। (300 कार्य को समय के बजाय ऊँचाई से भाग देता है, 3000 कार्य को ऐसे बताता है मानो वह शक्ति हो, और 75 में दस का गुणक खिसक जाता है।)"
+        },
+        "mr": {
+          "stem": "60 kg चा खेळाडू 5 m उभी उंची असलेल्या जिन्याने 4 s मध्ये वर धावतो. g हा 10 m/s² घेतल्यास, त्याची सरासरी उपयुक्त निर्गत शक्ती किती?",
+          "choices": [
+            "300",
+            "750",
+            "3000",
+            "75"
+          ],
+          "solution": "केवळ उभी चढण मोजली जाते, कारण धावेचा आडवा भाग गुरुत्वाला लंब आहे आणि गुरुत्व त्यावर कोणतेही कार्य करत नाही. उपयुक्त कार्य mgh = 60 × 10 × 5 = 3000 J, जे 4 s मध्ये झाले, म्हणून P = 750 W. दोन गोष्टी लक्षात घेण्याजोग्या. जिन्याची लांबी कधी आलीच नाही — त्याच टप्प्यापर्यंत जाणारा लांब, कमी तीव्र जिना तितकेच कार्य मागतो, जरी त्याला अधिक वेळ लागला असता आणि म्हणून शक्ती कमी निघाली असती. आणि 750 W ही केवळ उपयुक्त निर्गत: शरीर फार तर सुमारे एक चतुर्थांश कार्यक्षम असते, म्हणून खेळाडू प्रत्यक्षात 3000 W च्या आसपास ऊर्जा जाळत आहे, म्हणूनच हे श्रम थकवतात आणि म्हणूनच नंतर त्याला उकडते. (300 कार्य काळाऐवजी उंचीने भागते, 3000 कार्य असे सांगते जणू ती शक्ती असावी, आणि 75 मध्ये दहाचा गुणक सरकतो.)"
+        }
+      }
+    }
+  ]
+}

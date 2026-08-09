@@ -1477,6 +1477,1410 @@ export const G11_PHYSICS: Chapter[] = [
     ],
   },
 
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 5 — Work, Energy and Power                                      */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "physics-11-work-energy-and-power",
+    subject: "PHYSICS",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 5 — Work, Energy and Power",
+      hi: "अध्याय 5 — कार्य, ऊर्जा और शक्ति",
+      mr: "प्रकरण 5 — कार्य, ऊर्जा आणि शक्ती",
+    },
+    name: {
+      en: "Work, Energy and Power",
+      hi: "कार्य, ऊर्जा और शक्ति",
+      mr: "कार्य, ऊर्जा आणि शक्ती",
+    },
+    summary: {
+      en: "A word borrowed from ordinary speech and then given a definition that refuses most of what the word usually means: a porter who carries a load along a platform does no work at all, a force that returns everything it took can be given a bank account and a force that does not cannot, energy is conserved in every collision while kinetic energy is not, and the whole apparatus exists because integrating a force over distance is easier than solving the motion.",
+      hi: "साधारण बोलचाल से उधार लिया एक शब्द, जिसे फिर ऐसी परिभाषा दी गई जो उस शब्द के अधिकांश सामान्य अर्थ को नकारती है: प्लेटफ़ॉर्म पर बोझ ढोता कुली कोई कार्य नहीं करता, जो बल सब कुछ लौटा देता है उसे बहीखाता दिया जा सकता है और जो नहीं लौटाता उसे नहीं, हर टक्कर में ऊर्जा संरक्षित रहती है जबकि गतिज ऊर्जा नहीं, और यह पूरा तंत्र इसीलिए है कि दूरी पर बल का समाकलन करना गति हल करने से आसान है।",
+      mr: "सामान्य बोलण्यातून उसना घेतलेला एक शब्द, ज्याला मग अशी व्याख्या दिली जी त्या शब्दाचा बहुतांश नेहमीचा अर्थ नाकारते: फलाटावर ओझे वाहणारा हमाल कोणतेही कार्य करत नाही, जे बल सर्व परत करते त्याला वहीखाते देता येते आणि जे करत नाही त्याला नाही, प्रत्येक टक्करीत ऊर्जा संरक्षित राहते तर गतिज ऊर्जा नाही, आणि हा सगळा डोलारा यासाठीच की अंतरावर बलाचे समाकलन करणे गती सोडवण्याहून सोपे आहे.",
+    },
+    position: 5,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "cosine-in-work",
+        name: {
+          en: "The cosine in the work formula",
+          hi: "कार्य-सूत्र की कोज्या",
+          mr: "कार्य-सूत्रातील कोसाइन",
+        },
+        kind: "definition",
+        prompt: {
+          en: "A porter walking a level platform with a trunk on his head exerts a large upward force and moves horizontally, and because the angle between them is a right angle the product is zero however tired he becomes. Which factor is responsible?",
+          hi: "सिर पर संदूक लिए समतल प्लेटफ़ॉर्म पर चलता कुली बड़ा ऊर्ध्वमुखी बल लगाता है और क्षैतिज चलता है, और चूँकि उनके बीच का कोण समकोण है, गुणनफल शून्य रहता है चाहे वह कितना ही थक जाए। इसके लिए कौन-सा गुणक ज़िम्मेदार है?",
+          mr: "डोक्यावर पेटी घेऊन सपाट फलाटावर चालणारा हमाल मोठे वरचे बल लावतो आणि आडवा चालतो, आणि त्यांच्यातील कोन काटकोन असल्याने गुणाकार शून्य राहतो, तो कितीही थकला तरी. यासाठी कोणता गुणक जबाबदार?",
+        },
+        statement: {
+          en: "Work is force times displacement times the cosine of the angle between them, so a force perpendicular to the motion does no work at all and a force opposing it does negative work.",
+          hi: "कार्य बल गुणा विस्थापन गुणा उनके बीच के कोण की कोज्या है, अतः गति के लंबवत बल कोई कार्य नहीं करता और उसका विरोध करने वाला बल ऋणात्मक कार्य करता है।",
+          mr: "कार्य म्हणजे बल गुणिले विस्थापन गुणिले त्यांच्यातील कोनाचा कोसाइन, म्हणून गतीला लंब असलेले बल कोणतेही कार्य करत नाही आणि तिला विरोध करणारे बल ऋण कार्य करते.",
+        },
+        detail: {
+          en: "This is why the centripetal force in circular motion never changes the speed, and why the normal force on a sliding block appears in no energy equation.",
+          hi: "इसीलिए वृत्तीय गति में अभिकेंद्र बल चाल कभी नहीं बदलता, और इसीलिए फिसलते गुटके पर लगा अभिलंब बल किसी ऊर्जा-समीकरण में नहीं आता।",
+          mr: "म्हणूनच वर्तुळाकार गतीतले अभिकेंद्री बल चाल कधीही बदलत नाही, आणि म्हणूनच घसरणाऱ्या ठोकळ्यावरचे लंब बल कोणत्याही ऊर्जा-समीकरणात येत नाही.",
+        },
+        extra: {
+          en: "The everyday sense of work is about effort and fatigue, and the physical sense is about displacement, so a man holding a weight motionless above his head is exhausted and has done nothing.",
+          hi: "काम का रोज़मर्रा अर्थ श्रम और थकान का है, और भौतिक अर्थ विस्थापन का, अतः सिर के ऊपर बोझ स्थिर थामे व्यक्ति थक चुका है और उसने कुछ नहीं किया।",
+          mr: "कामाचा रोजचा अर्थ श्रम आणि थकव्याचा, आणि भौतिक अर्थ विस्थापनाचा, म्हणून डोक्यावर ओझे स्थिर धरलेला माणूस थकलेला असतो आणि त्याने काहीही केलेले नसते.",
+        },
+        pair: {
+          left: {
+            en: "Exhausted, and by definition idle",
+            hi: "थका हुआ, और परिभाषा से निष्क्रिय",
+            mr: "थकलेला, आणि व्याख्येने निष्क्रिय",
+          },
+          right: {
+            en: "the cosine in the work formula",
+            hi: "कार्य-सूत्र की कोज्या",
+            mr: "कार्य-सूत्रातील कोसाइन",
+          },
+        },
+      },
+      {
+        id: "work-energy-theorem",
+        name: {
+          en: "The work–energy theorem",
+          hi: "कार्य-ऊर्जा प्रमेय",
+          mr: "कार्य-ऊर्जा प्रमेय",
+        },
+        kind: "definition",
+        prompt: {
+          en: "Whatever the forces are and however complicated their variation, their total contribution over a path equals the change in ½mv² between the ends, which converts a hard problem in dynamics into a subtraction. Which result is this?",
+          hi: "बल चाहे जो हों और उनका परिवर्तन कितना ही जटिल, किसी पथ पर उनका कुल योगदान सिरों के बीच ½mv² के परिवर्तन के बराबर होता है, जो गतिकी के कठिन प्रश्न को घटाव में बदल देता है। यह कौन-सा परिणाम है?",
+          mr: "बले कोणतीही असोत आणि त्यांचा बदल कितीही गुंतागुंतीचा असो, एखाद्या मार्गावरील त्यांचा एकूण वाटा टोकांमधील ½mv² च्या बदलाइतका असतो, जे गतिकीतील कठीण प्रश्न वजाबाकीत बदलते. हा कोणता निकाल?",
+        },
+        statement: {
+          en: "The work–energy theorem states that the net work done by all forces on a body equals its change in kinetic energy, and it holds whether the forces are constant, varying, conservative or not.",
+          hi: "कार्य-ऊर्जा प्रमेय कहता है कि किसी पिंड पर सब बलों द्वारा किया गया कुल कार्य उसकी गतिज ऊर्जा के परिवर्तन के बराबर है, और यह तब भी चलता है जब बल अचर हों, बदलते हों, संरक्षी हों या न हों।",
+          mr: "कार्य-ऊर्जा प्रमेय सांगते की एखाद्या पिंडावर सर्व बलांनी केलेले एकूण कार्य त्याच्या गतिज ऊर्जेतील बदलाइतके असते, आणि हे बले अचल असोत, बदलती असोत, संरक्षी असोत वा नसोत, तरीही चालते.",
+        },
+        detail: {
+          en: "It says nothing about how long the process took or what path was followed, which is exactly why it can answer questions where the force is unknown at every individual instant.",
+          hi: "यह इस बारे में कुछ नहीं कहता कि प्रक्रिया में कितना समय लगा या कौन-सा पथ लिया गया, और ठीक इसीलिए यह ऐसे प्रश्नों का उत्तर दे सकता है जहाँ हर अलग क्षण का बल अज्ञात हो।",
+          mr: "ते प्रक्रियेला किती वेळ लागला वा कोणता मार्ग घेतला याबद्दल काहीही सांगत नाही, आणि नेमके म्हणूनच ते अशा प्रश्नांची उत्तरे देऊ शकते जिथे प्रत्येक स्वतंत्र क्षणीचे बल अज्ञात असते.",
+        },
+        extra: {
+          en: "For a varying force the work is the area under the force–displacement graph, which is how the energy stored in a stretched spring comes out as ½kx² rather than kx².",
+          hi: "बदलते बल के लिए कार्य बल-विस्थापन आलेख के नीचे का क्षेत्रफल है, और इसी से खिंची स्प्रिंग में संचित ऊर्जा kx² नहीं बल्कि ½kx² निकलती है।",
+          mr: "बदलत्या बलासाठी कार्य म्हणजे बल-विस्थापन आलेखाखालचे क्षेत्रफळ, आणि यामुळेच ताणलेल्या स्प्रिंगमधली साठलेली ऊर्जा kx² नव्हे तर ½kx² निघते.",
+        },
+        pair: {
+          left: {
+            en: "Turns a dynamics problem into a subtraction",
+            hi: "गतिकी के प्रश्न को घटाव में बदल देता है",
+            mr: "गतिकीचा प्रश्न वजाबाकीत बदलते",
+          },
+          right: {
+            en: "the work–energy theorem",
+            hi: "कार्य-ऊर्जा प्रमेय",
+            mr: "कार्य-ऊर्जा प्रमेय",
+          },
+        },
+      },
+      {
+        id: "conservative-force",
+        name: {
+          en: "The conservative force",
+          hi: "संरक्षी बल",
+          mr: "संरक्षी बल",
+        },
+        kind: "classification",
+        prompt: {
+          en: "Carry a book up the stairs or up the lift shaft or by any winding route at all: this kind of force charges exactly the same amount, and returns every joule of it when the book comes back down. Which kind is this?",
+          hi: "किताब को सीढ़ी से ऊपर ले जाओ या लिफ़्ट की नाल से या किसी भी घुमावदार रास्ते से: यह क़िस्म का बल ठीक उतना ही वसूलता है, और किताब के नीचे लौटने पर उसका हर जूल लौटा देता है। यह कौन-सी क़िस्म है?",
+          mr: "पुस्तक जिन्याने वर न्या वा लिफ्टच्या नळीतून वा कोणत्याही वळणदार वाटेने: या प्रकारचे बल नेमके तितकेच वसूल करते, आणि पुस्तक खाली परतल्यावर त्यातले प्रत्येक ज्यूल परत करते. हा कोणता प्रकार?",
+        },
+        statement: {
+          en: "A conservative force does work that depends only on the endpoints and not on the path, so its work round any closed loop is zero and a potential energy can be defined for it.",
+          hi: "संरक्षी बल ऐसा कार्य करता है जो केवल सिरों पर निर्भर है, पथ पर नहीं, अतः किसी भी बंद पाश पर उसका कार्य शून्य होता है और उसके लिए स्थितिज ऊर्जा परिभाषित की जा सकती है।",
+          mr: "संरक्षी बल असे कार्य करते जे केवळ टोकांवर अवलंबून असते, मार्गावर नाही, म्हणून कोणत्याही बंद फेऱ्यावर त्याचे कार्य शून्य असते आणि त्यासाठी स्थितिज ऊर्जा व्याख्यायित करता येते.",
+        },
+        detail: {
+          en: "Gravity and the spring force qualify; friction does not, because dragging a block round a loop and back to its start costs energy every centimetre of the way.",
+          hi: "गुरुत्व और स्प्रिंग-बल इस कसौटी पर खरे उतरते हैं; घर्षण नहीं, क्योंकि गुटके को पाश में घुमाकर आरंभ पर लौटाने में हर सेंटीमीटर ऊर्जा ख़र्च होती है।",
+          mr: "गुरुत्व आणि स्प्रिंग-बल या कसोटीवर उतरतात; घर्षण नाही, कारण ठोकळा फेऱ्यात फिरवून सुरुवातीला परत आणण्यात प्रत्येक सेंटिमीटरला ऊर्जा खर्च होते.",
+        },
+        extra: {
+          en: "No potential energy can be written for a non-conservative force, which is why friction appears in an energy account as a loss to heat rather than as a stored quantity that could be recovered.",
+          hi: "असंरक्षी बल के लिए कोई स्थितिज ऊर्जा नहीं लिखी जा सकती, इसीलिए घर्षण ऊर्जा के हिसाब में ऐसी संचित राशि के रूप में नहीं आता जो वापस मिल सके, बल्कि ऊष्मा में हुई हानि के रूप में आता है।",
+          mr: "असंरक्षी बलासाठी कोणतीही स्थितिज ऊर्जा लिहिता येत नाही, म्हणूनच घर्षण ऊर्जेच्या हिशोबात परत मिळू शकणारी साठलेली राशी म्हणून येत नाही, तर उष्णतेत झालेली हानी म्हणून येते.",
+        },
+        pair: {
+          left: {
+            en: "Zero work round any closed loop",
+            hi: "किसी भी बंद पाश पर शून्य कार्य",
+            mr: "कोणत्याही बंद फेऱ्यावर शून्य कार्य",
+          },
+          right: {
+            en: "the conservative force",
+            hi: "संरक्षी बल",
+            mr: "संरक्षी बल",
+          },
+        },
+      },
+      {
+        id: "zero-of-potential-energy",
+        name: {
+          en: "The zero of potential energy",
+          hi: "स्थितिज ऊर्जा का शून्य",
+          mr: "स्थितिज ऊर्जेचे शून्य",
+        },
+        kind: "classification",
+        prompt: {
+          en: "A book on a first-floor table has one value measured from the floor, another from the ground outside, and a negative one measured from the roof — and every prediction the physics makes comes out identical. Which freedom is this?",
+          hi: "पहली मंज़िल की मेज़ पर रखी किताब का एक मान फ़र्श से नापने पर, दूसरा बाहर की ज़मीन से, और छत से नापने पर ऋणात्मक — और भौतिकी जो भी भविष्यवाणी करती है वह एक-सी निकलती है। यह कौन-सी स्वतंत्रता है?",
+          mr: "पहिल्या मजल्यावरील टेबलावरच्या पुस्तकाचे एक मूल्य जमिनीपासून मोजल्यास, दुसरे बाहेरच्या जमिनीपासून, आणि छतापासून मोजल्यास ऋण — आणि भौतिकी जे भाकीत करते ते सारखेच निघते. ही कोणती स्वतंत्रता?",
+        },
+        statement: {
+          en: "Only differences in potential energy are physically meaningful, so its zero may be placed anywhere convenient, and a negative potential energy means nothing worse than a badly chosen origin.",
+          hi: "भौतिक रूप से केवल स्थितिज ऊर्जा के अंतर सार्थक हैं, अतः उसका शून्य कहीं भी सुविधानुसार रखा जा सकता है, और ऋणात्मक स्थितिज ऊर्जा का अर्थ बुरी तरह चुने गए मूल-बिंदु से बुरा कुछ नहीं।",
+          mr: "भौतिकदृष्ट्या केवळ स्थितिज ऊर्जेतील फरकच अर्थपूर्ण असतात, म्हणून तिचे शून्य कुठेही सोयीने ठेवता येते, आणि ऋण स्थितिज ऊर्जेचा अर्थ वाईटरीत्या निवडलेल्या आरंभबिंदूहून वाईट काहीही नाही.",
+        },
+        detail: {
+          en: "For gravitation on the astronomical scale the zero is conventionally placed at infinite separation, which makes every bound orbit's energy negative and gives that negative sign a real meaning: escape is impossible.",
+          hi: "खगोलीय पैमाने पर गुरुत्व के लिए शून्य परंपरागत रूप से अनंत दूरी पर रखा जाता है, जिससे हर बद्ध कक्षा की ऊर्जा ऋणात्मक हो जाती है और उस ऋण चिह्न का असली अर्थ मिलता है: पलायन असंभव है।",
+          mr: "खगोलीय प्रमाणावर गुरुत्वासाठी शून्य परंपरेने अनंत अंतरावर ठेवले जाते, ज्यामुळे प्रत्येक बद्ध कक्षेची ऊर्जा ऋण होते आणि त्या ऋण चिन्हाला खरा अर्थ मिळतो: सुटका अशक्य आहे.",
+        },
+        extra: {
+          en: "The choice must be kept fixed throughout a calculation, and the commonest error in energy conservation is measuring the initial height from one level and the final from another.",
+          hi: "यह चुनाव पूरी गणना में स्थिर रखना पड़ता है, और ऊर्जा-संरक्षण की सबसे आम भूल आरंभिक ऊँचाई एक स्तर से और अंतिम दूसरे से नापना है।",
+          mr: "ही निवड अख्ख्या गणनेत स्थिर ठेवावी लागते, आणि ऊर्जा-संरक्षणातील सर्वांत नेहमीची चूक म्हणजे सुरुवातीची उंची एका पातळीपासून आणि शेवटची दुसऱ्यापासून मोजणे.",
+        },
+        pair: {
+          left: {
+            en: "Negative only because of where the origin was put",
+            hi: "ऋणात्मक केवल इसलिए कि मूल-बिंदु कहाँ रखा गया",
+            mr: "ऋण केवळ यामुळे की आरंभबिंदू कुठे ठेवला",
+          },
+          right: {
+            en: "the zero of potential energy",
+            hi: "स्थितिज ऊर्जा का शून्य",
+            mr: "स्थितिज ऊर्जेचे शून्य",
+          },
+        },
+      },
+      {
+        id: "power-as-a-rate",
+        name: {
+          en: "Power as a rate",
+          hi: "दर के रूप में शक्ति",
+          mr: "दर म्हणून शक्ती",
+        },
+        kind: "definition",
+        prompt: {
+          en: "Two cranes lift the same girder to the same floor, one in a minute and one in an hour: the job done is identical and this quantity differs sixtyfold, because it divides by the time taken. Which quantity is this?",
+          hi: "दो क्रेन वही धरन उसी मंज़िल तक उठाती हैं, एक मिनट भर में और एक घंटे में: किया गया काम एक-सा है और यह राशि साठ गुना भिन्न, क्योंकि वह लगे समय से भाग देती है। यह कौन-सी राशि है?",
+          mr: "दोन क्रेन तोच तुळई त्याच मजल्यावर उचलतात, एक मिनिटात आणि एक तासात: केलेले काम सारखेच आणि ही राशी साठपट वेगळी, कारण ती लागलेल्या काळाने भागते. ही कोणती राशी?",
+        },
+        statement: {
+          en: "Power is the rate at which work is done, equal to work divided by time or equivalently to force times velocity, and it is measured in watts rather than joules.",
+          hi: "शक्ति वह दर है जिससे कार्य किया जाता है, कार्य बटा समय या समतुल्य रूप से बल गुणा वेग, और उसे जूल में नहीं वाट में नापा जाता है।",
+          mr: "शक्ती म्हणजे कार्य केले जाण्याचा दर, कार्य भागिले काळ किंवा समतुल्यपणे बल गुणिले वेग, आणि ती ज्यूलमध्ये नव्हे तर वॉटमध्ये मोजली जाते.",
+        },
+        detail: {
+          en: "The form P = Fv explains why a vehicle climbing a hill must change to a lower gear: the engine's power is capped, so a larger force can be delivered only at a smaller speed.",
+          hi: "P = Fv रूप बताता है कि चढ़ाई चढ़ता वाहन नीचे के गियर में क्यों जाता है: इंजन की शक्ति की छत तय है, अतः बड़ा बल केवल कम चाल पर ही दिया जा सकता है।",
+          mr: "P = Fv हे रूप सांगते की चढ चढणारे वाहन खालच्या गिअरमध्ये का जाते: इंजिनाच्या शक्तीला छत आहे, म्हणून मोठे बल केवळ कमी चालीवरच देता येते.",
+        },
+        extra: {
+          en: "The kilowatt-hour on an electricity bill is therefore a unit of energy and not of power, being a rate multiplied by a time — 3.6 million joules of it.",
+          hi: "अतः बिजली के बिल पर लिखी किलोवाट-घंटा ऊर्जा का मात्रक है, शक्ति का नहीं, क्योंकि वह दर गुणा समय है — 36 लाख जूल।",
+          mr: "म्हणून विजेच्या बिलावरचा किलोवॅट-तास हे ऊर्जेचे एकक आहे, शक्तीचे नव्हे, कारण ते दर गुणिले काळ आहे — 36 लाख ज्यूल.",
+        },
+        pair: {
+          left: {
+            en: "Same job, sixty times the figure",
+            hi: "वही काम, साठ गुना आँकड़ा",
+            mr: "तेच काम, साठपट आकडा",
+          },
+          right: {
+            en: "power as a rate",
+            hi: "दर के रूप में शक्ति",
+            mr: "दर म्हणून शक्ती",
+          },
+        },
+      },
+      {
+        id: "perfectly-inelastic-collision",
+        name: {
+          en: "The perfectly inelastic collision",
+          hi: "पूर्णतः अप्रत्यास्थ टक्कर",
+          mr: "पूर्णतः अप्रत्यास्थ टक्कर",
+        },
+        kind: "classification",
+        prompt: {
+          en: "Two lumps of wet clay meet and move off as one: momentum comes through the encounter untouched, kinetic energy does not, and the missing joules are in the warmth and the deformation. Which collision is this?",
+          hi: "गीली मिट्टी के दो लोंदे मिलकर एक होकर चल पड़ते हैं: संवेग इस भेंट से अछूता निकलता है, गतिज ऊर्जा नहीं, और लुप्त जूल गर्माहट तथा विरूपण में हैं। यह कौन-सी टक्कर है?",
+          mr: "ओल्या मातीचे दोन गोळे भेटून एकत्रच पुढे जातात: संवेग या भेटीतून अस्पर्श निघतो, गतिज ऊर्जा नाही, आणि हरवलेली ज्यूल ऊब आणि विरूपणात आहेत. ही कोणती टक्कर?",
+        },
+        statement: {
+          en: "In a perfectly inelastic collision the bodies move off together with a common velocity, momentum is conserved exactly, and the kinetic energy lost is the greatest that momentum conservation permits.",
+          hi: "पूर्णतः अप्रत्यास्थ टक्कर में पिंड एक साझा वेग से साथ चल पड़ते हैं, संवेग ठीक-ठीक संरक्षित रहता है, और खोई गतिज ऊर्जा उतनी सबसे अधिक होती है जितनी संवेग-संरक्षण अनुमति देता है।",
+          mr: "पूर्णतः अप्रत्यास्थ टक्करीत पिंड एका सामायिक वेगाने एकत्र पुढे जातात, संवेग नेमका संरक्षित राहतो, आणि गमावलेली गतिज ऊर्जा संवेग-संरक्षण जितकी परवानगी देते तितकी सर्वाधिक असते.",
+        },
+        detail: {
+          en: "Total energy is conserved in every collision without exception; it is kinetic energy alone that can vanish into heat, sound and permanent deformation.",
+          hi: "हर टक्कर में बिना किसी अपवाद के कुल ऊर्जा संरक्षित रहती है; केवल गतिज ऊर्जा ही ऊष्मा, ध्वनि और स्थायी विरूपण में लुप्त हो सकती है।",
+          mr: "प्रत्येक टक्करीत कोणत्याही अपवादाशिवाय एकूण ऊर्जा संरक्षित राहते; केवळ गतिज ऊर्जाच उष्णता, ध्वनी आणि कायमच्या विरूपणात लोप पावू शकते.",
+        },
+        extra: {
+          en: "In a head-on elastic collision between equal masses the two simply exchange velocities, which is why the end ball of a Newton's cradle leaves and the rest stay still.",
+          hi: "बराबर द्रव्यमानों के बीच आमने-सामने की प्रत्यास्थ टक्कर में दोनों बस वेग बदल लेते हैं, इसीलिए न्यूटन के पालने की छोर वाली गेंद निकलती है और बाक़ी स्थिर रहती हैं।",
+          mr: "समान वस्तुमानांमधील समोरासमोरच्या प्रत्यास्थ टक्करीत दोघे फक्त वेगांची अदलाबदल करतात, म्हणूनच न्यूटनच्या पाळण्यातला टोकाचा चेंडू निघतो आणि बाकीचे स्थिर राहतात.",
+        },
+        pair: {
+          left: {
+            en: "Momentum intact, kinetic energy at its greatest loss",
+            hi: "संवेग सलामत, गतिज ऊर्जा की सबसे बड़ी हानि",
+            mr: "संवेग शाबूत, गतिज ऊर्जेची सर्वांत मोठी हानी",
+          },
+          right: {
+            en: "the perfectly inelastic collision",
+            hi: "पूर्णतः अप्रत्यास्थ टक्कर",
+            mr: "पूर्णतः अप्रत्यास्थ टक्कर",
+          },
+        },
+      },
+      /*F5*/
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A block slides down a rough slope from a height of 5 m and reaches the bottom at 8 m/s, where a frictionless slope would have delivered it at 10 m/s. A student says energy has been destroyed. Take g as 10 m/s² and correct them, saying what the missing energy is and what fraction of the initial store it represents.",
+          hi: "एक गुटका 5 m ऊँचाई से खुरदरी ढलान पर फिसलकर तल पर 8 m/s से पहुँचता है, जबकि घर्षण-रहित ढलान उसे 10 m/s पर पहुँचाती। एक विद्यार्थी कहता है कि ऊर्जा नष्ट हो गई। g को 10 m/s² लेकर उसे सुधारो, बताओ लुप्त ऊर्जा क्या है और आरंभिक भंडार का कितना अंश है।",
+          mr: "एक ठोकळा 5 m उंचीवरून खरखरीत उतारावरून घसरून तळाशी 8 m/s ने पोहोचतो, तर घर्षणविरहित उतार त्याला 10 m/s वर पोहोचवला असता. एक विद्यार्थी म्हणतो की ऊर्जा नष्ट झाली. g हा 10 m/s² घेऊन त्याला दुरुस्त करा, हरवलेली ऊर्जा काय आणि सुरुवातीच्या साठ्याचा किती अंश ते सांगा.",
+        },
+        choices: [
+          {
+            en: "Nothing was destroyed. Per kilogram the initial store is gh = 50 J and the arrival kinetic energy is ½v² = 32 J, so 18 J per kilogram — 36 per cent of the store — went into heating the block and the slope, and into the sound of the sliding. Total energy is conserved absolutely; what is not conserved is MECHANICAL energy, because friction is non-conservative and cannot be given a potential energy from which the joules could be recovered",
+            hi: "कुछ नष्ट नहीं हुआ। प्रति किलोग्राम आरंभिक भंडार gh = 50 J है और पहुँचने पर गतिज ऊर्जा ½v² = 32 J, अतः प्रति किलोग्राम 18 J — भंडार का 36 प्रतिशत — गुटके तथा ढलान को गरम करने में और फिसलने की ध्वनि में गया। कुल ऊर्जा पूर्णतः संरक्षित है; जो संरक्षित नहीं वह यांत्रिक ऊर्जा है, क्योंकि घर्षण असंरक्षी है और उसे ऐसी स्थितिज ऊर्जा नहीं दी जा सकती जिससे जूल वापस मिल सकें",
+            mr: "काहीही नष्ट झाले नाही. प्रति किलोग्रॅम सुरुवातीचा साठा gh = 50 J आणि पोहोचताना गतिज ऊर्जा ½v² = 32 J, म्हणून प्रति किलोग्रॅम 18 J — साठ्याच्या 36 टक्के — ठोकळा व उतार तापवण्यात आणि घसरण्याच्या आवाजात गेले. एकूण ऊर्जा पूर्णपणे संरक्षित; जी संरक्षित नाही ती यांत्रिक ऊर्जा, कारण घर्षण असंरक्षी आहे आणि त्याला अशी स्थितिज ऊर्जा देता येत नाही जिच्यातून ज्यूल परत मिळतील",
+          },
+          {
+            en: "The student is right: friction genuinely destroys energy, which is why the conservation law is only approximate",
+            hi: "विद्यार्थी सही है: घर्षण सचमुच ऊर्जा नष्ट करता है, इसीलिए संरक्षण-नियम केवल सन्निकट है",
+            mr: "विद्यार्थी बरोबर: घर्षण खरोखर ऊर्जा नष्ट करते, म्हणूनच संरक्षण-नियम केवळ अंदाजे आहे",
+          },
+          {
+            en: "The missing 18 J per kilogram is stored as friction potential energy and is returned when the block slides back up",
+            hi: "प्रति किलोग्राम लुप्त 18 J घर्षण की स्थितिज ऊर्जा के रूप में संचित है और गुटके के वापस ऊपर फिसलने पर लौट आते हैं",
+            mr: "प्रति किलोग्रॅम हरवलेले 18 J घर्षणाची स्थितिज ऊर्जा म्हणून साठलेले असतात आणि ठोकळा परत वर घसरल्यावर परत मिळतात",
+          },
+          {
+            en: "Nothing is missing, because the 10 m/s figure is wrong: a body released from 5 m arrives at 8 m/s even with no friction",
+            hi: "कुछ लुप्त नहीं है, क्योंकि 10 m/s का आँकड़ा ग़लत है: 5 m से छोड़ा गया पिंड बिना घर्षण के भी 8 m/s पर पहुँचता है",
+            mr: "काहीही हरवलेले नाही, कारण 10 m/s हा आकडा चुकीचा आहे: 5 m वरून सोडलेला पिंड घर्षणाशिवायही 8 m/s ने पोहोचतो",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Do the arithmetic per kilogram, since the mass cancels out of everything here. At the top, the store available to be converted is the gravitational potential energy relative to the bottom: gh = 10 × 5 = 50 J per kg. On a frictionless slope every joule of that becomes kinetic, so ½v² = 50 and v = 10 m/s — which is where the student's comparison figure comes from, and it is correct. What arrives instead is 8 m/s, carrying ½v² = ½ × 64 = 32 J per kg. The shortfall is 50 − 32 = 18 J per kg, which is 18/50 = 36 per cent of what was there to begin with. Now the important question: where did those 18 J go? Not out of existence. Rub two surfaces together and you can measure the temperature rise; both the block and the slope are very slightly warmer than they were, and a small amount left as sound. The joules are still fully accounted for. The total energy of block, slope and surrounding air is exactly what it was before the slide. What has failed is not conservation of energy but conservation of MECHANICAL energy, which is the sum of kinetic and potential and is a much narrower claim. That narrower claim holds only when every force doing work is conservative. Gravity is; friction is not. The chapter's definition makes the difference precise: a conservative force does zero work round a closed loop, so the energy it takes on the way out is returned on the way back, and a potential energy function can be written for it. Friction fails that test decisively. Drag the block up the slope again and friction takes energy from you on the way up too — it opposes the motion in both directions, so a round trip costs twice rather than nothing. That is exactly why option three is wrong, and it is wrong in an instructive way. There is no such thing as friction potential energy, and the reason is not that nobody has bothered to define one: it cannot be defined, because the work done depends on the path taken and not merely on the endpoints. Take a longer, more winding route down the same 5 m and more energy is lost, though the endpoints are unchanged. A potential energy that depended on which way you walked would not be a function of position at all. Three practical consequences are worth carrying. First, in any problem where friction acts, write energy conservation as initial mechanical energy = final mechanical energy + work done against friction, and treat that last term as a one-way payment. Second, the fraction lost is a property of the surfaces and the geometry, not of the mass, which is why the block's weight never appeared above. Third, the loss is irreversible in a strong sense: the 18 J are now spread among countless randomly moving molecules, and no arrangement of slopes will gather them back into the ordered motion of a sliding block. (The wrong answers abandon a conservation law that has never once failed, invent a potential energy for a path-dependent force, or reject an arithmetic that is straightforward and right.)",
+          hi: "गणना प्रति किलोग्राम करो, क्योंकि यहाँ द्रव्यमान हर जगह कट जाता है। शिखर पर बदले जाने को उपलब्ध भंडार तल के सापेक्ष गुरुत्वीय स्थितिज ऊर्जा है: gh = 10 × 5 = 50 J प्रति kg. घर्षण-रहित ढलान पर उसका हर जूल गतिज बन जाता है, अतः ½v² = 50 और v = 10 m/s — विद्यार्थी का तुलना-आँकड़ा यहीं से आता है, और वह सही है। इसके बजाय जो पहुँचता है वह 8 m/s है, जो ½v² = ½ × 64 = 32 J प्रति kg ढोता है। कमी 50 − 32 = 18 J प्रति kg है, जो आरंभ में जो था उसका 18/50 = 36 प्रतिशत है। अब महत्वपूर्ण प्रश्न: वे 18 J गए कहाँ? अस्तित्व से बाहर नहीं। दो सतहें रगड़ो और तुम ताप-वृद्धि नाप सकते हो; गुटका और ढलान दोनों पहले से बहुत थोड़े गरम हैं, और थोड़ी मात्रा ध्वनि बनकर निकल गई। जूल अब भी पूरी तरह हिसाब में हैं। गुटके, ढलान और आसपास की हवा की कुल ऊर्जा ठीक वही है जो फिसलने से पहले थी। जो विफल हुआ वह ऊर्जा-संरक्षण नहीं बल्कि यांत्रिक ऊर्जा का संरक्षण है, जो गतिज और स्थितिज का योग है और कहीं संकरा दावा है। वह संकरा दावा तभी चलता है जब कार्य करने वाला हर बल संरक्षी हो। गुरुत्व है; घर्षण नहीं। अध्याय की परिभाषा भेद को सटीक बनाती है: संरक्षी बल बंद पाश पर शून्य कार्य करता है, अतः जाते समय जो ऊर्जा वह लेता है लौटते समय लौटा देता है, और उसके लिए स्थितिज ऊर्जा फलन लिखा जा सकता है। घर्षण उस जाँच में निर्णायक रूप से विफल है। गुटके को फिर ढलान पर ऊपर घसीटो और घर्षण ऊपर जाते समय भी तुमसे ऊर्जा लेता है — वह दोनों दिशाओं में गति का विरोध करता है, अतः वापसी-यात्रा शून्य नहीं बल्कि दुगुना ख़र्च कराती है। ठीक इसीलिए तीसरा विकल्प ग़लत है, और वह शिक्षाप्रद ढंग से ग़लत है। घर्षण की स्थितिज ऊर्जा जैसी कोई चीज़ नहीं, और कारण यह नहीं कि किसी ने परिभाषित करने की परवाह नहीं की: वह परिभाषित हो ही नहीं सकती, क्योंकि किया गया कार्य लिए गए पथ पर निर्भर है, केवल सिरों पर नहीं। उन्हीं 5 m का लंबा, अधिक घुमावदार रास्ता लो और अधिक ऊर्जा खोती है, जबकि सिरे अपरिवर्तित हैं। जो स्थितिज ऊर्जा इस पर निर्भर करे कि तुम किस रास्ते चले, वह स्थिति का फलन ही नहीं होती। तीन व्यावहारिक परिणाम ले जाने योग्य हैं। पहला, जिस भी प्रश्न में घर्षण लगे, ऊर्जा-संरक्षण यों लिखो: आरंभिक यांत्रिक ऊर्जा = अंतिम यांत्रिक ऊर्जा + घर्षण के विरुद्ध किया कार्य, और उस अंतिम पद को एकतरफ़ा भुगतान मानो। दूसरा, खोया अंश सतहों और ज्यामिति का गुण है, द्रव्यमान का नहीं, इसीलिए ऊपर गुटके का भार कभी आया ही नहीं। तीसरा, हानि प्रबल अर्थ में अनुत्क्रमणीय है: वे 18 J अब असंख्य यादृच्छिक गति वाले अणुओं में बिखर चुके हैं, और ढलानों की कोई व्यवस्था उन्हें फिसलते गुटके की व्यवस्थित गति में वापस नहीं बटोर सकती। (ग़लत उत्तर उस संरक्षण-नियम को छोड़ देते जो एक बार भी विफल नहीं हुआ, पथ-निर्भर बल के लिए स्थितिज ऊर्जा गढ़ते, या ऐसा गणित नकारते जो सीधा और सही है।)",
+          mr: "गणना प्रति किलोग्रॅम करा, कारण इथे वस्तुमान सर्वत्र कापले जाते. शिखरावर बदलण्यासाठी उपलब्ध साठा तळाच्या सापेक्ष गुरुत्वीय स्थितिज ऊर्जा: gh = 10 × 5 = 50 J प्रति kg. घर्षणविरहित उतारावर त्यातले प्रत्येक ज्यूल गतिज बनते, म्हणून ½v² = 50 आणि v = 10 m/s — विद्यार्थ्याचा तुलना-आकडा इथूनच येतो, आणि तो बरोबर आहे. त्याऐवजी जे पोहोचते ते 8 m/s, जे ½v² = ½ × 64 = 32 J प्रति kg वाहते. तूट 50 − 32 = 18 J प्रति kg, जी सुरुवातीला जे होते त्याच्या 18/50 = 36 टक्के. आता महत्त्वाचा प्रश्न: ती 18 J गेली कुठे? अस्तित्वातून बाहेर नाही. दोन पृष्ठभाग घासा आणि तुम्ही तापमानवाढ मोजू शकता; ठोकळा आणि उतार दोन्ही आधीहून फार थोडे उबदार आहेत, आणि थोडे प्रमाण ध्वनी बनून निघाले. ज्यूल अजूनही पूर्णपणे हिशोबात आहेत. ठोकळा, उतार आणि आजूबाजूची हवा यांची एकूण ऊर्जा नेमकी तीच जी घसरण्याआधी होती. जे अपयशी ठरले ते ऊर्जा-संरक्षण नव्हे तर यांत्रिक ऊर्जेचे संरक्षण, जे गतिज आणि स्थितिजची बेरीज आणि कितीतरी अरुंद दावा आहे. तो अरुंद दावा तेव्हाच चालतो जेव्हा कार्य करणारे प्रत्येक बल संरक्षी असते. गुरुत्व आहे; घर्षण नाही. प्रकरणाची व्याख्या भेद नेमका करते: संरक्षी बल बंद फेऱ्यावर शून्य कार्य करते, म्हणून जाताना जी ऊर्जा ते घेते ती परतताना परत करते, आणि त्यासाठी स्थितिज ऊर्जा फलन लिहिता येते. घर्षण त्या परीक्षेत निर्णायकपणे नापास. ठोकळा पुन्हा उतारावर वर ओढा आणि घर्षण वर जातानाही तुमच्याकडून ऊर्जा घेते — ते दोन्ही दिशांना गतीला विरोध करते, म्हणून परतीचा प्रवास शून्य नव्हे तर दुप्पट खर्च करवतो. नेमके म्हणूनच तिसरा पर्याय चुकीचा, आणि तो शिकवणाऱ्या पद्धतीने चुकीचा. घर्षणाची स्थितिज ऊर्जा अशी कोणतीही गोष्ट नाही, आणि कारण हे नाही की कोणी व्याख्या करण्याची तसदी घेतली नाही: तिची व्याख्याच होऊ शकत नाही, कारण केलेले कार्य घेतलेल्या मार्गावर अवलंबून आहे, केवळ टोकांवर नाही. त्याच 5 m चा लांब, अधिक वळणदार मार्ग घ्या आणि अधिक ऊर्जा गमावली जाते, जरी टोके तीच असली तरी. जी स्थितिज ऊर्जा तुम्ही कोणत्या वाटेने चाललात यावर अवलंबून असेल, ती स्थानाचे फलनच नसेल. तीन व्यावहारिक परिणाम नेण्याजोगे. पहिला, ज्या प्रश्नात घर्षण लागते तिथे ऊर्जा-संरक्षण असे लिहा: सुरुवातीची यांत्रिक ऊर्जा = शेवटची यांत्रिक ऊर्जा + घर्षणाविरुद्ध केलेले कार्य, आणि ते शेवटचे पद एकतर्फी भरणा माना. दुसरा, गमावलेला अंश पृष्ठभाग आणि भूमितीचा गुणधर्म, वस्तुमानाचा नाही, म्हणूनच वर ठोकळ्याचे वजन कधी आलेच नाही. तिसरा, हानी प्रबळ अर्थाने अपरिवर्तनीय: ती 18 J आता असंख्य यादृच्छिक गतीच्या रेणूंत विखुरली आहेत, आणि उतारांची कोणतीही रचना ती घसरणाऱ्या ठोकळ्याच्या व्यवस्थित गतीत परत गोळा करू शकत नाही. (चुकीची उत्तरे एकदाही अपयशी न ठरलेला संरक्षण-नियम सोडून देतात, मार्ग-अवलंबी बलासाठी स्थितिज ऊर्जा घडवतात, वा सरळ आणि बरोबर असलेले गणित नाकारतात.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A 4 kg lump of clay moving at 5 m/s strikes a stationary 6 kg lump and the two move off together. A student computes the common velocity from kinetic energy conservation instead of momentum conservation and gets a different answer. Explain which law may be used here and why, and what happens to the difference.",
+          hi: "5 m/s से चलता 4 kg मिट्टी का लोंदा 6 kg के स्थिर लोंदे से टकराता है और दोनों साथ चल पड़ते हैं। एक विद्यार्थी साझा वेग संवेग-संरक्षण के बजाय गतिज ऊर्जा-संरक्षण से निकालता है और भिन्न उत्तर पाता है। समझाओ यहाँ कौन-सा नियम प्रयोग हो सकता है और क्यों, और अंतर का होता क्या है।",
+          mr: "5 m/s ने जाणारा 4 kg मातीचा गोळा 6 kg च्या स्थिर गोळ्यावर आदळतो आणि दोघे एकत्र पुढे जातात. एक विद्यार्थी सामायिक वेग संवेग-संरक्षणाऐवजी गतिज ऊर्जा-संरक्षणातून काढतो आणि वेगळे उत्तर मिळवतो. समजावा इथे कोणता नियम वापरता येतो आणि का, आणि फरकाचे होते काय.",
+        },
+        choices: [
+          {
+            en: "Only momentum may be used. Momentum conservation follows from the third law and holds in every collision without exception, giving v = (4 × 5)/10 = 2 m/s. Kinetic energy is conserved only in an elastic collision, and clay is the opposite case: the initial kinetic energy is ½ × 4 × 25 = 50 J and the final is ½ × 10 × 4 = 20 J, so 30 J went into deforming the clay and warming it. The student's calculation assumed a conservation that the physical situation denies",
+            hi: "केवल संवेग प्रयोग हो सकता है। संवेग-संरक्षण तीसरे नियम से निकलता है और बिना किसी अपवाद के हर टक्कर में चलता है, जिससे v = (4 × 5)/10 = 2 m/s. गतिज ऊर्जा केवल प्रत्यास्थ टक्कर में संरक्षित रहती है, और मिट्टी उलटी स्थिति है: आरंभिक गतिज ऊर्जा ½ × 4 × 25 = 50 J और अंतिम ½ × 10 × 4 = 20 J, अतः 30 J मिट्टी के विरूपण और उसे गरम करने में गए। विद्यार्थी की गणना ने ऐसा संरक्षण मान लिया जिसे भौतिक स्थिति नकारती है",
+            mr: "केवळ संवेग वापरता येतो. संवेग-संरक्षण तिसऱ्या नियमातून निघते आणि कोणत्याही अपवादाशिवाय प्रत्येक टक्करीत चालते, ज्यातून v = (4 × 5)/10 = 2 m/s. गतिज ऊर्जा केवळ प्रत्यास्थ टक्करीत संरक्षित राहते, आणि माती ही उलट स्थिती: सुरुवातीची गतिज ऊर्जा ½ × 4 × 25 = 50 J आणि शेवटची ½ × 10 × 4 = 20 J, म्हणून 30 J मातीच्या विरूपणात आणि तिला तापवण्यात गेले. विद्यार्थ्याच्या गणनेने असे संरक्षण गृहीत धरले जे भौतिक परिस्थिती नाकारते",
+          },
+          {
+            en: "Either law may be used, and the two must agree; the student has simply made an arithmetic slip",
+            hi: "कोई भी नियम प्रयोग हो सकता है, और दोनों को मिलना ही चाहिए; विद्यार्थी से बस गणना की चूक हुई है",
+            mr: "कोणताही नियम वापरता येतो, आणि दोघे जुळलेच पाहिजेत; विद्यार्थ्याकडून फक्त आकडेमोडीची चूक झाली आहे",
+          },
+          {
+            en: "Only kinetic energy may be used, because momentum is not conserved when the bodies stick together and become one",
+            hi: "केवल गतिज ऊर्जा प्रयोग हो सकती है, क्योंकि पिंडों के चिपककर एक हो जाने पर संवेग संरक्षित नहीं रहता",
+            mr: "केवळ गतिज ऊर्जा वापरता येते, कारण पिंड चिकटून एक झाल्यावर संवेग संरक्षित राहत नाही",
+          },
+          {
+            en: "Neither law applies, since conservation laws hold only for elastic collisions between rigid bodies",
+            hi: "कोई भी नियम लागू नहीं, क्योंकि संरक्षण-नियम केवल दृढ़ पिंडों की प्रत्यास्थ टक्करों पर चलते हैं",
+            mr: "कोणताही नियम लागू नाही, कारण संरक्षण-नियम केवळ दृढ पिंडांच्या प्रत्यास्थ टक्करींनाच चालतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The two conservation statements are not equally available, and knowing which one to reach for is most of what collision problems test. Momentum first, because it is the secure one. During the impact the clay lumps exert forces on each other, and by the third law those two forces are equal and opposite at every instant. Whatever momentum one gains, the other loses, so the total is unchanged — and this argument used nothing about the material, the duration, or whether the lumps bounced or stuck. It holds for steel, for clay, for a bullet embedding in a block. The only requirement is that no significant EXTERNAL force acts during the brief contact, which is why a collision on a table is analysed without worrying about gravity: the collision lasts milliseconds and gravity has no time to change the momentum appreciably. So: total momentum before is 4 × 5 + 6 × 0 = 20 kg m/s, and afterwards the combined 10 kg moves at v, giving 10v = 20 and v = 2 m/s. Now the energy audit. Before: ½ × 4 × 5² = 50 J. After: ½ × 10 × 2² = 20 J. Thirty joules, sixty per cent of the original, have left the kinetic account. They are not gone from the universe. Wet clay squashes; that deformation is permanent work done against the internal forces holding the material together, and it ends as a temperature rise in both lumps and a thud in the air. Weigh the clay afterwards and nothing is missing; measure it with a sensitive enough thermometer and the energy is there. This is exactly the elastic–inelastic distinction. In an elastic collision the bodies deform and then spring back, returning the stored energy to kinetic form, so kinetic energy comes out the same as it went in and both conservation laws may be used together — which is what makes elastic problems solvable for two unknown final velocities. In a perfectly inelastic collision the bodies do not spring back at all; they move off as one, and the kinetic energy lost is the largest amount that momentum conservation will permit. Every real collision lies somewhere between, and the extreme cases are the ones with clean arithmetic. There is a useful check hiding in the numbers. Notice the loss can never be all of the kinetic energy: momentum conservation forbids the combined lump from being at rest, because 20 kg m/s has to go somewhere. The final kinetic energy of a perfectly inelastic collision is always exactly p²/2M, here 400/20 = 20 J, and it is the floor below which no collision can take the kinetic energy. Finally, note the asymmetry in what the two laws are worth. Momentum conservation is a theorem — it follows from Newton's third law and needs no assumption about the material. Kinetic energy conservation is a modelling assumption, true of billiard balls and gas molecules and false of clay, cars and catches. Treating them as interchangeable is the error the student made, and it is not an arithmetic slip but a physical one. (The wrong answers grant kinetic energy a conservation it does not have, deny momentum one it always has, or abandon both laws in a case where one of them is exact.)",
+          hi: "दोनों संरक्षण-कथन समान रूप से उपलब्ध नहीं हैं, और कौन-सा उठाना है यह जानना ही टक्कर के प्रश्नों की अधिकांश परीक्षा है। पहले संवेग, क्योंकि वही सुरक्षित है। टक्कर के दौरान मिट्टी के लोंदे एक-दूसरे पर बल लगाते हैं, और तीसरे नियम से वे दोनों बल हर क्षण बराबर और विपरीत हैं। एक जो संवेग पाता है वही दूसरा खोता है, अतः कुल अपरिवर्तित रहता है — और इस तर्क ने पदार्थ, अवधि, या लोंदे उछले या चिपके, इसमें से कुछ इस्तेमाल नहीं किया। वह इस्पात पर चलता है, मिट्टी पर, गुटके में धँसती गोली पर। एकमात्र शर्त यह कि उस अल्प संपर्क में कोई महत्वपूर्ण बाह्य बल न लगे, इसीलिए मेज़ पर हुई टक्कर का विश्लेषण गुरुत्व की चिंता किए बिना होता है: टक्कर मिलीसेकंड चलती है और गुरुत्व के पास संवेग उल्लेखनीय रूप से बदलने का समय नहीं। अतः: पहले कुल संवेग 4 × 5 + 6 × 0 = 20 kg m/s, और बाद में संयुक्त 10 kg वेग v से चलता है, जिससे 10v = 20 और v = 2 m/s. अब ऊर्जा का हिसाब। पहले: ½ × 4 × 5² = 50 J. बाद में: ½ × 10 × 2² = 20 J. तीस जूल, मूल का साठ प्रतिशत, गतिज खाते से निकल गए। वे ब्रह्मांड से नहीं गए। गीली मिट्टी चिपटती है; वह विरूपण पदार्थ को जोड़े रखने वाले आंतरिक बलों के विरुद्ध किया गया स्थायी कार्य है, और वह दोनों लोंदों में ताप-वृद्धि तथा हवा में एक धमक बनकर समाप्त होता है। बाद में मिट्टी तौलो और कुछ कम नहीं; पर्याप्त संवेदनशील तापमापी से नापो और ऊर्जा वहीं है। यही प्रत्यास्थ-अप्रत्यास्थ भेद है। प्रत्यास्थ टक्कर में पिंड विरूपित होकर वापस उछल आते हैं, संचित ऊर्जा गतिज रूप में लौटा देते हैं, अतः गतिज ऊर्जा वैसी ही निकलती है जैसी गई थी और दोनों संरक्षण-नियम साथ प्रयोग किए जा सकते हैं — इसी से प्रत्यास्थ प्रश्न दो अज्ञात अंतिम वेगों के लिए हल हो पाते हैं। पूर्णतः अप्रत्यास्थ टक्कर में पिंड बिलकुल वापस नहीं उछलते; वे एक होकर चल पड़ते हैं, और खोई गतिज ऊर्जा उतनी सबसे अधिक होती है जितनी संवेग-संरक्षण अनुमति देगा। हर असली टक्कर कहीं बीच में पड़ती है, और चरम स्थितियाँ ही स्वच्छ गणित वाली हैं। संख्याओं में एक उपयोगी जाँच छिपी है। ध्यान दो हानि कभी पूरी गतिज ऊर्जा नहीं हो सकती: संवेग-संरक्षण संयुक्त लोंदे को विराम में रहने से मना करता है, क्योंकि 20 kg m/s को कहीं तो जाना है। पूर्णतः अप्रत्यास्थ टक्कर की अंतिम गतिज ऊर्जा सदा ठीक p²/2M होती है, यहाँ 400/20 = 20 J, और वही वह फ़र्श है जिससे नीचे कोई टक्कर गतिज ऊर्जा नहीं ले जा सकती। अंत में, दोनों नियमों के मूल्य में असमानता पर ध्यान दो। संवेग-संरक्षण प्रमेय है — वह न्यूटन के तीसरे नियम से निकलता है और पदार्थ के बारे में कोई मान्यता नहीं माँगता। गतिज ऊर्जा का संरक्षण एक निदर्श-मान्यता है, बिलियर्ड गेंदों और गैस अणुओं पर सच और मिट्टी, कारों तथा कैचों पर झूठ। उन्हें अदल-बदल योग्य मानना ही वह भूल है जो विद्यार्थी ने की, और वह गणना की नहीं, भौतिकी की भूल है। (ग़लत उत्तर गतिज ऊर्जा को वह संरक्षण देते जो उसमें नहीं, संवेग से वह छीनते जो उसमें सदा है, या ऐसी स्थिति में दोनों नियम छोड़ देते जहाँ उनमें से एक ठीक-ठीक सही है।)",
+          mr: "दोन्ही संरक्षण-विधाने सारखीच उपलब्ध नाहीत, आणि कोणते उचलायचे हे जाणणे हीच टक्करीच्या प्रश्नांची बहुतांश परीक्षा. आधी संवेग, कारण तोच सुरक्षित. टक्करीदरम्यान मातीचे गोळे एकमेकांवर बले लावतात, आणि तिसऱ्या नियमाने ती दोन्ही बले प्रत्येक क्षणी समान आणि विरुद्ध. एक जो संवेग मिळवतो तोच दुसरा गमावतो, म्हणून एकूण अपरिवर्तित — आणि या युक्तिवादाने पदार्थ, कालावधी, वा गोळे उसळले की चिकटले यांपैकी काहीही वापरले नाही. तो पोलादावर चालतो, मातीवर, ठोकळ्यात घुसणाऱ्या गोळीवर. एकमेव अट ही की त्या अल्प स्पर्शात कोणतेही महत्त्वाचे बाह्य बल लागू नये, म्हणूनच टेबलावरील टक्करीचे विश्लेषण गुरुत्वाची चिंता न करता होते: टक्कर मिलिसेकंद चालते आणि गुरुत्वाला संवेग लक्षणीयरीत्या बदलायला वेळ नाही. म्हणून: आधीचा एकूण संवेग 4 × 5 + 6 × 0 = 20 kg m/s, आणि नंतर एकत्रित 10 kg वेग v ने जाते, ज्यातून 10v = 20 आणि v = 2 m/s. आता ऊर्जेचा हिशोब. आधी: ½ × 4 × 5² = 50 J. नंतर: ½ × 10 × 2² = 20 J. तीस ज्यूल, मूळच्या साठ टक्के, गतिज खात्यातून निघून गेले. ती विश्वातून गेली नाहीत. ओली माती चपटते; ते विरूपण म्हणजे पदार्थाला एकत्र धरणाऱ्या आंतरिक बलांविरुद्ध केलेले कायमचे कार्य, आणि ते दोन्ही गोळ्यांत तापमानवाढ आणि हवेत एक धप बनून संपते. नंतर माती तोला आणि काहीही कमी नाही; पुरेशा संवेदनशील तापमापकाने मोजा आणि ऊर्जा तिथेच आहे. हाच तो प्रत्यास्थ-अप्रत्यास्थ भेद. प्रत्यास्थ टक्करीत पिंड विरूपित होऊन परत उसळतात, साठलेली ऊर्जा गतिज रूपात परत करतात, म्हणून गतिज ऊर्जा जशी गेली तशीच निघते आणि दोन्ही संरक्षण-नियम एकत्र वापरता येतात — यामुळेच प्रत्यास्थ प्रश्न दोन अज्ञात अंतिम वेगांसाठी सुटतात. पूर्णतः अप्रत्यास्थ टक्करीत पिंड मुळीच परत उसळत नाहीत; ते एक होऊन पुढे जातात, आणि गमावलेली गतिज ऊर्जा संवेग-संरक्षण जितकी परवानगी देईल तितकी सर्वाधिक असते. प्रत्येक खरी टक्कर कुठेतरी मध्ये पडते, आणि टोकाच्या स्थितीच स्वच्छ गणिताच्या. संख्यांत एक उपयुक्त तपासणी लपली आहे. लक्षात घ्या हानी कधीही अख्खी गतिज ऊर्जा असू शकत नाही: संवेग-संरक्षण एकत्रित गोळ्याला स्थिर राहण्यास मनाई करते, कारण 20 kg m/s ला कुठेतरी जावेच लागते. पूर्णतः अप्रत्यास्थ टक्करीची शेवटची गतिज ऊर्जा नेहमी नेमकी p²/2M असते, इथे 400/20 = 20 J, आणि तेच ते तळ ज्याखाली कोणतीही टक्कर गतिज ऊर्जा नेऊ शकत नाही. शेवटी, दोन्ही नियमांच्या मोलातील असमानता लक्षात घ्या. संवेग-संरक्षण हे प्रमेय — ते न्यूटनच्या तिसऱ्या नियमातून निघते आणि पदार्थाबद्दल कोणतेही गृहीतक मागत नाही. गतिज ऊर्जेचे संरक्षण हे प्रतिरूपण-गृहीतक, बिलियर्ड चेंडू व वायुरेणूंवर खरे आणि माती, मोटारी व झेलांवर खोटे. त्यांना अदलाबदल करण्याजोगे मानणे हीच ती चूक जी विद्यार्थ्याने केली, आणि ती आकडेमोडीची नव्हे तर भौतिकीची चूक. (चुकीची उत्तरे गतिज ऊर्जेला नसलेले संरक्षण देतात, संवेगाकडून नेहमी असलेले हिरावतात, वा ज्या स्थितीत त्यांपैकी एक नेमका बरोबर आहे तिथे दोन्ही नियम सोडून देतात.)",
+        },
+      },
+      /*H5*/
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 6 — System of Particles and Rotational Motion                   */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "physics-11-system-of-particles-and-rotational-motion",
+    subject: "PHYSICS",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 6 — System of Particles and Rotational Motion",
+      hi: "अध्याय 6 — कणों का निकाय तथा घूर्णी गति",
+      mr: "प्रकरण 6 — कणांची प्रणाली आणि परिवलनी गती",
+    },
+    name: {
+      en: "System of Particles and Rotational Motion",
+      hi: "कणों का निकाय तथा घूर्णी गति",
+      mr: "कणांची प्रणाली आणि परिवलनी गती",
+    },
+    summary: {
+      en: "Bodies stop being points, and every law learnt so far acquires a twin: force gains torque, mass gains a quantity that depends on where the mass was put rather than how much there is, momentum gains a version a skater can change by folding her arms, and a spinning cylinder rolling downhill loses to a sliding one because part of its energy went into turning instead of travelling.",
+      hi: "पिंड बिंदु होना छोड़ देते हैं, और अब तक सीखा हर नियम अपना जुड़वाँ पा लेता है: बल को बल-आघूर्ण मिलता है, द्रव्यमान को ऐसी राशि मिलती है जो इस पर निर्भर है कि द्रव्यमान रखा कहाँ गया, कितना है इस पर नहीं, संवेग को ऐसा रूप मिलता है जिसे स्केटर बाँहें समेटकर बदल सकती है, और ढलान पर लुढ़कता घूमता बेलन फिसलते बेलन से हार जाता है क्योंकि उसकी कुछ ऊर्जा चलने के बजाय घूमने में चली गई।",
+      mr: "पिंड बिंदू असणे थांबतात, आणि आतापर्यंत शिकलेल्या प्रत्येक नियमाला जुळे मिळते: बलाला बलआघूर्ण मिळते, वस्तुमानाला अशी राशी मिळते जी वस्तुमान कुठे ठेवले यावर अवलंबून, किती आहे यावर नव्हे, संवेगाला असे रूप मिळते जे स्केटर हात मिटवून बदलू शकते, आणि उतारावर घरंगळणारा फिरता दंडगोल घसरणाऱ्या दंडगोलाकडून हरतो कारण त्याची काही ऊर्जा प्रवास करण्याऐवजी फिरण्यात गेली.",
+    },
+    position: 6,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "centre-of-mass",
+        name: {
+          en: "The centre of mass",
+          hi: "द्रव्यमान केंद्र",
+          mr: "वस्तुमान केंद्र",
+        },
+        kind: "quantity",
+        prompt: {
+          en: "Throw a spanner spinning across a room and one particular point of it traces a clean parabola while every other point wobbles about that point. Which point is this?",
+          hi: "कमरे के आर-पार घूमता हुआ पाना फेंको और उसका एक विशेष बिंदु स्वच्छ परवलय खींचता है जबकि हर दूसरा बिंदु उसी के इर्द-गिर्द डोलता है। यह कौन-सा बिंदु है?",
+          mr: "खोलीत फिरता पाना फेका आणि त्याचा एक विशिष्ट बिंदू स्वच्छ परवलय काढतो तर बाकी प्रत्येक बिंदू त्याच्याभोवती डुलतो. हा कोणता बिंदू?",
+        },
+        statement: {
+          en: "The centre of mass moves exactly as a single particle of the system's total mass would move under the total external force, whatever the internal forces are doing.",
+          hi: "द्रव्यमान केंद्र ठीक वैसे चलता है जैसे निकाय के कुल द्रव्यमान का एक अकेला कण कुल बाह्य बल के अधीन चलता, आंतरिक बल चाहे जो कर रहे हों।",
+          mr: "वस्तुमान केंद्र नेमके तसे चालते जसे प्रणालीच्या एकूण वस्तुमानाचा एकच कण एकूण बाह्य बलाखाली चालला असता, आंतरिक बले काहीही करत असोत.",
+        },
+        detail: {
+          en: "It need not lie inside the body at all: for a ring or a horseshoe it sits in empty space, and a high jumper's can pass under the bar while every part of the jumper goes over it.",
+          hi: "उसे पिंड के भीतर होना ही ज़रूरी नहीं: छल्ले या नाल के लिए वह खाली जगह में बैठता है, और ऊँची कूद लगाने वाले का द्रव्यमान केंद्र छड़ के नीचे से निकल सकता है जबकि कूदने वाले का हर हिस्सा उसके ऊपर से जाता है।",
+          mr: "तो पिंडाच्या आत असायलाच हवा असे नाही: कड्यासाठी वा नालासाठी तो रिकाम्या जागेत बसतो, आणि उंच उडी मारणाऱ्याचा तो दांडीखालून जाऊ शकतो तर उडी मारणाऱ्याचा प्रत्येक भाग तिच्यावरून जातो.",
+        },
+        extra: {
+          en: "An exploding shell's fragments fly everywhere, yet their centre of mass continues along the original parabola, because an explosion is entirely internal and cannot shift it.",
+          hi: "फटते गोले के टुकड़े हर ओर उड़ते हैं, फिर भी उनका द्रव्यमान केंद्र मूल परवलय पर चलता रहता है, क्योंकि विस्फोट पूरी तरह आंतरिक है और उसे खिसका नहीं सकता।",
+          mr: "फुटणाऱ्या गोळ्याचे तुकडे सर्वत्र उडतात, तरीही त्यांचे वस्तुमान केंद्र मूळ परवलयावर चालत राहते, कारण स्फोट पूर्णपणे आंतरिक आहे आणि त्याला सरकवू शकत नाही.",
+        },
+        pair: {
+          left: {
+            en: "The one point of a thrown spanner that does not wobble",
+            hi: "फेंके गए पाने का एकमात्र बिंदु जो नहीं डोलता",
+            mr: "फेकलेल्या पान्याचा एकमेव बिंदू जो डुलत नाही",
+          },
+          right: {
+            en: "the centre of mass",
+            hi: "द्रव्यमान केंद्र",
+            mr: "वस्तुमान केंद्र",
+          },
+        },
+      },
+      {
+        id: "torque",
+        name: {
+          en: "Torque",
+          hi: "बल-आघूर्ण",
+          mr: "बलआघूर्ण",
+        },
+        kind: "quantity",
+        prompt: {
+          en: "A door handle is fitted at the edge and never beside the hinge, and a spanner is lengthened when a nut will not shift, because this quantity is the force multiplied by its perpendicular distance from the axis. Which quantity is this?",
+          hi: "दरवाज़े का हत्था किनारे पर लगता है, कब्ज़े के पास कभी नहीं, और नट न घूमे तो पाना लंबा किया जाता है, क्योंकि यह राशि बल गुणा अक्ष से उसकी लंबवत दूरी है। यह कौन-सी राशि है?",
+          mr: "दाराची मूठ कडेला बसवली जाते, बिजागरीजवळ कधीच नाही, आणि नट फिरत नसेल तर पाना लांब केला जातो, कारण ही राशी म्हणजे बल गुणिले अक्षापासूनचे त्याचे लंब अंतर. ही कोणती राशी?",
+        },
+        statement: {
+          en: "Torque is the turning effect of a force, equal to the force times its perpendicular distance from the axis, so the same force applied further out turns a body harder.",
+          hi: "बल-आघूर्ण बल का घुमाव-प्रभाव है, बल गुणा अक्ष से उसकी लंबवत दूरी के बराबर, अतः वही बल अधिक दूर लगाने पर पिंड को अधिक ज़ोर से घुमाता है।",
+          mr: "बलआघूर्ण म्हणजे बलाचा वळवण्याचा परिणाम, बल गुणिले अक्षापासूनचे त्याचे लंब अंतर, म्हणून तेच बल अधिक दूर लावल्यास पिंडाला अधिक जोराने वळवते.",
+        },
+        detail: {
+          en: "A force whose line of action passes through the axis has zero perpendicular distance and therefore produces no rotation, however large it is — which is why pushing a door towards its hinge never opens it.",
+          hi: "जिस बल की क्रिया-रेखा अक्ष से होकर गुज़रती है उसकी लंबवत दूरी शून्य है और इसलिए वह कोई घूर्णन नहीं देता, चाहे कितना ही बड़ा हो — इसीलिए दरवाज़े को कब्ज़े की ओर धकेलने से वह कभी नहीं खुलता।",
+          mr: "ज्या बलाची क्रियारेषा अक्षातून जाते त्याचे लंब अंतर शून्य आणि म्हणून ते कोणतेही परिवलन देत नाही, ते कितीही मोठे असो — म्हणूनच दार बिजागरीकडे ढकलल्याने ते कधीच उघडत नाही.",
+        },
+        extra: {
+          en: "Two equal and opposite forces on different lines form a couple, which produces pure rotation with no net force at all, as when both hands turn a steering wheel.",
+          hi: "भिन्न रेखाओं पर लगे दो बराबर और विपरीत बल एक बल-युग्म बनाते हैं, जो बिना किसी परिणामी बल के शुद्ध घूर्णन देता है, जैसे दोनों हाथ स्टियरिंग घुमाते हैं।",
+          mr: "वेगळ्या रेषांवरची दोन समान आणि विरुद्ध बले एक बलयुग्म बनवतात, जे कोणत्याही परिणामी बलाशिवाय शुद्ध परिवलन देते, जसे दोन्ही हात स्टिअरिंग फिरवतात.",
+        },
+        pair: {
+          left: {
+            en: "Push at the hinge and nothing turns",
+            hi: "कब्ज़े पर धकेलो और कुछ नहीं घूमता",
+            mr: "बिजागरीवर ढकला आणि काहीही फिरत नाही",
+          },
+          right: {
+            en: "torque",
+            hi: "बल-आघूर्ण",
+            mr: "बलआघूर्ण",
+          },
+        },
+      },
+      {
+        id: "moment-of-inertia",
+        name: {
+          en: "Moment of inertia",
+          hi: "जड़त्व आघूर्ण",
+          mr: "जडत्व आघूर्ण",
+        },
+        kind: "quantity",
+        prompt: {
+          en: "A hollow ring and a solid disc of the very same mass and radius are pushed with the same twist, and the ring is much harder to get spinning, because this quantity weights each bit of mass by the square of its distance from the axis. Which quantity is this?",
+          hi: "ठीक उसी द्रव्यमान और त्रिज्या के खोखले छल्ले और ठोस चकती को समान मरोड़ दी जाती है, और छल्ला घुमाना कहीं कठिन होता है, क्योंकि यह राशि द्रव्यमान के हर टुकड़े को अक्ष से उसकी दूरी के वर्ग से भारित करती है। यह कौन-सी राशि है?",
+          mr: "अगदी त्याच वस्तुमान आणि त्रिज्येच्या पोकळ कड्याला आणि भरीव चकतीला समान पीळ दिला जातो, आणि कडे फिरवणे कितीतरी कठीण असते, कारण ही राशी वस्तुमानाच्या प्रत्येक तुकड्याला अक्षापासूनच्या त्याच्या अंतराच्या वर्गाने भारित करते. ही कोणती राशी?",
+        },
+        statement: {
+          en: "Moment of inertia is the sum of each element of mass times the square of its distance from the axis, so it depends on where the mass sits and not merely on how much of it there is.",
+          hi: "जड़त्व आघूर्ण द्रव्यमान के हर अवयव गुणा अक्ष से उसकी दूरी के वर्ग का योग है, अतः वह इस पर निर्भर है कि द्रव्यमान बैठा कहाँ है, केवल इस पर नहीं कि वह कितना है।",
+          mr: "जडत्व आघूर्ण म्हणजे वस्तुमानाचा प्रत्येक घटक गुणिले अक्षापासूनच्या त्याच्या अंतराचा वर्ग यांची बेरीज, म्हणून ते वस्तुमान कुठे बसले आहे यावर अवलंबून, केवळ ते किती आहे यावर नाही.",
+        },
+        detail: {
+          en: "The same body has different values about different axes, so it is meaningless to quote one without naming the axis — a rod about its centre has a quarter the value it has about one end.",
+          hi: "वही पिंड भिन्न अक्षों के परितः भिन्न मान रखता है, अतः अक्ष बताए बिना कोई मान कहना निरर्थक है — छड़ का केंद्र के परितः मान उसके एक सिरे के परितः मान का एक चौथाई है।",
+          mr: "तोच पिंड वेगवेगळ्या अक्षांभोवती वेगळी मूल्ये बाळगतो, म्हणून अक्ष न सांगता एखादे मूल्य सांगणे निरर्थक — दांडीचे केंद्राभोवतीचे मूल्य तिच्या एका टोकाभोवतीच्या मूल्याच्या एक चतुर्थांश.",
+        },
+        extra: {
+          en: "It plays the part in rotation that mass plays in straight-line motion, appearing in τ = Iα, in L = Iω and in the rotational kinetic energy ½Iω².",
+          hi: "घूर्णन में वह वही भूमिका निभाता है जो सरल-रेखीय गति में द्रव्यमान निभाता है, और τ = Iα, L = Iω तथा घूर्णी गतिज ऊर्जा ½Iω² में आता है।",
+          mr: "परिवलनात तो तीच भूमिका बजावतो जी सरळरेषीय गतीत वस्तुमान बजावते, आणि τ = Iα, L = Iω तसेच परिवलनी गतिज ऊर्जा ½Iω² मध्ये येतो.",
+        },
+        pair: {
+          left: {
+            en: "Same mass, same radius, twice as hard to spin",
+            hi: "वही द्रव्यमान, वही त्रिज्या, घुमाने में दुगुना कठिन",
+            mr: "तेच वस्तुमान, तीच त्रिज्या, फिरवायला दुप्पट कठीण",
+          },
+          right: {
+            en: "moment of inertia",
+            hi: "जड़त्व आघूर्ण",
+            mr: "जडत्व आघूर्ण",
+          },
+        },
+      },
+      {
+        id: "angular-momentum-conserved",
+        name: {
+          en: "Conservation of angular momentum",
+          hi: "कोणीय संवेग का संरक्षण",
+          mr: "कोनीय संवेगाचे संरक्षण",
+        },
+        kind: "principle",
+        prompt: {
+          en: "A skater spinning with arms outstretched pulls them in and speeds up sharply, having applied no torque about her own axis and touched nothing: the product Iω had to stay put, so ω rose as I fell. Which law is this?",
+          hi: "बाँहें फैलाए घूमती स्केटर उन्हें समेटती है और तेज़ी से घूमने लगती है, जबकि उसने अपने अक्ष के परितः कोई बल-आघूर्ण नहीं लगाया और किसी चीज़ को छुआ नहीं: गुणनफल Iω को टिका रहना था, अतः I घटते ही ω चढ़ गया। यह कौन-सा नियम है?",
+          mr: "हात पसरून फिरणारी स्केटर ते मिटवते आणि झपाट्याने वेगात फिरू लागते, तिने स्वतःच्या अक्षाभोवती कोणतेही बलआघूर्ण लावलेले नाही आणि कशालाही स्पर्श केलेला नाही: गुणाकार Iω ला टिकून राहावे लागले, म्हणून I घटताच ω चढला. हा कोणता नियम?",
+        },
+        statement: {
+          en: "Angular momentum Iω is conserved when no external torque acts, so a body that redistributes its own mass closer to the axis must spin faster to compensate.",
+          hi: "जब कोई बाह्य बल-आघूर्ण नहीं लगता तो कोणीय संवेग Iω संरक्षित रहता है, अतः जो पिंड अपना द्रव्यमान अक्ष के पास पुनर्वितरित करता है उसे भरपाई में तेज़ घूमना पड़ता है।",
+          mr: "जेव्हा कोणतेही बाह्य बलआघूर्ण लागत नाही तेव्हा कोनीय संवेग Iω संरक्षित राहतो, म्हणून जो पिंड आपले वस्तुमान अक्षाजवळ पुनर्वितरित करतो त्याला भरपाईसाठी अधिक वेगाने फिरावे लागते.",
+        },
+        detail: {
+          en: "Kinetic energy is not conserved in the process: the skater's rotational energy rises, and the extra joules come from the muscular work she does pulling her arms inwards against their tendency to fly out.",
+          hi: "इस प्रक्रिया में गतिज ऊर्जा संरक्षित नहीं रहती: स्केटर की घूर्णी ऊर्जा बढ़ती है, और अतिरिक्त जूल उस पेशीय कार्य से आते हैं जो वह बाँहों को बाहर उड़ने की प्रवृत्ति के विरुद्ध भीतर खींचने में करती है।",
+          mr: "या प्रक्रियेत गतिज ऊर्जा संरक्षित राहत नाही: स्केटरची परिवलनी ऊर्जा वाढते, आणि जादा ज्यूल त्या स्नायुकार्यातून येतात जे ती हात बाहेर उडण्याच्या प्रवृत्तीविरुद्ध आत खेचताना करते.",
+        },
+        extra: {
+          en: "The same law keeps a planet moving faster near the Sun than far from it, which is Kepler's second law restated, and it is why a bicycle wheel resists being tipped while it spins.",
+          hi: "यही नियम ग्रह को सूर्य के पास दूर की अपेक्षा तेज़ चलाए रखता है, जो केप्लर के दूसरे नियम का ही दूसरा कथन है, और इसी से घूमता साइकिल का पहिया झुकाए जाने का विरोध करता है।",
+          mr: "हाच नियम ग्रहाला सूर्याजवळ दूरच्या तुलनेत अधिक वेगाने चालवत ठेवतो, जे केप्लरच्या दुसऱ्या नियमाचेच दुसरे मांडणे, आणि यामुळेच फिरणारे सायकलचे चाक कलवले जाण्यास विरोध करते.",
+        },
+        pair: {
+          left: {
+            en: "Fold the arms in and the spin speeds up by itself",
+            hi: "बाँहें समेटो और घुमाव अपने आप तेज़ हो जाता है",
+            mr: "हात मिटवा आणि फिरणे आपोआप वेगवान होते",
+          },
+          right: {
+            en: "conservation of angular momentum",
+            hi: "कोणीय संवेग का संरक्षण",
+            mr: "कोनीय संवेगाचे संरक्षण",
+          },
+        },
+      },
+      {
+        id: "rolling-without-slipping",
+        name: {
+          en: "Rolling without slipping",
+          hi: "बिना फिसले लोटन",
+          mr: "न घसरता घरंगळणे",
+        },
+        kind: "principle",
+        prompt: {
+          en: "The point of a wheel touching the road is momentarily at rest with respect to the road, which is why the tyre leaves no smear and why v equals ωR exactly. Which condition is this?",
+          hi: "सड़क को छूता पहिये का बिंदु सड़क के सापेक्ष क्षण भर के लिए विराम में होता है, इसीलिए टायर कोई लकीर नहीं छोड़ता और इसीलिए v ठीक ωR के बराबर होता है। यह कौन-सी शर्त है?",
+          mr: "रस्त्याला स्पर्श करणारा चाकाचा बिंदू रस्त्याच्या सापेक्ष क्षणभर स्थिर असतो, म्हणूनच टायर कोणताही ओघळ सोडत नाही आणि म्हणूनच v नेमका ωR इतका असतो. ही कोणती अट?",
+        },
+        statement: {
+          en: "Rolling without slipping requires the contact point to be instantaneously at rest relative to the surface, which fixes the linear speed of the centre as v = ωR.",
+          hi: "बिना फिसले लोटन के लिए संपर्क बिंदु का सतह के सापेक्ष तात्क्षणिक विराम में होना ज़रूरी है, जो केंद्र की रैखिक चाल को v = ωR पर बाँध देता है।",
+          mr: "न घसरता घरंगळण्यासाठी स्पर्शबिंदू पृष्ठभागाच्या सापेक्ष तात्कालिक स्थिर असणे आवश्यक, जे केंद्राची रेषीय चाल v = ωR वर बांधते.",
+        },
+        detail: {
+          en: "The friction that enforces this condition does no work, precisely because the contact point does not slide, so a rolling body can descend a slope without any energy going to heat.",
+          hi: "जो घर्षण इस शर्त को लागू करता है वह कोई कार्य नहीं करता, ठीक इसीलिए कि संपर्क बिंदु फिसलता नहीं, अतः लुढ़कता पिंड बिना किसी ऊर्जा को ऊष्मा में गँवाए ढलान उतर सकता है।",
+          mr: "जे घर्षण ही अट लागू करते ते कोणतेही कार्य करत नाही, नेमके यामुळे की स्पर्शबिंदू घसरत नाही, म्हणून घरंगळणारा पिंड कोणतीही ऊर्जा उष्णतेत न गमावता उतार उतरू शकतो.",
+        },
+        extra: {
+          en: "The total kinetic energy of a rolling body splits into ½mv² of travel plus ½Iω² of turning, which is why a rolling cylinder always loses a downhill race to a frictionless sliding block of the same mass.",
+          hi: "लुढ़कते पिंड की कुल गतिज ऊर्जा चलने के ½mv² और घूमने के ½Iω² में बँटती है, इसीलिए लुढ़कता बेलन उसी द्रव्यमान के घर्षण-रहित फिसलते गुटके से ढलान की दौड़ सदा हारता है।",
+          mr: "घरंगळणाऱ्या पिंडाची एकूण गतिज ऊर्जा प्रवासाच्या ½mv² आणि फिरण्याच्या ½Iω² मध्ये विभागते, म्हणूनच घरंगळणारा दंडगोल त्याच वस्तुमानाच्या घर्षणविरहित घसरणाऱ्या ठोकळ्याकडून उताराची शर्यत नेहमी हरतो.",
+        },
+        pair: {
+          left: {
+            en: "The friction that grips and yet does no work",
+            hi: "वह घर्षण जो पकड़ता है और फिर भी कार्य नहीं करता",
+            mr: "ते घर्षण जे पकडते आणि तरीही कार्य करत नाही",
+          },
+          right: {
+            en: "rolling without slipping",
+            hi: "बिना फिसले लोटन",
+            mr: "न घसरता घरंगळणे",
+          },
+        },
+      },
+      {
+        id: "radius-of-gyration",
+        name: {
+          en: "The radius of gyration",
+          hi: "घूर्णन त्रिज्या",
+          mr: "परिवलन त्रिज्या",
+        },
+        kind: "quantity",
+        prompt: {
+          en: "The whole mass of an irregular body is imagined gathered into a single ring at one particular distance, chosen so that the body's resistance to turning comes out unchanged. Which distance is this?",
+          hi: "किसी अनियमित पिंड का पूरा द्रव्यमान एक विशेष दूरी पर एक ही छल्ले में इकट्ठा माना जाता है, यह दूरी ऐसी चुनी जाती है कि पिंड का घूमने का प्रतिरोध अपरिवर्तित निकले। यह कौन-सी दूरी है?",
+          mr: "एखाद्या अनियमित पिंडाचे संपूर्ण वस्तुमान एका विशिष्ट अंतरावर एकाच कड्यात गोळा केलेले मानले जाते, हे अंतर असे निवडले जाते की पिंडाचा फिरण्याचा विरोध अपरिवर्तित निघेल. हे कोणते अंतर?",
+        },
+        statement: {
+          en: "The radius of gyration k is defined by I = Mk², so it is the single distance at which the entire mass would have to be placed to give the body its actual moment of inertia.",
+          hi: "घूर्णन त्रिज्या k को I = Mk² से परिभाषित किया जाता है, अतः वह वह अकेली दूरी है जिस पर पूरा द्रव्यमान रखने पर पिंड को उसका वास्तविक जड़त्व आघूर्ण मिलेगा।",
+          mr: "परिवलन त्रिज्या k ही I = Mk² ने व्याख्यायित होते, म्हणून ते ते एकमेव अंतर ज्यावर संपूर्ण वस्तुमान ठेवल्यास पिंडाला त्याचे प्रत्यक्ष जडत्व आघूर्ण मिळेल.",
+        },
+        detail: {
+          en: "It is a purely geometric length once the axis is fixed, independent of how heavy the body is, so two discs of different materials but the same shape share the same value.",
+          hi: "अक्ष तय हो जाने पर यह विशुद्ध ज्यामितीय लंबाई है, इस पर निर्भर नहीं कि पिंड कितना भारी है, अतः भिन्न पदार्थों की पर एक ही आकार की दो चकतियाँ वही मान साझा करती हैं।",
+          mr: "अक्ष ठरल्यावर ही निव्वळ भूमितीय लांबी, पिंड किती जड आहे यावर अवलंबून नाही, म्हणून वेगळ्या पदार्थांच्या पण एकाच आकाराच्या दोन चकत्या तेच मूल्य वाटून घेतात.",
+        },
+        extra: {
+          en: "For a thin ring it equals the radius itself, since every particle already lies at that distance, and for every other shape about the same axis it is smaller.",
+          hi: "पतले छल्ले के लिए वह स्वयं त्रिज्या के बराबर है, क्योंकि हर कण पहले से उसी दूरी पर है, और उसी अक्ष के परितः हर दूसरे आकार के लिए वह छोटी होती है।",
+          mr: "पातळ कड्यासाठी ती स्वतः त्रिज्येइतकी, कारण प्रत्येक कण आधीच त्याच अंतरावर आहे, आणि त्याच अक्षाभोवती इतर प्रत्येक आकारासाठी ती लहान असते.",
+        },
+        pair: {
+          left: {
+            en: "A length that does not care what the body is made of",
+            hi: "ऐसी लंबाई जिसे इससे मतलब नहीं कि पिंड किसका बना है",
+            mr: "अशी लांबी जिला पिंड कशाचा बनला याची पर्वा नाही",
+          },
+          right: {
+            en: "the radius of gyration",
+            hi: "घूर्णन त्रिज्या",
+            mr: "परिवलन त्रिज्या",
+          },
+        },
+      },
+      /*F6*/
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A solid cylinder and a frictionless block of the same mass are released together from the same height on the same slope. The block reaches the bottom first. A student says friction slowed the cylinder down. Explain what actually happened, given that rolling friction here does no work.",
+          hi: "समान द्रव्यमान का ठोस बेलन और घर्षण-रहित गुटका उसी ढलान पर उसी ऊँचाई से साथ छोड़े जाते हैं। गुटका पहले तल पर पहुँचता है। एक विद्यार्थी कहता है कि घर्षण ने बेलन को धीमा किया। समझाओ वस्तुतः हुआ क्या, यह देखते हुए कि यहाँ लोटन-घर्षण कोई कार्य नहीं करता।",
+          mr: "समान वस्तुमानाचा भरीव दंडगोल आणि घर्षणविरहित ठोकळा त्याच उतारावर त्याच उंचीवरून एकत्र सोडले जातात. ठोकळा आधी तळाशी पोहोचतो. एक विद्यार्थी म्हणतो की घर्षणाने दंडगोल मंदावला. प्रत्यक्षात काय घडले ते समजावा, हे लक्षात घेऊन की इथले घरंगळ-घर्षण कोणतेही कार्य करत नाही.",
+        },
+        choices: [
+          {
+            en: "No energy was lost at all. Both bodies arrive with exactly the same total kinetic energy, mgh. The block puts all of it into ½mv²; the cylinder must split it, because rolling without slipping forces ω = v/R, so part of the store goes into ½Iω² of turning. With I = ½mR² for a solid cylinder the split is two-thirds travelling and one-third turning, leaving the cylinder slower at the bottom. Friction here supplies the torque that makes it roll and does no work, since the contact point never slides",
+            hi: "कोई ऊर्जा खोई ही नहीं। दोनों पिंड ठीक उसी कुल गतिज ऊर्जा mgh के साथ पहुँचते हैं। गुटका उसका सब ½mv² में डाल देता है; बेलन को बाँटना पड़ता है, क्योंकि बिना फिसले लोटन ω = v/R को बाध्य करता है, अतः भंडार का एक हिस्सा घूमने के ½Iω² में जाता है। ठोस बेलन के लिए I = ½mR² के साथ बँटवारा दो-तिहाई चलने में और एक-तिहाई घूमने में होता है, जिससे बेलन तल पर धीमा रहता है। यहाँ घर्षण वह बल-आघूर्ण देता है जो उसे लुढ़काता है और कोई कार्य नहीं करता, क्योंकि संपर्क बिंदु कभी फिसलता ही नहीं",
+            mr: "कोणतीही ऊर्जा गमावलीच नाही. दोन्ही पिंड नेमक्या त्याच एकूण गतिज ऊर्जेसह — mgh — पोहोचतात. ठोकळा ती सर्व ½mv² मध्ये टाकतो; दंडगोलाला विभागावी लागते, कारण न घसरता घरंगळणे ω = v/R ला भाग पाडते, म्हणून साठ्याचा काही भाग फिरण्याच्या ½Iω² मध्ये जातो. भरीव दंडगोलासाठी I = ½mR² सह विभागणी दोन-तृतीयांश प्रवासात आणि एक-तृतीयांश फिरण्यात होते, ज्यामुळे दंडगोल तळाशी सावकाश राहतो. इथले घर्षण त्याला घरंगळवणारे बलआघूर्ण पुरवते आणि कोणतेही कार्य करत नाही, कारण स्पर्शबिंदू कधीही घसरत नाही",
+          },
+          {
+            en: "The student is right: friction converted part of the cylinder's energy into heat, which is why it arrived with less",
+            hi: "विद्यार्थी सही है: घर्षण ने बेलन की कुछ ऊर्जा ऊष्मा में बदल दी, इसीलिए वह कम लेकर पहुँचा",
+            mr: "विद्यार्थी बरोबर: घर्षणाने दंडगोलाची काही ऊर्जा उष्णतेत बदलली, म्हणून तो कमी घेऊन पोहोचला",
+          },
+          {
+            en: "The cylinder is slower because its mass is spread out, so gravity has to pull on a larger volume",
+            hi: "बेलन इसलिए धीमा है कि उसका द्रव्यमान फैला हुआ है, अतः गुरुत्व को बड़े आयतन को खींचना पड़ता है",
+            mr: "दंडगोल यामुळे सावकाश की त्याचे वस्तुमान पसरलेले आहे, म्हणून गुरुत्वाला मोठे घनफळ ओढावे लागते",
+          },
+          {
+            en: "The two must in fact arrive together, since energy conservation gives both v = √(2gh) regardless of shape",
+            hi: "दोनों को वस्तुतः साथ ही पहुँचना चाहिए, क्योंकि ऊर्जा-संरक्षण आकार से परे दोनों को v = √(2gh) देता है",
+            mr: "दोघांनी प्रत्यक्षात एकत्रच पोहोचायला हवे, कारण ऊर्जा-संरक्षण आकाराची पर्वा न करता दोघांना v = √(2gh) देते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Begin with what is the same for both, because that is the surprising part. Each body starts at rest at height h and ends at the bottom, and in each case the only force doing work is gravity — for the block because the slope is frictionless, for the cylinder because rolling friction acts at a point that is instantaneously at rest and therefore does no work at all. So both arrive with total kinetic energy exactly mgh. Nothing has been lost by either. What differs is how that energy has to be spent. The block has only one way to hold kinetic energy: ½mv². Setting mgh = ½mv² gives v = √(2gh), the familiar result. The cylinder has two accounts, and the rolling condition means it cannot choose between them. Rolling without slipping ties ω to v by ω = v/R, so a cylinder moving at v is necessarily spinning at v/R — the two are not independent. Its total kinetic energy is ½mv² + ½Iω², and for a solid cylinder I = ½mR², so ½Iω² = ½ × ½mR² × v²/R² = ¼mv². The total is therefore ½mv² + ¼mv² = ¾mv². Setting that equal to mgh gives v = √(4gh/3), which is smaller than √(2gh) by a factor of √(2/3), about 0.82. The cylinder arrives at 82 per cent of the block's speed, and it does so having spent one third of its energy on rotation and two thirds on travel. So the cylinder is not slower because energy went missing. It is slower because a fixed budget had to be divided, and only the translational share shows up as speed along the slope. This is why the answer depends on shape and not on mass or radius: substitute a hollow ring, where I = mR², and the split becomes half and half, giving v = √(gh) — slower still. A race down a slope between a ring, a solid cylinder and a sphere is decided entirely by which has the smaller fraction of its mass far from the axis, and the sphere wins because its mass is most tightly gathered. Neither the mass nor the radius appears anywhere in the final speeds, so a marble and a cannonball of the same shape tie exactly. Two further points settle the wrong answers. Friction here is static, not kinetic: the contact point does not slide, so there is no relative motion at the point of application, and work is force times the displacement OF THE POINT WHERE THE FORCE ACTS, which is zero. That is why no heat is generated and why a rolling ball can roll for a long way. And the last option is a trap worth naming: energy conservation does apply to both, but it constrains the TOTAL kinetic energy, not the speed. Reading mgh = ½mv² for a rolling body is exactly the step that omits the rotational account. (The other wrong answers destroy energy that has been shown to be intact, or make gravity's pull depend on how the mass is arranged, which it never does.)",
+          hi: "पहले वह देखो जो दोनों के लिए एक-सा है, क्योंकि चौंकाने वाला हिस्सा वही है। हर पिंड ऊँचाई h पर विराम से चलता है और तल पर समाप्त होता है, और दोनों में कार्य करने वाला एकमात्र बल गुरुत्व है — गुटके के लिए इसलिए कि ढलान घर्षण-रहित है, बेलन के लिए इसलिए कि लोटन-घर्षण ऐसे बिंदु पर लगता है जो तात्क्षणिक रूप से विराम में है और इसलिए कोई कार्य करता ही नहीं। अतः दोनों ठीक mgh कुल गतिज ऊर्जा लेकर पहुँचते हैं। किसी ने कुछ खोया नहीं। भिन्न यह है कि वह ऊर्जा ख़र्च कैसे करनी पड़ती है। गुटके के पास गतिज ऊर्जा रखने का एक ही तरीक़ा है: ½mv². mgh = ½mv² रखने पर v = √(2gh) मिलता है, जाना-पहचाना परिणाम। बेलन के पास दो खाते हैं, और लोटन की शर्त का अर्थ है कि वह उनमें से चुन नहीं सकता। बिना फिसले लोटन ω को v से ω = v/R द्वारा बाँध देता है, अतः v से चलता बेलन अनिवार्यतः v/R से घूम रहा है — दोनों स्वतंत्र नहीं। उसकी कुल गतिज ऊर्जा ½mv² + ½Iω² है, और ठोस बेलन के लिए I = ½mR², अतः ½Iω² = ½ × ½mR² × v²/R² = ¼mv². कुल इसलिए ½mv² + ¼mv² = ¾mv². उसे mgh के बराबर रखने पर v = √(4gh/3) मिलता है, जो √(2gh) से √(2/3) यानी लगभग 0.82 गुना छोटा है। बेलन गुटके की चाल के 82 प्रतिशत पर पहुँचता है, और ऐसा वह अपनी एक तिहाई ऊर्जा घूर्णन पर और दो तिहाई चलने पर ख़र्च करके करता है। अतः बेलन इसलिए धीमा नहीं कि ऊर्जा लुप्त हुई। वह इसलिए धीमा है कि एक तय बजट बाँटना पड़ा, और केवल स्थानांतरण वाला हिस्सा ढलान पर चाल के रूप में दिखता है। इसीलिए उत्तर आकार पर निर्भर है, द्रव्यमान या त्रिज्या पर नहीं: खोखला छल्ला रखो, जहाँ I = mR², और बँटवारा आधा-आधा हो जाता है, जिससे v = √(gh) — और भी धीमा। ढलान पर छल्ले, ठोस बेलन और गोले की दौड़ पूरी तरह इससे तय होती है कि किसका द्रव्यमान अक्ष से दूर कम अनुपात में है, और गोला जीतता है क्योंकि उसका द्रव्यमान सबसे कसकर सिमटा है। अंतिम चालों में न द्रव्यमान कहीं आता है न त्रिज्या, अतः एक ही आकार के कंचे और तोप के गोले की ठीक बराबरी रहती है। दो और बातें ग़लत उत्तरों को निपटा देती हैं। यहाँ घर्षण स्थैतिक है, गतिज नहीं: संपर्क बिंदु फिसलता नहीं, अतः बल लगने के बिंदु पर कोई सापेक्ष गति नहीं, और कार्य बल गुणा उस बिंदु का विस्थापन है जहाँ बल लगता है, जो शून्य है। इसीलिए कोई ऊष्मा नहीं बनती और इसीलिए लुढ़कती गेंद दूर तक लुढ़क सकती है। और अंतिम विकल्प नाम लेने योग्य जाल है: ऊर्जा-संरक्षण दोनों पर लागू होता ही है, पर वह कुल गतिज ऊर्जा को बाँधता है, चाल को नहीं। लुढ़कते पिंड के लिए mgh = ½mv² पढ़ना ठीक वही क़दम है जो घूर्णी खाता छोड़ देता है। (बाक़ी ग़लत उत्तर उस ऊर्जा को नष्ट कर देते जो सलामत सिद्ध हो चुकी, या गुरुत्व के खिंचाव को इस पर निर्भर बना देते कि द्रव्यमान जमाया कैसे गया, जो वह कभी नहीं होता।)",
+          mr: "आधी दोघांसाठी जे सारखे आहे ते पाहा, कारण चकित करणारा भागच तोच. प्रत्येक पिंड h उंचीवर स्थिरावस्थेतून सुरू होतो आणि तळाशी संपतो, आणि दोन्हींत कार्य करणारे एकमेव बल गुरुत्व — ठोकळ्यासाठी कारण उतार घर्षणविरहित, दंडगोलासाठी कारण घरंगळ-घर्षण अशा बिंदूवर लागते जो तात्कालिक स्थिर आहे आणि म्हणून कोणतेही कार्य करतच नाही. म्हणून दोघेही नेमकी mgh ही एकूण गतिज ऊर्जा घेऊन पोहोचतात. कोणीही काहीही गमावलेले नाही. वेगळे हे की ती ऊर्जा खर्च कशी करावी लागते. ठोकळ्याकडे गतिज ऊर्जा ठेवण्याचा एकच मार्ग: ½mv². mgh = ½mv² ठेवल्यास v = √(2gh), ओळखीचा निकाल. दंडगोलाकडे दोन खाती, आणि घरंगळण्याच्या अटीचा अर्थ तो त्यांतून निवडू शकत नाही. न घसरता घरंगळणे ω ला v शी ω = v/R ने बांधते, म्हणून v ने जाणारा दंडगोल अपरिहार्यपणे v/R ने फिरत आहे — दोन्ही स्वतंत्र नाहीत. त्याची एकूण गतिज ऊर्जा ½mv² + ½Iω², आणि भरीव दंडगोलासाठी I = ½mR², म्हणून ½Iω² = ½ × ½mR² × v²/R² = ¼mv². एकूण म्हणून ½mv² + ¼mv² = ¾mv². ते mgh इतके ठेवल्यास v = √(4gh/3), जे √(2gh) हून √(2/3) म्हणजे सुमारे 0.82 पट लहान. दंडगोल ठोकळ्याच्या चालीच्या 82 टक्क्यांवर पोहोचतो, आणि तो असे आपली एक तृतीयांश ऊर्जा परिवलनावर आणि दोन तृतीयांश प्रवासावर खर्चून करतो. म्हणून दंडगोल ऊर्जा हरवली म्हणून सावकाश नाही. तो यामुळे सावकाश की ठरलेला अर्थसंकल्प विभागावा लागला, आणि केवळ स्थानांतरणाचा वाटा उतारावर चाल म्हणून दिसतो. म्हणूनच उत्तर आकारावर अवलंबून, वस्तुमान वा त्रिज्येवर नाही: पोकळे कडे ठेवा, जिथे I = mR², आणि विभागणी अर्धी-अर्धी होते, ज्यातून v = √(gh) — आणखी सावकाश. उतारावरची कडे, भरीव दंडगोल आणि गोल यांची शर्यत पूर्णपणे कोणाचे वस्तुमान अक्षापासून दूर कमी प्रमाणात आहे यावरून ठरते, आणि गोल जिंकतो कारण त्याचे वस्तुमान सर्वांत घट्ट एकवटलेले. शेवटच्या चालींत ना वस्तुमान कुठे येते ना त्रिज्या, म्हणून एकाच आकाराची गोटी आणि तोफगोळा नेमकी बरोबरी करतात. आणखी दोन मुद्दे चुकीची उत्तरे निकाली काढतात. इथले घर्षण स्थितिक आहे, गतिज नव्हे: स्पर्शबिंदू घसरत नाही, म्हणून बल लागण्याच्या बिंदूवर कोणतीही सापेक्ष गती नाही, आणि कार्य म्हणजे बल गुणिले ज्या बिंदूवर बल लागते त्याचे विस्थापन, जे शून्य आहे. म्हणूनच कोणतीही उष्णता तयार होत नाही आणि म्हणूनच घरंगळणारा चेंडू दूरवर घरंगळू शकतो. आणि शेवटचा पर्याय नाव घेण्याजोगा सापळा: ऊर्जा-संरक्षण दोघांनाही लागू होतेच, पण ते एकूण गतिज ऊर्जेला बांधते, चालीला नाही. घरंगळणाऱ्या पिंडासाठी mgh = ½mv² वाचणे हेच नेमके ते पाऊल जे परिवलनी खाते वगळते. (उरलेली चुकीची उत्तरे शाबूत सिद्ध झालेली ऊर्जा नष्ट करतात, वा गुरुत्वाची ओढ वस्तुमान कसे मांडले यावर अवलंबून बनवतात, जे ती कधीही नसते.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A skater spinning freely pulls her arms in, reducing her moment of inertia from 6 kg m² to 2 kg m². A student checks the numbers and finds her kinetic energy has tripled, and concludes that angular momentum cannot really have been conserved. Resolve this.",
+          hi: "स्वतंत्र रूप से घूमती स्केटर बाँहें समेटती है, जिससे उसका जड़त्व आघूर्ण 6 kg m² से घटकर 2 kg m² हो जाता है। एक विद्यार्थी संख्याएँ जाँचकर पाता है कि उसकी गतिज ऊर्जा तीन गुनी हो गई, और निष्कर्ष निकालता है कि कोणीय संवेग वस्तुतः संरक्षित हो ही नहीं सकता। इसे सुलझाओ।",
+          mr: "मुक्तपणे फिरणारी स्केटर हात मिटवते, ज्यामुळे तिचे जडत्व आघूर्ण 6 kg m² वरून 2 kg m² होते. एक विद्यार्थी आकडे तपासून पाहतो की तिची गतिज ऊर्जा तिप्पट झाली, आणि निष्कर्ष काढतो की कोनीय संवेग खरोखर संरक्षित होऊच शकत नाही. हे सोडवा.",
+        },
+        choices: [
+          {
+            en: "Angular momentum was conserved and kinetic energy was not, and there is no contradiction because nothing requires both. Iω is fixed, so ω triples when I falls to a third. But the energy is ½Iω², which carries ω squared, so it goes up by 3²/3 = 3. The extra energy is real and its source is identifiable: the skater's muscles did work pulling her arms inwards against the outward tendency of the rotating masses. Let her arms out again and she does negative work, the energy returns, and the spin slows to its original rate",
+            hi: "कोणीय संवेग संरक्षित रहा और गतिज ऊर्जा नहीं, और इसमें कोई विरोधाभास नहीं क्योंकि दोनों की माँग कहीं नहीं। Iω तय है, अतः I एक तिहाई होने पर ω तीन गुना हो जाता है। पर ऊर्जा ½Iω² है, जो ω का वर्ग ढोती है, अतः वह 3²/3 = 3 गुना बढ़ती है। अतिरिक्त ऊर्जा असली है और उसका स्रोत पहचाना जा सकता है: स्केटर की पेशियों ने घूमते द्रव्यमानों की बाहर जाने की प्रवृत्ति के विरुद्ध बाँहें भीतर खींचकर कार्य किया। बाँहें फिर फैलाओ और वह ऋणात्मक कार्य करती है, ऊर्जा लौट आती है, और घुमाव अपनी मूल दर पर धीमा हो जाता है",
+            mr: "कोनीय संवेग संरक्षित राहिला आणि गतिज ऊर्जा नाही, आणि यात कोणताही विरोधाभास नाही कारण दोन्हींची मागणी कुठेही नाही. Iω ठरलेला, म्हणून I एक तृतीयांश होताच ω तिप्पट होतो. पण ऊर्जा ½Iω² आहे, जी ω चा वर्ग वाहते, म्हणून ती 3²/3 = 3 पट वाढते. जादा ऊर्जा खरी आहे आणि तिचा स्रोत ओळखता येतो: स्केटरच्या स्नायूंनी फिरणाऱ्या वस्तुमानांच्या बाहेर जाण्याच्या प्रवृत्तीविरुद्ध हात आत खेचून कार्य केले. हात पुन्हा पसरू द्या आणि ती ऋण कार्य करते, ऊर्जा परत येते, आणि फिरणे आपल्या मूळ दराने मंदावते",
+          },
+          {
+            en: "The student is right: energy conservation is the deeper law, so angular momentum must have been supplied from outside by the ice",
+            hi: "विद्यार्थी सही है: ऊर्जा-संरक्षण गहरा नियम है, अतः कोणीय संवेग बाहर से बर्फ़ द्वारा दिया गया होगा",
+            mr: "विद्यार्थी बरोबर: ऊर्जा-संरक्षण हा खोल नियम, म्हणून कोनीय संवेग बाहेरून बर्फाने दिला गेला असणार",
+          },
+          {
+            en: "The energy did not really change; the student has forgotten that ½Iω² is independent of I once ω is known",
+            hi: "ऊर्जा वस्तुतः बदली नहीं; विद्यार्थी भूल गया कि ω ज्ञात होने पर ½Iω² I से स्वतंत्र है",
+            mr: "ऊर्जा प्रत्यक्षात बदललीच नाही; विद्यार्थी विसरला की ω माहीत असल्यावर ½Iω² हे I पासून स्वतंत्र आहे",
+          },
+          {
+            en: "Both quantities are conserved, and the apparent tripling comes from measuring in the rotating frame rather than the ground frame",
+            hi: "दोनों राशियाँ संरक्षित हैं, और तीन गुना दिखना ज़मीन के तंत्र के बजाय घूमते तंत्र में नापने से आता है",
+            mr: "दोन्ही राशी संरक्षित आहेत, आणि तिप्पट दिसणे जमिनीच्या चौकटीऐवजी फिरत्या चौकटीत मोजल्याने येते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Put the arithmetic down first. Angular momentum L = Iω is conserved because no external torque acts about the vertical axis — the ice is nearly frictionless, and the skater's own muscles are internal to her. So 6ω₀ = 2ω₁ and ω₁ = 3ω₀: the spin triples. Kinetic energy before is ½ × 6 × ω₀² = 3ω₀². After it is ½ × 2 × (3ω₀)² = ½ × 2 × 9ω₀² = 9ω₀². The energy has indeed tripled, and the student's arithmetic is impeccable. What is wrong is the inference. There is no law saying kinetic energy is conserved. The conservation laws are separate statements with separate conditions, and it is a mistake to expect them to move together. Linear momentum is conserved when no external force acts; angular momentum when no external torque acts; total energy always, but MECHANICAL energy only when the forces doing work are conservative. Here the muscles are doing work, so mechanical energy is under no obligation to stay put. Where the algebra makes it inevitable is worth seeing. Write the energy in terms of the conserved quantity: E = ½Iω² = ½(Iω)²/I = L²/(2I). With L fixed, energy is inversely proportional to I. Reduce I to a third and the energy triples, necessarily. This form makes the whole result transparent — you cannot change I at fixed L without changing the energy, so the question is never whether energy changes but only where it comes from. It comes from the skater. Consider what her arms are doing while she pulls them in. Each hand is moving in a circle, and to bring it closer to the axis she must exert an inward force on a mass that is going round; that force acts through an inward displacement, so it does positive work. In the rotating frame it feels like fighting a centrifugal pull, and the sensation is accurate about the effort even though the force is fictitious. The joules come from her metabolism, in exactly the same way as the joules for a jump. The process is reversible, which is the clinching evidence. Let the arms out again and the same forces act through outward displacements, so the work is now negative: the skater absorbs energy, her spin drops back to ω₀, and both L and E return to their initial values. Nothing was created or destroyed at any stage. Two applications are worth carrying. A planet in an elliptical orbit obeys the same relation, speeding up near the Sun where its distance from the focus is small — Kepler's second law is angular momentum conservation in disguise, and there the work is done by gravity rather than by muscles, so the mechanical energy does stay constant. And a collapsing star spins up spectacularly for the same reason: a stellar core the size of the Sun contracting to a neutron star twenty kilometres across increases its rotation rate by a factor of billions, which is why pulsars flash many times a second. (The wrong answers invent an external torque the ice cannot supply, misstate the energy formula, or hide a real physical change behind a change of frame.)",
+          hi: "पहले गणित रख दो। कोणीय संवेग L = Iω संरक्षित है क्योंकि ऊर्ध्वाधर अक्ष के परितः कोई बाह्य बल-आघूर्ण नहीं लगता — बर्फ़ लगभग घर्षण-रहित है, और स्केटर की अपनी पेशियाँ उसके लिए आंतरिक हैं। अतः 6ω₀ = 2ω₁ और ω₁ = 3ω₀: घुमाव तीन गुना। पहले गतिज ऊर्जा ½ × 6 × ω₀² = 3ω₀². बाद में ½ × 2 × (3ω₀)² = ½ × 2 × 9ω₀² = 9ω₀². ऊर्जा सचमुच तीन गुनी हुई, और विद्यार्थी का गणित निर्दोष है। ग़लत उसका अनुमान है। ऐसा कोई नियम नहीं जो कहे कि गतिज ऊर्जा संरक्षित है। संरक्षण-नियम भिन्न शर्तों वाले भिन्न कथन हैं, और उनसे साथ-साथ चलने की अपेक्षा करना भूल है। रैखिक संवेग तब संरक्षित है जब कोई बाह्य बल न लगे; कोणीय संवेग तब जब कोई बाह्य बल-आघूर्ण न लगे; कुल ऊर्जा सदा, पर यांत्रिक ऊर्जा केवल तब जब कार्य करने वाले बल संरक्षी हों। यहाँ पेशियाँ कार्य कर रही हैं, अतः यांत्रिक ऊर्जा पर टिके रहने की कोई बाध्यता नहीं। बीजगणित इसे कहाँ अनिवार्य बना देता है, यह देखने योग्य है। ऊर्जा को संरक्षित राशि के पदों में लिखो: E = ½Iω² = ½(Iω)²/I = L²/(2I). L तय हो तो ऊर्जा I के व्युत्क्रमानुपाती है। I को एक तिहाई करो और ऊर्जा अनिवार्यतः तीन गुनी हो जाती है। यह रूप पूरा परिणाम पारदर्शी कर देता है — तुम L स्थिर रखते हुए I बदल ही नहीं सकते बिना ऊर्जा बदले, अतः प्रश्न कभी यह नहीं कि ऊर्जा बदलती है या नहीं बल्कि केवल यह कि वह आती कहाँ से है। वह स्केटर से आती है। सोचो बाँहें समेटते समय वे कर क्या रही हैं। हर हाथ वृत्त में चल रहा है, और उसे अक्ष के पास लाने के लिए उसे ऐसे द्रव्यमान पर भीतरी बल लगाना पड़ता है जो घूम रहा है; वह बल भीतरी विस्थापन से होकर लगता है, अतः धनात्मक कार्य करता है। घूमते तंत्र में यह अपकेंद्री खिंचाव से लड़ने जैसा लगता है, और अनुभूति परिश्रम के बारे में सही है यद्यपि बल काल्पनिक है। जूल उसके उपापचय से आते हैं, ठीक वैसे जैसे कूद के जूल आते हैं। प्रक्रिया उत्क्रमणीय है, और यही निर्णायक प्रमाण है। बाँहें फिर फैलाओ और वही बल बाहरी विस्थापनों से होकर लगते हैं, अतः कार्य अब ऋणात्मक है: स्केटर ऊर्जा सोख लेती है, उसका घुमाव ω₀ पर लौट आता है, और L तथा E दोनों अपने आरंभिक मानों पर आ जाते हैं। किसी चरण पर कुछ न बना न नष्ट हुआ। दो अनुप्रयोग ले जाने योग्य हैं। दीर्घवृत्तीय कक्षा में ग्रह वही संबंध मानता है, सूर्य के पास तेज़ होता जहाँ नाभि से उसकी दूरी कम है — केप्लर का दूसरा नियम भेस बदले कोणीय संवेग का संरक्षण ही है, और वहाँ कार्य पेशियाँ नहीं गुरुत्व करता है, अतः यांत्रिक ऊर्जा अचर बनी रहती है। और ढहता तारा उसी कारण नाटकीय रूप से तेज़ घूमने लगता है: सूर्य के आकार का तारकीय क्रोड सिकुड़कर बीस किलोमीटर का न्यूट्रॉन तारा बने तो उसकी घूर्णन-दर अरबों गुना बढ़ जाती है, इसीलिए पल्सर सेकंड में कई बार चमकते हैं। (ग़लत उत्तर ऐसा बाह्य बल-आघूर्ण गढ़ते जो बर्फ़ दे नहीं सकती, ऊर्जा-सूत्र ग़लत कहते, या असली भौतिक परिवर्तन को तंत्र-परिवर्तन के पीछे छिपा देते हैं।)",
+          mr: "आधी आकडेमोड मांडा. कोनीय संवेग L = Iω संरक्षित आहे कारण उभ्या अक्षाभोवती कोणतेही बाह्य बलआघूर्ण लागत नाही — बर्फ जवळपास घर्षणविरहित, आणि स्केटरचे स्वतःचे स्नायू तिच्यासाठी आंतरिक. म्हणून 6ω₀ = 2ω₁ आणि ω₁ = 3ω₀: फिरणे तिप्पट. आधीची गतिज ऊर्जा ½ × 6 × ω₀² = 3ω₀². नंतरची ½ × 2 × (3ω₀)² = ½ × 2 × 9ω₀² = 9ω₀². ऊर्जा खरोखर तिप्पट झाली, आणि विद्यार्थ्याचे गणित निर्दोष. चूक त्याच्या अनुमानात. गतिज ऊर्जा संरक्षित आहे असे सांगणारा कोणताही नियम नाही. संरक्षण-नियम वेगळ्या अटींची वेगळी विधाने आहेत, आणि त्यांनी एकत्र चालावे अशी अपेक्षा करणे चूक. रेषीय संवेग तेव्हा संरक्षित जेव्हा कोणतेही बाह्य बल लागत नाही; कोनीय संवेग तेव्हा जेव्हा कोणतेही बाह्य बलआघूर्ण लागत नाही; एकूण ऊर्जा नेहमी, पण यांत्रिक ऊर्जा केवळ तेव्हा जेव्हा कार्य करणारी बले संरक्षी असतात. इथे स्नायू कार्य करत आहेत, म्हणून यांत्रिक ऊर्जेवर टिकून राहण्याचे कोणतेही बंधन नाही. बीजगणित हे कुठे अपरिहार्य करते ते पाहण्याजोगे. ऊर्जा संरक्षित राशीच्या भाषेत लिहा: E = ½Iω² = ½(Iω)²/I = L²/(2I). L ठरलेला असल्यास ऊर्जा I च्या व्यस्तानुपाती. I एक तृतीयांश करा आणि ऊर्जा अपरिहार्यपणे तिप्पट होते. हे रूप अख्खा निकाल पारदर्शक करते — तुम्ही L स्थिर ठेवून I बदलूच शकत नाही ऊर्जा न बदलता, म्हणून प्रश्न कधीच ऊर्जा बदलते का हा नसतो तर ती येते कुठून हाच असतो. ती स्केटरकडून येते. हात आत खेचताना ते काय करत आहेत ते पाहा. प्रत्येक हात वर्तुळात फिरत आहे, आणि त्याला अक्षाजवळ आणायला तिला फिरणाऱ्या वस्तुमानावर आतले बल लावावे लागते; ते बल आतल्या विस्थापनातून लागते, म्हणून ते धन कार्य करते. फिरत्या चौकटीत हे अपकेंद्री ओढीशी लढल्यासारखे वाटते, आणि संवेदना श्रमाबद्दल बरोबर आहे जरी बल काल्पनिक असले तरी. ज्यूल तिच्या चयापचयातून येतात, नेमके तसेच जसे उडीचे ज्यूल येतात. प्रक्रिया उलट करता येते, आणि हाच निर्णायक पुरावा. हात पुन्हा पसरू द्या आणि तीच बले बाहेरच्या विस्थापनांतून लागतात, म्हणून कार्य आता ऋण: स्केटर ऊर्जा शोषून घेते, तिचे फिरणे ω₀ वर परतते, आणि L व E दोन्ही आपल्या सुरुवातीच्या मूल्यांवर येतात. कोणत्याही टप्प्यावर काहीही निर्माण वा नष्ट झाले नाही. दोन उपयोजने नेण्याजोगी. लंबवर्तुळाकार कक्षेतील ग्रह तोच संबंध पाळतो, सूर्याजवळ वेगवान होत जिथे नाभीपासूनचे त्याचे अंतर कमी — केप्लरचा दुसरा नियम हा वेष बदललेला कोनीय संवेगाचा संरक्षणच, आणि तिथे कार्य स्नायू नव्हे तर गुरुत्व करते, म्हणून यांत्रिक ऊर्जा अचल राहते. आणि कोसळणारा तारा त्याच कारणाने नाट्यमयरीत्या वेगात फिरू लागतो: सूर्याएवढा तारकीय गाभा आकुंचून वीस किलोमीटरचा न्यूट्रॉन तारा बनला तर त्याचा परिवलन-दर अब्जावधी पटींनी वाढतो, म्हणूनच पल्सार सेकंदाला अनेकदा चमकतात. (चुकीची उत्तरे बर्फ पुरवू शकत नाही असे बाह्य बलआघूर्ण घडवतात, ऊर्जा-सूत्र चुकीचे सांगतात, वा खरा भौतिक बदल चौकट-बदलामागे लपवतात.)",
+        },
+      },
+      /*H6*/
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 7 — Gravitation                                                 */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "physics-11-gravitation",
+    subject: "PHYSICS",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 7 — Gravitation",
+      hi: "अध्याय 7 — गुरुत्वाकर्षण",
+      mr: "प्रकरण 7 — गुरुत्वाकर्षण",
+    },
+    name: {
+      en: "Gravitation",
+      hi: "गुरुत्वाकर्षण",
+      mr: "गुरुत्वाकर्षण",
+    },
+    summary: {
+      en: "One law written for a falling apple turned out to be running the solar system: a force that thins as the square of the distance, a constant of nature beside a local number that changes with latitude and altitude, an area swept out at a fixed rate whether a planet is near or far, a speed above which nothing ever returns, and astronauts who are not weightless at all but simply falling, along with their spacecraft, for ever.",
+      hi: "गिरते सेब के लिए लिखा एक नियम निकला सौर मंडल चला रहा था: वह बल जो दूरी के वर्ग के अनुपात में पतला होता है, प्रकृति का एक स्थिरांक और उसके बगल में वह स्थानीय संख्या जो अक्षांश तथा ऊँचाई से बदलती है, वह क्षेत्रफल जो ग्रह के पास या दूर होने पर भी नियत दर से बुहारा जाता है, वह चाल जिसके ऊपर कुछ भी कभी नहीं लौटता, और वे अंतरिक्ष यात्री जो भारहीन हैं ही नहीं बल्कि अपने यान समेत सदा गिरते रहते हैं।",
+      mr: "पडणाऱ्या सफरचंदासाठी लिहिलेला एक नियम निघाला सूर्यमाला चालवत होता: ते बल जे अंतराच्या वर्गाच्या प्रमाणात विरळ होते, निसर्गाचा एक स्थिरांक आणि त्याशेजारी ती स्थानिक संख्या जी अक्षांश व उंचीने बदलते, ते क्षेत्रफळ जे ग्रह जवळ असो वा दूर, ठरलेल्या दराने झाडले जाते, ती चाल जिच्यावर काहीही कधीही परतत नाही, आणि ते अंतराळवीर जे वजनरहित नाहीतच तर आपल्या यानासह कायम पडत राहतात.",
+    },
+    position: 7,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "inverse-square-law",
+        name: {
+          en: "The inverse-square law",
+          hi: "व्युत्क्रम वर्ग नियम",
+          mr: "व्यस्त वर्ग नियम",
+        },
+        kind: "law",
+        prompt: {
+          en: "Move to three times the separation and the attraction falls not to a third but to a ninth, because the pull spreads over a surface whose area grows as the square of the radius. Which law is this?",
+          hi: "दूरी तीन गुनी करो और आकर्षण एक तिहाई नहीं बल्कि एक नौवाँ रह जाता है, क्योंकि खिंचाव ऐसी सतह पर फैलता है जिसका क्षेत्रफल त्रिज्या के वर्ग के अनुपात में बढ़ता है। यह कौन-सा नियम है?",
+          mr: "अंतर तिप्पट करा आणि आकर्षण एक तृतीयांश नव्हे तर एक नवमांश उरते, कारण ओढ अशा पृष्ठभागावर पसरते ज्याचे क्षेत्रफळ त्रिज्येच्या वर्गाच्या प्रमाणात वाढते. हा कोणता नियम?",
+        },
+        statement: {
+          en: "The gravitational force between two masses is proportional to the product of the masses and inversely proportional to the square of the distance between their centres.",
+          hi: "दो द्रव्यमानों के बीच गुरुत्वीय बल द्रव्यमानों के गुणनफल के समानुपाती और उनके केंद्रों के बीच की दूरी के वर्ग के व्युत्क्रमानुपाती है।",
+          mr: "दोन वस्तुमानांमधले गुरुत्वीय बल वस्तुमानांच्या गुणाकाराशी समानुपाती आणि त्यांच्या केंद्रांमधल्या अंतराच्या वर्गाशी व्यस्तानुपाती असते.",
+        },
+        detail: {
+          en: "A uniform sphere attracts everything outside it exactly as though its whole mass sat at its centre, which is the theorem that lets the Earth's radius be used as the distance for a body on its surface.",
+          hi: "समांग गोला अपने बाहर की हर चीज़ को ठीक वैसे खींचता है मानो उसका पूरा द्रव्यमान उसके केंद्र पर बैठा हो, और यही वह प्रमेय है जो सतह पर रखे पिंड के लिए पृथ्वी की त्रिज्या को दूरी मानने देती है।",
+          mr: "एकसमान गोल आपल्या बाहेरच्या प्रत्येक गोष्टीला नेमके तसे खेचतो जणू त्याचे संपूर्ण वस्तुमान त्याच्या केंद्रावर बसले असावे, आणि हेच ते प्रमेय जे पृष्ठभागावरील पिंडासाठी पृथ्वीची त्रिज्या अंतर म्हणून वापरू देते.",
+        },
+        extra: {
+          en: "The force is always attractive and never shielded, which is why gravitation is feeble between everyday objects and yet governs the largest structures in the universe.",
+          hi: "यह बल सदा आकर्षक है और कभी परिरक्षित नहीं होता, इसीलिए रोज़मर्रा की वस्तुओं के बीच गुरुत्वाकर्षण दुर्बल है और फिर भी ब्रह्मांड की सबसे बड़ी संरचनाओं को चलाता है।",
+          mr: "हे बल नेहमी आकर्षक असते आणि कधीही अडवले जात नाही, म्हणूनच रोजच्या वस्तूंमध्ये गुरुत्वाकर्षण क्षीण असते आणि तरीही विश्वातील सर्वांत मोठ्या रचना चालवते.",
+        },
+        pair: {
+          left: {
+            en: "Three times as far, a ninth as strong",
+            hi: "तीन गुना दूर, एक नौवाँ बल",
+            mr: "तिप्पट दूर, एक नवमांश जोर",
+          },
+          right: {
+            en: "the inverse-square law",
+            hi: "व्युत्क्रम वर्ग नियम",
+            mr: "व्यस्त वर्ग नियम",
+          },
+        },
+      },
+      {
+        id: "little-g-against-big-g",
+        name: {
+          en: "Little g against big G",
+          hi: "छोटा g बनाम बड़ा G",
+          mr: "लहान g विरुद्ध मोठा G",
+        },
+        kind: "law",
+        prompt: {
+          en: "One of these two is the same everywhere in the universe and was measured in a laboratory with a torsion balance; the other is 9.83 at the poles, 9.78 at the equator, and smaller on a mountain. Which contrast is this?",
+          hi: "इन दोनों में से एक ब्रह्मांड में हर जगह एक-सा है और प्रयोगशाला में मरोड़-तुला से नापा गया; दूसरा ध्रुवों पर 9.83, भूमध्य रेखा पर 9.78, और पहाड़ पर उससे कम है। यह कौन-सा भेद है?",
+          mr: "यां दोहोंपैकी एक विश्वात सर्वत्र सारखा आणि प्रयोगशाळेत पीळ-तराजूने मोजला गेला; दुसरा ध्रुवांवर 9.83, विषुववृत्तावर 9.78, आणि डोंगरावर त्याहून कमी. हा कोणता भेद?",
+        },
+        statement: {
+          en: "G is a universal constant with the same value everywhere, while g is the local acceleration due to gravity, equal to GM/r² and therefore varying with latitude, altitude and depth.",
+          hi: "G सार्वत्रिक स्थिरांक है जिसका मान हर जगह एक-सा है, जबकि g गुरुत्व के कारण स्थानीय त्वरण है, GM/r² के बराबर और इसलिए अक्षांश, ऊँचाई तथा गहराई से बदलता है।",
+          mr: "G हा सार्वत्रिक स्थिरांक ज्याचे मूल्य सर्वत्र सारखे, तर g हे गुरुत्वामुळे येणारे स्थानिक त्वरण, GM/r² इतके आणि म्हणून अक्षांश, उंची व खोलीनुसार बदलणारे.",
+        },
+        detail: {
+          en: "It falls off as the inverse square above the surface but falls LINEARLY with depth below it, reaching zero at the centre where the surrounding shell pulls equally in every direction.",
+          hi: "सतह के ऊपर वह व्युत्क्रम वर्ग के अनुसार घटता है पर सतह के नीचे गहराई के साथ रैखिक रूप से घटता है, और केंद्र पर शून्य हो जाता है जहाँ चारों ओर का खोल हर दिशा में बराबर खींचता है।",
+          mr: "पृष्ठभागाच्या वर तो व्यस्त वर्गानुसार घटतो पण पृष्ठभागाखाली खोलीसह रेषीयरीत्या घटतो, आणि केंद्रावर शून्य होतो जिथे भोवतालचे कवच प्रत्येक दिशेने सारखेच ओढते.",
+        },
+        extra: {
+          en: "Part of the equatorial reduction is not gravity at all but the Earth's rotation, which uses up some of the pull in keeping a body moving in its daily circle.",
+          hi: "भूमध्य रेखा पर हुई कमी का एक हिस्सा गुरुत्व है ही नहीं बल्कि पृथ्वी का घूर्णन है, जो खिंचाव का कुछ भाग पिंड को उसके दैनिक वृत्त में चलाए रखने में ख़र्च कर देता है।",
+          mr: "विषुववृत्तावरील घटीचा काही भाग गुरुत्व नाहीच तर पृथ्वीचे परिवलन आहे, जे ओढीचा काही भाग पिंडाला त्याच्या दैनंदिन वर्तुळात चालवत ठेवण्यात खर्चते.",
+        },
+        pair: {
+          left: {
+            en: "One universal, one different on every mountain",
+            hi: "एक सार्वत्रिक, एक हर पहाड़ पर भिन्न",
+            mr: "एक सार्वत्रिक, एक प्रत्येक डोंगरावर वेगळा",
+          },
+          right: {
+            en: "little g against big G",
+            hi: "छोटा g बनाम बड़ा G",
+            mr: "लहान g विरुद्ध मोठा G",
+          },
+        },
+      },
+      {
+        id: "law-of-equal-areas",
+        name: {
+          en: "The law of equal areas",
+          hi: "समान क्षेत्रफल का नियम",
+          mr: "समान क्षेत्रफळाचा नियम",
+        },
+        kind: "law",
+        prompt: {
+          en: "A planet races through the part of its orbit nearest the Sun and dawdles at the far end, in such a way that the line joining it to the Sun sweeps the same amount in any given month. Which of Kepler's laws is this?",
+          hi: "ग्रह अपनी कक्षा के सूर्य से निकटतम भाग में दौड़ता है और दूर के छोर पर सुस्ताता है, इस तरह कि उसे सूर्य से जोड़ने वाली रेखा किसी भी दिए महीने में उतना ही बुहारती है। यह केप्लर का कौन-सा नियम है?",
+          mr: "ग्रह आपल्या कक्षेच्या सूर्याजवळच्या भागातून धावतो आणि दूरच्या टोकाला रेंगाळतो, अशा रीतीने की त्याला सूर्याशी जोडणारी रेषा कोणत्याही दिलेल्या महिन्यात तितकेच झाडते. हा केप्लरचा कोणता नियम?",
+        },
+        statement: {
+          en: "Kepler's second law says the line from the Sun to a planet sweeps out equal areas in equal times, so the planet moves fastest at perihelion and slowest at aphelion.",
+          hi: "केप्लर का दूसरा नियम कहता है कि सूर्य से ग्रह तक की रेखा बराबर समय में बराबर क्षेत्रफल बुहारती है, अतः ग्रह उपसौर पर सबसे तेज़ और अपसौर पर सबसे धीमा चलता है।",
+          mr: "केप्लरचा दुसरा नियम सांगतो की सूर्यापासून ग्रहापर्यंतची रेषा समान काळात समान क्षेत्रफळ झाडते, म्हणून ग्रह उपसूर्यबिंदूवर सर्वांत वेगवान आणि अपसूर्यबिंदूवर सर्वांत सावकाश जातो.",
+        },
+        detail: {
+          en: "It is conservation of angular momentum in disguise: gravity always points at the Sun, so it exerts no torque about the Sun and the planet's angular momentum cannot change.",
+          hi: "यह भेस बदले कोणीय संवेग का संरक्षण है: गुरुत्व सदा सूर्य की ओर होता है, अतः वह सूर्य के परितः कोई बल-आघूर्ण नहीं लगाता और ग्रह का कोणीय संवेग बदल नहीं सकता।",
+          mr: "हा वेष बदललेला कोनीय संवेगाचा संरक्षण नियम: गुरुत्व नेहमी सूर्याकडे असते, म्हणून ते सूर्याभोवती कोणतेही बलआघूर्ण लावत नाही आणि ग्रहाचा कोनीय संवेग बदलू शकत नाही.",
+        },
+        extra: {
+          en: "It applies to any force directed always at a fixed point, whatever its strength law, which is why the equal-area result was true before anyone knew the inverse square.",
+          hi: "यह हर उस बल पर लागू है जो सदा किसी नियत बिंदु की ओर हो, उसका बल-नियम चाहे जो हो, इसीलिए समान क्षेत्रफल वाला परिणाम व्युत्क्रम वर्ग जाने जाने से पहले भी सच था।",
+          mr: "हा प्रत्येक अशा बलाला लागू जे नेहमी एका ठरलेल्या बिंदूकडे असते, त्याचा बल-नियम काहीही असो, म्हणूनच समान क्षेत्रफळाचा निकाल व्यस्त वर्ग कळण्याआधीही खरा होता.",
+        },
+        pair: {
+          left: {
+            en: "Fast when near, slow when far, area unchanged",
+            hi: "पास हो तो तेज़, दूर हो तो धीमा, क्षेत्रफल वही",
+            mr: "जवळ असता वेगवान, दूर असता सावकाश, क्षेत्रफळ तेच",
+          },
+          right: {
+            en: "the law of equal areas",
+            hi: "समान क्षेत्रफल का नियम",
+            mr: "समान क्षेत्रफळाचा नियम",
+          },
+        },
+      },
+      {
+        id: "escape-speed",
+        name: {
+          en: "Escape speed",
+          hi: "पलायन चाल",
+          mr: "मुक्ती चाल",
+        },
+        kind: "consequence",
+        prompt: {
+          en: "Throw a stone upwards fast enough and it never comes down, not because gravity stops but because the pull weakens quicker than the stone runs out of kinetic energy — and the threshold is the same for a pebble and a battleship. Which quantity is this?",
+          hi: "पत्थर को पर्याप्त तेज़ ऊपर फेंको और वह कभी नहीं लौटता, इसलिए नहीं कि गुरुत्व रुक जाता है बल्कि इसलिए कि खिंचाव उससे तेज़ी से दुर्बल होता है जितनी तेज़ी से पत्थर की गतिज ऊर्जा चुकती है — और यह सीमा कंकड़ और युद्धपोत दोनों के लिए एक ही है। यह कौन-सी राशि है?",
+          mr: "दगड पुरेशा वेगाने वर फेका आणि तो कधीही परतत नाही, गुरुत्व थांबते म्हणून नव्हे तर ओढ दगडाची गतिज ऊर्जा संपण्याहून अधिक वेगाने क्षीण होते म्हणून — आणि ही मर्यादा खडा आणि युद्धनौका दोघांसाठी एकच. ही कोणती राशी?",
+        },
+        statement: {
+          en: "Escape speed is √(2GM/R), the least speed at which a body projected from a surface never returns, and it is independent of the escaping body's own mass.",
+          hi: "पलायन चाल √(2GM/R) है, वह न्यूनतम चाल जिससे सतह से फेंका गया पिंड कभी नहीं लौटता, और वह पलायन करते पिंड के अपने द्रव्यमान से स्वतंत्र है।",
+          mr: "मुक्ती चाल म्हणजे √(2GM/R), ती किमान चाल जिच्याने पृष्ठभागावरून फेकलेला पिंड कधीही परतत नाही, आणि ती सुटणाऱ्या पिंडाच्या स्वतःच्या वस्तुमानापासून स्वतंत्र आहे.",
+        },
+        detail: {
+          en: "It is exactly √2 times the speed of a satellite skimming the same surface, so about 11.2 km/s for the Earth against an orbital 7.9 km/s.",
+          hi: "वह उसी सतह के पास चक्कर लगाते उपग्रह की चाल का ठीक √2 गुना है, अतः पृथ्वी के लिए लगभग 11.2 km/s के सामने कक्षीय 7.9 km/s.",
+          mr: "ती त्याच पृष्ठभागाजवळून फिरणाऱ्या उपग्रहाच्या चालीच्या नेमकी √2 पट, म्हणून पृथ्वीसाठी सुमारे 11.2 km/s च्या समोर कक्षीय 7.9 km/s.",
+        },
+        extra: {
+          en: "It explains which worlds keep an atmosphere: the Moon's is 2.4 km/s, below the speed of many gas molecules, so whatever air it once had has long since leaked away.",
+          hi: "यही बताता है कि कौन-से लोक वायुमंडल रखते हैं: चंद्रमा की 2.4 km/s है, कई गैस अणुओं की चाल से कम, अतः उसके पास जो भी हवा कभी थी वह कब की रिस चुकी।",
+          mr: "हेच सांगते की कोणते जग वातावरण राखतात: चंद्राची 2.4 km/s आहे, अनेक वायुरेणूंच्या चालीहून कमी, म्हणून त्याच्याकडे जी काही हवा कधी होती ती केव्हाच निसटून गेली.",
+        },
+        pair: {
+          left: {
+            en: "The same threshold for a pebble and a battleship",
+            hi: "कंकड़ और युद्धपोत के लिए वही सीमा",
+            mr: "खडा आणि युद्धनौकेसाठी तीच मर्यादा",
+          },
+          right: {
+            en: "escape speed",
+            hi: "पलायन चाल",
+            mr: "मुक्ती चाल",
+          },
+        },
+      },
+      {
+        id: "weightlessness-in-orbit",
+        name: {
+          en: "Weightlessness in orbit",
+          hi: "कक्षा में भारहीनता",
+          mr: "कक्षेतील वजनरहितता",
+        },
+        kind: "consequence",
+        prompt: {
+          en: "An astronaut four hundred kilometres up is held by a gravitational pull almost as strong as at sea level, yet floats — because the station's floor is falling away beneath at exactly the rate the astronaut falls. Which condition is this?",
+          hi: "चार सौ किलोमीटर ऊपर का अंतरिक्ष यात्री लगभग समुद्र-तल जितने ही प्रबल गुरुत्वीय खिंचाव में बँधा है, फिर भी तैरता है — क्योंकि स्टेशन का फ़र्श नीचे ठीक उसी दर से गिरता जा रहा है जिस दर से यात्री। यह कौन-सी स्थिति है?",
+          mr: "चारशे किलोमीटर वरचा अंतराळवीर जवळपास समुद्रसपाटीइतक्याच प्रबळ गुरुत्वीय ओढीत बांधलेला असतो, तरीही तरंगतो — कारण स्थानकाची जमीन खाली नेमक्या त्याच दराने पडत असते ज्या दराने अंतराळवीर. ही कोणती स्थिती?",
+        },
+        statement: {
+          en: "Orbital weightlessness is free fall, not an absence of gravity: the spacecraft and everything in it accelerate towards the Earth together, so nothing presses on anything and no scale can register a reading.",
+          hi: "कक्षीय भारहीनता मुक्त पतन है, गुरुत्व की अनुपस्थिति नहीं: यान और उसमें रखा सब कुछ मिलकर पृथ्वी की ओर त्वरित होते हैं, अतः कुछ किसी पर दबाव नहीं डालता और कोई तराज़ू पाठ्यांक दर्ज नहीं कर सकता।",
+          mr: "कक्षेतील वजनरहितता म्हणजे मुक्त पतन, गुरुत्वाची अनुपस्थिती नव्हे: यान आणि त्यातले सर्व एकत्रच पृथ्वीकडे त्वरित होतात, म्हणून काहीही कशावर दाब देत नाही आणि कोणताही काटा वाचन नोंदवू शकत नाही.",
+        },
+        detail: {
+          en: "At the station's altitude g is still about 8.7 m/s², roughly nine-tenths of its surface value, so the pull is very much present and is precisely what curves the orbit.",
+          hi: "स्टेशन की ऊँचाई पर g अब भी लगभग 8.7 m/s² है, सतह के मान का लगभग नौ-दसवाँ, अतः खिंचाव पूरी तरह मौजूद है और वही कक्षा को मोड़ता है।",
+          mr: "स्थानकाच्या उंचीवर g अजूनही सुमारे 8.7 m/s² आहे, पृष्ठभागाच्या मूल्याचा साधारण नऊ-दशांश, म्हणून ओढ पूर्णपणे उपस्थित आहे आणि तीच कक्षा वळवते.",
+        },
+        extra: {
+          en: "The same sensation is available in a falling lift or at the top of a roller-coaster drop, and it lasts exactly as long as nothing supports the floor.",
+          hi: "वही अनुभूति गिरती लिफ़्ट में या रोलर-कोस्टर की ढलान के शिखर पर भी मिलती है, और वह ठीक तब तक रहती है जब तक फ़र्श को कोई सहारा नहीं देता।",
+          mr: "तीच संवेदना पडणाऱ्या लिफ्टमध्ये वा रोलर-कोस्टरच्या उताराच्या शिखरावरही मिळते, आणि ती नेमकी तोवर टिकते जोवर जमिनीला कोणताही आधार नसतो.",
+        },
+        pair: {
+          left: {
+            en: "Falling for ever and missing the ground",
+            hi: "सदा गिरते रहना और ज़मीन से चूकते रहना",
+            mr: "कायम पडत राहणे आणि जमीन चुकवत राहणे",
+          },
+          right: {
+            en: "weightlessness in orbit",
+            hi: "कक्षा में भारहीनता",
+            mr: "कक्षेतील वजनरहितता",
+          },
+        },
+      },
+      {
+        id: "geostationary-orbit",
+        name: {
+          en: "The geostationary orbit",
+          hi: "भूस्थिर कक्षा",
+          mr: "भूस्थिर कक्षा",
+        },
+        kind: "consequence",
+        prompt: {
+          en: "There is exactly one radius, about 36,000 km above the equator, at which a satellite's period comes out at 24 hours, so a dish once aimed at it never has to be moved again. Which orbit is this?",
+          hi: "भूमध्य रेखा के ऊपर लगभग 36,000 km पर ठीक एक ही त्रिज्या है जिस पर उपग्रह का आवर्तकाल 24 घंटे निकलता है, अतः एक बार उस पर ताना गया डिश फिर कभी हिलाना नहीं पड़ता। यह कौन-सी कक्षा है?",
+          mr: "विषुववृत्ताच्या वर सुमारे 36,000 km वर नेमकी एकच त्रिज्या आहे जिच्यावर उपग्रहाचा आवर्तकाल 24 तास निघतो, म्हणून एकदा त्यावर रोखलेली डिश पुन्हा कधीही हलवावी लागत नाही. ही कोणती कक्षा?",
+        },
+        statement: {
+          en: "A geostationary satellite orbits directly above the equator with a period of exactly one sidereal day, so it stays fixed above one point of the rotating Earth.",
+          hi: "भूस्थिर उपग्रह ठीक भूमध्य रेखा के ऊपर ऐसी कक्षा में घूमता है जिसका आवर्तकाल ठीक एक नाक्षत्र दिवस है, अतः वह घूमती पृथ्वी के एक ही बिंदु के ऊपर टिका रहता है।",
+          mr: "भूस्थिर उपग्रह नेमका विषुववृत्ताच्या वर अशा कक्षेत फिरतो जिचा आवर्तकाल नेमका एक नक्षत्र-दिवस, म्हणून तो फिरत्या पृथ्वीच्या एकाच बिंदूवर टिकून राहतो.",
+        },
+        detail: {
+          en: "The radius is forced by Kepler's third law once the period is chosen, so the altitude is not a design choice at all but a consequence of the Earth's mass and its rotation rate.",
+          hi: "आवर्तकाल चुन लेने पर त्रिज्या केप्लर के तीसरे नियम से बाध्य हो जाती है, अतः ऊँचाई कोई अभिकल्प-चुनाव है ही नहीं बल्कि पृथ्वी के द्रव्यमान और उसकी घूर्णन-दर का परिणाम है।",
+          mr: "आवर्तकाल निवडताच त्रिज्या केप्लरच्या तिसऱ्या नियमाने सक्तीची होते, म्हणून उंची ही रचना-निवड नाहीच तर पृथ्वीचे वस्तुमान आणि तिचा परिवलन-दर यांचा परिणाम.",
+        },
+        extra: {
+          en: "It cannot serve the high latitudes well, which is why polar-orbiting satellites at a few hundred kilometres are used for imaging and weather over the poles.",
+          hi: "वह ऊँचे अक्षांशों की अच्छी सेवा नहीं कर सकती, इसीलिए ध्रुवों के ऊपर चित्रण और मौसम के लिए कुछ सौ किलोमीटर पर ध्रुवीय कक्षा वाले उपग्रह लगाए जाते हैं।",
+          mr: "ती उच्च अक्षांशांची चांगली सेवा करू शकत नाही, म्हणूनच ध्रुवांवरील प्रतिमांकन व हवामानासाठी काहीशे किलोमीटरवर ध्रुवीय कक्षेतील उपग्रह वापरले जातात.",
+        },
+        pair: {
+          left: {
+            en: "Aim the dish once and never move it again",
+            hi: "डिश एक बार तानो और फिर कभी न हिलाओ",
+            mr: "डिश एकदा रोखा आणि पुन्हा कधीही हलवू नका",
+          },
+          right: {
+            en: "the geostationary orbit",
+            hi: "भूस्थिर कक्षा",
+            mr: "भूस्थिर कक्षा",
+          },
+        },
+      },
+      /*F7*/
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A television report says astronauts on the space station float because there is no gravity that far from the Earth. The station orbits at about 400 km, where the Earth's radius is 6400 km. Assess the claim quantitatively and give the correct explanation.",
+          hi: "एक टीवी रिपोर्ट कहती है कि अंतरिक्ष स्टेशन के यात्री इसलिए तैरते हैं कि पृथ्वी से उतनी दूर गुरुत्व है ही नहीं। स्टेशन लगभग 400 km पर परिक्रमा करता है, जहाँ पृथ्वी की त्रिज्या 6400 km है। दावे का संख्यात्मक आकलन करो और सही व्याख्या दो।",
+          mr: "एक दूरचित्रवाणी वृत्त सांगते की अंतराळ स्थानकावरील अंतराळवीर यासाठी तरंगतात की पृथ्वीपासून तितक्या दूर गुरुत्व नाहीच. स्थानक सुमारे 400 km वर परिभ्रमण करते, जिथे पृथ्वीची त्रिज्या 6400 km आहे. दाव्याचे संख्यात्मक मूल्यमापन करा आणि योग्य स्पष्टीकरण द्या.",
+        },
+        choices: [
+          {
+            en: "The claim is badly wrong. The station's orbital radius is 6800 km against the surface's 6400, a ratio of 1.0625, so g there is 9.8/1.0625² ≈ 8.7 m/s² — about 89 per cent of its surface value. Gravity is almost undiminished, and it is exactly that pull which bends the station's path into a circle. The astronauts float because they and the station are in free fall together, accelerating towards the Earth at the same rate, so nothing presses on anything and no scale reads anything",
+            hi: "दावा बुरी तरह ग़लत है। स्टेशन की कक्षीय त्रिज्या 6800 km है, सतह की 6400 के सामने, अनुपात 1.0625, अतः वहाँ g = 9.8/1.0625² ≈ 8.7 m/s² — सतह के मान का लगभग 89 प्रतिशत। गुरुत्व लगभग अघटा है, और ठीक वही खिंचाव स्टेशन के पथ को वृत्त में मोड़ता है। यात्री इसलिए तैरते हैं कि वे और स्टेशन साथ मुक्त पतन में हैं, एक ही दर से पृथ्वी की ओर त्वरित होते हुए, अतः कुछ किसी पर दबाव नहीं डालता और कोई तराज़ू कुछ नहीं दिखाता",
+            mr: "दावा वाईटरीत्या चुकीचा. स्थानकाची कक्षीय त्रिज्या 6800 km, पृष्ठभागाच्या 6400 समोर, गुणोत्तर 1.0625, म्हणून तिथे g = 9.8/1.0625² ≈ 8.7 m/s² — पृष्ठभागाच्या मूल्याच्या सुमारे 89 टक्के. गुरुत्व जवळपास अघटित आहे, आणि नेमकी तीच ओढ स्थानकाचा मार्ग वर्तुळात वळवते. अंतराळवीर यासाठी तरंगतात की ते आणि स्थानक एकत्र मुक्त पतनात आहेत, एकाच दराने पृथ्वीकडे त्वरित होत, म्हणून काहीही कशावर दाब देत नाही आणि कोणताही काटा काहीही दाखवत नाही",
+          },
+          {
+            en: "The report is right: 400 km is far enough for gravity to have fallen essentially to zero, which is what allows an orbit at all",
+            hi: "रिपोर्ट सही है: 400 km इतनी दूर है कि गुरुत्व लगभग शून्य हो जाता है, और यही कक्षा को संभव बनाता है",
+            mr: "वृत्त बरोबर आहे: 400 km इतके दूर की गुरुत्व जवळपास शून्य होते, आणि हेच कक्षा शक्य करते",
+          },
+          {
+            en: "Gravity is undiminished, and the astronauts float because the station's speed produces a real outward force that balances it exactly",
+            hi: "गुरुत्व अघटा है, और यात्री इसलिए तैरते हैं कि स्टेशन की चाल एक असली बाहरी बल पैदा करती है जो उसे ठीक-ठीक संतुलित कर देता है",
+            mr: "गुरुत्व अघटित आहे, आणि अंतराळवीर यासाठी तरंगतात की स्थानकाची चाल एक खरे बाहेरचे बल निर्माण करते जे त्याला नेमके संतुलित करते",
+          },
+          {
+            en: "The astronauts are weightless because the station is above the atmosphere, and it is air pressure that gives objects their weight",
+            hi: "यात्री इसलिए भारहीन हैं कि स्टेशन वायुमंडल के ऊपर है, और वस्तुओं को भार वायुदाब ही देता है",
+            mr: "अंतराळवीर यासाठी वजनरहित की स्थानक वातावरणाच्या वर आहे, आणि वस्तूंना वजन हवेचा दाबच देतो",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Do the arithmetic before arguing, because it settles the matter in one line. Gravity falls off as the inverse square of the distance from the Earth's CENTRE, not from its surface — a distinction the report has quietly lost. The surface is 6400 km from the centre; the station is 6400 + 400 = 6800 km from it. The ratio of distances is 6800/6400 = 1.0625, so the ratio of accelerations is 1/1.0625² = 0.886. At the station g is about 8.7 m/s², nearly nine-tenths of its value in the room you are sitting in. A 70 kg astronaut is being pulled with about 609 N, which on a bathroom scale at sea level would read as roughly 62 kg. There is nothing remotely like an absence of gravity. Now the real explanation, which is more interesting than the false one. The astronaut is in free fall — accelerating downwards at 8.7 m/s² — and so is the station, and so is the pen floating beside them, and so is every wall and floor and instrument. Every object present has the same acceleration, because gravitational acceleration does not depend on mass. Nothing therefore catches up with anything else, nothing presses on anything else, and there is no contact force anywhere in the cabin. What a bathroom scale measures is never weight directly; it measures the contact force between you and it. On the ground that force equals your weight because the floor must stop you falling. In orbit there is nothing to stop, so the contact force is zero and the scale reads zero. The sensation is genuine and the interpretation 'no gravity' is not. Why does the station not simply fall to the ground, then? It does fall — continuously — but it is also moving sideways at about 7.7 km/s, and the Earth's surface curves away beneath it at very nearly the rate at which it falls towards that surface. That is what an orbit is: a projectile trajectory that keeps missing. Newton's own thought experiment makes the point exactly — fire a cannonball fast enough from a mountaintop and it never lands. Two of the wrong answers are worth naming. The third invents an outward force. In the ground frame no such force exists; the net force on the station is inward, of magnitude mv²/r, and it is supplied entirely by gravity. That inward force is not balanced by anything, and if it were, the station would travel in a straight line and leave. The fourth confuses weight with buoyancy: air pressure does exert a small upward buoyant force on everything, but removing it would make you very slightly HEAVIER on a scale, not weightless. A vacuum chamber on the ground demonstrates this in an afternoon. The general lesson is that 'weightless' names a sensation and not a physical condition, and the honest phrase is free fall. It is available in a dropped lift, in an aircraft flying a parabolic arc, and at the top of a fairground drop — all of them with the full strength of gravity present throughout. (The remaining wrong answer takes the report at face value and would leave the orbit itself unexplained: with no gravity the station would fly off along a tangent and never come back.)",
+          hi: "बहस से पहले गणना करो, क्योंकि वह मामला एक पंक्ति में निपटा देती है। गुरुत्व पृथ्वी के केंद्र से दूरी के व्युत्क्रम वर्ग के अनुसार घटता है, सतह से नहीं — यह भेद रिपोर्ट चुपचाप खो चुकी है। सतह केंद्र से 6400 km है; स्टेशन उससे 6400 + 400 = 6800 km. दूरियों का अनुपात 6800/6400 = 1.0625, अतः त्वरणों का अनुपात 1/1.0625² = 0.886. स्टेशन पर g लगभग 8.7 m/s² है, उस कमरे के मान का लगभग नौ-दसवाँ जिसमें तुम बैठे हो। 70 kg के यात्री को लगभग 609 N से खींचा जा रहा है, जो समुद्र-तल पर तराज़ू पर मोटे तौर पर 62 kg दिखाता। गुरुत्व की अनुपस्थिति जैसा दूर-दूर तक कुछ नहीं। अब असली व्याख्या, जो झूठी से अधिक दिलचस्प है। यात्री मुक्त पतन में है — 8.7 m/s² से नीचे त्वरित — और स्टेशन भी, और उनके बगल तैरती क़लम भी, और हर दीवार, फ़र्श तथा उपकरण भी। उपस्थित हर वस्तु का त्वरण एक ही है, क्योंकि गुरुत्वीय त्वरण द्रव्यमान पर निर्भर नहीं। अतः कुछ किसी से आगे नहीं निकलता, कुछ किसी पर दबाव नहीं डालता, और केबिन में कहीं कोई संपर्क बल नहीं। तराज़ू कभी सीधे भार नहीं नापता; वह तुम्हारे और अपने बीच का संपर्क बल नापता है। ज़मीन पर वह बल तुम्हारे भार के बराबर है क्योंकि फ़र्श को तुम्हें गिरने से रोकना है। कक्षा में रोकने को कुछ है ही नहीं, अतः संपर्क बल शून्य है और तराज़ू शून्य दिखाता है। अनुभूति सच्ची है और 'गुरुत्व नहीं' वाली व्याख्या नहीं। तो फिर स्टेशन ज़मीन पर गिर क्यों नहीं जाता? वह गिरता है — लगातार — पर वह लगभग 7.7 km/s से बग़ल में भी चल रहा है, और पृथ्वी की सतह उसके नीचे लगभग उसी दर से मुड़ती जाती है जिससे वह उस सतह की ओर गिरता है। कक्षा यही है: ऐसा प्रक्षेप्य-पथ जो चूकता रहता है। न्यूटन का अपना विचार-प्रयोग यही बात ठीक कहता है — पहाड़ की चोटी से तोप का गोला पर्याप्त तेज़ दागो और वह कभी नहीं उतरता। दो ग़लत उत्तर नाम लेने योग्य हैं। तीसरा एक बाहरी बल गढ़ता है। ज़मीन के तंत्र में ऐसा कोई बल नहीं; स्टेशन पर परिणामी बल भीतर की ओर है, परिमाण mv²/r, और वह पूरी तरह गुरुत्व से आता है। वह भीतरी बल किसी से संतुलित नहीं, और होता तो स्टेशन सीधी रेखा में चलकर निकल जाता। चौथा भार को उत्प्लावन से गड्डमड्ड करता है: वायुदाब हर चीज़ पर छोटा ऊर्ध्वमुखी उत्प्लावन बल लगाता है, पर उसे हटा देने से तराज़ू पर तुम बहुत थोड़े भारी होते, भारहीन नहीं। ज़मीन पर निर्वात कक्ष एक दोपहर में यह दिखा देता है। सामान्य सबक़ यह कि 'भारहीन' एक अनुभूति का नाम है, भौतिक स्थिति का नहीं, और ईमानदार शब्द मुक्त पतन है। वह गिरती लिफ़्ट में, परवलयी चाप पर उड़ते विमान में, और मेले के झूले की ढलान के शिखर पर मिलती है — इन सब में गुरुत्व पूरी ताक़त से पूरे समय मौजूद रहता है। (बचा हुआ ग़लत उत्तर रिपोर्ट को ज्यों का त्यों मान लेता है और कक्षा को ही अव्याख्यायित छोड़ देता: गुरुत्व न हो तो स्टेशन स्पर्शरेखा पर उड़ जाता और कभी नहीं लौटता।)",
+          mr: "वाद घालण्याआधी आकडेमोड करा, कारण ती प्रकरण एका ओळीत निकाली काढते. गुरुत्व पृथ्वीच्या केंद्रापासूनच्या अंतराच्या व्यस्त वर्गानुसार घटते, पृष्ठभागापासून नव्हे — हा भेद वृत्ताने गुपचूप गमावला आहे. पृष्ठभाग केंद्रापासून 6400 km; स्थानक त्यापासून 6400 + 400 = 6800 km. अंतरांचे गुणोत्तर 6800/6400 = 1.0625, म्हणून त्वरणांचे गुणोत्तर 1/1.0625² = 0.886. स्थानकावर g सुमारे 8.7 m/s², तुम्ही बसला आहात त्या खोलीतल्या मूल्याच्या जवळपास नऊ-दशांश. 70 kg च्या अंतराळवीराला सुमारे 609 N ने ओढले जात आहे, जे समुद्रसपाटीवर काट्यावर ढोबळमानाने 62 kg दाखवले असते. गुरुत्वाच्या अनुपस्थितीसारखे दूरवरही काहीही नाही. आता खरे स्पष्टीकरण, जे खोट्याहून अधिक रोचक. अंतराळवीर मुक्त पतनात आहे — 8.7 m/s² ने खाली त्वरित — आणि स्थानकही, आणि त्यांच्याशेजारी तरंगणारी लेखणीही, आणि प्रत्येक भिंत, जमीन व उपकरणही. उपस्थित प्रत्येक वस्तूचे त्वरण एकच, कारण गुरुत्वीय त्वरण वस्तुमानावर अवलंबून नाही. म्हणून काहीही कशाच्या पुढे जात नाही, काहीही कशावर दाब देत नाही, आणि कक्षात कुठेही कोणतेही स्पर्श बल नाही. काटा कधीही थेट वजन मोजत नाही; तो तुमच्यातले आणि स्वतःमधले स्पर्श बल मोजतो. जमिनीवर ते बल तुमच्या वजनाइतके कारण जमिनीला तुम्हाला पडण्यापासून थांबवायचे असते. कक्षेत थांबवायला काहीच नाही, म्हणून स्पर्श बल शून्य आणि काटा शून्य दाखवतो. संवेदना खरी आणि 'गुरुत्व नाही' हे स्पष्टीकरण नाही. मग स्थानक जमिनीवर पडत का नाही? ते पडतेच — सतत — पण ते सुमारे 7.7 km/s ने बाजूलाही जात आहे, आणि पृथ्वीचा पृष्ठभाग त्याच्याखाली जवळपास त्याच दराने वळत जातो ज्या दराने ते त्या पृष्ठभागाकडे पडते. कक्षा हीच: असा प्रक्षेप्य-मार्ग जो चुकत राहतो. न्यूटनचा स्वतःचा विचारप्रयोग हेच नेमके सांगतो — डोंगरमाथ्यावरून तोफगोळा पुरेशा वेगाने झाडा आणि तो कधीही उतरत नाही. दोन चुकीची उत्तरे नाव घेण्याजोगी. तिसरे बाहेरचे बल घडवते. जमिनीच्या चौकटीत असे कोणतेही बल नाही; स्थानकावरचे परिणामी बल आतल्या दिशेने, परिमाण mv²/r, आणि ते पूर्णपणे गुरुत्वातून येते. ते आतले बल कशानेही संतुलित नाही, आणि असते तर स्थानक सरळ रेषेत जाऊन निघून गेले असते. चौथे वजन आणि प्लावकतेची गल्लत करते: हवेचा दाब प्रत्येक गोष्टीवर लहान वरचे प्लावक बल लावतो, पण ते काढून टाकल्यास काट्यावर तुम्ही फार थोडे जड झाला असता, वजनरहित नाही. जमिनीवरचा निर्वात कक्ष हे एका दुपारीत दाखवून देतो. सामान्य धडा हा की 'वजनरहित' हे संवेदनेचे नाव, भौतिक स्थितीचे नव्हे, आणि प्रामाणिक शब्द मुक्त पतन. ती पडणाऱ्या लिफ्टमध्ये, परवलयी कमानीवर उडणाऱ्या विमानात, आणि जत्रेतल्या झुल्याच्या उताराच्या शिखरावर मिळते — या सर्वांत गुरुत्व पूर्ण ताकदीने पूर्ण काळ उपस्थित असते. (उरलेले चुकीचे उत्तर वृत्त जसेच्या तसे मानते आणि कक्षाच अस्पष्ट ठेवते: गुरुत्व नसते तर स्थानक स्पर्शिकेवरून उडून गेले असते आणि कधीही परतले नसते.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Two objects are dropped from the same height on the Moon, a hammer and a feather, and they land together. On Earth they do not. A student concludes that the Moon's gravity acts equally on all masses while the Earth's does not. Correct this and say what the Moon demonstration actually shows.",
+          hi: "चंद्रमा पर उसी ऊँचाई से दो वस्तुएँ गिराई जाती हैं, एक हथौड़ा और एक पंख, और वे साथ उतरते हैं। पृथ्वी पर नहीं। एक विद्यार्थी निष्कर्ष निकालता है कि चंद्रमा का गुरुत्व सब द्रव्यमानों पर बराबर लगता है और पृथ्वी का नहीं। इसे सुधारो और बताओ कि चंद्रमा का प्रदर्शन वस्तुतः क्या दिखाता है।",
+          mr: "चंद्रावर त्याच उंचीवरून दोन वस्तू टाकल्या जातात, एक हातोडा आणि एक पीस, आणि त्या एकत्र उतरतात. पृथ्वीवर नाही. एक विद्यार्थी निष्कर्ष काढतो की चंद्राचे गुरुत्व सर्व वस्तुमानांवर समान लागते आणि पृथ्वीचे नाही. हे दुरुस्त करा आणि चंद्रावरचे प्रात्यक्षिक प्रत्यक्षात काय दाखवते ते सांगा.",
+        },
+        choices: [
+          {
+            en: "Gravity behaves identically on both worlds. The force on a body is GMm/r², which is proportional to m, and the acceleration is that force divided by m, so m cancels and every body falls at the same rate. What differs is the air: on Earth the feather meets an upward drag comparable to its own weight and the hammer does not, so their NET forces differ. The Moon has no atmosphere, so the demonstration is simply what Earth would show inside a vacuum chamber — and it does",
+            hi: "गुरुत्व दोनों लोकों पर एक-सा ही व्यवहार करता है। पिंड पर बल GMm/r² है, जो m का समानुपाती है, और त्वरण वह बल बटा m, अतः m कट जाता है और हर पिंड एक ही दर से गिरता है। भिन्न है हवा: पृथ्वी पर पंख को अपने भार के बराबर का ऊर्ध्वमुखी कर्षण मिलता है और हथौड़े को नहीं, अतः उनके परिणामी बल भिन्न हैं। चंद्रमा पर वायुमंडल नहीं, अतः वह प्रदर्शन बस वही है जो पृथ्वी निर्वात कक्ष के भीतर दिखाती — और दिखाती है",
+            mr: "गुरुत्व दोन्ही जगांवर सारखेच वागते. पिंडावरचे बल GMm/r², जे m च्या समानुपाती, आणि त्वरण म्हणजे ते बल भागिले m, म्हणून m कापले जाते आणि प्रत्येक पिंड एकाच दराने पडतो. वेगळी आहे हवा: पृथ्वीवर पिसाला स्वतःच्या वजनाइतका वरचा ओढ मिळतो आणि हातोड्याला नाही, म्हणून त्यांची परिणामी बले वेगळी. चंद्रावर वातावरण नाही, म्हणून ते प्रात्यक्षिक फक्त तेच जे पृथ्वी निर्वात कक्षात दाखवली असती — आणि दाखवते",
+          },
+          {
+            en: "The student is right: the Moon's weaker gravity treats all masses alike, and only a strong field like the Earth's distinguishes between them",
+            hi: "विद्यार्थी सही है: चंद्रमा का दुर्बल गुरुत्व सब द्रव्यमानों से एक-सा बर्ताव करता है, और केवल पृथ्वी जैसा प्रबल क्षेत्र उनमें भेद करता है",
+            mr: "विद्यार्थी बरोबर: चंद्राचे दुर्बल गुरुत्व सर्व वस्तुमानांशी सारखेच वागते, आणि केवळ पृथ्वीसारखे प्रबळ क्षेत्रच त्यांच्यात भेद करते",
+          },
+          {
+            en: "The two land together on the Moon because its gravity is about a sixth of the Earth's, which gives the feather time to catch up",
+            hi: "चंद्रमा पर दोनों साथ इसलिए उतरते हैं कि उसका गुरुत्व पृथ्वी के लगभग छठे भाग का है, जिससे पंख को पकड़ने का समय मिल जाता है",
+            mr: "चंद्रावर दोघे एकत्र यासाठी उतरतात की त्याचे गुरुत्व पृथ्वीच्या सुमारे सहाव्या भागाचे आहे, ज्यामुळे पिसाला गाठायला वेळ मिळतो",
+          },
+          {
+            en: "Heavier bodies really do fall faster everywhere, and the Moon result was an artefact of the low-quality television pictures",
+            hi: "भारी पिंड हर जगह सचमुच तेज़ गिरते हैं, और चंद्रमा का परिणाम घटिया टीवी चित्रों की कारीगरी था",
+            mr: "जड पिंड सर्वत्र खरोखर वेगाने पडतात, आणि चंद्रावरचा निकाल निकृष्ट दूरचित्रवाणी चित्रांची करामत होती",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Write the two equations side by side and the cancellation is unmissable. The gravitational force on a body of mass m at the surface of a world of mass M and radius R is F = GMm/R². Newton's second law then gives a = F/m = GM/R². The body's own mass has vanished from the answer. It vanished because m appears in two different roles — as the thing gravity pulls on, and as the thing that resists being accelerated — and those two happen to be the same number. That coincidence is not required by anything in Newton's framework; it is an experimental fact, tested to extraordinary precision, and Einstein later made it the foundation of general relativity. But granted it, a hammer and a feather must fall at the same rate on any world whatever, the Earth included. So why do they not, on Earth? Because gravity is not the only force acting. Air exerts a drag that depends on the object's size, shape and speed, not on its mass. For the hammer that drag is a negligible fraction of a large weight, so its acceleration is very nearly g. For the feather the drag is comparable to its tiny weight almost at once, so its NET force is small and it drifts down at a nearly constant terminal speed. The difference between the two falls is entirely a difference in air resistance, and nothing to do with how gravity treats mass. That is exactly why the Apollo 15 demonstration is worth doing on the Moon: there is no air there, so the only force is gravity, and the prediction can be seen with the naked eye. The same experiment works in a vacuum chamber on Earth, and physics departments have been performing it in evacuated tubes since long before spaceflight. Both show the same thing, and the Moon adds no new physics — only a very good stage. Two subtleties are worth keeping. First, the Moon's g really is about 1.6 m/s², roughly a sixth of the Earth's, so the objects fall more SLOWLY there than they would here. But they fall slowly TOGETHER. The strength of the field sets how fast everything falls; it has no bearing on whether different masses fall alike. The third option confuses these two entirely separate facts, which is why it is the most tempting wrong answer. Second, the cancellation is exact only if the falling body's own gravitational pull on the world is ignored — strictly, a hammer attracts the Moon as well, and a truly enormous mass would meet the Moon marginally sooner. The effect is unmeasurably small for anything a person can drop, but it is the reason the statement is usually phrased as 'in the limit of a small test mass'. (The remaining wrong answers make the strength of a field decide whether it discriminates by mass, or discard a result that has been reproduced in every vacuum chamber on Earth.)",
+          hi: "दोनों समीकरण अगल-बग़ल लिखो और कटाव देखे बिना नहीं रहता। M द्रव्यमान और R त्रिज्या वाले लोक की सतह पर m द्रव्यमान के पिंड पर गुरुत्वीय बल F = GMm/R² है। न्यूटन का दूसरा नियम तब a = F/m = GM/R² देता है। पिंड का अपना द्रव्यमान उत्तर से ग़ायब हो गया। वह इसलिए ग़ायब हुआ कि m दो भिन्न भूमिकाओं में आता है — उस चीज़ के रूप में जिसे गुरुत्व खींचता है, और उस चीज़ के रूप में जो त्वरित होने का विरोध करती है — और वे दोनों संयोग से एक ही संख्या हैं। यह संयोग न्यूटन के ढाँचे में किसी बात से आवश्यक नहीं; वह प्रायोगिक तथ्य है, असाधारण परिशुद्धता से जाँचा गया, और आइंस्टीन ने बाद में उसे सामान्य आपेक्षिकता की नींव बनाया। पर उसे मान लेने पर हथौड़े और पंख को किसी भी लोक पर, पृथ्वी सहित, एक ही दर से गिरना चाहिए। तो पृथ्वी पर वे गिरते क्यों नहीं? क्योंकि गुरुत्व अकेला लगने वाला बल नहीं। हवा ऐसा कर्षण लगाती है जो वस्तु के आकार, रूप और चाल पर निर्भर है, उसके द्रव्यमान पर नहीं। हथौड़े के लिए वह कर्षण बड़े भार का नगण्य अंश है, अतः उसका त्वरण लगभग g है। पंख के लिए कर्षण लगभग तुरंत उसके नन्हे भार के बराबर हो जाता है, अतः उसका परिणामी बल छोटा है और वह लगभग अचर सीमांत चाल से नीचे बहता है। दोनों पतनों का अंतर पूरी तरह वायु प्रतिरोध का अंतर है, और इससे इसका कोई लेना-देना नहीं कि गुरुत्व द्रव्यमान से कैसे बर्ताव करता है। ठीक इसीलिए अपोलो 15 का प्रदर्शन चंद्रमा पर करने योग्य है: वहाँ हवा नहीं, अतः एकमात्र बल गुरुत्व है, और भविष्यवाणी नंगी आँख से देखी जा सकती है। वही प्रयोग पृथ्वी पर निर्वात कक्ष में चलता है, और भौतिकी विभाग अंतरिक्ष उड़ान से बहुत पहले से निर्वातित नलियों में उसे करते आए हैं। दोनों वही दिखाते हैं, और चंद्रमा कोई नई भौतिकी नहीं जोड़ता — केवल बहुत अच्छा मंच देता है। दो सूक्ष्मताएँ रखने योग्य हैं। पहली, चंद्रमा का g सचमुच लगभग 1.6 m/s² है, पृथ्वी के मोटे तौर पर छठे भाग का, अतः वस्तुएँ वहाँ यहाँ से अधिक धीमे गिरती हैं। पर वे धीमे साथ गिरती हैं। क्षेत्र की प्रबलता यह तय करती है कि सब कितनी तेज़ गिरता है; इससे इसका कोई संबंध नहीं कि भिन्न द्रव्यमान एक-से गिरते हैं या नहीं। तीसरा विकल्प इन दो बिलकुल अलग तथ्यों को पूरी तरह गड्डमड्ड करता है, इसीलिए वह सबसे लुभावना ग़लत उत्तर है। दूसरी, कटाव तभी ठीक-ठीक है जब गिरते पिंड का लोक पर अपना गुरुत्वीय खिंचाव छोड़ दिया जाए — कड़ाई से, हथौड़ा भी चंद्रमा को खींचता है, और सचमुच विशाल द्रव्यमान चंद्रमा से थोड़ा पहले मिलता। यह प्रभाव किसी भी ऐसी चीज़ के लिए अमापनीय रूप से छोटा है जिसे व्यक्ति गिरा सके, पर इसी कारण कथन आम तौर पर 'छोटे परीक्षण द्रव्यमान की सीमा में' कहकर कहा जाता है। (बचे हुए ग़लत उत्तर क्षेत्र की प्रबलता को यह तय करने देते कि वह द्रव्यमान से भेद करता है या नहीं, या ऐसे परिणाम को फेंक देते जो पृथ्वी के हर निर्वात कक्ष में दोहराया जा चुका है।)",
+          mr: "दोन्ही समीकरणे शेजारीशेजारी लिहा आणि कापाकापी न पाहता राहवत नाही. M वस्तुमान आणि R त्रिज्येच्या जगाच्या पृष्ठभागावर m वस्तुमानाच्या पिंडावरचे गुरुत्वीय बल F = GMm/R². न्यूटनचा दुसरा नियम मग a = F/m = GM/R² देतो. पिंडाचे स्वतःचे वस्तुमान उत्तरातून गायब झाले. ते यासाठी गायब झाले की m दोन वेगळ्या भूमिकांत येते — ज्याला गुरुत्व ओढते ती गोष्ट म्हणून, आणि जी त्वरित होण्यास विरोध करते ती गोष्ट म्हणून — आणि ती दोन्ही योगायोगाने एकच संख्या आहेत. हा योगायोग न्यूटनच्या चौकटीतल्या कशानेही आवश्यक नाही; ते प्रायोगिक तथ्य आहे, असाधारण अचूकतेने तपासलेले, आणि आइनस्टाइनने पुढे त्याला सामान्य सापेक्षतेचा पाया बनवले. पण ते मान्य केल्यावर हातोडा आणि पीस कोणत्याही जगावर, पृथ्वीसह, एकाच दराने पडले पाहिजेत. मग पृथ्वीवर ते तसे का पडत नाहीत? कारण गुरुत्व हे एकमेव लागणारे बल नाही. हवा असा ओढ लावते जो वस्तूच्या आकार, रूप आणि चालीवर अवलंबून, तिच्या वस्तुमानावर नाही. हातोड्यासाठी तो ओढ मोठ्या वजनाचा नगण्य अंश, म्हणून त्याचे त्वरण जवळपास g. पिसासाठी ओढ जवळपास लगेच त्याच्या इवल्या वजनाइतका होतो, म्हणून त्याचे परिणामी बल लहान आणि ते जवळपास अचल सीमावर्ती चालीने खाली तरंगते. दोन पतनांतला फरक पूर्णपणे हवेच्या विरोधाचा फरक, आणि गुरुत्व वस्तुमानाशी कसे वागते याच्याशी काहीही संबंध नाही. नेमके म्हणूनच अपोलो 15 चे प्रात्यक्षिक चंद्रावर करण्याजोगे: तिथे हवा नाही, म्हणून एकमेव बल गुरुत्व, आणि भाकीत उघड्या डोळ्यांनी पाहता येते. तोच प्रयोग पृथ्वीवर निर्वात कक्षात चालतो, आणि भौतिकी विभाग अंतराळ उड्डाणाच्या कितीतरी आधीपासून निर्वात नळ्यांत तो करत आले आहेत. दोन्ही तेच दाखवतात, आणि चंद्र कोणतीही नवी भौतिकी जोडत नाही — केवळ फार चांगला रंगमंच देतो. दोन सूक्ष्मता ठेवण्याजोग्या. पहिली, चंद्राचा g खरोखर सुमारे 1.6 m/s² आहे, पृथ्वीच्या ढोबळमानाने सहाव्या भागाचा, म्हणून वस्तू तिथे इथल्यापेक्षा अधिक सावकाश पडतात. पण त्या सावकाश एकत्र पडतात. क्षेत्राची प्रबळता सर्व किती वेगाने पडते ते ठरवते; वेगवेगळी वस्तुमाने सारखी पडतात का याच्याशी तिचा काहीही संबंध नाही. तिसरा पर्याय या दोन पूर्णपणे वेगळ्या तथ्यांची पूर्ण गल्लत करतो, म्हणूनच ते सर्वांत मोहक चुकीचे उत्तर. दुसरी, कापाकापी तेव्हाच नेमकी जेव्हा पडणाऱ्या पिंडाची जगावरची स्वतःची गुरुत्वीय ओढ सोडली जाते — काटेकोरपणे, हातोडाही चंद्राला ओढतो, आणि खरोखर प्रचंड वस्तुमान चंद्राला किंचित आधी भेटले असते. हा परिणाम माणूस टाकू शकेल अशा कशासाठीही न मोजता येण्याइतका लहान, पण याच कारणाने विधान सहसा 'लहान चाचणी वस्तुमानाच्या मर्यादेत' असे म्हणून मांडले जाते. (उरलेली चुकीची उत्तरे क्षेत्राच्या प्रबळतेला ते वस्तुमानानुसार भेद करते का हे ठरवू देतात, वा पृथ्वीवरील प्रत्येक निर्वात कक्षात पुन्हा मिळवलेला निकाल फेकून देतात.)",
+        },
+      },
+      /*H7*/
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 8 — Mechanical Properties of Solids                             */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "physics-11-mechanical-properties-of-solids",
+    subject: "PHYSICS",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 8 — Mechanical Properties of Solids",
+      hi: "अध्याय 8 — ठोसों के यांत्रिक गुण",
+      mr: "प्रकरण 8 — घनपदार्थांचे यांत्रिक गुणधर्म",
+    },
+    name: {
+      en: "Mechanical Properties of Solids",
+      hi: "ठोसों के यांत्रिक गुण",
+      mr: "घनपदार्थांचे यांत्रिक गुणधर्म",
+    },
+    summary: {
+      en: "Rigid bodies were a convenient lie and this chapter withdraws it: every beam bends, every cable stretches, and the question becomes how much and whether it comes back. Two quantities that make different wires comparable, a straight line that holds only while it holds, a modulus that belongs to the material and never to the specimen, a permanent set that is the first sign of failure, and the reason a crane's cable and a girder are designed to a stress and not to a load.",
+      hi: "दृढ़ पिंड एक सुविधाजनक झूठ था और यह अध्याय उसे वापस ले लेता है: हर धरन झुकती है, हर तार खिंचता है, और प्रश्न यह बनता है कि कितना और क्या वह लौटता है। दो राशियाँ जो भिन्न तारों की तुलना संभव बनाती हैं, वह सीधी रेखा जो तभी तक चलती है जब तक चलती है, वह मापांक जो पदार्थ का है, नमूने का कभी नहीं, वह स्थायी विरूपण जो विफलता का पहला संकेत है, और वह कारण जिससे क्रेन की रस्सी और धरन भार पर नहीं प्रतिबल पर अभिकल्पित होती हैं।",
+      mr: "दृढ पिंड हे सोयीचे खोटे होते आणि हे प्रकरण ते मागे घेते: प्रत्येक तुळई वाकते, प्रत्येक तार ताणली जाते, आणि प्रश्न होतो किती आणि ती परत येते का. दोन राशी ज्या वेगवेगळ्या तारांची तुलना शक्य करतात, ती सरळ रेषा जी टिकेपर्यंतच टिकते, तो मापांक जो पदार्थाचा, नमुन्याचा कधीच नाही, ते कायमचे विरूपण जे अपयशाचे पहिले चिन्ह, आणि ते कारण ज्यामुळे क्रेनची दोरी आणि तुळई ओझ्यावर नव्हे तर प्रतिबलावर आखली जातात.",
+    },
+    position: 8,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "stress-and-strain",
+        name: {
+          en: "Stress and strain",
+          hi: "प्रतिबल और विकृति",
+          mr: "प्रतिबल आणि विकृती",
+        },
+        kind: "quantity",
+        prompt: {
+          en: "A thick cable and a thin one cannot be compared by the load they carry or by how far they stretch, so the load is divided by the area and the stretch by the original length before anything is said. Which pair is this?",
+          hi: "मोटी और पतली रस्सी की तुलना न उनके ढोए भार से हो सकती है न इससे कि वे कितना खिंचीं, अतः कुछ कहने से पहले भार को क्षेत्रफल से और खिंचाव को मूल लंबाई से भाग दिया जाता है। यह कौन-सी जोड़ी है?",
+          mr: "जाड आणि पातळ दोरीची तुलना ना त्यांनी वाहिलेल्या ओझ्याने होऊ शकते ना त्या किती ताणल्या यावरून, म्हणून काही सांगण्याआधी ओझे क्षेत्रफळाने आणि ताण मूळ लांबीने भागले जाते. ही कोणती जोडी?",
+        },
+        statement: {
+          en: "Stress is the internal restoring force per unit area and strain is the fractional change in dimension, so stress has the units of pressure while strain is a pure number with no units at all.",
+          hi: "प्रतिबल प्रति एकांक क्षेत्रफल आंतरिक प्रत्यानयन बल है और विकृति विमा में भिन्नात्मक परिवर्तन, अतः प्रतिबल के मात्रक दाब के हैं जबकि विकृति शुद्ध संख्या है जिसका कोई मात्रक ही नहीं।",
+          mr: "प्रतिबल म्हणजे प्रति एकक क्षेत्रफळ आंतरिक पुनःस्थापक बल आणि विकृती म्हणजे मितीतील अपूर्णांकी बदल, म्हणून प्रतिबलाची एकके दाबाची तर विकृती ही शुद्ध संख्या जिला कोणतेही एकक नाही.",
+        },
+        detail: {
+          en: "Dividing by the area is what makes a material's behaviour a property of the material rather than of the particular rod on the bench, and it is why engineers design to a safe stress and not to a safe load.",
+          hi: "क्षेत्रफल से भाग देना ही पदार्थ के व्यवहार को उस पदार्थ का गुण बनाता है, मेज़ पर रखी किसी विशेष छड़ का नहीं, और इसीलिए अभियंता सुरक्षित प्रतिबल पर अभिकल्पन करते हैं, सुरक्षित भार पर नहीं।",
+          mr: "क्षेत्रफळाने भागणे हेच पदार्थाच्या वर्तनाला त्या पदार्थाचा गुणधर्म बनवते, बाकावरच्या एखाद्या विशिष्ट दांडीचा नव्हे, आणि म्हणूनच अभियंते सुरक्षित प्रतिबलावर आखणी करतात, सुरक्षित ओझ्यावर नव्हे.",
+        },
+        extra: {
+          en: "Stress is not the same as the applied pressure even when the numbers agree: pressure acts on a surface from outside, while stress is the material's own answer to it, distributed through the body.",
+          hi: "संख्याएँ मिलने पर भी प्रतिबल लगाए गए दाब जैसा नहीं है: दाब सतह पर बाहर से लगता है, जबकि प्रतिबल उसके प्रति पदार्थ का अपना उत्तर है, जो पूरे पिंड में बँटा रहता है।",
+          mr: "आकडे जुळले तरी प्रतिबल हे लावलेल्या दाबासारखे नाही: दाब पृष्ठभागावर बाहेरून लागतो, तर प्रतिबल हे त्याला पदार्थाचे स्वतःचे उत्तर, जे अख्ख्या पिंडात वाटले जाते.",
+        },
+        pair: {
+          left: {
+            en: "One carries units of pressure, the other none at all",
+            hi: "एक के मात्रक दाब के, दूसरे के कोई नहीं",
+            mr: "एकाची एकके दाबाची, दुसऱ्याची काहीच नाहीत",
+          },
+          right: {
+            en: "stress and strain",
+            hi: "प्रतिबल और विकृति",
+            mr: "प्रतिबल आणि विकृती",
+          },
+        },
+      },
+      {
+        id: "hookes-law-and-elastic-limit",
+        name: {
+          en: "Hooke's law and the elastic limit",
+          hi: "हुक का नियम और प्रत्यास्थता सीमा",
+          mr: "हूकचा नियम आणि प्रत्यास्थता मर्यादा",
+        },
+        kind: "law",
+        prompt: {
+          en: "Load a wire gently and the graph of stress against strain is a straight line through the origin; load it past one particular point and the line bends and the wire never fully returns. Which pair of ideas is this?",
+          hi: "तार पर हल्का भार डालो और प्रतिबल बनाम विकृति का आलेख मूल-बिंदु से जाती सीधी रेखा है; एक विशेष बिंदु से आगे भार डालो और रेखा मुड़ जाती है तथा तार पूरी तरह कभी नहीं लौटता। यह कौन-सी विचार-जोड़ी है?",
+          mr: "तारेवर हलके ओझे टाका आणि प्रतिबल विरुद्ध विकृतीचा आलेख आरंभबिंदूतून जाणारी सरळ रेषा; एका विशिष्ट बिंदूपुढे ओझे टाका आणि रेषा वाकते तसेच तार पूर्णपणे कधीही परतत नाही. ही कोणती कल्पना-जोडी?",
+        },
+        statement: {
+          en: "Hooke's law states that stress is proportional to strain, and it holds only up to the proportional limit; beyond the elastic limit a little further on, the body keeps a permanent set when unloaded.",
+          hi: "हुक का नियम कहता है कि प्रतिबल विकृति का समानुपाती है, और वह केवल समानुपाती सीमा तक चलता है; उससे थोड़ा आगे प्रत्यास्थता सीमा के परे भार हटाने पर पिंड स्थायी विरूपण रख लेता है।",
+          mr: "हूकचा नियम सांगतो की प्रतिबल विकृतीच्या समानुपाती आहे, आणि तो केवळ समानुपाती मर्यादेपर्यंतच चालतो; त्याहून थोड्या पुढे प्रत्यास्थता मर्यादेपलीकडे ओझे काढल्यावर पिंड कायमचे विरूपण राखतो.",
+        },
+        detail: {
+          en: "It is a description of how most materials happen to behave over a small range, not a law of nature, and rubber disobeys it almost from the start.",
+          hi: "यह इसका वर्णन है कि अधिकांश पदार्थ छोटे परास में संयोगवश कैसे व्यवहार करते हैं, प्रकृति का नियम नहीं, और रबर उसे लगभग आरंभ से ही नहीं मानता।",
+          mr: "हे बहुतांश पदार्थ लहान पल्ल्यात योगायोगाने कसे वागतात याचे वर्णन आहे, निसर्गाचा नियम नव्हे, आणि रबर तो जवळपास सुरुवातीपासूनच पाळत नाही.",
+        },
+        extra: {
+          en: "Past the elastic limit comes yielding, where the material stretches a long way for very little extra stress, and this is what makes a metal drawable into wire and beatable into sheet.",
+          hi: "प्रत्यास्थता सीमा के आगे पराभव आता है, जहाँ पदार्थ बहुत थोड़े अतिरिक्त प्रतिबल पर बहुत खिंच जाता है, और यही धातु को तार में खींचने और चादर में पीटने योग्य बनाता है।",
+          mr: "प्रत्यास्थता मर्यादेपुढे नमन येते, जिथे पदार्थ फार थोड्या जादा प्रतिबलावर खूप ताणला जातो, आणि हेच धातूला तारेत ओढण्याजोगे आणि पत्र्यात ठोकण्याजोगे बनवते.",
+        },
+        pair: {
+          left: {
+            en: "A straight line that is a habit, not a law",
+            hi: "ऐसी सीधी रेखा जो आदत है, नियम नहीं",
+            mr: "अशी सरळ रेषा जी सवय आहे, नियम नव्हे",
+          },
+          right: {
+            en: "Hooke's law and the elastic limit",
+            hi: "हुक का नियम और प्रत्यास्थता सीमा",
+            mr: "हूकचा नियम आणि प्रत्यास्थता मर्यादा",
+          },
+        },
+      },
+      {
+        id: "youngs-modulus",
+        name: {
+          en: "Young's modulus",
+          hi: "यंग मापांक",
+          mr: "यंग मापांक",
+        },
+        kind: "quantity",
+        prompt: {
+          en: "Steel's value is about twenty times rubber's and does not change when the wire is cut in half or drawn thinner, because it is the slope of the straight part of the stress–strain graph. Which quantity is this?",
+          hi: "इस्पात का मान रबर के लगभग बीस गुना है और तार आधा काटने या पतला खींचने पर बदलता नहीं, क्योंकि वह प्रतिबल-विकृति आलेख के सीधे भाग की ढाल है। यह कौन-सी राशि है?",
+          mr: "पोलादाचे मूल्य रबराच्या सुमारे वीसपट आणि तार अर्धी कापली वा पातळ ओढली तरी बदलत नाही, कारण ते प्रतिबल-विकृती आलेखाच्या सरळ भागाचा उतार आहे. ही कोणती राशी?",
+        },
+        statement: {
+          en: "Young's modulus is the ratio of tensile stress to longitudinal strain, a property of the material alone, so it is unchanged by the specimen's length, thickness or shape.",
+          hi: "यंग मापांक तन्य प्रतिबल और अनुदैर्घ्य विकृति का अनुपात है, केवल पदार्थ का गुण, अतः नमूने की लंबाई, मोटाई या आकार से वह नहीं बदलता।",
+          mr: "यंग मापांक म्हणजे तन्य प्रतिबल आणि अनुदैर्घ्य विकृती यांचे गुणोत्तर, केवळ पदार्थाचा गुणधर्म, म्हणून नमुन्याची लांबी, जाडी वा आकार यांनी तो बदलत नाही.",
+        },
+        detail: {
+          en: "The extension it predicts, FL/(AY), does depend on the specimen: a longer wire of the same material stretches proportionately more and a thicker one proportionately less.",
+          hi: "वह जो विस्तार बताता है, FL/(AY), वह नमूने पर निर्भर है ही: उसी पदार्थ का लंबा तार समानुपाती रूप से अधिक खिंचता है और मोटा समानुपाती रूप से कम।",
+          mr: "तो जो ताण सांगतो, FL/(AY), तो नमुन्यावर अवलंबून आहेच: त्याच पदार्थाची लांब तार समानुपातीरीत्या अधिक ताणली जाते आणि जाड तार समानुपातीरीत्या कमी.",
+        },
+        extra: {
+          en: "A large value means stiff rather than strong: steel resists stretching far better than rubber, but a thread of either can be broken, and breaking is governed by a different number entirely.",
+          hi: "बड़ा मान दृढ़ होने का अर्थ रखता है, मज़बूत होने का नहीं: इस्पात रबर से कहीं बेहतर खिंचाव रोकता है, पर दोनों में से किसी का धागा तोड़ा जा सकता है, और टूटना पूरी तरह भिन्न संख्या से तय होता है।",
+          mr: "मोठे मूल्य म्हणजे ताठर, बळकट नव्हे: पोलाद रबरहून कितीतरी चांगले ताणण्यास विरोध करते, पण दोघांपैकी कोणाचाही धागा तोडता येतो, आणि तुटणे पूर्णपणे वेगळ्या संख्येने ठरते.",
+        },
+        pair: {
+          left: {
+            en: "Cut the wire in half and the number is unchanged",
+            hi: "तार आधा काटो और संख्या वही रहती है",
+            mr: "तार अर्धी कापा आणि संख्या तीच राहते",
+          },
+          right: {
+            en: "Young's modulus",
+            hi: "यंग मापांक",
+            mr: "यंग मापांक",
+          },
+        },
+      },
+      {
+        id: "bulk-modulus",
+        name: {
+          en: "The bulk modulus",
+          hi: "आयतन मापांक",
+          mr: "घनफळ मापांक",
+        },
+        kind: "quantity",
+        prompt: {
+          en: "Squeeze a body from every side at once and its volume shrinks a little; the pressure needed per unit of fractional volume change is enormous for steel, large for water and small for air. Which quantity is this?",
+          hi: "किसी पिंड को एक साथ हर ओर से दबाओ और उसका आयतन थोड़ा सिकुड़ता है; प्रति एकांक भिन्नात्मक आयतन-परिवर्तन के लिए चाहिए दाब इस्पात के लिए विशाल, पानी के लिए बड़ा और हवा के लिए छोटा है। यह कौन-सी राशि है?",
+          mr: "एखाद्या पिंडाला एकाच वेळी सर्व बाजूंनी दाबा आणि त्याचे घनफळ थोडे आकुंचते; प्रति एकक अपूर्णांकी घनफळ-बदलासाठी लागणारा दाब पोलादासाठी प्रचंड, पाण्यासाठी मोठा आणि हवेसाठी लहान असतो. ही कोणती राशी?",
+        },
+        statement: {
+          en: "The bulk modulus is the ratio of the applied pressure to the fractional decrease in volume, and it is the only elastic modulus that gases and liquids possess.",
+          hi: "आयतन मापांक लगाए गए दाब और आयतन में भिन्नात्मक कमी का अनुपात है, और यही एकमात्र प्रत्यास्थता मापांक है जो गैसों तथा द्रवों के पास होता है।",
+          mr: "घनफळ मापांक म्हणजे लावलेला दाब आणि घनफळातील अपूर्णांकी घट यांचे गुणोत्तर, आणि हाच एकमेव प्रत्यास्थता मापांक जो वायू आणि द्रवांकडे असतो.",
+        },
+        detail: {
+          en: "Fluids have no shear modulus at all, because a layer of liquid offers no permanent resistance to being slid sideways — it simply flows, which is the definition of a fluid.",
+          hi: "तरलों के पास अपरूपण मापांक है ही नहीं, क्योंकि द्रव की परत बग़ल में सरकाए जाने का स्थायी प्रतिरोध नहीं देती — वह बस बहती है, और तरल की परिभाषा यही है।",
+          mr: "प्रवाहींकडे कर्तन मापांक मुळीच नाही, कारण द्रवाचा थर बाजूला सरकवण्याला कायमचा विरोध देत नाही — तो फक्त वाहतो, आणि प्रवाहीची व्याख्या हीच.",
+        },
+        extra: {
+          en: "Its reciprocal is called compressibility, and water's very low value is why hydraulic machinery works at all: a fluid that squashed easily could not transmit a force undiminished.",
+          hi: "उसका व्युत्क्रम संपीड्यता कहलाता है, और पानी का बहुत कम मान ही वह कारण है जिससे द्रवचालित यंत्र चलते हैं: जो तरल आसानी से दब जाए वह बल को बिना घटाए संचरित नहीं कर सकता।",
+          mr: "त्याचा व्यस्त संपीड्यता म्हणतात, आणि पाण्याचे फार कमी मूल्य हेच ते कारण ज्यामुळे द्रवचालित यंत्रे चालतात: सहज दबणारे प्रवाही बल न घटवता संक्रमित करू शकणार नाही.",
+        },
+        pair: {
+          left: {
+            en: "The one modulus a liquid actually has",
+            hi: "वह एकमात्र मापांक जो द्रव के पास वस्तुतः है",
+            mr: "तो एकमेव मापांक जो द्रवाकडे प्रत्यक्षात आहे",
+          },
+          right: {
+            en: "the bulk modulus",
+            hi: "आयतन मापांक",
+            mr: "घनफळ मापांक",
+          },
+        },
+      },
+      {
+        id: "poissons-ratio",
+        name: {
+          en: "Poisson's ratio",
+          hi: "प्वासों अनुपात",
+          mr: "प्वासों गुणोत्तर",
+        },
+        kind: "quantity",
+        prompt: {
+          en: "Stretch a rubber band and it visibly narrows; stretch a steel wire and it narrows too, only far too little to see. The sideways shrinkage divided by the lengthwise stretch is which quantity?",
+          hi: "रबर बैंड खींचो और वह दिखाई देने लायक़ पतला हो जाता है; इस्पात का तार खींचो और वह भी पतला होता है, बस देखने के लिए बहुत ही कम। पार्श्व सिकुड़न बटा अनुदैर्घ्य खिंचाव कौन-सी राशि है?",
+          mr: "रबरबँड ताणा आणि तो दिसण्याइतका बारीक होतो; पोलादाची तार ताणा आणि तीही बारीक होते, फक्त पाहण्यासाठी फारच कमी. आडवी आकुंचन भागिले लांबीचा ताण ही कोणती राशी?",
+        },
+        statement: {
+          en: "Poisson's ratio is the lateral strain divided by the longitudinal strain, a pure number that for most solids lies between about 0.2 and 0.5.",
+          hi: "प्वासों अनुपात पार्श्व विकृति बटा अनुदैर्घ्य विकृति है, एक शुद्ध संख्या जो अधिकांश ठोसों के लिए लगभग 0.2 और 0.5 के बीच रहती है।",
+          mr: "प्वासों गुणोत्तर म्हणजे आडवी विकृती भागिले अनुदैर्घ्य विकृती, एक शुद्ध संख्या जी बहुतांश घनपदार्थांसाठी सुमारे 0.2 आणि 0.5 दरम्यान असते.",
+        },
+        detail: {
+          en: "A value of exactly 0.5 would mean the volume did not change at all under stretching, which is very nearly true of rubber and not at all true of steel.",
+          hi: "ठीक 0.5 का मान यह कहता कि खिंचाव पर आयतन बिलकुल नहीं बदला, जो रबर के लिए लगभग सच है और इस्पात के लिए बिलकुल नहीं।",
+          mr: "नेमके 0.5 चे मूल्य म्हणजे ताणताना घनफळ मुळीच बदलले नाही, जे रबरासाठी जवळपास खरे आणि पोलादासाठी मुळीच नाही.",
+        },
+        extra: {
+          en: "It is the reason a stretched wire's cross-section is not the value to use in a careful stress calculation, though the correction is negligible in the elastic range.",
+          hi: "इसी से खिंचे तार का अनुप्रस्थ काट सावधान प्रतिबल-गणना में लेने योग्य मान नहीं रहता, यद्यपि प्रत्यास्थ परास में यह सुधार नगण्य है।",
+          mr: "यामुळेच ताणलेल्या तारेचा आडवा छेद काळजीपूर्वक प्रतिबल-गणनेत घेण्याजोगे मूल्य राहत नाही, जरी प्रत्यास्थ पल्ल्यात ही दुरुस्ती नगण्य असली तरी.",
+        },
+        pair: {
+          left: {
+            en: "Half would mean the volume never changed",
+            hi: "आधा होने का अर्थ होता कि आयतन कभी बदला ही नहीं",
+            mr: "अर्धा असणे म्हणजे घनफळ कधी बदललेच नाही",
+          },
+          right: {
+            en: "Poisson's ratio",
+            hi: "प्वासों अनुपात",
+            mr: "प्वासों गुणोत्तर",
+          },
+        },
+      },
+      {
+        id: "elastic-energy-in-a-wire",
+        name: {
+          en: "Elastic energy in a stretched wire",
+          hi: "खिंचे तार में प्रत्यास्थ ऊर्जा",
+          mr: "ताणलेल्या तारेतील प्रत्यास्थ ऊर्जा",
+        },
+        kind: "law",
+        prompt: {
+          en: "The load builds from nothing to its full value as the wire lengthens, so the work stored is the triangular area under the load–extension graph and comes out as half of force times extension. Which store is this?",
+          hi: "तार के लंबा होते-होते भार शून्य से बढ़कर अपने पूरे मान तक पहुँचता है, अतः संचित कार्य भार-विस्तार आलेख के नीचे का त्रिभुजाकार क्षेत्रफल है और बल गुणा विस्तार का आधा निकलता है। यह कौन-सा भंडार है?",
+          mr: "तार लांब होता होता ओझे शून्यापासून वाढून आपल्या पूर्ण मूल्यापर्यंत पोहोचते, म्हणून साठलेले कार्य ओझे-ताण आलेखाखालचे त्रिकोणी क्षेत्रफळ आणि बल गुणिले ताण याच्या निम्मे निघते. हा कोणता साठा?",
+        },
+        statement: {
+          en: "The elastic potential energy stored in a stretched wire is half the product of the load and the extension, or equivalently half of stress times strain times the volume.",
+          hi: "खिंचे तार में संचित प्रत्यास्थ स्थितिज ऊर्जा भार और विस्तार के गुणनफल की आधी है, या समतुल्य रूप से प्रतिबल गुणा विकृति गुणा आयतन की आधी।",
+          mr: "ताणलेल्या तारेत साठलेली प्रत्यास्थ स्थितिज ऊर्जा म्हणजे ओझे आणि ताण यांच्या गुणाकाराच्या निम्मी, किंवा समतुल्यपणे प्रतिबल गुणिले विकृती गुणिले घनफळ याच्या निम्मी.",
+        },
+        detail: {
+          en: "The energy is returned in full only within the elastic range; past the elastic limit part of it goes into permanent rearrangement and appears as heat rather than coming back.",
+          hi: "ऊर्जा केवल प्रत्यास्थ परास के भीतर पूरी लौटती है; प्रत्यास्थता सीमा के परे उसका कुछ भाग स्थायी पुनर्व्यवस्था में जाता है और लौटने के बजाय ऊष्मा बनकर प्रकट होता है।",
+          mr: "ऊर्जा केवळ प्रत्यास्थ पल्ल्यातच पूर्ण परत मिळते; प्रत्यास्थता मर्यादेपलीकडे तिचा काही भाग कायमच्या पुनर्रचनेत जातो आणि परत येण्याऐवजी उष्णता बनून प्रकट होतो.",
+        },
+        extra: {
+          en: "It is the reason a snapping cable is dangerous out of all proportion to the load: the stored energy is released in a moment, and a long cable stores far more of it than a short one under the same tension.",
+          hi: "इसी से टूटती रस्सी भार के अनुपात से कहीं अधिक ख़तरनाक होती है: संचित ऊर्जा एक क्षण में मुक्त होती है, और उसी तनाव पर लंबी रस्सी छोटी से कहीं अधिक ऊर्जा जमा रखती है।",
+          mr: "यामुळेच तुटणारी दोरी ओझ्याच्या प्रमाणाहून कितीतरी अधिक धोकादायक असते: साठलेली ऊर्जा एका क्षणात मुक्त होते, आणि त्याच ताणावर लांब दोरी लहान दोरीहून कितीतरी अधिक ऊर्जा साठवते.",
+        },
+        pair: {
+          left: {
+            en: "Half, because the load grew from nothing",
+            hi: "आधा, क्योंकि भार शून्य से बढ़ा था",
+            mr: "निम्मे, कारण ओझे शून्यापासून वाढले होते",
+          },
+          right: {
+            en: "elastic energy in a stretched wire",
+            hi: "खिंचे तार में प्रत्यास्थ ऊर्जा",
+            mr: "ताणलेल्या तारेतील प्रत्यास्थ ऊर्जा",
+          },
+        },
+      },
+      /*F8*/
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Two wires of the same steel hang from the same beam and carry the same load. The second is twice as long and twice the diameter of the first. The first stretches by 2 mm. A student predicts the second will stretch by 4 mm because it is twice as long. Correct the prediction.",
+          hi: "एक ही इस्पात के दो तार उसी धरन से लटके हैं और वही भार ढोते हैं। दूसरा पहले से दुगुना लंबा और दुगुने व्यास का है। पहला 2 mm खिंचता है। एक विद्यार्थी भविष्यवाणी करता है कि दूसरा 4 mm खिंचेगा क्योंकि वह दुगुना लंबा है। भविष्यवाणी सुधारो।",
+          mr: "एकाच पोलादाच्या दोन तारा त्याच तुळईवरून लटकत आहेत आणि तेच ओझे वाहतात. दुसरी पहिलीहून दुप्पट लांब आणि दुप्पट व्यासाची. पहिली 2 mm ताणली जाते. एक विद्यार्थी भाकीत करतो की दुसरी 4 mm ताणली जाईल कारण ती दुप्पट लांब आहे. भाकीत दुरुस्त करा.",
+        },
+        choices: [
+          {
+            en: "The extension is FL/(AY), so length and area pull in opposite directions. Doubling the length doubles the extension, but doubling the diameter quadruples the area and so divides it by four. The net factor is 2/4 = 0.5, and the second wire stretches by 1 mm — half as much, not twice. The student changed one variable and forgot the other, which is the standard trap in this formula",
+            hi: "विस्तार FL/(AY) है, अतः लंबाई और क्षेत्रफल विपरीत दिशाओं में खींचते हैं। लंबाई दुगुनी करने से विस्तार दुगुना होता है, पर व्यास दुगुना करने से क्षेत्रफल चौगुना होता है और इसलिए वह चार से भाग हो जाता है। शुद्ध गुणक 2/4 = 0.5, और दूसरा तार 1 mm खिंचता है — आधा, दुगुना नहीं। विद्यार्थी ने एक चर बदला और दूसरा भूल गया, और इस सूत्र का यही मानक जाल है",
+            mr: "ताण FL/(AY) आहे, म्हणून लांबी आणि क्षेत्रफळ विरुद्ध दिशांना ओढतात. लांबी दुप्पट केल्याने ताण दुप्पट होतो, पण व्यास दुप्पट केल्याने क्षेत्रफळ चौपट होते आणि म्हणून तो चारने भागला जातो. निव्वळ गुणक 2/4 = 0.5, आणि दुसरी तार 1 mm ताणली जाते — निम्मे, दुप्पट नव्हे. विद्यार्थ्याने एक चल बदलले आणि दुसरे विसरले, आणि या सूत्राचा हाच प्रमाणित सापळा",
+          },
+          {
+            en: "The student is right: extension depends only on length, since Young's modulus already accounts for the thickness",
+            hi: "विद्यार्थी सही है: विस्तार केवल लंबाई पर निर्भर है, क्योंकि यंग मापांक मोटाई का हिसाब पहले ही रख लेता है",
+            mr: "विद्यार्थी बरोबर: ताण केवळ लांबीवर अवलंबून, कारण यंग मापांक जाडीचा हिशोब आधीच ठेवतो",
+          },
+          {
+            en: "The second wire stretches by 2 mm, because doubling the length and doubling the diameter cancel each other exactly",
+            hi: "दूसरा तार 2 mm खिंचता है, क्योंकि लंबाई दुगुनी और व्यास दुगुना करना एक-दूसरे को ठीक-ठीक काट देते हैं",
+            mr: "दुसरी तार 2 mm ताणली जाते, कारण लांबी दुप्पट आणि व्यास दुप्पट करणे एकमेकांना नेमके कापतात",
+          },
+          {
+            en: "Nothing can be said, because Young's modulus is different for a thicker wire of the same steel",
+            hi: "कुछ नहीं कहा जा सकता, क्योंकि उसी इस्पात के मोटे तार का यंग मापांक भिन्न होता है",
+            mr: "काहीही सांगता येत नाही, कारण त्याच पोलादाच्या जाड तारेचा यंग मापांक वेगळा असतो",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Write the formula out and the answer is a matter of counting powers. Young's modulus is defined as stress over strain, Y = (F/A)/(ΔL/L), and rearranging gives the extension ΔL = FL/(AY). Four things appear on the right, and the question changes two of them. The load F is the same. The material is the same, so Y is the same — and that last point disposes of the fourth option straight away. Young's modulus is a property of steel, not of any particular piece of it; cutting a wire in half or drawing it thinner does not change the value in the table, which is exactly why it is worth tabulating. Now the two that do change. Length is in the numerator, so doubling it doubles the extension: a longer wire has more material to share the same fractional stretch, and the same strain over twice the length gives twice the absolute extension. On its own this gives the student's factor of 2. But the area is in the denominator, and area is not diameter. For a circular cross-section A = πd²/4, so doubling d multiplies A by four. That divides the extension by four. Combining, the second wire extends by 2 × (1/4) = 0.5 of the first, giving 1 mm. Notice the shape of the error rather than just its size. The student did not make a mistake of arithmetic; they varied one quantity while holding the other fixed in their head, though the problem had changed both. This is the most common failure mode in every formula with more than two variables, and the defence is mechanical: list every symbol, mark which ones changed, and apply each factor separately before combining. The third option is a subtler version of the same trap — it notices both changes but treats diameter as though it entered linearly, so 2 and 2 appear to cancel. The squaring is the whole point. It is worth seeing which quantity is a property of what. Y belongs to the material. Stress and strain belong to the situation. The extension belongs to the specimen. A student who keeps those three levels separate can answer any question in this chapter, and one who does not will keep looking up the wrong number. The practical version of the same lesson is that a designer choosing a cable specifies a material by its modulus and strength, then chooses a diameter to bring the stress below a safe value — and doubling the diameter buys four times the load capacity, not twice. (The remaining wrong answers make Young's modulus depend on the specimen, or drop the area from the formula altogether.)",
+          hi: "सूत्र लिखो और उत्तर घातें गिनने भर का मामला है। यंग मापांक प्रतिबल बटा विकृति परिभाषित है, Y = (F/A)/(ΔL/L), और पुनर्व्यवस्थित करने पर विस्तार ΔL = FL/(AY) मिलता है। दाईं ओर चार चीज़ें आती हैं, और प्रश्न उनमें से दो बदलता है। भार F वही है। पदार्थ वही है, अतः Y वही — और यह अंतिम बात चौथे विकल्प को तुरंत निपटा देती है। यंग मापांक इस्पात का गुण है, उसके किसी विशेष टुकड़े का नहीं; तार आधा काटना या पतला खींचना तालिका के मान को नहीं बदलता, और ठीक इसीलिए उसे तालिकाबद्ध करना सार्थक है। अब वे दो जो बदलती हैं। लंबाई अंश में है, अतः उसे दुगुना करने से विस्तार दुगुना होता है: लंबे तार के पास वही भिन्नात्मक खिंचाव बाँटने को अधिक पदार्थ है, और दुगुनी लंबाई पर वही विकृति दुगुना निरपेक्ष विस्तार देती है। अकेले यह विद्यार्थी का 2 का गुणक देता है। पर क्षेत्रफल हर में है, और क्षेत्रफल व्यास नहीं है। वृत्तीय अनुप्रस्थ काट के लिए A = πd²/4, अतः d दुगुना करने से A चार गुना होता है। वह विस्तार को चार से भाग देता है। जोड़ने पर दूसरा तार पहले के 2 × (1/4) = 0.5 जितना खिंचता है, यानी 1 mm. भूल के आकार पर ध्यान दो, केवल उसके परिमाण पर नहीं। विद्यार्थी से गणना की भूल नहीं हुई; उसने एक राशि बदली और दूसरी को मन में स्थिर पकड़े रखा, जबकि प्रश्न ने दोनों बदल दी थीं। दो से अधिक चरों वाले हर सूत्र में यही सबसे आम विफलता है, और बचाव यांत्रिक है: हर प्रतीक सूचीबद्ध करो, चिह्नित करो कौन बदले, और जोड़ने से पहले हर गुणक अलग लगाओ। तीसरा विकल्प उसी जाल का सूक्ष्मतर रूप है — वह दोनों परिवर्तन देखता है पर व्यास को ऐसे लेता है मानो वह रैखिक रूप से आता हो, अतः 2 और 2 कटते हुए दिखते हैं। वर्ग करना ही पूरी बात है। यह देखने योग्य है कि कौन-सी राशि किसका गुण है। Y पदार्थ का है। प्रतिबल और विकृति स्थिति के हैं। विस्तार नमूने का है। जो छात्र इन तीन स्तरों को अलग रखता है वह इस अध्याय का कोई भी प्रश्न हल कर सकता है, और जो नहीं रखता वह ग़लत संख्या ढूँढ़ता रहेगा। इसी सबक़ का व्यावहारिक रूप यह कि रस्सी चुनता अभिकल्पक पदार्थ को उसके मापांक और सामर्थ्य से तय करता है, फिर व्यास ऐसा चुनता है कि प्रतिबल सुरक्षित मान से नीचे आ जाए — और व्यास दुगुना करने से भार-क्षमता चार गुनी मिलती है, दुगुनी नहीं। (बचे हुए ग़लत उत्तर यंग मापांक को नमूने पर निर्भर बना देते, या सूत्र से क्षेत्रफल ही हटा देते हैं।)",
+          mr: "सूत्र लिहा आणि उत्तर घात मोजण्याइतकेच. यंग मापांक प्रतिबल भागिले विकृती अशी व्याख्या, Y = (F/A)/(ΔL/L), आणि पुनर्रचना केल्यास ताण ΔL = FL/(AY) मिळतो. उजवीकडे चार गोष्टी येतात, आणि प्रश्न त्यांतील दोन बदलतो. ओझे F तेच. पदार्थ तोच, म्हणून Y तोच — आणि हा शेवटचा मुद्दा चौथा पर्याय लगेच निकाली काढतो. यंग मापांक हा पोलादाचा गुणधर्म, त्याच्या कोणत्याही विशिष्ट तुकड्याचा नव्हे; तार अर्धी कापणे वा पातळ ओढणे तक्त्यातले मूल्य बदलत नाही, आणि नेमके म्हणूनच ते तक्त्यात मांडणे सार्थक. आता ज्या दोन बदलतात त्या. लांबी अंशात आहे, म्हणून ती दुप्पट केल्याने ताण दुप्पट होतो: लांब तारेकडे तोच अपूर्णांकी ताण वाटायला अधिक पदार्थ आहे, आणि दुप्पट लांबीवर तीच विकृती दुप्पट निरपेक्ष ताण देते. एकटे हे विद्यार्थ्याचा 2 चा गुणक देते. पण क्षेत्रफळ छेदात आहे, आणि क्षेत्रफळ म्हणजे व्यास नव्हे. वर्तुळाकार आडव्या छेदासाठी A = πd²/4, म्हणून d दुप्पट केल्याने A चौपट होते. ते ताण चारने भागते. एकत्र केल्यास दुसरी तार पहिलीच्या 2 × (1/4) = 0.5 इतकी ताणली जाते, म्हणजे 1 mm. चुकीचा आकार पाहा, केवळ तिचे परिमाण नव्हे. विद्यार्थ्याकडून आकडेमोडीची चूक झाली नाही; त्याने एक राशी बदलली आणि दुसरी मनात स्थिर धरून ठेवली, तर प्रश्नाने दोन्ही बदलल्या होत्या. दोनहून अधिक चले असलेल्या प्रत्येक सूत्रात हेच सर्वांत नेहमीचे अपयश, आणि बचाव यांत्रिक: प्रत्येक चिन्ह यादीत लिहा, कोणती बदलली ते खुणा करा, आणि एकत्र करण्याआधी प्रत्येक गुणक वेगळा लावा. तिसरा पर्याय त्याच सापळ्याचे सूक्ष्मतर रूप — तो दोन्ही बदल पाहतो पण व्यासाला असे घेतो जणू तो रेषीयरीत्या येत असावा, म्हणून 2 आणि 2 कापले जाताना दिसतात. वर्ग करणे हाच अख्खा मुद्दा. कोणती राशी कशाचा गुणधर्म आहे हे पाहण्याजोगे. Y पदार्थाचा. प्रतिबल आणि विकृती परिस्थितीची. ताण नमुन्याचा. जो विद्यार्थी हे तीन स्तर वेगळे ठेवतो तो या प्रकरणातील कोणताही प्रश्न सोडवू शकतो, आणि जो ठेवत नाही तो चुकीचा आकडा शोधत राहील. याच धड्याचे व्यावहारिक रूप हे की दोरी निवडणारा आखणीकार पदार्थ त्याच्या मापांक व बळावरून ठरवतो, मग व्यास असा निवडतो की प्रतिबल सुरक्षित मूल्याखाली येईल — आणि व्यास दुप्पट केल्याने ओझे-क्षमता चौपट मिळते, दुप्पट नव्हे. (उरलेली चुकीची उत्तरे यंग मापांक नमुन्यावर अवलंबून बनवतात, वा सूत्रातून क्षेत्रफळच काढून टाकतात.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A steel rod and a rubber cord of the same length and cross-section are each stretched by the same small amount, well within their elastic ranges. Steel's Young's modulus is far larger. Which stores more elastic energy, and how does this square with rubber being the material used in catapults?",
+          hi: "समान लंबाई और अनुप्रस्थ काट की इस्पात की छड़ और रबर की डोरी को उतना ही थोड़ा खींचा जाता है, दोनों की प्रत्यास्थ परास के भीतर ही। इस्पात का यंग मापांक कहीं बड़ा है। कौन अधिक प्रत्यास्थ ऊर्जा संचित करता है, और यह इससे कैसे मेल खाता है कि गुलेल में रबर लगता है?",
+          mr: "समान लांबी आणि आडव्या छेदाची पोलादाची दांडी आणि रबराची दोरी प्रत्येकी तितकीच थोडी ताणली जाते, दोघांच्याही प्रत्यास्थ पल्ल्यात. पोलादाचा यंग मापांक कितीतरी मोठा. कोण अधिक प्रत्यास्थ ऊर्जा साठवते, आणि हे गलोलमध्ये रबर वापरले जाते याच्याशी कसे जुळते?",
+        },
+        choices: [
+          {
+            en: "For the SAME extension the steel stores far more, since the energy is ½ × (stress × strain) × volume and steel's much larger modulus means a much larger stress for that strain. The catapult is a different question: rubber can be stretched several times its own length before failing, while steel yields at a fraction of a per cent, so rubber's total storable energy is enormous even though its energy per unit strain is small. What a catapult needs is a large TOTAL store released slowly, and that is set by how far a material can be stretched, not by how stiff it is",
+            hi: "समान विस्तार पर इस्पात कहीं अधिक संचित करता है, क्योंकि ऊर्जा ½ × (प्रतिबल × विकृति) × आयतन है और इस्पात का बहुत बड़ा मापांक उसी विकृति पर बहुत बड़ा प्रतिबल देता है। गुलेल भिन्न प्रश्न है: रबर टूटने से पहले अपनी लंबाई से कई गुना खिंच सकता है, जबकि इस्पात प्रतिशत के अंश पर ही पराभव कर जाता है, अतः रबर का कुल संचित-योग्य ऊर्जा-भंडार विशाल है यद्यपि प्रति एकांक विकृति उसकी ऊर्जा कम है। गुलेल को चाहिए बड़ा कुल भंडार जो धीरे मुक्त हो, और वह इससे तय होता है कि पदार्थ कितना खिंच सकता है, इससे नहीं कि वह कितना दृढ़ है",
+            mr: "समान ताणासाठी पोलाद कितीतरी अधिक साठवते, कारण ऊर्जा ½ × (प्रतिबल × विकृती) × घनफळ आहे आणि पोलादाचा कितीतरी मोठा मापांक त्याच विकृतीसाठी कितीतरी मोठे प्रतिबल देतो. गलोल हा वेगळा प्रश्न: रबर तुटण्याआधी स्वतःच्या लांबीच्या कैकपट ताणले जाऊ शकते, तर पोलाद टक्क्याच्या अंशावरच नमते, म्हणून रबराचा एकूण साठवण्याजोगा ऊर्जासाठा प्रचंड आहे जरी प्रति एकक विकृती त्याची ऊर्जा कमी असली तरी. गलोलला हवा मोठा एकूण साठा जो सावकाश मुक्त होईल, आणि तो पदार्थ किती ताणला जाऊ शकतो यावरून ठरतो, तो किती ताठर आहे यावरून नव्हे",
+          },
+          {
+            en: "The rubber stores more even at the same extension, because a smaller modulus always means a larger energy store",
+            hi: "समान विस्तार पर भी रबर अधिक संचित करता है, क्योंकि छोटा मापांक सदा बड़े ऊर्जा-भंडार का अर्थ रखता है",
+            mr: "समान ताणावरही रबर अधिक साठवते, कारण लहान मापांक नेहमी मोठ्या ऊर्जासाठ्याचा अर्थ राखतो",
+          },
+          {
+            en: "Both store exactly the same energy, since the energy depends only on the extension and the two extensions are equal",
+            hi: "दोनों ठीक उतनी ही ऊर्जा संचित करते हैं, क्योंकि ऊर्जा केवल विस्तार पर निर्भर है और दोनों विस्तार बराबर हैं",
+            mr: "दोघे नेमकी तितकीच ऊर्जा साठवतात, कारण ऊर्जा केवळ ताणावर अवलंबून आणि दोन्ही ताण समान आहेत",
+          },
+          {
+            en: "Neither stores energy in the elastic range, since elastic deformation is by definition energy-free",
+            hi: "प्रत्यास्थ परास में कोई ऊर्जा संचित करता ही नहीं, क्योंकि प्रत्यास्थ विरूपण परिभाषा से ऊर्जा-रहित है",
+            mr: "प्रत्यास्थ पल्ल्यात कोणीही ऊर्जा साठवत नाही, कारण प्रत्यास्थ विरूपण व्याख्येनेच ऊर्जाविरहित आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The question is a good one because it seems to have two contradictory answers, and both intuitions are partly right. Take the calculation first. Energy stored per unit volume is ½ × stress × strain, and stress is Y times strain, so the density of stored energy is ½Yε². Fix the extension and you have fixed ε. Both specimens have the same length, the same cross-section and therefore the same volume. So the ratio of stored energies is simply the ratio of the moduli, and steel's is perhaps a thousand times rubber's. For that particular experiment, the steel wins overwhelmingly. Equivalently: to stretch steel by that amount you had to pull enormously hard, and all that work is now inside it. Rubber gave way easily, so little work was done. Now the catapult, which changes the question without seeming to. A catapult is not asked to store energy at a fixed small extension; it is asked to store as much as possible before it breaks or before the user's arm gives out. Here the limits are what matter. Steel's elastic range ends at a strain of roughly 0.001 — a metre of it stretches about a millimetre before taking a permanent set. Rubber can be taken to a strain of 3 or more, thousands of times further. Since the stored energy goes as ε², rubber's much larger reachable strain overwhelms its much smaller modulus, and its total capacity before failure is far greater. The general shape of that argument is worth extracting: a product of a small factor and a large squared factor is decided by the squared one. Two practical points follow. First, this is why a bow's limbs and a catapult's elastic are made of materials that can be strained a long way, while a bridge cable is made of one that can barely be strained at all — they are answering different questions, storage against stiffness. Second, it is why a snapping steel cable is so dangerous. Its stored energy per unit volume at the point of failure is smaller than rubber's, but a long cable is a large volume, and all of that energy converts to kinetic energy in milliseconds with nothing to absorb it. Rope under tension in a workshop is treated with respect for exactly this reason. A last note on the wrong answers. The fourth is worth naming explicitly because it inverts the definition: elastic deformation is precisely the kind that DOES store recoverable energy, and the reason it is called elastic is that the energy comes back. It is plastic deformation, past the elastic limit, where the work is not recoverable. (The second confuses stiffness with capacity, and the third omits the modulus, which is the only thing distinguishing the two materials here.)",
+          hi: "प्रश्न अच्छा है क्योंकि उसके दो परस्पर विरोधी उत्तर दिखते हैं, और दोनों अंतर्ज्ञान आंशिक रूप से सही हैं। पहले गणना लो। प्रति एकांक आयतन संचित ऊर्जा ½ × प्रतिबल × विकृति है, और प्रतिबल Y गुणा विकृति है, अतः संचित ऊर्जा का घनत्व ½Yε² है। विस्तार तय करो और तुमने ε तय कर दिया। दोनों नमूनों की लंबाई एक, अनुप्रस्थ काट एक और इसलिए आयतन एक। अतः संचित ऊर्जाओं का अनुपात बस मापांकों का अनुपात है, और इस्पात का शायद रबर से हज़ार गुना। उस विशेष प्रयोग के लिए इस्पात भारी अंतर से जीतता है। समतुल्य रूप से: इस्पात को उतना खींचने के लिए तुम्हें बहुत ज़ोर लगाना पड़ा, और वह सारा कार्य अब उसके भीतर है। रबर आसानी से मान गया, अतः कार्य कम हुआ। अब गुलेल, जो बिना दिखे प्रश्न बदल देती है। गुलेल से यह नहीं कहा जाता कि नियत छोटे विस्तार पर ऊर्जा संचित करो; उससे कहा जाता है कि टूटने से पहले या उपयोगकर्ता की बाँह हारने से पहले जितनी हो सके उतनी संचित करो। यहाँ सीमाएँ ही मायने रखती हैं। इस्पात की प्रत्यास्थ परास लगभग 0.001 विकृति पर समाप्त होती है — उसका एक मीटर स्थायी विरूपण लेने से पहले लगभग एक मिलीमीटर खिंचता है। रबर को 3 या उससे अधिक विकृति तक ले जाया जा सकता है, हज़ारों गुना आगे। चूँकि संचित ऊर्जा ε² के अनुसार चलती है, रबर की कहीं बड़ी पहुँच-योग्य विकृति उसके कहीं छोटे मापांक पर भारी पड़ती है, और विफलता से पहले उसकी कुल क्षमता कहीं अधिक है। उस तर्क का सामान्य रूप निकालने योग्य है: छोटे गुणक और बड़े वर्गित गुणक का गुणनफल वर्गित वाले से तय होता है। दो व्यावहारिक बातें निकलती हैं। पहली, इसीलिए धनुष की भुजाएँ और गुलेल का इलास्टिक ऐसे पदार्थों से बनते हैं जिन्हें दूर तक खींचा जा सके, जबकि पुल की रस्सी ऐसे पदार्थ से जिसे मुश्किल से खींचा जा सके — वे भिन्न प्रश्नों के उत्तर हैं, भंडारण बनाम दृढ़ता। दूसरी, इसीलिए टूटती इस्पात की रस्सी इतनी ख़तरनाक है। विफलता के बिंदु पर उसकी प्रति एकांक आयतन संचित ऊर्जा रबर से कम है, पर लंबी रस्सी बड़ा आयतन है, और वह सारी ऊर्जा मिलीसेकंड में गतिज ऊर्जा बन जाती है और उसे सोखने को कुछ नहीं होता। कार्यशाला में तनी रस्सी के साथ ठीक इसी कारण आदर से बर्ताव होता है। ग़लत उत्तरों पर एक अंतिम टिप्पणी। चौथा स्पष्ट रूप से नाम लेने योग्य है क्योंकि वह परिभाषा उलट देता है: प्रत्यास्थ विरूपण ठीक वही क़िस्म है जो पुनर्प्राप्य ऊर्जा संचित करती है, और उसे प्रत्यास्थ इसीलिए कहते हैं कि ऊर्जा लौट आती है। सुघट्य विरूपण, प्रत्यास्थता सीमा के परे, वह है जहाँ कार्य पुनर्प्राप्य नहीं। (दूसरा दृढ़ता को क्षमता से गड्डमड्ड करता है, और तीसरा मापांक छोड़ देता है, जो यहाँ दोनों पदार्थों को अलग करने वाली एकमात्र चीज़ है।)",
+          mr: "प्रश्न चांगला आहे कारण त्याची दोन परस्परविरोधी उत्तरे दिसतात, आणि दोन्ही अंतःप्रेरणा अंशतः बरोबर आहेत. आधी गणना घ्या. प्रति एकक घनफळ साठलेली ऊर्जा ½ × प्रतिबल × विकृती, आणि प्रतिबल म्हणजे Y गुणिले विकृती, म्हणून साठलेल्या ऊर्जेची घनता ½Yε². ताण ठरवा आणि तुम्ही ε ठरवले. दोन्ही नमुन्यांची लांबी एक, आडवा छेद एक आणि म्हणून घनफळ एक. म्हणून साठलेल्या ऊर्जांचे गुणोत्तर फक्त मापांकांचे गुणोत्तर, आणि पोलादाचे कदाचित रबराच्या हजारपट. त्या विशिष्ट प्रयोगासाठी पोलाद प्रचंड फरकाने जिंकते. समतुल्यपणे: पोलाद तितके ताणायला तुम्हाला प्रचंड जोर लावावा लागला, आणि ते सर्व कार्य आता त्याच्या आत आहे. रबर सहज नमले, म्हणून कार्य कमी झाले. आता गलोल, जी न दिसता प्रश्न बदलते. गलोलला असे सांगितले जात नाही की ठरलेल्या लहान ताणावर ऊर्जा साठव; तिला सांगितले जाते की तुटण्याआधी वा वापरणाऱ्याचा हात हरण्याआधी जितकी शक्य तितकी साठव. इथे मर्यादाच महत्त्वाच्या. पोलादाचा प्रत्यास्थ पल्ला सुमारे 0.001 विकृतीवर संपतो — त्याचा एक मीटर कायमचे विरूपण घेण्याआधी सुमारे एक मिलीमीटर ताणला जातो. रबराला 3 वा त्याहून अधिक विकृतीपर्यंत नेता येते, हजारपट पुढे. साठलेली ऊर्जा ε² नुसार जात असल्याने, रबराची कितीतरी मोठी गाठता येणारी विकृती त्याच्या कितीतरी लहान मापांकावर वरचढ ठरते, आणि अपयशाआधी त्याची एकूण क्षमता कितीतरी अधिक. त्या युक्तिवादाचा सामान्य आकार काढण्याजोगा: लहान गुणक आणि मोठा वर्गित गुणक यांचा गुणाकार वर्गित गुणकाने ठरतो. दोन व्यावहारिक मुद्दे निघतात. पहिला, म्हणूनच धनुष्याच्या भुजा आणि गलोलचे इलॅस्टिक अशा पदार्थांचे बनतात जे दूरवर ताणता येतात, तर पुलाची दोरी अशा पदार्थाची जी जेमतेम ताणता येते — ती वेगळ्या प्रश्नांची उत्तरे, साठवण विरुद्ध ताठरता. दुसरा, म्हणूनच तुटणारी पोलादी दोरी इतकी धोकादायक. अपयशाच्या बिंदूवर तिची प्रति एकक घनफळ साठलेली ऊर्जा रबराहून कमी, पण लांब दोरी हे मोठे घनफळ, आणि ती सर्व ऊर्जा मिलिसेकंदांत गतिज ऊर्जा बनते आणि तिला शोषायला काहीही नसते. कार्यशाळेत ताणलेल्या दोरीशी नेमक्या याच कारणाने आदराने वागले जाते. चुकीच्या उत्तरांवर एक शेवटची टिप्पणी. चौथे स्पष्टपणे नाव घेण्याजोगे कारण ते व्याख्या उलटवते: प्रत्यास्थ विरूपण हाच नेमका तो प्रकार जो पुन्हा मिळवण्याजोगी ऊर्जा साठवतो, आणि त्याला प्रत्यास्थ म्हणतात कारण ऊर्जा परत येते. सुघट्य विरूपण, प्रत्यास्थता मर्यादेपलीकडचे, तिथे कार्य पुन्हा मिळवता येत नाही. (दुसरे ताठरतेची क्षमतेशी गल्लत करते, आणि तिसरे मापांक वगळते, जो इथे दोन्ही पदार्थांना वेगळे करणारी एकमेव गोष्ट आहे.)",
+        },
+      },
+      /*H8*/
+    ],
+  },
+
 ];
 
 export const G11_PHYSICS_NUMERIC: Record<string, NumQ[]> = {
@@ -2132,6 +3536,678 @@ export const G11_PHYSICS_NUMERIC: Record<string, NumQ[]> = {
         en: "Force is the rate of change of momentum, which is the form to reach for whenever mass is leaving a system. Each bullet carries away 0.05 × 500 = 25 kg m/s, and ten leave every second, so momentum is being given to the bullets at 250 kg m/s per second. By the third law the bullets push back on the gun at the same rate, so 250 N must be applied to hold it. Note what the calculation never needed: the force during any single shot, which is enormous and lasts a fraction of a millisecond. Averaging over the second is what makes the question answerable at all. (25 is the momentum of one bullet, 2500 slips a factor of ten, and 500 quotes the muzzle speed as though it were a force.)",
         hi: "बल संवेग-परिवर्तन की दर है, और जब भी द्रव्यमान तंत्र से निकल रहा हो यही रूप उठाना चाहिए। हर गोली 0.05 × 500 = 25 kg m/s ले जाती है, और हर सेकंड दस निकलती हैं, अतः गोलियों को संवेग 250 kg m/s प्रति सेकंड की दर से दिया जा रहा है। तीसरे नियम से गोलियाँ बंदूक पर उसी दर से पीछे धकेलती हैं, अतः थामे रखने को 250 N लगाना होगा। ध्यान दो गणना को कभी क्या नहीं चाहिए था: किसी एक शॉट का बल, जो विशाल है और मिलीसेकंड के अंश भर चलता है। सेकंड भर का औसत लेना ही प्रश्न को उत्तर-योग्य बनाता है। (25 एक गोली का संवेग है, 2500 में दस का गुणक खिसक जाता है, और 500 नाल-चाल को ऐसे बताता है मानो वह बल हो।)",
         mr: "बल म्हणजे संवेगबदलाचा दर, आणि जेव्हा वस्तुमान प्रणालीतून बाहेर जात असते तेव्हा हेच रूप उचलावे. प्रत्येक गोळी 0.05 × 500 = 25 kg m/s घेऊन जाते, आणि दर सेकंदाला दहा निघतात, म्हणून गोळ्यांना संवेग 250 kg m/s प्रति सेकंद या दराने दिला जात आहे. तिसऱ्या नियमाने गोळ्या बंदुकीवर त्याच दराने मागे रेटतात, म्हणून धरून ठेवायला 250 N लावावे लागेल. लक्षात घ्या गणनेला काय कधीच लागले नाही: कोणत्याही एका गोळीच्या वेळचे बल, जे प्रचंड आहे आणि मिलिसेकंदाचा अंशभर टिकते. सेकंदभराची सरासरी घेणेच प्रश्नाला उत्तरयोग्य बनवते. (25 हा एका गोळीचा संवेग, 2500 मध्ये दहाचा गुणक सरकतो, आणि 500 नळी-चाल अशी सांगते जणू ते बल असावे.)",
+      },
+    },
+  ],
+  "physics-11-work-energy-and-power": [
+    {
+      level: 1,
+      stem: {
+        en: "A constant force of 50 N moves a crate 4 m in the direction of the force. How much work is done?",
+        hi: "50 N का अचर बल एक पेटी को बल की दिशा में 4 m खिसकाता है। कितना कार्य होता है?",
+        mr: "50 N चे अचल बल एका पेटीला बलाच्या दिशेने 4 m सरकवते. किती कार्य होते?",
+      },
+      answer: 200,
+      wrong: [12.5, 54, 100],
+      checkExpr: "50*4",
+      solution: {
+        en: "Force and displacement are in the same direction, so cos 0° = 1 and W = 50 × 4 = 200 J. (12.5 divides instead of multiplying, 54 adds, and 100 halves as though the force had built up from zero.)",
+        hi: "बल और विस्थापन एक ही दिशा में हैं, अतः cos 0° = 1 और W = 50 × 4 = 200 J. (12.5 गुणा के बजाय भाग देता है, 54 जोड़ता है, और 100 आधा कर देता है मानो बल शून्य से बढ़ा हो।)",
+        mr: "बल आणि विस्थापन एकाच दिशेत, म्हणून cos 0° = 1 आणि W = 50 × 4 = 200 J. (12.5 गुणण्याऐवजी भागते, 54 जोडते, आणि 100 निम्मे करते जणू बल शून्यापासून वाढले असावे.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "A force of 10 N drags a box 5 m along the floor while acting at 60° to the floor. Taking cos 60° = 0.5, how much work does it do?",
+        hi: "10 N का बल एक बक्से को फ़र्श पर 5 m तक घसीटता है, फ़र्श से 60° पर लगते हुए। cos 60° = 0.5 लेते हुए, वह कितना कार्य करता है?",
+        mr: "10 N चे बल एका खोक्याला जमिनीवर 5 m ओढते, जमिनीशी 60° वर लागत. cos 60° = 0.5 घेतल्यास, ते किती कार्य करते?",
+      },
+      answer: 25,
+      wrong: [50, 5, 12.5],
+      checkExpr: "10*5*0.5",
+      solution: {
+        en: "W = Fs cos θ = 10 × 5 × 0.5 = 25 J. Only the component of the force along the floor does work; the vertical component moves nothing. (50 is the answer for a horizontal pull, dropping the cosine entirely.)",
+        hi: "W = Fs cos θ = 10 × 5 × 0.5 = 25 J. केवल फ़र्श के अनुदिश बल का घटक कार्य करता है; ऊर्ध्वाधर घटक कुछ नहीं हिलाता। (50 क्षैतिज खिंचाव का उत्तर है, जो कोज्या पूरी तरह गिरा देता है।)",
+        mr: "W = Fs cos θ = 10 × 5 × 0.5 = 25 J. केवळ जमिनीच्या दिशेचा बलाचा घटक कार्य करतो; उभा घटक काहीही हलवत नाही. (50 हे आडव्या ओढीचे उत्तर, जे कोसाइन पूर्णपणे गाळते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "What is the kinetic energy of a 2 kg body moving at 6 m/s?",
+        hi: "6 m/s से चलते 2 kg पिंड की गतिज ऊर्जा क्या है?",
+        mr: "6 m/s ने जाणाऱ्या 2 kg पिंडाची गतिज ऊर्जा किती?",
+      },
+      answer: 36,
+      wrong: [6, 12, 72],
+      checkExpr: "0.5*2*6^2",
+      solution: {
+        en: "KE = ½mv² = ½ × 2 × 36 = 36 J. (12 uses mv and forgets the square, and 72 is mv² with the half dropped — the same half that comes from the area under the force–displacement graph.)",
+        hi: "KE = ½mv² = ½ × 2 × 36 = 36 J. (12 mv लेता है और वर्ग भूल जाता है, और 72 mv² है जिसमें आधा गिरा दिया गया — वही आधा जो बल-विस्थापन आलेख के नीचे के क्षेत्रफल से आता है।)",
+        mr: "KE = ½mv² = ½ × 2 × 36 = 36 J. (12 हे mv घेते आणि वर्ग विसरते, आणि 72 हे mv² ज्यातून निम्मे गाळले — तेच निम्मे जे बल-विस्थापन आलेखाखालच्या क्षेत्रफळातून येते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A 5 kg body speeds up from 2 m/s to 4 m/s. How much net work was done on it?",
+        hi: "5 kg का पिंड 2 m/s से बढ़कर 4 m/s हो जाता है। उस पर कितना कुल कार्य हुआ?",
+        mr: "5 kg चा पिंड 2 m/s वरून 4 m/s होतो. त्याच्यावर किती एकूण कार्य झाले?",
+      },
+      answer: 30,
+      wrong: [10, 40, 60],
+      checkExpr: "0.5*5*(4^2-2^2)",
+      solution: {
+        en: "By the work–energy theorem the net work is the change in kinetic energy: ½ × 5 × (16 − 4) = ½ × 5 × 12 = 30 J. Nothing needed to be known about the force or the time. (40 is the final kinetic energy alone, forgetting the body already had 10 J.)",
+        hi: "कार्य-ऊर्जा प्रमेय से कुल कार्य गतिज ऊर्जा का परिवर्तन है: ½ × 5 × (16 − 4) = ½ × 5 × 12 = 30 J. बल या समय के बारे में कुछ जानने की ज़रूरत नहीं पड़ी। (40 केवल अंतिम गतिज ऊर्जा है, यह भूलकर कि पिंड के पास पहले से 10 J थे।)",
+        mr: "कार्य-ऊर्जा प्रमेयाने एकूण कार्य म्हणजे गतिज ऊर्जेतील बदल: ½ × 5 × (16 − 4) = ½ × 5 × 12 = 30 J. बल वा काळाबद्दल काहीही जाणण्याची गरज पडली नाही. (40 फक्त शेवटची गतिज ऊर्जा, हे विसरून की पिंडाकडे आधीच 10 J होते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A body of mass 2 kg is dropped from a height of 5 m. Taking g as 10 m/s² and ignoring air resistance, at what speed does it reach the ground?",
+        hi: "2 kg द्रव्यमान का पिंड 5 m ऊँचाई से गिराया जाता है। g को 10 m/s² लेकर और वायु प्रतिरोध छोड़कर, वह ज़मीन पर किस चाल से पहुँचता है?",
+        mr: "2 kg वस्तुमानाचा पिंड 5 m उंचीवरून टाकला जातो. g हा 10 m/s² घेऊन आणि हवेचा विरोध सोडून, तो जमिनीवर कोणत्या चालीने पोहोचतो?",
+      },
+      answer: 10,
+      wrong: [100, 5, 50],
+      checkExpr: "(2*10*5)^0.5",
+      fmt: ms,
+      solution: {
+        en: "Setting mgh = ½mv², the mass cancels and v = √(2gh) = √100 = 10 m/s — a heavier body would arrive at exactly the same speed. (100 is v² with the root forgotten, and 50 is the potential energy per kilogram in joules, not a speed.)",
+        hi: "mgh = ½mv² रखने पर द्रव्यमान कट जाता है और v = √(2gh) = √100 = 10 m/s — भारी पिंड ठीक उसी चाल से पहुँचता। (100 v² है जिसमें मूल भूला गया, और 50 प्रति किलोग्राम स्थितिज ऊर्जा है जूल में, चाल नहीं।)",
+        mr: "mgh = ½mv² ठेवल्यास वस्तुमान कापले जाते आणि v = √(2gh) = √100 = 10 m/s — जड पिंड नेमक्या त्याच चालीने पोहोचला असता. (100 हे v² ज्यात मूळ विसरले, आणि 50 ही प्रति किलोग्रॅम स्थितिज ऊर्जा ज्यूलमध्ये, चाल नव्हे.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A pump raises 100 kg of water through 10 m in 20 s. Taking g as 10 m/s², what is its output power?",
+        hi: "एक पंप 100 kg पानी को 20 s में 10 m ऊपर उठाता है। g को 10 m/s² लेते हुए, उसकी निर्गत शक्ति क्या है?",
+        mr: "एक पंप 100 kg पाणी 20 s मध्ये 10 m वर उचलतो. g हा 10 m/s² घेतल्यास, त्याची निर्गत शक्ती किती?",
+      },
+      answer: 500,
+      wrong: [50, 1000, 200],
+      checkExpr: "100*10*10/20",
+      solution: {
+        en: "The work done is mgh = 100 × 10 × 10 = 10,000 J, and power is that divided by the time: 10000/20 = 500 W. (1000 forgets to divide by the time and then slips a decimal; 50 divides the height by the time instead.)",
+        hi: "किया गया कार्य mgh = 100 × 10 × 10 = 10,000 J है, और शक्ति उसे समय से भाग देने पर: 10000/20 = 500 W. (1000 समय से भाग देना भूलता है और फिर दशमलव खिसका देता है; 50 इसके बजाय ऊँचाई को समय से भाग देता है।)",
+        mr: "केलेले कार्य mgh = 100 × 10 × 10 = 10,000 J, आणि शक्ती म्हणजे ते काळाने भागिले: 10000/20 = 500 W. (1000 काळाने भागायचे विसरते आणि मग दशांश सरकवते; 50 त्याऐवजी उंची काळाने भागते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A spring of stiffness 200 N/m is compressed by 0.1 m. How much elastic potential energy is stored in it?",
+        hi: "200 N/m दृढ़ता वाली स्प्रिंग 0.1 m दबाई जाती है। उसमें कितनी प्रत्यास्थ स्थितिज ऊर्जा संचित होती है?",
+        mr: "200 N/m ताठरतेची स्प्रिंग 0.1 m दाबली जाते. तिच्यात किती प्रत्यास्थ स्थितिज ऊर्जा साठते?",
+      },
+      answer: 1,
+      wrong: [2, 20, 10],
+      checkExpr: "0.5*200*0.1^2",
+      solution: {
+        en: "U = ½kx² = ½ × 200 × 0.01 = 1 J. The half is there because the force grows from zero to kx as the spring is compressed, so the work is the triangular area under the graph rather than the rectangle kx·x. (2 drops the half and 20 uses x rather than x².)",
+        hi: "U = ½kx² = ½ × 200 × 0.01 = 1 J. आधा इसलिए है कि स्प्रिंग दबते समय बल शून्य से बढ़कर kx होता है, अतः कार्य आलेख के नीचे का त्रिभुजाकार क्षेत्रफल है, आयत kx·x नहीं। (2 आधा गिरा देता है और 20 x² के बजाय x लेता है।)",
+        mr: "U = ½kx² = ½ × 200 × 0.01 = 1 J. निम्मे यासाठी की स्प्रिंग दाबताना बल शून्यापासून वाढून kx होते, म्हणून कार्य आलेखाखालचे त्रिकोणी क्षेत्रफळ, आयत kx·x नव्हे. (2 निम्मे गाळते आणि 20 हे x² ऐवजी x घेते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A 4 kg lump of clay moving at 5 m/s strikes a stationary 6 kg lump and they move off together. What is their common velocity?",
+        hi: "5 m/s से चलता 4 kg मिट्टी का लोंदा 6 kg के स्थिर लोंदे से टकराता है और वे साथ चल पड़ते हैं। उनका साझा वेग क्या है?",
+        mr: "5 m/s ने जाणारा 4 kg मातीचा गोळा 6 kg च्या स्थिर गोळ्यावर आदळतो आणि ते एकत्र पुढे जातात. त्यांचा सामायिक वेग किती?",
+      },
+      answer: 2,
+      wrong: [5, 3, 0.5],
+      checkExpr: "4*5/(4+6)",
+      fmt: ms,
+      solution: {
+        en: "Momentum is conserved whatever the collision does to the kinetic energy: 4 × 5 = 10v, so v = 2 m/s. (3 averages the two velocities by mass incorrectly, and 5 forgets that the moving lump now has to carry a passenger.)",
+        hi: "टक्कर गतिज ऊर्जा का जो भी करे, संवेग संरक्षित रहता है: 4 × 5 = 10v, अतः v = 2 m/s. (3 दोनों वेगों का द्रव्यमान-भारित औसत ग़लत निकालता है, और 5 भूल जाता है कि चलते लोंदे को अब एक सवारी ढोनी है।)",
+        mr: "टक्कर गतिज ऊर्जेचे काहीही करो, संवेग संरक्षित राहतो: 4 × 5 = 10v, म्हणून v = 2 m/s. (3 दोन्ही वेगांची वस्तुमान-भारित सरासरी चुकीची काढते, आणि 5 विसरते की चालणाऱ्या गोळ्याला आता एक प्रवासी वाहायचा आहे.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "In that same collision — 4 kg at 5 m/s sticking to a stationary 6 kg and moving off at 2 m/s — how much kinetic energy is lost?",
+        hi: "उसी टक्कर में — 4 kg 5 m/s पर स्थिर 6 kg से चिपककर 2 m/s पर चलते हुए — कितनी गतिज ऊर्जा खोती है?",
+        mr: "त्याच टक्करीत — 4 kg 5 m/s ने स्थिर 6 kg ला चिकटून 2 m/s ने पुढे जात — किती गतिज ऊर्जा गमावली जाते?",
+      },
+      answer: 30,
+      wrong: [20, 50, 10],
+      checkExpr: "0.5*4*5^2-0.5*10*2^2",
+      solution: {
+        en: "Before: ½ × 4 × 25 = 50 J. After: ½ × 10 × 4 = 20 J. The loss is 50 − 20 = 30 J, which went into deforming and warming the clay. Total energy is still conserved; only the kinetic share fell. (50 and 20 are the two kinetic energies themselves rather than their difference.)",
+        hi: "पहले: ½ × 4 × 25 = 50 J. बाद में: ½ × 10 × 4 = 20 J. हानि 50 − 20 = 30 J है, जो मिट्टी के विरूपण और उसे गरम करने में गई। कुल ऊर्जा फिर भी संरक्षित है; केवल गतिज हिस्सा गिरा। (50 और 20 स्वयं दोनों गतिज ऊर्जाएँ हैं, उनका अंतर नहीं।)",
+        mr: "आधी: ½ × 4 × 25 = 50 J. नंतर: ½ × 10 × 4 = 20 J. हानी 50 − 20 = 30 J, जी मातीच्या विरूपणात आणि तिला तापवण्यात गेली. एकूण ऊर्जा तरीही संरक्षित; केवळ गतिज वाटा घटला. (50 आणि 20 या स्वतः दोन गतिज ऊर्जा, त्यांचा फरक नव्हे.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "A 1200 kg car travelling at 20 m/s is brought to rest by its brakes. How much work do the brakes do?",
+        hi: "20 m/s से चलती 1200 kg की कार ब्रेक से विराम में लाई जाती है। ब्रेक कितना कार्य करते हैं?",
+        mr: "20 m/s ने जाणारी 1200 kg ची कार ब्रेकने स्थिर केली जाते. ब्रेक किती कार्य करतात?",
+      },
+      answer: 240000,
+      wrong: [24000, 12000, 480000],
+      checkExpr: "0.5*1200*20^2",
+      solution: {
+        en: "The brakes must remove all the kinetic energy: ½ × 1200 × 400 = 240,000 J. Note that the stopping distance is nowhere in the question and is not needed. Doubling the speed would quadruple this figure, which is the real argument behind speed limits. (480000 forgets the half.)",
+        hi: "ब्रेक को पूरी गतिज ऊर्जा हटानी है: ½ × 1200 × 400 = 240,000 J. ध्यान दो रुकने की दूरी प्रश्न में कहीं नहीं है और चाहिए भी नहीं। चाल दोगुनी करने पर यह आँकड़ा चौगुना हो जाता, और गति-सीमाओं के पीछे यही असली तर्क है। (480000 आधा भूल जाता है।)",
+        mr: "ब्रेकना अख्खी गतिज ऊर्जा काढावी लागते: ½ × 1200 × 400 = 240,000 J. लक्षात घ्या थांबण्याचे अंतर प्रश्नात कुठेही नाही आणि लागतही नाही. चाल दुप्पट केल्यास हा आकडा चौपट झाला असता, आणि वेगमर्यादांमागचा खरा युक्तिवाद हाच. (480000 निम्मे विसरते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "A 60 kg athlete runs up a flight of stairs of vertical height 5 m in 4 s. Taking g as 10 m/s², what is their average useful power output?",
+        hi: "60 kg का खिलाड़ी 5 m ऊर्ध्वाधर ऊँचाई की सीढ़ियाँ 4 s में चढ़ता है। g को 10 m/s² लेते हुए, उसकी औसत उपयोगी निर्गत शक्ति क्या है?",
+        mr: "60 kg चा खेळाडू 5 m उभी उंची असलेल्या जिन्याने 4 s मध्ये वर धावतो. g हा 10 m/s² घेतल्यास, त्याची सरासरी उपयुक्त निर्गत शक्ती किती?",
+      },
+      answer: 750,
+      wrong: [300, 3000, 75],
+      checkExpr: "60*10*5/4",
+      solution: {
+        en: "Only the vertical rise counts, because the horizontal part of the run is perpendicular to gravity and gravity does no work along it. The useful work is mgh = 60 × 10 × 5 = 3000 J, done in 4 s, so P = 750 W. Two things are worth noticing. The length of the staircase never entered — a longer, gentler flight to the same landing needs the same work, though it would take longer and so give a lower power. And 750 W is the USEFUL output only: a body is at best about a quarter efficient, so the athlete is actually burning energy at something like 3000 W, which is why the effort is exhausting and why they are hot afterwards. (300 divides the work by the height instead of the time, 3000 quotes the work as though it were a power, and 75 slips a factor of ten.)",
+        hi: "केवल ऊर्ध्वाधर चढ़ाई गिनी जाती है, क्योंकि दौड़ का क्षैतिज भाग गुरुत्व के लंबवत है और गुरुत्व उस पर कोई कार्य नहीं करता। उपयोगी कार्य mgh = 60 × 10 × 5 = 3000 J है, जो 4 s में हुआ, अतः P = 750 W. दो बातें ध्यान देने योग्य हैं। सीढ़ी की लंबाई कभी आई ही नहीं — उसी छोर तक जाती लंबी, कम ढालू सीढ़ी उतना ही कार्य माँगती है, यद्यपि उसमें अधिक समय लगता और इसलिए शक्ति कम निकलती। और 750 W केवल उपयोगी निर्गत है: शरीर अधिक से अधिक लगभग एक चौथाई दक्ष होता है, अतः खिलाड़ी वस्तुतः 3000 W के आसपास ऊर्जा जला रहा है, इसीलिए यह परिश्रम थका देता है और इसीलिए बाद में उसे गर्मी लगती है। (300 कार्य को समय के बजाय ऊँचाई से भाग देता है, 3000 कार्य को ऐसे बताता है मानो वह शक्ति हो, और 75 में दस का गुणक खिसक जाता है।)",
+        mr: "केवळ उभी चढण मोजली जाते, कारण धावेचा आडवा भाग गुरुत्वाला लंब आहे आणि गुरुत्व त्यावर कोणतेही कार्य करत नाही. उपयुक्त कार्य mgh = 60 × 10 × 5 = 3000 J, जे 4 s मध्ये झाले, म्हणून P = 750 W. दोन गोष्टी लक्षात घेण्याजोग्या. जिन्याची लांबी कधी आलीच नाही — त्याच टप्प्यापर्यंत जाणारा लांब, कमी तीव्र जिना तितकेच कार्य मागतो, जरी त्याला अधिक वेळ लागला असता आणि म्हणून शक्ती कमी निघाली असती. आणि 750 W ही केवळ उपयुक्त निर्गत: शरीर फार तर सुमारे एक चतुर्थांश कार्यक्षम असते, म्हणून खेळाडू प्रत्यक्षात 3000 W च्या आसपास ऊर्जा जाळत आहे, म्हणूनच हे श्रम थकवतात आणि म्हणूनच नंतर त्याला उकडते. (300 कार्य काळाऐवजी उंचीने भागते, 3000 कार्य असे सांगते जणू ती शक्ती असावी, आणि 75 मध्ये दहाचा गुणक सरकतो.)",
+      },
+    },
+  ],
+  "physics-11-system-of-particles-and-rotational-motion": [
+    {
+      level: 1,
+      stem: {
+        en: "Two point masses, 2 kg at x = 0 and 3 kg at x = 5 m, lie on a line. Where is their centre of mass?",
+        hi: "दो बिंदु द्रव्यमान, x = 0 पर 2 kg और x = 5 m पर 3 kg, एक रेखा पर हैं। उनका द्रव्यमान केंद्र कहाँ है?",
+        mr: "दोन बिंदू वस्तुमाने, x = 0 वर 2 kg आणि x = 5 m वर 3 kg, एका रेषेवर आहेत. त्यांचे वस्तुमान केंद्र कुठे?",
+      },
+      answer: 3,
+      wrong: [2, 2.5, 5],
+      checkExpr: "(2*0+3*5)/(2+3)",
+      fmt: metres,
+      solution: {
+        en: "x = (2 × 0 + 3 × 5)/(2 + 3) = 15/5 = 3 m. It sits nearer the heavier mass, as it must. (2.5 is the midpoint, which would be right only for equal masses, and 2 leans the wrong way.)",
+        hi: "x = (2 × 0 + 3 × 5)/(2 + 3) = 15/5 = 3 m. वह भारी द्रव्यमान के पास बैठता है, जैसा उसे होना चाहिए। (2.5 मध्यबिंदु है, जो केवल बराबर द्रव्यमानों के लिए सही होता, और 2 ग़लत ओर झुकता है।)",
+        mr: "x = (2 × 0 + 3 × 5)/(2 + 3) = 15/5 = 3 m. तो जड वस्तुमानाजवळ बसतो, जसा त्याने असावा. (2.5 हा मध्यबिंदू, जो केवळ समान वस्तुमानांसाठी बरोबर ठरला असता, आणि 2 चुकीच्या बाजूला झुकतो.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "A force of 10 N is applied perpendicular to a spanner at a distance of 0.5 m from the nut. What torque does it produce?",
+        hi: "नट से 0.5 m दूरी पर पाने के लंबवत 10 N का बल लगाया जाता है। वह कितना बल-आघूर्ण देता है?",
+        mr: "नटपासून 0.5 m अंतरावर पान्याला लंब 10 N चे बल लावले जाते. ते किती बलआघूर्ण देते?",
+      },
+      answer: 5,
+      wrong: [20, 0.05, 10.5],
+      checkExpr: "10*0.5",
+      solution: {
+        en: "τ = F × r⊥ = 10 × 0.5 = 5 N m. Doubling the spanner's length would double the torque for the same effort, which is the whole reason long spanners exist. (20 divides instead of multiplying.)",
+        hi: "τ = F × r⊥ = 10 × 0.5 = 5 N m. पाने की लंबाई दोगुनी करने पर उसी परिश्रम में बल-आघूर्ण दोगुना हो जाता, और लंबे पाने इसी कारण होते हैं। (20 गुणा के बजाय भाग देता है।)",
+        mr: "τ = F × r⊥ = 10 × 0.5 = 5 N m. पान्याची लांबी दुप्पट केल्यास त्याच श्रमात बलआघूर्ण दुप्पट झाले असते, आणि लांब पाने याच कारणाने असतात. (20 गुणण्याऐवजी भागते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A point mass of 3 kg is fixed at a distance of 2 m from an axis. What is its moment of inertia about that axis?",
+        hi: "3 kg का बिंदु द्रव्यमान किसी अक्ष से 2 m दूरी पर जड़ा है। उस अक्ष के परितः उसका जड़त्व आघूर्ण क्या है?",
+        mr: "3 kg चे बिंदू वस्तुमान एका अक्षापासून 2 m अंतरावर जडवलेले आहे. त्या अक्षाभोवती त्याचे जडत्व आघूर्ण किती?",
+      },
+      answer: 12,
+      wrong: [6, 1.5, 24],
+      checkExpr: "3*2^2",
+      solution: {
+        en: "I = mr² = 3 × 4 = 12 kg m². The distance is squared, so moving the same mass twice as far out quadruples the figure. (6 forgets to square the distance, which is the single commonest slip in this chapter.)",
+        hi: "I = mr² = 3 × 4 = 12 kg m². दूरी वर्ग में आती है, अतः वही द्रव्यमान दुगुना दूर ले जाने पर आँकड़ा चौगुना हो जाता है। (6 दूरी का वर्ग करना भूल जाता है, जो इस अध्याय की सबसे आम अकेली चूक है।)",
+        mr: "I = mr² = 3 × 4 = 12 kg m². अंतर वर्गात येते, म्हणून तेच वस्तुमान दुप्पट दूर नेल्यास आकडा चौपट होतो. (6 अंतराचा वर्ग करायचे विसरते, जी या प्रकरणातील सर्वांत नेहमीची एकमेव चूक.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A uniform disc of mass 4 kg and radius 3 m spins about its central axis, for which I = ½MR². What is its moment of inertia?",
+        hi: "4 kg द्रव्यमान और 3 m त्रिज्या की समांग चकती अपने केंद्रीय अक्ष के परितः घूमती है, जिसके लिए I = ½MR². उसका जड़त्व आघूर्ण क्या है?",
+        mr: "4 kg वस्तुमान आणि 3 m त्रिज्येची एकसमान चकती आपल्या केंद्रीय अक्षाभोवती फिरते, जिच्यासाठी I = ½MR². तिचे जडत्व आघूर्ण किती?",
+      },
+      answer: 18,
+      wrong: [36, 9, 6],
+      checkExpr: "0.5*4*3^2",
+      solution: {
+        en: "I = ½ × 4 × 9 = 18 kg m². A ring of the same mass and radius would give 36, twice as much, because all of a ring's mass sits at the full radius while a disc's is spread inwards. (36 is precisely that ring answer.)",
+        hi: "I = ½ × 4 × 9 = 18 kg m². उसी द्रव्यमान और त्रिज्या का छल्ला 36 देता, दुगुना, क्योंकि छल्ले का सारा द्रव्यमान पूरी त्रिज्या पर बैठा है जबकि चकती का भीतर तक फैला है। (36 ठीक वही छल्ले वाला उत्तर है।)",
+        mr: "I = ½ × 4 × 9 = 18 kg m². त्याच वस्तुमान आणि त्रिज्येचे कडे 36 दिले असते, दुप्पट, कारण कड्याचे सर्व वस्तुमान पूर्ण त्रिज्येवर बसलेले तर चकतीचे आत पसरलेले. (36 हेच नेमके ते कड्याचे उत्तर.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A torque of 12 N m acts on a body whose moment of inertia is 4 kg m². What is its angular acceleration?",
+        hi: "जिस पिंड का जड़त्व आघूर्ण 4 kg m² है उस पर 12 N m का बल-आघूर्ण लगता है। उसका कोणीय त्वरण क्या है?",
+        mr: "ज्या पिंडाचे जडत्व आघूर्ण 4 kg m² आहे त्यावर 12 N m चे बलआघूर्ण लागते. त्याचे कोनीय त्वरण किती?",
+      },
+      answer: 3,
+      wrong: [48, 0.33, 8],
+      checkExpr: "12/4",
+      solution: {
+        en: "τ = Iα is the rotational twin of F = ma, so α = 12/4 = 3 rad/s². (48 multiplies where it should divide, and 0.33 inverts the ratio.)",
+        hi: "τ = Iα, F = ma का घूर्णी जुड़वाँ है, अतः α = 12/4 = 3 rad/s². (48 वहाँ गुणा करता है जहाँ भाग देना था, और 0.33 अनुपात उलट देता है।)",
+        mr: "τ = Iα हे F = ma चे परिवलनी जुळे, म्हणून α = 12/4 = 3 rad/s². (48 जिथे भागायचे तिथे गुणते, आणि 0.33 गुणोत्तर उलटे करते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A wheel of moment of inertia 3 kg m² spins at 4 rad/s. What is its rotational kinetic energy?",
+        hi: "3 kg m² जड़त्व आघूर्ण वाला पहिया 4 rad/s से घूमता है। उसकी घूर्णी गतिज ऊर्जा क्या है?",
+        mr: "3 kg m² जडत्व आघूर्ण असलेले चाक 4 rad/s ने फिरते. त्याची परिवलनी गतिज ऊर्जा किती?",
+      },
+      answer: 24,
+      wrong: [12, 6, 48],
+      checkExpr: "0.5*3*4^2",
+      solution: {
+        en: "KE = ½Iω² = ½ × 3 × 16 = 24 J, the exact analogue of ½mv² with I for m and ω for v. (6 uses ω instead of ω², and 48 drops the half.)",
+        hi: "KE = ½Iω² = ½ × 3 × 16 = 24 J, जो ½mv² का ठीक समरूप है, m की जगह I और v की जगह ω. (6 ω² के बजाय ω लेता है, और 48 आधा गिरा देता है।)",
+        mr: "KE = ½Iω² = ½ × 3 × 16 = 24 J, जे ½mv² चे नेमके समरूप, m ऐवजी I आणि v ऐवजी ω. (6 हे ω² ऐवजी ω घेते, आणि 48 निम्मे गाळते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A skater spinning at 3 rad/s pulls her arms in, reducing her moment of inertia from 6 kg m² to 2 kg m². What is her new angular speed?",
+        hi: "3 rad/s से घूमती स्केटर बाँहें समेटती है, जिससे उसका जड़त्व आघूर्ण 6 kg m² से घटकर 2 kg m² हो जाता है। उसकी नई कोणीय चाल क्या है?",
+        mr: "3 rad/s ने फिरणारी स्केटर हात मिटवते, ज्यामुळे तिचे जडत्व आघूर्ण 6 kg m² वरून 2 kg m² होते. तिची नवी कोनीय चाल किती?",
+      },
+      answer: 9,
+      wrong: [1, 4.5, 18],
+      checkExpr: "6*3/2",
+      solution: {
+        en: "No external torque acts, so Iω is unchanged: 6 × 3 = 2ω, giving ω = 9 rad/s. (1 divides the wrong way, letting her slow down, and 4.5 halves the change instead of tripling the speed.)",
+        hi: "कोई बाह्य बल-आघूर्ण नहीं लगता, अतः Iω अपरिवर्तित है: 6 × 3 = 2ω, जिससे ω = 9 rad/s. (1 उलटा भाग देता है, जिससे वह धीमी हो जाती, और 4.5 चाल तीन गुनी करने के बजाय परिवर्तन आधा कर देता है।)",
+        mr: "कोणतेही बाह्य बलआघूर्ण लागत नाही, म्हणून Iω अपरिवर्तित: 6 × 3 = 2ω, ज्यातून ω = 9 rad/s. (1 उलटे भागते, ज्याने ती मंदावली असती, आणि 4.5 चाल तिप्पट करण्याऐवजी बदल निम्मा करते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A wheel of radius 0.4 m rolls without slipping while turning at 10 rad/s. How fast is its centre moving?",
+        hi: "0.4 m त्रिज्या का पहिया 10 rad/s से घूमते हुए बिना फिसले लुढ़कता है। उसका केंद्र कितनी तेज़ चल रहा है?",
+        mr: "0.4 m त्रिज्येचे चाक 10 rad/s ने फिरत न घसरता घरंगळते. त्याचे केंद्र किती वेगाने जात आहे?",
+      },
+      answer: 4,
+      wrong: [25, 0.04, 10.4],
+      checkExpr: "10*0.4",
+      fmt: ms,
+      solution: {
+        en: "Rolling without slipping fixes v = ωR = 10 × 0.4 = 4 m/s. If the wheel were spinning on ice the two would be unrelated; it is the grip that ties them together. (25 divides ω by R and 0.04 divides the wrong way.)",
+        hi: "बिना फिसले लोटन v = ωR = 10 × 0.4 = 4 m/s तय कर देता है। यदि पहिया बर्फ़ पर घूम रहा होता तो दोनों असंबद्ध होते; उन्हें जोड़ती है पकड़। (25 ω को R से भाग देता है और 0.04 उलटा भाग देता है।)",
+        mr: "न घसरता घरंगळणे v = ωR = 10 × 0.4 = 4 m/s ठरवते. चाक बर्फावर फिरत असते तर दोन्ही असंबद्ध राहिली असती; त्यांना जोडते ती पकड. (25 हे ω ला R ने भागते आणि 0.04 उलटे भागते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "A uniform rod of mass 3 kg and length 2 m rotates about a perpendicular axis through its centre, for which I = ML²/12. What is its moment of inertia?",
+        hi: "3 kg द्रव्यमान और 2 m लंबाई की समांग छड़ अपने केंद्र से गुज़रते लंबवत अक्ष के परितः घूमती है, जिसके लिए I = ML²/12. उसका जड़त्व आघूर्ण क्या है?",
+        mr: "3 kg वस्तुमान आणि 2 m लांबीची एकसमान दांडी आपल्या केंद्रातून जाणाऱ्या लंब अक्षाभोवती फिरते, जिच्यासाठी I = ML²/12. तिचे जडत्व आघूर्ण किती?",
+      },
+      answer: 1,
+      wrong: [4, 3, 0.5],
+      checkExpr: "3*2^2/12",
+      solution: {
+        en: "I = 3 × 4/12 = 1 kg m². About one END the same rod gives ML²/3 = 4 kg m², four times as much, which is why quoting a moment of inertia without naming the axis says nothing at all. (4 is precisely that end-axis answer.)",
+        hi: "I = 3 × 4/12 = 1 kg m². एक सिरे के परितः वही छड़ ML²/3 = 4 kg m² देती है, चार गुना, इसीलिए अक्ष बताए बिना जड़त्व आघूर्ण कहना कुछ भी नहीं कहता। (4 ठीक वही सिरे वाले अक्ष का उत्तर है।)",
+        mr: "I = 3 × 4/12 = 1 kg m². एका टोकाभोवती तीच दांडी ML²/3 = 4 kg m² देते, चौपट, म्हणूनच अक्ष न सांगता जडत्व आघूर्ण सांगणे काहीच सांगत नाही. (4 हेच नेमके ते टोकाच्या अक्षाचे उत्तर.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "A solid cylinder rolls without slipping, with I = ½MR². What percentage of its total kinetic energy is rotational?",
+        hi: "ठोस बेलन बिना फिसले लुढ़कता है, जिसके लिए I = ½MR². उसकी कुल गतिज ऊर्जा का कितना प्रतिशत घूर्णी है?",
+        mr: "भरीव दंडगोल न घसरता घरंगळतो, ज्याच्यासाठी I = ½MR². त्याच्या एकूण गतिज ऊर्जेच्या किती टक्के परिवलनी आहे?",
+      },
+      answer: 33.333333,
+      wrong: [50, 25, 66.666667],
+      checkExpr: "100/3",
+      solution: {
+        en: "Rolling ties ω to v by ω = v/R. The rotational share is ½Iω² = ½ × ½MR² × v²/R² = ¼Mv², and the translational share is ½Mv², so the total is ¾Mv². The rotational fraction is (¼)/(¾) = 1/3, or 33.333333 per cent. Notice that neither M nor R survives — a marble and a millstone of the same shape divide their energy identically, which is why a downhill race is decided by shape alone. A hollow ring, with I = MR², splits it 50–50 and is therefore slower still; a solid sphere, with I = ⅖MR², keeps only 2/7 in rotation and wins. (50 is the ring's answer and 66.666667 inverts the fraction, quoting the translational share instead.)",
+        hi: "लोटन ω को v से ω = v/R द्वारा बाँधता है। घूर्णी हिस्सा ½Iω² = ½ × ½MR² × v²/R² = ¼Mv², और स्थानांतरण हिस्सा ½Mv², अतः कुल ¾Mv². घूर्णी अंश (¼)/(¾) = 1/3, यानी 33.333333 प्रतिशत। ध्यान दो न M बचता है न R — एक ही आकार का कंचा और चक्की का पाट अपनी ऊर्जा एक-सी बाँटते हैं, इसीलिए ढलान की दौड़ केवल आकार से तय होती है। खोखला छल्ला, जिसके लिए I = MR², उसे 50–50 बाँटता है और इसलिए और भी धीमा है; ठोस गोला, जिसके लिए I = ⅖MR², घूर्णन में केवल 2/7 रखता है और जीतता है। (50 छल्ले का उत्तर है और 66.666667 अंश उलट देता है, स्थानांतरण हिस्सा बता देता है।)",
+        mr: "घरंगळणे ω ला v शी ω = v/R ने बांधते. परिवलनी वाटा ½Iω² = ½ × ½MR² × v²/R² = ¼Mv², आणि स्थानांतरणी वाटा ½Mv², म्हणून एकूण ¾Mv². परिवलनी अंश (¼)/(¾) = 1/3, म्हणजे 33.333333 टक्के. लक्षात घ्या ना M टिकतो ना R — एकाच आकाराची गोटी आणि जात्याचा दगड आपली ऊर्जा सारखीच विभागतात, म्हणूनच उताराची शर्यत केवळ आकाराने ठरते. पोकळे कडे, ज्याच्यासाठी I = MR², ती 50–50 विभागते आणि म्हणून आणखी सावकाश; भरीव गोल, ज्याच्यासाठी I = ⅖MR², परिवलनात केवळ 2/7 ठेवतो आणि जिंकतो. (50 हे कड्याचे उत्तर आणि 66.666667 अंश उलटे करते, स्थानांतरणी वाटा सांगते.)",
+      },
+    },
+  ],
+  "physics-11-gravitation": [
+    {
+      level: 1,
+      stem: {
+        en: "Two masses attract each other with a force of 36 N. Without changing the masses, their separation is tripled. What is the new force?",
+        hi: "दो द्रव्यमान एक-दूसरे को 36 N के बल से खींचते हैं। द्रव्यमान बदले बिना उनकी दूरी तीन गुनी कर दी जाती है। नया बल क्या है?",
+        mr: "दोन वस्तुमाने एकमेकांना 36 N च्या बलाने ओढतात. वस्तुमाने न बदलता त्यांचे अंतर तिप्पट केले जाते. नवे बल किती?",
+      },
+      answer: 4,
+      wrong: [12, 18, 108],
+      checkExpr: "36/3^2",
+      fmt: newtons,
+      solution: {
+        en: "The force goes as 1/r², so tripling r divides it by 9: 36/9 = 4 N. (12 divides by 3 and forgets the square — the single most common error with this law.)",
+        hi: "बल 1/r² के अनुसार चलता है, अतः r तीन गुना करने पर वह 9 से भाग हो जाता है: 36/9 = 4 N. (12 3 से भाग देता है और वर्ग भूल जाता है — इस नियम की सबसे आम अकेली भूल।)",
+        mr: "बल 1/r² नुसार जाते, म्हणून r तिप्पट केल्यास ते 9 ने भागले जाते: 36/9 = 4 N. (12 हे 3 ने भागते आणि वर्ग विसरते — या नियमाची सर्वांत नेहमीची एकमेव चूक.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "A person of mass 60 kg stands on the Moon, where g is 1.6 m/s². What is their weight there?",
+        hi: "60 kg द्रव्यमान का व्यक्ति चंद्रमा पर खड़ा है, जहाँ g = 1.6 m/s². वहाँ उसका भार क्या है?",
+        mr: "60 kg वस्तुमानाची व्यक्ती चंद्रावर उभी आहे, जिथे g = 1.6 m/s². तिथे तिचे वजन किती?",
+      },
+      answer: 96,
+      wrong: [600, 37.5, 61.6],
+      checkExpr: "60*1.6",
+      fmt: newtons,
+      solution: {
+        en: "Weight is mg = 60 × 1.6 = 96 N. The mass is still 60 kg — mass is a property of the body and weight is a force that depends on where the body is. (600 uses the Earth's g and 37.5 divides instead of multiplying.)",
+        hi: "भार mg = 60 × 1.6 = 96 N. द्रव्यमान अब भी 60 kg है — द्रव्यमान पिंड का गुण है और भार वह बल जो इस पर निर्भर है कि पिंड कहाँ है। (600 पृथ्वी का g लगाता है और 37.5 गुणा के बजाय भाग देता है।)",
+        mr: "वजन mg = 60 × 1.6 = 96 N. वस्तुमान अजूनही 60 kg — वस्तुमान हा पिंडाचा गुणधर्म आणि वजन हे बल जे पिंड कुठे आहे यावर अवलंबून. (600 पृथ्वीचा g वापरते आणि 37.5 गुणण्याऐवजी भागते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Taking g at the Earth's surface as 10 m/s², what is its value at a height equal to one Earth radius above the surface?",
+        hi: "पृथ्वी की सतह पर g को 10 m/s² लेते हुए, सतह से एक पृथ्वी-त्रिज्या जितनी ऊँचाई पर उसका मान क्या है?",
+        mr: "पृथ्वीच्या पृष्ठभागावर g हा 10 m/s² घेतल्यास, पृष्ठभागापासून एक पृथ्वी-त्रिज्येइतक्या उंचीवर त्याचे मूल्य किती?",
+      },
+      answer: 2.5,
+      wrong: [5, 10, 20],
+      checkExpr: "10/2^2",
+      solution: {
+        en: "Distances are measured from the CENTRE, so at that height r = 2R and g falls by a factor of 2² = 4: 10/4 = 2.5 m/s². (5 halves it, measuring the drop from the surface rather than the centre — the mistake this question exists to catch.)",
+        hi: "दूरियाँ केंद्र से नापी जाती हैं, अतः उस ऊँचाई पर r = 2R और g 2² = 4 के गुणक से घटता है: 10/4 = 2.5 m/s². (5 उसे आधा कर देता है, गिरावट केंद्र के बजाय सतह से नापकर — यही वह भूल है जिसे पकड़ने के लिए यह प्रश्न है।)",
+        mr: "अंतरे केंद्रापासून मोजली जातात, म्हणून त्या उंचीवर r = 2R आणि g हा 2² = 4 च्या पटीने घटतो: 10/4 = 2.5 m/s². (5 ते निम्मे करते, घट केंद्राऐवजी पृष्ठभागापासून मोजून — हीच ती चूक जी पकडण्यासाठी हा प्रश्न आहे.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A planet has a surface gravity of 8 m/s² and a radius of 4000 km. What is its escape speed, in km/s?",
+        hi: "किसी ग्रह का सतही गुरुत्व 8 m/s² और त्रिज्या 4000 km है। उसकी पलायन चाल km/s में क्या है?",
+        mr: "एका ग्रहाचे पृष्ठभागीय गुरुत्व 8 m/s² आणि त्रिज्या 4000 km आहे. त्याची मुक्ती चाल km/s मध्ये किती?",
+      },
+      answer: 8,
+      wrong: [4, 16, 11.2],
+      checkExpr: "(2*8*4000000)^0.5/1000",
+      solution: {
+        en: "v = √(2gR) = √(2 × 8 × 4,000,000) = √64,000,000 = 8000 m/s = 8 km/s. The escaping body's own mass never appears, so a pebble and a rocket share the same threshold. (11.2 is the Earth's figure quoted from memory, and 4 forgets the factor of 2.)",
+        hi: "v = √(2gR) = √(2 × 8 × 4,000,000) = √64,000,000 = 8000 m/s = 8 km/s. पलायन करते पिंड का अपना द्रव्यमान कहीं नहीं आता, अतः कंकड़ और रॉकेट वही सीमा साझा करते हैं। (11.2 स्मृति से बताया गया पृथ्वी का आँकड़ा है, और 4 2 का गुणक भूल जाता है।)",
+        mr: "v = √(2gR) = √(2 × 8 × 4,000,000) = √64,000,000 = 8000 m/s = 8 km/s. सुटणाऱ्या पिंडाचे स्वतःचे वस्तुमान कुठेही येत नाही, म्हणून खडा आणि रॉकेट तीच मर्यादा वाटून घेतात. (11.2 हा स्मरणातून सांगितलेला पृथ्वीचा आकडा, आणि 4 हे 2 चा गुणक विसरते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A planet orbits its star at four times the Earth's distance from the Sun. By Kepler's third law, what is its period in Earth years?",
+        hi: "एक ग्रह अपने तारे की परिक्रमा सूर्य से पृथ्वी की दूरी के चार गुने पर करता है। केप्लर के तीसरे नियम से, उसका आवर्तकाल पृथ्वी-वर्षों में क्या है?",
+        mr: "एक ग्रह आपल्या ताऱ्याभोवती सूर्यापासून पृथ्वीच्या अंतराच्या चौपट अंतरावर फिरतो. केप्लरच्या तिसऱ्या नियमाने, त्याचा आवर्तकाल पृथ्वी-वर्षांत किती?",
+      },
+      answer: 8,
+      wrong: [4, 16, 64],
+      checkExpr: "4^1.5",
+      solution: {
+        en: "T² ∝ r³, so T ∝ r^1.5 and T = 4^1.5 = 8 years. (4 assumes the period is simply proportional to the distance, 16 squares it, and 64 cubes it — the three ways of forgetting that the law relates a square to a cube.)",
+        hi: "T² ∝ r³, अतः T ∝ r^1.5 और T = 4^1.5 = 8 वर्ष। (4 मान लेता है कि आवर्तकाल बस दूरी का समानुपाती है, 16 उसका वर्ग करता है, और 64 घन — यह नियम एक वर्ग को एक घन से जोड़ता है, यह भूलने के तीन तरीक़े।)",
+        mr: "T² ∝ r³, म्हणून T ∝ r^1.5 आणि T = 4^1.5 = 8 वर्षे. (4 गृहीत धरते की आवर्तकाल फक्त अंतराच्या समानुपाती, 16 त्याचा वर्ग करते, आणि 64 घन — हा नियम एका वर्गाला एका घनाशी जोडतो हे विसरण्याचे तीन मार्ग.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "Taking g as 10 m/s² and the Earth's radius as 6400 km, what is the orbital speed of a satellite skimming the surface, in km/s?",
+        hi: "g को 10 m/s² और पृथ्वी की त्रिज्या को 6400 km लेते हुए, सतह के ठीक ऊपर चक्कर लगाते उपग्रह की कक्षीय चाल km/s में क्या है?",
+        mr: "g हा 10 m/s² आणि पृथ्वीची त्रिज्या 6400 km घेतल्यास, पृष्ठभागाजवळून फिरणाऱ्या उपग्रहाची कक्षीय चाल km/s मध्ये किती?",
+      },
+      answer: 8,
+      wrong: [11.3, 4, 64],
+      checkExpr: "(10*6400000)^0.5/1000",
+      solution: {
+        en: "Gravity supplies the centripetal force, so mg = mv²/R and v = √(gR) = √(64,000,000) = 8000 m/s = 8 km/s. Escape speed is √2 times this, about 11.3 km/s, which is why the two numbers are so often confused. (11.3 is precisely that confusion.)",
+        hi: "गुरुत्व अभिकेंद्र बल देता है, अतः mg = mv²/R और v = √(gR) = √(64,000,000) = 8000 m/s = 8 km/s. पलायन चाल इसकी √2 गुनी है, लगभग 11.3 km/s, इसीलिए दोनों संख्याएँ अक्सर गड्डमड्ड होती हैं। (11.3 ठीक वही गड्डमड्ड है।)",
+        mr: "गुरुत्व अभिकेंद्री बल पुरवते, म्हणून mg = mv²/R आणि v = √(gR) = √(64,000,000) = 8000 m/s = 8 km/s. मुक्ती चाल याच्या √2 पट, सुमारे 11.3 km/s, म्हणूनच दोन्ही संख्यांची वारंवार गल्लत होते. (11.3 हीच नेमकी ती गल्लत.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A 70 kg astronaut orbits at a distance of two Earth radii from the centre, where surface g is 10 m/s². What gravitational force acts on them there?",
+        hi: "70 kg का अंतरिक्ष यात्री केंद्र से दो पृथ्वी-त्रिज्या दूरी पर परिक्रमा करता है, जहाँ सतही g = 10 m/s². वहाँ उस पर कितना गुरुत्वीय बल लगता है?",
+        mr: "70 kg चा अंतराळवीर केंद्रापासून दोन पृथ्वी-त्रिज्या अंतरावर परिभ्रमण करतो, जिथे पृष्ठभागीय g = 10 m/s². तिथे त्याच्यावर किती गुरुत्वीय बल लागते?",
+      },
+      answer: 175,
+      wrong: [0, 700, 350],
+      checkExpr: "70*10/2^2",
+      fmt: newtons,
+      solution: {
+        en: "At r = 2R the field is 10/4 = 2.5 m/s², so F = 70 × 2.5 = 175 N. The astronaut floats not because this force is absent but because they and the spacecraft are falling together — a scale beside them would read zero while this 175 N is acting the whole time. (0 is the answer the word 'weightless' invites, and it is wrong.)",
+        hi: "r = 2R पर क्षेत्र 10/4 = 2.5 m/s² है, अतः F = 70 × 2.5 = 175 N. यात्री इसलिए नहीं तैरता कि यह बल अनुपस्थित है बल्कि इसलिए कि वह और यान साथ गिर रहे हैं — उसके पास रखा तराज़ू शून्य दिखाता जबकि ये 175 N पूरे समय लग रहे हैं। (0 वही उत्तर है जिसे 'भारहीन' शब्द बुलाता है, और वह ग़लत है।)",
+        mr: "r = 2R वर क्षेत्र 10/4 = 2.5 m/s², म्हणून F = 70 × 2.5 = 175 N. अंतराळवीर यासाठी तरंगत नाही की हे बल अनुपस्थित आहे तर यासाठी की तो आणि यान एकत्र पडत आहेत — त्याच्याशेजारचा काटा शून्य दाखवला असता तर ही 175 N पूर्ण काळ लागत आहेत. (0 हेच ते उत्तर ज्याला 'वजनरहित' हा शब्द बोलावतो, आणि ते चुकीचे आहे.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A satellite skimming the Earth's surface has a period of 84 minutes. What is the period, in minutes, of a satellite orbiting at 16 Earth radii?",
+        hi: "पृथ्वी की सतह के ठीक ऊपर चक्कर लगाते उपग्रह का आवर्तकाल 84 मिनट है। 16 पृथ्वी-त्रिज्या पर परिक्रमा करते उपग्रह का आवर्तकाल मिनटों में क्या है?",
+        mr: "पृथ्वीच्या पृष्ठभागाजवळून फिरणाऱ्या उपग्रहाचा आवर्तकाल 84 मिनिटे आहे. 16 पृथ्वी-त्रिज्यांवर परिभ्रमण करणाऱ्या उपग्रहाचा आवर्तकाल मिनिटांत किती?",
+      },
+      answer: 5376,
+      wrong: [1344, 336, 21504],
+      checkExpr: "84*16^1.5",
+      solution: {
+        en: "Kepler's third law gives T ∝ r^1.5, so the period is 84 × 16^1.5 = 84 × 64 = 5376 minutes, about 3.7 days. (1344 uses 16 rather than 16^1.5, and 336 uses only the square root.)",
+        hi: "केप्लर का तीसरा नियम T ∝ r^1.5 देता है, अतः आवर्तकाल 84 × 16^1.5 = 84 × 64 = 5376 मिनट, लगभग 3.7 दिन। (1344 16^1.5 के बजाय 16 लगाता है, और 336 केवल वर्गमूल लेता है।)",
+        mr: "केप्लरचा तिसरा नियम T ∝ r^1.5 देतो, म्हणून आवर्तकाल 84 × 16^1.5 = 84 × 64 = 5376 मिनिटे, सुमारे 3.7 दिवस. (1344 हे 16^1.5 ऐवजी 16 वापरते, आणि 336 फक्त वर्गमूळ घेते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "Taking g at the surface as 10 m/s², what is its value at a depth of half the Earth's radius below the surface, assuming uniform density?",
+        hi: "सतह पर g को 10 m/s² लेते हुए, समांग घनत्व मानकर, सतह से आधी पृथ्वी-त्रिज्या गहराई पर उसका मान क्या है?",
+        mr: "पृष्ठभागावर g हा 10 m/s² घेतल्यास, एकसमान घनता गृहीत धरून, पृष्ठभागाखाली अर्ध्या पृथ्वी-त्रिज्या खोलीवर त्याचे मूल्य किती?",
+      },
+      answer: 5,
+      wrong: [2.5, 20, 10],
+      checkExpr: "10*(1-0.5)",
+      solution: {
+        en: "Below the surface the law changes shape: only the mass inside your radius pulls, and the shell outside contributes nothing, so g = g₀(1 − d/R) = 10 × 0.5 = 5 m/s². It falls LINEARLY with depth and reaches zero at the centre, whereas above the surface it falls as the inverse square. (2.5 applies the above-surface rule below it.)",
+        hi: "सतह के नीचे नियम का रूप बदल जाता है: केवल तुम्हारी त्रिज्या के भीतर का द्रव्यमान खींचता है, और बाहर का खोल कुछ नहीं देता, अतः g = g₀(1 − d/R) = 10 × 0.5 = 5 m/s². वह गहराई के साथ रैखिक रूप से घटता है और केंद्र पर शून्य हो जाता है, जबकि सतह के ऊपर वह व्युत्क्रम वर्ग से घटता है। (2.5 सतह के ऊपर वाला नियम नीचे लगा देता है।)",
+        mr: "पृष्ठभागाखाली नियमाचा आकार बदलतो: केवळ तुमच्या त्रिज्येच्या आतले वस्तुमान ओढते, आणि बाहेरचे कवच काहीही देत नाही, म्हणून g = g₀(1 − d/R) = 10 × 0.5 = 5 m/s². तो खोलीसह रेषीयरीत्या घटतो आणि केंद्रावर शून्य होतो, तर पृष्ठभागाच्या वर तो व्यस्त वर्गाने घटतो. (2.5 पृष्ठभागावरचा नियम खाली लावते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "A planet has twice the Earth's mass and twice its radius. Its surface gravity is what multiple of the Earth's?",
+        hi: "किसी ग्रह का द्रव्यमान पृथ्वी से दुगुना और त्रिज्या भी दुगुनी है। उसका सतही गुरुत्व पृथ्वी के गुरुत्व का कितना गुना है?",
+        mr: "एका ग्रहाचे वस्तुमान पृथ्वीच्या दुप्पट आणि त्रिज्याही दुप्पट. त्याचे पृष्ठभागीय गुरुत्व पृथ्वीच्या किती पट?",
+      },
+      answer: 0.5,
+      wrong: [1, 2, 4],
+      checkExpr: "2/2^2",
+      solution: {
+        en: "Surface gravity is g = GM/R², so doubling M doubles it while doubling R divides it by four: the net factor is 2/4 = 0.5. A bigger, heavier planet has WEAKER surface gravity than Earth's, which is the counterintuitive part. The reason is that the radius enters squared and the mass only to the first power, so spreading a planet out beats making it heavier. The same reasoning explains why gas giants do not crush their moons and why a planet built of the same material as Earth but twice the radius would have eight times the mass and therefore twice the surface gravity — there M and R are not independent, and the answer changes completely. (1 assumes the two effects cancel one for one, forgetting the square; 2 uses only the mass and 4 only the radius.)",
+        hi: "सतही गुरुत्व g = GM/R² है, अतः M दुगुना करने से वह दुगुना होता है जबकि R दुगुना करने से चार से भाग हो जाता है: शुद्ध गुणक 2/4 = 0.5. बड़ा और भारी ग्रह पृथ्वी से दुर्बल सतही गुरुत्व रखता है, और यही उलटा लगने वाला हिस्सा है। कारण यह कि त्रिज्या वर्ग में आती है और द्रव्यमान केवल पहली घात में, अतः ग्रह को फैलाना उसे भारी बनाने पर भारी पड़ता है। यही तर्क बताता है कि गैस-दानव अपने चंद्रमाओं को क्यों नहीं कुचलते और यह भी कि पृथ्वी के ही पदार्थ से बना पर दुगुनी त्रिज्या का ग्रह आठ गुना द्रव्यमान रखता और इसलिए दुगुना सतही गुरुत्व — वहाँ M और R स्वतंत्र नहीं, और उत्तर पूरी तरह बदल जाता है। (1 मान लेता है कि दोनों प्रभाव एक-के-बदले-एक कट जाते हैं, वर्ग भूलकर; 2 केवल द्रव्यमान लेता है और 4 केवल त्रिज्या।)",
+        mr: "पृष्ठभागीय गुरुत्व g = GM/R², म्हणून M दुप्पट केल्याने ते दुप्पट होते तर R दुप्पट केल्याने चारने भागले जाते: निव्वळ गुणक 2/4 = 0.5. मोठा आणि जड ग्रह पृथ्वीहून दुर्बल पृष्ठभागीय गुरुत्व बाळगतो, आणि हाच उलटा वाटणारा भाग. कारण हे की त्रिज्या वर्गात येते आणि वस्तुमान केवळ पहिल्या घातेत, म्हणून ग्रह पसरवणे त्याला जड बनवण्यावर वरचढ ठरते. हाच युक्तिवाद सांगतो की वायुदानव आपल्या चंद्रांना का चिरडत नाहीत आणि हेही की पृथ्वीच्याच पदार्थाचा पण दुप्पट त्रिज्येचा ग्रह आठपट वस्तुमान बाळगला असता आणि म्हणून दुप्पट पृष्ठभागीय गुरुत्व — तिथे M आणि R स्वतंत्र नाहीत, आणि उत्तर पूर्णपणे बदलते. (1 गृहीत धरते की दोन्ही परिणाम एकास-एक कापले जातात, वर्ग विसरून; 2 फक्त वस्तुमान घेते आणि 4 फक्त त्रिज्या.)",
+      },
+    },
+  ],
+  "physics-11-mechanical-properties-of-solids": [
+    {
+      level: 1,
+      stem: {
+        en: "A wire of cross-sectional area 2 mm² carries a load of 100 N. What is the tensile stress in it, in MPa?",
+        hi: "2 mm² अनुप्रस्थ काट क्षेत्रफल का तार 100 N का भार ढोता है। उसमें तन्य प्रतिबल MPa में क्या है?",
+        mr: "2 mm² आडव्या छेदाच्या क्षेत्रफळाची तार 100 N चे ओझे वाहते. तिच्यातले तन्य प्रतिबल MPa मध्ये किती?",
+      },
+      answer: 50,
+      wrong: [200, 25, 5],
+      checkExpr: "100/2",
+      solution: {
+        en: "Stress is force divided by area: 100/2 = 50 N/mm², and one newton per square millimetre is exactly one megapascal, so the stress is 50 MPa. (200 multiplies instead of dividing, and 25 halves the answer once too often.)",
+        hi: "प्रतिबल बल बटा क्षेत्रफल है: 100/2 = 50 N/mm², और एक न्यूटन प्रति वर्ग मिलीमीटर ठीक एक मेगापास्कल है, अतः प्रतिबल 50 MPa. (200 भाग के बजाय गुणा करता है, और 25 उत्तर एक बार अधिक आधा कर देता है।)",
+        mr: "प्रतिबल म्हणजे बल भागिले क्षेत्रफळ: 100/2 = 50 N/mm², आणि एक न्यूटन प्रति चौरस मिलीमीटर म्हणजे नेमका एक मेगापास्कल, म्हणून प्रतिबल 50 MPa. (200 भागण्याऐवजी गुणते, आणि 25 उत्तर एकदा जास्त निम्मे करते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "A wire 2 m long stretches by 1 mm under a load. What is the longitudinal strain?",
+        hi: "2 m लंबा तार भार के नीचे 1 mm खिंचता है। अनुदैर्घ्य विकृति क्या है?",
+        mr: "2 m लांब तार ओझ्याखाली 1 mm ताणली जाते. अनुदैर्घ्य विकृती किती?",
+      },
+      answer: 0.0005,
+      wrong: [0.002, 0.5, 2000],
+      checkExpr: "0.001/2",
+      solution: {
+        en: "Strain is the extension divided by the original length, with both in the same units: 0.001/2 = 0.0005. It is a pure number and carries no units at all. (0.5 forgets to convert the millimetre to metres, and 2000 inverts the ratio.)",
+        hi: "विकृति विस्तार बटा मूल लंबाई है, दोनों एक ही मात्रक में: 0.001/2 = 0.0005. वह शुद्ध संख्या है और उसका कोई मात्रक नहीं। (0.5 मिलीमीटर को मीटर में बदलना भूलता है, और 2000 अनुपात उलट देता है।)",
+        mr: "विकृती म्हणजे ताण भागिले मूळ लांबी, दोन्ही एकाच एककात: 0.001/2 = 0.0005. ती शुद्ध संख्या आणि तिला कोणतेही एकक नाही. (0.5 मिलीमीटरचे मीटरमध्ये रूपांतर विसरते, आणि 2000 गुणोत्तर उलटे करते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A material under a stress of 50 MPa shows a strain of 0.0005. What is its Young's modulus, in GPa?",
+        hi: "50 MPa प्रतिबल के नीचे किसी पदार्थ की विकृति 0.0005 है। उसका यंग मापांक GPa में क्या है?",
+        mr: "50 MPa प्रतिबलाखाली एका पदार्थाची विकृती 0.0005 आहे. त्याचा यंग मापांक GPa मध्ये किती?",
+      },
+      answer: 100,
+      wrong: [10, 1000, 0.1],
+      checkExpr: "50/0.0005/1000",
+      solution: {
+        en: "Y = stress/strain = 50/0.0005 = 100,000 MPa, and a thousand megapascals make a gigapascal, so Y = 100 GPa. Strain has no units, so Y always comes out in the units of stress. (10 and 1000 slip by factors of ten in the final conversion.)",
+        hi: "Y = प्रतिबल/विकृति = 50/0.0005 = 100,000 MPa, और हज़ार मेगापास्कल एक गीगापास्कल बनाते हैं, अतः Y = 100 GPa. विकृति का कोई मात्रक नहीं, अतः Y सदा प्रतिबल के मात्रकों में निकलता है। (10 और 1000 अंतिम रूपांतरण में दस के गुणकों से खिसकते हैं।)",
+        mr: "Y = प्रतिबल/विकृती = 50/0.0005 = 100,000 MPa, आणि हजार मेगापास्कल एक गिगापास्कल बनवतात, म्हणून Y = 100 GPa. विकृतीला एकक नाही, म्हणून Y नेहमी प्रतिबलाच्या एककांत निघतो. (10 आणि 1000 शेवटच्या रूपांतरात दहाच्या पटींनी सरकतात.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A wire stretches by 2 mm under a load. A second wire of the same material, same length and twice the diameter carries the same load. By how much does it stretch, in mm?",
+        hi: "एक तार भार के नीचे 2 mm खिंचता है। उसी पदार्थ, उसी लंबाई और दुगुने व्यास का दूसरा तार वही भार ढोता है। वह mm में कितना खिंचता है?",
+        mr: "एक तार ओझ्याखाली 2 mm ताणली जाते. त्याच पदार्थाची, त्याच लांबीची आणि दुप्पट व्यासाची दुसरी तार तेच ओझे वाहते. ती mm मध्ये किती ताणली जाते?",
+      },
+      answer: 0.5,
+      wrong: [1, 4, 8],
+      checkExpr: "2/2^2",
+      solution: {
+        en: "Extension is FL/(AY), and doubling the diameter quadruples the area, so the extension is divided by four: 2/4 = 0.5 mm. (1 halves it, treating area as proportional to diameter rather than to its square.)",
+        hi: "विस्तार FL/(AY) है, और व्यास दुगुना करने से क्षेत्रफल चौगुना होता है, अतः विस्तार चार से भाग हो जाता है: 2/4 = 0.5 mm. (1 उसे आधा करता है, क्षेत्रफल को व्यास के वर्ग के बजाय व्यास का समानुपाती मानकर।)",
+        mr: "ताण FL/(AY), आणि व्यास दुप्पट केल्याने क्षेत्रफळ चौपट होते, म्हणून ताण चारने भागला जातो: 2/4 = 0.5 mm. (1 ते निम्मे करते, क्षेत्रफळ व्यासाच्या वर्गाऐवजी व्यासाच्या समानुपाती मानून.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A wire stretches by 1 mm under a steady load of 200 N. How much elastic potential energy is stored in it?",
+        hi: "एक तार 200 N के स्थिर भार के नीचे 1 mm खिंचता है। उसमें कितनी प्रत्यास्थ स्थितिज ऊर्जा संचित है?",
+        mr: "एक तार 200 N च्या स्थिर ओझ्याखाली 1 mm ताणली जाते. तिच्यात किती प्रत्यास्थ स्थितिज ऊर्जा साठलेली आहे?",
+      },
+      answer: 0.1,
+      wrong: [0.2, 0.05, 2],
+      checkExpr: "0.5*200*0.001",
+      solution: {
+        en: "U = ½ × F × x = ½ × 200 × 0.001 = 0.1 J. The half appears because the load built up from zero as the wire lengthened, so the work is the triangle under the load–extension graph. (0.2 drops the half by treating the full load as acting throughout.)",
+        hi: "U = ½ × F × x = ½ × 200 × 0.001 = 0.1 J. आधा इसलिए आता है कि तार के लंबा होते-होते भार शून्य से बढ़ा, अतः कार्य भार-विस्तार आलेख के नीचे का त्रिभुज है। (0.2 आधा गिरा देता है, पूरे भार को पूरे समय लगता मानकर।)",
+        mr: "U = ½ × F × x = ½ × 200 × 0.001 = 0.1 J. निम्मे यासाठी येते की तार लांब होता होता ओझे शून्यापासून वाढले, म्हणून कार्य म्हणजे ओझे-ताण आलेखाखालचा त्रिकोण. (0.2 निम्मे गाळते, पूर्ण ओझे पूर्ण काळ लागत होते असे मानून.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A 3 m wire stretches by 1.5 mm under a load. A 5 m wire of the same material and cross-section carries the same load. By how much does it stretch, in mm?",
+        hi: "3 m का तार भार के नीचे 1.5 mm खिंचता है। उसी पदार्थ और अनुप्रस्थ काट का 5 m तार वही भार ढोता है। वह mm में कितना खिंचता है?",
+        mr: "3 m ची तार ओझ्याखाली 1.5 mm ताणली जाते. त्याच पदार्थाची आणि आडव्या छेदाची 5 m ची तार तेच ओझे वाहते. ती mm मध्ये किती ताणली जाते?",
+      },
+      answer: 2.5,
+      wrong: [0.9, 3, 7.5],
+      checkExpr: "1.5*5/3",
+      solution: {
+        en: "Extension is proportional to the original length when everything else is fixed, so 1.5 × 5/3 = 2.5 mm. The strain is identical in both wires; only the absolute extension differs, because there is more length for the same fractional stretch to act on. (0.9 inverts the ratio.)",
+        hi: "बाक़ी सब तय हो तो विस्तार मूल लंबाई का समानुपाती है, अतः 1.5 × 5/3 = 2.5 mm. दोनों तारों में विकृति समान है; केवल निरपेक्ष विस्तार भिन्न है, क्योंकि उसी भिन्नात्मक खिंचाव के लिए अधिक लंबाई है। (0.9 अनुपात उलट देता है।)",
+        mr: "बाकी सर्व ठरलेले असल्यास ताण मूळ लांबीच्या समानुपाती, म्हणून 1.5 × 5/3 = 2.5 mm. दोन्ही तारांत विकृती सारखी; केवळ निरपेक्ष ताण वेगळा, कारण त्याच अपूर्णांकी ताणासाठी अधिक लांबी आहे. (0.9 गुणोत्तर उलटे करते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A pressure increase of 20 MPa reduces a solid's volume by a fraction of 0.0001. What is its bulk modulus, in GPa?",
+        hi: "20 MPa की दाब-वृद्धि किसी ठोस का आयतन 0.0001 अंश से घटाती है। उसका आयतन मापांक GPa में क्या है?",
+        mr: "20 MPa ची दाबवाढ एका घनपदार्थाचे घनफळ 0.0001 अंशाने घटवते. त्याचा घनफळ मापांक GPa मध्ये किती?",
+      },
+      answer: 200,
+      wrong: [20, 2, 2000],
+      checkExpr: "20/0.0001/1000",
+      solution: {
+        en: "B = pressure divided by the fractional volume change = 20/0.0001 = 200,000 MPa = 200 GPa. The very large value is why solids and liquids are treated as incompressible in most problems: even 20 MPa, some two hundred atmospheres, moves the volume by only one part in ten thousand. (20 forgets to divide by the strain at all.)",
+        hi: "B = दाब बटा भिन्नात्मक आयतन-परिवर्तन = 20/0.0001 = 200,000 MPa = 200 GPa. यह बहुत बड़ा मान ही वह कारण है जिससे अधिकांश प्रश्नों में ठोस और द्रव असंपीड्य माने जाते हैं: 20 MPa भी, जो लगभग दो सौ वायुमंडल है, आयतन को दस हज़ार में केवल एक भाग हिलाता है। (20 विकृति से भाग देना ही भूल जाता है।)",
+        mr: "B = दाब भागिले अपूर्णांकी घनफळ-बदल = 20/0.0001 = 200,000 MPa = 200 GPa. हे फार मोठे मूल्य हेच ते कारण ज्यामुळे बहुतांश प्रश्नांत घन आणि द्रव असंपीड्य मानले जातात: 20 MPa सुद्धा, जे सुमारे दोनशे वातावरणे, घनफळ दहा हजारांत केवळ एक भाग हलवते. (20 विकृतीने भागायचेच विसरते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A material has a Poisson's ratio of 0.3. A wire of it is stretched to a longitudinal strain of 0.002. What is the magnitude of the lateral strain?",
+        hi: "किसी पदार्थ का प्वासों अनुपात 0.3 है। उसका तार 0.002 अनुदैर्घ्य विकृति तक खींचा जाता है। पार्श्व विकृति का परिमाण क्या है?",
+        mr: "एका पदार्थाचे प्वासों गुणोत्तर 0.3 आहे. त्याची तार 0.002 अनुदैर्घ्य विकृतीपर्यंत ताणली जाते. आडव्या विकृतीचे परिमाण किती?",
+      },
+      answer: 0.0006,
+      wrong: [0.006, 0.0002, 0.0067],
+      checkExpr: "0.3*0.002",
+      solution: {
+        en: "Poisson's ratio is lateral strain divided by longitudinal strain, so the lateral strain is 0.3 × 0.002 = 0.0006. The wire narrows as it lengthens, which is why the sign is opposite even though the magnitudes are what is asked for. (0.0067 divides instead of multiplying.)",
+        hi: "प्वासों अनुपात पार्श्व विकृति बटा अनुदैर्घ्य विकृति है, अतः पार्श्व विकृति 0.3 × 0.002 = 0.0006. तार लंबा होते हुए पतला होता है, इसीलिए चिह्न विपरीत है यद्यपि पूछा परिमाण गया है। (0.0067 गुणा के बजाय भाग देता है।)",
+        mr: "प्वासों गुणोत्तर म्हणजे आडवी विकृती भागिले अनुदैर्घ्य विकृती, म्हणून आडवी विकृती 0.3 × 0.002 = 0.0006. तार लांब होताना बारीक होते, म्हणूनच चिन्ह विरुद्ध जरी विचारले परिमाण असले तरी. (0.0067 गुणण्याऐवजी भागते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "A steel wire of length 2000 mm and area 1 mm² carries 100 N. Steel's Young's modulus is 200,000 N/mm². By how much does the wire stretch, in mm?",
+        hi: "2000 mm लंबाई और 1 mm² क्षेत्रफल का इस्पात का तार 100 N ढोता है। इस्पात का यंग मापांक 200,000 N/mm² है। तार mm में कितना खिंचता है?",
+        mr: "2000 mm लांबी आणि 1 mm² क्षेत्रफळाची पोलादी तार 100 N वाहते. पोलादाचा यंग मापांक 200,000 N/mm² आहे. तार mm मध्ये किती ताणली जाते?",
+      },
+      answer: 1,
+      wrong: [2, 0.5, 10],
+      checkExpr: "100*2000/(1*200000)",
+      solution: {
+        en: "ΔL = FL/(AY) = 100 × 2000/(1 × 200,000) = 1 mm. Notice that all four quantities were given in a consistent set of units — newtons, millimetres and N/mm² — so no conversion was needed anywhere, which is the reason engineers work in this system rather than in metres and pascals. (2 forgets to divide by the area, which happens to be 1 and so hides the error's shape.)",
+        hi: "ΔL = FL/(AY) = 100 × 2000/(1 × 200,000) = 1 mm. ध्यान दो चारों राशियाँ एक ही संगत मात्रक-समुच्चय में दी गईं — न्यूटन, मिलीमीटर और N/mm² — अतः कहीं कोई रूपांतरण नहीं चाहिए था, और इसीलिए अभियंता मीटर तथा पास्कल के बजाय इसी तंत्र में काम करते हैं। (2 क्षेत्रफल से भाग देना भूलता है, जो संयोग से 1 है और इसलिए भूल का आकार छिपा देता है।)",
+        mr: "ΔL = FL/(AY) = 100 × 2000/(1 × 200,000) = 1 mm. लक्षात घ्या चारही राशी एकाच सुसंगत एकक-संचात दिल्या — न्यूटन, मिलीमीटर आणि N/mm² — म्हणून कुठेही कोणतेही रूपांतर लागले नाही, आणि म्हणूनच अभियंते मीटर आणि पास्कलऐवजी याच प्रणालीत काम करतात. (2 क्षेत्रफळाने भागायचे विसरते, जे योगायोगाने 1 आहे आणि म्हणून चुकीचा आकार लपवते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "A wire breaks under a load of 500 N. A second wire of the same material and the same length but twice the diameter is tested. What load will break it?",
+        hi: "एक तार 500 N के भार पर टूटता है। उसी पदार्थ और उसी लंबाई का पर दुगुने व्यास का दूसरा तार परखा जाता है। वह किस भार पर टूटेगा?",
+        mr: "एक तार 500 N च्या ओझ्यावर तुटते. त्याच पदार्थाची आणि त्याच लांबीची पण दुप्पट व्यासाची दुसरी तार तपासली जाते. ती कोणत्या ओझ्यावर तुटेल?",
+      },
+      answer: 2000,
+      wrong: [1000, 250, 500],
+      checkExpr: "500*2^2",
+      fmt: newtons,
+      solution: {
+        en: "Breaking is governed by stress, not by load. The wire fails when F/A reaches the material's breaking stress, a number fixed by the steel and nothing else. Doubling the diameter quadruples the area, so four times the load is needed to reach the same stress: 4 × 500 = 2000 N. Two things follow that are worth keeping. First, the LENGTH is irrelevant — a wire of the same material and thickness breaks at the same load whether it is a metre or a kilometre long, which surprises most people and is the clearest evidence that stress and not force is the governing quantity. Second, this is why cable diameters go up so slowly as loads rise: to carry nine times the load a designer needs only three times the diameter. It is also why a chain is only as strong as its weakest link, since the whole load passes through the smallest area anywhere along it. (1000 treats the strength as proportional to the diameter, and 500 assumes thickness makes no difference at all.)",
+        hi: "टूटना प्रतिबल से तय होता है, भार से नहीं। तार तब विफल होता है जब F/A पदार्थ के भंजक प्रतिबल तक पहुँचे, जो संख्या इस्पात तय करता है और कुछ नहीं। व्यास दुगुना करने से क्षेत्रफल चौगुना होता है, अतः वही प्रतिबल पाने को चार गुना भार चाहिए: 4 × 500 = 2000 N. दो बातें निकलती हैं जो रखने योग्य हैं। पहली, लंबाई अप्रासंगिक है — उसी पदार्थ और मोटाई का तार उसी भार पर टूटता है चाहे वह एक मीटर लंबा हो या एक किलोमीटर, जो अधिकांश लोगों को चौंकाता है और यही सबसे स्पष्ट प्रमाण है कि शासक राशि बल नहीं प्रतिबल है। दूसरी, इसीलिए भार बढ़ने पर रस्सियों के व्यास इतने धीरे बढ़ते हैं: नौ गुना भार ढोने को अभिकल्पक को केवल तीन गुना व्यास चाहिए। इसी से यह भी कि साँकल उतनी ही मज़बूत है जितनी उसकी सबसे कमज़ोर कड़ी, क्योंकि पूरा भार उसकी लंबाई में कहीं भी सबसे छोटे क्षेत्रफल से होकर गुज़रता है। (1000 सामर्थ्य को व्यास का समानुपाती मानता है, और 500 मान लेता है कि मोटाई से कोई फ़र्क़ ही नहीं पड़ता।)",
+        mr: "तुटणे प्रतिबलाने ठरते, ओझ्याने नव्हे. तार तेव्हा अपयशी होते जेव्हा F/A पदार्थाच्या भंजक प्रतिबलापर्यंत पोहोचते, जी संख्या पोलाद ठरवते आणि दुसरे काहीही नाही. व्यास दुप्पट केल्याने क्षेत्रफळ चौपट होते, म्हणून तेच प्रतिबल गाठायला चौपट ओझे लागते: 4 × 500 = 2000 N. दोन गोष्टी निघतात ज्या ठेवण्याजोग्या. पहिली, लांबी असंबद्ध — त्याच पदार्थाची आणि जाडीची तार त्याच ओझ्यावर तुटते मग ती एक मीटर लांब असो वा एक किलोमीटर, जे बहुतांश लोकांना चकित करते आणि हाच सर्वांत स्पष्ट पुरावा की शासक राशी बल नव्हे तर प्रतिबल आहे. दुसरी, म्हणूनच ओझे वाढताना दोऱ्यांचे व्यास इतके सावकाश वाढतात: नऊपट ओझे वाहायला आखणीकाराला केवळ तिप्पट व्यास लागतो. यामुळेच हेही की साखळी तिच्या सर्वांत कमकुवत कडीइतकीच बळकट, कारण अख्खे ओझे तिच्या लांबीत कुठेही असलेल्या सर्वांत लहान क्षेत्रफळातून जाते. (1000 बळ व्यासाच्या समानुपाती मानते, आणि 500 गृहीत धरते की जाडीने काहीच फरक पडत नाही.)",
       },
     },
   ],

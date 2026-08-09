@@ -1,0 +1,1003 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 11,
+  "chapter": "Chapter 7 — Gravitation",
+  "name": "Gravitation",
+  "slug": "physics-11-gravitation",
+  "summary": "One law written for a falling apple turned out to be running the solar system: a force that thins as the square of the distance, a constant of nature beside a local number that changes with latitude and altitude, an area swept out at a fixed rate whether a planet is near or far, a speed above which nothing ever returns, and astronauts who are not weightless at all but simply falling, along with their spacecraft, for ever.",
+  "position": 7,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "गुरुत्वाकर्षण",
+      "summary": "गिरते सेब के लिए लिखा एक नियम निकला सौर मंडल चला रहा था: वह बल जो दूरी के वर्ग के अनुपात में पतला होता है, प्रकृति का एक स्थिरांक और उसके बगल में वह स्थानीय संख्या जो अक्षांश तथा ऊँचाई से बदलती है, वह क्षेत्रफल जो ग्रह के पास या दूर होने पर भी नियत दर से बुहारा जाता है, वह चाल जिसके ऊपर कुछ भी कभी नहीं लौटता, और वे अंतरिक्ष यात्री जो भारहीन हैं ही नहीं बल्कि अपने यान समेत सदा गिरते रहते हैं।"
+    },
+    "mr": {
+      "name": "गुरुत्वाकर्षण",
+      "summary": "पडणाऱ्या सफरचंदासाठी लिहिलेला एक नियम निघाला सूर्यमाला चालवत होता: ते बल जे अंतराच्या वर्गाच्या प्रमाणात विरळ होते, निसर्गाचा एक स्थिरांक आणि त्याशेजारी ती स्थानिक संख्या जी अक्षांश व उंचीने बदलते, ते क्षेत्रफळ जे ग्रह जवळ असो वा दूर, ठरलेल्या दराने झाडले जाते, ती चाल जिच्यावर काहीही कधीही परतत नाही, आणि ते अंतराळवीर जे वजनरहित नाहीतच तर आपल्या यानासह कायम पडत राहतात."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Move to three times the separation and the attraction falls not to a third but to a ninth, because the pull spreads over a surface whose area grows as the square of the radius. Which law is this?",
+      "choices": [
+        "Little g against big G",
+        "The law of equal areas",
+        "The geostationary orbit",
+        "The inverse-square law"
+      ],
+      "answerIndex": 3,
+      "solution": "The gravitational force between two masses is proportional to the product of the masses and inversely proportional to the square of the distance between their centres. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दूरी तीन गुनी करो और आकर्षण एक तिहाई नहीं बल्कि एक नौवाँ रह जाता है, क्योंकि खिंचाव ऐसी सतह पर फैलता है जिसका क्षेत्रफल त्रिज्या के वर्ग के अनुपात में बढ़ता है। यह कौन-सा नियम है?",
+          "choices": [
+            "छोटा g बनाम बड़ा G",
+            "समान क्षेत्रफल का नियम",
+            "भूस्थिर कक्षा",
+            "व्युत्क्रम वर्ग नियम"
+          ],
+          "solution": "दो द्रव्यमानों के बीच गुरुत्वीय बल द्रव्यमानों के गुणनफल के समानुपाती और उनके केंद्रों के बीच की दूरी के वर्ग के व्युत्क्रमानुपाती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "अंतर तिप्पट करा आणि आकर्षण एक तृतीयांश नव्हे तर एक नवमांश उरते, कारण ओढ अशा पृष्ठभागावर पसरते ज्याचे क्षेत्रफळ त्रिज्येच्या वर्गाच्या प्रमाणात वाढते. हा कोणता नियम?",
+          "choices": [
+            "लहान g विरुद्ध मोठा G",
+            "समान क्षेत्रफळाचा नियम",
+            "भूस्थिर कक्षा",
+            "व्यस्त वर्ग नियम"
+          ],
+          "solution": "दोन वस्तुमानांमधले गुरुत्वीय बल वस्तुमानांच्या गुणाकाराशी समानुपाती आणि त्यांच्या केंद्रांमधल्या अंतराच्या वर्गाशी व्यस्तानुपाती असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Little g against big G is correct?",
+      "choices": [
+        "Escape speed is √(2GM/R), the least speed at which a body projected from a surface never returns, and it is independent of the escaping body's own mass.",
+        "The gravitational force between two masses is proportional to the product of the masses and inversely proportional to the square of the distance between their centres.",
+        "G is a universal constant with the same value everywhere, while g is the local acceleration due to gravity, equal to GM/r² and therefore varying with latitude, altitude and depth.",
+        "Kepler's second law says the line from the Sun to a planet sweeps out equal areas in equal times, so the planet moves fastest at perihelion and slowest at aphelion."
+      ],
+      "answerIndex": 2,
+      "solution": "G is a universal constant with the same value everywhere, while g is the local acceleration due to gravity, equal to GM/r² and therefore varying with latitude, altitude and depth. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "छोटा g बनाम बड़ा G के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "पलायन चाल √(2GM/R) है, वह न्यूनतम चाल जिससे सतह से फेंका गया पिंड कभी नहीं लौटता, और वह पलायन करते पिंड के अपने द्रव्यमान से स्वतंत्र है।",
+            "दो द्रव्यमानों के बीच गुरुत्वीय बल द्रव्यमानों के गुणनफल के समानुपाती और उनके केंद्रों के बीच की दूरी के वर्ग के व्युत्क्रमानुपाती है।",
+            "G सार्वत्रिक स्थिरांक है जिसका मान हर जगह एक-सा है, जबकि g गुरुत्व के कारण स्थानीय त्वरण है, GM/r² के बराबर और इसलिए अक्षांश, ऊँचाई तथा गहराई से बदलता है।",
+            "केप्लर का दूसरा नियम कहता है कि सूर्य से ग्रह तक की रेखा बराबर समय में बराबर क्षेत्रफल बुहारती है, अतः ग्रह उपसौर पर सबसे तेज़ और अपसौर पर सबसे धीमा चलता है।"
+          ],
+          "solution": "G सार्वत्रिक स्थिरांक है जिसका मान हर जगह एक-सा है, जबकि g गुरुत्व के कारण स्थानीय त्वरण है, GM/r² के बराबर और इसलिए अक्षांश, ऊँचाई तथा गहराई से बदलता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "लहान g विरुद्ध मोठा G विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "मुक्ती चाल म्हणजे √(2GM/R), ती किमान चाल जिच्याने पृष्ठभागावरून फेकलेला पिंड कधीही परतत नाही, आणि ती सुटणाऱ्या पिंडाच्या स्वतःच्या वस्तुमानापासून स्वतंत्र आहे.",
+            "दोन वस्तुमानांमधले गुरुत्वीय बल वस्तुमानांच्या गुणाकाराशी समानुपाती आणि त्यांच्या केंद्रांमधल्या अंतराच्या वर्गाशी व्यस्तानुपाती असते.",
+            "G हा सार्वत्रिक स्थिरांक ज्याचे मूल्य सर्वत्र सारखे, तर g हे गुरुत्वामुळे येणारे स्थानिक त्वरण, GM/r² इतके आणि म्हणून अक्षांश, उंची व खोलीनुसार बदलणारे.",
+            "केप्लरचा दुसरा नियम सांगतो की सूर्यापासून ग्रहापर्यंतची रेषा समान काळात समान क्षेत्रफळ झाडते, म्हणून ग्रह उपसूर्यबिंदूवर सर्वांत वेगवान आणि अपसूर्यबिंदूवर सर्वांत सावकाश जातो."
+          ],
+          "solution": "G हा सार्वत्रिक स्थिरांक ज्याचे मूल्य सर्वत्र सारखे, तर g हे गुरुत्वामुळे येणारे स्थानिक त्वरण, GM/r² इतके आणि म्हणून अक्षांश, उंची व खोलीनुसार बदलणारे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It is conservation of angular momentum in disguise: gravity always points at the Sun, so it exerts no torque about the Sun and the planet's angular momentum cannot change.\" — which of these is this about?",
+      "choices": [
+        "The law of equal areas",
+        "Little g against big G",
+        "Escape speed",
+        "The inverse-square law"
+      ],
+      "answerIndex": 0,
+      "solution": "Kepler's second law says the line from the Sun to a planet sweeps out equal areas in equal times, so the planet moves fastest at perihelion and slowest at aphelion. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"यह भेस बदले कोणीय संवेग का संरक्षण है: गुरुत्व सदा सूर्य की ओर होता है, अतः वह सूर्य के परितः कोई बल-आघूर्ण नहीं लगाता और ग्रह का कोणीय संवेग बदल नहीं सकता।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "समान क्षेत्रफल का नियम",
+            "छोटा g बनाम बड़ा G",
+            "पलायन चाल",
+            "व्युत्क्रम वर्ग नियम"
+          ],
+          "solution": "केप्लर का दूसरा नियम कहता है कि सूर्य से ग्रह तक की रेखा बराबर समय में बराबर क्षेत्रफल बुहारती है, अतः ग्रह उपसौर पर सबसे तेज़ और अपसौर पर सबसे धीमा चलता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"हा वेष बदललेला कोनीय संवेगाचा संरक्षण नियम: गुरुत्व नेहमी सूर्याकडे असते, म्हणून ते सूर्याभोवती कोणतेही बलआघूर्ण लावत नाही आणि ग्रहाचा कोनीय संवेग बदलू शकत नाही.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "समान क्षेत्रफळाचा नियम",
+            "लहान g विरुद्ध मोठा G",
+            "मुक्ती चाल",
+            "व्यस्त वर्ग नियम"
+          ],
+          "solution": "केप्लरचा दुसरा नियम सांगतो की सूर्यापासून ग्रहापर्यंतची रेषा समान काळात समान क्षेत्रफळ झाडते, म्हणून ग्रह उपसूर्यबिंदूवर सर्वांत वेगवान आणि अपसूर्यबिंदूवर सर्वांत सावकाश जातो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Throw a stone upwards fast enough and it never comes down, not because gravity stops but because the pull weakens quicker than the stone runs out of kinetic energy — and the threshold is the same for a pebble and a battleship. Which quantity is this?",
+      "choices": [
+        "Little g against big G",
+        "The geostationary orbit",
+        "Escape speed",
+        "Weightlessness in orbit"
+      ],
+      "answerIndex": 2,
+      "solution": "Escape speed is √(2GM/R), the least speed at which a body projected from a surface never returns, and it is independent of the escaping body's own mass. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "पत्थर को पर्याप्त तेज़ ऊपर फेंको और वह कभी नहीं लौटता, इसलिए नहीं कि गुरुत्व रुक जाता है बल्कि इसलिए कि खिंचाव उससे तेज़ी से दुर्बल होता है जितनी तेज़ी से पत्थर की गतिज ऊर्जा चुकती है — और यह सीमा कंकड़ और युद्धपोत दोनों के लिए एक ही है। यह कौन-सी राशि है?",
+          "choices": [
+            "छोटा g बनाम बड़ा G",
+            "भूस्थिर कक्षा",
+            "पलायन चाल",
+            "कक्षा में भारहीनता"
+          ],
+          "solution": "पलायन चाल √(2GM/R) है, वह न्यूनतम चाल जिससे सतह से फेंका गया पिंड कभी नहीं लौटता, और वह पलायन करते पिंड के अपने द्रव्यमान से स्वतंत्र है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "दगड पुरेशा वेगाने वर फेका आणि तो कधीही परतत नाही, गुरुत्व थांबते म्हणून नव्हे तर ओढ दगडाची गतिज ऊर्जा संपण्याहून अधिक वेगाने क्षीण होते म्हणून — आणि ही मर्यादा खडा आणि युद्धनौका दोघांसाठी एकच. ही कोणती राशी?",
+          "choices": [
+            "लहान g विरुद्ध मोठा G",
+            "भूस्थिर कक्षा",
+            "मुक्ती चाल",
+            "कक्षेतील वजनरहितता"
+          ],
+          "solution": "मुक्ती चाल म्हणजे √(2GM/R), ती किमान चाल जिच्याने पृष्ठभागावरून फेकलेला पिंड कधीही परतत नाही, आणि ती सुटणाऱ्या पिंडाच्या स्वतःच्या वस्तुमानापासून स्वतंत्र आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Weightlessness in orbit is correct?",
+      "choices": [
+        "Escape speed is √(2GM/R), the least speed at which a body projected from a surface never returns, and it is independent of the escaping body's own mass.",
+        "Kepler's second law says the line from the Sun to a planet sweeps out equal areas in equal times, so the planet moves fastest at perihelion and slowest at aphelion.",
+        "Orbital weightlessness is free fall, not an absence of gravity: the spacecraft and everything in it accelerate towards the Earth together, so nothing presses on anything and no scale can register a reading.",
+        "A geostationary satellite orbits directly above the equator with a period of exactly one sidereal day, so it stays fixed above one point of the rotating Earth."
+      ],
+      "answerIndex": 2,
+      "solution": "Orbital weightlessness is free fall, not an absence of gravity: the spacecraft and everything in it accelerate towards the Earth together, so nothing presses on anything and no scale can register a reading. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कक्षा में भारहीनता के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "पलायन चाल √(2GM/R) है, वह न्यूनतम चाल जिससे सतह से फेंका गया पिंड कभी नहीं लौटता, और वह पलायन करते पिंड के अपने द्रव्यमान से स्वतंत्र है।",
+            "केप्लर का दूसरा नियम कहता है कि सूर्य से ग्रह तक की रेखा बराबर समय में बराबर क्षेत्रफल बुहारती है, अतः ग्रह उपसौर पर सबसे तेज़ और अपसौर पर सबसे धीमा चलता है।",
+            "कक्षीय भारहीनता मुक्त पतन है, गुरुत्व की अनुपस्थिति नहीं: यान और उसमें रखा सब कुछ मिलकर पृथ्वी की ओर त्वरित होते हैं, अतः कुछ किसी पर दबाव नहीं डालता और कोई तराज़ू पाठ्यांक दर्ज नहीं कर सकता।",
+            "भूस्थिर उपग्रह ठीक भूमध्य रेखा के ऊपर ऐसी कक्षा में घूमता है जिसका आवर्तकाल ठीक एक नाक्षत्र दिवस है, अतः वह घूमती पृथ्वी के एक ही बिंदु के ऊपर टिका रहता है।"
+          ],
+          "solution": "कक्षीय भारहीनता मुक्त पतन है, गुरुत्व की अनुपस्थिति नहीं: यान और उसमें रखा सब कुछ मिलकर पृथ्वी की ओर त्वरित होते हैं, अतः कुछ किसी पर दबाव नहीं डालता और कोई तराज़ू पाठ्यांक दर्ज नहीं कर सकता। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "कक्षेतील वजनरहितता विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "मुक्ती चाल म्हणजे √(2GM/R), ती किमान चाल जिच्याने पृष्ठभागावरून फेकलेला पिंड कधीही परतत नाही, आणि ती सुटणाऱ्या पिंडाच्या स्वतःच्या वस्तुमानापासून स्वतंत्र आहे.",
+            "केप्लरचा दुसरा नियम सांगतो की सूर्यापासून ग्रहापर्यंतची रेषा समान काळात समान क्षेत्रफळ झाडते, म्हणून ग्रह उपसूर्यबिंदूवर सर्वांत वेगवान आणि अपसूर्यबिंदूवर सर्वांत सावकाश जातो.",
+            "कक्षेतील वजनरहितता म्हणजे मुक्त पतन, गुरुत्वाची अनुपस्थिती नव्हे: यान आणि त्यातले सर्व एकत्रच पृथ्वीकडे त्वरित होतात, म्हणून काहीही कशावर दाब देत नाही आणि कोणताही काटा वाचन नोंदवू शकत नाही.",
+            "भूस्थिर उपग्रह नेमका विषुववृत्ताच्या वर अशा कक्षेत फिरतो जिचा आवर्तकाल नेमका एक नक्षत्र-दिवस, म्हणून तो फिरत्या पृथ्वीच्या एकाच बिंदूवर टिकून राहतो."
+          ],
+          "solution": "कक्षेतील वजनरहितता म्हणजे मुक्त पतन, गुरुत्वाची अनुपस्थिती नव्हे: यान आणि त्यातले सर्व एकत्रच पृथ्वीकडे त्वरित होतात, म्हणून काहीही कशावर दाब देत नाही आणि कोणताही काटा वाचन नोंदवू शकत नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The radius is forced by Kepler's third law once the period is chosen, so the altitude is not a design choice at all but a consequence of the Earth's mass and its rotation rate.\" — which of these is this about?",
+      "choices": [
+        "Weightlessness in orbit",
+        "Escape speed",
+        "The geostationary orbit",
+        "The inverse-square law"
+      ],
+      "answerIndex": 2,
+      "solution": "A geostationary satellite orbits directly above the equator with a period of exactly one sidereal day, so it stays fixed above one point of the rotating Earth. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"आवर्तकाल चुन लेने पर त्रिज्या केप्लर के तीसरे नियम से बाध्य हो जाती है, अतः ऊँचाई कोई अभिकल्प-चुनाव है ही नहीं बल्कि पृथ्वी के द्रव्यमान और उसकी घूर्णन-दर का परिणाम है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "कक्षा में भारहीनता",
+            "पलायन चाल",
+            "भूस्थिर कक्षा",
+            "व्युत्क्रम वर्ग नियम"
+          ],
+          "solution": "भूस्थिर उपग्रह ठीक भूमध्य रेखा के ऊपर ऐसी कक्षा में घूमता है जिसका आवर्तकाल ठीक एक नाक्षत्र दिवस है, अतः वह घूमती पृथ्वी के एक ही बिंदु के ऊपर टिका रहता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"आवर्तकाल निवडताच त्रिज्या केप्लरच्या तिसऱ्या नियमाने सक्तीची होते, म्हणून उंची ही रचना-निवड नाहीच तर पृथ्वीचे वस्तुमान आणि तिचा परिवलन-दर यांचा परिणाम.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "कक्षेतील वजनरहितता",
+            "मुक्ती चाल",
+            "भूस्थिर कक्षा",
+            "व्यस्त वर्ग नियम"
+          ],
+          "solution": "भूस्थिर उपग्रह नेमका विषुववृत्ताच्या वर अशा कक्षेत फिरतो जिचा आवर्तकाल नेमका एक नक्षत्र-दिवस, म्हणून तो फिरत्या पृथ्वीच्या एकाच बिंदूवर टिकून राहतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Three times as far, a ninth as strong\" goes correctly with which of these?",
+      "choices": [
+        "the geostationary orbit",
+        "weightlessness in orbit",
+        "the inverse-square law",
+        "the law of equal areas"
+      ],
+      "answerIndex": 2,
+      "solution": "The gravitational force between two masses is proportional to the product of the masses and inversely proportional to the square of the distance between their centres. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"तीन गुना दूर, एक नौवाँ बल\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "भूस्थिर कक्षा",
+            "कक्षा में भारहीनता",
+            "व्युत्क्रम वर्ग नियम",
+            "समान क्षेत्रफल का नियम"
+          ],
+          "solution": "दो द्रव्यमानों के बीच गुरुत्वीय बल द्रव्यमानों के गुणनफल के समानुपाती और उनके केंद्रों के बीच की दूरी के वर्ग के व्युत्क्रमानुपाती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तिप्पट दूर, एक नवमांश जोर\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "भूस्थिर कक्षा",
+            "कक्षेतील वजनरहितता",
+            "व्यस्त वर्ग नियम",
+            "समान क्षेत्रफळाचा नियम"
+          ],
+          "solution": "दोन वस्तुमानांमधले गुरुत्वीय बल वस्तुमानांच्या गुणाकाराशी समानुपाती आणि त्यांच्या केंद्रांमधल्या अंतराच्या वर्गाशी व्यस्तानुपाती असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"One universal, one different on every mountain\" goes correctly with which of these?",
+      "choices": [
+        "the geostationary orbit",
+        "escape speed",
+        "little g against big G",
+        "the inverse-square law"
+      ],
+      "answerIndex": 2,
+      "solution": "G is a universal constant with the same value everywhere, while g is the local acceleration due to gravity, equal to GM/r² and therefore varying with latitude, altitude and depth. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"एक सार्वत्रिक, एक हर पहाड़ पर भिन्न\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "भूस्थिर कक्षा",
+            "पलायन चाल",
+            "छोटा g बनाम बड़ा G",
+            "व्युत्क्रम वर्ग नियम"
+          ],
+          "solution": "G सार्वत्रिक स्थिरांक है जिसका मान हर जगह एक-सा है, जबकि g गुरुत्व के कारण स्थानीय त्वरण है, GM/r² के बराबर और इसलिए अक्षांश, ऊँचाई तथा गहराई से बदलता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"एक सार्वत्रिक, एक प्रत्येक डोंगरावर वेगळा\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "भूस्थिर कक्षा",
+            "मुक्ती चाल",
+            "लहान g विरुद्ध मोठा G",
+            "व्यस्त वर्ग नियम"
+          ],
+          "solution": "G हा सार्वत्रिक स्थिरांक ज्याचे मूल्य सर्वत्र सारखे, तर g हे गुरुत्वामुळे येणारे स्थानिक त्वरण, GM/r² इतके आणि म्हणून अक्षांश, उंची व खोलीनुसार बदलणारे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Fast when near, slow when far, area unchanged\" goes correctly with which of these?",
+      "choices": [
+        "the inverse-square law",
+        "little g against big G",
+        "the geostationary orbit",
+        "the law of equal areas"
+      ],
+      "answerIndex": 3,
+      "solution": "Kepler's second law says the line from the Sun to a planet sweeps out equal areas in equal times, so the planet moves fastest at perihelion and slowest at aphelion. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"पास हो तो तेज़, दूर हो तो धीमा, क्षेत्रफल वही\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "व्युत्क्रम वर्ग नियम",
+            "छोटा g बनाम बड़ा G",
+            "भूस्थिर कक्षा",
+            "समान क्षेत्रफल का नियम"
+          ],
+          "solution": "केप्लर का दूसरा नियम कहता है कि सूर्य से ग्रह तक की रेखा बराबर समय में बराबर क्षेत्रफल बुहारती है, अतः ग्रह उपसौर पर सबसे तेज़ और अपसौर पर सबसे धीमा चलता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"जवळ असता वेगवान, दूर असता सावकाश, क्षेत्रफळ तेच\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "व्यस्त वर्ग नियम",
+            "लहान g विरुद्ध मोठा G",
+            "भूस्थिर कक्षा",
+            "समान क्षेत्रफळाचा नियम"
+          ],
+          "solution": "केप्लरचा दुसरा नियम सांगतो की सूर्यापासून ग्रहापर्यंतची रेषा समान काळात समान क्षेत्रफळ झाडते, म्हणून ग्रह उपसूर्यबिंदूवर सर्वांत वेगवान आणि अपसूर्यबिंदूवर सर्वांत सावकाश जातो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The same threshold for a pebble and a battleship\" goes correctly with which of these?",
+      "choices": [
+        "escape speed",
+        "weightlessness in orbit",
+        "the law of equal areas",
+        "the inverse-square law"
+      ],
+      "answerIndex": 0,
+      "solution": "Escape speed is √(2GM/R), the least speed at which a body projected from a surface never returns, and it is independent of the escaping body's own mass. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"कंकड़ और युद्धपोत के लिए वही सीमा\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "पलायन चाल",
+            "कक्षा में भारहीनता",
+            "समान क्षेत्रफल का नियम",
+            "व्युत्क्रम वर्ग नियम"
+          ],
+          "solution": "पलायन चाल √(2GM/R) है, वह न्यूनतम चाल जिससे सतह से फेंका गया पिंड कभी नहीं लौटता, और वह पलायन करते पिंड के अपने द्रव्यमान से स्वतंत्र है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"खडा आणि युद्धनौकेसाठी तीच मर्यादा\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "मुक्ती चाल",
+            "कक्षेतील वजनरहितता",
+            "समान क्षेत्रफळाचा नियम",
+            "व्यस्त वर्ग नियम"
+          ],
+          "solution": "मुक्ती चाल म्हणजे √(2GM/R), ती किमान चाल जिच्याने पृष्ठभागावरून फेकलेला पिंड कधीही परतत नाही, आणि ती सुटणाऱ्या पिंडाच्या स्वतःच्या वस्तुमानापासून स्वतंत्र आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Falling for ever and missing the ground\" goes correctly with which of these?",
+      "choices": [
+        "the inverse-square law",
+        "little g against big G",
+        "weightlessness in orbit",
+        "the law of equal areas"
+      ],
+      "answerIndex": 2,
+      "solution": "Orbital weightlessness is free fall, not an absence of gravity: the spacecraft and everything in it accelerate towards the Earth together, so nothing presses on anything and no scale can register a reading. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"सदा गिरते रहना और ज़मीन से चूकते रहना\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "व्युत्क्रम वर्ग नियम",
+            "छोटा g बनाम बड़ा G",
+            "कक्षा में भारहीनता",
+            "समान क्षेत्रफल का नियम"
+          ],
+          "solution": "कक्षीय भारहीनता मुक्त पतन है, गुरुत्व की अनुपस्थिति नहीं: यान और उसमें रखा सब कुछ मिलकर पृथ्वी की ओर त्वरित होते हैं, अतः कुछ किसी पर दबाव नहीं डालता और कोई तराज़ू पाठ्यांक दर्ज नहीं कर सकता। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"कायम पडत राहणे आणि जमीन चुकवत राहणे\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "व्यस्त वर्ग नियम",
+            "लहान g विरुद्ध मोठा G",
+            "कक्षेतील वजनरहितता",
+            "समान क्षेत्रफळाचा नियम"
+          ],
+          "solution": "कक्षेतील वजनरहितता म्हणजे मुक्त पतन, गुरुत्वाची अनुपस्थिती नव्हे: यान आणि त्यातले सर्व एकत्रच पृथ्वीकडे त्वरित होतात, म्हणून काहीही कशावर दाब देत नाही आणि कोणताही काटा वाचन नोंदवू शकत नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Aim the dish once and never move it again\" goes correctly with which of these?",
+      "choices": [
+        "the law of equal areas",
+        "little g against big G",
+        "the inverse-square law",
+        "the geostationary orbit"
+      ],
+      "answerIndex": 3,
+      "solution": "A geostationary satellite orbits directly above the equator with a period of exactly one sidereal day, so it stays fixed above one point of the rotating Earth. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"डिश एक बार तानो और फिर कभी न हिलाओ\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "समान क्षेत्रफल का नियम",
+            "छोटा g बनाम बड़ा G",
+            "व्युत्क्रम वर्ग नियम",
+            "भूस्थिर कक्षा"
+          ],
+          "solution": "भूस्थिर उपग्रह ठीक भूमध्य रेखा के ऊपर ऐसी कक्षा में घूमता है जिसका आवर्तकाल ठीक एक नाक्षत्र दिवस है, अतः वह घूमती पृथ्वी के एक ही बिंदु के ऊपर टिका रहता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"डिश एकदा रोखा आणि पुन्हा कधीही हलवू नका\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "समान क्षेत्रफळाचा नियम",
+            "लहान g विरुद्ध मोठा G",
+            "व्यस्त वर्ग नियम",
+            "भूस्थिर कक्षा"
+          ],
+          "solution": "भूस्थिर उपग्रह नेमका विषुववृत्ताच्या वर अशा कक्षेत फिरतो जिचा आवर्तकाल नेमका एक नक्षत्र-दिवस, म्हणून तो फिरत्या पृथ्वीच्या एकाच बिंदूवर टिकून राहतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The inverse-square law EXCEPT —",
+      "choices": [
+        "The force is always attractive and never shielded, which is why gravitation is feeble between everyday objects and yet governs the largest structures in the universe.",
+        "Kepler's second law says the line from the Sun to a planet sweeps out equal areas in equal times, so the planet moves fastest at perihelion and slowest at aphelion.",
+        "The gravitational force between two masses is proportional to the product of the masses and inversely proportional to the square of the distance between their centres.",
+        "A uniform sphere attracts everything outside it exactly as though its whole mass sat at its centre, which is the theorem that lets the Earth's radius be used as the distance for a body on its surface."
+      ],
+      "answerIndex": 1,
+      "solution": "Kepler's second law says the line from the Sun to a planet sweeps out equal areas in equal times, so the planet moves fastest at perihelion and slowest at aphelion. That belongs to The law of equal areas, not The inverse-square law — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "व्युत्क्रम वर्ग नियम के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "यह बल सदा आकर्षक है और कभी परिरक्षित नहीं होता, इसीलिए रोज़मर्रा की वस्तुओं के बीच गुरुत्वाकर्षण दुर्बल है और फिर भी ब्रह्मांड की सबसे बड़ी संरचनाओं को चलाता है।",
+            "केप्लर का दूसरा नियम कहता है कि सूर्य से ग्रह तक की रेखा बराबर समय में बराबर क्षेत्रफल बुहारती है, अतः ग्रह उपसौर पर सबसे तेज़ और अपसौर पर सबसे धीमा चलता है।",
+            "दो द्रव्यमानों के बीच गुरुत्वीय बल द्रव्यमानों के गुणनफल के समानुपाती और उनके केंद्रों के बीच की दूरी के वर्ग के व्युत्क्रमानुपाती है।",
+            "समांग गोला अपने बाहर की हर चीज़ को ठीक वैसे खींचता है मानो उसका पूरा द्रव्यमान उसके केंद्र पर बैठा हो, और यही वह प्रमेय है जो सतह पर रखे पिंड के लिए पृथ्वी की त्रिज्या को दूरी मानने देती है।"
+          ],
+          "solution": "केप्लर का दूसरा नियम कहता है कि सूर्य से ग्रह तक की रेखा बराबर समय में बराबर क्षेत्रफल बुहारती है, अतः ग्रह उपसौर पर सबसे तेज़ और अपसौर पर सबसे धीमा चलता है। यह समान क्षेत्रफल का नियम की बात है, व्युत्क्रम वर्ग नियम की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "व्यस्त वर्ग नियम विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "हे बल नेहमी आकर्षक असते आणि कधीही अडवले जात नाही, म्हणूनच रोजच्या वस्तूंमध्ये गुरुत्वाकर्षण क्षीण असते आणि तरीही विश्वातील सर्वांत मोठ्या रचना चालवते.",
+            "केप्लरचा दुसरा नियम सांगतो की सूर्यापासून ग्रहापर्यंतची रेषा समान काळात समान क्षेत्रफळ झाडते, म्हणून ग्रह उपसूर्यबिंदूवर सर्वांत वेगवान आणि अपसूर्यबिंदूवर सर्वांत सावकाश जातो.",
+            "दोन वस्तुमानांमधले गुरुत्वीय बल वस्तुमानांच्या गुणाकाराशी समानुपाती आणि त्यांच्या केंद्रांमधल्या अंतराच्या वर्गाशी व्यस्तानुपाती असते.",
+            "एकसमान गोल आपल्या बाहेरच्या प्रत्येक गोष्टीला नेमके तसे खेचतो जणू त्याचे संपूर्ण वस्तुमान त्याच्या केंद्रावर बसले असावे, आणि हेच ते प्रमेय जे पृष्ठभागावरील पिंडासाठी पृथ्वीची त्रिज्या अंतर म्हणून वापरू देते."
+          ],
+          "solution": "केप्लरचा दुसरा नियम सांगतो की सूर्यापासून ग्रहापर्यंतची रेषा समान काळात समान क्षेत्रफळ झाडते, म्हणून ग्रह उपसूर्यबिंदूवर सर्वांत वेगवान आणि अपसूर्यबिंदूवर सर्वांत सावकाश जातो. हे समान क्षेत्रफळाचा नियम चे आहे, व्यस्त वर्ग नियम चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Little g against big G EXCEPT —",
+      "choices": [
+        "It falls off as the inverse square above the surface but falls LINEARLY with depth below it, reaching zero at the centre where the surrounding shell pulls equally in every direction.",
+        "The gravitational force between two masses is proportional to the product of the masses and inversely proportional to the square of the distance between their centres.",
+        "G is a universal constant with the same value everywhere, while g is the local acceleration due to gravity, equal to GM/r² and therefore varying with latitude, altitude and depth.",
+        "Part of the equatorial reduction is not gravity at all but the Earth's rotation, which uses up some of the pull in keeping a body moving in its daily circle."
+      ],
+      "answerIndex": 1,
+      "solution": "The gravitational force between two masses is proportional to the product of the masses and inversely proportional to the square of the distance between their centres. That belongs to The inverse-square law, not Little g against big G — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "छोटा g बनाम बड़ा G के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "सतह के ऊपर वह व्युत्क्रम वर्ग के अनुसार घटता है पर सतह के नीचे गहराई के साथ रैखिक रूप से घटता है, और केंद्र पर शून्य हो जाता है जहाँ चारों ओर का खोल हर दिशा में बराबर खींचता है।",
+            "दो द्रव्यमानों के बीच गुरुत्वीय बल द्रव्यमानों के गुणनफल के समानुपाती और उनके केंद्रों के बीच की दूरी के वर्ग के व्युत्क्रमानुपाती है।",
+            "G सार्वत्रिक स्थिरांक है जिसका मान हर जगह एक-सा है, जबकि g गुरुत्व के कारण स्थानीय त्वरण है, GM/r² के बराबर और इसलिए अक्षांश, ऊँचाई तथा गहराई से बदलता है।",
+            "भूमध्य रेखा पर हुई कमी का एक हिस्सा गुरुत्व है ही नहीं बल्कि पृथ्वी का घूर्णन है, जो खिंचाव का कुछ भाग पिंड को उसके दैनिक वृत्त में चलाए रखने में ख़र्च कर देता है।"
+          ],
+          "solution": "दो द्रव्यमानों के बीच गुरुत्वीय बल द्रव्यमानों के गुणनफल के समानुपाती और उनके केंद्रों के बीच की दूरी के वर्ग के व्युत्क्रमानुपाती है। यह व्युत्क्रम वर्ग नियम की बात है, छोटा g बनाम बड़ा G की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "लहान g विरुद्ध मोठा G विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "पृष्ठभागाच्या वर तो व्यस्त वर्गानुसार घटतो पण पृष्ठभागाखाली खोलीसह रेषीयरीत्या घटतो, आणि केंद्रावर शून्य होतो जिथे भोवतालचे कवच प्रत्येक दिशेने सारखेच ओढते.",
+            "दोन वस्तुमानांमधले गुरुत्वीय बल वस्तुमानांच्या गुणाकाराशी समानुपाती आणि त्यांच्या केंद्रांमधल्या अंतराच्या वर्गाशी व्यस्तानुपाती असते.",
+            "G हा सार्वत्रिक स्थिरांक ज्याचे मूल्य सर्वत्र सारखे, तर g हे गुरुत्वामुळे येणारे स्थानिक त्वरण, GM/r² इतके आणि म्हणून अक्षांश, उंची व खोलीनुसार बदलणारे.",
+            "विषुववृत्तावरील घटीचा काही भाग गुरुत्व नाहीच तर पृथ्वीचे परिवलन आहे, जे ओढीचा काही भाग पिंडाला त्याच्या दैनंदिन वर्तुळात चालवत ठेवण्यात खर्चते."
+          ],
+          "solution": "दोन वस्तुमानांमधले गुरुत्वीय बल वस्तुमानांच्या गुणाकाराशी समानुपाती आणि त्यांच्या केंद्रांमधल्या अंतराच्या वर्गाशी व्यस्तानुपाती असते. हे व्यस्त वर्ग नियम चे आहे, लहान g विरुद्ध मोठा G चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The law of equal areas EXCEPT —",
+      "choices": [
+        "It applies to any force directed always at a fixed point, whatever its strength law, which is why the equal-area result was true before anyone knew the inverse square.",
+        "It is conservation of angular momentum in disguise: gravity always points at the Sun, so it exerts no torque about the Sun and the planet's angular momentum cannot change.",
+        "Kepler's second law says the line from the Sun to a planet sweeps out equal areas in equal times, so the planet moves fastest at perihelion and slowest at aphelion.",
+        "The gravitational force between two masses is proportional to the product of the masses and inversely proportional to the square of the distance between their centres."
+      ],
+      "answerIndex": 3,
+      "solution": "The gravitational force between two masses is proportional to the product of the masses and inversely proportional to the square of the distance between their centres. That belongs to The inverse-square law, not The law of equal areas — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "समान क्षेत्रफल का नियम के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "यह हर उस बल पर लागू है जो सदा किसी नियत बिंदु की ओर हो, उसका बल-नियम चाहे जो हो, इसीलिए समान क्षेत्रफल वाला परिणाम व्युत्क्रम वर्ग जाने जाने से पहले भी सच था।",
+            "यह भेस बदले कोणीय संवेग का संरक्षण है: गुरुत्व सदा सूर्य की ओर होता है, अतः वह सूर्य के परितः कोई बल-आघूर्ण नहीं लगाता और ग्रह का कोणीय संवेग बदल नहीं सकता।",
+            "केप्लर का दूसरा नियम कहता है कि सूर्य से ग्रह तक की रेखा बराबर समय में बराबर क्षेत्रफल बुहारती है, अतः ग्रह उपसौर पर सबसे तेज़ और अपसौर पर सबसे धीमा चलता है।",
+            "दो द्रव्यमानों के बीच गुरुत्वीय बल द्रव्यमानों के गुणनफल के समानुपाती और उनके केंद्रों के बीच की दूरी के वर्ग के व्युत्क्रमानुपाती है।"
+          ],
+          "solution": "दो द्रव्यमानों के बीच गुरुत्वीय बल द्रव्यमानों के गुणनफल के समानुपाती और उनके केंद्रों के बीच की दूरी के वर्ग के व्युत्क्रमानुपाती है। यह व्युत्क्रम वर्ग नियम की बात है, समान क्षेत्रफल का नियम की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "समान क्षेत्रफळाचा नियम विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "हा प्रत्येक अशा बलाला लागू जे नेहमी एका ठरलेल्या बिंदूकडे असते, त्याचा बल-नियम काहीही असो, म्हणूनच समान क्षेत्रफळाचा निकाल व्यस्त वर्ग कळण्याआधीही खरा होता.",
+            "हा वेष बदललेला कोनीय संवेगाचा संरक्षण नियम: गुरुत्व नेहमी सूर्याकडे असते, म्हणून ते सूर्याभोवती कोणतेही बलआघूर्ण लावत नाही आणि ग्रहाचा कोनीय संवेग बदलू शकत नाही.",
+            "केप्लरचा दुसरा नियम सांगतो की सूर्यापासून ग्रहापर्यंतची रेषा समान काळात समान क्षेत्रफळ झाडते, म्हणून ग्रह उपसूर्यबिंदूवर सर्वांत वेगवान आणि अपसूर्यबिंदूवर सर्वांत सावकाश जातो.",
+            "दोन वस्तुमानांमधले गुरुत्वीय बल वस्तुमानांच्या गुणाकाराशी समानुपाती आणि त्यांच्या केंद्रांमधल्या अंतराच्या वर्गाशी व्यस्तानुपाती असते."
+          ],
+          "solution": "दोन वस्तुमानांमधले गुरुत्वीय बल वस्तुमानांच्या गुणाकाराशी समानुपाती आणि त्यांच्या केंद्रांमधल्या अंतराच्या वर्गाशी व्यस्तानुपाती असते. हे व्यस्त वर्ग नियम चे आहे, समान क्षेत्रफळाचा नियम चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Escape speed EXCEPT —",
+      "choices": [
+        "Escape speed is √(2GM/R), the least speed at which a body projected from a surface never returns, and it is independent of the escaping body's own mass.",
+        "It is exactly √2 times the speed of a satellite skimming the same surface, so about 11.2 km/s for the Earth against an orbital 7.9 km/s.",
+        "Orbital weightlessness is free fall, not an absence of gravity: the spacecraft and everything in it accelerate towards the Earth together, so nothing presses on anything and no scale can register a reading.",
+        "It explains which worlds keep an atmosphere: the Moon's is 2.4 km/s, below the speed of many gas molecules, so whatever air it once had has long since leaked away."
+      ],
+      "answerIndex": 2,
+      "solution": "Orbital weightlessness is free fall, not an absence of gravity: the spacecraft and everything in it accelerate towards the Earth together, so nothing presses on anything and no scale can register a reading. That belongs to Weightlessness in orbit, not Escape speed — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "पलायन चाल के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "पलायन चाल √(2GM/R) है, वह न्यूनतम चाल जिससे सतह से फेंका गया पिंड कभी नहीं लौटता, और वह पलायन करते पिंड के अपने द्रव्यमान से स्वतंत्र है।",
+            "वह उसी सतह के पास चक्कर लगाते उपग्रह की चाल का ठीक √2 गुना है, अतः पृथ्वी के लिए लगभग 11.2 km/s के सामने कक्षीय 7.9 km/s.",
+            "कक्षीय भारहीनता मुक्त पतन है, गुरुत्व की अनुपस्थिति नहीं: यान और उसमें रखा सब कुछ मिलकर पृथ्वी की ओर त्वरित होते हैं, अतः कुछ किसी पर दबाव नहीं डालता और कोई तराज़ू पाठ्यांक दर्ज नहीं कर सकता।",
+            "यही बताता है कि कौन-से लोक वायुमंडल रखते हैं: चंद्रमा की 2.4 km/s है, कई गैस अणुओं की चाल से कम, अतः उसके पास जो भी हवा कभी थी वह कब की रिस चुकी।"
+          ],
+          "solution": "कक्षीय भारहीनता मुक्त पतन है, गुरुत्व की अनुपस्थिति नहीं: यान और उसमें रखा सब कुछ मिलकर पृथ्वी की ओर त्वरित होते हैं, अतः कुछ किसी पर दबाव नहीं डालता और कोई तराज़ू पाठ्यांक दर्ज नहीं कर सकता। यह कक्षा में भारहीनता की बात है, पलायन चाल की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "मुक्ती चाल विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "मुक्ती चाल म्हणजे √(2GM/R), ती किमान चाल जिच्याने पृष्ठभागावरून फेकलेला पिंड कधीही परतत नाही, आणि ती सुटणाऱ्या पिंडाच्या स्वतःच्या वस्तुमानापासून स्वतंत्र आहे.",
+            "ती त्याच पृष्ठभागाजवळून फिरणाऱ्या उपग्रहाच्या चालीच्या नेमकी √2 पट, म्हणून पृथ्वीसाठी सुमारे 11.2 km/s च्या समोर कक्षीय 7.9 km/s.",
+            "कक्षेतील वजनरहितता म्हणजे मुक्त पतन, गुरुत्वाची अनुपस्थिती नव्हे: यान आणि त्यातले सर्व एकत्रच पृथ्वीकडे त्वरित होतात, म्हणून काहीही कशावर दाब देत नाही आणि कोणताही काटा वाचन नोंदवू शकत नाही.",
+            "हेच सांगते की कोणते जग वातावरण राखतात: चंद्राची 2.4 km/s आहे, अनेक वायुरेणूंच्या चालीहून कमी, म्हणून त्याच्याकडे जी काही हवा कधी होती ती केव्हाच निसटून गेली."
+          ],
+          "solution": "कक्षेतील वजनरहितता म्हणजे मुक्त पतन, गुरुत्वाची अनुपस्थिती नव्हे: यान आणि त्यातले सर्व एकत्रच पृथ्वीकडे त्वरित होतात, म्हणून काहीही कशावर दाब देत नाही आणि कोणताही काटा वाचन नोंदवू शकत नाही. हे कक्षेतील वजनरहितता चे आहे, मुक्ती चाल चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A television report says astronauts on the space station float because there is no gravity that far from the Earth. The station orbits at about 400 km, where the Earth's radius is 6400 km. Assess the claim quantitatively and give the correct explanation.",
+      "choices": [
+        "The claim is badly wrong. The station's orbital radius is 6800 km against the surface's 6400, a ratio of 1.0625, so g there is 9.8/1.0625² ≈ 8.7 m/s² — about 89 per cent of its surface value. Gravity is almost undiminished, and it is exactly that pull which bends the station's path into a circle. The astronauts float because they and the station are in free fall together, accelerating towards the Earth at the same rate, so nothing presses on anything and no scale reads anything",
+        "The report is right: 400 km is far enough for gravity to have fallen essentially to zero, which is what allows an orbit at all",
+        "Gravity is undiminished, and the astronauts float because the station's speed produces a real outward force that balances it exactly",
+        "The astronauts are weightless because the station is above the atmosphere, and it is air pressure that gives objects their weight"
+      ],
+      "answerIndex": 0,
+      "solution": "Do the arithmetic before arguing, because it settles the matter in one line. Gravity falls off as the inverse square of the distance from the Earth's CENTRE, not from its surface — a distinction the report has quietly lost. The surface is 6400 km from the centre; the station is 6400 + 400 = 6800 km from it. The ratio of distances is 6800/6400 = 1.0625, so the ratio of accelerations is 1/1.0625² = 0.886. At the station g is about 8.7 m/s², nearly nine-tenths of its value in the room you are sitting in. A 70 kg astronaut is being pulled with about 609 N, which on a bathroom scale at sea level would read as roughly 62 kg. There is nothing remotely like an absence of gravity. Now the real explanation, which is more interesting than the false one. The astronaut is in free fall — accelerating downwards at 8.7 m/s² — and so is the station, and so is the pen floating beside them, and so is every wall and floor and instrument. Every object present has the same acceleration, because gravitational acceleration does not depend on mass. Nothing therefore catches up with anything else, nothing presses on anything else, and there is no contact force anywhere in the cabin. What a bathroom scale measures is never weight directly; it measures the contact force between you and it. On the ground that force equals your weight because the floor must stop you falling. In orbit there is nothing to stop, so the contact force is zero and the scale reads zero. The sensation is genuine and the interpretation 'no gravity' is not. Why does the station not simply fall to the ground, then? It does fall — continuously — but it is also moving sideways at about 7.7 km/s, and the Earth's surface curves away beneath it at very nearly the rate at which it falls towards that surface. That is what an orbit is: a projectile trajectory that keeps missing. Newton's own thought experiment makes the point exactly — fire a cannonball fast enough from a mountaintop and it never lands. Two of the wrong answers are worth naming. The third invents an outward force. In the ground frame no such force exists; the net force on the station is inward, of magnitude mv²/r, and it is supplied entirely by gravity. That inward force is not balanced by anything, and if it were, the station would travel in a straight line and leave. The fourth confuses weight with buoyancy: air pressure does exert a small upward buoyant force on everything, but removing it would make you very slightly HEAVIER on a scale, not weightless. A vacuum chamber on the ground demonstrates this in an afternoon. The general lesson is that 'weightless' names a sensation and not a physical condition, and the honest phrase is free fall. It is available in a dropped lift, in an aircraft flying a parabolic arc, and at the top of a fairground drop — all of them with the full strength of gravity present throughout. (The remaining wrong answer takes the report at face value and would leave the orbit itself unexplained: with no gravity the station would fly off along a tangent and never come back.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक टीवी रिपोर्ट कहती है कि अंतरिक्ष स्टेशन के यात्री इसलिए तैरते हैं कि पृथ्वी से उतनी दूर गुरुत्व है ही नहीं। स्टेशन लगभग 400 km पर परिक्रमा करता है, जहाँ पृथ्वी की त्रिज्या 6400 km है। दावे का संख्यात्मक आकलन करो और सही व्याख्या दो।",
+          "choices": [
+            "दावा बुरी तरह ग़लत है। स्टेशन की कक्षीय त्रिज्या 6800 km है, सतह की 6400 के सामने, अनुपात 1.0625, अतः वहाँ g = 9.8/1.0625² ≈ 8.7 m/s² — सतह के मान का लगभग 89 प्रतिशत। गुरुत्व लगभग अघटा है, और ठीक वही खिंचाव स्टेशन के पथ को वृत्त में मोड़ता है। यात्री इसलिए तैरते हैं कि वे और स्टेशन साथ मुक्त पतन में हैं, एक ही दर से पृथ्वी की ओर त्वरित होते हुए, अतः कुछ किसी पर दबाव नहीं डालता और कोई तराज़ू कुछ नहीं दिखाता",
+            "रिपोर्ट सही है: 400 km इतनी दूर है कि गुरुत्व लगभग शून्य हो जाता है, और यही कक्षा को संभव बनाता है",
+            "गुरुत्व अघटा है, और यात्री इसलिए तैरते हैं कि स्टेशन की चाल एक असली बाहरी बल पैदा करती है जो उसे ठीक-ठीक संतुलित कर देता है",
+            "यात्री इसलिए भारहीन हैं कि स्टेशन वायुमंडल के ऊपर है, और वस्तुओं को भार वायुदाब ही देता है"
+          ],
+          "solution": "बहस से पहले गणना करो, क्योंकि वह मामला एक पंक्ति में निपटा देती है। गुरुत्व पृथ्वी के केंद्र से दूरी के व्युत्क्रम वर्ग के अनुसार घटता है, सतह से नहीं — यह भेद रिपोर्ट चुपचाप खो चुकी है। सतह केंद्र से 6400 km है; स्टेशन उससे 6400 + 400 = 6800 km. दूरियों का अनुपात 6800/6400 = 1.0625, अतः त्वरणों का अनुपात 1/1.0625² = 0.886. स्टेशन पर g लगभग 8.7 m/s² है, उस कमरे के मान का लगभग नौ-दसवाँ जिसमें तुम बैठे हो। 70 kg के यात्री को लगभग 609 N से खींचा जा रहा है, जो समुद्र-तल पर तराज़ू पर मोटे तौर पर 62 kg दिखाता। गुरुत्व की अनुपस्थिति जैसा दूर-दूर तक कुछ नहीं। अब असली व्याख्या, जो झूठी से अधिक दिलचस्प है। यात्री मुक्त पतन में है — 8.7 m/s² से नीचे त्वरित — और स्टेशन भी, और उनके बगल तैरती क़लम भी, और हर दीवार, फ़र्श तथा उपकरण भी। उपस्थित हर वस्तु का त्वरण एक ही है, क्योंकि गुरुत्वीय त्वरण द्रव्यमान पर निर्भर नहीं। अतः कुछ किसी से आगे नहीं निकलता, कुछ किसी पर दबाव नहीं डालता, और केबिन में कहीं कोई संपर्क बल नहीं। तराज़ू कभी सीधे भार नहीं नापता; वह तुम्हारे और अपने बीच का संपर्क बल नापता है। ज़मीन पर वह बल तुम्हारे भार के बराबर है क्योंकि फ़र्श को तुम्हें गिरने से रोकना है। कक्षा में रोकने को कुछ है ही नहीं, अतः संपर्क बल शून्य है और तराज़ू शून्य दिखाता है। अनुभूति सच्ची है और 'गुरुत्व नहीं' वाली व्याख्या नहीं। तो फिर स्टेशन ज़मीन पर गिर क्यों नहीं जाता? वह गिरता है — लगातार — पर वह लगभग 7.7 km/s से बग़ल में भी चल रहा है, और पृथ्वी की सतह उसके नीचे लगभग उसी दर से मुड़ती जाती है जिससे वह उस सतह की ओर गिरता है। कक्षा यही है: ऐसा प्रक्षेप्य-पथ जो चूकता रहता है। न्यूटन का अपना विचार-प्रयोग यही बात ठीक कहता है — पहाड़ की चोटी से तोप का गोला पर्याप्त तेज़ दागो और वह कभी नहीं उतरता। दो ग़लत उत्तर नाम लेने योग्य हैं। तीसरा एक बाहरी बल गढ़ता है। ज़मीन के तंत्र में ऐसा कोई बल नहीं; स्टेशन पर परिणामी बल भीतर की ओर है, परिमाण mv²/r, और वह पूरी तरह गुरुत्व से आता है। वह भीतरी बल किसी से संतुलित नहीं, और होता तो स्टेशन सीधी रेखा में चलकर निकल जाता। चौथा भार को उत्प्लावन से गड्डमड्ड करता है: वायुदाब हर चीज़ पर छोटा ऊर्ध्वमुखी उत्प्लावन बल लगाता है, पर उसे हटा देने से तराज़ू पर तुम बहुत थोड़े भारी होते, भारहीन नहीं। ज़मीन पर निर्वात कक्ष एक दोपहर में यह दिखा देता है। सामान्य सबक़ यह कि 'भारहीन' एक अनुभूति का नाम है, भौतिक स्थिति का नहीं, और ईमानदार शब्द मुक्त पतन है। वह गिरती लिफ़्ट में, परवलयी चाप पर उड़ते विमान में, और मेले के झूले की ढलान के शिखर पर मिलती है — इन सब में गुरुत्व पूरी ताक़त से पूरे समय मौजूद रहता है। (बचा हुआ ग़लत उत्तर रिपोर्ट को ज्यों का त्यों मान लेता है और कक्षा को ही अव्याख्यायित छोड़ देता: गुरुत्व न हो तो स्टेशन स्पर्शरेखा पर उड़ जाता और कभी नहीं लौटता।)"
+        },
+        "mr": {
+          "stem": "एक दूरचित्रवाणी वृत्त सांगते की अंतराळ स्थानकावरील अंतराळवीर यासाठी तरंगतात की पृथ्वीपासून तितक्या दूर गुरुत्व नाहीच. स्थानक सुमारे 400 km वर परिभ्रमण करते, जिथे पृथ्वीची त्रिज्या 6400 km आहे. दाव्याचे संख्यात्मक मूल्यमापन करा आणि योग्य स्पष्टीकरण द्या.",
+          "choices": [
+            "दावा वाईटरीत्या चुकीचा. स्थानकाची कक्षीय त्रिज्या 6800 km, पृष्ठभागाच्या 6400 समोर, गुणोत्तर 1.0625, म्हणून तिथे g = 9.8/1.0625² ≈ 8.7 m/s² — पृष्ठभागाच्या मूल्याच्या सुमारे 89 टक्के. गुरुत्व जवळपास अघटित आहे, आणि नेमकी तीच ओढ स्थानकाचा मार्ग वर्तुळात वळवते. अंतराळवीर यासाठी तरंगतात की ते आणि स्थानक एकत्र मुक्त पतनात आहेत, एकाच दराने पृथ्वीकडे त्वरित होत, म्हणून काहीही कशावर दाब देत नाही आणि कोणताही काटा काहीही दाखवत नाही",
+            "वृत्त बरोबर आहे: 400 km इतके दूर की गुरुत्व जवळपास शून्य होते, आणि हेच कक्षा शक्य करते",
+            "गुरुत्व अघटित आहे, आणि अंतराळवीर यासाठी तरंगतात की स्थानकाची चाल एक खरे बाहेरचे बल निर्माण करते जे त्याला नेमके संतुलित करते",
+            "अंतराळवीर यासाठी वजनरहित की स्थानक वातावरणाच्या वर आहे, आणि वस्तूंना वजन हवेचा दाबच देतो"
+          ],
+          "solution": "वाद घालण्याआधी आकडेमोड करा, कारण ती प्रकरण एका ओळीत निकाली काढते. गुरुत्व पृथ्वीच्या केंद्रापासूनच्या अंतराच्या व्यस्त वर्गानुसार घटते, पृष्ठभागापासून नव्हे — हा भेद वृत्ताने गुपचूप गमावला आहे. पृष्ठभाग केंद्रापासून 6400 km; स्थानक त्यापासून 6400 + 400 = 6800 km. अंतरांचे गुणोत्तर 6800/6400 = 1.0625, म्हणून त्वरणांचे गुणोत्तर 1/1.0625² = 0.886. स्थानकावर g सुमारे 8.7 m/s², तुम्ही बसला आहात त्या खोलीतल्या मूल्याच्या जवळपास नऊ-दशांश. 70 kg च्या अंतराळवीराला सुमारे 609 N ने ओढले जात आहे, जे समुद्रसपाटीवर काट्यावर ढोबळमानाने 62 kg दाखवले असते. गुरुत्वाच्या अनुपस्थितीसारखे दूरवरही काहीही नाही. आता खरे स्पष्टीकरण, जे खोट्याहून अधिक रोचक. अंतराळवीर मुक्त पतनात आहे — 8.7 m/s² ने खाली त्वरित — आणि स्थानकही, आणि त्यांच्याशेजारी तरंगणारी लेखणीही, आणि प्रत्येक भिंत, जमीन व उपकरणही. उपस्थित प्रत्येक वस्तूचे त्वरण एकच, कारण गुरुत्वीय त्वरण वस्तुमानावर अवलंबून नाही. म्हणून काहीही कशाच्या पुढे जात नाही, काहीही कशावर दाब देत नाही, आणि कक्षात कुठेही कोणतेही स्पर्श बल नाही. काटा कधीही थेट वजन मोजत नाही; तो तुमच्यातले आणि स्वतःमधले स्पर्श बल मोजतो. जमिनीवर ते बल तुमच्या वजनाइतके कारण जमिनीला तुम्हाला पडण्यापासून थांबवायचे असते. कक्षेत थांबवायला काहीच नाही, म्हणून स्पर्श बल शून्य आणि काटा शून्य दाखवतो. संवेदना खरी आणि 'गुरुत्व नाही' हे स्पष्टीकरण नाही. मग स्थानक जमिनीवर पडत का नाही? ते पडतेच — सतत — पण ते सुमारे 7.7 km/s ने बाजूलाही जात आहे, आणि पृथ्वीचा पृष्ठभाग त्याच्याखाली जवळपास त्याच दराने वळत जातो ज्या दराने ते त्या पृष्ठभागाकडे पडते. कक्षा हीच: असा प्रक्षेप्य-मार्ग जो चुकत राहतो. न्यूटनचा स्वतःचा विचारप्रयोग हेच नेमके सांगतो — डोंगरमाथ्यावरून तोफगोळा पुरेशा वेगाने झाडा आणि तो कधीही उतरत नाही. दोन चुकीची उत्तरे नाव घेण्याजोगी. तिसरे बाहेरचे बल घडवते. जमिनीच्या चौकटीत असे कोणतेही बल नाही; स्थानकावरचे परिणामी बल आतल्या दिशेने, परिमाण mv²/r, आणि ते पूर्णपणे गुरुत्वातून येते. ते आतले बल कशानेही संतुलित नाही, आणि असते तर स्थानक सरळ रेषेत जाऊन निघून गेले असते. चौथे वजन आणि प्लावकतेची गल्लत करते: हवेचा दाब प्रत्येक गोष्टीवर लहान वरचे प्लावक बल लावतो, पण ते काढून टाकल्यास काट्यावर तुम्ही फार थोडे जड झाला असता, वजनरहित नाही. जमिनीवरचा निर्वात कक्ष हे एका दुपारीत दाखवून देतो. सामान्य धडा हा की 'वजनरहित' हे संवेदनेचे नाव, भौतिक स्थितीचे नव्हे, आणि प्रामाणिक शब्द मुक्त पतन. ती पडणाऱ्या लिफ्टमध्ये, परवलयी कमानीवर उडणाऱ्या विमानात, आणि जत्रेतल्या झुल्याच्या उताराच्या शिखरावर मिळते — या सर्वांत गुरुत्व पूर्ण ताकदीने पूर्ण काळ उपस्थित असते. (उरलेले चुकीचे उत्तर वृत्त जसेच्या तसे मानते आणि कक्षाच अस्पष्ट ठेवते: गुरुत्व नसते तर स्थानक स्पर्शिकेवरून उडून गेले असते आणि कधीही परतले नसते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Two objects are dropped from the same height on the Moon, a hammer and a feather, and they land together. On Earth they do not. A student concludes that the Moon's gravity acts equally on all masses while the Earth's does not. Correct this and say what the Moon demonstration actually shows.",
+      "choices": [
+        "Gravity behaves identically on both worlds. The force on a body is GMm/r², which is proportional to m, and the acceleration is that force divided by m, so m cancels and every body falls at the same rate. What differs is the air: on Earth the feather meets an upward drag comparable to its own weight and the hammer does not, so their NET forces differ. The Moon has no atmosphere, so the demonstration is simply what Earth would show inside a vacuum chamber — and it does",
+        "The student is right: the Moon's weaker gravity treats all masses alike, and only a strong field like the Earth's distinguishes between them",
+        "The two land together on the Moon because its gravity is about a sixth of the Earth's, which gives the feather time to catch up",
+        "Heavier bodies really do fall faster everywhere, and the Moon result was an artefact of the low-quality television pictures"
+      ],
+      "answerIndex": 0,
+      "solution": "Write the two equations side by side and the cancellation is unmissable. The gravitational force on a body of mass m at the surface of a world of mass M and radius R is F = GMm/R². Newton's second law then gives a = F/m = GM/R². The body's own mass has vanished from the answer. It vanished because m appears in two different roles — as the thing gravity pulls on, and as the thing that resists being accelerated — and those two happen to be the same number. That coincidence is not required by anything in Newton's framework; it is an experimental fact, tested to extraordinary precision, and Einstein later made it the foundation of general relativity. But granted it, a hammer and a feather must fall at the same rate on any world whatever, the Earth included. So why do they not, on Earth? Because gravity is not the only force acting. Air exerts a drag that depends on the object's size, shape and speed, not on its mass. For the hammer that drag is a negligible fraction of a large weight, so its acceleration is very nearly g. For the feather the drag is comparable to its tiny weight almost at once, so its NET force is small and it drifts down at a nearly constant terminal speed. The difference between the two falls is entirely a difference in air resistance, and nothing to do with how gravity treats mass. That is exactly why the Apollo 15 demonstration is worth doing on the Moon: there is no air there, so the only force is gravity, and the prediction can be seen with the naked eye. The same experiment works in a vacuum chamber on Earth, and physics departments have been performing it in evacuated tubes since long before spaceflight. Both show the same thing, and the Moon adds no new physics — only a very good stage. Two subtleties are worth keeping. First, the Moon's g really is about 1.6 m/s², roughly a sixth of the Earth's, so the objects fall more SLOWLY there than they would here. But they fall slowly TOGETHER. The strength of the field sets how fast everything falls; it has no bearing on whether different masses fall alike. The third option confuses these two entirely separate facts, which is why it is the most tempting wrong answer. Second, the cancellation is exact only if the falling body's own gravitational pull on the world is ignored — strictly, a hammer attracts the Moon as well, and a truly enormous mass would meet the Moon marginally sooner. The effect is unmeasurably small for anything a person can drop, but it is the reason the statement is usually phrased as 'in the limit of a small test mass'. (The remaining wrong answers make the strength of a field decide whether it discriminates by mass, or discard a result that has been reproduced in every vacuum chamber on Earth.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "चंद्रमा पर उसी ऊँचाई से दो वस्तुएँ गिराई जाती हैं, एक हथौड़ा और एक पंख, और वे साथ उतरते हैं। पृथ्वी पर नहीं। एक विद्यार्थी निष्कर्ष निकालता है कि चंद्रमा का गुरुत्व सब द्रव्यमानों पर बराबर लगता है और पृथ्वी का नहीं। इसे सुधारो और बताओ कि चंद्रमा का प्रदर्शन वस्तुतः क्या दिखाता है।",
+          "choices": [
+            "गुरुत्व दोनों लोकों पर एक-सा ही व्यवहार करता है। पिंड पर बल GMm/r² है, जो m का समानुपाती है, और त्वरण वह बल बटा m, अतः m कट जाता है और हर पिंड एक ही दर से गिरता है। भिन्न है हवा: पृथ्वी पर पंख को अपने भार के बराबर का ऊर्ध्वमुखी कर्षण मिलता है और हथौड़े को नहीं, अतः उनके परिणामी बल भिन्न हैं। चंद्रमा पर वायुमंडल नहीं, अतः वह प्रदर्शन बस वही है जो पृथ्वी निर्वात कक्ष के भीतर दिखाती — और दिखाती है",
+            "विद्यार्थी सही है: चंद्रमा का दुर्बल गुरुत्व सब द्रव्यमानों से एक-सा बर्ताव करता है, और केवल पृथ्वी जैसा प्रबल क्षेत्र उनमें भेद करता है",
+            "चंद्रमा पर दोनों साथ इसलिए उतरते हैं कि उसका गुरुत्व पृथ्वी के लगभग छठे भाग का है, जिससे पंख को पकड़ने का समय मिल जाता है",
+            "भारी पिंड हर जगह सचमुच तेज़ गिरते हैं, और चंद्रमा का परिणाम घटिया टीवी चित्रों की कारीगरी था"
+          ],
+          "solution": "दोनों समीकरण अगल-बग़ल लिखो और कटाव देखे बिना नहीं रहता। M द्रव्यमान और R त्रिज्या वाले लोक की सतह पर m द्रव्यमान के पिंड पर गुरुत्वीय बल F = GMm/R² है। न्यूटन का दूसरा नियम तब a = F/m = GM/R² देता है। पिंड का अपना द्रव्यमान उत्तर से ग़ायब हो गया। वह इसलिए ग़ायब हुआ कि m दो भिन्न भूमिकाओं में आता है — उस चीज़ के रूप में जिसे गुरुत्व खींचता है, और उस चीज़ के रूप में जो त्वरित होने का विरोध करती है — और वे दोनों संयोग से एक ही संख्या हैं। यह संयोग न्यूटन के ढाँचे में किसी बात से आवश्यक नहीं; वह प्रायोगिक तथ्य है, असाधारण परिशुद्धता से जाँचा गया, और आइंस्टीन ने बाद में उसे सामान्य आपेक्षिकता की नींव बनाया। पर उसे मान लेने पर हथौड़े और पंख को किसी भी लोक पर, पृथ्वी सहित, एक ही दर से गिरना चाहिए। तो पृथ्वी पर वे गिरते क्यों नहीं? क्योंकि गुरुत्व अकेला लगने वाला बल नहीं। हवा ऐसा कर्षण लगाती है जो वस्तु के आकार, रूप और चाल पर निर्भर है, उसके द्रव्यमान पर नहीं। हथौड़े के लिए वह कर्षण बड़े भार का नगण्य अंश है, अतः उसका त्वरण लगभग g है। पंख के लिए कर्षण लगभग तुरंत उसके नन्हे भार के बराबर हो जाता है, अतः उसका परिणामी बल छोटा है और वह लगभग अचर सीमांत चाल से नीचे बहता है। दोनों पतनों का अंतर पूरी तरह वायु प्रतिरोध का अंतर है, और इससे इसका कोई लेना-देना नहीं कि गुरुत्व द्रव्यमान से कैसे बर्ताव करता है। ठीक इसीलिए अपोलो 15 का प्रदर्शन चंद्रमा पर करने योग्य है: वहाँ हवा नहीं, अतः एकमात्र बल गुरुत्व है, और भविष्यवाणी नंगी आँख से देखी जा सकती है। वही प्रयोग पृथ्वी पर निर्वात कक्ष में चलता है, और भौतिकी विभाग अंतरिक्ष उड़ान से बहुत पहले से निर्वातित नलियों में उसे करते आए हैं। दोनों वही दिखाते हैं, और चंद्रमा कोई नई भौतिकी नहीं जोड़ता — केवल बहुत अच्छा मंच देता है। दो सूक्ष्मताएँ रखने योग्य हैं। पहली, चंद्रमा का g सचमुच लगभग 1.6 m/s² है, पृथ्वी के मोटे तौर पर छठे भाग का, अतः वस्तुएँ वहाँ यहाँ से अधिक धीमे गिरती हैं। पर वे धीमे साथ गिरती हैं। क्षेत्र की प्रबलता यह तय करती है कि सब कितनी तेज़ गिरता है; इससे इसका कोई संबंध नहीं कि भिन्न द्रव्यमान एक-से गिरते हैं या नहीं। तीसरा विकल्प इन दो बिलकुल अलग तथ्यों को पूरी तरह गड्डमड्ड करता है, इसीलिए वह सबसे लुभावना ग़लत उत्तर है। दूसरी, कटाव तभी ठीक-ठीक है जब गिरते पिंड का लोक पर अपना गुरुत्वीय खिंचाव छोड़ दिया जाए — कड़ाई से, हथौड़ा भी चंद्रमा को खींचता है, और सचमुच विशाल द्रव्यमान चंद्रमा से थोड़ा पहले मिलता। यह प्रभाव किसी भी ऐसी चीज़ के लिए अमापनीय रूप से छोटा है जिसे व्यक्ति गिरा सके, पर इसी कारण कथन आम तौर पर 'छोटे परीक्षण द्रव्यमान की सीमा में' कहकर कहा जाता है। (बचे हुए ग़लत उत्तर क्षेत्र की प्रबलता को यह तय करने देते कि वह द्रव्यमान से भेद करता है या नहीं, या ऐसे परिणाम को फेंक देते जो पृथ्वी के हर निर्वात कक्ष में दोहराया जा चुका है।)"
+        },
+        "mr": {
+          "stem": "चंद्रावर त्याच उंचीवरून दोन वस्तू टाकल्या जातात, एक हातोडा आणि एक पीस, आणि त्या एकत्र उतरतात. पृथ्वीवर नाही. एक विद्यार्थी निष्कर्ष काढतो की चंद्राचे गुरुत्व सर्व वस्तुमानांवर समान लागते आणि पृथ्वीचे नाही. हे दुरुस्त करा आणि चंद्रावरचे प्रात्यक्षिक प्रत्यक्षात काय दाखवते ते सांगा.",
+          "choices": [
+            "गुरुत्व दोन्ही जगांवर सारखेच वागते. पिंडावरचे बल GMm/r², जे m च्या समानुपाती, आणि त्वरण म्हणजे ते बल भागिले m, म्हणून m कापले जाते आणि प्रत्येक पिंड एकाच दराने पडतो. वेगळी आहे हवा: पृथ्वीवर पिसाला स्वतःच्या वजनाइतका वरचा ओढ मिळतो आणि हातोड्याला नाही, म्हणून त्यांची परिणामी बले वेगळी. चंद्रावर वातावरण नाही, म्हणून ते प्रात्यक्षिक फक्त तेच जे पृथ्वी निर्वात कक्षात दाखवली असती — आणि दाखवते",
+            "विद्यार्थी बरोबर: चंद्राचे दुर्बल गुरुत्व सर्व वस्तुमानांशी सारखेच वागते, आणि केवळ पृथ्वीसारखे प्रबळ क्षेत्रच त्यांच्यात भेद करते",
+            "चंद्रावर दोघे एकत्र यासाठी उतरतात की त्याचे गुरुत्व पृथ्वीच्या सुमारे सहाव्या भागाचे आहे, ज्यामुळे पिसाला गाठायला वेळ मिळतो",
+            "जड पिंड सर्वत्र खरोखर वेगाने पडतात, आणि चंद्रावरचा निकाल निकृष्ट दूरचित्रवाणी चित्रांची करामत होती"
+          ],
+          "solution": "दोन्ही समीकरणे शेजारीशेजारी लिहा आणि कापाकापी न पाहता राहवत नाही. M वस्तुमान आणि R त्रिज्येच्या जगाच्या पृष्ठभागावर m वस्तुमानाच्या पिंडावरचे गुरुत्वीय बल F = GMm/R². न्यूटनचा दुसरा नियम मग a = F/m = GM/R² देतो. पिंडाचे स्वतःचे वस्तुमान उत्तरातून गायब झाले. ते यासाठी गायब झाले की m दोन वेगळ्या भूमिकांत येते — ज्याला गुरुत्व ओढते ती गोष्ट म्हणून, आणि जी त्वरित होण्यास विरोध करते ती गोष्ट म्हणून — आणि ती दोन्ही योगायोगाने एकच संख्या आहेत. हा योगायोग न्यूटनच्या चौकटीतल्या कशानेही आवश्यक नाही; ते प्रायोगिक तथ्य आहे, असाधारण अचूकतेने तपासलेले, आणि आइनस्टाइनने पुढे त्याला सामान्य सापेक्षतेचा पाया बनवले. पण ते मान्य केल्यावर हातोडा आणि पीस कोणत्याही जगावर, पृथ्वीसह, एकाच दराने पडले पाहिजेत. मग पृथ्वीवर ते तसे का पडत नाहीत? कारण गुरुत्व हे एकमेव लागणारे बल नाही. हवा असा ओढ लावते जो वस्तूच्या आकार, रूप आणि चालीवर अवलंबून, तिच्या वस्तुमानावर नाही. हातोड्यासाठी तो ओढ मोठ्या वजनाचा नगण्य अंश, म्हणून त्याचे त्वरण जवळपास g. पिसासाठी ओढ जवळपास लगेच त्याच्या इवल्या वजनाइतका होतो, म्हणून त्याचे परिणामी बल लहान आणि ते जवळपास अचल सीमावर्ती चालीने खाली तरंगते. दोन पतनांतला फरक पूर्णपणे हवेच्या विरोधाचा फरक, आणि गुरुत्व वस्तुमानाशी कसे वागते याच्याशी काहीही संबंध नाही. नेमके म्हणूनच अपोलो 15 चे प्रात्यक्षिक चंद्रावर करण्याजोगे: तिथे हवा नाही, म्हणून एकमेव बल गुरुत्व, आणि भाकीत उघड्या डोळ्यांनी पाहता येते. तोच प्रयोग पृथ्वीवर निर्वात कक्षात चालतो, आणि भौतिकी विभाग अंतराळ उड्डाणाच्या कितीतरी आधीपासून निर्वात नळ्यांत तो करत आले आहेत. दोन्ही तेच दाखवतात, आणि चंद्र कोणतीही नवी भौतिकी जोडत नाही — केवळ फार चांगला रंगमंच देतो. दोन सूक्ष्मता ठेवण्याजोग्या. पहिली, चंद्राचा g खरोखर सुमारे 1.6 m/s² आहे, पृथ्वीच्या ढोबळमानाने सहाव्या भागाचा, म्हणून वस्तू तिथे इथल्यापेक्षा अधिक सावकाश पडतात. पण त्या सावकाश एकत्र पडतात. क्षेत्राची प्रबळता सर्व किती वेगाने पडते ते ठरवते; वेगवेगळी वस्तुमाने सारखी पडतात का याच्याशी तिचा काहीही संबंध नाही. तिसरा पर्याय या दोन पूर्णपणे वेगळ्या तथ्यांची पूर्ण गल्लत करतो, म्हणूनच ते सर्वांत मोहक चुकीचे उत्तर. दुसरी, कापाकापी तेव्हाच नेमकी जेव्हा पडणाऱ्या पिंडाची जगावरची स्वतःची गुरुत्वीय ओढ सोडली जाते — काटेकोरपणे, हातोडाही चंद्राला ओढतो, आणि खरोखर प्रचंड वस्तुमान चंद्राला किंचित आधी भेटले असते. हा परिणाम माणूस टाकू शकेल अशा कशासाठीही न मोजता येण्याइतका लहान, पण याच कारणाने विधान सहसा 'लहान चाचणी वस्तुमानाच्या मर्यादेत' असे म्हणून मांडले जाते. (उरलेली चुकीची उत्तरे क्षेत्राच्या प्रबळतेला ते वस्तुमानानुसार भेद करते का हे ठरवू देतात, वा पृथ्वीवरील प्रत्येक निर्वात कक्षात पुन्हा मिळवलेला निकाल फेकून देतात.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Two masses attract each other with a force of 36 N. Without changing the masses, their separation is tripled. What is the new force?",
+      "choices": [
+        "12 N",
+        "4 N",
+        "108 N",
+        "18 N"
+      ],
+      "answerIndex": 1,
+      "solution": "The force goes as 1/r², so tripling r divides it by 9: 36/9 = 4 N. (12 divides by 3 and forgets the square — the single most common error with this law.)",
+      "checkExpr": "36/3^2",
+      "translations": {
+        "hi": {
+          "stem": "दो द्रव्यमान एक-दूसरे को 36 N के बल से खींचते हैं। द्रव्यमान बदले बिना उनकी दूरी तीन गुनी कर दी जाती है। नया बल क्या है?",
+          "choices": [
+            "12 N",
+            "4 N",
+            "108 N",
+            "18 N"
+          ],
+          "solution": "बल 1/r² के अनुसार चलता है, अतः r तीन गुना करने पर वह 9 से भाग हो जाता है: 36/9 = 4 N. (12 3 से भाग देता है और वर्ग भूल जाता है — इस नियम की सबसे आम अकेली भूल।)"
+        },
+        "mr": {
+          "stem": "दोन वस्तुमाने एकमेकांना 36 N च्या बलाने ओढतात. वस्तुमाने न बदलता त्यांचे अंतर तिप्पट केले जाते. नवे बल किती?",
+          "choices": [
+            "12 N",
+            "4 N",
+            "108 N",
+            "18 N"
+          ],
+          "solution": "बल 1/r² नुसार जाते, म्हणून r तिप्पट केल्यास ते 9 ने भागले जाते: 36/9 = 4 N. (12 हे 3 ने भागते आणि वर्ग विसरते — या नियमाची सर्वांत नेहमीची एकमेव चूक.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A person of mass 60 kg stands on the Moon, where g is 1.6 m/s². What is their weight there?",
+      "choices": [
+        "600 N",
+        "96 N",
+        "61.6 N",
+        "37.5 N"
+      ],
+      "answerIndex": 1,
+      "solution": "Weight is mg = 60 × 1.6 = 96 N. The mass is still 60 kg — mass is a property of the body and weight is a force that depends on where the body is. (600 uses the Earth's g and 37.5 divides instead of multiplying.)",
+      "checkExpr": "60*1.6",
+      "translations": {
+        "hi": {
+          "stem": "60 kg द्रव्यमान का व्यक्ति चंद्रमा पर खड़ा है, जहाँ g = 1.6 m/s². वहाँ उसका भार क्या है?",
+          "choices": [
+            "600 N",
+            "96 N",
+            "61.6 N",
+            "37.5 N"
+          ],
+          "solution": "भार mg = 60 × 1.6 = 96 N. द्रव्यमान अब भी 60 kg है — द्रव्यमान पिंड का गुण है और भार वह बल जो इस पर निर्भर है कि पिंड कहाँ है। (600 पृथ्वी का g लगाता है और 37.5 गुणा के बजाय भाग देता है।)"
+        },
+        "mr": {
+          "stem": "60 kg वस्तुमानाची व्यक्ती चंद्रावर उभी आहे, जिथे g = 1.6 m/s². तिथे तिचे वजन किती?",
+          "choices": [
+            "600 N",
+            "96 N",
+            "61.6 N",
+            "37.5 N"
+          ],
+          "solution": "वजन mg = 60 × 1.6 = 96 N. वस्तुमान अजूनही 60 kg — वस्तुमान हा पिंडाचा गुणधर्म आणि वजन हे बल जे पिंड कुठे आहे यावर अवलंबून. (600 पृथ्वीचा g वापरते आणि 37.5 गुणण्याऐवजी भागते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Taking g at the Earth's surface as 10 m/s², what is its value at a height equal to one Earth radius above the surface?",
+      "choices": [
+        "2.5",
+        "5",
+        "10",
+        "20"
+      ],
+      "answerIndex": 0,
+      "solution": "Distances are measured from the CENTRE, so at that height r = 2R and g falls by a factor of 2² = 4: 10/4 = 2.5 m/s². (5 halves it, measuring the drop from the surface rather than the centre — the mistake this question exists to catch.)",
+      "checkExpr": "10/2^2",
+      "translations": {
+        "hi": {
+          "stem": "पृथ्वी की सतह पर g को 10 m/s² लेते हुए, सतह से एक पृथ्वी-त्रिज्या जितनी ऊँचाई पर उसका मान क्या है?",
+          "choices": [
+            "2.5",
+            "5",
+            "10",
+            "20"
+          ],
+          "solution": "दूरियाँ केंद्र से नापी जाती हैं, अतः उस ऊँचाई पर r = 2R और g 2² = 4 के गुणक से घटता है: 10/4 = 2.5 m/s². (5 उसे आधा कर देता है, गिरावट केंद्र के बजाय सतह से नापकर — यही वह भूल है जिसे पकड़ने के लिए यह प्रश्न है।)"
+        },
+        "mr": {
+          "stem": "पृथ्वीच्या पृष्ठभागावर g हा 10 m/s² घेतल्यास, पृष्ठभागापासून एक पृथ्वी-त्रिज्येइतक्या उंचीवर त्याचे मूल्य किती?",
+          "choices": [
+            "2.5",
+            "5",
+            "10",
+            "20"
+          ],
+          "solution": "अंतरे केंद्रापासून मोजली जातात, म्हणून त्या उंचीवर r = 2R आणि g हा 2² = 4 च्या पटीने घटतो: 10/4 = 2.5 m/s². (5 ते निम्मे करते, घट केंद्राऐवजी पृष्ठभागापासून मोजून — हीच ती चूक जी पकडण्यासाठी हा प्रश्न आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A planet has a surface gravity of 8 m/s² and a radius of 4000 km. What is its escape speed, in km/s?",
+      "choices": [
+        "16",
+        "11.2",
+        "4",
+        "8"
+      ],
+      "answerIndex": 3,
+      "solution": "v = √(2gR) = √(2 × 8 × 4,000,000) = √64,000,000 = 8000 m/s = 8 km/s. The escaping body's own mass never appears, so a pebble and a rocket share the same threshold. (11.2 is the Earth's figure quoted from memory, and 4 forgets the factor of 2.)",
+      "checkExpr": "(2*8*4000000)^0.5/1000",
+      "translations": {
+        "hi": {
+          "stem": "किसी ग्रह का सतही गुरुत्व 8 m/s² और त्रिज्या 4000 km है। उसकी पलायन चाल km/s में क्या है?",
+          "choices": [
+            "16",
+            "11.2",
+            "4",
+            "8"
+          ],
+          "solution": "v = √(2gR) = √(2 × 8 × 4,000,000) = √64,000,000 = 8000 m/s = 8 km/s. पलायन करते पिंड का अपना द्रव्यमान कहीं नहीं आता, अतः कंकड़ और रॉकेट वही सीमा साझा करते हैं। (11.2 स्मृति से बताया गया पृथ्वी का आँकड़ा है, और 4 2 का गुणक भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "एका ग्रहाचे पृष्ठभागीय गुरुत्व 8 m/s² आणि त्रिज्या 4000 km आहे. त्याची मुक्ती चाल km/s मध्ये किती?",
+          "choices": [
+            "16",
+            "11.2",
+            "4",
+            "8"
+          ],
+          "solution": "v = √(2gR) = √(2 × 8 × 4,000,000) = √64,000,000 = 8000 m/s = 8 km/s. सुटणाऱ्या पिंडाचे स्वतःचे वस्तुमान कुठेही येत नाही, म्हणून खडा आणि रॉकेट तीच मर्यादा वाटून घेतात. (11.2 हा स्मरणातून सांगितलेला पृथ्वीचा आकडा, आणि 4 हे 2 चा गुणक विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A planet orbits its star at four times the Earth's distance from the Sun. By Kepler's third law, what is its period in Earth years?",
+      "choices": [
+        "8",
+        "4",
+        "64",
+        "16"
+      ],
+      "answerIndex": 0,
+      "solution": "T² ∝ r³, so T ∝ r^1.5 and T = 4^1.5 = 8 years. (4 assumes the period is simply proportional to the distance, 16 squares it, and 64 cubes it — the three ways of forgetting that the law relates a square to a cube.)",
+      "checkExpr": "4^1.5",
+      "translations": {
+        "hi": {
+          "stem": "एक ग्रह अपने तारे की परिक्रमा सूर्य से पृथ्वी की दूरी के चार गुने पर करता है। केप्लर के तीसरे नियम से, उसका आवर्तकाल पृथ्वी-वर्षों में क्या है?",
+          "choices": [
+            "8",
+            "4",
+            "64",
+            "16"
+          ],
+          "solution": "T² ∝ r³, अतः T ∝ r^1.5 और T = 4^1.5 = 8 वर्ष। (4 मान लेता है कि आवर्तकाल बस दूरी का समानुपाती है, 16 उसका वर्ग करता है, और 64 घन — यह नियम एक वर्ग को एक घन से जोड़ता है, यह भूलने के तीन तरीक़े।)"
+        },
+        "mr": {
+          "stem": "एक ग्रह आपल्या ताऱ्याभोवती सूर्यापासून पृथ्वीच्या अंतराच्या चौपट अंतरावर फिरतो. केप्लरच्या तिसऱ्या नियमाने, त्याचा आवर्तकाल पृथ्वी-वर्षांत किती?",
+          "choices": [
+            "8",
+            "4",
+            "64",
+            "16"
+          ],
+          "solution": "T² ∝ r³, म्हणून T ∝ r^1.5 आणि T = 4^1.5 = 8 वर्षे. (4 गृहीत धरते की आवर्तकाल फक्त अंतराच्या समानुपाती, 16 त्याचा वर्ग करते, आणि 64 घन — हा नियम एका वर्गाला एका घनाशी जोडतो हे विसरण्याचे तीन मार्ग.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Taking g as 10 m/s² and the Earth's radius as 6400 km, what is the orbital speed of a satellite skimming the surface, in km/s?",
+      "choices": [
+        "11.3",
+        "4",
+        "64",
+        "8"
+      ],
+      "answerIndex": 3,
+      "solution": "Gravity supplies the centripetal force, so mg = mv²/R and v = √(gR) = √(64,000,000) = 8000 m/s = 8 km/s. Escape speed is √2 times this, about 11.3 km/s, which is why the two numbers are so often confused. (11.3 is precisely that confusion.)",
+      "checkExpr": "(10*6400000)^0.5/1000",
+      "translations": {
+        "hi": {
+          "stem": "g को 10 m/s² और पृथ्वी की त्रिज्या को 6400 km लेते हुए, सतह के ठीक ऊपर चक्कर लगाते उपग्रह की कक्षीय चाल km/s में क्या है?",
+          "choices": [
+            "11.3",
+            "4",
+            "64",
+            "8"
+          ],
+          "solution": "गुरुत्व अभिकेंद्र बल देता है, अतः mg = mv²/R और v = √(gR) = √(64,000,000) = 8000 m/s = 8 km/s. पलायन चाल इसकी √2 गुनी है, लगभग 11.3 km/s, इसीलिए दोनों संख्याएँ अक्सर गड्डमड्ड होती हैं। (11.3 ठीक वही गड्डमड्ड है।)"
+        },
+        "mr": {
+          "stem": "g हा 10 m/s² आणि पृथ्वीची त्रिज्या 6400 km घेतल्यास, पृष्ठभागाजवळून फिरणाऱ्या उपग्रहाची कक्षीय चाल km/s मध्ये किती?",
+          "choices": [
+            "11.3",
+            "4",
+            "64",
+            "8"
+          ],
+          "solution": "गुरुत्व अभिकेंद्री बल पुरवते, म्हणून mg = mv²/R आणि v = √(gR) = √(64,000,000) = 8000 m/s = 8 km/s. मुक्ती चाल याच्या √2 पट, सुमारे 11.3 km/s, म्हणूनच दोन्ही संख्यांची वारंवार गल्लत होते. (11.3 हीच नेमकी ती गल्लत.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A 70 kg astronaut orbits at a distance of two Earth radii from the centre, where surface g is 10 m/s². What gravitational force acts on them there?",
+      "choices": [
+        "350 N",
+        "0 N",
+        "700 N",
+        "175 N"
+      ],
+      "answerIndex": 3,
+      "solution": "At r = 2R the field is 10/4 = 2.5 m/s², so F = 70 × 2.5 = 175 N. The astronaut floats not because this force is absent but because they and the spacecraft are falling together — a scale beside them would read zero while this 175 N is acting the whole time. (0 is the answer the word 'weightless' invites, and it is wrong.)",
+      "checkExpr": "70*10/2^2",
+      "translations": {
+        "hi": {
+          "stem": "70 kg का अंतरिक्ष यात्री केंद्र से दो पृथ्वी-त्रिज्या दूरी पर परिक्रमा करता है, जहाँ सतही g = 10 m/s². वहाँ उस पर कितना गुरुत्वीय बल लगता है?",
+          "choices": [
+            "350 N",
+            "0 N",
+            "700 N",
+            "175 N"
+          ],
+          "solution": "r = 2R पर क्षेत्र 10/4 = 2.5 m/s² है, अतः F = 70 × 2.5 = 175 N. यात्री इसलिए नहीं तैरता कि यह बल अनुपस्थित है बल्कि इसलिए कि वह और यान साथ गिर रहे हैं — उसके पास रखा तराज़ू शून्य दिखाता जबकि ये 175 N पूरे समय लग रहे हैं। (0 वही उत्तर है जिसे 'भारहीन' शब्द बुलाता है, और वह ग़लत है।)"
+        },
+        "mr": {
+          "stem": "70 kg चा अंतराळवीर केंद्रापासून दोन पृथ्वी-त्रिज्या अंतरावर परिभ्रमण करतो, जिथे पृष्ठभागीय g = 10 m/s². तिथे त्याच्यावर किती गुरुत्वीय बल लागते?",
+          "choices": [
+            "350 N",
+            "0 N",
+            "700 N",
+            "175 N"
+          ],
+          "solution": "r = 2R वर क्षेत्र 10/4 = 2.5 m/s², म्हणून F = 70 × 2.5 = 175 N. अंतराळवीर यासाठी तरंगत नाही की हे बल अनुपस्थित आहे तर यासाठी की तो आणि यान एकत्र पडत आहेत — त्याच्याशेजारचा काटा शून्य दाखवला असता तर ही 175 N पूर्ण काळ लागत आहेत. (0 हेच ते उत्तर ज्याला 'वजनरहित' हा शब्द बोलावतो, आणि ते चुकीचे आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A satellite skimming the Earth's surface has a period of 84 minutes. What is the period, in minutes, of a satellite orbiting at 16 Earth radii?",
+      "choices": [
+        "21504",
+        "336",
+        "1344",
+        "5376"
+      ],
+      "answerIndex": 3,
+      "solution": "Kepler's third law gives T ∝ r^1.5, so the period is 84 × 16^1.5 = 84 × 64 = 5376 minutes, about 3.7 days. (1344 uses 16 rather than 16^1.5, and 336 uses only the square root.)",
+      "checkExpr": "84*16^1.5",
+      "translations": {
+        "hi": {
+          "stem": "पृथ्वी की सतह के ठीक ऊपर चक्कर लगाते उपग्रह का आवर्तकाल 84 मिनट है। 16 पृथ्वी-त्रिज्या पर परिक्रमा करते उपग्रह का आवर्तकाल मिनटों में क्या है?",
+          "choices": [
+            "21504",
+            "336",
+            "1344",
+            "5376"
+          ],
+          "solution": "केप्लर का तीसरा नियम T ∝ r^1.5 देता है, अतः आवर्तकाल 84 × 16^1.5 = 84 × 64 = 5376 मिनट, लगभग 3.7 दिन। (1344 16^1.5 के बजाय 16 लगाता है, और 336 केवल वर्गमूल लेता है।)"
+        },
+        "mr": {
+          "stem": "पृथ्वीच्या पृष्ठभागाजवळून फिरणाऱ्या उपग्रहाचा आवर्तकाल 84 मिनिटे आहे. 16 पृथ्वी-त्रिज्यांवर परिभ्रमण करणाऱ्या उपग्रहाचा आवर्तकाल मिनिटांत किती?",
+          "choices": [
+            "21504",
+            "336",
+            "1344",
+            "5376"
+          ],
+          "solution": "केप्लरचा तिसरा नियम T ∝ r^1.5 देतो, म्हणून आवर्तकाल 84 × 16^1.5 = 84 × 64 = 5376 मिनिटे, सुमारे 3.7 दिवस. (1344 हे 16^1.5 ऐवजी 16 वापरते, आणि 336 फक्त वर्गमूळ घेते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Taking g at the surface as 10 m/s², what is its value at a depth of half the Earth's radius below the surface, assuming uniform density?",
+      "choices": [
+        "5",
+        "10",
+        "2.5",
+        "20"
+      ],
+      "answerIndex": 0,
+      "solution": "Below the surface the law changes shape: only the mass inside your radius pulls, and the shell outside contributes nothing, so g = g₀(1 − d/R) = 10 × 0.5 = 5 m/s². It falls LINEARLY with depth and reaches zero at the centre, whereas above the surface it falls as the inverse square. (2.5 applies the above-surface rule below it.)",
+      "checkExpr": "10*(1-0.5)",
+      "translations": {
+        "hi": {
+          "stem": "सतह पर g को 10 m/s² लेते हुए, समांग घनत्व मानकर, सतह से आधी पृथ्वी-त्रिज्या गहराई पर उसका मान क्या है?",
+          "choices": [
+            "5",
+            "10",
+            "2.5",
+            "20"
+          ],
+          "solution": "सतह के नीचे नियम का रूप बदल जाता है: केवल तुम्हारी त्रिज्या के भीतर का द्रव्यमान खींचता है, और बाहर का खोल कुछ नहीं देता, अतः g = g₀(1 − d/R) = 10 × 0.5 = 5 m/s². वह गहराई के साथ रैखिक रूप से घटता है और केंद्र पर शून्य हो जाता है, जबकि सतह के ऊपर वह व्युत्क्रम वर्ग से घटता है। (2.5 सतह के ऊपर वाला नियम नीचे लगा देता है।)"
+        },
+        "mr": {
+          "stem": "पृष्ठभागावर g हा 10 m/s² घेतल्यास, एकसमान घनता गृहीत धरून, पृष्ठभागाखाली अर्ध्या पृथ्वी-त्रिज्या खोलीवर त्याचे मूल्य किती?",
+          "choices": [
+            "5",
+            "10",
+            "2.5",
+            "20"
+          ],
+          "solution": "पृष्ठभागाखाली नियमाचा आकार बदलतो: केवळ तुमच्या त्रिज्येच्या आतले वस्तुमान ओढते, आणि बाहेरचे कवच काहीही देत नाही, म्हणून g = g₀(1 − d/R) = 10 × 0.5 = 5 m/s². तो खोलीसह रेषीयरीत्या घटतो आणि केंद्रावर शून्य होतो, तर पृष्ठभागाच्या वर तो व्यस्त वर्गाने घटतो. (2.5 पृष्ठभागावरचा नियम खाली लावते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A planet has twice the Earth's mass and twice its radius. Its surface gravity is what multiple of the Earth's?",
+      "choices": [
+        "4",
+        "2",
+        "0.5",
+        "1"
+      ],
+      "answerIndex": 2,
+      "solution": "Surface gravity is g = GM/R², so doubling M doubles it while doubling R divides it by four: the net factor is 2/4 = 0.5. A bigger, heavier planet has WEAKER surface gravity than Earth's, which is the counterintuitive part. The reason is that the radius enters squared and the mass only to the first power, so spreading a planet out beats making it heavier. The same reasoning explains why gas giants do not crush their moons and why a planet built of the same material as Earth but twice the radius would have eight times the mass and therefore twice the surface gravity — there M and R are not independent, and the answer changes completely. (1 assumes the two effects cancel one for one, forgetting the square; 2 uses only the mass and 4 only the radius.)",
+      "checkExpr": "2/2^2",
+      "translations": {
+        "hi": {
+          "stem": "किसी ग्रह का द्रव्यमान पृथ्वी से दुगुना और त्रिज्या भी दुगुनी है। उसका सतही गुरुत्व पृथ्वी के गुरुत्व का कितना गुना है?",
+          "choices": [
+            "4",
+            "2",
+            "0.5",
+            "1"
+          ],
+          "solution": "सतही गुरुत्व g = GM/R² है, अतः M दुगुना करने से वह दुगुना होता है जबकि R दुगुना करने से चार से भाग हो जाता है: शुद्ध गुणक 2/4 = 0.5. बड़ा और भारी ग्रह पृथ्वी से दुर्बल सतही गुरुत्व रखता है, और यही उलटा लगने वाला हिस्सा है। कारण यह कि त्रिज्या वर्ग में आती है और द्रव्यमान केवल पहली घात में, अतः ग्रह को फैलाना उसे भारी बनाने पर भारी पड़ता है। यही तर्क बताता है कि गैस-दानव अपने चंद्रमाओं को क्यों नहीं कुचलते और यह भी कि पृथ्वी के ही पदार्थ से बना पर दुगुनी त्रिज्या का ग्रह आठ गुना द्रव्यमान रखता और इसलिए दुगुना सतही गुरुत्व — वहाँ M और R स्वतंत्र नहीं, और उत्तर पूरी तरह बदल जाता है। (1 मान लेता है कि दोनों प्रभाव एक-के-बदले-एक कट जाते हैं, वर्ग भूलकर; 2 केवल द्रव्यमान लेता है और 4 केवल त्रिज्या।)"
+        },
+        "mr": {
+          "stem": "एका ग्रहाचे वस्तुमान पृथ्वीच्या दुप्पट आणि त्रिज्याही दुप्पट. त्याचे पृष्ठभागीय गुरुत्व पृथ्वीच्या किती पट?",
+          "choices": [
+            "4",
+            "2",
+            "0.5",
+            "1"
+          ],
+          "solution": "पृष्ठभागीय गुरुत्व g = GM/R², म्हणून M दुप्पट केल्याने ते दुप्पट होते तर R दुप्पट केल्याने चारने भागले जाते: निव्वळ गुणक 2/4 = 0.5. मोठा आणि जड ग्रह पृथ्वीहून दुर्बल पृष्ठभागीय गुरुत्व बाळगतो, आणि हाच उलटा वाटणारा भाग. कारण हे की त्रिज्या वर्गात येते आणि वस्तुमान केवळ पहिल्या घातेत, म्हणून ग्रह पसरवणे त्याला जड बनवण्यावर वरचढ ठरते. हाच युक्तिवाद सांगतो की वायुदानव आपल्या चंद्रांना का चिरडत नाहीत आणि हेही की पृथ्वीच्याच पदार्थाचा पण दुप्पट त्रिज्येचा ग्रह आठपट वस्तुमान बाळगला असता आणि म्हणून दुप्पट पृष्ठभागीय गुरुत्व — तिथे M आणि R स्वतंत्र नाहीत, आणि उत्तर पूर्णपणे बदलते. (1 गृहीत धरते की दोन्ही परिणाम एकास-एक कापले जातात, वर्ग विसरून; 2 फक्त वस्तुमान घेते आणि 4 फक्त त्रिज्या.)"
+        }
+      }
+    }
+  ]
+}

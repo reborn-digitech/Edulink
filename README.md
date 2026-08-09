@@ -2509,8 +2509,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 284
-  chapters / 4,634 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 288
+  chapters / 4,747 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2557,16 +2557,19 @@ navigation" means the actual list rather than one somebody maintained by hand.
   a pupil revising projectiles gets the independence of the perpendicular
   components AND the range of a 20 m/s throw from one card, the
   quantitative half proven arithmetically by checkExpr while the
-  conceptual half stays honestly unproven. Four chapters are in
+  conceptual half stays honestly unproven. Eight chapters are in
   `g11-physics.ts` — Units and Measurements, Motion in a Straight Line,
-  Motion in a Plane, Laws of Motion — 113 questions, each chapter six
-  facts or more plus an authored L5 and L6 and ten computed problems
-  spanning the ladder. The entity names deliberately avoid the Class 9
-  motion vocabulary: this grade asks what an inertial frame IS, why a
-  third-law pair can never cancel, why averaging cannot touch a zero
-  error, and why dimensional analysis can refuse a formula but never
-  bless one. The rest of Class 11 physics (Work Energy and Power through
-  Waves), Chemistry, Biology and Maths remain, and Class 12 after them.
+  Motion in a Plane, Laws of Motion, Work Energy and Power, System of
+  Particles and Rotational Motion, Gravitation, Mechanical Properties of
+  Solids — 226 questions, each chapter six facts or more plus an authored
+  L5 and L6 and ten computed problems spanning the ladder. The entity
+  names deliberately avoid the Class 9 motion vocabulary: this grade asks
+  what an inertial frame IS, why a third-law pair can never cancel, why
+  averaging cannot touch a zero error, why a rolling cylinder always
+  loses a downhill race, why an astronaut under 8.7 m/s² of gravity
+  floats anyway, and why a wire's breaking load does not care how long
+  the wire is. Class 11 physics has six chapters left (Fluids through
+  Waves); Chemistry, Biology and Maths follow, and Class 12 after them.
   Suite re-pointed and green: 84 files, 1453 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**

@@ -1,0 +1,1003 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 11,
+  "chapter": "Chapter 8 — Mechanical Properties of Solids",
+  "name": "Mechanical Properties of Solids",
+  "slug": "physics-11-mechanical-properties-of-solids",
+  "summary": "Rigid bodies were a convenient lie and this chapter withdraws it: every beam bends, every cable stretches, and the question becomes how much and whether it comes back. Two quantities that make different wires comparable, a straight line that holds only while it holds, a modulus that belongs to the material and never to the specimen, a permanent set that is the first sign of failure, and the reason a crane's cable and a girder are designed to a stress and not to a load.",
+  "position": 8,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "ठोसों के यांत्रिक गुण",
+      "summary": "दृढ़ पिंड एक सुविधाजनक झूठ था और यह अध्याय उसे वापस ले लेता है: हर धरन झुकती है, हर तार खिंचता है, और प्रश्न यह बनता है कि कितना और क्या वह लौटता है। दो राशियाँ जो भिन्न तारों की तुलना संभव बनाती हैं, वह सीधी रेखा जो तभी तक चलती है जब तक चलती है, वह मापांक जो पदार्थ का है, नमूने का कभी नहीं, वह स्थायी विरूपण जो विफलता का पहला संकेत है, और वह कारण जिससे क्रेन की रस्सी और धरन भार पर नहीं प्रतिबल पर अभिकल्पित होती हैं।"
+    },
+    "mr": {
+      "name": "घनपदार्थांचे यांत्रिक गुणधर्म",
+      "summary": "दृढ पिंड हे सोयीचे खोटे होते आणि हे प्रकरण ते मागे घेते: प्रत्येक तुळई वाकते, प्रत्येक तार ताणली जाते, आणि प्रश्न होतो किती आणि ती परत येते का. दोन राशी ज्या वेगवेगळ्या तारांची तुलना शक्य करतात, ती सरळ रेषा जी टिकेपर्यंतच टिकते, तो मापांक जो पदार्थाचा, नमुन्याचा कधीच नाही, ते कायमचे विरूपण जे अपयशाचे पहिले चिन्ह, आणि ते कारण ज्यामुळे क्रेनची दोरी आणि तुळई ओझ्यावर नव्हे तर प्रतिबलावर आखली जातात."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A thick cable and a thin one cannot be compared by the load they carry or by how far they stretch, so the load is divided by the area and the stretch by the original length before anything is said. Which pair is this?",
+      "choices": [
+        "Stress and strain",
+        "Young's modulus",
+        "The bulk modulus",
+        "Poisson's ratio"
+      ],
+      "answerIndex": 0,
+      "solution": "Stress is the internal restoring force per unit area and strain is the fractional change in dimension, so stress has the units of pressure while strain is a pure number with no units at all. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "मोटी और पतली रस्सी की तुलना न उनके ढोए भार से हो सकती है न इससे कि वे कितना खिंचीं, अतः कुछ कहने से पहले भार को क्षेत्रफल से और खिंचाव को मूल लंबाई से भाग दिया जाता है। यह कौन-सी जोड़ी है?",
+          "choices": [
+            "प्रतिबल और विकृति",
+            "यंग मापांक",
+            "आयतन मापांक",
+            "प्वासों अनुपात"
+          ],
+          "solution": "प्रतिबल प्रति एकांक क्षेत्रफल आंतरिक प्रत्यानयन बल है और विकृति विमा में भिन्नात्मक परिवर्तन, अतः प्रतिबल के मात्रक दाब के हैं जबकि विकृति शुद्ध संख्या है जिसका कोई मात्रक ही नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "जाड आणि पातळ दोरीची तुलना ना त्यांनी वाहिलेल्या ओझ्याने होऊ शकते ना त्या किती ताणल्या यावरून, म्हणून काही सांगण्याआधी ओझे क्षेत्रफळाने आणि ताण मूळ लांबीने भागले जाते. ही कोणती जोडी?",
+          "choices": [
+            "प्रतिबल आणि विकृती",
+            "यंग मापांक",
+            "घनफळ मापांक",
+            "प्वासों गुणोत्तर"
+          ],
+          "solution": "प्रतिबल म्हणजे प्रति एकक क्षेत्रफळ आंतरिक पुनःस्थापक बल आणि विकृती म्हणजे मितीतील अपूर्णांकी बदल, म्हणून प्रतिबलाची एकके दाबाची तर विकृती ही शुद्ध संख्या जिला कोणतेही एकक नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Hooke's law and the elastic limit is correct?",
+      "choices": [
+        "The bulk modulus is the ratio of the applied pressure to the fractional decrease in volume, and it is the only elastic modulus that gases and liquids possess.",
+        "The elastic potential energy stored in a stretched wire is half the product of the load and the extension, or equivalently half of stress times strain times the volume.",
+        "Poisson's ratio is the lateral strain divided by the longitudinal strain, a pure number that for most solids lies between about 0.2 and 0.5.",
+        "Hooke's law states that stress is proportional to strain, and it holds only up to the proportional limit; beyond the elastic limit a little further on, the body keeps a permanent set when unloaded."
+      ],
+      "answerIndex": 3,
+      "solution": "Hooke's law states that stress is proportional to strain, and it holds only up to the proportional limit; beyond the elastic limit a little further on, the body keeps a permanent set when unloaded. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "हुक का नियम और प्रत्यास्थता सीमा के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "आयतन मापांक लगाए गए दाब और आयतन में भिन्नात्मक कमी का अनुपात है, और यही एकमात्र प्रत्यास्थता मापांक है जो गैसों तथा द्रवों के पास होता है।",
+            "खिंचे तार में संचित प्रत्यास्थ स्थितिज ऊर्जा भार और विस्तार के गुणनफल की आधी है, या समतुल्य रूप से प्रतिबल गुणा विकृति गुणा आयतन की आधी।",
+            "प्वासों अनुपात पार्श्व विकृति बटा अनुदैर्घ्य विकृति है, एक शुद्ध संख्या जो अधिकांश ठोसों के लिए लगभग 0.2 और 0.5 के बीच रहती है।",
+            "हुक का नियम कहता है कि प्रतिबल विकृति का समानुपाती है, और वह केवल समानुपाती सीमा तक चलता है; उससे थोड़ा आगे प्रत्यास्थता सीमा के परे भार हटाने पर पिंड स्थायी विरूपण रख लेता है।"
+          ],
+          "solution": "हुक का नियम कहता है कि प्रतिबल विकृति का समानुपाती है, और वह केवल समानुपाती सीमा तक चलता है; उससे थोड़ा आगे प्रत्यास्थता सीमा के परे भार हटाने पर पिंड स्थायी विरूपण रख लेता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "हूकचा नियम आणि प्रत्यास्थता मर्यादा विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "घनफळ मापांक म्हणजे लावलेला दाब आणि घनफळातील अपूर्णांकी घट यांचे गुणोत्तर, आणि हाच एकमेव प्रत्यास्थता मापांक जो वायू आणि द्रवांकडे असतो.",
+            "ताणलेल्या तारेत साठलेली प्रत्यास्थ स्थितिज ऊर्जा म्हणजे ओझे आणि ताण यांच्या गुणाकाराच्या निम्मी, किंवा समतुल्यपणे प्रतिबल गुणिले विकृती गुणिले घनफळ याच्या निम्मी.",
+            "प्वासों गुणोत्तर म्हणजे आडवी विकृती भागिले अनुदैर्घ्य विकृती, एक शुद्ध संख्या जी बहुतांश घनपदार्थांसाठी सुमारे 0.2 आणि 0.5 दरम्यान असते.",
+            "हूकचा नियम सांगतो की प्रतिबल विकृतीच्या समानुपाती आहे, आणि तो केवळ समानुपाती मर्यादेपर्यंतच चालतो; त्याहून थोड्या पुढे प्रत्यास्थता मर्यादेपलीकडे ओझे काढल्यावर पिंड कायमचे विरूपण राखतो."
+          ],
+          "solution": "हूकचा नियम सांगतो की प्रतिबल विकृतीच्या समानुपाती आहे, आणि तो केवळ समानुपाती मर्यादेपर्यंतच चालतो; त्याहून थोड्या पुढे प्रत्यास्थता मर्यादेपलीकडे ओझे काढल्यावर पिंड कायमचे विरूपण राखतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The extension it predicts, FL/(AY), does depend on the specimen: a longer wire of the same material stretches proportionately more and a thicker one proportionately less.\" — which of these is this about?",
+      "choices": [
+        "Young's modulus",
+        "Poisson's ratio",
+        "Stress and strain",
+        "The bulk modulus"
+      ],
+      "answerIndex": 0,
+      "solution": "Young's modulus is the ratio of tensile stress to longitudinal strain, a property of the material alone, so it is unchanged by the specimen's length, thickness or shape. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"वह जो विस्तार बताता है, FL/(AY), वह नमूने पर निर्भर है ही: उसी पदार्थ का लंबा तार समानुपाती रूप से अधिक खिंचता है और मोटा समानुपाती रूप से कम।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "यंग मापांक",
+            "प्वासों अनुपात",
+            "प्रतिबल और विकृति",
+            "आयतन मापांक"
+          ],
+          "solution": "यंग मापांक तन्य प्रतिबल और अनुदैर्घ्य विकृति का अनुपात है, केवल पदार्थ का गुण, अतः नमूने की लंबाई, मोटाई या आकार से वह नहीं बदलता। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तो जो ताण सांगतो, FL/(AY), तो नमुन्यावर अवलंबून आहेच: त्याच पदार्थाची लांब तार समानुपातीरीत्या अधिक ताणली जाते आणि जाड तार समानुपातीरीत्या कमी.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "यंग मापांक",
+            "प्वासों गुणोत्तर",
+            "प्रतिबल आणि विकृती",
+            "घनफळ मापांक"
+          ],
+          "solution": "यंग मापांक म्हणजे तन्य प्रतिबल आणि अनुदैर्घ्य विकृती यांचे गुणोत्तर, केवळ पदार्थाचा गुणधर्म, म्हणून नमुन्याची लांबी, जाडी वा आकार यांनी तो बदलत नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Squeeze a body from every side at once and its volume shrinks a little; the pressure needed per unit of fractional volume change is enormous for steel, large for water and small for air. Which quantity is this?",
+      "choices": [
+        "Young's modulus",
+        "The bulk modulus",
+        "Poisson's ratio",
+        "Stress and strain"
+      ],
+      "answerIndex": 1,
+      "solution": "The bulk modulus is the ratio of the applied pressure to the fractional decrease in volume, and it is the only elastic modulus that gases and liquids possess. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी पिंड को एक साथ हर ओर से दबाओ और उसका आयतन थोड़ा सिकुड़ता है; प्रति एकांक भिन्नात्मक आयतन-परिवर्तन के लिए चाहिए दाब इस्पात के लिए विशाल, पानी के लिए बड़ा और हवा के लिए छोटा है। यह कौन-सी राशि है?",
+          "choices": [
+            "यंग मापांक",
+            "आयतन मापांक",
+            "प्वासों अनुपात",
+            "प्रतिबल और विकृति"
+          ],
+          "solution": "आयतन मापांक लगाए गए दाब और आयतन में भिन्नात्मक कमी का अनुपात है, और यही एकमात्र प्रत्यास्थता मापांक है जो गैसों तथा द्रवों के पास होता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "एखाद्या पिंडाला एकाच वेळी सर्व बाजूंनी दाबा आणि त्याचे घनफळ थोडे आकुंचते; प्रति एकक अपूर्णांकी घनफळ-बदलासाठी लागणारा दाब पोलादासाठी प्रचंड, पाण्यासाठी मोठा आणि हवेसाठी लहान असतो. ही कोणती राशी?",
+          "choices": [
+            "यंग मापांक",
+            "घनफळ मापांक",
+            "प्वासों गुणोत्तर",
+            "प्रतिबल आणि विकृती"
+          ],
+          "solution": "घनफळ मापांक म्हणजे लावलेला दाब आणि घनफळातील अपूर्णांकी घट यांचे गुणोत्तर, आणि हाच एकमेव प्रत्यास्थता मापांक जो वायू आणि द्रवांकडे असतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Poisson's ratio is correct?",
+      "choices": [
+        "Poisson's ratio is the lateral strain divided by the longitudinal strain, a pure number that for most solids lies between about 0.2 and 0.5.",
+        "Young's modulus is the ratio of tensile stress to longitudinal strain, a property of the material alone, so it is unchanged by the specimen's length, thickness or shape.",
+        "Stress is the internal restoring force per unit area and strain is the fractional change in dimension, so stress has the units of pressure while strain is a pure number with no units at all.",
+        "The bulk modulus is the ratio of the applied pressure to the fractional decrease in volume, and it is the only elastic modulus that gases and liquids possess."
+      ],
+      "answerIndex": 0,
+      "solution": "Poisson's ratio is the lateral strain divided by the longitudinal strain, a pure number that for most solids lies between about 0.2 and 0.5. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "प्वासों अनुपात के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "प्वासों अनुपात पार्श्व विकृति बटा अनुदैर्घ्य विकृति है, एक शुद्ध संख्या जो अधिकांश ठोसों के लिए लगभग 0.2 और 0.5 के बीच रहती है।",
+            "यंग मापांक तन्य प्रतिबल और अनुदैर्घ्य विकृति का अनुपात है, केवल पदार्थ का गुण, अतः नमूने की लंबाई, मोटाई या आकार से वह नहीं बदलता।",
+            "प्रतिबल प्रति एकांक क्षेत्रफल आंतरिक प्रत्यानयन बल है और विकृति विमा में भिन्नात्मक परिवर्तन, अतः प्रतिबल के मात्रक दाब के हैं जबकि विकृति शुद्ध संख्या है जिसका कोई मात्रक ही नहीं।",
+            "आयतन मापांक लगाए गए दाब और आयतन में भिन्नात्मक कमी का अनुपात है, और यही एकमात्र प्रत्यास्थता मापांक है जो गैसों तथा द्रवों के पास होता है।"
+          ],
+          "solution": "प्वासों अनुपात पार्श्व विकृति बटा अनुदैर्घ्य विकृति है, एक शुद्ध संख्या जो अधिकांश ठोसों के लिए लगभग 0.2 और 0.5 के बीच रहती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "प्वासों गुणोत्तर विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "प्वासों गुणोत्तर म्हणजे आडवी विकृती भागिले अनुदैर्घ्य विकृती, एक शुद्ध संख्या जी बहुतांश घनपदार्थांसाठी सुमारे 0.2 आणि 0.5 दरम्यान असते.",
+            "यंग मापांक म्हणजे तन्य प्रतिबल आणि अनुदैर्घ्य विकृती यांचे गुणोत्तर, केवळ पदार्थाचा गुणधर्म, म्हणून नमुन्याची लांबी, जाडी वा आकार यांनी तो बदलत नाही.",
+            "प्रतिबल म्हणजे प्रति एकक क्षेत्रफळ आंतरिक पुनःस्थापक बल आणि विकृती म्हणजे मितीतील अपूर्णांकी बदल, म्हणून प्रतिबलाची एकके दाबाची तर विकृती ही शुद्ध संख्या जिला कोणतेही एकक नाही.",
+            "घनफळ मापांक म्हणजे लावलेला दाब आणि घनफळातील अपूर्णांकी घट यांचे गुणोत्तर, आणि हाच एकमेव प्रत्यास्थता मापांक जो वायू आणि द्रवांकडे असतो."
+          ],
+          "solution": "प्वासों गुणोत्तर म्हणजे आडवी विकृती भागिले अनुदैर्घ्य विकृती, एक शुद्ध संख्या जी बहुतांश घनपदार्थांसाठी सुमारे 0.2 आणि 0.5 दरम्यान असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The energy is returned in full only within the elastic range; past the elastic limit part of it goes into permanent rearrangement and appears as heat rather than coming back.\" — which of these is this about?",
+      "choices": [
+        "Hooke's law and the elastic limit",
+        "The bulk modulus",
+        "Stress and strain",
+        "Elastic energy in a stretched wire"
+      ],
+      "answerIndex": 3,
+      "solution": "The elastic potential energy stored in a stretched wire is half the product of the load and the extension, or equivalently half of stress times strain times the volume. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ऊर्जा केवल प्रत्यास्थ परास के भीतर पूरी लौटती है; प्रत्यास्थता सीमा के परे उसका कुछ भाग स्थायी पुनर्व्यवस्था में जाता है और लौटने के बजाय ऊष्मा बनकर प्रकट होता है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "हुक का नियम और प्रत्यास्थता सीमा",
+            "आयतन मापांक",
+            "प्रतिबल और विकृति",
+            "खिंचे तार में प्रत्यास्थ ऊर्जा"
+          ],
+          "solution": "खिंचे तार में संचित प्रत्यास्थ स्थितिज ऊर्जा भार और विस्तार के गुणनफल की आधी है, या समतुल्य रूप से प्रतिबल गुणा विकृति गुणा आयतन की आधी। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ऊर्जा केवळ प्रत्यास्थ पल्ल्यातच पूर्ण परत मिळते; प्रत्यास्थता मर्यादेपलीकडे तिचा काही भाग कायमच्या पुनर्रचनेत जातो आणि परत येण्याऐवजी उष्णता बनून प्रकट होतो.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "हूकचा नियम आणि प्रत्यास्थता मर्यादा",
+            "घनफळ मापांक",
+            "प्रतिबल आणि विकृती",
+            "ताणलेल्या तारेतील प्रत्यास्थ ऊर्जा"
+          ],
+          "solution": "ताणलेल्या तारेत साठलेली प्रत्यास्थ स्थितिज ऊर्जा म्हणजे ओझे आणि ताण यांच्या गुणाकाराच्या निम्मी, किंवा समतुल्यपणे प्रतिबल गुणिले विकृती गुणिले घनफळ याच्या निम्मी. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"One carries units of pressure, the other none at all\" goes correctly with which of these?",
+      "choices": [
+        "Young's modulus",
+        "Hooke's law and the elastic limit",
+        "stress and strain",
+        "elastic energy in a stretched wire"
+      ],
+      "answerIndex": 2,
+      "solution": "Stress is the internal restoring force per unit area and strain is the fractional change in dimension, so stress has the units of pressure while strain is a pure number with no units at all. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"एक के मात्रक दाब के, दूसरे के कोई नहीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "यंग मापांक",
+            "हुक का नियम और प्रत्यास्थता सीमा",
+            "प्रतिबल और विकृति",
+            "खिंचे तार में प्रत्यास्थ ऊर्जा"
+          ],
+          "solution": "प्रतिबल प्रति एकांक क्षेत्रफल आंतरिक प्रत्यानयन बल है और विकृति विमा में भिन्नात्मक परिवर्तन, अतः प्रतिबल के मात्रक दाब के हैं जबकि विकृति शुद्ध संख्या है जिसका कोई मात्रक ही नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"एकाची एकके दाबाची, दुसऱ्याची काहीच नाहीत\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "यंग मापांक",
+            "हूकचा नियम आणि प्रत्यास्थता मर्यादा",
+            "प्रतिबल आणि विकृती",
+            "ताणलेल्या तारेतील प्रत्यास्थ ऊर्जा"
+          ],
+          "solution": "प्रतिबल म्हणजे प्रति एकक क्षेत्रफळ आंतरिक पुनःस्थापक बल आणि विकृती म्हणजे मितीतील अपूर्णांकी बदल, म्हणून प्रतिबलाची एकके दाबाची तर विकृती ही शुद्ध संख्या जिला कोणतेही एकक नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A straight line that is a habit, not a law\" goes correctly with which of these?",
+      "choices": [
+        "stress and strain",
+        "Poisson's ratio",
+        "Hooke's law and the elastic limit",
+        "Young's modulus"
+      ],
+      "answerIndex": 2,
+      "solution": "Hooke's law states that stress is proportional to strain, and it holds only up to the proportional limit; beyond the elastic limit a little further on, the body keeps a permanent set when unloaded. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ऐसी सीधी रेखा जो आदत है, नियम नहीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "प्रतिबल और विकृति",
+            "प्वासों अनुपात",
+            "हुक का नियम और प्रत्यास्थता सीमा",
+            "यंग मापांक"
+          ],
+          "solution": "हुक का नियम कहता है कि प्रतिबल विकृति का समानुपाती है, और वह केवल समानुपाती सीमा तक चलता है; उससे थोड़ा आगे प्रत्यास्थता सीमा के परे भार हटाने पर पिंड स्थायी विरूपण रख लेता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"अशी सरळ रेषा जी सवय आहे, नियम नव्हे\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "प्रतिबल आणि विकृती",
+            "प्वासों गुणोत्तर",
+            "हूकचा नियम आणि प्रत्यास्थता मर्यादा",
+            "यंग मापांक"
+          ],
+          "solution": "हूकचा नियम सांगतो की प्रतिबल विकृतीच्या समानुपाती आहे, आणि तो केवळ समानुपाती मर्यादेपर्यंतच चालतो; त्याहून थोड्या पुढे प्रत्यास्थता मर्यादेपलीकडे ओझे काढल्यावर पिंड कायमचे विरूपण राखतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Cut the wire in half and the number is unchanged\" goes correctly with which of these?",
+      "choices": [
+        "elastic energy in a stretched wire",
+        "Young's modulus",
+        "Poisson's ratio",
+        "Hooke's law and the elastic limit"
+      ],
+      "answerIndex": 1,
+      "solution": "Young's modulus is the ratio of tensile stress to longitudinal strain, a property of the material alone, so it is unchanged by the specimen's length, thickness or shape. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"तार आधा काटो और संख्या वही रहती है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "खिंचे तार में प्रत्यास्थ ऊर्जा",
+            "यंग मापांक",
+            "प्वासों अनुपात",
+            "हुक का नियम और प्रत्यास्थता सीमा"
+          ],
+          "solution": "यंग मापांक तन्य प्रतिबल और अनुदैर्घ्य विकृति का अनुपात है, केवल पदार्थ का गुण, अतः नमूने की लंबाई, मोटाई या आकार से वह नहीं बदलता। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तार अर्धी कापा आणि संख्या तीच राहते\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "ताणलेल्या तारेतील प्रत्यास्थ ऊर्जा",
+            "यंग मापांक",
+            "प्वासों गुणोत्तर",
+            "हूकचा नियम आणि प्रत्यास्थता मर्यादा"
+          ],
+          "solution": "यंग मापांक म्हणजे तन्य प्रतिबल आणि अनुदैर्घ्य विकृती यांचे गुणोत्तर, केवळ पदार्थाचा गुणधर्म, म्हणून नमुन्याची लांबी, जाडी वा आकार यांनी तो बदलत नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The one modulus a liquid actually has\" goes correctly with which of these?",
+      "choices": [
+        "the bulk modulus",
+        "stress and strain",
+        "elastic energy in a stretched wire",
+        "Poisson's ratio"
+      ],
+      "answerIndex": 0,
+      "solution": "The bulk modulus is the ratio of the applied pressure to the fractional decrease in volume, and it is the only elastic modulus that gases and liquids possess. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"वह एकमात्र मापांक जो द्रव के पास वस्तुतः है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "आयतन मापांक",
+            "प्रतिबल और विकृति",
+            "खिंचे तार में प्रत्यास्थ ऊर्जा",
+            "प्वासों अनुपात"
+          ],
+          "solution": "आयतन मापांक लगाए गए दाब और आयतन में भिन्नात्मक कमी का अनुपात है, और यही एकमात्र प्रत्यास्थता मापांक है जो गैसों तथा द्रवों के पास होता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तो एकमेव मापांक जो द्रवाकडे प्रत्यक्षात आहे\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "घनफळ मापांक",
+            "प्रतिबल आणि विकृती",
+            "ताणलेल्या तारेतील प्रत्यास्थ ऊर्जा",
+            "प्वासों गुणोत्तर"
+          ],
+          "solution": "घनफळ मापांक म्हणजे लावलेला दाब आणि घनफळातील अपूर्णांकी घट यांचे गुणोत्तर, आणि हाच एकमेव प्रत्यास्थता मापांक जो वायू आणि द्रवांकडे असतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Half would mean the volume never changed\" goes correctly with which of these?",
+      "choices": [
+        "Poisson's ratio",
+        "Young's modulus",
+        "Hooke's law and the elastic limit",
+        "stress and strain"
+      ],
+      "answerIndex": 0,
+      "solution": "Poisson's ratio is the lateral strain divided by the longitudinal strain, a pure number that for most solids lies between about 0.2 and 0.5. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"आधा होने का अर्थ होता कि आयतन कभी बदला ही नहीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "प्वासों अनुपात",
+            "यंग मापांक",
+            "हुक का नियम और प्रत्यास्थता सीमा",
+            "प्रतिबल और विकृति"
+          ],
+          "solution": "प्वासों अनुपात पार्श्व विकृति बटा अनुदैर्घ्य विकृति है, एक शुद्ध संख्या जो अधिकांश ठोसों के लिए लगभग 0.2 और 0.5 के बीच रहती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"अर्धा असणे म्हणजे घनफळ कधी बदललेच नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "प्वासों गुणोत्तर",
+            "यंग मापांक",
+            "हूकचा नियम आणि प्रत्यास्थता मर्यादा",
+            "प्रतिबल आणि विकृती"
+          ],
+          "solution": "प्वासों गुणोत्तर म्हणजे आडवी विकृती भागिले अनुदैर्घ्य विकृती, एक शुद्ध संख्या जी बहुतांश घनपदार्थांसाठी सुमारे 0.2 आणि 0.5 दरम्यान असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Half, because the load grew from nothing\" goes correctly with which of these?",
+      "choices": [
+        "Hooke's law and the elastic limit",
+        "elastic energy in a stretched wire",
+        "the bulk modulus",
+        "stress and strain"
+      ],
+      "answerIndex": 1,
+      "solution": "The elastic potential energy stored in a stretched wire is half the product of the load and the extension, or equivalently half of stress times strain times the volume. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"आधा, क्योंकि भार शून्य से बढ़ा था\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "हुक का नियम और प्रत्यास्थता सीमा",
+            "खिंचे तार में प्रत्यास्थ ऊर्जा",
+            "आयतन मापांक",
+            "प्रतिबल और विकृति"
+          ],
+          "solution": "खिंचे तार में संचित प्रत्यास्थ स्थितिज ऊर्जा भार और विस्तार के गुणनफल की आधी है, या समतुल्य रूप से प्रतिबल गुणा विकृति गुणा आयतन की आधी। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"निम्मे, कारण ओझे शून्यापासून वाढले होते\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "हूकचा नियम आणि प्रत्यास्थता मर्यादा",
+            "ताणलेल्या तारेतील प्रत्यास्थ ऊर्जा",
+            "घनफळ मापांक",
+            "प्रतिबल आणि विकृती"
+          ],
+          "solution": "ताणलेल्या तारेत साठलेली प्रत्यास्थ स्थितिज ऊर्जा म्हणजे ओझे आणि ताण यांच्या गुणाकाराच्या निम्मी, किंवा समतुल्यपणे प्रतिबल गुणिले विकृती गुणिले घनफळ याच्या निम्मी. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Stress and strain EXCEPT —",
+      "choices": [
+        "Young's modulus is the ratio of tensile stress to longitudinal strain, a property of the material alone, so it is unchanged by the specimen's length, thickness or shape.",
+        "Stress is not the same as the applied pressure even when the numbers agree: pressure acts on a surface from outside, while stress is the material's own answer to it, distributed through the body.",
+        "Stress is the internal restoring force per unit area and strain is the fractional change in dimension, so stress has the units of pressure while strain is a pure number with no units at all.",
+        "Dividing by the area is what makes a material's behaviour a property of the material rather than of the particular rod on the bench, and it is why engineers design to a safe stress and not to a safe load."
+      ],
+      "answerIndex": 0,
+      "solution": "Young's modulus is the ratio of tensile stress to longitudinal strain, a property of the material alone, so it is unchanged by the specimen's length, thickness or shape. That belongs to Young's modulus, not Stress and strain — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रतिबल और विकृति के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "यंग मापांक तन्य प्रतिबल और अनुदैर्घ्य विकृति का अनुपात है, केवल पदार्थ का गुण, अतः नमूने की लंबाई, मोटाई या आकार से वह नहीं बदलता।",
+            "संख्याएँ मिलने पर भी प्रतिबल लगाए गए दाब जैसा नहीं है: दाब सतह पर बाहर से लगता है, जबकि प्रतिबल उसके प्रति पदार्थ का अपना उत्तर है, जो पूरे पिंड में बँटा रहता है।",
+            "प्रतिबल प्रति एकांक क्षेत्रफल आंतरिक प्रत्यानयन बल है और विकृति विमा में भिन्नात्मक परिवर्तन, अतः प्रतिबल के मात्रक दाब के हैं जबकि विकृति शुद्ध संख्या है जिसका कोई मात्रक ही नहीं।",
+            "क्षेत्रफल से भाग देना ही पदार्थ के व्यवहार को उस पदार्थ का गुण बनाता है, मेज़ पर रखी किसी विशेष छड़ का नहीं, और इसीलिए अभियंता सुरक्षित प्रतिबल पर अभिकल्पन करते हैं, सुरक्षित भार पर नहीं।"
+          ],
+          "solution": "यंग मापांक तन्य प्रतिबल और अनुदैर्घ्य विकृति का अनुपात है, केवल पदार्थ का गुण, अतः नमूने की लंबाई, मोटाई या आकार से वह नहीं बदलता। यह यंग मापांक की बात है, प्रतिबल और विकृति की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "प्रतिबल आणि विकृती विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "यंग मापांक म्हणजे तन्य प्रतिबल आणि अनुदैर्घ्य विकृती यांचे गुणोत्तर, केवळ पदार्थाचा गुणधर्म, म्हणून नमुन्याची लांबी, जाडी वा आकार यांनी तो बदलत नाही.",
+            "आकडे जुळले तरी प्रतिबल हे लावलेल्या दाबासारखे नाही: दाब पृष्ठभागावर बाहेरून लागतो, तर प्रतिबल हे त्याला पदार्थाचे स्वतःचे उत्तर, जे अख्ख्या पिंडात वाटले जाते.",
+            "प्रतिबल म्हणजे प्रति एकक क्षेत्रफळ आंतरिक पुनःस्थापक बल आणि विकृती म्हणजे मितीतील अपूर्णांकी बदल, म्हणून प्रतिबलाची एकके दाबाची तर विकृती ही शुद्ध संख्या जिला कोणतेही एकक नाही.",
+            "क्षेत्रफळाने भागणे हेच पदार्थाच्या वर्तनाला त्या पदार्थाचा गुणधर्म बनवते, बाकावरच्या एखाद्या विशिष्ट दांडीचा नव्हे, आणि म्हणूनच अभियंते सुरक्षित प्रतिबलावर आखणी करतात, सुरक्षित ओझ्यावर नव्हे."
+          ],
+          "solution": "यंग मापांक म्हणजे तन्य प्रतिबल आणि अनुदैर्घ्य विकृती यांचे गुणोत्तर, केवळ पदार्थाचा गुणधर्म, म्हणून नमुन्याची लांबी, जाडी वा आकार यांनी तो बदलत नाही. हे यंग मापांक चे आहे, प्रतिबल आणि विकृती चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Hooke's law and the elastic limit EXCEPT —",
+      "choices": [
+        "Hooke's law states that stress is proportional to strain, and it holds only up to the proportional limit; beyond the elastic limit a little further on, the body keeps a permanent set when unloaded.",
+        "The elastic potential energy stored in a stretched wire is half the product of the load and the extension, or equivalently half of stress times strain times the volume.",
+        "Past the elastic limit comes yielding, where the material stretches a long way for very little extra stress, and this is what makes a metal drawable into wire and beatable into sheet.",
+        "It is a description of how most materials happen to behave over a small range, not a law of nature, and rubber disobeys it almost from the start."
+      ],
+      "answerIndex": 1,
+      "solution": "The elastic potential energy stored in a stretched wire is half the product of the load and the extension, or equivalently half of stress times strain times the volume. That belongs to Elastic energy in a stretched wire, not Hooke's law and the elastic limit — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "हुक का नियम और प्रत्यास्थता सीमा के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "हुक का नियम कहता है कि प्रतिबल विकृति का समानुपाती है, और वह केवल समानुपाती सीमा तक चलता है; उससे थोड़ा आगे प्रत्यास्थता सीमा के परे भार हटाने पर पिंड स्थायी विरूपण रख लेता है।",
+            "खिंचे तार में संचित प्रत्यास्थ स्थितिज ऊर्जा भार और विस्तार के गुणनफल की आधी है, या समतुल्य रूप से प्रतिबल गुणा विकृति गुणा आयतन की आधी।",
+            "प्रत्यास्थता सीमा के आगे पराभव आता है, जहाँ पदार्थ बहुत थोड़े अतिरिक्त प्रतिबल पर बहुत खिंच जाता है, और यही धातु को तार में खींचने और चादर में पीटने योग्य बनाता है।",
+            "यह इसका वर्णन है कि अधिकांश पदार्थ छोटे परास में संयोगवश कैसे व्यवहार करते हैं, प्रकृति का नियम नहीं, और रबर उसे लगभग आरंभ से ही नहीं मानता।"
+          ],
+          "solution": "खिंचे तार में संचित प्रत्यास्थ स्थितिज ऊर्जा भार और विस्तार के गुणनफल की आधी है, या समतुल्य रूप से प्रतिबल गुणा विकृति गुणा आयतन की आधी। यह खिंचे तार में प्रत्यास्थ ऊर्जा की बात है, हुक का नियम और प्रत्यास्थता सीमा की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "हूकचा नियम आणि प्रत्यास्थता मर्यादा विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "हूकचा नियम सांगतो की प्रतिबल विकृतीच्या समानुपाती आहे, आणि तो केवळ समानुपाती मर्यादेपर्यंतच चालतो; त्याहून थोड्या पुढे प्रत्यास्थता मर्यादेपलीकडे ओझे काढल्यावर पिंड कायमचे विरूपण राखतो.",
+            "ताणलेल्या तारेत साठलेली प्रत्यास्थ स्थितिज ऊर्जा म्हणजे ओझे आणि ताण यांच्या गुणाकाराच्या निम्मी, किंवा समतुल्यपणे प्रतिबल गुणिले विकृती गुणिले घनफळ याच्या निम्मी.",
+            "प्रत्यास्थता मर्यादेपुढे नमन येते, जिथे पदार्थ फार थोड्या जादा प्रतिबलावर खूप ताणला जातो, आणि हेच धातूला तारेत ओढण्याजोगे आणि पत्र्यात ठोकण्याजोगे बनवते.",
+            "हे बहुतांश पदार्थ लहान पल्ल्यात योगायोगाने कसे वागतात याचे वर्णन आहे, निसर्गाचा नियम नव्हे, आणि रबर तो जवळपास सुरुवातीपासूनच पाळत नाही."
+          ],
+          "solution": "ताणलेल्या तारेत साठलेली प्रत्यास्थ स्थितिज ऊर्जा म्हणजे ओझे आणि ताण यांच्या गुणाकाराच्या निम्मी, किंवा समतुल्यपणे प्रतिबल गुणिले विकृती गुणिले घनफळ याच्या निम्मी. हे ताणलेल्या तारेतील प्रत्यास्थ ऊर्जा चे आहे, हूकचा नियम आणि प्रत्यास्थता मर्यादा चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Young's modulus EXCEPT —",
+      "choices": [
+        "The extension it predicts, FL/(AY), does depend on the specimen: a longer wire of the same material stretches proportionately more and a thicker one proportionately less.",
+        "Poisson's ratio is the lateral strain divided by the longitudinal strain, a pure number that for most solids lies between about 0.2 and 0.5.",
+        "A large value means stiff rather than strong: steel resists stretching far better than rubber, but a thread of either can be broken, and breaking is governed by a different number entirely.",
+        "Young's modulus is the ratio of tensile stress to longitudinal strain, a property of the material alone, so it is unchanged by the specimen's length, thickness or shape."
+      ],
+      "answerIndex": 1,
+      "solution": "Poisson's ratio is the lateral strain divided by the longitudinal strain, a pure number that for most solids lies between about 0.2 and 0.5. That belongs to Poisson's ratio, not Young's modulus — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "यंग मापांक के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "वह जो विस्तार बताता है, FL/(AY), वह नमूने पर निर्भर है ही: उसी पदार्थ का लंबा तार समानुपाती रूप से अधिक खिंचता है और मोटा समानुपाती रूप से कम।",
+            "प्वासों अनुपात पार्श्व विकृति बटा अनुदैर्घ्य विकृति है, एक शुद्ध संख्या जो अधिकांश ठोसों के लिए लगभग 0.2 और 0.5 के बीच रहती है।",
+            "बड़ा मान दृढ़ होने का अर्थ रखता है, मज़बूत होने का नहीं: इस्पात रबर से कहीं बेहतर खिंचाव रोकता है, पर दोनों में से किसी का धागा तोड़ा जा सकता है, और टूटना पूरी तरह भिन्न संख्या से तय होता है।",
+            "यंग मापांक तन्य प्रतिबल और अनुदैर्घ्य विकृति का अनुपात है, केवल पदार्थ का गुण, अतः नमूने की लंबाई, मोटाई या आकार से वह नहीं बदलता।"
+          ],
+          "solution": "प्वासों अनुपात पार्श्व विकृति बटा अनुदैर्घ्य विकृति है, एक शुद्ध संख्या जो अधिकांश ठोसों के लिए लगभग 0.2 और 0.5 के बीच रहती है। यह प्वासों अनुपात की बात है, यंग मापांक की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "यंग मापांक विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "तो जो ताण सांगतो, FL/(AY), तो नमुन्यावर अवलंबून आहेच: त्याच पदार्थाची लांब तार समानुपातीरीत्या अधिक ताणली जाते आणि जाड तार समानुपातीरीत्या कमी.",
+            "प्वासों गुणोत्तर म्हणजे आडवी विकृती भागिले अनुदैर्घ्य विकृती, एक शुद्ध संख्या जी बहुतांश घनपदार्थांसाठी सुमारे 0.2 आणि 0.5 दरम्यान असते.",
+            "मोठे मूल्य म्हणजे ताठर, बळकट नव्हे: पोलाद रबरहून कितीतरी चांगले ताणण्यास विरोध करते, पण दोघांपैकी कोणाचाही धागा तोडता येतो, आणि तुटणे पूर्णपणे वेगळ्या संख्येने ठरते.",
+            "यंग मापांक म्हणजे तन्य प्रतिबल आणि अनुदैर्घ्य विकृती यांचे गुणोत्तर, केवळ पदार्थाचा गुणधर्म, म्हणून नमुन्याची लांबी, जाडी वा आकार यांनी तो बदलत नाही."
+          ],
+          "solution": "प्वासों गुणोत्तर म्हणजे आडवी विकृती भागिले अनुदैर्घ्य विकृती, एक शुद्ध संख्या जी बहुतांश घनपदार्थांसाठी सुमारे 0.2 आणि 0.5 दरम्यान असते. हे प्वासों गुणोत्तर चे आहे, यंग मापांक चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The bulk modulus EXCEPT —",
+      "choices": [
+        "Its reciprocal is called compressibility, and water's very low value is why hydraulic machinery works at all: a fluid that squashed easily could not transmit a force undiminished.",
+        "Fluids have no shear modulus at all, because a layer of liquid offers no permanent resistance to being slid sideways — it simply flows, which is the definition of a fluid.",
+        "The bulk modulus is the ratio of the applied pressure to the fractional decrease in volume, and it is the only elastic modulus that gases and liquids possess.",
+        "Poisson's ratio is the lateral strain divided by the longitudinal strain, a pure number that for most solids lies between about 0.2 and 0.5."
+      ],
+      "answerIndex": 3,
+      "solution": "Poisson's ratio is the lateral strain divided by the longitudinal strain, a pure number that for most solids lies between about 0.2 and 0.5. That belongs to Poisson's ratio, not The bulk modulus — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "आयतन मापांक के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "उसका व्युत्क्रम संपीड्यता कहलाता है, और पानी का बहुत कम मान ही वह कारण है जिससे द्रवचालित यंत्र चलते हैं: जो तरल आसानी से दब जाए वह बल को बिना घटाए संचरित नहीं कर सकता।",
+            "तरलों के पास अपरूपण मापांक है ही नहीं, क्योंकि द्रव की परत बग़ल में सरकाए जाने का स्थायी प्रतिरोध नहीं देती — वह बस बहती है, और तरल की परिभाषा यही है।",
+            "आयतन मापांक लगाए गए दाब और आयतन में भिन्नात्मक कमी का अनुपात है, और यही एकमात्र प्रत्यास्थता मापांक है जो गैसों तथा द्रवों के पास होता है।",
+            "प्वासों अनुपात पार्श्व विकृति बटा अनुदैर्घ्य विकृति है, एक शुद्ध संख्या जो अधिकांश ठोसों के लिए लगभग 0.2 और 0.5 के बीच रहती है।"
+          ],
+          "solution": "प्वासों अनुपात पार्श्व विकृति बटा अनुदैर्घ्य विकृति है, एक शुद्ध संख्या जो अधिकांश ठोसों के लिए लगभग 0.2 और 0.5 के बीच रहती है। यह प्वासों अनुपात की बात है, आयतन मापांक की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "घनफळ मापांक विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "त्याचा व्यस्त संपीड्यता म्हणतात, आणि पाण्याचे फार कमी मूल्य हेच ते कारण ज्यामुळे द्रवचालित यंत्रे चालतात: सहज दबणारे प्रवाही बल न घटवता संक्रमित करू शकणार नाही.",
+            "प्रवाहींकडे कर्तन मापांक मुळीच नाही, कारण द्रवाचा थर बाजूला सरकवण्याला कायमचा विरोध देत नाही — तो फक्त वाहतो, आणि प्रवाहीची व्याख्या हीच.",
+            "घनफळ मापांक म्हणजे लावलेला दाब आणि घनफळातील अपूर्णांकी घट यांचे गुणोत्तर, आणि हाच एकमेव प्रत्यास्थता मापांक जो वायू आणि द्रवांकडे असतो.",
+            "प्वासों गुणोत्तर म्हणजे आडवी विकृती भागिले अनुदैर्घ्य विकृती, एक शुद्ध संख्या जी बहुतांश घनपदार्थांसाठी सुमारे 0.2 आणि 0.5 दरम्यान असते."
+          ],
+          "solution": "प्वासों गुणोत्तर म्हणजे आडवी विकृती भागिले अनुदैर्घ्य विकृती, एक शुद्ध संख्या जी बहुतांश घनपदार्थांसाठी सुमारे 0.2 आणि 0.5 दरम्यान असते. हे प्वासों गुणोत्तर चे आहे, घनफळ मापांक चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Two wires of the same steel hang from the same beam and carry the same load. The second is twice as long and twice the diameter of the first. The first stretches by 2 mm. A student predicts the second will stretch by 4 mm because it is twice as long. Correct the prediction.",
+      "choices": [
+        "The extension is FL/(AY), so length and area pull in opposite directions. Doubling the length doubles the extension, but doubling the diameter quadruples the area and so divides it by four. The net factor is 2/4 = 0.5, and the second wire stretches by 1 mm — half as much, not twice. The student changed one variable and forgot the other, which is the standard trap in this formula",
+        "The student is right: extension depends only on length, since Young's modulus already accounts for the thickness",
+        "The second wire stretches by 2 mm, because doubling the length and doubling the diameter cancel each other exactly",
+        "Nothing can be said, because Young's modulus is different for a thicker wire of the same steel"
+      ],
+      "answerIndex": 0,
+      "solution": "Write the formula out and the answer is a matter of counting powers. Young's modulus is defined as stress over strain, Y = (F/A)/(ΔL/L), and rearranging gives the extension ΔL = FL/(AY). Four things appear on the right, and the question changes two of them. The load F is the same. The material is the same, so Y is the same — and that last point disposes of the fourth option straight away. Young's modulus is a property of steel, not of any particular piece of it; cutting a wire in half or drawing it thinner does not change the value in the table, which is exactly why it is worth tabulating. Now the two that do change. Length is in the numerator, so doubling it doubles the extension: a longer wire has more material to share the same fractional stretch, and the same strain over twice the length gives twice the absolute extension. On its own this gives the student's factor of 2. But the area is in the denominator, and area is not diameter. For a circular cross-section A = πd²/4, so doubling d multiplies A by four. That divides the extension by four. Combining, the second wire extends by 2 × (1/4) = 0.5 of the first, giving 1 mm. Notice the shape of the error rather than just its size. The student did not make a mistake of arithmetic; they varied one quantity while holding the other fixed in their head, though the problem had changed both. This is the most common failure mode in every formula with more than two variables, and the defence is mechanical: list every symbol, mark which ones changed, and apply each factor separately before combining. The third option is a subtler version of the same trap — it notices both changes but treats diameter as though it entered linearly, so 2 and 2 appear to cancel. The squaring is the whole point. It is worth seeing which quantity is a property of what. Y belongs to the material. Stress and strain belong to the situation. The extension belongs to the specimen. A student who keeps those three levels separate can answer any question in this chapter, and one who does not will keep looking up the wrong number. The practical version of the same lesson is that a designer choosing a cable specifies a material by its modulus and strength, then chooses a diameter to bring the stress below a safe value — and doubling the diameter buys four times the load capacity, not twice. (The remaining wrong answers make Young's modulus depend on the specimen, or drop the area from the formula altogether.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ही इस्पात के दो तार उसी धरन से लटके हैं और वही भार ढोते हैं। दूसरा पहले से दुगुना लंबा और दुगुने व्यास का है। पहला 2 mm खिंचता है। एक विद्यार्थी भविष्यवाणी करता है कि दूसरा 4 mm खिंचेगा क्योंकि वह दुगुना लंबा है। भविष्यवाणी सुधारो।",
+          "choices": [
+            "विस्तार FL/(AY) है, अतः लंबाई और क्षेत्रफल विपरीत दिशाओं में खींचते हैं। लंबाई दुगुनी करने से विस्तार दुगुना होता है, पर व्यास दुगुना करने से क्षेत्रफल चौगुना होता है और इसलिए वह चार से भाग हो जाता है। शुद्ध गुणक 2/4 = 0.5, और दूसरा तार 1 mm खिंचता है — आधा, दुगुना नहीं। विद्यार्थी ने एक चर बदला और दूसरा भूल गया, और इस सूत्र का यही मानक जाल है",
+            "विद्यार्थी सही है: विस्तार केवल लंबाई पर निर्भर है, क्योंकि यंग मापांक मोटाई का हिसाब पहले ही रख लेता है",
+            "दूसरा तार 2 mm खिंचता है, क्योंकि लंबाई दुगुनी और व्यास दुगुना करना एक-दूसरे को ठीक-ठीक काट देते हैं",
+            "कुछ नहीं कहा जा सकता, क्योंकि उसी इस्पात के मोटे तार का यंग मापांक भिन्न होता है"
+          ],
+          "solution": "सूत्र लिखो और उत्तर घातें गिनने भर का मामला है। यंग मापांक प्रतिबल बटा विकृति परिभाषित है, Y = (F/A)/(ΔL/L), और पुनर्व्यवस्थित करने पर विस्तार ΔL = FL/(AY) मिलता है। दाईं ओर चार चीज़ें आती हैं, और प्रश्न उनमें से दो बदलता है। भार F वही है। पदार्थ वही है, अतः Y वही — और यह अंतिम बात चौथे विकल्प को तुरंत निपटा देती है। यंग मापांक इस्पात का गुण है, उसके किसी विशेष टुकड़े का नहीं; तार आधा काटना या पतला खींचना तालिका के मान को नहीं बदलता, और ठीक इसीलिए उसे तालिकाबद्ध करना सार्थक है। अब वे दो जो बदलती हैं। लंबाई अंश में है, अतः उसे दुगुना करने से विस्तार दुगुना होता है: लंबे तार के पास वही भिन्नात्मक खिंचाव बाँटने को अधिक पदार्थ है, और दुगुनी लंबाई पर वही विकृति दुगुना निरपेक्ष विस्तार देती है। अकेले यह विद्यार्थी का 2 का गुणक देता है। पर क्षेत्रफल हर में है, और क्षेत्रफल व्यास नहीं है। वृत्तीय अनुप्रस्थ काट के लिए A = πd²/4, अतः d दुगुना करने से A चार गुना होता है। वह विस्तार को चार से भाग देता है। जोड़ने पर दूसरा तार पहले के 2 × (1/4) = 0.5 जितना खिंचता है, यानी 1 mm. भूल के आकार पर ध्यान दो, केवल उसके परिमाण पर नहीं। विद्यार्थी से गणना की भूल नहीं हुई; उसने एक राशि बदली और दूसरी को मन में स्थिर पकड़े रखा, जबकि प्रश्न ने दोनों बदल दी थीं। दो से अधिक चरों वाले हर सूत्र में यही सबसे आम विफलता है, और बचाव यांत्रिक है: हर प्रतीक सूचीबद्ध करो, चिह्नित करो कौन बदले, और जोड़ने से पहले हर गुणक अलग लगाओ। तीसरा विकल्प उसी जाल का सूक्ष्मतर रूप है — वह दोनों परिवर्तन देखता है पर व्यास को ऐसे लेता है मानो वह रैखिक रूप से आता हो, अतः 2 और 2 कटते हुए दिखते हैं। वर्ग करना ही पूरी बात है। यह देखने योग्य है कि कौन-सी राशि किसका गुण है। Y पदार्थ का है। प्रतिबल और विकृति स्थिति के हैं। विस्तार नमूने का है। जो छात्र इन तीन स्तरों को अलग रखता है वह इस अध्याय का कोई भी प्रश्न हल कर सकता है, और जो नहीं रखता वह ग़लत संख्या ढूँढ़ता रहेगा। इसी सबक़ का व्यावहारिक रूप यह कि रस्सी चुनता अभिकल्पक पदार्थ को उसके मापांक और सामर्थ्य से तय करता है, फिर व्यास ऐसा चुनता है कि प्रतिबल सुरक्षित मान से नीचे आ जाए — और व्यास दुगुना करने से भार-क्षमता चार गुनी मिलती है, दुगुनी नहीं। (बचे हुए ग़लत उत्तर यंग मापांक को नमूने पर निर्भर बना देते, या सूत्र से क्षेत्रफल ही हटा देते हैं।)"
+        },
+        "mr": {
+          "stem": "एकाच पोलादाच्या दोन तारा त्याच तुळईवरून लटकत आहेत आणि तेच ओझे वाहतात. दुसरी पहिलीहून दुप्पट लांब आणि दुप्पट व्यासाची. पहिली 2 mm ताणली जाते. एक विद्यार्थी भाकीत करतो की दुसरी 4 mm ताणली जाईल कारण ती दुप्पट लांब आहे. भाकीत दुरुस्त करा.",
+          "choices": [
+            "ताण FL/(AY) आहे, म्हणून लांबी आणि क्षेत्रफळ विरुद्ध दिशांना ओढतात. लांबी दुप्पट केल्याने ताण दुप्पट होतो, पण व्यास दुप्पट केल्याने क्षेत्रफळ चौपट होते आणि म्हणून तो चारने भागला जातो. निव्वळ गुणक 2/4 = 0.5, आणि दुसरी तार 1 mm ताणली जाते — निम्मे, दुप्पट नव्हे. विद्यार्थ्याने एक चल बदलले आणि दुसरे विसरले, आणि या सूत्राचा हाच प्रमाणित सापळा",
+            "विद्यार्थी बरोबर: ताण केवळ लांबीवर अवलंबून, कारण यंग मापांक जाडीचा हिशोब आधीच ठेवतो",
+            "दुसरी तार 2 mm ताणली जाते, कारण लांबी दुप्पट आणि व्यास दुप्पट करणे एकमेकांना नेमके कापतात",
+            "काहीही सांगता येत नाही, कारण त्याच पोलादाच्या जाड तारेचा यंग मापांक वेगळा असतो"
+          ],
+          "solution": "सूत्र लिहा आणि उत्तर घात मोजण्याइतकेच. यंग मापांक प्रतिबल भागिले विकृती अशी व्याख्या, Y = (F/A)/(ΔL/L), आणि पुनर्रचना केल्यास ताण ΔL = FL/(AY) मिळतो. उजवीकडे चार गोष्टी येतात, आणि प्रश्न त्यांतील दोन बदलतो. ओझे F तेच. पदार्थ तोच, म्हणून Y तोच — आणि हा शेवटचा मुद्दा चौथा पर्याय लगेच निकाली काढतो. यंग मापांक हा पोलादाचा गुणधर्म, त्याच्या कोणत्याही विशिष्ट तुकड्याचा नव्हे; तार अर्धी कापणे वा पातळ ओढणे तक्त्यातले मूल्य बदलत नाही, आणि नेमके म्हणूनच ते तक्त्यात मांडणे सार्थक. आता ज्या दोन बदलतात त्या. लांबी अंशात आहे, म्हणून ती दुप्पट केल्याने ताण दुप्पट होतो: लांब तारेकडे तोच अपूर्णांकी ताण वाटायला अधिक पदार्थ आहे, आणि दुप्पट लांबीवर तीच विकृती दुप्पट निरपेक्ष ताण देते. एकटे हे विद्यार्थ्याचा 2 चा गुणक देते. पण क्षेत्रफळ छेदात आहे, आणि क्षेत्रफळ म्हणजे व्यास नव्हे. वर्तुळाकार आडव्या छेदासाठी A = πd²/4, म्हणून d दुप्पट केल्याने A चौपट होते. ते ताण चारने भागते. एकत्र केल्यास दुसरी तार पहिलीच्या 2 × (1/4) = 0.5 इतकी ताणली जाते, म्हणजे 1 mm. चुकीचा आकार पाहा, केवळ तिचे परिमाण नव्हे. विद्यार्थ्याकडून आकडेमोडीची चूक झाली नाही; त्याने एक राशी बदलली आणि दुसरी मनात स्थिर धरून ठेवली, तर प्रश्नाने दोन्ही बदलल्या होत्या. दोनहून अधिक चले असलेल्या प्रत्येक सूत्रात हेच सर्वांत नेहमीचे अपयश, आणि बचाव यांत्रिक: प्रत्येक चिन्ह यादीत लिहा, कोणती बदलली ते खुणा करा, आणि एकत्र करण्याआधी प्रत्येक गुणक वेगळा लावा. तिसरा पर्याय त्याच सापळ्याचे सूक्ष्मतर रूप — तो दोन्ही बदल पाहतो पण व्यासाला असे घेतो जणू तो रेषीयरीत्या येत असावा, म्हणून 2 आणि 2 कापले जाताना दिसतात. वर्ग करणे हाच अख्खा मुद्दा. कोणती राशी कशाचा गुणधर्म आहे हे पाहण्याजोगे. Y पदार्थाचा. प्रतिबल आणि विकृती परिस्थितीची. ताण नमुन्याचा. जो विद्यार्थी हे तीन स्तर वेगळे ठेवतो तो या प्रकरणातील कोणताही प्रश्न सोडवू शकतो, आणि जो ठेवत नाही तो चुकीचा आकडा शोधत राहील. याच धड्याचे व्यावहारिक रूप हे की दोरी निवडणारा आखणीकार पदार्थ त्याच्या मापांक व बळावरून ठरवतो, मग व्यास असा निवडतो की प्रतिबल सुरक्षित मूल्याखाली येईल — आणि व्यास दुप्पट केल्याने ओझे-क्षमता चौपट मिळते, दुप्पट नव्हे. (उरलेली चुकीची उत्तरे यंग मापांक नमुन्यावर अवलंबून बनवतात, वा सूत्रातून क्षेत्रफळच काढून टाकतात.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A steel rod and a rubber cord of the same length and cross-section are each stretched by the same small amount, well within their elastic ranges. Steel's Young's modulus is far larger. Which stores more elastic energy, and how does this square with rubber being the material used in catapults?",
+      "choices": [
+        "For the SAME extension the steel stores far more, since the energy is ½ × (stress × strain) × volume and steel's much larger modulus means a much larger stress for that strain. The catapult is a different question: rubber can be stretched several times its own length before failing, while steel yields at a fraction of a per cent, so rubber's total storable energy is enormous even though its energy per unit strain is small. What a catapult needs is a large TOTAL store released slowly, and that is set by how far a material can be stretched, not by how stiff it is",
+        "The rubber stores more even at the same extension, because a smaller modulus always means a larger energy store",
+        "Both store exactly the same energy, since the energy depends only on the extension and the two extensions are equal",
+        "Neither stores energy in the elastic range, since elastic deformation is by definition energy-free"
+      ],
+      "answerIndex": 0,
+      "solution": "The question is a good one because it seems to have two contradictory answers, and both intuitions are partly right. Take the calculation first. Energy stored per unit volume is ½ × stress × strain, and stress is Y times strain, so the density of stored energy is ½Yε². Fix the extension and you have fixed ε. Both specimens have the same length, the same cross-section and therefore the same volume. So the ratio of stored energies is simply the ratio of the moduli, and steel's is perhaps a thousand times rubber's. For that particular experiment, the steel wins overwhelmingly. Equivalently: to stretch steel by that amount you had to pull enormously hard, and all that work is now inside it. Rubber gave way easily, so little work was done. Now the catapult, which changes the question without seeming to. A catapult is not asked to store energy at a fixed small extension; it is asked to store as much as possible before it breaks or before the user's arm gives out. Here the limits are what matter. Steel's elastic range ends at a strain of roughly 0.001 — a metre of it stretches about a millimetre before taking a permanent set. Rubber can be taken to a strain of 3 or more, thousands of times further. Since the stored energy goes as ε², rubber's much larger reachable strain overwhelms its much smaller modulus, and its total capacity before failure is far greater. The general shape of that argument is worth extracting: a product of a small factor and a large squared factor is decided by the squared one. Two practical points follow. First, this is why a bow's limbs and a catapult's elastic are made of materials that can be strained a long way, while a bridge cable is made of one that can barely be strained at all — they are answering different questions, storage against stiffness. Second, it is why a snapping steel cable is so dangerous. Its stored energy per unit volume at the point of failure is smaller than rubber's, but a long cable is a large volume, and all of that energy converts to kinetic energy in milliseconds with nothing to absorb it. Rope under tension in a workshop is treated with respect for exactly this reason. A last note on the wrong answers. The fourth is worth naming explicitly because it inverts the definition: elastic deformation is precisely the kind that DOES store recoverable energy, and the reason it is called elastic is that the energy comes back. It is plastic deformation, past the elastic limit, where the work is not recoverable. (The second confuses stiffness with capacity, and the third omits the modulus, which is the only thing distinguishing the two materials here.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "समान लंबाई और अनुप्रस्थ काट की इस्पात की छड़ और रबर की डोरी को उतना ही थोड़ा खींचा जाता है, दोनों की प्रत्यास्थ परास के भीतर ही। इस्पात का यंग मापांक कहीं बड़ा है। कौन अधिक प्रत्यास्थ ऊर्जा संचित करता है, और यह इससे कैसे मेल खाता है कि गुलेल में रबर लगता है?",
+          "choices": [
+            "समान विस्तार पर इस्पात कहीं अधिक संचित करता है, क्योंकि ऊर्जा ½ × (प्रतिबल × विकृति) × आयतन है और इस्पात का बहुत बड़ा मापांक उसी विकृति पर बहुत बड़ा प्रतिबल देता है। गुलेल भिन्न प्रश्न है: रबर टूटने से पहले अपनी लंबाई से कई गुना खिंच सकता है, जबकि इस्पात प्रतिशत के अंश पर ही पराभव कर जाता है, अतः रबर का कुल संचित-योग्य ऊर्जा-भंडार विशाल है यद्यपि प्रति एकांक विकृति उसकी ऊर्जा कम है। गुलेल को चाहिए बड़ा कुल भंडार जो धीरे मुक्त हो, और वह इससे तय होता है कि पदार्थ कितना खिंच सकता है, इससे नहीं कि वह कितना दृढ़ है",
+            "समान विस्तार पर भी रबर अधिक संचित करता है, क्योंकि छोटा मापांक सदा बड़े ऊर्जा-भंडार का अर्थ रखता है",
+            "दोनों ठीक उतनी ही ऊर्जा संचित करते हैं, क्योंकि ऊर्जा केवल विस्तार पर निर्भर है और दोनों विस्तार बराबर हैं",
+            "प्रत्यास्थ परास में कोई ऊर्जा संचित करता ही नहीं, क्योंकि प्रत्यास्थ विरूपण परिभाषा से ऊर्जा-रहित है"
+          ],
+          "solution": "प्रश्न अच्छा है क्योंकि उसके दो परस्पर विरोधी उत्तर दिखते हैं, और दोनों अंतर्ज्ञान आंशिक रूप से सही हैं। पहले गणना लो। प्रति एकांक आयतन संचित ऊर्जा ½ × प्रतिबल × विकृति है, और प्रतिबल Y गुणा विकृति है, अतः संचित ऊर्जा का घनत्व ½Yε² है। विस्तार तय करो और तुमने ε तय कर दिया। दोनों नमूनों की लंबाई एक, अनुप्रस्थ काट एक और इसलिए आयतन एक। अतः संचित ऊर्जाओं का अनुपात बस मापांकों का अनुपात है, और इस्पात का शायद रबर से हज़ार गुना। उस विशेष प्रयोग के लिए इस्पात भारी अंतर से जीतता है। समतुल्य रूप से: इस्पात को उतना खींचने के लिए तुम्हें बहुत ज़ोर लगाना पड़ा, और वह सारा कार्य अब उसके भीतर है। रबर आसानी से मान गया, अतः कार्य कम हुआ। अब गुलेल, जो बिना दिखे प्रश्न बदल देती है। गुलेल से यह नहीं कहा जाता कि नियत छोटे विस्तार पर ऊर्जा संचित करो; उससे कहा जाता है कि टूटने से पहले या उपयोगकर्ता की बाँह हारने से पहले जितनी हो सके उतनी संचित करो। यहाँ सीमाएँ ही मायने रखती हैं। इस्पात की प्रत्यास्थ परास लगभग 0.001 विकृति पर समाप्त होती है — उसका एक मीटर स्थायी विरूपण लेने से पहले लगभग एक मिलीमीटर खिंचता है। रबर को 3 या उससे अधिक विकृति तक ले जाया जा सकता है, हज़ारों गुना आगे। चूँकि संचित ऊर्जा ε² के अनुसार चलती है, रबर की कहीं बड़ी पहुँच-योग्य विकृति उसके कहीं छोटे मापांक पर भारी पड़ती है, और विफलता से पहले उसकी कुल क्षमता कहीं अधिक है। उस तर्क का सामान्य रूप निकालने योग्य है: छोटे गुणक और बड़े वर्गित गुणक का गुणनफल वर्गित वाले से तय होता है। दो व्यावहारिक बातें निकलती हैं। पहली, इसीलिए धनुष की भुजाएँ और गुलेल का इलास्टिक ऐसे पदार्थों से बनते हैं जिन्हें दूर तक खींचा जा सके, जबकि पुल की रस्सी ऐसे पदार्थ से जिसे मुश्किल से खींचा जा सके — वे भिन्न प्रश्नों के उत्तर हैं, भंडारण बनाम दृढ़ता। दूसरी, इसीलिए टूटती इस्पात की रस्सी इतनी ख़तरनाक है। विफलता के बिंदु पर उसकी प्रति एकांक आयतन संचित ऊर्जा रबर से कम है, पर लंबी रस्सी बड़ा आयतन है, और वह सारी ऊर्जा मिलीसेकंड में गतिज ऊर्जा बन जाती है और उसे सोखने को कुछ नहीं होता। कार्यशाला में तनी रस्सी के साथ ठीक इसी कारण आदर से बर्ताव होता है। ग़लत उत्तरों पर एक अंतिम टिप्पणी। चौथा स्पष्ट रूप से नाम लेने योग्य है क्योंकि वह परिभाषा उलट देता है: प्रत्यास्थ विरूपण ठीक वही क़िस्म है जो पुनर्प्राप्य ऊर्जा संचित करती है, और उसे प्रत्यास्थ इसीलिए कहते हैं कि ऊर्जा लौट आती है। सुघट्य विरूपण, प्रत्यास्थता सीमा के परे, वह है जहाँ कार्य पुनर्प्राप्य नहीं। (दूसरा दृढ़ता को क्षमता से गड्डमड्ड करता है, और तीसरा मापांक छोड़ देता है, जो यहाँ दोनों पदार्थों को अलग करने वाली एकमात्र चीज़ है।)"
+        },
+        "mr": {
+          "stem": "समान लांबी आणि आडव्या छेदाची पोलादाची दांडी आणि रबराची दोरी प्रत्येकी तितकीच थोडी ताणली जाते, दोघांच्याही प्रत्यास्थ पल्ल्यात. पोलादाचा यंग मापांक कितीतरी मोठा. कोण अधिक प्रत्यास्थ ऊर्जा साठवते, आणि हे गलोलमध्ये रबर वापरले जाते याच्याशी कसे जुळते?",
+          "choices": [
+            "समान ताणासाठी पोलाद कितीतरी अधिक साठवते, कारण ऊर्जा ½ × (प्रतिबल × विकृती) × घनफळ आहे आणि पोलादाचा कितीतरी मोठा मापांक त्याच विकृतीसाठी कितीतरी मोठे प्रतिबल देतो. गलोल हा वेगळा प्रश्न: रबर तुटण्याआधी स्वतःच्या लांबीच्या कैकपट ताणले जाऊ शकते, तर पोलाद टक्क्याच्या अंशावरच नमते, म्हणून रबराचा एकूण साठवण्याजोगा ऊर्जासाठा प्रचंड आहे जरी प्रति एकक विकृती त्याची ऊर्जा कमी असली तरी. गलोलला हवा मोठा एकूण साठा जो सावकाश मुक्त होईल, आणि तो पदार्थ किती ताणला जाऊ शकतो यावरून ठरतो, तो किती ताठर आहे यावरून नव्हे",
+            "समान ताणावरही रबर अधिक साठवते, कारण लहान मापांक नेहमी मोठ्या ऊर्जासाठ्याचा अर्थ राखतो",
+            "दोघे नेमकी तितकीच ऊर्जा साठवतात, कारण ऊर्जा केवळ ताणावर अवलंबून आणि दोन्ही ताण समान आहेत",
+            "प्रत्यास्थ पल्ल्यात कोणीही ऊर्जा साठवत नाही, कारण प्रत्यास्थ विरूपण व्याख्येनेच ऊर्जाविरहित आहे"
+          ],
+          "solution": "प्रश्न चांगला आहे कारण त्याची दोन परस्परविरोधी उत्तरे दिसतात, आणि दोन्ही अंतःप्रेरणा अंशतः बरोबर आहेत. आधी गणना घ्या. प्रति एकक घनफळ साठलेली ऊर्जा ½ × प्रतिबल × विकृती, आणि प्रतिबल म्हणजे Y गुणिले विकृती, म्हणून साठलेल्या ऊर्जेची घनता ½Yε². ताण ठरवा आणि तुम्ही ε ठरवले. दोन्ही नमुन्यांची लांबी एक, आडवा छेद एक आणि म्हणून घनफळ एक. म्हणून साठलेल्या ऊर्जांचे गुणोत्तर फक्त मापांकांचे गुणोत्तर, आणि पोलादाचे कदाचित रबराच्या हजारपट. त्या विशिष्ट प्रयोगासाठी पोलाद प्रचंड फरकाने जिंकते. समतुल्यपणे: पोलाद तितके ताणायला तुम्हाला प्रचंड जोर लावावा लागला, आणि ते सर्व कार्य आता त्याच्या आत आहे. रबर सहज नमले, म्हणून कार्य कमी झाले. आता गलोल, जी न दिसता प्रश्न बदलते. गलोलला असे सांगितले जात नाही की ठरलेल्या लहान ताणावर ऊर्जा साठव; तिला सांगितले जाते की तुटण्याआधी वा वापरणाऱ्याचा हात हरण्याआधी जितकी शक्य तितकी साठव. इथे मर्यादाच महत्त्वाच्या. पोलादाचा प्रत्यास्थ पल्ला सुमारे 0.001 विकृतीवर संपतो — त्याचा एक मीटर कायमचे विरूपण घेण्याआधी सुमारे एक मिलीमीटर ताणला जातो. रबराला 3 वा त्याहून अधिक विकृतीपर्यंत नेता येते, हजारपट पुढे. साठलेली ऊर्जा ε² नुसार जात असल्याने, रबराची कितीतरी मोठी गाठता येणारी विकृती त्याच्या कितीतरी लहान मापांकावर वरचढ ठरते, आणि अपयशाआधी त्याची एकूण क्षमता कितीतरी अधिक. त्या युक्तिवादाचा सामान्य आकार काढण्याजोगा: लहान गुणक आणि मोठा वर्गित गुणक यांचा गुणाकार वर्गित गुणकाने ठरतो. दोन व्यावहारिक मुद्दे निघतात. पहिला, म्हणूनच धनुष्याच्या भुजा आणि गलोलचे इलॅस्टिक अशा पदार्थांचे बनतात जे दूरवर ताणता येतात, तर पुलाची दोरी अशा पदार्थाची जी जेमतेम ताणता येते — ती वेगळ्या प्रश्नांची उत्तरे, साठवण विरुद्ध ताठरता. दुसरा, म्हणूनच तुटणारी पोलादी दोरी इतकी धोकादायक. अपयशाच्या बिंदूवर तिची प्रति एकक घनफळ साठलेली ऊर्जा रबराहून कमी, पण लांब दोरी हे मोठे घनफळ, आणि ती सर्व ऊर्जा मिलिसेकंदांत गतिज ऊर्जा बनते आणि तिला शोषायला काहीही नसते. कार्यशाळेत ताणलेल्या दोरीशी नेमक्या याच कारणाने आदराने वागले जाते. चुकीच्या उत्तरांवर एक शेवटची टिप्पणी. चौथे स्पष्टपणे नाव घेण्याजोगे कारण ते व्याख्या उलटवते: प्रत्यास्थ विरूपण हाच नेमका तो प्रकार जो पुन्हा मिळवण्याजोगी ऊर्जा साठवतो, आणि त्याला प्रत्यास्थ म्हणतात कारण ऊर्जा परत येते. सुघट्य विरूपण, प्रत्यास्थता मर्यादेपलीकडचे, तिथे कार्य पुन्हा मिळवता येत नाही. (दुसरे ताठरतेची क्षमतेशी गल्लत करते, आणि तिसरे मापांक वगळते, जो इथे दोन्ही पदार्थांना वेगळे करणारी एकमेव गोष्ट आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A wire of cross-sectional area 2 mm² carries a load of 100 N. What is the tensile stress in it, in MPa?",
+      "choices": [
+        "5",
+        "50",
+        "25",
+        "200"
+      ],
+      "answerIndex": 1,
+      "solution": "Stress is force divided by area: 100/2 = 50 N/mm², and one newton per square millimetre is exactly one megapascal, so the stress is 50 MPa. (200 multiplies instead of dividing, and 25 halves the answer once too often.)",
+      "checkExpr": "100/2",
+      "translations": {
+        "hi": {
+          "stem": "2 mm² अनुप्रस्थ काट क्षेत्रफल का तार 100 N का भार ढोता है। उसमें तन्य प्रतिबल MPa में क्या है?",
+          "choices": [
+            "5",
+            "50",
+            "25",
+            "200"
+          ],
+          "solution": "प्रतिबल बल बटा क्षेत्रफल है: 100/2 = 50 N/mm², और एक न्यूटन प्रति वर्ग मिलीमीटर ठीक एक मेगापास्कल है, अतः प्रतिबल 50 MPa. (200 भाग के बजाय गुणा करता है, और 25 उत्तर एक बार अधिक आधा कर देता है।)"
+        },
+        "mr": {
+          "stem": "2 mm² आडव्या छेदाच्या क्षेत्रफळाची तार 100 N चे ओझे वाहते. तिच्यातले तन्य प्रतिबल MPa मध्ये किती?",
+          "choices": [
+            "5",
+            "50",
+            "25",
+            "200"
+          ],
+          "solution": "प्रतिबल म्हणजे बल भागिले क्षेत्रफळ: 100/2 = 50 N/mm², आणि एक न्यूटन प्रति चौरस मिलीमीटर म्हणजे नेमका एक मेगापास्कल, म्हणून प्रतिबल 50 MPa. (200 भागण्याऐवजी गुणते, आणि 25 उत्तर एकदा जास्त निम्मे करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A wire 2 m long stretches by 1 mm under a load. What is the longitudinal strain?",
+      "choices": [
+        "0.002",
+        "0.5",
+        "0.0005",
+        "2000"
+      ],
+      "answerIndex": 2,
+      "solution": "Strain is the extension divided by the original length, with both in the same units: 0.001/2 = 0.0005. It is a pure number and carries no units at all. (0.5 forgets to convert the millimetre to metres, and 2000 inverts the ratio.)",
+      "checkExpr": "0.001/2",
+      "translations": {
+        "hi": {
+          "stem": "2 m लंबा तार भार के नीचे 1 mm खिंचता है। अनुदैर्घ्य विकृति क्या है?",
+          "choices": [
+            "0.002",
+            "0.5",
+            "0.0005",
+            "2000"
+          ],
+          "solution": "विकृति विस्तार बटा मूल लंबाई है, दोनों एक ही मात्रक में: 0.001/2 = 0.0005. वह शुद्ध संख्या है और उसका कोई मात्रक नहीं। (0.5 मिलीमीटर को मीटर में बदलना भूलता है, और 2000 अनुपात उलट देता है।)"
+        },
+        "mr": {
+          "stem": "2 m लांब तार ओझ्याखाली 1 mm ताणली जाते. अनुदैर्घ्य विकृती किती?",
+          "choices": [
+            "0.002",
+            "0.5",
+            "0.0005",
+            "2000"
+          ],
+          "solution": "विकृती म्हणजे ताण भागिले मूळ लांबी, दोन्ही एकाच एककात: 0.001/2 = 0.0005. ती शुद्ध संख्या आणि तिला कोणतेही एकक नाही. (0.5 मिलीमीटरचे मीटरमध्ये रूपांतर विसरते, आणि 2000 गुणोत्तर उलटे करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A material under a stress of 50 MPa shows a strain of 0.0005. What is its Young's modulus, in GPa?",
+      "choices": [
+        "100",
+        "1000",
+        "10",
+        "0.1"
+      ],
+      "answerIndex": 0,
+      "solution": "Y = stress/strain = 50/0.0005 = 100,000 MPa, and a thousand megapascals make a gigapascal, so Y = 100 GPa. Strain has no units, so Y always comes out in the units of stress. (10 and 1000 slip by factors of ten in the final conversion.)",
+      "checkExpr": "50/0.0005/1000",
+      "translations": {
+        "hi": {
+          "stem": "50 MPa प्रतिबल के नीचे किसी पदार्थ की विकृति 0.0005 है। उसका यंग मापांक GPa में क्या है?",
+          "choices": [
+            "100",
+            "1000",
+            "10",
+            "0.1"
+          ],
+          "solution": "Y = प्रतिबल/विकृति = 50/0.0005 = 100,000 MPa, और हज़ार मेगापास्कल एक गीगापास्कल बनाते हैं, अतः Y = 100 GPa. विकृति का कोई मात्रक नहीं, अतः Y सदा प्रतिबल के मात्रकों में निकलता है। (10 और 1000 अंतिम रूपांतरण में दस के गुणकों से खिसकते हैं।)"
+        },
+        "mr": {
+          "stem": "50 MPa प्रतिबलाखाली एका पदार्थाची विकृती 0.0005 आहे. त्याचा यंग मापांक GPa मध्ये किती?",
+          "choices": [
+            "100",
+            "1000",
+            "10",
+            "0.1"
+          ],
+          "solution": "Y = प्रतिबल/विकृती = 50/0.0005 = 100,000 MPa, आणि हजार मेगापास्कल एक गिगापास्कल बनवतात, म्हणून Y = 100 GPa. विकृतीला एकक नाही, म्हणून Y नेहमी प्रतिबलाच्या एककांत निघतो. (10 आणि 1000 शेवटच्या रूपांतरात दहाच्या पटींनी सरकतात.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A wire stretches by 2 mm under a load. A second wire of the same material, same length and twice the diameter carries the same load. By how much does it stretch, in mm?",
+      "choices": [
+        "4",
+        "0.5",
+        "1",
+        "8"
+      ],
+      "answerIndex": 1,
+      "solution": "Extension is FL/(AY), and doubling the diameter quadruples the area, so the extension is divided by four: 2/4 = 0.5 mm. (1 halves it, treating area as proportional to diameter rather than to its square.)",
+      "checkExpr": "2/2^2",
+      "translations": {
+        "hi": {
+          "stem": "एक तार भार के नीचे 2 mm खिंचता है। उसी पदार्थ, उसी लंबाई और दुगुने व्यास का दूसरा तार वही भार ढोता है। वह mm में कितना खिंचता है?",
+          "choices": [
+            "4",
+            "0.5",
+            "1",
+            "8"
+          ],
+          "solution": "विस्तार FL/(AY) है, और व्यास दुगुना करने से क्षेत्रफल चौगुना होता है, अतः विस्तार चार से भाग हो जाता है: 2/4 = 0.5 mm. (1 उसे आधा करता है, क्षेत्रफल को व्यास के वर्ग के बजाय व्यास का समानुपाती मानकर।)"
+        },
+        "mr": {
+          "stem": "एक तार ओझ्याखाली 2 mm ताणली जाते. त्याच पदार्थाची, त्याच लांबीची आणि दुप्पट व्यासाची दुसरी तार तेच ओझे वाहते. ती mm मध्ये किती ताणली जाते?",
+          "choices": [
+            "4",
+            "0.5",
+            "1",
+            "8"
+          ],
+          "solution": "ताण FL/(AY), आणि व्यास दुप्पट केल्याने क्षेत्रफळ चौपट होते, म्हणून ताण चारने भागला जातो: 2/4 = 0.5 mm. (1 ते निम्मे करते, क्षेत्रफळ व्यासाच्या वर्गाऐवजी व्यासाच्या समानुपाती मानून.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A wire stretches by 1 mm under a steady load of 200 N. How much elastic potential energy is stored in it?",
+      "choices": [
+        "0.05",
+        "0.1",
+        "0.2",
+        "2"
+      ],
+      "answerIndex": 1,
+      "solution": "U = ½ × F × x = ½ × 200 × 0.001 = 0.1 J. The half appears because the load built up from zero as the wire lengthened, so the work is the triangle under the load–extension graph. (0.2 drops the half by treating the full load as acting throughout.)",
+      "checkExpr": "0.5*200*0.001",
+      "translations": {
+        "hi": {
+          "stem": "एक तार 200 N के स्थिर भार के नीचे 1 mm खिंचता है। उसमें कितनी प्रत्यास्थ स्थितिज ऊर्जा संचित है?",
+          "choices": [
+            "0.05",
+            "0.1",
+            "0.2",
+            "2"
+          ],
+          "solution": "U = ½ × F × x = ½ × 200 × 0.001 = 0.1 J. आधा इसलिए आता है कि तार के लंबा होते-होते भार शून्य से बढ़ा, अतः कार्य भार-विस्तार आलेख के नीचे का त्रिभुज है। (0.2 आधा गिरा देता है, पूरे भार को पूरे समय लगता मानकर।)"
+        },
+        "mr": {
+          "stem": "एक तार 200 N च्या स्थिर ओझ्याखाली 1 mm ताणली जाते. तिच्यात किती प्रत्यास्थ स्थितिज ऊर्जा साठलेली आहे?",
+          "choices": [
+            "0.05",
+            "0.1",
+            "0.2",
+            "2"
+          ],
+          "solution": "U = ½ × F × x = ½ × 200 × 0.001 = 0.1 J. निम्मे यासाठी येते की तार लांब होता होता ओझे शून्यापासून वाढले, म्हणून कार्य म्हणजे ओझे-ताण आलेखाखालचा त्रिकोण. (0.2 निम्मे गाळते, पूर्ण ओझे पूर्ण काळ लागत होते असे मानून.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A 3 m wire stretches by 1.5 mm under a load. A 5 m wire of the same material and cross-section carries the same load. By how much does it stretch, in mm?",
+      "choices": [
+        "2.5",
+        "3",
+        "0.9",
+        "7.5"
+      ],
+      "answerIndex": 0,
+      "solution": "Extension is proportional to the original length when everything else is fixed, so 1.5 × 5/3 = 2.5 mm. The strain is identical in both wires; only the absolute extension differs, because there is more length for the same fractional stretch to act on. (0.9 inverts the ratio.)",
+      "checkExpr": "1.5*5/3",
+      "translations": {
+        "hi": {
+          "stem": "3 m का तार भार के नीचे 1.5 mm खिंचता है। उसी पदार्थ और अनुप्रस्थ काट का 5 m तार वही भार ढोता है। वह mm में कितना खिंचता है?",
+          "choices": [
+            "2.5",
+            "3",
+            "0.9",
+            "7.5"
+          ],
+          "solution": "बाक़ी सब तय हो तो विस्तार मूल लंबाई का समानुपाती है, अतः 1.5 × 5/3 = 2.5 mm. दोनों तारों में विकृति समान है; केवल निरपेक्ष विस्तार भिन्न है, क्योंकि उसी भिन्नात्मक खिंचाव के लिए अधिक लंबाई है। (0.9 अनुपात उलट देता है।)"
+        },
+        "mr": {
+          "stem": "3 m ची तार ओझ्याखाली 1.5 mm ताणली जाते. त्याच पदार्थाची आणि आडव्या छेदाची 5 m ची तार तेच ओझे वाहते. ती mm मध्ये किती ताणली जाते?",
+          "choices": [
+            "2.5",
+            "3",
+            "0.9",
+            "7.5"
+          ],
+          "solution": "बाकी सर्व ठरलेले असल्यास ताण मूळ लांबीच्या समानुपाती, म्हणून 1.5 × 5/3 = 2.5 mm. दोन्ही तारांत विकृती सारखी; केवळ निरपेक्ष ताण वेगळा, कारण त्याच अपूर्णांकी ताणासाठी अधिक लांबी आहे. (0.9 गुणोत्तर उलटे करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A pressure increase of 20 MPa reduces a solid's volume by a fraction of 0.0001. What is its bulk modulus, in GPa?",
+      "choices": [
+        "200",
+        "2000",
+        "2",
+        "20"
+      ],
+      "answerIndex": 0,
+      "solution": "B = pressure divided by the fractional volume change = 20/0.0001 = 200,000 MPa = 200 GPa. The very large value is why solids and liquids are treated as incompressible in most problems: even 20 MPa, some two hundred atmospheres, moves the volume by only one part in ten thousand. (20 forgets to divide by the strain at all.)",
+      "checkExpr": "20/0.0001/1000",
+      "translations": {
+        "hi": {
+          "stem": "20 MPa की दाब-वृद्धि किसी ठोस का आयतन 0.0001 अंश से घटाती है। उसका आयतन मापांक GPa में क्या है?",
+          "choices": [
+            "200",
+            "2000",
+            "2",
+            "20"
+          ],
+          "solution": "B = दाब बटा भिन्नात्मक आयतन-परिवर्तन = 20/0.0001 = 200,000 MPa = 200 GPa. यह बहुत बड़ा मान ही वह कारण है जिससे अधिकांश प्रश्नों में ठोस और द्रव असंपीड्य माने जाते हैं: 20 MPa भी, जो लगभग दो सौ वायुमंडल है, आयतन को दस हज़ार में केवल एक भाग हिलाता है। (20 विकृति से भाग देना ही भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "20 MPa ची दाबवाढ एका घनपदार्थाचे घनफळ 0.0001 अंशाने घटवते. त्याचा घनफळ मापांक GPa मध्ये किती?",
+          "choices": [
+            "200",
+            "2000",
+            "2",
+            "20"
+          ],
+          "solution": "B = दाब भागिले अपूर्णांकी घनफळ-बदल = 20/0.0001 = 200,000 MPa = 200 GPa. हे फार मोठे मूल्य हेच ते कारण ज्यामुळे बहुतांश प्रश्नांत घन आणि द्रव असंपीड्य मानले जातात: 20 MPa सुद्धा, जे सुमारे दोनशे वातावरणे, घनफळ दहा हजारांत केवळ एक भाग हलवते. (20 विकृतीने भागायचेच विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A material has a Poisson's ratio of 0.3. A wire of it is stretched to a longitudinal strain of 0.002. What is the magnitude of the lateral strain?",
+      "choices": [
+        "0.0067",
+        "0.006",
+        "0.0006",
+        "0.0002"
+      ],
+      "answerIndex": 2,
+      "solution": "Poisson's ratio is lateral strain divided by longitudinal strain, so the lateral strain is 0.3 × 0.002 = 0.0006. The wire narrows as it lengthens, which is why the sign is opposite even though the magnitudes are what is asked for. (0.0067 divides instead of multiplying.)",
+      "checkExpr": "0.3*0.002",
+      "translations": {
+        "hi": {
+          "stem": "किसी पदार्थ का प्वासों अनुपात 0.3 है। उसका तार 0.002 अनुदैर्घ्य विकृति तक खींचा जाता है। पार्श्व विकृति का परिमाण क्या है?",
+          "choices": [
+            "0.0067",
+            "0.006",
+            "0.0006",
+            "0.0002"
+          ],
+          "solution": "प्वासों अनुपात पार्श्व विकृति बटा अनुदैर्घ्य विकृति है, अतः पार्श्व विकृति 0.3 × 0.002 = 0.0006. तार लंबा होते हुए पतला होता है, इसीलिए चिह्न विपरीत है यद्यपि पूछा परिमाण गया है। (0.0067 गुणा के बजाय भाग देता है।)"
+        },
+        "mr": {
+          "stem": "एका पदार्थाचे प्वासों गुणोत्तर 0.3 आहे. त्याची तार 0.002 अनुदैर्घ्य विकृतीपर्यंत ताणली जाते. आडव्या विकृतीचे परिमाण किती?",
+          "choices": [
+            "0.0067",
+            "0.006",
+            "0.0006",
+            "0.0002"
+          ],
+          "solution": "प्वासों गुणोत्तर म्हणजे आडवी विकृती भागिले अनुदैर्घ्य विकृती, म्हणून आडवी विकृती 0.3 × 0.002 = 0.0006. तार लांब होताना बारीक होते, म्हणूनच चिन्ह विरुद्ध जरी विचारले परिमाण असले तरी. (0.0067 गुणण्याऐवजी भागते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A steel wire of length 2000 mm and area 1 mm² carries 100 N. Steel's Young's modulus is 200,000 N/mm². By how much does the wire stretch, in mm?",
+      "choices": [
+        "1",
+        "0.5",
+        "2",
+        "10"
+      ],
+      "answerIndex": 0,
+      "solution": "ΔL = FL/(AY) = 100 × 2000/(1 × 200,000) = 1 mm. Notice that all four quantities were given in a consistent set of units — newtons, millimetres and N/mm² — so no conversion was needed anywhere, which is the reason engineers work in this system rather than in metres and pascals. (2 forgets to divide by the area, which happens to be 1 and so hides the error's shape.)",
+      "checkExpr": "100*2000/(1*200000)",
+      "translations": {
+        "hi": {
+          "stem": "2000 mm लंबाई और 1 mm² क्षेत्रफल का इस्पात का तार 100 N ढोता है। इस्पात का यंग मापांक 200,000 N/mm² है। तार mm में कितना खिंचता है?",
+          "choices": [
+            "1",
+            "0.5",
+            "2",
+            "10"
+          ],
+          "solution": "ΔL = FL/(AY) = 100 × 2000/(1 × 200,000) = 1 mm. ध्यान दो चारों राशियाँ एक ही संगत मात्रक-समुच्चय में दी गईं — न्यूटन, मिलीमीटर और N/mm² — अतः कहीं कोई रूपांतरण नहीं चाहिए था, और इसीलिए अभियंता मीटर तथा पास्कल के बजाय इसी तंत्र में काम करते हैं। (2 क्षेत्रफल से भाग देना भूलता है, जो संयोग से 1 है और इसलिए भूल का आकार छिपा देता है।)"
+        },
+        "mr": {
+          "stem": "2000 mm लांबी आणि 1 mm² क्षेत्रफळाची पोलादी तार 100 N वाहते. पोलादाचा यंग मापांक 200,000 N/mm² आहे. तार mm मध्ये किती ताणली जाते?",
+          "choices": [
+            "1",
+            "0.5",
+            "2",
+            "10"
+          ],
+          "solution": "ΔL = FL/(AY) = 100 × 2000/(1 × 200,000) = 1 mm. लक्षात घ्या चारही राशी एकाच सुसंगत एकक-संचात दिल्या — न्यूटन, मिलीमीटर आणि N/mm² — म्हणून कुठेही कोणतेही रूपांतर लागले नाही, आणि म्हणूनच अभियंते मीटर आणि पास्कलऐवजी याच प्रणालीत काम करतात. (2 क्षेत्रफळाने भागायचे विसरते, जे योगायोगाने 1 आहे आणि म्हणून चुकीचा आकार लपवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A wire breaks under a load of 500 N. A second wire of the same material and the same length but twice the diameter is tested. What load will break it?",
+      "choices": [
+        "1000 N",
+        "250 N",
+        "2000 N",
+        "500 N"
+      ],
+      "answerIndex": 2,
+      "solution": "Breaking is governed by stress, not by load. The wire fails when F/A reaches the material's breaking stress, a number fixed by the steel and nothing else. Doubling the diameter quadruples the area, so four times the load is needed to reach the same stress: 4 × 500 = 2000 N. Two things follow that are worth keeping. First, the LENGTH is irrelevant — a wire of the same material and thickness breaks at the same load whether it is a metre or a kilometre long, which surprises most people and is the clearest evidence that stress and not force is the governing quantity. Second, this is why cable diameters go up so slowly as loads rise: to carry nine times the load a designer needs only three times the diameter. It is also why a chain is only as strong as its weakest link, since the whole load passes through the smallest area anywhere along it. (1000 treats the strength as proportional to the diameter, and 500 assumes thickness makes no difference at all.)",
+      "checkExpr": "500*2^2",
+      "translations": {
+        "hi": {
+          "stem": "एक तार 500 N के भार पर टूटता है। उसी पदार्थ और उसी लंबाई का पर दुगुने व्यास का दूसरा तार परखा जाता है। वह किस भार पर टूटेगा?",
+          "choices": [
+            "1000 N",
+            "250 N",
+            "2000 N",
+            "500 N"
+          ],
+          "solution": "टूटना प्रतिबल से तय होता है, भार से नहीं। तार तब विफल होता है जब F/A पदार्थ के भंजक प्रतिबल तक पहुँचे, जो संख्या इस्पात तय करता है और कुछ नहीं। व्यास दुगुना करने से क्षेत्रफल चौगुना होता है, अतः वही प्रतिबल पाने को चार गुना भार चाहिए: 4 × 500 = 2000 N. दो बातें निकलती हैं जो रखने योग्य हैं। पहली, लंबाई अप्रासंगिक है — उसी पदार्थ और मोटाई का तार उसी भार पर टूटता है चाहे वह एक मीटर लंबा हो या एक किलोमीटर, जो अधिकांश लोगों को चौंकाता है और यही सबसे स्पष्ट प्रमाण है कि शासक राशि बल नहीं प्रतिबल है। दूसरी, इसीलिए भार बढ़ने पर रस्सियों के व्यास इतने धीरे बढ़ते हैं: नौ गुना भार ढोने को अभिकल्पक को केवल तीन गुना व्यास चाहिए। इसी से यह भी कि साँकल उतनी ही मज़बूत है जितनी उसकी सबसे कमज़ोर कड़ी, क्योंकि पूरा भार उसकी लंबाई में कहीं भी सबसे छोटे क्षेत्रफल से होकर गुज़रता है। (1000 सामर्थ्य को व्यास का समानुपाती मानता है, और 500 मान लेता है कि मोटाई से कोई फ़र्क़ ही नहीं पड़ता।)"
+        },
+        "mr": {
+          "stem": "एक तार 500 N च्या ओझ्यावर तुटते. त्याच पदार्थाची आणि त्याच लांबीची पण दुप्पट व्यासाची दुसरी तार तपासली जाते. ती कोणत्या ओझ्यावर तुटेल?",
+          "choices": [
+            "1000 N",
+            "250 N",
+            "2000 N",
+            "500 N"
+          ],
+          "solution": "तुटणे प्रतिबलाने ठरते, ओझ्याने नव्हे. तार तेव्हा अपयशी होते जेव्हा F/A पदार्थाच्या भंजक प्रतिबलापर्यंत पोहोचते, जी संख्या पोलाद ठरवते आणि दुसरे काहीही नाही. व्यास दुप्पट केल्याने क्षेत्रफळ चौपट होते, म्हणून तेच प्रतिबल गाठायला चौपट ओझे लागते: 4 × 500 = 2000 N. दोन गोष्टी निघतात ज्या ठेवण्याजोग्या. पहिली, लांबी असंबद्ध — त्याच पदार्थाची आणि जाडीची तार त्याच ओझ्यावर तुटते मग ती एक मीटर लांब असो वा एक किलोमीटर, जे बहुतांश लोकांना चकित करते आणि हाच सर्वांत स्पष्ट पुरावा की शासक राशी बल नव्हे तर प्रतिबल आहे. दुसरी, म्हणूनच ओझे वाढताना दोऱ्यांचे व्यास इतके सावकाश वाढतात: नऊपट ओझे वाहायला आखणीकाराला केवळ तिप्पट व्यास लागतो. यामुळेच हेही की साखळी तिच्या सर्वांत कमकुवत कडीइतकीच बळकट, कारण अख्खे ओझे तिच्या लांबीत कुठेही असलेल्या सर्वांत लहान क्षेत्रफळातून जाते. (1000 बळ व्यासाच्या समानुपाती मानते, आणि 500 गृहीत धरते की जाडीने काहीच फरक पडत नाही.)"
+        }
+      }
+    }
+  ]
+}
