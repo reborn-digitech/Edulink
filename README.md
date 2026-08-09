@@ -2509,8 +2509,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 258
-  chapters / 4,125 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 280
+  chapters / 4,521 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2535,10 +2535,21 @@ navigation" means the actual list rather than one somebody maintained by hand.
   Carbon and its Compounds; the biology block Life Processes, Control
   and Coordination, How do Organisms Reproduce, Heredity; the physics
   block Light, The Human Eye and the Colourful World, Electricity,
-  Magnetic Effects of Electric Current; and Our Environment), with its
-  four remaining subjects — History, Geography, Political Science,
-  Economics — still to come, then Classes 11 and 12. Suite re-pointed
-  and green: 84 files, 1453 tests.
+  Magnetic Effects of Electric Current; and Our Environment). **Class 10
+  is now complete across all six subjects**: History 5 — *India and the
+  Contemporary World II* — in `g10-history.ts` (Rise of Nationalism in
+  Europe, Nationalism in India, Making of a Global World, Age of
+  Industrialisation, Print Culture); Geography 7 — *Contemporary India
+  II* — in `g10-geography.ts` (Resources and Development, Forest and
+  Wildlife, Water Resources, Agriculture, Minerals and Energy,
+  Manufacturing Industries, Lifelines of National Economy); Political
+  Science 5 — *Democratic Politics II* — in `g10-civics.ts` (Power
+  Sharing, Federalism, Gender Religion and Caste, Political Parties,
+  Outcomes of Democracy); and Economics 5 — *Understanding Economic
+  Development* — in `g10-economics.ts` (Development, Sectors of the
+  Indian Economy, Money and Credit, Globalisation, Consumer Rights).
+  Classes 11 and 12 remain. Suite re-pointed and green: 84 files, 1453
+  tests.
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)

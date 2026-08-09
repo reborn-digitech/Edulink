@@ -1058,4 +1058,700 @@ export const G10_ECONOMICS: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 4 — Globalisation and the Indian Economy                        */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "economics-10-globalisation",
+    subject: "ECONOMICS",
+    classLevel: 10,
+    chapter: {
+      en: "Chapter 4 — Globalisation and the Indian Economy",
+      hi: "अध्याय 4 — वैश्वीकरण और भारतीय अर्थव्यवस्था",
+      mr: "प्रकरण 4 — जागतिकीकरण आणि भारतीय अर्थव्यवस्था",
+    },
+    name: {
+      en: "Globalisation and the Indian Economy",
+      hi: "वैश्वीकरण और भारतीय अर्थव्यवस्था",
+      mr: "जागतिकीकरण आणि भारतीय अर्थव्यवस्था",
+    },
+    summary: {
+      en: "A country opening its doors and finding out who walks in: a firm that owns factories in six countries and pays wages in each, trade that lets a buyer in Delhi choose a seller in Shenzhen, the tariffs that were lowered and the ones that were not, a rulebook written mostly by the strong — and the question of what a fair opening would have looked like.",
+      hi: "एक देश अपने दरवाज़े खोलता और पाता कि भीतर कौन आता है: वह फ़र्म जो छह देशों में कारख़ाने रखती और हर एक में मज़दूरी देती, वह व्यापार जो दिल्ली के ख़रीदार को शेनझेन का विक्रेता चुनने देता, वे शुल्क जो घटाए गए और वे जो नहीं, अधिकतर बलवानों की लिखी नियम-पुस्तिका — और यह प्रश्न कि न्यायपूर्ण खुलना दिखता कैसा।",
+      mr: "एक देश आपली दारे उघडतो आणि आत कोण येते ते पाहतो: ती कंपनी जी सहा देशांत कारखाने बाळगते आणि प्रत्येकात मजुरी देते, तो व्यापार जो दिल्लीतील खरेदीदाराला शेन्झेनचा विक्रेता निवडू देतो, त्या जकाती ज्या घटवल्या आणि ज्या नाही, बहुतांश बलवानांनी लिहिलेली नियमपुस्तिका — आणि हा प्रश्न की न्याय्य उघडणे कसे दिसले असते.",
+    },
+    position: 4,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "multinational-corporations",
+        name: {
+          en: "Multinational corporations",
+          hi: "बहुराष्ट्रीय निगम",
+          mr: "बहुराष्ट्रीय कंपन्या",
+        },
+        kind: "structure",
+        prompt: {
+          en: "A single company designs a product in one country, buys components from a second, assembles in a third where labour is cheap, and sells in a fourth — owning or controlling production in every one. What is such a firm called?",
+          hi: "एक ही कंपनी उत्पाद एक देश में रचती है, घटक दूसरे से ख़रीदती है, तीसरे में जहाँ श्रम सस्ता वहाँ जोड़ती है, और चौथे में बेचती है — हर एक में उत्पादन की स्वामी या नियंत्रक। ऐसी फ़र्म क्या कहलाती है?",
+          mr: "एकच कंपनी उत्पाद एका देशात रचते, घटक दुसऱ्याकडून विकत घेते, तिसऱ्यात जिथे श्रम स्वस्त तिथे जुळवते, आणि चौथ्यात विकते — प्रत्येकात उत्पादनाची मालक वा नियंत्रक. अशी कंपनी काय म्हणतात?",
+        },
+        statement: {
+          en: "A multinational corporation owns or controls production in more than one country, spreading design, component supply, assembly and sale across whichever locations are cheapest or closest to a market.",
+          hi: "बहुराष्ट्रीय निगम एक से अधिक देशों में उत्पादन का स्वामी या नियंत्रक होता है, और रचना, घटक-आपूर्ति, जोड़ाई तथा बिक्री को उन्हीं स्थानों पर फैलाता है जो सबसे सस्ते या बाज़ार के सबसे पास हों।",
+          mr: "बहुराष्ट्रीय कंपनी एकाहून अधिक देशांत उत्पादनाची मालक वा नियंत्रक असते, आणि रचना, घटक-पुरवठा, जुळणी व विक्री त्याच ठिकाणी पसरवते जी सर्वांत स्वस्त वा बाजाराच्या सर्वांत जवळ.",
+        },
+        detail: {
+          en: "It enters a country by setting up its own plant, by buying a local company outright, or by placing orders with local producers who then make goods to its specification.",
+          hi: "वह किसी देश में अपना संयंत्र लगाकर, किसी स्थानीय कंपनी को पूरा ख़रीदकर, या स्थानीय उत्पादकों को ऑर्डर देकर घुसता है जो फिर उसके निर्दिष्ट अनुसार माल बनाते हैं।",
+          mr: "ती एखाद्या देशात स्वतःचा प्रकल्प उभारून, एखादी स्थानिक कंपनी पूर्ण विकत घेऊन, वा स्थानिक उत्पादकांना मागण्या देऊन शिरते जे मग तिच्या निर्देशानुसार माल बनवतात.",
+        },
+        extra: {
+          en: "The third route gives it the greatest advantage and the least obligation: it sets the price and the standard while the risks of a bad season or a cancelled order stay with the small producer.",
+          hi: "तीसरा रास्ता उसे सबसे बड़ा लाभ और सबसे कम दायित्व देता है: दाम और मानक वह तय करता जबकि बुरे मौसम या रद्द ऑर्डर का जोखिम छोटे उत्पादक पर रहता है।",
+          mr: "तिसरा मार्ग तिला सर्वांत मोठा फायदा आणि सर्वांत कमी जबाबदारी देतो: किंमत आणि दर्जा ती ठरवते तर वाईट हंगाम वा रद्द झालेल्या मागणीची जोखीम लहान उत्पादकावर राहते.",
+        },
+        pair: {
+          left: {
+            en: "Production owned across several countries at once",
+            hi: "एक साथ कई देशों में स्वामित्व वाला उत्पादन",
+            mr: "एकाच वेळी अनेक देशांत मालकीचे उत्पादन",
+          },
+          right: {
+            en: "multinational corporations",
+            hi: "बहुराष्ट्रीय निगम",
+            mr: "बहुराष्ट्रीय कंपन्या",
+          },
+        },
+      },
+      {
+        id: "foreign-trade",
+        name: {
+          en: "Foreign trade",
+          hi: "विदेश व्यापार",
+          mr: "परदेशी व्यापार",
+        },
+        kind: "idea",
+        prompt: {
+          en: "When Chinese toys arrive in a Delhi market, Indian buyers gain a cheaper option and Indian toy-makers face a new competitor, and prices in both countries begin to move together. Which activity does this?",
+          hi: "जब चीनी खिलौने दिल्ली के बाज़ार में आते हैं, भारतीय ख़रीदारों को सस्ता विकल्प मिलता और भारतीय खिलौना-निर्माता नया प्रतिद्वंद्वी पाते, और दोनों देशों के दाम साथ हिलने लगते हैं। यह कौन-सी गतिविधि करती है?",
+          mr: "जेव्हा चिनी खेळणी दिल्लीच्या बाजारात येतात, भारतीय खरेदीदारांना स्वस्त पर्याय मिळतो आणि भारतीय खेळणी-उत्पादकांना नवा स्पर्धक, आणि दोन्ही देशांतील किमती एकत्र हलू लागतात. ही कोणती क्रिया करते?",
+        },
+        statement: {
+          en: "Foreign trade connects the markets of different countries, giving producers a wider market and buyers a wider choice, so that prices of similar goods in the connected markets tend to move towards each other.",
+          hi: "विदेश व्यापार भिन्न देशों के बाज़ार जोड़ता है, उत्पादकों को चौड़ा बाज़ार और ख़रीदारों को चौड़ी पसंद देता है, जिससे जुड़े बाज़ारों में एक-सी वस्तुओं के दाम एक-दूसरे की ओर बढ़ते हैं।",
+          mr: "परदेशी व्यापार वेगवेगळ्या देशांचे बाजार जोडतो, उत्पादकांना रुंद बाजार आणि खरेदीदारांना रुंद पर्याय देतो, ज्याने जोडलेल्या बाजारांत सारख्या वस्तूंच्या किमती एकमेकांकडे सरकतात.",
+        },
+        detail: {
+          en: "The effect runs both ways: an Indian producer who can now sell abroad gains, and one who competes with imports at home may not.",
+          hi: "प्रभाव दोनों ओर चलता है: जो भारतीय उत्पादक अब विदेश बेच सकता वह लाभ में, और जो घर पर आयात से मुक़ाबला करता वह शायद नहीं।",
+          mr: "परिणाम दोन्ही दिशांनी चालतो: जो भारतीय उत्पादक आता परदेशात विकू शकतो त्याला फायदा, आणि जो देशात आयातीशी स्पर्धा करतो त्याला कदाचित नाही.",
+        },
+        extra: {
+          en: "This is why the same policy is praised and attacked at once — it is not one policy for everyone but a different policy depending on which side of the market a person stands.",
+          hi: "इसी से एक ही नीति एक साथ सराही और हमला पाती है — वह सबके लिए एक नीति नहीं बल्कि इस पर भिन्न नीति कि व्यक्ति बाज़ार के किस ओर खड़ा है।",
+          mr: "म्हणूनच तेच धोरण एकाच वेळी वाखाणले आणि हल्ला पावते — ते सर्वांसाठी एक धोरण नव्हे तर व्यक्ती बाजाराच्या कोणत्या बाजूला उभी आहे यावरून वेगळे धोरण.",
+        },
+        pair: {
+          left: {
+            en: "Markets of two countries joined into one",
+            hi: "दो देशों के बाज़ार एक में जुड़े",
+            mr: "दोन देशांचे बाजार एकात जोडलेले",
+          },
+          right: {
+            en: "foreign trade",
+            hi: "विदेश व्यापार",
+            mr: "परदेशी व्यापार",
+          },
+        },
+      },
+      {
+        id: "globalisation",
+        name: {
+          en: "Globalisation",
+          hi: "वैश्वीकरण",
+          mr: "जागतिकीकरण",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Goods, services, investment and skilled people move across borders more rapidly than before, and a decision taken in one country's boardroom now changes wages in another. What is this process called?",
+          hi: "वस्तुएँ, सेवाएँ, निवेश और कुशल लोग सीमाओं के आर-पार पहले से तेज़ चलते हैं, और किसी एक देश के बोर्डरूम में लिया निर्णय अब दूसरे देश की मज़दूरी बदल देता है। यह प्रक्रिया क्या कहलाती है?",
+          mr: "वस्तू, सेवा, गुंतवणूक आणि कुशल माणसे सीमांपार पूर्वीहून वेगाने हलतात, आणि एका देशाच्या बैठकीत घेतलेला निर्णय आता दुसऱ्या देशातील मजुरी बदलतो. ही प्रक्रिया काय म्हणतात?",
+        },
+        statement: {
+          en: "Globalisation is the rapid integration of economies through increasing movement of goods, services, investment and technology across countries, which makes national economies interdependent.",
+          hi: "वैश्वीकरण देशों के आर-पार वस्तुओं, सेवाओं, निवेश तथा तकनीक की बढ़ती आवाजाही से अर्थव्यवस्थाओं का तीव्र एकीकरण है, जो राष्ट्रीय अर्थव्यवस्थाओं को परस्पर-निर्भर बनाता है।",
+          mr: "जागतिकीकरण म्हणजे देशांपार वस्तू, सेवा, गुंतवणूक आणि तंत्रज्ञानाच्या वाढत्या हालचालीतून अर्थव्यवस्थांचे वेगवान एकात्मीकरण, जे राष्ट्रीय अर्थव्यवस्था परस्परावलंबी करते.",
+        },
+        detail: {
+          en: "It was made possible by falling transport costs, container shipping and — above all — communication technology that let a firm supervise a factory ten thousand kilometres away.",
+          hi: "उसे गिरती परिवहन-लागत, कंटेनर जहाज़रानी और — सबसे बढ़कर — उस संचार तकनीक ने संभव बनाया जिसने किसी फ़र्म को दस हज़ार किलोमीटर दूर के कारख़ाने की निगरानी करने दी।",
+          mr: "ते घसरत्या वाहतूक खर्चाने, कंटेनर जहाजवाहतुकीने आणि — सर्वांत महत्त्वाचे — त्या दळणवळण तंत्रज्ञानाने शक्य केले ज्याने कंपनीला दहा हजार किलोमीटर दूरच्या कारखान्यावर देखरेख करू दिली.",
+        },
+        extra: {
+          en: "Labour is the exception: goods and capital move across borders far more freely than ordinary workers, who still face visas and quotas.",
+          hi: "श्रम अपवाद है: वस्तुएँ और पूँजी सीमाओं के आर-पार साधारण मज़दूरों से कहीं अधिक स्वतंत्र रूप से चलती हैं, जिनके सामने अब भी वीज़ा और कोटा हैं।",
+          mr: "श्रम अपवाद: वस्तू आणि भांडवल सीमांपार सामान्य कामगारांहून कितीतरी मुक्तपणे हलतात, ज्यांच्यासमोर अजूनही व्हिसा आणि कोटा आहेत.",
+        },
+        pair: {
+          left: {
+            en: "Economies stitched into interdependence",
+            hi: "परस्पर-निर्भरता में सिली अर्थव्यवस्थाएँ",
+            mr: "परस्परावलंबित्वात शिवलेल्या अर्थव्यवस्था",
+          },
+          right: {
+            en: "globalisation",
+            hi: "वैश्वीकरण",
+            mr: "जागतिकीकरण",
+          },
+        },
+      },
+      {
+        id: "trade-barriers",
+        name: {
+          en: "Trade barriers",
+          hi: "व्यापार अवरोध",
+          mr: "व्यापार अडथळे",
+        },
+        kind: "idea",
+        prompt: {
+          en: "After 1947 India taxed imports heavily and limited their quantity so that new domestic industries could grow without being undercut; from 1991 most of these restrictions were removed. What are such restrictions called?",
+          hi: "1947 के बाद भारत ने आयात पर भारी कर लगाया और उनकी मात्रा सीमित की ताकि नए घरेलू उद्योग सस्ते माल से पिटे बिना बढ़ सकें; 1991 से इनमें से अधिकांश प्रतिबंध हटा दिए गए। ऐसे प्रतिबंध क्या कहलाते हैं?",
+          mr: "1947 नंतर भारताने आयातीवर जबर कर लावला आणि तिचे प्रमाण मर्यादित केले जेणेकरून नवे देशी उद्योग स्वस्त मालाने मारले न जाता वाढू शकतील; 1991 पासून यांतील बहुतांश निर्बंध हटवले गेले. असे निर्बंध काय म्हणतात?",
+        },
+        statement: {
+          en: "Trade barriers are restrictions such as import duties and quantity limits that a government uses to control foreign trade, and removing them is called liberalisation.",
+          hi: "व्यापार अवरोध आयात शुल्क तथा मात्रा-सीमा जैसे प्रतिबंध हैं जिनसे सरकार विदेश व्यापार नियंत्रित करती है, और उन्हें हटाना उदारीकरण कहलाता है।",
+          mr: "व्यापार अडथळे म्हणजे आयात शुल्क आणि प्रमाण-मर्यादा असे निर्बंध जे सरकार परदेशी व्यापार नियंत्रित करायला वापरते, आणि ते हटवणे उदारीकरण म्हणतात.",
+        },
+        detail: {
+          en: "The original argument for them was the infant industry case: a new producer needs shelter while it learns, in the way a young plant is shielded before being left out in the wind.",
+          hi: "उनके पक्ष में मूल तर्क शिशु-उद्योग का था: नए उत्पादक को सीखते समय आश्रय चाहिए, जैसे नन्हा पौधा हवा में छोड़े जाने से पहले ओट में रखा जाता है।",
+          mr: "त्यांच्या बाजूने मूळ युक्तिवाद बाल्य-उद्योगाचा होता: नव्या उत्पादकाला शिकताना आश्रय लागतो, जसे लहान रोप वाऱ्यात सोडण्याआधी आडोशाला ठेवले जाते.",
+        },
+        extra: {
+          en: "The counter-argument is that shelter kept too long protects inefficiency instead of nurturing capacity, and the customer pays for it in higher prices and worse goods.",
+          hi: "प्रति-तर्क यह कि बहुत लंबा आश्रय क्षमता पोसने के बजाय अकुशलता की रक्षा करता है, और उसका दाम ग्राहक ऊँची क़ीमतों तथा घटिया माल में चुकाता है।",
+          mr: "प्रतियुक्तिवाद हा की फार दीर्घ आश्रय क्षमता पोसण्याऐवजी अकार्यक्षमतेचे रक्षण करतो, आणि त्याची किंमत ग्राहक जास्त भाव व हलक्या मालात मोजतो.",
+        },
+        pair: {
+          left: {
+            en: "Duties and quotas raised against imports",
+            hi: "आयात के विरुद्ध लगाए शुल्क और कोटा",
+            mr: "आयातीविरुद्ध लावलेले शुल्क आणि कोटा",
+          },
+          right: {
+            en: "trade barriers",
+            hi: "व्यापार अवरोध",
+            mr: "व्यापार अडथळे",
+          },
+        },
+      },
+      {
+        id: "world-trade-organisation",
+        name: {
+          en: "The World Trade Organisation",
+          hi: "विश्व व्यापार संगठन",
+          mr: "जागतिक व्यापार संघटना",
+        },
+        kind: "structure",
+        prompt: {
+          en: "An international body sets rules for trade among its member countries, requires them to lower barriers, and hears disputes when one member accuses another of breaking those rules. Which organisation is this?",
+          hi: "एक अंतरराष्ट्रीय निकाय अपने सदस्य देशों के बीच व्यापार के नियम बनाता है, उनसे अवरोध घटाने को कहता है, और विवाद सुनता है जब कोई सदस्य दूसरे पर नियम तोड़ने का आरोप लगाए। यह कौन-सा संगठन है?",
+          mr: "एक आंतरराष्ट्रीय संस्था आपल्या सदस्य देशांमधील व्यापाराचे नियम ठरवते, त्यांना अडथळे घटवायला सांगते, आणि एखादा सदस्य दुसऱ्यावर नियम मोडल्याचा आरोप करतो तेव्हा वाद ऐकते. ही कोणती संघटना?",
+        },
+        statement: {
+          en: "The World Trade Organisation frames the rules governing international trade among its members, presses them to liberalise, and adjudicates disputes when one member alleges another has broken those rules.",
+          hi: "विश्व व्यापार संगठन अपने सदस्यों के बीच अंतरराष्ट्रीय व्यापार के नियम बनाता है, उन पर उदारीकरण का दबाव डालता है, और विवाद निपटाता है जब कोई सदस्य आरोप लगाए कि दूसरे ने नियम तोड़े।",
+          mr: "जागतिक व्यापार संघटना आपल्या सदस्यांमधील आंतरराष्ट्रीय व्यापाराचे नियम आखते, त्यांच्यावर उदारीकरणाचा दबाव टाकते, आणि एखादा सदस्य दुसऱ्याने नियम मोडल्याचा आरोप करतो तेव्हा वाद निवाडते.",
+        },
+        detail: {
+          en: "Its critics point to an asymmetry: developing countries were pressed hard to open their markets while several rich countries kept large subsidies for their own farmers.",
+          hi: "उसके आलोचक विषमता की ओर इशारा करते हैं: विकासशील देशों पर बाज़ार खोलने का कड़ा दबाव पड़ा जबकि कई धनी देशों ने अपने किसानों के लिए बड़ी सब्सिडी बनाए रखी।",
+          mr: "तिचे टीकाकार विषमतेकडे बोट दाखवतात: विकसनशील देशांवर बाजार उघडण्याचा कडक दबाव पडला तर कित्येक श्रीमंत देशांनी आपल्या शेतकऱ्यांसाठी मोठी अनुदाने कायम ठेवली.",
+        },
+        extra: {
+          en: "The subsidies matter because a farmer competing against a subsidised import is competing against another country's treasury, not against another farmer.",
+          hi: "सब्सिडी इसलिए मायने रखती कि सब्सिडी-प्राप्त आयात से मुक़ाबला करता किसान किसी दूसरे किसान से नहीं, दूसरे देश के ख़ज़ाने से मुक़ाबला कर रहा है।",
+          mr: "अनुदाने यासाठी महत्त्वाची की अनुदानित आयातीशी स्पर्धा करणारा शेतकरी दुसऱ्या शेतकऱ्याशी नव्हे तर दुसऱ्या देशाच्या तिजोरीशी स्पर्धा करत आहे.",
+        },
+        pair: {
+          left: {
+            en: "Rules for trade, and a court for breaking them",
+            hi: "व्यापार के नियम, और उन्हें तोड़ने पर अदालत",
+            mr: "व्यापाराचे नियम, आणि ते मोडल्यास न्यायालय",
+          },
+          right: {
+            en: "the World Trade Organisation",
+            hi: "विश्व व्यापार संगठन",
+            mr: "जागतिक व्यापार संघटना",
+          },
+        },
+      },
+      {
+        id: "fair-globalisation",
+        name: {
+          en: "Fair globalisation",
+          hi: "न्यायपूर्ण वैश्वीकरण",
+          mr: "न्याय्य जागतिकीकरण",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Opening an economy has produced large gains for some and losses for others, so the question becomes not whether to open but on what terms — with labour laws enforced, small producers supported and rules made more evenly. What is this demand called?",
+          hi: "अर्थव्यवस्था खोलने से कुछ को बड़े लाभ और कुछ को हानि हुई, अतः प्रश्न यह नहीं रहता कि खोलें या नहीं बल्कि किन शर्तों पर — श्रम-क़ानून लागू हों, छोटे उत्पादकों को सहारा मिले और नियम अधिक समान रूप से बनें। यह माँग क्या कहलाती है?",
+          mr: "अर्थव्यवस्था उघडल्याने काहींना मोठे फायदे आणि काहींना तोटे झाले, म्हणून प्रश्न उघडावी की नाही हा राहत नाही तर कोणत्या अटींवर — कामगार कायदे राबवले जावेत, लहान उत्पादकांना आधार मिळावा आणि नियम अधिक समानपणे बनावेत. ही मागणी काय म्हणतात?",
+        },
+        statement: {
+          en: "Fair globalisation asks that the gains from opening an economy be shared more evenly — by enforcing labour laws, supporting small producers, negotiating better terms at the WTO, and using trade barriers where they are genuinely justified.",
+          hi: "न्यायपूर्ण वैश्वीकरण माँगता है कि अर्थव्यवस्था खोलने के लाभ अधिक समान रूप से बँटें — श्रम-क़ानून लागू करके, छोटे उत्पादकों को सहारा देकर, विश्व व्यापार संगठन में बेहतर शर्तें बातचीत से लेकर, और जहाँ व्यापार अवरोध सचमुच उचित हों वहाँ उन्हें लगाकर।",
+          mr: "न्याय्य जागतिकीकरण मागते की अर्थव्यवस्था उघडण्याचे फायदे अधिक समानपणे वाटले जावेत — कामगार कायदे राबवून, लहान उत्पादकांना आधार देऊन, जागतिक व्यापार संघटनेत चांगल्या अटी वाटाघाटीने मिळवून, आणि जिथे व्यापार अडथळे खरोखर समर्थनीय तिथे ते लावून.",
+        },
+        detail: {
+          en: "The argument is not against openness but against the assumption that whoever gains will compensate whoever loses — an assumption nothing enforces on its own.",
+          hi: "तर्क खुलेपन के विरुद्ध नहीं बल्कि इस मान्यता के विरुद्ध है कि जो लाभ पाएगा वह हानि उठाने वाले की भरपाई करेगा — ऐसी मान्यता जिसे अपने आप कुछ भी लागू नहीं कराता।",
+          mr: "युक्तिवाद उघडेपणाविरुद्ध नव्हे तर या गृहीतकाविरुद्ध की जो फायदा मिळवेल तो तोटा सोसणाऱ्याची भरपाई करेल — असे गृहीतक जे स्वतःहून काहीही राबवत नाही.",
+        },
+        extra: {
+          en: "It is a demand made by governments and by movements of workers, farmers and small producers, which is why it appears in trade talks and in protests at once.",
+          hi: "यह माँग सरकारें भी करती हैं और मज़दूरों, किसानों तथा छोटे उत्पादकों के आंदोलन भी, इसीलिए वह व्यापार-वार्ताओं और विरोध-प्रदर्शनों दोनों में एक साथ दिखती है।",
+          mr: "ही मागणी सरकारेही करतात आणि कामगार, शेतकरी व लहान उत्पादकांच्या चळवळीही, म्हणूनच ती व्यापार-चर्चा आणि निदर्शने दोन्हींत एकाच वेळी दिसते.",
+        },
+        pair: {
+          left: {
+            en: "Not whether to open, but on what terms",
+            hi: "खोलें या नहीं नहीं, बल्कि किन शर्तों पर",
+            mr: "उघडावी की नाही नव्हे, तर कोणत्या अटींवर",
+          },
+          right: {
+            en: "fair globalisation",
+            hi: "न्यायपूर्ण वैश्वीकरण",
+            mr: "न्याय्य जागतिकीकरण",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A multinational company deciding where to make its garments does not simply pick the country with the lowest wages, and it often places orders with local firms rather than building a factory of its own. Explain what actually determines the choice, and what the second arrangement means for the producer who takes the order.",
+          hi: "अपने वस्त्र कहाँ बनवाए यह तय करती बहुराष्ट्रीय कंपनी केवल सबसे कम मज़दूरी वाला देश नहीं चुनती, और वह अक्सर अपना कारख़ाना बनाने के बजाय स्थानीय फ़र्मों को ऑर्डर देती है। समझाओ चुनाव वस्तुतः कौन तय करता है, और दूसरी व्यवस्था का उस उत्पादक के लिए क्या अर्थ है जो ऑर्डर लेता है।",
+          mr: "आपली वस्त्रे कुठे बनवावीत हे ठरवणारी बहुराष्ट्रीय कंपनी केवळ सर्वांत कमी मजुरीचा देश निवडत नाही, आणि ती अनेकदा स्वतःचा कारखाना बांधण्याऐवजी स्थानिक कंपन्यांना मागण्या देते. समजावा निवड प्रत्यक्षात काय ठरवते, आणि दुसऱ्या व्यवस्थेचा मागणी घेणाऱ्या उत्पादकासाठी काय अर्थ.",
+        },
+        choices: [
+          {
+            en: "The choice weighs wages together with skills, transport, power supply, closeness to the market and government policy — cheap labour is useless without reliable electricity, ports and workers who can meet a quality standard. Placing orders instead of owning a factory gives the company control without commitment: it fixes the price and the specification, and the risks of a cancelled order, a rise in input costs or a bad season stay entirely with the local producer",
+            hi: "चुनाव मज़दूरी के साथ कौशल, परिवहन, बिजली-आपूर्ति, बाज़ार से निकटता और सरकारी नीति भी तौलता है — भरोसेमंद बिजली, बंदरगाहों और गुणवत्ता-मानक पूरा कर सकते मज़दूरों बिना सस्ता श्रम बेकार है। कारख़ाना रखने के बजाय ऑर्डर देना कंपनी को प्रतिबद्धता बिना नियंत्रण देता है: दाम और निर्देश वह तय करती, और रद्द ऑर्डर, बढ़ती निवेश-लागत या बुरे मौसम का जोखिम पूरी तरह स्थानीय उत्पादक पर रहता है",
+            mr: "निवड मजुरीसोबत कौशल्ये, वाहतूक, वीजपुरवठा, बाजाराशी जवळीक आणि शासकीय धोरणही तोलते — विश्वासार्ह वीज, बंदरे आणि गुणवत्ता-मानक पूर्ण करू शकणाऱ्या कामगारांविना स्वस्त श्रम निरुपयोगी. कारखाना बाळगण्याऐवजी मागण्या देणे कंपनीला बांधिलकीविना नियंत्रण देते: किंमत आणि निर्देश ती ठरवते, आणि रद्द मागणी, वाढता निविष्ठा-खर्च वा वाईट हंगामाची जोखीम पूर्णपणे स्थानिक उत्पादकावर राहते",
+          },
+          {
+            en: "The choice is made solely on wages, and the lowest-wage country always receives the order",
+            hi: "चुनाव केवल मज़दूरी पर होता है, और सबसे कम मज़दूरी वाले देश को सदा ऑर्डर मिलता है",
+            mr: "निवड केवळ मजुरीवर होते, आणि सर्वांत कमी मजुरीच्या देशाला सदैव मागणी मिळते",
+          },
+          {
+            en: "Placing orders transfers all risk to the multinational, leaving the local producer entirely protected",
+            hi: "ऑर्डर देना सारा जोखिम बहुराष्ट्रीय कंपनी पर डाल देता है, और स्थानीय उत्पादक पूरी तरह संरक्षित रहता है",
+            mr: "मागण्या देणे सर्व जोखीम बहुराष्ट्रीय कंपनीवर टाकते, आणि स्थानिक उत्पादक पूर्णपणे संरक्षित राहतो",
+          },
+          {
+            en: "Multinationals never place orders with local firms and always build their own factories",
+            hi: "बहुराष्ट्रीय कंपनियाँ स्थानीय फ़र्मों को कभी ऑर्डर नहीं देतीं और सदा अपने कारख़ाने बनाती हैं",
+            mr: "बहुराष्ट्रीय कंपन्या स्थानिक कंपन्यांना कधीही मागण्या देत नाहीत आणि सदैव स्वतःचे कारखाने बांधतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Take the location decision first. If wages alone decided, production would concentrate in the very poorest countries, and it does not. What a company is actually buying is a finished garment delivered on a date at a quality it can sell, and wages are only one input into that. It also needs a workforce that can operate machines and hold a tolerance; electricity that does not fail mid-shift; roads and a port that let a container reach a buyer on schedule; suppliers of cloth, thread, buttons and dye nearby, because importing every component erodes the wage saving; and a government whose rules and taxes are predictable enough to plan around. A country with the lowest wages and none of this is more expensive in practice than a country with somewhat higher wages and all of it. This is why garment production clusters in particular places — Bangladesh, Vietnam, Tiruppur, Ludhiana — rather than spreading to wherever labour is cheapest. Proximity to the market matters too, which is why some multinationals produce in India for Indian consumers: the point there is not cheap labour at all but avoiding transport costs and import duties on goods sold here. Now the second half, which is the more important one. A multinational can enter in three ways: build its own plant, buy a local company outright, or place orders with independent local producers to its specification. The third has become the dominant arrangement in garments, footwear and sports goods, and the reason is that it gives the company almost all the control with almost none of the obligation. It sets the design, the quality standard, the delivery date and the price. It does not own the building, employ the workers, or carry the machinery on its books. If demand falls, it simply places fewer orders — and there is no factory to close, no severance to pay, no asset standing idle. All of that lands on the local producer. He has borrowed to buy machines and has to meet the instalments whether orders arrive or not. He has hired workers he must either pay or dismiss. If cotton prices rise after the price was agreed, the loss is his. If the order is cancelled, the stock is his problem. And because many producers compete for the same buyer, he has little power to negotiate the price up: the buyer can move to the next supplier or the next country, while the producer cannot move to another buyer as easily. The predictable consequence, which the chapter documents, is that the squeeze passes down the chain to workers: employment becomes casual rather than regular, hours lengthen at peak season, and wages stay at the floor. This is why the discussion turns to fair globalisation. The gains from this arrangement are real — export orders, foreign exchange, employment where there was none — but the risks and the bargaining power are distributed very unequally along the chain, and nothing in the arrangement itself corrects that. Enforcing labour law, supporting small producers with credit and infrastructure, and negotiating better terms internationally are attempts to change the distribution rather than to end the trade. (The wrong answers reduce a multi-factor decision to wages alone, reverse who bears the risk in a contract-manufacturing arrangement, or deny a practice that dominates the industries the chapter examines.)",
+          hi: "पहले अवस्थिति का निर्णय लो। यदि अकेली मज़दूरी तय करती, उत्पादन सबसे निर्धन देशों में ही केंद्रित होता, और होता नहीं। कंपनी वस्तुतः जो ख़रीद रही वह किसी तिथि पर ऐसी गुणवत्ता में पहुँचा तैयार वस्त्र है जिसे वह बेच सके, और मज़दूरी उसमें केवल एक निवेश है। उसे ऐसी श्रमशक्ति भी चाहिए जो मशीनें चला सके और सहनसीमा पकड़ सके; ऐसी बिजली जो पाली के बीच न जाए; ऐसी सड़कें और बंदरगाह जो कंटेनर को समय पर ख़रीदार तक पहुँचने दें; पास ही कपड़े, धागे, बटन और रंग के आपूर्तिकर्ता, क्योंकि हर घटक आयात करना मज़दूरी की बचत खा जाता है; और ऐसी सरकार जिसके नियम-कर इतने पूर्वानुमेय हों कि योजना बन सके। सबसे कम मज़दूरी और इनमें से कुछ भी न रखता देश व्यवहार में उस देश से महँगा है जहाँ मज़दूरी कुछ ऊँची पर यह सब मौजूद है। इसी से वस्त्र-उत्पादन विशेष जगहों में गुच्छित होता है — बांग्लादेश, वियतनाम, तिरुपुर, लुधियाना — न कि जहाँ श्रम सबसे सस्ता वहाँ फैलता। बाज़ार से निकटता भी मायने रखती, इसी से कुछ बहुराष्ट्रीय कंपनियाँ भारतीय उपभोक्ताओं के लिए भारत में बनाती हैं: वहाँ मर्म सस्ता श्रम है ही नहीं बल्कि यहाँ बिकते माल पर परिवहन-लागत और आयात-शुल्क से बचना। अब दूसरा आधा, जो अधिक महत्वपूर्ण है। बहुराष्ट्रीय कंपनी तीन तरह से घुस सकती है: अपना संयंत्र बनाए, किसी स्थानीय कंपनी को पूरा ख़रीदे, या स्वतंत्र स्थानीय उत्पादकों को अपने निर्देशानुसार ऑर्डर दे। तीसरी वस्त्र, जूते और खेल-सामग्री में प्रमुख व्यवस्था बन गई है, और कारण यह कि वह कंपनी को लगभग सारा नियंत्रण और लगभग कोई दायित्व नहीं देती। वह रचना, गुणवत्ता-मानक, वितरण-तिथि और दाम तय करती है। वह न भवन की स्वामी, न मज़दूरों की नियोक्ता, न मशीनरी अपनी बही में ढोती। माँग गिरे तो वह बस कम ऑर्डर देती है — और बंद करने को कोई कारख़ाना नहीं, चुकाने को कोई विच्छेद-राशि नहीं, ख़ाली खड़ी कोई परिसंपत्ति नहीं। वह सब स्थानीय उत्पादक पर उतरता है। उसने मशीनें ख़रीदने उधार लिया है और ऑर्डर आएँ या न आएँ किश्तें चुकानी हैं। उसने मज़दूर रखे हैं जिन्हें या तो देना है या हटाना है। दाम तय होने के बाद कपास चढ़े तो हानि उसकी। ऑर्डर रद्द हो तो माल उसकी समस्या। और क्योंकि उसी ख़रीदार के लिए कई उत्पादक मुक़ाबला करते हैं, उसके पास दाम चढ़वाने की शक्ति कम है: ख़रीदार अगले आपूर्तिकर्ता या अगले देश पर जा सकता है, जबकि उत्पादक उतनी आसानी से दूसरे ख़रीदार पर नहीं जा सकता। अपेक्षित परिणाम, जिसे अध्याय दर्ज करता है, यह कि निचोड़ शृंखला से नीचे मज़दूरों तक पहुँचता है: रोज़गार नियमित के बजाय दिहाड़ी बनता, चरम मौसम में घंटे लंबे होते, और मज़दूरी फ़र्श पर बनी रहती है। इसी से चर्चा न्यायपूर्ण वैश्वीकरण की ओर मुड़ती है। इस व्यवस्था के लाभ असली हैं — निर्यात-ऑर्डर, विदेशी मुद्रा, वहाँ रोज़गार जहाँ कोई नहीं था — पर जोखिम और सौदेबाज़ी की शक्ति शृंखला पर बहुत असमान बँटे हैं, और व्यवस्था में स्वयं कुछ भी उसे सुधारता नहीं। श्रम-क़ानून लागू कराना, छोटे उत्पादकों को ऋण तथा ढाँचे से सहारा देना, और अंतरराष्ट्रीय रूप से बेहतर शर्तें बातचीत से लेना — ये व्यापार समाप्त करने के नहीं, वितरण बदलने के प्रयास हैं। (ग़लत उत्तर बहु-कारक निर्णय को अकेली मज़दूरी तक घटाते, ठेका-निर्माण व्यवस्था में जोखिम कौन ढोता यह उलटते, या उस प्रथा को नकारते जो अध्याय द्वारा परखे उद्योगों में प्रमुख है।)",
+          mr: "आधी स्थानाचा निर्णय घ्या. एकटी मजुरी ठरवत असती, तर उत्पादन सर्वांत गरीब देशांतच केंद्रित झाले असते, आणि होत नाही. कंपनी प्रत्यक्षात जे विकत घेत आहे ते एका तारखेला अशा गुणवत्तेत पोहोचलेले तयार वस्त्र जे ती विकू शकेल, आणि मजुरी त्यात केवळ एक निविष्ठा. तिला अशी श्रमशक्तीही लागते जी यंत्रे चालवू शकेल आणि सहनमर्यादा पाळेल; अशी वीज जी पाळीच्या मध्ये जाणार नाही; असे रस्ते व बंदर जे कंटेनरला वेळेवर खरेदीदारापर्यंत पोहोचू देतील; जवळच कापड, धागा, बटणे व रंगाचे पुरवठादार, कारण प्रत्येक घटक आयात करणे मजुरीची बचत खाऊन टाकते; आणि असे सरकार ज्याचे नियम-कर नियोजन करण्याइतके अंदाजयोग्य. सर्वांत कमी मजुरी आणि यांपैकी काहीही नसलेला देश व्यवहारात त्या देशाहून महाग जिथे मजुरी थोडी जास्त पण हे सर्व आहे. म्हणूनच वस्त्र-उत्पादन विशिष्ट ठिकाणी गुच्छित होते — बांगलादेश, व्हिएतनाम, तिरुपूर, लुधियाना — श्रम सर्वांत स्वस्त तिथे पसरत नाही. बाजाराशी जवळीकही महत्त्वाची, म्हणूनच काही बहुराष्ट्रीय कंपन्या भारतीय ग्राहकांसाठी भारतात बनवतात: तिथे मुद्दा स्वस्त श्रम नाहीच तर इथे विकल्या जाणाऱ्या मालावरील वाहतूक खर्च व आयात शुल्क टाळणे. आता दुसरा अर्धा भाग, जो अधिक महत्त्वाचा. बहुराष्ट्रीय कंपनी तीन प्रकारे शिरू शकते: स्वतःचा प्रकल्प बांधणे, एखादी स्थानिक कंपनी पूर्ण विकत घेणे, वा स्वतंत्र स्थानिक उत्पादकांना आपल्या निर्देशानुसार मागण्या देणे. तिसरी वस्त्रे, पादत्राणे आणि क्रीडासाहित्यात प्रमुख व्यवस्था बनली आहे, आणि कारण हे की ती कंपनीला जवळजवळ सर्व नियंत्रण आणि जवळजवळ कोणतीही जबाबदारी देत नाही. ती रचना, गुणवत्ता-मानक, पुरवठा-तारीख आणि किंमत ठरवते. ती ना इमारतीची मालक, ना कामगारांची मालक, ना यंत्रसामग्री स्वतःच्या खतावणीत वाहते. मागणी घसरली तर ती फक्त कमी मागण्या देते — आणि बंद करायला कोणता कारखाना नाही, द्यायला कोणती नुकसानभरपाई नाही, रिकामी उभी कोणती मालमत्ता नाही. ते सर्व स्थानिक उत्पादकावर उतरते. त्याने यंत्रे विकत घ्यायला कर्ज घेतले आहे आणि मागण्या येवोत वा न येवोत हप्ते भरावे लागतात. त्याने कामगार ठेवले आहेत ज्यांना एकतर द्यावे लागेल वा काढावे लागेल. किंमत ठरल्यावर कापूस चढला तर तोटा त्याचा. मागणी रद्द झाली तर माल त्याची समस्या. आणि त्याच खरेदीदारासाठी अनेक उत्पादक स्पर्धा करत असल्याने, त्याच्याकडे किंमत वाढवून घेण्याची सत्ता कमी: खरेदीदार पुढच्या पुरवठादाराकडे वा पुढच्या देशाकडे जाऊ शकतो, तर उत्पादक तितक्या सहजतेने दुसऱ्या खरेदीदाराकडे जाऊ शकत नाही. अपेक्षित परिणाम, जो प्रकरण नोंदवते, हा की पिळवणूक साखळीतून खाली कामगारांपर्यंत जाते: रोजगार नियमितऐवजी रोजंदारीचा बनतो, ऐन हंगामात तास लांबतात, आणि मजुरी तळालाच राहते. म्हणूनच चर्चा न्याय्य जागतिकीकरणाकडे वळते. या व्यवस्थेचे फायदे खरे — निर्यात मागण्या, परकी चलन, जिथे काही नव्हते तिथे रोजगार — पण जोखीम आणि घासाघिशीची सत्ता साखळीवर खूप असमानपणे वाटलेली, आणि व्यवस्थेत स्वतः काहीही ते दुरुस्त करत नाही. कामगार कायदे राबवणे, लहान उत्पादकांना कर्ज व पायाभूत सुविधांनी आधार देणे, आणि आंतरराष्ट्रीय पातळीवर चांगल्या अटी वाटाघाटीने मिळवणे — हे व्यापार संपवण्याचे नव्हे तर वाटप बदलण्याचे प्रयत्न. (चुकीची उत्तरे बहु-घटक निर्णय एकट्या मजुरीपर्यंत घटवतात, कंत्राटी-निर्मिती व्यवस्थेत जोखीम कोण वाहतो हे उलटवतात, वा प्रकरण तपासत असलेल्या उद्योगांत प्रमुख असलेली प्रथा नाकारतात.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Since 1991 India has removed most trade barriers, and the same three decades have produced both a large new middle class and a long list of ruined small producers. Draw up the honest ledger — who gained, who lost, and what would actually have to change for the opening to be called fair.",
+          hi: "1991 से भारत ने अधिकांश व्यापार अवरोध हटाए, और उन्हीं तीन दशकों ने एक बड़ा नया मध्यवर्ग भी दिया और उजड़े छोटे उत्पादकों की लंबी सूची भी। ईमानदार बही बनाओ — लाभ किसे, हानि किसे, और खुलने को न्यायपूर्ण कहलाने के लिए वस्तुतः बदलना क्या पड़ेगा।",
+          mr: "1991 पासून भारताने बहुतांश व्यापार अडथळे हटवले, आणि त्याच तीन दशकांनी एक मोठा नवा मध्यमवर्गही दिला आणि उद्ध्वस्त लहान उत्पादकांची लांब यादीही. प्रामाणिक खतावणी मांडा — फायदा कोणाला, तोटा कोणाला, आणि उघडण्याला न्याय्य म्हणवण्यासाठी प्रत्यक्षात काय बदलावे लागेल.",
+        },
+        choices: [
+          {
+            en: "Gains went to consumers with money to spend, to skilled workers in software, finance and services, to large Indian firms that became multinationals themselves, and to export sectors that found new markets. Losses fell on small manufacturers who could not match imported prices, on farmers competing with subsidised foreign produce, and on informal workers whose employment became casual. Fairness would require enforcing labour law, supporting small producers with credit and infrastructure, negotiating harder at the WTO, and retaining barriers where they are genuinely justified — because nothing makes the winners compensate the losers automatically",
+            hi: "लाभ ख़र्च करने योग्य पैसे वाले उपभोक्ताओं को गया, सॉफ़्टवेयर, वित्त तथा सेवाओं के कुशल मज़दूरों को, उन बड़ी भारतीय फ़र्मों को जो स्वयं बहुराष्ट्रीय बन गईं, और उन निर्यात क्षेत्रों को जिन्हें नए बाज़ार मिले। हानि उन छोटे निर्माताओं पर पड़ी जो आयातित दामों की बराबरी न कर सके, उन किसानों पर जो सब्सिडी-प्राप्त विदेशी उपज से मुक़ाबला करते हैं, और उन अनौपचारिक मज़दूरों पर जिनका रोज़गार दिहाड़ी बन गया। न्याय के लिए श्रम-क़ानून लागू करना, छोटे उत्पादकों को ऋण तथा ढाँचे से सहारा देना, विश्व व्यापार संगठन में कड़ी बातचीत करना, और जहाँ अवरोध सचमुच उचित हों वहाँ उन्हें रखना पड़ेगा — क्योंकि कुछ भी जीतने वालों से हारने वालों की भरपाई अपने आप नहीं कराता",
+            mr: "फायदे खर्च करण्याजोगा पैसा असलेल्या ग्राहकांना गेले, सॉफ्टवेअर, वित्त व सेवांतील कुशल कामगारांना, स्वतः बहुराष्ट्रीय बनलेल्या मोठ्या भारतीय कंपन्यांना, आणि नवे बाजार मिळालेल्या निर्यात क्षेत्रांना. तोटे त्या लहान उत्पादकांवर पडले जे आयात किमतींची बरोबरी करू शकले नाहीत, अनुदानित परदेशी उपजेशी स्पर्धा करणाऱ्या शेतकऱ्यांवर, आणि ज्यांचा रोजगार रोजंदारीचा बनला त्या अनौपचारिक कामगारांवर. न्यायासाठी कामगार कायदे राबवणे, लहान उत्पादकांना कर्ज व पायाभूत सुविधांनी आधार देणे, जागतिक व्यापार संघटनेत कडक वाटाघाटी करणे, आणि जिथे अडथळे खरोखर समर्थनीय तिथे ते ठेवणे लागेल — कारण जिंकणाऱ्यांकडून हरणाऱ्यांची भरपाई काहीही आपोआप करवत नाही",
+          },
+          {
+            en: "Everyone gained equally, so there is no ledger to draw up and no question of fairness arises",
+            hi: "सबको बराबर लाभ हुआ, अतः कोई बही बनाने को नहीं और न्याय का प्रश्न ही नहीं उठता",
+            mr: "सर्वांना समान फायदा झाला, म्हणून कोणती खतावणी मांडायची नाही आणि न्यायाचा प्रश्नच उद्भवत नाही",
+          },
+          {
+            en: "Everyone lost, so the only fair course is to restore every trade barrier removed since 1991",
+            hi: "सबको हानि हुई, अतः एकमात्र न्यायपूर्ण रास्ता यह कि 1991 से हटाया हर व्यापार अवरोध बहाल किया जाए",
+            mr: "सर्वांचा तोटा झाला, म्हणून एकमेव न्याय्य मार्ग हा की 1991 पासून हटवलेला प्रत्येक व्यापार अडथळा पुन्हा आणावा",
+          },
+          {
+            en: "The distribution of gains cannot be known, since economists have no way to observe who is better or worse off",
+            hi: "लाभों का वितरण जाना ही नहीं जा सकता, क्योंकि अर्थशास्त्रियों के पास यह देखने का कोई उपाय नहीं कि किसकी स्थिति बेहतर हुई या बदतर",
+            mr: "फायद्यांचे वाटप जाणताच येत नाही, कारण अर्थतज्ज्ञांकडे कोणाची स्थिती चांगली वा वाईट झाली हे पाहण्याचा मार्ग नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The reason both descriptions of the last three decades are true is that liberalisation was never one policy affecting one group. It changed the price of everything, and a price change is a gain to whoever buys and a loss to whoever sells. Start with the gains, which are substantial and should not be minimised. Consumers with purchasing power gained the most visibly: cars, phones, electronics, appliances and processed food arrived in variety and quality that had not existed, and at prices that fell as competition arrived. Skilled workers gained enormously — software, finance, telecommunications, business services and pharmaceuticals grew rapidly, and the salaries in them created much of the new urban middle class. Large Indian firms gained: several used the opening to acquire technology, raise capital abroad and become multinationals themselves, which is a change in India's position rather than merely in its output. And export producers who could meet international standards found markets many times the size of the domestic one. Now the losses, which fall on people less able to absorb them. Small manufacturers in toys, batteries, tyres, plastics, capital goods and vegetable oil faced imports produced at a scale and cost they could not match; many closed, and their workers lost jobs that were already insecure. Farmers were exposed to world prices, which is a benefit when prices are high and a catastrophe when they collapse — and they compete against produce from countries whose governments subsidise their farmers heavily, which means competing against a foreign treasury rather than a foreign farmer. Workers in the industries that survived often found their employment restructured: firms facing global competition cut costs by shifting from regular to contract labour, so employment continued while security did not. And the small producer supplying a multinational on order carries the risks of cancellation and input-price rises that the buyer does not. The pattern behind the ledger is consistent: the gains went disproportionately to those with capital, education or an asset to trade on, and the losses to those with none of these. That is not a coincidence — openness rewards whoever is already positioned to compete, and those least equipped to adjust are the ones for whom adjustment is hardest. So what would fairness require? Not the reversal implied by the second wrong answer — India's exports, foreign exchange, technology access and consumer welfare all depend on the opening, and the industries that grew employ millions. It would require attention to the terms rather than to the fact. Labour laws would have to be enforced so that competitiveness is not achieved by degrading employment. Small producers would need what large ones already have: credit at reasonable rates, reliable power and transport, technology support and marketing help, so they compete on capability rather than being eliminated for lack of infrastructure. India would have to negotiate harder at the WTO, particularly on the agricultural subsidies of rich countries, which are the clearest instance of rules bearing more heavily on the weak. And trade barriers would have to be retained or restored where there is a genuine case — a new industry that needs time to learn, or a sector where imports are being dumped below cost. Underlying all of this is a single point worth keeping. Economists often argue that free trade raises total welfare because the winners could compensate the losers. The word doing the work is 'could'. Nothing in the market makes that compensation happen; it has to be arranged politically, through taxation, public spending, regulation and law. Where it is not arranged, the aggregate gain is real and so is the individual ruin, and both appear in the same three decades — which is exactly what India's record shows. (The wrong answers deny a distribution that firm closures and income data document, propose a reversal that would forfeit real gains, or claim an unknowability contradicted by three decades of published statistics.)",
+          hi: "पिछले तीन दशकों के दोनों वर्णन इसलिए सच हैं कि उदारीकरण कभी एक समूह पर असर करती एक नीति थी ही नहीं। उसने हर चीज़ का दाम बदला, और दाम-परिवर्तन ख़रीदने वाले के लिए लाभ और बेचने वाले के लिए हानि है। लाभों से शुरू, जो पर्याप्त हैं और छोटे नहीं किए जाने चाहिए। क्रय-शक्ति वाले उपभोक्ताओं को सबसे स्पष्ट लाभ हुआ: कारें, फ़ोन, इलेक्ट्रॉनिक्स, उपकरण और संसाधित भोजन ऐसी विविधता तथा गुणवत्ता में आए जो पहले थी ही नहीं, और ऐसे दामों पर जो प्रतिस्पर्धा आते ही गिरे। कुशल मज़दूरों को विशाल लाभ हुआ — सॉफ़्टवेयर, वित्त, दूरसंचार, व्यावसायिक सेवाएँ और औषधि तेज़ी से बढ़े, और उनमें के वेतन ने नए शहरी मध्यवर्ग का बड़ा हिस्सा रचा। बड़ी भारतीय फ़र्मों को लाभ हुआ: कईयों ने खुलने का उपयोग तकनीक पाने, विदेश में पूँजी जुटाने और स्वयं बहुराष्ट्रीय बनने में किया, जो केवल उत्पादन में नहीं बल्कि भारत की स्थिति में बदलाव है। और जो निर्यात-उत्पादक अंतरराष्ट्रीय मानक पूरा कर सके उन्हें घरेलू से कई गुना बड़े बाज़ार मिले। अब हानियाँ, जो उन लोगों पर पड़ती हैं जो उन्हें कम सह सकते हैं। खिलौनों, बैटरियों, टायरों, प्लास्टिक, पूँजीगत वस्तुओं और वनस्पति तेल के छोटे निर्माताओं के सामने ऐसे पैमाने तथा लागत पर बना आयात आया जिसकी वे बराबरी न कर सके; कई बंद हुए, और उनके मज़दूरों ने वे नौकरियाँ खोईं जो पहले ही असुरक्षित थीं। किसान विश्व-दामों के सामने खुले, जो दाम ऊँचे होने पर लाभ और ढहने पर विपत्ति है — और वे उन देशों की उपज से मुक़ाबला करते हैं जिनकी सरकारें अपने किसानों को भारी सब्सिडी देती हैं, अर्थात विदेशी किसान से नहीं, विदेशी ख़ज़ाने से मुक़ाबला। जो उद्योग बचे उनके मज़दूरों ने अक्सर अपना रोज़गार फिर गढ़ा पाया: वैश्विक प्रतिस्पर्धा झेलती फ़र्मों ने नियमित से ठेका श्रम पर खिसककर लागत काटी, अतः रोज़गार चला और सुरक्षा नहीं। और ऑर्डर पर बहुराष्ट्रीय को आपूर्ति करता छोटा उत्पादक रद्दीकरण तथा निवेश-दाम चढ़ने का जोखिम ढोता है जो ख़रीदार नहीं ढोता। बही के पीछे का ढर्रा एक-सा है: लाभ अनुपात से अधिक उन्हें गया जिनके पास पूँजी, शिक्षा या व्यापार करने को कोई परिसंपत्ति थी, और हानि उन्हें जिनके पास इनमें से कुछ नहीं। यह संयोग नहीं — खुलापन उसी को पुरस्कृत करता जो पहले से मुक़ाबले की स्थिति में है, और जो समायोजन के लिए सबसे कम सुसज्जित हैं उन्हीं के लिए समायोजन सबसे कठिन है। तो न्याय के लिए क्या चाहिए? वह उलटाव नहीं जो दूसरा ग़लत उत्तर सुझाता — भारत का निर्यात, विदेशी मुद्रा, तकनीक तक पहुँच और उपभोक्ता-कल्याण सब खुलने पर निर्भर हैं, और जो उद्योग बढ़े वे लाखों को रोज़गार देते हैं। इसके लिए तथ्य पर नहीं, शर्तों पर ध्यान चाहिए। श्रम-क़ानून लागू कराने होंगे ताकि प्रतिस्पर्धात्मकता रोज़गार गिराकर न पाई जाए। छोटे उत्पादकों को वह चाहिए जो बड़ों के पास पहले से है: उचित दरों पर ऋण, भरोसेमंद बिजली और परिवहन, तकनीकी सहारा और विपणन-सहायता, ताकि वे क्षमता पर मुक़ाबला करें, ढाँचे के अभाव में मिटाए न जाएँ। भारत को विश्व व्यापार संगठन में कड़ी बातचीत करनी होगी, विशेषकर धनी देशों की कृषि सब्सिडी पर, जो नियमों के दुर्बल पर अधिक भारी पड़ने का सबसे स्पष्ट उदाहरण हैं। और जहाँ सचमुच मामला बने वहाँ व्यापार अवरोध रखने या बहाल करने होंगे — कोई नया उद्योग जिसे सीखने का समय चाहिए, या ऐसा क्षेत्र जहाँ आयात लागत से नीचे पटका जा रहा हो। इन सबके नीचे एक बिंदु है जिसे सहेजना चाहिए। अर्थशास्त्री अक्सर तर्क देते हैं कि मुक्त व्यापार कुल कल्याण बढ़ाता है क्योंकि जीतने वाले हारने वालों की भरपाई कर सकते थे। काम करता शब्द है 'सकते थे'। बाज़ार में कुछ भी उस भरपाई को होने नहीं देता; उसे राजनीतिक रूप से जुटाना पड़ता है — कराधान, सार्वजनिक व्यय, नियमन और क़ानून से। जहाँ वह नहीं जुटाई जाती, वहाँ कुल लाभ असली है और व्यक्तिगत बरबादी भी, और दोनों उन्हीं तीन दशकों में दिखते हैं — ठीक वही जो भारत का रिकॉर्ड दिखाता है। (ग़लत उत्तर उस वितरण को नकारते जिसे फ़र्मों का बंद होना और आय के आँकड़े दर्ज करते, ऐसा उलटाव सुझाते जो असली लाभ गँवा देता, या ऐसी अज्ञेयता का दावा करते जिसका खंडन तीन दशकों के प्रकाशित आँकड़े करते हैं।)",
+          mr: "गेल्या तीन दशकांची दोन्ही वर्णने यासाठी खरी की उदारीकरण कधी एका गटावर परिणाम करणारे एक धोरण नव्हतेच. त्याने प्रत्येक गोष्टीची किंमत बदलली, आणि किंमत-बदल विकत घेणाऱ्यासाठी फायदा आणि विकणाऱ्यासाठी तोटा. फायद्यांपासून सुरू, जे भरीव आणि लहान करू नयेत. क्रयशक्ती असलेल्या ग्राहकांना सर्वांत स्पष्ट फायदा: मोटारी, फोन, इलेक्ट्रॉनिक्स, उपकरणे आणि प्रक्रिया केलेले अन्न अशा विविधतेत व गुणवत्तेत आले जी आधी नव्हतीच, आणि अशा किमतींवर ज्या स्पर्धा येताच घसरल्या. कुशल कामगारांना प्रचंड फायदा — सॉफ्टवेअर, वित्त, दूरसंचार, व्यावसायिक सेवा आणि औषधनिर्माण वेगाने वाढले, आणि त्यांतील पगारांनी नव्या शहरी मध्यमवर्गाचा मोठा भाग घडवला. मोठ्या भारतीय कंपन्यांना फायदा: कित्येकांनी उघडण्याचा वापर तंत्रज्ञान मिळवायला, परदेशात भांडवल उभे करायला आणि स्वतः बहुराष्ट्रीय बनायला केला, जो केवळ उत्पादनातील नव्हे तर भारताच्या स्थानातील बदल. आणि जे निर्यात-उत्पादक आंतरराष्ट्रीय मानके पूर्ण करू शकले त्यांना देशी बाजाराहून कैकपट मोठे बाजार मिळाले. आता तोटे, जे ते सोसण्यास कमी सक्षम लोकांवर पडतात. खेळणी, बॅटऱ्या, टायर, प्लास्टिक, भांडवली वस्तू आणि वनस्पती तेलाच्या लहान उत्पादकांसमोर अशा प्रमाणावर व खर्चात बनलेली आयात आली जिची ते बरोबरी करू शकले नाहीत; अनेक बंद पडले, आणि त्यांच्या कामगारांनी आधीच असुरक्षित असलेल्या नोकऱ्या गमावल्या. शेतकरी जागतिक किमतींसमोर उघडे पडले, जे किमती जास्त असताना फायदा आणि कोसळल्यावर आपत्ती — आणि ते अशा देशांच्या उपजेशी स्पर्धा करतात ज्यांची सरकारे आपल्या शेतकऱ्यांना जबर अनुदाने देतात, म्हणजे परदेशी शेतकऱ्याशी नव्हे तर परदेशी तिजोरीशी स्पर्धा. जे उद्योग टिकले त्यांच्या कामगारांना अनेकदा आपला रोजगार पुन्हा घडवलेला आढळला: जागतिक स्पर्धेला सामोऱ्या जाणाऱ्या कंपन्यांनी नियमितकडून कंत्राटी श्रमाकडे सरकून खर्च कापला, म्हणून रोजगार चालू राहिला आणि सुरक्षा नाही. आणि मागणीवर बहुराष्ट्रीय कंपनीला पुरवठा करणारा लहान उत्पादक रद्दीकरण व निविष्ठा-भाववाढीची जोखीम वाहतो जी खरेदीदार वाहत नाही. खतावणीमागील प्रारूप सुसंगत: फायदे प्रमाणाबाहेर त्यांना गेले ज्यांच्याकडे भांडवल, शिक्षण वा व्यापार करण्याजोगी मालमत्ता होती, आणि तोटे त्यांना ज्यांच्याकडे यांपैकी काही नाही. हा योगायोग नाही — उघडेपणा त्यालाच बक्षीस देतो जो आधीच स्पर्धेच्या स्थितीत, आणि जे जुळवून घ्यायला सर्वांत कमी सज्ज त्यांच्यासाठीच जुळवून घेणे सर्वांत कठीण. मग न्यायासाठी काय लागेल? दुसरे चुकीचे उत्तर सुचवते ते उलटवणे नव्हे — भारताची निर्यात, परकी चलन, तंत्रज्ञानापर्यंतचा प्रवेश आणि ग्राहक-कल्याण सर्व उघडण्यावर अवलंबून, आणि जे उद्योग वाढले ते लाखांना रोजगार देतात. त्यासाठी तथ्यावर नव्हे तर अटींवर लक्ष हवे. कामगार कायदे राबवावे लागतील जेणेकरून स्पर्धाक्षमता रोजगार खालावून मिळवली जाणार नाही. लहान उत्पादकांना ते हवे जे मोठ्यांकडे आधीच आहे: रास्त दरांवर कर्ज, विश्वासार्ह वीज व वाहतूक, तांत्रिक आधार आणि विपणन मदत, जेणेकरून ते क्षमतेवर स्पर्धा करतील, पायाभूत सुविधांच्या अभावी संपवले जाणार नाहीत. भारताला जागतिक व्यापार संघटनेत कडक वाटाघाटी कराव्या लागतील, विशेषतः श्रीमंत देशांच्या शेती अनुदानांवर, जी नियम दुर्बळांवर अधिक जड पडण्याचे सर्वांत स्पष्ट उदाहरण. आणि जिथे खरोखर मुद्दा असेल तिथे व्यापार अडथळे ठेवावे वा पुन्हा आणावे लागतील — एखादा नवा उद्योग ज्याला शिकायला वेळ हवा, वा असे क्षेत्र जिथे आयात खर्चाखाली ओतली जात आहे. या सर्वांखाली एक मुद्दा जपण्याजोगा. अर्थतज्ज्ञ अनेकदा युक्तिवाद करतात की मुक्त व्यापार एकूण कल्याण वाढवतो कारण जिंकणारे हरणाऱ्यांची भरपाई करू शकत होते. काम करणारा शब्द 'शकत होते'. बाजारात काहीही ती भरपाई घडवत नाही; ती राजकीयदृष्ट्या जुळवावी लागते — करआकारणी, सार्वजनिक खर्च, नियमन आणि कायद्यातून. जिथे ती जुळवली जात नाही, तिथे एकूण फायदा खरा आणि वैयक्तिक नाशही, आणि दोन्ही त्याच तीन दशकांत दिसतात — नेमके तेच जे भारताचा लौकिक दाखवतो. (चुकीची उत्तरे कंपन्यांचे बंद पडणे व उत्पन्न आकडेवारी नोंदवत असलेले वाटप नाकारतात, खरे फायदे गमावणारे उलटवणे सुचवतात, वा तीन दशकांची प्रकाशित आकडेवारी खोडत असलेली अज्ञेयता सांगतात.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 5 — Consumer Rights                                             */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "economics-10-consumer-rights",
+    subject: "ECONOMICS",
+    classLevel: 10,
+    chapter: {
+      en: "Chapter 5 — Consumer Rights",
+      hi: "अध्याय 5 — उपभोक्ता अधिकार",
+      mr: "प्रकरण 5 — ग्राहक हक्क",
+    },
+    name: {
+      en: "Consumer Rights",
+      hi: "उपभोक्ता अधिकार",
+      mr: "ग्राहक हक्क",
+    },
+    summary: {
+      en: "The weaker party in every transaction, given rules to stand on: a seller who knows what the buyer cannot, the label that must say what is inside and by when it dies, the right to refuse and to be heard, a mark that certifies what a shopper could never test, and three courts arranged so that a small claim is worth making.",
+      hi: "हर सौदे का कमज़ोर पक्ष, जिसे खड़े होने को नियम दिए गए: वह विक्रेता जो वह जानता जो ख़रीदार नहीं जान सकता, वह लेबल जो बताए भीतर क्या है और कब तक चलेगा, मना करने और सुने जाने का अधिकार, वह चिह्न जो उसे प्रमाणित करे जिसे कोई ख़रीदार परख ही नहीं सकता, और तीन अदालतें ऐसे सजाई कि छोटा दावा भी करने योग्य रहे।",
+      mr: "प्रत्येक व्यवहारातील दुर्बळ पक्ष, ज्याला उभे राहायला नियम दिले: तो विक्रेता जो ते जाणतो जे खरेदीदार जाणू शकत नाही, ते लेबल जे सांगेल आत काय आहे आणि कधीपर्यंत टिकेल, नकार देण्याचा आणि ऐकले जाण्याचा हक्क, ते चिन्ह जे ते प्रमाणित करेल जे कोणता खरेदीदार तपासूच शकत नाही, आणि तीन न्यायालये अशी मांडलेली की लहान दावाही करण्याजोगा राहील.",
+    },
+    position: 5,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "why-consumers-need-protection",
+        name: {
+          en: "Why consumers need protection",
+          hi: "उपभोक्ताओं को संरक्षण क्यों चाहिए",
+          mr: "ग्राहकांना संरक्षण का हवे",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A shopkeeper knows how long the packet has been on the shelf and the buyer does not; a company can afford lawyers and a single customer cannot; a manufacturer sells to millions while each buys once. Which imbalance is this?",
+          hi: "दुकानदार जानता है कि पैकेट कितने दिन से रैक पर है और ख़रीदार नहीं जानता; कंपनी वकील जुटा सकती है और अकेला ग्राहक नहीं; निर्माता लाखों को बेचता है जबकि हर एक एक बार ख़रीदता है। यह कौन-सा असंतुलन है?",
+          mr: "दुकानदाराला माहीत आहे की पुडा किती दिवसांपासून फळीवर आहे आणि खरेदीदाराला नाही; कंपनी वकील परवडू शकते आणि एकटा ग्राहक नाही; उत्पादक लाखांना विकतो तर प्रत्येक एकदाच विकत घेतो. हा कोणता असमतोल?",
+        },
+        statement: {
+          en: "Consumers need protection because sellers know more about a product than buyers can, because a single buyer has far less bargaining power than a large firm, and because the loss on one purchase is too small for anyone to fight about alone.",
+          hi: "उपभोक्ताओं को संरक्षण इसलिए चाहिए कि विक्रेता उत्पाद के बारे में वह जानते हैं जो ख़रीदार नहीं जान सकते, कि अकेले ख़रीदार की सौदेबाज़ी-शक्ति बड़ी फ़र्म से कहीं कम है, और कि एक ख़रीद पर हानि इतनी छोटी है कि कोई अकेला उस पर लड़े नहीं।",
+          mr: "ग्राहकांना संरक्षण यासाठी हवे की विक्रेते उत्पादाबद्दल ते जाणतात जे खरेदीदार जाणू शकत नाहीत, की एकट्या खरेदीदाराची घासाघिशीची सत्ता मोठ्या कंपनीहून कितीतरी कमी, आणि की एका खरेदीवरील तोटा इतका लहान की कोणी एकटा त्यावर भांडणार नाही.",
+        },
+        detail: {
+          en: "The imbalance of information is the deepest of the three: a buyer cannot test whether milk is adulterated, whether a helmet will hold, or whether a medicine contains what the label claims.",
+          hi: "तीनों में सूचना का असंतुलन सबसे गहरा है: ख़रीदार परख नहीं सकता कि दूध में मिलावट है या नहीं, हेलमेट टिकेगा या नहीं, या दवा में वही है जो लेबल कहता।",
+          mr: "तिघांत माहितीचा असमतोल सर्वांत खोल: खरेदीदार तपासू शकत नाही की दुधात भेसळ आहे का, शिरस्त्राण टिकेल का, वा औषधात लेबल सांगते तेच आहे का.",
+        },
+        extra: {
+          en: "Sellers also shape what buyers believe through advertising, so a consumer can be persuaded to want something before ever comparing it with an alternative.",
+          hi: "विक्रेता विज्ञापन से यह भी गढ़ते हैं कि ख़रीदार क्या मानें, अतः उपभोक्ता को किसी विकल्प से तुलना करने से पहले ही कुछ चाहने को मना लिया जा सकता है।",
+          mr: "विक्रेते जाहिरातींतून खरेदीदार काय मानतात हेही घडवतात, म्हणून ग्राहकाला कोणत्याही पर्यायाशी तुलना करण्याआधीच काहीतरी हवेसे वाटायला मनवता येते.",
+        },
+        pair: {
+          left: {
+            en: "One side knows more and can afford more",
+            hi: "एक पक्ष अधिक जानता और अधिक जुटा सकता",
+            mr: "एक बाजू अधिक जाणते आणि अधिक परवडते",
+          },
+          right: {
+            en: "why consumers need protection",
+            hi: "उपभोक्ताओं को संरक्षण क्यों चाहिए",
+            mr: "ग्राहकांना संरक्षण का हवे",
+          },
+        },
+      },
+      {
+        id: "right-to-information",
+        name: {
+          en: "The right to information",
+          hi: "सूचना का अधिकार",
+          mr: "माहितीचा हक्क",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A packet must carry its ingredients, net weight, price, batch number, date of manufacture, use-by date and the maker's address, and a medicine must add directions and side effects. Which consumer right requires this?",
+          hi: "पैकेट पर उसके अवयव, शुद्ध वज़न, दाम, बैच संख्या, निर्माण तिथि, उपयोग-तिथि और निर्माता का पता होना चाहिए, और दवा पर निर्देश तथा दुष्प्रभाव भी। कौन-सा उपभोक्ता अधिकार यह माँगता है?",
+          mr: "पुड्यावर त्याचे घटक, निव्वळ वजन, किंमत, बॅच क्रमांक, उत्पादन तारीख, वापर-तारीख आणि उत्पादकाचा पत्ता असावा, आणि औषधावर सूचना व दुष्परिणामही. कोणता ग्राहक हक्क हे मागतो?",
+        },
+        statement: {
+          en: "The right to information entitles a consumer to know the details of what they are buying — ingredients, quantity, price, dates and maker — so that a purchase can be judged before it is made rather than after.",
+          hi: "सूचना का अधिकार उपभोक्ता को यह जानने का हक़ देता है कि वह क्या ख़रीद रहा — अवयव, मात्रा, दाम, तिथियाँ और निर्माता — ताकि ख़रीद बाद में नहीं, पहले आँकी जा सके।",
+          mr: "माहितीचा हक्क ग्राहकाला हे जाणण्याचा हक्क देतो की तो काय विकत घेत आहे — घटक, प्रमाण, किंमत, तारखा आणि उत्पादक — जेणेकरून खरेदी नंतर नव्हे तर आधी तपासता येईल.",
+        },
+        detail: {
+          en: "It is the right that makes the others usable: a consumer who does not know what is in a packet cannot meaningfully choose between packets.",
+          hi: "यही वह अधिकार है जो बाक़ी को इस्तेमाल-योग्य बनाता है: जो उपभोक्ता नहीं जानता कि पैकेट में क्या है वह पैकेटों में सार्थक चुनाव कर ही नहीं सकता।",
+          mr: "हाच तो हक्क जो इतरांना वापरण्याजोगे करतो: ज्या ग्राहकाला पुड्यात काय आहे माहीत नाही तो पुड्यांत अर्थपूर्ण निवड करूच शकत नाही.",
+        },
+        extra: {
+          en: "It was extended to government itself by the Right to Information Act, which lets a citizen ask how a decision was taken and obliges an officer to answer.",
+          hi: "सूचना का अधिकार अधिनियम ने उसे स्वयं सरकार तक बढ़ाया, जो नागरिक को पूछने देता कि निर्णय कैसे लिया गया और अधिकारी को उत्तर देने को बाध्य करता है।",
+          mr: "माहितीचा अधिकार कायद्याने तो स्वतः सरकारपर्यंत वाढवला, जो नागरिकाला विचारू देतो की निर्णय कसा घेतला आणि अधिकाऱ्याला उत्तर द्यायला बांधील करतो.",
+        },
+        pair: {
+          left: {
+            en: "What is inside, what it costs, and until when",
+            hi: "भीतर क्या, दाम क्या, और कब तक",
+            mr: "आत काय, किंमत काय, आणि कधीपर्यंत",
+          },
+          right: {
+            en: "the right to information",
+            hi: "सूचना का अधिकार",
+            mr: "माहितीचा हक्क",
+          },
+        },
+      },
+      {
+        id: "right-to-choose",
+        name: {
+          en: "The right to choose",
+          hi: "चुनने का अधिकार",
+          mr: "निवडीचा हक्क",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A gas dealer may not insist that a customer buy a stove from him as a condition of getting a cylinder, and a shopkeeper may not force a bundled item on a buyer who wants only one thing. Which right forbids this?",
+          hi: "गैस विक्रेता यह शर्त नहीं रख सकता कि सिलेंडर पाने के लिए ग्राहक उससे चूल्हा भी ख़रीदे, और दुकानदार ऐसे ख़रीदार पर बंडल की वस्तु नहीं थोप सकता जो केवल एक चीज़ चाहता है। कौन-सा अधिकार यह मना करता है?",
+          mr: "गॅस विक्रेता ही अट ठेवू शकत नाही की सिलिंडर मिळवायला ग्राहकाने त्याच्याकडून शेगडीही घ्यावी, आणि दुकानदार फक्त एकच वस्तू हवी असलेल्या खरेदीदारावर जोडवस्तू लादू शकत नाही. कोणता हक्क याला मनाई करतो?",
+        },
+        statement: {
+          en: "The right to choose means a consumer may decide what to buy and from whom, and cannot be compelled to accept an additional good or service as a condition of getting the one they want.",
+          hi: "चुनने का अधिकार अर्थात उपभोक्ता तय कर सकता कि क्या और किससे ख़रीदे, और उसे यह शर्त मानने को बाध्य नहीं किया जा सकता कि जो वह चाहता उसे पाने के लिए कोई अतिरिक्त वस्तु या सेवा भी ले।",
+          mr: "निवडीचा हक्क म्हणजे ग्राहक ठरवू शकतो की काय आणि कोणाकडून विकत घ्यावे, आणि त्याला ही अट मानायला भाग पाडता येत नाही की त्याला हवे ते मिळवण्यासाठी अतिरिक्त वस्तू वा सेवाही घ्यावी.",
+        },
+        detail: {
+          en: "The right is only as real as the alternatives available: where one supplier holds a monopoly, the formal right to choose has nothing to choose between.",
+          hi: "यह अधिकार उतना ही असली है जितने विकल्प उपलब्ध हों: जहाँ एक ही आपूर्तिकर्ता का एकाधिकार हो, वहाँ चुनने के औपचारिक अधिकार के पास चुनने को कुछ है ही नहीं।",
+          mr: "हा हक्क जितके पर्याय उपलब्ध तितकाच खरा: जिथे एकाच पुरवठादाराची मक्तेदारी, तिथे निवडीच्या औपचारिक हक्काकडे निवडायला काहीच नाही.",
+        },
+        extra: {
+          en: "That is why competition policy belongs alongside consumer law — the two are attacking the same problem from opposite ends.",
+          hi: "इसीलिए प्रतिस्पर्धा-नीति उपभोक्ता-क़ानून के साथ आती है — दोनों उसी एक समस्या पर उल्टे सिरों से हमला कर रहे हैं।",
+          mr: "म्हणूनच स्पर्धा-धोरण ग्राहक-कायद्यासोबत येते — दोन्ही त्याच एका समस्येवर उलट टोकांतून हल्ला करत आहेत.",
+        },
+        pair: {
+          left: {
+            en: "Nothing may be bundled on to what you asked for",
+            hi: "जो तुमने माँगा उस पर कुछ थोपा नहीं जा सकता",
+            mr: "तुम्ही मागितलेल्यावर काहीही जोडता येत नाही",
+          },
+          right: {
+            en: "the right to choose",
+            hi: "चुनने का अधिकार",
+            mr: "निवडीचा हक्क",
+          },
+        },
+      },
+      {
+        id: "right-to-seek-redressal",
+        name: {
+          en: "The right to seek redressal",
+          hi: "निवारण पाने का अधिकार",
+          mr: "निवारण मागण्याचा हक्क",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A buyer sold a defective cooker, overcharged above the printed price, or injured by an unsafe product may demand replacement, repair, refund or compensation — and go to a forum if refused. Which right is this?",
+          hi: "जिस ख़रीदार को ख़राब कुकर बेचा गया, छपे दाम से अधिक वसूला गया, या असुरक्षित उत्पाद से चोट पहुँची, वह बदली, मरम्मत, वापसी या मुआवज़ा माँग सकता है — और मना करने पर मंच तक जा सकता है। यह कौन-सा अधिकार है?",
+          mr: "ज्या खरेदीदाराला सदोष कुकर विकला, छापील किमतीहून अधिक घेतले, वा असुरक्षित उत्पादाने इजा झाली, तो बदली, दुरुस्ती, परतावा वा भरपाई मागू शकतो — आणि नकार मिळाल्यास मंचाकडे जाऊ शकतो. हा कोणता हक्क?",
+        },
+        statement: {
+          en: "The right to seek redressal entitles a consumer who has been sold a defective good, overcharged or harmed by an unsafe product to claim replacement, repair, refund or compensation, and to approach a consumer court if the seller refuses.",
+          hi: "निवारण पाने का अधिकार उस उपभोक्ता को — जिसे ख़राब वस्तु बेची गई, अधिक वसूला गया या असुरक्षित उत्पाद से हानि हुई — बदली, मरम्मत, वापसी या मुआवज़े का दावा करने और विक्रेता के मना करने पर उपभोक्ता अदालत जाने का हक़ देता है।",
+          mr: "निवारण मागण्याचा हक्क त्या ग्राहकाला — ज्याला सदोष वस्तू विकली, जास्त घेतले वा असुरक्षित उत्पादाने हानी झाली — बदली, दुरुस्ती, परतावा वा भरपाईचा दावा करण्याचा आणि विक्रेत्याने नकार दिल्यास ग्राहक न्यायालयात जाण्याचा हक्क देतो.",
+        },
+        detail: {
+          en: "The bill is what makes the claim possible, because it establishes what was bought, from whom, at what price and on what date.",
+          hi: "बिल ही दावे को संभव बनाता है, क्योंकि वह सिद्ध करता कि क्या ख़रीदा गया, किससे, किस दाम पर और किस तिथि को।",
+          mr: "बिलच दावा शक्य करते, कारण ते सिद्ध करते की काय विकत घेतले, कोणाकडून, कोणत्या किमतीला आणि कोणत्या तारखेला.",
+        },
+        extra: {
+          en: "It carries a duty with it: a consumer who does not ask for a bill has waived the evidence, which is why insisting on one is part of exercising the right.",
+          hi: "उसके साथ एक कर्तव्य भी है: जो उपभोक्ता बिल नहीं माँगता वह प्रमाण छोड़ देता है, इसीलिए बिल पर अड़ना अधिकार के प्रयोग का ही अंग है।",
+          mr: "त्यासोबत एक कर्तव्यही: जो ग्राहक बिल मागत नाही तो पुरावा सोडून देतो, म्हणूनच बिलावर आग्रह धरणे हा हक्क बजावण्याचाच भाग.",
+        },
+        pair: {
+          left: {
+            en: "Replacement, refund or compensation, and a forum if refused",
+            hi: "बदली, वापसी या मुआवज़ा, और मना करने पर मंच",
+            mr: "बदली, परतावा वा भरपाई, आणि नकार मिळाल्यास मंच",
+          },
+          right: {
+            en: "the right to seek redressal",
+            hi: "निवारण पाने का अधिकार",
+            mr: "निवारण मागण्याचा हक्क",
+          },
+        },
+      },
+      {
+        id: "standardisation-marks",
+        name: {
+          en: "Standardisation marks",
+          hi: "मानकीकरण चिह्न",
+          mr: "प्रमाणीकरण चिन्हे",
+        },
+        kind: "structure",
+        prompt: {
+          en: "A buyer cannot test the purity of gold, the wiring inside a heater or the oil in a tin, so a certifying body inspects the maker and permits a mark to be printed on goods that pass. What are these marks?",
+          hi: "ख़रीदार न सोने की शुद्धता परख सकता, न हीटर के भीतर की वायरिंग, न डिब्बे का तेल, अतः कोई प्रमाणन-संस्था निर्माता की जाँच कर पास हुए माल पर चिह्न छापने की छूट देती है। ये चिह्न क्या हैं?",
+          mr: "खरेदीदार ना सोन्याची शुद्धता तपासू शकतो, ना हीटरच्या आतली वायरिंग, ना डब्यातले तेल, म्हणून एखादी प्रमाणन-संस्था उत्पादकाची तपासणी करून उत्तीर्ण मालावर चिन्ह छापण्याची मुभा देते. ही चिन्हे कोणती?",
+        },
+        statement: {
+          en: "Standardisation marks such as ISI for manufactured goods, Agmark for agricultural produce and Hallmark for gold certify that a product meets a laid-down quality standard, so a buyer need not test it themselves.",
+          hi: "निर्मित वस्तुओं के लिए आईएसआई, कृषि उपज के लिए एगमार्क और सोने के लिए हॉलमार्क जैसे मानकीकरण चिह्न प्रमाणित करते हैं कि उत्पाद तय गुणवत्ता-मानक पर खरा है, अतः ख़रीदार को स्वयं परखना नहीं पड़ता।",
+          mr: "उत्पादित वस्तूंसाठी आयएसआय, शेती उपजेसाठी अ‍ॅगमार्क आणि सोन्यासाठी हॉलमार्क अशी प्रमाणीकरण चिन्हे प्रमाणित करतात की उत्पाद ठरलेल्या गुणवत्ता-मानकावर उतरते, म्हणून खरेदीदाराला स्वतः तपासावे लागत नाही.",
+        },
+        detail: {
+          en: "For goods where failure can kill — cylinders, helmets, electrical fittings, packaged drinking water — the mark is not optional but required by law.",
+          hi: "जिन वस्तुओं की विफलता जान ले सकती है — सिलेंडर, हेलमेट, बिजली की फ़िटिंग, पैकेट का पेयजल — उन पर चिह्न वैकल्पिक नहीं, क़ानूनन आवश्यक है।",
+          mr: "ज्या वस्तूंचे अपयश जीव घेऊ शकते — सिलिंडर, शिरस्त्राणे, विजेची जोडणी, पॅकबंद पिण्याचे पाणी — त्यांवर चिन्ह ऐच्छिक नव्हे तर कायद्याने आवश्यक.",
+        },
+        extra: {
+          en: "The mark is only as good as the inspection behind it, which is why counterfeit marks are treated as a serious offence rather than a labelling error.",
+          hi: "चिह्न उतना ही अच्छा है जितनी उसके पीछे की जाँच, इसीलिए नक़ली चिह्न को लेबल की भूल नहीं, गंभीर अपराध माना जाता है।",
+          mr: "चिन्ह त्याच्यामागील तपासणीइतकेच चांगले, म्हणूनच बनावट चिन्ह लेबलची चूक नव्हे तर गंभीर गुन्हा मानले जाते.",
+        },
+        pair: {
+          left: {
+            en: "A certificate for what no shopper can test",
+            hi: "उसका प्रमाण-पत्र जिसे कोई ख़रीदार परख नहीं सकता",
+            mr: "जे कोणता खरेदीदार तपासू शकत नाही त्याचे प्रमाणपत्र",
+          },
+          right: {
+            en: "standardisation marks",
+            hi: "मानकीकरण चिह्न",
+            mr: "प्रमाणीकरण चिन्हे",
+          },
+        },
+      },
+      {
+        id: "consumer-courts",
+        name: {
+          en: "The three-tier consumer courts",
+          hi: "तीन-स्तरीय उपभोक्ता अदालतें",
+          mr: "त्रिस्तरीय ग्राहक न्यायालये",
+        },
+        kind: "structure",
+        prompt: {
+          en: "Small claims are heard at the district level, larger ones by a state commission, and the largest by a national commission, with an appeal available from each to the one above. Which arrangement is this?",
+          hi: "छोटे दावे ज़िला स्तर पर सुने जाते, बड़े राज्य आयोग द्वारा, और सबसे बड़े राष्ट्रीय आयोग द्वारा, और हर एक से ऊपरवाले तक अपील उपलब्ध है। यह कौन-सी व्यवस्था है?",
+          mr: "लहान दावे जिल्हा पातळीवर ऐकले जातात, मोठे राज्य आयोगाकडून, आणि सर्वांत मोठे राष्ट्रीय आयोगाकडून, आणि प्रत्येकाकडून वरच्याकडे अपील उपलब्ध. ही कोणती व्यवस्था?",
+        },
+        statement: {
+          en: "Consumer disputes are heard by a three-tier system — a district commission, a state commission and a national commission — arranged by the value of the claim, with a right of appeal from each level to the next.",
+          hi: "उपभोक्ता विवाद तीन-स्तरीय प्रणाली में सुने जाते हैं — ज़िला आयोग, राज्य आयोग और राष्ट्रीय आयोग — जो दावे के मूल्य से सजी है, और हर स्तर से अगले तक अपील का अधिकार है।",
+          mr: "ग्राहक वाद त्रिस्तरीय पद्धतीत ऐकले जातात — जिल्हा आयोग, राज्य आयोग आणि राष्ट्रीय आयोग — जी दाव्याच्या मूल्यानुसार मांडलेली, आणि प्रत्येक स्तरावरून पुढच्यापर्यंत अपिलाचा हक्क.",
+        },
+        detail: {
+          en: "It was designed to be usable without a lawyer, with low fees and simple procedure, because a case that costs more than the item is not worth bringing.",
+          hi: "उसे बिना वकील इस्तेमाल-योग्य बनाया गया, कम शुल्क और सरल प्रक्रिया के साथ, क्योंकि जो मुक़दमा वस्तु से महँगा पड़े वह लाने योग्य नहीं।",
+          mr: "ती वकिलाविना वापरण्याजोगी रचली गेली, कमी शुल्क आणि सोप्या प्रक्रियेसह, कारण जो खटला वस्तूहून महाग पडतो तो आणण्याजोगा नाही.",
+        },
+        extra: {
+          en: "The Consumer Protection Act of 1986, replaced by a stronger law in 2019, created this machinery and added rules for online sellers and misleading advertisements.",
+          hi: "1986 का उपभोक्ता संरक्षण अधिनियम, जिसे 2019 के अधिक मज़बूत क़ानून ने बदला, यही तंत्र बनाता है और उसने ऑनलाइन विक्रेताओं तथा भ्रामक विज्ञापनों के नियम भी जोड़े।",
+          mr: "1986 चा ग्राहक संरक्षण कायदा, ज्याला 2019 च्या अधिक भक्कम कायद्याने बदलले, हीच यंत्रणा उभारतो आणि त्याने ऑनलाइन विक्रेते व दिशाभूल करणाऱ्या जाहिरातींचे नियमही जोडले.",
+        },
+        pair: {
+          left: {
+            en: "District, state and national, by the size of the claim",
+            hi: "दावे के आकार से ज़िला, राज्य और राष्ट्रीय",
+            mr: "दाव्याच्या आकारानुसार जिल्हा, राज्य आणि राष्ट्रीय",
+          },
+          right: {
+            en: "the three-tier consumer courts",
+            hi: "तीन-स्तरीय उपभोक्ता अदालतें",
+            mr: "त्रिस्तरीय ग्राहक न्यायालये",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A believer in free markets argues that consumer protection laws are unnecessary: a shop that sells bad goods loses customers, so competition will discipline sellers without any regulator. Explain the cases where this reasoning fails.",
+          hi: "मुक्त बाज़ार में विश्वास रखता कोई तर्क देता है कि उपभोक्ता संरक्षण क़ानून अनावश्यक हैं: जो दुकान ख़राब माल बेचे वह ग्राहक खोती है, अतः प्रतिस्पर्धा बिना किसी नियामक के विक्रेताओं को अनुशासित कर देगी। समझाओ यह तर्क कहाँ विफल होता है।",
+          mr: "मुक्त बाजारावर विश्वास ठेवणारा कोणी युक्तिवाद करतो की ग्राहक संरक्षण कायदे अनावश्यक: जे दुकान वाईट माल विकते ते ग्राहक गमावते, म्हणून स्पर्धा कोणत्याही नियामकाविना विक्रेत्यांना शिस्त लावेल. समजावा हा युक्तिवाद कुठे फसतो.",
+        },
+        choices: [
+          {
+            en: "It fails wherever the buyer cannot detect the defect — adulterated milk, faulty wiring, an untested medicine — because losing customers requires customers to find out, and some harms are discovered only after injury or never at all. It also fails where the seller is a monopoly with nowhere else to go, where the purchase is one-off so reputation cannot discipline, and where the loss is too small for any individual to pursue but very large added across millions of buyers",
+            hi: "वह वहाँ विफल होता है जहाँ ख़रीदार दोष भाँप ही न सके — मिलावटी दूध, ख़राब वायरिंग, बिना परखी दवा — क्योंकि ग्राहक खोने के लिए ग्राहकों का पता लगाना ज़रूरी है, और कुछ हानियाँ चोट के बाद ही पता चलती हैं या कभी नहीं। वह वहाँ भी विफल होता है जहाँ विक्रेता एकाधिकारी हो और जाने को और कहीं न हो, जहाँ ख़रीद एक बार की हो अतः साख अनुशासित न कर सके, और जहाँ हानि किसी व्यक्ति के पीछा करने को बहुत छोटी पर लाखों ख़रीदारों पर जोड़ें तो बहुत बड़ी हो",
+            mr: "तो तिथे फसतो जिथे खरेदीदार दोष ओळखूच शकत नाही — भेसळयुक्त दूध, सदोष वायरिंग, न तपासलेले औषध — कारण ग्राहक गमावण्यासाठी ग्राहकांना कळणे आवश्यक, आणि काही हानी इजेनंतरच कळतात वा कधीच नाही. तो तिथेही फसतो जिथे विक्रेता मक्तेदार आणि जायला दुसरीकडे नाही, जिथे खरेदी एकदाची म्हणून प्रतिष्ठा शिस्त लावू शकत नाही, आणि जिथे तोटा कोणा व्यक्तीने पाठपुरावा करण्यास फार लहान पण लाखो खरेदीदारांवर बेरजेत फार मोठा",
+          },
+          {
+            en: "It never fails: buyers always detect every defect immediately, so reputation is a complete safeguard",
+            hi: "वह कभी विफल नहीं होता: ख़रीदार सदा हर दोष तुरंत भाँप लेते हैं, अतः साख पूरा सुरक्षा-कवच है",
+            mr: "तो कधीच फसत नाही: खरेदीदार सदैव प्रत्येक दोष तात्काळ ओळखतात, म्हणून प्रतिष्ठा पूर्ण सुरक्षाकवच",
+          },
+          {
+            en: "It fails because competition does not exist in any market anywhere, so all trade must be run by the state",
+            hi: "वह इसलिए विफल होता कि कहीं किसी बाज़ार में प्रतिस्पर्धा है ही नहीं, अतः सारा व्यापार राज्य चलाए",
+            mr: "तो यासाठी फसतो की कुठेही कोणत्याही बाजारात स्पर्धा नाहीच, म्हणून सर्व व्यापार राज्याने चालवावा",
+          },
+          {
+            en: "It fails only for luxury goods, since necessities are always sold honestly",
+            hi: "वह केवल विलासिता की वस्तुओं के लिए विफल होता, क्योंकि आवश्यक वस्तुएँ सदा ईमानदारी से बेची जाती हैं",
+            mr: "तो केवळ चैनीच्या वस्तूंसाठी फसतो, कारण गरजेच्या वस्तू सदैव प्रामाणिकपणे विकल्या जातात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The argument is not silly — reputation really does discipline sellers in many markets, and a restaurant that serves bad food does lose customers. The task is to identify the conditions the argument quietly assumes, and then notice how often they fail. The mechanism requires four things: the buyer must be able to detect the defect; there must be an alternative seller to switch to; the buyer must expect to buy again, so the seller values their return; and the loss must be large enough to be worth acting on. Remove any one and the discipline stops working. Take detection first, because it is the deepest failure. A consumer cannot test whether milk has been adulterated, whether the wiring inside a heater will hold, whether a helmet will withstand an impact, or whether a tablet contains what the label claims. These are exactly the cases where the harm is greatest, and they are precisely the cases where the market's feedback loop is broken: by the time the defect is discovered, someone has been injured or has died, and often the buyer never connects the harm to the product at all. A seller who knows the buyer cannot check has every commercial incentive to cut quality, and reputation punishes nothing it cannot see. This is why standardisation marks exist — a certifying body inspects on the buyer's behalf — and why they are compulsory rather than optional for cylinders, electrical fittings and packaged water. Now the alternative. Switching away is only a punishment if there is somewhere to switch to. A single gas dealer in a town, a monopoly utility, a company with a patented medicine — in each case the customer's displeasure costs the seller nothing, which is why the right to choose is only as real as the competition behind it and why competition policy and consumer law belong together. Then repetition. Reputation works through repeat business, so it is weakest exactly where the purchase is once in a lifetime or made by a traveller who will never return — a wedding hall, a hospital procedure, a roadside repair on a highway. And finally scale. Suppose a company shortweights a packet by twenty grams. For each buyer the loss is a rupee or two, far too little to justify a complaint, a day's travel or a lawyer. Across ten million packets the company gains crores. This asymmetry is systematic: the gain is concentrated and worth organising for, the loss is dispersed and not worth pursuing individually. No individual acting rationally will ever bring the case, and so the practice continues indefinitely unless somebody acts collectively. That is what the consumer courts are for, and it explains their specific design: low fees, simple procedure, no lawyer needed, and district-level benches, because a remedy that costs more than the item is no remedy. It also explains why consumer organisations matter — they aggregate what no individual can afford to pursue alone. The honest conclusion is that markets discipline sellers well where information is visible, alternatives exist and purchases repeat, and hardly at all where they do not — so the case for regulation is not an objection to markets but a description of where the market's own mechanism cannot reach. (The wrong answers assume perfect detection, deny competition altogether, or imagine that necessities are somehow exempt from adulteration when they are its most common target.)",
+          hi: "तर्क मूर्खतापूर्ण नहीं है — साख कई बाज़ारों में सचमुच विक्रेताओं को अनुशासित करती है, और ख़राब भोजन परोसता भोजनालय ग्राहक खोता ही है। काम यह पहचानना है कि तर्क चुपचाप कौन-सी शर्तें मान लेता है, और फिर देखना कि वे कितनी बार टूटती हैं। क्रियाविधि को चार चीज़ें चाहिए: ख़रीदार दोष भाँप सके; बदलने को कोई दूसरा विक्रेता हो; ख़रीदार फिर ख़रीदने की अपेक्षा रखे, ताकि विक्रेता उसकी वापसी को मूल्य दे; और हानि इतनी बड़ी हो कि उस पर कार्रवाई करने योग्य हो। इनमें से कोई एक हटाओ और अनुशासन काम करना बंद कर देता है। पहले भाँपना लो, क्योंकि वही सबसे गहरी विफलता है। उपभोक्ता परख नहीं सकता कि दूध में मिलावट है या नहीं, हीटर के भीतर की वायरिंग टिकेगी या नहीं, हेलमेट टक्कर झेलेगा या नहीं, या गोली में वही है जो लेबल कहता। ये ठीक वही मामले हैं जहाँ हानि सबसे बड़ी है, और ठीक वही जहाँ बाज़ार का प्रतिक्रिया-चक्र टूटा हुआ है: जब तक दोष पता चलता, कोई चोटिल हो चुका या मर चुका होता, और अक्सर ख़रीदार हानि को उत्पाद से जोड़ ही नहीं पाता। जो विक्रेता जानता है कि ख़रीदार जाँच नहीं सकता उसके पास गुणवत्ता काटने का हर व्यावसायिक प्रोत्साहन है, और साख उसे दंडित नहीं करती जो वह देख नहीं सकती। इसीलिए मानकीकरण चिह्न हैं — प्रमाणन-संस्था ख़रीदार की ओर से जाँचती है — और इसीलिए सिलेंडर, बिजली की फ़िटिंग तथा पैकेट के पानी पर वे वैकल्पिक नहीं, अनिवार्य हैं। अब विकल्प। हटकर जाना तभी दंड है जब जाने को कहीं हो। किसी क़स्बे में एक ही गैस विक्रेता, एकाधिकारी सेवा-प्रदाता, पेटेंट दवा वाली कंपनी — हर मामले में ग्राहक की नाराज़गी विक्रेता को कुछ नहीं पड़ती, इसीलिए चुनने का अधिकार उतना ही असली है जितनी उसके पीछे की प्रतिस्पर्धा, और इसीलिए प्रतिस्पर्धा-नीति तथा उपभोक्ता-क़ानून साथ आते हैं। फिर पुनरावृत्ति। साख दोहराए कारोबार से चलती है, अतः वह ठीक वहाँ सबसे कमज़ोर है जहाँ ख़रीद जीवन में एक बार की हो या ऐसे यात्री की जो फिर कभी नहीं लौटेगा — विवाह-मंडप, अस्पताल की प्रक्रिया, राजमार्ग पर सड़क-किनारे की मरम्मत। और अंत में पैमाना। मानो कोई कंपनी पैकेट में बीस ग्राम कम भरती है। हर ख़रीदार के लिए हानि एक-दो रुपये, शिकायत, दिन भर की यात्रा या वकील को उचित ठहराने के लिए बहुत कम। एक करोड़ पैकेटों पर कंपनी करोड़ों कमाती है। यह विषमता व्यवस्थित है: लाभ केंद्रित और संगठित होने योग्य, हानि बिखरी और अकेले पीछा करने योग्य नहीं। तर्कसंगत बरतता कोई व्यक्ति कभी वह मुक़दमा लाएगा ही नहीं, अतः प्रथा अनिश्चित काल चलती रहती है जब तक कोई सामूहिक रूप से कार्रवाई न करे। उपभोक्ता अदालतें इसी के लिए हैं, और यही उनकी विशिष्ट रचना समझाता है: कम शुल्क, सरल प्रक्रिया, वकील की ज़रूरत नहीं, और ज़िला-स्तरीय पीठें, क्योंकि जो उपाय वस्तु से महँगा पड़े वह उपाय है ही नहीं। यह यह भी समझाता है कि उपभोक्ता संगठन क्यों मायने रखते हैं — वे उसे जोड़ते हैं जिसका पीछा कोई व्यक्ति अकेले नहीं कर सकता। ईमानदार निष्कर्ष यह कि बाज़ार विक्रेताओं को वहाँ अच्छी तरह अनुशासित करते हैं जहाँ सूचना दिखती हो, विकल्प हों और ख़रीद दोहराई जाए, और वहाँ मुश्किल से जहाँ ये न हों — अतः नियमन का तर्क बाज़ारों पर आपत्ति नहीं बल्कि इसका वर्णन है कि बाज़ार की अपनी क्रियाविधि कहाँ तक नहीं पहुँच सकती। (ग़लत उत्तर पूर्ण भाँपना मान लेते, प्रतिस्पर्धा को ही नकारते, या कल्पना करते कि आवश्यक वस्तुएँ किसी तरह मिलावट से मुक्त हैं जबकि वे उसका सबसे आम निशाना हैं।)",
+          mr: "युक्तिवाद मूर्ख नाही — प्रतिष्ठा अनेक बाजारांत खरोखर विक्रेत्यांना शिस्त लावते, आणि वाईट अन्न देणारे हॉटेल ग्राहक गमावतेच. काम हे ओळखणे की युक्तिवाद गुपचूप कोणत्या अटी गृहीत धरतो, आणि मग पाहणे की त्या किती वेळा मोडतात. क्रियाविधीला चार गोष्टी लागतात: खरेदीदाराला दोष ओळखता यावा; बदलायला दुसरा विक्रेता असावा; खरेदीदाराने पुन्हा घ्यायची अपेक्षा ठेवावी, जेणेकरून विक्रेता त्याच्या परतण्याला मोल देईल; आणि तोटा इतका मोठा असावा की त्यावर कृती करण्याजोगा. यांतील एक काढा आणि शिस्त चालणे थांबते. आधी ओळखणे घ्या, कारण तेच सर्वांत खोल अपयश. ग्राहक तपासू शकत नाही की दुधात भेसळ आहे का, हीटरच्या आतली वायरिंग टिकेल का, शिरस्त्राण धक्का सोसेल का, वा गोळीत लेबल सांगते तेच आहे का. ही नेमकी तीच प्रकरणे जिथे हानी सर्वांत मोठी, आणि नेमकी तीच जिथे बाजाराचे प्रतिसाद-चक्र मोडलेले: दोष कळेपर्यंत कोणी जखमी झालेला वा मेलेला असतो, आणि अनेकदा खरेदीदार हानीचा उत्पादाशी संबंध जोडतच नाही. ज्या विक्रेत्याला माहीत की खरेदीदार तपासू शकत नाही त्याच्याकडे गुणवत्ता कापण्याचे प्रत्येक व्यावसायिक प्रोत्साहन, आणि प्रतिष्ठा जे पाहू शकत नाही त्याला शिक्षा देत नाही. म्हणूनच प्रमाणीकरण चिन्हे आहेत — प्रमाणन-संस्था खरेदीदाराच्या वतीने तपासते — आणि म्हणूनच सिलिंडर, विजेची जोडणी व पॅकबंद पाण्यावर ती ऐच्छिक नव्हे तर सक्तीची. आता पर्याय. दूर जाणे तेव्हाच शिक्षा जेव्हा जायला कुठे असेल. एखाद्या गावात एकच गॅस विक्रेता, मक्तेदार सेवापुरवठादार, स्वामित्वहक्क असलेल्या औषधाची कंपनी — प्रत्येक बाबतीत ग्राहकाची नाराजी विक्रेत्याला काहीच पडत नाही, म्हणूनच निवडीचा हक्क त्याच्यामागील स्पर्धेइतकाच खरा, आणि म्हणूनच स्पर्धा-धोरण व ग्राहक-कायदा एकत्र येतात. मग पुनरावृत्ती. प्रतिष्ठा पुन्हापुन्हा येणाऱ्या व्यवसायातून चालते, म्हणून ती नेमकी तिथे सर्वांत दुर्बळ जिथे खरेदी आयुष्यात एकदाची वा पुन्हा कधीही न परतणाऱ्या प्रवाशाची — लग्नाचा हॉल, रुग्णालयातील शस्त्रक्रिया, महामार्गावरील रस्त्याकडेची दुरुस्ती. आणि शेवटी प्रमाण. समजा एखादी कंपनी पुड्यात वीस ग्रॅम कमी भरते. प्रत्येक खरेदीदारासाठी तोटा एक-दोन रुपये, तक्रार, दिवसभराचा प्रवास वा वकील समर्थण्यास फार कमी. एक कोटी पुड्यांवर कंपनी कोट्यवधी कमावते. ही विषमता पद्धतशीर: फायदा केंद्रित आणि संघटित होण्याजोगा, तोटा विखुरलेला आणि एकट्याने पाठपुरावा करण्याजोगा नाही. तर्कशुद्ध वागणारी कोणतीही व्यक्ती तो खटला कधीच आणणार नाही, म्हणून प्रथा अनिश्चित काळ चालू राहते जोवर कोणी सामूहिकरीत्या कृती करत नाही. ग्राहक न्यायालये यासाठीच आहेत, आणि हेच त्यांची विशिष्ट रचना समजावते: कमी शुल्क, सोपी प्रक्रिया, वकिलाची गरज नाही, आणि जिल्हा-पातळीवरील पीठे, कारण जो उपाय वस्तूहून महाग पडतो तो उपायच नाही. हे हेही समजावते की ग्राहक संघटना का महत्त्वाच्या — त्या ते एकत्र करतात ज्याचा पाठपुरावा कोणी व्यक्ती एकटी परवडू शकत नाही. प्रामाणिक निष्कर्ष हा की बाजार विक्रेत्यांना तिथे नीट शिस्त लावतात जिथे माहिती दिसते, पर्याय असतात आणि खरेदी पुन्हापुन्हा होते, आणि तिथे जेमतेम जिथे हे नसते — म्हणून नियमनाचा युक्तिवाद बाजारांवरील आक्षेप नव्हे तर बाजाराची स्वतःची क्रियाविधी कुठवर पोहोचू शकत नाही याचे वर्णन. (चुकीची उत्तरे परिपूर्ण ओळख गृहीत धरतात, स्पर्धाच नाकारतात, वा गरजेच्या वस्तू कशाशा भेसळीतून मुक्त आहेत अशी कल्पना करतात तर त्या तिचे सर्वांत सामान्य लक्ष्य आहेत.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "India has had consumer protection law since 1986, a three-tier court system, standardisation marks and a National Consumers' Day, and yet adulteration, overcharging and misleading advertisements remain routine. Explain the gap between rights on paper and rights in practice, and what actually closes it.",
+          hi: "भारत में 1986 से उपभोक्ता संरक्षण क़ानून, तीन-स्तरीय अदालत-प्रणाली, मानकीकरण चिह्न और राष्ट्रीय उपभोक्ता दिवस हैं, फिर भी मिलावट, अधिक वसूली और भ्रामक विज्ञापन आम बने हुए हैं। काग़ज़ के अधिकारों और व्यवहार के अधिकारों की खाई समझाओ, और उसे पाटता वस्तुतः क्या है।",
+          mr: "भारतात 1986 पासून ग्राहक संरक्षण कायदा, त्रिस्तरीय न्यायालय पद्धत, प्रमाणीकरण चिन्हे आणि राष्ट्रीय ग्राहक दिन आहेत, तरीही भेसळ, जास्त आकारणी आणि दिशाभूल करणाऱ्या जाहिराती नित्याच्या राहिल्या आहेत. कागदावरील हक्क आणि व्यवहारातील हक्क यांतील दरी समजावा, आणि ती प्रत्यक्षात काय भरून काढते.",
+        },
+        choices: [
+          {
+            en: "Because a right is only worth what it costs to use it: pursuing a case takes time, travel and often years, which few will spend over a small sum, and most buyers do not know the right exists or do not keep the bill that proves the purchase. What closes the gap is making enforcement cheap and collective — simple low-fee procedure, consumer organisations that pursue cases nobody would bring alone, inspection and penalties that fall on sellers whether or not anyone complains, and buyers who insist on a bill",
+            hi: "क्योंकि अधिकार उतने ही मूल्य का है जितना उसे इस्तेमाल करने में लगता: मुक़दमा चलाने में समय, यात्रा और अक्सर वर्ष लगते, जो छोटी राशि पर कम ही ख़र्च करेंगे, और अधिकांश ख़रीदार या तो अधिकार का होना जानते ही नहीं या वह बिल नहीं रखते जो ख़रीद सिद्ध करे। खाई पाटता है प्रवर्तन को सस्ता तथा सामूहिक बनाना — सरल कम-शुल्क प्रक्रिया, वे उपभोक्ता संगठन जो ऐसे मामले चलाएँ जिन्हें कोई अकेला न लाता, ऐसी जाँच तथा दंड जो विक्रेताओं पर तब भी पड़ें जब कोई शिकायत न करे, और वे ख़रीदार जो बिल पर अड़ें",
+            mr: "कारण हक्क तितक्याच मोलाचा जितका तो वापरायला लागतो: खटला चालवायला वेळ, प्रवास आणि अनेकदा वर्षे लागतात, जे लहान रकमेवर थोडेच खर्च करतील, आणि बहुतांश खरेदीदार एकतर हक्क आहे हे जाणतच नाहीत वा खरेदी सिद्ध करणारे बिल ठेवत नाहीत. दरी भरून काढते अंमलबजावणी स्वस्त आणि सामूहिक करणे — सोपी कमी-शुल्क प्रक्रिया, कोणी एकटा आणणार नाही असे खटले चालवणाऱ्या ग्राहक संघटना, कोणी तक्रार करो वा न करो विक्रेत्यांवर पडणारी तपासणी व दंड, आणि बिलावर आग्रह धरणारे खरेदीदार",
+          },
+          {
+            en: "Because the laws do not exist at all, and the question describes a country other than India",
+            hi: "क्योंकि क़ानून हैं ही नहीं, और प्रश्न भारत से भिन्न किसी देश का वर्णन करता है",
+            mr: "कारण कायदे अस्तित्वातच नाहीत, आणि प्रश्न भारताहून वेगळ्या देशाचे वर्णन करतो",
+          },
+          {
+            en: "Because rights on paper are always identical to rights in practice, so no gap can exist",
+            hi: "क्योंकि काग़ज़ के अधिकार सदा व्यवहार के अधिकारों के समान होते हैं, अतः कोई खाई हो ही नहीं सकती",
+            mr: "कारण कागदावरील हक्क सदैव व्यवहारातील हक्कांसारखेच असतात, म्हणून कोणतीही दरी असूच शकत नाही",
+          },
+          {
+            en: "Because nothing can close the gap, so consumer law should be abolished as pointless",
+            hi: "क्योंकि खाई को कुछ भी नहीं पाट सकता, अतः उपभोक्ता क़ानून व्यर्थ मानकर समाप्त कर देना चाहिए",
+            mr: "कारण दरी काहीही भरून काढू शकत नाही, म्हणून ग्राहक कायदा निरर्थक मानून रद्द करावा",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The gap is not evidence that the law was badly written. It follows from the arithmetic every individual consumer faces when deciding whether to use the right they hold. Consider what using it actually costs. A shopkeeper charges ten rupees above the printed price. To pursue that, a buyer must first know the right exists and that overcharging is an offence. They must have kept the bill, without which nothing can be proved. They must find where the district commission sits, prepare a complaint, travel there, and return whenever the matter is listed — and a case may take months or longer. Set that against ten rupees. No rational person spends a day's wages to recover it, and every seller understands this perfectly. The result is that a right which formally exists is, for small amounts, unusable — and small amounts are where most consumer exploitation lives. This is the same asymmetry the previous question identified, seen from the enforcement side: the seller's gain is concentrated and worth defending, the buyer's loss is dispersed and not worth pursuing. Two further obstacles compound it. The first is knowledge: a great many buyers, particularly those with little schooling, do not know that a maximum retail price is a ceiling, that a bill can be demanded as of right, that an ISI mark can be verified, or that a district commission exists at all. A right nobody knows about is not exercised. The second is evidence: the informal economy runs largely without receipts, so the person buying loose oil or unbranded medicine from a small shop — often the person most at risk of adulteration — is precisely the person who cannot prove what they bought or from whom. So what actually closes the gap? Four things, and none of them is more rights. Make enforcement cheap: the consumer courts were deliberately designed with low fees, simple procedure and no requirement of a lawyer, and district benches exist so that the forum is not a day's journey away. That lowers the cost side of the calculation, though it does not remove it. Make it collective: consumer organisations, which aggregate many small identical complaints into one case worth fighting, do what no individual can — and where a class of buyers can act together, the seller's concentrated gain finally meets a concentrated adversary. Make it independent of complaint: this is the most important and the least discussed. Food inspectors, weights-and-measures checks, licensing, penalties for false standardisation marks and action against misleading advertisements all operate whether or not any consumer complains, which removes the individual's cost-benefit calculation from the loop entirely. A shop that may be inspected behaves differently from one that will only face a complaint that nobody will bring. And make the evidence routine: a buyer who always asks for a bill converts an unenforceable grievance into an enforceable one, which is why the chapter treats this as a duty accompanying the right rather than as advice. The honest summing-up is that consumer protection is not a problem solved by passing a law, because a law only creates the possibility of a remedy; whether the remedy is used depends on what it costs to use. Legislation is necessary and never sufficient, and the countries where consumer rights work in practice are those that made the using of them cheap, collective and largely automatic. (The wrong answers deny the existence of Indian consumer law, deny a gap that any market inspection would reveal, or conclude from partial failure that the law should be scrapped — which would remove the possibility of a remedy along with its imperfect exercise.)",
+          hi: "यह खाई इस बात का प्रमाण नहीं कि क़ानून बुरा लिखा गया। वह उस अंकगणित से निकलती है जो हर व्यक्तिगत उपभोक्ता के सामने तब आता जब वह तय करे कि अपना अधिकार इस्तेमाल करे या नहीं। सोचो उसे इस्तेमाल करने में लगता क्या है। दुकानदार छपे दाम से दस रुपये अधिक लेता है। उसका पीछा करने को ख़रीदार को पहले जानना होगा कि अधिकार है और अधिक वसूली अपराध है। उसे बिल रखा होना चाहिए, जिसके बिना कुछ सिद्ध नहीं हो सकता। उसे खोजना होगा कि ज़िला आयोग बैठता कहाँ है, शिकायत तैयार करनी होगी, वहाँ जाना होगा, और जब भी मामला सूचीबद्ध हो लौटना होगा — और मुक़दमा महीनों या अधिक ले सकता है। इसे दस रुपयों के सामने रखो। कोई तर्कसंगत व्यक्ति उसे वसूलने दिन भर की मज़दूरी नहीं ख़र्च करता, और हर विक्रेता यह पूरी तरह समझता है। परिणाम यह कि जो अधिकार औपचारिक रूप से मौजूद है वह छोटी राशियों के लिए अनुपयोगी है — और छोटी राशियों में ही अधिकांश उपभोक्ता-शोषण बसता है। यह वही विषमता है जिसे पिछले प्रश्न ने पहचाना, प्रवर्तन की ओर से देखी गई: विक्रेता का लाभ केंद्रित और बचाव योग्य, ख़रीदार की हानि बिखरी और पीछा करने योग्य नहीं। दो और बाधाएँ उसे बढ़ाती हैं। पहली ज्ञान: बहुत-से ख़रीदार, ख़ासकर कम पढ़े-लिखे, नहीं जानते कि अधिकतम खुदरा मूल्य एक छत है, कि बिल अधिकार के रूप में माँगा जा सकता, कि आईएसआई चिह्न सत्यापित किया जा सकता, या कि ज़िला आयोग है भी। जिस अधिकार का किसी को पता नहीं वह इस्तेमाल नहीं होता। दूसरी प्रमाण: अनौपचारिक अर्थव्यवस्था बड़े हिस्से में बिना रसीद चलती है, अतः जो व्यक्ति छोटी दुकान से खुला तेल या बिना ब्रांड की दवा ख़रीदता — अक्सर वही जिसे मिलावट का सबसे अधिक जोखिम — ठीक वही है जो सिद्ध नहीं कर सकता कि उसने क्या और किससे ख़रीदा। तो खाई वस्तुतः पाटता क्या है? चार चीज़ें, और उनमें से कोई भी 'और अधिकार' नहीं। प्रवर्तन सस्ता बनाओ: उपभोक्ता अदालतें जानबूझकर कम शुल्क, सरल प्रक्रिया और वकील की आवश्यकता बिना रची गईं, और ज़िला-पीठें इसलिए हैं कि मंच दिन भर की यात्रा दूर न हो। यह गणना का लागत-पक्ष घटाता है, यद्यपि हटाता नहीं। उसे सामूहिक बनाओ: उपभोक्ता संगठन, जो कई छोटी एक-सी शिकायतों को एक लड़ने-योग्य मामले में जोड़ते हैं, वह करते हैं जो कोई व्यक्ति नहीं कर सकता — और जहाँ ख़रीदारों का वर्ग साथ काम कर सके वहाँ विक्रेता का केंद्रित लाभ अंततः केंद्रित प्रतिपक्षी से मिलता है। उसे शिकायत से स्वतंत्र बनाओ: यह सबसे महत्वपूर्ण और सबसे कम चर्चित है। खाद्य निरीक्षक, नाप-तौल की जाँच, अनुज्ञप्ति, नक़ली मानकीकरण चिह्नों पर दंड और भ्रामक विज्ञापनों पर कार्रवाई — ये सब तब भी चलते हैं जब कोई उपभोक्ता शिकायत न करे, जो व्यक्ति की लागत-लाभ गणना को चक्र से पूरी तरह हटा देता है। जिस दुकान का निरीक्षण हो सकता है वह उससे भिन्न बरतती है जिसके सामने केवल ऐसी शिकायत आएगी जो कोई लाएगा ही नहीं। और प्रमाण को नित्य बनाओ: जो ख़रीदार सदा बिल माँगता है वह अ-प्रवर्तनीय शिकायत को प्रवर्तनीय बना देता है, इसीलिए अध्याय इसे सलाह नहीं बल्कि अधिकार के साथ आता कर्तव्य मानता है। ईमानदार सार यह कि उपभोक्ता संरक्षण क़ानून पारित करके हल हो जाती समस्या नहीं, क्योंकि क़ानून केवल उपाय की संभावना रचता है; उपाय इस्तेमाल होगा या नहीं यह इस पर निर्भर कि उसे इस्तेमाल करने में लगता क्या है। विधान आवश्यक है और कभी पर्याप्त नहीं, और जिन देशों में उपभोक्ता अधिकार व्यवहार में चलते हैं वे वही हैं जिन्होंने उनका इस्तेमाल सस्ता, सामूहिक और बड़े हिस्से में स्वतः-चालित बनाया। (ग़लत उत्तर भारतीय उपभोक्ता क़ानून का अस्तित्व नकारते, ऐसी खाई नकारते जिसे कोई भी बाज़ार-निरीक्षण दिखा देगा, या आंशिक विफलता से यह निष्कर्ष निकालते कि क़ानून रद्द कर देना चाहिए — जो उसके अपूर्ण प्रयोग के साथ-साथ उपाय की संभावना ही हटा देगा।)",
+          mr: "ही दरी कायदा वाईट लिहिला गेल्याचा पुरावा नाही. ती प्रत्येक वैयक्तिक ग्राहकासमोर आपला हक्क वापरावा की नाही हे ठरवताना येणाऱ्या अंकगणितातून निघते. तो वापरायला प्रत्यक्षात काय लागते ते पाहा. दुकानदार छापील किमतीहून दहा रुपये जास्त घेतो. त्याचा पाठपुरावा करायला खरेदीदाराला आधी माहीत हवे की हक्क आहे आणि जास्त आकारणी गुन्हा आहे. त्याने बिल ठेवलेले हवे, ज्याविना काहीही सिद्ध होत नाही. त्याला शोधावे लागेल की जिल्हा आयोग कुठे बसतो, तक्रार तयार करावी लागेल, तिथे जावे लागेल, आणि प्रकरण सूचीबद्ध होईल तेव्हा परतावे लागेल — आणि खटला महिने वा अधिक घेऊ शकतो. हे दहा रुपयांसमोर ठेवा. कोणतीही तर्कशुद्ध व्यक्ती ते वसूल करायला दिवसभराची मजुरी खर्च करत नाही, आणि प्रत्येक विक्रेता हे पूर्ण समजतो. परिणाम हा की जो हक्क औपचारिकरीत्या अस्तित्वात आहे तो लहान रकमांसाठी अवापरता — आणि लहान रकमांतच बहुतांश ग्राहक-शोषण वसते. हीच ती विषमता जी मागच्या प्रश्नाने ओळखली, अंमलबजावणीच्या बाजूने पाहिलेली: विक्रेत्याचा फायदा केंद्रित आणि बचावण्याजोगा, खरेदीदाराचा तोटा विखुरलेला आणि पाठपुरावा करण्याजोगा नाही. आणखी दोन अडथळे तिला वाढवतात. पहिला ज्ञान: पुष्कळ खरेदीदार, विशेषतः कमी शिकलेले, जाणत नाहीत की कमाल किरकोळ किंमत ही कमाल मर्यादा आहे, की बिल हक्क म्हणून मागता येते, की आयएसआय चिन्ह पडताळता येते, वा जिल्हा आयोग आहेदेखील. ज्या हक्काबद्दल कोणाला माहीत नाही तो बजावला जात नाही. दुसरा पुरावा: अनौपचारिक अर्थव्यवस्था मोठ्या प्रमाणात पावतीविना चालते, म्हणून जी व्यक्ती लहान दुकानातून सुटे तेल वा बिनब्रँडचे औषध विकत घेते — अनेकदा जिला भेसळीचा सर्वाधिक धोका — नेमकी तीच जी सिद्ध करू शकत नाही की तिने काय आणि कोणाकडून घेतले. मग दरी प्रत्यक्षात काय भरून काढते? चार गोष्टी, आणि त्यांपैकी कोणतीही 'अधिक हक्क' नाही. अंमलबजावणी स्वस्त करा: ग्राहक न्यायालये मुद्दाम कमी शुल्क, सोपी प्रक्रिया आणि वकिलाच्या गरजेविना रचली, आणि जिल्हा-पीठे यासाठी की मंच दिवसभराच्या प्रवासाइतका दूर नसावा. हे गणनेची खर्चाची बाजू घटवते, जरी काढून टाकत नाही. ती सामूहिक करा: ग्राहक संघटना, ज्या अनेक लहान सारख्या तक्रारी एका लढण्याजोग्या खटल्यात एकत्र करतात, ते करतात जे कोणी व्यक्ती करू शकत नाही — आणि जिथे खरेदीदारांचा वर्ग एकत्र काम करू शकतो तिथे विक्रेत्याचा केंद्रित फायदा अखेर केंद्रित प्रतिपक्षाला भेटतो. ती तक्रारीपासून स्वतंत्र करा: हे सर्वांत महत्त्वाचे आणि सर्वांत कमी चर्चिले जाणारे. अन्न निरीक्षक, वजनमापांची तपासणी, परवाने, बनावट प्रमाणीकरण चिन्हांवरील दंड आणि दिशाभूल करणाऱ्या जाहिरातींवरील कारवाई — हे सर्व कोणी ग्राहक तक्रार करो वा न करो चालतात, जे व्यक्तीची खर्च-लाभ गणना चक्रातून पूर्णपणे काढून टाकते. ज्या दुकानाची तपासणी होऊ शकते ते त्याहून वेगळे वागते ज्याच्यासमोर केवळ अशी तक्रार येईल जी कोणी आणणारच नाही. आणि पुरावा नित्याचा करा: जो खरेदीदार सदैव बिल मागतो तो न-अंमलबजावणीयोग्य तक्रारीचे अंमलबजावणीयोग्यात रूपांतर करतो, म्हणूनच प्रकरण याला सल्ला नव्हे तर हक्कासोबत येणारे कर्तव्य मानते. प्रामाणिक सारांश हा की ग्राहक संरक्षण ही कायदा संमत करून सुटणारी समस्या नाही, कारण कायदा केवळ उपायाची शक्यता घडवतो; उपाय वापरला जाईल की नाही हे तो वापरायला काय लागते यावर अवलंबून. कायदा आवश्यक आणि कधीही पुरेसा नाही, आणि ज्या देशांत ग्राहक हक्क व्यवहारात चालतात ते तेच ज्यांनी त्यांचा वापर स्वस्त, सामूहिक आणि मोठ्या प्रमाणात स्वयंचलित केला. (चुकीची उत्तरे भारतीय ग्राहक कायद्याचे अस्तित्व नाकारतात, कोणतीही बाजार-तपासणी उघड करेल अशी दरी नाकारतात, वा अंशतः अपयशातून निष्कर्ष काढतात की कायदा रद्द करावा — जे त्याच्या अपूर्ण वापरासोबत उपायाची शक्यताच काढून टाकेल.)",
+        },
+      },
+    ],
+  },
 ];
