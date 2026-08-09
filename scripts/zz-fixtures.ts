@@ -23,9 +23,10 @@
  *     nothing at all. A full Mon–Fri timetable over every class. Half the pupils
  *     have a parent linked; the other half are deliberately UNCLAIMED so the
  *     parent-claim flow has something to claim. Their codes are printed.
- *   ZZ Southbank School — deliberately empty. An admin, a principal and three
- *     teachers holding one class each, every class with nobody in it, and no
- *     pupils at all. This is the school for testing every empty state.
+ *   ZZ Southbank School — small. An admin, a principal, three teachers holding
+ *     one class each and two attached to nothing, ten pupils across two of its
+ *     three classes, and four of those pupils claimed by a parent. Grade 8 is
+ *     left with no pupils on purpose: a zero-row register still needs a home.
  *   Four experts spanning the curation states: published+verified, published
  *     unverified, and one still unpublished.
  *   One operator account for the superuser flag.
@@ -526,16 +527,21 @@ async function buildSouthbank(ctx: Ctx) {
     idleTeachers.push({ user, membership });
   }
 
-  // Three classes with nobody in them, one for each attached teacher. A school with no
-  // classes at all tests one empty state; a class with no pupils tests a
-  // different and more interesting one — the register, the mark sheet and the
-  // analytics panel all have to say something sensible with zero rows, and a
-  // teacher holding no class at all would never reach them to find out.
+  // Two classes carry pupils; Grade 8 is left deliberately EMPTY. A class with
+  // no pupils is a state the register, the mark sheet and the analytics panel
+  // all have to survive, and once every class has children in it there is
+  // nowhere left in either school to see that happen.
   const classSpecs = [
-    { name: "ZZ Grade 6 · A", gradeLevel: "6", color: "#0ea5e9", room: "S601" },
-    { name: "ZZ Grade 7 · A", gradeLevel: "7", color: "#8b5cf6", room: "S701" },
-    { name: "ZZ Grade 8 · A", gradeLevel: "8", color: "#14b8a6", room: "S801" },
+    { name: "ZZ Grade 6 · A", gradeLevel: "6", color: "#0ea5e9", room: "S601", pupils: 5 },
+    { name: "ZZ Grade 7 · A", gradeLevel: "7", color: "#8b5cf6", room: "S701", pupils: 5 },
+    { name: "ZZ Grade 8 · A", gradeLevel: "8", color: "#14b8a6", room: "S801", pupils: 0 },
   ];
+
+  const unclaimed: { name: string; code: string; birthdate: string; grade: string }[] = [];
+  let studentSeq = 0;
+  // Offset past Northgate's 48 so the two schools never share a pupil's name.
+  let nameIndex = GRADES.length * PER_CLASS;
+
   for (const [index, spec] of classSpecs.entries()) {
     const cls = await upsertClass(school.id, spec.name, {
       subject: "Form group",
@@ -545,9 +551,54 @@ async function buildSouthbank(ctx: Ctx) {
       room: spec.room,
     });
     await attachTeacher(cls.id, school.id, teachers[index]!.membership.id);
+
+    for (let seat = 0; seat < spec.pupils; seat++) {
+      studentSeq++;
+      const name = studentName(nameIndex++);
+      const email = `zz.sb.pupil${String(studentSeq).padStart(2, "0")}@${DOMAIN}`;
+      const birthYear = THIS_YEAR - (Number(spec.gradeLevel) + 5);
+      const birthdate = new Date(Date.UTC(birthYear, (seat * 2) % 12, 10 + seat));
+
+      const user = await upsertUser(ctx, email, name, { birthdate, isMinor: true });
+      const existing = await db.membership.findUnique({
+        where: { userId_schoolId_role: { userId: user.id, schoolId: school.id, role: "STUDENT" } },
+      });
+      const membership =
+        existing ??
+        (await db.membership.create({
+          data: {
+            userId: user.id,
+            schoolId: school.id,
+            role: "STUDENT",
+            status: "ACTIVE",
+            gradeLevel: spec.gradeLevel,
+            studentCode: studentCode(),
+          },
+        }));
+      await enrol(cls.id, school.id, membership.id);
+
+      // Only the first two seats in each class get a parent — the rest stay
+      // unclaimed, which is the state the claim flow needs to have something
+      // to work on in this school too.
+      if (seat < 2) {
+        const parent = await upsertUser(
+          ctx,
+          `zz.sb.parent${String(studentSeq).padStart(2, "0")}@${DOMAIN}`,
+          `ZZ ${name.split(" ")[2]} (parent)`,
+        );
+        await link(parent.id, membership.id, school.id);
+      } else {
+        unclaimed.push({
+          name,
+          code: membership.studentCode!,
+          birthdate: birthdate.toISOString().slice(0, 10),
+          grade: spec.gradeLevel,
+        });
+      }
+    }
   }
 
-  return { school, teachers, idleTeachers, principal, admin };
+  return { school, teachers, idleTeachers, principal, admin, unclaimed };
 }
 
 /* -------------------------------------------------------------------------- */
@@ -679,6 +730,12 @@ async function main() {
   const guardianCount = await db.guardianship.count({
     where: { studentSchoolId: northgate.school.id },
   });
+  const sbPupils = await db.membership.count({
+    where: { schoolId: southbank.school.id, role: "STUDENT" },
+  });
+  const sbGuardians = await db.guardianship.count({
+    where: { studentSchoolId: southbank.school.id },
+  });
 
   console.log(`
   ZZ fixtures ready. Password for every account below: ${PASSWORD}
@@ -696,15 +753,17 @@ async function main() {
      pupils      ${studentCount}  (zz.pupil01..${String(studentCount).padStart(2, "0")}@${DOMAIN})
      guardians   ${guardianCount} link(s) — zz.parentNN@${DOMAIN} matches zz.pupilNN
 
-  ── ZZ Southbank School (empty by design) ────────────────────────────
+  ── ZZ Southbank School (small) ──────────────────────────────────────
      join code   ${southbank.school.code}
      admin       zz.admin.b@${DOMAIN}       (ZZ Gopal Shirke)
      principal   zz.principal.b@${DOMAIN}   (ZZ Farida Qureshi)
      teachers    zz.teacher.b1..b3@${DOMAIN} — one class each
      unattached  zz.spare.b1..b2@${DOMAIN}  — no class, no lessons, nothing
-     classes     3, all with zero pupils
+     classes     3 (grades 6–8); Grade 8 · A deliberately has NO pupils
      timetable   none — Southbank has no grid at all, by design
-     pupils      none — this is the school for empty states
+     pupils      ${sbPupils}  (zz.sb.pupil01..${String(sbPupils).padStart(2, "0")}@${DOMAIN})
+     guardians   ${sbGuardians} link(s) — zz.sb.parentNN matches zz.sb.pupilNN
+     unclaimed   ${southbank.unclaimed.length} pupil(s), codes listed below
 
   ── Experts ──────────────────────────────────────────────────────────
 ${experts.map((e) => `     ${e}`).join("\n")}
@@ -715,11 +774,16 @@ ${experts.map((e) => `     ${e}`).join("\n")}
 
   ── Unclaimed pupils (for walking the parent-claim flow) ─────────────
      Claiming needs the code AND the child's birthdate.
+     Northgate:
 ${northgate.unclaimed
-  .slice(0, 8)
-  .map((u) => `     grade ${u.grade.padEnd(2)}  ${u.code}   ${u.birthdate}   ${u.name}`)
+  .slice(0, 6)
+  .map((u) => `       grade ${u.grade.padEnd(2)}  ${u.code}   ${u.birthdate}   ${u.name}`)
   .join("\n")}
-     …and ${Math.max(0, northgate.unclaimed.length - 8)} more unclaimed.
+       …and ${Math.max(0, northgate.unclaimed.length - 6)} more at Northgate.
+     Southbank:
+${southbank.unclaimed
+  .map((u) => `       grade ${u.grade.padEnd(2)}  ${u.code}   ${u.birthdate}   ${u.name}`)
+  .join("\n")}
 
   Remove everything again with:  npm run zz:fixtures -- --teardown
 `);
