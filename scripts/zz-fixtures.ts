@@ -18,10 +18,11 @@
  *
  * WHAT IT BUILDS
  *   ZZ Northgate School — populated. One class per grade 3–10, six pupils in
- *     each, an admin, a principal and four teachers holding two classes apiece.
- *     Half the pupils have a parent linked; the other half are deliberately
- *     UNCLAIMED so the parent-claim flow has something to claim. Their codes
- *     are printed at the end.
+ *     each, an admin, a principal, four form tutors holding two classes apiece,
+ *     four subject teachers who tutor nobody, and two teachers attached to
+ *     nothing at all. A full Mon–Fri timetable over every class. Half the pupils
+ *     have a parent linked; the other half are deliberately UNCLAIMED so the
+ *     parent-claim flow has something to claim. Their codes are printed.
  *   ZZ Southbank School — deliberately empty. An admin, a principal and three
  *     teachers holding one class each, every class with nobody in it, and no
  *     pupils at all. This is the school for testing every empty state.
@@ -166,6 +167,37 @@ async function enrol(classId: string, schoolId: string, studentMembershipId: str
   return db.enrollment.create({ data: { classId, schoolId, studentMembershipId, status: "ACTIVE" } });
 }
 
+async function upsertPeriod(
+  schoolId: string,
+  spec: { name: string; startMinute: number; endMinute: number; kind: string; position: number },
+) {
+  const existing = await db.timetablePeriod.findFirst({ where: { schoolId, name: spec.name } });
+  if (existing) return existing;
+  return db.timetablePeriod.create({ data: { schoolId, ...spec } });
+}
+
+async function upsertSlot(data: {
+  schoolId: string;
+  classId: string;
+  periodId: string;
+  weekday: number;
+  subject: string;
+  teacherMembershipId: string | null;
+  room?: string;
+}) {
+  const existing = await db.timetableSlot.findUnique({
+    where: {
+      classId_weekday_periodId: {
+        classId: data.classId,
+        weekday: data.weekday,
+        periodId: data.periodId,
+      },
+    },
+  });
+  if (existing) return existing;
+  return db.timetableSlot.create({ data });
+}
+
 async function link(parentUserId: string, studentMembershipId: string, studentSchoolId: string) {
   const existing = await db.guardianship.findUnique({
     where: { parentUserId_studentMembershipId: { parentUserId, studentMembershipId } },
@@ -247,8 +279,46 @@ async function buildNorthgate(ctx: Ctx) {
     teachers.push({ user, membership });
   }
 
+  // Subject teachers: they appear all over the timetable but are form tutor to
+  // nobody, which is the ordinary shape of a music or PE teacher and a case the
+  // staffing screens have to handle — "has no class" and "has nothing to do"
+  // are different states and only one of them is a problem.
+  const subjectSpecs = [
+    { email: `zz.subject1@${DOMAIN}`, name: "ZZ Rekha Bhagat", title: "Subject teacher", subjects: ["English"] },
+    { email: `zz.subject2@${DOMAIN}`, name: "ZZ Tanmay Godse", title: "Subject teacher", subjects: ["Marathi", "Hindi"] },
+    { email: `zz.subject3@${DOMAIN}`, name: "ZZ Nasreen Mirza", title: "Subject teacher", subjects: ["Art", "Music"] },
+    { email: `zz.subject4@${DOMAIN}`, name: "ZZ Prakash Salunkhe", title: "Subject teacher", subjects: ["Physical education"] },
+  ];
+  const subjectTeachers = [];
+  for (const spec of subjectSpecs) {
+    const user = await upsertUser(ctx, spec.email, spec.name);
+    const membership = await upsertMembership(user.id, school.id, "TEACHER", {
+      title: spec.title,
+      subjects: JSON.stringify(spec.subjects),
+    });
+    subjectTeachers.push({ user, membership });
+  }
+
+  // Genuinely unattached: no form class, no timetable lesson, nothing. What a
+  // teacher sees on the morning they are added to a school and before anybody
+  // has given them anything — an empty state that only exists for real people.
+  const idleSpecs = [
+    { email: `zz.spare1@${DOMAIN}`, name: "ZZ Kiran Vaidya", title: "Newly joined", subjects: ["Mathematics"] },
+    { email: `zz.spare2@${DOMAIN}`, name: "ZZ Deepak Aher", title: "Relief teacher", subjects: ["Science"] },
+  ];
+  const idleTeachers = [];
+  for (const spec of idleSpecs) {
+    const user = await upsertUser(ctx, spec.email, spec.name);
+    const membership = await upsertMembership(user.id, school.id, "TEACHER", {
+      title: spec.title,
+      subjects: JSON.stringify(spec.subjects),
+    });
+    idleTeachers.push({ user, membership });
+  }
+
   /* classes, pupils, parents ------------------------------------------------ */
   const unclaimed: { name: string; code: string; birthdate: string; grade: string }[] = [];
+  const builtClasses: { id: string; grade: string }[] = [];
   const claimedParents: { parent: string; child: string }[] = [];
   let nameIndex = 0;
   let studentSeq = 0;
@@ -269,6 +339,7 @@ async function buildNorthgate(ctx: Ctx) {
     // realistic load and no class is left without a register-taker.
     const teacher = teachers[gradeIndex % teachers.length]!;
     await attachTeacher(cls.id, school.id, teacher.membership.id);
+    builtClasses.push({ id: cls.id, grade });
 
     for (let seat = 0; seat < PER_CLASS; seat++) {
       studentSeq++;
@@ -323,7 +394,86 @@ async function buildNorthgate(ctx: Ctx) {
     }
   }
 
-  return { school, unclaimed, claimedParents, teachers, admin, principal };
+  const timetable = await buildTimetable(school.id, builtClasses, [...teachers, ...subjectTeachers]);
+
+  return {
+    school, unclaimed, claimedParents, teachers, subjectTeachers, idleTeachers,
+    admin, principal, timetable,
+  };
+}
+
+/* -------------------------------------------------------------------------- */
+/* timetable                                                                   */
+/* -------------------------------------------------------------------------- */
+
+/** Weekday is 0=Sunday…6=Saturday, matching `Date.getUTCDay()`. Mon–Fri. */
+const SCHOOL_DAYS = [1, 2, 3, 4, 5];
+
+const PERIODS = [
+  { name: "Period 1", startMinute: 8 * 60, endMinute: 8 * 60 + 45, kind: "LESSON", position: 1 },
+  { name: "Period 2", startMinute: 8 * 60 + 45, endMinute: 9 * 60 + 30, kind: "LESSON", position: 2 },
+  { name: "Period 3", startMinute: 9 * 60 + 30, endMinute: 10 * 60 + 15, kind: "LESSON", position: 3 },
+  { name: "Break", startMinute: 10 * 60 + 15, endMinute: 10 * 60 + 45, kind: "BREAK", position: 4 },
+  { name: "Period 4", startMinute: 10 * 60 + 45, endMinute: 11 * 60 + 30, kind: "LESSON", position: 5 },
+  { name: "Period 5", startMinute: 11 * 60 + 30, endMinute: 12 * 60 + 15, kind: "LESSON", position: 6 },
+  { name: "Period 6", startMinute: 12 * 60 + 15, endMinute: 13 * 60, kind: "LESSON", position: 7 },
+];
+
+/** One subject per teaching slot in the rota, in the rota's own order. */
+const ROTA_SUBJECTS = [
+  "Mathematics", "Science", "History", "Geography",
+  "English", "Marathi", "Art", "Physical education",
+];
+
+/**
+ * Lays a full week over every class.
+ *
+ * THE ROTATION IS THE WHOLE POINT. `TimetableSlot` carries a unique constraint
+ * on (school, weekday, period, teacher) — nobody is in two rooms at 11:15 — so
+ * a naive "assign a teacher at random" fixture fails on the second insert. With
+ * exactly as many teaching staff as classes, `(classIndex + offset) % n` is a
+ * bijection for any fixed offset, so every teacher gets exactly one class in
+ * each cell of the grid and the constraint can never fire.
+ *
+ * Friday's last period is deliberately left UNSTAFFED, because a slot with no
+ * teacher is a real state the schema documents and the staffing screen has to
+ * render loudly rather than hide.
+ */
+async function buildTimetable(
+  schoolId: string,
+  classes: { id: string; grade: string }[],
+  staff: { membership: { id: string } }[],
+) {
+  const periods = [];
+  for (const spec of PERIODS) periods.push(await upsertPeriod(schoolId, spec));
+
+  const lessons = periods.filter((p) => p.kind === "LESSON");
+  let created = 0;
+  let unstaffed = 0;
+
+  for (const weekday of SCHOOL_DAYS) {
+    for (const [lessonIndex, period] of lessons.entries()) {
+      // Friday, last lesson: laid out but not yet staffed.
+      const leaveUnstaffed = weekday === 5 && lessonIndex === lessons.length - 1;
+      for (const [classIndex, cls] of classes.entries()) {
+        const offset = weekday * lessons.length + lessonIndex;
+        const rota = (classIndex + offset) % staff.length;
+        const teacher = staff[rota]!;
+        await upsertSlot({
+          schoolId,
+          classId: cls.id,
+          periodId: period.id,
+          weekday,
+          subject: ROTA_SUBJECTS[rota]!,
+          teacherMembershipId: leaveUnstaffed ? null : teacher.membership.id,
+          room: `R${cls.grade}01`,
+        });
+        created++;
+        if (leaveUnstaffed) unstaffed++;
+      }
+    }
+  }
+  return { periods: periods.length, lessonPeriods: lessons.length, slots: created, unstaffed };
 }
 
 /* -------------------------------------------------------------------------- */
@@ -362,7 +512,21 @@ async function buildSouthbank(ctx: Ctx) {
     teachers.push({ user, membership });
   }
 
-  // Three classes with nobody in them, one for each teacher. A school with no
+  const idleSpecs = [
+    { email: `zz.spare.b1@${DOMAIN}`, name: "ZZ Manisha Kadam", title: "Newly joined", subjects: ["Mathematics"] },
+    { email: `zz.spare.b2@${DOMAIN}`, name: "ZZ Yusuf Tamboli", title: "Relief teacher", subjects: ["Geography"] },
+  ];
+  const idleTeachers = [];
+  for (const spec of idleSpecs) {
+    const user = await upsertUser(ctx, spec.email, spec.name);
+    const membership = await upsertMembership(user.id, school.id, "TEACHER", {
+      title: spec.title,
+      subjects: JSON.stringify(spec.subjects),
+    });
+    idleTeachers.push({ user, membership });
+  }
+
+  // Three classes with nobody in them, one for each attached teacher. A school with no
   // classes at all tests one empty state; a class with no pupils tests a
   // different and more interesting one — the register, the mark sheet and the
   // analytics panel all have to say something sensible with zero rows, and a
@@ -383,7 +547,7 @@ async function buildSouthbank(ctx: Ctx) {
     await attachTeacher(cls.id, school.id, teachers[index]!.membership.id);
   }
 
-  return { school, teachers, principal, admin };
+  return { school, teachers, idleTeachers, principal, admin };
 }
 
 /* -------------------------------------------------------------------------- */
@@ -523,8 +687,12 @@ async function main() {
      join code   ${northgate.school.code}
      admin       zz.admin@${DOMAIN}         (ZZ Anita Deshmukh)
      principal   zz.principal@${DOMAIN}     (ZZ Rohan Iyer)
-     teachers    zz.teacher1..4@${DOMAIN}   — two classes each
+     teachers    zz.teacher1..4@${DOMAIN}   — form tutors, two classes each
+     subject     zz.subject1..4@${DOMAIN}   — timetable only, no form class
+     unattached  zz.spare1..2@${DOMAIN}     — no class, no lessons, nothing
      classes     ${GRADES.length} (grades ${GRADES[0]}–${GRADES[GRADES.length - 1]}, section A)
+     timetable   ${northgate.timetable.lessonPeriods} lesson periods + a break, Mon–Fri,
+                 ${northgate.timetable.slots} slots (${northgate.timetable.unstaffed} left unstaffed on Friday, last period)
      pupils      ${studentCount}  (zz.pupil01..${String(studentCount).padStart(2, "0")}@${DOMAIN})
      guardians   ${guardianCount} link(s) — zz.parentNN@${DOMAIN} matches zz.pupilNN
 
@@ -533,7 +701,9 @@ async function main() {
      admin       zz.admin.b@${DOMAIN}       (ZZ Gopal Shirke)
      principal   zz.principal.b@${DOMAIN}   (ZZ Farida Qureshi)
      teachers    zz.teacher.b1..b3@${DOMAIN} — one class each
+     unattached  zz.spare.b1..b2@${DOMAIN}  — no class, no lessons, nothing
      classes     3, all with zero pupils
+     timetable   none — Southbank has no grid at all, by design
      pupils      none — this is the school for empty states
 
   ── Experts ──────────────────────────────────────────────────────────
