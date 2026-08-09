@@ -1058,4 +1058,700 @@ export const G10_GEOGRAPHY: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 4 — Agriculture                                                 */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "geography-10-agriculture",
+    subject: "GEOGRAPHY",
+    classLevel: 10,
+    chapter: {
+      en: "Chapter 4 — Agriculture",
+      hi: "अध्याय 4 — कृषि",
+      mr: "प्रकरण 4 — शेती",
+    },
+    name: {
+      en: "Agriculture",
+      hi: "कृषि",
+      mr: "शेती",
+    },
+    summary: {
+      en: "Half a country at work on the land: a plot too small to rest, a calendar split by the monsoon's arrival and departure, the thirsty grain of the east and the cold-loving grain of the north-west, the hardy crops that ask least and are eaten by those with least — and the seed that ended a famine while emptying a water table.",
+      hi: "आधा देश ज़मीन पर काम में लगा: इतना छोटा खेत कि उसे बंजर छोड़ा नहीं जा सकता, मानसून के आने-जाने से बँटा पंचांग, पूरब का प्यासा अनाज और उत्तर-पश्चिम का ठंड-प्रिय अनाज, वे कठोर फ़सलें जो सबसे कम माँगतीं और सबसे कम वाले खाते हैं — और वह बीज जिसने अकाल ख़त्म किया और जल-स्तर ख़ाली कर दिया।",
+      mr: "अर्धा देश जमिनीवर कामात: इतके लहान शेत की ते पडीक ठेवता येत नाही, मान्सूनच्या येण्या-जाण्याने विभागलेले दिनदर्शक, पूर्वेचे तहानलेले धान्य आणि वायव्येचे थंडीप्रिय धान्य, ती कणखर पिके जी सर्वांत कमी मागतात आणि सर्वांत कमी असलेले खातात — आणि ते बियाणे ज्याने दुष्काळ संपवला आणि पाण्याची पातळी रिकामी केली.",
+    },
+    position: 4,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "intensive-subsistence",
+        name: {
+          en: "Intensive subsistence farming",
+          hi: "गहन निर्वाह कृषि",
+          mr: "सघन निर्वाह शेती",
+        },
+        kind: "idea",
+        prompt: {
+          en: "On a holding of barely a hectare a family works with hand tools, heavy manuring and irrigation, takes two or even three harvests a year, and still consumes most of what it grows. Which kind of farming is this?",
+          hi: "मुश्किल से एक हेक्टेयर की जोत पर परिवार हाथ के औज़ारों, भारी खाद और सिंचाई से काम करता है, वर्ष में दो या तीन तक फ़सलें लेता है, और फिर भी जो उगाता उसका अधिकांश स्वयं खा जाता है। यह कौन-सी खेती है?",
+          mr: "जेमतेम एक हेक्टरच्या शेतावर कुटुंब हाताच्या अवजारांनी, जबर खतांनी आणि सिंचनाने काम करते, वर्षात दोन वा तीनही पिके घेते, आणि तरीही जे पिकवते त्यातील बहुतांश स्वतःच खाते. ही कोणती शेती?",
+        },
+        statement: {
+          en: "Intensive subsistence farming is practised on very small holdings with heavy inputs of labour, manure and irrigation to raise several crops a year, with most of the output consumed by the farming family itself.",
+          hi: "गहन निर्वाह कृषि बहुत छोटी जोतों पर की जाती है, जिसमें श्रम, खाद और सिंचाई का भारी निवेश कर वर्ष में कई फ़सलें उठाई जाती हैं, और अधिकांश उपज कृषक परिवार स्वयं खा जाता है।",
+          mr: "सघन निर्वाह शेती अतिशय लहान शेतांवर केली जाते, ज्यात श्रम, खत आणि सिंचनाची जबर गुंतवणूक करून वर्षात अनेक पिके घेतली जातात, आणि बहुतांश उपज शेतकरी कुटुंब स्वतःच खाते.",
+        },
+        detail: {
+          en: "The pressure comes from arithmetic: with a huge rural population on a limited area, the land can never be left fallow and must be pushed for every season it can give.",
+          hi: "दबाव अंकगणित से आता है: सीमित क्षेत्र पर विशाल ग्रामीण आबादी होने से भूमि कभी परती नहीं छोड़ी जा सकती और उससे हर संभव ऋतु निचोड़नी पड़ती है।",
+          mr: "दबाव अंकगणितातून येतो: मर्यादित क्षेत्रावर प्रचंड ग्रामीण लोकसंख्या असल्याने जमीन कधीही पडीक ठेवता येत नाही आणि तिच्याकडून प्रत्येक शक्य हंगाम काढून घ्यावा लागतो.",
+        },
+        extra: {
+          en: "Inheritance keeps dividing the plot between sons, so holdings shrink with each generation and the same effort supports steadily less land.",
+          hi: "उत्तराधिकार खेत को पुत्रों में बाँटता रहता है, अतः जोतें हर पीढ़ी सिकुड़ती हैं और वही मेहनत लगातार कम भूमि सँभालती है।",
+          mr: "वारसा शेत मुलांत विभागत राहतो, म्हणून शेते प्रत्येक पिढीत आकुंचतात आणि तेच कष्ट सतत कमी जमीन सांभाळतात.",
+        },
+        pair: {
+          left: {
+            en: "A tiny plot pushed for three harvests",
+            hi: "तीन फ़सलों के लिए निचोड़ा नन्हा खेत",
+            mr: "तीन पिकांसाठी पिळलेले लहानसे शेत",
+          },
+          right: {
+            en: "intensive subsistence farming",
+            hi: "गहन निर्वाह कृषि",
+            mr: "सघन निर्वाह शेती",
+          },
+        },
+      },
+      {
+        id: "cropping-seasons",
+        name: {
+          en: "The cropping seasons",
+          hi: "फ़सल ऋतुएँ",
+          mr: "पीक हंगाम",
+        },
+        kind: "idea",
+        prompt: {
+          en: "One set of crops is sown with the monsoon's onset in June and harvested in autumn; another is sown in the cool of November and harvested in spring; a third is squeezed into the months between. What are these three called?",
+          hi: "एक समूह की फ़सलें जून में मानसून के आगमन के साथ बोई और शरद में काटी जाती हैं; दूसरी नवंबर की ठंड में बोई और वसंत में काटी जाती हैं; तीसरी बीच के महीनों में ठूँसी जाती हैं। ये तीनों क्या कहलाती हैं?",
+          mr: "एका गटातील पिके जूनमध्ये मान्सूनच्या आगमनासोबत पेरली आणि शरदऋतूत कापली जातात; दुसरी नोव्हेंबरच्या थंडीत पेरली आणि वसंतात कापली जातात; तिसरी मधल्या महिन्यांत कोंबली जातात. ही तिन्ही काय म्हणतात?",
+        },
+        statement: {
+          en: "India's cropping seasons are kharif, sown with the monsoon and harvested in autumn; rabi, sown in winter and harvested in spring; and zaid, the short summer season between them.",
+          hi: "भारत की फ़सल ऋतुएँ हैं ख़रीफ़, जो मानसून के साथ बोई और शरद में काटी जाती; रबी, जो जाड़े में बोई और वसंत में काटी जाती; और ज़ायद, उनके बीच की छोटी ग्रीष्म ऋतु।",
+          mr: "भारताचे पीक हंगाम आहेत खरीप, जो मान्सूनसोबत पेरला आणि शरदऋतूत कापला जातो; रब्बी, जो हिवाळ्यात पेरला आणि वसंतात कापला जातो; आणि झायद, त्यांच्यामधला आखूड उन्हाळी हंगाम.",
+        },
+        detail: {
+          en: "The calendar is set by the monsoon, not by the sun: kharif crops depend on rainfall while rabi crops depend on winter moisture and irrigation.",
+          hi: "पंचांग सूर्य से नहीं, मानसून से सधता है: ख़रीफ़ फ़सलें वर्षा पर निर्भर हैं जबकि रबी फ़सलें जाड़े की नमी और सिंचाई पर।",
+          mr: "दिनदर्शक सूर्याने नव्हे तर मान्सूनने ठरतो: खरीप पिके पावसावर अवलंबून तर रब्बी पिके हिवाळ्यातील ओलावा आणि सिंचनावर.",
+        },
+        extra: {
+          en: "This is why a late monsoon costs a farmer twice — the kharif sowing is delayed, and the rabi behind it is pushed into heat it cannot ripen in.",
+          hi: "इसी से देर से आया मानसून किसान को दोहरी क़ीमत देता है — ख़रीफ़ की बुवाई पिछड़ती है, और उसके पीछे की रबी उस गर्मी में धकेल दी जाती है जिसमें वह पक नहीं सकती।",
+          mr: "म्हणूनच उशिरा आलेला मान्सून शेतकऱ्याला दुहेरी किंमत देतो — खरिपाची पेरणी लांबते, आणि तिच्यामागचा रब्बी अशा उन्हात ढकलला जातो ज्यात तो पिकू शकत नाही.",
+        },
+        pair: {
+          left: {
+            en: "Kharif, rabi and zaid",
+            hi: "ख़रीफ़, रबी और ज़ायद",
+            mr: "खरीप, रब्बी आणि झायद",
+          },
+          right: {
+            en: "the cropping seasons",
+            hi: "फ़सल ऋतुएँ",
+            mr: "पीक हंगाम",
+          },
+        },
+      },
+      {
+        id: "rice-monsoon-staple",
+        name: {
+          en: "Rice, the monsoon staple",
+          hi: "चावल — मानसून का मुख्य अन्न",
+          mr: "भात — मान्सूनचे मुख्य अन्न",
+        },
+        kind: "crop",
+        prompt: {
+          en: "It needs high temperature, high humidity and more than a hundred centimetres of rain, is grown in standing water in West Bengal, Odisha and the deltas, and feeds most of eastern and southern India. Which crop is this?",
+          hi: "इसे ऊँचा ताप, ऊँची आर्द्रता और सौ सेंटीमीटर से अधिक वर्षा चाहिए, यह पश्चिम बंगाल, ओडिशा तथा डेल्टाओं में खड़े पानी में उगाया जाता है, और पूर्वी तथा दक्षिणी भारत के अधिकांश को खिलाता है। यह कौन-सी फ़सल है?",
+          mr: "याला उच्च तापमान, उच्च आर्द्रता आणि शंभर सेंटिमीटरहून अधिक पाऊस लागतो, हे पश्चिम बंगाल, ओडिशा आणि त्रिभुज प्रदेशांत साचलेल्या पाण्यात पिकवले जाते, आणि पूर्व व दक्षिण भारताच्या बहुतांश भागाला खाऊ घालते. हे कोणते पीक?",
+        },
+        statement: {
+          en: "Rice is a kharif crop of high temperature, high humidity and heavy rainfall, grown in flooded fields across the eastern plains, the coastal deltas and the north-eastern states.",
+          hi: "चावल ऊँचे ताप, ऊँची आर्द्रता और भारी वर्षा की ख़रीफ़ फ़सल है, जो पूर्वी मैदानों, तटीय डेल्टाओं तथा पूर्वोत्तर राज्यों में भरे खेतों में उगाई जाती है।",
+          mr: "भात हे उच्च तापमान, उच्च आर्द्रता आणि जोरदार पावसाचे खरीप पीक, जे पूर्वेकडील मैदाने, किनारी त्रिभुज प्रदेश आणि ईशान्येकडील राज्यांत भरलेल्या शेतांत पिकवले जाते.",
+        },
+        detail: {
+          en: "In drier states such as Punjab, Haryana and western Uttar Pradesh it is grown only because canals and tubewells supply the water the rain does not.",
+          hi: "पंजाब, हरियाणा और पश्चिमी उत्तर प्रदेश जैसे सूखे राज्यों में यह केवल इसलिए उगाया जाता कि नहरें और नलकूप वह पानी देते हैं जो वर्षा नहीं देती।",
+          mr: "पंजाब, हरियाणा आणि पश्चिम उत्तर प्रदेशसारख्या कोरड्या राज्यांत ते केवळ यासाठी पिकवले जाते की कालवे आणि कूपनलिका ते पाणी देतात जे पाऊस देत नाही.",
+        },
+        extra: {
+          en: "India is among the world's largest producers, and in the wettest regions two or even three crops are taken from the same field in a year.",
+          hi: "भारत विश्व के सबसे बड़े उत्पादकों में है, और सबसे अधिक वर्षा वाले क्षेत्रों में एक ही खेत से वर्ष में दो या तीन तक फ़सलें ली जाती हैं।",
+          mr: "भारत जगातील सर्वांत मोठ्या उत्पादकांपैकी, आणि सर्वाधिक पावसाच्या भागांत एकाच शेतातून वर्षात दोन वा तीनही पिके घेतली जातात.",
+        },
+        pair: {
+          left: {
+            en: "Standing water, heavy rain, the eastern staple",
+            hi: "खड़ा पानी, भारी वर्षा, पूरब का मुख्य अन्न",
+            mr: "साचलेले पाणी, जोरदार पाऊस, पूर्वेचे मुख्य अन्न",
+          },
+          right: {
+            en: "rice",
+            hi: "चावल",
+            mr: "भात",
+          },
+        },
+      },
+      {
+        id: "wheat-winter-grain",
+        name: {
+          en: "Wheat, the winter grain",
+          hi: "गेहूँ — जाड़े का अनाज",
+          mr: "गहू — हिवाळ्याचे धान्य",
+        },
+        kind: "crop",
+        prompt: {
+          en: "It needs a cool growing season and bright sunshine at harvest, about fifty to seventy-five centimetres of rain, and is grown chiefly in Punjab, Haryana, Uttar Pradesh and Madhya Pradesh. Which crop is this?",
+          hi: "इसे ठंडी बढ़वार-ऋतु और कटाई के समय तेज़ धूप चाहिए, लगभग पचास से पचहत्तर सेंटीमीटर वर्षा, और यह मुख्यतः पंजाब, हरियाणा, उत्तर प्रदेश तथा मध्य प्रदेश में उगाया जाता है। यह कौन-सी फ़सल है?",
+          mr: "याला थंड वाढीचा हंगाम आणि कापणीच्या वेळी तेजस्वी ऊन लागते, सुमारे पन्नास ते पंचाहत्तर सेंटिमीटर पाऊस, आणि हे मुख्यत्वे पंजाब, हरियाणा, उत्तर प्रदेश आणि मध्य प्रदेशात पिकवले जाते. हे कोणते पीक?",
+        },
+        statement: {
+          en: "Wheat is the main rabi crop, needing a cool growing season with bright sunshine at ripening, and it is grown mainly in the north-western plains and the black-soil tracts of central India.",
+          hi: "गेहूँ मुख्य रबी फ़सल है, जिसे ठंडी बढ़वार-ऋतु और पकने के समय तेज़ धूप चाहिए, और यह मुख्यतः उत्तर-पश्चिमी मैदानों तथा मध्य भारत की काली-मृदा पट्टियों में उगाया जाता है।",
+          mr: "गहू हे मुख्य रब्बी पीक, ज्याला थंड वाढीचा हंगाम आणि पिकताना तेजस्वी ऊन लागते, आणि ते मुख्यत्वे वायव्येकडील मैदाने आणि मध्य भारताच्या काळ्या-मृदा पट्ट्यांत पिकवले जाते.",
+        },
+        detail: {
+          en: "The western disturbances of winter bring the light rain it needs, which is why the north-west suits it and the humid east does not.",
+          hi: "जाड़े के पश्चिमी विक्षोभ वह हल्की वर्षा लाते हैं जो इसे चाहिए, इसीलिए उत्तर-पश्चिम इसके अनुकूल है और आर्द्र पूरब नहीं।",
+          mr: "हिवाळ्यातील पश्चिमी विक्षोभ तो हलका पाऊस आणतात जो त्याला लागतो, म्हणूनच वायव्य त्याला अनुकूल आणि दमट पूर्व नाही.",
+        },
+        extra: {
+          en: "It was the crop that gained most from the Green Revolution, and the north-western belt where it grew became the country's grain reserve.",
+          hi: "यही वह फ़सल थी जिसे हरित क्रांति से सबसे अधिक लाभ हुआ, और जिस उत्तर-पश्चिमी पट्टी में यह उगी वह देश का अन्न-भंडार बन गई।",
+          mr: "हेच ते पीक ज्याला हरितक्रांतीचा सर्वाधिक फायदा झाला, आणि ज्या वायव्य पट्ट्यात ते पिकले तो देशाचे धान्य-भांडार बनला.",
+        },
+        pair: {
+          left: {
+            en: "Cool season, bright ripening sun, the north-west",
+            hi: "ठंडी ऋतु, पकाती तेज़ धूप, उत्तर-पश्चिम",
+            mr: "थंड हंगाम, पिकवणारे तेजस्वी ऊन, वायव्य",
+          },
+          right: {
+            en: "wheat",
+            hi: "गेहूँ",
+            mr: "गहू",
+          },
+        },
+      },
+      {
+        id: "millets",
+        name: {
+          en: "The millets",
+          hi: "मोटे अनाज (बाजरा-ज्वार-रागी)",
+          mr: "भरडधान्ये (बाजरी-ज्वारी-नाचणी)",
+        },
+        kind: "crop",
+        prompt: {
+          en: "Jowar on dry Deccan soils, bajra on the sandy tracts of Rajasthan, ragi on the red soils of Karnataka — hardy grains that need little water and carry more iron and calcium than rice or wheat. What are these called?",
+          hi: "सूखी दक्कन मिट्टी पर ज्वार, राजस्थान की बलुई पट्टियों पर बाजरा, कर्नाटक की लाल मिट्टी पर रागी — कठोर अनाज जिन्हें कम पानी चाहिए और जिनमें चावल-गेहूँ से अधिक लोहा तथा कैल्शियम है। ये क्या कहलाते हैं?",
+          mr: "कोरड्या दख्खनी मातीवर ज्वारी, राजस्थानच्या वाळूच्या पट्ट्यांवर बाजरी, कर्नाटकाच्या तांबड्या मातीवर नाचणी — कणखर धान्ये ज्यांना कमी पाणी लागते आणि ज्यांत भात-गव्हाहून अधिक लोह व कॅल्शियम आहे. यांना काय म्हणतात?",
+        },
+        statement: {
+          en: "The millets — jowar, bajra and ragi — are hardy rain-fed grains grown on poorer soils with little irrigation, and they are nutritionally richer in iron, calcium and roughage than rice or wheat.",
+          hi: "मोटे अनाज — ज्वार, बाजरा और रागी — कठोर वर्षा-आधारित अनाज हैं जो कम सिंचाई वाली निर्धन मिट्टियों पर उगते हैं, और पोषण में चावल या गेहूँ से लोहे, कैल्शियम तथा रेशे में अधिक समृद्ध हैं।",
+          mr: "भरडधान्ये — ज्वारी, बाजरी आणि नाचणी — कणखर पावसावर आधारित धान्ये जी कमी सिंचनाच्या हलक्या मातीवर पिकतात, आणि पोषणात भात वा गव्हाहून लोह, कॅल्शियम व तंतूंत अधिक समृद्ध.",
+        },
+        detail: {
+          en: "They are called coarse grains, but the name records social prejudice rather than nutrition — they are the food of dry regions and poor households.",
+          hi: "इन्हें मोटा अनाज कहा जाता है, पर यह नाम पोषण नहीं बल्कि सामाजिक पूर्वाग्रह दर्ज करता है — ये सूखे क्षेत्रों और निर्धन घरों का भोजन हैं।",
+          mr: "यांना भरडधान्ये म्हणतात, पण हे नाव पोषण नव्हे तर सामाजिक पूर्वग्रह नोंदवते — ही कोरड्या भागांची आणि गरीब घरांची अन्ने.",
+        },
+        extra: {
+          en: "Their low water demand is exactly why they are being promoted again in regions where the water table has fallen under rice and wheat.",
+          hi: "उनकी कम पानी की माँग ही कारण है कि उन क्षेत्रों में उन्हें फिर बढ़ावा दिया जा रहा जहाँ चावल-गेहूँ के नीचे जल-स्तर गिर चुका है।",
+          mr: "त्यांची कमी पाण्याची मागणी हेच कारण की ज्या भागांत भात-गव्हाखाली पाण्याची पातळी घसरली तिथे त्यांना पुन्हा प्रोत्साहन दिले जात आहे.",
+        },
+        pair: {
+          left: {
+            en: "Hardy, rain-fed, richer in iron than rice",
+            hi: "कठोर, वर्षा-आधारित, चावल से लोहे में समृद्ध",
+            mr: "कणखर, पावसावर आधारित, भाताहून लोहात समृद्ध",
+          },
+          right: {
+            en: "the millets",
+            hi: "मोटे अनाज",
+            mr: "भरडधान्ये",
+          },
+        },
+      },
+      {
+        id: "high-yielding-varieties",
+        name: {
+          en: "High-yielding varieties",
+          hi: "उन्नत उपज वाली क़िस्में",
+          mr: "अधिक उत्पादन देणाऱ्या जाती",
+        },
+        kind: "idea",
+        prompt: {
+          en: "From the mid-1960s new short-stemmed wheat and rice seeds were introduced that responded strongly to fertiliser and assured water, and India's grain output climbed steeply within a decade. What were these seeds called?",
+          hi: "1960 के दशक के मध्य से गेहूँ और चावल के नए बौने बीज लाए गए जो उर्वरक तथा निश्चित पानी पर प्रबल प्रतिक्रिया देते थे, और एक दशक में भारत का अन्न-उत्पादन तेज़ी से चढ़ गया। ये बीज क्या कहलाते थे?",
+          mr: "1960 च्या दशकाच्या मध्यापासून गहू आणि भाताची नवी बुटकी बियाणे आणली गेली जी खत आणि खात्रीशीर पाण्याला प्रबळ प्रतिसाद देत, आणि एका दशकात भारताचे धान्य-उत्पादन झपाट्याने चढले. या बियाण्यांना काय म्हणत?",
+        },
+        statement: {
+          en: "High-yielding varieties are bred seeds that produce far more grain per hectare, provided they receive assured irrigation, chemical fertiliser and pesticide — the package that produced the Green Revolution.",
+          hi: "उन्नत उपज वाली क़िस्में वे प्रजनित बीज हैं जो प्रति हेक्टेयर कहीं अधिक अनाज देते हैं, बशर्ते उन्हें निश्चित सिंचाई, रासायनिक उर्वरक और कीटनाशक मिलें — वही पैकेज जिसने हरित क्रांति दी।",
+          mr: "अधिक उत्पादन देणाऱ्या जाती म्हणजे ती संकरित बियाणे जी प्रति हेक्टर कितीतरी अधिक धान्य देतात, जर त्यांना खात्रीशीर सिंचन, रासायनिक खत आणि कीटकनाशक मिळाले — तेच संच ज्याने हरितक्रांती दिली.",
+        },
+        detail: {
+          en: "The short stem was the key: a plant that puts its growth into grain rather than straw does not fall over when heavily fertilised.",
+          hi: "बौना तना ही कुंजी था: जो पौधा अपनी बढ़वार भूसे के बजाय दाने में लगाता है वह भारी उर्वरक पर लुढ़कता नहीं।",
+          mr: "बुटके खोड हीच किल्ली होती: जे रोप आपली वाढ पेंढ्याऐवजी दाण्यात घालते ते जबर खत दिल्यावर लोळत नाही.",
+        },
+        extra: {
+          en: "The gains were unevenly spread, concentrating in Punjab, Haryana and western Uttar Pradesh, where irrigation was already in place to meet the seeds' conditions.",
+          hi: "लाभ असमान रूप से बँटे, पंजाब, हरियाणा और पश्चिमी उत्तर प्रदेश में केंद्रित रहे, जहाँ बीजों की शर्तें पूरी करने को सिंचाई पहले से मौजूद थी।",
+          mr: "फायदे असमानपणे वाटले, पंजाब, हरियाणा आणि पश्चिम उत्तर प्रदेशात केंद्रित राहिले, जिथे बियाण्यांच्या अटी भागवायला सिंचन आधीच होते.",
+        },
+        pair: {
+          left: {
+            en: "Short-stemmed seed that answers fertiliser and water",
+            hi: "उर्वरक और पानी का उत्तर देता बौना बीज",
+            mr: "खत आणि पाण्याला उत्तर देणारे बुटके बियाणे",
+          },
+          right: {
+            en: "high-yielding varieties",
+            hi: "उन्नत उपज वाली क़िस्में",
+            mr: "अधिक उत्पादन देणाऱ्या जाती",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Rice is the staple of West Bengal and Odisha and wheat of Punjab and Haryana, and the textbook explains this by climate. Yet Punjab today grows enormous quantities of rice, and its water table is falling by nearly a metre a year. Explain both the original pattern and why breaking it has been costly.",
+          hi: "चावल पश्चिम बंगाल और ओडिशा का मुख्य अन्न है तथा गेहूँ पंजाब और हरियाणा का, और पाठ्यपुस्तक इसे जलवायु से समझाती है। फिर भी पंजाब आज विशाल मात्रा में चावल उगाता है, और उसका जल-स्तर लगभग एक मीटर प्रति वर्ष गिर रहा है। मूल प्रतिरूप और उसे तोड़ना महँगा क्यों पड़ा — दोनों समझाओ।",
+          mr: "भात हे पश्चिम बंगाल आणि ओडिशाचे मुख्य अन्न आणि गहू पंजाब व हरियाणाचे, आणि पाठ्यपुस्तक हे हवामानाने समजावते. तरीही पंजाब आज प्रचंड प्रमाणात भात पिकवतो, आणि त्याची पाण्याची पातळी दरवर्षी जवळजवळ एक मीटर घसरत आहे. मूळ प्रारूप आणि ते मोडणे महाग का पडले — दोन्ही समजावा.",
+        },
+        choices: [
+          {
+            en: "Rice needs high humidity and over a hundred centimetres of rain, which the eastern plains supply naturally; wheat needs a cool season and moderate rain, which the north-west supplies. Punjab grows rice only by pumping groundwater to replace rain it does not get — assured procurement and subsidised power made it profitable — so the crop is being grown against the climate, and the aquifer is paying the difference",
+            hi: "चावल को ऊँची आर्द्रता और सौ सेंटीमीटर से अधिक वर्षा चाहिए, जो पूर्वी मैदान स्वाभाविक रूप से देते हैं; गेहूँ को ठंडी ऋतु और मध्यम वर्षा चाहिए, जो उत्तर-पश्चिम देता है। पंजाब चावल केवल भूजल पंप करके उगाता है ताकि जो वर्षा उसे नहीं मिलती उसकी भरपाई हो — निश्चित ख़रीद और सस्ती बिजली ने उसे लाभप्रद बनाया — अतः फ़सल जलवायु के विरुद्ध उगाई जा रही, और अंतर जलभृत चुका रहा है",
+            mr: "भाताला उच्च आर्द्रता आणि शंभर सेंटिमीटरहून अधिक पाऊस लागतो, जो पूर्वेकडील मैदाने नैसर्गिकरीत्या देतात; गव्हाला थंड हंगाम आणि मध्यम पाऊस लागतो, जो वायव्य देतो. पंजाब भात केवळ भूजल उपसून पिकवतो जेणेकरून जो पाऊस त्याला मिळत नाही त्याची भरपाई होईल — खात्रीशीर खरेदी आणि स्वस्त वीज यांनी तो फायदेशीर केला — म्हणून पीक हवामानाविरुद्ध पिकवले जात आहे, आणि फरक जलधर मोजत आहे",
+          },
+          {
+            en: "Because rice cannot grow anywhere except in West Bengal, and Punjab's rice reports are mistaken",
+            hi: "क्योंकि चावल पश्चिम बंगाल के अलावा कहीं उग ही नहीं सकता, और पंजाब के चावल-आँकड़े ग़लत हैं",
+            mr: "कारण भात पश्चिम बंगालशिवाय कुठेही पिकूच शकत नाही, आणि पंजाबचे भात-आकडे चुकीचे आहेत",
+          },
+          {
+            en: "Because Punjab's rainfall has risen to eastern levels, so the crop now matches the climate perfectly",
+            hi: "क्योंकि पंजाब की वर्षा पूर्वी स्तरों तक बढ़ गई है, अतः फ़सल अब जलवायु से पूरी तरह मेल खाती है",
+            mr: "कारण पंजाबचा पाऊस पूर्वेच्या पातळीपर्यंत वाढला आहे, म्हणून पीक आता हवामानाशी पूर्णपणे जुळते",
+          },
+          {
+            en: "Because the falling water table has no connection to irrigation and is caused entirely by earthquakes",
+            hi: "क्योंकि गिरते जल-स्तर का सिंचाई से कोई संबंध नहीं और वह पूरी तरह भूकंपों से होता है",
+            mr: "कारण घसरत्या पाण्याच्या पातळीचा सिंचनाशी संबंध नाही आणि ती पूर्णपणे भूकंपांमुळे होते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The original pattern is straightforward crop ecology. Rice is a plant of hot, humid conditions and standing water; it needs temperatures above 25°C and more than about 100 cm of rainfall, and it is traditionally grown in flooded fields. The eastern plains, the coastal deltas and the north-east supply exactly that from the monsoon, so rice became the staple wherever the rain was heavy. Wheat is the opposite: it needs a cool growing season of 10–15°C, moderate rainfall of about 50–75 cm, and — crucially — bright dry sunshine as the grain ripens, because humidity at ripening invites disease. The north-western plains get a cool winter, light rain from western disturbances, and a dry sunny spring, so wheat suits them and the humid east does not. Left to climate alone, the map draws itself. Now the departure. From the late 1960s Punjab and Haryana adopted the high-yielding wheat–rice rotation: wheat in rabi, which fits, and rice in kharif, which does not. Rice was grown there not because the rain arrived but because water could be pumped from below, and three policy choices made that pay. Assured government procurement at a minimum support price removed the market risk. Free or heavily subsidised electricity for tubewells removed the cost of pumping. And canal networks built for the Green Revolution supplied part of the water. A farmer facing those incentives is behaving perfectly rationally by growing rice; the losses do not appear on his account. They appear in the aquifer. Rice in a dry climate needs far more applied water than the same crop in Bengal, because evaporation is higher and rainfall supplies almost none of it. Extraction has run above recharge for decades, and across central Punjab the water table has fallen by tens of metres, with the annual decline now approaching a metre in the worst blocks. Wells must be deepened, submersible pumps replace centrifugal ones, energy use rises, and small farmers who cannot afford deeper borewells are squeezed out first. The soil suffers too: continuous flooding and heavy fertiliser use have degraded soil structure and left salinity in places. The lesson is not that the Green Revolution was a mistake — it ended dependence on food imports and famine — but that a crop grown against its climate has a hidden bill, and that bill is being paid by a resource that took millennia to fill and cannot be refilled on demand. This is why the recommended remedies are crop diversification back towards millets, maize and pulses, pricing or metering electricity, and paddy-transplanting laws timed to the monsoon: each attacks the mismatch between what the seed needs and what the sky provides. (The wrong answers deny documented cultivation, invent a rainfall increase that has not occurred, or attribute an extraction-driven decline to geology.)",
+          hi: "मूल प्रतिरूप सीधी फ़सल-पारिस्थितिकी है। चावल गरम, आर्द्र दशाओं और खड़े पानी का पौधा है; उसे 25°C से ऊपर ताप और लगभग 100 सेमी से अधिक वर्षा चाहिए, और वह परंपरागत रूप से भरे खेतों में उगाया जाता है। पूर्वी मैदान, तटीय डेल्टा और पूर्वोत्तर मानसून से ठीक वही देते हैं, अतः जहाँ वर्षा भारी थी वहाँ चावल मुख्य अन्न बन गया। गेहूँ उल्टा है: उसे 10–15°C की ठंडी बढ़वार-ऋतु, लगभग 50–75 सेमी की मध्यम वर्षा, और — मुख्यतः — दाना पकते समय तेज़ शुष्क धूप चाहिए, क्योंकि पकते समय आर्द्रता रोग बुलाती है। उत्तर-पश्चिमी मैदानों को ठंडा जाड़ा, पश्चिमी विक्षोभों से हल्की वर्षा और शुष्क धूप वाला वसंत मिलता है, अतः गेहूँ उनके अनुकूल है और आर्द्र पूरब नहीं। केवल जलवायु पर छोड़ो तो नक़्शा स्वयं खिंच जाता है। अब विचलन। 1960 के दशक के अंत से पंजाब और हरियाणा ने उन्नत गेहूँ–चावल चक्र अपनाया: रबी में गेहूँ, जो बैठता है, और ख़रीफ़ में चावल, जो नहीं बैठता। चावल वहाँ इसलिए नहीं उगा कि वर्षा आई बल्कि इसलिए कि पानी नीचे से पंप किया जा सकता था, और तीन नीतिगत चुनावों ने उसे लाभप्रद बनाया। न्यूनतम समर्थन मूल्य पर निश्चित सरकारी ख़रीद ने बाज़ार का जोखिम हटाया। नलकूपों के लिए मुफ़्त या भारी सब्सिडी वाली बिजली ने पंप करने की लागत हटाई। और हरित क्रांति के लिए बनी नहर-प्रणालियों ने पानी का हिस्सा दिया। इन प्रोत्साहनों के सामने खड़ा किसान चावल उगाकर पूरी तरह तर्कसंगत बरत रहा है; हानियाँ उसके खाते में नहीं दिखतीं। वे जलभृत में दिखती हैं। शुष्क जलवायु में चावल को बंगाल की उसी फ़सल से कहीं अधिक लगाया गया पानी चाहिए, क्योंकि वाष्पन अधिक है और वर्षा उसका लगभग कुछ भी नहीं देती। निकासी दशकों से पुनर्भरण से ऊपर चली है, और मध्य पंजाब भर जल-स्तर दसियों मीटर गिरा है, और सबसे बुरे प्रखंडों में वार्षिक गिरावट अब एक मीटर के पास है। कुएँ गहरे करने पड़ते हैं, अपकेंद्री पंपों की जगह जलमग्न पंप आते हैं, ऊर्जा-उपयोग बढ़ता है, और जो छोटे किसान गहरे बोरवेल नहीं जुटा सकते वे सबसे पहले निचुड़ जाते हैं। मिट्टी भी झेलती है: लगातार भराव और भारी उर्वरक-उपयोग ने मृदा-संरचना बिगाड़ी है और जगह-जगह लवणता छोड़ी है। सबक़ यह नहीं कि हरित क्रांति भूल थी — उसने खाद्य आयात और अकाल पर निर्भरता ख़त्म की — बल्कि यह कि जलवायु के विरुद्ध उगाई फ़सल का एक छिपा बिल होता है, और वह बिल उस संसाधन से चुकाया जा रहा है जिसे भरने में सहस्राब्दियाँ लगीं और जो माँगने पर फिर नहीं भरता। इसीलिए सुझाए उपाय हैं मोटे अनाजों, मक्का और दालों की ओर फ़सल-विविधीकरण, बिजली की क़ीमत या मीटरिंग, और मानसून से बँधे धान-रोपाई क़ानून: हर एक बीज की माँग और आकाश की आपूर्ति के बेमेल पर हमला करता है। (ग़लत उत्तर दर्ज खेती को नकारते, न हुई वर्षा-वृद्धि गढ़ते, या निकासी-जनित गिरावट को भूविज्ञान पर डालते हैं।)",
+          mr: "मूळ प्रारूप सरळ पीक-परिस्थितिकी आहे. भात हे उष्ण, दमट स्थिती आणि साचलेल्या पाण्याचे रोप; त्याला 25°C वरील तापमान आणि सुमारे 100 सेमीहून अधिक पाऊस लागतो, आणि ते पारंपरिकपणे भरलेल्या शेतांत पिकवले जाते. पूर्वेकडील मैदाने, किनारी त्रिभुज प्रदेश आणि ईशान्य मान्सूनकडून नेमके तेच देतात, म्हणून जिथे पाऊस जोरदार तिथे भात मुख्य अन्न बनले. गहू उलट: त्याला 10–15°C चा थंड वाढीचा हंगाम, सुमारे 50–75 सेमीचा मध्यम पाऊस, आणि — मुख्यतः — दाणा पिकताना तेजस्वी कोरडे ऊन लागते, कारण पिकताना आर्द्रता रोग बोलावते. वायव्येकडील मैदानांना थंड हिवाळा, पश्चिमी विक्षोभांकडून हलका पाऊस आणि कोरडा उन्हाळी वसंत मिळतो, म्हणून गहू त्यांना अनुकूल आणि दमट पूर्व नाही. केवळ हवामानावर सोडले तर नकाशा स्वतःच आखला जातो. आता विचलन. 1960 च्या दशकाच्या शेवटापासून पंजाब आणि हरियाणाने अधिक उत्पादन देणारे गहू–भात आवर्तन स्वीकारले: रब्बीत गहू, जो बसतो, आणि खरिपात भात, जो बसत नाही. भात तिथे यासाठी पिकला नाही की पाऊस आला तर यासाठी की पाणी खालून उपसता येत होते, आणि तीन धोरणात्मक निवडींनी तो फायदेशीर केला. किमान आधारभूत किमतीवर खात्रीशीर सरकारी खरेदीने बाजाराचा धोका काढला. कूपनलिकांसाठी फुकट वा जबर अनुदानित विजेने उपशाचा खर्च काढला. आणि हरितक्रांतीसाठी बांधलेल्या कालवा-जाळ्यांनी पाण्याचा भाग दिला. या प्रोत्साहनांसमोर उभा शेतकरी भात पिकवून पूर्णपणे तर्कशुद्ध वागत आहे; तोटे त्याच्या खात्यात दिसत नाहीत. ते जलधरात दिसतात. कोरड्या हवामानात भाताला बंगालच्या त्याच पिकाहून कितीतरी अधिक दिलेले पाणी लागते, कारण बाष्पीभवन अधिक आणि पाऊस त्यातील जवळजवळ काहीच देत नाही. उपसा दशके पुनर्भरणाहून वर चालला आहे, आणि मध्य पंजाबभर पाण्याची पातळी दहा-दहा मीटर घसरली आहे, आणि सर्वांत वाईट भागांत वार्षिक घसरण आता एका मीटरजवळ. विहिरी खोल कराव्या लागतात, अपकेंद्री पंपांच्या जागी जलमग्न पंप येतात, ऊर्जावापर वाढतो, आणि जे छोटे शेतकरी खोल बोअरवेल परवडू शकत नाहीत ते सर्वांत आधी पिळून निघतात. मातीही सोसते: सतत भरणे आणि जबर खतवापराने मृदा-रचना बिघडवली आहे आणि जागोजागी क्षारता ठेवली आहे. धडा हा नाही की हरितक्रांती चूक होती — तिने अन्नआयात आणि दुष्काळावरील अवलंबित्व संपवले — तर हा की हवामानाविरुद्ध पिकवलेल्या पिकाचे एक लपलेले बिल असते, आणि ते बिल त्या संसाधनातून भरले जात आहे ज्याला भरायला सहस्रके लागली आणि जे मागणीवर पुन्हा भरत नाही. म्हणूनच सुचवलेले उपाय आहेत भरडधान्ये, मका आणि कडधान्यांकडे पीक-विविधीकरण, विजेची किंमत वा मीटरिंग, आणि मान्सूनशी बांधलेले भात-लावणी कायदे: प्रत्येक बियाण्याची मागणी आणि आकाशाचा पुरवठा यांतील विसंगतीवर हल्ला करतो. (चुकीची उत्तरे नोंदलेली लागवड नाकारतात, न झालेली पर्जन्यवाढ रचतात, वा उपसा-जनित घसरण भूगर्भशास्त्रावर टाकतात.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Within fifteen years of the mid-1960s India went from importing grain under emergency aid to holding surplus stocks, and no famine has occurred since. Yet economists and farmers' movements have criticised the same transformation sharply. Give a full accounting — what it achieved, and what it cost and to whom.",
+          hi: "1960 के दशक के मध्य से पंद्रह वर्षों के भीतर भारत आपातकालीन सहायता पर अनाज आयात करने से अधिशेष भंडार रखने तक पहुँच गया, और उसके बाद कोई अकाल नहीं पड़ा। फिर भी अर्थशास्त्रियों और किसान आंदोलनों ने उसी रूपांतरण की तीखी आलोचना की है। पूरा लेखा दो — उसने क्या पाया, और क्या क़ीमत चुकाई तथा किसने।",
+          mr: "1960 च्या दशकाच्या मध्यापासून पंधरा वर्षांत भारत आणीबाणी मदतीवर धान्य आयात करण्यापासून अतिरिक्त साठे बाळगण्यापर्यंत पोहोचला, आणि त्यानंतर कोणताही दुष्काळ पडला नाही. तरीही अर्थतज्ज्ञ आणि शेतकरी चळवळींनी त्याच परिवर्तनावर तीव्र टीका केली आहे. पूर्ण हिशोब द्या — त्याने काय मिळवले, आणि काय किंमत मोजली आणि कोणी.",
+        },
+        choices: [
+          {
+            en: "It achieved food self-sufficiency and ended famine, which is an enormous gain. But the seeds needed assured irrigation, fertiliser and pesticide, so the benefits concentrated where irrigation already existed and among farmers who could finance inputs — widening regional and class inequality. Groundwater was overdrawn, soils degraded, pest resistance and pesticide contamination grew, and the wheat-rice focus narrowed diversity and displaced pulses and millets. The verdict is a real gain purchased with an unequally distributed and partly deferred cost",
+            hi: "उसने खाद्य आत्मनिर्भरता पाई और अकाल ख़त्म किया, जो विशाल उपलब्धि है। पर बीजों को निश्चित सिंचाई, उर्वरक और कीटनाशक चाहिए थे, अतः लाभ वहाँ केंद्रित हुए जहाँ सिंचाई पहले से थी और उन किसानों में जो निवेश जुटा सकते थे — क्षेत्रीय तथा वर्गीय असमानता चौड़ी करते हुए। भूजल अति-खींचा गया, मिट्टियाँ क्षरित हुईं, कीट-प्रतिरोध और कीटनाशक-संदूषण बढ़ा, और गेहूँ-चावल पर ध्यान ने विविधता सँकरी की तथा दालों और मोटे अनाजों को विस्थापित किया। निर्णय: असली लाभ, पर असमान रूप से बँटी और आंशिक रूप से टाली गई क़ीमत पर ख़रीदा गया",
+            mr: "तिने अन्न स्वयंपूर्णता मिळवली आणि दुष्काळ संपवला, जी प्रचंड कमाई. पण बियाण्यांना खात्रीशीर सिंचन, खत आणि कीटकनाशक लागत होते, म्हणून फायदे तिथे केंद्रित झाले जिथे सिंचन आधीच होते आणि त्या शेतकऱ्यांत जे गुंतवणूक करू शकत — प्रादेशिक व वर्गीय विषमता रुंदावत. भूजल अति-उपसले गेले, मृदा खालावल्या, कीड-प्रतिकार आणि कीटकनाशक-दूषण वाढले, आणि गहू-भातावरील भराने विविधता अरुंद केली व कडधान्ये आणि भरडधान्ये विस्थापित केली. निर्णय: खरी कमाई, पण असमानपणे वाटलेल्या आणि अंशतः पुढे ढकललेल्या किमतीवर विकत घेतलेली",
+          },
+          {
+            en: "It achieved nothing measurable; grain output was unchanged and the reported surpluses were fabricated",
+            hi: "उसने कुछ भी मापने योग्य नहीं पाया; अन्न-उत्पादन अपरिवर्तित रहा और बताए गए अधिशेष गढ़े हुए थे",
+            mr: "तिने काहीही मोजण्याजोगे मिळवले नाही; धान्य उत्पादन अपरिवर्तित राहिले आणि सांगितलेले अतिरिक्त साठे बनावट होते",
+          },
+          {
+            en: "It had benefits and no costs whatever, and the criticism comes only from those opposed to science",
+            hi: "उसके केवल लाभ थे और कोई क़ीमत नहीं, और आलोचना केवल उनसे आती है जो विज्ञान के विरोधी हैं",
+            mr: "तिचे फक्त फायदे होते आणि कोणतीही किंमत नाही, आणि टीका फक्त विज्ञानविरोधकांकडून येते",
+          },
+          {
+            en: "Its costs fell equally on all farmers everywhere, so no question of inequality arises",
+            hi: "उसकी क़ीमतें हर जगह सब किसानों पर समान रूप से पड़ीं, अतः असमानता का प्रश्न ही नहीं उठता",
+            mr: "तिच्या किमती सर्वत्र सर्व शेतकऱ्यांवर समानपणे पडल्या, म्हणून विषमतेचा प्रश्नच उद्भवत नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "An honest account has to hold two things together, because both are true and neither cancels the other. Start with the achievement, which was extraordinary and should not be minimised. In the mid-1960s India was importing wheat under emergency arrangements, harvests had failed two years running, and the country's food security depended on a foreign government's shipping schedule. Within about fifteen years production had roughly doubled, imports ended, and buffer stocks were large enough that later droughts produced hardship but not famine. Famine had been a recurring feature of Indian history for centuries; it stopped. Whatever else follows, that is a very large number of lives. Now the costs, which are of four kinds. The first is distributional by region. High-yielding varieties are not simply better seeds; they are seeds that outperform only when given assured water, chemical fertiliser and pesticide. That condition meant the technology could be adopted where irrigation already existed — Punjab, Haryana, western Uttar Pradesh, parts of Andhra Pradesh — and could not be adopted in the rain-fed uplands, the dry Deccan and eastern India. So a national programme deepened regional divergence: the irrigated north-west became the granary and the rain-fed regions fell further behind. The second is distributional by class. Seeds, fertiliser, pesticide and a tubewell all cost money before the harvest arrives. Farmers with land to pledge and access to credit could finance the package and gained; marginal farmers borrowed at high interest to do the same, and a bad season left them with debt against a small holding. Landless labourers gained employment from the intensified cropping but did not gain assets. The third is ecological. Continuous irrigation of rice in dry regions drew groundwater faster than recharge, so water tables fell; heavy fertiliser use degraded soil structure and left nitrate in the water; pesticide use bred resistant pests and left residues in food and, through biomagnification, in people. The fourth is agronomic and nutritional. Procurement and price support were concentrated on wheat and rice, so those two crops displaced pulses, oilseeds and millets. India's grain output rose while pulse availability per person fell, protein in poor diets suffered, and the millets — which need little water and carry more iron and calcium — went out of fashion precisely in the dry regions that most needed them. So the correct verdict is neither celebration nor condemnation. It is that a real and enormous benefit was purchased at a price that was unequally distributed across regions and classes, and partly deferred onto a groundwater stock and a soil that later generations must live with. That framing matters because it points to what should be done next, and the answers follow directly from the diagnosis: extend irrigation and credit to the regions and farmers left out, price water and power so extraction is not free, diversify support prices towards pulses and millets, and treat soil and aquifer as capital rather than as free inputs. Criticism of the Green Revolution, properly made, is not an argument against feeding people; it is an argument about who was fed, who paid, and what has been borrowed from the future. (The wrong answers deny a documented output increase, deny costs that soil and water records establish, or claim an equality of impact contradicted by every regional yield map of the period.)",
+          hi: "ईमानदार लेखा दो बातें साथ थामे रहे, क्योंकि दोनों सच हैं और कोई दूसरे को काटती नहीं। उपलब्धि से शुरू, जो असाधारण थी और उसे छोटा नहीं करना चाहिए। 1960 के दशक के मध्य में भारत आपातकालीन प्रबंधों के तहत गेहूँ आयात कर रहा था, लगातार दो वर्ष फ़सलें विफल हुई थीं, और देश की खाद्य सुरक्षा किसी विदेशी सरकार की जहाज़-सारणी पर टिकी थी। लगभग पंद्रह वर्षों में उत्पादन लगभग दुगुना हुआ, आयात रुका, और बफ़र भंडार इतने बड़े हो गए कि बाद के सूखों ने कष्ट दिया पर अकाल नहीं। अकाल सदियों से भारतीय इतिहास की बार-बार लौटती विशेषता था; वह रुक गया। आगे जो भी हो, वह बहुत बड़ी संख्या में जीवन हैं। अब लागतें, जो चार क़िस्म की हैं। पहली क्षेत्र के अनुसार वितरणात्मक। उन्नत क़िस्में केवल बेहतर बीज नहीं; वे ऐसे बीज हैं जो तभी बेहतर करते हैं जब उन्हें निश्चित पानी, रासायनिक उर्वरक और कीटनाशक मिले। उस शर्त का अर्थ था कि तकनीक वहाँ अपनाई जा सकी जहाँ सिंचाई पहले से थी — पंजाब, हरियाणा, पश्चिमी उत्तर प्रदेश, आंध्र के हिस्से — और वर्षा-आधारित उच्चभूमि, शुष्क दक्कन तथा पूर्वी भारत में नहीं अपनाई जा सकी। अतः एक राष्ट्रीय कार्यक्रम ने क्षेत्रीय विचलन गहरा किया: सिंचित उत्तर-पश्चिम अन्न-भंडार बना और वर्षा-आधारित क्षेत्र और पीछे छूट गए। दूसरी वर्ग के अनुसार वितरणात्मक। बीज, उर्वरक, कीटनाशक और नलकूप — सबका दाम फ़सल आने से पहले लगता है। जिन किसानों के पास गिरवी रखने को भूमि और ऋण तक पहुँच थी वे पैकेज जुटा सके और लाभ में रहे; सीमांत किसानों ने वही करने को ऊँचे ब्याज पर उधार लिया, और बुरी ऋतु ने उन्हें छोटी जोत के विरुद्ध क़र्ज़ थमा दिया। भूमिहीन मज़दूरों को सघन खेती से रोज़गार मिला पर परिसंपत्ति नहीं। तीसरी पारिस्थितिक। शुष्क क्षेत्रों में चावल की लगातार सिंचाई ने भूजल पुनर्भरण से तेज़ खींचा, अतः जल-स्तर गिरे; भारी उर्वरक-उपयोग ने मृदा-संरचना बिगाड़ी और पानी में नाइट्रेट छोड़ा; कीटनाशक-उपयोग ने प्रतिरोधी कीट पैदा किए और भोजन में तथा जैव-आवर्धन से लोगों में अवशेष छोड़े। चौथी कृषि-वैज्ञानिक और पोषण-संबंधी। ख़रीद और मूल्य-समर्थन गेहूँ तथा चावल पर केंद्रित रहे, अतः उन दो फ़सलों ने दालों, तिलहनों और मोटे अनाजों को विस्थापित किया। भारत का अन्न-उत्पादन चढ़ा जबकि प्रति व्यक्ति दाल-उपलब्धता गिरी, निर्धन आहारों में प्रोटीन को चोट पहुँची, और मोटे अनाज — जिन्हें कम पानी चाहिए और जिनमें अधिक लोहा तथा कैल्शियम है — ठीक उन्हीं शुष्क क्षेत्रों में चलन से बाहर हुए जिन्हें उनकी सबसे अधिक ज़रूरत थी। अतः सही निर्णय न उत्सव है न भर्त्सना। यह कि एक असली और विशाल लाभ ऐसी क़ीमत पर ख़रीदा गया जो क्षेत्रों और वर्गों में असमान रूप से बँटी, और आंशिक रूप से एक भूजल-भंडार तथा एक मिट्टी पर टाल दी गई जिनके साथ बाद की पीढ़ियों को जीना है। यह ढाँचा इसलिए मायने रखता है कि वह बताता है आगे क्या करना चाहिए, और उत्तर निदान से सीधे निकलते हैं: छूट गए क्षेत्रों तथा किसानों तक सिंचाई और ऋण पहुँचाओ, पानी और बिजली की क़ीमत लगाओ ताकि निकासी मुफ़्त न रहे, समर्थन मूल्यों को दालों तथा मोटे अनाजों की ओर विविध करो, और मिट्टी तथा जलभृत को मुफ़्त निवेश नहीं, पूँजी मानो। हरित क्रांति की ठीक ढंग से की गई आलोचना लोगों को खिलाने के विरुद्ध तर्क नहीं है; वह इस बारे में तर्क है कि किसे खिलाया गया, किसने चुकाया, और भविष्य से क्या उधार लिया गया। (ग़लत उत्तर दर्ज उत्पादन-वृद्धि नकारते, उन लागतों को नकारते जिन्हें मृदा और जल अभिलेख सिद्ध करते, या प्रभाव की ऐसी समानता का दावा करते जिसका खंडन उस दौर का हर क्षेत्रीय उपज-नक़्शा करता है।)",
+          mr: "प्रामाणिक हिशोबाने दोन गोष्टी एकत्र धराव्या लागतात, कारण दोन्ही खऱ्या आहेत आणि एक दुसरीला रद्द करत नाही. कमाईपासून सुरू, जी असामान्य होती आणि तिला लहान करू नये. 1960 च्या दशकाच्या मध्यावर भारत आणीबाणी व्यवस्थेखाली गहू आयात करत होता, सलग दोन वर्षे पिके बुडाली होती, आणि देशाची अन्नसुरक्षा एका परकी सरकारच्या जहाज-वेळापत्रकावर टेकली होती. सुमारे पंधरा वर्षांत उत्पादन जवळजवळ दुप्पट झाले, आयात थांबली, आणि राखीव साठे इतके मोठे झाले की नंतरच्या दुष्काळांनी हालअपेष्टा दिली पण दुष्काळमृत्यू नाही. दुष्काळ शतके भारतीय इतिहासाचे पुन्हापुन्हा परतणारे वैशिष्ट्य होते; तो थांबला. पुढे काहीही असो, ती खूप मोठ्या संख्येने आयुष्ये आहेत. आता किमती, ज्या चार प्रकारच्या. पहिली प्रदेशानुसार वाटपाची. अधिक उत्पादन देणाऱ्या जाती केवळ चांगली बियाणे नव्हेत; ती अशी बियाणे जी तेव्हाच चांगले देतात जेव्हा त्यांना खात्रीशीर पाणी, रासायनिक खत आणि कीटकनाशक मिळते. त्या अटीचा अर्थ हा की तंत्रज्ञान तिथे स्वीकारता आले जिथे सिंचन आधीच होते — पंजाब, हरियाणा, पश्चिम उत्तर प्रदेश, आंध्रचे भाग — आणि पावसावर आधारित उंचवटे, कोरडे दख्खन व पूर्व भारतात स्वीकारता आले नाही. म्हणून एका राष्ट्रीय कार्यक्रमाने प्रादेशिक अंतर खोल केले: सिंचित वायव्य धान्यभांडार बनला आणि पावसावर आधारित प्रदेश आणखी मागे पडले. दुसरी वर्गानुसार वाटपाची. बियाणे, खत, कीटकनाशक आणि कूपनलिका — सर्वांचे पैसे पीक येण्याआधी लागतात. ज्या शेतकऱ्यांकडे गहाण ठेवायला जमीन आणि कर्जाची सोय होती ते संच उभा करू शकले आणि फायद्यात राहिले; सीमांत शेतकऱ्यांनी तेच करायला जास्त व्याजाने उसने घेतले, आणि वाईट हंगामाने त्यांना लहान शेताविरुद्ध कर्ज दिले. भूमिहीन मजुरांना सघन शेतीतून रोजगार मिळाला पण मालमत्ता नाही. तिसरी पर्यावरणीय. कोरड्या भागांत भाताच्या सतत सिंचनाने भूजल पुनर्भरणाहून वेगाने ओढले, म्हणून पाण्याच्या पातळ्या घसरल्या; जबर खतवापराने मृदा-रचना खालावली आणि पाण्यात नायट्रेट सोडले; कीटकनाशक वापराने प्रतिकारक कीड निर्माण केली आणि अन्नात तसेच जैव-विशालनातून माणसांत अवशेष ठेवले. चौथी कृषिशास्त्रीय आणि पोषणविषयक. खरेदी आणि किंमत-आधार गहू व भातावर केंद्रित राहिले, म्हणून त्या दोन पिकांनी कडधान्ये, तेलबिया आणि भरडधान्ये विस्थापित केली. भारताचे धान्य उत्पादन चढले तर दरडोई कडधान्य उपलब्धता घसरली, गरीब आहारांतील प्रथिनांना फटका बसला, आणि भरडधान्ये — ज्यांना कमी पाणी लागते आणि ज्यांत अधिक लोह व कॅल्शियम आहे — नेमकी त्याच कोरड्या भागांत मागे पडली ज्यांना त्यांची सर्वाधिक गरज होती. म्हणून योग्य निर्णय ना उत्सव ना निंदा. तो हा की एक खरा आणि प्रचंड फायदा अशा किमतीवर विकत घेतला गेला जी प्रदेश आणि वर्गांत असमानपणे वाटली, आणि अंशतः एका भूजल-साठ्यावर व एका मातीवर पुढे ढकलली जिच्यासोबत नंतरच्या पिढ्यांना जगायचे आहे. ही मांडणी यासाठी महत्त्वाची की ती पुढे काय करावे ते सांगते, आणि उत्तरे निदानातून थेट निघतात: वगळलेल्या प्रदेशांपर्यंत व शेतकऱ्यांपर्यंत सिंचन आणि कर्ज न्या, पाणी व विजेला किंमत लावा जेणेकरून उपसा फुकट राहणार नाही, आधारभूत किमती कडधान्ये व भरडधान्यांकडे विविध करा, आणि माती व जलधर फुकट गुंतवणूक नव्हे तर भांडवल माना. हरितक्रांतीवरील योग्य प्रकारे केलेली टीका लोकांना खाऊ घालण्याविरुद्धचा युक्तिवाद नाही; तो कोणाला खाऊ घातले, कोणी मोजले, आणि भविष्यातून काय उसने घेतले याबद्दलचा युक्तिवाद आहे. (चुकीची उत्तरे नोंदलेली उत्पादनवाढ नाकारतात, मृदा व जल नोंदी सिद्ध करत असलेल्या किमती नाकारतात, वा त्या काळाचा प्रत्येक प्रादेशिक उत्पादन-नकाशा खोडून काढत असलेल्या परिणामाच्या समानतेचा दावा करतात.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 5 — Minerals and Energy Resources                               */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "geography-10-minerals-energy",
+    subject: "GEOGRAPHY",
+    classLevel: 10,
+    chapter: {
+      en: "Chapter 5 — Minerals and Energy Resources",
+      hi: "अध्याय 5 — खनिज तथा ऊर्जा संसाधन",
+      mr: "प्रकरण 5 — खनिजे आणि ऊर्जा संसाधने",
+    },
+    name: {
+      en: "Minerals and Energy Resources",
+      hi: "खनिज तथा ऊर्जा संसाधन",
+      mr: "खनिजे आणि ऊर्जा संसाधने",
+    },
+    summary: {
+      en: "What a country digs up and what it burns: the split between the iron-bearing ores and everything else, two grades of iron worth very different money, the ore that becomes aeroplanes, coal ranked by how long it sat under pressure, the oil trapped under a folded rock — and the sources that arrive free every morning and are still barely used.",
+      hi: "कोई देश क्या खोदता और क्या जलाता है: लोहा-धारी अयस्कों और बाक़ी सबका विभाजन, बहुत भिन्न दाम वाले लोहे के दो दर्जे, वह अयस्क जो हवाई जहाज़ बनता है, दबाव के नीचे कितनी देर बैठा इससे आँका कोयला, मुड़ी चट्टान के नीचे फँसा तेल — और वे स्रोत जो हर सुबह मुफ़्त आते हैं और फिर भी मुश्किल से इस्तेमाल होते हैं।",
+      mr: "एखादा देश काय खणतो आणि काय जाळतो: लोहधारी धातुके आणि बाकी सर्व यांतील फाळणी, फार वेगळ्या किमतीचे लोखंडाचे दोन दर्जे, विमाने बनणारे ते धातुक, दाबाखाली किती काळ बसला यावरून मोजलेला कोळसा, वळलेल्या खडकाखाली अडकलेले तेल — आणि ते स्रोत जे रोज सकाळी फुकट येतात आणि तरीही जेमतेम वापरले जातात.",
+    },
+    position: 5,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "ferrous-non-ferrous",
+        name: {
+          en: "Ferrous and non-ferrous minerals",
+          hi: "लौह और अलौह खनिज",
+          mr: "लोहयुक्त आणि अलोह खनिजे",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Iron ore, manganese, nickel and cobalt go into steel-making; copper, bauxite, lead and zinc do not contain iron at all and serve other trades entirely. Which division of metallic minerals is this?",
+          hi: "लौह अयस्क, मैंगनीज़, निकल और कोबाल्ट इस्पात बनाने में जाते हैं; ताँबा, बॉक्साइट, सीसा और जस्ता में लोहा है ही नहीं और वे बिलकुल दूसरे धंधों के काम आते हैं। धात्विक खनिजों का यह कौन-सा विभाजन है?",
+          mr: "लोहधातुक, मॅंगनीज, निकेल आणि कोबाल्ट पोलाद बनवण्यात जातात; तांबे, बॉक्साइट, शिसे आणि जस्त यांत लोखंड नाहीच आणि ते अगदी वेगळ्या धंद्यांच्या कामी येतात. धातुरूप खनिजांची ही कोणती फाळणी?",
+        },
+        statement: {
+          en: "Metallic minerals divide into ferrous ones such as iron ore, manganese and nickel that contain iron and feed the steel industry, and non-ferrous ones such as copper, bauxite, lead and zinc that do not.",
+          hi: "धात्विक खनिज लौह वर्ग में बँटते हैं — जैसे लौह अयस्क, मैंगनीज़ और निकल, जिनमें लोहा है और जो इस्पात उद्योग को खिलाते हैं — तथा अलौह वर्ग में, जैसे ताँबा, बॉक्साइट, सीसा और जस्ता, जिनमें नहीं।",
+          mr: "धातुरूप खनिजे लोहयुक्त वर्गात विभागतात — जसे लोहधातुक, मॅंगनीज आणि निकेल, ज्यांत लोखंड आहे आणि जे पोलाद उद्योगाला पुरवतात — आणि अलोह वर्गात, जसे तांबे, बॉक्साइट, शिसे आणि जस्त, ज्यांत नाही.",
+        },
+        detail: {
+          en: "About three-quarters of India's metallic mineral production by value is ferrous, and most of it lies in the Chotanagpur plateau and the Odisha–Chhattisgarh belt.",
+          hi: "मूल्य के हिसाब से भारत के धात्विक खनिज उत्पादन का लगभग तीन-चौथाई लौह वर्ग का है, और उसका अधिकांश छोटानागपुर पठार तथा ओडिशा–छत्तीसगढ़ पट्टी में है।",
+          mr: "मूल्याच्या हिशोबाने भारताच्या धातुरूप खनिज उत्पादनाचा सुमारे तीन-चतुर्थांश लोहयुक्त वर्गाचा, आणि त्याचा बहुतांश छोटानागपूर पठार व ओडिशा–छत्तीसगड पट्ट्यात.",
+        },
+        extra: {
+          en: "Minerals also divide another way, into metallic and non-metallic — mica, limestone and gypsum belong to the second group and never yield a metal at all.",
+          hi: "खनिज एक और तरह से भी बँटते हैं, धात्विक और अधात्विक में — अभ्रक, चूना-पत्थर और जिप्सम दूसरे समूह के हैं और कभी कोई धातु नहीं देते।",
+          mr: "खनिजे आणखी एका प्रकारेही विभागतात, धातुरूप आणि अधातुरूप — अभ्रक, चुनखडी आणि जिप्सम दुसऱ्या गटाची आणि कधीही धातू देत नाहीत.",
+        },
+        pair: {
+          left: {
+            en: "With iron, for steel — and without it, for everything else",
+            hi: "लोहे सहित, इस्पात को — और उसके बिना, बाक़ी सबको",
+            mr: "लोखंडासह, पोलादासाठी — आणि त्याविना, बाकी सर्वांसाठी",
+          },
+          right: {
+            en: "ferrous and non-ferrous minerals",
+            hi: "लौह और अलौह खनिज",
+            mr: "लोहयुक्त आणि अलोह खनिजे",
+          },
+        },
+      },
+      {
+        id: "haematite-magnetite",
+        name: {
+          en: "Haematite and magnetite",
+          hi: "हेमेटाइट और मैग्नेटाइट",
+          mr: "हेमॅटाइट आणि मॅग्नेटाइट",
+        },
+        kind: "mineral",
+        prompt: {
+          en: "One is reddish, makes up most of what India mines and exports, and runs about sixty per cent iron; the other is black, has the highest iron content of any ore and carries magnetic properties. Which two ores are these?",
+          hi: "एक लाल-सा है, भारत जो खोदता और निर्यात करता उसका अधिकांश यही है, और उसमें लगभग साठ प्रतिशत लोहा है; दूसरा काला है, किसी भी अयस्क से अधिक लौह-अंश रखता है और चुंबकीय गुण ढोता है। ये कौन-से दो अयस्क हैं?",
+          mr: "एक तांबूस, भारत जे खणतो आणि निर्यात करतो त्याचा बहुतांश हाच, आणि त्यात सुमारे साठ टक्के लोखंड; दुसरा काळा, कोणत्याही धातुकाहून अधिक लोहांश बाळगणारा आणि चुंबकीय गुण वाहणारा. ही कोणती दोन धातुके?",
+        },
+        statement: {
+          en: "Haematite is the reddish ore of about fifty to sixty per cent iron that forms the bulk of Indian production, while magnetite is the black ore with the highest iron content and excellent magnetic qualities.",
+          hi: "हेमेटाइट लगभग पचास से साठ प्रतिशत लोहे वाला लाल-सा अयस्क है जो भारतीय उत्पादन का बड़ा हिस्सा बनाता है, जबकि मैग्नेटाइट सर्वोच्च लौह-अंश और उत्कृष्ट चुंबकीय गुणों वाला काला अयस्क है।",
+          mr: "हेमॅटाइट हे सुमारे पन्नास ते साठ टक्के लोखंड असलेले तांबूस धातुक जे भारतीय उत्पादनाचा मोठा भाग बनवते, तर मॅग्नेटाइट हे सर्वोच्च लोहांश आणि उत्तम चुंबकीय गुणांचे काळे धातुक.",
+        },
+        detail: {
+          en: "The main belts are Odisha–Jharkhand, Durg–Bastar–Chandrapur, Bellary–Chitradurga and Maharashtra–Goa, most of them close to the coal of the same plateau.",
+          hi: "मुख्य पट्टियाँ हैं ओडिशा–झारखंड, दुर्ग–बस्तर–चंद्रपुर, बेल्लारी–चित्रदुर्ग और महाराष्ट्र–गोवा, जिनमें अधिकांश उसी पठार के कोयले के पास हैं।",
+          mr: "मुख्य पट्टे आहेत ओडिशा–झारखंड, दुर्ग–बस्तर–चंद्रपूर, बेल्लारी–चित्रदुर्ग आणि महाराष्ट्र–गोवा, ज्यांतील बहुतांश त्याच पठाराच्या कोळशाजवळ.",
+        },
+        extra: {
+          en: "Much of the Goa and Bellary output has been exported as raw ore, which sells the least valuable stage of the chain and lets the steel be made elsewhere.",
+          hi: "गोवा और बेल्लारी की बहुत उपज कच्चे अयस्क के रूप में निर्यात हुई है, जो शृंखला का सबसे कम मूल्यवान चरण बेचती है और इस्पात कहीं और बनने देती है।",
+          mr: "गोवा आणि बेल्लारीचे बरेच उत्पादन कच्च्या धातुकाच्या रूपात निर्यात झाले आहे, जे साखळीचा सर्वांत कमी मोलाचा टप्पा विकते आणि पोलाद इतरत्र बनू देते.",
+        },
+        pair: {
+          left: {
+            en: "The reddish bulk ore and the black high-grade one",
+            hi: "लाल-सा थोक अयस्क और काला उच्च-श्रेणी अयस्क",
+            mr: "तांबूस मोठ्या प्रमाणातले धातुक आणि काळे उच्च-दर्जाचे",
+          },
+          right: {
+            en: "haematite and magnetite",
+            hi: "हेमेटाइट और मैग्नेटाइट",
+            mr: "हेमॅटाइट आणि मॅग्नेटाइट",
+          },
+        },
+      },
+      {
+        id: "bauxite",
+        name: {
+          en: "Bauxite",
+          hi: "बॉक्साइट",
+          mr: "बॉक्साइट",
+        },
+        kind: "mineral",
+        prompt: {
+          en: "Formed by the weathering of aluminium-rich rocks, it is mined on the Amarkantak plateau and the hills of Odisha, and smelted into a metal light enough for aircraft and conductive enough for cables. Which ore is this?",
+          hi: "एल्युमिनियम-समृद्ध चट्टानों के अपक्षय से बना, यह अमरकंटक पठार और ओडिशा की पहाड़ियों में खोदा जाता है, और ऐसी धातु में गलाया जाता है जो हवाई जहाज़ के लिए हल्की और तारों के लिए पर्याप्त चालक है। यह कौन-सा अयस्क है?",
+          mr: "अ‍ॅल्युमिनियम-समृद्ध खडकांच्या विदारणातून बनलेले, हे अमरकंटक पठार आणि ओडिशाच्या डोंगरांत खणले जाते, आणि अशा धातूत वितळवले जाते जी विमानांसाठी हलकी आणि तारांसाठी पुरेशी वाहक. हे कोणते धातुक?",
+        },
+        statement: {
+          en: "Bauxite is the ore from which aluminium is extracted, formed by the weathering of aluminium-rich rocks, and mined chiefly in Odisha, Jharkhand, Gujarat and the Amarkantak plateau.",
+          hi: "बॉक्साइट वह अयस्क है जिससे एल्युमिनियम निकाला जाता है, जो एल्युमिनियम-समृद्ध चट्टानों के अपक्षय से बनता है, और मुख्यतः ओडिशा, झारखंड, गुजरात तथा अमरकंटक पठार में खोदा जाता है।",
+          mr: "बॉक्साइट हे ते धातुक ज्यातून अ‍ॅल्युमिनियम काढले जाते, जे अ‍ॅल्युमिनियम-समृद्ध खडकांच्या विदारणातून बनते, आणि मुख्यत्वे ओडिशा, झारखंड, गुजरात आणि अमरकंटक पठारात खणले जाते.",
+        },
+        detail: {
+          en: "Aluminium is prized for a rare combination — light, strong, corrosion-resistant, a good conductor and endlessly recyclable.",
+          hi: "एल्युमिनियम एक दुर्लभ संयोजन के लिए मूल्यवान है — हल्का, मज़बूत, संक्षारण-रोधी, अच्छा चालक और अनंत बार पुनर्चक्रण योग्य।",
+          mr: "अ‍ॅल्युमिनियम एका दुर्मीळ संयोजनासाठी मोलाचे — हलके, मजबूत, गंजरोधक, चांगले वाहक आणि अखंड पुनर्चक्रणीय.",
+        },
+        extra: {
+          en: "Smelting it takes enormous electricity, which is why aluminium plants are built beside power stations rather than beside the mine.",
+          hi: "उसे गलाने में विशाल बिजली लगती है, इसीलिए एल्युमिनियम संयंत्र खदान के बजाय बिजलीघरों के बग़ल बनाए जाते हैं।",
+          mr: "ते वितळवायला प्रचंड वीज लागते, म्हणूनच अ‍ॅल्युमिनियम प्रकल्प खाणीऐवजी वीजनिर्मिती केंद्रांशेजारी बांधले जातात.",
+        },
+        pair: {
+          left: {
+            en: "The ore of a light, conductive, recyclable metal",
+            hi: "हल्की, चालक, पुनर्चक्रणीय धातु का अयस्क",
+            mr: "हलक्या, वाहक, पुनर्चक्रणीय धातूचे धातुक",
+          },
+          right: {
+            en: "bauxite",
+            hi: "बॉक्साइट",
+            mr: "बॉक्साइट",
+          },
+        },
+      },
+      {
+        id: "grades-of-coal",
+        name: {
+          en: "The grades of coal",
+          hi: "कोयले के दर्जे",
+          mr: "कोळशाचे दर्जे",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Buried plant matter compressed for longer becomes harder, drier and hotter-burning, so the same substance runs from a soft brown fuel to a hard black one that is over ninety per cent carbon. What ranking is this?",
+          hi: "अधिक समय दबा वनस्पति-पदार्थ कठोर, शुष्क और अधिक ताप देने वाला होता जाता है, अतः वही पदार्थ नरम भूरे ईंधन से लेकर नब्बे प्रतिशत से अधिक कार्बन वाले कठोर काले ईंधन तक फैलता है। यह कौन-सी श्रेणीबद्धता है?",
+          mr: "अधिक काळ दाबलेले वनस्पती-द्रव्य कठीण, कोरडे आणि अधिक उष्णता देणारे होत जाते, म्हणून तोच पदार्थ मऊ तपकिरी इंधनापासून नव्वद टक्क्यांहून अधिक कार्बन असलेल्या कठीण काळ्या इंधनापर्यंत पसरतो. ही कोणती श्रेणीबद्धता?",
+        },
+        statement: {
+          en: "Coal is graded by the degree of compression it has undergone — peat, then lignite, then bituminous, then anthracite — with carbon content and heating value rising and moisture falling at every step.",
+          hi: "कोयला उस संपीडन की मात्रा से आँका जाता है जो उसने झेला — पीट, फिर लिग्नाइट, फिर बिटुमिनस, फिर एंथ्रासाइट — जहाँ हर चरण पर कार्बन-अंश तथा ऊष्मीय मान चढ़ते और नमी घटती है।",
+          mr: "कोळसा त्याने सोसलेल्या दाबाच्या प्रमाणावरून मोजला जातो — पीट, मग लिग्नाइट, मग बिट्युमिनस, मग अँथ्रासाइट — जिथे प्रत्येक पायरीवर कार्बन-अंश व उष्मांक चढतात आणि ओलावा घटतो.",
+        },
+        detail: {
+          en: "Bituminous is the workhorse of Indian industry, and the metallurgical grade of it is what a blast furnace needs to make steel.",
+          hi: "बिटुमिनस भारतीय उद्योग का कामकाजी घोड़ा है, और उसका धातुकर्म-दर्जा वही है जो वात्या-भट्ठी को इस्पात बनाने चाहिए।",
+          mr: "बिट्युमिनस हा भारतीय उद्योगाचा कामाचा घोडा, आणि त्याचा धातुकर्म-दर्जा तोच जो झोतभट्टीला पोलाद बनवायला लागतो.",
+        },
+        extra: {
+          en: "India's reserves are dominated by the middling grades, so metallurgical coal must be imported even though the country has coal in abundance.",
+          hi: "भारत के भंडारों में मध्यम दर्जों का बोलबाला है, अतः देश में कोयला भरपूर होते हुए भी धातुकर्म-कोयला आयात करना पड़ता है।",
+          mr: "भारताच्या साठ्यांत मध्यम दर्जांचा भरणा, म्हणून देशात कोळसा भरपूर असूनही धातुकर्म-कोळसा आयात करावा लागतो.",
+        },
+        pair: {
+          left: {
+            en: "Peat to lignite to bituminous to anthracite",
+            hi: "पीट से लिग्नाइट, बिटुमिनस, एंथ्रासाइट तक",
+            mr: "पीटपासून लिग्नाइट, बिट्युमिनस, अँथ्रासाइटपर्यंत",
+          },
+          right: {
+            en: "the grades of coal",
+            hi: "कोयले के दर्जे",
+            mr: "कोळशाचे दर्जे",
+          },
+        },
+      },
+      {
+        id: "petroleum-natural-gas",
+        name: {
+          en: "Petroleum and natural gas",
+          hi: "पेट्रोलियम और प्राकृतिक गैस",
+          mr: "पेट्रोलियम आणि नैसर्गिक वायू",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Both occur in the pores of sedimentary rock and are held in place by an impermeable layer above an upfold — Mumbai High, Gujarat and Assam are the chief Indian sources. Which pair is this?",
+          hi: "दोनों अवसादी चट्टान के छिद्रों में मिलते हैं और किसी ऊपरमोड़ के ऊपर की अपारगम्य परत से जगह पर रुके रहते हैं — मुंबई हाई, गुजरात और असम मुख्य भारतीय स्रोत हैं। यह कौन-सी जोड़ी है?",
+          mr: "दोन्ही गाळाच्या खडकाच्या छिद्रांत सापडतात आणि एखाद्या वरच्या घडीवरील अपारगम्य थराने जागी अडकून राहतात — मुंबई हाय, गुजरात आणि आसाम हे मुख्य भारतीय स्रोत. ही कोणती जोडी?",
+        },
+        statement: {
+          en: "Petroleum and natural gas occur together in the pore spaces of sedimentary rocks, trapped beneath an impermeable cap in folded structures, and India draws them chiefly from Mumbai High, Gujarat and Assam.",
+          hi: "पेट्रोलियम और प्राकृतिक गैस अवसादी चट्टानों के छिद्र-स्थानों में साथ मिलते हैं, मुड़ी संरचनाओं में अपारगम्य टोपी के नीचे फँसे, और भारत उन्हें मुख्यतः मुंबई हाई, गुजरात तथा असम से लेता है।",
+          mr: "पेट्रोलियम आणि नैसर्गिक वायू गाळाच्या खडकांच्या छिद्र-जागांत एकत्र सापडतात, वळलेल्या रचनांत अपारगम्य टोपीखाली अडकलेले, आणि भारत ते मुख्यत्वे मुंबई हाय, गुजरात व आसाममधून घेतो.",
+        },
+        detail: {
+          en: "Gas burns far more cleanly than coal or oil and is used as fuel, as feedstock for fertiliser and petrochemicals, and as compressed gas in vehicles.",
+          hi: "गैस कोयले या तेल से कहीं साफ़ जलती है और ईंधन के रूप में, उर्वरक तथा पेट्रो-रसायनों की कच्ची सामग्री के रूप में, और वाहनों में संपीडित गैस के रूप में इस्तेमाल होती है।",
+          mr: "वायू कोळसा वा तेलाहून कितीतरी स्वच्छ जळतो आणि इंधन म्हणून, खत व पेट्रोरसायनांसाठी कच्चा माल म्हणून, आणि वाहनांत संपीडित वायू म्हणून वापरला जातो.",
+        },
+        extra: {
+          en: "India imports the large majority of the crude it consumes, which ties the national budget and the price of everything transported to decisions taken abroad.",
+          hi: "भारत जो कच्चा तेल खपाता उसका बड़ा बहुमत आयात करता है, जो राष्ट्रीय बजट और हर ढोई जाती वस्तु की क़ीमत को विदेश में लिए निर्णयों से बाँध देता है।",
+          mr: "भारत जे कच्चे तेल वापरतो त्याचा मोठा बहुसंख्य भाग आयात करतो, जे राष्ट्रीय अर्थसंकल्प आणि प्रत्येक वाहून नेलेल्या वस्तूची किंमत परदेशात घेतलेल्या निर्णयांशी बांधते.",
+        },
+        pair: {
+          left: {
+            en: "Trapped in sedimentary pores under a cap rock",
+            hi: "टोपी-चट्टान के नीचे अवसादी छिद्रों में फँसे",
+            mr: "टोपी-खडकाखाली गाळाच्या छिद्रांत अडकलेले",
+          },
+          right: {
+            en: "petroleum and natural gas",
+            hi: "पेट्रोलियम और प्राकृतिक गैस",
+            mr: "पेट्रोलियम आणि नैसर्गिक वायू",
+          },
+        },
+      },
+      {
+        id: "non-conventional-energy",
+        name: {
+          en: "Non-conventional energy sources",
+          hi: "ग़ैर-परंपरागत ऊर्जा स्रोत",
+          mr: "अपारंपरिक ऊर्जा स्रोत",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Sunlight over Rajasthan, wind along the Tamil Nadu coast, tides in the Gulf of Kachchh, hot springs in Himachal, cattle dung in every village — sources that renew themselves and do not add carbon. What are these called?",
+          hi: "राजस्थान पर धूप, तमिलनाडु के तट पर पवन, कच्छ की खाड़ी में ज्वार, हिमाचल में गरम सोते, हर गाँव में गोबर — ऐसे स्रोत जो स्वयं नए होते हैं और कार्बन नहीं जोड़ते। ये क्या कहलाते हैं?",
+          mr: "राजस्थानवर ऊन, तमिळनाडूच्या किनाऱ्यावर वारा, कच्छच्या आखातात भरती, हिमाचलात गरम झरे, प्रत्येक गावात शेण — असे स्रोत जे स्वतः नवे होतात आणि कार्बन जोडत नाहीत. यांना काय म्हणतात?",
+        },
+        statement: {
+          en: "Non-conventional energy sources — solar, wind, tidal, geothermal and biogas — renew themselves continuously, add little or no carbon, and can be generated close to where the energy is needed.",
+          hi: "ग़ैर-परंपरागत ऊर्जा स्रोत — सौर, पवन, ज्वारीय, भूतापीय और बायोगैस — लगातार स्वयं नए होते हैं, कार्बन कम या बिलकुल नहीं जोड़ते, और वहीं पास बनाए जा सकते हैं जहाँ ऊर्जा चाहिए।",
+          mr: "अपारंपरिक ऊर्जा स्रोत — सौर, पवन, भरती-ओहोटी, भूऔष्णिक आणि जैववायू — सतत स्वतः नवे होतात, कार्बन कमी वा मुळीच जोडत नाहीत, आणि जिथे ऊर्जा हवी तिथेच जवळ निर्माण करता येतात.",
+        },
+        detail: {
+          en: "India's advantage is unusual: the country receives strong sunshine on most days of the year over a very large area, which is a resource nothing has to be dug up to obtain.",
+          hi: "भारत का लाभ असामान्य है: देश को वर्ष के अधिकांश दिनों बहुत बड़े क्षेत्र पर तेज़ धूप मिलती है, और यह ऐसा संसाधन है जिसे पाने को कुछ खोदना नहीं पड़ता।",
+          mr: "भारताचा फायदा असामान्य: देशाला वर्षाच्या बहुतांश दिवशी खूप मोठ्या क्षेत्रावर तीव्र ऊन मिळते, आणि हे असे संसाधन ज्यासाठी काहीही खणावे लागत नाही.",
+        },
+        extra: {
+          en: "A biogas plant does two jobs at once — it gives a household clean cooking gas and returns a better manure than the dung burnt directly would have been.",
+          hi: "बायोगैस संयंत्र एक साथ दो काम करता है — वह घर को साफ़ रसोई-गैस देता है और सीधे जलाए गोबर से बेहतर खाद लौटाता है।",
+          mr: "जैववायू संयंत्र एकाच वेळी दोन कामे करते — ते घराला स्वच्छ स्वयंपाकाचा वायू देते आणि थेट जाळलेल्या शेणाहून चांगले खत परत करते.",
+        },
+        pair: {
+          left: {
+            en: "Renewing, low-carbon, generated where it is used",
+            hi: "स्वयं नवीकरण, कम-कार्बन, उपयोग-स्थल पर उत्पन्न",
+            mr: "स्वतः नवे होणारे, कमी-कार्बन, वापराच्या ठिकाणी निर्माण",
+          },
+          right: {
+            en: "non-conventional energy sources",
+            hi: "ग़ैर-परंपरागत ऊर्जा स्रोत",
+            mr: "अपारंपरिक ऊर्जा स्रोत",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "India's integrated steel plants at Jamshedpur, Bhilai, Rourkela, Durgapur and Bokaro all sit within one broad region of the country rather than near the ports or the big consuming cities. Explain what determined those locations.",
+          hi: "जमशेदपुर, भिलाई, राउरकेला, दुर्गापुर और बोकारो के भारत के एकीकृत इस्पात संयंत्र सब देश के एक ही व्यापक क्षेत्र में बैठे हैं, न कि बंदरगाहों या बड़े उपभोक्ता शहरों के पास। समझाओ उन स्थानों को किसने तय किया।",
+          mr: "जमशेदपूर, भिलाई, राउरकेला, दुर्गापूर आणि बोकारो येथील भारताचे एकात्मिक पोलाद प्रकल्प सर्व देशाच्या एकाच व्यापक प्रदेशात बसले आहेत, बंदरे वा मोठ्या ग्राहक शहरांजवळ नव्हे. समजावा ती ठिकाणे कशाने ठरवली.",
+        },
+        choices: [
+          {
+            en: "Steel-making is a weight-losing process: several tonnes of iron ore, coking coal, limestone and manganese are consumed to make one tonne of steel, so it is far cheaper to move the light finished product than the heavy raw materials. The Chotanagpur plateau and the Odisha–Chhattisgarh belt hold iron ore, coal, limestone and manganese close together, with water and rail already there — so the plants went to the inputs rather than to the market",
+            hi: "इस्पात बनाना भार-घटाती प्रक्रिया है: एक टन इस्पात बनाने में कई टन लौह अयस्क, कोकिंग कोयला, चूना-पत्थर और मैंगनीज़ खपते हैं, अतः भारी कच्चे माल के बजाय हल्का तैयार उत्पाद ढोना कहीं सस्ता है। छोटानागपुर पठार तथा ओडिशा–छत्तीसगढ़ पट्टी में लौह अयस्क, कोयला, चूना-पत्थर और मैंगनीज़ पास-पास हैं, और पानी तथा रेल पहले से वहीं — अतः संयंत्र बाज़ार के बजाय कच्चे माल के पास गए",
+            mr: "पोलादनिर्मिती ही वजन-घटवणारी प्रक्रिया: एक टन पोलाद बनवायला कैक टन लोहधातुक, कोकिंग कोळसा, चुनखडी आणि मॅंगनीज खर्ची पडतात, म्हणून जड कच्च्या मालाऐवजी हलका तयार माल वाहणे कितीतरी स्वस्त. छोटानागपूर पठार आणि ओडिशा–छत्तीसगड पट्ट्यात लोहधातुक, कोळसा, चुनखडी व मॅंगनीज जवळजवळ, आणि पाणी व रेल्वे आधीच तिथे — म्हणून प्रकल्प बाजाराऐवजी कच्च्या मालाकडे गेले",
+          },
+          {
+            en: "Because the government wished to keep steel plants as far from any railway line as possible",
+            hi: "क्योंकि सरकार इस्पात संयंत्रों को हर रेलवे लाइन से जितना दूर हो सके रखना चाहती थी",
+            mr: "कारण सरकारला पोलाद प्रकल्प प्रत्येक रेल्वेमार्गापासून शक्य तितके दूर ठेवायचे होते",
+          },
+          {
+            en: "Because steel is a weight-gaining industry, so plants must sit next to the customer rather than the mine",
+            hi: "क्योंकि इस्पात भार-बढ़ाता उद्योग है, अतः संयंत्रों को खदान के बजाय ग्राहक के बग़ल बैठना चाहिए",
+            mr: "कारण पोलाद हा वजन-वाढवणारा उद्योग, म्हणून प्रकल्प खाणीऐवजी ग्राहकाशेजारी बसावेत",
+          },
+          {
+            en: "The locations were chosen at random and have no relationship to raw materials at all",
+            hi: "स्थान बेतरतीब चुने गए और कच्चे माल से उनका कोई संबंध ही नहीं",
+            mr: "ठिकाणे यादृच्छिक निवडली गेली आणि कच्च्या मालाशी त्यांचा संबंधच नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The answer turns on a simple comparison of what has to be moved. Making a tonne of steel is not a matter of melting a tonne of ore. A blast furnace consumes roughly one and a half to two tonnes of iron ore, close to a tonne of coking coal, several hundred kilograms of limestone as flux, plus manganese and large volumes of water, to yield one tonne of finished metal. Everything else — the gangue in the ore, the ash and gases from the coal, the slag from the flux — is waste that leaves as rock, smoke and heat. An industry with this profile is called weight-losing, and for such an industry the transport arithmetic is decisive. If you build the plant at the market, you must haul four or five tonnes of heavy, low-value bulk across the country for every tonne of steel eventually sold. If you build it at the raw materials, you haul one tonne of high-value product. The freight bill differs by a factor of several, and steel is a commodity sold in a competitive market where a few per cent on cost decides who survives. Now look at where those inputs coincide. The Chotanagpur plateau and the belt running through Jharkhand, Odisha, Chhattisgarh and West Bengal is one of the few places on earth where high-grade iron ore, coking coal, limestone, dolomite and manganese all lie within a short radius of each other. The Damodar valley coalfields sit beside the Singhbhum and Odisha ore belts. Water for cooling comes from the Damodar, Subarnarekha and their tributaries. The colonial railway network already ran through the region to carry coal, so the transport link existed before the plants did. Jamshedpur, founded by Tata in 1907, was sited on exactly this logic, and the public-sector plants of the 1950s and 1960s — Bhilai, Rourkela, Durgapur, Bokaro — followed the same reasoning with foreign technical collaboration. A second consideration reinforced it: cheap labour was available locally, and the region's own poverty made industrial employment a stated policy aim. It is worth noticing what this explanation predicts elsewhere, because that is the test of it. Industries that are weight-gaining or perishable behave oppositely: soft-drink bottling, bread and furniture are made near consumers because the finished product is bulkier or more fragile than the inputs. Aluminium smelting, which consumes enormous electricity, locates near power stations rather than near bauxite. Sugar mills sit in the cane fields because cane loses sucrose within hours of cutting. And modern electronics and software, whose product weighs almost nothing, are free to locate wherever skilled people wish to live — which is why Bengaluru's growth had nothing to do with any mineral at all. One principle, applied to different physical facts, explains all of these. (The wrong answers invert the weight relationship, imagine deliberate isolation from rail, or deny a pattern that maps the ore and coal belts almost exactly.)",
+          hi: "उत्तर इस सीधी तुलना पर घूमता है कि ढोना क्या पड़ता है। एक टन इस्पात बनाना एक टन अयस्क गलाने का मामला नहीं। वात्या-भट्ठी एक टन तैयार धातु देने के लिए लगभग डेढ़ से दो टन लौह अयस्क, क़रीब एक टन कोकिंग कोयला, कई सौ किलोग्राम चूना-पत्थर गालक के रूप में, और मैंगनीज़ तथा विशाल मात्रा में पानी खपाती है। बाक़ी सब — अयस्क की गैंग, कोयले की राख और गैसें, गालक का धातुमल — कचरा है जो चट्टान, धुएँ और ऊष्मा के रूप में निकल जाता है। ऐसे स्वभाव वाले उद्योग को भार-घटाता कहते हैं, और ऐसे उद्योग के लिए परिवहन का अंकगणित निर्णायक होता है। यदि संयंत्र बाज़ार पर बनाओ, तो अंततः बिकते हर टन इस्पात के लिए चार-पाँच टन भारी, कम-मूल्य थोक देश भर ढोना पड़ेगा। यदि कच्चे माल पर बनाओ, तो एक टन उच्च-मूल्य उत्पाद ढोना पड़ेगा। भाड़े का बिल कई गुना भिन्न होता है, और इस्पात ऐसी वस्तु है जो प्रतिस्पर्धी बाज़ार में बिकती है जहाँ लागत पर कुछ प्रतिशत तय करते हैं कौन बचेगा। अब देखो वे कच्चे माल कहाँ एक साथ मिलते हैं। छोटानागपुर पठार और झारखंड, ओडिशा, छत्तीसगढ़ तथा पश्चिम बंगाल से गुज़रती पट्टी पृथ्वी के उन थोड़े स्थानों में है जहाँ उच्च-श्रेणी लौह अयस्क, कोकिंग कोयला, चूना-पत्थर, डोलोमाइट और मैंगनीज़ सब एक-दूसरे की छोटी त्रिज्या में पड़े हैं। दामोदर घाटी के कोयला-क्षेत्र सिंहभूम और ओडिशा की अयस्क-पट्टियों के बग़ल हैं। ठंडा करने का पानी दामोदर, स्वर्णरेखा और उनकी सहायक नदियों से आता है। कोयला ढोने को औपनिवेशिक रेल-जाल पहले से उस क्षेत्र से गुज़रता था, अतः परिवहन-कड़ी संयंत्रों से पहले मौजूद थी। 1907 में टाटा द्वारा स्थापित जमशेदपुर ठीक इसी तर्क पर बसाया गया, और 1950-60 के दशकों के सार्वजनिक क्षेत्र के संयंत्र — भिलाई, राउरकेला, दुर्गापुर, बोकारो — विदेशी तकनीकी सहयोग के साथ उसी तर्क का पालन करते रहे। एक दूसरा विचार उसे और मज़बूत करता था: सस्ता श्रम स्थानीय रूप से उपलब्ध था, और उस क्षेत्र की अपनी निर्धनता ने औद्योगिक रोज़गार को घोषित नीति-लक्ष्य बना दिया था। ध्यान देने योग्य है कि यह व्याख्या अन्यत्र क्या भविष्यवाणी करती है, क्योंकि वही उसकी कसौटी है। जो उद्योग भार-बढ़ाते या शीघ्र नष्ट होने वाले हैं वे उल्टे बरतते हैं: शीतल पेय की बोतलबंदी, डबलरोटी और फ़र्नीचर उपभोक्ताओं के पास बनाए जाते हैं क्योंकि तैयार उत्पाद कच्चे माल से अधिक भारी-भरकम या नाज़ुक होता है। एल्युमिनियम गलाना, जो विशाल बिजली खपाता है, बॉक्साइट के बजाय बिजलीघरों के पास बैठता है। चीनी मिलें गन्ने के खेतों में बैठती हैं क्योंकि गन्ना कटने के घंटों में शर्करा खो देता है। और आधुनिक इलेक्ट्रॉनिक्स तथा सॉफ़्टवेयर, जिनके उत्पाद का भार लगभग कुछ नहीं, वहाँ बसने को स्वतंत्र हैं जहाँ कुशल लोग रहना चाहें — इसीलिए बेंगलुरु की वृद्धि का किसी खनिज से कोई संबंध नहीं था। एक ही सिद्धांत, भिन्न भौतिक तथ्यों पर लगाया गया, इन सबको समझा देता है। (ग़लत उत्तर भार-संबंध उलटते, रेल से जानबूझकर अलगाव की कल्पना करते, या उस प्रतिरूप को नकारते जो अयस्क और कोयला पट्टियों को लगभग ठीक-ठीक मानचित्रित करता है।)",
+          mr: "उत्तर काय वाहावे लागते या सोप्या तुलनेवर फिरते. एक टन पोलाद बनवणे म्हणजे एक टन धातुक वितळवणे नव्हे. झोतभट्टी एक टन तयार धातू देण्यासाठी सुमारे दीड ते दोन टन लोहधातुक, जवळपास एक टन कोकिंग कोळसा, कैकशे किलोग्रॅम चुनखडी वितळक म्हणून, आणि मॅंगनीज व प्रचंड प्रमाणात पाणी वापरते. बाकी सर्व — धातुकातील निरुपयोगी खडक, कोळशाची राख आणि वायू, वितळकाचा मळी — कचरा जो खडक, धूर आणि उष्णतेच्या रूपात निघून जातो. अशा स्वरूपाच्या उद्योगाला वजन-घटवणारा म्हणतात, आणि अशा उद्योगासाठी वाहतुकीचे अंकगणित निर्णायक. प्रकल्प बाजारावर बांधला, तर शेवटी विकल्या जाणाऱ्या प्रत्येक टन पोलादासाठी चार-पाच टन जड, कमी-मोलाचा माल देशभर ओढावा लागेल. कच्च्या मालावर बांधला, तर एक टन उच्च-मोलाचा माल ओढावा लागेल. भाड्याचे बिल कैकपट वेगळे, आणि पोलाद ही अशी वस्तू जी स्पर्धात्मक बाजारात विकली जाते जिथे खर्चावरचे काही टक्के कोण टिकेल हे ठरवतात. आता ती कच्ची सामग्री कुठे एकत्र येते ते पाहा. छोटानागपूर पठार आणि झारखंड, ओडिशा, छत्तीसगड व पश्चिम बंगालमधून जाणारा पट्टा हे पृथ्वीवरील त्या थोड्या ठिकाणांपैकी जिथे उच्च-दर्जाचे लोहधातुक, कोकिंग कोळसा, चुनखडी, डोलोमाइट आणि मॅंगनीज सर्व एकमेकांच्या लहान त्रिज्येत पडलेले. दामोदर खोऱ्याची कोळसा-क्षेत्रे सिंहभूम आणि ओडिशाच्या धातुक-पट्ट्यांशेजारी. थंड करण्याचे पाणी दामोदर, सुवर्णरेखा आणि त्यांच्या उपनद्यांतून. कोळसा वाहायला वसाहती रेल्वेजाळे आधीच त्या प्रदेशातून जात होते, म्हणून वाहतूक-दुवा प्रकल्पांच्या आधीच होता. 1907 मध्ये टाटांनी स्थापलेले जमशेदपूर नेमके याच तर्कावर वसवले, आणि 1950-60 च्या दशकांतील सार्वजनिक क्षेत्रातील प्रकल्प — भिलाई, राउरकेला, दुर्गापूर, बोकारो — परदेशी तांत्रिक सहकार्यासह त्याच तर्काचे पालन करत राहिले. एक दुसरा विचार तो अधिक बळकट करत होता: स्वस्त श्रम स्थानिकरीत्या उपलब्ध होते, आणि त्या प्रदेशाच्या स्वतःच्या गरिबीने औद्योगिक रोजगार जाहीर धोरण-उद्दिष्ट बनवले होते. ही स्पष्टीकरण इतरत्र काय भाकीत करते हे लक्षात घेण्याजोगे, कारण तीच तिची कसोटी. जे उद्योग वजन-वाढवणारे वा लवकर नाश पावणारे ते उलट वागतात: शीतपेयांची बाटलीभरणी, पाव आणि फर्निचर ग्राहकांजवळ बनवले जातात कारण तयार माल कच्च्या मालाहून अधिक अवजड वा नाजूक. अ‍ॅल्युमिनियम वितळवणे, जे प्रचंड वीज वापरते, बॉक्साइटऐवजी वीजकेंद्रांजवळ बसते. साखर कारखाने उसाच्या शेतांत बसतात कारण ऊस कापल्यानंतर तासांत साखर गमावतो. आणि आधुनिक इलेक्ट्रॉनिक्स व सॉफ्टवेअर, ज्यांच्या मालाचे वजन जवळजवळ काहीच नाही, तिथे वसायला मोकळे जिथे कुशल लोक राहू इच्छितात — म्हणूनच बंगळुरूच्या वाढीचा कोणत्याही खनिजाशी संबंध नव्हता. एकच तत्त्व, वेगळ्या भौतिक तथ्यांवर लावलेले, या सर्वांचे स्पष्टीकरण देते. (चुकीची उत्तरे वजन-नाते उलटवतात, रेल्वेपासून मुद्दाम दूर राहण्याची कल्पना करतात, वा धातुक व कोळसा पट्ट्यांना जवळजवळ नेमके नकाशांकित करणारे प्रारूप नाकारतात.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "India receives strong sunshine over most of its territory on most days of the year, yet coal still generates the majority of its electricity — a fuel that is finite, imported in part, and the country's largest source of carbon emissions. Explain why the switch is slow, and what an honest transition would require.",
+          hi: "भारत को वर्ष के अधिकांश दिनों उसके अधिकांश भूभाग पर तेज़ धूप मिलती है, फिर भी उसकी अधिकांश बिजली कोयला ही बनाता है — ऐसा ईंधन जो सीमित है, आंशिक रूप से आयातित है, और देश का सबसे बड़ा कार्बन-उत्सर्जन स्रोत है। समझाओ बदलाव धीमा क्यों है, और एक ईमानदार संक्रमण को क्या चाहिए।",
+          mr: "भारताला वर्षाच्या बहुतांश दिवशी त्याच्या बहुतांश भूभागावर तीव्र ऊन मिळते, तरीही त्याची बहुतांश वीज कोळसाच निर्माण करतो — असे इंधन जे मर्यादित, अंशतः आयात केलेले, आणि देशाचा सर्वांत मोठा कार्बन-उत्सर्जन स्रोत. समजावा बदल मंद का, आणि प्रामाणिक संक्रमणाला काय लागेल.",
+        },
+        choices: [
+          {
+            en: "Because the existing system is built around coal — power stations, mines, railway freight and millions of livelihoods — and because sun and wind are intermittent, so they need storage or backup to supply a grid at night and in the monsoon. An honest transition therefore needs storage and grid investment, planned retirement of old plants, and above all a settlement for coal-district workers and states whose revenue depends on it; treating it as merely a choice between two technologies is what makes the switch stall",
+            hi: "क्योंकि मौजूदा तंत्र कोयले के इर्द-गिर्द बना है — बिजलीघर, खदानें, रेल-भाड़ा और लाखों आजीविकाएँ — और क्योंकि सूर्य तथा पवन रुक-रुक कर आते हैं, अतः रात और मानसून में ग्रिड को देने के लिए उन्हें भंडारण या बैकअप चाहिए। अतः ईमानदार संक्रमण को भंडारण तथा ग्रिड में निवेश, पुराने संयंत्रों की नियोजित सेवानिवृत्ति, और सबसे बढ़कर कोयला-ज़िलों के मज़दूरों तथा उन राज्यों के लिए समझौता चाहिए जिनका राजस्व उस पर टिका है; इसे केवल दो तकनीकों के बीच का चुनाव मानना ही बदलाव को अटकाता है",
+            mr: "कारण विद्यमान यंत्रणा कोळशाभोवती बांधलेली आहे — वीजकेंद्रे, खाणी, रेल्वे भाडे आणि लाखो उपजीविका — आणि कारण सूर्य व वारा खंडित येतात, म्हणून रात्री आणि मान्सूनमध्ये ग्रिडला पुरवायला त्यांना साठवण वा राखीव लागते. म्हणून प्रामाणिक संक्रमणाला साठवण व ग्रिडमध्ये गुंतवणूक, जुन्या प्रकल्पांची नियोजित निवृत्ती, आणि सर्वांत महत्त्वाचे कोळसा-जिल्ह्यांतील कामगार व ज्यांचा महसूल त्यावर अवलंबून त्या राज्यांसाठी तडजोड लागते; याला केवळ दोन तंत्रज्ञानांतील निवड मानणेच बदल अडवते",
+          },
+          {
+            en: "Because solar panels do not work in India's climate and produce no usable electricity here",
+            hi: "क्योंकि सौर पैनल भारत की जलवायु में काम नहीं करते और यहाँ कोई उपयोगी बिजली नहीं देते",
+            mr: "कारण सौर पॅनेल भारताच्या हवामानात चालत नाहीत आणि इथे कोणतीही वापरण्याजोगी वीज देत नाहीत",
+          },
+          {
+            en: "Because coal is renewable and will therefore never run out, making any transition unnecessary",
+            hi: "क्योंकि कोयला नवीकरणीय है और इसलिए कभी नहीं चुकेगा, जिससे कोई संक्रमण अनावश्यक हो जाता है",
+            mr: "कारण कोळसा नवीकरणीय आहे आणि म्हणून कधीच संपणार नाही, ज्याने कोणतेही संक्रमण अनावश्यक ठरते",
+          },
+          {
+            en: "Because no country anywhere has ever changed its energy sources, so change is impossible in principle",
+            hi: "क्योंकि कहीं किसी देश ने अपने ऊर्जा-स्रोत कभी नहीं बदले, अतः बदलाव सैद्धांतिक रूप से असंभव है",
+            mr: "कारण कुठेही कोणत्याही देशाने आपले ऊर्जा-स्रोत कधीच बदलले नाहीत, म्हणून बदल तत्त्वतः अशक्य",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The slowness is not a failure of arithmetic — solar power is now cheap per unit generated — but of everything the arithmetic leaves out. Three obstacles matter, and only one of them is technical. The first is intermittency. A coal plant delivers a steady output on demand; the sun sets every evening and disappears behind monsoon cloud for weeks, and wind rises and falls without regard to when the country needs power. A grid must match supply to demand second by second, and the evening peak — when household lighting and cooking coincide — falls precisely when solar output is ending. Solar generation therefore cannot simply replace coal capacity megawatt for megawatt; it needs storage, or hydro and gas plants held ready as backup, or a grid large enough to move surplus from a sunny region to a cloudy one. Those additions are what make the comparison honest, and they cost money that the headline price per unit does not include. The second obstacle is sunk infrastructure. India's electricity system was built around coal over seventy years: the power stations themselves, with decades of design life remaining; the mines feeding them; the railways, whose coal freight cross-subsidises passenger fares; the transmission network laid out to carry power from the coalfields of the east to the consuming west and south. Replacing a fuel means rebuilding a system, and systems have inertia that individual technologies do not. The third obstacle is people, and it is the one most often skipped. Coal mining and the industries around it employ very large numbers directly and support far more indirectly in Jharkhand, Odisha, Chhattisgarh and West Bengal — precisely the states that are already among India's poorest. State governments there draw substantial revenue from coal royalties. A transition that simply closes mines transfers the cost of a national and global benefit onto the districts least able to bear it, which is both unjust and, practically, a guarantee of political resistance that will stall the policy. So an honest transition has to be designed rather than merely announced. It needs investment in storage and in the grid so that renewable supply can be firmed; a published schedule for retiring the oldest and dirtiest plants so that industry can plan rather than be surprised; support for the domestic manufacture of panels, batteries and turbines so that the shift creates employment instead of only importing it; and — indispensably — a settlement for coal regions: retraining, alternative industry, and a share of the new energy investment steered to the districts losing the old one. There is a further point worth making, because it changes the framing. The cheapest unit of electricity is always the one not consumed: efficient motors, better building design, LED lighting and reduced transmission losses cut demand at a fraction of the cost of new generation of any kind. And India has an argument of equity to make internationally — its per-person emissions remain far below those of the countries that burned the most carbon getting rich — while still having an interest in making the transition, because it is among the countries most exposed to the heat, drought and flooding that follow. The conclusion is not that coal must be defended or that solar is a fantasy, but that a fuel switch is a social and industrial project rather than a purchase, and that the countries which manage it will be the ones that planned for the losers as carefully as for the technology. (The wrong answers deny working solar generation, misclassify coal as renewable, or claim energy transitions never happen — contradicted by the shift from wood to coal to oil within recorded history.)",
+          hi: "धीमापन अंकगणित की विफलता नहीं — प्रति उत्पन्न इकाई सौर बिजली अब सस्ती है — बल्कि उस सबकी है जो अंकगणित छोड़ देता है। तीन बाधाएँ मायने रखती हैं, और उनमें से केवल एक तकनीकी है। पहली रुक-रुक कर आना। कोयला-संयंत्र माँग पर स्थिर उत्पादन देता है; सूर्य हर शाम डूबता है और मानसून के बादलों के पीछे हफ़्तों ग़ायब रहता है, और पवन इस परवाह के बिना चढ़ती-उतरती है कि देश को बिजली कब चाहिए। ग्रिड को आपूर्ति और माँग सेकंड-दर-सेकंड मिलानी पड़ती है, और शाम का शिखर — जब घरों की रोशनी और रसोई साथ आती हैं — ठीक तब पड़ता है जब सौर उत्पादन समाप्त हो रहा होता है। अतः सौर उत्पादन कोयला-क्षमता को मेगावाट-दर-मेगावाट बस बदल नहीं सकता; उसे भंडारण चाहिए, या बैकअप के रूप में तैयार रखे जल तथा गैस संयंत्र, या इतना बड़ा ग्रिड कि धूप वाले क्षेत्र से अधिशेष बादल वाले क्षेत्र तक ले जाया जा सके। वही जोड़ तुलना को ईमानदार बनाते हैं, और उनका दाम प्रति इकाई शीर्षक-क़ीमत में शामिल नहीं होता। दूसरी बाधा गड़ा हुआ ढाँचा है। भारत की बिजली-प्रणाली सत्तर वर्षों में कोयले के इर्द-गिर्द बनी: स्वयं बिजलीघर, जिनका दशकों का रचना-जीवन शेष है; उन्हें खिलाती खदानें; रेलवे, जिसका कोयला-भाड़ा यात्री किरायों को सहायिकी देता है; और वह संचरण-जाल जो पूर्व के कोयला-क्षेत्रों से खपत करते पश्चिम तथा दक्षिण तक बिजली ले जाने को बिछाया गया। ईंधन बदलने का अर्थ प्रणाली फिर बनाना है, और प्रणालियों में वह जड़ता होती है जो अकेली तकनीकों में नहीं। तीसरी बाधा लोग हैं, और यही सबसे अधिक छोड़ी जाती है। कोयला-खनन और उसके आसपास के उद्योग झारखंड, ओडिशा, छत्तीसगढ़ तथा पश्चिम बंगाल में बहुत बड़ी संख्या को सीधे रोज़गार देते और कहीं अधिक को परोक्ष रूप से सँभालते हैं — ठीक वही राज्य जो पहले से भारत के सबसे निर्धनों में हैं। वहाँ की राज्य सरकारें कोयला रॉयल्टी से पर्याप्त राजस्व लेती हैं। जो संक्रमण बस खदानें बंद कर दे वह एक राष्ट्रीय तथा वैश्विक लाभ की लागत उन्हीं ज़िलों पर सरका देता है जो उसे सबसे कम सह सकते हैं, जो अन्यायपूर्ण भी है और व्यावहारिक रूप से ऐसे राजनीतिक प्रतिरोध की गारंटी भी जो नीति को अटका देगा। अतः ईमानदार संक्रमण घोषित नहीं, रचा जाना चाहिए। उसे भंडारण तथा ग्रिड में निवेश चाहिए ताकि नवीकरणीय आपूर्ति पक्की हो सके; सबसे पुराने और गंदे संयंत्रों की सेवानिवृत्ति की प्रकाशित समय-सारणी ताकि उद्योग चौंके नहीं बल्कि योजना बना सके; पैनल, बैटरी और टरबाइन के घरेलू निर्माण को समर्थन ताकि बदलाव रोज़गार आयात करने के बजाय पैदा करे; और — अनिवार्यतः — कोयला-क्षेत्रों के लिए समझौता: पुनर्प्रशिक्षण, वैकल्पिक उद्योग, और नई ऊर्जा में हो रहे निवेश का एक हिस्सा उन ज़िलों की ओर मोड़ना जो पुरानी खो रहे हैं। एक और बात कहने योग्य है, क्योंकि वह ढाँचा बदल देती है। बिजली की सबसे सस्ती इकाई सदा वही है जो खपाई ही न जाए: कुशल मोटरें, बेहतर भवन-रचना, एलईडी प्रकाश और घटी संचरण-हानियाँ माँग को किसी भी नए उत्पादन की लागत के अंश पर काट देती हैं। और भारत के पास अंतरराष्ट्रीय रूप से रखने को समता का तर्क है — उसका प्रति व्यक्ति उत्सर्जन उन देशों से कहीं नीचे है जिन्होंने धनी होते हुए सबसे अधिक कार्बन जलाया — फिर भी संक्रमण करने में उसका हित है, क्योंकि जो ताप, सूखा और बाढ़ें आती हैं उनके सामने वह सबसे उजागर देशों में है। निष्कर्ष यह नहीं कि कोयले का बचाव हो या सौर एक कल्पना है, बल्कि यह कि ईंधन-बदलाव ख़रीद नहीं बल्कि एक सामाजिक तथा औद्योगिक परियोजना है, और जो देश उसे सँभाल लेंगे वे वही होंगे जिन्होंने हारने वालों के लिए उतनी ही सावधानी से योजना बनाई जितनी तकनीक के लिए। (ग़लत उत्तर काम करते सौर उत्पादन को नकारते, कोयले को नवीकरणीय बताते, या दावा करते कि ऊर्जा-संक्रमण कभी होते ही नहीं — जिसका खंडन दर्ज इतिहास के भीतर लकड़ी से कोयले और कोयले से तेल तक का बदलाव करता है।)",
+          mr: "मंदपणा अंकगणिताचे अपयश नाही — प्रति निर्मित एकक सौर वीज आता स्वस्त आहे — तर अंकगणित जे वगळते त्या सर्वांचे. तीन अडथळे महत्त्वाचे, आणि त्यांतील फक्त एक तांत्रिक. पहिला खंडितपणा. कोळसा-प्रकल्प मागणीनुसार स्थिर उत्पादन देतो; सूर्य प्रत्येक संध्याकाळी मावळतो आणि मान्सूनच्या ढगांमागे आठवडे नाहीसा होतो, आणि वारा देशाला वीज कधी हवी याची पर्वा न करता चढतो-उतरतो. ग्रिडला पुरवठा आणि मागणी सेकंदागणिक जुळवावी लागते, आणि संध्याकाळचे शिखर — जेव्हा घरातील दिवे आणि स्वयंपाक एकत्र येतात — नेमके तेव्हा येते जेव्हा सौर उत्पादन संपत असते. म्हणून सौर उत्पादन कोळसा-क्षमतेला मेगावॅट-दर-मेगावॅट फक्त बदलू शकत नाही; त्याला साठवण लागते, वा राखीव म्हणून तयार ठेवलेले जल व वायू प्रकल्प, वा इतके मोठे ग्रिड की सूर्यप्रकाशित प्रदेशातून अतिरिक्त ढगाळ प्रदेशात नेता येईल. तीच भर तुलना प्रामाणिक करते, आणि तिची किंमत प्रति एकक मथळा-किमतीत नसते. दुसरा अडथळा गाडलेली पायाभूत रचना. भारताची वीज-यंत्रणा सत्तर वर्षांत कोळशाभोवती बांधली: स्वतः वीजकेंद्रे, ज्यांचे दशकांचे रचना-आयुष्य शिल्लक; त्यांना पुरवणाऱ्या खाणी; रेल्वे, जिचे कोळसा-भाडे प्रवासी भाड्यांना अनुदान देते; आणि ते संक्रमण-जाळे जे पूर्वेच्या कोळसा-क्षेत्रांतून वापर करणाऱ्या पश्चिम व दक्षिणेकडे वीज न्यायला अंथरले. इंधन बदलणे म्हणजे यंत्रणा पुन्हा बांधणे, आणि यंत्रणांत ती जडता असते जी एकट्या तंत्रज्ञानांत नसते. तिसरा अडथळा माणसे, आणि तोच सर्वाधिक वगळला जातो. कोळसा खाणकाम आणि त्याभोवतीचे उद्योग झारखंड, ओडिशा, छत्तीसगड आणि पश्चिम बंगालमध्ये खूप मोठ्या संख्येला थेट रोजगार देतात आणि कितीतरी अधिकांना अप्रत्यक्ष सांभाळतात — नेमकी तीच राज्ये जी आधीच भारतातील सर्वांत गरिबांत आहेत. तिथली राज्य सरकारे कोळसा स्वामित्वशुल्कातून बराच महसूल घेतात. जे संक्रमण फक्त खाणी बंद करते ते एका राष्ट्रीय व जागतिक फायद्याचा खर्च त्याच जिल्ह्यांवर सरकवते जे तो सर्वांत कमी सोसू शकतात, जे अन्याय्यही आहे आणि व्यावहारिकदृष्ट्या अशा राजकीय प्रतिकाराची हमीही जो धोरण अडवेल. म्हणून प्रामाणिक संक्रमण जाहीर नव्हे तर रचावे लागते. त्याला साठवण व ग्रिडमध्ये गुंतवणूक लागते जेणेकरून नवीकरणीय पुरवठा पक्का होईल; सर्वांत जुन्या आणि घाण प्रकल्पांच्या निवृत्तीचे प्रकाशित वेळापत्रक जेणेकरून उद्योग चकित होण्याऐवजी नियोजन करू शकेल; पॅनेल, बॅटरी आणि टर्बाइनच्या देशी उत्पादनाला पाठिंबा जेणेकरून बदल रोजगार आयात करण्याऐवजी निर्माण करेल; आणि — अपरिहार्यपणे — कोळसा-प्रदेशांसाठी तडजोड: पुनर्प्रशिक्षण, पर्यायी उद्योग, आणि नव्या ऊर्जेतील गुंतवणुकीचा एक भाग जुनी गमावणाऱ्या जिल्ह्यांकडे वळवणे. आणखी एक सांगण्याजोगा मुद्दा, कारण तो मांडणी बदलतो. विजेचे सर्वांत स्वस्त एकक सदैव तेच जे वापरलेच जात नाही: कार्यक्षम मोटारी, चांगली इमारत-रचना, एलईडी प्रकाश आणि घटलेल्या संक्रमण-हानी मागणी कोणत्याही नव्या निर्मितीच्या खर्चाच्या अंशावर कापतात. आणि भारताकडे आंतरराष्ट्रीय पातळीवर मांडायला समतेचा युक्तिवाद आहे — त्याचे दरडोई उत्सर्जन ज्या देशांनी श्रीमंत होताना सर्वाधिक कार्बन जाळला त्यांच्याहून कितीतरी खाली — तरीही संक्रमण करण्यात त्याचे हित आहे, कारण जी उष्णता, दुष्काळ आणि पूर येतात त्यांसमोर तो सर्वाधिक उघड्या देशांपैकी. निष्कर्ष हा नाही की कोळशाचा बचाव करावा वा सौर ही कल्पना आहे, तर हा की इंधन-बदल ही खरेदी नव्हे तर सामाजिक व औद्योगिक प्रकल्प आहे, आणि जे देश तो सांभाळतील ते तेच असतील ज्यांनी हरणाऱ्यांसाठी तंत्रज्ञानाइतक्याच काळजीने नियोजन केले. (चुकीची उत्तरे चालणारी सौर निर्मिती नाकारतात, कोळशाला नवीकरणीय ठरवतात, वा ऊर्जा-संक्रमणे कधी होतच नाहीत असा दावा करतात — ज्याचे खंडन नोंदल्या इतिहासातील लाकडापासून कोळसा आणि कोळशापासून तेलापर्यंतचा बदल करतो.)",
+        },
+      },
+    ],
+  },
 ];
