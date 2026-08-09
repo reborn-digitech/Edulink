@@ -93,8 +93,28 @@ export const NO_TENANT: RequestTenant = {
  * nested work and nowhere else — which is all an override needs, and is the
  * thing it could never do for a value that had to travel back up out of
  * `getSession()`.
+ *
+ * ⚠ ANCHORED ON `globalThis`, AND THAT IS LOAD-BEARING, NOT STYLE. The bundler
+ * can and does evaluate this module more than once — once per route bundle in
+ * the dev server, and again whenever layers split — while `db.ts`'s Prisma
+ * client is deliberately a `globalThis` singleton that outlives all of them.
+ * With a plain `const` here, the client's query extension captured whichever
+ * copy of this module existed when the client was FIRST built, and every other
+ * copy's `forTenant` wrote its override into a storage nobody was reading.
+ * The failure was silent and shaped exactly like RLS working: every
+ * override-scoped read (`forOwnSchools`, the operator's `asOperatorIn`) came
+ * back empty while session-scoped reads worked fine. Pinning the storage
+ * itself on `globalThis` gives every module copy the same instance, which is
+ * the same trick `db.ts` plays for the client — the two singletons must have
+ * the same lifetime or they drift apart.
  */
-const override = new AsyncLocalStorage<RequestTenant>();
+const globalForTenant = globalThis as unknown as {
+  __edulinkTenantOverride?: AsyncLocalStorage<RequestTenant>;
+  __edulinkOpenTransaction?: AsyncLocalStorage<true>;
+};
+
+const override = (globalForTenant.__edulinkTenantOverride ??=
+  new AsyncLocalStorage<RequestTenant>());
 
 /**
  * Whether a tenant-scoped transaction is already open AROUND THIS CALL.
@@ -104,8 +124,13 @@ const override = new AsyncLocalStorage<RequestTenant>();
  * Held per request, the first query to open a transaction set the flag and its
  * siblings then skipped opening their own, ran with no tenant, and returned
  * nothing. Every scoped page 500'd.
+ *
+ * Anchored on `globalThis` for the same reason as `override` above: the flag
+ * is read by the client's extension and set by whichever module copy the
+ * calling code happens to hold.
  */
-const openTransaction = new AsyncLocalStorage<true>();
+const openTransaction = (globalForTenant.__edulinkOpenTransaction ??=
+  new AsyncLocalStorage<true>());
 
 /** What a caller explicitly asked for, if anything. `db.ts` prefers this. */
 export function tenantOverride(): RequestTenant | undefined {
