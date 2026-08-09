@@ -22,9 +22,9 @@
  *     Half the pupils have a parent linked; the other half are deliberately
  *     UNCLAIMED so the parent-claim flow has something to claim. Their codes
  *     are printed at the end.
- *   ZZ Southbank School — deliberately empty. A principal and three teachers,
- *     two classes with nobody in them, and no pupils at all. This is the school
- *     for testing every empty state.
+ *   ZZ Southbank School — deliberately empty. An admin, a principal and three
+ *     teachers holding one class each, every class with nobody in it, and no
+ *     pupils at all. This is the school for testing every empty state.
  *   Four experts spanning the curation states: published+verified, published
  *     unverified, and one still unpublished.
  *   One operator account for the superuser flag.
@@ -341,6 +341,9 @@ async function buildSouthbank(ctx: Ctx) {
     brandPrimary: "#b45309",
   });
 
+  const admin = await upsertUser(ctx, `zz.admin.b@${DOMAIN}`, "ZZ Gopal Shirke");
+  await upsertMembership(admin.id, school.id, "ADMIN", { title: "School administrator" });
+
   const principal = await upsertUser(ctx, `zz.principal.b@${DOMAIN}`, "ZZ Farida Qureshi");
   await upsertMembership(principal.id, school.id, "PRINCIPAL", { title: "Principal" });
 
@@ -359,20 +362,28 @@ async function buildSouthbank(ctx: Ctx) {
     teachers.push({ user, membership });
   }
 
-  // Two classes with nobody in them. A school with no classes at all tests one
-  // empty state; a class with no pupils tests a different and more interesting
-  // one — the register, the mark sheet and the analytics panel all have to say
-  // something sensible with zero rows.
-  const classA = await upsertClass(school.id, "ZZ Grade 6 · A", {
-    subject: "Form group", gradeLevel: "6", section: "A", color: "#0ea5e9", room: "S601",
-  });
-  const classB = await upsertClass(school.id, "ZZ Grade 7 · A", {
-    subject: "Form group", gradeLevel: "7", section: "A", color: "#8b5cf6", room: "S701",
-  });
-  await attachTeacher(classA.id, school.id, teachers[0]!.membership.id);
-  await attachTeacher(classB.id, school.id, teachers[1]!.membership.id);
+  // Three classes with nobody in them, one for each teacher. A school with no
+  // classes at all tests one empty state; a class with no pupils tests a
+  // different and more interesting one — the register, the mark sheet and the
+  // analytics panel all have to say something sensible with zero rows, and a
+  // teacher holding no class at all would never reach them to find out.
+  const classSpecs = [
+    { name: "ZZ Grade 6 · A", gradeLevel: "6", color: "#0ea5e9", room: "S601" },
+    { name: "ZZ Grade 7 · A", gradeLevel: "7", color: "#8b5cf6", room: "S701" },
+    { name: "ZZ Grade 8 · A", gradeLevel: "8", color: "#14b8a6", room: "S801" },
+  ];
+  for (const [index, spec] of classSpecs.entries()) {
+    const cls = await upsertClass(school.id, spec.name, {
+      subject: "Form group",
+      gradeLevel: spec.gradeLevel,
+      section: "A",
+      color: spec.color,
+      room: spec.room,
+    });
+    await attachTeacher(cls.id, school.id, teachers[index]!.membership.id);
+  }
 
-  return { school, teachers, principal };
+  return { school, teachers, principal, admin };
 }
 
 /* -------------------------------------------------------------------------- */
@@ -519,12 +530,11 @@ async function main() {
 
   ── ZZ Southbank School (empty by design) ────────────────────────────
      join code   ${southbank.school.code}
+     admin       zz.admin.b@${DOMAIN}       (ZZ Gopal Shirke)
      principal   zz.principal.b@${DOMAIN}   (ZZ Farida Qureshi)
-     teachers    zz.teacher.b1..b3@${DOMAIN}
-     classes     2, both with zero pupils
+     teachers    zz.teacher.b1..b3@${DOMAIN} — one class each
+     classes     3, all with zero pupils
      pupils      none — this is the school for empty states
-     NOTE        no ADMIN here, as asked: only teachers and a principal.
-                 Admin-only pages are therefore unreachable in this school.
 
   ── Experts ──────────────────────────────────────────────────────────
 ${experts.map((e) => `     ${e}`).join("\n")}
