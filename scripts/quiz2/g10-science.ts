@@ -1057,4 +1057,700 @@ export const G10_SCIENCE: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 4 — Carbon and its Compounds                                    */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-10-carbon-compounds",
+    subject: "SCIENCE",
+    classLevel: 10,
+    chapter: {
+      en: "Chapter 4 — Carbon and its Compounds",
+      hi: "अध्याय 4 — कार्बन एवं उसके यौगिक",
+      mr: "प्रकरण 4 — कार्बन आणि त्याची संयुगे",
+    },
+    name: {
+      en: "Carbon and its Compounds",
+      hi: "कार्बन एवं उसके यौगिक",
+      mr: "कार्बन आणि त्याची संयुगे",
+    },
+    summary: {
+      en: "One element, a million compounds: carbon shares four electrons in covalent bonds, links endlessly to itself in chains and rings, and hangs functional groups off its backbone. Saturated and unsaturated, burning to carbon dioxide, and — in soap — one molecule with a water-loving head and a grease-loving tail.",
+      hi: "एक तत्व, दस लाख यौगिक: कार्बन सहसंयोजी बंधों में चार इलेक्ट्रॉन साझा करता, शृंखलाओं-वलयों में स्वयं से अनंत जुड़ता, और अपने ढाँचे पर क्रियात्मक समूह लटकाता। संतृप्त और असंतृप्त, कार्बन डाइऑक्साइड में जलता, और — साबुन में — पानी-प्रेमी सिर और चिकनाई-प्रेमी पूँछ वाला एक अणु।",
+      mr: "एक मूलद्रव्य, दहा लाख संयुगे: कार्बन सहसंयुज बंधांत चार इलेक्ट्रॉन वाटतो, साखळ्या-वलयांत स्वतःशी अनंत जुळतो, आणि आपल्या सांगाड्यावर कार्यकारी गट टांगतो. संतृप्त आणि असंतृप्त, कार्बन डायऑक्साइडमध्ये जळणारा, आणि — साबणात — पाणी-प्रेमी डोके आणि स्निग्ध-प्रेमी शेपूट असलेला एक रेणू.",
+    },
+    position: 4,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "covalent-bond",
+        name: {
+          en: "The covalent bond",
+          hi: "सहसंयोजी बंध",
+          mr: "सहसंयुज बंध",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Carbon has four outer electrons and, rather than give or take four, it shares them with other atoms so both reach a full shell. What kind of bond forms by the sharing of electrons?",
+          hi: "कार्बन के चार बाहरी इलेक्ट्रॉन, और चार देने या लेने के बजाय, यह उन्हें अन्य परमाणुओं से साझा करता ताकि दोनों पूर्ण कोश पाएँ। इलेक्ट्रॉन साझा करने से कौन-सा बंध बनता?",
+          mr: "कार्बनचे चार बाहेरचे इलेक्ट्रॉन, आणि चार देण्या वा घेण्याऐवजी, तो ते इतर अणूंशी वाटतो जेणेकरून दोघे पूर्ण कवच मिळवतात. इलेक्ट्रॉन वाटल्याने कोणता बंध बनतो?",
+        },
+        statement: {
+          en: "A covalent bond forms when two atoms share a pair of electrons; carbon makes four such bonds, and covalent compounds have low melting points and do not conduct electricity.",
+          hi: "सहसंयोजी बंध तब बनता जब दो परमाणु इलेक्ट्रॉन-युग्म साझा करते; कार्बन चार ऐसे बंध बनाता, और सहसंयोजी यौगिकों के गलनांक कम और बिजली नहीं चलाते।",
+          mr: "सहसंयुज बंध तेव्हा बनतो जेव्हा दोन अणू इलेक्ट्रॉन-जोडी वाटतात; कार्बन चार असे बंध बनवतो, आणि सहसंयुज संयुगांचे वितळणबिंदू कमी आणि वीज वाहत नाहीत.",
+        },
+        detail: {
+          en: "Sharing, not giving, means no ions form — so covalent compounds are mostly poor conductors even when melted or dissolved.",
+          hi: "साझा करना, न देना, यानी कोई आयन नहीं बनता — अतः सहसंयोजी यौगिक पिघले या घुले भी अधिकतर ख़राब चालक।",
+          mr: "वाटणे, न देणे, म्हणजे कोणतेही आयन बनत नाहीत — म्हणून सहसंयुज संयुगे वितळलेली वा विरघळलेलीही बहुतांश वाईट वाहक.",
+        },
+        extra: {
+          en: "A single shared pair is a single bond, two shared pairs a double bond, three a triple bond — carbon uses all three.",
+          hi: "एक साझा युग्म एकल बंध, दो साझा युग्म द्विबंध, तीन त्रिबंध — कार्बन तीनों वापरता।",
+          mr: "एक वाटलेली जोडी एकबंध, दोन वाटलेल्या जोड्या द्विबंध, तीन त्रिबंध — कार्बन तिन्ही वापरतो.",
+        },
+        pair: {
+          left: {
+            en: "Atoms share electrons to fill their shells",
+            hi: "परमाणु कोश भरने इलेक्ट्रॉन साझा करें",
+            mr: "अणू कवच भरायला इलेक्ट्रॉन वाटतात",
+          },
+          right: {
+            en: "the covalent bond",
+            hi: "सहसंयोजी बंध",
+            mr: "सहसंयुज बंध",
+          },
+        },
+      },
+      {
+        id: "catenation-tetravalency",
+        name: {
+          en: "Catenation and tetravalency",
+          hi: "शृंखलन और चतुर्संयोजकता",
+          mr: "साखळीकरण आणि चतुःसंयुजता",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Carbon can join to other carbon atoms in long chains, branches and rings, and each carbon still has four bonds to spare for other atoms. Which two properties together give carbon its millions of compounds?",
+          hi: "कार्बन अन्य कार्बन परमाणुओं से लंबी शृंखलाओं, शाखाओं और वलयों में जुड़ सकता, और हर कार्बन के पास अन्य परमाणुओं को देने चार बंध बचते। कौन-से दो गुण मिलकर कार्बन को उसके लाखों यौगिक देते?",
+          mr: "कार्बन इतर कार्बन अणूंशी लांब साखळ्या, फांद्या आणि वलयांत जुळू शकतो, आणि प्रत्येक कार्बनकडे इतर अणूंना द्यायला चार बंध शिल्लक. कोणते दोन गुण मिळून कार्बनला त्याची लाखो संयुगे देतात?",
+        },
+        statement: {
+          en: "Catenation is carbon's ability to bond to other carbon atoms in chains, branches and rings, and tetravalency is its four bonding electrons; together they let carbon form an almost endless variety of compounds.",
+          hi: "शृंखलन कार्बन की अन्य कार्बन परमाणुओं से शृंखलाओं, शाखाओं-वलयों में जुड़ने की क्षमता, और चतुर्संयोजकता उसके चार बंधन-इलेक्ट्रॉन; साथ मिलकर वे कार्बन को यौगिकों की लगभग अनंत विविधता बनाने देते।",
+          mr: "साखळीकरण कार्बनची इतर कार्बन अणूंशी साखळ्या, फांद्या-वलयांत जुळण्याची क्षमता, आणि चतुःसंयुजता त्याचे चार बंधन-इलेक्ट्रॉन; एकत्र ते कार्बनला संयुगांची जवळपास अनंत विविधता बनवू देतात.",
+        },
+        detail: {
+          en: "Carbon's small size makes its bonds — to itself and to other atoms — unusually strong and stable, so the long chains do not fall apart.",
+          hi: "कार्बन का छोटा आकार उसके बंधों को — स्वयं से और अन्य परमाणुओं से — असामान्य रूप से प्रबल-स्थिर बनाता, अतः लंबी शृंखलाएँ टूटतीं नहीं।",
+          mr: "कार्बनचा लहान आकार त्याचे बंध — स्वतःशी आणि इतर अणूंशी — असामान्यपणे प्रबळ-स्थिर बनवतो, म्हणून लांब साखळ्या तुटत नाहीत.",
+        },
+        extra: {
+          en: "It is why carbon alone gives rise to the whole of organic chemistry — from petrol and plastic to the proteins and DNA of life itself.",
+          hi: "इसी से अकेला कार्बन पूरे कार्बनिक रसायन को जन्म देता — पेट्रोल-प्लास्टिक से जीवन के प्रोटीन-DNA तक।",
+          mr: "म्हणूनच एकटा कार्बन अख्ख्या सेंद्रिय रसायनशास्त्राला जन्म देतो — पेट्रोल-प्लास्टिकपासून जीवनाच्या प्रथिने-DNA पर्यंत.",
+        },
+        pair: {
+          left: {
+            en: "Self-linking chains plus four bonds each",
+            hi: "स्वयं-जुड़तीं शृंखलाएँ साथ हर एक चार बंध",
+            mr: "स्वतः-जुळणाऱ्या साखळ्या अधिक प्रत्येकी चार बंध",
+          },
+          right: {
+            en: "catenation and tetravalency",
+            hi: "शृंखलन और चतुर्संयोजकता",
+            mr: "साखळीकरण आणि चतुःसंयुजता",
+          },
+        },
+      },
+      {
+        id: "saturated-unsaturated",
+        name: {
+          en: "Saturated and unsaturated compounds",
+          hi: "संतृप्त और असंतृप्त यौगिक",
+          mr: "संतृप्त आणि असंतृप्त संयुगे",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Some hydrocarbons have only single bonds between their carbons, while others carry a double or triple bond that can add more atoms. What is the difference between these two types called?",
+          hi: "कुछ हाइड्रोकार्बनों में कार्बनों के बीच केवल एकल बंध, जबकि अन्य में द्विबंध या त्रिबंध जो अधिक परमाणु जोड़ सकता। इन दो प्रकारों के बीच अंतर को क्या कहते?",
+          mr: "काही हायड्रोकार्बनांत कार्बनांमध्ये फक्त एकबंध, तर इतरांत द्विबंध वा त्रिबंध जो अधिक अणू जोडू शकतो. या दोन प्रकारांतील फरकाला काय म्हणतात?",
+        },
+        statement: {
+          en: "A saturated compound has only single bonds between carbon atoms, while an unsaturated compound has at least one double or triple bond, letting it add more atoms across that bond.",
+          hi: "संतृप्त यौगिक में कार्बन परमाणुओं के बीच केवल एकल बंध, जबकि असंतृप्त में कम से कम एक द्विबंध या त्रिबंध, जो उस बंध के आर-पार अधिक परमाणु जोड़ने देता।",
+          mr: "संतृप्त संयुगात कार्बन अणूंमध्ये फक्त एकबंध, तर असंतृप्तात किमान एक द्विबंध वा त्रिबंध, जो त्या बंधापलीकडे अधिक अणू जोडू देतो.",
+        },
+        detail: {
+          en: "Saturated hydrocarbons (alkanes) burn with a clean blue flame; unsaturated ones (alkenes, alkynes) tend to burn with a yellow, sooty flame.",
+          hi: "संतृप्त हाइड्रोकार्बन (एल्केन) साफ़ नीली लौ से जलते; असंतृप्त (एल्कीन, एल्काइन) पीली, कज्जल-भरी लौ से।",
+          mr: "संतृप्त हायड्रोकार्बन (अल्केन) स्वच्छ निळ्या ज्योतीने जळतात; असंतृप्त (अल्कीन, अल्काइन) पिवळ्या, काजळी-भरल्या ज्योतीने.",
+        },
+        extra: {
+          en: "The extra bond makes unsaturated compounds more reactive — they add hydrogen across it, which is how liquid vegetable oils are hardened into solid vanaspati.",
+          hi: "अतिरिक्त बंध असंतृप्त यौगिकों को अधिक क्रियाशील बनाता — वे उसके आर-पार हाइड्रोजन जोड़ते, जैसे द्रव वनस्पति तेल ठोस वनस्पति में कड़े होते।",
+          mr: "जादा बंध असंतृप्त संयुगांना अधिक क्रियाशील बनवतो — ते त्यापलीकडे हायड्रोजन जोडतात, जसे द्रव वनस्पती तेल घन वनस्पतीत कठीण होते.",
+        },
+        pair: {
+          left: {
+            en: "Only single bonds, adds no more atoms",
+            hi: "केवल एकल बंध, और परमाणु न जोड़े",
+            mr: "फक्त एकबंध, आणखी अणू न जोडे",
+          },
+          right: {
+            en: "a saturated compound",
+            hi: "संतृप्त यौगिक",
+            mr: "संतृप्त संयुग",
+          },
+        },
+      },
+      {
+        id: "functional-group",
+        name: {
+          en: "The functional group",
+          hi: "क्रियात्मक समूह",
+          mr: "कार्यकारी गट",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Swap a hydrogen on a carbon chain for an —OH and you get an alcohol; for a —COOH and you get an acid. Which reactive cluster of atoms decides a compound's chemical behaviour?",
+          hi: "कार्बन शृंखला पर एक हाइड्रोजन को —OH से बदलो और अल्कोहल मिलता; —COOH से अम्ल मिलता। कौन-सा परमाणुओं का क्रियाशील गुच्छा यौगिक का रासायनिक व्यवहार तय करता?",
+          mr: "कार्बन साखळीवरील एक हायड्रोजन —OH ने बदला आणि अल्कोहोल मिळते; —COOH ने आम्ल मिळते. कोणता अणूंचा क्रियाशील गुच्छ संयुगाचे रासायनिक वर्तन ठरवतो?",
+        },
+        statement: {
+          en: "A functional group is a reactive atom or cluster of atoms attached to a carbon chain that gives the compound its characteristic properties — like —OH for alcohols and —COOH for carboxylic acids.",
+          hi: "क्रियात्मक समूह कार्बन शृंखला से जुड़ा एक क्रियाशील परमाणु या परमाणु-गुच्छा जो यौगिक को उसके विशिष्ट गुण देता — जैसे अल्कोहलों को —OH और कार्बोक्सिलिक अम्लों को —COOH।",
+          mr: "कार्यकारी गट कार्बन साखळीशी जोडलेला एक क्रियाशील अणू वा अणू-गुच्छ जो संयुगाला त्याचे वैशिष्ट्यपूर्ण गुण देतो — जसे अल्कोहोलांना —OH आणि कार्बोक्झिलिक आम्लांना —COOH.",
+        },
+        detail: {
+          en: "The carbon chain is a passive backbone; it is the functional group that reacts, so all alcohols behave alike whatever the length of their chain.",
+          hi: "कार्बन शृंखला निष्क्रिय रीढ़; क्रियात्मक समूह ही अभिक्रिया करता, अतः सभी अल्कोहल शृंखला-लंबाई चाहे जो एक-से बरतते।",
+          mr: "कार्बन साखळी निष्क्रिय कणा; कार्यकारी गटच अभिक्रिया करतो, म्हणून सर्व अल्कोहोल साखळी-लांबी कितीही असो सारखे वागतात.",
+        },
+        extra: {
+          en: "Grouping compounds by their functional group into families (a homologous series) is what makes the huge world of carbon compounds manageable.",
+          hi: "यौगिकों को उनके क्रियात्मक समूह से कुलों (समजातीय श्रेणी) में समूहित करना कार्बन यौगिकों की विशाल दुनिया को सँभालने योग्य बनाता।",
+          mr: "संयुगांना त्यांच्या कार्यकारी गटाने कुळांत (समजातीय श्रेणी) गटबद्ध करणे कार्बन संयुगांचे प्रचंड जग हाताळण्याजोगे बनवते.",
+        },
+        pair: {
+          left: {
+            en: "The cluster that sets a compound's behaviour",
+            hi: "यौगिक का व्यवहार तय करता गुच्छा",
+            mr: "संयुगाचे वर्तन ठरवणारा गुच्छ",
+          },
+          right: {
+            en: "the functional group",
+            hi: "क्रियात्मक समूह",
+            mr: "कार्यकारी गट",
+          },
+        },
+      },
+      {
+        id: "ethanol-ethanoic-acid",
+        name: {
+          en: "Ethanol and ethanoic acid",
+          hi: "इथेनॉल और इथेनोइक अम्ल",
+          mr: "इथेनॉल आणि इथॅनॉइक आम्ल",
+        },
+        kind: "substance",
+        prompt: {
+          en: "One is the alcohol in drinks and a fuel; the other, a weak acid, is the sour ingredient of vinegar. Which pair of everyday carbon compounds, differing by their functional group, is this?",
+          hi: "एक पेयों की अल्कोहल और ईंधन; दूसरा, दुर्बल अम्ल, सिरके का खट्टा घटक। क्रियात्मक समूह से भिन्न रोज़मर्रा कार्बन यौगिकों की यह कौन-सी जोड़ी है?",
+          mr: "एक पेयांतील अल्कोहोल आणि इंधन; दुसरे, दुर्बल आम्ल, व्हिनेगरचा आंबट घटक. कार्यकारी गटाने वेगळ्या रोजच्या कार्बन संयुगांची ही कोणती जोडी?",
+        },
+        statement: {
+          en: "Ethanol is the alcohol (—OH group) used in drinks and as a fuel, while ethanoic acid (—COOH group) is a weak acid, the sour component of vinegar.",
+          hi: "इथेनॉल पेयों और ईंधन में प्रयुक्त अल्कोहल (—OH समूह), जबकि इथेनोइक अम्ल (—COOH समूह) एक दुर्बल अम्ल, सिरके का खट्टा घटक।",
+          mr: "इथेनॉल पेयांत आणि इंधन म्हणून वापरले अल्कोहोल (—OH गट), तर इथॅनॉइक आम्ल (—COOH गट) एक दुर्बल आम्ल, व्हिनेगरचा आंबट घटक.",
+        },
+        detail: {
+          en: "Warm ethanol with ethanoic acid over an acid catalyst and they join into a sweet-smelling ester — the fragrance of many fruits and perfumes.",
+          hi: "इथेनॉल को इथेनोइक अम्ल के साथ अम्ल-उत्प्रेरक पर गरम करो और वे मीठी-गंध एस्टर में जुड़ते — कई फलों-इत्रों की सुगंध।",
+          mr: "इथेनॉल इथॅनॉइक आम्लासोबत आम्ल-उत्प्रेरकावर गरम करा आणि ते गोड-वासाच्या एस्टरमध्ये जुळतात — अनेक फळे-अत्तरांचा सुगंध.",
+        },
+        extra: {
+          en: "Pure ethanoic acid freezes just below room temperature into ice-like crystals, which is why it is called glacial acetic acid.",
+          hi: "शुद्ध इथेनोइक अम्ल कमरे के तापमान से थोड़ा नीचे बर्फ़-से रवों में जमता, इसी से इसे हिमशीतल एसीटिक अम्ल कहते।",
+          mr: "शुद्ध इथॅनॉइक आम्ल खोलीच्या तापमानाहून थोडे खाली बर्फासारख्या स्फटिकांत गोठते, म्हणूनच त्याला हिमशीतल अ‍ॅसिटिक आम्ल म्हणतात.",
+        },
+        pair: {
+          left: {
+            en: "The alcohol of drinks and the acid of vinegar",
+            hi: "पेयों की अल्कोहल और सिरके का अम्ल",
+            mr: "पेयांचे अल्कोहोल आणि व्हिनेगरचे आम्ल",
+          },
+          right: {
+            en: "ethanol and ethanoic acid",
+            hi: "इथेनॉल और इथेनोइक अम्ल",
+            mr: "इथेनॉल आणि इथॅनॉइक आम्ल",
+          },
+        },
+      },
+      {
+        id: "soap-micelle",
+        name: {
+          en: "Soap and the micelle",
+          hi: "साबुन और मिसेल",
+          mr: "साबण आणि मिसेल",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A soap molecule has one end that loves water and one end that loves oil, so it can grip greasy dirt and carry it into rinse water. What ball-like cluster do many soap molecules form around a droplet of grease?",
+          hi: "साबुन के अणु का एक सिरा पानी-प्रेमी और एक सिरा तेल-प्रेमी, अतः यह चिकनी मैल पकड़ धो-पानी में ले जा सकता। कई साबुन अणु चिकनाई की बूँद के चारों ओर कौन-सा गेंद-सा गुच्छा बनाते?",
+          mr: "साबणाच्या रेणूचे एक टोक पाणी-प्रेमी आणि एक टोक तेल-प्रेमी, म्हणून तो स्निग्ध मळ पकडून धुण्याच्या पाण्यात नेऊ शकतो. अनेक साबण रेणू स्निग्धतेच्या थेंबाभोवती कोणता चेंडूसारखा गुच्छ बनवतात?",
+        },
+        statement: {
+          en: "A soap molecule has a water-loving (hydrophilic) head and an oil-loving (hydrophobic) tail; in water many soaps cluster into a micelle, tails pointing inward around a trapped droplet of grease and heads facing out.",
+          hi: "साबुन के अणु का पानी-प्रेमी (जलरागी) सिर और तेल-प्रेमी (जलविरागी) पूँछ; पानी में कई साबुन मिसेल में गुच्छित होते, पूँछें फँसी चिकनाई-बूँद के चारों ओर भीतर और सिर बाहर।",
+          mr: "साबणाच्या रेणूचे पाणी-प्रेमी (जलस्नेही) डोके आणि तेल-प्रेमी (जलविरोधी) शेपूट; पाण्यात अनेक साबण मिसेलमध्ये गुच्छित होतात, शेपट्या अडकलेल्या स्निग्धता-थेंबाभोवती आत आणि डोकी बाहेर.",
+        },
+        detail: {
+          en: "The grease is hidden inside the micelle, held by the oily tails, while the water-loving heads let the whole ball wash away — that is how soap cleans.",
+          hi: "चिकनाई मिसेल के भीतर छिपी, तैलीय पूँछों से थमी, जबकि पानी-प्रेमी सिर पूरे गेंद को धो जाने देते — यही साबुन की सफ़ाई।",
+          mr: "स्निग्धता मिसेलच्या आत लपलेली, तैलीय शेपट्यांनी धरलेली, तर पाणी-प्रेमी डोकी अख्खा चेंडू वाहून जाऊ देतात — हीच साबणाची स्वच्छता.",
+        },
+        extra: {
+          en: "In hard water soap wastes itself forming a useless scum with the calcium and magnesium, which is why detergents were invented to work where soap fails.",
+          hi: "कठोर पानी में साबुन कैल्शियम-मैग्नीशियम से बेकार मैल बनाकर स्वयं बर्बाद होता, इसी से अपमार्जक बने जो साबुन के विफल होने पर काम करें।",
+          mr: "जड पाण्यात साबण कॅल्शियम-मॅग्नेशियमशी निरुपयोगी साक बनवून स्वतः वाया जातो, म्हणूनच डिटर्जंट बनवले जे साबण अपयशी होताना काम करतात.",
+        },
+        pair: {
+          left: {
+            en: "Grease trapped inside, water-loving heads out",
+            hi: "चिकनाई भीतर फँसी, पानी-प्रेमी सिर बाहर",
+            mr: "स्निग्धता आत अडकली, पाणी-प्रेमी डोकी बाहेर",
+          },
+          right: {
+            en: "a micelle",
+            hi: "मिसेल",
+            mr: "मिसेल",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Only about a hundred elements exist, yet the compounds of just one of them — carbon — number in the millions, more than all other elements' compounds put together. What special properties of the carbon atom account for this staggering variety?",
+          hi: "केवल लगभग सौ तत्व हैं, फिर भी उनमें से केवल एक — कार्बन — के यौगिक लाखों में, अन्य सभी तत्वों के यौगिकों को मिलाकर से अधिक। कार्बन परमाणु के कौन-से विशेष गुण इस चौंकाती विविधता का कारण?",
+          mr: "फक्त सुमारे शंभर मूलद्रव्ये आहेत, तरी त्यांतल्या फक्त एकाची — कार्बनची — संयुगे लाखांत, इतर सर्व मूलद्रव्यांच्या संयुगांना मिळून त्याहून अधिक. कार्बन अणूचे कोणते विशेष गुण या थक्क करणाऱ्या विविधतेचे कारण?",
+        },
+        choices: [
+          {
+            en: "Catenation — carbon's ability to bond to more carbon atoms in long chains, branches and rings — combined with its tetravalency (four bonds each) and small size, which makes those bonds strong and stable; together these let carbon build an almost limitless number of stable structures",
+            hi: "शृंखलन — कार्बन की और कार्बन परमाणुओं से लंबी शृंखलाओं, शाखाओं-वलयों में जुड़ने की क्षमता — इसकी चतुर्संयोजकता (हर एक चार बंध) और छोटे आकार से जुड़ी, जो उन बंधों को प्रबल-स्थिर बनाता; साथ मिलकर ये कार्बन को स्थिर संरचनाओं की लगभग असीम संख्या बनाने देते",
+            mr: "साखळीकरण — कार्बनची आणखी कार्बन अणूंशी लांब साखळ्या, फांद्या-वलयांत जुळण्याची क्षमता — त्याच्या चतुःसंयुजतेशी (प्रत्येकी चार बंध) आणि लहान आकाराशी जोडलेली, जी ते बंध प्रबळ-स्थिर बनवते; एकत्र हे कार्बनला स्थिर रचनांची जवळपास असीम संख्या बांधू देतात",
+          },
+          {
+            en: "Carbon is simply the most abundant element on Earth, so it forms the most compounds",
+            hi: "कार्बन बस पृथ्वी पर सबसे प्रचुर तत्व, अतः सबसे अधिक यौगिक बनाता",
+            mr: "कार्बन फक्त पृथ्वीवरील सर्वांत विपुल मूलद्रव्य, म्हणून सर्वांत अधिक संयुगे बनवतो",
+          },
+          {
+            en: "Carbon is radioactive, which lets it change into other elements and form more compounds",
+            hi: "कार्बन रेडियोधर्मी, जो इसे अन्य तत्वों में बदलने और अधिक यौगिक बनाने देता",
+            mr: "कार्बन किरणोत्सर्गी, जे त्याला इतर मूलद्रव्यांत बदलू आणि अधिक संयुगे बनवू देते",
+          },
+          {
+            en: "Carbon forms only ionic bonds, which are the strongest of all",
+            hi: "कार्बन केवल आयनिक बंध बनाता, जो सबसे प्रबल",
+            mr: "कार्बन फक्त आयनिक बंध बनवतो, जे सर्वांत प्रबळ",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Carbon's runaway compound-count comes from a rare combination of properties, all rooted in the atom itself. The first and most important is catenation: carbon atoms can bond to other carbon atoms, again and again, building straight chains, branched chains and closed rings of almost any length. A few other elements can do this a little, but none comes close to carbon. The second is tetravalency: each carbon has exactly four bonds to make. So even in the middle of a long carbon chain, every carbon still has spare bonds pointing outward for hydrogen or oxygen or a functional group to attach — every skeleton can be decorated in countless ways. The third, quieter, property is carbon's small size. A small atom holds its shared electrons close and tight, so carbon–carbon and carbon–other bonds are unusually strong and stable; the long chains do not spontaneously fall apart the way the longer, weaker chains of larger elements (like silicon) tend to. Put these together — endless self-linking, four attachment points on every atom, and bonds strong enough to survive — and you get a construction kit that can assemble an essentially unlimited number of different, stable molecules. That is why the chemistry of carbon is a subject of its own, called organic chemistry, and why the molecules of life itself — proteins, fats, carbohydrates, DNA — are all built on carbon skeletons. Abundance, radioactivity and ionic bonding have nothing to do with it; it is catenation and tetravalency, backed by small size, that do the work.",
+          hi: "कार्बन की बेलगाम यौगिक-गिनती गुणों के दुर्लभ संयोजन से, सब परमाणु में ही जड़े। पहला और सबसे महत्वपूर्ण शृंखलन: कार्बन परमाणु और कार्बन परमाणुओं से बार-बार जुड़ सकते, लगभग किसी भी लंबाई की सीधी शृंखलाएँ, शाखित शृंखलाएँ और बंद वलय बनाते। कुछ अन्य तत्व यह थोड़ा कर सकते, पर कोई कार्बन के पास नहीं आता। दूसरा चतुर्संयोजकता: हर कार्बन को ठीक चार बंध बनाने। अतः लंबी कार्बन-शृंखला के बीच में भी हर कार्बन के पास हाइड्रोजन या ऑक्सीजन या क्रियात्मक समूह जोड़ने बाहर की ओर बचे बंध — हर ढाँचा अनगिनत तरीक़ों से सजाया जा सकता। तीसरा, शांत, गुण कार्बन का छोटा आकार। छोटा परमाणु अपने साझा इलेक्ट्रॉन पास-कसे रखता, अतः कार्बन-कार्बन और कार्बन-अन्य बंध असामान्य प्रबल-स्थिर; लंबी शृंखलाएँ बड़े तत्वों (सिलिकॉन जैसे) की लंबी, कमज़ोर शृंखलाओं की तरह स्वतः नहीं टूटतीं। इन्हें मिलाओ — अनंत स्व-जुड़ाव, हर परमाणु पर चार जोड़-बिंदु, और जीने भर प्रबल बंध — और तुम्हें ऐसी निर्माण-किट मिलती जो मूलतः असीमित भिन्न, स्थिर अणु जोड़ सके। इसी से कार्बन का रसायन अपना विषय, कार्बनिक रसायन कहलाता, और जीवन के अणु — प्रोटीन, वसा, कार्बोहाइड्रेट, DNA — सब कार्बन ढाँचों पर बने। प्रचुरता, रेडियोधर्मिता, आयनिक बंधन का इससे कोई संबंध नहीं; शृंखलन और चतुर्संयोजकता, छोटे आकार से समर्थित, काम करते।",
+          mr: "कार्बनची बेलगाम संयुग-मोजणी गुणांच्या दुर्मिळ संयोजनातून, सारे अणूतच रुजलेले. पहिला आणि सर्वांत महत्त्वाचा साखळीकरण: कार्बन अणू आणखी कार्बन अणूंशी पुन्हा पुन्हा जुळू शकतात, जवळपास कोणत्याही लांबीच्या सरळ साखळ्या, फांद्यांच्या साखळ्या आणि बंद वलये बांधत. काही इतर मूलद्रव्ये हे थोडे करू शकतात, पण कोणी कार्बनजवळ येत नाही. दुसरा चतुःसंयुजता: प्रत्येक कार्बनला नेमके चार बंध बनवायचे. म्हणून लांब कार्बन-साखळीच्या मध्येही प्रत्येक कार्बनकडे हायड्रोजन वा ऑक्सिजन वा कार्यकारी गट जोडायला बाहेरच्या दिशेने शिल्लक बंध — प्रत्येक सांगाडा असंख्य मार्गांनी सजवता येतो. तिसरा, शांत, गुण कार्बनचा लहान आकार. लहान अणू आपले वाटलेले इलेक्ट्रॉन जवळ-घट्ट धरतो, म्हणून कार्बन-कार्बन आणि कार्बन-इतर बंध असामान्य प्रबळ-स्थिर; लांब साखळ्या मोठ्या मूलद्रव्यांच्या (सिलिकॉनसारख्या) लांब, कमजोर साखळ्यांप्रमाणे आपोआप तुटत नाहीत. हे एकत्र करा — अनंत स्व-जुळणी, प्रत्येक अणूवर चार जोड-बिंदू, आणि जगण्याइतके प्रबळ बंध — आणि तुम्हाला अशी बांधकाम-किट मिळते जी मूलतः असीमित वेगळे, स्थिर रेणू जोडू शकते. म्हणूनच कार्बनचे रसायन स्वतःचा विषय, सेंद्रिय रसायनशास्त्र म्हणतात, आणि जीवनाचे रेणू — प्रथिने, स्निग्ध, कर्बोदके, DNA — सारे कार्बन सांगाड्यांवर बांधलेले. विपुलता, किरणोत्सर्ग, आयनिक बंधनाचा याच्याशी संबंध नाही; साखळीकरण आणि चतुःसंयुजता, लहान आकाराने पाठबळ दिलेली, काम करतात.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Oil and water do not mix, yet a little soap in the wash water lets water lift greasy dirt off cloth and carry it away. Since soap does not chemically destroy the grease, how does it manage to clean?",
+          hi: "तेल और पानी नहीं मिलते, फिर भी धो-पानी में थोड़ा साबुन पानी को कपड़े से चिकनी मैल उठाने और ले जाने देता। चूँकि साबुन चिकनाई को रासायनिक रूप से नष्ट नहीं करता, यह सफ़ाई कैसे कर लेता?",
+          mr: "तेल आणि पाणी मिसळत नाहीत, तरी धुण्याच्या पाण्यात थोडा साबण पाण्याला कापडावरून स्निग्ध मळ उचलू आणि वाहून नेऊ देतो. साबण स्निग्धतेला रासायनिकरीत्या नष्ट करत नसल्याने, तो स्वच्छता कशी करतो?",
+        },
+        choices: [
+          {
+            en: "Each soap molecule has a water-loving head and an oil-loving tail; the tails bury themselves in a grease droplet while the heads face the water, wrapping the droplet in a micelle whose watery outside lets it be rinsed away — so soap surrounds and floats off the grease rather than destroying it",
+            hi: "हर साबुन अणु का पानी-प्रेमी सिर और तेल-प्रेमी पूँछ; पूँछें चिकनाई-बूँद में दबतीं जबकि सिर पानी की ओर, बूँद को मिसेल में लपेटते जिसका पानीदार बाहर उसे धो जाने देता — अतः साबुन चिकनाई को नष्ट करने के बजाय घेरकर तैरा देता",
+            mr: "प्रत्येक साबण रेणूचे पाणी-प्रेमी डोके आणि तेल-प्रेमी शेपूट; शेपट्या स्निग्धता-थेंबात दडतात तर डोकी पाण्याकडे, थेंबाला मिसेलमध्ये गुंडाळत ज्याचे पाणीदार बाहेर त्याला धुऊन जाऊ देते — म्हणून साबण स्निग्धतेला नष्ट करण्याऐवजी वेढून तरंगवतो",
+          },
+          {
+            en: "Soap chemically burns the grease into carbon dioxide and water",
+            hi: "साबुन चिकनाई को रासायनिक रूप से कार्बन डाइऑक्साइड और पानी में जला देता",
+            mr: "साबण स्निग्धतेला रासायनिकरीत्या कार्बन डायऑक्साइड आणि पाण्यात जाळतो",
+          },
+          {
+            en: "Soap makes the water hotter, and hot water alone removes grease",
+            hi: "साबुन पानी को गरम करता, और गरम पानी अकेला चिकनाई हटाता",
+            mr: "साबण पाणी गरम करतो, आणि गरम पाणी एकटे स्निग्धता काढते",
+          },
+          {
+            en: "Soap turns the grease into more soap",
+            hi: "साबुन चिकनाई को और साबुन में बदल देता",
+            mr: "साबण स्निग्धतेला आणखी साबणात बदलतो",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The whole trick lies in the shape of a single soap molecule, which is built to bridge two worlds that normally refuse to meet. One end of the molecule — the head — is ionic and 'water-loving' (hydrophilic): it is perfectly happy surrounded by water. The other end — a long carbon tail — is 'water-hating' (hydrophobic) but oil-loving: it will not dissolve in water but is quite at home in grease. Greasy dirt clings to cloth precisely because it is oily and water cannot get at it. When soap is added, the oil-loving tails of the soap molecules dig into the grease droplet, while the water-loving heads stay out in the surrounding water. Many soap molecules do this to the same droplet, arranging themselves into a tiny sphere called a micelle: all the tails point inward, buried in the trapped ball of grease, and all the heads point outward, presenting a water-friendly surface to the wash water. Now the grease, which water could never touch directly, is wrapped in a water-loving coat. The micelle, heads and all, mixes freely with the water and is simply rinsed away, carrying the dirt with it. Crucially, the soap has not destroyed or chemically changed the grease at all — it has only surrounded it and made it dispersible in water, floating it off the cloth. This is also why soap struggles in hard water: the calcium and magnesium ions there react with the soap to form an insoluble scum, using up the soap before it can make micelles — which is exactly the problem detergents were designed to solve.",
+          hi: "पूरी चाल एक अकेले साबुन अणु की आकृति में, जो सामान्यतः मिलने से इनकार करती दो दुनियाओं को पाटने बना। अणु का एक सिरा — सिर — आयनिक और 'पानी-प्रेमी' (जलरागी): यह पानी से घिरा पूर्णतः प्रसन्न। दूसरा सिरा — लंबी कार्बन पूँछ — 'पानी-द्वेषी' (जलविरागी) पर तेल-प्रेमी: यह पानी में नहीं घुलती पर चिकनाई में सहज। चिकनी मैल कपड़े से ठीक इसलिए चिपकती क्योंकि तैलीय और पानी उस तक नहीं पहुँच सकता। साबुन जोड़ने पर साबुन अणुओं की तेल-प्रेमी पूँछें चिकनाई-बूँद में धँसतीं, जबकि पानी-प्रेमी सिर आसपास के पानी में रहते। कई साबुन अणु उसी बूँद को यह करते, मिसेल नामक नन्हे गोले में सजते: सारी पूँछें भीतर, फँसी चिकनाई-गेंद में दबीं, और सारे सिर बाहर, धो-पानी को पानी-मैत्री सतह देते। अब चिकनाई, जिसे पानी सीधे कभी न छू सके, पानी-प्रेमी कोट में लिपटी। मिसेल, सिरों समेत, पानी से मुक्त मिलता और बस धो जाता, मैल साथ ले जाता। मुख्यतः, साबुन ने चिकनाई को नष्ट या रासायनिक रूप से बदला बिलकुल नहीं — केवल घेरा और पानी में फैलने-योग्य बनाया, कपड़े से तैरा दिया। इसी से साबुन कठोर पानी में जूझता: वहाँ कैल्शियम-मैग्नीशियम आयन साबुन से अघुलनशील मैल बनाते, मिसेल बनाने से पहले साबुन चुकाते — ठीक वह समस्या जो अपमार्जक सुलझाने बने।",
+          mr: "अख्खी युक्ती एका साबण रेणूच्या आकारात, जो सामान्यतः भेटायला नकार देणाऱ्या दोन जगांना जोडायला बांधलेला. रेणूचे एक टोक — डोके — आयनिक आणि 'पाणी-प्रेमी' (जलस्नेही): ते पाण्याने वेढलेले पूर्णपणे आनंदी. दुसरे टोक — लांब कार्बन शेपूट — 'पाणी-द्वेषी' (जलविरोधी) पण तेल-प्रेमी: ते पाण्यात विरघळत नाही पण स्निग्धतेत सहज. स्निग्ध मळ कापडाला नेमके म्हणून चिकटतो कारण तैलीय आणि पाणी त्यापर्यंत पोहोचू शकत नाही. साबण जोडल्यावर साबण रेणूंच्या तेल-प्रेमी शेपट्या स्निग्धता-थेंबात घुसतात, तर पाणी-प्रेमी डोकी आजूबाजूच्या पाण्यात राहतात. अनेक साबण रेणू त्याच थेंबाला हे करतात, मिसेल नावाच्या इवल्या गोलात मांडत: सर्व शेपट्या आत, अडकलेल्या स्निग्धता-चेंडूत दडलेल्या, आणि सर्व डोकी बाहेर, धुण्याच्या पाण्याला पाणी-स्नेही पृष्ठ देत. आता स्निग्धता, जिला पाणी थेट कधी स्पर्शू शकत नाही, पाणी-प्रेमी आवरणात गुंडाळलेली. मिसेल, डोक्यांसह, पाण्याशी मुक्त मिसळते आणि फक्त धुऊन जाते, मळ सोबत नेत. मुख्यतः, साबणाने स्निग्धतेला नष्ट वा रासायनिकरीत्या बदलले मुळीच नाही — फक्त वेढले आणि पाण्यात पसरण्याजोगे बनवले, कापडावरून तरंगवले. म्हणूनच साबण जड पाण्यात झगडतो: तिथले कॅल्शियम-मॅग्नेशियम आयन साबणाशी अविद्राव्य साक बनवतात, मिसेल बनवण्याआधी साबण संपवत — नेमकी ती समस्या जी डिटर्जंट सोडवायला बनवले.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 5 — Life Processes                                              */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-10-life-processes",
+    subject: "SCIENCE",
+    classLevel: 10,
+    chapter: {
+      en: "Chapter 5 — Life Processes",
+      hi: "अध्याय 5 — जैव प्रक्रम",
+      mr: "प्रकरण 5 — जीवन प्रक्रिया",
+    },
+    name: {
+      en: "Life Processes",
+      hi: "जैव प्रक्रम",
+      mr: "जीवन प्रक्रिया",
+    },
+    summary: {
+      en: "The housekeeping that keeps a body alive: food made by autotrophs and taken by heterotrophs, glucose built in photosynthesis and burnt in respiration, materials carried by blood and sap, and waste filtered out — the same four tasks of nutrition, respiration, transport and excretion in every living thing.",
+      hi: "वह देख-रेख जो शरीर को जीवित रखती: स्वपोषी बनाते और परपोषी लेते भोजन, प्रकाश-संश्लेषण में बना और श्वसन में जला ग्लूकोज़, रक्त-रस से ढोए पदार्थ, और छाना अपशिष्ट — हर जीव में पोषण, श्वसन, वहन और उत्सर्जन के वही चार काम।",
+      mr: "ती देखभाल जी शरीराला जिवंत ठेवते: स्वयंपोषी बनवतात आणि परपोषी घेतात ते अन्न, प्रकाशसंश्लेषणात बनलेले आणि श्वसनात जळलेले ग्लुकोज, रक्त-रसाने वाहिलेले पदार्थ, आणि गाळलेला कचरा — प्रत्येक सजीवात पोषण, श्वसन, वहन आणि उत्सर्जनाची तीच चार कामे.",
+    },
+    position: 5,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "nutrition-types",
+        name: {
+          en: "Autotrophic and heterotrophic nutrition",
+          hi: "स्वपोषी और परपोषी पोषण",
+          mr: "स्वयंपोषी आणि परपोषी पोषण",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A green plant builds its own food from sunlight, while an animal must eat food made by others. What are these two ways of getting food called?",
+          hi: "हरा पौधा धूप से अपना भोजन बनाता, जबकि पशु को दूसरों का बनाया भोजन खाना होता। भोजन पाने के इन दो तरीक़ों को क्या कहते?",
+          mr: "हिरवे झाड उन्हातून स्वतःचे अन्न बनवते, तर प्राण्याला इतरांनी बनवलेले अन्न खावे लागते. अन्न मिळवण्याच्या या दोन मार्गांना काय म्हणतात?",
+        },
+        statement: {
+          en: "Autotrophic nutrition is making one's own food from simple substances using light, as green plants do; heterotrophic nutrition is taking in food made by other organisms, as animals and fungi do.",
+          hi: "स्वपोषी पोषण प्रकाश से सरल पदार्थों से अपना भोजन बनाना, जैसे हरे पौधे करते; परपोषी पोषण अन्य जीवों का बनाया भोजन लेना, जैसे पशु और कवक करते।",
+          mr: "स्वयंपोषी पोषण प्रकाशाने साध्या पदार्थांतून स्वतःचे अन्न बनवणे, जसे हिरवी झाडे करतात; परपोषी पोषण इतर सजीवांनी बनवलेले अन्न घेणे, जसे प्राणी आणि बुरशी करतात.",
+        },
+        detail: {
+          en: "Autotrophs are the makers at the base of every food chain; heterotrophs, direct or indirect, all depend on the food the autotrophs first captured from the sun.",
+          hi: "स्वपोषी हर खाद्य-शृंखला के आधार पर निर्माता; परपोषी, प्रत्यक्ष या अप्रत्यक्ष, सब उस भोजन पर निर्भर जो स्वपोषी ने पहले सूरज से पकड़ा।",
+          mr: "स्वयंपोषी प्रत्येक अन्नसाखळीच्या पायथ्याशी निर्माते; परपोषी, प्रत्यक्ष वा अप्रत्यक्ष, सारे त्या अन्नावर अवलंबून जे स्वयंपोषींनी आधी सूर्याकडून पकडले.",
+        },
+        extra: {
+          en: "Some heterotrophs feed in special ways — a fungus digests dead matter around it, and a Cuscuta vine sucks sap straight from a living host.",
+          hi: "कुछ परपोषी विशेष तरीक़ों से खाते — कवक अपने आसपास मृत पदार्थ पचाता, और अमरबेल जीवित पोषी से सीधे रस चूसती।",
+          mr: "काही परपोषी विशेष मार्गांनी खातात — बुरशी आपल्या आजूबाजूचा मृत पदार्थ पचवते, आणि अमरवेल जिवंत यजमानाकडून थेट रस शोषते.",
+        },
+        pair: {
+          left: {
+            en: "Makes its own food from light",
+            hi: "प्रकाश से अपना भोजन बनाता",
+            mr: "प्रकाशातून स्वतःचे अन्न बनवते",
+          },
+          right: {
+            en: "autotrophic nutrition",
+            hi: "स्वपोषी पोषण",
+            mr: "स्वयंपोषी पोषण",
+          },
+        },
+      },
+      {
+        id: "photosynthesis",
+        name: {
+          en: "Photosynthesis in autotrophs",
+          hi: "स्वपोषियों में प्रकाश-संश्लेषण",
+          mr: "स्वयंपोषींतील प्रकाशसंश्लेषण",
+        },
+        kind: "process",
+        prompt: {
+          en: "In a green leaf, chlorophyll traps sunlight and uses it to turn carbon dioxide and water into glucose, releasing oxygen. What is this food-making process called?",
+          hi: "हरे पत्ते में क्लोरोफ़िल धूप पकड़ता और उससे कार्बन डाइऑक्साइड और पानी को ग्लूकोज़ में बदलता, ऑक्सीजन छोड़ते। यह भोजन-बनाती प्रक्रिया क्या कहलाती?",
+          mr: "हिरव्या पानात हरितद्रव्य ऊन पकडते आणि त्याने कार्बन डायऑक्साइड आणि पाणी ग्लुकोजमध्ये बदलते, ऑक्सिजन सोडत. ही अन्न-बनवणारी प्रक्रिया काय म्हणतात?",
+        },
+        statement: {
+          en: "Photosynthesis is the process by which green plants use chlorophyll to trap light energy and convert carbon dioxide and water into glucose, releasing oxygen as a by-product.",
+          hi: "प्रकाश-संश्लेषण वह प्रक्रिया जिससे हरे पौधे क्लोरोफ़िल से प्रकाश-ऊर्जा पकड़ते और कार्बन डाइऑक्साइड-पानी को ग्लूकोज़ में बदलते, उपोत्पाद बतौर ऑक्सीजन छोड़ते।",
+          mr: "प्रकाशसंश्लेषण ती प्रक्रिया ज्याने हिरवी झाडे हरितद्रव्याने प्रकाश-ऊर्जा पकडतात आणि कार्बन डायऑक्साइड-पाणी ग्लुकोजमध्ये बदलतात, उपउत्पाद म्हणून ऑक्सिजन सोडत.",
+        },
+        detail: {
+          en: "It stores the sun's energy in the chemical bonds of glucose — the food that feeds the plant and, in the end, almost every living thing.",
+          hi: "यह सूरज की ऊर्जा को ग्लूकोज़ के रासायनिक बंधों में जमा करता — वह भोजन जो पौधे को और अंततः लगभग हर जीव को पालता।",
+          mr: "ते सूर्याची ऊर्जा ग्लुकोजच्या रासायनिक बंधांत साठवते — ते अन्न जे झाडाला आणि अखेर जवळपास प्रत्येक सजीवाला पोसते.",
+        },
+        extra: {
+          en: "The oxygen we breathe is photosynthesis's leftover — the whole of Earth's oxygen atmosphere was made, over ages, by green things splitting water.",
+          hi: "जो ऑक्सीजन हम साँस लेते वह प्रकाश-संश्लेषण की बची — पृथ्वी का पूरा ऑक्सीजन-वायुमंडल युगों में हरी चीज़ों के पानी तोड़ने से बना।",
+          mr: "जो ऑक्सिजन आपण श्वासात घेतो तो प्रकाशसंश्लेषणाचा उरलेला — पृथ्वीचे अख्खे ऑक्सिजन-वातावरण युगांत हिरव्या गोष्टींनी पाणी मोडून बनवले.",
+        },
+        pair: {
+          left: {
+            en: "Light plus CO₂ and water make glucose",
+            hi: "प्रकाश साथ CO₂ और पानी ग्लूकोज़ बनाएँ",
+            mr: "प्रकाश अधिक CO₂ आणि पाणी ग्लुकोज बनवतात",
+          },
+          right: {
+            en: "photosynthesis",
+            hi: "प्रकाश-संश्लेषण",
+            mr: "प्रकाशसंश्लेषण",
+          },
+        },
+      },
+      {
+        id: "respiration",
+        name: {
+          en: "Respiration",
+          hi: "श्वसन",
+          mr: "श्वसन",
+        },
+        kind: "process",
+        prompt: {
+          en: "Inside every cell, glucose is broken down — usually with oxygen — to release the energy the body runs on, stored as ATP. What is this energy-releasing process called?",
+          hi: "हर कोशिका के भीतर ग्लूकोज़ तोड़ा जाता — आमतौर पर ऑक्सीजन से — शरीर जिस ऊर्जा पर चलता उसे छोड़ते, ATP में जमा। यह ऊर्जा-छोड़ती प्रक्रिया क्या कहलाती?",
+          mr: "प्रत्येक पेशीत ग्लुकोज मोडले जाते — सहसा ऑक्सिजनने — शरीर ज्या ऊर्जेवर चालते ती सोडत, ATP मध्ये साठवत. ही ऊर्जा-सोडणारी प्रक्रिया काय म्हणतात?",
+        },
+        statement: {
+          en: "Respiration is the breakdown of glucose in the cells to release energy, stored as ATP; aerobic respiration uses oxygen and gives much energy, while anaerobic respiration works without oxygen and gives less.",
+          hi: "श्वसन कोशिकाओं में ग्लूकोज़ का टूटना ऊर्जा छोड़ने, ATP में जमा; वायवीय श्वसन ऑक्सीजन वापरता और अधिक ऊर्जा देता, जबकि अवायवीय बिना ऑक्सीजन काम करता और कम देता।",
+          mr: "श्वसन पेशींत ग्लुकोजचे मोडणे ऊर्जा सोडण्यासाठी, ATP मध्ये साठवत; ऑक्सिश्वसन ऑक्सिजन वापरते आणि पुष्कळ ऊर्जा देते, तर विनॉक्सिश्वसन ऑक्सिजनविना काम करते आणि कमी देते.",
+        },
+        detail: {
+          en: "Aerobic respiration finishes glucose off into carbon dioxide and water; anaerobic leaves it half-broken as lactic acid (in our muscles) or alcohol (in yeast).",
+          hi: "वायवीय श्वसन ग्लूकोज़ को कार्बन डाइऑक्साइड-पानी में पूरा करता; अवायवीय इसे आधा-टूटा लैक्टिक अम्ल (हमारी माँसपेशियों में) या अल्कोहल (यीस्ट में) छोड़ता।",
+          mr: "ऑक्सिश्वसन ग्लुकोज कार्बन डायऑक्साइड-पाण्यात पूर्ण करते; विनॉक्सिश्वसन ते अर्धे-मोडलेले लॅक्टिक आम्ल (आपल्या स्नायूंत) वा अल्कोहोल (यीस्टमध्ये) सोडते.",
+        },
+        extra: {
+          en: "The cramp of hard exercise is anaerobic respiration — muscles starved of oxygen build up lactic acid until you rest and breathe deep.",
+          hi: "कठिन व्यायाम की ऐंठन अवायवीय श्वसन — ऑक्सीजन-भूखी माँसपेशियाँ लैक्टिक अम्ल जमा करतीं जब तक तुम आराम कर गहरी साँस न लो।",
+          mr: "कठीण व्यायामाचा गोळा विनॉक्सिश्वसन — ऑक्सिजन-भुकेल्या स्नायू लॅक्टिक आम्ल साठवतात जोवर तू विश्रांती घेऊन खोल श्वास घेत नाहीस.",
+        },
+        pair: {
+          left: {
+            en: "Glucose broken to release energy as ATP",
+            hi: "ग्लूकोज़ टूटे ATP बतौर ऊर्जा छोड़ने",
+            mr: "ग्लुकोज मोडले ATP म्हणून ऊर्जा सोडायला",
+          },
+          right: {
+            en: "respiration",
+            hi: "श्वसन",
+            mr: "श्वसन",
+          },
+        },
+      },
+      {
+        id: "transport",
+        name: {
+          en: "Transport in the body",
+          hi: "शरीर में परिवहन",
+          mr: "शरीरातील वहन",
+        },
+        kind: "process",
+        prompt: {
+          en: "Blood carries food, oxygen and waste around an animal's body while a pump keeps it moving, and in a plant tubes carry water up and food down. What life process does this describe?",
+          hi: "रक्त पशु के शरीर में भोजन, ऑक्सीजन और अपशिष्ट ढोता जबकि एक पंप उसे चलाए रखता, और पौधे में नलियाँ पानी ऊपर और भोजन नीचे ढोतीं। यह कौन-सा जैव-प्रक्रम बताता?",
+          mr: "रक्त प्राण्याच्या शरीरात अन्न, ऑक्सिजन आणि कचरा वाहते तर एक पंप ते चालू ठेवतो, आणि झाडात नळ्या पाणी वर आणि अन्न खाली वाहतात. ही कोणती जीवन-प्रक्रिया सांगते?",
+        },
+        statement: {
+          en: "Transport is the carrying of materials around a body: in animals blood pumped by the heart carries food, oxygen and wastes, while in plants xylem carries water up and phloem carries food.",
+          hi: "परिवहन शरीर में पदार्थ ढोना: पशुओं में हृदय द्वारा पंप रक्त भोजन, ऑक्सीजन और अपशिष्ट ढोता, जबकि पौधों में जाइलम पानी ऊपर और फ्लोएम भोजन ढोता।",
+          mr: "वहन शरीरात पदार्थ वाहणे: प्राण्यांत हृदयाने पंप केलेले रक्त अन्न, ऑक्सिजन आणि कचरा वाहते, तर झाडांत प्रकाष्ठ पाणी वर आणि परिकाष्ठ अन्न वाहते.",
+        },
+        detail: {
+          en: "In humans the heart drives a double circulation — blood passes through the heart twice for each full round of the body, keeping the supply brisk.",
+          hi: "मनुष्यों में हृदय दोहरा परिसंचरण चलाता — शरीर के हर पूरे चक्कर को रक्त हृदय से दो बार गुज़रता, आपूर्ति तेज़ रखते।",
+          mr: "मनुष्यांत हृदय दुहेरी अभिसरण चालवते — शरीराच्या प्रत्येक पूर्ण फेरीला रक्त हृदयातून दोनदा जाते, पुरवठा जलद ठेवत.",
+        },
+        extra: {
+          en: "Water climbs a tall tree without any pump — it is pulled up as leaves lose water by transpiration, dragging the whole thread behind it.",
+          hi: "पानी ऊँचे पेड़ पर बिना किसी पंप चढ़ता — पत्तियों के वाष्पोत्सर्जन से पानी खोने पर यह ऊपर खिंचता, पूरे धागे को पीछे घसीटते।",
+          mr: "पाणी उंच झाडावर कोणत्याही पंपाविना चढते — पानांच्या बाष्पोत्सर्जनाने पाणी गमावताना ते वर ओढले जाते, अख्खा धागा मागे ओढत.",
+        },
+        pair: {
+          left: {
+            en: "Blood and sap ferrying materials around",
+            hi: "पदार्थ ढोते रक्त और रस",
+            mr: "पदार्थ वाहणारे रक्त आणि रस",
+          },
+          right: {
+            en: "transport",
+            hi: "परिवहन",
+            mr: "वहन",
+          },
+        },
+      },
+      {
+        id: "excretion",
+        name: {
+          en: "Excretion",
+          hi: "उत्सर्जन",
+          mr: "उत्सर्जन",
+        },
+        kind: "process",
+        prompt: {
+          en: "The body's chemistry makes poisonous nitrogen-containing wastes that must be filtered out of the blood and thrown away as urine. What is this removal of metabolic waste called?",
+          hi: "शरीर का रसायन विषैले नाइट्रोजन-युक्त अपशिष्ट बनाता जिन्हें रक्त से छानकर मूत्र बतौर फेंकना होता। उपापचयी अपशिष्ट के इस हटाने को क्या कहते?",
+          mr: "शरीराचे रसायन विषारी नायट्रोजन-युक्त कचरा बनवते जो रक्तातून गाळून मूत्र म्हणून फेकावा लागतो. चयापचयी कचऱ्याच्या या काढण्याला काय म्हणतात?",
+        },
+        statement: {
+          en: "Excretion is the removal of harmful nitrogenous waste made by the body's chemistry; in humans the kidneys filter it from the blood and pass it out as urine.",
+          hi: "उत्सर्जन शरीर के रसायन से बना हानिकारक नाइट्रोजनी अपशिष्ट हटाना; मनुष्यों में गुर्दे इसे रक्त से छानते और मूत्र बतौर बाहर निकालते।",
+          mr: "उत्सर्जन शरीराच्या रसायनाने बनलेला हानिकारक नायट्रोजनी कचरा काढणे; मनुष्यांत मूत्रपिंडे तो रक्तातून गाळतात आणि मूत्र म्हणून बाहेर काढतात.",
+        },
+        detail: {
+          en: "The kidney's working unit is the nephron — a tiny filter that lets waste and water pass, then reclaims the water and useful substances the body still needs.",
+          hi: "गुर्दे की कार्य-इकाई वृक्काणु — एक नन्हा छन्ना जो अपशिष्ट-पानी जाने देता, फिर पानी और उपयोगी पदार्थ जो शरीर को अब भी चाहिए वापस लेता।",
+          mr: "मूत्रपिंडाचे कार्य-एकक वृक्कक — एक इवली गाळणी जी कचरा-पाणी जाऊ देते, मग पाणी आणि उपयुक्त पदार्थ जे शरीराला अजून हवे परत घेते.",
+        },
+        extra: {
+          en: "Plants have no kidneys — they shed waste in falling leaves, store it in bark and vacuoles, or simply release it into the soil around their roots.",
+          hi: "पौधों के गुर्दे नहीं — वे गिरती पत्तियों में अपशिष्ट त्यागते, छाल-रसधानियों में जमा करते, या बस जड़ों के आसपास मिट्टी में छोड़ते।",
+          mr: "झाडांना मूत्रपिंडे नाहीत — ती गळणाऱ्या पानांत कचरा टाकतात, साल-रिक्तिकांत साठवतात, किंवा फक्त मुळांभोवतीच्या मातीत सोडतात.",
+        },
+        pair: {
+          left: {
+            en: "Filtering nitrogen waste out as urine",
+            hi: "नाइट्रोजन अपशिष्ट मूत्र बतौर छानना",
+            mr: "नायट्रोजन कचरा मूत्र म्हणून गाळणे",
+          },
+          right: {
+            en: "excretion",
+            hi: "उत्सर्जन",
+            mr: "उत्सर्जन",
+          },
+        },
+      },
+      {
+        id: "digestion",
+        name: {
+          en: "Digestion",
+          hi: "पाचन",
+          mr: "पचन",
+        },
+        kind: "process",
+        prompt: {
+          en: "The bread you eat is too big and complex for a cell to use, so enzymes break it down step by step into simple sugars the body can absorb. What is this breaking-down of food called?",
+          hi: "जो रोटी तुम खाते वह कोशिका के काम आने को बहुत बड़ी-जटिल, अतः एंज़ाइम इसे क़दम-दर-क़दम सरल शर्कराओं में तोड़ते जिन्हें शरीर सोख सके। भोजन के इस टूटने को क्या कहते?",
+          mr: "जी भाकर तू खातोस ती पेशीच्या उपयोगाला फार मोठी-गुंतागुंतीची, म्हणून विकरे ती पाऊल-दर-पाऊल साध्या साखरांत मोडतात जी शरीर शोषू शकते. अन्नाच्या या मोडण्याला काय म्हणतात?",
+        },
+        statement: {
+          en: "Digestion is the breaking down of large, complex food into small, simple molecules that the body can absorb, carried out step by step by enzymes along the alimentary canal.",
+          hi: "पाचन बड़े, जटिल भोजन को छोटे, सरल अणुओं में तोड़ना जिन्हें शरीर सोख सके, आहार-नाल के साथ एंज़ाइमों द्वारा क़दम-दर-क़दम किया।",
+          mr: "पचन मोठे, गुंतागुंतीचे अन्न लहान, साध्या रेणूंत मोडणे जे शरीर शोषू शकते, अन्ननलिकेच्या बाजूने विकरांनी पाऊल-दर-पाऊल केलेले.",
+        },
+        detail: {
+          en: "Each enzyme has one job — saliva's amylase starts on starch, the stomach's pepsin on protein, and the intestine finishes them all into absorbable units.",
+          hi: "हर एंज़ाइम का एक काम — लार का एमाइलेज़ मंड पर शुरू, पेट का पेप्सिन प्रोटीन पर, और आँत उन सबको सोखे-योग्य इकाइयों में पूरा करती।",
+          mr: "प्रत्येक विकराचे एक काम — लाळेचे अमायलेज पिष्टावर सुरू, पोटाचे पेप्सिन प्रथिनावर, आणि आतडे त्या साऱ्यांना शोषण्याजोग्या एककांत पूर्ण करते.",
+        },
+        extra: {
+          en: "The digested nutrients are soaked up through the finger-like villi of the small intestine, whose vast folded surface makes absorption swift.",
+          hi: "पचे पोषक छोटी आँत के उँगली-से रसांकुरों से सोखे जाते, जिनकी विशाल मुड़ी सतह अवशोषण तेज़ करती।",
+          mr: "पचलेले पोषक लहान आतड्याच्या बोटांसारख्या रसांकुरांतून शोषले जातात, ज्यांचे प्रचंड घडीचे पृष्ठ शोषण जलद करते.",
+        },
+        pair: {
+          left: {
+            en: "Enzymes break big food into absorbable units",
+            hi: "एंज़ाइम बड़े भोजन को सोखे-योग्य में तोड़ें",
+            mr: "विकरे मोठे अन्न शोषण्याजोग्यात मोडतात",
+          },
+          right: {
+            en: "digestion",
+            hi: "पाचन",
+            mr: "पचन",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Photosynthesis builds glucose and stores energy, releasing oxygen; respiration breaks glucose down and releases energy, using oxygen. A student says the two are 'opposites'. In what sense is respiration essentially the reverse of photosynthesis, and why does that matter for life on Earth?",
+          hi: "प्रकाश-संश्लेषण ग्लूकोज़ बनाता और ऊर्जा जमा करता, ऑक्सीजन छोड़ते; श्वसन ग्लूकोज़ तोड़ता और ऊर्जा छोड़ता, ऑक्सीजन वापरते। एक छात्र कहता दोनों 'विपरीत'। श्वसन किस अर्थ में मूलतः प्रकाश-संश्लेषण का उल्टा, और यह पृथ्वी पर जीवन को क्यों मायने रखता?",
+          mr: "प्रकाशसंश्लेषण ग्लुकोज बनवते आणि ऊर्जा साठवते, ऑक्सिजन सोडत; श्वसन ग्लुकोज मोडते आणि ऊर्जा सोडते, ऑक्सिजन वापरत. एक विद्यार्थी म्हणतो दोन्ही 'विरुद्ध'. श्वसन कोणत्या अर्थाने मूलतः प्रकाशसंश्लेषणाचे उलट, आणि ते पृथ्वीवरील जीवनाला का महत्त्वाचे?",
+        },
+        choices: [
+          {
+            en: "Photosynthesis uses light energy to combine CO₂ and water into glucose and oxygen (storing energy); respiration recombines glucose and oxygen back into CO₂ and water (releasing that stored energy). The two run in opposite directions and, cycling together, keep the atmosphere's oxygen and carbon dioxide — and the flow of energy from the sun — in balance for all living things",
+            hi: "प्रकाश-संश्लेषण प्रकाश-ऊर्जा से CO₂ और पानी को ग्लूकोज़-ऑक्सीजन में जोड़ता (ऊर्जा जमा); श्वसन ग्लूकोज़-ऑक्सीजन को वापस CO₂-पानी में जोड़ता (वह जमा ऊर्जा छोड़ते)। दोनों उल्टी दिशाओं में चलते और, साथ चक्र करते, वायुमंडल की ऑक्सीजन-कार्बन डाइऑक्साइड — और सूरज से ऊर्जा-प्रवाह — सब जीवों के लिए संतुलित रखते",
+            mr: "प्रकाशसंश्लेषण प्रकाश-ऊर्जेने CO₂ आणि पाणी ग्लुकोज-ऑक्सिजनमध्ये जोडते (ऊर्जा साठवत); श्वसन ग्लुकोज-ऑक्सिजन परत CO₂-पाण्यात जोडते (ती साठलेली ऊर्जा सोडत). दोन्ही उलट दिशांत चालतात आणि, एकत्र चक्र करत, वातावरणाची ऑक्सिजन-कार्बन डायऑक्साइड — आणि सूर्याकडून ऊर्जा-प्रवाह — सर्व सजीवांसाठी संतुलित ठेवतात",
+          },
+          {
+            en: "They are unrelated processes that happen to share some chemicals by chance",
+            hi: "वे असंबंधित प्रक्रियाएँ जो संयोग से कुछ रसायन साझा करतीं",
+            mr: "त्या असंबंधित प्रक्रिया ज्या योगायोगाने काही रसायने वाटतात",
+          },
+          {
+            en: "Respiration also uses light, so it is identical to photosynthesis",
+            hi: "श्वसन भी प्रकाश वापरता, अतः प्रकाश-संश्लेषण के समान",
+            mr: "श्वसनही प्रकाश वापरते, म्हणून प्रकाशसंश्लेषणासारखेच",
+          },
+          {
+            en: "Only plants respire and only animals photosynthesise",
+            hi: "केवल पौधे श्वसन करते और केवल पशु प्रकाश-संश्लेषण",
+            mr: "फक्त झाडे श्वसन करतात आणि फक्त प्राणी प्रकाशसंश्लेषण",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Written as word-equations, the two processes really are near-mirror images. Photosynthesis takes carbon dioxide and water, and using the energy of sunlight captured by chlorophyll, builds them up into glucose and oxygen — an 'uphill' reaction that stores the sun's energy in the chemical bonds of the glucose. Respiration does the reverse: it takes glucose and oxygen and breaks them back down into carbon dioxide and water, and in doing so releases the very energy that photosynthesis had locked away, capturing it in ATP for the cell to spend. So one builds the fuel and banks the energy; the other burns the fuel and withdraws the energy — opposite directions of the same transformation. This matters enormously for life on Earth because the two together form a great cycle. The oxygen that respiration consumes is exactly what photosynthesis pours back into the air; the carbon dioxide that respiration produces is exactly what photosynthesis draws in. Left to itself, respiration by every animal, plant and microbe would strip the atmosphere of oxygen and choke it with carbon dioxide — but green plants, running photosynthesis, continually replace the oxygen and remove the carbon dioxide. And the deeper current beneath the gas exchange is energy: sunlight, captured by plants, is passed on as food to every other organism and finally released by respiration to power life. (Note the common misconception the wrong options carry: plants respire too, all day and night, not only animals — photosynthesis is an extra thing green plants do on top of the respiration every living cell must do.) So 'reverse of each other' is the right idea, and it is precisely this reversibility, cycling endlessly, that keeps both the air and the energy supply of the living world in balance.",
+          hi: "शब्द-समीकरणों में लिखें तो दोनों प्रक्रियाएँ सचमुच लगभग दर्पण-छवि। प्रकाश-संश्लेषण कार्बन डाइऑक्साइड और पानी लेता, और क्लोरोफ़िल से पकड़ी धूप की ऊर्जा से, उन्हें ग्लूकोज़ और ऑक्सीजन में बनाता — एक 'चढ़ाई' अभिक्रिया जो सूरज की ऊर्जा ग्लूकोज़ के रासायनिक बंधों में जमा करती। श्वसन उल्टा करता: यह ग्लूकोज़-ऑक्सीजन लेकर उन्हें वापस कार्बन डाइऑक्साइड-पानी में तोड़ता, और ऐसा करते वही ऊर्जा छोड़ता जो प्रकाश-संश्लेषण ने बंद की थी, कोशिका के खर्च को ATP में पकड़ते। अतः एक ईंधन बनाता और ऊर्जा जमा; दूसरा ईंधन जलाता और ऊर्जा निकालता — उसी रूपांतरण की उल्टी दिशाएँ। यह पृथ्वी पर जीवन को बहुत मायने रखता क्योंकि दोनों मिलकर एक बड़ा चक्र बनाते। जो ऑक्सीजन श्वसन खपाता ठीक वही प्रकाश-संश्लेषण हवा में वापस उँड़ेलता; जो कार्बन डाइऑक्साइड श्वसन बनाता ठीक वही प्रकाश-संश्लेषण खींचता। अपने भरोसे छोड़ा, हर पशु, पौधे, सूक्ष्मजीव का श्वसन वायुमंडल से ऑक्सीजन छील कार्बन डाइऑक्साइड से घोंट देता — पर हरे पौधे, प्रकाश-संश्लेषण चलाते, लगातार ऑक्सीजन बदलते और कार्बन डाइऑक्साइड हटाते। और गैस-विनिमय के नीचे गहरी धारा ऊर्जा: धूप, पौधों से पकड़ी, हर अन्य जीव को भोजन बतौर सौंपी और अंततः श्वसन से छोड़ी जीवन को शक्ति देने। (ग़लत विकल्प जो आम भ्रांति ढोते नोट करो: पौधे भी श्वसन करते, दिन-रात, केवल पशु नहीं — प्रकाश-संश्लेषण अतिरिक्त चीज़ जो हरे पौधे हर जीवित कोशिका के श्वसन के ऊपर करते।) अतः 'एक-दूसरे का उल्टा' सही विचार, और ठीक यही उलटावपन, अनंत चक्र करता, जीवित दुनिया की हवा और ऊर्जा-आपूर्ति दोनों संतुलित रखता।",
+          mr: "शब्द-समीकरणांत लिहिले तर दोन्ही प्रक्रिया खरोखर जवळपास आरशातल्या प्रतिमा. प्रकाशसंश्लेषण कार्बन डायऑक्साइड आणि पाणी घेते, आणि हरितद्रव्याने पकडलेल्या उन्हाच्या ऊर्जेने, त्यांना ग्लुकोज आणि ऑक्सिजनमध्ये बांधते — एक 'चढाची' अभिक्रिया जी सूर्याची ऊर्जा ग्लुकोजच्या रासायनिक बंधांत साठवते. श्वसन उलट करते: ते ग्लुकोज-ऑक्सिजन घेऊन त्यांना परत कार्बन डायऑक्साइड-पाण्यात मोडते, आणि असे करताना तीच ऊर्जा सोडते जी प्रकाशसंश्लेषणाने बंद केली होती, पेशीच्या खर्चाला ATP मध्ये पकडत. म्हणून एक इंधन बनवते आणि ऊर्जा साठवते; दुसरे इंधन जाळते आणि ऊर्जा काढते — त्याच रूपांतराच्या उलट दिशा. हे पृथ्वीवरील जीवनाला प्रचंड महत्त्वाचे कारण दोन्ही एकत्र एक मोठे चक्र बनवतात. जो ऑक्सिजन श्वसन वापरते नेमके तेच प्रकाशसंश्लेषण हवेत परत ओतते; जो कार्बन डायऑक्साइड श्वसन बनवते नेमके तेच प्रकाशसंश्लेषण खेचते. स्वतःवर सोडले, प्रत्येक प्राणी, झाड, सूक्ष्मजीवाचे श्वसन वातावरणातून ऑक्सिजन सोलून कार्बन डायऑक्साइडने गुदमरवेल — पण हिरवी झाडे, प्रकाशसंश्लेषण चालवत, सतत ऑक्सिजन बदलतात आणि कार्बन डायऑक्साइड काढतात. आणि वायू-देवाणघेवाणीखालचा खोल प्रवाह ऊर्जा: ऊन, झाडांनी पकडलेले, प्रत्येक इतर सजीवाला अन्न म्हणून सोपवलेले आणि अखेर श्वसनाने सोडलेले जीवनाला शक्ती द्यायला. (चुकीचे पर्याय जी सामान्य गैरसमज वाहतात लक्षात घ्या: झाडेही श्वसन करतात, दिवसरात्र, फक्त प्राणी नाही — प्रकाशसंश्लेषण अतिरिक्त गोष्ट जी हिरवी झाडे प्रत्येक जिवंत पेशीच्या श्वसनावर करतात.) म्हणून 'एकमेकांचे उलट' योग्य कल्पना, आणि नेमके हेच उलटपण, अनंत चक्र करत, जिवंत जगाची हवा आणि ऊर्जा-पुरवठा दोन्ही संतुलित ठेवते.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Fish have a heart with two chambers and blood that passes through it once per body-circuit, but birds and mammals have a four-chambered heart with double circulation, keeping oxygen-rich and oxygen-poor blood strictly apart. Why did warm-blooded animals evolve this more complex plumbing?",
+          hi: "मछलियों के हृदय में दो कक्ष और रक्त जो शरीर-चक्कर में एक बार गुज़रता, पर पक्षियों-स्तनधारियों में चार-कक्षीय हृदय दोहरे परिसंचरण के साथ, ऑक्सीजन-समृद्ध और ऑक्सीजन-दरिद्र रक्त कड़ाई से अलग रखते। गर्म-रक्त पशुओं ने यह अधिक जटिल नलसाज़ी क्यों विकसित की?",
+          mr: "माशांच्या हृदयात दोन कप्पे आणि रक्त जे शरीर-फेरीत एकदा जाते, पण पक्षी-सस्तन प्राण्यांत चार-कप्प्यांचे हृदय दुहेरी अभिसरणासह, ऑक्सिजन-समृद्ध आणि ऑक्सिजन-दरिद्री रक्त कडकपणे वेगळे ठेवत. उष्ण-रक्त प्राण्यांनी ही अधिक गुंतागुंतीची नळकाम का विकसित केली?",
+        },
+        choices: [
+          {
+            en: "Warm-blooded animals need a great deal of energy to keep a constant body temperature, so their cells need a rich, steady oxygen supply; a four-chambered heart keeps oxygenated and deoxygenated blood from mixing, so fully oxygen-loaded blood is pumped hard to the body, delivering oxygen fast enough to fuel their high energy needs",
+            hi: "गर्म-रक्त पशुओं को नियत शरीर-तापमान रखने बहुत ऊर्जा चाहिए, अतः उनकी कोशिकाओं को समृद्ध, स्थिर ऑक्सीजन-आपूर्ति चाहिए; चार-कक्षीय हृदय ऑक्सीजनित-विऑक्सीजनित रक्त को मिलने से रोकता, अतः पूर्ण ऑक्सीजन-भरा रक्त शरीर को ज़ोर से पंप, ऑक्सीजन इतनी तेज़ पहुँचाते कि उनकी उच्च ऊर्जा-ज़रूरतें ईंधित करें",
+            mr: "उष्ण-रक्त प्राण्यांना स्थिर शरीर-तापमान राखायला पुष्कळ ऊर्जा हवी, म्हणून त्यांच्या पेशींना समृद्ध, स्थिर ऑक्सिजन-पुरवठा हवा; चार-कप्प्यांचे हृदय ऑक्सिजनयुक्त-ऑक्सिजनरहित रक्त मिसळण्यापासून रोखते, म्हणून पूर्ण ऑक्सिजन-भरलेले रक्त शरीराला जोरात पंप, ऑक्सिजन इतक्या जलद पोहोचवत की त्यांच्या उच्च ऊर्जा-गरजा इंधित करतात",
+          },
+          {
+            en: "A four-chambered heart is simply larger and looks more impressive",
+            hi: "चार-कक्षीय हृदय बस बड़ा और अधिक प्रभावशाली दिखता",
+            mr: "चार-कप्प्यांचे हृदय फक्त मोठे आणि अधिक प्रभावी दिसते",
+          },
+          {
+            en: "Warm-blooded animals do not need oxygen, so they keep the blood separate for no reason",
+            hi: "गर्म-रक्त पशुओं को ऑक्सीजन नहीं चाहिए, अतः वे रक्त बिना कारण अलग रखते",
+            mr: "उष्ण-रक्त प्राण्यांना ऑक्सिजन नको, म्हणून ते रक्त कारणाविना वेगळे ठेवतात",
+          },
+          {
+            en: "Mixing the blood would make it flow faster, so they avoid mixing to slow it down",
+            hi: "रक्त मिलाना इसे तेज़ बहाता, अतः वे धीमा करने मिलाने से बचते",
+            mr: "रक्त मिसळणे ते जलद वाहवते, म्हणून ते मंद करायला मिसळणे टाळतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The answer ties heart design directly to how an animal makes its living. Fish are cold-blooded: their body temperature drifts with the water around them, and their energy demands are relatively modest, so a simpler heart with two chambers, pushing blood once around a single loop, is enough — even though the blood loses pressure passing through the gills before reaching the body. Birds and mammals are warm-blooded, which is a costly way to live: they hold their body temperature steady and high regardless of the weather, and that constant internal warmth has to be generated by burning fuel all the time in every tissue. Such a furnace demands a rich and unfailing supply of oxygen to every cell, delivered fast and at full strength. That is exactly what the four-chambered heart with double circulation provides. By splitting the heart into four chambers, it keeps two streams completely separate: oxygen-poor blood coming back from the body is sent only to the lungs, and oxygen-rich blood returning from the lungs is sent only out to the body — the two never mix. This means the blood reaching the tissues is fully loaded with oxygen, not diluted by any oxygen-poor blood, and because it passes through the heart a second time it can be pumped out again at high pressure. The result is oxygen delivered to the cells both at maximum concentration and at speed — precisely what a high-energy, warm-blooded metabolism needs. So the more elaborate plumbing is not decoration; it is the circulatory system rebuilt to match a much greater and steadier demand for energy, which cold-blooded fish, living at nature's pace, simply do not have.",
+          hi: "उत्तर हृदय-रचना को सीधे इससे बाँधता कि पशु अपनी जीविका कैसे कमाता। मछलियाँ ठंडे-रक्त: उनका शरीर-तापमान आसपास के पानी से बहता, और उनकी ऊर्जा-माँगें अपेक्षाकृत मामूली, अतः दो कक्षों वाला सरल हृदय, रक्त को एकल लूप में एक बार धकेलते, काफ़ी — यद्यपि रक्त गलफड़ों से गुज़रते शरीर पहुँचने से पहले दबाव खोता। पक्षी-स्तनधारी गर्म-रक्त, जो जीने का महँगा तरीक़ा: वे मौसम चाहे जो शरीर-तापमान स्थिर-ऊँचा रखते, और वह नियत भीतरी गरमी हर ऊतक में हर समय ईंधन जलाकर बनानी होती। ऐसी भट्टी हर कोशिका को समृद्ध-अचूक ऑक्सीजन-आपूर्ति माँगती, तेज़ और पूरी शक्ति से पहुँचाई। ठीक वही चार-कक्षीय हृदय दोहरे परिसंचरण से देता। हृदय को चार कक्षों में बाँटकर, यह दो धाराएँ पूर्णतः अलग रखता: शरीर से लौटता ऑक्सीजन-दरिद्र रक्त केवल फेफड़ों को, और फेफड़ों से लौटता ऑक्सीजन-समृद्ध रक्त केवल शरीर को — दोनों कभी नहीं मिलते। इसका अर्थ ऊतकों पहुँचता रक्त पूर्ण ऑक्सीजन-भरा, किसी ऑक्सीजन-दरिद्र रक्त से पतला नहीं, और हृदय से दूसरी बार गुज़रने से यह फिर उच्च दाब पर पंप। परिणाम कोशिकाओं को ऑक्सीजन अधिकतम सांद्रता और गति दोनों पर पहुँचाई — ठीक जो उच्च-ऊर्जा, गर्म-रक्त उपापचय माँगता। अतः अधिक विस्तृत नलसाज़ी सजावट नहीं; यह परिसंचरण-तंत्र कहीं अधिक और स्थिर ऊर्जा-माँग से मेल खाने फिर बना, जो ठंडे-रक्त मछलियाँ, प्रकृति की गति पर जीतीं, बस नहीं रखतीं।",
+          mr: "उत्तर हृदय-रचनेला थेट यांशी बांधते की प्राणी आपली उपजीविका कशी कमावतो. मासे थंड-रक्त: त्यांचे शरीर-तापमान आजूबाजूच्या पाण्याशी वाहते, आणि त्यांच्या ऊर्जा-मागण्या तुलनेने माफक, म्हणून दोन कप्प्यांचे साधे हृदय, रक्ताला एकल फेरीत एकदा ढकलत, पुरेसे — जरी रक्त कल्ल्यांतून जाताना शरीर गाठण्याआधी दाब गमावते. पक्षी-सस्तन उष्ण-रक्त, जो जगण्याचा महाग मार्ग: ते हवामान कितीही असो शरीर-तापमान स्थिर-उच्च ठेवतात, आणि ती स्थिर आतली उब प्रत्येक ऊतीत सर्वकाळ इंधन जाळून बनवावी लागते. अशी भट्टी प्रत्येक पेशीला समृद्ध-अचूक ऑक्सिजन-पुरवठा मागते, जलद आणि पूर्ण शक्तीने पोहोचवलेला. नेमके तेच चार-कप्प्यांचे हृदय दुहेरी अभिसरणाने देते. हृदयाला चार कप्प्यांत विभागून, ते दोन प्रवाह पूर्णपणे वेगळे ठेवते: शरीराकडून परतणारे ऑक्सिजन-दरिद्री रक्त फक्त फुप्फुसांना, आणि फुप्फुसांकडून परतणारे ऑक्सिजन-समृद्ध रक्त फक्त शरीराला — दोन्ही कधी मिसळत नाहीत. याचा अर्थ ऊतींपर्यंत पोहोचणारे रक्त पूर्ण ऑक्सिजन-भरलेले, कोणत्याही ऑक्सिजन-दरिद्री रक्ताने पातळ नाही, आणि हृदयातून दुसऱ्यांदा जाताना ते पुन्हा उच्च दाबावर पंप. परिणाम पेशींना ऑक्सिजन कमाल सांद्रता आणि वेग दोन्हीवर पोहोचवलेला — नेमके जे उच्च-ऊर्जा, उष्ण-रक्त चयापचय मागते. म्हणून अधिक विस्तृत नळकाम सजावट नाही; ते अभिसरण-तंत्र कितीतरी अधिक आणि स्थिर ऊर्जा-मागणीशी जुळायला पुन्हा बांधलेले, जे थंड-रक्त मासे, निसर्गाच्या गतीने जगत, फक्त बाळगत नाहीत.",
+        },
+      },
+    ],
+  },
 ];
