@@ -3494,7 +3494,15 @@ hundred should not pay for guaranteed no-ops), and moving a pupil between
 classes re-syncs the pupil. A new class teacher takes the stand-ins over in
 the same action; the last teacher leaving passes them to the admin fallback.
 Both transitions are pinned through the REAL `assignTeacher`/`unassignTeacher`
-calls, not by editing rows. A pupil recorded as leaving drops the stand-in inside the same
+calls, not by editing rows. **A teacher leaving the school entirely is covered
+too**: suspending a staff membership walks what that person actually HOLDS —
+class-teacher stand-ins and admin-fallback stand-ins alike, which their class
+list alone would miss — and hands each pupil to the reconciler's next choice;
+reinstating a teacher brings their classes' unclaimed pupils back from the
+fallback. And when the operator removes a whole school, its stand-in
+guardianships are revoked inside the same removal transaction, by the same
+rule `recordDeparture` applies per pupil — the school's role as guardian ends
+with the school, while every family's own link deliberately survives it. A pupil recorded as leaving drops the stand-in inside the same
 departure transaction (a teacher is guardian of a pupil they teach, never of
 an alumnus) while a REAL parent's guardianship deliberately survives it —
 that link is what keeps the record reachable to the family afterwards.
@@ -3508,7 +3516,7 @@ being satisfiable the day every unclaimed pupil gained a guardian, and "Tom is
 staff, not a parent" stopped implying Tom holds no guardianship. Each test was
 re-anchored on what it actually meant — no guardianship *from this parent*, or
 a fresh account with none of any kind — with the claim under test unchanged.
-Suite at 86 files / 1,474 tests, eleven of them new; verified live with a minted
+Suite at 86 files / 1,476 tests, thirteen of them new; verified live with a minted
 session: a teacher holding twenty stand-ins gets the full "Your children"
 surface.
 

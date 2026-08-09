@@ -1,6 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { syncStandinGuardian } from "@/lib/standin-guardian";
+import type { ActiveContext } from "@/lib/session";
 
 /**
  * The school as stand-in guardian, until a real one arrives.
@@ -111,6 +112,35 @@ afterAll(async () => {
 
 const sync = (studentMembershipId: string) =>
   syncStandinGuardian({ schoolId, studentMembershipId, actorUserId: adminUserId });
+
+/** An admin session for the cohort/membership functions the later tests call. */
+function adminCtx(): ActiveContext {
+  return {
+    sessionId: "test",
+    membershipId: null,
+    schoolId,
+    role: "ADMIN",
+    user: {
+      id: adminUserId,
+      name: "Admin",
+      preferredName: null,
+      email: null,
+      avatarKey: null,
+      isMinor: false,
+      isSuperuser: false,
+      isAppAdmin: false,
+      prefs: {
+        theme: "system",
+        contrast: "normal",
+        font: "default",
+        motion: "full",
+        locale: "en",
+        channels: { push: false, email: false },
+        quietHours: null,
+      },
+    },
+  };
+}
 
 describe("granting", () => {
   it("⚠ gives an unclaimed pupil's class teacher the guardianship", async () => {
@@ -256,21 +286,7 @@ describe("the class teacher changes", () => {
       data: { role: "CO" },
     });
 
-    const adminCtx = {
-      sessionId: "test",
-      membershipId: null,
-      schoolId,
-      role: "ADMIN" as const,
-      user: {
-        id: adminUserId, name: "Admin", preferredName: null, email: null, avatarKey: null,
-        isMinor: false, isSuperuser: false, isAppAdmin: false,
-        prefs: {
-          theme: "system", contrast: "normal", font: "default", motion: "full",
-          locale: "en", channels: { push: false, email: false }, quietHours: null,
-        },
-      },
-    };
-    const result = await assignTeacher(adminCtx, classId, newTeacherM.id, { role: "LEAD" });
+    const result = await assignTeacher(adminCtx(), classId, newTeacherM.id, { role: "LEAD" });
     expect(result.ok).toBe(true);
 
     // Both unclaimed pupils of the class now have the NEW teacher standing in,
@@ -299,20 +315,6 @@ describe("the class teacher changes", () => {
   it("⚠ unassigning the last teacher passes the stand-ins to the admin fallback", async () => {
     const { unassignTeacher } = await import("@/lib/cohort");
 
-    const adminCtx = {
-      sessionId: "test",
-      membershipId: null,
-      schoolId,
-      role: "ADMIN" as const,
-      user: {
-        id: adminUserId, name: "Admin", preferredName: null, email: null, avatarKey: null,
-        isMinor: false, isSuperuser: false, isAppAdmin: false,
-        prefs: {
-          theme: "system", contrast: "normal", font: "default", motion: "full",
-          locale: "en", channels: { push: false, email: false }, quietHours: null,
-        },
-      },
-    };
 
     // Remove every teacher from the class, new LEAD and demoted CO alike.
     const staff = await db.classTeacher.findMany({
@@ -320,7 +322,7 @@ describe("the class teacher changes", () => {
       select: { teacherMembershipId: true },
     });
     for (const s of staff) {
-      const result = await unassignTeacher(adminCtx, classId, s.teacherMembershipId);
+      const result = await unassignTeacher(adminCtx(), classId, s.teacherMembershipId);
       expect(result.ok).toBe(true);
     }
 
@@ -328,6 +330,69 @@ describe("the class teacher changes", () => {
       where: { studentMembershipId: pupilInClass, status: "ACTIVE" },
     });
     expect(active.parentUserId).toBe(adminUserId);
+    expect(active.relation).toBe("SCHOOL");
+  });
+});
+
+describe("the teacher leaves the school", () => {
+  /**
+   * Through suspendMembership/reinstateMembership — the real "teacher leaves"
+   * machinery, since staff never get `leftAt` (removeMembership is pupils
+   * only). What is pinned: a suspended teacher's stand-ins pass to the admin
+   * fallback in the same action, and reinstating them brings the class's
+   * unclaimed pupils back.
+   */
+  it("⚠ suspending the holding teacher passes their stand-ins on", async () => {
+    const { assignTeacher } = await import("@/lib/cohort");
+    const { suspendMembership } = await import("@/lib/membership");
+
+    // Put a dedicated teacher on the class and let them take the stand-ins.
+    const t3 = await db.user.create({
+      data: { name: "ZZ Teacher Three", email: `zz-standin-teacher-three-${STAMP}@test.invalid` },
+      select: { id: true },
+    });
+    const t3M = await db.membership.create({
+      data: { userId: t3.id, schoolId, role: "TEACHER", status: "ACTIVE" },
+      select: { id: true },
+    });
+    expect((await assignTeacher(adminCtx(), classId, t3M.id, { role: "LEAD" })).ok).toBe(true);
+
+    let active = await db.guardianship.findFirstOrThrow({
+      where: { studentMembershipId: pupilInClass, status: "ACTIVE" },
+    });
+    expect(active.parentUserId).toBe(t3.id);
+
+    // The admin pauses them. Their stand-ins must not wait for a backfill.
+    const result = await suspendMembership(adminCtx(), t3M.id, "ZZ long leave");
+    expect(result.ok).toBe(true);
+
+    active = await db.guardianship.findFirstOrThrow({
+      where: { studentMembershipId: pupilInClass, status: "ACTIVE" },
+    });
+    expect(active.parentUserId).toBe(adminUserId);
+    expect(active.relation).toBe("SCHOOL");
+
+    const theirs = await db.guardianship.findFirst({
+      where: { studentMembershipId: pupilInClass, parentUserId: t3.id },
+    });
+    expect(theirs?.status).toBe("REVOKED");
+  });
+
+  it("⚠ reinstating them brings the class's unclaimed pupils back", async () => {
+    const { reinstateMembership } = await import("@/lib/membership");
+
+    const t3M = await db.membership.findFirstOrThrow({
+      where: { schoolId, role: "TEACHER", status: "SUSPENDED" },
+      select: { id: true, userId: true },
+    });
+
+    const result = await reinstateMembership(adminCtx(), t3M.id);
+    expect(result.ok).toBe(true);
+
+    const active = await db.guardianship.findFirstOrThrow({
+      where: { studentMembershipId: pupilInClass, status: "ACTIVE" },
+    });
+    expect(active.parentUserId).toBe(t3M.userId);
     expect(active.relation).toBe("SCHOOL");
   });
 });

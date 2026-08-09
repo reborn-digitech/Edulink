@@ -375,6 +375,7 @@ type RemovalTx = {
   schoolRecord: { createMany(args: unknown): Promise<unknown> };
   membership: { updateMany(args: unknown): Promise<unknown> };
   enrollment: { updateMany(args: unknown): Promise<unknown> };
+  guardianship: { updateMany(args: unknown): Promise<unknown> };
 };
 
 /**
@@ -488,6 +489,16 @@ export async function removeSchool(
       await t.membership.updateMany({
         where: { schoolId, leftAt: null },
         data: { leftAt },
+      });
+
+      // The school's stand-in guardianships end with the school, the same rule
+      // recordDeparture applies per pupil: a teacher is guardian of a pupil
+      // they teach, never of an alumnus. Family guardianships deliberately
+      // survive — they are what keeps each child's record reachable to their
+      // own parents after the school is gone.
+      await t.guardianship.updateMany({
+        where: { studentSchoolId: schoolId, relation: "SCHOOL", status: "ACTIVE" },
+        data: { status: "REVOKED" },
       });
     });
 

@@ -249,3 +249,70 @@ export async function syncStandinsForClass(opts: {
     );
   }
 }
+
+/**
+ * Re-syncs every pupil somebody currently stands in for, within one school.
+ *
+ * The hook for a PERSON becoming ineligible rather than a class changing
+ * hands: a teacher or admin whose membership is suspended may hold stand-in
+ * guardianships as class teacher AND as admin fallback, and their classes are
+ * not the whole list — so this walks what they actually hold, which is by
+ * definition exactly the set that needs a new holder. The reconciler's own
+ * eligibility rules (ACTIVE, not left) do the choosing.
+ */
+export async function syncStandinsHeldBy(opts: {
+  schoolId: string;
+  userId: string;
+  actorUserId: string;
+}): Promise<void> {
+  const { schoolId, userId, actorUserId } = opts;
+
+  const held = await db.guardianship.findMany({
+    where: {
+      parentUserId: userId,
+      studentSchoolId: schoolId,
+      relation: "SCHOOL",
+      status: "ACTIVE",
+    },
+    select: { studentMembershipId: true },
+  });
+
+  for (const g of held) {
+    await syncStandinGuardian({
+      schoolId,
+      studentMembershipId: g.studentMembershipId,
+      actorUserId,
+    }).catch((error) => console.error("[syncStandinsHeldBy]", g.studentMembershipId, error));
+  }
+}
+
+/**
+ * Re-syncs the classes a teacher is attached to — the restore-side hook.
+ *
+ * A reinstated class teacher outranks the admin fallback that covered their
+ * absence, so their classes' unclaimed pupils come back to them. Reads the
+ * class list under the school's own policies; each class then goes through
+ * the same candidate-filtered sync a staffing change uses.
+ */
+export async function syncStandinsForTeacherClasses(opts: {
+  schoolId: string;
+  teacherUserId: string;
+  actorUserId: string;
+}): Promise<void> {
+  const { schoolId, teacherUserId, actorUserId } = opts;
+
+  const rows = await forTenant(
+    { schoolIds: [schoolId], userId: actorUserId, joinCode: null, isSuperuser: false },
+    () =>
+      db.classTeacher.findMany({
+        where: { schoolId, teacher: { userId: teacherUserId, schoolId } },
+        select: { classId: true },
+      }),
+  );
+
+  for (const classId of new Set(rows.map((r) => r.classId))) {
+    await syncStandinsForClass({ schoolId, classId, actorUserId }).catch((error) =>
+      console.error("[syncStandinsForTeacherClasses]", classId, error),
+    );
+  }
+}

@@ -5,6 +5,7 @@ import { audit } from "./audit";
 import { notify } from "./notify";
 import { AccessError } from "./tenancy";
 import { forOwnSchools } from "./tenant-context";
+import { syncStandinsHeldBy, syncStandinsForTeacherClasses } from "./standin-guardian";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
 
@@ -139,6 +140,16 @@ export async function suspendMembership(
     meta: { role: target?.role ?? null, reason: trimmed },
   });
 
+  // A suspended teacher or admin cannot be anybody's stand-in guardian. They
+  // may hold stand-ins two ways — as class teacher, and as the admin fallback —
+  // so the walk is over what they actually HOLD, not over their classes; the
+  // reconciler's own eligibility rules pick each pupil's new holder.
+  if (target && target.role !== "STUDENT") {
+    await syncStandinsHeldBy({ schoolId, userId: target.userId, actorUserId: ctx.user.id }).catch(
+      (error) => console.error("[suspendMembership] standin sync failed", error),
+    );
+  }
+
   // NO NOTIFICATION IS SENT HERE, and the reason is worth stating rather than
   // looking like an omission: a Notification row carries a schoolId and is
   // read under the same policy as everything else, so the one person who cannot
@@ -184,6 +195,17 @@ export async function reinstateMembership(
     targetId: membershipId,
     meta: { role: target.role },
   });
+
+  // A reinstated class teacher outranks the admin fallback that covered their
+  // absence, so their classes' unclaimed pupils come back to them now rather
+  // than on the next backfill.
+  if (target.role === "TEACHER" || target.role === "PRINCIPAL") {
+    await syncStandinsForTeacherClasses({
+      schoolId,
+      teacherUserId: target.userId,
+      actorUserId: ctx.user.id,
+    }).catch((error) => console.error("[reinstateMembership] standin sync failed", error));
+  }
 
   // This one CAN be delivered, which is the asymmetry with `suspendMembership`
   // above: the membership is ACTIVE again before the row is written, so the
