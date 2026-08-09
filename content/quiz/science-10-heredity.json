@@ -1,0 +1,653 @@
+{
+  "subject": "SCIENCE",
+  "classLevel": 10,
+  "chapter": "Chapter 8 — Heredity",
+  "name": "Heredity",
+  "slug": "science-10-heredity",
+  "summary": "How traits pass down the generations: genes carrying characters from parent to child, alleles that dominate or hide, Mendel's neat 3:1 ratio, the split between the genes you carry and the traits you show, and the chromosomes that quietly decide a child's sex.",
+  "position": 8,
+  "source": "EduLink original, written against NCERT Science (Class 10)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "आनुवंशिकता",
+      "summary": "गुण पीढ़ियों में कैसे उतरते: जनक से बच्चे को गुण ढोते जीन, हावी होते या छिपते युग्मविकल्पी, मेंडल का सुथरा 3:1 अनुपात, तुम जो जीन ढोते और जो गुण दिखाते के बीच बँटवारा, और चुपचाप बच्चे का लिंग तय करते गुणसूत्र।"
+    },
+    "mr": {
+      "name": "आनुवंशिकता",
+      "summary": "गुण पिढ्यांत कसे उतरतात: पालकाकडून मुलाला गुण वाहणारी जनुके, वर्चस्व गाजवणारे वा लपणारे युग्मविकल्पी, मेंडेलचे नीटस 3:1 प्रमाण, तू जी जनुके वाहतोस आणि जे गुण दाखवतोस यांतील विभागणी, आणि गुपचूप मुलाचे लिंग ठरवणारी गुणसूत्रे."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A child has its mother's eyes and its father's nose because units of inheritance passed down in the sex cells carry those characters. What is this passing of traits from parents to offspring, and what units carry it?",
+      "choices": [
+        "Heredity and genes",
+        "Inherited and acquired traits",
+        "Mendel's monohybrid ratio",
+        "Genotype and phenotype"
+      ],
+      "answerIndex": 0,
+      "solution": "Heredity is the passing of traits from parents to offspring, carried by genes — units of DNA on chromosomes, one set inherited from each parent. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बच्चे के माता की आँखें और पिता की नाक क्योंकि लिंग-कोशिकाओं में उतरी वंशागति-इकाइयाँ वे गुण ढोतीं। जनकों से संतान को गुणों का यह उतरना, और कौन-सी इकाइयाँ इसे ढोतीं?",
+          "choices": [
+            "आनुवंशिकता और जीन",
+            "आनुवंशिक और उपार्जित लक्षण",
+            "मेंडल का एकसंकर अनुपात",
+            "जीनप्ररूप और लक्षणप्ररूप"
+          ],
+          "solution": "आनुवंशिकता जनकों से संतान को गुणों का उतरना, जीनों द्वारा ढोया — गुणसूत्रों पर DNA की इकाइयाँ, हर जनक से एक समुच्चय वंशागत। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "मुलाला आईचे डोळे आणि वडिलांचे नाक कारण लिंग-पेशींत उतरलेली वंशागत-एकके ते गुण वाहतात. पालकांकडून संततीला गुणांचे हे उतरणे, आणि कोणती एकके ते वाहतात?",
+          "choices": [
+            "आनुवंशिकता आणि जनुके",
+            "वंशागत आणि उपार्जित गुण",
+            "मेंडेलचे एकसंकर प्रमाण",
+            "जनुकप्रकार आणि लक्षणप्रकार"
+          ],
+          "solution": "आनुवंशिकता पालकांकडून संततीला गुणांचे उतरणे, जनुकांनी वाहिलेले — गुणसूत्रांवरील DNA ची एकके, प्रत्येक पालकाकडून एक संच वंशागत. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Dominant and recessive alleles is correct?",
+      "choices": [
+        "Inherited traits are written in the genes and pass to the offspring, while acquired traits are gained during life — a scar, a suntan, learned skill or built muscle — and are not passed on, because they never change the DNA of the germ cells.",
+        "Sex determination in humans depends on the sex chromosomes: a child inheriting two X chromosomes is female, and one inheriting an X and a Y is male. The mother's egg always gives an X, so it is the father's sperm — X or Y — that decides the child's sex.",
+        "Mendel's monohybrid cross gives a 3:1 ratio in the second generation — three showing the dominant trait to one showing the recessive — because the recessive allele, hidden in the first generation, reappears when two recessive copies meet.",
+        "Alleles are alternative versions of a gene; a dominant allele shows its effect even when only one copy is present, while a recessive allele shows only when both copies are recessive."
+      ],
+      "answerIndex": 3,
+      "solution": "Alleles are alternative versions of a gene; a dominant allele shows its effect even when only one copy is present, while a recessive allele shows only when both copies are recessive. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रभावी और अप्रभावी युग्मविकल्पी के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "आनुवंशिक लक्षण जीनों में लिखे और संतान को उतरते, जबकि उपार्जित लक्षण जीवन-भर पाए — घाव, धूप-ताम्रता, सीखा कौशल या बनी माँसपेशी — और नहीं उतरते, क्योंकि वे जनन-कोशिकाओं का DNA कभी नहीं बदलते।",
+            "मनुष्यों में लिंग निर्धारण लिंग-गुणसूत्रों पर निर्भर: दो X गुणसूत्र वंशागत करता बच्चा स्त्री, और एक X एक Y वंशागत करता पुरुष। माता का अंड सदा X देता, अतः पिता का शुक्राणु — X या Y — बच्चे का लिंग तय करता।",
+            "मेंडल का एकसंकर संकरण दूसरी पीढ़ी में 3:1 अनुपात देता — तीन प्रभावी गुण दिखाते एक अप्रभावी को — क्योंकि पहली पीढ़ी में छिपा अप्रभावी युग्मविकल्पी दो अप्रभावी प्रतियाँ मिलने पर फिर प्रकट।",
+            "युग्मविकल्पी जीन के वैकल्पिक रूप; प्रभावी युग्मविकल्पी केवल एक प्रति होने पर भी प्रभाव दिखाता, जबकि अप्रभावी केवल तब दिखता जब दोनों प्रतियाँ अप्रभावी।"
+          ],
+          "solution": "युग्मविकल्पी जीन के वैकल्पिक रूप; प्रभावी युग्मविकल्पी केवल एक प्रति होने पर भी प्रभाव दिखाता, जबकि अप्रभावी केवल तब दिखता जब दोनों प्रतियाँ अप्रभावी। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "प्रभावी आणि अप्रभावी युग्मविकल्पी विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "वंशागत गुण जनुकांत लिहिलेले आणि संततीला उतरतात, तर उपार्जित गुण आयुष्यभर मिळवलेले — जखम, ऊन-ताम्रता, शिकलेले कौशल्य वा बनलेले स्नायू — आणि उतरत नाहीत, कारण ते जनन-पेशींचे DNA कधी बदलत नाहीत.",
+            "मनुष्यांत लिंग निर्धारण लिंग-गुणसूत्रांवर अवलंबून: दोन X गुणसूत्र वंशागत करणारे मूल स्त्री, आणि एक X एक Y वंशागत करणारे पुरुष. आईचे अंडे सदैव X देते, म्हणून वडिलांचा शुक्राणू — X वा Y — मुलाचे लिंग ठरवतो.",
+            "मेंडेलचे एकसंकर संकरण दुसऱ्या पिढीत 3:1 प्रमाण देते — तीन प्रभावी गुण दाखवणारे एक अप्रभावी दाखवणाऱ्याला — कारण पहिल्या पिढीत लपलेला अप्रभावी युग्मविकल्पी दोन अप्रभावी प्रती भेटल्यावर पुन्हा प्रकट.",
+            "युग्मविकल्पी जनुकाची पर्यायी रूपे; प्रभावी युग्मविकल्पी फक्त एक प्रत असतानाही परिणाम दाखवतो, तर अप्रभावी फक्त तेव्हा दिसतो जेव्हा दोन्ही प्रती अप्रभावी."
+          ],
+          "solution": "युग्मविकल्पी जनुकाची पर्यायी रूपे; प्रभावी युग्मविकल्पी फक्त एक प्रत असतानाही परिणाम दाखवतो, तर अप्रभावी फक्त तेव्हा दिसतो जेव्हा दोन्ही प्रती अप्रभावी. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The first generation is all tall (each has one tall and one short allele, tall dominant), but breeding them mixes the alleles four ways, three of which give tall and one short.\" — which of these is this about?",
+      "choices": [
+        "Heredity and genes",
+        "Mendel's monohybrid ratio",
+        "Sex determination",
+        "Dominant and recessive alleles"
+      ],
+      "answerIndex": 1,
+      "solution": "Mendel's monohybrid cross gives a 3:1 ratio in the second generation — three showing the dominant trait to one showing the recessive — because the recessive allele, hidden in the first generation, reappears when two recessive copies meet. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"पहली पीढ़ी सब लंबी (हर एक में एक लंबा एक छोटा युग्मविकल्पी, लंबा प्रभावी), पर उन्हें प्रजनित करना युग्मविकल्पियों को चार तरह मिलाता, जिनमें तीन लंबे एक छोटा देते।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "आनुवंशिकता और जीन",
+            "मेंडल का एकसंकर अनुपात",
+            "लिंग निर्धारण",
+            "प्रभावी और अप्रभावी युग्मविकल्पी"
+          ],
+          "solution": "मेंडल का एकसंकर संकरण दूसरी पीढ़ी में 3:1 अनुपात देता — तीन प्रभावी गुण दिखाते एक अप्रभावी को — क्योंकि पहली पीढ़ी में छिपा अप्रभावी युग्मविकल्पी दो अप्रभावी प्रतियाँ मिलने पर फिर प्रकट। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"पहिली पिढी सारी उंच (प्रत्येकात एक उंच एक आखूड युग्मविकल्पी, उंच प्रभावी), पण त्यांना प्रजनन करणे युग्मविकल्पींना चार प्रकारे मिसळते, ज्यांत तीन उंच एक आखूड देतात.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "आनुवंशिकता आणि जनुके",
+            "मेंडेलचे एकसंकर प्रमाण",
+            "लिंग निर्धारण",
+            "प्रभावी आणि अप्रभावी युग्मविकल्पी"
+          ],
+          "solution": "मेंडेलचे एकसंकर संकरण दुसऱ्या पिढीत 3:1 प्रमाण देते — तीन प्रभावी गुण दाखवणारे एक अप्रभावी दाखवणाऱ्याला — कारण पहिल्या पिढीत लपलेला अप्रभावी युग्मविकल्पी दोन अप्रभावी प्रती भेटल्यावर पुन्हा प्रकट. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Two tall pea plants may look identical, yet one carries two tall alleles and the other one tall and one short. What is the difference between the genes an organism carries and the traits it actually shows?",
+      "choices": [
+        "Heredity and genes",
+        "Mendel's monohybrid ratio",
+        "Genotype and phenotype",
+        "Dominant and recessive alleles"
+      ],
+      "answerIndex": 2,
+      "solution": "The genotype is the actual set of alleles an organism carries, while the phenotype is the visible trait it shows; because a dominant allele can mask a recessive one, the same phenotype can hide different genotypes. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दो लंबे मटर पौधे समान दिख सकते, फिर भी एक दो लंबे युग्मविकल्पी ढोता और दूसरा एक लंबा एक छोटा। जीव जो जीन ढोता और जो गुण वास्तव में दिखाता के बीच अंतर क्या?",
+          "choices": [
+            "आनुवंशिकता और जीन",
+            "मेंडल का एकसंकर अनुपात",
+            "जीनप्ररूप और लक्षणप्ररूप",
+            "प्रभावी और अप्रभावी युग्मविकल्पी"
+          ],
+          "solution": "जीनप्ररूप जीव जो युग्मविकल्पी वास्तव में ढोता, जबकि लक्षणप्ररूप जो दृश्य गुण दिखाता; क्योंकि प्रभावी युग्मविकल्पी अप्रभावी को ढक सकता, एक ही लक्षणप्ररूप भिन्न जीनप्ररूप छिपा सकता। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "दोन उंच वाटाणा झाडे सारखी दिसू शकतात, तरी एक दोन उंच युग्मविकल्पी वाहते आणि दुसरे एक उंच एक आखूड. जीव जी जनुके वाहतो आणि जे गुण प्रत्यक्षात दाखवतो यांतील फरक काय?",
+          "choices": [
+            "आनुवंशिकता आणि जनुके",
+            "मेंडेलचे एकसंकर प्रमाण",
+            "जनुकप्रकार आणि लक्षणप्रकार",
+            "प्रभावी आणि अप्रभावी युग्मविकल्पी"
+          ],
+          "solution": "जनुकप्रकार जीव जी युग्मविकल्पी प्रत्यक्षात वाहतो, तर लक्षणप्रकार जो दृश्य गुण दाखवतो; कारण प्रभावी युग्मविकल्पी अप्रभावीला झाकू शकतो, एकच लक्षणप्रकार वेगळे जनुकप्रकार लपवू शकतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Sex determination is correct?",
+      "choices": [
+        "Mendel's monohybrid cross gives a 3:1 ratio in the second generation — three showing the dominant trait to one showing the recessive — because the recessive allele, hidden in the first generation, reappears when two recessive copies meet.",
+        "Alleles are alternative versions of a gene; a dominant allele shows its effect even when only one copy is present, while a recessive allele shows only when both copies are recessive.",
+        "Sex determination in humans depends on the sex chromosomes: a child inheriting two X chromosomes is female, and one inheriting an X and a Y is male. The mother's egg always gives an X, so it is the father's sperm — X or Y — that decides the child's sex.",
+        "Inherited traits are written in the genes and pass to the offspring, while acquired traits are gained during life — a scar, a suntan, learned skill or built muscle — and are not passed on, because they never change the DNA of the germ cells."
+      ],
+      "answerIndex": 2,
+      "solution": "Sex determination in humans depends on the sex chromosomes: a child inheriting two X chromosomes is female, and one inheriting an X and a Y is male. The mother's egg always gives an X, so it is the father's sperm — X or Y — that decides the child's sex. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "लिंग निर्धारण के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "मेंडल का एकसंकर संकरण दूसरी पीढ़ी में 3:1 अनुपात देता — तीन प्रभावी गुण दिखाते एक अप्रभावी को — क्योंकि पहली पीढ़ी में छिपा अप्रभावी युग्मविकल्पी दो अप्रभावी प्रतियाँ मिलने पर फिर प्रकट।",
+            "युग्मविकल्पी जीन के वैकल्पिक रूप; प्रभावी युग्मविकल्पी केवल एक प्रति होने पर भी प्रभाव दिखाता, जबकि अप्रभावी केवल तब दिखता जब दोनों प्रतियाँ अप्रभावी।",
+            "मनुष्यों में लिंग निर्धारण लिंग-गुणसूत्रों पर निर्भर: दो X गुणसूत्र वंशागत करता बच्चा स्त्री, और एक X एक Y वंशागत करता पुरुष। माता का अंड सदा X देता, अतः पिता का शुक्राणु — X या Y — बच्चे का लिंग तय करता।",
+            "आनुवंशिक लक्षण जीनों में लिखे और संतान को उतरते, जबकि उपार्जित लक्षण जीवन-भर पाए — घाव, धूप-ताम्रता, सीखा कौशल या बनी माँसपेशी — और नहीं उतरते, क्योंकि वे जनन-कोशिकाओं का DNA कभी नहीं बदलते।"
+          ],
+          "solution": "मनुष्यों में लिंग निर्धारण लिंग-गुणसूत्रों पर निर्भर: दो X गुणसूत्र वंशागत करता बच्चा स्त्री, और एक X एक Y वंशागत करता पुरुष। माता का अंड सदा X देता, अतः पिता का शुक्राणु — X या Y — बच्चे का लिंग तय करता। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "लिंग निर्धारण विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "मेंडेलचे एकसंकर संकरण दुसऱ्या पिढीत 3:1 प्रमाण देते — तीन प्रभावी गुण दाखवणारे एक अप्रभावी दाखवणाऱ्याला — कारण पहिल्या पिढीत लपलेला अप्रभावी युग्मविकल्पी दोन अप्रभावी प्रती भेटल्यावर पुन्हा प्रकट.",
+            "युग्मविकल्पी जनुकाची पर्यायी रूपे; प्रभावी युग्मविकल्पी फक्त एक प्रत असतानाही परिणाम दाखवतो, तर अप्रभावी फक्त तेव्हा दिसतो जेव्हा दोन्ही प्रती अप्रभावी.",
+            "मनुष्यांत लिंग निर्धारण लिंग-गुणसूत्रांवर अवलंबून: दोन X गुणसूत्र वंशागत करणारे मूल स्त्री, आणि एक X एक Y वंशागत करणारे पुरुष. आईचे अंडे सदैव X देते, म्हणून वडिलांचा शुक्राणू — X वा Y — मुलाचे लिंग ठरवतो.",
+            "वंशागत गुण जनुकांत लिहिलेले आणि संततीला उतरतात, तर उपार्जित गुण आयुष्यभर मिळवलेले — जखम, ऊन-ताम्रता, शिकलेले कौशल्य वा बनलेले स्नायू — आणि उतरत नाहीत, कारण ते जनन-पेशींचे DNA कधी बदलत नाहीत."
+          ],
+          "solution": "मनुष्यांत लिंग निर्धारण लिंग-गुणसूत्रांवर अवलंबून: दोन X गुणसूत्र वंशागत करणारे मूल स्त्री, आणि एक X एक Y वंशागत करणारे पुरुष. आईचे अंडे सदैव X देते, म्हणून वडिलांचा शुक्राणू — X वा Y — मुलाचे लिंग ठरवतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"Only a change in the DNA of the germ cells (the eggs and sperm) can be inherited; a change to the body's other cells dies with the body.\" — which of these is this about?",
+      "choices": [
+        "Inherited and acquired traits",
+        "Sex determination",
+        "Dominant and recessive alleles",
+        "Mendel's monohybrid ratio"
+      ],
+      "answerIndex": 0,
+      "solution": "Inherited traits are written in the genes and pass to the offspring, while acquired traits are gained during life — a scar, a suntan, learned skill or built muscle — and are not passed on, because they never change the DNA of the germ cells. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"केवल जनन-कोशिकाओं (अंड और शुक्राणु) के DNA का परिवर्तन वंशागत हो सकता; शरीर की अन्य कोशिकाओं का परिवर्तन शरीर के साथ मरता।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "आनुवंशिक और उपार्जित लक्षण",
+            "लिंग निर्धारण",
+            "प्रभावी और अप्रभावी युग्मविकल्पी",
+            "मेंडल का एकसंकर अनुपात"
+          ],
+          "solution": "आनुवंशिक लक्षण जीनों में लिखे और संतान को उतरते, जबकि उपार्जित लक्षण जीवन-भर पाए — घाव, धूप-ताम्रता, सीखा कौशल या बनी माँसपेशी — और नहीं उतरते, क्योंकि वे जनन-कोशिकाओं का DNA कभी नहीं बदलते। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"फक्त जनन-पेशींच्या (अंडी आणि शुक्राणू) DNA चा बदल वंशागत होऊ शकतो; शरीराच्या इतर पेशींचा बदल शरीरासोबत मरतो.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "वंशागत आणि उपार्जित गुण",
+            "लिंग निर्धारण",
+            "प्रभावी आणि अप्रभावी युग्मविकल्पी",
+            "मेंडेलचे एकसंकर प्रमाण"
+          ],
+          "solution": "वंशागत गुण जनुकांत लिहिलेले आणि संततीला उतरतात, तर उपार्जित गुण आयुष्यभर मिळवलेले — जखम, ऊन-ताम्रता, शिकलेले कौशल्य वा बनलेले स्नायू — आणि उतरत नाहीत, कारण ते जनन-पेशींचे DNA कधी बदलत नाहीत. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Traits passed on by units of DNA\" goes correctly with which of these?",
+      "choices": [
+        "genotype and phenotype",
+        "dominant and recessive alleles",
+        "sex determination",
+        "heredity and genes"
+      ],
+      "answerIndex": 3,
+      "solution": "Heredity is the passing of traits from parents to offspring, carried by genes — units of DNA on chromosomes, one set inherited from each parent. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"DNA की इकाइयों से उतरते गुण\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "जीनप्ररूप और लक्षणप्ररूप",
+            "प्रभावी और अप्रभावी युग्मविकल्पी",
+            "लिंग निर्धारण",
+            "आनुवंशिकता और जीन"
+          ],
+          "solution": "आनुवंशिकता जनकों से संतान को गुणों का उतरना, जीनों द्वारा ढोया — गुणसूत्रों पर DNA की इकाइयाँ, हर जनक से एक समुच्चय वंशागत। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"DNA च्या एककांनी उतरणारे गुण\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "जनुकप्रकार आणि लक्षणप्रकार",
+            "प्रभावी आणि अप्रभावी युग्मविकल्पी",
+            "लिंग निर्धारण",
+            "आनुवंशिकता आणि जनुके"
+          ],
+          "solution": "आनुवंशिकता पालकांकडून संततीला गुणांचे उतरणे, जनुकांनी वाहिलेले — गुणसूत्रांवरील DNA ची एकके, प्रत्येक पालकाकडून एक संच वंशागत. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"One shows with a single copy, the other only with two\" goes correctly with which of these?",
+      "choices": [
+        "sex determination",
+        "the 3:1 ratio",
+        "genotype and phenotype",
+        "dominant and recessive alleles"
+      ],
+      "answerIndex": 3,
+      "solution": "Alleles are alternative versions of a gene; a dominant allele shows its effect even when only one copy is present, while a recessive allele shows only when both copies are recessive. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"एक एकल प्रति से दिखे, दूसरा केवल दो से\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "लिंग निर्धारण",
+            "3:1 अनुपात",
+            "जीनप्ररूप और लक्षणप्ररूप",
+            "प्रभावी और अप्रभावी युग्मविकल्पी"
+          ],
+          "solution": "युग्मविकल्पी जीन के वैकल्पिक रूप; प्रभावी युग्मविकल्पी केवल एक प्रति होने पर भी प्रभाव दिखाता, जबकि अप्रभावी केवल तब दिखता जब दोनों प्रतियाँ अप्रभावी। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"एक एकल प्रतीने दिसे, दुसरा फक्त दोनने\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "लिंग निर्धारण",
+            "3:1 प्रमाण",
+            "जनुकप्रकार आणि लक्षणप्रकार",
+            "प्रभावी आणि अप्रभावी युग्मविकल्पी"
+          ],
+          "solution": "युग्मविकल्पी जनुकाची पर्यायी रूपे; प्रभावी युग्मविकल्पी फक्त एक प्रत असतानाही परिणाम दाखवतो, तर अप्रभावी फक्त तेव्हा दिसतो जेव्हा दोन्ही प्रती अप्रभावी. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Three dominant to one recessive in the F2\" goes correctly with which of these?",
+      "choices": [
+        "dominant and recessive alleles",
+        "genotype and phenotype",
+        "the 3:1 ratio",
+        "sex determination"
+      ],
+      "answerIndex": 2,
+      "solution": "Mendel's monohybrid cross gives a 3:1 ratio in the second generation — three showing the dominant trait to one showing the recessive — because the recessive allele, hidden in the first generation, reappears when two recessive copies meet. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"F2 में तीन प्रभावी एक अप्रभावी\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "प्रभावी और अप्रभावी युग्मविकल्पी",
+            "जीनप्ररूप और लक्षणप्ररूप",
+            "3:1 अनुपात",
+            "लिंग निर्धारण"
+          ],
+          "solution": "मेंडल का एकसंकर संकरण दूसरी पीढ़ी में 3:1 अनुपात देता — तीन प्रभावी गुण दिखाते एक अप्रभावी को — क्योंकि पहली पीढ़ी में छिपा अप्रभावी युग्मविकल्पी दो अप्रभावी प्रतियाँ मिलने पर फिर प्रकट। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"F2 मध्ये तीन प्रभावी एक अप्रभावी\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "प्रभावी आणि अप्रभावी युग्मविकल्पी",
+            "जनुकप्रकार आणि लक्षणप्रकार",
+            "3:1 प्रमाण",
+            "लिंग निर्धारण"
+          ],
+          "solution": "मेंडेलचे एकसंकर संकरण दुसऱ्या पिढीत 3:1 प्रमाण देते — तीन प्रभावी गुण दाखवणारे एक अप्रभावी दाखवणाऱ्याला — कारण पहिल्या पिढीत लपलेला अप्रभावी युग्मविकल्पी दोन अप्रभावी प्रती भेटल्यावर पुन्हा प्रकट. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The alleles carried versus the trait shown\" goes correctly with which of these?",
+      "choices": [
+        "the 3:1 ratio",
+        "inherited and acquired traits",
+        "heredity and genes",
+        "genotype and phenotype"
+      ],
+      "answerIndex": 3,
+      "solution": "The genotype is the actual set of alleles an organism carries, while the phenotype is the visible trait it shows; because a dominant allele can mask a recessive one, the same phenotype can hide different genotypes. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ढोए युग्मविकल्पी बनाम दिखाया गुण\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "3:1 अनुपात",
+            "आनुवंशिक और उपार्जित लक्षण",
+            "आनुवंशिकता और जीन",
+            "जीनप्ररूप और लक्षणप्ररूप"
+          ],
+          "solution": "जीनप्ररूप जीव जो युग्मविकल्पी वास्तव में ढोता, जबकि लक्षणप्ररूप जो दृश्य गुण दिखाता; क्योंकि प्रभावी युग्मविकल्पी अप्रभावी को ढक सकता, एक ही लक्षणप्ररूप भिन्न जीनप्ररूप छिपा सकता। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"वाहिलेले युग्मविकल्पी विरुद्ध दाखवलेला गुण\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "3:1 प्रमाण",
+            "वंशागत आणि उपार्जित गुण",
+            "आनुवंशिकता आणि जनुके",
+            "जनुकप्रकार आणि लक्षणप्रकार"
+          ],
+          "solution": "जनुकप्रकार जीव जी युग्मविकल्पी प्रत्यक्षात वाहतो, तर लक्षणप्रकार जो दृश्य गुण दाखवतो; कारण प्रभावी युग्मविकल्पी अप्रभावीला झाकू शकतो, एकच लक्षणप्रकार वेगळे जनुकप्रकार लपवू शकतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The father's X or Y sperm settles it\" goes correctly with which of these?",
+      "choices": [
+        "sex determination",
+        "inherited and acquired traits",
+        "dominant and recessive alleles",
+        "heredity and genes"
+      ],
+      "answerIndex": 0,
+      "solution": "Sex determination in humans depends on the sex chromosomes: a child inheriting two X chromosomes is female, and one inheriting an X and a Y is male. The mother's egg always gives an X, so it is the father's sperm — X or Y — that decides the child's sex. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"पिता का X या Y शुक्राणु तय करे\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "लिंग निर्धारण",
+            "आनुवंशिक और उपार्जित लक्षण",
+            "प्रभावी और अप्रभावी युग्मविकल्पी",
+            "आनुवंशिकता और जीन"
+          ],
+          "solution": "मनुष्यों में लिंग निर्धारण लिंग-गुणसूत्रों पर निर्भर: दो X गुणसूत्र वंशागत करता बच्चा स्त्री, और एक X एक Y वंशागत करता पुरुष। माता का अंड सदा X देता, अतः पिता का शुक्राणु — X या Y — बच्चे का लिंग तय करता। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"वडिलांचा X वा Y शुक्राणू ठरवे\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "लिंग निर्धारण",
+            "वंशागत आणि उपार्जित गुण",
+            "प्रभावी आणि अप्रभावी युग्मविकल्पी",
+            "आनुवंशिकता आणि जनुके"
+          ],
+          "solution": "मनुष्यांत लिंग निर्धारण लिंग-गुणसूत्रांवर अवलंबून: दोन X गुणसूत्र वंशागत करणारे मूल स्त्री, आणि एक X एक Y वंशागत करणारे पुरुष. आईचे अंडे सदैव X देते, म्हणून वडिलांचा शुक्राणू — X वा Y — मुलाचे लिंग ठरवतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"In the genes and passed on, versus gained in life\" goes correctly with which of these?",
+      "choices": [
+        "inherited and acquired traits",
+        "sex determination",
+        "genotype and phenotype",
+        "the 3:1 ratio"
+      ],
+      "answerIndex": 0,
+      "solution": "Inherited traits are written in the genes and pass to the offspring, while acquired traits are gained during life — a scar, a suntan, learned skill or built muscle — and are not passed on, because they never change the DNA of the germ cells. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"जीनों में और उतरे, बनाम जीवन में पाए\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "आनुवंशिक और उपार्जित लक्षण",
+            "लिंग निर्धारण",
+            "जीनप्ररूप और लक्षणप्ररूप",
+            "3:1 अनुपात"
+          ],
+          "solution": "आनुवंशिक लक्षण जीनों में लिखे और संतान को उतरते, जबकि उपार्जित लक्षण जीवन-भर पाए — घाव, धूप-ताम्रता, सीखा कौशल या बनी माँसपेशी — और नहीं उतरते, क्योंकि वे जनन-कोशिकाओं का DNA कभी नहीं बदलते। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"जनुकांत आणि उतरणारे, विरुद्ध आयुष्यात मिळवलेले\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "वंशागत आणि उपार्जित गुण",
+            "लिंग निर्धारण",
+            "जनुकप्रकार आणि लक्षणप्रकार",
+            "3:1 प्रमाण"
+          ],
+          "solution": "वंशागत गुण जनुकांत लिहिलेले आणि संततीला उतरतात, तर उपार्जित गुण आयुष्यभर मिळवलेले — जखम, ऊन-ताम्रता, शिकलेले कौशल्य वा बनलेले स्नायू — आणि उतरत नाहीत, कारण ते जनन-पेशींचे DNA कधी बदलत नाहीत. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Heredity and genes EXCEPT —",
+      "choices": [
+        "The genotype is the actual set of alleles an organism carries, while the phenotype is the visible trait it shows; because a dominant allele can mask a recessive one, the same phenotype can hide different genotypes.",
+        "The rules of how these genes combine and reappear were first worked out by Gregor Mendel, breeding thousands of pea plants in a monastery garden.",
+        "Each child gets a full pair of every gene — one copy from the mother's egg and one from the father's sperm — so it inherits from both.",
+        "Heredity is the passing of traits from parents to offspring, carried by genes — units of DNA on chromosomes, one set inherited from each parent."
+      ],
+      "answerIndex": 0,
+      "solution": "The genotype is the actual set of alleles an organism carries, while the phenotype is the visible trait it shows; because a dominant allele can mask a recessive one, the same phenotype can hide different genotypes. That belongs to Genotype and phenotype, not Heredity and genes — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "आनुवंशिकता और जीन के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "जीनप्ररूप जीव जो युग्मविकल्पी वास्तव में ढोता, जबकि लक्षणप्ररूप जो दृश्य गुण दिखाता; क्योंकि प्रभावी युग्मविकल्पी अप्रभावी को ढक सकता, एक ही लक्षणप्ररूप भिन्न जीनप्ररूप छिपा सकता।",
+            "ये जीन कैसे जुड़ते और फिर प्रकट होते उसके नियम पहले ग्रेगर मेंडल ने खोजे, एक मठ-बग़ीचे में हज़ारों मटर पौधे उगाते।",
+            "हर बच्चा हर जीन की पूरी जोड़ी पाता — एक प्रति माता के अंड से और एक पिता के शुक्राणु से — अतः दोनों से वंशागत।",
+            "आनुवंशिकता जनकों से संतान को गुणों का उतरना, जीनों द्वारा ढोया — गुणसूत्रों पर DNA की इकाइयाँ, हर जनक से एक समुच्चय वंशागत।"
+          ],
+          "solution": "जीनप्ररूप जीव जो युग्मविकल्पी वास्तव में ढोता, जबकि लक्षणप्ररूप जो दृश्य गुण दिखाता; क्योंकि प्रभावी युग्मविकल्पी अप्रभावी को ढक सकता, एक ही लक्षणप्ररूप भिन्न जीनप्ररूप छिपा सकता। यह जीनप्ररूप और लक्षणप्ररूप की बात है, आनुवंशिकता और जीन की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "आनुवंशिकता आणि जनुके विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "जनुकप्रकार जीव जी युग्मविकल्पी प्रत्यक्षात वाहतो, तर लक्षणप्रकार जो दृश्य गुण दाखवतो; कारण प्रभावी युग्मविकल्पी अप्रभावीला झाकू शकतो, एकच लक्षणप्रकार वेगळे जनुकप्रकार लपवू शकतो.",
+            "ही जनुके कशी जुळतात आणि पुन्हा प्रकट होतात त्याचे नियम प्रथम ग्रेगर मेंडेलने शोधले, एका मठ-बागेत हजारो वाटाणा झाडे उगवत.",
+            "प्रत्येक मूल प्रत्येक जनुकाची पूर्ण जोडी मिळवते — एक प्रत आईच्या अंड्यातून आणि एक वडिलांच्या शुक्राणूतून — म्हणून दोघांकडून वंशागत.",
+            "आनुवंशिकता पालकांकडून संततीला गुणांचे उतरणे, जनुकांनी वाहिलेले — गुणसूत्रांवरील DNA ची एकके, प्रत्येक पालकाकडून एक संच वंशागत."
+          ],
+          "solution": "जनुकप्रकार जीव जी युग्मविकल्पी प्रत्यक्षात वाहतो, तर लक्षणप्रकार जो दृश्य गुण दाखवतो; कारण प्रभावी युग्मविकल्पी अप्रभावीला झाकू शकतो, एकच लक्षणप्रकार वेगळे जनुकप्रकार लपवू शकतो. हे जनुकप्रकार आणि लक्षणप्रकार चे आहे, आनुवंशिकता आणि जनुके चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Dominant and recessive alleles EXCEPT —",
+      "choices": [
+        "Mendel's monohybrid cross gives a 3:1 ratio in the second generation — three showing the dominant trait to one showing the recessive — because the recessive allele, hidden in the first generation, reappears when two recessive copies meet.",
+        "The hidden recessive is not lost — it can be passed to the next generation and reappear when it meets another recessive copy.",
+        "So an organism carrying one dominant and one recessive allele looks just like one carrying two dominants — the recessive is present but masked.",
+        "Alleles are alternative versions of a gene; a dominant allele shows its effect even when only one copy is present, while a recessive allele shows only when both copies are recessive."
+      ],
+      "answerIndex": 0,
+      "solution": "Mendel's monohybrid cross gives a 3:1 ratio in the second generation — three showing the dominant trait to one showing the recessive — because the recessive allele, hidden in the first generation, reappears when two recessive copies meet. That belongs to Mendel's monohybrid ratio, not Dominant and recessive alleles — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रभावी और अप्रभावी युग्मविकल्पी के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "मेंडल का एकसंकर संकरण दूसरी पीढ़ी में 3:1 अनुपात देता — तीन प्रभावी गुण दिखाते एक अप्रभावी को — क्योंकि पहली पीढ़ी में छिपा अप्रभावी युग्मविकल्पी दो अप्रभावी प्रतियाँ मिलने पर फिर प्रकट।",
+            "छिपा अप्रभावी लुप्त नहीं — यह अगली पीढ़ी को दिया जा सकता और दूसरी अप्रभावी प्रति मिलने पर फिर प्रकट।",
+            "अतः एक प्रभावी और एक अप्रभावी युग्मविकल्पी ढोता जीव ठीक दो प्रभावी ढोते जैसा दिखता — अप्रभावी मौजूद पर ढका।",
+            "युग्मविकल्पी जीन के वैकल्पिक रूप; प्रभावी युग्मविकल्पी केवल एक प्रति होने पर भी प्रभाव दिखाता, जबकि अप्रभावी केवल तब दिखता जब दोनों प्रतियाँ अप्रभावी।"
+          ],
+          "solution": "मेंडल का एकसंकर संकरण दूसरी पीढ़ी में 3:1 अनुपात देता — तीन प्रभावी गुण दिखाते एक अप्रभावी को — क्योंकि पहली पीढ़ी में छिपा अप्रभावी युग्मविकल्पी दो अप्रभावी प्रतियाँ मिलने पर फिर प्रकट। यह मेंडल का एकसंकर अनुपात की बात है, प्रभावी और अप्रभावी युग्मविकल्पी की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "प्रभावी आणि अप्रभावी युग्मविकल्पी विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "मेंडेलचे एकसंकर संकरण दुसऱ्या पिढीत 3:1 प्रमाण देते — तीन प्रभावी गुण दाखवणारे एक अप्रभावी दाखवणाऱ्याला — कारण पहिल्या पिढीत लपलेला अप्रभावी युग्मविकल्पी दोन अप्रभावी प्रती भेटल्यावर पुन्हा प्रकट.",
+            "लपलेला अप्रभावी हरवत नाही — तो पुढच्या पिढीला देता येतो आणि दुसरी अप्रभावी प्रत भेटल्यावर पुन्हा प्रकट.",
+            "म्हणून एक प्रभावी आणि एक अप्रभावी युग्मविकल्पी वाहणारा जीव नेमका दोन प्रभावी वाहणाऱ्यासारखा दिसतो — अप्रभावी उपस्थित पण झाकलेला.",
+            "युग्मविकल्पी जनुकाची पर्यायी रूपे; प्रभावी युग्मविकल्पी फक्त एक प्रत असतानाही परिणाम दाखवतो, तर अप्रभावी फक्त तेव्हा दिसतो जेव्हा दोन्ही प्रती अप्रभावी."
+          ],
+          "solution": "मेंडेलचे एकसंकर संकरण दुसऱ्या पिढीत 3:1 प्रमाण देते — तीन प्रभावी गुण दाखवणारे एक अप्रभावी दाखवणाऱ्याला — कारण पहिल्या पिढीत लपलेला अप्रभावी युग्मविकल्पी दोन अप्रभावी प्रती भेटल्यावर पुन्हा प्रकट. हे मेंडेलचे एकसंकर प्रमाण चे आहे, प्रभावी आणि अप्रभावी युग्मविकल्पी चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Mendel's monohybrid ratio EXCEPT —",
+      "choices": [
+        "The first generation is all tall (each has one tall and one short allele, tall dominant), but breeding them mixes the alleles four ways, three of which give tall and one short.",
+        "The genotype is the actual set of alleles an organism carries, while the phenotype is the visible trait it shows; because a dominant allele can mask a recessive one, the same phenotype can hide different genotypes.",
+        "Mendel found this by counting thousands of pea plants — the first time inheritance was studied as clean numbers rather than vague resemblance.",
+        "Mendel's monohybrid cross gives a 3:1 ratio in the second generation — three showing the dominant trait to one showing the recessive — because the recessive allele, hidden in the first generation, reappears when two recessive copies meet."
+      ],
+      "answerIndex": 1,
+      "solution": "The genotype is the actual set of alleles an organism carries, while the phenotype is the visible trait it shows; because a dominant allele can mask a recessive one, the same phenotype can hide different genotypes. That belongs to Genotype and phenotype, not Mendel's monohybrid ratio — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "मेंडल का एकसंकर अनुपात के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "पहली पीढ़ी सब लंबी (हर एक में एक लंबा एक छोटा युग्मविकल्पी, लंबा प्रभावी), पर उन्हें प्रजनित करना युग्मविकल्पियों को चार तरह मिलाता, जिनमें तीन लंबे एक छोटा देते।",
+            "जीनप्ररूप जीव जो युग्मविकल्पी वास्तव में ढोता, जबकि लक्षणप्ररूप जो दृश्य गुण दिखाता; क्योंकि प्रभावी युग्मविकल्पी अप्रभावी को ढक सकता, एक ही लक्षणप्ररूप भिन्न जीनप्ररूप छिपा सकता।",
+            "मेंडल ने यह हज़ारों मटर पौधे गिनकर पाया — पहली बार वंशागति अस्पष्ट समानता के बजाय साफ़ संख्याओं के रूप में अध्ययन की गई।",
+            "मेंडल का एकसंकर संकरण दूसरी पीढ़ी में 3:1 अनुपात देता — तीन प्रभावी गुण दिखाते एक अप्रभावी को — क्योंकि पहली पीढ़ी में छिपा अप्रभावी युग्मविकल्पी दो अप्रभावी प्रतियाँ मिलने पर फिर प्रकट।"
+          ],
+          "solution": "जीनप्ररूप जीव जो युग्मविकल्पी वास्तव में ढोता, जबकि लक्षणप्ररूप जो दृश्य गुण दिखाता; क्योंकि प्रभावी युग्मविकल्पी अप्रभावी को ढक सकता, एक ही लक्षणप्ररूप भिन्न जीनप्ररूप छिपा सकता। यह जीनप्ररूप और लक्षणप्ररूप की बात है, मेंडल का एकसंकर अनुपात की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "मेंडेलचे एकसंकर प्रमाण विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "पहिली पिढी सारी उंच (प्रत्येकात एक उंच एक आखूड युग्मविकल्पी, उंच प्रभावी), पण त्यांना प्रजनन करणे युग्मविकल्पींना चार प्रकारे मिसळते, ज्यांत तीन उंच एक आखूड देतात.",
+            "जनुकप्रकार जीव जी युग्मविकल्पी प्रत्यक्षात वाहतो, तर लक्षणप्रकार जो दृश्य गुण दाखवतो; कारण प्रभावी युग्मविकल्पी अप्रभावीला झाकू शकतो, एकच लक्षणप्रकार वेगळे जनुकप्रकार लपवू शकतो.",
+            "मेंडेलने हे हजारो वाटाणा झाडे मोजून शोधले — पहिल्यांदा वंशागत अस्पष्ट साम्याऐवजी स्वच्छ संख्यांच्या रूपात अभ्यासली गेली.",
+            "मेंडेलचे एकसंकर संकरण दुसऱ्या पिढीत 3:1 प्रमाण देते — तीन प्रभावी गुण दाखवणारे एक अप्रभावी दाखवणाऱ्याला — कारण पहिल्या पिढीत लपलेला अप्रभावी युग्मविकल्पी दोन अप्रभावी प्रती भेटल्यावर पुन्हा प्रकट."
+          ],
+          "solution": "जनुकप्रकार जीव जी युग्मविकल्पी प्रत्यक्षात वाहतो, तर लक्षणप्रकार जो दृश्य गुण दाखवतो; कारण प्रभावी युग्मविकल्पी अप्रभावीला झाकू शकतो, एकच लक्षणप्रकार वेगळे जनुकप्रकार लपवू शकतो. हे जनुकप्रकार आणि लक्षणप्रकार चे आहे, मेंडेलचे एकसंकर प्रमाण चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Genotype and phenotype EXCEPT —",
+      "choices": [
+        "The genotype is the actual set of alleles an organism carries, while the phenotype is the visible trait it shows; because a dominant allele can mask a recessive one, the same phenotype can hide different genotypes.",
+        "Sex determination in humans depends on the sex chromosomes: a child inheriting two X chromosomes is female, and one inheriting an X and a Y is male. The mother's egg always gives an X, so it is the father's sperm — X or Y — that decides the child's sex.",
+        "So 'tall' as a phenotype could mean two tall alleles or one of each — you cannot always read the genotype from the appearance alone.",
+        "This is exactly why a recessive trait can skip a generation — carried silently in the genotype without showing in the phenotype."
+      ],
+      "answerIndex": 1,
+      "solution": "Sex determination in humans depends on the sex chromosomes: a child inheriting two X chromosomes is female, and one inheriting an X and a Y is male. The mother's egg always gives an X, so it is the father's sperm — X or Y — that decides the child's sex. That belongs to Sex determination, not Genotype and phenotype — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "जीनप्ररूप और लक्षणप्ररूप के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "जीनप्ररूप जीव जो युग्मविकल्पी वास्तव में ढोता, जबकि लक्षणप्ररूप जो दृश्य गुण दिखाता; क्योंकि प्रभावी युग्मविकल्पी अप्रभावी को ढक सकता, एक ही लक्षणप्ररूप भिन्न जीनप्ररूप छिपा सकता।",
+            "मनुष्यों में लिंग निर्धारण लिंग-गुणसूत्रों पर निर्भर: दो X गुणसूत्र वंशागत करता बच्चा स्त्री, और एक X एक Y वंशागत करता पुरुष। माता का अंड सदा X देता, अतः पिता का शुक्राणु — X या Y — बच्चे का लिंग तय करता।",
+            "अतः लक्षणप्ररूप बतौर 'लंबा' दो लंबे युग्मविकल्पी या हर एक का एक हो सकता — तुम सदा केवल दिखावट से जीनप्ररूप नहीं पढ़ सकते।",
+            "ठीक इसीलिए अप्रभावी गुण एक पीढ़ी छोड़ सकता — जीनप्ररूप में चुपचाप ढोया बिना लक्षणप्ररूप में दिखे।"
+          ],
+          "solution": "मनुष्यों में लिंग निर्धारण लिंग-गुणसूत्रों पर निर्भर: दो X गुणसूत्र वंशागत करता बच्चा स्त्री, और एक X एक Y वंशागत करता पुरुष। माता का अंड सदा X देता, अतः पिता का शुक्राणु — X या Y — बच्चे का लिंग तय करता। यह लिंग निर्धारण की बात है, जीनप्ररूप और लक्षणप्ररूप की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "जनुकप्रकार आणि लक्षणप्रकार विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "जनुकप्रकार जीव जी युग्मविकल्पी प्रत्यक्षात वाहतो, तर लक्षणप्रकार जो दृश्य गुण दाखवतो; कारण प्रभावी युग्मविकल्पी अप्रभावीला झाकू शकतो, एकच लक्षणप्रकार वेगळे जनुकप्रकार लपवू शकतो.",
+            "मनुष्यांत लिंग निर्धारण लिंग-गुणसूत्रांवर अवलंबून: दोन X गुणसूत्र वंशागत करणारे मूल स्त्री, आणि एक X एक Y वंशागत करणारे पुरुष. आईचे अंडे सदैव X देते, म्हणून वडिलांचा शुक्राणू — X वा Y — मुलाचे लिंग ठरवतो.",
+            "म्हणून लक्षणप्रकार म्हणून 'उंच' दोन उंच युग्मविकल्पी वा प्रत्येकाचा एक असू शकतो — तू सदैव फक्त दिसण्यावरून जनुकप्रकार वाचू शकत नाहीस.",
+            "नेमके म्हणूनच अप्रभावी गुण एक पिढी वगळू शकतो — जनुकप्रकारात गुपचूप वाहिलेला लक्षणप्रकारात न दिसता."
+          ],
+          "solution": "मनुष्यांत लिंग निर्धारण लिंग-गुणसूत्रांवर अवलंबून: दोन X गुणसूत्र वंशागत करणारे मूल स्त्री, आणि एक X एक Y वंशागत करणारे पुरुष. आईचे अंडे सदैव X देते, म्हणून वडिलांचा शुक्राणू — X वा Y — मुलाचे लिंग ठरवतो. हे लिंग निर्धारण चे आहे, जनुकप्रकार आणि लक्षणप्रकार चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Mendel crossed a pure tall pea plant with a pure short one. Every plant in the next generation was tall — the short trait seemed to vanish. But when he bred those tall plants together, short plants reappeared in about a quarter of their offspring. Where was the 'short' factor hiding, and why did it come back?",
+      "choices": [
+        "The tall allele is dominant and the short recessive. The first-generation plants each carried one tall and one short allele, so they all looked tall while silently carrying the hidden short allele. Breeding them lets two short alleles meet again in about a quarter of the offspring, where — with no tall allele to mask it — the short trait shows once more",
+        "The short factor was destroyed in the first generation and randomly recreated later",
+        "The tall plants turned short because the soil changed",
+        "The short trait is dominant, which is why it came back"
+      ],
+      "answerIndex": 0,
+      "solution": "The 'short' factor never went anywhere — it was hidden, not lost, and understanding why is the whole of Mendel's insight. Height in his peas is controlled by a gene that comes in two alleles: a tall allele, which is dominant, and a short allele, which is recessive. The pure parents each carried two matching alleles — the tall parent two tall, the short parent two short. Their offspring, the first generation, therefore received one tall allele from one parent and one short allele from the other, so every one of them had the pair 'tall + short'. Because tall is dominant, it masks the short allele completely, and all these plants look tall — yet each still silently carries the short allele in its genotype. This is the crucial point: the short factor is present the whole time, just not showing. When these first-generation plants are bred with each other, each parent passes on either its tall allele or its short allele, at random, to each offspring. The offspring can then end up with tall+tall, tall+short, short+tall, or short+short — four equally likely combinations. Three of those four include at least one tall allele, so those plants are tall; but one in four gets short+short, with no tall allele to mask anything, and in those plants the short trait reappears. That is the origin of the famous 3:1 ratio, and it shows that a recessive trait vanishing in one generation has not been erased — it is riding along hidden in the genotype, ready to show again whenever two recessive copies meet. (The wrong answers miss this: the factor was not destroyed and remade, the environment did not change the plants, and short is recessive, not dominant — if it were dominant it would never have hidden in the first generation at all.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "मेंडल ने शुद्ध लंबे मटर पौधे को शुद्ध छोटे से संकरित किया। अगली पीढ़ी का हर पौधा लंबा — छोटा गुण लुप्त लगा। पर जब उसने उन लंबे पौधों को साथ प्रजनित किया, उनकी संतान के लगभग एक-चौथाई में छोटे पौधे फिर प्रकट हुए। 'छोटा' कारक कहाँ छिपा था, और यह वापस क्यों आया?",
+          "choices": [
+            "लंबा युग्मविकल्पी प्रभावी और छोटा अप्रभावी। पहली पीढ़ी के पौधे हर एक एक लंबा एक छोटा युग्मविकल्पी ढोते, अतः सब लंबे दिखते जबकि छिपा छोटा युग्मविकल्पी चुपचाप ढोते। उन्हें प्रजनित करना संतान के लगभग एक-चौथाई में दो छोटे युग्मविकल्पी फिर मिलने देता, जहाँ — ढकने कोई लंबा युग्मविकल्पी न होने से — छोटा गुण फिर दिखता",
+            "छोटा कारक पहली पीढ़ी में नष्ट हुआ और बाद में बेतरतीब फिर बनाया",
+            "लंबे पौधे छोटे हुए क्योंकि मिट्टी बदली",
+            "छोटा गुण प्रभावी, इसी से वापस आया"
+          ],
+          "solution": "'छोटा' कारक कहीं नहीं गया — यह छिपा था, लुप्त नहीं, और क्यों समझना मेंडल की पूरी अंतर्दृष्टि। उसके मटर में ऊँचाई एक जीन से नियंत्रित जो दो युग्मविकल्पियों में आता: लंबा युग्मविकल्पी, प्रभावी, और छोटा, अप्रभावी। शुद्ध जनक हर एक दो मेल खाते युग्मविकल्पी ढोते — लंबा जनक दो लंबे, छोटा जनक दो छोटे। उनकी संतान, पहली पीढ़ी, इसलिए एक जनक से एक लंबा और दूसरे से एक छोटा युग्मविकल्पी पाई, अतः हर एक के पास 'लंबा + छोटा' जोड़ी। क्योंकि लंबा प्रभावी, यह छोटे युग्मविकल्पी को पूरी तरह ढकता, और ये सब पौधे लंबे दिखते — फिर भी हर एक अपने जीनप्ररूप में छोटा युग्मविकल्पी चुपचाप ढोता। यह मुख्य बिंदु: छोटा कारक पूरे समय मौजूद, बस न दिखता। जब ये पहली पीढ़ी के पौधे एक-दूसरे से प्रजनित, हर जनक अपना लंबा या छोटा युग्मविकल्पी, बेतरतीब, हर संतान को देता। संतान फिर लंबा+लंबा, लंबा+छोटा, छोटा+लंबा, या छोटा+छोटा पा सकती — चार समसंभावी संयोजन। उन चार में से तीन में कम से कम एक लंबा युग्मविकल्पी, अतः वे पौधे लंबे; पर चार में एक छोटा+छोटा पाता, ढकने कोई लंबा युग्मविकल्पी नहीं, और उन पौधों में छोटा गुण फिर प्रकट। वह प्रसिद्ध 3:1 अनुपात का उद्गम, और दिखाता कि एक पीढ़ी में लुप्त होता अप्रभावी गुण मिटा नहीं — यह जीनप्ररूप में छिपा सवारी करता, जब भी दो अप्रभावी प्रतियाँ मिलें फिर दिखने तैयार। (ग़लत उत्तर यह चूकते: कारक नष्ट-पुनर्निर्मित नहीं हुआ, परिवेश ने पौधे नहीं बदले, और छोटा अप्रभावी, प्रभावी नहीं — यदि प्रभावी होता तो पहली पीढ़ी में छिपता ही नहीं।)"
+        },
+        "mr": {
+          "stem": "मेंडेलने शुद्ध उंच वाटाणा झाड शुद्ध आखूडशी संकरित केले. पुढच्या पिढीतील प्रत्येक झाड उंच — आखूड गुण नाहीसा वाटला. पण जेव्हा त्याने ती उंच झाडे एकत्र प्रजनन केली, त्यांच्या संततीच्या सुमारे एक-चतुर्थांशात आखूड झाडे पुन्हा प्रकट झाली. 'आखूड' घटक कुठे लपला होता, आणि तो परत का आला?",
+          "choices": [
+            "उंच युग्मविकल्पी प्रभावी आणि आखूड अप्रभावी. पहिल्या पिढीतील झाडे प्रत्येक एक उंच एक आखूड युग्मविकल्पी वाहत, म्हणून सारी उंच दिसत तर लपलेला आखूड युग्मविकल्पी गुपचूप वाहत. त्यांना प्रजनन करणे संततीच्या सुमारे एक-चतुर्थांशात दोन आखूड युग्मविकल्पी पुन्हा भेटू देते, जिथे — झाकायला कोणता उंच युग्मविकल्पी नसल्याने — आखूड गुण पुन्हा दिसतो",
+            "आखूड घटक पहिल्या पिढीत नष्ट झाला आणि नंतर यादृच्छिक पुन्हा बनवला",
+            "उंच झाडे आखूड झाली कारण माती बदलली",
+            "आखूड गुण प्रभावी, म्हणून परत आला"
+          ],
+          "solution": "'आखूड' घटक कुठेही गेला नाही — तो लपला होता, हरवला नाही, आणि का समजणे मेंडेलची अख्खी अंतर्दृष्टी. त्याच्या वाटाण्यात उंची एका जनुकाने नियंत्रित जे दोन युग्मविकल्पींत येते: उंच युग्मविकल्पी, प्रभावी, आणि आखूड, अप्रभावी. शुद्ध पालक प्रत्येक दोन जुळणारे युग्मविकल्पी वाहत — उंच पालक दोन उंच, आखूड पालक दोन आखूड. त्यांची संतती, पहिली पिढी, म्हणून एका पालकाकडून एक उंच आणि दुसऱ्याकडून एक आखूड युग्मविकल्पी मिळवली, म्हणून प्रत्येकाकडे 'उंच + आखूड' जोडी. कारण उंच प्रभावी, तो आखूड युग्मविकल्पीला पूर्णपणे झाकतो, आणि ही सारी झाडे उंच दिसतात — तरी प्रत्येक आपल्या जनुकप्रकारात आखूड युग्मविकल्पी गुपचूप वाहते. हा महत्त्वाचा मुद्दा: आखूड घटक संपूर्ण वेळ उपस्थित, फक्त न दिसणारा. जेव्हा ही पहिल्या पिढीतील झाडे एकमेकांशी प्रजनन, प्रत्येक पालक आपला उंच वा आखूड युग्मविकल्पी, यादृच्छिक, प्रत्येक संततीला देतो. संतती मग उंच+उंच, उंच+आखूड, आखूड+उंच, वा आखूड+आखूड मिळवू शकते — चार समसंभाव्य संयोजने. त्या चारांतील तीनांत किमान एक उंच युग्मविकल्पी, म्हणून ती झाडे उंच; पण चारांत एक आखूड+आखूड मिळवते, झाकायला कोणता उंच युग्मविकल्पी नाही, आणि त्या झाडांत आखूड गुण पुन्हा प्रकट. तो प्रसिद्ध 3:1 प्रमाणाचा उगम, आणि दाखवतो की एका पिढीत नाहीसा होणारा अप्रभावी गुण पुसला नाही — तो जनुकप्रकारात लपून स्वार होतो, जेव्हाही दोन अप्रभावी प्रती भेटतील पुन्हा दिसायला तयार. (चुकीची उत्तरे हे चुकवतात: घटक नष्ट-पुनर्निर्मित झाला नाही, परिसराने झाडे बदलली नाहीत, आणि आखूड अप्रभावी, प्रभावी नाही — तो प्रभावी असता तर पहिल्या पिढीत लपलाच नसता.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "In many societies a woman is blamed, even punished, when she gives birth only to daughters. But the biology of sex determination shows this blame is not just unjust but scientifically impossible. Whose contribution actually decides a child's sex, and why can the mother never be responsible?",
+      "choices": [
+        "The father's sperm decides. The mother has two X chromosomes, so every egg she makes carries an X — she can only ever contribute an X. The father has an X and a Y, so his sperm carries either one: an X-sperm makes a girl (XX) and a Y-sperm makes a boy (XY). Since the egg is always X, the child's sex is fixed entirely by which sperm fertilises it, so the mother cannot possibly be responsible",
+        "The mother decides, because the baby grows inside her body",
+        "The sex is decided by what the mother eats during pregnancy",
+        "Both parents' chromosomes are identical, so neither decides"
+      ],
+      "answerIndex": 0,
+      "solution": "The science here is completely settled, and it flatly contradicts the social blame. A person's sex in humans is set by a pair of sex chromosomes. A female has two X chromosomes (XX) and a male has one X and one Y (XY). When gametes — eggs and sperm — are made, each carries only one of the pair. Now look at what each parent can contribute. The mother is XX, so no matter which of her chromosomes goes into an egg, it is always an X; every single egg she produces carries an X, and she has no Y to give at all. The father is XY, so his sperm are of two kinds: half carry his X and half carry his Y. When a sperm fertilises the egg, the egg's X is fixed, and the outcome depends entirely on the sperm. If an X-bearing sperm wins, the child is XX — a girl. If a Y-bearing sperm wins, the child is XY — a boy. So the child's sex is determined solely by whether the fertilising sperm carried an X or a Y — and that comes from the father, never the mother. The mother physically cannot influence it, because the only chromosome she can supply is an X in every case. Blaming a woman for the sex of her children is therefore not merely cruel and unjust; it is biologically impossible, resting on ignorance of a fact that is as certain as any in science. (The wrong answers repeat exactly the myths biology overturns: carrying the baby, or the mother's diet, has nothing to do with which sperm fertilised the egg, and the two parents' sex chromosomes are precisely not identical — that difference is the whole point.) This is one of the clearest cases where understanding basic heredity directly refutes a harmful social prejudice.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कई समाजों में स्त्री को दोष, यहाँ तक कि दंड, जब वह केवल बेटियाँ जनती। पर लिंग-निर्धारण की जीव-विज्ञान दिखाती यह दोष केवल अन्यायपूर्ण नहीं बल्कि वैज्ञानिक रूप से असंभव। किसका योगदान वास्तव में बच्चे का लिंग तय करता, और माता कभी ज़िम्मेदार क्यों नहीं हो सकती?",
+          "choices": [
+            "पिता का शुक्राणु तय करता। माता के दो X गुणसूत्र, अतः वह जो अंड बनाती हर एक X ढोता — वह केवल X ही दे सकती। पिता के एक X एक Y, अतः उसका शुक्राणु या तो ढोता: X-शुक्राणु लड़की (XX) और Y-शुक्राणु लड़का (XY) बनाता। चूँकि अंड सदा X, बच्चे का लिंग पूरी तरह इससे तय कि कौन-सा शुक्राणु निषेचित करता, अतः माता संभवतः ज़िम्मेदार नहीं हो सकती",
+            "माता तय करती, क्योंकि शिशु उसके शरीर में बढ़ता",
+            "लिंग इससे तय कि माता गर्भावस्था में क्या खाती",
+            "दोनों जनकों के गुणसूत्र समान, अतः कोई तय नहीं करता"
+          ],
+          "solution": "यहाँ विज्ञान पूरी तरह तय, और यह सामाजिक दोष का सपाट खंडन करता। मनुष्यों में किसी का लिंग लिंग-गुणसूत्रों की जोड़ी से सधता। स्त्री के दो X गुणसूत्र (XX) और पुरुष के एक X एक Y (XY)। जब युग्मक — अंड और शुक्राणु — बनते, हर एक जोड़ी का केवल एक ढोता। अब देखो हर जनक क्या दे सकता। माता XX, अतः उसका कौन-सा गुणसूत्र अंड में जाए, यह सदा X; उसका हर अंड X ढोता, और उसके पास देने कोई Y है ही नहीं। पिता XY, अतः उसके शुक्राणु दो तरह के: आधे उसका X और आधे उसका Y ढोते। जब शुक्राणु अंड निषेचित करता, अंड का X सधा, और परिणाम पूरी तरह शुक्राणु पर। यदि X-वाहक शुक्राणु जीते, बच्चा XX — लड़की। यदि Y-वाहक जीते, बच्चा XY — लड़का। अतः बच्चे का लिंग केवल इससे तय कि निषेचित करता शुक्राणु X या Y ढोता — और वह पिता से, कभी माता से नहीं। माता भौतिक रूप से इसे प्रभावित नहीं कर सकती, क्योंकि वह हर मामले में केवल X दे सकती। बच्चों के लिंग को स्त्री को दोष देना इसलिए केवल क्रूर-अन्यायपूर्ण नहीं; यह जीव-वैज्ञानिक रूप से असंभव, विज्ञान के किसी भी तथ्य जितने निश्चित तथ्य की अनभिज्ञता पर टिका। (ग़लत उत्तर ठीक वे मिथक दोहराते जो जीव-विज्ञान उलटती: शिशु ढोना, या माता का आहार, इससे कोई संबंध नहीं कि कौन-सा शुक्राणु अंड निषेचित करता, और दो जनकों के लिंग-गुणसूत्र ठीक समान नहीं — वही अंतर पूरा मर्म।) यह सबसे स्पष्ट मामलों में जहाँ बुनियादी आनुवंशिकता समझना सीधे एक हानिकारक सामाजिक पूर्वाग्रह का खंडन करता।"
+        },
+        "mr": {
+          "stem": "अनेक समाजांत स्त्रीला दोष, अगदी शिक्षा, जेव्हा ती फक्त मुली जन्मते. पण लिंग-निर्धारणाचे जीवशास्त्र दाखवते हा दोष केवळ अन्याय्य नव्हे तर वैज्ञानिकदृष्ट्या अशक्य. कोणाचे योगदान प्रत्यक्षात मुलाचे लिंग ठरवते, आणि आई कधी जबाबदार का असू शकत नाही?",
+          "choices": [
+            "वडिलांचा शुक्राणू ठरवतो. आईचे दोन X गुणसूत्र, म्हणून ती जे अंडे बनवते प्रत्येक X वाहते — ती फक्त X च देऊ शकते. वडिलांचे एक X एक Y, म्हणून त्याचा शुक्राणू एकतर वाहतो: X-शुक्राणू मुलगी (XX) आणि Y-शुक्राणू मुलगा (XY) बनवतो. अंडे सदैव X असल्याने, मुलाचे लिंग पूर्णपणे यावरून ठरते की कोणता शुक्राणू फलित करतो, म्हणून आई शक्यतो जबाबदार असू शकत नाही",
+            "आई ठरवते, कारण बाळ तिच्या शरीरात वाढते",
+            "लिंग यावरून ठरते की आई गर्भावस्थेत काय खाते",
+            "दोन्ही पालकांचे गुणसूत्र समान, म्हणून कोणी ठरवत नाही"
+          ],
+          "solution": "इथले विज्ञान पूर्णपणे ठरलेले, आणि ते सामाजिक दोषाचे सपाट खंडन करते. मनुष्यांत एखाद्याचे लिंग लिंग-गुणसूत्रांच्या जोडीने ठरते. स्त्रीचे दोन X गुणसूत्र (XX) आणि पुरुषाचे एक X एक Y (XY). जेव्हा युग्मके — अंडी आणि शुक्राणू — बनतात, प्रत्येक जोडीचा फक्त एक वाहते. आता पाहा प्रत्येक पालक काय देऊ शकतो. आई XX, म्हणून तिचे कोणते गुणसूत्र अंड्यात जाईल, ते सदैव X; तिचे प्रत्येक अंडे X वाहते, आणि तिच्याकडे द्यायला कोणतेही Y नाहीच. वडील XY, म्हणून त्याचे शुक्राणू दोन प्रकारचे: अर्धे त्याचा X आणि अर्धे त्याचा Y वाहतात. जेव्हा शुक्राणू अंडे फलित करतो, अंड्याचा X ठरलेला, आणि परिणाम पूर्णपणे शुक्राणूवर. जर X-वाहक शुक्राणू जिंकला, मूल XX — मुलगी. जर Y-वाहक जिंकला, मूल XY — मुलगा. म्हणून मुलाचे लिंग फक्त यावरून ठरते की फलित करणारा शुक्राणू X वा Y वाहतो — आणि तो वडिलांकडून, कधी आईकडून नाही. आई भौतिकदृष्ट्या त्यावर प्रभाव टाकू शकत नाही, कारण ती प्रत्येक बाबतीत फक्त X देऊ शकते. मुलांच्या लिंगासाठी स्त्रीला दोष देणे म्हणून केवळ क्रूर-अन्याय्य नव्हे; ते जीवशास्त्रीयदृष्ट्या अशक्य, विज्ञानातील कोणत्याही तथ्याइतक्या निश्चित तथ्याच्या अज्ञानावर टेकलेले. (चुकीची उत्तरे नेमके ते समज पुन्हा सांगतात जे जीवशास्त्र उलटवते: बाळ वाहणे, वा आईचा आहार, याचा संबंध नाही की कोणता शुक्राणू अंडे फलित करतो, आणि दोन पालकांचे लिंग-गुणसूत्र नेमके समान नाहीत — तोच फरक अख्खा मुद्दा.) हे सर्वांत स्पष्ट प्रकरणांपैकी जिथे मूलभूत आनुवंशिकता समजणे थेट एका हानिकारक सामाजिक पूर्वग्रहाचे खंडन करते."
+        }
+      }
+    }
+  ]
+}

@@ -1753,4 +1753,1048 @@ export const G10_SCIENCE: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 6 — Control and Coordination                                    */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-10-control-coordination",
+    subject: "SCIENCE",
+    classLevel: 10,
+    chapter: {
+      en: "Chapter 6 — Control and Coordination",
+      hi: "अध्याय 6 — नियंत्रण एवं समन्वय",
+      mr: "प्रकरण 6 — नियंत्रण आणि समन्वय",
+    },
+    name: {
+      en: "Control and Coordination",
+      hi: "नियंत्रण एवं समन्वय",
+      mr: "नियंत्रण आणि समन्वय",
+    },
+    summary: {
+      en: "How a body keeps its parts working together: neurons flashing impulses along the nervous system, the reflex that yanks a hand from a flame before thought, the brain's divided offices, and the slower chemical messengers — hormones in animals, auxin in plants — that steer growth and balance.",
+      hi: "शरीर अपने भागों को कैसे मिलकर काम कराता: तंत्रिका-तंत्र में आवेग चमकाते न्यूरॉन, विचार से पहले आग से हाथ खींचता प्रतिवर्त, मस्तिष्क के बँटे दफ़्तर, और धीमे रासायनिक दूत — पशुओं में हार्मोन, पौधों में ऑक्सिन — जो वृद्धि-संतुलन चलाते।",
+      mr: "शरीर आपल्या भागांना कसे एकत्र काम करवते: चेतासंस्थेत आवेग चमकवणारे चेतापेशी, विचाराआधी आगीतून हात खेचणारा प्रतिक्षिप्त, मेंदूचे विभागलेले कार्यालये, आणि मंद रासायनिक दूत — प्राण्यांत संप्रेरके, झाडांत ऑक्सिन — जे वाढ-समतोल चालवतात.",
+    },
+    position: 6,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "neuron-nervous",
+        name: {
+          en: "The nervous system",
+          hi: "तंत्रिका तंत्र",
+          mr: "चेतासंस्था",
+        },
+        kind: "system",
+        prompt: {
+          en: "A message races from your fingertip to your brain in a flash, carried by long branched cells as an electrical impulse. What system, built of neurons, controls the body by such fast signals?",
+          hi: "एक संदेश तुम्हारी उँगली से मस्तिष्क तक पल में दौड़ता, लंबी शाखित कोशिकाओं द्वारा विद्युत आवेग बतौर। न्यूरॉनों का बना कौन-सा तंत्र ऐसे तेज़ संकेतों से शरीर नियंत्रित करता?",
+          mr: "एक संदेश तुझ्या बोटाच्या टोकातून मेंदूपर्यंत क्षणात धावतो, लांब फांद्यांच्या पेशींद्वारे विद्युत आवेग म्हणून. चेतापेशींनी बनलेली कोणती संस्था अशा जलद संकेतांनी शरीर नियंत्रित करते?",
+        },
+        statement: {
+          en: "The nervous system controls the body through fast electrical impulses carried by neurons — long branched cells — and is made of the brain, the spinal cord and the nerves reaching every part.",
+          hi: "तंत्रिका तंत्र न्यूरॉनों — लंबी शाखित कोशिकाओं — द्वारा ढोए तेज़ विद्युत आवेगों से शरीर नियंत्रित करता, और मस्तिष्क, मेरुरज्जु और हर भाग तक पहुँचती तंत्रिकाओं का बना।",
+          mr: "चेतासंस्था चेतापेशी — लांब फांद्यांच्या पेशी — यांनी वाहिलेल्या जलद विद्युत आवेगांनी शरीर नियंत्रित करते, आणि मेंदू, मेरुरज्जू आणि प्रत्येक भागापर्यंत पोहोचणाऱ्या चेतांनी बनलेली.",
+        },
+        detail: {
+          en: "A neuron passes its signal to the next across a tiny gap, the synapse, where a chemical carries the message the last step over.",
+          hi: "न्यूरॉन अपना संकेत अगले को एक नन्हे अंतराल, सिनैप्स, पर देता, जहाँ एक रसायन संदेश को अंतिम क़दम पार ले जाता।",
+          mr: "चेतापेशी आपला संकेत पुढच्याला एका इवल्या फटी, अनुबंध, वर देते, जिथे एक रसायन संदेश शेवटचे पाऊल पार नेते.",
+        },
+        extra: {
+          en: "The impulse is electrical inside a neuron but chemical across the synapse — the same relay that a nerve-gas or an anaesthetic can silence.",
+          hi: "आवेग न्यूरॉन के भीतर विद्युत पर सिनैप्स के पार रासायनिक — वही रिले जिसे नस-गैस या निश्चेतक चुप करा सकता।",
+          mr: "आवेग चेतापेशीच्या आत विद्युत पण अनुबंधापलीकडे रासायनिक — तोच रिले जो चेता-वायू वा भूल देणारे औषध शांत करू शकते.",
+        },
+        pair: {
+          left: {
+            en: "Controls the body by fast electrical impulses",
+            hi: "तेज़ विद्युत आवेगों से शरीर नियंत्रित करे",
+            mr: "जलद विद्युत आवेगांनी शरीर नियंत्रित करे",
+          },
+          right: {
+            en: "the nervous system",
+            hi: "तंत्रिका तंत्र",
+            mr: "चेतासंस्था",
+          },
+        },
+      },
+      {
+        id: "reflex-action",
+        name: {
+          en: "A reflex action",
+          hi: "प्रतिवर्ती क्रिया",
+          mr: "प्रतिक्षिप्त क्रिया",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Touch something scalding and your hand jerks back before you have even decided to move it, the signal looping through the spinal cord rather than waiting for the brain. What is this rapid automatic response called?",
+          hi: "कुछ झुलसाता छुओ और तुम्हारा हाथ हिलाने का निर्णय करने से पहले ही पीछे झटकता, संकेत मस्तिष्क की प्रतीक्षा के बजाय मेरुरज्जु से लूप करते। इस तीव्र स्वचालित प्रतिक्रिया को क्या कहते?",
+          mr: "काही भाजणारे स्पर्शा आणि तुझा हात हलवण्याचा निर्णय घेण्याआधीच मागे झटकतो, संकेत मेंदूची वाट पाहण्याऐवजी मेरुरज्जूतून वळत. या जलद स्वयंचलित प्रतिसादाला काय म्हणतात?",
+        },
+        statement: {
+          en: "A reflex action is a rapid, automatic response to a stimulus in which the signal travels a short reflex arc through the spinal cord, producing the reaction without waiting for the brain to decide.",
+          hi: "प्रतिवर्ती क्रिया उद्दीपन के प्रति तीव्र, स्वचालित प्रतिक्रिया जिसमें संकेत मेरुरज्जु से एक छोटा प्रतिवर्त-चाप चलता, मस्तिष्क के निर्णय की प्रतीक्षा बिना प्रतिक्रिया देते।",
+          mr: "प्रतिक्षिप्त क्रिया उद्दीपकाला जलद, स्वयंचलित प्रतिसाद ज्यात संकेत मेरुरज्जूतून एक लहान प्रतिक्षिप्त-चाप चालतो, मेंदूच्या निर्णयाची वाट न पाहता प्रतिक्रिया देत.",
+        },
+        detail: {
+          en: "The reflex arc runs stimulus → sensory neuron → spinal cord → motor neuron → muscle, skipping the long climb up to the thinking brain.",
+          hi: "प्रतिवर्त-चाप चलता उद्दीपन → संवेदी न्यूरॉन → मेरुरज्जु → प्रेरक न्यूरॉन → माँसपेशी, सोचते मस्तिष्क तक की लंबी चढ़ाई छोड़ते।",
+          mr: "प्रतिक्षिप्त-चाप चालतो उद्दीपक → संवेदी चेतापेशी → मेरुरज्जू → प्रेरक चेतापेशी → स्नायू, विचार करणाऱ्या मेंदूपर्यंतची लांब चढाई वगळत.",
+        },
+        extra: {
+          en: "The brain is told a moment later, which is why you feel the pain just after your hand has already pulled away.",
+          hi: "मस्तिष्क को पल-भर बाद बताया जाता, इसी से तुम दर्द ठीक तब महसूस करते जब हाथ पहले ही खिंच चुका।",
+          mr: "मेंदूला क्षणभराने सांगितले जाते, म्हणूनच तू वेदना नेमकी तेव्हा जाणवतोस जेव्हा हात आधीच खेचला गेला.",
+        },
+        pair: {
+          left: {
+            en: "Instant response looping through the spinal cord",
+            hi: "मेरुरज्जु से लूप करती तत्काल प्रतिक्रिया",
+            mr: "मेरुरज्जूतून वळणारा तत्काळ प्रतिसाद",
+          },
+          right: {
+            en: "a reflex action",
+            hi: "प्रतिवर्ती क्रिया",
+            mr: "प्रतिक्षिप्त क्रिया",
+          },
+        },
+      },
+      {
+        id: "brain-regions",
+        name: {
+          en: "The regions of the brain",
+          hi: "मस्तिष्क के भाग",
+          mr: "मेंदूचे भाग",
+        },
+        kind: "structure",
+        prompt: {
+          en: "One part of the brain thinks and decides, another keeps you balanced and your movements smooth, and a third silently runs your breathing and heartbeat. How is the brain divided by these jobs?",
+          hi: "मस्तिष्क का एक भाग सोचता-निर्णय करता, दूसरा तुम्हें संतुलित और गति सहज रखता, और तीसरा चुपचाप साँस-धड़कन चलाता। इन कामों से मस्तिष्क कैसे बँटा?",
+          mr: "मेंदूचा एक भाग विचार-निर्णय करतो, दुसरा तुला संतुलित आणि हालचाली सहज ठेवतो, आणि तिसरा गुपचूप श्वास-हृदयस्पंद चालवतो. या कामांनी मेंदू कसा विभागला?",
+        },
+        statement: {
+          en: "The brain is divided by function: the cerebrum handles thinking, memory and voluntary action; the cerebellum keeps balance and smooth coordinated movement; and the medulla runs involuntary acts like breathing and heartbeat.",
+          hi: "मस्तिष्क कार्य से बँटा: प्रमस्तिष्क सोच, स्मृति और ऐच्छिक क्रिया सँभालता; अनुमस्तिष्क संतुलन और सहज समन्वित गति रखता; और मेडुला साँस-धड़कन जैसी अनैच्छिक क्रियाएँ चलाता।",
+          mr: "मेंदू कार्याने विभागला: प्रमस्तिष्क विचार, स्मृती आणि ऐच्छिक क्रिया हाताळतो; अनुमस्तिष्क संतुलन आणि सहज समन्वित हालचाल राखतो; आणि मेडुला श्वास-हृदयस्पंदासारख्या अनैच्छिक क्रिया चालवतो.",
+        },
+        detail: {
+          en: "This is why an injury to one region robs one ability but not others — damage to the cerebellum wrecks balance while leaving thought intact.",
+          hi: "इसी से एक भाग की चोट एक क्षमता छीनती पर अन्य नहीं — अनुमस्तिष्क की क्षति संतुलन बिगाड़ती जबकि सोच अछूती छोड़ती।",
+          mr: "म्हणूनच एका भागाची इजा एक क्षमता हिरावते पण इतर नाही — अनुमस्तिष्काची इजा संतुलन बिघडवते तर विचार अस्पर्श ठेवते.",
+        },
+        extra: {
+          en: "The medulla's involuntary control is why breathing and the heart carry on even in deep sleep, when the thinking cerebrum is switched off.",
+          hi: "मेडुला का अनैच्छिक नियंत्रण ही क्यों साँस-हृदय गहरी नींद में भी चलते, जब सोचता प्रमस्तिष्क बंद।",
+          mr: "मेडुलाचे अनैच्छिक नियंत्रण म्हणूनच श्वास-हृदय गाढ झोपेतही चालतात, जेव्हा विचार करणारा प्रमस्तिष्क बंद.",
+        },
+        pair: {
+          left: {
+            en: "Thinking, balance and involuntary control split apart",
+            hi: "सोच, संतुलन और अनैच्छिक नियंत्रण अलग",
+            mr: "विचार, संतुलन आणि अनैच्छिक नियंत्रण वेगळे",
+          },
+          right: {
+            en: "the regions of the brain",
+            hi: "मस्तिष्क के भाग",
+            mr: "मेंदूचे भाग",
+          },
+        },
+      },
+      {
+        id: "hormones",
+        name: {
+          en: "Hormones and the endocrine system",
+          hi: "हार्मोन और अंतःस्रावी तंत्र",
+          mr: "संप्रेरके आणि अंतःस्रावी संस्था",
+        },
+        kind: "system",
+        prompt: {
+          en: "Besides its electric nerves, the body sends slower chemical messengers through the blood — a squirt of one readies you to fight or flee, another controls your blood sugar. What are these messengers and their glands called?",
+          hi: "अपनी विद्युत तंत्रिकाओं के अलावा, शरीर रक्त से धीमे रासायनिक दूत भेजता — एक की फुहार तुम्हें लड़ने या भागने तैयार करती, दूसरा रक्त-शर्करा नियंत्रित करता। इन दूतों और उनकी ग्रंथियों को क्या कहते?",
+          mr: "आपल्या विद्युत चेतांखेरीज, शरीर रक्तातून मंद रासायनिक दूत पाठवते — एकाची फवारणी तुला लढायला वा पळायला तयार करते, दुसरा रक्त-साखर नियंत्रित करतो. या दूतांना आणि त्यांच्या ग्रंथींना काय म्हणतात?",
+        },
+        statement: {
+          en: "Hormones are chemical messengers made by endocrine glands and carried in the blood; they act more slowly than nerves but their effects are widespread and lasting — like adrenaline for fright and insulin for blood sugar.",
+          hi: "हार्मोन अंतःस्रावी ग्रंथियों के बने रासायनिक दूत जो रक्त में ढोए; वे तंत्रिकाओं से धीरे काम करते पर उनके प्रभाव व्यापक और टिकाऊ — जैसे भय को एड्रेनालिन और रक्त-शर्करा को इंसुलिन।",
+          mr: "संप्रेरके अंतःस्रावी ग्रंथींनी बनवलेले रासायनिक दूत जे रक्तात वाहिले; ते चेतांहून हळू काम करतात पण त्यांचे परिणाम व्यापक आणि टिकाऊ — जसे भीतीला अ‍ॅड्रेनालिन आणि रक्त-साखरेला इन्शुलिन.",
+        },
+        detail: {
+          en: "A gland pours its hormone straight into the blood, which carries it everywhere, yet only the organs built to respond — its 'target' tissues — react.",
+          hi: "ग्रंथि अपना हार्मोन सीधे रक्त में उँड़ेलती, जो इसे हर जगह ले जाता, फिर भी केवल जवाब देने बने अंग — उसके 'लक्ष्य' ऊतक — प्रतिक्रिया देते।",
+          mr: "ग्रंथी आपले संप्रेरक थेट रक्तात ओतते, जे ते सर्वत्र नेते, तरी फक्त प्रतिसाद द्यायला बनलेले अवयव — त्याच्या 'लक्ष्य' ऊती — प्रतिक्रिया देतात.",
+        },
+        extra: {
+          en: "Too little of a hormone is as harmful as too much — a shortage of thyroid slows the whole body, and a shortage of insulin causes diabetes.",
+          hi: "हार्मोन बहुत कम बहुत ज़्यादा जितना ही हानिकारक — थायरॉइड की कमी पूरे शरीर को धीमा करती, और इंसुलिन की कमी मधुमेह लाती।",
+          mr: "संप्रेरक फार कमी फार जास्तइतकेच हानिकारक — थायरॉइडची कमतरता अख्खे शरीर मंदावते, आणि इन्शुलिनची कमतरता मधुमेह आणते.",
+        },
+        pair: {
+          left: {
+            en: "Slow chemical messengers carried in the blood",
+            hi: "रक्त में ढोए धीमे रासायनिक दूत",
+            mr: "रक्तात वाहिलेले मंद रासायनिक दूत",
+          },
+          right: {
+            en: "hormones",
+            hi: "हार्मोन",
+            mr: "संप्रेरके",
+          },
+        },
+      },
+      {
+        id: "plant-tropism",
+        name: {
+          en: "Plant hormones and tropism",
+          hi: "पादप हार्मोन और अनुवर्तन",
+          mr: "वनस्पती संप्रेरके आणि अनुवर्तन",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A plant, without nerves or muscles, still bends its shoot toward a window's light and drives its root down into the soil. Which chemical-driven directional growth toward or away from a stimulus is this?",
+          hi: "एक पौधा, बिना तंत्रिका या माँसपेशी, फिर भी अपना प्ररोह खिड़की के प्रकाश की ओर मोड़ता और जड़ मिट्टी में नीचे चलाता। उद्दीपन की ओर या से दूर यह रासायनिक-चालित दिशात्मक वृद्धि कौन-सी है?",
+          mr: "एक झाड, चेता वा स्नायूविना, तरी आपले खोड खिडकीच्या प्रकाशाकडे वाकवते आणि मूळ मातीत खाली चालवते. उद्दीपकाकडे वा त्यापासून दूर ही रासायनिक-चालित दिशात्मक वाढ कोणती?",
+        },
+        statement: {
+          en: "Tropism is the directional growth of a plant toward or away from a stimulus, driven by hormones like auxin — shoots grow toward light (phototropism) and roots grow down toward gravity (geotropism).",
+          hi: "अनुवर्तन पौधे की उद्दीपन की ओर या से दूर दिशात्मक वृद्धि, ऑक्सिन जैसे हार्मोनों से चालित — प्ररोह प्रकाश की ओर (प्रकाशानुवर्तन) और जड़ें गुरुत्व की ओर नीचे (गुरुत्वानुवर्तन)।",
+          mr: "अनुवर्तन झाडाची उद्दीपकाकडे वा त्यापासून दूर दिशात्मक वाढ, ऑक्सिनसारख्या संप्रेरकांनी चालित — खोडे प्रकाशाकडे (प्रकाशानुवर्तन) आणि मुळे गुरुत्वाकडे खाली (गुरुत्वानुवर्तन).",
+        },
+        detail: {
+          en: "Auxin gathers on the shaded side of a shoot and makes those cells grow longer, so the shoot bends toward the light — growth, not muscle, does the moving.",
+          hi: "ऑक्सिन प्ररोह की छायादार ओर जमता और उन कोशिकाओं को अधिक लंबा उगाता, अतः प्ररोह प्रकाश की ओर मुड़ता — वृद्धि, न कि माँसपेशी, हिलाती।",
+          mr: "ऑक्सिन खोडाच्या सावलीच्या बाजूला जमते आणि त्या पेशी अधिक लांब वाढवते, म्हणून खोड प्रकाशाकडे वाकते — वाढ, न की स्नायू, हलवते.",
+        },
+        extra: {
+          en: "Because growth is slow, plant responses take hours or days — a sunflower turning to follow the sun, not a hand snatched from a flame.",
+          hi: "क्योंकि वृद्धि धीमी, पादप-प्रतिक्रियाएँ घंटे या दिन लेतीं — सूरजमुखी सूरज का पीछा करने मुड़ता, न कि आग से झटका हाथ।",
+          mr: "कारण वाढ मंद, वनस्पती-प्रतिक्रिया तास वा दिवस घेतात — सूर्यफूल सूर्याचा पाठलाग करायला वळते, न की आगीतून झटकलेला हात.",
+        },
+        pair: {
+          left: {
+            en: "Growth bending toward or away from a stimulus",
+            hi: "उद्दीपन की ओर या से दूर मुड़ती वृद्धि",
+            mr: "उद्दीपकाकडे वा दूर वाकणारी वाढ",
+          },
+          right: {
+            en: "tropism",
+            hi: "अनुवर्तन",
+            mr: "अनुवर्तन",
+          },
+        },
+      },
+      {
+        id: "feedback-control",
+        name: {
+          en: "Feedback regulation",
+          hi: "पुनर्भरण नियमन",
+          mr: "पुनर्भरण नियमन",
+        },
+        kind: "idea",
+        prompt: {
+          en: "When blood sugar rises after a meal, insulin is released to bring it down; when it falls too low, the release stops. What self-correcting control, where the output regulates its own cause, is this?",
+          hi: "भोजन बाद रक्त-शर्करा चढ़ती, इसे घटाने इंसुलिन छूटता; बहुत नीचे गिरने पर छूटना रुकता। कौन-सा स्व-सुधारता नियंत्रण, जहाँ परिणाम अपना कारण नियमित करता, यह है?",
+          mr: "जेवणानंतर रक्त-साखर चढते, ती घटवायला इन्शुलिन सुटते; फार खाली गेल्यावर सुटणे थांबते. कोणते स्व-दुरुस्त नियंत्रण, जिथे परिणाम आपले कारण नियमित करतो, हे आहे?",
+        },
+        statement: {
+          en: "Feedback regulation is a self-correcting control in which the amount of a hormone is adjusted by its own effect — insulin is released when blood sugar is high and held back when it is low, keeping the level steady.",
+          hi: "पुनर्भरण नियमन एक स्व-सुधारता नियंत्रण जिसमें हार्मोन की मात्रा उसके अपने प्रभाव से समायोजित — रक्त-शर्करा ऊँची होने पर इंसुलिन छूटता और नीची होने पर रोका, स्तर स्थिर रखते।",
+          mr: "पुनर्भरण नियमन एक स्व-दुरुस्त नियंत्रण ज्यात संप्रेरकाची मात्रा त्याच्या स्वतःच्या परिणामाने जुळवली — रक्त-साखर जास्त असता इन्शुलिन सुटते आणि कमी असता रोखले, पातळी स्थिर ठेवत.",
+        },
+        detail: {
+          en: "This keeps hormone levels from running wild — the gland is switched on and off by the very condition it is meant to correct.",
+          hi: "यह हार्मोन-स्तर को बेलगाम होने से रोकता — ग्रंथि ठीक उसी दशा से चालू-बंद होती जिसे उसे सुधारना है।",
+          mr: "हे संप्रेरक-पातळी बेलगाम होण्यापासून रोखते — ग्रंथी नेमक्या त्याच अवस्थेने चालू-बंद होते जी तिला दुरुस्त करायची.",
+        },
+        extra: {
+          en: "It is the body's thermostat idea — like a heater that switches itself off once the room is warm enough, then on again when it cools.",
+          hi: "यह शरीर का ताप-नियंत्रक विचार — जैसे हीटर जो कमरा पर्याप्त गरम होते स्वयं बंद, फिर ठंडा होते चालू।",
+          mr: "हे शरीराचे तापनियंत्रक तत्त्व — जसे हीटर जे खोली पुरेशी गरम होताच स्वतः बंद, मग थंड होताच चालू.",
+        },
+        pair: {
+          left: {
+            en: "Output switching its own cause on and off",
+            hi: "परिणाम अपना कारण चालू-बंद करे",
+            mr: "परिणाम आपले कारण चालू-बंद करे",
+          },
+          right: {
+            en: "feedback regulation",
+            hi: "पुनर्भरण नियमन",
+            mr: "पुनर्भरण नियमन",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "If your fingers touch a hot pan, your hand pulls back in a fraction of a second — long before you consciously feel the heat and 'decide' to move. Why is this reflex so much faster than an ordinary thought-out action?",
+          hi: "यदि तुम्हारी उँगलियाँ गरम तवे को छुएँ, तुम्हारा हाथ सेकंड के अंश में पीछे खिंचता — तुम्हारे सचेत रूप से गरमी महसूस करने और हिलने का 'निर्णय' करने से बहुत पहले। यह प्रतिवर्त एक साधारण सोची-समझी क्रिया से इतना तेज़ क्यों?",
+          mr: "जर तुझी बोटे गरम तव्याला स्पर्शली, तुझा हात सेकंदाच्या अंशात मागे खेचतो — तू जाणीवपूर्वक उष्णता जाणवण्याआधी आणि हलण्याचा 'निर्णय' घेण्याआधी. हा प्रतिक्षिप्त एका साध्या विचार केलेल्या क्रियेहून इतका जलद का?",
+        },
+        choices: [
+          {
+            en: "In a reflex the signal takes a short cut: it goes stimulus → sensory neuron → spinal cord → motor neuron → muscle, and the spinal cord orders the muscle to act at once, without the signal having to travel all the way up to the brain and back for a conscious decision — saving that long trip is what makes it so fast",
+            hi: "प्रतिवर्त में संकेत छोटा रास्ता लेता: उद्दीपन → संवेदी न्यूरॉन → मेरुरज्जु → प्रेरक न्यूरॉन → माँसपेशी, और मेरुरज्जु माँसपेशी को तुरंत क्रिया का आदेश देती, संकेत को सचेत निर्णय के लिए मस्तिष्क तक पूरी यात्रा और वापस किए बिना — वह लंबी यात्रा बचाना ही इसे इतना तेज़ बनाता",
+            mr: "प्रतिक्षिप्तात संकेत आडवाट घेतो: उद्दीपक → संवेदी चेतापेशी → मेरुरज्जू → प्रेरक चेतापेशी → स्नायू, आणि मेरुरज्जू स्नायूला लगेच क्रियेचा आदेश देते, संकेताला जाणीवपूर्वक निर्णयासाठी मेंदूपर्यंत संपूर्ण प्रवास आणि परत न करता — तो लांब प्रवास वाचवणे हेच त्याला इतके जलद बनवते",
+          },
+          {
+            en: "Reflexes are faster because the brain thinks especially quickly about danger",
+            hi: "प्रतिवर्त तेज़ क्योंकि मस्तिष्क ख़तरे के बारे में विशेष रूप से जल्दी सोचता",
+            mr: "प्रतिक्षिप्त जलद कारण मेंदू धोक्याबद्दल विशेष जलद विचार करतो",
+          },
+          {
+            en: "The hand moves before any nerve signal travels at all",
+            hi: "हाथ किसी तंत्रिका संकेत के चलने से पहले ही हिलता",
+            mr: "हात कोणताही चेता-संकेत चालण्याआधीच हलतो",
+          },
+          {
+            en: "Reflexes use hormones, which travel faster than nerve impulses",
+            hi: "प्रतिवर्त हार्मोन वापरते, जो तंत्रिका आवेगों से तेज़ चलते",
+            mr: "प्रतिक्षिप्त संप्रेरके वापरते, जी चेता-आवेगांहून जलद चालतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The speed of a reflex comes from the short route its signal takes, not from any special quickness of thought. In a deliberate action, a message from your skin has to travel all the way up the spinal cord to the brain, where it is consciously registered and a decision is made, and then a fresh command must travel all the way back down to the muscle — a long round trip that takes noticeable time. For something like touching a hot pan, that delay could mean a serious burn. Evolution's solution is the reflex arc, a built-in short cut wired through the spinal cord itself. When the sensory neuron in your fingertip fires, its signal reaches the spinal cord and is passed almost immediately to a motor neuron, which orders the arm muscle to contract and pull the hand away. The command is issued right there in the spinal cord, without waiting for the signal to climb to the brain, be thought about, and come back. That is why the hand is already moving before you consciously feel the pain — the brain does get the message, but a moment later, as a report of something that has already happened rather than as the decision to act. So the reflex is faster purely because it skips the longest and slowest leg of the journey: the trip to and from the thinking brain. (Note the traps in the wrong answers: the signal is still a nerve impulse, not a hormone, and hormones are slower, not faster; and the hand certainly does not move with no signal at all.) This built-in shortcut is exactly why reflexes protect us from sudden dangers that a slower, thought-out response could not.",
+          hi: "प्रतिवर्त की गति उसके संकेत के छोटे रास्ते से, न कि सोच की किसी विशेष तेज़ी से। जान-बूझकर की क्रिया में तुम्हारी त्वचा का संदेश मेरुरज्जु से पूरा ऊपर मस्तिष्क तक जाता, जहाँ सचेत रूप से दर्ज और निर्णय, फिर नया आदेश पूरा नीचे माँसपेशी तक — एक लंबा चक्कर जो उल्लेखनीय समय लेता। गरम तवा छूने जैसे को वह देरी गंभीर जलन का अर्थ हो सकती। विकास का समाधान प्रतिवर्त-चाप, मेरुरज्जु से ही तार-बद्ध अंतर्निहित छोटा रास्ता। जब तुम्हारी उँगली का संवेदी न्यूरॉन दागता, उसका संकेत मेरुरज्जु पहुँचता और लगभग तुरंत प्रेरक न्यूरॉन को दिया, जो बाँह की माँसपेशी को सिकुड़ने और हाथ खींचने आदेश देता। आदेश वहीं मेरुरज्जु में जारी, संकेत के मस्तिष्क चढ़ने, सोचे जाने, वापस आने की प्रतीक्षा बिना। इसी से हाथ पहले ही हिलता जब तुम सचेत रूप से दर्द महसूस करते — मस्तिष्क को संदेश मिलता ही, पर पल-भर बाद, पहले ही हो चुके की रिपोर्ट बतौर, न कि क्रिया के निर्णय बतौर। अतः प्रतिवर्त तेज़ विशुद्ध इसलिए कि यह यात्रा का सबसे लंबा-धीमा चरण छोड़ता: सोचते मस्तिष्क तक और से। (ग़लत उत्तरों के जाल नोट करो: संकेत अब भी तंत्रिका आवेग, न कि हार्मोन, और हार्मोन धीमे, तेज़ नहीं; और हाथ निश्चय बिना किसी संकेत नहीं हिलता।) यह अंतर्निहित छोटा रास्ता ठीक क्यों प्रतिवर्त हमें अचानक ख़तरों से रक्षते जिनसे धीमी, सोची-समझी प्रतिक्रिया न रक्ष सके।",
+          mr: "प्रतिक्षिप्ताचा वेग त्याच्या संकेताच्या आडवाटेतून, न की विचाराच्या कोणत्याही विशेष जलदपणातून. जाणीवपूर्वक क्रियेत तुझ्या त्वचेचा संदेश मेरुरज्जूतून पूर्ण वर मेंदूपर्यंत जातो, जिथे जाणीवपूर्वक नोंदला आणि निर्णय, मग नवा आदेश पूर्ण खाली स्नायूपर्यंत — एक लांब फेरी जी लक्षणीय वेळ घेते. गरम तवा स्पर्शण्यासारख्याला तो विलंब गंभीर भाजण्याचा अर्थ असू शकतो. उत्क्रांतीचा उपाय प्रतिक्षिप्त-चाप, मेरुरज्जूतूनच जोडलेली अंगभूत आडवाट. जेव्हा तुझ्या बोटाची संवेदी चेतापेशी झडते, तिचा संकेत मेरुरज्जूला पोहोचतो आणि जवळपास लगेच प्रेरक चेतापेशीला दिला, जी बाहूच्या स्नायूला आकुंचायला आणि हात खेचायला आदेश देते. आदेश तिथेच मेरुरज्जूत जारी, संकेताला मेंदूकडे चढणे, विचारले जाणे, परत येण्याची वाट न पाहता. म्हणूनच हात आधीच हलतो जेव्हा तू जाणीवपूर्वक वेदना जाणवतोस — मेंदूला संदेश मिळतोच, पण क्षणभराने, आधीच घडलेल्याचा अहवाल म्हणून, न की क्रियेच्या निर्णयाप्रमाणे. म्हणून प्रतिक्षिप्त जलद विशुद्ध म्हणून की तो प्रवासाचा सर्वांत लांब-मंद टप्पा वगळतो: विचार करणाऱ्या मेंदूपर्यंत आणि परत. (चुकीच्या उत्तरांतील सापळे लक्षात घ्या: संकेत अजून चेता-आवेग, न की संप्रेरक, आणि संप्रेरके मंद, जलद नाही; आणि हात नक्कीच कोणत्याही संकेताविना हलत नाही.) ही अंगभूत आडवाट नेमके का प्रतिक्षिप्त आपल्याला अचानक धोक्यांपासून रक्षतात ज्यांपासून मंद, विचार केलेला प्रतिसाद रक्षू शकणार नाही.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The body has two separate systems for control — the nervous system and the hormonal (endocrine) system. If nerves already carry messages, why does the body also need the slower chemical messengers of hormones? What does each do better?",
+          hi: "शरीर के नियंत्रण को दो अलग तंत्र — तंत्रिका तंत्र और हार्मोनी (अंतःस्रावी) तंत्र। यदि तंत्रिकाएँ पहले ही संदेश ढोतीं, शरीर को हार्मोनों के धीमे रासायनिक दूत भी क्यों चाहिए? हर एक क्या बेहतर करता?",
+          mr: "शरीराच्या नियंत्रणाला दोन वेगळ्या संस्था — चेतासंस्था आणि संप्रेरकी (अंतःस्रावी) संस्था. जर चेता आधीच संदेश वाहतात, शरीराला संप्रेरकांचे मंद रासायनिक दूतही का हवेत? प्रत्येक काय अधिक चांगले करते?",
+        },
+        choices: [
+          {
+            en: "Nerves send fast, precise, short-lived signals to a specific spot — ideal for instant actions like pulling a hand away; hormones travel slowly through the blood but reach the whole body and act for a long time — ideal for slow, widespread, sustained changes like growth, metabolism and puberty. The two suit different jobs, so both are needed",
+            hi: "तंत्रिकाएँ तेज़, सटीक, अल्पकालिक संकेत एक विशिष्ट स्थान भेजतीं — हाथ खींचने जैसी तत्काल क्रियाओं को आदर्श; हार्मोन रक्त से धीरे चलते पर पूरे शरीर पहुँचते और लंबे समय काम करते — वृद्धि, उपापचय, यौवन जैसे धीमे, व्यापक, निरंतर परिवर्तनों को आदर्श। दोनों भिन्न कामों के अनुकूल, अतः दोनों चाहिए",
+            mr: "चेता जलद, अचूक, अल्पकालिक संकेत एका विशिष्ट जागी पाठवतात — हात खेचण्यासारख्या तत्काळ क्रियांना आदर्श; संप्रेरके रक्तातून हळू चालतात पण अख्ख्या शरीरात पोहोचतात आणि दीर्घकाळ काम करतात — वाढ, चयापचय, तारुण्यासारख्या मंद, व्यापक, सातत्यपूर्ण बदलांना आदर्श. दोन्ही वेगळ्या कामांना अनुकूल, म्हणून दोन्ही हवेत",
+          },
+          {
+            en: "The hormonal system is just a backup that does nothing unless the nerves fail",
+            hi: "हार्मोनी तंत्र बस एक बैकअप जो तंत्रिकाओं के विफल होने तक कुछ नहीं करता",
+            mr: "संप्रेरकी संस्था फक्त एक बॅकअप जी चेता अपयशी होईपर्यंत काही करत नाही",
+          },
+          {
+            en: "Nerves and hormones do exactly the same thing, so having both is wasteful",
+            hi: "तंत्रिकाएँ और हार्मोन ठीक एक ही काम करते, अतः दोनों होना बर्बादी",
+            mr: "चेता आणि संप्रेरके नेमके एकच काम करतात, म्हणून दोन्ही असणे नासाडी",
+          },
+          {
+            en: "Hormones are faster and more precise than nerves in every way",
+            hi: "हार्मोन तंत्रिकाओं से हर तरह तेज़ और अधिक सटीक",
+            mr: "संप्रेरके चेतांहून प्रत्येक प्रकारे जलद आणि अधिक अचूक",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The two control systems are not rivals or duplicates; they are complementary tools suited to different kinds of jobs, and a body needs both because life poses both kinds of problem. The nervous system works by electrical impulses shooting along neurons, which gives it three defining qualities: it is fast (the message arrives in a fraction of a second), it is precise (a nerve runs to one particular muscle or spot, so the effect is exactly localised), and it is short-lived (the moment the impulses stop, so does the effect). That combination is perfect for split-second, targeted actions — snatching a hand from a flame, blinking as dust flies in, adjusting your grip. But it is wasteful and unsuited for changes that must be slow, body-wide and sustained. That is where hormones come in. An endocrine gland releases a hormone into the blood, which carries it everywhere in the body, so its reach is broad rather than pin-point; it acts more slowly, taking minutes, hours or longer; and its effect lasts as long as the hormone circulates. That makes hormones ideal for the opposite class of task: the gradual, widespread, long-running processes of the body — growth from child to adult, the sweeping changes of puberty, the day-long control of blood sugar and metabolism. You would not want a reflex to control your growth, and you could not blink using a hormone. So the body keeps both: fast, sharp, brief nerves for instant reactions, and slow, broad, lasting hormones for sustained regulation. Far from being redundant, each covers precisely the ground the other cannot, and together they let the body respond appropriately to everything from a sudden pinprick to the years-long journey of growing up.",
+          hi: "दो नियंत्रण-तंत्र प्रतिद्वंद्वी या नक़ल नहीं; वे भिन्न प्रकार के कामों के अनुकूल पूरक औज़ार, और शरीर को दोनों चाहिए क्योंकि जीवन दोनों प्रकार की समस्या रखता। तंत्रिका तंत्र न्यूरॉनों पर विद्युत आवेग दौड़ाकर काम करता, जो इसे तीन परिभाषक गुण देता: यह तेज़ (संदेश सेकंड के अंश में पहुँचता), सटीक (तंत्रिका एक विशेष माँसपेशी या स्थान चलती, अतः प्रभाव ठीक स्थानीय), और अल्पकालिक (आवेग रुकते ही प्रभाव भी)। वह संयोजन क्षण-भर, लक्षित क्रियाओं को पूर्ण — आग से हाथ झटकना, धूल उड़ते पलक झपकना, पकड़ समायोजित करना। पर उन परिवर्तनों को बर्बाद और अनुपयुक्त जो धीमे, शरीर-भर और निरंतर हों। वहीं हार्मोन आते। अंतःस्रावी ग्रंथि हार्मोन रक्त में छोड़ती, जो इसे शरीर में हर जगह ले जाता, अतः पहुँच व्यापक न कि सुई-नोक; यह धीरे काम करता, मिनट, घंटे या अधिक लेते; और प्रभाव जब तक हार्मोन घूमता टिकता। वह हार्मोनों को उल्टे वर्ग के काम को आदर्श बनाता: शरीर की क्रमिक, व्यापक, लंबी प्रक्रियाएँ — बच्चे से वयस्क वृद्धि, यौवन के व्यापक परिवर्तन, रक्त-शर्करा-उपापचय का दिन-भर नियंत्रण। तुम प्रतिवर्त से अपनी वृद्धि नियंत्रित न चाहोगे, और हार्मोन से पलक न झपका सकोगे। अतः शरीर दोनों रखता: तत्काल प्रतिक्रियाओं को तेज़, तीक्ष्ण, संक्षिप्त तंत्रिकाएँ, और निरंतर नियमन को धीमे, व्यापक, टिकाऊ हार्मोन। अनावश्यक होने से दूर, हर एक ठीक वह भूमि ढकता जो दूसरा नहीं, और साथ वे शरीर को अचानक चुभन से बड़े होने की वर्षों-लंबी यात्रा तक हर चीज़ का उचित जवाब देने देते।",
+          mr: "दोन नियंत्रण-संस्था प्रतिस्पर्धी वा नक्कल नाहीत; त्या वेगळ्या प्रकारच्या कामांना अनुकूल पूरक साधने, आणि शरीराला दोन्ही हव्यात कारण जीवन दोन्ही प्रकारची समस्या मांडते. चेतासंस्था चेतापेशींवर विद्युत आवेग धाववून काम करते, जे तिला तीन व्याख्यादर्शक गुण देते: ती जलद (संदेश सेकंदाच्या अंशात पोहोचतो), अचूक (चेता एका विशिष्ट स्नायू वा जागी चालते, म्हणून परिणाम नेमका स्थानिक), आणि अल्पकालिक (आवेग थांबताच परिणामही). ते संयोजन क्षणार्धाच्या, लक्ष्यित क्रियांना परिपूर्ण — आगीतून हात झटकणे, धूळ उडताना पापणी लवणे, पकड जुळवणे. पण त्या बदलांना नासाडी आणि अयोग्य जे मंद, शरीर-भर आणि सातत्यपूर्ण असावेत. तिथेच संप्रेरके येतात. अंतःस्रावी ग्रंथी संप्रेरक रक्तात सोडते, जे ते शरीरात सर्वत्र नेते, म्हणून पोहोच व्यापक न की सुई-टोक; ते हळू काम करते, मिनिटे, तास वा अधिक घेत; आणि परिणाम जोवर संप्रेरक फिरते तोवर टिकतो. ते संप्रेरकांना उलट वर्गाच्या कामाला आदर्श बनवते: शरीराच्या क्रमिक, व्यापक, दीर्घ प्रक्रिया — मुलापासून प्रौढ वाढ, तारुण्याचे व्यापक बदल, रक्त-साखर-चयापचयाचे दिवसभर नियंत्रण. तू प्रतिक्षिप्ताने आपली वाढ नियंत्रित करू इच्छिणार नाहीस, आणि संप्रेरकाने पापणी लवू शकणार नाहीस. म्हणून शरीर दोन्ही ठेवते: तत्काळ प्रतिक्रियांना जलद, तीक्ष्ण, संक्षिप्त चेता, आणि सातत्यपूर्ण नियमनाला मंद, व्यापक, टिकाऊ संप्रेरके. अनावश्यक असण्यापासून दूर, प्रत्येक नेमकी ती जमीन व्यापते जी दुसरा व्यापू शकत नाही, आणि एकत्र ती शरीराला अचानक टोचण्यापासून मोठे होण्याच्या वर्षानुवर्षांच्या प्रवासापर्यंत प्रत्येक गोष्टीला योग्य प्रतिसाद देऊ देतात.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 7 — How do Organisms Reproduce?                                 */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-10-reproduction",
+    subject: "SCIENCE",
+    classLevel: 10,
+    chapter: {
+      en: "Chapter 7 — How do Organisms Reproduce?",
+      hi: "अध्याय 7 — जीव जनन कैसे करते हैं?",
+      mr: "प्रकरण 7 — सजीव पुनरुत्पादन कसे करतात?",
+    },
+    name: {
+      en: "How do Organisms Reproduce?",
+      hi: "जीव जनन कैसे करते हैं?",
+      mr: "सजीव पुनरुत्पादन कसे करतात?",
+    },
+    summary: {
+      en: "How life copies itself: reproduction copying DNA with small variations, one parent cloning itself in asexual reproduction and two mixing their genes in sexual reproduction, flowers and human bodies built for the second way, and the variation that gives a species its chance against a changing world.",
+      hi: "जीवन स्वयं की नक़ल कैसे बनाता: जनन DNA को छोटी विविधताओं से नक़ल करता, एक जनक अलैंगिक जनन में स्वयं का क्लोन और दो लैंगिक जनन में अपने जीन मिलाते, फूल और मानव शरीर दूसरे तरीक़े को बने, और वह विविधता जो प्रजाति को बदलती दुनिया के विरुद्ध मौक़ा देती।",
+      mr: "जीवन स्वतःची नक्कल कशी बनवते: पुनरुत्पादन DNA ला लहान विविधतांसह नक्कल करते, एक पालक अलैंगिक पुनरुत्पादनात स्वतःचा क्लोन आणि दोन लैंगिक पुनरुत्पादनात आपले जनुके मिसळत, फुले आणि मानवी शरीर दुसऱ्या मार्गाला बनवलेली, आणि ती विविधता जी प्रजातीला बदलत्या जगाविरुद्ध संधी देते.",
+    },
+    position: 7,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "reproduction-variation",
+        name: {
+          en: "Reproduction and variation",
+          hi: "जनन और विविधता",
+          mr: "पुनरुत्पादन आणि विविधता",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Living things make new individuals of their own kind by copying their DNA, but the copying is never perfect, so small differences creep in. What twin idea does this describe?",
+          hi: "जीव अपने DNA की नक़ल कर अपनी ही तरह के नए जीव बनाते, पर नक़ल कभी पूर्ण नहीं, अतः छोटे अंतर घुस आते। यह कौन-सा युग्म-विचार बताता?",
+          mr: "सजीव आपल्या DNA ची नक्कल करून आपल्याच प्रकारचे नवे जीव बनवतात, पण नक्कल कधी परिपूर्ण नाही, म्हणून लहान फरक शिरतात. हे कोणते जोडी-विचार सांगते?",
+        },
+        statement: {
+          en: "Reproduction is the making of new individuals of the same kind by copying DNA; because the copying is never perfect, small variations arise, which are the raw material of evolution.",
+          hi: "जनन DNA नक़ल कर उसी तरह के नए जीव बनाना; क्योंकि नक़ल कभी पूर्ण नहीं, छोटी विविधताएँ उठतीं, जो विकास का कच्चा माल।",
+          mr: "पुनरुत्पादन DNA नक्कल करून त्याच प्रकारचे नवे जीव बनवणे; कारण नक्कल कधी परिपूर्ण नाही, लहान विविधता उठतात, ज्या उत्क्रांतीचा कच्चा माल.",
+        },
+        detail: {
+          en: "The DNA is the blueprint of the body, and copying it is the deepest event in reproduction — a new life begins as a fresh copy of that blueprint.",
+          hi: "DNA शरीर का ख़ाका, और उसकी नक़ल जनन की गहनतम घटना — नया जीवन उस ख़ाके की ताज़ी नक़ल बतौर शुरू।",
+          mr: "DNA शरीराचा आराखडा, आणि त्याची नक्कल पुनरुत्पादनातील सखोल घटना — नवे जीवन त्या आराखड्याची ताजी नक्कल म्हणून सुरू.",
+        },
+        extra: {
+          en: "A little variation is useful, but a wildly wrong copy usually cannot survive — so reproduction copies carefully, allowing only small changes.",
+          hi: "थोड़ी विविधता उपयोगी, पर बुरी तरह ग़लत नक़ल आमतौर पर जी नहीं सकती — अतः जनन सावधानी से नक़ल करता, केवल छोटे परिवर्तन देते।",
+          mr: "थोडी विविधता उपयुक्त, पण फार चुकीची नक्कल सहसा जगू शकत नाही — म्हणून पुनरुत्पादन काळजीपूर्वक नक्कल करते, फक्त लहान बदल देत.",
+        },
+        pair: {
+          left: {
+            en: "DNA copied, with small differences creeping in",
+            hi: "DNA नक़ल, छोटे अंतर घुसते",
+            mr: "DNA नक्कल, लहान फरक शिरत",
+          },
+          right: {
+            en: "reproduction and variation",
+            hi: "जनन और विविधता",
+            mr: "पुनरुत्पादन आणि विविधता",
+          },
+        },
+      },
+      {
+        id: "asexual-reproduction",
+        name: {
+          en: "Asexual reproduction",
+          hi: "अलैंगिक जनन",
+          mr: "अलैंगिक पुनरुत्पादन",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A single amoeba splits in two, a hydra sprouts a bud that grows into a copy, and a potato eye grows a whole new plant — all from one parent, all identical to it. What kind of reproduction is this?",
+          hi: "एक अकेला अमीबा दो में बँटता, हाइड्रा एक कली उगाता जो नक़ल बनती, और आलू की आँख पूरा नया पौधा उगाती — सब एक जनक से, सब उसके समान। यह कौन-सा जनन है?",
+          mr: "एक एकटा अमीबा दोनांत विभागतो, हायड्रा एक कळी फुटवतो जी नक्कल बनते, आणि बटाट्याचा डोळा अख्खे नवे झाड उगवतो — सारे एका पालकाकडून, सारे त्याच्यासारखे. हे कोणते पुनरुत्पादन?",
+        },
+        statement: {
+          en: "Asexual reproduction makes offspring from a single parent, and because there is no mixing of two sets of DNA, the offspring are genetically identical to the parent — clones.",
+          hi: "अलैंगिक जनन एक जनक से संतान बनाता, और क्योंकि दो DNA-समुच्चयों का मिश्रण नहीं, संतान जनक के आनुवंशिक रूप से समान — क्लोन।",
+          mr: "अलैंगिक पुनरुत्पादन एका पालकाकडून संतती बनवते, आणि कारण दोन DNA-संचांचे मिश्रण नाही, संतती पालकाची आनुवंशिकदृष्ट्या समान — क्लोन.",
+        },
+        detail: {
+          en: "It comes in many forms — binary fission in an amoeba, budding in a hydra, fragmentation in Spirogyra, and vegetative propagation from a plant's own stems, roots or leaves.",
+          hi: "यह कई रूपों में — अमीबा में द्विखंडन, हाइड्रा में मुकुलन, स्पाइरोगाइरा में विखंडन, और पौधे के अपने तने, जड़ या पत्तों से कायिक प्रवर्धन।",
+          mr: "हे अनेक रूपांत — अमीबात द्विखंडन, हायड्रात मुकुलन, स्पायरोगायरात खंडन, आणि झाडाच्या स्वतःच्या खोड, मूळ वा पानांतून शाकीय प्रजनन.",
+        },
+        extra: {
+          en: "It is fast and needs no partner, so it is ideal for spreading quickly — but every offspring being a clone leaves the whole line with no variation to face change.",
+          hi: "यह तेज़ और साथी नहीं चाहिए, अतः जल्दी फैलने को आदर्श — पर हर संतान क्लोन होने से पूरी वंश-रेखा को परिवर्तन झेलने कोई विविधता नहीं।",
+          mr: "हे जलद आणि जोडीदार नको, म्हणून लवकर पसरायला आदर्श — पण प्रत्येक संतती क्लोन असल्याने अख्ख्या वंश-रेषेला बदल सोसायला कोणतीही विविधता नाही.",
+        },
+        pair: {
+          left: {
+            en: "One parent, offspring identical clones",
+            hi: "एक जनक, संतान समान क्लोन",
+            mr: "एक पालक, संतती समान क्लोन",
+          },
+          right: {
+            en: "asexual reproduction",
+            hi: "अलैंगिक जनन",
+            mr: "अलैंगिक पुनरुत्पादन",
+          },
+        },
+      },
+      {
+        id: "sexual-reproduction",
+        name: {
+          en: "Sexual reproduction",
+          hi: "लैंगिक जनन",
+          mr: "लैंगिक पुनरुत्पादन",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Two parents each contribute a sex cell, and when these fuse the offspring gets a new mix of DNA from both, so it resembles each parent yet is exactly like neither. What kind of reproduction is this?",
+          hi: "दो जनक हर एक एक लिंग-कोशिका देते, और जब ये मिलते संतान को दोनों से DNA का नया मिश्रण मिलता, अतः यह हर जनक से मिलती फिर भी किसी के ठीक समान नहीं। यह कौन-सा जनन है?",
+          mr: "दोन पालक प्रत्येक एक लिंग-पेशी देतात, आणि जेव्हा ही मिळतात संततीला दोघांकडून DNA चे नवे मिश्रण मिळते, म्हणून ती प्रत्येक पालकासारखी तरी कोणासारखी नेमकी नाही. हे कोणते पुनरुत्पादन?",
+        },
+        statement: {
+          en: "Sexual reproduction involves two parents, each contributing a gamete; the gametes fuse in fertilisation, so the offspring gets a fresh combination of DNA from both, producing rich variation.",
+          hi: "लैंगिक जनन में दो जनक, हर एक एक युग्मक देता; युग्मक निषेचन में मिलते, अतः संतान को दोनों से DNA का ताज़ा संयोजन मिलता, समृद्ध विविधता बनाते।",
+          mr: "लैंगिक पुनरुत्पादनात दोन पालक, प्रत्येक एक युग्मक देतो; युग्मके फलनात मिळतात, म्हणून संततीला दोघांकडून DNA चे ताजे संयोजन मिळते, समृद्ध विविधता बनवत.",
+        },
+        detail: {
+          en: "Each gamete carries only half the DNA, so when two fuse the full amount is restored — and it is the shuffling of the two halves that makes every offspring unique.",
+          hi: "हर युग्मक केवल आधा DNA ढोता, अतः दो मिलते पूरी मात्रा बहाल — और दो हिस्सों की फेंटन ही हर संतान अनूठी बनाती।",
+          mr: "प्रत्येक युग्मक फक्त अर्धा DNA वाहते, म्हणून दोन मिळताच पूर्ण मात्रा पुनर्स्थापित — आणि दोन अर्ध्यांचे मिसळणेच प्रत्येक संतती अनन्य बनवते.",
+        },
+        extra: {
+          en: "It is slower and needs two parents, but the variety it makes is a species' insurance — a mixed population is far likelier to weather a changing world.",
+          hi: "यह धीमा और दो जनक चाहिए, पर जो विविधता बनाता वह प्रजाति का बीमा — मिश्रित जनसंख्या बदलती दुनिया झेलने कहीं अधिक संभावित।",
+          mr: "हे मंद आणि दोन पालक हवेत, पण जी विविधता बनवते ती प्रजातीचा विमा — मिश्र लोकसंख्या बदलते जग सोसायला कितीतरी अधिक शक्य.",
+        },
+        pair: {
+          left: {
+            en: "Two parents, genes mixed, every offspring unique",
+            hi: "दो जनक, जीन मिश्रित, हर संतान अनूठी",
+            mr: "दोन पालक, जनुके मिश्रित, प्रत्येक संतती अनन्य",
+          },
+          right: {
+            en: "sexual reproduction",
+            hi: "लैंगिक जनन",
+            mr: "लैंगिक पुनरुत्पादन",
+          },
+        },
+      },
+      {
+        id: "flower-reproduction",
+        name: {
+          en: "Reproduction in a flower",
+          hi: "फूल में जनन",
+          mr: "फुलातील पुनरुत्पादन",
+        },
+        kind: "process",
+        prompt: {
+          en: "A flower is a plant's sexual organ: pollen from the male stamen must reach the female stigma, then a tube grows down to fertilise the ovule and make a seed. What are these two steps called?",
+          hi: "फूल पौधे का लैंगिक अंग: नर पुंकेसर से पराग को मादा वर्तिकाग्र तक पहुँचना, फिर एक नली नीचे बढ़ बीजांड निषेचित कर बीज बनाती। इन दो चरणों को क्या कहते?",
+          mr: "फूल झाडाचा लैंगिक अवयव: नर पुंकेसरातील पराग मादी कुक्षीपर्यंत पोहोचावा, मग एक नळी खाली वाढून बीजांड फलित करून बी बनवते. या दोन पायऱ्यांना काय म्हणतात?",
+        },
+        statement: {
+          en: "In a flower, pollination carries pollen from the stamen to the stigma, and fertilisation follows when the male gamete travels down a pollen tube to fuse with the egg in the ovule, forming a seed.",
+          hi: "फूल में परागण पराग को पुंकेसर से वर्तिकाग्र तक ले जाता, और निषेचन तब जब नर युग्मक पराग-नली से नीचे चल बीजांड में अंड से मिलता, बीज बनाते।",
+          mr: "फुलात परागण परागाला पुंकेसरातून कुक्षीपर्यंत नेते, आणि फलन तेव्हा जेव्हा नर युग्मक पराग-नळीतून खाली चालून बीजांडातील अंड्याशी मिळते, बी बनवत.",
+        },
+        detail: {
+          en: "Pollination can be carried out by wind, water or animals — a bee dusted with pollen from one flower ferries it to the next as it drinks nectar.",
+          hi: "परागण हवा, पानी या पशुओं से हो सकता — एक फूल के पराग से सना मधुमक्खी इसे अगले तक ढोती जब वह रस पीती।",
+          mr: "परागण वारा, पाणी वा प्राण्यांनी होऊ शकते — एका फुलाच्या परागाने माखलेली मधमाशी ते पुढच्यापर्यंत वाहते जेव्हा ती मध पिते.",
+        },
+        extra: {
+          en: "After fertilisation the ovule becomes the seed and the ovary swells into the fruit around it — which is why a fruit carries the seeds inside.",
+          hi: "निषेचन बाद बीजांड बीज बनता और अंडाशय उसके चारों ओर फल में फूलता — इसी से फल भीतर बीज ढोता।",
+          mr: "फलनानंतर बीजांड बी बनते आणि अंडाशय त्याभोवती फळात फुगते — म्हणूनच फळ आत बिया वाहते.",
+        },
+        pair: {
+          left: {
+            en: "Pollen reaches the stigma, then the egg is fertilised",
+            hi: "पराग वर्तिकाग्र पहुँचे, फिर अंड निषेचित",
+            mr: "पराग कुक्षीला पोहोचे, मग अंडे फलित",
+          },
+          right: {
+            en: "pollination and fertilisation",
+            hi: "परागण और निषेचन",
+            mr: "परागण आणि फलन",
+          },
+        },
+      },
+      {
+        id: "human-reproduction",
+        name: {
+          en: "Human reproduction",
+          hi: "मानव जनन",
+          mr: "मानवी पुनरुत्पादन",
+        },
+        kind: "process",
+        prompt: {
+          en: "In humans a sperm from the father fertilises an egg from the mother, and the resulting cell grows, protected inside the mother, into a baby over about nine months. What life process is this?",
+          hi: "मनुष्यों में पिता का शुक्राणु माता के अंड को निषेचित करता, और बनी कोशिका, माता के भीतर रक्षित, लगभग नौ महीनों में शिशु में बढ़ती। यह कौन-सा जैव-प्रक्रम है?",
+          mr: "मनुष्यांत वडिलांचा शुक्राणू आईच्या अंड्याला फलित करतो, आणि बनलेली पेशी, आईच्या आत रक्षित, सुमारे नऊ महिन्यांत बाळात वाढते. ही कोणती जीवन-प्रक्रिया?",
+        },
+        statement: {
+          en: "Human reproduction is sexual: a sperm made in the father's testes fertilises an egg made in the mother's ovary, and the fertilised egg develops in the mother's uterus into a baby over about nine months.",
+          hi: "मानव जनन लैंगिक: पिता के वृषण में बना शुक्राणु माता के अंडाशय में बने अंड को निषेचित करता, और निषेचित अंड माता के गर्भाशय में लगभग नौ महीनों में शिशु में विकसित।",
+          mr: "मानवी पुनरुत्पादन लैंगिक: वडिलांच्या वृषणात बनलेला शुक्राणू आईच्या अंडाशयात बनलेल्या अंड्याला फलित करतो, आणि फलित अंडे आईच्या गर्भाशयात सुमारे नऊ महिन्यांत बाळात विकसित.",
+        },
+        detail: {
+          en: "The developing baby is fed and given oxygen through the placenta, a special organ that links its blood supply to the mother's without the two mixing.",
+          hi: "विकसित होता शिशु अपरा से पाला और ऑक्सीजन पाता, एक विशेष अंग जो उसकी रक्त-आपूर्ति को माता की से बिना दोनों मिले जोड़ता।",
+          mr: "विकसित होणारे बाळ वारेतून पोसले आणि ऑक्सिजन मिळवते, एक विशेष अवयव जो त्याचा रक्त-पुरवठा आईच्याशी दोन्ही न मिसळता जोडतो.",
+        },
+        extra: {
+          en: "The onset of these abilities at puberty is driven by hormones, which also bring the bodily changes that mark the move from child to adult.",
+          hi: "यौवन पर इन क्षमताओं का आरंभ हार्मोनों से चालित, जो बच्चे से वयस्क की ओर बढ़त चिह्नित करते शारीरिक परिवर्तन भी लाते।",
+          mr: "तारुण्यात या क्षमतांचा आरंभ संप्रेरकांनी चालित, जे मुलापासून प्रौढाकडे वाटचाल चिन्हांकित करणारे शारीरिक बदलही आणतात.",
+        },
+        pair: {
+          left: {
+            en: "Sperm fertilises egg, baby grows in the uterus",
+            hi: "शुक्राणु अंड निषेचित, शिशु गर्भाशय में बढ़े",
+            mr: "शुक्राणू अंडे फलित, बाळ गर्भाशयात वाढे",
+          },
+          right: {
+            en: "human reproduction",
+            hi: "मानव जनन",
+            mr: "मानवी पुनरुत्पादन",
+          },
+        },
+      },
+      {
+        id: "reproductive-health",
+        name: {
+          en: "Reproductive health",
+          hi: "जनन स्वास्थ्य",
+          mr: "पुनरुत्पादन आरोग्य",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Choosing whether and when to have children, spacing births, and guarding against infections spread by physical intimacy are all part of keeping the reproductive system well. What is this whole concern called?",
+          hi: "बच्चे हों या न हों और कब, जन्मों में अंतर, और शारीरिक निकटता से फैलते संक्रमणों से बचाव सब जनन-तंत्र को स्वस्थ रखने का भाग। इस पूरी चिंता को क्या कहते?",
+          mr: "मुले व्हावीत की नाही आणि केव्हा, जन्मांत अंतर, आणि शारीरिक जवळिकीने पसरणाऱ्या संसर्गांपासून रक्षण सारे पुनरुत्पादन-संस्था निरोगी ठेवण्याचा भाग. या अख्ख्या चिंतेला काय म्हणतात?",
+        },
+        statement: {
+          en: "Reproductive health is the well-being of the reproductive system, including family planning to choose and space children, and protection against sexually transmitted infections.",
+          hi: "जनन स्वास्थ्य जनन-तंत्र का कल्याण, बच्चे चुनने-अंतर देने का परिवार नियोजन और यौन-संचारित संक्रमणों से रक्षा सहित।",
+          mr: "पुनरुत्पादन आरोग्य पुनरुत्पादन-संस्थेचे कल्याण, मुले निवडायला-अंतर द्यायला कुटुंब नियोजन आणि लैंगिक-संक्रमित संसर्गांपासून रक्षणासह.",
+        },
+        detail: {
+          en: "Various contraceptive methods let a couple decide when to have children and space them for the health of mother and child alike.",
+          hi: "विविध गर्भनिरोधक तरीक़े दंपती को तय करने देते कब बच्चे हों और उन्हें माता-शिशु दोनों के स्वास्थ्य को अंतर देना।",
+          mr: "विविध गर्भनिरोधक पद्धती जोडप्याला ठरवू देतात केव्हा मुले व्हावीत आणि त्यांना आई-बाळ दोघांच्या आरोग्यासाठी अंतर द्यावे.",
+        },
+        extra: {
+          en: "It also means fighting the social evil of choosing a child's sex before birth, which has skewed the ratio of girls to boys in many places.",
+          hi: "इसका अर्थ जन्म से पहले बच्चे का लिंग चुनने की सामाजिक बुराई से लड़ना भी, जिसने कई जगह लड़कियों-लड़कों का अनुपात बिगाड़ा।",
+          mr: "याचा अर्थ जन्माआधी बाळाचे लिंग निवडण्याच्या सामाजिक दुष्कृत्याशी लढणेही, ज्याने अनेक ठिकाणी मुली-मुलांचे प्रमाण बिघडवले.",
+        },
+        pair: {
+          left: {
+            en: "Family planning and protection from infection",
+            hi: "परिवार नियोजन और संक्रमण से रक्षा",
+            mr: "कुटुंब नियोजन आणि संसर्गापासून रक्षण",
+          },
+          right: {
+            en: "reproductive health",
+            hi: "जनन स्वास्थ्य",
+            mr: "पुनरुत्पादन आरोग्य",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "The offspring of an amoeba (which reproduces asexually) are exact copies of the parent, but the children of two human parents (who reproduce sexually) all differ from their parents and from each other. What causes this difference between the two modes of reproduction?",
+          hi: "अमीबा (जो अलैंगिक जनन करता) की संतान जनक की ठीक नक़ल, पर दो मानव जनकों (जो लैंगिक जनन करते) के बच्चे सब अपने जनकों से और एक-दूसरे से भिन्न। जनन के दो तरीक़ों के बीच इस अंतर का कारण क्या?",
+          mr: "अमीबाची (जो अलैंगिक पुनरुत्पादन करतो) संतती पालकाची नेमकी नक्कल, पण दोन मानवी पालकांची (जे लैंगिक पुनरुत्पादन करतात) मुले सारी आपल्या पालकांहून आणि एकमेकांहून वेगळी. पुनरुत्पादनाच्या दोन मार्गांतील या फरकाचे कारण काय?",
+        },
+        choices: [
+          {
+            en: "In asexual reproduction one parent simply copies its own DNA, so the offspring is a genetic clone; in sexual reproduction each of two parents contributes half its DNA and the halves combine in a new mix, so every child gets a fresh, unique combination and differs from both parents and from its siblings",
+            hi: "अलैंगिक जनन में एक जनक बस अपना DNA नक़ल करता, अतः संतान आनुवंशिक क्लोन; लैंगिक जनन में दो जनकों में हर एक अपना आधा DNA देता और आधे नए मिश्रण में जुड़ते, अतः हर बच्चा ताज़ा, अनूठा संयोजन पाता और दोनों जनकों से और भाई-बहनों से भिन्न",
+            mr: "अलैंगिक पुनरुत्पादनात एक पालक फक्त आपले DNA नक्कल करतो, म्हणून संतती आनुवंशिक क्लोन; लैंगिक पुनरुत्पादनात दोन पालकांतील प्रत्येक आपले अर्धे DNA देतो आणि अर्धे नव्या मिश्रणात जुळतात, म्हणून प्रत्येक मूल ताजे, अनन्य संयोजन मिळवते आणि दोन्ही पालकांहून आणि भावंडांहून वेगळे",
+          },
+          {
+            en: "Amoebae have no DNA, so their offspring cannot vary",
+            hi: "अमीबा में कोई DNA नहीं, अतः उनकी संतान भिन्न नहीं हो सकती",
+            mr: "अमीबात कोणतेही DNA नाही, म्हणून त्यांची संतती वेगळी होऊ शकत नाही",
+          },
+          {
+            en: "Human children differ only because they are fed differently after birth",
+            hi: "मानव बच्चे केवल इसलिए भिन्न क्योंकि जन्म बाद उन्हें अलग खिलाया",
+            mr: "मानवी मुले फक्त म्हणून वेगळी कारण जन्मानंतर त्यांना वेगळे खाऊ घातले",
+          },
+          {
+            en: "Asexual reproduction mixes DNA from two parents and sexual reproduction copies one",
+            hi: "अलैंगिक जनन दो जनकों का DNA मिलाता और लैंगिक जनन एक की नक़ल करता",
+            mr: "अलैंगिक पुनरुत्पादन दोन पालकांचे DNA मिसळते आणि लैंगिक पुनरुत्पादन एकाची नक्कल करते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The difference in variation comes straight from the difference in how the DNA is passed on. When an amoeba reproduces asexually, there is only one parent and only one set of DNA involved: the amoeba simply copies its own DNA and splits, handing each daughter cell a duplicate of exactly the same genetic instructions. With no second set to mix in, the offspring are genetic clones — identical to the parent and to each other, apart from the rare copying error. Sexual reproduction works on a completely different principle. Here two parents are involved, and each contributes not a full copy of its DNA but a gamete carrying only half. When a sperm and an egg fuse in fertilisation, the two halves combine to restore a full set — but it is a new combination, half from the father and half from the mother, shuffled together in a way that has never existed before. Because which half of each parent's DNA ends up in any given gamete is itself variable, every sperm and every egg is different, and so every child is a fresh mix — resembling each parent in some features but identical to neither, and different from every brother and sister too. That is why sexual reproduction is a machine for generating variety while asexual reproduction produces sameness. (Watch the traps: amoebae certainly do have DNA — that is what they copy; the differences among human children are genetic, present from the fertilised egg, not caused by later feeding; and the last option simply reverses the two modes.) This variety is not a mere curiosity: it is the raw material on which natural selection works, and it is why sexually reproducing species carry a built-in advantage in facing a changing world.",
+          hi: "विविधता का अंतर सीधे इससे कि DNA कैसे सौंपा जाता। जब अमीबा अलैंगिक जनन करता, केवल एक जनक और केवल एक DNA-समुच्चय शामिल: अमीबा बस अपना DNA नक़ल कर बँटता, हर पुत्री-कोशिका को ठीक उन्हीं आनुवंशिक निर्देशों की प्रतिलिपि देते। मिलाने कोई दूसरा समुच्चय न होने से, संतान आनुवंशिक क्लोन — जनक और एक-दूसरे के समान, दुर्लभ नक़ल-त्रुटि छोड़। लैंगिक जनन बिलकुल भिन्न सिद्धांत पर। यहाँ दो जनक शामिल, और हर एक अपने DNA की पूरी नक़ल नहीं बल्कि केवल आधा ढोता युग्मक देता। जब शुक्राणु-अंड निषेचन में मिलते, दो आधे जुड़कर पूरा समुच्चय बहाल — पर यह नया संयोजन, आधा पिता आधा माता से, ऐसे फेंटा जो पहले कभी न रहा। क्योंकि हर जनक के DNA का कौन-सा आधा किसी युग्मक में जाता स्वयं परिवर्ती, हर शुक्राणु-अंड भिन्न, अतः हर बच्चा ताज़ा मिश्रण — हर जनक से कुछ गुणों में मिलता पर किसी के समान नहीं, हर भाई-बहन से भी भिन्न। इसी से लैंगिक जनन विविधता बनाने की मशीन जबकि अलैंगिक समानता बनाता। (जाल देखो: अमीबा में निश्चय DNA है — वही नक़ल करता; मानव बच्चों के अंतर आनुवंशिक, निषेचित अंड से मौजूद, बाद के खिलाने से नहीं; और अंतिम विकल्प बस दो तरीक़े उल्टे करता।) यह विविधता महज़ कौतूहल नहीं: यह वह कच्चा माल जिस पर प्राकृतिक चयन काम करता, और क्यों लैंगिक जनन करती प्रजातियाँ बदलती दुनिया झेलने अंतर्निहित लाभ ढोतीं।",
+          mr: "विविधतेतील फरक थेट यातून की DNA कसे सोपवले जाते. जेव्हा अमीबा अलैंगिक पुनरुत्पादन करतो, फक्त एक पालक आणि फक्त एक DNA-संच सामील: अमीबा फक्त आपले DNA नक्कल करून विभागतो, प्रत्येक कन्या-पेशीला नेमक्या त्याच आनुवंशिक सूचनांची प्रत देत. मिसळायला दुसरा संच नसल्याने, संतती आनुवंशिक क्लोन — पालक आणि एकमेकांसारखी, दुर्मिळ नक्कल-चुकीखेरीज. लैंगिक पुनरुत्पादन अगदी वेगळ्या तत्त्वावर. इथे दोन पालक सामील, आणि प्रत्येक आपल्या DNA ची पूर्ण नक्कल नव्हे तर फक्त अर्धे वाहणारे युग्मक देतो. जेव्हा शुक्राणू-अंडे फलनात मिळतात, दोन अर्धे जुळून पूर्ण संच पुनर्स्थापित — पण ते नवे संयोजन, अर्धे वडिलांकडून अर्धे आईकडून, असे मिसळलेले जे आधी कधी नव्हते. कारण प्रत्येक पालकाच्या DNA चा कोणता अर्धा कोणत्या युग्मकात जातो हेच परिवर्ती, प्रत्येक शुक्राणू-अंडे वेगळे, म्हणून प्रत्येक मूल ताजे मिश्रण — प्रत्येक पालकासारखे काही गुणांत पण कोणासारखे नेमके नाही, प्रत्येक भावंडाहूनही वेगळे. म्हणूनच लैंगिक पुनरुत्पादन विविधता निर्माण करण्याचे यंत्र तर अलैंगिक सारखेपणा बनवते. (सापळे पाहा: अमीबात नक्कीच DNA आहे — तेच नक्कल करतो; मानवी मुलांतील फरक आनुवंशिक, फलित अंड्यापासून उपस्थित, नंतरच्या खाऊ घालण्याने नाही; आणि शेवटचा पर्याय फक्त दोन मार्ग उलट करतो.) ही विविधता केवळ कुतूहल नाही: तो कच्चा माल ज्यावर नैसर्गिक निवड काम करते, आणि का लैंगिक पुनरुत्पादन करणाऱ्या प्रजाती बदलते जग सोसायला अंगभूत फायदा वाहतात.",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "If asexual reproduction is faster, needs no partner, and reliably copies a well-adapted parent, why has sexual reproduction — slower and needing two parents — become so widespread among plants and animals? What advantage makes the extra trouble worth it?",
+          hi: "यदि अलैंगिक जनन तेज़, साथी नहीं चाहिए, और सुव्यवस्थित जनक की भरोसेमंद नक़ल करता, तो लैंगिक जनन — धीमा और दो जनक चाहिए — पौधों-पशुओं में इतना व्यापक क्यों हुआ? कौन-सा लाभ अतिरिक्त परेशानी को योग्य बनाता?",
+          mr: "जर अलैंगिक पुनरुत्पादन जलद, जोडीदार नको, आणि सुजुळलेल्या पालकाची भरवशाची नक्कल करते, तर लैंगिक पुनरुत्पादन — मंद आणि दोन पालक हवेत — झाडे-प्राण्यांत इतके व्यापक का झाले? कोणता फायदा जादा त्रासाला पात्र बनवतो?",
+        },
+        choices: [
+          {
+            en: "The variation it creates. Sexual reproduction mixes two parents' DNA so offspring differ from one another; in a population facing a changing environment, disease or new threats, this variety means some individuals are likely to have traits that let them survive and reproduce — so the species as a whole is far more able to adapt and endure than a uniform line of clones",
+            hi: "जो विविधता यह बनाता। लैंगिक जनन दो जनकों का DNA मिलाता अतः संतान एक-दूसरे से भिन्न; बदलते परिवेश, रोग या नए ख़तरे झेलती जनसंख्या में यह विविधता यानी कुछ व्यक्तियों में संभवतः ऐसे गुण जो उन्हें जीने-जनने दें — अतः प्रजाति समग्र क्लोनों की एकरूप रेखा से कहीं अधिक अनुकूलन और टिकने योग्य",
+            mr: "जी विविधता ते बनवते. लैंगिक पुनरुत्पादन दोन पालकांचे DNA मिसळते म्हणून संतती एकमेकांहून वेगळी; बदलते परिसर, रोग वा नवे धोके सोसणाऱ्या लोकसंख्येत ही विविधता म्हणजे काही व्यक्तींत कदाचित असे गुण जे त्यांना जगू-जन्मवू देतात — म्हणून प्रजाती समग्र क्लोनांच्या एकसमान रेषेहून कितीतरी अधिक जुळवून घेण्या-टिकण्याजोगी",
+          },
+          {
+            en: "Sexual reproduction is actually faster than asexual reproduction in every case",
+            hi: "लैंगिक जनन वास्तव में हर मामले में अलैंगिक से तेज़",
+            mr: "लैंगिक पुनरुत्पादन खरे तर प्रत्येक बाबतीत अलैंगिकहून जलद",
+          },
+          {
+            en: "There is no advantage; sexual reproduction spread purely by chance",
+            hi: "कोई लाभ नहीं; लैंगिक जनन विशुद्ध संयोग से फैला",
+            mr: "कोणताही फायदा नाही; लैंगिक पुनरुत्पादन विशुद्ध योगायोगाने पसरले",
+          },
+          {
+            en: "Sexual reproduction avoids using DNA, which makes offspring healthier",
+            hi: "लैंगिक जनन DNA वापरने से बचता, जो संतान को स्वस्थ बनाता",
+            mr: "लैंगिक पुनरुत्पादन DNA वापरणे टाळते, जे संततीला निरोगी बनवते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "On the face of it asexual reproduction looks like the better deal — quicker, no need to find a mate, and it faithfully reproduces a parent that has already proved it can survive. And indeed, when conditions are stable and favourable, cloning yourself is an excellent strategy. The catch is that conditions do not stay stable. Climates shift, new diseases appear, food sources fail, predators arrive. A population of identical clones has a fatal weakness against such change: if the environment turns against their single shared design, it turns against all of them at once, and the whole line can be wiped out, because not one of them carries anything different that might cope. This is exactly the gap sexual reproduction fills. By mixing the DNA of two parents into a fresh combination in every offspring, it produces a population whose members are all slightly different from one another. When hard times come, that variety is a hedge: out of many different individuals, some are likely, purely by the luck of their particular combination, to possess traits — resistance to the new disease, tolerance of the drought, a use for the new food — that let them survive and reproduce when others cannot. Those survivors then carry the species forward. So the advantage of sexual reproduction is not speed or convenience, which it lacks, but resilience: variation is a kind of insurance policy, spreading a species' bets across many different designs so that a changing world cannot destroy all of them at a single stroke. Over long stretches of evolutionary time, that ability to adapt and endure outweighs the extra cost of needing two parents and going slower — which is why sexual reproduction, despite its inconveniences, has become the dominant way of reproducing across the plant and animal kingdoms.",
+          hi: "ऊपरी तौर अलैंगिक जनन बेहतर सौदा दिखता — तेज़, साथी खोजने की ज़रूरत नहीं, और जनक जो जीना सिद्ध कर चुका उसकी वफ़ादार नक़ल। और सचमुच, जब दशाएँ स्थिर-अनुकूल, स्वयं का क्लोन बनाना उत्तम रणनीति। पकड़ यह कि दशाएँ स्थिर नहीं रहतीं। जलवायु बदलती, नए रोग आते, भोजन-स्रोत बिगड़ते, शिकारी आते। समान क्लोनों की जनसंख्या की ऐसे परिवर्तन के विरुद्ध घातक कमज़ोरी: यदि परिवेश उनके एकल साझा डिज़ाइन के विरुद्ध हो, वह सबके विरुद्ध एक साथ, और पूरी रेखा मिट सकती, क्योंकि उनमें से एक भी कुछ भिन्न नहीं ढोता जो निपट सके। ठीक यही खाई लैंगिक जनन भरता। दो जनकों का DNA हर संतान में ताज़ा संयोजन में मिलाकर, यह ऐसी जनसंख्या बनाता जिसके सदस्य सब एक-दूसरे से थोड़े भिन्न। जब कठिन समय आता, वह विविधता एक बचाव: कई भिन्न व्यक्तियों में से कुछ संभवतः, विशुद्ध अपने विशेष संयोजन के भाग्य से, ऐसे गुण रखते — नए रोग का प्रतिरोध, सूखे की सहनशीलता, नए भोजन का उपयोग — जो उन्हें जीने-जनने दें जब अन्य न सकें। वे उत्तरजीवी फिर प्रजाति आगे ढोते। अतः लैंगिक जनन का लाभ गति या सुविधा नहीं, जो इसमें नहीं, बल्कि लचीलापन: विविधता एक बीमा-पॉलिसी, प्रजाति के दाँव कई भिन्न डिज़ाइनों में फैलाते ताकि बदलती दुनिया एक ही वार में सबको नष्ट न कर सके। विकास के लंबे खंडों में, वह अनुकूलन-टिकने की क्षमता दो जनक चाहिए और धीमा होने की अतिरिक्त लागत से भारी — इसी से लैंगिक जनन, अपनी असुविधाओं के बावजूद, पादप-पशु जगत भर जनन का प्रमुख तरीक़ा बना।",
+          mr: "वरवर पाहता अलैंगिक पुनरुत्पादन उत्तम सौदा दिसते — जलद, जोडीदार शोधण्याची गरज नाही, आणि जो पालक जगणे सिद्ध करून चुकला त्याची प्रामाणिक नक्कल. आणि खरोखर, जेव्हा परिस्थिती स्थिर-अनुकूल, स्वतःचा क्लोन बनवणे उत्तम रणनीती. पकड ही की परिस्थिती स्थिर राहत नाही. हवामान बदलते, नवे रोग येतात, अन्न-स्रोत बुडतात, भक्षक येतात. समान क्लोनांच्या लोकसंख्येची अशा बदलाविरुद्ध घातक कमजोरी: जर परिसर त्यांच्या एकल सामायिक रचनेविरुद्ध झाला, तो सर्वांविरुद्ध एकाच वेळी, आणि अख्खी रेषा पुसली जाऊ शकते, कारण त्यांतले एकही काही वेगळे वाहत नाही जे निभावू शकेल. नेमकी हीच दरी लैंगिक पुनरुत्पादन भरते. दोन पालकांचे DNA प्रत्येक संततीत ताज्या संयोजनात मिसळून, ते अशी लोकसंख्या बनवते जिचे सदस्य सारे एकमेकांहून थोडे वेगळे. जेव्हा कठीण काळ येतो, ती विविधता एक बचाव: अनेक वेगळ्या व्यक्तींतून काही कदाचित, विशुद्ध आपल्या विशिष्ट संयोजनाच्या नशिबाने, असे गुण बाळगतात — नव्या रोगाचा प्रतिकार, दुष्काळाची सहनशीलता, नव्या अन्नाचा उपयोग — जे त्यांना जगू-जन्मवू देतात जेव्हा इतर करू शकत नाहीत. ते वाचलेले मग प्रजाती पुढे वाहतात. म्हणून लैंगिक पुनरुत्पादनाचा फायदा वेग वा सोय नाही, जी त्यात नाही, तर लवचिकता: विविधता एक विमा-पॉलिसी, प्रजातीच्या पैजा अनेक वेगळ्या रचनांत पसरवत जेणेकरून बदलते जग एकाच फटक्यात सर्वांना नष्ट करू शकत नाही. उत्क्रांतीच्या दीर्घ टप्प्यांत, ती जुळवून घेण्या-टिकण्याची क्षमता दोन पालक हवेत आणि मंद होण्याच्या जादा खर्चाहून भारी — म्हणूनच लैंगिक पुनरुत्पादन, आपल्या गैरसोयींनंतरही, वनस्पती-प्राणी जगतभर पुनरुत्पादनाचा प्रमुख मार्ग बनला.",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 8 — Heredity                                                    */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "science-10-heredity",
+    subject: "SCIENCE",
+    classLevel: 10,
+    chapter: {
+      en: "Chapter 8 — Heredity",
+      hi: "अध्याय 8 — आनुवंशिकता",
+      mr: "प्रकरण 8 — आनुवंशिकता",
+    },
+    name: {
+      en: "Heredity",
+      hi: "आनुवंशिकता",
+      mr: "आनुवंशिकता",
+    },
+    summary: {
+      en: "How traits pass down the generations: genes carrying characters from parent to child, alleles that dominate or hide, Mendel's neat 3:1 ratio, the split between the genes you carry and the traits you show, and the chromosomes that quietly decide a child's sex.",
+      hi: "गुण पीढ़ियों में कैसे उतरते: जनक से बच्चे को गुण ढोते जीन, हावी होते या छिपते युग्मविकल्पी, मेंडल का सुथरा 3:1 अनुपात, तुम जो जीन ढोते और जो गुण दिखाते के बीच बँटवारा, और चुपचाप बच्चे का लिंग तय करते गुणसूत्र।",
+      mr: "गुण पिढ्यांत कसे उतरतात: पालकाकडून मुलाला गुण वाहणारी जनुके, वर्चस्व गाजवणारे वा लपणारे युग्मविकल्पी, मेंडेलचे नीटस 3:1 प्रमाण, तू जी जनुके वाहतोस आणि जे गुण दाखवतोस यांतील विभागणी, आणि गुपचूप मुलाचे लिंग ठरवणारी गुणसूत्रे.",
+    },
+    position: 8,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "heredity-genes",
+        name: {
+          en: "Heredity and genes",
+          hi: "आनुवंशिकता और जीन",
+          mr: "आनुवंशिकता आणि जनुके",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A child has its mother's eyes and its father's nose because units of inheritance passed down in the sex cells carry those characters. What is this passing of traits from parents to offspring, and what units carry it?",
+          hi: "बच्चे के माता की आँखें और पिता की नाक क्योंकि लिंग-कोशिकाओं में उतरी वंशागति-इकाइयाँ वे गुण ढोतीं। जनकों से संतान को गुणों का यह उतरना, और कौन-सी इकाइयाँ इसे ढोतीं?",
+          mr: "मुलाला आईचे डोळे आणि वडिलांचे नाक कारण लिंग-पेशींत उतरलेली वंशागत-एकके ते गुण वाहतात. पालकांकडून संततीला गुणांचे हे उतरणे, आणि कोणती एकके ते वाहतात?",
+        },
+        statement: {
+          en: "Heredity is the passing of traits from parents to offspring, carried by genes — units of DNA on chromosomes, one set inherited from each parent.",
+          hi: "आनुवंशिकता जनकों से संतान को गुणों का उतरना, जीनों द्वारा ढोया — गुणसूत्रों पर DNA की इकाइयाँ, हर जनक से एक समुच्चय वंशागत।",
+          mr: "आनुवंशिकता पालकांकडून संततीला गुणांचे उतरणे, जनुकांनी वाहिलेले — गुणसूत्रांवरील DNA ची एकके, प्रत्येक पालकाकडून एक संच वंशागत.",
+        },
+        detail: {
+          en: "Each child gets a full pair of every gene — one copy from the mother's egg and one from the father's sperm — so it inherits from both.",
+          hi: "हर बच्चा हर जीन की पूरी जोड़ी पाता — एक प्रति माता के अंड से और एक पिता के शुक्राणु से — अतः दोनों से वंशागत।",
+          mr: "प्रत्येक मूल प्रत्येक जनुकाची पूर्ण जोडी मिळवते — एक प्रत आईच्या अंड्यातून आणि एक वडिलांच्या शुक्राणूतून — म्हणून दोघांकडून वंशागत.",
+        },
+        extra: {
+          en: "The rules of how these genes combine and reappear were first worked out by Gregor Mendel, breeding thousands of pea plants in a monastery garden.",
+          hi: "ये जीन कैसे जुड़ते और फिर प्रकट होते उसके नियम पहले ग्रेगर मेंडल ने खोजे, एक मठ-बग़ीचे में हज़ारों मटर पौधे उगाते।",
+          mr: "ही जनुके कशी जुळतात आणि पुन्हा प्रकट होतात त्याचे नियम प्रथम ग्रेगर मेंडेलने शोधले, एका मठ-बागेत हजारो वाटाणा झाडे उगवत.",
+        },
+        pair: {
+          left: {
+            en: "Traits passed on by units of DNA",
+            hi: "DNA की इकाइयों से उतरते गुण",
+            mr: "DNA च्या एककांनी उतरणारे गुण",
+          },
+          right: {
+            en: "heredity and genes",
+            hi: "आनुवंशिकता और जीन",
+            mr: "आनुवंशिकता आणि जनुके",
+          },
+        },
+      },
+      {
+        id: "dominant-recessive",
+        name: {
+          en: "Dominant and recessive alleles",
+          hi: "प्रभावी और अप्रभावी युग्मविकल्पी",
+          mr: "प्रभावी आणि अप्रभावी युग्मविकल्पी",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A gene can come in two versions, and when a plant carries one of each, only one version shows in the plant while the other stays hidden. What are these two kinds of gene version called?",
+          hi: "एक जीन दो रूपों में आ सकता, और जब पौधा हर एक की एक प्रति ढोता, केवल एक रूप पौधे में दिखता जबकि दूसरा छिपा रहता। जीन-रूप के इन दो प्रकारों को क्या कहते?",
+          mr: "एक जनुक दोन रूपांत येऊ शकते, आणि जेव्हा झाड प्रत्येकाची एक प्रत वाहते, फक्त एक रूप झाडात दिसते तर दुसरे लपून राहते. जनुक-रूपाच्या या दोन प्रकारांना काय म्हणतात?",
+        },
+        statement: {
+          en: "Alleles are alternative versions of a gene; a dominant allele shows its effect even when only one copy is present, while a recessive allele shows only when both copies are recessive.",
+          hi: "युग्मविकल्पी जीन के वैकल्पिक रूप; प्रभावी युग्मविकल्पी केवल एक प्रति होने पर भी प्रभाव दिखाता, जबकि अप्रभावी केवल तब दिखता जब दोनों प्रतियाँ अप्रभावी।",
+          mr: "युग्मविकल्पी जनुकाची पर्यायी रूपे; प्रभावी युग्मविकल्पी फक्त एक प्रत असतानाही परिणाम दाखवतो, तर अप्रभावी फक्त तेव्हा दिसतो जेव्हा दोन्ही प्रती अप्रभावी.",
+        },
+        detail: {
+          en: "So an organism carrying one dominant and one recessive allele looks just like one carrying two dominants — the recessive is present but masked.",
+          hi: "अतः एक प्रभावी और एक अप्रभावी युग्मविकल्पी ढोता जीव ठीक दो प्रभावी ढोते जैसा दिखता — अप्रभावी मौजूद पर ढका।",
+          mr: "म्हणून एक प्रभावी आणि एक अप्रभावी युग्मविकल्पी वाहणारा जीव नेमका दोन प्रभावी वाहणाऱ्यासारखा दिसतो — अप्रभावी उपस्थित पण झाकलेला.",
+        },
+        extra: {
+          en: "The hidden recessive is not lost — it can be passed to the next generation and reappear when it meets another recessive copy.",
+          hi: "छिपा अप्रभावी लुप्त नहीं — यह अगली पीढ़ी को दिया जा सकता और दूसरी अप्रभावी प्रति मिलने पर फिर प्रकट।",
+          mr: "लपलेला अप्रभावी हरवत नाही — तो पुढच्या पिढीला देता येतो आणि दुसरी अप्रभावी प्रत भेटल्यावर पुन्हा प्रकट.",
+        },
+        pair: {
+          left: {
+            en: "One shows with a single copy, the other only with two",
+            hi: "एक एकल प्रति से दिखे, दूसरा केवल दो से",
+            mr: "एक एकल प्रतीने दिसे, दुसरा फक्त दोनने",
+          },
+          right: {
+            en: "dominant and recessive alleles",
+            hi: "प्रभावी और अप्रभावी युग्मविकल्पी",
+            mr: "प्रभावी आणि अप्रभावी युग्मविकल्पी",
+          },
+        },
+      },
+      {
+        id: "mendel-ratio",
+        name: {
+          en: "Mendel's monohybrid ratio",
+          hi: "मेंडल का एकसंकर अनुपात",
+          mr: "मेंडेलचे एकसंकर प्रमाण",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Cross a tall pea plant with a short one and all the first-generation plants are tall; let those breed and the short trait returns in a quarter of the next generation. What famous ratio of tall to short does this give?",
+          hi: "लंबे मटर पौधे को छोटे से संकरित करो और पहली पीढ़ी के सब पौधे लंबे; उन्हें प्रजनित करने दो और अगली पीढ़ी के एक-चौथाई में छोटा गुण लौटता। लंबे-से-छोटे का यह प्रसिद्ध अनुपात क्या देता?",
+          mr: "उंच वाटाणा झाड आखूडशी संकरित करा आणि पहिल्या पिढीतील सारी झाडे उंच; त्यांना प्रजनन करू द्या आणि पुढच्या पिढीतील एक-चतुर्थांशात आखूड गुण परततो. उंच-ते-आखूडचे हे प्रसिद्ध प्रमाण काय देते?",
+        },
+        statement: {
+          en: "Mendel's monohybrid cross gives a 3:1 ratio in the second generation — three showing the dominant trait to one showing the recessive — because the recessive allele, hidden in the first generation, reappears when two recessive copies meet.",
+          hi: "मेंडल का एकसंकर संकरण दूसरी पीढ़ी में 3:1 अनुपात देता — तीन प्रभावी गुण दिखाते एक अप्रभावी को — क्योंकि पहली पीढ़ी में छिपा अप्रभावी युग्मविकल्पी दो अप्रभावी प्रतियाँ मिलने पर फिर प्रकट।",
+          mr: "मेंडेलचे एकसंकर संकरण दुसऱ्या पिढीत 3:1 प्रमाण देते — तीन प्रभावी गुण दाखवणारे एक अप्रभावी दाखवणाऱ्याला — कारण पहिल्या पिढीत लपलेला अप्रभावी युग्मविकल्पी दोन अप्रभावी प्रती भेटल्यावर पुन्हा प्रकट.",
+        },
+        detail: {
+          en: "The first generation is all tall (each has one tall and one short allele, tall dominant), but breeding them mixes the alleles four ways, three of which give tall and one short.",
+          hi: "पहली पीढ़ी सब लंबी (हर एक में एक लंबा एक छोटा युग्मविकल्पी, लंबा प्रभावी), पर उन्हें प्रजनित करना युग्मविकल्पियों को चार तरह मिलाता, जिनमें तीन लंबे एक छोटा देते।",
+          mr: "पहिली पिढी सारी उंच (प्रत्येकात एक उंच एक आखूड युग्मविकल्पी, उंच प्रभावी), पण त्यांना प्रजनन करणे युग्मविकल्पींना चार प्रकारे मिसळते, ज्यांत तीन उंच एक आखूड देतात.",
+        },
+        extra: {
+          en: "Mendel found this by counting thousands of pea plants — the first time inheritance was studied as clean numbers rather than vague resemblance.",
+          hi: "मेंडल ने यह हज़ारों मटर पौधे गिनकर पाया — पहली बार वंशागति अस्पष्ट समानता के बजाय साफ़ संख्याओं के रूप में अध्ययन की गई।",
+          mr: "मेंडेलने हे हजारो वाटाणा झाडे मोजून शोधले — पहिल्यांदा वंशागत अस्पष्ट साम्याऐवजी स्वच्छ संख्यांच्या रूपात अभ्यासली गेली.",
+        },
+        pair: {
+          left: {
+            en: "Three dominant to one recessive in the F2",
+            hi: "F2 में तीन प्रभावी एक अप्रभावी",
+            mr: "F2 मध्ये तीन प्रभावी एक अप्रभावी",
+          },
+          right: {
+            en: "the 3:1 ratio",
+            hi: "3:1 अनुपात",
+            mr: "3:1 प्रमाण",
+          },
+        },
+      },
+      {
+        id: "genotype-phenotype",
+        name: {
+          en: "Genotype and phenotype",
+          hi: "जीनप्ररूप और लक्षणप्ररूप",
+          mr: "जनुकप्रकार आणि लक्षणप्रकार",
+        },
+        kind: "idea",
+        prompt: {
+          en: "Two tall pea plants may look identical, yet one carries two tall alleles and the other one tall and one short. What is the difference between the genes an organism carries and the traits it actually shows?",
+          hi: "दो लंबे मटर पौधे समान दिख सकते, फिर भी एक दो लंबे युग्मविकल्पी ढोता और दूसरा एक लंबा एक छोटा। जीव जो जीन ढोता और जो गुण वास्तव में दिखाता के बीच अंतर क्या?",
+          mr: "दोन उंच वाटाणा झाडे सारखी दिसू शकतात, तरी एक दोन उंच युग्मविकल्पी वाहते आणि दुसरे एक उंच एक आखूड. जीव जी जनुके वाहतो आणि जे गुण प्रत्यक्षात दाखवतो यांतील फरक काय?",
+        },
+        statement: {
+          en: "The genotype is the actual set of alleles an organism carries, while the phenotype is the visible trait it shows; because a dominant allele can mask a recessive one, the same phenotype can hide different genotypes.",
+          hi: "जीनप्ररूप जीव जो युग्मविकल्पी वास्तव में ढोता, जबकि लक्षणप्ररूप जो दृश्य गुण दिखाता; क्योंकि प्रभावी युग्मविकल्पी अप्रभावी को ढक सकता, एक ही लक्षणप्ररूप भिन्न जीनप्ररूप छिपा सकता।",
+          mr: "जनुकप्रकार जीव जी युग्मविकल्पी प्रत्यक्षात वाहतो, तर लक्षणप्रकार जो दृश्य गुण दाखवतो; कारण प्रभावी युग्मविकल्पी अप्रभावीला झाकू शकतो, एकच लक्षणप्रकार वेगळे जनुकप्रकार लपवू शकतो.",
+        },
+        detail: {
+          en: "So 'tall' as a phenotype could mean two tall alleles or one of each — you cannot always read the genotype from the appearance alone.",
+          hi: "अतः लक्षणप्ररूप बतौर 'लंबा' दो लंबे युग्मविकल्पी या हर एक का एक हो सकता — तुम सदा केवल दिखावट से जीनप्ररूप नहीं पढ़ सकते।",
+          mr: "म्हणून लक्षणप्रकार म्हणून 'उंच' दोन उंच युग्मविकल्पी वा प्रत्येकाचा एक असू शकतो — तू सदैव फक्त दिसण्यावरून जनुकप्रकार वाचू शकत नाहीस.",
+        },
+        extra: {
+          en: "This is exactly why a recessive trait can skip a generation — carried silently in the genotype without showing in the phenotype.",
+          hi: "ठीक इसीलिए अप्रभावी गुण एक पीढ़ी छोड़ सकता — जीनप्ररूप में चुपचाप ढोया बिना लक्षणप्ररूप में दिखे।",
+          mr: "नेमके म्हणूनच अप्रभावी गुण एक पिढी वगळू शकतो — जनुकप्रकारात गुपचूप वाहिलेला लक्षणप्रकारात न दिसता.",
+        },
+        pair: {
+          left: {
+            en: "The alleles carried versus the trait shown",
+            hi: "ढोए युग्मविकल्पी बनाम दिखाया गुण",
+            mr: "वाहिलेले युग्मविकल्पी विरुद्ध दाखवलेला गुण",
+          },
+          right: {
+            en: "genotype and phenotype",
+            hi: "जीनप्ररूप और लक्षणप्ररूप",
+            mr: "जनुकप्रकार आणि लक्षणप्रकार",
+          },
+        },
+      },
+      {
+        id: "sex-determination",
+        name: {
+          en: "Sex determination",
+          hi: "लिंग निर्धारण",
+          mr: "लिंग निर्धारण",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A human female has two X chromosomes and a male an X and a Y; the mother's egg always carries an X, but the father's sperm carries either an X or a Y. What decides whether a child is a girl or a boy?",
+          hi: "मानव स्त्री के दो X गुणसूत्र और पुरुष के एक X एक Y; माता का अंड सदा X ढोता, पर पिता का शुक्राणु या तो X या Y ढोता। क्या तय करता बच्चा लड़की या लड़का?",
+          mr: "मानवी स्त्रीचे दोन X गुणसूत्र आणि पुरुषाचे एक X एक Y; आईचे अंडे सदैव X वाहते, पण वडिलांचा शुक्राणू एकतर X वा Y वाहतो. काय ठरवते मूल मुलगी की मुलगा?",
+        },
+        statement: {
+          en: "Sex determination in humans depends on the sex chromosomes: a child inheriting two X chromosomes is female, and one inheriting an X and a Y is male. The mother's egg always gives an X, so it is the father's sperm — X or Y — that decides the child's sex.",
+          hi: "मनुष्यों में लिंग निर्धारण लिंग-गुणसूत्रों पर निर्भर: दो X गुणसूत्र वंशागत करता बच्चा स्त्री, और एक X एक Y वंशागत करता पुरुष। माता का अंड सदा X देता, अतः पिता का शुक्राणु — X या Y — बच्चे का लिंग तय करता।",
+          mr: "मनुष्यांत लिंग निर्धारण लिंग-गुणसूत्रांवर अवलंबून: दोन X गुणसूत्र वंशागत करणारे मूल स्त्री, आणि एक X एक Y वंशागत करणारे पुरुष. आईचे अंडे सदैव X देते, म्हणून वडिलांचा शुक्राणू — X वा Y — मुलाचे लिंग ठरवतो.",
+        },
+        detail: {
+          en: "If a Y-bearing sperm fertilises the egg the child is a boy (XY); if an X-bearing sperm does, the child is a girl (XX). The egg's contribution is always the same X.",
+          hi: "यदि Y-वाहक शुक्राणु अंड निषेचित करे बच्चा लड़का (XY); यदि X-वाहक करे, बच्चा लड़की (XX)। अंड का योगदान सदा वही X।",
+          mr: "जर Y-वाहक शुक्राणू अंडे फलित करेल मूल मुलगा (XY); जर X-वाहक करेल, मूल मुलगी (XX). अंड्याचे योगदान सदैव तेच X.",
+        },
+        extra: {
+          en: "This is why blaming a mother for the sex of her child is not only cruel but plainly wrong — she can only ever give an X.",
+          hi: "इसी से बच्चे के लिंग को माता को दोष देना केवल क्रूर नहीं बल्कि स्पष्ट ग़लत — वह केवल X ही दे सकती।",
+          mr: "म्हणूनच मुलाच्या लिंगासाठी आईला दोष देणे केवळ क्रूर नव्हे तर स्पष्ट चूक — ती फक्त X च देऊ शकते.",
+        },
+        pair: {
+          left: {
+            en: "The father's X or Y sperm settles it",
+            hi: "पिता का X या Y शुक्राणु तय करे",
+            mr: "वडिलांचा X वा Y शुक्राणू ठरवे",
+          },
+          right: {
+            en: "sex determination",
+            hi: "लिंग निर्धारण",
+            mr: "लिंग निर्धारण",
+          },
+        },
+      },
+      {
+        id: "inherited-acquired",
+        name: {
+          en: "Inherited and acquired traits",
+          hi: "आनुवंशिक और उपार्जित लक्षण",
+          mr: "वंशागत आणि उपार्जित गुण",
+        },
+        kind: "idea",
+        prompt: {
+          en: "A person's eye colour, written in their genes, passes to their children, but a scar earned in an accident or muscles built by exercise does not. What is the difference between these two kinds of trait?",
+          hi: "किसी की आँख का रंग, उसके जीनों में लिखा, बच्चों को उतरता, पर दुर्घटना में पाया घाव या व्यायाम से बनी माँसपेशियाँ नहीं। इन दो प्रकार के लक्षणों के बीच अंतर क्या?",
+          mr: "एखाद्याच्या डोळ्याचा रंग, त्याच्या जनुकांत लिहिलेला, मुलांना उतरतो, पण अपघातात मिळालेली जखम वा व्यायामाने बनलेले स्नायू नाही. या दोन प्रकारच्या गुणांतील फरक काय?",
+        },
+        statement: {
+          en: "Inherited traits are written in the genes and pass to the offspring, while acquired traits are gained during life — a scar, a suntan, learned skill or built muscle — and are not passed on, because they never change the DNA of the germ cells.",
+          hi: "आनुवंशिक लक्षण जीनों में लिखे और संतान को उतरते, जबकि उपार्जित लक्षण जीवन-भर पाए — घाव, धूप-ताम्रता, सीखा कौशल या बनी माँसपेशी — और नहीं उतरते, क्योंकि वे जनन-कोशिकाओं का DNA कभी नहीं बदलते।",
+          mr: "वंशागत गुण जनुकांत लिहिलेले आणि संततीला उतरतात, तर उपार्जित गुण आयुष्यभर मिळवलेले — जखम, ऊन-ताम्रता, शिकलेले कौशल्य वा बनलेले स्नायू — आणि उतरत नाहीत, कारण ते जनन-पेशींचे DNA कधी बदलत नाहीत.",
+        },
+        detail: {
+          en: "Only a change in the DNA of the germ cells (the eggs and sperm) can be inherited; a change to the body's other cells dies with the body.",
+          hi: "केवल जनन-कोशिकाओं (अंड और शुक्राणु) के DNA का परिवर्तन वंशागत हो सकता; शरीर की अन्य कोशिकाओं का परिवर्तन शरीर के साथ मरता।",
+          mr: "फक्त जनन-पेशींच्या (अंडी आणि शुक्राणू) DNA चा बदल वंशागत होऊ शकतो; शरीराच्या इतर पेशींचा बदल शरीरासोबत मरतो.",
+        },
+        extra: {
+          en: "This is why the children of a weightlifter are not born strong, and why cutting the tails of mice for generations never gives rise to tailless mice.",
+          hi: "इसी से भारोत्तोलक के बच्चे बलवान नहीं जन्मते, और पीढ़ियों चूहों की पूँछ काटने से कभी बिना-पूँछ चूहे नहीं जन्मते।",
+          mr: "म्हणूनच वजन उचलणाऱ्याची मुले बलवान जन्मत नाहीत, आणि पिढ्यानपिढ्या उंदरांच्या शेपट्या कापल्याने कधी बिनशेपटीचे उंदीर जन्मत नाहीत.",
+        },
+        pair: {
+          left: {
+            en: "In the genes and passed on, versus gained in life",
+            hi: "जीनों में और उतरे, बनाम जीवन में पाए",
+            mr: "जनुकांत आणि उतरणारे, विरुद्ध आयुष्यात मिळवलेले",
+          },
+          right: {
+            en: "inherited and acquired traits",
+            hi: "आनुवंशिक और उपार्जित लक्षण",
+            mr: "वंशागत आणि उपार्जित गुण",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Mendel crossed a pure tall pea plant with a pure short one. Every plant in the next generation was tall — the short trait seemed to vanish. But when he bred those tall plants together, short plants reappeared in about a quarter of their offspring. Where was the 'short' factor hiding, and why did it come back?",
+          hi: "मेंडल ने शुद्ध लंबे मटर पौधे को शुद्ध छोटे से संकरित किया। अगली पीढ़ी का हर पौधा लंबा — छोटा गुण लुप्त लगा। पर जब उसने उन लंबे पौधों को साथ प्रजनित किया, उनकी संतान के लगभग एक-चौथाई में छोटे पौधे फिर प्रकट हुए। 'छोटा' कारक कहाँ छिपा था, और यह वापस क्यों आया?",
+          mr: "मेंडेलने शुद्ध उंच वाटाणा झाड शुद्ध आखूडशी संकरित केले. पुढच्या पिढीतील प्रत्येक झाड उंच — आखूड गुण नाहीसा वाटला. पण जेव्हा त्याने ती उंच झाडे एकत्र प्रजनन केली, त्यांच्या संततीच्या सुमारे एक-चतुर्थांशात आखूड झाडे पुन्हा प्रकट झाली. 'आखूड' घटक कुठे लपला होता, आणि तो परत का आला?",
+        },
+        choices: [
+          {
+            en: "The tall allele is dominant and the short recessive. The first-generation plants each carried one tall and one short allele, so they all looked tall while silently carrying the hidden short allele. Breeding them lets two short alleles meet again in about a quarter of the offspring, where — with no tall allele to mask it — the short trait shows once more",
+            hi: "लंबा युग्मविकल्पी प्रभावी और छोटा अप्रभावी। पहली पीढ़ी के पौधे हर एक एक लंबा एक छोटा युग्मविकल्पी ढोते, अतः सब लंबे दिखते जबकि छिपा छोटा युग्मविकल्पी चुपचाप ढोते। उन्हें प्रजनित करना संतान के लगभग एक-चौथाई में दो छोटे युग्मविकल्पी फिर मिलने देता, जहाँ — ढकने कोई लंबा युग्मविकल्पी न होने से — छोटा गुण फिर दिखता",
+            mr: "उंच युग्मविकल्पी प्रभावी आणि आखूड अप्रभावी. पहिल्या पिढीतील झाडे प्रत्येक एक उंच एक आखूड युग्मविकल्पी वाहत, म्हणून सारी उंच दिसत तर लपलेला आखूड युग्मविकल्पी गुपचूप वाहत. त्यांना प्रजनन करणे संततीच्या सुमारे एक-चतुर्थांशात दोन आखूड युग्मविकल्पी पुन्हा भेटू देते, जिथे — झाकायला कोणता उंच युग्मविकल्पी नसल्याने — आखूड गुण पुन्हा दिसतो",
+          },
+          {
+            en: "The short factor was destroyed in the first generation and randomly recreated later",
+            hi: "छोटा कारक पहली पीढ़ी में नष्ट हुआ और बाद में बेतरतीब फिर बनाया",
+            mr: "आखूड घटक पहिल्या पिढीत नष्ट झाला आणि नंतर यादृच्छिक पुन्हा बनवला",
+          },
+          {
+            en: "The tall plants turned short because the soil changed",
+            hi: "लंबे पौधे छोटे हुए क्योंकि मिट्टी बदली",
+            mr: "उंच झाडे आखूड झाली कारण माती बदलली",
+          },
+          {
+            en: "The short trait is dominant, which is why it came back",
+            hi: "छोटा गुण प्रभावी, इसी से वापस आया",
+            mr: "आखूड गुण प्रभावी, म्हणून परत आला",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The 'short' factor never went anywhere — it was hidden, not lost, and understanding why is the whole of Mendel's insight. Height in his peas is controlled by a gene that comes in two alleles: a tall allele, which is dominant, and a short allele, which is recessive. The pure parents each carried two matching alleles — the tall parent two tall, the short parent two short. Their offspring, the first generation, therefore received one tall allele from one parent and one short allele from the other, so every one of them had the pair 'tall + short'. Because tall is dominant, it masks the short allele completely, and all these plants look tall — yet each still silently carries the short allele in its genotype. This is the crucial point: the short factor is present the whole time, just not showing. When these first-generation plants are bred with each other, each parent passes on either its tall allele or its short allele, at random, to each offspring. The offspring can then end up with tall+tall, tall+short, short+tall, or short+short — four equally likely combinations. Three of those four include at least one tall allele, so those plants are tall; but one in four gets short+short, with no tall allele to mask anything, and in those plants the short trait reappears. That is the origin of the famous 3:1 ratio, and it shows that a recessive trait vanishing in one generation has not been erased — it is riding along hidden in the genotype, ready to show again whenever two recessive copies meet. (The wrong answers miss this: the factor was not destroyed and remade, the environment did not change the plants, and short is recessive, not dominant — if it were dominant it would never have hidden in the first generation at all.)",
+          hi: "'छोटा' कारक कहीं नहीं गया — यह छिपा था, लुप्त नहीं, और क्यों समझना मेंडल की पूरी अंतर्दृष्टि। उसके मटर में ऊँचाई एक जीन से नियंत्रित जो दो युग्मविकल्पियों में आता: लंबा युग्मविकल्पी, प्रभावी, और छोटा, अप्रभावी। शुद्ध जनक हर एक दो मेल खाते युग्मविकल्पी ढोते — लंबा जनक दो लंबे, छोटा जनक दो छोटे। उनकी संतान, पहली पीढ़ी, इसलिए एक जनक से एक लंबा और दूसरे से एक छोटा युग्मविकल्पी पाई, अतः हर एक के पास 'लंबा + छोटा' जोड़ी। क्योंकि लंबा प्रभावी, यह छोटे युग्मविकल्पी को पूरी तरह ढकता, और ये सब पौधे लंबे दिखते — फिर भी हर एक अपने जीनप्ररूप में छोटा युग्मविकल्पी चुपचाप ढोता। यह मुख्य बिंदु: छोटा कारक पूरे समय मौजूद, बस न दिखता। जब ये पहली पीढ़ी के पौधे एक-दूसरे से प्रजनित, हर जनक अपना लंबा या छोटा युग्मविकल्पी, बेतरतीब, हर संतान को देता। संतान फिर लंबा+लंबा, लंबा+छोटा, छोटा+लंबा, या छोटा+छोटा पा सकती — चार समसंभावी संयोजन। उन चार में से तीन में कम से कम एक लंबा युग्मविकल्पी, अतः वे पौधे लंबे; पर चार में एक छोटा+छोटा पाता, ढकने कोई लंबा युग्मविकल्पी नहीं, और उन पौधों में छोटा गुण फिर प्रकट। वह प्रसिद्ध 3:1 अनुपात का उद्गम, और दिखाता कि एक पीढ़ी में लुप्त होता अप्रभावी गुण मिटा नहीं — यह जीनप्ररूप में छिपा सवारी करता, जब भी दो अप्रभावी प्रतियाँ मिलें फिर दिखने तैयार। (ग़लत उत्तर यह चूकते: कारक नष्ट-पुनर्निर्मित नहीं हुआ, परिवेश ने पौधे नहीं बदले, और छोटा अप्रभावी, प्रभावी नहीं — यदि प्रभावी होता तो पहली पीढ़ी में छिपता ही नहीं।)",
+          mr: "'आखूड' घटक कुठेही गेला नाही — तो लपला होता, हरवला नाही, आणि का समजणे मेंडेलची अख्खी अंतर्दृष्टी. त्याच्या वाटाण्यात उंची एका जनुकाने नियंत्रित जे दोन युग्मविकल्पींत येते: उंच युग्मविकल्पी, प्रभावी, आणि आखूड, अप्रभावी. शुद्ध पालक प्रत्येक दोन जुळणारे युग्मविकल्पी वाहत — उंच पालक दोन उंच, आखूड पालक दोन आखूड. त्यांची संतती, पहिली पिढी, म्हणून एका पालकाकडून एक उंच आणि दुसऱ्याकडून एक आखूड युग्मविकल्पी मिळवली, म्हणून प्रत्येकाकडे 'उंच + आखूड' जोडी. कारण उंच प्रभावी, तो आखूड युग्मविकल्पीला पूर्णपणे झाकतो, आणि ही सारी झाडे उंच दिसतात — तरी प्रत्येक आपल्या जनुकप्रकारात आखूड युग्मविकल्पी गुपचूप वाहते. हा महत्त्वाचा मुद्दा: आखूड घटक संपूर्ण वेळ उपस्थित, फक्त न दिसणारा. जेव्हा ही पहिल्या पिढीतील झाडे एकमेकांशी प्रजनन, प्रत्येक पालक आपला उंच वा आखूड युग्मविकल्पी, यादृच्छिक, प्रत्येक संततीला देतो. संतती मग उंच+उंच, उंच+आखूड, आखूड+उंच, वा आखूड+आखूड मिळवू शकते — चार समसंभाव्य संयोजने. त्या चारांतील तीनांत किमान एक उंच युग्मविकल्पी, म्हणून ती झाडे उंच; पण चारांत एक आखूड+आखूड मिळवते, झाकायला कोणता उंच युग्मविकल्पी नाही, आणि त्या झाडांत आखूड गुण पुन्हा प्रकट. तो प्रसिद्ध 3:1 प्रमाणाचा उगम, आणि दाखवतो की एका पिढीत नाहीसा होणारा अप्रभावी गुण पुसला नाही — तो जनुकप्रकारात लपून स्वार होतो, जेव्हाही दोन अप्रभावी प्रती भेटतील पुन्हा दिसायला तयार. (चुकीची उत्तरे हे चुकवतात: घटक नष्ट-पुनर्निर्मित झाला नाही, परिसराने झाडे बदलली नाहीत, आणि आखूड अप्रभावी, प्रभावी नाही — तो प्रभावी असता तर पहिल्या पिढीत लपलाच नसता.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "In many societies a woman is blamed, even punished, when she gives birth only to daughters. But the biology of sex determination shows this blame is not just unjust but scientifically impossible. Whose contribution actually decides a child's sex, and why can the mother never be responsible?",
+          hi: "कई समाजों में स्त्री को दोष, यहाँ तक कि दंड, जब वह केवल बेटियाँ जनती। पर लिंग-निर्धारण की जीव-विज्ञान दिखाती यह दोष केवल अन्यायपूर्ण नहीं बल्कि वैज्ञानिक रूप से असंभव। किसका योगदान वास्तव में बच्चे का लिंग तय करता, और माता कभी ज़िम्मेदार क्यों नहीं हो सकती?",
+          mr: "अनेक समाजांत स्त्रीला दोष, अगदी शिक्षा, जेव्हा ती फक्त मुली जन्मते. पण लिंग-निर्धारणाचे जीवशास्त्र दाखवते हा दोष केवळ अन्याय्य नव्हे तर वैज्ञानिकदृष्ट्या अशक्य. कोणाचे योगदान प्रत्यक्षात मुलाचे लिंग ठरवते, आणि आई कधी जबाबदार का असू शकत नाही?",
+        },
+        choices: [
+          {
+            en: "The father's sperm decides. The mother has two X chromosomes, so every egg she makes carries an X — she can only ever contribute an X. The father has an X and a Y, so his sperm carries either one: an X-sperm makes a girl (XX) and a Y-sperm makes a boy (XY). Since the egg is always X, the child's sex is fixed entirely by which sperm fertilises it, so the mother cannot possibly be responsible",
+            hi: "पिता का शुक्राणु तय करता। माता के दो X गुणसूत्र, अतः वह जो अंड बनाती हर एक X ढोता — वह केवल X ही दे सकती। पिता के एक X एक Y, अतः उसका शुक्राणु या तो ढोता: X-शुक्राणु लड़की (XX) और Y-शुक्राणु लड़का (XY) बनाता। चूँकि अंड सदा X, बच्चे का लिंग पूरी तरह इससे तय कि कौन-सा शुक्राणु निषेचित करता, अतः माता संभवतः ज़िम्मेदार नहीं हो सकती",
+            mr: "वडिलांचा शुक्राणू ठरवतो. आईचे दोन X गुणसूत्र, म्हणून ती जे अंडे बनवते प्रत्येक X वाहते — ती फक्त X च देऊ शकते. वडिलांचे एक X एक Y, म्हणून त्याचा शुक्राणू एकतर वाहतो: X-शुक्राणू मुलगी (XX) आणि Y-शुक्राणू मुलगा (XY) बनवतो. अंडे सदैव X असल्याने, मुलाचे लिंग पूर्णपणे यावरून ठरते की कोणता शुक्राणू फलित करतो, म्हणून आई शक्यतो जबाबदार असू शकत नाही",
+          },
+          {
+            en: "The mother decides, because the baby grows inside her body",
+            hi: "माता तय करती, क्योंकि शिशु उसके शरीर में बढ़ता",
+            mr: "आई ठरवते, कारण बाळ तिच्या शरीरात वाढते",
+          },
+          {
+            en: "The sex is decided by what the mother eats during pregnancy",
+            hi: "लिंग इससे तय कि माता गर्भावस्था में क्या खाती",
+            mr: "लिंग यावरून ठरते की आई गर्भावस्थेत काय खाते",
+          },
+          {
+            en: "Both parents' chromosomes are identical, so neither decides",
+            hi: "दोनों जनकों के गुणसूत्र समान, अतः कोई तय नहीं करता",
+            mr: "दोन्ही पालकांचे गुणसूत्र समान, म्हणून कोणी ठरवत नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The science here is completely settled, and it flatly contradicts the social blame. A person's sex in humans is set by a pair of sex chromosomes. A female has two X chromosomes (XX) and a male has one X and one Y (XY). When gametes — eggs and sperm — are made, each carries only one of the pair. Now look at what each parent can contribute. The mother is XX, so no matter which of her chromosomes goes into an egg, it is always an X; every single egg she produces carries an X, and she has no Y to give at all. The father is XY, so his sperm are of two kinds: half carry his X and half carry his Y. When a sperm fertilises the egg, the egg's X is fixed, and the outcome depends entirely on the sperm. If an X-bearing sperm wins, the child is XX — a girl. If a Y-bearing sperm wins, the child is XY — a boy. So the child's sex is determined solely by whether the fertilising sperm carried an X or a Y — and that comes from the father, never the mother. The mother physically cannot influence it, because the only chromosome she can supply is an X in every case. Blaming a woman for the sex of her children is therefore not merely cruel and unjust; it is biologically impossible, resting on ignorance of a fact that is as certain as any in science. (The wrong answers repeat exactly the myths biology overturns: carrying the baby, or the mother's diet, has nothing to do with which sperm fertilised the egg, and the two parents' sex chromosomes are precisely not identical — that difference is the whole point.) This is one of the clearest cases where understanding basic heredity directly refutes a harmful social prejudice.",
+          hi: "यहाँ विज्ञान पूरी तरह तय, और यह सामाजिक दोष का सपाट खंडन करता। मनुष्यों में किसी का लिंग लिंग-गुणसूत्रों की जोड़ी से सधता। स्त्री के दो X गुणसूत्र (XX) और पुरुष के एक X एक Y (XY)। जब युग्मक — अंड और शुक्राणु — बनते, हर एक जोड़ी का केवल एक ढोता। अब देखो हर जनक क्या दे सकता। माता XX, अतः उसका कौन-सा गुणसूत्र अंड में जाए, यह सदा X; उसका हर अंड X ढोता, और उसके पास देने कोई Y है ही नहीं। पिता XY, अतः उसके शुक्राणु दो तरह के: आधे उसका X और आधे उसका Y ढोते। जब शुक्राणु अंड निषेचित करता, अंड का X सधा, और परिणाम पूरी तरह शुक्राणु पर। यदि X-वाहक शुक्राणु जीते, बच्चा XX — लड़की। यदि Y-वाहक जीते, बच्चा XY — लड़का। अतः बच्चे का लिंग केवल इससे तय कि निषेचित करता शुक्राणु X या Y ढोता — और वह पिता से, कभी माता से नहीं। माता भौतिक रूप से इसे प्रभावित नहीं कर सकती, क्योंकि वह हर मामले में केवल X दे सकती। बच्चों के लिंग को स्त्री को दोष देना इसलिए केवल क्रूर-अन्यायपूर्ण नहीं; यह जीव-वैज्ञानिक रूप से असंभव, विज्ञान के किसी भी तथ्य जितने निश्चित तथ्य की अनभिज्ञता पर टिका। (ग़लत उत्तर ठीक वे मिथक दोहराते जो जीव-विज्ञान उलटती: शिशु ढोना, या माता का आहार, इससे कोई संबंध नहीं कि कौन-सा शुक्राणु अंड निषेचित करता, और दो जनकों के लिंग-गुणसूत्र ठीक समान नहीं — वही अंतर पूरा मर्म।) यह सबसे स्पष्ट मामलों में जहाँ बुनियादी आनुवंशिकता समझना सीधे एक हानिकारक सामाजिक पूर्वाग्रह का खंडन करता।",
+          mr: "इथले विज्ञान पूर्णपणे ठरलेले, आणि ते सामाजिक दोषाचे सपाट खंडन करते. मनुष्यांत एखाद्याचे लिंग लिंग-गुणसूत्रांच्या जोडीने ठरते. स्त्रीचे दोन X गुणसूत्र (XX) आणि पुरुषाचे एक X एक Y (XY). जेव्हा युग्मके — अंडी आणि शुक्राणू — बनतात, प्रत्येक जोडीचा फक्त एक वाहते. आता पाहा प्रत्येक पालक काय देऊ शकतो. आई XX, म्हणून तिचे कोणते गुणसूत्र अंड्यात जाईल, ते सदैव X; तिचे प्रत्येक अंडे X वाहते, आणि तिच्याकडे द्यायला कोणतेही Y नाहीच. वडील XY, म्हणून त्याचे शुक्राणू दोन प्रकारचे: अर्धे त्याचा X आणि अर्धे त्याचा Y वाहतात. जेव्हा शुक्राणू अंडे फलित करतो, अंड्याचा X ठरलेला, आणि परिणाम पूर्णपणे शुक्राणूवर. जर X-वाहक शुक्राणू जिंकला, मूल XX — मुलगी. जर Y-वाहक जिंकला, मूल XY — मुलगा. म्हणून मुलाचे लिंग फक्त यावरून ठरते की फलित करणारा शुक्राणू X वा Y वाहतो — आणि तो वडिलांकडून, कधी आईकडून नाही. आई भौतिकदृष्ट्या त्यावर प्रभाव टाकू शकत नाही, कारण ती प्रत्येक बाबतीत फक्त X देऊ शकते. मुलांच्या लिंगासाठी स्त्रीला दोष देणे म्हणून केवळ क्रूर-अन्याय्य नव्हे; ते जीवशास्त्रीयदृष्ट्या अशक्य, विज्ञानातील कोणत्याही तथ्याइतक्या निश्चित तथ्याच्या अज्ञानावर टेकलेले. (चुकीची उत्तरे नेमके ते समज पुन्हा सांगतात जे जीवशास्त्र उलटवते: बाळ वाहणे, वा आईचा आहार, याचा संबंध नाही की कोणता शुक्राणू अंडे फलित करतो, आणि दोन पालकांचे लिंग-गुणसूत्र नेमके समान नाहीत — तोच फरक अख्खा मुद्दा.) हे सर्वांत स्पष्ट प्रकरणांपैकी जिथे मूलभूत आनुवंशिकता समजणे थेट एका हानिकारक सामाजिक पूर्वग्रहाचे खंडन करते.",
+        },
+      },
+    ],
+  },
 ];
