@@ -3520,6 +3520,44 @@ Suite at 86 files / 1,476 tests, thirteen of them new; verified live with a mint
 session: a teacher holding twenty stand-ins gets the full "Your children"
 surface.
 
+### The archive: what a closed year left behind, for every role
+
+The school already kept everything — report cards, registers, marks, badges —
+but it kept them on TODAY'S pages, which all open on now. `/archive` is those
+same rows read through a different lens: pick a CLOSED academic year, see what
+it left behind. Nothing writes, nothing is copied, and nothing is reachable
+that the same person could not already reach — the year filter narrows, never
+widens, and only closed years are listed at all, because an archive that
+includes "now" is two pages disagreeing about the same rows.
+
+**One route, five readers.** What changes by role is which slice of the year a
+person may see, and that decision lives in `year-archive.ts` where each
+function asserts it — not in five near-identical pages. A pupil sees their own
+year: published report cards, days present of days marked, the badges the
+year-close snapshotted (rendered as stored, in the language they were written
+in), and their marked work with an average. A guardian sees the same for each
+child through `assertGuardianAccess` — which, since standin-guardian.ts,
+includes the school's stand-in. A teacher sees their classes with that year's
+registers, assignments and cards counted (classes with nothing in the window
+are dropped, so old years are not padded with today's classes). An admin or
+principal sees the school's year in the numbers the office asks for first —
+roll size, attendance percentage, cards published, leavers, badges archived,
+exam series.
+
+**A year is its date window.** Report cards and badges carry `academicYearId`
+and match by it where set; everything else matches by falling inside
+[startDate, endDate] in the school's own timezone, and rows written before
+year-linkage existed fall back to the window too, so a schema improvement
+orphans nothing. The year and child pickers are plain links — a year is a URL.
+
+Nine tests pin the boundaries: the current year is never listed and never
+servable, the window excludes the next year's register, the guardian path
+works, and each role's function refuses everybody else. Verified live against
+the production build with a throwaway closed year over the seeded data: the
+pupil view counted 53 marked days, the admin view produced the roll and a 91%
+attendance figure, and both walk fixtures were torn down after. Suite at 87
+files / 1,485 tests.
+
 ### Known issues
 
 - ~~**`npm run db:reset` leaves the app role unable to open the database.**~~

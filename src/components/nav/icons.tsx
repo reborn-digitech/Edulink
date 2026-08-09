@@ -23,6 +23,7 @@ import {
   UserIcon,
   UsersThreeIcon,
   BriefcaseIcon,
+  ArchiveIcon,
   type Icon,
 } from "@phosphor-icons/react";
 
@@ -32,6 +33,7 @@ import {
  */
 const ICONS: Record<string, Icon> = {
   house: HouseIcon,
+  archive: ArchiveIcon,
   users: UsersThreeIcon,
   chalkboard: ChalkboardTeacherIcon,
   envelope: EnvelopeSimpleIcon,
