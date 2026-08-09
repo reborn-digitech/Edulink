@@ -1,0 +1,1003 @@
+{
+  "subject": "CHEMISTRY",
+  "classLevel": 11,
+  "chapter": "Chapter 4 — Chemical Bonding and Molecular Structure",
+  "name": "Chemical Bonding and Molecular Structure",
+  "slug": "chemistry-11-chemical-bonding",
+  "summary": "Why atoms join, and why the result has a shape. A rule of eight that is broken by half the periodic table and kept anyway because it works where it works, a shared pair pulled unequally so a bond has a direction, a prediction of geometry made by counting electron pairs and letting them get out of each other's way, orbitals mixed to make bonds that plain atomic orbitals could not, and a weak attraction that nonetheless decides why water is a liquid at all.",
+  "position": 4,
+  "source": "EduLink original, written against NCERT Chemistry Part I (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "रासायनिक आबंधन तथा आण्विक संरचना",
+      "summary": "परमाणु जुड़ते क्यों हैं, और परिणाम का आकार क्यों होता है। आठ का वह नियम जिसे आधी आवर्त सारणी तोड़ती है और जो फिर भी रखा जाता है क्योंकि जहाँ चलता है वहाँ चलता है, वह साझा युग्म जो असमान रूप से खिंचता है और बंध को दिशा दे देता है, वह ज्यामिति-भविष्यवाणी जो इलेक्ट्रॉन-युग्म गिनकर और उन्हें एक-दूसरे से दूर हटने देकर की जाती है, वे मिश्रित कक्षक जो ऐसे बंध बनाते हैं जो सादे परमाण्विक कक्षक नहीं बना सकते थे, और वह दुर्बल आकर्षण जो फिर भी तय करता है कि पानी द्रव क्यों है।"
+    },
+    "mr": {
+      "name": "रासायनिक बंधन आणि रेणवीय संरचना",
+      "summary": "अणू का जुळतात, आणि निकालाला आकार का असतो. आठाचा तो नियम जो अर्धी आवर्त सारणी मोडते आणि जो तरीही ठेवला जातो कारण जिथे चालतो तिथे चालतो, ती वाटलेली जोडी जी असमानपणे ओढली जाते आणि बंधाला दिशा देते, ते भूमिती-भाकीत जे इलेक्ट्रॉन-जोड्या मोजून आणि त्यांना एकमेकांपासून दूर सरकू देऊन केले जाते, ती मिश्रित कक्षके जी असे बंध बनवतात जे साधी अणुकक्षके बनवू शकली नसती, आणि ते दुर्बल आकर्षण जे तरीही पाणी द्रव का आहे हे ठरवते."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Atoms combine so as to reach eight electrons in the outer shell — except boron, which settles for six, and sulphur and phosphorus, which comfortably exceed eight. Which rule is this?",
+      "choices": [
+        "VSEPR and molecular shape",
+        "The polar covalent bond",
+        "The octet rule and its exceptions",
+        "The hydrogen bond"
+      ],
+      "answerIndex": 2,
+      "solution": "The octet rule says atoms bond so as to attain eight valence electrons, and it holds well for the second period but is routinely broken above and below it. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "परमाणु इस तरह जुड़ते हैं कि बाहरी कोश में आठ इलेक्ट्रॉन हो जाएँ — सिवाय बोरॉन के, जो छह पर मान जाता है, और सल्फ़र तथा फ़ॉस्फ़ोरस के, जो आराम से आठ पार कर जाते हैं। यह कौन-सा नियम है?",
+          "choices": [
+            "VSEPR और आण्विक आकार",
+            "ध्रुवीय सहसंयोजक बंध",
+            "अष्टक नियम और उसके अपवाद",
+            "हाइड्रोजन बंध"
+          ],
+          "solution": "अष्टक नियम कहता है कि परमाणु आठ संयोजी इलेक्ट्रॉन पाने के लिए आबंधित होते हैं, और वह दूसरे आवर्त पर अच्छा चलता है पर उसके ऊपर और नीचे नित्य टूटता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "अणू अशा प्रकारे जुळतात की बाहेरच्या कवचात आठ इलेक्ट्रॉन होतील — बोरॉन सोडून, जो सहावर समाधानी, आणि गंधक व स्फुरद सोडून, जे आरामात आठ ओलांडतात. हा कोणता नियम?",
+          "choices": [
+            "VSEPR आणि रेणवीय आकार",
+            "ध्रुवीय सहसंयुज बंध",
+            "अष्टक नियम आणि त्याचे अपवाद",
+            "हायड्रोजन बंध"
+          ],
+          "solution": "अष्टक नियम सांगतो की अणू आठ संयुजा इलेक्ट्रॉन मिळवण्यासाठी बंध करतात, आणि तो दुसऱ्या आवर्तावर चांगला चालतो पण त्याच्या वर आणि खाली नेहमी मोडतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The polar covalent bond is correct?",
+      "choices": [
+        "VSEPR predicts molecular shape by arranging the electron pairs around a central atom to minimise repulsion, and it treats lone pairs as repelling more strongly than bonding pairs.",
+        "The octet rule says atoms bond so as to attain eight valence electrons, and it holds well for the second period but is routinely broken above and below it.",
+        "A polar covalent bond is a shared pair displaced towards the more electronegative atom, giving the bond a dipole moment and the molecule a direction of charge.",
+        "Bond order is the number of shared pairs between two atoms, and a higher bond order always means a shorter and stronger bond between the same pair of elements."
+      ],
+      "answerIndex": 2,
+      "solution": "A polar covalent bond is a shared pair displaced towards the more electronegative atom, giving the bond a dipole moment and the molecule a direction of charge. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ध्रुवीय सहसंयोजक बंध के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "VSEPR केंद्रीय परमाणु के इर्द-गिर्द इलेक्ट्रॉन-युग्मों को इस तरह जमाकर आण्विक आकार बताता है कि प्रतिकर्षण न्यूनतम हो, और वह एकाकी युग्मों को आबंधी युग्मों से अधिक प्रबल प्रतिकर्षक मानता है।",
+            "अष्टक नियम कहता है कि परमाणु आठ संयोजी इलेक्ट्रॉन पाने के लिए आबंधित होते हैं, और वह दूसरे आवर्त पर अच्छा चलता है पर उसके ऊपर और नीचे नित्य टूटता है।",
+            "ध्रुवीय सहसंयोजक बंध ऐसा साझा युग्म है जो अधिक विद्युत्-ऋणात्मक परमाणु की ओर खिसका है, जिससे बंध को द्विध्रुव आघूर्ण और अणु को आवेश की एक दिशा मिलती है।",
+            "बंध कोटि दो परमाणुओं के बीच साझा युग्मों की संख्या है, और उन्हीं दो तत्वों के बीच ऊँची बंध कोटि सदा छोटे और प्रबल बंध का अर्थ रखती है।"
+          ],
+          "solution": "ध्रुवीय सहसंयोजक बंध ऐसा साझा युग्म है जो अधिक विद्युत्-ऋणात्मक परमाणु की ओर खिसका है, जिससे बंध को द्विध्रुव आघूर्ण और अणु को आवेश की एक दिशा मिलती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "ध्रुवीय सहसंयुज बंध विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "VSEPR केंद्रीय अणूभोवतीच्या इलेक्ट्रॉन-जोड्या प्रतिकर्षण किमान होईल अशा मांडून रेणवीय आकार सांगते, आणि ते एकाकी जोड्यांना बंधकारी जोड्यांहून अधिक प्रबळ प्रतिकर्षक मानते.",
+            "अष्टक नियम सांगतो की अणू आठ संयुजा इलेक्ट्रॉन मिळवण्यासाठी बंध करतात, आणि तो दुसऱ्या आवर्तावर चांगला चालतो पण त्याच्या वर आणि खाली नेहमी मोडतो.",
+            "ध्रुवीय सहसंयुज बंध म्हणजे अधिक विद्युतऋण अणूकडे सरकलेली वाटलेली जोडी, ज्यातून बंधाला द्विध्रुव आघूर्ण आणि रेणूला भाराची दिशा मिळते.",
+            "बंध कोटी म्हणजे दोन अणूंमधल्या वाटलेल्या जोड्यांची संख्या, आणि त्याच दोन मूलद्रव्यांमध्ये उच्च बंध कोटी नेहमी लहान आणि प्रबळ बंधाचा अर्थ राखते."
+          ],
+          "solution": "ध्रुवीय सहसंयुज बंध म्हणजे अधिक विद्युतऋण अणूकडे सरकलेली वाटलेली जोडी, ज्यातून बंधाला द्विध्रुव आघूर्ण आणि रेणूला भाराची दिशा मिळते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"That extra push explains a whole family of bent shapes: methane's four bonding pairs give 109.5°, ammonia's three bonds and one lone pair narrow it to 107°, and water's two lone pairs to 104.5°.\" — which of these is this about?",
+      "choices": [
+        "Bond order and bond length",
+        "Hybridisation",
+        "The octet rule and its exceptions",
+        "VSEPR and molecular shape"
+      ],
+      "answerIndex": 3,
+      "solution": "VSEPR predicts molecular shape by arranging the electron pairs around a central atom to minimise repulsion, and it treats lone pairs as repelling more strongly than bonding pairs. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"वह अतिरिक्त धक्का मुड़े आकारों का पूरा कुनबा समझाता है: मेथेन के चार आबंधी युग्म 109.5° देते हैं, अमोनिया के तीन बंध और एक एकाकी युग्म उसे 107° तक सँकरा करते हैं, और पानी के दो एकाकी युग्म 104.5° तक।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "बंध कोटि और बंध लंबाई",
+            "संकरण",
+            "अष्टक नियम और उसके अपवाद",
+            "VSEPR और आण्विक आकार"
+          ],
+          "solution": "VSEPR केंद्रीय परमाणु के इर्द-गिर्द इलेक्ट्रॉन-युग्मों को इस तरह जमाकर आण्विक आकार बताता है कि प्रतिकर्षण न्यूनतम हो, और वह एकाकी युग्मों को आबंधी युग्मों से अधिक प्रबल प्रतिकर्षक मानता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तो जादा रेटा वाकड्या आकारांचे अख्खे कुटुंब समजावतो: मिथेनच्या चार बंधकारी जोड्या 109.5° देतात, अमोनियाचे तीन बंध आणि एक एकाकी जोडी तो 107° पर्यंत अरुंद करतात, आणि पाण्याच्या दोन एकाकी जोड्या 104.5° पर्यंत.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "बंध कोटी आणि बंध लांबी",
+            "संकरण",
+            "अष्टक नियम आणि त्याचे अपवाद",
+            "VSEPR आणि रेणवीय आकार"
+          ],
+          "solution": "VSEPR केंद्रीय अणूभोवतीच्या इलेक्ट्रॉन-जोड्या प्रतिकर्षण किमान होईल अशा मांडून रेणवीय आकार सांगते, आणि ते एकाकी जोड्यांना बंधकारी जोड्यांहून अधिक प्रबळ प्रतिकर्षक मानते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Carbon's ground state has only two unpaired electrons and yet it forms four identical bonds in methane, all at the same angle — because one s and three p orbitals are mixed into four equivalent ones. Which idea is this?",
+      "choices": [
+        "The polar covalent bond",
+        "VSEPR and molecular shape",
+        "Hybridisation",
+        "The octet rule and its exceptions"
+      ],
+      "answerIndex": 2,
+      "solution": "Hybridisation mixes atomic orbitals of similar energy into an equal number of new equivalent orbitals, which point in the directions the observed geometry requires. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कार्बन की मूल अवस्था में केवल दो अयुग्मित इलेक्ट्रॉन हैं, फिर भी वह मेथेन में चार एक-से बंध बनाता है, सब एक ही कोण पर — क्योंकि एक s और तीन p कक्षक मिलकर चार समतुल्य कक्षक बन जाते हैं। यह कौन-सा विचार है?",
+          "choices": [
+            "ध्रुवीय सहसंयोजक बंध",
+            "VSEPR और आण्विक आकार",
+            "संकरण",
+            "अष्टक नियम और उसके अपवाद"
+          ],
+          "solution": "संकरण समान ऊर्जा के परमाण्विक कक्षकों को मिलाकर उतने ही नए समतुल्य कक्षक बनाता है, जो उन दिशाओं में इंगित करते हैं जो प्रेक्षित ज्यामिति माँगती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "कार्बनच्या मूळ अवस्थेत केवळ दोन अयुग्मित इलेक्ट्रॉन आहेत, तरीही तो मिथेनमध्ये चार सारखे बंध बनवतो, सर्व एकाच कोनावर — कारण एक s आणि तीन p कक्षके मिळून चार समतुल्य कक्षके बनतात. ही कोणती कल्पना?",
+          "choices": [
+            "ध्रुवीय सहसंयुज बंध",
+            "VSEPR आणि रेणवीय आकार",
+            "संकरण",
+            "अष्टक नियम आणि त्याचे अपवाद"
+          ],
+          "solution": "संकरण समान ऊर्जेची अणुकक्षके मिसळून तितकीच नवी समतुल्य कक्षके बनवते, जी निरीक्षित भूमिती मागते त्या दिशांना निर्देश करतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The hydrogen bond is correct?",
+      "choices": [
+        "Bond order is the number of shared pairs between two atoms, and a higher bond order always means a shorter and stronger bond between the same pair of elements.",
+        "VSEPR predicts molecular shape by arranging the electron pairs around a central atom to minimise repulsion, and it treats lone pairs as repelling more strongly than bonding pairs.",
+        "A hydrogen bond forms when hydrogen already bonded to nitrogen, oxygen or fluorine is attracted to a lone pair on another such atom, and it is far weaker than a covalent bond but far stronger than ordinary dispersion forces.",
+        "Hybridisation mixes atomic orbitals of similar energy into an equal number of new equivalent orbitals, which point in the directions the observed geometry requires."
+      ],
+      "answerIndex": 2,
+      "solution": "A hydrogen bond forms when hydrogen already bonded to nitrogen, oxygen or fluorine is attracted to a lone pair on another such atom, and it is far weaker than a covalent bond but far stronger than ordinary dispersion forces. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "हाइड्रोजन बंध के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "बंध कोटि दो परमाणुओं के बीच साझा युग्मों की संख्या है, और उन्हीं दो तत्वों के बीच ऊँची बंध कोटि सदा छोटे और प्रबल बंध का अर्थ रखती है।",
+            "VSEPR केंद्रीय परमाणु के इर्द-गिर्द इलेक्ट्रॉन-युग्मों को इस तरह जमाकर आण्विक आकार बताता है कि प्रतिकर्षण न्यूनतम हो, और वह एकाकी युग्मों को आबंधी युग्मों से अधिक प्रबल प्रतिकर्षक मानता है।",
+            "हाइड्रोजन बंध तब बनता है जब नाइट्रोजन, ऑक्सीजन या फ़्लुओरीन से पहले से बँधा हाइड्रोजन ऐसे ही किसी दूसरे परमाणु के एकाकी युग्म की ओर आकर्षित हो, और वह सहसंयोजक बंध से कहीं दुर्बल पर साधारण परिक्षेपण बलों से कहीं प्रबल है।",
+            "संकरण समान ऊर्जा के परमाण्विक कक्षकों को मिलाकर उतने ही नए समतुल्य कक्षक बनाता है, जो उन दिशाओं में इंगित करते हैं जो प्रेक्षित ज्यामिति माँगती है।"
+          ],
+          "solution": "हाइड्रोजन बंध तब बनता है जब नाइट्रोजन, ऑक्सीजन या फ़्लुओरीन से पहले से बँधा हाइड्रोजन ऐसे ही किसी दूसरे परमाणु के एकाकी युग्म की ओर आकर्षित हो, और वह सहसंयोजक बंध से कहीं दुर्बल पर साधारण परिक्षेपण बलों से कहीं प्रबल है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "हायड्रोजन बंध विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "बंध कोटी म्हणजे दोन अणूंमधल्या वाटलेल्या जोड्यांची संख्या, आणि त्याच दोन मूलद्रव्यांमध्ये उच्च बंध कोटी नेहमी लहान आणि प्रबळ बंधाचा अर्थ राखते.",
+            "VSEPR केंद्रीय अणूभोवतीच्या इलेक्ट्रॉन-जोड्या प्रतिकर्षण किमान होईल अशा मांडून रेणवीय आकार सांगते, आणि ते एकाकी जोड्यांना बंधकारी जोड्यांहून अधिक प्रबळ प्रतिकर्षक मानते.",
+            "हायड्रोजन बंध तेव्हा तयार होतो जेव्हा नायट्रोजन, ऑक्सिजन वा फ्लोरिनशी आधीच बांधलेला हायड्रोजन अशाच दुसऱ्या अणूवरील एकाकी जोडीकडे आकर्षित होतो, आणि तो सहसंयुज बंधाहून कितीतरी दुर्बल पण सामान्य विकिरण बलांहून कितीतरी प्रबळ.",
+            "संकरण समान ऊर्जेची अणुकक्षके मिसळून तितकीच नवी समतुल्य कक्षके बनवते, जी निरीक्षित भूमिती मागते त्या दिशांना निर्देश करतात."
+          ],
+          "solution": "हायड्रोजन बंध तेव्हा तयार होतो जेव्हा नायट्रोजन, ऑक्सिजन वा फ्लोरिनशी आधीच बांधलेला हायड्रोजन अशाच दुसऱ्या अणूवरील एकाकी जोडीकडे आकर्षित होतो, आणि तो सहसंयुज बंधाहून कितीतरी दुर्बल पण सामान्य विकिरण बलांहून कितीतरी प्रबळ. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"Molecular orbital theory lets it be fractional and even predicts species with a bond order of one half, and it explains why O₂ is paramagnetic when every Lewis structure says it should not be.\" — which of these is this about?",
+      "choices": [
+        "VSEPR and molecular shape",
+        "Bond order and bond length",
+        "Hybridisation",
+        "The hydrogen bond"
+      ],
+      "answerIndex": 1,
+      "solution": "Bond order is the number of shared pairs between two atoms, and a higher bond order always means a shorter and stronger bond between the same pair of elements. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"आण्विक कक्षक सिद्धांत उसे भिन्नात्मक होने देता है और आधे बंध कोटि वाली स्पीशीज़ तक बता देता है, और वह समझाता है कि O₂ अनुचुंबकीय क्यों है जबकि हर लूइस संरचना कहती है कि उसे नहीं होना चाहिए।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "VSEPR और आण्विक आकार",
+            "बंध कोटि और बंध लंबाई",
+            "संकरण",
+            "हाइड्रोजन बंध"
+          ],
+          "solution": "बंध कोटि दो परमाणुओं के बीच साझा युग्मों की संख्या है, और उन्हीं दो तत्वों के बीच ऊँची बंध कोटि सदा छोटे और प्रबल बंध का अर्थ रखती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"रेणवीय कक्षक सिद्धांत तिला अपूर्णांकी होऊ देतो आणि अर्ध्या बंध कोटीच्या प्रजाती सांगतो, आणि तो समजावतो की O₂ अनुचुंबकीय का आहे तर प्रत्येक लुईस संरचना सांगते की तो असू नये.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "VSEPR आणि रेणवीय आकार",
+            "बंध कोटी आणि बंध लांबी",
+            "संकरण",
+            "हायड्रोजन बंध"
+          ],
+          "solution": "बंध कोटी म्हणजे दोन अणूंमधल्या वाटलेल्या जोड्यांची संख्या, आणि त्याच दोन मूलद्रव्यांमध्ये उच्च बंध कोटी नेहमी लहान आणि प्रबळ बंधाचा अर्थ राखते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Boron settling for six and sulphur taking twelve\" goes correctly with which of these?",
+      "choices": [
+        "bond order and bond length",
+        "VSEPR and molecular shape",
+        "the hydrogen bond",
+        "the octet rule and its exceptions"
+      ],
+      "answerIndex": 3,
+      "solution": "The octet rule says atoms bond so as to attain eight valence electrons, and it holds well for the second period but is routinely broken above and below it. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"छह पर मानता बोरॉन और बारह लेता सल्फ़र\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "बंध कोटि और बंध लंबाई",
+            "VSEPR और आण्विक आकार",
+            "हाइड्रोजन बंध",
+            "अष्टक नियम और उसके अपवाद"
+          ],
+          "solution": "अष्टक नियम कहता है कि परमाणु आठ संयोजी इलेक्ट्रॉन पाने के लिए आबंधित होते हैं, और वह दूसरे आवर्त पर अच्छा चलता है पर उसके ऊपर और नीचे नित्य टूटता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"सहावर समाधानी बोरॉन आणि बारा घेणारा गंधक\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "बंध कोटी आणि बंध लांबी",
+            "VSEPR आणि रेणवीय आकार",
+            "हायड्रोजन बंध",
+            "अष्टक नियम आणि त्याचे अपवाद"
+          ],
+          "solution": "अष्टक नियम सांगतो की अणू आठ संयुजा इलेक्ट्रॉन मिळवण्यासाठी बंध करतात, आणि तो दुसऱ्या आवर्तावर चांगला चालतो पण त्याच्या वर आणि खाली नेहमी मोडतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Two polar bonds and a molecule with no dipole\" goes correctly with which of these?",
+      "choices": [
+        "the polar covalent bond",
+        "bond order and bond length",
+        "VSEPR and molecular shape",
+        "hybridisation"
+      ],
+      "answerIndex": 0,
+      "solution": "A polar covalent bond is a shared pair displaced towards the more electronegative atom, giving the bond a dipole moment and the molecule a direction of charge. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"दो ध्रुवीय बंध और बिना द्विध्रुव वाला अणु\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "ध्रुवीय सहसंयोजक बंध",
+            "बंध कोटि और बंध लंबाई",
+            "VSEPR और आण्विक आकार",
+            "संकरण"
+          ],
+          "solution": "ध्रुवीय सहसंयोजक बंध ऐसा साझा युग्म है जो अधिक विद्युत्-ऋणात्मक परमाणु की ओर खिसका है, जिससे बंध को द्विध्रुव आघूर्ण और अणु को आवेश की एक दिशा मिलती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"दोन ध्रुवीय बंध आणि द्विध्रुवाविना रेणू\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "ध्रुवीय सहसंयुज बंध",
+            "बंध कोटी आणि बंध लांबी",
+            "VSEPR आणि रेणवीय आकार",
+            "संकरण"
+          ],
+          "solution": "ध्रुवीय सहसंयुज बंध म्हणजे अधिक विद्युतऋण अणूकडे सरकलेली वाटलेली जोडी, ज्यातून बंधाला द्विध्रुव आघूर्ण आणि रेणूला भाराची दिशा मिळते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Lone pairs shouldering the bonds closer together\" goes correctly with which of these?",
+      "choices": [
+        "the hydrogen bond",
+        "hybridisation",
+        "VSEPR and molecular shape",
+        "the polar covalent bond"
+      ],
+      "answerIndex": 2,
+      "solution": "VSEPR predicts molecular shape by arranging the electron pairs around a central atom to minimise repulsion, and it treats lone pairs as repelling more strongly than bonding pairs. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"बंधों को पास सरकाते एकाकी युग्म\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "हाइड्रोजन बंध",
+            "संकरण",
+            "VSEPR और आण्विक आकार",
+            "ध्रुवीय सहसंयोजक बंध"
+          ],
+          "solution": "VSEPR केंद्रीय परमाणु के इर्द-गिर्द इलेक्ट्रॉन-युग्मों को इस तरह जमाकर आण्विक आकार बताता है कि प्रतिकर्षण न्यूनतम हो, और वह एकाकी युग्मों को आबंधी युग्मों से अधिक प्रबल प्रतिकर्षक मानता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"बंधांना जवळ सरकवणाऱ्या एकाकी जोड्या\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "हायड्रोजन बंध",
+            "संकरण",
+            "VSEPR आणि रेणवीय आकार",
+            "ध्रुवीय सहसंयुज बंध"
+          ],
+          "solution": "VSEPR केंद्रीय अणूभोवतीच्या इलेक्ट्रॉन-जोड्या प्रतिकर्षण किमान होईल अशा मांडून रेणवीय आकार सांगते, आणि ते एकाकी जोड्यांना बंधकारी जोड्यांहून अधिक प्रबळ प्रतिकर्षक मानते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Two unpaired electrons making four identical bonds\" goes correctly with which of these?",
+      "choices": [
+        "the hydrogen bond",
+        "bond order and bond length",
+        "the octet rule and its exceptions",
+        "hybridisation"
+      ],
+      "answerIndex": 3,
+      "solution": "Hybridisation mixes atomic orbitals of similar energy into an equal number of new equivalent orbitals, which point in the directions the observed geometry requires. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"दो अयुग्मित इलेक्ट्रॉन, चार एक-से बंध\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "हाइड्रोजन बंध",
+            "बंध कोटि और बंध लंबाई",
+            "अष्टक नियम और उसके अपवाद",
+            "संकरण"
+          ],
+          "solution": "संकरण समान ऊर्जा के परमाण्विक कक्षकों को मिलाकर उतने ही नए समतुल्य कक्षक बनाता है, जो उन दिशाओं में इंगित करते हैं जो प्रेक्षित ज्यामिति माँगती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"दोन अयुग्मित इलेक्ट्रॉन, चार सारखे बंध\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "हायड्रोजन बंध",
+            "बंध कोटी आणि बंध लांबी",
+            "अष्टक नियम आणि त्याचे अपवाद",
+            "संकरण"
+          ],
+          "solution": "संकरण समान ऊर्जेची अणुकक्षके मिसळून तितकीच नवी समतुल्य कक्षके बनवते, जी निरीक्षित भूमिती मागते त्या दिशांना निर्देश करतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A hundred and sixty degrees of boiling point\" goes correctly with which of these?",
+      "choices": [
+        "the octet rule and its exceptions",
+        "bond order and bond length",
+        "the hydrogen bond",
+        "VSEPR and molecular shape"
+      ],
+      "answerIndex": 2,
+      "solution": "A hydrogen bond forms when hydrogen already bonded to nitrogen, oxygen or fluorine is attracted to a lone pair on another such atom, and it is far weaker than a covalent bond but far stronger than ordinary dispersion forces. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"क्वथनांक के एक सौ साठ डिग्री\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "अष्टक नियम और उसके अपवाद",
+            "बंध कोटि और बंध लंबाई",
+            "हाइड्रोजन बंध",
+            "VSEPR और आण्विक आकार"
+          ],
+          "solution": "हाइड्रोजन बंध तब बनता है जब नाइट्रोजन, ऑक्सीजन या फ़्लुओरीन से पहले से बँधा हाइड्रोजन ऐसे ही किसी दूसरे परमाणु के एकाकी युग्म की ओर आकर्षित हो, और वह सहसंयोजक बंध से कहीं दुर्बल पर साधारण परिक्षेपण बलों से कहीं प्रबल है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"उकळबिंदूचे एकशे साठ अंश\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अष्टक नियम आणि त्याचे अपवाद",
+            "बंध कोटी आणि बंध लांबी",
+            "हायड्रोजन बंध",
+            "VSEPR आणि रेणवीय आकार"
+          ],
+          "solution": "हायड्रोजन बंध तेव्हा तयार होतो जेव्हा नायट्रोजन, ऑक्सिजन वा फ्लोरिनशी आधीच बांधलेला हायड्रोजन अशाच दुसऱ्या अणूवरील एकाकी जोडीकडे आकर्षित होतो, आणि तो सहसंयुज बंधाहून कितीतरी दुर्बल पण सामान्य विकिरण बलांहून कितीतरी प्रबळ. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Six benzene bonds all the same and none of them either\" goes correctly with which of these?",
+      "choices": [
+        "the polar covalent bond",
+        "VSEPR and molecular shape",
+        "bond order and bond length",
+        "the octet rule and its exceptions"
+      ],
+      "answerIndex": 2,
+      "solution": "Bond order is the number of shared pairs between two atoms, and a higher bond order always means a shorter and stronger bond between the same pair of elements. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"बेंज़ीन के छहों बंध एक-से, और कोई भी दोनों में से नहीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "ध्रुवीय सहसंयोजक बंध",
+            "VSEPR और आण्विक आकार",
+            "बंध कोटि और बंध लंबाई",
+            "अष्टक नियम और उसके अपवाद"
+          ],
+          "solution": "बंध कोटि दो परमाणुओं के बीच साझा युग्मों की संख्या है, और उन्हीं दो तत्वों के बीच ऊँची बंध कोटि सदा छोटे और प्रबल बंध का अर्थ रखती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"बेंझिनचे सहाही बंध सारखे, आणि कोणताही दोहोंपैकी नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "ध्रुवीय सहसंयुज बंध",
+            "VSEPR आणि रेणवीय आकार",
+            "बंध कोटी आणि बंध लांबी",
+            "अष्टक नियम आणि त्याचे अपवाद"
+          ],
+          "solution": "बंध कोटी म्हणजे दोन अणूंमधल्या वाटलेल्या जोड्यांची संख्या, आणि त्याच दोन मूलद्रव्यांमध्ये उच्च बंध कोटी नेहमी लहान आणि प्रबळ बंधाचा अर्थ राखते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The octet rule and its exceptions EXCEPT —",
+      "choices": [
+        "Elements from period 3 onwards have vacant d orbitals available, so sulphur can hold twelve electrons in SF₆ and phosphorus ten in PCl₅, which no second-period element can manage.",
+        "A polar covalent bond is a shared pair displaced towards the more electronegative atom, giving the bond a dipole moment and the molecule a direction of charge.",
+        "The octet rule says atoms bond so as to attain eight valence electrons, and it holds well for the second period but is routinely broken above and below it.",
+        "Molecules with an odd electron count — nitric oxide, nitrogen dioxide — cannot obey it at all, and they are correspondingly reactive, which is why NO is used as a signalling molecule in the body."
+      ],
+      "answerIndex": 1,
+      "solution": "A polar covalent bond is a shared pair displaced towards the more electronegative atom, giving the bond a dipole moment and the molecule a direction of charge. That belongs to The polar covalent bond, not The octet rule and its exceptions — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अष्टक नियम और उसके अपवाद के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "आवर्त 3 से आगे के तत्वों के पास ख़ाली d कक्षक उपलब्ध हैं, अतः सल्फ़र SF₆ में बारह इलेक्ट्रॉन और फ़ॉस्फ़ोरस PCl₅ में दस रख सकता है, जो दूसरे आवर्त का कोई तत्व नहीं कर सकता।",
+            "ध्रुवीय सहसंयोजक बंध ऐसा साझा युग्म है जो अधिक विद्युत्-ऋणात्मक परमाणु की ओर खिसका है, जिससे बंध को द्विध्रुव आघूर्ण और अणु को आवेश की एक दिशा मिलती है।",
+            "अष्टक नियम कहता है कि परमाणु आठ संयोजी इलेक्ट्रॉन पाने के लिए आबंधित होते हैं, और वह दूसरे आवर्त पर अच्छा चलता है पर उसके ऊपर और नीचे नित्य टूटता है।",
+            "विषम इलेक्ट्रॉन-गिनती वाले अणु — नाइट्रिक ऑक्साइड, नाइट्रोजन डाइऑक्साइड — उसे मान ही नहीं सकते, और वे तदनुरूप क्रियाशील हैं, इसीलिए शरीर में NO संकेतक अणु के रूप में काम आता है।"
+          ],
+          "solution": "ध्रुवीय सहसंयोजक बंध ऐसा साझा युग्म है जो अधिक विद्युत्-ऋणात्मक परमाणु की ओर खिसका है, जिससे बंध को द्विध्रुव आघूर्ण और अणु को आवेश की एक दिशा मिलती है। यह ध्रुवीय सहसंयोजक बंध की बात है, अष्टक नियम और उसके अपवाद की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "अष्टक नियम आणि त्याचे अपवाद विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "आवर्त 3 पासून पुढच्या मूलद्रव्यांकडे रिकामी d कक्षके उपलब्ध, म्हणून गंधक SF₆ मध्ये बारा इलेक्ट्रॉन आणि स्फुरद PCl₅ मध्ये दहा ठेवू शकतो, जे दुसऱ्या आवर्तातील कोणतेही मूलद्रव्य करू शकत नाही.",
+            "ध्रुवीय सहसंयुज बंध म्हणजे अधिक विद्युतऋण अणूकडे सरकलेली वाटलेली जोडी, ज्यातून बंधाला द्विध्रुव आघूर्ण आणि रेणूला भाराची दिशा मिळते.",
+            "अष्टक नियम सांगतो की अणू आठ संयुजा इलेक्ट्रॉन मिळवण्यासाठी बंध करतात, आणि तो दुसऱ्या आवर्तावर चांगला चालतो पण त्याच्या वर आणि खाली नेहमी मोडतो.",
+            "विषम इलेक्ट्रॉन-मोजणीचे रेणू — नायट्रिक ऑक्साइड, नायट्रोजन डायऑक्साइड — तो पाळूच शकत नाहीत, आणि ते त्यानुसार क्रियाशील, म्हणूनच शरीरात NO संकेत-रेणू म्हणून वापरला जातो."
+          ],
+          "solution": "ध्रुवीय सहसंयुज बंध म्हणजे अधिक विद्युतऋण अणूकडे सरकलेली वाटलेली जोडी, ज्यातून बंधाला द्विध्रुव आघूर्ण आणि रेणूला भाराची दिशा मिळते. हे ध्रुवीय सहसंयुज बंध चे आहे, अष्टक नियम आणि त्याचे अपवाद चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The polar covalent bond EXCEPT —",
+      "choices": [
+        "The octet rule says atoms bond so as to attain eight valence electrons, and it holds well for the second period but is routinely broken above and below it.",
+        "A polar covalent bond is a shared pair displaced towards the more electronegative atom, giving the bond a dipole moment and the molecule a direction of charge.",
+        "There is no sharp line between covalent and ionic: as the electronegativity difference grows the pair shifts further until it is effectively transferred, so the two bond types are the ends of one continuum.",
+        "Polar bonds do not always make a polar molecule: carbon dioxide has two strongly polar C=O bonds pointing in opposite directions, and their dipoles cancel exactly."
+      ],
+      "answerIndex": 0,
+      "solution": "The octet rule says atoms bond so as to attain eight valence electrons, and it holds well for the second period but is routinely broken above and below it. That belongs to The octet rule and its exceptions, not The polar covalent bond — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ध्रुवीय सहसंयोजक बंध के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "अष्टक नियम कहता है कि परमाणु आठ संयोजी इलेक्ट्रॉन पाने के लिए आबंधित होते हैं, और वह दूसरे आवर्त पर अच्छा चलता है पर उसके ऊपर और नीचे नित्य टूटता है।",
+            "ध्रुवीय सहसंयोजक बंध ऐसा साझा युग्म है जो अधिक विद्युत्-ऋणात्मक परमाणु की ओर खिसका है, जिससे बंध को द्विध्रुव आघूर्ण और अणु को आवेश की एक दिशा मिलती है।",
+            "सहसंयोजक और आयनिक के बीच कोई तीखी रेखा नहीं: विद्युत्-ऋणात्मकता अंतर बढ़ने पर युग्म और खिसकता जाता है जब तक वह प्रभावतः स्थानांतरित न हो जाए, अतः दोनों बंध-प्रकार एक ही सातत्य के सिरे हैं।",
+            "ध्रुवीय बंध सदा ध्रुवीय अणु नहीं बनाते: कार्बन डाइऑक्साइड में दो प्रबल ध्रुवीय C=O बंध विपरीत दिशाओं में हैं, और उनके द्विध्रुव ठीक-ठीक कट जाते हैं।"
+          ],
+          "solution": "अष्टक नियम कहता है कि परमाणु आठ संयोजी इलेक्ट्रॉन पाने के लिए आबंधित होते हैं, और वह दूसरे आवर्त पर अच्छा चलता है पर उसके ऊपर और नीचे नित्य टूटता है। यह अष्टक नियम और उसके अपवाद की बात है, ध्रुवीय सहसंयोजक बंध की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "ध्रुवीय सहसंयुज बंध विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "अष्टक नियम सांगतो की अणू आठ संयुजा इलेक्ट्रॉन मिळवण्यासाठी बंध करतात, आणि तो दुसऱ्या आवर्तावर चांगला चालतो पण त्याच्या वर आणि खाली नेहमी मोडतो.",
+            "ध्रुवीय सहसंयुज बंध म्हणजे अधिक विद्युतऋण अणूकडे सरकलेली वाटलेली जोडी, ज्यातून बंधाला द्विध्रुव आघूर्ण आणि रेणूला भाराची दिशा मिळते.",
+            "सहसंयुज आणि आयनिक यांच्यात तीक्ष्ण रेषा नाही: विद्युतऋणता फरक वाढताना जोडी अधिक सरकत जाते जोवर ती प्रत्यक्षात हस्तांतरित होत नाही, म्हणून दोन्ही बंध-प्रकार एकाच सातत्याची टोके.",
+            "ध्रुवीय बंध नेहमी ध्रुवीय रेणू बनवत नाहीत: कार्बन डायऑक्साइडमध्ये दोन प्रबळ ध्रुवीय C=O बंध विरुद्ध दिशांना, आणि त्यांचे द्विध्रुव नेमके कापले जातात."
+          ],
+          "solution": "अष्टक नियम सांगतो की अणू आठ संयुजा इलेक्ट्रॉन मिळवण्यासाठी बंध करतात, आणि तो दुसऱ्या आवर्तावर चांगला चालतो पण त्याच्या वर आणि खाली नेहमी मोडतो. हे अष्टक नियम आणि त्याचे अपवाद चे आहे, ध्रुवीय सहसंयुज बंध चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of VSEPR and molecular shape EXCEPT —",
+      "choices": [
+        "It is a rule of thumb with no underlying equation, and it fails for some transition-metal compounds — but for main-group molecules it predicts shapes correctly with nothing more than a count on the fingers.",
+        "VSEPR predicts molecular shape by arranging the electron pairs around a central atom to minimise repulsion, and it treats lone pairs as repelling more strongly than bonding pairs.",
+        "That extra push explains a whole family of bent shapes: methane's four bonding pairs give 109.5°, ammonia's three bonds and one lone pair narrow it to 107°, and water's two lone pairs to 104.5°.",
+        "Hybridisation mixes atomic orbitals of similar energy into an equal number of new equivalent orbitals, which point in the directions the observed geometry requires."
+      ],
+      "answerIndex": 3,
+      "solution": "Hybridisation mixes atomic orbitals of similar energy into an equal number of new equivalent orbitals, which point in the directions the observed geometry requires. That belongs to Hybridisation, not VSEPR and molecular shape — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "VSEPR और आण्विक आकार के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "यह बिना किसी अंतर्निहित समीकरण का अंगूठा-नियम है, और कुछ संक्रमण-धातु यौगिकों पर विफल होता है — पर मुख्य-वर्ग अणुओं के लिए वह उँगलियों पर गिनती भर से आकार ठीक बता देता है।",
+            "VSEPR केंद्रीय परमाणु के इर्द-गिर्द इलेक्ट्रॉन-युग्मों को इस तरह जमाकर आण्विक आकार बताता है कि प्रतिकर्षण न्यूनतम हो, और वह एकाकी युग्मों को आबंधी युग्मों से अधिक प्रबल प्रतिकर्षक मानता है।",
+            "वह अतिरिक्त धक्का मुड़े आकारों का पूरा कुनबा समझाता है: मेथेन के चार आबंधी युग्म 109.5° देते हैं, अमोनिया के तीन बंध और एक एकाकी युग्म उसे 107° तक सँकरा करते हैं, और पानी के दो एकाकी युग्म 104.5° तक।",
+            "संकरण समान ऊर्जा के परमाण्विक कक्षकों को मिलाकर उतने ही नए समतुल्य कक्षक बनाता है, जो उन दिशाओं में इंगित करते हैं जो प्रेक्षित ज्यामिति माँगती है।"
+          ],
+          "solution": "संकरण समान ऊर्जा के परमाण्विक कक्षकों को मिलाकर उतने ही नए समतुल्य कक्षक बनाता है, जो उन दिशाओं में इंगित करते हैं जो प्रेक्षित ज्यामिति माँगती है। यह संकरण की बात है, VSEPR और आण्विक आकार की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "VSEPR आणि रेणवीय आकार विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "हा कोणत्याही अंतर्निहित समीकरणाविना अंगठा-नियम, आणि काही संक्रमण-धातू संयुगांवर अपयशी ठरतो — पण मुख्य-गट रेणूंसाठी तो बोटांवर मोजण्याइतक्यानेच आकार बरोबर सांगतो.",
+            "VSEPR केंद्रीय अणूभोवतीच्या इलेक्ट्रॉन-जोड्या प्रतिकर्षण किमान होईल अशा मांडून रेणवीय आकार सांगते, आणि ते एकाकी जोड्यांना बंधकारी जोड्यांहून अधिक प्रबळ प्रतिकर्षक मानते.",
+            "तो जादा रेटा वाकड्या आकारांचे अख्खे कुटुंब समजावतो: मिथेनच्या चार बंधकारी जोड्या 109.5° देतात, अमोनियाचे तीन बंध आणि एक एकाकी जोडी तो 107° पर्यंत अरुंद करतात, आणि पाण्याच्या दोन एकाकी जोड्या 104.5° पर्यंत.",
+            "संकरण समान ऊर्जेची अणुकक्षके मिसळून तितकीच नवी समतुल्य कक्षके बनवते, जी निरीक्षित भूमिती मागते त्या दिशांना निर्देश करतात."
+          ],
+          "solution": "संकरण समान ऊर्जेची अणुकक्षके मिसळून तितकीच नवी समतुल्य कक्षके बनवते, जी निरीक्षित भूमिती मागते त्या दिशांना निर्देश करतात. हे संकरण चे आहे, VSEPR आणि रेणवीय आकार चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Hybridisation EXCEPT —",
+      "choices": [
+        "The count of hybrid orbitals fixes the shape directly: sp gives linear at 180°, sp² trigonal planar at 120° and sp³ tetrahedral at 109.5°.",
+        "In a double bond only the hybrids form the sigma framework while the leftover unhybridised p orbitals overlap sideways to make the pi bond, which is why a C=C cannot be twisted without breaking it.",
+        "Hybridisation mixes atomic orbitals of similar energy into an equal number of new equivalent orbitals, which point in the directions the observed geometry requires.",
+        "VSEPR predicts molecular shape by arranging the electron pairs around a central atom to minimise repulsion, and it treats lone pairs as repelling more strongly than bonding pairs."
+      ],
+      "answerIndex": 3,
+      "solution": "VSEPR predicts molecular shape by arranging the electron pairs around a central atom to minimise repulsion, and it treats lone pairs as repelling more strongly than bonding pairs. That belongs to VSEPR and molecular shape, not Hybridisation — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "संकरण के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "संकर कक्षकों की गिनती आकार सीधे तय करती है: sp 180° पर रैखिक देता है, sp² 120° पर त्रिकोणीय समतलीय और sp³ 109.5° पर चतुष्फलकीय।",
+            "द्विबंध में केवल संकर सिग्मा ढाँचा बनाते हैं जबकि बचे असंकरित p कक्षक बग़ल से अतिव्यापन कर पाई बंध बनाते हैं, इसीलिए C=C को बिना तोड़े मरोड़ा नहीं जा सकता।",
+            "संकरण समान ऊर्जा के परमाण्विक कक्षकों को मिलाकर उतने ही नए समतुल्य कक्षक बनाता है, जो उन दिशाओं में इंगित करते हैं जो प्रेक्षित ज्यामिति माँगती है।",
+            "VSEPR केंद्रीय परमाणु के इर्द-गिर्द इलेक्ट्रॉन-युग्मों को इस तरह जमाकर आण्विक आकार बताता है कि प्रतिकर्षण न्यूनतम हो, और वह एकाकी युग्मों को आबंधी युग्मों से अधिक प्रबल प्रतिकर्षक मानता है।"
+          ],
+          "solution": "VSEPR केंद्रीय परमाणु के इर्द-गिर्द इलेक्ट्रॉन-युग्मों को इस तरह जमाकर आण्विक आकार बताता है कि प्रतिकर्षण न्यूनतम हो, और वह एकाकी युग्मों को आबंधी युग्मों से अधिक प्रबल प्रतिकर्षक मानता है। यह VSEPR और आण्विक आकार की बात है, संकरण की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "संकरण विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "संकर कक्षकांची मोजणी आकार थेट ठरवते: sp 180° वर रेषीय देते, sp² 120° वर त्रिकोणी प्रतलीय आणि sp³ 109.5° वर चतुष्फलकी.",
+            "द्विबंधात केवळ संकर सिग्मा सांगाडा बनवतात तर उरलेली असंकरित p कक्षके बाजूने अतिव्यापन करून पाय बंध बनवतात, म्हणूनच C=C न तोडता पिळता येत नाही.",
+            "संकरण समान ऊर्जेची अणुकक्षके मिसळून तितकीच नवी समतुल्य कक्षके बनवते, जी निरीक्षित भूमिती मागते त्या दिशांना निर्देश करतात.",
+            "VSEPR केंद्रीय अणूभोवतीच्या इलेक्ट्रॉन-जोड्या प्रतिकर्षण किमान होईल अशा मांडून रेणवीय आकार सांगते, आणि ते एकाकी जोड्यांना बंधकारी जोड्यांहून अधिक प्रबळ प्रतिकर्षक मानते."
+          ],
+          "solution": "VSEPR केंद्रीय अणूभोवतीच्या इलेक्ट्रॉन-जोड्या प्रतिकर्षण किमान होईल अशा मांडून रेणवीय आकार सांगते, आणि ते एकाकी जोड्यांना बंधकारी जोड्यांहून अधिक प्रबळ प्रतिकर्षक मानते. हे VSEPR आणि रेणवीय आकार चे आहे, संकरण चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Carbon dioxide and water each contain two strongly polar bonds to oxygen. Carbon dioxide has no dipole moment at all and water has a large one. A student says the difference must be in the bond polarities. Explain what actually differs.",
+      "choices": [
+        "The bond polarities are similar; the shapes are not. Carbon dioxide is linear, so its two bond dipoles point in exactly opposite directions and cancel to zero. Water is bent at 104.5°, because oxygen carries two lone pairs that push the bonds together, so its two dipoles add to a large resultant. Dipole moment is a vector sum, and geometry decides it — which is why a measured dipole moment is itself evidence about shape",
+        "The student is right: the C=O bonds must be non-polar, since two polar bonds could never give a molecule with no dipole",
+        "Carbon dioxide has more atoms, and dipole moments always fall as a molecule gets larger",
+        "Water's dipole comes entirely from its lone pairs, and its two O–H bonds contribute nothing at all"
+      ],
+      "answerIndex": 0,
+      "solution": "The premise the student rejects is true, and rejecting it is what leads them astray. Both C=O bonds in carbon dioxide are strongly polar: oxygen at 3.5 on the Pauling scale against carbon at 2.5 gives a difference of 1.0, comparable to water's O–H difference of 1.4. Neither bond is anything like non-polar. What differs is the geometry, and the reason for it is VSEPR. Carbon in CO₂ has two regions of electron density around it — the two double bonds — and no lone pairs, so they arrange at 180° and the molecule is linear. Oxygen in water has four regions: two bonding pairs and two lone pairs. Four regions arrange tetrahedrally, and with two of the positions occupied by lone pairs the two O–H bonds are left at 104.5° rather than 180°. Now add the dipoles as vectors, because that is what they are. In CO₂ two equal arrows point directly away from each other and the resultant is exactly zero — the molecule is non-polar despite having the more polar-looking formula. In water two equal arrows meet at 104.5°, and the resultant bisects that angle with a magnitude of about 1.85 D, one of the larger dipole moments among small molecules. This is not a curiosity. Water's polarity is why it dissolves salts and why it has a high boiling point; carbon dioxide's lack of polarity is why it is a gas at room temperature and why it dissolves in water only sparingly. Two habits follow. First, always ask about shape before pronouncing on polarity: BF₃ and NH₃ both have three polar bonds, and BF₃ is trigonal planar and non-polar while NH₃ is pyramidal and strongly polar, entirely because boron has no lone pair and nitrogen has one. Second, the inference runs both ways. A measured dipole moment of zero for a molecule with polar bonds is direct evidence of a symmetric shape, and that is how the linearity of CO₂ and the tetrahedral symmetry of CCl₄ were established before any diffraction experiment could see them. (The fourth answer is worth naming: lone pairs do contribute to a molecular dipole, but the O–H bonds contribute the larger share, and no dipole survives if the bond contributions cancel.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कार्बन डाइऑक्साइड और पानी दोनों में ऑक्सीजन से दो प्रबल ध्रुवीय बंध हैं। कार्बन डाइऑक्साइड का कोई द्विध्रुव आघूर्ण नहीं और पानी का बड़ा है। एक विद्यार्थी कहता है कि भेद बंध-ध्रुवताओं में होगा। समझाओ वस्तुतः भिन्न क्या है।",
+          "choices": [
+            "बंध-ध्रुवताएँ मिलती-जुलती हैं; आकार नहीं। कार्बन डाइऑक्साइड रैखिक है, अतः उसके दो बंध-द्विध्रुव ठीक विपरीत दिशाओं में हैं और कटकर शून्य हो जाते हैं। पानी 104.5° पर मुड़ा है, क्योंकि ऑक्सीजन दो एकाकी युग्म ढोता है जो बंधों को पास धकेलते हैं, अतः उसके दो द्विध्रुव जुड़कर बड़ा परिणामी देते हैं। द्विध्रुव आघूर्ण सदिश योग है, और उसे ज्यामिति तय करती है — इसीलिए नापा गया द्विध्रुव आघूर्ण स्वयं आकार के बारे में प्रमाण है",
+            "विद्यार्थी सही है: C=O बंध अध्रुवीय होंगे, क्योंकि दो ध्रुवीय बंध कभी बिना द्विध्रुव वाला अणु नहीं दे सकते",
+            "कार्बन डाइऑक्साइड में अधिक परमाणु हैं, और अणु बड़ा होने पर द्विध्रुव आघूर्ण सदा घटता है",
+            "पानी का द्विध्रुव पूरी तरह उसके एकाकी युग्मों से आता है, और उसके दो O–H बंध कुछ भी योगदान नहीं देते"
+          ],
+          "solution": "जिस मान्यता को विद्यार्थी नकारता है वह सच है, और उसे नकारना ही उसे भटका देता है। कार्बन डाइऑक्साइड के दोनों C=O बंध प्रबल ध्रुवीय हैं: पॉलिंग पैमाने पर ऑक्सीजन 3.5 के सामने कार्बन 2.5, यानी 1.0 का अंतर, जो पानी के O–H अंतर 1.4 के तुल्य है। कोई भी बंध अध्रुवीय जैसा नहीं। भिन्न है ज्यामिति, और उसका कारण VSEPR है। CO₂ में कार्बन के इर्द-गिर्द इलेक्ट्रॉन-घनत्व के दो क्षेत्र हैं — दो द्विबंध — और कोई एकाकी युग्म नहीं, अतः वे 180° पर जमते हैं और अणु रैखिक है। पानी में ऑक्सीजन के चार क्षेत्र हैं: दो आबंधी युग्म और दो एकाकी। चार क्षेत्र चतुष्फलकीय जमते हैं, और दो स्थान एकाकी युग्मों के घेरने से दोनों O–H बंध 180° के बजाय 104.5° पर बचते हैं। अब द्विध्रुवों को सदिशों की तरह जोड़ो, क्योंकि वे यही हैं। CO₂ में दो बराबर तीर सीधे एक-दूसरे से दूर इंगित करते हैं और परिणामी ठीक शून्य है — अणु अध्रुवीय है यद्यपि उसका सूत्र अधिक ध्रुवीय दिखता है। पानी में दो बराबर तीर 104.5° पर मिलते हैं, और परिणामी उस कोण को समद्विभाजित करता है, परिमाण लगभग 1.85 D, छोटे अणुओं में बड़े द्विध्रुव आघूर्णों में से एक। यह कोई कौतुक नहीं। पानी की ध्रुवता ही उससे लवण घुलवाती है और उसे ऊँचा क्वथनांक देती है; कार्बन डाइऑक्साइड की अध्रुवता ही उसे कमरे के ताप पर गैस रखती है और पानी में उसे बहुत कम घुलने देती है। दो आदतें निकलती हैं। पहली, ध्रुवता पर फ़ैसला सुनाने से पहले सदा आकार पूछो: BF₃ और NH₃ दोनों में तीन ध्रुवीय बंध हैं, और BF₃ त्रिकोणीय समतलीय तथा अध्रुवीय है जबकि NH₃ पिरामिडी तथा प्रबल ध्रुवीय, पूरी तरह इसलिए कि बोरॉन के पास एकाकी युग्म नहीं और नाइट्रोजन के पास एक है। दूसरी, अनुमान दोनों ओर चलता है। ध्रुवीय बंधों वाले अणु का नापा गया शून्य द्विध्रुव आघूर्ण सममित आकार का सीधा प्रमाण है, और इसी से CO₂ की रैखिकता तथा CCl₄ की चतुष्फलकीय सममिति किसी विवर्तन प्रयोग के उन्हें देखने से पहले ही स्थापित हो गई थीं। (चौथा उत्तर नाम लेने योग्य है: एकाकी युग्म आण्विक द्विध्रुव में योगदान देते ही हैं, पर बड़ा हिस्सा O–H बंध देते हैं, और बंधों का योगदान कट जाए तो कोई द्विध्रुव नहीं बचता।)"
+        },
+        "mr": {
+          "stem": "कार्बन डायऑक्साइड आणि पाणी दोघांतही ऑक्सिजनशी दोन प्रबळ ध्रुवीय बंध आहेत. कार्बन डायऑक्साइडला द्विध्रुव आघूर्ण मुळीच नाही आणि पाण्याला मोठा आहे. एक विद्यार्थी म्हणतो की फरक बंध-ध्रुवतांत असावा. प्रत्यक्षात वेगळे काय ते समजावा.",
+          "choices": [
+            "बंध-ध्रुवता सारख्या आहेत; आकार नाहीत. कार्बन डायऑक्साइड रेषीय, म्हणून त्याचे दोन बंध-द्विध्रुव नेमक्या विरुद्ध दिशांना आणि कापले जाऊन शून्य होतात. पाणी 104.5° वर वाकडे, कारण ऑक्सिजन दोन एकाकी जोड्या वाहतो ज्या बंधांना जवळ ढकलतात, म्हणून त्याचे दोन द्विध्रुव जोडून मोठा परिणामी देतात. द्विध्रुव आघूर्ण ही सदिश बेरीज, आणि तिला भूमिती ठरवते — म्हणूनच मोजलेला द्विध्रुव आघूर्ण स्वतः आकाराबद्दलचा पुरावा",
+            "विद्यार्थी बरोबर: C=O बंध अध्रुवीय असणार, कारण दोन ध्रुवीय बंध कधीच द्विध्रुवाविना रेणू देऊ शकत नाहीत",
+            "कार्बन डायऑक्साइडमध्ये अधिक अणू आहेत, आणि रेणू मोठा होताना द्विध्रुव आघूर्ण नेहमी घटतो",
+            "पाण्याचा द्विध्रुव पूर्णपणे त्याच्या एकाकी जोड्यांतून येतो, आणि त्याचे दोन O–H बंध काहीही वाटा देत नाहीत"
+          ],
+          "solution": "विद्यार्थी जे गृहीतक नाकारतो ते खरे आहे, आणि ते नाकारणेच त्याला भरकटवते. कार्बन डायऑक्साइडचे दोन्ही C=O बंध प्रबळ ध्रुवीय: पॉलिंग मापनश्रेणीवर ऑक्सिजन 3.5 समोर कार्बन 2.5, म्हणजे 1.0 चा फरक, जो पाण्याच्या O–H फरक 1.4 शी तुलनायोग्य. कोणताही बंध अध्रुवीयसारखा नाही. वेगळी आहे भूमिती, आणि तिचे कारण VSEPR. CO₂ मध्ये कार्बनभोवती इलेक्ट्रॉन-घनतेचे दोन प्रदेश — दोन द्विबंध — आणि कोणतीही एकाकी जोडी नाही, म्हणून ते 180° वर मांडतात आणि रेणू रेषीय. पाण्यात ऑक्सिजनचे चार प्रदेश: दोन बंधकारी जोड्या आणि दोन एकाकी. चार प्रदेश चतुष्फलकी मांडतात, आणि दोन जागा एकाकी जोड्यांनी व्यापल्याने दोन्ही O–H बंध 180° ऐवजी 104.5° वर उरतात. आता द्विध्रुव सदिशांसारखे जोडा, कारण ते तेच आहेत. CO₂ मध्ये दोन समान बाण थेट एकमेकांपासून दूर निर्देश करतात आणि परिणामी नेमका शून्य — रेणू अध्रुवीय जरी त्याचे सूत्र अधिक ध्रुवीय दिसते तरी. पाण्यात दोन समान बाण 104.5° वर भेटतात, आणि परिणामी तो कोन दुभागतो, परिमाण सुमारे 1.85 D, लहान रेणूंतील मोठ्या द्विध्रुव आघूर्णांपैकी एक. हे कुतूहल नव्हे. पाण्याची ध्रुवता हीच त्यातून क्षार विरघळवते आणि त्याला उच्च उकळबिंदू देते; कार्बन डायऑक्साइडची अध्रुवता हीच त्याला खोलीच्या तापमानावर वायू ठेवते आणि पाण्यात त्याला फारच कमी विरघळू देते. दोन सवयी निघतात. पहिली, ध्रुवतेवर निवाडा देण्याआधी नेहमी आकार विचारा: BF₃ आणि NH₃ दोघांतही तीन ध्रुवीय बंध, आणि BF₃ त्रिकोणी प्रतलीय व अध्रुवीय तर NH₃ पिरॅमिडी व प्रबळ ध्रुवीय, पूर्णपणे यामुळे की बोरॉनकडे एकाकी जोडी नाही आणि नायट्रोजनकडे एक आहे. दुसरी, अनुमान दोन्ही बाजूंनी चालते. ध्रुवीय बंध असलेल्या रेणूचा मोजलेला शून्य द्विध्रुव आघूर्ण हा सममित आकाराचा थेट पुरावा, आणि यामुळेच CO₂ ची रेषीयता आणि CCl₄ ची चतुष्फलकी सममिती कोणत्याही विवर्तन प्रयोगाने त्या पाहण्याआधीच प्रस्थापित झाल्या. (चौथे उत्तर नाव घेण्याजोगे: एकाकी जोड्या रेणवीय द्विध्रुवात वाटा देतातच, पण मोठा वाटा O–H बंध देतात, आणि बंधांचा वाटा कापला गेल्यास कोणताही द्विध्रुव उरत नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Every Lewis structure of O₂ shows a double bond with all electrons paired, which predicts the molecule should be diamagnetic. Liquid oxygen is in fact drawn strongly to a magnet. Explain the discrepancy and what resolves it.",
+      "choices": [
+        "Lewis structures cannot represent O₂ correctly. Molecular orbital theory fills the molecule's own orbitals in energy order, and the last two electrons go singly into two degenerate pi-antibonding orbitals with parallel spins, exactly as Hund's rule requires. That leaves two unpaired electrons, which makes O₂ paramagnetic, while the bond order still comes out as (10 − 6)/2 = 2, agreeing with the double bond. The paramagnetism was one of the first decisive successes of MO theory over the Lewis picture",
+        "The observation is mistaken: liquid oxygen is not attracted to a magnet, and the apparent attraction is due to impurities of iron",
+        "O₂ actually has a single bond with two unpaired electrons, so the double bond in Lewis structures is simply wrong",
+        "The paramagnetism comes from the oxygen nuclei rather than from its electrons, so no electronic model needs changing"
+      ],
+      "answerIndex": 0,
+      "solution": "The experiment is the sort that settles arguments. Pour liquid oxygen between the poles of a strong magnet and it does not fall through — it clings there, visibly suspended, which is a demonstration film students have watched for decades. Paramagnetism of that strength requires unpaired electrons, and the Lewis structure of O₂ has none: two lone pairs on each oxygen and a double bond between them, sixteen electrons all neatly paired. The Lewis picture is not merely incomplete here, it makes a definite prediction and the prediction is wrong. Molecular orbital theory starts differently. Instead of assigning electrons to atoms and then to shared pairs, it combines the atomic orbitals of both atoms into molecular orbitals belonging to the molecule as a whole, some bonding and some antibonding, and then fills them in energy order by the same rules that fill an atom — Aufbau, Pauli and Hund. For O₂ the count runs: the bonding orbitals take ten electrons and the antibonding six. Bond order is (bonding − antibonding)/2 = (10 − 6)/2 = 2, so MO theory agrees with Lewis about the double bond, and about the bond length and strength that follow from it. But the last two electrons are the interesting ones. They must go into the two pi-antibonding orbitals, which are degenerate — exactly equal in energy. Hund's rule then applies just as it does in an atom: the electrons occupy the two orbitals singly with parallel spins rather than pairing up in one. Two unpaired electrons, and O₂ is paramagnetic. Notice the shape of the resolution. MO theory did not overturn what Lewis got right; it reproduced the bond order exactly and added the one prediction Lewis could not make. That is what a successful replacement looks like — the older model is recovered as an approximation and the residue it could not explain becomes a consequence. Two further payoffs are worth knowing. The same method predicts that removing an electron from O₂ makes the bond stronger, since it comes out of an antibonding orbital, and O₂⁺ does indeed have a shorter bond than O₂ — a result Lewis structures cannot even express. And it predicts that He₂ cannot exist, because its two bonding and two antibonding electrons give a bond order of zero. (The second answer denies a reproducible demonstration, the third abandons a bond order that MO theory confirms, and the fourth invokes nuclear magnetism some ten thousand times too weak to lift a liquid.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "O₂ की हर लूइस संरचना सब इलेक्ट्रॉनों को युग्मित दिखाते हुए द्विबंध दिखाती है, जिससे अनुमान लगता है कि अणु प्रतिचुंबकीय होगा। द्रव ऑक्सीजन वस्तुतः चुंबक की ओर प्रबलता से खिंचती है। विसंगति और उसका समाधान समझाओ।",
+          "choices": [
+            "लूइस संरचनाएँ O₂ का सही निरूपण कर ही नहीं सकतीं। आण्विक कक्षक सिद्धांत अणु के अपने कक्षकों को ऊर्जा-क्रम में भरता है, और अंतिम दो इलेक्ट्रॉन दो अपभ्रष्ट पाई-प्रतिआबंधी कक्षकों में एक-एक जाते हैं, समांतर चक्रणों के साथ, ठीक जैसा हुंड का नियम माँगता है। इससे दो अयुग्मित इलेक्ट्रॉन बचते हैं, जो O₂ को अनुचुंबकीय बनाते हैं, जबकि बंध कोटि फिर भी (10 − 6)/2 = 2 निकलती है, जो द्विबंध से मेल खाती है। यह अनुचुंबकत्व लूइस चित्र पर आण्विक कक्षक सिद्धांत की पहली निर्णायक सफलताओं में से एक था",
+            "प्रेक्षण ग़लत है: द्रव ऑक्सीजन चुंबक की ओर नहीं खिंचती, और आभासी आकर्षण लोहे की अशुद्धियों से है",
+            "O₂ में वस्तुतः दो अयुग्मित इलेक्ट्रॉनों के साथ एकल बंध है, अतः लूइस संरचनाओं का द्विबंध बस ग़लत है",
+            "अनुचुंबकत्व इलेक्ट्रॉनों से नहीं बल्कि ऑक्सीजन के नाभिकों से आता है, अतः किसी इलेक्ट्रॉनिक निदर्श को बदलने की ज़रूरत नहीं"
+          ],
+          "solution": "यह प्रयोग उस क़िस्म का है जो बहस निपटा देता है। प्रबल चुंबक के ध्रुवों के बीच द्रव ऑक्सीजन उड़ेलो और वह नीचे नहीं गिरती — वह वहीं चिपकी रहती है, दिखाई देने लायक़ लटकी हुई, और यह प्रदर्शन-फ़िल्म छात्र दशकों से देखते आए हैं। उस प्रबलता का अनुचुंबकत्व अयुग्मित इलेक्ट्रॉन माँगता है, और O₂ की लूइस संरचना में एक भी नहीं: हर ऑक्सीजन पर दो एकाकी युग्म और उनके बीच द्विबंध, सोलह इलेक्ट्रॉन सब सफ़ाई से युग्मित। लूइस चित्र यहाँ केवल अधूरा नहीं, वह एक निश्चित भविष्यवाणी करता है और वह भविष्यवाणी ग़लत है। आण्विक कक्षक सिद्धांत भिन्न ढंग से शुरू करता है। इलेक्ट्रॉनों को परमाणुओं और फिर साझा युग्मों को सौंपने के बजाय, वह दोनों परमाणुओं के परमाण्विक कक्षकों को मिलाकर ऐसे आण्विक कक्षक बनाता है जो पूरे अणु के हैं, कुछ आबंधी और कुछ प्रतिआबंधी, और फिर उन्हें उन्हीं नियमों से ऊर्जा-क्रम में भरता है जो परमाणु भरते हैं — ऑफ़बाउ, पॉली और हुंड। O₂ के लिए गिनती यों चलती है: आबंधी कक्षक दस इलेक्ट्रॉन लेते हैं और प्रतिआबंधी छह। बंध कोटि (आबंधी − प्रतिआबंधी)/2 = (10 − 6)/2 = 2, अतः द्विबंध के बारे में, और उससे निकलने वाली बंध लंबाई तथा प्रबलता के बारे में, आण्विक कक्षक सिद्धांत लूइस से सहमत है। पर दिलचस्प अंतिम दो इलेक्ट्रॉन हैं। उन्हें दो पाई-प्रतिआबंधी कक्षकों में जाना पड़ता है, जो अपभ्रष्ट हैं — ऊर्जा में ठीक बराबर। तब हुंड का नियम वैसे ही लागू होता है जैसे परमाणु में: इलेक्ट्रॉन एक में जोड़ी बनाने के बजाय दोनों कक्षकों में एक-एक बैठते हैं, समांतर चक्रणों के साथ। दो अयुग्मित इलेक्ट्रॉन, और O₂ अनुचुंबकीय। समाधान का आकार ध्यान दो। आण्विक कक्षक सिद्धांत ने वह नहीं पलटा जो लूइस ने सही किया था; उसने बंध कोटि ठीक-ठीक दोहराई और वह एक भविष्यवाणी जोड़ दी जो लूइस नहीं कर सकता था। सफल प्रतिस्थापन ऐसा ही दिखता है — पुराना निदर्श सन्निकटन के रूप में वापस मिलता है और जो अवशेष वह नहीं समझा सका वह परिणाम बन जाता है। दो और कमाइयाँ जानने योग्य हैं। वही विधि बताती है कि O₂ से इलेक्ट्रॉन हटाने पर बंध प्रबल हो जाता है, क्योंकि वह प्रतिआबंधी कक्षक से निकलता है, और O₂⁺ का बंध सचमुच O₂ से छोटा है — ऐसा परिणाम जिसे लूइस संरचनाएँ व्यक्त तक नहीं कर सकतीं। और वह बताती है कि He₂ हो ही नहीं सकता, क्योंकि उसके दो आबंधी और दो प्रतिआबंधी इलेक्ट्रॉन बंध कोटि शून्य देते हैं। (दूसरा उत्तर दोहराए जा सकने वाले प्रदर्शन को नकारता है, तीसरा उस बंध कोटि को छोड़ देता है जिसकी आण्विक कक्षक सिद्धांत पुष्टि करता है, और चौथा ऐसा नाभिकीय चुंबकत्व बुलाता है जो द्रव उठाने के लिए लगभग दस हज़ार गुना दुर्बल है।)"
+        },
+        "mr": {
+          "stem": "O₂ ची प्रत्येक लुईस संरचना सर्व इलेक्ट्रॉन युग्मित दाखवत द्विबंध दाखवते, ज्यातून अनुमान निघते की रेणू प्रतिचुंबकीय असावा. द्रव ऑक्सिजन प्रत्यक्षात चुंबकाकडे जोरदार ओढला जातो. विसंगती आणि तिचे निराकरण समजावा.",
+          "choices": [
+            "लुईस संरचना O₂ चे बरोबर निरूपण करूच शकत नाहीत. रेणवीय कक्षक सिद्धांत रेणूची स्वतःची कक्षके ऊर्जा-क्रमाने भरतो, आणि शेवटचे दोन इलेक्ट्रॉन दोन अपभ्रष्ट पाय-प्रतिबंधकारी कक्षकांत एकेक जातात, समांतर परिवलनांसह, नेमके जसे हुंडचा नियम मागतो. यातून दोन अयुग्मित इलेक्ट्रॉन उरतात, जे O₂ ला अनुचुंबकीय बनवतात, तर बंध कोटी तरीही (10 − 6)/2 = 2 निघते, जी द्विबंधाशी जुळते. हे अनुचुंबकत्व लुईस चित्रावर रेणवीय कक्षक सिद्धांताच्या पहिल्या निर्णायक यशांपैकी एक होते",
+            "निरीक्षण चुकीचे: द्रव ऑक्सिजन चुंबकाकडे ओढला जात नाही, आणि आभासी आकर्षण लोखंडाच्या अशुद्धींमुळे",
+            "O₂ मध्ये प्रत्यक्षात दोन अयुग्मित इलेक्ट्रॉनांसह एकेरी बंध आहे, म्हणून लुईस संरचनांतील द्विबंध फक्त चूक आहे",
+            "अनुचुंबकत्व इलेक्ट्रॉनांकडून नव्हे तर ऑक्सिजनच्या केंद्रकांकडून येते, म्हणून कोणतेही इलेक्ट्रॉनिक प्रतिरूप बदलण्याची गरज नाही"
+          ],
+          "solution": "हा प्रयोग असा आहे जो वाद निकाली काढतो. प्रबळ चुंबकाच्या ध्रुवांमध्ये द्रव ऑक्सिजन ओता आणि तो खाली पडत नाही — तो तिथेच चिकटतो, दिसण्याइतका टांगलेला, आणि ही प्रात्यक्षिक-चित्रफीत विद्यार्थी दशकांपासून पाहत आले आहेत. त्या प्रबळतेचे अनुचुंबकत्व अयुग्मित इलेक्ट्रॉन मागते, आणि O₂ च्या लुईस संरचनेत एकही नाही: प्रत्येक ऑक्सिजनवर दोन एकाकी जोड्या आणि त्यांच्यात द्विबंध, सोळा इलेक्ट्रॉन सर्व नीटपणे युग्मित. लुईस चित्र इथे केवळ अपूर्ण नाही, ते एक निश्चित भाकीत करते आणि ते भाकीत चुकीचे आहे. रेणवीय कक्षक सिद्धांत वेगळ्या पद्धतीने सुरू होतो. इलेक्ट्रॉन अणूंना आणि मग वाटलेल्या जोड्यांना सोपवण्याऐवजी, तो दोन्ही अणूंची अणुकक्षके मिसळून अशी रेणवीय कक्षके बनवतो जी अख्ख्या रेणूची, काही बंधकारी आणि काही प्रतिबंधकारी, आणि मग ती त्याच नियमांनी ऊर्जा-क्रमाने भरतो जे अणू भरतात — ऑफबाऊ, पौली आणि हुंड. O₂ साठी मोजणी अशी चालते: बंधकारी कक्षके दहा इलेक्ट्रॉन घेतात आणि प्रतिबंधकारी सहा. बंध कोटी (बंधकारी − प्रतिबंधकारी)/2 = (10 − 6)/2 = 2, म्हणून द्विबंधाबद्दल, आणि त्यातून निघणाऱ्या बंध लांबी व प्रबळतेबद्दल, रेणवीय कक्षक सिद्धांत लुईसशी सहमत. पण रोचक शेवटचे दोन इलेक्ट्रॉन. त्यांना दोन पाय-प्रतिबंधकारी कक्षकांत जावे लागते, जी अपभ्रष्ट आहेत — ऊर्जेत नेमकी समान. मग हुंडचा नियम तसाच लागू होतो जसा अणूत: इलेक्ट्रॉन एकात जोडी करण्याऐवजी दोन्ही कक्षकांत एकेक बसतात, समांतर परिवलनांसह. दोन अयुग्मित इलेक्ट्रॉन, आणि O₂ अनुचुंबकीय. निराकरणाचा आकार लक्षात घ्या. रेणवीय कक्षक सिद्धांताने लुईसने बरोबर केलेले उलटवले नाही; त्याने बंध कोटी नेमकी पुन्हा मिळवली आणि ते एक भाकीत जोडले जे लुईस करू शकत नव्हता. यशस्वी प्रतिस्थापन असेच दिसते — जुने प्रतिरूप सन्निकटन म्हणून परत मिळते आणि ते जे समजावू शकले नाही तो शेष परिणाम बनतो. आणखी दोन कमाया जाणण्याजोग्या. तीच पद्धत सांगते की O₂ मधून इलेक्ट्रॉन काढल्यास बंध प्रबळ होतो, कारण तो प्रतिबंधकारी कक्षकातून निघतो, आणि O₂⁺ चा बंध खरोखर O₂ हून लहान — असा निकाल जो लुईस संरचना व्यक्तही करू शकत नाहीत. आणि ती सांगते की He₂ असूच शकत नाही, कारण त्याचे दोन बंधकारी आणि दोन प्रतिबंधकारी इलेक्ट्रॉन बंध कोटी शून्य देतात. (दुसरे उत्तर पुन्हा करता येणारे प्रात्यक्षिक नाकारते, तिसरे ती बंध कोटी सोडते जिची रेणवीय कक्षक सिद्धांत पुष्टी करतो, आणि चौथे असे केंद्रकीय चुंबकत्व बोलावते जे द्रव उचलण्यासाठी सुमारे दहा हजारपट दुर्बल आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Nitrogen has 7 electrons in total, with 2 in the first shell. How many valence electrons does it have?",
+      "choices": [
+        "8",
+        "7",
+        "3",
+        "5"
+      ],
+      "answerIndex": 3,
+      "solution": "7 − 2 = 5 valence electrons, which is why nitrogen forms three bonds and keeps one lone pair — the three bonds and the pair together make its octet. (7 counts every electron and 3 counts the bonds rather than the electrons.)",
+      "checkExpr": "7-2",
+      "translations": {
+        "hi": {
+          "stem": "नाइट्रोजन में कुल 7 इलेक्ट्रॉन हैं, जिनमें 2 पहले कोश में। उसके कितने संयोजी इलेक्ट्रॉन हैं?",
+          "choices": [
+            "8",
+            "7",
+            "3",
+            "5"
+          ],
+          "solution": "7 − 2 = 5 संयोजी इलेक्ट्रॉन, इसीलिए नाइट्रोजन तीन बंध बनाता है और एक एकाकी युग्म रखता है — तीन बंध और वह युग्म मिलकर उसका अष्टक बनाते हैं। (7 हर इलेक्ट्रॉन गिनता है और 3 इलेक्ट्रॉनों के बजाय बंध गिनता है।)"
+        },
+        "mr": {
+          "stem": "नायट्रोजनमध्ये एकूण 7 इलेक्ट्रॉन, त्यांतील 2 पहिल्या कवचात. त्याचे किती संयुजा इलेक्ट्रॉन आहेत?",
+          "choices": [
+            "8",
+            "7",
+            "3",
+            "5"
+          ],
+          "solution": "7 − 2 = 5 संयुजा इलेक्ट्रॉन, म्हणूनच नायट्रोजन तीन बंध बनवतो आणि एक एकाकी जोडी ठेवतो — तीन बंध आणि ती जोडी मिळून त्याचे अष्टक बनवतात. (7 प्रत्येक इलेक्ट्रॉन मोजते आणि 3 इलेक्ट्रॉनांऐवजी बंध मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "In molecular orbital theory the bond order is (Nb − Na)/2. For O₂ the bonding electrons Nb number 10 and the antibonding Na number 6. What is the bond order?",
+      "choices": [
+        "16",
+        "2",
+        "8",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "(10 − 6)/2 = 2, a double bond — which agrees with the Lewis structure, even though the MO picture also produces two unpaired electrons that Lewis cannot. (4 forgets to halve and 16 adds the two counts.)",
+      "checkExpr": "(10-6)/2",
+      "translations": {
+        "hi": {
+          "stem": "आण्विक कक्षक सिद्धांत में बंध कोटि (Nb − Na)/2 है। O₂ के लिए आबंधी इलेक्ट्रॉन Nb 10 और प्रतिआबंधी Na 6 हैं। बंध कोटि क्या है?",
+          "choices": [
+            "16",
+            "2",
+            "8",
+            "4"
+          ],
+          "solution": "(10 − 6)/2 = 2, द्विबंध — जो लूइस संरचना से मेल खाता है, यद्यपि आण्विक कक्षक चित्र दो अयुग्मित इलेक्ट्रॉन भी देता है जो लूइस नहीं दे सकता। (4 आधा करना भूलता है और 16 दोनों गिनतियाँ जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "रेणवीय कक्षक सिद्धांतात बंध कोटी (Nb − Na)/2 आहे. O₂ साठी बंधकारी इलेक्ट्रॉन Nb 10 आणि प्रतिबंधकारी Na 6. बंध कोटी किती?",
+          "choices": [
+            "16",
+            "2",
+            "8",
+            "4"
+          ],
+          "solution": "(10 − 6)/2 = 2, द्विबंध — जो लुईस संरचनेशी जुळतो, जरी रेणवीय कक्षक चित्र दोन अयुग्मित इलेक्ट्रॉनही देते जे लुईस देऊ शकत नाही. (4 निम्मे करायचे विसरते आणि 16 दोन्ही मोजण्या जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Carbon in methane is sp³ hybridised, mixing one s and three p orbitals. How many hybrid orbitals result?",
+      "choices": [
+        "5",
+        "3",
+        "2",
+        "4"
+      ],
+      "answerIndex": 3,
+      "solution": "1 + 3 = 4, and hybridisation always conserves the number of orbitals — four in, four out. The four point to the corners of a tetrahedron at 109.5°, which is exactly the shape methane is measured to have. (3 counts only the p orbitals.)",
+      "checkExpr": "1+3",
+      "translations": {
+        "hi": {
+          "stem": "मेथेन में कार्बन sp³ संकरित है, जो एक s और तीन p कक्षक मिलाता है। कितने संकर कक्षक बनते हैं?",
+          "choices": [
+            "5",
+            "3",
+            "2",
+            "4"
+          ],
+          "solution": "1 + 3 = 4, और संकरण सदा कक्षकों की संख्या बनाए रखता है — चार भीतर, चार बाहर। चारों 109.5° पर चतुष्फलक के कोनों की ओर इंगित करते हैं, जो ठीक वही आकार है जो मेथेन का नापा जाता है। (3 केवल p कक्षक गिनता है।)"
+        },
+        "mr": {
+          "stem": "मिथेनमधील कार्बन sp³ संकरित, जो एक s आणि तीन p कक्षके मिसळतो. किती संकर कक्षके तयार होतात?",
+          "choices": [
+            "5",
+            "3",
+            "2",
+            "4"
+          ],
+          "solution": "1 + 3 = 4, आणि संकरण नेहमी कक्षकांची संख्या टिकवते — चार आत, चार बाहेर. चारही 109.5° वर चतुष्फलकाच्या कोपऱ्यांकडे निर्देश करतात, जो नेमका तोच आकार जो मिथेनचा मोजला जातो. (3 फक्त p कक्षके मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Ammonia's nitrogen has four electron pairs around it, of which one is a lone pair. How many bond pairs are there?",
+      "choices": [
+        "4",
+        "2",
+        "3",
+        "5"
+      ],
+      "answerIndex": 2,
+      "solution": "4 − 1 = 3 bond pairs, so ammonia has three N–H bonds. Four pairs would be tetrahedral at 109.5°, but the lone pair pushes harder and squeezes the bonds to 107°, giving the familiar pyramid. (4 counts every pair rather than the bonding ones.)",
+      "checkExpr": "4-1",
+      "translations": {
+        "hi": {
+          "stem": "अमोनिया के नाइट्रोजन के इर्द-गिर्द चार इलेक्ट्रॉन-युग्म हैं, जिनमें एक एकाकी युग्म है। कितने आबंधी युग्म हैं?",
+          "choices": [
+            "4",
+            "2",
+            "3",
+            "5"
+          ],
+          "solution": "4 − 1 = 3 आबंधी युग्म, अतः अमोनिया में तीन N–H बंध हैं। चार युग्म 109.5° पर चतुष्फलकीय होते, पर एकाकी युग्म अधिक ज़ोर से धकेलता है और बंधों को 107° तक दबा देता है, जिससे जाना-पहचाना पिरामिड बनता है। (4 आबंधी के बजाय हर युग्म गिनता है।)"
+        },
+        "mr": {
+          "stem": "अमोनियाच्या नायट्रोजनभोवती चार इलेक्ट्रॉन-जोड्या, त्यांपैकी एक एकाकी जोडी. किती बंधकारी जोड्या आहेत?",
+          "choices": [
+            "4",
+            "2",
+            "3",
+            "5"
+          ],
+          "solution": "4 − 1 = 3 बंधकारी जोड्या, म्हणून अमोनियात तीन N–H बंध. चार जोड्या 109.5° वर चतुष्फलकी झाल्या असत्या, पण एकाकी जोडी अधिक जोराने ढकलते आणि बंध 107° पर्यंत दाबते, ज्यातून ओळखीचा पिरॅमिड बनतो. (4 बंधकारीऐवजी प्रत्येक जोडी मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Carbon has 4 valence electrons and oxygen 6. How many valence electrons are there in total in a carbon dioxide molecule?",
+      "choices": [
+        "12",
+        "10",
+        "22",
+        "16"
+      ],
+      "answerIndex": 3,
+      "solution": "4 + 2 × 6 = 16. Those sixteen are distributed as two C=O double bonds — eight electrons — and two lone pairs on each oxygen, another eight, which completes every octet. Counting valence electrons first is the reliable way to draw a Lewis structure. (10 forgets one oxygen and 22 adds the atomic numbers instead.)",
+      "checkExpr": "4+2*6",
+      "translations": {
+        "hi": {
+          "stem": "कार्बन के 4 संयोजी इलेक्ट्रॉन हैं और ऑक्सीजन के 6. कार्बन डाइऑक्साइड अणु में कुल कितने संयोजी इलेक्ट्रॉन हैं?",
+          "choices": [
+            "12",
+            "10",
+            "22",
+            "16"
+          ],
+          "solution": "4 + 2 × 6 = 16. वे सोलह दो C=O द्विबंधों — आठ इलेक्ट्रॉन — और हर ऑक्सीजन पर दो एकाकी युग्म, यानी और आठ, के रूप में बँटते हैं, जिससे हर अष्टक पूरा होता है। पहले संयोजी इलेक्ट्रॉन गिनना लूइस संरचना खींचने का भरोसेमंद रास्ता है। (10 एक ऑक्सीजन भूल जाता है और 22 इसके बजाय परमाणु क्रमांक जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "कार्बनचे 4 संयुजा इलेक्ट्रॉन आणि ऑक्सिजनचे 6. कार्बन डायऑक्साइड रेणूत एकूण किती संयुजा इलेक्ट्रॉन आहेत?",
+          "choices": [
+            "12",
+            "10",
+            "22",
+            "16"
+          ],
+          "solution": "4 + 2 × 6 = 16. ती सोळा दोन C=O द्विबंध — आठ इलेक्ट्रॉन — आणि प्रत्येक ऑक्सिजनवर दोन एकाकी जोड्या, म्हणजे आणखी आठ, अशी वाटली जातात, ज्यातून प्रत्येक अष्टक पूर्ण होते. आधी संयुजा इलेक्ट्रॉन मोजणे हा लुईस संरचना काढण्याचा विश्वासार्ह मार्ग. (10 एक ऑक्सिजन विसरते आणि 22 त्याऐवजी अणुक्रमांक जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Methane's bond angle is 109.5° and water's is 104.5°. By how many degrees is water's angle smaller?",
+      "choices": [
+        "5",
+        "4.5",
+        "214",
+        "10"
+      ],
+      "answerIndex": 0,
+      "solution": "109.5 − 104.5 = 5°. Both molecules have four electron pairs around the central atom, so both start from the tetrahedral angle; water's two lone pairs then squeeze the bonds closer. Ammonia, with one lone pair, sits between them at 107°. (214 adds the two angles.)",
+      "checkExpr": "109.5-104.5",
+      "translations": {
+        "hi": {
+          "stem": "मेथेन का बंध कोण 109.5° और पानी का 104.5° है। पानी का कोण कितने डिग्री छोटा है?",
+          "choices": [
+            "5",
+            "4.5",
+            "214",
+            "10"
+          ],
+          "solution": "109.5 − 104.5 = 5°. दोनों अणुओं के केंद्रीय परमाणु के इर्द-गिर्द चार इलेक्ट्रॉन-युग्म हैं, अतः दोनों चतुष्फलकीय कोण से शुरू होते हैं; फिर पानी के दो एकाकी युग्म बंधों को पास दबा देते हैं। एक एकाकी युग्म वाला अमोनिया 107° पर उनके बीच बैठता है। (214 दोनों कोण जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "मिथेनचा बंध कोन 109.5° आणि पाण्याचा 104.5°. पाण्याचा कोन किती अंशांनी लहान?",
+          "choices": [
+            "5",
+            "4.5",
+            "214",
+            "10"
+          ],
+          "solution": "109.5 − 104.5 = 5°. दोन्ही रेणूंच्या केंद्रीय अणूभोवती चार इलेक्ट्रॉन-जोड्या, म्हणून दोघेही चतुष्फलकी कोनापासून सुरू होतात; मग पाण्याच्या दोन एकाकी जोड्या बंध जवळ दाबतात. एक एकाकी जोडी असलेला अमोनिया 107° वर त्यांच्यामध्ये बसतो. (214 दोन्ही कोन जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Formal charge is valence electrons minus lone-pair electrons minus bonds. For nitrogen in NH₄⁺, with 5 valence electrons, 0 lone-pair electrons and 4 bonds, what is the formal charge?",
+      "choices": [
+        "1",
+        "0",
+        "4",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "5 − 0 − 4 = +1, which is where the ion's charge sits. Formal charge is a bookkeeping device rather than a real charge — the electron density is spread over all five atoms — but it is the tool that decides between competing Lewis structures, since the best one puts the smallest formal charges on the most sensible atoms. (0 would be the value for neutral ammonia.)",
+      "checkExpr": "5-0-4",
+      "translations": {
+        "hi": {
+          "stem": "औपचारिक आवेश = संयोजी इलेक्ट्रॉन घटा एकाकी-युग्म इलेक्ट्रॉन घटा बंध। NH₄⁺ में नाइट्रोजन के लिए, 5 संयोजी इलेक्ट्रॉन, 0 एकाकी-युग्म इलेक्ट्रॉन और 4 बंध के साथ, औपचारिक आवेश क्या है?",
+          "choices": [
+            "1",
+            "0",
+            "4",
+            "2"
+          ],
+          "solution": "5 − 0 − 4 = +1, और आयन का आवेश वहीं बैठता है। औपचारिक आवेश असली आवेश नहीं बल्कि बहीखाता-युक्ति है — इलेक्ट्रॉन घनत्व पाँचों परमाणुओं पर फैला है — पर वही उपकरण प्रतिस्पर्धी लूइस संरचनाओं में चुनाव करता है, क्योंकि सबसे अच्छी वह है जो सबसे छोटे औपचारिक आवेश सबसे समझदार परमाणुओं पर रखे। (0 उदासीन अमोनिया का मान होता।)"
+        },
+        "mr": {
+          "stem": "औपचारिक भार = संयुजा इलेक्ट्रॉन वजा एकाकी-जोडी इलेक्ट्रॉन वजा बंध. NH₄⁺ मधील नायट्रोजनसाठी, 5 संयुजा इलेक्ट्रॉन, 0 एकाकी-जोडी इलेक्ट्रॉन आणि 4 बंध यांसह, औपचारिक भार किती?",
+          "choices": [
+            "1",
+            "0",
+            "4",
+            "2"
+          ],
+          "solution": "5 − 0 − 4 = +1, आणि आयनाचा भार तिथेच बसतो. औपचारिक भार हा खरा भार नव्हे तर वहीखाता-युक्ती — इलेक्ट्रॉन घनता पाचही अणूंवर पसरलेली — पण तेच साधन स्पर्धक लुईस संरचनांतून निवड करते, कारण सर्वांत चांगली ती जी सर्वांत लहान औपचारिक भार सर्वांत समजूतदार अणूंवर ठेवते. (0 हे उदासीन अमोनियाचे मूल्य ठरले असते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "For N₂ the bonding electrons number 10 and the antibonding 4. What is its bond order?",
+      "choices": [
+        "14",
+        "6",
+        "2",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "(10 − 4)/2 = 3, a triple bond — the strongest bond between two like atoms in ordinary chemistry, at 941 kJ/mol. That strength is why nitrogen gas is so unreactive that plants cannot use it directly, and why fixing it industrially by the Haber process needs high temperature, high pressure and a catalyst. (6 forgets to halve.)",
+      "checkExpr": "(10-4)/2",
+      "translations": {
+        "hi": {
+          "stem": "N₂ के लिए आबंधी इलेक्ट्रॉन 10 और प्रतिआबंधी 4 हैं। उसकी बंध कोटि क्या है?",
+          "choices": [
+            "14",
+            "6",
+            "2",
+            "3"
+          ],
+          "solution": "(10 − 4)/2 = 3, त्रिबंध — साधारण रसायन में दो समान परमाणुओं के बीच सबसे प्रबल बंध, 941 kJ/mol पर। वही प्रबलता है जिससे नाइट्रोजन गैस इतनी अक्रिय है कि पौधे उसे सीधे काम में नहीं ला सकते, और जिससे हैबर प्रक्रम से औद्योगिक स्थिरीकरण को ऊँचा ताप, ऊँचा दाब और उत्प्रेरक चाहिए। (6 आधा करना भूलता है।)"
+        },
+        "mr": {
+          "stem": "N₂ साठी बंधकारी इलेक्ट्रॉन 10 आणि प्रतिबंधकारी 4. त्याची बंध कोटी किती?",
+          "choices": [
+            "14",
+            "6",
+            "2",
+            "3"
+          ],
+          "solution": "(10 − 4)/2 = 3, त्रिबंध — सामान्य रसायनात दोन सारख्या अणूंमधला सर्वांत प्रबळ बंध, 941 kJ/mol वर. तीच प्रबळता ज्यामुळे नायट्रोजन वायू इतका अक्रिय की वनस्पती तो थेट वापरू शकत नाहीत, आणि ज्यामुळे हेबर प्रक्रियेने औद्योगिक स्थिरीकरणाला उच्च तापमान, उच्च दाब आणि उत्प्रेरक लागतो. (6 निम्मे करायचे विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Percentage ionic character can be estimated as 16Δ + 3.5Δ², where Δ is the electronegativity difference. For sodium chloride Δ is 2.1. What is the estimate, as a percentage?",
+      "choices": [
+        "63.7",
+        "15.435",
+        "33.6",
+        "49.035"
+      ],
+      "answerIndex": 3,
+      "solution": "16 × 2.1 + 3.5 × 4.41 = 33.6 + 15.435 = 49.035 per cent. The figure is worth reading carefully: even sodium chloride, the textbook ionic compound, comes out only about half ionic on this estimate. No bond is purely one type or the other — the electron pair is displaced, sometimes almost completely, but 'ionic' and 'covalent' are the two ends of a continuum rather than two boxes. (33.6 keeps only the linear term and 15.435 only the quadratic.)",
+      "checkExpr": "16*2.1+3.5*2.1^2",
+      "translations": {
+        "hi": {
+          "stem": "प्रतिशत आयनिक लक्षण का आकलन 16Δ + 3.5Δ² से किया जा सकता है, जहाँ Δ विद्युत्-ऋणात्मकता अंतर है। सोडियम क्लोराइड के लिए Δ = 2.1. आकलन प्रतिशत में क्या है?",
+          "choices": [
+            "63.7",
+            "15.435",
+            "33.6",
+            "49.035"
+          ],
+          "solution": "16 × 2.1 + 3.5 × 4.41 = 33.6 + 15.435 = 49.035 प्रतिशत। आँकड़ा ध्यान से पढ़ने योग्य है: सोडियम क्लोराइड तक, पाठ्यपुस्तक का आयनिक यौगिक, इस आकलन पर केवल लगभग आधा आयनिक निकलता है। कोई बंध विशुद्ध रूप से एक या दूसरी क़िस्म का नहीं — इलेक्ट्रॉन युग्म खिसका होता है, कभी लगभग पूरी तरह, पर 'आयनिक' और 'सहसंयोजक' दो डिब्बे नहीं बल्कि एक ही सातत्य के दो सिरे हैं। (33.6 केवल रैखिक पद रखता है और 15.435 केवल द्विघात।)"
+        },
+        "mr": {
+          "stem": "शेकडा आयनिक लक्षणाचा अंदाज 16Δ + 3.5Δ² ने काढता येतो, जिथे Δ हा विद्युतऋणता फरक. सोडियम क्लोराइडसाठी Δ = 2.1. अंदाज शेकड्यात किती?",
+          "choices": [
+            "63.7",
+            "15.435",
+            "33.6",
+            "49.035"
+          ],
+          "solution": "16 × 2.1 + 3.5 × 4.41 = 33.6 + 15.435 = 49.035 टक्के. आकडा काळजीपूर्वक वाचण्याजोगा: सोडियम क्लोराइडसुद्धा, पाठ्यपुस्तकातले आयनिक संयुग, या अंदाजावर केवळ सुमारे निम्मे आयनिक निघते. कोणताही बंध निव्वळ एका वा दुसऱ्या प्रकारचा नाही — इलेक्ट्रॉन जोडी सरकलेली असते, कधी जवळपास पूर्णपणे, पण 'आयनिक' आणि 'सहसंयुज' ही दोन खोकी नव्हेत तर एकाच सातत्याची दोन टोके. (33.6 फक्त रेषीय पद ठेवते आणि 15.435 फक्त द्विघात.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Boron trifluoride has three polar bonds and no dipole moment, while nitrogen trifluoride has three polar bonds and a small one. Nitrogen has 5 valence electrons and forms 3 bonds, using pairs. How many lone pairs does its nitrogen carry?",
+      "choices": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "answerIndex": 1,
+      "solution": "Nitrogen's five valence electrons make three bonds using three of them, leaving two — one lone pair. So the nitrogen has four electron regions in all, 4 − 3 = 1 of them a lone pair, and VSEPR makes the molecule pyramidal. Boron has only three valence electrons and no lone pair, so BF₃ has three regions and is trigonal planar. That single structural difference explains both observations. In BF₃ the three bond dipoles lie at 120° in one plane and sum to exactly zero, so the molecule is non-polar despite fluorine being the most electronegative element there is. In NF₃ the three bonds are pushed to one side of the nitrogen by the lone pair, so they do not cancel — and the lone pair's own dipole points the opposite way and partly cancels them again, which is why NF₃'s dipole moment is unusually small at 0.24 D, far below ammonia's 1.47 D even though fluorine is far more electronegative than hydrogen. The molecule is a standard demonstration that bond polarity, geometry and lone-pair contributions all have to be added as vectors, and that guessing from the formula alone is unreliable. (0 describes boron rather than nitrogen, and 2 would make the molecule bent like water.)",
+      "checkExpr": "4-3",
+      "translations": {
+        "hi": {
+          "stem": "बोरॉन ट्राइफ़्लुओराइड में तीन ध्रुवीय बंध हैं और कोई द्विध्रुव आघूर्ण नहीं, जबकि नाइट्रोजन ट्राइफ़्लुओराइड में तीन ध्रुवीय बंध और एक छोटा द्विध्रुव है। नाइट्रोजन के 5 संयोजी इलेक्ट्रॉन हैं और वह युग्मों का उपयोग करके 3 बंध बनाता है। उसका नाइट्रोजन कितने एकाकी युग्म ढोता है?",
+          "choices": [
+            "0",
+            "1",
+            "2",
+            "3"
+          ],
+          "solution": "नाइट्रोजन के पाँच संयोजी इलेक्ट्रॉन तीन का उपयोग करके तीन बंध बनाते हैं, और दो बचते हैं — एक एकाकी युग्म। अतः नाइट्रोजन के कुल चार इलेक्ट्रॉन-क्षेत्र हैं, जिनमें 4 − 3 = 1 एकाकी युग्म है, और VSEPR अणु को पिरामिडी बना देता है। बोरॉन के केवल तीन संयोजी इलेक्ट्रॉन हैं और कोई एकाकी युग्म नहीं, अतः BF₃ के तीन क्षेत्र हैं और वह त्रिकोणीय समतलीय है। वही एक संरचनात्मक भेद दोनों प्रेक्षण समझा देता है। BF₃ में तीनों बंध-द्विध्रुव एक ही समतल में 120° पर हैं और जुड़कर ठीक शून्य होते हैं, अतः अणु अध्रुवीय है यद्यपि फ़्लुओरीन सबसे अधिक विद्युत्-ऋणात्मक तत्व है। NF₃ में एकाकी युग्म तीनों बंधों को नाइट्रोजन के एक ओर धकेल देता है, अतः वे कटते नहीं — और एकाकी युग्म का अपना द्विध्रुव उलटी ओर इंगित करके उन्हें फिर आंशिक रूप से काट देता है, इसीलिए NF₃ का द्विध्रुव आघूर्ण असामान्य रूप से छोटा 0.24 D है, अमोनिया के 1.47 D से कहीं नीचे, यद्यपि फ़्लुओरीन हाइड्रोजन से कहीं अधिक विद्युत्-ऋणात्मक है। यह अणु मानक प्रदर्शन है कि बंध-ध्रुवता, ज्यामिति और एकाकी युग्मों का योगदान सबको सदिशों की तरह जोड़ना पड़ता है, और अकेले सूत्र से अनुमान लगाना भरोसेमंद नहीं। (0 नाइट्रोजन नहीं बोरॉन का वर्णन करता है, और 2 अणु को पानी जैसा मुड़ा बना देता।)"
+        },
+        "mr": {
+          "stem": "बोरॉन ट्रायफ्लोराइडमध्ये तीन ध्रुवीय बंध आणि द्विध्रुव आघूर्ण नाही, तर नायट्रोजन ट्रायफ्लोराइडमध्ये तीन ध्रुवीय बंध आणि एक लहान द्विध्रुव. नायट्रोजनचे 5 संयुजा इलेक्ट्रॉन आणि तो जोड्या वापरून 3 बंध बनवतो. त्याचा नायट्रोजन किती एकाकी जोड्या वाहतो?",
+          "choices": [
+            "0",
+            "1",
+            "2",
+            "3"
+          ],
+          "solution": "नायट्रोजनचे पाच संयुजा इलेक्ट्रॉन तीन वापरून तीन बंध बनवतात, आणि दोन उरतात — एक एकाकी जोडी. म्हणून नायट्रोजनचे एकूण चार इलेक्ट्रॉन-प्रदेश, त्यांतील 4 − 3 = 1 एकाकी जोडी, आणि VSEPR रेणूला पिरॅमिडी बनवते. बोरॉनचे केवळ तीन संयुजा इलेक्ट्रॉन आणि कोणतीही एकाकी जोडी नाही, म्हणून BF₃ चे तीन प्रदेश आणि तो त्रिकोणी प्रतलीय. तोच एक संरचनात्मक फरक दोन्ही निरीक्षणे समजावतो. BF₃ मध्ये तिन्ही बंध-द्विध्रुव एकाच प्रतलात 120° वर आणि जोडून नेमके शून्य होतात, म्हणून रेणू अध्रुवीय जरी फ्लोरिन सर्वांत अधिक विद्युतऋण मूलद्रव्य असले तरी. NF₃ मध्ये एकाकी जोडी तिन्ही बंधांना नायट्रोजनच्या एका बाजूला ढकलते, म्हणून ते कापले जात नाहीत — आणि एकाकी जोडीचा स्वतःचा द्विध्रुव उलट दिशेने निर्देश करून त्यांना पुन्हा अंशतः कापतो, म्हणूनच NF₃ चा द्विध्रुव आघूर्ण असामान्यपणे लहान 0.24 D आहे, अमोनियाच्या 1.47 D हून कितीतरी खाली, जरी फ्लोरिन हायड्रोजनहून कितीतरी अधिक विद्युतऋण असले तरी. हा रेणू प्रमाणित प्रात्यक्षिक की बंध-ध्रुवता, भूमिती आणि एकाकी जोड्यांचा वाटा या सर्वांना सदिशांसारखे जोडावे लागते, आणि एकट्या सूत्रावरून अंदाज बांधणे विश्वासार्ह नाही. (0 नायट्रोजन नव्हे तर बोरॉनचे वर्णन करते, आणि 2 रेणूला पाण्यासारखा वाकडा बनवले असते.)"
+        }
+      }
+    }
+  ]
+}

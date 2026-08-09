@@ -730,6 +730,1059 @@ export const G11_CHEMISTRY: Chapter[] = [
     ],
   },
 
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 3 — Classification of Elements and Periodicity                  */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "chemistry-11-periodicity",
+    subject: "CHEMISTRY",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 3 — Classification of Elements and Periodicity in Properties",
+      hi: "अध्याय 3 — तत्वों का वर्गीकरण एवं गुणधर्मों में आवर्तिता",
+      mr: "प्रकरण 3 — मूलद्रव्यांचे वर्गीकरण आणि गुणधर्मांतील आवर्तिता",
+    },
+    name: {
+      en: "Classification of Elements and Periodicity",
+      hi: "तत्वों का वर्गीकरण एवं आवर्तिता",
+      mr: "मूलद्रव्यांचे वर्गीकरण आणि आवर्तिता",
+    },
+    summary: {
+      en: "A table that looks like a filing cabinet and is really a consequence of the last chapter: elements repeat their behaviour because their outermost electron arrangements repeat. A charge the outer electron actually feels rather than the one the nucleus carries, a radius that shrinks along a row and grows down a column, an energy that measures how tightly an atom holds on, a number that says how hard it pulls in a shared pair, and two elements in different groups that behave alike because they are the same size.",
+      hi: "वह सारणी जो फ़ाइल-अलमारी जैसी दिखती है और वस्तुतः पिछले अध्याय का परिणाम है: तत्व अपना व्यवहार दोहराते हैं क्योंकि उनके बाहरी इलेक्ट्रॉन-विन्यास दोहराते हैं। वह आवेश जो बाहरी इलेक्ट्रॉन वस्तुतः महसूस करता है, वह नहीं जो नाभिक ढोता है, वह त्रिज्या जो पंक्ति में सिकुड़ती और स्तंभ में बढ़ती है, वह ऊर्जा जो नापती है कि परमाणु कितनी कसकर पकड़े है, वह संख्या जो बताती है कि वह साझा युग्म को कितना ज़ोर से खींचता है, और भिन्न वर्गों के वे दो तत्व जो एक-से व्यवहार करते हैं क्योंकि वे एक ही आकार के हैं।",
+      mr: "ती सारणी जी फाइल-कपाटासारखी दिसते आणि प्रत्यक्षात मागच्या प्रकरणाचा परिणाम आहे: मूलद्रव्ये आपले वर्तन पुन्हा करतात कारण त्यांची बाहेरची इलेक्ट्रॉन-मांडणी पुन्हा होते. तो भार जो बाहेरचा इलेक्ट्रॉन प्रत्यक्षात अनुभवतो, केंद्रक वाहतो तो नव्हे, ती त्रिज्या जी ओळीत आकुंचते आणि स्तंभात वाढते, ती ऊर्जा जी अणू किती घट्ट धरून आहे हे मोजते, ती संख्या जी तो वाटलेल्या जोडीला किती जोराने ओढतो हे सांगते, आणि वेगळ्या गटांतील ती दोन मूलद्रव्ये जी सारखी वागतात कारण ती एकाच आकाराची आहेत.",
+    },
+    position: 3,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "modern-periodic-law",
+        name: {
+          en: "The modern periodic law",
+          hi: "आधुनिक आवर्त नियम",
+          mr: "आधुनिक आवर्त नियम",
+        },
+        kind: "law",
+        prompt: {
+          en: "Mendeleev ordered the elements by atomic mass and had to swap two pairs to make the chemistry come out right; Moseley found the quantity that needs no swapping at all. Which law is this?",
+          hi: "मेंडलीफ़ ने तत्वों को परमाणु द्रव्यमान से क्रम में रखा और रसायन ठीक बैठाने के लिए दो जोड़े बदलने पड़े; मोज़ली ने वह राशि खोजी जिसमें कोई बदल नहीं करना पड़ता। यह कौन-सा नियम है?",
+          mr: "मेंडेलिव्हने मूलद्रव्ये अणुवस्तुमानाने क्रमात लावली आणि रसायन बरोबर बसवायला दोन जोड्या बदलाव्या लागल्या; मोजलीने ती राशी शोधली जिच्यात कोणतीही अदलाबदल करावी लागत नाही. हा कोणता नियम?",
+        },
+        statement: {
+          en: "The modern periodic law states that the properties of elements are a periodic function of their atomic numbers, not their atomic masses, which is why argon precedes potassium despite being heavier.",
+          hi: "आधुनिक आवर्त नियम कहता है कि तत्वों के गुणधर्म उनके परमाणु क्रमांकों के आवर्त फलन हैं, उनके परमाणु द्रव्यमानों के नहीं, इसीलिए आर्गन भारी होते हुए भी पोटैशियम से पहले आता है।",
+          mr: "आधुनिक आवर्त नियम सांगतो की मूलद्रव्यांचे गुणधर्म त्यांच्या अणुक्रमांकांचे आवर्त फलन आहेत, त्यांच्या अणुवस्तुमानांचे नव्हे, म्हणूनच आर्गॉन जड असूनही पोटॅशियमच्या आधी येते.",
+        },
+        detail: {
+          en: "The periodicity is a direct consequence of electron configuration: every element in a group has the same outer arrangement, and chemistry is almost entirely the business of the outermost electrons.",
+          hi: "आवर्तिता इलेक्ट्रॉन विन्यास का सीधा परिणाम है: किसी वर्ग के हर तत्व का बाहरी विन्यास एक-सा है, और रसायन लगभग पूरा बाहरी इलेक्ट्रॉनों का ही कारोबार है।",
+          mr: "आवर्तिता हा इलेक्ट्रॉन विन्यासाचा थेट परिणाम: एखाद्या गटातील प्रत्येक मूलद्रव्याची बाहेरची मांडणी सारखी, आणि रसायन जवळपास पूर्णपणे बाहेरच्या इलेक्ट्रॉनांचाच व्यवसाय.",
+        },
+        extra: {
+          en: "Mendeleev's real achievement was not the ordering but the gaps: he left blanks and predicted the properties of eka-aluminium and eka-silicon, which arrived a decade later as gallium and germanium.",
+          hi: "मेंडलीफ़ की असली उपलब्धि क्रम नहीं बल्कि रिक्तियाँ थीं: उन्होंने ख़ाली जगहें छोड़ीं और एका-ऐलुमिनियम तथा एका-सिलिकॉन के गुणधर्म बताए, जो दशक भर बाद गैलियम और जर्मेनियम बनकर आए।",
+          mr: "मेंडेलिव्हची खरी कामगिरी क्रम नव्हे तर रिकाम्या जागा: त्याने जागा मोकळ्या सोडल्या आणि एका-ॲल्युमिनियम व एका-सिलिकॉनचे गुणधर्म सांगितले, जे दशकभराने गॅलियम आणि जर्मेनियम बनून आले.",
+        },
+        pair: {
+          left: {
+            en: "Argon before potassium, though it weighs more",
+            hi: "पोटैशियम से पहले आर्गन, यद्यपि वह भारी है",
+            mr: "पोटॅशियमच्या आधी आर्गॉन, जरी ते जड असले तरी",
+          },
+          right: {
+            en: "the modern periodic law",
+            hi: "आधुनिक आवर्त नियम",
+            mr: "आधुनिक आवर्त नियम",
+          },
+        },
+      },
+      {
+        id: "effective-nuclear-charge",
+        name: {
+          en: "Effective nuclear charge",
+          hi: "प्रभावी नाभिकीय आवेश",
+          mr: "परिणामी केंद्रकीय भार",
+        },
+        kind: "cause",
+        prompt: {
+          en: "Sodium's nucleus carries eleven positive charges, but its outermost electron behaves as though pulled by rather less than three, because the ten inner electrons stand between them. Which quantity is this?",
+          hi: "सोडियम का नाभिक ग्यारह धन आवेश ढोता है, पर उसका बाहरी इलेक्ट्रॉन ऐसे व्यवहार करता है मानो उसे तीन से भी कम खींच रहे हों, क्योंकि दस भीतरी इलेक्ट्रॉन उनके बीच खड़े हैं। यह कौन-सी राशि है?",
+          mr: "सोडियमचे केंद्रक अकरा धन भार वाहते, पण त्याचा बाहेरचा इलेक्ट्रॉन असा वागतो जणू त्याला तिनाहूनही कमी ओढत असावेत, कारण दहा आतले इलेक्ट्रॉन त्यांच्यामध्ये उभे आहेत. ही कोणती राशी?",
+        },
+        statement: {
+          en: "The effective nuclear charge is the nuclear charge reduced by the screening of the inner electrons, and it is what an outer electron actually experiences rather than the full charge Z.",
+          hi: "प्रभावी नाभिकीय आवेश वह नाभिकीय आवेश है जो भीतरी इलेक्ट्रॉनों के परिरक्षण से घट जाता है, और बाहरी इलेक्ट्रॉन पूरा आवेश Z नहीं बल्कि यही वस्तुतः अनुभव करता है।",
+          mr: "परिणामी केंद्रकीय भार म्हणजे आतल्या इलेक्ट्रॉनांच्या आवरणाने घटलेला केंद्रकीय भार, आणि बाहेरचा इलेक्ट्रॉन पूर्ण भार Z नव्हे तर हाच प्रत्यक्षात अनुभवतो.",
+        },
+        detail: {
+          en: "It explains almost every trend in the table at once: it rises steadily across a period because protons are added while the shell stays the same, and it barely changes down a group.",
+          hi: "यह सारणी की लगभग हर प्रवृत्ति एक साथ समझाता है: वह आवर्त में लगातार बढ़ता है क्योंकि प्रोटॉन जुड़ते हैं जबकि कोश वही रहता है, और वर्ग में नीचे जाते हुए वह मुश्किल से बदलता है।",
+          mr: "हे सारणीतील जवळपास प्रत्येक कल एकाच वेळी समजावते: तो आवर्तात सतत वाढतो कारण प्रोटॉन जोडले जातात तर कवच तेच राहते, आणि गटात खाली जाताना तो जेमतेम बदलतो.",
+        },
+        extra: {
+          en: "Screening is not equally effective for every kind of orbital: s electrons penetrate closer to the nucleus than p, and d and f electrons screen poorly, which is why the lanthanides contract as they do.",
+          hi: "परिरक्षण हर क़िस्म के कक्षक के लिए समान रूप से असरदार नहीं: s इलेक्ट्रॉन p की तुलना में नाभिक के पास तक घुसते हैं, और d तथा f इलेक्ट्रॉन कमज़ोर परिरक्षण करते हैं, इसीलिए लैंथेनाइड वैसे सिकुड़ते हैं जैसे सिकुड़ते हैं।",
+          mr: "आवरण प्रत्येक प्रकारच्या कक्षकासाठी सारखेच प्रभावी नाही: s इलेक्ट्रॉन p च्या तुलनेत केंद्रकाजवळ शिरतात, आणि d व f इलेक्ट्रॉन कमकुवत आवरण करतात, म्हणूनच लॅन्थॅनाइड जसे आकुंचतात तसे आकुंचतात.",
+        },
+        pair: {
+          left: {
+            en: "Eleven protons that feel like fewer than three",
+            hi: "ग्यारह प्रोटॉन जो तीन से भी कम लगते हैं",
+            mr: "अकरा प्रोटॉन जे तिनाहूनही कमी वाटतात",
+          },
+          right: {
+            en: "effective nuclear charge",
+            hi: "प्रभावी नाभिकीय आवेश",
+            mr: "परिणामी केंद्रकीय भार",
+          },
+        },
+      },
+      {
+        id: "trend-in-atomic-radius",
+        name: {
+          en: "The trend in atomic radius",
+          hi: "परमाणु त्रिज्या की प्रवृत्ति",
+          mr: "अणुत्रिज्येचा कल",
+        },
+        kind: "trend",
+        prompt: {
+          en: "Adding electrons ought to make an atom bigger, and yet fluorine with nine of them is less than half the size of lithium with three — because they are going into the same shell while the nucleus keeps growing. Which trend is this?",
+          hi: "इलेक्ट्रॉन जोड़ने से परमाणु बड़ा होना चाहिए, फिर भी नौ इलेक्ट्रॉन वाला फ़्लुओरीन तीन वाले लिथियम के आधे से भी छोटा है — क्योंकि वे उसी कोश में जा रहे हैं जबकि नाभिक बढ़ता जाता है। यह कौन-सी प्रवृत्ति है?",
+          mr: "इलेक्ट्रॉन जोडल्याने अणू मोठा व्हायला हवा, तरीही नऊ इलेक्ट्रॉन असलेला फ्लोरिन तीन असलेल्या लिथियमच्या निम्म्याहूनही लहान — कारण ते त्याच कवचात जात आहेत तर केंद्रक वाढतच जाते. हा कोणता कल?",
+        },
+        statement: {
+          en: "Atomic radius decreases across a period as the effective nuclear charge rises with no new shell added, and increases down a group as each element gains a shell further out.",
+          hi: "आवर्त में परमाणु त्रिज्या घटती है क्योंकि प्रभावी नाभिकीय आवेश बढ़ता है और कोई नया कोश नहीं जुड़ता, और वर्ग में नीचे बढ़ती है क्योंकि हर तत्व और बाहर एक कोश पाता है।",
+          mr: "आवर्तात अणुत्रिज्या घटते कारण परिणामी केंद्रकीय भार वाढतो आणि नवे कवच जोडले जात नाही, आणि गटात खाली वाढते कारण प्रत्येक मूलद्रव्याला आणखी बाहेर एक कवच मिळते.",
+        },
+        detail: {
+          en: "A cation is always smaller than its parent atom and an anion always larger, because losing an electron leaves the same nucleus pulling on fewer and gaining one adds repulsion without adding charge.",
+          hi: "धनायन सदा अपने मूल परमाणु से छोटा और ऋणायन सदा बड़ा होता है, क्योंकि इलेक्ट्रॉन खोने पर वही नाभिक कम इलेक्ट्रॉनों को खींचता है और पाने पर आवेश बढ़ाए बिना प्रतिकर्षण जुड़ जाता है।",
+          mr: "धनायन नेहमी आपल्या मूळ अणूहून लहान आणि ऋणायन नेहमी मोठा, कारण इलेक्ट्रॉन गमावल्यावर तेच केंद्रक कमी इलेक्ट्रॉनांना ओढते आणि मिळवल्यावर भार न वाढवता प्रतिकर्षण जोडले जाते.",
+        },
+        extra: {
+          en: "In an isoelectronic series — ions with the same electron count — the radius falls steadily as nuclear charge rises, so N³⁻ is much larger than Mg²⁺ although both hold ten electrons.",
+          hi: "समइलेक्ट्रॉनी श्रेणी में — समान इलेक्ट्रॉन-गिनती वाले आयन — नाभिकीय आवेश बढ़ने पर त्रिज्या लगातार घटती है, अतः N³⁻, Mg²⁺ से कहीं बड़ा है यद्यपि दोनों दस इलेक्ट्रॉन रखते हैं।",
+          mr: "समइलेक्ट्रॉनी मालिकेत — समान इलेक्ट्रॉन-मोजणीचे आयन — केंद्रकीय भार वाढताना त्रिज्या सतत घटते, म्हणून N³⁻ हा Mg²⁺ हून कितीतरी मोठा जरी दोघे दहा इलेक्ट्रॉन ठेवतात.",
+        },
+        pair: {
+          left: {
+            en: "Nine electrons in a smaller atom than three",
+            hi: "तीन वाले से छोटे परमाणु में नौ इलेक्ट्रॉन",
+            mr: "तीन असलेल्याहून लहान अणूत नऊ इलेक्ट्रॉन",
+          },
+          right: {
+            en: "the trend in atomic radius",
+            hi: "परमाणु त्रिज्या की प्रवृत्ति",
+            mr: "अणुत्रिज्येचा कल",
+          },
+        },
+      },
+      {
+        id: "ionisation-enthalpy",
+        name: {
+          en: "Ionisation enthalpy",
+          hi: "आयनन एन्थैल्पी",
+          mr: "आयनीकरण एन्थाल्पी",
+        },
+        kind: "trend",
+        prompt: {
+          en: "Sodium gives up its first electron for 496 kJ per mole and refuses the second until nine times that is offered, because the second would have to be prised out of a completed shell. Which quantity is this?",
+          hi: "सोडियम अपना पहला इलेक्ट्रॉन प्रति मोल 496 kJ में दे देता है और दूसरा तब तक नहीं देता जब तक उसका नौ गुना न दिया जाए, क्योंकि दूसरे को पूर्ण कोश से उखाड़ना पड़ेगा। यह कौन-सी राशि है?",
+          mr: "सोडियम आपला पहिला इलेक्ट्रॉन प्रति मोल 496 kJ ला देऊन टाकतो आणि दुसरा तोवर देत नाही जोवर त्याच्या नऊपट दिले जात नाही, कारण दुसरा पूर्ण कवचातून उपटावा लागेल. ही कोणती राशी?",
+        },
+        statement: {
+          en: "Ionisation enthalpy is the energy needed to remove the most loosely held electron from a gaseous atom, and it rises across a period and falls down a group.",
+          hi: "आयनन एन्थैल्पी गैसीय परमाणु से सबसे ढीले बँधे इलेक्ट्रॉन को हटाने के लिए चाहिए ऊर्जा है, और वह आवर्त में बढ़ती और वर्ग में नीचे घटती है।",
+          mr: "आयनीकरण एन्थाल्पी म्हणजे वायुरूप अणूतून सर्वांत सैल धरलेला इलेक्ट्रॉन काढायला लागणारी ऊर्जा, आणि ती आवर्तात वाढते आणि गटात खाली घटते.",
+        },
+        detail: {
+          en: "Successive values always rise, and a sudden jump between two of them reveals a completed shell — which is how the group number of an unknown element can be read straight off its ionisation series.",
+          hi: "क्रमिक मान सदा बढ़ते हैं, और उनमें से दो के बीच अचानक छलाँग पूर्ण कोश उजागर करती है — इसी से किसी अज्ञात तत्व का वर्ग-अंक उसकी आयनन-श्रेणी से सीधे पढ़ा जा सकता है।",
+          mr: "क्रमवार मूल्ये नेहमी वाढतात, आणि त्यांतील दोघांमधली अचानक उडी पूर्ण कवच उघड करते — यामुळेच अज्ञात मूलद्रव्याचा गट-अंक त्याच्या आयनीकरण-मालिकेवरून थेट वाचता येतो.",
+        },
+        extra: {
+          en: "The trend across a period is not perfectly smooth: boron dips below beryllium because its outer electron is in a higher p orbital, and oxygen dips below nitrogen because pairing two electrons in one p orbital costs repulsion.",
+          hi: "आवर्त की प्रवृत्ति पूरी तरह चिकनी नहीं: बोरॉन बेरिलियम से नीचे गिरता है क्योंकि उसका बाहरी इलेक्ट्रॉन ऊँचे p कक्षक में है, और ऑक्सीजन नाइट्रोजन से नीचे क्योंकि एक p कक्षक में दो इलेक्ट्रॉन जोड़ने पर प्रतिकर्षण चुकाना पड़ता है।",
+          mr: "आवर्तातील कल पूर्णपणे गुळगुळीत नाही: बोरॉन बेरिलियमच्या खाली येतो कारण त्याचा बाहेरचा इलेक्ट्रॉन उंच p कक्षकात आहे, आणि ऑक्सिजन नायट्रोजनच्या खाली कारण एका p कक्षकात दोन इलेक्ट्रॉन जोडल्यास प्रतिकर्षण द्यावे लागते.",
+        },
+        pair: {
+          left: {
+            en: "A jump that gives away the group number",
+            hi: "वह छलाँग जो वर्ग-अंक बता देती है",
+            mr: "ती उडी जी गट-अंक सांगून टाकते",
+          },
+          right: {
+            en: "ionisation enthalpy",
+            hi: "आयनन एन्थैल्पी",
+            mr: "आयनीकरण एन्थाल्पी",
+          },
+        },
+      },
+      {
+        id: "electronegativity",
+        name: {
+          en: "Electronegativity",
+          hi: "विद्युत्-ऋणात्मकता",
+          mr: "विद्युतऋणता",
+        },
+        kind: "trend",
+        prompt: {
+          en: "Fluorine is given 4.0 and caesium 0.7 on a scale with no units at all, and the difference between two atoms' values predicts whether the bond between them will be ionic or covalent. Which property is this?",
+          hi: "बिना किसी मात्रक के पैमाने पर फ़्लुओरीन को 4.0 और सीज़ियम को 0.7 दिया जाता है, और दो परमाणुओं के मानों का अंतर बताता है कि उनके बीच का बंध आयनिक होगा या सहसंयोजक। यह कौन-सा गुण है?",
+          mr: "कोणत्याही एककाशिवाय असलेल्या मापनश्रेणीवर फ्लोरिनला 4.0 आणि सीझियमला 0.7 दिले जाते, आणि दोन अणूंच्या मूल्यांतील फरक त्यांच्यातील बंध आयनिक असेल की सहसंयुज हे सांगतो. हा कोणता गुणधर्म?",
+        },
+        statement: {
+          en: "Electronegativity is an atom's tendency to attract a shared electron pair towards itself in a bond, and unlike ionisation enthalpy it is a property of an atom in a molecule rather than of an isolated one.",
+          hi: "विद्युत्-ऋणात्मकता बंध में साझा इलेक्ट्रॉन-युग्म को अपनी ओर खींचने की परमाणु की प्रवृत्ति है, और आयनन एन्थैल्पी के विपरीत वह अलग-थलग परमाणु का नहीं बल्कि अणु में बैठे परमाणु का गुण है।",
+          mr: "विद्युतऋणता म्हणजे बंधात वाटलेली इलेक्ट्रॉन जोडी स्वतःकडे ओढण्याची अणूची प्रवृत्ती, आणि आयनीकरण एन्थाल्पीच्या उलट तो वेगळ्या अणूचा नव्हे तर रेणूतील अणूचा गुणधर्म.",
+        },
+        detail: {
+          en: "It has no unit and no direct measurement; Pauling's scale was constructed from bond energies, and it is useful precisely because it compresses a great deal of chemistry into one number per element.",
+          hi: "उसका न कोई मात्रक है न कोई सीधा माप; पॉलिंग का पैमाना बंध-ऊर्जाओं से बनाया गया, और वह ठीक इसलिए उपयोगी है कि प्रति तत्व एक संख्या में बहुत सारा रसायन दबा देता है।",
+          mr: "तिला ना कोणते एकक ना कोणते थेट माप; पॉलिंगची मापनश्रेणी बंध-ऊर्जांतून बनवली, आणि ती नेमकी यासाठी उपयुक्त की प्रति मूलद्रव्य एका संख्येत बरेच रसायन दाबते.",
+        },
+        extra: {
+          en: "A difference below about 0.4 gives a nearly non-polar bond, between 0.4 and 1.7 a polar covalent one, and above 1.7 a largely ionic one — a rule of thumb with no sharp boundaries anywhere in it.",
+          hi: "लगभग 0.4 से कम अंतर लगभग अध्रुवीय बंध देता है, 0.4 और 1.7 के बीच ध्रुवीय सहसंयोजक, और 1.7 से ऊपर अधिकतर आयनिक — ऐसा अंगूठा-नियम जिसमें कहीं कोई तीखी सीमा नहीं।",
+          mr: "सुमारे 0.4 हून कमी फरक जवळपास अध्रुवीय बंध देतो, 0.4 आणि 1.7 दरम्यान ध्रुवीय सहसंयुज, आणि 1.7 हून वर बहुतांश आयनिक — असा अंगठा-नियम ज्यात कुठेही तीक्ष्ण सीमा नाही.",
+        },
+        pair: {
+          left: {
+            en: "A scale with no units and no direct measurement",
+            hi: "ऐसा पैमाना जिसका न मात्रक है न सीधा माप",
+            mr: "अशी मापनश्रेणी जिला ना एकक ना थेट माप",
+          },
+          right: {
+            en: "electronegativity",
+            hi: "विद्युत्-ऋणात्मकता",
+            mr: "विद्युतऋणता",
+          },
+        },
+      },
+      {
+        id: "diagonal-relationship",
+        name: {
+          en: "The diagonal relationship",
+          hi: "विकर्ण संबंध",
+          mr: "कर्ण संबंध",
+        },
+        kind: "cause",
+        prompt: {
+          en: "Lithium behaves far more like magnesium than like sodium, and beryllium like aluminium, because moving one place right and one place down leaves the size and charge density almost unchanged. Which pattern is this?",
+          hi: "लिथियम सोडियम की तुलना में मैग्नीशियम जैसा कहीं अधिक व्यवहार करता है, और बेरिलियम ऐलुमिनियम जैसा, क्योंकि एक जगह दाएँ और एक जगह नीचे जाने पर आकार तथा आवेश-घनत्व लगभग अपरिवर्तित रह जाते हैं। यह कौन-सा प्रतिरूप है?",
+          mr: "लिथियम सोडियमपेक्षा मॅग्नेशियमसारखे कितीतरी अधिक वागते, आणि बेरिलियम ॲल्युमिनियमसारखे, कारण एक जागा उजवीकडे आणि एक जागा खाली गेल्यास आकार व भार-घनता जवळपास अपरिवर्तित राहतात. हा कोणता आकृतिबंध?",
+        },
+        statement: {
+          en: "The diagonal relationship is the resemblance between an element and the one below and to its right, and it arises because the size decrease across a period is cancelled by the increase down a group.",
+          hi: "विकर्ण संबंध किसी तत्व और उसके नीचे-दाएँ वाले तत्व की समानता है, और वह इसलिए उठता है कि आवर्त में आकार की कमी वर्ग में नीचे की वृद्धि से कट जाती है।",
+          mr: "कर्ण संबंध म्हणजे एखादे मूलद्रव्य आणि त्याच्या खाली-उजवीकडचे मूलद्रव्य यांतील साम्य, आणि तो यामुळे उद्भवतो की आवर्तातील आकाराची घट गटात खालच्या वाढीने कापली जाते.",
+        },
+        detail: {
+          en: "It is why lithium alone among the alkali metals forms a nitride and a carbonate that decomposes on heating, and why beryllium's oxide is amphoteric like aluminium's rather than basic.",
+          hi: "इसी से क्षार धातुओं में केवल लिथियम नाइट्राइड बनाता है और ऐसा कार्बोनेट जो गरम करने पर विघटित हो जाए, और इसी से बेरिलियम का ऑक्साइड क्षारकीय नहीं बल्कि ऐलुमिनियम जैसा उभयधर्मी है।",
+          mr: "म्हणूनच अल्कधर्मी धातूंत केवळ लिथियम नायट्राइड बनवते आणि असे कार्बोनेट जे तापवल्यावर विघटित होते, आणि म्हणूनच बेरिलियमचे ऑक्साइड आम्लारीधर्मी नव्हे तर ॲल्युमिनियमसारखे उभयधर्मी.",
+        },
+        extra: {
+          en: "It fades away after the second period, because by then the size changes across and down have stopped cancelling so neatly and the d electrons have entered the accounting.",
+          hi: "दूसरे आवर्त के बाद यह फीका पड़ जाता है, क्योंकि तब तक आर-पार और नीचे के आकार-परिवर्तन इतनी सफ़ाई से कटना बंद कर देते हैं और d इलेक्ट्रॉन हिसाब में आ जाते हैं।",
+          mr: "दुसऱ्या आवर्तानंतर तो फिकट होतो, कारण तोवर आडवे आणि खालचे आकार-बदल इतक्या नीटपणे कापले जाणे थांबतात आणि d इलेक्ट्रॉन हिशोबात येतात.",
+        },
+        pair: {
+          left: {
+            en: "Lithium resembling magnesium more than sodium",
+            hi: "सोडियम से अधिक मैग्नीशियम जैसा लिथियम",
+            mr: "सोडियमहून अधिक मॅग्नेशियमसारखे लिथियम",
+          },
+          right: {
+            en: "the diagonal relationship",
+            hi: "विकर्ण संबंध",
+            mr: "कर्ण संबंध",
+          },
+        },
+      },
+      /*F3C*/
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "The successive ionisation enthalpies of an element, in kJ/mol, are 738, 1451, 7733 and 10540. A student says the element is in group 1 because the first value is the smallest. Identify the group correctly and explain the reasoning.",
+          hi: "किसी तत्व की क्रमिक आयनन एन्थैल्पियाँ, kJ/mol में, 738, 1451, 7733 और 10540 हैं। एक विद्यार्थी कहता है कि तत्व वर्ग 1 का है क्योंकि पहला मान सबसे छोटा है। वर्ग ठीक-ठीक पहचानो और तर्क समझाओ।",
+          mr: "एका मूलद्रव्याच्या क्रमवार आयनीकरण एन्थाल्पी, kJ/mol मध्ये, 738, 1451, 7733 आणि 10540 आहेत. एक विद्यार्थी म्हणतो की मूलद्रव्य गट 1 चे आहे कारण पहिले मूल्य सर्वांत लहान. गट नेमका ओळखा आणि युक्तिवाद समजावा.",
+        },
+        choices: [
+          {
+            en: "It is in group 2. What identifies the group is not the size of the first value but where the SUDDEN JUMP falls: 738 to 1451 is an ordinary rise, but 1451 to 7733 is more than fivefold. Two electrons come off with moderate difficulty and the third meets a completed noble-gas shell, so the atom had exactly two valence electrons. The element is magnesium",
+            hi: "वह वर्ग 2 का है। वर्ग की पहचान पहले मान का आकार नहीं बल्कि यह है कि अचानक छलाँग कहाँ पड़ती है: 738 से 1451 साधारण वृद्धि है, पर 1451 से 7733 पाँच गुने से अधिक। दो इलेक्ट्रॉन मध्यम कठिनाई से निकलते हैं और तीसरा पूर्ण उत्कृष्ट-गैस कोश से टकराता है, अतः परमाणु के पास ठीक दो संयोजी इलेक्ट्रॉन थे। तत्व मैग्नीशियम है",
+            mr: "ते गट 2 चे आहे. गटाची ओळख पहिल्या मूल्याचा आकार नव्हे तर अचानक उडी कुठे पडते ही: 738 ते 1451 ही सामान्य वाढ, पण 1451 ते 7733 ही पाचपटीहून अधिक. दोन इलेक्ट्रॉन मध्यम कष्टाने निघतात आणि तिसरा पूर्ण निष्क्रिय-वायू कवचाला भिडतो, म्हणून अणूकडे नेमके दोन संयुजा इलेक्ट्रॉन होते. मूलद्रव्य मॅग्नेशियम आहे",
+          },
+          {
+            en: "The student is right: it is in group 1, since the smallest ionisation enthalpy always belongs to the most reactive metals",
+            hi: "विद्यार्थी सही है: वह वर्ग 1 का है, क्योंकि सबसे छोटी आयनन एन्थैल्पी सदा सबसे क्रियाशील धातुओं की होती है",
+            mr: "विद्यार्थी बरोबर: ते गट 1 चे, कारण सर्वांत लहान आयनीकरण एन्थाल्पी नेहमी सर्वांत क्रियाशील धातूंची असते",
+          },
+          {
+            en: "It is in group 4, because four ionisation enthalpies have been listed",
+            hi: "वह वर्ग 4 का है, क्योंकि चार आयनन एन्थैल्पियाँ सूचीबद्ध हैं",
+            mr: "ते गट 4 चे, कारण चार आयनीकरण एन्थाल्पी यादीत आहेत",
+          },
+          {
+            en: "The group cannot be found from ionisation enthalpies, which depend only on atomic size and not on electron configuration",
+            hi: "आयनन एन्थैल्पियों से वर्ग नहीं निकाला जा सकता, जो केवल परमाणु आकार पर निर्भर हैं, इलेक्ट्रॉन विन्यास पर नहीं",
+            mr: "आयनीकरण एन्थाल्पींवरून गट काढता येत नाही, ज्या केवळ अणूच्या आकारावर अवलंबून, इलेक्ट्रॉन विन्यासावर नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Look at the ratios rather than the values, because a single number in isolation says almost nothing. From the first to the second, 1451/738 = 1.97: not quite a doubling, and every successive ionisation is harder than the last simply because the ion left behind is more positively charged and holds the remaining electrons more tightly. That much is routine. From the second to the third, 7733/1451 = 5.33. That is not a routine rise, and something structural has changed. What has changed is which shell the electron is coming from. The first two electrons were the outermost ones, sitting in the highest occupied shell with substantial screening beneath them. Once both have gone, the ion has a noble-gas configuration, and the third electron must be prised out of a complete inner shell — closer to the nucleus, poorly screened, and part of a particularly stable arrangement. It costs several times as much. So the number of electrons removed before the jump is the number of valence electrons the atom had, and that is the group number. Two came off easily, so the element is in group 2. With a first ionisation enthalpy of 738 kJ/mol it is magnesium. The student's error is worth naming precisely. A small first ionisation enthalpy does indicate a metal, and group 1 metals do have the smallest values in their periods — but 'smallest in its period' is a comparison across elements, and here only one element is on the table. There is nothing to compare 738 with. The information about the group is not in the first value at all; it is in the pattern of the sequence, which is why the question gives four numbers rather than one. Two applications follow. First, this is how the group of an unknown element is determined experimentally, and the method is robust: the jump is so large that no measurement error could hide it. Second, the same argument explains why the common ion of an element is what it is. Magnesium forms Mg²⁺ and never Mg³⁺, not because a third electron is impossible to remove but because no chemical reaction releases 7733 kJ/mol to pay for it. Group 1 stops at +1 and group 13 at +3 for exactly the same reason. (The third answer counts the data rather than reading it, and the fourth denies the configuration dependence on which the whole method rests.)",
+          hi: "मानों के बजाय अनुपात देखो, क्योंकि अकेली संख्या लगभग कुछ नहीं कहती। पहले से दूसरे तक, 1451/738 = 1.97: दुगुना भी नहीं, और हर क्रमिक आयनन पिछले से कठिन होता ही है क्योंकि पीछे बचा आयन अधिक धनावेशित है और शेष इलेक्ट्रॉनों को अधिक कसकर पकड़ता है। इतना नित्य है। दूसरे से तीसरे तक, 7733/1451 = 5.33. यह नित्य वृद्धि नहीं, और कुछ संरचनात्मक बदल चुका है। बदला यह है कि इलेक्ट्रॉन किस कोश से आ रहा है। पहले दो इलेक्ट्रॉन बाहरी थे, सबसे ऊँचे भरे कोश में बैठे, जिनके नीचे पर्याप्त परिरक्षण था। दोनों के जाते ही आयन का विन्यास उत्कृष्ट-गैस जैसा हो जाता है, और तीसरे इलेक्ट्रॉन को पूर्ण भीतरी कोश से उखाड़ना पड़ता है — नाभिक के अधिक पास, कमज़ोर परिरक्षित, और विशेष रूप से स्थिर व्यवस्था का भाग। वह कई गुना महँगा पड़ता है। अतः छलाँग से पहले हटाए गए इलेक्ट्रॉनों की संख्या ही परमाणु के संयोजी इलेक्ट्रॉनों की संख्या है, और वही वर्ग-अंक है। दो आसानी से निकले, अतः तत्व वर्ग 2 का है। 738 kJ/mol की पहली आयनन एन्थैल्पी के साथ वह मैग्नीशियम है। विद्यार्थी की भूल ठीक-ठीक नाम लेने योग्य है। छोटी पहली आयनन एन्थैल्पी धातु का संकेत देती ही है, और वर्ग 1 की धातुओं के अपने आवर्तों में सबसे छोटे मान होते ही हैं — पर 'अपने आवर्त में सबसे छोटा' तत्वों के बीच की तुलना है, और यहाँ मेज़ पर केवल एक तत्व है। 738 की तुलना करने को कुछ है ही नहीं। वर्ग की सूचना पहले मान में है ही नहीं; वह अनुक्रम के प्रतिरूप में है, इसीलिए प्रश्न एक के बजाय चार संख्याएँ देता है। दो अनुप्रयोग निकलते हैं। पहला, अज्ञात तत्व का वर्ग प्रयोग से इसी तरह तय होता है, और विधि दृढ़ है: छलाँग इतनी बड़ी है कि कोई माप-त्रुटि उसे छिपा नहीं सकती। दूसरा, वही तर्क समझाता है कि किसी तत्व का सामान्य आयन वही क्यों है जो है। मैग्नीशियम Mg²⁺ बनाता है, Mg³⁺ कभी नहीं, इसलिए नहीं कि तीसरा इलेक्ट्रॉन हटाना असंभव है बल्कि इसलिए कि कोई रासायनिक अभिक्रिया उसे चुकाने को 7733 kJ/mol नहीं छोड़ती। वर्ग 1 +1 पर और वर्ग 13 +3 पर ठीक इसी कारण रुक जाते हैं। (तीसरा उत्तर आँकड़े पढ़ने के बजाय गिनता है, और चौथा उस विन्यास-निर्भरता को नकारता है जिस पर पूरी विधि टिकी है।)",
+          mr: "मूल्यांऐवजी गुणोत्तरे पाहा, कारण एकटी संख्या जवळपास काहीच सांगत नाही. पहिल्यापासून दुसऱ्यापर्यंत, 1451/738 = 1.97: दुप्पटही नाही, आणि प्रत्येक क्रमवार आयनीकरण मागच्याहून कठीण असतेच कारण मागे उरलेला आयन अधिक धनभारित आणि उरलेले इलेक्ट्रॉन अधिक घट्ट धरतो. इतके नेहमीचे. दुसऱ्यापासून तिसऱ्यापर्यंत, 7733/1451 = 5.33. ही नेहमीची वाढ नव्हे, आणि काहीतरी संरचनात्मक बदलले आहे. बदलले हे की इलेक्ट्रॉन कोणत्या कवचातून येत आहे. पहिले दोन इलेक्ट्रॉन बाहेरचे होते, सर्वांत उंच भरलेल्या कवचात बसलेले, ज्यांच्याखाली पुरेसे आवरण होते. दोघेही गेल्यावर आयनाचा विन्यास निष्क्रिय-वायूसारखा होतो, आणि तिसरा इलेक्ट्रॉन पूर्ण आतल्या कवचातून उपटावा लागतो — केंद्रकाच्या अधिक जवळ, कमकुवत आवरलेला, आणि विशेष स्थिर मांडणीचा भाग. तो कैकपट महाग पडतो. म्हणून उडीच्या आधी काढलेल्या इलेक्ट्रॉनांची संख्या हीच अणूच्या संयुजा इलेक्ट्रॉनांची संख्या, आणि तोच गट-अंक. दोन सहज निघाले, म्हणून मूलद्रव्य गट 2 चे. 738 kJ/mol च्या पहिल्या आयनीकरण एन्थाल्पीसह ते मॅग्नेशियम आहे. विद्यार्थ्याची चूक नेमके नाव घेण्याजोगी. लहान पहिली आयनीकरण एन्थाल्पी धातूचा संकेत देतेच, आणि गट 1 च्या धातूंची त्यांच्या आवर्तांत सर्वांत लहान मूल्ये असतातच — पण 'आपल्या आवर्तात सर्वांत लहान' ही मूलद्रव्यांमधली तुलना, आणि इथे मेजावर केवळ एकच मूलद्रव्य आहे. 738 शी तुलना करायला काहीच नाही. गटाची माहिती पहिल्या मूल्यात नाहीच; ती अनुक्रमाच्या आकृतिबंधात आहे, म्हणूनच प्रश्न एकाऐवजी चार संख्या देतो. दोन उपयोजने निघतात. पहिले, अज्ञात मूलद्रव्याचा गट प्रयोगाने असाच ठरतो, आणि पद्धत भक्कम: उडी इतकी मोठी की कोणतीही माप-त्रुटी ती लपवू शकत नाही. दुसरे, तोच युक्तिवाद समजावतो की एखाद्या मूलद्रव्याचा नेहमीचा आयन तोच का आहे. मॅग्नेशियम Mg²⁺ बनवते, Mg³⁺ कधीच नाही, तिसरा इलेक्ट्रॉन काढणे अशक्य म्हणून नव्हे तर कोणतीही रासायनिक अभिक्रिया तो भरायला 7733 kJ/mol सोडत नाही म्हणून. गट 1 हा +1 वर आणि गट 13 हा +3 वर नेमक्या याच कारणाने थांबतात. (तिसरे उत्तर आकडेवारी वाचण्याऐवजी मोजते, आणि चौथे ज्या विन्यास-अवलंबितेवर अख्खी पद्धत टेकली आहे ती नाकारते.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Across period 2 the first ionisation enthalpy generally rises, and yet boron's is lower than beryllium's and oxygen's is lower than nitrogen's. A student concludes the trend is unreliable. Explain both dips and say what they reveal.",
+          hi: "आवर्त 2 में पहली आयनन एन्थैल्पी आम तौर पर बढ़ती है, फिर भी बोरॉन की बेरिलियम से कम है और ऑक्सीजन की नाइट्रोजन से। एक विद्यार्थी निष्कर्ष निकालता है कि प्रवृत्ति अविश्वसनीय है। दोनों गिरावटें समझाओ और बताओ वे क्या उजागर करती हैं।",
+          mr: "आवर्त 2 मध्ये पहिली आयनीकरण एन्थाल्पी सर्वसाधारणपणे वाढते, तरीही बोरॉनची बेरिलियमहून कमी आणि ऑक्सिजनची नायट्रोजनहून. एक विद्यार्थी निष्कर्ष काढतो की कल अविश्वसनीय आहे. दोन्ही घटी समजावा आणि त्या काय उघड करतात ते सांगा.",
+        },
+        choices: [
+          {
+            en: "Both dips are predicted, not anomalies. Beryllium's outer electron is in a filled 2s orbital while boron's is a lone 2p, which is higher in energy and better screened, so boron gives it up more easily. Nitrogen has three 2p electrons singly occupying three orbitals while oxygen's fourth must pair with one of them, and that pairing costs repulsion energy, so oxygen loses it more easily. The dips confirm the sub-shell structure rather than undermining the trend",
+            hi: "दोनों गिरावटें भविष्यवाणी की गई हैं, विसंगतियाँ नहीं। बेरिलियम का बाहरी इलेक्ट्रॉन भरे 2s कक्षक में है जबकि बोरॉन का अकेला 2p, जो ऊर्जा में ऊँचा और बेहतर परिरक्षित है, अतः बोरॉन उसे अधिक आसानी से दे देता है। नाइट्रोजन के तीन 2p इलेक्ट्रॉन तीन कक्षकों में एक-एक बैठे हैं जबकि ऑक्सीजन के चौथे को उनमें से एक के साथ जोड़ी बनानी पड़ती है, और उस जोड़ी में प्रतिकर्षण-ऊर्जा चुकानी पड़ती है, अतः ऑक्सीजन उसे अधिक आसानी से खोता है। गिरावटें प्रवृत्ति को कमज़ोर नहीं करतीं बल्कि उपकोश-संरचना की पुष्टि करती हैं",
+            mr: "दोन्ही घटी भाकीत केलेल्या आहेत, विसंगती नव्हेत. बेरिलियमचा बाहेरचा इलेक्ट्रॉन भरलेल्या 2s कक्षकात तर बोरॉनचा एकटा 2p, जो ऊर्जेत उंच आणि चांगला आवरलेला, म्हणून बोरॉन तो अधिक सहज देतो. नायट्रोजनचे तीन 2p इलेक्ट्रॉन तीन कक्षकांत एकेक बसलेले तर ऑक्सिजनच्या चौथ्याला त्यांतील एकाशी जोडी करावी लागते, आणि त्या जोडीत प्रतिकर्षण-ऊर्जा द्यावी लागते, म्हणून ऑक्सिजन तो अधिक सहज गमावतो. घटी कल कमकुवत करत नाहीत तर उपकवच-रचनेची पुष्टी करतात",
+          },
+          {
+            en: "The student is right: ionisation enthalpies do not follow any reliable pattern, and the trend is a rough generalisation with many exceptions",
+            hi: "विद्यार्थी सही है: आयनन एन्थैल्पियाँ किसी विश्वसनीय प्रतिरूप का पालन नहीं करतीं, और प्रवृत्ति अनेक अपवादों वाली मोटी सामान्यीकरण है",
+            mr: "विद्यार्थी बरोबर: आयनीकरण एन्थाल्पी कोणत्याही विश्वासार्ह आकृतिबंधाचे पालन करत नाहीत, आणि कल अनेक अपवादांचे ढोबळ सामान्यीकरण",
+          },
+          {
+            en: "The dips are experimental errors, since theory predicts a perfectly smooth rise across every period",
+            hi: "गिरावटें प्रायोगिक त्रुटियाँ हैं, क्योंकि सिद्धांत हर आवर्त में पूरी तरह चिकनी वृद्धि बताता है",
+            mr: "घटी प्रायोगिक त्रुटी आहेत, कारण सिद्धांत प्रत्येक आवर्तात पूर्णपणे गुळगुळीत वाढ सांगतो",
+          },
+          {
+            en: "Both dips are caused by atomic radius increasing at boron and at oxygen, against the general trend of the period",
+            hi: "दोनों गिरावटें बोरॉन और ऑक्सीजन पर परमाणु त्रिज्या के बढ़ने से आती हैं, आवर्त की सामान्य प्रवृत्ति के विरुद्ध",
+            mr: "दोन्ही घटी बोरॉन आणि ऑक्सिजनवर अणुत्रिज्या वाढल्याने येतात, आवर्ताच्या सर्वसाधारण कलाविरुद्ध",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "An exception that a theory predicts is not an exception at all — it is a test the theory has passed — and these two dips are among the best evidence that the sub-shell picture is right. Take the first. Beryllium is 1s²2s², so the electron being removed comes from a filled 2s orbital. Boron is 1s²2s²2p¹, and the electron removed is the lone 2p. Two things make that 2p electron easier to detach. It lies in a higher-energy orbital to begin with, and it is screened not only by the 1s core but by the filled 2s beneath it, so the effective nuclear charge it feels is lower. Both effects push the same way, and boron's first ionisation enthalpy comes out about 3 per cent below beryllium's although its nuclear charge is one greater. Now the second. Nitrogen is 2p³, and by Hund's rule those three electrons occupy the three separate p orbitals singly, all with parallel spins — a half-filled sub-shell, and an arrangement of unusual stability because no two electrons share an orbital and repulsion is minimised. Oxygen is 2p⁴, so its fourth p electron has no empty orbital left and must pair with one already there. Two electrons in the same small orbital repel each other strongly, and that repulsion energy is already 'paid in'. Removing one of the pair recovers it, so oxygen surrenders an electron more readily than nitrogen does, and its first ionisation enthalpy dips below. Notice the shape of the argument in both cases. The general trend comes from effective nuclear charge rising steadily across a period; the dips come from the finer structure of orbitals and spin. Two effects, two scales, and the smaller one occasionally overturns the larger by a few per cent. That is exactly what a good physical theory looks like — a dominant term plus corrections, each with its own reason. Two closing points. First, the same two dips repeat in period 3, at aluminium and at sulphur, and for the same reasons; a genuinely anomalous result would not repeat on schedule. Second, the half-filled stability that lowers oxygen's value is the same effect that makes chromium adopt 3d⁵4s¹ rather than the Aufbau-predicted 3d⁴4s² — the electron configuration and the ionisation trend are the same physics seen from two sides. (The third answer expects a smooth rise no theory has ever predicted, and the fourth invents a radius increase that measurement flatly contradicts.)",
+          hi: "जिस अपवाद की भविष्यवाणी सिद्धांत करे वह अपवाद है ही नहीं — वह ऐसी परीक्षा है जो सिद्धांत ने पास की — और ये दोनों गिरावटें उपकोश-चित्र के सही होने के सर्वोत्तम प्रमाणों में हैं। पहली लो। बेरिलियम 1s²2s² है, अतः हटाया जाने वाला इलेक्ट्रॉन भरे 2s कक्षक से आता है। बोरॉन 1s²2s²2p¹ है, और हटाया गया इलेक्ट्रॉन अकेला 2p है। दो बातें उस 2p इलेक्ट्रॉन को अलग करना आसान बनाती हैं। वह शुरू से ही ऊँची ऊर्जा के कक्षक में है, और उसे केवल 1s क्रोड ही नहीं बल्कि नीचे के भरे 2s ने भी परिरक्षित किया है, अतः वह जो प्रभावी नाभिकीय आवेश महसूस करता है वह कम है। दोनों प्रभाव एक ही ओर धकेलते हैं, और बोरॉन की पहली आयनन एन्थैल्पी बेरिलियम से लगभग 3 प्रतिशत नीचे निकलती है यद्यपि उसका नाभिकीय आवेश एक अधिक है। अब दूसरी। नाइट्रोजन 2p³ है, और हुंड के नियम से वे तीन इलेक्ट्रॉन तीनों अलग p कक्षकों में एक-एक बैठते हैं, सबके चक्रण समांतर — अर्ध-भरा उपकोश, और असामान्य स्थिरता की व्यवस्था क्योंकि कोई दो इलेक्ट्रॉन कक्षक साझा नहीं करते और प्रतिकर्षण न्यूनतम रहता है। ऑक्सीजन 2p⁴ है, अतः उसके चौथे p इलेक्ट्रॉन के लिए कोई ख़ाली कक्षक नहीं बचा और उसे पहले से मौजूद किसी एक के साथ जोड़ी बनानी पड़ती है। एक ही छोटे कक्षक में दो इलेक्ट्रॉन एक-दूसरे को प्रबलता से प्रतिकर्षित करते हैं, और वह प्रतिकर्षण-ऊर्जा पहले ही 'चुकाई जा चुकी' है। जोड़ी में से एक को हटाने पर वह वापस मिलती है, अतः ऑक्सीजन नाइट्रोजन की तुलना में इलेक्ट्रॉन अधिक तत्परता से सौंप देता है, और उसकी पहली आयनन एन्थैल्पी नीचे गिर जाती है। दोनों स्थितियों में तर्क का आकार ध्यान दो। सामान्य प्रवृत्ति आवर्त में प्रभावी नाभिकीय आवेश के लगातार बढ़ने से आती है; गिरावटें कक्षकों और चक्रण की सूक्ष्म संरचना से। दो प्रभाव, दो पैमाने, और छोटा वाला कभी-कभी बड़े को कुछ प्रतिशत से उलट देता है। अच्छा भौतिक सिद्धांत ठीक ऐसा ही दिखता है — एक प्रधान पद और सुधार, हर एक का अपना कारण। दो समापन बिंदु। पहला, वही दोनों गिरावटें आवर्त 3 में ऐलुमिनियम और सल्फ़र पर दोहराती हैं, और उन्हीं कारणों से; सचमुच विसंगत परिणाम समय पर नहीं दोहराता। दूसरा, जो अर्ध-भरी स्थिरता ऑक्सीजन का मान गिराती है वही प्रभाव क्रोमियम को ऑफ़बाउ-अपेक्षित 3d⁴4s² के बजाय 3d⁵4s¹ अपनाने देता है — इलेक्ट्रॉन विन्यास और आयनन प्रवृत्ति एक ही भौतिकी हैं, दो ओर से देखी गई। (तीसरा उत्तर ऐसी चिकनी वृद्धि की अपेक्षा करता है जिसकी भविष्यवाणी किसी सिद्धांत ने कभी नहीं की, और चौथा ऐसी त्रिज्या-वृद्धि गढ़ता है जिसका माप सीधा खंडन करता है।)",
+          mr: "ज्या अपवादाचे भाकीत सिद्धांत करतो तो अपवादच नाही — ती अशी परीक्षा जी सिद्धांताने उत्तीर्ण केली — आणि या दोन्ही घटी उपकवच-चित्र बरोबर असल्याच्या सर्वोत्तम पुराव्यांपैकी. पहिली घ्या. बेरिलियम 1s²2s², म्हणून काढला जाणारा इलेक्ट्रॉन भरलेल्या 2s कक्षकातून येतो. बोरॉन 1s²2s²2p¹, आणि काढलेला इलेक्ट्रॉन एकटा 2p. दोन गोष्टी त्या 2p इलेक्ट्रॉनला वेगळे करणे सोपे करतात. तो सुरुवातीपासूनच उंच ऊर्जेच्या कक्षकात, आणि त्याला केवळ 1s गाभ्यानेच नव्हे तर खालच्या भरलेल्या 2s नेही आवरले, म्हणून तो जो परिणामी केंद्रकीय भार अनुभवतो तो कमी. दोन्ही परिणाम एकाच दिशेने ढकलतात, आणि बोरॉनची पहिली आयनीकरण एन्थाल्पी बेरिलियमहून सुमारे 3 टक्के खाली निघते जरी त्याचा केंद्रकीय भार एकने अधिक. आता दुसरी. नायट्रोजन 2p³, आणि हुंडच्या नियमाने ते तीन इलेक्ट्रॉन तिन्ही वेगळ्या p कक्षकांत एकेक बसतात, सर्वांची परिवलने समांतर — अर्ध-भरलेले उपकवच, आणि असामान्य स्थिरतेची मांडणी कारण कोणतेही दोन इलेक्ट्रॉन कक्षक वाटून घेत नाहीत आणि प्रतिकर्षण किमान राहते. ऑक्सिजन 2p⁴, म्हणून त्याच्या चौथ्या p इलेक्ट्रॉनसाठी कोणतेही रिकामे कक्षक उरले नाही आणि त्याला आधीच असलेल्या एकाशी जोडी करावी लागते. एकाच लहान कक्षकात दोन इलेक्ट्रॉन एकमेकांना जोरदार प्रतिकर्षित करतात, आणि ती प्रतिकर्षण-ऊर्जा आधीच 'भरलेली' आहे. जोडीतील एक काढल्यावर ती परत मिळते, म्हणून ऑक्सिजन नायट्रोजनच्या तुलनेत इलेक्ट्रॉन अधिक तत्परतेने सोपवतो, आणि त्याची पहिली आयनीकरण एन्थाल्पी खाली येते. दोन्ही स्थितींत युक्तिवादाचा आकार लक्षात घ्या. सर्वसाधारण कल आवर्तात परिणामी केंद्रकीय भार सतत वाढल्याने येतो; घटी कक्षके आणि परिवलनाच्या सूक्ष्म रचनेतून. दोन परिणाम, दोन मापे, आणि लहान कधीकधी मोठ्याला काही टक्क्यांनी उलटवतो. चांगला भौतिक सिद्धांत नेमका असाच दिसतो — एक प्रमुख पद अधिक दुरुस्त्या, प्रत्येकीचे स्वतःचे कारण. दोन समारोपाचे मुद्दे. पहिला, त्याच दोन्ही घटी आवर्त 3 मध्ये ॲल्युमिनियम आणि गंधकावर पुन्हा होतात, आणि त्याच कारणांनी; खरोखर विसंगत निकाल वेळेवर पुन्हा होत नाही. दुसरा, जी अर्ध-भरलेली स्थिरता ऑक्सिजनचे मूल्य घटवते तोच परिणाम क्रोमियमला ऑफबाऊ-अपेक्षित 3d⁴4s² ऐवजी 3d⁵4s¹ स्वीकारू देतो — इलेक्ट्रॉन विन्यास आणि आयनीकरण कल ही एकच भौतिकी, दोन बाजूंनी पाहिलेली. (तिसरे उत्तर अशा गुळगुळीत वाढीची अपेक्षा करते जिचे भाकीत कोणत्याही सिद्धांताने कधीच केले नाही, आणि चौथे अशी त्रिज्या-वाढ घडवते जिचे माप थेट खंडन करते.)",
+        },
+      },
+      /*H3C*/
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 4 — Chemical Bonding and Molecular Structure                    */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "chemistry-11-chemical-bonding",
+    subject: "CHEMISTRY",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 4 — Chemical Bonding and Molecular Structure",
+      hi: "अध्याय 4 — रासायनिक आबंधन तथा आण्विक संरचना",
+      mr: "प्रकरण 4 — रासायनिक बंधन आणि रेणवीय संरचना",
+    },
+    name: {
+      en: "Chemical Bonding and Molecular Structure",
+      hi: "रासायनिक आबंधन तथा आण्विक संरचना",
+      mr: "रासायनिक बंधन आणि रेणवीय संरचना",
+    },
+    summary: {
+      en: "Why atoms join, and why the result has a shape. A rule of eight that is broken by half the periodic table and kept anyway because it works where it works, a shared pair pulled unequally so a bond has a direction, a prediction of geometry made by counting electron pairs and letting them get out of each other's way, orbitals mixed to make bonds that plain atomic orbitals could not, and a weak attraction that nonetheless decides why water is a liquid at all.",
+      hi: "परमाणु जुड़ते क्यों हैं, और परिणाम का आकार क्यों होता है। आठ का वह नियम जिसे आधी आवर्त सारणी तोड़ती है और जो फिर भी रखा जाता है क्योंकि जहाँ चलता है वहाँ चलता है, वह साझा युग्म जो असमान रूप से खिंचता है और बंध को दिशा दे देता है, वह ज्यामिति-भविष्यवाणी जो इलेक्ट्रॉन-युग्म गिनकर और उन्हें एक-दूसरे से दूर हटने देकर की जाती है, वे मिश्रित कक्षक जो ऐसे बंध बनाते हैं जो सादे परमाण्विक कक्षक नहीं बना सकते थे, और वह दुर्बल आकर्षण जो फिर भी तय करता है कि पानी द्रव क्यों है।",
+      mr: "अणू का जुळतात, आणि निकालाला आकार का असतो. आठाचा तो नियम जो अर्धी आवर्त सारणी मोडते आणि जो तरीही ठेवला जातो कारण जिथे चालतो तिथे चालतो, ती वाटलेली जोडी जी असमानपणे ओढली जाते आणि बंधाला दिशा देते, ते भूमिती-भाकीत जे इलेक्ट्रॉन-जोड्या मोजून आणि त्यांना एकमेकांपासून दूर सरकू देऊन केले जाते, ती मिश्रित कक्षके जी असे बंध बनवतात जे साधी अणुकक्षके बनवू शकली नसती, आणि ते दुर्बल आकर्षण जे तरीही पाणी द्रव का आहे हे ठरवते.",
+    },
+    position: 4,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "octet-rule-and-exceptions",
+        name: {
+          en: "The octet rule and its exceptions",
+          hi: "अष्टक नियम और उसके अपवाद",
+          mr: "अष्टक नियम आणि त्याचे अपवाद",
+        },
+        kind: "rule",
+        prompt: {
+          en: "Atoms combine so as to reach eight electrons in the outer shell — except boron, which settles for six, and sulphur and phosphorus, which comfortably exceed eight. Which rule is this?",
+          hi: "परमाणु इस तरह जुड़ते हैं कि बाहरी कोश में आठ इलेक्ट्रॉन हो जाएँ — सिवाय बोरॉन के, जो छह पर मान जाता है, और सल्फ़र तथा फ़ॉस्फ़ोरस के, जो आराम से आठ पार कर जाते हैं। यह कौन-सा नियम है?",
+          mr: "अणू अशा प्रकारे जुळतात की बाहेरच्या कवचात आठ इलेक्ट्रॉन होतील — बोरॉन सोडून, जो सहावर समाधानी, आणि गंधक व स्फुरद सोडून, जे आरामात आठ ओलांडतात. हा कोणता नियम?",
+        },
+        statement: {
+          en: "The octet rule says atoms bond so as to attain eight valence electrons, and it holds well for the second period but is routinely broken above and below it.",
+          hi: "अष्टक नियम कहता है कि परमाणु आठ संयोजी इलेक्ट्रॉन पाने के लिए आबंधित होते हैं, और वह दूसरे आवर्त पर अच्छा चलता है पर उसके ऊपर और नीचे नित्य टूटता है।",
+          mr: "अष्टक नियम सांगतो की अणू आठ संयुजा इलेक्ट्रॉन मिळवण्यासाठी बंध करतात, आणि तो दुसऱ्या आवर्तावर चांगला चालतो पण त्याच्या वर आणि खाली नेहमी मोडतो.",
+        },
+        detail: {
+          en: "Elements from period 3 onwards have vacant d orbitals available, so sulphur can hold twelve electrons in SF₆ and phosphorus ten in PCl₅, which no second-period element can manage.",
+          hi: "आवर्त 3 से आगे के तत्वों के पास ख़ाली d कक्षक उपलब्ध हैं, अतः सल्फ़र SF₆ में बारह इलेक्ट्रॉन और फ़ॉस्फ़ोरस PCl₅ में दस रख सकता है, जो दूसरे आवर्त का कोई तत्व नहीं कर सकता।",
+          mr: "आवर्त 3 पासून पुढच्या मूलद्रव्यांकडे रिकामी d कक्षके उपलब्ध, म्हणून गंधक SF₆ मध्ये बारा इलेक्ट्रॉन आणि स्फुरद PCl₅ मध्ये दहा ठेवू शकतो, जे दुसऱ्या आवर्तातील कोणतेही मूलद्रव्य करू शकत नाही.",
+        },
+        extra: {
+          en: "Molecules with an odd electron count — nitric oxide, nitrogen dioxide — cannot obey it at all, and they are correspondingly reactive, which is why NO is used as a signalling molecule in the body.",
+          hi: "विषम इलेक्ट्रॉन-गिनती वाले अणु — नाइट्रिक ऑक्साइड, नाइट्रोजन डाइऑक्साइड — उसे मान ही नहीं सकते, और वे तदनुरूप क्रियाशील हैं, इसीलिए शरीर में NO संकेतक अणु के रूप में काम आता है।",
+          mr: "विषम इलेक्ट्रॉन-मोजणीचे रेणू — नायट्रिक ऑक्साइड, नायट्रोजन डायऑक्साइड — तो पाळूच शकत नाहीत, आणि ते त्यानुसार क्रियाशील, म्हणूनच शरीरात NO संकेत-रेणू म्हणून वापरला जातो.",
+        },
+        pair: {
+          left: {
+            en: "Boron settling for six and sulphur taking twelve",
+            hi: "छह पर मानता बोरॉन और बारह लेता सल्फ़र",
+            mr: "सहावर समाधानी बोरॉन आणि बारा घेणारा गंधक",
+          },
+          right: {
+            en: "the octet rule and its exceptions",
+            hi: "अष्टक नियम और उसके अपवाद",
+            mr: "अष्टक नियम आणि त्याचे अपवाद",
+          },
+        },
+      },
+      {
+        id: "polar-covalent-bond",
+        name: {
+          en: "The polar covalent bond",
+          hi: "ध्रुवीय सहसंयोजक बंध",
+          mr: "ध्रुवीय सहसंयुज बंध",
+        },
+        kind: "rule",
+        prompt: {
+          en: "The pair is genuinely shared and yet it spends more of its time near one atom than the other, leaving one end slightly negative and the other slightly positive. Which kind of bond is this?",
+          hi: "युग्म सचमुच साझा है और फिर भी वह अपना अधिक समय एक परमाणु के पास बिताता है, दूसरे के पास नहीं, जिससे एक सिरा थोड़ा ऋणात्मक और दूसरा थोड़ा धनात्मक रह जाता है। यह कौन-सा बंध है?",
+          mr: "जोडी खरोखर वाटलेली आणि तरीही ती आपला अधिक वेळ एका अणूजवळ घालवते, दुसऱ्याजवळ नाही, ज्यामुळे एक टोक किंचित ऋण आणि दुसरे किंचित धन राहते. हा कोणत्या प्रकारचा बंध?",
+        },
+        statement: {
+          en: "A polar covalent bond is a shared pair displaced towards the more electronegative atom, giving the bond a dipole moment and the molecule a direction of charge.",
+          hi: "ध्रुवीय सहसंयोजक बंध ऐसा साझा युग्म है जो अधिक विद्युत्-ऋणात्मक परमाणु की ओर खिसका है, जिससे बंध को द्विध्रुव आघूर्ण और अणु को आवेश की एक दिशा मिलती है।",
+          mr: "ध्रुवीय सहसंयुज बंध म्हणजे अधिक विद्युतऋण अणूकडे सरकलेली वाटलेली जोडी, ज्यातून बंधाला द्विध्रुव आघूर्ण आणि रेणूला भाराची दिशा मिळते.",
+        },
+        detail: {
+          en: "Polar bonds do not always make a polar molecule: carbon dioxide has two strongly polar C=O bonds pointing in opposite directions, and their dipoles cancel exactly.",
+          hi: "ध्रुवीय बंध सदा ध्रुवीय अणु नहीं बनाते: कार्बन डाइऑक्साइड में दो प्रबल ध्रुवीय C=O बंध विपरीत दिशाओं में हैं, और उनके द्विध्रुव ठीक-ठीक कट जाते हैं।",
+          mr: "ध्रुवीय बंध नेहमी ध्रुवीय रेणू बनवत नाहीत: कार्बन डायऑक्साइडमध्ये दोन प्रबळ ध्रुवीय C=O बंध विरुद्ध दिशांना, आणि त्यांचे द्विध्रुव नेमके कापले जातात.",
+        },
+        extra: {
+          en: "There is no sharp line between covalent and ionic: as the electronegativity difference grows the pair shifts further until it is effectively transferred, so the two bond types are the ends of one continuum.",
+          hi: "सहसंयोजक और आयनिक के बीच कोई तीखी रेखा नहीं: विद्युत्-ऋणात्मकता अंतर बढ़ने पर युग्म और खिसकता जाता है जब तक वह प्रभावतः स्थानांतरित न हो जाए, अतः दोनों बंध-प्रकार एक ही सातत्य के सिरे हैं।",
+          mr: "सहसंयुज आणि आयनिक यांच्यात तीक्ष्ण रेषा नाही: विद्युतऋणता फरक वाढताना जोडी अधिक सरकत जाते जोवर ती प्रत्यक्षात हस्तांतरित होत नाही, म्हणून दोन्ही बंध-प्रकार एकाच सातत्याची टोके.",
+        },
+        pair: {
+          left: {
+            en: "Two polar bonds and a molecule with no dipole",
+            hi: "दो ध्रुवीय बंध और बिना द्विध्रुव वाला अणु",
+            mr: "दोन ध्रुवीय बंध आणि द्विध्रुवाविना रेणू",
+          },
+          right: {
+            en: "the polar covalent bond",
+            hi: "ध्रुवीय सहसंयोजक बंध",
+            mr: "ध्रुवीय सहसंयुज बंध",
+          },
+        },
+      },
+      {
+        id: "vsepr-and-shape",
+        name: {
+          en: "VSEPR and molecular shape",
+          hi: "VSEPR और आण्विक आकार",
+          mr: "VSEPR आणि रेणवीय आकार",
+        },
+        kind: "geometry",
+        prompt: {
+          en: "Count the electron pairs around the central atom, let them push each other as far apart as they can, and the shape of the molecule falls out — with lone pairs pushing harder than bonding ones. Which model is this?",
+          hi: "केंद्रीय परमाणु के इर्द-गिर्द इलेक्ट्रॉन-युग्म गिनो, उन्हें जितना दूर हट सकें उतना एक-दूसरे को धकेलने दो, और अणु का आकार निकल आता है — और एकाकी युग्म आबंधी युग्मों से अधिक ज़ोर से धकेलते हैं। यह कौन-सा निदर्श है?",
+          mr: "केंद्रीय अणूभोवतीच्या इलेक्ट्रॉन-जोड्या मोजा, त्यांना जितके दूर सरकता येईल तितके एकमेकांना ढकलू द्या, आणि रेणूचा आकार निघतो — आणि एकाकी जोड्या बंधकारी जोड्यांहून अधिक जोराने ढकलतात. हे कोणते प्रतिरूप?",
+        },
+        statement: {
+          en: "VSEPR predicts molecular shape by arranging the electron pairs around a central atom to minimise repulsion, and it treats lone pairs as repelling more strongly than bonding pairs.",
+          hi: "VSEPR केंद्रीय परमाणु के इर्द-गिर्द इलेक्ट्रॉन-युग्मों को इस तरह जमाकर आण्विक आकार बताता है कि प्रतिकर्षण न्यूनतम हो, और वह एकाकी युग्मों को आबंधी युग्मों से अधिक प्रबल प्रतिकर्षक मानता है।",
+          mr: "VSEPR केंद्रीय अणूभोवतीच्या इलेक्ट्रॉन-जोड्या प्रतिकर्षण किमान होईल अशा मांडून रेणवीय आकार सांगते, आणि ते एकाकी जोड्यांना बंधकारी जोड्यांहून अधिक प्रबळ प्रतिकर्षक मानते.",
+        },
+        detail: {
+          en: "That extra push explains a whole family of bent shapes: methane's four bonding pairs give 109.5°, ammonia's three bonds and one lone pair narrow it to 107°, and water's two lone pairs to 104.5°.",
+          hi: "वह अतिरिक्त धक्का मुड़े आकारों का पूरा कुनबा समझाता है: मेथेन के चार आबंधी युग्म 109.5° देते हैं, अमोनिया के तीन बंध और एक एकाकी युग्म उसे 107° तक सँकरा करते हैं, और पानी के दो एकाकी युग्म 104.5° तक।",
+          mr: "तो जादा रेटा वाकड्या आकारांचे अख्खे कुटुंब समजावतो: मिथेनच्या चार बंधकारी जोड्या 109.5° देतात, अमोनियाचे तीन बंध आणि एक एकाकी जोडी तो 107° पर्यंत अरुंद करतात, आणि पाण्याच्या दोन एकाकी जोड्या 104.5° पर्यंत.",
+        },
+        extra: {
+          en: "It is a rule of thumb with no underlying equation, and it fails for some transition-metal compounds — but for main-group molecules it predicts shapes correctly with nothing more than a count on the fingers.",
+          hi: "यह बिना किसी अंतर्निहित समीकरण का अंगूठा-नियम है, और कुछ संक्रमण-धातु यौगिकों पर विफल होता है — पर मुख्य-वर्ग अणुओं के लिए वह उँगलियों पर गिनती भर से आकार ठीक बता देता है।",
+          mr: "हा कोणत्याही अंतर्निहित समीकरणाविना अंगठा-नियम, आणि काही संक्रमण-धातू संयुगांवर अपयशी ठरतो — पण मुख्य-गट रेणूंसाठी तो बोटांवर मोजण्याइतक्यानेच आकार बरोबर सांगतो.",
+        },
+        pair: {
+          left: {
+            en: "Lone pairs shouldering the bonds closer together",
+            hi: "बंधों को पास सरकाते एकाकी युग्म",
+            mr: "बंधांना जवळ सरकवणाऱ्या एकाकी जोड्या",
+          },
+          right: {
+            en: "VSEPR and molecular shape",
+            hi: "VSEPR और आण्विक आकार",
+            mr: "VSEPR आणि रेणवीय आकार",
+          },
+        },
+      },
+      {
+        id: "hybridisation",
+        name: {
+          en: "Hybridisation",
+          hi: "संकरण",
+          mr: "संकरण",
+        },
+        kind: "geometry",
+        prompt: {
+          en: "Carbon's ground state has only two unpaired electrons and yet it forms four identical bonds in methane, all at the same angle — because one s and three p orbitals are mixed into four equivalent ones. Which idea is this?",
+          hi: "कार्बन की मूल अवस्था में केवल दो अयुग्मित इलेक्ट्रॉन हैं, फिर भी वह मेथेन में चार एक-से बंध बनाता है, सब एक ही कोण पर — क्योंकि एक s और तीन p कक्षक मिलकर चार समतुल्य कक्षक बन जाते हैं। यह कौन-सा विचार है?",
+          mr: "कार्बनच्या मूळ अवस्थेत केवळ दोन अयुग्मित इलेक्ट्रॉन आहेत, तरीही तो मिथेनमध्ये चार सारखे बंध बनवतो, सर्व एकाच कोनावर — कारण एक s आणि तीन p कक्षके मिळून चार समतुल्य कक्षके बनतात. ही कोणती कल्पना?",
+        },
+        statement: {
+          en: "Hybridisation mixes atomic orbitals of similar energy into an equal number of new equivalent orbitals, which point in the directions the observed geometry requires.",
+          hi: "संकरण समान ऊर्जा के परमाण्विक कक्षकों को मिलाकर उतने ही नए समतुल्य कक्षक बनाता है, जो उन दिशाओं में इंगित करते हैं जो प्रेक्षित ज्यामिति माँगती है।",
+          mr: "संकरण समान ऊर्जेची अणुकक्षके मिसळून तितकीच नवी समतुल्य कक्षके बनवते, जी निरीक्षित भूमिती मागते त्या दिशांना निर्देश करतात.",
+        },
+        detail: {
+          en: "The count of hybrid orbitals fixes the shape directly: sp gives linear at 180°, sp² trigonal planar at 120° and sp³ tetrahedral at 109.5°.",
+          hi: "संकर कक्षकों की गिनती आकार सीधे तय करती है: sp 180° पर रैखिक देता है, sp² 120° पर त्रिकोणीय समतलीय और sp³ 109.5° पर चतुष्फलकीय।",
+          mr: "संकर कक्षकांची मोजणी आकार थेट ठरवते: sp 180° वर रेषीय देते, sp² 120° वर त्रिकोणी प्रतलीय आणि sp³ 109.5° वर चतुष्फलकी.",
+        },
+        extra: {
+          en: "In a double bond only the hybrids form the sigma framework while the leftover unhybridised p orbitals overlap sideways to make the pi bond, which is why a C=C cannot be twisted without breaking it.",
+          hi: "द्विबंध में केवल संकर सिग्मा ढाँचा बनाते हैं जबकि बचे असंकरित p कक्षक बग़ल से अतिव्यापन कर पाई बंध बनाते हैं, इसीलिए C=C को बिना तोड़े मरोड़ा नहीं जा सकता।",
+          mr: "द्विबंधात केवळ संकर सिग्मा सांगाडा बनवतात तर उरलेली असंकरित p कक्षके बाजूने अतिव्यापन करून पाय बंध बनवतात, म्हणूनच C=C न तोडता पिळता येत नाही.",
+        },
+        pair: {
+          left: {
+            en: "Two unpaired electrons making four identical bonds",
+            hi: "दो अयुग्मित इलेक्ट्रॉन, चार एक-से बंध",
+            mr: "दोन अयुग्मित इलेक्ट्रॉन, चार सारखे बंध",
+          },
+          right: {
+            en: "hybridisation",
+            hi: "संकरण",
+            mr: "संकरण",
+          },
+        },
+      },
+      {
+        id: "hydrogen-bond",
+        name: {
+          en: "The hydrogen bond",
+          hi: "हाइड्रोजन बंध",
+          mr: "हायड्रोजन बंध",
+        },
+        kind: "force",
+        prompt: {
+          en: "Water boils at 100 °C while hydrogen sulphide, a heavier molecule of the same shape, boils at −60 °C — because one of them can form a weak directional link between its own molecules. Which attraction is this?",
+          hi: "पानी 100 °C पर उबलता है जबकि हाइड्रोजन सल्फ़ाइड, उसी आकार का भारी अणु, −60 °C पर — क्योंकि उनमें से एक अपने ही अणुओं के बीच दुर्बल दिशात्मक कड़ी बना सकता है। यह कौन-सा आकर्षण है?",
+          mr: "पाणी 100 °C वर उकळते तर हायड्रोजन सल्फाइड, त्याच आकाराचा जड रेणू, −60 °C वर — कारण त्यांपैकी एक स्वतःच्याच रेणूंमध्ये दुर्बल दिशात्मक दुवा बनवू शकतो. हे कोणते आकर्षण?",
+        },
+        statement: {
+          en: "A hydrogen bond forms when hydrogen already bonded to nitrogen, oxygen or fluorine is attracted to a lone pair on another such atom, and it is far weaker than a covalent bond but far stronger than ordinary dispersion forces.",
+          hi: "हाइड्रोजन बंध तब बनता है जब नाइट्रोजन, ऑक्सीजन या फ़्लुओरीन से पहले से बँधा हाइड्रोजन ऐसे ही किसी दूसरे परमाणु के एकाकी युग्म की ओर आकर्षित हो, और वह सहसंयोजक बंध से कहीं दुर्बल पर साधारण परिक्षेपण बलों से कहीं प्रबल है।",
+          mr: "हायड्रोजन बंध तेव्हा तयार होतो जेव्हा नायट्रोजन, ऑक्सिजन वा फ्लोरिनशी आधीच बांधलेला हायड्रोजन अशाच दुसऱ्या अणूवरील एकाकी जोडीकडे आकर्षित होतो, आणि तो सहसंयुज बंधाहून कितीतरी दुर्बल पण सामान्य विकिरण बलांहून कितीतरी प्रबळ.",
+        },
+        detail: {
+          en: "It is the reason ice floats: the bonds hold the molecules in an open hexagonal lattice with more empty space than the liquid has, so freezing makes water expand.",
+          hi: "इसी से बर्फ़ तैरती है: बंध अणुओं को ऐसे खुले षट्कोणीय जालक में थामे रखते हैं जिसमें द्रव से अधिक ख़ाली जगह है, अतः जमने पर पानी फैलता है।",
+          mr: "यामुळेच बर्फ तरंगतो: बंध रेणूंना अशा मोकळ्या षट्कोनी जालकात धरतात ज्यात द्रवाहून अधिक रिकामी जागा, म्हणून गोठताना पाणी प्रसरण पावते.",
+        },
+        extra: {
+          en: "It also holds the two strands of DNA together, weakly enough to be unzipped by an enzyme and specifically enough that each base pairs only with its partner.",
+          hi: "यही DNA की दोनों लड़ियों को साथ थामे रहता है, इतना दुर्बल कि एंज़ाइम उन्हें खोल दे और इतना विशिष्ट कि हर क्षारक केवल अपने साथी से ही जोड़ी बनाए।",
+          mr: "हाच DNA च्या दोन्ही धाग्यांना एकत्र धरतो, इतका दुर्बल की विकर त्यांना उलगडेल आणि इतका विशिष्ट की प्रत्येक क्षार केवळ आपल्या जोडीदाराशीच जोडी करेल.",
+        },
+        pair: {
+          left: {
+            en: "A hundred and sixty degrees of boiling point",
+            hi: "क्वथनांक के एक सौ साठ डिग्री",
+            mr: "उकळबिंदूचे एकशे साठ अंश",
+          },
+          right: {
+            en: "the hydrogen bond",
+            hi: "हाइड्रोजन बंध",
+            mr: "हायड्रोजन बंध",
+          },
+        },
+      },
+      {
+        id: "bond-order-and-length",
+        name: {
+          en: "Bond order and bond length",
+          hi: "बंध कोटि और बंध लंबाई",
+          mr: "बंध कोटी आणि बंध लांबी",
+        },
+        kind: "force",
+        prompt: {
+          en: "The carbon–carbon distance falls from 154 pm in ethane to 134 pm in ethene and 120 pm in ethyne, and the energy needed to break it rises correspondingly at every step. Which pair of quantities is this?",
+          hi: "कार्बन-कार्बन दूरी एथेन के 154 pm से घटकर एथीन में 134 pm और एथाइन में 120 pm हो जाती है, और उसे तोड़ने को चाहिए ऊर्जा हर चरण पर तदनुरूप बढ़ती है। यह कौन-सी राशि-जोड़ी है?",
+          mr: "कार्बन-कार्बन अंतर इथेनच्या 154 pm वरून इथीनमध्ये 134 pm आणि इथाइनमध्ये 120 pm होते, आणि तो तोडायला लागणारी ऊर्जा प्रत्येक टप्प्यावर त्यानुसार वाढते. ही कोणती राशी-जोडी?",
+        },
+        statement: {
+          en: "Bond order is the number of shared pairs between two atoms, and a higher bond order always means a shorter and stronger bond between the same pair of elements.",
+          hi: "बंध कोटि दो परमाणुओं के बीच साझा युग्मों की संख्या है, और उन्हीं दो तत्वों के बीच ऊँची बंध कोटि सदा छोटे और प्रबल बंध का अर्थ रखती है।",
+          mr: "बंध कोटी म्हणजे दोन अणूंमधल्या वाटलेल्या जोड्यांची संख्या, आणि त्याच दोन मूलद्रव्यांमध्ये उच्च बंध कोटी नेहमी लहान आणि प्रबळ बंधाचा अर्थ राखते.",
+        },
+        detail: {
+          en: "Molecular orbital theory lets it be fractional and even predicts species with a bond order of one half, and it explains why O₂ is paramagnetic when every Lewis structure says it should not be.",
+          hi: "आण्विक कक्षक सिद्धांत उसे भिन्नात्मक होने देता है और आधे बंध कोटि वाली स्पीशीज़ तक बता देता है, और वह समझाता है कि O₂ अनुचुंबकीय क्यों है जबकि हर लूइस संरचना कहती है कि उसे नहीं होना चाहिए।",
+          mr: "रेणवीय कक्षक सिद्धांत तिला अपूर्णांकी होऊ देतो आणि अर्ध्या बंध कोटीच्या प्रजाती सांगतो, आणि तो समजावतो की O₂ अनुचुंबकीय का आहे तर प्रत्येक लुईस संरचना सांगते की तो असू नये.",
+        },
+        extra: {
+          en: "In benzene the six carbon–carbon bonds are all 139 pm — between a single and a double — because the pi electrons are delocalised over the whole ring rather than sitting in three fixed double bonds.",
+          hi: "बेंज़ीन में छहों कार्बन-कार्बन बंध 139 pm के हैं — एकल और द्विबंध के बीच — क्योंकि पाई इलेक्ट्रॉन तीन नियत द्विबंधों में बैठने के बजाय पूरे वलय पर विस्थानीकृत हैं।",
+          mr: "बेंझिनमध्ये सहाही कार्बन-कार्बन बंध 139 pm चे — एकेरी आणि द्विबंधाच्या मध्ये — कारण पाय इलेक्ट्रॉन तीन ठरलेल्या द्विबंधांत बसण्याऐवजी अख्ख्या वलयावर विस्थानित आहेत.",
+        },
+        pair: {
+          left: {
+            en: "Six benzene bonds all the same and none of them either",
+            hi: "बेंज़ीन के छहों बंध एक-से, और कोई भी दोनों में से नहीं",
+            mr: "बेंझिनचे सहाही बंध सारखे, आणि कोणताही दोहोंपैकी नाही",
+          },
+          right: {
+            en: "bond order and bond length",
+            hi: "बंध कोटि और बंध लंबाई",
+            mr: "बंध कोटी आणि बंध लांबी",
+          },
+        },
+      },
+      /*F4C*/
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Carbon dioxide and water each contain two strongly polar bonds to oxygen. Carbon dioxide has no dipole moment at all and water has a large one. A student says the difference must be in the bond polarities. Explain what actually differs.",
+          hi: "कार्बन डाइऑक्साइड और पानी दोनों में ऑक्सीजन से दो प्रबल ध्रुवीय बंध हैं। कार्बन डाइऑक्साइड का कोई द्विध्रुव आघूर्ण नहीं और पानी का बड़ा है। एक विद्यार्थी कहता है कि भेद बंध-ध्रुवताओं में होगा। समझाओ वस्तुतः भिन्न क्या है।",
+          mr: "कार्बन डायऑक्साइड आणि पाणी दोघांतही ऑक्सिजनशी दोन प्रबळ ध्रुवीय बंध आहेत. कार्बन डायऑक्साइडला द्विध्रुव आघूर्ण मुळीच नाही आणि पाण्याला मोठा आहे. एक विद्यार्थी म्हणतो की फरक बंध-ध्रुवतांत असावा. प्रत्यक्षात वेगळे काय ते समजावा.",
+        },
+        choices: [
+          {
+            en: "The bond polarities are similar; the shapes are not. Carbon dioxide is linear, so its two bond dipoles point in exactly opposite directions and cancel to zero. Water is bent at 104.5°, because oxygen carries two lone pairs that push the bonds together, so its two dipoles add to a large resultant. Dipole moment is a vector sum, and geometry decides it — which is why a measured dipole moment is itself evidence about shape",
+            hi: "बंध-ध्रुवताएँ मिलती-जुलती हैं; आकार नहीं। कार्बन डाइऑक्साइड रैखिक है, अतः उसके दो बंध-द्विध्रुव ठीक विपरीत दिशाओं में हैं और कटकर शून्य हो जाते हैं। पानी 104.5° पर मुड़ा है, क्योंकि ऑक्सीजन दो एकाकी युग्म ढोता है जो बंधों को पास धकेलते हैं, अतः उसके दो द्विध्रुव जुड़कर बड़ा परिणामी देते हैं। द्विध्रुव आघूर्ण सदिश योग है, और उसे ज्यामिति तय करती है — इसीलिए नापा गया द्विध्रुव आघूर्ण स्वयं आकार के बारे में प्रमाण है",
+            mr: "बंध-ध्रुवता सारख्या आहेत; आकार नाहीत. कार्बन डायऑक्साइड रेषीय, म्हणून त्याचे दोन बंध-द्विध्रुव नेमक्या विरुद्ध दिशांना आणि कापले जाऊन शून्य होतात. पाणी 104.5° वर वाकडे, कारण ऑक्सिजन दोन एकाकी जोड्या वाहतो ज्या बंधांना जवळ ढकलतात, म्हणून त्याचे दोन द्विध्रुव जोडून मोठा परिणामी देतात. द्विध्रुव आघूर्ण ही सदिश बेरीज, आणि तिला भूमिती ठरवते — म्हणूनच मोजलेला द्विध्रुव आघूर्ण स्वतः आकाराबद्दलचा पुरावा",
+          },
+          {
+            en: "The student is right: the C=O bonds must be non-polar, since two polar bonds could never give a molecule with no dipole",
+            hi: "विद्यार्थी सही है: C=O बंध अध्रुवीय होंगे, क्योंकि दो ध्रुवीय बंध कभी बिना द्विध्रुव वाला अणु नहीं दे सकते",
+            mr: "विद्यार्थी बरोबर: C=O बंध अध्रुवीय असणार, कारण दोन ध्रुवीय बंध कधीच द्विध्रुवाविना रेणू देऊ शकत नाहीत",
+          },
+          {
+            en: "Carbon dioxide has more atoms, and dipole moments always fall as a molecule gets larger",
+            hi: "कार्बन डाइऑक्साइड में अधिक परमाणु हैं, और अणु बड़ा होने पर द्विध्रुव आघूर्ण सदा घटता है",
+            mr: "कार्बन डायऑक्साइडमध्ये अधिक अणू आहेत, आणि रेणू मोठा होताना द्विध्रुव आघूर्ण नेहमी घटतो",
+          },
+          {
+            en: "Water's dipole comes entirely from its lone pairs, and its two O–H bonds contribute nothing at all",
+            hi: "पानी का द्विध्रुव पूरी तरह उसके एकाकी युग्मों से आता है, और उसके दो O–H बंध कुछ भी योगदान नहीं देते",
+            mr: "पाण्याचा द्विध्रुव पूर्णपणे त्याच्या एकाकी जोड्यांतून येतो, आणि त्याचे दोन O–H बंध काहीही वाटा देत नाहीत",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The premise the student rejects is true, and rejecting it is what leads them astray. Both C=O bonds in carbon dioxide are strongly polar: oxygen at 3.5 on the Pauling scale against carbon at 2.5 gives a difference of 1.0, comparable to water's O–H difference of 1.4. Neither bond is anything like non-polar. What differs is the geometry, and the reason for it is VSEPR. Carbon in CO₂ has two regions of electron density around it — the two double bonds — and no lone pairs, so they arrange at 180° and the molecule is linear. Oxygen in water has four regions: two bonding pairs and two lone pairs. Four regions arrange tetrahedrally, and with two of the positions occupied by lone pairs the two O–H bonds are left at 104.5° rather than 180°. Now add the dipoles as vectors, because that is what they are. In CO₂ two equal arrows point directly away from each other and the resultant is exactly zero — the molecule is non-polar despite having the more polar-looking formula. In water two equal arrows meet at 104.5°, and the resultant bisects that angle with a magnitude of about 1.85 D, one of the larger dipole moments among small molecules. This is not a curiosity. Water's polarity is why it dissolves salts and why it has a high boiling point; carbon dioxide's lack of polarity is why it is a gas at room temperature and why it dissolves in water only sparingly. Two habits follow. First, always ask about shape before pronouncing on polarity: BF₃ and NH₃ both have three polar bonds, and BF₃ is trigonal planar and non-polar while NH₃ is pyramidal and strongly polar, entirely because boron has no lone pair and nitrogen has one. Second, the inference runs both ways. A measured dipole moment of zero for a molecule with polar bonds is direct evidence of a symmetric shape, and that is how the linearity of CO₂ and the tetrahedral symmetry of CCl₄ were established before any diffraction experiment could see them. (The fourth answer is worth naming: lone pairs do contribute to a molecular dipole, but the O–H bonds contribute the larger share, and no dipole survives if the bond contributions cancel.)",
+          hi: "जिस मान्यता को विद्यार्थी नकारता है वह सच है, और उसे नकारना ही उसे भटका देता है। कार्बन डाइऑक्साइड के दोनों C=O बंध प्रबल ध्रुवीय हैं: पॉलिंग पैमाने पर ऑक्सीजन 3.5 के सामने कार्बन 2.5, यानी 1.0 का अंतर, जो पानी के O–H अंतर 1.4 के तुल्य है। कोई भी बंध अध्रुवीय जैसा नहीं। भिन्न है ज्यामिति, और उसका कारण VSEPR है। CO₂ में कार्बन के इर्द-गिर्द इलेक्ट्रॉन-घनत्व के दो क्षेत्र हैं — दो द्विबंध — और कोई एकाकी युग्म नहीं, अतः वे 180° पर जमते हैं और अणु रैखिक है। पानी में ऑक्सीजन के चार क्षेत्र हैं: दो आबंधी युग्म और दो एकाकी। चार क्षेत्र चतुष्फलकीय जमते हैं, और दो स्थान एकाकी युग्मों के घेरने से दोनों O–H बंध 180° के बजाय 104.5° पर बचते हैं। अब द्विध्रुवों को सदिशों की तरह जोड़ो, क्योंकि वे यही हैं। CO₂ में दो बराबर तीर सीधे एक-दूसरे से दूर इंगित करते हैं और परिणामी ठीक शून्य है — अणु अध्रुवीय है यद्यपि उसका सूत्र अधिक ध्रुवीय दिखता है। पानी में दो बराबर तीर 104.5° पर मिलते हैं, और परिणामी उस कोण को समद्विभाजित करता है, परिमाण लगभग 1.85 D, छोटे अणुओं में बड़े द्विध्रुव आघूर्णों में से एक। यह कोई कौतुक नहीं। पानी की ध्रुवता ही उससे लवण घुलवाती है और उसे ऊँचा क्वथनांक देती है; कार्बन डाइऑक्साइड की अध्रुवता ही उसे कमरे के ताप पर गैस रखती है और पानी में उसे बहुत कम घुलने देती है। दो आदतें निकलती हैं। पहली, ध्रुवता पर फ़ैसला सुनाने से पहले सदा आकार पूछो: BF₃ और NH₃ दोनों में तीन ध्रुवीय बंध हैं, और BF₃ त्रिकोणीय समतलीय तथा अध्रुवीय है जबकि NH₃ पिरामिडी तथा प्रबल ध्रुवीय, पूरी तरह इसलिए कि बोरॉन के पास एकाकी युग्म नहीं और नाइट्रोजन के पास एक है। दूसरी, अनुमान दोनों ओर चलता है। ध्रुवीय बंधों वाले अणु का नापा गया शून्य द्विध्रुव आघूर्ण सममित आकार का सीधा प्रमाण है, और इसी से CO₂ की रैखिकता तथा CCl₄ की चतुष्फलकीय सममिति किसी विवर्तन प्रयोग के उन्हें देखने से पहले ही स्थापित हो गई थीं। (चौथा उत्तर नाम लेने योग्य है: एकाकी युग्म आण्विक द्विध्रुव में योगदान देते ही हैं, पर बड़ा हिस्सा O–H बंध देते हैं, और बंधों का योगदान कट जाए तो कोई द्विध्रुव नहीं बचता।)",
+          mr: "विद्यार्थी जे गृहीतक नाकारतो ते खरे आहे, आणि ते नाकारणेच त्याला भरकटवते. कार्बन डायऑक्साइडचे दोन्ही C=O बंध प्रबळ ध्रुवीय: पॉलिंग मापनश्रेणीवर ऑक्सिजन 3.5 समोर कार्बन 2.5, म्हणजे 1.0 चा फरक, जो पाण्याच्या O–H फरक 1.4 शी तुलनायोग्य. कोणताही बंध अध्रुवीयसारखा नाही. वेगळी आहे भूमिती, आणि तिचे कारण VSEPR. CO₂ मध्ये कार्बनभोवती इलेक्ट्रॉन-घनतेचे दोन प्रदेश — दोन द्विबंध — आणि कोणतीही एकाकी जोडी नाही, म्हणून ते 180° वर मांडतात आणि रेणू रेषीय. पाण्यात ऑक्सिजनचे चार प्रदेश: दोन बंधकारी जोड्या आणि दोन एकाकी. चार प्रदेश चतुष्फलकी मांडतात, आणि दोन जागा एकाकी जोड्यांनी व्यापल्याने दोन्ही O–H बंध 180° ऐवजी 104.5° वर उरतात. आता द्विध्रुव सदिशांसारखे जोडा, कारण ते तेच आहेत. CO₂ मध्ये दोन समान बाण थेट एकमेकांपासून दूर निर्देश करतात आणि परिणामी नेमका शून्य — रेणू अध्रुवीय जरी त्याचे सूत्र अधिक ध्रुवीय दिसते तरी. पाण्यात दोन समान बाण 104.5° वर भेटतात, आणि परिणामी तो कोन दुभागतो, परिमाण सुमारे 1.85 D, लहान रेणूंतील मोठ्या द्विध्रुव आघूर्णांपैकी एक. हे कुतूहल नव्हे. पाण्याची ध्रुवता हीच त्यातून क्षार विरघळवते आणि त्याला उच्च उकळबिंदू देते; कार्बन डायऑक्साइडची अध्रुवता हीच त्याला खोलीच्या तापमानावर वायू ठेवते आणि पाण्यात त्याला फारच कमी विरघळू देते. दोन सवयी निघतात. पहिली, ध्रुवतेवर निवाडा देण्याआधी नेहमी आकार विचारा: BF₃ आणि NH₃ दोघांतही तीन ध्रुवीय बंध, आणि BF₃ त्रिकोणी प्रतलीय व अध्रुवीय तर NH₃ पिरॅमिडी व प्रबळ ध्रुवीय, पूर्णपणे यामुळे की बोरॉनकडे एकाकी जोडी नाही आणि नायट्रोजनकडे एक आहे. दुसरी, अनुमान दोन्ही बाजूंनी चालते. ध्रुवीय बंध असलेल्या रेणूचा मोजलेला शून्य द्विध्रुव आघूर्ण हा सममित आकाराचा थेट पुरावा, आणि यामुळेच CO₂ ची रेषीयता आणि CCl₄ ची चतुष्फलकी सममिती कोणत्याही विवर्तन प्रयोगाने त्या पाहण्याआधीच प्रस्थापित झाल्या. (चौथे उत्तर नाव घेण्याजोगे: एकाकी जोड्या रेणवीय द्विध्रुवात वाटा देतातच, पण मोठा वाटा O–H बंध देतात, आणि बंधांचा वाटा कापला गेल्यास कोणताही द्विध्रुव उरत नाही.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Every Lewis structure of O₂ shows a double bond with all electrons paired, which predicts the molecule should be diamagnetic. Liquid oxygen is in fact drawn strongly to a magnet. Explain the discrepancy and what resolves it.",
+          hi: "O₂ की हर लूइस संरचना सब इलेक्ट्रॉनों को युग्मित दिखाते हुए द्विबंध दिखाती है, जिससे अनुमान लगता है कि अणु प्रतिचुंबकीय होगा। द्रव ऑक्सीजन वस्तुतः चुंबक की ओर प्रबलता से खिंचती है। विसंगति और उसका समाधान समझाओ।",
+          mr: "O₂ ची प्रत्येक लुईस संरचना सर्व इलेक्ट्रॉन युग्मित दाखवत द्विबंध दाखवते, ज्यातून अनुमान निघते की रेणू प्रतिचुंबकीय असावा. द्रव ऑक्सिजन प्रत्यक्षात चुंबकाकडे जोरदार ओढला जातो. विसंगती आणि तिचे निराकरण समजावा.",
+        },
+        choices: [
+          {
+            en: "Lewis structures cannot represent O₂ correctly. Molecular orbital theory fills the molecule's own orbitals in energy order, and the last two electrons go singly into two degenerate pi-antibonding orbitals with parallel spins, exactly as Hund's rule requires. That leaves two unpaired electrons, which makes O₂ paramagnetic, while the bond order still comes out as (10 − 6)/2 = 2, agreeing with the double bond. The paramagnetism was one of the first decisive successes of MO theory over the Lewis picture",
+            hi: "लूइस संरचनाएँ O₂ का सही निरूपण कर ही नहीं सकतीं। आण्विक कक्षक सिद्धांत अणु के अपने कक्षकों को ऊर्जा-क्रम में भरता है, और अंतिम दो इलेक्ट्रॉन दो अपभ्रष्ट पाई-प्रतिआबंधी कक्षकों में एक-एक जाते हैं, समांतर चक्रणों के साथ, ठीक जैसा हुंड का नियम माँगता है। इससे दो अयुग्मित इलेक्ट्रॉन बचते हैं, जो O₂ को अनुचुंबकीय बनाते हैं, जबकि बंध कोटि फिर भी (10 − 6)/2 = 2 निकलती है, जो द्विबंध से मेल खाती है। यह अनुचुंबकत्व लूइस चित्र पर आण्विक कक्षक सिद्धांत की पहली निर्णायक सफलताओं में से एक था",
+            mr: "लुईस संरचना O₂ चे बरोबर निरूपण करूच शकत नाहीत. रेणवीय कक्षक सिद्धांत रेणूची स्वतःची कक्षके ऊर्जा-क्रमाने भरतो, आणि शेवटचे दोन इलेक्ट्रॉन दोन अपभ्रष्ट पाय-प्रतिबंधकारी कक्षकांत एकेक जातात, समांतर परिवलनांसह, नेमके जसे हुंडचा नियम मागतो. यातून दोन अयुग्मित इलेक्ट्रॉन उरतात, जे O₂ ला अनुचुंबकीय बनवतात, तर बंध कोटी तरीही (10 − 6)/2 = 2 निघते, जी द्विबंधाशी जुळते. हे अनुचुंबकत्व लुईस चित्रावर रेणवीय कक्षक सिद्धांताच्या पहिल्या निर्णायक यशांपैकी एक होते",
+          },
+          {
+            en: "The observation is mistaken: liquid oxygen is not attracted to a magnet, and the apparent attraction is due to impurities of iron",
+            hi: "प्रेक्षण ग़लत है: द्रव ऑक्सीजन चुंबक की ओर नहीं खिंचती, और आभासी आकर्षण लोहे की अशुद्धियों से है",
+            mr: "निरीक्षण चुकीचे: द्रव ऑक्सिजन चुंबकाकडे ओढला जात नाही, आणि आभासी आकर्षण लोखंडाच्या अशुद्धींमुळे",
+          },
+          {
+            en: "O₂ actually has a single bond with two unpaired electrons, so the double bond in Lewis structures is simply wrong",
+            hi: "O₂ में वस्तुतः दो अयुग्मित इलेक्ट्रॉनों के साथ एकल बंध है, अतः लूइस संरचनाओं का द्विबंध बस ग़लत है",
+            mr: "O₂ मध्ये प्रत्यक्षात दोन अयुग्मित इलेक्ट्रॉनांसह एकेरी बंध आहे, म्हणून लुईस संरचनांतील द्विबंध फक्त चूक आहे",
+          },
+          {
+            en: "The paramagnetism comes from the oxygen nuclei rather than from its electrons, so no electronic model needs changing",
+            hi: "अनुचुंबकत्व इलेक्ट्रॉनों से नहीं बल्कि ऑक्सीजन के नाभिकों से आता है, अतः किसी इलेक्ट्रॉनिक निदर्श को बदलने की ज़रूरत नहीं",
+            mr: "अनुचुंबकत्व इलेक्ट्रॉनांकडून नव्हे तर ऑक्सिजनच्या केंद्रकांकडून येते, म्हणून कोणतेही इलेक्ट्रॉनिक प्रतिरूप बदलण्याची गरज नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The experiment is the sort that settles arguments. Pour liquid oxygen between the poles of a strong magnet and it does not fall through — it clings there, visibly suspended, which is a demonstration film students have watched for decades. Paramagnetism of that strength requires unpaired electrons, and the Lewis structure of O₂ has none: two lone pairs on each oxygen and a double bond between them, sixteen electrons all neatly paired. The Lewis picture is not merely incomplete here, it makes a definite prediction and the prediction is wrong. Molecular orbital theory starts differently. Instead of assigning electrons to atoms and then to shared pairs, it combines the atomic orbitals of both atoms into molecular orbitals belonging to the molecule as a whole, some bonding and some antibonding, and then fills them in energy order by the same rules that fill an atom — Aufbau, Pauli and Hund. For O₂ the count runs: the bonding orbitals take ten electrons and the antibonding six. Bond order is (bonding − antibonding)/2 = (10 − 6)/2 = 2, so MO theory agrees with Lewis about the double bond, and about the bond length and strength that follow from it. But the last two electrons are the interesting ones. They must go into the two pi-antibonding orbitals, which are degenerate — exactly equal in energy. Hund's rule then applies just as it does in an atom: the electrons occupy the two orbitals singly with parallel spins rather than pairing up in one. Two unpaired electrons, and O₂ is paramagnetic. Notice the shape of the resolution. MO theory did not overturn what Lewis got right; it reproduced the bond order exactly and added the one prediction Lewis could not make. That is what a successful replacement looks like — the older model is recovered as an approximation and the residue it could not explain becomes a consequence. Two further payoffs are worth knowing. The same method predicts that removing an electron from O₂ makes the bond stronger, since it comes out of an antibonding orbital, and O₂⁺ does indeed have a shorter bond than O₂ — a result Lewis structures cannot even express. And it predicts that He₂ cannot exist, because its two bonding and two antibonding electrons give a bond order of zero. (The second answer denies a reproducible demonstration, the third abandons a bond order that MO theory confirms, and the fourth invokes nuclear magnetism some ten thousand times too weak to lift a liquid.)",
+          hi: "यह प्रयोग उस क़िस्म का है जो बहस निपटा देता है। प्रबल चुंबक के ध्रुवों के बीच द्रव ऑक्सीजन उड़ेलो और वह नीचे नहीं गिरती — वह वहीं चिपकी रहती है, दिखाई देने लायक़ लटकी हुई, और यह प्रदर्शन-फ़िल्म छात्र दशकों से देखते आए हैं। उस प्रबलता का अनुचुंबकत्व अयुग्मित इलेक्ट्रॉन माँगता है, और O₂ की लूइस संरचना में एक भी नहीं: हर ऑक्सीजन पर दो एकाकी युग्म और उनके बीच द्विबंध, सोलह इलेक्ट्रॉन सब सफ़ाई से युग्मित। लूइस चित्र यहाँ केवल अधूरा नहीं, वह एक निश्चित भविष्यवाणी करता है और वह भविष्यवाणी ग़लत है। आण्विक कक्षक सिद्धांत भिन्न ढंग से शुरू करता है। इलेक्ट्रॉनों को परमाणुओं और फिर साझा युग्मों को सौंपने के बजाय, वह दोनों परमाणुओं के परमाण्विक कक्षकों को मिलाकर ऐसे आण्विक कक्षक बनाता है जो पूरे अणु के हैं, कुछ आबंधी और कुछ प्रतिआबंधी, और फिर उन्हें उन्हीं नियमों से ऊर्जा-क्रम में भरता है जो परमाणु भरते हैं — ऑफ़बाउ, पॉली और हुंड। O₂ के लिए गिनती यों चलती है: आबंधी कक्षक दस इलेक्ट्रॉन लेते हैं और प्रतिआबंधी छह। बंध कोटि (आबंधी − प्रतिआबंधी)/2 = (10 − 6)/2 = 2, अतः द्विबंध के बारे में, और उससे निकलने वाली बंध लंबाई तथा प्रबलता के बारे में, आण्विक कक्षक सिद्धांत लूइस से सहमत है। पर दिलचस्प अंतिम दो इलेक्ट्रॉन हैं। उन्हें दो पाई-प्रतिआबंधी कक्षकों में जाना पड़ता है, जो अपभ्रष्ट हैं — ऊर्जा में ठीक बराबर। तब हुंड का नियम वैसे ही लागू होता है जैसे परमाणु में: इलेक्ट्रॉन एक में जोड़ी बनाने के बजाय दोनों कक्षकों में एक-एक बैठते हैं, समांतर चक्रणों के साथ। दो अयुग्मित इलेक्ट्रॉन, और O₂ अनुचुंबकीय। समाधान का आकार ध्यान दो। आण्विक कक्षक सिद्धांत ने वह नहीं पलटा जो लूइस ने सही किया था; उसने बंध कोटि ठीक-ठीक दोहराई और वह एक भविष्यवाणी जोड़ दी जो लूइस नहीं कर सकता था। सफल प्रतिस्थापन ऐसा ही दिखता है — पुराना निदर्श सन्निकटन के रूप में वापस मिलता है और जो अवशेष वह नहीं समझा सका वह परिणाम बन जाता है। दो और कमाइयाँ जानने योग्य हैं। वही विधि बताती है कि O₂ से इलेक्ट्रॉन हटाने पर बंध प्रबल हो जाता है, क्योंकि वह प्रतिआबंधी कक्षक से निकलता है, और O₂⁺ का बंध सचमुच O₂ से छोटा है — ऐसा परिणाम जिसे लूइस संरचनाएँ व्यक्त तक नहीं कर सकतीं। और वह बताती है कि He₂ हो ही नहीं सकता, क्योंकि उसके दो आबंधी और दो प्रतिआबंधी इलेक्ट्रॉन बंध कोटि शून्य देते हैं। (दूसरा उत्तर दोहराए जा सकने वाले प्रदर्शन को नकारता है, तीसरा उस बंध कोटि को छोड़ देता है जिसकी आण्विक कक्षक सिद्धांत पुष्टि करता है, और चौथा ऐसा नाभिकीय चुंबकत्व बुलाता है जो द्रव उठाने के लिए लगभग दस हज़ार गुना दुर्बल है।)",
+          mr: "हा प्रयोग असा आहे जो वाद निकाली काढतो. प्रबळ चुंबकाच्या ध्रुवांमध्ये द्रव ऑक्सिजन ओता आणि तो खाली पडत नाही — तो तिथेच चिकटतो, दिसण्याइतका टांगलेला, आणि ही प्रात्यक्षिक-चित्रफीत विद्यार्थी दशकांपासून पाहत आले आहेत. त्या प्रबळतेचे अनुचुंबकत्व अयुग्मित इलेक्ट्रॉन मागते, आणि O₂ च्या लुईस संरचनेत एकही नाही: प्रत्येक ऑक्सिजनवर दोन एकाकी जोड्या आणि त्यांच्यात द्विबंध, सोळा इलेक्ट्रॉन सर्व नीटपणे युग्मित. लुईस चित्र इथे केवळ अपूर्ण नाही, ते एक निश्चित भाकीत करते आणि ते भाकीत चुकीचे आहे. रेणवीय कक्षक सिद्धांत वेगळ्या पद्धतीने सुरू होतो. इलेक्ट्रॉन अणूंना आणि मग वाटलेल्या जोड्यांना सोपवण्याऐवजी, तो दोन्ही अणूंची अणुकक्षके मिसळून अशी रेणवीय कक्षके बनवतो जी अख्ख्या रेणूची, काही बंधकारी आणि काही प्रतिबंधकारी, आणि मग ती त्याच नियमांनी ऊर्जा-क्रमाने भरतो जे अणू भरतात — ऑफबाऊ, पौली आणि हुंड. O₂ साठी मोजणी अशी चालते: बंधकारी कक्षके दहा इलेक्ट्रॉन घेतात आणि प्रतिबंधकारी सहा. बंध कोटी (बंधकारी − प्रतिबंधकारी)/2 = (10 − 6)/2 = 2, म्हणून द्विबंधाबद्दल, आणि त्यातून निघणाऱ्या बंध लांबी व प्रबळतेबद्दल, रेणवीय कक्षक सिद्धांत लुईसशी सहमत. पण रोचक शेवटचे दोन इलेक्ट्रॉन. त्यांना दोन पाय-प्रतिबंधकारी कक्षकांत जावे लागते, जी अपभ्रष्ट आहेत — ऊर्जेत नेमकी समान. मग हुंडचा नियम तसाच लागू होतो जसा अणूत: इलेक्ट्रॉन एकात जोडी करण्याऐवजी दोन्ही कक्षकांत एकेक बसतात, समांतर परिवलनांसह. दोन अयुग्मित इलेक्ट्रॉन, आणि O₂ अनुचुंबकीय. निराकरणाचा आकार लक्षात घ्या. रेणवीय कक्षक सिद्धांताने लुईसने बरोबर केलेले उलटवले नाही; त्याने बंध कोटी नेमकी पुन्हा मिळवली आणि ते एक भाकीत जोडले जे लुईस करू शकत नव्हता. यशस्वी प्रतिस्थापन असेच दिसते — जुने प्रतिरूप सन्निकटन म्हणून परत मिळते आणि ते जे समजावू शकले नाही तो शेष परिणाम बनतो. आणखी दोन कमाया जाणण्याजोग्या. तीच पद्धत सांगते की O₂ मधून इलेक्ट्रॉन काढल्यास बंध प्रबळ होतो, कारण तो प्रतिबंधकारी कक्षकातून निघतो, आणि O₂⁺ चा बंध खरोखर O₂ हून लहान — असा निकाल जो लुईस संरचना व्यक्तही करू शकत नाहीत. आणि ती सांगते की He₂ असूच शकत नाही, कारण त्याचे दोन बंधकारी आणि दोन प्रतिबंधकारी इलेक्ट्रॉन बंध कोटी शून्य देतात. (दुसरे उत्तर पुन्हा करता येणारे प्रात्यक्षिक नाकारते, तिसरे ती बंध कोटी सोडते जिची रेणवीय कक्षक सिद्धांत पुष्टी करतो, आणि चौथे असे केंद्रकीय चुंबकत्व बोलावते जे द्रव उचलण्यासाठी सुमारे दहा हजारपट दुर्बल आहे.)",
+        },
+      },
+      /*H4C*/
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 5 — Thermodynamics                                              */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "chemistry-11-thermodynamics",
+    subject: "CHEMISTRY",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 5 — Thermodynamics",
+      hi: "अध्याय 5 — ऊष्मागतिकी",
+      mr: "प्रकरण 5 — उष्मागतिकी",
+    },
+    name: {
+      en: "Chemical Thermodynamics",
+      hi: "रासायनिक ऊष्मागतिकी",
+      mr: "रासायनिक उष्मागतिकी",
+    },
+    summary: {
+      en: "The physics chapter of the same name asked what an engine may do; this one asks whether a reaction will happen at all. A heat measured at constant pressure because that is how a beaker works, a law that lets an unmeasurable heat be assembled from measurable ones, a count of arrangements that gives disorder a number, and a single combination of the two that decides — for a given temperature — which way a reaction will go and how far.",
+      hi: "इसी नाम के भौतिकी अध्याय ने पूछा था कि इंजन क्या कर सकता है; यह पूछता है कि अभिक्रिया होगी भी या नहीं। वह ऊष्मा जो अचर दाब पर नापी जाती है क्योंकि बीकर ऐसे ही चलता है, वह नियम जो अमापनीय ऊष्मा को मापनीय ऊष्माओं से जोड़ लेने देता है, व्यवस्थाओं की वह गिनती जो अव्यवस्था को संख्या दे देती है, और उन दोनों का वह एक संयोजन जो दिए ताप पर तय करता है कि अभिक्रिया किस ओर जाएगी और कितनी दूर।",
+      mr: "याच नावाच्या भौतिकी प्रकरणाने विचारले होते की इंजिन काय करू शकते; हे विचारते की अभिक्रिया घडेल का. ती उष्णता जी अचल दाबावर मोजली जाते कारण बीकर तसाच चालतो, तो नियम जो न मोजता येणारी उष्णता मोजता येणाऱ्यांतून जोडू देतो, मांडणींची ती मोजणी जी अव्यवस्थेला संख्या देते, आणि त्या दोघांचे ते एक संयोजन जे दिलेल्या तापमानावर ठरवते की अभिक्रिया कोणत्या दिशेने जाईल आणि किती दूर.",
+    },
+    position: 5,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "enthalpy-against-internal-energy",
+        name: {
+          en: "Enthalpy against internal energy",
+          hi: "एन्थैल्पी बनाम आंतरिक ऊर्जा",
+          mr: "एन्थाल्पी विरुद्ध आंतरिक ऊर्जा",
+        },
+        kind: "quantity",
+        prompt: {
+          en: "A reaction in a sealed bomb releases one figure and the same reaction in an open beaker releases another, because in the beaker some of the energy is spent pushing the atmosphere out of the way. Which pair is this?",
+          hi: "बंद बम में हुई अभिक्रिया एक आँकड़ा छोड़ती है और वही अभिक्रिया खुले बीकर में दूसरा, क्योंकि बीकर में कुछ ऊर्जा वायुमंडल को हटाने में ख़र्च होती है। यह कौन-सी जोड़ी है?",
+          mr: "बंद बॉम्बमधली अभिक्रिया एक आकडा सोडते आणि तीच अभिक्रिया उघड्या बीकरमध्ये दुसरा, कारण बीकरमध्ये काही ऊर्जा वातावरण बाजूला सारण्यात खर्च होते. ही कोणती जोडी?",
+        },
+        statement: {
+          en: "Internal energy change is the heat at constant volume and enthalpy change is the heat at constant pressure, and they differ by the work done against the surroundings: ΔH = ΔU + ΔnRT for gases.",
+          hi: "आंतरिक ऊर्जा-परिवर्तन अचर आयतन पर ऊष्मा है और एन्थैल्पी-परिवर्तन अचर दाब पर, और वे परिवेश के विरुद्ध किए कार्य से भिन्न हैं: गैसों के लिए ΔH = ΔU + ΔnRT.",
+          mr: "आंतरिक ऊर्जा-बदल म्हणजे अचल घनफळावरची उष्णता आणि एन्थाल्पी-बदल म्हणजे अचल दाबावरची, आणि ते परिसराविरुद्ध केलेल्या कार्याने वेगळे: वायूंसाठी ΔH = ΔU + ΔnRT.",
+        },
+        detail: {
+          en: "Enthalpy is the more useful of the two for chemistry because almost every reaction a chemist runs is open to the air, and open to the air means at constant pressure.",
+          hi: "रसायन के लिए दोनों में एन्थैल्पी अधिक उपयोगी है क्योंकि रसायनज्ञ जो भी अभिक्रिया चलाता है वह लगभग सदा हवा के लिए खुली होती है, और हवा के लिए खुली होने का अर्थ है अचर दाब पर।",
+          mr: "रसायनासाठी दोघांपैकी एन्थाल्पी अधिक उपयुक्त कारण रसायनशास्त्रज्ञ जी अभिक्रिया चालवतो ती जवळपास नेहमी हवेला उघडी असते, आणि हवेला उघडी असणे म्हणजे अचल दाबावर.",
+        },
+        extra: {
+          en: "The two are identical when no gas is made or consumed, so for a reaction entirely between solids and liquids the distinction quietly disappears.",
+          hi: "जब कोई गैस न बने न ख़र्च हो तब दोनों समान हैं, अतः पूरी तरह ठोसों और द्रवों के बीच की अभिक्रिया के लिए यह भेद चुपचाप ग़ायब हो जाता है।",
+          mr: "जेव्हा कोणताही वायू तयार होत नाही वा वापरला जात नाही तेव्हा दोन्ही सारखे, म्हणून पूर्णपणे घन आणि द्रवांमधल्या अभिक्रियेसाठी हा भेद गुपचूप नाहीसा होतो.",
+        },
+        pair: {
+          left: {
+            en: "The beaker's figure and the bomb's",
+            hi: "बीकर का आँकड़ा और बम का",
+            mr: "बीकरचा आकडा आणि बॉम्बचा",
+          },
+          right: {
+            en: "enthalpy against internal energy",
+            hi: "एन्थैल्पी बनाम आंतरिक ऊर्जा",
+            mr: "एन्थाल्पी विरुद्ध आंतरिक ऊर्जा",
+          },
+        },
+      },
+      {
+        id: "hesss-law",
+        name: {
+          en: "Hess's law",
+          hi: "हेस का नियम",
+          mr: "हेसचा नियम",
+        },
+        kind: "method",
+        prompt: {
+          en: "Carbon cannot be burnt to carbon monoxide cleanly enough to measure, so the figure is obtained by subtracting two combustions that can be measured — because the total depends only on where you start and finish. Which law is this?",
+          hi: "कार्बन को कार्बन मोनोऑक्साइड तक इतनी सफ़ाई से नहीं जलाया जा सकता कि नापा जा सके, अतः आँकड़ा उन दो दहनों को घटाकर मिलता है जो नापे जा सकते हैं — क्योंकि कुल केवल इस पर निर्भर है कि तुम कहाँ से चले और कहाँ पहुँचे। यह कौन-सा नियम है?",
+          mr: "कार्बन कार्बन मोनॉक्साइडपर्यंत इतक्या स्वच्छपणे जाळता येत नाही की मोजता येईल, म्हणून आकडा मोजता येणारी दोन ज्वलने वजा करून मिळतो — कारण एकूण केवळ तुम्ही कुठून निघालात आणि कुठे पोहोचलात यावर अवलंबून. हा कोणता नियम?",
+        },
+        statement: {
+          en: "Hess's law states that the enthalpy change of a reaction is the same whatever route is taken, so unknown enthalpies can be assembled by adding and subtracting known ones.",
+          hi: "हेस का नियम कहता है कि किसी अभिक्रिया का एन्थैल्पी-परिवर्तन वही रहता है, रास्ता चाहे जो लिया जाए, अतः अज्ञात एन्थैल्पियाँ ज्ञात एन्थैल्पियों को जोड़-घटाकर बनाई जा सकती हैं।",
+          mr: "हेसचा नियम सांगतो की अभिक्रियेचा एन्थाल्पी-बदल तोच राहतो, मार्ग कोणताही घेतला तरी, म्हणून अज्ञात एन्थाल्पी ज्ञात एन्थाल्पी जोडून-वजा करून बनवता येतात.",
+        },
+        detail: {
+          en: "It is the first law wearing chemical clothes: enthalpy is a state function, so a cycle that returns to its starting point must sum to zero or energy could be made from nothing.",
+          hi: "यह रासायनिक कपड़े पहने पहला नियम है: एन्थैल्पी अवस्था-फलन है, अतः जो चक्र अपने आरंभ-बिंदु पर लौटे उसका योग शून्य होना ही चाहिए, वरना शून्य से ऊर्जा बन जाती।",
+          mr: "हा रासायनिक कपडे घातलेला पहिला नियम: एन्थाल्पी हे अवस्था-फलन, म्हणून जे चक्र आपल्या आरंभबिंदूवर परतते त्याची बेरीज शून्य असावीच लागते, नाहीतर शून्यातून ऊर्जा बनली असती.",
+        },
+        extra: {
+          en: "It is what makes tables of standard enthalpies of formation worth compiling: from one number per compound, the enthalpy of any reaction between them can be calculated without ever running it.",
+          hi: "इसी से मानक संभवन एन्थैल्पियों की तालिकाएँ बनाना सार्थक है: प्रति यौगिक एक संख्या से, उनके बीच की किसी भी अभिक्रिया की एन्थैल्पी बिना उसे चलाए निकाली जा सकती है।",
+          mr: "यामुळेच प्रमाणित संभवन एन्थाल्पींचे तक्ते बनवणे सार्थक: प्रति संयुग एका संख्येतून, त्यांच्यातील कोणत्याही अभिक्रियेची एन्थाल्पी ती न चालवता काढता येते.",
+        },
+        pair: {
+          left: {
+            en: "Measuring what cannot be measured, by subtraction",
+            hi: "जो नापा नहीं जा सकता उसे घटाव से नापना",
+            mr: "जे मोजता येत नाही ते वजाबाकीने मोजणे",
+          },
+          right: {
+            en: "Hess's law",
+            hi: "हेस का नियम",
+            mr: "हेसचा नियम",
+          },
+        },
+      },
+      {
+        id: "bond-enthalpy",
+        name: {
+          en: "Bond enthalpy",
+          hi: "बंध एन्थैल्पी",
+          mr: "बंध एन्थाल्पी",
+        },
+        kind: "method",
+        prompt: {
+          en: "Breaking bonds always costs energy and making them always releases it, so a reaction's heat is the difference between what was spent taking the reactants apart and what was recovered assembling the products. Which quantity is this?",
+          hi: "बंध तोड़ने में सदा ऊर्जा लगती है और बनाने में सदा निकलती है, अतः अभिक्रिया की ऊष्मा उसका अंतर है जो अभिकारकों को अलग करने में ख़र्च हुआ और जो उत्पाद जोड़ने में वापस मिला। यह कौन-सी राशि है?",
+          mr: "बंध तोडायला नेहमी ऊर्जा लागते आणि बनवायला नेहमी निघते, म्हणून अभिक्रियेची उष्णता म्हणजे अभिक्रियाकारक वेगळे करण्यात खर्चलेले आणि उत्पादे जोडण्यात परत मिळालेले यांतील फरक. ही कोणती राशी?",
+        },
+        statement: {
+          en: "Bond enthalpy is the energy needed to break one mole of a given bond in the gas phase, and a reaction's enthalpy is the sum of the bonds broken minus the sum of the bonds formed.",
+          hi: "बंध एन्थैल्पी गैस प्रावस्था में किसी दिए बंध का एक मोल तोड़ने के लिए चाहिए ऊर्जा है, और अभिक्रिया की एन्थैल्पी टूटे बंधों का योग घटा बने बंधों का योग है।",
+          mr: "बंध एन्थाल्पी म्हणजे वायू अवस्थेत दिलेल्या बंधाचा एक मोल तोडायला लागणारी ऊर्जा, आणि अभिक्रियेची एन्थाल्पी म्हणजे तुटलेल्या बंधांची बेरीज वजा तयार झालेल्या बंधांची बेरीज.",
+        },
+        detail: {
+          en: "Tabulated values are averages across many molecules, so a bond enthalpy calculation is always approximate — the four C–H bonds in methane do not in fact take equal energy to break one after another.",
+          hi: "तालिका के मान अनेक अणुओं का औसत हैं, अतः बंध एन्थैल्पी की गणना सदा सन्निकट है — मेथेन के चार C–H बंध वस्तुतः एक के बाद एक तोड़ने में बराबर ऊर्जा नहीं लेते।",
+          mr: "तक्त्यातील मूल्ये अनेक रेणूंची सरासरी, म्हणून बंध एन्थाल्पीची गणना नेहमी अंदाजे — मिथेनचे चार C–H बंध प्रत्यक्षात एकामागून एक तोडायला समान ऊर्जा घेत नाहीत.",
+        },
+        extra: {
+          en: "It explains why combustion is so reliably exothermic: the bonds in carbon dioxide and water are unusually strong, so far more energy comes back than the fuel's own bonds cost to break.",
+          hi: "यही समझाता है कि दहन इतनी भरोसेमंद ढंग से ऊष्माक्षेपी क्यों है: कार्बन डाइऑक्साइड और पानी के बंध असामान्य रूप से प्रबल हैं, अतः ईंधन के अपने बंध तोड़ने की लागत से कहीं अधिक ऊर्जा वापस आती है।",
+          mr: "हेच समजावते की ज्वलन इतक्या विश्वासार्हपणे उष्माक्षेपी का: कार्बन डायऑक्साइड आणि पाण्याचे बंध असामान्यपणे प्रबळ, म्हणून इंधनाचे स्वतःचे बंध तोडण्याच्या खर्चाहून कितीतरी अधिक ऊर्जा परत येते.",
+        },
+        pair: {
+          left: {
+            en: "Spent taking apart, recovered putting together",
+            hi: "अलग करने में ख़र्च, जोड़ने में वापस",
+            mr: "वेगळे करण्यात खर्च, जोडण्यात परत",
+          },
+          right: {
+            en: "bond enthalpy",
+            hi: "बंध एन्थैल्पी",
+            mr: "बंध एन्थाल्पी",
+          },
+        },
+      },
+      {
+        id: "entropy-as-arrangements",
+        name: {
+          en: "Entropy as a count of arrangements",
+          hi: "व्यवस्थाओं की गिनती के रूप में एन्ट्रॉपी",
+          mr: "मांडणींची मोजणी म्हणून एन्ट्रॉपी",
+        },
+        kind: "quantity",
+        prompt: {
+          en: "A gas has vastly more ways of arranging its molecules than the same substance frozen into a crystal, and the quantity that turns that count into a number in joules per kelvin gives disorder a currency. Which quantity is this?",
+          hi: "गैस के पास अपने अणु जमाने के उतने ही पदार्थ के क्रिस्टल में जमे होने से कहीं अधिक तरीक़े हैं, और वह राशि जो उस गिनती को जूल प्रति केल्विन की संख्या में बदल देती है, अव्यवस्था को मुद्रा दे देती है। यह कौन-सी राशि है?",
+          mr: "वायूकडे आपले रेणू मांडण्याचे त्याच पदार्थाच्या स्फटिकात गोठलेल्या स्थितीहून कितीतरी अधिक मार्ग असतात, आणि ती राशी जी त्या मोजणीला ज्यूल प्रति केल्विनच्या संख्येत बदलते ती अव्यवस्थेला चलन देते. ही कोणती राशी?",
+        },
+        statement: {
+          en: "Entropy measures the number of microscopic arrangements a system can adopt, so it rises with temperature, with volume, and sharply on melting and again on boiling.",
+          hi: "एन्ट्रॉपी उन सूक्ष्म व्यवस्थाओं की संख्या नापती है जो निकाय अपना सकता है, अतः वह ताप के साथ, आयतन के साथ, और गलन पर तथा फिर क्वथन पर तीव्रता से बढ़ती है।",
+          mr: "एन्ट्रॉपी संच स्वीकारू शकेल अशा सूक्ष्म मांडणींची संख्या मोजते, म्हणून ती तापमानासोबत, घनफळासोबत, आणि द्रवीभवनावर व पुन्हा उकळण्यावर झपाट्याने वाढते.",
+        },
+        detail: {
+          en: "The rise on boiling is far larger than on melting, because a gas's molecules are free to be anywhere in the container while a liquid's are still touching their neighbours.",
+          hi: "क्वथन पर वृद्धि गलन की तुलना में कहीं बड़ी है, क्योंकि गैस के अणु पात्र में कहीं भी होने को स्वतंत्र हैं जबकि द्रव के अभी भी अपने पड़ोसियों को छू रहे हैं।",
+          mr: "उकळण्यावरची वाढ द्रवीभवनाहून कितीतरी मोठी, कारण वायूचे रेणू भांड्यात कुठेही असायला मोकळे तर द्रवाचे अजूनही आपल्या शेजाऱ्यांना स्पर्श करत आहेत.",
+        },
+        extra: {
+          en: "A perfect crystal at absolute zero has exactly one arrangement and therefore zero entropy, which is the third law and the reason entropies can be quoted as absolute values rather than as changes.",
+          hi: "परम शून्य पर पूर्ण क्रिस्टल की ठीक एक व्यवस्था है और इसलिए एन्ट्रॉपी शून्य, यही तीसरा नियम है और यही कारण कि एन्ट्रॉपियाँ परिवर्तनों के बजाय निरपेक्ष मानों के रूप में बताई जा सकती हैं।",
+          mr: "निरपेक्ष शून्यावर परिपूर्ण स्फटिकाची नेमकी एक मांडणी आणि म्हणून एन्ट्रॉपी शून्य, हाच तिसरा नियम आणि हेच कारण की एन्ट्रॉपी बदलांऐवजी निरपेक्ष मूल्यांच्या रूपात सांगता येतात.",
+        },
+        pair: {
+          left: {
+            en: "One arrangement only, and therefore zero",
+            hi: "केवल एक व्यवस्था, और इसलिए शून्य",
+            mr: "केवळ एक मांडणी, आणि म्हणून शून्य",
+          },
+          right: {
+            en: "entropy as a count of arrangements",
+            hi: "व्यवस्थाओं की गिनती के रूप में एन्ट्रॉपी",
+            mr: "मांडणींची मोजणी म्हणून एन्ट्रॉपी",
+          },
+        },
+      },
+      {
+        id: "gibbs-free-energy",
+        name: {
+          en: "Gibbs free energy",
+          hi: "गिब्स मुक्त ऊर्जा",
+          mr: "गिब्स मुक्त ऊर्जा",
+        },
+        kind: "criterion",
+        prompt: {
+          en: "Ice melts above zero and freezes below it although the enthalpy change is the same size either way, because one term is multiplied by the temperature and the other is not. Which combination decides?",
+          hi: "बर्फ़ शून्य से ऊपर पिघलती है और नीचे जमती है यद्यपि एन्थैल्पी-परिवर्तन दोनों ओर उतना ही है, क्योंकि एक पद ताप से गुणा होता है और दूसरा नहीं। कौन-सा संयोजन तय करता है?",
+          mr: "बर्फ शून्याच्या वर वितळतो आणि खाली गोठतो जरी एन्थाल्पी-बदल दोन्ही बाजूंनी तितकाच असला तरी, कारण एक पद तापमानाने गुणले जाते आणि दुसरे नाही. कोणते संयोजन ठरवते?",
+        },
+        statement: {
+          en: "The Gibbs free energy change ΔG = ΔH − TΔS decides spontaneity: a process goes forward of its own accord when ΔG is negative and not otherwise.",
+          hi: "गिब्स मुक्त ऊर्जा-परिवर्तन ΔG = ΔH − TΔS स्वतःस्फूर्तता तय करता है: प्रक्रिया अपने आप आगे तब बढ़ती है जब ΔG ऋणात्मक हो, अन्यथा नहीं।",
+          mr: "गिब्स मुक्त ऊर्जा-बदल ΔG = ΔH − TΔS स्वयंस्फूर्तता ठरवतो: प्रक्रिया आपोआप पुढे तेव्हा जाते जेव्हा ΔG ऋण असतो, अन्यथा नाही.",
+        },
+        detail: {
+          en: "The two terms can pull in opposite directions, and then temperature decides which wins — which is why a reaction that refuses to go at room temperature may run readily in a furnace.",
+          hi: "दोनों पद विपरीत दिशाओं में खींच सकते हैं, और तब ताप तय करता है कि कौन जीते — इसीलिए जो अभिक्रिया कमरे के ताप पर मना कर देती है वह भट्ठी में सहज चल सकती है।",
+          mr: "दोन्ही पदे विरुद्ध दिशांना ओढू शकतात, आणि मग तापमान कोण जिंकते ते ठरवते — म्हणूनच जी अभिक्रिया खोलीच्या तापमानावर नकार देते ती भट्टीत सहज चालू शकते.",
+        },
+        extra: {
+          en: "Spontaneous does not mean fast: diamond turning to graphite has a negative ΔG at ordinary temperatures and takes longer than the age of the universe, because thermodynamics says nothing about rate.",
+          hi: "स्वतःस्फूर्त का अर्थ तेज़ नहीं: हीरे का ग्रेफ़ाइट बनना साधारण तापों पर ऋणात्मक ΔG रखता है और ब्रह्मांड की आयु से अधिक समय लेता है, क्योंकि ऊष्मागतिकी दर के बारे में कुछ नहीं कहती।",
+          mr: "स्वयंस्फूर्त म्हणजे वेगवान नव्हे: हिऱ्याचे ग्रॅफाइट होणे सामान्य तापमानांवर ऋण ΔG राखते आणि विश्वाच्या वयाहून अधिक काळ घेते, कारण उष्मागतिकी दराबद्दल काहीही सांगत नाही.",
+        },
+        pair: {
+          left: {
+            en: "Negative, and still slower than the universe is old",
+            hi: "ऋणात्मक, और फिर भी ब्रह्मांड की आयु से धीमा",
+            mr: "ऋण, आणि तरीही विश्वाच्या वयाहून सावकाश",
+          },
+          right: {
+            en: "Gibbs free energy",
+            hi: "गिब्स मुक्त ऊर्जा",
+            mr: "गिब्स मुक्त ऊर्जा",
+          },
+        },
+      },
+      {
+        id: "standard-state-convention",
+        name: {
+          en: "The standard state convention",
+          hi: "मानक अवस्था परिपाटी",
+          mr: "प्रमाणित अवस्था संकेत",
+        },
+        kind: "criterion",
+        prompt: {
+          en: "The enthalpy of an element in its most stable form at one bar is declared to be zero, not because it holds no energy but because only differences can ever be measured. Which agreement is this?",
+          hi: "एक बार पर अपने सबसे स्थिर रूप में तत्व की एन्थैल्पी शून्य घोषित की जाती है, इसलिए नहीं कि उसमें ऊर्जा नहीं बल्कि इसलिए कि केवल अंतर ही कभी नापे जा सकते हैं। यह कौन-सी सहमति है?",
+          mr: "एक बारवर आपल्या सर्वांत स्थिर रूपातील मूलद्रव्याची एन्थाल्पी शून्य घोषित केली जाते, त्यात ऊर्जा नाही म्हणून नव्हे तर केवळ फरकच कधी मोजता येतात म्हणून. हा कोणता करार?",
+        },
+        statement: {
+          en: "By convention the standard enthalpy of formation of an element in its most stable state at one bar is zero, which gives every compound's enthalpy a fixed reference to be quoted against.",
+          hi: "परिपाटी से एक बार पर अपनी सबसे स्थिर अवस्था में तत्व की मानक संभवन एन्थैल्पी शून्य है, जिससे हर यौगिक की एन्थैल्पी को बताने के लिए नियत संदर्भ मिल जाता है।",
+          mr: "संकेताने एक बारवर आपल्या सर्वांत स्थिर अवस्थेतील मूलद्रव्याची प्रमाणित संभवन एन्थाल्पी शून्य, ज्यातून प्रत्येक संयुगाच्या एन्थाल्पीला सांगण्यासाठी ठरलेला संदर्भ मिळतो.",
+        },
+        detail: {
+          en: "It is the same freedom as choosing where to put the zero of gravitational potential energy: nothing observable changes, and the choice is made for convenience alone.",
+          hi: "यह वही स्वतंत्रता है जो गुरुत्वीय स्थितिज ऊर्जा का शून्य कहाँ रखा जाए चुनने में है: कुछ भी प्रेक्षणीय नहीं बदलता, और चुनाव केवल सुविधा के लिए किया जाता है।",
+          mr: "हीच ती स्वतंत्रता जी गुरुत्वीय स्थितिज ऊर्जेचे शून्य कुठे ठेवायचे हे निवडण्यात असते: काहीही निरीक्षणीय बदलत नाही, आणि निवड केवळ सोयीसाठी केली जाते.",
+        },
+        extra: {
+          en: "The 'most stable form' clause matters: graphite is the standard state of carbon and diamond is not, so diamond has a small positive enthalpy of formation even though it is an element.",
+          hi: "'सबसे स्थिर रूप' वाला उपवाक्य मायने रखता है: कार्बन की मानक अवस्था ग्रेफ़ाइट है, हीरा नहीं, अतः हीरे की संभवन एन्थैल्पी थोड़ी धनात्मक है यद्यपि वह तत्व है।",
+          mr: "'सर्वांत स्थिर रूप' हे उपवाक्य महत्त्वाचे: कार्बनची प्रमाणित अवस्था ग्रॅफाइट, हिरा नव्हे, म्हणून हिऱ्याची संभवन एन्थाल्पी थोडी धन आहे जरी तो मूलद्रव्य असला तरी.",
+        },
+        pair: {
+          left: {
+            en: "Graphite at zero and diamond just above it",
+            hi: "ग्रेफ़ाइट शून्य पर और हीरा उससे ज़रा ऊपर",
+            mr: "ग्रॅफाइट शून्यावर आणि हिरा त्याहून जरा वर",
+          },
+          right: {
+            en: "the standard state convention",
+            hi: "मानक अवस्था परिपाटी",
+            mr: "प्रमाणित अवस्था संकेत",
+          },
+        },
+      },
+      /*F5C*/
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Ammonium chloride dissolves in water and the beaker goes noticeably cold, so the process absorbs heat. A student says an endothermic process cannot happen on its own. Explain why it does, and what would happen at a much lower temperature.",
+          hi: "अमोनियम क्लोराइड पानी में घुलता है और बीकर साफ़ तौर पर ठंडा हो जाता है, अतः प्रक्रिया ऊष्मा सोखती है। एक विद्यार्थी कहता है कि ऊष्माशोषी प्रक्रिया अपने आप नहीं हो सकती। समझाओ वह होती क्यों है, और कहीं कम ताप पर क्या होता।",
+          mr: "अमोनियम क्लोराइड पाण्यात विरघळते आणि बीकर स्पष्टपणे थंड होतो, म्हणून प्रक्रिया उष्णता शोषते. एक विद्यार्थी म्हणतो की उष्माशोषी प्रक्रिया आपोआप होऊ शकत नाही. ती का होते, आणि कितीतरी कमी तापमानावर काय झाले असते ते समजावा.",
+        },
+        choices: [
+          {
+            en: "Enthalpy is not the criterion; ΔG = ΔH − TΔS is. Dissolving breaks an ordered crystal into ions dispersed through the solvent, so ΔS is strongly positive, and at room temperature the TΔS term outweighs the positive ΔH and makes ΔG negative. Cool the water far enough and TΔS shrinks until ΔH dominates, at which point ΔG turns positive and the salt stops dissolving — which is exactly why solubility of such salts falls as temperature falls",
+            hi: "कसौटी एन्थैल्पी नहीं; ΔG = ΔH − TΔS है। घुलना व्यवस्थित क्रिस्टल को तोड़कर आयनों को विलायक भर बिखेर देता है, अतः ΔS प्रबल धनात्मक है, और कमरे के ताप पर TΔS पद धनात्मक ΔH पर भारी पड़कर ΔG को ऋणात्मक बना देता है। पानी को पर्याप्त ठंडा करो और TΔS तब तक घटता है जब तक ΔH हावी न हो जाए, जिस बिंदु पर ΔG धनात्मक हो जाता है और लवण घुलना बंद कर देता है — ठीक इसीलिए ऐसे लवणों की विलेयता ताप गिरने पर गिरती है",
+            mr: "कसोटी एन्थाल्पी नव्हे; ΔG = ΔH − TΔS आहे. विरघळणे व्यवस्थित स्फटिक तोडून आयन विद्रावकभर विखुरते, म्हणून ΔS प्रबळ धन, आणि खोलीच्या तापमानावर TΔS पद धन ΔH वर वरचढ ठरून ΔG ऋण बनवते. पाणी पुरेसे थंड करा आणि TΔS तोवर घटते जोवर ΔH वरचढ होत नाही, ज्या बिंदूवर ΔG धन होतो आणि क्षार विरघळणे थांबवते — नेमके म्हणूनच अशा क्षारांची विद्राव्यता तापमान घटताना घटते",
+          },
+          {
+            en: "The student is right: the beaker must actually be warming, and the sensation of cold is a trick of evaporation from the outside of the glass",
+            hi: "विद्यार्थी सही है: बीकर वस्तुतः गरम हो रहा होगा, और ठंड की अनुभूति काँच के बाहर से वाष्पन का छल है",
+            mr: "विद्यार्थी बरोबर: बीकर प्रत्यक्षात तापत असणार, आणि थंडीची संवेदना काचेच्या बाहेरून बाष्पीभवनाची फसवणूक",
+          },
+          {
+            en: "It happens because water supplies the energy, so the process is really exothermic once the solvent is included in the accounting",
+            hi: "यह इसलिए होता है कि ऊर्जा पानी देता है, अतः विलायक को हिसाब में लेने पर प्रक्रिया वस्तुतः ऊष्माक्षेपी है",
+            mr: "हे यासाठी घडते की ऊर्जा पाणी पुरवते, म्हणून विद्रावक हिशोबात घेतल्यास प्रक्रिया प्रत्यक्षात उष्माक्षेपी आहे",
+          },
+          {
+            en: "Cooling the water would make the salt dissolve faster, since a lower temperature always favours an endothermic process",
+            hi: "पानी ठंडा करने से लवण तेज़ी से घुलता, क्योंकि नीचा ताप सदा ऊष्माशोषी प्रक्रिया के पक्ष में होता है",
+            mr: "पाणी थंड केल्याने क्षार वेगाने विरघळला असता, कारण कमी तापमान नेहमी उष्माशोषी प्रक्रियेच्या बाजूने असते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The student is applying a rule that was true in an earlier chapter and has just been superseded. Up to now 'exothermic' has been a good proxy for 'happens' — most spontaneous reactions do release heat, and it is a useful first guess. But it is only a proxy, and this experiment is the counter-example. The real criterion is the Gibbs free energy: ΔG = ΔH − TΔS, and a process is spontaneous exactly when ΔG is negative. Two terms, and they can disagree. For ammonium chloride dissolving, ΔH is positive at about +15 kJ/mol — energy must be found to pull the ions out of a crystal lattice, and the hydration of those ions does not quite pay it back. That is why the beaker cools: the heat is taken from the water itself. But ΔS is also positive, and substantially so. A crystal is one of the most ordered arrangements matter takes: every ion in a fixed place in a repeating lattice. Dissolving it scatters those ions randomly through the liquid, and the number of available arrangements rises enormously. At 298 K the TΔS term is larger than ΔH, so ΔG comes out negative and the salt dissolves of its own accord — driven entirely by entropy, with enthalpy opposing throughout. Now the temperature question, which the fourth option gets backwards. The entropy term carries a factor of T, and the enthalpy term does not. Lower the temperature and TΔS shrinks while ΔH stays put, so the balance tips towards ΔH. Below some temperature the positive ΔH wins, ΔG turns positive, and dissolution stops being spontaneous. This is not hypothetical: the solubility of ammonium chloride falls steadily as water is cooled, which is exactly how such salts are purified by recrystallisation — dissolve hot, cool, and the crystals come back. The general pattern is worth tabulating. When ΔH is negative and ΔS positive, a process is spontaneous at every temperature. When both are positive, it needs a high temperature. When both are negative, it needs a low one. When ΔH is positive and ΔS negative, it never happens at all. Every reaction in chemistry falls into one of those four boxes, and knowing which one predicts how heating will change its behaviour without any further measurement. (The second answer denies a reading anyone can take with a thermometer, and the third smuggles the surroundings into the system to preserve a rule that does not need preserving.)",
+          hi: "विद्यार्थी ऐसा नियम लगा रहा है जो पिछले अध्याय में सच था और अभी-अभी बदल दिया गया है। अब तक 'ऊष्माक्षेपी' 'होता है' का अच्छा एवजी रहा है — अधिकांश स्वतःस्फूर्त अभिक्रियाएँ ऊष्मा छोड़ती ही हैं, और यह उपयोगी पहला अनुमान है। पर वह केवल एवजी है, और यही प्रयोग प्रति-उदाहरण है। असली कसौटी गिब्स मुक्त ऊर्जा है: ΔG = ΔH − TΔS, और प्रक्रिया ठीक तब स्वतःस्फूर्त है जब ΔG ऋणात्मक हो। दो पद, और वे असहमत हो सकते हैं। अमोनियम क्लोराइड के घुलने के लिए ΔH लगभग +15 kJ/mol धनात्मक है — क्रिस्टल जालक से आयन खींचने को ऊर्जा जुटानी पड़ती है, और उन आयनों का जलयोजन उसे पूरी तरह नहीं चुकाता। इसीलिए बीकर ठंडा होता है: ऊष्मा स्वयं पानी से ली जाती है। पर ΔS भी धनात्मक है, और काफ़ी। क्रिस्टल द्रव्य की सबसे व्यवस्थित व्यवस्थाओं में से एक है: दोहराते जालक में हर आयन नियत स्थान पर। उसे घोलना उन आयनों को द्रव भर यादृच्छिक बिखेर देता है, और उपलब्ध व्यवस्थाओं की संख्या विशाल रूप से बढ़ जाती है। 298 K पर TΔS पद ΔH से बड़ा है, अतः ΔG ऋणात्मक निकलता है और लवण अपने आप घुल जाता है — पूरी तरह एन्ट्रॉपी से चालित, जबकि एन्थैल्पी पूरे समय विरोध करती है। अब ताप वाला प्रश्न, जिसे चौथा विकल्प उलटा कर देता है। एन्ट्रॉपी पद T का गुणक ढोता है, और एन्थैल्पी पद नहीं। ताप घटाओ और TΔS सिकुड़ता है जबकि ΔH टिका रहता है, अतः तुला ΔH की ओर झुक जाती है। किसी ताप से नीचे धनात्मक ΔH जीत जाता है, ΔG धनात्मक हो जाता है, और घुलना स्वतःस्फूर्त होना बंद कर देता है। यह काल्पनिक नहीं: पानी ठंडा होते-होते अमोनियम क्लोराइड की विलेयता लगातार गिरती है, और ठीक इसी तरह ऐसे लवण पुनःक्रिस्टलन से शुद्ध किए जाते हैं — गरम में घोलो, ठंडा करो, और क्रिस्टल वापस आ जाते हैं। सामान्य प्रतिरूप तालिकाबद्ध करने योग्य है। जब ΔH ऋणात्मक और ΔS धनात्मक हो, प्रक्रिया हर ताप पर स्वतःस्फूर्त है। जब दोनों धनात्मक हों, उसे ऊँचा ताप चाहिए। जब दोनों ऋणात्मक हों, नीचा। जब ΔH धनात्मक और ΔS ऋणात्मक हो, वह कभी होती ही नहीं। रसायन की हर अभिक्रिया इन्हीं चार डिब्बों में से एक में पड़ती है, और कौन-सा, यह जान लेना बिना किसी और माप के बता देता है कि गरम करने से उसका व्यवहार कैसे बदलेगा। (दूसरा उत्तर ऐसे पाठ्यांक को नकारता है जो कोई भी तापमापी से ले सकता है, और तीसरा ऐसे नियम को बचाने के लिए परिवेश को निकाय में तस्करी से भेज देता है जिसे बचाने की ज़रूरत ही नहीं।)",
+          mr: "विद्यार्थी असा नियम लावत आहे जो मागच्या प्रकरणात खरा होता आणि आत्ताच बदलला गेला आहे. आतापर्यंत 'उष्माक्षेपी' हा 'घडते' चा चांगला पर्याय होता — बहुतांश स्वयंस्फूर्त अभिक्रिया उष्णता सोडतातच, आणि हा उपयुक्त पहिला अंदाज. पण तो केवळ पर्याय, आणि हाच प्रयोग प्रतिउदाहरण. खरी कसोटी गिब्स मुक्त ऊर्जा: ΔG = ΔH − TΔS, आणि प्रक्रिया नेमकी तेव्हा स्वयंस्फूर्त जेव्हा ΔG ऋण असतो. दोन पदे, आणि ती असहमत असू शकतात. अमोनियम क्लोराइड विरघळण्यासाठी ΔH सुमारे +15 kJ/mol धन — स्फटिक जालकातून आयन ओढायला ऊर्जा जमवावी लागते, आणि त्या आयनांचे जलयोजन ती पूर्णपणे भरून काढत नाही. म्हणूनच बीकर थंड होतो: उष्णता स्वतः पाण्यातून घेतली जाते. पण ΔS ही धन आहे, आणि बरीच. स्फटिक ही द्रव्याच्या सर्वांत व्यवस्थित मांडणींपैकी एक: पुनरावृत्त जालकात प्रत्येक आयन ठरलेल्या जागी. तो विरघळवणे ते आयन द्रवभर यादृच्छिक विखुरते, आणि उपलब्ध मांडणींची संख्या प्रचंड वाढते. 298 K वर TΔS पद ΔH हून मोठे, म्हणून ΔG ऋण निघतो आणि क्षार आपोआप विरघळतो — पूर्णपणे एन्ट्रॉपीने चालवलेला, तर एन्थाल्पी पूर्ण काळ विरोध करत. आता तापमानाचा प्रश्न, जो चौथा पर्याय उलटा करतो. एन्ट्रॉपी पद T चा गुणक वाहते, आणि एन्थाल्पी पद नाही. तापमान घटवा आणि TΔS आकुंचते तर ΔH जागेवर राहते, म्हणून तराजू ΔH कडे झुकतो. एका तापमानाखाली धन ΔH जिंकतो, ΔG धन होतो, आणि विरघळणे स्वयंस्फूर्त असणे थांबते. हे काल्पनिक नाही: पाणी थंड होताना अमोनियम क्लोराइडची विद्राव्यता सतत घटते, आणि नेमक्या याच पद्धतीने असे क्षार पुनःस्फटिकीकरणाने शुद्ध केले जातात — गरमात विरघळवा, थंड करा, आणि स्फटिक परत येतात. सामान्य आकृतिबंध तक्त्यात मांडण्याजोगा. जेव्हा ΔH ऋण आणि ΔS धन, प्रक्रिया प्रत्येक तापमानावर स्वयंस्फूर्त. जेव्हा दोन्ही धन, तिला उच्च तापमान लागते. जेव्हा दोन्ही ऋण, कमी. जेव्हा ΔH धन आणि ΔS ऋण, ती कधी घडतच नाही. रसायनातील प्रत्येक अभिक्रिया याच चार खोक्यांपैकी एकात पडते, आणि कोणत्या हे जाणणे कोणत्याही पुढील मापाशिवाय सांगते की तापवल्याने तिचे वर्तन कसे बदलेल. (दुसरे उत्तर असे वाचन नाकारते जे कोणीही तापमापकाने घेऊ शकतो, आणि तिसरे जो नियम वाचवण्याची गरजच नाही तो वाचवायला परिसराला संचात चोरून पाठवते.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The synthesis of ammonia from nitrogen and hydrogen has ΔH = −92 kJ/mol and ΔS = −0.198 kJ/mol/K. It is nevertheless run industrially at about 700 K, where those figures make ΔG positive. Explain the apparent contradiction.",
+          hi: "नाइट्रोजन और हाइड्रोजन से अमोनिया के संश्लेषण का ΔH = −92 kJ/mol और ΔS = −0.198 kJ/mol/K है। फिर भी वह औद्योगिक रूप से लगभग 700 K पर चलाया जाता है, जहाँ ये आँकड़े ΔG को धनात्मक बना देते हैं। आभासी विरोधाभास समझाओ।",
+          mr: "नायट्रोजन आणि हायड्रोजनपासून अमोनियाच्या संश्लेषणाचा ΔH = −92 kJ/mol आणि ΔS = −0.198 kJ/mol/K आहे. तरीही ते औद्योगिकरीत्या सुमारे 700 K वर चालवले जाते, जिथे हे आकडे ΔG धन बनवतात. आभासी विरोधाभास समजावा.",
+        },
+        choices: [
+          {
+            en: "Thermodynamics and kinetics are answering different questions. ΔG says how far a reaction can go, and at 700 K it is indeed unfavourable — the equilibrium yield is poor. But at 298 K, where ΔG is comfortably negative, the nitrogen triple bond is so strong that the reaction is immeasurably slow. The high temperature is a deliberate sacrifice of yield for rate, and the loss is recovered by running at 200 atmospheres, which shifts the equilibrium back by Le Chatelier since four moles of gas become two",
+            hi: "ऊष्मागतिकी और बलगतिकी भिन्न प्रश्नों के उत्तर दे रही हैं। ΔG बताता है कि अभिक्रिया कितनी दूर जा सकती है, और 700 K पर वह सचमुच प्रतिकूल है — साम्य लब्धि ख़राब है। पर 298 K पर, जहाँ ΔG आराम से ऋणात्मक है, नाइट्रोजन का त्रिबंध इतना प्रबल है कि अभिक्रिया अमापनीय रूप से धीमी है। ऊँचा ताप लब्धि की जानबूझकर दी गई क़ुर्बानी है दर के लिए, और हानि 200 वायुमंडल पर चलाकर वापस पाई जाती है, जो ले शातेलिए से साम्य वापस खिसका देता है क्योंकि चार मोल गैस दो हो जाती है",
+            mr: "उष्मागतिकी आणि गतिकी वेगळ्या प्रश्नांची उत्तरे देत आहेत. ΔG सांगतो की अभिक्रिया किती दूर जाऊ शकते, आणि 700 K वर ती खरोखर प्रतिकूल — समतोल उत्पन्न वाईट. पण 298 K वर, जिथे ΔG आरामात ऋण, नायट्रोजनचा त्रिबंध इतका प्रबळ की अभिक्रिया न मोजण्याइतकी सावकाश. उच्च तापमान ही उत्पन्नाची मुद्दाम दिलेली कुर्बानी दरासाठी, आणि हानी 200 वातावरणांवर चालवून परत मिळवली जाते, जे ल शातेलिएने समतोल परत सरकवते कारण चार मोल वायू दोन होतात",
+          },
+          {
+            en: "The figures must be wrong, since a reaction cannot be run at a temperature where its ΔG is positive",
+            hi: "आँकड़े ग़लत होंगे, क्योंकि जिस ताप पर ΔG धनात्मक हो उस पर अभिक्रिया चलाई नहीं जा सकती",
+            mr: "आकडे चुकीचे असणार, कारण ज्या तापमानावर ΔG धन असतो त्यावर अभिक्रिया चालवता येत नाही",
+          },
+          {
+            en: "The catalyst changes ΔG to a negative value, which is what catalysts are for",
+            hi: "उत्प्रेरक ΔG को ऋणात्मक मान में बदल देता है, और उत्प्रेरक इसी के लिए होते हैं",
+            mr: "उत्प्रेरक ΔG ला ऋण मूल्यात बदलतो, आणि उत्प्रेरक याचसाठी असतात",
+          },
+          {
+            en: "Raising the temperature always increases the yield of an exothermic reaction, so 700 K is chosen for yield rather than rate",
+            hi: "ताप बढ़ाने से ऊष्माक्षेपी अभिक्रिया की लब्धि सदा बढ़ती है, अतः 700 K दर के लिए नहीं लब्धि के लिए चुना गया है",
+            mr: "तापमान वाढवल्याने उष्माक्षेपी अभिक्रियेचे उत्पन्न नेहमी वाढते, म्हणून 700 K दरासाठी नव्हे तर उत्पन्नासाठी निवडले आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Do the arithmetic first, because it confirms rather than dissolves the puzzle. At 298 K, ΔG = −92 − (298)(−0.198) = −92 + 59 = −33 kJ/mol: comfortably spontaneous. At 700 K, ΔG = −92 − (700)(−0.198) = −92 + 139 = +47 kJ/mol: distinctly unfavourable. The industrial process really is run in the unfavourable region, and the figures are not in error. The resolution is that ΔG answers only one of the two questions a chemical engineer must ask. It says where equilibrium lies — how much ammonia can be present when the reaction has finished changing. It says nothing whatever about how long that will take. Rate is governed by activation energy, and the barrier here is the nitrogen–nitrogen triple bond at 941 kJ/mol, one of the strongest in chemistry. At room temperature the fraction of collisions carrying that much energy is so small that a mixture of nitrogen and hydrogen can sit indefinitely with no detectable ammonia forming. A perfect yield reached in ten thousand years is worth nothing. So Haber's process trades one against the other. Raising the temperature to about 700 K makes the reaction fast enough to be useful, at the cost of a poor equilibrium position. Then the yield is bought back by a second lever: pressure. The reaction takes four moles of gas to two, so compressing the mixture to around 200 atmospheres shifts the equilibrium towards the side with fewer molecules, exactly as Le Chatelier's principle requires. And an iron catalyst is added, which lowers the activation barrier and so allows a lower temperature than would otherwise be needed — recovering some of the sacrificed yield. Note carefully what the catalyst does not do, since the third option gets this wrong. A catalyst provides an easier path between the same two states. It changes the rate, and it changes the forward and reverse rates equally, so the position of equilibrium is untouched. ΔG is a difference between initial and final states and cannot depend on the route, by exactly the argument that gives Hess's law. A catalyst that shifted an equilibrium would be a perpetual-motion machine. The general lesson is the one worth carrying out of both thermodynamics chapters. Thermodynamics tells you whether something is possible and how far it can go; kinetics tells you whether it will happen this century. Neither answers the other's question, and an industrial process is almost always a negotiated settlement between them. (The fourth answer inverts Le Chatelier: heating an exothermic reaction always lowers its yield, which is precisely the cost being paid here.)",
+          hi: "पहले गणना करो, क्योंकि वह पहेली घोलने के बजाय पुष्ट करती है। 298 K पर, ΔG = −92 − (298)(−0.198) = −92 + 59 = −33 kJ/mol: आराम से स्वतःस्फूर्त। 700 K पर, ΔG = −92 − (700)(−0.198) = −92 + 139 = +47 kJ/mol: स्पष्ट रूप से प्रतिकूल। औद्योगिक प्रक्रम सचमुच प्रतिकूल क्षेत्र में चलाया जाता है, और आँकड़े ग़लत नहीं। समाधान यह कि रासायनिक अभियंता को जो दो प्रश्न पूछने हैं ΔG उनमें से केवल एक का उत्तर देता है। वह बताता है कि साम्य कहाँ है — अभिक्रिया के बदलना बंद कर देने पर कितनी अमोनिया मौजूद हो सकती है। वह इस बारे में कुछ भी नहीं कहता कि उसमें कितना समय लगेगा। दर सक्रियण ऊर्जा से शासित है, और यहाँ बाधा नाइट्रोजन-नाइट्रोजन त्रिबंध है, 941 kJ/mol पर, रसायन के सबसे प्रबल बंधों में से एक। कमरे के ताप पर उतनी ऊर्जा ढोती टक्करों का अंश इतना छोटा है कि नाइट्रोजन और हाइड्रोजन का मिश्रण अनिश्चित काल बैठा रह सकता है और पकड़ने योग्य कोई अमोनिया नहीं बनती। दस हज़ार वर्ष में मिली पूर्ण लब्धि किसी काम की नहीं। अतः हैबर प्रक्रम एक का सौदा दूसरे से करता है। ताप को लगभग 700 K तक बढ़ाना अभिक्रिया को उपयोगी होने भर तेज़ बना देता है, ख़राब साम्य-स्थिति की क़ीमत पर। फिर लब्धि दूसरे लीवर से वापस ख़रीदी जाती है: दाब। अभिक्रिया चार मोल गैस को दो में ले जाती है, अतः मिश्रण को लगभग 200 वायुमंडल तक संपीड़ित करना साम्य को कम अणुओं वाली ओर खिसका देता है, ठीक जैसा ले शातेलिए का सिद्धांत माँगता है। और लोहे का उत्प्रेरक जोड़ा जाता है, जो सक्रियण बाधा घटाता है और इसलिए उससे नीचा ताप चलने देता है जो अन्यथा चाहिए होता — क़ुर्बान की गई लब्धि का कुछ हिस्सा वापस पाकर। ध्यान से देखो उत्प्रेरक क्या नहीं करता, क्योंकि तीसरा विकल्प यही ग़लत करता है। उत्प्रेरक उन्हीं दो अवस्थाओं के बीच आसान रास्ता देता है। वह दर बदलता है, और अग्र तथा प्रतीप दोनों दरें बराबर बदलता है, अतः साम्य की स्थिति अछूती रहती है। ΔG आरंभिक और अंतिम अवस्थाओं का अंतर है और रास्ते पर निर्भर हो ही नहीं सकता, ठीक उसी तर्क से जो हेस का नियम देता है। जो उत्प्रेरक साम्य खिसका दे वह सतत-गति यंत्र होता। सामान्य सबक़ वही है जो दोनों ऊष्मागतिकी अध्यायों से ले जाने योग्य है। ऊष्मागतिकी बताती है कि कुछ संभव है या नहीं और कितनी दूर जा सकता है; बलगतिकी बताती है कि वह इस शताब्दी में होगा या नहीं। कोई भी दूसरे के प्रश्न का उत्तर नहीं देती, और औद्योगिक प्रक्रम लगभग सदा उनके बीच बातचीत से हुआ समझौता है। (चौथा उत्तर ले शातेलिए को उलट देता है: ऊष्माक्षेपी अभिक्रिया को गरम करना उसकी लब्धि सदा घटाता है, और यही वह क़ीमत है जो यहाँ चुकाई जा रही है।)",
+          mr: "आधी आकडेमोड करा, कारण ती कोडे विरघळवण्याऐवजी पुष्ट करते. 298 K वर, ΔG = −92 − (298)(−0.198) = −92 + 59 = −33 kJ/mol: आरामात स्वयंस्फूर्त. 700 K वर, ΔG = −92 − (700)(−0.198) = −92 + 139 = +47 kJ/mol: स्पष्टपणे प्रतिकूल. औद्योगिक प्रक्रिया खरोखर प्रतिकूल प्रदेशात चालवली जाते, आणि आकडे चुकीचे नाहीत. निराकरण हे की रासायनिक अभियंत्याला जे दोन प्रश्न विचारायचे त्यांपैकी ΔG केवळ एकाचे उत्तर देतो. तो सांगतो की समतोल कुठे आहे — अभिक्रिया बदलणे थांबवल्यावर किती अमोनिया उपस्थित असू शकतो. त्याला किती वेळ लागेल याबद्दल तो काहीही सांगत नाही. दर सक्रियण ऊर्जेने नियंत्रित, आणि इथली अडचण नायट्रोजन-नायट्रोजन त्रिबंध, 941 kJ/mol वर, रसायनातील सर्वांत प्रबळ बंधांपैकी एक. खोलीच्या तापमानावर तितकी ऊर्जा वाहणाऱ्या टक्करींचा अंश इतका लहान की नायट्रोजन आणि हायड्रोजनचे मिश्रण अनिश्चित काळ बसून राहू शकते आणि ओळखण्याजोगा कोणताही अमोनिया तयार होत नाही. दहा हजार वर्षांत मिळालेले परिपूर्ण उत्पन्न कशाच्याही कामाचे नाही. म्हणून हेबर प्रक्रिया एकाचा सौदा दुसऱ्याशी करते. तापमान सुमारे 700 K पर्यंत वाढवणे अभिक्रियेला उपयोगी होण्याइतके वेगवान बनवते, वाईट समतोल-स्थितीच्या किमतीवर. मग उत्पन्न दुसऱ्या लिव्हरने परत विकत घेतले जाते: दाब. अभिक्रिया चार मोल वायूला दोनमध्ये नेते, म्हणून मिश्रण सुमारे 200 वातावरणांपर्यंत संपीडित करणे समतोल कमी रेणूंच्या बाजूला सरकवते, अगदी जसे ल शातेलिएचे तत्त्व मागते. आणि लोखंडाचा उत्प्रेरक जोडला जातो, जो सक्रियण अडचण घटवतो आणि म्हणून अन्यथा लागले असते त्याहून कमी तापमान चालू देतो — कुर्बान केलेल्या उत्पन्नाचा काही भाग परत मिळवून. काळजीपूर्वक पाहा उत्प्रेरक काय करत नाही, कारण तिसरा पर्याय हेच चुकीचे करतो. उत्प्रेरक त्याच दोन अवस्थांमध्ये सोपा मार्ग देतो. तो दर बदलतो, आणि पुढचे व मागचे दोन्ही दर समान बदलतो, म्हणून समतोलाची स्थिती अस्पर्श राहते. ΔG हा सुरुवातीच्या आणि शेवटच्या अवस्थांमधला फरक आणि मार्गावर अवलंबून असूच शकत नाही, नेमक्या त्याच युक्तिवादाने जो हेसचा नियम देतो. जो उत्प्रेरक समतोल सरकवेल तो सततगती यंत्र ठरला असता. सामान्य धडा तोच जो दोन्ही उष्मागतिकी प्रकरणांतून नेण्याजोगा. उष्मागतिकी सांगते की काही शक्य आहे का आणि किती दूर जाऊ शकते; गतिकी सांगते की ते या शतकात घडेल का. कोणीही दुसऱ्याच्या प्रश्नाचे उत्तर देत नाही, आणि औद्योगिक प्रक्रिया जवळपास नेहमी त्यांच्यातील वाटाघाटीने झालेली तडजोड. (चौथे उत्तर ल शातेलिए उलटवते: उष्माक्षेपी अभिक्रिया तापवणे तिचे उत्पन्न नेहमी घटवते, आणि हीच ती किंमत जी इथे दिली जात आहे.)",
+        },
+      },
+      /*H5C*/
+    ],
+  },
+
 ];
 
 export const G11_CHEMISTRY_NUMERIC: Record<string, NumQ[]> = {
@@ -1058,6 +2111,492 @@ export const G11_CHEMISTRY_NUMERIC: Record<string, NumQ[]> = {
         en: "Adding the superscripts: 2 + 2 + 6 + 2 + 6 + 2 + 10 = 30, which is zinc. Two things in the configuration are worth reading rather than just counting. First, 4s appears before 3d, which looks wrong until the Aufbau rule is recalled: subshells fill in order of n + l, and 4 + 0 = 4 beats 3 + 2 = 5. The shell number alone does not decide. Second, the d subshell is full at ten, which is why zinc closes the first transition series and why it behaves so much less like a transition metal than the elements before it — a filled d shell is stable and largely uninvolved in bonding, so zinc shows essentially one oxidation state where iron and copper show several. There is a further subtlety worth knowing. Once the 3d subshell begins to fill, its energy drops below that of 4s, so a zinc ION loses its 4s electrons first and not its 3d ones: Zn²⁺ is 3d¹⁰ and not 4s²3d⁸. The filling order and the removal order are different, and confusing them is the commonest error in transition-metal chemistry. (28 and 26 count nickel and iron, and 36 is krypton's total.)",
         hi: "अधोलेख जोड़ो: 2 + 2 + 6 + 2 + 6 + 2 + 10 = 30, जो ज़िंक है। विन्यास में दो बातें केवल गिनने के बजाय पढ़ने योग्य हैं। पहली, 4s, 3d से पहले आता है, जो ग़लत दिखता है जब तक ऑफ़बाउ नियम याद न आए: उपकोश n + l के क्रम में भरते हैं, और 4 + 0 = 4, 3 + 2 = 5 को हरा देता है। अकेला कोश-अंक तय नहीं करता। दूसरी, d उपकोश दस पर भरा है, इसीलिए ज़िंक पहली संक्रमण श्रेणी बंद करता है और इसीलिए वह अपने से पहले के तत्वों की तुलना में संक्रमण धातु जैसा कहीं कम व्यवहार करता है — भरा d कोश स्थिर है और आबंधन में अधिकतर अनुपस्थित, अतः ज़िंक मूलतः एक ही ऑक्सीकरण अवस्था दिखाता है जहाँ लोहा और कॉपर कई दिखाते हैं। एक और सूक्ष्मता जानने योग्य है। 3d उपकोश भरना शुरू होते ही उसकी ऊर्जा 4s से नीचे गिर जाती है, अतः ज़िंक का आयन पहले अपने 4s इलेक्ट्रॉन खोता है, 3d नहीं: Zn²⁺ 3d¹⁰ है, 4s²3d⁸ नहीं। भरण-क्रम और निष्कासन-क्रम भिन्न हैं, और उन्हें गड्डमड्ड करना संक्रमण-धातु रसायन की सबसे आम भूल है। (28 और 26 निकल तथा लोहा गिनते हैं, और 36 क्रिप्टॉन का कुल है।)",
         mr: "अधोलेख जोडा: 2 + 2 + 6 + 2 + 6 + 2 + 10 = 30, जे जस्त. विन्यासातील दोन गोष्टी केवळ मोजण्याऐवजी वाचण्याजोग्या. पहिली, 4s हे 3d च्या आधी येते, जे चुकीचे दिसते जोवर ऑफबाऊ नियम आठवत नाही: उपकवचे n + l च्या क्रमाने भरतात, आणि 4 + 0 = 4 हे 3 + 2 = 5 ला हरवते. एकटा कवच-अंक ठरवत नाही. दुसरी, d उपकवच दहावर भरलेले, म्हणूनच जस्त पहिली संक्रमण मालिका बंद करते आणि म्हणूनच ते त्याच्या आधीच्या मूलद्रव्यांच्या तुलनेत संक्रमण धातूसारखे कितीतरी कमी वागते — भरलेले d कवच स्थिर आणि बंधनात बहुतांश अनुपस्थित, म्हणून जस्त मुळात एकच ऑक्सिडीकरण अवस्था दाखवते जिथे लोखंड आणि तांबे अनेक दाखवतात. आणखी एक सूक्ष्मता जाणण्याजोगी. 3d उपकवच भरणे सुरू होताच त्याची ऊर्जा 4s हून खाली येते, म्हणून जस्ताचा आयन आधी आपले 4s इलेक्ट्रॉन गमावतो, 3d नव्हे: Zn²⁺ हे 3d¹⁰ आहे, 4s²3d⁸ नव्हे. भरण-क्रम आणि काढून टाकण्याचा क्रम वेगळे, आणि त्यांची गल्लत ही संक्रमण-धातू रसायनातील सर्वांत नेहमीची चूक. (28 आणि 26 निकेल व लोखंड मोजतात, आणि 36 हे क्रिप्टॉनचे एकूण.)",
+      },
+    },
+  ],
+  "chemistry-11-periodicity": [
+    {
+      level: 1,
+      stem: {
+        en: "Sodium has 11 protons and a screening constant of 8.5 for its outer electron. What effective nuclear charge does that electron experience?",
+        hi: "सोडियम में 11 प्रोटॉन हैं और उसके बाहरी इलेक्ट्रॉन के लिए परिरक्षण स्थिरांक 8.5 है। वह इलेक्ट्रॉन कितना प्रभावी नाभिकीय आवेश अनुभव करता है?",
+        mr: "सोडियममध्ये 11 प्रोटॉन आणि त्याच्या बाहेरच्या इलेक्ट्रॉनसाठी आवरण स्थिरांक 8.5. तो इलेक्ट्रॉन किती परिणामी केंद्रकीय भार अनुभवतो?",
+      },
+      answer: 2.5,
+      wrong: [19.5, 11, 8.5],
+      checkExpr: "11-8.5",
+      solution: {
+        en: "Zeff = Z − S = 11 − 8.5 = 2.5. The outer electron feels less than a quarter of the nucleus's actual charge, which is why sodium gives it up so readily. (19.5 adds the screening instead of subtracting it.)",
+        hi: "Zeff = Z − S = 11 − 8.5 = 2.5. बाहरी इलेक्ट्रॉन नाभिक के वास्तविक आवेश के एक चौथाई से भी कम महसूस करता है, इसीलिए सोडियम उसे इतनी तत्परता से दे देता है। (19.5 परिरक्षण घटाने के बजाय जोड़ देता है।)",
+        mr: "Zeff = Z − S = 11 − 8.5 = 2.5. बाहेरचा इलेक्ट्रॉन केंद्रकाच्या प्रत्यक्ष भाराच्या एक चतुर्थांशाहूनही कमी अनुभवतो, म्हणूनच सोडियम तो इतक्या तत्परतेने देतो. (19.5 आवरण वजा करण्याऐवजी जोडते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "An element has 6 electrons in its outermost shell. How many more does it need to complete its octet?",
+        hi: "किसी तत्व के बाहरी कोश में 6 इलेक्ट्रॉन हैं। अष्टक पूरा करने के लिए उसे और कितने चाहिए?",
+        mr: "एका मूलद्रव्याच्या बाहेरच्या कवचात 6 इलेक्ट्रॉन आहेत. अष्टक पूर्ण करायला त्याला आणखी किती लागतील?",
+      },
+      answer: 2,
+      wrong: [6, 8, 4],
+      checkExpr: "8-6",
+      solution: {
+        en: "8 − 6 = 2, which is why group 16 elements typically form ions of charge −2 or two covalent bonds. (6 quotes the electrons already present rather than those still needed.)",
+        hi: "8 − 6 = 2, इसीलिए वर्ग 16 के तत्व प्रायः −2 आवेश के आयन या दो सहसंयोजक बंध बनाते हैं। (6 अभी चाहिए इलेक्ट्रॉनों के बजाय पहले से मौजूद इलेक्ट्रॉन बता देता है।)",
+        mr: "8 − 6 = 2, म्हणूनच गट 16 ची मूलद्रव्ये सहसा −2 भाराचे आयन वा दोन सहसंयुज बंध बनवतात. (6 अजून लागणाऱ्या इलेक्ट्रॉनांऐवजी आधीच असलेले सांगते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Across period 2 the atomic radius falls from 152 pm for lithium to 64 pm for fluorine. By what percentage does it fall?",
+        hi: "आवर्त 2 में परमाणु त्रिज्या लिथियम के 152 pm से घटकर फ़्लुओरीन की 64 pm हो जाती है। वह कितने प्रतिशत घटती है?",
+        mr: "आवर्त 2 मध्ये अणुत्रिज्या लिथियमच्या 152 pm वरून फ्लोरिनच्या 64 pm पर्यंत घटते. ती किती टक्क्यांनी घटते?",
+      },
+      answer: 57.894737,
+      wrong: [42.105263, 88, 237.5],
+      checkExpr: "100*(152-64)/152",
+      solution: {
+        en: "100 × (152 − 64)/152 = 57.894737 per cent. Six more protons and six more electrons, and the atom ends up well under half its original size — because every one of those electrons went into the same shell. (42.105263 quotes what remains rather than what was lost.)",
+        hi: "100 × (152 − 64)/152 = 57.894737 प्रतिशत। छह और प्रोटॉन तथा छह और इलेक्ट्रॉन, और परमाणु अपने मूल आकार के आधे से भी काफ़ी नीचे पहुँच जाता है — क्योंकि उनमें से हर इलेक्ट्रॉन उसी कोश में गया। (42.105263 खोए के बजाय बचे को बता देता है।)",
+        mr: "100 × (152 − 64)/152 = 57.894737 टक्के. आणखी सहा प्रोटॉन आणि आणखी सहा इलेक्ट्रॉन, आणि अणू आपल्या मूळ आकाराच्या निम्म्याहूनही बराच खाली येतो — कारण त्यांतील प्रत्येक इलेक्ट्रॉन त्याच कवचात गेला. (42.105263 गमावलेल्याऐवजी उरलेले सांगते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Sodium's first ionisation enthalpy is 496 kJ/mol and its second is 4562 kJ/mol. What is the ratio of the second to the first?",
+        hi: "सोडियम की पहली आयनन एन्थैल्पी 496 kJ/mol और दूसरी 4562 kJ/mol है। दूसरी और पहली का अनुपात क्या है?",
+        mr: "सोडियमची पहिली आयनीकरण एन्थाल्पी 496 kJ/mol आणि दुसरी 4562 kJ/mol. दुसरीचे पहिलीशी गुणोत्तर किती?",
+      },
+      answer: 9.197581,
+      wrong: [0.108724, 4066, 5058],
+      checkExpr: "4562/496",
+      solution: {
+        en: "4562/496 = 9.197581. A ninefold jump between the first and second is the signature of a group 1 element: after one electron leaves, the ion has a noble-gas configuration and the next electron must come out of a completed shell. (4066 subtracts instead of dividing.)",
+        hi: "4562/496 = 9.197581. पहली और दूसरी के बीच नौ गुनी छलाँग वर्ग 1 के तत्व की पहचान है: एक इलेक्ट्रॉन जाने के बाद आयन का विन्यास उत्कृष्ट-गैस जैसा हो जाता है और अगला इलेक्ट्रॉन पूर्ण कोश से निकालना पड़ता है। (4066 भाग के बजाय घटाता है।)",
+        mr: "4562/496 = 9.197581. पहिली आणि दुसरीमधली नऊपट उडी ही गट 1 च्या मूलद्रव्याची ओळख: एक इलेक्ट्रॉन गेल्यावर आयनाचा विन्यास निष्क्रिय-वायूसारखा होतो आणि पुढचा इलेक्ट्रॉन पूर्ण कवचातून काढावा लागतो. (4066 भागण्याऐवजी वजा करते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A magnesium atom has 12 protons and 12 electrons. How many electrons does the Mg²⁺ ion have?",
+        hi: "मैग्नीशियम परमाणु में 12 प्रोटॉन और 12 इलेक्ट्रॉन हैं। Mg²⁺ आयन में कितने इलेक्ट्रॉन हैं?",
+        mr: "मॅग्नेशियम अणूत 12 प्रोटॉन आणि 12 इलेक्ट्रॉन आहेत. Mg²⁺ आयनात किती इलेक्ट्रॉन आहेत?",
+      },
+      answer: 10,
+      wrong: [14, 12, 2],
+      checkExpr: "12-2",
+      solution: {
+        en: "A 2+ charge means two electrons have been lost: 12 − 2 = 10, the neon configuration. The ion is much smaller than the atom, because the same 12 protons now pull on only 10 electrons. (14 adds the charge instead of subtracting it, which would describe an anion.)",
+        hi: "2+ आवेश का अर्थ है दो इलेक्ट्रॉन खो गए: 12 − 2 = 10, निऑन का विन्यास। आयन परमाणु से कहीं छोटा है, क्योंकि वही 12 प्रोटॉन अब केवल 10 इलेक्ट्रॉनों को खींचते हैं। (14 आवेश घटाने के बजाय जोड़ देता है, जो ऋणायन का वर्णन होता।)",
+        mr: "2+ भाराचा अर्थ दोन इलेक्ट्रॉन गमावले: 12 − 2 = 10, निऑनचा विन्यास. आयन अणूहून कितीतरी लहान, कारण तेच 12 प्रोटॉन आता केवळ 10 इलेक्ट्रॉनांना ओढतात. (14 भार वजा करण्याऐवजी जोडते, जे ऋणायनाचे वर्णन ठरले असते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "Bromine's configuration ends 4s²4p⁵. How many electrons does it have in the n = 4 shell?",
+        hi: "ब्रोमीन का विन्यास 4s²4p⁵ पर समाप्त होता है। n = 4 कोश में उसके कितने इलेक्ट्रॉन हैं?",
+        mr: "ब्रोमिनचा विन्यास 4s²4p⁵ वर संपतो. n = 4 कवचात त्याचे किती इलेक्ट्रॉन आहेत?",
+      },
+      answer: 7,
+      wrong: [17, 5, 18],
+      checkExpr: "2+5",
+      solution: {
+        en: "2 + 5 = 7, which is the group 17 count and explains why bromine needs one electron to complete its octet. Note the 3d¹⁰ electrons are not counted: they are in the n = 3 shell, filled after 4s but belonging to the shell below. (17 quotes the group number.)",
+        hi: "2 + 5 = 7, जो वर्ग 17 की गिनती है और समझाती है कि ब्रोमीन को अष्टक पूरा करने के लिए एक इलेक्ट्रॉन क्यों चाहिए। ध्यान दो 3d¹⁰ इलेक्ट्रॉन नहीं गिने जाते: वे n = 3 कोश में हैं, 4s के बाद भरे पर नीचे वाले कोश के। (17 वर्ग-अंक बता देता है।)",
+        mr: "2 + 5 = 7, जी गट 17 ची मोजणी आणि ब्रोमिनला अष्टक पूर्ण करायला एक इलेक्ट्रॉन का लागतो हे समजावते. लक्षात घ्या 3d¹⁰ इलेक्ट्रॉन मोजले जात नाहीत: ते n = 3 कवचात, 4s नंतर भरलेले पण खालच्या कवचाचे. (17 गट-अंक सांगते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "An element's first ionisation enthalpy is 738 kJ/mol. Taking 1 eV per atom as 96.5 kJ/mol, what is the value in eV per atom?",
+        hi: "किसी तत्व की पहली आयनन एन्थैल्पी 738 kJ/mol है। प्रति परमाणु 1 eV को 96.5 kJ/mol लेते हुए, यह मान प्रति परमाणु eV में क्या है?",
+        mr: "एका मूलद्रव्याची पहिली आयनीकरण एन्थाल्पी 738 kJ/mol आहे. प्रति अणू 1 eV हे 96.5 kJ/mol घेतल्यास, हे मूल्य प्रति अणू eV मध्ये किती?",
+      },
+      answer: 7.647668,
+      wrong: [71217, 96.5, 0.130759],
+      checkExpr: "738/96.5",
+      solution: {
+        en: "738/96.5 = 7.647668 eV. The two units answer different questions: kJ/mol is what a chemist weighs out in the laboratory and eV is what a single atom experiences, and the conversion is simply Avogadro's number in disguise. (71217 multiplies instead of dividing.)",
+        hi: "738/96.5 = 7.647668 eV. दोनों मात्रक भिन्न प्रश्नों के उत्तर देते हैं: kJ/mol वह है जो रसायनज्ञ प्रयोगशाला में तौलता है और eV वह जो अकेला परमाणु अनुभव करता है, और रूपांतरण बस भेस बदले आवोगाद्रो संख्या है। (71217 भाग के बजाय गुणा करता है।)",
+        mr: "738/96.5 = 7.647668 eV. दोन्ही एकके वेगळ्या प्रश्नांची उत्तरे देतात: kJ/mol हे रसायनशास्त्रज्ञ प्रयोगशाळेत तोलतो ते आणि eV हे एकटा अणू अनुभवतो ते, आणि रूपांतर म्हणजे फक्त वेष बदललेला आवोगाद्रो आकडा. (71217 भागण्याऐवजी गुणते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "On the Pauling scale sodium is 0.9 and chlorine is 3.0. What is the electronegativity difference in sodium chloride?",
+        hi: "पॉलिंग पैमाने पर सोडियम 0.9 और क्लोरीन 3.0 है। सोडियम क्लोराइड में विद्युत्-ऋणात्मकता अंतर क्या है?",
+        mr: "पॉलिंग मापनश्रेणीवर सोडियम 0.9 आणि क्लोरिन 3.0. सोडियम क्लोराइडमधील विद्युतऋणता फरक किती?",
+      },
+      answer: 2.1,
+      wrong: [3.9, 2.7, 1.2],
+      checkExpr: "3.0-0.9",
+      solution: {
+        en: "3.0 − 0.9 = 2.1, comfortably above the rough 1.7 mark, so the bond is largely ionic — which matches sodium chloride's high melting point and its conduction when molten. (3.9 adds the two values and 2.7 multiplies them.)",
+        hi: "3.0 − 0.9 = 2.1, जो मोटे 1.7 के निशान से आराम से ऊपर है, अतः बंध अधिकतर आयनिक है — जो सोडियम क्लोराइड के ऊँचे गलनांक और पिघली अवस्था में उसके चालन से मेल खाता है। (3.9 दोनों मान जोड़ता है और 2.7 उन्हें गुणा करता है।)",
+        mr: "3.0 − 0.9 = 2.1, जे ढोबळ 1.7 च्या खुणेहून आरामात वर, म्हणून बंध बहुतांश आयनिक — जे सोडियम क्लोराइडच्या उच्च द्रवणबिंदूशी आणि वितळलेल्या अवस्थेतील त्याच्या वहनाशी जुळते. (3.9 दोन्ही मूल्ये जोडते आणि 2.7 त्यांना गुणते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "Period 4 fills the 4s, 3d and 4p subshells, holding 2, 10 and 6 electrons. How many elements are in that period?",
+        hi: "आवर्त 4 में 4s, 3d और 4p उपकोश भरते हैं, जो 2, 10 और 6 इलेक्ट्रॉन रखते हैं। उस आवर्त में कितने तत्व हैं?",
+        mr: "आवर्त 4 मध्ये 4s, 3d आणि 4p उपकवचे भरतात, जी 2, 10 आणि 6 इलेक्ट्रॉन ठेवतात. त्या आवर्तात किती मूलद्रव्ये आहेत?",
+      },
+      answer: 18,
+      wrong: [8, 32, 10],
+      checkExpr: "2+10+6",
+      solution: {
+        en: "2 + 10 + 6 = 18. The length of a period is simply the number of electrons the subshells filled in it can hold, which is why the periods run 2, 8, 8, 18, 18, 32 and not in any round arithmetic pattern. The ten in the middle is the first transition series, appearing for the first time because the 3d subshell only becomes accessible after 4s. (8 uses only the s and p subshells, which is the period 3 answer.)",
+        hi: "2 + 10 + 6 = 18. आवर्त की लंबाई बस उन इलेक्ट्रॉनों की संख्या है जो उसमें भरे उपकोश रख सकते हैं, इसीलिए आवर्त 2, 8, 8, 18, 18, 32 चलते हैं, किसी गोल अंकगणितीय प्रतिरूप में नहीं। बीच के दस पहली संक्रमण श्रेणी हैं, जो पहली बार प्रकट होती है क्योंकि 3d उपकोश 4s के बाद ही सुलभ होता है। (8 केवल s और p उपकोश लेता है, जो आवर्त 3 का उत्तर है।)",
+        mr: "2 + 10 + 6 = 18. आवर्ताची लांबी म्हणजे फक्त त्यात भरलेली उपकवचे ठेवू शकतील इतक्या इलेक्ट्रॉनांची संख्या, म्हणूनच आवर्त 2, 8, 8, 18, 18, 32 चालतात, कोणत्याही गोल अंकगणितीय आकृतिबंधात नाही. मधले दहा ही पहिली संक्रमण मालिका, जी प्रथमच प्रकट होते कारण 3d उपकवच 4s नंतरच उपलब्ध होते. (8 फक्त s आणि p उपकवचे घेते, जे आवर्त 3 चे उत्तर.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "The isoelectronic ions N³⁻, O²⁻, F⁻, Na⁺ and Mg²⁺ all have 10 electrons, with nuclear charges 7, 8, 9, 11 and 12. What is the nuclear charge of the ion with the largest radius?",
+        hi: "समइलेक्ट्रॉनी आयन N³⁻, O²⁻, F⁻, Na⁺ और Mg²⁺ सबके 10 इलेक्ट्रॉन हैं, और नाभिकीय आवेश 7, 8, 9, 11 तथा 12. सबसे बड़ी त्रिज्या वाले आयन का नाभिकीय आवेश क्या है?",
+        mr: "समइलेक्ट्रॉनी आयन N³⁻, O²⁻, F⁻, Na⁺ आणि Mg²⁺ या सर्वांचे 10 इलेक्ट्रॉन, आणि केंद्रकीय भार 7, 8, 9, 11 व 12. सर्वांत मोठ्या त्रिज्येच्या आयनाचा केंद्रकीय भार किती?",
+      },
+      answer: 7,
+      wrong: [12, 10, 9],
+      checkExpr: "10-3",
+      solution: {
+        en: "All five have exactly ten electrons, so screening is identical throughout the series and only the nuclear charge varies. The weakest pull gives the biggest ion, so N³⁻ with Z = 7 is the largest and Mg²⁺ with Z = 12 the smallest. The radii run 171, 140, 133, 95 and 65 pm — a factor of more than two and a half across a series in which the electron count never changes at all. Two lessons come out of this. First, the size of an ion is set by the balance between nuclear pull and electron count, not by the size of the parent atom: a nitrogen atom is smaller than a sodium atom, yet N³⁻ is nearly twice the size of Na⁺. Second, this is why the anions in an ionic crystal are typically much larger than the cations, and why the structure of a salt is usually described as a close-packed array of anions with the smaller cations tucked into the gaps. (12 picks the smallest ion, and 10 quotes the electron count that is the same for all of them.)",
+        hi: "पाँचों के ठीक दस इलेक्ट्रॉन हैं, अतः पूरी श्रेणी में परिरक्षण समान है और केवल नाभिकीय आवेश बदलता है। सबसे कमज़ोर खिंचाव सबसे बड़ा आयन देता है, अतः Z = 7 वाला N³⁻ सबसे बड़ा और Z = 12 वाला Mg²⁺ सबसे छोटा। त्रिज्याएँ 171, 140, 133, 95 और 65 pm चलती हैं — ऐसी श्रेणी में ढाई गुने से अधिक का अंतर जिसमें इलेक्ट्रॉन-गिनती बिलकुल नहीं बदलती। इससे दो सबक़ निकलते हैं। पहला, आयन का आकार नाभिकीय खिंचाव और इलेक्ट्रॉन-गिनती के संतुलन से तय होता है, मूल परमाणु के आकार से नहीं: नाइट्रोजन परमाणु सोडियम परमाणु से छोटा है, फिर भी N³⁻, Na⁺ के लगभग दुगुने आकार का है। दूसरा, इसीलिए आयनिक क्रिस्टल में ऋणायन प्रायः धनायनों से कहीं बड़े होते हैं, और इसीलिए किसी लवण की संरचना प्रायः ऋणायनों की सघन-संकुलित व्यवस्था के रूप में बताई जाती है जिसके अंतरालों में छोटे धनायन धँसे रहते हैं। (12 सबसे छोटा आयन चुनता है, और 10 वह इलेक्ट्रॉन-गिनती बताता है जो उन सबकी एक ही है।)",
+        mr: "पाचहीचे नेमके दहा इलेक्ट्रॉन, म्हणून अख्ख्या मालिकेत आवरण समान आणि केवळ केंद्रकीय भार बदलतो. सर्वांत कमकुवत ओढ सर्वांत मोठा आयन देते, म्हणून Z = 7 चा N³⁻ सर्वांत मोठा आणि Z = 12 चा Mg²⁺ सर्वांत लहान. त्रिज्या 171, 140, 133, 95 आणि 65 pm चालतात — अशा मालिकेत अडीचपटीहून अधिक फरक जिच्यात इलेक्ट्रॉन-मोजणी मुळीच बदलत नाही. यातून दोन धडे निघतात. पहिला, आयनाचा आकार केंद्रकीय ओढ आणि इलेक्ट्रॉन-मोजणी यांच्या संतुलनाने ठरतो, मूळ अणूच्या आकाराने नाही: नायट्रोजन अणू सोडियम अणूहून लहान, तरीही N³⁻ हा Na⁺ च्या जवळपास दुप्पट आकाराचा. दुसरा, म्हणूनच आयनिक स्फटिकात ऋणायन सहसा धनायनांहून कितीतरी मोठे असतात, आणि म्हणूनच एखाद्या क्षाराची रचना सहसा ऋणायनांची घट्ट-रचलेली मांडणी म्हणून सांगितली जाते जिच्या फटींत लहान धनायन बसवलेले असतात. (12 सर्वांत लहान आयन निवडते, आणि 10 ती इलेक्ट्रॉन-मोजणी सांगते जी त्या सर्वांची एकच आहे.)",
+      },
+    },
+  ],
+  "chemistry-11-chemical-bonding": [
+    {
+      level: 1,
+      stem: {
+        en: "Nitrogen has 7 electrons in total, with 2 in the first shell. How many valence electrons does it have?",
+        hi: "नाइट्रोजन में कुल 7 इलेक्ट्रॉन हैं, जिनमें 2 पहले कोश में। उसके कितने संयोजी इलेक्ट्रॉन हैं?",
+        mr: "नायट्रोजनमध्ये एकूण 7 इलेक्ट्रॉन, त्यांतील 2 पहिल्या कवचात. त्याचे किती संयुजा इलेक्ट्रॉन आहेत?",
+      },
+      answer: 5,
+      wrong: [7, 3, 8],
+      checkExpr: "7-2",
+      solution: {
+        en: "7 − 2 = 5 valence electrons, which is why nitrogen forms three bonds and keeps one lone pair — the three bonds and the pair together make its octet. (7 counts every electron and 3 counts the bonds rather than the electrons.)",
+        hi: "7 − 2 = 5 संयोजी इलेक्ट्रॉन, इसीलिए नाइट्रोजन तीन बंध बनाता है और एक एकाकी युग्म रखता है — तीन बंध और वह युग्म मिलकर उसका अष्टक बनाते हैं। (7 हर इलेक्ट्रॉन गिनता है और 3 इलेक्ट्रॉनों के बजाय बंध गिनता है।)",
+        mr: "7 − 2 = 5 संयुजा इलेक्ट्रॉन, म्हणूनच नायट्रोजन तीन बंध बनवतो आणि एक एकाकी जोडी ठेवतो — तीन बंध आणि ती जोडी मिळून त्याचे अष्टक बनवतात. (7 प्रत्येक इलेक्ट्रॉन मोजते आणि 3 इलेक्ट्रॉनांऐवजी बंध मोजते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "In molecular orbital theory the bond order is (Nb − Na)/2. For O₂ the bonding electrons Nb number 10 and the antibonding Na number 6. What is the bond order?",
+        hi: "आण्विक कक्षक सिद्धांत में बंध कोटि (Nb − Na)/2 है। O₂ के लिए आबंधी इलेक्ट्रॉन Nb 10 और प्रतिआबंधी Na 6 हैं। बंध कोटि क्या है?",
+        mr: "रेणवीय कक्षक सिद्धांतात बंध कोटी (Nb − Na)/2 आहे. O₂ साठी बंधकारी इलेक्ट्रॉन Nb 10 आणि प्रतिबंधकारी Na 6. बंध कोटी किती?",
+      },
+      answer: 2,
+      wrong: [4, 8, 16],
+      checkExpr: "(10-6)/2",
+      solution: {
+        en: "(10 − 6)/2 = 2, a double bond — which agrees with the Lewis structure, even though the MO picture also produces two unpaired electrons that Lewis cannot. (4 forgets to halve and 16 adds the two counts.)",
+        hi: "(10 − 6)/2 = 2, द्विबंध — जो लूइस संरचना से मेल खाता है, यद्यपि आण्विक कक्षक चित्र दो अयुग्मित इलेक्ट्रॉन भी देता है जो लूइस नहीं दे सकता। (4 आधा करना भूलता है और 16 दोनों गिनतियाँ जोड़ देता है।)",
+        mr: "(10 − 6)/2 = 2, द्विबंध — जो लुईस संरचनेशी जुळतो, जरी रेणवीय कक्षक चित्र दोन अयुग्मित इलेक्ट्रॉनही देते जे लुईस देऊ शकत नाही. (4 निम्मे करायचे विसरते आणि 16 दोन्ही मोजण्या जोडते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Carbon in methane is sp³ hybridised, mixing one s and three p orbitals. How many hybrid orbitals result?",
+        hi: "मेथेन में कार्बन sp³ संकरित है, जो एक s और तीन p कक्षक मिलाता है। कितने संकर कक्षक बनते हैं?",
+        mr: "मिथेनमधील कार्बन sp³ संकरित, जो एक s आणि तीन p कक्षके मिसळतो. किती संकर कक्षके तयार होतात?",
+      },
+      answer: 4,
+      wrong: [3, 2, 5],
+      checkExpr: "1+3",
+      solution: {
+        en: "1 + 3 = 4, and hybridisation always conserves the number of orbitals — four in, four out. The four point to the corners of a tetrahedron at 109.5°, which is exactly the shape methane is measured to have. (3 counts only the p orbitals.)",
+        hi: "1 + 3 = 4, और संकरण सदा कक्षकों की संख्या बनाए रखता है — चार भीतर, चार बाहर। चारों 109.5° पर चतुष्फलक के कोनों की ओर इंगित करते हैं, जो ठीक वही आकार है जो मेथेन का नापा जाता है। (3 केवल p कक्षक गिनता है।)",
+        mr: "1 + 3 = 4, आणि संकरण नेहमी कक्षकांची संख्या टिकवते — चार आत, चार बाहेर. चारही 109.5° वर चतुष्फलकाच्या कोपऱ्यांकडे निर्देश करतात, जो नेमका तोच आकार जो मिथेनचा मोजला जातो. (3 फक्त p कक्षके मोजते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Ammonia's nitrogen has four electron pairs around it, of which one is a lone pair. How many bond pairs are there?",
+        hi: "अमोनिया के नाइट्रोजन के इर्द-गिर्द चार इलेक्ट्रॉन-युग्म हैं, जिनमें एक एकाकी युग्म है। कितने आबंधी युग्म हैं?",
+        mr: "अमोनियाच्या नायट्रोजनभोवती चार इलेक्ट्रॉन-जोड्या, त्यांपैकी एक एकाकी जोडी. किती बंधकारी जोड्या आहेत?",
+      },
+      answer: 3,
+      wrong: [5, 4, 2],
+      checkExpr: "4-1",
+      solution: {
+        en: "4 − 1 = 3 bond pairs, so ammonia has three N–H bonds. Four pairs would be tetrahedral at 109.5°, but the lone pair pushes harder and squeezes the bonds to 107°, giving the familiar pyramid. (4 counts every pair rather than the bonding ones.)",
+        hi: "4 − 1 = 3 आबंधी युग्म, अतः अमोनिया में तीन N–H बंध हैं। चार युग्म 109.5° पर चतुष्फलकीय होते, पर एकाकी युग्म अधिक ज़ोर से धकेलता है और बंधों को 107° तक दबा देता है, जिससे जाना-पहचाना पिरामिड बनता है। (4 आबंधी के बजाय हर युग्म गिनता है।)",
+        mr: "4 − 1 = 3 बंधकारी जोड्या, म्हणून अमोनियात तीन N–H बंध. चार जोड्या 109.5° वर चतुष्फलकी झाल्या असत्या, पण एकाकी जोडी अधिक जोराने ढकलते आणि बंध 107° पर्यंत दाबते, ज्यातून ओळखीचा पिरॅमिड बनतो. (4 बंधकारीऐवजी प्रत्येक जोडी मोजते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "Carbon has 4 valence electrons and oxygen 6. How many valence electrons are there in total in a carbon dioxide molecule?",
+        hi: "कार्बन के 4 संयोजी इलेक्ट्रॉन हैं और ऑक्सीजन के 6. कार्बन डाइऑक्साइड अणु में कुल कितने संयोजी इलेक्ट्रॉन हैं?",
+        mr: "कार्बनचे 4 संयुजा इलेक्ट्रॉन आणि ऑक्सिजनचे 6. कार्बन डायऑक्साइड रेणूत एकूण किती संयुजा इलेक्ट्रॉन आहेत?",
+      },
+      answer: 16,
+      wrong: [10, 12, 22],
+      checkExpr: "4+2*6",
+      solution: {
+        en: "4 + 2 × 6 = 16. Those sixteen are distributed as two C=O double bonds — eight electrons — and two lone pairs on each oxygen, another eight, which completes every octet. Counting valence electrons first is the reliable way to draw a Lewis structure. (10 forgets one oxygen and 22 adds the atomic numbers instead.)",
+        hi: "4 + 2 × 6 = 16. वे सोलह दो C=O द्विबंधों — आठ इलेक्ट्रॉन — और हर ऑक्सीजन पर दो एकाकी युग्म, यानी और आठ, के रूप में बँटते हैं, जिससे हर अष्टक पूरा होता है। पहले संयोजी इलेक्ट्रॉन गिनना लूइस संरचना खींचने का भरोसेमंद रास्ता है। (10 एक ऑक्सीजन भूल जाता है और 22 इसके बजाय परमाणु क्रमांक जोड़ देता है।)",
+        mr: "4 + 2 × 6 = 16. ती सोळा दोन C=O द्विबंध — आठ इलेक्ट्रॉन — आणि प्रत्येक ऑक्सिजनवर दोन एकाकी जोड्या, म्हणजे आणखी आठ, अशी वाटली जातात, ज्यातून प्रत्येक अष्टक पूर्ण होते. आधी संयुजा इलेक्ट्रॉन मोजणे हा लुईस संरचना काढण्याचा विश्वासार्ह मार्ग. (10 एक ऑक्सिजन विसरते आणि 22 त्याऐवजी अणुक्रमांक जोडते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "Methane's bond angle is 109.5° and water's is 104.5°. By how many degrees is water's angle smaller?",
+        hi: "मेथेन का बंध कोण 109.5° और पानी का 104.5° है। पानी का कोण कितने डिग्री छोटा है?",
+        mr: "मिथेनचा बंध कोन 109.5° आणि पाण्याचा 104.5°. पाण्याचा कोन किती अंशांनी लहान?",
+      },
+      answer: 5,
+      wrong: [214, 4.5, 10],
+      checkExpr: "109.5-104.5",
+      solution: {
+        en: "109.5 − 104.5 = 5°. Both molecules have four electron pairs around the central atom, so both start from the tetrahedral angle; water's two lone pairs then squeeze the bonds closer. Ammonia, with one lone pair, sits between them at 107°. (214 adds the two angles.)",
+        hi: "109.5 − 104.5 = 5°. दोनों अणुओं के केंद्रीय परमाणु के इर्द-गिर्द चार इलेक्ट्रॉन-युग्म हैं, अतः दोनों चतुष्फलकीय कोण से शुरू होते हैं; फिर पानी के दो एकाकी युग्म बंधों को पास दबा देते हैं। एक एकाकी युग्म वाला अमोनिया 107° पर उनके बीच बैठता है। (214 दोनों कोण जोड़ देता है।)",
+        mr: "109.5 − 104.5 = 5°. दोन्ही रेणूंच्या केंद्रीय अणूभोवती चार इलेक्ट्रॉन-जोड्या, म्हणून दोघेही चतुष्फलकी कोनापासून सुरू होतात; मग पाण्याच्या दोन एकाकी जोड्या बंध जवळ दाबतात. एक एकाकी जोडी असलेला अमोनिया 107° वर त्यांच्यामध्ये बसतो. (214 दोन्ही कोन जोडते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "Formal charge is valence electrons minus lone-pair electrons minus bonds. For nitrogen in NH₄⁺, with 5 valence electrons, 0 lone-pair electrons and 4 bonds, what is the formal charge?",
+        hi: "औपचारिक आवेश = संयोजी इलेक्ट्रॉन घटा एकाकी-युग्म इलेक्ट्रॉन घटा बंध। NH₄⁺ में नाइट्रोजन के लिए, 5 संयोजी इलेक्ट्रॉन, 0 एकाकी-युग्म इलेक्ट्रॉन और 4 बंध के साथ, औपचारिक आवेश क्या है?",
+        mr: "औपचारिक भार = संयुजा इलेक्ट्रॉन वजा एकाकी-जोडी इलेक्ट्रॉन वजा बंध. NH₄⁺ मधील नायट्रोजनसाठी, 5 संयुजा इलेक्ट्रॉन, 0 एकाकी-जोडी इलेक्ट्रॉन आणि 4 बंध यांसह, औपचारिक भार किती?",
+      },
+      answer: 1,
+      wrong: [0, 2, 4],
+      checkExpr: "5-0-4",
+      solution: {
+        en: "5 − 0 − 4 = +1, which is where the ion's charge sits. Formal charge is a bookkeeping device rather than a real charge — the electron density is spread over all five atoms — but it is the tool that decides between competing Lewis structures, since the best one puts the smallest formal charges on the most sensible atoms. (0 would be the value for neutral ammonia.)",
+        hi: "5 − 0 − 4 = +1, और आयन का आवेश वहीं बैठता है। औपचारिक आवेश असली आवेश नहीं बल्कि बहीखाता-युक्ति है — इलेक्ट्रॉन घनत्व पाँचों परमाणुओं पर फैला है — पर वही उपकरण प्रतिस्पर्धी लूइस संरचनाओं में चुनाव करता है, क्योंकि सबसे अच्छी वह है जो सबसे छोटे औपचारिक आवेश सबसे समझदार परमाणुओं पर रखे। (0 उदासीन अमोनिया का मान होता।)",
+        mr: "5 − 0 − 4 = +1, आणि आयनाचा भार तिथेच बसतो. औपचारिक भार हा खरा भार नव्हे तर वहीखाता-युक्ती — इलेक्ट्रॉन घनता पाचही अणूंवर पसरलेली — पण तेच साधन स्पर्धक लुईस संरचनांतून निवड करते, कारण सर्वांत चांगली ती जी सर्वांत लहान औपचारिक भार सर्वांत समजूतदार अणूंवर ठेवते. (0 हे उदासीन अमोनियाचे मूल्य ठरले असते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "For N₂ the bonding electrons number 10 and the antibonding 4. What is its bond order?",
+        hi: "N₂ के लिए आबंधी इलेक्ट्रॉन 10 और प्रतिआबंधी 4 हैं। उसकी बंध कोटि क्या है?",
+        mr: "N₂ साठी बंधकारी इलेक्ट्रॉन 10 आणि प्रतिबंधकारी 4. त्याची बंध कोटी किती?",
+      },
+      answer: 3,
+      wrong: [6, 2, 14],
+      checkExpr: "(10-4)/2",
+      solution: {
+        en: "(10 − 4)/2 = 3, a triple bond — the strongest bond between two like atoms in ordinary chemistry, at 941 kJ/mol. That strength is why nitrogen gas is so unreactive that plants cannot use it directly, and why fixing it industrially by the Haber process needs high temperature, high pressure and a catalyst. (6 forgets to halve.)",
+        hi: "(10 − 4)/2 = 3, त्रिबंध — साधारण रसायन में दो समान परमाणुओं के बीच सबसे प्रबल बंध, 941 kJ/mol पर। वही प्रबलता है जिससे नाइट्रोजन गैस इतनी अक्रिय है कि पौधे उसे सीधे काम में नहीं ला सकते, और जिससे हैबर प्रक्रम से औद्योगिक स्थिरीकरण को ऊँचा ताप, ऊँचा दाब और उत्प्रेरक चाहिए। (6 आधा करना भूलता है।)",
+        mr: "(10 − 4)/2 = 3, त्रिबंध — सामान्य रसायनात दोन सारख्या अणूंमधला सर्वांत प्रबळ बंध, 941 kJ/mol वर. तीच प्रबळता ज्यामुळे नायट्रोजन वायू इतका अक्रिय की वनस्पती तो थेट वापरू शकत नाहीत, आणि ज्यामुळे हेबर प्रक्रियेने औद्योगिक स्थिरीकरणाला उच्च तापमान, उच्च दाब आणि उत्प्रेरक लागतो. (6 निम्मे करायचे विसरते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "Percentage ionic character can be estimated as 16Δ + 3.5Δ², where Δ is the electronegativity difference. For sodium chloride Δ is 2.1. What is the estimate, as a percentage?",
+        hi: "प्रतिशत आयनिक लक्षण का आकलन 16Δ + 3.5Δ² से किया जा सकता है, जहाँ Δ विद्युत्-ऋणात्मकता अंतर है। सोडियम क्लोराइड के लिए Δ = 2.1. आकलन प्रतिशत में क्या है?",
+        mr: "शेकडा आयनिक लक्षणाचा अंदाज 16Δ + 3.5Δ² ने काढता येतो, जिथे Δ हा विद्युतऋणता फरक. सोडियम क्लोराइडसाठी Δ = 2.1. अंदाज शेकड्यात किती?",
+      },
+      answer: 49.035,
+      wrong: [33.6, 15.435, 63.7],
+      checkExpr: "16*2.1+3.5*2.1^2",
+      solution: {
+        en: "16 × 2.1 + 3.5 × 4.41 = 33.6 + 15.435 = 49.035 per cent. The figure is worth reading carefully: even sodium chloride, the textbook ionic compound, comes out only about half ionic on this estimate. No bond is purely one type or the other — the electron pair is displaced, sometimes almost completely, but 'ionic' and 'covalent' are the two ends of a continuum rather than two boxes. (33.6 keeps only the linear term and 15.435 only the quadratic.)",
+        hi: "16 × 2.1 + 3.5 × 4.41 = 33.6 + 15.435 = 49.035 प्रतिशत। आँकड़ा ध्यान से पढ़ने योग्य है: सोडियम क्लोराइड तक, पाठ्यपुस्तक का आयनिक यौगिक, इस आकलन पर केवल लगभग आधा आयनिक निकलता है। कोई बंध विशुद्ध रूप से एक या दूसरी क़िस्म का नहीं — इलेक्ट्रॉन युग्म खिसका होता है, कभी लगभग पूरी तरह, पर 'आयनिक' और 'सहसंयोजक' दो डिब्बे नहीं बल्कि एक ही सातत्य के दो सिरे हैं। (33.6 केवल रैखिक पद रखता है और 15.435 केवल द्विघात।)",
+        mr: "16 × 2.1 + 3.5 × 4.41 = 33.6 + 15.435 = 49.035 टक्के. आकडा काळजीपूर्वक वाचण्याजोगा: सोडियम क्लोराइडसुद्धा, पाठ्यपुस्तकातले आयनिक संयुग, या अंदाजावर केवळ सुमारे निम्मे आयनिक निघते. कोणताही बंध निव्वळ एका वा दुसऱ्या प्रकारचा नाही — इलेक्ट्रॉन जोडी सरकलेली असते, कधी जवळपास पूर्णपणे, पण 'आयनिक' आणि 'सहसंयुज' ही दोन खोकी नव्हेत तर एकाच सातत्याची दोन टोके. (33.6 फक्त रेषीय पद ठेवते आणि 15.435 फक्त द्विघात.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "Boron trifluoride has three polar bonds and no dipole moment, while nitrogen trifluoride has three polar bonds and a small one. Nitrogen has 5 valence electrons and forms 3 bonds, using pairs. How many lone pairs does its nitrogen carry?",
+        hi: "बोरॉन ट्राइफ़्लुओराइड में तीन ध्रुवीय बंध हैं और कोई द्विध्रुव आघूर्ण नहीं, जबकि नाइट्रोजन ट्राइफ़्लुओराइड में तीन ध्रुवीय बंध और एक छोटा द्विध्रुव है। नाइट्रोजन के 5 संयोजी इलेक्ट्रॉन हैं और वह युग्मों का उपयोग करके 3 बंध बनाता है। उसका नाइट्रोजन कितने एकाकी युग्म ढोता है?",
+        mr: "बोरॉन ट्रायफ्लोराइडमध्ये तीन ध्रुवीय बंध आणि द्विध्रुव आघूर्ण नाही, तर नायट्रोजन ट्रायफ्लोराइडमध्ये तीन ध्रुवीय बंध आणि एक लहान द्विध्रुव. नायट्रोजनचे 5 संयुजा इलेक्ट्रॉन आणि तो जोड्या वापरून 3 बंध बनवतो. त्याचा नायट्रोजन किती एकाकी जोड्या वाहतो?",
+      },
+      answer: 1,
+      wrong: [0, 2, 3],
+      checkExpr: "4-3",
+      solution: {
+        en: "Nitrogen's five valence electrons make three bonds using three of them, leaving two — one lone pair. So the nitrogen has four electron regions in all, 4 − 3 = 1 of them a lone pair, and VSEPR makes the molecule pyramidal. Boron has only three valence electrons and no lone pair, so BF₃ has three regions and is trigonal planar. That single structural difference explains both observations. In BF₃ the three bond dipoles lie at 120° in one plane and sum to exactly zero, so the molecule is non-polar despite fluorine being the most electronegative element there is. In NF₃ the three bonds are pushed to one side of the nitrogen by the lone pair, so they do not cancel — and the lone pair's own dipole points the opposite way and partly cancels them again, which is why NF₃'s dipole moment is unusually small at 0.24 D, far below ammonia's 1.47 D even though fluorine is far more electronegative than hydrogen. The molecule is a standard demonstration that bond polarity, geometry and lone-pair contributions all have to be added as vectors, and that guessing from the formula alone is unreliable. (0 describes boron rather than nitrogen, and 2 would make the molecule bent like water.)",
+        hi: "नाइट्रोजन के पाँच संयोजी इलेक्ट्रॉन तीन का उपयोग करके तीन बंध बनाते हैं, और दो बचते हैं — एक एकाकी युग्म। अतः नाइट्रोजन के कुल चार इलेक्ट्रॉन-क्षेत्र हैं, जिनमें 4 − 3 = 1 एकाकी युग्म है, और VSEPR अणु को पिरामिडी बना देता है। बोरॉन के केवल तीन संयोजी इलेक्ट्रॉन हैं और कोई एकाकी युग्म नहीं, अतः BF₃ के तीन क्षेत्र हैं और वह त्रिकोणीय समतलीय है। वही एक संरचनात्मक भेद दोनों प्रेक्षण समझा देता है। BF₃ में तीनों बंध-द्विध्रुव एक ही समतल में 120° पर हैं और जुड़कर ठीक शून्य होते हैं, अतः अणु अध्रुवीय है यद्यपि फ़्लुओरीन सबसे अधिक विद्युत्-ऋणात्मक तत्व है। NF₃ में एकाकी युग्म तीनों बंधों को नाइट्रोजन के एक ओर धकेल देता है, अतः वे कटते नहीं — और एकाकी युग्म का अपना द्विध्रुव उलटी ओर इंगित करके उन्हें फिर आंशिक रूप से काट देता है, इसीलिए NF₃ का द्विध्रुव आघूर्ण असामान्य रूप से छोटा 0.24 D है, अमोनिया के 1.47 D से कहीं नीचे, यद्यपि फ़्लुओरीन हाइड्रोजन से कहीं अधिक विद्युत्-ऋणात्मक है। यह अणु मानक प्रदर्शन है कि बंध-ध्रुवता, ज्यामिति और एकाकी युग्मों का योगदान सबको सदिशों की तरह जोड़ना पड़ता है, और अकेले सूत्र से अनुमान लगाना भरोसेमंद नहीं। (0 नाइट्रोजन नहीं बोरॉन का वर्णन करता है, और 2 अणु को पानी जैसा मुड़ा बना देता।)",
+        mr: "नायट्रोजनचे पाच संयुजा इलेक्ट्रॉन तीन वापरून तीन बंध बनवतात, आणि दोन उरतात — एक एकाकी जोडी. म्हणून नायट्रोजनचे एकूण चार इलेक्ट्रॉन-प्रदेश, त्यांतील 4 − 3 = 1 एकाकी जोडी, आणि VSEPR रेणूला पिरॅमिडी बनवते. बोरॉनचे केवळ तीन संयुजा इलेक्ट्रॉन आणि कोणतीही एकाकी जोडी नाही, म्हणून BF₃ चे तीन प्रदेश आणि तो त्रिकोणी प्रतलीय. तोच एक संरचनात्मक फरक दोन्ही निरीक्षणे समजावतो. BF₃ मध्ये तिन्ही बंध-द्विध्रुव एकाच प्रतलात 120° वर आणि जोडून नेमके शून्य होतात, म्हणून रेणू अध्रुवीय जरी फ्लोरिन सर्वांत अधिक विद्युतऋण मूलद्रव्य असले तरी. NF₃ मध्ये एकाकी जोडी तिन्ही बंधांना नायट्रोजनच्या एका बाजूला ढकलते, म्हणून ते कापले जात नाहीत — आणि एकाकी जोडीचा स्वतःचा द्विध्रुव उलट दिशेने निर्देश करून त्यांना पुन्हा अंशतः कापतो, म्हणूनच NF₃ चा द्विध्रुव आघूर्ण असामान्यपणे लहान 0.24 D आहे, अमोनियाच्या 1.47 D हून कितीतरी खाली, जरी फ्लोरिन हायड्रोजनहून कितीतरी अधिक विद्युतऋण असले तरी. हा रेणू प्रमाणित प्रात्यक्षिक की बंध-ध्रुवता, भूमिती आणि एकाकी जोड्यांचा वाटा या सर्वांना सदिशांसारखे जोडावे लागते, आणि एकट्या सूत्रावरून अंदाज बांधणे विश्वासार्ह नाही. (0 नायट्रोजन नव्हे तर बोरॉनचे वर्णन करते, आणि 2 रेणूला पाण्यासारखा वाकडा बनवले असते.)",
+      },
+    },
+  ],
+  "chemistry-11-thermodynamics": [
+    {
+      level: 1,
+      stem: {
+        en: "A process has ΔU = 400 J and does 100 J of work pushing back the atmosphere. Using ΔH = ΔU + PΔV, what is ΔH in joules?",
+        hi: "किसी प्रक्रिया का ΔU = 400 J है और वह वायुमंडल को पीछे धकेलने में 100 J कार्य करती है। ΔH = ΔU + PΔV लगाते हुए, ΔH जूल में क्या है?",
+        mr: "एका प्रक्रियेचा ΔU = 400 J आणि ती वातावरण मागे ढकलण्यात 100 J कार्य करते. ΔH = ΔU + PΔV वापरून, ΔH ज्यूलमध्ये किती?",
+      },
+      answer: 500,
+      wrong: [300, 40000, 4],
+      checkExpr: "400+100",
+      solution: {
+        en: "ΔH = 400 + 100 = 500 J. The extra hundred joules is the work spent making room for the products against atmospheric pressure — which is why a reaction in an open beaker and the same reaction in a sealed bomb give different figures. (300 subtracts the work instead of adding it.)",
+        hi: "ΔH = 400 + 100 = 500 J. अतिरिक्त सौ जूल वह कार्य है जो वायुमंडलीय दाब के विरुद्ध उत्पादों के लिए जगह बनाने में ख़र्च हुआ — इसीलिए खुले बीकर की अभिक्रिया और वही अभिक्रिया बंद बम में भिन्न आँकड़े देती हैं। (300 कार्य जोड़ने के बजाय घटा देता है।)",
+        mr: "ΔH = 400 + 100 = 500 J. जादा शंभर ज्यूल हे ते कार्य जे वातावरणीय दाबाविरुद्ध उत्पादांसाठी जागा करण्यात खर्च झाले — म्हणूनच उघड्या बीकरमधली अभिक्रिया आणि तीच अभिक्रिया बंद बॉम्बमध्ये वेगळे आकडे देतात. (300 कार्य जोडण्याऐवजी वजा करते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "The enthalpy of combustion of methane is 890 kJ per mole. How much heat, in kJ, is released by burning 2 moles?",
+        hi: "मेथेन की दहन एन्थैल्पी प्रति मोल 890 kJ है। 2 मोल जलाने से कितनी ऊष्मा kJ में निकलती है?",
+        mr: "मिथेनची ज्वलन एन्थाल्पी प्रति मोल 890 kJ आहे. 2 मोल जाळल्याने किती उष्णता kJ मध्ये निघते?",
+      },
+      answer: 1780,
+      wrong: [445, 892, 890],
+      checkExpr: "890*2",
+      solution: {
+        en: "890 × 2 = 1780 kJ. Enthalpy is an extensive quantity: double the amount and you double the heat, which is why every thermochemical equation must state the amounts it refers to. (890 quotes the molar figure as though the amount did not matter.)",
+        hi: "890 × 2 = 1780 kJ. एन्थैल्पी विस्तीर्ण राशि है: मात्रा दोगुनी करो और ऊष्मा दोगुनी, इसीलिए हर ऊष्मारासायनिक समीकरण को वे मात्राएँ बतानी पड़ती हैं जिनकी वह बात कर रहा है। (890 मोलर आँकड़ा ऐसे बताता है मानो मात्रा से फ़र्क़ ही न पड़ता हो।)",
+        mr: "890 × 2 = 1780 kJ. एन्थाल्पी ही विस्तारक राशी: प्रमाण दुप्पट करा आणि उष्णता दुप्पट, म्हणूनच प्रत्येक उष्मारासायनिक समीकरणाला ती कोणत्या प्रमाणांबद्दल बोलत आहे ते सांगावे लागते. (890 मोलर आकडा असा सांगते जणू प्रमाणाने फरकच पडत नसावा.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "By Hess's law a target reaction is the sum of two steps releasing 390 kJ and 290 kJ. What is the magnitude of the total enthalpy change, in kJ?",
+        hi: "हेस के नियम से कोई लक्ष्य अभिक्रिया 390 kJ और 290 kJ छोड़ते दो चरणों का योग है। कुल एन्थैल्पी-परिवर्तन का परिमाण kJ में क्या है?",
+        mr: "हेसच्या नियमाने एक लक्ष्य अभिक्रिया 390 kJ आणि 290 kJ सोडणाऱ्या दोन टप्प्यांची बेरीज आहे. एकूण एन्थाल्पी-बदलाचे परिमाण kJ मध्ये किती?",
+      },
+      answer: 680,
+      wrong: [100, 1130, 340],
+      checkExpr: "390+290",
+      solution: {
+        en: "390 + 290 = 680 kJ released. Enthalpy is a state function, so the total for a route is simply the sum of its steps and nothing depends on the order they are taken in. (100 subtracts the two and 340 averages them.)",
+        hi: "390 + 290 = 680 kJ निकलती है। एन्थैल्पी अवस्था-फलन है, अतः किसी रास्ते का कुल बस उसके चरणों का योग है और कुछ भी इस पर निर्भर नहीं कि वे किस क्रम में लिए गए। (100 दोनों को घटाता है और 340 उनका औसत लेता है।)",
+        mr: "390 + 290 = 680 kJ निघते. एन्थाल्पी हे अवस्था-फलन, म्हणून एखाद्या मार्गाची एकूण म्हणजे फक्त त्याच्या टप्प्यांची बेरीज आणि ते कोणत्या क्रमाने घेतले यावर काहीही अवलंबून नाही. (100 दोघांना वजा करते आणि 340 त्यांची सरासरी घेते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Bond enthalpies are H–H 436, Cl–Cl 242 and H–Cl 431 kJ/mol. For H₂ + Cl₂ → 2HCl, what is the magnitude of the enthalpy change, in kJ?",
+        hi: "बंध एन्थैल्पियाँ H–H 436, Cl–Cl 242 और H–Cl 431 kJ/mol हैं। H₂ + Cl₂ → 2HCl के लिए एन्थैल्पी-परिवर्तन का परिमाण kJ में क्या है?",
+        mr: "बंध एन्थाल्पी H–H 436, Cl–Cl 242 आणि H–Cl 431 kJ/mol. H₂ + Cl₂ → 2HCl साठी एन्थाल्पी-बदलाचे परिमाण kJ मध्ये किती?",
+      },
+      answer: 184,
+      wrong: [247, 1540, 92],
+      checkExpr: "2*431-436-242",
+      solution: {
+        en: "Bonds broken cost 436 + 242 = 678 kJ; bonds formed release 2 × 431 = 862 kJ. The reaction is exothermic by 862 − 678 = 184 kJ. Note that two H–Cl bonds form, not one — forgetting the coefficient is the standard slip here. (92 halves the answer by counting one HCl.)",
+        hi: "टूटे बंध 436 + 242 = 678 kJ माँगते हैं; बने बंध 2 × 431 = 862 kJ छोड़ते हैं। अभिक्रिया 862 − 678 = 184 kJ से ऊष्माक्षेपी है। ध्यान दो दो H–Cl बंध बनते हैं, एक नहीं — गुणांक भूलना यहाँ की मानक चूक है। (92 एक HCl गिनकर उत्तर आधा कर देता है।)",
+        mr: "तुटलेले बंध 436 + 242 = 678 kJ मागतात; तयार झालेले बंध 2 × 431 = 862 kJ सोडतात. अभिक्रिया 862 − 678 = 184 kJ ने उष्माक्षेपी. लक्षात घ्या दोन H–Cl बंध तयार होतात, एक नाही — गुणांक विसरणे ही इथली प्रमाणित चूक. (92 एक HCl मोजून उत्तर निम्मे करते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A reaction has ΔH = 100 kJ and ΔS = 0.2 kJ/K. At 300 K, what is ΔG in kJ?",
+        hi: "किसी अभिक्रिया का ΔH = 100 kJ और ΔS = 0.2 kJ/K है। 300 K पर ΔG kJ में क्या है?",
+        mr: "एका अभिक्रियेचा ΔH = 100 kJ आणि ΔS = 0.2 kJ/K. 300 K वर ΔG kJ मध्ये किती?",
+      },
+      answer: 40,
+      wrong: [160, 40000, 6000],
+      checkExpr: "100-300*0.2",
+      solution: {
+        en: "ΔG = ΔH − TΔS = 100 − 60 = 40 kJ, positive, so the reaction is not spontaneous at 300 K. Raise the temperature far enough and the TΔS term will overtake ΔH and turn ΔG negative. (160 adds the entropy term instead of subtracting it.)",
+        hi: "ΔG = ΔH − TΔS = 100 − 60 = 40 kJ, धनात्मक, अतः 300 K पर अभिक्रिया स्वतःस्फूर्त नहीं। ताप पर्याप्त बढ़ाओ और TΔS पद ΔH से आगे निकलकर ΔG को ऋणात्मक कर देगा। (160 एन्ट्रॉपी पद घटाने के बजाय जोड़ देता है।)",
+        mr: "ΔG = ΔH − TΔS = 100 − 60 = 40 kJ, धन, म्हणून 300 K वर अभिक्रिया स्वयंस्फूर्त नाही. तापमान पुरेसे वाढवा आणि TΔS पद ΔH च्या पुढे जाऊन ΔG ऋण करेल. (160 एन्ट्रॉपी पद वजा करण्याऐवजी जोडते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A reaction has ΔH = 60 kJ and ΔS = 0.2 kJ/K, both positive. Above what temperature, in kelvin, does it become spontaneous?",
+        hi: "किसी अभिक्रिया का ΔH = 60 kJ और ΔS = 0.2 kJ/K है, दोनों धनात्मक। वह किस ताप, केल्विन में, से ऊपर स्वतःस्फूर्त हो जाती है?",
+        mr: "एका अभिक्रियेचा ΔH = 60 kJ आणि ΔS = 0.2 kJ/K, दोन्ही धन. ती कोणत्या तापमानाच्या, केल्विनमध्ये, वर स्वयंस्फूर्त होते?",
+      },
+      answer: 300,
+      wrong: [12, 0.003333, 3000],
+      checkExpr: "60/0.2",
+      solution: {
+        en: "ΔG turns negative when TΔS exceeds ΔH, so T > ΔH/ΔS = 60/0.2 = 300 K. This is the pattern for every reaction with both terms positive: unfavourable when cold and favourable when hot, with the crossover set by the ratio. Melting is the everyday example. (12 multiplies instead of dividing.)",
+        hi: "ΔG तब ऋणात्मक होता है जब TΔS, ΔH से बड़ा हो, अतः T > ΔH/ΔS = 60/0.2 = 300 K. दोनों पद धनात्मक वाली हर अभिक्रिया का यही प्रतिरूप है: ठंडे में प्रतिकूल और गरम में अनुकूल, और संक्रमण-बिंदु अनुपात से तय। गलन रोज़मर्रा का उदाहरण है। (12 भाग के बजाय गुणा करता है।)",
+        mr: "ΔG तेव्हा ऋण होतो जेव्हा TΔS हा ΔH हून मोठा, म्हणून T > ΔH/ΔS = 60/0.2 = 300 K. दोन्ही पदे धन असलेल्या प्रत्येक अभिक्रियेचा हाच आकृतिबंध: थंडीत प्रतिकूल आणि गरमीत अनुकूल, आणि संक्रमण-बिंदू गुणोत्तराने ठरलेला. द्रवीभवन हे रोजचे उदाहरण. (12 भागण्याऐवजी गुणते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "In a calorimeter 500 g of water rises by 2 K. Taking the specific heat as 4.2 J/g/K, how much heat, in joules, was released?",
+        hi: "कैलोरीमापी में 500 g पानी का ताप 2 K चढ़ता है। विशिष्ट ऊष्मा 4.2 J/g/K लेते हुए, कितनी ऊष्मा जूल में निकली?",
+        mr: "कॅलरीमापकात 500 g पाण्याचे तापमान 2 K ने चढते. विशिष्ट उष्णता 4.2 J/g/K घेतल्यास, किती उष्णता ज्यूलमध्ये निघाली?",
+      },
+      answer: 4200,
+      wrong: [2100, 420, 42000],
+      checkExpr: "500*4.2*2",
+      solution: {
+        en: "q = mcΔT = 500 × 4.2 × 2 = 4200 J. The water is the measuring instrument: the reaction's heat is inferred entirely from how much the surrounding water warmed, which is why a calorimeter must be insulated and its own heat capacity accounted for. (2100 uses a 1 K rise.)",
+        hi: "q = mcΔT = 500 × 4.2 × 2 = 4200 J. पानी ही मापक यंत्र है: अभिक्रिया की ऊष्मा पूरी तरह इससे निकाली जाती है कि आसपास का पानी कितना गरम हुआ, इसीलिए कैलोरीमापी को रोधित करना और उसकी अपनी ऊष्मा धारिता का हिसाब रखना पड़ता है। (2100 1 K की वृद्धि लगाता है।)",
+        mr: "q = mcΔT = 500 × 4.2 × 2 = 4200 J. पाणीच मापन उपकरण: अभिक्रियेची उष्णता पूर्णपणे आजूबाजूचे पाणी किती तापले यावरून काढली जाते, म्हणूनच कॅलरीमापक उष्णतारोधक करावा लागतो आणि त्याची स्वतःची उष्णता धारकता हिशोबात घ्यावी लागते. (2100 हे 1 K ची वाढ वापरते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "Ice melts at 273 K with an enthalpy of fusion of 6000 J/mol. What is the entropy change of melting, in J/mol/K?",
+        hi: "बर्फ़ 273 K पर 6000 J/mol गलन एन्थैल्पी के साथ पिघलती है। गलन का एन्ट्रॉपी-परिवर्तन J/mol/K में क्या है?",
+        mr: "बर्फ 273 K वर 6000 J/mol द्रवीभवन एन्थाल्पीसह वितळतो. द्रवीभवनाचा एन्ट्रॉपी-बदल J/mol/K मध्ये किती?",
+      },
+      answer: 21.978022,
+      wrong: [1638000, 0.045500, 22.5],
+      checkExpr: "6000/273",
+      solution: {
+        en: "For a change of state at constant temperature ΔS = ΔH/T = 6000/273 = 21.978022 J/mol/K, positive because a liquid has far more available arrangements than a crystal. The corresponding figure for boiling is about 109 J/mol/K, five times larger — a gas is very much more disordered than a liquid. (1638000 multiplies instead of dividing.)",
+        hi: "अचर ताप पर अवस्था-परिवर्तन के लिए ΔS = ΔH/T = 6000/273 = 21.978022 J/mol/K, धनात्मक क्योंकि द्रव के पास क्रिस्टल से कहीं अधिक उपलब्ध व्यवस्थाएँ हैं। क्वथन का तदनुरूप आँकड़ा लगभग 109 J/mol/K है, पाँच गुना बड़ा — गैस द्रव से कहीं अधिक अव्यवस्थित है। (1638000 भाग के बजाय गुणा करता है।)",
+        mr: "अचल तापमानावर अवस्थाबदलासाठी ΔS = ΔH/T = 6000/273 = 21.978022 J/mol/K, धन कारण द्रवाकडे स्फटिकाहून कितीतरी अधिक उपलब्ध मांडण्या. उकळण्याचा तदनुरूप आकडा सुमारे 109 J/mol/K, पाचपट मोठा — वायू द्रवाहून कितीतरी अधिक अव्यवस्थित. (1638000 भागण्याऐवजी गुणते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "For CH₄ + 2O₂ → CO₂ + 2H₂O the standard enthalpies of formation in kJ/mol are CH₄ −75, CO₂ −394, H₂O −286 and O₂ zero. What is the magnitude of ΔH for the reaction, in kJ?",
+        hi: "CH₄ + 2O₂ → CO₂ + 2H₂O के लिए मानक संभवन एन्थैल्पियाँ kJ/mol में CH₄ −75, CO₂ −394, H₂O −286 और O₂ शून्य हैं। अभिक्रिया के ΔH का परिमाण kJ में क्या है?",
+        mr: "CH₄ + 2O₂ → CO₂ + 2H₂O साठी प्रमाणित संभवन एन्थाल्पी kJ/mol मध्ये CH₄ −75, CO₂ −394, H₂O −286 आणि O₂ शून्य. अभिक्रियेच्या ΔH चे परिमाण kJ मध्ये किती?",
+      },
+      answer: 891,
+      wrong: [605, 755, 1041],
+      checkExpr: "394+2*286-75",
+      solution: {
+        en: "ΔH = Σ products − Σ reactants = [−394 + 2(−286)] − [−75 + 0] = −966 + 75 = −891 kJ, so 891 kJ is released. Two details decide the answer: the water's coefficient of 2 must be applied, and oxygen contributes nothing because an element in its standard state is defined as zero. (605 forgets to double the water.)",
+        hi: "ΔH = Σ उत्पाद − Σ अभिकारक = [−394 + 2(−286)] − [−75 + 0] = −966 + 75 = −891 kJ, अतः 891 kJ निकलती है। दो ब्योरे उत्तर तय करते हैं: पानी का गुणांक 2 लगाना पड़ता है, और ऑक्सीजन कुछ योगदान नहीं देती क्योंकि अपनी मानक अवस्था में तत्व शून्य परिभाषित है। (605 पानी दोगुना करना भूलता है।)",
+        mr: "ΔH = Σ उत्पादे − Σ अभिक्रियाकारक = [−394 + 2(−286)] − [−75 + 0] = −966 + 75 = −891 kJ, म्हणून 891 kJ निघते. दोन तपशील उत्तर ठरवतात: पाण्याचा गुणांक 2 लावावा लागतो, आणि ऑक्सिजन काहीही वाटा देत नाही कारण आपल्या प्रमाणित अवस्थेतील मूलद्रव्य शून्य व्याख्यायित. (605 पाणी दुप्पट करायचे विसरते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "A reaction has ΔH = −100 kJ and ΔS = −0.2 kJ/K, both negative. Above what temperature, in kelvin, does it stop being spontaneous?",
+        hi: "किसी अभिक्रिया का ΔH = −100 kJ और ΔS = −0.2 kJ/K है, दोनों ऋणात्मक। वह किस ताप, केल्विन में, से ऊपर स्वतःस्फूर्त होना बंद कर देती है?",
+        mr: "एका अभिक्रियेचा ΔH = −100 kJ आणि ΔS = −0.2 kJ/K, दोन्ही ऋण. ती कोणत्या तापमानाच्या, केल्विनमध्ये, वर स्वयंस्फूर्त असणे थांबवते?",
+      },
+      answer: 500,
+      wrong: [20, 0.002, 300],
+      checkExpr: "100/0.2",
+      solution: {
+        en: "With both terms negative, ΔG = ΔH − TΔS = −100 + 0.2T, which is negative while T is below 100/0.2 = 500 K and positive above it. So this reaction runs when cold and stops when hot — the exact opposite of the more familiar case where heating helps. Four combinations exhaust the possibilities and each behaves differently. ΔH negative with ΔS positive: spontaneous at every temperature, since both terms push the same way. ΔH positive with ΔS negative: never spontaneous at any temperature. ΔH positive with ΔS positive: needs heat, like melting and like dissolving ammonium chloride. ΔH negative with ΔS negative, this case: needs cold, and freezing is the everyday example — water freezes below 273 K and not above it, for exactly this reason. The industrial significance is real. Ammonia synthesis falls in this fourth box, which is why its equilibrium yield falls as the temperature is raised, and why the Haber process has to buy back with pressure what it spends on heat. A reaction that is helped by cooling is a reaction that will always be slow, and that tension is the central problem of industrial chemistry. (20 multiplies rather than divides, and 300 borrows a number from a different question.)",
+        hi: "दोनों पद ऋणात्मक होने पर ΔG = ΔH − TΔS = −100 + 0.2T, जो T के 100/0.2 = 500 K से नीचे रहते ऋणात्मक है और ऊपर धनात्मक। अतः यह अभिक्रिया ठंडे में चलती है और गरम में रुक जाती है — उस अधिक जाने-पहचाने प्रकरण के ठीक उलटा जहाँ गरम करना मदद करता है। चार संयोजन सारी संभावनाएँ चुका देते हैं और हर एक भिन्न व्यवहार करता है। ΔH ऋणात्मक और ΔS धनात्मक: हर ताप पर स्वतःस्फूर्त, क्योंकि दोनों पद एक ही ओर धकेलते हैं। ΔH धनात्मक और ΔS ऋणात्मक: किसी भी ताप पर कभी स्वतःस्फूर्त नहीं। ΔH धनात्मक और ΔS धनात्मक: ऊष्मा चाहिए, जैसे गलन और जैसे अमोनियम क्लोराइड का घुलना। ΔH ऋणात्मक और ΔS ऋणात्मक, यह प्रकरण: ठंड चाहिए, और हिमीकरण रोज़मर्रा का उदाहरण है — पानी 273 K से नीचे जमता है, ऊपर नहीं, ठीक इसी कारण। औद्योगिक महत्व असली है। अमोनिया संश्लेषण इसी चौथे डिब्बे में पड़ता है, इसीलिए ताप बढ़ाने पर उसकी साम्य-लब्धि गिरती है, और इसीलिए हैबर प्रक्रम को ऊष्मा पर जो ख़र्च हुआ वह दाब से वापस ख़रीदना पड़ता है। जिस अभिक्रिया को ठंडा करना मदद करे वह सदा धीमी रहेगी, और वही तनाव औद्योगिक रसायन की केंद्रीय समस्या है। (20 भाग के बजाय गुणा करता है, और 300 किसी और प्रश्न से संख्या उधार ले लेता है।)",
+        mr: "दोन्ही पदे ऋण असल्याने ΔG = ΔH − TΔS = −100 + 0.2T, जो T हा 100/0.2 = 500 K च्या खाली असेपर्यंत ऋण आणि वर धन. म्हणून ही अभिक्रिया थंडीत चालते आणि गरमीत थांबते — त्या अधिक ओळखीच्या प्रकरणाच्या नेमके उलटे जिथे तापवणे मदत करते. चार संयोजने सर्व शक्यता संपवतात आणि प्रत्येक वेगळे वागते. ΔH ऋण आणि ΔS धन: प्रत्येक तापमानावर स्वयंस्फूर्त, कारण दोन्ही पदे एकाच दिशेने ढकलतात. ΔH धन आणि ΔS ऋण: कोणत्याही तापमानावर कधीच स्वयंस्फूर्त नाही. ΔH धन आणि ΔS धन: उष्णता लागते, जसे द्रवीभवन आणि जसे अमोनियम क्लोराइड विरघळणे. ΔH ऋण आणि ΔS ऋण, हे प्रकरण: थंडी लागते, आणि गोठणे हे रोजचे उदाहरण — पाणी 273 K च्या खाली गोठते, वर नाही, नेमक्या याच कारणाने. औद्योगिक महत्त्व खरे. अमोनिया संश्लेषण याच चौथ्या खोक्यात पडते, म्हणूनच तापमान वाढवल्यावर त्याचे समतोल-उत्पन्न घटते, आणि म्हणूनच हेबर प्रक्रियेला उष्णतेवर जे खर्चले ते दाबाने परत विकत घ्यावे लागते. ज्या अभिक्रियेला थंड करणे मदत करते ती नेहमी सावकाश राहील, आणि तोच ताण औद्योगिक रसायनाची केंद्रीय समस्या. (20 भागण्याऐवजी गुणते, आणि 300 दुसऱ्या प्रश्नातून संख्या उसनी घेते.)",
       },
     },
   ],

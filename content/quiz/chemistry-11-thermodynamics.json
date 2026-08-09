@@ -1,0 +1,1003 @@
+{
+  "subject": "CHEMISTRY",
+  "classLevel": 11,
+  "chapter": "Chapter 5 — Thermodynamics",
+  "name": "Chemical Thermodynamics",
+  "slug": "chemistry-11-thermodynamics",
+  "summary": "The physics chapter of the same name asked what an engine may do; this one asks whether a reaction will happen at all. A heat measured at constant pressure because that is how a beaker works, a law that lets an unmeasurable heat be assembled from measurable ones, a count of arrangements that gives disorder a number, and a single combination of the two that decides — for a given temperature — which way a reaction will go and how far.",
+  "position": 5,
+  "source": "EduLink original, written against NCERT Chemistry Part I (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "रासायनिक ऊष्मागतिकी",
+      "summary": "इसी नाम के भौतिकी अध्याय ने पूछा था कि इंजन क्या कर सकता है; यह पूछता है कि अभिक्रिया होगी भी या नहीं। वह ऊष्मा जो अचर दाब पर नापी जाती है क्योंकि बीकर ऐसे ही चलता है, वह नियम जो अमापनीय ऊष्मा को मापनीय ऊष्माओं से जोड़ लेने देता है, व्यवस्थाओं की वह गिनती जो अव्यवस्था को संख्या दे देती है, और उन दोनों का वह एक संयोजन जो दिए ताप पर तय करता है कि अभिक्रिया किस ओर जाएगी और कितनी दूर।"
+    },
+    "mr": {
+      "name": "रासायनिक उष्मागतिकी",
+      "summary": "याच नावाच्या भौतिकी प्रकरणाने विचारले होते की इंजिन काय करू शकते; हे विचारते की अभिक्रिया घडेल का. ती उष्णता जी अचल दाबावर मोजली जाते कारण बीकर तसाच चालतो, तो नियम जो न मोजता येणारी उष्णता मोजता येणाऱ्यांतून जोडू देतो, मांडणींची ती मोजणी जी अव्यवस्थेला संख्या देते, आणि त्या दोघांचे ते एक संयोजन जे दिलेल्या तापमानावर ठरवते की अभिक्रिया कोणत्या दिशेने जाईल आणि किती दूर."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A reaction in a sealed bomb releases one figure and the same reaction in an open beaker releases another, because in the beaker some of the energy is spent pushing the atmosphere out of the way. Which pair is this?",
+      "choices": [
+        "The standard state convention",
+        "Entropy as a count of arrangements",
+        "Bond enthalpy",
+        "Enthalpy against internal energy"
+      ],
+      "answerIndex": 3,
+      "solution": "Internal energy change is the heat at constant volume and enthalpy change is the heat at constant pressure, and they differ by the work done against the surroundings: ΔH = ΔU + ΔnRT for gases. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बंद बम में हुई अभिक्रिया एक आँकड़ा छोड़ती है और वही अभिक्रिया खुले बीकर में दूसरा, क्योंकि बीकर में कुछ ऊर्जा वायुमंडल को हटाने में ख़र्च होती है। यह कौन-सी जोड़ी है?",
+          "choices": [
+            "मानक अवस्था परिपाटी",
+            "व्यवस्थाओं की गिनती के रूप में एन्ट्रॉपी",
+            "बंध एन्थैल्पी",
+            "एन्थैल्पी बनाम आंतरिक ऊर्जा"
+          ],
+          "solution": "आंतरिक ऊर्जा-परिवर्तन अचर आयतन पर ऊष्मा है और एन्थैल्पी-परिवर्तन अचर दाब पर, और वे परिवेश के विरुद्ध किए कार्य से भिन्न हैं: गैसों के लिए ΔH = ΔU + ΔnRT. यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "बंद बॉम्बमधली अभिक्रिया एक आकडा सोडते आणि तीच अभिक्रिया उघड्या बीकरमध्ये दुसरा, कारण बीकरमध्ये काही ऊर्जा वातावरण बाजूला सारण्यात खर्च होते. ही कोणती जोडी?",
+          "choices": [
+            "प्रमाणित अवस्था संकेत",
+            "मांडणींची मोजणी म्हणून एन्ट्रॉपी",
+            "बंध एन्थाल्पी",
+            "एन्थाल्पी विरुद्ध आंतरिक ऊर्जा"
+          ],
+          "solution": "आंतरिक ऊर्जा-बदल म्हणजे अचल घनफळावरची उष्णता आणि एन्थाल्पी-बदल म्हणजे अचल दाबावरची, आणि ते परिसराविरुद्ध केलेल्या कार्याने वेगळे: वायूंसाठी ΔH = ΔU + ΔnRT. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Hess's law is correct?",
+      "choices": [
+        "By convention the standard enthalpy of formation of an element in its most stable state at one bar is zero, which gives every compound's enthalpy a fixed reference to be quoted against.",
+        "The Gibbs free energy change ΔG = ΔH − TΔS decides spontaneity: a process goes forward of its own accord when ΔG is negative and not otherwise.",
+        "Hess's law states that the enthalpy change of a reaction is the same whatever route is taken, so unknown enthalpies can be assembled by adding and subtracting known ones.",
+        "Bond enthalpy is the energy needed to break one mole of a given bond in the gas phase, and a reaction's enthalpy is the sum of the bonds broken minus the sum of the bonds formed."
+      ],
+      "answerIndex": 2,
+      "solution": "Hess's law states that the enthalpy change of a reaction is the same whatever route is taken, so unknown enthalpies can be assembled by adding and subtracting known ones. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "हेस का नियम के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "परिपाटी से एक बार पर अपनी सबसे स्थिर अवस्था में तत्व की मानक संभवन एन्थैल्पी शून्य है, जिससे हर यौगिक की एन्थैल्पी को बताने के लिए नियत संदर्भ मिल जाता है।",
+            "गिब्स मुक्त ऊर्जा-परिवर्तन ΔG = ΔH − TΔS स्वतःस्फूर्तता तय करता है: प्रक्रिया अपने आप आगे तब बढ़ती है जब ΔG ऋणात्मक हो, अन्यथा नहीं।",
+            "हेस का नियम कहता है कि किसी अभिक्रिया का एन्थैल्पी-परिवर्तन वही रहता है, रास्ता चाहे जो लिया जाए, अतः अज्ञात एन्थैल्पियाँ ज्ञात एन्थैल्पियों को जोड़-घटाकर बनाई जा सकती हैं।",
+            "बंध एन्थैल्पी गैस प्रावस्था में किसी दिए बंध का एक मोल तोड़ने के लिए चाहिए ऊर्जा है, और अभिक्रिया की एन्थैल्पी टूटे बंधों का योग घटा बने बंधों का योग है।"
+          ],
+          "solution": "हेस का नियम कहता है कि किसी अभिक्रिया का एन्थैल्पी-परिवर्तन वही रहता है, रास्ता चाहे जो लिया जाए, अतः अज्ञात एन्थैल्पियाँ ज्ञात एन्थैल्पियों को जोड़-घटाकर बनाई जा सकती हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "हेसचा नियम विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "संकेताने एक बारवर आपल्या सर्वांत स्थिर अवस्थेतील मूलद्रव्याची प्रमाणित संभवन एन्थाल्पी शून्य, ज्यातून प्रत्येक संयुगाच्या एन्थाल्पीला सांगण्यासाठी ठरलेला संदर्भ मिळतो.",
+            "गिब्स मुक्त ऊर्जा-बदल ΔG = ΔH − TΔS स्वयंस्फूर्तता ठरवतो: प्रक्रिया आपोआप पुढे तेव्हा जाते जेव्हा ΔG ऋण असतो, अन्यथा नाही.",
+            "हेसचा नियम सांगतो की अभिक्रियेचा एन्थाल्पी-बदल तोच राहतो, मार्ग कोणताही घेतला तरी, म्हणून अज्ञात एन्थाल्पी ज्ञात एन्थाल्पी जोडून-वजा करून बनवता येतात.",
+            "बंध एन्थाल्पी म्हणजे वायू अवस्थेत दिलेल्या बंधाचा एक मोल तोडायला लागणारी ऊर्जा, आणि अभिक्रियेची एन्थाल्पी म्हणजे तुटलेल्या बंधांची बेरीज वजा तयार झालेल्या बंधांची बेरीज."
+          ],
+          "solution": "हेसचा नियम सांगतो की अभिक्रियेचा एन्थाल्पी-बदल तोच राहतो, मार्ग कोणताही घेतला तरी, म्हणून अज्ञात एन्थाल्पी ज्ञात एन्थाल्पी जोडून-वजा करून बनवता येतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"Tabulated values are averages across many molecules, so a bond enthalpy calculation is always approximate — the four C–H bonds in methane do not in fact take equal energy to break one after another.\" — which of these is this about?",
+      "choices": [
+        "Gibbs free energy",
+        "Bond enthalpy",
+        "The standard state convention",
+        "Hess's law"
+      ],
+      "answerIndex": 1,
+      "solution": "Bond enthalpy is the energy needed to break one mole of a given bond in the gas phase, and a reaction's enthalpy is the sum of the bonds broken minus the sum of the bonds formed. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"तालिका के मान अनेक अणुओं का औसत हैं, अतः बंध एन्थैल्पी की गणना सदा सन्निकट है — मेथेन के चार C–H बंध वस्तुतः एक के बाद एक तोड़ने में बराबर ऊर्जा नहीं लेते।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "गिब्स मुक्त ऊर्जा",
+            "बंध एन्थैल्पी",
+            "मानक अवस्था परिपाटी",
+            "हेस का नियम"
+          ],
+          "solution": "बंध एन्थैल्पी गैस प्रावस्था में किसी दिए बंध का एक मोल तोड़ने के लिए चाहिए ऊर्जा है, और अभिक्रिया की एन्थैल्पी टूटे बंधों का योग घटा बने बंधों का योग है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तक्त्यातील मूल्ये अनेक रेणूंची सरासरी, म्हणून बंध एन्थाल्पीची गणना नेहमी अंदाजे — मिथेनचे चार C–H बंध प्रत्यक्षात एकामागून एक तोडायला समान ऊर्जा घेत नाहीत.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "गिब्स मुक्त ऊर्जा",
+            "बंध एन्थाल्पी",
+            "प्रमाणित अवस्था संकेत",
+            "हेसचा नियम"
+          ],
+          "solution": "बंध एन्थाल्पी म्हणजे वायू अवस्थेत दिलेल्या बंधाचा एक मोल तोडायला लागणारी ऊर्जा, आणि अभिक्रियेची एन्थाल्पी म्हणजे तुटलेल्या बंधांची बेरीज वजा तयार झालेल्या बंधांची बेरीज. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A gas has vastly more ways of arranging its molecules than the same substance frozen into a crystal, and the quantity that turns that count into a number in joules per kelvin gives disorder a currency. Which quantity is this?",
+      "choices": [
+        "The standard state convention",
+        "Enthalpy against internal energy",
+        "Gibbs free energy",
+        "Entropy as a count of arrangements"
+      ],
+      "answerIndex": 3,
+      "solution": "Entropy measures the number of microscopic arrangements a system can adopt, so it rises with temperature, with volume, and sharply on melting and again on boiling. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "गैस के पास अपने अणु जमाने के उतने ही पदार्थ के क्रिस्टल में जमे होने से कहीं अधिक तरीक़े हैं, और वह राशि जो उस गिनती को जूल प्रति केल्विन की संख्या में बदल देती है, अव्यवस्था को मुद्रा दे देती है। यह कौन-सी राशि है?",
+          "choices": [
+            "मानक अवस्था परिपाटी",
+            "एन्थैल्पी बनाम आंतरिक ऊर्जा",
+            "गिब्स मुक्त ऊर्जा",
+            "व्यवस्थाओं की गिनती के रूप में एन्ट्रॉपी"
+          ],
+          "solution": "एन्ट्रॉपी उन सूक्ष्म व्यवस्थाओं की संख्या नापती है जो निकाय अपना सकता है, अतः वह ताप के साथ, आयतन के साथ, और गलन पर तथा फिर क्वथन पर तीव्रता से बढ़ती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "वायूकडे आपले रेणू मांडण्याचे त्याच पदार्थाच्या स्फटिकात गोठलेल्या स्थितीहून कितीतरी अधिक मार्ग असतात, आणि ती राशी जी त्या मोजणीला ज्यूल प्रति केल्विनच्या संख्येत बदलते ती अव्यवस्थेला चलन देते. ही कोणती राशी?",
+          "choices": [
+            "प्रमाणित अवस्था संकेत",
+            "एन्थाल्पी विरुद्ध आंतरिक ऊर्जा",
+            "गिब्स मुक्त ऊर्जा",
+            "मांडणींची मोजणी म्हणून एन्ट्रॉपी"
+          ],
+          "solution": "एन्ट्रॉपी संच स्वीकारू शकेल अशा सूक्ष्म मांडणींची संख्या मोजते, म्हणून ती तापमानासोबत, घनफळासोबत, आणि द्रवीभवनावर व पुन्हा उकळण्यावर झपाट्याने वाढते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Gibbs free energy is correct?",
+      "choices": [
+        "Hess's law states that the enthalpy change of a reaction is the same whatever route is taken, so unknown enthalpies can be assembled by adding and subtracting known ones.",
+        "Entropy measures the number of microscopic arrangements a system can adopt, so it rises with temperature, with volume, and sharply on melting and again on boiling.",
+        "The Gibbs free energy change ΔG = ΔH − TΔS decides spontaneity: a process goes forward of its own accord when ΔG is negative and not otherwise.",
+        "By convention the standard enthalpy of formation of an element in its most stable state at one bar is zero, which gives every compound's enthalpy a fixed reference to be quoted against."
+      ],
+      "answerIndex": 2,
+      "solution": "The Gibbs free energy change ΔG = ΔH − TΔS decides spontaneity: a process goes forward of its own accord when ΔG is negative and not otherwise. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "गिब्स मुक्त ऊर्जा के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "हेस का नियम कहता है कि किसी अभिक्रिया का एन्थैल्पी-परिवर्तन वही रहता है, रास्ता चाहे जो लिया जाए, अतः अज्ञात एन्थैल्पियाँ ज्ञात एन्थैल्पियों को जोड़-घटाकर बनाई जा सकती हैं।",
+            "एन्ट्रॉपी उन सूक्ष्म व्यवस्थाओं की संख्या नापती है जो निकाय अपना सकता है, अतः वह ताप के साथ, आयतन के साथ, और गलन पर तथा फिर क्वथन पर तीव्रता से बढ़ती है।",
+            "गिब्स मुक्त ऊर्जा-परिवर्तन ΔG = ΔH − TΔS स्वतःस्फूर्तता तय करता है: प्रक्रिया अपने आप आगे तब बढ़ती है जब ΔG ऋणात्मक हो, अन्यथा नहीं।",
+            "परिपाटी से एक बार पर अपनी सबसे स्थिर अवस्था में तत्व की मानक संभवन एन्थैल्पी शून्य है, जिससे हर यौगिक की एन्थैल्पी को बताने के लिए नियत संदर्भ मिल जाता है।"
+          ],
+          "solution": "गिब्स मुक्त ऊर्जा-परिवर्तन ΔG = ΔH − TΔS स्वतःस्फूर्तता तय करता है: प्रक्रिया अपने आप आगे तब बढ़ती है जब ΔG ऋणात्मक हो, अन्यथा नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "गिब्स मुक्त ऊर्जा विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "हेसचा नियम सांगतो की अभिक्रियेचा एन्थाल्पी-बदल तोच राहतो, मार्ग कोणताही घेतला तरी, म्हणून अज्ञात एन्थाल्पी ज्ञात एन्थाल्पी जोडून-वजा करून बनवता येतात.",
+            "एन्ट्रॉपी संच स्वीकारू शकेल अशा सूक्ष्म मांडणींची संख्या मोजते, म्हणून ती तापमानासोबत, घनफळासोबत, आणि द्रवीभवनावर व पुन्हा उकळण्यावर झपाट्याने वाढते.",
+            "गिब्स मुक्त ऊर्जा-बदल ΔG = ΔH − TΔS स्वयंस्फूर्तता ठरवतो: प्रक्रिया आपोआप पुढे तेव्हा जाते जेव्हा ΔG ऋण असतो, अन्यथा नाही.",
+            "संकेताने एक बारवर आपल्या सर्वांत स्थिर अवस्थेतील मूलद्रव्याची प्रमाणित संभवन एन्थाल्पी शून्य, ज्यातून प्रत्येक संयुगाच्या एन्थाल्पीला सांगण्यासाठी ठरलेला संदर्भ मिळतो."
+          ],
+          "solution": "गिब्स मुक्त ऊर्जा-बदल ΔG = ΔH − TΔS स्वयंस्फूर्तता ठरवतो: प्रक्रिया आपोआप पुढे तेव्हा जाते जेव्हा ΔG ऋण असतो, अन्यथा नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It is the same freedom as choosing where to put the zero of gravitational potential energy: nothing observable changes, and the choice is made for convenience alone.\" — which of these is this about?",
+      "choices": [
+        "Gibbs free energy",
+        "Bond enthalpy",
+        "Hess's law",
+        "The standard state convention"
+      ],
+      "answerIndex": 3,
+      "solution": "By convention the standard enthalpy of formation of an element in its most stable state at one bar is zero, which gives every compound's enthalpy a fixed reference to be quoted against. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"यह वही स्वतंत्रता है जो गुरुत्वीय स्थितिज ऊर्जा का शून्य कहाँ रखा जाए चुनने में है: कुछ भी प्रेक्षणीय नहीं बदलता, और चुनाव केवल सुविधा के लिए किया जाता है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "गिब्स मुक्त ऊर्जा",
+            "बंध एन्थैल्पी",
+            "हेस का नियम",
+            "मानक अवस्था परिपाटी"
+          ],
+          "solution": "परिपाटी से एक बार पर अपनी सबसे स्थिर अवस्था में तत्व की मानक संभवन एन्थैल्पी शून्य है, जिससे हर यौगिक की एन्थैल्पी को बताने के लिए नियत संदर्भ मिल जाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"हीच ती स्वतंत्रता जी गुरुत्वीय स्थितिज ऊर्जेचे शून्य कुठे ठेवायचे हे निवडण्यात असते: काहीही निरीक्षणीय बदलत नाही, आणि निवड केवळ सोयीसाठी केली जाते.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "गिब्स मुक्त ऊर्जा",
+            "बंध एन्थाल्पी",
+            "हेसचा नियम",
+            "प्रमाणित अवस्था संकेत"
+          ],
+          "solution": "संकेताने एक बारवर आपल्या सर्वांत स्थिर अवस्थेतील मूलद्रव्याची प्रमाणित संभवन एन्थाल्पी शून्य, ज्यातून प्रत्येक संयुगाच्या एन्थाल्पीला सांगण्यासाठी ठरलेला संदर्भ मिळतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The beaker's figure and the bomb's\" goes correctly with which of these?",
+      "choices": [
+        "enthalpy against internal energy",
+        "bond enthalpy",
+        "the standard state convention",
+        "Hess's law"
+      ],
+      "answerIndex": 0,
+      "solution": "Internal energy change is the heat at constant volume and enthalpy change is the heat at constant pressure, and they differ by the work done against the surroundings: ΔH = ΔU + ΔnRT for gases. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"बीकर का आँकड़ा और बम का\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "एन्थैल्पी बनाम आंतरिक ऊर्जा",
+            "बंध एन्थैल्पी",
+            "मानक अवस्था परिपाटी",
+            "हेस का नियम"
+          ],
+          "solution": "आंतरिक ऊर्जा-परिवर्तन अचर आयतन पर ऊष्मा है और एन्थैल्पी-परिवर्तन अचर दाब पर, और वे परिवेश के विरुद्ध किए कार्य से भिन्न हैं: गैसों के लिए ΔH = ΔU + ΔnRT. यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"बीकरचा आकडा आणि बॉम्बचा\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "एन्थाल्पी विरुद्ध आंतरिक ऊर्जा",
+            "बंध एन्थाल्पी",
+            "प्रमाणित अवस्था संकेत",
+            "हेसचा नियम"
+          ],
+          "solution": "आंतरिक ऊर्जा-बदल म्हणजे अचल घनफळावरची उष्णता आणि एन्थाल्पी-बदल म्हणजे अचल दाबावरची, आणि ते परिसराविरुद्ध केलेल्या कार्याने वेगळे: वायूंसाठी ΔH = ΔU + ΔnRT. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Measuring what cannot be measured, by subtraction\" goes correctly with which of these?",
+      "choices": [
+        "Hess's law",
+        "entropy as a count of arrangements",
+        "bond enthalpy",
+        "Gibbs free energy"
+      ],
+      "answerIndex": 0,
+      "solution": "Hess's law states that the enthalpy change of a reaction is the same whatever route is taken, so unknown enthalpies can be assembled by adding and subtracting known ones. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"जो नापा नहीं जा सकता उसे घटाव से नापना\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "हेस का नियम",
+            "व्यवस्थाओं की गिनती के रूप में एन्ट्रॉपी",
+            "बंध एन्थैल्पी",
+            "गिब्स मुक्त ऊर्जा"
+          ],
+          "solution": "हेस का नियम कहता है कि किसी अभिक्रिया का एन्थैल्पी-परिवर्तन वही रहता है, रास्ता चाहे जो लिया जाए, अतः अज्ञात एन्थैल्पियाँ ज्ञात एन्थैल्पियों को जोड़-घटाकर बनाई जा सकती हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"जे मोजता येत नाही ते वजाबाकीने मोजणे\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "हेसचा नियम",
+            "मांडणींची मोजणी म्हणून एन्ट्रॉपी",
+            "बंध एन्थाल्पी",
+            "गिब्स मुक्त ऊर्जा"
+          ],
+          "solution": "हेसचा नियम सांगतो की अभिक्रियेचा एन्थाल्पी-बदल तोच राहतो, मार्ग कोणताही घेतला तरी, म्हणून अज्ञात एन्थाल्पी ज्ञात एन्थाल्पी जोडून-वजा करून बनवता येतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Spent taking apart, recovered putting together\" goes correctly with which of these?",
+      "choices": [
+        "bond enthalpy",
+        "the standard state convention",
+        "Hess's law",
+        "entropy as a count of arrangements"
+      ],
+      "answerIndex": 0,
+      "solution": "Bond enthalpy is the energy needed to break one mole of a given bond in the gas phase, and a reaction's enthalpy is the sum of the bonds broken minus the sum of the bonds formed. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"अलग करने में ख़र्च, जोड़ने में वापस\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "बंध एन्थैल्पी",
+            "मानक अवस्था परिपाटी",
+            "हेस का नियम",
+            "व्यवस्थाओं की गिनती के रूप में एन्ट्रॉपी"
+          ],
+          "solution": "बंध एन्थैल्पी गैस प्रावस्था में किसी दिए बंध का एक मोल तोड़ने के लिए चाहिए ऊर्जा है, और अभिक्रिया की एन्थैल्पी टूटे बंधों का योग घटा बने बंधों का योग है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"वेगळे करण्यात खर्च, जोडण्यात परत\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "बंध एन्थाल्पी",
+            "प्रमाणित अवस्था संकेत",
+            "हेसचा नियम",
+            "मांडणींची मोजणी म्हणून एन्ट्रॉपी"
+          ],
+          "solution": "बंध एन्थाल्पी म्हणजे वायू अवस्थेत दिलेल्या बंधाचा एक मोल तोडायला लागणारी ऊर्जा, आणि अभिक्रियेची एन्थाल्पी म्हणजे तुटलेल्या बंधांची बेरीज वजा तयार झालेल्या बंधांची बेरीज. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"One arrangement only, and therefore zero\" goes correctly with which of these?",
+      "choices": [
+        "bond enthalpy",
+        "enthalpy against internal energy",
+        "entropy as a count of arrangements",
+        "the standard state convention"
+      ],
+      "answerIndex": 2,
+      "solution": "Entropy measures the number of microscopic arrangements a system can adopt, so it rises with temperature, with volume, and sharply on melting and again on boiling. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"केवल एक व्यवस्था, और इसलिए शून्य\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "बंध एन्थैल्पी",
+            "एन्थैल्पी बनाम आंतरिक ऊर्जा",
+            "व्यवस्थाओं की गिनती के रूप में एन्ट्रॉपी",
+            "मानक अवस्था परिपाटी"
+          ],
+          "solution": "एन्ट्रॉपी उन सूक्ष्म व्यवस्थाओं की संख्या नापती है जो निकाय अपना सकता है, अतः वह ताप के साथ, आयतन के साथ, और गलन पर तथा फिर क्वथन पर तीव्रता से बढ़ती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"केवळ एक मांडणी, आणि म्हणून शून्य\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "बंध एन्थाल्पी",
+            "एन्थाल्पी विरुद्ध आंतरिक ऊर्जा",
+            "मांडणींची मोजणी म्हणून एन्ट्रॉपी",
+            "प्रमाणित अवस्था संकेत"
+          ],
+          "solution": "एन्ट्रॉपी संच स्वीकारू शकेल अशा सूक्ष्म मांडणींची संख्या मोजते, म्हणून ती तापमानासोबत, घनफळासोबत, आणि द्रवीभवनावर व पुन्हा उकळण्यावर झपाट्याने वाढते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Negative, and still slower than the universe is old\" goes correctly with which of these?",
+      "choices": [
+        "Gibbs free energy",
+        "Hess's law",
+        "enthalpy against internal energy",
+        "the standard state convention"
+      ],
+      "answerIndex": 0,
+      "solution": "The Gibbs free energy change ΔG = ΔH − TΔS decides spontaneity: a process goes forward of its own accord when ΔG is negative and not otherwise. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ऋणात्मक, और फिर भी ब्रह्मांड की आयु से धीमा\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "गिब्स मुक्त ऊर्जा",
+            "हेस का नियम",
+            "एन्थैल्पी बनाम आंतरिक ऊर्जा",
+            "मानक अवस्था परिपाटी"
+          ],
+          "solution": "गिब्स मुक्त ऊर्जा-परिवर्तन ΔG = ΔH − TΔS स्वतःस्फूर्तता तय करता है: प्रक्रिया अपने आप आगे तब बढ़ती है जब ΔG ऋणात्मक हो, अन्यथा नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ऋण, आणि तरीही विश्वाच्या वयाहून सावकाश\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "गिब्स मुक्त ऊर्जा",
+            "हेसचा नियम",
+            "एन्थाल्पी विरुद्ध आंतरिक ऊर्जा",
+            "प्रमाणित अवस्था संकेत"
+          ],
+          "solution": "गिब्स मुक्त ऊर्जा-बदल ΔG = ΔH − TΔS स्वयंस्फूर्तता ठरवतो: प्रक्रिया आपोआप पुढे तेव्हा जाते जेव्हा ΔG ऋण असतो, अन्यथा नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Graphite at zero and diamond just above it\" goes correctly with which of these?",
+      "choices": [
+        "Hess's law",
+        "the standard state convention",
+        "enthalpy against internal energy",
+        "entropy as a count of arrangements"
+      ],
+      "answerIndex": 1,
+      "solution": "By convention the standard enthalpy of formation of an element in its most stable state at one bar is zero, which gives every compound's enthalpy a fixed reference to be quoted against. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ग्रेफ़ाइट शून्य पर और हीरा उससे ज़रा ऊपर\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "हेस का नियम",
+            "मानक अवस्था परिपाटी",
+            "एन्थैल्पी बनाम आंतरिक ऊर्जा",
+            "व्यवस्थाओं की गिनती के रूप में एन्ट्रॉपी"
+          ],
+          "solution": "परिपाटी से एक बार पर अपनी सबसे स्थिर अवस्था में तत्व की मानक संभवन एन्थैल्पी शून्य है, जिससे हर यौगिक की एन्थैल्पी को बताने के लिए नियत संदर्भ मिल जाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ग्रॅफाइट शून्यावर आणि हिरा त्याहून जरा वर\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "हेसचा नियम",
+            "प्रमाणित अवस्था संकेत",
+            "एन्थाल्पी विरुद्ध आंतरिक ऊर्जा",
+            "मांडणींची मोजणी म्हणून एन्ट्रॉपी"
+          ],
+          "solution": "संकेताने एक बारवर आपल्या सर्वांत स्थिर अवस्थेतील मूलद्रव्याची प्रमाणित संभवन एन्थाल्पी शून्य, ज्यातून प्रत्येक संयुगाच्या एन्थाल्पीला सांगण्यासाठी ठरलेला संदर्भ मिळतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Enthalpy against internal energy EXCEPT —",
+      "choices": [
+        "Entropy measures the number of microscopic arrangements a system can adopt, so it rises with temperature, with volume, and sharply on melting and again on boiling.",
+        "The two are identical when no gas is made or consumed, so for a reaction entirely between solids and liquids the distinction quietly disappears.",
+        "Enthalpy is the more useful of the two for chemistry because almost every reaction a chemist runs is open to the air, and open to the air means at constant pressure.",
+        "Internal energy change is the heat at constant volume and enthalpy change is the heat at constant pressure, and they differ by the work done against the surroundings: ΔH = ΔU + ΔnRT for gases."
+      ],
+      "answerIndex": 0,
+      "solution": "Entropy measures the number of microscopic arrangements a system can adopt, so it rises with temperature, with volume, and sharply on melting and again on boiling. That belongs to Entropy as a count of arrangements, not Enthalpy against internal energy — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एन्थैल्पी बनाम आंतरिक ऊर्जा के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "एन्ट्रॉपी उन सूक्ष्म व्यवस्थाओं की संख्या नापती है जो निकाय अपना सकता है, अतः वह ताप के साथ, आयतन के साथ, और गलन पर तथा फिर क्वथन पर तीव्रता से बढ़ती है।",
+            "जब कोई गैस न बने न ख़र्च हो तब दोनों समान हैं, अतः पूरी तरह ठोसों और द्रवों के बीच की अभिक्रिया के लिए यह भेद चुपचाप ग़ायब हो जाता है।",
+            "रसायन के लिए दोनों में एन्थैल्पी अधिक उपयोगी है क्योंकि रसायनज्ञ जो भी अभिक्रिया चलाता है वह लगभग सदा हवा के लिए खुली होती है, और हवा के लिए खुली होने का अर्थ है अचर दाब पर।",
+            "आंतरिक ऊर्जा-परिवर्तन अचर आयतन पर ऊष्मा है और एन्थैल्पी-परिवर्तन अचर दाब पर, और वे परिवेश के विरुद्ध किए कार्य से भिन्न हैं: गैसों के लिए ΔH = ΔU + ΔnRT."
+          ],
+          "solution": "एन्ट्रॉपी उन सूक्ष्म व्यवस्थाओं की संख्या नापती है जो निकाय अपना सकता है, अतः वह ताप के साथ, आयतन के साथ, और गलन पर तथा फिर क्वथन पर तीव्रता से बढ़ती है। यह व्यवस्थाओं की गिनती के रूप में एन्ट्रॉपी की बात है, एन्थैल्पी बनाम आंतरिक ऊर्जा की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "एन्थाल्पी विरुद्ध आंतरिक ऊर्जा विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "एन्ट्रॉपी संच स्वीकारू शकेल अशा सूक्ष्म मांडणींची संख्या मोजते, म्हणून ती तापमानासोबत, घनफळासोबत, आणि द्रवीभवनावर व पुन्हा उकळण्यावर झपाट्याने वाढते.",
+            "जेव्हा कोणताही वायू तयार होत नाही वा वापरला जात नाही तेव्हा दोन्ही सारखे, म्हणून पूर्णपणे घन आणि द्रवांमधल्या अभिक्रियेसाठी हा भेद गुपचूप नाहीसा होतो.",
+            "रसायनासाठी दोघांपैकी एन्थाल्पी अधिक उपयुक्त कारण रसायनशास्त्रज्ञ जी अभिक्रिया चालवतो ती जवळपास नेहमी हवेला उघडी असते, आणि हवेला उघडी असणे म्हणजे अचल दाबावर.",
+            "आंतरिक ऊर्जा-बदल म्हणजे अचल घनफळावरची उष्णता आणि एन्थाल्पी-बदल म्हणजे अचल दाबावरची, आणि ते परिसराविरुद्ध केलेल्या कार्याने वेगळे: वायूंसाठी ΔH = ΔU + ΔnRT."
+          ],
+          "solution": "एन्ट्रॉपी संच स्वीकारू शकेल अशा सूक्ष्म मांडणींची संख्या मोजते, म्हणून ती तापमानासोबत, घनफळासोबत, आणि द्रवीभवनावर व पुन्हा उकळण्यावर झपाट्याने वाढते. हे मांडणींची मोजणी म्हणून एन्ट्रॉपी चे आहे, एन्थाल्पी विरुद्ध आंतरिक ऊर्जा चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Hess's law EXCEPT —",
+      "choices": [
+        "It is what makes tables of standard enthalpies of formation worth compiling: from one number per compound, the enthalpy of any reaction between them can be calculated without ever running it.",
+        "Bond enthalpy is the energy needed to break one mole of a given bond in the gas phase, and a reaction's enthalpy is the sum of the bonds broken minus the sum of the bonds formed.",
+        "It is the first law wearing chemical clothes: enthalpy is a state function, so a cycle that returns to its starting point must sum to zero or energy could be made from nothing.",
+        "Hess's law states that the enthalpy change of a reaction is the same whatever route is taken, so unknown enthalpies can be assembled by adding and subtracting known ones."
+      ],
+      "answerIndex": 1,
+      "solution": "Bond enthalpy is the energy needed to break one mole of a given bond in the gas phase, and a reaction's enthalpy is the sum of the bonds broken minus the sum of the bonds formed. That belongs to Bond enthalpy, not Hess's law — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "हेस का नियम के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "इसी से मानक संभवन एन्थैल्पियों की तालिकाएँ बनाना सार्थक है: प्रति यौगिक एक संख्या से, उनके बीच की किसी भी अभिक्रिया की एन्थैल्पी बिना उसे चलाए निकाली जा सकती है।",
+            "बंध एन्थैल्पी गैस प्रावस्था में किसी दिए बंध का एक मोल तोड़ने के लिए चाहिए ऊर्जा है, और अभिक्रिया की एन्थैल्पी टूटे बंधों का योग घटा बने बंधों का योग है।",
+            "यह रासायनिक कपड़े पहने पहला नियम है: एन्थैल्पी अवस्था-फलन है, अतः जो चक्र अपने आरंभ-बिंदु पर लौटे उसका योग शून्य होना ही चाहिए, वरना शून्य से ऊर्जा बन जाती।",
+            "हेस का नियम कहता है कि किसी अभिक्रिया का एन्थैल्पी-परिवर्तन वही रहता है, रास्ता चाहे जो लिया जाए, अतः अज्ञात एन्थैल्पियाँ ज्ञात एन्थैल्पियों को जोड़-घटाकर बनाई जा सकती हैं।"
+          ],
+          "solution": "बंध एन्थैल्पी गैस प्रावस्था में किसी दिए बंध का एक मोल तोड़ने के लिए चाहिए ऊर्जा है, और अभिक्रिया की एन्थैल्पी टूटे बंधों का योग घटा बने बंधों का योग है। यह बंध एन्थैल्पी की बात है, हेस का नियम की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "हेसचा नियम विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "यामुळेच प्रमाणित संभवन एन्थाल्पींचे तक्ते बनवणे सार्थक: प्रति संयुग एका संख्येतून, त्यांच्यातील कोणत्याही अभिक्रियेची एन्थाल्पी ती न चालवता काढता येते.",
+            "बंध एन्थाल्पी म्हणजे वायू अवस्थेत दिलेल्या बंधाचा एक मोल तोडायला लागणारी ऊर्जा, आणि अभिक्रियेची एन्थाल्पी म्हणजे तुटलेल्या बंधांची बेरीज वजा तयार झालेल्या बंधांची बेरीज.",
+            "हा रासायनिक कपडे घातलेला पहिला नियम: एन्थाल्पी हे अवस्था-फलन, म्हणून जे चक्र आपल्या आरंभबिंदूवर परतते त्याची बेरीज शून्य असावीच लागते, नाहीतर शून्यातून ऊर्जा बनली असती.",
+            "हेसचा नियम सांगतो की अभिक्रियेचा एन्थाल्पी-बदल तोच राहतो, मार्ग कोणताही घेतला तरी, म्हणून अज्ञात एन्थाल्पी ज्ञात एन्थाल्पी जोडून-वजा करून बनवता येतात."
+          ],
+          "solution": "बंध एन्थाल्पी म्हणजे वायू अवस्थेत दिलेल्या बंधाचा एक मोल तोडायला लागणारी ऊर्जा, आणि अभिक्रियेची एन्थाल्पी म्हणजे तुटलेल्या बंधांची बेरीज वजा तयार झालेल्या बंधांची बेरीज. हे बंध एन्थाल्पी चे आहे, हेसचा नियम चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Bond enthalpy EXCEPT —",
+      "choices": [
+        "Bond enthalpy is the energy needed to break one mole of a given bond in the gas phase, and a reaction's enthalpy is the sum of the bonds broken minus the sum of the bonds formed.",
+        "Tabulated values are averages across many molecules, so a bond enthalpy calculation is always approximate — the four C–H bonds in methane do not in fact take equal energy to break one after another.",
+        "Hess's law states that the enthalpy change of a reaction is the same whatever route is taken, so unknown enthalpies can be assembled by adding and subtracting known ones.",
+        "It explains why combustion is so reliably exothermic: the bonds in carbon dioxide and water are unusually strong, so far more energy comes back than the fuel's own bonds cost to break."
+      ],
+      "answerIndex": 2,
+      "solution": "Hess's law states that the enthalpy change of a reaction is the same whatever route is taken, so unknown enthalpies can be assembled by adding and subtracting known ones. That belongs to Hess's law, not Bond enthalpy — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बंध एन्थैल्पी के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "बंध एन्थैल्पी गैस प्रावस्था में किसी दिए बंध का एक मोल तोड़ने के लिए चाहिए ऊर्जा है, और अभिक्रिया की एन्थैल्पी टूटे बंधों का योग घटा बने बंधों का योग है।",
+            "तालिका के मान अनेक अणुओं का औसत हैं, अतः बंध एन्थैल्पी की गणना सदा सन्निकट है — मेथेन के चार C–H बंध वस्तुतः एक के बाद एक तोड़ने में बराबर ऊर्जा नहीं लेते।",
+            "हेस का नियम कहता है कि किसी अभिक्रिया का एन्थैल्पी-परिवर्तन वही रहता है, रास्ता चाहे जो लिया जाए, अतः अज्ञात एन्थैल्पियाँ ज्ञात एन्थैल्पियों को जोड़-घटाकर बनाई जा सकती हैं।",
+            "यही समझाता है कि दहन इतनी भरोसेमंद ढंग से ऊष्माक्षेपी क्यों है: कार्बन डाइऑक्साइड और पानी के बंध असामान्य रूप से प्रबल हैं, अतः ईंधन के अपने बंध तोड़ने की लागत से कहीं अधिक ऊर्जा वापस आती है।"
+          ],
+          "solution": "हेस का नियम कहता है कि किसी अभिक्रिया का एन्थैल्पी-परिवर्तन वही रहता है, रास्ता चाहे जो लिया जाए, अतः अज्ञात एन्थैल्पियाँ ज्ञात एन्थैल्पियों को जोड़-घटाकर बनाई जा सकती हैं। यह हेस का नियम की बात है, बंध एन्थैल्पी की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "बंध एन्थाल्पी विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "बंध एन्थाल्पी म्हणजे वायू अवस्थेत दिलेल्या बंधाचा एक मोल तोडायला लागणारी ऊर्जा, आणि अभिक्रियेची एन्थाल्पी म्हणजे तुटलेल्या बंधांची बेरीज वजा तयार झालेल्या बंधांची बेरीज.",
+            "तक्त्यातील मूल्ये अनेक रेणूंची सरासरी, म्हणून बंध एन्थाल्पीची गणना नेहमी अंदाजे — मिथेनचे चार C–H बंध प्रत्यक्षात एकामागून एक तोडायला समान ऊर्जा घेत नाहीत.",
+            "हेसचा नियम सांगतो की अभिक्रियेचा एन्थाल्पी-बदल तोच राहतो, मार्ग कोणताही घेतला तरी, म्हणून अज्ञात एन्थाल्पी ज्ञात एन्थाल्पी जोडून-वजा करून बनवता येतात.",
+            "हेच समजावते की ज्वलन इतक्या विश्वासार्हपणे उष्माक्षेपी का: कार्बन डायऑक्साइड आणि पाण्याचे बंध असामान्यपणे प्रबळ, म्हणून इंधनाचे स्वतःचे बंध तोडण्याच्या खर्चाहून कितीतरी अधिक ऊर्जा परत येते."
+          ],
+          "solution": "हेसचा नियम सांगतो की अभिक्रियेचा एन्थाल्पी-बदल तोच राहतो, मार्ग कोणताही घेतला तरी, म्हणून अज्ञात एन्थाल्पी ज्ञात एन्थाल्पी जोडून-वजा करून बनवता येतात. हे हेसचा नियम चे आहे, बंध एन्थाल्पी चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Entropy as a count of arrangements EXCEPT —",
+      "choices": [
+        "The rise on boiling is far larger than on melting, because a gas's molecules are free to be anywhere in the container while a liquid's are still touching their neighbours.",
+        "Internal energy change is the heat at constant volume and enthalpy change is the heat at constant pressure, and they differ by the work done against the surroundings: ΔH = ΔU + ΔnRT for gases.",
+        "A perfect crystal at absolute zero has exactly one arrangement and therefore zero entropy, which is the third law and the reason entropies can be quoted as absolute values rather than as changes.",
+        "Entropy measures the number of microscopic arrangements a system can adopt, so it rises with temperature, with volume, and sharply on melting and again on boiling."
+      ],
+      "answerIndex": 1,
+      "solution": "Internal energy change is the heat at constant volume and enthalpy change is the heat at constant pressure, and they differ by the work done against the surroundings: ΔH = ΔU + ΔnRT for gases. That belongs to Enthalpy against internal energy, not Entropy as a count of arrangements — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "व्यवस्थाओं की गिनती के रूप में एन्ट्रॉपी के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "क्वथन पर वृद्धि गलन की तुलना में कहीं बड़ी है, क्योंकि गैस के अणु पात्र में कहीं भी होने को स्वतंत्र हैं जबकि द्रव के अभी भी अपने पड़ोसियों को छू रहे हैं।",
+            "आंतरिक ऊर्जा-परिवर्तन अचर आयतन पर ऊष्मा है और एन्थैल्पी-परिवर्तन अचर दाब पर, और वे परिवेश के विरुद्ध किए कार्य से भिन्न हैं: गैसों के लिए ΔH = ΔU + ΔnRT.",
+            "परम शून्य पर पूर्ण क्रिस्टल की ठीक एक व्यवस्था है और इसलिए एन्ट्रॉपी शून्य, यही तीसरा नियम है और यही कारण कि एन्ट्रॉपियाँ परिवर्तनों के बजाय निरपेक्ष मानों के रूप में बताई जा सकती हैं।",
+            "एन्ट्रॉपी उन सूक्ष्म व्यवस्थाओं की संख्या नापती है जो निकाय अपना सकता है, अतः वह ताप के साथ, आयतन के साथ, और गलन पर तथा फिर क्वथन पर तीव्रता से बढ़ती है।"
+          ],
+          "solution": "आंतरिक ऊर्जा-परिवर्तन अचर आयतन पर ऊष्मा है और एन्थैल्पी-परिवर्तन अचर दाब पर, और वे परिवेश के विरुद्ध किए कार्य से भिन्न हैं: गैसों के लिए ΔH = ΔU + ΔnRT. यह एन्थैल्पी बनाम आंतरिक ऊर्जा की बात है, व्यवस्थाओं की गिनती के रूप में एन्ट्रॉपी की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "मांडणींची मोजणी म्हणून एन्ट्रॉपी विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "उकळण्यावरची वाढ द्रवीभवनाहून कितीतरी मोठी, कारण वायूचे रेणू भांड्यात कुठेही असायला मोकळे तर द्रवाचे अजूनही आपल्या शेजाऱ्यांना स्पर्श करत आहेत.",
+            "आंतरिक ऊर्जा-बदल म्हणजे अचल घनफळावरची उष्णता आणि एन्थाल्पी-बदल म्हणजे अचल दाबावरची, आणि ते परिसराविरुद्ध केलेल्या कार्याने वेगळे: वायूंसाठी ΔH = ΔU + ΔnRT.",
+            "निरपेक्ष शून्यावर परिपूर्ण स्फटिकाची नेमकी एक मांडणी आणि म्हणून एन्ट्रॉपी शून्य, हाच तिसरा नियम आणि हेच कारण की एन्ट्रॉपी बदलांऐवजी निरपेक्ष मूल्यांच्या रूपात सांगता येतात.",
+            "एन्ट्रॉपी संच स्वीकारू शकेल अशा सूक्ष्म मांडणींची संख्या मोजते, म्हणून ती तापमानासोबत, घनफळासोबत, आणि द्रवीभवनावर व पुन्हा उकळण्यावर झपाट्याने वाढते."
+          ],
+          "solution": "आंतरिक ऊर्जा-बदल म्हणजे अचल घनफळावरची उष्णता आणि एन्थाल्पी-बदल म्हणजे अचल दाबावरची, आणि ते परिसराविरुद्ध केलेल्या कार्याने वेगळे: वायूंसाठी ΔH = ΔU + ΔnRT. हे एन्थाल्पी विरुद्ध आंतरिक ऊर्जा चे आहे, मांडणींची मोजणी म्हणून एन्ट्रॉपी चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Ammonium chloride dissolves in water and the beaker goes noticeably cold, so the process absorbs heat. A student says an endothermic process cannot happen on its own. Explain why it does, and what would happen at a much lower temperature.",
+      "choices": [
+        "Enthalpy is not the criterion; ΔG = ΔH − TΔS is. Dissolving breaks an ordered crystal into ions dispersed through the solvent, so ΔS is strongly positive, and at room temperature the TΔS term outweighs the positive ΔH and makes ΔG negative. Cool the water far enough and TΔS shrinks until ΔH dominates, at which point ΔG turns positive and the salt stops dissolving — which is exactly why solubility of such salts falls as temperature falls",
+        "The student is right: the beaker must actually be warming, and the sensation of cold is a trick of evaporation from the outside of the glass",
+        "It happens because water supplies the energy, so the process is really exothermic once the solvent is included in the accounting",
+        "Cooling the water would make the salt dissolve faster, since a lower temperature always favours an endothermic process"
+      ],
+      "answerIndex": 0,
+      "solution": "The student is applying a rule that was true in an earlier chapter and has just been superseded. Up to now 'exothermic' has been a good proxy for 'happens' — most spontaneous reactions do release heat, and it is a useful first guess. But it is only a proxy, and this experiment is the counter-example. The real criterion is the Gibbs free energy: ΔG = ΔH − TΔS, and a process is spontaneous exactly when ΔG is negative. Two terms, and they can disagree. For ammonium chloride dissolving, ΔH is positive at about +15 kJ/mol — energy must be found to pull the ions out of a crystal lattice, and the hydration of those ions does not quite pay it back. That is why the beaker cools: the heat is taken from the water itself. But ΔS is also positive, and substantially so. A crystal is one of the most ordered arrangements matter takes: every ion in a fixed place in a repeating lattice. Dissolving it scatters those ions randomly through the liquid, and the number of available arrangements rises enormously. At 298 K the TΔS term is larger than ΔH, so ΔG comes out negative and the salt dissolves of its own accord — driven entirely by entropy, with enthalpy opposing throughout. Now the temperature question, which the fourth option gets backwards. The entropy term carries a factor of T, and the enthalpy term does not. Lower the temperature and TΔS shrinks while ΔH stays put, so the balance tips towards ΔH. Below some temperature the positive ΔH wins, ΔG turns positive, and dissolution stops being spontaneous. This is not hypothetical: the solubility of ammonium chloride falls steadily as water is cooled, which is exactly how such salts are purified by recrystallisation — dissolve hot, cool, and the crystals come back. The general pattern is worth tabulating. When ΔH is negative and ΔS positive, a process is spontaneous at every temperature. When both are positive, it needs a high temperature. When both are negative, it needs a low one. When ΔH is positive and ΔS negative, it never happens at all. Every reaction in chemistry falls into one of those four boxes, and knowing which one predicts how heating will change its behaviour without any further measurement. (The second answer denies a reading anyone can take with a thermometer, and the third smuggles the surroundings into the system to preserve a rule that does not need preserving.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अमोनियम क्लोराइड पानी में घुलता है और बीकर साफ़ तौर पर ठंडा हो जाता है, अतः प्रक्रिया ऊष्मा सोखती है। एक विद्यार्थी कहता है कि ऊष्माशोषी प्रक्रिया अपने आप नहीं हो सकती। समझाओ वह होती क्यों है, और कहीं कम ताप पर क्या होता।",
+          "choices": [
+            "कसौटी एन्थैल्पी नहीं; ΔG = ΔH − TΔS है। घुलना व्यवस्थित क्रिस्टल को तोड़कर आयनों को विलायक भर बिखेर देता है, अतः ΔS प्रबल धनात्मक है, और कमरे के ताप पर TΔS पद धनात्मक ΔH पर भारी पड़कर ΔG को ऋणात्मक बना देता है। पानी को पर्याप्त ठंडा करो और TΔS तब तक घटता है जब तक ΔH हावी न हो जाए, जिस बिंदु पर ΔG धनात्मक हो जाता है और लवण घुलना बंद कर देता है — ठीक इसीलिए ऐसे लवणों की विलेयता ताप गिरने पर गिरती है",
+            "विद्यार्थी सही है: बीकर वस्तुतः गरम हो रहा होगा, और ठंड की अनुभूति काँच के बाहर से वाष्पन का छल है",
+            "यह इसलिए होता है कि ऊर्जा पानी देता है, अतः विलायक को हिसाब में लेने पर प्रक्रिया वस्तुतः ऊष्माक्षेपी है",
+            "पानी ठंडा करने से लवण तेज़ी से घुलता, क्योंकि नीचा ताप सदा ऊष्माशोषी प्रक्रिया के पक्ष में होता है"
+          ],
+          "solution": "विद्यार्थी ऐसा नियम लगा रहा है जो पिछले अध्याय में सच था और अभी-अभी बदल दिया गया है। अब तक 'ऊष्माक्षेपी' 'होता है' का अच्छा एवजी रहा है — अधिकांश स्वतःस्फूर्त अभिक्रियाएँ ऊष्मा छोड़ती ही हैं, और यह उपयोगी पहला अनुमान है। पर वह केवल एवजी है, और यही प्रयोग प्रति-उदाहरण है। असली कसौटी गिब्स मुक्त ऊर्जा है: ΔG = ΔH − TΔS, और प्रक्रिया ठीक तब स्वतःस्फूर्त है जब ΔG ऋणात्मक हो। दो पद, और वे असहमत हो सकते हैं। अमोनियम क्लोराइड के घुलने के लिए ΔH लगभग +15 kJ/mol धनात्मक है — क्रिस्टल जालक से आयन खींचने को ऊर्जा जुटानी पड़ती है, और उन आयनों का जलयोजन उसे पूरी तरह नहीं चुकाता। इसीलिए बीकर ठंडा होता है: ऊष्मा स्वयं पानी से ली जाती है। पर ΔS भी धनात्मक है, और काफ़ी। क्रिस्टल द्रव्य की सबसे व्यवस्थित व्यवस्थाओं में से एक है: दोहराते जालक में हर आयन नियत स्थान पर। उसे घोलना उन आयनों को द्रव भर यादृच्छिक बिखेर देता है, और उपलब्ध व्यवस्थाओं की संख्या विशाल रूप से बढ़ जाती है। 298 K पर TΔS पद ΔH से बड़ा है, अतः ΔG ऋणात्मक निकलता है और लवण अपने आप घुल जाता है — पूरी तरह एन्ट्रॉपी से चालित, जबकि एन्थैल्पी पूरे समय विरोध करती है। अब ताप वाला प्रश्न, जिसे चौथा विकल्प उलटा कर देता है। एन्ट्रॉपी पद T का गुणक ढोता है, और एन्थैल्पी पद नहीं। ताप घटाओ और TΔS सिकुड़ता है जबकि ΔH टिका रहता है, अतः तुला ΔH की ओर झुक जाती है। किसी ताप से नीचे धनात्मक ΔH जीत जाता है, ΔG धनात्मक हो जाता है, और घुलना स्वतःस्फूर्त होना बंद कर देता है। यह काल्पनिक नहीं: पानी ठंडा होते-होते अमोनियम क्लोराइड की विलेयता लगातार गिरती है, और ठीक इसी तरह ऐसे लवण पुनःक्रिस्टलन से शुद्ध किए जाते हैं — गरम में घोलो, ठंडा करो, और क्रिस्टल वापस आ जाते हैं। सामान्य प्रतिरूप तालिकाबद्ध करने योग्य है। जब ΔH ऋणात्मक और ΔS धनात्मक हो, प्रक्रिया हर ताप पर स्वतःस्फूर्त है। जब दोनों धनात्मक हों, उसे ऊँचा ताप चाहिए। जब दोनों ऋणात्मक हों, नीचा। जब ΔH धनात्मक और ΔS ऋणात्मक हो, वह कभी होती ही नहीं। रसायन की हर अभिक्रिया इन्हीं चार डिब्बों में से एक में पड़ती है, और कौन-सा, यह जान लेना बिना किसी और माप के बता देता है कि गरम करने से उसका व्यवहार कैसे बदलेगा। (दूसरा उत्तर ऐसे पाठ्यांक को नकारता है जो कोई भी तापमापी से ले सकता है, और तीसरा ऐसे नियम को बचाने के लिए परिवेश को निकाय में तस्करी से भेज देता है जिसे बचाने की ज़रूरत ही नहीं।)"
+        },
+        "mr": {
+          "stem": "अमोनियम क्लोराइड पाण्यात विरघळते आणि बीकर स्पष्टपणे थंड होतो, म्हणून प्रक्रिया उष्णता शोषते. एक विद्यार्थी म्हणतो की उष्माशोषी प्रक्रिया आपोआप होऊ शकत नाही. ती का होते, आणि कितीतरी कमी तापमानावर काय झाले असते ते समजावा.",
+          "choices": [
+            "कसोटी एन्थाल्पी नव्हे; ΔG = ΔH − TΔS आहे. विरघळणे व्यवस्थित स्फटिक तोडून आयन विद्रावकभर विखुरते, म्हणून ΔS प्रबळ धन, आणि खोलीच्या तापमानावर TΔS पद धन ΔH वर वरचढ ठरून ΔG ऋण बनवते. पाणी पुरेसे थंड करा आणि TΔS तोवर घटते जोवर ΔH वरचढ होत नाही, ज्या बिंदूवर ΔG धन होतो आणि क्षार विरघळणे थांबवते — नेमके म्हणूनच अशा क्षारांची विद्राव्यता तापमान घटताना घटते",
+            "विद्यार्थी बरोबर: बीकर प्रत्यक्षात तापत असणार, आणि थंडीची संवेदना काचेच्या बाहेरून बाष्पीभवनाची फसवणूक",
+            "हे यासाठी घडते की ऊर्जा पाणी पुरवते, म्हणून विद्रावक हिशोबात घेतल्यास प्रक्रिया प्रत्यक्षात उष्माक्षेपी आहे",
+            "पाणी थंड केल्याने क्षार वेगाने विरघळला असता, कारण कमी तापमान नेहमी उष्माशोषी प्रक्रियेच्या बाजूने असते"
+          ],
+          "solution": "विद्यार्थी असा नियम लावत आहे जो मागच्या प्रकरणात खरा होता आणि आत्ताच बदलला गेला आहे. आतापर्यंत 'उष्माक्षेपी' हा 'घडते' चा चांगला पर्याय होता — बहुतांश स्वयंस्फूर्त अभिक्रिया उष्णता सोडतातच, आणि हा उपयुक्त पहिला अंदाज. पण तो केवळ पर्याय, आणि हाच प्रयोग प्रतिउदाहरण. खरी कसोटी गिब्स मुक्त ऊर्जा: ΔG = ΔH − TΔS, आणि प्रक्रिया नेमकी तेव्हा स्वयंस्फूर्त जेव्हा ΔG ऋण असतो. दोन पदे, आणि ती असहमत असू शकतात. अमोनियम क्लोराइड विरघळण्यासाठी ΔH सुमारे +15 kJ/mol धन — स्फटिक जालकातून आयन ओढायला ऊर्जा जमवावी लागते, आणि त्या आयनांचे जलयोजन ती पूर्णपणे भरून काढत नाही. म्हणूनच बीकर थंड होतो: उष्णता स्वतः पाण्यातून घेतली जाते. पण ΔS ही धन आहे, आणि बरीच. स्फटिक ही द्रव्याच्या सर्वांत व्यवस्थित मांडणींपैकी एक: पुनरावृत्त जालकात प्रत्येक आयन ठरलेल्या जागी. तो विरघळवणे ते आयन द्रवभर यादृच्छिक विखुरते, आणि उपलब्ध मांडणींची संख्या प्रचंड वाढते. 298 K वर TΔS पद ΔH हून मोठे, म्हणून ΔG ऋण निघतो आणि क्षार आपोआप विरघळतो — पूर्णपणे एन्ट्रॉपीने चालवलेला, तर एन्थाल्पी पूर्ण काळ विरोध करत. आता तापमानाचा प्रश्न, जो चौथा पर्याय उलटा करतो. एन्ट्रॉपी पद T चा गुणक वाहते, आणि एन्थाल्पी पद नाही. तापमान घटवा आणि TΔS आकुंचते तर ΔH जागेवर राहते, म्हणून तराजू ΔH कडे झुकतो. एका तापमानाखाली धन ΔH जिंकतो, ΔG धन होतो, आणि विरघळणे स्वयंस्फूर्त असणे थांबते. हे काल्पनिक नाही: पाणी थंड होताना अमोनियम क्लोराइडची विद्राव्यता सतत घटते, आणि नेमक्या याच पद्धतीने असे क्षार पुनःस्फटिकीकरणाने शुद्ध केले जातात — गरमात विरघळवा, थंड करा, आणि स्फटिक परत येतात. सामान्य आकृतिबंध तक्त्यात मांडण्याजोगा. जेव्हा ΔH ऋण आणि ΔS धन, प्रक्रिया प्रत्येक तापमानावर स्वयंस्फूर्त. जेव्हा दोन्ही धन, तिला उच्च तापमान लागते. जेव्हा दोन्ही ऋण, कमी. जेव्हा ΔH धन आणि ΔS ऋण, ती कधी घडतच नाही. रसायनातील प्रत्येक अभिक्रिया याच चार खोक्यांपैकी एकात पडते, आणि कोणत्या हे जाणणे कोणत्याही पुढील मापाशिवाय सांगते की तापवल्याने तिचे वर्तन कसे बदलेल. (दुसरे उत्तर असे वाचन नाकारते जे कोणीही तापमापकाने घेऊ शकतो, आणि तिसरे जो नियम वाचवण्याची गरजच नाही तो वाचवायला परिसराला संचात चोरून पाठवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The synthesis of ammonia from nitrogen and hydrogen has ΔH = −92 kJ/mol and ΔS = −0.198 kJ/mol/K. It is nevertheless run industrially at about 700 K, where those figures make ΔG positive. Explain the apparent contradiction.",
+      "choices": [
+        "Thermodynamics and kinetics are answering different questions. ΔG says how far a reaction can go, and at 700 K it is indeed unfavourable — the equilibrium yield is poor. But at 298 K, where ΔG is comfortably negative, the nitrogen triple bond is so strong that the reaction is immeasurably slow. The high temperature is a deliberate sacrifice of yield for rate, and the loss is recovered by running at 200 atmospheres, which shifts the equilibrium back by Le Chatelier since four moles of gas become two",
+        "The figures must be wrong, since a reaction cannot be run at a temperature where its ΔG is positive",
+        "The catalyst changes ΔG to a negative value, which is what catalysts are for",
+        "Raising the temperature always increases the yield of an exothermic reaction, so 700 K is chosen for yield rather than rate"
+      ],
+      "answerIndex": 0,
+      "solution": "Do the arithmetic first, because it confirms rather than dissolves the puzzle. At 298 K, ΔG = −92 − (298)(−0.198) = −92 + 59 = −33 kJ/mol: comfortably spontaneous. At 700 K, ΔG = −92 − (700)(−0.198) = −92 + 139 = +47 kJ/mol: distinctly unfavourable. The industrial process really is run in the unfavourable region, and the figures are not in error. The resolution is that ΔG answers only one of the two questions a chemical engineer must ask. It says where equilibrium lies — how much ammonia can be present when the reaction has finished changing. It says nothing whatever about how long that will take. Rate is governed by activation energy, and the barrier here is the nitrogen–nitrogen triple bond at 941 kJ/mol, one of the strongest in chemistry. At room temperature the fraction of collisions carrying that much energy is so small that a mixture of nitrogen and hydrogen can sit indefinitely with no detectable ammonia forming. A perfect yield reached in ten thousand years is worth nothing. So Haber's process trades one against the other. Raising the temperature to about 700 K makes the reaction fast enough to be useful, at the cost of a poor equilibrium position. Then the yield is bought back by a second lever: pressure. The reaction takes four moles of gas to two, so compressing the mixture to around 200 atmospheres shifts the equilibrium towards the side with fewer molecules, exactly as Le Chatelier's principle requires. And an iron catalyst is added, which lowers the activation barrier and so allows a lower temperature than would otherwise be needed — recovering some of the sacrificed yield. Note carefully what the catalyst does not do, since the third option gets this wrong. A catalyst provides an easier path between the same two states. It changes the rate, and it changes the forward and reverse rates equally, so the position of equilibrium is untouched. ΔG is a difference between initial and final states and cannot depend on the route, by exactly the argument that gives Hess's law. A catalyst that shifted an equilibrium would be a perpetual-motion machine. The general lesson is the one worth carrying out of both thermodynamics chapters. Thermodynamics tells you whether something is possible and how far it can go; kinetics tells you whether it will happen this century. Neither answers the other's question, and an industrial process is almost always a negotiated settlement between them. (The fourth answer inverts Le Chatelier: heating an exothermic reaction always lowers its yield, which is precisely the cost being paid here.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "नाइट्रोजन और हाइड्रोजन से अमोनिया के संश्लेषण का ΔH = −92 kJ/mol और ΔS = −0.198 kJ/mol/K है। फिर भी वह औद्योगिक रूप से लगभग 700 K पर चलाया जाता है, जहाँ ये आँकड़े ΔG को धनात्मक बना देते हैं। आभासी विरोधाभास समझाओ।",
+          "choices": [
+            "ऊष्मागतिकी और बलगतिकी भिन्न प्रश्नों के उत्तर दे रही हैं। ΔG बताता है कि अभिक्रिया कितनी दूर जा सकती है, और 700 K पर वह सचमुच प्रतिकूल है — साम्य लब्धि ख़राब है। पर 298 K पर, जहाँ ΔG आराम से ऋणात्मक है, नाइट्रोजन का त्रिबंध इतना प्रबल है कि अभिक्रिया अमापनीय रूप से धीमी है। ऊँचा ताप लब्धि की जानबूझकर दी गई क़ुर्बानी है दर के लिए, और हानि 200 वायुमंडल पर चलाकर वापस पाई जाती है, जो ले शातेलिए से साम्य वापस खिसका देता है क्योंकि चार मोल गैस दो हो जाती है",
+            "आँकड़े ग़लत होंगे, क्योंकि जिस ताप पर ΔG धनात्मक हो उस पर अभिक्रिया चलाई नहीं जा सकती",
+            "उत्प्रेरक ΔG को ऋणात्मक मान में बदल देता है, और उत्प्रेरक इसी के लिए होते हैं",
+            "ताप बढ़ाने से ऊष्माक्षेपी अभिक्रिया की लब्धि सदा बढ़ती है, अतः 700 K दर के लिए नहीं लब्धि के लिए चुना गया है"
+          ],
+          "solution": "पहले गणना करो, क्योंकि वह पहेली घोलने के बजाय पुष्ट करती है। 298 K पर, ΔG = −92 − (298)(−0.198) = −92 + 59 = −33 kJ/mol: आराम से स्वतःस्फूर्त। 700 K पर, ΔG = −92 − (700)(−0.198) = −92 + 139 = +47 kJ/mol: स्पष्ट रूप से प्रतिकूल। औद्योगिक प्रक्रम सचमुच प्रतिकूल क्षेत्र में चलाया जाता है, और आँकड़े ग़लत नहीं। समाधान यह कि रासायनिक अभियंता को जो दो प्रश्न पूछने हैं ΔG उनमें से केवल एक का उत्तर देता है। वह बताता है कि साम्य कहाँ है — अभिक्रिया के बदलना बंद कर देने पर कितनी अमोनिया मौजूद हो सकती है। वह इस बारे में कुछ भी नहीं कहता कि उसमें कितना समय लगेगा। दर सक्रियण ऊर्जा से शासित है, और यहाँ बाधा नाइट्रोजन-नाइट्रोजन त्रिबंध है, 941 kJ/mol पर, रसायन के सबसे प्रबल बंधों में से एक। कमरे के ताप पर उतनी ऊर्जा ढोती टक्करों का अंश इतना छोटा है कि नाइट्रोजन और हाइड्रोजन का मिश्रण अनिश्चित काल बैठा रह सकता है और पकड़ने योग्य कोई अमोनिया नहीं बनती। दस हज़ार वर्ष में मिली पूर्ण लब्धि किसी काम की नहीं। अतः हैबर प्रक्रम एक का सौदा दूसरे से करता है। ताप को लगभग 700 K तक बढ़ाना अभिक्रिया को उपयोगी होने भर तेज़ बना देता है, ख़राब साम्य-स्थिति की क़ीमत पर। फिर लब्धि दूसरे लीवर से वापस ख़रीदी जाती है: दाब। अभिक्रिया चार मोल गैस को दो में ले जाती है, अतः मिश्रण को लगभग 200 वायुमंडल तक संपीड़ित करना साम्य को कम अणुओं वाली ओर खिसका देता है, ठीक जैसा ले शातेलिए का सिद्धांत माँगता है। और लोहे का उत्प्रेरक जोड़ा जाता है, जो सक्रियण बाधा घटाता है और इसलिए उससे नीचा ताप चलने देता है जो अन्यथा चाहिए होता — क़ुर्बान की गई लब्धि का कुछ हिस्सा वापस पाकर। ध्यान से देखो उत्प्रेरक क्या नहीं करता, क्योंकि तीसरा विकल्प यही ग़लत करता है। उत्प्रेरक उन्हीं दो अवस्थाओं के बीच आसान रास्ता देता है। वह दर बदलता है, और अग्र तथा प्रतीप दोनों दरें बराबर बदलता है, अतः साम्य की स्थिति अछूती रहती है। ΔG आरंभिक और अंतिम अवस्थाओं का अंतर है और रास्ते पर निर्भर हो ही नहीं सकता, ठीक उसी तर्क से जो हेस का नियम देता है। जो उत्प्रेरक साम्य खिसका दे वह सतत-गति यंत्र होता। सामान्य सबक़ वही है जो दोनों ऊष्मागतिकी अध्यायों से ले जाने योग्य है। ऊष्मागतिकी बताती है कि कुछ संभव है या नहीं और कितनी दूर जा सकता है; बलगतिकी बताती है कि वह इस शताब्दी में होगा या नहीं। कोई भी दूसरे के प्रश्न का उत्तर नहीं देती, और औद्योगिक प्रक्रम लगभग सदा उनके बीच बातचीत से हुआ समझौता है। (चौथा उत्तर ले शातेलिए को उलट देता है: ऊष्माक्षेपी अभिक्रिया को गरम करना उसकी लब्धि सदा घटाता है, और यही वह क़ीमत है जो यहाँ चुकाई जा रही है।)"
+        },
+        "mr": {
+          "stem": "नायट्रोजन आणि हायड्रोजनपासून अमोनियाच्या संश्लेषणाचा ΔH = −92 kJ/mol आणि ΔS = −0.198 kJ/mol/K आहे. तरीही ते औद्योगिकरीत्या सुमारे 700 K वर चालवले जाते, जिथे हे आकडे ΔG धन बनवतात. आभासी विरोधाभास समजावा.",
+          "choices": [
+            "उष्मागतिकी आणि गतिकी वेगळ्या प्रश्नांची उत्तरे देत आहेत. ΔG सांगतो की अभिक्रिया किती दूर जाऊ शकते, आणि 700 K वर ती खरोखर प्रतिकूल — समतोल उत्पन्न वाईट. पण 298 K वर, जिथे ΔG आरामात ऋण, नायट्रोजनचा त्रिबंध इतका प्रबळ की अभिक्रिया न मोजण्याइतकी सावकाश. उच्च तापमान ही उत्पन्नाची मुद्दाम दिलेली कुर्बानी दरासाठी, आणि हानी 200 वातावरणांवर चालवून परत मिळवली जाते, जे ल शातेलिएने समतोल परत सरकवते कारण चार मोल वायू दोन होतात",
+            "आकडे चुकीचे असणार, कारण ज्या तापमानावर ΔG धन असतो त्यावर अभिक्रिया चालवता येत नाही",
+            "उत्प्रेरक ΔG ला ऋण मूल्यात बदलतो, आणि उत्प्रेरक याचसाठी असतात",
+            "तापमान वाढवल्याने उष्माक्षेपी अभिक्रियेचे उत्पन्न नेहमी वाढते, म्हणून 700 K दरासाठी नव्हे तर उत्पन्नासाठी निवडले आहे"
+          ],
+          "solution": "आधी आकडेमोड करा, कारण ती कोडे विरघळवण्याऐवजी पुष्ट करते. 298 K वर, ΔG = −92 − (298)(−0.198) = −92 + 59 = −33 kJ/mol: आरामात स्वयंस्फूर्त. 700 K वर, ΔG = −92 − (700)(−0.198) = −92 + 139 = +47 kJ/mol: स्पष्टपणे प्रतिकूल. औद्योगिक प्रक्रिया खरोखर प्रतिकूल प्रदेशात चालवली जाते, आणि आकडे चुकीचे नाहीत. निराकरण हे की रासायनिक अभियंत्याला जे दोन प्रश्न विचारायचे त्यांपैकी ΔG केवळ एकाचे उत्तर देतो. तो सांगतो की समतोल कुठे आहे — अभिक्रिया बदलणे थांबवल्यावर किती अमोनिया उपस्थित असू शकतो. त्याला किती वेळ लागेल याबद्दल तो काहीही सांगत नाही. दर सक्रियण ऊर्जेने नियंत्रित, आणि इथली अडचण नायट्रोजन-नायट्रोजन त्रिबंध, 941 kJ/mol वर, रसायनातील सर्वांत प्रबळ बंधांपैकी एक. खोलीच्या तापमानावर तितकी ऊर्जा वाहणाऱ्या टक्करींचा अंश इतका लहान की नायट्रोजन आणि हायड्रोजनचे मिश्रण अनिश्चित काळ बसून राहू शकते आणि ओळखण्याजोगा कोणताही अमोनिया तयार होत नाही. दहा हजार वर्षांत मिळालेले परिपूर्ण उत्पन्न कशाच्याही कामाचे नाही. म्हणून हेबर प्रक्रिया एकाचा सौदा दुसऱ्याशी करते. तापमान सुमारे 700 K पर्यंत वाढवणे अभिक्रियेला उपयोगी होण्याइतके वेगवान बनवते, वाईट समतोल-स्थितीच्या किमतीवर. मग उत्पन्न दुसऱ्या लिव्हरने परत विकत घेतले जाते: दाब. अभिक्रिया चार मोल वायूला दोनमध्ये नेते, म्हणून मिश्रण सुमारे 200 वातावरणांपर्यंत संपीडित करणे समतोल कमी रेणूंच्या बाजूला सरकवते, अगदी जसे ल शातेलिएचे तत्त्व मागते. आणि लोखंडाचा उत्प्रेरक जोडला जातो, जो सक्रियण अडचण घटवतो आणि म्हणून अन्यथा लागले असते त्याहून कमी तापमान चालू देतो — कुर्बान केलेल्या उत्पन्नाचा काही भाग परत मिळवून. काळजीपूर्वक पाहा उत्प्रेरक काय करत नाही, कारण तिसरा पर्याय हेच चुकीचे करतो. उत्प्रेरक त्याच दोन अवस्थांमध्ये सोपा मार्ग देतो. तो दर बदलतो, आणि पुढचे व मागचे दोन्ही दर समान बदलतो, म्हणून समतोलाची स्थिती अस्पर्श राहते. ΔG हा सुरुवातीच्या आणि शेवटच्या अवस्थांमधला फरक आणि मार्गावर अवलंबून असूच शकत नाही, नेमक्या त्याच युक्तिवादाने जो हेसचा नियम देतो. जो उत्प्रेरक समतोल सरकवेल तो सततगती यंत्र ठरला असता. सामान्य धडा तोच जो दोन्ही उष्मागतिकी प्रकरणांतून नेण्याजोगा. उष्मागतिकी सांगते की काही शक्य आहे का आणि किती दूर जाऊ शकते; गतिकी सांगते की ते या शतकात घडेल का. कोणीही दुसऱ्याच्या प्रश्नाचे उत्तर देत नाही, आणि औद्योगिक प्रक्रिया जवळपास नेहमी त्यांच्यातील वाटाघाटीने झालेली तडजोड. (चौथे उत्तर ल शातेलिए उलटवते: उष्माक्षेपी अभिक्रिया तापवणे तिचे उत्पन्न नेहमी घटवते, आणि हीच ती किंमत जी इथे दिली जात आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A process has ΔU = 400 J and does 100 J of work pushing back the atmosphere. Using ΔH = ΔU + PΔV, what is ΔH in joules?",
+      "choices": [
+        "300",
+        "4",
+        "40000",
+        "500"
+      ],
+      "answerIndex": 3,
+      "solution": "ΔH = 400 + 100 = 500 J. The extra hundred joules is the work spent making room for the products against atmospheric pressure — which is why a reaction in an open beaker and the same reaction in a sealed bomb give different figures. (300 subtracts the work instead of adding it.)",
+      "checkExpr": "400+100",
+      "translations": {
+        "hi": {
+          "stem": "किसी प्रक्रिया का ΔU = 400 J है और वह वायुमंडल को पीछे धकेलने में 100 J कार्य करती है। ΔH = ΔU + PΔV लगाते हुए, ΔH जूल में क्या है?",
+          "choices": [
+            "300",
+            "4",
+            "40000",
+            "500"
+          ],
+          "solution": "ΔH = 400 + 100 = 500 J. अतिरिक्त सौ जूल वह कार्य है जो वायुमंडलीय दाब के विरुद्ध उत्पादों के लिए जगह बनाने में ख़र्च हुआ — इसीलिए खुले बीकर की अभिक्रिया और वही अभिक्रिया बंद बम में भिन्न आँकड़े देती हैं। (300 कार्य जोड़ने के बजाय घटा देता है।)"
+        },
+        "mr": {
+          "stem": "एका प्रक्रियेचा ΔU = 400 J आणि ती वातावरण मागे ढकलण्यात 100 J कार्य करते. ΔH = ΔU + PΔV वापरून, ΔH ज्यूलमध्ये किती?",
+          "choices": [
+            "300",
+            "4",
+            "40000",
+            "500"
+          ],
+          "solution": "ΔH = 400 + 100 = 500 J. जादा शंभर ज्यूल हे ते कार्य जे वातावरणीय दाबाविरुद्ध उत्पादांसाठी जागा करण्यात खर्च झाले — म्हणूनच उघड्या बीकरमधली अभिक्रिया आणि तीच अभिक्रिया बंद बॉम्बमध्ये वेगळे आकडे देतात. (300 कार्य जोडण्याऐवजी वजा करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The enthalpy of combustion of methane is 890 kJ per mole. How much heat, in kJ, is released by burning 2 moles?",
+      "choices": [
+        "890",
+        "1780",
+        "892",
+        "445"
+      ],
+      "answerIndex": 1,
+      "solution": "890 × 2 = 1780 kJ. Enthalpy is an extensive quantity: double the amount and you double the heat, which is why every thermochemical equation must state the amounts it refers to. (890 quotes the molar figure as though the amount did not matter.)",
+      "checkExpr": "890*2",
+      "translations": {
+        "hi": {
+          "stem": "मेथेन की दहन एन्थैल्पी प्रति मोल 890 kJ है। 2 मोल जलाने से कितनी ऊष्मा kJ में निकलती है?",
+          "choices": [
+            "890",
+            "1780",
+            "892",
+            "445"
+          ],
+          "solution": "890 × 2 = 1780 kJ. एन्थैल्पी विस्तीर्ण राशि है: मात्रा दोगुनी करो और ऊष्मा दोगुनी, इसीलिए हर ऊष्मारासायनिक समीकरण को वे मात्राएँ बतानी पड़ती हैं जिनकी वह बात कर रहा है। (890 मोलर आँकड़ा ऐसे बताता है मानो मात्रा से फ़र्क़ ही न पड़ता हो।)"
+        },
+        "mr": {
+          "stem": "मिथेनची ज्वलन एन्थाल्पी प्रति मोल 890 kJ आहे. 2 मोल जाळल्याने किती उष्णता kJ मध्ये निघते?",
+          "choices": [
+            "890",
+            "1780",
+            "892",
+            "445"
+          ],
+          "solution": "890 × 2 = 1780 kJ. एन्थाल्पी ही विस्तारक राशी: प्रमाण दुप्पट करा आणि उष्णता दुप्पट, म्हणूनच प्रत्येक उष्मारासायनिक समीकरणाला ती कोणत्या प्रमाणांबद्दल बोलत आहे ते सांगावे लागते. (890 मोलर आकडा असा सांगते जणू प्रमाणाने फरकच पडत नसावा.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "By Hess's law a target reaction is the sum of two steps releasing 390 kJ and 290 kJ. What is the magnitude of the total enthalpy change, in kJ?",
+      "choices": [
+        "680",
+        "100",
+        "340",
+        "1130"
+      ],
+      "answerIndex": 0,
+      "solution": "390 + 290 = 680 kJ released. Enthalpy is a state function, so the total for a route is simply the sum of its steps and nothing depends on the order they are taken in. (100 subtracts the two and 340 averages them.)",
+      "checkExpr": "390+290",
+      "translations": {
+        "hi": {
+          "stem": "हेस के नियम से कोई लक्ष्य अभिक्रिया 390 kJ और 290 kJ छोड़ते दो चरणों का योग है। कुल एन्थैल्पी-परिवर्तन का परिमाण kJ में क्या है?",
+          "choices": [
+            "680",
+            "100",
+            "340",
+            "1130"
+          ],
+          "solution": "390 + 290 = 680 kJ निकलती है। एन्थैल्पी अवस्था-फलन है, अतः किसी रास्ते का कुल बस उसके चरणों का योग है और कुछ भी इस पर निर्भर नहीं कि वे किस क्रम में लिए गए। (100 दोनों को घटाता है और 340 उनका औसत लेता है।)"
+        },
+        "mr": {
+          "stem": "हेसच्या नियमाने एक लक्ष्य अभिक्रिया 390 kJ आणि 290 kJ सोडणाऱ्या दोन टप्प्यांची बेरीज आहे. एकूण एन्थाल्पी-बदलाचे परिमाण kJ मध्ये किती?",
+          "choices": [
+            "680",
+            "100",
+            "340",
+            "1130"
+          ],
+          "solution": "390 + 290 = 680 kJ निघते. एन्थाल्पी हे अवस्था-फलन, म्हणून एखाद्या मार्गाची एकूण म्हणजे फक्त त्याच्या टप्प्यांची बेरीज आणि ते कोणत्या क्रमाने घेतले यावर काहीही अवलंबून नाही. (100 दोघांना वजा करते आणि 340 त्यांची सरासरी घेते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Bond enthalpies are H–H 436, Cl–Cl 242 and H–Cl 431 kJ/mol. For H₂ + Cl₂ → 2HCl, what is the magnitude of the enthalpy change, in kJ?",
+      "choices": [
+        "247",
+        "184",
+        "92",
+        "1540"
+      ],
+      "answerIndex": 1,
+      "solution": "Bonds broken cost 436 + 242 = 678 kJ; bonds formed release 2 × 431 = 862 kJ. The reaction is exothermic by 862 − 678 = 184 kJ. Note that two H–Cl bonds form, not one — forgetting the coefficient is the standard slip here. (92 halves the answer by counting one HCl.)",
+      "checkExpr": "2*431-436-242",
+      "translations": {
+        "hi": {
+          "stem": "बंध एन्थैल्पियाँ H–H 436, Cl–Cl 242 और H–Cl 431 kJ/mol हैं। H₂ + Cl₂ → 2HCl के लिए एन्थैल्पी-परिवर्तन का परिमाण kJ में क्या है?",
+          "choices": [
+            "247",
+            "184",
+            "92",
+            "1540"
+          ],
+          "solution": "टूटे बंध 436 + 242 = 678 kJ माँगते हैं; बने बंध 2 × 431 = 862 kJ छोड़ते हैं। अभिक्रिया 862 − 678 = 184 kJ से ऊष्माक्षेपी है। ध्यान दो दो H–Cl बंध बनते हैं, एक नहीं — गुणांक भूलना यहाँ की मानक चूक है। (92 एक HCl गिनकर उत्तर आधा कर देता है।)"
+        },
+        "mr": {
+          "stem": "बंध एन्थाल्पी H–H 436, Cl–Cl 242 आणि H–Cl 431 kJ/mol. H₂ + Cl₂ → 2HCl साठी एन्थाल्पी-बदलाचे परिमाण kJ मध्ये किती?",
+          "choices": [
+            "247",
+            "184",
+            "92",
+            "1540"
+          ],
+          "solution": "तुटलेले बंध 436 + 242 = 678 kJ मागतात; तयार झालेले बंध 2 × 431 = 862 kJ सोडतात. अभिक्रिया 862 − 678 = 184 kJ ने उष्माक्षेपी. लक्षात घ्या दोन H–Cl बंध तयार होतात, एक नाही — गुणांक विसरणे ही इथली प्रमाणित चूक. (92 एक HCl मोजून उत्तर निम्मे करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A reaction has ΔH = 100 kJ and ΔS = 0.2 kJ/K. At 300 K, what is ΔG in kJ?",
+      "choices": [
+        "40000",
+        "6000",
+        "40",
+        "160"
+      ],
+      "answerIndex": 2,
+      "solution": "ΔG = ΔH − TΔS = 100 − 60 = 40 kJ, positive, so the reaction is not spontaneous at 300 K. Raise the temperature far enough and the TΔS term will overtake ΔH and turn ΔG negative. (160 adds the entropy term instead of subtracting it.)",
+      "checkExpr": "100-300*0.2",
+      "translations": {
+        "hi": {
+          "stem": "किसी अभिक्रिया का ΔH = 100 kJ और ΔS = 0.2 kJ/K है। 300 K पर ΔG kJ में क्या है?",
+          "choices": [
+            "40000",
+            "6000",
+            "40",
+            "160"
+          ],
+          "solution": "ΔG = ΔH − TΔS = 100 − 60 = 40 kJ, धनात्मक, अतः 300 K पर अभिक्रिया स्वतःस्फूर्त नहीं। ताप पर्याप्त बढ़ाओ और TΔS पद ΔH से आगे निकलकर ΔG को ऋणात्मक कर देगा। (160 एन्ट्रॉपी पद घटाने के बजाय जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "एका अभिक्रियेचा ΔH = 100 kJ आणि ΔS = 0.2 kJ/K. 300 K वर ΔG kJ मध्ये किती?",
+          "choices": [
+            "40000",
+            "6000",
+            "40",
+            "160"
+          ],
+          "solution": "ΔG = ΔH − TΔS = 100 − 60 = 40 kJ, धन, म्हणून 300 K वर अभिक्रिया स्वयंस्फूर्त नाही. तापमान पुरेसे वाढवा आणि TΔS पद ΔH च्या पुढे जाऊन ΔG ऋण करेल. (160 एन्ट्रॉपी पद वजा करण्याऐवजी जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A reaction has ΔH = 60 kJ and ΔS = 0.2 kJ/K, both positive. Above what temperature, in kelvin, does it become spontaneous?",
+      "choices": [
+        "12",
+        "300",
+        "0.003333",
+        "3000"
+      ],
+      "answerIndex": 1,
+      "solution": "ΔG turns negative when TΔS exceeds ΔH, so T > ΔH/ΔS = 60/0.2 = 300 K. This is the pattern for every reaction with both terms positive: unfavourable when cold and favourable when hot, with the crossover set by the ratio. Melting is the everyday example. (12 multiplies instead of dividing.)",
+      "checkExpr": "60/0.2",
+      "translations": {
+        "hi": {
+          "stem": "किसी अभिक्रिया का ΔH = 60 kJ और ΔS = 0.2 kJ/K है, दोनों धनात्मक। वह किस ताप, केल्विन में, से ऊपर स्वतःस्फूर्त हो जाती है?",
+          "choices": [
+            "12",
+            "300",
+            "0.003333",
+            "3000"
+          ],
+          "solution": "ΔG तब ऋणात्मक होता है जब TΔS, ΔH से बड़ा हो, अतः T > ΔH/ΔS = 60/0.2 = 300 K. दोनों पद धनात्मक वाली हर अभिक्रिया का यही प्रतिरूप है: ठंडे में प्रतिकूल और गरम में अनुकूल, और संक्रमण-बिंदु अनुपात से तय। गलन रोज़मर्रा का उदाहरण है। (12 भाग के बजाय गुणा करता है।)"
+        },
+        "mr": {
+          "stem": "एका अभिक्रियेचा ΔH = 60 kJ आणि ΔS = 0.2 kJ/K, दोन्ही धन. ती कोणत्या तापमानाच्या, केल्विनमध्ये, वर स्वयंस्फूर्त होते?",
+          "choices": [
+            "12",
+            "300",
+            "0.003333",
+            "3000"
+          ],
+          "solution": "ΔG तेव्हा ऋण होतो जेव्हा TΔS हा ΔH हून मोठा, म्हणून T > ΔH/ΔS = 60/0.2 = 300 K. दोन्ही पदे धन असलेल्या प्रत्येक अभिक्रियेचा हाच आकृतिबंध: थंडीत प्रतिकूल आणि गरमीत अनुकूल, आणि संक्रमण-बिंदू गुणोत्तराने ठरलेला. द्रवीभवन हे रोजचे उदाहरण. (12 भागण्याऐवजी गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a calorimeter 500 g of water rises by 2 K. Taking the specific heat as 4.2 J/g/K, how much heat, in joules, was released?",
+      "choices": [
+        "4200",
+        "2100",
+        "42000",
+        "420"
+      ],
+      "answerIndex": 0,
+      "solution": "q = mcΔT = 500 × 4.2 × 2 = 4200 J. The water is the measuring instrument: the reaction's heat is inferred entirely from how much the surrounding water warmed, which is why a calorimeter must be insulated and its own heat capacity accounted for. (2100 uses a 1 K rise.)",
+      "checkExpr": "500*4.2*2",
+      "translations": {
+        "hi": {
+          "stem": "कैलोरीमापी में 500 g पानी का ताप 2 K चढ़ता है। विशिष्ट ऊष्मा 4.2 J/g/K लेते हुए, कितनी ऊष्मा जूल में निकली?",
+          "choices": [
+            "4200",
+            "2100",
+            "42000",
+            "420"
+          ],
+          "solution": "q = mcΔT = 500 × 4.2 × 2 = 4200 J. पानी ही मापक यंत्र है: अभिक्रिया की ऊष्मा पूरी तरह इससे निकाली जाती है कि आसपास का पानी कितना गरम हुआ, इसीलिए कैलोरीमापी को रोधित करना और उसकी अपनी ऊष्मा धारिता का हिसाब रखना पड़ता है। (2100 1 K की वृद्धि लगाता है।)"
+        },
+        "mr": {
+          "stem": "कॅलरीमापकात 500 g पाण्याचे तापमान 2 K ने चढते. विशिष्ट उष्णता 4.2 J/g/K घेतल्यास, किती उष्णता ज्यूलमध्ये निघाली?",
+          "choices": [
+            "4200",
+            "2100",
+            "42000",
+            "420"
+          ],
+          "solution": "q = mcΔT = 500 × 4.2 × 2 = 4200 J. पाणीच मापन उपकरण: अभिक्रियेची उष्णता पूर्णपणे आजूबाजूचे पाणी किती तापले यावरून काढली जाते, म्हणूनच कॅलरीमापक उष्णतारोधक करावा लागतो आणि त्याची स्वतःची उष्णता धारकता हिशोबात घ्यावी लागते. (2100 हे 1 K ची वाढ वापरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Ice melts at 273 K with an enthalpy of fusion of 6000 J/mol. What is the entropy change of melting, in J/mol/K?",
+      "choices": [
+        "22.5",
+        "21.978022",
+        "1638000",
+        "0.0455"
+      ],
+      "answerIndex": 1,
+      "solution": "For a change of state at constant temperature ΔS = ΔH/T = 6000/273 = 21.978022 J/mol/K, positive because a liquid has far more available arrangements than a crystal. The corresponding figure for boiling is about 109 J/mol/K, five times larger — a gas is very much more disordered than a liquid. (1638000 multiplies instead of dividing.)",
+      "checkExpr": "6000/273",
+      "translations": {
+        "hi": {
+          "stem": "बर्फ़ 273 K पर 6000 J/mol गलन एन्थैल्पी के साथ पिघलती है। गलन का एन्ट्रॉपी-परिवर्तन J/mol/K में क्या है?",
+          "choices": [
+            "22.5",
+            "21.978022",
+            "1638000",
+            "0.0455"
+          ],
+          "solution": "अचर ताप पर अवस्था-परिवर्तन के लिए ΔS = ΔH/T = 6000/273 = 21.978022 J/mol/K, धनात्मक क्योंकि द्रव के पास क्रिस्टल से कहीं अधिक उपलब्ध व्यवस्थाएँ हैं। क्वथन का तदनुरूप आँकड़ा लगभग 109 J/mol/K है, पाँच गुना बड़ा — गैस द्रव से कहीं अधिक अव्यवस्थित है। (1638000 भाग के बजाय गुणा करता है।)"
+        },
+        "mr": {
+          "stem": "बर्फ 273 K वर 6000 J/mol द्रवीभवन एन्थाल्पीसह वितळतो. द्रवीभवनाचा एन्ट्रॉपी-बदल J/mol/K मध्ये किती?",
+          "choices": [
+            "22.5",
+            "21.978022",
+            "1638000",
+            "0.0455"
+          ],
+          "solution": "अचल तापमानावर अवस्थाबदलासाठी ΔS = ΔH/T = 6000/273 = 21.978022 J/mol/K, धन कारण द्रवाकडे स्फटिकाहून कितीतरी अधिक उपलब्ध मांडण्या. उकळण्याचा तदनुरूप आकडा सुमारे 109 J/mol/K, पाचपट मोठा — वायू द्रवाहून कितीतरी अधिक अव्यवस्थित. (1638000 भागण्याऐवजी गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "For CH₄ + 2O₂ → CO₂ + 2H₂O the standard enthalpies of formation in kJ/mol are CH₄ −75, CO₂ −394, H₂O −286 and O₂ zero. What is the magnitude of ΔH for the reaction, in kJ?",
+      "choices": [
+        "891",
+        "755",
+        "1041",
+        "605"
+      ],
+      "answerIndex": 0,
+      "solution": "ΔH = Σ products − Σ reactants = [−394 + 2(−286)] − [−75 + 0] = −966 + 75 = −891 kJ, so 891 kJ is released. Two details decide the answer: the water's coefficient of 2 must be applied, and oxygen contributes nothing because an element in its standard state is defined as zero. (605 forgets to double the water.)",
+      "checkExpr": "394+2*286-75",
+      "translations": {
+        "hi": {
+          "stem": "CH₄ + 2O₂ → CO₂ + 2H₂O के लिए मानक संभवन एन्थैल्पियाँ kJ/mol में CH₄ −75, CO₂ −394, H₂O −286 और O₂ शून्य हैं। अभिक्रिया के ΔH का परिमाण kJ में क्या है?",
+          "choices": [
+            "891",
+            "755",
+            "1041",
+            "605"
+          ],
+          "solution": "ΔH = Σ उत्पाद − Σ अभिकारक = [−394 + 2(−286)] − [−75 + 0] = −966 + 75 = −891 kJ, अतः 891 kJ निकलती है। दो ब्योरे उत्तर तय करते हैं: पानी का गुणांक 2 लगाना पड़ता है, और ऑक्सीजन कुछ योगदान नहीं देती क्योंकि अपनी मानक अवस्था में तत्व शून्य परिभाषित है। (605 पानी दोगुना करना भूलता है।)"
+        },
+        "mr": {
+          "stem": "CH₄ + 2O₂ → CO₂ + 2H₂O साठी प्रमाणित संभवन एन्थाल्पी kJ/mol मध्ये CH₄ −75, CO₂ −394, H₂O −286 आणि O₂ शून्य. अभिक्रियेच्या ΔH चे परिमाण kJ मध्ये किती?",
+          "choices": [
+            "891",
+            "755",
+            "1041",
+            "605"
+          ],
+          "solution": "ΔH = Σ उत्पादे − Σ अभिक्रियाकारक = [−394 + 2(−286)] − [−75 + 0] = −966 + 75 = −891 kJ, म्हणून 891 kJ निघते. दोन तपशील उत्तर ठरवतात: पाण्याचा गुणांक 2 लावावा लागतो, आणि ऑक्सिजन काहीही वाटा देत नाही कारण आपल्या प्रमाणित अवस्थेतील मूलद्रव्य शून्य व्याख्यायित. (605 पाणी दुप्पट करायचे विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A reaction has ΔH = −100 kJ and ΔS = −0.2 kJ/K, both negative. Above what temperature, in kelvin, does it stop being spontaneous?",
+      "choices": [
+        "20",
+        "300",
+        "500",
+        "0.002"
+      ],
+      "answerIndex": 2,
+      "solution": "With both terms negative, ΔG = ΔH − TΔS = −100 + 0.2T, which is negative while T is below 100/0.2 = 500 K and positive above it. So this reaction runs when cold and stops when hot — the exact opposite of the more familiar case where heating helps. Four combinations exhaust the possibilities and each behaves differently. ΔH negative with ΔS positive: spontaneous at every temperature, since both terms push the same way. ΔH positive with ΔS negative: never spontaneous at any temperature. ΔH positive with ΔS positive: needs heat, like melting and like dissolving ammonium chloride. ΔH negative with ΔS negative, this case: needs cold, and freezing is the everyday example — water freezes below 273 K and not above it, for exactly this reason. The industrial significance is real. Ammonia synthesis falls in this fourth box, which is why its equilibrium yield falls as the temperature is raised, and why the Haber process has to buy back with pressure what it spends on heat. A reaction that is helped by cooling is a reaction that will always be slow, and that tension is the central problem of industrial chemistry. (20 multiplies rather than divides, and 300 borrows a number from a different question.)",
+      "checkExpr": "100/0.2",
+      "translations": {
+        "hi": {
+          "stem": "किसी अभिक्रिया का ΔH = −100 kJ और ΔS = −0.2 kJ/K है, दोनों ऋणात्मक। वह किस ताप, केल्विन में, से ऊपर स्वतःस्फूर्त होना बंद कर देती है?",
+          "choices": [
+            "20",
+            "300",
+            "500",
+            "0.002"
+          ],
+          "solution": "दोनों पद ऋणात्मक होने पर ΔG = ΔH − TΔS = −100 + 0.2T, जो T के 100/0.2 = 500 K से नीचे रहते ऋणात्मक है और ऊपर धनात्मक। अतः यह अभिक्रिया ठंडे में चलती है और गरम में रुक जाती है — उस अधिक जाने-पहचाने प्रकरण के ठीक उलटा जहाँ गरम करना मदद करता है। चार संयोजन सारी संभावनाएँ चुका देते हैं और हर एक भिन्न व्यवहार करता है। ΔH ऋणात्मक और ΔS धनात्मक: हर ताप पर स्वतःस्फूर्त, क्योंकि दोनों पद एक ही ओर धकेलते हैं। ΔH धनात्मक और ΔS ऋणात्मक: किसी भी ताप पर कभी स्वतःस्फूर्त नहीं। ΔH धनात्मक और ΔS धनात्मक: ऊष्मा चाहिए, जैसे गलन और जैसे अमोनियम क्लोराइड का घुलना। ΔH ऋणात्मक और ΔS ऋणात्मक, यह प्रकरण: ठंड चाहिए, और हिमीकरण रोज़मर्रा का उदाहरण है — पानी 273 K से नीचे जमता है, ऊपर नहीं, ठीक इसी कारण। औद्योगिक महत्व असली है। अमोनिया संश्लेषण इसी चौथे डिब्बे में पड़ता है, इसीलिए ताप बढ़ाने पर उसकी साम्य-लब्धि गिरती है, और इसीलिए हैबर प्रक्रम को ऊष्मा पर जो ख़र्च हुआ वह दाब से वापस ख़रीदना पड़ता है। जिस अभिक्रिया को ठंडा करना मदद करे वह सदा धीमी रहेगी, और वही तनाव औद्योगिक रसायन की केंद्रीय समस्या है। (20 भाग के बजाय गुणा करता है, और 300 किसी और प्रश्न से संख्या उधार ले लेता है।)"
+        },
+        "mr": {
+          "stem": "एका अभिक्रियेचा ΔH = −100 kJ आणि ΔS = −0.2 kJ/K, दोन्ही ऋण. ती कोणत्या तापमानाच्या, केल्विनमध्ये, वर स्वयंस्फूर्त असणे थांबवते?",
+          "choices": [
+            "20",
+            "300",
+            "500",
+            "0.002"
+          ],
+          "solution": "दोन्ही पदे ऋण असल्याने ΔG = ΔH − TΔS = −100 + 0.2T, जो T हा 100/0.2 = 500 K च्या खाली असेपर्यंत ऋण आणि वर धन. म्हणून ही अभिक्रिया थंडीत चालते आणि गरमीत थांबते — त्या अधिक ओळखीच्या प्रकरणाच्या नेमके उलटे जिथे तापवणे मदत करते. चार संयोजने सर्व शक्यता संपवतात आणि प्रत्येक वेगळे वागते. ΔH ऋण आणि ΔS धन: प्रत्येक तापमानावर स्वयंस्फूर्त, कारण दोन्ही पदे एकाच दिशेने ढकलतात. ΔH धन आणि ΔS ऋण: कोणत्याही तापमानावर कधीच स्वयंस्फूर्त नाही. ΔH धन आणि ΔS धन: उष्णता लागते, जसे द्रवीभवन आणि जसे अमोनियम क्लोराइड विरघळणे. ΔH ऋण आणि ΔS ऋण, हे प्रकरण: थंडी लागते, आणि गोठणे हे रोजचे उदाहरण — पाणी 273 K च्या खाली गोठते, वर नाही, नेमक्या याच कारणाने. औद्योगिक महत्त्व खरे. अमोनिया संश्लेषण याच चौथ्या खोक्यात पडते, म्हणूनच तापमान वाढवल्यावर त्याचे समतोल-उत्पन्न घटते, आणि म्हणूनच हेबर प्रक्रियेला उष्णतेवर जे खर्चले ते दाबाने परत विकत घ्यावे लागते. ज्या अभिक्रियेला थंड करणे मदत करते ती नेहमी सावकाश राहील, आणि तोच ताण औद्योगिक रसायनाची केंद्रीय समस्या. (20 भागण्याऐवजी गुणते, आणि 300 दुसऱ्या प्रश्नातून संख्या उसनी घेते.)"
+        }
+      }
+    }
+  ]
+}

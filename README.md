@@ -2509,8 +2509,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 296
-  chapters / 4,974 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 299
+  chapters / 5,058 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2572,14 +2572,19 @@ navigation" means the actual list rather than one somebody maintained by hand.
   minutes to cross a room, why soldiers break step on a bridge, and why a
   moving siren and a moving listener at the same relative speed hear
   different pitches — the asymmetry that light does not show and that
-  special relativity was built to explain. **Class 11 Chemistry has
-  opened** in `g11-chemistry.ts` on the same footing: Some Basic Concepts
-  and Structure of Atom, 56 questions, asking what a mole COUNTS, why an
-  empirical formula cannot tell glucose from formaldehyde, why a dim blue
-  lamp beats a blinding red one, and what survived of Bohr's model when
-  the orbit did not. Chemistry has twelve chapters left; Biology and
-  Maths follow, and Class 12 after them. Suite re-pointed and green: 84
-  files, 1453 tests.
+  special relativity was built to explain. **Class 11 Chemistry is
+  five chapters in** in `g11-chemistry.ts`, on the same footing: Some
+  Basic Concepts, Structure of Atom, Classification and Periodicity,
+  Chemical Bonding and Molecular Structure, and Thermodynamics — 140
+  questions, asking what a mole COUNTS, why an empirical formula cannot
+  tell glucose from formaldehyde, why a dim blue lamp beats a blinding
+  red one, what survived of Bohr's model when the orbit did not, why the
+  jump in an ionisation series gives away the group number, why carbon
+  dioxide has polar bonds and no dipole while water has both, and why a
+  beaker that goes cold as a salt dissolves is not breaking any law.
+  Chemistry has four chapters left — Equilibrium, Redox, Organic Basics
+  and Hydrocarbons — then Biology and Maths, and Class 12 after them.
+  Suite re-pointed and green: 84 files, 1453 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)
