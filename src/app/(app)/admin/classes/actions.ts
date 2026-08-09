@@ -9,6 +9,7 @@ import { classSchema, fieldErrors, type FieldErrors } from "@/lib/validation";
 import { classCode } from "@/lib/codes";
 import { audit } from "@/lib/audit";
 import { gradesInRange } from "@/lib/superuser";
+import { syncStandinsForClass } from "@/lib/standin-guardian";
 
 /**
  * ⚠ `errorKey` AND `error`, and the split is honest rather than untidy.
@@ -178,6 +179,15 @@ export async function setClassTeacher(
       targetId: classId,
       meta: { teacherMembershipId },
     });
+
+    // Either direction changes who the right stand-in guardian is for the
+    // class's unclaimed pupils — the new teacher takes over, or the departing
+    // one's guardianships pass to whoever remains. See standin-guardian.ts.
+    await syncStandinsForClass({
+      schoolId: ctx.schoolId!,
+      classId,
+      actorUserId: ctx.user.id,
+    }).catch((error) => console.error("[setClassTeacher] standin sync failed", error));
 
     revalidatePath("/admin/classes");
     return { ok: true };

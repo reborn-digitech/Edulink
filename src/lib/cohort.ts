@@ -3,6 +3,7 @@ import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "./db";
 import { audit } from "./audit";
 import { AccessError } from "./tenancy";
+import { syncStandinGuardian, syncStandinsForClass } from "./standin-guardian";
 import type { ActiveContext } from "./session";
 
 /**
@@ -213,6 +214,17 @@ export async function enrolStudents(
     meta: { requested: ids.length, added },
   });
 
+  // Joining a class can change who the right stand-in guardian is — the class
+  // teacher takes over from the admin fallback. Per pupil, not per class: only
+  // the children just added moved.
+  for (const student of valid) {
+    await syncStandinGuardian({
+      schoolId: ctx.schoolId!,
+      studentMembershipId: student.id,
+      actorUserId: ctx.user.id,
+    }).catch((error) => console.error("[enrolStudents] standin sync failed", error));
+  }
+
   return { ok: true, added };
 }
 
@@ -238,6 +250,14 @@ export async function removeFromCohort(
     targetId: classId,
     meta: { studentMembershipId },
   });
+
+  // Off the roll means this class's teacher is no longer the pupil's teacher;
+  // the stand-in falls to their other class's teacher or the admin fallback.
+  await syncStandinGuardian({
+    schoolId: ctx.schoolId!,
+    studentMembershipId,
+    actorUserId: ctx.user.id,
+  }).catch((error) => console.error("[removeFromCohort] standin sync failed", error));
 
   return { ok: true };
 }
@@ -306,6 +326,12 @@ export async function assignTeacher(
     meta: { teacherMembershipId, role },
   });
 
+  // A new class teacher takes over the stand-in guardianships of the class's
+  // unclaimed pupils in the same action — see standin-guardian.ts.
+  await syncStandinsForClass({ schoolId: ctx.schoolId!, classId, actorUserId: ctx.user.id }).catch(
+    (error) => console.error("[assignTeacher] standin sync failed", error),
+  );
+
   return { ok: true };
 }
 
@@ -329,6 +355,12 @@ export async function unassignTeacher(
     targetId: classId,
     meta: { teacherMembershipId },
   });
+
+  // The departing teacher's stand-in guardianships pass to whoever now holds
+  // the class — the remaining LEAD or CO, or the admin fallback.
+  await syncStandinsForClass({ schoolId: ctx.schoolId!, classId, actorUserId: ctx.user.id }).catch(
+    (error) => console.error("[unassignTeacher] standin sync failed", error),
+  );
 
   return { ok: true };
 }

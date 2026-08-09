@@ -193,3 +193,59 @@ export async function syncStandinGuardian(opts: {
 
   return { outcome: "kept-standin", userId: holderUserId };
 }
+
+/**
+ * Re-syncs every candidate pupil of one class after its staffing changed.
+ *
+ * "The class teacher changed" is, from each unclaimed pupil's point of view,
+ * "my stand-in guardian may be the wrong person now" — so the assignment and
+ * unassignment paths call this, and the new LEAD (or CO, or the admin
+ * fallback when the last teacher left) takes the guardianship over
+ * automatically instead of waiting for the next backfill.
+ *
+ * ONLY THE CANDIDATES ARE TOUCHED: pupils with a family guardian are filtered
+ * out before the loop, because for them the reconciler is a guaranteed no-op
+ * and a class of five hundred should not pay for it. The filter is the same
+ * NOT-SCHOOL predicate the reconciler itself uses, so the two can never
+ * disagree about who a candidate is.
+ *
+ * Failures are swallowed per pupil (logged, never thrown): a guardianship
+ * that lags a staffing change by one backfill is annoying, but a staffing
+ * change refused because one pupil's sync hiccuped would be wrong.
+ */
+export async function syncStandinsForClass(opts: {
+  schoolId: string;
+  classId: string;
+  actorUserId: string;
+}): Promise<void> {
+  const { schoolId, classId, actorUserId } = opts;
+
+  const pupils = await forTenant(
+    { schoolIds: [schoolId], userId: actorUserId, joinCode: null, isSuperuser: false },
+    () =>
+      db.enrollment.findMany({
+        where: {
+          classId,
+          schoolId,
+          status: "ACTIVE",
+          student: {
+            status: "ACTIVE",
+            leftAt: null,
+            // No family guardian — exactly the pupils a stand-in exists for.
+            guardianships: { none: { status: "ACTIVE", relation: NOT_SCHOOL } },
+          },
+        },
+        select: { studentMembershipId: true },
+      }),
+  );
+
+  for (const pupil of pupils) {
+    await syncStandinGuardian({
+      schoolId,
+      studentMembershipId: pupil.studentMembershipId,
+      actorUserId,
+    }).catch((error) =>
+      console.error("[syncStandinsForClass]", pupil.studentMembershipId, error),
+    );
+  }
+}

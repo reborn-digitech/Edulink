@@ -3487,7 +3487,14 @@ stand-ins is not a decision anyone made.
 **Reconcile, don't choreograph.** One idempotent function
 (`standin-guardian.ts`) computes the right state from scratch, and every
 lifecycle event calls it: a pupil joins by code, a pupil accepts an invite, a
-parent claims. A pupil recorded as leaving drops the stand-in inside the same
+parent claims — **and every staffing change**: assigning or unassigning a
+class teacher re-syncs that class's unclaimed pupils (only them — the
+family-claimed are filtered out before the loop, because a class of five
+hundred should not pay for guaranteed no-ops), and moving a pupil between
+classes re-syncs the pupil. A new class teacher takes the stand-ins over in
+the same action; the last teacher leaving passes them to the admin fallback.
+Both transitions are pinned through the REAL `assignTeacher`/`unassignTeacher`
+calls, not by editing rows. A pupil recorded as leaving drops the stand-in inside the same
 departure transaction (a teacher is guardian of a pupil they teach, never of
 an alumnus) while a REAL parent's guardianship deliberately survives it —
 that link is what keeps the record reachable to the family afterwards.
@@ -3501,7 +3508,7 @@ being satisfiable the day every unclaimed pupil gained a guardian, and "Tom is
 staff, not a parent" stopped implying Tom holds no guardianship. Each test was
 re-anchored on what it actually meant — no guardianship *from this parent*, or
 a fresh account with none of any kind — with the claim under test unchanged.
-Suite at 86 files / 1,472 tests, nine of them new; verified live with a minted
+Suite at 86 files / 1,474 tests, eleven of them new; verified live with a minted
 session: a teacher holding twenty stand-ins gets the full "Your children"
 surface.
 

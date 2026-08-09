@@ -230,3 +230,104 @@ describe("the holder changes", () => {
     expect(active[0]!.parentUserId).toBe(teacherUserId);
   });
 });
+
+describe("the class teacher changes", () => {
+  /**
+   * Through the REAL cohort functions, not by editing rows — what is being
+   * pinned is that assignTeacher/unassignTeacher carry the guardianship with
+   * them, which is the difference between "the reconciler is right" and "the
+   * reconciler runs".
+   */
+  it("⚠ a newly assigned teacher takes the stand-ins over automatically", async () => {
+    const { assignTeacher } = await import("@/lib/cohort");
+
+    // A second teacher joins the school and takes the class.
+    const newTeacher = await db.user.create({
+      data: { name: "ZZ Teacher Two", email: `zz-standin-teacher-two-${STAMP}@test.invalid` },
+      select: { id: true },
+    });
+    const newTeacherM = await db.membership.create({
+      data: { userId: newTeacher.id, schoolId, role: "TEACHER", status: "ACTIVE" },
+      select: { id: true },
+    });
+    // The old LEAD steps down to CO; the new teacher becomes LEAD.
+    await db.classTeacher.updateMany({
+      where: { classId, role: "LEAD" },
+      data: { role: "CO" },
+    });
+
+    const adminCtx = {
+      sessionId: "test",
+      membershipId: null,
+      schoolId,
+      role: "ADMIN" as const,
+      user: {
+        id: adminUserId, name: "Admin", preferredName: null, email: null, avatarKey: null,
+        isMinor: false, isSuperuser: false, isAppAdmin: false,
+        prefs: {
+          theme: "system", contrast: "normal", font: "default", motion: "full",
+          locale: "en", channels: { push: false, email: false }, quietHours: null,
+        },
+      },
+    };
+    const result = await assignTeacher(adminCtx, classId, newTeacherM.id, { role: "LEAD" });
+    expect(result.ok).toBe(true);
+
+    // Both unclaimed pupils of the class now have the NEW teacher standing in,
+    // and the old teacher's rows are revoked, not deleted.
+    for (const pupil of [pupilInClass, pupilNoClass]) {
+      const active = await db.guardianship.findMany({
+        where: { studentMembershipId: pupil, status: "ACTIVE" },
+      });
+      expect(active).toHaveLength(1);
+      expect(active[0]!.parentUserId).toBe(newTeacher.id);
+      expect(active[0]!.relation).toBe("SCHOOL");
+    }
+    const old = await db.guardianship.findFirst({
+      where: { studentMembershipId: pupilInClass, parentUserId: teacherUserId },
+    });
+    expect(old?.status).toBe("REVOKED");
+
+    // The claimed pupil's family guardianship never moved.
+    const family = await db.guardianship.findMany({
+      where: { studentMembershipId: pupilClaimed, status: "ACTIVE" },
+    });
+    expect(family).toHaveLength(1);
+    expect(family[0]!.parentUserId).toBe(parentUserId);
+  });
+
+  it("⚠ unassigning the last teacher passes the stand-ins to the admin fallback", async () => {
+    const { unassignTeacher } = await import("@/lib/cohort");
+
+    const adminCtx = {
+      sessionId: "test",
+      membershipId: null,
+      schoolId,
+      role: "ADMIN" as const,
+      user: {
+        id: adminUserId, name: "Admin", preferredName: null, email: null, avatarKey: null,
+        isMinor: false, isSuperuser: false, isAppAdmin: false,
+        prefs: {
+          theme: "system", contrast: "normal", font: "default", motion: "full",
+          locale: "en", channels: { push: false, email: false }, quietHours: null,
+        },
+      },
+    };
+
+    // Remove every teacher from the class, new LEAD and demoted CO alike.
+    const staff = await db.classTeacher.findMany({
+      where: { classId },
+      select: { teacherMembershipId: true },
+    });
+    for (const s of staff) {
+      const result = await unassignTeacher(adminCtx, classId, s.teacherMembershipId);
+      expect(result.ok).toBe(true);
+    }
+
+    const active = await db.guardianship.findFirstOrThrow({
+      where: { studentMembershipId: pupilInClass, status: "ACTIVE" },
+    });
+    expect(active.parentUserId).toBe(adminUserId);
+    expect(active.relation).toBe("SCHOOL");
+  });
+});
