@@ -1,0 +1,1003 @@
+{
+  "subject": "CHEMISTRY",
+  "classLevel": 11,
+  "chapter": "Chapter 2 — Structure of Atom",
+  "name": "Structure of Atom",
+  "slug": "chemistry-11-structure-of-atom",
+  "summary": "The chapter where classical physics runs out and has to be replaced. Light that knocks electrons out only above a threshold colour and not below it however bright, an atom whose electrons are allowed only certain orbits because anything else would have it collapse in an instant, a limit that forbids knowing where a particle is and how fast it is going at once, and an address system of four numbers that ends by explaining the shape of the periodic table.",
+  "position": 2,
+  "source": "EduLink original, written against NCERT Chemistry Part I (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "परमाणु की संरचना",
+      "summary": "वह अध्याय जहाँ चिरसम्मत भौतिकी चुक जाती है और उसे बदलना पड़ता है। वह प्रकाश जो केवल एक देहली-रंग के ऊपर इलेक्ट्रॉन निकालता है, उससे नीचे चाहे कितना ही तेज़ हो नहीं, वह परमाणु जिसके इलेक्ट्रॉनों को केवल कुछ ही कक्षाएँ मिलती हैं क्योंकि और कुछ उसे क्षण भर में ढहा देता, वह सीमा जो एक साथ यह जानने से मना करती है कि कण कहाँ है और कितना तेज़ जा रहा है, और चार संख्याओं की वह पता-प्रणाली जो अंत में आवर्त सारणी का आकार समझा देती है।"
+    },
+    "mr": {
+      "name": "अणूची संरचना",
+      "summary": "ते प्रकरण जिथे अभिजात भौतिकी संपते आणि तिला बदलावे लागते. तो प्रकाश जो केवळ एका उंबरठा-रंगाच्या वर इलेक्ट्रॉन बाहेर काढतो, त्याखाली कितीही तेजस्वी असो नाही, तो अणू ज्याच्या इलेक्ट्रॉनांना केवळ काहीच कक्षा मिळतात कारण दुसरे काहीही त्याला क्षणात कोसळवले असते, ती मर्यादा जी एकाच वेळी कण कुठे आहे आणि किती वेगाने जात आहे हे जाणण्यास मनाई करते, आणि चार संख्यांची ती पत्ता-प्रणाली जी शेवटी आवर्त सारणीचा आकार समजावते."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A dim blue lamp ejects electrons from a metal the instant it is switched on, while a blinding red one ejects none however long it shines — which no theory of light as a wave can account for. Which observation is this?",
+      "choices": [
+        "The photoelectric effect",
+        "The Aufbau filling order",
+        "Bohr's quantised orbits",
+        "The four quantum numbers"
+      ],
+      "answerIndex": 0,
+      "solution": "In the photoelectric effect electrons are ejected only above a threshold frequency, immediately and regardless of intensity, which shows light delivers its energy in discrete packets rather than continuously. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "मंद नीला दीपक चालू होते ही धातु से इलेक्ट्रॉन निकाल देता है, जबकि चकाचौंध लाल दीपक चाहे कितनी देर चमके एक भी नहीं निकालता — जिसका हिसाब प्रकाश को तरंग मानने वाला कोई सिद्धांत नहीं दे सकता। यह कौन-सा प्रेक्षण है?",
+          "choices": [
+            "प्रकाश-विद्युत् प्रभाव",
+            "ऑफ़बाउ भरण-क्रम",
+            "बोर की क्वांटित कक्षाएँ",
+            "चार क्वांटम संख्याएँ"
+          ],
+          "solution": "प्रकाश-विद्युत् प्रभाव में इलेक्ट्रॉन केवल एक देहली आवृत्ति के ऊपर निकलते हैं, तुरंत और तीव्रता की परवाह किए बिना, जो दिखाता है कि प्रकाश अपनी ऊर्जा सतत नहीं बल्कि असतत पुड़ियों में देता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "मंद निळा दिवा लावताक्षणी धातूतून इलेक्ट्रॉन बाहेर काढतो, तर डोळे दिपवणारा लाल दिवा कितीही वेळ चमको एकही काढत नाही — ज्याचा हिशोब प्रकाशाला लहर मानणारा कोणताही सिद्धांत देऊ शकत नाही. हे कोणते निरीक्षण?",
+          "choices": [
+            "प्रकाशविद्युत परिणाम",
+            "ऑफबाऊ भरण-क्रम",
+            "बोरच्या पुंजित कक्षा",
+            "चार पुंज संख्या"
+          ],
+          "solution": "प्रकाशविद्युत परिणामात इलेक्ट्रॉन केवळ एका उंबरठा वारंवारतेच्या वर बाहेर पडतात, लगेच आणि तीव्रतेची पर्वा न करता, जे दाखवते की प्रकाश आपली ऊर्जा सलग नव्हे तर विलग पुड्यांत देतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Bohr's quantised orbits is correct?",
+      "choices": [
+        "Bohr's model allows an electron only orbits of quantised angular momentum, in which it does not radiate, and light is emitted or absorbed only when it jumps between them.",
+        "The uncertainty principle states that the product of the uncertainties in position and momentum can never be less than h/4π, so both cannot be known exactly at the same time.",
+        "The four quantum numbers n, l, m and s fix the shell, the subshell's shape, the orbital's orientation and the spin, and no two electrons in an atom may have all four the same.",
+        "An orbit is a definite path and an orbital is a region of high probability described by a wave function, so an orbital has a shape and a size but never a trajectory."
+      ],
+      "answerIndex": 0,
+      "solution": "Bohr's model allows an electron only orbits of quantised angular momentum, in which it does not radiate, and light is emitted or absorbed only when it jumps between them. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बोर की क्वांटित कक्षाएँ के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "बोर का निदर्श इलेक्ट्रॉन को केवल क्वांटित कोणीय संवेग वाली कक्षाएँ देता है, जिनमें वह विकिरण नहीं करता, और प्रकाश केवल तब उत्सर्जित या अवशोषित होता है जब वह उनके बीच छलाँग लगाए।",
+            "अनिश्चितता सिद्धांत कहता है कि स्थिति और संवेग की अनिश्चितताओं का गुणनफल कभी h/4π से कम नहीं हो सकता, अतः दोनों एक साथ ठीक-ठीक नहीं जाने जा सकते।",
+            "चार क्वांटम संख्याएँ n, l, m और s कोश, उपकोश का आकार, कक्षक का अभिविन्यास और चक्रण तय करती हैं, और परमाणु के किन्हीं दो इलेक्ट्रॉनों की चारों समान नहीं हो सकतीं।",
+            "कक्षा निश्चित पथ है और कक्षक तरंग-फलन से वर्णित उच्च संभावना का क्षेत्र, अतः कक्षक का आकार और माप होता है, प्रक्षेप-पथ कभी नहीं।"
+          ],
+          "solution": "बोर का निदर्श इलेक्ट्रॉन को केवल क्वांटित कोणीय संवेग वाली कक्षाएँ देता है, जिनमें वह विकिरण नहीं करता, और प्रकाश केवल तब उत्सर्जित या अवशोषित होता है जब वह उनके बीच छलाँग लगाए। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "बोरच्या पुंजित कक्षा विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "बोरचे प्रतिरूप इलेक्ट्रॉनला केवळ पुंजित कोनीय संवेगाच्या कक्षा देते, ज्यांत तो प्रारण करत नाही, आणि प्रकाश केवळ तेव्हाच उत्सर्जित वा शोषला जातो जेव्हा तो त्यांच्यात उडी मारतो.",
+            "अनिश्चितता तत्त्व सांगते की स्थिती आणि संवेग यांच्या अनिश्चिततांचा गुणाकार कधीही h/4π हून कमी असू शकत नाही, म्हणून दोन्ही एकाच वेळी नेमके जाणता येत नाहीत.",
+            "चार पुंज संख्या n, l, m आणि s कवच, उपकवचाचा आकार, कक्षकाची दिशा आणि परिवलन ठरवतात, आणि अणूतील कोणत्याही दोन इलेक्ट्रॉनांच्या चारही सारख्या असू शकत नाहीत.",
+            "कक्षा हा निश्चित मार्ग आणि कक्षक हा तरंग-फलनाने वर्णिलेला उच्च संभाव्यतेचा प्रदेश, म्हणून कक्षकाला आकार आणि माप असते, प्रक्षेप-मार्ग कधीच नाही."
+          ],
+          "solution": "बोरचे प्रतिरूप इलेक्ट्रॉनला केवळ पुंजित कोनीय संवेगाच्या कक्षा देते, ज्यांत तो प्रारण करत नाही, आणि प्रकाश केवळ तेव्हाच उत्सर्जित वा शोषला जातो जेव्हा तो त्यांच्यात उडी मारतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It destroys the idea of an orbit outright, since a path is precisely a statement of where a particle is and how fast at every instant.\" — which of these is this about?",
+      "choices": [
+        "The photoelectric effect",
+        "The orbital against the orbit",
+        "Bohr's quantised orbits",
+        "Heisenberg's uncertainty principle"
+      ],
+      "answerIndex": 3,
+      "solution": "The uncertainty principle states that the product of the uncertainties in position and momentum can never be less than h/4π, so both cannot be known exactly at the same time. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"यह कक्षा के विचार को सिरे से नष्ट कर देता है, क्योंकि पथ ठीक यही कथन है कि कण हर क्षण कहाँ है और कितना तेज़।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "प्रकाश-विद्युत् प्रभाव",
+            "कक्षक बनाम कक्षा",
+            "बोर की क्वांटित कक्षाएँ",
+            "हाइज़नबर्ग का अनिश्चितता सिद्धांत"
+          ],
+          "solution": "अनिश्चितता सिद्धांत कहता है कि स्थिति और संवेग की अनिश्चितताओं का गुणनफल कभी h/4π से कम नहीं हो सकता, अतः दोनों एक साथ ठीक-ठीक नहीं जाने जा सकते। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"हे कक्षेची कल्पना मुळापासून नष्ट करते, कारण मार्ग म्हणजे नेमके हेच विधान की कण प्रत्येक क्षणी कुठे आहे आणि किती वेगात.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "प्रकाशविद्युत परिणाम",
+            "कक्षक विरुद्ध कक्षा",
+            "बोरच्या पुंजित कक्षा",
+            "हायझेनबर्गचे अनिश्चितता तत्त्व"
+          ],
+          "solution": "अनिश्चितता तत्त्व सांगते की स्थिती आणि संवेग यांच्या अनिश्चिततांचा गुणाकार कधीही h/4π हून कमी असू शकत नाही, म्हणून दोन्ही एकाच वेळी नेमके जाणता येत नाहीत. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "One is a path a particle follows and the other is a region in which it is ninety per cent likely to be found, drawn as a fuzzy cloud with no line anywhere in it. Which contrast is this?",
+      "choices": [
+        "Bohr's quantised orbits",
+        "The orbital against the orbit",
+        "The photoelectric effect",
+        "Heisenberg's uncertainty principle"
+      ],
+      "answerIndex": 1,
+      "solution": "An orbit is a definite path and an orbital is a region of high probability described by a wave function, so an orbital has a shape and a size but never a trajectory. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक वह पथ है जिस पर कण चलता है और दूसरा वह क्षेत्र जिसमें उसके मिलने की संभावना नब्बे प्रतिशत है, जो धुँधले बादल के रूप में खींचा जाता है जिसमें कहीं कोई रेखा नहीं। यह कौन-सा भेद है?",
+          "choices": [
+            "बोर की क्वांटित कक्षाएँ",
+            "कक्षक बनाम कक्षा",
+            "प्रकाश-विद्युत् प्रभाव",
+            "हाइज़नबर्ग का अनिश्चितता सिद्धांत"
+          ],
+          "solution": "कक्षा निश्चित पथ है और कक्षक तरंग-फलन से वर्णित उच्च संभावना का क्षेत्र, अतः कक्षक का आकार और माप होता है, प्रक्षेप-पथ कभी नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "एक तो मार्ग ज्यावरून कण जातो आणि दुसरा तो प्रदेश ज्यात तो सापडण्याची शक्यता नव्वद टक्के, जो धूसर ढग म्हणून काढला जातो ज्यात कुठेही रेषा नाही. हा कोणता भेद?",
+          "choices": [
+            "बोरच्या पुंजित कक्षा",
+            "कक्षक विरुद्ध कक्षा",
+            "प्रकाशविद्युत परिणाम",
+            "हायझेनबर्गचे अनिश्चितता तत्त्व"
+          ],
+          "solution": "कक्षा हा निश्चित मार्ग आणि कक्षक हा तरंग-फलनाने वर्णिलेला उच्च संभाव्यतेचा प्रदेश, म्हणून कक्षकाला आकार आणि माप असते, प्रक्षेप-मार्ग कधीच नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The four quantum numbers is correct?",
+      "choices": [
+        "In the photoelectric effect electrons are ejected only above a threshold frequency, immediately and regardless of intensity, which shows light delivers its energy in discrete packets rather than continuously.",
+        "Bohr's model allows an electron only orbits of quantised angular momentum, in which it does not radiate, and light is emitted or absorbed only when it jumps between them.",
+        "The four quantum numbers n, l, m and s fix the shell, the subshell's shape, the orbital's orientation and the spin, and no two electrons in an atom may have all four the same.",
+        "The Aufbau principle fills subshells in order of increasing n + l, and where two are equal the one with the smaller n goes first, so 4s precedes 3d."
+      ],
+      "answerIndex": 2,
+      "solution": "The four quantum numbers n, l, m and s fix the shell, the subshell's shape, the orbital's orientation and the spin, and no two electrons in an atom may have all four the same. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "चार क्वांटम संख्याएँ के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "प्रकाश-विद्युत् प्रभाव में इलेक्ट्रॉन केवल एक देहली आवृत्ति के ऊपर निकलते हैं, तुरंत और तीव्रता की परवाह किए बिना, जो दिखाता है कि प्रकाश अपनी ऊर्जा सतत नहीं बल्कि असतत पुड़ियों में देता है।",
+            "बोर का निदर्श इलेक्ट्रॉन को केवल क्वांटित कोणीय संवेग वाली कक्षाएँ देता है, जिनमें वह विकिरण नहीं करता, और प्रकाश केवल तब उत्सर्जित या अवशोषित होता है जब वह उनके बीच छलाँग लगाए।",
+            "चार क्वांटम संख्याएँ n, l, m और s कोश, उपकोश का आकार, कक्षक का अभिविन्यास और चक्रण तय करती हैं, और परमाणु के किन्हीं दो इलेक्ट्रॉनों की चारों समान नहीं हो सकतीं।",
+            "ऑफ़बाउ सिद्धांत उपकोशों को बढ़ते n + l के क्रम में भरता है, और जहाँ दो बराबर हों वहाँ छोटा n वाला पहले जाता है, अतः 4s, 3d से पहले आता है।"
+          ],
+          "solution": "चार क्वांटम संख्याएँ n, l, m और s कोश, उपकोश का आकार, कक्षक का अभिविन्यास और चक्रण तय करती हैं, और परमाणु के किन्हीं दो इलेक्ट्रॉनों की चारों समान नहीं हो सकतीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "चार पुंज संख्या विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "प्रकाशविद्युत परिणामात इलेक्ट्रॉन केवळ एका उंबरठा वारंवारतेच्या वर बाहेर पडतात, लगेच आणि तीव्रतेची पर्वा न करता, जे दाखवते की प्रकाश आपली ऊर्जा सलग नव्हे तर विलग पुड्यांत देतो.",
+            "बोरचे प्रतिरूप इलेक्ट्रॉनला केवळ पुंजित कोनीय संवेगाच्या कक्षा देते, ज्यांत तो प्रारण करत नाही, आणि प्रकाश केवळ तेव्हाच उत्सर्जित वा शोषला जातो जेव्हा तो त्यांच्यात उडी मारतो.",
+            "चार पुंज संख्या n, l, m आणि s कवच, उपकवचाचा आकार, कक्षकाची दिशा आणि परिवलन ठरवतात, आणि अणूतील कोणत्याही दोन इलेक्ट्रॉनांच्या चारही सारख्या असू शकत नाहीत.",
+            "ऑफबाऊ तत्त्व उपकवचे वाढत्या n + l च्या क्रमाने भरते, आणि जिथे दोन समान असतील तिथे लहान n वाले आधी जाते, म्हणून 4s हे 3d च्या आधी येते."
+          ],
+          "solution": "चार पुंज संख्या n, l, m आणि s कवच, उपकवचाचा आकार, कक्षकाची दिशा आणि परिवलन ठरवतात, आणि अणूतील कोणत्याही दोन इलेक्ट्रॉनांच्या चारही सारख्या असू शकत नाहीत. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"Two companion rules complete it: Pauli's, that no orbital may hold more than two electrons and those must have opposite spins, and Hund's, that a set of equal-energy orbitals fills singly before any pairs up.\" — which of these is this about?",
+      "choices": [
+        "The four quantum numbers",
+        "The photoelectric effect",
+        "Heisenberg's uncertainty principle",
+        "The Aufbau filling order"
+      ],
+      "answerIndex": 3,
+      "solution": "The Aufbau principle fills subshells in order of increasing n + l, and where two are equal the one with the smaller n goes first, so 4s precedes 3d. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"दो साथी नियम उसे पूरा करते हैं: पॉली का, कि कोई कक्षक दो से अधिक इलेक्ट्रॉन नहीं रख सकता और उनके चक्रण विपरीत होने चाहिए, और हुंड का, कि समान ऊर्जा वाले कक्षकों का समुच्चय किसी में जोड़ी बनने से पहले एक-एक करके भरता है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "चार क्वांटम संख्याएँ",
+            "प्रकाश-विद्युत् प्रभाव",
+            "हाइज़नबर्ग का अनिश्चितता सिद्धांत",
+            "ऑफ़बाउ भरण-क्रम"
+          ],
+          "solution": "ऑफ़बाउ सिद्धांत उपकोशों को बढ़ते n + l के क्रम में भरता है, और जहाँ दो बराबर हों वहाँ छोटा n वाला पहले जाता है, अतः 4s, 3d से पहले आता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"दोन सोबतीचे नियम ते पूर्ण करतात: पौलीचा, की कोणतेही कक्षक दोनहून अधिक इलेक्ट्रॉन ठेवू शकत नाही आणि त्यांची परिवलने विरुद्ध असावीत, आणि हुंडचा, की समान ऊर्जेच्या कक्षकांचा संच कोणत्यातही जोडी होण्याआधी एकेक करून भरतो.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "चार पुंज संख्या",
+            "प्रकाशविद्युत परिणाम",
+            "हायझेनबर्गचे अनिश्चितता तत्त्व",
+            "ऑफबाऊ भरण-क्रम"
+          ],
+          "solution": "ऑफबाऊ तत्त्व उपकवचे वाढत्या n + l च्या क्रमाने भरते, आणि जिथे दोन समान असतील तिथे लहान n वाले आधी जाते, म्हणून 4s हे 3d च्या आधी येते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A dim blue lamp beating a blinding red one\" goes correctly with which of these?",
+      "choices": [
+        "Bohr's quantised orbits",
+        "the orbital against the orbit",
+        "the four quantum numbers",
+        "the photoelectric effect"
+      ],
+      "answerIndex": 3,
+      "solution": "In the photoelectric effect electrons are ejected only above a threshold frequency, immediately and regardless of intensity, which shows light delivers its energy in discrete packets rather than continuously. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"चकाचौंध लाल को हराता मंद नीला दीपक\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "बोर की क्वांटित कक्षाएँ",
+            "कक्षक बनाम कक्षा",
+            "चार क्वांटम संख्याएँ",
+            "प्रकाश-विद्युत् प्रभाव"
+          ],
+          "solution": "प्रकाश-विद्युत् प्रभाव में इलेक्ट्रॉन केवल एक देहली आवृत्ति के ऊपर निकलते हैं, तुरंत और तीव्रता की परवाह किए बिना, जो दिखाता है कि प्रकाश अपनी ऊर्जा सतत नहीं बल्कि असतत पुड़ियों में देता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"डोळे दिपवणाऱ्या लालला हरवणारा मंद निळा दिवा\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "बोरच्या पुंजित कक्षा",
+            "कक्षक विरुद्ध कक्षा",
+            "चार पुंज संख्या",
+            "प्रकाशविद्युत परिणाम"
+          ],
+          "solution": "प्रकाशविद्युत परिणामात इलेक्ट्रॉन केवळ एका उंबरठा वारंवारतेच्या वर बाहेर पडतात, लगेच आणि तीव्रतेची पर्वा न करता, जे दाखवते की प्रकाश आपली ऊर्जा सलग नव्हे तर विलग पुड्यांत देतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Declared radiationless to stop the atom collapsing\" goes correctly with which of these?",
+      "choices": [
+        "the orbital against the orbit",
+        "Heisenberg's uncertainty principle",
+        "Bohr's quantised orbits",
+        "the Aufbau filling order"
+      ],
+      "answerIndex": 2,
+      "solution": "Bohr's model allows an electron only orbits of quantised angular momentum, in which it does not radiate, and light is emitted or absorbed only when it jumps between them. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"परमाणु को ढहने से रोकने को विकिरण-रहित घोषित\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "कक्षक बनाम कक्षा",
+            "हाइज़नबर्ग का अनिश्चितता सिद्धांत",
+            "बोर की क्वांटित कक्षाएँ",
+            "ऑफ़बाउ भरण-क्रम"
+          ],
+          "solution": "बोर का निदर्श इलेक्ट्रॉन को केवल क्वांटित कोणीय संवेग वाली कक्षाएँ देता है, जिनमें वह विकिरण नहीं करता, और प्रकाश केवल तब उत्सर्जित या अवशोषित होता है जब वह उनके बीच छलाँग लगाए। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"अणू कोसळू नये म्हणून प्रारणविरहित घोषित\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "कक्षक विरुद्ध कक्षा",
+            "हायझेनबर्गचे अनिश्चितता तत्त्व",
+            "बोरच्या पुंजित कक्षा",
+            "ऑफबाऊ भरण-क्रम"
+          ],
+          "solution": "बोरचे प्रतिरूप इलेक्ट्रॉनला केवळ पुंजित कोनीय संवेगाच्या कक्षा देते, ज्यांत तो प्रारण करत नाही, आणि प्रकाश केवळ तेव्हाच उत्सर्जित वा शोषला जातो जेव्हा तो त्यांच्यात उडी मारतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Not a failing of the apparatus\" goes correctly with which of these?",
+      "choices": [
+        "the orbital against the orbit",
+        "Bohr's quantised orbits",
+        "Heisenberg's uncertainty principle",
+        "the four quantum numbers"
+      ],
+      "answerIndex": 2,
+      "solution": "The uncertainty principle states that the product of the uncertainties in position and momentum can never be less than h/4π, so both cannot be known exactly at the same time. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"उपकरण की कमी नहीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "कक्षक बनाम कक्षा",
+            "बोर की क्वांटित कक्षाएँ",
+            "हाइज़नबर्ग का अनिश्चितता सिद्धांत",
+            "चार क्वांटम संख्याएँ"
+          ],
+          "solution": "अनिश्चितता सिद्धांत कहता है कि स्थिति और संवेग की अनिश्चितताओं का गुणनफल कभी h/4π से कम नहीं हो सकता, अतः दोनों एक साथ ठीक-ठीक नहीं जाने जा सकते। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"उपकरणाची उणीव नव्हे\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "कक्षक विरुद्ध कक्षा",
+            "बोरच्या पुंजित कक्षा",
+            "हायझेनबर्गचे अनिश्चितता तत्त्व",
+            "चार पुंज संख्या"
+          ],
+          "solution": "अनिश्चितता तत्त्व सांगते की स्थिती आणि संवेग यांच्या अनिश्चिततांचा गुणाकार कधीही h/4π हून कमी असू शकत नाही, म्हणून दोन्ही एकाच वेळी नेमके जाणता येत नाहीत. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A cloud with no line anywhere in it\" goes correctly with which of these?",
+      "choices": [
+        "the orbital against the orbit",
+        "Bohr's quantised orbits",
+        "the four quantum numbers",
+        "the photoelectric effect"
+      ],
+      "answerIndex": 0,
+      "solution": "An orbit is a definite path and an orbital is a region of high probability described by a wave function, so an orbital has a shape and a size but never a trajectory. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ऐसा बादल जिसमें कहीं कोई रेखा नहीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "कक्षक बनाम कक्षा",
+            "बोर की क्वांटित कक्षाएँ",
+            "चार क्वांटम संख्याएँ",
+            "प्रकाश-विद्युत् प्रभाव"
+          ],
+          "solution": "कक्षा निश्चित पथ है और कक्षक तरंग-फलन से वर्णित उच्च संभावना का क्षेत्र, अतः कक्षक का आकार और माप होता है, प्रक्षेप-पथ कभी नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"असा ढग ज्यात कुठेही रेषा नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "कक्षक विरुद्ध कक्षा",
+            "बोरच्या पुंजित कक्षा",
+            "चार पुंज संख्या",
+            "प्रकाशविद्युत परिणाम"
+          ],
+          "solution": "कक्षा हा निश्चित मार्ग आणि कक्षक हा तरंग-फलनाने वर्णिलेला उच्च संभाव्यतेचा प्रदेश, म्हणून कक्षकाला आकार आणि माप असते, प्रक्षेप-मार्ग कधीच नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"An address no other electron shares\" goes correctly with which of these?",
+      "choices": [
+        "the four quantum numbers",
+        "Bohr's quantised orbits",
+        "the Aufbau filling order",
+        "the orbital against the orbit"
+      ],
+      "answerIndex": 0,
+      "solution": "The four quantum numbers n, l, m and s fix the shell, the subshell's shape, the orbital's orientation and the spin, and no two electrons in an atom may have all four the same. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ऐसा पता जो कोई दूसरा इलेक्ट्रॉन साझा नहीं करता\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "चार क्वांटम संख्याएँ",
+            "बोर की क्वांटित कक्षाएँ",
+            "ऑफ़बाउ भरण-क्रम",
+            "कक्षक बनाम कक्षा"
+          ],
+          "solution": "चार क्वांटम संख्याएँ n, l, m और s कोश, उपकोश का आकार, कक्षक का अभिविन्यास और चक्रण तय करती हैं, और परमाणु के किन्हीं दो इलेक्ट्रॉनों की चारों समान नहीं हो सकतीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"असा पत्ता जो दुसरा कोणताही इलेक्ट्रॉन वाटून घेत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "चार पुंज संख्या",
+            "बोरच्या पुंजित कक्षा",
+            "ऑफबाऊ भरण-क्रम",
+            "कक्षक विरुद्ध कक्षा"
+          ],
+          "solution": "चार पुंज संख्या n, l, m आणि s कवच, उपकवचाचा आकार, कक्षकाची दिशा आणि परिवलन ठरवतात, आणि अणूतील कोणत्याही दोन इलेक्ट्रॉनांच्या चारही सारख्या असू शकत नाहीत. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"4s before 3d, though four exceeds three\" goes correctly with which of these?",
+      "choices": [
+        "the photoelectric effect",
+        "the Aufbau filling order",
+        "Heisenberg's uncertainty principle",
+        "the orbital against the orbit"
+      ],
+      "answerIndex": 1,
+      "solution": "The Aufbau principle fills subshells in order of increasing n + l, and where two are equal the one with the smaller n goes first, so 4s precedes 3d. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"3d से पहले 4s, यद्यपि चार तीन से बड़ा है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "प्रकाश-विद्युत् प्रभाव",
+            "ऑफ़बाउ भरण-क्रम",
+            "हाइज़नबर्ग का अनिश्चितता सिद्धांत",
+            "कक्षक बनाम कक्षा"
+          ],
+          "solution": "ऑफ़बाउ सिद्धांत उपकोशों को बढ़ते n + l के क्रम में भरता है, और जहाँ दो बराबर हों वहाँ छोटा n वाला पहले जाता है, अतः 4s, 3d से पहले आता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"3d च्या आधी 4s, जरी चार तीनहून मोठा असला तरी\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "प्रकाशविद्युत परिणाम",
+            "ऑफबाऊ भरण-क्रम",
+            "हायझेनबर्गचे अनिश्चितता तत्त्व",
+            "कक्षक विरुद्ध कक्षा"
+          ],
+          "solution": "ऑफबाऊ तत्त्व उपकवचे वाढत्या n + l च्या क्रमाने भरते, आणि जिथे दोन समान असतील तिथे लहान n वाले आधी जाते, म्हणून 4s हे 3d च्या आधी येते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The photoelectric effect EXCEPT —",
+      "choices": [
+        "The Aufbau principle fills subshells in order of increasing n + l, and where two are equal the one with the smaller n goes first, so 4s precedes 3d.",
+        "A wave theory predicts the opposite on every count — that any colour would work given time, that brighter light would give faster electrons, and that a dim source would need a measurable delay.",
+        "Einstein's equation says the ejected electron's maximum kinetic energy is hν minus the work function, so brighter light sends out more electrons and never faster ones.",
+        "In the photoelectric effect electrons are ejected only above a threshold frequency, immediately and regardless of intensity, which shows light delivers its energy in discrete packets rather than continuously."
+      ],
+      "answerIndex": 0,
+      "solution": "The Aufbau principle fills subshells in order of increasing n + l, and where two are equal the one with the smaller n goes first, so 4s precedes 3d. That belongs to The Aufbau filling order, not The photoelectric effect — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रकाश-विद्युत् प्रभाव के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "ऑफ़बाउ सिद्धांत उपकोशों को बढ़ते n + l के क्रम में भरता है, और जहाँ दो बराबर हों वहाँ छोटा n वाला पहले जाता है, अतः 4s, 3d से पहले आता है।",
+            "तरंग सिद्धांत हर बिंदु पर उलटा बताता है — कि समय मिले तो कोई भी रंग काम करेगा, कि तेज़ प्रकाश तेज़ इलेक्ट्रॉन देगा, और कि मंद स्रोत को मापने योग्य विलंब चाहिए।",
+            "आइंस्टीन का समीकरण कहता है कि निकले इलेक्ट्रॉन की अधिकतम गतिज ऊर्जा hν घटा कार्य-फलन है, अतः तेज़ प्रकाश अधिक इलेक्ट्रॉन भेजता है, कभी अधिक तेज़ नहीं।",
+            "प्रकाश-विद्युत् प्रभाव में इलेक्ट्रॉन केवल एक देहली आवृत्ति के ऊपर निकलते हैं, तुरंत और तीव्रता की परवाह किए बिना, जो दिखाता है कि प्रकाश अपनी ऊर्जा सतत नहीं बल्कि असतत पुड़ियों में देता है।"
+          ],
+          "solution": "ऑफ़बाउ सिद्धांत उपकोशों को बढ़ते n + l के क्रम में भरता है, और जहाँ दो बराबर हों वहाँ छोटा n वाला पहले जाता है, अतः 4s, 3d से पहले आता है। यह ऑफ़बाउ भरण-क्रम की बात है, प्रकाश-विद्युत् प्रभाव की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "प्रकाशविद्युत परिणाम विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "ऑफबाऊ तत्त्व उपकवचे वाढत्या n + l च्या क्रमाने भरते, आणि जिथे दोन समान असतील तिथे लहान n वाले आधी जाते, म्हणून 4s हे 3d च्या आधी येते.",
+            "लहर सिद्धांत प्रत्येक मुद्द्यावर उलटे सांगतो — की वेळ मिळाल्यास कोणताही रंग चालेल, की तेजस्वी प्रकाश वेगवान इलेक्ट्रॉन देईल, आणि की मंद स्रोताला मोजण्याजोगा विलंब लागेल.",
+            "आइनस्टाइनचे समीकरण सांगते की बाहेर पडलेल्या इलेक्ट्रॉनची कमाल गतिज ऊर्जा hν वजा कार्यफलन, म्हणून तेजस्वी प्रकाश अधिक इलेक्ट्रॉन पाठवतो, कधीही अधिक वेगवान नाही.",
+            "प्रकाशविद्युत परिणामात इलेक्ट्रॉन केवळ एका उंबरठा वारंवारतेच्या वर बाहेर पडतात, लगेच आणि तीव्रतेची पर्वा न करता, जे दाखवते की प्रकाश आपली ऊर्जा सलग नव्हे तर विलग पुड्यांत देतो."
+          ],
+          "solution": "ऑफबाऊ तत्त्व उपकवचे वाढत्या n + l च्या क्रमाने भरते, आणि जिथे दोन समान असतील तिथे लहान n वाले आधी जाते, म्हणून 4s हे 3d च्या आधी येते. हे ऑफबाऊ भरण-क्रम चे आहे, प्रकाशविद्युत परिणाम चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Bohr's quantised orbits EXCEPT —",
+      "choices": [
+        "It explains the hydrogen spectrum's sharp lines exactly, because a jump between two fixed energies can only ever emit one definite frequency.",
+        "The uncertainty principle states that the product of the uncertainties in position and momentum can never be less than h/4π, so both cannot be known exactly at the same time.",
+        "Bohr's model allows an electron only orbits of quantised angular momentum, in which it does not radiate, and light is emitted or absorbed only when it jumps between them.",
+        "It fails for every atom with more than one electron, and it was replaced within fifteen years, but the idea that energy comes in fixed levels survived intact."
+      ],
+      "answerIndex": 1,
+      "solution": "The uncertainty principle states that the product of the uncertainties in position and momentum can never be less than h/4π, so both cannot be known exactly at the same time. That belongs to Heisenberg's uncertainty principle, not Bohr's quantised orbits — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बोर की क्वांटित कक्षाएँ के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "यह हाइड्रोजन वर्णक्रम की तीखी रेखाएँ ठीक-ठीक समझाता है, क्योंकि दो नियत ऊर्जाओं के बीच की छलाँग सदा एक ही निश्चित आवृत्ति उत्सर्जित कर सकती है।",
+            "अनिश्चितता सिद्धांत कहता है कि स्थिति और संवेग की अनिश्चितताओं का गुणनफल कभी h/4π से कम नहीं हो सकता, अतः दोनों एक साथ ठीक-ठीक नहीं जाने जा सकते।",
+            "बोर का निदर्श इलेक्ट्रॉन को केवल क्वांटित कोणीय संवेग वाली कक्षाएँ देता है, जिनमें वह विकिरण नहीं करता, और प्रकाश केवल तब उत्सर्जित या अवशोषित होता है जब वह उनके बीच छलाँग लगाए।",
+            "यह एक से अधिक इलेक्ट्रॉन वाले हर परमाणु पर विफल है, और पंद्रह वर्षों में उसकी जगह ले ली गई, पर यह विचार कि ऊर्जा नियत स्तरों में आती है ज्यों का त्यों बचा रहा।"
+          ],
+          "solution": "अनिश्चितता सिद्धांत कहता है कि स्थिति और संवेग की अनिश्चितताओं का गुणनफल कभी h/4π से कम नहीं हो सकता, अतः दोनों एक साथ ठीक-ठीक नहीं जाने जा सकते। यह हाइज़नबर्ग का अनिश्चितता सिद्धांत की बात है, बोर की क्वांटित कक्षाएँ की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "बोरच्या पुंजित कक्षा विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "हे हायड्रोजन वर्णपटाच्या तीक्ष्ण रेषा नेमक्या समजावते, कारण दोन ठरलेल्या ऊर्जांमधली उडी नेहमी एकच निश्चित वारंवारता उत्सर्जित करू शकते.",
+            "अनिश्चितता तत्त्व सांगते की स्थिती आणि संवेग यांच्या अनिश्चिततांचा गुणाकार कधीही h/4π हून कमी असू शकत नाही, म्हणून दोन्ही एकाच वेळी नेमके जाणता येत नाहीत.",
+            "बोरचे प्रतिरूप इलेक्ट्रॉनला केवळ पुंजित कोनीय संवेगाच्या कक्षा देते, ज्यांत तो प्रारण करत नाही, आणि प्रकाश केवळ तेव्हाच उत्सर्जित वा शोषला जातो जेव्हा तो त्यांच्यात उडी मारतो.",
+            "हे एकाहून अधिक इलेक्ट्रॉन असलेल्या प्रत्येक अणूवर अपयशी, आणि पंधरा वर्षांत त्याची जागा घेतली गेली, पण ऊर्जा ठरलेल्या पातळ्यांत येते ही कल्पना जशीच्या तशी टिकली."
+          ],
+          "solution": "अनिश्चितता तत्त्व सांगते की स्थिती आणि संवेग यांच्या अनिश्चिततांचा गुणाकार कधीही h/4π हून कमी असू शकत नाही, म्हणून दोन्ही एकाच वेळी नेमके जाणता येत नाहीत. हे हायझेनबर्गचे अनिश्चितता तत्त्व चे आहे, बोरच्या पुंजित कक्षा चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Heisenberg's uncertainty principle EXCEPT —",
+      "choices": [
+        "It destroys the idea of an orbit outright, since a path is precisely a statement of where a particle is and how fast at every instant.",
+        "The limit is utterly negligible for anything visible — for a cricket ball it is smaller than the diameter of a nucleus — which is why the everyday world looks classical.",
+        "Bohr's model allows an electron only orbits of quantised angular momentum, in which it does not radiate, and light is emitted or absorbed only when it jumps between them.",
+        "The uncertainty principle states that the product of the uncertainties in position and momentum can never be less than h/4π, so both cannot be known exactly at the same time."
+      ],
+      "answerIndex": 2,
+      "solution": "Bohr's model allows an electron only orbits of quantised angular momentum, in which it does not radiate, and light is emitted or absorbed only when it jumps between them. That belongs to Bohr's quantised orbits, not Heisenberg's uncertainty principle — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "हाइज़नबर्ग का अनिश्चितता सिद्धांत के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "यह कक्षा के विचार को सिरे से नष्ट कर देता है, क्योंकि पथ ठीक यही कथन है कि कण हर क्षण कहाँ है और कितना तेज़।",
+            "यह सीमा किसी भी दिखने वाली चीज़ के लिए नितांत नगण्य है — क्रिकेट गेंद के लिए वह नाभिक के व्यास से भी छोटी है — इसीलिए रोज़मर्रा का संसार चिरसम्मत दिखता है।",
+            "बोर का निदर्श इलेक्ट्रॉन को केवल क्वांटित कोणीय संवेग वाली कक्षाएँ देता है, जिनमें वह विकिरण नहीं करता, और प्रकाश केवल तब उत्सर्जित या अवशोषित होता है जब वह उनके बीच छलाँग लगाए।",
+            "अनिश्चितता सिद्धांत कहता है कि स्थिति और संवेग की अनिश्चितताओं का गुणनफल कभी h/4π से कम नहीं हो सकता, अतः दोनों एक साथ ठीक-ठीक नहीं जाने जा सकते।"
+          ],
+          "solution": "बोर का निदर्श इलेक्ट्रॉन को केवल क्वांटित कोणीय संवेग वाली कक्षाएँ देता है, जिनमें वह विकिरण नहीं करता, और प्रकाश केवल तब उत्सर्जित या अवशोषित होता है जब वह उनके बीच छलाँग लगाए। यह बोर की क्वांटित कक्षाएँ की बात है, हाइज़नबर्ग का अनिश्चितता सिद्धांत की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "हायझेनबर्गचे अनिश्चितता तत्त्व विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "हे कक्षेची कल्पना मुळापासून नष्ट करते, कारण मार्ग म्हणजे नेमके हेच विधान की कण प्रत्येक क्षणी कुठे आहे आणि किती वेगात.",
+            "ही मर्यादा कोणत्याही दिसणाऱ्या गोष्टीसाठी पूर्णपणे नगण्य — क्रिकेट चेंडूसाठी ती केंद्रकाच्या व्यासाहूनही लहान — म्हणूनच रोजचे जग अभिजात दिसते.",
+            "बोरचे प्रतिरूप इलेक्ट्रॉनला केवळ पुंजित कोनीय संवेगाच्या कक्षा देते, ज्यांत तो प्रारण करत नाही, आणि प्रकाश केवळ तेव्हाच उत्सर्जित वा शोषला जातो जेव्हा तो त्यांच्यात उडी मारतो.",
+            "अनिश्चितता तत्त्व सांगते की स्थिती आणि संवेग यांच्या अनिश्चिततांचा गुणाकार कधीही h/4π हून कमी असू शकत नाही, म्हणून दोन्ही एकाच वेळी नेमके जाणता येत नाहीत."
+          ],
+          "solution": "बोरचे प्रतिरूप इलेक्ट्रॉनला केवळ पुंजित कोनीय संवेगाच्या कक्षा देते, ज्यांत तो प्रारण करत नाही, आणि प्रकाश केवळ तेव्हाच उत्सर्जित वा शोषला जातो जेव्हा तो त्यांच्यात उडी मारतो. हे बोरच्या पुंजित कक्षा चे आहे, हायझेनबर्गचे अनिश्चितता तत्त्व चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The orbital against the orbit EXCEPT —",
+      "choices": [
+        "A node inside an orbital is a surface where the probability is exactly zero, and an electron is found on both sides of it without ever being found on it — which has no classical picture at all.",
+        "An orbit is a definite path and an orbital is a region of high probability described by a wave function, so an orbital has a shape and a size but never a trajectory.",
+        "The s orbital is spherical, the three p orbitals are dumb-bells along the three axes, and those shapes are what molecular geometry is ultimately built out of.",
+        "The uncertainty principle states that the product of the uncertainties in position and momentum can never be less than h/4π, so both cannot be known exactly at the same time."
+      ],
+      "answerIndex": 3,
+      "solution": "The uncertainty principle states that the product of the uncertainties in position and momentum can never be less than h/4π, so both cannot be known exactly at the same time. That belongs to Heisenberg's uncertainty principle, not The orbital against the orbit — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कक्षक बनाम कक्षा के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "कक्षक के भीतर निस्पंद वह पृष्ठ है जहाँ संभावना ठीक शून्य है, और इलेक्ट्रॉन उसके दोनों ओर मिलता है पर उस पर कभी नहीं — जिसका कोई चिरसम्मत चित्र है ही नहीं।",
+            "कक्षा निश्चित पथ है और कक्षक तरंग-फलन से वर्णित उच्च संभावना का क्षेत्र, अतः कक्षक का आकार और माप होता है, प्रक्षेप-पथ कभी नहीं।",
+            "s कक्षक गोलाकार है, तीन p कक्षक तीनों अक्षों के अनुदिश डंबल हैं, और आण्विक ज्यामिति अंततः उन्हीं आकारों से बनती है।",
+            "अनिश्चितता सिद्धांत कहता है कि स्थिति और संवेग की अनिश्चितताओं का गुणनफल कभी h/4π से कम नहीं हो सकता, अतः दोनों एक साथ ठीक-ठीक नहीं जाने जा सकते।"
+          ],
+          "solution": "अनिश्चितता सिद्धांत कहता है कि स्थिति और संवेग की अनिश्चितताओं का गुणनफल कभी h/4π से कम नहीं हो सकता, अतः दोनों एक साथ ठीक-ठीक नहीं जाने जा सकते। यह हाइज़नबर्ग का अनिश्चितता सिद्धांत की बात है, कक्षक बनाम कक्षा की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "कक्षक विरुद्ध कक्षा विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "कक्षकाच्या आत निस्पंद हा तो पृष्ठभाग जिथे संभाव्यता नेमकी शून्य, आणि इलेक्ट्रॉन त्याच्या दोन्ही बाजूंना सापडतो पण त्याच्यावर कधीच नाही — ज्याचे कोणतेही अभिजात चित्र नाहीच.",
+            "कक्षा हा निश्चित मार्ग आणि कक्षक हा तरंग-फलनाने वर्णिलेला उच्च संभाव्यतेचा प्रदेश, म्हणून कक्षकाला आकार आणि माप असते, प्रक्षेप-मार्ग कधीच नाही.",
+            "s कक्षक गोलाकार, तीन p कक्षक तिन्ही अक्षांच्या दिशेने डंबेल, आणि रेणवीय भूमिती अखेर त्याच आकारांतून बनते.",
+            "अनिश्चितता तत्त्व सांगते की स्थिती आणि संवेग यांच्या अनिश्चिततांचा गुणाकार कधीही h/4π हून कमी असू शकत नाही, म्हणून दोन्ही एकाच वेळी नेमके जाणता येत नाहीत."
+          ],
+          "solution": "अनिश्चितता तत्त्व सांगते की स्थिती आणि संवेग यांच्या अनिश्चिततांचा गुणाकार कधीही h/4π हून कमी असू शकत नाही, म्हणून दोन्ही एकाच वेळी नेमके जाणता येत नाहीत. हे हायझेनबर्गचे अनिश्चितता तत्त्व चे आहे, कक्षक विरुद्ध कक्षा चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A metal has a work function of 2 eV. It is lit first by very bright red light of photon energy 1.8 eV and then by a faint ultraviolet lamp of photon energy 5 eV. A student expects the bright lamp to eject electrons and the faint one not to. Explain what actually happens and why.",
+      "choices": [
+        "Exactly the reverse. The red light ejects nothing however bright, because each photon carries only 1.8 eV and one photon frees one electron — 1.8 is below the 2 eV needed, and turning up the brightness merely sends more photons that are each individually too weak. The ultraviolet lamp ejects electrons immediately, each with up to 5 − 2 = 3 eV of kinetic energy, and a fainter lamp gives fewer such electrons but never slower ones",
+        "The student is right: brightness is what supplies the energy, so a sufficiently bright lamp of any colour will eject electrons",
+        "Both lamps eject electrons, but the red one takes longer because its photons must accumulate until 2 eV has been delivered",
+        "Neither ejects electrons, since 2 eV is far too large a barrier for visible or ultraviolet light to overcome"
+      ],
+      "answerIndex": 0,
+      "solution": "The whole result turns on one idea: light delivers its energy in indivisible packets, and an electron deals with one packet at a time. Red lamp, 1.8 eV per photon. The metal holds its electrons with a binding energy of 2 eV, so an electron needs at least 2 eV in a single delivery to escape. Every red photon arrives 0.2 eV short. Making the lamp brighter increases the NUMBER of photons per second and not the energy of any one of them, so a floodlight of red delivers vast numbers of individually inadequate packets and not one electron leaves. Ultraviolet lamp, 5 eV per photon. Every photon that is absorbed frees an electron and hands it the surplus: KE_max = hν − φ = 5 − 2 = 3 eV. This happens the instant the lamp is switched on, with no measurable delay, and dimming the lamp reduces the number of electrons per second while leaving every individual electron's energy at exactly 3 eV. That last point is the sharpest test of the whole picture, and it is what the third option gets wrong. A wave theory says energy arrives continuously and spreads over the surface, so a faint source should need a warm-up period while an electron accumulates enough — for a really dim lamp, calculation gives delays of minutes or hours. No such delay has ever been observed; emission begins within nanoseconds at any intensity above zero. Energy simply does not accumulate, because the packet is indivisible: an electron either absorbs a whole photon or none. Two consequences are worth carrying. First, the threshold frequency is a property of the metal and identifies it: caesium releases electrons in visible light and needs only about 2 eV, while zinc needs ultraviolet at around 4 eV, which is why a caesium photocell responds to a light beam and a zinc one does not. Second, the graph of maximum kinetic energy against frequency is a straight line whose slope is Planck's constant and whose intercept is the work function — and Millikan measured h that way, having set out to disprove Einstein's equation and ending by confirming it to one per cent. (The fourth answer treats 2 eV as a large barrier when it is a modest one, comfortably within the range of visible light.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी धातु का कार्य-फलन 2 eV है। उस पर पहले 1.8 eV फ़ोटॉन-ऊर्जा का बहुत तेज़ लाल प्रकाश डाला जाता है और फिर 5 eV फ़ोटॉन-ऊर्जा का मंद पराबैंगनी दीपक। एक विद्यार्थी अपेक्षा करता है कि तेज़ दीपक इलेक्ट्रॉन निकालेगा और मंद नहीं। समझाओ वस्तुतः क्या होता है और क्यों।",
+          "choices": [
+            "ठीक उलटा। लाल प्रकाश चाहे कितना ही तेज़ हो कुछ नहीं निकालता, क्योंकि हर फ़ोटॉन केवल 1.8 eV ढोता है और एक फ़ोटॉन एक इलेक्ट्रॉन मुक्त करता है — 1.8 चाहिए 2 eV से कम है, और तीव्रता बढ़ाना बस अधिक फ़ोटॉन भेजता है जो हर एक अकेले-अकेले बहुत दुर्बल हैं। पराबैंगनी दीपक तुरंत इलेक्ट्रॉन निकालता है, हर एक 5 − 2 = 3 eV तक गतिज ऊर्जा के साथ, और मंद दीपक ऐसे इलेक्ट्रॉन कम देता है, कभी धीमे नहीं",
+            "विद्यार्थी सही है: ऊर्जा तीव्रता ही देती है, अतः किसी भी रंग का पर्याप्त तेज़ दीपक इलेक्ट्रॉन निकालेगा",
+            "दोनों दीपक इलेक्ट्रॉन निकालते हैं, पर लाल को अधिक समय लगता है क्योंकि उसके फ़ोटॉनों को 2 eV पहुँचने तक जमा होना पड़ता है",
+            "कोई भी इलेक्ट्रॉन नहीं निकालता, क्योंकि 2 eV ऐसी बाधा है जिसे दृश्य या पराबैंगनी प्रकाश पार नहीं कर सकता"
+          ],
+          "solution": "पूरा परिणाम एक विचार पर टिका है: प्रकाश अपनी ऊर्जा अविभाज्य पुड़ियों में देता है, और इलेक्ट्रॉन एक बार में एक पुड़िया से निपटता है। लाल दीपक, 1.8 eV प्रति फ़ोटॉन। धातु अपने इलेक्ट्रॉनों को 2 eV बंधन-ऊर्जा से थामे है, अतः इलेक्ट्रॉन को भागने के लिए एक ही डिलीवरी में कम से कम 2 eV चाहिए। हर लाल फ़ोटॉन 0.2 eV कम पड़ता है। दीपक तेज़ करने से प्रति सेकंड फ़ोटॉनों की संख्या बढ़ती है, उनमें से किसी एक की ऊर्जा नहीं, अतः लाल का सर्चलाइट अकेले-अकेले अपर्याप्त पुड़ियों की विशाल संख्या देता है और एक भी इलेक्ट्रॉन नहीं निकलता। पराबैंगनी दीपक, 5 eV प्रति फ़ोटॉन। जो भी फ़ोटॉन अवशोषित होता है वह एक इलेक्ट्रॉन मुक्त करता है और उसे बचा हुआ सौंप देता है: KE_अधिकतम = hν − φ = 5 − 2 = 3 eV. यह दीपक चालू होते ही होता है, बिना किसी मापने योग्य विलंब के, और दीपक मंद करने से प्रति सेकंड इलेक्ट्रॉनों की संख्या घटती है जबकि हर अलग इलेक्ट्रॉन की ऊर्जा ठीक 3 eV बनी रहती है। वही अंतिम बिंदु पूरे चित्र की सबसे तीखी परीक्षा है, और वही तीसरा विकल्प ग़लत करता है। तरंग सिद्धांत कहता है ऊर्जा सतत आती है और सतह पर फैलती है, अतः मंद स्रोत को गरमाने का समय चाहिए जब तक इलेक्ट्रॉन पर्याप्त जमा न कर ले — सचमुच मंद दीपक के लिए गणना मिनटों या घंटों का विलंब देती है। ऐसा कोई विलंब कभी देखा नहीं गया; शून्य से ऊपर किसी भी तीव्रता पर उत्सर्जन नैनोसेकंडों में शुरू हो जाता है। ऊर्जा जमा होती ही नहीं, क्योंकि पुड़िया अविभाज्य है: इलेक्ट्रॉन या तो पूरा फ़ोटॉन सोखता है या एक भी नहीं। दो परिणाम ले जाने योग्य हैं। पहला, देहली आवृत्ति धातु का गुण है और उसे पहचानती है: सीज़ियम दृश्य प्रकाश में इलेक्ट्रॉन छोड़ता है और उसे केवल लगभग 2 eV चाहिए, जबकि ज़िंक को लगभग 4 eV का पराबैंगनी चाहिए, इसीलिए सीज़ियम की प्रकाश-सेल प्रकाश-पुंज पर प्रतिक्रिया देती है और ज़िंक की नहीं। दूसरा, आवृत्ति बनाम अधिकतम गतिज ऊर्जा का आलेख सीधी रेखा है जिसकी ढाल प्लांक स्थिरांक है और अंतःखंड कार्य-फलन — और मिलिकन ने h उसी तरह नापा, जो आइंस्टीन के समीकरण को झुठलाने निकले थे और अंत में उसे एक प्रतिशत तक पुष्ट कर बैठे। (चौथा उत्तर 2 eV को बड़ी बाधा मान लेता है जबकि वह मामूली है, दृश्य प्रकाश की परास के भीतर आराम से।)"
+        },
+        "mr": {
+          "stem": "एका धातूचे कार्यफलन 2 eV आहे. त्यावर आधी 1.8 eV फोटॉन-ऊर्जेचा फार तेजस्वी लाल प्रकाश टाकला जातो आणि मग 5 eV फोटॉन-ऊर्जेचा मंद अतिनील दिवा. एक विद्यार्थी अपेक्षा करतो की तेजस्वी दिवा इलेक्ट्रॉन काढेल आणि मंद नाही. प्रत्यक्षात काय घडते आणि का ते समजावा.",
+          "choices": [
+            "नेमके उलटे. लाल प्रकाश कितीही तेजस्वी असो काहीही काढत नाही, कारण प्रत्येक फोटॉन केवळ 1.8 eV वाहतो आणि एक फोटॉन एक इलेक्ट्रॉन मुक्त करतो — 1.8 हे लागणाऱ्या 2 eV हून कमी, आणि तेजस्वीपणा वाढवणे फक्त अधिक फोटॉन पाठवते जे प्रत्येक स्वतंत्रपणे फारच दुर्बल. अतिनील दिवा लगेच इलेक्ट्रॉन काढतो, प्रत्येक 5 − 2 = 3 eV पर्यंत गतिज ऊर्जेसह, आणि मंद दिवा असे इलेक्ट्रॉन कमी देतो, कधीही सावकाश नाही",
+            "विद्यार्थी बरोबर: ऊर्जा तेजस्वीपणाच पुरवतो, म्हणून कोणत्याही रंगाचा पुरेसा तेजस्वी दिवा इलेक्ट्रॉन काढेल",
+            "दोन्ही दिवे इलेक्ट्रॉन काढतात, पण लालला अधिक वेळ लागतो कारण त्याच्या फोटॉनांना 2 eV पोहोचेपर्यंत साचावे लागते",
+            "कोणीही इलेक्ट्रॉन काढत नाही, कारण 2 eV ही अशी अडचण जी दृश्य वा अतिनील प्रकाश ओलांडू शकत नाही"
+          ],
+          "solution": "अख्खा निकाल एका कल्पनेवर टेकलेला: प्रकाश आपली ऊर्जा अविभाज्य पुड्यांत देतो, आणि इलेक्ट्रॉन एका वेळी एका पुडीशी व्यवहार करतो. लाल दिवा, 1.8 eV प्रति फोटॉन. धातू आपले इलेक्ट्रॉन 2 eV बंधन-ऊर्जेने धरून आहे, म्हणून इलेक्ट्रॉनला सुटायला एकाच वितरणात किमान 2 eV लागतात. प्रत्येक लाल फोटॉन 0.2 eV ने कमी पडतो. दिवा तेजस्वी केल्याने प्रति सेकंद फोटॉनांची संख्या वाढते, त्यांपैकी कोणा एकाची ऊर्जा नाही, म्हणून लालचा झोतदिवा स्वतंत्रपणे अपुऱ्या पुड्यांची प्रचंड संख्या देतो आणि एकही इलेक्ट्रॉन निघत नाही. अतिनील दिवा, 5 eV प्रति फोटॉन. जो फोटॉन शोषला जातो तो एक इलेक्ट्रॉन मुक्त करतो आणि त्याला उरलेले सोपवतो: KE_कमाल = hν − φ = 5 − 2 = 3 eV. हे दिवा लावताक्षणी घडते, कोणत्याही मोजण्याजोग्या विलंबाशिवाय, आणि दिवा मंद केल्याने प्रति सेकंद इलेक्ट्रॉनांची संख्या घटते तर प्रत्येक वेगळ्या इलेक्ट्रॉनची ऊर्जा नेमकी 3 eV राहते. तोच शेवटचा मुद्दा अख्ख्या चित्राची सर्वांत तीक्ष्ण परीक्षा, आणि तेच तिसरा पर्याय चुकीचे करतो. लहर सिद्धांत सांगतो की ऊर्जा सलग येते आणि पृष्ठभागावर पसरते, म्हणून मंद स्रोताला तापण्याचा काळ लागेल जोवर इलेक्ट्रॉन पुरेसे साठवत नाही — खरोखर मंद दिव्यासाठी गणना मिनिटांचे वा तासांचे विलंब देते. असा कोणताही विलंब कधीच पाहिला गेला नाही; शून्याहून अधिक कोणत्याही तीव्रतेवर उत्सर्जन नॅनोसेकंदांत सुरू होते. ऊर्जा साचतच नाही, कारण पुडी अविभाज्य: इलेक्ट्रॉन एकतर अख्खा फोटॉन शोषतो वा एकही नाही. दोन परिणाम नेण्याजोगे. पहिला, उंबरठा वारंवारता हा धातूचा गुणधर्म आणि तिला ओळखते: सीझियम दृश्य प्रकाशात इलेक्ट्रॉन सोडते आणि तिला केवळ सुमारे 2 eV लागतात, तर जस्ताला सुमारे 4 eV चा अतिनील लागतो, म्हणूनच सीझियमचा प्रकाशघट प्रकाशझोताला प्रतिसाद देतो आणि जस्ताचा नाही. दुसरा, वारंवारता विरुद्ध कमाल गतिज ऊर्जेचा आलेख ही सरळ रेषा जिचा उतार प्लांक स्थिरांक आणि अंतःखंड कार्यफलन — आणि मिलिकनने h तसाच मोजला, जो आइनस्टाइनचे समीकरण खोडायला निघाला होता आणि शेवटी ते एक टक्क्यापर्यंत सिद्ध करून बसला. (चौथे उत्तर 2 eV ला मोठी अडचण मानते तर ती माफक आहे, दृश्य प्रकाशाच्या पल्ल्यात आरामात.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student draws the electron in a hydrogen atom as a small ball travelling round a circular orbit of radius 0.53 Å, as in Bohr's model. Explain what is right and what is wrong about this picture, and what replaced it.",
+      "choices": [
+        "The energy levels and the 0.53 Å scale are right; the orbit is wrong. Speaking of a path requires knowing position and momentum together at every instant, which the uncertainty principle forbids. What replaced it is the orbital: a wave function whose square gives the probability of finding the electron at each point, drawn as a spherical cloud densest at about 0.53 Å. The radius survives as the most probable distance rather than as a fixed one, and the quantised energies survive intact",
+        "The picture is entirely correct, since Bohr's model gives the hydrogen spectrum exactly right and a correct prediction settles the matter",
+        "The picture is entirely wrong, including the energy levels, which the modern theory abandoned along with the orbits",
+        "The orbit is right but the radius is wrong, since the electron is actually found at a fixed distance far smaller than 0.53 Å"
+      ],
+      "answerIndex": 0,
+      "solution": "Superseded models are rarely wrong about everything, and sorting the surviving parts from the discarded ones is most of what understanding a replacement means. What Bohr got right, and what nobody has taken back. First, that the atom's energies are quantised — the electron can hold certain definite energies and nothing in between, which is why the hydrogen spectrum is a set of sharp lines rather than a continuous smear. Second, that light is emitted when the electron moves between two of those levels, with the photon's energy exactly the difference. Third, the scale: 0.53 Å is still the right size for a hydrogen atom, and it still appears in the modern theory. What he got wrong is the orbit. An orbit is a trajectory — a statement of exactly where the electron is and how fast at every instant. Heisenberg's principle forbids that: Δx·Δp cannot be less than h/4π, and for an electron confined to a region the size of an atom the momentum uncertainty is comparable to the momentum itself. There is no path to draw, and the failure is not that we cannot measure it but that the quantity does not exist to be measured. What replaced it is the orbital. Schrödinger's equation gives a wave function ψ for the electron, and |ψ|² at each point is the probability density of finding it there. For the ground state of hydrogen that cloud is spherical, densest near the nucleus, and thinning outwards with no boundary at all — an atom has no edge, only a distance beyond which the electron is very unlikely to be. The 0.53 Å survives as the radius at which the electron is MOST LIKELY to be found, which is why the number is the same and its meaning is not. There is a lesson about theories here, and the second option gets it backwards. A correct prediction does not establish a model. Bohr's model predicts the hydrogen spectrum beautifully and fails completely for helium, the very next element, because its central assumption — one electron on a definite path — cannot be extended. A model that works for one case and nowhere else has usually captured something real inside a wrong frame, and the job is to find which part was the real one. Here it was quantisation, and it survived into a theory that abandoned everything else Bohr had assumed. (The third answer throws away the energy levels, which are the best-confirmed feature of atomic physics, and the fourth keeps the trajectory while adjusting a number, which fixes nothing at all.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक विद्यार्थी हाइड्रोजन परमाणु के इलेक्ट्रॉन को 0.53 Å त्रिज्या की वृत्तीय कक्षा पर चलती छोटी गेंद के रूप में खींचता है, जैसा बोर के निदर्श में है। समझाओ इस चित्र में सही क्या है और ग़लत क्या, और उसकी जगह क्या आया।",
+          "choices": [
+            "ऊर्जा-स्तर और 0.53 Å का पैमाना सही हैं; कक्षा ग़लत है। पथ की बात करने के लिए हर क्षण स्थिति और संवेग एक साथ जानने होंगे, जिसे अनिश्चितता सिद्धांत मना करता है। उसकी जगह आया कक्षक: वह तरंग-फलन जिसका वर्ग हर बिंदु पर इलेक्ट्रॉन मिलने की संभावना देता है, जो लगभग 0.53 Å पर सबसे घने गोलाकार बादल के रूप में खींचा जाता है। त्रिज्या नियत दूरी के बजाय सर्वाधिक संभावित दूरी के रूप में बची रहती है, और क्वांटित ऊर्जाएँ ज्यों की त्यों",
+            "चित्र पूरी तरह सही है, क्योंकि बोर का निदर्श हाइड्रोजन वर्णक्रम ठीक-ठीक देता है और सही भविष्यवाणी मामला निपटा देती है",
+            "चित्र पूरी तरह ग़लत है, ऊर्जा-स्तर भी, जिन्हें आधुनिक सिद्धांत ने कक्षाओं के साथ छोड़ दिया",
+            "कक्षा सही है पर त्रिज्या ग़लत, क्योंकि इलेक्ट्रॉन वस्तुतः 0.53 Å से कहीं छोटी नियत दूरी पर मिलता है"
+          ],
+          "solution": "जिन निदर्शों की जगह ले ली जाती है वे शायद ही हर बात पर ग़लत होते हैं, और बचे हिस्सों को फेंके हिस्सों से छाँटना ही किसी प्रतिस्थापन को समझने का अधिकांश अर्थ है। बोर ने क्या सही किया, और किसे किसी ने वापस नहीं लिया। पहला, कि परमाणु की ऊर्जाएँ क्वांटित हैं — इलेक्ट्रॉन कुछ निश्चित ऊर्जाएँ रख सकता है और बीच में कुछ नहीं, इसीलिए हाइड्रोजन वर्णक्रम सतत धब्बा नहीं बल्कि तीखी रेखाओं का समुच्चय है। दूसरा, कि प्रकाश तब उत्सर्जित होता है जब इलेक्ट्रॉन उन दो स्तरों के बीच जाए, और फ़ोटॉन की ऊर्जा ठीक अंतर हो। तीसरा, पैमाना: 0.53 Å आज भी हाइड्रोजन परमाणु का सही माप है, और वह आधुनिक सिद्धांत में भी आता है। ग़लत उसने कक्षा की। कक्षा एक प्रक्षेप-पथ है — यह कथन कि इलेक्ट्रॉन हर क्षण ठीक कहाँ है और कितना तेज़। हाइज़नबर्ग का सिद्धांत इसे मना करता है: Δx·Δp, h/4π से कम नहीं हो सकता, और परमाणु के आकार के क्षेत्र में बँधे इलेक्ट्रॉन के लिए संवेग की अनिश्चितता स्वयं संवेग के तुल्य है। खींचने को कोई पथ है ही नहीं, और विफलता यह नहीं कि हम उसे नाप नहीं सकते बल्कि यह कि नापने को वह राशि है ही नहीं। उसकी जगह आया कक्षक। श्रोडिंगर का समीकरण इलेक्ट्रॉन के लिए तरंग-फलन ψ देता है, और हर बिंदु पर |ψ|² उसे वहाँ मिलने का संभावना-घनत्व है। हाइड्रोजन की मूल अवस्था के लिए वह बादल गोलाकार है, नाभिक के पास सबसे घना, और बाहर की ओर पतला होता जाता है बिना किसी सीमा के — परमाणु का कोई किनारा नहीं, केवल वह दूरी जिसके आगे इलेक्ट्रॉन मिलना बहुत असंभाव्य है। 0.53 Å उस त्रिज्या के रूप में बचा रहता है जिस पर इलेक्ट्रॉन मिलना सर्वाधिक संभावित है, इसीलिए संख्या वही है और उसका अर्थ नहीं। यहाँ सिद्धांतों के बारे में एक सबक़ है, और दूसरा विकल्प उसे उलटा कर देता है। सही भविष्यवाणी निदर्श को स्थापित नहीं करती। बोर का निदर्श हाइड्रोजन वर्णक्रम सुंदर ढंग से बताता है और ठीक अगले तत्व हीलियम पर पूरी तरह विफल हो जाता है, क्योंकि उसकी केंद्रीय मान्यता — निश्चित पथ पर एक इलेक्ट्रॉन — बढ़ाई नहीं जा सकती। जो निदर्श एक स्थिति पर चले और कहीं नहीं, उसने प्रायः ग़लत ढाँचे के भीतर कुछ असली पकड़ा है, और काम यह खोजना है कि असली भाग कौन-सा था। यहाँ वह क्वांटीकरण था, और वह ऐसे सिद्धांत में बचा रहा जिसने बोर की मानी हर दूसरी बात छोड़ दी। (तीसरा उत्तर ऊर्जा-स्तर फेंक देता है, जो परमाणु भौतिकी की सबसे पुष्ट विशेषता हैं, और चौथा प्रक्षेप-पथ रखते हुए एक संख्या सुधारता है, जो कुछ भी ठीक नहीं करता।)"
+        },
+        "mr": {
+          "stem": "एक विद्यार्थी हायड्रोजन अणूतील इलेक्ट्रॉन 0.53 Å त्रिज्येच्या वर्तुळाकार कक्षेवर जाणारा लहान चेंडू म्हणून काढतो, जसा बोरच्या प्रतिरूपात आहे. या चित्रात बरोबर काय आणि चूक काय ते समजावा, आणि त्याची जागा कशाने घेतली ते सांगा.",
+          "choices": [
+            "ऊर्जा-पातळ्या आणि 0.53 Å चे माप बरोबर; कक्षा चूक. मार्गाबद्दल बोलायला प्रत्येक क्षणी स्थिती आणि संवेग एकत्र जाणावे लागतील, ज्याला अनिश्चितता तत्त्व मनाई करते. त्याची जागा घेतली कक्षकाने: ते तरंग-फलन ज्याचा वर्ग प्रत्येक बिंदूवर इलेक्ट्रॉन सापडण्याची संभाव्यता देतो, जो सुमारे 0.53 Å वर सर्वांत दाट अशा गोलाकार ढगाच्या रूपात काढला जातो. त्रिज्या ठरलेल्या अंतराऐवजी सर्वांत संभाव्य अंतर म्हणून टिकते, आणि पुंजित ऊर्जा जशाच्या तशा",
+            "चित्र पूर्णपणे बरोबर, कारण बोरचे प्रतिरूप हायड्रोजन वर्णपट नेमका बरोबर देते आणि बरोबर भाकीत प्रकरण निकाली काढते",
+            "चित्र पूर्णपणे चूक, ऊर्जा-पातळ्यांसह, ज्या आधुनिक सिद्धांताने कक्षांसोबत सोडून दिल्या",
+            "कक्षा बरोबर पण त्रिज्या चूक, कारण इलेक्ट्रॉन प्रत्यक्षात 0.53 Å हून कितीतरी लहान ठरलेल्या अंतरावर सापडतो"
+          ],
+          "solution": "ज्या प्रतिरूपांची जागा घेतली जाते ती क्वचितच प्रत्येक बाबतीत चुकीची असतात, आणि टिकलेले भाग टाकून दिलेल्यांपासून वेगळे करणे हाच एखादे प्रतिस्थापन समजण्याचा बहुतांश अर्थ. बोरने काय बरोबर केले, आणि कोणते कोणीही परत घेतले नाही. पहिले, की अणूच्या ऊर्जा पुंजित आहेत — इलेक्ट्रॉन काही निश्चित ऊर्जा ठेवू शकतो आणि मधले काहीही नाही, म्हणूनच हायड्रोजन वर्णपट सलग डाग नव्हे तर तीक्ष्ण रेषांचा संच. दुसरे, की प्रकाश तेव्हा उत्सर्जित होतो जेव्हा इलेक्ट्रॉन त्या दोन पातळ्यांमध्ये जातो, आणि फोटॉनची ऊर्जा नेमकी फरक. तिसरे, माप: 0.53 Å आजही हायड्रोजन अणूचे बरोबर माप, आणि ते आधुनिक सिद्धांतातही येते. चूक त्याने कक्षेची केली. कक्षा हा प्रक्षेप-मार्ग — हे विधान की इलेक्ट्रॉन प्रत्येक क्षणी नेमका कुठे आणि किती वेगात. हायझेनबर्गचे तत्त्व याला मनाई करते: Δx·Δp हे h/4π हून कमी असू शकत नाही, आणि अणूच्या आकाराच्या प्रदेशात बांधलेल्या इलेक्ट्रॉनसाठी संवेगाची अनिश्चितता स्वतः संवेगाइतकीच. काढायला कोणताही मार्ग नाहीच, आणि अपयश हे नाही की आपण तो मोजू शकत नाही तर हे की मोजायला ती राशीच नाही. त्याची जागा घेतली कक्षकाने. श्रोडिंगरचे समीकरण इलेक्ट्रॉनसाठी तरंग-फलन ψ देते, आणि प्रत्येक बिंदूवर |ψ|² ही तो तिथे सापडण्याची संभाव्यता-घनता. हायड्रोजनच्या मूळ अवस्थेसाठी तो ढग गोलाकार, केंद्रकाजवळ सर्वांत दाट, आणि बाहेरच्या दिशेने विरळ होत जाणारा कोणत्याही सीमेशिवाय — अणूला कडा नाही, केवळ ते अंतर ज्यापुढे इलेक्ट्रॉन सापडणे फार असंभाव्य. 0.53 Å त्या त्रिज्येच्या रूपात टिकते जिच्यावर इलेक्ट्रॉन सापडणे सर्वांत संभाव्य, म्हणूनच संख्या तीच आणि तिचा अर्थ नाही. इथे सिद्धांतांबद्दल एक धडा आहे, आणि दुसरा पर्याय तो उलटा करतो. बरोबर भाकीत प्रतिरूप प्रस्थापित करत नाही. बोरचे प्रतिरूप हायड्रोजन वर्णपट सुरेखपणे सांगते आणि अगदी पुढच्या मूलद्रव्यावर, हेलियमवर, पूर्णपणे अपयशी ठरते, कारण त्याचे केंद्रीय गृहीतक — निश्चित मार्गावरचा एक इलेक्ट्रॉन — वाढवता येत नाही. जे प्रतिरूप एका स्थितीत चालते आणि दुसरीकडे कुठेही नाही, त्याने बहुधा चुकीच्या चौकटीत काहीतरी खरे पकडले आहे, आणि काम हे शोधणे की खरा भाग कोणता होता. इथे तो पुंजीकरण होता, आणि तो अशा सिद्धांतात टिकला ज्याने बोरने गृहीत धरलेले बाकी सर्व सोडून दिले. (तिसरे उत्तर ऊर्जा-पातळ्या फेकून देते, ज्या अणुभौतिकीचे सर्वांत सिद्ध वैशिष्ट्य, आणि चौथे प्रक्षेप-मार्ग ठेवून एक संख्या दुरुस्त करते, जे काहीही ठीक करत नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The maximum number of electrons a shell can hold is 2n². How many can the third shell hold?",
+      "choices": [
+        "32",
+        "18",
+        "6",
+        "9"
+      ],
+      "answerIndex": 1,
+      "solution": "2n² with n = 3 gives 2 × 9 = 18. The formula is not arbitrary: it counts the permitted combinations of the four quantum numbers within that shell. (6 forgets to square n and 32 uses n = 4.)",
+      "checkExpr": "2*3^2",
+      "translations": {
+        "hi": {
+          "stem": "किसी कोश में अधिकतम इलेक्ट्रॉनों की संख्या 2n² है। तीसरा कोश कितने रख सकता है?",
+          "choices": [
+            "32",
+            "18",
+            "6",
+            "9"
+          ],
+          "solution": "n = 3 पर 2n² देता है 2 × 9 = 18. सूत्र मनमाना नहीं: वह उस कोश के भीतर चार क्वांटम संख्याओं के अनुमत संयोजन गिनता है। (6 n का वर्ग करना भूलता है और 32 n = 4 लगाता है।)"
+        },
+        "mr": {
+          "stem": "एका कवचात कमाल इलेक्ट्रॉनांची संख्या 2n² आहे. तिसरे कवच किती ठेवू शकते?",
+          "choices": [
+            "32",
+            "18",
+            "6",
+            "9"
+          ],
+          "solution": "n = 3 वर 2n² देते 2 × 9 = 18. सूत्र मनमानी नाही: ते त्या कवचातील चार पुंज संख्यांची परवानगी असलेली संयोजने मोजते. (6 n चा वर्ग करायचे विसरते आणि 32 हे n = 4 वापरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A subshell has orbital quantum number l = 2. The number of orbitals in it is 2l + 1. How many orbitals are there?",
+      "choices": [
+        "5",
+        "3",
+        "10",
+        "7"
+      ],
+      "answerIndex": 0,
+      "solution": "2 × 2 + 1 = 5, which is the d subshell — five orbitals, each able to hold two electrons, so ten in all. (3 is the p subshell with l = 1, and 10 is the electron capacity rather than the orbital count.)",
+      "checkExpr": "2*2+1",
+      "translations": {
+        "hi": {
+          "stem": "किसी उपकोश की कक्षक क्वांटम संख्या l = 2 है। उसमें कक्षकों की संख्या 2l + 1 है। कितने कक्षक हैं?",
+          "choices": [
+            "5",
+            "3",
+            "10",
+            "7"
+          ],
+          "solution": "2 × 2 + 1 = 5, जो d उपकोश है — पाँच कक्षक, हर एक दो इलेक्ट्रॉन रख सकने वाला, अतः कुल दस। (3 l = 1 वाला p उपकोश है, और 10 कक्षकों की गिनती नहीं बल्कि इलेक्ट्रॉन-क्षमता है।)"
+        },
+        "mr": {
+          "stem": "एका उपकवचाची कक्षक पुंज संख्या l = 2 आहे. त्यात कक्षकांची संख्या 2l + 1 आहे. किती कक्षके आहेत?",
+          "choices": [
+            "5",
+            "3",
+            "10",
+            "7"
+          ],
+          "solution": "2 × 2 + 1 = 5, जे d उपकवच — पाच कक्षके, प्रत्येक दोन इलेक्ट्रॉन ठेवू शकणारे, म्हणून एकूण दहा. (3 हे l = 1 चे p उपकवच, आणि 10 ही कक्षकांची मोजणी नव्हे तर इलेक्ट्रॉन-क्षमता.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "How many electrons can a d subshell hold in total?",
+      "choices": [
+        "10",
+        "5",
+        "6",
+        "14"
+      ],
+      "answerIndex": 0,
+      "solution": "A d subshell has l = 2, so 2l + 1 = 5 orbitals, and Pauli's principle allows two electrons per orbital: 2 × 5 = 10. That ten is why the transition-metal block is ten columns wide. (6 is the p subshell and 14 the f.)",
+      "checkExpr": "2*(2*2+1)",
+      "translations": {
+        "hi": {
+          "stem": "एक d उपकोश कुल कितने इलेक्ट्रॉन रख सकता है?",
+          "choices": [
+            "10",
+            "5",
+            "6",
+            "14"
+          ],
+          "solution": "d उपकोश का l = 2 है, अतः 2l + 1 = 5 कक्षक, और पॉली का सिद्धांत प्रति कक्षक दो इलेक्ट्रॉन देता है: 2 × 5 = 10. वही दस है जिससे संक्रमण-धातु खंड दस स्तंभ चौड़ा है। (6 p उपकोश है और 14 f.)"
+        },
+        "mr": {
+          "stem": "एक d उपकवच एकूण किती इलेक्ट्रॉन ठेवू शकते?",
+          "choices": [
+            "10",
+            "5",
+            "6",
+            "14"
+          ],
+          "solution": "d उपकवचाचा l = 2, म्हणून 2l + 1 = 5 कक्षके, आणि पौलीचे तत्त्व प्रति कक्षक दोन इलेक्ट्रॉन देते: 2 × 5 = 10. तेच दहा ज्यामुळे संक्रमण-धातू गट दहा स्तंभ रुंद. (6 हे p उपकवच आणि 14 हे f.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "In Bohr's model the energy of the nth level in hydrogen is −13.6/n² eV. What is the magnitude of the energy of the second level, in eV?",
+      "choices": [
+        "27.2",
+        "1.7",
+        "3.4",
+        "6.8"
+      ],
+      "answerIndex": 2,
+      "solution": "13.6/4 = 3.4 eV. The levels crowd together as n rises, converging on zero at infinity — which is the ionisation limit, and 13.6 eV is therefore exactly the energy needed to strip the electron from the ground state. (6.8 divides by 2 rather than by 2².)",
+      "checkExpr": "13.6/2^2",
+      "translations": {
+        "hi": {
+          "stem": "बोर के निदर्श में हाइड्रोजन के nवें स्तर की ऊर्जा −13.6/n² eV है। दूसरे स्तर की ऊर्जा का परिमाण eV में क्या है?",
+          "choices": [
+            "27.2",
+            "1.7",
+            "3.4",
+            "6.8"
+          ],
+          "solution": "13.6/4 = 3.4 eV. n बढ़ने पर स्तर पास-पास सिमटते हैं, अनंत पर शून्य की ओर अभिसरित — वही आयनन सीमा है, और इसलिए 13.6 eV ठीक वह ऊर्जा है जो मूल अवस्था से इलेक्ट्रॉन छीनने को चाहिए। (6.8 2² के बजाय 2 से भाग देता है।)"
+        },
+        "mr": {
+          "stem": "बोरच्या प्रतिरूपात हायड्रोजनच्या nव्या पातळीची ऊर्जा −13.6/n² eV आहे. दुसऱ्या पातळीच्या ऊर्जेचे परिमाण eV मध्ये किती?",
+          "choices": [
+            "27.2",
+            "1.7",
+            "3.4",
+            "6.8"
+          ],
+          "solution": "13.6/4 = 3.4 eV. n वाढताना पातळ्या जवळजवळ येतात, अनंतावर शून्याकडे अभिसरत — तीच आयनीकरण मर्यादा, आणि म्हणून 13.6 eV ही नेमकी ती ऊर्जा जी मूळ अवस्थेतून इलेक्ट्रॉन हिरावायला लागते. (6.8 हे 2² ऐवजी 2 ने भागते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "In Bohr's model the radius of the nth orbit is 0.529n² Å. What is the radius of the third orbit, in Å?",
+      "choices": [
+        "15.87",
+        "4.761",
+        "1.587",
+        "0.058778"
+      ],
+      "answerIndex": 1,
+      "solution": "0.529 × 9 = 4.761 Å. The orbits spread out as n², so the atom grows rapidly in excited states — an electron in the n = 10 level sits a hundred times further out than in the ground state. (1.587 multiplies by n instead of n².)",
+      "checkExpr": "0.529*3^2",
+      "translations": {
+        "hi": {
+          "stem": "बोर के निदर्श में nवीं कक्षा की त्रिज्या 0.529n² Å है। तीसरी कक्षा की त्रिज्या Å में क्या है?",
+          "choices": [
+            "15.87",
+            "4.761",
+            "1.587",
+            "0.058778"
+          ],
+          "solution": "0.529 × 9 = 4.761 Å. कक्षाएँ n² के अनुसार फैलती हैं, अतः उत्तेजित अवस्थाओं में परमाणु तेज़ी से बड़ा होता है — n = 10 स्तर का इलेक्ट्रॉन मूल अवस्था से सौ गुना बाहर बैठता है। (1.587 n² के बजाय n से गुणा करता है।)"
+        },
+        "mr": {
+          "stem": "बोरच्या प्रतिरूपात nव्या कक्षेची त्रिज्या 0.529n² Å आहे. तिसऱ्या कक्षेची त्रिज्या Å मध्ये किती?",
+          "choices": [
+            "15.87",
+            "4.761",
+            "1.587",
+            "0.058778"
+          ],
+          "solution": "0.529 × 9 = 4.761 Å. कक्षा n² नुसार पसरतात, म्हणून उत्तेजित अवस्थांत अणू झपाट्याने मोठा होतो — n = 10 पातळीचा इलेक्ट्रॉन मूळ अवस्थेहून शंभरपट बाहेर बसतो. (1.587 हे n² ऐवजी n ने गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A photon's energy in electronvolts is 1240 divided by its wavelength in nanometres. What is the energy of a 620 nm photon, in eV?",
+      "choices": [
+        "0.5",
+        "2",
+        "1240",
+        "620"
+      ],
+      "answerIndex": 1,
+      "solution": "1240/620 = 2 eV, an orange-red photon. The inverse relation means blue light carries roughly twice the energy per photon of red, which is the whole reason ultraviolet damages skin and infrared merely warms it. (0.5 inverts the ratio.)",
+      "checkExpr": "1240/620",
+      "translations": {
+        "hi": {
+          "stem": "किसी फ़ोटॉन की इलेक्ट्रॉनवोल्ट में ऊर्जा 1240 बटा उसका नैनोमीटर में तरंगदैर्घ्य है। 620 nm फ़ोटॉन की ऊर्जा eV में क्या है?",
+          "choices": [
+            "0.5",
+            "2",
+            "1240",
+            "620"
+          ],
+          "solution": "1240/620 = 2 eV, नारंगी-लाल फ़ोटॉन। व्युत्क्रम संबंध का अर्थ है कि नीला प्रकाश प्रति फ़ोटॉन लाल से मोटे तौर पर दुगुनी ऊर्जा ढोता है, और पराबैंगनी त्वचा को नुक़सान पहुँचाता तथा अवरक्त बस गरमाता है, इसका पूरा कारण यही है। (0.5 अनुपात उलट देता है।)"
+        },
+        "mr": {
+          "stem": "एका फोटॉनची इलेक्ट्रॉनव्होल्टमधील ऊर्जा 1240 भागिले त्याची नॅनोमीटरमधील तरंगलांबी. 620 nm फोटॉनची ऊर्जा eV मध्ये किती?",
+          "choices": [
+            "0.5",
+            "2",
+            "1240",
+            "620"
+          ],
+          "solution": "1240/620 = 2 eV, नारिंगी-लाल फोटॉन. व्यस्त संबंधाचा अर्थ असा की निळा प्रकाश प्रति फोटॉन लालच्या ढोबळमानाने दुप्पट ऊर्जा वाहतो, आणि अतिनील त्वचेला हानी पोहोचवतो तर अवरक्त फक्त उबदार करतो, याचे अख्खे कारण हेच. (0.5 गुणोत्तर उलटे करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A metal has a work function of 2 eV and is lit by photons of energy 5 eV. What is the maximum kinetic energy of the ejected electrons, in eV?",
+      "choices": [
+        "3",
+        "2.5",
+        "7",
+        "10"
+      ],
+      "answerIndex": 0,
+      "solution": "KE_max = hν − φ = 5 − 2 = 3 eV. It is a maximum because electrons deeper in the metal lose more than the minimum on their way out. Making the light brighter increases the number of such electrons and leaves this figure untouched. (7 adds the work function instead of subtracting it.)",
+      "checkExpr": "5-2",
+      "translations": {
+        "hi": {
+          "stem": "किसी धातु का कार्य-फलन 2 eV है और उस पर 5 eV ऊर्जा के फ़ोटॉन डाले जाते हैं। निकले इलेक्ट्रॉनों की अधिकतम गतिज ऊर्जा eV में क्या है?",
+          "choices": [
+            "3",
+            "2.5",
+            "7",
+            "10"
+          ],
+          "solution": "KE_अधिकतम = hν − φ = 5 − 2 = 3 eV. यह अधिकतम इसलिए है कि धातु के भीतर गहरे इलेक्ट्रॉन बाहर आते हुए न्यूनतम से अधिक खोते हैं। प्रकाश तेज़ करने से ऐसे इलेक्ट्रॉनों की संख्या बढ़ती है और यह आँकड़ा अछूता रहता है। (7 कार्य-फलन घटाने के बजाय जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "एका धातूचे कार्यफलन 2 eV आहे आणि त्यावर 5 eV ऊर्जेचे फोटॉन टाकले जातात. बाहेर पडलेल्या इलेक्ट्रॉनांची कमाल गतिज ऊर्जा eV मध्ये किती?",
+          "choices": [
+            "3",
+            "2.5",
+            "7",
+            "10"
+          ],
+          "solution": "KE_कमाल = hν − φ = 5 − 2 = 3 eV. हे कमाल यासाठी की धातूत खोल असलेले इलेक्ट्रॉन बाहेर येताना किमानाहून अधिक गमावतात. प्रकाश तेजस्वी केल्याने अशा इलेक्ट्रॉनांची संख्या वाढते आणि हा आकडा अस्पर्श राहतो. (7 कार्यफलन वजा करण्याऐवजी जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A metal's work function is 2 eV. Using E(eV) = 1240/λ(nm), what is its threshold wavelength, in nm?",
+      "choices": [
+        "620",
+        "310",
+        "2480",
+        "1240"
+      ],
+      "answerIndex": 0,
+      "solution": "λ_threshold = 1240/2 = 620 nm, in the orange. Any light of shorter wavelength than this ejects electrons and any of longer wavelength does not, however intense — so this metal responds to blue, green and yellow but is blind to deep red and to all infrared. Note the direction: a LOWER work function means a LONGER threshold wavelength and a metal that is easier to trigger. (2480 multiplies and 310 halves the answer.)",
+      "checkExpr": "1240/2",
+      "translations": {
+        "hi": {
+          "stem": "किसी धातु का कार्य-फलन 2 eV है। E(eV) = 1240/λ(nm) लगाते हुए, उसका देहली तरंगदैर्घ्य nm में क्या है?",
+          "choices": [
+            "620",
+            "310",
+            "2480",
+            "1240"
+          ],
+          "solution": "λ_देहली = 1240/2 = 620 nm, नारंगी में। इससे छोटे तरंगदैर्घ्य का कोई भी प्रकाश इलेक्ट्रॉन निकालता है और बड़े तरंगदैर्घ्य का कोई नहीं, चाहे कितना ही तीव्र हो — अतः यह धातु नीले, हरे और पीले पर प्रतिक्रिया देती है पर गहरे लाल तथा सारे अवरक्त के प्रति अंधी है। दिशा पर ध्यान दो: कम कार्य-फलन का अर्थ है लंबा देहली तरंगदैर्घ्य और ऐसी धातु जिसे चलाना आसान है। (2480 गुणा करता है और 310 उत्तर आधा कर देता है।)"
+        },
+        "mr": {
+          "stem": "एका धातूचे कार्यफलन 2 eV आहे. E(eV) = 1240/λ(nm) वापरून, त्याची उंबरठा तरंगलांबी nm मध्ये किती?",
+          "choices": [
+            "620",
+            "310",
+            "2480",
+            "1240"
+          ],
+          "solution": "λ_उंबरठा = 1240/2 = 620 nm, नारिंगीत. याहून लहान तरंगलांबीचा कोणताही प्रकाश इलेक्ट्रॉन काढतो आणि मोठ्या तरंगलांबीचा कोणीही नाही, तो कितीही तीव्र असो — म्हणून ही धातू निळ्या, हिरव्या आणि पिवळ्याला प्रतिसाद देते पण गडद लाल आणि सर्व अवरक्ताबाबत आंधळी. दिशेकडे लक्ष द्या: कमी कार्यफलन म्हणजे लांब उंबरठा तरंगलांबी आणि चालवायला सोपी धातू. (2480 गुणते आणि 310 उत्तर निम्मे करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The number of orbitals in a shell is n². How many orbitals are there in the shell with n = 4?",
+      "choices": [
+        "8",
+        "4",
+        "32",
+        "16"
+      ],
+      "answerIndex": 3,
+      "solution": "n² = 16 orbitals: one 4s, three 4p, five 4d and seven 4f, and 1 + 3 + 5 + 7 = 16. Each holds two electrons, giving the 2n² = 32 that the shell can accommodate. Notice how the two formulae are related — the electron capacity is simply twice the orbital count, and the factor of two is Pauli's principle and nothing else. (32 quotes the electron capacity as though the question had asked for it.)",
+      "checkExpr": "4^2",
+      "translations": {
+        "hi": {
+          "stem": "किसी कोश में कक्षकों की संख्या n² है। n = 4 वाले कोश में कितने कक्षक हैं?",
+          "choices": [
+            "8",
+            "4",
+            "32",
+            "16"
+          ],
+          "solution": "n² = 16 कक्षक: एक 4s, तीन 4p, पाँच 4d और सात 4f, और 1 + 3 + 5 + 7 = 16. हर एक दो इलेक्ट्रॉन रखता है, जिससे कोश की 2n² = 32 क्षमता बनती है। ध्यान दो दोनों सूत्र कैसे जुड़े हैं — इलेक्ट्रॉन-क्षमता बस कक्षकों की गिनती की दुगुनी है, और दो का गुणक पॉली का सिद्धांत है और कुछ नहीं। (32 इलेक्ट्रॉन-क्षमता बता देता है मानो प्रश्न ने वही माँगी हो।)"
+        },
+        "mr": {
+          "stem": "एका कवचात कक्षकांची संख्या n² आहे. n = 4 असलेल्या कवचात किती कक्षके आहेत?",
+          "choices": [
+            "8",
+            "4",
+            "32",
+            "16"
+          ],
+          "solution": "n² = 16 कक्षके: एक 4s, तीन 4p, पाच 4d आणि सात 4f, आणि 1 + 3 + 5 + 7 = 16. प्रत्येक दोन इलेक्ट्रॉन ठेवते, ज्यातून कवचाची 2n² = 32 क्षमता बनते. लक्षात घ्या दोन्ही सूत्रे कशी जोडलेली — इलेक्ट्रॉन-क्षमता फक्त कक्षकांच्या मोजणीच्या दुप्पट, आणि दोनचा गुणक म्हणजे पौलीचे तत्त्व आणि दुसरे काहीही नाही. (32 इलेक्ट्रॉन-क्षमता सांगते जणू प्रश्नाने तीच मागितली असावी.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "An atom in its ground state has the configuration 1s²2s²2p⁶3s²3p⁶4s²3d¹⁰. What is its atomic number?",
+      "choices": [
+        "26",
+        "30",
+        "28",
+        "36"
+      ],
+      "answerIndex": 1,
+      "solution": "Adding the superscripts: 2 + 2 + 6 + 2 + 6 + 2 + 10 = 30, which is zinc. Two things in the configuration are worth reading rather than just counting. First, 4s appears before 3d, which looks wrong until the Aufbau rule is recalled: subshells fill in order of n + l, and 4 + 0 = 4 beats 3 + 2 = 5. The shell number alone does not decide. Second, the d subshell is full at ten, which is why zinc closes the first transition series and why it behaves so much less like a transition metal than the elements before it — a filled d shell is stable and largely uninvolved in bonding, so zinc shows essentially one oxidation state where iron and copper show several. There is a further subtlety worth knowing. Once the 3d subshell begins to fill, its energy drops below that of 4s, so a zinc ION loses its 4s electrons first and not its 3d ones: Zn²⁺ is 3d¹⁰ and not 4s²3d⁸. The filling order and the removal order are different, and confusing them is the commonest error in transition-metal chemistry. (28 and 26 count nickel and iron, and 36 is krypton's total.)",
+      "checkExpr": "2+2+6+2+6+2+10",
+      "translations": {
+        "hi": {
+          "stem": "मूल अवस्था में किसी परमाणु का विन्यास 1s²2s²2p⁶3s²3p⁶4s²3d¹⁰ है। उसका परमाणु क्रमांक क्या है?",
+          "choices": [
+            "26",
+            "30",
+            "28",
+            "36"
+          ],
+          "solution": "अधोलेख जोड़ो: 2 + 2 + 6 + 2 + 6 + 2 + 10 = 30, जो ज़िंक है। विन्यास में दो बातें केवल गिनने के बजाय पढ़ने योग्य हैं। पहली, 4s, 3d से पहले आता है, जो ग़लत दिखता है जब तक ऑफ़बाउ नियम याद न आए: उपकोश n + l के क्रम में भरते हैं, और 4 + 0 = 4, 3 + 2 = 5 को हरा देता है। अकेला कोश-अंक तय नहीं करता। दूसरी, d उपकोश दस पर भरा है, इसीलिए ज़िंक पहली संक्रमण श्रेणी बंद करता है और इसीलिए वह अपने से पहले के तत्वों की तुलना में संक्रमण धातु जैसा कहीं कम व्यवहार करता है — भरा d कोश स्थिर है और आबंधन में अधिकतर अनुपस्थित, अतः ज़िंक मूलतः एक ही ऑक्सीकरण अवस्था दिखाता है जहाँ लोहा और कॉपर कई दिखाते हैं। एक और सूक्ष्मता जानने योग्य है। 3d उपकोश भरना शुरू होते ही उसकी ऊर्जा 4s से नीचे गिर जाती है, अतः ज़िंक का आयन पहले अपने 4s इलेक्ट्रॉन खोता है, 3d नहीं: Zn²⁺ 3d¹⁰ है, 4s²3d⁸ नहीं। भरण-क्रम और निष्कासन-क्रम भिन्न हैं, और उन्हें गड्डमड्ड करना संक्रमण-धातु रसायन की सबसे आम भूल है। (28 और 26 निकल तथा लोहा गिनते हैं, और 36 क्रिप्टॉन का कुल है।)"
+        },
+        "mr": {
+          "stem": "मूळ अवस्थेतील एका अणूचा विन्यास 1s²2s²2p⁶3s²3p⁶4s²3d¹⁰ आहे. त्याचा अणुक्रमांक किती?",
+          "choices": [
+            "26",
+            "30",
+            "28",
+            "36"
+          ],
+          "solution": "अधोलेख जोडा: 2 + 2 + 6 + 2 + 6 + 2 + 10 = 30, जे जस्त. विन्यासातील दोन गोष्टी केवळ मोजण्याऐवजी वाचण्याजोग्या. पहिली, 4s हे 3d च्या आधी येते, जे चुकीचे दिसते जोवर ऑफबाऊ नियम आठवत नाही: उपकवचे n + l च्या क्रमाने भरतात, आणि 4 + 0 = 4 हे 3 + 2 = 5 ला हरवते. एकटा कवच-अंक ठरवत नाही. दुसरी, d उपकवच दहावर भरलेले, म्हणूनच जस्त पहिली संक्रमण मालिका बंद करते आणि म्हणूनच ते त्याच्या आधीच्या मूलद्रव्यांच्या तुलनेत संक्रमण धातूसारखे कितीतरी कमी वागते — भरलेले d कवच स्थिर आणि बंधनात बहुतांश अनुपस्थित, म्हणून जस्त मुळात एकच ऑक्सिडीकरण अवस्था दाखवते जिथे लोखंड आणि तांबे अनेक दाखवतात. आणखी एक सूक्ष्मता जाणण्याजोगी. 3d उपकवच भरणे सुरू होताच त्याची ऊर्जा 4s हून खाली येते, म्हणून जस्ताचा आयन आधी आपले 4s इलेक्ट्रॉन गमावतो, 3d नव्हे: Zn²⁺ हे 3d¹⁰ आहे, 4s²3d⁸ नव्हे. भरण-क्रम आणि काढून टाकण्याचा क्रम वेगळे, आणि त्यांची गल्लत ही संक्रमण-धातू रसायनातील सर्वांत नेहमीची चूक. (28 आणि 26 निकेल व लोखंड मोजतात, आणि 36 हे क्रिप्टॉनचे एकूण.)"
+        }
+      }
+    }
+  ]
+}

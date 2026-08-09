@@ -1,0 +1,1003 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 11,
+  "chapter": "Chapter 13 — Oscillations",
+  "name": "Oscillations",
+  "slug": "physics-11-oscillations",
+  "summary": "One equation turns up wherever something is pulled back in proportion to how far it has strayed — a mass on a spring, a pendulum, an atom in a crystal, a bridge in the wind. A motion whose period does not care how big the swing is, an energy that pours back and forth between two forms twice a cycle, a friction that steals the amplitude and leaves the rhythm, and a push at just the right moment that can bring a bridge down.",
+  "position": 13,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "दोलन",
+      "summary": "एक ही समीकरण वहाँ-वहाँ आ खड़ा होता है जहाँ किसी चीज़ को उतना ही पीछे खींचा जाता है जितनी वह भटकी हो — स्प्रिंग पर द्रव्यमान, लोलक, क्रिस्टल में परमाणु, हवा में पुल। वह गति जिसका आवर्तकाल इसकी परवाह नहीं करता कि झूला कितना बड़ा है, वह ऊर्जा जो चक्र में दो बार दो रूपों के बीच उड़ेली जाती है, वह घर्षण जो आयाम चुरा लेता और लय छोड़ जाता है, और ठीक सही क्षण पर दिया वह धक्का जो पुल गिरा सकता है।"
+    },
+    "mr": {
+      "name": "आंदोलने",
+      "summary": "एकच समीकरण तिथे तिथे उभे राहते जिथे एखाद्या गोष्टीला ती जितकी भरकटली तितकीच मागे ओढले जाते — स्प्रिंगवरचे वस्तुमान, लंबक, स्फटिकातील अणू, वाऱ्यातील पूल. ती गती जिच्या आवर्तकालाला झोका किती मोठा याची पर्वा नाही, ती ऊर्जा जी चक्रात दोनदा दोन रूपांमध्ये ओतली जाते, ते घर्षण जे आयाम चोरते आणि लय ठेवते, आणि नेमक्या योग्य क्षणी दिलेला तो रेटा जो पूल पाडू शकतो."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "The restoring force is proportional to the displacement and always points back towards the middle, so the acceleration is −ω²x and the motion traces a sine curve in time. Which motion is this?",
+      "choices": [
+        "The phase of an oscillation",
+        "Simple harmonic motion",
+        "The energy exchange in oscillation",
+        "Isochronism of the swing"
+      ],
+      "answerIndex": 1,
+      "solution": "Simple harmonic motion is the motion that follows from a restoring force proportional to displacement, giving a = −ω²x and a displacement that varies sinusoidally with time. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रत्यानयन बल विस्थापन का समानुपाती है और सदा बीच की ओर लौटता है, अतः त्वरण −ω²x है और गति समय में ज्या-वक्र खींचती है। यह कौन-सी गति है?",
+          "choices": [
+            "दोलन की कला",
+            "सरल आवर्त गति",
+            "दोलन में ऊर्जा-विनिमय",
+            "झूले की समकालिकता"
+          ],
+          "solution": "सरल आवर्त गति वह गति है जो विस्थापन के समानुपाती प्रत्यानयन बल से निकलती है, जिससे a = −ω²x मिलता है और विस्थापन समय के साथ ज्यावक्रीय रूप से बदलता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "पुनःस्थापक बल विस्थापनाच्या समानुपाती आणि नेहमी मध्याकडे परतणारे, म्हणून त्वरण −ω²x आणि गती काळात साइन-वक्र काढते. ही कोणती गती?",
+          "choices": [
+            "आंदोलनाची कला",
+            "सरळ आवर्ती गती",
+            "आंदोलनातील ऊर्जा-देवाणघेवाण",
+            "झोक्याची समकालिकता"
+          ],
+          "solution": "सरळ आवर्ती गती ही ती गती जी विस्थापनाच्या समानुपाती पुनःस्थापक बलातून निघते, ज्यातून a = −ω²x मिळते आणि विस्थापन काळासोबत साइनवक्रीय बदलते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Isochronism of the swing is correct?",
+      "choices": [
+        "Resonance is the large response of an oscillator to a driving force whose frequency matches its own natural frequency, so a small repeated push can build an enormous amplitude.",
+        "Simple harmonic motion is the motion that follows from a restoring force proportional to displacement, giving a = −ω²x and a displacement that varies sinusoidally with time.",
+        "For small swings the period of an oscillator does not depend on the amplitude, so a dying pendulum keeps perfect time even as its swing shrinks to nothing.",
+        "In an undamped oscillator the total energy ½kA² is constant, shifting entirely into kinetic form at the equilibrium point and entirely into potential form at the extremes."
+      ],
+      "answerIndex": 2,
+      "solution": "For small swings the period of an oscillator does not depend on the amplitude, so a dying pendulum keeps perfect time even as its swing shrinks to nothing. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "झूले की समकालिकता के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "अनुनाद दोलक की उस चालक बल के प्रति बड़ी प्रतिक्रिया है जिसकी आवृत्ति उसकी अपनी प्राकृतिक आवृत्ति से मेल खाती है, अतः छोटा दोहराया धक्का विशाल आयाम खड़ा कर सकता है।",
+            "सरल आवर्त गति वह गति है जो विस्थापन के समानुपाती प्रत्यानयन बल से निकलती है, जिससे a = −ω²x मिलता है और विस्थापन समय के साथ ज्यावक्रीय रूप से बदलता है।",
+            "छोटे झूलों के लिए दोलक का आवर्तकाल आयाम पर निर्भर नहीं, अतः मंद पड़ता लोलक तब भी ठीक समय रखता है जब उसका झूला घटकर शून्य हो रहा हो।",
+            "अवमंदन-रहित दोलक में कुल ऊर्जा ½kA² अचर है, जो संतुलन-बिंदु पर पूरी तरह गतिज रूप में और छोरों पर पूरी तरह स्थितिज रूप में बदल जाती है।"
+          ],
+          "solution": "छोटे झूलों के लिए दोलक का आवर्तकाल आयाम पर निर्भर नहीं, अतः मंद पड़ता लोलक तब भी ठीक समय रखता है जब उसका झूला घटकर शून्य हो रहा हो। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "झोक्याची समकालिकता विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "अनुनाद म्हणजे दोलकाची त्या चालक बलाला मोठी प्रतिक्रिया ज्याची वारंवारता त्याच्या स्वतःच्या नैसर्गिक वारंवारतेशी जुळते, म्हणून लहान पुनःपुन्हा दिलेला रेटा प्रचंड आयाम उभा करू शकतो.",
+            "सरळ आवर्ती गती ही ती गती जी विस्थापनाच्या समानुपाती पुनःस्थापक बलातून निघते, ज्यातून a = −ω²x मिळते आणि विस्थापन काळासोबत साइनवक्रीय बदलते.",
+            "लहान झोक्यांसाठी दोलकाचा आवर्तकाल आयामावर अवलंबून नाही, म्हणून विझत जाणारा लंबक त्याचा झोका शून्यावर येत असतानाही अचूक वेळ राखतो.",
+            "अवमंदनविरहित दोलकात एकूण ऊर्जा ½kA² अचल असते, जी समतोल बिंदूवर पूर्णपणे गतिज रूपात आणि टोकांवर पूर्णपणे स्थितिज रूपात बदलते."
+          ],
+          "solution": "लहान झोक्यांसाठी दोलकाचा आवर्तकाल आयामावर अवलंबून नाही, म्हणून विझत जाणारा लंबक त्याचा झोका शून्यावर येत असतानाही अचूक वेळ राखतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"Because the energy goes as the square of the amplitude, doubling the swing quadruples the energy, and each form completes two full cycles for every one of the displacement.\" — which of these is this about?",
+      "choices": [
+        "Isochronism of the swing",
+        "Damping",
+        "The energy exchange in oscillation",
+        "Simple harmonic motion"
+      ],
+      "answerIndex": 2,
+      "solution": "In an undamped oscillator the total energy ½kA² is constant, shifting entirely into kinetic form at the equilibrium point and entirely into potential form at the extremes. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"चूँकि ऊर्जा आयाम के वर्ग के अनुसार चलती है, झूला दोगुना करने पर ऊर्जा चौगुनी हो जाती है, और विस्थापन के हर एक चक्र पर हर रूप दो पूरे चक्र पूरे करता है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "झूले की समकालिकता",
+            "अवमंदन",
+            "दोलन में ऊर्जा-विनिमय",
+            "सरल आवर्त गति"
+          ],
+          "solution": "अवमंदन-रहित दोलक में कुल ऊर्जा ½kA² अचर है, जो संतुलन-बिंदु पर पूरी तरह गतिज रूप में और छोरों पर पूरी तरह स्थितिज रूप में बदल जाती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ऊर्जा आयामाच्या वर्गानुसार जात असल्याने झोका दुप्पट केल्यास ऊर्जा चौपट होते, आणि विस्थापनाच्या प्रत्येक एका चक्रावर प्रत्येक रूप दोन पूर्ण चक्रे पूर्ण करते.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "झोक्याची समकालिकता",
+            "अवमंदन",
+            "आंदोलनातील ऊर्जा-देवाणघेवाण",
+            "सरळ आवर्ती गती"
+          ],
+          "solution": "अवमंदनविरहित दोलकात एकूण ऊर्जा ½kA² अचल असते, जी समतोल बिंदूवर पूर्णपणे गतिज रूपात आणि टोकांवर पूर्णपणे स्थितिज रूपात बदलते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Two identical pendulums swinging at the same rate can be passing each other in opposite directions or moving together, and the quantity that says which is not the frequency but where in the cycle each one is. Which quantity is this?",
+      "choices": [
+        "Resonance",
+        "Damping",
+        "The energy exchange in oscillation",
+        "The phase of an oscillation"
+      ],
+      "answerIndex": 3,
+      "solution": "The phase is the angle (ωt + φ) that fixes where in its cycle an oscillator is at a given instant, so two oscillators of the same frequency can still differ by a constant phase. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ही दर से झूलते दो एक-से लोलक एक-दूसरे के पास विपरीत दिशाओं में गुज़र सकते हैं या साथ चल सकते हैं, और जो राशि यह बताती है वह आवृत्ति नहीं बल्कि यह है कि हर एक चक्र में कहाँ है। यह कौन-सी राशि है?",
+          "choices": [
+            "अनुनाद",
+            "अवमंदन",
+            "दोलन में ऊर्जा-विनिमय",
+            "दोलन की कला"
+          ],
+          "solution": "कला वह कोण (ωt + φ) है जो तय करता है कि दिए क्षण पर दोलक अपने चक्र में कहाँ है, अतः एक ही आवृत्ति के दो दोलक फिर भी अचर कला से भिन्न हो सकते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "एकाच दराने झुलणारे दोन सारखे लंबक एकमेकांजवळून विरुद्ध दिशांनी जाऊ शकतात वा एकत्र जाऊ शकतात, आणि जी राशी हे सांगते ती वारंवारता नव्हे तर प्रत्येक चक्रात कुठे आहे ही. ही कोणती राशी?",
+          "choices": [
+            "अनुनाद",
+            "अवमंदन",
+            "आंदोलनातील ऊर्जा-देवाणघेवाण",
+            "आंदोलनाची कला"
+          ],
+          "solution": "कला म्हणजे तो कोन (ωt + φ) जो ठरवतो की दिलेल्या क्षणी दोलक आपल्या चक्रात कुठे आहे, म्हणून एकाच वारंवारतेचे दोन दोलक तरीही अचल कलेने वेगळे असू शकतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Damping is correct?",
+      "choices": [
+        "Damping is the loss of oscillation energy to a resistive force, and it shrinks the amplitude steadily while changing the frequency only very slightly.",
+        "For small swings the period of an oscillator does not depend on the amplitude, so a dying pendulum keeps perfect time even as its swing shrinks to nothing.",
+        "Resonance is the large response of an oscillator to a driving force whose frequency matches its own natural frequency, so a small repeated push can build an enormous amplitude.",
+        "The phase is the angle (ωt + φ) that fixes where in its cycle an oscillator is at a given instant, so two oscillators of the same frequency can still differ by a constant phase."
+      ],
+      "answerIndex": 0,
+      "solution": "Damping is the loss of oscillation energy to a resistive force, and it shrinks the amplitude steadily while changing the frequency only very slightly. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अवमंदन के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "अवमंदन दोलन-ऊर्जा का किसी प्रतिरोधी बल को खो जाना है, और वह आयाम को लगातार घटाता है जबकि आवृत्ति को बहुत थोड़ा ही बदलता है।",
+            "छोटे झूलों के लिए दोलक का आवर्तकाल आयाम पर निर्भर नहीं, अतः मंद पड़ता लोलक तब भी ठीक समय रखता है जब उसका झूला घटकर शून्य हो रहा हो।",
+            "अनुनाद दोलक की उस चालक बल के प्रति बड़ी प्रतिक्रिया है जिसकी आवृत्ति उसकी अपनी प्राकृतिक आवृत्ति से मेल खाती है, अतः छोटा दोहराया धक्का विशाल आयाम खड़ा कर सकता है।",
+            "कला वह कोण (ωt + φ) है जो तय करता है कि दिए क्षण पर दोलक अपने चक्र में कहाँ है, अतः एक ही आवृत्ति के दो दोलक फिर भी अचर कला से भिन्न हो सकते हैं।"
+          ],
+          "solution": "अवमंदन दोलन-ऊर्जा का किसी प्रतिरोधी बल को खो जाना है, और वह आयाम को लगातार घटाता है जबकि आवृत्ति को बहुत थोड़ा ही बदलता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "अवमंदन विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "अवमंदन म्हणजे आंदोलन-ऊर्जेचे एखाद्या विरोधी बलाकडे जाणे, आणि ते आयाम सतत घटवते तर वारंवारता फार थोडीच बदलते.",
+            "लहान झोक्यांसाठी दोलकाचा आवर्तकाल आयामावर अवलंबून नाही, म्हणून विझत जाणारा लंबक त्याचा झोका शून्यावर येत असतानाही अचूक वेळ राखतो.",
+            "अनुनाद म्हणजे दोलकाची त्या चालक बलाला मोठी प्रतिक्रिया ज्याची वारंवारता त्याच्या स्वतःच्या नैसर्गिक वारंवारतेशी जुळते, म्हणून लहान पुनःपुन्हा दिलेला रेटा प्रचंड आयाम उभा करू शकतो.",
+            "कला म्हणजे तो कोन (ωt + φ) जो ठरवतो की दिलेल्या क्षणी दोलक आपल्या चक्रात कुठे आहे, म्हणून एकाच वारंवारतेचे दोन दोलक तरीही अचल कलेने वेगळे असू शकतात."
+          ],
+          "solution": "अवमंदन म्हणजे आंदोलन-ऊर्जेचे एखाद्या विरोधी बलाकडे जाणे, आणि ते आयाम सतत घटवते तर वारंवारता फार थोडीच बदलते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The peak is limited only by the damping present, so a lightly damped system responds enormously over a very narrow band of frequencies and a heavily damped one mildly over a wide band.\" — which of these is this about?",
+      "choices": [
+        "Simple harmonic motion",
+        "The phase of an oscillation",
+        "Damping",
+        "Resonance"
+      ],
+      "answerIndex": 3,
+      "solution": "Resonance is the large response of an oscillator to a driving force whose frequency matches its own natural frequency, so a small repeated push can build an enormous amplitude. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"शिखर को केवल मौजूद अवमंदन सीमित करता है, अतः हल्के अवमंदित निकाय बहुत सँकरी आवृत्ति-पट्टी पर विशाल प्रतिक्रिया देते हैं और भारी अवमंदित निकाय चौड़ी पट्टी पर हल्की।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "सरल आवर्त गति",
+            "दोलन की कला",
+            "अवमंदन",
+            "अनुनाद"
+          ],
+          "solution": "अनुनाद दोलक की उस चालक बल के प्रति बड़ी प्रतिक्रिया है जिसकी आवृत्ति उसकी अपनी प्राकृतिक आवृत्ति से मेल खाती है, अतः छोटा दोहराया धक्का विशाल आयाम खड़ा कर सकता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"शिखराला केवळ उपस्थित अवमंदनच मर्यादित करते, म्हणून हलक्या अवमंदित संचाची प्रतिक्रिया फार अरुंद वारंवारता-पट्ट्यावर प्रचंड आणि जड अवमंदित संचाची रुंद पट्ट्यावर सौम्य.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "सरळ आवर्ती गती",
+            "आंदोलनाची कला",
+            "अवमंदन",
+            "अनुनाद"
+          ],
+          "solution": "अनुनाद म्हणजे दोलकाची त्या चालक बलाला मोठी प्रतिक्रिया ज्याची वारंवारता त्याच्या स्वतःच्या नैसर्गिक वारंवारतेशी जुळते, म्हणून लहान पुनःपुन्हा दिलेला रेटा प्रचंड आयाम उभा करू शकतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Acceleration always pointing back at the middle\" goes correctly with which of these?",
+      "choices": [
+        "simple harmonic motion",
+        "the phase of an oscillation",
+        "the energy exchange in oscillation",
+        "damping"
+      ],
+      "answerIndex": 0,
+      "solution": "Simple harmonic motion is the motion that follows from a restoring force proportional to displacement, giving a = −ω²x and a displacement that varies sinusoidally with time. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"त्वरण सदा बीच की ओर लौटता हुआ\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "सरल आवर्त गति",
+            "दोलन की कला",
+            "दोलन में ऊर्जा-विनिमय",
+            "अवमंदन"
+          ],
+          "solution": "सरल आवर्त गति वह गति है जो विस्थापन के समानुपाती प्रत्यानयन बल से निकलती है, जिससे a = −ω²x मिलता है और विस्थापन समय के साथ ज्यावक्रीय रूप से बदलता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"त्वरण नेहमी मध्याकडे परतणारे\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "सरळ आवर्ती गती",
+            "आंदोलनाची कला",
+            "आंदोलनातील ऊर्जा-देवाणघेवाण",
+            "अवमंदन"
+          ],
+          "solution": "सरळ आवर्ती गती ही ती गती जी विस्थापनाच्या समानुपाती पुनःस्थापक बलातून निघते, ज्यातून a = −ω²x मिळते आणि विस्थापन काळासोबत साइनवक्रीय बदलते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A dying swing that still keeps time\" goes correctly with which of these?",
+      "choices": [
+        "damping",
+        "isochronism of the swing",
+        "the phase of an oscillation",
+        "resonance"
+      ],
+      "answerIndex": 1,
+      "solution": "For small swings the period of an oscillator does not depend on the amplitude, so a dying pendulum keeps perfect time even as its swing shrinks to nothing. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"मंद पड़ता झूला जो फिर भी समय रखता है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "अवमंदन",
+            "झूले की समकालिकता",
+            "दोलन की कला",
+            "अनुनाद"
+          ],
+          "solution": "छोटे झूलों के लिए दोलक का आवर्तकाल आयाम पर निर्भर नहीं, अतः मंद पड़ता लोलक तब भी ठीक समय रखता है जब उसका झूला घटकर शून्य हो रहा हो। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"विझत जाणारा झोका जो तरीही वेळ राखतो\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अवमंदन",
+            "झोक्याची समकालिकता",
+            "आंदोलनाची कला",
+            "अनुनाद"
+          ],
+          "solution": "लहान झोक्यांसाठी दोलकाचा आवर्तकाल आयामावर अवलंबून नाही, म्हणून विझत जाणारा लंबक त्याचा झोका शून्यावर येत असतानाही अचूक वेळ राखतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Two full energy cycles for every swing\" goes correctly with which of these?",
+      "choices": [
+        "simple harmonic motion",
+        "isochronism of the swing",
+        "the phase of an oscillation",
+        "the energy exchange in oscillation"
+      ],
+      "answerIndex": 3,
+      "solution": "In an undamped oscillator the total energy ½kA² is constant, shifting entirely into kinetic form at the equilibrium point and entirely into potential form at the extremes. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"हर झूले पर ऊर्जा के दो पूरे चक्र\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "सरल आवर्त गति",
+            "झूले की समकालिकता",
+            "दोलन की कला",
+            "दोलन में ऊर्जा-विनिमय"
+          ],
+          "solution": "अवमंदन-रहित दोलक में कुल ऊर्जा ½kA² अचर है, जो संतुलन-बिंदु पर पूरी तरह गतिज रूप में और छोरों पर पूरी तरह स्थितिज रूप में बदल जाती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"प्रत्येक झोक्यावर ऊर्जेची दोन पूर्ण चक्रे\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "सरळ आवर्ती गती",
+            "झोक्याची समकालिकता",
+            "आंदोलनाची कला",
+            "आंदोलनातील ऊर्जा-देवाणघेवाण"
+          ],
+          "solution": "अवमंदनविरहित दोलकात एकूण ऊर्जा ½kA² अचल असते, जी समतोल बिंदूवर पूर्णपणे गतिज रूपात आणि टोकांवर पूर्णपणे स्थितिज रूपात बदलते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Same frequency, opposite directions at every instant\" goes correctly with which of these?",
+      "choices": [
+        "resonance",
+        "isochronism of the swing",
+        "the phase of an oscillation",
+        "damping"
+      ],
+      "answerIndex": 2,
+      "solution": "The phase is the angle (ωt + φ) that fixes where in its cycle an oscillator is at a given instant, so two oscillators of the same frequency can still differ by a constant phase. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"वही आवृत्ति, हर क्षण विपरीत दिशाएँ\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "अनुनाद",
+            "झूले की समकालिकता",
+            "दोलन की कला",
+            "अवमंदन"
+          ],
+          "solution": "कला वह कोण (ωt + φ) है जो तय करता है कि दिए क्षण पर दोलक अपने चक्र में कहाँ है, अतः एक ही आवृत्ति के दो दोलक फिर भी अचर कला से भिन्न हो सकते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तीच वारंवारता, प्रत्येक क्षणी विरुद्ध दिशा\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अनुनाद",
+            "झोक्याची समकालिकता",
+            "आंदोलनाची कला",
+            "अवमंदन"
+          ],
+          "solution": "कला म्हणजे तो कोन (ωt + φ) जो ठरवतो की दिलेल्या क्षणी दोलक आपल्या चक्रात कुठे आहे, म्हणून एकाच वारंवारतेचे दोन दोलक तरीही अचल कलेने वेगळे असू शकतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The amplitude goes and the rhythm stays\" goes correctly with which of these?",
+      "choices": [
+        "damping",
+        "resonance",
+        "the phase of an oscillation",
+        "simple harmonic motion"
+      ],
+      "answerIndex": 0,
+      "solution": "Damping is the loss of oscillation energy to a resistive force, and it shrinks the amplitude steadily while changing the frequency only very slightly. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"आयाम चला जाता है, लय बनी रहती है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "अवमंदन",
+            "अनुनाद",
+            "दोलन की कला",
+            "सरल आवर्त गति"
+          ],
+          "solution": "अवमंदन दोलन-ऊर्जा का किसी प्रतिरोधी बल को खो जाना है, और वह आयाम को लगातार घटाता है जबकि आवृत्ति को बहुत थोड़ा ही बदलता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"आयाम जातो, लय राहते\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अवमंदन",
+            "अनुनाद",
+            "आंदोलनाची कला",
+            "सरळ आवर्ती गती"
+          ],
+          "solution": "अवमंदन म्हणजे आंदोलन-ऊर्जेचे एखाद्या विरोधी बलाकडे जाणे, आणि ते आयाम सतत घटवते तर वारंवारता फार थोडीच बदलते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Do not cross the bridge in step\" goes correctly with which of these?",
+      "choices": [
+        "the energy exchange in oscillation",
+        "simple harmonic motion",
+        "resonance",
+        "isochronism of the swing"
+      ],
+      "answerIndex": 2,
+      "solution": "Resonance is the large response of an oscillator to a driving force whose frequency matches its own natural frequency, so a small repeated push can build an enormous amplitude. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"पुल कदम मिलाकर मत पार करो\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "दोलन में ऊर्जा-विनिमय",
+            "सरल आवर्त गति",
+            "अनुनाद",
+            "झूले की समकालिकता"
+          ],
+          "solution": "अनुनाद दोलक की उस चालक बल के प्रति बड़ी प्रतिक्रिया है जिसकी आवृत्ति उसकी अपनी प्राकृतिक आवृत्ति से मेल खाती है, अतः छोटा दोहराया धक्का विशाल आयाम खड़ा कर सकता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"पूल पावले जुळवून ओलांडू नका\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "आंदोलनातील ऊर्जा-देवाणघेवाण",
+            "सरळ आवर्ती गती",
+            "अनुनाद",
+            "झोक्याची समकालिकता"
+          ],
+          "solution": "अनुनाद म्हणजे दोलकाची त्या चालक बलाला मोठी प्रतिक्रिया ज्याची वारंवारता त्याच्या स्वतःच्या नैसर्गिक वारंवारतेशी जुळते, म्हणून लहान पुनःपुन्हा दिलेला रेटा प्रचंड आयाम उभा करू शकतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Simple harmonic motion EXCEPT —",
+      "choices": [
+        "In an undamped oscillator the total energy ½kA² is constant, shifting entirely into kinetic form at the equilibrium point and entirely into potential form at the extremes.",
+        "Simple harmonic motion is the motion that follows from a restoring force proportional to displacement, giving a = −ω²x and a displacement that varies sinusoidally with time.",
+        "Almost any system disturbed slightly from a stable equilibrium performs it, because the first term of any restoring force expanded about that point is proportional to the displacement.",
+        "Its angular frequency ω is √(k/m) for a spring and √(g/l) for a pendulum, and in both cases the period depends on the system alone and not on how it was started."
+      ],
+      "answerIndex": 0,
+      "solution": "In an undamped oscillator the total energy ½kA² is constant, shifting entirely into kinetic form at the equilibrium point and entirely into potential form at the extremes. That belongs to The energy exchange in oscillation, not Simple harmonic motion — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "सरल आवर्त गति के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "अवमंदन-रहित दोलक में कुल ऊर्जा ½kA² अचर है, जो संतुलन-बिंदु पर पूरी तरह गतिज रूप में और छोरों पर पूरी तरह स्थितिज रूप में बदल जाती है।",
+            "सरल आवर्त गति वह गति है जो विस्थापन के समानुपाती प्रत्यानयन बल से निकलती है, जिससे a = −ω²x मिलता है और विस्थापन समय के साथ ज्यावक्रीय रूप से बदलता है।",
+            "स्थायी संतुलन से थोड़ा हटाया गया लगभग हर निकाय इसे करता है, क्योंकि उस बिंदु के परितः विस्तारित किसी भी प्रत्यानयन बल का पहला पद विस्थापन का समानुपाती होता है।",
+            "उसकी कोणीय आवृत्ति ω स्प्रिंग के लिए √(k/m) और लोलक के लिए √(g/l) है, और दोनों में आवर्तकाल केवल निकाय पर निर्भर है, इस पर नहीं कि उसे शुरू कैसे किया गया।"
+          ],
+          "solution": "अवमंदन-रहित दोलक में कुल ऊर्जा ½kA² अचर है, जो संतुलन-बिंदु पर पूरी तरह गतिज रूप में और छोरों पर पूरी तरह स्थितिज रूप में बदल जाती है। यह दोलन में ऊर्जा-विनिमय की बात है, सरल आवर्त गति की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "सरळ आवर्ती गती विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "अवमंदनविरहित दोलकात एकूण ऊर्जा ½kA² अचल असते, जी समतोल बिंदूवर पूर्णपणे गतिज रूपात आणि टोकांवर पूर्णपणे स्थितिज रूपात बदलते.",
+            "सरळ आवर्ती गती ही ती गती जी विस्थापनाच्या समानुपाती पुनःस्थापक बलातून निघते, ज्यातून a = −ω²x मिळते आणि विस्थापन काळासोबत साइनवक्रीय बदलते.",
+            "स्थिर समतोलापासून थोडा ढळलेला जवळपास प्रत्येक संच ही करतो, कारण त्या बिंदूभोवती विस्तारित केलेल्या कोणत्याही पुनःस्थापक बलाचे पहिले पद विस्थापनाच्या समानुपाती असते.",
+            "तिची कोनीय वारंवारता ω स्प्रिंगसाठी √(k/m) आणि लंबकासाठी √(g/l), आणि दोन्हींत आवर्तकाल केवळ प्रणालीवर अवलंबून, ती कशी सुरू केली यावर नाही."
+          ],
+          "solution": "अवमंदनविरहित दोलकात एकूण ऊर्जा ½kA² अचल असते, जी समतोल बिंदूवर पूर्णपणे गतिज रूपात आणि टोकांवर पूर्णपणे स्थितिज रूपात बदलते. हे आंदोलनातील ऊर्जा-देवाणघेवाण चे आहे, सरळ आवर्ती गती चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Isochronism of the swing EXCEPT —",
+      "choices": [
+        "Simple harmonic motion is the motion that follows from a restoring force proportional to displacement, giving a = −ω²x and a displacement that varies sinusoidally with time.",
+        "For small swings the period of an oscillator does not depend on the amplitude, so a dying pendulum keeps perfect time even as its swing shrinks to nothing.",
+        "A pendulum's period is also independent of the bob's mass, so a heavy clock weight and a light one keep the same time — the same cancellation that makes all bodies fall together.",
+        "It holds only while sin θ is close to θ, which is why a pendulum clock must be given a small swing and why a wide-swinging pendulum runs slightly slow."
+      ],
+      "answerIndex": 0,
+      "solution": "Simple harmonic motion is the motion that follows from a restoring force proportional to displacement, giving a = −ω²x and a displacement that varies sinusoidally with time. That belongs to Simple harmonic motion, not Isochronism of the swing — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "झूले की समकालिकता के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "सरल आवर्त गति वह गति है जो विस्थापन के समानुपाती प्रत्यानयन बल से निकलती है, जिससे a = −ω²x मिलता है और विस्थापन समय के साथ ज्यावक्रीय रूप से बदलता है।",
+            "छोटे झूलों के लिए दोलक का आवर्तकाल आयाम पर निर्भर नहीं, अतः मंद पड़ता लोलक तब भी ठीक समय रखता है जब उसका झूला घटकर शून्य हो रहा हो।",
+            "लोलक का आवर्तकाल गोलक के द्रव्यमान से भी स्वतंत्र है, अतः भारी घड़ी-बाट और हल्का दोनों वही समय रखते हैं — वही कटाव जो सब पिंडों को साथ गिराता है।",
+            "यह केवल तब तक चलता है जब sin θ, θ के पास हो, इसीलिए लोलक-घड़ी को छोटा झूला देना पड़ता है और इसीलिए चौड़ा झूलता लोलक थोड़ा धीमा चलता है।"
+          ],
+          "solution": "सरल आवर्त गति वह गति है जो विस्थापन के समानुपाती प्रत्यानयन बल से निकलती है, जिससे a = −ω²x मिलता है और विस्थापन समय के साथ ज्यावक्रीय रूप से बदलता है। यह सरल आवर्त गति की बात है, झूले की समकालिकता की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "झोक्याची समकालिकता विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "सरळ आवर्ती गती ही ती गती जी विस्थापनाच्या समानुपाती पुनःस्थापक बलातून निघते, ज्यातून a = −ω²x मिळते आणि विस्थापन काळासोबत साइनवक्रीय बदलते.",
+            "लहान झोक्यांसाठी दोलकाचा आवर्तकाल आयामावर अवलंबून नाही, म्हणून विझत जाणारा लंबक त्याचा झोका शून्यावर येत असतानाही अचूक वेळ राखतो.",
+            "लंबकाचा आवर्तकाल गोलकाच्या वस्तुमानापासूनही स्वतंत्र, म्हणून जड घड्याळ-वजन आणि हलके दोन्ही तोच वेळ राखतात — तीच कापाकापी जी सर्व पिंडांना एकत्र पाडते.",
+            "हे केवळ तोवर चालते जोवर sin θ हा θ जवळ असतो, म्हणूनच लंबक-घड्याळाला लहान झोका द्यावा लागतो आणि म्हणूनच रुंद झुलणारा लंबक थोडा सावकाश चालतो."
+          ],
+          "solution": "सरळ आवर्ती गती ही ती गती जी विस्थापनाच्या समानुपाती पुनःस्थापक बलातून निघते, ज्यातून a = −ω²x मिळते आणि विस्थापन काळासोबत साइनवक्रीय बदलते. हे सरळ आवर्ती गती चे आहे, झोक्याची समकालिकता चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The energy exchange in oscillation EXCEPT —",
+      "choices": [
+        "In an undamped oscillator the total energy ½kA² is constant, shifting entirely into kinetic form at the equilibrium point and entirely into potential form at the extremes.",
+        "Averaged over a whole cycle the kinetic and potential energies are exactly equal, each holding half the total, which is a general result for any harmonic system.",
+        "Simple harmonic motion is the motion that follows from a restoring force proportional to displacement, giving a = −ω²x and a displacement that varies sinusoidally with time.",
+        "Because the energy goes as the square of the amplitude, doubling the swing quadruples the energy, and each form completes two full cycles for every one of the displacement."
+      ],
+      "answerIndex": 2,
+      "solution": "Simple harmonic motion is the motion that follows from a restoring force proportional to displacement, giving a = −ω²x and a displacement that varies sinusoidally with time. That belongs to Simple harmonic motion, not The energy exchange in oscillation — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दोलन में ऊर्जा-विनिमय के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "अवमंदन-रहित दोलक में कुल ऊर्जा ½kA² अचर है, जो संतुलन-बिंदु पर पूरी तरह गतिज रूप में और छोरों पर पूरी तरह स्थितिज रूप में बदल जाती है।",
+            "पूरे चक्र पर औसत लिया जाए तो गतिज और स्थितिज ऊर्जाएँ ठीक बराबर हैं, हर एक कुल का आधा रखती है, और यह किसी भी आवर्त निकाय के लिए सामान्य परिणाम है।",
+            "सरल आवर्त गति वह गति है जो विस्थापन के समानुपाती प्रत्यानयन बल से निकलती है, जिससे a = −ω²x मिलता है और विस्थापन समय के साथ ज्यावक्रीय रूप से बदलता है।",
+            "चूँकि ऊर्जा आयाम के वर्ग के अनुसार चलती है, झूला दोगुना करने पर ऊर्जा चौगुनी हो जाती है, और विस्थापन के हर एक चक्र पर हर रूप दो पूरे चक्र पूरे करता है।"
+          ],
+          "solution": "सरल आवर्त गति वह गति है जो विस्थापन के समानुपाती प्रत्यानयन बल से निकलती है, जिससे a = −ω²x मिलता है और विस्थापन समय के साथ ज्यावक्रीय रूप से बदलता है। यह सरल आवर्त गति की बात है, दोलन में ऊर्जा-विनिमय की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "आंदोलनातील ऊर्जा-देवाणघेवाण विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "अवमंदनविरहित दोलकात एकूण ऊर्जा ½kA² अचल असते, जी समतोल बिंदूवर पूर्णपणे गतिज रूपात आणि टोकांवर पूर्णपणे स्थितिज रूपात बदलते.",
+            "अख्ख्या चक्रावर सरासरी घेतल्यास गतिज आणि स्थितिज ऊर्जा नेमक्या समान असतात, प्रत्येक एकूणाचा निम्मा भाग राखते, आणि हा कोणत्याही आवर्ती संचासाठी सामान्य निकाल.",
+            "सरळ आवर्ती गती ही ती गती जी विस्थापनाच्या समानुपाती पुनःस्थापक बलातून निघते, ज्यातून a = −ω²x मिळते आणि विस्थापन काळासोबत साइनवक्रीय बदलते.",
+            "ऊर्जा आयामाच्या वर्गानुसार जात असल्याने झोका दुप्पट केल्यास ऊर्जा चौपट होते, आणि विस्थापनाच्या प्रत्येक एका चक्रावर प्रत्येक रूप दोन पूर्ण चक्रे पूर्ण करते."
+          ],
+          "solution": "सरळ आवर्ती गती ही ती गती जी विस्थापनाच्या समानुपाती पुनःस्थापक बलातून निघते, ज्यातून a = −ω²x मिळते आणि विस्थापन काळासोबत साइनवक्रीय बदलते. हे सरळ आवर्ती गती चे आहे, आंदोलनातील ऊर्जा-देवाणघेवाण चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The phase of an oscillation EXCEPT —",
+      "choices": [
+        "The phase is the angle (ωt + φ) that fixes where in its cycle an oscillator is at a given instant, so two oscillators of the same frequency can still differ by a constant phase.",
+        "In simple harmonic motion the velocity leads the displacement by a quarter of a cycle and the acceleration leads it by half, which is why the acceleration is largest exactly where the speed is zero.",
+        "Resonance is the large response of an oscillator to a driving force whose frequency matches its own natural frequency, so a small repeated push can build an enormous amplitude.",
+        "Two oscillations exactly out of phase cancel where they meet, which is the whole basis of interference and of the noise-cancelling headphone."
+      ],
+      "answerIndex": 2,
+      "solution": "Resonance is the large response of an oscillator to a driving force whose frequency matches its own natural frequency, so a small repeated push can build an enormous amplitude. That belongs to Resonance, not The phase of an oscillation — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दोलन की कला के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "कला वह कोण (ωt + φ) है जो तय करता है कि दिए क्षण पर दोलक अपने चक्र में कहाँ है, अतः एक ही आवृत्ति के दो दोलक फिर भी अचर कला से भिन्न हो सकते हैं।",
+            "सरल आवर्त गति में वेग विस्थापन से चौथाई चक्र आगे रहता है और त्वरण आधा चक्र आगे, इसीलिए त्वरण ठीक वहाँ सबसे बड़ा है जहाँ चाल शून्य है।",
+            "अनुनाद दोलक की उस चालक बल के प्रति बड़ी प्रतिक्रिया है जिसकी आवृत्ति उसकी अपनी प्राकृतिक आवृत्ति से मेल खाती है, अतः छोटा दोहराया धक्का विशाल आयाम खड़ा कर सकता है।",
+            "ठीक विपरीत कला वाले दो दोलन जहाँ मिलते हैं वहाँ कट जाते हैं, और यही व्यतिकरण तथा शोर-रद्द करते हेडफ़ोन का पूरा आधार है।"
+          ],
+          "solution": "अनुनाद दोलक की उस चालक बल के प्रति बड़ी प्रतिक्रिया है जिसकी आवृत्ति उसकी अपनी प्राकृतिक आवृत्ति से मेल खाती है, अतः छोटा दोहराया धक्का विशाल आयाम खड़ा कर सकता है। यह अनुनाद की बात है, दोलन की कला की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "आंदोलनाची कला विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "कला म्हणजे तो कोन (ωt + φ) जो ठरवतो की दिलेल्या क्षणी दोलक आपल्या चक्रात कुठे आहे, म्हणून एकाच वारंवारतेचे दोन दोलक तरीही अचल कलेने वेगळे असू शकतात.",
+            "सरळ आवर्ती गतीत वेग विस्थापनाहून पाव चक्र पुढे असतो आणि त्वरण अर्धे चक्र पुढे, म्हणूनच त्वरण नेमके तिथे सर्वांत मोठे जिथे चाल शून्य आहे.",
+            "अनुनाद म्हणजे दोलकाची त्या चालक बलाला मोठी प्रतिक्रिया ज्याची वारंवारता त्याच्या स्वतःच्या नैसर्गिक वारंवारतेशी जुळते, म्हणून लहान पुनःपुन्हा दिलेला रेटा प्रचंड आयाम उभा करू शकतो.",
+            "नेमक्या विरुद्ध कलेची दोन आंदोलने जिथे भेटतात तिथे कापली जातात, आणि हाच व्यतिकरणाचा आणि आवाज-रद्द करणाऱ्या हेडफोनचा अख्खा पाया."
+          ],
+          "solution": "अनुनाद म्हणजे दोलकाची त्या चालक बलाला मोठी प्रतिक्रिया ज्याची वारंवारता त्याच्या स्वतःच्या नैसर्गिक वारंवारतेशी जुळते, म्हणून लहान पुनःपुन्हा दिलेला रेटा प्रचंड आयाम उभा करू शकतो. हे अनुनाद चे आहे, आंदोलनाची कला चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A pendulum clock keeps perfect time in Delhi. It is carried to a research station near the South Pole, where g is slightly larger, and left in a heated room at the same temperature. Does it now run fast or slow, and what would happen instead if it were taken up a high mountain?",
+      "choices": [
+        "It runs fast at the pole and would run slow on the mountain. The period is 2π√(l/g), so a larger g shortens the period: each swing takes less time, more swings are counted per real hour, and the clock gains. Up a mountain g is smaller, the period lengthens and the clock loses. The length was unchanged in both cases because the room was kept at the same temperature, which is why the question specifies it",
+        "It runs slow at the pole, because a stronger pull makes the bob harder to move and each swing takes longer",
+        "It keeps perfect time in both places, since a pendulum's period does not depend on g at all",
+        "It cannot be predicted without knowing the mass of the bob, which decides how strongly gravity acts on it"
+      ],
+      "answerIndex": 0,
+      "solution": "Write the formula and read it carefully, because the sign of the effect is where most answers go wrong. The period of a simple pendulum is T = 2π√(l/g). The g is in the DENOMINATOR under the root, so a larger g gives a smaller T. Near the pole the Earth's radius is slightly shorter and the rotational effect is absent, so g is about 9.83 m/s² against Delhi's 9.79 — a rise of about 0.4 per cent. The period falls by half that, roughly 0.2 per cent, so each swing is a fraction shorter. A clock counts swings and displays the count as time. If each swing is shorter than the clock's designer assumed, more of them fit into a real hour, the count runs ahead, and the clock GAINS. Over a day, 0.2 per cent is nearly three minutes. The second option gets this exactly backwards by reasoning from an intuition about heaviness. It is worth seeing why that intuition fails. A stronger g does pull the bob harder — but it also acts on a bob whose inertia is unchanged, and the two effects do not cancel here as they do in free fall. In free fall the restoring agent and the resisting mass are the same m, and m cancels. In the pendulum the mass cancels too, which is why the fourth option is wrong, but g does not: it survives as the strength of the restoring force per unit displacement, and a stiffer restoring force always means a faster oscillation. Compare the spring, where T = 2π√(m/k): a stiffer spring, larger k, also gives a shorter period. Gravity is playing the role of k here. Up a mountain everything reverses. At height h the value of g falls as the inverse square of the distance from the Earth's centre, so on a 3000 m peak it is lower by about a tenth of a per cent, the period lengthens, and the clock loses roughly a minute a day. Two footnotes matter in practice. First, the question specified a heated room for a reason: a real pendulum rod expands when warm, l rises, and the period lengthens — an effect large enough that precision clocks used gridiron and mercury pendulums designed to cancel it. Second, the whole analysis assumes small swings; the isochronism that makes a pendulum a clock at all is an approximation good only while sin θ ≈ θ. (The third answer denies a dependence that the formula and the Moon both confirm — a pendulum on the Moon swings about 2.4 times more slowly.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक लोलक-घड़ी दिल्ली में ठीक समय रखती है। उसे दक्षिणी ध्रुव के पास के शोध-केंद्र ले जाया जाता है, जहाँ g थोड़ा अधिक है, और उसी ताप वाले गरम कमरे में रखा जाता है। अब वह तेज़ चलती है या धीमी, और ऊँचे पहाड़ पर ले जाने पर इसके बजाय क्या होता?",
+          "choices": [
+            "वह ध्रुव पर तेज़ चलती है और पहाड़ पर धीमी चलती। आवर्तकाल 2π√(l/g) है, अतः बड़ा g आवर्तकाल छोटा करता है: हर झूला कम समय लेता है, असली घंटे में अधिक झूले गिने जाते हैं, और घड़ी आगे बढ़ जाती है। पहाड़ पर g छोटा है, आवर्तकाल लंबा होता है और घड़ी पीछे रह जाती। दोनों स्थितियों में लंबाई अपरिवर्तित रही क्योंकि कमरा उसी ताप पर रखा गया, और प्रश्न इसीलिए इसे निर्दिष्ट करता है",
+            "वह ध्रुव पर धीमी चलती है, क्योंकि प्रबल खिंचाव गोलक को हिलाना कठिन कर देता है और हर झूला अधिक समय लेता है",
+            "वह दोनों जगह ठीक समय रखती है, क्योंकि लोलक का आवर्तकाल g पर निर्भर करता ही नहीं",
+            "गोलक का द्रव्यमान जाने बिना भविष्यवाणी नहीं हो सकती, जो तय करता है कि गुरुत्व उस पर कितने ज़ोर से लगता है"
+          ],
+          "solution": "सूत्र लिखो और ध्यान से पढ़ो, क्योंकि प्रभाव का चिह्न ही वह जगह है जहाँ अधिकांश उत्तर बिगड़ते हैं। सरल लोलक का आवर्तकाल T = 2π√(l/g) है। g मूल के नीचे हर में है, अतः बड़ा g छोटा T देता है। ध्रुव के पास पृथ्वी की त्रिज्या थोड़ी छोटी है और घूर्णन का प्रभाव अनुपस्थित, अतः g दिल्ली के 9.79 के सामने लगभग 9.83 m/s² है — लगभग 0.4 प्रतिशत की वृद्धि। आवर्तकाल उसका आधा घटता है, मोटे तौर पर 0.2 प्रतिशत, अतः हर झूला थोड़ा छोटा है। घड़ी झूले गिनती है और गिनती को समय के रूप में दिखाती है। यदि हर झूला घड़ी के अभिकल्पक की मान्यता से छोटा है, तो असली घंटे में उनमें से अधिक समा जाते हैं, गिनती आगे चली जाती है, और घड़ी आगे बढ़ जाती है। दिन भर में 0.2 प्रतिशत लगभग तीन मिनट है। दूसरा विकल्प इसे ठीक उलटा कर देता है, भारीपन के बारे में एक अंतर्ज्ञान से तर्क करके। यह देखने योग्य है कि वह अंतर्ज्ञान क्यों विफल है। प्रबल g गोलक को अधिक ज़ोर से खींचता तो है — पर वह ऐसे गोलक पर लगता है जिसका जड़त्व अपरिवर्तित है, और दोनों प्रभाव यहाँ वैसे नहीं कटते जैसे मुक्त पतन में कटते हैं। मुक्त पतन में प्रत्यानयन करता कारक और प्रतिरोध करता द्रव्यमान वही m हैं, और m कट जाता है। लोलक में द्रव्यमान भी कट जाता है, इसीलिए चौथा विकल्प ग़लत है, पर g नहीं कटता: वह प्रति एकांक विस्थापन प्रत्यानयन बल की प्रबलता के रूप में बचा रहता है, और अधिक कड़ा प्रत्यानयन बल सदा तेज़ दोलन का अर्थ रखता है। स्प्रिंग से तुलना करो, जहाँ T = 2π√(m/k): अधिक कड़ी स्प्रिंग, बड़ा k, भी छोटा आवर्तकाल देती है। यहाँ गुरुत्व k की भूमिका निभा रहा है। पहाड़ पर सब उलट जाता है। ऊँचाई h पर g पृथ्वी के केंद्र से दूरी के व्युत्क्रम वर्ग से घटता है, अतः 3000 m की चोटी पर वह लगभग एक-दसवें प्रतिशत कम है, आवर्तकाल लंबा होता है, और घड़ी दिन में मोटे तौर पर एक मिनट पीछे रह जाती है। दो पादटिप्पणियाँ व्यवहार में मायने रखती हैं। पहली, प्रश्न ने गरम कमरा एक कारण से निर्दिष्ट किया: असली लोलक की छड़ गरमी में फैलती है, l बढ़ता है, और आवर्तकाल लंबा होता है — यह प्रभाव इतना बड़ा है कि परिशुद्ध घड़ियों में उसे काटने के लिए बनी जालीदार तथा पारे वाली लोलकें लगती थीं। दूसरी, पूरा विश्लेषण छोटे झूले मानता है; वही समकालिकता जो लोलक को घड़ी बनाती है, केवल तब तक अच्छी सन्निकटता है जब sin θ ≈ θ हो। (तीसरा उत्तर ऐसी निर्भरता नकारता है जिसकी पुष्टि सूत्र और चंद्रमा दोनों करते हैं — चंद्रमा पर लोलक लगभग 2.4 गुना धीमे झूलता है।)"
+        },
+        "mr": {
+          "stem": "एक लंबक-घड्याळ दिल्लीत अचूक वेळ राखते. ती दक्षिण ध्रुवाजवळच्या संशोधन केंद्रात नेली जाते, जिथे g थोडा अधिक आहे, आणि त्याच तापमानाच्या उबदार खोलीत ठेवली जाते. आता ती वेगात चालते की सावकाश, आणि उंच डोंगरावर नेल्यास त्याऐवजी काय झाले असते?",
+          "choices": [
+            "ती ध्रुवावर वेगात चालते आणि डोंगरावर सावकाश चालली असती. आवर्तकाल 2π√(l/g), म्हणून मोठा g आवर्तकाल लहान करतो: प्रत्येक झोका कमी वेळ घेतो, खऱ्या तासात अधिक झोके मोजले जातात, आणि घड्याळ पुढे जाते. डोंगरावर g लहान, आवर्तकाल लांब होतो आणि घड्याळ मागे पडली असती. दोन्ही स्थितींत लांबी अपरिवर्तित राहिली कारण खोली त्याच तापमानावर ठेवली, आणि प्रश्न म्हणूनच ते निर्दिष्ट करतो",
+            "ती ध्रुवावर सावकाश चालते, कारण प्रबळ ओढ गोलक हलवणे कठीण करते आणि प्रत्येक झोका अधिक वेळ घेतो",
+            "ती दोन्ही ठिकाणी अचूक वेळ राखते, कारण लंबकाचा आवर्तकाल g वर अवलंबूनच नाही",
+            "गोलकाचे वस्तुमान कळल्याशिवाय भाकीत करता येत नाही, जे ठरवते की गुरुत्व त्याच्यावर किती जोराने लागते"
+          ],
+          "solution": "सूत्र लिहा आणि नीट वाचा, कारण परिणामाचे चिन्ह हीच ती जागा जिथे बहुतांश उत्तरे बिघडतात. साध्या लंबकाचा आवर्तकाल T = 2π√(l/g). g मुळाखाली छेदात आहे, म्हणून मोठा g लहान T देतो. ध्रुवाजवळ पृथ्वीची त्रिज्या थोडी लहान आणि परिवलनाचा परिणाम अनुपस्थित, म्हणून g दिल्लीच्या 9.79 समोर सुमारे 9.83 m/s² — सुमारे 0.4 टक्क्यांची वाढ. आवर्तकाल त्याच्या निम्म्याने घटतो, ढोबळमानाने 0.2 टक्के, म्हणून प्रत्येक झोका थोडा लहान. घड्याळ झोके मोजते आणि मोजणी वेळ म्हणून दाखवते. प्रत्येक झोका घड्याळाच्या आखणीकाराच्या गृहीतकाहून लहान असेल, तर खऱ्या तासात त्यांतले अधिक बसतात, मोजणी पुढे जाते, आणि घड्याळ पुढे जाते. दिवसभरात 0.2 टक्के म्हणजे जवळपास तीन मिनिटे. दुसरा पर्याय हे नेमके उलटे करतो, जडपणाबद्दलच्या एका अंतःप्रेरणेतून युक्तिवाद करून. ती अंतःप्रेरणा का अपयशी ठरते हे पाहण्याजोगे. प्रबळ g गोलकाला अधिक जोराने ओढतोच — पण तो अशा गोलकावर लागतो ज्याचे जडत्व अपरिवर्तित, आणि दोन्ही परिणाम इथे तसे कापले जात नाहीत जसे मुक्त पतनात कापले जातात. मुक्त पतनात पुनःस्थापन करणारा घटक आणि विरोध करणारे वस्तुमान तेच m, आणि m कापले जाते. लंबकात वस्तुमानही कापले जाते, म्हणूनच चौथा पर्याय चुकीचा, पण g कापला जात नाही: तो प्रति एकक विस्थापन पुनःस्थापक बलाची प्रबळता म्हणून टिकतो, आणि अधिक ताठर पुनःस्थापक बल नेहमी अधिक वेगवान आंदोलनाचा अर्थ राखते. स्प्रिंगशी तुलना करा, जिथे T = 2π√(m/k): अधिक ताठर स्प्रिंग, मोठा k, तीही लहान आवर्तकाल देते. इथे गुरुत्व k ची भूमिका बजावत आहे. डोंगरावर सर्व उलटते. h उंचीवर g पृथ्वीच्या केंद्रापासूनच्या अंतराच्या व्यस्त वर्गाने घटतो, म्हणून 3000 m च्या शिखरावर तो सुमारे एक-दशांश टक्क्याने कमी, आवर्तकाल लांब होतो, आणि घड्याळ दिवसाला ढोबळमानाने एक मिनिट मागे पडते. दोन तळटिपा व्यवहारात महत्त्वाच्या. पहिली, प्रश्नाने उबदार खोली एका कारणाने निर्दिष्ट केली: खऱ्या लंबकाची दांडी उबेत प्रसरण पावते, l वाढते, आणि आवर्तकाल लांब होतो — हा परिणाम इतका मोठा की अचूक घड्याळांत तो कापण्यासाठी बनवलेले जाळीदार व पाऱ्याचे लंबक वापरले जात. दुसरी, अख्खे विश्लेषण लहान झोके गृहीत धरते; जी समकालिकता लंबकाला घड्याळ बनवते ती केवळ sin θ ≈ θ असेपर्यंतच चांगली सन्निकटता. (तिसरे उत्तर अशी अवलंबिता नाकारते जिची पुष्टी सूत्र आणि चंद्र दोन्ही करतात — चंद्रावर लंबक सुमारे 2.4 पट सावकाश झुलतो.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A soldier's column is ordered to break step before crossing a footbridge, though the same soldiers walking out of step weigh exactly the same. Explain what the order is guarding against, and why the bridge is safe when they are out of step.",
+      "choices": [
+        "Marching in step delivers a periodic force at the pace frequency. If that matches one of the bridge's natural frequencies, each footfall arrives in phase with the motion already present and adds to it, so the amplitude builds cycle after cycle until the damping can absorb no more — a resonance. Out of step, the footfalls arrive at random phases and largely cancel; the average load is identical but the periodic component is gone, and it is the periodic component alone that resonance can amplify",
+        "Marching in step concentrates the whole column's weight on one plank at a time, and the order simply spreads the load along the bridge",
+        "The order is a tradition with no physical basis, since the total force on the bridge is the same either way",
+        "Marching in step increases the soldiers' effective weight because each footfall lands with extra downward force"
+      ],
+      "answerIndex": 0,
+      "solution": "The question turns on a distinction the third option misses entirely: the total force and the periodic component of the force are different things, and a bridge cares about both for different reasons. Start with what a bridge is. It is an elastic structure, and like any elastic structure it has natural frequencies at which it will oscillate if disturbed — typically a few hertz for a footbridge, which is uncomfortably close to walking pace. Displace it and let go and it will bob at that rate, dying away slowly because bridges are lightly damped. Now the driving force. Walking is not a steady load; each footfall is an impulse, and a column marching in step delivers those impulses at one sharp frequency, the step rate. Feed a periodic force to an oscillator at its natural frequency and the response is not proportional — it accumulates. Each push arrives when the bridge is already moving the way the push acts, so it does positive work on every cycle, and the amplitude grows until the energy fed in per cycle equals the energy lost to damping per cycle. In a lightly damped structure that balance point can be very high, and the bridge can be shaken far beyond anything its designers loaded it with statically. Broughton Suspension Bridge collapsed under marching troops in 1831, and the order has been standard since. Now the out-of-step case, and this is the part worth understanding properly. The soldiers weigh exactly the same. The AVERAGE force on the bridge is unchanged — the third option is right about that and draws the wrong conclusion. What has changed is that the footfalls now arrive at random phases. Decompose the total force into a steady part plus an oscillating part: the steady part is the same as before and the bridge simply carries it, as it carries any static load. The oscillating part, however, is now a sum of many impulses with uncorrelated phases, and such a sum grows only as √N rather than as N. Two hundred soldiers in step deliver two hundred times one man's periodic force; two hundred out of step deliver about fourteen times it. That is the whole of the protection. Two generalisations are worth carrying. First, resonance is dangerous precisely where damping is small, which is why the modern remedy is not to ban marching but to add tuned mass dampers — the Millennium Bridge in London was closed and fitted with them after pedestrians unconsciously synchronised their steps with its sway. Second, the same physics that threatens a bridge is what makes a radio work: a tuner is a lightly damped oscillator that responds enormously to one frequency and ignores all others, and there the sharpness is the whole point. (The second answer invents a load concentration that marching does not produce, and the fourth adds weight that no footfall can create.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "सैनिकों की टुकड़ी को पैदल पुल पार करने से पहले क़दम तोड़ने का आदेश दिया जाता है, यद्यपि बेतरतीब चलते वही सैनिक बिलकुल उतने ही भारी हैं। समझाओ आदेश किससे बचा रहा है, और बेतरतीब चलने पर पुल सुरक्षित क्यों है।",
+          "choices": [
+            "कदम मिलाकर चलना चाल की आवृत्ति पर आवर्ती बल देता है। यदि वह पुल की किसी प्राकृतिक आवृत्ति से मेल खाए, तो हर क़दम पहले से मौजूद गति के साथ एक कला में पहुँचता है और उसमें जुड़ जाता है, अतः आयाम चक्र दर चक्र बढ़ता है जब तक अवमंदन और न सोख सके — यही अनुनाद है। बेतरतीब चलने पर क़दम यादृच्छिक कलाओं में पहुँचते हैं और अधिकतर कट जाते हैं; औसत भार वही है पर आवर्ती अंश चला गया, और अनुनाद केवल उसी आवर्ती अंश को बढ़ा सकता है",
+            "कदम मिलाकर चलना पूरी टुकड़ी का भार एक बार में एक ही तख़्ते पर केंद्रित कर देता है, और आदेश बस भार को पुल भर फैला देता है",
+            "आदेश एक परंपरा है जिसका कोई भौतिक आधार नहीं, क्योंकि पुल पर कुल बल दोनों तरह एक ही है",
+            "कदम मिलाकर चलने से सैनिकों का प्रभावी भार बढ़ जाता है क्योंकि हर क़दम अतिरिक्त अधोमुखी बल के साथ पड़ता है"
+          ],
+          "solution": "प्रश्न उस भेद पर टिका है जिसे तीसरा विकल्प पूरी तरह चूक जाता है: कुल बल और बल का आवर्ती अंश भिन्न चीज़ें हैं, और पुल दोनों की परवाह भिन्न कारणों से करता है। शुरू करो इससे कि पुल है क्या। वह एक प्रत्यास्थ संरचना है, और किसी भी प्रत्यास्थ संरचना की तरह उसकी प्राकृतिक आवृत्तियाँ हैं जिन पर वह विचलित होने पर दोलन करेगा — पैदल पुल के लिए आम तौर पर कुछ हर्ट्ज़, जो चलने की गति के असुविधाजनक रूप से पास है। उसे हटाकर छोड़ दो और वह उसी दर से हिलेगा, धीरे-धीरे मंद पड़ते हुए क्योंकि पुल हल्के अवमंदित होते हैं। अब चालक बल। चलना स्थिर भार नहीं; हर क़दम एक आवेग है, और कदम मिलाकर चलती टुकड़ी वे आवेग एक ही तीखी आवृत्ति पर देती है, क़दम-दर पर। दोलक को उसकी प्राकृतिक आवृत्ति पर आवर्ती बल दो और प्रतिक्रिया समानुपाती नहीं होती — वह संचित होती है। हर धक्का तब पहुँचता है जब पुल पहले से उसी ओर चल रहा है जिस ओर धक्का लगता है, अतः वह हर चक्र पर धनात्मक कार्य करता है, और आयाम तब तक बढ़ता है जब तक प्रति चक्र दी गई ऊर्जा प्रति चक्र अवमंदन को खोई ऊर्जा के बराबर न हो जाए। हल्के अवमंदित संरचना में वह संतुलन-बिंदु बहुत ऊँचा हो सकता है, और पुल को उससे कहीं आगे हिलाया जा सकता है जितना उसके अभिकल्पकों ने स्थैतिक रूप से लादा था। 1831 में ब्रॉटन झूला पुल कदम मिलाकर चलती सेना के नीचे गिर गया था, और तब से यह आदेश मानक है। अब बेतरतीब वाली स्थिति, और यही वह हिस्सा है जिसे ठीक से समझने योग्य है। सैनिक बिलकुल उतने ही भारी हैं। पुल पर औसत बल अपरिवर्तित है — तीसरा विकल्प इस बारे में सही है और ग़लत निष्कर्ष निकालता है। बदला यह है कि क़दम अब यादृच्छिक कलाओं में पहुँचते हैं। कुल बल को स्थिर अंश जोड़ दोलनशील अंश में तोड़ो: स्थिर अंश पहले जैसा ही है और पुल उसे बस ढो लेता है, जैसे वह किसी भी स्थैतिक भार को ढोता है। पर दोलनशील अंश अब असंबद्ध कलाओं वाले कई आवेगों का योग है, और ऐसा योग N के बजाय केवल √N के अनुसार बढ़ता है। दो सौ सैनिक कदम मिलाकर एक आदमी के आवर्ती बल का दो सौ गुना देते हैं; दो सौ बेतरतीब लगभग चौदह गुना। सुरक्षा पूरी की पूरी यही है। दो सामान्यीकरण ले जाने योग्य हैं। पहला, अनुनाद ठीक वहीं ख़तरनाक है जहाँ अवमंदन कम है, इसीलिए आधुनिक उपाय मार्च पर रोक नहीं बल्कि सधे हुए द्रव्यमान-अवमंदक जोड़ना है — लंदन का मिलेनियम पुल बंद किया गया और उनसे सज्जित किया गया जब पैदल यात्रियों ने अनजाने अपने क़दम उसके झूले से मिला लिए। दूसरा, वही भौतिकी जो पुल को धमकाती है वही रेडियो को चलाती है: ट्यूनर एक हल्के अवमंदित दोलक है जो एक आवृत्ति पर विशाल प्रतिक्रिया देता है और बाक़ी सब अनदेखी करता है, और वहाँ यही तीखापन पूरी बात है। (दूसरा उत्तर ऐसा भार-केंद्रण गढ़ता है जो मार्च करने से नहीं बनता, और चौथा ऐसा भार जोड़ता है जो कोई क़दम बना ही नहीं सकता।)"
+        },
+        "mr": {
+          "stem": "सैनिकांच्या तुकडीला पायी पूल ओलांडण्याआधी पावले तोडण्याचा आदेश दिला जातो, जरी बेतालपणे चालणारे तेच सैनिक नेमके तितकेच जड असले तरी. आदेश कशापासून वाचवत आहे ते समजावा, आणि बेतालपणे चालताना पूल सुरक्षित का ते सांगा.",
+          "choices": [
+            "पावले जुळवून चालणे चालीच्या वारंवारतेवर आवर्ती बल देते. ते पुलाच्या एखाद्या नैसर्गिक वारंवारतेशी जुळल्यास, प्रत्येक पाऊल आधीच उपस्थित असलेल्या गतीशी एका कलेत पोहोचते आणि तिच्यात भर घालते, म्हणून आयाम चक्रामागून चक्र वाढतो जोवर अवमंदन आणखी शोषू शकत नाही — हाच अनुनाद. बेतालपणे चालताना पावले यादृच्छिक कलांत पोहोचतात आणि बहुतांश कापली जातात; सरासरी ओझे तेच पण आवर्ती घटक गेला, आणि अनुनाद केवळ त्याच आवर्ती घटकाला वाढवू शकतो",
+            "पावले जुळवून चालणे अख्ख्या तुकडीचे ओझे एका वेळी एकाच फळीवर केंद्रित करते, आणि आदेश फक्त ओझे पुलावर पसरवतो",
+            "आदेश ही एक परंपरा आहे जिला कोणताही भौतिक आधार नाही, कारण पुलावरचे एकूण बल दोन्ही प्रकारे सारखेच",
+            "पावले जुळवून चालल्याने सैनिकांचे परिणामी वजन वाढते कारण प्रत्येक पाऊल जादा खालच्या बलासह पडते"
+          ],
+          "solution": "प्रश्न त्या भेदावर टेकलेला जो तिसरा पर्याय पूर्णपणे चुकवतो: एकूण बल आणि बलाचा आवर्ती घटक या वेगळ्या गोष्टी, आणि पूल दोघांची पर्वा वेगळ्या कारणांनी करतो. पूल म्हणजे काय तिथून सुरुवात करा. ती एक प्रत्यास्थ रचना, आणि कोणत्याही प्रत्यास्थ रचनेप्रमाणे तिच्या नैसर्गिक वारंवारता आहेत ज्यांवर ती ढळल्यास आंदोलन करेल — पायी पुलासाठी सहसा काही हर्ट्झ, जे चालण्याच्या वेगाच्या गैरसोयीने जवळ. तिला ढळवा आणि सोडा आणि ती त्याच दराने हलेल, सावकाश विझत, कारण पूल हलक्या अवमंदित असतात. आता चालक बल. चालणे हे स्थिर ओझे नव्हे; प्रत्येक पाऊल एक आवेग, आणि पावले जुळवून चालणारी तुकडी ते आवेग एकाच तीक्ष्ण वारंवारतेवर देते, पाऊल-दरावर. दोलकाला त्याच्या नैसर्गिक वारंवारतेवर आवर्ती बल द्या आणि प्रतिक्रिया समानुपाती नसते — ती साचत जाते. प्रत्येक रेटा तेव्हा पोहोचतो जेव्हा पूल आधीच त्याच दिशेने जात असतो ज्या दिशेने रेटा लागतो, म्हणून तो प्रत्येक चक्रावर धन कार्य करतो, आणि आयाम तोवर वाढतो जोवर प्रति चक्र दिलेली ऊर्जा प्रति चक्र अवमंदनाला गमावलेल्या ऊर्जेइतकी होत नाही. हलक्या अवमंदित रचनेत तो समतोल बिंदू फार उंच असू शकतो, आणि पुलाला त्याहून कितीतरी पुढे हलवता येते जितके त्याच्या आखणीकारांनी स्थितिकरीत्या लादले होते. 1831 मध्ये ब्रॉटन झुलता पूल पावले जुळवून चालणाऱ्या सैन्याखाली कोसळला, आणि तेव्हापासून हा आदेश प्रमाणित. आता बेताल स्थिती, आणि हाच तो भाग जो नीट समजून घेण्याजोगा. सैनिक नेमके तितकेच जड आहेत. पुलावरचे सरासरी बल अपरिवर्तित — तिसरा पर्याय याबद्दल बरोबर आणि चुकीचा निष्कर्ष काढतो. बदलले हे की पावले आता यादृच्छिक कलांत पोहोचतात. एकूण बलाचे स्थिर घटक अधिक आंदोलनशील घटक असे तुकडे करा: स्थिर घटक आधीसारखाच आणि पूल तो फक्त वाहतो, जसा तो कोणतेही स्थितिक ओझे वाहतो. पण आंदोलनशील घटक आता असंबद्ध कलांच्या अनेक आवेगांची बेरीज, आणि अशी बेरीज N ऐवजी केवळ √N नुसार वाढते. दोनशे सैनिक पावले जुळवून एका माणसाच्या आवर्ती बलाच्या दोनशेपट देतात; दोनशे बेताल सुमारे चौदापट. संरक्षण अख्खेच्या अख्खे हेच. दोन सामान्यीकरणे नेण्याजोगी. पहिले, अनुनाद नेमका तिथेच धोकादायक जिथे अवमंदन कमी, म्हणूनच आधुनिक उपाय संचलनावर बंदी नव्हे तर जुळवलेले वस्तुमान-अवमंदक जोडणे — लंडनचा मिलेनियम पूल बंद केला गेला आणि त्यांनी सज्ज केला गेला जेव्हा पादचाऱ्यांनी नकळत आपली पावले त्याच्या झोक्याशी जुळवली. दुसरे, तीच भौतिकी जी पुलाला धमकावते तीच रेडिओ चालवते: ट्यूनर हा हलका अवमंदित दोलक जो एका वारंवारतेवर प्रचंड प्रतिक्रिया देतो आणि बाकी सर्व दुर्लक्षतो, आणि तिथे हेच तीक्ष्णपण अख्खा मुद्दा. (दुसरे उत्तर असे ओझे-केंद्रीकरण घडवते जे संचलनाने तयार होत नाही, आणि चौथे असे वजन जोडते जे कोणतेही पाऊल तयार करूच शकत नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "An oscillator has a period of 2 s. What is its frequency, in hertz?",
+      "choices": [
+        "0.5",
+        "4",
+        "0.25",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "Frequency is the reciprocal of the period: f = 1/T = 1/2 = 0.5 Hz. Half a cycle is completed every second. (2 quotes the period itself as though it were a frequency.)",
+      "checkExpr": "1/2",
+      "translations": {
+        "hi": {
+          "stem": "किसी दोलक का आवर्तकाल 2 s है। उसकी आवृत्ति हर्ट्ज़ में क्या है?",
+          "choices": [
+            "0.5",
+            "4",
+            "0.25",
+            "2"
+          ],
+          "solution": "आवृत्ति आवर्तकाल का व्युत्क्रम है: f = 1/T = 1/2 = 0.5 Hz. हर सेकंड आधा चक्र पूरा होता है। (2 स्वयं आवर्तकाल को ऐसे बता देता है मानो वह आवृत्ति हो।)"
+        },
+        "mr": {
+          "stem": "एका दोलकाचा आवर्तकाल 2 s आहे. त्याची वारंवारता हर्ट्झमध्ये किती?",
+          "choices": [
+            "0.5",
+            "4",
+            "0.25",
+            "2"
+          ],
+          "solution": "वारंवारता ही आवर्तकालाची व्यस्त: f = 1/T = 1/2 = 0.5 Hz. दर सेकंदाला अर्धे चक्र पूर्ण होते. (2 स्वतः आवर्तकाल असे सांगते जणू ती वारंवारता असावी.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A 2 kg mass hangs from a spring of stiffness 200 N/m. What is its angular frequency, in rad/s?",
+      "choices": [
+        "20",
+        "100",
+        "1",
+        "10"
+      ],
+      "answerIndex": 3,
+      "solution": "ω = √(k/m) = √(200/2) = √100 = 10 rad/s. A stiffer spring or a lighter mass both raise it. (100 is ω² and forgets the square root.)",
+      "checkExpr": "(200/2)^0.5",
+      "translations": {
+        "hi": {
+          "stem": "200 N/m दृढ़ता की स्प्रिंग से 2 kg का द्रव्यमान लटका है। उसकी कोणीय आवृत्ति rad/s में क्या है?",
+          "choices": [
+            "20",
+            "100",
+            "1",
+            "10"
+          ],
+          "solution": "ω = √(k/m) = √(200/2) = √100 = 10 rad/s. कड़ी स्प्रिंग या हल्का द्रव्यमान दोनों उसे बढ़ाते हैं। (100 ω² है और वर्गमूल भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "200 N/m ताठरतेच्या स्प्रिंगला 2 kg वस्तुमान लटकले आहे. त्याची कोनीय वारंवारता rad/s मध्ये किती?",
+          "choices": [
+            "20",
+            "100",
+            "1",
+            "10"
+          ],
+          "solution": "ω = √(k/m) = √(200/2) = √100 = 10 rad/s. ताठर स्प्रिंग वा हलके वस्तुमान दोन्ही तिला वाढवतात. (100 हे ω² आणि वर्गमूळ विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A pendulum has a period of 2 s. Its length is made four times as long. What is the new period, in seconds?",
+      "choices": [
+        "1 s",
+        "2 s",
+        "4 s",
+        "8 s"
+      ],
+      "answerIndex": 2,
+      "solution": "The period goes as the square root of the length, so quadrupling l doubles T: 2 × 2 = 4 s. (8 assumes direct proportionality to the length, which would need a formula without the root.)",
+      "checkExpr": "2*4^0.5",
+      "translations": {
+        "hi": {
+          "stem": "किसी लोलक का आवर्तकाल 2 s है। उसकी लंबाई चार गुनी कर दी जाती है। नया आवर्तकाल सेकंड में क्या है?",
+          "choices": [
+            "1 s",
+            "2 s",
+            "4 s",
+            "8 s"
+          ],
+          "solution": "आवर्तकाल लंबाई के वर्गमूल के अनुसार चलता है, अतः l चौगुना करने पर T दोगुना: 2 × 2 = 4 s. (8 लंबाई के सीधे समानुपात मान लेता है, जिसके लिए बिना मूल वाला सूत्र चाहिए।)"
+        },
+        "mr": {
+          "stem": "एका लंबकाचा आवर्तकाल 2 s आहे. त्याची लांबी चौपट केली जाते. नवा आवर्तकाल सेकंदांत किती?",
+          "choices": [
+            "1 s",
+            "2 s",
+            "4 s",
+            "8 s"
+          ],
+          "solution": "आवर्तकाल लांबीच्या वर्गमुळानुसार जातो, म्हणून l चौपट केल्यास T दुप्पट: 2 × 2 = 4 s. (8 लांबीच्या थेट समानुपाती मानते, ज्यासाठी मुळाविना सूत्र लागेल.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A body performs simple harmonic motion with amplitude 0.05 m and angular frequency 10 rad/s. What is its maximum speed?",
+      "choices": [
+        "0.005 m/s",
+        "2 m/s",
+        "5 m/s",
+        "0.5 m/s"
+      ],
+      "answerIndex": 3,
+      "solution": "The maximum speed is ωA = 10 × 0.05 = 0.5 m/s, reached as the body passes through the centre. At the extremes the speed is zero and the acceleration is greatest. (5 multiplies by 100 instead of 10.)",
+      "checkExpr": "0.05*10",
+      "translations": {
+        "hi": {
+          "stem": "कोई पिंड 0.05 m आयाम और 10 rad/s कोणीय आवृत्ति से सरल आवर्त गति करता है। उसकी अधिकतम चाल क्या है?",
+          "choices": [
+            "0.005 m/s",
+            "2 m/s",
+            "5 m/s",
+            "0.5 m/s"
+          ],
+          "solution": "अधिकतम चाल ωA = 10 × 0.05 = 0.5 m/s है, जो पिंड के बीच से गुज़रते समय मिलती है। छोरों पर चाल शून्य और त्वरण सबसे बड़ा होता है। (5 10 के बजाय 100 से गुणा करता है।)"
+        },
+        "mr": {
+          "stem": "एक पिंड 0.05 m आयाम आणि 10 rad/s कोनीय वारंवारतेने सरळ आवर्ती गती करतो. त्याची कमाल चाल किती?",
+          "choices": [
+            "0.005 m/s",
+            "2 m/s",
+            "5 m/s",
+            "0.5 m/s"
+          ],
+          "solution": "कमाल चाल ωA = 10 × 0.05 = 0.5 m/s, जी पिंड मध्यातून जाताना मिळते. टोकांवर चाल शून्य आणि त्वरण सर्वांत मोठे. (5 हे 10 ऐवजी 100 ने गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The same oscillator has amplitude 0.05 m and angular frequency 10 rad/s. What is its maximum acceleration?",
+      "choices": [
+        "0.05",
+        "5",
+        "0.5",
+        "50"
+      ],
+      "answerIndex": 1,
+      "solution": "The maximum acceleration is ω²A = 100 × 0.05 = 5 m/s², reached at the extremes where the displacement is largest. Note that the acceleration peaks exactly where the speed vanishes — the two are a quarter of a cycle out of phase. (0.5 uses ω rather than ω².)",
+      "checkExpr": "10^2*0.05",
+      "translations": {
+        "hi": {
+          "stem": "उसी दोलक का आयाम 0.05 m और कोणीय आवृत्ति 10 rad/s है। उसका अधिकतम त्वरण क्या है?",
+          "choices": [
+            "0.05",
+            "5",
+            "0.5",
+            "50"
+          ],
+          "solution": "अधिकतम त्वरण ω²A = 100 × 0.05 = 5 m/s² है, जो छोरों पर मिलता है जहाँ विस्थापन सबसे बड़ा है। ध्यान दो त्वरण ठीक वहाँ शिखर पर है जहाँ चाल लुप्त होती है — दोनों चौथाई चक्र की कला-भिन्नता पर हैं। (0.5 ω² के बजाय ω लगाता है।)"
+        },
+        "mr": {
+          "stem": "त्याच दोलकाचा आयाम 0.05 m आणि कोनीय वारंवारता 10 rad/s आहे. त्याचे कमाल त्वरण किती?",
+          "choices": [
+            "0.05",
+            "5",
+            "0.5",
+            "50"
+          ],
+          "solution": "कमाल त्वरण ω²A = 100 × 0.05 = 5 m/s², जे टोकांवर मिळते जिथे विस्थापन सर्वांत मोठे. लक्षात घ्या त्वरण नेमके तिथे शिखरावर जिथे चाल लोप पावते — दोघे पाव चक्राच्या कला-फरकावर. (0.5 हे ω² ऐवजी ω वापरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A mass on a spring of stiffness 200 N/m oscillates with amplitude 0.05 m. What is the total energy of the oscillation?",
+      "choices": [
+        "0.25",
+        "0.5",
+        "5",
+        "0.025"
+      ],
+      "answerIndex": 0,
+      "solution": "E = ½kA² = ½ × 200 × 0.0025 = 0.25 J. This is entirely potential at the extremes and entirely kinetic at the centre, and it never changes in between. Doubling the amplitude would quadruple it. (0.5 drops the half.)",
+      "checkExpr": "0.5*200*0.05^2",
+      "translations": {
+        "hi": {
+          "stem": "200 N/m दृढ़ता की स्प्रिंग पर द्रव्यमान 0.05 m आयाम से दोलन करता है। दोलन की कुल ऊर्जा क्या है?",
+          "choices": [
+            "0.25",
+            "0.5",
+            "5",
+            "0.025"
+          ],
+          "solution": "E = ½kA² = ½ × 200 × 0.0025 = 0.25 J. यह छोरों पर पूरी तरह स्थितिज है और बीच में पूरी तरह गतिज, और बीच में वह कभी नहीं बदलती। आयाम दोगुना करने पर वह चौगुनी हो जाती। (0.5 आधा गिरा देता है।)"
+        },
+        "mr": {
+          "stem": "200 N/m ताठरतेच्या स्प्रिंगवरचे वस्तुमान 0.05 m आयामाने आंदोलन करते. आंदोलनाची एकूण ऊर्जा किती?",
+          "choices": [
+            "0.25",
+            "0.5",
+            "5",
+            "0.025"
+          ],
+          "solution": "E = ½kA² = ½ × 200 × 0.0025 = 0.25 J. ही टोकांवर पूर्णपणे स्थितिज आणि मध्यभागी पूर्णपणे गतिज, आणि मधल्या काळात ती कधीच बदलत नाही. आयाम दुप्पट केल्यास ती चौपट झाली असती. (0.5 निम्मे गाळते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "An oscillator is at a displacement equal to half its amplitude. What percentage of its total energy is kinetic at that instant?",
+      "choices": [
+        "50",
+        "75",
+        "87.5",
+        "25"
+      ],
+      "answerIndex": 1,
+      "solution": "Potential energy is ½kx², so at x = A/2 it is a quarter of ½kA² — that is 25 per cent of the total. The rest is kinetic: 75 per cent. Note that the energy is only a quarter potential at half the amplitude, because the square makes the potential energy grow slowly at first and steeply near the ends. (50 assumes a linear split.)",
+      "checkExpr": "100*(1-0.25)",
+      "translations": {
+        "hi": {
+          "stem": "कोई दोलक अपने आयाम के आधे विस्थापन पर है। उस क्षण उसकी कुल ऊर्जा का कितना प्रतिशत गतिज है?",
+          "choices": [
+            "50",
+            "75",
+            "87.5",
+            "25"
+          ],
+          "solution": "स्थितिज ऊर्जा ½kx² है, अतः x = A/2 पर वह ½kA² की एक चौथाई है — यानी कुल का 25 प्रतिशत। शेष गतिज: 75 प्रतिशत। ध्यान दो आधे आयाम पर ऊर्जा केवल एक चौथाई स्थितिज है, क्योंकि वर्ग स्थितिज ऊर्जा को शुरू में धीरे और छोरों के पास तीखा बढ़ाता है। (50 रैखिक बँटवारा मान लेता है।)"
+        },
+        "mr": {
+          "stem": "एक दोलक आपल्या आयामाच्या निम्म्या विस्थापनावर आहे. त्या क्षणी त्याच्या एकूण ऊर्जेच्या किती टक्के गतिज आहे?",
+          "choices": [
+            "50",
+            "75",
+            "87.5",
+            "25"
+          ],
+          "solution": "स्थितिज ऊर्जा ½kx², म्हणून x = A/2 वर ती ½kA² च्या एक चतुर्थांश — म्हणजे एकूणाच्या 25 टक्के. उरलेली गतिज: 75 टक्के. लक्षात घ्या निम्म्या आयामावर ऊर्जा केवळ एक चतुर्थांश स्थितिज, कारण वर्ग स्थितिज ऊर्जेला सुरुवातीला सावकाश आणि टोकांजवळ तीव्र वाढवतो. (50 रेषीय विभागणी गृहीत धरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A pendulum with a period of 2 s on Earth is taken to the Moon, where g is one sixth of its Earth value. What is its period there, in seconds?",
+      "choices": [
+        "12 s",
+        "4.898979 s",
+        "0.816497 s",
+        "2 s"
+      ],
+      "answerIndex": 1,
+      "solution": "T ∝ 1/√g, so dividing g by six multiplies T by √6: 2 × 2.449490 = 4.898979 s. A pendulum clock taken to the Moon would run at less than half speed, losing more than half a day every day. (12 divides g by six inside the formula without taking the root, and 0.816497 moves the wrong way.)",
+      "checkExpr": "2*6^0.5",
+      "translations": {
+        "hi": {
+          "stem": "पृथ्वी पर 2 s आवर्तकाल वाला लोलक चंद्रमा पर ले जाया जाता है, जहाँ g पृथ्वी के मान का छठा भाग है। वहाँ उसका आवर्तकाल सेकंड में क्या है?",
+          "choices": [
+            "12 s",
+            "4.898979 s",
+            "0.816497 s",
+            "2 s"
+          ],
+          "solution": "T ∝ 1/√g, अतः g को छह से भाग देने पर T √6 गुना होता है: 2 × 2.449490 = 4.898979 s. चंद्रमा पर ले जाई गई लोलक-घड़ी आधी से भी कम गति से चलती, हर दिन आधे दिन से अधिक पीछे रहती। (12 सूत्र में g को छह से भाग देता है पर मूल नहीं लेता, और 0.816497 उलटी दिशा में जाता है।)"
+        },
+        "mr": {
+          "stem": "पृथ्वीवर 2 s आवर्तकाल असलेला लंबक चंद्रावर नेला जातो, जिथे g पृथ्वीच्या मूल्याचा सहावा भाग आहे. तिथे त्याचा आवर्तकाल सेकंदांत किती?",
+          "choices": [
+            "12 s",
+            "4.898979 s",
+            "0.816497 s",
+            "2 s"
+          ],
+          "solution": "T ∝ 1/√g, म्हणून g सहाने भागल्यास T √6 पट होतो: 2 × 2.449490 = 4.898979 s. चंद्रावर नेलेले लंबक-घड्याळ निम्म्याहूनही कमी वेगाने चालले असते, दररोज अर्ध्या दिवसाहून अधिक मागे पडत. (12 सूत्रात g सहाने भागते पण मूळ घेत नाही, आणि 0.816497 उलट दिशेने जाते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Two identical springs, each of stiffness 200 N/m, are joined end to end and a mass is hung from the pair. What is the effective stiffness, in N/m?",
+      "choices": [
+        "50",
+        "100",
+        "400",
+        "300"
+      ],
+      "answerIndex": 1,
+      "solution": "In series each spring carries the full load and each stretches by the full amount, so the total extension is doubled for the same force and the effective stiffness is halved: 200/2 = 100 N/m. Joined side by side instead, the load would be shared and the stiffness would double to 400. A longer spring is therefore a softer one, which is why 400 is offered as the parallel answer. (300 adds and halves without reason.)",
+      "checkExpr": "200/2",
+      "translations": {
+        "hi": {
+          "stem": "200 N/m दृढ़ता की दो एक-सी स्प्रिंगें सिरे से सिरा जोड़ी जाती हैं और जोड़ी से द्रव्यमान लटकाया जाता है। प्रभावी दृढ़ता N/m में क्या है?",
+          "choices": [
+            "50",
+            "100",
+            "400",
+            "300"
+          ],
+          "solution": "श्रेणी में हर स्प्रिंग पूरा भार ढोती है और हर एक पूरा खिंचती है, अतः उसी बल पर कुल विस्तार दोगुना और प्रभावी दृढ़ता आधी: 200/2 = 100 N/m. इसके बजाय अगल-बग़ल जोड़ी जाएँ तो भार बँट जाता और दृढ़ता दोगुनी होकर 400 हो जाती। अतः लंबी स्प्रिंग नरम स्प्रिंग है, और इसीलिए 400 समांतर वाले उत्तर के रूप में रखा गया है। (300 बिना कारण जोड़कर आधा कर देता है।)"
+        },
+        "mr": {
+          "stem": "200 N/m ताठरतेच्या दोन सारख्या स्प्रिंगा टोकाला टोक जोडल्या जातात आणि जोडीला वस्तुमान लटकवले जाते. परिणामी ताठरता N/m मध्ये किती?",
+          "choices": [
+            "50",
+            "100",
+            "400",
+            "300"
+          ],
+          "solution": "श्रेणीत प्रत्येक स्प्रिंग पूर्ण ओझे वाहते आणि प्रत्येक पूर्ण ताणली जाते, म्हणून त्याच बलावर एकूण ताण दुप्पट आणि परिणामी ताठरता निम्मी: 200/2 = 100 N/m. त्याऐवजी शेजारीशेजारी जोडल्यास ओझे वाटले गेले असते आणि ताठरता दुप्पट होऊन 400 झाली असती. म्हणून लांब स्प्रिंग ही मऊ स्प्रिंग, आणि म्हणूनच 400 हे समांतर उत्तर म्हणून ठेवले आहे. (300 विनाकारण जोडून निम्मे करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A seconds pendulum has a period of exactly 2 s. Taking g as 10 m/s² and π² as 10, what is its length in metres?",
+      "choices": [
+        "0.5 m",
+        "1 m",
+        "2 m",
+        "4 m"
+      ],
+      "answerIndex": 1,
+      "solution": "From T = 2π√(l/g), squaring gives T² = 4π²l/g, so l = gT²/(4π²) = 10 × 4/(4 × 10) = 1 m. The name is a small trap worth noticing: a seconds pendulum takes two seconds for a full cycle, not one, because it is named for the one second each half-swing takes — the tick and the tock are separate. Its true length is 0.994 m with the real values of g and π², which is why an old longcase clock stands about a metre of pendulum tall and why the metre was once seriously proposed as the length of a pendulum beating seconds. That definition was rejected for exactly the reason the previous question exposes: g varies with latitude, so the metre would have had a different length in Paris and in Cayenne, and a unit that changes with where you stand is no unit at all. (2 forgets to square T's relationship, and 0.5 treats the period as one second.)",
+      "checkExpr": "10*2^2/(4*10)",
+      "translations": {
+        "hi": {
+          "stem": "सेकंड-लोलक का आवर्तकाल ठीक 2 s है। g = 10 m/s² और π² = 10 लेते हुए, उसकी लंबाई मीटर में क्या है?",
+          "choices": [
+            "0.5 m",
+            "1 m",
+            "2 m",
+            "4 m"
+          ],
+          "solution": "T = 2π√(l/g) से, वर्ग करने पर T² = 4π²l/g, अतः l = gT²/(4π²) = 10 × 4/(4 × 10) = 1 m. नाम में एक छोटा जाल ध्यान देने योग्य है: सेकंड-लोलक पूरे चक्र में दो सेकंड लेता है, एक नहीं, क्योंकि उसका नाम उस एक सेकंड पर है जो हर आधा झूला लेता है — टिक और टॉक अलग हैं। g और π² के असली मानों के साथ उसकी सच्ची लंबाई 0.994 m है, इसीलिए पुरानी लंबी घड़ी का लोलक लगभग एक मीटर ऊँचा खड़ा होता है और इसीलिए एक समय मीटर को गंभीरता से सेकंड पीटते लोलक की लंबाई कहने का प्रस्ताव था। वह परिभाषा ठीक उसी कारण से ठुकराई गई जिसे पिछला प्रश्न उघाड़ता है: g अक्षांश से बदलता है, अतः मीटर की लंबाई पेरिस और केयेन में भिन्न होती, और जो मात्रक इससे बदले कि तुम कहाँ खड़े हो वह मात्रक है ही नहीं। (2 T के संबंध का वर्ग करना भूल जाता है, और 0.5 आवर्तकाल एक सेकंड मान लेता है।)"
+        },
+        "mr": {
+          "stem": "सेकंद-लंबकाचा आवर्तकाल नेमका 2 s आहे. g = 10 m/s² आणि π² = 10 घेतल्यास, त्याची लांबी मीटरमध्ये किती?",
+          "choices": [
+            "0.5 m",
+            "1 m",
+            "2 m",
+            "4 m"
+          ],
+          "solution": "T = 2π√(l/g) वरून, वर्ग केल्यास T² = 4π²l/g, म्हणून l = gT²/(4π²) = 10 × 4/(4 × 10) = 1 m. नावात एक लहान सापळा लक्षात घेण्याजोगा: सेकंद-लंबक पूर्ण चक्रात दोन सेकंद घेतो, एक नव्हे, कारण त्याचे नाव त्या एका सेकंदावर जो प्रत्येक अर्धा झोका घेतो — टिक आणि टॉक वेगळे. g आणि π² च्या खऱ्या मूल्यांसह त्याची खरी लांबी 0.994 m, म्हणूनच जुन्या उंच घड्याळाचा लंबक सुमारे एक मीटर उंच उभा असतो आणि म्हणूनच एकेकाळी मीटरला गांभीर्याने सेकंद ठोकणाऱ्या लंबकाची लांबी म्हणण्याचा प्रस्ताव होता. ती व्याख्या नेमक्या त्याच कारणाने नाकारली गेली जे मागचा प्रश्न उघड करतो: g अक्षांशानुसार बदलतो, म्हणून मीटरची लांबी पॅरिस आणि कायेनमध्ये वेगळी झाली असती, आणि तुम्ही कुठे उभे आहात यानुसार बदलणारे एकक हे एककच नाही. (2 हे T च्या संबंधाचा वर्ग करायचे विसरते, आणि 0.5 आवर्तकाल एक सेकंद मानते.)"
+        }
+      }
+    }
+  ]
+}

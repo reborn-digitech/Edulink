@@ -4326,6 +4326,708 @@ export const G11_PHYSICS: Chapter[] = [
     ],
   },
 
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 13 — Oscillations                                               */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "physics-11-oscillations",
+    subject: "PHYSICS",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 13 — Oscillations",
+      hi: "अध्याय 13 — दोलन",
+      mr: "प्रकरण 13 — आंदोलने",
+    },
+    name: {
+      en: "Oscillations",
+      hi: "दोलन",
+      mr: "आंदोलने",
+    },
+    summary: {
+      en: "One equation turns up wherever something is pulled back in proportion to how far it has strayed — a mass on a spring, a pendulum, an atom in a crystal, a bridge in the wind. A motion whose period does not care how big the swing is, an energy that pours back and forth between two forms twice a cycle, a friction that steals the amplitude and leaves the rhythm, and a push at just the right moment that can bring a bridge down.",
+      hi: "एक ही समीकरण वहाँ-वहाँ आ खड़ा होता है जहाँ किसी चीज़ को उतना ही पीछे खींचा जाता है जितनी वह भटकी हो — स्प्रिंग पर द्रव्यमान, लोलक, क्रिस्टल में परमाणु, हवा में पुल। वह गति जिसका आवर्तकाल इसकी परवाह नहीं करता कि झूला कितना बड़ा है, वह ऊर्जा जो चक्र में दो बार दो रूपों के बीच उड़ेली जाती है, वह घर्षण जो आयाम चुरा लेता और लय छोड़ जाता है, और ठीक सही क्षण पर दिया वह धक्का जो पुल गिरा सकता है।",
+      mr: "एकच समीकरण तिथे तिथे उभे राहते जिथे एखाद्या गोष्टीला ती जितकी भरकटली तितकीच मागे ओढले जाते — स्प्रिंगवरचे वस्तुमान, लंबक, स्फटिकातील अणू, वाऱ्यातील पूल. ती गती जिच्या आवर्तकालाला झोका किती मोठा याची पर्वा नाही, ती ऊर्जा जी चक्रात दोनदा दोन रूपांमध्ये ओतली जाते, ते घर्षण जे आयाम चोरते आणि लय ठेवते, आणि नेमक्या योग्य क्षणी दिलेला तो रेटा जो पूल पाडू शकतो.",
+    },
+    position: 13,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "simple-harmonic-motion",
+        name: {
+          en: "Simple harmonic motion",
+          hi: "सरल आवर्त गति",
+          mr: "सरळ आवर्ती गती",
+        },
+        kind: "motion",
+        prompt: {
+          en: "The restoring force is proportional to the displacement and always points back towards the middle, so the acceleration is −ω²x and the motion traces a sine curve in time. Which motion is this?",
+          hi: "प्रत्यानयन बल विस्थापन का समानुपाती है और सदा बीच की ओर लौटता है, अतः त्वरण −ω²x है और गति समय में ज्या-वक्र खींचती है। यह कौन-सी गति है?",
+          mr: "पुनःस्थापक बल विस्थापनाच्या समानुपाती आणि नेहमी मध्याकडे परतणारे, म्हणून त्वरण −ω²x आणि गती काळात साइन-वक्र काढते. ही कोणती गती?",
+        },
+        statement: {
+          en: "Simple harmonic motion is the motion that follows from a restoring force proportional to displacement, giving a = −ω²x and a displacement that varies sinusoidally with time.",
+          hi: "सरल आवर्त गति वह गति है जो विस्थापन के समानुपाती प्रत्यानयन बल से निकलती है, जिससे a = −ω²x मिलता है और विस्थापन समय के साथ ज्यावक्रीय रूप से बदलता है।",
+          mr: "सरळ आवर्ती गती ही ती गती जी विस्थापनाच्या समानुपाती पुनःस्थापक बलातून निघते, ज्यातून a = −ω²x मिळते आणि विस्थापन काळासोबत साइनवक्रीय बदलते.",
+        },
+        detail: {
+          en: "Its angular frequency ω is √(k/m) for a spring and √(g/l) for a pendulum, and in both cases the period depends on the system alone and not on how it was started.",
+          hi: "उसकी कोणीय आवृत्ति ω स्प्रिंग के लिए √(k/m) और लोलक के लिए √(g/l) है, और दोनों में आवर्तकाल केवल निकाय पर निर्भर है, इस पर नहीं कि उसे शुरू कैसे किया गया।",
+          mr: "तिची कोनीय वारंवारता ω स्प्रिंगसाठी √(k/m) आणि लंबकासाठी √(g/l), आणि दोन्हींत आवर्तकाल केवळ प्रणालीवर अवलंबून, ती कशी सुरू केली यावर नाही.",
+        },
+        extra: {
+          en: "Almost any system disturbed slightly from a stable equilibrium performs it, because the first term of any restoring force expanded about that point is proportional to the displacement.",
+          hi: "स्थायी संतुलन से थोड़ा हटाया गया लगभग हर निकाय इसे करता है, क्योंकि उस बिंदु के परितः विस्तारित किसी भी प्रत्यानयन बल का पहला पद विस्थापन का समानुपाती होता है।",
+          mr: "स्थिर समतोलापासून थोडा ढळलेला जवळपास प्रत्येक संच ही करतो, कारण त्या बिंदूभोवती विस्तारित केलेल्या कोणत्याही पुनःस्थापक बलाचे पहिले पद विस्थापनाच्या समानुपाती असते.",
+        },
+        pair: {
+          left: {
+            en: "Acceleration always pointing back at the middle",
+            hi: "त्वरण सदा बीच की ओर लौटता हुआ",
+            mr: "त्वरण नेहमी मध्याकडे परतणारे",
+          },
+          right: {
+            en: "simple harmonic motion",
+            hi: "सरल आवर्त गति",
+            mr: "सरळ आवर्ती गती",
+          },
+        },
+      },
+      {
+        id: "isochronism",
+        name: {
+          en: "Isochronism of the swing",
+          hi: "झूले की समकालिकता",
+          mr: "झोक्याची समकालिकता",
+        },
+        kind: "motion",
+        prompt: {
+          en: "Galileo timed a swinging lamp against his own pulse and found that a wide swing and a narrow one took the same time, which is why the property could be used to build a clock. Which property is this?",
+          hi: "गैलीलियो ने झूलते दीप का समय अपनी नाड़ी से नापा और पाया कि चौड़ा झूला और सँकरा झूला एक ही समय लेते हैं, इसीलिए इस गुण से घड़ी बनाई जा सकी। यह कौन-सा गुण है?",
+          mr: "गॅलिलिओने झुलणाऱ्या दिव्याचा काळ स्वतःच्या नाडीने मोजला आणि आढळले की रुंद झोका आणि अरुंद झोका एकच वेळ घेतात, म्हणूनच या गुणधर्मातून घड्याळ बनवता आले. हा कोणता गुणधर्म?",
+        },
+        statement: {
+          en: "For small swings the period of an oscillator does not depend on the amplitude, so a dying pendulum keeps perfect time even as its swing shrinks to nothing.",
+          hi: "छोटे झूलों के लिए दोलक का आवर्तकाल आयाम पर निर्भर नहीं, अतः मंद पड़ता लोलक तब भी ठीक समय रखता है जब उसका झूला घटकर शून्य हो रहा हो।",
+          mr: "लहान झोक्यांसाठी दोलकाचा आवर्तकाल आयामावर अवलंबून नाही, म्हणून विझत जाणारा लंबक त्याचा झोका शून्यावर येत असतानाही अचूक वेळ राखतो.",
+        },
+        detail: {
+          en: "It holds only while sin θ is close to θ, which is why a pendulum clock must be given a small swing and why a wide-swinging pendulum runs slightly slow.",
+          hi: "यह केवल तब तक चलता है जब sin θ, θ के पास हो, इसीलिए लोलक-घड़ी को छोटा झूला देना पड़ता है और इसीलिए चौड़ा झूलता लोलक थोड़ा धीमा चलता है।",
+          mr: "हे केवळ तोवर चालते जोवर sin θ हा θ जवळ असतो, म्हणूनच लंबक-घड्याळाला लहान झोका द्यावा लागतो आणि म्हणूनच रुंद झुलणारा लंबक थोडा सावकाश चालतो.",
+        },
+        extra: {
+          en: "A pendulum's period is also independent of the bob's mass, so a heavy clock weight and a light one keep the same time — the same cancellation that makes all bodies fall together.",
+          hi: "लोलक का आवर्तकाल गोलक के द्रव्यमान से भी स्वतंत्र है, अतः भारी घड़ी-बाट और हल्का दोनों वही समय रखते हैं — वही कटाव जो सब पिंडों को साथ गिराता है।",
+          mr: "लंबकाचा आवर्तकाल गोलकाच्या वस्तुमानापासूनही स्वतंत्र, म्हणून जड घड्याळ-वजन आणि हलके दोन्ही तोच वेळ राखतात — तीच कापाकापी जी सर्व पिंडांना एकत्र पाडते.",
+        },
+        pair: {
+          left: {
+            en: "A dying swing that still keeps time",
+            hi: "मंद पड़ता झूला जो फिर भी समय रखता है",
+            mr: "विझत जाणारा झोका जो तरीही वेळ राखतो",
+          },
+          right: {
+            en: "isochronism of the swing",
+            hi: "झूले की समकालिकता",
+            mr: "झोक्याची समकालिकता",
+          },
+        },
+      },
+      {
+        id: "energy-exchange-in-oscillation",
+        name: {
+          en: "The energy exchange in oscillation",
+          hi: "दोलन में ऊर्जा-विनिमय",
+          mr: "आंदोलनातील ऊर्जा-देवाणघेवाण",
+        },
+        kind: "motion",
+        prompt: {
+          en: "All kinetic at the centre, all potential at the ends, and the two swapping places twice in every cycle while their sum never changes at all. Which behaviour is this?",
+          hi: "बीच में सब गतिज, सिरों पर सब स्थितिज, और दोनों हर चक्र में दो बार जगह बदलते हुए जबकि उनका योग बिलकुल नहीं बदलता। यह कौन-सा व्यवहार है?",
+          mr: "मध्यभागी सर्व गतिज, टोकांना सर्व स्थितिज, आणि दोघे प्रत्येक चक्रात दोनदा जागा बदलत असताना त्यांची बेरीज मुळीच बदलत नाही. हे कोणते वर्तन?",
+        },
+        statement: {
+          en: "In an undamped oscillator the total energy ½kA² is constant, shifting entirely into kinetic form at the equilibrium point and entirely into potential form at the extremes.",
+          hi: "अवमंदन-रहित दोलक में कुल ऊर्जा ½kA² अचर है, जो संतुलन-बिंदु पर पूरी तरह गतिज रूप में और छोरों पर पूरी तरह स्थितिज रूप में बदल जाती है।",
+          mr: "अवमंदनविरहित दोलकात एकूण ऊर्जा ½kA² अचल असते, जी समतोल बिंदूवर पूर्णपणे गतिज रूपात आणि टोकांवर पूर्णपणे स्थितिज रूपात बदलते.",
+        },
+        detail: {
+          en: "Because the energy goes as the square of the amplitude, doubling the swing quadruples the energy, and each form completes two full cycles for every one of the displacement.",
+          hi: "चूँकि ऊर्जा आयाम के वर्ग के अनुसार चलती है, झूला दोगुना करने पर ऊर्जा चौगुनी हो जाती है, और विस्थापन के हर एक चक्र पर हर रूप दो पूरे चक्र पूरे करता है।",
+          mr: "ऊर्जा आयामाच्या वर्गानुसार जात असल्याने झोका दुप्पट केल्यास ऊर्जा चौपट होते, आणि विस्थापनाच्या प्रत्येक एका चक्रावर प्रत्येक रूप दोन पूर्ण चक्रे पूर्ण करते.",
+        },
+        extra: {
+          en: "Averaged over a whole cycle the kinetic and potential energies are exactly equal, each holding half the total, which is a general result for any harmonic system.",
+          hi: "पूरे चक्र पर औसत लिया जाए तो गतिज और स्थितिज ऊर्जाएँ ठीक बराबर हैं, हर एक कुल का आधा रखती है, और यह किसी भी आवर्त निकाय के लिए सामान्य परिणाम है।",
+          mr: "अख्ख्या चक्रावर सरासरी घेतल्यास गतिज आणि स्थितिज ऊर्जा नेमक्या समान असतात, प्रत्येक एकूणाचा निम्मा भाग राखते, आणि हा कोणत्याही आवर्ती संचासाठी सामान्य निकाल.",
+        },
+        pair: {
+          left: {
+            en: "Two full energy cycles for every swing",
+            hi: "हर झूले पर ऊर्जा के दो पूरे चक्र",
+            mr: "प्रत्येक झोक्यावर ऊर्जेची दोन पूर्ण चक्रे",
+          },
+          right: {
+            en: "the energy exchange in oscillation",
+            hi: "दोलन में ऊर्जा-विनिमय",
+            mr: "आंदोलनातील ऊर्जा-देवाणघेवाण",
+          },
+        },
+      },
+      {
+        id: "phase-of-an-oscillation",
+        name: {
+          en: "The phase of an oscillation",
+          hi: "दोलन की कला",
+          mr: "आंदोलनाची कला",
+        },
+        kind: "description",
+        prompt: {
+          en: "Two identical pendulums swinging at the same rate can be passing each other in opposite directions or moving together, and the quantity that says which is not the frequency but where in the cycle each one is. Which quantity is this?",
+          hi: "एक ही दर से झूलते दो एक-से लोलक एक-दूसरे के पास विपरीत दिशाओं में गुज़र सकते हैं या साथ चल सकते हैं, और जो राशि यह बताती है वह आवृत्ति नहीं बल्कि यह है कि हर एक चक्र में कहाँ है। यह कौन-सी राशि है?",
+          mr: "एकाच दराने झुलणारे दोन सारखे लंबक एकमेकांजवळून विरुद्ध दिशांनी जाऊ शकतात वा एकत्र जाऊ शकतात, आणि जी राशी हे सांगते ती वारंवारता नव्हे तर प्रत्येक चक्रात कुठे आहे ही. ही कोणती राशी?",
+        },
+        statement: {
+          en: "The phase is the angle (ωt + φ) that fixes where in its cycle an oscillator is at a given instant, so two oscillators of the same frequency can still differ by a constant phase.",
+          hi: "कला वह कोण (ωt + φ) है जो तय करता है कि दिए क्षण पर दोलक अपने चक्र में कहाँ है, अतः एक ही आवृत्ति के दो दोलक फिर भी अचर कला से भिन्न हो सकते हैं।",
+          mr: "कला म्हणजे तो कोन (ωt + φ) जो ठरवतो की दिलेल्या क्षणी दोलक आपल्या चक्रात कुठे आहे, म्हणून एकाच वारंवारतेचे दोन दोलक तरीही अचल कलेने वेगळे असू शकतात.",
+        },
+        detail: {
+          en: "In simple harmonic motion the velocity leads the displacement by a quarter of a cycle and the acceleration leads it by half, which is why the acceleration is largest exactly where the speed is zero.",
+          hi: "सरल आवर्त गति में वेग विस्थापन से चौथाई चक्र आगे रहता है और त्वरण आधा चक्र आगे, इसीलिए त्वरण ठीक वहाँ सबसे बड़ा है जहाँ चाल शून्य है।",
+          mr: "सरळ आवर्ती गतीत वेग विस्थापनाहून पाव चक्र पुढे असतो आणि त्वरण अर्धे चक्र पुढे, म्हणूनच त्वरण नेमके तिथे सर्वांत मोठे जिथे चाल शून्य आहे.",
+        },
+        extra: {
+          en: "Two oscillations exactly out of phase cancel where they meet, which is the whole basis of interference and of the noise-cancelling headphone.",
+          hi: "ठीक विपरीत कला वाले दो दोलन जहाँ मिलते हैं वहाँ कट जाते हैं, और यही व्यतिकरण तथा शोर-रद्द करते हेडफ़ोन का पूरा आधार है।",
+          mr: "नेमक्या विरुद्ध कलेची दोन आंदोलने जिथे भेटतात तिथे कापली जातात, आणि हाच व्यतिकरणाचा आणि आवाज-रद्द करणाऱ्या हेडफोनचा अख्खा पाया.",
+        },
+        pair: {
+          left: {
+            en: "Same frequency, opposite directions at every instant",
+            hi: "वही आवृत्ति, हर क्षण विपरीत दिशाएँ",
+            mr: "तीच वारंवारता, प्रत्येक क्षणी विरुद्ध दिशा",
+          },
+          right: {
+            en: "the phase of an oscillation",
+            hi: "दोलन की कला",
+            mr: "आंदोलनाची कला",
+          },
+        },
+      },
+      {
+        id: "damping",
+        name: {
+          en: "Damping",
+          hi: "अवमंदन",
+          mr: "अवमंदन",
+        },
+        kind: "description",
+        prompt: {
+          en: "A plucked string falls silent, a swing left alone comes to rest, and a car settles after a bump instead of bouncing for a minute — because a resistive force takes energy out on every stroke. Which effect is this?",
+          hi: "छेड़ा गया तार चुप हो जाता है, अकेला छोड़ा झूला विराम में आ जाता है, और कार गड्ढे के बाद मिनट भर उछलने के बजाय जम जाती है — क्योंकि एक प्रतिरोधी बल हर आघात पर ऊर्जा निकाल लेता है। यह कौन-सा प्रभाव है?",
+          mr: "छेडलेली तार गप्प होते, एकटा सोडलेला झोका स्थिरावतो, आणि गाडी खड्ड्यानंतर मिनिटभर उसळण्याऐवजी स्थिरावते — कारण एक विरोधी बल प्रत्येक आघातावर ऊर्जा काढून घेते. हा कोणता परिणाम?",
+        },
+        statement: {
+          en: "Damping is the loss of oscillation energy to a resistive force, and it shrinks the amplitude steadily while changing the frequency only very slightly.",
+          hi: "अवमंदन दोलन-ऊर्जा का किसी प्रतिरोधी बल को खो जाना है, और वह आयाम को लगातार घटाता है जबकि आवृत्ति को बहुत थोड़ा ही बदलता है।",
+          mr: "अवमंदन म्हणजे आंदोलन-ऊर्जेचे एखाद्या विरोधी बलाकडे जाणे, आणि ते आयाम सतत घटवते तर वारंवारता फार थोडीच बदलते.",
+        },
+        detail: {
+          en: "Critical damping is the amount that returns the system to rest in the least possible time without overshooting, and it is what a car's shock absorber and a door closer are tuned to.",
+          hi: "क्रांतिक अवमंदन वह मात्रा है जो निकाय को बिना छोर पार किए कम से कम समय में विराम पर लौटा दे, और कार का शॉक अवशोषक तथा दरवाज़ा-बंदक इसी पर सधे होते हैं।",
+          mr: "क्रांतिक अवमंदन ते प्रमाण जे संचाला टोक न ओलांडता कमीत कमी वेळात स्थिरावर परत आणते, आणि गाडीचा शॉक शोषक व दरवाजा-बंदक याच्यावरच जुळवलेले असतात.",
+        },
+        extra: {
+          en: "Too little and the system rings for a long time; too much and it crawls back slowly, so the useful setting is a compromise rather than a maximum.",
+          hi: "बहुत कम हो तो निकाय देर तक गूँजता है; बहुत अधिक हो तो वह धीरे-धीरे रेंगकर लौटता है, अतः उपयोगी सेटिंग अधिकतम नहीं बल्कि एक समझौता है।",
+          mr: "फार कमी असल्यास संच बराच वेळ घुमतो; फार जास्त असल्यास तो सावकाश रेंगाळत परततो, म्हणून उपयुक्त जुळवणी कमाल नव्हे तर तडजोड असते.",
+        },
+        pair: {
+          left: {
+            en: "The amplitude goes and the rhythm stays",
+            hi: "आयाम चला जाता है, लय बनी रहती है",
+            mr: "आयाम जातो, लय राहते",
+          },
+          right: {
+            en: "damping",
+            hi: "अवमंदन",
+            mr: "अवमंदन",
+          },
+        },
+      },
+      {
+        id: "resonance",
+        name: {
+          en: "Resonance",
+          hi: "अनुनाद",
+          mr: "अनुनाद",
+        },
+        kind: "description",
+        prompt: {
+          en: "Small pushes given at exactly the right moment build a swing higher and higher, a wine glass shatters at one particular note, and a bridge must not be crossed in step. Which effect is this?",
+          hi: "ठीक सही क्षण पर दिए छोटे धक्के झूले को ऊँचा और ऊँचा उठाते हैं, शराब का गिलास एक विशेष स्वर पर चूर हो जाता है, और पुल कदम मिलाकर पार नहीं करना चाहिए। यह कौन-सा प्रभाव है?",
+          mr: "नेमक्या योग्य क्षणी दिलेले लहान रेटे झोक्याला अधिकाधिक उंच नेतात, वाइनचा ग्लास एका विशिष्ट स्वरावर चुरा होतो, आणि पूल पावले जुळवून ओलांडू नये. हा कोणता परिणाम?",
+        },
+        statement: {
+          en: "Resonance is the large response of an oscillator to a driving force whose frequency matches its own natural frequency, so a small repeated push can build an enormous amplitude.",
+          hi: "अनुनाद दोलक की उस चालक बल के प्रति बड़ी प्रतिक्रिया है जिसकी आवृत्ति उसकी अपनी प्राकृतिक आवृत्ति से मेल खाती है, अतः छोटा दोहराया धक्का विशाल आयाम खड़ा कर सकता है।",
+          mr: "अनुनाद म्हणजे दोलकाची त्या चालक बलाला मोठी प्रतिक्रिया ज्याची वारंवारता त्याच्या स्वतःच्या नैसर्गिक वारंवारतेशी जुळते, म्हणून लहान पुनःपुन्हा दिलेला रेटा प्रचंड आयाम उभा करू शकतो.",
+        },
+        detail: {
+          en: "The peak is limited only by the damping present, so a lightly damped system responds enormously over a very narrow band of frequencies and a heavily damped one mildly over a wide band.",
+          hi: "शिखर को केवल मौजूद अवमंदन सीमित करता है, अतः हल्के अवमंदित निकाय बहुत सँकरी आवृत्ति-पट्टी पर विशाल प्रतिक्रिया देते हैं और भारी अवमंदित निकाय चौड़ी पट्टी पर हल्की।",
+          mr: "शिखराला केवळ उपस्थित अवमंदनच मर्यादित करते, म्हणून हलक्या अवमंदित संचाची प्रतिक्रिया फार अरुंद वारंवारता-पट्ट्यावर प्रचंड आणि जड अवमंदित संचाची रुंद पट्ट्यावर सौम्य.",
+        },
+        extra: {
+          en: "The same effect is exploited rather than feared in a radio's tuner, in a microwave oven and in magnetic resonance imaging, all of which pick out one frequency and ignore the rest.",
+          hi: "वही प्रभाव रेडियो के ट्यूनर में, माइक्रोवेव ओवन में और चुंबकीय अनुनाद प्रतिबिंबन में डरने के बजाय काम में लिया जाता है, जो सब एक आवृत्ति छाँट लेते हैं और बाक़ी अनदेखी कर देते हैं।",
+          mr: "तोच परिणाम रेडिओच्या ट्यूनरमध्ये, मायक्रोवेव्ह ओव्हनमध्ये आणि चुंबकीय अनुनाद प्रतिमांकनात घाबरण्याऐवजी कामी लावला जातो, जे सर्व एक वारंवारता निवडतात आणि बाकी दुर्लक्षतात.",
+        },
+        pair: {
+          left: {
+            en: "Do not cross the bridge in step",
+            hi: "पुल कदम मिलाकर मत पार करो",
+            mr: "पूल पावले जुळवून ओलांडू नका",
+          },
+          right: {
+            en: "resonance",
+            hi: "अनुनाद",
+            mr: "अनुनाद",
+          },
+        },
+      },
+      /*F13*/
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A pendulum clock keeps perfect time in Delhi. It is carried to a research station near the South Pole, where g is slightly larger, and left in a heated room at the same temperature. Does it now run fast or slow, and what would happen instead if it were taken up a high mountain?",
+          hi: "एक लोलक-घड़ी दिल्ली में ठीक समय रखती है। उसे दक्षिणी ध्रुव के पास के शोध-केंद्र ले जाया जाता है, जहाँ g थोड़ा अधिक है, और उसी ताप वाले गरम कमरे में रखा जाता है। अब वह तेज़ चलती है या धीमी, और ऊँचे पहाड़ पर ले जाने पर इसके बजाय क्या होता?",
+          mr: "एक लंबक-घड्याळ दिल्लीत अचूक वेळ राखते. ती दक्षिण ध्रुवाजवळच्या संशोधन केंद्रात नेली जाते, जिथे g थोडा अधिक आहे, आणि त्याच तापमानाच्या उबदार खोलीत ठेवली जाते. आता ती वेगात चालते की सावकाश, आणि उंच डोंगरावर नेल्यास त्याऐवजी काय झाले असते?",
+        },
+        choices: [
+          {
+            en: "It runs fast at the pole and would run slow on the mountain. The period is 2π√(l/g), so a larger g shortens the period: each swing takes less time, more swings are counted per real hour, and the clock gains. Up a mountain g is smaller, the period lengthens and the clock loses. The length was unchanged in both cases because the room was kept at the same temperature, which is why the question specifies it",
+            hi: "वह ध्रुव पर तेज़ चलती है और पहाड़ पर धीमी चलती। आवर्तकाल 2π√(l/g) है, अतः बड़ा g आवर्तकाल छोटा करता है: हर झूला कम समय लेता है, असली घंटे में अधिक झूले गिने जाते हैं, और घड़ी आगे बढ़ जाती है। पहाड़ पर g छोटा है, आवर्तकाल लंबा होता है और घड़ी पीछे रह जाती। दोनों स्थितियों में लंबाई अपरिवर्तित रही क्योंकि कमरा उसी ताप पर रखा गया, और प्रश्न इसीलिए इसे निर्दिष्ट करता है",
+            mr: "ती ध्रुवावर वेगात चालते आणि डोंगरावर सावकाश चालली असती. आवर्तकाल 2π√(l/g), म्हणून मोठा g आवर्तकाल लहान करतो: प्रत्येक झोका कमी वेळ घेतो, खऱ्या तासात अधिक झोके मोजले जातात, आणि घड्याळ पुढे जाते. डोंगरावर g लहान, आवर्तकाल लांब होतो आणि घड्याळ मागे पडली असती. दोन्ही स्थितींत लांबी अपरिवर्तित राहिली कारण खोली त्याच तापमानावर ठेवली, आणि प्रश्न म्हणूनच ते निर्दिष्ट करतो",
+          },
+          {
+            en: "It runs slow at the pole, because a stronger pull makes the bob harder to move and each swing takes longer",
+            hi: "वह ध्रुव पर धीमी चलती है, क्योंकि प्रबल खिंचाव गोलक को हिलाना कठिन कर देता है और हर झूला अधिक समय लेता है",
+            mr: "ती ध्रुवावर सावकाश चालते, कारण प्रबळ ओढ गोलक हलवणे कठीण करते आणि प्रत्येक झोका अधिक वेळ घेतो",
+          },
+          {
+            en: "It keeps perfect time in both places, since a pendulum's period does not depend on g at all",
+            hi: "वह दोनों जगह ठीक समय रखती है, क्योंकि लोलक का आवर्तकाल g पर निर्भर करता ही नहीं",
+            mr: "ती दोन्ही ठिकाणी अचूक वेळ राखते, कारण लंबकाचा आवर्तकाल g वर अवलंबूनच नाही",
+          },
+          {
+            en: "It cannot be predicted without knowing the mass of the bob, which decides how strongly gravity acts on it",
+            hi: "गोलक का द्रव्यमान जाने बिना भविष्यवाणी नहीं हो सकती, जो तय करता है कि गुरुत्व उस पर कितने ज़ोर से लगता है",
+            mr: "गोलकाचे वस्तुमान कळल्याशिवाय भाकीत करता येत नाही, जे ठरवते की गुरुत्व त्याच्यावर किती जोराने लागते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Write the formula and read it carefully, because the sign of the effect is where most answers go wrong. The period of a simple pendulum is T = 2π√(l/g). The g is in the DENOMINATOR under the root, so a larger g gives a smaller T. Near the pole the Earth's radius is slightly shorter and the rotational effect is absent, so g is about 9.83 m/s² against Delhi's 9.79 — a rise of about 0.4 per cent. The period falls by half that, roughly 0.2 per cent, so each swing is a fraction shorter. A clock counts swings and displays the count as time. If each swing is shorter than the clock's designer assumed, more of them fit into a real hour, the count runs ahead, and the clock GAINS. Over a day, 0.2 per cent is nearly three minutes. The second option gets this exactly backwards by reasoning from an intuition about heaviness. It is worth seeing why that intuition fails. A stronger g does pull the bob harder — but it also acts on a bob whose inertia is unchanged, and the two effects do not cancel here as they do in free fall. In free fall the restoring agent and the resisting mass are the same m, and m cancels. In the pendulum the mass cancels too, which is why the fourth option is wrong, but g does not: it survives as the strength of the restoring force per unit displacement, and a stiffer restoring force always means a faster oscillation. Compare the spring, where T = 2π√(m/k): a stiffer spring, larger k, also gives a shorter period. Gravity is playing the role of k here. Up a mountain everything reverses. At height h the value of g falls as the inverse square of the distance from the Earth's centre, so on a 3000 m peak it is lower by about a tenth of a per cent, the period lengthens, and the clock loses roughly a minute a day. Two footnotes matter in practice. First, the question specified a heated room for a reason: a real pendulum rod expands when warm, l rises, and the period lengthens — an effect large enough that precision clocks used gridiron and mercury pendulums designed to cancel it. Second, the whole analysis assumes small swings; the isochronism that makes a pendulum a clock at all is an approximation good only while sin θ ≈ θ. (The third answer denies a dependence that the formula and the Moon both confirm — a pendulum on the Moon swings about 2.4 times more slowly.)",
+          hi: "सूत्र लिखो और ध्यान से पढ़ो, क्योंकि प्रभाव का चिह्न ही वह जगह है जहाँ अधिकांश उत्तर बिगड़ते हैं। सरल लोलक का आवर्तकाल T = 2π√(l/g) है। g मूल के नीचे हर में है, अतः बड़ा g छोटा T देता है। ध्रुव के पास पृथ्वी की त्रिज्या थोड़ी छोटी है और घूर्णन का प्रभाव अनुपस्थित, अतः g दिल्ली के 9.79 के सामने लगभग 9.83 m/s² है — लगभग 0.4 प्रतिशत की वृद्धि। आवर्तकाल उसका आधा घटता है, मोटे तौर पर 0.2 प्रतिशत, अतः हर झूला थोड़ा छोटा है। घड़ी झूले गिनती है और गिनती को समय के रूप में दिखाती है। यदि हर झूला घड़ी के अभिकल्पक की मान्यता से छोटा है, तो असली घंटे में उनमें से अधिक समा जाते हैं, गिनती आगे चली जाती है, और घड़ी आगे बढ़ जाती है। दिन भर में 0.2 प्रतिशत लगभग तीन मिनट है। दूसरा विकल्प इसे ठीक उलटा कर देता है, भारीपन के बारे में एक अंतर्ज्ञान से तर्क करके। यह देखने योग्य है कि वह अंतर्ज्ञान क्यों विफल है। प्रबल g गोलक को अधिक ज़ोर से खींचता तो है — पर वह ऐसे गोलक पर लगता है जिसका जड़त्व अपरिवर्तित है, और दोनों प्रभाव यहाँ वैसे नहीं कटते जैसे मुक्त पतन में कटते हैं। मुक्त पतन में प्रत्यानयन करता कारक और प्रतिरोध करता द्रव्यमान वही m हैं, और m कट जाता है। लोलक में द्रव्यमान भी कट जाता है, इसीलिए चौथा विकल्प ग़लत है, पर g नहीं कटता: वह प्रति एकांक विस्थापन प्रत्यानयन बल की प्रबलता के रूप में बचा रहता है, और अधिक कड़ा प्रत्यानयन बल सदा तेज़ दोलन का अर्थ रखता है। स्प्रिंग से तुलना करो, जहाँ T = 2π√(m/k): अधिक कड़ी स्प्रिंग, बड़ा k, भी छोटा आवर्तकाल देती है। यहाँ गुरुत्व k की भूमिका निभा रहा है। पहाड़ पर सब उलट जाता है। ऊँचाई h पर g पृथ्वी के केंद्र से दूरी के व्युत्क्रम वर्ग से घटता है, अतः 3000 m की चोटी पर वह लगभग एक-दसवें प्रतिशत कम है, आवर्तकाल लंबा होता है, और घड़ी दिन में मोटे तौर पर एक मिनट पीछे रह जाती है। दो पादटिप्पणियाँ व्यवहार में मायने रखती हैं। पहली, प्रश्न ने गरम कमरा एक कारण से निर्दिष्ट किया: असली लोलक की छड़ गरमी में फैलती है, l बढ़ता है, और आवर्तकाल लंबा होता है — यह प्रभाव इतना बड़ा है कि परिशुद्ध घड़ियों में उसे काटने के लिए बनी जालीदार तथा पारे वाली लोलकें लगती थीं। दूसरी, पूरा विश्लेषण छोटे झूले मानता है; वही समकालिकता जो लोलक को घड़ी बनाती है, केवल तब तक अच्छी सन्निकटता है जब sin θ ≈ θ हो। (तीसरा उत्तर ऐसी निर्भरता नकारता है जिसकी पुष्टि सूत्र और चंद्रमा दोनों करते हैं — चंद्रमा पर लोलक लगभग 2.4 गुना धीमे झूलता है।)",
+          mr: "सूत्र लिहा आणि नीट वाचा, कारण परिणामाचे चिन्ह हीच ती जागा जिथे बहुतांश उत्तरे बिघडतात. साध्या लंबकाचा आवर्तकाल T = 2π√(l/g). g मुळाखाली छेदात आहे, म्हणून मोठा g लहान T देतो. ध्रुवाजवळ पृथ्वीची त्रिज्या थोडी लहान आणि परिवलनाचा परिणाम अनुपस्थित, म्हणून g दिल्लीच्या 9.79 समोर सुमारे 9.83 m/s² — सुमारे 0.4 टक्क्यांची वाढ. आवर्तकाल त्याच्या निम्म्याने घटतो, ढोबळमानाने 0.2 टक्के, म्हणून प्रत्येक झोका थोडा लहान. घड्याळ झोके मोजते आणि मोजणी वेळ म्हणून दाखवते. प्रत्येक झोका घड्याळाच्या आखणीकाराच्या गृहीतकाहून लहान असेल, तर खऱ्या तासात त्यांतले अधिक बसतात, मोजणी पुढे जाते, आणि घड्याळ पुढे जाते. दिवसभरात 0.2 टक्के म्हणजे जवळपास तीन मिनिटे. दुसरा पर्याय हे नेमके उलटे करतो, जडपणाबद्दलच्या एका अंतःप्रेरणेतून युक्तिवाद करून. ती अंतःप्रेरणा का अपयशी ठरते हे पाहण्याजोगे. प्रबळ g गोलकाला अधिक जोराने ओढतोच — पण तो अशा गोलकावर लागतो ज्याचे जडत्व अपरिवर्तित, आणि दोन्ही परिणाम इथे तसे कापले जात नाहीत जसे मुक्त पतनात कापले जातात. मुक्त पतनात पुनःस्थापन करणारा घटक आणि विरोध करणारे वस्तुमान तेच m, आणि m कापले जाते. लंबकात वस्तुमानही कापले जाते, म्हणूनच चौथा पर्याय चुकीचा, पण g कापला जात नाही: तो प्रति एकक विस्थापन पुनःस्थापक बलाची प्रबळता म्हणून टिकतो, आणि अधिक ताठर पुनःस्थापक बल नेहमी अधिक वेगवान आंदोलनाचा अर्थ राखते. स्प्रिंगशी तुलना करा, जिथे T = 2π√(m/k): अधिक ताठर स्प्रिंग, मोठा k, तीही लहान आवर्तकाल देते. इथे गुरुत्व k ची भूमिका बजावत आहे. डोंगरावर सर्व उलटते. h उंचीवर g पृथ्वीच्या केंद्रापासूनच्या अंतराच्या व्यस्त वर्गाने घटतो, म्हणून 3000 m च्या शिखरावर तो सुमारे एक-दशांश टक्क्याने कमी, आवर्तकाल लांब होतो, आणि घड्याळ दिवसाला ढोबळमानाने एक मिनिट मागे पडते. दोन तळटिपा व्यवहारात महत्त्वाच्या. पहिली, प्रश्नाने उबदार खोली एका कारणाने निर्दिष्ट केली: खऱ्या लंबकाची दांडी उबेत प्रसरण पावते, l वाढते, आणि आवर्तकाल लांब होतो — हा परिणाम इतका मोठा की अचूक घड्याळांत तो कापण्यासाठी बनवलेले जाळीदार व पाऱ्याचे लंबक वापरले जात. दुसरी, अख्खे विश्लेषण लहान झोके गृहीत धरते; जी समकालिकता लंबकाला घड्याळ बनवते ती केवळ sin θ ≈ θ असेपर्यंतच चांगली सन्निकटता. (तिसरे उत्तर अशी अवलंबिता नाकारते जिची पुष्टी सूत्र आणि चंद्र दोन्ही करतात — चंद्रावर लंबक सुमारे 2.4 पट सावकाश झुलतो.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A soldier's column is ordered to break step before crossing a footbridge, though the same soldiers walking out of step weigh exactly the same. Explain what the order is guarding against, and why the bridge is safe when they are out of step.",
+          hi: "सैनिकों की टुकड़ी को पैदल पुल पार करने से पहले क़दम तोड़ने का आदेश दिया जाता है, यद्यपि बेतरतीब चलते वही सैनिक बिलकुल उतने ही भारी हैं। समझाओ आदेश किससे बचा रहा है, और बेतरतीब चलने पर पुल सुरक्षित क्यों है।",
+          mr: "सैनिकांच्या तुकडीला पायी पूल ओलांडण्याआधी पावले तोडण्याचा आदेश दिला जातो, जरी बेतालपणे चालणारे तेच सैनिक नेमके तितकेच जड असले तरी. आदेश कशापासून वाचवत आहे ते समजावा, आणि बेतालपणे चालताना पूल सुरक्षित का ते सांगा.",
+        },
+        choices: [
+          {
+            en: "Marching in step delivers a periodic force at the pace frequency. If that matches one of the bridge's natural frequencies, each footfall arrives in phase with the motion already present and adds to it, so the amplitude builds cycle after cycle until the damping can absorb no more — a resonance. Out of step, the footfalls arrive at random phases and largely cancel; the average load is identical but the periodic component is gone, and it is the periodic component alone that resonance can amplify",
+            hi: "कदम मिलाकर चलना चाल की आवृत्ति पर आवर्ती बल देता है। यदि वह पुल की किसी प्राकृतिक आवृत्ति से मेल खाए, तो हर क़दम पहले से मौजूद गति के साथ एक कला में पहुँचता है और उसमें जुड़ जाता है, अतः आयाम चक्र दर चक्र बढ़ता है जब तक अवमंदन और न सोख सके — यही अनुनाद है। बेतरतीब चलने पर क़दम यादृच्छिक कलाओं में पहुँचते हैं और अधिकतर कट जाते हैं; औसत भार वही है पर आवर्ती अंश चला गया, और अनुनाद केवल उसी आवर्ती अंश को बढ़ा सकता है",
+            mr: "पावले जुळवून चालणे चालीच्या वारंवारतेवर आवर्ती बल देते. ते पुलाच्या एखाद्या नैसर्गिक वारंवारतेशी जुळल्यास, प्रत्येक पाऊल आधीच उपस्थित असलेल्या गतीशी एका कलेत पोहोचते आणि तिच्यात भर घालते, म्हणून आयाम चक्रामागून चक्र वाढतो जोवर अवमंदन आणखी शोषू शकत नाही — हाच अनुनाद. बेतालपणे चालताना पावले यादृच्छिक कलांत पोहोचतात आणि बहुतांश कापली जातात; सरासरी ओझे तेच पण आवर्ती घटक गेला, आणि अनुनाद केवळ त्याच आवर्ती घटकाला वाढवू शकतो",
+          },
+          {
+            en: "Marching in step concentrates the whole column's weight on one plank at a time, and the order simply spreads the load along the bridge",
+            hi: "कदम मिलाकर चलना पूरी टुकड़ी का भार एक बार में एक ही तख़्ते पर केंद्रित कर देता है, और आदेश बस भार को पुल भर फैला देता है",
+            mr: "पावले जुळवून चालणे अख्ख्या तुकडीचे ओझे एका वेळी एकाच फळीवर केंद्रित करते, आणि आदेश फक्त ओझे पुलावर पसरवतो",
+          },
+          {
+            en: "The order is a tradition with no physical basis, since the total force on the bridge is the same either way",
+            hi: "आदेश एक परंपरा है जिसका कोई भौतिक आधार नहीं, क्योंकि पुल पर कुल बल दोनों तरह एक ही है",
+            mr: "आदेश ही एक परंपरा आहे जिला कोणताही भौतिक आधार नाही, कारण पुलावरचे एकूण बल दोन्ही प्रकारे सारखेच",
+          },
+          {
+            en: "Marching in step increases the soldiers' effective weight because each footfall lands with extra downward force",
+            hi: "कदम मिलाकर चलने से सैनिकों का प्रभावी भार बढ़ जाता है क्योंकि हर क़दम अतिरिक्त अधोमुखी बल के साथ पड़ता है",
+            mr: "पावले जुळवून चालल्याने सैनिकांचे परिणामी वजन वाढते कारण प्रत्येक पाऊल जादा खालच्या बलासह पडते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The question turns on a distinction the third option misses entirely: the total force and the periodic component of the force are different things, and a bridge cares about both for different reasons. Start with what a bridge is. It is an elastic structure, and like any elastic structure it has natural frequencies at which it will oscillate if disturbed — typically a few hertz for a footbridge, which is uncomfortably close to walking pace. Displace it and let go and it will bob at that rate, dying away slowly because bridges are lightly damped. Now the driving force. Walking is not a steady load; each footfall is an impulse, and a column marching in step delivers those impulses at one sharp frequency, the step rate. Feed a periodic force to an oscillator at its natural frequency and the response is not proportional — it accumulates. Each push arrives when the bridge is already moving the way the push acts, so it does positive work on every cycle, and the amplitude grows until the energy fed in per cycle equals the energy lost to damping per cycle. In a lightly damped structure that balance point can be very high, and the bridge can be shaken far beyond anything its designers loaded it with statically. Broughton Suspension Bridge collapsed under marching troops in 1831, and the order has been standard since. Now the out-of-step case, and this is the part worth understanding properly. The soldiers weigh exactly the same. The AVERAGE force on the bridge is unchanged — the third option is right about that and draws the wrong conclusion. What has changed is that the footfalls now arrive at random phases. Decompose the total force into a steady part plus an oscillating part: the steady part is the same as before and the bridge simply carries it, as it carries any static load. The oscillating part, however, is now a sum of many impulses with uncorrelated phases, and such a sum grows only as √N rather than as N. Two hundred soldiers in step deliver two hundred times one man's periodic force; two hundred out of step deliver about fourteen times it. That is the whole of the protection. Two generalisations are worth carrying. First, resonance is dangerous precisely where damping is small, which is why the modern remedy is not to ban marching but to add tuned mass dampers — the Millennium Bridge in London was closed and fitted with them after pedestrians unconsciously synchronised their steps with its sway. Second, the same physics that threatens a bridge is what makes a radio work: a tuner is a lightly damped oscillator that responds enormously to one frequency and ignores all others, and there the sharpness is the whole point. (The second answer invents a load concentration that marching does not produce, and the fourth adds weight that no footfall can create.)",
+          hi: "प्रश्न उस भेद पर टिका है जिसे तीसरा विकल्प पूरी तरह चूक जाता है: कुल बल और बल का आवर्ती अंश भिन्न चीज़ें हैं, और पुल दोनों की परवाह भिन्न कारणों से करता है। शुरू करो इससे कि पुल है क्या। वह एक प्रत्यास्थ संरचना है, और किसी भी प्रत्यास्थ संरचना की तरह उसकी प्राकृतिक आवृत्तियाँ हैं जिन पर वह विचलित होने पर दोलन करेगा — पैदल पुल के लिए आम तौर पर कुछ हर्ट्ज़, जो चलने की गति के असुविधाजनक रूप से पास है। उसे हटाकर छोड़ दो और वह उसी दर से हिलेगा, धीरे-धीरे मंद पड़ते हुए क्योंकि पुल हल्के अवमंदित होते हैं। अब चालक बल। चलना स्थिर भार नहीं; हर क़दम एक आवेग है, और कदम मिलाकर चलती टुकड़ी वे आवेग एक ही तीखी आवृत्ति पर देती है, क़दम-दर पर। दोलक को उसकी प्राकृतिक आवृत्ति पर आवर्ती बल दो और प्रतिक्रिया समानुपाती नहीं होती — वह संचित होती है। हर धक्का तब पहुँचता है जब पुल पहले से उसी ओर चल रहा है जिस ओर धक्का लगता है, अतः वह हर चक्र पर धनात्मक कार्य करता है, और आयाम तब तक बढ़ता है जब तक प्रति चक्र दी गई ऊर्जा प्रति चक्र अवमंदन को खोई ऊर्जा के बराबर न हो जाए। हल्के अवमंदित संरचना में वह संतुलन-बिंदु बहुत ऊँचा हो सकता है, और पुल को उससे कहीं आगे हिलाया जा सकता है जितना उसके अभिकल्पकों ने स्थैतिक रूप से लादा था। 1831 में ब्रॉटन झूला पुल कदम मिलाकर चलती सेना के नीचे गिर गया था, और तब से यह आदेश मानक है। अब बेतरतीब वाली स्थिति, और यही वह हिस्सा है जिसे ठीक से समझने योग्य है। सैनिक बिलकुल उतने ही भारी हैं। पुल पर औसत बल अपरिवर्तित है — तीसरा विकल्प इस बारे में सही है और ग़लत निष्कर्ष निकालता है। बदला यह है कि क़दम अब यादृच्छिक कलाओं में पहुँचते हैं। कुल बल को स्थिर अंश जोड़ दोलनशील अंश में तोड़ो: स्थिर अंश पहले जैसा ही है और पुल उसे बस ढो लेता है, जैसे वह किसी भी स्थैतिक भार को ढोता है। पर दोलनशील अंश अब असंबद्ध कलाओं वाले कई आवेगों का योग है, और ऐसा योग N के बजाय केवल √N के अनुसार बढ़ता है। दो सौ सैनिक कदम मिलाकर एक आदमी के आवर्ती बल का दो सौ गुना देते हैं; दो सौ बेतरतीब लगभग चौदह गुना। सुरक्षा पूरी की पूरी यही है। दो सामान्यीकरण ले जाने योग्य हैं। पहला, अनुनाद ठीक वहीं ख़तरनाक है जहाँ अवमंदन कम है, इसीलिए आधुनिक उपाय मार्च पर रोक नहीं बल्कि सधे हुए द्रव्यमान-अवमंदक जोड़ना है — लंदन का मिलेनियम पुल बंद किया गया और उनसे सज्जित किया गया जब पैदल यात्रियों ने अनजाने अपने क़दम उसके झूले से मिला लिए। दूसरा, वही भौतिकी जो पुल को धमकाती है वही रेडियो को चलाती है: ट्यूनर एक हल्के अवमंदित दोलक है जो एक आवृत्ति पर विशाल प्रतिक्रिया देता है और बाक़ी सब अनदेखी करता है, और वहाँ यही तीखापन पूरी बात है। (दूसरा उत्तर ऐसा भार-केंद्रण गढ़ता है जो मार्च करने से नहीं बनता, और चौथा ऐसा भार जोड़ता है जो कोई क़दम बना ही नहीं सकता।)",
+          mr: "प्रश्न त्या भेदावर टेकलेला जो तिसरा पर्याय पूर्णपणे चुकवतो: एकूण बल आणि बलाचा आवर्ती घटक या वेगळ्या गोष्टी, आणि पूल दोघांची पर्वा वेगळ्या कारणांनी करतो. पूल म्हणजे काय तिथून सुरुवात करा. ती एक प्रत्यास्थ रचना, आणि कोणत्याही प्रत्यास्थ रचनेप्रमाणे तिच्या नैसर्गिक वारंवारता आहेत ज्यांवर ती ढळल्यास आंदोलन करेल — पायी पुलासाठी सहसा काही हर्ट्झ, जे चालण्याच्या वेगाच्या गैरसोयीने जवळ. तिला ढळवा आणि सोडा आणि ती त्याच दराने हलेल, सावकाश विझत, कारण पूल हलक्या अवमंदित असतात. आता चालक बल. चालणे हे स्थिर ओझे नव्हे; प्रत्येक पाऊल एक आवेग, आणि पावले जुळवून चालणारी तुकडी ते आवेग एकाच तीक्ष्ण वारंवारतेवर देते, पाऊल-दरावर. दोलकाला त्याच्या नैसर्गिक वारंवारतेवर आवर्ती बल द्या आणि प्रतिक्रिया समानुपाती नसते — ती साचत जाते. प्रत्येक रेटा तेव्हा पोहोचतो जेव्हा पूल आधीच त्याच दिशेने जात असतो ज्या दिशेने रेटा लागतो, म्हणून तो प्रत्येक चक्रावर धन कार्य करतो, आणि आयाम तोवर वाढतो जोवर प्रति चक्र दिलेली ऊर्जा प्रति चक्र अवमंदनाला गमावलेल्या ऊर्जेइतकी होत नाही. हलक्या अवमंदित रचनेत तो समतोल बिंदू फार उंच असू शकतो, आणि पुलाला त्याहून कितीतरी पुढे हलवता येते जितके त्याच्या आखणीकारांनी स्थितिकरीत्या लादले होते. 1831 मध्ये ब्रॉटन झुलता पूल पावले जुळवून चालणाऱ्या सैन्याखाली कोसळला, आणि तेव्हापासून हा आदेश प्रमाणित. आता बेताल स्थिती, आणि हाच तो भाग जो नीट समजून घेण्याजोगा. सैनिक नेमके तितकेच जड आहेत. पुलावरचे सरासरी बल अपरिवर्तित — तिसरा पर्याय याबद्दल बरोबर आणि चुकीचा निष्कर्ष काढतो. बदलले हे की पावले आता यादृच्छिक कलांत पोहोचतात. एकूण बलाचे स्थिर घटक अधिक आंदोलनशील घटक असे तुकडे करा: स्थिर घटक आधीसारखाच आणि पूल तो फक्त वाहतो, जसा तो कोणतेही स्थितिक ओझे वाहतो. पण आंदोलनशील घटक आता असंबद्ध कलांच्या अनेक आवेगांची बेरीज, आणि अशी बेरीज N ऐवजी केवळ √N नुसार वाढते. दोनशे सैनिक पावले जुळवून एका माणसाच्या आवर्ती बलाच्या दोनशेपट देतात; दोनशे बेताल सुमारे चौदापट. संरक्षण अख्खेच्या अख्खे हेच. दोन सामान्यीकरणे नेण्याजोगी. पहिले, अनुनाद नेमका तिथेच धोकादायक जिथे अवमंदन कमी, म्हणूनच आधुनिक उपाय संचलनावर बंदी नव्हे तर जुळवलेले वस्तुमान-अवमंदक जोडणे — लंडनचा मिलेनियम पूल बंद केला गेला आणि त्यांनी सज्ज केला गेला जेव्हा पादचाऱ्यांनी नकळत आपली पावले त्याच्या झोक्याशी जुळवली. दुसरे, तीच भौतिकी जी पुलाला धमकावते तीच रेडिओ चालवते: ट्यूनर हा हलका अवमंदित दोलक जो एका वारंवारतेवर प्रचंड प्रतिक्रिया देतो आणि बाकी सर्व दुर्लक्षतो, आणि तिथे हेच तीक्ष्णपण अख्खा मुद्दा. (दुसरे उत्तर असे ओझे-केंद्रीकरण घडवते जे संचलनाने तयार होत नाही, आणि चौथे असे वजन जोडते जे कोणतेही पाऊल तयार करूच शकत नाही.)",
+        },
+      },
+      /*H13*/
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 14 — Waves                                                      */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "physics-11-waves",
+    subject: "PHYSICS",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 14 — Waves",
+      hi: "अध्याय 14 — तरंगें",
+      mr: "प्रकरण 14 — लहरी",
+    },
+    name: {
+      en: "Waves",
+      hi: "तरंगें",
+      mr: "लहरी",
+    },
+    summary: {
+      en: "An oscillation that has learnt to travel, carrying energy across a medium while every particle of that medium stays where it was. A relation that ties speed, frequency and wavelength so tightly that fixing two fixes the third, two waves that pass through each other unchanged and add where they overlap, a pattern that stands still because two travelling waves cancel each other's motion, and a pitch that rises as a train approaches and falls the instant it passes.",
+      hi: "वह दोलन जिसने यात्रा करना सीख लिया, जो माध्यम के आर-पार ऊर्जा ले जाता है जबकि उस माध्यम का हर कण वहीं रहता है जहाँ था। वह संबंध जो चाल, आवृत्ति और तरंगदैर्घ्य को इतनी कसकर बाँधता है कि दो तय करने से तीसरा तय हो जाता है, वे दो तरंगें जो एक-दूसरे से अपरिवर्तित गुज़र जाती हैं और जहाँ ओवरलैप करें वहाँ जुड़ जाती हैं, वह पैटर्न जो इसलिए खड़ा रहता है कि दो चलती तरंगें एक-दूसरे की गति काट देती हैं, और वह स्वर जो रेलगाड़ी के पास आते चढ़ता है और गुज़रते ही गिर जाता है।",
+      mr: "ते आंदोलन ज्याने प्रवास करायला शिकले, जे माध्यमाच्या आरपार ऊर्जा नेते तर त्या माध्यमाचा प्रत्येक कण जिथे होता तिथेच राहतो. तो संबंध जो चाल, वारंवारता आणि तरंगलांबी इतक्या घट्ट बांधतो की दोन ठरवल्यास तिसरे ठरते, त्या दोन लहरी ज्या एकमेकींतून अपरिवर्तित जातात आणि जिथे एकमेकींवर येतात तिथे जोडल्या जातात, तो आकृतिबंध जो यासाठी स्थिर उभा राहतो की दोन चालत्या लहरी एकमेकींची गती कापतात, आणि तो स्वर जो आगगाडी जवळ येताना चढतो आणि जाताक्षणी घसरतो.",
+    },
+    position: 14,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "wave-relation",
+        name: {
+          en: "The wave relation",
+          hi: "तरंग-संबंध",
+          mr: "लहर-संबंध",
+        },
+        kind: "property",
+        prompt: {
+          en: "The speed is set by the medium and nothing else, so raising the frequency of a sound does not make it arrive sooner — it simply shortens the wavelength in exact proportion. Which relation is this?",
+          hi: "चाल माध्यम तय करता है और कुछ नहीं, अतः ध्वनि की आवृत्ति बढ़ाने से वह जल्दी नहीं पहुँचती — वह बस तरंगदैर्घ्य को ठीक उसी अनुपात में छोटा कर देती है। यह कौन-सा संबंध है?",
+          mr: "चाल माध्यम ठरवते आणि दुसरे काहीही नाही, म्हणून ध्वनीची वारंवारता वाढवल्याने ती लवकर पोहोचत नाही — ती फक्त तरंगलांबी नेमक्या त्याच प्रमाणात लहान करते. हा कोणता संबंध?",
+        },
+        statement: {
+          en: "For any wave v = fλ, and since the speed is fixed by the medium alone, frequency and wavelength are inversely proportional to each other in that medium.",
+          hi: "किसी भी तरंग के लिए v = fλ, और चूँकि चाल केवल माध्यम तय करता है, उस माध्यम में आवृत्ति और तरंगदैर्घ्य परस्पर व्युत्क्रमानुपाती हैं।",
+          mr: "कोणत्याही लहरीसाठी v = fλ, आणि चाल केवळ माध्यम ठरवत असल्याने त्या माध्यमात वारंवारता आणि तरंगलांबी परस्पर व्यस्तानुपाती असतात.",
+        },
+        detail: {
+          en: "The frequency is set by the source and never changes when a wave crosses into a new medium; it is the speed and the wavelength that change together, which is why light bends on entering glass.",
+          hi: "आवृत्ति स्रोत तय करता है और तरंग के नए माध्यम में जाने पर वह कभी नहीं बदलती; बदलते हैं चाल और तरंगदैर्घ्य साथ-साथ, इसीलिए काँच में घुसते ही प्रकाश मुड़ जाता है।",
+          mr: "वारंवारता स्रोत ठरवतो आणि लहर नव्या माध्यमात गेल्यावर ती कधीच बदलत नाही; बदलतात चाल आणि तरंगलांबी एकत्र, म्हणूनच काचेत शिरताच प्रकाश वळतो.",
+        },
+        extra: {
+          en: "Sound travels at about 340 m/s in air, 1500 m/s in water and 5000 m/s in steel, so the same note has a wavelength fifteen times longer in a rail than in the air beside it.",
+          hi: "ध्वनि हवा में लगभग 340 m/s, पानी में 1500 m/s और इस्पात में 5000 m/s चलती है, अतः वही स्वर पटरी में उसके पास की हवा से पंद्रह गुना लंबा तरंगदैर्घ्य रखता है।",
+          mr: "ध्वनी हवेत सुमारे 340 m/s, पाण्यात 1500 m/s आणि पोलादात 5000 m/s जातो, म्हणून तोच स्वर रुळात त्याच्याशेजारच्या हवेहून पंधरापट लांब तरंगलांबी बाळगतो.",
+        },
+        pair: {
+          left: {
+            en: "A higher note that does not arrive any sooner",
+            hi: "ऊँचा स्वर जो ज़रा भी जल्दी नहीं पहुँचता",
+            mr: "उंच स्वर जो जराही लवकर पोहोचत नाही",
+          },
+          right: {
+            en: "the wave relation",
+            hi: "तरंग-संबंध",
+            mr: "लहर-संबंध",
+          },
+        },
+      },
+      {
+        id: "transverse-against-longitudinal",
+        name: {
+          en: "Transverse against longitudinal",
+          hi: "अनुप्रस्थ बनाम अनुदैर्घ्य",
+          mr: "अनुप्रस्थ विरुद्ध अनुदैर्घ्य",
+        },
+        kind: "property",
+        prompt: {
+          en: "In one kind the medium's particles move across the direction of travel and in the other they move along it, and only the first can be polarised — which is why sound cannot be and light can. Which contrast is this?",
+          hi: "एक क़िस्म में माध्यम के कण यात्रा की दिशा के आर-पार चलते हैं और दूसरी में उसी के अनुदिश, और केवल पहली ध्रुवित हो सकती है — इसीलिए ध्वनि नहीं हो सकती और प्रकाश हो सकता है। यह कौन-सा भेद है?",
+          mr: "एका प्रकारात माध्यमाचे कण प्रवासाच्या दिशेच्या आडवे जातात आणि दुसऱ्यात त्याच दिशेने, आणि केवळ पहिलीच ध्रुवित होऊ शकते — म्हणूनच ध्वनी होऊ शकत नाही आणि प्रकाश होऊ शकतो. हा कोणता भेद?",
+        },
+        statement: {
+          en: "In a transverse wave the particles oscillate perpendicular to the direction of propagation and in a longitudinal wave along it, and only transverse waves can be polarised.",
+          hi: "अनुप्रस्थ तरंग में कण संचरण की दिशा के लंबवत दोलन करते हैं और अनुदैर्घ्य तरंग में उसी के अनुदिश, और केवल अनुप्रस्थ तरंगें ध्रुवित हो सकती हैं।",
+          mr: "अनुप्रस्थ लहरीत कण संक्रमणाच्या दिशेला लंब आंदोलन करतात आणि अनुदैर्घ्य लहरीत त्याच दिशेने, आणि केवळ अनुप्रस्थ लहरीच ध्रुवित होऊ शकतात.",
+        },
+        detail: {
+          en: "A gas or a liquid cannot carry a transverse mechanical wave at all, because it offers no restoring force against being sheared sideways — only a solid can.",
+          hi: "गैस या द्रव अनुप्रस्थ यांत्रिक तरंग ढो ही नहीं सकते, क्योंकि वे बग़ल में अपरूपित होने के विरुद्ध कोई प्रत्यानयन बल नहीं देते — केवल ठोस दे सकता है।",
+          mr: "वायू वा द्रव अनुप्रस्थ यांत्रिक लहर वाहूच शकत नाहीत, कारण ते बाजूला कर्तन होण्याविरुद्ध कोणतेही पुनःस्थापक बल देत नाहीत — केवळ घनपदार्थ देऊ शकतो.",
+        },
+        extra: {
+          en: "That fact is how the Earth's liquid outer core was discovered: an earthquake's transverse S-waves are stopped by it while the longitudinal P-waves pass straight through.",
+          hi: "उसी तथ्य से पृथ्वी का द्रव बाह्य क्रोड खोजा गया: भूकंप की अनुप्रस्थ S-तरंगें उससे रुक जाती हैं जबकि अनुदैर्घ्य P-तरंगें सीधे पार निकल जाती हैं।",
+          mr: "त्याच तथ्यातून पृथ्वीचा द्रव बाह्य गाभा शोधला गेला: भूकंपाच्या अनुप्रस्थ S-लहरी त्याने अडवल्या जातात तर अनुदैर्घ्य P-लहरी सरळ आरपार जातात.",
+        },
+        pair: {
+          left: {
+            en: "The waves an earthquake could not send through the core",
+            hi: "वे तरंगें जो भूकंप क्रोड के पार न भेज सका",
+            mr: "त्या लहरी ज्या भूकंप गाभ्यातून पाठवू शकला नाही",
+          },
+          right: {
+            en: "transverse against longitudinal",
+            hi: "अनुप्रस्थ बनाम अनुदैर्घ्य",
+            mr: "अनुप्रस्थ विरुद्ध अनुदैर्घ्य",
+          },
+        },
+      },
+      {
+        id: "principle-of-superposition",
+        name: {
+          en: "The principle of superposition",
+          hi: "अध्यारोपण का सिद्धांत",
+          mr: "अध्यारोपणाचे तत्त्व",
+        },
+        kind: "interaction",
+        prompt: {
+          en: "Two conversations cross a room without either becoming garbled, and where they overlap the air's displacement is simply the sum of what each would have produced alone. Which principle is this?",
+          hi: "दो बातचीतें कमरा पार करती हैं और कोई भी गड्डमड्ड नहीं होती, और जहाँ वे ओवरलैप करती हैं वहाँ हवा का विस्थापन बस उसका योग है जो हर एक अकेली पैदा करती। यह कौन-सा सिद्धांत है?",
+          mr: "दोन संभाषणे खोली ओलांडतात आणि कोणतेही गोंधळत नाही, आणि जिथे ती एकमेकांवर येतात तिथे हवेचे विस्थापन फक्त प्रत्येकाने एकटीने निर्माण केले असते त्याची बेरीज. हे कोणते तत्त्व?",
+        },
+        statement: {
+          en: "The principle of superposition states that where two waves overlap the resultant displacement is the algebraic sum of the individual displacements, and each wave passes on afterwards unchanged.",
+          hi: "अध्यारोपण का सिद्धांत कहता है कि जहाँ दो तरंगें ओवरलैप करती हैं वहाँ परिणामी विस्थापन अलग-अलग विस्थापनों का बीजीय योग है, और उसके बाद हर तरंग अपरिवर्तित आगे बढ़ जाती है।",
+          mr: "अध्यारोपणाचे तत्त्व सांगते की जिथे दोन लहरी एकमेकींवर येतात तिथे परिणामी विस्थापन वेगवेगळ्या विस्थापनांची बीजगणितीय बेरीज असते, आणि नंतर प्रत्येक लहर अपरिवर्तित पुढे जाते.",
+        },
+        detail: {
+          en: "Where crests meet crests the sum is large and where a crest meets a trough they cancel, which is constructive and destructive interference and the basis of every diffraction pattern.",
+          hi: "जहाँ शिखर शिखर से मिलें वहाँ योग बड़ा है और जहाँ शिखर गर्त से मिले वहाँ वे कट जाते हैं, और यही संपोषी तथा विनाशी व्यतिकरण है, हर विवर्तन-पैटर्न का आधार।",
+          mr: "जिथे शिखरे शिखरांना भेटतात तिथे बेरीज मोठी आणि जिथे शिखर गर्तेला भेटते तिथे ती कापली जातात, आणि हेच संपोषी व विनाशी व्यतिकरण, प्रत्येक विवर्तन-आकृतिबंधाचा पाया.",
+        },
+        extra: {
+          en: "It holds only while the medium responds linearly, which is why a very loud sound distorts and why a shock wave from an explosion obeys quite different rules.",
+          hi: "यह केवल तब तक चलता है जब माध्यम रैखिक प्रतिक्रिया दे, इसीलिए बहुत तेज़ ध्वनि विकृत होती है और इसीलिए विस्फोट की आघात-तरंग बिलकुल भिन्न नियम मानती है।",
+          mr: "हे केवळ तोवर चालते जोवर माध्यम रेषीय प्रतिसाद देते, म्हणूनच फार मोठा आवाज विकृत होतो आणि म्हणूनच स्फोटाची आघात-लहर अगदी वेगळे नियम पाळते.",
+        },
+        pair: {
+          left: {
+            en: "Two conversations crossing and neither garbled",
+            hi: "दो बातचीतें पार होतीं और कोई गड्डमड्ड नहीं",
+            mr: "दोन संभाषणे ओलांडतात आणि कोणतेही गोंधळत नाही",
+          },
+          right: {
+            en: "the principle of superposition",
+            hi: "अध्यारोपण का सिद्धांत",
+            mr: "अध्यारोपणाचे तत्त्व",
+          },
+        },
+      },
+      {
+        id: "standing-waves-and-nodes",
+        name: {
+          en: "Standing waves and nodes",
+          hi: "अप्रगामी तरंगें और निस्पंद",
+          mr: "स्थिर लहरी आणि निस्पंद",
+        },
+        kind: "interaction",
+        prompt: {
+          en: "A plucked string shows a pattern that does not travel anywhere: certain points never move at all while those between them swing hardest, because a wave and its own reflection are running through each other. Which pattern is this?",
+          hi: "छेड़ा गया तार ऐसा पैटर्न दिखाता है जो कहीं जाता नहीं: कुछ बिंदु बिलकुल नहीं हिलते जबकि उनके बीच वाले सबसे ज़ोर से झूलते हैं, क्योंकि तरंग और उसका अपना परावर्तन एक-दूसरे में से गुज़र रहे हैं। यह कौन-सा पैटर्न है?",
+          mr: "छेडलेली तार असा आकृतिबंध दाखवते जो कुठेही जात नाही: काही बिंदू मुळीच हलत नाहीत तर त्यांच्यामधले सर्वांत जोराने झुलतात, कारण लहर आणि तिचेच परावर्तन एकमेकींतून जात आहेत. हा कोणता आकृतिबंध?",
+        },
+        statement: {
+          en: "A standing wave is formed when two identical waves travel in opposite directions, producing nodes that never move and antinodes of maximum amplitude, spaced half a wavelength apart.",
+          hi: "अप्रगामी तरंग तब बनती है जब दो एक-सी तरंगें विपरीत दिशाओं में चलें, जिससे कभी न हिलने वाले निस्पंद और अधिकतम आयाम के प्रस्पंद बनते हैं, जो आधे तरंगदैर्घ्य के अंतराल पर होते हैं।",
+          mr: "स्थिर लहर तेव्हा तयार होते जेव्हा दोन सारख्या लहरी विरुद्ध दिशांना जातात, ज्यातून कधीही न हलणारे निस्पंद आणि कमाल आयामाचे प्रस्पंद तयार होतात, जे अर्ध्या तरंगलांबीच्या अंतरावर असतात.",
+        },
+        detail: {
+          en: "The boundary decides which wavelengths fit: a string fixed at both ends must have a node at each, so only wavelengths of 2L, L, 2L/3 and so on can survive.",
+          hi: "सीमा तय करती है कि कौन-से तरंगदैर्घ्य समाएँगे: दोनों सिरों पर बँधे तार के हर सिरे पर निस्पंद होना चाहिए, अतः केवल 2L, L, 2L/3 इत्यादि तरंगदैर्घ्य बच सकते हैं।",
+          mr: "सीमा ठरवते की कोणत्या तरंगलांब्या बसतील: दोन्ही टोकांना बांधलेल्या तारेला प्रत्येक टोकावर निस्पंद असावा लागतो, म्हणून केवळ 2L, L, 2L/3 इत्यादी तरंगलांब्याच टिकू शकतात.",
+        },
+        extra: {
+          en: "That restriction is what gives a musical instrument a definite pitch and a discrete series of harmonics, and it is the exact mechanical ancestor of the quantised energy levels of an atom.",
+          hi: "वही प्रतिबंध वाद्ययंत्र को निश्चित स्वर और संनादों की असतत श्रेणी देता है, और वही परमाणु के क्वांटित ऊर्जा-स्तरों का ठीक-ठीक यांत्रिक पूर्वज है।",
+          mr: "तोच निर्बंध वाद्याला निश्चित स्वर आणि संनादांची विलग मालिका देतो, आणि तोच अणूच्या पुंजित ऊर्जा-पातळ्यांचा नेमका यांत्रिक पूर्वज.",
+        },
+        pair: {
+          left: {
+            en: "Points that never move at all",
+            hi: "वे बिंदु जो बिलकुल नहीं हिलते",
+            mr: "ते बिंदू जे मुळीच हलत नाहीत",
+          },
+          right: {
+            en: "standing waves and nodes",
+            hi: "अप्रगामी तरंगें और निस्पंद",
+            mr: "स्थिर लहरी आणि निस्पंद",
+          },
+        },
+      },
+      {
+        id: "beats",
+        name: {
+          en: "Beats",
+          hi: "विस्पंद",
+          mr: "स्पंद",
+        },
+        kind: "interaction",
+        prompt: {
+          en: "Two strings very slightly out of tune produce a single note whose loudness swells and fades at a slow, countable rate, and a tuner adjusts the peg until that rate falls to zero. Which effect is this?",
+          hi: "बहुत थोड़े बेसुरे दो तार एक ही स्वर देते हैं जिसकी तीव्रता धीमी, गिनने योग्य दर से बढ़ती-घटती है, और सुर मिलाने वाला खूँटी तब तक घुमाता है जब तक वह दर शून्य न हो जाए। यह कौन-सा प्रभाव है?",
+          mr: "फार थोड्या बेसूर असलेल्या दोन तारा एकच स्वर देतात ज्याचा मोठेपणा सावकाश, मोजण्याजोग्या दराने वाढतो-घटतो, आणि सूर जुळवणारा खुंटी तोवर फिरवतो जोवर तो दर शून्य होत नाही. हा कोणता परिणाम?",
+        },
+        statement: {
+          en: "Beats are the slow rise and fall in loudness when two notes of nearly equal frequency are sounded together, and the beat frequency is exactly the difference between the two.",
+          hi: "विस्पंद वह धीमा घटता-बढ़ता तीव्रता-परिवर्तन है जो लगभग बराबर आवृत्ति के दो स्वर साथ बजने पर होता है, और विस्पंद-आवृत्ति ठीक दोनों का अंतर है।",
+          mr: "स्पंद म्हणजे जवळपास समान वारंवारतेचे दोन स्वर एकत्र वाजल्यावर होणारा मोठेपणातील सावकाश चढउतार, आणि स्पंद-वारंवारता नेमकी दोघांचा फरक.",
+        },
+        detail: {
+          en: "The two waves drift in and out of phase, reinforcing when they align and cancelling when they oppose, and the cycle repeats once for each extra oscillation the faster note completes.",
+          hi: "दोनों तरंगें कला में मिलती-बिछड़ती रहती हैं, मेल खाने पर एक-दूसरे को बढ़ाती और विरोध में कट जाती हैं, और तेज़ स्वर जितने अतिरिक्त दोलन पूरे करता है उतनी बार यह चक्र दोहराता है।",
+          mr: "दोन्ही लहरी कलेत जुळत-विलग होत राहतात, जुळल्यावर एकमेकींना वाढवतात आणि विरोधात कापल्या जातात, आणि वेगवान स्वर जितकी जादा आंदोलने पूर्ण करतो तितक्या वेळा हे चक्र पुनरावृत्त होते.",
+        },
+        extra: {
+          en: "The ear can follow only slow beats, up to about ten a second, beyond which the two notes are simply heard as a rough discord rather than as a pulsing single tone.",
+          hi: "कान केवल धीमे विस्पंद पकड़ सकता है, लगभग दस प्रति सेकंड तक, उसके आगे दोनों स्वर स्पंदित एकल स्वर के बजाय बस खुरदरे बेसुरेपन के रूप में सुनाई देते हैं।",
+          mr: "कान केवळ सावकाश स्पंद पकडू शकतो, सुमारे दहा प्रति सेकंदापर्यंत, त्यापुढे दोन्ही स्वर स्पंदित एकल स्वराऐवजी फक्त खरखरीत बेसूरपणा म्हणून ऐकू येतात.",
+        },
+        pair: {
+          left: {
+            en: "Tune the peg until the throbbing stops",
+            hi: "खूँटी तब तक घुमाओ जब तक धड़कन न रुक जाए",
+            mr: "खुंटी तोवर फिरवा जोवर धडधड थांबत नाही",
+          },
+          right: {
+            en: "beats",
+            hi: "विस्पंद",
+            mr: "स्पंद",
+          },
+        },
+      },
+      {
+        id: "doppler-effect",
+        name: {
+          en: "The Doppler effect",
+          hi: "डॉप्लर प्रभाव",
+          mr: "डॉप्लर परिणाम",
+        },
+        kind: "interaction",
+        prompt: {
+          en: "An ambulance's siren is heard at a higher pitch as it approaches and drops abruptly the instant it passes, although the siren itself has been sounding one steady note throughout. Which effect is this?",
+          hi: "एंबुलेंस का सायरन पास आते समय ऊँचे स्वर में सुनाई देता है और गुज़रते ही अचानक गिर जाता है, यद्यपि सायरन स्वयं पूरे समय एक ही स्थिर स्वर बजा रहा था। यह कौन-सा प्रभाव है?",
+          mr: "रुग्णवाहिकेचा भोंगा जवळ येताना उंच स्वरात ऐकू येतो आणि जाताक्षणी अचानक घसरतो, जरी भोंगा स्वतः पूर्ण काळ एकच स्थिर स्वर वाजवत होता. हा कोणता परिणाम?",
+        },
+        statement: {
+          en: "The Doppler effect is the change in observed frequency caused by relative motion between source and observer, raising the pitch on approach and lowering it on recession.",
+          hi: "डॉप्लर प्रभाव स्रोत और प्रेक्षक के बीच सापेक्ष गति से आया प्रेक्षित आवृत्ति का परिवर्तन है, जो पास आने पर स्वर ऊँचा और दूर जाने पर नीचा कर देता है।",
+          mr: "डॉप्लर परिणाम म्हणजे स्रोत आणि निरीक्षक यांच्यातील सापेक्ष गतीमुळे येणारा निरीक्षित वारंवारतेतील बदल, जो जवळ येताना स्वर उंच आणि दूर जाताना खाली करतो.",
+        },
+        detail: {
+          en: "For sound it matters which of the two is moving, because the medium provides a frame; a moving source and a moving observer at the same speed give slightly different shifts.",
+          hi: "ध्वनि के लिए यह मायने रखता है कि दोनों में से कौन चल रहा है, क्योंकि माध्यम एक निर्देश-तंत्र देता है; एक ही चाल पर चलता स्रोत और चलता प्रेक्षक थोड़े भिन्न विस्थापन देते हैं।",
+          mr: "ध्वनीसाठी दोघांपैकी कोण जात आहे हे महत्त्वाचे, कारण माध्यम एक चौकट देते; एकाच चालीने जाणारा स्रोत आणि जाणारा निरीक्षक थोडे वेगळे बदल देतात.",
+        },
+        extra: {
+          en: "The same shift in starlight is how the expansion of the universe was discovered, and radar speed traps and medical blood-flow scanners both work by measuring it.",
+          hi: "तारों के प्रकाश में वही विस्थापन वह रास्ता है जिससे ब्रह्मांड का प्रसार खोजा गया, और रडार गति-जाल तथा चिकित्सकीय रक्त-प्रवाह स्कैनर दोनों उसे नापकर काम करते हैं।",
+          mr: "ताऱ्यांच्या प्रकाशातील तोच बदल हा तो मार्ग ज्याने विश्वाचे प्रसरण शोधले गेले, आणि रडार वेग-सापळे व वैद्यकीय रक्तप्रवाह स्कॅनर दोन्ही तो मोजून काम करतात.",
+        },
+        pair: {
+          left: {
+            en: "One steady note heard as two pitches",
+            hi: "एक ही स्थिर स्वर, सुनाई दो स्वरों में",
+            mr: "एकच स्थिर स्वर, ऐकू दोन स्वरांत",
+          },
+          right: {
+            en: "the Doppler effect",
+            hi: "डॉप्लर प्रभाव",
+            mr: "डॉप्लर परिणाम",
+          },
+        },
+      },
+      /*F14*/
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A guitarist finds the top string is flat. A student advises loosening it, reasoning that a looser string is longer and a longer wavelength means a higher note. Correct the advice, and say what three things the pitch of a stretched string actually depends on.",
+          hi: "गिटार बजाने वाले को ऊपरी तार बेसुरा-नीचा लगता है। एक विद्यार्थी उसे ढीला करने की सलाह देता है, यह तर्क देकर कि ढीला तार लंबा होता है और लंबा तरंगदैर्घ्य ऊँचा स्वर देता है। सलाह सुधारो, और बताओ कि खिंचे तार का स्वर वस्तुतः किन तीन चीज़ों पर निर्भर है।",
+          mr: "गिटार वाजवणाऱ्याला वरची तार बेसूर-खालची वाटते. एक विद्यार्थी ती सैल करण्याचा सल्ला देतो, हा युक्तिवाद करून की सैल तार लांब असते आणि लांब तरंगलांबी उंच स्वर देते. सल्ला दुरुस्त करा, आणि ताणलेल्या तारेचा स्वर प्रत्यक्षात कोणत्या तीन गोष्टींवर अवलंबून ते सांगा.",
+        },
+        choices: [
+          {
+            en: "The string must be tightened, not loosened. The fundamental frequency is √(T/μ) divided by twice the length, so pitch rises with tension and falls with length and with mass per unit length. Loosening lowers T and drops the pitch further. The student's error is treating the string's own stretch as the wavelength: the wavelength is fixed at 2L by the two fixed ends, whatever the tension, and it is the SPEED along the string that tension changes",
+            hi: "तार कसना चाहिए, ढीला नहीं करना। मूल आवृत्ति √(T/μ) बटा दुगुनी लंबाई है, अतः स्वर तनाव के साथ चढ़ता है और लंबाई तथा प्रति एकांक लंबाई द्रव्यमान के साथ गिरता है। ढीला करने से T घटता है और स्वर और नीचे चला जाता है। विद्यार्थी की भूल तार के अपने खिंचाव को तरंगदैर्घ्य मान लेना है: तरंगदैर्घ्य दोनों बँधे सिरों से 2L पर तय है, तनाव चाहे जो हो, और तनाव बदलता है तार पर की चाल",
+            mr: "तार आवळावी, सैल करू नये. मूळ वारंवारता √(T/μ) भागिले दुप्पट लांबी, म्हणून स्वर ताणासोबत चढतो आणि लांबी व प्रति एकक लांबी वस्तुमानासोबत घटतो. सैल केल्याने T घटतो आणि स्वर आणखी खाली जातो. विद्यार्थ्याची चूक म्हणजे तारेचा स्वतःचा ताण तरंगलांबी मानणे: तरंगलांबी दोन्ही बांधलेल्या टोकांनी 2L वर ठरलेली, ताण काहीही असो, आणि ताण बदलतो तो तारेवरचा वेग",
+          },
+          {
+            en: "The student is right: loosening the string lengthens it and a longer string gives a higher note",
+            hi: "विद्यार्थी सही है: तार ढीला करने से वह लंबा होता है और लंबा तार ऊँचा स्वर देता है",
+            mr: "विद्यार्थी बरोबर: तार सैल केल्याने ती लांब होते आणि लांब तार उंच स्वर देते",
+          },
+          {
+            en: "Neither helps: a string's pitch is set only by its material, so a flat string must be replaced",
+            hi: "कोई भी काम नहीं आता: तार का स्वर केवल उसके पदार्थ से तय होता है, अतः बेसुरा तार बदलना ही पड़ेगा",
+            mr: "कोणतेही उपयोगी नाही: तारेचा स्वर केवळ तिच्या पदार्थाने ठरतो, म्हणून बेसूर तार बदलावीच लागेल",
+          },
+          {
+            en: "The string should be loosened, but because a looser string is heavier per unit length rather than because it is longer",
+            hi: "तार ढीला करना चाहिए, पर इसलिए कि ढीला तार प्रति एकांक लंबाई भारी होता है, इसलिए नहीं कि वह लंबा है",
+            mr: "तार सैल करावी, पण यासाठी की सैल तार प्रति एकक लांबी जड असते, ती लांब आहे म्हणून नव्हे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Two separate ideas have been welded together wrongly, and prising them apart fixes everything. A string fixed at both ends can only carry standing waves that have a node at each end. The longest such wave has half a wavelength spanning the string, so λ = 2L for the fundamental. Notice what that does and does not depend on: it depends on the LENGTH between the fixed points and on nothing else at all. Tightening the string does not change 2L; the bridge and the nut are where they were. What tension changes is the speed of a wave travelling along the string, v = √(T/μ), where μ is the mass per unit length. A tighter string has a stiffer restoring force and carries a wave faster, exactly as a stiffer spring oscillates faster. Now combine the two with f = v/λ: f = (1/2L)√(T/μ). Three things appear, and each has its own physical meaning. Tension, in the numerator under the root: tighter is higher, which is what a tuning peg is for. Length, in the denominator: shorter is higher, which is what a finger on a fret does, and pressing halfway up doubles the frequency to give the octave. Mass per unit length, in the denominator under the root: heavier is lower, which is why the bass strings of a guitar are thick and wound with wire while the treble strings are thin — all six are the same length under similar tensions, and the pitch range comes almost entirely from μ. The student's reasoning went wrong at a specific step worth naming. They confused the string's extension under load with the wavelength of the wave on it. Those are unrelated quantities: a string stretched by a millimetre and a string stretched by five millimetres both have the same 2L fundamental wavelength if the fixed ends have not moved. It is a category slip of the same kind as confusing how far a spring is stretched with how fast it oscillates. The fourth option is worth a note because it contains a real subtlety. Stretching a string DOES reduce its mass per unit length very slightly, since the same mass is spread over a marginally greater length. That effect exists, and it also raises the pitch — but it is tiny compared with the tension term, and it acts in the same direction, so it cannot rescue an argument that concludes the string should be loosened. (The third answer denies the whole mechanism of every stringed instrument ever built.)",
+          hi: "दो अलग विचार ग़लत ढंग से जोड़ दिए गए हैं, और उन्हें अलग कर देने से सब ठीक हो जाता है। दोनों सिरों पर बँधा तार केवल वे अप्रगामी तरंगें ढो सकता है जिनके हर सिरे पर निस्पंद हो। ऐसी सबसे लंबी तरंग का आधा तरंगदैर्घ्य तार भर फैलता है, अतः मूल के लिए λ = 2L. ध्यान दो वह किस पर निर्भर है और किस पर नहीं: वह बँधे बिंदुओं के बीच की लंबाई पर निर्भर है और और किसी चीज़ पर बिलकुल नहीं। तार कसने से 2L नहीं बदलता; ब्रिज और नट वहीं हैं जहाँ थे। तनाव बदलता है तार के अनुदिश चलती तरंग की चाल, v = √(T/μ), जहाँ μ प्रति एकांक लंबाई द्रव्यमान है। कसे तार का प्रत्यानयन बल अधिक कड़ा है और वह तरंग को तेज़ ढोता है, ठीक वैसे जैसे कड़ी स्प्रिंग तेज़ दोलन करती है। अब दोनों को f = v/λ से जोड़ो: f = (1/2L)√(T/μ). तीन चीज़ें आती हैं, और हर एक का अपना भौतिक अर्थ है। तनाव, मूल के नीचे अंश में: अधिक कसा यानी ऊँचा, और खूँटी इसी के लिए है। लंबाई, हर में: छोटा यानी ऊँचा, और फ़्रेट पर उँगली यही करती है, तथा बीच में दबाने से आवृत्ति दोगुनी होकर सप्तक देती है। प्रति एकांक लंबाई द्रव्यमान, मूल के नीचे हर में: भारी यानी नीचा, इसीलिए गिटार के बेस तार मोटे और तार से लिपटे होते हैं जबकि ट्रेबल तार पतले — छहों एक ही लंबाई के हैं और मिलते-जुलते तनावों पर, और स्वर-परास लगभग पूरा μ से आता है। विद्यार्थी का तर्क एक विशेष क़दम पर बिगड़ा जिसका नाम लेना सार्थक है। उसने भार के नीचे तार के विस्तार को उस पर की तरंग के तरंगदैर्घ्य से गड्डमड्ड कर दिया। वे असंबद्ध राशियाँ हैं: एक मिलीमीटर खिंचे तार और पाँच मिलीमीटर खिंचे तार दोनों का मूल तरंगदैर्घ्य वही 2L है यदि बँधे सिरे हिले न हों। यह उसी क़िस्म की श्रेणी-भूल है जैसे यह गड्डमड्ड करना कि स्प्रिंग कितनी खिंची है और वह कितनी तेज़ दोलन करती है। चौथा विकल्प टिप्पणी योग्य है क्योंकि उसमें एक असली सूक्ष्मता है। तार खींचने से उसका प्रति एकांक लंबाई द्रव्यमान सचमुच बहुत थोड़ा घटता है, क्योंकि वही द्रव्यमान थोड़ी अधिक लंबाई पर फैल जाता है। वह प्रभाव है, और वह भी स्वर ऊँचा करता है — पर तनाव-पद के सामने वह नन्हा है, और वह उसी दिशा में लगता है, अतः वह ऐसा तर्क नहीं बचा सकता जिसका निष्कर्ष तार ढीला करना हो। (तीसरा उत्तर अब तक बने हर तंतु-वाद्य की पूरी क्रियाविधि नकार देता है।)",
+          mr: "दोन वेगळ्या कल्पना चुकीच्या पद्धतीने जोडल्या गेल्या आहेत, आणि त्या वेगळ्या केल्याने सर्व ठीक होते. दोन्ही टोकांना बांधलेली तार केवळ त्याच स्थिर लहरी वाहू शकते ज्यांना प्रत्येक टोकावर निस्पंद असतो. अशा सर्वांत लांब लहरीची अर्धी तरंगलांबी तारेभर पसरते, म्हणून मूळासाठी λ = 2L. लक्षात घ्या ते कशावर अवलंबून आणि कशावर नाही: ते बांधलेल्या बिंदूंमधल्या लांबीवर अवलंबून आणि दुसऱ्या कशावरही मुळीच नाही. तार आवळल्याने 2L बदलत नाही; ब्रिज आणि नट जिथे होते तिथेच आहेत. ताण बदलतो तो तारेच्या दिशेने जाणाऱ्या लहरीचा वेग, v = √(T/μ), जिथे μ प्रति एकक लांबी वस्तुमान. आवळलेल्या तारेचे पुनःस्थापक बल अधिक ताठर आणि ती लहर अधिक वेगाने वाहते, अगदी तसेच जसे ताठर स्प्रिंग अधिक वेगाने आंदोलन करते. आता दोघांना f = v/λ ने जोडा: f = (1/2L)√(T/μ). तीन गोष्टी येतात, आणि प्रत्येकीचा स्वतःचा भौतिक अर्थ. ताण, मुळाखाली अंशात: अधिक आवळलेली म्हणजे उंच, आणि खुंटी याचसाठी. लांबी, छेदात: लहान म्हणजे उंच, आणि फ्रेटवरचे बोट हेच करते, तसेच मध्यभागी दाबल्याने वारंवारता दुप्पट होऊन सप्तक देते. प्रति एकक लांबी वस्तुमान, मुळाखाली छेदात: जड म्हणजे खालचा, म्हणूनच गिटारच्या बेस तारा जाड आणि तारेने गुंडाळलेल्या तर ट्रेबल तारा पातळ — सहाही एकाच लांबीच्या आणि सारख्या ताणांवर, आणि स्वर-पल्ला जवळपास पूर्णपणे μ मधून येतो. विद्यार्थ्याचा युक्तिवाद एका विशिष्ट टप्प्यावर बिघडला ज्याचे नाव घेणे सार्थक. त्याने ओझ्याखालच्या तारेच्या ताणाची तिच्यावरील लहरीच्या तरंगलांबीशी गल्लत केली. त्या असंबद्ध राशी: एक मिलीमीटर ताणलेली तार आणि पाच मिलीमीटर ताणलेली तार दोघांचीही मूळ तरंगलांबी तीच 2L आहे जर बांधलेली टोके हलली नसतील. ही त्याच प्रकारची वर्ग-चूक जशी स्प्रिंग किती ताणली आणि ती किती वेगाने आंदोलन करते यांची गल्लत. चौथा पर्याय टिप्पणीयोग्य कारण त्यात एक खरी सूक्ष्मता आहे. तार ताणल्याने तिचे प्रति एकक लांबी वस्तुमान खरोखर फार थोडे घटते, कारण तेच वस्तुमान किंचित अधिक लांबीवर पसरते. तो परिणाम आहे, आणि तोही स्वर उंच करतो — पण ताण-पदासमोर तो इवला, आणि तो त्याच दिशेने लागतो, म्हणून तो ज्याचा निष्कर्ष तार सैल करावी असा आहे तो युक्तिवाद वाचवू शकत नाही. (तिसरे उत्तर आजवर बनलेल्या प्रत्येक तंतुवाद्याची अख्खी कार्यपद्धती नाकारते.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A siren of fixed frequency is mounted on a car. Case one: the car drives past a stationary listener at 34 m/s. Case two: the car is parked and the listener drives past it at 34 m/s. Taking the speed of sound as 340 m/s, does the listener hear the same shift in both cases, and what does the answer reveal?",
+          hi: "नियत आवृत्ति का सायरन एक कार पर लगा है। पहली स्थिति: कार स्थिर श्रोता के पास से 34 m/s पर गुज़रती है। दूसरी स्थिति: कार खड़ी है और श्रोता उसके पास से 34 m/s पर गुज़रता है। ध्वनि की चाल 340 m/s लेते हुए, क्या श्रोता दोनों स्थितियों में वही विस्थापन सुनता है, और उत्तर क्या प्रकट करता है?",
+          mr: "ठरलेल्या वारंवारतेचा भोंगा एका कारवर बसवला आहे. पहिली स्थिती: कार स्थिर श्रोत्याजवळून 34 m/s ने जाते. दुसरी स्थिती: कार उभी आहे आणि श्रोता तिच्याजवळून 34 m/s ने जातो. ध्वनीचा वेग 340 m/s घेतल्यास, श्रोता दोन्ही स्थितींत तोच बदल ऐकतो का, आणि उत्तर काय उघड करते?",
+        },
+        choices: [
+          {
+            en: "The shifts differ. An approaching source gives f × 340/(340 − 34) = f × 1.111, while an approaching observer gives f × (340 + 34)/340 = f × 1.100. A moving source compresses the wavelengths themselves; a moving observer meets unchanged wavelengths more often. The difference reveals that sound has a medium which defines a preferred frame — and it is precisely this asymmetry that light does NOT show, which is what forced special relativity",
+            hi: "विस्थापन भिन्न हैं। पास आता स्रोत f × 340/(340 − 34) = f × 1.111 देता है, जबकि पास आता प्रेक्षक f × (340 + 34)/340 = f × 1.100. चलता स्रोत स्वयं तरंगदैर्घ्यों को दबा देता है; चलता प्रेक्षक अपरिवर्तित तरंगदैर्घ्यों से अधिक बार मिलता है। यह अंतर प्रकट करता है कि ध्वनि के पास माध्यम है जो एक वरीय निर्देश-तंत्र परिभाषित करता है — और ठीक यही असममिति प्रकाश नहीं दिखाता, और इसी ने विशेष आपेक्षिकता को बाध्य किया",
+            mr: "बदल वेगळे आहेत. जवळ येणारा स्रोत f × 340/(340 − 34) = f × 1.111 देतो, तर जवळ येणारा निरीक्षक f × (340 + 34)/340 = f × 1.100 देतो. चालणारा स्रोत स्वतः तरंगलांब्या दाबतो; चालणारा निरीक्षक अपरिवर्तित तरंगलांब्यांना अधिक वेळा भेटतो. हा फरक उघड करतो की ध्वनीकडे माध्यम आहे जे एक पसंतीची चौकट व्याख्यायित करते — आणि नेमकी हीच असममिती प्रकाश दाखवत नाही, आणि यानेच विशेष सापेक्षतेला भाग पाडले",
+          },
+          {
+            en: "The shifts are identical, because only the relative velocity of source and observer can matter in any physical situation",
+            hi: "विस्थापन समान हैं, क्योंकि किसी भी भौतिक स्थिति में केवल स्रोत और प्रेक्षक का सापेक्ष वेग ही मायने रख सकता है",
+            mr: "बदल सारखेच आहेत, कारण कोणत्याही भौतिक परिस्थितीत केवळ स्रोत आणि निरीक्षकाचा सापेक्ष वेगच महत्त्वाचा असू शकतो",
+          },
+          {
+            en: "There is no shift in the second case at all, since a stationary source cannot produce a Doppler effect",
+            hi: "दूसरी स्थिति में कोई विस्थापन है ही नहीं, क्योंकि स्थिर स्रोत डॉप्लर प्रभाव पैदा नहीं कर सकता",
+            mr: "दुसऱ्या स्थितीत कोणताही बदल नाहीच, कारण स्थिर स्रोत डॉप्लर परिणाम निर्माण करू शकत नाही",
+          },
+          {
+            en: "The shift is larger for the moving observer, because they are travelling towards the sound as well as the sound travelling towards them",
+            hi: "चलते प्रेक्षक के लिए विस्थापन बड़ा है, क्योंकि वे ध्वनि की ओर चल रहे हैं और ध्वनि भी उनकी ओर चल रही है",
+            mr: "चालणाऱ्या निरीक्षकासाठी बदल मोठा आहे, कारण ते ध्वनीकडे जात आहेत आणि ध्वनीही त्यांच्याकडे जात आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Do both calculations before reasoning about them, because the numbers are close enough that intuition is useless. Moving source, stationary observer. In one period the source emits a crest and then moves forward by v_s × T before emitting the next, so the crests are packed closer: the wavelength ahead of it is λ' = (v − v_s)/f. The observer, standing still, meets them at the ordinary speed of sound, so f' = v/λ' = f × v/(v − v_s) = f × 340/306 = 1.1111 f. Moving observer, stationary source. Here the source emits perfectly ordinary, evenly spaced crests: the wavelength in the air is λ = v/f, unchanged. What changes is how fast the observer sweeps through them, which is now v + v_o rather than v, so f' = (v + v_o)/λ = f × 374/340 = 1.1000 f. The two answers differ by about one per cent — small, but real, and measurable with ordinary equipment. The physical difference behind the arithmetic is the important part. In the first case the WAVES THEMSELVES are altered: go out and measure the distance between crests in the air ahead of the moving car and you will find them genuinely bunched. In the second case the waves in the air are untouched and only the rate of encountering them has changed. Those are different physical situations, so it is no surprise that they give different answers, even though the relative velocity of source and observer is 34 m/s in both. Why can sound tell the difference? Because there is a third participant: the air. Sound travels at 340 m/s with respect to the AIR, and that gives the problem a preferred frame — the one in which the medium is at rest. 'Moving' means moving relative to the air, and the source and the observer are in genuinely different situations with respect to it. The second option asserts a principle that sounds unimpeachable and is simply false here. Now the payoff. Light shows no such asymmetry. Every experiment ever done finds that only the relative velocity of source and observer affects the observed frequency of light, with no trace of a preferred frame and no third participant to move relative to. Michelson and Morley went looking for exactly that asymmetry, expecting to detect the Earth's motion through a luminiferous ether, and found nothing at all. That null result is what the second option describes — true of light and false of sound — and reconciling it with everything else is what special relativity was built to do. (The third answer forgets that relative motion is what matters, and the fourth double-counts a speed that has already been included.)",
+          hi: "दोनों गणनाएँ तर्क करने से पहले कर लो, क्योंकि संख्याएँ इतनी पास हैं कि अंतर्ज्ञान बेकार है। चलता स्रोत, स्थिर प्रेक्षक। एक आवर्तकाल में स्रोत एक शिखर छोड़ता है और अगला छोड़ने से पहले v_s × T आगे बढ़ जाता है, अतः शिखर पास-पास जुड़ जाते हैं: उसके आगे तरंगदैर्घ्य λ' = (v − v_s)/f. स्थिर खड़ा प्रेक्षक उनसे ध्वनि की साधारण चाल पर मिलता है, अतः f' = v/λ' = f × v/(v − v_s) = f × 340/306 = 1.1111 f. चलता प्रेक्षक, स्थिर स्रोत। यहाँ स्रोत बिलकुल साधारण, समान दूरी वाले शिखर छोड़ता है: हवा में तरंगदैर्घ्य λ = v/f, अपरिवर्तित। बदलता है यह कि प्रेक्षक उनसे कितनी तेज़ी से गुज़रता है, जो अब v के बजाय v + v_o है, अतः f' = (v + v_o)/λ = f × 374/340 = 1.1000 f. दोनों उत्तर लगभग एक प्रतिशत भिन्न हैं — छोटा, पर असली, और साधारण उपकरणों से नापने योग्य। गणित के पीछे का भौतिक भेद महत्वपूर्ण हिस्सा है। पहली स्थिति में स्वयं तरंगें बदल जाती हैं: बाहर जाकर चलती कार के आगे हवा में शिखरों की दूरी नापो और तुम उन्हें सचमुच सिमटा पाओगे। दूसरी स्थिति में हवा की तरंगें अछूती हैं और बदली है केवल उनसे मिलने की दर। ये भिन्न भौतिक स्थितियाँ हैं, अतः यह कोई आश्चर्य नहीं कि वे भिन्न उत्तर देती हैं, यद्यपि दोनों में स्रोत और प्रेक्षक का सापेक्ष वेग 34 m/s है। ध्वनि भेद बता क्यों सकती है? क्योंकि एक तीसरा भागीदार है: हवा। ध्वनि हवा के सापेक्ष 340 m/s चलती है, और यह प्रश्न को एक वरीय निर्देश-तंत्र देता है — वह जिसमें माध्यम विराम में है। 'चलना' का अर्थ हवा के सापेक्ष चलना है, और उसके प्रति स्रोत तथा प्रेक्षक सचमुच भिन्न स्थितियों में हैं। दूसरा विकल्प ऐसा सिद्धांत कहता है जो अकाट्य लगता है और यहाँ बस झूठा है। अब कमाई। प्रकाश ऐसी कोई असममिति नहीं दिखाता। अब तक हुआ हर प्रयोग यही पाता है कि प्रकाश की प्रेक्षित आवृत्ति पर केवल स्रोत और प्रेक्षक का सापेक्ष वेग असर करता है, किसी वरीय निर्देश-तंत्र का कोई चिह्न नहीं और सापेक्ष चलने को कोई तीसरा भागीदार नहीं। माइकल्सन और मॉर्ली ठीक उसी असममिति की तलाश में निकले थे, यह अपेक्षा करते हुए कि वे प्रकाशवाही ईथर में से पृथ्वी की गति पकड़ लेंगे, और उन्हें कुछ भी नहीं मिला। वही शून्य परिणाम है जिसका वर्णन दूसरा विकल्प करता है — प्रकाश पर सच और ध्वनि पर झूठ — और उसे बाक़ी सब से मिलाने के लिए ही विशेष आपेक्षिकता बनाई गई। (तीसरा उत्तर भूल जाता है कि मायने सापेक्ष गति रखती है, और चौथा उस चाल को दो बार गिन लेता है जो पहले ही शामिल है।)",
+          mr: "दोन्ही गणना युक्तिवाद करण्याआधी करून घ्या, कारण संख्या इतक्या जवळ की अंतःप्रेरणा निरुपयोगी. चालणारा स्रोत, स्थिर निरीक्षक. एका आवर्तकालात स्रोत एक शिखर सोडतो आणि पुढचे सोडण्याआधी v_s × T पुढे जातो, म्हणून शिखरे जवळजवळ येतात: त्याच्यापुढची तरंगलांबी λ' = (v − v_s)/f. स्थिर उभा निरीक्षक त्यांना ध्वनीच्या सामान्य वेगाने भेटतो, म्हणून f' = v/λ' = f × v/(v − v_s) = f × 340/306 = 1.1111 f. चालणारा निरीक्षक, स्थिर स्रोत. इथे स्रोत अगदी सामान्य, समान अंतरावरची शिखरे सोडतो: हवेतील तरंगलांबी λ = v/f, अपरिवर्तित. बदलते ते निरीक्षक त्यांतून किती वेगाने जातो, जे आता v ऐवजी v + v_o, म्हणून f' = (v + v_o)/λ = f × 374/340 = 1.1000 f. दोन्ही उत्तरे सुमारे एक टक्क्याने वेगळी — लहान, पण खरी, आणि सामान्य उपकरणांनी मोजण्याजोगी. आकडेमोडीमागचा भौतिक भेद हा महत्त्वाचा भाग. पहिल्या स्थितीत लहरीच बदलतात: बाहेर जाऊन चालत्या कारपुढच्या हवेतील शिखरांचे अंतर मोजा आणि तुम्हाला ती खरोखर आकुंचलेली आढळतील. दुसऱ्या स्थितीत हवेतील लहरी अस्पर्श आणि बदलला केवळ त्यांना भेटण्याचा दर. या वेगळ्या भौतिक स्थिती, म्हणून त्या वेगळी उत्तरे देतात यात आश्चर्य नाही, जरी दोन्हींत स्रोत आणि निरीक्षकाचा सापेक्ष वेग 34 m/s असला तरी. ध्वनी फरक का सांगू शकतो? कारण तिसरा सहभागी आहे: हवा. ध्वनी हवेच्या सापेक्ष 340 m/s जातो, आणि हे प्रश्नाला एक पसंतीची चौकट देते — जिच्यात माध्यम स्थिर आहे. 'चालणे' म्हणजे हवेच्या सापेक्ष चालणे, आणि तिच्याबाबत स्रोत आणि निरीक्षक खरोखर वेगळ्या स्थितीत आहेत. दुसरा पर्याय असे तत्त्व सांगतो जे अकाट्य वाटते आणि इथे फक्त खोटे आहे. आता कमाई. प्रकाश अशी कोणतीही असममिती दाखवत नाही. आजवर झालेला प्रत्येक प्रयोग हेच आढळतो की प्रकाशाच्या निरीक्षित वारंवारतेवर केवळ स्रोत आणि निरीक्षकाचा सापेक्ष वेग परिणाम करतो, कोणत्याही पसंतीच्या चौकटीचे चिन्ह नाही आणि सापेक्ष चालायला तिसरा सहभागी नाही. मायकेलसन आणि मॉर्ली नेमक्या त्याच असममितीच्या शोधात निघाले होते, प्रकाशवाही ईथरमधून पृथ्वीची गती पकडू अशी अपेक्षा ठेवून, आणि त्यांना काहीही मिळाले नाही. तोच शून्य निकाल ज्याचे वर्णन दुसरा पर्याय करतो — प्रकाशावर खरे आणि ध्वनीवर खोटे — आणि त्याला बाकी सर्वांशी जुळवण्यासाठीच विशेष सापेक्षता बांधली गेली. (तिसरे उत्तर विसरते की महत्त्वाची सापेक्ष गती आहे, आणि चौथे आधीच समाविष्ट असलेला वेग दोनदा मोजते.)",
+        },
+      },
+      /*H14*/
+    ],
+  },
+
 ];
 
 export const G11_PHYSICS_NUMERIC: Record<string, NumQ[]> = {
@@ -6306,6 +7008,354 @@ export const G11_PHYSICS_NUMERIC: Record<string, NumQ[]> = {
         en: "Equipartition gives each degree of freedom ½RT per mole, so with f = 7 the internal energy is (7/2)RT = 3.5 × 8.3 × 300 = 8715 J. Two things are worth drawing out. First, a vibrating bond counts as TWO degrees of freedom rather than one, because it stores energy both as kinetic energy of the oscillation and as potential energy in the stretched bond, and equipartition assigns ½RT to each quadratic term. That is why a diatomic molecule goes from five to seven and not from five to six. Second, and more importantly, the vibrational mode does not switch on gradually — it is essentially absent at room temperature and appears only above some hundreds or thousands of kelvin depending on the molecule. Classical physics has no explanation whatever for this. Equipartition, taken at face value, predicts that every mode should always be active, which would give the wrong specific heat for almost every real gas at every ordinary temperature. The resolution came only with quantum mechanics: vibrational energy comes in discrete lumps, and if kT is much smaller than one lump the mode simply cannot be excited and contributes nothing. The measured specific heat of hydrogen, which climbs in steps as it is warmed over hundreds of degrees, was one of the earliest and clearest experimental signposts that classical mechanics was incomplete. (6225 uses f = 5, 3735 uses f = 3, and 12450 uses f = 10.)",
         hi: "समविभाजन हर स्वातंत्र्य-कोटि को प्रति मोल ½RT देती है, अतः f = 7 पर आंतरिक ऊर्जा (7/2)RT = 3.5 × 8.3 × 300 = 8715 J. दो बातें निकालने योग्य हैं। पहली, कंपन करता बंधन एक नहीं बल्कि दो स्वातंत्र्य-कोटियाँ गिना जाता है, क्योंकि वह ऊर्जा दोलन की गतिज ऊर्जा के रूप में भी जमा करता है और खिंचे बंधन की स्थितिज ऊर्जा के रूप में भी, और समविभाजन हर द्विघात पद को ½RT देती है। इसीलिए द्विपरमाणुक अणु पाँच से सात जाता है, पाँच से छह नहीं। दूसरी, और अधिक महत्वपूर्ण, कंपन-प्रकार धीरे-धीरे चालू नहीं होता — कमरे के ताप पर वह मूलतः अनुपस्थित है और अणु के अनुसार कुछ सौ या हज़ार केल्विन के ऊपर ही प्रकट होता है। चिरसम्मत भौतिकी के पास इसकी कोई व्याख्या नहीं। समविभाजन, ज्यों का त्यों लिया जाए, भविष्यवाणी करती है कि हर प्रकार सदा सक्रिय रहेगा, जो लगभग हर असली गैस के लिए हर साधारण ताप पर ग़लत विशिष्ट ऊष्मा देगा। समाधान केवल क्वांटम यांत्रिकी के साथ आया: कंपन-ऊर्जा अलग-अलग गुल्लों में आती है, और यदि kT एक गुल्ले से बहुत छोटा हो तो प्रकार उत्तेजित हो ही नहीं सकता और कुछ योगदान नहीं देता। हाइड्रोजन की नापी गई विशिष्ट ऊष्मा, जो सैकड़ों डिग्री गरम करने पर सीढ़ियों में चढ़ती है, इस बात के आरंभिक और स्पष्टतम प्रायोगिक संकेतों में से एक थी कि चिरसम्मत यांत्रिकी अधूरी है। (6225 f = 5 लगाता है, 3735 f = 3, और 12450 f = 10.)",
         mr: "समविभाजन प्रत्येक स्वातंत्र्यकोटीला प्रति मोल ½RT देते, म्हणून f = 7 वर आंतरिक ऊर्जा (7/2)RT = 3.5 × 8.3 × 300 = 8715 J. दोन गोष्टी काढण्याजोग्या. पहिली, कंपन करणारा बंध एक नव्हे तर दोन स्वातंत्र्यकोटी मोजला जातो, कारण तो ऊर्जा दोलनाच्या गतिज ऊर्जेच्या रूपातही साठवतो आणि ताणलेल्या बंधाच्या स्थितिज ऊर्जेच्या रूपातही, आणि समविभाजन प्रत्येक द्विघात पदाला ½RT देते. म्हणूनच द्विअणुक रेणू पाचावरून सातावर जातो, पाचावरून सहावर नाही. दुसरी, आणि अधिक महत्त्वाची, कंपन-प्रकार हळूहळू सुरू होत नाही — खोलीच्या तापमानावर तो मुळात अनुपस्थित असतो आणि रेणूनुसार काही शेकडा वा हजार केल्विनच्या वरच प्रकट होतो. अभिजात भौतिकीकडे याचे कोणतेही स्पष्टीकरण नाही. समविभाजन, जसेच्या तसे घेतल्यास, भाकीत करते की प्रत्येक प्रकार नेहमी सक्रिय असावा, जे जवळपास प्रत्येक खऱ्या वायूसाठी प्रत्येक सामान्य तापमानावर चुकीची विशिष्ट उष्णता देईल. उकल केवळ पुंज यामिकीसह आली: कंपन-ऊर्जा वेगवेगळ्या गठ्ठ्यांत येते, आणि kT एका गठ्ठ्याहून फार लहान असल्यास प्रकार उत्तेजितच होऊ शकत नाही आणि काहीही वाटा देत नाही. हायड्रोजनची मोजलेली विशिष्ट उष्णता, जी शेकडो अंश तापवताना पायऱ्यांनी चढते, अभिजात यामिकी अपूर्ण आहे याच्या सर्वांत सुरुवातीच्या आणि स्पष्ट प्रायोगिक खुणांपैकी एक होती. (6225 हे f = 5 वापरते, 3735 हे f = 3, आणि 12450 हे f = 10.)",
+      },
+    },
+  ],
+  "physics-11-oscillations": [
+    {
+      level: 1,
+      stem: {
+        en: "An oscillator has a period of 2 s. What is its frequency, in hertz?",
+        hi: "किसी दोलक का आवर्तकाल 2 s है। उसकी आवृत्ति हर्ट्ज़ में क्या है?",
+        mr: "एका दोलकाचा आवर्तकाल 2 s आहे. त्याची वारंवारता हर्ट्झमध्ये किती?",
+      },
+      answer: 0.5,
+      wrong: [2, 4, 0.25],
+      checkExpr: "1/2",
+      solution: {
+        en: "Frequency is the reciprocal of the period: f = 1/T = 1/2 = 0.5 Hz. Half a cycle is completed every second. (2 quotes the period itself as though it were a frequency.)",
+        hi: "आवृत्ति आवर्तकाल का व्युत्क्रम है: f = 1/T = 1/2 = 0.5 Hz. हर सेकंड आधा चक्र पूरा होता है। (2 स्वयं आवर्तकाल को ऐसे बता देता है मानो वह आवृत्ति हो।)",
+        mr: "वारंवारता ही आवर्तकालाची व्यस्त: f = 1/T = 1/2 = 0.5 Hz. दर सेकंदाला अर्धे चक्र पूर्ण होते. (2 स्वतः आवर्तकाल असे सांगते जणू ती वारंवारता असावी.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "A 2 kg mass hangs from a spring of stiffness 200 N/m. What is its angular frequency, in rad/s?",
+        hi: "200 N/m दृढ़ता की स्प्रिंग से 2 kg का द्रव्यमान लटका है। उसकी कोणीय आवृत्ति rad/s में क्या है?",
+        mr: "200 N/m ताठरतेच्या स्प्रिंगला 2 kg वस्तुमान लटकले आहे. त्याची कोनीय वारंवारता rad/s मध्ये किती?",
+      },
+      answer: 10,
+      wrong: [100, 20, 1],
+      checkExpr: "(200/2)^0.5",
+      solution: {
+        en: "ω = √(k/m) = √(200/2) = √100 = 10 rad/s. A stiffer spring or a lighter mass both raise it. (100 is ω² and forgets the square root.)",
+        hi: "ω = √(k/m) = √(200/2) = √100 = 10 rad/s. कड़ी स्प्रिंग या हल्का द्रव्यमान दोनों उसे बढ़ाते हैं। (100 ω² है और वर्गमूल भूल जाता है।)",
+        mr: "ω = √(k/m) = √(200/2) = √100 = 10 rad/s. ताठर स्प्रिंग वा हलके वस्तुमान दोन्ही तिला वाढवतात. (100 हे ω² आणि वर्गमूळ विसरते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A pendulum has a period of 2 s. Its length is made four times as long. What is the new period, in seconds?",
+        hi: "किसी लोलक का आवर्तकाल 2 s है। उसकी लंबाई चार गुनी कर दी जाती है। नया आवर्तकाल सेकंड में क्या है?",
+        mr: "एका लंबकाचा आवर्तकाल 2 s आहे. त्याची लांबी चौपट केली जाते. नवा आवर्तकाल सेकंदांत किती?",
+      },
+      answer: 4,
+      wrong: [8, 2, 1],
+      checkExpr: "2*4^0.5",
+      fmt: seconds,
+      solution: {
+        en: "The period goes as the square root of the length, so quadrupling l doubles T: 2 × 2 = 4 s. (8 assumes direct proportionality to the length, which would need a formula without the root.)",
+        hi: "आवर्तकाल लंबाई के वर्गमूल के अनुसार चलता है, अतः l चौगुना करने पर T दोगुना: 2 × 2 = 4 s. (8 लंबाई के सीधे समानुपात मान लेता है, जिसके लिए बिना मूल वाला सूत्र चाहिए।)",
+        mr: "आवर्तकाल लांबीच्या वर्गमुळानुसार जातो, म्हणून l चौपट केल्यास T दुप्पट: 2 × 2 = 4 s. (8 लांबीच्या थेट समानुपाती मानते, ज्यासाठी मुळाविना सूत्र लागेल.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A body performs simple harmonic motion with amplitude 0.05 m and angular frequency 10 rad/s. What is its maximum speed?",
+        hi: "कोई पिंड 0.05 m आयाम और 10 rad/s कोणीय आवृत्ति से सरल आवर्त गति करता है। उसकी अधिकतम चाल क्या है?",
+        mr: "एक पिंड 0.05 m आयाम आणि 10 rad/s कोनीय वारंवारतेने सरळ आवर्ती गती करतो. त्याची कमाल चाल किती?",
+      },
+      answer: 0.5,
+      wrong: [5, 0.005, 2],
+      checkExpr: "0.05*10",
+      fmt: ms,
+      solution: {
+        en: "The maximum speed is ωA = 10 × 0.05 = 0.5 m/s, reached as the body passes through the centre. At the extremes the speed is zero and the acceleration is greatest. (5 multiplies by 100 instead of 10.)",
+        hi: "अधिकतम चाल ωA = 10 × 0.05 = 0.5 m/s है, जो पिंड के बीच से गुज़रते समय मिलती है। छोरों पर चाल शून्य और त्वरण सबसे बड़ा होता है। (5 10 के बजाय 100 से गुणा करता है।)",
+        mr: "कमाल चाल ωA = 10 × 0.05 = 0.5 m/s, जी पिंड मध्यातून जाताना मिळते. टोकांवर चाल शून्य आणि त्वरण सर्वांत मोठे. (5 हे 10 ऐवजी 100 ने गुणते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "The same oscillator has amplitude 0.05 m and angular frequency 10 rad/s. What is its maximum acceleration?",
+        hi: "उसी दोलक का आयाम 0.05 m और कोणीय आवृत्ति 10 rad/s है। उसका अधिकतम त्वरण क्या है?",
+        mr: "त्याच दोलकाचा आयाम 0.05 m आणि कोनीय वारंवारता 10 rad/s आहे. त्याचे कमाल त्वरण किती?",
+      },
+      answer: 5,
+      wrong: [0.5, 50, 0.05],
+      checkExpr: "10^2*0.05",
+      solution: {
+        en: "The maximum acceleration is ω²A = 100 × 0.05 = 5 m/s², reached at the extremes where the displacement is largest. Note that the acceleration peaks exactly where the speed vanishes — the two are a quarter of a cycle out of phase. (0.5 uses ω rather than ω².)",
+        hi: "अधिकतम त्वरण ω²A = 100 × 0.05 = 5 m/s² है, जो छोरों पर मिलता है जहाँ विस्थापन सबसे बड़ा है। ध्यान दो त्वरण ठीक वहाँ शिखर पर है जहाँ चाल लुप्त होती है — दोनों चौथाई चक्र की कला-भिन्नता पर हैं। (0.5 ω² के बजाय ω लगाता है।)",
+        mr: "कमाल त्वरण ω²A = 100 × 0.05 = 5 m/s², जे टोकांवर मिळते जिथे विस्थापन सर्वांत मोठे. लक्षात घ्या त्वरण नेमके तिथे शिखरावर जिथे चाल लोप पावते — दोघे पाव चक्राच्या कला-फरकावर. (0.5 हे ω² ऐवजी ω वापरते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A mass on a spring of stiffness 200 N/m oscillates with amplitude 0.05 m. What is the total energy of the oscillation?",
+        hi: "200 N/m दृढ़ता की स्प्रिंग पर द्रव्यमान 0.05 m आयाम से दोलन करता है। दोलन की कुल ऊर्जा क्या है?",
+        mr: "200 N/m ताठरतेच्या स्प्रिंगवरचे वस्तुमान 0.05 m आयामाने आंदोलन करते. आंदोलनाची एकूण ऊर्जा किती?",
+      },
+      answer: 0.25,
+      wrong: [0.5, 5, 0.025],
+      checkExpr: "0.5*200*0.05^2",
+      solution: {
+        en: "E = ½kA² = ½ × 200 × 0.0025 = 0.25 J. This is entirely potential at the extremes and entirely kinetic at the centre, and it never changes in between. Doubling the amplitude would quadruple it. (0.5 drops the half.)",
+        hi: "E = ½kA² = ½ × 200 × 0.0025 = 0.25 J. यह छोरों पर पूरी तरह स्थितिज है और बीच में पूरी तरह गतिज, और बीच में वह कभी नहीं बदलती। आयाम दोगुना करने पर वह चौगुनी हो जाती। (0.5 आधा गिरा देता है।)",
+        mr: "E = ½kA² = ½ × 200 × 0.0025 = 0.25 J. ही टोकांवर पूर्णपणे स्थितिज आणि मध्यभागी पूर्णपणे गतिज, आणि मधल्या काळात ती कधीच बदलत नाही. आयाम दुप्पट केल्यास ती चौपट झाली असती. (0.5 निम्मे गाळते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "An oscillator is at a displacement equal to half its amplitude. What percentage of its total energy is kinetic at that instant?",
+        hi: "कोई दोलक अपने आयाम के आधे विस्थापन पर है। उस क्षण उसकी कुल ऊर्जा का कितना प्रतिशत गतिज है?",
+        mr: "एक दोलक आपल्या आयामाच्या निम्म्या विस्थापनावर आहे. त्या क्षणी त्याच्या एकूण ऊर्जेच्या किती टक्के गतिज आहे?",
+      },
+      answer: 75,
+      wrong: [25, 50, 87.5],
+      checkExpr: "100*(1-0.25)",
+      solution: {
+        en: "Potential energy is ½kx², so at x = A/2 it is a quarter of ½kA² — that is 25 per cent of the total. The rest is kinetic: 75 per cent. Note that the energy is only a quarter potential at half the amplitude, because the square makes the potential energy grow slowly at first and steeply near the ends. (50 assumes a linear split.)",
+        hi: "स्थितिज ऊर्जा ½kx² है, अतः x = A/2 पर वह ½kA² की एक चौथाई है — यानी कुल का 25 प्रतिशत। शेष गतिज: 75 प्रतिशत। ध्यान दो आधे आयाम पर ऊर्जा केवल एक चौथाई स्थितिज है, क्योंकि वर्ग स्थितिज ऊर्जा को शुरू में धीरे और छोरों के पास तीखा बढ़ाता है। (50 रैखिक बँटवारा मान लेता है।)",
+        mr: "स्थितिज ऊर्जा ½kx², म्हणून x = A/2 वर ती ½kA² च्या एक चतुर्थांश — म्हणजे एकूणाच्या 25 टक्के. उरलेली गतिज: 75 टक्के. लक्षात घ्या निम्म्या आयामावर ऊर्जा केवळ एक चतुर्थांश स्थितिज, कारण वर्ग स्थितिज ऊर्जेला सुरुवातीला सावकाश आणि टोकांजवळ तीव्र वाढवतो. (50 रेषीय विभागणी गृहीत धरते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A pendulum with a period of 2 s on Earth is taken to the Moon, where g is one sixth of its Earth value. What is its period there, in seconds?",
+        hi: "पृथ्वी पर 2 s आवर्तकाल वाला लोलक चंद्रमा पर ले जाया जाता है, जहाँ g पृथ्वी के मान का छठा भाग है। वहाँ उसका आवर्तकाल सेकंड में क्या है?",
+        mr: "पृथ्वीवर 2 s आवर्तकाल असलेला लंबक चंद्रावर नेला जातो, जिथे g पृथ्वीच्या मूल्याचा सहावा भाग आहे. तिथे त्याचा आवर्तकाल सेकंदांत किती?",
+      },
+      answer: 4.898979,
+      wrong: [12, 0.816497, 2],
+      checkExpr: "2*6^0.5",
+      fmt: seconds,
+      solution: {
+        en: "T ∝ 1/√g, so dividing g by six multiplies T by √6: 2 × 2.449490 = 4.898979 s. A pendulum clock taken to the Moon would run at less than half speed, losing more than half a day every day. (12 divides g by six inside the formula without taking the root, and 0.816497 moves the wrong way.)",
+        hi: "T ∝ 1/√g, अतः g को छह से भाग देने पर T √6 गुना होता है: 2 × 2.449490 = 4.898979 s. चंद्रमा पर ले जाई गई लोलक-घड़ी आधी से भी कम गति से चलती, हर दिन आधे दिन से अधिक पीछे रहती। (12 सूत्र में g को छह से भाग देता है पर मूल नहीं लेता, और 0.816497 उलटी दिशा में जाता है।)",
+        mr: "T ∝ 1/√g, म्हणून g सहाने भागल्यास T √6 पट होतो: 2 × 2.449490 = 4.898979 s. चंद्रावर नेलेले लंबक-घड्याळ निम्म्याहूनही कमी वेगाने चालले असते, दररोज अर्ध्या दिवसाहून अधिक मागे पडत. (12 सूत्रात g सहाने भागते पण मूळ घेत नाही, आणि 0.816497 उलट दिशेने जाते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "Two identical springs, each of stiffness 200 N/m, are joined end to end and a mass is hung from the pair. What is the effective stiffness, in N/m?",
+        hi: "200 N/m दृढ़ता की दो एक-सी स्प्रिंगें सिरे से सिरा जोड़ी जाती हैं और जोड़ी से द्रव्यमान लटकाया जाता है। प्रभावी दृढ़ता N/m में क्या है?",
+        mr: "200 N/m ताठरतेच्या दोन सारख्या स्प्रिंगा टोकाला टोक जोडल्या जातात आणि जोडीला वस्तुमान लटकवले जाते. परिणामी ताठरता N/m मध्ये किती?",
+      },
+      answer: 100,
+      wrong: [400, 300, 50],
+      checkExpr: "200/2",
+      solution: {
+        en: "In series each spring carries the full load and each stretches by the full amount, so the total extension is doubled for the same force and the effective stiffness is halved: 200/2 = 100 N/m. Joined side by side instead, the load would be shared and the stiffness would double to 400. A longer spring is therefore a softer one, which is why 400 is offered as the parallel answer. (300 adds and halves without reason.)",
+        hi: "श्रेणी में हर स्प्रिंग पूरा भार ढोती है और हर एक पूरा खिंचती है, अतः उसी बल पर कुल विस्तार दोगुना और प्रभावी दृढ़ता आधी: 200/2 = 100 N/m. इसके बजाय अगल-बग़ल जोड़ी जाएँ तो भार बँट जाता और दृढ़ता दोगुनी होकर 400 हो जाती। अतः लंबी स्प्रिंग नरम स्प्रिंग है, और इसीलिए 400 समांतर वाले उत्तर के रूप में रखा गया है। (300 बिना कारण जोड़कर आधा कर देता है।)",
+        mr: "श्रेणीत प्रत्येक स्प्रिंग पूर्ण ओझे वाहते आणि प्रत्येक पूर्ण ताणली जाते, म्हणून त्याच बलावर एकूण ताण दुप्पट आणि परिणामी ताठरता निम्मी: 200/2 = 100 N/m. त्याऐवजी शेजारीशेजारी जोडल्यास ओझे वाटले गेले असते आणि ताठरता दुप्पट होऊन 400 झाली असती. म्हणून लांब स्प्रिंग ही मऊ स्प्रिंग, आणि म्हणूनच 400 हे समांतर उत्तर म्हणून ठेवले आहे. (300 विनाकारण जोडून निम्मे करते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "A seconds pendulum has a period of exactly 2 s. Taking g as 10 m/s² and π² as 10, what is its length in metres?",
+        hi: "सेकंड-लोलक का आवर्तकाल ठीक 2 s है। g = 10 m/s² और π² = 10 लेते हुए, उसकी लंबाई मीटर में क्या है?",
+        mr: "सेकंद-लंबकाचा आवर्तकाल नेमका 2 s आहे. g = 10 m/s² आणि π² = 10 घेतल्यास, त्याची लांबी मीटरमध्ये किती?",
+      },
+      answer: 1,
+      wrong: [2, 0.5, 4],
+      checkExpr: "10*2^2/(4*10)",
+      fmt: metres,
+      solution: {
+        en: "From T = 2π√(l/g), squaring gives T² = 4π²l/g, so l = gT²/(4π²) = 10 × 4/(4 × 10) = 1 m. The name is a small trap worth noticing: a seconds pendulum takes two seconds for a full cycle, not one, because it is named for the one second each half-swing takes — the tick and the tock are separate. Its true length is 0.994 m with the real values of g and π², which is why an old longcase clock stands about a metre of pendulum tall and why the metre was once seriously proposed as the length of a pendulum beating seconds. That definition was rejected for exactly the reason the previous question exposes: g varies with latitude, so the metre would have had a different length in Paris and in Cayenne, and a unit that changes with where you stand is no unit at all. (2 forgets to square T's relationship, and 0.5 treats the period as one second.)",
+        hi: "T = 2π√(l/g) से, वर्ग करने पर T² = 4π²l/g, अतः l = gT²/(4π²) = 10 × 4/(4 × 10) = 1 m. नाम में एक छोटा जाल ध्यान देने योग्य है: सेकंड-लोलक पूरे चक्र में दो सेकंड लेता है, एक नहीं, क्योंकि उसका नाम उस एक सेकंड पर है जो हर आधा झूला लेता है — टिक और टॉक अलग हैं। g और π² के असली मानों के साथ उसकी सच्ची लंबाई 0.994 m है, इसीलिए पुरानी लंबी घड़ी का लोलक लगभग एक मीटर ऊँचा खड़ा होता है और इसीलिए एक समय मीटर को गंभीरता से सेकंड पीटते लोलक की लंबाई कहने का प्रस्ताव था। वह परिभाषा ठीक उसी कारण से ठुकराई गई जिसे पिछला प्रश्न उघाड़ता है: g अक्षांश से बदलता है, अतः मीटर की लंबाई पेरिस और केयेन में भिन्न होती, और जो मात्रक इससे बदले कि तुम कहाँ खड़े हो वह मात्रक है ही नहीं। (2 T के संबंध का वर्ग करना भूल जाता है, और 0.5 आवर्तकाल एक सेकंड मान लेता है।)",
+        mr: "T = 2π√(l/g) वरून, वर्ग केल्यास T² = 4π²l/g, म्हणून l = gT²/(4π²) = 10 × 4/(4 × 10) = 1 m. नावात एक लहान सापळा लक्षात घेण्याजोगा: सेकंद-लंबक पूर्ण चक्रात दोन सेकंद घेतो, एक नव्हे, कारण त्याचे नाव त्या एका सेकंदावर जो प्रत्येक अर्धा झोका घेतो — टिक आणि टॉक वेगळे. g आणि π² च्या खऱ्या मूल्यांसह त्याची खरी लांबी 0.994 m, म्हणूनच जुन्या उंच घड्याळाचा लंबक सुमारे एक मीटर उंच उभा असतो आणि म्हणूनच एकेकाळी मीटरला गांभीर्याने सेकंद ठोकणाऱ्या लंबकाची लांबी म्हणण्याचा प्रस्ताव होता. ती व्याख्या नेमक्या त्याच कारणाने नाकारली गेली जे मागचा प्रश्न उघड करतो: g अक्षांशानुसार बदलतो, म्हणून मीटरची लांबी पॅरिस आणि कायेनमध्ये वेगळी झाली असती, आणि तुम्ही कुठे उभे आहात यानुसार बदलणारे एकक हे एककच नाही. (2 हे T च्या संबंधाचा वर्ग करायचे विसरते, आणि 0.5 आवर्तकाल एक सेकंद मानते.)",
+      },
+    },
+  ],
+  "physics-11-waves": [
+    {
+      level: 1,
+      stem: {
+        en: "A sound of frequency 500 Hz has a wavelength of 0.68 m in air. What is its speed?",
+        hi: "500 Hz आवृत्ति की ध्वनि का हवा में तरंगदैर्घ्य 0.68 m है। उसकी चाल क्या है?",
+        mr: "500 Hz वारंवारतेच्या ध्वनीची हवेतील तरंगलांबी 0.68 m आहे. त्याचा वेग किती?",
+      },
+      answer: 340,
+      wrong: [735.294118, 0.00136, 500.68],
+      checkExpr: "500*0.68",
+      fmt: ms,
+      solution: {
+        en: "v = fλ = 500 × 0.68 = 340 m/s, the ordinary speed of sound in air. A different note would have a different wavelength but exactly the same speed, since the speed belongs to the medium. (735.294118 divides instead of multiplying.)",
+        hi: "v = fλ = 500 × 0.68 = 340 m/s, हवा में ध्वनि की साधारण चाल। भिन्न स्वर का तरंगदैर्घ्य भिन्न होता पर चाल ठीक वही, क्योंकि चाल माध्यम की है। (735.294118 गुणा के बजाय भाग देता है।)",
+        mr: "v = fλ = 500 × 0.68 = 340 m/s, हवेतील ध्वनीचा सामान्य वेग. वेगळ्या स्वराची तरंगलांबी वेगळी असती पण वेग नेमका तोच, कारण वेग माध्यमाचा आहे. (735.294118 गुणण्याऐवजी भागते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "Sound travels at 340 m/s in air. What is the wavelength of a 170 Hz note?",
+        hi: "हवा में ध्वनि 340 m/s चलती है। 170 Hz के स्वर का तरंगदैर्घ्य क्या है?",
+        mr: "हवेत ध्वनी 340 m/s ने जातो. 170 Hz च्या स्वराची तरंगलांबी किती?",
+      },
+      answer: 2,
+      wrong: [57800, 0.5, 510],
+      checkExpr: "340/170",
+      fmt: metres,
+      solution: {
+        en: "λ = v/f = 340/170 = 2 m. A low note has a long wavelength, which is why bass sounds bend round corners and through walls while treble does not. (57800 multiplies and 0.5 inverts the ratio.)",
+        hi: "λ = v/f = 340/170 = 2 m. नीचे स्वर का तरंगदैर्घ्य लंबा होता है, इसीलिए बेस ध्वनि कोनों के पीछे और दीवारों से होकर मुड़ जाती है जबकि ट्रेबल नहीं। (57800 गुणा करता है और 0.5 अनुपात उलट देता है।)",
+        mr: "λ = v/f = 340/170 = 2 m. खालच्या स्वराची तरंगलांबी लांब असते, म्हणूनच बेस आवाज कोपऱ्यांमागे आणि भिंतींतून वळतो तर ट्रेबल नाही. (57800 गुणते आणि 0.5 गुणोत्तर उलटे करते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A string 1 m long is fixed at both ends. What is the wavelength of its fundamental mode, in metres?",
+        hi: "1 m लंबा तार दोनों सिरों पर बँधा है। उसकी मूल विधा का तरंगदैर्घ्य मीटर में क्या है?",
+        mr: "1 m लांब तार दोन्ही टोकांना बांधलेली आहे. तिच्या मूळ प्रकाराची तरंगलांबी मीटरमध्ये किती?",
+      },
+      answer: 2,
+      wrong: [1, 0.5, 4],
+      checkExpr: "2*1",
+      fmt: metres,
+      solution: {
+        en: "Both ends must be nodes, and the simplest pattern that manages this has just one antinode in the middle — half a wavelength spanning the string. So λ = 2L = 2 m. (1 assumes a whole wavelength fits, which would need a node in the middle as well and is in fact the second harmonic.)",
+        hi: "दोनों सिरे निस्पंद होने चाहिए, और यह करने वाला सबसे सरल पैटर्न बीच में केवल एक प्रस्पंद रखता है — तार भर आधा तरंगदैर्घ्य। अतः λ = 2L = 2 m. (1 मान लेता है कि पूरा तरंगदैर्घ्य समा जाता है, जिसके लिए बीच में भी निस्पंद चाहिए और वह वस्तुतः दूसरा संनाद है।)",
+        mr: "दोन्ही टोके निस्पंद असावी लागतात, आणि हे साधणारा सर्वांत सोपा आकृतिबंध मध्यभागी केवळ एक प्रस्पंद ठेवतो — तारेभर अर्धी तरंगलांबी. म्हणून λ = 2L = 2 m. (1 गृहीत धरते की पूर्ण तरंगलांबी बसते, ज्यासाठी मध्यभागीही निस्पंद लागेल आणि तो प्रत्यक्षात दुसरा संनाद.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A string's fundamental frequency is 100 Hz. What is the frequency of its third harmonic, in Hz?",
+        hi: "किसी तार की मूल आवृत्ति 100 Hz है। उसके तीसरे संनाद की आवृत्ति Hz में क्या है?",
+        mr: "एका तारेची मूळ वारंवारता 100 Hz आहे. तिच्या तिसऱ्या संनादाची वारंवारता Hz मध्ये किती?",
+      },
+      answer: 300,
+      wrong: [200, 33.333333, 103],
+      checkExpr: "3*100",
+      solution: {
+        en: "A string fixed at both ends supports whole-number multiples of its fundamental, so the third harmonic is 3 × 100 = 300 Hz. It is that discrete series, and not the fundamental alone, that gives an instrument its characteristic timbre. (200 quotes the second harmonic.)",
+        hi: "दोनों सिरों पर बँधा तार अपनी मूल आवृत्ति के पूर्णांक गुणज ही सँभालता है, अतः तीसरा संनाद 3 × 100 = 300 Hz. वाद्य को उसका विशिष्ट स्वर-रंग वही असतत श्रेणी देती है, अकेली मूल आवृत्ति नहीं। (200 दूसरा संनाद बता देता है।)",
+        mr: "दोन्ही टोकांना बांधलेली तार आपल्या मूळ वारंवारतेचे पूर्णांक पटच सांभाळते, म्हणून तिसरा संनाद 3 × 100 = 300 Hz. वाद्याला त्याचा वैशिष्ट्यपूर्ण स्वररंग तीच विलग मालिका देते, एकटी मूळ वारंवारता नव्हे. (200 दुसरा संनाद सांगते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "Two tuning forks of 256 Hz and 260 Hz are sounded together. How many beats are heard per second?",
+        hi: "256 Hz और 260 Hz के दो स्वरित्र द्विभुज साथ बजाए जाते हैं। प्रति सेकंड कितने विस्पंद सुनाई देते हैं?",
+        mr: "256 Hz आणि 260 Hz चे दोन स्वरकाटे एकत्र वाजवले जातात. दर सेकंदाला किती स्पंद ऐकू येतात?",
+      },
+      answer: 4,
+      wrong: [516, 258, 2],
+      checkExpr: "260-256",
+      solution: {
+        en: "The beat frequency is the difference between the two: 260 − 256 = 4 beats per second. A tuner listens for that throbbing and turns the peg until it slows to nothing. (516 adds the frequencies and 258 averages them.)",
+        hi: "विस्पंद-आवृत्ति दोनों का अंतर है: 260 − 256 = 4 विस्पंद प्रति सेकंड। सुर मिलाने वाला उसी धड़कन को सुनता है और खूँटी तब तक घुमाता है जब तक वह धीमी होकर शून्य न हो जाए। (516 आवृत्तियाँ जोड़ता है और 258 उनका औसत लेता है।)",
+        mr: "स्पंद-वारंवारता दोघांचा फरक: 260 − 256 = 4 स्पंद प्रति सेकंद. सूर जुळवणारा तीच धडधड ऐकतो आणि खुंटी तोवर फिरवतो जोवर ती मंदावून शून्य होत नाही. (516 वारंवारता जोडते आणि 258 त्यांची सरासरी घेते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A string of mass per unit length 0.01 kg/m is stretched to a tension of 100 N. What is the speed of a wave along it?",
+        hi: "0.01 kg/m प्रति एकांक लंबाई द्रव्यमान वाला तार 100 N तनाव तक खींचा गया है। उस पर तरंग की चाल क्या है?",
+        mr: "0.01 kg/m प्रति एकक लांबी वस्तुमान असलेली तार 100 N ताणापर्यंत ताणली आहे. तिच्यावरील लहरीचा वेग किती?",
+      },
+      answer: 100,
+      wrong: [10000, 10, 1],
+      checkExpr: "(100/0.01)^0.5",
+      fmt: ms,
+      solution: {
+        en: "v = √(T/μ) = √(100/0.01) = √10,000 = 100 m/s. Tension is the restoring agent and mass per unit length is the inertia, exactly as k and m are for a spring. (10000 is v² with the root forgotten.)",
+        hi: "v = √(T/μ) = √(100/0.01) = √10,000 = 100 m/s. तनाव प्रत्यानयन करता कारक है और प्रति एकांक लंबाई द्रव्यमान जड़त्व, ठीक वैसे जैसे स्प्रिंग के लिए k और m हैं। (10000 v² है जिसमें मूल भूला गया।)",
+        mr: "v = √(T/μ) = √(100/0.01) = √10,000 = 100 m/s. ताण हा पुनःस्थापन करणारा घटक आणि प्रति एकक लांबी वस्तुमान हे जडत्व, अगदी तसेच जसे स्प्रिंगसाठी k आणि m. (10000 हे v² ज्यात मूळ विसरले.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "An organ pipe closed at one end is 0.85 m long. Taking the speed of sound as 340 m/s, what is its fundamental frequency, in Hz?",
+        hi: "एक सिरे पर बंद ऑर्गन नली 0.85 m लंबी है। ध्वनि की चाल 340 m/s लेते हुए, उसकी मूल आवृत्ति Hz में क्या है?",
+        mr: "एका टोकाला बंद असलेली ऑर्गन नळी 0.85 m लांब आहे. ध्वनीचा वेग 340 m/s घेतल्यास, तिची मूळ वारंवारता Hz मध्ये किती?",
+      },
+      answer: 100,
+      wrong: [200, 400, 50],
+      checkExpr: "340/(4*0.85)",
+      solution: {
+        en: "A closed pipe has a node at the closed end and an antinode at the open one, so only a quarter of a wavelength fits: λ = 4L = 3.4 m and f = 340/3.4 = 100 Hz. (200 uses the open-pipe formula, which is the pairing this question is set against.)",
+        hi: "बंद नली के बंद सिरे पर निस्पंद और खुले पर प्रस्पंद होता है, अतः केवल चौथाई तरंगदैर्घ्य समाता है: λ = 4L = 3.4 m और f = 340/3.4 = 100 Hz. (200 खुली नली का सूत्र लगाता है, और यह प्रश्न उसी जोड़ी के सामने रखा गया है।)",
+        mr: "बंद नळीच्या बंद टोकावर निस्पंद आणि उघड्यावर प्रस्पंद, म्हणून केवळ पाव तरंगलांबी बसते: λ = 4L = 3.4 m आणि f = 340/3.4 = 100 Hz. (200 उघड्या नळीचे सूत्र वापरते, आणि हा प्रश्न त्याच जोडीसमोर ठेवला आहे.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "An organ pipe open at both ends is 0.85 m long. Taking the speed of sound as 340 m/s, what is its fundamental frequency, in Hz?",
+        hi: "दोनों सिरों पर खुली ऑर्गन नली 0.85 m लंबी है। ध्वनि की चाल 340 m/s लेते हुए, उसकी मूल आवृत्ति Hz में क्या है?",
+        mr: "दोन्ही टोकांना उघडी ऑर्गन नळी 0.85 m लांब आहे. ध्वनीचा वेग 340 m/s घेतल्यास, तिची मूळ वारंवारता Hz मध्ये किती?",
+      },
+      answer: 200,
+      wrong: [100, 400, 50],
+      checkExpr: "340/(2*0.85)",
+      solution: {
+        en: "An open pipe has antinodes at both ends, so half a wavelength fits: λ = 2L = 1.7 m and f = 340/1.7 = 200 Hz — an octave above the closed pipe of the same length. The open pipe also supports every whole-number harmonic while the closed one supports only the odd ones, which is why the two sound so different. (100 is the closed-pipe answer.)",
+        hi: "खुली नली के दोनों सिरों पर प्रस्पंद होते हैं, अतः आधा तरंगदैर्घ्य समाता है: λ = 2L = 1.7 m और f = 340/1.7 = 200 Hz — उसी लंबाई की बंद नली से एक सप्तक ऊपर। खुली नली हर पूर्णांक संनाद सँभालती है जबकि बंद केवल विषम, इसीलिए दोनों इतनी भिन्न सुनाई देती हैं। (100 बंद नली का उत्तर है।)",
+        mr: "उघड्या नळीच्या दोन्ही टोकांवर प्रस्पंद, म्हणून अर्धी तरंगलांबी बसते: λ = 2L = 1.7 m आणि f = 340/1.7 = 200 Hz — त्याच लांबीच्या बंद नळीहून एक सप्तक वर. उघडी नळी प्रत्येक पूर्णांक संनाद सांभाळते तर बंद केवळ विषम, म्हणूनच दोन्ही इतक्या वेगळ्या ऐकू येतात. (100 हे बंद नळीचे उत्तर.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "A siren of 300 Hz on a car approaches a stationary listener at 34 m/s. Taking the speed of sound as 340 m/s, what frequency is heard, in Hz?",
+        hi: "कार पर लगा 300 Hz का सायरन स्थिर श्रोता के पास 34 m/s से आता है। ध्वनि की चाल 340 m/s लेते हुए, कौन-सी आवृत्ति सुनाई देती है, Hz में?",
+        mr: "कारवरचा 300 Hz चा भोंगा स्थिर श्रोत्याजवळ 34 m/s ने येतो. ध्वनीचा वेग 340 m/s घेतल्यास, कोणती वारंवारता ऐकू येते, Hz मध्ये?",
+      },
+      answer: 333.333333,
+      wrong: [270, 330, 300],
+      checkExpr: "300*340/(340-34)",
+      solution: {
+        en: "For an approaching source the wavelengths ahead of it are compressed, giving f' = f × v/(v − v_s) = 300 × 340/306 = 333.333333 Hz. The moment the car passes, the sign flips and the same siren is heard at 300 × 340/374 = 272.7 Hz — a sudden drop of about sixty hertz, which is why the change is so noticeable. (330 is the answer for a moving OBSERVER, and the two differ by about one per cent.)",
+        hi: "पास आते स्रोत के लिए उसके आगे के तरंगदैर्घ्य दब जाते हैं, जिससे f' = f × v/(v − v_s) = 300 × 340/306 = 333.333333 Hz. कार के गुज़रते ही चिह्न पलट जाता है और वही सायरन 300 × 340/374 = 272.7 Hz पर सुनाई देता है — लगभग साठ हर्ट्ज़ की अचानक गिरावट, इसीलिए परिवर्तन इतना साफ़ लगता है। (330 चलते प्रेक्षक का उत्तर है, और दोनों लगभग एक प्रतिशत भिन्न हैं।)",
+        mr: "जवळ येणाऱ्या स्रोतासाठी त्याच्यापुढच्या तरंगलांब्या दाबल्या जातात, ज्यातून f' = f × v/(v − v_s) = 300 × 340/306 = 333.333333 Hz. कार जाताक्षणी चिन्ह पलटते आणि तोच भोंगा 300 × 340/374 = 272.7 Hz वर ऐकू येतो — सुमारे साठ हर्ट्झची अचानक घट, म्हणूनच बदल इतका स्पष्ट जाणवतो. (330 हे चालणाऱ्या निरीक्षकाचे उत्तर, आणि दोन्ही सुमारे एक टक्क्याने वेगळी.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "A stationary siren sounds at 300 Hz and a listener drives towards it at 34 m/s. Taking the speed of sound as 340 m/s, what frequency is heard, in Hz?",
+        hi: "स्थिर सायरन 300 Hz पर बजता है और श्रोता उसकी ओर 34 m/s से चलता है। ध्वनि की चाल 340 m/s लेते हुए, कौन-सी आवृत्ति सुनाई देती है, Hz में?",
+        mr: "स्थिर भोंगा 300 Hz वर वाजतो आणि श्रोता त्याच्याकडे 34 m/s ने जातो. ध्वनीचा वेग 340 m/s घेतल्यास, कोणती वारंवारता ऐकू येते, Hz मध्ये?",
+      },
+      answer: 330,
+      wrong: [333.333333, 270, 300],
+      checkExpr: "300*(340+34)/340",
+      solution: {
+        en: "Here the waves in the air are perfectly ordinary — the source is not moving, so nothing is compressed. What changes is the rate at which the listener sweeps through them: f' = f × (v + v_o)/v = 300 × 374/340 = 330 Hz. Compare the previous question, where the same relative speed gave 333.3 Hz because the source's motion altered the wavelengths themselves. The one per cent difference is real, and it exists because the air provides a frame that says which of the two is moving. (333.333333 is precisely that moving-source answer.)",
+        hi: "यहाँ हवा की तरंगें बिलकुल साधारण हैं — स्रोत चल नहीं रहा, अतः कुछ दबा नहीं। बदलती है वह दर जिससे श्रोता उनसे गुज़रता है: f' = f × (v + v_o)/v = 300 × 374/340 = 330 Hz. पिछले प्रश्न से तुलना करो, जहाँ उसी सापेक्ष चाल ने 333.3 Hz दिया क्योंकि स्रोत की गति ने स्वयं तरंगदैर्घ्य बदल दिए थे। एक प्रतिशत का अंतर असली है, और वह इसलिए है कि हवा एक निर्देश-तंत्र देती है जो बताता है कि दोनों में से कौन चल रहा है। (333.333333 ठीक वही चलते-स्रोत वाला उत्तर है।)",
+        mr: "इथे हवेतील लहरी अगदी सामान्य — स्रोत चालत नाही, म्हणून काहीही दाबले गेले नाही. बदलतो तो दर ज्याने श्रोता त्यांतून जातो: f' = f × (v + v_o)/v = 300 × 374/340 = 330 Hz. मागच्या प्रश्नाशी तुलना करा, जिथे त्याच सापेक्ष चालीने 333.3 Hz दिले कारण स्रोताच्या गतीने स्वतः तरंगलांब्या बदलल्या होत्या. एक टक्क्याचा फरक खरा आहे, आणि तो यासाठी की हवा एक चौकट देते जी सांगते की दोघांपैकी कोण चालत आहे. (333.333333 हेच नेमके ते चालत्या-स्रोताचे उत्तर.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "A string's fundamental frequency is 200 Hz. Its tension is increased to four times the original value, with the length and thickness unchanged. What is the new fundamental, in Hz?",
+        hi: "किसी तार की मूल आवृत्ति 200 Hz है। लंबाई और मोटाई अपरिवर्तित रखते हुए उसका तनाव मूल मान का चार गुना कर दिया जाता है। नई मूल आवृत्ति Hz में क्या है?",
+        mr: "एका तारेची मूळ वारंवारता 200 Hz आहे. लांबी आणि जाडी अपरिवर्तित ठेवून तिचा ताण मूळ मूल्याच्या चौपट केला जातो. नवी मूळ वारंवारता Hz मध्ये किती?",
+      },
+      answer: 400,
+      wrong: [800, 100, 282.842712],
+      checkExpr: "200*4^0.5",
+      solution: {
+        en: "The fundamental is (1/2L)√(T/μ), so it goes as the square root of the tension: quadrupling T doubles f, giving 400 Hz. Two things are worth carrying. First, the square root means tuning is a coarse business at the bottom and a fine one at the top — to raise a note by an octave you must quadruple the tension, which is why a guitar string will usually break before it can be tuned a full octave sharp, and why instruments are built with roughly the right string lengths and thicknesses rather than tuned into position by force alone. Second, the wavelength did not change at all. It is still 2L, fixed by the two fixed ends, exactly as it was. What changed is the speed of the wave along the string, from v to 2v, and the frequency followed because f = v/λ with λ held constant. Keeping those two straight — the boundary sets the wavelength, the medium sets the speed, and the frequency is whatever the two together require — is what makes every standing-wave problem tractable, in a pipe, on a string or in an atom. (800 assumes proportionality to the tension itself, and 282.842712 is 200√2, the answer for a doubled tension.)",
+        hi: "मूल आवृत्ति (1/2L)√(T/μ) है, अतः वह तनाव के वर्गमूल के अनुसार चलती है: T चौगुना करने पर f दोगुनी होती है, यानी 400 Hz. दो बातें ले जाने योग्य हैं। पहली, वर्गमूल का अर्थ है कि सुर मिलाना नीचे मोटा काम है और ऊपर बारीक — किसी स्वर को एक सप्तक ऊपर उठाने के लिए तनाव चौगुना करना पड़ता है, इसीलिए गिटार का तार पूरा सप्तक ऊपर सुर मिलाने से पहले प्रायः टूट जाता है, और इसीलिए वाद्य मोटे तौर पर सही तार-लंबाइयों और मोटाइयों के साथ बनाए जाते हैं, केवल बल से खींचकर जगह पर नहीं लाए जाते। दूसरी, तरंगदैर्घ्य बिलकुल नहीं बदला। वह अब भी 2L है, दोनों बँधे सिरों से तय, ठीक जैसा था। बदली तार पर की तरंग की चाल, v से 2v, और आवृत्ति उसके पीछे चली क्योंकि λ अचर रखते हुए f = v/λ. उन दोनों को अलग रखना — सीमा तरंगदैर्घ्य तय करती है, माध्यम चाल तय करता है, और आवृत्ति वही है जो दोनों मिलकर माँगें — हर अप्रगामी-तरंग प्रश्न को हल-योग्य बनाता है, नली में हो, तार पर या परमाणु में। (800 स्वयं तनाव के समानुपात मान लेता है, और 282.842712 200√2 है, दोगुने तनाव का उत्तर।)",
+        mr: "मूळ वारंवारता (1/2L)√(T/μ), म्हणून ती ताणाच्या वर्गमुळानुसार जाते: T चौपट केल्यास f दुप्पट होते, म्हणजे 400 Hz. दोन गोष्टी नेण्याजोग्या. पहिली, वर्गमुळाचा अर्थ असा की सूर जुळवणे खाली ढोबळ काम आणि वर बारीक — एखादा स्वर एक सप्तक वर नेण्यासाठी ताण चौपट करावा लागतो, म्हणूनच गिटारची तार पूर्ण सप्तक वर जुळवण्याआधी बहुधा तुटते, आणि म्हणूनच वाद्ये ढोबळमानाने योग्य तार-लांब्या आणि जाड्यांसह बांधली जातात, केवळ बलाने ओढून जागेवर आणली जात नाहीत. दुसरी, तरंगलांबी मुळीच बदलली नाही. ती अजूनही 2L, दोन्ही बांधलेल्या टोकांनी ठरलेली, अगदी होती तशीच. बदलला तारेवरच्या लहरीचा वेग, v वरून 2v, आणि वारंवारता त्याच्या मागे गेली कारण λ अचल ठेवून f = v/λ. त्या दोघांना वेगळे ठेवणे — सीमा तरंगलांबी ठरवते, माध्यम वेग ठरवते, आणि वारंवारता ती जी दोघे मिळून मागतात — प्रत्येक स्थिर-लहर प्रश्न सोडवण्याजोगा बनवते, नळीत असो, तारेवर असो वा अणूत. (800 स्वतः ताणाच्या समानुपाती मानते, आणि 282.842712 म्हणजे 200√2, दुप्पट ताणाचे उत्तर.)",
       },
     },
   ],

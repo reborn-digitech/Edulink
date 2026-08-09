@@ -2509,8 +2509,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 292
-  chapters / 4,861 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 296
+  chapters / 4,974 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2557,25 +2557,29 @@ navigation" means the actual list rather than one somebody maintained by hand.
   a pupil revising projectiles gets the independence of the perpendicular
   components AND the range of a 20 m/s throw from one card, the
   quantitative half proven arithmetically by checkExpr while the
-  conceptual half stays honestly unproven. Twelve chapters are in
-  `g11-physics.ts` — Units and Measurements, Motion in a Straight Line,
-  Motion in a Plane, Laws of Motion, Work Energy and Power, System of
-  Particles and Rotational Motion, Gravitation, Mechanical Properties of
-  Solids, Mechanical Properties of Fluids, Thermal Properties of Matter,
-  Thermodynamics, Kinetic Theory — 340 questions, each chapter six facts
-  or more plus an authored L5 and L6 and ten computed problems spanning
-  the ladder. The entity names deliberately avoid the Class 9 motion and
-  heat vocabulary: this grade asks what an inertial frame IS, why a
-  third-law pair can never cancel, why averaging cannot touch a zero
-  error, why a rolling cylinder always loses a downhill race, why an
-  astronaut under 8.7 m/s² of gravity floats anyway, why a wire's
-  breaking load does not care how long the wire is, why the ice in a full
-  glass does not overflow it, why milking the tea first keeps it hotter,
-  why an engine that conserves energy perfectly can still be impossible,
-  and why a smell moving at 500 m/s takes minutes to cross a room. Class
-  11 physics has two chapters left (Oscillations and Waves); Chemistry,
-  Biology and Maths follow, and Class 12 after them. Suite re-pointed and
-  green: 84 files, 1453 tests.
+  conceptual half stays honestly unproven. **Class 11 Physics is now
+  complete** — all fourteen chapters in `g11-physics.ts`, 397 questions,
+  each chapter six facts or more plus an authored L5 and L6 and ten
+  computed problems spanning the ladder. The entity names deliberately
+  avoid the Class 9 motion, heat and sound vocabulary: this grade asks
+  what an inertial frame IS, why a third-law pair can never cancel, why
+  averaging cannot touch a zero error, why a rolling cylinder always
+  loses a downhill race, why an astronaut under 8.7 m/s² of gravity
+  floats anyway, why a wire's breaking load does not care how long the
+  wire is, why the ice in a full glass does not overflow it, why milking
+  the tea first keeps it hotter, why an engine that conserves energy
+  perfectly can still be impossible, why a smell moving at 500 m/s takes
+  minutes to cross a room, why soldiers break step on a bridge, and why a
+  moving siren and a moving listener at the same relative speed hear
+  different pitches — the asymmetry that light does not show and that
+  special relativity was built to explain. **Class 11 Chemistry has
+  opened** in `g11-chemistry.ts` on the same footing: Some Basic Concepts
+  and Structure of Atom, 56 questions, asking what a mole COUNTS, why an
+  empirical formula cannot tell glucose from formaldehyde, why a dim blue
+  lamp beats a blinding red one, and what survived of Bohr's model when
+  the orbit did not. Chemistry has twelve chapters left; Biology and
+  Maths follow, and Class 12 after them. Suite re-pointed and green: 84
+  files, 1453 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)

@@ -1,0 +1,1038 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 11,
+  "chapter": "Chapter 14 — Waves",
+  "name": "Waves",
+  "slug": "physics-11-waves",
+  "summary": "An oscillation that has learnt to travel, carrying energy across a medium while every particle of that medium stays where it was. A relation that ties speed, frequency and wavelength so tightly that fixing two fixes the third, two waves that pass through each other unchanged and add where they overlap, a pattern that stands still because two travelling waves cancel each other's motion, and a pitch that rises as a train approaches and falls the instant it passes.",
+  "position": 14,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "तरंगें",
+      "summary": "वह दोलन जिसने यात्रा करना सीख लिया, जो माध्यम के आर-पार ऊर्जा ले जाता है जबकि उस माध्यम का हर कण वहीं रहता है जहाँ था। वह संबंध जो चाल, आवृत्ति और तरंगदैर्घ्य को इतनी कसकर बाँधता है कि दो तय करने से तीसरा तय हो जाता है, वे दो तरंगें जो एक-दूसरे से अपरिवर्तित गुज़र जाती हैं और जहाँ ओवरलैप करें वहाँ जुड़ जाती हैं, वह पैटर्न जो इसलिए खड़ा रहता है कि दो चलती तरंगें एक-दूसरे की गति काट देती हैं, और वह स्वर जो रेलगाड़ी के पास आते चढ़ता है और गुज़रते ही गिर जाता है।"
+    },
+    "mr": {
+      "name": "लहरी",
+      "summary": "ते आंदोलन ज्याने प्रवास करायला शिकले, जे माध्यमाच्या आरपार ऊर्जा नेते तर त्या माध्यमाचा प्रत्येक कण जिथे होता तिथेच राहतो. तो संबंध जो चाल, वारंवारता आणि तरंगलांबी इतक्या घट्ट बांधतो की दोन ठरवल्यास तिसरे ठरते, त्या दोन लहरी ज्या एकमेकींतून अपरिवर्तित जातात आणि जिथे एकमेकींवर येतात तिथे जोडल्या जातात, तो आकृतिबंध जो यासाठी स्थिर उभा राहतो की दोन चालत्या लहरी एकमेकींची गती कापतात, आणि तो स्वर जो आगगाडी जवळ येताना चढतो आणि जाताक्षणी घसरतो."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "The speed is set by the medium and nothing else, so raising the frequency of a sound does not make it arrive sooner — it simply shortens the wavelength in exact proportion. Which relation is this?",
+      "choices": [
+        "Transverse against longitudinal",
+        "The Doppler effect",
+        "Standing waves and nodes",
+        "The wave relation"
+      ],
+      "answerIndex": 3,
+      "solution": "For any wave v = fλ, and since the speed is fixed by the medium alone, frequency and wavelength are inversely proportional to each other in that medium. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "चाल माध्यम तय करता है और कुछ नहीं, अतः ध्वनि की आवृत्ति बढ़ाने से वह जल्दी नहीं पहुँचती — वह बस तरंगदैर्घ्य को ठीक उसी अनुपात में छोटा कर देती है। यह कौन-सा संबंध है?",
+          "choices": [
+            "अनुप्रस्थ बनाम अनुदैर्घ्य",
+            "डॉप्लर प्रभाव",
+            "अप्रगामी तरंगें और निस्पंद",
+            "तरंग-संबंध"
+          ],
+          "solution": "किसी भी तरंग के लिए v = fλ, और चूँकि चाल केवल माध्यम तय करता है, उस माध्यम में आवृत्ति और तरंगदैर्घ्य परस्पर व्युत्क्रमानुपाती हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "चाल माध्यम ठरवते आणि दुसरे काहीही नाही, म्हणून ध्वनीची वारंवारता वाढवल्याने ती लवकर पोहोचत नाही — ती फक्त तरंगलांबी नेमक्या त्याच प्रमाणात लहान करते. हा कोणता संबंध?",
+          "choices": [
+            "अनुप्रस्थ विरुद्ध अनुदैर्घ्य",
+            "डॉप्लर परिणाम",
+            "स्थिर लहरी आणि निस्पंद",
+            "लहर-संबंध"
+          ],
+          "solution": "कोणत्याही लहरीसाठी v = fλ, आणि चाल केवळ माध्यम ठरवत असल्याने त्या माध्यमात वारंवारता आणि तरंगलांबी परस्पर व्यस्तानुपाती असतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Transverse against longitudinal is correct?",
+      "choices": [
+        "The Doppler effect is the change in observed frequency caused by relative motion between source and observer, raising the pitch on approach and lowering it on recession.",
+        "For any wave v = fλ, and since the speed is fixed by the medium alone, frequency and wavelength are inversely proportional to each other in that medium.",
+        "Beats are the slow rise and fall in loudness when two notes of nearly equal frequency are sounded together, and the beat frequency is exactly the difference between the two.",
+        "In a transverse wave the particles oscillate perpendicular to the direction of propagation and in a longitudinal wave along it, and only transverse waves can be polarised."
+      ],
+      "answerIndex": 3,
+      "solution": "In a transverse wave the particles oscillate perpendicular to the direction of propagation and in a longitudinal wave along it, and only transverse waves can be polarised. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अनुप्रस्थ बनाम अनुदैर्घ्य के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "डॉप्लर प्रभाव स्रोत और प्रेक्षक के बीच सापेक्ष गति से आया प्रेक्षित आवृत्ति का परिवर्तन है, जो पास आने पर स्वर ऊँचा और दूर जाने पर नीचा कर देता है।",
+            "किसी भी तरंग के लिए v = fλ, और चूँकि चाल केवल माध्यम तय करता है, उस माध्यम में आवृत्ति और तरंगदैर्घ्य परस्पर व्युत्क्रमानुपाती हैं।",
+            "विस्पंद वह धीमा घटता-बढ़ता तीव्रता-परिवर्तन है जो लगभग बराबर आवृत्ति के दो स्वर साथ बजने पर होता है, और विस्पंद-आवृत्ति ठीक दोनों का अंतर है।",
+            "अनुप्रस्थ तरंग में कण संचरण की दिशा के लंबवत दोलन करते हैं और अनुदैर्घ्य तरंग में उसी के अनुदिश, और केवल अनुप्रस्थ तरंगें ध्रुवित हो सकती हैं।"
+          ],
+          "solution": "अनुप्रस्थ तरंग में कण संचरण की दिशा के लंबवत दोलन करते हैं और अनुदैर्घ्य तरंग में उसी के अनुदिश, और केवल अनुप्रस्थ तरंगें ध्रुवित हो सकती हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "अनुप्रस्थ विरुद्ध अनुदैर्घ्य विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "डॉप्लर परिणाम म्हणजे स्रोत आणि निरीक्षक यांच्यातील सापेक्ष गतीमुळे येणारा निरीक्षित वारंवारतेतील बदल, जो जवळ येताना स्वर उंच आणि दूर जाताना खाली करतो.",
+            "कोणत्याही लहरीसाठी v = fλ, आणि चाल केवळ माध्यम ठरवत असल्याने त्या माध्यमात वारंवारता आणि तरंगलांबी परस्पर व्यस्तानुपाती असतात.",
+            "स्पंद म्हणजे जवळपास समान वारंवारतेचे दोन स्वर एकत्र वाजल्यावर होणारा मोठेपणातील सावकाश चढउतार, आणि स्पंद-वारंवारता नेमकी दोघांचा फरक.",
+            "अनुप्रस्थ लहरीत कण संक्रमणाच्या दिशेला लंब आंदोलन करतात आणि अनुदैर्घ्य लहरीत त्याच दिशेने, आणि केवळ अनुप्रस्थ लहरीच ध्रुवित होऊ शकतात."
+          ],
+          "solution": "अनुप्रस्थ लहरीत कण संक्रमणाच्या दिशेला लंब आंदोलन करतात आणि अनुदैर्घ्य लहरीत त्याच दिशेने, आणि केवळ अनुप्रस्थ लहरीच ध्रुवित होऊ शकतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"Where crests meet crests the sum is large and where a crest meets a trough they cancel, which is constructive and destructive interference and the basis of every diffraction pattern.\" — which of these is this about?",
+      "choices": [
+        "The principle of superposition",
+        "Standing waves and nodes",
+        "The Doppler effect",
+        "Beats"
+      ],
+      "answerIndex": 0,
+      "solution": "The principle of superposition states that where two waves overlap the resultant displacement is the algebraic sum of the individual displacements, and each wave passes on afterwards unchanged. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"जहाँ शिखर शिखर से मिलें वहाँ योग बड़ा है और जहाँ शिखर गर्त से मिले वहाँ वे कट जाते हैं, और यही संपोषी तथा विनाशी व्यतिकरण है, हर विवर्तन-पैटर्न का आधार।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "अध्यारोपण का सिद्धांत",
+            "अप्रगामी तरंगें और निस्पंद",
+            "डॉप्लर प्रभाव",
+            "विस्पंद"
+          ],
+          "solution": "अध्यारोपण का सिद्धांत कहता है कि जहाँ दो तरंगें ओवरलैप करती हैं वहाँ परिणामी विस्थापन अलग-अलग विस्थापनों का बीजीय योग है, और उसके बाद हर तरंग अपरिवर्तित आगे बढ़ जाती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"जिथे शिखरे शिखरांना भेटतात तिथे बेरीज मोठी आणि जिथे शिखर गर्तेला भेटते तिथे ती कापली जातात, आणि हेच संपोषी व विनाशी व्यतिकरण, प्रत्येक विवर्तन-आकृतिबंधाचा पाया.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "अध्यारोपणाचे तत्त्व",
+            "स्थिर लहरी आणि निस्पंद",
+            "डॉप्लर परिणाम",
+            "स्पंद"
+          ],
+          "solution": "अध्यारोपणाचे तत्त्व सांगते की जिथे दोन लहरी एकमेकींवर येतात तिथे परिणामी विस्थापन वेगवेगळ्या विस्थापनांची बीजगणितीय बेरीज असते, आणि नंतर प्रत्येक लहर अपरिवर्तित पुढे जाते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A plucked string shows a pattern that does not travel anywhere: certain points never move at all while those between them swing hardest, because a wave and its own reflection are running through each other. Which pattern is this?",
+      "choices": [
+        "Beats",
+        "The Doppler effect",
+        "The principle of superposition",
+        "Standing waves and nodes"
+      ],
+      "answerIndex": 3,
+      "solution": "A standing wave is formed when two identical waves travel in opposite directions, producing nodes that never move and antinodes of maximum amplitude, spaced half a wavelength apart. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "छेड़ा गया तार ऐसा पैटर्न दिखाता है जो कहीं जाता नहीं: कुछ बिंदु बिलकुल नहीं हिलते जबकि उनके बीच वाले सबसे ज़ोर से झूलते हैं, क्योंकि तरंग और उसका अपना परावर्तन एक-दूसरे में से गुज़र रहे हैं। यह कौन-सा पैटर्न है?",
+          "choices": [
+            "विस्पंद",
+            "डॉप्लर प्रभाव",
+            "अध्यारोपण का सिद्धांत",
+            "अप्रगामी तरंगें और निस्पंद"
+          ],
+          "solution": "अप्रगामी तरंग तब बनती है जब दो एक-सी तरंगें विपरीत दिशाओं में चलें, जिससे कभी न हिलने वाले निस्पंद और अधिकतम आयाम के प्रस्पंद बनते हैं, जो आधे तरंगदैर्घ्य के अंतराल पर होते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "छेडलेली तार असा आकृतिबंध दाखवते जो कुठेही जात नाही: काही बिंदू मुळीच हलत नाहीत तर त्यांच्यामधले सर्वांत जोराने झुलतात, कारण लहर आणि तिचेच परावर्तन एकमेकींतून जात आहेत. हा कोणता आकृतिबंध?",
+          "choices": [
+            "स्पंद",
+            "डॉप्लर परिणाम",
+            "अध्यारोपणाचे तत्त्व",
+            "स्थिर लहरी आणि निस्पंद"
+          ],
+          "solution": "स्थिर लहर तेव्हा तयार होते जेव्हा दोन सारख्या लहरी विरुद्ध दिशांना जातात, ज्यातून कधीही न हलणारे निस्पंद आणि कमाल आयामाचे प्रस्पंद तयार होतात, जे अर्ध्या तरंगलांबीच्या अंतरावर असतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Beats is correct?",
+      "choices": [
+        "The principle of superposition states that where two waves overlap the resultant displacement is the algebraic sum of the individual displacements, and each wave passes on afterwards unchanged.",
+        "The Doppler effect is the change in observed frequency caused by relative motion between source and observer, raising the pitch on approach and lowering it on recession.",
+        "A standing wave is formed when two identical waves travel in opposite directions, producing nodes that never move and antinodes of maximum amplitude, spaced half a wavelength apart.",
+        "Beats are the slow rise and fall in loudness when two notes of nearly equal frequency are sounded together, and the beat frequency is exactly the difference between the two."
+      ],
+      "answerIndex": 3,
+      "solution": "Beats are the slow rise and fall in loudness when two notes of nearly equal frequency are sounded together, and the beat frequency is exactly the difference between the two. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "विस्पंद के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "अध्यारोपण का सिद्धांत कहता है कि जहाँ दो तरंगें ओवरलैप करती हैं वहाँ परिणामी विस्थापन अलग-अलग विस्थापनों का बीजीय योग है, और उसके बाद हर तरंग अपरिवर्तित आगे बढ़ जाती है।",
+            "डॉप्लर प्रभाव स्रोत और प्रेक्षक के बीच सापेक्ष गति से आया प्रेक्षित आवृत्ति का परिवर्तन है, जो पास आने पर स्वर ऊँचा और दूर जाने पर नीचा कर देता है।",
+            "अप्रगामी तरंग तब बनती है जब दो एक-सी तरंगें विपरीत दिशाओं में चलें, जिससे कभी न हिलने वाले निस्पंद और अधिकतम आयाम के प्रस्पंद बनते हैं, जो आधे तरंगदैर्घ्य के अंतराल पर होते हैं।",
+            "विस्पंद वह धीमा घटता-बढ़ता तीव्रता-परिवर्तन है जो लगभग बराबर आवृत्ति के दो स्वर साथ बजने पर होता है, और विस्पंद-आवृत्ति ठीक दोनों का अंतर है।"
+          ],
+          "solution": "विस्पंद वह धीमा घटता-बढ़ता तीव्रता-परिवर्तन है जो लगभग बराबर आवृत्ति के दो स्वर साथ बजने पर होता है, और विस्पंद-आवृत्ति ठीक दोनों का अंतर है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "स्पंद विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "अध्यारोपणाचे तत्त्व सांगते की जिथे दोन लहरी एकमेकींवर येतात तिथे परिणामी विस्थापन वेगवेगळ्या विस्थापनांची बीजगणितीय बेरीज असते, आणि नंतर प्रत्येक लहर अपरिवर्तित पुढे जाते.",
+            "डॉप्लर परिणाम म्हणजे स्रोत आणि निरीक्षक यांच्यातील सापेक्ष गतीमुळे येणारा निरीक्षित वारंवारतेतील बदल, जो जवळ येताना स्वर उंच आणि दूर जाताना खाली करतो.",
+            "स्थिर लहर तेव्हा तयार होते जेव्हा दोन सारख्या लहरी विरुद्ध दिशांना जातात, ज्यातून कधीही न हलणारे निस्पंद आणि कमाल आयामाचे प्रस्पंद तयार होतात, जे अर्ध्या तरंगलांबीच्या अंतरावर असतात.",
+            "स्पंद म्हणजे जवळपास समान वारंवारतेचे दोन स्वर एकत्र वाजल्यावर होणारा मोठेपणातील सावकाश चढउतार, आणि स्पंद-वारंवारता नेमकी दोघांचा फरक."
+          ],
+          "solution": "स्पंद म्हणजे जवळपास समान वारंवारतेचे दोन स्वर एकत्र वाजल्यावर होणारा मोठेपणातील सावकाश चढउतार, आणि स्पंद-वारंवारता नेमकी दोघांचा फरक. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"For sound it matters which of the two is moving, because the medium provides a frame; a moving source and a moving observer at the same speed give slightly different shifts.\" — which of these is this about?",
+      "choices": [
+        "Standing waves and nodes",
+        "The Doppler effect",
+        "The principle of superposition",
+        "Beats"
+      ],
+      "answerIndex": 1,
+      "solution": "The Doppler effect is the change in observed frequency caused by relative motion between source and observer, raising the pitch on approach and lowering it on recession. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ध्वनि के लिए यह मायने रखता है कि दोनों में से कौन चल रहा है, क्योंकि माध्यम एक निर्देश-तंत्र देता है; एक ही चाल पर चलता स्रोत और चलता प्रेक्षक थोड़े भिन्न विस्थापन देते हैं।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "अप्रगामी तरंगें और निस्पंद",
+            "डॉप्लर प्रभाव",
+            "अध्यारोपण का सिद्धांत",
+            "विस्पंद"
+          ],
+          "solution": "डॉप्लर प्रभाव स्रोत और प्रेक्षक के बीच सापेक्ष गति से आया प्रेक्षित आवृत्ति का परिवर्तन है, जो पास आने पर स्वर ऊँचा और दूर जाने पर नीचा कर देता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ध्वनीसाठी दोघांपैकी कोण जात आहे हे महत्त्वाचे, कारण माध्यम एक चौकट देते; एकाच चालीने जाणारा स्रोत आणि जाणारा निरीक्षक थोडे वेगळे बदल देतात.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "स्थिर लहरी आणि निस्पंद",
+            "डॉप्लर परिणाम",
+            "अध्यारोपणाचे तत्त्व",
+            "स्पंद"
+          ],
+          "solution": "डॉप्लर परिणाम म्हणजे स्रोत आणि निरीक्षक यांच्यातील सापेक्ष गतीमुळे येणारा निरीक्षित वारंवारतेतील बदल, जो जवळ येताना स्वर उंच आणि दूर जाताना खाली करतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A higher note that does not arrive any sooner\" goes correctly with which of these?",
+      "choices": [
+        "transverse against longitudinal",
+        "beats",
+        "the wave relation",
+        "the principle of superposition"
+      ],
+      "answerIndex": 2,
+      "solution": "For any wave v = fλ, and since the speed is fixed by the medium alone, frequency and wavelength are inversely proportional to each other in that medium. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ऊँचा स्वर जो ज़रा भी जल्दी नहीं पहुँचता\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "अनुप्रस्थ बनाम अनुदैर्घ्य",
+            "विस्पंद",
+            "तरंग-संबंध",
+            "अध्यारोपण का सिद्धांत"
+          ],
+          "solution": "किसी भी तरंग के लिए v = fλ, और चूँकि चाल केवल माध्यम तय करता है, उस माध्यम में आवृत्ति और तरंगदैर्घ्य परस्पर व्युत्क्रमानुपाती हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"उंच स्वर जो जराही लवकर पोहोचत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अनुप्रस्थ विरुद्ध अनुदैर्घ्य",
+            "स्पंद",
+            "लहर-संबंध",
+            "अध्यारोपणाचे तत्त्व"
+          ],
+          "solution": "कोणत्याही लहरीसाठी v = fλ, आणि चाल केवळ माध्यम ठरवत असल्याने त्या माध्यमात वारंवारता आणि तरंगलांबी परस्पर व्यस्तानुपाती असतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The waves an earthquake could not send through the core\" goes correctly with which of these?",
+      "choices": [
+        "the principle of superposition",
+        "the wave relation",
+        "the Doppler effect",
+        "transverse against longitudinal"
+      ],
+      "answerIndex": 3,
+      "solution": "In a transverse wave the particles oscillate perpendicular to the direction of propagation and in a longitudinal wave along it, and only transverse waves can be polarised. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"वे तरंगें जो भूकंप क्रोड के पार न भेज सका\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "अध्यारोपण का सिद्धांत",
+            "तरंग-संबंध",
+            "डॉप्लर प्रभाव",
+            "अनुप्रस्थ बनाम अनुदैर्घ्य"
+          ],
+          "solution": "अनुप्रस्थ तरंग में कण संचरण की दिशा के लंबवत दोलन करते हैं और अनुदैर्घ्य तरंग में उसी के अनुदिश, और केवल अनुप्रस्थ तरंगें ध्रुवित हो सकती हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"त्या लहरी ज्या भूकंप गाभ्यातून पाठवू शकला नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अध्यारोपणाचे तत्त्व",
+            "लहर-संबंध",
+            "डॉप्लर परिणाम",
+            "अनुप्रस्थ विरुद्ध अनुदैर्घ्य"
+          ],
+          "solution": "अनुप्रस्थ लहरीत कण संक्रमणाच्या दिशेला लंब आंदोलन करतात आणि अनुदैर्घ्य लहरीत त्याच दिशेने, आणि केवळ अनुप्रस्थ लहरीच ध्रुवित होऊ शकतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Two conversations crossing and neither garbled\" goes correctly with which of these?",
+      "choices": [
+        "the principle of superposition",
+        "transverse against longitudinal",
+        "standing waves and nodes",
+        "the wave relation"
+      ],
+      "answerIndex": 0,
+      "solution": "The principle of superposition states that where two waves overlap the resultant displacement is the algebraic sum of the individual displacements, and each wave passes on afterwards unchanged. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"दो बातचीतें पार होतीं और कोई गड्डमड्ड नहीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "अध्यारोपण का सिद्धांत",
+            "अनुप्रस्थ बनाम अनुदैर्घ्य",
+            "अप्रगामी तरंगें और निस्पंद",
+            "तरंग-संबंध"
+          ],
+          "solution": "अध्यारोपण का सिद्धांत कहता है कि जहाँ दो तरंगें ओवरलैप करती हैं वहाँ परिणामी विस्थापन अलग-अलग विस्थापनों का बीजीय योग है, और उसके बाद हर तरंग अपरिवर्तित आगे बढ़ जाती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"दोन संभाषणे ओलांडतात आणि कोणतेही गोंधळत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अध्यारोपणाचे तत्त्व",
+            "अनुप्रस्थ विरुद्ध अनुदैर्घ्य",
+            "स्थिर लहरी आणि निस्पंद",
+            "लहर-संबंध"
+          ],
+          "solution": "अध्यारोपणाचे तत्त्व सांगते की जिथे दोन लहरी एकमेकींवर येतात तिथे परिणामी विस्थापन वेगवेगळ्या विस्थापनांची बीजगणितीय बेरीज असते, आणि नंतर प्रत्येक लहर अपरिवर्तित पुढे जाते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Points that never move at all\" goes correctly with which of these?",
+      "choices": [
+        "the wave relation",
+        "standing waves and nodes",
+        "the principle of superposition",
+        "beats"
+      ],
+      "answerIndex": 1,
+      "solution": "A standing wave is formed when two identical waves travel in opposite directions, producing nodes that never move and antinodes of maximum amplitude, spaced half a wavelength apart. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"वे बिंदु जो बिलकुल नहीं हिलते\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "तरंग-संबंध",
+            "अप्रगामी तरंगें और निस्पंद",
+            "अध्यारोपण का सिद्धांत",
+            "विस्पंद"
+          ],
+          "solution": "अप्रगामी तरंग तब बनती है जब दो एक-सी तरंगें विपरीत दिशाओं में चलें, जिससे कभी न हिलने वाले निस्पंद और अधिकतम आयाम के प्रस्पंद बनते हैं, जो आधे तरंगदैर्घ्य के अंतराल पर होते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ते बिंदू जे मुळीच हलत नाहीत\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "लहर-संबंध",
+            "स्थिर लहरी आणि निस्पंद",
+            "अध्यारोपणाचे तत्त्व",
+            "स्पंद"
+          ],
+          "solution": "स्थिर लहर तेव्हा तयार होते जेव्हा दोन सारख्या लहरी विरुद्ध दिशांना जातात, ज्यातून कधीही न हलणारे निस्पंद आणि कमाल आयामाचे प्रस्पंद तयार होतात, जे अर्ध्या तरंगलांबीच्या अंतरावर असतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Tune the peg until the throbbing stops\" goes correctly with which of these?",
+      "choices": [
+        "the principle of superposition",
+        "standing waves and nodes",
+        "the wave relation",
+        "beats"
+      ],
+      "answerIndex": 3,
+      "solution": "Beats are the slow rise and fall in loudness when two notes of nearly equal frequency are sounded together, and the beat frequency is exactly the difference between the two. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"खूँटी तब तक घुमाओ जब तक धड़कन न रुक जाए\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "अध्यारोपण का सिद्धांत",
+            "अप्रगामी तरंगें और निस्पंद",
+            "तरंग-संबंध",
+            "विस्पंद"
+          ],
+          "solution": "विस्पंद वह धीमा घटता-बढ़ता तीव्रता-परिवर्तन है जो लगभग बराबर आवृत्ति के दो स्वर साथ बजने पर होता है, और विस्पंद-आवृत्ति ठीक दोनों का अंतर है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"खुंटी तोवर फिरवा जोवर धडधड थांबत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अध्यारोपणाचे तत्त्व",
+            "स्थिर लहरी आणि निस्पंद",
+            "लहर-संबंध",
+            "स्पंद"
+          ],
+          "solution": "स्पंद म्हणजे जवळपास समान वारंवारतेचे दोन स्वर एकत्र वाजल्यावर होणारा मोठेपणातील सावकाश चढउतार, आणि स्पंद-वारंवारता नेमकी दोघांचा फरक. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"One steady note heard as two pitches\" goes correctly with which of these?",
+      "choices": [
+        "transverse against longitudinal",
+        "the wave relation",
+        "beats",
+        "the Doppler effect"
+      ],
+      "answerIndex": 3,
+      "solution": "The Doppler effect is the change in observed frequency caused by relative motion between source and observer, raising the pitch on approach and lowering it on recession. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"एक ही स्थिर स्वर, सुनाई दो स्वरों में\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "अनुप्रस्थ बनाम अनुदैर्घ्य",
+            "तरंग-संबंध",
+            "विस्पंद",
+            "डॉप्लर प्रभाव"
+          ],
+          "solution": "डॉप्लर प्रभाव स्रोत और प्रेक्षक के बीच सापेक्ष गति से आया प्रेक्षित आवृत्ति का परिवर्तन है, जो पास आने पर स्वर ऊँचा और दूर जाने पर नीचा कर देता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"एकच स्थिर स्वर, ऐकू दोन स्वरांत\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अनुप्रस्थ विरुद्ध अनुदैर्घ्य",
+            "लहर-संबंध",
+            "स्पंद",
+            "डॉप्लर परिणाम"
+          ],
+          "solution": "डॉप्लर परिणाम म्हणजे स्रोत आणि निरीक्षक यांच्यातील सापेक्ष गतीमुळे येणारा निरीक्षित वारंवारतेतील बदल, जो जवळ येताना स्वर उंच आणि दूर जाताना खाली करतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The wave relation EXCEPT —",
+      "choices": [
+        "Sound travels at about 340 m/s in air, 1500 m/s in water and 5000 m/s in steel, so the same note has a wavelength fifteen times longer in a rail than in the air beside it.",
+        "In a transverse wave the particles oscillate perpendicular to the direction of propagation and in a longitudinal wave along it, and only transverse waves can be polarised.",
+        "The frequency is set by the source and never changes when a wave crosses into a new medium; it is the speed and the wavelength that change together, which is why light bends on entering glass.",
+        "For any wave v = fλ, and since the speed is fixed by the medium alone, frequency and wavelength are inversely proportional to each other in that medium."
+      ],
+      "answerIndex": 1,
+      "solution": "In a transverse wave the particles oscillate perpendicular to the direction of propagation and in a longitudinal wave along it, and only transverse waves can be polarised. That belongs to Transverse against longitudinal, not The wave relation — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "तरंग-संबंध के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "ध्वनि हवा में लगभग 340 m/s, पानी में 1500 m/s और इस्पात में 5000 m/s चलती है, अतः वही स्वर पटरी में उसके पास की हवा से पंद्रह गुना लंबा तरंगदैर्घ्य रखता है।",
+            "अनुप्रस्थ तरंग में कण संचरण की दिशा के लंबवत दोलन करते हैं और अनुदैर्घ्य तरंग में उसी के अनुदिश, और केवल अनुप्रस्थ तरंगें ध्रुवित हो सकती हैं।",
+            "आवृत्ति स्रोत तय करता है और तरंग के नए माध्यम में जाने पर वह कभी नहीं बदलती; बदलते हैं चाल और तरंगदैर्घ्य साथ-साथ, इसीलिए काँच में घुसते ही प्रकाश मुड़ जाता है।",
+            "किसी भी तरंग के लिए v = fλ, और चूँकि चाल केवल माध्यम तय करता है, उस माध्यम में आवृत्ति और तरंगदैर्घ्य परस्पर व्युत्क्रमानुपाती हैं।"
+          ],
+          "solution": "अनुप्रस्थ तरंग में कण संचरण की दिशा के लंबवत दोलन करते हैं और अनुदैर्घ्य तरंग में उसी के अनुदिश, और केवल अनुप्रस्थ तरंगें ध्रुवित हो सकती हैं। यह अनुप्रस्थ बनाम अनुदैर्घ्य की बात है, तरंग-संबंध की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "लहर-संबंध विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "ध्वनी हवेत सुमारे 340 m/s, पाण्यात 1500 m/s आणि पोलादात 5000 m/s जातो, म्हणून तोच स्वर रुळात त्याच्याशेजारच्या हवेहून पंधरापट लांब तरंगलांबी बाळगतो.",
+            "अनुप्रस्थ लहरीत कण संक्रमणाच्या दिशेला लंब आंदोलन करतात आणि अनुदैर्घ्य लहरीत त्याच दिशेने, आणि केवळ अनुप्रस्थ लहरीच ध्रुवित होऊ शकतात.",
+            "वारंवारता स्रोत ठरवतो आणि लहर नव्या माध्यमात गेल्यावर ती कधीच बदलत नाही; बदलतात चाल आणि तरंगलांबी एकत्र, म्हणूनच काचेत शिरताच प्रकाश वळतो.",
+            "कोणत्याही लहरीसाठी v = fλ, आणि चाल केवळ माध्यम ठरवत असल्याने त्या माध्यमात वारंवारता आणि तरंगलांबी परस्पर व्यस्तानुपाती असतात."
+          ],
+          "solution": "अनुप्रस्थ लहरीत कण संक्रमणाच्या दिशेला लंब आंदोलन करतात आणि अनुदैर्घ्य लहरीत त्याच दिशेने, आणि केवळ अनुप्रस्थ लहरीच ध्रुवित होऊ शकतात. हे अनुप्रस्थ विरुद्ध अनुदैर्घ्य चे आहे, लहर-संबंध चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Transverse against longitudinal EXCEPT —",
+      "choices": [
+        "That fact is how the Earth's liquid outer core was discovered: an earthquake's transverse S-waves are stopped by it while the longitudinal P-waves pass straight through.",
+        "In a transverse wave the particles oscillate perpendicular to the direction of propagation and in a longitudinal wave along it, and only transverse waves can be polarised.",
+        "A gas or a liquid cannot carry a transverse mechanical wave at all, because it offers no restoring force against being sheared sideways — only a solid can.",
+        "For any wave v = fλ, and since the speed is fixed by the medium alone, frequency and wavelength are inversely proportional to each other in that medium."
+      ],
+      "answerIndex": 3,
+      "solution": "For any wave v = fλ, and since the speed is fixed by the medium alone, frequency and wavelength are inversely proportional to each other in that medium. That belongs to The wave relation, not Transverse against longitudinal — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अनुप्रस्थ बनाम अनुदैर्घ्य के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "उसी तथ्य से पृथ्वी का द्रव बाह्य क्रोड खोजा गया: भूकंप की अनुप्रस्थ S-तरंगें उससे रुक जाती हैं जबकि अनुदैर्घ्य P-तरंगें सीधे पार निकल जाती हैं।",
+            "अनुप्रस्थ तरंग में कण संचरण की दिशा के लंबवत दोलन करते हैं और अनुदैर्घ्य तरंग में उसी के अनुदिश, और केवल अनुप्रस्थ तरंगें ध्रुवित हो सकती हैं।",
+            "गैस या द्रव अनुप्रस्थ यांत्रिक तरंग ढो ही नहीं सकते, क्योंकि वे बग़ल में अपरूपित होने के विरुद्ध कोई प्रत्यानयन बल नहीं देते — केवल ठोस दे सकता है।",
+            "किसी भी तरंग के लिए v = fλ, और चूँकि चाल केवल माध्यम तय करता है, उस माध्यम में आवृत्ति और तरंगदैर्घ्य परस्पर व्युत्क्रमानुपाती हैं।"
+          ],
+          "solution": "किसी भी तरंग के लिए v = fλ, और चूँकि चाल केवल माध्यम तय करता है, उस माध्यम में आवृत्ति और तरंगदैर्घ्य परस्पर व्युत्क्रमानुपाती हैं। यह तरंग-संबंध की बात है, अनुप्रस्थ बनाम अनुदैर्घ्य की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "अनुप्रस्थ विरुद्ध अनुदैर्घ्य विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "त्याच तथ्यातून पृथ्वीचा द्रव बाह्य गाभा शोधला गेला: भूकंपाच्या अनुप्रस्थ S-लहरी त्याने अडवल्या जातात तर अनुदैर्घ्य P-लहरी सरळ आरपार जातात.",
+            "अनुप्रस्थ लहरीत कण संक्रमणाच्या दिशेला लंब आंदोलन करतात आणि अनुदैर्घ्य लहरीत त्याच दिशेने, आणि केवळ अनुप्रस्थ लहरीच ध्रुवित होऊ शकतात.",
+            "वायू वा द्रव अनुप्रस्थ यांत्रिक लहर वाहूच शकत नाहीत, कारण ते बाजूला कर्तन होण्याविरुद्ध कोणतेही पुनःस्थापक बल देत नाहीत — केवळ घनपदार्थ देऊ शकतो.",
+            "कोणत्याही लहरीसाठी v = fλ, आणि चाल केवळ माध्यम ठरवत असल्याने त्या माध्यमात वारंवारता आणि तरंगलांबी परस्पर व्यस्तानुपाती असतात."
+          ],
+          "solution": "कोणत्याही लहरीसाठी v = fλ, आणि चाल केवळ माध्यम ठरवत असल्याने त्या माध्यमात वारंवारता आणि तरंगलांबी परस्पर व्यस्तानुपाती असतात. हे लहर-संबंध चे आहे, अनुप्रस्थ विरुद्ध अनुदैर्घ्य चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The principle of superposition EXCEPT —",
+      "choices": [
+        "It holds only while the medium responds linearly, which is why a very loud sound distorts and why a shock wave from an explosion obeys quite different rules.",
+        "The Doppler effect is the change in observed frequency caused by relative motion between source and observer, raising the pitch on approach and lowering it on recession.",
+        "Where crests meet crests the sum is large and where a crest meets a trough they cancel, which is constructive and destructive interference and the basis of every diffraction pattern.",
+        "The principle of superposition states that where two waves overlap the resultant displacement is the algebraic sum of the individual displacements, and each wave passes on afterwards unchanged."
+      ],
+      "answerIndex": 1,
+      "solution": "The Doppler effect is the change in observed frequency caused by relative motion between source and observer, raising the pitch on approach and lowering it on recession. That belongs to The Doppler effect, not The principle of superposition — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अध्यारोपण का सिद्धांत के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "यह केवल तब तक चलता है जब माध्यम रैखिक प्रतिक्रिया दे, इसीलिए बहुत तेज़ ध्वनि विकृत होती है और इसीलिए विस्फोट की आघात-तरंग बिलकुल भिन्न नियम मानती है।",
+            "डॉप्लर प्रभाव स्रोत और प्रेक्षक के बीच सापेक्ष गति से आया प्रेक्षित आवृत्ति का परिवर्तन है, जो पास आने पर स्वर ऊँचा और दूर जाने पर नीचा कर देता है।",
+            "जहाँ शिखर शिखर से मिलें वहाँ योग बड़ा है और जहाँ शिखर गर्त से मिले वहाँ वे कट जाते हैं, और यही संपोषी तथा विनाशी व्यतिकरण है, हर विवर्तन-पैटर्न का आधार।",
+            "अध्यारोपण का सिद्धांत कहता है कि जहाँ दो तरंगें ओवरलैप करती हैं वहाँ परिणामी विस्थापन अलग-अलग विस्थापनों का बीजीय योग है, और उसके बाद हर तरंग अपरिवर्तित आगे बढ़ जाती है।"
+          ],
+          "solution": "डॉप्लर प्रभाव स्रोत और प्रेक्षक के बीच सापेक्ष गति से आया प्रेक्षित आवृत्ति का परिवर्तन है, जो पास आने पर स्वर ऊँचा और दूर जाने पर नीचा कर देता है। यह डॉप्लर प्रभाव की बात है, अध्यारोपण का सिद्धांत की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "अध्यारोपणाचे तत्त्व विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "हे केवळ तोवर चालते जोवर माध्यम रेषीय प्रतिसाद देते, म्हणूनच फार मोठा आवाज विकृत होतो आणि म्हणूनच स्फोटाची आघात-लहर अगदी वेगळे नियम पाळते.",
+            "डॉप्लर परिणाम म्हणजे स्रोत आणि निरीक्षक यांच्यातील सापेक्ष गतीमुळे येणारा निरीक्षित वारंवारतेतील बदल, जो जवळ येताना स्वर उंच आणि दूर जाताना खाली करतो.",
+            "जिथे शिखरे शिखरांना भेटतात तिथे बेरीज मोठी आणि जिथे शिखर गर्तेला भेटते तिथे ती कापली जातात, आणि हेच संपोषी व विनाशी व्यतिकरण, प्रत्येक विवर्तन-आकृतिबंधाचा पाया.",
+            "अध्यारोपणाचे तत्त्व सांगते की जिथे दोन लहरी एकमेकींवर येतात तिथे परिणामी विस्थापन वेगवेगळ्या विस्थापनांची बीजगणितीय बेरीज असते, आणि नंतर प्रत्येक लहर अपरिवर्तित पुढे जाते."
+          ],
+          "solution": "डॉप्लर परिणाम म्हणजे स्रोत आणि निरीक्षक यांच्यातील सापेक्ष गतीमुळे येणारा निरीक्षित वारंवारतेतील बदल, जो जवळ येताना स्वर उंच आणि दूर जाताना खाली करतो. हे डॉप्लर परिणाम चे आहे, अध्यारोपणाचे तत्त्व चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Standing waves and nodes EXCEPT —",
+      "choices": [
+        "A standing wave is formed when two identical waves travel in opposite directions, producing nodes that never move and antinodes of maximum amplitude, spaced half a wavelength apart.",
+        "That restriction is what gives a musical instrument a definite pitch and a discrete series of harmonics, and it is the exact mechanical ancestor of the quantised energy levels of an atom.",
+        "The boundary decides which wavelengths fit: a string fixed at both ends must have a node at each, so only wavelengths of 2L, L, 2L/3 and so on can survive.",
+        "Beats are the slow rise and fall in loudness when two notes of nearly equal frequency are sounded together, and the beat frequency is exactly the difference between the two."
+      ],
+      "answerIndex": 3,
+      "solution": "Beats are the slow rise and fall in loudness when two notes of nearly equal frequency are sounded together, and the beat frequency is exactly the difference between the two. That belongs to Beats, not Standing waves and nodes — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अप्रगामी तरंगें और निस्पंद के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "अप्रगामी तरंग तब बनती है जब दो एक-सी तरंगें विपरीत दिशाओं में चलें, जिससे कभी न हिलने वाले निस्पंद और अधिकतम आयाम के प्रस्पंद बनते हैं, जो आधे तरंगदैर्घ्य के अंतराल पर होते हैं।",
+            "वही प्रतिबंध वाद्ययंत्र को निश्चित स्वर और संनादों की असतत श्रेणी देता है, और वही परमाणु के क्वांटित ऊर्जा-स्तरों का ठीक-ठीक यांत्रिक पूर्वज है।",
+            "सीमा तय करती है कि कौन-से तरंगदैर्घ्य समाएँगे: दोनों सिरों पर बँधे तार के हर सिरे पर निस्पंद होना चाहिए, अतः केवल 2L, L, 2L/3 इत्यादि तरंगदैर्घ्य बच सकते हैं।",
+            "विस्पंद वह धीमा घटता-बढ़ता तीव्रता-परिवर्तन है जो लगभग बराबर आवृत्ति के दो स्वर साथ बजने पर होता है, और विस्पंद-आवृत्ति ठीक दोनों का अंतर है।"
+          ],
+          "solution": "विस्पंद वह धीमा घटता-बढ़ता तीव्रता-परिवर्तन है जो लगभग बराबर आवृत्ति के दो स्वर साथ बजने पर होता है, और विस्पंद-आवृत्ति ठीक दोनों का अंतर है। यह विस्पंद की बात है, अप्रगामी तरंगें और निस्पंद की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "स्थिर लहरी आणि निस्पंद विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "स्थिर लहर तेव्हा तयार होते जेव्हा दोन सारख्या लहरी विरुद्ध दिशांना जातात, ज्यातून कधीही न हलणारे निस्पंद आणि कमाल आयामाचे प्रस्पंद तयार होतात, जे अर्ध्या तरंगलांबीच्या अंतरावर असतात.",
+            "तोच निर्बंध वाद्याला निश्चित स्वर आणि संनादांची विलग मालिका देतो, आणि तोच अणूच्या पुंजित ऊर्जा-पातळ्यांचा नेमका यांत्रिक पूर्वज.",
+            "सीमा ठरवते की कोणत्या तरंगलांब्या बसतील: दोन्ही टोकांना बांधलेल्या तारेला प्रत्येक टोकावर निस्पंद असावा लागतो, म्हणून केवळ 2L, L, 2L/3 इत्यादी तरंगलांब्याच टिकू शकतात.",
+            "स्पंद म्हणजे जवळपास समान वारंवारतेचे दोन स्वर एकत्र वाजल्यावर होणारा मोठेपणातील सावकाश चढउतार, आणि स्पंद-वारंवारता नेमकी दोघांचा फरक."
+          ],
+          "solution": "स्पंद म्हणजे जवळपास समान वारंवारतेचे दोन स्वर एकत्र वाजल्यावर होणारा मोठेपणातील सावकाश चढउतार, आणि स्पंद-वारंवारता नेमकी दोघांचा फरक. हे स्पंद चे आहे, स्थिर लहरी आणि निस्पंद चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A guitarist finds the top string is flat. A student advises loosening it, reasoning that a looser string is longer and a longer wavelength means a higher note. Correct the advice, and say what three things the pitch of a stretched string actually depends on.",
+      "choices": [
+        "The string must be tightened, not loosened. The fundamental frequency is √(T/μ) divided by twice the length, so pitch rises with tension and falls with length and with mass per unit length. Loosening lowers T and drops the pitch further. The student's error is treating the string's own stretch as the wavelength: the wavelength is fixed at 2L by the two fixed ends, whatever the tension, and it is the SPEED along the string that tension changes",
+        "The student is right: loosening the string lengthens it and a longer string gives a higher note",
+        "Neither helps: a string's pitch is set only by its material, so a flat string must be replaced",
+        "The string should be loosened, but because a looser string is heavier per unit length rather than because it is longer"
+      ],
+      "answerIndex": 0,
+      "solution": "Two separate ideas have been welded together wrongly, and prising them apart fixes everything. A string fixed at both ends can only carry standing waves that have a node at each end. The longest such wave has half a wavelength spanning the string, so λ = 2L for the fundamental. Notice what that does and does not depend on: it depends on the LENGTH between the fixed points and on nothing else at all. Tightening the string does not change 2L; the bridge and the nut are where they were. What tension changes is the speed of a wave travelling along the string, v = √(T/μ), where μ is the mass per unit length. A tighter string has a stiffer restoring force and carries a wave faster, exactly as a stiffer spring oscillates faster. Now combine the two with f = v/λ: f = (1/2L)√(T/μ). Three things appear, and each has its own physical meaning. Tension, in the numerator under the root: tighter is higher, which is what a tuning peg is for. Length, in the denominator: shorter is higher, which is what a finger on a fret does, and pressing halfway up doubles the frequency to give the octave. Mass per unit length, in the denominator under the root: heavier is lower, which is why the bass strings of a guitar are thick and wound with wire while the treble strings are thin — all six are the same length under similar tensions, and the pitch range comes almost entirely from μ. The student's reasoning went wrong at a specific step worth naming. They confused the string's extension under load with the wavelength of the wave on it. Those are unrelated quantities: a string stretched by a millimetre and a string stretched by five millimetres both have the same 2L fundamental wavelength if the fixed ends have not moved. It is a category slip of the same kind as confusing how far a spring is stretched with how fast it oscillates. The fourth option is worth a note because it contains a real subtlety. Stretching a string DOES reduce its mass per unit length very slightly, since the same mass is spread over a marginally greater length. That effect exists, and it also raises the pitch — but it is tiny compared with the tension term, and it acts in the same direction, so it cannot rescue an argument that concludes the string should be loosened. (The third answer denies the whole mechanism of every stringed instrument ever built.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "गिटार बजाने वाले को ऊपरी तार बेसुरा-नीचा लगता है। एक विद्यार्थी उसे ढीला करने की सलाह देता है, यह तर्क देकर कि ढीला तार लंबा होता है और लंबा तरंगदैर्घ्य ऊँचा स्वर देता है। सलाह सुधारो, और बताओ कि खिंचे तार का स्वर वस्तुतः किन तीन चीज़ों पर निर्भर है।",
+          "choices": [
+            "तार कसना चाहिए, ढीला नहीं करना। मूल आवृत्ति √(T/μ) बटा दुगुनी लंबाई है, अतः स्वर तनाव के साथ चढ़ता है और लंबाई तथा प्रति एकांक लंबाई द्रव्यमान के साथ गिरता है। ढीला करने से T घटता है और स्वर और नीचे चला जाता है। विद्यार्थी की भूल तार के अपने खिंचाव को तरंगदैर्घ्य मान लेना है: तरंगदैर्घ्य दोनों बँधे सिरों से 2L पर तय है, तनाव चाहे जो हो, और तनाव बदलता है तार पर की चाल",
+            "विद्यार्थी सही है: तार ढीला करने से वह लंबा होता है और लंबा तार ऊँचा स्वर देता है",
+            "कोई भी काम नहीं आता: तार का स्वर केवल उसके पदार्थ से तय होता है, अतः बेसुरा तार बदलना ही पड़ेगा",
+            "तार ढीला करना चाहिए, पर इसलिए कि ढीला तार प्रति एकांक लंबाई भारी होता है, इसलिए नहीं कि वह लंबा है"
+          ],
+          "solution": "दो अलग विचार ग़लत ढंग से जोड़ दिए गए हैं, और उन्हें अलग कर देने से सब ठीक हो जाता है। दोनों सिरों पर बँधा तार केवल वे अप्रगामी तरंगें ढो सकता है जिनके हर सिरे पर निस्पंद हो। ऐसी सबसे लंबी तरंग का आधा तरंगदैर्घ्य तार भर फैलता है, अतः मूल के लिए λ = 2L. ध्यान दो वह किस पर निर्भर है और किस पर नहीं: वह बँधे बिंदुओं के बीच की लंबाई पर निर्भर है और और किसी चीज़ पर बिलकुल नहीं। तार कसने से 2L नहीं बदलता; ब्रिज और नट वहीं हैं जहाँ थे। तनाव बदलता है तार के अनुदिश चलती तरंग की चाल, v = √(T/μ), जहाँ μ प्रति एकांक लंबाई द्रव्यमान है। कसे तार का प्रत्यानयन बल अधिक कड़ा है और वह तरंग को तेज़ ढोता है, ठीक वैसे जैसे कड़ी स्प्रिंग तेज़ दोलन करती है। अब दोनों को f = v/λ से जोड़ो: f = (1/2L)√(T/μ). तीन चीज़ें आती हैं, और हर एक का अपना भौतिक अर्थ है। तनाव, मूल के नीचे अंश में: अधिक कसा यानी ऊँचा, और खूँटी इसी के लिए है। लंबाई, हर में: छोटा यानी ऊँचा, और फ़्रेट पर उँगली यही करती है, तथा बीच में दबाने से आवृत्ति दोगुनी होकर सप्तक देती है। प्रति एकांक लंबाई द्रव्यमान, मूल के नीचे हर में: भारी यानी नीचा, इसीलिए गिटार के बेस तार मोटे और तार से लिपटे होते हैं जबकि ट्रेबल तार पतले — छहों एक ही लंबाई के हैं और मिलते-जुलते तनावों पर, और स्वर-परास लगभग पूरा μ से आता है। विद्यार्थी का तर्क एक विशेष क़दम पर बिगड़ा जिसका नाम लेना सार्थक है। उसने भार के नीचे तार के विस्तार को उस पर की तरंग के तरंगदैर्घ्य से गड्डमड्ड कर दिया। वे असंबद्ध राशियाँ हैं: एक मिलीमीटर खिंचे तार और पाँच मिलीमीटर खिंचे तार दोनों का मूल तरंगदैर्घ्य वही 2L है यदि बँधे सिरे हिले न हों। यह उसी क़िस्म की श्रेणी-भूल है जैसे यह गड्डमड्ड करना कि स्प्रिंग कितनी खिंची है और वह कितनी तेज़ दोलन करती है। चौथा विकल्प टिप्पणी योग्य है क्योंकि उसमें एक असली सूक्ष्मता है। तार खींचने से उसका प्रति एकांक लंबाई द्रव्यमान सचमुच बहुत थोड़ा घटता है, क्योंकि वही द्रव्यमान थोड़ी अधिक लंबाई पर फैल जाता है। वह प्रभाव है, और वह भी स्वर ऊँचा करता है — पर तनाव-पद के सामने वह नन्हा है, और वह उसी दिशा में लगता है, अतः वह ऐसा तर्क नहीं बचा सकता जिसका निष्कर्ष तार ढीला करना हो। (तीसरा उत्तर अब तक बने हर तंतु-वाद्य की पूरी क्रियाविधि नकार देता है।)"
+        },
+        "mr": {
+          "stem": "गिटार वाजवणाऱ्याला वरची तार बेसूर-खालची वाटते. एक विद्यार्थी ती सैल करण्याचा सल्ला देतो, हा युक्तिवाद करून की सैल तार लांब असते आणि लांब तरंगलांबी उंच स्वर देते. सल्ला दुरुस्त करा, आणि ताणलेल्या तारेचा स्वर प्रत्यक्षात कोणत्या तीन गोष्टींवर अवलंबून ते सांगा.",
+          "choices": [
+            "तार आवळावी, सैल करू नये. मूळ वारंवारता √(T/μ) भागिले दुप्पट लांबी, म्हणून स्वर ताणासोबत चढतो आणि लांबी व प्रति एकक लांबी वस्तुमानासोबत घटतो. सैल केल्याने T घटतो आणि स्वर आणखी खाली जातो. विद्यार्थ्याची चूक म्हणजे तारेचा स्वतःचा ताण तरंगलांबी मानणे: तरंगलांबी दोन्ही बांधलेल्या टोकांनी 2L वर ठरलेली, ताण काहीही असो, आणि ताण बदलतो तो तारेवरचा वेग",
+            "विद्यार्थी बरोबर: तार सैल केल्याने ती लांब होते आणि लांब तार उंच स्वर देते",
+            "कोणतेही उपयोगी नाही: तारेचा स्वर केवळ तिच्या पदार्थाने ठरतो, म्हणून बेसूर तार बदलावीच लागेल",
+            "तार सैल करावी, पण यासाठी की सैल तार प्रति एकक लांबी जड असते, ती लांब आहे म्हणून नव्हे"
+          ],
+          "solution": "दोन वेगळ्या कल्पना चुकीच्या पद्धतीने जोडल्या गेल्या आहेत, आणि त्या वेगळ्या केल्याने सर्व ठीक होते. दोन्ही टोकांना बांधलेली तार केवळ त्याच स्थिर लहरी वाहू शकते ज्यांना प्रत्येक टोकावर निस्पंद असतो. अशा सर्वांत लांब लहरीची अर्धी तरंगलांबी तारेभर पसरते, म्हणून मूळासाठी λ = 2L. लक्षात घ्या ते कशावर अवलंबून आणि कशावर नाही: ते बांधलेल्या बिंदूंमधल्या लांबीवर अवलंबून आणि दुसऱ्या कशावरही मुळीच नाही. तार आवळल्याने 2L बदलत नाही; ब्रिज आणि नट जिथे होते तिथेच आहेत. ताण बदलतो तो तारेच्या दिशेने जाणाऱ्या लहरीचा वेग, v = √(T/μ), जिथे μ प्रति एकक लांबी वस्तुमान. आवळलेल्या तारेचे पुनःस्थापक बल अधिक ताठर आणि ती लहर अधिक वेगाने वाहते, अगदी तसेच जसे ताठर स्प्रिंग अधिक वेगाने आंदोलन करते. आता दोघांना f = v/λ ने जोडा: f = (1/2L)√(T/μ). तीन गोष्टी येतात, आणि प्रत्येकीचा स्वतःचा भौतिक अर्थ. ताण, मुळाखाली अंशात: अधिक आवळलेली म्हणजे उंच, आणि खुंटी याचसाठी. लांबी, छेदात: लहान म्हणजे उंच, आणि फ्रेटवरचे बोट हेच करते, तसेच मध्यभागी दाबल्याने वारंवारता दुप्पट होऊन सप्तक देते. प्रति एकक लांबी वस्तुमान, मुळाखाली छेदात: जड म्हणजे खालचा, म्हणूनच गिटारच्या बेस तारा जाड आणि तारेने गुंडाळलेल्या तर ट्रेबल तारा पातळ — सहाही एकाच लांबीच्या आणि सारख्या ताणांवर, आणि स्वर-पल्ला जवळपास पूर्णपणे μ मधून येतो. विद्यार्थ्याचा युक्तिवाद एका विशिष्ट टप्प्यावर बिघडला ज्याचे नाव घेणे सार्थक. त्याने ओझ्याखालच्या तारेच्या ताणाची तिच्यावरील लहरीच्या तरंगलांबीशी गल्लत केली. त्या असंबद्ध राशी: एक मिलीमीटर ताणलेली तार आणि पाच मिलीमीटर ताणलेली तार दोघांचीही मूळ तरंगलांबी तीच 2L आहे जर बांधलेली टोके हलली नसतील. ही त्याच प्रकारची वर्ग-चूक जशी स्प्रिंग किती ताणली आणि ती किती वेगाने आंदोलन करते यांची गल्लत. चौथा पर्याय टिप्पणीयोग्य कारण त्यात एक खरी सूक्ष्मता आहे. तार ताणल्याने तिचे प्रति एकक लांबी वस्तुमान खरोखर फार थोडे घटते, कारण तेच वस्तुमान किंचित अधिक लांबीवर पसरते. तो परिणाम आहे, आणि तोही स्वर उंच करतो — पण ताण-पदासमोर तो इवला, आणि तो त्याच दिशेने लागतो, म्हणून तो ज्याचा निष्कर्ष तार सैल करावी असा आहे तो युक्तिवाद वाचवू शकत नाही. (तिसरे उत्तर आजवर बनलेल्या प्रत्येक तंतुवाद्याची अख्खी कार्यपद्धती नाकारते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A siren of fixed frequency is mounted on a car. Case one: the car drives past a stationary listener at 34 m/s. Case two: the car is parked and the listener drives past it at 34 m/s. Taking the speed of sound as 340 m/s, does the listener hear the same shift in both cases, and what does the answer reveal?",
+      "choices": [
+        "The shifts differ. An approaching source gives f × 340/(340 − 34) = f × 1.111, while an approaching observer gives f × (340 + 34)/340 = f × 1.100. A moving source compresses the wavelengths themselves; a moving observer meets unchanged wavelengths more often. The difference reveals that sound has a medium which defines a preferred frame — and it is precisely this asymmetry that light does NOT show, which is what forced special relativity",
+        "The shifts are identical, because only the relative velocity of source and observer can matter in any physical situation",
+        "There is no shift in the second case at all, since a stationary source cannot produce a Doppler effect",
+        "The shift is larger for the moving observer, because they are travelling towards the sound as well as the sound travelling towards them"
+      ],
+      "answerIndex": 0,
+      "solution": "Do both calculations before reasoning about them, because the numbers are close enough that intuition is useless. Moving source, stationary observer. In one period the source emits a crest and then moves forward by v_s × T before emitting the next, so the crests are packed closer: the wavelength ahead of it is λ' = (v − v_s)/f. The observer, standing still, meets them at the ordinary speed of sound, so f' = v/λ' = f × v/(v − v_s) = f × 340/306 = 1.1111 f. Moving observer, stationary source. Here the source emits perfectly ordinary, evenly spaced crests: the wavelength in the air is λ = v/f, unchanged. What changes is how fast the observer sweeps through them, which is now v + v_o rather than v, so f' = (v + v_o)/λ = f × 374/340 = 1.1000 f. The two answers differ by about one per cent — small, but real, and measurable with ordinary equipment. The physical difference behind the arithmetic is the important part. In the first case the WAVES THEMSELVES are altered: go out and measure the distance between crests in the air ahead of the moving car and you will find them genuinely bunched. In the second case the waves in the air are untouched and only the rate of encountering them has changed. Those are different physical situations, so it is no surprise that they give different answers, even though the relative velocity of source and observer is 34 m/s in both. Why can sound tell the difference? Because there is a third participant: the air. Sound travels at 340 m/s with respect to the AIR, and that gives the problem a preferred frame — the one in which the medium is at rest. 'Moving' means moving relative to the air, and the source and the observer are in genuinely different situations with respect to it. The second option asserts a principle that sounds unimpeachable and is simply false here. Now the payoff. Light shows no such asymmetry. Every experiment ever done finds that only the relative velocity of source and observer affects the observed frequency of light, with no trace of a preferred frame and no third participant to move relative to. Michelson and Morley went looking for exactly that asymmetry, expecting to detect the Earth's motion through a luminiferous ether, and found nothing at all. That null result is what the second option describes — true of light and false of sound — and reconciling it with everything else is what special relativity was built to do. (The third answer forgets that relative motion is what matters, and the fourth double-counts a speed that has already been included.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "नियत आवृत्ति का सायरन एक कार पर लगा है। पहली स्थिति: कार स्थिर श्रोता के पास से 34 m/s पर गुज़रती है। दूसरी स्थिति: कार खड़ी है और श्रोता उसके पास से 34 m/s पर गुज़रता है। ध्वनि की चाल 340 m/s लेते हुए, क्या श्रोता दोनों स्थितियों में वही विस्थापन सुनता है, और उत्तर क्या प्रकट करता है?",
+          "choices": [
+            "विस्थापन भिन्न हैं। पास आता स्रोत f × 340/(340 − 34) = f × 1.111 देता है, जबकि पास आता प्रेक्षक f × (340 + 34)/340 = f × 1.100. चलता स्रोत स्वयं तरंगदैर्घ्यों को दबा देता है; चलता प्रेक्षक अपरिवर्तित तरंगदैर्घ्यों से अधिक बार मिलता है। यह अंतर प्रकट करता है कि ध्वनि के पास माध्यम है जो एक वरीय निर्देश-तंत्र परिभाषित करता है — और ठीक यही असममिति प्रकाश नहीं दिखाता, और इसी ने विशेष आपेक्षिकता को बाध्य किया",
+            "विस्थापन समान हैं, क्योंकि किसी भी भौतिक स्थिति में केवल स्रोत और प्रेक्षक का सापेक्ष वेग ही मायने रख सकता है",
+            "दूसरी स्थिति में कोई विस्थापन है ही नहीं, क्योंकि स्थिर स्रोत डॉप्लर प्रभाव पैदा नहीं कर सकता",
+            "चलते प्रेक्षक के लिए विस्थापन बड़ा है, क्योंकि वे ध्वनि की ओर चल रहे हैं और ध्वनि भी उनकी ओर चल रही है"
+          ],
+          "solution": "दोनों गणनाएँ तर्क करने से पहले कर लो, क्योंकि संख्याएँ इतनी पास हैं कि अंतर्ज्ञान बेकार है। चलता स्रोत, स्थिर प्रेक्षक। एक आवर्तकाल में स्रोत एक शिखर छोड़ता है और अगला छोड़ने से पहले v_s × T आगे बढ़ जाता है, अतः शिखर पास-पास जुड़ जाते हैं: उसके आगे तरंगदैर्घ्य λ' = (v − v_s)/f. स्थिर खड़ा प्रेक्षक उनसे ध्वनि की साधारण चाल पर मिलता है, अतः f' = v/λ' = f × v/(v − v_s) = f × 340/306 = 1.1111 f. चलता प्रेक्षक, स्थिर स्रोत। यहाँ स्रोत बिलकुल साधारण, समान दूरी वाले शिखर छोड़ता है: हवा में तरंगदैर्घ्य λ = v/f, अपरिवर्तित। बदलता है यह कि प्रेक्षक उनसे कितनी तेज़ी से गुज़रता है, जो अब v के बजाय v + v_o है, अतः f' = (v + v_o)/λ = f × 374/340 = 1.1000 f. दोनों उत्तर लगभग एक प्रतिशत भिन्न हैं — छोटा, पर असली, और साधारण उपकरणों से नापने योग्य। गणित के पीछे का भौतिक भेद महत्वपूर्ण हिस्सा है। पहली स्थिति में स्वयं तरंगें बदल जाती हैं: बाहर जाकर चलती कार के आगे हवा में शिखरों की दूरी नापो और तुम उन्हें सचमुच सिमटा पाओगे। दूसरी स्थिति में हवा की तरंगें अछूती हैं और बदली है केवल उनसे मिलने की दर। ये भिन्न भौतिक स्थितियाँ हैं, अतः यह कोई आश्चर्य नहीं कि वे भिन्न उत्तर देती हैं, यद्यपि दोनों में स्रोत और प्रेक्षक का सापेक्ष वेग 34 m/s है। ध्वनि भेद बता क्यों सकती है? क्योंकि एक तीसरा भागीदार है: हवा। ध्वनि हवा के सापेक्ष 340 m/s चलती है, और यह प्रश्न को एक वरीय निर्देश-तंत्र देता है — वह जिसमें माध्यम विराम में है। 'चलना' का अर्थ हवा के सापेक्ष चलना है, और उसके प्रति स्रोत तथा प्रेक्षक सचमुच भिन्न स्थितियों में हैं। दूसरा विकल्प ऐसा सिद्धांत कहता है जो अकाट्य लगता है और यहाँ बस झूठा है। अब कमाई। प्रकाश ऐसी कोई असममिति नहीं दिखाता। अब तक हुआ हर प्रयोग यही पाता है कि प्रकाश की प्रेक्षित आवृत्ति पर केवल स्रोत और प्रेक्षक का सापेक्ष वेग असर करता है, किसी वरीय निर्देश-तंत्र का कोई चिह्न नहीं और सापेक्ष चलने को कोई तीसरा भागीदार नहीं। माइकल्सन और मॉर्ली ठीक उसी असममिति की तलाश में निकले थे, यह अपेक्षा करते हुए कि वे प्रकाशवाही ईथर में से पृथ्वी की गति पकड़ लेंगे, और उन्हें कुछ भी नहीं मिला। वही शून्य परिणाम है जिसका वर्णन दूसरा विकल्प करता है — प्रकाश पर सच और ध्वनि पर झूठ — और उसे बाक़ी सब से मिलाने के लिए ही विशेष आपेक्षिकता बनाई गई। (तीसरा उत्तर भूल जाता है कि मायने सापेक्ष गति रखती है, और चौथा उस चाल को दो बार गिन लेता है जो पहले ही शामिल है।)"
+        },
+        "mr": {
+          "stem": "ठरलेल्या वारंवारतेचा भोंगा एका कारवर बसवला आहे. पहिली स्थिती: कार स्थिर श्रोत्याजवळून 34 m/s ने जाते. दुसरी स्थिती: कार उभी आहे आणि श्रोता तिच्याजवळून 34 m/s ने जातो. ध्वनीचा वेग 340 m/s घेतल्यास, श्रोता दोन्ही स्थितींत तोच बदल ऐकतो का, आणि उत्तर काय उघड करते?",
+          "choices": [
+            "बदल वेगळे आहेत. जवळ येणारा स्रोत f × 340/(340 − 34) = f × 1.111 देतो, तर जवळ येणारा निरीक्षक f × (340 + 34)/340 = f × 1.100 देतो. चालणारा स्रोत स्वतः तरंगलांब्या दाबतो; चालणारा निरीक्षक अपरिवर्तित तरंगलांब्यांना अधिक वेळा भेटतो. हा फरक उघड करतो की ध्वनीकडे माध्यम आहे जे एक पसंतीची चौकट व्याख्यायित करते — आणि नेमकी हीच असममिती प्रकाश दाखवत नाही, आणि यानेच विशेष सापेक्षतेला भाग पाडले",
+            "बदल सारखेच आहेत, कारण कोणत्याही भौतिक परिस्थितीत केवळ स्रोत आणि निरीक्षकाचा सापेक्ष वेगच महत्त्वाचा असू शकतो",
+            "दुसऱ्या स्थितीत कोणताही बदल नाहीच, कारण स्थिर स्रोत डॉप्लर परिणाम निर्माण करू शकत नाही",
+            "चालणाऱ्या निरीक्षकासाठी बदल मोठा आहे, कारण ते ध्वनीकडे जात आहेत आणि ध्वनीही त्यांच्याकडे जात आहे"
+          ],
+          "solution": "दोन्ही गणना युक्तिवाद करण्याआधी करून घ्या, कारण संख्या इतक्या जवळ की अंतःप्रेरणा निरुपयोगी. चालणारा स्रोत, स्थिर निरीक्षक. एका आवर्तकालात स्रोत एक शिखर सोडतो आणि पुढचे सोडण्याआधी v_s × T पुढे जातो, म्हणून शिखरे जवळजवळ येतात: त्याच्यापुढची तरंगलांबी λ' = (v − v_s)/f. स्थिर उभा निरीक्षक त्यांना ध्वनीच्या सामान्य वेगाने भेटतो, म्हणून f' = v/λ' = f × v/(v − v_s) = f × 340/306 = 1.1111 f. चालणारा निरीक्षक, स्थिर स्रोत. इथे स्रोत अगदी सामान्य, समान अंतरावरची शिखरे सोडतो: हवेतील तरंगलांबी λ = v/f, अपरिवर्तित. बदलते ते निरीक्षक त्यांतून किती वेगाने जातो, जे आता v ऐवजी v + v_o, म्हणून f' = (v + v_o)/λ = f × 374/340 = 1.1000 f. दोन्ही उत्तरे सुमारे एक टक्क्याने वेगळी — लहान, पण खरी, आणि सामान्य उपकरणांनी मोजण्याजोगी. आकडेमोडीमागचा भौतिक भेद हा महत्त्वाचा भाग. पहिल्या स्थितीत लहरीच बदलतात: बाहेर जाऊन चालत्या कारपुढच्या हवेतील शिखरांचे अंतर मोजा आणि तुम्हाला ती खरोखर आकुंचलेली आढळतील. दुसऱ्या स्थितीत हवेतील लहरी अस्पर्श आणि बदलला केवळ त्यांना भेटण्याचा दर. या वेगळ्या भौतिक स्थिती, म्हणून त्या वेगळी उत्तरे देतात यात आश्चर्य नाही, जरी दोन्हींत स्रोत आणि निरीक्षकाचा सापेक्ष वेग 34 m/s असला तरी. ध्वनी फरक का सांगू शकतो? कारण तिसरा सहभागी आहे: हवा. ध्वनी हवेच्या सापेक्ष 340 m/s जातो, आणि हे प्रश्नाला एक पसंतीची चौकट देते — जिच्यात माध्यम स्थिर आहे. 'चालणे' म्हणजे हवेच्या सापेक्ष चालणे, आणि तिच्याबाबत स्रोत आणि निरीक्षक खरोखर वेगळ्या स्थितीत आहेत. दुसरा पर्याय असे तत्त्व सांगतो जे अकाट्य वाटते आणि इथे फक्त खोटे आहे. आता कमाई. प्रकाश अशी कोणतीही असममिती दाखवत नाही. आजवर झालेला प्रत्येक प्रयोग हेच आढळतो की प्रकाशाच्या निरीक्षित वारंवारतेवर केवळ स्रोत आणि निरीक्षकाचा सापेक्ष वेग परिणाम करतो, कोणत्याही पसंतीच्या चौकटीचे चिन्ह नाही आणि सापेक्ष चालायला तिसरा सहभागी नाही. मायकेलसन आणि मॉर्ली नेमक्या त्याच असममितीच्या शोधात निघाले होते, प्रकाशवाही ईथरमधून पृथ्वीची गती पकडू अशी अपेक्षा ठेवून, आणि त्यांना काहीही मिळाले नाही. तोच शून्य निकाल ज्याचे वर्णन दुसरा पर्याय करतो — प्रकाशावर खरे आणि ध्वनीवर खोटे — आणि त्याला बाकी सर्वांशी जुळवण्यासाठीच विशेष सापेक्षता बांधली गेली. (तिसरे उत्तर विसरते की महत्त्वाची सापेक्ष गती आहे, आणि चौथे आधीच समाविष्ट असलेला वेग दोनदा मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A sound of frequency 500 Hz has a wavelength of 0.68 m in air. What is its speed?",
+      "choices": [
+        "735.294118 m/s",
+        "340 m/s",
+        "500.68 m/s",
+        "0.00136 m/s"
+      ],
+      "answerIndex": 1,
+      "solution": "v = fλ = 500 × 0.68 = 340 m/s, the ordinary speed of sound in air. A different note would have a different wavelength but exactly the same speed, since the speed belongs to the medium. (735.294118 divides instead of multiplying.)",
+      "checkExpr": "500*0.68",
+      "translations": {
+        "hi": {
+          "stem": "500 Hz आवृत्ति की ध्वनि का हवा में तरंगदैर्घ्य 0.68 m है। उसकी चाल क्या है?",
+          "choices": [
+            "735.294118 m/s",
+            "340 m/s",
+            "500.68 m/s",
+            "0.00136 m/s"
+          ],
+          "solution": "v = fλ = 500 × 0.68 = 340 m/s, हवा में ध्वनि की साधारण चाल। भिन्न स्वर का तरंगदैर्घ्य भिन्न होता पर चाल ठीक वही, क्योंकि चाल माध्यम की है। (735.294118 गुणा के बजाय भाग देता है।)"
+        },
+        "mr": {
+          "stem": "500 Hz वारंवारतेच्या ध्वनीची हवेतील तरंगलांबी 0.68 m आहे. त्याचा वेग किती?",
+          "choices": [
+            "735.294118 m/s",
+            "340 m/s",
+            "500.68 m/s",
+            "0.00136 m/s"
+          ],
+          "solution": "v = fλ = 500 × 0.68 = 340 m/s, हवेतील ध्वनीचा सामान्य वेग. वेगळ्या स्वराची तरंगलांबी वेगळी असती पण वेग नेमका तोच, कारण वेग माध्यमाचा आहे. (735.294118 गुणण्याऐवजी भागते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Sound travels at 340 m/s in air. What is the wavelength of a 170 Hz note?",
+      "choices": [
+        "510 m",
+        "57800 m",
+        "2 m",
+        "0.5 m"
+      ],
+      "answerIndex": 2,
+      "solution": "λ = v/f = 340/170 = 2 m. A low note has a long wavelength, which is why bass sounds bend round corners and through walls while treble does not. (57800 multiplies and 0.5 inverts the ratio.)",
+      "checkExpr": "340/170",
+      "translations": {
+        "hi": {
+          "stem": "हवा में ध्वनि 340 m/s चलती है। 170 Hz के स्वर का तरंगदैर्घ्य क्या है?",
+          "choices": [
+            "510 m",
+            "57800 m",
+            "2 m",
+            "0.5 m"
+          ],
+          "solution": "λ = v/f = 340/170 = 2 m. नीचे स्वर का तरंगदैर्घ्य लंबा होता है, इसीलिए बेस ध्वनि कोनों के पीछे और दीवारों से होकर मुड़ जाती है जबकि ट्रेबल नहीं। (57800 गुणा करता है और 0.5 अनुपात उलट देता है।)"
+        },
+        "mr": {
+          "stem": "हवेत ध्वनी 340 m/s ने जातो. 170 Hz च्या स्वराची तरंगलांबी किती?",
+          "choices": [
+            "510 m",
+            "57800 m",
+            "2 m",
+            "0.5 m"
+          ],
+          "solution": "λ = v/f = 340/170 = 2 m. खालच्या स्वराची तरंगलांबी लांब असते, म्हणूनच बेस आवाज कोपऱ्यांमागे आणि भिंतींतून वळतो तर ट्रेबल नाही. (57800 गुणते आणि 0.5 गुणोत्तर उलटे करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A string 1 m long is fixed at both ends. What is the wavelength of its fundamental mode, in metres?",
+      "choices": [
+        "1 m",
+        "0.5 m",
+        "4 m",
+        "2 m"
+      ],
+      "answerIndex": 3,
+      "solution": "Both ends must be nodes, and the simplest pattern that manages this has just one antinode in the middle — half a wavelength spanning the string. So λ = 2L = 2 m. (1 assumes a whole wavelength fits, which would need a node in the middle as well and is in fact the second harmonic.)",
+      "checkExpr": "2*1",
+      "translations": {
+        "hi": {
+          "stem": "1 m लंबा तार दोनों सिरों पर बँधा है। उसकी मूल विधा का तरंगदैर्घ्य मीटर में क्या है?",
+          "choices": [
+            "1 m",
+            "0.5 m",
+            "4 m",
+            "2 m"
+          ],
+          "solution": "दोनों सिरे निस्पंद होने चाहिए, और यह करने वाला सबसे सरल पैटर्न बीच में केवल एक प्रस्पंद रखता है — तार भर आधा तरंगदैर्घ्य। अतः λ = 2L = 2 m. (1 मान लेता है कि पूरा तरंगदैर्घ्य समा जाता है, जिसके लिए बीच में भी निस्पंद चाहिए और वह वस्तुतः दूसरा संनाद है।)"
+        },
+        "mr": {
+          "stem": "1 m लांब तार दोन्ही टोकांना बांधलेली आहे. तिच्या मूळ प्रकाराची तरंगलांबी मीटरमध्ये किती?",
+          "choices": [
+            "1 m",
+            "0.5 m",
+            "4 m",
+            "2 m"
+          ],
+          "solution": "दोन्ही टोके निस्पंद असावी लागतात, आणि हे साधणारा सर्वांत सोपा आकृतिबंध मध्यभागी केवळ एक प्रस्पंद ठेवतो — तारेभर अर्धी तरंगलांबी. म्हणून λ = 2L = 2 m. (1 गृहीत धरते की पूर्ण तरंगलांबी बसते, ज्यासाठी मध्यभागीही निस्पंद लागेल आणि तो प्रत्यक्षात दुसरा संनाद.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A string's fundamental frequency is 100 Hz. What is the frequency of its third harmonic, in Hz?",
+      "choices": [
+        "200",
+        "103",
+        "300",
+        "33.333333"
+      ],
+      "answerIndex": 2,
+      "solution": "A string fixed at both ends supports whole-number multiples of its fundamental, so the third harmonic is 3 × 100 = 300 Hz. It is that discrete series, and not the fundamental alone, that gives an instrument its characteristic timbre. (200 quotes the second harmonic.)",
+      "checkExpr": "3*100",
+      "translations": {
+        "hi": {
+          "stem": "किसी तार की मूल आवृत्ति 100 Hz है। उसके तीसरे संनाद की आवृत्ति Hz में क्या है?",
+          "choices": [
+            "200",
+            "103",
+            "300",
+            "33.333333"
+          ],
+          "solution": "दोनों सिरों पर बँधा तार अपनी मूल आवृत्ति के पूर्णांक गुणज ही सँभालता है, अतः तीसरा संनाद 3 × 100 = 300 Hz. वाद्य को उसका विशिष्ट स्वर-रंग वही असतत श्रेणी देती है, अकेली मूल आवृत्ति नहीं। (200 दूसरा संनाद बता देता है।)"
+        },
+        "mr": {
+          "stem": "एका तारेची मूळ वारंवारता 100 Hz आहे. तिच्या तिसऱ्या संनादाची वारंवारता Hz मध्ये किती?",
+          "choices": [
+            "200",
+            "103",
+            "300",
+            "33.333333"
+          ],
+          "solution": "दोन्ही टोकांना बांधलेली तार आपल्या मूळ वारंवारतेचे पूर्णांक पटच सांभाळते, म्हणून तिसरा संनाद 3 × 100 = 300 Hz. वाद्याला त्याचा वैशिष्ट्यपूर्ण स्वररंग तीच विलग मालिका देते, एकटी मूळ वारंवारता नव्हे. (200 दुसरा संनाद सांगते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Two tuning forks of 256 Hz and 260 Hz are sounded together. How many beats are heard per second?",
+      "choices": [
+        "258",
+        "2",
+        "4",
+        "516"
+      ],
+      "answerIndex": 2,
+      "solution": "The beat frequency is the difference between the two: 260 − 256 = 4 beats per second. A tuner listens for that throbbing and turns the peg until it slows to nothing. (516 adds the frequencies and 258 averages them.)",
+      "checkExpr": "260-256",
+      "translations": {
+        "hi": {
+          "stem": "256 Hz और 260 Hz के दो स्वरित्र द्विभुज साथ बजाए जाते हैं। प्रति सेकंड कितने विस्पंद सुनाई देते हैं?",
+          "choices": [
+            "258",
+            "2",
+            "4",
+            "516"
+          ],
+          "solution": "विस्पंद-आवृत्ति दोनों का अंतर है: 260 − 256 = 4 विस्पंद प्रति सेकंड। सुर मिलाने वाला उसी धड़कन को सुनता है और खूँटी तब तक घुमाता है जब तक वह धीमी होकर शून्य न हो जाए। (516 आवृत्तियाँ जोड़ता है और 258 उनका औसत लेता है।)"
+        },
+        "mr": {
+          "stem": "256 Hz आणि 260 Hz चे दोन स्वरकाटे एकत्र वाजवले जातात. दर सेकंदाला किती स्पंद ऐकू येतात?",
+          "choices": [
+            "258",
+            "2",
+            "4",
+            "516"
+          ],
+          "solution": "स्पंद-वारंवारता दोघांचा फरक: 260 − 256 = 4 स्पंद प्रति सेकंद. सूर जुळवणारा तीच धडधड ऐकतो आणि खुंटी तोवर फिरवतो जोवर ती मंदावून शून्य होत नाही. (516 वारंवारता जोडते आणि 258 त्यांची सरासरी घेते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A string of mass per unit length 0.01 kg/m is stretched to a tension of 100 N. What is the speed of a wave along it?",
+      "choices": [
+        "100 m/s",
+        "10000 m/s",
+        "10 m/s",
+        "1 m/s"
+      ],
+      "answerIndex": 0,
+      "solution": "v = √(T/μ) = √(100/0.01) = √10,000 = 100 m/s. Tension is the restoring agent and mass per unit length is the inertia, exactly as k and m are for a spring. (10000 is v² with the root forgotten.)",
+      "checkExpr": "(100/0.01)^0.5",
+      "translations": {
+        "hi": {
+          "stem": "0.01 kg/m प्रति एकांक लंबाई द्रव्यमान वाला तार 100 N तनाव तक खींचा गया है। उस पर तरंग की चाल क्या है?",
+          "choices": [
+            "100 m/s",
+            "10000 m/s",
+            "10 m/s",
+            "1 m/s"
+          ],
+          "solution": "v = √(T/μ) = √(100/0.01) = √10,000 = 100 m/s. तनाव प्रत्यानयन करता कारक है और प्रति एकांक लंबाई द्रव्यमान जड़त्व, ठीक वैसे जैसे स्प्रिंग के लिए k और m हैं। (10000 v² है जिसमें मूल भूला गया।)"
+        },
+        "mr": {
+          "stem": "0.01 kg/m प्रति एकक लांबी वस्तुमान असलेली तार 100 N ताणापर्यंत ताणली आहे. तिच्यावरील लहरीचा वेग किती?",
+          "choices": [
+            "100 m/s",
+            "10000 m/s",
+            "10 m/s",
+            "1 m/s"
+          ],
+          "solution": "v = √(T/μ) = √(100/0.01) = √10,000 = 100 m/s. ताण हा पुनःस्थापन करणारा घटक आणि प्रति एकक लांबी वस्तुमान हे जडत्व, अगदी तसेच जसे स्प्रिंगसाठी k आणि m. (10000 हे v² ज्यात मूळ विसरले.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "An organ pipe closed at one end is 0.85 m long. Taking the speed of sound as 340 m/s, what is its fundamental frequency, in Hz?",
+      "choices": [
+        "400",
+        "50",
+        "100",
+        "200"
+      ],
+      "answerIndex": 2,
+      "solution": "A closed pipe has a node at the closed end and an antinode at the open one, so only a quarter of a wavelength fits: λ = 4L = 3.4 m and f = 340/3.4 = 100 Hz. (200 uses the open-pipe formula, which is the pairing this question is set against.)",
+      "checkExpr": "340/(4*0.85)",
+      "translations": {
+        "hi": {
+          "stem": "एक सिरे पर बंद ऑर्गन नली 0.85 m लंबी है। ध्वनि की चाल 340 m/s लेते हुए, उसकी मूल आवृत्ति Hz में क्या है?",
+          "choices": [
+            "400",
+            "50",
+            "100",
+            "200"
+          ],
+          "solution": "बंद नली के बंद सिरे पर निस्पंद और खुले पर प्रस्पंद होता है, अतः केवल चौथाई तरंगदैर्घ्य समाता है: λ = 4L = 3.4 m और f = 340/3.4 = 100 Hz. (200 खुली नली का सूत्र लगाता है, और यह प्रश्न उसी जोड़ी के सामने रखा गया है।)"
+        },
+        "mr": {
+          "stem": "एका टोकाला बंद असलेली ऑर्गन नळी 0.85 m लांब आहे. ध्वनीचा वेग 340 m/s घेतल्यास, तिची मूळ वारंवारता Hz मध्ये किती?",
+          "choices": [
+            "400",
+            "50",
+            "100",
+            "200"
+          ],
+          "solution": "बंद नळीच्या बंद टोकावर निस्पंद आणि उघड्यावर प्रस्पंद, म्हणून केवळ पाव तरंगलांबी बसते: λ = 4L = 3.4 m आणि f = 340/3.4 = 100 Hz. (200 उघड्या नळीचे सूत्र वापरते, आणि हा प्रश्न त्याच जोडीसमोर ठेवला आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "An organ pipe open at both ends is 0.85 m long. Taking the speed of sound as 340 m/s, what is its fundamental frequency, in Hz?",
+      "choices": [
+        "50",
+        "200",
+        "400",
+        "100"
+      ],
+      "answerIndex": 1,
+      "solution": "An open pipe has antinodes at both ends, so half a wavelength fits: λ = 2L = 1.7 m and f = 340/1.7 = 200 Hz — an octave above the closed pipe of the same length. The open pipe also supports every whole-number harmonic while the closed one supports only the odd ones, which is why the two sound so different. (100 is the closed-pipe answer.)",
+      "checkExpr": "340/(2*0.85)",
+      "translations": {
+        "hi": {
+          "stem": "दोनों सिरों पर खुली ऑर्गन नली 0.85 m लंबी है। ध्वनि की चाल 340 m/s लेते हुए, उसकी मूल आवृत्ति Hz में क्या है?",
+          "choices": [
+            "50",
+            "200",
+            "400",
+            "100"
+          ],
+          "solution": "खुली नली के दोनों सिरों पर प्रस्पंद होते हैं, अतः आधा तरंगदैर्घ्य समाता है: λ = 2L = 1.7 m और f = 340/1.7 = 200 Hz — उसी लंबाई की बंद नली से एक सप्तक ऊपर। खुली नली हर पूर्णांक संनाद सँभालती है जबकि बंद केवल विषम, इसीलिए दोनों इतनी भिन्न सुनाई देती हैं। (100 बंद नली का उत्तर है।)"
+        },
+        "mr": {
+          "stem": "दोन्ही टोकांना उघडी ऑर्गन नळी 0.85 m लांब आहे. ध्वनीचा वेग 340 m/s घेतल्यास, तिची मूळ वारंवारता Hz मध्ये किती?",
+          "choices": [
+            "50",
+            "200",
+            "400",
+            "100"
+          ],
+          "solution": "उघड्या नळीच्या दोन्ही टोकांवर प्रस्पंद, म्हणून अर्धी तरंगलांबी बसते: λ = 2L = 1.7 m आणि f = 340/1.7 = 200 Hz — त्याच लांबीच्या बंद नळीहून एक सप्तक वर. उघडी नळी प्रत्येक पूर्णांक संनाद सांभाळते तर बंद केवळ विषम, म्हणूनच दोन्ही इतक्या वेगळ्या ऐकू येतात. (100 हे बंद नळीचे उत्तर.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A siren of 300 Hz on a car approaches a stationary listener at 34 m/s. Taking the speed of sound as 340 m/s, what frequency is heard, in Hz?",
+      "choices": [
+        "333.333333",
+        "330",
+        "300",
+        "270"
+      ],
+      "answerIndex": 0,
+      "solution": "For an approaching source the wavelengths ahead of it are compressed, giving f' = f × v/(v − v_s) = 300 × 340/306 = 333.333333 Hz. The moment the car passes, the sign flips and the same siren is heard at 300 × 340/374 = 272.7 Hz — a sudden drop of about sixty hertz, which is why the change is so noticeable. (330 is the answer for a moving OBSERVER, and the two differ by about one per cent.)",
+      "checkExpr": "300*340/(340-34)",
+      "translations": {
+        "hi": {
+          "stem": "कार पर लगा 300 Hz का सायरन स्थिर श्रोता के पास 34 m/s से आता है। ध्वनि की चाल 340 m/s लेते हुए, कौन-सी आवृत्ति सुनाई देती है, Hz में?",
+          "choices": [
+            "333.333333",
+            "330",
+            "300",
+            "270"
+          ],
+          "solution": "पास आते स्रोत के लिए उसके आगे के तरंगदैर्घ्य दब जाते हैं, जिससे f' = f × v/(v − v_s) = 300 × 340/306 = 333.333333 Hz. कार के गुज़रते ही चिह्न पलट जाता है और वही सायरन 300 × 340/374 = 272.7 Hz पर सुनाई देता है — लगभग साठ हर्ट्ज़ की अचानक गिरावट, इसीलिए परिवर्तन इतना साफ़ लगता है। (330 चलते प्रेक्षक का उत्तर है, और दोनों लगभग एक प्रतिशत भिन्न हैं।)"
+        },
+        "mr": {
+          "stem": "कारवरचा 300 Hz चा भोंगा स्थिर श्रोत्याजवळ 34 m/s ने येतो. ध्वनीचा वेग 340 m/s घेतल्यास, कोणती वारंवारता ऐकू येते, Hz मध्ये?",
+          "choices": [
+            "333.333333",
+            "330",
+            "300",
+            "270"
+          ],
+          "solution": "जवळ येणाऱ्या स्रोतासाठी त्याच्यापुढच्या तरंगलांब्या दाबल्या जातात, ज्यातून f' = f × v/(v − v_s) = 300 × 340/306 = 333.333333 Hz. कार जाताक्षणी चिन्ह पलटते आणि तोच भोंगा 300 × 340/374 = 272.7 Hz वर ऐकू येतो — सुमारे साठ हर्ट्झची अचानक घट, म्हणूनच बदल इतका स्पष्ट जाणवतो. (330 हे चालणाऱ्या निरीक्षकाचे उत्तर, आणि दोन्ही सुमारे एक टक्क्याने वेगळी.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A stationary siren sounds at 300 Hz and a listener drives towards it at 34 m/s. Taking the speed of sound as 340 m/s, what frequency is heard, in Hz?",
+      "choices": [
+        "330",
+        "333.333333",
+        "300",
+        "270"
+      ],
+      "answerIndex": 0,
+      "solution": "Here the waves in the air are perfectly ordinary — the source is not moving, so nothing is compressed. What changes is the rate at which the listener sweeps through them: f' = f × (v + v_o)/v = 300 × 374/340 = 330 Hz. Compare the previous question, where the same relative speed gave 333.3 Hz because the source's motion altered the wavelengths themselves. The one per cent difference is real, and it exists because the air provides a frame that says which of the two is moving. (333.333333 is precisely that moving-source answer.)",
+      "checkExpr": "300*(340+34)/340",
+      "translations": {
+        "hi": {
+          "stem": "स्थिर सायरन 300 Hz पर बजता है और श्रोता उसकी ओर 34 m/s से चलता है। ध्वनि की चाल 340 m/s लेते हुए, कौन-सी आवृत्ति सुनाई देती है, Hz में?",
+          "choices": [
+            "330",
+            "333.333333",
+            "300",
+            "270"
+          ],
+          "solution": "यहाँ हवा की तरंगें बिलकुल साधारण हैं — स्रोत चल नहीं रहा, अतः कुछ दबा नहीं। बदलती है वह दर जिससे श्रोता उनसे गुज़रता है: f' = f × (v + v_o)/v = 300 × 374/340 = 330 Hz. पिछले प्रश्न से तुलना करो, जहाँ उसी सापेक्ष चाल ने 333.3 Hz दिया क्योंकि स्रोत की गति ने स्वयं तरंगदैर्घ्य बदल दिए थे। एक प्रतिशत का अंतर असली है, और वह इसलिए है कि हवा एक निर्देश-तंत्र देती है जो बताता है कि दोनों में से कौन चल रहा है। (333.333333 ठीक वही चलते-स्रोत वाला उत्तर है।)"
+        },
+        "mr": {
+          "stem": "स्थिर भोंगा 300 Hz वर वाजतो आणि श्रोता त्याच्याकडे 34 m/s ने जातो. ध्वनीचा वेग 340 m/s घेतल्यास, कोणती वारंवारता ऐकू येते, Hz मध्ये?",
+          "choices": [
+            "330",
+            "333.333333",
+            "300",
+            "270"
+          ],
+          "solution": "इथे हवेतील लहरी अगदी सामान्य — स्रोत चालत नाही, म्हणून काहीही दाबले गेले नाही. बदलतो तो दर ज्याने श्रोता त्यांतून जातो: f' = f × (v + v_o)/v = 300 × 374/340 = 330 Hz. मागच्या प्रश्नाशी तुलना करा, जिथे त्याच सापेक्ष चालीने 333.3 Hz दिले कारण स्रोताच्या गतीने स्वतः तरंगलांब्या बदलल्या होत्या. एक टक्क्याचा फरक खरा आहे, आणि तो यासाठी की हवा एक चौकट देते जी सांगते की दोघांपैकी कोण चालत आहे. (333.333333 हेच नेमके ते चालत्या-स्रोताचे उत्तर.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A string's fundamental frequency is 200 Hz. Its tension is increased to four times the original value, with the length and thickness unchanged. What is the new fundamental, in Hz?",
+      "choices": [
+        "400",
+        "282.842712",
+        "800",
+        "100"
+      ],
+      "answerIndex": 0,
+      "solution": "The fundamental is (1/2L)√(T/μ), so it goes as the square root of the tension: quadrupling T doubles f, giving 400 Hz. Two things are worth carrying. First, the square root means tuning is a coarse business at the bottom and a fine one at the top — to raise a note by an octave you must quadruple the tension, which is why a guitar string will usually break before it can be tuned a full octave sharp, and why instruments are built with roughly the right string lengths and thicknesses rather than tuned into position by force alone. Second, the wavelength did not change at all. It is still 2L, fixed by the two fixed ends, exactly as it was. What changed is the speed of the wave along the string, from v to 2v, and the frequency followed because f = v/λ with λ held constant. Keeping those two straight — the boundary sets the wavelength, the medium sets the speed, and the frequency is whatever the two together require — is what makes every standing-wave problem tractable, in a pipe, on a string or in an atom. (800 assumes proportionality to the tension itself, and 282.842712 is 200√2, the answer for a doubled tension.)",
+      "checkExpr": "200*4^0.5",
+      "translations": {
+        "hi": {
+          "stem": "किसी तार की मूल आवृत्ति 200 Hz है। लंबाई और मोटाई अपरिवर्तित रखते हुए उसका तनाव मूल मान का चार गुना कर दिया जाता है। नई मूल आवृत्ति Hz में क्या है?",
+          "choices": [
+            "400",
+            "282.842712",
+            "800",
+            "100"
+          ],
+          "solution": "मूल आवृत्ति (1/2L)√(T/μ) है, अतः वह तनाव के वर्गमूल के अनुसार चलती है: T चौगुना करने पर f दोगुनी होती है, यानी 400 Hz. दो बातें ले जाने योग्य हैं। पहली, वर्गमूल का अर्थ है कि सुर मिलाना नीचे मोटा काम है और ऊपर बारीक — किसी स्वर को एक सप्तक ऊपर उठाने के लिए तनाव चौगुना करना पड़ता है, इसीलिए गिटार का तार पूरा सप्तक ऊपर सुर मिलाने से पहले प्रायः टूट जाता है, और इसीलिए वाद्य मोटे तौर पर सही तार-लंबाइयों और मोटाइयों के साथ बनाए जाते हैं, केवल बल से खींचकर जगह पर नहीं लाए जाते। दूसरी, तरंगदैर्घ्य बिलकुल नहीं बदला। वह अब भी 2L है, दोनों बँधे सिरों से तय, ठीक जैसा था। बदली तार पर की तरंग की चाल, v से 2v, और आवृत्ति उसके पीछे चली क्योंकि λ अचर रखते हुए f = v/λ. उन दोनों को अलग रखना — सीमा तरंगदैर्घ्य तय करती है, माध्यम चाल तय करता है, और आवृत्ति वही है जो दोनों मिलकर माँगें — हर अप्रगामी-तरंग प्रश्न को हल-योग्य बनाता है, नली में हो, तार पर या परमाणु में। (800 स्वयं तनाव के समानुपात मान लेता है, और 282.842712 200√2 है, दोगुने तनाव का उत्तर।)"
+        },
+        "mr": {
+          "stem": "एका तारेची मूळ वारंवारता 200 Hz आहे. लांबी आणि जाडी अपरिवर्तित ठेवून तिचा ताण मूळ मूल्याच्या चौपट केला जातो. नवी मूळ वारंवारता Hz मध्ये किती?",
+          "choices": [
+            "400",
+            "282.842712",
+            "800",
+            "100"
+          ],
+          "solution": "मूळ वारंवारता (1/2L)√(T/μ), म्हणून ती ताणाच्या वर्गमुळानुसार जाते: T चौपट केल्यास f दुप्पट होते, म्हणजे 400 Hz. दोन गोष्टी नेण्याजोग्या. पहिली, वर्गमुळाचा अर्थ असा की सूर जुळवणे खाली ढोबळ काम आणि वर बारीक — एखादा स्वर एक सप्तक वर नेण्यासाठी ताण चौपट करावा लागतो, म्हणूनच गिटारची तार पूर्ण सप्तक वर जुळवण्याआधी बहुधा तुटते, आणि म्हणूनच वाद्ये ढोबळमानाने योग्य तार-लांब्या आणि जाड्यांसह बांधली जातात, केवळ बलाने ओढून जागेवर आणली जात नाहीत. दुसरी, तरंगलांबी मुळीच बदलली नाही. ती अजूनही 2L, दोन्ही बांधलेल्या टोकांनी ठरलेली, अगदी होती तशीच. बदलला तारेवरच्या लहरीचा वेग, v वरून 2v, आणि वारंवारता त्याच्या मागे गेली कारण λ अचल ठेवून f = v/λ. त्या दोघांना वेगळे ठेवणे — सीमा तरंगलांबी ठरवते, माध्यम वेग ठरवते, आणि वारंवारता ती जी दोघे मिळून मागतात — प्रत्येक स्थिर-लहर प्रश्न सोडवण्याजोगा बनवते, नळीत असो, तारेवर असो वा अणूत. (800 स्वतः ताणाच्या समानुपाती मानते, आणि 282.842712 म्हणजे 200√2, दुप्पट ताणाचे उत्तर.)"
+        }
+      }
+    }
+  ]
+}
