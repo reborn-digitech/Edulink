@@ -1783,6 +1783,1410 @@ export const G11_CHEMISTRY: Chapter[] = [
     ],
   },
 
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 6 — Equilibrium                                                 */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "chemistry-11-equilibrium",
+    subject: "CHEMISTRY",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 6 — Equilibrium",
+      hi: "अध्याय 6 — साम्यावस्था",
+      mr: "प्रकरण 6 — समतोल",
+    },
+    name: {
+      en: "Equilibrium",
+      hi: "साम्यावस्था",
+      mr: "समतोल",
+    },
+    summary: {
+      en: "Most reactions do not go to completion; they arrive somewhere and stop, and the stopping place can be predicted. A stillness that is nothing of the sort because both directions are still running at the same speed, a number that fixes the resting composition at a given temperature, a rule for how a disturbed system pushes back, and the same arithmetic applied to water itself, which turns out to be very slightly split at all times.",
+      hi: "अधिकांश अभिक्रियाएँ पूर्णता तक नहीं जातीं; वे कहीं पहुँचकर रुक जाती हैं, और रुकने की जगह बताई जा सकती है। वह निश्चलता जो निश्चलता है ही नहीं क्योंकि दोनों दिशाएँ अब भी उसी चाल से चल रही हैं, वह संख्या जो दिए ताप पर विश्राम-संघटन तय करती है, वह नियम जो बताता है कि विचलित निकाय कैसे पलटकर धकेलता है, और वही गणित स्वयं पानी पर लगाया गया, जो निकलता है कि हर समय बहुत थोड़ा टूटा हुआ है।",
+      mr: "बहुतांश अभिक्रिया पूर्णत्वापर्यंत जात नाहीत; त्या कुठेतरी पोहोचून थांबतात, आणि थांबण्याची जागा सांगता येते. ती निश्चलता जी निश्चलता नाहीच कारण दोन्ही दिशा अजूनही त्याच वेगाने चालत आहेत, ती संख्या जी दिलेल्या तापमानावर विश्रांती-संघटन ठरवते, तो नियम जो सांगतो की विचलित संच कसा उलट रेटा देतो, आणि तेच गणित स्वतः पाण्यावर लावलेले, जे निघते की ते सर्व वेळ फार थोडे तुटलेले असते.",
+    },
+    position: 6,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "dynamic-equilibrium",
+        name: {
+          en: "Dynamic equilibrium",
+          hi: "गतिक साम्य",
+          mr: "गतिक समतोल",
+        },
+        kind: "state",
+        prompt: {
+          en: "A sealed bottle of water shows no change for years, and yet molecules are leaving the surface and returning at exactly matched rates the whole time, as a radioactive tracer would immediately reveal. Which state is this?",
+          hi: "पानी की बंद बोतल वर्षों कोई परिवर्तन नहीं दिखाती, फिर भी पूरे समय अणु सतह से निकल रहे और लौट रहे हैं, ठीक बराबर दरों पर, जैसा रेडियोसक्रिय अनुरेखक तुरंत उजागर कर देता। यह कौन-सी अवस्था है?",
+          mr: "पाण्याची बंद बाटली वर्षानुवर्षे कोणताही बदल दाखवत नाही, तरीही पूर्ण काळ रेणू पृष्ठभागावरून निघत आणि परतत आहेत, नेमक्या समान दरांनी, जसे किरणोत्सर्गी अनुरेखक लगेच उघड करेल. ही कोणती अवस्था?",
+        },
+        statement: {
+          en: "At dynamic equilibrium the forward and reverse processes continue at equal rates, so the composition stays constant although nothing has actually stopped.",
+          hi: "गतिक साम्य पर अग्र और प्रतीप प्रक्रियाएँ बराबर दरों पर चलती रहती हैं, अतः संघटन अचर रहता है यद्यपि वस्तुतः कुछ रुका नहीं है।",
+          mr: "गतिक समतोलावर पुढच्या आणि मागच्या प्रक्रिया समान दरांनी चालू राहतात, म्हणून संघटन अचल राहते जरी प्रत्यक्षात काहीही थांबलेले नाही.",
+        },
+        detail: {
+          en: "It can only be reached in a closed system, because an open one lets a product escape and the reverse reaction never gets the chance to catch up.",
+          hi: "वह केवल बंद निकाय में मिल सकता है, क्योंकि खुला निकाय किसी उत्पाद को निकल जाने देता है और प्रतीप अभिक्रिया को पकड़ने का मौक़ा कभी नहीं मिलता।",
+          mr: "तो केवळ बंद संचातच मिळू शकतो, कारण उघडा संच एखाद्या उत्पादाला निसटू देतो आणि मागच्या अभिक्रियेला गाठण्याची संधी कधीच मिळत नाही.",
+        },
+        extra: {
+          en: "The same equilibrium is reached from either side: start with pure reactants or pure products at the same temperature and pressure, and the final composition is identical.",
+          hi: "वही साम्य दोनों ओर से मिलता है: उसी ताप और दाब पर शुद्ध अभिकारकों से शुरू करो या शुद्ध उत्पादों से, अंतिम संघटन समान होता है।",
+          mr: "तोच समतोल दोन्ही बाजूंनी गाठला जातो: त्याच तापमान आणि दाबावर शुद्ध अभिक्रियाकारकांपासून सुरू करा वा शुद्ध उत्पादांपासून, शेवटचे संघटन सारखेच.",
+        },
+        pair: {
+          left: {
+            en: "Nothing changing and nothing stopped",
+            hi: "कुछ नहीं बदलता और कुछ रुका नहीं",
+            mr: "काहीही बदलत नाही आणि काहीही थांबलेले नाही",
+          },
+          right: {
+            en: "dynamic equilibrium",
+            hi: "गतिक साम्य",
+            mr: "गतिक समतोल",
+          },
+        },
+      },
+      {
+        id: "equilibrium-constant",
+        name: {
+          en: "The equilibrium constant",
+          hi: "साम्य स्थिरांक",
+          mr: "समतोल स्थिरांक",
+        },
+        kind: "state",
+        prompt: {
+          en: "However much of each substance is put in at the start, the products and reactants at rest always settle into the same ratio of concentrations raised to their coefficients. Which quantity is this?",
+          hi: "आरंभ में हर पदार्थ कितना भी डाला जाए, विश्राम पर उत्पाद और अभिकारक सदा सांद्रताओं के उसी अनुपात पर ठहरते हैं, जिनमें हर सांद्रता अपने गुणांक की घात पर हो। यह कौन-सी राशि है?",
+          mr: "सुरुवातीला प्रत्येक पदार्थ कितीही टाकला तरी, विश्रांतीवर उत्पादे आणि अभिक्रियाकारक नेहमी संहतींच्या त्याच गुणोत्तरावर स्थिरावतात, जिथे प्रत्येक संहती आपल्या गुणांकाच्या घातेवर. ही कोणती राशी?",
+        },
+        statement: {
+          en: "The equilibrium constant is the ratio of product concentrations to reactant concentrations, each raised to its stoichiometric coefficient, and it depends only on the temperature.",
+          hi: "साम्य स्थिरांक उत्पादों की सांद्रताओं और अभिकारकों की सांद्रताओं का अनुपात है, जिनमें हर एक अपने रससमीकरणमितीय गुणांक की घात पर है, और वह केवल ताप पर निर्भर है।",
+          mr: "समतोल स्थिरांक म्हणजे उत्पादांच्या संहती आणि अभिक्रियाकारकांच्या संहती यांचे गुणोत्तर, जिथे प्रत्येक आपल्या रससमीकरणमितीय गुणांकाच्या घातेवर, आणि तो केवळ तापमानावर अवलंबून.",
+        },
+        detail: {
+          en: "It says where equilibrium lies and nothing about how fast it is reached, so a reaction with an enormous K can still take a century if no catalyst is present.",
+          hi: "वह बताता है कि साम्य कहाँ है, यह नहीं कि वहाँ कितनी जल्दी पहुँचा जाता है, अतः विशाल K वाली अभिक्रिया भी बिना उत्प्रेरक के सदी भर ले सकती है।",
+          mr: "तो सांगतो की समतोल कुठे आहे, तिथे किती लवकर पोहोचले जाते हे नाही, म्हणून प्रचंड K असलेली अभिक्रियाही उत्प्रेरकाशिवाय शतकभर घेऊ शकते.",
+        },
+        extra: {
+          en: "Pure solids and pure liquids are left out of the expression, because their concentrations cannot change — a lump of limestone has the same density however much of it is present.",
+          hi: "शुद्ध ठोस और शुद्ध द्रव व्यंजक से बाहर रखे जाते हैं, क्योंकि उनकी सांद्रताएँ बदल ही नहीं सकतीं — चूना-पत्थर के ढेले का घनत्व वही रहता है, वह कितना भी हो।",
+          mr: "शुद्ध घन आणि शुद्ध द्रव अभिव्यक्तीबाहेर ठेवले जातात, कारण त्यांच्या संहती बदलूच शकत नाहीत — चुनखडीच्या ढेकळाची घनता तीच राहते, तो कितीही असो.",
+        },
+        pair: {
+          left: {
+            en: "Says where, and never says when",
+            hi: "बताता है कहाँ, कभी नहीं बताता कब",
+            mr: "सांगतो कुठे, कधीच सांगत नाही केव्हा",
+          },
+          right: {
+            en: "the equilibrium constant",
+            hi: "साम्य स्थिरांक",
+            mr: "समतोल स्थिरांक",
+          },
+        },
+      },
+      {
+        id: "le-chateliers-principle",
+        name: {
+          en: "Le Chatelier's principle",
+          hi: "ले शातेलिए का सिद्धांत",
+          mr: "ल शातेलिएचे तत्त्व",
+        },
+        kind: "response",
+        prompt: {
+          en: "Squeeze a mixture of nitrogen, hydrogen and ammonia and more ammonia appears, because the system shifts towards the side with fewer gas molecules and so partly undoes the squeeze. Which principle is this?",
+          hi: "नाइट्रोजन, हाइड्रोजन और अमोनिया के मिश्रण को दबाओ और अधिक अमोनिया प्रकट होती है, क्योंकि निकाय कम गैस-अणुओं वाली ओर खिसक जाता है और इस तरह दबाव को आंशिक रूप से उलट देता है। यह कौन-सा सिद्धांत है?",
+          mr: "नायट्रोजन, हायड्रोजन आणि अमोनियाचे मिश्रण दाबा आणि अधिक अमोनिया प्रकट होते, कारण संच कमी वायुरेणू असलेल्या बाजूला सरकतो आणि अशा प्रकारे दाब अंशतः उलटवतो. हे कोणते तत्त्व?",
+        },
+        statement: {
+          en: "Le Chatelier's principle says a system at equilibrium responds to a disturbance by shifting in the direction that partly opposes it, whether the disturbance is concentration, pressure or temperature.",
+          hi: "ले शातेलिए का सिद्धांत कहता है कि साम्य पर निकाय किसी विक्षोभ का उत्तर उस दिशा में खिसककर देता है जो उसका आंशिक विरोध करे, विक्षोभ चाहे सांद्रता का हो, दाब का या ताप का।",
+          mr: "ल शातेलिएचे तत्त्व सांगते की समतोलावरचा संच एखाद्या विक्षोभाला त्याला अंशतः विरोध करणाऱ्या दिशेने सरकून उत्तर देतो, विक्षोभ संहतीचा असो, दाबाचा असो वा तापमानाचा.",
+        },
+        detail: {
+          en: "Only temperature actually changes the equilibrium constant; concentration and pressure move the system along a curve that K itself has already fixed.",
+          hi: "साम्य स्थिरांक वस्तुतः केवल ताप बदलता है; सांद्रता और दाब निकाय को उस वक्र पर सरकाते हैं जिसे K ने पहले ही तय कर रखा है।",
+          mr: "समतोल स्थिरांक प्रत्यक्षात केवळ तापमानच बदलते; संहती आणि दाब संचाला त्या वक्रावर सरकवतात जो K ने आधीच ठरवला आहे.",
+        },
+        extra: {
+          en: "A catalyst disturbs nothing at all: it speeds the forward and reverse reactions by the same factor, so equilibrium arrives sooner and in exactly the same place.",
+          hi: "उत्प्रेरक कुछ भी विचलित नहीं करता: वह अग्र और प्रतीप दोनों अभिक्रियाओं को उसी गुणक से तेज़ करता है, अतः साम्य जल्दी आता है और ठीक उसी जगह।",
+          mr: "उत्प्रेरक काहीही विचलित करत नाही: तो पुढच्या आणि मागच्या दोन्ही अभिक्रिया त्याच पटीने वेगवान करतो, म्हणून समतोल लवकर येतो आणि नेमक्या त्याच ठिकाणी.",
+        },
+        pair: {
+          left: {
+            en: "Push, and it pushes back — partly",
+            hi: "धकेलो, और वह पलटकर धकेलता है — आंशिक रूप से",
+            mr: "ढकला, आणि तो उलट ढकलतो — अंशतः",
+          },
+          right: {
+            en: "Le Chatelier's principle",
+            hi: "ले शातेलिए का सिद्धांत",
+            mr: "ल शातेलिएचे तत्त्व",
+          },
+        },
+      },
+      {
+        id: "reaction-quotient",
+        name: {
+          en: "The reaction quotient",
+          hi: "अभिक्रिया भागफल",
+          mr: "अभिक्रिया भागांक",
+        },
+        kind: "response",
+        prompt: {
+          en: "The same expression as the equilibrium constant, but evaluated at any moment rather than only at rest — and comparing it with K tells you which way the mixture is about to move. Which quantity is this?",
+          hi: "साम्य स्थिरांक जैसा ही व्यंजक, पर केवल विश्राम पर नहीं बल्कि किसी भी क्षण निकाला गया — और उसकी K से तुलना बताती है कि मिश्रण किस ओर बढ़ने वाला है। यह कौन-सी राशि है?",
+          mr: "समतोल स्थिरांकासारखीच अभिव्यक्ती, पण केवळ विश्रांतीवर नव्हे तर कोणत्याही क्षणी काढलेली — आणि तिची K शी तुलना सांगते की मिश्रण कोणत्या दिशेने जाणार आहे. ही कोणती राशी?",
+        },
+        statement: {
+          en: "The reaction quotient Q has the same form as K but uses the concentrations present at that instant, so Q less than K means the reaction goes forward and Q greater than K means it goes back.",
+          hi: "अभिक्रिया भागफल Q का रूप K जैसा ही है पर वह उस क्षण मौजूद सांद्रताएँ लगाता है, अतः Q का K से कम होना अभिक्रिया के आगे बढ़ने और अधिक होना पीछे जाने का अर्थ रखता है।",
+          mr: "अभिक्रिया भागांक Q चे रूप K सारखेच पण तो त्या क्षणी उपस्थित संहती वापरतो, म्हणून Q हा K हून कमी असणे म्हणजे अभिक्रिया पुढे जाते आणि जास्त असणे म्हणजे मागे.",
+        },
+        detail: {
+          en: "It turns Le Chatelier's qualitative rule into an arithmetic one: instead of reasoning about which way a disturbance pushes, compute Q after the disturbance and compare.",
+          hi: "वह ले शातेलिए के गुणात्मक नियम को अंकगणितीय बना देता है: विक्षोभ किस ओर धकेलता है यह तर्क करने के बजाय, विक्षोभ के बाद Q निकालो और तुलना करो।",
+          mr: "तो ल शातेलिएचा गुणात्मक नियम अंकगणितीय बनवतो: विक्षोभ कोणत्या दिशेने ढकलतो हा युक्तिवाद करण्याऐवजी, विक्षोभानंतर Q काढा आणि तुलना करा.",
+        },
+        extra: {
+          en: "The same comparison decides whether a precipitate forms: work out the ionic product for a salt about to be mixed, and if it exceeds the solubility product the solid appears.",
+          hi: "वही तुलना तय करती है कि अवक्षेप बनेगा या नहीं: मिलाए जाने वाले लवण का आयनिक गुणनफल निकालो, और वह विलेयता गुणनफल से बड़ा हो तो ठोस प्रकट हो जाता है।",
+          mr: "तीच तुलना अवक्षेप तयार होईल की नाही हे ठरवते: मिसळल्या जाणाऱ्या क्षाराचा आयनिक गुणाकार काढा, आणि तो विद्राव्यता गुणाकाराहून मोठा असल्यास घन प्रकट होतो.",
+        },
+        pair: {
+          left: {
+            en: "Compare it with K and you know the direction",
+            hi: "उसकी K से तुलना करो और दिशा पता चल जाती है",
+            mr: "त्याची K शी तुलना करा आणि दिशा कळते",
+          },
+          right: {
+            en: "the reaction quotient",
+            hi: "अभिक्रिया भागफल",
+            mr: "अभिक्रिया भागांक",
+          },
+        },
+      },
+      {
+        id: "ionic-product-of-water",
+        name: {
+          en: "The ionic product of water",
+          hi: "जल का आयनिक गुणनफल",
+          mr: "पाण्याचा आयनिक गुणाकार",
+        },
+        kind: "aqueous",
+        prompt: {
+          en: "Even the purest water conducts very slightly, because about one molecule in every five hundred million has split into a hydrogen ion and a hydroxide ion at any instant. Which constant describes this?",
+          hi: "सबसे शुद्ध पानी भी बहुत थोड़ा चालन करता है, क्योंकि किसी भी क्षण लगभग हर पचास करोड़ में से एक अणु हाइड्रोजन आयन और हाइड्रॉक्साइड आयन में टूटा हुआ है। यह कौन-सा स्थिरांक इसका वर्णन करता है?",
+          mr: "सर्वांत शुद्ध पाणीही फार थोडे वहन करते, कारण कोणत्याही क्षणी सुमारे प्रत्येक पन्नास कोटींपैकी एक रेणू हायड्रोजन आयन आणि हायड्रॉक्साइड आयनात तुटलेला असतो. हा कोणता स्थिरांक याचे वर्णन करतो?",
+        },
+        statement: {
+          en: "The ionic product Kw is the product of the hydrogen-ion and hydroxide-ion concentrations, equal to 10⁻¹⁴ at 25 °C, and it holds in every aqueous solution however acidic or alkaline.",
+          hi: "आयनिक गुणनफल Kw हाइड्रोजन-आयन और हाइड्रॉक्साइड-आयन सांद्रताओं का गुणनफल है, 25 °C पर 10⁻¹⁴ के बराबर, और वह हर जलीय विलयन में चलता है, वह कितना ही अम्लीय या क्षारीय हो।",
+          mr: "आयनिक गुणाकार Kw म्हणजे हायड्रोजन-आयन आणि हायड्रॉक्साइड-आयन संहतींचा गुणाकार, 25 °C वर 10⁻¹⁴ इतका, आणि तो प्रत्येक जलीय द्रावणात चालतो, ते कितीही आम्लधर्मी वा आम्लारीधर्मी असो.",
+        },
+        detail: {
+          en: "It is why pH and pOH always add to 14 at that temperature, and why an acid does not merely add hydrogen ions but drives the hydroxide concentration down to keep the product fixed.",
+          hi: "इसी से उस ताप पर pH और pOH सदा जुड़कर 14 होते हैं, और इसी से अम्ल केवल हाइड्रोजन आयन जोड़ता ही नहीं बल्कि गुणनफल टिकाए रखने को हाइड्रॉक्साइड सांद्रता नीचे धकेल देता है।",
+          mr: "म्हणूनच त्या तापमानावर pH आणि pOH नेहमी मिळून 14 होतात, आणि म्हणूनच आम्ल केवळ हायड्रोजन आयन जोडत नाही तर गुणाकार टिकवण्यासाठी हायड्रॉक्साइड संहती खाली ढकलते.",
+        },
+        extra: {
+          en: "Kw rises with temperature, so water at 60 °C is neutral at a pH near 6.5 rather than 7 — neutrality means equal ion concentrations, not the number seven.",
+          hi: "Kw ताप के साथ बढ़ता है, अतः 60 °C का पानी 7 के बजाय लगभग 6.5 pH पर उदासीन है — उदासीनता का अर्थ बराबर आयन-सांद्रताएँ है, संख्या सात नहीं।",
+          mr: "Kw तापमानासोबत वाढतो, म्हणून 60 °C चे पाणी 7 ऐवजी सुमारे 6.5 pH वर उदासीन — उदासीनता म्हणजे समान आयन-संहती, सात ही संख्या नव्हे.",
+        },
+        pair: {
+          left: {
+            en: "Neutral at 6.5, and still neutral",
+            hi: "6.5 पर उदासीन, और फिर भी उदासीन",
+            mr: "6.5 वर उदासीन, आणि तरीही उदासीन",
+          },
+          right: {
+            en: "the ionic product of water",
+            hi: "जल का आयनिक गुणनफल",
+            mr: "पाण्याचा आयनिक गुणाकार",
+          },
+        },
+      },
+      {
+        id: "buffer-solution",
+        name: {
+          en: "The buffer solution",
+          hi: "बफ़र विलयन",
+          mr: "बफर द्रावण",
+        },
+        kind: "aqueous",
+        prompt: {
+          en: "Add a drop of strong acid to pure water and the pH plunges by four units; add the same drop to a mixture of a weak acid and its salt and the pH barely stirs. Which system is this?",
+          hi: "शुद्ध पानी में प्रबल अम्ल की एक बूँद डालो और pH चार इकाई गिर जाता है; वही बूँद दुर्बल अम्ल और उसके लवण के मिश्रण में डालो और pH मुश्किल से हिलता है। यह कौन-सा निकाय है?",
+          mr: "शुद्ध पाण्यात प्रबळ आम्लाचा एक थेंब टाका आणि pH चार एककांनी कोसळतो; तोच थेंब दुर्बल आम्ल आणि त्याच्या क्षाराच्या मिश्रणात टाका आणि pH जेमतेम हलतो. ही कोणती प्रणाली?",
+        },
+        statement: {
+          en: "A buffer is a mixture of a weak acid and its conjugate base which resists change in pH, because each added hydrogen ion is mopped up by the base and each added hydroxide by the acid.",
+          hi: "बफ़र दुर्बल अम्ल और उसके संयुग्मी क्षारक का मिश्रण है जो pH में परिवर्तन का प्रतिरोध करता है, क्योंकि जोड़ा गया हर हाइड्रोजन आयन क्षारक सोख लेता है और हर हाइड्रॉक्साइड अम्ल।",
+          mr: "बफर म्हणजे दुर्बल आम्ल आणि त्याचा संयुग्मी आम्लारी यांचे मिश्रण जे pH मधील बदलाला विरोध करते, कारण जोडलेला प्रत्येक हायड्रोजन आयन आम्लारी शोषतो आणि प्रत्येक हायड्रॉक्साइड आम्ल.",
+        },
+        detail: {
+          en: "Its pH is given by pKa plus the logarithm of the salt-to-acid ratio, so a buffer made with equal amounts of the two sits exactly at the acid's pKa.",
+          hi: "उसका pH, pKa जोड़ लवण-और-अम्ल अनुपात का लघुगणक है, अतः दोनों की बराबर मात्राओं से बना बफ़र ठीक अम्ल के pKa पर बैठता है।",
+          mr: "त्याचा pH म्हणजे pKa अधिक क्षार-आणि-आम्ल गुणोत्तराचा लॉगरिथम, म्हणून दोघांच्या समान प्रमाणांनी बनवलेले बफर नेमके आम्लाच्या pKa वर बसते.",
+        },
+        extra: {
+          en: "Blood is buffered by carbonic acid and hydrogencarbonate and is held between 7.35 and 7.45; a drift of a few tenths in either direction is a medical emergency.",
+          hi: "रक्त कार्बोनिक अम्ल और हाइड्रोजनकार्बोनेट से बफ़रित है और 7.35 तथा 7.45 के बीच थामा जाता है; किसी भी ओर कुछ दसवें हिस्से का खिसकाव चिकित्सकीय आपात है।",
+          mr: "रक्त कार्बोनिक आम्ल आणि हायड्रोजनकार्बोनेटने बफर केलेले आणि 7.35 व 7.45 दरम्यान धरलेले; कोणत्याही दिशेने काही दशांशांचे सरकणे ही वैद्यकीय आणीबाणी.",
+        },
+        pair: {
+          left: {
+            en: "Four units in water and almost none here",
+            hi: "पानी में चार इकाई और यहाँ लगभग कुछ नहीं",
+            mr: "पाण्यात चार एकके आणि इथे जवळपास काहीच नाही",
+          },
+          right: {
+            en: "the buffer solution",
+            hi: "बफ़र विलयन",
+            mr: "बफर द्रावण",
+          },
+        },
+      },
+      /*F6C*/
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "In the Haber process a chemist adds a catalyst and observes that ammonia appears far sooner. A student concludes the catalyst has increased the yield. Explain what a catalyst does and does not change, and how the yield is actually raised.",
+          hi: "हैबर प्रक्रम में एक रसायनज्ञ उत्प्रेरक जोड़ता है और देखता है कि अमोनिया कहीं जल्दी प्रकट होती है। एक विद्यार्थी निष्कर्ष निकालता है कि उत्प्रेरक ने लब्धि बढ़ा दी। समझाओ उत्प्रेरक क्या बदलता है और क्या नहीं, और लब्धि वस्तुतः कैसे बढ़ाई जाती है।",
+          mr: "हेबर प्रक्रियेत एक रसायनशास्त्रज्ञ उत्प्रेरक जोडतो आणि पाहतो की अमोनिया कितीतरी लवकर प्रकट होते. एक विद्यार्थी निष्कर्ष काढतो की उत्प्रेरकाने उत्पन्न वाढवले. उत्प्रेरक काय बदलतो आणि काय नाही, आणि उत्पन्न प्रत्यक्षात कसे वाढवले जाते ते समजावा.",
+        },
+        choices: [
+          {
+            en: "The catalyst changes only the rate. It lowers the activation barrier for the forward and reverse reactions by exactly the same amount, so both speed up equally and equilibrium is reached sooner but in precisely the same place — K is untouched. The yield is raised instead by high pressure, which shifts the equilibrium towards the two moles of ammonia from four moles of reactant gas, and by keeping the temperature no higher than the rate demands",
+            hi: "उत्प्रेरक केवल दर बदलता है। वह अग्र और प्रतीप दोनों अभिक्रियाओं की सक्रियण बाधा ठीक उतनी ही घटाता है, अतः दोनों बराबर तेज़ होती हैं और साम्य जल्दी मिलता है पर ठीक उसी जगह — K अछूता है। लब्धि इसके बजाय ऊँचे दाब से बढ़ाई जाती है, जो साम्य को चार मोल अभिकारक गैस से दो मोल अमोनिया की ओर खिसकाता है, और ताप को दर की माँग से अधिक ऊँचा न रखकर",
+            mr: "उत्प्रेरक केवळ दर बदलतो. तो पुढच्या आणि मागच्या दोन्ही अभिक्रियांची सक्रियण अडचण नेमकी तितकीच घटवतो, म्हणून दोन्ही समान वेगवान होतात आणि समतोल लवकर गाठला जातो पण नेमक्या त्याच ठिकाणी — K अस्पर्श. उत्पन्न त्याऐवजी उच्च दाबाने वाढवले जाते, जो समतोल चार मोल अभिक्रियाकारक वायूकडून दोन मोल अमोनियाकडे सरकवतो, आणि तापमान दराच्या मागणीहून अधिक उंच न ठेवून",
+          },
+          {
+            en: "The student is right: a catalyst shifts the equilibrium towards the products, which is what makes it worth adding",
+            hi: "विद्यार्थी सही है: उत्प्रेरक साम्य को उत्पादों की ओर खिसका देता है, और इसीलिए उसे जोड़ना सार्थक है",
+            mr: "विद्यार्थी बरोबर: उत्प्रेरक समतोल उत्पादांकडे सरकवतो, आणि म्हणूनच तो जोडणे सार्थक",
+          },
+          {
+            en: "The catalyst speeds only the forward reaction, since it is designed for the product that is wanted",
+            hi: "उत्प्रेरक केवल अग्र अभिक्रिया तेज़ करता है, क्योंकि वह उसी उत्पाद के लिए बनाया गया है जो चाहिए",
+            mr: "उत्प्रेरक केवळ पुढची अभिक्रिया वेगवान करतो, कारण तो हव्या असलेल्या उत्पादासाठीच बनवलेला",
+          },
+          {
+            en: "Yield cannot be changed at all once the reactants are chosen, so pressure and temperature are irrelevant",
+            hi: "अभिकारक चुन लेने पर लब्धि बदली ही नहीं जा सकती, अतः दाब और ताप अप्रासंगिक हैं",
+            mr: "अभिक्रियाकारक निवडल्यावर उत्पन्न बदलताच येत नाही, म्हणून दाब आणि तापमान असंबद्ध",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The observation is real and the inference is not, and separating them turns on a distinction this chapter exists to draw: where equilibrium lies against how fast it arrives. A catalyst works by offering an alternative path with a lower activation barrier. But a path is a path in both directions. If the forward reaction can now cross a lower hill, so can the reverse — the barrier from the product side is lowered by exactly the same amount, because it is the same hill. Both rate constants rise by the same factor, and since K is the ratio of the two, K is unchanged. Equilibrium arrives sooner and settles in precisely the same place. Nothing else is possible, and the reason is thermodynamic rather than kinetic. ΔG depends only on the initial and final states, by the same argument that gives Hess's law, so a catalyst that shifted equilibrium would have changed ΔG by offering a different route — and one could then run the reaction forward with the catalyst, remove it, let the system relax back, and extract work each time round. A catalyst that moved an equilibrium would be a perpetual-motion machine. So how is the yield actually raised? By the two levers Le Chatelier identifies. Pressure: the reaction takes four moles of gas to two, so compressing to about 200 atmospheres shifts the system towards the side with fewer molecules. Temperature: the reaction is exothermic, so heating lowers the yield — which means the temperature should be kept as low as the rate will allow, and this is exactly what the catalyst buys. It does not raise the yield directly; it makes an acceptable rate available at a lower temperature, and the lower temperature raises the yield. The student's observation and the correct account are therefore not far apart in practice, only in mechanism. Two footnotes. Removing ammonia as it forms is a third lever, and industrially it is used: condensing the product out and recycling the unreacted gases keeps Q below K permanently, so the system never actually reaches equilibrium and the reaction runs continuously. And the third option is worth naming — a catalyst that accelerated only one direction would create a mixture richer in products than equilibrium allows, which is the same impossible machine in different clothes. (The fourth answer denies Le Chatelier's principle outright.)",
+          hi: "प्रेक्षण असली है और अनुमान नहीं, और उन्हें अलग करना उस भेद पर टिका है जिसे खींचने के लिए यह अध्याय है: साम्य कहाँ है, इसके सामने वह कितनी जल्दी आता है। उत्प्रेरक कम सक्रियण बाधा वाला वैकल्पिक रास्ता देकर काम करता है। पर रास्ता दोनों दिशाओं में रास्ता है। यदि अग्र अभिक्रिया अब नीची पहाड़ी पार कर सकती है, तो प्रतीप भी — उत्पाद की ओर से बाधा ठीक उतनी ही घटती है, क्योंकि पहाड़ी वही है। दोनों दर-स्थिरांक उसी गुणक से बढ़ते हैं, और चूँकि K दोनों का अनुपात है, K अपरिवर्तित रहता है। साम्य जल्दी आता है और ठीक उसी जगह ठहरता है। और कुछ संभव ही नहीं, और कारण बलगतिक नहीं ऊष्मागतिक है। ΔG केवल आरंभिक और अंतिम अवस्थाओं पर निर्भर है, उसी तर्क से जो हेस का नियम देता है, अतः जो उत्प्रेरक साम्य खिसका दे उसने भिन्न रास्ता देकर ΔG बदल दिया होता — और तब कोई उत्प्रेरक के साथ अभिक्रिया आगे चला सकता, उसे हटा सकता, निकाय को वापस ढलने दे सकता, और हर चक्कर पर कार्य निकाल सकता। जो उत्प्रेरक साम्य खिसकाए वह सतत-गति यंत्र होता। तो लब्धि वस्तुतः बढ़ाई कैसे जाती है? उन्हीं दो लीवरों से जिन्हें ले शातेलिए पहचानते हैं। दाब: अभिक्रिया चार मोल गैस को दो में ले जाती है, अतः लगभग 200 वायुमंडल तक संपीड़न निकाय को कम अणुओं वाली ओर खिसकाता है। ताप: अभिक्रिया ऊष्माक्षेपी है, अतः गरम करना लब्धि घटाता है — जिसका अर्थ है कि ताप उतना ही नीचा रखना चाहिए जितना दर होने दे, और उत्प्रेरक ठीक यही ख़रीदता है। वह लब्धि सीधे नहीं बढ़ाता; वह नीचे ताप पर स्वीकार्य दर उपलब्ध करा देता है, और नीचा ताप लब्धि बढ़ा देता है। अतः विद्यार्थी का प्रेक्षण और सही विवरण व्यवहार में दूर नहीं, केवल क्रियाविधि में। दो पादटिप्पणियाँ। बनते ही अमोनिया हटा देना तीसरा लीवर है, और औद्योगिक रूप से वह लगाया जाता है: उत्पाद को संघनित कर निकालना और बिना अभिक्रिया की गैसें पुनःचक्रित करना Q को स्थायी रूप से K से नीचे रखता है, अतः निकाय वस्तुतः साम्य तक पहुँचता ही नहीं और अभिक्रिया लगातार चलती है। और तीसरा विकल्प नाम लेने योग्य है — जो उत्प्रेरक केवल एक दिशा तेज़ करे वह ऐसा मिश्रण बना देता जो साम्य की अनुमति से अधिक उत्पाद-समृद्ध हो, जो वही असंभव यंत्र है भिन्न कपड़ों में। (चौथा उत्तर ले शातेलिए के सिद्धांत को सिरे से नकार देता है।)",
+          mr: "निरीक्षण खरे आणि अनुमान नाही, आणि त्यांना वेगळे करणे त्या भेदावर टेकलेले जो काढण्यासाठी हे प्रकरण आहे: समतोल कुठे आहे, याच्यासमोर तो किती लवकर येतो. उत्प्रेरक कमी सक्रियण अडचणीचा पर्यायी मार्ग देऊन काम करतो. पण मार्ग हा दोन्ही दिशांना मार्गच. पुढची अभिक्रिया आता खालची टेकडी ओलांडू शकत असेल, तर मागचीही — उत्पादाच्या बाजूने अडचण नेमकी तितकीच घटते, कारण टेकडी तीच. दोन्ही दर-स्थिरांक त्याच पटीने वाढतात, आणि K हा दोघांचे गुणोत्तर असल्याने K अपरिवर्तित राहतो. समतोल लवकर येतो आणि नेमक्या त्याच ठिकाणी स्थिरावतो. दुसरे काहीही शक्यच नाही, आणि कारण गतिक नव्हे तर उष्मागतिक. ΔG केवळ सुरुवातीच्या आणि शेवटच्या अवस्थांवर अवलंबून, त्याच युक्तिवादाने जो हेसचा नियम देतो, म्हणून जो उत्प्रेरक समतोल सरकवेल त्याने वेगळा मार्ग देऊन ΔG बदलले असते — आणि मग कोणी उत्प्रेरकासह अभिक्रिया पुढे चालवू शकला असता, तो काढू शकला असता, संचाला परत ढळू दिला असता, आणि प्रत्येक फेरीला कार्य काढू शकला असता. जो उत्प्रेरक समतोल सरकवेल तो सततगती यंत्र ठरला असता. मग उत्पन्न प्रत्यक्षात कसे वाढवले जाते? त्याच दोन लिव्हरनी ज्या ल शातेलिए ओळखतात. दाब: अभिक्रिया चार मोल वायूला दोनमध्ये नेते, म्हणून सुमारे 200 वातावरणांपर्यंत संपीडन संचाला कमी रेणूंच्या बाजूला सरकवते. तापमान: अभिक्रिया उष्माक्षेपी, म्हणून तापवणे उत्पन्न घटवते — याचा अर्थ तापमान दर देईल तितकेच खाली ठेवावे, आणि उत्प्रेरक नेमके हेच विकत घेतो. तो उत्पन्न थेट वाढवत नाही; तो कमी तापमानावर स्वीकारार्ह दर उपलब्ध करून देतो, आणि कमी तापमान उत्पन्न वाढवते. म्हणून विद्यार्थ्याचे निरीक्षण आणि बरोबर वर्णन व्यवहारात दूर नाहीत, केवळ कार्यपद्धतीत. दोन तळटिपा. तयार होताच अमोनिया काढून टाकणे हा तिसरा लिव्हर, आणि औद्योगिकरीत्या तो वापरला जातो: उत्पाद संघनित करून काढणे आणि अभिक्रिया न झालेले वायू पुनर्वापरात आणणे Q ला कायमचे K खाली ठेवते, म्हणून संच प्रत्यक्षात समतोलापर्यंत पोहोचतच नाही आणि अभिक्रिया सतत चालते. आणि तिसरा पर्याय नाव घेण्याजोगा — जो उत्प्रेरक केवळ एक दिशा वेगवान करेल तो समतोल परवानगी देतो त्याहून अधिक उत्पाद-समृद्ध मिश्रण बनवला असता, जो तोच अशक्य यंत्र वेगळ्या कपड्यांत. (चौथे उत्तर ल शातेलिएचे तत्त्व मुळापासून नाकारते.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A student measures the pH of pure water at 60 °C, finds 6.5, and concludes the water has become acidic. Explain why the reading is correct and the conclusion is not.",
+          hi: "एक विद्यार्थी 60 °C पर शुद्ध पानी का pH नापता है, 6.5 पाता है, और निष्कर्ष निकालता है कि पानी अम्लीय हो गया। समझाओ पाठ्यांक सही क्यों है और निष्कर्ष क्यों नहीं।",
+          mr: "एक विद्यार्थी 60 °C वर शुद्ध पाण्याचा pH मोजतो, 6.5 आढळतो, आणि निष्कर्ष काढतो की पाणी आम्लधर्मी झाले. वाचन बरोबर का आणि निष्कर्ष का नाही ते समजावा.",
+        },
+        choices: [
+          {
+            en: "Neutrality means equal concentrations of hydrogen and hydroxide ions, not a pH of 7. The self-ionisation of water is endothermic, so warming shifts it forward by Le Chatelier and Kw rises above 10⁻¹⁴. Both ion concentrations rise together and stay equal, so the water is still exactly neutral — but pH, being minus the logarithm of the hydrogen-ion concentration, falls to 6.5. The number 7 is neutral only at 25 °C, and it is the equality that defines neutrality, not the figure",
+            hi: "उदासीनता का अर्थ हाइड्रोजन और हाइड्रॉक्साइड आयनों की बराबर सांद्रताएँ है, 7 का pH नहीं। पानी का स्व-आयनन ऊष्माशोषी है, अतः गरम करना उसे ले शातेलिए से आगे खिसकाता है और Kw, 10⁻¹⁴ से ऊपर चढ़ जाता है। दोनों आयन-सांद्रताएँ साथ बढ़ती हैं और बराबर बनी रहती हैं, अतः पानी अब भी ठीक-ठीक उदासीन है — पर pH, जो हाइड्रोजन-आयन सांद्रता के लघुगणक का ऋणात्मक है, गिरकर 6.5 हो जाता है। संख्या 7 केवल 25 °C पर उदासीन है, और उदासीनता को बराबरी परिभाषित करती है, आँकड़ा नहीं",
+            mr: "उदासीनता म्हणजे हायड्रोजन आणि हायड्रॉक्साइड आयनांच्या समान संहती, 7 चा pH नव्हे. पाण्याचे स्व-आयनीकरण उष्माशोषी, म्हणून तापवणे ते ल शातेलिएने पुढे सरकवते आणि Kw हा 10⁻¹⁴ हून वर चढतो. दोन्ही आयन-संहती एकत्र वाढतात आणि समान राहतात, म्हणून पाणी अजूनही नेमके उदासीन — पण pH, जो हायड्रोजन-आयन संहतीच्या लॉगरिथमचा ऋण, घटून 6.5 होतो. 7 ही संख्या केवळ 25 °C वर उदासीन, आणि उदासीनता समानता व्याख्यायित करते, आकडा नव्हे",
+          },
+          {
+            en: "The student is right: any pH below 7 is acidic by definition, at every temperature",
+            hi: "विद्यार्थी सही है: 7 से नीचे कोई भी pH परिभाषा से अम्लीय है, हर ताप पर",
+            mr: "विद्यार्थी बरोबर: 7 हून खालचा कोणताही pH व्याख्येने आम्लधर्मी, प्रत्येक तापमानावर",
+          },
+          {
+            en: "The reading must be an instrument error, since the pH of pure water cannot change with temperature",
+            hi: "पाठ्यांक यंत्र की त्रुटि होगी, क्योंकि शुद्ध पानी का pH ताप से बदल ही नहीं सकता",
+            mr: "वाचन उपकरणाची त्रुटी असणार, कारण शुद्ध पाण्याचा pH तापमानाने बदलूच शकत नाही",
+          },
+          {
+            en: "Warming decomposes some water into hydrogen and oxygen gas, and the dissolved gases make the solution acidic",
+            hi: "गरम करना कुछ पानी को हाइड्रोजन और ऑक्सीजन गैस में विघटित कर देता है, और घुली गैसें विलयन को अम्लीय बना देती हैं",
+            mr: "तापवणे काही पाणी हायड्रोजन आणि ऑक्सिजन वायूत विघटित करते, आणि विरघळलेले वायू द्रावण आम्लधर्मी बनवतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "This question turns on a definition that is usually taught as a number and is really a comparison. Water is very slightly self-ionising: H₂O ⇌ H⁺ + OH⁻, and Kw is the equilibrium constant for it. Splitting a molecule against its own bonding costs energy, so the process is endothermic, and by Le Chatelier's principle warming the water shifts the equilibrium forward. More molecules are split at any instant, and Kw rises — from 1.0 × 10⁻¹⁴ at 25 °C to about 9.6 × 10⁻¹⁴ at 60 °C, nearly a tenfold increase. Now note what does not change. The two ions are produced in a strict one-to-one ratio, so however far the equilibrium shifts, [H⁺] and [OH⁻] remain exactly equal in pure water. That equality is what neutrality means. The solution has not become richer in hydrogen ions than in hydroxide ions; it has become richer in both. But pH is defined as −log[H⁺], and [H⁺] has risen. With Kw = 9.6 × 10⁻¹⁴ and the two concentrations equal, each is √Kw ≈ 3.1 × 10⁻⁷, giving pH ≈ 6.5. The reading is exactly what theory predicts, and the water is neutral at 6.5 because pOH is also 6.5 and the two are equal. The general lesson is that 7 is not a magic number. It is the value of −log√Kw at 25 °C and nowhere else. At 0 °C neutral water has a pH near 7.5; at 100 °C, near 6.1. A pH of 6.5 measured at 60 °C is neutral; the same reading at 25 °C is genuinely, if weakly, acidic. Quoting a pH without a temperature is like quoting a length without a unit. Two consequences follow. First, laboratory pH meters are temperature-compensated for exactly this reason, and a careful measurement always records the temperature alongside. Second, blood at 37 °C is held near 7.4, which sounds alkaline against the familiar 7 but is only about 0.6 units above neutrality at that temperature rather than 0.4 — the physiological margin is narrower than the number suggests. (The third answer denies a well-measured temperature dependence, and the fourth invents a decomposition that needs electrolysis or a thousand degrees, not a warm beaker.)",
+          hi: "यह प्रश्न ऐसी परिभाषा पर टिका है जो प्रायः संख्या के रूप में पढ़ाई जाती है और वस्तुतः तुलना है। पानी बहुत थोड़ा स्व-आयनित होता है: H₂O ⇌ H⁺ + OH⁻, और Kw उसका साम्य स्थिरांक है। अणु को उसके अपने आबंधन के विरुद्ध तोड़ने में ऊर्जा लगती है, अतः प्रक्रिया ऊष्माशोषी है, और ले शातेलिए के सिद्धांत से पानी गरम करना साम्य को आगे खिसकाता है। किसी भी क्षण अधिक अणु टूटे होते हैं, और Kw चढ़ता है — 25 °C पर 1.0 × 10⁻¹⁴ से 60 °C पर लगभग 9.6 × 10⁻¹⁴ तक, लगभग दस गुनी वृद्धि। अब देखो क्या नहीं बदलता। दोनों आयन कड़ाई से एक-के-बदले-एक अनुपात में बनते हैं, अतः साम्य कितना भी खिसके, शुद्ध पानी में [H⁺] और [OH⁻] ठीक बराबर रहते हैं। वही बराबरी उदासीनता का अर्थ है। विलयन हाइड्रॉक्साइड आयनों की तुलना में हाइड्रोजन आयनों से समृद्ध नहीं हुआ; वह दोनों से समृद्ध हुआ है। पर pH को −log[H⁺] परिभाषित किया गया है, और [H⁺] चढ़ा है। Kw = 9.6 × 10⁻¹⁴ और दोनों सांद्रताएँ बराबर होने पर, हर एक √Kw ≈ 3.1 × 10⁻⁷ है, जिससे pH ≈ 6.5. पाठ्यांक ठीक वही है जो सिद्धांत बताता है, और पानी 6.5 पर उदासीन है क्योंकि pOH भी 6.5 है और दोनों बराबर। सामान्य सबक़ यह कि 7 कोई जादुई संख्या नहीं। वह 25 °C पर −log√Kw का मान है और कहीं नहीं। 0 °C पर उदासीन पानी का pH लगभग 7.5 है; 100 °C पर लगभग 6.1. 60 °C पर नापा गया 6.5 का pH उदासीन है; वही पाठ्यांक 25 °C पर सचमुच, यद्यपि दुर्बल रूप से, अम्लीय है। बिना ताप के pH बताना बिना मात्रक के लंबाई बताने जैसा है। दो परिणाम निकलते हैं। पहला, प्रयोगशाला के pH मीटर ठीक इसी कारण ताप-प्रतिपूरित होते हैं, और सावधान माप सदा ताप भी दर्ज करता है। दूसरा, 37 °C पर रक्त लगभग 7.4 पर थामा जाता है, जो जाने-पहचाने 7 के सामने क्षारीय लगता है पर उस ताप पर उदासीनता से 0.4 नहीं बल्कि केवल लगभग 0.6 इकाई ऊपर है — शरीरक्रियात्मक हाशिया संख्या के सुझाव से सँकरा है। (तीसरा उत्तर भली-भाँति नापी गई ताप-निर्भरता नकारता है, और चौथा ऐसा विघटन गढ़ता है जिसे विद्युत्-अपघटन या हज़ार डिग्री चाहिए, गरम बीकर नहीं।)",
+          mr: "हा प्रश्न अशा व्याख्येवर टेकलेला जी सहसा संख्या म्हणून शिकवली जाते आणि प्रत्यक्षात तुलना आहे. पाणी फार थोडे स्व-आयनीकृत होते: H₂O ⇌ H⁺ + OH⁻, आणि Kw हा त्याचा समतोल स्थिरांक. रेणू त्याच्या स्वतःच्या बंधनाविरुद्ध तोडायला ऊर्जा लागते, म्हणून प्रक्रिया उष्माशोषी, आणि ल शातेलिएच्या तत्त्वाने पाणी तापवणे समतोल पुढे सरकवते. कोणत्याही क्षणी अधिक रेणू तुटलेले असतात, आणि Kw चढतो — 25 °C वर 1.0 × 10⁻¹⁴ पासून 60 °C वर सुमारे 9.6 × 10⁻¹⁴ पर्यंत, जवळपास दसपट वाढ. आता पाहा काय बदलत नाही. दोन्ही आयन काटेकोर एकास-एक गुणोत्तरात तयार होतात, म्हणून समतोल कितीही सरको, शुद्ध पाण्यात [H⁺] आणि [OH⁻] नेमके समान राहतात. तीच समानता म्हणजे उदासीनतेचा अर्थ. द्रावण हायड्रॉक्साइड आयनांच्या तुलनेत हायड्रोजन आयनांनी समृद्ध झाले नाही; ते दोघांनीही समृद्ध झाले. पण pH ची व्याख्या −log[H⁺] अशी, आणि [H⁺] चढला आहे. Kw = 9.6 × 10⁻¹⁴ आणि दोन्ही संहती समान असल्याने, प्रत्येक √Kw ≈ 3.1 × 10⁻⁷, ज्यातून pH ≈ 6.5. वाचन नेमके तेच जे सिद्धांत सांगतो, आणि पाणी 6.5 वर उदासीन कारण pOH ही 6.5 आणि दोन्ही समान. सामान्य धडा हा की 7 ही जादूची संख्या नाही. ते 25 °C वरचे −log√Kw चे मूल्य आणि दुसरीकडे कुठेही नाही. 0 °C वर उदासीन पाण्याचा pH सुमारे 7.5; 100 °C वर सुमारे 6.1. 60 °C वर मोजलेला 6.5 चा pH उदासीन; तेच वाचन 25 °C वर खरोखर, जरी दुर्बलपणे, आम्लधर्मी. तापमानाशिवाय pH सांगणे म्हणजे एककाशिवाय लांबी सांगण्यासारखे. दोन परिणाम निघतात. पहिला, प्रयोगशाळेतील pH मापक नेमक्या याच कारणाने तापमान-भरपाई केलेले असतात, आणि काळजीपूर्वक माप नेहमी तापमानही नोंदवते. दुसरा, 37 °C वर रक्त सुमारे 7.4 वर धरले जाते, जे ओळखीच्या 7 समोर आम्लारीधर्मी वाटते पण त्या तापमानावर उदासीनतेहून 0.4 नव्हे तर केवळ सुमारे 0.6 एकके वर — शरीरक्रियात्मक फरक संख्या सुचवते त्याहून अरुंद. (तिसरे उत्तर नीट मोजलेली तापमान-अवलंबिता नाकारते, आणि चौथे असे विघटन घडवते ज्याला विद्युत-अपघटन वा हजार अंश लागतात, उबदार बीकर नव्हे.)",
+        },
+      },
+      /*H6C*/
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 7 — Redox Reactions                                             */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "chemistry-11-redox-reactions",
+    subject: "CHEMISTRY",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 7 — Redox Reactions",
+      hi: "अध्याय 7 — अपचयोपचय अभिक्रियाएँ",
+      mr: "प्रकरण 7 — क्षपण-ऑक्सिडीकरण अभिक्रिया",
+    },
+    name: {
+      en: "Redox Reactions",
+      hi: "अपचयोपचय अभिक्रियाएँ",
+      mr: "क्षपण-ऑक्सिडीकरण अभिक्रिया",
+    },
+    summary: {
+      en: "Rusting, respiration, a battery and a forest fire turn out to be the same reaction wearing different clothes: something has lost electrons and something else has gained exactly as many. A bookkeeping number that is not a real charge, two agents each of which does the opposite of what its name suggests, one element doing both jobs at once, and a method of balancing that counts electrons rather than guessing coefficients.",
+      hi: "जंग लगना, श्वसन, बैटरी और जंगल की आग — सब एक ही अभिक्रिया निकलती है, भिन्न कपड़े पहने: किसी ने इलेक्ट्रॉन खोए हैं और किसी और ने ठीक उतने ही पाए हैं। वह बहीखाता-संख्या जो असली आवेश नहीं, वे दो कारक जिनमें से हर एक अपने नाम के सुझाव का उलटा करता है, वह एक तत्व जो दोनों काम एक साथ करता है, और संतुलन की वह विधि जो गुणांक अटकलने के बजाय इलेक्ट्रॉन गिनती है।",
+      mr: "गंज चढणे, श्वसन, बॅटरी आणि जंगलातील आग — सर्व एकच अभिक्रिया निघते, वेगळे कपडे घातलेली: कोणीतरी इलेक्ट्रॉन गमावले आहेत आणि दुसऱ्या कोणीतरी नेमके तितकेच मिळवले आहेत. ती वहीखाता-संख्या जी खरा भार नाही, ते दोन घटक ज्यांपैकी प्रत्येक आपल्या नावाच्या सूचनेच्या उलट करतो, ते एक मूलद्रव्य जे दोन्ही कामे एकाच वेळी करते, आणि संतुलनाची ती पद्धत जी गुणांक अंदाजण्याऐवजी इलेक्ट्रॉन मोजते.",
+    },
+    position: 7,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "redox-as-electron-transfer",
+        name: {
+          en: "Redox as electron transfer",
+          hi: "इलेक्ट्रॉन-स्थानांतरण के रूप में अपचयोपचय",
+          mr: "इलेक्ट्रॉन-हस्तांतरण म्हणून क्षपण-ऑक्सिडीकरण",
+        },
+        kind: "definition",
+        prompt: {
+          en: "The old definition needed oxygen to be present and could not describe the reaction of sodium with chlorine; the modern one covers both, and also rusting, respiration and every battery ever built. Which idea is this?",
+          hi: "पुरानी परिभाषा को ऑक्सीजन की उपस्थिति चाहिए थी और वह सोडियम तथा क्लोरीन की अभिक्रिया का वर्णन नहीं कर पाती थी; आधुनिक परिभाषा दोनों को समेटती है, और जंग, श्वसन तथा अब तक बनी हर बैटरी को भी। यह कौन-सा विचार है?",
+          mr: "जुन्या व्याख्येला ऑक्सिजनची उपस्थिती लागत होती आणि ती सोडियम व क्लोरिनच्या अभिक्रियेचे वर्णन करू शकत नव्हती; आधुनिक व्याख्या दोघांना सामावते, आणि गंज, श्वसन व आजवर बनलेली प्रत्येक बॅटरीही. ही कोणती कल्पना?",
+        },
+        statement: {
+          en: "Oxidation is loss of electrons and reduction is gain, so the two always occur together and in exactly matched amounts — no electron is ever released without something taking it.",
+          hi: "उपचयन इलेक्ट्रॉनों की हानि है और अपचयन प्राप्ति, अतः दोनों सदा साथ और ठीक बराबर मात्राओं में होते हैं — कोई इलेक्ट्रॉन कभी बिना किसी के लिए छोड़ा नहीं जाता।",
+          mr: "ऑक्सिडीकरण म्हणजे इलेक्ट्रॉनांची हानी आणि क्षपण म्हणजे प्राप्ती, म्हणून दोन्ही नेहमी एकत्र आणि नेमक्या समान प्रमाणांत घडतात — कोणताही इलेक्ट्रॉन कधीही कोणी न घेता सोडला जात नाही.",
+        },
+        detail: {
+          en: "The older oxygen-and-hydrogen definitions still work wherever they apply, but they are special cases: gaining oxygen and losing hydrogen both amount to losing electron density.",
+          hi: "पुरानी ऑक्सीजन-और-हाइड्रोजन वाली परिभाषाएँ जहाँ लागू हों वहाँ अब भी चलती हैं, पर वे विशेष स्थितियाँ हैं: ऑक्सीजन पाना और हाइड्रोजन खोना दोनों का अर्थ इलेक्ट्रॉन-घनत्व खोना ही है।",
+          mr: "जुन्या ऑक्सिजन-आणि-हायड्रोजनच्या व्याख्या जिथे लागू तिथे अजूनही चालतात, पण त्या विशेष स्थिती: ऑक्सिजन मिळवणे आणि हायड्रोजन गमावणे दोन्हींचा अर्थ इलेक्ट्रॉन-घनता गमावणेच.",
+        },
+        extra: {
+          en: "Separating the two halves and letting the electrons travel through a wire instead of jumping directly is the whole of electrochemistry, and it is what a cell is.",
+          hi: "दोनों आधों को अलग करना और इलेक्ट्रॉनों को सीधे कूदने के बजाय तार से यात्रा कराना ही पूरा विद्युत्-रसायन है, और सेल यही है।",
+          mr: "दोन्ही अर्धे वेगळे करणे आणि इलेक्ट्रॉनांना थेट उडी मारण्याऐवजी तारेतून प्रवास करू देणे हेच अख्खे विद्युतरसायन, आणि घट हेच आहे.",
+        },
+        pair: {
+          left: {
+            en: "One loses and another gains, always exactly",
+            hi: "एक खोता और दूसरा पाता, सदा ठीक-ठीक",
+            mr: "एक गमावतो आणि दुसरा मिळवतो, नेहमी नेमके",
+          },
+          right: {
+            en: "redox as electron transfer",
+            hi: "इलेक्ट्रॉन-स्थानांतरण के रूप में अपचयोपचय",
+            mr: "इलेक्ट्रॉन-हस्तांतरण म्हणून क्षपण-ऑक्सिडीकरण",
+          },
+        },
+      },
+      {
+        id: "oxidation-number",
+        name: {
+          en: "Oxidation number",
+          hi: "उपचयन संख्या",
+          mr: "ऑक्सिडीकरण संख्या",
+        },
+        kind: "definition",
+        prompt: {
+          en: "Carbon in methane is assigned −4 and in carbon dioxide +4, although neither molecule contains an ion of any kind, because every shared pair is awarded outright to the more electronegative atom. Which quantity is this?",
+          hi: "मेथेन में कार्बन को −4 दिया जाता है और कार्बन डाइऑक्साइड में +4, यद्यपि दोनों में से किसी अणु में किसी क़िस्म का आयन है ही नहीं, क्योंकि हर साझा युग्म पूरी तरह अधिक विद्युत्-ऋणात्मक परमाणु को सौंप दिया जाता है। यह कौन-सी राशि है?",
+          mr: "मिथेनमधील कार्बनला −4 दिले जाते आणि कार्बन डायऑक्साइडमध्ये +4, जरी दोघांपैकी कोणत्याही रेणूत कोणत्याही प्रकारचा आयन नाहीच, कारण प्रत्येक वाटलेली जोडी पूर्णपणे अधिक विद्युतऋण अणूला दिली जाते. ही कोणती राशी?",
+        },
+        statement: {
+          en: "The oxidation number is the charge an atom would carry if every bond were treated as fully ionic, so it is a bookkeeping device rather than a real charge on the atom.",
+          hi: "उपचयन संख्या वह आवेश है जो परमाणु ढोता यदि हर बंध पूरी तरह आयनिक माना जाता, अतः वह परमाणु पर असली आवेश नहीं बल्कि बहीखाता-युक्ति है।",
+          mr: "ऑक्सिडीकरण संख्या म्हणजे तो भार जो अणू वाहिला असता जर प्रत्येक बंध पूर्णपणे आयनिक मानला असता, म्हणून ती अणूवरचा खरा भार नव्हे तर वहीखाता-युक्ती.",
+        },
+        detail: {
+          en: "It need not be a whole number: iron in Fe₃O₄ averages +8/3 and sulphur in tetrathionate +2.5, because the atoms in such a compound are not all in the same environment.",
+          hi: "उसका पूर्णांक होना ज़रूरी नहीं: Fe₃O₄ में लोहे का औसत +8/3 है और चतुर्थायोनेट में सल्फ़र का +2.5, क्योंकि ऐसे यौगिक के सब परमाणु एक ही परिवेश में नहीं होते।",
+          mr: "ती पूर्णांक असायलाच हवी असे नाही: Fe₃O₄ मध्ये लोखंडाची सरासरी +8/3 आणि टेट्राथायोनेटमध्ये गंधकाची +2.5, कारण अशा संयुगातील सर्व अणू एकाच परिसरात नसतात.",
+        },
+        extra: {
+          en: "Its whole purpose is to make redox visible in reactions where no ions appear: a change in oxidation number is the definition of oxidation or reduction having happened.",
+          hi: "उसका पूरा प्रयोजन उन अभिक्रियाओं में अपचयोपचय को दिखाई देने योग्य बनाना है जिनमें कोई आयन प्रकट नहीं होता: उपचयन संख्या का परिवर्तन ही उपचयन या अपचयन हो चुकने की परिभाषा है।",
+          mr: "तिचा अख्खा हेतू ज्या अभिक्रियांत कोणताही आयन प्रकट होत नाही त्यांत क्षपण-ऑक्सिडीकरण दृश्य करणे: ऑक्सिडीकरण संख्येतील बदल हीच ऑक्सिडीकरण वा क्षपण घडल्याची व्याख्या.",
+        },
+        pair: {
+          left: {
+            en: "A charge on an atom that carries no charge",
+            hi: "उस परमाणु पर आवेश जिस पर आवेश है ही नहीं",
+            mr: "ज्या अणूवर भार नाही त्याच्यावरचा भार",
+          },
+          right: {
+            en: "oxidation number",
+            hi: "उपचयन संख्या",
+            mr: "ऑक्सिडीकरण संख्या",
+          },
+        },
+      },
+      {
+        id: "oxidising-and-reducing-agent",
+        name: {
+          en: "The oxidising and reducing agents",
+          hi: "उपचायक और अपचायक",
+          mr: "ऑक्सिडीकारक आणि क्षपणकारक",
+        },
+        kind: "role",
+        prompt: {
+          en: "The substance that oxidises something else is itself reduced in the process, so its name describes what it does to its partner and not what happens to it. Which pair of roles is this?",
+          hi: "जो पदार्थ किसी और का उपचयन करता है वह स्वयं उस प्रक्रिया में अपचयित हो जाता है, अतः उसका नाम बताता है कि वह अपने साथी के साथ क्या करता है, यह नहीं कि उसके साथ क्या होता है। यह कौन-सी भूमिका-जोड़ी है?",
+          mr: "जो पदार्थ दुसऱ्याचे ऑक्सिडीकरण करतो तो स्वतः त्या प्रक्रियेत क्षपित होतो, म्हणून त्याचे नाव तो आपल्या जोडीदाराशी काय करतो हे सांगते, त्याचे काय होते हे नाही. ही कोणती भूमिका-जोडी?",
+        },
+        statement: {
+          en: "An oxidising agent takes electrons and is itself reduced, and a reducing agent gives electrons and is itself oxidised, so each name refers to the effect on the other reactant.",
+          hi: "उपचायक इलेक्ट्रॉन लेता है और स्वयं अपचयित होता है, और अपचायक इलेक्ट्रॉन देता है और स्वयं उपचयित होता है, अतः हर नाम दूसरे अभिकारक पर पड़े प्रभाव को इंगित करता है।",
+          mr: "ऑक्सिडीकारक इलेक्ट्रॉन घेतो आणि स्वतः क्षपित होतो, आणि क्षपणकारक इलेक्ट्रॉन देतो आणि स्वतः ऑक्सिडीकृत होतो, म्हणून प्रत्येक नाव दुसऱ्या अभिक्रियाकारकावरील परिणाम दर्शवते.",
+        },
+        detail: {
+          en: "The strongest oxidising agents sit at the electronegative end of the table — fluorine, oxygen, permanganate — and the strongest reducing agents are the alkali metals, which part with an electron most readily.",
+          hi: "सबसे प्रबल उपचायक सारणी के विद्युत्-ऋणात्मक छोर पर बैठते हैं — फ़्लुओरीन, ऑक्सीजन, परमैंगनेट — और सबसे प्रबल अपचायक क्षार धातुएँ हैं, जो इलेक्ट्रॉन सबसे तत्परता से छोड़ती हैं।",
+          mr: "सर्वांत प्रबळ ऑक्सिडीकारक सारणीच्या विद्युतऋण टोकाला बसतात — फ्लोरिन, ऑक्सिजन, परमँगनेट — आणि सर्वांत प्रबळ क्षपणकारक म्हणजे अल्कधर्मी धातू, ज्या इलेक्ट्रॉन सर्वांत तत्परतेने सोडतात.",
+        },
+        extra: {
+          en: "An element in an intermediate oxidation state can act as either, depending on its partner: hydrogen peroxide oxidises iodide and reduces permanganate in the same afternoon.",
+          hi: "मध्यवर्ती उपचयन अवस्था वाला तत्व साथी के अनुसार कोई भी भूमिका निभा सकता है: हाइड्रोजन परॉक्साइड उसी दोपहर आयोडाइड का उपचयन और परमैंगनेट का अपचयन कर देता है।",
+          mr: "मध्यवर्ती ऑक्सिडीकरण अवस्थेतील मूलद्रव्य जोडीदारानुसार कोणतीही भूमिका बजावू शकते: हायड्रोजन पेरॉक्साइड त्याच दुपारी आयोडाइडचे ऑक्सिडीकरण आणि परमँगनेटचे क्षपण करते.",
+        },
+        pair: {
+          left: {
+            en: "Named for what it does to somebody else",
+            hi: "नाम इस पर कि वह किसी और के साथ क्या करता है",
+            mr: "नाव तो दुसऱ्याशी काय करतो यावरून",
+          },
+          right: {
+            en: "the oxidising and reducing agents",
+            hi: "उपचायक और अपचायक",
+            mr: "ऑक्सिडीकारक आणि क्षपणकारक",
+          },
+        },
+      },
+      {
+        id: "disproportionation",
+        name: {
+          en: "Disproportionation",
+          hi: "असमानुपातन",
+          mr: "असमानुपातन",
+        },
+        kind: "role",
+        prompt: {
+          en: "Chlorine dropped into cold alkali comes out as chloride and hypochlorite at once — some of it reduced and some oxidised, with no other element changing at all. Which reaction is this?",
+          hi: "ठंडे क्षार में डाली गई क्लोरीन एक साथ क्लोराइड और हाइपोक्लोराइट बनकर निकलती है — उसका कुछ अपचयित और कुछ उपचयित, और कोई दूसरा तत्व बिलकुल नहीं बदलता। यह कौन-सी अभिक्रिया है?",
+          mr: "थंड आम्लारीत टाकलेला क्लोरिन एकाच वेळी क्लोराइड आणि हायपोक्लोराइट बनून निघतो — त्यातील काही क्षपित आणि काही ऑक्सिडीकृत, आणि दुसरे कोणतेही मूलद्रव्य मुळीच बदलत नाही. ही कोणती अभिक्रिया?",
+        },
+        statement: {
+          en: "Disproportionation is a redox reaction in which one element is simultaneously oxidised and reduced, so a single substance acts as both agents at once.",
+          hi: "असमानुपातन वह अपचयोपचय अभिक्रिया है जिसमें एक ही तत्व एक साथ उपचयित और अपचयित होता है, अतः अकेला पदार्थ एक ही समय दोनों कारकों की भूमिका निभाता है।",
+          mr: "असमानुपातन ही ती क्षपण-ऑक्सिडीकरण अभिक्रिया जिच्यात एकच मूलद्रव्य एकाच वेळी ऑक्सिडीकृत आणि क्षपित होते, म्हणून एकटा पदार्थ एकाच वेळी दोन्ही घटकांची भूमिका बजावतो.",
+        },
+        detail: {
+          en: "It requires the element to start in an intermediate oxidation state, with room to move in both directions — which is why chlorine at zero can do it and chloride at −1 cannot.",
+          hi: "उसके लिए तत्व का मध्यवर्ती उपचयन अवस्था में शुरू होना ज़रूरी है, जिसमें दोनों दिशाओं में जगह हो — इसीलिए शून्य पर क्लोरीन यह कर सकती है और −1 पर क्लोराइड नहीं।",
+          mr: "त्यासाठी मूलद्रव्याने मध्यवर्ती ऑक्सिडीकरण अवस्थेत सुरू व्हावे लागते, ज्यात दोन्ही दिशांना जागा असेल — म्हणूनच शून्यावरचा क्लोरिन हे करू शकतो आणि −1 वरचा क्लोराइड नाही.",
+        },
+        extra: {
+          en: "It is the basis of household bleach, made industrially by exactly this reaction, and the reverse process — two different oxidation states meeting to give one — is called comproportionation.",
+          hi: "घरेलू ब्लीच का आधार यही है, जो औद्योगिक रूप से ठीक इसी अभिक्रिया से बनता है, और उलटी प्रक्रिया — दो भिन्न उपचयन अवस्थाओं का मिलकर एक देना — समानुपातन कहलाती है।",
+          mr: "घरगुती ब्लीचचा पाया हाच, जो औद्योगिकरीत्या नेमक्या याच अभिक्रियेने बनतो, आणि उलटी प्रक्रिया — दोन वेगळ्या ऑक्सिडीकरण अवस्था मिळून एक देणे — समानुपातन म्हणतात.",
+        },
+        pair: {
+          left: {
+            en: "Both agents, and only one element",
+            hi: "दोनों कारक, और केवल एक तत्व",
+            mr: "दोन्ही घटक, आणि केवळ एक मूलद्रव्य",
+          },
+          right: {
+            en: "disproportionation",
+            hi: "असमानुपातन",
+            mr: "असमानुपातन",
+          },
+        },
+      },
+      {
+        id: "balancing-by-half-reactions",
+        name: {
+          en: "Balancing by half-reactions",
+          hi: "अर्ध-अभिक्रियाओं से संतुलन",
+          mr: "अर्ध-अभिक्रियांनी संतुलन",
+        },
+        kind: "method",
+        prompt: {
+          en: "The equation is split into an oxidation and a reduction, each balanced separately for atoms and then for charge with electrons, and the two are scaled until the electrons cancel. Which method is this?",
+          hi: "समीकरण को एक उपचयन और एक अपचयन में बाँटा जाता है, हर एक अलग-अलग परमाणुओं के लिए और फिर इलेक्ट्रॉनों से आवेश के लिए संतुलित किया जाता है, और दोनों को तब तक गुणा किया जाता है जब तक इलेक्ट्रॉन कट न जाएँ। यह कौन-सी विधि है?",
+          mr: "समीकरण एका ऑक्सिडीकरण आणि एका क्षपणात विभागले जाते, प्रत्येक स्वतंत्रपणे अणूंसाठी आणि मग इलेक्ट्रॉनांनी भारासाठी संतुलित केले जाते, आणि दोन्ही इलेक्ट्रॉन कापले जाईपर्यंत गुणले जातात. ही कोणती पद्धत?",
+        },
+        statement: {
+          en: "The half-reaction method balances a redox equation by writing the two halves separately, adding electrons to balance charge, and multiplying so that electrons lost equal electrons gained.",
+          hi: "अर्ध-अभिक्रिया विधि दोनों आधों को अलग लिखकर, आवेश संतुलित करने को इलेक्ट्रॉन जोड़कर, और खोए इलेक्ट्रॉन पाए इलेक्ट्रॉनों के बराबर हों इस तरह गुणा करके अपचयोपचय समीकरण संतुलित करती है।",
+          mr: "अर्ध-अभिक्रिया पद्धत दोन्ही अर्धे स्वतंत्र लिहून, भार संतुलित करायला इलेक्ट्रॉन जोडून, आणि गमावलेले इलेक्ट्रॉन मिळवलेल्या इलेक्ट्रॉनांइतके होतील अशा प्रकारे गुणून क्षपण-ऑक्सिडीकरण समीकरण संतुलित करते.",
+        },
+        detail: {
+          en: "In acid solution the leftover oxygens are balanced with water and the leftover hydrogens with H⁺; in alkali the same is done and hydroxide is then added to both sides to mop up the H⁺.",
+          hi: "अम्लीय विलयन में बची ऑक्सीजन पानी से और बचे हाइड्रोजन H⁺ से संतुलित किए जाते हैं; क्षार में वही किया जाता है और फिर H⁺ सोखने को दोनों ओर हाइड्रॉक्साइड जोड़ दिया जाता है।",
+          mr: "आम्लधर्मी द्रावणात उरलेले ऑक्सिजन पाण्याने आणि उरलेले हायड्रोजन H⁺ ने संतुलित केले जातात; आम्लारीत तेच केले जाते आणि मग H⁺ शोषायला दोन्ही बाजूंना हायड्रॉक्साइड जोडले जाते.",
+        },
+        extra: {
+          en: "It is far more reliable than balancing by inspection for anything complicated, and it has the advantage of showing how many electrons the reaction actually moves — which is what a titration measures.",
+          hi: "किसी भी जटिल चीज़ के लिए वह देखकर संतुलित करने से कहीं अधिक भरोसेमंद है, और उसका यह लाभ है कि वह दिखा देती है कि अभिक्रिया वस्तुतः कितने इलेक्ट्रॉन हिलाती है — और अनुमापन यही नापता है।",
+          mr: "कोणत्याही गुंतागुंतीच्या गोष्टीसाठी ती पाहून संतुलित करण्याहून कितीतरी अधिक विश्वासार्ह, आणि तिचा हा फायदा की ती दाखवते की अभिक्रिया प्रत्यक्षात किती इलेक्ट्रॉन हलवते — आणि अनुमापन हेच मोजते.",
+        },
+        pair: {
+          left: {
+            en: "Scale until the electrons cancel",
+            hi: "तब तक गुणा करो जब तक इलेक्ट्रॉन कट न जाएँ",
+            mr: "इलेक्ट्रॉन कापले जाईपर्यंत गुणा",
+          },
+          right: {
+            en: "balancing by half-reactions",
+            hi: "अर्ध-अभिक्रियाओं से संतुलन",
+            mr: "अर्ध-अभिक्रियांनी संतुलन",
+          },
+        },
+      },
+      {
+        id: "activity-series",
+        name: {
+          en: "The activity series",
+          hi: "सक्रियता श्रेणी",
+          mr: "क्रियाशीलता मालिका",
+        },
+        kind: "method",
+        prompt: {
+          en: "An iron nail dropped into copper sulphate goes copper-coloured, and a copper wire dropped into iron sulphate does nothing at all — because the order in which metals surrender electrons is fixed and can be tabulated. Which list is this?",
+          hi: "कॉपर सल्फ़ेट में डाली लोहे की कील ताँबे के रंग की हो जाती है, और आयरन सल्फ़ेट में डाला ताँबे का तार कुछ भी नहीं करता — क्योंकि धातुएँ जिस क्रम में इलेक्ट्रॉन सौंपती हैं वह तय है और तालिकाबद्ध किया जा सकता है। यह कौन-सी सूची है?",
+          mr: "कॉपर सल्फेटमध्ये टाकलेला लोखंडी खिळा तांब्याच्या रंगाचा होतो, आणि आयर्न सल्फेटमध्ये टाकलेली तांब्याची तार काहीही करत नाही — कारण धातू ज्या क्रमाने इलेक्ट्रॉन सोपवतात तो ठरलेला आणि तक्त्यात मांडता येतो. ही कोणती यादी?",
+        },
+        statement: {
+          en: "The activity series ranks metals by how readily they give up electrons, and a metal higher in the series will displace any metal below it from a solution of its salt.",
+          hi: "सक्रियता श्रेणी धातुओं को इस क्रम में रखती है कि वे कितनी तत्परता से इलेक्ट्रॉन छोड़ती हैं, और श्रेणी में ऊपर की धातु अपने नीचे की किसी भी धातु को उसके लवण के विलयन से विस्थापित कर देगी।",
+          mr: "क्रियाशीलता मालिका धातूंना ते किती तत्परतेने इलेक्ट्रॉन सोडतात या क्रमाने मांडते, आणि मालिकेत वरची धातू आपल्या खालच्या कोणत्याही धातूला तिच्या क्षाराच्या द्रावणातून विस्थापित करेल.",
+        },
+        detail: {
+          en: "It predicts a great deal at once: which metals react with acids, which occur native in the ground, and how each was first extracted — the reactive ones had to wait for electrolysis.",
+          hi: "वह एक साथ बहुत कुछ बता देती है: कौन-सी धातुएँ अम्लों से अभिक्रिया करती हैं, कौन-सी ज़मीन में मुक्त अवस्था में मिलती हैं, और हर एक पहली बार निकाली कैसे गई — क्रियाशील धातुओं को विद्युत्-अपघटन की प्रतीक्षा करनी पड़ी।",
+          mr: "ती एकाच वेळी बरेच काही सांगते: कोणत्या धातू आम्लांशी अभिक्रिया करतात, कोणत्या जमिनीत मुक्त अवस्थेत सापडतात, आणि प्रत्येक प्रथमच कशी काढली गेली — क्रियाशील धातूंना विद्युत-अपघटनाची वाट पाहावी लागली.",
+        },
+        extra: {
+          en: "It is the qualitative face of the electrochemical series, whose numbers are electrode potentials in volts — and those numbers are what let a cell's voltage be predicted before it is built.",
+          hi: "यह विद्युत्-रासायनिक श्रेणी का गुणात्मक चेहरा है, जिसकी संख्याएँ वोल्ट में इलेक्ट्रोड विभव हैं — और वही संख्याएँ सेल बनाए जाने से पहले उसका वोल्टता बताने देती हैं।",
+          mr: "हा विद्युतरासायनिक मालिकेचा गुणात्मक चेहरा, जिच्या संख्या व्होल्टमधील विद्युताग्र विभव — आणि त्याच संख्या घट बांधण्याआधी त्याचे व्होल्टेज सांगू देतात.",
+        },
+        pair: {
+          left: {
+            en: "The nail changes colour and the wire does nothing",
+            hi: "कील रंग बदलती है और तार कुछ नहीं करता",
+            mr: "खिळा रंग बदलतो आणि तार काहीही करत नाही",
+          },
+          right: {
+            en: "the activity series",
+            hi: "सक्रियता श्रेणी",
+            mr: "क्रियाशीलता मालिका",
+          },
+        },
+      },
+      /*F7C*/
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "In the reaction Zn + CuSO₄ → ZnSO₄ + Cu, a student says copper sulphate is the reducing agent because it causes the zinc to change. Identify the two agents correctly and explain the naming.",
+          hi: "अभिक्रिया Zn + CuSO₄ → ZnSO₄ + Cu में एक विद्यार्थी कहता है कि कॉपर सल्फ़ेट अपचायक है क्योंकि वह ज़िंक को बदलने पर मजबूर करता है। दोनों कारक ठीक-ठीक पहचानो और नामकरण समझाओ।",
+          mr: "Zn + CuSO₄ → ZnSO₄ + Cu या अभिक्रियेत एक विद्यार्थी म्हणतो की कॉपर सल्फेट हा क्षपणकारक कारण तो जस्ताला बदलायला भाग पाडतो. दोन्ही घटक नेमके ओळखा आणि नामकरण समजावा.",
+        },
+        choices: [
+          {
+            en: "Zinc is the reducing agent and copper sulphate the oxidising agent. Zinc goes from 0 to +2, losing two electrons — it is oxidised, and by giving those electrons away it reduces the copper. Copper goes from +2 to 0, gaining them — it is reduced, and by taking them it oxidises the zinc. Each name describes what the substance does to its partner, not what happens to itself, which is exactly the inversion the student has missed",
+            hi: "ज़िंक अपचायक है और कॉपर सल्फ़ेट उपचायक। ज़िंक 0 से +2 जाता है, दो इलेक्ट्रॉन खोकर — वह उपचयित होता है, और वे इलेक्ट्रॉन देकर वह कॉपर का अपचयन करता है। कॉपर +2 से 0 जाता है, उन्हें पाकर — वह अपचयित होता है, और उन्हें लेकर वह ज़िंक का उपचयन करता है। हर नाम बताता है कि पदार्थ अपने साथी के साथ क्या करता है, अपने साथ क्या होता है यह नहीं, और यही उलटाव विद्यार्थी चूक गया",
+            mr: "जस्त हा क्षपणकारक आणि कॉपर सल्फेट ऑक्सिडीकारक. जस्त 0 वरून +2 वर जाते, दोन इलेक्ट्रॉन गमावून — ते ऑक्सिडीकृत होते, आणि ते इलेक्ट्रॉन देऊन ते तांब्याचे क्षपण करते. तांबे +2 वरून 0 वर जाते, ते मिळवून — ते क्षपित होते, आणि ते घेऊन ते जस्ताचे ऑक्सिडीकरण करते. प्रत्येक नाव पदार्थ आपल्या जोडीदाराशी काय करतो हे सांगते, त्याचे स्वतःचे काय होते हे नाही, आणि हेच उलटणे विद्यार्थी चुकवतो",
+          },
+          {
+            en: "The student is right: copper sulphate is the reducing agent, since it is the substance that gets reduced",
+            hi: "विद्यार्थी सही है: कॉपर सल्फ़ेट अपचायक है, क्योंकि वही पदार्थ अपचयित होता है",
+            mr: "विद्यार्थी बरोबर: कॉपर सल्फेट क्षपणकारक, कारण तोच पदार्थ क्षपित होतो",
+          },
+          {
+            en: "Neither is an agent, because no oxygen is involved anywhere in the reaction",
+            hi: "कोई भी कारक नहीं, क्योंकि अभिक्रिया में कहीं ऑक्सीजन शामिल ही नहीं",
+            mr: "कोणीही घटक नाही, कारण अभिक्रियेत कुठेही ऑक्सिजन सामील नाही",
+          },
+          {
+            en: "Zinc is both agents at once, since it is the only substance actually changing",
+            hi: "ज़िंक ही दोनों कारक है, क्योंकि वस्तुतः बदलने वाला एकमात्र पदार्थ वही है",
+            mr: "जस्तच दोन्ही घटक, कारण प्रत्यक्षात बदलणारा एकमेव पदार्थ तोच",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Track the oxidation numbers first, because they make the whole reaction visible. Zinc begins as the free metal at 0 and ends in zinc sulphate at +2. Copper begins in copper sulphate at +2 and ends as the free metal at 0. Sulphate is unchanged throughout — a spectator ion that appears on both sides and takes no part. Two electrons have moved from each zinc atom to each copper ion, and that is the entire reaction. Now the naming, which is where the student went wrong and where almost everyone goes wrong once. The names describe an ACTION PERFORMED ON THE OTHER SUBSTANCE. Zinc hands over electrons; handing over electrons to copper is what reduces the copper; therefore zinc is the reducing agent. In doing so zinc is itself oxidised. Copper takes electrons; taking electrons from zinc is what oxidises the zinc; therefore copper sulphate is the oxidising agent. In doing so the copper is itself reduced. The pattern is worth stating as a rule because it never varies: the oxidising agent is always the substance reduced, and the reducing agent is always the substance oxidised. The name and the fate are always opposite. It may help to think of an agent in the ordinary sense — a person who acts on behalf of a transaction. A reducing agent is the one that brings about a reduction, in the same way that an estate agent brings about a sale without being the property. The second option gets the fate right and reads it as the name, which is the single commonest error in this chapter. The third option is worth naming too. It is applying the old definition — oxidation as combination with oxygen — which is exactly what the modern electron-transfer definition was formulated to replace. No oxygen is needed. The reaction of sodium with chlorine is a textbook redox with no oxygen anywhere, and so is this one, where oxygen is present only as a passenger inside the sulphate. Two practical readings follow. First, this reaction happens because zinc is above copper in the activity series, and the reverse — a copper wire in zinc sulphate — does nothing at all. Second, separate the two halves into different beakers and connect them with a wire and a salt bridge, and the electrons make the same journey through the wire instead: that is the Daniell cell, and the reaction that merely warms a beaker here will light a lamp there. (The fourth answer forgets that copper is changing too, from +2 to 0.)",
+          hi: "पहले उपचयन संख्याएँ ट्रैक करो, क्योंकि वे पूरी अभिक्रिया दिखाई देने योग्य बना देती हैं। ज़िंक मुक्त धातु के रूप में 0 पर शुरू होता है और ज़िंक सल्फ़ेट में +2 पर समाप्त। कॉपर, कॉपर सल्फ़ेट में +2 पर शुरू होता है और मुक्त धातु के रूप में 0 पर समाप्त। सल्फ़ेट पूरे समय अपरिवर्तित है — दर्शक आयन जो दोनों ओर आता है और कोई भाग नहीं लेता। हर ज़िंक परमाणु से हर कॉपर आयन तक दो इलेक्ट्रॉन गए हैं, और अभिक्रिया पूरी की पूरी यही है। अब नामकरण, जहाँ विद्यार्थी ग़लत हुआ और जहाँ लगभग हर कोई एक बार ग़लत होता है। नाम दूसरे पदार्थ पर की गई क्रिया का वर्णन करते हैं। ज़िंक इलेक्ट्रॉन सौंपता है; कॉपर को इलेक्ट्रॉन सौंपना ही कॉपर का अपचयन करता है; अतः ज़िंक अपचायक है। ऐसा करते हुए ज़िंक स्वयं उपचयित होता है। कॉपर इलेक्ट्रॉन लेता है; ज़िंक से इलेक्ट्रॉन लेना ही ज़िंक का उपचयन करता है; अतः कॉपर सल्फ़ेट उपचायक है। ऐसा करते हुए कॉपर स्वयं अपचयित होता है। प्रतिरूप नियम के रूप में कहने योग्य है क्योंकि वह कभी नहीं बदलता: उपचायक सदा वही पदार्थ है जो अपचयित हो, और अपचायक सदा वही जो उपचयित हो। नाम और नियति सदा उलटे होते हैं। साधारण अर्थ में 'कारक' सोचना मदद कर सकता है — वह व्यक्ति जो किसी सौदे की ओर से काम करे। अपचायक वह है जो अपचयन करा देता है, उसी तरह जैसे संपत्ति-दलाल बिक्री करा देता है बिना स्वयं संपत्ति हुए। दूसरा विकल्प नियति ठीक पकड़ता है और उसे नाम पढ़ लेता है, जो इस अध्याय की सबसे आम अकेली भूल है। तीसरा विकल्प भी नाम लेने योग्य है। वह पुरानी परिभाषा लगा रहा है — ऑक्सीजन से संयोग के रूप में उपचयन — जिसे बदलने के लिए ही आधुनिक इलेक्ट्रॉन-स्थानांतरण परिभाषा गढ़ी गई थी। ऑक्सीजन की ज़रूरत नहीं। सोडियम और क्लोरीन की अभिक्रिया पाठ्यपुस्तक की अपचयोपचय है जिसमें कहीं ऑक्सीजन नहीं, और यह भी वैसी ही है, जहाँ ऑक्सीजन केवल सल्फ़ेट के भीतर सवारी के रूप में मौजूद है। दो व्यावहारिक पाठ निकलते हैं। पहला, यह अभिक्रिया इसलिए होती है कि सक्रियता श्रेणी में ज़िंक कॉपर से ऊपर है, और उलटा — ज़िंक सल्फ़ेट में ताँबे का तार — कुछ भी नहीं करता। दूसरा, दोनों आधों को अलग बीकरों में बाँटो और उन्हें तार तथा लवण-सेतु से जोड़ो, और इलेक्ट्रॉन वही यात्रा तार से कर लेते हैं: वही डेनियल सेल है, और जो अभिक्रिया यहाँ केवल बीकर गरम करती है वह वहाँ दीपक जला देती है। (चौथा उत्तर भूल जाता है कि कॉपर भी बदल रहा है, +2 से 0.)",
+          mr: "आधी ऑक्सिडीकरण संख्या मागोवा घ्या, कारण त्या अख्खी अभिक्रिया दृश्य करतात. जस्त मुक्त धातू म्हणून 0 वर सुरू होते आणि झिंक सल्फेटमध्ये +2 वर संपते. तांबे कॉपर सल्फेटमध्ये +2 वर सुरू होते आणि मुक्त धातू म्हणून 0 वर संपते. सल्फेट पूर्ण काळ अपरिवर्तित — प्रेक्षक आयन जो दोन्ही बाजूंना येतो आणि कोणताही भाग घेत नाही. प्रत्येक जस्त अणूकडून प्रत्येक तांबे आयनाकडे दोन इलेक्ट्रॉन गेले आहेत, आणि अभिक्रिया अख्खीच्या अख्खी हीच. आता नामकरण, जिथे विद्यार्थी चुकला आणि जिथे जवळपास प्रत्येकजण एकदा चुकतो. नावे दुसऱ्या पदार्थावर केलेल्या क्रियेचे वर्णन करतात. जस्त इलेक्ट्रॉन सोपवते; तांब्याला इलेक्ट्रॉन सोपवणे हेच तांब्याचे क्षपण करते; म्हणून जस्त क्षपणकारक. असे करताना जस्त स्वतः ऑक्सिडीकृत होते. तांबे इलेक्ट्रॉन घेते; जस्ताकडून इलेक्ट्रॉन घेणे हेच जस्ताचे ऑक्सिडीकरण करते; म्हणून कॉपर सल्फेट ऑक्सिडीकारक. असे करताना तांबे स्वतः क्षपित होते. आकृतिबंध नियम म्हणून सांगण्याजोगा कारण तो कधीच बदलत नाही: ऑक्सिडीकारक नेहमी तोच पदार्थ जो क्षपित होतो, आणि क्षपणकारक नेहमी तोच जो ऑक्सिडीकृत होतो. नाव आणि नियती नेहमी उलटी. सामान्य अर्थाने 'घटक' विचार करणे मदत करू शकते — जी व्यक्ती एखाद्या व्यवहारातर्फे काम करते. क्षपणकारक तो जो क्षपण घडवून आणतो, त्याच पद्धतीने जसा मालमत्ता-दलाल विक्री घडवून आणतो स्वतः मालमत्ता न होता. दुसरा पर्याय नियती बरोबर पकडतो आणि तिला नाव वाचतो, जी या प्रकरणातील सर्वांत नेहमीची एकमेव चूक. तिसरा पर्यायही नाव घेण्याजोगा. तो जुनी व्याख्या लावत आहे — ऑक्सिजनशी संयोग म्हणून ऑक्सिडीकरण — जिला बदलण्यासाठीच आधुनिक इलेक्ट्रॉन-हस्तांतरण व्याख्या घडवली गेली. ऑक्सिजनची गरज नाही. सोडियम आणि क्लोरिनची अभिक्रिया ही पाठ्यपुस्तकातील क्षपण-ऑक्सिडीकरण जिच्यात कुठेही ऑक्सिजन नाही, आणि हीसुद्धा तशीच, जिथे ऑक्सिजन केवळ सल्फेटच्या आत प्रवासी म्हणून उपस्थित. दोन व्यावहारिक वाचने निघतात. पहिले, ही अभिक्रिया यासाठी घडते की क्रियाशीलता मालिकेत जस्त तांब्याहून वर आहे, आणि उलटे — झिंक सल्फेटमधली तांब्याची तार — काहीही करत नाही. दुसरे, दोन्ही अर्धे वेगळ्या बीकरांत विभागा आणि त्यांना तार व क्षार-सेतूने जोडा, आणि इलेक्ट्रॉन तोच प्रवास तारेतून करतात: तोच डॅनियल घट, आणि जी अभिक्रिया इथे केवळ बीकर तापवते ती तिथे दिवा लावते. (चौथे उत्तर विसरते की तांबेही बदलत आहे, +2 वरून 0 वर.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Chlorine is bubbled into cold dilute sodium hydroxide and gives sodium chloride and sodium hypochlorite. A student says a redox reaction needs two different elements to change, so this cannot be one. Assess the claim and name what is happening.",
+          hi: "ठंडे तनु सोडियम हाइड्रॉक्साइड में क्लोरीन प्रवाहित की जाती है और वह सोडियम क्लोराइड तथा सोडियम हाइपोक्लोराइट देती है। एक विद्यार्थी कहता है कि अपचयोपचय अभिक्रिया के लिए दो भिन्न तत्वों का बदलना ज़रूरी है, अतः यह वैसी हो ही नहीं सकती। दावे का आकलन करो और बताओ हो क्या रहा है।",
+          mr: "थंड विरळ सोडियम हायड्रॉक्साइडमध्ये क्लोरिन सोडला जातो आणि तो सोडियम क्लोराइड व सोडियम हायपोक्लोराइट देतो. एक विद्यार्थी म्हणतो की क्षपण-ऑक्सिडीकरण अभिक्रियेसाठी दोन वेगळी मूलद्रव्ये बदलणे आवश्यक, म्हणून ही तशी असूच शकत नाही. दाव्याचे मूल्यमापन करा आणि काय घडत आहे ते सांगा.",
+        },
+        choices: [
+          {
+            en: "The claim is false and the reaction is a disproportionation. Chlorine starts at 0; in chloride it is −1, reduced, and in hypochlorite it is +1, oxidised. One element has done both jobs, acting as its own oxidising and reducing agent, and the electrons still balance exactly — one chlorine atom gains one for every chlorine atom that loses one. It is possible only because chlorine begins in an intermediate oxidation state with room to move in both directions",
+            hi: "दावा झूठा है और अभिक्रिया असमानुपातन है। क्लोरीन 0 पर शुरू होती है; क्लोराइड में वह −1 है, अपचयित, और हाइपोक्लोराइट में +1, उपचयित। एक ही तत्व ने दोनों काम किए हैं, अपना ही उपचायक तथा अपचायक बनकर, और इलेक्ट्रॉन फिर भी ठीक-ठीक संतुलित हैं — जितने क्लोरीन परमाणु एक खोते हैं उतने ही एक पाते हैं। यह केवल इसलिए संभव है कि क्लोरीन मध्यवर्ती उपचयन अवस्था में शुरू होती है जिसमें दोनों दिशाओं में जगह है",
+            mr: "दावा खोटा आणि अभिक्रिया ही असमानुपातन. क्लोरिन 0 वर सुरू होतो; क्लोराइडमध्ये तो −1, क्षपित, आणि हायपोक्लोराइटमध्ये +1, ऑक्सिडीकृत. एकाच मूलद्रव्याने दोन्ही कामे केली आहेत, स्वतःचाच ऑक्सिडीकारक आणि क्षपणकारक बनून, आणि इलेक्ट्रॉन तरीही नेमके संतुलित — जितके क्लोरिन अणू एक गमावतात तितकेच एक मिळवतात. हे केवळ यामुळे शक्य की क्लोरिन मध्यवर्ती ऑक्सिडीकरण अवस्थेत सुरू होतो जिच्यात दोन्ही दिशांना जागा आहे",
+          },
+          {
+            en: "The student is right: only one element changes, so this is an ordinary acid–base reaction and not a redox one",
+            hi: "विद्यार्थी सही है: केवल एक तत्व बदलता है, अतः यह साधारण अम्ल-क्षारक अभिक्रिया है, अपचयोपचय नहीं",
+            mr: "विद्यार्थी बरोबर: केवळ एक मूलद्रव्य बदलते, म्हणून ही सामान्य आम्ल-आम्लारी अभिक्रिया, क्षपण-ऑक्सिडीकरण नव्हे",
+          },
+          {
+            en: "It is a redox reaction in which sodium is oxidised and chlorine reduced",
+            hi: "यह अपचयोपचय अभिक्रिया है जिसमें सोडियम उपचयित और क्लोरीन अपचयित होती है",
+            mr: "ही क्षपण-ऑक्सिडीकरण अभिक्रिया जिच्यात सोडियम ऑक्सिडीकृत आणि क्लोरिन क्षपित होतो",
+          },
+          {
+            en: "Chlorine is only reduced here, and the hypochlorite's oxygen supplies the compensating oxidation",
+            hi: "यहाँ क्लोरीन केवल अपचयित होती है, और भरपाई करने वाला उपचयन हाइपोक्लोराइट की ऑक्सीजन देती है",
+            mr: "इथे क्लोरिन केवळ क्षपित होतो, आणि भरपाई करणारे ऑक्सिडीकरण हायपोक्लोराइटचा ऑक्सिजन देतो",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Assign the oxidation numbers and the answer is unavoidable. Chlorine gas is an element in its standard state, so every atom is at 0. In sodium chloride the chlorine is at −1 — it has gained an electron and been reduced. In sodium hypochlorite, NaOCl, sodium is +1 and oxygen is −2, so chlorine must be +1 — it has lost an electron and been oxidised. Sodium is +1 on both sides and oxygen −2 on both sides; neither has changed at all, which disposes of the third and fourth options directly. One element, two fates. The student's premise sounds reasonable and is simply a rule that was never stated. What a redox reaction requires is that electrons move and that the books balance, not that two different elements be involved. Here the balance is exact: for every chlorine atom that gains an electron to become chloride, another loses one to become hypochlorite, and the equation comes out as Cl₂ + 2NaOH → NaCl + NaOCl + H₂O — one of each product from every molecule of chlorine. Why chlorine and not, say, chloride? Because disproportionation needs an element with somewhere to go in both directions. Chlorine at 0 sits between its lowest state, −1, and its several positive states, so it can fall or rise. Chloride at −1 is already at the bottom and can only be oxidised; perchlorate at +7 is at the top and can only be reduced. Neither can disproportionate, and the general rule follows: only an intermediate oxidation state can. The reaction is not a curiosity. It is how household bleach is manufactured, and the same chemistry run hot gives chlorate instead of hypochlorite, which is how potassium chlorate for matches is made — temperature decides which disproportionation you get. Two further examples are worth recognising, because the pattern recurs: hydrogen peroxide, with oxygen at −1 between its usual 0 and −2, decomposes to water and oxygen entirely by disproportionation, and copper(I) in solution disproportionates to copper metal and copper(II), which is why Cu⁺ salts are stable as solids and vanish the moment they are dissolved. The reverse process, two different oxidation states of one element meeting to give a single intermediate one, is comproportionation — and it is how iodine is liberated when iodide meets iodate in a titration. (The second answer denies a change in oxidation number that the formulae make plain.)",
+          hi: "उपचयन संख्याएँ सौंपो और उत्तर टाला नहीं जा सकता। क्लोरीन गैस अपनी मानक अवस्था में तत्व है, अतः हर परमाणु 0 पर है। सोडियम क्लोराइड में क्लोरीन −1 पर है — उसने इलेक्ट्रॉन पाया और अपचयित हुई। सोडियम हाइपोक्लोराइट, NaOCl, में सोडियम +1 और ऑक्सीजन −2 है, अतः क्लोरीन को +1 होना ही है — उसने इलेक्ट्रॉन खोया और उपचयित हुई। सोडियम दोनों ओर +1 और ऑक्सीजन दोनों ओर −2; कोई भी बिलकुल नहीं बदला, जो तीसरे और चौथे विकल्प को सीधे निपटा देता है। एक तत्व, दो नियतियाँ। विद्यार्थी की मान्यता उचित लगती है और वह बस ऐसा नियम है जो कभी कहा ही नहीं गया। अपचयोपचय अभिक्रिया यह माँगती है कि इलेक्ट्रॉन हिलें और बहीखाता मिले, यह नहीं कि दो भिन्न तत्व शामिल हों। यहाँ संतुलन ठीक-ठीक है: जो भी क्लोरीन परमाणु इलेक्ट्रॉन पाकर क्लोराइड बनता है उसके बदले दूसरा एक खोकर हाइपोक्लोराइट बनता है, और समीकरण Cl₂ + 2NaOH → NaCl + NaOCl + H₂O निकलता है — क्लोरीन के हर अणु से हर उत्पाद का एक। क्लोरीन ही क्यों, क्लोराइड क्यों नहीं? क्योंकि असमानुपातन को ऐसा तत्व चाहिए जिसके पास दोनों दिशाओं में जाने की जगह हो। 0 पर क्लोरीन अपनी सबसे नीची अवस्था −1 और अपनी कई धनात्मक अवस्थाओं के बीच बैठी है, अतः वह गिर भी सकती है और चढ़ भी। −1 पर क्लोराइड पहले से तल पर है और केवल उपचयित हो सकता है; +7 पर परक्लोरेट शिखर पर है और केवल अपचयित। कोई भी असमानुपातन नहीं कर सकता, और सामान्य नियम निकलता है: केवल मध्यवर्ती उपचयन अवस्था ही कर सकती है। अभिक्रिया कोई कौतुक नहीं। घरेलू ब्लीच इसी तरह बनता है, और वही रसायन गरम चलाने पर हाइपोक्लोराइट के बजाय क्लोरेट देता है, और माचिस के लिए पोटैशियम क्लोरेट ऐसे ही बनता है — कौन-सा असमानुपातन मिले यह ताप तय करता है। दो और उदाहरण पहचानने योग्य हैं, क्योंकि प्रतिरूप लौटता है: हाइड्रोजन परॉक्साइड, जिसमें ऑक्सीजन अपनी सामान्य 0 और −2 के बीच −1 पर है, पूरी तरह असमानुपातन से पानी और ऑक्सीजन में विघटित होता है, और विलयन में कॉपर(I) असमानुपातित होकर ताँबा धातु और कॉपर(II) देता है, इसीलिए Cu⁺ लवण ठोस के रूप में स्थिर हैं और घुलते ही ग़ायब हो जाते हैं। उलटी प्रक्रिया, एक तत्व की दो भिन्न उपचयन अवस्थाओं का मिलकर एक मध्यवर्ती देना, समानुपातन है — और अनुमापन में आयोडाइड के आयोडेट से मिलने पर आयोडीन इसी तरह मुक्त होती है। (दूसरा उत्तर उपचयन संख्या के उस परिवर्तन को नकारता है जिसे सूत्र स्पष्ट कर देते हैं।)",
+          mr: "ऑक्सिडीकरण संख्या द्या आणि उत्तर टाळता येत नाही. क्लोरिन वायू आपल्या प्रमाणित अवस्थेतील मूलद्रव्य, म्हणून प्रत्येक अणू 0 वर. सोडियम क्लोराइडमध्ये क्लोरिन −1 वर — त्याने इलेक्ट्रॉन मिळवला आणि क्षपित झाला. सोडियम हायपोक्लोराइट, NaOCl, मध्ये सोडियम +1 आणि ऑक्सिजन −2, म्हणून क्लोरिन +1 असावाच — त्याने इलेक्ट्रॉन गमावला आणि ऑक्सिडीकृत झाला. सोडियम दोन्ही बाजूंना +1 आणि ऑक्सिजन दोन्ही बाजूंना −2; कोणीही मुळीच बदलले नाही, जे तिसरा आणि चौथा पर्याय थेट निकाली काढते. एक मूलद्रव्य, दोन नियती. विद्यार्थ्याचे गृहीतक वाजवी वाटते आणि तो फक्त असा नियम जो कधी सांगितलाच गेला नाही. क्षपण-ऑक्सिडीकरण अभिक्रिया हे मागते की इलेक्ट्रॉन हलावेत आणि वहीखाते जुळावे, दोन वेगळी मूलद्रव्ये सामील असावीत हे नाही. इथे संतुलन नेमके: जो क्लोरिन अणू इलेक्ट्रॉन मिळवून क्लोराइड बनतो त्याबदल्यात दुसरा एक गमावून हायपोक्लोराइट बनतो, आणि समीकरण Cl₂ + 2NaOH → NaCl + NaOCl + H₂O असे निघते — क्लोरिनच्या प्रत्येक रेणूतून प्रत्येक उत्पादाचे एक. क्लोरिनच का, क्लोराइड का नाही? कारण असमानुपातनाला असे मूलद्रव्य लागते ज्याच्याकडे दोन्ही दिशांना जायला जागा असेल. 0 वरचा क्लोरिन आपल्या सर्वांत खालच्या अवस्था −1 आणि आपल्या अनेक धन अवस्थांमध्ये बसलेला, म्हणून तो खाली येऊ शकतो आणि वरही जाऊ शकतो. −1 वरचा क्लोराइड आधीच तळाशी आणि केवळ ऑक्सिडीकृत होऊ शकतो; +7 वरचा परक्लोरेट शिखरावर आणि केवळ क्षपित. कोणीही असमानुपातन करू शकत नाही, आणि सामान्य नियम निघतो: केवळ मध्यवर्ती ऑक्सिडीकरण अवस्थाच करू शकते. अभिक्रिया कुतूहल नव्हे. घरगुती ब्लीच याच पद्धतीने बनते, आणि तेच रसायन गरम चालवल्यास हायपोक्लोराइटऐवजी क्लोरेट देते, आणि काडेपेटीसाठी पोटॅशियम क्लोरेट असेच बनते — कोणते असमानुपातन मिळेल हे तापमान ठरवते. आणखी दोन उदाहरणे ओळखण्याजोगी, कारण आकृतिबंध परततो: हायड्रोजन पेरॉक्साइड, ज्यात ऑक्सिजन आपल्या नेहमीच्या 0 आणि −2 दरम्यान −1 वर, पूर्णपणे असमानुपातनाने पाणी आणि ऑक्सिजनमध्ये विघटित होते, आणि द्रावणातील कॉपर(I) असमानुपातित होऊन तांबे धातू आणि कॉपर(II) देते, म्हणूनच Cu⁺ क्षार घन रूपात स्थिर आणि विरघळताच नाहीसे होतात. उलटी प्रक्रिया, एका मूलद्रव्याच्या दोन वेगळ्या ऑक्सिडीकरण अवस्था मिळून एक मध्यवर्ती देणे, हे समानुपातन — आणि अनुमापनात आयोडाइड आयोडेटला भेटल्यावर आयोडीन याच पद्धतीने मुक्त होते. (दुसरे उत्तर ऑक्सिडीकरण संख्येतील तो बदल नाकारते जो सूत्रे स्पष्ट करतात.)",
+        },
+      },
+      /*H7C*/
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 8 — Organic Chemistry: Some Basic Principles                    */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "chemistry-11-organic-basic-principles",
+    subject: "CHEMISTRY",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 8 — Organic Chemistry: Some Basic Principles and Techniques",
+      hi: "अध्याय 8 — कार्बनिक रसायन: कुछ आधारभूत सिद्धांत तथा तकनीकें",
+      mr: "प्रकरण 8 — सेंद्रिय रसायन: काही मूलभूत तत्त्वे आणि तंत्रे",
+    },
+    name: {
+      en: "Organic Chemistry: Basic Principles",
+      hi: "कार्बनिक रसायन: आधारभूत सिद्धांत",
+      mr: "सेंद्रिय रसायन: मूलभूत तत्त्वे",
+    },
+    summary: {
+      en: "One element accounts for more compounds than all the others together, and the reason is that carbon bonds to itself indefinitely without weakening. A family whose members differ by one CH₂ and behave almost identically, two substances with the same formula and nothing else in common, a naming system built so that a name can be read back into a structure, and two effects — one travelling through bonds, one spread across them — that explain most of what organic reactions do.",
+      hi: "एक तत्व बाक़ी सब मिलाकर जितने यौगिक बनाते हैं उससे अधिक बनाता है, और कारण यह कि कार्बन अपने से अनिश्चित काल तक बिना दुर्बल हुए जुड़ता जाता है। वह कुनबा जिसके सदस्य एक CH₂ से भिन्न हैं और लगभग एक-सा व्यवहार करते हैं, वे दो पदार्थ जिनका सूत्र एक और बाक़ी कुछ साझा नहीं, वह नाम-प्रणाली जो इस तरह बनी कि नाम को वापस संरचना में पढ़ा जा सके, और वे दो प्रभाव — एक बंधों से होकर यात्रा करता, दूसरा उन पर फैला — जो कार्बनिक अभिक्रियाओं का अधिकांश समझा देते हैं।",
+      mr: "एक मूलद्रव्य बाकी सर्व मिळून जितकी संयुगे बनवतात त्याहून अधिक बनवते, आणि कारण हे की कार्बन स्वतःशी अनिश्चित काळ न दुर्बल होता जुळत जातो. ते कुटुंब ज्याचे सदस्य एका CH₂ ने वेगळे आणि जवळपास सारखेच वागतात, ते दोन पदार्थ ज्यांचे सूत्र एक आणि बाकी काहीही समान नाही, ती नाम-प्रणाली जी अशी बनवली की नाव पुन्हा संरचनेत वाचता यावे, आणि ते दोन परिणाम — एक बंधांतून प्रवास करणारा, दुसरा त्यांच्यावर पसरलेला — जे सेंद्रिय अभिक्रियांचे बहुतांश समजावतात.",
+    },
+    position: 8,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "homologous-series",
+        name: {
+          en: "The homologous series",
+          hi: "समजातीय श्रेणी",
+          mr: "समजातीय मालिका",
+        },
+        kind: "family",
+        prompt: {
+          en: "Methane, ethane, propane and butane differ from each other by exactly one CH₂ unit, share one general formula and one set of reactions, and their boiling points climb in an orderly line. Which arrangement is this?",
+          hi: "मेथेन, एथेन, प्रोपेन और ब्यूटेन एक-दूसरे से ठीक एक CH₂ इकाई भिन्न हैं, एक सामान्य सूत्र और अभिक्रियाओं का एक समुच्चय साझा करते हैं, और उनके क्वथनांक व्यवस्थित रेखा में चढ़ते हैं। यह कौन-सी व्यवस्था है?",
+          mr: "मिथेन, इथेन, प्रोपेन आणि ब्युटेन एकमेकांहून नेमक्या एका CH₂ एककाने वेगळे, एक सामान्य सूत्र आणि अभिक्रियांचा एक संच वाटून घेतात, आणि त्यांचे उकळबिंदू व्यवस्थित रेषेत चढतात. ही कोणती मांडणी?",
+        },
+        statement: {
+          en: "A homologous series is a family of compounds differing by a CH₂ unit, sharing a general formula and chemical behaviour, with physical properties that change gradually along the series.",
+          hi: "समजातीय श्रेणी उन यौगिकों का कुनबा है जो एक CH₂ इकाई से भिन्न हैं, एक सामान्य सूत्र और रासायनिक व्यवहार साझा करते हैं, और जिनके भौतिक गुण श्रेणी भर क्रमशः बदलते हैं।",
+          mr: "समजातीय मालिका म्हणजे एका CH₂ एककाने वेगळ्या असणाऱ्या संयुगांचे कुटुंब, जी एक सामान्य सूत्र आणि रासायनिक वर्तन वाटून घेतात, आणि ज्यांचे भौतिक गुणधर्म मालिकेभर क्रमाक्रमाने बदलतात.",
+        },
+        detail: {
+          en: "It is what makes organic chemistry learnable at all: study one member and the reactions of every other are known, so millions of compounds reduce to a few dozen families.",
+          hi: "यही कार्बनिक रसायन को सीखने योग्य बनाता है: एक सदस्य पढ़ो और बाक़ी सबकी अभिक्रियाएँ ज्ञात हो जाती हैं, अतः लाखों यौगिक कुछ दर्जन कुनबों में सिमट आते हैं।",
+          mr: "हेच सेंद्रिय रसायन शिकण्याजोगे बनवते: एक सदस्य अभ्यासा आणि बाकी सर्वांच्या अभिक्रिया कळतात, म्हणून लाखो संयुगे काही डझन कुटुंबांत आटतात.",
+        },
+        extra: {
+          en: "The gradation is why crude oil can be separated at all: fractional distillation sorts the alkanes by boiling point, and the boiling point rises steadily because each added CH₂ adds surface for dispersion forces to act on.",
+          hi: "यही क्रमिकता है जिससे कच्चा तेल अलग किया जा सकता है: प्रभाजी आसवन ऐल्केनों को क्वथनांक से छाँटता है, और क्वथनांक लगातार चढ़ता है क्योंकि हर जुड़ा CH₂ परिक्षेपण बलों को लगने के लिए और सतह देता है।",
+          mr: "हीच क्रमवारता ज्यामुळे कच्चे तेल वेगळे करता येते: अंशात्मक ऊर्ध्वपातन अल्केनांना उकळबिंदूने वेगळे करते, आणि उकळबिंदू सतत चढतो कारण प्रत्येक जोडलेला CH₂ विकिरण बलांना लागायला अधिक पृष्ठभाग देतो.",
+        },
+        pair: {
+          left: {
+            en: "Learn one member and you know the family",
+            hi: "एक सदस्य सीखो और पूरा कुनबा जान जाओ",
+            mr: "एक सदस्य शिका आणि अख्खे कुटुंब कळते",
+          },
+          right: {
+            en: "the homologous series",
+            hi: "समजातीय श्रेणी",
+            mr: "समजातीय मालिका",
+          },
+        },
+      },
+      {
+        id: "structural-isomerism",
+        name: {
+          en: "Structural isomerism",
+          hi: "संरचनात्मक समावयवता",
+          mr: "संरचनात्मक समघटकता",
+        },
+        kind: "family",
+        prompt: {
+          en: "C₂H₆O is a drinkable liquid boiling at 78 °C and also a gas boiling at −24 °C, and the difference lies entirely in which atom sits between which. Which phenomenon is this?",
+          hi: "C₂H₆O 78 °C पर उबलता पीने योग्य द्रव भी है और −24 °C पर उबलती गैस भी, और भेद पूरी तरह इसमें है कि कौन-सा परमाणु किसके बीच बैठा है। यह कौन-सी परिघटना है?",
+          mr: "C₂H₆O हे 78 °C वर उकळणारे पिण्याजोगे द्रवही आहे आणि −24 °C वर उकळणारा वायूही, आणि फरक पूर्णपणे कोणता अणू कोणामध्ये बसला आहे यात. ही कोणती घटना?",
+        },
+        statement: {
+          en: "Structural isomers share a molecular formula but differ in how the atoms are connected, and they are different substances with different properties in every respect.",
+          hi: "संरचनात्मक समावयवी आण्विक सूत्र साझा करते हैं पर इसमें भिन्न हैं कि परमाणु जुड़े कैसे हैं, और वे हर दृष्टि से भिन्न गुणों वाले भिन्न पदार्थ हैं।",
+          mr: "संरचनात्मक समघटक रेणवीय सूत्र वाटून घेतात पण अणू कसे जोडले आहेत यात वेगळे, आणि ते प्रत्येक दृष्टीने वेगळ्या गुणधर्मांचे वेगळे पदार्थ आहेत.",
+        },
+        detail: {
+          en: "The number of isomers climbs alarmingly with chain length: butane has two, pentane three, decane seventy-five, and C₃₀H₆₂ over four thousand million.",
+          hi: "शृंखला लंबी होते ही समावयवियों की संख्या डरावने ढंग से चढ़ती है: ब्यूटेन के दो, पेंटेन के तीन, डेकेन के पचहत्तर, और C₃₀H₆₂ के चार अरब से अधिक।",
+          mr: "साखळी लांब होताच समघटकांची संख्या भीतिदायकपणे चढते: ब्युटेनचे दोन, पेंटेनचे तीन, डेकेनचे पंचाहत्तर, आणि C₃₀H₆₂ चे चार अब्जांहून अधिक.",
+        },
+        extra: {
+          en: "It is why a molecular formula is never a sufficient answer in organic chemistry, and why the whole apparatus of naming exists — a name must specify the connections and not merely the atom count.",
+          hi: "इसी से कार्बनिक रसायन में आण्विक सूत्र कभी पर्याप्त उत्तर नहीं, और इसी से नामकरण का पूरा तंत्र है — नाम को जोड़ बताने पड़ते हैं, केवल परमाणु-गिनती नहीं।",
+          mr: "यामुळेच सेंद्रिय रसायनात रेणवीय सूत्र कधीही पुरेसे उत्तर नाही, आणि यामुळेच नामकरणाचा अख्खा डोलारा — नावाने जोडण्या सांगाव्या लागतात, केवळ अणु-मोजणी नव्हे.",
+        },
+        pair: {
+          left: {
+            en: "One formula, a drink and a gas",
+            hi: "एक सूत्र, एक पेय और एक गैस",
+            mr: "एक सूत्र, एक पेय आणि एक वायू",
+          },
+          right: {
+            en: "structural isomerism",
+            hi: "संरचनात्मक समावयवता",
+            mr: "संरचनात्मक समघटकता",
+          },
+        },
+      },
+      {
+        id: "iupac-naming",
+        name: {
+          en: "IUPAC naming rules",
+          hi: "IUPAC नामकरण नियम",
+          mr: "IUPAC नामकरण नियम",
+        },
+        kind: "family",
+        prompt: {
+          en: "Find the longest chain containing the principal group, number it from the end that gives that group the lowest locant, and list the branches alphabetically — and the resulting name can be read straight back into a structure. Which system is this?",
+          hi: "मुख्य समूह वाली सबसे लंबी शृंखला खोजो, उसे उस सिरे से गिनो जो उस समूह को सबसे छोटा अंक दे, और शाखाएँ वर्णक्रम में गिनाओ — और बना नाम सीधे वापस संरचना में पढ़ा जा सकता है। यह कौन-सी प्रणाली है?",
+          mr: "मुख्य गट असलेली सर्वांत लांब साखळी शोधा, तिला त्या टोकापासून क्रमांक द्या जे त्या गटाला सर्वांत लहान अंक देईल, आणि फांद्या वर्णक्रमाने सांगा — आणि बनलेले नाव थेट पुन्हा संरचनेत वाचता येते. ही कोणती प्रणाली?",
+        },
+        statement: {
+          en: "IUPAC nomenclature builds a name from a root for the chain length, a suffix for the principal functional group and prefixes for substituents, so that name and structure determine each other.",
+          hi: "IUPAC नामपद्धति नाम को शृंखला-लंबाई के मूल, मुख्य क्रियात्मक समूह के प्रत्यय और प्रतिस्थापियों के उपसर्गों से बनाती है, ताकि नाम और संरचना एक-दूसरे को तय कर दें।",
+          mr: "IUPAC नामपद्धती नाव साखळी-लांबीच्या मुळापासून, मुख्य कार्यकारी गटाच्या प्रत्ययापासून आणि प्रतिस्थापकांच्या उपसर्गांपासून बनवते, जेणेकरून नाव आणि संरचना एकमेकांना ठरवतील.",
+        },
+        detail: {
+          en: "The lowest-locant rule is what makes a name unique: 2-methylbutane and 3-methylbutane describe the same molecule, and only the first is correct.",
+          hi: "सबसे छोटे अंक का नियम ही नाम को अद्वितीय बनाता है: 2-मेथिलब्यूटेन और 3-मेथिलब्यूटेन एक ही अणु का वर्णन करते हैं, और केवल पहला सही है।",
+          mr: "सर्वांत लहान अंकाचा नियम हाच नाव अद्वितीय बनवतो: 2-मिथाइलब्युटेन आणि 3-मिथाइलब्युटेन एकाच रेणूचे वर्णन करतात, आणि केवळ पहिले बरोबर.",
+        },
+        extra: {
+          en: "Common names survive where they are shorter and unambiguous — nobody says 2-hydroxy-1,2,3-propanetricarboxylic acid when citric acid will do — but only the systematic name can be invented for a compound never seen before.",
+          hi: "प्रचलित नाम वहाँ बचे रहते हैं जहाँ वे छोटे और असंदिग्ध हैं — जब सिट्रिक अम्ल से काम चल जाए तो 2-हाइड्रॉक्सी-1,2,3-प्रोपेनट्राइकार्बोक्सिलिक अम्ल कोई नहीं कहता — पर अभी तक न देखे गए यौगिक के लिए केवल पद्धतिगत नाम ही गढ़ा जा सकता है।",
+          mr: "प्रचलित नावे तिथे टिकतात जिथे ती लहान आणि निःसंदिग्ध — सायट्रिक आम्लाने भागत असेल तर 2-हायड्रॉक्सी-1,2,3-प्रोपेनट्रायकार्बोक्सिलिक आम्ल कोणी म्हणत नाही — पण अजून न पाहिलेल्या संयुगासाठी केवळ पद्धतशीर नावच घडवता येते.",
+        },
+        pair: {
+          left: {
+            en: "A name that can be read back into a drawing",
+            hi: "ऐसा नाम जिसे वापस चित्र में पढ़ा जा सके",
+            mr: "असे नाव जे पुन्हा चित्रात वाचता येईल",
+          },
+          right: {
+            en: "IUPAC naming rules",
+            hi: "IUPAC नामकरण नियम",
+            mr: "IUPAC नामकरण नियम",
+          },
+        },
+      },
+      {
+        id: "inductive-effect",
+        name: {
+          en: "The inductive effect",
+          hi: "प्रेरणिक प्रभाव",
+          mr: "प्रेरणिक परिणाम",
+        },
+        kind: "effect",
+        prompt: {
+          en: "A chlorine at one end of a chain pulls electron density along the sigma bonds towards itself, strongly at the first carbon, weakly at the second and hardly at all by the fourth. Which effect is this?",
+          hi: "शृंखला के एक सिरे का क्लोरीन सिग्मा बंधों के अनुदिश इलेक्ट्रॉन-घनत्व को अपनी ओर खींचता है, पहले कार्बन पर प्रबलता से, दूसरे पर दुर्बल और चौथे तक लगभग कुछ भी नहीं। यह कौन-सा प्रभाव है?",
+          mr: "साखळीच्या एका टोकाचा क्लोरिन सिग्मा बंधांच्या दिशेने इलेक्ट्रॉन-घनता स्वतःकडे ओढतो, पहिल्या कार्बनवर प्रबळपणे, दुसऱ्यावर दुर्बल आणि चौथ्यापर्यंत जवळपास काहीच नाही. हा कोणता परिणाम?",
+        },
+        statement: {
+          en: "The inductive effect is the permanent displacement of electron density along a chain of sigma bonds towards a more electronegative atom, and it dies away rapidly with distance.",
+          hi: "प्रेरणिक प्रभाव सिग्मा बंधों की शृंखला के अनुदिश इलेक्ट्रॉन-घनत्व का अधिक विद्युत्-ऋणात्मक परमाणु की ओर स्थायी विस्थापन है, और वह दूरी के साथ तेज़ी से क्षीण हो जाता है।",
+          mr: "प्रेरणिक परिणाम म्हणजे सिग्मा बंधांच्या साखळीच्या दिशेने इलेक्ट्रॉन-घनतेचे अधिक विद्युतऋण अणूकडे कायमचे विस्थापन, आणि तो अंतरासोबत झपाट्याने क्षीण होतो.",
+        },
+        detail: {
+          en: "It explains acid strengths directly: chloroacetic acid is far stronger than acetic acid because the chlorine pulls charge away from the carboxylate and stabilises it once the proton has left.",
+          hi: "यह अम्ल-प्रबलताएँ सीधे समझाता है: क्लोरोऐसीटिक अम्ल ऐसीटिक अम्ल से कहीं प्रबल है क्योंकि क्लोरीन कार्बोक्सिलेट से आवेश खींच लेती है और प्रोटॉन के जाने के बाद उसे स्थिर कर देती है।",
+          mr: "हा आम्ल-प्रबळता थेट समजावतो: क्लोरोॲसिटिक आम्ल ॲसिटिक आम्लाहून कितीतरी प्रबळ कारण क्लोरिन कार्बोक्सिलेटपासून भार ओढते आणि प्रोटॉन गेल्यावर त्याला स्थिर करते.",
+        },
+        extra: {
+          en: "Alkyl groups push electron density the other way, which is why a carbocation with three of them attached is far more stable than one with none — and that ordering decides the outcome of a great many reactions.",
+          hi: "ऐल्किल समूह इलेक्ट्रॉन-घनत्व उलटी ओर धकेलते हैं, इसीलिए जिस कार्बधनायन से तीन जुड़े हों वह उससे कहीं अधिक स्थिर है जिससे एक भी न जुड़ा हो — और वही क्रम बहुत सारी अभिक्रियाओं का परिणाम तय करता है।",
+          mr: "अल्काइल गट इलेक्ट्रॉन-घनता उलट दिशेने ढकलतात, म्हणूनच ज्या कार्बधनायनाला तीन जोडलेले असतील तो एकही न जोडलेल्याहून कितीतरी अधिक स्थिर — आणि तोच क्रम पुष्कळ अभिक्रियांचा निकाल ठरवतो.",
+        },
+        pair: {
+          left: {
+            en: "Strong at the first carbon and gone by the fourth",
+            hi: "पहले कार्बन पर प्रबल और चौथे तक ग़ायब",
+            mr: "पहिल्या कार्बनवर प्रबळ आणि चौथ्यापर्यंत गायब",
+          },
+          right: {
+            en: "the inductive effect",
+            hi: "प्रेरणिक प्रभाव",
+            mr: "प्रेरणिक परिणाम",
+          },
+        },
+      },
+      {
+        id: "resonance-in-organic-molecules",
+        name: {
+          en: "Resonance in organic molecules",
+          hi: "कार्बनिक अणुओं में अनुनाद",
+          mr: "सेंद्रिय रेणूंतील अनुनाद",
+        },
+        kind: "effect",
+        prompt: {
+          en: "The two carbon–oxygen bonds in a carboxylate ion are found to be identical in length, although any single structure drawn for it shows one double and one single. Which idea resolves this?",
+          hi: "कार्बोक्सिलेट आयन के दोनों कार्बन-ऑक्सीजन बंध लंबाई में समान पाए जाते हैं, यद्यपि उसके लिए खींची कोई भी अकेली संरचना एक द्विबंध और एक एकल दिखाती है। कौन-सा विचार इसे सुलझाता है?",
+          mr: "कार्बोक्सिलेट आयनाचे दोन्ही कार्बन-ऑक्सिजन बंध लांबीत सारखे आढळतात, जरी त्यासाठी काढलेली कोणतीही एकच संरचना एक द्विबंध आणि एक एकेरी दाखवते. कोणती कल्पना हे सोडवते?",
+        },
+        statement: {
+          en: "Resonance describes a molecule whose real structure is a single hybrid intermediate between several drawable ones, because the pi electrons are delocalised rather than fixed in particular bonds.",
+          hi: "अनुनाद ऐसे अणु का वर्णन करता है जिसकी असली संरचना कई खींची जा सकने वाली संरचनाओं के बीच का एक ही संकर है, क्योंकि पाई इलेक्ट्रॉन विशेष बंधों में जड़े नहीं बल्कि विस्थानीकृत हैं।",
+          mr: "अनुनाद अशा रेणूचे वर्णन करतो ज्याची खरी संरचना काढता येणाऱ्या अनेक संरचनांमधला एकच संकर आहे, कारण पाय इलेक्ट्रॉन विशिष्ट बंधांत जखडलेले नसून विस्थानित आहेत.",
+        },
+        detail: {
+          en: "The molecule does not flicker between the drawings — it is never any of them, in the same way a mule is not alternately a horse and a donkey.",
+          hi: "अणु उन चित्रों के बीच झिलमिलाता नहीं — वह उनमें से कोई कभी नहीं होता, ठीक वैसे जैसे ख़च्चर बारी-बारी से घोड़ा और गधा नहीं होता।",
+          mr: "रेणू त्या चित्रांमध्ये लुकलुकत नाही — तो त्यांपैकी कोणीही कधीच नसतो, अगदी तसेच जसे खेचर आळीपाळीने घोडा आणि गाढव नसते.",
+        },
+        extra: {
+          en: "Delocalisation always lowers the energy, which is why a carboxylic acid gives up its proton far more readily than an alcohol does — the anion it leaves behind is stabilised and the alcohol's is not.",
+          hi: "विस्थानीकरण सदा ऊर्जा घटाता है, इसीलिए कार्बोक्सिलिक अम्ल ऐल्कोहॉल की तुलना में अपना प्रोटॉन कहीं अधिक तत्परता से छोड़ता है — वह जो ऋणायन पीछे छोड़ता है वह स्थिर होता है और ऐल्कोहॉल का नहीं।",
+          mr: "विस्थानीकरण नेहमी ऊर्जा घटवते, म्हणूनच कार्बोक्सिलिक आम्ल अल्कोहोलच्या तुलनेत आपला प्रोटॉन कितीतरी अधिक तत्परतेने सोडते — तो जो ऋणायन मागे सोडतो तो स्थिर असतो आणि अल्कोहोलचा नाही.",
+        },
+        pair: {
+          left: {
+            en: "Never a horse and never a donkey",
+            hi: "न कभी घोड़ा और न कभी गधा",
+            mr: "ना कधी घोडा ना कधी गाढव",
+          },
+          right: {
+            en: "resonance in organic molecules",
+            hi: "कार्बनिक अणुओं में अनुनाद",
+            mr: "सेंद्रिय रेणूंतील अनुनाद",
+          },
+        },
+      },
+      {
+        id: "carbocation-stability",
+        name: {
+          en: "Carbocation stability",
+          hi: "कार्बधनायन स्थिरता",
+          mr: "कार्बधनायन स्थिरता",
+        },
+        kind: "effect",
+        prompt: {
+          en: "A positively charged carbon with three alkyl groups around it survives long enough to react; one with none is so unstable it is barely a species at all — and the order tertiary above secondary above primary decides where a reaction goes. Which trend is this?",
+          hi: "जिस धनावेशित कार्बन के इर्द-गिर्द तीन ऐल्किल समूह हों वह अभिक्रिया करने भर जीवित रहता है; जिसके पास एक भी न हो वह इतना अस्थिर है कि वह मुश्किल से कोई स्पीशीज़ है — और तृतीयक ऊपर द्वितीयक ऊपर प्राथमिक का क्रम तय करता है कि अभिक्रिया कहाँ जाएगी। यह कौन-सी प्रवृत्ति है?",
+          mr: "ज्या धनभारित कार्बनभोवती तीन अल्काइल गट असतील तो अभिक्रिया करण्याइतका जिवंत राहतो; ज्याच्याकडे एकही नाही तो इतका अस्थिर की तो जेमतेम एखादी प्रजाती आहे — आणि तृतीयक वर द्वितीयक वर प्राथमिक हा क्रम अभिक्रिया कुठे जाईल हे ठरवतो. हा कोणता कल?",
+        },
+        statement: {
+          en: "Carbocation stability rises from primary through secondary to tertiary, because each attached alkyl group pushes electron density towards the positive centre and helps to spread the charge.",
+          hi: "कार्बधनायन स्थिरता प्राथमिक से द्वितीयक होते हुए तृतीयक तक चढ़ती है, क्योंकि हर जुड़ा ऐल्किल समूह धन केंद्र की ओर इलेक्ट्रॉन-घनत्व धकेलता है और आवेश फैलाने में मदद करता है।",
+          mr: "कार्बधनायन स्थिरता प्राथमिकपासून द्वितीयकमार्गे तृतीयकपर्यंत चढते, कारण प्रत्येक जोडलेला अल्काइल गट धन केंद्राकडे इलेक्ट्रॉन-घनता ढकलतो आणि भार पसरवायला मदत करतो.",
+        },
+        detail: {
+          en: "It is the reason behind Markovnikov's rule: when a hydrogen halide adds to an unsymmetrical alkene, the proton goes wherever leaves the more stable cation behind.",
+          hi: "मार्कोवनिकोव के नियम के पीछे यही कारण है: जब हाइड्रोजन हैलाइड असममित ऐल्कीन से जुड़ता है, प्रोटॉन वहाँ जाता है जहाँ जाने से पीछे अधिक स्थिर धनायन बचे।",
+          mr: "मार्कोव्हनिकॉव्हच्या नियमामागचे कारण हेच: जेव्हा हायड्रोजन हॅलाइड असममित अल्कीनला जोडते, तेव्हा प्रोटॉन तिथे जातो जिथे गेल्याने मागे अधिक स्थिर धनायन उरेल.",
+        },
+        extra: {
+          en: "A carbocation next to a double bond or a benzene ring beats even a tertiary one, because resonance spreads the charge over several atoms instead of merely leaning on three neighbours.",
+          hi: "द्विबंध या बेंज़ीन वलय के पास वाला कार्बधनायन तृतीयक को भी हरा देता है, क्योंकि अनुनाद आवेश को केवल तीन पड़ोसियों पर टिकाने के बजाय कई परमाणुओं पर फैला देता है।",
+          mr: "द्विबंध वा बेंझिन वलयाजवळचा कार्बधनायन तृतीयकालाही हरवतो, कारण अनुनाद भार केवळ तीन शेजाऱ्यांवर टेकवण्याऐवजी अनेक अणूंवर पसरवतो.",
+        },
+        pair: {
+          left: {
+            en: "Three neighbours beat two, and resonance beats three",
+            hi: "तीन पड़ोसी दो को हराते, और अनुनाद तीनों को",
+            mr: "तीन शेजारी दोघांना हरवतात, आणि अनुनाद तिघांना",
+          },
+          right: {
+            en: "carbocation stability",
+            hi: "कार्बधनायन स्थिरता",
+            mr: "कार्बधनायन स्थिरता",
+          },
+        },
+      },
+      /*F8C*/
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Ethanol boils at 78 °C and dimethyl ether at −24 °C, although both are C₂H₆O with identical molar masses. A student says one of the two boiling points must be misprinted. Explain the difference.",
+          hi: "एथेनॉल 78 °C पर उबलता है और डाइमेथिल ईथर −24 °C पर, यद्यपि दोनों C₂H₆O हैं और उनके मोलर द्रव्यमान समान हैं। एक विद्यार्थी कहता है कि दोनों में से कोई एक क्वथनांक ग़लत छपा होगा। भेद समझाओ।",
+          mr: "इथेनॉल 78 °C वर उकळते आणि डायमिथाइल ईथर −24 °C वर, जरी दोन्ही C₂H₆O आणि त्यांची मोलर वस्तुमाने सारखी. एक विद्यार्थी म्हणतो की दोघांपैकी एक उकळबिंदू चुकीचा छापला असणार. फरक समजावा.",
+        },
+        choices: [
+          {
+            en: "Both figures are correct: the two are structural isomers, not the same substance. Ethanol is CH₃CH₂OH with a hydrogen bonded directly to oxygen, so its molecules hydrogen-bond to one another and a great deal of energy is needed to separate them. In dimethyl ether, CH₃OCH₃, every hydrogen is on carbon, so no hydrogen bonding is possible between its molecules and only weak dipole and dispersion forces hold them together",
+            hi: "दोनों आँकड़े सही हैं: वे दोनों संरचनात्मक समावयवी हैं, एक ही पदार्थ नहीं। एथेनॉल CH₃CH₂OH है जिसमें हाइड्रोजन सीधे ऑक्सीजन से बँधा है, अतः उसके अणु आपस में हाइड्रोजन बंध बनाते हैं और उन्हें अलग करने को बहुत ऊर्जा चाहिए। डाइमेथिल ईथर, CH₃OCH₃, में हर हाइड्रोजन कार्बन पर है, अतः उसके अणुओं के बीच हाइड्रोजन बंधन संभव ही नहीं और उन्हें केवल दुर्बल द्विध्रुव तथा परिक्षेपण बल थामे रहते हैं",
+            mr: "दोन्ही आकडे बरोबर: ते दोघे संरचनात्मक समघटक, एकच पदार्थ नव्हे. इथेनॉल हे CH₃CH₂OH ज्यात हायड्रोजन थेट ऑक्सिजनशी बांधलेला, म्हणून त्याचे रेणू आपापसात हायड्रोजन बंध करतात आणि त्यांना वेगळे करायला खूप ऊर्जा लागते. डायमिथाइल ईथर, CH₃OCH₃, मध्ये प्रत्येक हायड्रोजन कार्बनवर, म्हणून त्याच्या रेणूंमध्ये हायड्रोजन बंधन शक्यच नाही आणि त्यांना केवळ दुर्बल द्विध्रुव व विकिरण बले धरून ठेवतात",
+          },
+          {
+            en: "The student is right: substances with the same molecular formula must have the same boiling point",
+            hi: "विद्यार्थी सही है: एक ही आण्विक सूत्र वाले पदार्थों का क्वथनांक एक ही होना चाहिए",
+            mr: "विद्यार्थी बरोबर: एकाच रेणवीय सूत्राच्या पदार्थांचा उकळबिंदू एकच असावा",
+          },
+          {
+            en: "Ethanol boils higher because it is heavier, since the hydroxyl group adds mass to the molecule",
+            hi: "एथेनॉल ऊँचे पर उबलता है क्योंकि वह भारी है, चूँकि हाइड्रॉक्सिल समूह अणु में द्रव्यमान जोड़ता है",
+            mr: "इथेनॉल उंच उकळते कारण ते जड आहे, कारण हायड्रॉक्सिल गट रेणूत वस्तुमान जोडतो",
+          },
+          {
+            en: "Dimethyl ether is non-polar and ethanol is polar, and polarity alone accounts for a hundred-degree difference",
+            hi: "डाइमेथिल ईथर अध्रुवीय है और एथेनॉल ध्रुवीय, और अकेली ध्रुवता सौ डिग्री का अंतर समझा देती है",
+            mr: "डायमिथाइल ईथर अध्रुवीय आणि इथेनॉल ध्रुवीय, आणि एकटी ध्रुवता शंभर अंशांचा फरक समजावते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The student's premise is the mistake, and it is worth stating plainly: a molecular formula does not determine a substance. C₂H₆O is a count of atoms, and the same atoms can be joined in more than one way. Join them as CH₃CH₂OH and you get ethanol; join them as CH₃OCH₃ and you get dimethyl ether. These are structural isomers — different compounds, with different melting points, different densities, different smells and different chemistry. One is drinkable in dilution and the other is an anaesthetic gas. Now the boiling points, which follow from one structural detail. In ethanol the oxygen carries a hydrogen directly, so an ethanol molecule presents both a hydrogen bonded to a very electronegative atom and a lone pair on that atom. That is exactly the requirement for hydrogen bonding, and every ethanol molecule can therefore link to its neighbours. Boiling means pulling molecules entirely apart, so all those links must be broken, and 78 °C is what that costs. In dimethyl ether the oxygen sits between two carbons and carries no hydrogen of its own. The molecule still has lone pairs and it is still polar — so it can accept a hydrogen bond from something else, such as water, which is why the ether is appreciably soluble. But it has no hydrogen on an electronegative atom to donate one, so ether molecules cannot bond to each other. Only dipole–dipole attraction and dispersion forces remain, and those give way at −24 °C. The hundred-degree gap is the strength of hydrogen bonding, made visible by holding everything else constant. Note the shape of the argument, because it recurs throughout organic chemistry. Molar mass and polarity are the same for both isomers, so neither can be the explanation — the third and fourth options both reach for a variable that has not changed. What differs is a specific structural feature, an O–H bond, and identifying which feature is responsible is most of what explaining a physical property amounts to. The same reasoning ranks the boiling points of an alkane, an aldehyde and an alcohol of similar mass in that order, and it is why water is a liquid while hydrogen sulphide, heavier, is a gas. (The second answer would make isomerism impossible, and every organic chemistry textbook is a catalogue of counter-examples.)",
+          hi: "विद्यार्थी की मान्यता ही भूल है, और उसे साफ़ कहना सार्थक है: आण्विक सूत्र पदार्थ तय नहीं करता। C₂H₆O परमाणुओं की गिनती है, और वही परमाणु एक से अधिक तरीक़ों से जोड़े जा सकते हैं। उन्हें CH₃CH₂OH की तरह जोड़ो तो एथेनॉल मिलता है; CH₃OCH₃ की तरह जोड़ो तो डाइमेथिल ईथर। ये संरचनात्मक समावयवी हैं — भिन्न यौगिक, भिन्न गलनांक, भिन्न घनत्व, भिन्न गंध और भिन्न रसायन वाले। एक तनुकरण में पीने योग्य है और दूसरा निश्चेतक गैस। अब क्वथनांक, जो एक संरचनात्मक ब्योरे से निकलते हैं। एथेनॉल में ऑक्सीजन सीधे हाइड्रोजन ढोता है, अतः एथेनॉल का अणु दोनों प्रस्तुत करता है — अत्यंत विद्युत्-ऋणात्मक परमाणु से बँधा हाइड्रोजन और उसी परमाणु पर एकाकी युग्म। हाइड्रोजन बंधन की शर्त ठीक यही है, और इसलिए हर एथेनॉल अणु अपने पड़ोसियों से जुड़ सकता है। उबलने का अर्थ अणुओं को पूरी तरह अलग करना है, अतः वे सारे जोड़ तोड़ने पड़ते हैं, और 78 °C उसकी क़ीमत है। डाइमेथिल ईथर में ऑक्सीजन दो कार्बनों के बीच बैठा है और अपना कोई हाइड्रोजन नहीं ढोता। अणु के पास अब भी एकाकी युग्म हैं और वह अब भी ध्रुवीय है — अतः वह किसी और से, जैसे पानी से, हाइड्रोजन बंध स्वीकार कर सकता है, इसीलिए ईथर उल्लेखनीय रूप से विलेय है। पर उसके पास देने को विद्युत्-ऋणात्मक परमाणु पर कोई हाइड्रोजन नहीं, अतः ईथर के अणु आपस में बंध नहीं बना सकते। केवल द्विध्रुव-द्विध्रुव आकर्षण और परिक्षेपण बल बचते हैं, और वे −24 °C पर छूट जाते हैं। सौ डिग्री का अंतर हाइड्रोजन बंधन की प्रबलता है, बाक़ी सब अचर रखकर दिखाई देने योग्य बनाई गई। तर्क का आकार ध्यान दो, क्योंकि वह कार्बनिक रसायन भर लौटता है। दोनों समावयवियों के लिए मोलर द्रव्यमान और ध्रुवता एक-सी हैं, अतः कोई भी व्याख्या नहीं हो सकती — तीसरा और चौथा विकल्प दोनों ऐसा चर पकड़ते हैं जो बदला ही नहीं। भिन्न है एक विशिष्ट संरचनात्मक लक्षण, एक O–H बंध, और कौन-सा लक्षण ज़िम्मेदार है यह पहचानना ही किसी भौतिक गुण को समझाने का अधिकांश अर्थ है। वही तर्क समान द्रव्यमान के ऐल्केन, ऐल्डिहाइड और ऐल्कोहॉल के क्वथनांक उसी क्रम में रखता है, और इसी से पानी द्रव है जबकि भारी हाइड्रोजन सल्फ़ाइड गैस। (दूसरा उत्तर समावयवता को असंभव बना देता, और कार्बनिक रसायन की हर पाठ्यपुस्तक प्रति-उदाहरणों की सूची है।)",
+          mr: "विद्यार्थ्याचे गृहीतक हीच चूक, आणि ते स्पष्ट सांगणे सार्थक: रेणवीय सूत्र पदार्थ ठरवत नाही. C₂H₆O ही अणूंची मोजणी, आणि तेच अणू एकाहून अधिक मार्गांनी जोडता येतात. त्यांना CH₃CH₂OH सारखे जोडा तर इथेनॉल मिळते; CH₃OCH₃ सारखे जोडा तर डायमिथाइल ईथर. ही संरचनात्मक समघटक — वेगळी संयुगे, वेगळे द्रवणबिंदू, वेगळ्या घनता, वेगळे वास आणि वेगळे रसायन असलेली. एक विरळ केल्यावर पिण्याजोगे आणि दुसरा भूल देणारा वायू. आता उकळबिंदू, जे एका संरचनात्मक तपशिलातून निघतात. इथेनॉलमध्ये ऑक्सिजन थेट हायड्रोजन वाहतो, म्हणून इथेनॉलचा रेणू दोन्ही सादर करतो — अत्यंत विद्युतऋण अणूशी बांधलेला हायड्रोजन आणि त्याच अणूवरची एकाकी जोडी. हायड्रोजन बंधनाची अट नेमकी हीच, आणि म्हणून प्रत्येक इथेनॉल रेणू आपल्या शेजाऱ्यांशी जोडला जाऊ शकतो. उकळणे म्हणजे रेणू पूर्णपणे वेगळे करणे, म्हणून ते सर्व दुवे तोडावे लागतात, आणि 78 °C ही त्याची किंमत. डायमिथाइल ईथरमध्ये ऑक्सिजन दोन कार्बनांमध्ये बसलेला आणि स्वतःचा कोणताही हायड्रोजन वाहत नाही. रेणूकडे अजूनही एकाकी जोड्या आहेत आणि तो अजूनही ध्रुवीय — म्हणून तो दुसऱ्या कोणाकडून, जसे पाण्याकडून, हायड्रोजन बंध स्वीकारू शकतो, म्हणूनच ईथर लक्षणीयरीत्या विद्राव्य. पण त्याच्याकडे द्यायला विद्युतऋण अणूवरचा कोणताही हायड्रोजन नाही, म्हणून ईथरचे रेणू आपापसात बंध करू शकत नाहीत. केवळ द्विध्रुव-द्विध्रुव आकर्षण आणि विकिरण बले उरतात, आणि ती −24 °C वर सुटतात. शंभर अंशांचा फरक ही हायड्रोजन बंधनाची प्रबळता, बाकी सर्व अचल ठेवून दृश्य केलेली. युक्तिवादाचा आकार लक्षात घ्या, कारण तो सेंद्रिय रसायनभर परततो. दोन्ही समघटकांसाठी मोलर वस्तुमान आणि ध्रुवता सारखी, म्हणून कोणतीही स्पष्टीकरण असू शकत नाही — तिसरा आणि चौथा पर्याय दोघेही असे चल पकडतात जे बदललेच नाही. वेगळे आहे एक विशिष्ट संरचनात्मक वैशिष्ट्य, एक O–H बंध, आणि कोणते वैशिष्ट्य जबाबदार हे ओळखणे हाच एखादा भौतिक गुणधर्म समजावण्याचा बहुतांश अर्थ. तोच युक्तिवाद समान वस्तुमानाच्या अल्केन, अल्डिहाइड आणि अल्कोहोलचे उकळबिंदू त्याच क्रमाने ठेवतो, आणि म्हणूनच पाणी द्रव तर जड हायड्रोजन सल्फाइड वायू. (दुसरे उत्तर समघटकता अशक्य बनवेल, आणि सेंद्रिय रसायनाचे प्रत्येक पाठ्यपुस्तक प्रतिउदाहरणांची यादी आहे.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Acetic acid is around ten trillion times stronger an acid than ethanol, although both give up a proton from an O–H group. Explain the difference, and say why chloroacetic acid is stronger still.",
+          hi: "ऐसीटिक अम्ल एथेनॉल से लगभग दस खरब गुना प्रबल अम्ल है, यद्यपि दोनों O–H समूह से प्रोटॉन छोड़ते हैं। भेद समझाओ, और बताओ क्लोरोऐसीटिक अम्ल उससे भी प्रबल क्यों है।",
+          mr: "ॲसिटिक आम्ल इथेनॉलहून सुमारे दहा खर्व पट प्रबळ आम्ल आहे, जरी दोघेही O–H गटातून प्रोटॉन सोडतात. फरक समजावा, आणि क्लोरोॲसिटिक आम्ल त्याहूनही प्रबळ का ते सांगा.",
+        },
+        choices: [
+          {
+            en: "What matters is the stability of the anion left behind. Ethanol's ethoxide puts the whole negative charge on one oxygen with nothing to share it. Acetate spreads the charge equally over two oxygens by resonance, and both C–O bonds are found to be the same length — so the proton leaves far more readily. Chloroacetic acid adds a second stabilising effect: the chlorine's inductive pull drags electron density away along the sigma bonds, spreading the charge further still",
+            hi: "मायने पीछे बचे ऋणायन की स्थिरता रखती है। एथेनॉल का एथॉक्साइड पूरा ऋण आवेश एक ऑक्सीजन पर रख देता है और उसे बाँटने को कुछ नहीं। ऐसीटेट अनुनाद से आवेश दो ऑक्सीजनों पर बराबर फैला देता है, और दोनों C–O बंध एक ही लंबाई के पाए जाते हैं — अतः प्रोटॉन कहीं अधिक तत्परता से निकलता है। क्लोरोऐसीटिक अम्ल दूसरा स्थिरकारी प्रभाव जोड़ता है: क्लोरीन का प्रेरणिक खिंचाव सिग्मा बंधों के अनुदिश इलेक्ट्रॉन-घनत्व को दूर घसीटता है, आवेश को और फैलाते हुए",
+            mr: "महत्त्वाची आहे मागे उरलेल्या ऋणायनाची स्थिरता. इथेनॉलचे इथॉक्साइड अख्खा ऋण भार एका ऑक्सिजनवर ठेवते आणि तो वाटायला काहीही नाही. ॲसिटेट अनुनादाने भार दोन ऑक्सिजनांवर समान पसरवते, आणि दोन्ही C–O बंध एकाच लांबीचे आढळतात — म्हणून प्रोटॉन कितीतरी अधिक तत्परतेने निघतो. क्लोरोॲसिटिक आम्ल दुसरा स्थिरीकरण परिणाम जोडते: क्लोरिनची प्रेरणिक ओढ सिग्मा बंधांच्या दिशेने इलेक्ट्रॉन-घनता दूर ओढते, भार आणखी पसरवत",
+          },
+          {
+            en: "Acetic acid is stronger because it contains more oxygen atoms, and acidity always rises with the number of oxygens",
+            hi: "ऐसीटिक अम्ल इसलिए प्रबल है कि उसमें अधिक ऑक्सीजन परमाणु हैं, और अम्लता सदा ऑक्सीजनों की संख्या के साथ बढ़ती है",
+            mr: "ॲसिटिक आम्ल यासाठी प्रबळ की त्यात अधिक ऑक्सिजन अणू आहेत, आणि आम्लता नेहमी ऑक्सिजनांच्या संख्येसोबत वाढते",
+          },
+          {
+            en: "The O–H bond in acetic acid is weaker, and bond strength alone determines how easily a proton leaves",
+            hi: "ऐसीटिक अम्ल का O–H बंध दुर्बल है, और अकेली बंध-प्रबलता तय करती है कि प्रोटॉन कितनी आसानी से निकले",
+            mr: "ॲसिटिक आम्लातील O–H बंध दुर्बल आहे, आणि एकटी बंध-प्रबळता प्रोटॉन किती सहज निघतो हे ठरवते",
+          },
+          {
+            en: "Chlorine makes chloroacetic acid stronger by donating electron density to the carboxylate group",
+            hi: "क्लोरीन कार्बोक्सिलेट समूह को इलेक्ट्रॉन-घनत्व देकर क्लोरोऐसीटिक अम्ल को प्रबल बनाती है",
+            mr: "क्लोरिन कार्बोक्सिलेट गटाला इलेक्ट्रॉन-घनता देऊन क्लोरोॲसिटिक आम्ल प्रबळ बनवते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Acid strength is not a property of the acid alone; it is a comparison between the acid and the anion it becomes. Both molecules break the same kind of bond and release the same proton, so the difference must lie in what is left behind. Ethanol gives ethoxide, CH₃CH₂O⁻. The negative charge sits on one oxygen and stays there — there is nothing adjacent to share it with, and a concentrated charge on a single small atom is a high-energy arrangement. The anion is unstable, so the equilibrium sits far to the left and ethanol is barely an acid at all. Acetic acid gives acetate, CH₃COO⁻, and here something structural intervenes. The carbon carries two oxygens, and the negative charge is delocalised across both by resonance. The evidence is not merely theoretical: X-ray measurements find the two C–O bonds identical at about 127 pm, between a single bond's 143 and a double bond's 123. Neither oxygen carries a full negative charge; each carries half. Spreading charge lowers energy, the anion is far more stable, and the proton leaves accordingly — a pKa of 4.76 against ethanol's 16, which is the ten-trillion-fold ratio in the question. Chloroacetic acid adds a second, independent mechanism. Chlorine is strongly electronegative, and it pulls electron density towards itself along the chain of sigma bonds. That withdrawal drains charge away from the carboxylate, spreading it over still more of the molecule and stabilising the anion further. The pKa falls to 2.86 — about eighty times stronger. The effect is confirmed by its distance dependence, which is the signature of induction: with the chlorine one carbon further away, in 3-chloropropanoic acid, the strengthening is much diminished, and by the fourth carbon it has all but vanished. The general principle is worth carrying out of the chapter: anything that stabilises the conjugate base strengthens the acid. Resonance does it by delocalising, induction by withdrawing, and the two are additive — trichloroacetic acid, with three chlorines pulling, is a strong acid comparable to hydrochloric. (The second answer counts atoms instead of examining structure; the third names a real factor that is not the dominant one here, since the O–H bond energies are similar; and the fourth reverses the direction of chlorine's effect, which would make the acid weaker rather than stronger.)",
+          hi: "अम्ल-प्रबलता अकेले अम्ल का गुण नहीं; वह अम्ल और उस ऋणायन की तुलना है जो वह बन जाता है। दोनों अणु उसी क़िस्म का बंध तोड़ते हैं और वही प्रोटॉन छोड़ते हैं, अतः भेद उसी में होगा जो पीछे बचता है। एथेनॉल एथॉक्साइड देता है, CH₃CH₂O⁻. ऋण आवेश एक ऑक्सीजन पर बैठता है और वहीं रहता है — बाँटने को पास कुछ नहीं, और अकेले छोटे परमाणु पर केंद्रित आवेश उच्च-ऊर्जा व्यवस्था है। ऋणायन अस्थिर है, अतः साम्य दूर बाईं ओर बैठता है और एथेनॉल मुश्किल से अम्ल है। ऐसीटिक अम्ल ऐसीटेट देता है, CH₃COO⁻, और यहाँ कुछ संरचनात्मक बीच में आ जाता है। कार्बन दो ऑक्सीजन ढोता है, और ऋण आवेश अनुनाद से दोनों पर विस्थानीकृत हो जाता है। प्रमाण केवल सैद्धांतिक नहीं: एक्स-किरण माप दोनों C–O बंध लगभग 127 pm पर समान पाते हैं, एकल बंध के 143 और द्विबंध के 123 के बीच। कोई भी ऑक्सीजन पूरा ऋण आवेश नहीं ढोता; हर एक आधा ढोता है। आवेश फैलाना ऊर्जा घटाता है, ऋणायन कहीं अधिक स्थिर है, और प्रोटॉन तदनुसार निकल जाता है — एथेनॉल के 16 के सामने 4.76 का pKa, और यही प्रश्न वाला दस खरब गुना अनुपात है। क्लोरोऐसीटिक अम्ल दूसरी, स्वतंत्र क्रियाविधि जोड़ता है। क्लोरीन प्रबल विद्युत्-ऋणात्मक है, और वह सिग्मा बंधों की शृंखला के अनुदिश इलेक्ट्रॉन-घनत्व अपनी ओर खींचती है। वह खिंचाव कार्बोक्सिलेट से आवेश बहा ले जाता है, उसे अणु के और अधिक हिस्से पर फैलाकर ऋणायन को और स्थिर करता है। pKa गिरकर 2.86 हो जाता है — लगभग अस्सी गुना प्रबल। प्रभाव की पुष्टि उसकी दूरी-निर्भरता से होती है, जो प्रेरण की पहचान है: क्लोरीन एक कार्बन और दूर हो, 3-क्लोरोप्रोपेनोइक अम्ल में, तो प्रबलन बहुत घट जाता है, और चौथे कार्बन तक वह लगभग ग़ायब है। अध्याय से ले जाने योग्य सामान्य सिद्धांत: जो भी संयुग्मी क्षारक को स्थिर करे वह अम्ल को प्रबल करता है। अनुनाद विस्थानीकरण से करता है, प्रेरण खींचकर, और दोनों जुड़ते हैं — तीन क्लोरीन खींचती ट्राइक्लोरोऐसीटिक अम्ल हाइड्रोक्लोरिक के तुल्य प्रबल अम्ल है। (दूसरा उत्तर संरचना जाँचने के बजाय परमाणु गिनता है; तीसरा ऐसे असली कारक का नाम लेता है जो यहाँ प्रधान नहीं, क्योंकि O–H बंध-ऊर्जाएँ मिलती-जुलती हैं; और चौथा क्लोरीन के प्रभाव की दिशा उलट देता है, जिससे अम्ल प्रबल नहीं दुर्बल होता।)",
+          mr: "आम्ल-प्रबळता हा एकट्या आम्लाचा गुणधर्म नव्हे; ती आम्ल आणि तो जो ऋणायन बनतो यांची तुलना. दोन्ही रेणू त्याच प्रकारचा बंध तोडतात आणि तोच प्रोटॉन सोडतात, म्हणून फरक मागे उरणाऱ्यातच असावा. इथेनॉल इथॉक्साइड देते, CH₃CH₂O⁻. ऋण भार एका ऑक्सिजनवर बसतो आणि तिथेच राहतो — वाटायला जवळ काहीही नाही, आणि एकट्या लहान अणूवर केंद्रित भार ही उच्च-ऊर्जा मांडणी. ऋणायन अस्थिर, म्हणून समतोल दूर डावीकडे बसतो आणि इथेनॉल जेमतेम आम्ल. ॲसिटिक आम्ल ॲसिटेट देते, CH₃COO⁻, आणि इथे काहीतरी संरचनात्मक मध्ये येते. कार्बन दोन ऑक्सिजन वाहतो, आणि ऋण भार अनुनादाने दोघांवर विस्थानित होतो. पुरावा केवळ सैद्धांतिक नाही: क्ष-किरण मापे दोन्ही C–O बंध सुमारे 127 pm वर सारखे आढळतात, एकेरी बंधाच्या 143 आणि द्विबंधाच्या 123 दरम्यान. कोणताही ऑक्सिजन पूर्ण ऋण भार वाहत नाही; प्रत्येक अर्धा वाहतो. भार पसरवणे ऊर्जा घटवते, ऋणायन कितीतरी अधिक स्थिर, आणि प्रोटॉन त्यानुसार निघतो — इथेनॉलच्या 16 समोर 4.76 चा pKa, आणि हेच प्रश्नातले दहा खर्व पट गुणोत्तर. क्लोरोॲसिटिक आम्ल दुसरी, स्वतंत्र कार्यपद्धती जोडते. क्लोरिन प्रबळ विद्युतऋण, आणि तो सिग्मा बंधांच्या साखळीच्या दिशेने इलेक्ट्रॉन-घनता स्वतःकडे ओढतो. ती ओढ कार्बोक्सिलेटपासून भार वाहून नेते, तो रेणूच्या आणखी अधिक भागावर पसरवून ऋणायनाला अधिक स्थिर करते. pKa घटून 2.86 होतो — सुमारे ऐंशीपट प्रबळ. परिणामाची पुष्टी त्याच्या अंतर-अवलंबितेतून होते, जी प्रेरणाची ओळख: क्लोरिन एक कार्बन आणखी दूर असल्यास, 3-क्लोरोप्रोपानोइक आम्लात, प्रबळीकरण बरेच घटते, आणि चौथ्या कार्बनपर्यंत ते जवळपास नाहीसे. प्रकरणातून नेण्याजोगे सामान्य तत्त्व: जे काही संयुग्मी आम्लारीला स्थिर करते ते आम्ल प्रबळ करते. अनुनाद विस्थानीकरणाने करतो, प्रेरणा ओढून, आणि दोन्ही जोडले जातात — तीन क्लोरिन ओढणारे ट्रायक्लोरोॲसिटिक आम्ल हायड्रोक्लोरिकच्या तोडीचे प्रबळ आम्ल. (दुसरे उत्तर संरचना तपासण्याऐवजी अणू मोजते; तिसरे अशा खऱ्या घटकाचे नाव घेते जो इथे प्रमुख नाही, कारण O–H बंध-ऊर्जा सारख्या आहेत; आणि चौथे क्लोरिनच्या परिणामाची दिशा उलटवते, ज्याने आम्ल प्रबळ नव्हे तर दुर्बल झाले असते.)",
+        },
+      },
+      /*H8C*/
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 9 — Hydrocarbons                                                */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "chemistry-11-hydrocarbons",
+    subject: "CHEMISTRY",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 9 — Hydrocarbons",
+      hi: "अध्याय 9 — हाइड्रोकार्बन",
+      mr: "प्रकरण 9 — हायड्रोकार्बन",
+    },
+    name: {
+      en: "Hydrocarbons",
+      hi: "हाइड्रोकार्बन",
+      mr: "हायड्रोकार्बन",
+    },
+    summary: {
+      en: "Carbon and hydrogen alone make thousands of compounds, and their reactions divide sharply by what holds the molecule together: a saturated chain that will only be attacked by a radical in light, a double bond so rich in electrons that it attracts them anyway, a triple bond whose hydrogen is faintly acidic because of the orbital it sits on, and a ring whose six shared electrons make it refuse the very addition an alkene welcomes.",
+      hi: "अकेले कार्बन और हाइड्रोजन हज़ारों यौगिक बनाते हैं, और उनकी अभिक्रियाएँ इस बात से तीखे ढंग से बँटती हैं कि अणु को जोड़े क्या रखता है: वह संतृप्त शृंखला जिस पर केवल प्रकाश में मूलक ही हमला करेगा, वह द्विबंध जो इलेक्ट्रॉनों से इतना धनी है कि फिर भी उन्हें खींचता है, वह त्रिबंध जिसका हाइड्रोजन उस कक्षक के कारण हल्का अम्लीय है जिस पर वह बैठा है, और वह वलय जिसके छह साझा इलेक्ट्रॉन उसे ठीक वही योग करने से मना करा देते हैं जिसका ऐल्कीन स्वागत करता है।",
+      mr: "एकटे कार्बन आणि हायड्रोजन हजारो संयुगे बनवतात, आणि त्यांच्या अभिक्रिया रेणूला काय जोडून ठेवते यावरून तीव्रपणे विभागल्या जातात: ती संतृप्त साखळी जिच्यावर केवळ प्रकाशातला मूलकच हल्ला करेल, तो द्विबंध जो इलेक्ट्रॉनांनी इतका श्रीमंत की तरीही त्यांना ओढतो, तो त्रिबंध ज्याचा हायड्रोजन तो ज्या कक्षकावर बसला आहे त्यामुळे किंचित आम्लधर्मी, आणि ते वलय ज्याचे सहा वाटलेले इलेक्ट्रॉन त्याला नेमकी तीच योगक्रिया नाकारायला लावतात जिचे अल्कीन स्वागत करते.",
+    },
+    position: 9,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "free-radical-substitution-in-alkanes",
+        name: {
+          en: "Substitution that needs light to start",
+          hi: "वह प्रतिस्थापन जिसे शुरू होने को प्रकाश चाहिए",
+          mr: "सुरू व्हायला प्रकाश लागणारे प्रतिस्थापन",
+        },
+        kind: "mechanism",
+        prompt: {
+          en: "Methane and chlorine can sit mixed in a dark flask indefinitely and do nothing, yet a flash of sunlight sets off a reaction that will not stop at one product. Which process is this?",
+          hi: "मीथेन और क्लोरीन अंधेरी शीशी में अनिश्चित काल मिले बैठे रह सकते हैं और कुछ नहीं करते, फिर भी धूप की एक चमक ऐसी अभिक्रिया छेड़ देती है जो एक उत्पाद पर रुकेगी नहीं। यह कौन-सी प्रक्रिया है?",
+          mr: "मिथेन आणि क्लोरिन अंधाऱ्या कुपीत अनिश्चित काळ मिसळून बसू शकतात आणि काहीच करत नाहीत, तरीही सूर्यप्रकाशाची एक झळक अशी अभिक्रिया पेटवते जी एका उत्पादावर थांबणार नाही. ही कोणती प्रक्रिया?",
+        },
+        statement: {
+          en: "An alkane reacts with a halogen by free-radical substitution: light splits the halogen into two radicals, each of which pulls a hydrogen off the alkane and starts a chain that keeps itself going.",
+          hi: "ऐल्केन हैलोजन से मुक्त-मूलक प्रतिस्थापन द्वारा अभिक्रिया करता है: प्रकाश हैलोजन को दो मूलकों में तोड़ता है, और हर मूलक ऐल्केन से एक हाइड्रोजन खींच लेता है और ऐसी शृंखला शुरू करता है जो स्वयं को चलाती रहती है।",
+          mr: "अल्केन हॅलोजनशी मुक्त-मूलक प्रतिस्थापनाने अभिक्रिया करते: प्रकाश हॅलोजनला दोन मूलकांत तोडतो, आणि प्रत्येक मूलक अल्केनकडून एक हायड्रोजन ओढतो आणि अशी साखळी सुरू करतो जी स्वतःला चालवत राहते.",
+        },
+        detail: {
+          en: "Because the product still has hydrogens on it, it is attacked in its turn, so the flask ends up holding a mixture of mono-, di-, tri- and tetrachloromethane rather than one clean substance.",
+          hi: "चूँकि उत्पाद पर अब भी हाइड्रोजन हैं, उस पर भी अपनी बारी में हमला होता है, अतः शीशी में एक साफ़ पदार्थ के बजाय मोनो-, डाइ-, ट्राइ- और टेट्राक्लोरोमीथेन का मिश्रण बचता है।",
+          mr: "उत्पादावर अजूनही हायड्रोजन असल्याने त्याच्यावरही आपल्या वेळी हल्ला होतो, म्हणून कुपीत एका स्वच्छ पदार्थाऐवजी मोनो-, डाय-, ट्राय- आणि टेट्राक्लोरोमिथेनचे मिश्रण उरते.",
+        },
+        extra: {
+          en: "The dark flask is the evidence: no reaction without light means the first step must be one that light performs, which is breaking a bond homolytically rather than into ions.",
+          hi: "अंधेरी शीशी ही प्रमाण है: प्रकाश बिना कोई अभिक्रिया नहीं, अर्थात पहला क़दम वही होगा जो प्रकाश करता है, यानी बंध को आयनों में नहीं बल्कि समांशी ढंग से तोड़ना।",
+          mr: "अंधारी कुपीच पुरावा: प्रकाशाशिवाय अभिक्रिया नाही, म्हणजे पहिले पाऊल तेच असावे जे प्रकाश करतो, म्हणजे बंध आयनांत नव्हे तर समांशी पद्धतीने तोडणे.",
+        },
+        pair: {
+          left: {
+            en: "Nothing in the dark, everything in sunlight",
+            hi: "अंधेरे में कुछ नहीं, धूप में सब कुछ",
+            mr: "अंधारात काहीच नाही, सूर्यप्रकाशात सर्व काही",
+          },
+          right: {
+            en: "substitution that needs light to start",
+            hi: "वह प्रतिस्थापन जिसे शुरू होने को प्रकाश चाहिए",
+            mr: "सुरू व्हायला प्रकाश लागणारे प्रतिस्थापन",
+          },
+        },
+      },
+      {
+        id: "addition-to-an-unsymmetrical-double-bond",
+        name: {
+          en: "Which end the hydrogen joins",
+          hi: "हाइड्रोजन किस सिरे से जुड़ता है",
+          mr: "हायड्रोजन कोणत्या टोकाला जोडतो",
+        },
+        kind: "rule",
+        prompt: {
+          en: "When HBr adds to propene, two products are conceivable but one dominates overwhelmingly, and the deciding factor is which of the two possible intermediates is more stable. Which rule is this?",
+          hi: "जब HBr प्रोपीन से जुड़ता है, दो उत्पाद कल्पनीय हैं पर एक भारी बहुमत से प्रबल रहता है, और निर्णायक बात यह है कि दो संभव मध्यवर्तियों में से कौन अधिक स्थिर है। यह कौन-सा नियम है?",
+          mr: "जेव्हा HBr प्रोपीनला जोडतो, दोन उत्पादे कल्पनीय आहेत पण एक प्रचंड बहुमताने प्रबळ ठरते, आणि निर्णायक बाब ही की दोन संभाव्य मध्यस्थांपैकी कोणता अधिक स्थिर. हा कोणता नियम?",
+        },
+        statement: {
+          en: "Markovnikov's rule: in the addition of a hydrogen halide to an unsymmetrical alkene, the hydrogen attaches to the carbon that already has more hydrogens, because that route passes through the more stable carbocation.",
+          hi: "मार्कोवनिकॉफ़ का नियम: असममित ऐल्कीन में हाइड्रोजन हैलाइड के योग में हाइड्रोजन उस कार्बन से जुड़ता है जिस पर पहले से अधिक हाइड्रोजन हैं, क्योंकि वह मार्ग अधिक स्थिर कार्बधनायन से होकर जाता है।",
+          mr: "मार्कोव्हनिकॉफचा नियम: असममित अल्कीनमध्ये हायड्रोजन हॅलाइडच्या योगात हायड्रोजन त्या कार्बनला जोडतो ज्यावर आधीच अधिक हायड्रोजन आहेत, कारण तो मार्ग अधिक स्थिर कार्बधनायनातून जातो.",
+        },
+        detail: {
+          en: "The rule is a consequence, not a cause: the alkene's electrons take the proton first, and the positive charge that results settles wherever it can be spread out best.",
+          hi: "नियम परिणाम है, कारण नहीं: ऐल्कीन के इलेक्ट्रॉन पहले प्रोटॉन ले लेते हैं, और जो धन आवेश बनता है वह वहीं बैठता है जहाँ वह सबसे बेहतर फैल सके।",
+          mr: "नियम हा परिणाम आहे, कारण नव्हे: अल्कीनचे इलेक्ट्रॉन आधी प्रोटॉन घेतात, आणि तयार होणारा धन भार तिथेच बसतो जिथे तो उत्तम पसरू शकतो.",
+        },
+        extra: {
+          en: "In the presence of peroxides the addition of HBr reverses and gives the other product, which proves the rule was never about the atoms themselves but about the mechanism they happen to follow.",
+          hi: "परॉक्साइडों की उपस्थिति में HBr का योग उलट जाता है और दूसरा उत्पाद देता है, जो सिद्ध करता है कि नियम कभी परमाणुओं के बारे में था ही नहीं, बल्कि उस क्रियाविधि के बारे में जिससे वे गुज़रते हैं।",
+          mr: "पेरॉक्साइडांच्या उपस्थितीत HBr चा योग उलटतो आणि दुसरे उत्पाद देतो, जे सिद्ध करते की नियम कधीच अणूंबद्दल नव्हता, तर ते ज्या कार्यपद्धतीने जातात तिच्याबद्दल होता.",
+        },
+        pair: {
+          left: {
+            en: "Peroxides reverse the outcome",
+            hi: "परॉक्साइड परिणाम उलट देते हैं",
+            mr: "पेरॉक्साइड परिणाम उलटवतात",
+          },
+          right: {
+            en: "which end the hydrogen joins",
+            hi: "हाइड्रोजन किस सिरे से जुड़ता है",
+            mr: "हायड्रोजन कोणत्या टोकाला जोडतो",
+          },
+        },
+      },
+      {
+        id: "acidity-of-a-terminal-triple-bond",
+        name: {
+          en: "The one hydrocarbon hydrogen a base can take",
+          hi: "वह इकलौता हाइड्रोकार्बन हाइड्रोजन जिसे क्षारक ले सकता है",
+          mr: "आम्लारी घेऊ शकेल असा एकमेव हायड्रोकार्बन हायड्रोजन",
+        },
+        kind: "contrast",
+        prompt: {
+          en: "Sodium amide will not touch ethane or ethene, but it strips a hydrogen off ethyne at once, and the reason is the fraction of s character in the orbital holding that hydrogen. Which property is this?",
+          hi: "सोडियम एमाइड एथेन या एथीन को छूता तक नहीं, पर एथाइन से तुरंत एक हाइड्रोजन छीन लेता है, और कारण है उस कक्षक में s-गुण का अंश जो उस हाइड्रोजन को थामे है। यह कौन-सा गुण है?",
+          mr: "सोडियम अमाइड इथेन वा इथीनला स्पर्शही करत नाही, पण इथाइनकडून लगेच एक हायड्रोजन ओढून घेतो, आणि कारण म्हणजे तो हायड्रोजन धरून ठेवणाऱ्या कक्षकातील s-गुणाचा अंश. हा कोणता गुणधर्म?",
+        },
+        statement: {
+          en: "A hydrogen on the carbon of a terminal triple bond is weakly acidic, because that carbon is sp hybridised and its 50 per cent s character holds the shared pair closer to the nucleus.",
+          hi: "अंतिम त्रिबंध वाले कार्बन पर लगा हाइड्रोजन दुर्बल अम्लीय है, क्योंकि वह कार्बन sp संकरित है और उसका 50 प्रतिशत s-गुण साझा युग्म को नाभिक के अधिक पास थामे रखता है।",
+          mr: "अंतिम त्रिबंधाच्या कार्बनवरचा हायड्रोजन दुर्बल आम्लधर्मी, कारण तो कार्बन sp संकरित आणि त्याचा 50 टक्के s-गुण वाटलेली जोडी केंद्रकाच्या अधिक जवळ धरून ठेवतो.",
+        },
+        detail: {
+          en: "The trend follows the s character exactly: sp at 50 per cent gives a pKa near 25, sp² at 33 per cent gives about 44, and sp³ at 25 per cent gives about 50.",
+          hi: "प्रवृत्ति ठीक s-गुण के अनुसार चलती है: 50 प्रतिशत पर sp लगभग 25 का pKa देता है, 33 प्रतिशत पर sp² लगभग 44, और 25 प्रतिशत पर sp³ लगभग 50।",
+          mr: "कल नेमका s-गुणानुसार चालतो: 50 टक्क्यांवर sp सुमारे 25 चा pKa देतो, 33 टक्क्यांवर sp² सुमारे 44, आणि 25 टक्क्यांवर sp³ सुमारे 50.",
+        },
+        extra: {
+          en: "It is acidic only by hydrocarbon standards — water is some ten billion times stronger — so the base used to remove it must itself be extremely strong.",
+          hi: "वह केवल हाइड्रोकार्बन के पैमाने पर अम्लीय है — पानी उससे लगभग दस अरब गुना प्रबल है — अतः उसे हटाने वाला क्षारक स्वयं अत्यंत प्रबल होना चाहिए।",
+          mr: "तो केवळ हायड्रोकार्बनच्या मोजपट्टीवर आम्लधर्मी — पाणी त्याहून सुमारे दहा अब्जपट प्रबळ — म्हणून तो काढणारा आम्लारी स्वतः अत्यंत प्रबळ असावा लागतो.",
+        },
+        pair: {
+          left: {
+            en: "Fifty per cent s character",
+            hi: "पचास प्रतिशत s-गुण",
+            mr: "पन्नास टक्के s-गुण",
+          },
+          right: {
+            en: "the one hydrocarbon hydrogen a base can take",
+            hi: "वह इकलौता हाइड्रोकार्बन हाइड्रोजन जिसे क्षारक ले सकता है",
+            mr: "आम्लारी घेऊ शकेल असा एकमेव हायड्रोकार्बन हायड्रोजन",
+          },
+        },
+      },
+      {
+        id: "why-a-ring-refuses-to-add",
+        name: {
+          en: "The ring that will not add",
+          hi: "वह वलय जो योग नहीं करता",
+          mr: "जोडून घेण्यास नकार देणारे वलय",
+        },
+        kind: "contrast",
+        prompt: {
+          en: "An alkene decolourises bromine water in seconds; a molecule with three double bonds in a ring leaves it orange all afternoon, because adding across one bond would destroy something the whole ring shares. What is that?",
+          hi: "ऐल्कीन ब्रोमीन जल का रंग सेकंडों में उड़ा देता है; वलय में तीन द्विबंध वाला अणु उसे पूरी दोपहर नारंगी छोड़ देता है, क्योंकि एक बंध पर योग वह चीज़ नष्ट कर देगा जिसे पूरा वलय साझा करता है। वह क्या है?",
+          mr: "अल्कीन ब्रोमिन पाण्याचा रंग सेकंदांत उडवते; वलयात तीन द्विबंध असलेला रेणू ते अख्खी दुपार नारिंगी ठेवतो, कारण एका बंधावर योग केल्याने अख्खे वलय जे वाटून घेते ते नष्ट होईल. ते काय?",
+        },
+        statement: {
+          en: "Benzene's six π electrons are delocalised over the whole ring, and that delocalisation lowers its energy by about 150 kJ/mol, so the ring undergoes substitution rather than addition in order to keep it.",
+          hi: "बेंज़ीन के छह π इलेक्ट्रॉन पूरे वलय पर विस्थानीकृत हैं, और वह विस्थानीकरण उसकी ऊर्जा लगभग 150 kJ/mol घटा देता है, अतः उसे बनाए रखने के लिए वलय योग के बजाय प्रतिस्थापन से गुज़रता है।",
+          mr: "बेंझिनचे सहा π इलेक्ट्रॉन अख्ख्या वलयावर विस्थानित आहेत, आणि ते विस्थानीकरण त्याची ऊर्जा सुमारे 150 kJ/mol घटवते, म्हणून ते टिकवण्यासाठी वलय योगाऐवजी प्रतिस्थापनातून जाते.",
+        },
+        detail: {
+          en: "The evidence is in the bond lengths: all six carbon–carbon bonds measure 139 pm, between a single bond's 154 and a double bond's 134, so there are no alternating long and short bonds to find.",
+          hi: "प्रमाण बंध-लंबाइयों में है: सभी छह कार्बन–कार्बन बंध 139 pm नापते हैं, एकल बंध के 154 और द्विबंध के 134 के बीच, अतः खोजने को बारी-बारी लंबे और छोटे बंध हैं ही नहीं।",
+          mr: "पुरावा बंध-लांबींत आहे: सर्व सहा कार्बन–कार्बन बंध 139 pm मोजतात, एकेरी बंधाच्या 154 आणि द्विबंधाच्या 134 दरम्यान, म्हणून शोधायला आलटून-पालटून लांब आणि लहान बंध नाहीतच.",
+        },
+        extra: {
+          en: "Hydrogenation confirms the figure: adding hydrogen to the ring releases about 150 kJ/mol less than three separate double bonds would, and that shortfall is the stability being paid back.",
+          hi: "हाइड्रोजनीकरण आँकड़े की पुष्टि करता है: वलय में हाइड्रोजन जोड़ने पर तीन अलग द्विबंधों से लगभग 150 kJ/mol कम निकलता है, और वह कमी ही चुकाई जा रही स्थिरता है।",
+          mr: "हायड्रोजनीकरण आकडा पक्का करते: वलयात हायड्रोजन जोडल्यास तीन वेगळ्या द्विबंधांहून सुमारे 150 kJ/mol कमी निघते, आणि तीच तूट म्हणजे परत फेडली जाणारी स्थिरता.",
+        },
+        pair: {
+          left: {
+            en: "All six bonds the same length",
+            hi: "सभी छह बंध एक ही लंबाई के",
+            mr: "सर्व सहा बंध एकाच लांबीचे",
+          },
+          right: {
+            en: "the ring that will not add",
+            hi: "वह वलय जो योग नहीं करता",
+            mr: "जोडून घेण्यास नकार देणारे वलय",
+          },
+        },
+      },
+      {
+        id: "attack-by-an-electron-seeking-species",
+        name: {
+          en: "Attack by a species short of electrons",
+          hi: "इलेक्ट्रॉनों की कमी वाली स्पीशीज़ का हमला",
+          mr: "इलेक्ट्रॉनांची कमतरता असलेल्या स्पीशीजचा हल्ला",
+        },
+        kind: "mechanism",
+        prompt: {
+          en: "Nitric acid alone does nothing to benzene; mixed with sulphuric acid it nitrates it readily, because the second acid manufactures the positively charged particle that does the attacking. Which mechanism is this?",
+          hi: "अकेला नाइट्रिक अम्ल बेंज़ीन का कुछ नहीं बिगाड़ता; सल्फ़्यूरिक अम्ल के साथ मिलने पर वह उसे सहज नाइट्रीकृत कर देता है, क्योंकि दूसरा अम्ल वह धनावेशित कण बना देता है जो हमला करता है। यह कौन-सी क्रियाविधि है?",
+          mr: "एकटे नायट्रिक आम्ल बेंझिनचे काहीच बिघडवत नाही; सल्फ्यूरिक आम्लासोबत मिसळल्यावर ते त्याचे सहज नायट्रीकरण करते, कारण दुसरे आम्ल हल्ला करणारा धनभारित कण तयार करते. ही कोणती कार्यपद्धती?",
+        },
+        statement: {
+          en: "Aromatic rings react by electrophilic substitution: an electron-poor species is attacked by the ring's π cloud, and a hydrogen is then lost so the delocalisation is restored.",
+          hi: "ऐरोमैटिक वलय इलेक्ट्रॉनरागी प्रतिस्थापन से अभिक्रिया करते हैं: इलेक्ट्रॉन-दरिद्र स्पीशीज़ पर वलय का π बादल हमला करता है, और फिर एक हाइड्रोजन खो जाता है ताकि विस्थानीकरण लौट आए।",
+          mr: "सुगंधी वलये इलेक्ट्रॉनरागी प्रतिस्थापनाने अभिक्रिया करतात: इलेक्ट्रॉन-दरिद्री स्पीशीजवर वलयाचा π ढग हल्ला करतो, आणि मग एक हायड्रोजन गमावला जातो जेणेकरून विस्थानीकरण परत यावे.",
+        },
+        detail: {
+          en: "The intermediate is a ring that has temporarily lost its aromaticity and carries a positive charge spread over five carbons, which is why the hydrogen leaves rather than a second group joining.",
+          hi: "मध्यवर्ती वह वलय है जिसने अपनी ऐरोमैटिकता अस्थायी रूप से खो दी है और पाँच कार्बनों पर फैला धन आवेश ढो रहा है, इसीलिए दूसरा समूह जुड़ने के बजाय हाइड्रोजन निकल जाता है।",
+          mr: "मध्यस्थ म्हणजे ते वलय ज्याने आपली सुगंधिता तात्पुरती गमावली आहे आणि पाच कार्बनांवर पसरलेला धन भार वाहतो, म्हणूनच दुसरा गट जोडण्याऐवजी हायड्रोजन निघून जातो.",
+        },
+        extra: {
+          en: "Every named reaction of benzene fits the same shape and differs only in the electrophile: NO₂⁺ for nitration, SO₃ for sulphonation, and R⁺ or RCO⁺ made by aluminium chloride for the Friedel–Crafts pair.",
+          hi: "बेंज़ीन की हर नामित अभिक्रिया उसी ढाँचे में बैठती है और केवल इलेक्ट्रॉनरागी में भिन्न है: नाइट्रीकरण को NO₂⁺, सल्फ़ोनीकरण को SO₃, और फ़्रीडेल–क्राफ़्ट्स युग्म को ऐलुमिनियम क्लोराइड से बना R⁺ या RCO⁺।",
+          mr: "बेंझिनची प्रत्येक नामांकित अभिक्रिया त्याच साच्यात बसते आणि केवळ इलेक्ट्रॉनरागीत वेगळी: नायट्रीकरणाला NO₂⁺, सल्फोनीकरणाला SO₃, आणि फ्रीडेल–क्राफ्ट्स जोडीला ॲल्युमिनियम क्लोराइडने बनवलेला R⁺ वा RCO⁺.",
+        },
+        pair: {
+          left: {
+            en: "The second acid makes the attacker",
+            hi: "दूसरा अम्ल हमलावर बनाता है",
+            mr: "दुसरे आम्ल हल्लेखोर बनवते",
+          },
+          right: {
+            en: "attack by a species short of electrons",
+            hi: "इलेक्ट्रॉनों की कमी वाली स्पीशीज़ का हमला",
+            mr: "इलेक्ट्रॉनांची कमतरता असलेल्या स्पीशीजचा हल्ला",
+          },
+        },
+      },
+      {
+        id: "where-the-second-group-goes",
+        name: {
+          en: "Where the second group goes",
+          hi: "दूसरा समूह कहाँ जाता है",
+          mr: "दुसरा गट कुठे जातो",
+        },
+        kind: "rule",
+        prompt: {
+          en: "Nitrating toluene puts the new group next to or opposite the methyl and hardly ever between; nitrating nitrobenzene does the exact reverse, and slowly. Which effect is this?",
+          hi: "टॉलूईन का नाइट्रीकरण नए समूह को मेथिल के बग़ल में या सामने रखता है और बीच में शायद ही कभी; नाइट्रोबेंज़ीन का नाइट्रीकरण ठीक उलटा करता है, और धीरे। यह कौन-सा प्रभाव है?",
+          mr: "टोल्यूइनचे नायट्रीकरण नवा गट मिथाइलच्या शेजारी वा समोर ठेवते आणि मध्ये क्वचितच; नायट्रोबेंझिनचे नायट्रीकरण नेमके उलटे करते, आणि सावकाश. हा कोणता परिणाम?",
+        },
+        statement: {
+          en: "A group already on the ring directs the next one: electron-donating groups activate the ring and send the newcomer to the ortho and para positions, while electron-withdrawing groups deactivate it and send the newcomer to the meta position.",
+          hi: "वलय पर पहले से लगा समूह अगले को दिशा देता है: इलेक्ट्रॉन-दानी समूह वलय को सक्रिय करते हैं और नवागत को ऑर्थो और पैरा स्थानों पर भेजते हैं, जबकि इलेक्ट्रॉन-खींचू समूह उसे निष्क्रिय करते हैं और नवागत को मेटा स्थान पर भेजते हैं।",
+          mr: "वलयावर आधीच असलेला गट पुढच्याला दिशा देतो: इलेक्ट्रॉन-दाते गट वलय सक्रिय करतात आणि नवागताला ऑर्थो व पॅरा स्थानी पाठवतात, तर इलेक्ट्रॉन-ओढे गट ते निष्क्रिय करतात आणि नवागताला मेटा स्थानी पाठवतात.",
+        },
+        detail: {
+          en: "The direction is decided by the intermediate: a donating group can share the positive charge when it sits ortho or para to the attack, and cannot when it sits meta.",
+          hi: "दिशा मध्यवर्ती तय करता है: दानी समूह धन आवेश तब साझा कर सकता है जब वह हमले के ऑर्थो या पैरा हो, और तब नहीं जब वह मेटा हो।",
+          mr: "दिशा मध्यस्थ ठरवतो: दाता गट धन भार तेव्हाच वाटून घेऊ शकतो जेव्हा तो हल्ल्याच्या ऑर्थो वा पॅरा असतो, आणि मेटा असताना नाही.",
+        },
+        extra: {
+          en: "The halogens are the standing exception: they deactivate the ring by induction yet still direct ortho and para by donating a lone pair, so speed and position answer to different causes.",
+          hi: "हैलोजन स्थायी अपवाद हैं: वे प्रेरण से वलय को निष्क्रिय करते हैं फिर भी एकाकी युग्म देकर ऑर्थो और पैरा दिशा देते हैं, अतः गति और स्थान अलग-अलग कारणों को उत्तर देते हैं।",
+          mr: "हॅलोजन हे कायमचे अपवाद: ते प्रेरणेने वलय निष्क्रिय करतात तरीही एकाकी जोडी देऊन ऑर्थो व पॅरा दिशा देतात, म्हणून वेग आणि स्थान वेगवेगळ्या कारणांना उत्तर देतात.",
+        },
+        pair: {
+          left: {
+            en: "Halogens slow the ring and still aim it",
+            hi: "हैलोजन वलय को धीमा करते हैं और फिर भी निशाना देते हैं",
+            mr: "हॅलोजन वलय मंदावतात आणि तरीही नेम देतात",
+          },
+          right: {
+            en: "where the second group goes",
+            hi: "दूसरा समूह कहाँ जाता है",
+            mr: "दुसरा गट कुठे जातो",
+          },
+        },
+      },
+      /*F9C*/
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A student reasons that benzene, having three double bonds, should decolourise bromine water about three times as fast as cyclohexene does. In the laboratory cyclohexene clears the colour at once and benzene leaves it unchanged. Explain the failure of the reasoning.",
+          hi: "एक विद्यार्थी तर्क करता है कि बेंज़ीन में तीन द्विबंध होने से वह ब्रोमीन जल का रंग साइक्लोहेक्सीन से लगभग तीन गुना तेज़ी से उड़ाएगा। प्रयोगशाला में साइक्लोहेक्सीन रंग तुरंत साफ़ कर देता है और बेंज़ीन उसे अपरिवर्तित छोड़ देता है। तर्क की विफलता समझाओ।",
+          mr: "एक विद्यार्थी तर्क करतो की बेंझिनमध्ये तीन द्विबंध असल्याने ते ब्रोमिन पाण्याचा रंग सायक्लोहेक्सीनहून सुमारे तिप्पट वेगाने उडवेल. प्रयोगशाळेत सायक्लोहेक्सीन रंग लगेच स्वच्छ करते आणि बेंझिन तो अपरिवर्तित ठेवते. तर्काचे अपयश समजावा.",
+        },
+        choices: [
+          {
+            en: "The three double bonds in benzene are not three double bonds. Their six electrons are delocalised over the whole ring, all six carbon–carbon bonds measure the same 139 pm, and the arrangement is about 150 kJ/mol lower in energy than three isolated double bonds would be. Adding bromine across one position would break that delocalisation, so the ring declines the reaction and substitutes instead — and substitution needs a catalyst and an electrophile, which bromine water does not supply. Counting double bonds counts a drawing rather than a molecule",
+            hi: "बेंज़ीन के तीन द्विबंध तीन द्विबंध हैं ही नहीं। उनके छह इलेक्ट्रॉन पूरे वलय पर विस्थानीकृत हैं, सभी छह कार्बन–कार्बन बंध वही 139 pm नापते हैं, और वह व्यवस्था तीन पृथक द्विबंधों से लगभग 150 kJ/mol कम ऊर्जा पर है। एक स्थान पर ब्रोमीन जोड़ना वह विस्थानीकरण तोड़ देगा, अतः वलय अभिक्रिया से इनकार करता है और उसके बजाय प्रतिस्थापन करता है — और प्रतिस्थापन को उत्प्रेरक और इलेक्ट्रॉनरागी चाहिए, जो ब्रोमीन जल देता नहीं। द्विबंध गिनना अणु नहीं, चित्र गिनना है",
+            mr: "बेंझिनचे तीन द्विबंध हे तीन द्विबंध नाहीतच. त्यांचे सहा इलेक्ट्रॉन अख्ख्या वलयावर विस्थानित, सर्व सहा कार्बन–कार्बन बंध तेच 139 pm मोजतात, आणि ती मांडणी तीन वेगळ्या द्विबंधांहून सुमारे 150 kJ/mol कमी ऊर्जेवर आहे. एका जागी ब्रोमिन जोडल्याने ते विस्थानीकरण तुटेल, म्हणून वलय अभिक्रिया नाकारते आणि त्याऐवजी प्रतिस्थापन करते — आणि प्रतिस्थापनाला उत्प्रेरक व इलेक्ट्रॉनरागी लागतो, जो ब्रोमिन पाणी देत नाही. द्विबंध मोजणे म्हणजे रेणू नव्हे, चित्र मोजणे",
+          },
+          {
+            en: "The student is right in principle but benzene is simply too dilute in the test, so the reaction is there and merely slow",
+            hi: "विद्यार्थी सिद्धांततः सही है पर परीक्षण में बेंज़ीन बस बहुत तनु है, अतः अभिक्रिया है और केवल धीमी है",
+            mr: "विद्यार्थी तत्त्वतः बरोबर पण चाचणीत बेंझिन फक्त खूप विरळ, म्हणून अभिक्रिया आहे आणि केवळ मंद आहे",
+          },
+          {
+            en: "Benzene has no double bonds at all; the ring is held together by six single bonds and a separate set of electrons that take no part in bonding",
+            hi: "बेंज़ीन में द्विबंध हैं ही नहीं; वलय छह एकल बंधों और इलेक्ट्रॉनों के एक अलग समुच्चय से जुड़ा है जो आबंधन में कोई भाग नहीं लेते",
+            mr: "बेंझिनमध्ये द्विबंध नाहीतच; वलय सहा एकेरी बंधांनी आणि बंधनात भाग न घेणाऱ्या इलेक्ट्रॉनांच्या वेगळ्या संचाने जोडलेले",
+          },
+          {
+            en: "Benzene is a liquid and cyclohexene is a gas, so the two cannot be compared in an aqueous test at all",
+            hi: "बेंज़ीन द्रव है और साइक्लोहेक्सीन गैस, अतः दोनों की तुलना जलीय परीक्षण में की ही नहीं जा सकती",
+            mr: "बेंझिन द्रव आणि सायक्लोहेक्सीन वायू, म्हणून दोघांची तुलना जलीय चाचणीत करताच येत नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The student has read a structural formula as if it were an inventory. Kekulé's drawing of benzene shows three double bonds because a drawing on paper must put each pair of electrons somewhere, but the molecule does not oblige. Three pieces of evidence say so, and they are worth holding together. First, bond length. If the ring really alternated single and double bonds it would have three long bonds of about 154 pm and three short ones of about 134 pm, and the molecule would be a slightly lopsided hexagon. X-ray and electron diffraction find six identical bonds of 139 pm and a perfectly regular hexagon. There is nothing intermediate about an average of measurements; each individual bond is intermediate. Second, energy. Hydrogenating cyclohexene releases about 120 kJ/mol, so three of those bonds should release about 360. Hydrogenating benzene releases only about 210. The missing 150 kJ/mol is energy the ring does not have to give up because it never had three separate double bonds to begin with — it is the price the delocalisation has already banked. Third, chemistry, which is what the test is showing. Cyclohexene adds bromine because its two π electrons are localised between two carbons, easy to reach and, once used, replaced by two new sigma bonds that are stronger than what was lost. Benzene cannot make that trade. Adding across one position would strand the remaining four electrons in an ordinary diene and destroy the 150 kJ/mol, so the addition is uphill and does not happen. The ring will react — with a real electrophile and a Lewis acid catalyst, it substitutes, losing a hydrogen and getting its aromaticity back at the end. Bromine water supplies neither. The general lesson outlasts the example. A structural formula records connectivity, not the true distribution of electrons, and wherever a molecule has more than one reasonable drawing the truth is usually none of them but something in between and lower in energy than any. The bromine water test is a good one precisely because it distinguishes localised electrons from delocalised ones, and a pupil who has watched it once will not confuse an alkene with an aromatic ring again. (The second answer treats a difference in kind as a difference in degree; the third denies the π system entirely, which cannot explain the ring's chemistry or its planarity; and the fourth invents physical states — both are liquids at room temperature — and would be irrelevant even if true.)",
+          hi: "विद्यार्थी ने संरचना-सूत्र को सूची की तरह पढ़ लिया है। बेंज़ीन का केकुले-चित्र तीन द्विबंध दिखाता है क्योंकि काग़ज़ पर बने चित्र को इलेक्ट्रॉनों का हर युग्म कहीं न कहीं रखना ही पड़ता है, पर अणु यह मानने को बाध्य नहीं। तीन प्रमाण ऐसा कहते हैं, और उन्हें साथ रखना चाहिए। पहला, बंध-लंबाई। यदि वलय सचमुच एकल और द्विबंध बारी-बारी रखता तो उसमें लगभग 154 pm के तीन लंबे बंध होते और लगभग 134 pm के तीन छोटे, और अणु थोड़ा बेढब षट्भुज होता। एक्स-किरण और इलेक्ट्रॉन विवर्तन 139 pm के छह समान बंध और पूर्णतः नियमित षट्भुज पाते हैं। मापों के औसत में कुछ मध्यवर्ती नहीं होता; हर अकेला बंध मध्यवर्ती है। दूसरा, ऊर्जा। साइक्लोहेक्सीन का हाइड्रोजनीकरण लगभग 120 kJ/mol छोड़ता है, अतः उन तीन बंधों को लगभग 360 छोड़ना चाहिए। बेंज़ीन का हाइड्रोजनीकरण केवल लगभग 210 छोड़ता है। ग़ायब 150 kJ/mol वह ऊर्जा है जो वलय को छोड़नी नहीं पड़ती क्योंकि उसके पास तीन अलग द्विबंध कभी थे ही नहीं — वह क़ीमत विस्थानीकरण पहले ही जमा कर चुका है। तीसरा, रसायन, जो यह परीक्षण दिखा रहा है। साइक्लोहेक्सीन ब्रोमीन जोड़ लेता है क्योंकि उसके दो π इलेक्ट्रॉन दो कार्बनों के बीच स्थानीकृत हैं, पहुँचने में आसान और एक बार लग जाने पर दो नए सिग्मा बंधों से बदल दिए जाते हैं जो खोए हुए से प्रबल हैं। बेंज़ीन वह सौदा नहीं कर सकता। एक स्थान पर योग बचे चार इलेक्ट्रॉनों को साधारण डाईन में फँसा देगा और 150 kJ/mol नष्ट कर देगा, अतः योग चढ़ाई है और होता नहीं। वलय अभिक्रिया करेगा — असली इलेक्ट्रॉनरागी और लूइस अम्ल उत्प्रेरक के साथ वह प्रतिस्थापन करता है, एक हाइड्रोजन खोता है और अंत में अपनी ऐरोमैटिकता वापस पा लेता है। ब्रोमीन जल दोनों में से कुछ नहीं देता। सामान्य सीख उदाहरण से लंबी चलती है। संरचना-सूत्र संयोजकता दर्ज करता है, इलेक्ट्रॉनों का सच्चा वितरण नहीं, और जहाँ भी किसी अणु के एक से अधिक उचित चित्र हों वहाँ सच प्रायः उनमें से कोई नहीं बल्कि बीच का कुछ होता है और सबसे कम ऊर्जा पर। ब्रोमीन जल परीक्षण ठीक इसीलिए अच्छा है कि वह स्थानीकृत इलेक्ट्रॉनों को विस्थानीकृत से अलग कर देता है, और जिसने उसे एक बार देख लिया वह ऐल्कीन और ऐरोमैटिक वलय फिर नहीं गड्डमड्ड करेगा। (दूसरा उत्तर क़िस्म के भेद को मात्रा का भेद मान लेता है; तीसरा π तंत्र से पूरी तरह इनकार करता है, जो न वलय का रसायन समझा सकता है न उसकी समतलता; और चौथा भौतिक अवस्थाएँ गढ़ लेता है — दोनों कमरे के ताप पर द्रव हैं — और सच होता तब भी असंगत रहता।)",
+          mr: "विद्यार्थ्याने संरचना-सूत्र यादीसारखे वाचले आहे. बेंझिनचे केकुले-चित्र तीन द्विबंध दाखवते कारण कागदावरच्या चित्राला इलेक्ट्रॉनांची प्रत्येक जोडी कुठेतरी ठेवावीच लागते, पण रेणू ते मानायला बांधील नाही. तीन पुरावे तसे सांगतात, आणि ते एकत्र धरणे योग्य. पहिला, बंध-लांबी. वलयाने खरोखर एकेरी आणि द्विबंध आलटून-पालटून ठेवले असते तर त्यात सुमारे 154 pm चे तीन लांब बंध असते आणि सुमारे 134 pm चे तीन लहान, आणि रेणू किंचित असमतोल षट्कोन झाला असता. क्ष-किरण आणि इलेक्ट्रॉन विवर्तन 139 pm चे सहा सारखे बंध आणि पूर्णपणे नियमित षट्कोन आढळतात. मापांच्या सरासरीत काही मध्यवर्ती नसते; प्रत्येक एकेक बंधच मध्यवर्ती आहे. दुसरा, ऊर्जा. सायक्लोहेक्सीनचे हायड्रोजनीकरण सुमारे 120 kJ/mol सोडते, म्हणून त्या तीन बंधांनी सुमारे 360 सोडावे. बेंझिनचे हायड्रोजनीकरण केवळ सुमारे 210 सोडते. हरवलेले 150 kJ/mol ही ती ऊर्जा जी वलयाला सोडावी लागत नाही कारण त्याच्याकडे तीन वेगळे द्विबंध कधी होतेच नाहीत — ती किंमत विस्थानीकरणाने आधीच जमा केली आहे. तिसरा, रसायन, जे ही चाचणी दाखवत आहे. सायक्लोहेक्सीन ब्रोमिन जोडून घेते कारण त्याचे दोन π इलेक्ट्रॉन दोन कार्बनांमध्ये स्थानित, पोहोचायला सोपे आणि एकदा वापरले की दोन नव्या सिग्मा बंधांनी बदलले जातात जे गमावलेल्याहून प्रबळ. बेंझिन तो सौदा करू शकत नाही. एका जागी योग उरलेल्या चार इलेक्ट्रॉनांना सामान्य डाईनमध्ये अडकवेल आणि 150 kJ/mol नष्ट करेल, म्हणून योग चढाव आहे आणि होत नाही. वलय अभिक्रिया करेल — खऱ्या इलेक्ट्रॉनरागीसोबत आणि लुईस आम्ल उत्प्रेरकासोबत ते प्रतिस्थापन करते, एक हायड्रोजन गमावते आणि शेवटी आपली सुगंधिता परत मिळवते. ब्रोमिन पाणी दोन्हींपैकी काहीच देत नाही. सामान्य धडा उदाहरणाहून लांब चालतो. संरचना-सूत्र जोडणी नोंदवते, इलेक्ट्रॉनांचे खरे वितरण नव्हे, आणि जिथे कुठे रेणूची एकाहून अधिक रास्त चित्रे असतील तिथे सत्य बहुधा त्यांतले कोणतेच नसून मधले काहीतरी असते आणि कोणत्याहीपेक्षा कमी ऊर्जेवर. ब्रोमिन पाणी चाचणी नेमकी म्हणूनच चांगली की ती स्थानित इलेक्ट्रॉन विस्थानितांपासून वेगळे करते, आणि जिने ती एकदा पाहिली ती अल्कीन आणि सुगंधी वलय पुन्हा गोंधळणार नाही. (दुसरे उत्तर प्रकाराचा फरक प्रमाणाचा फरक मानते; तिसरे π प्रणाली पूर्णपणे नाकारते, जे ना वलयाचे रसायन समजावू शकते ना त्याची समतलता; आणि चौथे भौतिक अवस्था रचते — दोन्ही खोलीच्या तापमानाला द्रव आहेत — आणि खरे असते तरी असंबद्धच राहिले असते.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Adding HBr to propene in the presence of a peroxide gives 1-bromopropane, the opposite of what the acid gives on its own. A student concludes that peroxides reverse all hydrogen-halide additions. Test that conclusion against HCl and HI.",
+          hi: "परॉक्साइड की उपस्थिति में प्रोपीन से HBr का योग 1-ब्रोमोप्रोपेन देता है, जो अकेले अम्ल के देने से उलटा है। एक विद्यार्थी निष्कर्ष निकालता है कि परॉक्साइड सभी हाइड्रोजन-हैलाइड योगों को उलट देते हैं। उस निष्कर्ष को HCl और HI पर परखो।",
+          mr: "पेरॉक्साइडाच्या उपस्थितीत प्रोपीनला HBr चा योग 1-ब्रोमोप्रोपेन देतो, जे एकट्या आम्लाने मिळणाऱ्याच्या उलट. एक विद्यार्थी निष्कर्ष काढतो की पेरॉक्साइड सर्व हायड्रोजन-हॅलाइड योग उलटवतात. तो निष्कर्ष HCl आणि HI वर तपासा.",
+        },
+        choices: [
+          {
+            en: "The conclusion fails: only HBr shows the peroxide effect. The reversal happens because peroxides start a radical chain in which a halogen atom, not a proton, adds first, and that chain requires both of its steps to be energetically downhill. For HBr they are. For HCl the H–Cl bond is too strong for the chlorine atom to be abstracted in the chain-carrying step, and for HI the C–I bond formed is too weak for the iodine atom to add usefully; in each case one step is uphill, the chain dies, and the ordinary ionic Markovnikov addition proceeds instead",
+            hi: "निष्कर्ष विफल है: परॉक्साइड प्रभाव केवल HBr दिखाता है। उलटाव इसलिए होता है कि परॉक्साइड ऐसी मूलक शृंखला शुरू करते हैं जिसमें प्रोटॉन नहीं, हैलोजन परमाणु पहले जुड़ता है, और उस शृंखला के दोनों क़दमों का ऊर्जा की दृष्टि से उतार होना ज़रूरी है। HBr के लिए वे हैं। HCl के लिए H–Cl बंध इतना प्रबल है कि शृंखला-वाहक क़दम में क्लोरीन परमाणु खींचा नहीं जा सकता, और HI के लिए बनने वाला C–I बंध इतना दुर्बल है कि आयोडीन परमाणु उपयोगी ढंग से जुड़ नहीं सकता; हर हाल में एक क़दम चढ़ाई है, शृंखला मर जाती है, और उसके बजाय साधारण आयनिक मार्कोवनिकॉफ़ योग चलता है",
+            mr: "निष्कर्ष अपयशी: पेरॉक्साइड परिणाम केवळ HBr दाखवते. उलथापालथ यासाठी होते की पेरॉक्साइड अशी मूलक साखळी सुरू करतात जिच्यात प्रोटॉन नव्हे, हॅलोजन अणू आधी जोडतो, आणि त्या साखळीची दोन्ही पावले ऊर्जेच्या दृष्टीने उतार असणे आवश्यक. HBr साठी ती आहेत. HCl साठी H–Cl बंध इतका प्रबळ की साखळी-वाहक पावलात क्लोरिन अणू ओढला जाऊ शकत नाही, आणि HI साठी तयार होणारा C–I बंध इतका दुर्बल की आयोडिन अणू उपयुक्तपणे जोडू शकत नाही; प्रत्येक बाबतीत एक पाऊल चढाव, साखळी मरते, आणि त्याऐवजी सामान्य आयनिक मार्कोव्हनिकॉफ योग चालतो",
+          },
+          {
+            en: "The conclusion holds: peroxides reverse HCl and HI additions in exactly the same way, since the mechanism depends only on the peroxide and not on the acid",
+            hi: "निष्कर्ष टिकता है: परॉक्साइड HCl और HI के योग भी ठीक उसी तरह उलट देते हैं, क्योंकि क्रियाविधि केवल परॉक्साइड पर निर्भर है, अम्ल पर नहीं",
+            mr: "निष्कर्ष टिकतो: पेरॉक्साइड HCl आणि HI चे योगही नेमक्या त्याच पद्धतीने उलटवतात, कारण कार्यपद्धती केवळ पेरॉक्साइडवर अवलंबून, आम्लावर नाही",
+          },
+          {
+            en: "The conclusion fails because peroxides prevent addition altogether with HCl and HI, so no product of either orientation forms",
+            hi: "निष्कर्ष विफल है क्योंकि परॉक्साइड HCl और HI के साथ योग को पूरी तरह रोक देते हैं, अतः किसी भी अभिविन्यास का उत्पाद नहीं बनता",
+            mr: "निष्कर्ष अपयशी कारण पेरॉक्साइड HCl आणि HI सोबत योग पूर्णपणे रोखतात, म्हणून कोणत्याही अभिमुखतेचे उत्पाद तयार होत नाही",
+          },
+          {
+            en: "The conclusion fails because Markovnikov's rule itself is wrong, and the peroxide result shows the hydrogen always joins the carbon with fewer hydrogens",
+            hi: "निष्कर्ष विफल है क्योंकि मार्कोवनिकॉफ़ का नियम स्वयं ग़लत है, और परॉक्साइड का परिणाम दिखाता है कि हाइड्रोजन सदा कम हाइड्रोजन वाले कार्बन से जुड़ता है",
+            mr: "निष्कर्ष अपयशी कारण मार्कोव्हनिकॉफचा नियम स्वतःच चुकीचा, आणि पेरॉक्साइडचा निकाल दाखवतो की हायड्रोजन नेहमी कमी हायड्रोजन असलेल्या कार्बनला जोडतो",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The student has generalised from one case, which is the commonest way a correct observation becomes a wrong rule. The observation is real: HBr and a peroxide do give 1-bromopropane, and HBr alone gives 2-bromopropane. But the reversal is not a property of peroxides. It is a property of a mechanism that peroxides can start and that only one of the three acids can sustain. Take the two mechanisms apart. Without peroxide the addition is ionic. The alkene's π electrons reach for the proton, and the proton attaches wherever it leaves the better carbocation — on the end carbon, because that puts the positive charge on the middle carbon, which is secondary and therefore stabilised by two alkyl groups instead of one. Bromide then joins the charge. The bromine ends up on the middle carbon and the product is 2-bromopropane. That is Markovnikov's rule, and note that the rule is a description of where the charge went, not an instruction the atoms follow. With peroxide the first thing to break is the weak O–O bond, giving two alkoxy radicals. One of them abstracts hydrogen from HBr to give a bromine atom, and it is the bromine ATOM, not a proton, that adds to the alkene. It adds to the end carbon, because that leaves the unpaired electron on the middle carbon, and a secondary radical is more stable than a primary one for the same reason a secondary cation is. The resulting radical takes a hydrogen from another HBr, regenerating the bromine atom and carrying the chain. The bromine has ended up on the end carbon and the product is 1-bromopropane. The orientation is unchanged in its logic — the more stable intermediate still wins — and only the identity of what adds first has changed. Now the test the question asks for. The chain has two steps and both must be exothermic or the chain will not carry. For HBr: abstracting hydrogen from H–Br, at 366 kJ/mol, is feasible, and the C–Br bond formed, at about 285, is worth forming. For HCl the H–Cl bond is 431 kJ/mol, too strong to give up its hydrogen in the chain step, so the chlorine atom is never made in useful quantity. For HI the H–I bond at 299 is easy enough to break, but the C–I bond formed is only about 220 kJ/mol, too weak to make the addition step favourable, and the iodine atoms simply recombine. In both cases the chain fails at one step, the radical route is unavailable, and the ordinary ionic addition proceeds — Markovnikov, peroxide or no peroxide. Three things are worth carrying away. A mechanism, not a reagent, determines an outcome, and the same reagent may sit in two different mechanisms with opposite results. A chain reaction is only as good as its worst step, since every step must run millions of times. And an exception that applies to exactly one member of a family is usually not an exception to the rule but evidence that a second rule is operating, which is precisely what the peroxide effect turned out to be. (The second answer treats the peroxide as the whole cause; the third invents an inhibition that is not observed, since HCl and HI add perfectly well; and the fourth throws away a rule that holds in every ionic addition on the strength of a single radical case.)",
+          hi: "विद्यार्थी ने एक मामले से सामान्यीकरण कर लिया है, और यही सबसे आम तरीक़ा है जिससे सही प्रेक्षण ग़लत नियम बन जाता है। प्रेक्षण असली है: HBr और परॉक्साइड सचमुच 1-ब्रोमोप्रोपेन देते हैं, और अकेला HBr 2-ब्रोमोप्रोपेन। पर उलटाव परॉक्साइडों का गुण नहीं। वह उस क्रियाविधि का गुण है जिसे परॉक्साइड शुरू कर सकते हैं और जिसे तीन अम्लों में से केवल एक टिका सकता है। दोनों क्रियाविधियाँ अलग-अलग देखो। परॉक्साइड बिना योग आयनिक है। ऐल्कीन के π इलेक्ट्रॉन प्रोटॉन की ओर बढ़ते हैं, और प्रोटॉन वहीं जुड़ता है जहाँ बेहतर कार्बधनायन बचे — सिरे के कार्बन पर, क्योंकि इससे धन आवेश बीच के कार्बन पर आता है, जो द्वितीयक है और इसलिए एक के बजाय दो ऐल्किल समूहों से स्थिर होता है। फिर ब्रोमाइड आवेश से जुड़ता है। ब्रोमीन बीच के कार्बन पर बैठ जाती है और उत्पाद 2-ब्रोमोप्रोपेन है। यही मार्कोवनिकॉफ़ का नियम है, और ध्यान दो कि नियम इसका वर्णन है कि आवेश कहाँ गया, वह निर्देश नहीं जिसका परमाणु पालन करते हों। परॉक्साइड के साथ सबसे पहले दुर्बल O–O बंध टूटता है, जिससे दो ऐल्कॉक्सी मूलक मिलते हैं। उनमें से एक HBr से हाइड्रोजन खींचकर ब्रोमीन परमाणु देता है, और ऐल्कीन से ब्रोमीन परमाणु जुड़ता है, प्रोटॉन नहीं। वह सिरे के कार्बन से जुड़ता है, क्योंकि इससे अयुग्मित इलेक्ट्रॉन बीच के कार्बन पर बचता है, और द्वितीयक मूलक प्राथमिक से उसी कारण अधिक स्थिर है जिस कारण द्वितीयक धनायन होता है। बना मूलक दूसरे HBr से हाइड्रोजन ले लेता है, ब्रोमीन परमाणु फिर बनाकर शृंखला आगे बढ़ाता है। ब्रोमीन सिरे के कार्बन पर बैठ गई और उत्पाद 1-ब्रोमोप्रोपेन है। अभिविन्यास का तर्क अपरिवर्तित है — अधिक स्थिर मध्यवर्ती अब भी जीतता है — और केवल यह बदला है कि पहले जुड़ता कौन है। अब वह परख जो प्रश्न माँगता है। शृंखला के दो क़दम हैं और दोनों ऊष्माक्षेपी होने चाहिए वरना शृंखला चलेगी नहीं। HBr के लिए: 366 kJ/mol वाले H–Br से हाइड्रोजन खींचना संभव है, और बनने वाला C–Br बंध, लगभग 285 पर, बनाने योग्य है। HCl के लिए H–Cl बंध 431 kJ/mol है, इतना प्रबल कि शृंखला-क़दम में अपना हाइड्रोजन दे न सके, अतः क्लोरीन परमाणु उपयोगी मात्रा में बनता ही नहीं। HI के लिए 299 पर H–I बंध तोड़ना आसान है, पर बनने वाला C–I बंध केवल लगभग 220 kJ/mol है, इतना दुर्बल कि योग-क़दम अनुकूल न हो, और आयोडीन परमाणु बस फिर जुड़ जाते हैं। दोनों हाल में शृंखला एक क़दम पर विफल है, मूलक मार्ग उपलब्ध नहीं, और साधारण आयनिक योग चलता है — मार्कोवनिकॉफ़, परॉक्साइड हो या न हो। तीन बातें ले जाने योग्य हैं। परिणाम अभिकर्मक नहीं, क्रियाविधि तय करती है, और वही अभिकर्मक दो भिन्न क्रियाविधियों में विपरीत परिणामों के साथ बैठ सकता है। शृंखला अभिक्रिया अपने सबसे बुरे क़दम जितनी ही अच्छी है, क्योंकि हर क़दम को लाखों बार चलना है। और वह अपवाद जो कुनबे के ठीक एक सदस्य पर लगे प्रायः नियम का अपवाद नहीं बल्कि इस बात का प्रमाण होता है कि दूसरा नियम काम कर रहा है, और परॉक्साइड प्रभाव ठीक यही निकला। (दूसरा उत्तर परॉक्साइड को पूरा कारण मान लेता है; तीसरा ऐसा अवरोधन गढ़ता है जो देखा नहीं जाता, क्योंकि HCl और HI बख़ूबी जुड़ते हैं; और चौथा एक अकेले मूलक मामले के बल पर वह नियम फेंक देता है जो हर आयनिक योग में टिकता है।)",
+          mr: "विद्यार्थ्याने एका प्रकरणावरून सामान्यीकरण केले आहे, आणि हाच तो सर्वांत सामान्य मार्ग ज्याने बरोबर निरीक्षण चुकीचा नियम बनते. निरीक्षण खरे आहे: HBr आणि पेरॉक्साइड खरोखर 1-ब्रोमोप्रोपेन देतात, आणि एकटा HBr 2-ब्रोमोप्रोपेन. पण उलथापालथ हा पेरॉक्साइडांचा गुणधर्म नाही. तो त्या कार्यपद्धतीचा गुणधर्म आहे जी पेरॉक्साइड सुरू करू शकतात आणि जी तीन आम्लांपैकी केवळ एकच टिकवू शकते. दोन्ही कार्यपद्धती वेगवेगळ्या पाहा. पेरॉक्साइडविना योग आयनिक असतो. अल्कीनचे π इलेक्ट्रॉन प्रोटॉनकडे झेपावतात, आणि प्रोटॉन तिथेच जोडतो जिथे अधिक चांगला कार्बधनायन उरेल — टोकाच्या कार्बनवर, कारण त्याने धन भार मधल्या कार्बनवर येतो, जो द्वितीयक आणि म्हणून एकाऐवजी दोन अल्किल गटांनी स्थिर. मग ब्रोमाइड भाराशी जोडतो. ब्रोमिन मधल्या कार्बनवर बसते आणि उत्पाद 2-ब्रोमोप्रोपेन. हाच मार्कोव्हनिकॉफचा नियम, आणि लक्षात घ्या की नियम हे भार कुठे गेला याचे वर्णन आहे, अणू पाळत असलेली सूचना नव्हे. पेरॉक्साइडसोबत सर्वांत आधी दुर्बल O–O बंध तुटतो, ज्यातून दोन अल्कॉक्सी मूलक मिळतात. त्यांतला एक HBr कडून हायड्रोजन ओढून ब्रोमिन अणू देतो, आणि अल्कीनला ब्रोमिन अणू जोडतो, प्रोटॉन नव्हे. तो टोकाच्या कार्बनला जोडतो, कारण त्याने अयुग्मित इलेक्ट्रॉन मधल्या कार्बनवर उरतो, आणि द्वितीयक मूलक प्राथमिकहून त्याच कारणाने अधिक स्थिर ज्या कारणाने द्वितीयक धनायन असतो. तयार झालेला मूलक दुसऱ्या HBr कडून हायड्रोजन घेतो, ब्रोमिन अणू पुन्हा बनवून साखळी पुढे नेतो. ब्रोमिन टोकाच्या कार्बनवर बसली आणि उत्पाद 1-ब्रोमोप्रोपेन. अभिमुखतेचा तर्क अपरिवर्तित — अधिक स्थिर मध्यस्थ अजूनही जिंकतो — आणि केवळ आधी कोण जोडतो हेच बदलले. आता प्रश्नाने मागितलेली तपासणी. साखळीची दोन पावले आणि दोन्ही उष्माक्षेपी असावीत नाहीतर साखळी चालणार नाही. HBr साठी: 366 kJ/mol च्या H–Br कडून हायड्रोजन ओढणे शक्य, आणि तयार होणारा C–Br बंध, सुमारे 285 वर, बनवण्याजोगा. HCl साठी H–Cl बंध 431 kJ/mol, इतका प्रबळ की साखळी-पावलात आपला हायड्रोजन देऊ शकत नाही, म्हणून क्लोरिन अणू उपयुक्त प्रमाणात बनतच नाही. HI साठी 299 वरचा H–I बंध तोडणे सोपे, पण तयार होणारा C–I बंध केवळ सुमारे 220 kJ/mol, इतका दुर्बल की योग-पाऊल अनुकूल होणार नाही, आणि आयोडिन अणू फक्त पुन्हा जुळतात. दोन्ही बाबतीत साखळी एका पावलावर अपयशी, मूलक मार्ग उपलब्ध नाही, आणि सामान्य आयनिक योग चालतो — मार्कोव्हनिकॉफ, पेरॉक्साइड असो वा नसो. तीन गोष्टी नेण्याजोग्या. निकाल अभिकर्मक नव्हे, कार्यपद्धती ठरवते, आणि तोच अभिकर्मक दोन वेगळ्या कार्यपद्धतींत विरुद्ध निकालांसह बसू शकतो. साखळी अभिक्रिया आपल्या सर्वांत वाईट पावलाइतकीच चांगली, कारण प्रत्येक पाऊल लाखो वेळा चालायचे आहे. आणि कुटुंबाच्या नेमक्या एका सदस्याला लागू होणारा अपवाद बहुधा नियमाचा अपवाद नसून दुसरा नियम काम करत असल्याचा पुरावा असतो, आणि पेरॉक्साइड परिणाम नेमका तोच निघाला. (दुसरे उत्तर पेरॉक्साइडला अख्खे कारण मानते; तिसरे न पाहिलेला अडथळा रचते, कारण HCl आणि HI उत्तम जोडतात; आणि चौथे एकाच मूलक प्रकरणाच्या बळावर प्रत्येक आयनिक योगात टिकणारा नियम फेकून देते.)",
+        },
+      },
+      /*H9C*/
+    ],
+  },
+
 ];
 
 export const G11_CHEMISTRY_NUMERIC: Record<string, NumQ[]> = {
@@ -2597,6 +4001,655 @@ export const G11_CHEMISTRY_NUMERIC: Record<string, NumQ[]> = {
         en: "With both terms negative, ΔG = ΔH − TΔS = −100 + 0.2T, which is negative while T is below 100/0.2 = 500 K and positive above it. So this reaction runs when cold and stops when hot — the exact opposite of the more familiar case where heating helps. Four combinations exhaust the possibilities and each behaves differently. ΔH negative with ΔS positive: spontaneous at every temperature, since both terms push the same way. ΔH positive with ΔS negative: never spontaneous at any temperature. ΔH positive with ΔS positive: needs heat, like melting and like dissolving ammonium chloride. ΔH negative with ΔS negative, this case: needs cold, and freezing is the everyday example — water freezes below 273 K and not above it, for exactly this reason. The industrial significance is real. Ammonia synthesis falls in this fourth box, which is why its equilibrium yield falls as the temperature is raised, and why the Haber process has to buy back with pressure what it spends on heat. A reaction that is helped by cooling is a reaction that will always be slow, and that tension is the central problem of industrial chemistry. (20 multiplies rather than divides, and 300 borrows a number from a different question.)",
         hi: "दोनों पद ऋणात्मक होने पर ΔG = ΔH − TΔS = −100 + 0.2T, जो T के 100/0.2 = 500 K से नीचे रहते ऋणात्मक है और ऊपर धनात्मक। अतः यह अभिक्रिया ठंडे में चलती है और गरम में रुक जाती है — उस अधिक जाने-पहचाने प्रकरण के ठीक उलटा जहाँ गरम करना मदद करता है। चार संयोजन सारी संभावनाएँ चुका देते हैं और हर एक भिन्न व्यवहार करता है। ΔH ऋणात्मक और ΔS धनात्मक: हर ताप पर स्वतःस्फूर्त, क्योंकि दोनों पद एक ही ओर धकेलते हैं। ΔH धनात्मक और ΔS ऋणात्मक: किसी भी ताप पर कभी स्वतःस्फूर्त नहीं। ΔH धनात्मक और ΔS धनात्मक: ऊष्मा चाहिए, जैसे गलन और जैसे अमोनियम क्लोराइड का घुलना। ΔH ऋणात्मक और ΔS ऋणात्मक, यह प्रकरण: ठंड चाहिए, और हिमीकरण रोज़मर्रा का उदाहरण है — पानी 273 K से नीचे जमता है, ऊपर नहीं, ठीक इसी कारण। औद्योगिक महत्व असली है। अमोनिया संश्लेषण इसी चौथे डिब्बे में पड़ता है, इसीलिए ताप बढ़ाने पर उसकी साम्य-लब्धि गिरती है, और इसीलिए हैबर प्रक्रम को ऊष्मा पर जो ख़र्च हुआ वह दाब से वापस ख़रीदना पड़ता है। जिस अभिक्रिया को ठंडा करना मदद करे वह सदा धीमी रहेगी, और वही तनाव औद्योगिक रसायन की केंद्रीय समस्या है। (20 भाग के बजाय गुणा करता है, और 300 किसी और प्रश्न से संख्या उधार ले लेता है।)",
         mr: "दोन्ही पदे ऋण असल्याने ΔG = ΔH − TΔS = −100 + 0.2T, जो T हा 100/0.2 = 500 K च्या खाली असेपर्यंत ऋण आणि वर धन. म्हणून ही अभिक्रिया थंडीत चालते आणि गरमीत थांबते — त्या अधिक ओळखीच्या प्रकरणाच्या नेमके उलटे जिथे तापवणे मदत करते. चार संयोजने सर्व शक्यता संपवतात आणि प्रत्येक वेगळे वागते. ΔH ऋण आणि ΔS धन: प्रत्येक तापमानावर स्वयंस्फूर्त, कारण दोन्ही पदे एकाच दिशेने ढकलतात. ΔH धन आणि ΔS ऋण: कोणत्याही तापमानावर कधीच स्वयंस्फूर्त नाही. ΔH धन आणि ΔS धन: उष्णता लागते, जसे द्रवीभवन आणि जसे अमोनियम क्लोराइड विरघळणे. ΔH ऋण आणि ΔS ऋण, हे प्रकरण: थंडी लागते, आणि गोठणे हे रोजचे उदाहरण — पाणी 273 K च्या खाली गोठते, वर नाही, नेमक्या याच कारणाने. औद्योगिक महत्त्व खरे. अमोनिया संश्लेषण याच चौथ्या खोक्यात पडते, म्हणूनच तापमान वाढवल्यावर त्याचे समतोल-उत्पन्न घटते, आणि म्हणूनच हेबर प्रक्रियेला उष्णतेवर जे खर्चले ते दाबाने परत विकत घ्यावे लागते. ज्या अभिक्रियेला थंड करणे मदत करते ती नेहमी सावकाश राहील, आणि तोच ताण औद्योगिक रसायनाची केंद्रीय समस्या. (20 भागण्याऐवजी गुणते, आणि 300 दुसऱ्या प्रश्नातून संख्या उसनी घेते.)",
+      },
+    },
+  ],
+  "chemistry-11-equilibrium": [
+    {
+      level: 1,
+      stem: {
+        en: "For the equilibrium A ⇌ B the concentrations at rest are [B] = 0.8 M and [A] = 0.2 M. What is the equilibrium constant?",
+        hi: "साम्य A ⇌ B के लिए विश्राम पर सांद्रताएँ [B] = 0.8 M और [A] = 0.2 M हैं। साम्य स्थिरांक क्या है?",
+        mr: "समतोल A ⇌ B साठी विश्रांतीवर संहती [B] = 0.8 M आणि [A] = 0.2 M. समतोल स्थिरांक किती?",
+      },
+      answer: 4,
+      wrong: [0.25, 1, 0.6],
+      checkExpr: "0.8/0.2",
+      solution: {
+        en: "K = [B]/[A] = 0.8/0.2 = 4. A value greater than one means the equilibrium favours the products, though it says nothing about how quickly that position is reached. (0.25 inverts the ratio, which is the constant for the reverse reaction.)",
+        hi: "K = [B]/[A] = 0.8/0.2 = 4. एक से बड़ा मान बताता है कि साम्य उत्पादों के पक्ष में है, यद्यपि वह यह नहीं कहता कि उस स्थिति तक कितनी जल्दी पहुँचा जाता है। (0.25 अनुपात उलट देता है, जो प्रतीप अभिक्रिया का स्थिरांक है।)",
+        mr: "K = [B]/[A] = 0.8/0.2 = 4. एकाहून मोठे मूल्य सांगते की समतोल उत्पादांच्या बाजूने, जरी ते त्या स्थितीपर्यंत किती लवकर पोहोचले जाते हे सांगत नाही. (0.25 गुणोत्तर उलटे करते, जो मागच्या अभिक्रियेचा स्थिरांक.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "At 25 °C, pH + pOH = 14. A solution has pOH = 5. What is its pH?",
+        hi: "25 °C पर pH + pOH = 14. किसी विलयन का pOH = 5 है। उसका pH क्या है?",
+        mr: "25 °C वर pH + pOH = 14. एका द्रावणाचा pOH = 5 आहे. त्याचा pH किती?",
+      },
+      answer: 9,
+      wrong: [19, 5, 7],
+      checkExpr: "14-5",
+      solution: {
+        en: "pH = 14 − 5 = 9, so the solution is alkaline. The relation holds because the product of the two ion concentrations is fixed at 10⁻¹⁴, which means pushing one down necessarily pushes the other up. (19 adds instead of subtracting.)",
+        hi: "pH = 14 − 5 = 9, अतः विलयन क्षारीय है। यह संबंध इसलिए चलता है कि दोनों आयन-सांद्रताओं का गुणनफल 10⁻¹⁴ पर तय है, जिसका अर्थ है कि एक को नीचे धकेलना अनिवार्यतः दूसरे को ऊपर धकेलता है। (19 घटाने के बजाय जोड़ देता है।)",
+        mr: "pH = 14 − 5 = 9, म्हणून द्रावण आम्लारीधर्मी. हा संबंध यामुळे चालतो की दोन्ही आयन-संहतींचा गुणाकार 10⁻¹⁴ वर ठरलेला, म्हणजे एकाला खाली ढकलणे अपरिहार्यपणे दुसऱ्याला वर ढकलते. (19 वजा करण्याऐवजी जोडते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A solution has a hydrogen-ion concentration of 10⁻⁴ M, giving pH 4. At 25 °C, what is its pOH?",
+        hi: "किसी विलयन की हाइड्रोजन-आयन सांद्रता 10⁻⁴ M है, जिससे pH 4 मिलता है। 25 °C पर उसका pOH क्या है?",
+        mr: "एका द्रावणाची हायड्रोजन-आयन संहती 10⁻⁴ M, ज्यातून pH 4 मिळतो. 25 °C वर त्याचा pOH किती?",
+      },
+      answer: 10,
+      wrong: [4, 18, 7],
+      checkExpr: "14-4",
+      solution: {
+        en: "pOH = 14 − 4 = 10, so the hydroxide concentration is 10⁻¹⁰ M — ten thousand times lower than in pure water, although it has not fallen to zero. Adding acid does not remove hydroxide entirely; it drives the equilibrium back until the product is right again. (4 confuses the two scales.)",
+        hi: "pOH = 14 − 4 = 10, अतः हाइड्रॉक्साइड सांद्रता 10⁻¹⁰ M है — शुद्ध पानी से दस हज़ार गुना कम, यद्यपि वह शून्य नहीं हुई। अम्ल जोड़ना हाइड्रॉक्साइड को पूरी तरह नहीं हटाता; वह साम्य को तब तक पीछे धकेलता है जब तक गुणनफल फिर सही न हो जाए। (4 दोनों पैमाने गड्डमड्ड कर देता है।)",
+        mr: "pOH = 14 − 4 = 10, म्हणून हायड्रॉक्साइड संहती 10⁻¹⁰ M — शुद्ध पाण्याहून दहा हजारपट कमी, जरी ती शून्य झालेली नाही. आम्ल जोडणे हायड्रॉक्साइड पूर्णपणे काढत नाही; ते समतोल तोवर मागे ढकलते जोवर गुणाकार पुन्हा बरोबर होत नाही. (4 दोन्ही मापनश्रेण्यांची गल्लत करते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "In N₂ + 3H₂ ⇌ 2NH₃, four moles of gas become two. What is the magnitude of the change in the number of moles of gas?",
+        hi: "N₂ + 3H₂ ⇌ 2NH₃ में चार मोल गैस दो हो जाती है। गैस के मोलों की संख्या में परिवर्तन का परिमाण क्या है?",
+        mr: "N₂ + 3H₂ ⇌ 2NH₃ मध्ये चार मोल वायू दोन होतात. वायूच्या मोलांच्या संख्येतील बदलाचे परिमाण किती?",
+      },
+      answer: 2,
+      wrong: [6, 1, 3],
+      checkExpr: "4-2",
+      solution: {
+        en: "4 − 2 = 2, a decrease. That decrease is why raising the pressure shifts this equilibrium towards ammonia: compressing a mixture favours whichever side occupies less volume. A reaction with no change in gas moles is unaffected by pressure altogether. (6 adds the two sides.)",
+        hi: "4 − 2 = 2, कमी। वही कमी है जिससे दाब बढ़ाना इस साम्य को अमोनिया की ओर खिसकाता है: मिश्रण संपीड़ित करना उस ओर के पक्ष में है जो कम आयतन घेरे। जिस अभिक्रिया में गैस-मोलों का परिवर्तन न हो वह दाब से बिलकुल अप्रभावित रहती है। (6 दोनों पक्ष जोड़ देता है।)",
+        mr: "4 − 2 = 2, घट. तीच घट ज्यामुळे दाब वाढवणे हा समतोल अमोनियाकडे सरकवते: मिश्रण संपीडित करणे कमी घनफळ व्यापणाऱ्या बाजूच्या पक्षात. ज्या अभिक्रियेत वायू-मोलांचा बदल नाही ती दाबाने पूर्णपणे अप्रभावित. (6 दोन्ही बाजू जोडते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A mixture has a reaction quotient Q of 5 while the equilibrium constant K is 20. What is the ratio K/Q?",
+        hi: "किसी मिश्रण का अभिक्रिया भागफल Q = 5 है जबकि साम्य स्थिरांक K = 20. अनुपात K/Q क्या है?",
+        mr: "एका मिश्रणाचा अभिक्रिया भागांक Q = 5 तर समतोल स्थिरांक K = 20. गुणोत्तर K/Q किती?",
+      },
+      answer: 4,
+      wrong: [0.25, 100, 15],
+      checkExpr: "20/5",
+      solution: {
+        en: "20/5 = 4, and since the ratio exceeds one, Q is below K and the reaction must run forward to raise Q until the two match. Had Q exceeded K the reaction would have run backwards instead. This single comparison replaces all the qualitative reasoning about which way a disturbance pushes. (0.25 inverts the ratio.)",
+        hi: "20/5 = 4, और चूँकि अनुपात एक से बड़ा है, Q, K से नीचे है और अभिक्रिया को Q बढ़ाने के लिए आगे चलना होगा जब तक दोनों न मिल जाएँ। Q, K से बड़ा होता तो अभिक्रिया इसके बजाय पीछे चलती। यह अकेली तुलना उस सारे गुणात्मक तर्क की जगह ले लेती है कि विक्षोभ किस ओर धकेलता है। (0.25 अनुपात उलट देता है।)",
+        mr: "20/5 = 4, आणि गुणोत्तर एकाहून मोठे असल्याने Q हा K खाली आहे आणि अभिक्रियेला Q वाढवण्यासाठी पुढे चालावे लागेल जोवर दोन्ही जुळत नाहीत. Q हा K हून मोठा असता तर अभिक्रिया त्याऐवजी मागे चालली असती. ही एकच तुलना विक्षोभ कोणत्या दिशेने ढकलतो या सर्व गुणात्मक युक्तिवादाची जागा घेते. (0.25 गुणोत्तर उलटे करते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A strong acid solution has pH 2. It is diluted ten times with water. What is the new pH?",
+        hi: "किसी प्रबल अम्ल विलयन का pH 2 है। उसे पानी से दस गुना पतला किया जाता है। नया pH क्या है?",
+        mr: "एका प्रबळ आम्ल द्रावणाचा pH 2 आहे. ते पाण्याने दसपट पातळ केले जाते. नवा pH किती?",
+      },
+      answer: 3,
+      wrong: [1, 20, 0.2],
+      checkExpr: "2+1",
+      solution: {
+        en: "Tenfold dilution divides the hydrogen-ion concentration by ten, and pH is a logarithmic scale, so it rises by exactly one unit: pH 3. Note the limit, though — no amount of dilution takes a strong acid past about pH 7, because at that point the water's own ionisation is supplying more hydrogen ions than the acid is. (1 moves the pH the wrong way.)",
+        hi: "दस गुना तनुकरण हाइड्रोजन-आयन सांद्रता को दस से भाग देता है, और pH लघुगणकीय पैमाना है, अतः वह ठीक एक इकाई चढ़ता है: pH 3. पर सीमा ध्यान दो — कितना भी तनुकरण प्रबल अम्ल को लगभग pH 7 से आगे नहीं ले जाता, क्योंकि उस बिंदु पर पानी का अपना आयनन अम्ल से अधिक हाइड्रोजन आयन दे रहा होता है। (1 pH को उलटी ओर हिला देता है।)",
+        mr: "दसपट विरळीकरण हायड्रोजन-आयन संहती दहाने भागते, आणि pH ही लॉगरिथमी मापनश्रेणी, म्हणून तो नेमका एक एककाने चढतो: pH 3. पण मर्यादा लक्षात घ्या — कितीही विरळीकरण प्रबळ आम्लाला सुमारे pH 7 च्या पुढे नेत नाही, कारण त्या बिंदूवर पाण्याचे स्वतःचे आयनीकरण आम्लाहून अधिक हायड्रोजन आयन देत असते. (1 pH उलट दिशेने हलवते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "In N₂ + 3H₂ ⇌ 2NH₃, the gas moles go from 4 to 2. By what factor does the mole count change on going forward?",
+        hi: "N₂ + 3H₂ ⇌ 2NH₃ में गैस-मोल 4 से 2 हो जाते हैं। आगे बढ़ने पर मोल-गिनती किस गुणक से बदलती है?",
+        mr: "N₂ + 3H₂ ⇌ 2NH₃ मध्ये वायू-मोल 4 वरून 2 होतात. पुढे जाताना मोल-मोजणी कोणत्या पटीने बदलते?",
+      },
+      answer: 0.5,
+      wrong: [2, 4, 6],
+      checkExpr: "2/4",
+      solution: {
+        en: "2/4 = 0.5: the forward reaction halves the number of gas molecules. Compressing the mixture therefore drives it forward, since the system relieves the pressure by occupying less volume — which is exactly why the Haber process runs at around 200 atmospheres. (2 inverts the ratio and describes the reverse reaction.)",
+        hi: "2/4 = 0.5: अग्र अभिक्रिया गैस-अणुओं की संख्या आधी कर देती है। अतः मिश्रण संपीड़ित करना उसे आगे धकेलता है, क्योंकि निकाय कम आयतन घेरकर दाब घटाता है — ठीक इसीलिए हैबर प्रक्रम लगभग 200 वायुमंडल पर चलता है। (2 अनुपात उलटकर प्रतीप अभिक्रिया का वर्णन करता है।)",
+        mr: "2/4 = 0.5: पुढची अभिक्रिया वायुरेणूंची संख्या निम्मी करते. म्हणून मिश्रण संपीडित करणे त्याला पुढे रेटते, कारण संच कमी घनफळ व्यापून दाब घटवतो — नेमके म्हणूनच हेबर प्रक्रिया सुमारे 200 वातावरणांवर चालते. (2 गुणोत्तर उलटवून मागच्या अभिक्रियेचे वर्णन करते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A buffer is made from an acid of pKa 4.74 with a salt-to-acid ratio of 10, so the logarithm of that ratio is 1. Using pH = pKa + log(ratio), what is the pH?",
+        hi: "4.74 pKa वाले अम्ल से 10 के लवण-अम्ल अनुपात पर बफ़र बनाया जाता है, अतः उस अनुपात का लघुगणक 1 है। pH = pKa + log(अनुपात) लगाते हुए, pH क्या है?",
+        mr: "4.74 pKa असलेल्या आम्लापासून 10 च्या क्षार-आम्ल गुणोत्तरावर बफर बनवले जाते, म्हणून त्या गुणोत्तराचा लॉगरिथम 1. pH = pKa + log(गुणोत्तर) वापरून, pH किती?",
+      },
+      answer: 5.74,
+      wrong: [3.74, 4.74, 47.4],
+      checkExpr: "4.74+1",
+      solution: {
+        en: "pH = 4.74 + 1 = 5.74. Note that a tenfold excess of salt buys only one pH unit, which is why buffers are effective over a narrow band — roughly pKa ± 1 — and why choosing an acid whose pKa is near the target pH matters far more than adjusting the ratio. Equal amounts of the two would give exactly 4.74. (3.74 subtracts the logarithm instead of adding it.)",
+        hi: "pH = 4.74 + 1 = 5.74. ध्यान दो लवण की दस गुनी अधिकता केवल एक pH इकाई ख़रीदती है, इसीलिए बफ़र सँकरी पट्टी पर असरदार होते हैं — मोटे तौर पर pKa ± 1 — और इसीलिए ऐसा अम्ल चुनना जिसका pKa लक्ष्य pH के पास हो, अनुपात समायोजित करने से कहीं अधिक मायने रखता है। दोनों की बराबर मात्राएँ ठीक 4.74 देतीं। (3.74 लघुगणक जोड़ने के बजाय घटा देता है।)",
+        mr: "pH = 4.74 + 1 = 5.74. लक्षात घ्या क्षाराचे दसपट अधिक्य केवळ एक pH एकक विकत घेते, म्हणूनच बफर अरुंद पट्ट्यावर प्रभावी असतात — ढोबळमानाने pKa ± 1 — आणि म्हणूनच ज्याचा pKa लक्ष्य pH जवळ आहे असे आम्ल निवडणे गुणोत्तर जुळवण्याहून कितीतरी अधिक महत्त्वाचे. दोघांची समान प्रमाणे नेमके 4.74 दिली असती. (3.74 लॉगरिथम जोडण्याऐवजी वजा करते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "For A ⇌ 2B, one mole of A is placed in a one-litre vessel and 0.2 mol of A remains at equilibrium. How many moles of B are present?",
+        hi: "A ⇌ 2B के लिए एक लीटर पात्र में एक मोल A रखा जाता है और साम्य पर 0.2 mol A बचता है। कितने मोल B मौजूद हैं?",
+        mr: "A ⇌ 2B साठी एक लिटर भांड्यात एक मोल A ठेवला जातो आणि समतोलावर 0.2 mol A उरतो. किती मोल B उपस्थित आहेत?",
+      },
+      answer: 1.6,
+      wrong: [0.8, 0.4, 2],
+      checkExpr: "2*(1-0.2)",
+      solution: {
+        en: "0.8 mol of A reacted, and each mole of A gives two of B, so 2 × 0.8 = 1.6 mol of B. The coefficient must be applied: it is the commonest slip to report the amount consumed rather than the amount produced. (0.8 quotes the A that reacted and 0.4 halves it instead of doubling.)",
+        hi: "0.8 mol A ने अभिक्रिया की, और A का हर मोल B के दो देता है, अतः 2 × 0.8 = 1.6 mol B. गुणांक लगाना ही पड़ता है: बनी मात्रा के बजाय खपी मात्रा बता देना सबसे आम चूक है। (0.8 अभिक्रिया कर चुके A को बताता है और 0.4 दोगुना करने के बजाय आधा कर देता है।)",
+        mr: "0.8 mol A ने अभिक्रिया केली, आणि A चा प्रत्येक मोल B चे दोन देतो, म्हणून 2 × 0.8 = 1.6 mol B. गुणांक लावावाच लागतो: तयार झालेल्या प्रमाणाऐवजी वापरलेले प्रमाण सांगणे ही सर्वांत नेहमीची चूक. (0.8 अभिक्रिया केलेला A सांगते आणि 0.4 दुप्पट करण्याऐवजी निम्मे करते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "In that same equilibrium A ⇌ 2B in a one-litre vessel, [A] = 0.2 M and [B] = 1.6 M. What is the equilibrium constant Kc?",
+        hi: "उसी साम्य A ⇌ 2B में एक लीटर पात्र में [A] = 0.2 M और [B] = 1.6 M हैं। साम्य स्थिरांक Kc क्या है?",
+        mr: "त्याच समतोल A ⇌ 2B मध्ये एक लिटर भांड्यात [A] = 0.2 M आणि [B] = 1.6 M. समतोल स्थिरांक Kc किती?",
+      },
+      answer: 12.8,
+      wrong: [8, 2.56, 1.28],
+      checkExpr: "1.6^2/0.2",
+      solution: {
+        en: "Kc = [B]²/[A] = 2.56/0.2 = 12.8. The square on B is the coefficient from the balanced equation, and leaving it out — which gives 8 — is the single commonest error in equilibrium arithmetic. Three things are worth reading off this number rather than just computing it. First, K is well above one, so the equilibrium lies towards B, as the composition already showed. Second, the units are not the same as for A ⇌ B: here Kc carries units of concentration, because the powers do not cancel, and this is why K values for different reactions cannot be compared directly. Third, and most usefully, K depends only on temperature — put in twice as much A and the concentrations will all shift, but this ratio will come back to 12.8. That invariance is what makes K worth tabulating, and it is what lets a chemist predict the resting composition of a mixture never yet prepared. (2.56 forgets to divide by [A], and 1.28 divides by ten somewhere.)",
+        hi: "Kc = [B]²/[A] = 2.56/0.2 = 12.8. B पर वर्ग संतुलित समीकरण का गुणांक है, और उसे छोड़ देना — जो 8 देता है — साम्य-गणित की सबसे आम अकेली भूल है। इस संख्या को केवल निकालने के बजाय उससे तीन बातें पढ़ने योग्य हैं। पहली, K एक से काफ़ी ऊपर है, अतः साम्य B की ओर है, जैसा संघटन पहले ही दिखा चुका था। दूसरी, मात्रक A ⇌ B जैसे नहीं: यहाँ Kc सांद्रता के मात्रक ढोता है, क्योंकि घातें कटती नहीं, और इसीलिए भिन्न अभिक्रियाओं के K मानों की सीधी तुलना नहीं हो सकती। तीसरी, और सबसे उपयोगी, K केवल ताप पर निर्भर है — दोगुना A डालो और सारी सांद्रताएँ खिसक जाएँगी, पर यह अनुपात लौटकर 12.8 पर आ जाएगा। वही अपरिवर्तनीयता K को तालिकाबद्ध करने योग्य बनाती है, और वही रसायनज्ञ को ऐसे मिश्रण का विश्राम-संघटन बताने देती है जो अभी तक बनाया ही नहीं गया। (2.56 [A] से भाग देना भूलता है, और 1.28 कहीं दस से भाग दे देता है।)",
+        mr: "Kc = [B]²/[A] = 2.56/0.2 = 12.8. B वरचा वर्ग हा संतुलित समीकरणाचा गुणांक, आणि तो सोडून देणे — जे 8 देते — ही समतोल-गणितातील सर्वांत नेहमीची एकमेव चूक. या संख्येला केवळ काढण्याऐवजी तिच्यावरून तीन गोष्टी वाचण्याजोग्या. पहिली, K एकाहून बराच वर, म्हणून समतोल B कडे, जसे संघटनाने आधीच दाखवले. दुसरी, एकके A ⇌ B सारखी नाहीत: इथे Kc संहतीची एकके वाहतो, कारण घात कापल्या जात नाहीत, आणि म्हणूनच वेगवेगळ्या अभिक्रियांच्या K मूल्यांची थेट तुलना होऊ शकत नाही. तिसरी, आणि सर्वांत उपयुक्त, K केवळ तापमानावर अवलंबून — दुप्पट A टाका आणि सर्व संहती सरकतील, पण हे गुणोत्तर परत 12.8 वर येईल. तीच अपरिवर्तनीयता K ला तक्त्यात मांडण्याजोगे बनवते, आणि तीच रसायनशास्त्रज्ञाला अजून बनवलेच नाही अशा मिश्रणाचे विश्रांती-संघटन सांगू देते. (2.56 [A] ने भागायचे विसरते, आणि 1.28 कुठेतरी दहाने भागते.)",
+      },
+    },
+  ],
+  "chemistry-11-redox-reactions": [
+    {
+      level: 1,
+      stem: {
+        en: "In H₂SO₄ the two hydrogens contribute +2 and the four oxygens −8. What is the oxidation number of sulphur?",
+        hi: "H₂SO₄ में दो हाइड्रोजन +2 और चार ऑक्सीजन −8 का योगदान देते हैं। सल्फ़र की उपचयन संख्या क्या है?",
+        mr: "H₂SO₄ मध्ये दोन हायड्रोजन +2 आणि चार ऑक्सिजन −8 चा वाटा देतात. गंधकाची ऑक्सिडीकरण संख्या किती?",
+      },
+      answer: 6,
+      wrong: [4, 2, 8],
+      checkExpr: "8-2",
+      solution: {
+        en: "The molecule is neutral, so the numbers must sum to zero: 2 + x − 8 = 0 gives x = +6. That is sulphur's maximum, matching its six valence electrons, which is why sulphuric acid is a good oxidising agent — the sulphur has nowhere higher to go. (4 is the oxidation number in sulphurous acid.)",
+        hi: "अणु उदासीन है, अतः संख्याओं का योग शून्य होना चाहिए: 2 + x − 8 = 0 से x = +6. यह सल्फ़र का अधिकतम है, उसके छह संयोजी इलेक्ट्रॉनों से मेल खाता, इसीलिए सल्फ्यूरिक अम्ल अच्छा उपचायक है — सल्फ़र के पास और ऊपर जाने को जगह नहीं। (4 सल्फ्यूरस अम्ल की उपचयन संख्या है।)",
+        mr: "रेणू उदासीन, म्हणून संख्यांची बेरीज शून्य असावी: 2 + x − 8 = 0 वरून x = +6. हे गंधकाचे कमाल, त्याच्या सहा संयुजा इलेक्ट्रॉनांशी जुळणारे, म्हणूनच सल्फ्युरिक आम्ल चांगला ऑक्सिडीकारक — गंधकाकडे आणखी वर जायला जागा नाही. (4 ही सल्फ्युरस आम्लाची ऑक्सिडीकरण संख्या.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "In KMnO₄ the potassium contributes +1 and the four oxygens −8. What is the oxidation number of manganese?",
+        hi: "KMnO₄ में पोटैशियम +1 और चार ऑक्सीजन −8 का योगदान देते हैं। मैंगनीज़ की उपचयन संख्या क्या है?",
+        mr: "KMnO₄ मध्ये पोटॅशियम +1 आणि चार ऑक्सिजन −8 चा वाटा देतात. मँगेनीजची ऑक्सिडीकरण संख्या किती?",
+      },
+      answer: 7,
+      wrong: [5, 6, 4],
+      checkExpr: "8-1",
+      solution: {
+        en: "1 + x − 8 = 0 gives x = +7, the highest oxidation state manganese reaches and the reason permanganate is such a powerful oxidising agent: it can only go down. The deep purple colour disappears as it falls to the almost colourless Mn²⁺, which is what makes it self-indicating in a titration. (6 is the manganate ion.)",
+        hi: "1 + x − 8 = 0 से x = +7, मैंगनीज़ की सबसे ऊँची उपचयन अवस्था और यही कारण कि परमैंगनेट इतना प्रबल उपचायक है: वह केवल नीचे ही जा सकता है। गहरा बैंगनी रंग तब लुप्त हो जाता है जब वह लगभग रंगहीन Mn²⁺ तक गिरता है, और इसी से वह अनुमापन में स्वयं-सूचक बन जाता है। (6 मैंगनेट आयन है।)",
+        mr: "1 + x − 8 = 0 वरून x = +7, मँगेनीजची सर्वांत उच्च ऑक्सिडीकरण अवस्था आणि हेच कारण की परमँगनेट इतका प्रबळ ऑक्सिडीकारक: तो केवळ खालीच जाऊ शकतो. गडद जांभळा रंग तेव्हा नाहीसा होतो जेव्हा तो जवळपास रंगहीन Mn²⁺ पर्यंत येतो, आणि यामुळेच तो अनुमापनात स्वयं-सूचक बनतो. (6 हा मँगनेट आयन.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "In K₂Cr₂O₇ the two potassiums give +2 and the seven oxygens −14, and there are two chromium atoms. What is the oxidation number of each chromium?",
+        hi: "K₂Cr₂O₇ में दो पोटैशियम +2 और सात ऑक्सीजन −14 देते हैं, और क्रोमियम के दो परमाणु हैं। हर क्रोमियम की उपचयन संख्या क्या है?",
+        mr: "K₂Cr₂O₇ मध्ये दोन पोटॅशियम +2 आणि सात ऑक्सिजन −14 देतात, आणि क्रोमियमचे दोन अणू आहेत. प्रत्येक क्रोमियमची ऑक्सिडीकरण संख्या किती?",
+      },
+      answer: 6,
+      wrong: [3, 7, 12],
+      checkExpr: "12/2",
+      solution: {
+        en: "2 + 2x − 14 = 0 gives 2x = 12 and x = +6 for each chromium. Dividing by the number of atoms is the step most often skipped — 12 is the total, not the value per atom. Dichromate is orange and falls to green Cr³⁺ on reduction. (12 quotes that total.)",
+        hi: "2 + 2x − 14 = 0 से 2x = 12 और हर क्रोमियम के लिए x = +6. परमाणुओं की संख्या से भाग देना वही चरण है जो सबसे अधिक छूटता है — 12 कुल है, प्रति परमाणु मान नहीं। डाइक्रोमेट नारंगी है और अपचयन पर हरे Cr³⁺ तक गिरता है। (12 वही कुल बता देता है।)",
+        mr: "2 + 2x − 14 = 0 वरून 2x = 12 आणि प्रत्येक क्रोमियमसाठी x = +6. अणूंच्या संख्येने भागणे हाच तो टप्पा जो सर्वाधिक वेळा वगळला जातो — 12 ही एकूण, प्रति अणू मूल्य नव्हे. डायक्रोमेट नारिंगी आणि क्षपणावर हिरव्या Cr³⁺ पर्यंत येतो. (12 तीच एकूण सांगते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "An iron ion changes from Fe²⁺ to Fe³⁺. How many electrons does each ion lose?",
+        hi: "एक लोहे का आयन Fe²⁺ से Fe³⁺ हो जाता है। हर आयन कितने इलेक्ट्रॉन खोता है?",
+        mr: "एक लोखंडाचा आयन Fe²⁺ वरून Fe³⁺ होतो. प्रत्येक आयन किती इलेक्ट्रॉन गमावतो?",
+      },
+      answer: 1,
+      wrong: [5, 2, 3],
+      checkExpr: "3-2",
+      solution: {
+        en: "3 − 2 = 1 electron lost, so the iron has been oxidised. Losing electrons makes the charge more positive, which is worth fixing in mind because the arithmetic reads backwards at first glance — a rise in oxidation number always means a loss. (5 adds the two charges.)",
+        hi: "3 − 2 = 1 इलेक्ट्रॉन खोया, अतः लोहा उपचयित हुआ। इलेक्ट्रॉन खोने से आवेश अधिक धनात्मक होता है, और यह मन में बिठाने योग्य है क्योंकि पहली नज़र में गणित उलटा पढ़ा जाता है — उपचयन संख्या का चढ़ना सदा हानि का अर्थ रखता है। (5 दोनों आवेश जोड़ देता है।)",
+        mr: "3 − 2 = 1 इलेक्ट्रॉन गमावला, म्हणून लोखंड ऑक्सिडीकृत झाले. इलेक्ट्रॉन गमावल्याने भार अधिक धन होतो, आणि हे मनात बसवण्याजोगे कारण पहिल्या नजरेत गणित उलटे वाचले जाते — ऑक्सिडीकरण संख्येचे चढणे नेहमी हानीचा अर्थ राखते. (5 दोन्ही भार जोडते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "In HNO₃ the hydrogen gives +1 and the three oxygens −6. What is the oxidation number of nitrogen?",
+        hi: "HNO₃ में हाइड्रोजन +1 और तीन ऑक्सीजन −6 देते हैं। नाइट्रोजन की उपचयन संख्या क्या है?",
+        mr: "HNO₃ मध्ये हायड्रोजन +1 आणि तीन ऑक्सिजन −6 देतात. नायट्रोजनची ऑक्सिडीकरण संख्या किती?",
+      },
+      answer: 5,
+      wrong: [3, 4, 7],
+      checkExpr: "6-1",
+      solution: {
+        en: "1 + x − 6 = 0 gives x = +5, nitrogen's maximum and the reason concentrated nitric acid is such an aggressive oxidising agent. Nitrogen is unusual in reaching every oxidation state from −3 in ammonia to +5 here, which is why its chemistry is so varied. (3 is the value in nitrous acid.)",
+        hi: "1 + x − 6 = 0 से x = +5, नाइट्रोजन का अधिकतम और यही कारण कि सांद्र नाइट्रिक अम्ल इतना आक्रामक उपचायक है। नाइट्रोजन असामान्य है कि वह अमोनिया के −3 से यहाँ के +5 तक हर उपचयन अवस्था तक पहुँचती है, इसीलिए उसका रसायन इतना विविध है। (3 नाइट्रस अम्ल का मान है।)",
+        mr: "1 + x − 6 = 0 वरून x = +5, नायट्रोजनचे कमाल आणि हेच कारण की संहत नायट्रिक आम्ल इतका आक्रमक ऑक्सिडीकारक. नायट्रोजन असामान्य की तो अमोनियातील −3 पासून इथल्या +5 पर्यंत प्रत्येक ऑक्सिडीकरण अवस्थेपर्यंत पोहोचतो, म्हणूनच त्याचे रसायन इतके वैविध्यपूर्ण. (3 हे नायट्रस आम्लाचे मूल्य.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "Dichromate is reduced from chromium at +6 to two Cr³⁺ ions at +3 each. How many electrons in total are gained?",
+        hi: "डाइक्रोमेट +6 वाले क्रोमियम से अपचयित होकर +3 वाले दो Cr³⁺ आयन बनता है। कुल कितने इलेक्ट्रॉन प्राप्त होते हैं?",
+        mr: "डायक्रोमेट +6 वरील क्रोमियमपासून क्षपित होऊन प्रत्येकी +3 वरचे दोन Cr³⁺ आयन बनते. एकूण किती इलेक्ट्रॉन मिळवले जातात?",
+      },
+      answer: 6,
+      wrong: [3, 9, 12],
+      checkExpr: "2*(6-3)",
+      solution: {
+        en: "Each chromium falls by three, and there are two of them: 2 × 3 = 6 electrons. That six is what makes dichromate such a useful titrant — one mole of it oxidises six moles of Fe²⁺, and the ratio comes straight from the electron count. (3 counts only one chromium.)",
+        hi: "हर क्रोमियम तीन गिरता है, और वे दो हैं: 2 × 3 = 6 इलेक्ट्रॉन। वही छह डाइक्रोमेट को इतना उपयोगी अनुमापक बनाते हैं — उसका एक मोल Fe²⁺ के छह मोल का उपचयन करता है, और अनुपात सीधे इलेक्ट्रॉन-गिनती से आता है। (3 केवल एक क्रोमियम गिनता है।)",
+        mr: "प्रत्येक क्रोमियम तीनने खाली येतो, आणि ते दोन आहेत: 2 × 3 = 6 इलेक्ट्रॉन. तेच सहा डायक्रोमेटला इतका उपयुक्त अनुमापक बनवतात — त्याचा एक मोल Fe²⁺ च्या सहा मोलचे ऑक्सिडीकरण करतो, आणि गुणोत्तर थेट इलेक्ट्रॉन-मोजणीतून येते. (3 फक्त एक क्रोमियम मोजते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "In acid solution permanganate is reduced from manganese at +7 to Mn²⁺ at +2. How many electrons does each permanganate ion gain?",
+        hi: "अम्लीय विलयन में परमैंगनेट +7 वाले मैंगनीज़ से अपचयित होकर +2 वाला Mn²⁺ बनता है। हर परमैंगनेट आयन कितने इलेक्ट्रॉन पाता है?",
+        mr: "आम्लधर्मी द्रावणात परमँगनेट +7 वरील मँगेनीजपासून क्षपित होऊन +2 वरचा Mn²⁺ बनतो. प्रत्येक परमँगनेट आयन किती इलेक्ट्रॉन मिळवतो?",
+      },
+      answer: 5,
+      wrong: [2, 9, 4],
+      checkExpr: "7-2",
+      solution: {
+        en: "7 − 2 = 5 electrons per ion. That is why one mole of permanganate oxidises five moles of Fe²⁺, and the 1:5 ratio is what a titration calculation turns on. In alkaline solution the reduction stops at manganese dioxide, +4, and only three electrons are taken — so the same reagent has a different strength depending on the medium. (2 quotes the final oxidation state rather than the change.)",
+        hi: "7 − 2 = 5 इलेक्ट्रॉन प्रति आयन। इसीलिए परमैंगनेट का एक मोल Fe²⁺ के पाँच मोल का उपचयन करता है, और 1:5 अनुपात पर ही अनुमापन की गणना टिकती है। क्षारीय विलयन में अपचयन मैंगनीज़ डाइऑक्साइड, +4, पर रुक जाता है और केवल तीन इलेक्ट्रॉन लिए जाते हैं — अतः वही अभिकर्मक माध्यम के अनुसार भिन्न प्रबलता रखता है। (2 परिवर्तन के बजाय अंतिम उपचयन अवस्था बता देता है।)",
+        mr: "7 − 2 = 5 इलेक्ट्रॉन प्रति आयन. म्हणूनच परमँगनेटचा एक मोल Fe²⁺ च्या पाच मोलचे ऑक्सिडीकरण करतो, आणि 1:5 गुणोत्तरावरच अनुमापनाची गणना टेकते. आम्लारीधर्मी द्रावणात क्षपण मँगेनीज डायऑक्साइड, +4, वर थांबते आणि केवळ तीन इलेक्ट्रॉन घेतले जातात — म्हणून तोच अभिकर्मक माध्यमानुसार वेगळी प्रबळता राखतो. (2 बदलाऐवजी अंतिम ऑक्सिडीकरण अवस्था सांगते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "Chlorine at oxidation number 0 disproportionates to chloride at −1 and hypochlorite at +1. What is the difference in oxidation number between the two products?",
+        hi: "उपचयन संख्या 0 वाली क्लोरीन असमानुपातित होकर −1 वाला क्लोराइड और +1 वाला हाइपोक्लोराइट बनाती है। दोनों उत्पादों की उपचयन संख्याओं में अंतर क्या है?",
+        mr: "ऑक्सिडीकरण संख्या 0 असलेला क्लोरिन असमानुपातित होऊन −1 वरचा क्लोराइड आणि +1 वरचा हायपोक्लोराइट बनतो. दोन्ही उत्पादांच्या ऑक्सिडीकरण संख्यांतील फरक किती?",
+      },
+      answer: 2,
+      wrong: [0, 1, 3],
+      checkExpr: "1-(-1)",
+      solution: {
+        en: "1 − (−1) = 2. The two products sit one unit either side of the starting element, so the electrons balance exactly: one chlorine atom gains one for every chlorine atom that loses one, and the equation needs equal amounts of the two products. Only an element starting in an intermediate state can do this. (0 subtracts the wrong way round and gets no difference at all.)",
+        hi: "1 − (−1) = 2. दोनों उत्पाद आरंभिक तत्व के दोनों ओर एक-एक इकाई पर बैठते हैं, अतः इलेक्ट्रॉन ठीक-ठीक संतुलित हैं: जितने क्लोरीन परमाणु एक खोते हैं उतने ही एक पाते हैं, और समीकरण को दोनों उत्पादों की बराबर मात्राएँ चाहिए। यह केवल मध्यवर्ती अवस्था में शुरू होने वाला तत्व ही कर सकता है। (0 उलटा घटाकर कोई अंतर ही नहीं पाता।)",
+        mr: "1 − (−1) = 2. दोन्ही उत्पादे सुरुवातीच्या मूलद्रव्याच्या दोन्ही बाजूंना एकेक एककावर बसतात, म्हणून इलेक्ट्रॉन नेमके संतुलित: जितके क्लोरिन अणू एक गमावतात तितकेच एक मिळवतात, आणि समीकरणाला दोन्ही उत्पादांची समान प्रमाणे लागतात. हे केवळ मध्यवर्ती अवस्थेत सुरू होणारे मूलद्रव्यच करू शकते. (0 उलटे वजा करून कोणताही फरक मिळवत नाही.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "In a titration 0.02 mol of permanganate is used, each ion taking 5 electrons, and each Fe²⁺ gives 1. How many moles of Fe²⁺ are oxidised?",
+        hi: "अनुमापन में 0.02 mol परमैंगनेट लगता है, हर आयन 5 इलेक्ट्रॉन लेता है, और हर Fe²⁺ 1 देता है। कितने मोल Fe²⁺ का उपचयन होता है?",
+        mr: "अनुमापनात 0.02 mol परमँगनेट वापरले जाते, प्रत्येक आयन 5 इलेक्ट्रॉन घेतो, आणि प्रत्येक Fe²⁺ 1 देतो. किती मोल Fe²⁺ चे ऑक्सिडीकरण होते?",
+      },
+      answer: 0.1,
+      wrong: [0.004, 0.002, 0.5],
+      checkExpr: "0.02*5",
+      fmt: moles,
+      solution: {
+        en: "Electrons gained must equal electrons lost: 0.02 × 5 = 0.1 mol of electrons, and since each Fe²⁺ supplies one, 0.1 mol of iron is oxidised. Note that the stoichiometric ratio was never looked up — it was derived from the electron count, which is the whole advantage of the half-reaction method. (0.004 divides by five instead of multiplying.)",
+        hi: "पाए इलेक्ट्रॉन खोए इलेक्ट्रॉनों के बराबर होने चाहिए: 0.02 × 5 = 0.1 mol इलेक्ट्रॉन, और चूँकि हर Fe²⁺ एक देता है, 0.1 mol लोहे का उपचयन होता है। ध्यान दो रससमीकरणमितीय अनुपात कहीं देखा ही नहीं गया — वह इलेक्ट्रॉन-गिनती से निकला, और अर्ध-अभिक्रिया विधि का पूरा लाभ यही है। (0.004 गुणा के बजाय पाँच से भाग देता है।)",
+        mr: "मिळवलेले इलेक्ट्रॉन गमावलेल्या इलेक्ट्रॉनांइतके असावेत: 0.02 × 5 = 0.1 mol इलेक्ट्रॉन, आणि प्रत्येक Fe²⁺ एक देत असल्याने 0.1 mol लोखंडाचे ऑक्सिडीकरण होते. लक्षात घ्या रससमीकरणमितीय गुणोत्तर कुठेही पाहिलेच गेले नाही — ते इलेक्ट्रॉन-मोजणीतून निघाले, आणि अर्ध-अभिक्रिया पद्धतीचा अख्खा फायदा हाच. (0.004 गुणण्याऐवजी पाचने भागते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "In sodium tetrathionate Na₂S₄O₆ the two sodiums give +2 and the six oxygens −12, shared among four sulphur atoms. What is the average oxidation number of sulphur?",
+        hi: "सोडियम टेट्राथायोनेट Na₂S₄O₆ में दो सोडियम +2 और छह ऑक्सीजन −12 देते हैं, जो चार सल्फ़र परमाणुओं में बँटते हैं। सल्फ़र की औसत उपचयन संख्या क्या है?",
+        mr: "सोडियम टेट्राथायोनेट Na₂S₄O₆ मध्ये दोन सोडियम +2 आणि सहा ऑक्सिजन −12 देतात, जे चार गंधक अणूंत वाटले जातात. गंधकाची सरासरी ऑक्सिडीकरण संख्या किती?",
+      },
+      answer: 2.5,
+      wrong: [2, 3, 6],
+      checkExpr: "10/4",
+      solution: {
+        en: "2 + 4x − 12 = 0 gives 4x = 10 and x = +2.5. A fractional value should not be alarming — it is a straightforward consequence of the definition, which averages over atoms that are not in identical environments. In tetrathionate the four sulphurs really are different: the two on the outside are bonded to oxygen and sit at +5, while the two in the middle are bonded only to sulphur and sit at 0, and the average of 5, 0, 0 and 5 is 2.5. Two lessons follow. First, this is direct evidence that oxidation number is a bookkeeping device rather than a physical charge — no atom carries half an electron's worth of charge, and the +2.5 describes the formula rather than any particular sulphur. Second, the same thing happens in Fe₃O₄, where the average is +8/3 because the crystal contains one Fe²⁺ for every two Fe³⁺, and in the superoxides, where oxygen averages −0.5. Whenever an average comes out fractional it is a signal that the atoms of that element are not all alike, and it is worth asking which are which. (2 and 3 are the nearest whole numbers, and rounding is exactly the instinct to resist here.)",
+        hi: "2 + 4x − 12 = 0 से 4x = 10 और x = +2.5. भिन्नात्मक मान चिंता की बात नहीं — वह परिभाषा का सीधा परिणाम है, जो उन परमाणुओं पर औसत निकालती है जो समान परिवेश में नहीं। टेट्राथायोनेट में चारों सल्फ़र सचमुच भिन्न हैं: बाहर के दो ऑक्सीजन से बँधे हैं और +5 पर बैठते हैं, जबकि बीच के दो केवल सल्फ़र से बँधे हैं और 0 पर, और 5, 0, 0 तथा 5 का औसत 2.5 है। दो सबक़ निकलते हैं। पहला, यह सीधा प्रमाण है कि उपचयन संख्या भौतिक आवेश नहीं बल्कि बहीखाता-युक्ति है — कोई परमाणु आधे इलेक्ट्रॉन जितना आवेश नहीं ढोता, और +2.5 सूत्र का वर्णन करता है, किसी विशेष सल्फ़र का नहीं। दूसरा, वही Fe₃O₄ में होता है, जहाँ औसत +8/3 है क्योंकि क्रिस्टल में हर दो Fe³⁺ पर एक Fe²⁺ है, और सुपरऑक्साइडों में, जहाँ ऑक्सीजन का औसत −0.5 है। जब भी औसत भिन्नात्मक निकले वह संकेत है कि उस तत्व के सब परमाणु एक-से नहीं, और यह पूछना सार्थक है कि कौन-सा कौन है। (2 और 3 निकटतम पूर्णांक हैं, और पूर्णांकन ठीक वही सहज प्रवृत्ति है जिसका यहाँ प्रतिरोध करना है।)",
+        mr: "2 + 4x − 12 = 0 वरून 4x = 10 आणि x = +2.5. अपूर्णांकी मूल्य चिंतेची बाब नाही — तो व्याख्येचा थेट परिणाम, जी समान परिसरात नसलेल्या अणूंवर सरासरी काढते. टेट्राथायोनेटमध्ये चारही गंधक खरोखर वेगळे: बाहेरचे दोन ऑक्सिजनशी बांधलेले आणि +5 वर बसतात, तर मधले दोन केवळ गंधकाशी बांधलेले आणि 0 वर, आणि 5, 0, 0 व 5 यांची सरासरी 2.5. दोन धडे निघतात. पहिला, हा थेट पुरावा की ऑक्सिडीकरण संख्या ही भौतिक भार नव्हे तर वहीखाता-युक्ती — कोणताही अणू अर्ध्या इलेक्ट्रॉनइतका भार वाहत नाही, आणि +2.5 सूत्राचे वर्णन करते, कोणत्याही विशिष्ट गंधकाचे नाही. दुसरा, तेच Fe₃O₄ मध्ये घडते, जिथे सरासरी +8/3 कारण स्फटिकात प्रत्येक दोन Fe³⁺ मागे एक Fe²⁺, आणि सुपरऑक्साइडांत, जिथे ऑक्सिजनची सरासरी −0.5. जेव्हा जेव्हा सरासरी अपूर्णांकी निघते तेव्हा ते संकेत की त्या मूलद्रव्याचे सर्व अणू सारखे नाहीत, आणि कोणता कोणता हे विचारणे सार्थक. (2 आणि 3 हे जवळचे पूर्णांक, आणि पूर्णांकन हीच ती सहज प्रवृत्ती जिचा इथे प्रतिकार करायचा.)",
+      },
+    },
+  ],
+  "chemistry-11-organic-basic-principles": [
+    {
+      level: 1,
+      stem: {
+        en: "Alkanes have the general formula CₙH₂ₙ₊₂. How many hydrogens does the alkane with five carbons have?",
+        hi: "ऐल्केनों का सामान्य सूत्र CₙH₂ₙ₊₂ है। पाँच कार्बन वाले ऐल्केन में कितने हाइड्रोजन हैं?",
+        mr: "अल्केनांचे सामान्य सूत्र CₙH₂ₙ₊₂ आहे. पाच कार्बन असलेल्या अल्केनमध्ये किती हायड्रोजन आहेत?",
+      },
+      answer: 12,
+      wrong: [10, 11, 5],
+      checkExpr: "2*5+2",
+      solution: {
+        en: "2 × 5 + 2 = 12, giving C₅H₁₂, pentane. The plus two comes from the two ends of the chain, where a carbon has a spare hydrogen instead of a neighbour — which is why the term vanishes in a ring, where CₙH₂ₙ applies instead. (10 forgets the two ends.)",
+        hi: "2 × 5 + 2 = 12, जिससे C₅H₁₂, पेंटेन मिलता है। जोड़ दो शृंखला के दोनों सिरों से आता है, जहाँ कार्बन के पास पड़ोसी के बजाय एक फ़ालतू हाइड्रोजन है — इसीलिए वलय में वह पद ग़ायब हो जाता है, जहाँ इसके बजाय CₙH₂ₙ लगता है। (10 दोनों सिरे भूल जाता है।)",
+        mr: "2 × 5 + 2 = 12, ज्यातून C₅H₁₂, पेंटेन मिळते. अधिक दोन साखळीच्या दोन टोकांतून येते, जिथे कार्बनकडे शेजाऱ्याऐवजी एक जादा हायड्रोजन असतो — म्हणूनच वलयात ते पद नाहीसे होते, जिथे त्याऐवजी CₙH₂ₙ लागते. (10 दोन्ही टोके विसरते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "Successive members of a homologous series differ by a CH₂ unit. Taking C as 12 and H as 1, what is the difference in molar mass?",
+        hi: "समजातीय श्रेणी के क्रमिक सदस्य एक CH₂ इकाई से भिन्न हैं। C को 12 और H को 1 लेते हुए, मोलर द्रव्यमान में अंतर क्या है?",
+        mr: "समजातीय मालिकेचे क्रमवार सदस्य एका CH₂ एककाने वेगळे. C हा 12 आणि H हा 1 घेतल्यास, मोलर वस्तुमानातील फरक किती?",
+      },
+      answer: 14,
+      wrong: [16, 12, 2],
+      checkExpr: "12+2",
+      solution: {
+        en: "12 + 2 × 1 = 14 g/mol. Every step up any homologous series adds exactly this, which is why a list of molar masses in an alkane series reads 16, 30, 44, 58 — a constant difference that identifies the family at a glance. (16 uses an oxygen atom by mistake.)",
+        hi: "12 + 2 × 1 = 14 g/mol. किसी भी समजातीय श्रेणी में हर क़दम ठीक यही जोड़ता है, इसीलिए ऐल्केन श्रेणी के मोलर द्रव्यमानों की सूची 16, 30, 44, 58 पढ़ी जाती है — अचर अंतर जो कुनबे को एक नज़र में पहचान देता है। (16 भूल से ऑक्सीजन परमाणु लगा देता है।)",
+        mr: "12 + 2 × 1 = 14 g/mol. कोणत्याही समजातीय मालिकेत प्रत्येक पाऊल नेमके हेच जोडते, म्हणूनच अल्केन मालिकेच्या मोलर वस्तुमानांची यादी 16, 30, 44, 58 अशी वाचली जाते — अचल फरक जो कुटुंब एका नजरेत ओळखवतो. (16 चुकून ऑक्सिजन अणू वापरते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Alkenes have the general formula CₙH₂ₙ. How many hydrogens does the alkene with four carbons have?",
+        hi: "ऐल्कीनों का सामान्य सूत्र CₙH₂ₙ है। चार कार्बन वाले ऐल्कीन में कितने हाइड्रोजन हैं?",
+        mr: "अल्कीनांचे सामान्य सूत्र CₙH₂ₙ आहे. चार कार्बन असलेल्या अल्कीनमध्ये किती हायड्रोजन आहेत?",
+      },
+      answer: 8,
+      wrong: [10, 6, 4],
+      checkExpr: "2*4",
+      solution: {
+        en: "2 × 4 = 8, giving C₄H₈, butene. It has two hydrogens fewer than butane C₄H₁₀ because the double bond ties up one bonding position on each of two carbons — every degree of unsaturation costs two hydrogens. (10 quotes the alkane.)",
+        hi: "2 × 4 = 8, जिससे C₄H₈, ब्यूटीन मिलता है। उसमें ब्यूटेन C₄H₁₀ से दो हाइड्रोजन कम हैं क्योंकि द्विबंध दो कार्बनों में से हर एक की एक आबंधन-स्थिति बाँध लेता है — असंतृप्तता की हर कोटि दो हाइड्रोजन की क़ीमत माँगती है। (10 ऐल्केन बता देता है।)",
+        mr: "2 × 4 = 8, ज्यातून C₄H₈, ब्युटीन मिळते. त्यात ब्युटेन C₄H₁₀ हून दोन हायड्रोजन कमी कारण द्विबंध दोन कार्बनांपैकी प्रत्येकाची एक बंधन-जागा अडवतो — असंतृप्ततेची प्रत्येक कोटी दोन हायड्रोजनांची किंमत मागते. (10 अल्केन सांगते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "The degree of unsaturation is (2n + 2 − H)/2 for a hydrocarbon with n carbons and H hydrogens. What is it for benzene, C₆H₆?",
+        hi: "n कार्बन और H हाइड्रोजन वाले हाइड्रोकार्बन के लिए असंतृप्तता की कोटि (2n + 2 − H)/2 है। बेंज़ीन, C₆H₆, के लिए वह क्या है?",
+        mr: "n कार्बन आणि H हायड्रोजन असलेल्या हायड्रोकार्बनसाठी असंतृप्ततेची कोटी (2n + 2 − H)/2 आहे. बेंझिन, C₆H₆, साठी ती किती?",
+      },
+      answer: 4,
+      wrong: [3, 2, 8],
+      checkExpr: "(2*6+2-6)/2",
+      solution: {
+        en: "(12 + 2 − 6)/2 = 8/2 = 4. Benzene has one ring and three double bonds, and each counts as one degree — which is exactly the four. The formula is a fast structural check: a compound with a degree of four is almost always aromatic, and one with zero is a saturated chain. (3 counts the double bonds and forgets the ring.)",
+        hi: "(12 + 2 − 6)/2 = 8/2 = 4. बेंज़ीन में एक वलय और तीन द्विबंध हैं, और हर एक एक कोटि गिना जाता है — ठीक वही चार। सूत्र झटपट संरचनात्मक जाँच है: चार कोटि वाला यौगिक लगभग सदा ऐरोमैटिक होता है, और शून्य वाला संतृप्त शृंखला। (3 द्विबंध गिनता है और वलय भूल जाता है।)",
+        mr: "(12 + 2 − 6)/2 = 8/2 = 4. बेंझिनमध्ये एक वलय आणि तीन द्विबंध, आणि प्रत्येक एक कोटी मोजला जातो — नेमके तेच चार. सूत्र ही झटपट संरचनात्मक तपासणी: चार कोटी असलेले संयुग जवळपास नेहमी सुगंधी, आणि शून्य असलेले संतृप्त साखळी. (3 द्विबंध मोजते आणि वलय विसरते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "Using the same formula, what is the degree of unsaturation for C₅H₈?",
+        hi: "उसी सूत्र से, C₅H₈ के लिए असंतृप्तता की कोटि क्या है?",
+        mr: "त्याच सूत्राने, C₅H₈ साठी असंतृप्ततेची कोटी किती?",
+      },
+      answer: 2,
+      wrong: [1, 3, 4],
+      checkExpr: "(2*5+2-8)/2",
+      solution: {
+        en: "(10 + 2 − 8)/2 = 4/2 = 2. Two degrees could mean two double bonds, or one triple bond, or one ring and one double bond — the count constrains the structure without determining it, and further evidence is needed to choose. (1 would be a simple alkene.)",
+        hi: "(10 + 2 − 8)/2 = 4/2 = 2. दो कोटियों का अर्थ दो द्विबंध हो सकता है, या एक त्रिबंध, या एक वलय और एक द्विबंध — गिनती संरचना को बाँधती है, तय नहीं करती, और चुनने को और प्रमाण चाहिए। (1 सादा ऐल्कीन होता।)",
+        mr: "(10 + 2 − 8)/2 = 4/2 = 2. दोन कोटींचा अर्थ दोन द्विबंध असू शकतो, वा एक त्रिबंध, वा एक वलय आणि एक द्विबंध — मोजणी संरचनेला बांधते, ठरवत नाही, आणि निवडायला आणखी पुरावा लागतो. (1 हे साधे अल्कीन ठरले असते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "Ethane is C₂H₆ with a molar mass of 30. Taking C as 12, what percentage of its mass is carbon?",
+        hi: "एथेन C₂H₆ है जिसका मोलर द्रव्यमान 30 है। C को 12 लेते हुए, उसके द्रव्यमान का कितना प्रतिशत कार्बन है?",
+        mr: "इथेन हे C₂H₆ ज्याचे मोलर वस्तुमान 30. C हा 12 घेतल्यास, त्याच्या वस्तुमानाच्या किती टक्के कार्बन?",
+      },
+      answer: 80,
+      wrong: [20, 40, 24],
+      checkExpr: "100*24/30",
+      solution: {
+        en: "Two carbons weigh 24 out of 30, so 100 × 24/30 = 80 per cent. Hydrogen is only 20 per cent by mass although it supplies six of the eight atoms — a reminder that mass percentages and atom counts answer different questions. (20 quotes the hydrogen share.)",
+        hi: "दो कार्बन 30 में से 24 तौलते हैं, अतः 100 × 24/30 = 80 प्रतिशत। हाइड्रोजन द्रव्यमान से केवल 20 प्रतिशत है यद्यपि वह आठ में से छह परमाणु देता है — यह स्मरण कि द्रव्यमान-प्रतिशत और परमाणु-गिनती भिन्न प्रश्नों के उत्तर देते हैं। (20 हाइड्रोजन का हिस्सा बता देता है।)",
+        mr: "दोन कार्बन 30 पैकी 24 तोलतात, म्हणून 100 × 24/30 = 80 टक्के. हायड्रोजन वस्तुमानाने केवळ 20 टक्के जरी तो आठांपैकी सहा अणू देतो — ही आठवण की वस्तुमान-शेकडे आणि अणु-मोजणी वेगळ्या प्रश्नांची उत्तरे देतात. (20 हायड्रोजनचा वाटा सांगते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "An alkane has a molar mass of 72 g/mol, and CₙH₂ₙ₊₂ gives a mass of 14n + 2. How many carbons does it have?",
+        hi: "किसी ऐल्केन का मोलर द्रव्यमान 72 g/mol है, और CₙH₂ₙ₊₂ से द्रव्यमान 14n + 2 मिलता है। उसमें कितने कार्बन हैं?",
+        mr: "एका अल्केनचे मोलर वस्तुमान 72 g/mol, आणि CₙH₂ₙ₊₂ वरून वस्तुमान 14n + 2 मिळते. त्यात किती कार्बन आहेत?",
+      },
+      answer: 5,
+      wrong: [4, 6, 72],
+      checkExpr: "(72-2)/14",
+      solution: {
+        en: "14n + 2 = 72 gives n = 70/14 = 5, so the compound is C₅H₁₂. But the molar mass alone does not identify it: pentane, 2-methylbutane and 2,2-dimethylpropane are all C₅H₁₂ with boiling points of 36, 28 and 10 °C. Mass gives the formula, and only structure gives the substance. (4 would give a mass of 58.)",
+        hi: "14n + 2 = 72 से n = 70/14 = 5, अतः यौगिक C₅H₁₂ है। पर अकेला मोलर द्रव्यमान उसे पहचानता नहीं: पेंटेन, 2-मेथिलब्यूटेन और 2,2-डाइमेथिलप्रोपेन सब C₅H₁₂ हैं जिनके क्वथनांक 36, 28 और 10 °C हैं। द्रव्यमान सूत्र देता है, और पदार्थ केवल संरचना देती है। (4 से 58 द्रव्यमान मिलता।)",
+        mr: "14n + 2 = 72 वरून n = 70/14 = 5, म्हणून संयुग C₅H₁₂. पण एकटे मोलर वस्तुमान ते ओळखत नाही: पेंटेन, 2-मिथाइलब्युटेन आणि 2,2-डायमिथाइलप्रोपेन सर्व C₅H₁₂ ज्यांचे उकळबिंदू 36, 28 आणि 10 °C. वस्तुमान सूत्र देते, आणि पदार्थ केवळ संरचना देते. (4 ने 58 वस्तुमान मिळाले असते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "What is the degree of unsaturation for toluene, C₇H₈?",
+        hi: "टॉलूईन, C₇H₈, के लिए असंतृप्तता की कोटि क्या है?",
+        mr: "टोल्यूइन, C₇H₈, साठी असंतृप्ततेची कोटी किती?",
+      },
+      answer: 4,
+      wrong: [3, 5, 6],
+      checkExpr: "(2*7+2-8)/2",
+      solution: {
+        en: "(14 + 2 − 8)/2 = 8/2 = 4, the same as benzene — because the extra CH₃ group adds one carbon and two hydrogens, which is exactly the increment that leaves the degree unchanged. Any saturated substituent behaves this way, so the degree of unsaturation reports the ring-and-multiple-bond skeleton and ignores the decorations hung on it. (3 forgets the ring again.)",
+        hi: "(14 + 2 − 8)/2 = 8/2 = 4, बेंज़ीन जितना ही — क्योंकि अतिरिक्त CH₃ समूह एक कार्बन और दो हाइड्रोजन जोड़ता है, और यही वह वृद्धि है जो कोटि अपरिवर्तित छोड़ देती है। कोई भी संतृप्त प्रतिस्थापी ऐसे ही व्यवहार करता है, अतः असंतृप्तता की कोटि वलय-और-बहुबंध ढाँचा बताती है और उस पर टँगी सजावटें अनदेखी कर देती है। (3 फिर वलय भूल जाता है।)",
+        mr: "(14 + 2 − 8)/2 = 8/2 = 4, बेंझिनइतकीच — कारण जादा CH₃ गट एक कार्बन आणि दोन हायड्रोजन जोडतो, आणि हीच ती वाढ जी कोटी अपरिवर्तित ठेवते. कोणताही संतृप्त प्रतिस्थापक असाच वागतो, म्हणून असंतृप्ततेची कोटी वलय-आणि-बहुबंध सांगाडा सांगते आणि त्यावर टांगलेल्या सजावटी दुर्लक्षते. (3 पुन्हा वलय विसरते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "Alkynes have the general formula CₙH₂ₙ₋₂. How many hydrogens does the alkyne with six carbons have?",
+        hi: "ऐल्काइनों का सामान्य सूत्र CₙH₂ₙ₋₂ है। छह कार्बन वाले ऐल्काइन में कितने हाइड्रोजन हैं?",
+        mr: "अल्काइनांचे सामान्य सूत्र CₙH₂ₙ₋₂ आहे. सहा कार्बन असलेल्या अल्काइनमध्ये किती हायड्रोजन आहेत?",
+      },
+      answer: 10,
+      wrong: [12, 14, 6],
+      checkExpr: "2*6-2",
+      solution: {
+        en: "2 × 6 − 2 = 10, giving C₆H₁₀. Notice the series: the alkane C₆H₁₄, the alkene C₆H₁₂ and the alkyne C₆H₁₀ fall by two hydrogens at each step, because each extra bond between the same two carbons removes one bonding position from each. The degree of unsaturation counts up 0, 1, 2 in step. But C₆H₁₀ is also the formula of cyclohexene — one ring plus one double bond — so the formula alone cannot distinguish a triple bond from a ring with a double bond. (12 quotes the alkene.)",
+        hi: "2 × 6 − 2 = 10, जिससे C₆H₁₀ मिलता है। श्रेणी ध्यान दो: ऐल्केन C₆H₁₄, ऐल्कीन C₆H₁₂ और ऐल्काइन C₆H₁₀ हर क़दम पर दो हाइड्रोजन गिरते हैं, क्योंकि उन्हीं दो कार्बनों के बीच हर अतिरिक्त बंध हर एक से एक आबंधन-स्थिति हटा देता है। असंतृप्तता की कोटि साथ-साथ 0, 1, 2 गिनती है। पर C₆H₁₀ साइक्लोहेक्सीन का भी सूत्र है — एक वलय जोड़ एक द्विबंध — अतः अकेला सूत्र त्रिबंध और द्विबंध वाले वलय में भेद नहीं कर सकता। (12 ऐल्कीन बता देता है।)",
+        mr: "2 × 6 − 2 = 10, ज्यातून C₆H₁₀ मिळते. मालिका लक्षात घ्या: अल्केन C₆H₁₄, अल्कीन C₆H₁₂ आणि अल्काइन C₆H₁₀ प्रत्येक पावलावर दोन हायड्रोजन घटतात, कारण त्याच दोन कार्बनांमधला प्रत्येक जादा बंध प्रत्येकाकडून एक बंधन-जागा काढतो. असंतृप्ततेची कोटी सोबतच 0, 1, 2 मोजते. पण C₆H₁₀ हे सायक्लोहेक्सीनचेही सूत्र — एक वलय अधिक एक द्विबंध — म्हणून एकटे सूत्र त्रिबंध आणि द्विबंध असलेले वलय यांत फरक करू शकत नाही. (12 अल्कीन सांगते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "A compound has the empirical formula CH₂, of formula mass 14, and its molar mass is measured as 56. How many carbon atoms are in one molecule?",
+        hi: "किसी यौगिक का मूलानुपाती सूत्र CH₂ है, जिसका सूत्र-द्रव्यमान 14 है, और उसका मोलर द्रव्यमान 56 नापा गया है। एक अणु में कितने कार्बन परमाणु हैं?",
+        mr: "एका संयुगाचे मूलानुपाती सूत्र CH₂, ज्याचे सूत्र-वस्तुमान 14, आणि त्याचे मोलर वस्तुमान 56 मोजले आहे. एका रेणूत किती कार्बन अणू आहेत?",
+      },
+      answer: 4,
+      wrong: [2, 8, 14],
+      checkExpr: "56/14",
+      solution: {
+        en: "56/14 = 4, so the molecular formula is C₄H₈ and there are four carbons. But notice how far that still is from identifying the compound. C₄H₈ has a degree of unsaturation of (10 − 8)/2 = 1, so it is either an alkene or a ring, and there are five distinct structures with this formula: but-1-ene, but-2-ene in two geometric forms, 2-methylpropene and cyclobutane. Their boiling points run from −7 °C to 4 °C and their chemistry differs sharply — cyclobutane will not decolourise bromine water and every alkene will. Three levels of information are in play, and each answers a narrower question than the last. Elemental analysis gives the empirical formula, the ratio. Molar mass gives the molecular formula, the count. Only spectroscopy or a chemical test gives the structure, the substance. The empirical formula CH₂ alone would have been consistent with ethene, propene, butene, cyclohexane and any number of others, all sharing the same 85.7 per cent carbon by mass, and this is exactly why a chemist reporting a new compound must supply more than a combustion analysis. (2 would be ethene and 8 would be C₈H₁₆, both consistent with the ratio and ruled out by the mass.)",
+        hi: "56/14 = 4, अतः आण्विक सूत्र C₄H₈ है और चार कार्बन हैं। पर ध्यान दो यह यौगिक पहचानने से अब भी कितना दूर है। C₄H₈ की असंतृप्तता कोटि (10 − 8)/2 = 1 है, अतः वह या तो ऐल्कीन है या वलय, और इस सूत्र की पाँच भिन्न संरचनाएँ हैं: ब्यूट-1-ईन, दो ज्यामितीय रूपों में ब्यूट-2-ईन, 2-मेथिलप्रोपीन और साइक्लोब्यूटेन। उनके क्वथनांक −7 °C से 4 °C तक चलते हैं और उनका रसायन तीखे ढंग से भिन्न है — साइक्लोब्यूटेन ब्रोमीन जल का रंग नहीं उड़ाएगा और हर ऐल्कीन उड़ाएगा। सूचना के तीन स्तर खेल में हैं, और हर एक पिछले से संकरे प्रश्न का उत्तर देता है। तात्विक विश्लेषण मूलानुपाती सूत्र देता है, अनुपात। मोलर द्रव्यमान आण्विक सूत्र देता है, गिनती। संरचना, यानी पदार्थ, केवल स्पेक्ट्रममिति या रासायनिक परीक्षण देता है। अकेला मूलानुपाती सूत्र CH₂ एथीन, प्रोपीन, ब्यूटीन, साइक्लोहेक्सेन और अनगिनत औरों के अनुरूप होता, सबका द्रव्यमान से वही 85.7 प्रतिशत कार्बन, और ठीक इसीलिए नया यौगिक बताते रसायनज्ञ को दहन-विश्लेषण से अधिक देना पड़ता है। (2 एथीन होता और 8 C₈H₁₆, दोनों अनुपात के अनुरूप और द्रव्यमान से बाहर।)",
+        mr: "56/14 = 4, म्हणून रेणवीय सूत्र C₄H₈ आणि चार कार्बन. पण लक्षात घ्या हे संयुग ओळखण्यापासून अजूनही किती दूर आहे. C₄H₈ ची असंतृप्तता कोटी (10 − 8)/2 = 1, म्हणून ते एकतर अल्कीन आहे वा वलय, आणि या सूत्राच्या पाच वेगळ्या संरचना: ब्युट-1-ईन, दोन भूमितीय रूपांतील ब्युट-2-ईन, 2-मिथाइलप्रोपीन आणि सायक्लोब्युटेन. त्यांचे उकळबिंदू −7 °C ते 4 °C पर्यंत चालतात आणि त्यांचे रसायन तीव्रपणे वेगळे — सायक्लोब्युटेन ब्रोमिन पाण्याचा रंग उडवणार नाही आणि प्रत्येक अल्कीन उडवेल. माहितीचे तीन स्तर खेळात, आणि प्रत्येक मागच्याहून अरुंद प्रश्नाचे उत्तर देतो. मूलद्रव्य-विश्लेषण मूलानुपाती सूत्र देते, गुणोत्तर. मोलर वस्तुमान रेणवीय सूत्र देते, मोजणी. संरचना, म्हणजे पदार्थ, केवळ वर्णपटमापन वा रासायनिक चाचणी देते. एकटे मूलानुपाती सूत्र CH₂ इथीन, प्रोपीन, ब्युटीन, सायक्लोहेक्सेन आणि असंख्य इतरांशी सुसंगत ठरले असते, सर्वांचे वस्तुमानाने तेच 85.7 टक्के कार्बन, आणि नेमके म्हणूनच नवे संयुग सांगणाऱ्या रसायनशास्त्रज्ञाला ज्वलन-विश्लेषणाहून अधिक द्यावे लागते. (2 हे इथीन ठरले असते आणि 8 हे C₈H₁₆, दोन्ही गुणोत्तराशी सुसंगत आणि वस्तुमानाने बाद.)",
+      },
+    },
+  ],
+  "chemistry-11-hydrocarbons": [
+    {
+      level: 1,
+      stem: {
+        en: "Complete combustion of methane follows CH₄ + 2O₂ → CO₂ + 2H₂O. How many moles of oxygen are needed to burn 3 moles of methane?",
+        hi: "मीथेन का पूर्ण दहन CH₄ + 2O₂ → CO₂ + 2H₂O के अनुसार होता है। 3 मोल मीथेन जलाने को कितने मोल ऑक्सीजन चाहिए?",
+        mr: "मिथेनचे पूर्ण ज्वलन CH₄ + 2O₂ → CO₂ + 2H₂O प्रमाणे होते. 3 मोल मिथेन जाळायला किती मोल ऑक्सिजन लागतो?",
+      },
+      answer: 6,
+      wrong: [3, 2, 5],
+      checkExpr: "3*2",
+      solution: {
+        en: "The coefficients read two oxygen for every one methane, so 3 × 2 = 6 mol. This is why a burner starved of air makes carbon monoxide and soot instead: the fuel is unchanged but the oxygen supply is short, and incomplete combustion is a shortage rather than a different reaction. (3 copies the methane figure.)",
+        hi: "गुणांक बताते हैं हर एक मीथेन पर दो ऑक्सीजन, अतः 3 × 2 = 6 mol. इसीलिए हवा से भूखा बर्नर कार्बन मोनोऑक्साइड और कालिख बनाता है: ईंधन वही है पर ऑक्सीजन की आपूर्ति कम, और अपूर्ण दहन कमी है, कोई भिन्न अभिक्रिया नहीं। (3 मीथेन का आँकड़ा नक़ल कर देता है।)",
+        mr: "गुणांक सांगतात प्रत्येक एका मिथेनमागे दोन ऑक्सिजन, म्हणून 3 × 2 = 6 mol. म्हणूनच हवेने उपाशी बर्नर कार्बन मोनॉक्साइड आणि काजळी बनवतो: इंधन तेच पण ऑक्सिजनचा पुरवठा कमी, आणि अपूर्ण ज्वलन ही कमतरता आहे, वेगळी अभिक्रिया नव्हे. (3 मिथेनचा आकडा नक्कल करते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "Ethene is C₂H₄ with a molar mass of 28 g/mol. How many moles are there in 84 g?",
+        hi: "एथीन C₂H₄ है जिसका मोलर द्रव्यमान 28 g/mol है। 84 g में कितने मोल हैं?",
+        mr: "इथीन हे C₂H₄ ज्याचे मोलर वस्तुमान 28 g/mol. 84 g मध्ये किती मोल आहेत?",
+      },
+      answer: 3,
+      wrong: [2, 4, 28],
+      checkExpr: "84/28",
+      solution: {
+        en: "84/28 = 3 mol. Ethene is the most-produced organic chemical in the world, and it is counted in moles rather than grams because every reaction it undergoes — to polythene, to ethanol, to ethylene glycol — consumes it one molecule at a time. (2 divides by an alkane's mass by mistake.)",
+        hi: "84/28 = 3 mol. एथीन विश्व में सबसे अधिक बनाया जाने वाला कार्बनिक रसायन है, और उसे ग्राम के बजाय मोल में गिना जाता है क्योंकि उसकी हर अभिक्रिया — पॉलिथीन तक, एथेनॉल तक, एथिलीन ग्लाइकॉल तक — उसे एक-एक अणु करके खपाती है। (2 भूल से किसी ऐल्केन के द्रव्यमान से भाग देता है।)",
+        mr: "84/28 = 3 mol. इथीन हे जगात सर्वाधिक बनवले जाणारे कार्बनी रसायन, आणि ते ग्रॅमऐवजी मोलमध्ये मोजले जाते कारण त्याची प्रत्येक अभिक्रिया — पॉलिथीनपर्यंत, इथेनॉलपर्यंत, इथिलीन ग्लायकॉलपर्यंत — त्याला एकेक रेणू करून वापरते. (2 चुकून एका अल्केनच्या वस्तुमानाने भागते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Complete combustion of ethane follows 2C₂H₆ + 7O₂ → 4CO₂ + 6H₂O. How many moles of carbon dioxide come from 6 moles of ethane?",
+        hi: "एथेन का पूर्ण दहन 2C₂H₆ + 7O₂ → 4CO₂ + 6H₂O के अनुसार होता है। 6 मोल एथेन से कितने मोल कार्बन डाइऑक्साइड मिलती है?",
+        mr: "इथेनचे पूर्ण ज्वलन 2C₂H₆ + 7O₂ → 4CO₂ + 6H₂O प्रमाणे होते. 6 मोल इथेनपासून किती मोल कार्बन डायऑक्साइड मिळतो?",
+      },
+      answer: 12,
+      wrong: [6, 4, 24],
+      checkExpr: "6*4/2",
+      solution: {
+        en: "The ratio is 4 CO₂ for every 2 ethane, so 6 × 4/2 = 12 mol. The shortcut worth noticing is that every carbon in the fuel becomes one carbon dioxide, and ethane has two carbons — 6 × 2 = 12 without touching the equation at all. (6 assumes one CO₂ per molecule of fuel.)",
+        hi: "अनुपात हर 2 एथेन पर 4 CO₂ है, अतः 6 × 4/2 = 12 mol. ध्यान देने योग्य छोटा रास्ता यह है कि ईंधन का हर कार्बन एक कार्बन डाइऑक्साइड बनता है, और एथेन में दो कार्बन हैं — समीकरण छुए बिना 6 × 2 = 12. (6 मान लेता है कि ईंधन के हर अणु पर एक CO₂.)",
+        mr: "गुणोत्तर प्रत्येक 2 इथेनमागे 4 CO₂, म्हणून 6 × 4/2 = 12 mol. लक्षात घेण्याजोगी शॉर्टकट अशी की इंधनातला प्रत्येक कार्बन एक कार्बन डायऑक्साइड बनतो, आणि इथेनमध्ये दोन कार्बन — समीकरणाला हातही न लावता 6 × 2 = 12. (6 गृहीत धरते की इंधनाच्या प्रत्येक रेणूमागे एक CO₂.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "One mole of ethyne, C₂H₂, adds two moles of hydrogen to become ethane. How many moles of hydrogen does 5 moles of ethyne need?",
+        hi: "एक मोल एथाइन, C₂H₂, दो मोल हाइड्रोजन जोड़कर एथेन बन जाता है। 5 मोल एथाइन को कितने मोल हाइड्रोजन चाहिए?",
+        mr: "एक मोल इथाइन, C₂H₂, दोन मोल हायड्रोजन जोडून इथेन बनते. 5 मोल इथाइनला किती मोल हायड्रोजन लागतो?",
+      },
+      answer: 10,
+      wrong: [5, 15, 2],
+      checkExpr: "5*2",
+      solution: {
+        en: "5 × 2 = 10 mol, because a triple bond takes two molecules of hydrogen — one to reach the double bond and one to reach the single. With a poisoned catalyst the reaction can be stopped after the first, which is exactly how ethene is made from ethyne industrially. (5 counts one addition only.)",
+        hi: "5 × 2 = 10 mol, क्योंकि त्रिबंध दो अणु हाइड्रोजन लेता है — एक द्विबंध तक पहुँचने को और एक एकल तक। विषाक्त उत्प्रेरक से अभिक्रिया पहले के बाद रोकी जा सकती है, और उद्योग में एथाइन से एथीन ठीक ऐसे ही बनता है। (5 केवल एक योग गिनता है।)",
+        mr: "5 × 2 = 10 mol, कारण त्रिबंध दोन रेणू हायड्रोजन घेतो — एक द्विबंधापर्यंत पोहोचायला आणि एक एकेरीपर्यंत. विषबाधित उत्प्रेरकाने अभिक्रिया पहिल्यानंतर थांबवता येते, आणि उद्योगात इथाइनपासून इथीन नेमके असेच बनते. (5 केवळ एक योग मोजते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "Complete combustion of propane follows C₃H₈ + 5O₂ → 3CO₂ + 4H₂O. How many moles of water come from 4 moles of propane?",
+        hi: "प्रोपेन का पूर्ण दहन C₃H₈ + 5O₂ → 3CO₂ + 4H₂O के अनुसार होता है। 4 मोल प्रोपेन से कितने मोल पानी मिलता है?",
+        mr: "प्रोपेनचे पूर्ण ज्वलन C₃H₈ + 5O₂ → 3CO₂ + 4H₂O प्रमाणे होते. 4 मोल प्रोपेनपासून किती मोल पाणी मिळते?",
+      },
+      answer: 16,
+      wrong: [12, 4, 8],
+      checkExpr: "4*4",
+      solution: {
+        en: "Four water per propane, so 4 × 4 = 16 mol. Again the formula alone would do it: eight hydrogens make four waters, since water takes two each. This is why a cold window fogs above a gas flame — burning a hydrocarbon produces water as surely as it produces carbon dioxide. (12 quotes the carbon dioxide instead.)",
+        hi: "प्रति प्रोपेन चार पानी, अतः 4 × 4 = 16 mol. फिर अकेला सूत्र काम कर देता: आठ हाइड्रोजन चार पानी बनाते हैं, क्योंकि पानी हर बार दो लेता है। इसीलिए गैस की लौ के ऊपर ठंडी खिड़की धुँधली हो जाती है — हाइड्रोकार्बन जलाना उतनी ही निश्चितता से पानी बनाता है जितनी कार्बन डाइऑक्साइड। (12 उसके बजाय कार्बन डाइऑक्साइड बता देता है।)",
+        mr: "प्रति प्रोपेन चार पाणी, म्हणून 4 × 4 = 16 mol. पुन्हा एकटे सूत्रच पुरले असते: आठ हायड्रोजन चार पाणी बनवतात, कारण पाणी प्रत्येक वेळी दोन घेते. म्हणूनच गॅसच्या ज्योतीवर थंड खिडकी धूसर होते — हायड्रोकार्बन जाळणे कार्बन डायऑक्साइडइतक्याच निश्चितीने पाणी बनवते. (12 त्याऐवजी कार्बन डायऑक्साइड सांगते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "Benzene is C₆H₆ with a molar mass of 78 g/mol. What mass, in grams, is 0.5 mol?",
+        hi: "बेंज़ीन C₆H₆ है जिसका मोलर द्रव्यमान 78 g/mol है। 0.5 mol का द्रव्यमान ग्राम में कितना है?",
+        mr: "बेंझिन हे C₆H₆ ज्याचे मोलर वस्तुमान 78 g/mol. 0.5 mol चे वस्तुमान ग्रॅममध्ये किती?",
+      },
+      answer: 39,
+      wrong: [78, 156, 12],
+      checkExpr: "0.5*78",
+      solution: {
+        en: "0.5 × 78 = 39 g. Note that benzene's percentage of carbon is 72/78, over 92 per cent, the highest of any common hydrocarbon of its size — which is why aromatic fuels burn with a smoky yellow flame: there is more carbon than the available oxygen can reach. (78 forgets to halve.)",
+        hi: "0.5 × 78 = 39 g. ध्यान दो कि बेंज़ीन में कार्बन का प्रतिशत 72/78 है, 92 प्रतिशत से ऊपर, उसके आकार के किसी भी सामान्य हाइड्रोकार्बन से अधिक — इसीलिए ऐरोमैटिक ईंधन धुँआदार पीली लौ से जलते हैं: कार्बन उससे अधिक है जितने तक उपलब्ध ऑक्सीजन पहुँच सके। (78 आधा करना भूल जाता है।)",
+        mr: "0.5 × 78 = 39 g. लक्षात घ्या की बेंझिनमधले कार्बनचे शेकडा 72/78, 92 टक्क्यांहून अधिक, त्याच्या आकाराच्या कोणत्याही सामान्य हायड्रोकार्बनहून जास्त — म्हणूनच सुगंधी इंधने धुरकट पिवळ्या ज्योतीने जळतात: कार्बन उपलब्ध ऑक्सिजन पोहोचू शकेल त्याहून अधिक आहे. (78 अर्धे करायला विसरते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "Burning 2 moles of a hydrocarbon gives 8 moles of carbon dioxide. How many carbon atoms does one molecule contain?",
+        hi: "किसी हाइड्रोकार्बन के 2 मोल जलाने पर 8 मोल कार्बन डाइऑक्साइड मिलती है। एक अणु में कितने कार्बन परमाणु हैं?",
+        mr: "एका हायड्रोकार्बनचे 2 मोल जाळल्यास 8 मोल कार्बन डायऑक्साइड मिळतो. एका रेणूत किती कार्बन अणू आहेत?",
+      },
+      answer: 4,
+      wrong: [8, 2, 16],
+      checkExpr: "8/2",
+      solution: {
+        en: "Every carbon in the fuel ends as one CO₂, so 8/2 = 4 carbons per molecule. Combustion analysis works exactly on this principle: measure the carbon dioxide and you have counted the carbons, measure the water and you have counted the hydrogens, and the two together give the empirical formula. (8 forgets that two moles were burnt.)",
+        hi: "ईंधन का हर कार्बन एक CO₂ बनकर समाप्त होता है, अतः 8/2 = 4 कार्बन प्रति अणु। दहन-विश्लेषण ठीक इसी सिद्धांत पर चलता है: कार्बन डाइऑक्साइड नापो और तुमने कार्बन गिन लिए, पानी नापो और तुमने हाइड्रोजन गिन लिए, और दोनों मिलकर मूलानुपाती सूत्र देते हैं। (8 भूल जाता है कि दो मोल जलाए गए थे।)",
+        mr: "इंधनातला प्रत्येक कार्बन एक CO₂ बनून संपतो, म्हणून 8/2 = 4 कार्बन प्रति रेणू. ज्वलन-विश्लेषण नेमके याच तत्त्वावर चालते: कार्बन डायऑक्साइड मोजा आणि तुम्ही कार्बन मोजले, पाणी मोजा आणि तुम्ही हायड्रोजन मोजले, आणि दोन्ही मिळून मूलानुपाती सूत्र देतात. (8 विसरते की दोन मोल जाळले होते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "Hydrogenating one mole of cyclohexene releases 120 kJ. If benzene behaved as three separate double bonds, how many kilojoules would one mole release?",
+        hi: "एक मोल साइक्लोहेक्सीन का हाइड्रोजनीकरण 120 kJ छोड़ता है। यदि बेंज़ीन तीन पृथक द्विबंधों जैसा व्यवहार करता, तो एक मोल कितने किलोजूल छोड़ता?",
+        mr: "एक मोल सायक्लोहेक्सीनचे हायड्रोजनीकरण 120 kJ सोडते. बेंझिनने तीन वेगळ्या द्विबंधांसारखे वर्तन केले असते, तर एक मोल किती किलोज्यूल सोडले असते?",
+      },
+      answer: 360,
+      wrong: [240, 120, 210],
+      checkExpr: "3*120",
+      solution: {
+        en: "3 × 120 = 360 kJ. The measured value is only about 210 kJ, and the 150 kJ shortfall is the resonance energy — the amount by which the real molecule sits below the imaginary one with three isolated double bonds. That gap is not a correction to the arithmetic; it is the arithmetic revealing that the model was wrong. (210 quotes the measured value the question is asking us to compare against.)",
+        hi: "3 × 120 = 360 kJ. नापा गया मान केवल लगभग 210 kJ है, और 150 kJ की कमी अनुनाद ऊर्जा है — वह मात्रा जितनी असली अणु उस काल्पनिक अणु से नीचे बैठता है जिसमें तीन पृथक द्विबंध हों। वह अंतर गणित का सुधार नहीं; वह गणित का यह उजागर करना है कि प्रतिरूप ग़लत था। (210 वही नापा गया मान बता देता है जिससे प्रश्न तुलना कराना चाहता है।)",
+        mr: "3 × 120 = 360 kJ. मोजलेले मूल्य केवळ सुमारे 210 kJ, आणि 150 kJ ची तूट म्हणजे अनुनाद ऊर्जा — तीन वेगळे द्विबंध असलेल्या काल्पनिक रेणूहून खरा रेणू जितका खाली बसतो ते प्रमाण. ती दरी गणिताची दुरुस्ती नव्हे; ते गणित उघड करते की प्रतिमान चुकीचे होते. (210 प्रश्न ज्याच्याशी तुलना करायला सांगतो तेच मोजलेले मूल्य सांगते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "Complete combustion of butane follows 2C₄H₁₀ + 13O₂ → 8CO₂ + 10H₂O. How many moles of oxygen are needed for 4 moles of butane?",
+        hi: "ब्यूटेन का पूर्ण दहन 2C₄H₁₀ + 13O₂ → 8CO₂ + 10H₂O के अनुसार होता है। 4 मोल ब्यूटेन को कितने मोल ऑक्सीजन चाहिए?",
+        mr: "ब्युटेनचे पूर्ण ज्वलन 2C₄H₁₀ + 13O₂ → 8CO₂ + 10H₂O प्रमाणे होते. 4 मोल ब्युटेनला किती मोल ऑक्सिजन लागतो?",
+      },
+      answer: 26,
+      wrong: [13, 52, 6.5],
+      checkExpr: "4*13/2",
+      solution: {
+        en: "The ratio is 13 oxygen for every 2 butane, so 4 × 13/2 = 26 mol. The odd coefficient is worth a comment. Butane needs six and a half molecules of oxygen per molecule of fuel, and since half a molecule is meaningless the whole equation is doubled to clear the fraction. That is the only reason the coefficients look ungainly. The practical consequence is the reason a gas cylinder is dangerous in a closed room: 26 moles of oxygen is about 124 moles of air, so every litre of butane vapour demands roughly thirty litres of air to burn cleanly, and a room that cannot supply it produces carbon monoxide instead. (13 forgets that four moles, not two, are being burnt.)",
+        hi: "अनुपात हर 2 ब्यूटेन पर 13 ऑक्सीजन है, अतः 4 × 13/2 = 26 mol. विषम गुणांक टिप्पणी के योग्य है। ब्यूटेन को प्रति अणु ईंधन साढ़े छह अणु ऑक्सीजन चाहिए, और चूँकि आधा अणु निरर्थक है, भिन्न हटाने को पूरा समीकरण दोगुना कर दिया जाता है। गुणांक भद्दे दिखने का बस यही कारण है। व्यावहारिक परिणाम वही है जिससे बंद कमरे में गैस सिलिंडर ख़तरनाक होता है: 26 मोल ऑक्सीजन लगभग 124 मोल हवा है, अतः ब्यूटेन वाष्प के हर लीटर को साफ़ जलने के लिए मोटे तौर पर तीस लीटर हवा चाहिए, और जो कमरा वह न दे सके वह उसके बजाय कार्बन मोनोऑक्साइड बनाता है। (13 भूल जाता है कि दो नहीं, चार मोल जलाए जा रहे हैं।)",
+        mr: "गुणोत्तर प्रत्येक 2 ब्युटेनमागे 13 ऑक्सिजन, म्हणून 4 × 13/2 = 26 mol. विषम गुणांक टिप्पणीस पात्र. ब्युटेनला प्रति रेणू इंधन साडेसहा रेणू ऑक्सिजन लागतो, आणि अर्धा रेणू निरर्थक असल्याने अपूर्णांक घालवायला अख्खे समीकरण दुप्पट केले जाते. गुणांक बेढब दिसण्याचे बस्स तेच कारण. व्यावहारिक परिणाम तोच ज्यामुळे बंद खोलीत गॅस सिलिंडर धोकादायक: 26 मोल ऑक्सिजन म्हणजे सुमारे 124 मोल हवा, म्हणून ब्युटेन वाफेच्या प्रत्येक लिटरला स्वच्छ जळायला ढोबळमानाने तीस लिटर हवा लागते, आणि जी खोली ती देऊ शकत नाही ती त्याऐवजी कार्बन मोनॉक्साइड बनवते. (13 विसरते की दोन नव्हे, चार मोल जाळले जात आहेत.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "Burning 1 mole of a hydrocarbon gives 3 moles of carbon dioxide and 4 moles of water. How many hydrogen atoms are in one molecule?",
+        hi: "किसी हाइड्रोकार्बन का 1 मोल जलाने पर 3 मोल कार्बन डाइऑक्साइड और 4 मोल पानी मिलता है। एक अणु में कितने हाइड्रोजन परमाणु हैं?",
+        mr: "एका हायड्रोकार्बनचे 1 मोल जाळल्यास 3 मोल कार्बन डायऑक्साइड आणि 4 मोल पाणी मिळते. एका रेणूत किती हायड्रोजन अणू आहेत?",
+      },
+      answer: 8,
+      wrong: [4, 6, 3],
+      checkExpr: "4*2",
+      solution: {
+        en: "Each water carries two hydrogens, so 4 × 2 = 8 hydrogens, and each carbon dioxide carries one carbon, so there are 3 carbons. The molecular formula is C₃H₈ and the compound is propane. Notice how much this single experiment settles and how it settles it. The carbon dioxide counts the carbons and the water counts the hydrogens, and because the fuel was one mole the counts are per molecule directly, with no ratio to reduce. Check the answer against the general formula: an alkane with three carbons should have 2 × 3 + 2 = 8 hydrogens, and it does, so the degree of unsaturation is zero and the molecule is a saturated chain with no ring and no multiple bond. Propane has only one structure, so in this particular case combustion analysis has identified the compound outright — which is unusual and worth noticing as unusual. Had the answer come out as C₄H₈ there would have been five candidate structures and the analysis would have been silent about which. There is a second check available, and a careful chemist uses it. Balancing the equation gives C₃H₈ + 5O₂ → 3CO₂ + 4H₂O, so the experiment should have consumed five moles of oxygen. If the measured oxygen were four or six, the mass balance would not close and something in the experiment — incomplete combustion, a leak, water condensing in the wrong place — would need finding before the formula could be trusted. The habit generalises far beyond this chapter: a result that satisfies only the equation you used to derive it has been checked once, and a result that also satisfies an independent relation has been checked twice. (4 quotes the moles of water without doubling; 6 doubles the carbon figure instead; and 3 reports the carbons.)",
+        hi: "हर पानी दो हाइड्रोजन ढोता है, अतः 4 × 2 = 8 हाइड्रोजन, और हर कार्बन डाइऑक्साइड एक कार्बन ढोती है, अतः 3 कार्बन हैं। आण्विक सूत्र C₃H₈ है और यौगिक प्रोपेन। ध्यान दो यह अकेला प्रयोग कितना तय कर देता है और कैसे तय करता है। कार्बन डाइऑक्साइड कार्बन गिनती है और पानी हाइड्रोजन, और चूँकि ईंधन एक मोल था, गिनतियाँ सीधे प्रति अणु हैं, घटाने को कोई अनुपात नहीं। उत्तर को सामान्य सूत्र से जाँचो: तीन कार्बन वाले ऐल्केन में 2 × 3 + 2 = 8 हाइड्रोजन होने चाहिए, और हैं, अतः असंतृप्तता की कोटि शून्य है और अणु बिना वलय बिना बहुबंध की संतृप्त शृंखला है। प्रोपेन की केवल एक संरचना है, अतः इस विशेष हाल में दहन-विश्लेषण ने यौगिक सीधे पहचान लिया — जो असामान्य है और असामान्य के रूप में ध्यान देने योग्य। यदि उत्तर C₄H₈ निकलता तो पाँच उम्मीदवार संरचनाएँ होतीं और विश्लेषण चुप रहता कि कौन-सी। एक दूसरी जाँच उपलब्ध है, और सावधान रसायनज्ञ उसे काम में लेता है। समीकरण संतुलित करने पर C₃H₈ + 5O₂ → 3CO₂ + 4H₂O मिलता है, अतः प्रयोग में पाँच मोल ऑक्सीजन ख़र्च होनी चाहिए थी। नापी गई ऑक्सीजन चार या छह होती तो द्रव्यमान-संतुलन बंद न होता और प्रयोग में कुछ — अपूर्ण दहन, कोई रिसाव, ग़लत जगह संघनित होता पानी — सूत्र पर भरोसा करने से पहले खोजना पड़ता। आदत इस अध्याय से कहीं आगे तक फैलती है: जो परिणाम केवल उसी समीकरण को संतुष्ट करे जिससे वह निकाला गया, वह एक बार जाँचा गया, और जो एक स्वतंत्र संबंध भी संतुष्ट करे, वह दो बार। (4 पानी के मोल बिना दोगुना किए बता देता है; 6 उसके बजाय कार्बन का आँकड़ा दोगुना करता है; और 3 कार्बन बता देता है।)",
+        mr: "प्रत्येक पाणी दोन हायड्रोजन वाहते, म्हणून 4 × 2 = 8 हायड्रोजन, आणि प्रत्येक कार्बन डायऑक्साइड एक कार्बन वाहतो, म्हणून 3 कार्बन आहेत. रेणवीय सूत्र C₃H₈ आणि संयुग प्रोपेन. लक्षात घ्या हा एकटा प्रयोग किती ठरवतो आणि कसे ठरवतो. कार्बन डायऑक्साइड कार्बन मोजतो आणि पाणी हायड्रोजन, आणि इंधन एक मोल असल्याने मोजण्या थेट प्रति रेणू आहेत, घटवायला कोणतेही गुणोत्तर नाही. उत्तर सामान्य सूत्राने तपासा: तीन कार्बन असलेल्या अल्केनमध्ये 2 × 3 + 2 = 8 हायड्रोजन असावेत, आणि आहेत, म्हणून असंतृप्ततेची कोटी शून्य आणि रेणू वलयाविना बहुबंधाविना संतृप्त साखळी. प्रोपेनची केवळ एकच संरचना, म्हणून या विशिष्ट बाबतीत ज्वलन-विश्लेषणाने संयुग थेट ओळखले — जे असामान्य आहे आणि असामान्य म्हणूनच लक्षात घेण्याजोगे. उत्तर C₄H₈ निघाले असते तर पाच उमेदवार संरचना असत्या आणि विश्लेषण कोणती याबद्दल गप्प राहिले असते. दुसरी तपासणी उपलब्ध आहे, आणि काळजीपूर्वक रसायनशास्त्रज्ञ ती वापरतो. समीकरण संतुलित केल्यास C₃H₈ + 5O₂ → 3CO₂ + 4H₂O मिळते, म्हणून प्रयोगात पाच मोल ऑक्सिजन वापरला गेला असावा. मोजलेला ऑक्सिजन चार वा सहा असता तर वस्तुमान-संतुलन जुळले नसते आणि प्रयोगातले काहीतरी — अपूर्ण ज्वलन, गळती, चुकीच्या जागी संघनित होणारे पाणी — सूत्रावर विश्वास ठेवण्याआधी शोधावे लागले असते. सवय या प्रकरणाहून कितीतरी पुढे पसरते: जो निकाल केवळ ज्या समीकरणातून काढला त्यालाच पूर्ण करतो तो एकदा तपासला गेला, आणि जो एका स्वतंत्र संबंधालाही पूर्ण करतो तो दोनदा. (4 पाण्याचे मोल दुप्पट न करता सांगते; 6 त्याऐवजी कार्बनचा आकडा दुप्पट करते; आणि 3 कार्बन सांगते.)",
       },
     },
   ],
