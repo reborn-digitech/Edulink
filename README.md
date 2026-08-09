@@ -170,6 +170,7 @@ applies here: you cannot revoke the only one.
 | `npm run db:studio` | Browse the data |
 | `npm run vapid` | Generate a Web Push keypair |
 | `npm run superuser -- <email>` | Grant the server-operator flag. `--revoke` to remove, `--list` to see who has it |
+| `npm run appadmin -- <email>` | Grant the content-team flag (question bank + platform competitions). Same `--revoke`/`--list` |
 | `npm run files:check` | List stored files no record references — **deletes nothing** |
 | `npm run files:reclaim` | Actually delete them. Read the check output first |
 | `npm run backfill:school-id` | Add/fill the denormalised schoolId on an existing dev DB |
@@ -255,7 +256,7 @@ src/lib/                  All business logic. Pages are thin.
   remarks.ts              Private thread visibility rules.
   bulletin.ts             Post visibility + the student-moderation gate.
   membership.ts           ★ Pausing access. MEMBERSHIP, never the user — see the header.
-  superuser.ts            ★ The operator. Keys to TWO tables — School and Invite — and nothing else.
+  superuser.ts            ★ The operator. The FLAG opens two tables; sight into a school binds that ONE school, recorded. Removal, never deletion.
   cohort.ts               ★ Class rolls and staffing. Removing a child MARKS the row, never deletes it.
   register-duty.ts        ★ Who may mark a register today. Cover ADDS a taker, never removes one.
   leave.ts                ★ Staff leave. Approving arranges the cover in the same breath.
@@ -280,7 +281,7 @@ src/lib/                  All business logic. Pages are thin.
   quiz.ts                 ★ Practice. Ladder + selection are pure. Reveal forfeits the badge, on the ATTEMPT.
   school-record.ts        ★ Leaving certificates. A document frozen at issue, never a query.
   student-record.ts       ★ A child's record, read with NO school bound. Outlives every membership.
-  operator-oversight.ts   ★ What the host can do inside a school they OPENED. One door: withSchoolAccess.
+  operator-oversight.ts   ★ What the host can do inside a school. Always on now; one door: withSchoolAccess, every visit written.
   birthdays.ts            ★ Derived from User.birthdate, never stored. Staff-only — see the DOB note.
   account-merge.ts        ★ Joining two accounts. Cross-school, so forTenant AROUND $tenantTransaction.
   login-name.ts           Handle ↔ email. One rule, because three copies of it had started to drift.
@@ -297,8 +298,11 @@ src/lib/                  All business logic. Pages are thin.
   env.ts                  Boot-time config gate.
   offline-queue.ts        IndexedDB outbox (client-side).
   constants.ts            Every status string, single source of truth.
+  app-admin.ts            ★ The content team. Curates the two things no school owns: the bank and platform competitions.
+  translate.ts            ★ Machine translation for bank questions, en → hi/mr at save time. Fails SOFT — see the header.
 src/app/(app)/            Signed-in routes that belong to a SCHOOL (share the nav shell, need a role).
 src/app/root/             ★ The operator area. OUTSIDE (app) — the shell needs a role, and they have none.
+src/app/appadmin/         ★ The content team's area. Outside (app) for the same reason as /root.
 src/app/account/          ★ Also outside (app), for the same reason: an alumnus and a paused member
                           have no role and must still reach their own settings. Renders the ordinary
                           shell when there IS a role — see components/nav/signed-in-shell.tsx.
@@ -2860,6 +2864,11 @@ are how they start wondering what else it is not saying.
 
 ### The operator can look inside a school, and the school is told
 
+> **Since revised:** the request half of this design — the written reason and
+> the 60-minute grant — has been removed; access is standing now. The recorded
+> visit and the school-visible audit survive. See "The operator stops knocking"
+> below for what changed and why.
+
 **This reverses the strongest claim this README made**, so it is worth stating
 plainly. `superuser.ts` said setting a school up is administration and reading
 what happens inside one is surveillance, and that the boundary had to be
@@ -3297,6 +3306,80 @@ had thought to list. A link pointing at nothing is invisible to both. The sweep
 now derives its list from the navigation model, so this class of bug fails on the
 next run rather than in a role audit six months later.
 
+### The operator stops knocking, a school can be removed, and a content team arrives
+
+Four asks in one wave, and the audit of it after the fact. Two were bugs a
+pupil would hit and two reshaped who can do what on the installation.
+
+**A language switch now changes the question on screen.** The practice player
+fetched its question at mount and held it in client state, so switching to
+Hindi mid-question changed every label and left the stem English until "Next" —
+the worst possible order, since the stem is the thing being read. The fix is
+one attribute, `key={language}` on the player (topic and revision both): the
+switcher already saves and refreshes, the page re-renders with the new locale,
+and the keyed remount makes the player re-serve what it is showing. **Level
+badges say one language at a time.** "Yaad rakho · Remember" was the product
+voice when every reader saw one dictionary; with three real dictionaries the
+bilingual composite made every badge half-wrong for everybody. Each dictionary
+now carries only its own word — Remember, याद रखो, लक्षात ठेवा.
+
+**The operator's key stops asking — and the school still sees them come in.**
+The section above describes the 60-minute written-reason grant, and this wave
+deliberately reverses the request half of it: the person running the server now
+holds standing access to every school, down to the individual, with no door to
+knock on first. What survives — and it is the half worth keeping — is that
+every look still writes an `OperatorAccess` row (one per hour, not one per
+query) that surfaces in that school's own Safety Centre, and every action
+inside is audited against the school's id. Mechanically nothing widened at the
+policy layer: `app.is_superuser` still opens exactly School and Invite, and
+sight is always through `withSchoolAccess` binding that ONE school, so the
+tenant policies govern the operator exactly as they govern that school's admin
+and the school next door stays invisible. `rls:verify` still proves both
+directions. **Removing a school is a button now, and it is not a delete.**
+`removeSchool` runs the ordinary departure machinery for the whole roll in one
+transaction — every pupil leaves the way an alumnus does, certificate issued,
+account intact, record reachable through the same user-keyed policies every
+leaver already relies on — and the School row is only flagged `removedAt`,
+which drops it from join codes, listings and switchers. `removedAt` is set
+outside the transaction so a failure leaves the school whole and the button
+safe to press again.
+
+**An app admin is the content team, and not the operator.** A second flag on
+`User` (`isAppAdmin`, granted by `npm run appadmin -- <email>` — a CLI for the
+same reason the superuser's is), a surface at `/appadmin` outside `(app)`, and
+a deliberately short list of powers: post platform-wide competitions
+(`organizerSchoolId: null`, draft first, publish deliberate), and add, edit or
+delete questions in the shared practice bank. They cannot see inside any
+school; nothing on the surface takes an id that names one, and the tables they
+write carry no school column to leak. **A question typed once in English is
+translated to Hindi and Marathi at save time, by Claude**, with the choice
+count pinned by schema AND re-checked in code — a translation with a different
+number of options would mark a child wrong for being right in Marathi. It
+fails soft: no key, a refusal, a malformed response all save the English
+original alone, which the reading path already falls back to field-by-field.
+
+**The bug that fell out of pressing the buttons** was in neither feature: the
+tenant override's `AsyncLocalStorage` was module-scoped, the bundler evaluates
+that module once per route bundle, and the Prisma client it feeds is
+process-wide — so whichever bundle built the client first kept its own storage
+and every other bundle's `forTenant` wrote overrides nobody read. The
+operator's look inside a school counted zero of everything and the fresh-login
+role switcher crashed, both silently, both shaped exactly like row-level
+security doing its job. It lives on `globalThis` now, the same treatment the
+Prisma client itself already gets, for the same reason.
+
+**Honest edges, left visible.** Removal has no undo button — pressing it twice
+is refused, and putting a removed school back is a `psql` job today. The
+auto-translation needs `ANTHROPIC_API_KEY` in the environment; without it the
+dashboard says so and questions ship English-only. And the bank now has two
+writers: `npm run quiz:import` reconciles each topic it owns by stem and
+deletes what the content files do not mention, so an app admin's question added
+to an IMPORTED topic, or an edit that changes a stem, is undone by the next
+import run. The two workflows coexist today by convention — the importer owns
+its 308 topics, the dashboard is for what the files do not cover — and the
+known-issues list carries it until the importer learns to leave
+dashboard-authored rows alone.
+
 ### Known issues
 
 - ~~**`npm run db:reset` leaves the app role unable to open the database.**~~
@@ -3349,6 +3432,20 @@ next run rather than in a role audit six months later.
   against one dev database, and suites that were written before the
   make-your-own-fixtures rule still touch shared seed rows. Running a single
   file is reliable; it is the parallel full run that is not.
+- **`quiz:import` will undo app-admin bank edits inside imported topics.** The
+  importer reconciles each topic in `content/quiz/` by stem: same stem is
+  overwritten from the file, a stem it does not know is deleted as an orphan.
+  Questions the content team adds through `/appadmin/bank` are therefore only
+  durable in topics the importer does not own. Convention holds today; the fix
+  is an `authoredBy` column the importer skips.
+- **A removed school has no restore button.** `removeSchool` is one-way by
+  design (pressing again is refused with `root.schoolWasRemoved`); undoing a
+  mistaken removal means clearing `removedAt` in `psql` — memberships stay
+  ended either way, as they do for any leaver.
+- **Bank auto-translation requires `ANTHROPIC_API_KEY`.** Unset, the dashboard
+  says translation is off and questions save English-only; readers fall back
+  field-by-field to English. Set it before handing the dashboard to a content
+  team that writes for Hindi/Marathi readers.
 - Realtime fan-out is single-process.
 - Lighthouse has not been run — no Chrome driver in the build environment, so
   the spec's ≥90 mobile score is **unverified**.
