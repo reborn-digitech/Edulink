@@ -23,6 +23,7 @@
  */
 import type { Chapter } from "./engine";
 import type { NumQ } from "./numeric";
+import { unit } from "./numeric";
 
 const SOURCE = "EduLink original, written against NCERT Biology (Class 11)";
 const LICENCE = "CC-BY-SA-4.0";
@@ -3538,6 +3539,1750 @@ export const G11_BIOLOGY: Chapter[] = [
     ],
   },
 
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 11 — Photosynthesis in Higher Plants                            */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "biology-11-photosynthesis-in-higher-plants",
+    subject: "BIOLOGY",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 11 — Photosynthesis in Higher Plants",
+      hi: "अध्याय 11 — उच्च पादपों में प्रकाश संश्लेषण",
+      mr: "प्रकरण 11 — उच्च वनस्पतींतील प्रकाशसंश्लेषण",
+    },
+    name: {
+      en: "How a Leaf Spends Light",
+      hi: "पत्ती प्रकाश कैसे ख़र्च करती है",
+      mr: "पान प्रकाश कसा खर्च करते",
+    },
+    summary: {
+      en: "A leaf does not make food out of light so much as spend light to push a reaction the wrong way up a hill, and the whole difficulty is keeping the two halves apart: one splits water and banks the energy, the other spends it on carbon and never needs a photon, the oxygen you breathe came out of water rather than out of carbon dioxide, and a crop in a hot field rebuilds the entire arrangement rather than open its pores at noon.",
+      hi: "पत्ती प्रकाश से भोजन बनाती नहीं जितना कि प्रकाश ख़र्च करके एक अभिक्रिया को पहाड़ पर उलटी दिशा में चढ़ाती है, और सारी कठिनाई दोनों हिस्सों को अलग रखने में है: एक जल तोड़कर ऊर्जा जमा करता है, दूसरा उसे कार्बन पर ख़र्च करता है और उसे किसी फ़ोटॉन की ज़रूरत ही नहीं, जो ऑक्सीजन तुम साँस में लेते हो वह कार्बन डाइऑक्साइड से नहीं जल से निकली, और गर्म खेत की फ़सल दोपहर में अपने छिद्र खोलने के बजाय पूरी व्यवस्था ही दोबारा बना लेती है।",
+      mr: "पान प्रकाशापासून अन्न बनवते इतके नव्हे जितके प्रकाश खर्चून एका अभिक्रियेला टेकडीवर उलट्या दिशेने चढवते, आणि सगळी अडचण दोन्ही भाग वेगळे ठेवण्यात आहे: एक पाणी फोडून ऊर्जा साठवतो, दुसरा ती कार्बनवर खर्च करतो आणि त्याला फोटॉनची गरजच नाही, तुम्ही श्वासात घेता तो प्राणवायू कार्बन डायऑक्साइडमधून नव्हे तर पाण्यातून निघाला, आणि उष्ण शेतातले पीक दुपारी आपली छिद्रे उघडण्याऐवजी अख्खी व्यवस्थाच पुन्हा बांधते.",
+    },
+    position: 11,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "the-reaction-that-runs-uphill",
+        name: {
+          en: "The reaction that runs uphill",
+          hi: "वह अभिक्रिया जो चढ़ाई चढ़ती है",
+          mr: "चढाव चढणारी ती अभिक्रिया",
+        },
+        kind: "definition",
+        prompt: {
+          en: "Sugar holds far more energy than the carbon dioxide and water it is built from, so somebody has to pay the difference, and in a leaf the payment arrives as light. What is this?",
+          hi: "शक्कर में उस कार्बन डाइऑक्साइड और जल से कहीं अधिक ऊर्जा है जिनसे वह बनी है, अतः अंतर किसी को चुकाना पड़ता है, और पत्ती में वह चुकौती प्रकाश बनकर आती है। यह क्या है?",
+          mr: "साखरेत ती ज्यांपासून बनली त्या कार्बन डायऑक्साइड आणि पाण्याहून कितीतरी अधिक ऊर्जा असते, म्हणून फरक कोणालातरी भरावा लागतो, आणि पानात ती भरपाई प्रकाश बनून येते. हे काय?",
+        },
+        statement: {
+          en: "This is an energy-requiring reaction in which light is used to reduce carbon dioxide to carbohydrate, so the energy ends up stored in the product instead of being released from it.",
+          hi: "यह ऊर्जा माँगने वाली अभिक्रिया है जिसमें प्रकाश से कार्बन डाइऑक्साइड को अपचयित करके कार्बोहाइड्रेट बनाया जाता है, अतः ऊर्जा उत्पाद से निकलने के बजाय उसी में जमा हो जाती है।",
+          mr: "ही ऊर्जा मागणारी अभिक्रिया आहे जिच्यात प्रकाशाने कार्बन डायऑक्साइडचे क्षपण करून कार्बोहायड्रेट बनवले जाते, म्हणून ऊर्जा उत्पादातून निघण्याऐवजी त्यातच साठते.",
+        },
+        detail: {
+          en: "In its bookkeeping it is respiration read backwards, which is why the two equations use the same four substances with the arrow pointing the other way.",
+          hi: "बहीखाते के हिसाब से यह श्वसन को उलटा पढ़ना है, इसीलिए दोनों समीकरण वही चार पदार्थ काम में लेते हैं और तीर दूसरी ओर मुड़ जाता है।",
+          mr: "हिशेबाच्या दृष्टीने हे श्वसन उलटे वाचणे आहे, म्हणूनच दोन्ही समीकरणे तेच चार पदार्थ वापरतात आणि बाण दुसऱ्या दिशेला वळतो.",
+        },
+        extra: {
+          en: "Because the energy is stored rather than released, a plant left in a dark cupboard goes on respiring and slowly loses the dry weight it gained in the light.",
+          hi: "चूँकि ऊर्जा निकलती नहीं जमा होती है, अँधेरी अलमारी में छोड़ा पादप श्वसन करता रहता है और प्रकाश में कमाया शुष्क भार धीरे-धीरे खो देता है।",
+          mr: "ऊर्जा निघत नाही तर साठते म्हणून, अंधाऱ्या कपाटात ठेवलेली वनस्पती श्वसन करत राहते आणि प्रकाशात कमावलेले शुष्क वजन हळूहळू गमावते.",
+        },
+        pair: {
+          left: {
+            en: "A plant in a dark cupboard loses dry weight",
+            hi: "अँधेरी अलमारी में रखा पादप शुष्क भार खोता है",
+            mr: "अंधाऱ्या कपाटातली वनस्पती शुष्क वजन गमावते",
+          },
+          right: {
+            en: "the reaction that runs uphill",
+            hi: "वह अभिक्रिया जो चढ़ाई चढ़ती है",
+            mr: "चढाव चढणारी ती अभिक्रिया",
+          },
+        },
+      },
+      {
+        id: "the-gas-that-came-out-of-water",
+        name: {
+          en: "The gas that came out of the water",
+          hi: "वह गैस जो जल से निकली",
+          mr: "पाण्यातून निघालेला तो वायू",
+        },
+        kind: "evidence",
+        prompt: {
+          en: "Give a plant water made with a heavy isotope of oxygen and the gas it gives off is heavy; put the heavy isotope in its carbon dioxide instead and the gas it gives off is ordinary. Which finding is this?",
+          hi: "पादप को ऑक्सीजन के भारी समस्थानिक से बना जल दो और वह जो गैस छोड़ता है वह भारी होती है; इसके बजाय भारी समस्थानिक उसकी कार्बन डाइऑक्साइड में डालो और छोड़ी गई गैस साधारण होती है। यह कौन-सा निष्कर्ष है?",
+          mr: "वनस्पतीला प्राणवायूच्या जड समस्थानिकापासून बनवलेले पाणी द्या आणि ती जो वायू सोडते तो जड असतो; त्याऐवजी जड समस्थानिक तिच्या कार्बन डायऑक्साइडमध्ये घाला आणि सोडलेला वायू साधा असतो. हा कोणता निष्कर्ष?",
+        },
+        statement: {
+          en: "The oxygen a green plant releases comes from the splitting of water and not from carbon dioxide, which was settled by tracing a heavy isotope of oxygen through the reaction.",
+          hi: "हरा पादप जो ऑक्सीजन छोड़ता है वह जल के विदलन से आती है, कार्बन डाइऑक्साइड से नहीं, और यह ऑक्सीजन के भारी समस्थानिक को अभिक्रिया में खोजते हुए तय हुआ।",
+          mr: "हिरवी वनस्पती जो प्राणवायू सोडते तो पाण्याच्या विदलनातून येतो, कार्बन डायऑक्साइडमधून नव्हे, आणि हे प्राणवायूचा जड समस्थानिक अभिक्रियेतून मागोवा घेत ठरले.",
+        },
+        detail: {
+          en: "It is why the balanced equation is written with twelve molecules of water on the left and six of the gas on the right rather than six and six, which would balance the atoms but tell the wrong story.",
+          hi: "इसीलिए संतुलित समीकरण बाईं ओर जल के बारह अणु और दाईं ओर गैस के छह लिखता है, छह और छह नहीं, जो परमाणु तो संतुलित कर देता पर कहानी ग़लत सुनाता।",
+          mr: "म्हणूनच संतुलित समीकरण डावीकडे पाण्याचे बारा रेणू आणि उजवीकडे वायूचे सहा लिहिते, सहा आणि सहा नव्हे, जे अणू संतुलित करते पण कथा चुकीची सांगते.",
+        },
+        extra: {
+          en: "Bacteria that use hydrogen sulphide in place of water deposit sulphur and release no oxygen at all, which is the same reaction running on a different hydrogen donor.",
+          hi: "जो जीवाणु जल के स्थान पर हाइड्रोजन सल्फ़ाइड काम में लेते हैं वे गंधक जमा करते हैं और ऑक्सीजन बिलकुल नहीं छोड़ते, और यह वही अभिक्रिया है जो दूसरे हाइड्रोजन-दाता पर चल रही है।",
+          mr: "जे जीवाणू पाण्याऐवजी हायड्रोजन सल्फाइड वापरतात ते गंधक साठवतात आणि प्राणवायू अजिबात सोडत नाहीत, आणि ही तीच अभिक्रिया दुसऱ्या हायड्रोजन-दात्यावर चालणारी.",
+        },
+        pair: {
+          left: {
+            en: "Some bacteria deposit sulphur and release nothing",
+            hi: "कुछ जीवाणु गंधक जमा करते हैं और कुछ नहीं छोड़ते",
+            mr: "काही जीवाणू गंधक साठवतात आणि काहीच सोडत नाहीत",
+          },
+          right: {
+            en: "the gas that came out of the water",
+            hi: "वह गैस जो जल से निकली",
+            mr: "पाण्यातून निघालेला तो वायू",
+          },
+        },
+      },
+      {
+        id: "the-pigments-that-catch-and-hand-on",
+        name: {
+          en: "The pigments that catch and hand on",
+          hi: "वे वर्णक जो पकड़ते हैं और आगे सौंप देते हैं",
+          mr: "पकडून पुढे सोपवणारी ती रंगद्रव्ये",
+        },
+        kind: "pigment",
+        prompt: {
+          en: "A leaf holds four kinds of coloured molecule, but only one of them ever hands an electron to the next carrier; the rest absorb the wavelengths it cannot and pass the excitation inward to it. What are the rest called?",
+          hi: "पत्ती में रंगीन अणुओं की चार क़िस्में हैं, पर उनमें से केवल एक कभी अगले वाहक को इलेक्ट्रॉन सौंपता है; बाक़ी वे तरंगदैर्घ्य सोखते हैं जो वह नहीं सोख सकता और उत्तेजन भीतर उसी तक पहुँचा देते हैं। बाक़ी को क्या कहते हैं?",
+          mr: "पानात रंगीत रेणूंचे चार प्रकार असतात, पण त्यांपैकी केवळ एकच कधी पुढच्या वाहकाला इलेक्ट्रॉन सोपवतो; बाकीचे तो शोषू न शकणारे तरंगलांबी शोषतात आणि उत्तेजन आत त्याच्याकडेच पोहोचवतात. बाकीच्यांना काय म्हणतात?",
+        },
+        statement: {
+          en: "Accessory pigments — chlorophyll b, the xanthophylls and the carotenoids — absorb wavelengths chlorophyll a cannot and transfer that energy to the reaction centre, widening the band of light a leaf can actually use.",
+          hi: "सहायक वर्णक — क्लोरोफ़िल b, ज़ैंथोफ़िल और कैरोटिनॉइड — वे तरंगदैर्घ्य सोखते हैं जो क्लोरोफ़िल a नहीं सोख सकता और वह ऊर्जा अभिक्रिया-केंद्र तक पहुँचा देते हैं, जिससे पत्ती वस्तुतः जितना प्रकाश काम में ले सकती है उसकी पट्टी चौड़ी हो जाती है।",
+          mr: "सहायक रंगद्रव्ये — क्लोरोफिल b, झँथोफिल आणि कॅरोटिनॉइड — क्लोरोफिल a शोषू न शकणारे तरंगलांबी शोषतात आणि ती ऊर्जा अभिक्रिया-केंद्रापर्यंत पोहोचवतात, ज्याने पान प्रत्यक्षात जितका प्रकाश वापरू शकते त्याचा पट्टा रुंदावतो.",
+        },
+        detail: {
+          en: "They also work as a safety valve, taking up energy in bright noon light that would otherwise damage chlorophyll a itself.",
+          hi: "वे सुरक्षा-वाल्व का काम भी करते हैं, दोपहर की तेज़ रोशनी में वह ऊर्जा ले लेते हैं जो अन्यथा स्वयं क्लोरोफ़िल a को हानि पहुँचाती।",
+          mr: "ते सुरक्षा-झडपेचेही काम करतात, दुपारच्या तीव्र प्रकाशात ती ऊर्जा घेतात जी अन्यथा स्वतः क्लोरोफिल a ला इजा करेल.",
+        },
+        extra: {
+          en: "They are present in the leaf all along and are only revealed when the green breaks down, which is why an autumn leaf turns yellow without making a single new pigment.",
+          hi: "वे पत्ती में शुरू से मौजूद रहते हैं और तभी दिखते हैं जब हरापन टूटता है, इसीलिए पतझड़ की पत्ती एक भी नया वर्णक बनाए बिना पीली हो जाती है।",
+          mr: "ते पानात सुरुवातीपासून असतात आणि हिरवेपणा तुटतो तेव्हाच दिसतात, म्हणूनच पानगळीचे पान एकही नवे रंगद्रव्य न बनवता पिवळे होते.",
+        },
+        pair: {
+          left: {
+            en: "An autumn leaf makes no new pigment at all",
+            hi: "पतझड़ की पत्ती कोई नया वर्णक बनाती ही नहीं",
+            mr: "पानगळीचे पान नवे रंगद्रव्य बनवतच नाही",
+          },
+          right: {
+            en: "the pigments that catch and hand on",
+            hi: "वे वर्णक जो पकड़ते हैं और आगे सौंप देते हैं",
+            mr: "पकडून पुढे सोपवणारी ती रंगद्रव्ये",
+          },
+        },
+      },
+      {
+        id: "the-half-that-needs-light-and-the-half-that-does-not",
+        name: {
+          en: "The half that needs light and the half that does not",
+          hi: "वह आधा जिसे प्रकाश चाहिए और वह आधा जिसे नहीं",
+          mr: "ज्याला प्रकाश हवा तो अर्धा आणि ज्याला नको तो अर्धा",
+        },
+        kind: "phase",
+        prompt: {
+          en: "Switch the lamp off and one set of reactions stops that instant; the other carries on for a few seconds and then stops too — not because it wanted light, but because it has run out of what the first was handing it. What is this division?",
+          hi: "दीया बुझाओ और अभिक्रियाओं का एक समूह उसी क्षण रुक जाता है; दूसरा कुछ सेकंड चलता रहता है और फिर वह भी रुक जाता है — इसलिए नहीं कि उसे प्रकाश चाहिए था, बल्कि इसलिए कि पहला जो उसे सौंप रहा था वह चुक गया। यह कौन-सा विभाजन है?",
+          mr: "दिवा विझवा आणि अभिक्रियांचा एक गट त्याच क्षणी थांबतो; दुसरा काही सेकंद चालत राहतो आणि मग तोही थांबतो — प्रकाश हवा होता म्हणून नव्हे, तर पहिला जे त्याला सोपवत होता ते संपले म्हणून. ही कोणती विभागणी?",
+        },
+        statement: {
+          en: "The process splits into a light reaction that produces ATP and NADPH and a biosynthetic phase that spends both on fixing carbon, and those two products are the only link between them.",
+          hi: "प्रक्रिया दो में बँटती है: एक प्रकाश-अभिक्रिया जो ATP और NADPH बनाती है और एक जैवसंश्लेषी प्रावस्था जो दोनों को कार्बन स्थिरीकरण पर ख़र्च करती है, और वही दो उत्पाद उनके बीच का इकलौता संबंध हैं।",
+          mr: "प्रक्रिया दोनांत विभागते: एक प्रकाश-अभिक्रिया जी ATP आणि NADPH बनवते आणि एक जैवसंश्लेषी प्रावस्था जी दोन्ही कार्बन स्थिरीकरणावर खर्च करते, आणि तीच दोन उत्पादने त्यांच्यातला एकमेव दुवा.",
+        },
+        detail: {
+          en: "Calling the second half the dark reaction misleads: it does not need darkness, and in most plants it runs fastest in full daylight, when its supplies are being made.",
+          hi: "दूसरे आधे को अंधकार-अभिक्रिया कहना भ्रामक है: उसे अंधकार चाहिए ही नहीं, और अधिकांश पादपों में वह भरी धूप में सबसे तेज़ चलती है, जब उसकी रसद बन रही होती है।",
+          mr: "दुसऱ्या अर्ध्याला अंधार-अभिक्रिया म्हणणे दिशाभूल करते: तिला अंधार लागतच नाही, आणि बहुतांश वनस्पतींत ती भर उन्हात सर्वांत वेगाने चालते, जेव्हा तिची रसद बनत असते.",
+        },
+        extra: {
+          en: "Because the link is only those two carriers, a suspension of isolated chloroplast membranes can be made to release oxygen steadily with no carbon dioxide in the flask at all.",
+          hi: "चूँकि संबंध केवल वे दो वाहक हैं, अलग किए गए हरितलवक-झिल्लियों के निलंबन से फ़्लास्क में बिलकुल कार्बन डाइऑक्साइड न होते हुए भी लगातार ऑक्सीजन छुड़ाई जा सकती है।",
+          mr: "दुवा केवळ ती दोन वाहके असल्याने, वेगळ्या केलेल्या हरितलवक-पटलांच्या निलंबनातून फ्लास्कमध्ये अजिबात कार्बन डायऑक्साइड नसतानाही सतत प्राणवायू सोडवता येतो.",
+        },
+        pair: {
+          left: {
+            en: "Isolated membranes release oxygen with no carbon dioxide present",
+            hi: "अलग की गई झिल्लियाँ कार्बन डाइऑक्साइड बिना ऑक्सीजन छोड़ती हैं",
+            mr: "वेगळी केलेली पटले कार्बन डायऑक्साइडविना प्राणवायू सोडतात",
+          },
+          right: {
+            en: "the half that needs light and the half that does not",
+            hi: "वह आधा जिसे प्रकाश चाहिए और वह आधा जिसे नहीं",
+            mr: "ज्याला प्रकाश हवा तो अर्धा आणि ज्याला नको तो अर्धा",
+          },
+        },
+      },
+      {
+        id: "the-gradient-that-turns-a-wheel",
+        name: {
+          en: "The gradient that turns a wheel",
+          hi: "वह प्रवणता जो एक पहिया घुमाती है",
+          mr: "चाक फिरवणारी ती प्रवणता",
+        },
+        kind: "mechanism",
+        prompt: {
+          en: "Protons are pushed into a closed sac until there are far more inside than outside, and the only way back out for them is through a channel that turns as they pass. What arrangement makes the energy currency here?",
+          hi: "प्रोटॉन एक बंद थैली में तब तक ठेले जाते हैं जब तक भीतर बाहर से कहीं अधिक न हो जाएँ, और उनके लौटने का इकलौता रास्ता वह चैनल है जो उनके गुज़रने पर घूमता है। यहाँ ऊर्जा-मुद्रा कौन-सी व्यवस्था बनाती है?",
+          mr: "प्रोटॉन एका बंद पिशवीत तोवर ढकलले जातात जोवर आत बाहेरहून कितीतरी अधिक होत नाहीत, आणि त्यांच्या परतीचा एकमेव मार्ग म्हणजे तो वाहिनीमार्ग जो ते जाताना फिरतो. इथे ऊर्जा-चलन कोणती व्यवस्था बनवते?",
+        },
+        statement: {
+          en: "ATP is made by chemiosmosis: electron flow pumps protons into the thylakoid lumen, and their return outward through the ATP synthase channel drives the synthesis.",
+          hi: "ATP रसायन-परासरण से बनता है: इलेक्ट्रॉन-प्रवाह प्रोटॉनों को थाइलैकॉइड की गुहा में पंप करता है, और ATP सिंथेज़ चैनल से उनका बाहर लौटना संश्लेषण चलाता है।",
+          mr: "ATP रसायन-परासरणाने बनते: इलेक्ट्रॉन-प्रवाह प्रोटॉन थायलॅकॉइडच्या पोकळीत पंप करतो, आणि ATP सिंथेज वाहिनीमार्गातून त्यांचे बाहेर परतणे संश्लेषण चालवते.",
+        },
+        detail: {
+          en: "Water is split on the inner face of the membrane, so the protons it frees are dropped straight into the lumen and add to the gradient without anything having to pump them.",
+          hi: "जल झिल्ली के भीतरी फलक पर टूटता है, अतः उससे छूटे प्रोटॉन सीधे गुहा में गिरते हैं और बिना किसी के पंप किए प्रवणता में जुड़ जाते हैं।",
+          mr: "पाणी पटलाच्या आतल्या पृष्ठावर तुटते, म्हणून त्यातून सुटलेले प्रोटॉन थेट पोकळीत पडतात आणि कोणी पंप न करताच प्रवणतेत भर घालतात.",
+        },
+        extra: {
+          en: "A chemical that makes the membrane leaky to protons stops the synthesis while electron transport carries on unchanged, which is how the two were shown to be separate steps.",
+          hi: "जो रसायन झिल्ली को प्रोटॉनों के लिए छिद्रिल कर देता है वह संश्लेषण रोक देता है जबकि इलेक्ट्रॉन-परिवहन ज्यों का त्यों चलता रहता है, और इसी से दोनों अलग चरण सिद्ध हुए।",
+          mr: "जे रसायन पटल प्रोटॉनांसाठी गळके करते ते संश्लेषण थांबवते तर इलेक्ट्रॉन-वहन जसेच्या तसे चालू राहते, आणि यातूनच दोन्ही वेगळ्या पायऱ्या असल्याचे सिद्ध झाले.",
+        },
+        pair: {
+          left: {
+            en: "A leaky membrane stops the synthesis but not the electron flow",
+            hi: "छिद्रिल झिल्ली संश्लेषण रोकती है, इलेक्ट्रॉन-प्रवाह नहीं",
+            mr: "गळके पटल संश्लेषण थांबवते, इलेक्ट्रॉन-प्रवाह नव्हे",
+          },
+          right: {
+            en: "the gradient that turns a wheel",
+            hi: "वह प्रवणता जो एक पहिया घुमाती है",
+            mr: "चाक फिरवणारी ती प्रवणता",
+          },
+        },
+      },
+      {
+        id: "the-crop-that-shuts-its-pores-at-noon",
+        name: {
+          en: "The crop that shuts its pores at noon and grows anyway",
+          hi: "वह फ़सल जो दोपहर में छिद्र बंद करके भी बढ़ती है",
+          mr: "दुपारी छिद्रे मिटूनही वाढणारे ते पीक",
+        },
+        kind: "adaptation",
+        prompt: {
+          en: "In a hot dry field the pores must close by midday or the plant loses too much water, which ought to starve it of the gas it is trying to fix; one group of crops closes them and keeps growing regardless. Which arrangement is this?",
+          hi: "गर्म सूखे खेत में दोपहर तक छिद्र बंद करने ही पड़ते हैं वरना पादप बहुत जल खो देता है, और इससे उसे वही गैस मिलनी बंद हो जानी चाहिए जिसे वह स्थिर करना चाहता है; फ़सलों का एक समूह उन्हें बंद करके भी बेधड़क बढ़ता रहता है। यह कौन-सी व्यवस्था है?",
+          mr: "उष्ण कोरड्या शेतात दुपारपर्यंत छिद्रे मिटावीच लागतात नाहीतर वनस्पती खूप पाणी गमावते, आणि यामुळे तिला तोच वायू मिळेनासा व्हायला हवा जो ती स्थिर करू पाहते; पिकांचा एक गट ती मिटूनही बिनधास्त वाढत राहतो. ही कोणती व्यवस्था?",
+        },
+        statement: {
+          en: "The C4 pathway fixes carbon dioxide first in the mesophyll using an enzyme that cannot take up oxygen at all, then releases it inside bundle-sheath cells where the Calvin cycle works at a concentration no open pore could keep up.",
+          hi: "C4 पथ पहले पर्णमध्योतक में उस एंज़ाइम से कार्बन डाइऑक्साइड स्थिर करता है जो ऑक्सीजन ले ही नहीं सकता, फिर उसे पूलाच्छद कोशिकाओं के भीतर छोड़ता है जहाँ केल्विन चक्र ऐसी सांद्रता पर चलता है जो कोई खुला छिद्र बनाए नहीं रख सकता।",
+          mr: "C4 मार्ग आधी पर्णमध्योतकात त्या विकराने कार्बन डायऑक्साइड स्थिर करतो जे प्राणवायू घेऊच शकत नाही, मग तो पूलआच्छाद पेशींच्या आत सोडतो जिथे केल्विन चक्र अशा संहतीवर चालते जी कोणतेही उघडे छिद्र टिकवू शकत नाही.",
+        },
+        detail: {
+          en: "The two cell types show up under a microscope as a wreath around each vein: large bundle-sheath cells with thick walls and no air spaces between them.",
+          hi: "दोनों कोशिका-प्रकार सूक्ष्मदर्शी के नीचे हर शिरा के चारों ओर एक माला की तरह दिखते हैं: मोटी भित्ति वाली बड़ी पूलाच्छद कोशिकाएँ जिनके बीच वायु-अवकाश नहीं।",
+          mr: "दोन्ही पेशीप्रकार सूक्ष्मदर्शकाखाली प्रत्येक शिरेभोवती माळेसारखे दिसतात: जाड भित्ती असलेल्या मोठ्या पूलआच्छाद पेशी ज्यांत हवेच्या पोकळ्या नाहीत.",
+        },
+        extra: {
+          en: "The whole arrangement costs extra ATP for every carbon fixed, which is why such crops beat the ordinary kind in a hot field and quietly lose the advantage in a cool one.",
+          hi: "पूरी व्यवस्था हर स्थिर कार्बन पर अतिरिक्त ATP माँगती है, इसीलिए ऐसी फ़सलें गर्म खेत में साधारण क़िस्म को हरा देती हैं और ठंडे खेत में यह बढ़त चुपचाप खो देती हैं।",
+          mr: "अख्खी व्यवस्था प्रत्येक स्थिर कार्बनसाठी अधिकचे ATP मागते, म्हणूनच अशी पिके उष्ण शेतात साध्या प्रकाराला हरवतात आणि थंड शेतात ही आघाडी गुपचूप गमावतात.",
+        },
+        pair: {
+          left: {
+            en: "A wreath of thick-walled cells around every vein",
+            hi: "हर शिरा के चारों ओर मोटी भित्ति वाली कोशिकाओं की माला",
+            mr: "प्रत्येक शिरेभोवती जाड भित्तीच्या पेशींची माळ",
+          },
+          right: {
+            en: "the crop that shuts its pores at noon and grows anyway",
+            hi: "वह फ़सल जो दोपहर में छिद्र बंद करके भी बढ़ती है",
+            mr: "दुपारी छिद्रे मिटूनही वाढणारे ते पीक",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Two fields lie side by side in Punjab with the same soil, the same canal and the same farmer. The maize sown in June outyields anything the wheat could manage in that heat; the wheat sown in November outyields anything the maize could manage in that cold. A student concludes that maize is simply the better-bred crop and that the November result must be a sowing mistake. What is actually going on?",
+          hi: "पंजाब में दो खेत साथ-साथ हैं, वही मिट्टी, वही नहर, वही किसान। जून में बोई मक्का उस गर्मी में गेहूँ जो कुछ कर सकता उससे अधिक उपज देती है; नवंबर में बोया गेहूँ उस ठंड में मक्का जो कुछ कर सकती उससे अधिक देता है। विद्यार्थी निष्कर्ष निकालता है कि मक्का बस बेहतर नस्ल की फ़सल है और नवंबर वाला परिणाम बुआई की भूल रहा होगा। असल में हो क्या रहा है?",
+          mr: "पंजाबात दोन शेते शेजारी आहेत, तीच माती, तोच कालवा, तोच शेतकरी. जूनमध्ये पेरलेली मका त्या उष्म्यात गहू जे काही करू शकला असता त्याहून अधिक उत्पादन देते; नोव्हेंबरात पेरलेला गहू त्या थंडीत मका जे काही करू शकली असती त्याहून अधिक देतो. विद्यार्थी निष्कर्ष काढतो की मका फक्त उत्तम जातीचे पीक आहे आणि नोव्हेंबरचा निकाल पेरणीची चूक असावी. प्रत्यक्षात काय घडते आहे?",
+        },
+        choices: [
+          {
+            en: "Neither crop is better; each is better at a temperature. Maize is a C4 plant and wheat a C3 plant, and the difference lies in one enzyme. In wheat, RuBisCO fixes carbon dioxide directly, but the same enzyme also accepts oxygen, and as the day gets hotter it accepts more of it — the plant then burns carbon it has already fixed and releases it again, which is photorespiration and yields nothing. Maize keeps RuBisCO shut away in bundle-sheath cells and delivers carbon dioxide to it at a concentration high enough that oxygen never gets a turn, so its losses stay near nothing at forty degrees. That protection is not free: pumping the carbon inward costs extra ATP for every atom fixed. In November the wheat's oxygen problem is small and the maize is still paying its bill, so the cheaper pathway wins",
+            hi: "कोई फ़सल बेहतर नहीं; हर एक किसी तापमान पर बेहतर है। मक्का C4 पादप है और गेहूँ C3, और अंतर एक एंज़ाइम में है। गेहूँ में रुबिस्को सीधे कार्बन डाइऑक्साइड स्थिर करता है, पर वही एंज़ाइम ऑक्सीजन भी स्वीकार करता है, और दिन जितना गर्म होता जाए वह उतनी ही अधिक स्वीकार करता है — तब पादप पहले से स्थिर किया कार्बन जलाकर फिर छोड़ देता है, और यही प्रकाश-श्वसन है जो कुछ नहीं देता। मक्का रुबिस्को को पूलाच्छद कोशिकाओं में बंद रखती है और उस तक कार्बन डाइऑक्साइड इतनी सांद्रता पर पहुँचाती है कि ऑक्सीजन का नंबर ही नहीं आता, अतः चालीस अंश पर भी उसकी हानि लगभग शून्य रहती है। यह सुरक्षा मुफ़्त नहीं: कार्बन भीतर पंप करना हर स्थिर परमाणु पर अतिरिक्त ATP माँगता है। नवंबर में गेहूँ की ऑक्सीजन-समस्या छोटी है और मक्का अपना बिल तब भी चुका रही है, अतः सस्ता पथ जीत जाता है",
+            mr: "कोणतेच पीक अधिक चांगले नाही; प्रत्येक एका तापमानावर चांगले आहे. मका C4 वनस्पती आणि गहू C3, आणि फरक एका विकरात आहे. गव्हात रुबिस्को थेट कार्बन डायऑक्साइड स्थिर करते, पण तेच विकर प्राणवायूही स्वीकारते, आणि दिवस जसजसा तापतो तसतसे ते अधिक स्वीकारते — मग वनस्पती आधीच स्थिर केलेला कार्बन जाळून पुन्हा सोडते, आणि हेच प्रकाश-श्वसन जे काहीच देत नाही. मका रुबिस्को पूलआच्छाद पेशींत बंद ठेवते आणि त्याच्यापर्यंत कार्बन डायऑक्साइड इतक्या संहतीवर पोहोचवते की प्राणवायूचा नंबरच लागत नाही, म्हणून चाळीस अंशांवरही तिची हानी जवळपास शून्य राहते. हे संरक्षण फुकट नाही: कार्बन आत पंप करणे प्रत्येक स्थिर अणूसाठी अधिकचे ATP मागते. नोव्हेंबरात गव्हाची प्राणवायू-अडचण लहान असते आणि मका आपले बिल तेव्हाही भरत असते, म्हणून स्वस्त मार्ग जिंकतो",
+          },
+          {
+            en: "Maize simply has more chlorophyll per leaf than wheat, so it absorbs more light in summer, and in winter there is too little light for the extra chlorophyll to matter",
+            hi: "मक्का की पत्ती में गेहूँ से अधिक क्लोरोफ़िल होता है, अतः वह गर्मियों में अधिक प्रकाश सोखती है, और सर्दियों में इतना प्रकाश ही नहीं कि अतिरिक्त क्लोरोफ़िल मायने रखे",
+            mr: "मक्याच्या पानात गव्हाहून अधिक क्लोरोफिल असते, म्हणून ती उन्हाळ्यात अधिक प्रकाश शोषते, आणि हिवाळ्यात इतका प्रकाशच नसतो की अधिकचे क्लोरोफिल महत्त्वाचे ठरावे",
+          },
+          {
+            en: "Wheat keeps its pores open through the summer afternoon and dries out, while maize keeps its pores shut all day and therefore never loses any water at all",
+            hi: "गेहूँ गर्मी की दोपहर भर अपने छिद्र खुले रखता है और सूख जाता है, जबकि मक्का दिन भर छिद्र बंद रखती है और इसीलिए कभी कोई जल खोती ही नहीं",
+            mr: "गहू उन्हाळ्याच्या दुपारभर आपली छिद्रे उघडी ठेवतो आणि सुकतो, तर मका दिवसभर छिद्रे मिटून ठेवते आणि म्हणून कधी पाणी गमावतच नाही",
+          },
+          {
+            en: "Maize runs the Calvin cycle and wheat does not, which is why maize can fix carbon in the heat and wheat has to wait for cool weather to fix any at all",
+            hi: "मक्का केल्विन चक्र चलाती है और गेहूँ नहीं, इसीलिए मक्का गर्मी में कार्बन स्थिर कर लेती है और गेहूँ को कुछ भी स्थिर करने के लिए ठंडे मौसम की प्रतीक्षा करनी पड़ती है",
+            mr: "मका केल्विन चक्र चालवते आणि गहू नाही, म्हणूनच मका उष्म्यात कार्बन स्थिर करते आणि गव्हाला काहीही स्थिर करण्यासाठी थंड हवामानाची वाट पाहावी लागते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Start by refusing the premise. There is no crop that is better full stop; there are crops that are better at a temperature, and the pair in this field is the standard example. Wheat is a C3 plant: carbon dioxide is fixed straight onto a five-carbon acceptor by RuBisCO, and the first stable product has three carbons — hence the name. Maize is a C4 plant: the first stable product of fixation has four carbons, and it is made by a different enzyme in a different cell. Now the defect that all of this exists to work around. RuBisCO is not a clean enzyme. It has an active site that accepts carbon dioxide and also accepts oxygen, and the two gases compete for it. When oxygen wins, the plant makes a two-carbon compound it cannot use, has to spend energy salvaging it, and releases carbon dioxide it had already paid to fix. That is photorespiration, and it produces no sugar and no ATP. Which gas wins depends on the ratio of the two at the enzyme, and here is the cruelty: as temperature rises, the solubility of carbon dioxide falls faster than that of oxygen, and RuBisCO's own preference shifts towards oxygen as well. So the hotter the afternoon, the more of the wheat's fixed carbon goes back into the air. Losses of a quarter to a third are ordinary in a hot field. The C4 answer is not a better RuBisCO — nobody has evolved one — but a delivery system. In the mesophyll, PEP carboxylase fixes carbon dioxide onto a three-carbon acceptor to give a four-carbon acid. PEP carboxylase has no affinity for oxygen whatsoever, so it works perfectly well when the pore is nearly shut and the internal carbon dioxide is scarce. The four-carbon acid then travels into the bundle-sheath cells, which are sealed by thick walls with no air spaces, and there it is broken down and releases its carbon dioxide right beside the RuBisCO. The concentration in that little chamber is many times what an open pore could sustain, so oxygen never gets a look in and photorespiration is effectively abolished. The price is the last piece of the answer, and it is what explains November. Regenerating PEP costs extra ATP for every single carbon fixed, so a C4 plant spends about five ATP where a C3 plant spends three. In June that is a bargain, because the photorespiration it prevents costs far more than the ATP it burns. In a Punjab November the afternoon is mild, the wheat's oxygen problem nearly vanishes, and the maize is still paying an overhead it no longer needs — so the cheaper pathway wins, exactly as the farmer's yields say. This is also why the C4 habit has evolved independently dozens of times, always in hot or dry or salty places, and almost never in a cool forest. (The second answer invents a chlorophyll difference that does not exist and would not be seasonal if it did; the third is wrong about maize, which opens its pores too, just for less of the day; and the fourth is simply false, since every green plant including maize runs the Calvin cycle — in maize it is merely moved into a different cell.)",
+          hi: "पहले परिसर से ही इनकार करो। ऐसी कोई फ़सल नहीं जो सीधे-सीधे बेहतर हो; ऐसी फ़सलें हैं जो किसी तापमान पर बेहतर हैं, और इस खेत की जोड़ी उसका मानक उदाहरण है। गेहूँ C3 पादप है: कार्बन डाइऑक्साइड को रुबिस्को सीधे पाँच-कार्बन ग्राही पर चढ़ा देता है, और पहला स्थायी उत्पाद तीन कार्बन का होता है — इसी से नाम पड़ा। मक्का C4 पादप है: स्थिरीकरण का पहला स्थायी उत्पाद चार कार्बन का है, और उसे दूसरा एंज़ाइम दूसरी कोशिका में बनाता है। अब वह दोष जिससे बचने के लिए यह सब है। रुबिस्को साफ़ एंज़ाइम नहीं है। उसका सक्रिय स्थल कार्बन डाइऑक्साइड भी लेता है और ऑक्सीजन भी, और दोनों गैसें उसके लिए होड़ करती हैं। जब ऑक्सीजन जीतती है, पादप दो-कार्बन का ऐसा यौगिक बनाता है जिसे वह काम में नहीं ले सकता, उसे बचाने में ऊर्जा ख़र्च करनी पड़ती है, और वह कार्बन डाइऑक्साइड छोड़ देता है जिसे स्थिर करने की क़ीमत वह पहले ही चुका चुका था। यही प्रकाश-श्वसन है, और यह न शर्करा देता है न ATP. कौन-सी गैस जीतेगी यह एंज़ाइम पर दोनों के अनुपात से तय होता है, और क्रूरता यहाँ है: तापमान बढ़ने पर कार्बन डाइऑक्साइड की विलेयता ऑक्सीजन की तुलना में तेज़ी से गिरती है, और रुबिस्को का अपना झुकाव भी ऑक्सीजन की ओर सरक जाता है। अतः दोपहर जितनी गर्म, गेहूँ का उतना ही अधिक स्थिर कार्बन हवा में लौट जाता है। गर्म खेत में चौथाई से तिहाई तक की हानि सामान्य है। C4 का उत्तर बेहतर रुबिस्को नहीं — वैसा किसी ने विकसित नहीं किया — बल्कि एक पहुँचाने की व्यवस्था है। पर्णमध्योतक में PEP कार्बोक्सिलेज़ कार्बन डाइऑक्साइड को तीन-कार्बन ग्राही पर चढ़ाकर चार-कार्बन अम्ल बनाता है। PEP कार्बोक्सिलेज़ की ऑक्सीजन के प्रति कोई बंधुता नहीं, अतः वह तब भी भलीभाँति काम करता है जब छिद्र लगभग बंद हो और भीतरी कार्बन डाइऑक्साइड कम। फिर वह चार-कार्बन अम्ल पूलाच्छद कोशिकाओं में जाता है, जो मोटी भित्तियों से बंद हैं और जिनमें वायु-अवकाश नहीं, और वहाँ टूटकर अपनी कार्बन डाइऑक्साइड ठीक रुबिस्को के पास छोड़ देता है। उस छोटी कोठरी की सांद्रता खुले छिद्र से कई गुना है, अतः ऑक्सीजन का नंबर ही नहीं आता और प्रकाश-श्वसन प्रभावतः समाप्त हो जाता है। क़ीमत उत्तर का अंतिम टुकड़ा है, और वही नवंबर समझाती है। PEP को फिर बनाना हर एक स्थिर कार्बन पर अतिरिक्त ATP माँगता है, अतः C4 पादप लगभग पाँच ATP ख़र्च करता है जहाँ C3 तीन। जून में यह सौदा है, क्योंकि जो प्रकाश-श्वसन वह रोकता है वह जलाए गए ATP से कहीं महँगा है। पंजाब के नवंबर में दोपहर नरम है, गेहूँ की ऑक्सीजन-समस्या लगभग मिट जाती है, और मक्का वह ऊपरी ख़र्च तब भी चुका रही है जिसकी अब ज़रूरत नहीं — अतः सस्ता पथ जीतता है, ठीक वैसे जैसे किसान की उपज कहती है। इसीलिए C4 आदत दर्जनों बार स्वतंत्र रूप से विकसित हुई है, सदा गर्म या सूखी या खारी जगहों में, और ठंडे वन में लगभग कभी नहीं। (दूसरा उत्तर क्लोरोफ़िल का ऐसा अंतर गढ़ता है जो है ही नहीं और होता भी तो मौसमी न होता; तीसरा मक्का के बारे में ग़लत है, जो अपने छिद्र खोलती भी है, बस दिन के कम हिस्से में; और चौथा सीधे-सीधे असत्य है, क्योंकि मक्का सहित हर हरा पादप केल्विन चक्र चलाता है — मक्का में वह बस दूसरी कोशिका में सरका दिया गया है।)",
+          mr: "आधी गृहीतकच नाकारा. सरळसरळ अधिक चांगले असे कोणतेच पीक नाही; एका तापमानावर अधिक चांगली अशी पिके आहेत, आणि या शेतातली जोडी हे त्याचे प्रमाण उदाहरण. गहू ही C3 वनस्पती: कार्बन डायऑक्साइड रुबिस्को थेट पाच-कार्बनी ग्राहीवर चढवते, आणि पहिले स्थिर उत्पादन तीन कार्बनांचे — यावरूनच नाव. मका ही C4 वनस्पती: स्थिरीकरणाचे पहिले स्थिर उत्पादन चार कार्बनांचे, आणि ते दुसरे विकर दुसऱ्या पेशीत बनवते. आता तो दोष ज्याच्यापासून वाचण्यासाठी हे सारे आहे. रुबिस्को स्वच्छ विकर नाही. त्याचे कार्यस्थळ कार्बन डायऑक्साइडही घेते आणि प्राणवायूही, आणि दोन्ही वायू त्यासाठी स्पर्धा करतात. प्राणवायू जिंकतो तेव्हा वनस्पती दोन-कार्बनी असे संयुग बनवते जे तिला वापरता येत नाही, ते वाचवण्यात ऊर्जा खर्चावी लागते, आणि जो कार्बन डायऑक्साइड स्थिर करण्याची किंमत तिने आधीच भरली होती तो ती पुन्हा सोडते. हेच प्रकाश-श्वसन, आणि ते ना शर्करा देते ना ATP. कोणता वायू जिंकेल हे विकरावरील दोघांच्या गुणोत्तराने ठरते, आणि क्रूरता इथे आहे: तापमान वाढताच कार्बन डायऑक्साइडची विद्राव्यता प्राणवायूहून वेगाने घसरते, आणि रुबिस्कोचा स्वतःचा कलही प्राणवायूकडे सरकतो. म्हणून दुपार जितकी तापेल, गव्हाचा तितका अधिक स्थिर कार्बन हवेत परततो. उष्ण शेतात चतुर्थांश ते तृतीयांश हानी सामान्य. C4 चे उत्तर म्हणजे अधिक चांगले रुबिस्को नव्हे — तसे कोणीच उत्क्रांत केले नाही — तर एक पोहोचवण्याची व्यवस्था. पर्णमध्योतकात PEP कार्बोक्सिलेज कार्बन डायऑक्साइड तीन-कार्बनी ग्राहीवर चढवून चार-कार्बनी आम्ल बनवते. PEP कार्बोक्सिलेजला प्राणवायूविषयी कोणतीही आसक्ती नाही, म्हणून छिद्र जवळपास मिटलेले आणि आतला कार्बन डायऑक्साइड कमी असतानाही ते उत्तम चालते. मग ते चार-कार्बनी आम्ल पूलआच्छाद पेशींत जाते, ज्या जाड भित्तींनी बंद आहेत आणि ज्यांत हवेच्या पोकळ्या नाहीत, आणि तिथे तुटून आपला कार्बन डायऑक्साइड नेमका रुबिस्कोशेजारी सोडते. त्या छोट्या खोलीतली संहती उघड्या छिद्राहून कैकपट, म्हणून प्राणवायूचा नंबरच लागत नाही आणि प्रकाश-श्वसन प्रभावीपणे संपते. किंमत हा उत्तराचा शेवटचा तुकडा, आणि तीच नोव्हेंबर समजावते. PEP पुन्हा बनवणे प्रत्येक स्थिर कार्बनसाठी अधिकचे ATP मागते, म्हणून C4 वनस्पती सुमारे पाच ATP खर्चते जिथे C3 तीन. जूनमध्ये तो सौदा आहे, कारण ती जे प्रकाश-श्वसन रोखते ते जाळलेल्या ATP हून कितीतरी महाग. पंजाबच्या नोव्हेंबरात दुपार मवाळ, गव्हाची प्राणवायू-अडचण जवळपास मिटते, आणि मका तो वरचा खर्च तेव्हाही भरत असते ज्याची आता गरज नाही — म्हणून स्वस्त मार्ग जिंकतो, नेमके शेतकऱ्याचे उत्पादन सांगते तसे. म्हणूनच C4 सवय डझनवेळा स्वतंत्रपणे उत्क्रांत झाली आहे, नेहमी उष्ण वा कोरड्या वा खारट ठिकाणी, आणि थंड जंगलात जवळपास कधीच नाही. (दुसरे उत्तर क्लोरोफिलचा असा फरक रचते जो नाहीच आणि असता तरी हंगामी नसता; तिसरे मक्याबद्दल चुकीचे आहे, जी आपली छिद्रे उघडतेही, फक्त दिवसाच्या कमी भागात; आणि चौथे सरळसरळ असत्य, कारण मक्यासह प्रत्येक हिरवी वनस्पती केल्विन चक्र चालवते — मक्यात ते फक्त दुसऱ्या पेशीत सरकवले आहे.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A student is told that the second phase of photosynthesis is called the dark reaction, and reasons as follows: sugar must therefore be made at night, a plant left under a lamp all night will build up more starch than one left in a dark room, and a chloroplast supplied with light but no carbon dioxide can do nothing at all. Two of those three claims are false and the third is false for a reason the student has not guessed. Sort it out.",
+          hi: "विद्यार्थी को बताया गया कि प्रकाश संश्लेषण की दूसरी प्रावस्था अंधकार-अभिक्रिया कहलाती है, और वह यों तर्क करता है: तब शर्करा रात में बननी चाहिए, पूरी रात दीये के नीचे रखा पादप अँधेरे कमरे वाले से अधिक स्टार्च जमा करेगा, और जिस हरितलवक को प्रकाश मिले पर कार्बन डाइऑक्साइड नहीं वह कुछ भी नहीं कर सकता। उन तीन दावों में से दो असत्य हैं और तीसरा उस कारण से असत्य है जिसका विद्यार्थी ने अनुमान ही नहीं लगाया। इसे सुलझाओ।",
+          mr: "विद्यार्थ्याला सांगितले जाते की प्रकाशसंश्लेषणाच्या दुसऱ्या प्रावस्थेला अंधार-अभिक्रिया म्हणतात, आणि तो असा तर्क करतो: मग शर्करा रात्री बनली पाहिजे, अख्खी रात्र दिव्याखाली ठेवलेली वनस्पती अंधाऱ्या खोलीतल्या वनस्पतीहून अधिक स्टार्च साठवेल, आणि ज्या हरितलवकाला प्रकाश मिळेल पण कार्बन डायऑक्साइड नाही तो काहीच करू शकत नाही. त्या तीन दाव्यांपैकी दोन असत्य आहेत आणि तिसरा अशा कारणाने असत्य आहे ज्याचा विद्यार्थ्याने अंदाजही बांधला नाही. हे सोडवा.",
+        },
+        choices: [
+          {
+            en: "The name is a historical accident and means only that no photon is absorbed in this phase, not that darkness is required. The phase needs ATP and NADPH, both of which are made only in the light, so in an ordinary plant it runs fastest in daylight and stalls within seconds of sunset once the stock of both is spent — which is exactly backwards from the student's first claim. The second claim is true but for the wrong reason: the lamp helps because the light reaction keeps supplying the two carriers, not because the second phase enjoys the light itself. And the third is false because a chloroplast given light and no carbon dioxide will still split water and release oxygen for a while — the Hill reaction — which is precisely how the two phases were first shown to be separable",
+            hi: "नाम ऐतिहासिक संयोग है और उसका अर्थ केवल इतना है कि इस प्रावस्था में कोई फ़ोटॉन नहीं सोखा जाता, यह नहीं कि अंधकार चाहिए। प्रावस्था को ATP और NADPH चाहिए, और दोनों केवल प्रकाश में बनते हैं, अतः साधारण पादप में वह दिन के उजाले में सबसे तेज़ चलती है और सूर्यास्त के कुछ सेकंड बाद दोनों का भंडार चुकते ही ठप हो जाती है — जो विद्यार्थी के पहले दावे का ठीक उलटा है। दूसरा दावा सच है पर ग़लत कारण से: दीया इसलिए मदद करता है कि प्रकाश-अभिक्रिया वे दो वाहक देती रहती है, इसलिए नहीं कि दूसरी प्रावस्था को प्रकाश स्वयं भाता है। और तीसरा असत्य है क्योंकि जिस हरितलवक को प्रकाश मिले और कार्बन डाइऑक्साइड नहीं वह कुछ समय तक जल तोड़कर ऑक्सीजन छोड़ता रहेगा — हिल अभिक्रिया — और ठीक इसी से दोनों प्रावस्थाएँ पहली बार अलग सिद्ध हुईं",
+            mr: "नाव हा ऐतिहासिक योगायोग असून त्याचा अर्थ इतकाच की या प्रावस्थेत कोणताही फोटॉन शोषला जात नाही, अंधार लागतो असा नव्हे. प्रावस्थेला ATP आणि NADPH लागतात, आणि दोन्ही केवळ प्रकाशातच बनतात, म्हणून साधारण वनस्पतीत ती दिवसाउजेडी सर्वांत वेगाने चालते आणि सूर्यास्तानंतर काही सेकंदांत दोघांचा साठा संपताच ठप होते — जे विद्यार्थ्याच्या पहिल्या दाव्याच्या नेमके उलट. दुसरा दावा खरा पण चुकीच्या कारणाने: दिवा यासाठी मदत करतो की प्रकाश-अभिक्रिया ती दोन वाहके पुरवत राहते, दुसऱ्या प्रावस्थेला प्रकाश स्वतः आवडतो म्हणून नव्हे. आणि तिसरा असत्य कारण ज्या हरितलवकाला प्रकाश मिळेल आणि कार्बन डायऑक्साइड नाही तो काही काळ पाणी फोडून प्राणवायू सोडत राहील — हिल अभिक्रिया — आणि नेमके यातूनच दोन्ही प्रावस्था प्रथम वेगळ्या सिद्ध झाल्या",
+          },
+          {
+            en: "The name is accurate and the student's first claim is right: the phase does run at night, which is why leaves are heaviest at dawn, and the other two claims are simply careless arithmetic about starch",
+            hi: "नाम सही है और विद्यार्थी का पहला दावा ठीक है: प्रावस्था रात में चलती ही है, इसीलिए पत्तियाँ भोर में सबसे भारी होती हैं, और बाक़ी दो दावे स्टार्च के बारे में बस लापरवाह गणित हैं",
+            mr: "नाव अचूक आहे आणि विद्यार्थ्याचा पहिला दावा बरोबर: प्रावस्था रात्री चालतेच, म्हणूनच पाने पहाटे सर्वांत जड असतात, आणि उरलेले दोन दावे स्टार्चबद्दलचे निष्काळजी गणितच",
+          },
+          {
+            en: "All three claims fail for one reason: the second phase needs light directly, just less of it than the first, so it slows down at dusk rather than stopping and cannot run in a dark room at all",
+            hi: "तीनों दावे एक ही कारण से गिरते हैं: दूसरी प्रावस्था को प्रकाश सीधे चाहिए, बस पहली से कम, अतः वह साँझ में रुकने के बजाय धीमी पड़ती है और अँधेरे कमरे में चल ही नहीं सकती",
+            mr: "तिन्ही दावे एकाच कारणाने कोसळतात: दुसऱ्या प्रावस्थेला प्रकाश थेट लागतो, फक्त पहिलीहून कमी, म्हणून ती संधिप्रकाशात थांबण्याऐवजी मंदावते आणि अंधाऱ्या खोलीत चालूच शकत नाही",
+          },
+          {
+            en: "The phase is correctly named because it happens inside the stroma where no light penetrates, and the student's error is only that he forgot the plant respires at night and undoes the sugar it made",
+            hi: "प्रावस्था का नाम सही है क्योंकि वह पीठिका के भीतर होती है जहाँ प्रकाश पहुँचता ही नहीं, और विद्यार्थी की भूल केवल इतनी है कि वह भूल गया कि पादप रात में श्वसन करके बनाई शर्करा वापस खा जाता है",
+            mr: "प्रावस्थेचे नाव बरोबर आहे कारण ती पीठिकेच्या आत घडते जिथे प्रकाश पोहोचतच नाही, आणि विद्यार्थ्याची चूक इतकीच की तो विसरला की वनस्पती रात्री श्वसन करून बनवलेली शर्करा परत खाते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The whole tangle comes from a name, so start there. The second phase was called the dark reaction because it was found to proceed in a preparation kept in the dark, and all that ever meant was that no photon is absorbed by it — no pigment is involved, no light is a reactant. It never meant that darkness is required, and modern books call it the biosynthetic phase or the carbon-fixation phase for exactly this reason. Now take the claims in turn. FIRST CLAIM, sugar is made at night: false, and false in the strongest way. The phase consumes ATP and NADPH, and both are made only by the light reaction. In an illuminated leaf the two are being produced continuously, so the Calvin cycle turns fastest in the middle of the day. Switch the light off and the cycle keeps going only until the stock in the stroma is used up, which is a matter of seconds, and then stops. So the phase does not merely fail to prefer darkness — it cannot survive darkness for long at all. The exception is worth knowing: CAM plants such as a pineapple or a cactus do take carbon dioxide in at night, but they only STORE it as an organic acid then, and the Calvin cycle still waits for daylight to spend it. SECOND CLAIM, the lamp gives more starch: true, but the student has the mechanism upside down. The lamp helps because the light reaction goes on supplying ATP and NADPH, so the second phase can keep running; it is not that the second phase is enjoying the light itself. Getting a right answer from a wrong model is the most dangerous kind of success in an examination. THIRD CLAIM, light without carbon dioxide does nothing: false, and the demonstration is famous. Hill showed that isolated chloroplast membranes, given light and an artificial electron acceptor but no carbon dioxide whatever, go on splitting water and releasing oxygen. That result is the whole reason we speak of two phases at all: it separated the oxygen-releasing chemistry, which needs light, from the carbon-fixing chemistry, which needs only the products of the first. It also nailed down where the oxygen comes from. The general lesson is about names. A term coined during an experiment records what the experimenters happened to do, not what the process requires, and a student who reasons from the name instead of from the chemistry will get exactly this pattern of errors — confident, systematic, and all in the same direction. (The second answer accepts the false first claim outright; the third invents a direct light requirement for a phase that has none, which contradicts the very experiment that named it; and the fourth confuses the location of the stroma with a lighting condition, since the stroma is perfectly well lit inside an illuminated chloroplast.)",
+          hi: "पूरी गुत्थी एक नाम से आई है, अतः वहीं से शुरू करो। दूसरी प्रावस्था को अंधकार-अभिक्रिया इसलिए कहा गया कि वह अँधेरे में रखी तैयारी में भी चलती पाई गई, और इसका अर्थ कभी इतना ही था कि उसमें कोई फ़ोटॉन नहीं सोखा जाता — न कोई वर्णक शामिल है, न प्रकाश कोई अभिकारक। इसका अर्थ कभी यह नहीं था कि अंधकार चाहिए, और ठीक इसी कारण आजकल की पुस्तकें उसे जैवसंश्लेषी प्रावस्था या कार्बन-स्थिरीकरण प्रावस्था कहती हैं। अब दावे एक-एक करके लो। पहला दावा, शर्करा रात में बनती है: असत्य, और सबसे प्रबल रूप में असत्य। प्रावस्था ATP और NADPH खाती है, और दोनों केवल प्रकाश-अभिक्रिया बनाती है। प्रकाशित पत्ती में दोनों लगातार बन रहे हैं, अतः केल्विन चक्र दिन के बीचोंबीच सबसे तेज़ घूमता है। प्रकाश बंद करो और चक्र केवल तब तक चलता है जब तक पीठिका का भंडार न चुक जाए, जो सेकंडों का मामला है, और फिर रुक जाता है। अतः प्रावस्था अंधकार को पसंद न करने भर की बात नहीं — वह अंधकार में देर तक जी ही नहीं सकती। अपवाद जानने योग्य है: अनन्नास या नागफनी जैसे CAM पादप रात में कार्बन डाइऑक्साइड लेते तो हैं, पर तब वे उसे केवल कार्बनिक अम्ल के रूप में जमा करते हैं, और केल्विन चक्र उसे ख़र्च करने के लिए दिन के उजाले की ही प्रतीक्षा करता है। दूसरा दावा, दीये से अधिक स्टार्च: सच, पर विद्यार्थी ने तंत्र उलटा पकड़ा है। दीया इसलिए मदद करता है कि प्रकाश-अभिक्रिया ATP और NADPH देती रहती है, जिससे दूसरी प्रावस्था चलती रह सकती है; ऐसा नहीं कि दूसरी प्रावस्था को प्रकाश स्वयं भा रहा है। ग़लत मॉडल से सही उत्तर पा जाना परीक्षा में सबसे ख़तरनाक क़िस्म की सफलता है। तीसरा दावा, कार्बन डाइऑक्साइड बिना प्रकाश कुछ नहीं करता: असत्य, और प्रदर्शन प्रसिद्ध है। हिल ने दिखाया कि अलग की गई हरितलवक-झिल्लियाँ, जिन्हें प्रकाश और एक कृत्रिम इलेक्ट्रॉन-ग्राही मिले पर कार्बन डाइऑक्साइड बिलकुल नहीं, जल तोड़ती और ऑक्सीजन छोड़ती रहती हैं। वही परिणाम दो प्रावस्थाओं की बात करने का पूरा कारण है: उसने ऑक्सीजन छोड़ने वाले रसायन को, जिसे प्रकाश चाहिए, कार्बन स्थिर करने वाले रसायन से अलग किया, जिसे केवल पहले के उत्पाद चाहिए। उसी ने यह भी पक्का किया कि ऑक्सीजन आती कहाँ से है। सामान्य सीख नामों के बारे में है। प्रयोग के दौरान गढ़ा गया शब्द यह दर्ज करता है कि प्रयोगकर्ताओं ने संयोग से क्या किया, यह नहीं कि प्रक्रिया को क्या चाहिए, और जो विद्यार्थी रसायन के बजाय नाम से तर्क करेगा उसे ठीक यही भूलों का ढर्रा मिलेगा — आत्मविश्वासी, व्यवस्थित, और सब एक ही दिशा में। (दूसरा उत्तर असत्य पहला दावा सीधे मान लेता है; तीसरा उस प्रावस्था के लिए सीधी प्रकाश-आवश्यकता गढ़ता है जिसकी वह है ही नहीं, जो उसी प्रयोग का खंडन करता है जिससे उसका नाम पड़ा; और चौथा पीठिका के स्थान को प्रकाश की स्थिति समझ बैठता है, क्योंकि प्रकाशित हरितलवक के भीतर पीठिका भलीभाँति प्रकाशित है।)",
+          mr: "अख्खी गुंतागुंत एका नावातून आली आहे, म्हणून तिथूनच सुरुवात करा. दुसऱ्या प्रावस्थेला अंधार-अभिक्रिया यासाठी म्हटले गेले की ती अंधारात ठेवलेल्या तयारीतही चालताना आढळली, आणि याचा अर्थ कधीही इतकाच होता की तिच्यात कोणताही फोटॉन शोषला जात नाही — ना कोणते रंगद्रव्य सामील, ना प्रकाश कोणता अभिकारक. याचा अर्थ कधीच असा नव्हता की अंधार लागतो, आणि नेमक्या याच कारणाने आजची पुस्तके तिला जैवसंश्लेषी प्रावस्था वा कार्बन-स्थिरीकरण प्रावस्था म्हणतात. आता दावे एकेक घ्या. पहिला दावा, शर्करा रात्री बनते: असत्य, आणि सर्वांत प्रखर रूपात असत्य. प्रावस्था ATP आणि NADPH खाते, आणि दोन्ही केवळ प्रकाश-अभिक्रिया बनवते. प्रकाशित पानात दोन्ही सतत बनत असतात, म्हणून केल्विन चक्र दिवसाच्या मध्यावर सर्वांत वेगाने फिरते. प्रकाश बंद करा आणि चक्र केवळ तोवर चालते जोवर पीठिकेतला साठा संपत नाही, जो सेकंदांचा मामला, आणि मग थांबते. म्हणून प्रावस्थेला अंधार आवडत नाही इतकेच नव्हे — ती अंधारात फार वेळ जगूच शकत नाही. अपवाद जाणण्याजोगा: अननस वा निवडुंगासारख्या CAM वनस्पती रात्री कार्बन डायऑक्साइड घेतात खऱ्या, पण तेव्हा त्या तो केवळ सेंद्रिय आम्लाच्या रूपात साठवतात, आणि केल्विन चक्र तो खर्चण्यासाठी दिवसाउजेडाचीच वाट पाहते. दुसरा दावा, दिव्याने अधिक स्टार्च: खरा, पण विद्यार्थ्याने यंत्रणा उलटी पकडली आहे. दिवा यासाठी मदत करतो की प्रकाश-अभिक्रिया ATP आणि NADPH पुरवत राहते, ज्याने दुसरी प्रावस्था चालू राहू शकते; असे नाही की दुसऱ्या प्रावस्थेला प्रकाश स्वतः आवडतो. चुकीच्या प्रतिरूपातून बरोबर उत्तर मिळणे ही परीक्षेतली सर्वांत धोकादायक प्रकारची यशस्विता. तिसरा दावा, कार्बन डायऑक्साइडविना प्रकाश काहीच करत नाही: असत्य, आणि प्रात्यक्षिक प्रसिद्ध. हिलने दाखवले की वेगळी केलेली हरितलवक-पटले, ज्यांना प्रकाश आणि एक कृत्रिम इलेक्ट्रॉन-ग्राही मिळाले पण कार्बन डायऑक्साइड अजिबात नाही, ती पाणी फोडत आणि प्राणवायू सोडत राहतात. तोच निकाल दोन प्रावस्थांबद्दल बोलण्याचे अख्खे कारण: त्याने प्राणवायू सोडणारे रसायन, ज्याला प्रकाश लागतो, कार्बन स्थिर करणाऱ्या रसायनापासून वेगळे केले, ज्याला केवळ पहिल्याची उत्पादने लागतात. त्यानेच प्राणवायू येतो कुठून हेही पक्के केले. सामान्य धडा नावांबद्दल आहे. प्रयोगादरम्यान घडवलेला शब्द प्रयोगकर्त्यांनी योगायोगाने काय केले ते नोंदवतो, प्रक्रियेला काय लागते ते नव्हे, आणि जो विद्यार्थी रसायनाऐवजी नावावरून तर्क करेल त्याला नेमका हाच चुकांचा साचा मिळेल — आत्मविश्वासी, पद्धतशीर, आणि सारा एकाच दिशेने. (दुसरे उत्तर असत्य पहिला दावा सरळ स्वीकारते; तिसरे ज्या प्रावस्थेला थेट प्रकाशाची गरज नाहीच तिच्यासाठी ती रचते, जे तिचे नाव ज्यातून पडले त्याच प्रयोगाचे खंडन करते; आणि चौथे पीठिकेच्या स्थानाला प्रकाशाची अवस्था समजते, कारण प्रकाशित हरितलवकाच्या आत पीठिका उत्तम प्रकाशित असते.)",
+        },
+      },
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 12 — Respiration in Plants                                      */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "biology-11-respiration-in-plants",
+    subject: "BIOLOGY",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 12 — Respiration in Plants",
+      hi: "अध्याय 12 — पादपों में श्वसन",
+      mr: "प्रकरण 12 — वनस्पतींतील श्वसन",
+    },
+    name: {
+      en: "Burning Sugar Slowly Enough to Use",
+      hi: "शक्कर को इतना धीरे जलाना कि काम आ सके",
+      mr: "साखर वापरता येईल इतक्या सावकाश जाळणे",
+    },
+    summary: {
+      en: "Sugar and oxygen give the same products in a furnace and in a root, and the only difference is the number of steps — which is the difference between a flame and a living cell. Follow one glucose down: a first stretch that needs no oxygen and works in every cell alive, a fork where one road stops early and settles for two, a cycle that gives off all the carbon and almost no energy, and a chain at the end where oxygen finally shows up to take the electrons away.",
+      hi: "भट्ठी में और जड़ में शक्कर और ऑक्सीजन वही उत्पाद देते हैं, और अंतर केवल चरणों की संख्या का है — और वही अंतर लपट और जीवित कोशिका के बीच है। एक ग्लूकोस के पीछे चलो: पहला हिस्सा जिसे ऑक्सीजन नहीं चाहिए और जो हर जीवित कोशिका में चलता है, एक दोराहा जहाँ एक रास्ता जल्दी रुककर दो पर संतोष कर लेता है, एक चक्र जो सारा कार्बन छोड़ देता है और ऊर्जा लगभग नहीं, और अंत में एक शृंखला जहाँ ऑक्सीजन आख़िरकार इलेक्ट्रॉन ले जाने आती है।",
+      mr: "भट्टीत आणि मुळात साखर आणि प्राणवायू तेच पदार्थ देतात, आणि फरक केवळ पायऱ्यांच्या संख्येचा — आणि तोच फरक ज्वाला आणि जिवंत पेशी यांच्यात आहे. एका ग्लुकोजच्या मागे जा: पहिला टप्पा ज्याला प्राणवायू लागत नाही आणि जो प्रत्येक जिवंत पेशीत चालतो, एक दुभंगा जिथे एक रस्ता लवकर थांबून दोनवर समाधान मानतो, एक चक्र जे सगळा कार्बन सोडते आणि ऊर्जा जवळपास नाही, आणि शेवटी एक साखळी जिथे प्राणवायू अखेर इलेक्ट्रॉन नेण्यास येतो.",
+    },
+    position: 12,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "why-a-jar-of-soaked-seeds-turns-warm",
+        name: {
+          en: "Why a jar of soaked seeds turns warm",
+          hi: "भिगोए बीजों का मर्तबान गरम क्यों हो जाता है",
+          mr: "भिजवलेल्या बियांचा बरणी उबदार का होते",
+        },
+        kind: "definition",
+        prompt: {
+          en: "Put damp germinating seeds in a flask and by morning a thermometer in the middle reads several degrees above the room, though nothing has been lit and nothing has burned. What is going on?",
+          hi: "नम अंकुरित बीज फ़्लास्क में रखो और सुबह तक बीच में लगा थर्मामीटर कमरे से कई अंश ऊपर पढ़ता है, जबकि न कुछ जलाया गया न कुछ जला। हो क्या रहा है?",
+          mr: "ओले अंकुरणारे बीज फ्लास्कात ठेवा आणि सकाळपर्यंत मधले तापमापक खोलीहून काही अंश वर दाखवते, तरी ना काही पेटवले ना काही जळले. काय चालले आहे?",
+        },
+        statement: {
+          en: "Respiration is the stepwise oxidation of food inside a cell, releasing the energy in many small instalments so that most of it can be trapped in ATP and only the remainder escapes as heat.",
+          hi: "श्वसन कोशिका के भीतर भोजन का चरणबद्ध ऑक्सीकरण है, जो ऊर्जा को कई छोटी क़िस्तों में छोड़ता है ताकि उसका अधिकांश ATP में बंधा जा सके और केवल बाक़ी ऊष्मा बनकर निकले।",
+          mr: "श्वसन म्हणजे पेशीच्या आत अन्नाचे टप्प्याटप्प्याने ऑक्सिडीकरण, जे ऊर्जा अनेक लहान हप्त्यांत सोडते जेणेकरून तिचा बहुतांश ATP मध्ये बांधता यावा आणि केवळ उरलेला उष्णता बनून निघावा.",
+        },
+        detail: {
+          en: "Burning the same sugar in a dish releases exactly the same total energy, all of it at once and all of it as heat, which a cell could neither use nor survive.",
+          hi: "उसी शक्कर को प्याली में जलाओ तो कुल ऊर्जा ठीक उतनी ही निकलती है, पर सारी एक साथ और सारी ऊष्मा बनकर, जिसे कोशिका न काम में ले पाती न झेल पाती।",
+          mr: "तीच साखर बशीत जाळा तर एकूण ऊर्जा नेमकी तितकीच निघते, पण सारी एकाच वेळी आणि सारी उष्णता बनून, जी पेशीला ना वापरता आली असती ना सहन झाली असती.",
+        },
+        extra: {
+          en: "Because plants have no fat store worth the name in their working tissues, the substrate is almost always carbohydrate, and only in oil-bearing seeds does the mixture change.",
+          hi: "चूँकि पादपों के कार्यरत ऊतकों में नाम लेने लायक़ वसा-भंडार नहीं होता, क्रियाधार लगभग सदा कार्बोहाइड्रेट होता है, और केवल तैलीय बीजों में मिश्रण बदलता है।",
+          mr: "वनस्पतींच्या कार्यरत ऊतींत नाव घेण्याजोगा मेदसाठा नसल्याने, क्रियाधार जवळपास नेहमी कार्बोहायड्रेट असतो, आणि केवळ तेलबिया बियांत मिश्रण बदलते.",
+        },
+        pair: {
+          left: {
+            en: "The same sugar in a dish gives the same energy all at once",
+            hi: "वही शक्कर प्याली में वही ऊर्जा एक साथ देती है",
+            mr: "तीच साखर बशीत तीच ऊर्जा एकाच वेळी देते",
+          },
+          right: {
+            en: "why a jar of soaked seeds turns warm",
+            hi: "भिगोए बीजों का मर्तबान गरम क्यों हो जाता है",
+            mr: "भिजवलेल्या बियांचा बरणी उबदार का होते",
+          },
+        },
+      },
+      {
+        id: "the-stretch-that-asks-for-no-oxygen",
+        name: {
+          en: "The stretch that asks for no oxygen",
+          hi: "वह हिस्सा जो ऑक्सीजन माँगता ही नहीं",
+          mr: "प्राणवायू मागतच नाही तो टप्पा",
+        },
+        kind: "stage",
+        prompt: {
+          en: "A muscle sprinting, a yeast in a sealed vat and a root under floodwater are doing utterly different things afterwards, but the first ten steps are identical in all three and in every other living cell besides. Which stretch is this?",
+          hi: "दौड़ती पेशी, बंद पीपे का ख़मीर और बाढ़ के पानी के नीचे की जड़ आगे चलकर बिलकुल अलग-अलग काम करते हैं, पर पहले दस चरण तीनों में और बाक़ी हर जीवित कोशिका में एक जैसे हैं। यह कौन-सा हिस्सा है?",
+          mr: "धावणारा स्नायू, बंद पिपातले यीस्ट आणि पुराच्या पाण्याखालचे मूळ पुढे अगदी वेगळी कामे करतात, पण पहिल्या दहा पायऱ्या तिघांत आणि उरलेल्या प्रत्येक जिवंत पेशीत सारख्याच आहेत. हा कोणता टप्पा?",
+        },
+        statement: {
+          en: "Glycolysis breaks one six-carbon sugar into two molecules of pyruvic acid in the cytoplasm, needs no oxygen and no organelle, and is found in every living cell that has ever been examined.",
+          hi: "ग्लाइकोलाइसिस कोशिकाद्रव्य में एक छह-कार्बन शर्करा को पाइरुविक अम्ल के दो अणुओं में तोड़ता है, उसे न ऑक्सीजन चाहिए न कोई कोशिकांग, और वह हर जाँची गई जीवित कोशिका में मिला है।",
+          mr: "ग्लायकोलायसिस पेशीद्रव्यात एका सहा-कार्बनी शर्करेचे पायरुविक आम्लाच्या दोन रेणूंत विभाजन करते, तिला ना प्राणवायू लागतो ना कोणते पेशीअंग, आणि ती तपासलेल्या प्रत्येक जिवंत पेशीत आढळली आहे.",
+        },
+        detail: {
+          en: "It spends energy before it earns any — two ATP go in at the start to prime the sugar, four come out later, and the net gain of two is the whole profit of the stretch.",
+          hi: "वह कमाने से पहले ख़र्च करता है — शक्कर को तैयार करने के लिए आरंभ में दो ATP जाते हैं, बाद में चार निकलते हैं, और दो का शुद्ध लाभ ही इस हिस्से की पूरी कमाई है।",
+          mr: "ती कमावण्याआधी खर्च करते — साखर तयार करण्यासाठी सुरुवातीला दोन ATP जातात, नंतर चार निघतात, आणि दोनचा निव्वळ फायदा हीच या टप्प्याची अख्खी कमाई.",
+        },
+        extra: {
+          en: "Its universal presence is taken as evidence of great antiquity: it is the pathway life was already using before there was oxygen in the air to use.",
+          hi: "उसकी सार्वभौम उपस्थिति को अत्यंत प्राचीनता का प्रमाण माना जाता है: यह वह पथ है जिसे जीवन तब भी काम में ले रहा था जब हवा में काम लेने लायक़ ऑक्सीजन ही नहीं थी।",
+          mr: "तिची सार्वत्रिक उपस्थिती अतिप्राचीनतेचा पुरावा मानली जाते: हा तो मार्ग जो जीवन तेव्हाही वापरत होते जेव्हा हवेत वापरण्याजोगा प्राणवायूच नव्हता.",
+        },
+        pair: {
+          left: {
+            en: "Life was using it before there was oxygen to use",
+            hi: "जीवन उसे तब से काम में ले रहा था जब ऑक्सीजन थी ही नहीं",
+            mr: "प्राणवायू नसतानाही जीवन तो वापरत होते",
+          },
+          right: {
+            en: "the stretch that asks for no oxygen",
+            hi: "वह हिस्सा जो ऑक्सीजन माँगता ही नहीं",
+            mr: "प्राणवायू मागतच नाही तो टप्पा",
+          },
+        },
+      },
+      {
+        id: "the-fork-where-one-road-stops-early",
+        name: {
+          en: "The fork where one road stops early",
+          hi: "वह दोराहा जहाँ एक रास्ता जल्दी रुक जाता है",
+          mr: "एक रस्ता लवकर थांबतो तो दुभंगा",
+        },
+        kind: "stage",
+        prompt: {
+          en: "The end product still holds most of the energy the sugar started with, which is why one of these end products can be poured into a lamp and burned. Which route leaves that much behind?",
+          hi: "अंतिम उत्पाद में अब भी वह अधिकांश ऊर्जा है जो शक्कर में शुरू में थी, इसीलिए इन अंतिम उत्पादों में से एक को दीये में डालकर जलाया जा सकता है। कौन-सा रास्ता इतना पीछे छोड़ जाता है?",
+          mr: "अंतिम उत्पादात अजूनही ती बहुतांश ऊर्जा आहे जी साखरेत सुरुवातीला होती, म्हणूनच या अंतिम उत्पादांपैकी एक दिव्यात ओतून जाळता येते. कोणता मार्ग इतके मागे सोडतो?",
+        },
+        statement: {
+          en: "Fermentation is incomplete oxidation: pyruvic acid is converted to ethanol and carbon dioxide, or to lactic acid, purely to regenerate the carrier glycolysis needs, and yields no further ATP at all.",
+          hi: "किण्वन अपूर्ण ऑक्सीकरण है: पाइरुविक अम्ल इथेनॉल और कार्बन डाइऑक्साइड में, या लैक्टिक अम्ल में बदल जाता है, केवल इसलिए कि ग्लाइकोलाइसिस को चाहिए वह वाहक फिर बन जाए, और इससे आगे कोई ATP मिलता ही नहीं।",
+          mr: "किण्वन हे अपूर्ण ऑक्सिडीकरण: पायरुविक आम्ल इथेनॉल आणि कार्बन डायऑक्साइडमध्ये, वा लॅक्टिक आम्लात बदलते, केवळ यासाठी की ग्लायकोलायसिसला लागणारे ते वाहक पुन्हा बनावे, आणि यापुढे कोणतेही ATP मिळतच नाही.",
+        },
+        detail: {
+          en: "The point of the step is not energy but bookkeeping: without it the cell runs out of the oxidised carrier and glycolysis itself would stop within seconds.",
+          hi: "इस चरण का प्रयोजन ऊर्जा नहीं, बहीखाता है: इसके बिना कोशिका के पास ऑक्सीकृत वाहक चुक जाता और ग्लाइकोलाइसिस स्वयं सेकंडों में रुक जाता।",
+          mr: "या पायरीचा हेतू ऊर्जा नव्हे, हिशेब आहे: तिच्याविना पेशीजवळचे ऑक्सिडीकृत वाहक संपले असते आणि ग्लायकोलायसिसच सेकंदांत थांबले असते.",
+        },
+        extra: {
+          en: "It is also self-limiting, because the alcohol it makes poisons the organism that made it — which is why no natural fermentation gets past about a seventh of the vat by volume.",
+          hi: "यह स्वयं-सीमित भी है, क्योंकि जो एल्कोहॉल वह बनाता है वही उसे बनाने वाले जीव को विष देता है — इसीलिए कोई प्राकृतिक किण्वन आयतन के हिसाब से पीपे के लगभग सातवें भाग से आगे नहीं जाता।",
+          mr: "ते स्वतःला मर्यादितही करते, कारण जे अल्कोहोल ते बनवते तेच बनवणाऱ्या जीवाला विष देते — म्हणूनच कोणतेही नैसर्गिक किण्वन आकारमानाने पिपाच्या सुमारे सातव्या भागापुढे जात नाही.",
+        },
+        pair: {
+          left: {
+            en: "The product poisons the organism that made it",
+            hi: "उत्पाद उसी जीव को विष देता है जिसने उसे बनाया",
+            mr: "उत्पादन बनवणाऱ्या जीवालाच विष देते",
+          },
+          right: {
+            en: "the fork where one road stops early",
+            hi: "वह दोराहा जहाँ एक रास्ता जल्दी रुक जाता है",
+            mr: "एक रस्ता लवकर थांबतो तो दुभंगा",
+          },
+        },
+      },
+      {
+        id: "the-cycle-that-gives-up-all-the-carbon",
+        name: {
+          en: "The cycle that gives up all the carbon and almost no energy",
+          hi: "वह चक्र जो सारा कार्बन दे देता है और ऊर्जा लगभग नहीं",
+          mr: "सगळा कार्बन देऊन टाकणारे आणि ऊर्जा जवळपास न देणारे ते चक्र",
+        },
+        kind: "stage",
+        prompt: {
+          en: "Every carbon atom the sugar had leaves the cell as gas at this stage, and yet the stage itself hands over barely one energy coin per turn — its real output is a set of loaded carriers going somewhere else. What is this?",
+          hi: "शक्कर के जितने कार्बन परमाणु थे वे सब इसी चरण पर गैस बनकर कोशिका छोड़ते हैं, फिर भी यह चरण प्रति फेरा मुश्किल से एक ऊर्जा-सिक्का देता है — इसका असली उत्पादन तो भरे हुए वाहकों का जत्था है जो कहीं और जा रहा है। यह क्या है?",
+          mr: "साखरेत जितके कार्बन अणू होते ते सारे याच टप्प्यावर वायू बनून पेशी सोडतात, तरीही हा टप्पा प्रति फेरा जेमतेम एक ऊर्जा-नाणे देतो — त्याचे खरे उत्पादन म्हणजे भरलेल्या वाहकांचा जथा जो दुसरीकडे चालला आहे. हे काय?",
+        },
+        statement: {
+          en: "The Krebs cycle takes in a two-carbon fragment, releases two molecules of carbon dioxide per turn and yields only one ATP directly, its real product being three NADH and one FADH2 each time round.",
+          hi: "क्रेब्स चक्र दो-कार्बन का टुकड़ा लेता है, प्रति फेरा कार्बन डाइऑक्साइड के दो अणु छोड़ता है और सीधे केवल एक ATP देता है, और उसका असली उत्पाद हर फेरे तीन NADH और एक FADH2 है।",
+          mr: "क्रेब्स चक्र दोन-कार्बनी तुकडा घेते, प्रति फेरा कार्बन डायऑक्साइडचे दोन रेणू सोडते आणि थेट केवळ एक ATP देते, आणि तिचे खरे उत्पादन प्रत्येक फेऱ्याला तीन NADH आणि एक FADH2 आहे.",
+        },
+        detail: {
+          en: "It runs in the mitochondrial matrix and turns twice for every glucose, because glycolysis handed it two pyruvate molecules rather than one.",
+          hi: "वह सूत्रकणिका की आधात्री में चलता है और हर ग्लूकोस पर दो बार घूमता है, क्योंकि ग्लाइकोलाइसिस ने उसे एक नहीं, पाइरुवेट के दो अणु सौंपे थे।",
+          mr: "ते तंतुकणिकेच्या आधारद्रव्यात चालते आणि प्रत्येक ग्लुकोजसाठी दोनदा फिरते, कारण ग्लायकोलायसिसने त्याला एक नव्हे, पायरुवेटचे दोन रेणू सोपवले होते.",
+        },
+        extra: {
+          en: "It is also the junction of the whole of metabolism: fats and amino acids enter it at different points, which is how a plant can respire something that was never a sugar.",
+          hi: "वह पूरे उपापचय का चौराहा भी है: वसा और अमीनो अम्ल उसमें भिन्न बिंदुओं पर घुसते हैं, और इसी से पादप ऐसी चीज़ का श्वसन कर पाता है जो कभी शर्करा थी ही नहीं।",
+          mr: "ते अख्ख्या चयापचयाचे चौकही आहे: मेद आणि अमिनो आम्ले त्यात वेगवेगळ्या बिंदूंवर शिरतात, आणि यामुळेच वनस्पती अशा गोष्टीचे श्वसन करू शकते जी कधी शर्करा नव्हतीच.",
+        },
+        pair: {
+          left: {
+            en: "Fats and amino acids enter at different points",
+            hi: "वसा और अमीनो अम्ल भिन्न बिंदुओं पर घुसते हैं",
+            mr: "मेद आणि अमिनो आम्ले वेगवेगळ्या बिंदूंवर शिरतात",
+          },
+          right: {
+            en: "the cycle that gives up all the carbon and almost no energy",
+            hi: "वह चक्र जो सारा कार्बन दे देता है और ऊर्जा लगभग नहीं",
+            mr: "सगळा कार्बन देऊन टाकणारे आणि ऊर्जा जवळपास न देणारे ते चक्र",
+          },
+        },
+      },
+      {
+        id: "the-queue-where-oxygen-waits-at-the-end",
+        name: {
+          en: "The queue where oxygen waits at the very end",
+          hi: "वह क़तार जिसके सिरे पर ऑक्सीजन खड़ी है",
+          mr: "जिच्या टोकाला प्राणवायू उभा असतो ती रांग",
+        },
+        kind: "stage",
+        prompt: {
+          en: "Oxygen never touches the sugar and never enters any earlier step; it appears once, at the last position of all, and its only job is to take the used electrons away and become water. Where is it?",
+          hi: "ऑक्सीजन शक्कर को कभी छूती नहीं और किसी पहले के चरण में घुसती नहीं; वह एक ही बार, सबसे आख़िरी स्थान पर प्रकट होती है, और उसका इकलौता काम है काम में लिए गए इलेक्ट्रॉन ले जाकर जल बन जाना। वह कहाँ है?",
+          mr: "प्राणवायू साखरेला कधी स्पर्शत नाही आणि आधीच्या कोणत्याही पायरीत शिरत नाही; तो एकदाच, सर्वांत शेवटच्या जागी प्रकटतो, आणि त्याचे एकमेव काम म्हणजे वापरलेले इलेक्ट्रॉन नेऊन पाणी बनणे. तो कुठे आहे?",
+        },
+        statement: {
+          en: "The electron transport system on the inner mitochondrial membrane passes electrons from NADH and FADH2 down a series of carriers to oxygen, and the proton gradient this builds is what drives most of the cell's ATP synthesis.",
+          hi: "सूत्रकणिका की भीतरी झिल्ली पर बैठा इलेक्ट्रॉन-परिवहन तंत्र NADH और FADH2 से इलेक्ट्रॉन वाहकों की एक शृंखला से होते हुए ऑक्सीजन तक पहुँचाता है, और इससे बनी प्रोटॉन-प्रवणता ही कोशिका का अधिकांश ATP संश्लेषण चलाती है।",
+          mr: "तंतुकणिकेच्या आतल्या पटलावरची इलेक्ट्रॉन-वहन यंत्रणा NADH आणि FADH2 मधून इलेक्ट्रॉन वाहकांच्या मालिकेतून प्राणवायूपर्यंत नेते, आणि यातून बनणारी प्रोटॉन-प्रवणताच पेशीचे बहुतांश ATP संश्लेषण चालवते.",
+        },
+        detail: {
+          en: "Each NADH is worth about three ATP here and each FADH2 about two, because FADH2 delivers its electrons further down the chain and misses one pumping site.",
+          hi: "यहाँ हर NADH लगभग तीन ATP का है और हर FADH2 लगभग दो का, क्योंकि FADH2 अपने इलेक्ट्रॉन शृंखला में और नीचे सौंपता है और एक पंपिंग स्थल छूट जाता है।",
+          mr: "इथे प्रत्येक NADH सुमारे तीन ATP चे आणि प्रत्येक FADH2 सुमारे दोनचे, कारण FADH2 आपले इलेक्ट्रॉन साखळीत अधिक खाली सोपवते आणि एक पंपिंग स्थळ चुकते.",
+        },
+        extra: {
+          en: "Cyanide kills so quickly because it blocks the last carrier of this chain, after which every earlier step backs up and stops even though the air is full of oxygen.",
+          hi: "सायनाइड इसीलिए इतनी जल्दी मारता है कि वह इस शृंखला के अंतिम वाहक को रोक देता है, जिसके बाद हर पहले का चरण अटककर रुक जाता है, भले ही हवा ऑक्सीजन से भरी हो।",
+          mr: "सायनाइड इतक्या झटपट मारतो कारण तो या साखळीचे शेवटचे वाहक अडवतो, ज्यानंतर आधीची प्रत्येक पायरी तुंबून थांबते, हवा प्राणवायूने भरलेली असूनही.",
+        },
+        pair: {
+          left: {
+            en: "Cyanide stops it with the air still full of oxygen",
+            hi: "सायनाइड उसे तब रोकता है जब हवा ऑक्सीजन से भरी है",
+            mr: "हवा प्राणवायूने भरलेली असतानाच सायनाइड ते थांबवतो",
+          },
+          right: {
+            en: "the queue where oxygen waits at the very end",
+            hi: "वह क़तार जिसके सिरे पर ऑक्सीजन खड़ी है",
+            mr: "जिच्या टोकाला प्राणवायू उभा असतो ती रांग",
+          },
+        },
+      },
+      {
+        id: "the-ratio-that-names-the-fuel",
+        name: {
+          en: "The ratio that names the fuel",
+          hi: "वह अनुपात जो ईंधन का नाम बता देता है",
+          mr: "इंधनाचे नाव सांगणारे ते गुणोत्तर",
+        },
+        kind: "measurement",
+        prompt: {
+          en: "Measure the gas given out and the gas taken in, divide one by the other, and the single number that comes out tells you what the tissue is burning without your ever opening it. What is the number called?",
+          hi: "निकली गैस और ली गई गैस मापो, एक को दूसरे से भाग दो, और जो अकेली संख्या निकलती है वह बिना ऊतक खोले बता देती है कि वह क्या जला रहा है। उस संख्या को क्या कहते हैं?",
+          mr: "बाहेर पडलेला वायू आणि आत घेतलेला वायू मोजा, एकाला दुसऱ्याने भागा, आणि जो एकमेव आकडा निघतो तो ऊती न उघडताच सांगतो की ती काय जाळते आहे. त्या आकड्याला काय म्हणतात?",
+        },
+        statement: {
+          en: "The respiratory quotient is the volume of carbon dioxide released divided by the volume of oxygen used, and it is exactly one when the substrate is carbohydrate.",
+          hi: "श्वसन गुणांक छोड़ी गई कार्बन डाइऑक्साइड के आयतन को काम में ली गई ऑक्सीजन के आयतन से भाग देकर मिलता है, और क्रियाधार कार्बोहाइड्रेट होने पर वह ठीक एक होता है।",
+          mr: "श्वसन गुणांक म्हणजे सोडलेल्या कार्बन डायऑक्साइडचे आकारमान भागिले वापरलेल्या प्राणवायूचे आकारमान, आणि क्रियाधार कार्बोहायड्रेट असल्यास तो नेमका एक असतो.",
+        },
+        detail: {
+          en: "It falls below one for fats and proteins, because those molecules are poorer in oxygen to begin with and so need more of it from the air to burn.",
+          hi: "वसा और प्रोटीन के लिए वह एक से नीचे गिरता है, क्योंकि वे अणु शुरू से ही ऑक्सीजन में कंगाल हैं और इसलिए जलने के लिए हवा से अधिक ऑक्सीजन माँगते हैं।",
+          mr: "मेद आणि प्रथिनांसाठी तो एकाहून खाली येतो, कारण ते रेणू सुरुवातीपासूनच प्राणवायूत गरीब असतात आणि म्हणून जळण्यासाठी हवेतून अधिक प्राणवायू मागतात.",
+        },
+        extra: {
+          en: "It rises above one only for organic acids, and it becomes infinite in a fermenting tissue, which releases the gas while using none at all.",
+          hi: "वह केवल कार्बनिक अम्लों के लिए एक से ऊपर जाता है, और किण्वित होते ऊतक में अनंत हो जाता है, जो गैस छोड़ता है और लेता कुछ भी नहीं।",
+          mr: "तो केवळ सेंद्रिय आम्लांसाठी एकाहून वर जातो, आणि किण्वित होणाऱ्या ऊतीत अनंत होतो, जी वायू सोडते आणि घेते काहीच नाही.",
+        },
+        pair: {
+          left: {
+            en: "In a fermenting tissue it becomes infinite",
+            hi: "किण्वित होते ऊतक में वह अनंत हो जाता है",
+            mr: "किण्वित होणाऱ्या ऊतीत तो अनंत होतो",
+          },
+          right: {
+            en: "the ratio that names the fuel",
+            hi: "वह अनुपात जो ईंधन का नाम बता देता है",
+            mr: "इंधनाचे नाव सांगणारे ते गुणोत्तर",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A field is flooded for four days after a canal breach. The crop is standing in water to the knee, yet the leaves wilt, the roots blacken and the plants die of what the farmer is told is drought stress. A student objects that a plant surrounded by water cannot possibly be short of water. Explain what actually killed the crop.",
+          hi: "नहर टूटने के बाद खेत चार दिन डूबा रहा। फ़सल घुटनों तक पानी में खड़ी है, फिर भी पत्तियाँ मुरझाती हैं, जड़ें काली पड़ती हैं और पादप उसी से मरते हैं जिसे किसान को सूखे का दबाव बताया जाता है। विद्यार्थी आपत्ति करता है कि जल से घिरा पादप जल की कमी में हो ही नहीं सकता। बताओ कि फ़सल को असल में मारा किसने।",
+          mr: "कालवा फुटल्यावर शेत चार दिवस बुडून राहिले. पीक गुडघाभर पाण्यात उभे आहे, तरीही पाने कोमेजतात, मुळे काळी पडतात आणि झाडे त्यानेच मरतात ज्याला शेतकऱ्याला दुष्काळाचा ताण सांगितले जाते. विद्यार्थी आक्षेप घेतो की पाण्याने वेढलेली वनस्पती पाण्याच्या तुटवड्यात असूच शकत नाही. पिकाला प्रत्यक्षात कोणी मारले ते सांगा.",
+        },
+        choices: [
+          {
+            en: "Flooding drives the air out of the soil, and it is oxygen the roots are short of, not water. Without oxygen the electron transport system stops, the Krebs cycle backs up behind it, and the root is left with glycolysis alone — two ATP per glucose instead of thirty-eight, about a twentieth of its income. Root cells need ATP to pump ions inward, and water follows those ions by osmosis, so an unpowered root stops absorbing water even while standing in it, and the shoot wilts. Fermentation then makes matters worse by accumulating ethanol, which is toxic to the very tissue producing it, and the blackening is that tissue dying",
+            hi: "बाढ़ मिट्टी से हवा निकाल देती है, और जड़ों को जल नहीं, ऑक्सीजन की कमी है। ऑक्सीजन बिना इलेक्ट्रॉन-परिवहन तंत्र रुक जाता है, उसके पीछे क्रेब्स चक्र अटक जाता है, और जड़ के पास अकेला ग्लाइकोलाइसिस बचता है — अड़तीस के बजाय दो ATP प्रति ग्लूकोस, यानी उसकी आय का लगभग बीसवाँ भाग। जड़ की कोशिकाओं को आयन भीतर पंप करने के लिए ATP चाहिए, और जल परासरण से उन्हीं आयनों के पीछे आता है, अतः बिजली-रहित जड़ पानी में खड़ी रहकर भी जल सोखना बंद कर देती है, और प्ररोह मुरझा जाता है। फिर किण्वन इथेनॉल जमा करके बात और बिगाड़ता है, जो उसी ऊतक के लिए विषैला है जो उसे बना रहा है, और कालापन वही ऊतक मरने का है",
+            mr: "पूर मातीतून हवा हाकलतो, आणि मुळांना पाण्याची नव्हे, प्राणवायूची कमतरता आहे. प्राणवायूविना इलेक्ट्रॉन-वहन यंत्रणा थांबते, तिच्यामागे क्रेब्स चक्र तुंबते, आणि मुळाजवळ एकटे ग्लायकोलायसिस उरते — अडतीसऐवजी दोन ATP प्रति ग्लुकोज, म्हणजे तिच्या उत्पन्नाचा सुमारे विसावा भाग. मुळाच्या पेशींना आयन आत पंप करण्यासाठी ATP लागते, आणि पाणी परासरणाने त्याच आयनांमागे येते, म्हणून वीजविरहित मूळ पाण्यात उभे राहूनही पाणी शोषणे थांबवते, आणि खोड कोमेजते. मग किण्वन इथेनॉल साठवून प्रकरण अधिक बिघडवते, जे तेच ऊती बनवत असताना तिलाच विषारी, आणि काळेपणा म्हणजे तीच ऊती मरणे",
+          },
+          {
+            en: "The water outside the root is so pure that it draws salts out of the root by osmosis, and the plant dies of losing its minerals rather than of anything to do with respiration",
+            hi: "जड़ के बाहर का जल इतना शुद्ध है कि वह परासरण से जड़ के लवण खींच लेता है, और पादप श्वसन से जुड़ी किसी बात से नहीं, अपने खनिज खोने से मरता है",
+            mr: "मुळाबाहेरचे पाणी इतके शुद्ध की ते परासरणाने मुळातली क्षारे ओढून घेते, आणि वनस्पती श्वसनाशी संबंधित कशाने नव्हे, तर आपली खनिजे गमावल्याने मरते",
+          },
+          {
+            en: "Standing water blocks the stomata of the leaves so the plant cannot transpire, and without transpiration pull no water can rise up the stem, which is why the leaves wilt",
+            hi: "खड़ा पानी पत्तियों के रंध्र बंद कर देता है जिससे पादप वाष्पोत्सर्जन नहीं कर पाता, और वाष्पोत्सर्जन खिंचाव बिना कोई जल तने में ऊपर नहीं चढ़ सकता, इसीलिए पत्तियाँ मुरझाती हैं",
+            mr: "साचलेले पाणी पानांची त्वचारंध्रे बंद करते ज्याने वनस्पती बाष्पोत्सर्जन करू शकत नाही, आणि बाष्पोत्सर्जन-ओढीविना पाणी खोडात वर चढू शकत नाही, म्हणूनच पाने कोमेजतात",
+          },
+          {
+            en: "The roots switch to fermentation, which produces so much extra ATP that the plant overheats and the tissue is destroyed by its own metabolic heat",
+            hi: "जड़ें किण्वन पर चली जाती हैं, जो इतना अधिक ATP बनाता है कि पादप अधिक गरम हो जाता है और ऊतक अपनी ही उपापचयी ऊष्मा से नष्ट हो जाता है",
+            mr: "मुळे किण्वनाकडे वळतात, जे इतके अधिक ATP बनवते की वनस्पती अधिक तापते आणि ऊती स्वतःच्याच चयापचयी उष्णतेने नष्ट होते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The student's objection is good and the answer is that the phrase drought stress has been used loosely. A flooded root is not short of water; it is short of oxygen, and the symptoms it produces look like drought because water uptake fails for a different reason. Follow the energy. Soil is not solid — up to half its volume is pore space, and in a healthy field that space holds air. Flood it and water displaces the air. Oxygen dissolves in water very poorly and diffuses through it about ten thousand times more slowly than through air, so within a day or two the root is effectively in an atmosphere without oxygen. Now the pathway. Glycolysis carries on, because it never needed oxygen. But the electron transport system has nowhere to put its electrons, so it stops; NADH is no longer reoxidised there; the Krebs cycle backs up behind the accumulating NADH and stops too. What survives is glycolysis with fermentation bolted on, purely to regenerate the carrier that glycolysis needs. The income falls from about thirty-eight ATP per glucose to two — roughly a twentieth. The killing step is the one students usually miss, because it is about water. Root cells take up minerals by active transport, spending ATP to pump ions inward against their gradient. The water then follows those ions by osmosis; that is the whole mechanism of absorption. Cut the ATP supply by twenty times and the pumps stop, the ion gradient collapses, and water stops entering — while the root sits in a puddle. The shoot goes on transpiring, loses more than it gains, and wilts. Physiologically it is drought; the water is simply on the wrong side of a membrane that has run out of the energy to move it. Two further insults finish the job. Fermentation accumulates ethanol, and ethanol is toxic to the root that is making it, which is why the tissue blackens and rots. And the soil itself turns anaerobic, so bacteria there begin reducing nitrate and sulphate instead of using oxygen, producing compounds that further poison the roots. This is also why rice is special. A rice plant grown in a paddy does not respire anaerobically for long: it builds aerenchyma, continuous air channels running from the leaf down to the root, and pipes oxygen to its own roots through the flood. Waterlogging kills wheat and drowns maize; rice was domesticated into the one crop that solved the plumbing. (The second answer invents an osmotic loss that flooding does not cause; the third is wrong about the direction of the problem, since submerged leaves are not the issue when the crop is standing knee-deep with its canopy in the air; and the fourth reverses the arithmetic — fermentation yields far LESS ATP, not more.)",
+          hi: "विद्यार्थी की आपत्ति अच्छी है और उत्तर यह है कि सूखे का दबाव शब्द ढीले अर्थ में काम में लिया गया है। डूबी जड़ को जल की कमी नहीं; उसे ऑक्सीजन की कमी है, और उससे उपजे लक्षण सूखे जैसे दिखते हैं क्योंकि जल-ग्रहण किसी और कारण से विफल हो जाता है। ऊर्जा के पीछे चलो। मिट्टी ठोस नहीं — उसके आयतन का आधा तक छिद्र-अवकाश है, और स्वस्थ खेत में वह अवकाश हवा रखता है। उसे डुबाओ और जल हवा को हटा देता है। ऑक्सीजन जल में बहुत कम घुलती है और उसमें हवा की तुलना में लगभग दस हज़ार गुना धीरे विसरित होती है, अतः एक-दो दिन में जड़ प्रभावतः ऑक्सीजन-रहित वातावरण में होती है। अब पथ देखो। ग्लाइकोलाइसिस चलता रहता है, क्योंकि उसे ऑक्सीजन कभी चाहिए ही नहीं थी। पर इलेक्ट्रॉन-परिवहन तंत्र के पास अपने इलेक्ट्रॉन रखने की जगह नहीं, अतः वह रुक जाता है; NADH वहाँ फिर ऑक्सीकृत नहीं होता; जमा होते NADH के पीछे क्रेब्स चक्र अटककर वह भी रुक जाता है। जो बचता है वह किण्वन जोड़ा हुआ ग्लाइकोलाइसिस है, केवल इसलिए कि ग्लाइकोलाइसिस को चाहिए वह वाहक फिर बने। आय प्रति ग्लूकोस लगभग अड़तीस ATP से गिरकर दो रह जाती है — मोटे तौर पर बीसवाँ भाग। मारने वाला चरण वही है जो विद्यार्थी प्रायः चूक जाते हैं, क्योंकि वह जल के बारे में है। जड़ की कोशिकाएँ खनिज सक्रिय परिवहन से लेती हैं, आयनों को उनकी प्रवणता के विरुद्ध भीतर पंप करने में ATP ख़र्च करती हैं। फिर जल परासरण से उन्हीं आयनों के पीछे आता है; अवशोषण का पूरा तंत्र यही है। ATP की आपूर्ति बीस गुना काटो और पंप रुक जाते हैं, आयन-प्रवणता ढह जाती है, और जल भीतर आना बंद कर देता है — जबकि जड़ पोखर में बैठी है। प्ररोह वाष्पोत्सर्जन करता रहता है, पाने से अधिक खोता है, और मुरझा जाता है। शरीरक्रिया के हिसाब से यह सूखा ही है; जल बस ऐसी झिल्ली के ग़लत तरफ़ है जिसके पास उसे हिलाने की ऊर्जा नहीं बची। दो और चोटें काम पूरा कर देती हैं। किण्वन इथेनॉल जमा करता है, और इथेनॉल उसी जड़ के लिए विषैला है जो उसे बना रही है, इसीलिए ऊतक काला पड़कर सड़ता है। और मिट्टी स्वयं अवायवीय हो जाती है, अतः वहाँ के जीवाणु ऑक्सीजन के बजाय नाइट्रेट और सल्फ़ेट का अपचयन करने लगते हैं, और ऐसे यौगिक बनाते हैं जो जड़ों को और विष देते हैं। इसीलिए धान विशेष है। क्यारी में उगा धान देर तक अवायवीय श्वसन नहीं करता: वह वायूतक बनाता है, पत्ती से जड़ तक जाती लगातार वायु-नलिकाएँ, और बाढ़ के आर-पार अपनी ही जड़ों तक ऑक्सीजन पहुँचाता है। जलभराव गेहूँ को मारता है और मक्का को डुबोता है; धान को पालतू बनाकर वह इकलौती फ़सल बनाया गया जिसने नलसाज़ी हल कर ली। (दूसरा उत्तर ऐसी परासरणी हानि गढ़ता है जो बाढ़ से होती नहीं; तीसरा समस्या की दिशा के बारे में ग़लत है, क्योंकि फ़सल घुटनों तक खड़ी है और उसका छत्र हवा में है, अतः डूबी पत्तियाँ मुद्दा नहीं; और चौथा गणित उलट देता है — किण्वन कहीं कम ATP देता है, अधिक नहीं।)",
+          mr: "विद्यार्थ्याचा आक्षेप चांगला आहे आणि उत्तर हे की दुष्काळाचा ताण हा शब्द सैलपणे वापरला गेला आहे. बुडलेल्या मुळाला पाण्याची कमतरता नाही; त्याला प्राणवायूची कमतरता आहे, आणि त्यातून उमटणारी लक्षणे दुष्काळासारखी दिसतात कारण पाणी-ग्रहण दुसऱ्या कारणाने अपयशी ठरते. ऊर्जेच्या मागे जा. माती घन नाही — तिच्या आकारमानाच्या निम्म्यापर्यंत छिद्र-पोकळी असते, आणि निरोगी शेतात ती पोकळी हवा धरते. ते बुडवा आणि पाणी हवेला हुसकावते. प्राणवायू पाण्यात फार कमी विरघळतो आणि त्यातून हवेच्या तुलनेत सुमारे दहा हजारपट सावकाश विसरतो, म्हणून एक-दोन दिवसांत मूळ प्रभावीपणे प्राणवायूविरहित वातावरणात असते. आता मार्ग पाहा. ग्लायकोलायसिस चालूच राहते, कारण तिला प्राणवायू कधी लागलाच नव्हता. पण इलेक्ट्रॉन-वहन यंत्रणेकडे आपले इलेक्ट्रॉन ठेवायला जागा नाही, म्हणून ती थांबते; NADH तिथे पुन्हा ऑक्सिडीकृत होत नाही; साठणाऱ्या NADH मागे क्रेब्स चक्र तुंबून तेही थांबते. जे उरते ते किण्वन जोडलेले ग्लायकोलायसिस, केवळ यासाठी की ग्लायकोलायसिसला लागणारे वाहक पुन्हा बनावे. उत्पन्न प्रति ग्लुकोज सुमारे अडतीस ATP वरून घसरून दोन उरते — ढोबळमानाने विसावा भाग. मारणारी पायरी तीच जी विद्यार्थी बहुधा चुकवतात, कारण ती पाण्याबद्दल आहे. मुळाच्या पेशी खनिजे सक्रिय वहनाने घेतात, आयन त्यांच्या प्रवणतेविरुद्ध आत पंप करण्यात ATP खर्चतात. मग पाणी परासरणाने त्याच आयनांमागे येते; शोषणाची अख्खी यंत्रणा हीच. ATP चा पुरवठा वीसपट कापा आणि पंप थांबतात, आयन-प्रवणता कोसळते, आणि पाणी आत येणे थांबते — तर मूळ डबक्यात बसलेले असते. खोड बाष्पोत्सर्जन करत राहते, मिळवण्याहून अधिक गमावते, आणि कोमेजते. शरीरक्रियेच्या दृष्टीने हा दुष्काळच; पाणी फक्त अशा पटलाच्या चुकीच्या बाजूला आहे ज्याच्याजवळ ते हलवण्याची ऊर्जा उरली नाही. आणखी दोन घाव काम पुरे करतात. किण्वन इथेनॉल साठवते, आणि इथेनॉल ते बनवणाऱ्या मुळालाच विषारी, म्हणूनच ऊती काळी पडून कुजते. आणि माती स्वतः विनॉक्सी होते, म्हणून तिथले जीवाणू प्राणवायूऐवजी नायट्रेट आणि सल्फेटचे क्षपण करू लागतात, आणि अशी संयुगे बनवतात जी मुळांना अधिक विष देतात. म्हणूनच भात वेगळा आहे. खाचरात उगवलेला भात फार काळ विनॉक्सी श्वसन करत नाही: तो वायूतक बनवतो, पानापासून मुळापर्यंत जाणाऱ्या अखंड हवा-नलिका, आणि पुराच्या आरपार स्वतःच्याच मुळांपर्यंत प्राणवायू पोहोचवतो. पाणथळ गव्हाला मारते आणि मक्याला बुडवते; भाताला पाळीव करून ते एकमेव पीक बनवले गेले ज्याने नळजोडणी सोडवली. (दुसरे उत्तर अशी परासरणी हानी रचते जी पुराने होत नाही; तिसरे अडचणीच्या दिशेबद्दल चुकीचे, कारण पीक गुडघाभर उभे आहे आणि त्याचे छत्र हवेत आहे, म्हणून बुडलेली पाने हा मुद्दा नाही; आणि चौथे गणित उलटवते — किण्वन कितीतरी कमी ATP देते, अधिक नाही.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A brewer and a baker start from the same sugar and the same yeast. The brewer seals his vat and gets alcohol but very little new yeast. The baker blows air through his tank all day and gets a great deal of new yeast but almost no alcohol. Neither changed the organism or the food. What single fact about respiration accounts for both results, and why does the sealed vat consume far more sugar per unit of yeast grown?",
+          hi: "एक शराब बनाने वाला और एक नानबाई वही शक्कर और वही ख़मीर लेकर शुरू करते हैं। शराब वाला अपना पीपा बंद कर देता है और उसे एल्कोहॉल मिलता है पर नया ख़मीर बहुत कम। नानबाई दिन भर अपनी टंकी में हवा फूँकता है और उसे बहुत सारा नया ख़मीर मिलता है पर एल्कोहॉल लगभग नहीं। किसी ने न जीव बदला न भोजन। श्वसन का कौन-सा एक तथ्य दोनों परिणाम समझाता है, और बंद पीपा प्रति इकाई उगे ख़मीर कहीं अधिक शक्कर क्यों खा जाता है?",
+          mr: "एक मद्यनिर्माता आणि एक बेकर तीच साखर आणि तेच यीस्ट घेऊन सुरुवात करतात. मद्यनिर्माता आपले पिप बंद करतो आणि त्याला अल्कोहोल मिळते पण नवे यीस्ट फार कमी. बेकर दिवसभर आपल्या टाकीत हवा फुंकतो आणि त्याला भरपूर नवे यीस्ट मिळते पण अल्कोहोल जवळपास नाही. कोणीही ना जीव बदलला ना अन्न. श्वसनाचे कोणते एक तथ्य दोन्ही निकाल समजावते, आणि बंद पिप प्रति एकक वाढलेल्या यीस्टमागे कितीतरी अधिक साखर का खाते?",
+        },
+        choices: [
+          {
+            en: "Yeast can respire either way and chooses by what is available, and the whole difference is in yield. Sealed, it ferments: glycolysis alone, a net two ATP per glucose, with the pyruvate converted to ethanol only to regenerate the carrier — so the alcohol is not a product the yeast wanted but a waste it had to make. Aerated, the pyruvate goes into the Krebs cycle and the electron chain instead, giving about thirty-eight ATP per glucose. The same sugar therefore yields roughly nineteen times as much usable energy with air as without, so the aerated tank builds nineteen times the cell material from the same sack of sugar, and the sealed vat must burn through vastly more sugar to grow the same yeast — which is exactly why fermentation stops as soon as oxygen is admitted",
+            hi: "ख़मीर दोनों तरह से श्वसन कर सकता है और जो उपलब्ध हो उससे चुनता है, और पूरा अंतर उपज का है। बंद में वह किण्वन करता है: अकेला ग्लाइकोलाइसिस, प्रति ग्लूकोस शुद्ध दो ATP, और पाइरुवेट केवल वाहक फिर बनाने के लिए इथेनॉल में बदल जाता है — अतः एल्कोहॉल ख़मीर का चाहा हुआ उत्पाद नहीं, वह अपशिष्ट है जो उसे बनाना ही पड़ा। हवा मिलने पर वही पाइरुवेट क्रेब्स चक्र और इलेक्ट्रॉन-शृंखला में जाता है, जिससे प्रति ग्लूकोस लगभग अड़तीस ATP मिलते हैं। अतः वही शक्कर हवा के साथ बिना हवा की तुलना में लगभग उन्नीस गुना काम में आने वाली ऊर्जा देती है, इसलिए हवादार टंकी उसी बोरी शक्कर से उन्नीस गुना कोशिका-पदार्थ बनाती है, और बंद पीपे को उतना ही ख़मीर उगाने के लिए कहीं अधिक शक्कर जलानी पड़ती है — और ठीक इसीलिए ऑक्सीजन आते ही किण्वन रुक जाता है",
+            mr: "यीस्ट दोन्ही प्रकारे श्वसन करू शकते आणि जे उपलब्ध असेल त्यावरून निवडते, आणि अख्खा फरक उत्पन्नाचा आहे. बंद अवस्थेत ते किण्वन करते: एकटे ग्लायकोलायसिस, प्रति ग्लुकोज निव्वळ दोन ATP, आणि पायरुवेट केवळ वाहक पुन्हा बनवण्यासाठी इथेनॉलमध्ये बदलते — म्हणून अल्कोहोल हे यीस्टला हवे असलेले उत्पादन नव्हे, तर बनवावाच लागलेला टाकाऊ पदार्थ. हवा मिळताच तेच पायरुवेट क्रेब्स चक्र आणि इलेक्ट्रॉन-साखळीत जाते, ज्यातून प्रति ग्लुकोज सुमारे अडतीस ATP मिळतात. म्हणून तीच साखर हवेसह हवेविनाच्या तुलनेत सुमारे एकोणीसपट वापरण्याजोगी ऊर्जा देते, म्हणून हवेशीर टाकी त्याच पोत्यातल्या साखरेतून एकोणीसपट पेशी-पदार्थ बनवते, आणि बंद पिपाला तितकेच यीस्ट वाढवण्यासाठी कितीतरी अधिक साखर जाळावी लागते — आणि नेमके यामुळेच प्राणवायू येताच किण्वन थांबते",
+          },
+          {
+            en: "The sealed vat is warmer because no air carries the heat away, and the higher temperature makes the yeast produce alcohol instead of dividing, so the difference is one of temperature rather than of pathway",
+            hi: "बंद पीपा अधिक गरम रहता है क्योंकि हवा ऊष्मा नहीं ले जाती, और ऊँचा तापमान ख़मीर को विभाजित होने के बजाय एल्कोहॉल बनवाता है, अतः अंतर पथ का नहीं तापमान का है",
+            mr: "बंद पिप अधिक उबदार राहते कारण हवा उष्णता नेत नाही, आणि उच्च तापमान यीस्टला विभाजित होण्याऐवजी अल्कोहोल बनवायला लावते, म्हणून फरक मार्गाचा नव्हे तापमानाचा",
+          },
+          {
+            en: "Yeast in air uses a completely different food, taking carbon from the dissolved carbon dioxide rather than from the sugar, which is why the sugar in the baker's tank is barely touched",
+            hi: "हवा में ख़मीर बिलकुल अलग भोजन काम में लेता है, कार्बन शक्कर से नहीं घुली कार्बन डाइऑक्साइड से लेता है, इसीलिए नानबाई की टंकी की शक्कर मुश्किल से छुई जाती है",
+            mr: "हवेत यीस्ट अगदी वेगळे अन्न वापरते, कार्बन साखरेतून नव्हे तर विरघळलेल्या कार्बन डायऑक्साइडमधून घेते, म्हणूनच बेकरच्या टाकीतल्या साखरेला जेमतेम हात लागतो",
+          },
+          {
+            en: "Both vats respire identically and make the same ATP; the alcohol simply evaporates out of the open tank, so the baker's yeast only appears to have made none",
+            hi: "दोनों पीपे एक जैसा श्वसन करते हैं और वही ATP बनाते हैं; एल्कोहॉल बस खुली टंकी से उड़ जाता है, अतः नानबाई का ख़मीर केवल दिखने में कुछ नहीं बनाता",
+            mr: "दोन्ही पिपे सारखेच श्वसन करतात आणि तेच ATP बनवतात; अल्कोहोल फक्त उघड्या टाकीतून उडून जाते, म्हणून बेकरचे यीस्ट केवळ दिसण्यापुरते काहीच बनवत नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Yeast is a facultative anaerobe — it can respire with oxygen or without, and it switches on availability, not on preference. Everything in the brewer's and the baker's tanks follows from what each route pays. WITHOUT AIR. Glycolysis runs, splitting each glucose into two pyruvate and netting two ATP. The problem is that glycolysis needs its carrier in the oxidised form, and there is now nothing to reoxidise it. So the cell converts pyruvate to ethanol and carbon dioxide for the sole purpose of handing the carrier back. Read that carefully: the alcohol is not made because the yeast wants alcohol. It is a waste product of a bookkeeping repair, and the entire energy income of the process remains those two ATP from glycolysis. The ethanol still contains most of the sugar's energy — which is exactly why it burns in a lamp. WITH AIR. Pyruvate is not diverted. It enters the mitochondrion, is oxidised in the Krebs cycle down to carbon dioxide, and the NADH and FADH2 produced go to the electron transport system with oxygen waiting at the end. The theoretical yield rises to about thirty-eight ATP per glucose. THE COMPARISON is the answer to both halves of the question. Thirty-eight against two is a factor of nineteen. A cell that must build new protein, membrane and wall needs ATP for all of it, so the aerated tank turns the same sack of sugar into about nineteen times as much yeast. Equivalently, to grow one kilogram of yeast the sealed vat has to burn through nineteen times the sugar, and nearly all of that sugar leaves as ethanol and carbon dioxide rather than as yeast. This is the Pasteur effect, and Pasteur's own observation was the sharper form of it: bubble air through a fermenting culture and fermentation stops almost at once, because the moment the cell can respire aerobically there is no reason to throw away nineteen twentieths of its fuel. The two industries are simply harvesting opposite ends of the same fork — the brewer wants the waste product, the baker wants the cells and the gas. Note one honest qualification: the thirty-eight figure is a theoretical maximum, and a real cell spends some of the gradient on transport, so measured yields are lower. That does not touch the argument, because the comparison is between two and something in the thirties either way. (The second answer blames temperature for a difference that persists in a thermostatted vat; the third invents a carbon source yeast cannot use, since taking carbon from carbon dioxide requires photosynthesis; and the fourth is refuted by measurement, as an aerated culture makes very little ethanol in the first place rather than losing it.)",
+          hi: "ख़मीर विकल्पी अवायुजीवी है — वह ऑक्सीजन के साथ भी श्वसन कर सकता है और बिना भी, और वह उपलब्धता पर बदलता है, पसंद पर नहीं। शराब वाले और नानबाई की टंकियों का सब कुछ इसी से निकलता है कि हर रास्ता चुकाता क्या है। हवा बिना। ग्लाइकोलाइसिस चलता है, हर ग्लूकोस को दो पाइरुवेट में तोड़कर शुद्ध दो ATP देता है। दिक़्क़त यह कि ग्लाइकोलाइसिस को अपना वाहक ऑक्सीकृत रूप में चाहिए, और अब उसे फिर ऑक्सीकृत करने वाला कोई नहीं। अतः कोशिका पाइरुवेट को इथेनॉल और कार्बन डाइऑक्साइड में बदल देती है, केवल इस प्रयोजन से कि वाहक लौटा दिया जाए। इसे ध्यान से पढ़ो: एल्कोहॉल इसलिए नहीं बनता कि ख़मीर को एल्कोहॉल चाहिए। वह एक बहीखाता-मरम्मत का अपशिष्ट है, और प्रक्रिया की पूरी ऊर्जा-आय ग्लाइकोलाइसिस के वही दो ATP रह जाती है। इथेनॉल में अब भी शक्कर की अधिकांश ऊर्जा है — ठीक इसीलिए वह दीये में जलता है। हवा के साथ। पाइरुवेट मोड़ा नहीं जाता। वह सूत्रकणिका में घुसता है, क्रेब्स चक्र में कार्बन डाइऑक्साइड तक ऑक्सीकृत होता है, और बने NADH तथा FADH2 इलेक्ट्रॉन-परिवहन तंत्र में जाते हैं जिसके सिरे पर ऑक्सीजन खड़ी है। सैद्धांतिक उपज प्रति ग्लूकोस लगभग अड़तीस ATP तक चढ़ जाती है। तुलना ही प्रश्न के दोनों आधों का उत्तर है। अड़तीस बनाम दो उन्नीस का गुणक है। जिस कोशिका को नया प्रोटीन, झिल्ली और भित्ति बनानी है उसे उन सबके लिए ATP चाहिए, अतः हवादार टंकी उसी बोरी शक्कर को लगभग उन्नीस गुना ख़मीर में बदल देती है। उसी बात को यों कहो: एक किलो ख़मीर उगाने के लिए बंद पीपे को उन्नीस गुना शक्कर जलानी पड़ती है, और उसमें से लगभग सारी शक्कर ख़मीर बनकर नहीं, इथेनॉल और कार्बन डाइऑक्साइड बनकर निकल जाती है। यही पाश्चर प्रभाव है, और पाश्चर का अपना प्रेक्षण उसका और तीखा रूप था: किण्वित होते संवर्धन में हवा बुलबुलाओ और किण्वन लगभग तुरंत रुक जाता है, क्योंकि जिस क्षण कोशिका वायवीय श्वसन कर सकती है उसी क्षण अपने ईंधन का उन्नीस-बीसवाँ फेंकने का कोई कारण नहीं बचता। दोनों उद्योग बस उसी दोराहे के उलटे सिरे काट रहे हैं — शराब वाले को अपशिष्ट चाहिए, नानबाई को कोशिकाएँ और गैस। एक ईमानदार शर्त ध्यान में रखो: अड़तीस का आँकड़ा सैद्धांतिक अधिकतम है, और असली कोशिका प्रवणता का कुछ हिस्सा परिवहन पर ख़र्च करती है, अतः मापी गई उपज कम रहती है। इससे तर्क को कुछ नहीं होता, क्योंकि तुलना दो और तीस के आसपास किसी संख्या के बीच है। (दूसरा उत्तर उस अंतर का दोष तापमान पर मढ़ता है जो तापनियंत्रित पीपे में भी बना रहता है; तीसरा ऐसा कार्बन-स्रोत गढ़ता है जिसे ख़मीर काम में ले ही नहीं सकता, क्योंकि कार्बन डाइऑक्साइड से कार्बन लेने के लिए प्रकाश संश्लेषण चाहिए; और चौथे का खंडन माप से हो जाता है, क्योंकि हवादार संवर्धन इथेनॉल खोता नहीं, वह पहले से ही बहुत कम बनाता है।)",
+          mr: "यीस्ट हे विकल्पी विनॉक्सीजीवी आहे — ते प्राणवायूसह श्वसन करू शकते आणि विनाही, आणि ते उपलब्धतेवरून बदलते, आवडीवरून नव्हे. मद्यनिर्मात्याच्या आणि बेकरच्या टाक्यांतले सारे यातूनच निघते की प्रत्येक मार्ग काय भरतो. हवेविना. ग्लायकोलायसिस चालते, प्रत्येक ग्लुकोजचे दोन पायरुवेटांत विभाजन करून निव्वळ दोन ATP देते. अडचण अशी की ग्लायकोलायसिसला आपले वाहक ऑक्सिडीकृत रूपात लागते, आणि आता ते पुन्हा ऑक्सिडीकृत करणारे कोणीच नाही. म्हणून पेशी पायरुवेटचे इथेनॉल आणि कार्बन डायऑक्साइडमध्ये रूपांतर करते, केवळ या हेतूने की वाहक परत मिळावे. हे नीट वाचा: अल्कोहोल यासाठी बनत नाही की यीस्टला अल्कोहोल हवे. तो एका हिशेब-दुरुस्तीचा टाकाऊ पदार्थ आहे, आणि प्रक्रियेचे अख्खे ऊर्जा-उत्पन्न ग्लायकोलायसिसचे तेच दोन ATP उरते. इथेनॉलमध्ये अजूनही साखरेची बहुतांश ऊर्जा आहे — नेमके म्हणूनच ते दिव्यात जळते. हवेसह. पायरुवेट वळवले जात नाही. ते तंतुकणिकेत शिरते, क्रेब्स चक्रात कार्बन डायऑक्साइडपर्यंत ऑक्सिडीकृत होते, आणि बनलेली NADH आणि FADH2 इलेक्ट्रॉन-वहन यंत्रणेत जातात जिच्या टोकाला प्राणवायू उभा असतो. सैद्धांतिक उत्पन्न प्रति ग्लुकोज सुमारे अडतीस ATP पर्यंत चढते. तुलनाच प्रश्नाच्या दोन्ही अर्ध्यांचे उत्तर आहे. अडतीस विरुद्ध दोन हा एकोणीसचा गुणक. ज्या पेशीला नवे प्रथिन, पटल आणि भित्ती बांधायची आहे तिला त्या सर्वांसाठी ATP लागते, म्हणून हवेशीर टाकी त्याच पोत्यातल्या साखरेचे सुमारे एकोणीसपट यीस्ट बनवते. तेच वेगळ्या शब्दांत: एक किलो यीस्ट वाढवण्यासाठी बंद पिपाला एकोणीसपट साखर जाळावी लागते, आणि त्यातली जवळपास सारी साखर यीस्ट बनून नव्हे, इथेनॉल आणि कार्बन डायऑक्साइड बनून निघून जाते. हाच पाश्चर परिणाम, आणि पाश्चरचे स्वतःचे निरीक्षण त्याचे अधिक धारदार रूप होते: किण्वित होणाऱ्या संवर्धनात हवा बुडबुडवा आणि किण्वन जवळपास लगेच थांबते, कारण ज्या क्षणी पेशी ऑक्सीश्वसन करू शकते त्याच क्षणी आपल्या इंधनाचा एकोणीस-विसावा फेकण्याचे कारणच उरत नाही. दोन्ही उद्योग फक्त त्याच दुभंग्याची उलटी टोके कापत आहेत — मद्यनिर्मात्याला टाकाऊ हवे, बेकरला पेशी आणि वायू. एक प्रामाणिक अट लक्षात ठेवा: अडतीसचा आकडा सैद्धांतिक कमाल आहे, आणि खरी पेशी प्रवणतेचा काही भाग वहनावर खर्चते, म्हणून मोजलेले उत्पन्न कमी असते. यामुळे युक्तिवादाला काही होत नाही, कारण तुलना दोन आणि तिशीच्या आसपासच्या कोणत्यातरी संख्येमधली आहे. (दुसरे उत्तर त्या फरकाचा दोष तापमानावर टाकते जो तापनियंत्रित पिपातही टिकतो; तिसरे असा कार्बन-स्रोत रचते जो यीस्ट वापरूच शकत नाही, कारण कार्बन डायऑक्साइडमधून कार्बन घ्यायला प्रकाशसंश्लेषण लागते; आणि चौथ्याचे खंडन मोजमापानेच होते, कारण हवेशीर संवर्धन इथेनॉल गमावत नाही, ते आधीपासूनच फार कमी बनवते.)",
+        },
+      },
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 13 — Plant Growth and Development                               */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "biology-11-plant-growth-and-development",
+    subject: "BIOLOGY",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 13 — Plant Growth and Development",
+      hi: "अध्याय 13 — पादप वृद्धि एवं परिवर्धन",
+      mr: "प्रकरण 13 — वनस्पती वाढ आणि विकास",
+    },
+    name: {
+      en: "Getting Bigger, and Becoming Something",
+      hi: "बड़ा होना, और कुछ बन जाना",
+      mr: "मोठे होणे, आणि काहीतरी बनणे",
+    },
+    summary: {
+      en: "Growth and development are two different questions and a plant answers both with the same cells: one asks how much, and can be plotted as a curve every organ and every population draws; the other asks into what, and is answered by a cell that turns off most of the genes it is carrying. Add hormones that were all found by accident — a fungus, a rotting apple, a coconut — and a plant that counts the night rather than the day, and the chapter is about a body with no fixed final shape.",
+      hi: "वृद्धि और परिवर्धन दो अलग प्रश्न हैं और पादप दोनों का उत्तर उन्हीं कोशिकाओं से देता है: एक पूछता है कितना, और उसे उस वक्र के रूप में खींचा जा सकता है जो हर अंग और हर समष्टि खींचती है; दूसरा पूछता है क्या बनकर, और उसका उत्तर वह कोशिका देती है जो अपने ढोए हुए अधिकांश जीन बंद कर देती है। इसमें वे हॉर्मोन जोड़ो जो सब संयोग से मिले — एक कवक, एक सड़ता सेब, एक नारियल — और वह पादप जो दिन नहीं रात गिनता है, और अध्याय एक ऐसे शरीर का हो जाता है जिसका कोई निश्चित अंतिम आकार नहीं।",
+      mr: "वाढ आणि विकास हे दोन वेगळे प्रश्न आहेत आणि वनस्पती दोन्हींचे उत्तर त्याच पेशींनी देते: एक विचारतो किती, आणि तो प्रत्येक अवयव आणि प्रत्येक लोकसंख्या काढते त्या वक्ररूपात मांडता येतो; दुसरा विचारतो काय बनून, आणि त्याचे उत्तर ती पेशी देते जी आपली वाहून नेलेली बहुतांश जनुके बंद करते. त्यात ते संप्रेरक जोडा जे सगळे योगायोगाने सापडले — एक बुरशी, एक सडणारे सफरचंद, एक नारळ — आणि ती वनस्पती जी दिवस नव्हे रात्र मोजते, आणि प्रकरण अशा शरीराचे होते ज्याला ठरावीक अंतिम आकार नाही.",
+    },
+    position: 13,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "the-increase-you-cannot-take-back",
+        name: {
+          en: "The increase you cannot take back",
+          hi: "वह बढ़त जो वापस नहीं ली जा सकती",
+          mr: "परत घेता येत नाही ती वाढ",
+        },
+        kind: "definition",
+        prompt: {
+          en: "A wilted leaf swells again when watered and a dry seed swells when soaked, but neither counts, because both can be undone by an afternoon in the sun. What test does the swelling have to pass?",
+          hi: "मुरझाई पत्ती पानी देने पर फिर फूल जाती है और सूखा बीज भिगोने पर फूलता है, पर दोनों नहीं गिने जाते, क्योंकि दोनों धूप में एक दोपहर से पलट सकते हैं। फूलने को कौन-सी कसौटी पार करनी पड़ती है?",
+          mr: "कोमेजलेले पान पाणी दिल्यावर पुन्हा फुगते आणि सुके बीज भिजवल्यावर फुगते, पण दोन्ही मोजली जात नाहीत, कारण दोन्ही उन्हातल्या एका दुपारीने उलटू शकतात. फुगण्याला कोणती कसोटी पार करावी लागते?",
+        },
+        statement: {
+          en: "Growth is an irreversible and permanent increase in size brought about by the metabolism of the organism itself, which is why swelling by water uptake alone is excluded however large it looks.",
+          hi: "वृद्धि आकार में अनुत्क्रमणीय और स्थायी बढ़त है जो जीव के अपने उपापचय से आती है, इसीलिए केवल जल-ग्रहण से फूलना, चाहे कितना ही बड़ा दिखे, बाहर रखा जाता है।",
+          mr: "वाढ म्हणजे आकारातील अनुत्क्रमणीय आणि कायमची भर जी जीवाच्या स्वतःच्या चयापचयातून येते, म्हणूनच केवळ पाणी-ग्रहणाने फुगणे, कितीही मोठे दिसले तरी, बाहेर ठेवले जाते.",
+        },
+        detail: {
+          en: "There is no single right way to measure it: a pollen tube is judged by length, a leaf by area, a fruit by volume and a whole plant by dry weight, and each is chosen because it is what changes.",
+          hi: "उसे मापने का कोई एक सही तरीक़ा नहीं: पराग-नलिका लंबाई से आँकी जाती है, पत्ती क्षेत्रफल से, फल आयतन से और पूरा पादप शुष्क भार से, और हर एक इसलिए चुना जाता है कि बदलता वही है।",
+          mr: "ती मोजण्याचा एकच बरोबर मार्ग नाही: परागनलिका लांबीने तपासली जाते, पान क्षेत्रफळाने, फळ आकारमानाने आणि अख्खी वनस्पती शुष्क वजनाने, आणि प्रत्येक यासाठी निवडले जाते की बदलते तेच.",
+        },
+        extra: {
+          en: "Plants keep it going indefinitely because they retain dividing tissue for life, which is why a tree has no adult size the way a horse does.",
+          hi: "पादप उसे अनिश्चित काल तक चलाते रहते हैं क्योंकि वे जीवन भर विभाजित होता ऊतक बनाए रखते हैं, इसीलिए वृक्ष का वैसा वयस्क आकार नहीं होता जैसा घोड़े का होता है।",
+          mr: "वनस्पती ती अनिश्चित काळ चालू ठेवतात कारण त्या आयुष्यभर विभाजित होणारी ऊती टिकवतात, म्हणूनच झाडाला घोड्यासारखा प्रौढ आकार नसतो.",
+        },
+        pair: {
+          left: {
+            en: "A tree has no adult size the way a horse does",
+            hi: "वृक्ष का वयस्क आकार घोड़े जैसा नहीं होता",
+            mr: "झाडाला घोड्यासारखा प्रौढ आकार नसतो",
+          },
+          right: {
+            en: "the increase you cannot take back",
+            hi: "वह बढ़त जो वापस नहीं ली जा सकती",
+            mr: "परत घेता येत नाही ती वाढ",
+          },
+        },
+      },
+      {
+        id: "the-curve-every-organ-draws",
+        name: {
+          en: "The curve every organ ends up drawing",
+          hi: "वह वक्र जो हर अंग अंततः खींचता है",
+          mr: "प्रत्येक अवयव शेवटी काढतो तो वक्र",
+        },
+        kind: "pattern",
+        prompt: {
+          en: "Plot the size of a leaf, a fruit, a seedling or a whole population of yeast against time and the same shape appears: slow at first, steep in the middle, and flattening at the top. What is this shape?",
+          hi: "पत्ती, फल, अंकुर या ख़मीर की पूरी समष्टि का आकार समय के सामने खींचो और वही आकृति उभरती है: पहले धीमी, बीच में तीव्र, और ऊपर जाकर चपटी। यह आकृति क्या है?",
+          mr: "पान, फळ, रोप वा यीस्टची अख्खी लोकसंख्या यांचा आकार काळासमोर आलेखा आणि तीच आकृती उमटते: आधी सावकाश, मध्ये तीव्र, आणि वर जाऊन सपाट. ही आकृती काय?",
+        },
+        statement: {
+          en: "The sigmoid growth curve has three phases — a lag phase of slow preparation, a log phase of rapid increase and a stationary phase where growth levels off as resources run short.",
+          hi: "सिग्मॉइड वृद्धि वक्र की तीन प्रावस्थाएँ हैं — धीमी तैयारी की लैग प्रावस्था, तीव्र बढ़त की लॉग प्रावस्था, और स्थिर प्रावस्था जहाँ संसाधन घटने पर वृद्धि समतल हो जाती है।",
+          mr: "सिग्मॉइड वाढ-वक्राच्या तीन प्रावस्था — सावकाश तयारीची लॅग प्रावस्था, वेगवान भरीची लॉग प्रावस्था, आणि स्थिर प्रावस्था जिथे संसाधने घटताच वाढ सपाट होते.",
+        },
+        detail: {
+          en: "The flattening at the top is not old age but arithmetic: every real environment has a ceiling, and the curve is bending towards it rather than towards zero.",
+          hi: "ऊपर का चपटा होना बुढ़ापा नहीं, गणित है: हर वास्तविक पर्यावरण की एक छत होती है, और वक्र शून्य की नहीं, उसी छत की ओर मुड़ रहा है।",
+          mr: "वरचे सपाट होणे म्हणजे म्हातारपण नव्हे, गणित आहे: प्रत्येक खऱ्या पर्यावरणाला छत असते, आणि वक्र शून्याकडे नव्हे तर त्याच छताकडे वळतो.",
+        },
+        extra: {
+          en: "The same three phases appear in a single cell of a root tip, which divides, then elongates, then matures, so the curve describes an organ and one of its cells at once.",
+          hi: "वही तीन प्रावस्थाएँ मूलाग्र की एक अकेली कोशिका में भी दिखती हैं, जो विभाजित होती है, फिर लंबी होती है, फिर परिपक्व होती है, अतः वक्र एक अंग और उसकी एक कोशिका दोनों का वर्णन एक साथ करता है।",
+          mr: "त्याच तीन प्रावस्था मुळाग्राच्या एकाच पेशीतही दिसतात, जी विभाजित होते, मग लांबते, मग प्रौढ होते, म्हणून वक्र एक अवयव आणि त्याची एक पेशी दोहोंचे वर्णन एकाच वेळी करतो.",
+        },
+        pair: {
+          left: {
+            en: "A root-tip cell divides, elongates, then matures",
+            hi: "मूलाग्र की कोशिका विभाजित होती, लंबी होती, फिर परिपक्व होती है",
+            mr: "मुळाग्राची पेशी विभाजित होते, लांबते, मग प्रौढ होते",
+          },
+          right: {
+            en: "the curve every organ ends up drawing",
+            hi: "वह वक्र जो हर अंग अंततः खींचता है",
+            mr: "प्रत्येक अवयव शेवटी काढतो तो वक्र",
+          },
+        },
+      },
+      {
+        id: "one-daughter-divides-the-other-does-not",
+        name: {
+          en: "One daughter divides, the other settles down",
+          hi: "एक संतति विभाजित होती है, दूसरी बैठ जाती है",
+          mr: "एक कन्या विभाजित होते, दुसरी स्थिरावते",
+        },
+        kind: "pattern",
+        prompt: {
+          en: "In one arrangement the number of dividing cells stays the same for ever, so length rises by a fixed amount each day; in the other both products keep dividing, so the count doubles and doubles. Which pair of patterns is this?",
+          hi: "एक व्यवस्था में विभाजित होती कोशिकाओं की संख्या सदा वही रहती है, अतः लंबाई हर दिन एक नियत मात्रा से बढ़ती है; दूसरी में दोनों उत्पाद विभाजित होते रहते हैं, अतः गिनती दुगुनी-दुगुनी होती जाती है। यह कौन-सी जोड़ी है?",
+          mr: "एका व्यवस्थेत विभाजित होणाऱ्या पेशींची संख्या कायम तीच राहते, म्हणून लांबी दररोज ठरावीक प्रमाणात वाढते; दुसरीत दोन्ही उत्पादने विभाजित होत राहतात, म्हणून मोजणी दुप्पट-दुप्पट होत जाते. ही कोणती जोडी?",
+        },
+        statement: {
+          en: "Growth is arithmetic when only one daughter cell goes on dividing while the other differentiates, and geometric when both daughters continue to divide, so the first gives a straight line against time and the second a doubling.",
+          hi: "वृद्धि तब अंकगणितीय है जब केवल एक संतति कोशिका विभाजित होती रहे और दूसरी विभेदित हो जाए, और तब ज्यामितीय जब दोनों संततियाँ विभाजित होती रहें, अतः पहली समय के सामने सीधी रेखा देती है और दूसरी दुगुनापन।",
+          mr: "वाढ तेव्हा अंकगणिती जेव्हा केवळ एक कन्यापेशी विभाजित होत राहते आणि दुसरी विभेदित होते, आणि तेव्हा भूमितीय जेव्हा दोन्ही कन्या विभाजित होत राहतात, म्हणून पहिली काळासमोर सरळ रेषा देते आणि दुसरी दुप्पटपणा.",
+        },
+        detail: {
+          en: "A root elongating steadily behind its tip is the arithmetic case, and it can be written as a starting length plus a fixed rate times the number of days.",
+          hi: "अपने अग्र के पीछे लगातार लंबी होती जड़ अंकगणितीय मामला है, और उसे आरंभिक लंबाई जमा एक नियत दर गुणा दिनों की संख्या लिखा जा सकता है।",
+          mr: "आपल्या टोकामागे सतत लांबणारे मूळ हे अंकगणिती प्रकरण, आणि ते प्रारंभिक लांबी अधिक ठरावीक दर गुणिले दिवसांची संख्या असे लिहिता येते.",
+        },
+        extra: {
+          en: "The geometric pattern cannot last, since nothing doubles for ever, and it is the log phase of the growth curve seen from the inside.",
+          hi: "ज्यामितीय ढर्रा टिक नहीं सकता, क्योंकि कोई चीज़ सदा दुगुनी नहीं होती, और वह वृद्धि वक्र की लॉग प्रावस्था को भीतर से देखना है।",
+          mr: "भूमितीय साचा टिकू शकत नाही, कारण कोणतीच गोष्ट कायम दुप्पट होत नाही, आणि तो वाढ-वक्राची लॉग प्रावस्था आतून पाहणे आहे.",
+        },
+        pair: {
+          left: {
+            en: "Nothing doubles for ever",
+            hi: "कोई चीज़ सदा दुगुनी नहीं होती",
+            mr: "कोणतीच गोष्ट कायम दुप्पट होत नाही",
+          },
+          right: {
+            en: "one daughter divides, the other settles down",
+            hi: "एक संतति विभाजित होती है, दूसरी बैठ जाती है",
+            mr: "एक कन्या विभाजित होते, दुसरी स्थिरावते",
+          },
+        },
+      },
+      {
+        id: "the-same-cell-wearing-three-hats",
+        name: {
+          en: "The same cell, told to forget what it became",
+          hi: "वही कोशिका, जिसे जो बनी थी उसे भूलने को कहा गया",
+          mr: "तीच पेशी, जिला ती जे बनली ते विसरायला सांगितले",
+        },
+        kind: "process",
+        prompt: {
+          en: "A mature parenchyma cell in a stem has stopped dividing for good; wound the stem and it starts dividing again, and its descendants become cork. Which trio of steps is this?",
+          hi: "तने की परिपक्व मृदूतक कोशिका ने विभाजन सदा के लिए छोड़ दिया है; तने पर घाव करो और वह फिर विभाजित होने लगती है, और उसकी संतानें काग बन जाती हैं। यह कौन-सी त्रयी है?",
+          mr: "खोडातील प्रौढ मृदूतक पेशीने विभाजन कायमचे सोडले आहे; खोडाला जखम करा आणि ती पुन्हा विभाजित होऊ लागते, आणि तिचे वंशज बूच बनतात. ही कोणती त्रयी?",
+        },
+        statement: {
+          en: "Differentiation, dedifferentiation and redifferentiation describe a mature cell losing its specialised state, dividing again and then specialising into something else, which is possible because differentiation switched genes off rather than throwing them away.",
+          hi: "विभेदन, विविभेदन और पुनर्विभेदन बताते हैं कि परिपक्व कोशिका अपनी विशेषीकृत अवस्था छोड़ती है, फिर विभाजित होती है और फिर किसी और चीज़ में विशेषीकृत हो जाती है, और यह इसलिए संभव है कि विभेदन ने जीन बंद किए थे, फेंके नहीं थे।",
+          mr: "विभेदन, विविभेदन आणि पुनर्विभेदन सांगतात की प्रौढ पेशी आपली विशेषीकृत अवस्था सोडते, पुन्हा विभाजित होते आणि मग दुसऱ्या कशात विशेषीकृत होते, आणि हे यासाठी शक्य की विभेदनाने जनुके बंद केली होती, फेकली नव्हती.",
+        },
+        detail: {
+          en: "Because every living plant cell keeps the whole genome, a single one can be grown into an entire new plant in culture, which is what totipotency means.",
+          hi: "चूँकि हर जीवित पादप कोशिका पूरा जीनोम रखती है, अकेली एक कोशिका को संवर्धन में पूरे नए पादप में उगाया जा सकता है, और सर्वशक्तिमत्ता का यही अर्थ है।",
+          mr: "प्रत्येक जिवंत वनस्पती-पेशी अख्खा जीनोम ठेवत असल्याने, एकाच पेशीला संवर्धनात अख्ख्या नव्या वनस्पतीत वाढवता येते, आणि सर्वशक्तिमत्तेचा हाच अर्थ.",
+        },
+        extra: {
+          en: "Differentiation itself is largely structural — a xylem vessel gets its thick wall and then dies, and the dead cell is the finished, working product.",
+          hi: "विभेदन स्वयं अधिकांशतः संरचनात्मक है — दारु वाहिका अपनी मोटी भित्ति पाती है और फिर मर जाती है, और मरी हुई कोशिका ही तैयार, काम करता उत्पाद है।",
+          mr: "विभेदन स्वतः बहुतांशी संरचनात्मक — दारुवाहिनीला तिची जाड भित्ती मिळते आणि मग ती मरते, आणि मेलेली पेशीच तयार, काम करणारे उत्पादन.",
+        },
+        pair: {
+          left: {
+            en: "A xylem vessel finishes by dying",
+            hi: "दारु वाहिका मरकर पूरी होती है",
+            mr: "दारुवाहिनी मरून पूर्ण होते",
+          },
+          right: {
+            en: "the same cell, told to forget what it became",
+            hi: "वही कोशिका, जिसे जो बनी थी उसे भूलने को कहा गया",
+            mr: "तीच पेशी, जिला ती जे बनली ते विसरायला सांगितले",
+          },
+        },
+      },
+      {
+        id: "the-hormone-found-in-a-diseased-rice-field",
+        name: {
+          en: "The substance found in a diseased rice field",
+          hi: "वह पदार्थ जो रोगग्रस्त धान के खेत में मिला",
+          mr: "रोगट भातशेतीत सापडलेला तो पदार्थ",
+        },
+        kind: "regulator",
+        prompt: {
+          en: "Japanese farmers noticed seedlings that grew absurdly tall, pale and spindly and then fell over and gave no grain; the culprit turned out to be a fungus, and what the fungus was making turned out to be something the plant already made itself. What was it?",
+          hi: "जापानी किसानों ने ऐसे अंकुर देखे जो हास्यास्पद रूप से लंबे, पीले और पतले हो जाते और फिर गिरकर कोई दाना न देते; दोषी निकला एक कवक, और कवक जो बना रहा था वह निकला वही जो पादप स्वयं पहले से बनाता था। वह क्या था?",
+          mr: "जपानी शेतकऱ्यांना अशी रोपे दिसली जी हास्यास्पद उंच, फिकट आणि बारीक होत आणि मग कोसळून एकही दाणा देत नसत; दोषी निघाली एक बुरशी, आणि बुरशी जे बनवत होती ते निघाले तेच जे वनस्पती स्वतः आधीपासून बनवत होती. ते काय होते?",
+        },
+        statement: {
+          en: "Gibberellin was discovered through the foolish-seedling disease of rice, and it lengthens stems, breaks seed dormancy and can make a biennial bolt and flower in its first year.",
+          hi: "जिबरेलिन धान के मूर्ख-अंकुर रोग से खोजा गया, और वह तनों को लंबा करता है, बीज-प्रसुप्ति तोड़ता है और द्विवर्षीय पादप को पहले ही वर्ष में बढ़ाकर फुलवा सकता है।",
+          mr: "जिबरेलिन भाताच्या मूर्ख-रोप रोगातून शोधले गेले, आणि ते खोडे लांबवते, बीजसुप्ती तोडते आणि द्विवार्षिक वनस्पतीला पहिल्याच वर्षी वाढवून फुलवू शकते.",
+        },
+        detail: {
+          en: "It is what the barley grain releases to its own aleurone layer to make the enzyme that digests its stored starch, which is why a maltster adds it deliberately.",
+          hi: "जौ का दाना अपनी ही एल्यूरोन परत को यही भेजता है ताकि वह एंज़ाइम बने जो उसका संचित स्टार्च पचाए, इसीलिए माल्ट बनाने वाला उसे जानबूझकर मिलाता है।",
+          mr: "सातूचा दाणा आपल्याच अल्यूरोन थराला हेच पाठवतो जेणेकरून तो विकर बनावा जो त्याचा साठवलेला स्टार्च पचवतो, म्हणूनच माल्ट बनवणारा तो मुद्दाम मिसळतो.",
+        },
+        extra: {
+          en: "Nearly every plant regulator was found the same accidental way — from a fungus, from a rotting apple, from coconut water — rather than by looking for it.",
+          hi: "पादप का लगभग हर नियामक इसी आकस्मिक ढंग से मिला — किसी कवक से, सड़ते सेब से, नारियल के पानी से — न कि उसे ढूँढ़ने निकलने से।",
+          mr: "वनस्पतीचे जवळपास प्रत्येक नियामक याच आकस्मिक पद्धतीने सापडले — एखाद्या बुरशीतून, सडणाऱ्या सफरचंदातून, नारळाच्या पाण्यातून — ते शोधायला निघाल्याने नव्हे.",
+        },
+        pair: {
+          left: {
+            en: "A maltster adds it to barley on purpose",
+            hi: "माल्ट बनाने वाला उसे जौ में जानबूझकर मिलाता है",
+            mr: "माल्ट बनवणारा तो सातूत मुद्दाम मिसळतो",
+          },
+          right: {
+            en: "the substance found in a diseased rice field",
+            hi: "वह पदार्थ जो रोगग्रस्त धान के खेत में मिला",
+            mr: "रोगट भातशेतीत सापडलेला तो पदार्थ",
+          },
+        },
+      },
+      {
+        id: "the-plant-that-measures-the-night",
+        name: {
+          en: "The plant that is counting the night",
+          hi: "वह पादप जो रात गिन रहा है",
+          mr: "रात्र मोजणारी ती वनस्पती",
+        },
+        kind: "response",
+        prompt: {
+          en: "Give it fourteen hours of unbroken darkness and it flowers; give it the same fourteen hours but switch a torch on for one minute in the middle and it does not. What kind of response is being measured here?",
+          hi: "उसे चौदह घंटे अखंड अंधकार दो और वह फूल जाता है; उतने ही चौदह घंटे दो पर बीच में एक मिनट के लिए टॉर्च जलाओ और वह नहीं फूलता। यहाँ किस तरह की अनुक्रिया मापी जा रही है?",
+          mr: "त्याला चौदा तास अखंड अंधार द्या आणि ते फुलते; तेच चौदा तास द्या पण मध्ये एक मिनिट बॅटरी लावा आणि ते फुलत नाही. इथे कोणत्या प्रकारचा प्रतिसाद मोजला जातो आहे?",
+        },
+        statement: {
+          en: "Photoperiodism is the flowering response to relative day and night length, and the experiments show that what the plant actually measures is the length of the uninterrupted dark period.",
+          hi: "दीप्तिकालिता दिन और रात की सापेक्ष लंबाई पर फूलने की अनुक्रिया है, और प्रयोग दिखाते हैं कि पादप वस्तुतः अखंड अंधकार-अवधि की लंबाई मापता है।",
+          mr: "दीप्तिकालिता म्हणजे दिवस आणि रात्रीच्या सापेक्ष लांबीवरचा फुलण्याचा प्रतिसाद, आणि प्रयोग दाखवतात की वनस्पती प्रत्यक्षात अखंड अंधार-कालावधीची लांबी मोजते.",
+        },
+        detail: {
+          en: "The leaf does the measuring and the bud does the flowering, which was shown by defoliating a plant and finding that it no longer responds at all.",
+          hi: "मापन पत्ती करती है और फूलना कली, और यह पादप की पत्तियाँ हटाकर दिखाया गया, जिसके बाद वह अनुक्रिया करता ही नहीं।",
+          mr: "मोजमाप पान करते आणि फुलणे कळी, आणि हे वनस्पतीची पाने काढून दाखवले गेले, त्यानंतर ती प्रतिसादच देत नाही.",
+        },
+        extra: {
+          en: "It is a different mechanism from vernalisation, where a cold spell rather than a night length is what a wheat crop must sit through before it will flower at all.",
+          hi: "यह वसंतीकरण से भिन्न तंत्र है, जहाँ रात की लंबाई नहीं बल्कि ठंड का दौर वह चीज़ है जिससे गेहूँ की फ़सल को गुज़रना पड़ता है इससे पहले कि वह फूले।",
+          mr: "ही वसंतीकरणाहून वेगळी यंत्रणा, जिथे रात्रीची लांबी नव्हे तर थंडीचा काळ ही ती गोष्ट जिच्यातून गव्हाच्या पिकाला जावे लागते तेव्हाच ते फुलते.",
+        },
+        pair: {
+          left: {
+            en: "Strip the leaves and the response disappears",
+            hi: "पत्तियाँ हटा दो और अनुक्रिया ग़ायब हो जाती है",
+            mr: "पाने काढा आणि प्रतिसाद नाहीसा होतो",
+          },
+          right: {
+            en: "the plant that is counting the night",
+            hi: "वह पादप जो रात गिन रहा है",
+            mr: "रात्र मोजणारी ती वनस्पती",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A nursery keeps one flask of callus that grows into a mass of roots and another that grows into a mass of shoots. The medium, the light, the temperature and the parent plant are identical; only the proportions of two added substances differ, and neither substance is absent from either flask. A student says one substance must simply be the root chemical and the other the shoot chemical. Why is that the wrong way to read it?",
+          hi: "एक नर्सरी में कैलस का एक फ़्लास्क जड़ों के गुच्छे में उगता है और दूसरा प्ररोहों के गुच्छे में। माध्यम, प्रकाश, तापमान और जनक पादप एक जैसे हैं; केवल दो मिलाए गए पदार्थों का अनुपात भिन्न है, और दोनों फ़्लास्क में कोई भी पदार्थ अनुपस्थित नहीं। विद्यार्थी कहता है कि एक पदार्थ बस जड़ का रसायन होगा और दूसरा प्ररोह का। इसे यों पढ़ना ग़लत क्यों है?",
+          mr: "एका रोपवाटिकेत कॅलसचा एक फ्लास्क मुळांच्या गुच्छात वाढतो आणि दुसरा खोडांच्या गुच्छात. माध्यम, प्रकाश, तापमान आणि जनक वनस्पती सारखी आहेत; केवळ दोन मिसळलेल्या पदार्थांचे प्रमाण वेगळे, आणि दोन्ही फ्लास्कांत कोणताही पदार्थ अनुपस्थित नाही. विद्यार्थी म्हणतो की एक पदार्थ म्हणजे मुळाचे रसायन असेल आणि दुसरे खोडाचे. असे वाचणे चुकीचे का?",
+        },
+        choices: [
+          {
+            en: "Because the signal is the RATIO, not the presence of either substance. A high auxin to cytokinin ratio makes the callus form roots, a low one makes it form shoots, and a balanced one keeps it as undifferentiated callus — and the same two substances produce all three outcomes. This is why plant regulators cannot be labelled one organ each: the same auxin that makes roots here promotes cell elongation in a coleoptile, suppresses the side buds of a stem, holds a fruit on the tree and, at a much higher dose, kills a broadleaved weed. What a regulator does depends on its concentration, on which other regulators are present with it, and on which tissue is listening",
+            hi: "क्योंकि संकेत अनुपात है, किसी पदार्थ की उपस्थिति नहीं। ऑक्सिन का साइटोकाइनिन से ऊँचा अनुपात कैलस को जड़ें बनवाता है, नीचा उसे प्ररोह बनवाता है, और संतुलित उसे अविभेदित कैलस बनाए रखता है — और वही दो पदार्थ तीनों परिणाम देते हैं। इसीलिए पादप नियामकों पर एक-एक अंग का लेबल नहीं लगाया जा सकता: वही ऑक्सिन जो यहाँ जड़ें बनवाता है, प्रांकुरचोल में कोशिका-दीर्घन बढ़ाता है, तने की पार्श्व कलियाँ दबाता है, फल को वृक्ष पर टिकाए रखता है और कहीं ऊँची मात्रा में चौड़ी पत्ती वाला खरपतवार मार देता है। नियामक क्या करेगा यह उसकी सांद्रता पर, उसके साथ कौन-से दूसरे नियामक हैं इस पर, और कौन-सा ऊतक सुन रहा है इस पर निर्भर है",
+            mr: "कारण संकेत हे गुणोत्तर आहे, कोणत्याही पदार्थाची उपस्थिती नव्हे. ऑक्सिनचे सायटोकायनिनशी उच्च गुणोत्तर कॅलसला मुळे बनवायला लावते, कमी गुणोत्तर खोडे बनवायला लावते, आणि संतुलित गुणोत्तर तिला अविभेदित कॅलसच ठेवते — आणि तेच दोन पदार्थ तिन्ही निकाल देतात. म्हणूनच वनस्पती-नियामकांवर एकेका अवयवाचे लेबल लावता येत नाही: तेच ऑक्सिन जे इथे मुळे बनवते, ते प्रांकुरचोलात पेशी-दीर्घन वाढवते, खोडाच्या बाजूच्या कळ्या दाबते, फळ झाडावर टिकवते आणि कितीतरी अधिक मात्रेत रुंदपानी तण मारते. नियामक काय करेल हे त्याच्या संहतीवर, त्याच्यासोबत कोणते दुसरे नियामक आहेत यावर, आणि कोणती ऊती ऐकते आहे यावर अवलंबून",
+          },
+          {
+            en: "Because auxin is made only in roots and cytokinin only in shoots, so each flask is simply growing the organ that produces the substance it was given more of",
+            hi: "क्योंकि ऑक्सिन केवल जड़ों में बनता है और साइटोकाइनिन केवल प्ररोहों में, अतः हर फ़्लास्क बस वही अंग उगा रहा है जो उस पदार्थ को बनाता है जिसे उसमें अधिक दिया गया",
+            mr: "कारण ऑक्सिन केवळ मुळांत बनते आणि सायटोकायनिन केवळ खोडांत, म्हणून प्रत्येक फ्लास्क फक्त तोच अवयव वाढवतो जो त्याला अधिक दिलेला पदार्थ बनवतो",
+          },
+          {
+            en: "Because the two substances cancel each other exactly, so the flask with more total regulator grows roots and the flask with less grows shoots regardless of which one was added",
+            hi: "क्योंकि दोनों पदार्थ एक-दूसरे को ठीक-ठीक काट देते हैं, अतः जिस फ़्लास्क में कुल नियामक अधिक हो वह जड़ें उगाता है और जिसमें कम हो वह प्ररोह, चाहे मिलाया कोई भी गया हो",
+            mr: "कारण दोन्ही पदार्थ एकमेकांना नेमके छेदतात, म्हणून ज्या फ्लास्कात एकूण नियामक अधिक तो मुळे वाढवतो आणि ज्यात कमी तो खोडे, कोणतेही मिसळले असले तरी",
+          },
+          {
+            en: "Because callus cells are not totipotent and can only form whichever organ the parent tissue was cut from, so the substances merely speed up an outcome that was already fixed",
+            hi: "क्योंकि कैलस कोशिकाएँ सर्वशक्तिमान नहीं होतीं और केवल वही अंग बना सकती हैं जिससे जनक ऊतक काटा गया था, अतः पदार्थ बस पहले से तय परिणाम को तेज़ कर देते हैं",
+            mr: "कारण कॅलस पेशी सर्वशक्तिमान नसतात आणि केवळ तोच अवयव बनवू शकतात ज्यातून जनक ऊती कापली होती, म्हणून पदार्थ फक्त आधीच ठरलेला निकाल वेगवान करतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The student is looking for a one-to-one map from substance to organ, and plant physiology does not work that way. Skoog and Miller's tobacco callus experiment is the cleanest demonstration in the subject: keep everything constant and vary only the ratio of auxin to cytokinin, and the same undifferentiated tissue can be pushed to make roots, to make shoots, or to stay as callus. Three outcomes, two substances, both present throughout. The variable is the proportion. Hold on to why that matters. If auxin were the root chemical, removing cytokinin would give better roots; it does not. The tissue is reading a balance, the way you read a ratio on a map scale rather than either number alone, and any explanation that treats one substance as the cause of one organ has already lost the result the experiment was designed to show. Auxin is the most instructive case because the SAME molecule does contradictory-looking things depending on dose and tissue. In a coleoptile it makes cells elongate — that is how phototropism works, since auxin migrates to the shaded side and that side grows longer, bending the tip towards the light. In a stem it enforces apical dominance, suppressing the lateral buds, which is why pinching out a growing tip makes a plant bushy: you have removed the source of the suppression. In a fruit it delays the abscission layer, holding the fruit on the tree. At a low dose in a nursery it makes a cutting root; at a high dose in a field the same chemistry kills broadleaved weeds, because dicots cannot tolerate the growth rates it forces. One molecule, five effects, no contradiction — because concentration and context are part of the message. The same is true of the others. Gibberellin lengthens a stem and breaks seed dormancy; abscisic acid does the reverse of both, closing the stomata and enforcing dormancy, which is why it is called the stress hormone; and ethylene, a gas, ripens fruit, causes leaves to fall, and yet in a rice plant under flood promotes rapid stem elongation so the leaf reaches air. The right mental model is not a set of labelled chemicals but a small committee whose decisions depend on who is in the room in what numbers, and on which tissue is listening. This is also why tissue culture is a practical technology rather than a curiosity: a nursery that can move a callus between root, shoot and callus at will can multiply an elite plant indefinitely, and that is how banana and orchid planting material is produced. (The second answer reverses the sites of synthesis and would predict the opposite result anyway; the third invents a cancellation that the experiment specifically rules out, since total concentration was not what varied; and the fourth denies totipotency, which is the very property that makes plant tissue culture possible.)",
+          hi: "विद्यार्थी पदार्थ से अंग तक एक-एक का नक़्शा ढूँढ़ रहा है, और पादप शरीरक्रिया यों काम नहीं करती। स्कूग और मिलर का तंबाकू-कैलस प्रयोग इस विषय का सबसे साफ़ प्रदर्शन है: सब कुछ स्थिर रखो और केवल ऑक्सिन का साइटोकाइनिन से अनुपात बदलो, और वही अविभेदित ऊतक जड़ें बनाने, प्ररोह बनाने, या कैलस बने रहने की ओर ठेला जा सकता है। तीन परिणाम, दो पदार्थ, दोनों पूरे समय मौजूद। चर है अनुपात। यह क्यों मायने रखता है, यह पकड़ो। यदि ऑक्सिन जड़ का रसायन होता, तो साइटोकाइनिन हटाने से बेहतर जड़ें मिलतीं; नहीं मिलतीं। ऊतक एक संतुलन पढ़ रहा है, जैसे तुम नक़्शे का पैमाना पढ़ते हो, किसी एक संख्या को नहीं, और जो व्याख्या एक पदार्थ को एक अंग का कारण मानती है वह उसी परिणाम को पहले ही खो चुकी है जिसे दिखाने के लिए प्रयोग रचा गया था। ऑक्सिन सबसे शिक्षाप्रद मामला है क्योंकि वही अणु मात्रा और ऊतक के अनुसार परस्पर विरोधी दिखते काम करता है। प्रांकुरचोल में वह कोशिकाओं को लंबा करता है — प्रकाशानुवर्तन इसी से चलता है, क्योंकि ऑक्सिन छायादार तरफ़ खिसकता है और वही तरफ़ अधिक बढ़कर अग्र को प्रकाश की ओर मोड़ देती है। तने में वह शीर्ष प्रभाविता लागू करता है, पार्श्व कलियाँ दबाता है, इसीलिए बढ़ता अग्र चुटकी से हटाने पर पादप झाड़ीदार हो जाता है: तुमने दमन का स्रोत हटा दिया। फल में वह विलगन परत को टालता है और फल को वृक्ष पर टिकाए रखता है। नर्सरी में कम मात्रा में वह कलम को जड़ें देता है; खेत में ऊँची मात्रा में वही रसायन चौड़ी पत्ती वाले खरपतवार मार देता है, क्योंकि द्विबीजपत्री उस वृद्धि-दर को नहीं झेल सकते जो वह थोपता है। एक अणु, पाँच प्रभाव, कोई विरोधाभास नहीं — क्योंकि सांद्रता और संदर्भ संदेश का हिस्सा हैं। बाक़ियों के लिए भी यही सच है। जिबरेलिन तना लंबा करता है और बीज-प्रसुप्ति तोड़ता है; एब्सिसिक अम्ल दोनों का उलटा करता है, रंध्र बंद करता है और प्रसुप्ति थोपता है, इसीलिए उसे तनाव-हॉर्मोन कहते हैं; और एथिलीन, जो गैस है, फल पकाता है, पत्तियाँ गिराता है, फिर भी बाढ़ में डूबे धान में तेज़ तना-दीर्घन बढ़ाता है ताकि पत्ती हवा तक पहुँचे। सही मानसिक मॉडल लेबल लगे रसायनों का समुच्चय नहीं, बल्कि एक छोटी समिति है जिसके निर्णय इस पर निर्भर हैं कि कमरे में कौन कितनी संख्या में है, और कौन-सा ऊतक सुन रहा है। इसीलिए ऊतक संवर्धन कौतुक नहीं, व्यावहारिक तकनीक है: जो नर्सरी कैलस को जड़, प्ररोह और कैलस के बीच इच्छानुसार ले जा सके वह किसी श्रेष्ठ पादप को अनिश्चित काल तक बढ़ा सकती है, और केला तथा ऑर्किड की रोपण-सामग्री इसी तरह बनती है। (दूसरा उत्तर संश्लेषण के स्थान उलट देता है और वैसे भी उलटा परिणाम बताता; तीसरा ऐसा निरसन गढ़ता है जिसे प्रयोग विशेष रूप से नकारता है, क्योंकि कुल सांद्रता बदली ही नहीं थी; और चौथा सर्वशक्तिमत्ता से इनकार करता है, जो वही गुण है जिससे पादप ऊतक संवर्धन संभव होता है।)",
+          mr: "विद्यार्थी पदार्थापासून अवयवापर्यंत एक-एक नकाशा शोधतो आहे, आणि वनस्पती-शरीरक्रिया अशी चालत नाही. स्कूग आणि मिलरचा तंबाखू-कॅलस प्रयोग या विषयातले सर्वांत स्वच्छ प्रात्यक्षिक: सारे स्थिर ठेवा आणि केवळ ऑक्सिनचे सायटोकायनिनशी गुणोत्तर बदला, आणि तीच अविभेदित ऊती मुळे बनवण्याकडे, खोडे बनवण्याकडे, वा कॅलसच राहण्याकडे ढकलता येते. तीन निकाल, दोन पदार्थ, दोन्ही अख्खा वेळ हजर. चल आहे गुणोत्तर. हे का महत्त्वाचे ते धरून ठेवा. ऑक्सिन मुळाचे रसायन असते, तर सायटोकायनिन काढल्याने अधिक चांगली मुळे मिळाली असती; मिळत नाहीत. ऊती एक संतुलन वाचते आहे, जसे तुम्ही नकाशाचे प्रमाण वाचता, कोणताही एक आकडा नव्हे, आणि जे स्पष्टीकरण एका पदार्थाला एका अवयवाचे कारण मानते ते प्रयोग ज्यासाठी रचला होता तोच निकाल आधीच गमावून बसले आहे. ऑक्सिन हे सर्वांत बोधप्रद प्रकरण कारण तोच रेणू मात्रा आणि ऊतीनुसार परस्परविरोधी दिसणारी कामे करतो. प्रांकुरचोलात तो पेशी लांबवतो — प्रकाशानुवर्तन याच्यानेच चालते, कारण ऑक्सिन सावलीच्या बाजूला सरकतो आणि तीच बाजू अधिक वाढून टोक प्रकाशाकडे वळवते. खोडात तो शेंडा-वर्चस्व लादतो, बाजूच्या कळ्या दाबतो, म्हणूनच वाढते टोक चिमटीने काढल्यावर वनस्पती झुडपाळ होते: तुम्ही दमनाचा स्रोतच काढला. फळात तो विलगन थर लांबणीवर टाकतो आणि फळ झाडावर टिकवतो. रोपवाटिकेत कमी मात्रेत तो कलमाला मुळे देतो; शेतात जास्त मात्रेत तेच रसायन रुंदपानी तण मारते, कारण द्विदल ती वाढ-गती सहन करू शकत नाहीत जी तो लादतो. एक रेणू, पाच परिणाम, कोणताही विरोधाभास नाही — कारण संहती आणि संदर्भ हे संदेशाचाच भाग आहेत. उरलेल्यांबाबतही तेच खरे. जिबरेलिन खोड लांबवते आणि बीजसुप्ती तोडते; अ‍ॅब्सिसिक आम्ल दोन्हींच्या उलट करते, त्वचारंध्रे मिटवते आणि सुप्ती लादते, म्हणूनच त्याला ताण-संप्रेरक म्हणतात; आणि एथिलीन, जो वायू आहे, फळ पिकवतो, पाने गळवतो, तरीही पुरात बुडलेल्या भातात जलद खोड-दीर्घन वाढवतो जेणेकरून पान हवेपर्यंत पोहोचावे. योग्य मानसिक प्रतिरूप म्हणजे लेबल लावलेल्या रसायनांचा संच नव्हे, तर एक लहान समिती जिचे निर्णय खोलीत कोण किती संख्येने आहे यावर, आणि कोणती ऊती ऐकते आहे यावर अवलंबून. म्हणूनच ऊती-संवर्धन ही कुतूहलाची गोष्ट नव्हे तर व्यावहारिक तंत्रज्ञान: जी रोपवाटिका कॅलसला मूळ, खोड आणि कॅलस यांदरम्यान हवे तसे नेऊ शकते ती एखादी उत्तम वनस्पती अनिश्चित काळ वाढवू शकते, आणि केळी तसेच ऑर्किडची लागवड-सामग्री याच पद्धतीने बनते. (दुसरे उत्तर संश्लेषणाची ठिकाणे उलटवते आणि तसेही उलटा निकाल सांगेल; तिसरे असे छेदन रचते जे प्रयोग विशेषत्वाने नाकारतो, कारण एकूण संहती बदललीच नव्हती; आणि चौथे सर्वशक्तिमत्ता नाकारते, जो नेमका तोच गुणधर्म ज्याने वनस्पती ऊती-संवर्धन शक्य होते.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A grower keeps chrysanthemums, which flower only when the nights are long. To hold back the crop until the festival he walks through the glasshouse at midnight and switches the lights on for two minutes. It works. A student objects that two minutes of light cannot possibly matter against fourteen hours of darkness, and adds that in any case the buds are at the top and the lamps shine mostly on the leaves. Both objections point at the real mechanism. What is it?",
+          hi: "एक उत्पादक गुलदाउदी रखता है, जो केवल लंबी रातों में फूलता है। फ़सल को त्योहार तक रोकने के लिए वह आधी रात को काँच-घर में जाकर दो मिनट के लिए बत्तियाँ जला देता है। यह काम करता है। विद्यार्थी आपत्ति करता है कि चौदह घंटे के अंधकार के सामने दो मिनट का प्रकाश मायने रख ही नहीं सकता, और जोड़ता है कि वैसे भी कलियाँ ऊपर हैं और दीये अधिकतर पत्तियों पर पड़ते हैं। दोनों आपत्तियाँ असली तंत्र की ओर इशारा करती हैं। वह क्या है?",
+          mr: "एक उत्पादक शेवंती ठेवतो, जी केवळ लांब रात्रींत फुलते. पीक सणापर्यंत रोखण्यासाठी तो मध्यरात्री काचगृहात जाऊन दोन मिनिटे दिवे लावतो. हे चालते. विद्यार्थी आक्षेप घेतो की चौदा तासांच्या अंधारापुढे दोन मिनिटांचा प्रकाश महत्त्वाचा असूच शकत नाही, आणि जोडतो की तसेही कळ्या वर आहेत आणि दिवे बहुतांशी पानांवर पडतात. दोन्ही आक्षेप खऱ्या यंत्रणेकडे बोट दाखवतात. ती काय?",
+        },
+        choices: [
+          {
+            en: "The plant is not adding up hours of darkness; it is checking whether the dark period was UNBROKEN, and a flash resets that clock — which is why two minutes can undo fourteen hours while the same two minutes added to the day change nothing. And the leaf is the organ that measures: strip a plant of its leaves and it stops responding to day length altogether, while a single leaf given the right nights can make the whole plant flower. So the naming is misleading twice over. A short-day plant is really a long-night plant, and the flowering signal is made in the leaf and travels to the bud",
+            hi: "पादप अंधकार के घंटे जोड़ नहीं रहा; वह जाँच रहा है कि अंधकार-अवधि अखंड थी या नहीं, और एक चमक उस घड़ी को शून्य कर देती है — इसीलिए दो मिनट चौदह घंटे पलट सकते हैं जबकि वही दो मिनट दिन में जोड़ने से कुछ नहीं बदलता। और मापने वाला अंग पत्ती है: पादप की पत्तियाँ हटा दो और वह दिन-लंबाई पर अनुक्रिया करना ही बंद कर देता है, जबकि सही रातें पाई हुई अकेली एक पत्ती पूरे पादप को फुलवा सकती है। अतः नाम दो बार भ्रम देता है। लघु-दिवस पादप असल में दीर्घ-रात्रि पादप है, और फूलने का संकेत पत्ती में बनता है और कली तक जाता है",
+            mr: "वनस्पती अंधाराचे तास बेरीज करत नाही; ती तपासते आहे की अंधार-कालावधी अखंड होता का, आणि एक लखलख ते घड्याळ शून्यावर आणते — म्हणूनच दोन मिनिटे चौदा तास उलटवू शकतात तर तीच दोन मिनिटे दिवसात जोडल्याने काहीच बदलत नाही. आणि मोजणारा अवयव म्हणजे पान: वनस्पतीची पाने काढा आणि ती दिवस-लांबीला प्रतिसाद देणेच थांबवते, तर योग्य रात्री मिळालेले एकच पान अख्खी वनस्पती फुलवू शकते. म्हणून नाव दोनदा दिशाभूल करते. लघु-दिवस वनस्पती खरे तर दीर्घ-रात्र वनस्पती आहे, आणि फुलण्याचा संकेत पानात बनतो आणि कळीपर्यंत जातो",
+          },
+          {
+            en: "Two minutes of light adds two minutes to the day and takes two from the night, and the crop happens to sit exactly on its critical day length, so the tiny addition tips it over the threshold",
+            hi: "दो मिनट का प्रकाश दिन में दो मिनट जोड़ता है और रात से दो घटाता है, और फ़सल संयोग से ठीक अपनी क्रांतिक दिन-लंबाई पर बैठी है, अतः यह नन्ही बढ़त उसे देहली के पार कर देती है",
+            mr: "दोन मिनिटांचा प्रकाश दिवसात दोन मिनिटे जोडतो आणि रात्रीतून दोन वजा करतो, आणि पीक योगायोगाने नेमके आपल्या क्रांतिक दिवस-लांबीवर बसले आहे, म्हणून ही चिमुकली भर त्याला उंबरठ्यापलीकडे ढकलते",
+          },
+          {
+            en: "The lamps warm the glasshouse for a few minutes, and it is the rise in night temperature rather than the light that prevents flowering, which is why the effect is so disproportionate",
+            hi: "दीये काँच-घर को कुछ मिनट गरम कर देते हैं, और फूलना प्रकाश नहीं बल्कि रात के तापमान की यह बढ़त रोकती है, इसीलिए प्रभाव इतना असंगत लगता है",
+            mr: "दिवे काचगृह काही मिनिटे तापवतात, आणि फुलणे प्रकाश नव्हे तर रात्रीच्या तापमानातली ही वाढ रोखते, म्हणूनच परिणाम इतका विषम वाटतो",
+          },
+          {
+            en: "The bud itself contains the light receptor, so the flash acts directly on the flowering tissue, and the leaves are irrelevant except as a shade that makes the treatment less effective",
+            hi: "प्रकाश-ग्राही कली में ही है, अतः चमक सीधे फूलने वाले ऊतक पर काम करती है, और पत्तियाँ केवल उस छाया के रूप में प्रासंगिक हैं जो उपचार को कम प्रभावी बनाती है",
+            mr: "प्रकाश-ग्राही कळीतच आहे, म्हणून लखलख थेट फुलणाऱ्या ऊतीवर काम करते, आणि पाने केवळ त्या सावलीपुरती संबंधित ज्याने उपचार कमी परिणामकारक होतो",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Both of the student's objections are good, and each one points at a piece of the mechanism that the textbook name hides. FIRST OBJECTION — how can two minutes beat fourteen hours? Because the plant is not summing darkness; it is asking whether the dark period was continuous. The classic experiment is symmetrical and worth remembering as a pair. Interrupt the night of a short-day plant with a brief flash and it fails to flower, even though the total darkness is barely reduced. Interrupt the DAY of the same plant with a brief spell of darkness and nothing whatever happens. Light in the night matters; darkness in the day does not. That asymmetry is only explicable if the measurement being made is of the night, and if the flash resets it. So the standard names are backwards: a short-day plant is really a long-night plant, and a long-day plant is a short-night plant. Say it that way and the grower's trick stops being surprising — he is not shortening the night, he is breaking it into two nights, neither long enough to count. SECOND OBJECTION — the lamps shine on leaves and the flowers form at the bud. That is exactly right, and it is the second half of the answer. Defoliate the plant and photoperiodic response vanishes completely, however the lights are managed. Leave a single leaf on and give that leaf the correct night length, and the whole plant flowers, including buds that never saw the dark at all. The site of perception is therefore the leaf and the site of response is the bud, which forces the conclusion that something travels between them. Grafting settled it: attach a leaf from an induced plant onto an uninduced one and the second plant flowers. The pigment doing the perceiving is phytochrome, which exists in two interconvertible forms — red light converts one to the other and far-red light converts it back — and, crucially, the conversion also happens slowly in the dark. That slow reversion is the timer. A flash of red light in the middle of the night resets it, and the plant starts counting again from zero. The practical consequences are exactly what the grower is exploiting. Chrysanthemum growers hold back or force a crop with night-break lighting rather than by blacking out a glasshouse for hours, which is far cheaper. Sugarcane breeders do the reverse, forcing flowering so that varieties which would never coincide in nature can be crossed. And the same physiology explains why a photoperiod-sensitive variety carried far north or south of the latitude it was bred for may grow beautifully and never flower at all — a failure that looks like disease and is actually a calendar problem. (The second answer treats the effect as arithmetic on day length, which the day-interruption control specifically rules out; the third is refuted by doing the experiment in a thermostatted chamber, where the effect persists; and the fourth puts the receptor in the wrong organ, contradicting both the defoliation and the grafting results.)",
+          hi: "विद्यार्थी की दोनों आपत्तियाँ अच्छी हैं, और हर एक तंत्र के उस टुकड़े की ओर इशारा करती है जिसे पुस्तक का नाम छिपा देता है। पहली आपत्ति — दो मिनट चौदह घंटे को कैसे हरा सकते हैं? क्योंकि पादप अंधकार जोड़ नहीं रहा; वह पूछ रहा है कि अंधकार-अवधि लगातार थी या नहीं। शास्त्रीय प्रयोग सममित है और जोड़े के रूप में याद रखने योग्य। लघु-दिवस पादप की रात को छोटी चमक से तोड़ो और वह नहीं फूलता, जबकि कुल अंधकार मुश्किल से घटा है। उसी पादप के दिन को छोटे अंधकार से तोड़ो और कुछ भी नहीं होता। रात में प्रकाश मायने रखता है; दिन में अंधकार नहीं। यह असममिति तभी समझ में आती है जब मापी जा रही चीज़ रात हो, और चमक उसे शून्य कर देती हो। अतः मानक नाम उलटे हैं: लघु-दिवस पादप असल में दीर्घ-रात्रि पादप है, और दीर्घ-दिवस पादप लघु-रात्रि पादप। यों कहो और उत्पादक की तरकीब आश्चर्य नहीं रहती — वह रात छोटी नहीं कर रहा, वह उसे दो रातों में तोड़ रहा है, और कोई भी गिनने लायक़ लंबी नहीं। दूसरी आपत्ति — दीये पत्तियों पर पड़ते हैं और फूल कली पर बनते हैं। यह बिलकुल ठीक है, और यही उत्तर का दूसरा आधा है। पादप की पत्तियाँ हटा दो और दीप्तिकालिक अनुक्रिया पूरी तरह ग़ायब हो जाती है, बत्तियाँ चाहे जैसे चलाई जाएँ। अकेली एक पत्ती छोड़ो और उसी पत्ती को सही रात-लंबाई दो, और पूरा पादप फूल जाता है, वे कलियाँ भी जिन्होंने अंधकार देखा ही नहीं। अतः प्रत्यक्षण का स्थल पत्ती है और अनुक्रिया का स्थल कली, और इससे निष्कर्ष निकलता है कि उनके बीच कुछ यात्रा करता है। कलम-रोपण ने इसे तय किया: प्रेरित पादप की पत्ती अप्रेरित पादप पर जोड़ो और दूसरा पादप फूल जाता है। प्रत्यक्षण करने वाला वर्णक फ़ाइटोक्रोम है, जो दो परस्पर बदलने योग्य रूपों में रहता है — लाल प्रकाश एक को दूसरे में बदलता है और दूर-लाल उसे वापस — और, निर्णायक रूप से, वह बदलाव अंधकार में धीरे-धीरे भी होता है। वही धीमा पलटाव समय-मापी है। आधी रात लाल प्रकाश की एक चमक उसे शून्य कर देती है, और पादप फिर से शून्य से गिनना शुरू करता है। व्यावहारिक परिणाम ठीक वही हैं जिनका उत्पादक लाभ उठा रहा है। गुलदाउदी उगाने वाले काँच-घर घंटों काला करने के बजाय रात-भंग प्रकाश से फ़सल रोकते या ज़बरन लाते हैं, जो कहीं सस्ता है। गन्ने के प्रजनक उलटा करते हैं, ज़बरन फुलाकर उन क़िस्मों का संकरण कराते हैं जो प्रकृति में कभी एक साथ न फूलतीं। और यही शरीरक्रिया समझाती है कि दीप्तिकाल-संवेदी क़िस्म को जिस अक्षांश के लिए विकसित किया गया उससे बहुत उत्तर या दक्षिण ले जाने पर वह सुंदर बढ़ सकती है और कभी फूलती ही नहीं — ऐसी विफलता जो रोग जैसी दिखती है और वस्तुतः पंचांग की समस्या है। (दूसरा उत्तर प्रभाव को दिन-लंबाई का गणित मान लेता है, जिसे दिन-भंग का नियंत्रण विशेष रूप से नकारता है; तीसरे का खंडन तापनियंत्रित कक्ष में प्रयोग करके हो जाता है, जहाँ प्रभाव बना रहता है; और चौथा ग्राही को ग़लत अंग में रखता है, जो पत्ती-हटाने और कलम-रोपण दोनों परिणामों का खंडन करता है।)",
+          mr: "विद्यार्थ्याचे दोन्ही आक्षेप चांगले आहेत, आणि प्रत्येक यंत्रणेच्या त्या तुकड्याकडे बोट दाखवतो जो पुस्तकातले नाव लपवते. पहिला आक्षेप — दोन मिनिटे चौदा तासांना कशी हरवू शकतात? कारण वनस्पती अंधार बेरीज करत नाही; ती विचारते आहे की अंधार-कालावधी अखंड होता का. शास्त्रीय प्रयोग सममित आहे आणि जोडीने लक्षात ठेवण्याजोगा. लघु-दिवस वनस्पतीची रात्र छोट्या लखलखीने तोडा आणि ती फुलत नाही, जरी एकूण अंधार जेमतेम घटला असला तरी. त्याच वनस्पतीचा दिवस छोट्या अंधाराने तोडा आणि काहीही घडत नाही. रात्रीतला प्रकाश महत्त्वाचा; दिवसातला अंधार नाही. ही विषमता तेव्हाच समजते जेव्हा मोजली जाणारी गोष्ट रात्र असेल, आणि लखलख तिला शून्यावर आणत असेल. म्हणून प्रमाण नावे उलटी आहेत: लघु-दिवस वनस्पती खरे तर दीर्घ-रात्र वनस्पती, आणि दीर्घ-दिवस वनस्पती लघु-रात्र वनस्पती. असे म्हणा आणि उत्पादकाची युक्ती आश्चर्य उरत नाही — तो रात्र लहान करत नाही, तो तिचे दोन रात्रींत तुकडे करतो, आणि दोन्ही मोजण्याइतक्या लांब नाहीत. दुसरा आक्षेप — दिवे पानांवर पडतात आणि फुले कळीवर बनतात. हे अगदी बरोबर, आणि हाच उत्तराचा दुसरा अर्धा भाग. वनस्पतीची पाने काढा आणि दीप्तिकालिक प्रतिसाद पूर्णपणे नाहीसा होतो, दिवे कसेही चालवले तरी. एकच पान ठेवा आणि त्याच पानाला योग्य रात्र-लांबी द्या, आणि अख्खी वनस्पती फुलते, त्या कळ्यांसह ज्यांनी अंधार पाहिलाच नाही. म्हणून आकलनाचे स्थळ पान आणि प्रतिसादाचे स्थळ कळी, आणि यातून निष्कर्ष निघतो की त्यांच्यात काहीतरी प्रवास करते. कलम-रोपणाने हे ठरवले: प्रेरित वनस्पतीचे पान अप्रेरित वनस्पतीवर जोडा आणि दुसरी वनस्पती फुलते. आकलन करणारे रंगद्रव्य म्हणजे फायटोक्रोम, जे दोन परस्पर बदलणाऱ्या रूपांत असते — तांबडा प्रकाश एकाचे दुसऱ्यात रूपांतर करतो आणि दूर-तांबडा ते परत — आणि, निर्णायकपणे, ते रूपांतर अंधारातही सावकाश घडते. तोच सावकाश पालट म्हणजे वेळमापक. मध्यरात्री तांबड्या प्रकाशाची एक लखलख त्याला शून्यावर आणते, आणि वनस्पती पुन्हा शून्यापासून मोजू लागते. व्यावहारिक परिणाम नेमके तेच जे उत्पादक वापरतो आहे. शेवंती उगवणारे काचगृह तासन्तास काळे करण्याऐवजी रात्र-भंग प्रकाशाने पीक रोखतात वा जबरदस्तीने आणतात, जे कितीतरी स्वस्त. उसाचे प्रजनक उलटे करतात, जबरदस्तीने फुलवून त्या जाती संकरित करतात ज्या निसर्गात कधीच एकाच वेळी फुलल्या नसत्या. आणि हीच शरीरक्रिया समजावते की दीप्तिकाल-संवेदी जात जिच्या अक्षांशासाठी विकसित केली त्याहून बरीच उत्तरेला वा दक्षिणेला नेल्यास ती सुंदर वाढू शकते आणि कधीच फुलत नाही — असे अपयश जे रोगासारखे दिसते आणि प्रत्यक्षात पंचांगाची अडचण असते. (दुसरे उत्तर परिणामाला दिवस-लांबीचे गणित मानते, जे दिवस-भंगाचे नियंत्रण विशेषत्वाने नाकारते; तिसऱ्याचे खंडन तापनियंत्रित कक्षात प्रयोग करूनच होते, जिथे परिणाम टिकतो; आणि चौथे ग्राहीला चुकीच्या अवयवात ठेवते, जे पान-काढणी आणि कलम-रोपण दोन्ही निकालांचे खंडन करते.)",
+        },
+      },
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 14 — Breathing and Exchange of Gases                            */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "biology-11-breathing-and-exchange-of-gases",
+    subject: "BIOLOGY",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 14 — Breathing and Exchange of Gases",
+      hi: "अध्याय 14 — श्वासन और गैसों का विनिमय",
+      mr: "प्रकरण 14 — श्वसनक्रिया आणि वायूंची देवाणघेवाण",
+    },
+    name: {
+      en: "Moving Air, and What the Blood Does With It",
+      hi: "हवा हिलाना, और रक्त उसका क्या करता है",
+      mr: "हवा हलवणे, आणि रक्त तिचे काय करते",
+    },
+    summary: {
+      en: "Pulling air in is plumbing and costs a muscle; what happens afterwards is chemistry and costs nothing at all, because every gas moves down its own pressure difference without being pushed. The chapter turns on three surprises: you can never empty your lungs, most of your carbon dioxide travels as something that is not carbon dioxide, and the urge to breathe is not the body noticing that oxygen is low.",
+      hi: "हवा भीतर खींचना नलसाज़ी है और उसमें एक पेशी ख़र्च होती है; उसके बाद जो होता है वह रसायन है और उसमें कुछ भी ख़र्च नहीं, क्योंकि हर गैस बिना धकेले अपने ही दाब-अंतर के ढाल पर बहती है। अध्याय तीन आश्चर्यों पर टिका है: तुम अपने फेफड़े कभी ख़ाली नहीं कर सकते, तुम्हारी अधिकांश कार्बन डाइऑक्साइड ऐसी चीज़ बनकर चलती है जो कार्बन डाइऑक्साइड है ही नहीं, और साँस लेने की तड़प शरीर का यह देखना नहीं कि ऑक्सीजन कम है।",
+      mr: "हवा आत ओढणे ही नळजोडणी आहे आणि त्यात एक स्नायू खर्च होतो; नंतर जे घडते ते रसायन आहे आणि त्यात काहीच खर्च नाही, कारण प्रत्येक वायू न ढकलता आपल्याच दाब-फरकाच्या उतारावर वाहतो. प्रकरण तीन आश्चर्यांवर उभे आहे: तुम्ही तुमची फुप्फुसे कधीच रिकामी करू शकत नाही, तुमचा बहुतांश कार्बन डायऑक्साइड अशी गोष्ट बनून प्रवास करतो जी कार्बन डायऑक्साइड नाहीच, आणि श्वास घेण्याची ओढ म्हणजे शरीराने प्राणवायू कमी झाल्याचे पाहणे नव्हे.",
+    },
+    position: 14,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "two-words-that-are-not-the-same-word",
+        name: {
+          en: "Two words that are not the same word",
+          hi: "दो शब्द जो एक शब्द नहीं हैं",
+          mr: "एकच शब्द नसलेले दोन शब्द",
+        },
+        kind: "definition",
+        prompt: {
+          en: "An earthworm has no lungs and a beetle has no blood carrying oxygen, yet the mitochondria of both are doing exactly what yours are doing. Which distinction does this force?",
+          hi: "केंचुए के फेफड़े नहीं और भृंग का रक्त ऑक्सीजन ढोता नहीं, फिर भी दोनों की सूत्रकणिकाएँ ठीक वही कर रही हैं जो तुम्हारी कर रही हैं। यह कौन-सा भेद ज़रूरी बना देता है?",
+          mr: "गांडुळाला फुप्फुसे नाहीत आणि भुंग्याचे रक्त प्राणवायू वाहत नाही, तरीही दोघांच्या तंतुकणिका नेमके तेच करत आहेत जे तुमच्या करत आहेत. हा कोणता फरक अटळ करतो?",
+        },
+        statement: {
+          en: "Breathing is the bulk movement of air into and out of a body, while cellular oxidation of food happens inside every cell and would continue for a while even if all breathing stopped.",
+          hi: "श्वासन शरीर के भीतर और बाहर हवा की स्थूल आवाजाही है, जबकि भोजन का कोशिकीय ऑक्सीकरण हर कोशिका के भीतर होता है और श्वासन पूरी तरह रुक जाने पर भी कुछ देर चलता रहेगा।",
+          mr: "श्वसनक्रिया म्हणजे शरीरात आणि बाहेर हवेची स्थूल ये-जा, तर अन्नाचे पेशीय ऑक्सिडीकरण प्रत्येक पेशीच्या आत घडते आणि श्वसनक्रिया पूर्ण थांबली तरी काही काळ चालू राहील.",
+        },
+        detail: {
+          en: "The first is optional in design and the second is not: many animals manage without any breathing organ at all, but none manages without the oxidation.",
+          hi: "पहला बनावट में वैकल्पिक है और दूसरा नहीं: बहुत-से प्राणी बिना किसी श्वसन अंग के चल लेते हैं, पर बिना ऑक्सीकरण के कोई नहीं।",
+          mr: "पहिली रचनेत ऐच्छिक आहे आणि दुसरी नाही: अनेक प्राणी कोणत्याही श्वसन अवयवाविना चालवून घेतात, पण ऑक्सिडीकरणाविना कोणीही नाही.",
+        },
+        extra: {
+          en: "What every breathing organ has in common is a thin moist surface with a large area and a blood supply close behind it, whether it is a gill, a lung or a skin.",
+          hi: "हर श्वसन अंग में एक बात समान है: बड़ा क्षेत्रफल रखती पतली नम सतह और उसके ठीक पीछे रक्त की आपूर्ति, चाहे वह क्लोम हो, फेफड़ा हो या त्वचा।",
+          mr: "प्रत्येक श्वसन अवयवात एक गोष्ट समान: मोठे क्षेत्रफळ असलेला पातळ ओलसर पृष्ठभाग आणि त्याच्या मागेच रक्तपुरवठा, मग ते कल्ले असोत, फुप्फुस असो वा त्वचा.",
+        },
+        pair: {
+          left: {
+            en: "A beetle's blood carries no oxygen at all",
+            hi: "भृंग का रक्त ऑक्सीजन ढोता ही नहीं",
+            mr: "भुंग्याचे रक्त प्राणवायू वाहतच नाही",
+          },
+          right: {
+            en: "two words that are not the same word",
+            hi: "दो शब्द जो एक शब्द नहीं हैं",
+            mr: "एकच शब्द नसलेले दोन शब्द",
+          },
+        },
+      },
+      {
+        id: "the-muscle-that-makes-the-room-bigger",
+        name: {
+          en: "The muscle that makes the room bigger",
+          hi: "वह पेशी जो कमरा बड़ा कर देती है",
+          mr: "खोली मोठी करणारा तो स्नायू",
+        },
+        kind: "mechanism",
+        prompt: {
+          en: "Nothing in the chest pulls on the air and nothing pushes it; the space is simply enlarged, the pressure inside falls below the pressure outside, and the air walks in on its own. Which structure does the enlarging?",
+          hi: "वक्ष में कोई चीज़ हवा को खींचती नहीं और कोई धकेलती नहीं; स्थान बस बड़ा कर दिया जाता है, भीतर का दाब बाहर के दाब से नीचे गिर जाता है, और हवा अपने आप चली आती है। बड़ा करने का काम कौन-सी रचना करती है?",
+          mr: "छातीत कोणतीच गोष्ट हवेला ओढत नाही आणि कोणी ढकलत नाही; जागा फक्त मोठी केली जाते, आतला दाब बाहेरच्या दाबाखाली उतरतो, आणि हवा आपणहून आत येते. मोठे करण्याचे काम कोणती रचना करते?",
+        },
+        statement: {
+          en: "The diaphragm flattens downward and the external intercostals swing the ribs up and out, enlarging the thoracic cavity so that the pressure inside the lungs falls below atmospheric and air flows in.",
+          hi: "मध्यपट नीचे की ओर चपटा होता है और बाह्य अंतरापर्शुक पेशियाँ पसलियों को ऊपर और बाहर घुमाती हैं, जिससे वक्ष गुहा बड़ी हो जाती है और फेफड़ों के भीतर का दाब वायुमंडलीय से नीचे गिरकर हवा भीतर बहा लाता है।",
+          mr: "मध्यपटल खाली सपाट होते आणि बाह्य आंतरबरगडी स्नायू बरगड्या वर आणि बाहेर वळवतात, ज्याने वक्षपोकळी मोठी होते आणि फुप्फुसांतला दाब वातावरणीय दाबाखाली उतरून हवा आत वाहवतो.",
+        },
+        detail: {
+          en: "Quiet breathing out costs no muscular work at all: the stretched tissue simply recoils, which is why you can inhale forcibly for far longer than you can exhale forcibly.",
+          hi: "शांत साँस छोड़ने में कोई पेशीय श्रम लगता ही नहीं: खिंचा हुआ ऊतक बस सिकुड़ जाता है, इसीलिए तुम ज़ोर से साँस लेना उससे कहीं अधिक देर कर सकते हो जितनी देर ज़ोर से छोड़ना।",
+          mr: "शांतपणे श्वास सोडण्यात कोणतेही स्नायुश्रम लागतच नाही: ताणलेली ऊती फक्त आकुंचन पावते, म्हणूनच तुम्ही जोरात श्वास घेणे हे जोरात सोडण्याहून कितीतरी अधिक वेळ करू शकता.",
+        },
+        extra: {
+          en: "The lungs never touch the chest wall directly — a film of fluid between two pleural membranes couples them, and puncturing that space collapses the lung on that side while the other keeps working.",
+          hi: "फेफड़े वक्ष-भित्ति को सीधे कभी नहीं छूते — दो फुफ्फुसावरणी झिल्लियों के बीच द्रव की एक झिल्ली उन्हें जोड़े रखती है, और उस स्थान में छेद हो जाए तो उस तरफ़ का फेफड़ा बैठ जाता है जबकि दूसरा काम करता रहता है।",
+          mr: "फुप्फुसे छातीच्या भिंतीला थेट कधीच स्पर्शत नाहीत — दोन फुप्फुसावरणी पटलांमधला द्रवाचा पातळ थर त्यांना जोडतो, आणि त्या जागेला भोक पडले तर त्या बाजूचे फुप्फुस बसते तर दुसरे काम करत राहते.",
+        },
+        pair: {
+          left: {
+            en: "Puncture one side and only that lung collapses",
+            hi: "एक तरफ़ छेद हो तो केवल वही फेफड़ा बैठता है",
+            mr: "एका बाजूला भोक पडल्यास केवळ तेच फुप्फुस बसते",
+          },
+          right: {
+            en: "the muscle that makes the room bigger",
+            hi: "वह पेशी जो कमरा बड़ा कर देती है",
+            mr: "खोली मोठी करणारा तो स्नायू",
+          },
+        },
+      },
+      {
+        id: "the-air-you-can-never-breathe-out",
+        name: {
+          en: "The air you can never breathe out",
+          hi: "वह हवा जिसे तुम कभी बाहर नहीं निकाल सकते",
+          mr: "जी तुम्ही कधीच बाहेर काढू शकत नाही ती हवा",
+        },
+        kind: "volume",
+        prompt: {
+          en: "Breathe out as hard as you possibly can, until nothing more will come, and rather more than a litre is still sitting inside — and it has to be, or the whole thing would stick shut. What is that volume called?",
+          hi: "जितना ज़ोर लगा सको उतना साँस छोड़ो, जब तक और कुछ न निकले, और तब भी एक लीटर से कुछ अधिक भीतर बैठा रह जाता है — और रहना ही चाहिए, वरना पूरी चीज़ चिपककर बंद हो जाती। उस आयतन को क्या कहते हैं?",
+          mr: "जमेल तितका जोर लावून श्वास सोडा, जोवर आणखी काही निघत नाही, आणि तरीही एक लिटरहून काहीसे अधिक आत बसून राहते — आणि राहायलाच हवे, नाहीतर अख्खी गोष्ट चिकटून बंद झाली असती. त्या आकारमानाला काय म्हणतात?",
+        },
+        statement: {
+          en: "Residual volume is the air that stays in the lungs after the most forceful possible breath out, and it keeps the alveoli from collapsing and sticking together.",
+          hi: "अवशिष्ट आयतन वह हवा है जो सबसे ज़ोरदार संभव साँस छोड़ने के बाद भी फेफड़ों में रह जाती है, और वही कूपिकाओं को बैठने और आपस में चिपकने से रोकती है।",
+          mr: "अवशिष्ट आकारमान म्हणजे सर्वांत जोरदार शक्य उच्छ्वासानंतरही फुप्फुसांत उरणारी हवा, आणि तीच वायुकोशांना बसण्यापासून आणि एकमेकांना चिकटण्यापासून वाचवते.",
+        },
+        detail: {
+          en: "It is the one volume a spirometer cannot measure, precisely because it can never be blown into the instrument.",
+          hi: "यही इकलौता आयतन है जिसे स्पाइरोमीटर नहीं माप सकता, ठीक इसीलिए कि उसे कभी यंत्र में फूँका ही नहीं जा सकता।",
+          mr: "हेच एकमेव आकारमान जे स्पायरोमीटर मोजू शकत नाही, नेमके यासाठी की ते कधी यंत्रात फुंकताच येत नाही.",
+        },
+        extra: {
+          en: "Because it is always there, the gas in the alveoli never swings between fresh air and none, and its composition stays steady through the whole cycle.",
+          hi: "चूँकि वह सदा वहाँ है, कूपिकाओं की गैस कभी ताज़ी हवा और शून्य के बीच झूलती नहीं, और उसकी संरचना पूरे चक्र में स्थिर रहती है।",
+          mr: "ती नेहमी तिथे असल्याने, वायुकोशांतला वायू कधीच ताज्या हवेत आणि शून्यात झुलत नाही, आणि त्याची रचना अख्ख्या चक्रात स्थिर राहते.",
+        },
+        pair: {
+          left: {
+            en: "A spirometer cannot measure it at all",
+            hi: "स्पाइरोमीटर उसे माप ही नहीं सकता",
+            mr: "स्पायरोमीटर ते मोजूच शकत नाही",
+          },
+          right: {
+            en: "the air you can never breathe out",
+            hi: "वह हवा जिसे तुम कभी बाहर नहीं निकाल सकते",
+            mr: "जी तुम्ही कधीच बाहेर काढू शकत नाही ती हवा",
+          },
+        },
+      },
+      {
+        id: "the-gas-that-travels-as-something-else",
+        name: {
+          en: "The gas that travels as something else entirely",
+          hi: "वह गैस जो बिलकुल किसी और रूप में यात्रा करती है",
+          mr: "अगदी दुसऱ्याच रूपात प्रवास करणारा तो वायू",
+        },
+        kind: "transport",
+        prompt: {
+          en: "Only a small fraction of it is dissolved in the plasma as itself; most of it has been converted, inside the red cells, into an ion that the plasma then carries away. Which gas is being described?",
+          hi: "उसका केवल थोड़ा-सा भाग प्लाज़्मा में स्वयं के रूप में घुला रहता है; अधिकांश लाल रक्त कोशिकाओं के भीतर एक आयन में बदल दिया गया है जिसे फिर प्लाज़्मा ले जाता है। किस गैस का वर्णन है?",
+          mr: "त्याचा केवळ थोडासा भाग प्लाझ्मात स्वतःच्या रूपात विरघळलेला असतो; बहुतांश तांबड्या पेशींच्या आत अशा आयनात बदलला जातो जो मग प्लाझ्मा वाहून नेतो. कोणत्या वायूचे वर्णन?",
+        },
+        statement: {
+          en: "Carbon dioxide is carried mostly as bicarbonate formed inside the red blood cells, with a smaller share bound to the amino groups of haemoglobin and only a little dissolved as the gas itself.",
+          hi: "कार्बन डाइऑक्साइड अधिकतर लाल रक्त कोशिकाओं के भीतर बने बाइकार्बोनेट के रूप में ढोई जाती है, कुछ कम हीमोग्लोबिन के अमीनो समूहों से बंधकर, और बहुत थोड़ी गैस के रूप में ही घुली।",
+          mr: "कार्बन डायऑक्साइड बहुतांशी तांबड्या पेशींच्या आत बनलेल्या बायकार्बोनेटच्या रूपात वाहून नेला जातो, काहीसा कमी हिमोग्लोबिनच्या अमिनो गटांशी बांधून, आणि फार थोडा वायूच्याच रूपात विरघळून.",
+        },
+        detail: {
+          en: "The conversion would be far too slow to be useful were it not for carbonic anhydrase, an enzyme concentrated in the red cells and almost absent from plasma.",
+          hi: "यह रूपांतरण काम आने के लिए कहीं अधिक धीमा होता यदि कार्बोनिक एनहाइड्रेज़ न होता, वह एंज़ाइम जो लाल रक्त कोशिकाओं में संकेंद्रित है और प्लाज़्मा में लगभग है ही नहीं।",
+          mr: "हे रूपांतर उपयोगी पडण्याइतके वेगवान नसतेच जर कार्बोनिक अ‍ॅनहायड्रेज नसते, ते विकर जे तांबड्या पेशींत एकवटलेले आणि प्लाझ्मात जवळपास नाहीच.",
+        },
+        extra: {
+          en: "The same reaction run backwards in the lung capillary is what releases the gas into the alveolus, so one enzyme serves loading and unloading at opposite ends of the body.",
+          hi: "फेफड़े की केशिका में वही अभिक्रिया उलटी चलकर गैस को कूपिका में छोड़ती है, अतः एक ही एंज़ाइम शरीर के दो छोरों पर भरने और उतारने दोनों का काम करता है।",
+          mr: "फुप्फुसाच्या केशवाहिनीत तीच अभिक्रिया उलटी चालून वायू वायुकोशात सोडते, म्हणून एकच विकर शरीराच्या दोन टोकांना भरणे आणि उतरवणे दोन्ही करते.",
+        },
+        pair: {
+          left: {
+            en: "One enzyme serves both loading and unloading",
+            hi: "एक ही एंज़ाइम भरने और उतारने दोनों का काम करता है",
+            mr: "एकच विकर भरणे आणि उतरवणे दोन्ही करते",
+          },
+          right: {
+            en: "the gas that travels as something else entirely",
+            hi: "वह गैस जो बिलकुल किसी और रूप में यात्रा करती है",
+            mr: "अगदी दुसऱ्याच रूपात प्रवास करणारा तो वायू",
+          },
+        },
+      },
+      {
+        id: "the-curve-that-bends-for-a-reason",
+        name: {
+          en: "The curve that bends for a reason",
+          hi: "वह वक्र जो कारण से मुड़ता है",
+          mr: "कारणासाठी वळणारा तो वक्र",
+        },
+        kind: "transport",
+        prompt: {
+          en: "Plot how saturated the pigment is against the pressure of the gas and the line is not straight but S-shaped, which is what lets it fill almost completely in the lung and still let go generously in a working muscle. What is this graph?",
+          hi: "वर्णक कितना संतृप्त है इसे गैस के दाब के सामने खींचो और रेखा सीधी नहीं, S-आकार की निकलती है, और यही उसे फेफड़े में लगभग पूरा भर जाने देती है और काम करती पेशी में उदारता से छोड़ भी देने देती है। यह कौन-सा आलेख है?",
+          mr: "रंगद्रव्य किती संतृप्त आहे ते वायूच्या दाबासमोर आलेखा आणि रेषा सरळ नव्हे, S-आकाराची निघते, आणि हेच तिला फुप्फुसात जवळपास पूर्ण भरू देते आणि काम करणाऱ्या स्नायूत उदारपणे सोडूही देते. हा कोणता आलेख?",
+        },
+        statement: {
+          en: "The oxygen dissociation curve is sigmoid because each oxygen bound to haemoglobin makes the next one easier to bind, so the pigment loads and unloads over a narrow range of pressure instead of gradually.",
+          hi: "ऑक्सीजन वियोजन वक्र सिग्मॉइड है क्योंकि हीमोग्लोबिन से बँधी हर ऑक्सीजन अगली का बंधना आसान कर देती है, अतः वर्णक धीरे-धीरे नहीं, दाब के एक सँकरे परास में भरता और उतरता है।",
+          mr: "प्राणवायू वियोजन वक्र सिग्मॉइड आहे कारण हिमोग्लोबिनला बांधलेला प्रत्येक प्राणवायू पुढच्याचे बांधणे सोपे करतो, म्हणून रंगद्रव्य हळूहळू नव्हे, दाबाच्या अरुंद पल्ल्यात भरते आणि उतरते.",
+        },
+        detail: {
+          en: "The curve shifts to the right where carbon dioxide is high, acidity is high or the tissue is warm — precisely the conditions of a working muscle, which therefore receives more oxygen without anything having to decide to send it.",
+          hi: "जहाँ कार्बन डाइऑक्साइड अधिक हो, अम्लता अधिक हो या ऊतक गरम हो, वहाँ वक्र दाईं ओर खिसक जाता है — ठीक वही स्थितियाँ काम करती पेशी की हैं, अतः उसे अधिक ऑक्सीजन मिल जाती है बिना किसी के भेजने का निर्णय किए।",
+          mr: "जिथे कार्बन डायऑक्साइड अधिक, आम्लता अधिक वा ऊती उबदार असेल तिथे वक्र उजवीकडे सरकतो — नेमक्या त्याच परिस्थिती काम करणाऱ्या स्नायूच्या, म्हणून त्याला अधिक प्राणवायू मिळतो कोणी पाठवण्याचा निर्णय न घेताच.",
+        },
+        extra: {
+          en: "Foetal haemoglobin has a curve to the LEFT of the mother's, which is the only way a foetus can pull oxygen across the placenta from blood that has already given some up.",
+          hi: "भ्रूण के हीमोग्लोबिन का वक्र माता के वक्र से बाईं ओर है, और भ्रूण के लिए उस रक्त से अपरा के आर-पार ऑक्सीजन खींचने का यही इकलौता तरीक़ा है जो कुछ ऑक्सीजन पहले ही छोड़ चुका है।",
+          mr: "गर्भाच्या हिमोग्लोबिनचा वक्र आईच्या वक्राच्या डावीकडे असतो, आणि गर्भाला ज्या रक्ताने आधीच काही प्राणवायू सोडला आहे त्यातून वारेपलीकडून प्राणवायू ओढण्याचा हाच एकमेव मार्ग.",
+        },
+        pair: {
+          left: {
+            en: "A foetus pulls oxygen from blood that has already given some up",
+            hi: "भ्रूण उस रक्त से ऑक्सीजन खींचता है जो कुछ पहले ही छोड़ चुका है",
+            mr: "गर्भ आधीच काही सोडलेल्या रक्तातून प्राणवायू ओढतो",
+          },
+          right: {
+            en: "the curve that bends for a reason",
+            hi: "वह वक्र जो कारण से मुड़ता है",
+            mr: "कारणासाठी वळणारा तो वक्र",
+          },
+        },
+      },
+      {
+        id: "the-centre-that-watches-the-other-gas",
+        name: {
+          en: "The centre that watches the other gas",
+          hi: "वह केंद्र जो दूसरी गैस पर नज़र रखता है",
+          mr: "दुसऱ्या वायूवर लक्ष ठेवणारे ते केंद्र",
+        },
+        kind: "control",
+        prompt: {
+          en: "Breathe pure oxygen and the urge to breathe arrives on schedule anyway; breathe a mixture that lets one waste gas build up and the urge becomes unbearable while there is still plenty of oxygen left. What is doing the monitoring?",
+          hi: "शुद्ध ऑक्सीजन लो और साँस लेने की तड़प फिर भी समय पर आ जाती है; ऐसा मिश्रण लो जो एक अपशिष्ट गैस को जमा होने दे और तड़प असह्य हो जाती है जबकि ऑक्सीजन अब भी बहुत बची है। निगरानी कौन कर रहा है?",
+          mr: "शुद्ध प्राणवायू घ्या आणि श्वास घेण्याची ओढ तरीही वेळेवर येतेच; असे मिश्रण घ्या जे एका टाकाऊ वायूला साठू देते आणि ओढ असह्य होते तर प्राणवायू अजून भरपूर उरलेला असतो. देखरेख कोण करते आहे?",
+        },
+        statement: {
+          en: "The respiratory rhythm centre in the medulla is driven by a chemosensitive area that responds to rising carbon dioxide and hydrogen ions, and hardly at all to falling oxygen until it gets dangerously low.",
+          hi: "मेडुला का श्वसन लय केंद्र एक रसायन-संवेदी क्षेत्र से चलता है जो बढ़ती कार्बन डाइऑक्साइड और हाइड्रोजन आयनों पर अनुक्रिया करता है, और गिरती ऑक्सीजन पर तब तक लगभग बिलकुल नहीं जब तक वह ख़तरनाक स्तर तक न गिर जाए।",
+          mr: "मेडुलातले श्वसन-लय केंद्र एका रसायन-संवेदी क्षेत्राने चालते जे वाढणाऱ्या कार्बन डायऑक्साइड आणि हायड्रोजन आयनांना प्रतिसाद देते, आणि उतरणाऱ्या प्राणवायूला तो धोकादायक पातळीवर येईपर्यंत जवळपास अजिबात नाही.",
+        },
+        detail: {
+          en: "The design makes sense because carbon dioxide changes fast and in proportion to work, so it is a better early warning than oxygen, which the blood holds in reserve.",
+          hi: "यह बनावट समझ में आती है क्योंकि कार्बन डाइऑक्साइड तेज़ी से और काम के अनुपात में बदलती है, अतः वह ऑक्सीजन से बेहतर पूर्व-चेतावनी है, जिसे रक्त भंडार में रखे रहता है।",
+          mr: "ही रचना समजण्याजोगी कारण कार्बन डायऑक्साइड वेगाने आणि कामाच्या प्रमाणात बदलतो, म्हणून तो प्राणवायूहून चांगली पूर्वसूचना, जो रक्त साठ्यात ठेवते.",
+        },
+        extra: {
+          en: "It also explains why a swimmer who hyperventilates before a dive can black out underwater: the urge to surface has been postponed while the oxygen goes on falling.",
+          hi: "यह भी समझाती है कि गोता लगाने से पहले तेज़-तेज़ साँस लेता तैराक पानी के भीतर बेहोश क्यों हो सकता है: ऊपर आने की तड़प टल गई है जबकि ऑक्सीजन गिरती जा रही है।",
+          mr: "हेच समजावते की सूर मारण्याआधी जोरजोरात श्वास घेणारा जलतरणपटू पाण्याखाली बेशुद्ध का पडू शकतो: वर येण्याची ओढ लांबणीवर पडली आहे तर प्राणवायू उतरतच आहे.",
+        },
+        pair: {
+          left: {
+            en: "A swimmer who breathes hard before diving can black out below",
+            hi: "गोता लगाने से पहले तेज़ साँस लेता तैराक नीचे बेहोश हो सकता है",
+            mr: "सूर मारण्याआधी जोरात श्वास घेणारा जलतरणपटू खाली बेशुद्ध पडू शकतो",
+          },
+          right: {
+            en: "the centre that watches the other gas",
+            hi: "वह केंद्र जो दूसरी गैस पर नज़र रखता है",
+            mr: "दुसऱ्या वायूवर लक्ष ठेवणारे ते केंद्र",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Two children hold their breath. One breathes normally first and gives up at about a minute; the other pants hard for half a minute first and lasts nearly twice as long. Both then say the same thing — that they stopped because they were running out of air. Blood measurements say that neither was anywhere near short of oxygen when they gave up. What were they actually feeling, and why is the second child's trick dangerous in a swimming pool?",
+          hi: "दो बच्चे साँस रोकते हैं। एक पहले सामान्य साँस लेता है और लगभग एक मिनट पर छोड़ देता है; दूसरा पहले आधा मिनट तेज़-तेज़ हाँफता है और लगभग दुगुना टिकता है। फिर दोनों वही कहते हैं — कि उन्होंने इसलिए छोड़ा कि हवा चुक रही थी। रक्त की माप कहती है कि छोड़ते समय दोनों में से कोई ऑक्सीजन की कमी के आसपास भी नहीं था। वे वस्तुतः क्या महसूस कर रहे थे, और दूसरे बच्चे की तरकीब तरणताल में ख़तरनाक क्यों है?",
+          mr: "दोन मुले श्वास रोखतात. एक आधी सामान्य श्वास घेतो आणि सुमारे एका मिनिटाला सोडतो; दुसरा आधी अर्धा मिनिट जोरजोरात धापा टाकतो आणि जवळपास दुप्पट टिकतो. मग दोघेही तेच म्हणतात — की त्यांनी सोडले कारण हवा संपत होती. रक्ताची मोजमापे सांगतात की सोडताना दोघांपैकी कोणीही प्राणवायूच्या तुटवड्याच्या जवळपासही नव्हता. ते प्रत्यक्षात काय अनुभवत होते, आणि दुसऱ्या मुलाची युक्ती जलतरण तलावात धोकादायक का?",
+        },
+        choices: [
+          {
+            en: "What they felt was rising carbon dioxide, not falling oxygen. The chemosensitive area beside the medulla's rhythm centre responds to carbon dioxide and to the hydrogen ions it forms, and it is that signal which becomes unbearable; oxygen sensors exist in the aorta and carotid arteries but stay almost silent until oxygen is dangerously low. Panting first blows carbon dioxide off, so the alarm starts from further away and takes longer to arrive — while oxygen consumption carries on exactly as before. In a pool that is lethal: the swimmer stays down past the point where oxygen would normally have forced him up, and can lose consciousness underwater with no warning of any kind",
+            hi: "उन्होंने जो महसूस किया वह बढ़ती कार्बन डाइऑक्साइड थी, गिरती ऑक्सीजन नहीं। मेडुला के लय केंद्र के पास का रसायन-संवेदी क्षेत्र कार्बन डाइऑक्साइड पर और उससे बनने वाले हाइड्रोजन आयनों पर अनुक्रिया करता है, और वही संकेत असह्य होता है; ऑक्सीजन-संवेदी महाधमनी और ग्रीवा धमनियों में हैं पर तब तक लगभग चुप रहते हैं जब तक ऑक्सीजन ख़तरनाक स्तर तक न गिरे। पहले हाँफना कार्बन डाइऑक्साइड उड़ा देता है, अतः चेतावनी और दूर से शुरू होती है और पहुँचने में अधिक समय लेती है — जबकि ऑक्सीजन की खपत ठीक पहले जैसी चलती रहती है। तरणताल में यह प्राणघातक है: तैराक उस बिंदु से आगे नीचे रह जाता है जहाँ सामान्यतः ऑक्सीजन उसे ऊपर आने पर मजबूर कर देती, और बिना किसी चेतावनी के पानी के भीतर बेहोश हो सकता है",
+            mr: "त्यांना जे जाणवले तो वाढणारा कार्बन डायऑक्साइड होता, उतरणारा प्राणवायू नव्हे. मेडुलाच्या लय-केंद्राशेजारचे रसायन-संवेदी क्षेत्र कार्बन डायऑक्साइडला आणि त्यातून बनणाऱ्या हायड्रोजन आयनांना प्रतिसाद देते, आणि तोच संकेत असह्य होतो; प्राणवायू-संवेदी महारोहिणी आणि ग्रीवा रोहिण्यांत असतात पण प्राणवायू धोकादायक पातळीवर येईपर्यंत जवळपास गप्प राहतात. आधी धापा टाकल्याने कार्बन डायऑक्साइड उडून जातो, म्हणून इशारा अधिक दुरून सुरू होतो आणि पोहोचायला अधिक वेळ घेतो — तर प्राणवायूचा वापर नेमका आधीसारखाच चालू राहतो. तलावात हे प्राणघातक: जलतरणपटू त्या बिंदूपलीकडे खाली राहतो जिथे सामान्यतः प्राणवायूने त्याला वर यायला भाग पाडले असते, आणि कोणत्याही इशाऱ्याविना पाण्याखाली बेशुद्ध पडू शकतो",
+          },
+          {
+            en: "Panting fills the lungs with a larger store of oxygen, and the second child simply has more of it to use up, so the extra time is a straightforward matter of the reserve carried down",
+            hi: "हाँफने से फेफड़े ऑक्सीजन के बड़े भंडार से भर जाते हैं, और दूसरे बच्चे के पास ख़र्च करने को बस अधिक है, अतः अतिरिक्त समय नीचे ले जाए गए भंडार का सीधा मामला है",
+            mr: "धापा टाकल्याने फुप्फुसे प्राणवायूच्या मोठ्या साठ्याने भरतात, आणि दुसऱ्या मुलाकडे वापरायला फक्त अधिक असते, म्हणून जादा वेळ हा खाली नेलेल्या साठ्याचा सरळ मामला",
+          },
+          {
+            en: "The urge to breathe comes from stretch receptors in the lung wall reporting that the lungs have stayed still too long, and panting tires those receptors out, which is why the second child feels the urge later",
+            hi: "साँस लेने की तड़प फेफड़े की भित्ति के तनाव-ग्राहियों से आती है जो बताते हैं कि फेफड़े बहुत देर स्थिर रहे, और हाँफना उन ग्राहियों को थका देता है, इसीलिए दूसरे बच्चे को तड़प देर से होती है",
+            mr: "श्वास घेण्याची ओढ फुप्फुसाच्या भिंतीतल्या ताण-ग्राहींकडून येते जे सांगतात की फुप्फुसे फार वेळ स्थिर राहिली, आणि धापा त्या ग्राहींना थकवतात, म्हणूनच दुसऱ्या मुलाला ओढ उशिरा जाणवते",
+          },
+          {
+            en: "Both children stop because oxygen has genuinely run low, and the blood measurements must have been taken too late to catch it; panting works by strengthening the diaphragm for the effort ahead",
+            hi: "दोनों बच्चे इसलिए रुकते हैं कि ऑक्सीजन सचमुच कम हो गई, और रक्त की माप उसे पकड़ने के लिए ज़रूर देर से ली गई होगी; हाँफना आगे के श्रम के लिए मध्यपट को मज़बूत करके काम करता है",
+            mr: "दोन्ही मुले यासाठी थांबतात की प्राणवायू खरोखर कमी झाला, आणि रक्ताची मोजमापे ते पकडण्यासाठी नक्कीच उशिरा घेतली गेली असतील; धापा पुढच्या श्रमासाठी मध्यपटल बळकट करून काम करतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The children's own explanation is the one almost everyone gives, and it is wrong. The sensation that ends a breath-hold is not the body noticing an absence of oxygen; it is the body noticing an accumulation of carbon dioxide. START WITH THE CONTROL SYSTEM. The respiratory rhythm centre sits in the medulla, and a chemosensitive area next to it responds to the concentration of carbon dioxide and of the hydrogen ions carbon dioxide produces when it dissolves. When those rise, the centre increases the rate and depth of breathing. There ARE oxygen sensors — in the aortic arch and the carotid bodies — but they are deliberately insensitive, contributing almost nothing until oxygen has fallen a long way. WHY BUILD IT THAT WAY. Because carbon dioxide is the better instrument. It is produced in exact proportion to how hard the tissues are working, it changes fast, and the blood carries no reserve of it. Oxygen, by contrast, is held in large reserve on haemoglobin, so its level lags behind demand and would make a sluggish alarm. Watching the waste product is a more responsive way of measuring the work. NOW THE EXPERIMENT. The first child begins with a normal carbon dioxide level, and the alarm reaches the unbearable threshold in about a minute. The second child spends thirty seconds blowing carbon dioxide out faster than it is made, so the level starts abnormally low. The alarm therefore has further to travel and arrives much later. Critically, hyperventilation adds almost no extra oxygen: haemoglobin leaving the lungs is already about ninety-seven per cent saturated in normal breathing, and there is nowhere to put more. So the second child has bought silence, not fuel. THAT IS WHY IT KILLS. In the ordinary case, the carbon dioxide alarm fires while oxygen is still comfortable, and the swimmer surfaces with a wide margin. In the hyperventilated case, the alarm has been pushed past the point where oxygen becomes critical, so consciousness can be lost with no warning symptom at all — no gasping, no panic, no struggle. Lifeguards call it shallow-water blackout, and it kills competent swimmers, which is precisely why competitive hyperventilation before breath-hold diving is banned at supervised pools. The general shape of the lesson is worth carrying: a sensation is evidence about the sensor, not about the world. The feeling of suffocation reports carbon dioxide; it has never been able to report oxygen, which is also why carbon monoxide and pure nitrogen are so dangerous — they let the alarm stay quiet while the oxygen supply fails. (The second answer assumes hyperventilation loads extra oxygen, which saturation figures rule out; the third puts the drive in stretch receptors, which regulate the depth of a breath rather than the urge to take one; and the fourth simply refuses the measurement rather than explaining it.)",
+          hi: "बच्चों की अपनी व्याख्या वही है जो लगभग हर कोई देता है, और वह ग़लत है। साँस रोकना समाप्त कराने वाली संवेदना शरीर का ऑक्सीजन की अनुपस्थिति देखना नहीं; वह शरीर का कार्बन डाइऑक्साइड का जमाव देखना है। नियंत्रण तंत्र से शुरू करो। श्वसन लय केंद्र मेडुला में बैठा है, और उसके बगल का रसायन-संवेदी क्षेत्र कार्बन डाइऑक्साइड की सांद्रता पर और उसके घुलने पर बनने वाले हाइड्रोजन आयनों पर अनुक्रिया करता है। वे बढ़ें तो केंद्र साँस की दर और गहराई बढ़ा देता है। ऑक्सीजन-संवेदी हैं भी — महाधमनी चाप और ग्रीवा पिंडों में — पर वे जानबूझकर असंवेदी हैं, और ऑक्सीजन बहुत नीचे गिरने तक लगभग कुछ नहीं कहते। ऐसा क्यों बनाया गया। क्योंकि कार्बन डाइऑक्साइड बेहतर यंत्र है। वह ठीक उसी अनुपात में बनती है जितना ऊतक काम कर रहे हों, तेज़ी से बदलती है, और रक्त उसका कोई भंडार नहीं रखता। इसके उलट ऑक्सीजन हीमोग्लोबिन पर बड़े भंडार में रखी रहती है, अतः उसका स्तर माँग से पीछे चलता है और सुस्त चेतावनी बनता। अपशिष्ट पर नज़र रखना काम मापने का अधिक फुर्तीला तरीक़ा है। अब प्रयोग। पहला बच्चा सामान्य कार्बन डाइऑक्साइड स्तर से शुरू करता है, और चेतावनी लगभग एक मिनट में असह्य देहली तक पहुँच जाती है। दूसरा बच्चा तीस सेकंड कार्बन डाइऑक्साइड बनने से तेज़ी से उड़ाने में लगाता है, अतः स्तर असामान्य रूप से नीचे से शुरू होता है। इसलिए चेतावनी को अधिक दूरी तय करनी पड़ती है और वह कहीं देर से आती है। निर्णायक बात: तेज़ साँस लेने से ऑक्सीजन लगभग बिलकुल नहीं जुड़ती — सामान्य साँस में भी फेफड़ों से निकलता हीमोग्लोबिन लगभग सत्तानबे प्रतिशत संतृप्त है, और और रखने की जगह नहीं। अतः दूसरे बच्चे ने चुप्पी ख़रीदी है, ईंधन नहीं। इसीलिए यह मारता है। साधारण मामले में कार्बन डाइऑक्साइड की चेतावनी तब बजती है जब ऑक्सीजन अब भी आरामदेह है, और तैराक चौड़े अंतर के साथ ऊपर आ जाता है। तेज़ साँस वाले मामले में चेतावनी उस बिंदु से आगे ठेल दी गई है जहाँ ऑक्सीजन नाज़ुक हो जाती है, अतः बिना किसी चेतावनी-लक्षण के चेतना जा सकती है — न हाँफना, न घबराहट, न संघर्ष। जीवनरक्षक इसे उथले पानी की बेहोशी कहते हैं, और वह कुशल तैराकों को मारती है, ठीक इसीलिए निगरानी वाले तरणतालों में साँस रोककर गोता लगाने से पहले होड़ में तेज़ साँस लेना प्रतिबंधित है। सीख का सामान्य आकार ढोने योग्य है: संवेदना संवेदी के बारे में प्रमाण है, दुनिया के बारे में नहीं। घुटन की अनुभूति कार्बन डाइऑक्साइड बताती है; वह ऑक्सीजन कभी बता ही नहीं सकी, और इसीलिए कार्बन मोनोऑक्साइड और शुद्ध नाइट्रोजन इतने ख़तरनाक हैं — वे चेतावनी को चुप रहने देते हैं जबकि ऑक्सीजन की आपूर्ति विफल हो रही होती है। (दूसरा उत्तर मानता है कि तेज़ साँस अतिरिक्त ऑक्सीजन भरती है, जिसे संतृप्ति के आँकड़े नकारते हैं; तीसरा प्रेरणा को तनाव-ग्राहियों में रखता है, जो साँस की गहराई नियंत्रित करते हैं, साँस लेने की तड़प नहीं; और चौथा माप की व्याख्या करने के बजाय उसे नकार भर देता है।)",
+          mr: "मुलांचे स्वतःचे स्पष्टीकरण तेच जे जवळपास प्रत्येकजण देतो, आणि ते चुकीचे आहे. श्वास रोखणे संपवणारी संवेदना म्हणजे शरीराने प्राणवायूची अनुपस्थिती पाहणे नव्हे; ती शरीराने कार्बन डायऑक्साइडचा साठा पाहणे आहे. नियंत्रण यंत्रणेपासून सुरुवात करा. श्वसन-लय केंद्र मेडुलात बसते, आणि त्याच्या शेजारचे रसायन-संवेदी क्षेत्र कार्बन डायऑक्साइडच्या संहतीला आणि तो विरघळताना बनणाऱ्या हायड्रोजन आयनांना प्रतिसाद देते. ते वाढले की केंद्र श्वासाचा दर आणि खोली वाढवते. प्राणवायू-संवेदी आहेतही — महारोहिणी कमानीत आणि ग्रीवा पिंडांत — पण ते मुद्दाम असंवेदी आहेत, आणि प्राणवायू खूप खाली उतरेपर्यंत जवळपास काहीच सांगत नाहीत. असे का बांधले. कारण कार्बन डायऑक्साइड हे अधिक चांगले यंत्र आहे. तो ऊती जितके काम करत असतील नेमक्या त्याच प्रमाणात बनतो, वेगाने बदलतो, आणि रक्त त्याचा कोणताही साठा ठेवत नाही. याउलट प्राणवायू हिमोग्लोबिनवर मोठ्या साठ्यात असतो, म्हणून त्याची पातळी मागणीमागे चालते आणि सुस्त इशारा बनली असती. टाकाऊ पदार्थावर लक्ष ठेवणे हा काम मोजण्याचा अधिक चपळ मार्ग. आता प्रयोग. पहिला मुलगा सामान्य कार्बन डायऑक्साइड पातळीपासून सुरू करतो, आणि इशारा सुमारे एका मिनिटात असह्य उंबरठ्यापर्यंत पोहोचतो. दुसरा मुलगा तीस सेकंद कार्बन डायऑक्साइड बनण्याहून वेगाने उडवण्यात घालवतो, म्हणून पातळी असामान्यपणे खालून सुरू होते. त्यामुळे इशाऱ्याला अधिक अंतर कापावे लागते आणि तो कितीतरी उशिरा येतो. निर्णायक मुद्दा: जोरात श्वास घेतल्याने प्राणवायू जवळपास अजिबात वाढत नाही — सामान्य श्वासातही फुप्फुसांतून निघणारे हिमोग्लोबिन सुमारे सत्याण्णव टक्के संतृप्त असते, आणि अधिक ठेवायला जागाच नाही. म्हणून दुसऱ्या मुलाने शांतता विकत घेतली आहे, इंधन नव्हे. म्हणूनच हे मारते. साधारण प्रकरणात कार्बन डायऑक्साइडचा इशारा तेव्हा वाजतो जेव्हा प्राणवायू अजून आरामदायी असतो, आणि जलतरणपटू रुंद फरकाने वर येतो. जोरात श्वास घेतलेल्या प्रकरणात इशारा त्या बिंदूपलीकडे ढकलला गेला आहे जिथे प्राणवायू नाजूक होतो, म्हणून कोणत्याही इशारा-लक्षणाविना शुद्ध हरपू शकते — ना धापा, ना घबराट, ना झटापट. जीवरक्षक याला उथळ पाण्यातली बेशुद्धी म्हणतात, आणि ती कुशल जलतरणपटूंना मारते, नेमके म्हणूनच देखरेखीच्या तलावांत श्वास रोखून सूर मारण्याआधी स्पर्धात्मक जोरात श्वास घेणे निषिद्ध आहे. धड्याचा सामान्य आकार वाहून नेण्याजोगा: संवेदना ही संवेदकाबद्दलचा पुरावा आहे, जगाबद्दलचा नव्हे. गुदमरण्याची जाणीव कार्बन डायऑक्साइड सांगते; ती प्राणवायू कधी सांगूच शकली नाही, आणि म्हणूनच कार्बन मोनॉक्साइड आणि शुद्ध नायट्रोजन इतके धोकादायक — ते इशाऱ्याला गप्प राहू देतात तर प्राणवायूचा पुरवठा कोसळत असतो. (दुसरे उत्तर मानते की जोरात श्वास अधिकचा प्राणवायू भरतो, जे संतृप्तीचे आकडे नाकारतात; तिसरे प्रेरणा ताण-ग्राहींत ठेवते, जे श्वासाची खोली नियंत्रित करतात, श्वास घेण्याची ओढ नव्हे; आणि चौथे मोजमापाचे स्पष्टीकरण देण्याऐवजी ते नाकारतेच.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A trekker flies to a Ladakh airstrip at over three thousand metres and walks off the aircraft feeling fine. Within hours she is breathing fast, has a headache, cannot sleep and feels worse rather than better as her breathing rate rises further. A companion who took a week to walk up has none of this. The oxygen in the air is the same percentage at both altitudes. Explain the whole sequence.",
+          hi: "एक पदयात्री तीन हज़ार मीटर से ऊपर के लद्दाख हवाई पट्टी पर उतरती है और विमान से भली-चंगी उतरती है। कुछ घंटों में वह तेज़ साँस ले रही है, सिरदर्द है, नींद नहीं आती और साँस की दर और बढ़ने पर वह बेहतर नहीं, बदतर महसूस करती है। जो साथी एक सप्ताह चलकर ऊपर आया उसे इनमें से कुछ नहीं। हवा में ऑक्सीजन का प्रतिशत दोनों ऊँचाइयों पर वही है। पूरा क्रम समझाओ।",
+          mr: "एक भटकंती करणारी तीन हजार मीटरहून उंच लडाखच्या धावपट्टीवर उतरते आणि विमानातून ठणठणीत उतरते. काही तासांतच ती वेगाने श्वास घेते आहे, डोके दुखते, झोप येत नाही आणि श्वासाचा दर आणखी वाढताच तिला बरे नव्हे तर वाईट वाटते. आठवडाभर चालत वर आलेल्या सोबत्याला यातले काहीच नाही. हवेतल्या प्राणवायूची टक्केवारी दोन्ही उंचीवर तीच आहे. अख्खा क्रम समजावा.",
+        },
+        choices: [
+          {
+            en: "The percentage is unchanged but the total pressure is not, so the partial pressure of oxygen is about two-thirds of what it was and haemoglobin leaves the lungs less than fully saturated. The carotid and aortic sensors finally have something to report, and she hyperventilates. But hyperventilation also blows off carbon dioxide, and carbon dioxide is what her rhythm centre normally runs on — so the blood turns alkaline, the centre is inhibited, and breathing becomes irregular, worst during sleep. The alkalosis also shifts the oxygen dissociation curve to the LEFT, so haemoglobin holds oxygen more tightly and unloads less of it in the tissues, which is why breathing harder can leave her feeling worse. Her companion's week of walking allowed the kidney to excrete bicarbonate, restoring the blood's acidity and letting the drive work again, and allowed more red cells to be made",
+            hi: "प्रतिशत वही है पर कुल दाब नहीं, अतः ऑक्सीजन का आंशिक दाब पहले का लगभग दो-तिहाई रह जाता है और हीमोग्लोबिन फेफड़ों से पूरी तरह संतृप्त हुए बिना निकलता है। ग्रीवा और महाधमनी के संवेदियों को आख़िरकार बताने को कुछ मिलता है, और वह तेज़ साँस लेने लगती है। पर तेज़ साँस कार्बन डाइऑक्साइड भी उड़ा देती है, और उसका लय केंद्र सामान्यतः उसी पर चलता है — अतः रक्त क्षारीय हो जाता है, केंद्र दब जाता है, और साँस अनियमित हो जाती है, नींद में सबसे बुरी। वही क्षारता ऑक्सीजन वियोजन वक्र को बाईं ओर भी खिसका देती है, अतः हीमोग्लोबिन ऑक्सीजन कसकर पकड़ता है और ऊतकों में कम छोड़ता है, इसीलिए अधिक ज़ोर से साँस लेने पर उसे और बुरा लग सकता है। उसके साथी के एक सप्ताह के चलने ने गुर्दे को बाइकार्बोनेट निकालने दिया, जिससे रक्त की अम्लता लौटी और प्रेरणा फिर काम करने लगी, और अधिक लाल कोशिकाएँ बनने दीं",
+            mr: "टक्केवारी तीच पण एकूण दाब नाही, म्हणून प्राणवायूचा आंशिक दाब आधीच्या सुमारे दोनतृतीयांश उरतो आणि हिमोग्लोबिन फुप्फुसांतून पूर्ण संतृप्त न होता निघते. ग्रीवा आणि महारोहिणीच्या संवेदकांना अखेर सांगायला काहीतरी मिळते, आणि ती जोरात श्वास घेऊ लागते. पण जोरात श्वास कार्बन डायऑक्साइडही उडवतो, आणि तिचे लय-केंद्र सामान्यतः त्यावरच चालते — म्हणून रक्त अल्कधर्मी होते, केंद्र दबते, आणि श्वास अनियमित होतो, झोपेत सर्वांत वाईट. तीच अल्कधर्मता प्राणवायू वियोजन वक्र डावीकडेही सरकवते, म्हणून हिमोग्लोबिन प्राणवायू घट्ट धरते आणि ऊतींत कमी सोडते, म्हणूनच अधिक जोरात श्वास घेतल्याने तिला अधिक वाईट वाटू शकते. तिच्या सोबत्याच्या आठवडाभर चालण्याने मूत्रपिंडाला बायकार्बोनेट बाहेर टाकू दिले, ज्याने रक्ताची आम्लता परतली आणि प्रेरणा पुन्हा काम करू लागली, आणि अधिक तांबड्या पेशी बनू दिल्या",
+          },
+          {
+            en: "The air at altitude contains a smaller percentage of oxygen and a larger percentage of nitrogen, so she is simply inhaling less oxygen with each breath and the symptoms are straightforward oxygen shortage",
+            hi: "ऊँचाई की हवा में ऑक्सीजन का प्रतिशत कम और नाइट्रोजन का अधिक होता है, अतः वह हर साँस में बस कम ऑक्सीजन ले रही है और लक्षण सीधे-सीधे ऑक्सीजन की कमी के हैं",
+            mr: "उंचीवरच्या हवेत प्राणवायूची टक्केवारी कमी आणि नायट्रोजनची अधिक असते, म्हणून ती प्रत्येक श्वासात फक्त कमी प्राणवायू घेते आहे आणि लक्षणे सरळसरळ प्राणवायूच्या तुटवड्याची",
+          },
+          {
+            en: "The low pressure makes the alveoli expand more than usual and stretch the lung tissue, and the headache and sleeplessness come from that mechanical strain rather than from anything to do with blood gases",
+            hi: "कम दाब से कूपिकाएँ सामान्य से अधिक फैलकर फेफड़े का ऊतक खींच देती हैं, और सिरदर्द तथा अनिद्रा रक्त-गैसों से जुड़ी किसी बात से नहीं, उसी यांत्रिक तनाव से आते हैं",
+            mr: "कमी दाबाने वायुकोश नेहमीहून अधिक फुगून फुप्फुसाची ऊती ताणतात, आणि डोकेदुखी तसेच निद्रानाश रक्त-वायूंशी संबंधित कशाने नव्हे, त्याच यांत्रिक ताणाने येतात",
+          },
+          {
+            en: "Breathing faster raises the blood's carbon dioxide because more air is moving through the lungs, and the acidity that results is what causes the headache; walking up slowly avoids it by keeping the breathing rate normal",
+            hi: "तेज़ साँस लेने से रक्त की कार्बन डाइऑक्साइड बढ़ती है क्योंकि अधिक हवा फेफड़ों से गुज़रती है, और उससे बनी अम्लता ही सिरदर्द कराती है; धीरे-धीरे ऊपर चढ़ना साँस की दर सामान्य रखकर उससे बचा लेता है",
+            mr: "जोरात श्वास घेतल्याने रक्तातला कार्बन डायऑक्साइड वाढतो कारण अधिक हवा फुप्फुसांतून जाते, आणि त्यातून बनणारी आम्लताच डोकेदुखी करते; सावकाश वर चढल्याने श्वासाचा दर सामान्य राहून ते टळते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The clue the question hands you is the one that trips most people: the air really is about twenty-one per cent oxygen at every altitude. What falls is the total pressure, and gases diffuse down PARTIAL pressure differences, not down percentages. At three and a half thousand metres the barometric pressure is roughly two-thirds of that at sea level, so the partial pressure of oxygen is roughly two-thirds too, and the gradient driving oxygen from alveolus into blood is correspondingly weaker. Haemoglobin, which would leave a sea-level lung about ninety-seven per cent saturated, now leaves it appreciably less saturated. STEP ONE, the sensors wake up. The carotid and aortic bodies, silent in ordinary life, finally have a fall in oxygen large enough to report. She hyperventilates. So far this is a correct response to a real problem. STEP TWO, the correction damages the controller. Hyperventilation removes carbon dioxide faster than metabolism makes it, so the blood's carbon dioxide falls and its pH rises — respiratory alkalosis. But carbon dioxide is exactly what the medullary rhythm centre normally runs on. With the usual stimulus stripped away, the drive to breathe becomes unstable: breathing waxes and wanes, and at night it can stop for spells and then resume with a gasp, which is why sleep at altitude is broken and unrefreshing even in people with no other symptoms. STEP THREE, and this is the part that answers the strange detail in the question. Alkalosis shifts the oxygen dissociation curve to the LEFT. A left shift means haemoglobin binds oxygen more tightly — helpful in the lung, where loading is already the problem, but unhelpful in the tissues, where the whole point is to let go. So breathing harder can improve loading and worsen unloading at the same time, and the trekker can feel no better, or worse, as her efforts increase. This is genuinely counter-intuitive, and it is why the answer cannot be a simple story about not enough oxygen. WHY THE COMPANION IS FINE. Acclimatisation is mostly the kidney's work and it takes days. The kidney excretes bicarbonate, which brings the blood's pH back down towards normal and restores a working carbon dioxide drive; breathing can then stay elevated without the alkalosis penalty. Over a longer period erythropoietin from the kidney raises the red cell count, and the tissues build more capillaries and more mitochondria. A week of walking buys all of this; a two-hour flight buys none of it. Hence the standard mountaineering rules — gain height slowly, climb high and sleep low, and treat headache with descent rather than with determination. Untreated, the same physiology progresses to fluid in the lungs or the brain, which is why acute mountain sickness is taken seriously rather than waited out. (The second answer misstates the composition of air, which does not change with altitude; the third invents a mechanical cause and would predict symptoms that appear instantly rather than over hours; and the fourth reverses the direction of the carbon dioxide change, since hyperventilation lowers it and produces alkalosis, not acidity.)",
+          hi: "प्रश्न जो सुराग़ देता है वही अधिकांश लोगों को गिराता है: हवा में ऑक्सीजन हर ऊँचाई पर सचमुच लगभग इक्कीस प्रतिशत ही है। जो गिरता है वह कुल दाब है, और गैसें प्रतिशत की नहीं, आंशिक दाब की ढाल पर विसरित होती हैं। साढ़े तीन हज़ार मीटर पर वायुदाब समुद्र तल का मोटे तौर पर दो-तिहाई है, अतः ऑक्सीजन का आंशिक दाब भी मोटे तौर पर दो-तिहाई, और कूपिका से रक्त तक ऑक्सीजन ठेलती ढाल उसी अनुपात में कमज़ोर। हीमोग्लोबिन, जो समुद्र तल के फेफड़े से लगभग सत्तानबे प्रतिशत संतृप्त निकलता, अब उल्लेखनीय रूप से कम संतृप्त निकलता है। पहला चरण, संवेदी जागते हैं। ग्रीवा और महाधमनी पिंड, जो साधारण जीवन में चुप रहते हैं, आख़िरकार ऑक्सीजन में इतनी बड़ी गिरावट पाते हैं कि बता सकें। वह तेज़ साँस लेने लगती है। यहाँ तक यह असली समस्या की सही अनुक्रिया है। दूसरा चरण, सुधार नियंत्रक को ही चोट पहुँचाता है। तेज़ साँस कार्बन डाइऑक्साइड को उपापचय के बनाने से तेज़ी से हटाती है, अतः रक्त की कार्बन डाइऑक्साइड गिरती है और उसका pH चढ़ता है — श्वसनी क्षारता। पर मेडुला का लय केंद्र सामान्यतः ठीक उसी पर चलता है। सामान्य उद्दीपन छिन जाने पर साँस की प्रेरणा अस्थिर हो जाती है: साँस बढ़ती-घटती है, और रात में कुछ देर रुककर हाँफ के साथ लौट सकती है, इसीलिए ऊँचाई पर नींद टूटी और अ-ताज़गी भरी होती है, उनमें भी जिनमें और कोई लक्षण न हो। तीसरा चरण, और यही प्रश्न के अजीब ब्योरे का उत्तर देता है। क्षारता ऑक्सीजन वियोजन वक्र को बाईं ओर खिसकाती है। बाईं ओर खिसकने का अर्थ है हीमोग्लोबिन ऑक्सीजन को अधिक कसकर बाँधता है — फेफड़े में सहायक, जहाँ भरना ही समस्या है, पर ऊतकों में हानिकारक, जहाँ पूरा प्रयोजन छोड़ना है। अतः अधिक ज़ोर से साँस लेना एक साथ भरना सुधार सकता है और उतारना बिगाड़ सकता है, और प्रयास बढ़ने पर पदयात्री को बेहतर न लगे, या बुरा लगे। यह सचमुच अंतर्ज्ञान के विरुद्ध है, और इसीलिए उत्तर ऑक्सीजन की कमी की सीधी कहानी नहीं हो सकता। साथी ठीक क्यों है। अनुकूलन अधिकतर गुर्दे का काम है और उसमें दिन लगते हैं। गुर्दा बाइकार्बोनेट निकालता है, जिससे रक्त का pH सामान्य की ओर लौटता है और कार्बन डाइऑक्साइड की काम करती प्रेरणा बहाल होती है; तब साँस बढ़ी रह सकती है बिना क्षारता का दंड चुकाए। लंबी अवधि में गुर्दे का इरिथ्रोपोइटिन लाल कोशिकाओं की गिनती बढ़ाता है, और ऊतक अधिक केशिकाएँ और अधिक सूत्रकणिकाएँ बनाते हैं। एक सप्ताह की पैदल चढ़ाई यह सब ख़रीद लेती है; दो घंटे की उड़ान कुछ नहीं ख़रीदती। इसीलिए पर्वतारोहण के मानक नियम हैं — ऊँचाई धीरे बढ़ाओ, ऊँचा चढ़ो और नीचा सोओ, और सिरदर्द का इलाज संकल्प से नहीं, उतरने से करो। उपचार न हो तो वही शरीरक्रिया फेफड़ों या मस्तिष्क में द्रव तक बढ़ जाती है, इसीलिए तीव्र पर्वतीय बीमारी को टालकर नहीं, गंभीरता से लिया जाता है। (दूसरा उत्तर हवा की संरचना ग़लत बताता है, जो ऊँचाई से बदलती नहीं; तीसरा यांत्रिक कारण गढ़ता है और ऐसे लक्षण बताता जो घंटों में नहीं, तुरंत उभरते; और चौथा कार्बन डाइऑक्साइड के बदलाव की दिशा उलट देता है, क्योंकि तेज़ साँस उसे घटाती है और अम्लता नहीं, क्षारता बनाती है।)",
+          mr: "प्रश्न जो सुगावा देतो तोच बहुतेकांना पाडतो: हवेत प्राणवायू प्रत्येक उंचीवर खरोखर सुमारे एकवीस टक्केच असतो. जे उतरते तो एकूण दाब, आणि वायू टक्केवारीच्या नव्हे, आंशिक दाबाच्या उतारावर विसरतात. साडेतीन हजार मीटरवर वातावरणीय दाब समुद्रसपाटीच्या ढोबळमानाने दोनतृतीयांश असतो, म्हणून प्राणवायूचा आंशिक दाबही ढोबळमानाने दोनतृतीयांश, आणि वायुकोशातून रक्तात प्राणवायू ढकलणारा उतार त्याच प्रमाणात दुर्बळ. हिमोग्लोबिन, जे समुद्रसपाटीच्या फुप्फुसातून सुमारे सत्याण्णव टक्के संतृप्त निघाले असते, ते आता लक्षणीयरीत्या कमी संतृप्त निघते. पहिली पायरी, संवेदक जागतात. ग्रीवा आणि महारोहिणी पिंड, जे साधारण आयुष्यात गप्प असतात, त्यांना अखेर प्राणवायूतली इतकी मोठी घसरण मिळते की सांगता यावे. ती जोरात श्वास घेऊ लागते. इथवर हा खऱ्या अडचणीला योग्य प्रतिसाद. दुसरी पायरी, दुरुस्तीच नियंत्रकाला इजा करते. जोरात श्वास कार्बन डायऑक्साइड चयापचय बनवण्याहून वेगाने काढतो, म्हणून रक्तातला कार्बन डायऑक्साइड उतरतो आणि त्याचा pH चढतो — श्वसनी अल्कधर्मता. पण मेडुलाचे लय-केंद्र सामान्यतः नेमक्या त्यावरच चालते. नेहमीचे उद्दीपन हिरावले जाताच श्वासाची प्रेरणा अस्थिर होते: श्वास वाढतो-घटतो, आणि रात्री काही काळ थांबून धापेसह परततो, म्हणूनच उंचीवरची झोप तुटक आणि ताजेतवाने न करणारी असते, ज्यांना दुसरे कोणतेच लक्षण नाही त्यांच्यातही. तिसरी पायरी, आणि हीच प्रश्नातल्या विचित्र तपशिलाचे उत्तर देते. अल्कधर्मता प्राणवायू वियोजन वक्र डावीकडे सरकवते. डावीकडे सरकणे म्हणजे हिमोग्लोबिन प्राणवायू अधिक घट्ट बांधते — फुप्फुसात उपयोगी, जिथे भरणेच अडचण आहे, पण ऊतींत अपायकारक, जिथे अख्खा हेतू सोडणे आहे. म्हणून अधिक जोरात श्वास घेणे एकाच वेळी भरणे सुधारू शकते आणि उतरवणे बिघडवू शकते, आणि प्रयत्न वाढताच भटकंती करणारीला बरे न वाटो, वा वाईट वाटो. हे खरोखर अंतःप्रेरणेविरुद्ध आहे, आणि म्हणूनच उत्तर प्राणवायू पुरेसा नाही अशी सोपी कथा असू शकत नाही. सोबती ठणठणीत का. अनुकूलन बहुतांशी मूत्रपिंडाचे काम आणि त्याला दिवस लागतात. मूत्रपिंड बायकार्बोनेट बाहेर टाकते, ज्याने रक्ताचा pH सामान्याकडे परततो आणि कार्बन डायऑक्साइडची काम करणारी प्रेरणा पुन्हा उभी राहते; मग श्वास वाढलेला राहू शकतो अल्कधर्मतेचा दंड न भरता. दीर्घ काळात मूत्रपिंडाचे इरिथ्रोपॉएटिन तांबड्या पेशींची संख्या वाढवते, आणि ऊती अधिक केशवाहिन्या आणि अधिक तंतुकणिका बांधतात. आठवडाभर चालणे हे सारे विकत घेते; दोन तासांचे उड्डाण काहीच घेत नाही. म्हणूनच गिर्यारोहणाचे प्रमाण नियम — उंची सावकाश वाढवा, उंच चढा आणि खाली झोपा, आणि डोकेदुखीवर निश्चयाने नव्हे, उतरून उपचार करा. उपचार न झाल्यास तीच शरीरक्रिया फुप्फुसांत वा मेंदूत द्रवापर्यंत वाढते, म्हणूनच तीव्र पर्वतीय आजार टाळून नव्हे, गांभीर्याने घेतला जातो. (दुसरे उत्तर हवेची रचना चुकीची सांगते, जी उंचीने बदलत नाही; तिसरे यांत्रिक कारण रचते आणि अशी लक्षणे सांगेल जी तासांत नव्हे, लगेच उमटतील; आणि चौथे कार्बन डायऑक्साइडच्या बदलाची दिशा उलटवते, कारण जोरात श्वास तो घटवतो आणि आम्लता नव्हे, अल्कधर्मता बनवतो.)",
+        },
+      },
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 15 — Body Fluids and Circulation                                */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "biology-11-body-fluids-and-circulation",
+    subject: "BIOLOGY",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 15 — Body Fluids and Circulation",
+      hi: "अध्याय 15 — शारीरिक द्रव तथा परिसंचरण",
+      mr: "प्रकरण 15 — शारीरिक द्रव आणि अभिसरण",
+    },
+    name: {
+      en: "The Tissue That Flows",
+      hi: "वह ऊतक जो बहता है",
+      mr: "वाहणारी ऊती",
+    },
+    summary: {
+      en: "Blood is a connective tissue whose matrix happens to be liquid, and once that is accepted the rest follows: a clot is a matrix set on demand and only where a vessel is torn, a blood group is a question about what your own body will attack, a heart that has been cut out goes on beating because the signal was never coming from the brain, and the fluid that leaks out of your capillaries all day gets home by a second set of pipes nobody notices until they block.",
+      hi: "रक्त एक संयोजी ऊतक है जिसका आधात्री द्रव होना संयोग है, और यह मान लेने पर बाक़ी सब चला आता है: थक्का माँग पर और केवल वहीं जमी आधात्री है जहाँ वाहिनी फटी हो, रक्त समूह यह प्रश्न है कि तुम्हारा अपना शरीर किस पर हमला करेगा, काटकर निकाला गया हृदय धड़कता रहता है क्योंकि संकेत मस्तिष्क से आ ही नहीं रहा था, और जो द्रव दिन भर तुम्हारी केशिकाओं से रिसता है वह पाइपों के दूसरे जाल से घर लौटता है जिसे कोई तब तक नहीं देखता जब तक वह रुक न जाए।",
+      mr: "रक्त ही संयोजी ऊती आहे जिचे आधारद्रव्य योगायोगाने द्रव आहे, आणि हे मान्य केल्यावर बाकी सारे मागोमाग येते: गुठळी म्हणजे मागणीनुसार आणि केवळ जिथे वाहिनी फाटली तिथेच घट्ट झालेले आधारद्रव्य, रक्तगट म्हणजे तुमचे स्वतःचे शरीर कशावर हल्ला करेल हा प्रश्न, कापून काढलेले हृदय धडधडत राहते कारण संकेत मेंदूकडून येतच नव्हता, आणि दिवसभर तुमच्या केशवाहिन्यांतून झिरपणारा द्रव नळांच्या दुसऱ्या जाळ्याने घरी परततो जे अडेपर्यंत कोणाच्या लक्षातही येत नाही.",
+    },
+    position: 15,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "the-tissue-whose-matrix-happens-to-be-liquid",
+        name: {
+          en: "The tissue whose matrix happens to be liquid",
+          hi: "वह ऊतक जिसकी आधात्री संयोगवश द्रव है",
+          mr: "जिचे आधारद्रव्य योगायोगाने द्रव आहे ती ऊती",
+        },
+        kind: "definition",
+        prompt: {
+          en: "Spin a sample and it separates into a straw-coloured fluid above and packed cells below, in a ratio of about eleven to nine — cells suspended in a matrix they did not make and do not touch. What kind of tissue is this?",
+          hi: "किसी नमूने को घुमाओ और वह ऊपर भूसे के रंग के द्रव और नीचे ठसी हुई कोशिकाओं में बँट जाता है, लगभग ग्यारह और नौ के अनुपात में — कोशिकाएँ ऐसी आधात्री में निलंबित जिसे उन्होंने बनाया नहीं और जिसे वे छूती नहीं। यह किस प्रकार का ऊतक है?",
+          mr: "एखादा नमुना फिरवा आणि तो वर पेंढ्याच्या रंगाचा द्रव आणि खाली ठासलेल्या पेशी असा वेगळा होतो, सुमारे अकरा आणि नऊच्या प्रमाणात — पेशी अशा आधारद्रव्यात निलंबित ज्याला त्यांनी बनवले नाही आणि ज्याला त्या स्पर्शत नाहीत. ही कोणत्या प्रकारची ऊती?",
+        },
+        statement: {
+          en: "Blood is a connective tissue in which the matrix is plasma, a liquid, and the cells are suspended in it rather than embedded in a solid ground substance.",
+          hi: "रक्त एक संयोजी ऊतक है जिसमें आधात्री प्लाज़्मा है, एक द्रव, और कोशिकाएँ किसी ठोस आधार पदार्थ में जड़ी होने के बजाय उसमें निलंबित हैं।",
+          mr: "रक्त ही संयोजी ऊती आहे जिच्यात आधारद्रव्य म्हणजे प्लाझ्मा, एक द्रव, आणि पेशी कोणत्या घन आधारपदार्थात जडलेल्या नसून त्यात निलंबित आहेत.",
+        },
+        detail: {
+          en: "The plasma is nine-tenths water and carries the proteins that do the rest of the work: albumin holding water in the vessel, globulins fighting infection and fibrinogen waiting to be needed.",
+          hi: "प्लाज़्मा दस में नौ भाग जल है और वे प्रोटीन ढोता है जो बाक़ी काम करते हैं: एल्ब्यूमिन जो जल को वाहिनी में रोके रखता है, ग्लोब्यूलिन जो संक्रमण से लड़ते हैं और फ़ाइब्रिनोजन जो अपनी ज़रूरत की प्रतीक्षा करता है।",
+          mr: "प्लाझ्मा दहापैकी नऊ भाग पाणी असून तो उरलेले काम करणारी प्रथिने वाहतो: अल्ब्युमिन जे पाणी वाहिनीत धरून ठेवते, ग्लोब्युलिन जे संसर्गाशी लढतात आणि फायब्रिनोजन जे आपल्या गरजेची वाट पाहते.",
+        },
+        extra: {
+          en: "Remove the fibrinogen and what is left is called serum, which is why a clotted sample yields a fluid that will never clot again.",
+          hi: "फ़ाइब्रिनोजन हटा दो और जो बचे उसे सीरम कहते हैं, इसीलिए जमे हुए नमूने से ऐसा द्रव मिलता है जो फिर कभी नहीं जमेगा।",
+          mr: "फायब्रिनोजन काढा आणि जे उरते त्याला सीरम म्हणतात, म्हणूनच गोठलेल्या नमुन्यातून असा द्रव मिळतो जो पुन्हा कधीच गोठणार नाही.",
+        },
+        pair: {
+          left: {
+            en: "A clotted sample yields a fluid that never clots again",
+            hi: "जमे नमूने से ऐसा द्रव मिलता है जो फिर कभी नहीं जमता",
+            mr: "गोठलेल्या नमुन्यातून पुन्हा कधीच न गोठणारा द्रव मिळतो",
+          },
+          right: {
+            en: "the tissue whose matrix happens to be liquid",
+            hi: "वह ऊतक जिसकी आधात्री संयोगवश द्रव है",
+            mr: "जिचे आधारद्रव्य योगायोगाने द्रव आहे ती ऊती",
+          },
+        },
+      },
+      {
+        id: "a-matrix-set-only-where-the-wall-is-torn",
+        name: {
+          en: "The matrix that sets only where the wall is torn",
+          hi: "वह आधात्री जो केवल वहीं जमती है जहाँ भित्ति फटी है",
+          mr: "केवळ भिंत फाटली तिथेच घट्ट होणारे ते आधारद्रव्य",
+        },
+        kind: "process",
+        prompt: {
+          en: "The ingredients are dissolved in every millilitre of blood in the body at all times, and yet the solid forms in one place only, within seconds, and stops there. What arrangement makes that possible?",
+          hi: "सामग्री शरीर के रक्त की हर मिलीलीटर में हर समय घुली रहती है, फिर भी ठोस केवल एक ही जगह बनता है, सेकंडों में, और वहीं रुक जाता है। यह किस व्यवस्था से संभव होता है?",
+          mr: "घटक शरीरातल्या रक्ताच्या प्रत्येक मिलिलिटरात सतत विरघळलेले असतात, तरीही घन केवळ एकाच जागी बनतो, सेकंदांत, आणि तिथेच थांबतो. ही कोणती व्यवस्था हे शक्य करते?",
+        },
+        statement: {
+          en: "Clotting is a cascade in which each activated factor activates the next, ending with thrombin converting soluble fibrinogen into a mesh of insoluble fibrin that traps cells and seals the tear.",
+          hi: "थक्का बनना एक शृंखला-अभिक्रिया है जिसमें हर सक्रिय कारक अगले को सक्रिय करता है, और अंत में थ्रोंबिन घुलनशील फ़ाइब्रिनोजन को अघुलनशील फ़ाइब्रिन की जाली में बदल देता है जो कोशिकाएँ फँसाकर दरार बंद कर देती है।",
+          mr: "गोठणे ही एक साखळी-अभिक्रिया आहे जिच्यात प्रत्येक सक्रिय घटक पुढच्याला सक्रिय करतो, आणि शेवटी थ्रॉम्बिन विरघळणाऱ्या फायब्रिनोजनचे न विरघळणाऱ्या फायब्रिनच्या जाळ्यात रूपांतर करते जे पेशी अडकवून फट बंद करते.",
+        },
+        detail: {
+          en: "The cascade amplifies at every step, so a trace of the first signal produces a large amount of the last, and it is triggered only by contact with tissue that healthy vessel lining hides from the blood.",
+          hi: "शृंखला हर चरण पर बढ़ती जाती है, अतः पहले संकेत की एक झलक अंतिम की बड़ी मात्रा बनाती है, और वह केवल उस ऊतक के संपर्क से चलती है जिसे स्वस्थ वाहिनी की परत रक्त से छिपाए रखती है।",
+          mr: "साखळी प्रत्येक पायरीवर वाढत जाते, म्हणून पहिल्या संकेताचा किंचित अंश शेवटच्याचे मोठे प्रमाण बनवतो, आणि ती केवळ त्या ऊतीच्या संपर्काने सुरू होते जी निरोगी वाहिनीचे अस्तर रक्तापासून लपवते.",
+        },
+        extra: {
+          en: "Calcium and vitamin K are both required, which is why a citrate tube in a laboratory keeps blood liquid simply by taking the calcium out of circulation.",
+          hi: "कैल्शियम और विटामिन K दोनों चाहिए, इसीलिए प्रयोगशाला की साइट्रेट नली रक्त को केवल कैल्शियम को चलन से हटाकर तरल बनाए रखती है।",
+          mr: "कॅल्शियम आणि जीवनसत्त्व K दोन्ही लागतात, म्हणूनच प्रयोगशाळेतली सायट्रेट नळी रक्त केवळ कॅल्शियम चलनातून काढून द्रवरूप ठेवते.",
+        },
+        pair: {
+          left: {
+            en: "Take the calcium out and the blood stays liquid",
+            hi: "कैल्शियम हटा दो और रक्त तरल रह जाता है",
+            mr: "कॅल्शियम काढा आणि रक्त द्रवरूप राहते",
+          },
+          right: {
+            en: "the matrix that sets only where the wall is torn",
+            hi: "वह आधात्री जो केवल वहीं जमती है जहाँ भित्ति फटी है",
+            mr: "केवळ भिंत फाटली तिथेच घट्ट होणारे ते आधारद्रव्य",
+          },
+        },
+      },
+      {
+        id: "the-question-about-what-your-body-will-attack",
+        name: {
+          en: "The question about what your own body will attack",
+          hi: "वह प्रश्न कि तुम्हारा अपना शरीर किस पर हमला करेगा",
+          mr: "तुमचे स्वतःचे शरीर कशावर हल्ला करेल हा प्रश्न",
+        },
+        kind: "classification",
+        prompt: {
+          en: "The label is not really about what you have on your cells; it is about what you have made antibodies against, and therefore about which donations would be destroyed inside you. What system is this?",
+          hi: "लेबल असल में इस बारे में नहीं कि तुम्हारी कोशिकाओं पर क्या है; वह इस बारे में है कि तुमने किसके विरुद्ध प्रतिरक्षी बनाए हैं, और इसलिए कौन-सा दान तुम्हारे भीतर नष्ट हो जाएगा। यह कौन-सी प्रणाली है?",
+          mr: "लेबल खरे तर तुमच्या पेशींवर काय आहे याबद्दल नाही; ते तुम्ही कशाविरुद्ध प्रतिपिंडे बनवली आहेत याबद्दल आहे, आणि म्हणून कोणते दान तुमच्या आत नष्ट होईल याबद्दल. ही कोणती प्रणाली?",
+        },
+        statement: {
+          en: "The ABO system names the antigens on the red cell surface, and each person carries antibodies in the plasma against precisely the antigens they lack, which is what makes an incompatible transfusion destroy the donated cells.",
+          hi: "ABO प्रणाली लाल कोशिका की सतह के प्रतिजनों का नाम रखती है, और हर व्यक्ति के प्लाज़्मा में ठीक उन्हीं प्रतिजनों के विरुद्ध प्रतिरक्षी होते हैं जो उसमें नहीं हैं, और इसी से असंगत आधान दान की गई कोशिकाएँ नष्ट कर देता है।",
+          mr: "ABO प्रणाली तांबड्या पेशीच्या पृष्ठभागावरील प्रतिजनांना नाव देते, आणि प्रत्येक व्यक्तीच्या प्लाझ्मात नेमक्या त्याच प्रतिजनांविरुद्ध प्रतिपिंडे असतात जी त्याच्यात नाहीत, आणि यामुळेच विसंगत रक्तसंक्रमण दान केलेल्या पेशी नष्ट करते.",
+        },
+        detail: {
+          en: "The universal donor has neither antigen and the universal recipient has neither antibody, which is why the two roles sit at opposite ends of the same table.",
+          hi: "सर्वदाता में कोई प्रतिजन नहीं और सर्वग्राही में कोई प्रतिरक्षी नहीं, इसीलिए दोनों भूमिकाएँ एक ही तालिका के उलटे सिरों पर बैठती हैं।",
+          mr: "सर्वदात्यात कोणतेही प्रतिजन नाही आणि सर्वग्राहीत कोणतेही प्रतिपिंड नाही, म्हणूनच दोन्ही भूमिका एकाच तक्त्याच्या उलट टोकांना बसतात.",
+        },
+        extra: {
+          en: "The Rh factor works differently, because antibodies against it are made only after an exposure, which is why the danger falls on a second pregnancy rather than a first.",
+          hi: "Rh कारक अलग ढंग से काम करता है, क्योंकि उसके विरुद्ध प्रतिरक्षी केवल एक बार सामना होने के बाद बनते हैं, इसीलिए ख़तरा पहली नहीं, दूसरी गर्भावस्था पर पड़ता है।",
+          mr: "Rh घटक वेगळ्या पद्धतीने काम करतो, कारण त्याविरुद्ध प्रतिपिंडे केवळ एकदा सामना झाल्यावरच बनतात, म्हणूनच धोका पहिल्या नव्हे, दुसऱ्या गर्भारपणावर येतो.",
+        },
+        pair: {
+          left: {
+            en: "The danger falls on the second pregnancy, not the first",
+            hi: "ख़तरा दूसरी गर्भावस्था पर पड़ता है, पहली पर नहीं",
+            mr: "धोका दुसऱ्या गर्भारपणावर येतो, पहिल्यावर नाही",
+          },
+          right: {
+            en: "the question about what your own body will attack",
+            hi: "वह प्रश्न कि तुम्हारा अपना शरीर किस पर हमला करेगा",
+            mr: "तुमचे स्वतःचे शरीर कशावर हल्ला करेल हा प्रश्न",
+          },
+        },
+      },
+      {
+        id: "the-organ-that-starts-itself",
+        name: {
+          en: "The organ that starts itself",
+          hi: "वह अंग जो स्वयं चालू होता है",
+          mr: "स्वतःच सुरू होणारा तो अवयव",
+        },
+        kind: "mechanism",
+        prompt: {
+          en: "Cut every nerve going to it and it carries on; lift it out entirely and, in warm salt solution, it goes on beating for a while with nothing attached. Where is the signal coming from?",
+          hi: "उस तक जाती हर तंत्रिका काट दो और वह चलता रहता है; उसे पूरा निकाल लो और गरम नमकीन घोल में वह कुछ देर बिना किसी जुड़ाव के धड़कता रहता है। संकेत आ कहाँ से रहा है?",
+          mr: "त्याच्याकडे जाणारी प्रत्येक चेता कापा आणि तो चालूच राहतो; त्याला पूर्ण बाहेर काढा आणि उबदार खाऱ्या द्रावणात तो काही काळ काहीही जोडलेले नसताना धडधडत राहतो. संकेत येतो कुठून?",
+        },
+        statement: {
+          en: "The heart is myogenic: the sino-atrial node in the wall of the right atrium generates its own rhythm, and the nerves only speed that rhythm up or slow it down.",
+          hi: "हृदय पेशीजन्य है: दायें अलिंद की भित्ति में बैठी शिरा-अलिंद गाँठ अपनी लय स्वयं बनाती है, और तंत्रिकाएँ केवल उस लय को तेज़ या धीमा करती हैं।",
+          mr: "हृदय स्नायुजन्य आहे: उजव्या कर्णिकेच्या भिंतीतली शिरा-कर्णिका गाठ स्वतःची लय स्वतः निर्माण करते, आणि चेता केवळ ती लय वेगवान वा मंद करतात.",
+        },
+        detail: {
+          en: "The impulse passes to a second node at the junction of the chambers, which delays it deliberately so that the atria finish emptying before the ventricles begin to squeeze.",
+          hi: "आवेग कोष्ठों की संधि पर बैठी दूसरी गाँठ तक जाता है, जो उसे जानबूझकर विलंबित करती है ताकि निलय दबना शुरू करें उससे पहले अलिंद ख़ाली हो चुकें।",
+          mr: "आवेग कप्प्यांच्या जोडावरच्या दुसऱ्या गाठीपर्यंत जातो, जी त्याला मुद्दाम उशिरा सोडते जेणेकरून निलये आवळणे सुरू करण्याआधी कर्णिका रिकाम्या व्हाव्यात.",
+        },
+        extra: {
+          en: "From there the Purkinje fibres carry it to the ventricle walls fast enough that the whole chamber contracts as one, squeezing upward from the apex rather than in a ripple.",
+          hi: "वहाँ से पुरकिंजे तंतु उसे निलय भित्तियों तक इतनी तेज़ी से ले जाते हैं कि पूरा कोष्ठ एक साथ सिकुड़े, और लहर की तरह नहीं बल्कि शीर्ष से ऊपर की ओर दबे।",
+          mr: "तिथून पुरकिंजे तंतू तो निलयभिंतींपर्यंत इतक्या वेगाने नेतात की अख्खा कप्पा एकाच वेळी आकुंचन पावावा, आणि लाटेसारखा नव्हे तर टोकापासून वर आवळावा.",
+        },
+        pair: {
+          left: {
+            en: "The whole chamber squeezes upward from the apex at once",
+            hi: "पूरा कोष्ठ एक साथ शीर्ष से ऊपर की ओर दबता है",
+            mr: "अख्खा कप्पा एकाच वेळी टोकापासून वर आवळतो",
+          },
+          right: {
+            en: "the organ that starts itself",
+            hi: "वह अंग जो स्वयं चालू होता है",
+            mr: "स्वतःच सुरू होणारा तो अवयव",
+          },
+        },
+      },
+      {
+        id: "why-a-fish-gets-one-circuit-and-you-get-two",
+        name: {
+          en: "Why a fish gets one circuit and you get two",
+          hi: "मछली को एक परिपथ और तुम्हें दो क्यों",
+          mr: "माशाला एक फेरा आणि तुम्हाला दोन का",
+        },
+        kind: "contrast",
+        prompt: {
+          en: "In one arrangement the blood loses its pressure at the breathing surface and must reach the whole body on what is left; in the other it comes back to be pushed again. Which distinction is this?",
+          hi: "एक व्यवस्था में रक्त श्वसन सतह पर अपना दाब खो देता है और जो बचा उसी पर पूरे शरीर तक पहुँचना पड़ता है; दूसरी में वह फिर से ठेले जाने के लिए लौट आता है। यह कौन-सा भेद है?",
+          mr: "एका व्यवस्थेत रक्त श्वसन पृष्ठभागावर आपला दाब गमावते आणि उरलेल्यावरच अख्ख्या शरीरापर्यंत पोहोचावे लागते; दुसरीत ते पुन्हा ढकलले जाण्यासाठी परतते. हा कोणता फरक?",
+        },
+        statement: {
+          en: "In single circulation the blood passes through the heart once per complete circuit, while in double circulation it passes through twice, once on the pulmonary loop and once on the systemic loop.",
+          hi: "एकल परिसंचरण में रक्त हर पूरे परिपथ पर हृदय से एक बार गुज़रता है, जबकि दोहरे परिसंचरण में दो बार, एक बार फुफ्फुसीय फेरे पर और एक बार दैहिक फेरे पर।",
+          mr: "एकेरी अभिसरणात रक्त प्रत्येक पूर्ण फेऱ्यात हृदयातून एकदा जाते, तर दुहेरी अभिसरणात दोनदा, एकदा फुप्फुसीय फेऱ्यावर आणि एकदा शारीरिक फेऱ्यावर.",
+        },
+        detail: {
+          en: "The second pass is what allows a high pressure to be sent to the body without bursting the delicate vessels of the lung, which receive a much gentler push from the other side.",
+          hi: "दूसरा फेरा ही शरीर तक ऊँचा दाब भेजना संभव बनाता है बिना फेफड़े की नाज़ुक वाहिनियाँ फोड़े, जिन्हें दूसरी ओर से कहीं नरम धक्का मिलता है।",
+          mr: "दुसरा फेराच शरीराकडे उच्च दाब पाठवणे शक्य करतो फुप्फुसाच्या नाजूक वाहिन्या न फोडता, ज्यांना दुसऱ्या बाजूकडून कितीतरी मवाळ धक्का मिळतो.",
+        },
+        extra: {
+          en: "An amphibian sits in between with a three-chambered heart, so oxygen-rich and oxygen-poor blood mix in the single ventricle and the body is supplied with a compromise.",
+          hi: "उभयचर बीच में बैठा है, तीन कोष्ठों वाले हृदय के साथ, अतः ऑक्सीजन-भरा और ऑक्सीजन-रहित रक्त इकलौते निलय में मिल जाते हैं और शरीर को समझौता मिलता है।",
+          mr: "उभयचर मधे बसतो, तीन कप्प्यांच्या हृदयासह, म्हणून प्राणवायूने भरलेले आणि प्राणवायूरहित रक्त एकाच निलयात मिसळतात आणि शरीराला तडजोड मिळते.",
+        },
+        pair: {
+          left: {
+            en: "A three-chambered heart supplies the body with a compromise",
+            hi: "तीन कोष्ठों वाला हृदय शरीर को समझौता देता है",
+            mr: "तीन कप्प्यांचे हृदय शरीराला तडजोड देते",
+          },
+          right: {
+            en: "why a fish gets one circuit and you get two",
+            hi: "मछली को एक परिपथ और तुम्हें दो क्यों",
+            mr: "माशाला एक फेरा आणि तुम्हाला दोन का",
+          },
+        },
+      },
+      {
+        id: "the-fluid-that-goes-home-by-another-road",
+        name: {
+          en: "The fluid that goes home by another road",
+          hi: "वह द्रव जो दूसरे रास्ते घर लौटता है",
+          mr: "दुसऱ्या रस्त्याने घरी परतणारा तो द्रव",
+        },
+        kind: "transport",
+        prompt: {
+          en: "Rather more leaks out of the capillaries each day than is drawn back in at their far end, and the surplus would swell every tissue within hours if a second set of vessels did not collect it. What is that surplus called?",
+          hi: "हर दिन केशिकाओं से जितना रिसता है उससे कम उनके दूसरे छोर पर वापस खींचा जाता है, और यदि वाहिनियों का दूसरा जाल उसे न बटोरे तो अतिरिक्त कुछ ही घंटों में हर ऊतक सुजा दे। उस अतिरिक्त को क्या कहते हैं?",
+          mr: "दररोज केशवाहिन्यांतून जितके झिरपते त्याहून कमी त्यांच्या दुसऱ्या टोकाला परत ओढले जाते, आणि वाहिन्यांचे दुसरे जाळे ते गोळा करत नसते तर अतिरिक्त काही तासांतच प्रत्येक ऊती सुजवले असते. त्या अतिरिक्ताला काय म्हणतात?",
+        },
+        statement: {
+          en: "Lymph is the tissue fluid collected by lymphatic vessels and returned to the veins, and it is blood plasma without the red cells and with far less protein.",
+          hi: "लसीका वह ऊतक द्रव है जिसे लसीका वाहिनियाँ बटोरकर शिराओं में लौटाती हैं, और वह लाल कोशिकाओं के बिना और कहीं कम प्रोटीन वाला रक्त प्लाज़्मा है।",
+          mr: "लसिका म्हणजे लसिका वाहिन्यांनी गोळा करून नीलांत परत केलेला ऊतीद्रव, आणि तो तांबड्या पेशींविना आणि कितीतरी कमी प्रथिने असलेला रक्तप्लाझ्मा आहे.",
+        },
+        detail: {
+          en: "It has no pump of its own and is moved by the squeezing of ordinary muscles and one-way valves, which is why standing still all day makes ankles swell and walking does not.",
+          hi: "उसका अपना कोई पंप नहीं और वह साधारण पेशियों के दबाव और एकतरफ़ा कपाटों से चलता है, इसीलिए दिन भर खड़े रहने से टख़ने सूज जाते हैं और चलने से नहीं।",
+          mr: "त्याला स्वतःचा पंप नाही आणि तो साध्या स्नायूंच्या दाबाने आणि एकेरी झडपांनी हलतो, म्हणूनच दिवसभर उभे राहिल्याने घोटे सुजतात आणि चालल्याने नाहीत.",
+        },
+        extra: {
+          en: "It also carries the fats absorbed from the intestine, which enter special lymph vessels in the villi rather than the blood capillaries beside them.",
+          hi: "वह आँत से अवशोषित वसा भी ढोता है, जो पास की रक्त केशिकाओं में नहीं, रसांकुरों की विशेष लसीका वाहिनियों में घुसती है।",
+          mr: "तो आतड्यातून शोषलेले मेदही वाहतो, जे शेजारच्या रक्तकेशवाहिन्यांत नव्हे तर रसांकुरांतल्या विशेष लसिका वाहिन्यांत शिरते.",
+        },
+        pair: {
+          left: {
+            en: "Fat from a meal enters the villi's own vessels, not the blood",
+            hi: "भोजन की वसा रक्त में नहीं, रसांकुरों की अपनी वाहिनियों में घुसती है",
+            mr: "जेवणातले मेद रक्तात नव्हे, रसांकुरांच्या स्वतःच्या वाहिन्यांत शिरते",
+          },
+          right: {
+            en: "the fluid that goes home by another road",
+            hi: "वह द्रव जो दूसरे रास्ते घर लौटता है",
+            mr: "दुसऱ्या रस्त्याने घरी परतणारा तो द्रव",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A doctor puts a stethoscope on a child's chest and hears two sounds in each beat, a longer low one followed by a shorter sharp one, and then a silence longer than either. A student says the first must be the atria contracting and the second the ventricles, and that the silence is the heart resting between beats. Both parts of that are wrong. What is actually making the sounds, and what is happening in the silence?",
+          hi: "डॉक्टर बच्चे की छाती पर स्टेथोस्कोप रखता है और हर धड़कन में दो ध्वनियाँ सुनता है, एक लंबी नीची और उसके बाद एक छोटी तीखी, और फिर दोनों से लंबी एक चुप्पी। विद्यार्थी कहता है कि पहली अलिंदों का सिकुड़ना होगी और दूसरी निलयों का, और चुप्पी धड़कनों के बीच हृदय का विश्राम। इसके दोनों हिस्से ग़लत हैं। ध्वनियाँ वस्तुतः बना क्या रहा है, और चुप्पी में हो क्या रहा है?",
+          mr: "डॉक्टर मुलाच्या छातीवर स्टेथोस्कोप ठेवतो आणि प्रत्येक ठोक्यात दोन ध्वनी ऐकतो, एक लांब खोल आणि नंतर एक छोटा तीक्ष्ण, आणि मग दोघांहून लांब एक शांतता. विद्यार्थी म्हणतो की पहिला कर्णिकांचे आकुंचन असेल आणि दुसरा निलयांचे, आणि शांतता म्हणजे ठोक्यांमधली हृदयाची विश्रांती. याचे दोन्ही भाग चुकीचे आहेत. ध्वनी प्रत्यक्षात कोण बनवतो आहे, आणि शांततेत काय घडते आहे?",
+        },
+        choices: [
+          {
+            en: "Both sounds are valves closing, not muscle contracting. The first is the atrioventricular valves shutting as the ventricles begin to squeeze, which keeps blood from going backwards into the atria; the second is the semilunar valves shutting as the ventricles relax, which keeps blood from falling back out of the arteries. Muscle contracting makes no sound worth hearing. And the silence is not rest in the sense of nothing happening — it is ventricular diastole, when the chambers are refilling, and most of that filling happens passively before the atria contract at all. It is also when the heart's own muscle gets its blood supply, because the coronary arteries can only fill while the ventricle wall is slack",
+            hi: "दोनों ध्वनियाँ कपाटों के बंद होने की हैं, पेशी के सिकुड़ने की नहीं। पहली अलिंद-निलय कपाटों की है जो निलयों के दबना शुरू करते ही बंद होते हैं और रक्त को अलिंदों में लौटने से रोकते हैं; दूसरी अर्धचंद्राकार कपाटों की है जो निलयों के ढीले पड़ते ही बंद होते हैं और रक्त को धमनियों से वापस गिरने से रोकते हैं। पेशी का सिकुड़ना सुनने लायक़ कोई ध्वनि नहीं बनाता। और चुप्पी इस अर्थ में विश्राम नहीं कि कुछ हो ही न रहा हो — वह निलय-शिथिलन है, जब कोष्ठ फिर भर रहे हैं, और उसमें से अधिकांश भराई अलिंदों के सिकुड़ने से पहले ही अपने आप हो जाती है। तभी हृदय की अपनी पेशी को रक्त भी मिलता है, क्योंकि हृद्धमनियाँ केवल तभी भर सकती हैं जब निलय भित्ति ढीली हो",
+            mr: "दोन्ही ध्वनी झडपा मिटण्याचे आहेत, स्नायू आकुंचनाचे नव्हेत. पहिला कर्णिका-निलय झडपांचा जो निलये आवळू लागताच मिटतो आणि रक्ताला कर्णिकांत परतण्यापासून रोखतो; दुसरा अर्धचंद्राकृती झडपांचा जो निलये सैल होताच मिटतो आणि रक्ताला रोहिण्यांतून परत पडण्यापासून रोखतो. स्नायूचे आकुंचन ऐकण्याजोगा कोणताही ध्वनी बनवत नाही. आणि शांतता या अर्थाने विश्रांती नाही की काहीच घडत नसावे — ती निलय-शिथिलन आहे, जेव्हा कप्पे पुन्हा भरत असतात, आणि त्यातली बहुतांश भरण कर्णिका आकुंचन पावण्याआधीच आपोआप होते. तेव्हाच हृदयाच्या स्वतःच्या स्नायूला रक्तही मिळते, कारण हृद्रोहिण्या केवळ तेव्हाच भरू शकतात जेव्हा निलयभिंत सैल असते",
+          },
+          {
+            en: "The first sound is the atria contracting and the second the ventricles contracting, exactly as the student says, and the silence is the true resting phase during which no chamber moves at all",
+            hi: "पहली ध्वनि अलिंदों का सिकुड़ना है और दूसरी निलयों का, ठीक जैसा विद्यार्थी कहता है, और चुप्पी वह सच्ची विश्राम प्रावस्था है जिसमें कोई कोष्ठ हिलता ही नहीं",
+            mr: "पहिला ध्वनी कर्णिकांचे आकुंचन आणि दुसरा निलयांचे, नेमके विद्यार्थी म्हणतो तसे, आणि शांतता ही ती खरी विश्रांती प्रावस्था जिच्यात कोणताही कप्पा हलतच नाही",
+          },
+          {
+            en: "The sounds are made by blood rushing through the narrow valve openings, so a healthy heart makes them and a diseased one is silent, and the pause is simply the gap between two spurts of flow",
+            hi: "ध्वनियाँ रक्त के सँकरे कपाट-मुखों से बहने की हैं, अतः स्वस्थ हृदय उन्हें बनाता है और रोगग्रस्त चुप रहता है, और ठहराव बस दो प्रवाह-फुहारों के बीच का अंतराल है",
+            mr: "ध्वनी रक्त अरुंद झडप-तोंडांतून वाहण्याचे आहेत, म्हणून निरोगी हृदय ते बनवते आणि रोगट गप्प राहते, आणि विराम म्हणजे फक्त दोन प्रवाह-फवाऱ्यांमधले अंतर",
+          },
+          {
+            en: "The first sound is the semilunar valves opening and the second is the atrioventricular valves opening, and the silence is the time the impulse takes to travel from the first node to the second",
+            hi: "पहली ध्वनि अर्धचंद्राकार कपाटों के खुलने की है और दूसरी अलिंद-निलय कपाटों के खुलने की, और चुप्पी वह समय है जो आवेग को पहली गाँठ से दूसरी तक जाने में लगता है",
+            mr: "पहिला ध्वनी अर्धचंद्राकृती झडपा उघडण्याचा आणि दुसरा कर्णिका-निलय झडपा उघडण्याचा, आणि शांतता म्हणजे आवेगाला पहिल्या गाठीपासून दुसरीपर्यंत जाण्यास लागणारा वेळ",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The student has made the natural assumption that a sound must come from the part that is doing the work. In the heart it does not: contracting muscle is almost silent, and what you hear is the abrupt stopping of moving blood by a valve slamming shut. FIRST SOUND. As the ventricles begin to contract, pressure inside them rises above the pressure in the atria, and the atrioventricular valves — the tricuspid on the right and the bicuspid on the left — snap shut. Blood that was about to be pushed backwards is stopped dead, the valve cusps and the tensed chordae vibrate, and the result is the longer, lower first sound. Note the timing: this sound marks the BEGINNING of ventricular systole, not the atria's work, which finished a moment earlier and made no sound at all. SECOND SOUND. When the ventricles finish contracting and relax, the pressure inside them falls below the pressure in the aorta and the pulmonary artery. Blood in those arteries starts to fall back and is caught by the semilunar valves, which shut sharply. That gives the shorter, higher second sound, and it marks the beginning of diastole. So the two sounds bracket ventricular systole: the first opens it, the second closes it. THE SILENCE, which is the more interesting half of the question. It is diastole, and calling it rest is misleading in two ways. First, work is being done: the ventricles are refilling, and about seventy per cent of that filling is passive — blood flows in from the atria simply because the relaxed ventricle is at low pressure — with atrial contraction topping up the rest. A heart in which the atria fail entirely can still function reasonably at rest for this reason. Second, and clinically important, diastole is when the heart feeds itself. The coronary arteries run through the ventricle wall, and while that wall is contracting it squeezes them almost shut, so cardiac muscle receives its own blood supply mainly during the pause. That has a consequence a pupil can work out: a heart beating very fast shortens diastole far more than systole, so it both fills less and feeds itself less — which is why a sustained very high heart rate is dangerous rather than merely tiring, and why some drugs for angina work by slowing the heart to lengthen the pause. One extension worth knowing. If a valve fails to close properly, blood leaks backwards through a gap it should not be crossing, and the turbulence makes an extra whooshing sound between the normal two. That is a murmur, and its timing tells a clinician which valve is at fault — an examination that works entirely by listening to when in the cycle a sound occurs. (The second answer restates the student's error; the third is refuted by the fact that smooth flow through an open valve is quiet and that murmurs indicate disease rather than health; and the fourth reverses the valve events, since sounds accompany closing rather than opening.)",
+          hi: "विद्यार्थी ने स्वाभाविक मान्यता बना ली है कि ध्वनि उसी हिस्से से आती होगी जो काम कर रहा है। हृदय में ऐसा नहीं: सिकुड़ती पेशी लगभग चुप है, और तुम जो सुनते हो वह किसी कपाट के धड़ाम से बंद होकर चलते रक्त को अचानक रोक देना है। पहली ध्वनि। जैसे ही निलय सिकुड़ना शुरू करते हैं, उनके भीतर का दाब अलिंदों के दाब से ऊपर चढ़ जाता है, और अलिंद-निलय कपाट — दाईं ओर त्रिवलनी और बाईं ओर द्विवलनी — चटाक से बंद हो जाते हैं। जो रक्त पीछे ठेला जाने वाला था वह ठप हो जाता है, कपाट के फलक और तने हुए तंतु कंपते हैं, और परिणाम है लंबी, नीची पहली ध्वनि। समय पर ध्यान दो: यह ध्वनि निलय-संकुचन का आरंभ बताती है, अलिंदों का काम नहीं, जो एक क्षण पहले पूरा हो चुका और जिसने कोई ध्वनि की ही नहीं। दूसरी ध्वनि। निलय सिकुड़ना पूरा करके ढीले पड़ते हैं तो उनके भीतर का दाब महाधमनी और फुफ्फुसीय धमनी के दाब से नीचे गिर जाता है। उन धमनियों का रक्त वापस गिरने लगता है और अर्धचंद्राकार कपाट उसे पकड़ लेते हैं, जो तीखे ढंग से बंद होते हैं। इससे छोटी, ऊँची दूसरी ध्वनि मिलती है, और वह शिथिलन का आरंभ बताती है। अतः दोनों ध्वनियाँ निलय-संकुचन को घेरती हैं: पहली उसे खोलती है, दूसरी उसे बंद करती है। चुप्पी, जो प्रश्न का अधिक रोचक आधा है। वह शिथिलन है, और उसे विश्राम कहना दो तरह से भ्रामक है। पहला, काम हो रहा है: निलय फिर भर रहे हैं, और उस भराई का लगभग सत्तर प्रतिशत अपने आप होता है — रक्त अलिंदों से केवल इसलिए बहकर आता है कि ढीला निलय कम दाब पर है — और बाक़ी अलिंदों का सिकुड़ना पूरा कर देता है। इसीलिए जिस हृदय के अलिंद पूरी तरह विफल हों वह भी विश्राम में ठीक-ठाक चल सकता है। दूसरा, और चिकित्सकीय रूप से महत्त्वपूर्ण, शिथिलन में ही हृदय स्वयं को खिलाता है। हृद्धमनियाँ निलय भित्ति से होकर जाती हैं, और वह भित्ति जब सिकुड़ रही हो तो उन्हें लगभग बंद कर देती है, अतः हृदय पेशी को अपना रक्त मुख्यतः ठहराव में मिलता है। इसका एक परिणाम विद्यार्थी स्वयं निकाल सकता है: बहुत तेज़ धड़कता हृदय संकुचन से कहीं अधिक शिथिलन को छोटा करता है, अतः वह कम भरता भी है और स्वयं को कम खिलाता भी है — इसीलिए लगातार बहुत ऊँची हृदय दर केवल थकाने वाली नहीं, ख़तरनाक है, और इसीलिए हृदय-शूल की कुछ औषधियाँ हृदय को धीमा करके ठहराव लंबा करती हैं। एक विस्तार जानने योग्य है। यदि कोई कपाट ठीक से बंद न हो, तो रक्त ऐसी दरार से पीछे रिसता है जिससे उसे नहीं गुज़रना चाहिए, और वह विक्षोभ सामान्य दो ध्वनियों के बीच अतिरिक्त सरसराहट बनाता है। वही मर्मर है, और उसका समय चिकित्सक को बता देता है कि कौन-सा कपाट दोषी है — ऐसी जाँच जो पूरी तरह इस पर चलती है कि चक्र में ध्वनि कब उठी। (दूसरा उत्तर विद्यार्थी की भूल दोहरा देता है; तीसरे का खंडन इस तथ्य से होता है कि खुले कपाट से चिकना प्रवाह चुप रहता है और मर्मर स्वास्थ्य नहीं, रोग बताता है; और चौथा कपाटों की घटनाएँ उलट देता है, क्योंकि ध्वनियाँ खुलने के नहीं, बंद होने के साथ आती हैं।)",
+          mr: "विद्यार्थ्याने स्वाभाविक गृहीतक बांधले आहे की ध्वनी काम करणाऱ्या भागातूनच येत असावा. हृदयात तसे नाही: आकुंचन पावणारा स्नायू जवळपास गप्प असतो, आणि तुम्ही जे ऐकता ते एखादी झडप धाडकन मिटून वाहत्या रक्ताला अचानक थांबवणे. पहिला ध्वनी. निलये आकुंचन सुरू करताच त्यांच्यातला दाब कर्णिकांच्या दाबावर चढतो, आणि कर्णिका-निलय झडपा — उजवीकडे त्रिदल आणि डावीकडे द्विदल — खटकन मिटतात. जे रक्त मागे ढकलले जाणार होते ते जागच्या जागी थांबते, झडपेची पाती आणि ताणलेले तंतू थरथरतात, आणि परिणाम म्हणजे लांब, खोल पहिला ध्वनी. वेळेकडे लक्ष द्या: हा ध्वनी निलय-आकुंचनाची सुरुवात दाखवतो, कर्णिकांचे काम नव्हे, जे क्षणभर आधीच संपले आणि ज्याने कोणताही ध्वनी केलाच नाही. दुसरा ध्वनी. निलये आकुंचन पूर्ण करून सैल होतात तेव्हा त्यांच्यातला दाब महारोहिणी आणि फुप्फुस रोहिणीच्या दाबाखाली उतरतो. त्या रोहिण्यांतले रक्त परत पडू लागते आणि अर्धचंद्राकृती झडपा त्याला पकडतात, ज्या तीक्ष्णपणे मिटतात. यातून छोटा, उंच दुसरा ध्वनी मिळतो, आणि तो शिथिलनाची सुरुवात दाखवतो. म्हणून दोन्ही ध्वनी निलय-आकुंचनाला कंस घालतात: पहिला ते उघडतो, दुसरा ते मिटवतो. शांतता, जो प्रश्नाचा अधिक रोचक अर्धा भाग. ती शिथिलन आहे, आणि तिला विश्रांती म्हणणे दोन प्रकारे दिशाभूल करते. पहिले, काम घडते आहे: निलये पुन्हा भरत आहेत, आणि त्या भरणीपैकी सुमारे सत्तर टक्के आपोआप होते — रक्त कर्णिकांतून केवळ यासाठी वाहत येते की सैल निलय कमी दाबावर आहे — आणि उरलेले कर्णिकांचे आकुंचन पूर्ण करते. म्हणूनच ज्या हृदयाच्या कर्णिका पूर्णपणे निकामी असतील तेही विश्रांतीत बऱ्यापैकी चालू शकते. दुसरे, आणि वैद्यकीयदृष्ट्या महत्त्वाचे, शिथिलनातच हृदय स्वतःला खाऊ घालते. हृद्रोहिण्या निलयभिंतीतून जातात, आणि ती भिंत आकुंचन पावत असताना त्यांना जवळपास मिटवते, म्हणून हृदयस्नायूला स्वतःचे रक्त प्रामुख्याने विरामातच मिळते. याचा एक परिणाम विद्यार्थी स्वतः काढू शकतो: फार वेगाने धडधडणारे हृदय आकुंचनाहून कितीतरी अधिक शिथिलन आखडते, म्हणून ते कमी भरतेही आणि स्वतःला कमी खाऊ घालतेही — म्हणूनच सतत फार उच्च हृदयदर केवळ थकवणारा नव्हे, धोकादायक आहे, आणि म्हणूनच हृदयशूलाची काही औषधे हृदय मंद करून विराम लांबवतात. एक विस्तार जाणण्याजोगा. एखादी झडप नीट मिटली नाही, तर रक्त अशा फटीतून मागे झिरपते जिच्यातून त्याने जाऊ नये, आणि तो खळबळाट सामान्य दोन ध्वनींमध्ये अधिकचा सळसळ ध्वनी बनवतो. तोच मर्मर, आणि त्याची वेळ वैद्याला सांगते की कोणती झडप दोषी — अशी तपासणी जी पूर्णपणे चक्रात ध्वनी कधी उमटला यावर चालते. (दुसरे उत्तर विद्यार्थ्याची चूकच पुन्हा सांगते; तिसऱ्याचे खंडन या वस्तुस्थितीने होते की उघड्या झडपेतून गुळगुळीत प्रवाह गप्प असतो आणि मर्मर आरोग्य नव्हे, रोग सांगतो; आणि चौथे झडपांच्या घटना उलटवते, कारण ध्वनी उघडण्याबरोबर नव्हे, मिटण्याबरोबर येतात.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A woman whose blood lacks the Rh antigen carries a child who has it. The first pregnancy passes without incident and the baby is healthy. In a later pregnancy with another Rh-positive child, the baby's red cells are destroyed before birth. The mother's own health is unaffected throughout, and an injection given at the right moment prevents the whole problem. Account for the pattern — why the first child escapes, why the second does not, and what the injection can possibly be doing.",
+          hi: "जिस स्त्री के रक्त में Rh प्रतिजन नहीं है वह ऐसा शिशु धारण करती है जिसमें वह है। पहली गर्भावस्था बिना किसी घटना के बीत जाती है और शिशु स्वस्थ है। बाद की किसी गर्भावस्था में, दूसरे Rh-धनात्मक शिशु के साथ, शिशु की लाल कोशिकाएँ जन्म से पहले ही नष्ट हो जाती हैं। पूरे समय माता का अपना स्वास्थ्य अप्रभावित रहता है, और सही क्षण पर दिया गया एक टीका पूरी समस्या रोक देता है। इस ढर्रे का हिसाब दो — पहला शिशु क्यों बच जाता है, दूसरा क्यों नहीं, और वह टीका आख़िर कर क्या सकता है।",
+          mr: "ज्या स्त्रीच्या रक्तात Rh प्रतिजन नाही ती असे मूल धारण करते ज्याच्यात ते आहे. पहिले गर्भारपण कोणत्याही घटनेविना जाते आणि बाळ निरोगी असते. पुढच्या एखाद्या गर्भारपणात, दुसऱ्या Rh-धन बाळासह, बाळाच्या तांबड्या पेशी जन्माआधीच नष्ट होतात. अख्खा काळ आईचे स्वतःचे आरोग्य अबाधित राहते, आणि योग्य क्षणी दिलेले एक इंजेक्शन अख्खी अडचण टाळते. या साच्याचा हिशेब द्या — पहिले बाळ का वाचते, दुसरे का नाही, आणि ते इंजेक्शन नेमके करू तरी काय शकते.",
+        },
+        choices: [
+          {
+            en: "Unlike the ABO antibodies, which are present from infancy, anti-Rh antibodies are made only after an exposure. Maternal and foetal circulations do not mix during a normal pregnancy, so the first child is not attacked; but at delivery the placenta separates and foetal red cells enter the mother's blood, and she is sensitised then. Her immune memory now holds anti-Rh antibodies, and these are of a class small enough to cross the placenta — so in a later Rh-positive pregnancy they reach the foetus and destroy its red cells. Her own cells are never at risk because they carry no Rh antigen at all. The injection is anti-Rh antibody given to the MOTHER around delivery: it clears the foetal cells from her circulation before her own immune system can register them, so no memory is ever formed",
+            hi: "ABO प्रतिरक्षियों के विपरीत, जो शैशव से मौजूद रहते हैं, Rh-रोधी प्रतिरक्षी केवल एक बार सामना होने के बाद बनते हैं। सामान्य गर्भावस्था में माता और भ्रूण का परिसंचरण मिलता नहीं, अतः पहले शिशु पर हमला नहीं होता; पर प्रसव पर अपरा अलग होती है और भ्रूण की लाल कोशिकाएँ माता के रक्त में घुस जाती हैं, और वह तभी संवेदित होती है। अब उसकी प्रतिरक्षा स्मृति में Rh-रोधी प्रतिरक्षी हैं, और वे उस वर्ग के हैं जो अपरा पार करने लायक़ छोटे हैं — अतः बाद की किसी Rh-धनात्मक गर्भावस्था में वे भ्रूण तक पहुँचकर उसकी लाल कोशिकाएँ नष्ट कर देते हैं। उसकी अपनी कोशिकाएँ कभी ख़तरे में नहीं क्योंकि उन पर Rh प्रतिजन है ही नहीं। टीका माता को प्रसव के आसपास दिया जाने वाला Rh-रोधी प्रतिरक्षी है: वह भ्रूण की कोशिकाएँ उसके परिसंचरण से हटा देता है उससे पहले कि उसकी अपनी प्रतिरक्षा प्रणाली उन्हें दर्ज करे, अतः स्मृति कभी बनती ही नहीं",
+            mr: "ABO प्रतिपिंडांच्या उलट, जी बालपणापासून असतात, Rh-विरोधी प्रतिपिंडे केवळ एकदा सामना झाल्यावरच बनतात. सामान्य गर्भारपणात आई आणि गर्भाचे अभिसरण मिसळत नाही, म्हणून पहिल्या बाळावर हल्ला होत नाही; पण प्रसूतीच्या वेळी वार वेगळी होते आणि गर्भाच्या तांबड्या पेशी आईच्या रक्तात शिरतात, आणि ती तेव्हाच संवेदित होते. आता तिच्या प्रतिकार-स्मृतीत Rh-विरोधी प्रतिपिंडे आहेत, आणि ती त्या वर्गाची आहेत जी वार ओलांडण्याइतकी लहान आहेत — म्हणून पुढच्या एखाद्या Rh-धन गर्भारपणात ती गर्भापर्यंत पोहोचून त्याच्या तांबड्या पेशी नष्ट करतात. तिच्या स्वतःच्या पेशी कधीच धोक्यात नाहीत कारण त्यांच्यावर Rh प्रतिजन नाहीच. इंजेक्शन म्हणजे आईला प्रसूतीच्या सुमारास दिले जाणारे Rh-विरोधी प्रतिपिंड: ते गर्भाच्या पेशी तिच्या अभिसरणातून काढून टाकते तिची स्वतःची प्रतिकारयंत्रणा त्यांची नोंद घेण्याआधीच, म्हणून स्मृती कधी बनतच नाही",
+          },
+          {
+            en: "The mother's antibodies grow stronger with each pregnancy simply because she is older, and the injection is a general immune suppressant that weakens all her antibodies for the duration of the pregnancy",
+            hi: "माता के प्रतिरक्षी हर गर्भावस्था के साथ बस इसलिए प्रबल होते जाते हैं कि वह बड़ी हो रही है, और टीका एक सामान्य प्रतिरक्षा-दमनकारी है जो गर्भावस्था भर उसके सारे प्रतिरक्षी कमज़ोर कर देता है",
+            mr: "आईची प्रतिपिंडे प्रत्येक गर्भारपणासोबत फक्त यासाठी बळकट होतात की ती मोठी होते आहे, आणि इंजेक्शन हे एक सामान्य प्रतिकार-दमनकारी आहे जे गर्भारपणभर तिची सारी प्रतिपिंडे दुर्बळ करते",
+          },
+          {
+            en: "The first child is Rh-negative like the mother and therefore safe, and the second happens to be Rh-positive, so the pattern is a matter of which child inherited the antigen rather than of any sensitisation",
+            hi: "पहला शिशु माता की तरह Rh-ऋणात्मक है और इसलिए सुरक्षित, और दूसरा संयोग से Rh-धनात्मक निकलता है, अतः ढर्रा किसी संवेदन का नहीं बल्कि इसका मामला है कि प्रतिजन किस शिशु को मिला",
+            mr: "पहिले बाळ आईसारखे Rh-ऋण असते आणि म्हणून सुरक्षित, आणि दुसरे योगायोगाने Rh-धन निघते, म्हणून हा साचा कोणत्याही संवेदनाचा नव्हे तर प्रतिजन कोणत्या बाळाला मिळाला याचा मामला",
+          },
+          {
+            en: "The injection is given to the baby immediately after birth to replace its destroyed red cells, and the first child escapes because the placenta is thicker in a first pregnancy and blocks the antibodies",
+            hi: "टीका शिशु को जन्म के तुरंत बाद उसकी नष्ट हुई लाल कोशिकाएँ बदलने के लिए दिया जाता है, और पहला शिशु इसलिए बच जाता है कि पहली गर्भावस्था में अपरा मोटी होती है और प्रतिरक्षियों को रोक देती है",
+            mr: "इंजेक्शन बाळाला जन्मानंतर लगेच त्याच्या नष्ट झालेल्या तांबड्या पेशी बदलण्यासाठी दिले जाते, आणि पहिले बाळ यासाठी वाचते की पहिल्या गर्भारपणात वार जाड असते आणि प्रतिपिंडे अडवते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "This question is really about the difference between two kinds of antibody, and the whole pattern falls out of it. THE ABO CASE, for contrast. A person of blood group A carries anti-B antibodies in the plasma from early infancy without ever having met group B blood, because similar molecules are common on gut bacteria and in food. Those antibodies are large, and large antibodies do not cross the placenta. THE Rh CASE. There are no naturally occurring anti-Rh antibodies. An Rh-negative person makes them only after being exposed to Rh-positive red cells, exactly like any other immune response — first exposure produces a slow, modest response and lasting memory; second exposure produces a fast, large one. NOW THE PREGNANCY. During a normal pregnancy the two circulations are kept apart by the placenta; nutrients and gases cross by diffusion, but cells do not. So a first Rh-positive foetus is not attacked, and indeed the mother has nothing yet to attack it with. At delivery, the placenta separates from the uterine wall and a quantity of foetal blood does enter the mother's circulation. She encounters the Rh antigen for the first time, mounts a primary response, and — critically — retains memory cells. In a later Rh-positive pregnancy the small leaks that occur during gestation are enough to trigger a rapid secondary response. And the antibodies she now makes are of a class small enough to be transported across the placenta, which is the one property that turns her immune memory into a threat to the foetus. They reach the baby's circulation and destroy its red cells, causing the anaemia and jaundice of haemolytic disease of the newborn. WHY THE MOTHER IS UNHARMED. Her own red cells carry no Rh antigen for the antibodies to bind. She is producing something dangerous only to somebody else. THE INJECTION is the elegant part, and it is worth working out rather than memorising. It is anti-Rh antibody given to the MOTHER within about seventy-two hours of delivery — that is, ready-made antibody, not a vaccine. It binds and clears the foetal cells from her circulation before her own immune system can process them and form memory. Passive immunity is used precisely to PREVENT active immunity from developing. The consequence is that she remains unsensitised, and the next pregnancy begins from the same clean start as the first. It has to be repeated after every Rh-positive delivery, miscarriage or termination, because each one is a fresh chance for sensitisation. This is one of the clearest cases in medicine of a problem solved by understanding a mechanism rather than by treating a symptom, and it turned a common cause of infant death into a rarity. (The second answer replaces immune memory with age and misdescribes the injection; the third contradicts the premise, which states the second child is Rh-positive and the first was too; and the fourth gives the injection to the wrong person at a point where it could no longer prevent anything, and invents a placental thickness that has no such role.)",
+          hi: "यह प्रश्न असल में दो क़िस्म के प्रतिरक्षियों के अंतर का है, और पूरा ढर्रा उसी से निकल आता है। तुलना के लिए ABO मामला। रक्त समूह A का व्यक्ति शैशव से ही प्लाज़्मा में B-रोधी प्रतिरक्षी ढोता है, बिना कभी समूह B का रक्त मिले, क्योंकि मिलते-जुलते अणु आँत के जीवाणुओं पर और भोजन में आम हैं। वे प्रतिरक्षी बड़े हैं, और बड़े प्रतिरक्षी अपरा पार नहीं करते। Rh मामला। स्वाभाविक रूप से बनने वाले Rh-रोधी प्रतिरक्षी होते ही नहीं। Rh-ऋणात्मक व्यक्ति उन्हें केवल Rh-धनात्मक लाल कोशिकाओं से सामना होने के बाद बनाता है, ठीक किसी भी दूसरी प्रतिरक्षा अनुक्रिया की तरह — पहला सामना धीमी, मामूली अनुक्रिया और टिकाऊ स्मृति देता है; दूसरा तेज़ और बड़ी। अब गर्भावस्था। सामान्य गर्भावस्था में दोनों परिसंचरण अपरा से अलग रखे जाते हैं; पोषक और गैसें विसरण से पार होते हैं, कोशिकाएँ नहीं। अतः पहले Rh-धनात्मक भ्रूण पर हमला नहीं होता, और सच तो यह कि माता के पास उस पर हमला करने को अभी कुछ है ही नहीं। प्रसव पर अपरा गर्भाशय भित्ति से अलग होती है और भ्रूण के रक्त की कुछ मात्रा माता के परिसंचरण में घुस जाती है। वह Rh प्रतिजन से पहली बार मिलती है, प्राथमिक अनुक्रिया करती है, और — निर्णायक रूप से — स्मृति कोशिकाएँ रख लेती है। बाद की किसी Rh-धनात्मक गर्भावस्था में गर्भकाल के दौरान होते छोटे रिसाव ही तेज़ द्वितीयक अनुक्रिया छेड़ने को काफ़ी हैं। और अब वह जो प्रतिरक्षी बनाती है वे उस वर्ग के हैं जो अपरा के आर-पार ले जाए जा सकने लायक़ छोटे हैं, और यही इकलौता गुण उसकी प्रतिरक्षा स्मृति को भ्रूण के लिए ख़तरा बना देता है। वे शिशु के परिसंचरण तक पहुँचकर उसकी लाल कोशिकाएँ नष्ट कर देते हैं, जिससे नवजात के रक्त-अपघटनी रोग का रक्ताल्पता और पीलिया होता है। माता को हानि क्यों नहीं। उसकी अपनी लाल कोशिकाओं पर बँधने को कोई Rh प्रतिजन है ही नहीं। वह ऐसी चीज़ बना रही है जो केवल किसी और के लिए ख़तरनाक है। टीका सुंदर हिस्सा है, और उसे रटने के बजाय निकालना बेहतर है। वह माता को प्रसव के लगभग बहत्तर घंटे के भीतर दिया जाने वाला Rh-रोधी प्रतिरक्षी है — यानी बना-बनाया प्रतिरक्षी, टीका-रूपी प्रतिजन नहीं। वह भ्रूण की कोशिकाओं से बँधकर उन्हें उसके परिसंचरण से हटा देता है उससे पहले कि उसकी अपनी प्रतिरक्षा प्रणाली उन्हें संसाधित करके स्मृति बनाए। निष्क्रिय प्रतिरक्षा ठीक इसलिए काम में ली जाती है कि सक्रिय प्रतिरक्षा बनने ही न पाए। परिणाम यह कि वह असंवेदित रहती है, और अगली गर्भावस्था वैसी ही साफ़ शुरुआत से चलती है जैसी पहली। इसे हर Rh-धनात्मक प्रसव, गर्भपात या समापन के बाद दोहराना पड़ता है, क्योंकि हर एक संवेदन का नया अवसर है। यह चिकित्सा के उन सबसे साफ़ मामलों में है जहाँ समस्या लक्षण के उपचार से नहीं, तंत्र समझने से हल हुई, और इसने शिशु मृत्यु के एक आम कारण को दुर्लभ बना दिया। (दूसरा उत्तर प्रतिरक्षा स्मृति की जगह आयु रख देता है और टीके का ग़लत वर्णन करता है; तीसरा परिसर का ही खंडन करता है, जो कहता है कि दूसरा शिशु Rh-धनात्मक है और पहला भी था; और चौथा टीका ग़लत व्यक्ति को ऐसे समय देता है जब वह कुछ रोक ही नहीं सकता, और अपरा की ऐसी मोटाई गढ़ता है जिसकी वैसी कोई भूमिका नहीं।)",
+          mr: "हा प्रश्न खरे तर दोन प्रकारच्या प्रतिपिंडांमधल्या फरकाचा आहे, आणि अख्खा साचा त्यातूनच निघतो. तुलनेसाठी ABO प्रकरण. रक्तगट A ची व्यक्ती बालपणापासूनच प्लाझ्मात B-विरोधी प्रतिपिंडे वाहते, कधीही गट B चे रक्त न भेटता, कारण तत्सम रेणू आतड्यातल्या जीवाणूंवर आणि अन्नात सामान्य आहेत. ती प्रतिपिंडे मोठी असतात, आणि मोठी प्रतिपिंडे वार ओलांडत नाहीत. Rh प्रकरण. नैसर्गिकरीत्या बनणारी Rh-विरोधी प्रतिपिंडे नसतातच. Rh-ऋण व्यक्ती ती केवळ Rh-धन तांबड्या पेशींशी सामना झाल्यावरच बनवते, नेमके इतर कोणत्याही प्रतिकार-प्रतिसादासारखे — पहिला सामना मंद, माफक प्रतिसाद आणि टिकाऊ स्मृती देतो; दुसरा वेगवान आणि मोठा. आता गर्भारपण. सामान्य गर्भारपणात दोन्ही अभिसरणे वारेने वेगळी ठेवली जातात; पोषक आणि वायू विसरणाने ओलांडतात, पेशी नाही. म्हणून पहिल्या Rh-धन गर्भावर हल्ला होत नाही, आणि खरे तर आईकडे त्याच्यावर हल्ला करायला अजून काही नाहीच. प्रसूतीच्या वेळी वार गर्भाशयाच्या भिंतीपासून वेगळी होते आणि गर्भाच्या रक्ताचे काही प्रमाण आईच्या अभिसरणात शिरते. ती Rh प्रतिजनाला प्रथमच भेटते, प्राथमिक प्रतिसाद देते, आणि — निर्णायकपणे — स्मृतिपेशी ठेवते. पुढच्या एखाद्या Rh-धन गर्भारपणात गर्भकाळात होणारी छोटी गळतीच वेगवान दुय्यम प्रतिसाद पेटवायला पुरेशी असते. आणि आता ती जी प्रतिपिंडे बनवते ती त्या वर्गाची आहेत जी वारेपलीकडे नेली जाण्याइतकी लहान आहेत, आणि हाच एकमेव गुणधर्म तिच्या प्रतिकार-स्मृतीला गर्भासाठी धोका बनवतो. ती बाळाच्या अभिसरणापर्यंत पोहोचून त्याच्या तांबड्या पेशी नष्ट करतात, ज्यातून नवजाताच्या रक्तभंजक रोगाचा पंडुरोग आणि कावीळ होते. आईला इजा का नाही. तिच्या स्वतःच्या तांबड्या पेशींवर बांधण्यासाठी कोणतेही Rh प्रतिजन नाहीच. ती अशी गोष्ट बनवते आहे जी केवळ दुसऱ्या कोणासाठी धोकादायक. इंजेक्शन हा सुंदर भाग, आणि तो पाठ करण्याऐवजी काढणे बरे. ते आईला प्रसूतीच्या सुमारे बहात्तर तासांच्या आत दिले जाणारे Rh-विरोधी प्रतिपिंड आहे — म्हणजे तयार प्रतिपिंड, लस नव्हे. ते गर्भाच्या पेशींना बांधून त्या तिच्या अभिसरणातून काढून टाकते तिची स्वतःची प्रतिकारयंत्रणा त्यांवर प्रक्रिया करून स्मृती बनवण्याआधीच. निष्क्रिय प्रतिकारशक्ती नेमकी यासाठी वापरली जाते की सक्रिय प्रतिकारशक्ती बनूच नये. परिणाम असा की ती असंवेदित राहते, आणि पुढचे गर्भारपण पहिल्यासारख्याच स्वच्छ सुरुवातीपासून चालते. हे प्रत्येक Rh-धन प्रसूती, गर्भपात वा समाप्तीनंतर पुन्हा करावे लागते, कारण प्रत्येक ही संवेदनाची नवी संधी. वैद्यकातल्या त्या सर्वांत स्वच्छ प्रकरणांपैकी हे एक जिथे अडचण लक्षणावर उपचार करून नव्हे, यंत्रणा समजून सुटली, आणि याने बालमृत्यूचे एक सामान्य कारण दुर्मिळ करून टाकले. (दुसरे उत्तर प्रतिकार-स्मृतीच्या जागी वय ठेवते आणि इंजेक्शनचे चुकीचे वर्णन करते; तिसरे गृहीतकाचेच खंडन करते, जे सांगते की दुसरे बाळ Rh-धन आहे आणि पहिलेही होते; आणि चौथे इंजेक्शन चुकीच्या व्यक्तीला अशा वेळी देते जेव्हा ते काहीच रोखू शकत नाही, आणि वारेची अशी जाडी रचते जिची तशी कोणतीच भूमिका नाही.)",
+        },
+      },
+    ],
+  },
 ];
 
 export const G11_BIOLOGY_NUMERIC: Record<string, NumQ[]> = {
@@ -4143,6 +5888,739 @@ export const G11_BIOLOGY_NUMERIC: Record<string, NumQ[]> = {
         en: "Four cells of 6 chromosomes each: 4 × 6 = 24. Walking the whole cycle with both quantities in hand is what this question is for, so do it properly. Start: 12 chromosomes, DNA content call it 2C. After S phase: still 12 chromosomes, now 24 chromatids, DNA 4C. After meiosis I: two cells, 6 chromosomes each, each chromosome still two chromatids, so 12 chromatids and 2C per cell. After meiosis II: four cells, 6 chromosomes each, one chromatid apiece, 1C per cell. Total chromosomes across the four cells: 24. Now read the two quantities against each other, because this is the confusion the whole chapter is built to prevent. The chromosome NUMBER per cell halved ONCE, at meiosis I, when homologous pairs were pulled apart. The DNA CONTENT per cell halved TWICE — 4C to 2C at the first division, 2C to 1C at the second — because the second division separated chromatids without touching the number. Two different quantities, halving at different moments, which is exactly why the divisions have the names reductional and equational. And notice the total is 24 rather than 12 for the same reason as in the mitosis question: interphase copied everything before any division happened, so 12 chromosomes' worth of material became 24 chromatids' worth, and the two divisions distributed that material into four packets rather than creating any. The check that catches an error here is the same one that works throughout: material is conserved across a division, and only interphase adds any. If a calculation produces more chromosomes at the end than replication could account for, a doubling has been counted twice. (12 forgets that four cells were made; 48 doubles the replication; and 6 gives the per-cell number.)",
         hi: "6-6 गुणसूत्रों की चार कोशिकाएँ: 4 × 6 = 24. दोनों राशियाँ हाथ में लेकर पूरा चक्र चलना ही इस प्रश्न का प्रयोजन है, अतः उसे ठीक से करो। शुरुआत: 12 गुणसूत्र, DNA मात्रा उसे 2C कहो। S प्रावस्था के बाद: अब भी 12 गुणसूत्र, अब 24 अर्धगुणसूत्र, DNA 4C. अर्धसूत्री I के बाद: दो कोशिकाएँ, 6-6 गुणसूत्र, हर गुणसूत्र अब भी दो अर्धगुणसूत्रों का, अतः प्रति कोशिका 12 अर्धगुणसूत्र और 2C. अर्धसूत्री II के बाद: चार कोशिकाएँ, 6-6 गुणसूत्र, प्रत्येक में एक-एक अर्धगुणसूत्र, प्रति कोशिका 1C. चारों कोशिकाओं में कुल गुणसूत्र: 24. अब दोनों राशियाँ एक-दूसरे के सामने पढ़ो, क्योंकि पूरा अध्याय यही भ्रम रोकने को बना है। प्रति कोशिका गुणसूत्र संख्या एक बार आधी हुई, अर्धसूत्री I पर, जब समजात युग्म खींचकर अलग किए गए। प्रति कोशिका DNA मात्रा दो बार आधी हुई — पहले विभाजन पर 4C से 2C, दूसरे पर 2C से 1C — क्योंकि दूसरे विभाजन ने संख्या छुए बिना अर्धगुणसूत्र अलग किए। दो भिन्न राशियाँ, भिन्न क्षणों पर आधी होतीं, ठीक इसीलिए विभाजनों के नाम न्यूनकारी और समकारी हैं। और ध्यान दो कि कुल 12 नहीं 24 है, उसी कारण से जो समसूत्री वाले प्रश्न में था: अंतरावस्था ने किसी भी विभाजन से पहले सब कुछ नक़ल कर लिया, अतः 12 गुणसूत्रों जितना पदार्थ 24 अर्धगुणसूत्रों जितना हो गया, और दोनों विभाजनों ने उस पदार्थ को चार पुड़ियों में बाँटा, बनाया कुछ नहीं। यहाँ त्रुटि पकड़ने वाली जाँच वही है जो हर जगह चलती है: विभाजन के आर-पार पदार्थ संरक्षित है, और जोड़ती केवल अंतरावस्था है। यदि कोई गणना अंत में उससे अधिक गुणसूत्र दे जितने प्रतिकृति से समझाए जा सकें, तो कहीं दुगुना दो बार गिना गया है। (12 भूल जाता है कि चार कोशिकाएँ बनीं; 48 प्रतिकृति दोगुनी कर देता है; और 6 प्रति-कोशिका संख्या देता है।)",
         mr: "6-6 गुणसूत्रांच्या चार पेशी: 4 × 6 = 24. दोन्ही राशी हातात घेऊन अख्खे चक्र चालणे हाच या प्रश्नाचा हेतू, म्हणून ते नीट करा. सुरुवात: 12 गुणसूत्रे, DNA प्रमाण त्याला 2C म्हणा. S प्रावस्थेनंतर: अजूनही 12 गुणसूत्रे, आता 24 अर्धगुणसूत्रे, DNA 4C. अर्धसूत्री I नंतर: दोन पेशी, 6-6 गुणसूत्रे, प्रत्येक गुणसूत्र अजूनही दोन अर्धगुणसूत्रांचे, म्हणून प्रति पेशी 12 अर्धगुणसूत्रे आणि 2C. अर्धसूत्री II नंतर: चार पेशी, 6-6 गुणसूत्रे, प्रत्येकात एकेक अर्धगुणसूत्र, प्रति पेशी 1C. चारही पेशींत एकूण गुणसूत्रे: 24. आता दोन्ही राशी एकमेकांसमोर वाचा, कारण अख्खे प्रकरण हाच गोंधळ टाळायला बांधलेले. प्रति पेशी गुणसूत्रसंख्या एकदा निम्मी झाली, अर्धसूत्री I वर, जेव्हा समजात जोड्या ओढून वेगळ्या केल्या. प्रति पेशी DNA प्रमाण दोनदा निम्मे झाले — पहिल्या विभाजनावर 4C वरून 2C, दुसऱ्यावर 2C वरून 1C — कारण दुसऱ्या विभाजनाने संख्येला स्पर्श न करता अर्धगुणसूत्रे वेगळी केली. दोन वेगळ्या राशी, वेगळ्या क्षणी निम्म्या होत, नेमक्या याच कारणाने विभाजनांची नावे न्यूनकारी आणि समकारी. आणि लक्षात घ्या की एकूण 12 नव्हे 24 आहे, त्याच कारणाने जे समविभाजनाच्या प्रश्नात होते: आंतरावस्थेने कोणत्याही विभाजनाआधी सर्व काही नक्कल केले, म्हणून 12 गुणसूत्रांइतके द्रव्य 24 अर्धगुणसूत्रांइतके झाले, आणि दोन्ही विभाजनांनी ते द्रव्य चार पुड्यांत वाटले, बनवले काहीच नाही. इथे चूक पकडणारी तपासणी तीच जी सर्वत्र चालते: विभाजनापलीकडे द्रव्य संरक्षित, आणि जोडते केवळ आंतरावस्था. एखादी गणना शेवटी प्रतिकृतीने समजावता येईल त्याहून अधिक गुणसूत्रे देत असेल, तर कुठेतरी दुप्पट दोनदा मोजले गेले आहे. (12 विसरते की चार पेशी बनल्या; 48 प्रतिकृती दुप्पट करते; आणि 6 प्रति-पेशी संख्या देते.)",
+      },
+    },
+  ],
+  /**
+   * Photosynthesis is where biology starts being audited. The equation is
+   * balanced, the cycle turns a fixed number of times, and the extra ATP a C4
+   * leaf spends is a number a pupil can defend — so the counting here is the
+   * subject rather than an ornament hung on it.
+   */
+  "biology-11-photosynthesis-in-higher-plants": [
+    {
+      level: 1,
+      stem: {
+        en: "The balanced equation for photosynthesis uses 12 molecules of water to build one molecule of glucose. How many molecules of oxygen are released?",
+        hi: "प्रकाश संश्लेषण का संतुलित समीकरण एक ग्लूकोस अणु बनाने में जल के 12 अणु काम में लेता है। ऑक्सीजन के कितने अणु निकलते हैं?",
+        mr: "प्रकाशसंश्लेषणाचे संतुलित समीकरण एक ग्लुकोज रेणू बनवण्यास पाण्याचे 12 रेणू वापरते. प्राणवायूचे किती रेणू बाहेर पडतात?",
+      },
+      answer: 6,
+      wrong: [12, 3, 24],
+      checkExpr: "12/2",
+      solution: {
+        en: "Every molecule of oxygen carries two oxygen atoms, and each atom came from a water molecule, so 12/2 = 6. The point of writing 12 rather than 6 on the left is exactly this: it lets the equation say that the oxygen came out of water. (12 assumes one oxygen molecule per water molecule.)",
+        hi: "ऑक्सीजन के हर अणु में दो ऑक्सीजन परमाणु हैं, और हर परमाणु किसी जल अणु से आया, अतः 12/2 = 6. बाईं ओर 6 के बजाय 12 लिखने का प्रयोजन ठीक यही है: इससे समीकरण कह पाता है कि ऑक्सीजन जल से निकली। (12 हर जल अणु पर एक ऑक्सीजन अणु मान लेता है।)",
+        mr: "प्राणवायूच्या प्रत्येक रेणूत दोन प्राणवायू अणू असतात, आणि प्रत्येक अणू एका पाण्याच्या रेणूतून आला, म्हणून 12/2 = 6. डावीकडे 6 ऐवजी 12 लिहिण्याचा हेतू नेमका हाच: यामुळे समीकरण सांगू शकते की प्राणवायू पाण्यातून निघाला. (12 प्रत्येक पाण्याच्या रेणूवर एक प्राणवायू रेणू मानते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "Six molecules of carbon dioxide must be fixed to build one molecule of glucose, and 3 ATP are spent for each one fixed. How many ATP does one glucose cost?",
+        hi: "एक ग्लूकोस अणु बनाने के लिए कार्बन डाइऑक्साइड के छह अणु स्थिर करने पड़ते हैं, और हर एक पर 3 ATP ख़र्च होते हैं। एक ग्लूकोस कितने ATP का पड़ता है?",
+        mr: "एक ग्लुकोज रेणू बनवण्यास कार्बन डायऑक्साइडचे सहा रेणू स्थिर करावे लागतात, आणि प्रत्येकावर 3 ATP खर्च होतात. एक ग्लुकोज किती ATP चा पडतो?",
+      },
+      answer: 18,
+      wrong: [12, 6, 24],
+      checkExpr: "3*6",
+      solution: {
+        en: "3 × 6 = 18. The cycle does not fix six molecules in one turn; it turns six times and fixes one each time, which is why the cost multiplies. Counting turns rather than counting glucose is the habit that makes the rest of this chapter's arithmetic easy. (12 quotes the NADPH figure instead.)",
+        hi: "3 × 6 = 18. चक्र एक फेरे में छह अणु स्थिर नहीं करता; वह छह बार घूमता है और हर बार एक स्थिर करता है, इसीलिए ख़र्च गुणा हो जाता है। ग्लूकोस गिनने के बजाय फेरे गिनने की आदत ही इस अध्याय का बाक़ी गणित आसान करती है। (12 इसके बदले NADPH का आँकड़ा बता देता है।)",
+        mr: "3 × 6 = 18. चक्र एका फेऱ्यात सहा रेणू स्थिर करत नाही; ते सहा वेळा फिरते आणि प्रत्येक वेळी एक स्थिर करते, म्हणूनच खर्च गुणला जातो. ग्लुकोज मोजण्याऐवजी फेरे मोजण्याची सवयच या प्रकरणातले उरलेले गणित सोपे करते. (12 त्याऐवजी NADPH चा आकडा सांगते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Two molecules of NADPH are spent for every molecule of carbon dioxide fixed. How many are spent in building one molecule of glucose?",
+        hi: "स्थिर की गई कार्बन डाइऑक्साइड के हर अणु पर NADPH के दो अणु ख़र्च होते हैं। एक ग्लूकोस अणु बनाने में कितने ख़र्च होते हैं?",
+        mr: "स्थिर केलेल्या कार्बन डायऑक्साइडच्या प्रत्येक रेणूवर NADPH चे दोन रेणू खर्च होतात. एक ग्लुकोज रेणू बनवण्यात किती खर्च होतात?",
+      },
+      answer: 12,
+      wrong: [6, 18, 24],
+      checkExpr: "2*6",
+      solution: {
+        en: "2 × 6 = 12. Set it beside the ATP figure of 18 and the ratio of the two is 3 to 2, which is the ratio the light reaction has to supply them in — and the reason a leaf needs cyclic electron flow at all, since the non-cyclic path alone does not make ATP fast enough. (18 quotes the ATP figure.)",
+        hi: "2 × 6 = 12. इसे ATP के 18 के साथ रखो और दोनों का अनुपात 3 और 2 का है, और प्रकाश-अभिक्रिया को उन्हें इसी अनुपात में देना पड़ता है — और इसी से पत्ती को चक्रीय इलेक्ट्रॉन-प्रवाह की ज़रूरत पड़ती है, क्योंकि अकेला अचक्रीय पथ ATP उतनी तेज़ी से नहीं बनाता। (18 ATP का आँकड़ा बता देता है।)",
+        mr: "2 × 6 = 12. हे ATP च्या 18 शेजारी ठेवा आणि दोघांचे गुणोत्तर 3 आणि 2 चे आहे, आणि प्रकाश-अभिक्रियेला ती त्याच गुणोत्तरात पुरवावी लागतात — आणि यामुळेच पानाला चक्रीय इलेक्ट्रॉन-प्रवाहाची गरज पडते, कारण एकटा अचक्रीय मार्ग ATP तितक्या वेगाने बनवत नाही. (18 ATP चा आकडा सांगते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A C4 plant spends 5 ATP for every carbon dioxide fixed where a C3 plant spends 3. How many EXTRA ATP does the C4 plant spend in building one molecule of glucose?",
+        hi: "C4 पादप हर स्थिर कार्बन डाइऑक्साइड पर 5 ATP ख़र्च करता है जहाँ C3 पादप 3. एक ग्लूकोस अणु बनाने में C4 पादप कितने अतिरिक्त ATP ख़र्च करता है?",
+        mr: "C4 वनस्पती प्रत्येक स्थिर कार्बन डायऑक्साइडवर 5 ATP खर्च करते जिथे C3 वनस्पती 3. एक ग्लुकोज रेणू बनवण्यात C4 वनस्पती किती अधिकचे ATP खर्च करते?",
+      },
+      answer: 12,
+      wrong: [2, 6, 30],
+      checkExpr: "6*(5-3)",
+      solution: {
+        en: "The extra is 2 ATP per carbon, and there are six carbons, so 6 × (5 − 3) = 12. That surcharge is the whole economics of the C4 habit: it is worth paying only when photorespiration would have cost more, which is why the advantage appears in a hot field and disappears in a cool one. (2 stops at the per-carbon figure and forgets the six turns.)",
+        hi: "अतिरिक्त प्रति कार्बन 2 ATP है, और कार्बन छह हैं, अतः 6 × (5 − 3) = 12. वही अधिभार C4 आदत का पूरा अर्थशास्त्र है: उसे चुकाना तभी सार्थक है जब प्रकाश-श्वसन उससे अधिक महँगा पड़ता, इसीलिए बढ़त गर्म खेत में दिखती है और ठंडे में मिट जाती है। (2 प्रति-कार्बन आँकड़े पर रुक जाता है और छह फेरे भूल जाता है।)",
+        mr: "अधिकचे प्रति कार्बन 2 ATP आहे, आणि कार्बन सहा आहेत, म्हणून 6 × (5 − 3) = 12. तोच अधिभार C4 सवयीचे अख्खे अर्थशास्त्र: तो भरणे तेव्हाच सार्थक जेव्हा प्रकाश-श्वसन त्याहून महाग पडले असते, म्हणूनच आघाडी उष्ण शेतात दिसते आणि थंडात मिटते. (2 प्रति-कार्बन आकड्यावर थांबते आणि सहा फेरे विसरते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A leaf fixes carbon dioxide at 12 mg per square decimetre per hour. How much does a leaf of area 5 square decimetres fix in 4 hours?",
+        hi: "कोई पत्ती 12 mg प्रति वर्ग डेसीमीटर प्रति घंटा की दर से कार्बन डाइऑक्साइड स्थिर करती है। 5 वर्ग डेसीमीटर क्षेत्रफल की पत्ती 4 घंटे में कितनी स्थिर करेगी?",
+        mr: "एक पान 12 mg प्रति चौरस डेसिमीटर प्रति तास या दराने कार्बन डायऑक्साइड स्थिर करते. 5 चौरस डेसिमीटर क्षेत्रफळाचे पान 4 तासांत किती स्थिर करेल?",
+      },
+      answer: 240,
+      wrong: [60, 48, 120],
+      checkExpr: "12*5*4",
+      solution: {
+        en: "A rate given per area per hour has to be multiplied by both: 12 × 5 × 4 = 240 mg. Watch the units and the arithmetic follows itself — mg per dm² per hour, times dm², times hours, leaves mg. This is also why a rate is quoted per unit area at all: a big leaf and a small leaf of the same plant work at the same rate and differ only in size. (60 multiplies by the area and forgets the hours.)",
+        hi: "प्रति क्षेत्रफल प्रति घंटा दी गई दर को दोनों से गुणा करना पड़ता है: 12 × 5 × 4 = 240 mg. मात्रकों पर नज़र रखो और गणित अपने आप चलता है — mg प्रति dm² प्रति घंटा, गुणा dm², गुणा घंटे, बचा mg. दर प्रति इकाई क्षेत्रफल बताई ही इसीलिए जाती है: एक ही पादप की बड़ी और छोटी पत्ती एक ही दर से काम करती हैं और केवल आकार में भिन्न हैं। (60 क्षेत्रफल से गुणा करके घंटे भूल जाता है।)",
+        mr: "प्रति क्षेत्रफळ प्रति तास दिलेल्या दराला दोन्हींनी गुणावे लागते: 12 × 5 × 4 = 240 mg. एककांवर लक्ष ठेवा आणि गणित आपोआप चालते — mg प्रति dm² प्रति तास, गुणिले dm², गुणिले तास, उरते mg. दर प्रति एकक क्षेत्रफळ सांगितला जातो तो यासाठीच: एकाच वनस्पतीचे मोठे आणि लहान पान एकाच दराने काम करतात आणि केवळ आकारात वेगळी. (60 क्षेत्रफळाने गुणून तास विसरते.)",
+      },
+      fmt: unit("mg"),
+    },
+    {
+      level: 3,
+      stem: {
+        en: "In one hour a leaf gives out 8 units of oxygen to the air, while its own respiration in that hour uses up 3 units. How many units did photosynthesis actually produce?",
+        hi: "एक घंटे में कोई पत्ती हवा को ऑक्सीजन की 8 इकाई देती है, जबकि उसी घंटे में उसका अपना श्वसन 3 इकाई खा जाता है। प्रकाश संश्लेषण ने वास्तव में कितनी इकाई बनाई?",
+        mr: "एका तासात एक पान हवेला प्राणवायूची 8 एकके देते, तर त्याच तासात तिचे स्वतःचे श्वसन 3 एकके खाते. प्रकाशसंश्लेषणाने प्रत्यक्षात किती एकके बनवली?",
+      },
+      answer: 11,
+      wrong: [5, 8, 24],
+      checkExpr: "8+3",
+      solution: {
+        en: "What you can measure at the surface of a leaf is always the NET figure, because respiration is running the whole time and eating into the output before it ever leaves. Gross = net + respiration = 8 + 3 = 11 units. The same distinction explains the compensation point: at dawn there is an instant when gross photosynthesis exactly equals respiration and the net exchange is nothing at all, which does not mean the leaf has stopped working. (8 quotes the measured net figure as though it were the total.)",
+        hi: "पत्ती की सतह पर जो मापा जा सकता है वह सदा शुद्ध आँकड़ा है, क्योंकि श्वसन पूरे समय चल रहा है और उत्पादन के बाहर निकलने से पहले ही उसमें से खा रहा है। सकल = शुद्ध + श्वसन = 8 + 3 = 11 इकाई। यही भेद क्षतिपूर्ति बिंदु समझाता है: भोर में एक क्षण ऐसा आता है जब सकल प्रकाश संश्लेषण ठीक श्वसन के बराबर होता है और शुद्ध विनिमय शून्य, जिसका अर्थ यह नहीं कि पत्ती ने काम बंद कर दिया। (8 मापे गए शुद्ध आँकड़े को ही कुल मान लेता है।)",
+        mr: "पानाच्या पृष्ठभागावर जे मोजता येते ते नेहमी निव्वळ आकडा असतो, कारण श्वसन अख्खा वेळ चालू असते आणि उत्पादन बाहेर पडण्याआधीच त्यातून खाते. एकूण = निव्वळ + श्वसन = 8 + 3 = 11 एकके. हाच फरक भरपाई-बिंदू समजावतो: पहाटे एक क्षण असा येतो जेव्हा एकूण प्रकाशसंश्लेषण नेमके श्वसनाइतके असते आणि निव्वळ देवाणघेवाण शून्य, याचा अर्थ पानाने काम थांबवले असा नव्हे. (8 मोजलेल्या निव्वळ आकड्यालाच एकूण मानते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "About 8 photons must be absorbed for every molecule of oxygen released. How many photons are needed for all the oxygen released while one molecule of glucose is built?",
+        hi: "छोड़े गए ऑक्सीजन के हर अणु पर लगभग 8 फ़ोटॉन सोखने पड़ते हैं। एक ग्लूकोस अणु बनने के दौरान छोड़ी गई सारी ऑक्सीजन के लिए कितने फ़ोटॉन चाहिए?",
+        mr: "सोडलेल्या प्राणवायूच्या प्रत्येक रेणूसाठी सुमारे 8 फोटॉन शोषावे लागतात. एक ग्लुकोज रेणू बनताना सोडलेल्या सर्व प्राणवायूसाठी किती फोटॉन लागतील?",
+      },
+      answer: 48,
+      wrong: [8, 12, 96],
+      checkExpr: "8*6",
+      solution: {
+        en: "One glucose comes with six molecules of oxygen, so 8 × 6 = 48 photons. Notice the two-step shape of the question: you must first know that six molecules of oxygen accompany one glucose, and only then apply the photon figure. Every quantitative question in this chapter is built that way — a stoichiometric fact, then a multiplication. (8 answers for a single molecule of oxygen and stops.)",
+        hi: "एक ग्लूकोस के साथ ऑक्सीजन के छह अणु आते हैं, अतः 8 × 6 = 48 फ़ोटॉन। प्रश्न का दो-चरणी आकार देखो: पहले जानना पड़ता है कि एक ग्लूकोस के साथ ऑक्सीजन के छह अणु हैं, और तभी फ़ोटॉन का आँकड़ा लगता है। इस अध्याय का हर संख्यात्मक प्रश्न इसी तरह बना है — एक रससमीकरणमितीय तथ्य, फिर एक गुणा। (8 ऑक्सीजन के एक ही अणु का उत्तर देकर रुक जाता है।)",
+        mr: "एका ग्लुकोजबरोबर प्राणवायूचे सहा रेणू येतात, म्हणून 8 × 6 = 48 फोटॉन. प्रश्नाचा दोन-पायरी आकार पाहा: आधी जाणावे लागते की एका ग्लुकोजबरोबर प्राणवायूचे सहा रेणू आहेत, आणि तेव्हाच फोटॉनचा आकडा लागतो. या प्रकरणातला प्रत्येक संख्यात्मक प्रश्न असाच बांधलेला — एक रससमीकरणमितीय तथ्य, मग एक गुणाकार. (8 प्राणवायूच्या एकाच रेणूचे उत्तर देऊन थांबते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "A leaf extract holds 8 mg of chlorophyll in all, and chlorophyll a stands to chlorophyll b as 3 to 1. How much chlorophyll a is present?",
+        hi: "किसी पत्ती के निष्कर्ष में कुल 8 mg क्लोरोफ़िल है, और क्लोरोफ़िल a का क्लोरोफ़िल b से अनुपात 3 और 1 का है। क्लोरोफ़िल a कितना है?",
+        mr: "एका पानाच्या अर्कात एकूण 8 mg क्लोरोफिल आहे, आणि क्लोरोफिल a चे क्लोरोफिल b शी गुणोत्तर 3 आणि 1 चे आहे. क्लोरोफिल a किती आहे?",
+      },
+      answer: 6,
+      wrong: [2, 4, 3],
+      checkExpr: "8*3/4",
+      solution: {
+        en: "A ratio of 3 to 1 means four parts in all, of which three are chlorophyll a: 8 × 3/4 = 6 mg, leaving 2 mg of chlorophyll b. The commonest slip is to divide by 3 instead of by 4, because the ratio is read as a fraction rather than as a share of a whole. The number itself is worth remembering: a shade leaf pushes this ratio down towards two to one, building more of the accessory pigment because the light under a canopy is poor in the wavelengths chlorophyll a prefers. (4 halves the total, as though the ratio were 1 to 1.)",
+        hi: "3 और 1 के अनुपात का अर्थ है कुल चार भाग, जिनमें से तीन क्लोरोफ़िल a: 8 × 3/4 = 6 mg, और 2 mg क्लोरोफ़िल b बचता है। सबसे आम चूक 4 के बजाय 3 से भाग देना है, क्योंकि अनुपात को पूरे का हिस्सा नहीं, भिन्न पढ़ लिया जाता है। संख्या स्वयं याद रखने योग्य है: छाया की पत्ती इस अनुपात को दो और एक की ओर गिरा देती है, सहायक वर्णक अधिक बनाती है क्योंकि छत्र के नीचे का प्रकाश उन तरंगदैर्घ्यों में कंगाल है जो क्लोरोफ़िल a को भाते हैं। (4 कुल को आधा कर देता है, मानो अनुपात 1 और 1 का हो।)",
+        mr: "3 आणि 1 च्या गुणोत्तराचा अर्थ एकूण चार भाग, ज्यांपैकी तीन क्लोरोफिल a: 8 × 3/4 = 6 mg, आणि 2 mg क्लोरोफिल b उरते. सर्वांत सामान्य चूक 4 ऐवजी 3 ने भागणे, कारण गुणोत्तर अख्ख्याचा वाटा नव्हे तर अपूर्णांक वाचला जातो. आकडा स्वतः लक्षात ठेवण्याजोगा: सावलीतले पान हे गुणोत्तर दोन आणि एककडे उतरवते, सहायक रंगद्रव्य अधिक बनवते कारण छत्राखालचा प्रकाश क्लोरोफिल a ला आवडणाऱ्या तरंगलांबींत गरीब असतो. (4 एकूण निम्मे करते, जणू गुणोत्तर 1 आणि 1 चे असावे.)",
+      },
+      fmt: unit("mg"),
+    },
+    {
+      level: 6,
+      stem: {
+        en: "On a hot afternoon a wheat leaf loses a quarter of everything it fixes back to the air through photorespiration. If gross fixation is 240 mg of carbon dioxide in an hour, how much is actually kept?",
+        hi: "गर्म दोपहर में गेहूँ की पत्ती जो कुछ स्थिर करती है उसका चौथाई भाग प्रकाश-श्वसन से हवा में लौटा देती है। यदि सकल स्थिरीकरण एक घंटे में 240 mg कार्बन डाइऑक्साइड है, तो वास्तव में कितना बचता है?",
+        mr: "उष्ण दुपारी गव्हाचे पान जे काही स्थिर करते त्याचा चतुर्थांश भाग प्रकाश-श्वसनाने हवेत परत देते. जर एकूण स्थिरीकरण एका तासात 240 mg कार्बन डायऑक्साइड असेल, तर प्रत्यक्षात किती टिकते?",
+      },
+      answer: 180,
+      wrong: [60, 120, 216],
+      checkExpr: "240-240/4",
+      solution: {
+        en: "A quarter of 240 is 60, so the leaf keeps 240 − 60 = 180 mg. Two things are worth taking from this number. First, it is a loss AFTER the work of fixing has already been paid for — the ATP and NADPH were spent, the carbon was captured, and then it was let go again, which is why photorespiration is far more expensive than simply not fixing that carbon in the first place. Second, it is the size of the prize a C4 plant is chasing. Paying two extra ATP per carbon looks wasteful until you set it against a quarter of the harvest, and that comparison is the whole reason the C4 arrangement has evolved independently dozens of times in hot climates and almost never in cool ones. (60 answers the loss rather than what is kept.)",
+        hi: "240 का चौथाई 60 है, अतः पत्ती 240 − 60 = 180 mg रखती है। इस संख्या से दो बातें लेने योग्य हैं। पहली, यह हानि स्थिरीकरण का श्रम चुक जाने के बाद की है — ATP और NADPH ख़र्च हो चुके, कार्बन पकड़ा जा चुका, और फिर छोड़ दिया गया, इसीलिए प्रकाश-श्वसन उस कार्बन को शुरू में स्थिर ही न करने से कहीं महँगा है। दूसरी, यही वह पुरस्कार का आकार है जिसके पीछे C4 पादप है। प्रति कार्बन दो अतिरिक्त ATP चुकाना तब तक फ़िज़ूल लगता है जब तक उसे फ़सल के चौथाई के सामने न रखो, और वही तुलना पूरा कारण है कि C4 व्यवस्था गर्म जलवायु में दर्जनों बार स्वतंत्र रूप से विकसित हुई और ठंडी में लगभग कभी नहीं। (60 बचे हुए के बजाय हानि का उत्तर देता है।)",
+        mr: "240 चा चतुर्थांश 60 आहे, म्हणून पान 240 − 60 = 180 mg ठेवते. या आकड्यातून दोन गोष्टी घेण्याजोग्या. पहिली, ही हानी स्थिरीकरणाचे श्रम भरून झाल्यानंतरची आहे — ATP आणि NADPH खर्च झाले, कार्बन पकडला गेला, आणि मग सोडून दिला, म्हणूनच प्रकाश-श्वसन तो कार्बन सुरुवातीलाच स्थिर न करण्याहून कितीतरी महाग. दुसरी, हाच त्या बक्षिसाचा आकार ज्याच्या मागे C4 वनस्पती आहे. प्रति कार्बन दोन अधिकचे ATP भरणे तोवर फुकट वाटते जोवर ते पिकाच्या चतुर्थांशासमोर ठेवत नाही, आणि तीच तुलना हे अख्खे कारण की C4 व्यवस्था उष्ण हवामानात डझनवेळा स्वतंत्रपणे उत्क्रांत झाली आणि थंडात जवळपास कधीच नाही. (60 टिकलेल्याऐवजी हानीचे उत्तर देते.)",
+      },
+      fmt: unit("mg"),
+    },
+  ],
+  /**
+   * Respiration is the most arithmetical chapter in school biology, and the
+   * arithmetic is the argument: a pupil who cannot get from two to thirty-eight
+   * cannot say why a flooded root dies or why a brewer's vat eats sugar.
+   */
+  "biology-11-respiration-in-plants": [
+    {
+      level: 1,
+      stem: {
+        en: "Glycolysis spends 2 ATP at the start to prime the sugar and produces 4 ATP later. What is the net gain?",
+        hi: "ग्लाइकोलाइसिस शक्कर को तैयार करने के लिए आरंभ में 2 ATP ख़र्च करता है और बाद में 4 ATP बनाता है। शुद्ध लाभ कितना?",
+        mr: "ग्लायकोलायसिस साखर तयार करण्यासाठी सुरुवातीला 2 ATP खर्चते आणि नंतर 4 ATP बनवते. निव्वळ फायदा किती?",
+      },
+      answer: 2,
+      wrong: [4, 6, 8],
+      checkExpr: "4-2",
+      solution: {
+        en: "4 − 2 = 2. The investment phase is easy to forget because the textbook diagram shows the four being made and hides the two being spent at the top. Two ATP per glucose is the entire income of a fermenting cell, which is the figure the rest of this chapter keeps comparing against. (4 quotes the gross production and forgets the outlay.)",
+        hi: "4 − 2 = 2. निवेश-प्रावस्था भूलना आसान है क्योंकि पुस्तक का चित्र चार बनते दिखाता है और ऊपर दो ख़र्च होते छिपा देता है। प्रति ग्लूकोस दो ATP किण्वित होती कोशिका की पूरी आय है, और इस अध्याय का बाक़ी हिस्सा इसी आँकड़े से तुलना करता रहता है। (4 सकल उत्पादन बताता है और ख़र्च भूल जाता है।)",
+        mr: "4 − 2 = 2. गुंतवणूक-प्रावस्था विसरणे सोपे कारण पुस्तकातले चित्र चार बनताना दाखवते आणि वर दोन खर्च होताना लपवते. प्रति ग्लुकोज दोन ATP हे किण्वित होणाऱ्या पेशीचे अख्खे उत्पन्न, आणि या प्रकरणातला उरलेला भाग याच आकड्याशी तुलना करत राहतो. (4 एकूण उत्पादन सांगते आणि खर्च विसरते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "One glucose gives 2 molecules of pyruvic acid, and each one is oxidised completely to 3 molecules of carbon dioxide. How many molecules of carbon dioxide come from one glucose?",
+        hi: "एक ग्लूकोस से पाइरुविक अम्ल के 2 अणु बनते हैं, और हर एक पूरी तरह ऑक्सीकृत होकर कार्बन डाइऑक्साइड के 3 अणु देता है। एक ग्लूकोस से कार्बन डाइऑक्साइड के कितने अणु निकलते हैं?",
+        mr: "एका ग्लुकोजपासून पायरुविक आम्लाचे 2 रेणू बनतात, आणि प्रत्येक पूर्णपणे ऑक्सिडीकृत होऊन कार्बन डायऑक्साइडचे 3 रेणू देतो. एका ग्लुकोजपासून कार्बन डायऑक्साइडचे किती रेणू निघतात?",
+      },
+      answer: 6,
+      wrong: [3, 2, 12],
+      checkExpr: "2*3",
+      solution: {
+        en: "2 × 3 = 6, which is exactly the number of carbon atoms glucose started with — nothing is created or lost, only rearranged. Worth noting where the six leave: one per pyruvate at the link reaction and two per turn of the cycle, so none of them comes out during glycolysis at all. (3 answers for a single pyruvate.)",
+        hi: "2 × 3 = 6, और यह ठीक उतने ही कार्बन परमाणु हैं जितने ग्लूकोस में शुरू में थे — कुछ बनता या खोता नहीं, केवल पुनर्व्यवस्थित होता है। ध्यान देने योग्य है कि छहों निकलते कहाँ हैं: संयोजी अभिक्रिया पर प्रति पाइरुवेट एक और चक्र के प्रति फेरे दो, अतः ग्लाइकोलाइसिस के दौरान एक भी नहीं निकलता। (3 अकेले पाइरुवेट का उत्तर देता है।)",
+        mr: "2 × 3 = 6, आणि हे नेमके तितकेच कार्बन अणू जितके ग्लुकोजमध्ये सुरुवातीला होते — काही बनत वा हरवत नाही, केवळ पुनर्रचना होते. लक्षात घेण्याजोगे की सहाही निघतात कुठे: जोड-अभिक्रियेवर प्रति पायरुवेट एक आणि चक्राच्या प्रति फेऱ्याला दोन, म्हणून ग्लायकोलायसिसदरम्यान एकही निघत नाही. (3 एकाच पायरुवेटचे उत्तर देते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Each turn of the Krebs cycle handles one two-carbon fragment, and one glucose supplies 2 of them. How many turns does one glucose cause?",
+        hi: "क्रेब्स चक्र का हर फेरा दो-कार्बन का एक टुकड़ा निपटाता है, और एक ग्लूकोस ऐसे 2 टुकड़े देता है। एक ग्लूकोस कितने फेरे कराता है?",
+        mr: "क्रेब्स चक्राचा प्रत्येक फेरा दोन-कार्बनी एक तुकडा हाताळतो, आणि एक ग्लुकोज असे 2 तुकडे पुरवतो. एक ग्लुकोज किती फेरे घडवतो?",
+      },
+      answer: 2,
+      wrong: [1, 4, 6],
+      checkExpr: "2*1",
+      solution: {
+        en: "2 × 1 = 2 turns. Nearly every mistake later in this chapter starts here: the cycle is drawn once in the book and a pupil then counts its products once. Everything the cycle yields — the carbon dioxide, the NADH, the FADH2, the ATP — has to be doubled before it can be compared with a glucose. (1 counts the diagram rather than the molecule.)",
+        hi: "2 × 1 = 2 फेरे। इस अध्याय की आगे की लगभग हर भूल यहीं से शुरू होती है: चक्र पुस्तक में एक बार खींचा जाता है और विद्यार्थी फिर उसके उत्पाद एक बार गिन लेता है। चक्र जो कुछ देता है — कार्बन डाइऑक्साइड, NADH, FADH2, ATP — उसे ग्लूकोस से तुलना करने से पहले दोगुना करना पड़ता है। (1 अणु के बजाय चित्र गिन लेता है।)",
+        mr: "2 × 1 = 2 फेरे. या प्रकरणातली पुढची जवळपास प्रत्येक चूक इथूनच सुरू होते: चक्र पुस्तकात एकदाच काढले जाते आणि विद्यार्थी मग त्याची उत्पादने एकदाच मोजतो. चक्र जे काही देते — कार्बन डायऑक्साइड, NADH, FADH2, ATP — ते ग्लुकोजशी तुलना करण्याआधी दुप्पट करावे लागते. (1 रेणूऐवजी चित्र मोजते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Each turn of the Krebs cycle yields 3 molecules of NADH, and one glucose causes 2 turns. How many NADH does the cycle itself contribute?",
+        hi: "क्रेब्स चक्र का हर फेरा NADH के 3 अणु देता है, और एक ग्लूकोस 2 फेरे कराता है। चक्र स्वयं कितने NADH देता है?",
+        mr: "क्रेब्स चक्राचा प्रत्येक फेरा NADH चे 3 रेणू देतो, आणि एक ग्लुकोज 2 फेरे घडवतो. चक्र स्वतः किती NADH देते?",
+      },
+      answer: 6,
+      wrong: [3, 8, 10],
+      checkExpr: "3*2",
+      solution: {
+        en: "3 × 2 = 6 from the cycle. The full tally for a glucose is 10, because glycolysis gives 2 and the link reaction another 2 before the cycle starts — a distinction worth keeping straight, since questions often ask for one and not the other. (10 quotes the grand total instead of the cycle's own share.)",
+        hi: "चक्र से 3 × 2 = 6. ग्लूकोस का पूरा जोड़ 10 है, क्योंकि चक्र शुरू होने से पहले ग्लाइकोलाइसिस 2 देता है और संयोजी अभिक्रिया 2 और — यह भेद सीधा रखने योग्य है, क्योंकि प्रश्न प्रायः एक माँगते हैं और दूसरा नहीं। (10 चक्र के अपने हिस्से के बजाय कुल जोड़ बता देता है।)",
+        mr: "चक्रातून 3 × 2 = 6. ग्लुकोजची पूर्ण बेरीज 10 आहे, कारण चक्र सुरू होण्याआधी ग्लायकोलायसिस 2 देते आणि जोड-अभिक्रिया आणखी 2 — हा फरक नीट ठेवण्याजोगा, कारण प्रश्न बहुधा एक विचारतात आणि दुसरा नाही. (10 चक्राच्या स्वतःच्या वाट्याऐवजी एकूण बेरीज सांगते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "One glucose yields 10 molecules of NADH in all, and each is worth 3 ATP at the electron transport chain. How many ATP is that?",
+        hi: "एक ग्लूकोस कुल NADH के 10 अणु देता है, और इलेक्ट्रॉन-परिवहन शृंखला पर हर एक 3 ATP का है। यह कितने ATP हुए?",
+        mr: "एक ग्लुकोज एकूण NADH चे 10 रेणू देतो, आणि इलेक्ट्रॉन-वहन साखळीवर प्रत्येक 3 ATP चा आहे. हे किती ATP झाले?",
+      },
+      answer: 30,
+      wrong: [10, 20, 34],
+      checkExpr: "10*3",
+      solution: {
+        en: "10 × 3 = 30 ATP, which is already more than three-quarters of everything a glucose will ever yield. It is worth seeing what that means: the carriers, not the ATP made along the way, are where the energy of the sugar actually sits until the chain is reached. (34 quotes the whole chain's output including the FADH2 share.)",
+        hi: "10 × 3 = 30 ATP, और यह पहले ही उस सब का तीन-चौथाई से अधिक है जो कोई ग्लूकोस कभी देगा। इसका अर्थ देखने योग्य है: शक्कर की ऊर्जा वस्तुतः राह में बने ATP में नहीं, वाहकों में बैठी रहती है जब तक शृंखला न आ जाए। (34 FADH2 का हिस्सा मिलाकर पूरी शृंखला का उत्पादन बताता है।)",
+        mr: "10 × 3 = 30 ATP, आणि हे आधीच त्या सर्वाच्या तीनचतुर्थांशाहून अधिक जे कोणताही ग्लुकोज कधी देईल. याचा अर्थ पाहण्याजोगा: साखरेची ऊर्जा प्रत्यक्षात वाटेत बनलेल्या ATP मध्ये नव्हे, वाहकांत बसून राहते जोवर साखळी येत नाही. (34 FADH2 चा वाटा धरून अख्ख्या साखळीचे उत्पादन सांगते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "One glucose yields 2 molecules of FADH2, and each is worth 2 ATP at the chain. How many ATP do they give?",
+        hi: "एक ग्लूकोस FADH2 के 2 अणु देता है, और शृंखला पर हर एक 2 ATP का है। वे कितने ATP देते हैं?",
+        mr: "एक ग्लुकोज FADH2 चे 2 रेणू देतो, आणि साखळीवर प्रत्येक 2 ATP चा आहे. ते किती ATP देतात?",
+      },
+      answer: 4,
+      wrong: [2, 6, 12],
+      checkExpr: "2*2",
+      solution: {
+        en: "2 × 2 = 4 ATP. The reason FADH2 is worth less than NADH is not that it carries less energy in some vague sense but that it hands its electrons in further along the chain, past the first proton-pumping site, so one pump's worth of gradient is never built. Two carriers, same electrons, different entry point, different price. (6 uses the NADH rate of 3 by mistake.)",
+        hi: "2 × 2 = 4 ATP. FADH2 का NADH से कम मूल्य होने का कारण यह नहीं कि वह किसी अस्पष्ट अर्थ में कम ऊर्जा ढोता है, बल्कि यह कि वह अपने इलेक्ट्रॉन शृंखला में और आगे सौंपता है, पहले प्रोटॉन-पंपिंग स्थल के बाद, अतः एक पंप जितनी प्रवणता बनती ही नहीं। दो वाहक, वही इलेक्ट्रॉन, भिन्न प्रवेश-बिंदु, भिन्न क़ीमत। (6 भूल से NADH की दर 3 लगा देता है।)",
+        mr: "2 × 2 = 4 ATP. FADH2 चे मूल्य NADH हून कमी असण्याचे कारण हे नाही की तो कोणत्यातरी अस्पष्ट अर्थाने कमी ऊर्जा वाहतो, तर हे की तो आपले इलेक्ट्रॉन साखळीत अधिक पुढे सोपवतो, पहिल्या प्रोटॉन-पंपिंग स्थळानंतर, म्हणून एका पंपाइतकी प्रवणता बनतच नाही. दोन वाहक, तेच इलेक्ट्रॉन, वेगळा प्रवेश-बिंदू, वेगळी किंमत. (6 चुकून NADH चा दर 3 लावते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "Glycolysis nets 2 ATP directly, the link reaction and the cycle net 2 more directly, and the electron transport chain yields 34. What is the theoretical total from one glucose?",
+        hi: "ग्लाइकोलाइसिस सीधे 2 ATP देता है, संयोजी अभिक्रिया और चक्र सीधे 2 और, और इलेक्ट्रॉन-परिवहन शृंखला 34. एक ग्लूकोस से सैद्धांतिक कुल कितना?",
+        mr: "ग्लायकोलायसिस थेट 2 ATP देते, जोड-अभिक्रिया आणि चक्र थेट आणखी 2, आणि इलेक्ट्रॉन-वहन साखळी 34. एका ग्लुकोजपासून सैद्धांतिक एकूण किती?",
+      },
+      answer: 38,
+      wrong: [36, 34, 30],
+      checkExpr: "2+2+34",
+      solution: {
+        en: "2 + 2 + 34 = 38. Notice how lopsided the ledger is: only 4 ATP are made directly by the pathways themselves, and 34 come from the chain, which is why a cell that loses its oxygen supply loses about nineteen twentieths of its income rather than a modest fraction. The figure is a theoretical maximum — a real cell spends some of the proton gradient on transporting things across the membrane, so measured yields run lower. Quote it as a ceiling, not as a measurement. (36 uses the alternative shuttle costing in animal cells.)",
+        hi: "2 + 2 + 34 = 38. देखो बही कितनी असंतुलित है: पथ स्वयं सीधे केवल 4 ATP बनाते हैं, और 34 शृंखला से आते हैं, इसीलिए जिस कोशिका की ऑक्सीजन-आपूर्ति कट जाए वह मामूली अंश नहीं, अपनी आय का लगभग उन्नीस-बीसवाँ खो देती है। यह आँकड़ा सैद्धांतिक अधिकतम है — असली कोशिका प्रोटॉन-प्रवणता का कुछ हिस्सा झिल्ली के आर-पार चीज़ें ढोने पर ख़र्च करती है, अतः मापी गई उपज कम रहती है। इसे छत की तरह बताओ, माप की तरह नहीं। (36 प्राणी कोशिकाओं वाली वैकल्पिक शटल-लागत काम में लेता है।)",
+        mr: "2 + 2 + 34 = 38. वही किती असमतोल आहे ते पाहा: मार्ग स्वतः थेट केवळ 4 ATP बनवतात, आणि 34 साखळीतून येतात, म्हणूनच ज्या पेशीचा प्राणवायू-पुरवठा तुटतो ती किरकोळ अंश नव्हे, आपल्या उत्पन्नाचा सुमारे एकोणीस-विसावा गमावते. हा आकडा सैद्धांतिक कमाल — खरी पेशी प्रोटॉन-प्रवणतेचा काही भाग पटलापलीकडे गोष्टी नेण्यावर खर्चते, म्हणून मोजलेले उत्पन्न कमी असते. हे छत म्हणून सांगा, मोजमाप म्हणून नव्हे. (36 प्राणिपेशींतली पर्यायी शटल-किंमत वापरते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "A fermenting cell gets 2 ATP from each glucose. How many glucose molecules must it spend to obtain the 38 ATP that one glucose gives an aerobic cell?",
+        hi: "किण्वित होती कोशिका को हर ग्लूकोस से 2 ATP मिलते हैं। जो 38 ATP एक ग्लूकोस किसी वायवीय कोशिका को देता है, वे पाने के लिए उसे कितने ग्लूकोस अणु ख़र्च करने पड़ेंगे?",
+        mr: "किण्वित होणाऱ्या पेशीला प्रत्येक ग्लुकोजपासून 2 ATP मिळतात. जे 38 ATP एक ग्लुकोज ऑक्सीश्वसन करणाऱ्या पेशीला देतो, ते मिळवण्यासाठी तिला किती ग्लुकोज रेणू खर्चावे लागतील?",
+      },
+      answer: 19,
+      wrong: [2, 36, 38],
+      checkExpr: "38/2",
+      solution: {
+        en: "38/2 = 19 molecules. That single number carries most of the biology in this chapter. It explains why a brewer's sealed vat eats through sacks of sugar while producing very little new yeast; why a flooded root, which still has all the sugar it had yesterday, starves for energy within a day; why fermentation stops the instant air is bubbled through a culture, since no cell would throw away eighteen nineteenths of its fuel if it had a choice; and why the ethanol left behind still burns in a lamp, because most of the sugar's energy is sitting in it, unrecovered. (2 answers the per-glucose yield instead of the count of molecules needed.)",
+        hi: "38/2 = 19 अणु। यह अकेली संख्या इस अध्याय का अधिकांश जीवविज्ञान ढोती है। वह समझाती है कि शराब वाले का बंद पीपा बोरियों शक्कर क्यों खा जाता है और नया ख़मीर बहुत कम बनाता है; डूबी जड़, जिसके पास कल जितनी ही शक्कर अब भी है, एक दिन में ऊर्जा को क्यों तरस जाती है; संवर्धन में हवा बुलबुलाते ही किण्वन क्यों रुक जाता है, क्योंकि विकल्प रहते कोई कोशिका अपने ईंधन का अठारह-उन्नीसवाँ नहीं फेंकेगी; और पीछे बचा इथेनॉल दीये में क्यों जलता है, क्योंकि शक्कर की अधिकांश ऊर्जा उसी में बैठी है, बिना वसूले। (2 आवश्यक अणुओं की गिनती के बजाय प्रति-ग्लूकोस उपज बता देता है।)",
+        mr: "38/2 = 19 रेणू. हा एकच आकडा या प्रकरणातले बहुतांश जीवशास्त्र वाहतो. तो समजावतो की मद्यनिर्मात्याचे बंद पिप पोतीभर साखर का खाते आणि नवे यीस्ट फार कमी बनवते; बुडलेले मूळ, ज्याच्याजवळ कालइतकीच साखर अजूनही आहे, एका दिवसात ऊर्जेसाठी का तळमळते; संवर्धनात हवा बुडबुडवताच किण्वन का थांबते, कारण पर्याय असताना कोणतीही पेशी आपल्या इंधनाचा अठरा-एकोणिसावा फेकणार नाही; आणि मागे उरलेले इथेनॉल दिव्यात का जळते, कारण साखरेची बहुतांश ऊर्जा त्यातच बसली आहे, वसूल न होता. (2 आवश्यक रेणूंच्या मोजणीऐवजी प्रति-ग्लुकोज उत्पन्न सांगते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "A germinating castor seed uses 10 units of oxygen and releases 8 units of carbon dioxide in the same period. What is its respiratory quotient?",
+        hi: "अंकुरित होता अरंडी का बीज उसी अवधि में ऑक्सीजन की 10 इकाई काम में लेता है और कार्बन डाइऑक्साइड की 8 इकाई छोड़ता है। उसका श्वसन गुणांक क्या है?",
+        mr: "अंकुरणारे एरंडाचे बीज त्याच कालावधीत प्राणवायूची 10 एकके वापरते आणि कार्बन डायऑक्साइडची 8 एकके सोडते. त्याचा श्वसन गुणांक किती?",
+      },
+      answer: 0.8,
+      wrong: [1, 1.25, 0.2],
+      checkExpr: "8/10",
+      solution: {
+        en: "The quotient is carbon dioxide released divided by oxygen used: 8/10 = 0.8. Read what the number says. A value of exactly 1 would mean carbohydrate, because a sugar already carries enough oxygen within itself that the volumes come out equal. A value below 1 means the fuel is poorer in oxygen than a sugar is, so more has to be drawn from the air than gas comes back — and that is a fat. Castor is an oilseed, its endosperm is packed with fat, and 0.8 is the fingerprint of a germinating seed living on that oil. The general power of this measurement is that it identifies the substrate without opening the tissue: 1 for carbohydrate, roughly 0.7 for fat, about 0.9 for protein, above 1 for organic acids like those in a succulent, and infinite in a fermenting tissue that gives out gas while using none. One caution before quoting it: the figure is only meaningful when a single substrate dominates, and a mixed tissue returns a blurred average that names nothing. (1.25 inverts the ratio, dividing oxygen by carbon dioxide.)",
+        hi: "गुणांक छोड़ी गई कार्बन डाइऑक्साइड को काम में ली गई ऑक्सीजन से भाग देकर मिलता है: 8/10 = 0.8. संख्या क्या कह रही है, वह पढ़ो। ठीक 1 का मान कार्बोहाइड्रेट बताता, क्योंकि शर्करा अपने भीतर ही इतनी ऑक्सीजन ढोती है कि आयतन बराबर निकलते हैं। 1 से नीचे का मान बताता है कि ईंधन शर्करा से ऑक्सीजन में कंगाल है, अतः हवा से जितनी खींचनी पड़ती है उससे कम गैस लौटती है — और वह वसा है। अरंडी तिलहन है, उसका भ्रूणपोष वसा से ठसा है, और 0.8 उसी तेल पर जीते अंकुरित बीज की छाप है। इस माप की सामान्य शक्ति यह है कि वह ऊतक खोले बिना क्रियाधार पहचान लेती है: कार्बोहाइड्रेट के लिए 1, वसा के लिए मोटे तौर पर 0.7, प्रोटीन के लिए लगभग 0.9, गूदेदार पादप के कार्बनिक अम्लों जैसे पदार्थों के लिए 1 से ऊपर, और किण्वित होते ऊतक में अनंत जो गैस देता है और लेता कुछ नहीं। बताने से पहले एक सावधानी: आँकड़ा तभी अर्थपूर्ण है जब एक ही क्रियाधार हावी हो, और मिश्रित ऊतक ऐसा धुंधला औसत लौटाता है जो किसी का नाम नहीं लेता। (1.25 अनुपात उलट देता है, ऑक्सीजन को कार्बन डाइऑक्साइड से भाग देकर।)",
+        mr: "गुणांक म्हणजे सोडलेला कार्बन डायऑक्साइड भागिले वापरलेला प्राणवायू: 8/10 = 0.8. आकडा काय सांगतो ते वाचा. नेमके 1 चे मूल्य कार्बोहायड्रेट सांगेल, कारण शर्करा स्वतःतच इतका प्राणवायू वाहते की आकारमाने समान निघतात. 1 हून खालचे मूल्य सांगते की इंधन शर्करेहून प्राणवायूत गरीब आहे, म्हणून हवेतून जितका ओढावा लागतो त्याहून कमी वायू परततो — आणि तो मेद आहे. एरंड ही तेलबी, तिचा भ्रूणपोष मेदाने ठासलेला, आणि 0.8 ही त्याच तेलावर जगणाऱ्या अंकुरणाऱ्या बीजाची खूण. या मोजमापाची सामान्य ताकद ही की ते ऊती न उघडता क्रियाधार ओळखते: कार्बोहायड्रेटसाठी 1, मेदासाठी ढोबळमानाने 0.7, प्रथिनासाठी सुमारे 0.9, रसाळ वनस्पतीतल्या सेंद्रिय आम्लांसारख्यांसाठी 1 हून वर, आणि किण्वित होणाऱ्या ऊतीत अनंत जी वायू देते आणि घेते काहीच नाही. सांगण्याआधी एक सावधगिरी: आकडा तेव्हाच अर्थपूर्ण जेव्हा एकच क्रियाधार वरचढ असेल, आणि मिश्र ऊती अशी धूसर सरासरी परत देते जी कोणाचेच नाव घेत नाही. (1.25 गुणोत्तर उलटवते, प्राणवायूला कार्बन डायऑक्साइडने भागून.)",
+      },
+    },
+  ],
+  /**
+   * Growth is the thinnest numeric chapter of the five and gets a shorter set
+   * on purpose. Arithmetic and geometric growth, absolute against relative
+   * rate, and the length of an unbroken night are real quantities a pupil can
+   * be asked to defend. Differentiation and the regulators are not, and no sum
+   * has been invented for them.
+   */
+  "biology-11-plant-growth-and-development": [
+    {
+      level: 1,
+      stem: {
+        en: "A root is 5 cm long and grows by a steady 3 cm each day. How long is it after 6 days?",
+        hi: "कोई जड़ 5 cm लंबी है और हर दिन नियमित 3 cm बढ़ती है। 6 दिन बाद वह कितनी लंबी होगी?",
+        mr: "एक मूळ 5 cm लांब आहे आणि दररोज नियमित 3 cm वाढते. 6 दिवसांनी ते किती लांब असेल?",
+      },
+      answer: 23,
+      wrong: [18, 15, 20],
+      checkExpr: "5+3*6",
+      solution: {
+        en: "Arithmetic growth is a starting length plus a fixed rate times the time: 5 + 3 × 6 = 23 cm. The reason the rate stays fixed is worth seeing — at each division only one daughter cell goes on dividing, while the other stops and elongates, so the number of dividing cells never rises and the daily increment never changes. (18 forgets the length the root already had.)",
+        hi: "अंकगणितीय वृद्धि आरंभिक लंबाई जमा नियत दर गुणा समय है: 5 + 3 × 6 = 23 cm. दर नियत क्यों रहती है यह देखने योग्य है — हर विभाजन पर केवल एक संतति कोशिका विभाजित होती रहती है, जबकि दूसरी रुककर लंबी हो जाती है, अतः विभाजित होती कोशिकाओं की संख्या कभी बढ़ती नहीं और दैनिक बढ़त कभी बदलती नहीं। (18 वह लंबाई भूल जाता है जो जड़ के पास पहले से थी।)",
+        mr: "अंकगणिती वाढ म्हणजे प्रारंभिक लांबी अधिक ठरावीक दर गुणिले काळ: 5 + 3 × 6 = 23 cm. दर ठरावीक का राहतो हे पाहण्याजोगे — प्रत्येक विभाजनात केवळ एक कन्यापेशी विभाजित होत राहते, तर दुसरी थांबून लांबते, म्हणून विभाजित होणाऱ्या पेशींची संख्या कधी वाढत नाही आणि दैनंदिन भर कधी बदलत नाही. (18 मुळाकडे आधीपासून असलेली लांबी विसरते.)",
+      },
+      fmt: unit("cm"),
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A cell in the log phase divides every 4 hours, and both daughters go on dividing. Starting from one cell, how many are there after 20 hours?",
+        hi: "लॉग प्रावस्था की कोई कोशिका हर 4 घंटे में विभाजित होती है, और दोनों संततियाँ विभाजित होती रहती हैं। एक कोशिका से शुरू करके 20 घंटे बाद कितनी होंगी?",
+        mr: "लॉग प्रावस्थेतली एक पेशी दर 4 तासांनी विभाजित होते, आणि दोन्ही कन्या विभाजित होत राहतात. एका पेशीपासून सुरू करून 20 तासांनी किती असतील?",
+      },
+      answer: 32,
+      wrong: [5, 16, 64],
+      checkExpr: "2*2*2*2*2",
+      solution: {
+        en: "Twenty hours allows five divisions, and each doubles the count: 2 × 2 × 2 × 2 × 2 = 32. This is geometric growth, and the contrast with the previous question is the whole point — there the increment was fixed, here the increment itself grows. Neither pattern lasts: no real tissue doubles indefinitely, and the log phase is exactly the stretch of the sigmoid curve where it briefly can. (16 counts four divisions, dividing 20 by 4 and then forgetting that the first doubling happens at the end of the first interval, not after it.)",
+        hi: "बीस घंटे में पाँच विभाजन होते हैं, और हर एक गिनती दुगुनी करता है: 2 × 2 × 2 × 2 × 2 = 32. यह ज्यामितीय वृद्धि है, और पिछले प्रश्न से विरोध ही पूरा प्रयोजन है — वहाँ बढ़त नियत थी, यहाँ बढ़त स्वयं बढ़ती है। दोनों ढर्रे टिकते नहीं: कोई वास्तविक ऊतक अनिश्चित काल तक दुगुना नहीं होता, और लॉग प्रावस्था सिग्मॉइड वक्र का ठीक वही हिस्सा है जहाँ वह थोड़ी देर हो सकता है। (16 चार विभाजन गिनता है।)",
+        mr: "वीस तासांत पाच विभाजने होतात, आणि प्रत्येक मोजणी दुप्पट करते: 2 × 2 × 2 × 2 × 2 = 32. ही भूमितीय वाढ, आणि मागच्या प्रश्नाशी विरोध हाच अख्खा हेतू — तिथे भर ठरावीक होती, इथे भर स्वतः वाढते. दोन्ही साचे टिकत नाहीत: कोणतीही खरी ऊती अनिश्चित काळ दुप्पट होत नाही, आणि लॉग प्रावस्था ही सिग्मॉइड वक्राचा नेमका तोच भाग जिथे ते थोडा वेळ शक्य असते. (16 चार विभाजने मोजते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Leaf A grows from 5 cm to 10 cm and leaf B from 50 cm to 60 cm over the same week. What is B's absolute increase?",
+        hi: "उसी सप्ताह में पत्ती A 5 cm से 10 cm हो जाती है और पत्ती B 50 cm से 60 cm. B की निरपेक्ष बढ़त कितनी?",
+        mr: "त्याच आठवड्यात पान A 5 cm वरून 10 cm होते आणि पान B 50 cm वरून 60 cm. B ची निरपेक्ष भर किती?",
+      },
+      answer: 10,
+      wrong: [5, 12, 15],
+      checkExpr: "60-50",
+      solution: {
+        en: "60 − 50 = 10 cm. B has gained twice as much as A in absolute terms, which is the figure a ruler gives you. Hold that beside the next question, because by the other measure the ranking reverses completely — and which measure you should quote depends entirely on what you are asking about. (5 quotes leaf A's increase.)",
+        hi: "60 − 50 = 10 cm. निरपेक्ष रूप में B ने A से दुगुना कमाया है, और यही आँकड़ा पैमाना देता है। इसे अगले प्रश्न के साथ रखो, क्योंकि दूसरी माप से क्रम पूरी तरह उलट जाता है — और तुम्हें कौन-सी माप बतानी चाहिए यह पूरी तरह इस पर निर्भर है कि तुम पूछ क्या रहे हो। (5 पत्ती A की बढ़त बता देता है।)",
+        mr: "60 − 50 = 10 cm. निरपेक्ष अर्थाने B ने A हून दुप्पट कमावले, आणि हाच आकडा पट्टी देते. हे पुढच्या प्रश्नाशेजारी ठेवा, कारण दुसऱ्या मापाने क्रम पूर्णपणे उलटतो — आणि तुम्ही कोणते माप सांगावे हे पूर्णपणे तुम्ही काय विचारता आहात यावर अवलंबून. (5 पान A ची भर सांगते.)",
+      },
+      fmt: unit("cm"),
+    },
+    {
+      level: 3,
+      stem: {
+        en: "Leaf A grows from 5 cm to 10 cm in a week. What is its growth over that week as a percentage of its starting length?",
+        hi: "पत्ती A एक सप्ताह में 5 cm से 10 cm हो जाती है। उस सप्ताह की उसकी वृद्धि आरंभिक लंबाई के प्रतिशत के रूप में कितनी है?",
+        mr: "पान A एका आठवड्यात 5 cm वरून 10 cm होते. त्या आठवड्यातली तिची वाढ प्रारंभिक लांबीच्या टक्केवारीत किती?",
+      },
+      answer: 100,
+      wrong: [50, 20, 200],
+      checkExpr: "(10-5)/5*100",
+      solution: {
+        en: "(10 − 5)/5 × 100 = 100 per cent. Now compare with leaf B from the previous question, which went from 50 cm to 60 cm: its increase of 10 cm is only 20 per cent of what it started with. By the ruler B wins; by relative growth rate A wins five times over. Neither measure is the honest one on its own — a plant breeder comparing seedlings of different starting sizes must use the relative figure, while a farmer working out whether the crop will reach the top of the bund needs the absolute one. (50 halves the answer, dividing the increase by the final length instead of the starting one.)",
+        hi: "(10 − 5)/5 × 100 = 100 प्रतिशत। अब पिछले प्रश्न की पत्ती B से तुलना करो, जो 50 cm से 60 cm हुई: उसकी 10 cm की बढ़त आरंभिक लंबाई का केवल 20 प्रतिशत है। पैमाने से B जीतती है; सापेक्ष वृद्धि दर से A पाँच गुना जीतती है। अकेली कोई माप ईमानदार नहीं — भिन्न आरंभिक आकार के अंकुरों की तुलना करता प्रजनक सापेक्ष आँकड़ा ही ले सकता है, जबकि यह हिसाब लगाता किसान कि फ़सल मेड़ की ऊँचाई तक पहुँचेगी या नहीं, उसे निरपेक्ष चाहिए। (50 उत्तर आधा कर देता है, बढ़त को आरंभिक के बजाय अंतिम लंबाई से भाग देकर।)",
+        mr: "(10 − 5)/5 × 100 = 100 टक्के. आता मागच्या प्रश्नातल्या पान B शी तुलना करा, जे 50 cm वरून 60 cm झाले: त्याची 10 cm ची भर प्रारंभिक लांबीच्या केवळ 20 टक्के. पट्टीने B जिंकते; सापेक्ष वाढ-दराने A पाचपट जिंकते. एकटे कोणतेही माप प्रामाणिक नाही — वेगवेगळ्या प्रारंभिक आकाराच्या रोपांची तुलना करणारा प्रजनक सापेक्ष आकडाच घेऊ शकतो, तर पीक बांधाच्या उंचीपर्यंत पोहोचेल का हे ठरवणाऱ्या शेतकऱ्याला निरपेक्ष लागतो. (50 उत्तर निम्मे करते, भर प्रारंभिकऐवजी अंतिम लांबीने भागून.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A seedling is 2 cm tall on the first day and 8 cm tall on the fourth, three days later. What was its average growth rate?",
+        hi: "कोई अंकुर पहले दिन 2 cm ऊँचा है और तीन दिन बाद चौथे दिन 8 cm. उसकी औसत वृद्धि दर क्या रही?",
+        mr: "एक रोप पहिल्या दिवशी 2 cm उंच आहे आणि तीन दिवसांनी चौथ्या दिवशी 8 cm. त्याचा सरासरी वाढ-दर किती?",
+      },
+      answer: 2,
+      wrong: [3, 6, 8],
+      checkExpr: "(8-2)/3",
+      solution: {
+        en: "(8 − 2)/3 = 2 cm per day. Two cautions come with an average like this. It says nothing about whether the growth was steady — a seedling in its log phase grows far faster on the third day than on the first, and the same average would cover both. And the denominator is the number of INTERVALS, not the number of days named: from day one to day four is three days of growing, not four. (3 divides the final height by the days instead of the increase by the intervals.)",
+        hi: "(8 − 2)/3 = 2 cm प्रतिदिन। ऐसे औसत के साथ दो सावधानियाँ आती हैं। वह यह कुछ नहीं बताता कि वृद्धि नियमित थी या नहीं — लॉग प्रावस्था का अंकुर तीसरे दिन पहले दिन से कहीं तेज़ बढ़ता है, और वही औसत दोनों को ढाँप लेता। और हर अंतरालों की संख्या है, नामित दिनों की नहीं: पहले दिन से चौथे दिन तक बढ़ने के तीन दिन हैं, चार नहीं। (3 बढ़त को अंतरालों से नहीं, अंतिम ऊँचाई को दिनों से भाग देता है।)",
+        mr: "(8 − 2)/3 = 2 cm प्रतिदिन. अशा सरासरीसोबत दोन सावधगिऱ्या येतात. ती वाढ नियमित होती का याबद्दल काहीच सांगत नाही — लॉग प्रावस्थेतले रोप तिसऱ्या दिवशी पहिल्या दिवसाहून कितीतरी वेगाने वाढते, आणि तीच सरासरी दोन्ही झाकून टाकेल. आणि भाजक म्हणजे अंतरालांची संख्या, नामित दिवसांची नव्हे: पहिल्या दिवसापासून चौथ्या दिवसापर्यंत वाढण्याचे तीन दिवस, चार नव्हे. (3 भर अंतरालांनी नव्हे, अंतिम उंची दिवसांनी भागते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "A short-day plant needs an unbroken dark period of at least 14 hours to flower. In a 24-hour cycle it is given 9 hours of light. How many hours of darkness does it get?",
+        hi: "किसी लघु-दिवस पादप को फूलने के लिए कम से कम 14 घंटे की अखंड अंधकार-अवधि चाहिए। 24 घंटे के चक्र में उसे 9 घंटे प्रकाश दिया जाता है। उसे कितने घंटे अंधकार मिलता है?",
+        mr: "एका लघु-दिवस वनस्पतीला फुलण्यासाठी किमान 14 तासांचा अखंड अंधार-कालावधी लागतो. 24 तासांच्या चक्रात तिला 9 तास प्रकाश दिला जातो. तिला किती तास अंधार मिळतो?",
+      },
+      answer: 15,
+      wrong: [14, 10, 9],
+      checkExpr: "24-9",
+      solution: {
+        en: "24 − 9 = 15 hours of darkness, which clears the 14-hour requirement, so the plant flowers. Two things make this question harder than the subtraction looks. First, the requirement is on the DARK period, not the light one — the name short-day plant describes the day length that happens to accompany the long night, and reasoning from the name instead of from the night is how most errors here begin. Second, the requirement is on an UNBROKEN period. Switch a lamp on for two minutes at hour seven and the plant now has two dark periods of about seven and eight hours, neither of which reaches 14, and it will not flower — even though the total darkness is still nearly 15 hours. That is exactly the trick a chrysanthemum grower uses to hold a crop back for a festival, and it is far cheaper than blacking out a glasshouse. (14 quotes the threshold rather than what the plant actually received.)",
+        hi: "24 − 9 = 15 घंटे अंधकार, जो 14 घंटे की माँग पार कर जाता है, अतः पादप फूलता है। दो बातें इस प्रश्न को घटाव से कठिन बनाती हैं। पहली, माँग अंधकार-अवधि पर है, प्रकाश पर नहीं — लघु-दिवस पादप नाम उस दिन-लंबाई का वर्णन करता है जो संयोग से लंबी रात के साथ आती है, और रात के बजाय नाम से तर्क करना ही यहाँ की अधिकांश भूलों की शुरुआत है। दूसरी, माँग अखंड अवधि पर है। सातवें घंटे पर दो मिनट के लिए दीया जलाओ और पादप के पास अब लगभग सात और आठ घंटे की दो अंधकार-अवधियाँ हैं, जिनमें से कोई 14 तक नहीं पहुँचती, और वह नहीं फूलेगा — जबकि कुल अंधकार अब भी लगभग 15 घंटे है। ठीक यही तरकीब गुलदाउदी उगाने वाला त्योहार तक फ़सल रोकने के लिए काम में लेता है, और वह काँच-घर काला करने से कहीं सस्ती है। (14 पादप को जो वस्तुतः मिला उसके बजाय देहली बता देता है।)",
+        mr: "24 − 9 = 15 तास अंधार, जो 14 तासांची मागणी पार करतो, म्हणून वनस्पती फुलते. दोन गोष्टी या प्रश्नाला वजाबाकीहून कठीण करतात. पहिली, मागणी अंधार-कालावधीवर आहे, प्रकाशावर नव्हे — लघु-दिवस वनस्पती हे नाव त्या दिवस-लांबीचे वर्णन करते जी योगायोगाने लांब रात्रीसोबत येते, आणि रात्रीऐवजी नावावरून तर्क करणे हीच इथल्या बहुतांश चुकांची सुरुवात. दुसरी, मागणी अखंड कालावधीवर आहे. सातव्या तासाला दोन मिनिटे दिवा लावा आणि वनस्पतीजवळ आता सुमारे सात आणि आठ तासांचे दोन अंधार-कालावधी आहेत, ज्यांपैकी एकही 14 पर्यंत पोहोचत नाही, आणि ती फुलणार नाही — जरी एकूण अंधार अजूनही जवळपास 15 तास असला तरी. नेमकी हीच युक्ती शेवंती उगवणारा सणापर्यंत पीक रोखण्यासाठी वापरतो, आणि ती काचगृह काळे करण्याहून कितीतरी स्वस्त. (14 वनस्पतीला प्रत्यक्षात जे मिळाले त्याऐवजी उंबरठा सांगते.)",
+      },
+      fmt: unit("hours"),
+    },
+  ],
+  /**
+   * Lung volumes are the one place in school physiology where a pupil adds up
+   * named quantities and gets a figure a clinician actually uses. The capacities
+   * are sums by definition, so getting them wrong is a bookkeeping error rather
+   * than a gap in biology — which is exactly what makes them worth drilling.
+   */
+  "biology-11-breathing-and-exchange-of-gases": [
+    {
+      level: 1,
+      stem: {
+        en: "Tidal volume is 500 mL, inspiratory reserve volume is 3000 mL and expiratory reserve volume is 1100 mL. What is the vital capacity?",
+        hi: "ज्वारीय आयतन 500 mL है, अंतःश्वसन आरक्षित आयतन 3000 mL और निःश्वसन आरक्षित आयतन 1100 mL. जैव क्षमता कितनी है?",
+        mr: "ज्वारीय आकारमान 500 mL आहे, अंतःश्वसन राखीव आकारमान 3000 mL आणि उच्छ्वास राखीव आकारमान 1100 mL. जीवनक्षमता किती?",
+      },
+      answer: 4600,
+      wrong: [3500, 4100, 5800],
+      checkExpr: "500+3000+1100",
+      solution: {
+        en: "Vital capacity is everything you can move in one deliberate breath: 500 + 3000 + 1100 = 4600 mL. It leaves out the residual volume on purpose, because that air can never be blown out and so can never be measured this way. (5800 has added the residual volume, which turns vital capacity into total lung capacity.)",
+        hi: "जैव क्षमता वह सब है जिसे तुम एक जानबूझकर ली गई साँस में हिला सकते हो: 500 + 3000 + 1100 = 4600 mL. उसमें अवशिष्ट आयतन जानबूझकर नहीं गिना जाता, क्योंकि वह हवा कभी बाहर फूँकी ही नहीं जा सकती और इसलिए यों मापी भी नहीं जा सकती। (5800 अवशिष्ट आयतन जोड़ देता है, जो जैव क्षमता को कुल फुफ्फुस क्षमता बना देता है।)",
+        mr: "जीवनक्षमता म्हणजे एका जाणीवपूर्वक श्वासात तुम्ही जे हलवू शकता ते सारे: 500 + 3000 + 1100 = 4600 mL. त्यात अवशिष्ट आकारमान मुद्दाम धरले जात नाही, कारण ती हवा कधी बाहेर फुंकताच येत नाही आणि म्हणून अशी मोजताही येत नाही. (5800 अवशिष्ट आकारमान जोडते, जे जीवनक्षमतेला एकूण फुप्फुसक्षमता बनवते.)",
+      },
+      fmt: unit("mL"),
+    },
+    {
+      level: 1,
+      stem: {
+        en: "Vital capacity is 4600 mL and residual volume is 1200 mL. What is the total lung capacity?",
+        hi: "जैव क्षमता 4600 mL है और अवशिष्ट आयतन 1200 mL. कुल फुफ्फुस क्षमता कितनी?",
+        mr: "जीवनक्षमता 4600 mL आहे आणि अवशिष्ट आकारमान 1200 mL. एकूण फुप्फुसक्षमता किती?",
+      },
+      answer: 5800,
+      wrong: [4600, 3400, 6000],
+      checkExpr: "4600+1200",
+      solution: {
+        en: "4600 + 1200 = 5800 mL. Note what this figure is and is not: it is the volume the lungs hold at the top of the deepest possible breath, and no instrument you breathe into can measure it directly, because the residual part never comes out. It has to be found indirectly, by diluting a known amount of an inert gas in it. (3400 subtracts instead of adding.)",
+        hi: "4600 + 1200 = 5800 mL. यह आँकड़ा क्या है और क्या नहीं, यह ध्यान दो: यह वह आयतन है जो सबसे गहरी संभव साँस के शिखर पर फेफड़ों में है, और जिस यंत्र में तुम फूँकते हो वह उसे सीधे नहीं माप सकता, क्योंकि अवशिष्ट भाग बाहर आता ही नहीं। उसे परोक्ष रूप से निकालना पड़ता है, उसमें किसी अक्रिय गैस की ज्ञात मात्रा तनुकृत करके। (3400 जोड़ने के बजाय घटा देता है।)",
+        mr: "4600 + 1200 = 5800 mL. हा आकडा काय आहे आणि काय नाही ते लक्षात घ्या: हे ते आकारमान जे सर्वांत खोल शक्य श्वासाच्या शिखरावर फुप्फुसांत असते, आणि तुम्ही ज्या यंत्रात फुंकता ते ते थेट मोजू शकत नाही, कारण अवशिष्ट भाग बाहेर येतच नाही. ते अप्रत्यक्षपणे काढावे लागते, त्यात एखाद्या निष्क्रिय वायूची ज्ञात मात्रा विरळ करून. (3400 जोडण्याऐवजी वजा करते.)",
+      },
+      fmt: unit("mL"),
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A person breathes 500 mL of air 12 times a minute. What is the pulmonary ventilation per minute?",
+        hi: "कोई व्यक्ति एक मिनट में 12 बार 500 mL हवा लेता है। प्रति मिनट फुफ्फुसीय संवातन कितना?",
+        mr: "एक व्यक्ती मिनिटाला 12 वेळा 500 mL हवा घेते. प्रति मिनिट फुप्फुसीय वायुवीजन किती?",
+      },
+      answer: 6000,
+      wrong: [500, 512, 4200],
+      checkExpr: "500*12",
+      solution: {
+        en: "500 × 12 = 6000 mL per minute. This is the figure a resting adult moves, and it is worth holding on to because the next question shows why it flatters the lungs: not all of that air ever reaches an alveolus. (512 adds the two numbers instead of multiplying, which is a slip worth catching by units alone — mL and breaths per minute cannot be added.)",
+        hi: "500 × 12 = 6000 mL प्रति मिनट। यही आँकड़ा विश्राम में वयस्क हिलाता है, और उसे पकड़े रखना उपयोगी है क्योंकि अगला प्रश्न दिखाता है कि वह फेफड़ों की झूठी तारीफ़ क्यों है: वह सारी हवा कभी किसी कूपिका तक पहुँचती ही नहीं। (512 गुणा करने के बजाय दोनों संख्याएँ जोड़ देता है, और यह चूक अकेले मात्रकों से पकड़ी जा सकती है — mL और साँस प्रति मिनट जोड़े नहीं जा सकते।)",
+        mr: "500 × 12 = 6000 mL प्रति मिनिट. हाच आकडा विश्रांतीतला प्रौढ हलवतो, आणि तो धरून ठेवणे उपयोगी कारण पुढचा प्रश्न दाखवतो की तो फुप्फुसांची खोटी स्तुती का आहे: ती सारी हवा कधी कोणत्या वायुकोशापर्यंत पोहोचतच नाही. (512 गुणण्याऐवजी दोन्ही संख्या जोडते, आणि ही चूक एकट्या एककांनीच पकडता येते — mL आणि श्वास प्रति मिनिट जोडता येत नाहीत.)",
+      },
+      fmt: unit("mL"),
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Of each 500 mL breath, 150 mL never gets past the airways into an alveolus. At 12 breaths a minute, how much fresh air reaches the alveoli each minute?",
+        hi: "हर 500 mL की साँस में से 150 mL वायुमार्गों से आगे किसी कूपिका तक कभी नहीं पहुँचती। 12 साँस प्रति मिनट पर हर मिनट कितनी ताज़ी हवा कूपिकाओं तक पहुँचती है?",
+        mr: "प्रत्येक 500 mL श्वासापैकी 150 mL वायुमार्गांपलीकडे कोणत्याही वायुकोशापर्यंत कधीच पोहोचत नाही. 12 श्वास प्रति मिनिट या दराने दर मिनिटाला किती ताजी हवा वायुकोशांपर्यंत पोहोचते?",
+      },
+      answer: 4200,
+      wrong: [6000, 1800, 350],
+      checkExpr: "(500-150)*12",
+      solution: {
+        en: "Only 350 mL of each breath is useful, so (500 − 150) × 12 = 4200 mL a minute. The 150 mL sitting in the nose, trachea and bronchi is the anatomical dead space — air that goes in and comes out again without ever touching a gas-exchange surface. It explains something practical: breathing shallowly and fast moves the same total air as breathing deeply and slowly, but delivers far less of it to the alveoli, because the dead space is paid for on every single breath. (6000 quotes total ventilation and ignores the dead space entirely.)",
+        hi: "हर साँस की केवल 350 mL उपयोगी है, अतः (500 − 150) × 12 = 4200 mL प्रति मिनट। नाक, श्वासनली और श्वसनी में बैठी 150 mL शारीरिक मृत अवकाश है — वह हवा जो भीतर जाकर बिना किसी गैस-विनिमय सतह को छुए लौट आती है। यह एक व्यावहारिक बात समझाती है: उथली और तेज़ साँस उतनी ही कुल हवा हिलाती है जितनी गहरी और धीमी, पर कूपिकाओं तक कहीं कम पहुँचाती है, क्योंकि मृत अवकाश हर एक साँस पर चुकाना पड़ता है। (6000 कुल संवातन बताता है और मृत अवकाश पूरी तरह अनदेखा कर देता है।)",
+        mr: "प्रत्येक श्वासाचे केवळ 350 mL उपयोगी, म्हणून (500 − 150) × 12 = 4200 mL प्रति मिनिट. नाक, श्वासनलिका आणि श्वसनिकांत बसलेले 150 mL हे शारीरिक मृत अवकाश — ती हवा जी आत जाऊन कोणत्याही वायुविनिमय पृष्ठभागाला स्पर्श न करता परतते. हे एक व्यावहारिक गोष्ट समजावते: उथळ आणि जलद श्वास तितकीच एकूण हवा हलवतो जितकी खोल आणि सावकाश, पण वायुकोशांपर्यंत कितीतरी कमी पोहोचवतो, कारण मृत अवकाश प्रत्येकच श्वासावर भरावे लागते. (6000 एकूण वायुवीजन सांगते आणि मृत अवकाश पूर्ण दुर्लक्षते.)",
+      },
+      fmt: unit("mL"),
+    },
+    {
+      level: 3,
+      stem: {
+        en: "Tidal volume is 500 mL and inspiratory reserve volume is 3000 mL. What is the inspiratory capacity?",
+        hi: "ज्वारीय आयतन 500 mL है और अंतःश्वसन आरक्षित आयतन 3000 mL. अंतःश्वसन क्षमता कितनी?",
+        mr: "ज्वारीय आकारमान 500 mL आणि अंतःश्वसन राखीव आकारमान 3000 mL. अंतःश्वसन क्षमता किती?",
+      },
+      answer: 3500,
+      wrong: [3000, 2500, 4600],
+      checkExpr: "500+3000",
+      solution: {
+        en: "500 + 3000 = 3500 mL. The word capacity is the clue in every one of these questions: a volume is a single measured quantity, a capacity is always a sum of two or more volumes. Learn which volumes each capacity is made of and there is nothing left to remember. (3000 quotes the reserve alone and forgets that the ordinary breath is part of the capacity.)",
+        hi: "500 + 3000 = 3500 mL. इन सब प्रश्नों में सुराग़ शब्द है क्षमता: आयतन एक अकेली मापी गई राशि है, क्षमता सदा दो या अधिक आयतनों का योग। सीख लो कि हर क्षमता किन आयतनों से बनी है और याद रखने को कुछ बचता ही नहीं। (3000 अकेला आरक्षित बताता है और भूल जाता है कि साधारण साँस भी क्षमता का हिस्सा है।)",
+        mr: "500 + 3000 = 3500 mL. या सर्व प्रश्नांत सुगावा शब्द म्हणजे क्षमता: आकारमान ही एकच मोजलेली राशी, क्षमता ही नेहमी दोन वा अधिक आकारमानांची बेरीज. प्रत्येक क्षमता कोणत्या आकारमानांची बनते ते शिका आणि लक्षात ठेवायला काहीच उरत नाही. (3000 एकटे राखीव सांगते आणि साधा श्वासही क्षमतेचा भाग आहे हे विसरते.)",
+      },
+      fmt: unit("mL"),
+    },
+    {
+      level: 3,
+      stem: {
+        en: "Expiratory reserve volume is 1100 mL and residual volume is 1200 mL. What is the functional residual capacity?",
+        hi: "निःश्वसन आरक्षित आयतन 1100 mL है और अवशिष्ट आयतन 1200 mL. क्रियात्मक अवशिष्ट क्षमता कितनी?",
+        mr: "उच्छ्वास राखीव आकारमान 1100 mL आणि अवशिष्ट आकारमान 1200 mL. कार्यात्मक अवशिष्ट क्षमता किती?",
+      },
+      answer: 2300,
+      wrong: [1200, 1100, 3500],
+      checkExpr: "1100+1200",
+      solution: {
+        en: "1100 + 1200 = 2300 mL. This is the air still in the lungs at the end of an ordinary quiet breath out, and it does real work: because more than two litres of gas stay behind, the 350 mL of fresh air arriving with the next breath is diluted into a large standing pool. The composition of alveolar gas therefore barely fluctuates through the cycle, and blood leaving the lungs is not being loaded from air that swings between fresh and stale twelve times a minute. (1200 quotes the residual volume alone.)",
+        hi: "1100 + 1200 = 2300 mL. यह वह हवा है जो साधारण शांत साँस छोड़ने के अंत में भी फेफड़ों में है, और वह असली काम करती है: चूँकि दो लीटर से अधिक गैस पीछे रह जाती है, अगली साँस के साथ आती 350 mL ताज़ी हवा एक बड़े खड़े कुंड में तनुकृत हो जाती है। अतः कूपिकीय गैस की संरचना चक्र भर मुश्किल से बदलती है, और फेफड़ों से निकलता रक्त ऐसी हवा से नहीं भरा जा रहा जो मिनट में बारह बार ताज़ी और बासी के बीच झूलती हो। (1200 अकेला अवशिष्ट आयतन बताता है।)",
+        mr: "1100 + 1200 = 2300 mL. ही ती हवा जी साध्या शांत उच्छ्वासाच्या शेवटीही फुप्फुसांत असते, आणि ती खरे काम करते: दोन लिटरहून अधिक वायू मागे राहत असल्याने, पुढच्या श्वासासोबत येणारी 350 mL ताजी हवा एका मोठ्या उभ्या साठ्यात विरळ होते. म्हणून वायुकोशीय वायूची रचना अख्ख्या चक्रात जेमतेम बदलते, आणि फुप्फुसांतून निघणारे रक्त अशा हवेतून भरले जात नाही जी मिनिटाला बारा वेळा ताजी आणि शिळी यांदरम्यान झुलते. (1200 एकटे अवशिष्ट आकारमान सांगते.)",
+      },
+      fmt: unit("mL"),
+    },
+    {
+      level: 4,
+      stem: {
+        en: "Every 100 mL of arterial blood carries 20 mL of oxygen. How much oxygen does 5 litres of blood carry?",
+        hi: "धमनी रक्त की हर 100 mL 20 mL ऑक्सीजन ढोती है। 5 लीटर रक्त कितनी ऑक्सीजन ढोता है?",
+        mr: "रोहिणी रक्ताचे प्रत्येक 100 mL 20 mL प्राणवायू वाहते. 5 लिटर रक्त किती प्राणवायू वाहते?",
+      },
+      answer: 1000,
+      wrong: [100, 20, 250],
+      checkExpr: "20*50",
+      solution: {
+        en: "5 litres is 5000 mL, which is 50 lots of 100 mL, so 20 × 50 = 1000 mL of oxygen. Almost all of it is bound to haemoglobin rather than dissolved: plasma alone could hold only about 15 mL in that same 5 litres, which is why a person with no haemoglobin would suffocate in air. (250 answers a different question — how much is unloaded per minute, not how much is carried.)",
+        hi: "5 लीटर 5000 mL है, यानी 100 mL के 50 भाग, अतः 20 × 50 = 1000 mL ऑक्सीजन। लगभग सारी हीमोग्लोबिन से बँधी है, घुली नहीं: अकेला प्लाज़्मा उन्हीं 5 लीटर में लगभग 15 mL ही रख पाता, इसीलिए हीमोग्लोबिन-रहित व्यक्ति हवा में भी दम घुटकर मर जाता। (250 दूसरे प्रश्न का उत्तर देता है — प्रति मिनट कितनी उतरती है, कितनी ढोई जाती है वह नहीं।)",
+        mr: "5 लिटर म्हणजे 5000 mL, म्हणजे 100 mL चे 50 भाग, म्हणून 20 × 50 = 1000 mL प्राणवायू. जवळपास सारा हिमोग्लोबिनला बांधलेला, विरघळलेला नव्हे: एकटा प्लाझ्मा त्याच 5 लिटरात सुमारे 15 mL च ठेवू शकला असता, म्हणूनच हिमोग्लोबिनविरहित व्यक्ती हवेतही गुदमरून मरली असती. (250 वेगळ्या प्रश्नाचे उत्तर देते — प्रति मिनिट किती उतरते, किती वाहून नेले जाते ते नव्हे.)",
+      },
+      fmt: unit("mL"),
+    },
+    {
+      level: 5,
+      stem: {
+        en: "Arterial blood carries 20 mL of oxygen per 100 mL and venous blood returns carrying 15 mL per 100 mL. If 5 litres circulate in a minute, how much oxygen is delivered to the tissues each minute?",
+        hi: "धमनी रक्त प्रति 100 mL 20 mL ऑक्सीजन ढोता है और शिरा रक्त प्रति 100 mL 15 mL लौटाता है। यदि एक मिनट में 5 लीटर परिसंचरित हो, तो हर मिनट ऊतकों को कितनी ऑक्सीजन दी जाती है?",
+        mr: "रोहिणी रक्त प्रति 100 mL 20 mL प्राणवायू वाहते आणि नीला रक्त प्रति 100 mL 15 mL परत आणते. जर मिनिटाला 5 लिटर अभिसरण होत असेल, तर दर मिनिटाला ऊतींना किती प्राणवायू दिला जातो?",
+      },
+      answer: 250,
+      wrong: [1000, 750, 50],
+      checkExpr: "(20-15)*50",
+      solution: {
+        en: "Each 100 mL of blood gives up 20 − 15 = 5 mL, and 5 litres is 50 such lots, so (20 − 15) × 50 = 250 mL a minute. Two things follow from that number. First, at rest the blood surrenders only a quarter of the oxygen it is carrying, and the other three-quarters goes round again — so the venous blood in your arm is not empty, it is a reserve. Second, that reserve is why exercise can raise oxygen delivery so steeply: a working muscle is warm, acidic and full of carbon dioxide, which shifts the dissociation curve to the right and makes haemoglobin let go of far more of its load, and the heart raises the flow on top of that. (1000 quotes the total carried rather than the amount handed over.)",
+        hi: "रक्त की हर 100 mL 20 − 15 = 5 mL छोड़ती है, और 5 लीटर ऐसे 50 भाग हैं, अतः (20 − 15) × 50 = 250 mL प्रति मिनट। उस संख्या से दो बातें निकलती हैं। पहली, विश्राम में रक्त अपनी ढोई ऑक्सीजन का केवल चौथाई सौंपता है, और बाक़ी तीन-चौथाई फिर घूम जाता है — अतः तुम्हारी बाँह का शिरा रक्त ख़ाली नहीं, वह एक भंडार है। दूसरी, वही भंडार कारण है कि व्यायाम ऑक्सीजन की आपूर्ति इतनी तेज़ी से बढ़ा सकता है: काम करती पेशी गरम है, अम्लीय है और कार्बन डाइऑक्साइड से भरी है, जो वियोजन वक्र को दाईं ओर खिसकाकर हीमोग्लोबिन से कहीं अधिक भार छुड़वा देती है, और उसके ऊपर हृदय प्रवाह भी बढ़ा देता है। (1000 सौंपी गई मात्रा के बजाय कुल ढोई गई बता देता है।)",
+        mr: "रक्ताचे प्रत्येक 100 mL 20 − 15 = 5 mL सोडते, आणि 5 लिटर म्हणजे असे 50 भाग, म्हणून (20 − 15) × 50 = 250 mL प्रति मिनिट. त्या आकड्यातून दोन गोष्टी निघतात. पहिली, विश्रांतीत रक्त आपल्या वाहून नेलेल्या प्राणवायूचा केवळ चतुर्थांश सोपवते, आणि उरलेला तीनचतुर्थांश पुन्हा फिरतो — म्हणून तुमच्या दंडातले नीला रक्त रिकामे नाही, तो एक साठा आहे. दुसरी, तोच साठा हे कारण की व्यायाम प्राणवायूचा पुरवठा इतक्या झपाट्याने वाढवू शकतो: काम करणारा स्नायू उबदार, आम्लधर्मी आणि कार्बन डायऑक्साइडने भरलेला असतो, जे वियोजन वक्र उजवीकडे सरकवून हिमोग्लोबिनकडून कितीतरी अधिक भार सोडवते, आणि त्यावर हृदय प्रवाहही वाढवते. (1000 सोपवलेल्या प्रमाणाऐवजी एकूण वाहून नेलेले सांगते.)",
+      },
+      fmt: unit("mL"),
+    },
+    {
+      level: 6,
+      stem: {
+        en: "Of every 100 mL of carbon dioxide transported by the blood, about 70 mL travels as bicarbonate and about 23 mL bound to haemoglobin. How much travels dissolved in the plasma as the gas itself?",
+        hi: "रक्त द्वारा ढोई गई हर 100 mL कार्बन डाइऑक्साइड में से लगभग 70 mL बाइकार्बोनेट के रूप में और लगभग 23 mL हीमोग्लोबिन से बँधकर यात्रा करती है। प्लाज़्मा में गैस के रूप में घुली कितनी यात्रा करती है?",
+        mr: "रक्ताने वाहून नेलेल्या प्रत्येक 100 mL कार्बन डायऑक्साइडपैकी सुमारे 70 mL बायकार्बोनेटच्या रूपात आणि सुमारे 23 mL हिमोग्लोबिनला बांधून प्रवास करते. प्लाझ्मात वायूच्या रूपात विरघळून किती प्रवास करते?",
+      },
+      answer: 7,
+      wrong: [30, 23, 70],
+      checkExpr: "100-70-23",
+      solution: {
+        en: "100 − 70 − 23 = 7 mL. The interesting thing is not the subtraction but what the split means. Barely a fourteenth of the carbon dioxide travels as itself; nearly three-quarters has been chemically converted, inside the red blood cell, into bicarbonate. That conversion needs carbonic anhydrase, an enzyme packed into red cells and almost absent from plasma, and it is fast enough to finish in the fraction of a second the blood spends in a capillary. Two consequences are worth carrying. First, this is why blood can carry so much of the gas without becoming dangerously acidic — the hydrogen ions released by the reaction are mopped up by haemoglobin that has just given away its oxygen, which is a neat piece of coupling. Second, the whole reaction runs backwards in the lung capillary, where bicarbonate is reconverted and the gas diffuses out into the alveolus. The same enzyme, the same equation, driven in opposite directions at the two ends of the circulation purely by the local concentrations. (30 lumps the dissolved and haemoglobin-bound shares together.)",
+        hi: "100 − 70 − 23 = 7 mL. रोचक बात घटाव नहीं, बल्कि यह बँटवारा क्या कहता है वह है। कार्बन डाइऑक्साइड का मुश्किल से चौदहवाँ भाग स्वयं के रूप में यात्रा करता है; लगभग तीन-चौथाई लाल रक्त कोशिका के भीतर रासायनिक रूप से बाइकार्बोनेट में बदल दिया गया है। उस रूपांतरण को कार्बोनिक एनहाइड्रेज़ चाहिए, वह एंज़ाइम जो लाल कोशिकाओं में ठसा है और प्लाज़्मा में लगभग है ही नहीं, और वह इतना तेज़ है कि रक्त केशिका में जितना क्षण बिताता है उसी में पूरा हो जाए। दो परिणाम ढोने योग्य हैं। पहला, इसीलिए रक्त इतनी गैस ढो पाता है बिना ख़तरनाक रूप से अम्लीय हुए — अभिक्रिया से छूटे हाइड्रोजन आयन उसी हीमोग्लोबिन से सोख लिए जाते हैं जो अभी-अभी अपनी ऑक्सीजन दे चुका है, और यह जुड़ाव का सुंदर टुकड़ा है। दूसरा, फेफड़े की केशिका में पूरी अभिक्रिया उलटी चलती है, जहाँ बाइकार्बोनेट फिर बदलता है और गैस कूपिका में विसरित हो जाती है। वही एंज़ाइम, वही समीकरण, परिसंचरण के दो छोरों पर विपरीत दिशाओं में चलाया जाता, केवल स्थानीय सांद्रताओं से। (30 घुले और हीमोग्लोबिन से बँधे हिस्सों को एक साथ जोड़ देता है।)",
+        mr: "100 − 70 − 23 = 7 mL. रोचक गोष्ट वजाबाकी नव्हे, तर ही विभागणी काय सांगते ती आहे. कार्बन डायऑक्साइडचा जेमतेम चौदावा भाग स्वतःच्या रूपात प्रवास करतो; जवळपास तीनचतुर्थांश तांबड्या पेशीच्या आत रासायनिकरीत्या बायकार्बोनेटमध्ये बदलला गेला आहे. त्या रूपांतरणाला कार्बोनिक अ‍ॅनहायड्रेज लागते, ते विकर जे तांबड्या पेशींत ठासलेले आणि प्लाझ्मात जवळपास नाहीच, आणि ते इतके वेगवान की रक्त केशवाहिनीत जितका क्षण घालवते त्यातच पुरे व्हावे. दोन परिणाम वाहून नेण्याजोगे. पहिला, म्हणूनच रक्त इतका वायू वाहू शकते धोकादायकरीत्या आम्लधर्मी न होता — अभिक्रियेतून सुटलेले हायड्रोजन आयन नेमक्या त्याच हिमोग्लोबिनने शोषले जातात ज्याने आत्ताच आपला प्राणवायू दिला आहे, आणि हा जोडणीचा सुंदर तुकडा. दुसरा, फुप्फुसाच्या केशवाहिनीत अख्खी अभिक्रिया उलटी चालते, जिथे बायकार्बोनेट पुन्हा बदलते आणि वायू वायुकोशात विसरतो. तेच विकर, तेच समीकरण, अभिसरणाच्या दोन टोकांना विरुद्ध दिशांना चालवलेले, केवळ स्थानिक संहतींनी. (30 विरघळलेला आणि हिमोग्लोबिनला बांधलेला वाटा एकत्र करते.)",
+      },
+      fmt: unit("mL"),
+    },
+  ],
+  /**
+   * Cardiac output is the one equation in this chapter, and everything else is
+   * that equation rearranged: stroke volume times rate, cycle length as the
+   * reciprocal of rate, systole and diastole as its two parts. A pupil who can
+   * move between those four quantities can read a bedside chart.
+   */
+  "biology-11-body-fluids-and-circulation": [
+    {
+      level: 1,
+      stem: {
+        en: "The heart pumps 70 mL of blood with each beat and beats 72 times a minute. What is the cardiac output per minute?",
+        hi: "हृदय हर धड़कन पर 70 mL रक्त पंप करता है और एक मिनट में 72 बार धड़कता है। प्रति मिनट हृद् निर्गम कितना?",
+        mr: "हृदय प्रत्येक ठोक्याला 70 mL रक्त पंप करते आणि मिनिटाला 72 वेळा धडधडते. प्रति मिनिट हृद्निर्गम किती?",
+      },
+      answer: 5040,
+      wrong: [142, 720, 4200],
+      checkExpr: "70*72",
+      solution: {
+        en: "70 × 72 = 5040 mL a minute, which is close to five litres — very nearly the whole blood volume of an adult. So your entire blood supply passes through the heart about once every minute at rest, and a trained athlete at full effort can push that to five or six times as much. (142 adds the two numbers, a slip the units alone would catch, since mL and beats per minute cannot be added.)",
+        hi: "70 × 72 = 5040 mL प्रति मिनट, जो पाँच लीटर के क़रीब है — लगभग वयस्क का पूरा रक्त आयतन। अतः विश्राम में तुम्हारा सारा रक्त लगभग हर मिनट एक बार हृदय से गुज़र जाता है, और पूरा ज़ोर लगाता प्रशिक्षित खिलाड़ी उसे पाँच-छह गुना तक ठेल सकता है। (142 दोनों संख्याएँ जोड़ देता है, और यह चूक अकेले मात्रकों से पकड़ी जा सकती है, क्योंकि mL और धड़कन प्रति मिनट जोड़े नहीं जा सकते।)",
+        mr: "70 × 72 = 5040 mL प्रति मिनिट, जे पाच लिटरच्या जवळ आहे — जवळपास प्रौढाचे अख्खे रक्त-आकारमान. म्हणून विश्रांतीत तुमचे सारे रक्त जवळपास दर मिनिटाला एकदा हृदयातून जाते, आणि पूर्ण जोर लावणारा प्रशिक्षित खेळाडू ते पाच-सहापट ढकलू शकतो. (142 दोन्ही संख्या जोडते, आणि ही चूक एकट्या एककांनीच पकडता येते, कारण mL आणि ठोके प्रति मिनिट जोडता येत नाहीत.)",
+      },
+      fmt: unit("mL"),
+    },
+    {
+      level: 1,
+      stem: {
+        en: "A patient's cardiac output is 5000 mL a minute and each beat ejects 50 mL. How many times is the heart beating each minute?",
+        hi: "किसी रोगी का हृद् निर्गम 5000 mL प्रति मिनट है और हर धड़कन 50 mL निकालती है। हृदय हर मिनट कितनी बार धड़क रहा है?",
+        mr: "एका रुग्णाचा हृद्निर्गम 5000 mL प्रति मिनिट आहे आणि प्रत्येक ठोका 50 mL बाहेर टाकतो. हृदय दर मिनिटाला किती वेळा धडधडते आहे?",
+      },
+      answer: 100,
+      wrong: [50, 72, 250],
+      checkExpr: "5000/50",
+      solution: {
+        en: "5000/50 = 100 beats a minute. The clinical reading is worth making: this heart is delivering a normal output but has to beat unusually fast to do it, because each beat is weak. A racing pulse in a resting patient is often exactly this — the rate compensating for a stroke volume that has fallen. (72 quotes the textbook average instead of computing.)",
+        hi: "5000/50 = 100 धड़कन प्रति मिनट। चिकित्सकीय पाठ बनाने योग्य है: यह हृदय सामान्य निर्गम दे तो रहा है पर उसके लिए उसे असामान्य रूप से तेज़ धड़कना पड़ रहा है, क्योंकि हर धड़कन कमज़ोर है। विश्राम में रोगी की दौड़ती नाड़ी प्रायः ठीक यही होती है — गिरे हुए स्ट्रोक आयतन की भरपाई करती दर। (72 गणना के बजाय पुस्तक का औसत बता देता है।)",
+        mr: "5000/50 = 100 ठोके प्रति मिनिट. वैद्यकीय वाचन करण्याजोगे: हे हृदय सामान्य निर्गम देते आहे खरे पण त्यासाठी त्याला असामान्यपणे वेगाने धडधडावे लागते आहे, कारण प्रत्येक ठोका दुर्बळ आहे. विश्रांतीतल्या रुग्णाची धावती नाडी बहुधा नेमकी हीच — घसरलेल्या स्ट्रोक आकारमानाची भरपाई करणारा दर. (72 गणनेऐवजी पुस्तकातली सरासरी सांगते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Cardiac output is 4800 mL a minute at a heart rate of 60 beats a minute. What is the stroke volume?",
+        hi: "60 धड़कन प्रति मिनट की हृदय दर पर हृद् निर्गम 4800 mL प्रति मिनट है। स्ट्रोक आयतन कितना?",
+        mr: "60 ठोके प्रति मिनिट या हृदयदरावर हृद्निर्गम 4800 mL प्रति मिनिट आहे. स्ट्रोक आकारमान किती?",
+      },
+      answer: 80,
+      wrong: [60, 70, 4740],
+      checkExpr: "4800/60",
+      solution: {
+        en: "4800/60 = 80 mL per beat. This is the same equation as before, rearranged — output equals stroke volume times rate, so any one of the three follows from the other two. A slow heart with a large stroke volume is the signature of endurance training: a marathon runner's resting pulse can be forty because each beat moves so much more blood. (4740 subtracts instead of dividing.)",
+        hi: "4800/60 = 80 mL प्रति धड़कन। यह वही समीकरण है, फिर से जमाया हुआ — निर्गम बराबर स्ट्रोक आयतन गुणा दर, अतः तीनों में से कोई एक बाक़ी दो से निकल आता है। बड़े स्ट्रोक आयतन वाला धीमा हृदय सहनशक्ति-प्रशिक्षण की छाप है: मैराथन धावक की विश्राम-नाड़ी चालीस हो सकती है क्योंकि हर धड़कन कहीं अधिक रक्त हिलाती है। (4740 भाग देने के बजाय घटा देता है।)",
+        mr: "4800/60 = 80 mL प्रति ठोका. हेच ते समीकरण, पुन्हा मांडलेले — निर्गम बरोबर स्ट्रोक आकारमान गुणिले दर, म्हणून तिन्हींपैकी कोणतेही एक उरलेल्या दोहोंतून निघते. मोठे स्ट्रोक आकारमान असलेले मंद हृदय ही सहनशक्ती-प्रशिक्षणाची खूण: मॅरेथॉन धावपटूची विश्रांती-नाडी चाळीस असू शकते कारण प्रत्येक ठोका कितीतरी अधिक रक्त हलवतो. (4740 भागण्याऐवजी वजा करते.)",
+      },
+      fmt: unit("mL"),
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A ventricle holds 130 mL of blood just before it contracts and 60 mL just after. What is the stroke volume?",
+        hi: "कोई निलय सिकुड़ने से ठीक पहले 130 mL रक्त रखता है और ठीक बाद 60 mL. स्ट्रोक आयतन कितना?",
+        mr: "एक निलय आकुंचन पावण्याच्या अगदी आधी 130 mL रक्त धरते आणि अगदी नंतर 60 mL. स्ट्रोक आकारमान किती?",
+      },
+      answer: 70,
+      wrong: [130, 60, 190],
+      checkExpr: "130-60",
+      solution: {
+        en: "130 − 60 = 70 mL. The important thing the numbers show is that the ventricle does NOT empty: more than half of what it held is ejected and a substantial residue stays behind, which is exactly why stroke volume can rise sharply during exercise without the heart having to fill any more than usual. That reserve is what a healthy heart has and a failing one has lost. (130 quotes the volume before contraction as though the chamber emptied completely.)",
+        hi: "130 − 60 = 70 mL. संख्याएँ जो महत्त्वपूर्ण बात दिखाती हैं वह यह कि निलय ख़ाली नहीं होता: उसमें जो था उसका आधे से अधिक निकाला जाता है और अच्छा-ख़ासा शेष पीछे रह जाता है, और ठीक इसीलिए व्यायाम में स्ट्रोक आयतन तेज़ी से बढ़ सकता है बिना हृदय के सामान्य से अधिक भरे। वही आरक्षित स्वस्थ हृदय के पास है और विफल होते हृदय ने खो दिया है। (130 सिकुड़ने से पहले का आयतन बता देता है, मानो कोष्ठ पूरा ख़ाली हो जाता हो।)",
+        mr: "130 − 60 = 70 mL. आकडे जी महत्त्वाची गोष्ट दाखवतात ती ही की निलय रिकामे होत नाही: त्यात जे होते त्याच्या निम्म्याहून अधिक बाहेर टाकले जाते आणि बऱ्यापैकी शिल्लक मागे राहते, आणि नेमके म्हणूनच व्यायामात स्ट्रोक आकारमान झपाट्याने वाढू शकते हृदयाला नेहमीहून अधिक भरावे न लागता. तोच राखीव निरोगी हृदयाजवळ असतो आणि निकामी होणाऱ्या हृदयाने गमावलेला असतो. (130 आकुंचनाआधीचे आकारमान सांगते, जणू कप्पा पूर्ण रिकामा होत असावा.)",
+      },
+      fmt: unit("mL"),
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A heart beats 75 times a minute. How long does one complete cardiac cycle take, in seconds?",
+        hi: "कोई हृदय एक मिनट में 75 बार धड़कता है। एक पूरा हृद् चक्र कितने सेकंड लेता है?",
+        mr: "एक हृदय मिनिटाला 75 वेळा धडधडते. एक पूर्ण हृद्चक्र किती सेकंद घेते?",
+      },
+      answer: 0.8,
+      wrong: [1.25, 75, 1],
+      checkExpr: "60/75",
+      solution: {
+        en: "One minute is 60 seconds shared among 75 beats: 60/75 = 0.8 s. Rate and cycle length are reciprocals, so the moment the rate changes, so does the time available for everything within the cycle — and the two parts do not shrink equally, which is what the next question is about. (1.25 inverts the division, dividing beats by seconds.)",
+        hi: "एक मिनट में 60 सेकंड हैं जो 75 धड़कनों में बँटते हैं: 60/75 = 0.8 s. दर और चक्र-लंबाई व्युत्क्रम हैं, अतः दर बदलते ही चक्र के भीतर हर चीज़ के लिए उपलब्ध समय भी बदल जाता है — और दोनों हिस्से बराबर नहीं सिकुड़ते, और अगला प्रश्न उसी का है। (1.25 भाग उलट देता है, धड़कनों को सेकंडों से भाग देकर।)",
+        mr: "एका मिनिटात 60 सेकंद जे 75 ठोक्यांत वाटले जातात: 60/75 = 0.8 s. दर आणि चक्र-लांबी व्यस्त आहेत, म्हणून दर बदलताच चक्रातल्या प्रत्येक गोष्टीसाठी उपलब्ध वेळही बदलतो — आणि दोन्ही भाग सारखे आखडत नाहीत, आणि पुढचा प्रश्न त्याचाच. (1.25 भागाकार उलटवते, ठोके सेकंदांनी भागून.)",
+      },
+      fmt: unit("s"),
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A cardiac cycle lasts 0.8 s, of which ventricular systole takes 0.3 s. How long is ventricular diastole?",
+        hi: "हृद् चक्र 0.8 s चलता है, जिसमें से निलय-संकुचन 0.3 s लेता है। निलय-शिथिलन कितना लंबा है?",
+        mr: "हृद्चक्र 0.8 s चालते, ज्यातले निलय-आकुंचन 0.3 s घेते. निलय-शिथिलन किती लांब?",
+      },
+      answer: 0.5,
+      wrong: [0.3, 0.8, 1.1],
+      checkExpr: "0.8-0.3",
+      solution: {
+        en: "0.8 − 0.3 = 0.5 s. Diastole is the longer part, and it is not idle time: it is when the ventricles refill and when the coronary arteries — squeezed almost shut while the ventricle wall contracts — actually deliver blood to the heart muscle itself. This is why a very fast heart is in trouble. Raise the rate and systole shortens only slightly while diastole is cut hard, so the chamber has less time to fill AND the muscle has less time to be fed, both at once. (1.1 adds instead of subtracting.)",
+        hi: "0.8 − 0.3 = 0.5 s. शिथिलन लंबा हिस्सा है, और वह निठल्ला समय नहीं: तभी निलय फिर भरते हैं और तभी हृद्धमनियाँ — जो निलय भित्ति के सिकुड़ते समय लगभग बंद दबी रहती हैं — वस्तुतः हृदय पेशी को रक्त पहुँचाती हैं। इसीलिए बहुत तेज़ हृदय संकट में है। दर बढ़ाओ और संकुचन थोड़ा ही छोटा होता है जबकि शिथिलन कड़ाई से कटता है, अतः कोष्ठ को भरने का समय कम मिलता है और पेशी को खिलाए जाने का भी, दोनों एक साथ। (1.1 घटाने के बजाय जोड़ देता है।)",
+        mr: "0.8 − 0.3 = 0.5 s. शिथिलन हा लांब भाग, आणि तो रिकामा वेळ नव्हे: तेव्हाच निलये पुन्हा भरतात आणि तेव्हाच हृद्रोहिण्या — ज्या निलयभिंत आकुंचन पावताना जवळपास मिटलेल्या दाबल्या जातात — प्रत्यक्षात हृदयस्नायूला रक्त पोहोचवतात. म्हणूनच फार वेगवान हृदय अडचणीत असते. दर वाढवा आणि आकुंचन थोडेच आखडते तर शिथिलन कठोरपणे कापले जाते, म्हणून कप्प्याला भरायला कमी वेळ मिळतो आणि स्नायूला खाऊ घातले जायलाही, दोन्ही एकाच वेळी. (1.1 वजा करण्याऐवजी जोडते.)",
+      },
+      fmt: unit("s"),
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A person has 5000 mL of blood, of which 55 per cent is plasma. How much plasma is that?",
+        hi: "किसी व्यक्ति के पास 5000 mL रक्त है, जिसका 55 प्रतिशत प्लाज़्मा है। वह कितना प्लाज़्मा हुआ?",
+        mr: "एका व्यक्तीजवळ 5000 mL रक्त आहे, ज्याचे 55 टक्के प्लाझ्मा आहे. ते किती प्लाझ्मा झाले?",
+      },
+      answer: 2750,
+      wrong: [2250, 550, 5500],
+      checkExpr: "5000*0.55",
+      solution: {
+        en: "5000 × 0.55 = 2750 mL, leaving 2250 mL of formed elements. That second figure has a name worth knowing: the packed cell volume, or haematocrit, which is what a spun sample shows directly and what a laboratory reports. It is a sensitive quantity — it falls in anaemia and rises after days at altitude, where more red cells are made. (2250 quotes the formed elements instead.)",
+        hi: "5000 × 0.55 = 2750 mL, और 2250 mL गठित तत्व बचते हैं। उस दूसरे आँकड़े का नाम जानने योग्य है: संकुलित कोशिका आयतन, या हीमैटोक्रिट, जो घुमाया गया नमूना सीधे दिखाता है और प्रयोगशाला बताती है। यह संवेदनशील राशि है — रक्ताल्पता में गिरती है और ऊँचाई पर कुछ दिन बिताने पर चढ़ती है, जहाँ अधिक लाल कोशिकाएँ बनती हैं। (2250 इसके बदले गठित तत्व बता देता है।)",
+        mr: "5000 × 0.55 = 2750 mL, आणि 2250 mL घटित घटक उरतात. त्या दुसऱ्या आकड्याचे नाव जाणण्याजोगे: संकुलित पेशी आकारमान, वा हिमॅटोक्रिट, जे फिरवलेला नमुना थेट दाखवतो आणि प्रयोगशाळा सांगते. ही संवेदनशील राशी — पंडुरोगात उतरते आणि उंचीवर काही दिवस घालवल्यावर चढते, जिथे अधिक तांबड्या पेशी बनतात. (2250 त्याऐवजी घटित घटक सांगते.)",
+      },
+      fmt: unit("mL"),
+    },
+    {
+      level: 5,
+      stem: {
+        en: "Blood passes through the heart twice for each complete circuit of the body. How many times does it pass through the heart in 3 complete circuits?",
+        hi: "शरीर के हर पूरे परिपथ पर रक्त हृदय से दो बार गुज़रता है। 3 पूरे परिपथों में वह हृदय से कितनी बार गुज़रेगा?",
+        mr: "शरीराच्या प्रत्येक पूर्ण फेऱ्यात रक्त हृदयातून दोनदा जाते. 3 पूर्ण फेऱ्यांत ते हृदयातून किती वेळा जाईल?",
+      },
+      answer: 6,
+      wrong: [3, 2, 9],
+      checkExpr: "3*2",
+      solution: {
+        en: "3 × 2 = 6. The arithmetic is trivial and the concept behind it is not. The two passes are the pulmonary circuit — right ventricle to lungs to left atrium — and the systemic circuit — left ventricle to body to right atrium. What the second pass buys is a fresh push. In a fish's single circulation the blood loses most of its pressure crossing the gills and then has to reach the tail on what is left, which caps how vigorous a fish can be. A mammal returns the blood to the heart for a second, much stronger stroke, so the body can be supplied at high pressure while the lungs, fed from the weaker right side, are not damaged by it. There is one striking exception worth remembering: the hepatic portal vein takes blood from the intestine straight to the liver instead of back to the heart, so that everything absorbed from a meal is inspected before it reaches the rest of the body. (3 counts the circuits rather than the passes.)",
+        hi: "3 × 2 = 6. गणित मामूली है और उसके पीछे की अवधारणा नहीं। दोनों फेरे हैं फुफ्फुसीय परिपथ — दायाँ निलय से फेफड़े से बायाँ अलिंद — और दैहिक परिपथ — बायाँ निलय से शरीर से दायाँ अलिंद। दूसरा फेरा ख़रीदता है एक ताज़ा धक्का। मछली के एकल परिसंचरण में रक्त क्लोम पार करते हुए अपना अधिकांश दाब खो देता है और फिर जो बचा उसी पर पूँछ तक पहुँचना पड़ता है, और यही सीमित करता है कि मछली कितनी ओजस्वी हो सकती है। स्तनी रक्त को दूसरे, कहीं प्रबल आघात के लिए हृदय लौटा देता है, अतः शरीर को ऊँचे दाब पर आपूर्ति मिल सकती है जबकि फेफड़े, जिन्हें कमज़ोर दाईं ओर से मिलता है, उससे बिगड़ते नहीं। एक उल्लेखनीय अपवाद याद रखने योग्य है: यकृत निवाहिका शिरा आँत का रक्त हृदय लौटाने के बजाय सीधे यकृत ले जाती है, ताकि भोजन से अवशोषित हर चीज़ बाक़ी शरीर तक पहुँचने से पहले जाँची जाए। (3 फेरों के बजाय परिपथ गिन लेता है।)",
+        mr: "3 × 2 = 6. गणित किरकोळ आहे आणि त्यामागची संकल्पना नाही. दोन फेरे म्हणजे फुप्फुसीय फेरा — उजवे निलय ते फुप्फुसे ते डावी कर्णिका — आणि शारीरिक फेरा — डावे निलय ते शरीर ते उजवी कर्णिका. दुसरा फेरा विकत घेतो एक ताजा धक्का. माशाच्या एकेरी अभिसरणात रक्त कल्ले ओलांडताना आपला बहुतांश दाब गमावते आणि मग उरलेल्यावरच शेपटीपर्यंत पोहोचावे लागते, आणि हेच मर्यादित करते की मासा किती जोमदार असू शकतो. सस्तन प्राणी रक्त दुसऱ्या, कितीतरी बळकट ठोक्यासाठी हृदयाकडे परत पाठवतो, म्हणून शरीराला उच्च दाबावर पुरवठा मिळू शकतो तर फुप्फुसे, ज्यांना दुर्बळ उजव्या बाजूकडून मिळते, त्याने बिघडत नाहीत. एक लक्षणीय अपवाद लक्षात ठेवण्याजोगा: यकृत निवाहिका नीला आतड्याचे रक्त हृदयाकडे परत पाठवण्याऐवजी थेट यकृताकडे नेते, जेणेकरून जेवणातून शोषलेली प्रत्येक गोष्ट उरलेल्या शरीरापर्यंत पोहोचण्याआधी तपासली जावी. (3 फेऱ्यांऐवजी प्रदक्षिणा मोजते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "A patient's cardiac output is 5000 mL a minute and the total blood volume is 4500 mL. What fraction of a minute does it take for a volume of blood equal to the whole body's supply to pass through the heart?",
+        hi: "किसी रोगी का हृद् निर्गम 5000 mL प्रति मिनट है और कुल रक्त आयतन 4500 mL. पूरे शरीर की आपूर्ति के बराबर रक्त आयतन को हृदय से गुज़रने में मिनट का कितना भाग लगता है?",
+        mr: "एका रुग्णाचा हृद्निर्गम 5000 mL प्रति मिनिट आहे आणि एकूण रक्त-आकारमान 4500 mL. अख्ख्या शरीराच्या पुरवठ्याइतके रक्त-आकारमान हृदयातून जाण्यास मिनिटाचा किती भाग लागतो?",
+      },
+      answer: 0.9,
+      wrong: [1.11, 1, 0.5],
+      checkExpr: "4500/5000",
+      solution: {
+        en: "4500/5000 = 0.9 of a minute, or 54 seconds. Read the result carefully before quoting it, because it is easy to say something false about it. It does NOT mean that every millilitre of your blood completes a circuit in 54 seconds; blood in a well-perfused organ returns much sooner and blood in a resting limb takes far longer, and the figure is an average over a system with very unequal path lengths. What it does say is that the volume handled by the heart in under a minute equals the entire volume in the body, which is a startling amount of traffic for a fist-sized organ, and it explains why cardiac muscle needs its own dedicated blood supply rather than drawing from the blood passing through the chambers. It also frames what exercise demands: a fivefold rise in output means the same total volume being turned over five times as fast, achieved by raising both stroke volume and rate — and the rate can only rise so far before diastole becomes too short to refill the ventricle, which is the real ceiling on maximum heart rate. (1.11 inverts the division and answers how many volumes pass in one minute.)",
+        hi: "4500/5000 = मिनट का 0.9 भाग, यानी 54 सेकंड। बताने से पहले परिणाम ध्यान से पढ़ो, क्योंकि उसके बारे में कुछ असत्य कह देना आसान है। इसका अर्थ यह नहीं कि तुम्हारे रक्त की हर मिलीलीटर 54 सेकंड में एक परिपथ पूरा करती है; भलीभाँति सिंचित अंग का रक्त कहीं जल्दी लौट आता है और विश्राम करते अंग का कहीं अधिक समय लेता है, और यह आँकड़ा बहुत असमान पथ-लंबाइयों वाले तंत्र का औसत है। वह जो कहता है वह यह कि हृदय एक मिनट से कम में जितना आयतन निपटा देता है वह शरीर के पूरे आयतन के बराबर है, और मुट्ठी भर के अंग के लिए यह चौंकाने वाला यातायात है, और इसी से समझ आता है कि हृद् पेशी को कोष्ठों से गुज़रते रक्त से लेने के बजाय अपनी समर्पित रक्त आपूर्ति क्यों चाहिए। यह यह भी बताता है कि व्यायाम क्या माँगता है: निर्गम का पाँच गुना होना यानी वही कुल आयतन पाँच गुना तेज़ी से पलटाया जाना, जो स्ट्रोक आयतन और दर दोनों बढ़ाकर पाया जाता है — और दर तभी तक बढ़ सकती है जब तक शिथिलन निलय भरने के लिए बहुत छोटा न हो जाए, और अधिकतम हृदय दर की असली छत यही है। (1.11 भाग उलट देता है और बताता है कि एक मिनट में कितने आयतन गुज़रते हैं।)",
+        mr: "4500/5000 = मिनिटाचा 0.9 भाग, म्हणजे 54 सेकंद. सांगण्याआधी निकाल नीट वाचा, कारण त्याबद्दल काहीतरी असत्य म्हणणे सोपे आहे. याचा अर्थ असा नाही की तुमच्या रक्ताचा प्रत्येक मिलिलिटर 54 सेकंदांत एक फेरा पूर्ण करतो; उत्तम रक्तपुरवठा असलेल्या अवयवाचे रक्त कितीतरी लवकर परतते आणि विश्रांती घेणाऱ्या अवयवाचे कितीतरी अधिक वेळ घेते, आणि हा आकडा फार असमान मार्ग-लांबी असलेल्या यंत्रणेची सरासरी आहे. ते जे सांगते ते हे की हृदय एका मिनिटाहून कमी वेळात जितके आकारमान हाताळते ते शरीराच्या अख्ख्या आकारमानाइतके आहे, आणि मुठीएवढ्या अवयवासाठी ही थक्क करणारी वर्दळ आहे, आणि यातूनच समजते की हृद्स्नायूला कप्प्यांतून जाणाऱ्या रक्तातून घेण्याऐवजी स्वतःचा समर्पित रक्तपुरवठा का लागतो. हे व्यायाम काय मागतो तेही मांडते: निर्गम पाचपट होणे म्हणजे तेच एकूण आकारमान पाचपट वेगाने उलटवले जाणे, जे स्ट्रोक आकारमान आणि दर दोन्ही वाढवून साधले जाते — आणि दर तोवरच वाढू शकतो जोवर शिथिलन निलय भरण्यासाठी फार आखूड होत नाही, आणि कमाल हृदयदराचे खरे छत हेच. (1.11 भागाकार उलटवते आणि एका मिनिटात किती आकारमाने जातात ते सांगते.)",
       },
     },
   ],

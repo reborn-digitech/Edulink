@@ -2514,8 +2514,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 313
-  chapters / 5,386 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 318
+  chapters / 5,518 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2628,13 +2628,31 @@ navigation" means the actual list rather than one somebody maintained by hand.
   boiled egg keeps every peptide bond and never works again, why a cow does
   not digest grass and its bacteria do, why one division cannot halve a
   chromosome number, and what sexual reproduction buys for the fifty per cent
-  tax it pays. **Three of the ten carry numerics and seven do not**, which is
-  the honest shape of the subject: ploidy in Plant Kingdom, the
-  surface-area-to-volume ratio in Cell, polymer arithmetic in Biomolecules and
-  chromosome bookkeeping in Cell Cycle are all real counting a pupil must be
-  able to do, and taxonomy has none that is not invented. Class 11 has nine
-  Biology chapters and all of Maths left, and Class 12 after them.
-  Suite re-pointed and green: 84 files, 1453 tests.
+  tax it pays. **Biology is now fifteen chapters in** — 348 questions, the
+  third five carrying the functional half: Photosynthesis in Higher Plants,
+  Respiration in Plants, Plant Growth and Development, Breathing and Exchange
+  of Gases, and Body Fluids and Circulation. They ask why maize outyields wheat
+  in a Punjab June and loses to it in November, why the oxygen you breathe came
+  out of water rather than out of carbon dioxide, why a "dark reaction" stalls
+  seconds after sunset, why a crop standing knee-deep in floodwater dies of
+  what looks exactly like drought, why a sealed brewing vat eats nineteen times
+  the sugar to grow the same yeast, why the same two substances make a callus
+  form roots, shoots or neither depending only on their ratio, why two minutes
+  of torchlight at midnight can stop a whole crop flowering, why the urge to
+  breathe is the body noticing carbon dioxide and never oxygen — and why that
+  makes hyperventilating before a dive lethal — why a trekker flown to Ladakh
+  gets worse as she breathes harder, why both heart sounds are valves and not
+  muscle, and why an Rh-negative mother's first child is safe and her second is
+  not. **Nine of the fifteen carry numerics and six do not**, which is the
+  honest shape of the subject: ploidy in Plant Kingdom, surface-area-to-volume
+  in Cell, polymer arithmetic in Biomolecules, chromosome bookkeeping in Cell
+  Cycle, Calvin-cycle stoichiometry, the two-versus-thirty-eight ATP ledger,
+  growth rates, lung volumes and cardiac output are all real counting a pupil
+  must be able to defend — and taxonomy, anatomy and the regulators have none
+  that is not invented. Growth and Development gets a deliberately shorter
+  numeric set for the same reason. Class 11 has four Biology chapters and all
+  of Maths left, and Class 12 after them.
+  Suite re-pointed and green: 87 files, 1485 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)
