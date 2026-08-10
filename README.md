@@ -2514,8 +2514,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 336
-  chapters / 5,807 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 340
+  chapters / 5,918 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2707,8 +2707,34 @@ navigation" means the actual list rather than one somebody maintained by hand.
   multiplying by 3 triples the standard deviation and multiplies the variance by
   nine. Distractors are the real errors: 0/0 read as zero, the average velocity
   quoted where the instantaneous was asked, two means averaged without weighting
-  for group size, and 1.1 offered as a probability. Class 12 is what remains.
-  Suite re-pointed and green: 87 files, 1485 tests.
+  for group size, and 1.1 offered as a probability. **That finished Class 11
+  across all four subjects**, and Class 12 opened in `g12-physics.ts` with the
+  first four chapters — 111 questions: Electric Charges and Fields,
+  Electrostatic Potential and Capacitance, Current Electricity, and Moving
+  Charges and Magnetism. The grade's premise is that the cause of a force stops
+  being the other body: two charges a metre apart touch nothing, so each alters
+  the space around it and the other responds to the space it is in. That shifts
+  weight onto the conceptual half, which is why these fact tables are about
+  mechanism rather than vocabulary — why two field lines can never cross (a
+  tangent gives the field's direction and a charge released there cannot set off
+  two ways), why bringing a huge charge up just outside a closed surface changes
+  the field at every point of it and the flux through it not at all, why a bulb
+  lights instantly when its electrons drift at a tenth of a millimetre per
+  second, and why a magnetic force can bend a proton's path forever without
+  changing its speed by a joule. Two of the hard questions are diagnostic rather
+  than theoretical: a car battery that reads a healthy 12.6 V at rest and
+  collapses to 9.5 V under the starter is not faulty, and the quantity that
+  would actually diagnose it — internal resistance — is invisible in the very
+  test being used, because it only ever appears multiplied by the current. The
+  companion pair converts one galvanometer into both instruments and makes the
+  rule fall out of the wiring: series connection demands low resistance so an
+  ammeter needs a parallel shunt, parallel connection demands high resistance so
+  a voltmeter needs a series multiplier. **One duplicate had to be resolved
+  rather than papered over**: a Class 12 fact named "Ohm's law" generated an
+  EXCEPT stem identical to Class 10 Science's, and the fix was to rewrite the
+  fact as what is genuinely new at this level — the *limits* of Ohm's law, the
+  conditions V = IR silently assumes — instead of renaming it to dodge the
+  check. Suite re-pointed and green: 87 files, 1485 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)

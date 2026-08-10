@@ -1,0 +1,933 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 12,
+  "chapter": "Chapter 1 — Electric Charges and Fields",
+  "name": "Electric Charges and Fields",
+  "slug": "physics-12-electric-charges-and-fields",
+  "summary": "A quantity that comes only in whole multiples of one indivisible amount, that the universe can move about but never create, and that adds like an ordinary number so two of them can cancel to nothing; a force between two such charges that falls as the square of the distance and takes no notice of any third charge watching; and the decision to stop saying that one charge pushes another and start saying that each one changes the space around it — which is what makes a law about flux through a closed surface possible at all.",
+  "position": 1,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "विद्युत आवेश तथा क्षेत्र",
+      "summary": "एक ऐसी राशि जो केवल एक अविभाज्य मात्रा के पूरे गुणकों में आती है, जिसे विश्व इधर-उधर कर सकता है पर कभी बना नहीं सकता, और जो साधारण संख्या की तरह जुड़ती है ताकि दो मिलकर शून्य हो सकें; दो ऐसे आवेशों के बीच वह बल जो दूरी के वर्ग के अनुपात में घटता है और पास खड़े किसी तीसरे आवेश को नहीं गिनता; और यह निर्णय कि अब यह कहना छोड़ो कि एक आवेश दूसरे को धकेलता है और यह कहना शुरू करो कि हर आवेश अपने चारों ओर के आकाश को बदल देता है — और यही किसी बंद पृष्ठ से फ्लक्स के नियम को संभव बनाता है।"
+    },
+    "mr": {
+      "name": "विद्युत प्रभार आणि क्षेत्र",
+      "summary": "अशी एक राशी जी केवळ एका अविभाज्य प्रमाणाच्या पूर्ण पटींत येते, जिला विश्व इकडून तिकडे हलवू शकते पण कधीच निर्माण करू शकत नाही, आणि जी साधारण संख्येसारखी जुळते म्हणून दोन मिळून शून्य होऊ शकतात; अशा दोन प्रभारांमधले ते बल जे अंतराच्या वर्गाच्या प्रमाणात घटते आणि जवळ उभ्या तिसऱ्या प्रभाराची दखल घेत नाही; आणि हा निर्णय की एक प्रभार दुसऱ्याला ढकलतो असे म्हणणे सोडून प्रत्येक प्रभार आपल्याभोवतीचा अवकाश बदलतो असे म्हणणे सुरू करा — आणि हेच बंद पृष्ठातून जाणाऱ्या फ्लक्सच्या नियमाला मुळात शक्य करते."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "No body has ever been found carrying one and a half times the charge of an electron, or a third of it: every observed charge is a whole-number multiple of one fixed indivisible amount. Which property is this?",
+      "choices": [
+        "Coulomb's law",
+        "Additivity of charge",
+        "Quantisation of charge",
+        "Conservation of charge"
+      ],
+      "answerIndex": 2,
+      "solution": "Quantisation of charge says every charge is q = ne with n a whole number and e = 1.6 × 10⁻¹⁹ C, so charge changes in jumps rather than continuously. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "आज तक कोई पिंड ऐसा नहीं मिला जिस पर इलेक्ट्रॉन के आवेश का डेढ़ गुना हो, या उसका एक-तिहाई: हर देखा गया आवेश एक निश्चित अविभाज्य मात्रा का पूर्णांक गुणक है। यह कौन-सा गुणधर्म है?",
+          "choices": [
+            "कूलॉम का नियम",
+            "आवेश की योज्यता",
+            "आवेश का क्वांटमीकरण",
+            "आवेश का संरक्षण"
+          ],
+          "solution": "आवेश का क्वांटमीकरण कहता है कि हर आवेश q = ne है जिसमें n पूर्णांक और e = 1.6 × 10⁻¹⁹ C, अतः आवेश सतत नहीं, छलाँगों में बदलता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "आजवर असा कोणताही पदार्थ सापडलेला नाही ज्यावर इलेक्ट्रॉनच्या प्रभाराच्या दीडपट, वा त्याचा एक-तृतीयांश प्रभार असेल: प्रत्येक निरीक्षिलेला प्रभार एका ठराविक अविभाज्य प्रमाणाचा पूर्णांक पट आहे. हा कोणता गुणधर्म?",
+          "choices": [
+            "कुलोमचा नियम",
+            "प्रभाराची योगात्मकता",
+            "प्रभाराचे पुंजीकरण",
+            "प्रभाराचे संधारण"
+          ],
+          "solution": "प्रभाराचे पुंजीकरण सांगते की प्रत्येक प्रभार q = ne आहे जिथे n पूर्णांक आणि e = 1.6 × 10⁻¹⁹ C, म्हणून प्रभार सलगपणे नव्हे तर उड्यांनी बदलतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Conservation of charge is correct?",
+      "choices": [
+        "The principle of superposition says the force between any two charges is unaffected by the presence of others, so the net force on a charge is the vector sum of the pairwise Coulomb forces.",
+        "Additivity of charge says total charge is the algebraic sum of the individual charges, because charge is a scalar carrying a sign rather than a vector carrying a direction.",
+        "Conservation of charge says the algebraic total charge of an isolated system never changes, so charge can only be transferred from one body to another or created in equal and opposite pairs.",
+        "Quantisation of charge says every charge is q = ne with n a whole number and e = 1.6 × 10⁻¹⁹ C, so charge changes in jumps rather than continuously."
+      ],
+      "answerIndex": 2,
+      "solution": "Conservation of charge says the algebraic total charge of an isolated system never changes, so charge can only be transferred from one body to another or created in equal and opposite pairs. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "आवेश का संरक्षण के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "अध्यारोपण का सिद्धांत कहता है कि किन्हीं दो आवेशों के बीच बल दूसरों की उपस्थिति से अप्रभावित रहता है, अतः किसी आवेश पर कुल बल युग्मवार कूलॉम बलों का सदिश योग है।",
+            "आवेश की योज्यता कहती है कि कुल आवेश अलग-अलग आवेशों का बीजगणितीय योग है, क्योंकि आवेश दिशा वाला सदिश नहीं, चिह्न वाला अदिश है।",
+            "आवेश का संरक्षण कहता है कि किसी विलगित निकाय का बीजगणितीय कुल आवेश कभी नहीं बदलता, अतः आवेश केवल एक पिंड से दूसरे में जा सकता है या बराबर और विपरीत युग्मों में बन सकता है।",
+            "आवेश का क्वांटमीकरण कहता है कि हर आवेश q = ne है जिसमें n पूर्णांक और e = 1.6 × 10⁻¹⁹ C, अतः आवेश सतत नहीं, छलाँगों में बदलता है।"
+          ],
+          "solution": "आवेश का संरक्षण कहता है कि किसी विलगित निकाय का बीजगणितीय कुल आवेश कभी नहीं बदलता, अतः आवेश केवल एक पिंड से दूसरे में जा सकता है या बराबर और विपरीत युग्मों में बन सकता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "प्रभाराचे संधारण विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "अध्यारोपणाचे तत्त्व सांगते की कोणत्याही दोन प्रभारांमधले बल इतरांच्या उपस्थितीने अप्रभावित राहते, म्हणून एखाद्या प्रभारावरचे एकूण बल जोडीनिहाय कुलोम बलांची सदिश बेरीज असते.",
+            "प्रभाराची योगात्मकता सांगते की एकूण प्रभार म्हणजे वेगवेगळ्या प्रभारांची बीजगणितीय बेरीज, कारण प्रभार दिशा बाळगणारा सदिश नसून चिन्ह बाळगणारा अदिश आहे.",
+            "प्रभाराचे संधारण सांगते की एकाकी संस्थेचा बीजगणितीय एकूण प्रभार कधीच बदलत नाही, म्हणून प्रभार केवळ एका पदार्थातून दुसऱ्यात जाऊ शकतो वा समान आणि विरुद्ध जोड्यांत निर्माण होऊ शकतो.",
+            "प्रभाराचे पुंजीकरण सांगते की प्रत्येक प्रभार q = ne आहे जिथे n पूर्णांक आणि e = 1.6 × 10⁻¹⁹ C, म्हणून प्रभार सलगपणे नव्हे तर उड्यांनी बदलतो."
+          ],
+          "solution": "प्रभाराचे संधारण सांगते की एकाकी संस्थेचा बीजगणितीय एकूण प्रभार कधीच बदलत नाही, म्हणून प्रभार केवळ एका पदार्थातून दुसऱ्यात जाऊ शकतो वा समान आणि विरुद्ध जोड्यांत निर्माण होऊ शकतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"This is where charge parts company with mass: two masses can only make a bigger mass, whereas two charges can make nothing at all, which is why most matter around us is electrically invisible.\" — which of these is this about?",
+      "choices": [
+        "Quantisation of charge",
+        "Conservation of charge",
+        "Gauss's law",
+        "Additivity of charge"
+      ],
+      "answerIndex": 3,
+      "solution": "Additivity of charge says total charge is the algebraic sum of the individual charges, because charge is a scalar carrying a sign rather than a vector carrying a direction. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"यहीं आवेश द्रव्यमान से अलग हो जाता है: दो द्रव्यमान केवल बड़ा द्रव्यमान बना सकते हैं, जबकि दो आवेश कुछ भी नहीं बना सकते, इसीलिए हमारे आसपास का अधिकांश पदार्थ विद्युत् दृष्टि से अदृश्य है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "आवेश का क्वांटमीकरण",
+            "आवेश का संरक्षण",
+            "गाउस का नियम",
+            "आवेश की योज्यता"
+          ],
+          "solution": "आवेश की योज्यता कहती है कि कुल आवेश अलग-अलग आवेशों का बीजगणितीय योग है, क्योंकि आवेश दिशा वाला सदिश नहीं, चिह्न वाला अदिश है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"इथेच प्रभार वस्तुमानापासून वेगळा होतो: दोन वस्तुमाने केवळ मोठे वस्तुमान बनवू शकतात, तर दोन प्रभार काहीच बनवू शकत नाहीत, म्हणूनच आपल्या आजूबाजूचा बहुतांश पदार्थ विद्युतदृष्ट्या अदृश्य आहे.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "प्रभाराचे पुंजीकरण",
+            "प्रभाराचे संधारण",
+            "गॉसचा नियम",
+            "प्रभाराची योगात्मकता"
+          ],
+          "solution": "प्रभाराची योगात्मकता सांगते की एकूण प्रभार म्हणजे वेगवेगळ्या प्रभारांची बीजगणितीय बेरीज, कारण प्रभार दिशा बाळगणारा सदिश नसून चिन्ह बाळगणारा अदिश आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The force between two point charges acts along the line joining them and falls to a quarter when their separation is doubled. Which law states this?",
+      "choices": [
+        "Coulomb's law",
+        "Gauss's law",
+        "The principle of superposition",
+        "Quantisation of charge"
+      ],
+      "answerIndex": 0,
+      "solution": "Coulomb's law gives F = kq₁q₂/r² directed along the line joining the two point charges, with k = 9 × 10⁹ N m²/C² in vacuum. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दो बिंदु आवेशों के बीच बल उन्हें जोड़ने वाली रेखा के अनुदिश लगता है और दूरी दुगुनी करने पर चौथाई रह जाता है। यह कौन-सा नियम कहता है?",
+          "choices": [
+            "कूलॉम का नियम",
+            "गाउस का नियम",
+            "अध्यारोपण का सिद्धांत",
+            "आवेश का क्वांटमीकरण"
+          ],
+          "solution": "कूलॉम का नियम F = kq₁q₂/r² देता है, जो दोनों बिंदु आवेशों को जोड़ने वाली रेखा के अनुदिश है, और निर्वात में k = 9 × 10⁹ N m²/C². यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "दोन बिंदु प्रभारांमधले बल त्यांना जोडणाऱ्या रेषेच्या दिशेने लागते आणि अंतर दुप्पट केल्यावर चतुर्थांश उरते. हा कोणता नियम सांगतो?",
+          "choices": [
+            "कुलोमचा नियम",
+            "गॉसचा नियम",
+            "अध्यारोपणाचे तत्त्व",
+            "प्रभाराचे पुंजीकरण"
+          ],
+          "solution": "कुलोमचा नियम F = kq₁q₂/r² देतो, जो दोन्ही बिंदु प्रभारांना जोडणाऱ्या रेषेच्या दिशेने असतो, आणि निर्वातात k = 9 × 10⁹ N m²/C². हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The principle of superposition is correct?",
+      "choices": [
+        "Quantisation of charge says every charge is q = ne with n a whole number and e = 1.6 × 10⁻¹⁹ C, so charge changes in jumps rather than continuously.",
+        "Coulomb's law gives F = kq₁q₂/r² directed along the line joining the two point charges, with k = 9 × 10⁹ N m²/C² in vacuum.",
+        "The principle of superposition says the force between any two charges is unaffected by the presence of others, so the net force on a charge is the vector sum of the pairwise Coulomb forces.",
+        "Gauss's law states that the net electric flux through a closed surface is q_enclosed/ε₀, which makes the flux independent of the surface's shape and of the position of the charge within it."
+      ],
+      "answerIndex": 2,
+      "solution": "The principle of superposition says the force between any two charges is unaffected by the presence of others, so the net force on a charge is the vector sum of the pairwise Coulomb forces. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अध्यारोपण का सिद्धांत के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "आवेश का क्वांटमीकरण कहता है कि हर आवेश q = ne है जिसमें n पूर्णांक और e = 1.6 × 10⁻¹⁹ C, अतः आवेश सतत नहीं, छलाँगों में बदलता है।",
+            "कूलॉम का नियम F = kq₁q₂/r² देता है, जो दोनों बिंदु आवेशों को जोड़ने वाली रेखा के अनुदिश है, और निर्वात में k = 9 × 10⁹ N m²/C².",
+            "अध्यारोपण का सिद्धांत कहता है कि किन्हीं दो आवेशों के बीच बल दूसरों की उपस्थिति से अप्रभावित रहता है, अतः किसी आवेश पर कुल बल युग्मवार कूलॉम बलों का सदिश योग है।",
+            "गाउस का नियम कहता है कि किसी बंद पृष्ठ से नेट विद्युत फ्लक्स q_घिरा/ε₀ है, जिससे फ्लक्स पृष्ठ के आकार और उसके भीतर आवेश की स्थिति से स्वतंत्र हो जाता है।"
+          ],
+          "solution": "अध्यारोपण का सिद्धांत कहता है कि किन्हीं दो आवेशों के बीच बल दूसरों की उपस्थिति से अप्रभावित रहता है, अतः किसी आवेश पर कुल बल युग्मवार कूलॉम बलों का सदिश योग है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "अध्यारोपणाचे तत्त्व विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "प्रभाराचे पुंजीकरण सांगते की प्रत्येक प्रभार q = ne आहे जिथे n पूर्णांक आणि e = 1.6 × 10⁻¹⁹ C, म्हणून प्रभार सलगपणे नव्हे तर उड्यांनी बदलतो.",
+            "कुलोमचा नियम F = kq₁q₂/r² देतो, जो दोन्ही बिंदु प्रभारांना जोडणाऱ्या रेषेच्या दिशेने असतो, आणि निर्वातात k = 9 × 10⁹ N m²/C².",
+            "अध्यारोपणाचे तत्त्व सांगते की कोणत्याही दोन प्रभारांमधले बल इतरांच्या उपस्थितीने अप्रभावित राहते, म्हणून एखाद्या प्रभारावरचे एकूण बल जोडीनिहाय कुलोम बलांची सदिश बेरीज असते.",
+            "गॉसचा नियम सांगतो की बंद पृष्ठातून जाणारा निव्वळ विद्युत फ्लक्स q_घेरलेला/ε₀ आहे, ज्यामुळे फ्लक्स पृष्ठाच्या आकारापासून आणि त्याच्या आत प्रभाराच्या स्थानापासून स्वतंत्र होतो."
+          ],
+          "solution": "अध्यारोपणाचे तत्त्व सांगते की कोणत्याही दोन प्रभारांमधले बल इतरांच्या उपस्थितीने अप्रभावित राहते, म्हणून एखाद्या प्रभारावरचे एकूण बल जोडीनिहाय कुलोम बलांची सदिश बेरीज असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"Charges outside the surface contribute nothing to the NET flux, because every line they send in through one part of the surface comes out through another, but they still change the field at each point on it.\" — which of these is this about?",
+      "choices": [
+        "Conservation of charge",
+        "Coulomb's law",
+        "The principle of superposition",
+        "Gauss's law"
+      ],
+      "answerIndex": 3,
+      "solution": "Gauss's law states that the net electric flux through a closed surface is q_enclosed/ε₀, which makes the flux independent of the surface's shape and of the position of the charge within it. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"पृष्ठ के बाहर के आवेश नेट फ्लक्स में कुछ नहीं जोड़ते, क्योंकि वे जो रेखा पृष्ठ के एक भाग से भीतर भेजते हैं वह दूसरे भाग से बाहर निकल जाती है, फिर भी वे उसके हर बिंदु पर क्षेत्र बदलते हैं।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "आवेश का संरक्षण",
+            "कूलॉम का नियम",
+            "अध्यारोपण का सिद्धांत",
+            "गाउस का नियम"
+          ],
+          "solution": "गाउस का नियम कहता है कि किसी बंद पृष्ठ से नेट विद्युत फ्लक्स q_घिरा/ε₀ है, जिससे फ्लक्स पृष्ठ के आकार और उसके भीतर आवेश की स्थिति से स्वतंत्र हो जाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"पृष्ठाबाहेरचे प्रभार निव्वळ फ्लक्समध्ये काहीच जोडत नाहीत, कारण ते पृष्ठाच्या एका भागातून आत पाठवलेली प्रत्येक रेषा दुसऱ्या भागातून बाहेर पडते, तरीही ते त्याच्या प्रत्येक बिंदूवरचे क्षेत्र बदलतात.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "प्रभाराचे संधारण",
+            "कुलोमचा नियम",
+            "अध्यारोपणाचे तत्त्व",
+            "गॉसचा नियम"
+          ],
+          "solution": "गॉसचा नियम सांगतो की बंद पृष्ठातून जाणारा निव्वळ विद्युत फ्लक्स q_घेरलेला/ε₀ आहे, ज्यामुळे फ्लक्स पृष्ठाच्या आकारापासून आणि त्याच्या आत प्रभाराच्या स्थानापासून स्वतंत्र होतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Charge changes in steps, never by a fraction of a step\" goes correctly with which of these?",
+      "choices": [
+        "conservation of charge",
+        "the principle of superposition",
+        "additivity of charge",
+        "quantisation of charge"
+      ],
+      "answerIndex": 3,
+      "solution": "Quantisation of charge says every charge is q = ne with n a whole number and e = 1.6 × 10⁻¹⁹ C, so charge changes in jumps rather than continuously. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"आवेश क़दमों में बदलता है, क़दम के अंश में कभी नहीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "आवेश का संरक्षण",
+            "अध्यारोपण का सिद्धांत",
+            "आवेश की योज्यता",
+            "आवेश का क्वांटमीकरण"
+          ],
+          "solution": "आवेश का क्वांटमीकरण कहता है कि हर आवेश q = ne है जिसमें n पूर्णांक और e = 1.6 × 10⁻¹⁹ C, अतः आवेश सतत नहीं, छलाँगों में बदलता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"प्रभार पावलांनी बदलतो, पावलाच्या अंशाने कधीच नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "प्रभाराचे संधारण",
+            "अध्यारोपणाचे तत्त्व",
+            "प्रभाराची योगात्मकता",
+            "प्रभाराचे पुंजीकरण"
+          ],
+          "solution": "प्रभाराचे पुंजीकरण सांगते की प्रत्येक प्रभार q = ne आहे जिथे n पूर्णांक आणि e = 1.6 × 10⁻¹⁹ C, म्हणून प्रभार सलगपणे नव्हे तर उड्यांनी बदलतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Moved, never manufactured\" goes correctly with which of these?",
+      "choices": [
+        "conservation of charge",
+        "Gauss's law",
+        "quantisation of charge",
+        "the principle of superposition"
+      ],
+      "answerIndex": 0,
+      "solution": "Conservation of charge says the algebraic total charge of an isolated system never changes, so charge can only be transferred from one body to another or created in equal and opposite pairs. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"हटाया गया, कभी बनाया नहीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "आवेश का संरक्षण",
+            "गाउस का नियम",
+            "आवेश का क्वांटमीकरण",
+            "अध्यारोपण का सिद्धांत"
+          ],
+          "solution": "आवेश का संरक्षण कहता है कि किसी विलगित निकाय का बीजगणितीय कुल आवेश कभी नहीं बदलता, अतः आवेश केवल एक पिंड से दूसरे में जा सकता है या बराबर और विपरीत युग्मों में बन सकता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"हलवलेला, कधीच घडवलेला नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "प्रभाराचे संधारण",
+            "गॉसचा नियम",
+            "प्रभाराचे पुंजीकरण",
+            "अध्यारोपणाचे तत्त्व"
+          ],
+          "solution": "प्रभाराचे संधारण सांगते की एकाकी संस्थेचा बीजगणितीय एकूण प्रभार कधीच बदलत नाही, म्हणून प्रभार केवळ एका पदार्थातून दुसऱ्यात जाऊ शकतो वा समान आणि विरुद्ध जोड्यांत निर्माण होऊ शकतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Two of them can add up to none\" goes correctly with which of these?",
+      "choices": [
+        "conservation of charge",
+        "the principle of superposition",
+        "additivity of charge",
+        "Coulomb's law"
+      ],
+      "answerIndex": 2,
+      "solution": "Additivity of charge says total charge is the algebraic sum of the individual charges, because charge is a scalar carrying a sign rather than a vector carrying a direction. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"दो मिलकर शून्य बन सकते हैं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "आवेश का संरक्षण",
+            "अध्यारोपण का सिद्धांत",
+            "आवेश की योज्यता",
+            "कूलॉम का नियम"
+          ],
+          "solution": "आवेश की योज्यता कहती है कि कुल आवेश अलग-अलग आवेशों का बीजगणितीय योग है, क्योंकि आवेश दिशा वाला सदिश नहीं, चिह्न वाला अदिश है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"दोन मिळून शून्य होऊ शकतात\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "प्रभाराचे संधारण",
+            "अध्यारोपणाचे तत्त्व",
+            "प्रभाराची योगात्मकता",
+            "कुलोमचा नियम"
+          ],
+          "solution": "प्रभाराची योगात्मकता सांगते की एकूण प्रभार म्हणजे वेगवेगळ्या प्रभारांची बीजगणितीय बेरीज, कारण प्रभार दिशा बाळगणारा सदिश नसून चिन्ह बाळगणारा अदिश आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Twice as far apart, a quarter as strong\" goes correctly with which of these?",
+      "choices": [
+        "conservation of charge",
+        "the principle of superposition",
+        "additivity of charge",
+        "Coulomb's law"
+      ],
+      "answerIndex": 3,
+      "solution": "Coulomb's law gives F = kq₁q₂/r² directed along the line joining the two point charges, with k = 9 × 10⁹ N m²/C² in vacuum. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"दुगुनी दूरी, चौथाई बल\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "आवेश का संरक्षण",
+            "अध्यारोपण का सिद्धांत",
+            "आवेश की योज्यता",
+            "कूलॉम का नियम"
+          ],
+          "solution": "कूलॉम का नियम F = kq₁q₂/r² देता है, जो दोनों बिंदु आवेशों को जोड़ने वाली रेखा के अनुदिश है, और निर्वात में k = 9 × 10⁹ N m²/C². यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"दुप्पट अंतर, चतुर्थांश बल\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "प्रभाराचे संधारण",
+            "अध्यारोपणाचे तत्त्व",
+            "प्रभाराची योगात्मकता",
+            "कुलोमचा नियम"
+          ],
+          "solution": "कुलोमचा नियम F = kq₁q₂/r² देतो, जो दोन्ही बिंदु प्रभारांना जोडणाऱ्या रेषेच्या दिशेने असतो, आणि निर्वातात k = 9 × 10⁹ N m²/C². हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Each pair behaves as if the others were absent\" goes correctly with which of these?",
+      "choices": [
+        "Coulomb's law",
+        "conservation of charge",
+        "quantisation of charge",
+        "the principle of superposition"
+      ],
+      "answerIndex": 3,
+      "solution": "The principle of superposition says the force between any two charges is unaffected by the presence of others, so the net force on a charge is the vector sum of the pairwise Coulomb forces. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"हर युग्म ऐसे बरतता है मानो बाक़ी हों ही नहीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "कूलॉम का नियम",
+            "आवेश का संरक्षण",
+            "आवेश का क्वांटमीकरण",
+            "अध्यारोपण का सिद्धांत"
+          ],
+          "solution": "अध्यारोपण का सिद्धांत कहता है कि किन्हीं दो आवेशों के बीच बल दूसरों की उपस्थिति से अप्रभावित रहता है, अतः किसी आवेश पर कुल बल युग्मवार कूलॉम बलों का सदिश योग है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"प्रत्येक जोडी अशी वागते जणू बाकीचे नाहीतच\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "कुलोमचा नियम",
+            "प्रभाराचे संधारण",
+            "प्रभाराचे पुंजीकरण",
+            "अध्यारोपणाचे तत्त्व"
+          ],
+          "solution": "अध्यारोपणाचे तत्त्व सांगते की कोणत्याही दोन प्रभारांमधले बल इतरांच्या उपस्थितीने अप्रभावित राहते, म्हणून एखाद्या प्रभारावरचे एकूण बल जोडीनिहाय कुलोम बलांची सदिश बेरीज असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The shape of the surface makes no difference to the total\" goes correctly with which of these?",
+      "choices": [
+        "quantisation of charge",
+        "Gauss's law",
+        "conservation of charge",
+        "Coulomb's law"
+      ],
+      "answerIndex": 1,
+      "solution": "Gauss's law states that the net electric flux through a closed surface is q_enclosed/ε₀, which makes the flux independent of the surface's shape and of the position of the charge within it. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"पृष्ठ का आकार कुल पर कोई फ़र्क़ नहीं डालता\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "आवेश का क्वांटमीकरण",
+            "गाउस का नियम",
+            "आवेश का संरक्षण",
+            "कूलॉम का नियम"
+          ],
+          "solution": "गाउस का नियम कहता है कि किसी बंद पृष्ठ से नेट विद्युत फ्लक्स q_घिरा/ε₀ है, जिससे फ्लक्स पृष्ठ के आकार और उसके भीतर आवेश की स्थिति से स्वतंत्र हो जाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"पृष्ठाचा आकार एकूणावर काहीच फरक पाडत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "प्रभाराचे पुंजीकरण",
+            "गॉसचा नियम",
+            "प्रभाराचे संधारण",
+            "कुलोमचा नियम"
+          ],
+          "solution": "गॉसचा नियम सांगतो की बंद पृष्ठातून जाणारा निव्वळ विद्युत फ्लक्स q_घेरलेला/ε₀ आहे, ज्यामुळे फ्लक्स पृष्ठाच्या आकारापासून आणि त्याच्या आत प्रभाराच्या स्थानापासून स्वतंत्र होतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Quantisation of charge EXCEPT —",
+      "choices": [
+        "Conservation of charge says the algebraic total charge of an isolated system never changes, so charge can only be transferred from one body to another or created in equal and opposite pairs.",
+        "The jump is so small that a charge of one microcoulomb already involves about 10¹³ electrons, which is why at laboratory scale charge behaves as if it flowed smoothly and the graininess never shows.",
+        "It is an experimental finding, first pinned down by Millikan's oil-drop measurements, not something derived from the other laws of the chapter — the inverse-square force would work just as well if charge came in any amount at all.",
+        "Quantisation of charge says every charge is q = ne with n a whole number and e = 1.6 × 10⁻¹⁹ C, so charge changes in jumps rather than continuously."
+      ],
+      "answerIndex": 0,
+      "solution": "Conservation of charge says the algebraic total charge of an isolated system never changes, so charge can only be transferred from one body to another or created in equal and opposite pairs. That belongs to Conservation of charge, not Quantisation of charge — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "आवेश का क्वांटमीकरण के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "आवेश का संरक्षण कहता है कि किसी विलगित निकाय का बीजगणितीय कुल आवेश कभी नहीं बदलता, अतः आवेश केवल एक पिंड से दूसरे में जा सकता है या बराबर और विपरीत युग्मों में बन सकता है।",
+            "छलाँग इतनी छोटी है कि एक माइक्रोकूलॉम के आवेश में ही लगभग 10¹³ इलेक्ट्रॉन होते हैं, इसीलिए प्रयोगशाला के पैमाने पर आवेश ऐसा बरतता है मानो सतत बह रहा हो और दानेदारी कभी दिखती नहीं।",
+            "यह प्रायोगिक खोज है, पहली बार मिलिकन की तेल-बूँद मापों से पकड़ी गई, अध्याय के दूसरे नियमों से निकाली गई बात नहीं — व्युत्क्रम-वर्ग बल तब भी उतना ही चलता अगर आवेश किसी भी मात्रा में आता।",
+            "आवेश का क्वांटमीकरण कहता है कि हर आवेश q = ne है जिसमें n पूर्णांक और e = 1.6 × 10⁻¹⁹ C, अतः आवेश सतत नहीं, छलाँगों में बदलता है।"
+          ],
+          "solution": "आवेश का संरक्षण कहता है कि किसी विलगित निकाय का बीजगणितीय कुल आवेश कभी नहीं बदलता, अतः आवेश केवल एक पिंड से दूसरे में जा सकता है या बराबर और विपरीत युग्मों में बन सकता है। यह आवेश का संरक्षण की बात है, आवेश का क्वांटमीकरण की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "प्रभाराचे पुंजीकरण विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "प्रभाराचे संधारण सांगते की एकाकी संस्थेचा बीजगणितीय एकूण प्रभार कधीच बदलत नाही, म्हणून प्रभार केवळ एका पदार्थातून दुसऱ्यात जाऊ शकतो वा समान आणि विरुद्ध जोड्यांत निर्माण होऊ शकतो.",
+            "उडी इतकी लहान आहे की एका मायक्रोकुलोम प्रभारातच सुमारे 10¹³ इलेक्ट्रॉन असतात, म्हणूनच प्रयोगशाळेच्या मापावर प्रभार जणू सलग वाहतो असा वागतो आणि दाणेदारपणा कधी दिसत नाही.",
+            "हे प्रायोगिक निष्कर्ष आहे, प्रथम मिलिकनच्या तेल-थेंब मापनांनी पकडलेले, प्रकरणातल्या इतर नियमांतून काढलेले नव्हे — व्यस्त-वर्ग बल तेव्हाही तितकेच चालले असते जर प्रभार कोणत्याही प्रमाणात आला असता.",
+            "प्रभाराचे पुंजीकरण सांगते की प्रत्येक प्रभार q = ne आहे जिथे n पूर्णांक आणि e = 1.6 × 10⁻¹⁹ C, म्हणून प्रभार सलगपणे नव्हे तर उड्यांनी बदलतो."
+          ],
+          "solution": "प्रभाराचे संधारण सांगते की एकाकी संस्थेचा बीजगणितीय एकूण प्रभार कधीच बदलत नाही, म्हणून प्रभार केवळ एका पदार्थातून दुसऱ्यात जाऊ शकतो वा समान आणि विरुद्ध जोड्यांत निर्माण होऊ शकतो. हे प्रभाराचे संधारण चे आहे, प्रभाराचे पुंजीकरण चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Conservation of charge EXCEPT —",
+      "choices": [
+        "Conservation of charge says the algebraic total charge of an isolated system never changes, so charge can only be transferred from one body to another or created in equal and opposite pairs.",
+        "It holds even where particles themselves are created and destroyed: a photon becoming an electron and a positron has produced two new particles but no new charge, since the two cancel exactly.",
+        "Quantisation of charge says every charge is q = ne with n a whole number and e = 1.6 × 10⁻¹⁹ C, so charge changes in jumps rather than continuously.",
+        "The word isolated is load-bearing: a single body's charge changes all the time, and the law is a claim about a closed boundary, not about any one object inside it."
+      ],
+      "answerIndex": 2,
+      "solution": "Quantisation of charge says every charge is q = ne with n a whole number and e = 1.6 × 10⁻¹⁹ C, so charge changes in jumps rather than continuously. That belongs to Quantisation of charge, not Conservation of charge — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "आवेश का संरक्षण के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "आवेश का संरक्षण कहता है कि किसी विलगित निकाय का बीजगणितीय कुल आवेश कभी नहीं बदलता, अतः आवेश केवल एक पिंड से दूसरे में जा सकता है या बराबर और विपरीत युग्मों में बन सकता है।",
+            "यह वहाँ भी टिकता है जहाँ कण स्वयं बनते और नष्ट होते हैं: फ़ोटॉन से इलेक्ट्रॉन और पॉज़िट्रॉन बनने पर दो नए कण बने पर कोई नया आवेश नहीं, क्योंकि दोनों ठीक-ठीक कट जाते हैं।",
+            "आवेश का क्वांटमीकरण कहता है कि हर आवेश q = ne है जिसमें n पूर्णांक और e = 1.6 × 10⁻¹⁹ C, अतः आवेश सतत नहीं, छलाँगों में बदलता है।",
+            "विलगित शब्द भार उठा रहा है: किसी अकेले पिंड का आवेश हर समय बदलता है, और नियम एक बंद सीमा के बारे में दावा है, उसके भीतर किसी एक वस्तु के बारे में नहीं।"
+          ],
+          "solution": "आवेश का क्वांटमीकरण कहता है कि हर आवेश q = ne है जिसमें n पूर्णांक और e = 1.6 × 10⁻¹⁹ C, अतः आवेश सतत नहीं, छलाँगों में बदलता है। यह आवेश का क्वांटमीकरण की बात है, आवेश का संरक्षण की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "प्रभाराचे संधारण विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "प्रभाराचे संधारण सांगते की एकाकी संस्थेचा बीजगणितीय एकूण प्रभार कधीच बदलत नाही, म्हणून प्रभार केवळ एका पदार्थातून दुसऱ्यात जाऊ शकतो वा समान आणि विरुद्ध जोड्यांत निर्माण होऊ शकतो.",
+            "हे तिथेही टिकते जिथे कणच निर्माण होतात आणि नष्ट होतात: फोटॉनपासून इलेक्ट्रॉन आणि पॉझिट्रॉन बनताना दोन नवे कण बनले पण नवा प्रभार नाही, कारण दोन्ही नेमके कापले जातात.",
+            "प्रभाराचे पुंजीकरण सांगते की प्रत्येक प्रभार q = ne आहे जिथे n पूर्णांक आणि e = 1.6 × 10⁻¹⁹ C, म्हणून प्रभार सलगपणे नव्हे तर उड्यांनी बदलतो.",
+            "एकाकी हा शब्द भार उचलत आहे: कोणत्याही एकट्या पदार्थाचा प्रभार सतत बदलतो, आणि नियम हा बंद सीमेबद्दलचा दावा आहे, तिच्या आतल्या कोणत्याही एका वस्तूबद्दल नव्हे."
+          ],
+          "solution": "प्रभाराचे पुंजीकरण सांगते की प्रत्येक प्रभार q = ne आहे जिथे n पूर्णांक आणि e = 1.6 × 10⁻¹⁹ C, म्हणून प्रभार सलगपणे नव्हे तर उड्यांनी बदलतो. हे प्रभाराचे पुंजीकरण चे आहे, प्रभाराचे संधारण चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Additivity of charge EXCEPT —",
+      "choices": [
+        "This is where charge parts company with mass: two masses can only make a bigger mass, whereas two charges can make nothing at all, which is why most matter around us is electrically invisible.",
+        "Additivity of charge says total charge is the algebraic sum of the individual charges, because charge is a scalar carrying a sign rather than a vector carrying a direction.",
+        "Conservation of charge says the algebraic total charge of an isolated system never changes, so charge can only be transferred from one body to another or created in equal and opposite pairs.",
+        "It is also what lets a neutral body be treated as absent from an electrostatics problem even though it is packed with charge, since its enormous positive and negative totals cancel to the last electron."
+      ],
+      "answerIndex": 2,
+      "solution": "Conservation of charge says the algebraic total charge of an isolated system never changes, so charge can only be transferred from one body to another or created in equal and opposite pairs. That belongs to Conservation of charge, not Additivity of charge — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "आवेश की योज्यता के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "यहीं आवेश द्रव्यमान से अलग हो जाता है: दो द्रव्यमान केवल बड़ा द्रव्यमान बना सकते हैं, जबकि दो आवेश कुछ भी नहीं बना सकते, इसीलिए हमारे आसपास का अधिकांश पदार्थ विद्युत् दृष्टि से अदृश्य है।",
+            "आवेश की योज्यता कहती है कि कुल आवेश अलग-अलग आवेशों का बीजगणितीय योग है, क्योंकि आवेश दिशा वाला सदिश नहीं, चिह्न वाला अदिश है।",
+            "आवेश का संरक्षण कहता है कि किसी विलगित निकाय का बीजगणितीय कुल आवेश कभी नहीं बदलता, अतः आवेश केवल एक पिंड से दूसरे में जा सकता है या बराबर और विपरीत युग्मों में बन सकता है।",
+            "यही उदासीन पिंड को स्थिरवैद्युत समस्या से ग़ैरहाज़िर मानने देता है, भले ही वह आवेश से भरा हो, क्योंकि उसके विशाल धन और ऋण योग अंतिम इलेक्ट्रॉन तक कट जाते हैं।"
+          ],
+          "solution": "आवेश का संरक्षण कहता है कि किसी विलगित निकाय का बीजगणितीय कुल आवेश कभी नहीं बदलता, अतः आवेश केवल एक पिंड से दूसरे में जा सकता है या बराबर और विपरीत युग्मों में बन सकता है। यह आवेश का संरक्षण की बात है, आवेश की योज्यता की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "प्रभाराची योगात्मकता विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "इथेच प्रभार वस्तुमानापासून वेगळा होतो: दोन वस्तुमाने केवळ मोठे वस्तुमान बनवू शकतात, तर दोन प्रभार काहीच बनवू शकत नाहीत, म्हणूनच आपल्या आजूबाजूचा बहुतांश पदार्थ विद्युतदृष्ट्या अदृश्य आहे.",
+            "प्रभाराची योगात्मकता सांगते की एकूण प्रभार म्हणजे वेगवेगळ्या प्रभारांची बीजगणितीय बेरीज, कारण प्रभार दिशा बाळगणारा सदिश नसून चिन्ह बाळगणारा अदिश आहे.",
+            "प्रभाराचे संधारण सांगते की एकाकी संस्थेचा बीजगणितीय एकूण प्रभार कधीच बदलत नाही, म्हणून प्रभार केवळ एका पदार्थातून दुसऱ्यात जाऊ शकतो वा समान आणि विरुद्ध जोड्यांत निर्माण होऊ शकतो.",
+            "हेच उदासीन पदार्थाला स्थिरविद्युत प्रश्नातून गैरहजर मानू देते, जरी तो प्रभाराने भरलेला असला तरी, कारण त्याच्या प्रचंड धन आणि ऋण बेरजा शेवटच्या इलेक्ट्रॉनपर्यंत कापल्या जातात."
+          ],
+          "solution": "प्रभाराचे संधारण सांगते की एकाकी संस्थेचा बीजगणितीय एकूण प्रभार कधीच बदलत नाही, म्हणून प्रभार केवळ एका पदार्थातून दुसऱ्यात जाऊ शकतो वा समान आणि विरुद्ध जोड्यांत निर्माण होऊ शकतो. हे प्रभाराचे संधारण चे आहे, प्रभाराची योगात्मकता चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Coulomb's law EXCEPT —",
+      "choices": [
+        "Gauss's law states that the net electric flux through a closed surface is q_enclosed/ε₀, which makes the flux independent of the surface's shape and of the position of the charge within it.",
+        "It is stated for POINT charges, and applying it to two charged spheres held close together is wrong, because the charge on each redistributes once the other is near and the centres are no longer where the charge effectively sits.",
+        "Coulomb's law gives F = kq₁q₂/r² directed along the line joining the two point charges, with k = 9 × 10⁹ N m²/C² in vacuum.",
+        "Its exponent is exactly two rather than approximately two, and that exactness is tested not by measuring forces but by confirming that the field inside a closed charged conductor is zero — a consequence which would fail at once if the power were 2.001."
+      ],
+      "answerIndex": 0,
+      "solution": "Gauss's law states that the net electric flux through a closed surface is q_enclosed/ε₀, which makes the flux independent of the surface's shape and of the position of the charge within it. That belongs to Gauss's law, not Coulomb's law — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कूलॉम का नियम के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "गाउस का नियम कहता है कि किसी बंद पृष्ठ से नेट विद्युत फ्लक्स q_घिरा/ε₀ है, जिससे फ्लक्स पृष्ठ के आकार और उसके भीतर आवेश की स्थिति से स्वतंत्र हो जाता है।",
+            "यह बिंदु आवेशों के लिए कहा गया है, और पास-पास रखे दो आवेशित गोलों पर इसे लगाना ग़लत है, क्योंकि दूसरा पास आते ही हर एक पर आवेश फिर से बँट जाता है और केंद्र वह जगह नहीं रहते जहाँ आवेश प्रभावी रूप से बैठा है।",
+            "कूलॉम का नियम F = kq₁q₂/r² देता है, जो दोनों बिंदु आवेशों को जोड़ने वाली रेखा के अनुदिश है, और निर्वात में k = 9 × 10⁹ N m²/C².",
+            "इसका घातांक लगभग दो नहीं, ठीक दो है, और यह ठीकपन बल नापकर नहीं बल्कि यह पुष्टि करके जाँचा जाता है कि बंद आवेशित चालक के भीतर क्षेत्र शून्य है — यह परिणाम घात 2.001 होते ही तुरंत टूट जाता।"
+          ],
+          "solution": "गाउस का नियम कहता है कि किसी बंद पृष्ठ से नेट विद्युत फ्लक्स q_घिरा/ε₀ है, जिससे फ्लक्स पृष्ठ के आकार और उसके भीतर आवेश की स्थिति से स्वतंत्र हो जाता है। यह गाउस का नियम की बात है, कूलॉम का नियम की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "कुलोमचा नियम विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "गॉसचा नियम सांगतो की बंद पृष्ठातून जाणारा निव्वळ विद्युत फ्लक्स q_घेरलेला/ε₀ आहे, ज्यामुळे फ्लक्स पृष्ठाच्या आकारापासून आणि त्याच्या आत प्रभाराच्या स्थानापासून स्वतंत्र होतो.",
+            "हा बिंदु प्रभारांसाठी सांगितलेला आहे, आणि जवळजवळ ठेवलेल्या दोन प्रभारित गोलांवर तो लावणे चूक आहे, कारण दुसरा जवळ येताच प्रत्येकावरचा प्रभार पुन्हा वाटला जातो आणि केंद्रे ती जागा राहत नाहीत जिथे प्रभार प्रभावीपणे बसला आहे.",
+            "कुलोमचा नियम F = kq₁q₂/r² देतो, जो दोन्ही बिंदु प्रभारांना जोडणाऱ्या रेषेच्या दिशेने असतो, आणि निर्वातात k = 9 × 10⁹ N m²/C².",
+            "याचा घातांक जवळपास दोन नव्हे तर नेमका दोन आहे, आणि हे नेमकेपण बल मोजून नव्हे तर बंद प्रभारित वाहकाच्या आत क्षेत्र शून्य आहे याची खात्री करून तपासले जाते — घात 2.001 असता तर हा निष्कर्ष लगेच कोसळला असता."
+          ],
+          "solution": "गॉसचा नियम सांगतो की बंद पृष्ठातून जाणारा निव्वळ विद्युत फ्लक्स q_घेरलेला/ε₀ आहे, ज्यामुळे फ्लक्स पृष्ठाच्या आकारापासून आणि त्याच्या आत प्रभाराच्या स्थानापासून स्वतंत्र होतो. हे गॉसचा नियम चे आहे, कुलोमचा नियम चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "In an examination answer a student draws two electric field lines that cross each other at a point P, explaining that the field there is simply the sum of the two directions. Why can this diagram never represent a real electrostatic field?",
+      "choices": [
+        "Because the tangent to a field line at a point gives the direction of the field there, so two lines crossing at P would give the field at P two different directions at once. The field is defined as the force per unit charge on a test charge placed at P, and that force has exactly one direction — a charge released at P cannot set off two ways. Superposition does not rescue the picture: two contributions at P add to a single resultant, and the correct diagram shows one line through P along that resultant",
+        "Because field lines are drawn only from positive to negative charge, and two lines that cross would have to start at the same charge",
+        "Because the field at a crossing point would become infinite, and no real charge distribution produces an infinite field",
+        "Because the number of lines drawn must be proportional to the charge, and crossing lines would be counted twice, giving the wrong charge"
+      ],
+      "answerIndex": 0,
+      "solution": "The argument is short, and it rests entirely on what a field line was invented to mean. A field line is not an object. It is a curve drawn so that its TANGENT at every point is the direction of the electric field at that point; the density of lines is then used, separately, to indicate the magnitude. So a diagram is a statement: at this point, the field points that way. Now put two lines through P. The first says the field at P points along its tangent; the second says the field at P points along a different tangent. Both cannot be true, because the electric field at a point is defined as the force per unit charge on a small test charge placed there, and a force is a single vector. Release a charge at P and it accelerates in exactly one direction. There is no experiment in which it goes both ways, so there is no field configuration the crossed diagram could be describing. The student's defence — that the field is the sum of the two directions — is where the misunderstanding sits, and it is worth stating precisely, because superposition IS a real principle and it does apply here. Superposition says that if a charge at A contributes E₁ at P and a charge at B contributes E₂ at P, the actual field at P is the vector sum E₁ + E₂. That sum is one vector. It is not two vectors kept side by side. The two contributions are a step in the calculation, not a feature of the answer; once they are added, the resultant has a single direction and the diagram must show a single line through P along it. Drawing E₁ and E₂ as two field lines confuses the working with the result. Two closely related facts follow from the same definition and are worth carrying together. Field lines cannot form closed loops in electrostatics, because a closed loop would let a charge be carried round and returned with more energy than it started with. And lines begin only on positive charges and end only on negative ones or at infinity, because a line that simply stopped in empty space would mark a point where the field abruptly ceased to exist. The one legitimate exception to the no-crossing rule is a point where the field is exactly zero — a null point between two like charges — since there the field has no direction to be ambiguous about, and several lines may be drawn approaching it. (The wrong answers cite true rules about field lines that do not bear on the question, or invent a consequence — an infinite field — that the crossing does not imply.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "परीक्षा के उत्तर में एक विद्यार्थी दो विद्युत क्षेत्र रेखाएँ खींचता है जो बिंदु P पर एक-दूसरे को काटती हैं, यह कहकर कि वहाँ क्षेत्र बस दोनों दिशाओं का योग है। यह चित्र किसी वास्तविक स्थिरवैद्युत क्षेत्र को कभी क्यों नहीं दिखा सकता?",
+          "choices": [
+            "क्योंकि किसी बिंदु पर क्षेत्र रेखा की स्पर्श रेखा वहाँ क्षेत्र की दिशा देती है, अतः P पर काटती दो रेखाएँ P पर क्षेत्र को एक साथ दो भिन्न दिशाएँ दे देतीं। क्षेत्र की परिभाषा P पर रखे परीक्षण आवेश पर प्रति एकांक आवेश बल है, और उस बल की ठीक एक दिशा है — P पर छोड़ा गया आवेश दो ओर नहीं चल सकता। अध्यारोपण चित्र को नहीं बचाता: P पर दो अंश जुड़कर एक परिणामी बनते हैं, और सही चित्र उसी परिणामी के अनुदिश P से होकर एक ही रेखा दिखाता है",
+            "क्योंकि क्षेत्र रेखाएँ केवल धन से ऋण आवेश तक खींची जाती हैं, और काटती दो रेखाओं को एक ही आवेश से शुरू होना पड़ता",
+            "क्योंकि कटान बिंदु पर क्षेत्र अनंत हो जाता, और कोई वास्तविक आवेश वितरण अनंत क्षेत्र नहीं देता",
+            "क्योंकि खींची गई रेखाओं की संख्या आवेश के समानुपाती होनी चाहिए, और काटती रेखाएँ दो बार गिनी जातीं, जिससे ग़लत आवेश मिलता"
+          ],
+          "solution": "तर्क छोटा है, और वह पूरी तरह इस पर टिका है कि क्षेत्र रेखा का अर्थ किसलिए गढ़ा गया था। क्षेत्र रेखा कोई वस्तु नहीं। वह ऐसी वक्र है जिसकी हर बिंदु पर स्पर्श रेखा उस बिंदु पर विद्युत क्षेत्र की दिशा हो; रेखाओं का घनत्व फिर अलग से परिमाण दिखाने के लिए काम आता है। अतः चित्र एक कथन है: इस बिंदु पर क्षेत्र उधर है। अब P से दो रेखाएँ निकालो। पहली कहती है P पर क्षेत्र उसकी स्पर्श रेखा के अनुदिश है; दूसरी कहती है P पर क्षेत्र किसी और स्पर्श रेखा के अनुदिश है। दोनों सच नहीं हो सकतीं, क्योंकि किसी बिंदु पर विद्युत क्षेत्र की परिभाषा वहाँ रखे छोटे परीक्षण आवेश पर प्रति एकांक आवेश बल है, और बल एक अकेला सदिश है। P पर आवेश छोड़ो और वह ठीक एक दिशा में त्वरित होता है। ऐसा कोई प्रयोग नहीं जिसमें वह दोनों ओर जाए, अतः ऐसी कोई क्षेत्र-रचना नहीं जिसे कटा हुआ चित्र बता रहा हो। विद्यार्थी का बचाव — कि क्षेत्र दोनों दिशाओं का योग है — वहीं ग़लतफ़हमी बैठी है, और उसे ठीक-ठीक कहना चाहिए, क्योंकि अध्यारोपण असली सिद्धांत है और यहाँ लागू भी होता है। अध्यारोपण कहता है कि यदि A का आवेश P पर E₁ देता है और B का आवेश P पर E₂ देता है, तो P पर वास्तविक क्षेत्र सदिश योग E₁ + E₂ है। वह योग एक सदिश है। वह अगल-बगल रखे दो सदिश नहीं। दोनों अंश गणना का एक चरण हैं, उत्तर का लक्षण नहीं; जोड़ते ही परिणामी की एक ही दिशा होती है और चित्र को P से होकर उसी के अनुदिश एक ही रेखा दिखानी चाहिए। E₁ और E₂ को दो क्षेत्र रेखाओं की तरह खींचना काम को परिणाम समझ लेना है। उसी परिभाषा से दो और निकट तथ्य निकलते हैं जिन्हें साथ रखना चाहिए। स्थिरवैद्युत में क्षेत्र रेखाएँ बंद लूप नहीं बना सकतीं, क्योंकि बंद लूप आवेश को घुमाकर आरंभ से अधिक ऊर्जा के साथ लौटा देता। और रेखाएँ केवल धन आवेशों से शुरू होकर ऋण आवेशों पर या अनंत पर ख़त्म होती हैं, क्योंकि खाली आकाश में यों ही रुक जाने वाली रेखा वह बिंदु दिखाती जहाँ क्षेत्र अचानक होना बंद हो गया। न-काटने के नियम का एक ही जायज़ अपवाद वह बिंदु है जहाँ क्षेत्र ठीक शून्य है — दो समान आवेशों के बीच का शून्य बिंदु — क्योंकि वहाँ क्षेत्र की कोई दिशा ही नहीं जिसमें दुविधा हो, और कई रेखाएँ उसकी ओर आती खींची जा सकती हैं। (ग़लत उत्तर क्षेत्र रेखाओं के सच्चे नियम गिनाते हैं जो प्रश्न से नहीं जुड़ते, या ऐसा परिणाम गढ़ते हैं — अनंत क्षेत्र — जो कटान से निकलता ही नहीं।)"
+        },
+        "mr": {
+          "stem": "परीक्षेच्या उत्तरात एक विद्यार्थी दोन विद्युत क्षेत्ररेषा काढतो ज्या बिंदू P वर एकमेकांना छेदतात, असे सांगून की तिथे क्षेत्र म्हणजे फक्त दोन दिशांची बेरीज. हे चित्र कोणतेही खरे स्थिरविद्युत क्षेत्र कधीच का दाखवू शकत नाही?",
+          "choices": [
+            "कारण एखाद्या बिंदूवर क्षेत्ररेषेची स्पर्शरेषा तिथल्या क्षेत्राची दिशा देते, म्हणून P वर छेदणाऱ्या दोन रेषा P वरच्या क्षेत्राला एकाच वेळी दोन वेगळ्या दिशा देतील. क्षेत्राची व्याख्या P वर ठेवलेल्या चाचणी प्रभारावरचे प्रति एकक प्रभार बल आहे, आणि त्या बलाला नेमकी एक दिशा आहे — P वर सोडलेला प्रभार दोन बाजूंना जाऊ शकत नाही. अध्यारोपण चित्राला वाचवत नाही: P वर दोन वाटे जुळून एक परिणामी बनतो, आणि बरोबर चित्र त्याच परिणामीच्या दिशेने P मधून एकच रेषा दाखवते",
+            "कारण क्षेत्ररेषा केवळ धनापासून ऋण प्रभारापर्यंत काढल्या जातात, आणि छेदणाऱ्या दोन रेषांना एकाच प्रभारापासून सुरू व्हावे लागले असते",
+            "कारण छेदन बिंदूवर क्षेत्र अनंत झाले असते, आणि कोणतेही खरे प्रभार वितरण अनंत क्षेत्र देत नाही",
+            "कारण काढलेल्या रेषांची संख्या प्रभाराशी समानुपाती असावी लागते, आणि छेदणाऱ्या रेषा दोनदा मोजल्या गेल्या असत्या, ज्यातून चुकीचा प्रभार मिळाला असता"
+          ],
+          "solution": "युक्तिवाद छोटा आहे, आणि तो पूर्णपणे यावर टिकतो की क्षेत्ररेषेचा अर्थ कशासाठी घडवला गेला होता. क्षेत्ररेषा ही वस्तू नाही. ती अशी वक्र आहे जिची प्रत्येक बिंदूवरची स्पर्शरेषा त्या बिंदूवरच्या विद्युत क्षेत्राची दिशा असते; रेषांची घनता मग वेगळेपणाने परिमाण दाखवायला वापरली जाते. म्हणून चित्र हे एक विधान आहे: या बिंदूवर क्षेत्र तिकडे आहे. आता P मधून दोन रेषा काढा. पहिली म्हणते P वरचे क्षेत्र तिच्या स्पर्शरेषेच्या दिशेने आहे; दुसरी म्हणते P वरचे क्षेत्र दुसऱ्या स्पर्शरेषेच्या दिशेने आहे. दोन्ही खऱ्या असू शकत नाहीत, कारण एखाद्या बिंदूवरच्या विद्युत क्षेत्राची व्याख्या तिथे ठेवलेल्या लहान चाचणी प्रभारावरचे प्रति एकक प्रभार बल आहे, आणि बल हा एकच सदिश आहे. P वर प्रभार सोडा आणि तो नेमक्या एका दिशेने त्वरित होतो. असा कोणताही प्रयोग नाही ज्यात तो दोन्ही बाजूंना जाईल, म्हणून अशी कोणतीही क्षेत्र-रचना नाही जिचे वर्णन छेदलेले चित्र करत असेल. विद्यार्थ्याचा बचाव — की क्षेत्र म्हणजे दोन दिशांची बेरीज — तिथेच गैरसमज बसला आहे, आणि तो नेमकेपणाने सांगायला हवा, कारण अध्यारोपण हे खरे तत्त्व आहे आणि इथे लागूही होते. अध्यारोपण सांगते की जर A चा प्रभार P वर E₁ देतो आणि B चा प्रभार P वर E₂ देतो, तर P वरचे प्रत्यक्ष क्षेत्र सदिश बेरीज E₁ + E₂ आहे. ती बेरीज एक सदिश आहे. ती शेजारीशेजारी ठेवलेले दोन सदिश नव्हे. दोन्ही वाटे ही गणनेतली एक पायरी आहे, उत्तराचे वैशिष्ट्य नव्हे; जोडताच परिणामीला एकच दिशा असते आणि चित्राने P मधून त्याच दिशेने एकच रेषा दाखवली पाहिजे. E₁ आणि E₂ दोन क्षेत्ररेषा म्हणून काढणे म्हणजे कामाला निकाल समजणे. त्याच व्याख्येतून आणखी दोन जवळची सत्ये निघतात जी सोबत ठेवावीत. स्थिरविद्युतमध्ये क्षेत्ररेषा बंद वळसे बनवू शकत नाहीत, कारण बंद वळसा प्रभाराला फिरवून सुरुवातीहून अधिक ऊर्जेसह परत आणला असता. आणि रेषा केवळ धन प्रभारांपासून सुरू होऊन ऋण प्रभारांवर वा अनंतावर संपतात, कारण रिकाम्या अवकाशात नुसती थांबणारी रेषा तो बिंदू दाखवेल जिथे क्षेत्र अचानक असणे थांबले. न-छेदण्याच्या नियमाचा एकच रास्त अपवाद म्हणजे तो बिंदू जिथे क्षेत्र नेमके शून्य आहे — दोन सारख्या प्रभारांमधला शून्य बिंदू — कारण तिथे क्षेत्राला दिशाच नाही जिच्याबद्दल संदिग्धता असेल, आणि अनेक रेषा त्याच्याकडे येताना काढता येतात. (चुकीची उत्तरे क्षेत्ररेषांचे खरे नियम सांगतात जे प्रश्नाशी जुळत नाहीत, वा असा निष्कर्ष घडवतात — अनंत क्षेत्र — जो छेदनातून निघतच नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A charge q sits inside a closed surface S. A second, much larger charge Q is brought up and held just outside S. A student concludes that the flux through S must now increase, since the field at every point of S has clearly changed. Assess this.",
+      "choices": [
+        "The premise is right and the conclusion is wrong. The field at every point of S genuinely has changed — E is the superposition of the contributions of q and Q, and Q's contribution is not zero anywhere. But the NET flux is unchanged at q/ε₀, because Q lies outside: every field line it sends into S through one region emerges through another, so its inward and outward contributions cancel exactly when integrated over the whole closed surface. Flux is a property of the enclosed charge alone; the field is a property of all the charges. The two statements are compatible because flux is an integral, and an integral can be fixed while the function being integrated moves",
+        "The student is right: since flux is the integral of E over S and E has changed everywhere on S, the integral must change too",
+        "Both the flux and the field are unchanged, because a charge outside a closed surface has no effect on anything inside or on the surface itself",
+        "The flux increases only if Q is larger than q, since Gauss's law compares the enclosed charge with the nearest external one"
+      ],
+      "answerIndex": 0,
+      "solution": "This question is built to separate two things that a first reading of Gauss's law tends to weld together: the FIELD on a surface and the FLUX through it. Start with what is undeniably true. The electric field is a superposition. At every point on S the field is now E_q + E_Q, and E_Q is nowhere zero — it is largest on the part of S nearest to Q and smallest on the far side, but it is present everywhere. If you were to measure the field at a chosen point of S with a tiny test charge, you would find a different answer before and after Q arrived. The student has seen this correctly. Now the flux. Flux is not the field; it is the integral of E·dA over the whole closed surface, and an integral is a single number extracted from a function that varies. There is no rule saying that changing the function everywhere must change its integral. Here it does not, and the reason is geometric rather than algebraic. Think of Q's field lines. They stream outward from Q, and some of them run into S. But S is a CLOSED surface: a line that enters must leave, because it cannot stop inside — there is no charge of Q's inside S for it to terminate on. So each such line contributes a negative flux where it enters, dA pointing outward against the field, and an equal positive flux where it exits. Summed over every line, Q's total contribution to the flux through S is exactly zero. What remains is q's own contribution, q/ε₀, unchanged. This is the content of the phrase 'charge enclosed' in the statement of the law, and it is doing more work than it looks. It is not merely a convenient simplification. It says that the total flux through a closed surface is a measure of the charge inside, and of nothing else — not of the shape of S, not of where inside S the charge sits, not of what is happening outside. This is why the law can be used backwards: if you can measure the flux, you know the interior charge, without knowing anything about the surroundings. The price is stated in the same breath. Because the flux is insensitive to so much, it cannot by itself tell you the field at any particular point of S. Gauss's law gives you E only when a symmetry argument lets you claim that E has the same magnitude everywhere on a well-chosen surface and points along dA — a spherical shell around a point charge, a cylinder around a long line, a box across a large sheet. Introduce Q just outside and that symmetry is destroyed: the law is still true, still gives flux q/ε₀, and is now useless for finding E. This is the practical distinction between a law that always holds and a method that only sometimes applies, and it is the reason a problem can be 'a Gauss's law problem' or not. (The second option treats an integral as if it tracked its integrand pointwise; the third denies the true half of the student's reasoning; the fourth invents a comparison between charges that appears nowhere in the law.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक आवेश q बंद पृष्ठ S के भीतर बैठा है। एक दूसरा, कहीं बड़ा आवेश Q लाकर S के ठीक बाहर रोक दिया जाता है। विद्यार्थी निष्कर्ष निकालता है कि अब S से फ्लक्स अवश्य बढ़ेगा, क्योंकि S के हर बिंदु पर क्षेत्र स्पष्टतः बदल गया है। इसका आकलन करो।",
+          "choices": [
+            "आधार सही है और निष्कर्ष ग़लत। S के हर बिंदु पर क्षेत्र सचमुच बदल गया है — E, q और Q के अंशों का अध्यारोपण है, और Q का अंश कहीं भी शून्य नहीं। पर नेट फ्लक्स q/ε₀ पर अपरिवर्तित है, क्योंकि Q बाहर है: वह जो भी क्षेत्र रेखा एक भाग से S में भेजता है वह दूसरे भाग से निकल जाती है, अतः पूरे बंद पृष्ठ पर समाकलन करने पर उसके भीतरगामी और बाहरगामी अंश ठीक-ठीक कट जाते हैं। फ्लक्स केवल घिरे आवेश का गुण है; क्षेत्र सभी आवेशों का गुण है। दोनों कथन साथ रह सकते हैं क्योंकि फ्लक्स समाकल है, और समाकल स्थिर रह सकता है जबकि समाकलित फलन हिलता रहे",
+            "विद्यार्थी सही है: चूँकि फ्लक्स S पर E का समाकल है और S पर हर जगह E बदल गया है, समाकल भी बदलना ही चाहिए",
+            "फ्लक्स और क्षेत्र दोनों अपरिवर्तित हैं, क्योंकि बंद पृष्ठ के बाहर का आवेश भीतर या स्वयं पृष्ठ पर किसी चीज़ पर असर नहीं डालता",
+            "फ्लक्स तभी बढ़ता है जब Q, q से बड़ा हो, क्योंकि गाउस का नियम घिरे आवेश की तुलना निकटतम बाहरी आवेश से करता है"
+          ],
+          "solution": "यह प्रश्न दो चीज़ों को अलग करने के लिए बना है जिन्हें गाउस के नियम का पहला पाठ जोड़ देता है: पृष्ठ पर क्षेत्र और उससे होकर फ्लक्स। पहले वह लो जो निर्विवाद रूप से सच है। विद्युत क्षेत्र अध्यारोपण है। S के हर बिंदु पर क्षेत्र अब E_q + E_Q है, और E_Q कहीं भी शून्य नहीं — वह Q के निकटतम भाग पर सबसे बड़ा और दूर वाली ओर सबसे छोटा है, पर हर जगह मौजूद है। यदि तुम S के किसी चुने बिंदु पर छोटे परीक्षण आवेश से क्षेत्र नापो, तो Q के आने से पहले और बाद में भिन्न उत्तर मिलेगा। विद्यार्थी ने यह ठीक देखा है। अब फ्लक्स। फ्लक्स क्षेत्र नहीं; वह पूरे बंद पृष्ठ पर E·dA का समाकल है, और समाकल बदलते फलन से निकाली गई एक अकेली संख्या है। ऐसा कोई नियम नहीं कि फलन हर जगह बदले तो उसका समाकल भी बदले। यहाँ वह नहीं बदलता, और कारण बीजगणितीय नहीं, ज्यामितीय है। Q की क्षेत्र रेखाएँ सोचो। वे Q से बाहर की ओर बहती हैं, और कुछ S में जा घुसती हैं। पर S बंद पृष्ठ है: जो रेखा घुसती है उसे निकलना ही है, क्योंकि वह भीतर रुक नहीं सकती — S के भीतर Q का कोई आवेश नहीं जिस पर वह ख़त्म हो। अतः ऐसी हर रेखा जहाँ घुसती है वहाँ ऋण फ्लक्स देती है, dA क्षेत्र के विरुद्ध बाहर की ओर, और जहाँ निकलती है वहाँ उतना ही धन फ्लक्स। हर रेखा पर जोड़ो तो S से फ्लक्स में Q का कुल अंश ठीक शून्य है। बचता है q का अपना अंश, q/ε₀, अपरिवर्तित। नियम के कथन में 'घिरा आवेश' वाक्यांश का यही आशय है, और वह दिखने से अधिक काम कर रहा है। वह केवल सुविधाजनक सरलीकरण नहीं। वह कहता है कि बंद पृष्ठ से कुल फ्लक्स भीतर के आवेश की माप है, और किसी और चीज़ की नहीं — न S के आकार की, न S के भीतर आवेश की जगह की, न बाहर जो हो रहा है उसकी। इसीलिए नियम उल्टा भी काम आता है: यदि तुम फ्लक्स नाप सको, तो भीतर का आवेश जान गए, आसपास के बारे में कुछ जाने बिना। क़ीमत उसी साँस में कही गई है। चूँकि फ्लक्स इतनी सारी चीज़ों के प्रति असंवेदी है, वह अपने आप S के किसी विशेष बिंदु पर क्षेत्र नहीं बता सकता। गाउस का नियम E तभी देता है जब कोई सममिति तर्क तुम्हें यह दावा करने दे कि सुचुने पृष्ठ पर हर जगह E का परिमाण एक-सा है और वह dA के अनुदिश है — बिंदु आवेश के चारों ओर गोलीय कोश, लंबी रेखा के चारों ओर बेलन, बड़ी चादर के आर-पार डिब्बा। Q को ठीक बाहर ले आओ और वह सममिति नष्ट हो जाती है: नियम अब भी सच है, अब भी फ्लक्स q/ε₀ देता है, और अब E निकालने के लिए बेकार है। सदा टिकने वाले नियम और कभी-कभी लागू होने वाली विधि के बीच यही व्यावहारिक भेद है, और इसी से कोई समस्या 'गाउस के नियम की समस्या' होती है या नहीं। (दूसरा विकल्प समाकल को ऐसे बरतता है मानो वह अपने समाकल्य को बिंदु-दर-बिंदु ढोता हो; तीसरा विद्यार्थी के तर्क का सच्चा आधा भी नकार देता है; चौथा आवेशों के बीच ऐसी तुलना गढ़ता है जो नियम में कहीं नहीं।)"
+        },
+        "mr": {
+          "stem": "एक प्रभार q बंद पृष्ठ S च्या आत बसला आहे. दुसरा, कितीतरी मोठा प्रभार Q आणून S च्या अगदी बाहेर धरला जातो. विद्यार्थी निष्कर्ष काढतो की आता S मधून जाणारा फ्लक्स नक्कीच वाढेल, कारण S च्या प्रत्येक बिंदूवरचे क्षेत्र स्पष्टपणे बदलले आहे. याचे मूल्यमापन करा.",
+          "choices": [
+            "गृहीतक बरोबर आहे आणि निष्कर्ष चूक. S च्या प्रत्येक बिंदूवरचे क्षेत्र खरोखर बदलले आहे — E हे q आणि Q यांच्या वाट्यांचे अध्यारोपण आहे, आणि Q चा वाटा कुठेही शून्य नाही. पण निव्वळ फ्लक्स q/ε₀ वर अपरिवर्तित आहे, कारण Q बाहेर आहे: तो एका भागातून S मध्ये पाठवत असलेली प्रत्येक क्षेत्ररेषा दुसऱ्या भागातून बाहेर पडते, म्हणून संपूर्ण बंद पृष्ठावर समाकलन केल्यावर त्याचे अंतर्गामी आणि बहिर्गामी वाटे नेमके कापले जातात. फ्लक्स हा केवळ घेरलेल्या प्रभाराचा गुणधर्म; क्षेत्र हा सर्व प्रभारांचा गुणधर्म. दोन्ही विधाने एकत्र राहू शकतात कारण फ्लक्स हे समाकलन आहे, आणि समाकलन स्थिर राहू शकते जरी समाकलित फलन हलत असले तरी",
+            "विद्यार्थी बरोबर आहे: फ्लक्स हे S वर E चे समाकलन असल्याने आणि S वर सर्वत्र E बदलल्याने, समाकलनही बदललेच पाहिजे",
+            "फ्लक्स आणि क्षेत्र दोन्ही अपरिवर्तित आहेत, कारण बंद पृष्ठाबाहेरचा प्रभार आत वा स्वतः पृष्ठावर कशावरही परिणाम करत नाही",
+            "फ्लक्स तेव्हाच वाढतो जेव्हा Q हा q हून मोठा असेल, कारण गॉसचा नियम घेरलेल्या प्रभाराची तुलना जवळच्या बाह्य प्रभाराशी करतो"
+          ],
+          "solution": "हा प्रश्न दोन गोष्टी वेगळ्या करण्यासाठी बांधलेला आहे ज्यांना गॉसच्या नियमाचे पहिले वाचन एकत्र चिकटवते: पृष्ठावरचे क्षेत्र आणि त्यातून जाणारा फ्लक्स. आधी जे निर्विवाद खरे आहे ते घ्या. विद्युत क्षेत्र हे अध्यारोपण आहे. S च्या प्रत्येक बिंदूवर क्षेत्र आता E_q + E_Q आहे, आणि E_Q कुठेही शून्य नाही — तो Q च्या सर्वांत जवळच्या भागावर सर्वांत मोठा आणि दूरच्या बाजूला सर्वांत लहान, पण सर्वत्र उपस्थित. जर तुम्ही S च्या निवडलेल्या बिंदूवर लहान चाचणी प्रभाराने क्षेत्र मोजले, तर Q येण्यापूर्वी आणि नंतर वेगळे उत्तर मिळेल. विद्यार्थ्याने हे बरोबर पाहिले आहे. आता फ्लक्स. फ्लक्स म्हणजे क्षेत्र नव्हे; ते संपूर्ण बंद पृष्ठावरील E·dA चे समाकलन आहे, आणि समाकलन ही बदलत्या फलनातून काढलेली एकच संख्या आहे. असा कोणताही नियम नाही की फलन सर्वत्र बदलले तर त्याचे समाकलनही बदलले पाहिजे. इथे ते बदलत नाही, आणि कारण बीजगणितीय नसून भूमितीय आहे. Q च्या क्षेत्ररेषा विचारात घ्या. त्या Q पासून बाहेर वाहतात, आणि काही S मध्ये शिरतात. पण S हे बंद पृष्ठ आहे: जी रेषा शिरते तिला बाहेर पडावेच लागते, कारण ती आत थांबू शकत नाही — S च्या आत Q चा कोणताही प्रभार नाही जिच्यावर ती संपेल. म्हणून अशी प्रत्येक रेषा जिथे शिरते तिथे ऋण फ्लक्स देते, dA क्षेत्राविरुद्ध बाहेरच्या दिशेने, आणि जिथे बाहेर पडते तिथे तितकाच धन फ्लक्स. प्रत्येक रेषेवर बेरीज केल्यास S मधून जाणाऱ्या फ्लक्समध्ये Q चा एकूण वाटा नेमका शून्य आहे. उरतो q चा स्वतःचा वाटा, q/ε₀, अपरिवर्तित. नियमाच्या विधानातील 'घेरलेला प्रभार' या वाक्यांशाचा हाच आशय, आणि तो दिसण्याहून अधिक काम करत आहे. ते केवळ सोयीचे सुलभीकरण नाही. ते सांगते की बंद पृष्ठातून जाणारा एकूण फ्लक्स हे आतल्या प्रभाराचे माप आहे, आणि दुसऱ्या कशाचेही नाही — S च्या आकाराचे नाही, S च्या आत प्रभार कुठे बसला याचे नाही, बाहेर काय घडत आहे याचे नाही. म्हणूनच नियम उलटाही वापरता येतो: जर तुम्ही फ्लक्स मोजू शकलात, तर आतला प्रभार कळला, आजूबाजूबद्दल काहीही न जाणता. किंमत त्याच श्वासात सांगितलेली आहे. फ्लक्स इतक्या साऱ्या गोष्टींबाबत असंवेदनशील असल्याने, तो स्वतःहून S च्या कोणत्याही विशिष्ट बिंदूवरचे क्षेत्र सांगू शकत नाही. गॉसचा नियम E तेव्हाच देतो जेव्हा एखादा सममिती-युक्तिवाद तुम्हाला असा दावा करू देतो की सुयोग्य निवडलेल्या पृष्ठावर सर्वत्र E चे परिमाण सारखे आहे आणि तो dA च्या दिशेने आहे — बिंदु प्रभाराभोवती गोलीय कवच, लांब रेषेभोवती दंडगोल, मोठ्या पत्र्याच्या आरपार पेटी. Q ला अगदी बाहेर आणा आणि ती सममिती नष्ट होते: नियम अजूनही खरा आहे, अजूनही फ्लक्स q/ε₀ देतो, आणि आता E काढण्यासाठी निरुपयोगी आहे. नेहमी टिकणारा नियम आणि कधीकधीच लागू होणारी पद्धत यांतील हाच व्यावहारिक भेद, आणि यामुळेच एखादा प्रश्न 'गॉसच्या नियमाचा प्रश्न' असतो वा नसतो. (दुसरा पर्याय समाकलनाला असे वागवतो जणू ते आपल्या समाकल्याचा बिंदूनिहाय मागोवा घेते; तिसरा विद्यार्थ्याच्या युक्तिवादाचा खरा अर्धा भागही नाकारतो; चौथा प्रभारांमधली अशी तुलना घडवतो जी नियमात कुठेही नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A small body is found to carry a charge of 3.2 × 10⁻¹⁹ C. How many elementary charges is that?",
+      "choices": [
+        "5",
+        "3.2",
+        "1.6",
+        "2"
+      ],
+      "answerIndex": 3,
+      "solution": "Charge is quantised as q = ne, so n = q/e = 3.2/1.6 = 2 elementary charges. The powers of ten are identical on both sides and cancel before any arithmetic is needed, which is worth spotting because it turns the whole calculation into a one-line division. (1.6 quotes the elementary charge itself instead of the count.)",
+      "checkExpr": "3.2/1.6",
+      "translations": {
+        "hi": {
+          "stem": "एक छोटे पिंड पर 3.2 × 10⁻¹⁹ C का आवेश पाया जाता है। यह कितने मूल आवेशों के बराबर है?",
+          "choices": [
+            "5",
+            "3.2",
+            "1.6",
+            "2"
+          ],
+          "solution": "आवेश q = ne के रूप में क्वांटमित है, अतः n = q/e = 3.2/1.6 = 2 मूल आवेश। दस की घातें दोनों ओर एक-सी हैं और किसी भी गणित से पहले कट जाती हैं, और यह पकड़ने योग्य है क्योंकि इससे पूरी गणना एक पंक्ति के भाग में बदल जाती है। (1.6 गिनती के बजाय मूल आवेश ही बता देता है।)"
+        },
+        "mr": {
+          "stem": "एका लहान पदार्थावर 3.2 × 10⁻¹⁹ C चा प्रभार आढळतो. हा किती मूलभूत प्रभारांइतका आहे?",
+          "choices": [
+            "5",
+            "3.2",
+            "1.6",
+            "2"
+          ],
+          "solution": "प्रभार q = ne या रूपात पुंजित आहे, म्हणून n = q/e = 3.2/1.6 = 2 मूलभूत प्रभार. दहाच्या घाती दोन्ही बाजूंना सारख्या आहेत आणि कोणत्याही गणिताआधीच कापल्या जातात, आणि हे ओळखण्याजोगे कारण त्यामुळे अख्खी गणना एका ओळीच्या भागाकारात बदलते. (1.6 मोजणीऐवजी मूलभूत प्रभारच सांगते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Two point charges attract each other with a force of 40 N. Without altering either charge, the distance between them is doubled. What is the new force?",
+      "choices": [
+        "80 N",
+        "20 N",
+        "10 N",
+        "160 N"
+      ],
+      "answerIndex": 2,
+      "solution": "Coulomb's law makes the force inverse-square in the separation, so doubling r divides the force by 2² = 4: 40/4 = 10 N. (20 halves the force, treating the dependence as 1/r; 80 doubles it, reversing the direction of the effect as well as its power.)",
+      "checkExpr": "40/4",
+      "translations": {
+        "hi": {
+          "stem": "दो बिंदु आवेश एक-दूसरे को 40 N बल से खींचते हैं। किसी भी आवेश को बदले बिना उनके बीच की दूरी दुगुनी कर दी जाती है। नया बल क्या है?",
+          "choices": [
+            "80 N",
+            "20 N",
+            "10 N",
+            "160 N"
+          ],
+          "solution": "कूलॉम का नियम बल को दूरी में व्युत्क्रम-वर्ग बनाता है, अतः r दुगुना करने पर बल 2² = 4 से भाग जाता है: 40/4 = 10 N. (20 बल आधा कर देता है, निर्भरता को 1/r मानकर; 80 उसे दुगुना कर देता है, घात के साथ प्रभाव की दिशा भी उलटकर।)"
+        },
+        "mr": {
+          "stem": "दोन बिंदु प्रभार एकमेकांना 40 N बलाने ओढतात. कोणताही प्रभार न बदलता त्यांच्यातले अंतर दुप्पट केले जाते. नवे बल किती?",
+          "choices": [
+            "80 N",
+            "20 N",
+            "10 N",
+            "160 N"
+          ],
+          "solution": "कुलोमचा नियम बलाला अंतरात व्यस्त-वर्ग बनवतो, म्हणून r दुप्पट केल्यास बल 2² = 4 ने भागले जाते: 40/4 = 10 N. (20 बल निम्मे करते, अवलंबित्व 1/r मानून; 80 ते दुप्पट करते, घातासोबत परिणामाची दिशाही उलटवून.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Two point charges of +2 μC and +3 μC are held 0.3 m apart in vacuum. What is the force between them? Take k = 9 × 10⁹ N m²/C².",
+      "choices": [
+        "6 N",
+        "1.8 N",
+        "0.2 N",
+        "0.6 N"
+      ],
+      "answerIndex": 3,
+      "solution": "F = kq₁q₂/r². The numerator is 9 × 10⁹ × 2 × 10⁻⁶ × 3 × 10⁻⁶ = 0.054, and r² = 0.3² = 0.09, so F = 0.054/0.09 = 0.6 N, a repulsion since both charges are positive. Squaring the 0.3 is the step most often skipped, and skipping it makes the answer three times too large. (1.8 divides by 0.3 instead of 0.09.)",
+      "checkExpr": "0.054/0.09",
+      "translations": {
+        "hi": {
+          "stem": "+2 μC और +3 μC के दो बिंदु आवेश निर्वात में 0.3 m की दूरी पर रखे हैं। उनके बीच बल क्या है? k = 9 × 10⁹ N m²/C² लो।",
+          "choices": [
+            "6 N",
+            "1.8 N",
+            "0.2 N",
+            "0.6 N"
+          ],
+          "solution": "F = kq₁q₂/r². अंश 9 × 10⁹ × 2 × 10⁻⁶ × 3 × 10⁻⁶ = 0.054 है, और r² = 0.3² = 0.09, अतः F = 0.054/0.09 = 0.6 N, और चूँकि दोनों आवेश धन हैं यह प्रतिकर्षण है। 0.3 का वर्ग करना वही चरण है जो सबसे अधिक छोड़ा जाता है, और उसे छोड़ने से उत्तर तीन गुना बड़ा हो जाता है। (1.8 0.09 के बजाय 0.3 से भाग देता है।)"
+        },
+        "mr": {
+          "stem": "+2 μC आणि +3 μC हे दोन बिंदु प्रभार निर्वातात 0.3 m अंतरावर धरले आहेत. त्यांच्यातले बल किती? k = 9 × 10⁹ N m²/C² घ्या.",
+          "choices": [
+            "6 N",
+            "1.8 N",
+            "0.2 N",
+            "0.6 N"
+          ],
+          "solution": "F = kq₁q₂/r². अंश 9 × 10⁹ × 2 × 10⁻⁶ × 3 × 10⁻⁶ = 0.054 आहे, आणि r² = 0.3² = 0.09, म्हणून F = 0.054/0.09 = 0.6 N, आणि दोन्ही प्रभार धन असल्याने हे प्रतिकर्षण आहे. 0.3 चा वर्ग करणे हीच ती पायरी जी सर्वांत जास्त गाळली जाते, आणि ती गाळल्याने उत्तर तिप्पट मोठे होते. (1.8 हे 0.09 ऐवजी 0.3 ने भागते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the magnitude of the electric field at a point 3 m from a point charge of 5 nC? Give the answer in N/C, taking k = 9 × 10⁹ N m²/C².",
+      "choices": [
+        "5",
+        "45",
+        "15",
+        "1.5"
+      ],
+      "answerIndex": 0,
+      "solution": "E = kq/r² = (9 × 10⁹ × 5 × 10⁻⁹)/3² = 45/9 = 5 N/C. Note that the field is defined without any second charge in the problem — it is what a test charge WOULD feel, and it exists at the point whether or not anything is there to be pushed. (15 divides by 3 instead of by 9, and 45 forgets to divide at all.)",
+      "checkExpr": "45/9",
+      "translations": {
+        "hi": {
+          "stem": "5 nC के बिंदु आवेश से 3 m दूर किसी बिंदु पर विद्युत क्षेत्र का परिमाण क्या है? उत्तर N/C में दो, k = 9 × 10⁹ N m²/C² लेकर।",
+          "choices": [
+            "5",
+            "45",
+            "15",
+            "1.5"
+          ],
+          "solution": "E = kq/r² = (9 × 10⁹ × 5 × 10⁻⁹)/3² = 45/9 = 5 N/C. ध्यान दो कि प्रश्न में कोई दूसरा आवेश हुए बिना ही क्षेत्र परिभाषित है — वह वही है जो परीक्षण आवेश अनुभव करता, और वह बिंदु पर तब भी है जब वहाँ धकेले जाने को कुछ न हो। (15 9 के बजाय 3 से भाग देता है, और 45 भाग देना ही भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "5 nC च्या बिंदु प्रभारापासून 3 m दूर असलेल्या बिंदूवरील विद्युत क्षेत्राचे परिमाण किती? उत्तर N/C मध्ये द्या, k = 9 × 10⁹ N m²/C² घेऊन.",
+          "choices": [
+            "5",
+            "45",
+            "15",
+            "1.5"
+          ],
+          "solution": "E = kq/r² = (9 × 10⁹ × 5 × 10⁻⁹)/3² = 45/9 = 5 N/C. लक्षात घ्या की प्रश्नात दुसरा कोणताही प्रभार नसतानाही क्षेत्र व्याख्यायित आहे — ते तेच जे चाचणी प्रभाराला जाणवले असते, आणि ते बिंदूवर तेव्हाही आहे जेव्हा तिथे ढकलले जायला काहीच नाही. (15 हे 9 ऐवजी 3 ने भागते, आणि 45 भागणेच विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A point charge sits at the centre of a cube. The total outward flux through the whole cube is 24 N m²/C. What is the flux through one face, in N m²/C?",
+      "choices": [
+        "4",
+        "6",
+        "24",
+        "12"
+      ],
+      "answerIndex": 0,
+      "solution": "The charge is at the centre, so the six faces are related by symmetry and none can be favoured over another: each carries a sixth of the total, 24/6 = 4 N m²/C. This is a symmetry argument doing work no integral would do more cheaply — the flux through a square face of a cube is genuinely hard to compute directly. (6 counts the faces rather than dividing by them.)",
+      "checkExpr": "24/6",
+      "translations": {
+        "hi": {
+          "stem": "एक बिंदु आवेश घन के केंद्र पर बैठा है। पूरे घन से कुल बाहरगामी फ्लक्स 24 N m²/C है। एक फलक से फ्लक्स N m²/C में क्या है?",
+          "choices": [
+            "4",
+            "6",
+            "24",
+            "12"
+          ],
+          "solution": "आवेश केंद्र पर है, अतः छहों फलक सममिति से जुड़े हैं और किसी को दूसरे पर वरीयता नहीं दी जा सकती: हर एक कुल का छठा भाग रखता है, 24/6 = 4 N m²/C. यह सममिति का तर्क वह काम कर रहा है जो कोई समाकल इससे सस्ते में नहीं करता — घन के वर्गाकार फलक से फ्लक्स सीधे निकालना सचमुच कठिन है। (6 फलकों से भाग देने के बजाय उन्हें गिन देता है।)"
+        },
+        "mr": {
+          "stem": "एक बिंदु प्रभार घनाच्या केंद्रावर बसला आहे. अख्ख्या घनातून जाणारा एकूण बहिर्गामी फ्लक्स 24 N m²/C आहे. एका पृष्ठभागातून जाणारा फ्लक्स N m²/C मध्ये किती?",
+          "choices": [
+            "4",
+            "6",
+            "24",
+            "12"
+          ],
+          "solution": "प्रभार केंद्रावर आहे, म्हणून सहाही पृष्ठभाग सममितीने जोडलेले आहेत आणि कोणालाही दुसऱ्यावर प्राधान्य देता येत नाही: प्रत्येक एकूणाचा सहावा भाग बाळगतो, 24/6 = 4 N m²/C. हा सममितीचा युक्तिवाद ते काम करत आहे जे कोणतेही समाकलन याहून स्वस्तात करत नाही — घनाच्या चौरस पृष्ठभागातून जाणारा फ्लक्स थेट काढणे खरोखर कठीण आहे. (6 पृष्ठभागांनी भागण्याऐवजी त्यांना मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A charge of 4 μC is placed at a point where the electric field has magnitude 5 × 10⁵ N/C. What force does it experience?",
+      "choices": [
+        "0.8 N",
+        "1.25 N",
+        "20 N",
+        "2 N"
+      ],
+      "answerIndex": 3,
+      "solution": "F = qE = 4 × 10⁻⁶ × 5 × 10⁵. Multiply the digits and the powers separately: 4 × 5 = 20 and 10⁻⁶ × 10⁵ = 10⁻¹, giving 20/10 = 2 N. Handling the exponents on their own is what stops a factor of ten slipping in, and a factor of ten is the commonest error in this whole chapter. (20 ignores the leftover 10⁻¹; 1.25 divides the charge by the field instead of multiplying.)",
+      "checkExpr": "4*5/10",
+      "translations": {
+        "hi": {
+          "stem": "4 μC का आवेश ऐसे बिंदु पर रखा जाता है जहाँ विद्युत क्षेत्र का परिमाण 5 × 10⁵ N/C है। उस पर कितना बल लगता है?",
+          "choices": [
+            "0.8 N",
+            "1.25 N",
+            "20 N",
+            "2 N"
+          ],
+          "solution": "F = qE = 4 × 10⁻⁶ × 5 × 10⁵. अंक और घातें अलग-अलग गुणा करो: 4 × 5 = 20 और 10⁻⁶ × 10⁵ = 10⁻¹, जिससे 20/10 = 2 N. घातांकों को अलग सँभालना ही दस के गुणक को फिसलने से रोकता है, और दस का गुणक इस पूरे अध्याय की सबसे आम भूल है। (20 बचे हुए 10⁻¹ को अनदेखा करता है; 1.25 आवेश को क्षेत्र से गुणा करने के बजाय भाग दे देता है।)"
+        },
+        "mr": {
+          "stem": "4 μC चा प्रभार अशा बिंदूवर ठेवला जातो जिथे विद्युत क्षेत्राचे परिमाण 5 × 10⁵ N/C आहे. त्यावर किती बल लागते?",
+          "choices": [
+            "0.8 N",
+            "1.25 N",
+            "20 N",
+            "2 N"
+          ],
+          "solution": "F = qE = 4 × 10⁻⁶ × 5 × 10⁵. अंक आणि घाती वेगवेगळे गुणा: 4 × 5 = 20 आणि 10⁻⁶ × 10⁵ = 10⁻¹, ज्यातून 20/10 = 2 N. घातांक वेगळे हाताळणेच दहाच्या गुणकाला घसरण्यापासून रोखते, आणि दहाचा गुणक ही या अख्ख्या प्रकरणातली सर्वांत सामान्य चूक आहे. (20 उरलेल्या 10⁻¹ कडे दुर्लक्ष करते; 1.25 प्रभाराला क्षेत्राने गुणण्याऐवजी भागते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Charges of +9 μC and +4 μC are fixed 5 m apart. At what distance from the +9 μC charge, along the line joining them, is the net electric field zero? Give the answer in m.",
+      "choices": [
+        "2",
+        "3",
+        "2.5",
+        "3.75"
+      ],
+      "answerIndex": 1,
+      "solution": "Both charges are positive, so their fields point away from each and can only cancel at a point BETWEEN them. At a distance x from the 9 μC charge, 9/x² = 4/(5 − x)², and taking square roots gives 3/x = 2/(5 − x), so 3(5 − x) = 2x, 15 = 5x, and x = 15/5 = 3 m. Taking the root before cross-multiplying is what keeps the algebra linear; squaring both sides instead produces a quadratic with a spurious second root outside the segment. (2.5 puts the null point at the midpoint, which would be right only for equal charges.)",
+      "checkExpr": "15/5",
+      "translations": {
+        "hi": {
+          "stem": "+9 μC और +4 μC के आवेश 5 m की दूरी पर स्थिर हैं। उन्हें जोड़ने वाली रेखा पर +9 μC आवेश से कितनी दूरी पर नेट विद्युत क्षेत्र शून्य है? उत्तर m में दो।",
+          "choices": [
+            "2",
+            "3",
+            "2.5",
+            "3.75"
+          ],
+          "solution": "दोनों आवेश धन हैं, अतः उनके क्षेत्र हर एक से दूर की ओर हैं और केवल उनके बीच के किसी बिंदु पर कट सकते हैं। 9 μC आवेश से x दूरी पर, 9/x² = 4/(5 − x)², और वर्गमूल लेने पर 3/x = 2/(5 − x), अतः 3(5 − x) = 2x, 15 = 5x, और x = 15/5 = 3 m. आड़ा-गुणा करने से पहले मूल लेना ही बीजगणित को रैखिक रखता है; इसके बजाय दोनों ओर वर्ग करने से द्विघात बनता है जिसका दूसरा मूल खंड के बाहर झूठा निकलता है। (2.5 शून्य बिंदु को मध्य बिंदु पर रख देता है, जो केवल बराबर आवेशों के लिए सही होता।)"
+        },
+        "mr": {
+          "stem": "+9 μC आणि +4 μC हे प्रभार 5 m अंतरावर स्थिर आहेत. त्यांना जोडणाऱ्या रेषेवर +9 μC प्रभारापासून किती अंतरावर निव्वळ विद्युत क्षेत्र शून्य आहे? उत्तर m मध्ये द्या.",
+          "choices": [
+            "2",
+            "3",
+            "2.5",
+            "3.75"
+          ],
+          "solution": "दोन्ही प्रभार धन आहेत, म्हणून त्यांची क्षेत्रे प्रत्येकापासून दूर आहेत आणि केवळ त्यांच्यामधल्या एखाद्या बिंदूवरच कापली जाऊ शकतात. 9 μC प्रभारापासून x अंतरावर, 9/x² = 4/(5 − x)², आणि वर्गमूळ घेतल्यास 3/x = 2/(5 − x), म्हणून 3(5 − x) = 2x, 15 = 5x, आणि x = 15/5 = 3 m. आडवा गुणाकार करण्याआधी मूळ घेणेच बीजगणिताला रेषीय ठेवते; त्याऐवजी दोन्ही बाजूंचा वर्ग केल्यास वर्गसमीकरण बनते ज्याचे दुसरे मूळ खंडाबाहेर खोटे निघते. (2.5 शून्य बिंदूला मध्यबिंदूवर ठेवते, जे केवळ समान प्रभारांसाठी बरोबर ठरले असते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Charges of +12 μC and −5 μC lie inside a closed surface, and a charge of +20 μC lies just outside it. The net outward flux through the surface equals Q/ε₀. What is Q, in μC?",
+      "choices": [
+        "37",
+        "7",
+        "27",
+        "17"
+      ],
+      "answerIndex": 1,
+      "solution": "Gauss's law counts only the charge ENCLOSED, and it counts it algebraically, so Q = 12 − 5 = 7 μC. The external 20 μC contributes nothing to the net flux: every line it sends in through one part of the surface leaves through another, and the two contributions cancel exactly on integration. Note what has and has not been claimed — the field at each point of the surface certainly does depend on the external charge; only the total flux does not. (27 adds the outside charge and subtracts the negative one; 17 adds the outside charge and drops the negative; 37 adds all three magnitudes.)",
+      "checkExpr": "12-5",
+      "translations": {
+        "hi": {
+          "stem": "+12 μC और −5 μC के आवेश एक बंद पृष्ठ के भीतर हैं, और +20 μC का आवेश उसके ठीक बाहर है। पृष्ठ से नेट बाहरगामी फ्लक्स Q/ε₀ के बराबर है। Q, μC में, क्या है?",
+          "choices": [
+            "37",
+            "7",
+            "27",
+            "17"
+          ],
+          "solution": "गाउस का नियम केवल घिरे आवेश को गिनता है, और उसे बीजगणितीय रूप से गिनता है, अतः Q = 12 − 5 = 7 μC. बाहर का 20 μC नेट फ्लक्स में कुछ नहीं जोड़ता: वह पृष्ठ के एक भाग से जो रेखा भीतर भेजता है वह दूसरे से निकल जाती है, और समाकलन पर दोनों अंश ठीक-ठीक कट जाते हैं। ध्यान दो कि क्या दावा किया गया और क्या नहीं — पृष्ठ के हर बिंदु पर क्षेत्र निश्चय ही बाहरी आवेश पर निर्भर है; केवल कुल फ्लक्स नहीं। (27 बाहर का आवेश जोड़ता और ऋण वाला घटाता है; 17 बाहर का जोड़ता और ऋण वाला छोड़ देता है; 37 तीनों परिमाण जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "+12 μC आणि −5 μC हे प्रभार एका बंद पृष्ठाच्या आत आहेत, आणि +20 μC चा प्रभार त्याच्या अगदी बाहेर आहे. पृष्ठातून जाणारा निव्वळ बहिर्गामी फ्लक्स Q/ε₀ इतका आहे. Q, μC मध्ये, किती?",
+          "choices": [
+            "37",
+            "7",
+            "27",
+            "17"
+          ],
+          "solution": "गॉसचा नियम केवळ घेरलेला प्रभार मोजतो, आणि तो बीजगणितीय रीतीने मोजतो, म्हणून Q = 12 − 5 = 7 μC. बाहेरचा 20 μC निव्वळ फ्लक्समध्ये काहीच जोडत नाही: तो पृष्ठाच्या एका भागातून आत पाठवत असलेली प्रत्येक रेषा दुसऱ्यातून बाहेर पडते, आणि समाकलनावर दोन्ही वाटे नेमके कापले जातात. काय दावा केला आणि काय नाही ते लक्षात घ्या — पृष्ठाच्या प्रत्येक बिंदूवरचे क्षेत्र निश्चितच बाह्य प्रभारावर अवलंबून आहे; केवळ एकूण फ्लक्स नाही. (27 बाहेरचा प्रभार जोडते आणि ऋण वजा करते; 17 बाहेरचा जोडते आणि ऋण गाळते; 37 तिन्ही परिमाणे जोडते.)"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1038 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 12,
+  "chapter": "Chapter 4 — Moving Charges and Magnetism",
+  "name": "Moving Charges and Magnetism",
+  "slug": "physics-12-moving-charges-and-magnetism",
+  "summary": "A force that appears only when a charge is already moving, that acts sideways to the motion and therefore never speeds anything up or slows it down; a current element that sends a field curling around itself rather than streaming away from itself; a shortcut for the field around symmetric arrangements that plays the same role here that a law about flux played in electrostatics; a machine that pushes particles to enormous energies with a modest voltage applied over and over; a coil whose long cylinder holds a field as uniform as a bar magnet's and can be switched off; and an instrument whose pointer turns by exactly the current through it, which becomes an ammeter or a voltmeter depending on which resistor is put where.",
+  "position": 4,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "गतिमान आवेश और चुंबकत्व",
+      "summary": "वह बल जो तभी प्रकट होता है जब आवेश पहले से चल रहा हो, जो गति के बग़ल में लगता है और इसलिए किसी को न तेज़ करता है न धीमा; वह धारा-अंश जो अपने से दूर बहने के बजाय अपने चारों ओर लिपटता क्षेत्र भेजता है; सममित व्यवस्थाओं के चारों ओर क्षेत्र निकालने का वह छोटा रास्ता जो यहाँ वही भूमिका निभाता है जो स्थिरवैद्युत में फ्लक्स के नियम ने निभाई थी; वह मशीन जो मामूली वोल्टता बार-बार लगाकर कणों को विशाल ऊर्जाओं तक धकेल देती है; वह कुंडली जिसका लंबा बेलन छड़ चुंबक जैसा एकसमान क्षेत्र रखता है और बंद किया जा सकता है; और वह यंत्र जिसकी सुई ठीक उसमें से जाती धारा जितनी घूमती है, और जो कौन-सा प्रतिरोधक कहाँ लगाया गया इसके अनुसार अमीटर या वोल्टमापी बन जाता है।"
+    },
+    "mr": {
+      "name": "गतिमान प्रभार आणि चुंबकत्व",
+      "summary": "ते बल जे प्रभार आधीच हलत असेल तेव्हाच प्रकट होते, जे गतीच्या बाजूला लागते आणि म्हणून कोणालाही ना वेगवान करते ना सावकाश; तो धारा-अंश जो स्वतःपासून दूर वाहण्याऐवजी स्वतःभोवती गुंडाळणारे क्षेत्र पाठवतो; सममित मांडणींभोवतीचे क्षेत्र काढण्याचा तो शॉर्टकट जो इथे तीच भूमिका बजावतो जी स्थिरविद्युतमध्ये फ्लक्सच्या नियमाने बजावली होती; ते यंत्र जे माफक व्होल्टेज पुन्हा पुन्हा लावून कणांना प्रचंड ऊर्जांपर्यंत ढकलते; ती वेटोळी जिचा लांब दंडगोल दांडा चुंबकासारखे एकसमान क्षेत्र बाळगतो आणि बंद करता येतो; आणि ते उपकरण ज्याची सुई नेमकी त्यातून जाणाऱ्या धारेइतकी फिरते, आणि जे कोणता रोधक कुठे लावला यानुसार अ‍ॅमीटर वा व्होल्टमापक बनते."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A charge sitting still in a magnetic field feels nothing; set it moving across the field and it is pushed at right angles to both its velocity and the field. Which force law is this?",
+      "choices": [
+        "The Biot–Savart law",
+        "The solenoid",
+        "The Lorentz force",
+        "Ampère's circuital law"
+      ],
+      "answerIndex": 2,
+      "solution": "The Lorentz force on a charge is F = q(v × B), of magnitude qvB sin θ and directed perpendicular to both v and B, so it vanishes for a charge at rest or moving along the field. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "चुंबकीय क्षेत्र में चुपचाप बैठा आवेश कुछ अनुभव नहीं करता; उसे क्षेत्र के आर-पार चलाओ और वह अपने वेग तथा क्षेत्र दोनों के समकोण पर धकेला जाता है। यह कौन-सा बल-नियम है?",
+          "choices": [
+            "बायो-सावर्ट का नियम",
+            "परिनालिका",
+            "लॉरेंज़ बल",
+            "ऐम्पियर का परिपथीय नियम"
+          ],
+          "solution": "आवेश पर लॉरेंज़ बल F = q(v × B) है, जिसका परिमाण qvB sin θ है और जो v तथा B दोनों के लंबवत है, अतः विरामावस्था में या क्षेत्र के अनुदिश चलते आवेश के लिए वह लुप्त हो जाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "चुंबकीय क्षेत्रात स्वस्थ बसलेल्या प्रभाराला काहीच जाणवत नाही; त्याला क्षेत्राच्या आरपार हलवा आणि तो आपल्या वेगाला व क्षेत्राला दोन्हींना काटकोनात ढकलला जातो. हा कोणता बल-नियम?",
+          "choices": [
+            "बायो-सावर्टचा नियम",
+            "सोलेनॉइड",
+            "लॉरेन्ट्झ बल",
+            "अँपिअरचा परिपथीय नियम"
+          ],
+          "solution": "प्रभारावरील लॉरेन्ट्झ बल F = q(v × B) आहे, ज्याचे परिमाण qvB sin θ आणि जे v व B दोन्हींना लंब आहे, म्हणून विश्रांतीत असलेल्या वा क्षेत्राच्या दिशेने जाणाऱ्या प्रभारासाठी ते नाहीसे होते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The Biot–Savart law is correct?",
+      "choices": [
+        "The Biot–Savart law gives the field of a current element as dB = (μ₀/4π)(I dl × r̂)/r², so its magnitude falls as the inverse square and its direction is perpendicular to both the element and the line to the point.",
+        "The Lorentz force on a charge is F = q(v × B), of magnitude qvB sin θ and directed perpendicular to both v and B, so it vanishes for a charge at rest or moving along the field.",
+        "The cyclotron accelerates charged particles by giving them repeated small pushes across a gap while a magnetic field returns them to that gap, so a modest voltage builds up an enormous energy.",
+        "Ampère's circuital law states that the line integral of B round a closed loop equals μ₀ times the net current passing through the loop, whatever the loop's shape."
+      ],
+      "answerIndex": 0,
+      "solution": "The Biot–Savart law gives the field of a current element as dB = (μ₀/4π)(I dl × r̂)/r², so its magnitude falls as the inverse square and its direction is perpendicular to both the element and the line to the point. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बायो-सावर्ट का नियम के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "बायो-सावर्ट का नियम धारा-अंश का क्षेत्र dB = (μ₀/4π)(I dl × r̂)/r² देता है, अतः उसका परिमाण व्युत्क्रम वर्ग से घटता है और दिशा अंश तथा बिंदु तक की रेखा दोनों के लंबवत है।",
+            "आवेश पर लॉरेंज़ बल F = q(v × B) है, जिसका परिमाण qvB sin θ है और जो v तथा B दोनों के लंबवत है, अतः विरामावस्था में या क्षेत्र के अनुदिश चलते आवेश के लिए वह लुप्त हो जाता है।",
+            "साइक्लोट्रॉन आवेशित कणों को दरार के आर-पार बार-बार छोटे धक्के देकर त्वरित करता है जबकि चुंबकीय क्षेत्र उन्हें उसी दरार पर लौटा लाता है, अतः मामूली वोल्टता विशाल ऊर्जा जमा कर देती है।",
+            "ऐम्पियर का परिपथीय नियम कहता है कि किसी बंद लूप पर B का रेखा समाकल लूप से होकर जाती नेट धारा का μ₀ गुना है, लूप का आकार चाहे जो हो।"
+          ],
+          "solution": "बायो-सावर्ट का नियम धारा-अंश का क्षेत्र dB = (μ₀/4π)(I dl × r̂)/r² देता है, अतः उसका परिमाण व्युत्क्रम वर्ग से घटता है और दिशा अंश तथा बिंदु तक की रेखा दोनों के लंबवत है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "बायो-सावर्टचा नियम विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "बायो-सावर्टचा नियम धारा-अंशाचे क्षेत्र dB = (μ₀/4π)(I dl × r̂)/r² देतो, म्हणून त्याचे परिमाण व्यस्त वर्गाने घटते आणि दिशा अंशाला व बिंदूपर्यंतच्या रेषेला दोन्हींना लंब असते.",
+            "प्रभारावरील लॉरेन्ट्झ बल F = q(v × B) आहे, ज्याचे परिमाण qvB sin θ आणि जे v व B दोन्हींना लंब आहे, म्हणून विश्रांतीत असलेल्या वा क्षेत्राच्या दिशेने जाणाऱ्या प्रभारासाठी ते नाहीसे होते.",
+            "सायक्लोट्रॉन प्रभारित कणांना फटीच्या आरपार पुन्हा पुन्हा लहान धक्के देऊन त्वरित करतो तर चुंबकीय क्षेत्र त्यांना त्याच फटीवर परत आणते, म्हणून माफक व्होल्टेज प्रचंड ऊर्जा साठवते.",
+            "अँपिअरचा परिपथीय नियम सांगतो की बंद वळशावरील B चे रेषा समाकलन वळशातून जाणाऱ्या निव्वळ धारेच्या μ₀ पट असते, वळशाचा आकार कोणताही असो."
+          ],
+          "solution": "बायो-सावर्टचा नियम धारा-अंशाचे क्षेत्र dB = (μ₀/4π)(I dl × r̂)/r² देतो, म्हणून त्याचे परिमाण व्यस्त वर्गाने घटते आणि दिशा अंशाला व बिंदूपर्यंतच्या रेषेला दोन्हींना लंब असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It plays exactly the role Gauss's law plays in electrostatics — a hard integral made trivial by symmetry — and like Gauss's law it is always true and only occasionally useful.\" — which of these is this about?",
+      "choices": [
+        "The cyclotron",
+        "The Biot–Savart law",
+        "The Lorentz force",
+        "Ampère's circuital law"
+      ],
+      "answerIndex": 3,
+      "solution": "Ampère's circuital law states that the line integral of B round a closed loop equals μ₀ times the net current passing through the loop, whatever the loop's shape. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"यह ठीक वही भूमिका निभाता है जो स्थिरवैद्युत में गाउस का नियम निभाता है — सममिति से आसान बना दिया गया कठिन समाकल — और गाउस के नियम की तरह यह सदा सच है और कभी-कभार ही काम का।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "साइक्लोट्रॉन",
+            "बायो-सावर्ट का नियम",
+            "लॉरेंज़ बल",
+            "ऐम्पियर का परिपथीय नियम"
+          ],
+          "solution": "ऐम्पियर का परिपथीय नियम कहता है कि किसी बंद लूप पर B का रेखा समाकल लूप से होकर जाती नेट धारा का μ₀ गुना है, लूप का आकार चाहे जो हो। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"हा नेमकी तीच भूमिका बजावतो जी स्थिरविद्युतमध्ये गॉसचा नियम बजावतो — सममितीने सोपे केलेले कठीण समाकलन — आणि गॉसच्या नियमासारखा तो नेहमी खरा असतो आणि क्वचितच उपयोगी.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "सायक्लोट्रॉन",
+            "बायो-सावर्टचा नियम",
+            "लॉरेन्ट्झ बल",
+            "अँपिअरचा परिपथीय नियम"
+          ],
+          "solution": "अँपिअरचा परिपथीय नियम सांगतो की बंद वळशावरील B चे रेषा समाकलन वळशातून जाणाऱ्या निव्वळ धारेच्या μ₀ पट असते, वळशाचा आकार कोणताही असो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Two hollow D-shaped chambers in a magnetic field, with a modest alternating voltage across the gap between them, take a particle round and round and give it a push each time it crosses. Which machine is this?",
+      "choices": [
+        "The moving coil galvanometer",
+        "The solenoid",
+        "The cyclotron",
+        "Ampère's circuital law"
+      ],
+      "answerIndex": 2,
+      "solution": "The cyclotron accelerates charged particles by giving them repeated small pushes across a gap while a magnetic field returns them to that gap, so a modest voltage builds up an enormous energy. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "चुंबकीय क्षेत्र में दो खोखले D-आकार के कक्ष, जिनके बीच की दरार पर मामूली प्रत्यावर्ती वोल्टता लगी है, कण को घुमाते रहते हैं और हर बार पार करने पर उसे एक धक्का देते हैं। यह कौन-सी मशीन है?",
+          "choices": [
+            "धारामापी",
+            "परिनालिका",
+            "साइक्लोट्रॉन",
+            "ऐम्पियर का परिपथीय नियम"
+          ],
+          "solution": "साइक्लोट्रॉन आवेशित कणों को दरार के आर-पार बार-बार छोटे धक्के देकर त्वरित करता है जबकि चुंबकीय क्षेत्र उन्हें उसी दरार पर लौटा लाता है, अतः मामूली वोल्टता विशाल ऊर्जा जमा कर देती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "चुंबकीय क्षेत्रात दोन पोकळ D-आकाराचे कक्ष, ज्यांच्यामधल्या फटीवर माफक प्रत्यावर्ती व्होल्टेज लावलेला आहे, कणाला गोल गोल फिरवतात आणि तो प्रत्येक वेळी ओलांडताना त्याला एक धक्का देतात. हे कोणते यंत्र?",
+          "choices": [
+            "गॅल्व्हॅनोमीटर",
+            "सोलेनॉइड",
+            "सायक्लोट्रॉन",
+            "अँपिअरचा परिपथीय नियम"
+          ],
+          "solution": "सायक्लोट्रॉन प्रभारित कणांना फटीच्या आरपार पुन्हा पुन्हा लहान धक्के देऊन त्वरित करतो तर चुंबकीय क्षेत्र त्यांना त्याच फटीवर परत आणते, म्हणून माफक व्होल्टेज प्रचंड ऊर्जा साठवते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The solenoid is correct?",
+      "choices": [
+        "A solenoid is a long helical coil whose interior field is B = μ₀nI, uniform along and across the axis, and whose exterior field is negligible for a long enough coil.",
+        "The Biot–Savart law gives the field of a current element as dB = (μ₀/4π)(I dl × r̂)/r², so its magnitude falls as the inverse square and its direction is perpendicular to both the element and the line to the point.",
+        "A moving coil galvanometer measures current by the deflection of a coil in a radial magnetic field, where the restoring torque of a spring balances the magnetic torque and the deflection is proportional to the current.",
+        "The cyclotron accelerates charged particles by giving them repeated small pushes across a gap while a magnetic field returns them to that gap, so a modest voltage builds up an enormous energy."
+      ],
+      "answerIndex": 0,
+      "solution": "A solenoid is a long helical coil whose interior field is B = μ₀nI, uniform along and across the axis, and whose exterior field is negligible for a long enough coil. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "परिनालिका के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "परिनालिका लंबी कुंडलाकार कुंडली है जिसके भीतर का क्षेत्र B = μ₀nI है, अक्ष के अनुदिश और आर-पार एकसमान, और पर्याप्त लंबी कुंडली के लिए जिसके बाहर का क्षेत्र नगण्य है।",
+            "बायो-सावर्ट का नियम धारा-अंश का क्षेत्र dB = (μ₀/4π)(I dl × r̂)/r² देता है, अतः उसका परिमाण व्युत्क्रम वर्ग से घटता है और दिशा अंश तथा बिंदु तक की रेखा दोनों के लंबवत है।",
+            "धारामापी त्रिज्य चुंबकीय क्षेत्र में कुंडली के विक्षेप से धारा नापता है, जहाँ स्प्रिंग का प्रत्यानयन बल-आघूर्ण चुंबकीय बल-आघूर्ण को संतुलित करता है और विक्षेप धारा के समानुपाती होता है।",
+            "साइक्लोट्रॉन आवेशित कणों को दरार के आर-पार बार-बार छोटे धक्के देकर त्वरित करता है जबकि चुंबकीय क्षेत्र उन्हें उसी दरार पर लौटा लाता है, अतः मामूली वोल्टता विशाल ऊर्जा जमा कर देती है।"
+          ],
+          "solution": "परिनालिका लंबी कुंडलाकार कुंडली है जिसके भीतर का क्षेत्र B = μ₀nI है, अक्ष के अनुदिश और आर-पार एकसमान, और पर्याप्त लंबी कुंडली के लिए जिसके बाहर का क्षेत्र नगण्य है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "सोलेनॉइड विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "सोलेनॉइड म्हणजे लांब मळसूत्री वेटोळे ज्याच्या आतले क्षेत्र B = μ₀nI आहे, अक्षाच्या दिशेने आणि आरपार एकसमान, आणि पुरेशा लांब वेटोळ्यासाठी ज्याच्या बाहेरचे क्षेत्र नगण्य आहे.",
+            "बायो-सावर्टचा नियम धारा-अंशाचे क्षेत्र dB = (μ₀/4π)(I dl × r̂)/r² देतो, म्हणून त्याचे परिमाण व्यस्त वर्गाने घटते आणि दिशा अंशाला व बिंदूपर्यंतच्या रेषेला दोन्हींना लंब असते.",
+            "गॅल्व्हॅनोमीटर त्रिज्य चुंबकीय क्षेत्रात वेटोळ्याच्या विचलनाने धारा मोजतो, जिथे स्प्रिंगचे प्रत्यानयन बलआघूर्ण चुंबकीय बलआघूर्णाला तोलते आणि विचलन धारेशी समानुपाती असते.",
+            "सायक्लोट्रॉन प्रभारित कणांना फटीच्या आरपार पुन्हा पुन्हा लहान धक्के देऊन त्वरित करतो तर चुंबकीय क्षेत्र त्यांना त्याच फटीवर परत आणते, म्हणून माफक व्होल्टेज प्रचंड ऊर्जा साठवते."
+          ],
+          "solution": "सोलेनॉइड म्हणजे लांब मळसूत्री वेटोळे ज्याच्या आतले क्षेत्र B = μ₀nI आहे, अक्षाच्या दिशेने आणि आरपार एकसमान, आणि पुरेशा लांब वेटोळ्यासाठी ज्याच्या बाहेरचे क्षेत्र नगण्य आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The radial field is what makes the scale linear: with a uniform field the torque would carry a sin θ factor and equal steps of current would give unequal steps of deflection.\" — which of these is this about?",
+      "choices": [
+        "The solenoid",
+        "The moving coil galvanometer",
+        "The cyclotron",
+        "Ampère's circuital law"
+      ],
+      "answerIndex": 1,
+      "solution": "A moving coil galvanometer measures current by the deflection of a coil in a radial magnetic field, where the restoring torque of a spring balances the magnetic torque and the deflection is proportional to the current. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"त्रिज्य क्षेत्र ही पैमाने को रैखिक बनाता है: एकसमान क्षेत्र में बल-आघूर्ण में sin θ गुणक होता और धारा के बराबर क़दम विक्षेप के असमान क़दम देते।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "परिनालिका",
+            "धारामापी",
+            "साइक्लोट्रॉन",
+            "ऐम्पियर का परिपथीय नियम"
+          ],
+          "solution": "धारामापी त्रिज्य चुंबकीय क्षेत्र में कुंडली के विक्षेप से धारा नापता है, जहाँ स्प्रिंग का प्रत्यानयन बल-आघूर्ण चुंबकीय बल-आघूर्ण को संतुलित करता है और विक्षेप धारा के समानुपाती होता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"त्रिज्य क्षेत्रच पट्टीला रेषीय बनवते: एकसमान क्षेत्रात बलआघूर्णात sin θ गुणक आला असता आणि धारेची समान पावले विचलनाची असमान पावले दिली असती.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "सोलेनॉइड",
+            "गॅल्व्हॅनोमीटर",
+            "सायक्लोट्रॉन",
+            "अँपिअरचा परिपथीय नियम"
+          ],
+          "solution": "गॅल्व्हॅनोमीटर त्रिज्य चुंबकीय क्षेत्रात वेटोळ्याच्या विचलनाने धारा मोजतो, जिथे स्प्रिंगचे प्रत्यानयन बलआघूर्ण चुंबकीय बलआघूर्णाला तोलते आणि विचलन धारेशी समानुपाती असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Bends the path, never changes the speed\" goes correctly with which of these?",
+      "choices": [
+        "Ampère's circuital law",
+        "the Lorentz force",
+        "the Biot–Savart law",
+        "the solenoid"
+      ],
+      "answerIndex": 1,
+      "solution": "The Lorentz force on a charge is F = q(v × B), of magnitude qvB sin θ and directed perpendicular to both v and B, so it vanishes for a charge at rest or moving along the field. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"पथ मोड़ता है, चाल कभी नहीं बदलता\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "ऐम्पियर का परिपथीय नियम",
+            "लॉरेंज़ बल",
+            "बायो-सावर्ट का नियम",
+            "परिनालिका"
+          ],
+          "solution": "आवेश पर लॉरेंज़ बल F = q(v × B) है, जिसका परिमाण qvB sin θ है और जो v तथा B दोनों के लंबवत है, अतः विरामावस्था में या क्षेत्र के अनुदिश चलते आवेश के लिए वह लुप्त हो जाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"मार्ग वाकवतो, वेग कधीच बदलत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अँपिअरचा परिपथीय नियम",
+            "लॉरेन्ट्झ बल",
+            "बायो-सावर्टचा नियम",
+            "सोलेनॉइड"
+          ],
+          "solution": "प्रभारावरील लॉरेन्ट्झ बल F = q(v × B) आहे, ज्याचे परिमाण qvB sin θ आणि जे v व B दोन्हींना लंब आहे, म्हणून विश्रांतीत असलेल्या वा क्षेत्राच्या दिशेने जाणाऱ्या प्रभारासाठी ते नाहीसे होते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Curls around the wire instead of pointing away\" goes correctly with which of these?",
+      "choices": [
+        "the Biot–Savart law",
+        "the Lorentz force",
+        "the moving coil galvanometer",
+        "the solenoid"
+      ],
+      "answerIndex": 0,
+      "solution": "The Biot–Savart law gives the field of a current element as dB = (μ₀/4π)(I dl × r̂)/r², so its magnitude falls as the inverse square and its direction is perpendicular to both the element and the line to the point. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"दूर इशारा करने के बजाय तार के चारों ओर लिपटता है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "बायो-सावर्ट का नियम",
+            "लॉरेंज़ बल",
+            "धारामापी",
+            "परिनालिका"
+          ],
+          "solution": "बायो-सावर्ट का नियम धारा-अंश का क्षेत्र dB = (μ₀/4π)(I dl × r̂)/r² देता है, अतः उसका परिमाण व्युत्क्रम वर्ग से घटता है और दिशा अंश तथा बिंदु तक की रेखा दोनों के लंबवत है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"दूर न दाखवता तारेभोवती गुंडाळतो\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "बायो-सावर्टचा नियम",
+            "लॉरेन्ट्झ बल",
+            "गॅल्व्हॅनोमीटर",
+            "सोलेनॉइड"
+          ],
+          "solution": "बायो-सावर्टचा नियम धारा-अंशाचे क्षेत्र dB = (μ₀/4π)(I dl × r̂)/r² देतो, म्हणून त्याचे परिमाण व्यस्त वर्गाने घटते आणि दिशा अंशाला व बिंदूपर्यंतच्या रेषेला दोन्हींना लंब असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Only what threads the loop counts\" goes correctly with which of these?",
+      "choices": [
+        "the moving coil galvanometer",
+        "the cyclotron",
+        "Ampère's circuital law",
+        "the Lorentz force"
+      ],
+      "answerIndex": 2,
+      "solution": "Ampère's circuital law states that the line integral of B round a closed loop equals μ₀ times the net current passing through the loop, whatever the loop's shape. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"केवल वही गिना जाता है जो लूप में से गुज़रे\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "धारामापी",
+            "साइक्लोट्रॉन",
+            "ऐम्पियर का परिपथीय नियम",
+            "लॉरेंज़ बल"
+          ],
+          "solution": "ऐम्पियर का परिपथीय नियम कहता है कि किसी बंद लूप पर B का रेखा समाकल लूप से होकर जाती नेट धारा का μ₀ गुना है, लूप का आकार चाहे जो हो। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"केवळ जे वळशातून जाते तेच मोजले जाते\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "गॅल्व्हॅनोमीटर",
+            "सायक्लोट्रॉन",
+            "अँपिअरचा परिपथीय नियम",
+            "लॉरेन्ट्झ बल"
+          ],
+          "solution": "अँपिअरचा परिपथीय नियम सांगतो की बंद वळशावरील B चे रेषा समाकलन वळशातून जाणाऱ्या निव्वळ धारेच्या μ₀ पट असते, वळशाचा आकार कोणताही असो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"One frequency that never has to be retuned\" goes correctly with which of these?",
+      "choices": [
+        "the cyclotron",
+        "the Lorentz force",
+        "the solenoid",
+        "the Biot–Savart law"
+      ],
+      "answerIndex": 0,
+      "solution": "The cyclotron accelerates charged particles by giving them repeated small pushes across a gap while a magnetic field returns them to that gap, so a modest voltage builds up an enormous energy. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"एक आवृत्ति जिसे कभी फिर से मिलाना नहीं पड़ता\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "साइक्लोट्रॉन",
+            "लॉरेंज़ बल",
+            "परिनालिका",
+            "बायो-सावर्ट का नियम"
+          ],
+          "solution": "साइक्लोट्रॉन आवेशित कणों को दरार के आर-पार बार-बार छोटे धक्के देकर त्वरित करता है जबकि चुंबकीय क्षेत्र उन्हें उसी दरार पर लौटा लाता है, अतः मामूली वोल्टता विशाल ऊर्जा जमा कर देती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"एक वारंवारता जी कधीच पुन्हा जुळवावी लागत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "सायक्लोट्रॉन",
+            "लॉरेन्ट्झ बल",
+            "सोलेनॉइड",
+            "बायो-सावर्टचा नियम"
+          ],
+          "solution": "सायक्लोट्रॉन प्रभारित कणांना फटीच्या आरपार पुन्हा पुन्हा लहान धक्के देऊन त्वरित करतो तर चुंबकीय क्षेत्र त्यांना त्याच फटीवर परत आणते, म्हणून माफक व्होल्टेज प्रचंड ऊर्जा साठवते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A magnet with a switch\" goes correctly with which of these?",
+      "choices": [
+        "the moving coil galvanometer",
+        "the cyclotron",
+        "the Biot–Savart law",
+        "the solenoid"
+      ],
+      "answerIndex": 3,
+      "solution": "A solenoid is a long helical coil whose interior field is B = μ₀nI, uniform along and across the axis, and whose exterior field is negligible for a long enough coil. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"स्विच वाला चुंबक\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "धारामापी",
+            "साइक्लोट्रॉन",
+            "बायो-सावर्ट का नियम",
+            "परिनालिका"
+          ],
+          "solution": "परिनालिका लंबी कुंडलाकार कुंडली है जिसके भीतर का क्षेत्र B = μ₀nI है, अक्ष के अनुदिश और आर-पार एकसमान, और पर्याप्त लंबी कुंडली के लिए जिसके बाहर का क्षेत्र नगण्य है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"स्विच असलेला चुंबक\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "गॅल्व्हॅनोमीटर",
+            "सायक्लोट्रॉन",
+            "बायो-सावर्टचा नियम",
+            "सोलेनॉइड"
+          ],
+          "solution": "सोलेनॉइड म्हणजे लांब मळसूत्री वेटोळे ज्याच्या आतले क्षेत्र B = μ₀nI आहे, अक्षाच्या दिशेने आणि आरपार एकसमान, आणि पुरेशा लांब वेटोळ्यासाठी ज्याच्या बाहेरचे क्षेत्र नगण्य आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A curved pole piece bought in exchange for a linear scale\" goes correctly with which of these?",
+      "choices": [
+        "the solenoid",
+        "the cyclotron",
+        "the Lorentz force",
+        "the moving coil galvanometer"
+      ],
+      "answerIndex": 3,
+      "solution": "A moving coil galvanometer measures current by the deflection of a coil in a radial magnetic field, where the restoring torque of a spring balances the magnetic torque and the deflection is proportional to the current. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"रैखिक पैमाने के बदले ख़रीदा गया घुमावदार ध्रुव-खंड\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "परिनालिका",
+            "साइक्लोट्रॉन",
+            "लॉरेंज़ बल",
+            "धारामापी"
+          ],
+          "solution": "धारामापी त्रिज्य चुंबकीय क्षेत्र में कुंडली के विक्षेप से धारा नापता है, जहाँ स्प्रिंग का प्रत्यानयन बल-आघूर्ण चुंबकीय बल-आघूर्ण को संतुलित करता है और विक्षेप धारा के समानुपाती होता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"रेषीय पट्टीच्या बदल्यात घेतलेला वक्र ध्रुव-तुकडा\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "सोलेनॉइड",
+            "सायक्लोट्रॉन",
+            "लॉरेन्ट्झ बल",
+            "गॅल्व्हॅनोमीटर"
+          ],
+          "solution": "गॅल्व्हॅनोमीटर त्रिज्य चुंबकीय क्षेत्रात वेटोळ्याच्या विचलनाने धारा मोजतो, जिथे स्प्रिंगचे प्रत्यानयन बलआघूर्ण चुंबकीय बलआघूर्णाला तोलते आणि विचलन धारेशी समानुपाती असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The Lorentz force EXCEPT —",
+      "choices": [
+        "Because it is always perpendicular to the velocity, it does no work at all: a magnetic field can bend a particle's path as sharply as you like without changing its speed or its kinetic energy by a joule.",
+        "The consequence is circular motion of radius r = mv/qB with a period 2πm/qB that does not contain the speed — a faster particle simply travels a bigger circle in the same time.",
+        "The Lorentz force on a charge is F = q(v × B), of magnitude qvB sin θ and directed perpendicular to both v and B, so it vanishes for a charge at rest or moving along the field.",
+        "The Biot–Savart law gives the field of a current element as dB = (μ₀/4π)(I dl × r̂)/r², so its magnitude falls as the inverse square and its direction is perpendicular to both the element and the line to the point."
+      ],
+      "answerIndex": 3,
+      "solution": "The Biot–Savart law gives the field of a current element as dB = (μ₀/4π)(I dl × r̂)/r², so its magnitude falls as the inverse square and its direction is perpendicular to both the element and the line to the point. That belongs to The Biot–Savart law, not The Lorentz force — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "लॉरेंज़ बल के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "चूँकि वह सदा वेग के लंबवत है, वह कोई कार्य करता ही नहीं: चुंबकीय क्षेत्र कण के पथ को जितना चाहो मोड़ सकता है बिना उसकी चाल या गतिज ऊर्जा एक जूल भी बदले।",
+            "परिणाम है r = mv/qB त्रिज्या की वृत्तीय गति जिसका आवर्तकाल 2πm/qB है और जिसमें चाल है ही नहीं — तेज़ कण बस उतने ही समय में बड़ा वृत्त तय करता है।",
+            "आवेश पर लॉरेंज़ बल F = q(v × B) है, जिसका परिमाण qvB sin θ है और जो v तथा B दोनों के लंबवत है, अतः विरामावस्था में या क्षेत्र के अनुदिश चलते आवेश के लिए वह लुप्त हो जाता है।",
+            "बायो-सावर्ट का नियम धारा-अंश का क्षेत्र dB = (μ₀/4π)(I dl × r̂)/r² देता है, अतः उसका परिमाण व्युत्क्रम वर्ग से घटता है और दिशा अंश तथा बिंदु तक की रेखा दोनों के लंबवत है।"
+          ],
+          "solution": "बायो-सावर्ट का नियम धारा-अंश का क्षेत्र dB = (μ₀/4π)(I dl × r̂)/r² देता है, अतः उसका परिमाण व्युत्क्रम वर्ग से घटता है और दिशा अंश तथा बिंदु तक की रेखा दोनों के लंबवत है। यह बायो-सावर्ट का नियम की बात है, लॉरेंज़ बल की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "लॉरेन्ट्झ बल विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "तो नेहमी वेगाला लंब असल्याने, तो कोणतेही कार्य करतच नाही: चुंबकीय क्षेत्र कणाचा मार्ग हवा तितका वाकवू शकते त्याचा वेग वा गतिज ऊर्जा एक ज्यूलही न बदलता.",
+            "परिणाम म्हणजे r = mv/qB त्रिज्येची वर्तुळाकार गती जिचा आवर्तकाल 2πm/qB आहे आणि ज्यात वेग आहेच नाही — वेगवान कण फक्त तितक्याच वेळात मोठे वर्तुळ कापतो.",
+            "प्रभारावरील लॉरेन्ट्झ बल F = q(v × B) आहे, ज्याचे परिमाण qvB sin θ आणि जे v व B दोन्हींना लंब आहे, म्हणून विश्रांतीत असलेल्या वा क्षेत्राच्या दिशेने जाणाऱ्या प्रभारासाठी ते नाहीसे होते.",
+            "बायो-सावर्टचा नियम धारा-अंशाचे क्षेत्र dB = (μ₀/4π)(I dl × r̂)/r² देतो, म्हणून त्याचे परिमाण व्यस्त वर्गाने घटते आणि दिशा अंशाला व बिंदूपर्यंतच्या रेषेला दोन्हींना लंब असते."
+          ],
+          "solution": "बायो-सावर्टचा नियम धारा-अंशाचे क्षेत्र dB = (μ₀/4π)(I dl × r̂)/r² देतो, म्हणून त्याचे परिमाण व्यस्त वर्गाने घटते आणि दिशा अंशाला व बिंदूपर्यंतच्या रेषेला दोन्हींना लंब असते. हे बायो-सावर्टचा नियम चे आहे, लॉरेन्ट्झ बल चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The Biot–Savart law EXCEPT —",
+      "choices": [
+        "The Biot–Savart law gives the field of a current element as dB = (μ₀/4π)(I dl × r̂)/r², so its magnitude falls as the inverse square and its direction is perpendicular to both the element and the line to the point.",
+        "Ampère's circuital law states that the line integral of B round a closed loop equals μ₀ times the net current passing through the loop, whatever the loop's shape.",
+        "It is the magnetic counterpart of Coulomb's law, and the crucial difference is the cross product: an electric field points along the line to the charge, a magnetic field points across it.",
+        "The sin θ factor means the point directly along the wire's own direction receives nothing from that element, which is why the field on the axis of a straight wire is zero and the field beside it is not."
+      ],
+      "answerIndex": 1,
+      "solution": "Ampère's circuital law states that the line integral of B round a closed loop equals μ₀ times the net current passing through the loop, whatever the loop's shape. That belongs to Ampère's circuital law, not The Biot–Savart law — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बायो-सावर्ट का नियम के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "बायो-सावर्ट का नियम धारा-अंश का क्षेत्र dB = (μ₀/4π)(I dl × r̂)/r² देता है, अतः उसका परिमाण व्युत्क्रम वर्ग से घटता है और दिशा अंश तथा बिंदु तक की रेखा दोनों के लंबवत है।",
+            "ऐम्पियर का परिपथीय नियम कहता है कि किसी बंद लूप पर B का रेखा समाकल लूप से होकर जाती नेट धारा का μ₀ गुना है, लूप का आकार चाहे जो हो।",
+            "यह कूलॉम के नियम का चुंबकीय समकक्ष है, और निर्णायक अंतर सदिश गुणनफल है: विद्युत क्षेत्र आवेश तक की रेखा के अनुदिश है, चुंबकीय क्षेत्र उसके आर-पार।",
+            "sin θ गुणक का अर्थ है कि तार की अपनी दिशा में ठीक आगे पड़ा बिंदु उस अंश से कुछ नहीं पाता, इसीलिए सीधे तार की अक्ष पर क्षेत्र शून्य है और उसके बग़ल में नहीं।"
+          ],
+          "solution": "ऐम्पियर का परिपथीय नियम कहता है कि किसी बंद लूप पर B का रेखा समाकल लूप से होकर जाती नेट धारा का μ₀ गुना है, लूप का आकार चाहे जो हो। यह ऐम्पियर का परिपथीय नियम की बात है, बायो-सावर्ट का नियम की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "बायो-सावर्टचा नियम विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "बायो-सावर्टचा नियम धारा-अंशाचे क्षेत्र dB = (μ₀/4π)(I dl × r̂)/r² देतो, म्हणून त्याचे परिमाण व्यस्त वर्गाने घटते आणि दिशा अंशाला व बिंदूपर्यंतच्या रेषेला दोन्हींना लंब असते.",
+            "अँपिअरचा परिपथीय नियम सांगतो की बंद वळशावरील B चे रेषा समाकलन वळशातून जाणाऱ्या निव्वळ धारेच्या μ₀ पट असते, वळशाचा आकार कोणताही असो.",
+            "हा कुलोमच्या नियमाचा चुंबकीय समकक्ष आहे, आणि निर्णायक फरक सदिश गुणाकार आहे: विद्युत क्षेत्र प्रभारापर्यंतच्या रेषेच्या दिशेने असते, चुंबकीय क्षेत्र तिच्या आरपार.",
+            "sin θ गुणकाचा अर्थ असा की तारेच्या स्वतःच्या दिशेत नेमका पुढे असलेला बिंदू त्या अंशाकडून काहीच मिळवत नाही, म्हणूनच सरळ तारेच्या अक्षावर क्षेत्र शून्य आहे आणि तिच्या बाजूला नाही."
+          ],
+          "solution": "अँपिअरचा परिपथीय नियम सांगतो की बंद वळशावरील B चे रेषा समाकलन वळशातून जाणाऱ्या निव्वळ धारेच्या μ₀ पट असते, वळशाचा आकार कोणताही असो. हे अँपिअरचा परिपथीय नियम चे आहे, बायो-सावर्टचा नियम चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Ampère's circuital law EXCEPT —",
+      "choices": [
+        "Applied to a long solenoid it gives B = μ₀nI, a result containing no reference to the radius at all — which is why a long coil's interior field is uniform right across it.",
+        "The Lorentz force on a charge is F = q(v × B), of magnitude qvB sin θ and directed perpendicular to both v and B, so it vanishes for a charge at rest or moving along the field.",
+        "Ampère's circuital law states that the line integral of B round a closed loop equals μ₀ times the net current passing through the loop, whatever the loop's shape.",
+        "It plays exactly the role Gauss's law plays in electrostatics — a hard integral made trivial by symmetry — and like Gauss's law it is always true and only occasionally useful."
+      ],
+      "answerIndex": 1,
+      "solution": "The Lorentz force on a charge is F = q(v × B), of magnitude qvB sin θ and directed perpendicular to both v and B, so it vanishes for a charge at rest or moving along the field. That belongs to The Lorentz force, not Ampère's circuital law — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ऐम्पियर का परिपथीय नियम के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "लंबी परिनालिका पर लगाने पर यह B = μ₀nI देता है, ऐसा परिणाम जिसमें त्रिज्या का कोई ज़िक्र ही नहीं — इसीलिए लंबी कुंडली के भीतर का क्षेत्र आर-पार एकसमान है।",
+            "आवेश पर लॉरेंज़ बल F = q(v × B) है, जिसका परिमाण qvB sin θ है और जो v तथा B दोनों के लंबवत है, अतः विरामावस्था में या क्षेत्र के अनुदिश चलते आवेश के लिए वह लुप्त हो जाता है।",
+            "ऐम्पियर का परिपथीय नियम कहता है कि किसी बंद लूप पर B का रेखा समाकल लूप से होकर जाती नेट धारा का μ₀ गुना है, लूप का आकार चाहे जो हो।",
+            "यह ठीक वही भूमिका निभाता है जो स्थिरवैद्युत में गाउस का नियम निभाता है — सममिति से आसान बना दिया गया कठिन समाकल — और गाउस के नियम की तरह यह सदा सच है और कभी-कभार ही काम का।"
+          ],
+          "solution": "आवेश पर लॉरेंज़ बल F = q(v × B) है, जिसका परिमाण qvB sin θ है और जो v तथा B दोनों के लंबवत है, अतः विरामावस्था में या क्षेत्र के अनुदिश चलते आवेश के लिए वह लुप्त हो जाता है। यह लॉरेंज़ बल की बात है, ऐम्पियर का परिपथीय नियम की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "अँपिअरचा परिपथीय नियम विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "लांब सोलेनॉइडवर लावल्यास तो B = μ₀nI देतो, असा निकाल ज्यात त्रिज्येचा उल्लेखच नाही — म्हणूनच लांब वेटोळ्याच्या आतले क्षेत्र आरपार एकसमान असते.",
+            "प्रभारावरील लॉरेन्ट्झ बल F = q(v × B) आहे, ज्याचे परिमाण qvB sin θ आणि जे v व B दोन्हींना लंब आहे, म्हणून विश्रांतीत असलेल्या वा क्षेत्राच्या दिशेने जाणाऱ्या प्रभारासाठी ते नाहीसे होते.",
+            "अँपिअरचा परिपथीय नियम सांगतो की बंद वळशावरील B चे रेषा समाकलन वळशातून जाणाऱ्या निव्वळ धारेच्या μ₀ पट असते, वळशाचा आकार कोणताही असो.",
+            "हा नेमकी तीच भूमिका बजावतो जी स्थिरविद्युतमध्ये गॉसचा नियम बजावतो — सममितीने सोपे केलेले कठीण समाकलन — आणि गॉसच्या नियमासारखा तो नेहमी खरा असतो आणि क्वचितच उपयोगी."
+          ],
+          "solution": "प्रभारावरील लॉरेन्ट्झ बल F = q(v × B) आहे, ज्याचे परिमाण qvB sin θ आणि जे v व B दोन्हींना लंब आहे, म्हणून विश्रांतीत असलेल्या वा क्षेत्राच्या दिशेने जाणाऱ्या प्रभारासाठी ते नाहीसे होते. हे लॉरेन्ट्झ बल चे आहे, अँपिअरचा परिपथीय नियम चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The cyclotron EXCEPT —",
+      "choices": [
+        "A moving coil galvanometer measures current by the deflection of a coil in a radial magnetic field, where the restoring torque of a spring balances the magnetic torque and the deflection is proportional to the current.",
+        "It works only because the time for one revolution does not depend on the particle's speed or the radius of its orbit, so a single fixed frequency stays in step from the first turn to the last.",
+        "The cyclotron accelerates charged particles by giving them repeated small pushes across a gap while a magnetic field returns them to that gap, so a modest voltage builds up an enormous energy.",
+        "That constancy fails at high energies, where relativistic mass increase lengthens the period and the particle falls out of step — which is why the design cannot be scaled up indefinitely and cannot accelerate electrons usefully at all."
+      ],
+      "answerIndex": 0,
+      "solution": "A moving coil galvanometer measures current by the deflection of a coil in a radial magnetic field, where the restoring torque of a spring balances the magnetic torque and the deflection is proportional to the current. That belongs to The moving coil galvanometer, not The cyclotron — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "साइक्लोट्रॉन के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "धारामापी त्रिज्य चुंबकीय क्षेत्र में कुंडली के विक्षेप से धारा नापता है, जहाँ स्प्रिंग का प्रत्यानयन बल-आघूर्ण चुंबकीय बल-आघूर्ण को संतुलित करता है और विक्षेप धारा के समानुपाती होता है।",
+            "यह केवल इसलिए चलता है कि एक चक्कर का समय कण की चाल या उसकी कक्षा की त्रिज्या पर निर्भर नहीं करता, अतः एक ही नियत आवृत्ति पहले चक्कर से आख़िरी तक ताल में बनी रहती है।",
+            "साइक्लोट्रॉन आवेशित कणों को दरार के आर-पार बार-बार छोटे धक्के देकर त्वरित करता है जबकि चुंबकीय क्षेत्र उन्हें उसी दरार पर लौटा लाता है, अतः मामूली वोल्टता विशाल ऊर्जा जमा कर देती है।",
+            "वह अचरता उच्च ऊर्जाओं पर टूट जाती है, जहाँ आपेक्षिकीय द्रव्यमान वृद्धि आवर्तकाल बढ़ा देती है और कण ताल से बाहर हो जाता है — इसीलिए यह रचना अनंत तक बड़ी नहीं की जा सकती और इलेक्ट्रॉनों को उपयोगी ढंग से त्वरित कर ही नहीं सकती।"
+          ],
+          "solution": "धारामापी त्रिज्य चुंबकीय क्षेत्र में कुंडली के विक्षेप से धारा नापता है, जहाँ स्प्रिंग का प्रत्यानयन बल-आघूर्ण चुंबकीय बल-आघूर्ण को संतुलित करता है और विक्षेप धारा के समानुपाती होता है। यह धारामापी की बात है, साइक्लोट्रॉन की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "सायक्लोट्रॉन विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "गॅल्व्हॅनोमीटर त्रिज्य चुंबकीय क्षेत्रात वेटोळ्याच्या विचलनाने धारा मोजतो, जिथे स्प्रिंगचे प्रत्यानयन बलआघूर्ण चुंबकीय बलआघूर्णाला तोलते आणि विचलन धारेशी समानुपाती असते.",
+            "हा केवळ यामुळेच चालतो की एका फेऱ्याचा काळ कणाच्या वेगावर वा त्याच्या कक्षेच्या त्रिज्येवर अवलंबून नाही, म्हणून एकच ठराविक वारंवारता पहिल्या फेऱ्यापासून शेवटच्यापर्यंत तालात राहते.",
+            "सायक्लोट्रॉन प्रभारित कणांना फटीच्या आरपार पुन्हा पुन्हा लहान धक्के देऊन त्वरित करतो तर चुंबकीय क्षेत्र त्यांना त्याच फटीवर परत आणते, म्हणून माफक व्होल्टेज प्रचंड ऊर्जा साठवते.",
+            "ती अचलता उच्च ऊर्जांवर मोडते, जिथे सापेक्षतावादी वस्तुमानवाढ आवर्तकाल लांबवते आणि कण तालाबाहेर पडतो — म्हणूनच ही रचना अमर्याद मोठी करता येत नाही आणि इलेक्ट्रॉनांना उपयुक्तपणे त्वरित करूच शकत नाही."
+          ],
+          "solution": "गॅल्व्हॅनोमीटर त्रिज्य चुंबकीय क्षेत्रात वेटोळ्याच्या विचलनाने धारा मोजतो, जिथे स्प्रिंगचे प्रत्यानयन बलआघूर्ण चुंबकीय बलआघूर्णाला तोलते आणि विचलन धारेशी समानुपाती असते. हे गॅल्व्हॅनोमीटर चे आहे, सायक्लोट्रॉन चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A proton enters a uniform magnetic field at right angles to it and travels in a circle. A student says the field must be doing work on the proton, since it is clearly making it change direction continuously, and asks where that energy comes from. Answer the question.",
+      "choices": [
+        "No work is done and no energy is needed. Work is F·d, which contains the cosine of the angle between force and displacement, and the magnetic force is always perpendicular to the velocity — so that cosine is zero at every instant. Changing direction does not require energy; changing SPEED does. The proton's kinetic energy, and hence its speed, is exactly the same after a million revolutions as when it entered. This is why a magnetic field can steer a beam but can never accelerate one, and why every accelerator uses electric fields to add energy and magnetic fields only to bend",
+        "The field does work, and the energy comes from the source maintaining the magnetic field, which is why an electromagnet's power supply draws extra current when a beam passes through it",
+        "The field does work on the proton going round one half of the circle and an equal negative amount on the other half, so the total over a full revolution is zero",
+        "No work is done because the proton returns to its starting point, and work over any closed path is always zero"
+      ],
+      "answerIndex": 0,
+      "solution": "The question contains a hidden assumption worth naming: that making something change direction must cost energy. It does not. Work is defined as W = F·d = Fd cos θ, and the cosine is there for a reason — only the component of the force ALONG the displacement transfers energy. A force perpendicular to the motion changes where the object is going without changing how fast it is going, and transfers nothing. The classic parallel is a stone whirled on a string in a horizontal circle at constant speed. The string's tension points to the centre, the velocity is tangential, the angle between them is 90°, and the tension does no work — yet the stone's direction is changing every instant. Nobody finds that mysterious, and the magnetic case is identical. For the magnetic force this perpendicularity is not an accident of the geometry but built into the law. F = q(v × B), and a cross product is by definition perpendicular to both its factors, so F ⊥ v ALWAYS — not on average, not over a cycle, but at every instant of every path in every field. Therefore the instantaneous power delivered, P = F·v, is identically zero. The kinetic energy never changes at all, so the speed never changes at all, and the proton that has been circling for a microsecond is moving exactly as fast as the one that just arrived. What the field does supply is centripetal force. Setting qvB = mv²/r gives r = mv/qB, so a faster proton simply travels a larger circle. Divide the circumference by the speed for the period: T = 2πr/v = 2πm/qB, and the v has cancelled. The time for one revolution does not depend on the speed. That single cancellation is the whole reason the cyclotron can work with one fixed radio frequency: the particle spirals outward as it gains energy, but it arrives at the gap on the beat every time. The practical statement to carry away is the division of labour inside every particle accelerator. Electric fields do work — they are the only thing in the chapter that can raise a particle's energy. Magnetic fields steer — they hold beams on curved paths in a synchrotron ring, focus them, and separate particles of different momenta in a mass spectrometer. A machine that tried to accelerate protons with magnets alone would produce a beautifully curved beam of exactly the energy it started with. (The second option invents an energy transfer that measurement rules out; the third describes a force with a component along the motion, which the cross product forbids; the fourth quotes a rule true of conservative forces, which would wrongly imply that friction round a closed loop does no work either.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक प्रोटॉन एकसमान चुंबकीय क्षेत्र में उसके समकोण पर प्रवेश करता है और वृत्त में चलता है। विद्यार्थी कहता है कि क्षेत्र प्रोटॉन पर कार्य कर ही रहा होगा, क्योंकि वह उसे स्पष्टतः लगातार दिशा बदलवा रहा है, और पूछता है कि वह ऊर्जा कहाँ से आती है। प्रश्न का उत्तर दो।",
+          "choices": [
+            "कोई कार्य नहीं होता और किसी ऊर्जा की ज़रूरत नहीं। कार्य F·d है, जिसमें बल और विस्थापन के बीच के कोण की कोज्या है, और चुंबकीय बल सदा वेग के लंबवत है — अतः वह कोज्या हर क्षण शून्य है। दिशा बदलने में ऊर्जा नहीं लगती; चाल बदलने में लगती है। प्रोटॉन की गतिज ऊर्जा, और इसलिए उसकी चाल, दस लाख चक्करों के बाद ठीक वही है जो प्रवेश करते समय थी। इसीलिए चुंबकीय क्षेत्र किरणपुंज को मोड़ सकता है पर उसे त्वरित कभी नहीं कर सकता, और इसीलिए हर त्वरक ऊर्जा जोड़ने को विद्युत क्षेत्र और केवल मोड़ने को चुंबकीय क्षेत्र काम में लेता है",
+            "क्षेत्र कार्य करता है, और ऊर्जा उस स्रोत से आती है जो चुंबकीय क्षेत्र बनाए रखता है, इसीलिए किरणपुंज गुज़रते समय विद्युत चुंबक की बिजली आपूर्ति अतिरिक्त धारा खींचती है",
+            "क्षेत्र वृत्त के आधे भाग में प्रोटॉन पर कार्य करता है और दूसरे आधे में उतना ही ऋणात्मक, अतः पूरे चक्कर पर कुल शून्य है",
+            "कोई कार्य नहीं होता क्योंकि प्रोटॉन अपने आरंभिक बिंदु पर लौट आता है, और किसी भी बंद पथ पर कार्य सदा शून्य होता है"
+          ],
+          "solution": "प्रश्न में एक छिपी मान्यता है जिसे नाम देना चाहिए: कि किसी को दिशा बदलवाने में ऊर्जा लगती ही होगी। नहीं लगती। कार्य की परिभाषा W = F·d = Fd cos θ है, और कोज्या वहाँ कारण से है — केवल बल का वह घटक जो विस्थापन के अनुदिश है, ऊर्जा हस्तांतरित करता है। गति के लंबवत बल यह बदलता है कि वस्तु कहाँ जा रही है, यह नहीं कि वह कितनी तेज़ जा रही है, और कुछ भी हस्तांतरित नहीं करता। शास्त्रीय समानांतर उदाहरण है डोरी से क्षैतिज वृत्त में अचर चाल से घुमाया गया पत्थर। डोरी का तनाव केंद्र की ओर है, वेग स्पर्शरेखीय है, उनके बीच का कोण 90° है, और तनाव कोई कार्य नहीं करता — फिर भी पत्थर की दिशा हर क्षण बदल रही है। इसे कोई रहस्यमय नहीं मानता, और चुंबकीय स्थिति ठीक वही है। चुंबकीय बल के लिए यह लंबवतता ज्यामिति का संयोग नहीं बल्कि नियम में गढ़ी हुई है। F = q(v × B), और सदिश गुणनफल परिभाषा से अपने दोनों गुणकों के लंबवत है, अतः F ⊥ v सदा — औसतन नहीं, एक चक्र पर नहीं, बल्कि हर क्षेत्र में हर पथ के हर क्षण पर। इसलिए दी गई तात्क्षणिक शक्ति P = F·v सर्वसमतः शून्य है। गतिज ऊर्जा बदलती ही नहीं, अतः चाल बदलती ही नहीं, और जो प्रोटॉन एक माइक्रोसेकंड से घूम रहा है वह ठीक उतना ही तेज़ चल रहा है जितना अभी-अभी आया हुआ। क्षेत्र जो देता है वह अभिकेंद्र बल है। qvB = mv²/r रखने पर r = mv/qB, अतः तेज़ प्रोटॉन बस बड़ा वृत्त तय करता है। परिधि को चाल से भाग दो और आवर्तकाल मिलता है: T = 2πr/v = 2πm/qB, और v कट गया। एक चक्कर का समय चाल पर निर्भर नहीं करता। वही एक कटाव पूरा कारण है कि साइक्लोट्रॉन एक नियत रेडियो आवृत्ति से चल सकता है: कण ऊर्जा पाते-पाते बाहर की ओर सर्पिल में जाता है, पर हर बार ताल पर दरार पर पहुँचता है। साथ ले जाने योग्य व्यावहारिक कथन हर कण-त्वरक के भीतर का श्रम-विभाजन है। विद्युत क्षेत्र कार्य करते हैं — अध्याय में वही एकमात्र चीज़ हैं जो कण की ऊर्जा बढ़ा सकती है। चुंबकीय क्षेत्र दिशा देते हैं — वे सिंक्रोट्रॉन वलय में किरणपुंज को वक्र पथों पर रोके रखते हैं, उन्हें केंद्रित करते हैं, और द्रव्यमान स्पेक्ट्रोमापी में भिन्न संवेगों के कणों को अलग करते हैं। जो मशीन केवल चुंबकों से प्रोटॉन त्वरित करने की कोशिश करती, वह सुंदर वक्र किरणपुंज देती जिसकी ऊर्जा ठीक वही होती जिससे उसने शुरू किया था। (दूसरा विकल्प ऐसा ऊर्जा हस्तांतरण गढ़ता है जिसे माप ख़ारिज करता है; तीसरा ऐसे बल का वर्णन करता है जिसका गति के अनुदिश घटक हो, जिसे सदिश गुणनफल मना करता है; चौथा संरक्षी बलों का सच्चा नियम उद्धृत करता है, जो ग़लत ढंग से यह भी सुझाता कि बंद लूप पर घर्षण भी कोई कार्य नहीं करता।)"
+        },
+        "mr": {
+          "stem": "एक प्रोटॉन एकसमान चुंबकीय क्षेत्रात त्याला काटकोनात प्रवेश करतो आणि वर्तुळात फिरतो. विद्यार्थी म्हणतो की क्षेत्र प्रोटॉनवर कार्य करतच असले पाहिजे, कारण ते त्याला स्पष्टपणे सतत दिशा बदलायला लावत आहे, आणि विचारतो की ती ऊर्जा कुठून येते. प्रश्नाचे उत्तर द्या.",
+          "choices": [
+            "कोणतेही कार्य होत नाही आणि कोणत्याही ऊर्जेची गरज नाही. कार्य म्हणजे F·d, ज्यात बल आणि विस्थापन यांतील कोनाचा कोसाइन आहे, आणि चुंबकीय बल नेहमी वेगाला लंब असते — म्हणून तो कोसाइन प्रत्येक क्षणी शून्य आहे. दिशा बदलायला ऊर्जा लागत नाही; वेग बदलायला लागते. प्रोटॉनची गतिज ऊर्जा, आणि म्हणून त्याचा वेग, दहा लाख फेऱ्यांनंतर नेमका तोच आहे जो प्रवेश करताना होता. म्हणूनच चुंबकीय क्षेत्र किरणशलाका वळवू शकते पण तिला त्वरित कधीच करू शकत नाही, आणि म्हणूनच प्रत्येक त्वरक ऊर्जा जोडायला विद्युत क्षेत्र आणि केवळ वाकवायला चुंबकीय क्षेत्र वापरतो",
+            "क्षेत्र कार्य करते, आणि ऊर्जा ते चुंबकीय क्षेत्र टिकवणाऱ्या स्रोताकडून येते, म्हणूनच किरणशलाका जाताना विद्युत चुंबकाचा वीजपुरवठा जादा धारा ओढतो",
+            "क्षेत्र वर्तुळाच्या अर्ध्या भागात प्रोटॉनवर कार्य करते आणि दुसऱ्या अर्ध्यात तितकेच ऋण, म्हणून पूर्ण फेऱ्यावर एकूण शून्य आहे",
+            "कोणतेही कार्य होत नाही कारण प्रोटॉन आपल्या सुरुवातीच्या बिंदूवर परत येतो, आणि कोणत्याही बंद मार्गावर कार्य नेहमी शून्य असते"
+          ],
+          "solution": "प्रश्नात एक लपलेली गृहीतकल्पना आहे जिला नाव द्यायला हवे: की कशाला दिशा बदलायला लावण्यास ऊर्जा लागतच असली पाहिजे. लागत नाही. कार्याची व्याख्या W = F·d = Fd cos θ आहे, आणि कोसाइन तिथे कारणासाठी आहे — केवळ बलाचा तो घटक जो विस्थापनाच्या दिशेने आहे, ऊर्जा हस्तांतरित करतो. गतीला लंब असलेले बल वस्तू कुठे जात आहे हे बदलते, ती किती वेगाने जात आहे हे नाही, आणि काहीही हस्तांतरित करत नाही. शास्त्रीय समांतर उदाहरण म्हणजे दोरीने आडव्या वर्तुळात अचल वेगाने फिरवलेला दगड. दोरीचा ताण केंद्राकडे, वेग स्पर्शरेषीय, त्यांतील कोन 90°, आणि ताण कोणतेही कार्य करत नाही — तरीही दगडाची दिशा प्रत्येक क्षणी बदलत आहे. हे कोणालाही गूढ वाटत नाही, आणि चुंबकीय स्थिती नेमकी तीच आहे. चुंबकीय बलासाठी हे लंबत्व भूमितीचा योगायोग नसून नियमातच घडवलेले आहे. F = q(v × B), आणि सदिश गुणाकार व्याख्येनेच आपल्या दोन्ही गुणकांना लंब असतो, म्हणून F ⊥ v नेहमी — सरासरीने नाही, एका चक्रावर नाही, तर प्रत्येक क्षेत्रातल्या प्रत्येक मार्गाच्या प्रत्येक क्षणी. म्हणून दिली जाणारी तात्कालिक शक्ती P = F·v सर्वसमतः शून्य आहे. गतिज ऊर्जा बदलतच नाही, म्हणून वेग बदलतच नाही, आणि जो प्रोटॉन एक मायक्रोसेकंदापासून फिरत आहे तो नेमका तितक्याच वेगाने जात आहे जितका आत्ताच आलेला. क्षेत्र जे पुरवते ते अभिकेंद्री बल आहे. qvB = mv²/r ठेवल्यास r = mv/qB, म्हणून वेगवान प्रोटॉन फक्त मोठे वर्तुळ कापतो. परिघाला वेगाने भागा आणि आवर्तकाल मिळतो: T = 2πr/v = 2πm/qB, आणि v कापला गेला. एका फेऱ्याचा काळ वेगावर अवलंबून नाही. तोच एक कापाकाप हे अख्खे कारण आहे की सायक्लोट्रॉन एका ठराविक रेडिओ वारंवारतेवर चालू शकतो: कण ऊर्जा मिळवत बाहेरच्या दिशेने सर्पिलात जातो, पण प्रत्येक वेळी तालावर फटीवर पोहोचतो. सोबत न्यायचे व्यावहारिक विधान म्हणजे प्रत्येक कण-त्वरकाच्या आतले श्रमविभाजन. विद्युत क्षेत्रे कार्य करतात — प्रकरणात तीच एकमेव गोष्ट आहे जी कणाची ऊर्जा वाढवू शकते. चुंबकीय क्षेत्रे दिशा देतात — ती सिंक्रोट्रॉन वलयात किरणशलाकांना वक्र मार्गांवर धरून ठेवतात, त्यांना केंद्रित करतात, आणि वस्तुमान वर्णपटमापीत वेगवेगळ्या संवेगांचे कण वेगळे करतात. जे यंत्र केवळ चुंबकांनी प्रोटॉन त्वरित करण्याचा प्रयत्न करेल, ते सुंदर वक्र किरणशलाका देईल जिची ऊर्जा नेमकी तीच असेल जिच्यापासून त्याने सुरुवात केली. (दुसरा पर्याय असे ऊर्जा हस्तांतरण घडवतो जे मापन नाकारते; तिसरा अशा बलाचे वर्णन करतो ज्याचा गतीच्या दिशेने घटक असेल, जे सदिश गुणाकार वर्ज्य करतो; चौथा संरक्षी बलांचा खरा नियम उद्धृत करतो, जो चुकीच्या पद्धतीने हेही सुचवेल की बंद वळशावर घर्षणही कोणतेही कार्य करत नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A laboratory has one galvanometer of resistance 60 Ω that deflects fully at 5 mA. A student wires a large resistance in parallel with it hoping to make a voltmeter, and a small resistance in series hoping to make an ammeter, and finds both instruments useless. Explain what each conversion actually requires and why.",
+      "choices": [
+        "He has swapped the two. An ammeter goes IN SERIES with the circuit and must therefore have very LOW resistance, so it is made by putting a small shunt in PARALLEL, which carries most of the current past the coil; a voltmeter goes ACROSS a component and must have very HIGH resistance so it draws almost nothing, so it is made by putting a large resistor in SERIES. His parallel-large-resistor barely changes anything and leaves a 60 Ω 'voltmeter' that loads the circuit it measures; his series-small-resistor leaves a roughly 60 Ω 'ammeter' that blocks the current it was meant to measure",
+        "Both conversions are correct in principle and fail only because 60 Ω is too high a galvanometer resistance for either instrument to work",
+        "A galvanometer cannot be converted at all; ammeters and voltmeters use fundamentally different movements, and adding resistors only changes the scale markings",
+        "Both instruments need a resistor in series; the difference is only that the ammeter's must be small and the voltmeter's large, and the student's error was in the parallel connection alone"
+      ],
+      "answerIndex": 0,
+      "solution": "Both conversions follow from one question that is not about magnetism at all: HOW IS THE INSTRUMENT CONNECTED, and therefore what must it do to the circuit it is measuring? A measuring instrument should disturb what it measures as little as possible, and the two instruments are connected in opposite ways, so their requirements come out opposite. An AMMETER is inserted in series, so the whole current to be measured passes through it. Anything it adds to the circuit's resistance reduces that current, which means the reading is corrupted by the act of reading. An ideal ammeter therefore has zero resistance; a real one must be as close to zero as possible. But the galvanometer's coil is 60 Ω and burns out above 5 mA, so it can neither survive nor be inserted into a circuit carrying an ampere. The fix is a SHUNT: a small resistance S wired in parallel with the coil, offering an easy path so that only the coil's safe 5 mA goes through the movement and the rest bypasses it. Since the two are in parallel they share the same voltage, so I_g G = (I − I_g)S, giving S = I_g G/(I − I_g). For a full-scale reading of 1 A: S = 0.005 × 60/0.995 ≈ 0.30 Ω. Note what has happened to the combined resistance — 60 Ω in parallel with 0.30 Ω is about 0.30 Ω, so the finished ammeter has a low resistance, exactly as required. A VOLTMETER is connected across a component, in parallel with it, so it offers the current an alternative route. Every milliampere it takes is a milliampere the component no longer carries, and the potential difference the instrument was supposed to report falls because the instrument arrived. An ideal voltmeter therefore has infinite resistance; a real one must be as high as possible. The fix is a large resistance R in SERIES with the coil, so that even a large voltage across the pair drives only the coil's 5 mA. Here I_g(G + R) = V, giving R = V/I_g − G. For a full-scale reading of 10 V: R = 10/0.005 − 60 = 2000 − 60 = 1940 Ω, and the finished voltmeter has a resistance of 2000 Ω, high compared with ordinary circuit resistances. Now the student's two mistakes, which are the same mistake twice. Putting a LARGE resistance in parallel with a 60 Ω coil changes the combination hardly at all — it stays near 60 Ω — so his 'voltmeter' has a resistance comparable to the components it will be placed across and will steal a serious fraction of their current, reading low and altering the circuit while it does. Putting a SMALL resistance in series leaves a total near 60 Ω, so his 'ammeter' inserted into a circuit will itself dominate the resistance and throttle the very current it was built to measure. In both cases the instrument's own resistance sits in the wrong range for the way it is connected, and the general principle is one worth stating on its own: series connection demands low resistance, parallel connection demands high resistance, and every practical detail of both conversions follows from that. (The second option accepts a wrong topology and blames a number; the third denies a conversion that is standard laboratory practice; the fourth keeps the series connection for both and so keeps the ammeter's fatal resistance.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक प्रयोगशाला में 60 Ω प्रतिरोध का एक धारामापी है जो 5 mA पर पूरा विक्षेप देता है। विद्यार्थी वोल्टमापी बनाने की आशा में उसके समांतर बड़ा प्रतिरोध जोड़ता है, और अमीटर बनाने की आशा में श्रेणी में छोटा प्रतिरोध जोड़ता है, और दोनों यंत्र बेकार पाता है। बताओ हर रूपांतरण वास्तव में क्या माँगता है और क्यों।",
+          "choices": [
+            "उसने दोनों आपस में बदल दिए हैं। अमीटर परिपथ के श्रेणी में लगता है और इसलिए उसका प्रतिरोध बहुत कम होना चाहिए, अतः वह समांतर में छोटा शंट लगाकर बनता है, जो अधिकांश धारा कुंडली के बग़ल से ले जाता है; वोल्टमापी किसी पुर्ज़े के आर-पार लगता है और उसका प्रतिरोध बहुत ऊँचा होना चाहिए ताकि वह लगभग कुछ न खींचे, अतः वह श्रेणी में बड़ा प्रतिरोधक लगाकर बनता है। उसका समांतर-बड़ा-प्रतिरोधक कुछ ख़ास बदलता ही नहीं और 60 Ω का ऐसा 'वोल्टमापी' छोड़ता है जो जिस परिपथ को नापता है उसी पर बोझ डालता है; उसका श्रेणी-छोटा-प्रतिरोधक लगभग 60 Ω का ऐसा 'अमीटर' छोड़ता है जो जिस धारा को नापना था उसे ही रोक देता है",
+            "दोनों रूपांतरण सैद्धांतिक रूप से सही हैं और केवल इसलिए विफल होते हैं कि किसी भी यंत्र के चलने के लिए 60 Ω धारामापी प्रतिरोध बहुत ऊँचा है",
+            "धारामापी का रूपांतरण हो ही नहीं सकता; अमीटर और वोल्टमापी मूलतः भिन्न गतिकाएँ काम में लेते हैं, और प्रतिरोधक जोड़ने से केवल पैमाने के निशान बदलते हैं",
+            "दोनों यंत्रों को श्रेणी में प्रतिरोधक चाहिए; अंतर केवल इतना कि अमीटर वाला छोटा और वोल्टमापी वाला बड़ा हो, और विद्यार्थी की भूल केवल समांतर संयोजन में थी"
+          ],
+          "solution": "दोनों रूपांतरण एक ऐसे प्रश्न से निकलते हैं जो चुंबकत्व का है ही नहीं: यंत्र जुड़ता कैसे है, और इसलिए जिस परिपथ को वह नाप रहा है उसके साथ उसे क्या करना चाहिए? नापने वाला यंत्र जो नापता है उसे जितना कम बिगाड़े उतना अच्छा, और दोनों यंत्र उलटे ढंगों से जुड़ते हैं, अतः उनकी माँगें उलटी निकलती हैं। अमीटर श्रेणी में डाला जाता है, अतः नापी जाने वाली पूरी धारा उसमें से गुज़रती है। वह परिपथ के प्रतिरोध में जो कुछ जोड़ता है वह उसी धारा को घटाता है, अर्थात् पढ़ने की क्रिया से ही पाठ्यांक बिगड़ जाता है। अतः आदर्श अमीटर का प्रतिरोध शून्य है; असली को शून्य के जितना निकट हो सके होना चाहिए। पर धारामापी की कुंडली 60 Ω है और 5 mA से ऊपर जल जाती है, अतः वह न बच सकती है न एक ऐम्पियर ले जाते परिपथ में डाली जा सकती है। उपाय शंट है: कुंडली के समांतर जुड़ा छोटा प्रतिरोध S, जो आसान रास्ता देता है ताकि केवल कुंडली के सुरक्षित 5 mA गतिका से जाएँ और बाक़ी बग़ल से निकल जाए। चूँकि दोनों समांतर हैं वे एक ही वोल्टता साझा करते हैं, अतः I_g G = (I − I_g)S, जिससे S = I_g G/(I − I_g). 1 A के पूर्ण विक्षेप के लिए: S = 0.005 × 60/0.995 ≈ 0.30 Ω. देखो संयुक्त प्रतिरोध का क्या हुआ — 60 Ω के समांतर 0.30 Ω लगभग 0.30 Ω है, अतः तैयार अमीटर का प्रतिरोध कम है, ठीक जैसा चाहिए था। वोल्टमापी किसी पुर्ज़े के आर-पार, उसके समांतर जुड़ता है, अतः वह धारा को वैकल्पिक रास्ता देता है। वह जितना मिलीऐम्पियर लेता है उतना पुर्ज़ा अब नहीं ले जाता, और जिस विभवांतर को यंत्र बताने वाला था वह इसलिए गिर जाता है कि यंत्र आ गया। अतः आदर्श वोल्टमापी का प्रतिरोध अनंत है; असली का जितना ऊँचा हो सके होना चाहिए। उपाय कुंडली के श्रेणी में बड़ा प्रतिरोध R है, ताकि युग्म के आर-पार बड़ी वोल्टता भी केवल कुंडली के 5 mA चलाए। यहाँ I_g(G + R) = V, जिससे R = V/I_g − G. 10 V के पूर्ण विक्षेप के लिए: R = 10/0.005 − 60 = 2000 − 60 = 1940 Ω, और तैयार वोल्टमापी का प्रतिरोध 2000 Ω है, साधारण परिपथ प्रतिरोधों की तुलना में ऊँचा। अब विद्यार्थी की दोनों भूलें, जो वही एक भूल दो बार है। 60 Ω की कुंडली के समांतर बड़ा प्रतिरोध रखने से संयोजन में शायद ही कुछ बदलता है — वह 60 Ω के पास ही रहता है — अतः उसका 'वोल्टमापी' उन्हीं पुर्ज़ों के दर्जे का प्रतिरोध रखता है जिनके आर-पार वह लगेगा और उनकी धारा का बड़ा हिस्सा चुरा लेगा, कम पढ़ेगा और साथ ही परिपथ बदल देगा। श्रेणी में छोटा प्रतिरोध रखने से कुल 60 Ω के पास रहता है, अतः परिपथ में डाला गया उसका 'अमीटर' स्वयं प्रतिरोध पर हावी होगा और उसी धारा का गला घोंटेगा जिसे नापने के लिए वह बना था। दोनों स्थितियों में यंत्र का अपना प्रतिरोध उसके जुड़ने के ढंग के लिए ग़लत परास में बैठा है, और सामान्य सिद्धांत अपने आप में कहने योग्य है: श्रेणी संयोजन कम प्रतिरोध माँगता है, समांतर संयोजन ऊँचा प्रतिरोध माँगता है, और दोनों रूपांतरणों का हर व्यावहारिक ब्योरा उसी से निकलता है। (दूसरा विकल्प ग़लत रचना स्वीकार कर एक संख्या को दोष देता है; तीसरा उस रूपांतरण से इनकार करता है जो प्रयोगशाला की मानक प्रथा है; चौथा दोनों के लिए श्रेणी संयोजन बनाए रखता है और यों अमीटर का घातक प्रतिरोध भी बनाए रखता है।)"
+        },
+        "mr": {
+          "stem": "एका प्रयोगशाळेत 60 Ω रोधाचा एक गॅल्व्हॅनोमीटर आहे जो 5 mA वर पूर्ण विचलन देतो. विद्यार्थी व्होल्टमापक बनवण्याच्या आशेने त्याच्या समांतर मोठा रोध जोडतो, आणि अ‍ॅमीटर बनवण्याच्या आशेने श्रेणीत लहान रोध जोडतो, आणि दोन्ही उपकरणे निरुपयोगी आढळतात. प्रत्येक रूपांतरण प्रत्यक्षात काय मागते आणि का ते सांगा.",
+          "choices": [
+            "त्याने दोन्ही अदलाबदल केले आहेत. अ‍ॅमीटर परिपथाच्या श्रेणीत लागतो आणि म्हणून त्याचा रोध फार कमी असावा लागतो, म्हणून तो समांतरात लहान शंट लावून बनतो, जो बहुतांश धारा वेटोळ्याच्या बाजूने नेतो; व्होल्टमापक एखाद्या घटकाच्या आरपार लागतो आणि त्याचा रोध फार उंच असावा लागतो जेणेकरून तो जवळपास काहीच ओढणार नाही, म्हणून तो श्रेणीत मोठा रोधक लावून बनतो. त्याचा समांतर-मोठा-रोधक फारसे काही बदलतच नाही आणि 60 Ω चा असा 'व्होल्टमापक' उरवतो जो ज्या परिपथाला मोजतो त्यावरच भार टाकतो; त्याचा श्रेणी-लहान-रोधक जवळपास 60 Ω चा असा 'अ‍ॅमीटर' उरवतो जो ज्या धारेला मोजायचे होते तिलाच अडवतो",
+            "दोन्ही रूपांतरणे तत्त्वतः बरोबर आहेत आणि केवळ यामुळे अपयशी ठरतात की कोणतेही उपकरण चालण्यासाठी 60 Ω गॅल्व्हॅनोमीटर रोध फार उंच आहे",
+            "गॅल्व्हॅनोमीटरचे रूपांतरण होऊच शकत नाही; अ‍ॅमीटर आणि व्होल्टमापक मुळात वेगळ्या हालचाली वापरतात, आणि रोधक जोडल्याने केवळ पट्टीवरील खुणा बदलतात",
+            "दोन्ही उपकरणांना श्रेणीत रोधक लागतो; फरक इतकाच की अ‍ॅमीटरचा लहान आणि व्होल्टमापकाचा मोठा असावा, आणि विद्यार्थ्याची चूक केवळ समांतर जोडणीत होती"
+          ],
+          "solution": "दोन्ही रूपांतरणे अशा एका प्रश्नातून निघतात जो चुंबकत्वाचा मुळीच नाही: उपकरण जोडले कसे जाते, आणि म्हणून ज्या परिपथाला ते मोजत आहे त्याच्याशी त्याने काय करावे? मोजणाऱ्या उपकरणाने जे मोजतो त्याला जितके कमी बिघडवावे तितके बरे, आणि दोन्ही उपकरणे उलट पद्धतींनी जोडली जातात, म्हणून त्यांच्या मागण्या उलट निघतात. अ‍ॅमीटर श्रेणीत घातला जातो, म्हणून मोजायची अख्खी धारा त्यातून जाते. तो परिपथाच्या रोधात जे काही जोडतो ते त्याच धारेला घटवते, म्हणजे वाचण्याच्या कृतीनेच वाचन बिघडते. म्हणून आदर्श अ‍ॅमीटरचा रोध शून्य आहे; खऱ्याचा शून्याच्या जितका जवळ जमेल तितका असावा. पण गॅल्व्हॅनोमीटरचे वेटोळे 60 Ω आहे आणि 5 mA च्या वर जळून जाते, म्हणून ते ना टिकू शकते ना एक अँपिअर वाहणाऱ्या परिपथात घालता येते. उपाय म्हणजे शंट: वेटोळ्याच्या समांतर जोडलेला लहान रोध S, जो सोपा मार्ग देतो जेणेकरून केवळ वेटोळ्याचे सुरक्षित 5 mA हालचालीतून जातील आणि बाकीचे बाजूने निघून जातील. दोन्ही समांतर असल्याने ते एकच व्होल्टेज वाटून घेतात, म्हणून I_g G = (I − I_g)S, ज्यातून S = I_g G/(I − I_g). 1 A च्या पूर्ण विचलनासाठी: S = 0.005 × 60/0.995 ≈ 0.30 Ω. एकत्रित रोधाचे काय झाले ते पाहा — 60 Ω च्या समांतर 0.30 Ω म्हणजे सुमारे 0.30 Ω, म्हणून तयार अ‍ॅमीटरचा रोध कमी आहे, नेमका जसा हवा होता. व्होल्टमापक एखाद्या घटकाच्या आरपार, त्याच्या समांतर जोडला जातो, म्हणून तो धारेला पर्यायी मार्ग देतो. तो जितके मिलिअँपिअर घेतो तितके घटक आता वाहत नाही, आणि ज्या विभवांतराचा अहवाल उपकरणाने द्यायचा होता ते यामुळे घसरते की उपकरण आले. म्हणून आदर्श व्होल्टमापकाचा रोध अनंत आहे; खऱ्याचा जितका उंच जमेल तितका असावा. उपाय म्हणजे वेटोळ्याच्या श्रेणीत मोठा रोध R, जेणेकरून जोडीच्या आरपार मोठा व्होल्टेजही केवळ वेटोळ्याचे 5 mA चालवेल. इथे I_g(G + R) = V, ज्यातून R = V/I_g − G. 10 V च्या पूर्ण विचलनासाठी: R = 10/0.005 − 60 = 2000 − 60 = 1940 Ω, आणि तयार व्होल्टमापकाचा रोध 2000 Ω आहे, साध्या परिपथ रोधांच्या तुलनेत उंच. आता विद्यार्थ्याच्या दोन चुका, ज्या तीच एक चूक दोनदा आहेत. 60 Ω च्या वेटोळ्याच्या समांतर मोठा रोध ठेवल्याने जोडणीत जवळपास काहीच बदलत नाही — ती 60 Ω जवळच राहते — म्हणून त्याचा 'व्होल्टमापक' त्याच घटकांच्या दर्जाचा रोध बाळगतो ज्यांच्या आरपार तो लागेल आणि त्यांच्या धारेचा मोठा वाटा चोरेल, कमी वाचेल आणि सोबतच परिपथ बदलेल. श्रेणीत लहान रोध ठेवल्याने एकूण 60 Ω जवळ राहते, म्हणून परिपथात घातलेला त्याचा 'अ‍ॅमीटर' स्वतःच रोधावर वरचढ होईल आणि त्याच धारेचा गळा दाबेल जिला मोजण्यासाठी तो बनवला होता. दोन्ही स्थितींत उपकरणाचा स्वतःचा रोध त्याच्या जोडणीच्या पद्धतीसाठी चुकीच्या पल्ल्यात बसला आहे, आणि सर्वसाधारण तत्त्व स्वतःच सांगण्याजोगे आहे: श्रेणी जोडणी कमी रोध मागते, समांतर जोडणी उंच रोध मागते, आणि दोन्ही रूपांतरणांचा प्रत्येक व्यावहारिक तपशील त्यातूनच निघतो. (दुसरा पर्याय चुकीची रचना स्वीकारून एका आकड्याला दोष देतो; तिसरा प्रयोगशाळेच्या प्रमाणित प्रथेला असलेले रूपांतरण नाकारतो; चौथा दोन्हींसाठी श्रेणी जोडणी टिकवतो आणि अशा प्रकारे अ‍ॅमीटरचा घातक रोधही टिकवतो.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A charge of 2 C moves at 5 m/s at right angles to a uniform magnetic field of 3 T. What force acts on it?",
+      "choices": [
+        "15 N",
+        "0.3 N",
+        "30 N",
+        "10 N"
+      ],
+      "answerIndex": 2,
+      "solution": "F = qvB sin θ, and at right angles sin θ = 1, so F = 2 × 5 × 3 = 30 N. The sine factor is the whole content of the direction condition: a charge moving ALONG the field feels nothing at all, however fast it goes. (10 and 15 each leave out one of the three factors.)",
+      "checkExpr": "2*5*3",
+      "translations": {
+        "hi": {
+          "stem": "2 C का आवेश 3 T के एकसमान चुंबकीय क्षेत्र के समकोण पर 5 m/s से चलता है। उस पर कितना बल लगता है?",
+          "choices": [
+            "15 N",
+            "0.3 N",
+            "30 N",
+            "10 N"
+          ],
+          "solution": "F = qvB sin θ, और समकोण पर sin θ = 1, अतः F = 2 × 5 × 3 = 30 N. ज्या-गुणक ही दिशा-शर्त का पूरा सार है: क्षेत्र के अनुदिश चलता आवेश कुछ भी अनुभव नहीं करता, चाहे कितना भी तेज़ जाए। (10 और 15 तीनों में से एक-एक गुणक छोड़ देते हैं।)"
+        },
+        "mr": {
+          "stem": "2 C चा प्रभार 3 T च्या एकसमान चुंबकीय क्षेत्राला काटकोनात 5 m/s ने हलतो. त्यावर किती बल लागते?",
+          "choices": [
+            "15 N",
+            "0.3 N",
+            "30 N",
+            "10 N"
+          ],
+          "solution": "F = qvB sin θ, आणि काटकोनात sin θ = 1, म्हणून F = 2 × 5 × 3 = 30 N. साइन-गुणक हाच दिशा-अटीचा अख्खा आशय: क्षेत्राच्या दिशेने जाणाऱ्या प्रभाराला काहीच जाणवत नाही, तो कितीही वेगाने गेला तरी. (10 आणि 15 तिन्हींपैकी एकेक गुणक गाळतात.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A straight wire 0.5 m long carries a current of 4 A and lies at right angles to a uniform field of 2 T. What force acts on the wire?",
+      "choices": [
+        "8 N",
+        "4 N",
+        "2 N",
+        "16 N"
+      ],
+      "answerIndex": 1,
+      "solution": "F = BIL sin θ = 2 × 4 × 0.5 = 4 N with the wire perpendicular to the field. This is the same Lorentz force written for a whole wire rather than one charge: the current is just qv summed over all the carriers in it, which is why a motor and a deflected electron beam are the same physics. (16 multiplies by the length instead of by half of it, and 8 drops the 0.5 altogether.)",
+      "checkExpr": "4*0.5*2",
+      "translations": {
+        "hi": {
+          "stem": "0.5 m लंबा सीधा तार 4 A धारा ले जाता है और 2 T के एकसमान क्षेत्र के समकोण पर रखा है। तार पर कितना बल लगता है?",
+          "choices": [
+            "8 N",
+            "4 N",
+            "2 N",
+            "16 N"
+          ],
+          "solution": "तार के क्षेत्र के लंबवत होने पर F = BIL sin θ = 2 × 4 × 0.5 = 4 N. यह वही लॉरेंज़ बल है जो एक आवेश के बजाय पूरे तार के लिए लिखा गया: धारा उसमें के सभी वाहकों पर जोड़ा गया qv ही है, इसीलिए मोटर और विक्षेपित इलेक्ट्रॉन किरणपुंज एक ही भौतिकी हैं। (16 आधी लंबाई के बजाय लंबाई से गुणा कर देता है, और 8 0.5 को छोड़ ही देता है।)"
+        },
+        "mr": {
+          "stem": "0.5 m लांब सरळ तार 4 A धारा वाहते आणि 2 T च्या एकसमान क्षेत्राला काटकोनात ठेवलेली आहे. तारेवर किती बल लागते?",
+          "choices": [
+            "8 N",
+            "4 N",
+            "2 N",
+            "16 N"
+          ],
+          "solution": "तार क्षेत्राला लंब असल्याने F = BIL sin θ = 2 × 4 × 0.5 = 4 N. हेच ते लॉरेन्ट्झ बल जे एका प्रभाराऐवजी अख्ख्या तारेसाठी लिहिलेले: धारा म्हणजे तिच्यातील सर्व वाहकांवर बेरीज केलेले qv च, म्हणूनच मोटर आणि विचलित इलेक्ट्रॉन शलाका एकच भौतिकी आहेत. (16 निम्म्या लांबीऐवजी लांबीने गुणते, आणि 8 हे 0.5 गाळूनच टाकते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The magnetic field 4 cm from a long straight current-carrying wire is 6 μT. What is the field, in μT, at a distance of 12 cm from the same wire?",
+      "choices": [
+        "3",
+        "0.67",
+        "2",
+        "18"
+      ],
+      "answerIndex": 2,
+      "solution": "For a long straight wire B = μ₀I/2πr, so the field falls as 1/r and not as 1/r²: tripling the distance divides the field by 3, giving 6 × 4/12 = 2 μT. The inverse FIRST power is a genuine difference from the point-charge case, and it comes from the wire being infinitely long — the far parts of it partly compensate for the extra distance. (0.67 uses an inverse square, and 18 multiplies where it should divide.)",
+      "checkExpr": "6*4/12",
+      "translations": {
+        "hi": {
+          "stem": "धारा ले जाते लंबे सीधे तार से 4 cm दूर चुंबकीय क्षेत्र 6 μT है। उसी तार से 12 cm की दूरी पर क्षेत्र, μT में, क्या है?",
+          "choices": [
+            "3",
+            "0.67",
+            "2",
+            "18"
+          ],
+          "solution": "लंबे सीधे तार के लिए B = μ₀I/2πr, अतः क्षेत्र 1/r से घटता है, 1/r² से नहीं: दूरी तिगुनी करने पर क्षेत्र 3 से भाग जाता है, जिससे 6 × 4/12 = 2 μT. व्युत्क्रम पहली घात बिंदु-आवेश की स्थिति से असली अंतर है, और वह तार के अनंत लंबे होने से आता है — उसके दूर वाले भाग अतिरिक्त दूरी की आंशिक भरपाई कर देते हैं। (0.67 व्युत्क्रम वर्ग लगाता है, और 18 वहाँ गुणा करता है जहाँ भाग देना था।)"
+        },
+        "mr": {
+          "stem": "धारा वाहणाऱ्या लांब सरळ तारेपासून 4 cm दूर चुंबकीय क्षेत्र 6 μT आहे. त्याच तारेपासून 12 cm अंतरावर क्षेत्र, μT मध्ये, किती?",
+          "choices": [
+            "3",
+            "0.67",
+            "2",
+            "18"
+          ],
+          "solution": "लांब सरळ तारेसाठी B = μ₀I/2πr, म्हणून क्षेत्र 1/r ने घटते, 1/r² ने नाही: अंतर तिप्पट केल्यास क्षेत्र 3 ने भागले जाते, ज्यातून 6 × 4/12 = 2 μT. व्यस्त पहिली घात हा बिंदु-प्रभाराच्या स्थितीहून खरा फरक आहे, आणि तो तार अनंत लांब असल्याने येतो — तिचे दूरचे भाग जादा अंतराची अंशतः भरपाई करतात. (0.67 व्यस्त वर्ग लावते, आणि 18 जिथे भागायचे तिथे गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A circular coil of 100 turns produces a field of 2 mT at its centre. Keeping the current and the radius unchanged, how many turns would be needed to produce 5 mT?",
+      "choices": [
+        "200",
+        "500",
+        "250",
+        "40"
+      ],
+      "answerIndex": 2,
+      "solution": "The field at the centre of a coil is B = μ₀NI/2r, which is directly proportional to N, so N₂ = 100 × 5/2 = 250 turns. Every turn adds its own contribution and they all point the same way at the centre, which is the whole reason for winding a coil rather than bending a single loop. (40 inverts the ratio; 200 doubles instead of multiplying by two and a half.)",
+      "checkExpr": "100*5/2",
+      "translations": {
+        "hi": {
+          "stem": "100 फेरों की वृत्तीय कुंडली अपने केंद्र पर 2 mT का क्षेत्र देती है। धारा और त्रिज्या अपरिवर्तित रखते हुए 5 mT देने के लिए कितने फेरे चाहिए?",
+          "choices": [
+            "200",
+            "500",
+            "250",
+            "40"
+          ],
+          "solution": "कुंडली के केंद्र पर क्षेत्र B = μ₀NI/2r है, जो N का अनुक्रमानुपाती है, अतः N₂ = 100 × 5/2 = 250 फेरे। हर फेरा अपना अंश जोड़ता है और वे सब केंद्र पर एक ही ओर हैं, और कुंडली लपेटने का, अकेला लूप मोड़ने का नहीं, पूरा कारण यही है। (40 अनुपात उलट देता है; 200 ढाई गुना करने के बजाय दुगुना कर देता है।)"
+        },
+        "mr": {
+          "stem": "100 वेढ्यांचे वर्तुळाकार वेटोळे आपल्या केंद्रावर 2 mT चे क्षेत्र देते. धारा आणि त्रिज्या अपरिवर्तित ठेवून 5 mT देण्यासाठी किती वेढे लागतील?",
+          "choices": [
+            "200",
+            "500",
+            "250",
+            "40"
+          ],
+          "solution": "वेटोळ्याच्या केंद्रावरचे क्षेत्र B = μ₀NI/2r आहे, जे N शी सरळ समानुपाती आहे, म्हणून N₂ = 100 × 5/2 = 250 वेढे. प्रत्येक वेढा आपला वाटा जोडतो आणि ते सर्व केंद्रावर एकाच दिशेने आहेत, आणि वेटोळे गुंडाळण्याचे, एकच वळसा वाकवण्याचे नव्हे, अख्खे कारण हेच आहे. (40 गुणोत्तर उलटवते; 200 अडीचपट करण्याऐवजी दुप्पट करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A particle of charge 2 C and mass 4 kg enters a uniform field of 4 T at 6 m/s, at right angles to the field. What is the radius, in m, of its circular path?",
+      "choices": [
+        "1.5",
+        "2",
+        "6",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "The magnetic force supplies the centripetal force, so qvB = mv²/r and r = mv/qB = (4 × 6)/(2 × 4) = 24/8 = 3 m. One v cancels between the two sides, which is why the radius is proportional to the speed and not to its square — a particle twice as fast simply traces a circle twice as large in the same period. (6 leaves the charge out of the denominator.)",
+      "checkExpr": "4*6/(2*4)",
+      "translations": {
+        "hi": {
+          "stem": "2 C आवेश और 4 kg द्रव्यमान का कण 4 T के एकसमान क्षेत्र में उसके समकोण पर 6 m/s से प्रवेश करता है। उसके वृत्तीय पथ की त्रिज्या, m में, क्या है?",
+          "choices": [
+            "1.5",
+            "2",
+            "6",
+            "3"
+          ],
+          "solution": "चुंबकीय बल अभिकेंद्र बल देता है, अतः qvB = mv²/r और r = mv/qB = (4 × 6)/(2 × 4) = 24/8 = 3 m. दोनों ओर से एक v कट जाता है, इसीलिए त्रिज्या चाल की समानुपाती है, उसके वर्ग की नहीं — दुगुना तेज़ कण उतने ही आवर्तकाल में बस दुगुना बड़ा वृत्त खींचता है। (6 हर में आवेश को छोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "2 C प्रभार आणि 4 kg वस्तुमानाचा कण 4 T च्या एकसमान क्षेत्रात त्याला काटकोनात 6 m/s ने प्रवेश करतो. त्याच्या वर्तुळाकार मार्गाची त्रिज्या, m मध्ये, किती?",
+          "choices": [
+            "1.5",
+            "2",
+            "6",
+            "3"
+          ],
+          "solution": "चुंबकीय बल अभिकेंद्री बल पुरवते, म्हणून qvB = mv²/r आणि r = mv/qB = (4 × 6)/(2 × 4) = 24/8 = 3 m. दोन्ही बाजूंतून एक v कापला जातो, म्हणूनच त्रिज्या वेगाशी समानुपाती आहे, त्याच्या वर्गाशी नाही — दुप्पट वेगवान कण तितक्याच आवर्तकाळात फक्त दुप्पट मोठे वर्तुळ काढतो. (6 छेदात प्रभार गाळते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A rectangular coil of 50 turns and area 0.02 m² carries a current of 3 A in a uniform field of 0.4 T, with the plane of the coil parallel to the field. What torque, in N m, acts on it?",
+      "choices": [
+        "12",
+        "2.4",
+        "1.2",
+        "0.6"
+      ],
+      "answerIndex": 2,
+      "solution": "τ = NIAB when the plane of the coil contains the field, so τ = 50 × 3 × 0.02 × 0.4 = 1.2 N m. This orientation gives the maximum torque, and the torque falls to zero when the plane is perpendicular to the field instead — which is exactly the position the coil turns towards and then overshoots, and the reason a practical motor needs a commutator to keep pushing it round. (0.6 halves as though this were an energy; 2.4 doubles.)",
+      "checkExpr": "50*3*0.02*0.4",
+      "translations": {
+        "hi": {
+          "stem": "50 फेरों और 0.02 m² क्षेत्रफल की आयताकार कुंडली 0.4 T के एकसमान क्षेत्र में 3 A धारा ले जाती है, और कुंडली का तल क्षेत्र के समांतर है। उस पर कितना बल-आघूर्ण, N m में, लगता है?",
+          "choices": [
+            "12",
+            "2.4",
+            "1.2",
+            "0.6"
+          ],
+          "solution": "जब कुंडली का तल क्षेत्र को समेटे हो तब τ = NIAB, अतः τ = 50 × 3 × 0.02 × 0.4 = 1.2 N m. यही अभिविन्यास अधिकतम बल-आघूर्ण देता है, और जब तल क्षेत्र के लंबवत हो जाए तब बल-आघूर्ण शून्य हो जाता है — ठीक वही स्थिति जिसकी ओर कुंडली घूमती है और फिर उससे आगे निकल जाती है, और यही कारण है कि व्यावहारिक मोटर को उसे घुमाते रहने के लिए दिक्परिवर्तक चाहिए। (0.6 ऐसे आधा कर देता है मानो यह ऊर्जा हो; 2.4 दुगुना कर देता है।)"
+        },
+        "mr": {
+          "stem": "50 वेढे आणि 0.02 m² क्षेत्रफळाचे आयताकृती वेटोळे 0.4 T च्या एकसमान क्षेत्रात 3 A धारा वाहते, आणि वेटोळ्याचे प्रतल क्षेत्राला समांतर आहे. त्यावर किती बलआघूर्ण, N m मध्ये, लागते?",
+          "choices": [
+            "12",
+            "2.4",
+            "1.2",
+            "0.6"
+          ],
+          "solution": "जेव्हा वेटोळ्याचे प्रतल क्षेत्राला सामावते तेव्हा τ = NIAB, म्हणून τ = 50 × 3 × 0.02 × 0.4 = 1.2 N m. हीच मांडणी कमाल बलआघूर्ण देते, आणि प्रतल क्षेत्राला लंब झाल्यावर बलआघूर्ण शून्य होते — नेमकी तीच स्थिती जिच्याकडे वेटोळे फिरते आणि मग तिच्या पुढे निघून जाते, आणि म्हणूनच व्यावहारिक मोटरला त्याला फिरवत ठेवण्यासाठी दिक्परिवर्तक लागतो. (0.6 असे निम्मे करते जणू ही ऊर्जा असावी; 2.4 दुप्पट करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A solenoid is wound with 500 turns spread over a length of 0.25 m. How many turns per metre does it have?",
+      "choices": [
+        "250",
+        "2000",
+        "125",
+        "1000"
+      ],
+      "answerIndex": 1,
+      "solution": "n = N/L = 500/0.25 = 2000 turns per metre. The interior field B = μ₀nI depends on this figure and not on the total number of turns, so the same 500 turns crammed into half the length would double the field without a millimetre of extra wire. (125 multiplies by 0.25 instead of dividing, and 1000 divides by 0.5.)",
+      "checkExpr": "500/0.25",
+      "translations": {
+        "hi": {
+          "stem": "एक परिनालिका पर 0.25 m लंबाई में फैले 500 फेरे लपेटे गए हैं। उसमें प्रति मीटर कितने फेरे हैं?",
+          "choices": [
+            "250",
+            "2000",
+            "125",
+            "1000"
+          ],
+          "solution": "n = N/L = 500/0.25 = 2000 फेरे प्रति मीटर। भीतर का क्षेत्र B = μ₀nI इसी संख्या पर निर्भर है, कुल फेरों पर नहीं, अतः वही 500 फेरे आधी लंबाई में ठूँसने पर क्षेत्र दुगुना हो जाता, एक मिलीमीटर अतिरिक्त तार के बिना। (125 भाग देने के बजाय 0.25 से गुणा कर देता है, और 1000 0.5 से भाग दे देता है।)"
+        },
+        "mr": {
+          "stem": "एका सोलेनॉइडवर 0.25 m लांबीत पसरलेले 500 वेढे गुंडाळले आहेत. त्यात प्रति मीटर किती वेढे आहेत?",
+          "choices": [
+            "250",
+            "2000",
+            "125",
+            "1000"
+          ],
+          "solution": "n = N/L = 500/0.25 = 2000 वेढे प्रति मीटर. आतले क्षेत्र B = μ₀nI याच आकड्यावर अवलंबून आहे, एकूण वेढ्यांवर नाही, म्हणून तेच 500 वेढे निम्म्या लांबीत कोंबल्यास क्षेत्र दुप्पट झाले असते, एक मिलीमीटर जादा तारेविना. (125 भागण्याऐवजी 0.25 ने गुणते, आणि 1000 हे 0.5 ने भागते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a velocity selector the electric field is 6 × 10⁴ V/m and the magnetic field is 0.2 T, arranged so that the two forces oppose. What speed, in m/s, passes through undeflected?",
+      "choices": [
+        "12000",
+        "3000000",
+        "300000",
+        "30000"
+      ],
+      "answerIndex": 2,
+      "solution": "Undeflected means the two forces balance: qE = qvB, so the charge cancels and v = E/B = 60000/0.2 = 600000/2 = 300000 m/s. That the charge cancels is the whole value of the device — it selects by SPEED alone, letting through electrons, protons and ions of any charge or mass provided they travel at this one speed, which is why it is the front end of a mass spectrometer. (12000 multiplies E by B instead of dividing.)",
+      "checkExpr": "600000/2",
+      "translations": {
+        "hi": {
+          "stem": "एक वेग वरणकारी में विद्युत क्षेत्र 6 × 10⁴ V/m और चुंबकीय क्षेत्र 0.2 T है, और वे इस तरह रखे हैं कि दोनों बल विरोध करें। कौन-सी चाल, m/s में, बिना विक्षेप के पार होती है?",
+          "choices": [
+            "12000",
+            "3000000",
+            "300000",
+            "30000"
+          ],
+          "solution": "बिना विक्षेप का अर्थ है दोनों बल संतुलित हैं: qE = qvB, अतः आवेश कट जाता है और v = E/B = 60000/0.2 = 600000/2 = 300000 m/s. आवेश का कट जाना ही युक्ति का पूरा मूल्य है — वह केवल चाल से छाँटती है, और इलेक्ट्रॉन, प्रोटॉन तथा किसी भी आवेश या द्रव्यमान के आयन को गुज़रने देती है बशर्ते वे इसी एक चाल से चलें, इसीलिए वह द्रव्यमान स्पेक्ट्रोमापी का अगला सिरा है। (12000 E को B से भाग देने के बजाय गुणा कर देता है।)"
+        },
+        "mr": {
+          "stem": "एका वेग निवडकात विद्युत क्षेत्र 6 × 10⁴ V/m आणि चुंबकीय क्षेत्र 0.2 T आहे, आणि ती अशी मांडली आहेत की दोन्ही बले विरोध करतील. कोणता वेग, m/s मध्ये, विचलनाविना पार होतो?",
+          "choices": [
+            "12000",
+            "3000000",
+            "300000",
+            "30000"
+          ],
+          "solution": "विचलनाविना म्हणजे दोन्ही बले तोलली आहेत: qE = qvB, म्हणून प्रभार कापला जातो आणि v = E/B = 60000/0.2 = 600000/2 = 300000 m/s. प्रभार कापला जाणे हेच साधनाचे अख्खे मूल्य — ते केवळ वेगानेच निवडते, आणि इलेक्ट्रॉन, प्रोटॉन तसेच कोणत्याही प्रभाराचे वा वस्तुमानाचे आयन जाऊ देते जर ते याच एका वेगाने जात असतील, म्हणूनच ते वस्तुमान वर्णपटमापीचे पुढचे टोक आहे. (12000 हे E ला B ने भागण्याऐवजी गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A galvanometer of resistance 99 Ω gives a full-scale deflection at 10 mA. What shunt resistance, in Ω, must be placed in parallel with it so that it reads 1 A at full scale?",
+      "choices": [
+        "100",
+        "9.9",
+        "0.99",
+        "1"
+      ],
+      "answerIndex": 3,
+      "solution": "The shunt and the coil are in parallel, so they share the same voltage: I_g G = (I − I_g)S. Hence S = 99 × 0.01/0.99 = 1 Ω. The coil then carries its safe 10 mA and the shunt carries the remaining 990 mA. Note the effect on the finished instrument: 99 Ω in parallel with 1 Ω is about 0.99 Ω, so the ammeter has a low resistance, which is exactly what a component wired IN SERIES with a circuit must have if it is not to change the current it was built to measure. (9.9 divides by the full current instead of by the part that bypasses the coil.)",
+      "checkExpr": "99*0.01/0.99",
+      "translations": {
+        "hi": {
+          "stem": "99 Ω प्रतिरोध का धारामापी 10 mA पर पूरा विक्षेप देता है। उसके समांतर कितना शंट प्रतिरोध, Ω में, लगाया जाए ताकि वह पूर्ण विक्षेप पर 1 A पढ़े?",
+          "choices": [
+            "100",
+            "9.9",
+            "0.99",
+            "1"
+          ],
+          "solution": "शंट और कुंडली समांतर में हैं, अतः वे एक ही वोल्टता साझा करते हैं: I_g G = (I − I_g)S. इसलिए S = 99 × 0.01/0.99 = 1 Ω. तब कुंडली अपने सुरक्षित 10 mA ले जाती है और शंट बचे 990 mA. तैयार यंत्र पर असर देखो: 99 Ω के समांतर 1 Ω लगभग 0.99 Ω है, अतः अमीटर का प्रतिरोध कम है, और परिपथ के श्रेणी में जुड़ने वाले पुर्ज़े का ठीक यही होना चाहिए यदि वह उसी धारा को न बदले जिसे नापने के लिए वह बना है। (9.9 कुंडली को बग़ल से निकलने वाले भाग के बजाय पूरी धारा से भाग दे देता है।)"
+        },
+        "mr": {
+          "stem": "99 Ω रोधाचा गॅल्व्हॅनोमीटर 10 mA वर पूर्ण विचलन देतो. त्याच्या समांतर किती शंट रोध, Ω मध्ये, लावावा जेणेकरून तो पूर्ण विचलनावर 1 A वाचेल?",
+          "choices": [
+            "100",
+            "9.9",
+            "0.99",
+            "1"
+          ],
+          "solution": "शंट आणि वेटोळे समांतरात आहेत, म्हणून ते एकच व्होल्टेज वाटून घेतात: I_g G = (I − I_g)S. म्हणून S = 99 × 0.01/0.99 = 1 Ω. तेव्हा वेटोळे आपले सुरक्षित 10 mA वाहते आणि शंट उरलेले 990 mA. तयार उपकरणावरचा परिणाम पाहा: 99 Ω च्या समांतर 1 Ω म्हणजे सुमारे 0.99 Ω, म्हणून अ‍ॅमीटरचा रोध कमी आहे, आणि परिपथाच्या श्रेणीत जोडल्या जाणाऱ्या घटकाचे नेमके हेच असावे जर त्याने ती धारा बदलू नये जिला मोजण्यासाठी तो बनवला आहे. (9.9 वेटोळ्याच्या बाजूने जाणाऱ्या भागाऐवजी अख्ख्या धारेने भागते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The same galvanometer — 99 Ω, full-scale deflection at 10 mA — is to be converted into a voltmeter reading 10 V at full scale. What resistance, in Ω, must be connected in series with it?",
+      "choices": [
+        "1099",
+        "1000",
+        "901",
+        "99"
+      ],
+      "answerIndex": 2,
+      "solution": "In series the same current flows through both, so I_g(G + R) = V and R = V/I_g − G = 10/0.01 − 99 = 1000 − 99 = 901 Ω. Subtracting the coil's own 99 Ω is the step most often skipped, and it matters at every scale: the total resistance must come to 1000 Ω, and the coil already supplies part of it. Compare this with the ammeter conversion of the previous question and the pattern is clear — the SAME movement becomes two different instruments, low-resistance with a parallel shunt for a series connection, high-resistance with a series multiplier for a parallel connection. The connection decides the requirement, and the requirement decides where the resistor goes. (1000 forgets to subtract G, and 1099 adds it instead.)",
+      "checkExpr": "10/0.01-99",
+      "translations": {
+        "hi": {
+          "stem": "वही धारामापी — 99 Ω, 10 mA पर पूरा विक्षेप — पूर्ण विक्षेप पर 10 V पढ़ने वाला वोल्टमापी बनाया जाना है। उसके श्रेणी में कितना प्रतिरोध, Ω में, जोड़ा जाए?",
+          "choices": [
+            "1099",
+            "1000",
+            "901",
+            "99"
+          ],
+          "solution": "श्रेणी में दोनों में से वही धारा बहती है, अतः I_g(G + R) = V और R = V/I_g − G = 10/0.01 − 99 = 1000 − 99 = 901 Ω. कुंडली के अपने 99 Ω घटाना वही चरण है जो सबसे अधिक छोड़ा जाता है, और वह हर पैमाने पर मायने रखता है: कुल प्रतिरोध 1000 Ω बनना चाहिए, और कुंडली उसका एक हिस्सा पहले ही दे रही है। इसकी पिछले प्रश्न के अमीटर रूपांतरण से तुलना करो और ढर्रा साफ़ है — वही गतिका दो भिन्न यंत्र बनती है, श्रेणी संयोजन के लिए समांतर शंट के साथ कम प्रतिरोध, समांतर संयोजन के लिए श्रेणी गुणक के साथ ऊँचा प्रतिरोध। संयोजन माँग तय करता है, और माँग तय करती है कि प्रतिरोधक कहाँ जाए। (1000 G घटाना भूल जाता है, और 1099 उसे जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "तोच गॅल्व्हॅनोमीटर — 99 Ω, 10 mA वर पूर्ण विचलन — पूर्ण विचलनावर 10 V वाचणारा व्होल्टमापक बनवायचा आहे. त्याच्या श्रेणीत किती रोध, Ω मध्ये, जोडावा?",
+          "choices": [
+            "1099",
+            "1000",
+            "901",
+            "99"
+          ],
+          "solution": "श्रेणीत दोन्हींतून तीच धारा वाहते, म्हणून I_g(G + R) = V आणि R = V/I_g − G = 10/0.01 − 99 = 1000 − 99 = 901 Ω. वेटोळ्याचे स्वतःचे 99 Ω वजा करणे हीच ती पायरी जी सर्वांत जास्त गाळली जाते, आणि ती प्रत्येक मापावर महत्त्वाची आहे: एकूण रोध 1000 Ω बनला पाहिजे, आणि वेटोळे त्याचा एक भाग आधीच पुरवत आहे. याची मागच्या प्रश्नातील अ‍ॅमीटर रूपांतरणाशी तुलना करा आणि आकृतिबंध स्पष्ट आहे — तीच हालचाल दोन वेगळी उपकरणे बनते, श्रेणी जोडणीसाठी समांतर शंटसह कमी रोध, समांतर जोडणीसाठी श्रेणी गुणकासह उंच रोध. जोडणी मागणी ठरवते, आणि मागणी ठरवते की रोधक कुठे जावा. (1000 हे G वजा करणे विसरते, आणि 1099 ते जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Two long parallel wires 0.5 m apart carry currents of 10 A and 20 A in the same direction. What is the force per metre between them, in μN/m? Take μ₀/2π = 0.2 μN/A².",
+      "choices": [
+        "80",
+        "8",
+        "400",
+        "40"
+      ],
+      "answerIndex": 0,
+      "solution": "F/L = (μ₀/2π)I₁I₂/r = 0.2 × 10 × 20/0.5 = 80 μN/m, and it is an ATTRACTION because the currents run the same way. The mechanism is worth stating in two steps rather than one: the first wire sets up a field at the second, and the second then feels BIL in that field — there is no direct wire-to-wire law, only the field standing between them. This is also the arrangement that once defined the ampere, and defining a base unit through a force is what tied electrical measurement to mechanical measurement before the modern fixed-constant definitions replaced it. (40 leaves out one factor of the separation; 400 forgets the constant.)",
+      "checkExpr": "0.2*10*20/0.5",
+      "translations": {
+        "hi": {
+          "stem": "0.5 m की दूरी पर दो लंबे समांतर तार एक ही दिशा में 10 A और 20 A धाराएँ ले जाते हैं। उनके बीच प्रति मीटर बल, μN/m में, क्या है? μ₀/2π = 0.2 μN/A² लो।",
+          "choices": [
+            "80",
+            "8",
+            "400",
+            "40"
+          ],
+          "solution": "F/L = (μ₀/2π)I₁I₂/r = 0.2 × 10 × 20/0.5 = 80 μN/m, और यह आकर्षण है क्योंकि धाराएँ एक ही ओर बहती हैं। क्रियाविधि एक के बजाय दो चरणों में कहनी चाहिए: पहला तार दूसरे पर क्षेत्र खड़ा करता है, और दूसरा फिर उस क्षेत्र में BIL अनुभव करता है — तार-से-तार का कोई सीधा नियम है ही नहीं, केवल उनके बीच खड़ा क्षेत्र है। यही वह व्यवस्था भी है जो कभी ऐम्पियर को परिभाषित करती थी, और किसी मूल मात्रक को बल के माध्यम से परिभाषित करना ही वह था जिसने आधुनिक नियत-स्थिरांक परिभाषाओं के आने से पहले विद्युत माप को यांत्रिक माप से बाँधा। (40 दूरी का एक गुणक छोड़ देता है; 400 स्थिरांक भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "0.5 m अंतरावरील दोन लांब समांतर तारा एकाच दिशेने 10 A आणि 20 A धारा वाहतात. त्यांच्यातले प्रति मीटर बल, μN/m मध्ये, किती? μ₀/2π = 0.2 μN/A² घ्या.",
+          "choices": [
+            "80",
+            "8",
+            "400",
+            "40"
+          ],
+          "solution": "F/L = (μ₀/2π)I₁I₂/r = 0.2 × 10 × 20/0.5 = 80 μN/m, आणि हे आकर्षण आहे कारण धारा एकाच दिशेने वाहतात. यंत्रणा एकाऐवजी दोन पायऱ्यांत सांगण्याजोगी आहे: पहिली तार दुसरीवर क्षेत्र उभे करते, आणि दुसरी मग त्या क्षेत्रात BIL अनुभवते — तार-ते-तार असा थेट नियम आहेच नाही, केवळ त्यांच्यामध्ये उभे असलेले क्षेत्र आहे. हीच ती मांडणी जी एकेकाळी अँपिअरची व्याख्या करत होती, आणि एखाद्या मूलभूत एककाची व्याख्या बलामार्गे करणे हेच ते ज्याने आधुनिक स्थिर-स्थिरांक व्याख्या येण्याआधी विद्युत मापनाला यांत्रिक मापनाशी बांधले. (40 अंतराचा एक गुणक गाळते; 400 स्थिरांक विसरते.)"
+        }
+      }
+    }
+  ]
+}

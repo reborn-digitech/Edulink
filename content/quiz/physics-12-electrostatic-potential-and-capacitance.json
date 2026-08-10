@@ -1,0 +1,968 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 12,
+  "chapter": "Chapter 2 — Electrostatic Potential and Capacitance",
+  "name": "Electrostatic Potential and Capacitance",
+  "slug": "physics-12-electrostatic-potential-and-capacitance",
+  "summary": "Replacing a vector at every point of space with a single number at every point, which is possible only because the work done moving a charge does not depend on the route taken; surfaces on which that number is constant and which must therefore meet the field at right angles everywhere; a conductor that arranges its own charge until the number is the same throughout it and the field inside has vanished; a device built to hold charge at a chosen number of volts, whose capacity depends on geometry and not at all on how much charge is actually in it; and an insulating slab which, pushed between the plates, weakens the field it sits in and so lets the same voltage hold more.",
+  "position": 2,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "स्थिरवैद्युत विभव तथा धारिता",
+      "summary": "आकाश के हर बिंदु पर सदिश की जगह हर बिंदु पर एक अकेली संख्या रखना, जो केवल इसलिए संभव है कि आवेश को हिलाने में किया गया कार्य लिए गए रास्ते पर निर्भर नहीं करता; वे पृष्ठ जिन पर वह संख्या अचर है और जिन्हें इसलिए हर जगह क्षेत्र से समकोण पर मिलना ही है; वह चालक जो अपना आवेश तब तक जमाता है जब तक संख्या उसमें हर जगह एक न हो जाए और भीतर का क्षेत्र लुप्त न हो जाए; वह युक्ति जो चुनी हुई वोल्ट संख्या पर आवेश रोकने को बनी है, जिसकी क्षमता ज्यामिति पर निर्भर है और उसमें वास्तव में कितना आवेश है इस पर बिलकुल नहीं; और वह विद्युतरोधी पट्टी जो प्लेटों के बीच ठेली जाने पर जिस क्षेत्र में बैठी है उसे कमज़ोर करती है और यों उसी वोल्टता को अधिक रोकने देती है।"
+    },
+    "mr": {
+      "name": "स्थिरविद्युत विभव आणि धारिता",
+      "summary": "अवकाशाच्या प्रत्येक बिंदूवरील सदिशाच्या जागी प्रत्येक बिंदूवर एकच संख्या ठेवणे, जे केवळ यामुळे शक्य आहे की प्रभार हलवण्यात केलेले कार्य घेतलेल्या मार्गावर अवलंबून नाही; ती पृष्ठे ज्यांवर ती संख्या अचल आहे आणि ज्यांना म्हणून सर्वत्र क्षेत्राला काटकोनात भेटावेच लागते; तो वाहक जो आपला प्रभार तोवर मांडतो जोवर संख्या त्याच्यात सर्वत्र एक होत नाही आणि आतले क्षेत्र नाहीसे होत नाही; ते साधन जे निवडलेल्या व्होल्ट संख्येवर प्रभार धरण्यासाठी बनवलेले, ज्याची क्षमता भूमितीवर अवलंबून आहे आणि त्यात प्रत्यक्षात किती प्रभार आहे यावर मुळीच नाही; आणि ती विद्युतरोधक पट्टी जी पट्ट्यांमध्ये ढकलल्यावर ज्या क्षेत्रात बसली आहे ते कमकुवत करते आणि अशा प्रकारे त्याच व्होल्टेजला अधिक धरू देते."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "The work an external agent must do, against the field and without acceleration, to carry one coulomb from infinity to a point — a single number at each point rather than three components. Which quantity is this?",
+      "choices": [
+        "Electrostatic potential",
+        "Potential energy of a charge configuration",
+        "A conductor in an electrostatic field",
+        "Capacitance"
+      ],
+      "answerIndex": 0,
+      "solution": "Electrostatic potential at a point is the work per unit positive charge in bringing a test charge from infinity to that point, and it is a scalar measured in volts. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "वह कार्य जो बाहरी कर्ता को, क्षेत्र के विरुद्ध और बिना त्वरण के, एक कूलॉम को अनंत से किसी बिंदु तक ले जाने में करना पड़े — हर बिंदु पर तीन घटकों के बजाय एक अकेली संख्या। यह कौन-सी राशि है?",
+          "choices": [
+            "स्थिरवैद्युत विभव",
+            "आवेश विन्यास की स्थितिज ऊर्जा",
+            "स्थिरवैद्युत क्षेत्र में चालक",
+            "धारिता"
+          ],
+          "solution": "किसी बिंदु पर स्थिरवैद्युत विभव वह कार्य प्रति एकांक धन आवेश है जो परीक्षण आवेश को अनंत से उस बिंदु तक लाने में लगे, और वह वोल्ट में नापा जाने वाला अदिश है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "बाह्य कर्त्याला, क्षेत्राविरुद्ध आणि त्वरणाविना, एक कुलोम अनंतापासून एका बिंदूपर्यंत नेण्यासाठी करावे लागणारे कार्य — प्रत्येक बिंदूवर तीन घटकांऐवजी एकच संख्या. ही कोणती राशी?",
+          "choices": [
+            "स्थिरविद्युत विभव",
+            "प्रभार मांडणीची स्थितिज ऊर्जा",
+            "स्थिरविद्युत क्षेत्रातील वाहक",
+            "धारिता"
+          ],
+          "solution": "एखाद्या बिंदूवरील स्थिरविद्युत विभव म्हणजे चाचणी प्रभाराला अनंतापासून त्या बिंदूपर्यंत आणण्यात लागणारे प्रति एकक धन प्रभार कार्य, आणि तो व्होल्टमध्ये मोजला जाणारा अदिश आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Potential energy of a charge configuration is correct?",
+      "choices": [
+        "An equipotential surface is one on which the potential has the same value throughout, so no work is done in moving a charge over it and the field is everywhere perpendicular to it.",
+        "The potential energy of a charge configuration is the total external work done in assembling it from infinite separation, and equals the sum of kq_iq_j/r_ij taken over distinct pairs.",
+        "Capacitance is C = Q/V, the charge required per volt, and for a parallel plate capacitor it is ε₀A/d — fixed entirely by geometry and the medium.",
+        "Electrostatic potential at a point is the work per unit positive charge in bringing a test charge from infinity to that point, and it is a scalar measured in volts."
+      ],
+      "answerIndex": 1,
+      "solution": "The potential energy of a charge configuration is the total external work done in assembling it from infinite separation, and equals the sum of kq_iq_j/r_ij taken over distinct pairs. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "आवेश विन्यास की स्थितिज ऊर्जा के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "समविभव पृष्ठ वह है जिस पर विभव का मान हर जगह एक है, अतः उस पर आवेश हिलाने में कोई कार्य नहीं होता और क्षेत्र हर जगह उसके लंबवत है।",
+            "आवेश विन्यास की स्थितिज ऊर्जा उसे अनंत दूरी से जमाने में किया गया कुल बाहरी कार्य है, और भिन्न युग्मों पर लिए गए kq_iq_j/r_ij के योग के बराबर है।",
+            "धारिता C = Q/V है, प्रति वोल्ट आवश्यक आवेश, और समांतर पट्ट संधारित्र के लिए वह ε₀A/d है — पूरी तरह ज्यामिति और माध्यम से तय।",
+            "किसी बिंदु पर स्थिरवैद्युत विभव वह कार्य प्रति एकांक धन आवेश है जो परीक्षण आवेश को अनंत से उस बिंदु तक लाने में लगे, और वह वोल्ट में नापा जाने वाला अदिश है।"
+          ],
+          "solution": "आवेश विन्यास की स्थितिज ऊर्जा उसे अनंत दूरी से जमाने में किया गया कुल बाहरी कार्य है, और भिन्न युग्मों पर लिए गए kq_iq_j/r_ij के योग के बराबर है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "प्रभार मांडणीची स्थितिज ऊर्जा विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "समविभव पृष्ठ ते ज्यावर विभवाचे मूल्य सर्वत्र एकच आहे, म्हणून त्यावर प्रभार हलवण्यात कोणतेही कार्य होत नाही आणि क्षेत्र सर्वत्र त्याला लंब असते.",
+            "प्रभार मांडणीची स्थितिज ऊर्जा म्हणजे तिला अनंत अंतरावरून मांडण्यात केलेले एकूण बाह्य कार्य, आणि ती वेगवेगळ्या जोड्यांवर घेतलेल्या kq_iq_j/r_ij च्या बेरजेइतकी असते.",
+            "धारिता म्हणजे C = Q/V, प्रति व्होल्ट लागणारा प्रभार, आणि समांतर पट्ट धारित्रासाठी ती ε₀A/d आहे — पूर्णपणे भूमिती आणि माध्यमाने ठरलेली.",
+            "एखाद्या बिंदूवरील स्थिरविद्युत विभव म्हणजे चाचणी प्रभाराला अनंतापासून त्या बिंदूपर्यंत आणण्यात लागणारे प्रति एकक धन प्रभार कार्य, आणि तो व्होल्टमध्ये मोजला जाणारा अदिश आहे."
+          ],
+          "solution": "प्रभार मांडणीची स्थितिज ऊर्जा म्हणजे तिला अनंत अंतरावरून मांडण्यात केलेले एकूण बाह्य कार्य, आणि ती वेगवेगळ्या जोड्यांवर घेतलेल्या kq_iq_j/r_ij च्या बेरजेइतकी असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The ratio is constant although both Q and V change together, which is what makes capacitance a property of the device rather than a description of its present state.\" — which of these is this about?",
+      "choices": [
+        "Capacitance",
+        "Potential energy of a charge configuration",
+        "A conductor in an electrostatic field",
+        "Electrostatic potential"
+      ],
+      "answerIndex": 0,
+      "solution": "Capacitance is C = Q/V, the charge required per volt, and for a parallel plate capacitor it is ε₀A/d — fixed entirely by geometry and the medium. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"अनुपात अचर रहता है यद्यपि Q और V दोनों साथ बदलते हैं, और यही धारिता को युक्ति का गुण बनाता है, उसकी वर्तमान अवस्था का वर्णन नहीं।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "धारिता",
+            "आवेश विन्यास की स्थितिज ऊर्जा",
+            "स्थिरवैद्युत क्षेत्र में चालक",
+            "स्थिरवैद्युत विभव"
+          ],
+          "solution": "धारिता C = Q/V है, प्रति वोल्ट आवश्यक आवेश, और समांतर पट्ट संधारित्र के लिए वह ε₀A/d है — पूरी तरह ज्यामिति और माध्यम से तय। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"गुणोत्तर अचल राहते जरी Q आणि V दोन्ही एकत्र बदलत असले तरी, आणि हेच धारितेला साधनाचा गुणधर्म बनवते, तिच्या सध्याच्या अवस्थेचे वर्णन नव्हे.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "धारिता",
+            "प्रभार मांडणीची स्थितिज ऊर्जा",
+            "स्थिरविद्युत क्षेत्रातील वाहक",
+            "स्थिरविद्युत विभव"
+          ],
+          "solution": "धारिता म्हणजे C = Q/V, प्रति व्होल्ट लागणारा प्रभार, आणि समांतर पट्ट धारित्रासाठी ती ε₀A/d आहे — पूर्णपणे भूमिती आणि माध्यमाने ठरलेली. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A surface along which a charge can be carried anywhere at all without any work being done, and which the field must therefore cross at right angles at every point. What is such a surface called?",
+      "choices": [
+        "Electrostatic potential",
+        "Equipotential surface",
+        "A conductor in an electrostatic field",
+        "Dielectric polarisation"
+      ],
+      "answerIndex": 1,
+      "solution": "An equipotential surface is one on which the potential has the same value throughout, so no work is done in moving a charge over it and the field is everywhere perpendicular to it. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ऐसा पृष्ठ जिस पर आवेश को कहीं भी ले जाओ, कोई कार्य नहीं होता, और जिसे इसलिए क्षेत्र हर बिंदु पर समकोण पर काटता ही है। ऐसा पृष्ठ क्या कहलाता है?",
+          "choices": [
+            "स्थिरवैद्युत विभव",
+            "समविभव पृष्ठ",
+            "स्थिरवैद्युत क्षेत्र में चालक",
+            "परावैद्युत ध्रुवण"
+          ],
+          "solution": "समविभव पृष्ठ वह है जिस पर विभव का मान हर जगह एक है, अतः उस पर आवेश हिलाने में कोई कार्य नहीं होता और क्षेत्र हर जगह उसके लंबवत है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "असे पृष्ठ ज्यावर प्रभार कुठेही न्या, कोणतेही कार्य होत नाही, आणि ज्याला म्हणून क्षेत्र प्रत्येक बिंदूवर काटकोनात छेदतेच. अशा पृष्ठाला काय म्हणतात?",
+          "choices": [
+            "स्थिरविद्युत विभव",
+            "समविभव पृष्ठ",
+            "स्थिरविद्युत क्षेत्रातील वाहक",
+            "पराविद्युत ध्रुवण"
+          ],
+          "solution": "समविभव पृष्ठ ते ज्यावर विभवाचे मूल्य सर्वत्र एकच आहे, म्हणून त्यावर प्रभार हलवण्यात कोणतेही कार्य होत नाही आणि क्षेत्र सर्वत्र त्याला लंब असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about A conductor in an electrostatic field is correct?",
+      "choices": [
+        "Electrostatic potential at a point is the work per unit positive charge in bringing a test charge from infinity to that point, and it is a scalar measured in volts.",
+        "Dielectric polarisation is the alignment of bound charge inside an insulator placed in a field, producing an internal field opposing the applied one and so reducing the net field by the factor K.",
+        "An equipotential surface is one on which the potential has the same value throughout, so no work is done in moving a charge over it and the field is everywhere perpendicular to it.",
+        "A conductor in an electrostatic field has zero field inside it, all its excess charge on the outer surface, and the same potential at every point of its volume and surface."
+      ],
+      "answerIndex": 3,
+      "solution": "A conductor in an electrostatic field has zero field inside it, all its excess charge on the outer surface, and the same potential at every point of its volume and surface. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "स्थिरवैद्युत क्षेत्र में चालक के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "किसी बिंदु पर स्थिरवैद्युत विभव वह कार्य प्रति एकांक धन आवेश है जो परीक्षण आवेश को अनंत से उस बिंदु तक लाने में लगे, और वह वोल्ट में नापा जाने वाला अदिश है।",
+            "परावैद्युत ध्रुवण क्षेत्र में रखे विद्युतरोधी के भीतर बद्ध आवेश का संरेखण है, जो लगाए गए क्षेत्र के विरुद्ध आंतरिक क्षेत्र बनाता है और यों नेट क्षेत्र को K गुणक से घटा देता है।",
+            "समविभव पृष्ठ वह है जिस पर विभव का मान हर जगह एक है, अतः उस पर आवेश हिलाने में कोई कार्य नहीं होता और क्षेत्र हर जगह उसके लंबवत है।",
+            "स्थिरवैद्युत क्षेत्र में चालक के भीतर क्षेत्र शून्य होता है, उसका सारा अतिरिक्त आवेश बाहरी पृष्ठ पर होता है, और उसके आयतन तथा पृष्ठ के हर बिंदु पर एक ही विभव होता है।"
+          ],
+          "solution": "स्थिरवैद्युत क्षेत्र में चालक के भीतर क्षेत्र शून्य होता है, उसका सारा अतिरिक्त आवेश बाहरी पृष्ठ पर होता है, और उसके आयतन तथा पृष्ठ के हर बिंदु पर एक ही विभव होता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "स्थिरविद्युत क्षेत्रातील वाहक विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "एखाद्या बिंदूवरील स्थिरविद्युत विभव म्हणजे चाचणी प्रभाराला अनंतापासून त्या बिंदूपर्यंत आणण्यात लागणारे प्रति एकक धन प्रभार कार्य, आणि तो व्होल्टमध्ये मोजला जाणारा अदिश आहे.",
+            "पराविद्युत ध्रुवण म्हणजे क्षेत्रात ठेवलेल्या विद्युतरोधकाच्या आत बद्ध प्रभाराचे संरेखन, जे लावलेल्या क्षेत्राविरुद्ध अंतर्गत क्षेत्र निर्माण करते आणि अशा प्रकारे निव्वळ क्षेत्र K या गुणकाने घटवते.",
+            "समविभव पृष्ठ ते ज्यावर विभवाचे मूल्य सर्वत्र एकच आहे, म्हणून त्यावर प्रभार हलवण्यात कोणतेही कार्य होत नाही आणि क्षेत्र सर्वत्र त्याला लंब असते.",
+            "स्थिरविद्युत क्षेत्रातील वाहकाच्या आत क्षेत्र शून्य असते, त्याचा सारा जादा प्रभार बाहेरच्या पृष्ठावर असतो, आणि त्याच्या घनफळाच्या व पृष्ठाच्या प्रत्येक बिंदूवर एकच विभव असतो."
+          ],
+          "solution": "स्थिरविद्युत क्षेत्रातील वाहकाच्या आत क्षेत्र शून्य असते, त्याचा सारा जादा प्रभार बाहेरच्या पृष्ठावर असतो, आणि त्याच्या घनफळाच्या व पृष्ठाच्या प्रत्येक बिंदूवर एकच विभव असतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The bound charge cannot be drawn off with a wire, which is exactly what distinguishes it from the free charge on a conductor's surface and why the field is only reduced, never cancelled.\" — which of these is this about?",
+      "choices": [
+        "A conductor in an electrostatic field",
+        "Potential energy of a charge configuration",
+        "Equipotential surface",
+        "Dielectric polarisation"
+      ],
+      "answerIndex": 3,
+      "solution": "Dielectric polarisation is the alignment of bound charge inside an insulator placed in a field, producing an internal field opposing the applied one and so reducing the net field by the factor K. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"बद्ध आवेश तार से खींचा नहीं जा सकता, और ठीक यही उसे चालक के पृष्ठ के मुक्त आवेश से अलग करता है और इसीलिए क्षेत्र केवल घटता है, कभी कटता नहीं।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "स्थिरवैद्युत क्षेत्र में चालक",
+            "आवेश विन्यास की स्थितिज ऊर्जा",
+            "समविभव पृष्ठ",
+            "परावैद्युत ध्रुवण"
+          ],
+          "solution": "परावैद्युत ध्रुवण क्षेत्र में रखे विद्युतरोधी के भीतर बद्ध आवेश का संरेखण है, जो लगाए गए क्षेत्र के विरुद्ध आंतरिक क्षेत्र बनाता है और यों नेट क्षेत्र को K गुणक से घटा देता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"बद्ध प्रभार तारेने ओढून घेता येत नाही, आणि नेमके हेच त्याला वाहकाच्या पृष्ठावरील मुक्त प्रभारापासून वेगळे करते आणि म्हणूनच क्षेत्र केवळ घटते, कधीच नाहीसे होत नाही.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "स्थिरविद्युत क्षेत्रातील वाहक",
+            "प्रभार मांडणीची स्थितिज ऊर्जा",
+            "समविभव पृष्ठ",
+            "पराविद्युत ध्रुवण"
+          ],
+          "solution": "पराविद्युत ध्रुवण म्हणजे क्षेत्रात ठेवलेल्या विद्युतरोधकाच्या आत बद्ध प्रभाराचे संरेखन, जे लावलेल्या क्षेत्राविरुद्ध अंतर्गत क्षेत्र निर्माण करते आणि अशा प्रकारे निव्वळ क्षेत्र K या गुणकाने घटवते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"One number where the field needed three\" goes correctly with which of these?",
+      "choices": [
+        "dielectric polarisation",
+        "an equipotential surface",
+        "electrostatic potential",
+        "potential energy of a charge configuration"
+      ],
+      "answerIndex": 2,
+      "solution": "Electrostatic potential at a point is the work per unit positive charge in bringing a test charge from infinity to that point, and it is a scalar measured in volts. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"एक संख्या, जहाँ क्षेत्र को तीन चाहिए थीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "परावैद्युत ध्रुवण",
+            "समविभव पृष्ठ",
+            "स्थिरवैद्युत विभव",
+            "आवेश विन्यास की स्थितिज ऊर्जा"
+          ],
+          "solution": "किसी बिंदु पर स्थिरवैद्युत विभव वह कार्य प्रति एकांक धन आवेश है जो परीक्षण आवेश को अनंत से उस बिंदु तक लाने में लगे, और वह वोल्ट में नापा जाने वाला अदिश है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"एक संख्या, जिथे क्षेत्राला तीन लागत होत्या\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "पराविद्युत ध्रुवण",
+            "समविभव पृष्ठ",
+            "स्थिरविद्युत विभव",
+            "प्रभार मांडणीची स्थितिज ऊर्जा"
+          ],
+          "solution": "एखाद्या बिंदूवरील स्थिरविद्युत विभव म्हणजे चाचणी प्रभाराला अनंतापासून त्या बिंदूपर्यंत आणण्यात लागणारे प्रति एकक धन प्रभार कार्य, आणि तो व्होल्टमध्ये मोजला जाणारा अदिश आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Counted once per pair, and the first one is free\" goes correctly with which of these?",
+      "choices": [
+        "a conductor in an electrostatic field",
+        "potential energy of a charge configuration",
+        "capacitance",
+        "dielectric polarisation"
+      ],
+      "answerIndex": 1,
+      "solution": "The potential energy of a charge configuration is the total external work done in assembling it from infinite separation, and equals the sum of kq_iq_j/r_ij taken over distinct pairs. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"हर युग्म पर एक बार गिनी गई, और पहला मुफ़्त\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "स्थिरवैद्युत क्षेत्र में चालक",
+            "आवेश विन्यास की स्थितिज ऊर्जा",
+            "धारिता",
+            "परावैद्युत ध्रुवण"
+          ],
+          "solution": "आवेश विन्यास की स्थितिज ऊर्जा उसे अनंत दूरी से जमाने में किया गया कुल बाहरी कार्य है, और भिन्न युग्मों पर लिए गए kq_iq_j/r_ij के योग के बराबर है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"प्रत्येक जोडीवर एकदा मोजलेली, आणि पहिला फुकट\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "स्थिरविद्युत क्षेत्रातील वाहक",
+            "प्रभार मांडणीची स्थितिज ऊर्जा",
+            "धारिता",
+            "पराविद्युत ध्रुवण"
+          ],
+          "solution": "प्रभार मांडणीची स्थितिज ऊर्जा म्हणजे तिला अनंत अंतरावरून मांडण्यात केलेले एकूण बाह्य कार्य, आणि ती वेगवेगळ्या जोड्यांवर घेतलेल्या kq_iq_j/r_ij च्या बेरजेइतकी असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A ratio that does not care how much is in it\" goes correctly with which of these?",
+      "choices": [
+        "capacitance",
+        "potential energy of a charge configuration",
+        "a conductor in an electrostatic field",
+        "dielectric polarisation"
+      ],
+      "answerIndex": 0,
+      "solution": "Capacitance is C = Q/V, the charge required per volt, and for a parallel plate capacitor it is ε₀A/d — fixed entirely by geometry and the medium. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ऐसा अनुपात जिसे परवाह नहीं कि भीतर कितना है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "धारिता",
+            "आवेश विन्यास की स्थितिज ऊर्जा",
+            "स्थिरवैद्युत क्षेत्र में चालक",
+            "परावैद्युत ध्रुवण"
+          ],
+          "solution": "धारिता C = Q/V है, प्रति वोल्ट आवश्यक आवेश, और समांतर पट्ट संधारित्र के लिए वह ε₀A/d है — पूरी तरह ज्यामिति और माध्यम से तय। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"असे गुणोत्तर ज्याला आत किती आहे याची पर्वा नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "धारिता",
+            "प्रभार मांडणीची स्थितिज ऊर्जा",
+            "स्थिरविद्युत क्षेत्रातील वाहक",
+            "पराविद्युत ध्रुवण"
+          ],
+          "solution": "धारिता म्हणजे C = Q/V, प्रति व्होल्ट लागणारा प्रभार, आणि समांतर पट्ट धारित्रासाठी ती ε₀A/d आहे — पूर्णपणे भूमिती आणि माध्यमाने ठरलेली. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Walk anywhere on it and the work is zero\" goes correctly with which of these?",
+      "choices": [
+        "dielectric polarisation",
+        "potential energy of a charge configuration",
+        "capacitance",
+        "an equipotential surface"
+      ],
+      "answerIndex": 3,
+      "solution": "An equipotential surface is one on which the potential has the same value throughout, so no work is done in moving a charge over it and the field is everywhere perpendicular to it. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"उस पर कहीं भी चलो, कार्य शून्य\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "परावैद्युत ध्रुवण",
+            "आवेश विन्यास की स्थितिज ऊर्जा",
+            "धारिता",
+            "समविभव पृष्ठ"
+          ],
+          "solution": "समविभव पृष्ठ वह है जिस पर विभव का मान हर जगह एक है, अतः उस पर आवेश हिलाने में कोई कार्य नहीं होता और क्षेत्र हर जगह उसके लंबवत है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"त्यावर कुठेही चला, कार्य शून्य\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "पराविद्युत ध्रुवण",
+            "प्रभार मांडणीची स्थितिज ऊर्जा",
+            "धारिता",
+            "समविभव पृष्ठ"
+          ],
+          "solution": "समविभव पृष्ठ ते ज्यावर विभवाचे मूल्य सर्वत्र एकच आहे, म्हणून त्यावर प्रभार हलवण्यात कोणतेही कार्य होत नाही आणि क्षेत्र सर्वत्र त्याला लंब असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Still moving would mean not yet static\" goes correctly with which of these?",
+      "choices": [
+        "capacitance",
+        "electrostatic potential",
+        "a conductor in an electrostatic field",
+        "an equipotential surface"
+      ],
+      "answerIndex": 2,
+      "solution": "A conductor in an electrostatic field has zero field inside it, all its excess charge on the outer surface, and the same potential at every point of its volume and surface. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"अब भी चल रहे होना मतलब अभी स्थैतिक नहीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "धारिता",
+            "स्थिरवैद्युत विभव",
+            "स्थिरवैद्युत क्षेत्र में चालक",
+            "समविभव पृष्ठ"
+          ],
+          "solution": "स्थिरवैद्युत क्षेत्र में चालक के भीतर क्षेत्र शून्य होता है, उसका सारा अतिरिक्त आवेश बाहरी पृष्ठ पर होता है, और उसके आयतन तथा पृष्ठ के हर बिंदु पर एक ही विभव होता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"अजून हलत असणे म्हणजे अजून स्थैतिक नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "धारिता",
+            "स्थिरविद्युत विभव",
+            "स्थिरविद्युत क्षेत्रातील वाहक",
+            "समविभव पृष्ठ"
+          ],
+          "solution": "स्थिरविद्युत क्षेत्रातील वाहकाच्या आत क्षेत्र शून्य असते, त्याचा सारा जादा प्रभार बाहेरच्या पृष्ठावर असतो, आणि त्याच्या घनफळाच्या व पृष्ठाच्या प्रत्येक बिंदूवर एकच विभव असतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Bound charge that no wire can carry away\" goes correctly with which of these?",
+      "choices": [
+        "capacitance",
+        "potential energy of a charge configuration",
+        "a conductor in an electrostatic field",
+        "dielectric polarisation"
+      ],
+      "answerIndex": 3,
+      "solution": "Dielectric polarisation is the alignment of bound charge inside an insulator placed in a field, producing an internal field opposing the applied one and so reducing the net field by the factor K. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"बद्ध आवेश जिसे कोई तार ले नहीं जा सकता\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "धारिता",
+            "आवेश विन्यास की स्थितिज ऊर्जा",
+            "स्थिरवैद्युत क्षेत्र में चालक",
+            "परावैद्युत ध्रुवण"
+          ],
+          "solution": "परावैद्युत ध्रुवण क्षेत्र में रखे विद्युतरोधी के भीतर बद्ध आवेश का संरेखण है, जो लगाए गए क्षेत्र के विरुद्ध आंतरिक क्षेत्र बनाता है और यों नेट क्षेत्र को K गुणक से घटा देता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"बद्ध प्रभार जो कोणतीही तार वाहून नेऊ शकत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "धारिता",
+            "प्रभार मांडणीची स्थितिज ऊर्जा",
+            "स्थिरविद्युत क्षेत्रातील वाहक",
+            "पराविद्युत ध्रुवण"
+          ],
+          "solution": "पराविद्युत ध्रुवण म्हणजे क्षेत्रात ठेवलेल्या विद्युतरोधकाच्या आत बद्ध प्रभाराचे संरेखन, जे लावलेल्या क्षेत्राविरुद्ध अंतर्गत क्षेत्र निर्माण करते आणि अशा प्रकारे निव्वळ क्षेत्र K या गुणकाने घटवते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Electrostatic potential EXCEPT —",
+      "choices": [
+        "Electrostatic potential at a point is the work per unit positive charge in bringing a test charge from infinity to that point, and it is a scalar measured in volts.",
+        "The potential energy of a charge configuration is the total external work done in assembling it from infinite separation, and equals the sum of kq_iq_j/r_ij taken over distinct pairs.",
+        "Only differences are ever measured, so the zero can be put where convenient — at infinity in theory, at the earth in a laboratory — and no experiment can distinguish the two choices.",
+        "It can be defined at all only because the electrostatic force is conservative: the work is the same along every route from infinity, so the number belongs to the point and not to the journey."
+      ],
+      "answerIndex": 1,
+      "solution": "The potential energy of a charge configuration is the total external work done in assembling it from infinite separation, and equals the sum of kq_iq_j/r_ij taken over distinct pairs. That belongs to Potential energy of a charge configuration, not Electrostatic potential — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "स्थिरवैद्युत विभव के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "किसी बिंदु पर स्थिरवैद्युत विभव वह कार्य प्रति एकांक धन आवेश है जो परीक्षण आवेश को अनंत से उस बिंदु तक लाने में लगे, और वह वोल्ट में नापा जाने वाला अदिश है।",
+            "आवेश विन्यास की स्थितिज ऊर्जा उसे अनंत दूरी से जमाने में किया गया कुल बाहरी कार्य है, और भिन्न युग्मों पर लिए गए kq_iq_j/r_ij के योग के बराबर है।",
+            "नापा सदा केवल अंतर जाता है, अतः शून्य वहाँ रखा जा सकता है जहाँ सुविधा हो — सिद्धांत में अनंत पर, प्रयोगशाला में पृथ्वी पर — और कोई प्रयोग दोनों चुनावों में भेद नहीं कर सकता।",
+            "यह परिभाषित ही इसलिए हो पाता है कि स्थिरवैद्युत बल संरक्षी है: अनंत से आने वाले हर रास्ते पर कार्य एक-सा है, अतः संख्या बिंदु की है, यात्रा की नहीं।"
+          ],
+          "solution": "आवेश विन्यास की स्थितिज ऊर्जा उसे अनंत दूरी से जमाने में किया गया कुल बाहरी कार्य है, और भिन्न युग्मों पर लिए गए kq_iq_j/r_ij के योग के बराबर है। यह आवेश विन्यास की स्थितिज ऊर्जा की बात है, स्थिरवैद्युत विभव की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "स्थिरविद्युत विभव विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "एखाद्या बिंदूवरील स्थिरविद्युत विभव म्हणजे चाचणी प्रभाराला अनंतापासून त्या बिंदूपर्यंत आणण्यात लागणारे प्रति एकक धन प्रभार कार्य, आणि तो व्होल्टमध्ये मोजला जाणारा अदिश आहे.",
+            "प्रभार मांडणीची स्थितिज ऊर्जा म्हणजे तिला अनंत अंतरावरून मांडण्यात केलेले एकूण बाह्य कार्य, आणि ती वेगवेगळ्या जोड्यांवर घेतलेल्या kq_iq_j/r_ij च्या बेरजेइतकी असते.",
+            "मोजला नेहमी केवळ फरकच जातो, म्हणून शून्य जिथे सोयीचे तिथे ठेवता येते — सिद्धांतात अनंतावर, प्रयोगशाळेत पृथ्वीवर — आणि कोणताही प्रयोग दोन निवडींत भेद करू शकत नाही.",
+            "याची व्याख्या मुळात यामुळेच होऊ शकते की स्थिरविद्युत बल संरक्षी आहे: अनंतापासून येणाऱ्या प्रत्येक मार्गावर कार्य सारखेच आहे, म्हणून संख्या बिंदूची आहे, प्रवासाची नव्हे."
+          ],
+          "solution": "प्रभार मांडणीची स्थितिज ऊर्जा म्हणजे तिला अनंत अंतरावरून मांडण्यात केलेले एकूण बाह्य कार्य, आणि ती वेगवेगळ्या जोड्यांवर घेतलेल्या kq_iq_j/r_ij च्या बेरजेइतकी असते. हे प्रभार मांडणीची स्थितिज ऊर्जा चे आहे, स्थिरविद्युत विभव चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Potential energy of a charge configuration EXCEPT —",
+      "choices": [
+        "It can be negative, and a negative value is the statement that the configuration is bound: work would have to be supplied from outside to pull the charges back to infinity.",
+        "Capacitance is C = Q/V, the charge required per volt, and for a parallel plate capacitor it is ε₀A/d — fixed entirely by geometry and the medium.",
+        "The first charge costs nothing, because there is nothing yet for it to be pushed against — which is why a system of n charges has n(n−1)/2 terms and not n².",
+        "The potential energy of a charge configuration is the total external work done in assembling it from infinite separation, and equals the sum of kq_iq_j/r_ij taken over distinct pairs."
+      ],
+      "answerIndex": 1,
+      "solution": "Capacitance is C = Q/V, the charge required per volt, and for a parallel plate capacitor it is ε₀A/d — fixed entirely by geometry and the medium. That belongs to Capacitance, not Potential energy of a charge configuration — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "आवेश विन्यास की स्थितिज ऊर्जा के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "यह ऋणात्मक हो सकती है, और ऋण मान यह कथन है कि विन्यास बँधा हुआ है: आवेशों को वापस अनंत तक खींचने के लिए बाहर से कार्य देना पड़ेगा।",
+            "धारिता C = Q/V है, प्रति वोल्ट आवश्यक आवेश, और समांतर पट्ट संधारित्र के लिए वह ε₀A/d है — पूरी तरह ज्यामिति और माध्यम से तय।",
+            "पहला आवेश कुछ नहीं लेता, क्योंकि अभी उसे किसके विरुद्ध धकेला जाए ऐसा कुछ है ही नहीं — इसीलिए n आवेशों के निकाय में n(n−1)/2 पद होते हैं, n² नहीं।",
+            "आवेश विन्यास की स्थितिज ऊर्जा उसे अनंत दूरी से जमाने में किया गया कुल बाहरी कार्य है, और भिन्न युग्मों पर लिए गए kq_iq_j/r_ij के योग के बराबर है।"
+          ],
+          "solution": "धारिता C = Q/V है, प्रति वोल्ट आवश्यक आवेश, और समांतर पट्ट संधारित्र के लिए वह ε₀A/d है — पूरी तरह ज्यामिति और माध्यम से तय। यह धारिता की बात है, आवेश विन्यास की स्थितिज ऊर्जा की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "प्रभार मांडणीची स्थितिज ऊर्जा विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "ती ऋण असू शकते, आणि ऋण मूल्य हे विधान आहे की मांडणी बद्ध आहे: प्रभारांना पुन्हा अनंतापर्यंत ओढण्यासाठी बाहेरून कार्य द्यावे लागेल.",
+            "धारिता म्हणजे C = Q/V, प्रति व्होल्ट लागणारा प्रभार, आणि समांतर पट्ट धारित्रासाठी ती ε₀A/d आहे — पूर्णपणे भूमिती आणि माध्यमाने ठरलेली.",
+            "पहिला प्रभार काहीच घेत नाही, कारण त्याला कशाविरुद्ध ढकलावे असे अजून काहीच नाही — म्हणूनच n प्रभारांच्या संस्थेत n(n−1)/2 पदे असतात, n² नव्हे.",
+            "प्रभार मांडणीची स्थितिज ऊर्जा म्हणजे तिला अनंत अंतरावरून मांडण्यात केलेले एकूण बाह्य कार्य, आणि ती वेगवेगळ्या जोड्यांवर घेतलेल्या kq_iq_j/r_ij च्या बेरजेइतकी असते."
+          ],
+          "solution": "धारिता म्हणजे C = Q/V, प्रति व्होल्ट लागणारा प्रभार, आणि समांतर पट्ट धारित्रासाठी ती ε₀A/d आहे — पूर्णपणे भूमिती आणि माध्यमाने ठरलेली. हे धारिता चे आहे, प्रभार मांडणीची स्थितिज ऊर्जा चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Capacitance EXCEPT —",
+      "choices": [
+        "The ratio is constant although both Q and V change together, which is what makes capacitance a property of the device rather than a description of its present state.",
+        "Capacitors in parallel add their capacitances while capacitors in series add their reciprocals, which is the exact opposite of how resistors behave and the commonest source of a wrong first line.",
+        "Capacitance is C = Q/V, the charge required per volt, and for a parallel plate capacitor it is ε₀A/d — fixed entirely by geometry and the medium.",
+        "The potential energy of a charge configuration is the total external work done in assembling it from infinite separation, and equals the sum of kq_iq_j/r_ij taken over distinct pairs."
+      ],
+      "answerIndex": 3,
+      "solution": "The potential energy of a charge configuration is the total external work done in assembling it from infinite separation, and equals the sum of kq_iq_j/r_ij taken over distinct pairs. That belongs to Potential energy of a charge configuration, not Capacitance — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "धारिता के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "अनुपात अचर रहता है यद्यपि Q और V दोनों साथ बदलते हैं, और यही धारिता को युक्ति का गुण बनाता है, उसकी वर्तमान अवस्था का वर्णन नहीं।",
+            "समांतर में संधारित्र अपनी धारिताएँ जोड़ते हैं जबकि श्रेणी में वे अपने व्युत्क्रम जोड़ते हैं, जो प्रतिरोधकों के ठीक उलट है और ग़लत पहली पंक्ति का सबसे आम स्रोत।",
+            "धारिता C = Q/V है, प्रति वोल्ट आवश्यक आवेश, और समांतर पट्ट संधारित्र के लिए वह ε₀A/d है — पूरी तरह ज्यामिति और माध्यम से तय।",
+            "आवेश विन्यास की स्थितिज ऊर्जा उसे अनंत दूरी से जमाने में किया गया कुल बाहरी कार्य है, और भिन्न युग्मों पर लिए गए kq_iq_j/r_ij के योग के बराबर है।"
+          ],
+          "solution": "आवेश विन्यास की स्थितिज ऊर्जा उसे अनंत दूरी से जमाने में किया गया कुल बाहरी कार्य है, और भिन्न युग्मों पर लिए गए kq_iq_j/r_ij के योग के बराबर है। यह आवेश विन्यास की स्थितिज ऊर्जा की बात है, धारिता की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "धारिता विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "गुणोत्तर अचल राहते जरी Q आणि V दोन्ही एकत्र बदलत असले तरी, आणि हेच धारितेला साधनाचा गुणधर्म बनवते, तिच्या सध्याच्या अवस्थेचे वर्णन नव्हे.",
+            "समांतरात धारित्रे आपल्या धारिता जोडतात तर श्रेणीत ती आपले व्यस्तांक जोडतात, जे रोधकांच्या नेमके उलट आहे आणि चुकीच्या पहिल्या ओळीचा सर्वांत सामान्य स्रोत.",
+            "धारिता म्हणजे C = Q/V, प्रति व्होल्ट लागणारा प्रभार, आणि समांतर पट्ट धारित्रासाठी ती ε₀A/d आहे — पूर्णपणे भूमिती आणि माध्यमाने ठरलेली.",
+            "प्रभार मांडणीची स्थितिज ऊर्जा म्हणजे तिला अनंत अंतरावरून मांडण्यात केलेले एकूण बाह्य कार्य, आणि ती वेगवेगळ्या जोड्यांवर घेतलेल्या kq_iq_j/r_ij च्या बेरजेइतकी असते."
+          ],
+          "solution": "प्रभार मांडणीची स्थितिज ऊर्जा म्हणजे तिला अनंत अंतरावरून मांडण्यात केलेले एकूण बाह्य कार्य, आणि ती वेगवेगळ्या जोड्यांवर घेतलेल्या kq_iq_j/r_ij च्या बेरजेइतकी असते. हे प्रभार मांडणीची स्थितिज ऊर्जा चे आहे, धारिता चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Equipotential surface EXCEPT —",
+      "choices": [
+        "The perpendicularity is not an extra rule but a consequence: any component of the field along the surface would do work on a charge moved along it, and then the potential would not have been constant.",
+        "Where these surfaces crowd together the potential is changing fast over a short distance, so their spacing is a picture of the field's strength as well as its direction.",
+        "A conductor in an electrostatic field has zero field inside it, all its excess charge on the outer surface, and the same potential at every point of its volume and surface.",
+        "An equipotential surface is one on which the potential has the same value throughout, so no work is done in moving a charge over it and the field is everywhere perpendicular to it."
+      ],
+      "answerIndex": 2,
+      "solution": "A conductor in an electrostatic field has zero field inside it, all its excess charge on the outer surface, and the same potential at every point of its volume and surface. That belongs to A conductor in an electrostatic field, not Equipotential surface — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "समविभव पृष्ठ के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "लंबवतता कोई अतिरिक्त नियम नहीं बल्कि परिणाम है: पृष्ठ के अनुदिश क्षेत्र का कोई भी घटक उस पर हिलाए गए आवेश पर कार्य करता, और तब विभव अचर होता ही नहीं।",
+            "जहाँ ये पृष्ठ पास-पास भीड़ करते हैं वहाँ विभव थोड़ी दूरी में तेज़ी से बदल रहा है, अतः उनका अंतराल क्षेत्र की दिशा के साथ उसकी प्रबलता का भी चित्र है।",
+            "स्थिरवैद्युत क्षेत्र में चालक के भीतर क्षेत्र शून्य होता है, उसका सारा अतिरिक्त आवेश बाहरी पृष्ठ पर होता है, और उसके आयतन तथा पृष्ठ के हर बिंदु पर एक ही विभव होता है।",
+            "समविभव पृष्ठ वह है जिस पर विभव का मान हर जगह एक है, अतः उस पर आवेश हिलाने में कोई कार्य नहीं होता और क्षेत्र हर जगह उसके लंबवत है।"
+          ],
+          "solution": "स्थिरवैद्युत क्षेत्र में चालक के भीतर क्षेत्र शून्य होता है, उसका सारा अतिरिक्त आवेश बाहरी पृष्ठ पर होता है, और उसके आयतन तथा पृष्ठ के हर बिंदु पर एक ही विभव होता है। यह स्थिरवैद्युत क्षेत्र में चालक की बात है, समविभव पृष्ठ की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "समविभव पृष्ठ विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "लंबत्व हा जादा नियम नसून परिणाम आहे: पृष्ठाच्या दिशेने क्षेत्राचा कोणताही घटक त्यावर हलवलेल्या प्रभारावर कार्य करेल, आणि मग विभव अचल राहिलाच नसता.",
+            "जिथे ही पृष्ठे जवळजवळ दाटतात तिथे विभव थोड्या अंतरात वेगाने बदलत आहे, म्हणून त्यांचे अंतर क्षेत्राच्या दिशेसोबत त्याच्या तीव्रतेचेही चित्र आहे.",
+            "स्थिरविद्युत क्षेत्रातील वाहकाच्या आत क्षेत्र शून्य असते, त्याचा सारा जादा प्रभार बाहेरच्या पृष्ठावर असतो, आणि त्याच्या घनफळाच्या व पृष्ठाच्या प्रत्येक बिंदूवर एकच विभव असतो.",
+            "समविभव पृष्ठ ते ज्यावर विभवाचे मूल्य सर्वत्र एकच आहे, म्हणून त्यावर प्रभार हलवण्यात कोणतेही कार्य होत नाही आणि क्षेत्र सर्वत्र त्याला लंब असते."
+          ],
+          "solution": "स्थिरविद्युत क्षेत्रातील वाहकाच्या आत क्षेत्र शून्य असते, त्याचा सारा जादा प्रभार बाहेरच्या पृष्ठावर असतो, आणि त्याच्या घनफळाच्या व पृष्ठाच्या प्रत्येक बिंदूवर एकच विभव असतो. हे स्थिरविद्युत क्षेत्रातील वाहक चे आहे, समविभव पृष्ठ चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A parallel plate capacitor is charged by a battery. In experiment A the battery is left connected and a dielectric slab is slid between the plates; in experiment B the battery is disconnected first and the same slab is then inserted. What happens to the charge, the voltage and the field in each case?",
+      "choices": [
+        "In A the battery holds V fixed, so with C multiplied by K the charge Q = CV rises by K and the field E = V/d is unchanged; extra charge flows from the battery. In B the plates are isolated, so Q is fixed instead, and with C multiplied by K the voltage V = Q/C falls to a Kth and the field falls with it. The single question to ask first is which quantity the circuit is holding constant — the battery fixes V, an open circuit fixes Q — and everything else follows from C = Q/V",
+        "In both cases the charge stays the same and only the voltage falls, since inserting a dielectric cannot move charge onto or off the plates",
+        "In both cases the voltage stays the same and only the charge rises, because the dielectric raises the capacitance and the capacitor must fill to match it",
+        "In A the field falls and in B it is unchanged, because a connected battery cannot maintain a field through an insulating slab"
+      ],
+      "answerIndex": 0,
+      "solution": "Almost every capacitor question of this type is decided by one preliminary decision, and students who make it explicitly get the rest almost automatically: WHICH QUANTITY IS THE CIRCUIT HOLDING CONSTANT? There are only two answers. If the battery is still connected, it maintains a fixed potential difference across the plates and will supply or absorb whatever charge is needed to do so; V is constant and Q is free. If the battery has been removed, the plates are isolated islands of metal with nowhere for their charge to go; Q is constant and V is free. Everything else is C = Q/V read in the appropriate direction. Both experiments share one fact: inserting the slab multiplies the capacitance by the dielectric constant K, because polarisation sets up bound surface charge whose own field opposes the applied one. Experiment A, battery connected. V is pinned at the battery's e.m.f. C has become KC₀. Therefore Q = CV rises from C₀V to KC₀V — the charge has increased by a factor K, and that extra charge came from the battery, which means a brief current flowed while the slab went in. The field between the plates is E = V/d, and since V and d are both unchanged, the field is exactly what it was. This surprises students who have learned that a dielectric 'reduces the field': it does reduce the field produced by a given charge, but here the charge rose by precisely the factor needed to keep the field where the battery wants it. The stored energy U = ½CV² rises by K as well. Experiment B, battery disconnected. Now Q is pinned, because the charge on an isolated plate has no route away. C has again become KC₀. Therefore V = Q/C falls from Q/C₀ to Q/(KC₀), a factor of K smaller. The field E = V/d falls by the same factor — this is the case in which the dielectric visibly weakens the field, and the reason is that the bound charge partly cancels the free charge without any compensating supply. The energy U = Q²/2C falls by K, and the missing energy is accounted for: the slab was pulled in by the fringing field, so the field did work on it, and letting go of a slab at the edge of a charged isolated capacitor will indeed suck it in. That the same slab produces opposite effects on the voltage in the two experiments is not a paradox; it is a demonstration that a capacitor's behaviour is not a property of the capacitor alone but of the capacitor plus whatever the circuit is doing to it. (The second and third options each pick one experiment's answer and apply it to both; the fourth invents an inability of batteries that does not exist — a dielectric is not a break in the circuit, and no current needs to cross it.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक समांतर पट्ट संधारित्र बैटरी से आवेशित किया जाता है। प्रयोग A में बैटरी जुड़ी छोड़ दी जाती है और प्लेटों के बीच परावैद्युत पट्टी सरकाई जाती है; प्रयोग B में पहले बैटरी हटाई जाती है और फिर वही पट्टी डाली जाती है। हर स्थिति में आवेश, वोल्टता और क्षेत्र का क्या होता है?",
+          "choices": [
+            "A में बैटरी V को स्थिर रखती है, अतः C के K गुना होने पर आवेश Q = CV, K गुना बढ़ता है और क्षेत्र E = V/d अपरिवर्तित रहता है; अतिरिक्त आवेश बैटरी से बहता है। B में प्लेटें विलगित हैं, अतः इस बार Q स्थिर है, और C के K गुना होने पर वोल्टता V = Q/C घटकर Kवाँ भाग रह जाती है और क्षेत्र उसके साथ घटता है। पहला प्रश्न यही पूछना है कि परिपथ किस राशि को अचर रख रहा है — बैटरी V को बाँधती है, खुला परिपथ Q को — और बाक़ी सब C = Q/V से निकल आता है",
+            "दोनों स्थितियों में आवेश वही रहता है और केवल वोल्टता घटती है, क्योंकि परावैद्युत डालने से प्लेटों पर आवेश आ या जा नहीं सकता",
+            "दोनों स्थितियों में वोल्टता वही रहती है और केवल आवेश बढ़ता है, क्योंकि परावैद्युत धारिता बढ़ाता है और संधारित्र को उसके अनुरूप भरना ही पड़ता है",
+            "A में क्षेत्र घटता है और B में अपरिवर्तित रहता है, क्योंकि जुड़ी बैटरी विद्युतरोधी पट्टी के आर-पार क्षेत्र बनाए नहीं रख सकती"
+          ],
+          "solution": "इस क़िस्म का लगभग हर संधारित्र प्रश्न एक प्रारंभिक निर्णय से तय होता है, और जो विद्यार्थी उसे स्पष्ट रूप से करते हैं उन्हें बाक़ी लगभग अपने आप मिल जाता है: परिपथ किस राशि को अचर रख रहा है? उत्तर केवल दो हैं। यदि बैटरी अब भी जुड़ी है, वह प्लेटों के आर-पार निश्चित विभवांतर बनाए रखती है और उसके लिए जितना आवेश चाहिए देगी या लेगी; V अचर है और Q मुक्त। यदि बैटरी हटा दी गई है, तो प्लेटें धातु के विलगित द्वीप हैं और उनके आवेश के जाने को कोई जगह नहीं; Q अचर है और V मुक्त। बाक़ी सब उपयुक्त दिशा में पढ़ा गया C = Q/V है। दोनों प्रयोगों में एक तथ्य साझा है: पट्टी डालने से धारिता परावैद्युतांक K गुनी हो जाती है, क्योंकि ध्रुवण बद्ध पृष्ठ आवेश खड़ा करता है जिसका अपना क्षेत्र लगाए गए के विरुद्ध है। प्रयोग A, बैटरी जुड़ी। V बैटरी के विद्युत वाहक बल पर टँका है। C अब KC₀ हो गया। अतः Q = CV, C₀V से बढ़कर KC₀V हो जाता है — आवेश K गुणक से बढ़ा, और वह अतिरिक्त आवेश बैटरी से आया, जिसका अर्थ है कि पट्टी जाते समय क्षणिक धारा बही। प्लेटों के बीच क्षेत्र E = V/d है, और चूँकि V और d दोनों अपरिवर्तित हैं, क्षेत्र ठीक वही है जो था। यह उन विद्यार्थियों को चौंकाता है जिन्होंने सीखा है कि परावैद्युत 'क्षेत्र घटाता है': वह दिए गए आवेश से बने क्षेत्र को घटाता तो है, पर यहाँ आवेश ठीक उतने गुणक से बढ़ा जितना क्षेत्र को वहीं रखने के लिए चाहिए था जहाँ बैटरी चाहती है। संचित ऊर्जा U = ½CV² भी K गुनी होती है। प्रयोग B, बैटरी हटी। अब Q टँका है, क्योंकि विलगित प्लेट के आवेश के पास जाने का रास्ता नहीं। C फिर KC₀ हो गया। अतः V = Q/C, Q/C₀ से घटकर Q/(KC₀) हो जाता है, K गुणक छोटा। क्षेत्र E = V/d उसी गुणक से घटता है — यही वह स्थिति है जिसमें परावैद्युत दिखाई देने वाले ढंग से क्षेत्र कमज़ोर करता है, और कारण यह कि बद्ध आवेश मुक्त आवेश को आंशिक रूप से काटता है और भरपाई की कोई आपूर्ति नहीं। ऊर्जा U = Q²/2C, K गुणक से घटती है, और लुप्त ऊर्जा का हिसाब है: पट्टी को किनारे के क्षेत्र ने भीतर खींचा, अतः क्षेत्र ने उस पर कार्य किया, और आवेशित विलगित संधारित्र के किनारे पर छोड़ी गई पट्टी सचमुच भीतर खिंच जाएगी। वही पट्टी दोनों प्रयोगों में वोल्टता पर उलटा असर करती है, यह विरोधाभास नहीं; यह प्रदर्शन है कि संधारित्र का आचरण अकेले संधारित्र का गुण नहीं बल्कि संधारित्र और परिपथ उसके साथ जो कर रहा है, दोनों का है। (दूसरा और तीसरा विकल्प एक प्रयोग का उत्तर उठाकर दोनों पर लगा देते हैं; चौथा बैटरियों की ऐसी असमर्थता गढ़ता है जो है ही नहीं — परावैद्युत परिपथ में टूट नहीं, और उसके आर-पार किसी धारा को जाना ही नहीं है।)"
+        },
+        "mr": {
+          "stem": "एक समांतर पट्ट धारित्र बॅटरीने प्रभारित केले जाते. प्रयोग A मध्ये बॅटरी जोडलेली ठेवली जाते आणि पट्ट्यांमध्ये पराविद्युत पट्टी सरकवली जाते; प्रयोग B मध्ये आधी बॅटरी काढली जाते आणि मग तीच पट्टी घातली जाते. प्रत्येक स्थितीत प्रभार, व्होल्टेज आणि क्षेत्राचे काय होते?",
+          "choices": [
+            "A मध्ये बॅटरी V स्थिर ठेवते, म्हणून C हा K पट झाल्याने प्रभार Q = CV हा K पटीने वाढतो आणि क्षेत्र E = V/d अपरिवर्तित राहते; जादा प्रभार बॅटरीतून वाहतो. B मध्ये पट्ट्या एकाकी आहेत, म्हणून यावेळी Q स्थिर आहे, आणि C हा K पट झाल्याने व्होल्टेज V = Q/C घटून Kवा भाग उरते आणि क्षेत्र त्यासोबत घटते. पहिला प्रश्न हाच विचारायचा की परिपथ कोणती राशी अचल ठेवत आहे — बॅटरी V बांधते, उघडा परिपथ Q बांधतो — आणि बाकी सर्व C = Q/V मधून निघते",
+            "दोन्ही स्थितींत प्रभार तोच राहतो आणि केवळ व्होल्टेज घटते, कारण पराविद्युत घातल्याने पट्ट्यांवर प्रभार येऊ वा जाऊ शकत नाही",
+            "दोन्ही स्थितींत व्होल्टेज तेच राहते आणि केवळ प्रभार वाढतो, कारण पराविद्युत धारिता वाढवते आणि धारित्राला तिच्याशी जुळेल इतके भरावेच लागते",
+            "A मध्ये क्षेत्र घटते आणि B मध्ये अपरिवर्तित राहते, कारण जोडलेली बॅटरी विद्युतरोधक पट्टीच्या आरपार क्षेत्र टिकवू शकत नाही"
+          ],
+          "solution": "या प्रकारचा जवळपास प्रत्येक धारित्र प्रश्न एका पूर्वनिर्णयाने ठरतो, आणि जे विद्यार्थी तो स्पष्टपणे करतात त्यांना बाकीचे जवळपास आपोआप मिळते: परिपथ कोणती राशी अचल ठेवत आहे? उत्तरे केवळ दोन आहेत. जर बॅटरी अजून जोडलेली असेल, ती पट्ट्यांच्या आरपार ठराविक विभवांतर टिकवते आणि त्यासाठी जितका प्रभार लागेल तितका देईल वा घेईल; V अचल आहे आणि Q मुक्त. जर बॅटरी काढलेली असेल, तर पट्ट्या धातूची एकाकी बेटे आहेत आणि त्यांच्या प्रभाराला जायला जागा नाही; Q अचल आहे आणि V मुक्त. बाकी सर्व योग्य दिशेने वाचलेले C = Q/V आहे. दोन्ही प्रयोगांत एक गोष्ट समान आहे: पट्टी घातल्याने धारिता पराविद्युतांक K पट होते, कारण ध्रुवण बद्ध पृष्ठ प्रभार उभा करते ज्याचे स्वतःचे क्षेत्र लावलेल्याविरुद्ध असते. प्रयोग A, बॅटरी जोडलेली. V बॅटरीच्या विद्युतचालक बलावर टांगलेला. C आता KC₀ झाला. म्हणून Q = CV हा C₀V वरून वाढून KC₀V होतो — प्रभार K पटीने वाढला, आणि तो जादा प्रभार बॅटरीतून आला, म्हणजे पट्टी आत जाताना क्षणिक धारा वाहली. पट्ट्यांमधले क्षेत्र E = V/d आहे, आणि V आणि d दोन्ही अपरिवर्तित असल्याने, क्षेत्र नेमके तेच आहे जे होते. हे त्या विद्यार्थ्यांना चकित करते ज्यांनी शिकले आहे की पराविद्युत 'क्षेत्र घटवते': ते दिलेल्या प्रभाराने बनलेले क्षेत्र घटवते खरे, पण इथे प्रभार नेमक्या तितक्या पटीने वाढला जितका क्षेत्र बॅटरीला हवे तिथेच ठेवायला लागत होता. साठवलेली ऊर्जा U = ½CV² सुद्धा K पट होते. प्रयोग B, बॅटरी काढलेली. आता Q टांगलेला, कारण एकाकी पट्टीवरील प्रभाराला जायला मार्ग नाही. C पुन्हा KC₀ झाला. म्हणून V = Q/C हा Q/C₀ वरून घटून Q/(KC₀) होतो, K पटीने लहान. क्षेत्र E = V/d त्याच पटीने घटते — हीच ती स्थिती जिच्यात पराविद्युत दिसण्याइतके क्षेत्र कमकुवत करते, आणि कारण असे की बद्ध प्रभार मुक्त प्रभाराला अंशतः कापतो आणि भरपाईचा कोणताही पुरवठा नाही. ऊर्जा U = Q²/2C ही K पटीने घटते, आणि हरवलेल्या ऊर्जेचा हिशेब आहे: पट्टीला कडेच्या क्षेत्राने आत ओढले, म्हणून क्षेत्राने तिच्यावर कार्य केले, आणि प्रभारित एकाकी धारित्राच्या कडेला सोडलेली पट्टी खरोखर आत ओढली जाईल. तीच पट्टी दोन प्रयोगांत व्होल्टेजवर उलट परिणाम करते, हा विरोधाभास नाही; हे प्रात्यक्षिक आहे की धारित्राचे वर्तन केवळ धारित्राचा गुणधर्म नसून धारित्र आणि परिपथ त्याच्याशी जे करत आहे या दोहोंचा आहे. (दुसरा आणि तिसरा पर्याय एका प्रयोगाचे उत्तर उचलून दोन्हींवर लावतात; चौथा बॅटऱ्यांची अशी असमर्थता घडवतो जी अस्तित्वातच नाही — पराविद्युत हा परिपथातला खंड नाही, आणि त्याच्या आरपार कोणत्याही धारेला जायचेच नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Two isolated metal spheres, one of radius 2R carrying charge Q and one of radius R carrying no charge, are joined by a long thin wire. A student predicts the charge will divide equally between them. Explain what actually happens and account for the energy.",
+      "choices": [
+        "Charge flows until the two spheres are at the same POTENTIAL, not until they carry the same charge. Since V = kq/r, equal potentials require q ∝ r, so the larger sphere keeps two-thirds of Q and the smaller takes one-third. The surface charge DENSITY is then higher on the smaller sphere, since σ ∝ q/r² ∝ 1/r — which is why charge concentrates at sharp points. Energy is not conserved in the transfer: the final electrostatic energy is less than the initial, and the difference is dissipated as heat in the connecting wire and radiated away",
+        "The student is right: charge is conserved and there is nothing to make it prefer one sphere, so each ends with Q/2 and the potentials differ",
+        "The charge divides in the ratio of the surface areas, four to one, because charge resides on the surface and there is four times as much of it on the larger sphere",
+        "Charge flows until the potentials are equal and the total electrostatic energy is unchanged, since no external agent did any work on the system"
+      ],
+      "answerIndex": 0,
+      "solution": "Three separate ideas are being tested here, and each one is a place students routinely go wrong. FIRST, what does the flow stop for? A wire lets free charge move, and charge moves whenever there is a potential difference along the conductor it sits in. So the flow continues until the potential difference is zero — until the two spheres, now one connected conductor, are at a single common potential. The stopping condition is equality of POTENTIAL, never equality of charge. Charge is what flows; potential is what drives the flow; and confusing the two is like predicting that water joined by a pipe will divide equally between a bathtub and a bucket. For an isolated sphere, V = kq/r. Setting kq₁/(2R) = kq₂/R gives q₁ = 2q₂, and with q₁ + q₂ = Q by conservation, the larger sphere retains 2Q/3 and the smaller acquires Q/3. SECOND, the surface density. It is tempting to conclude that the bigger sphere, holding more charge, is the more heavily charged. Compute σ = q/(4πr²): for the large sphere σ₁ ∝ (2Q/3)/(4R²), for the small one σ₂ ∝ (Q/3)/R², so σ₂ = 2σ₁. The SMALLER sphere carries twice the surface density. In general σ ∝ 1/r, and since the field just outside a conductor is σ/ε₀, the field is strongest where the radius of curvature is smallest. This is the whole physics of the lightning conductor and of corona discharge at sharp edges: a point is a region of very small r, so σ and hence E become large enough there to ionise the surrounding air even when the conductor as a whole is at a modest potential. THIRD, the energy. Compute it. Initially U_i = kQ²/(2 · 2R) = kQ²/4R. Finally U_f = k(2Q/3)²/(2 · 2R) + k(Q/3)²/(2R) = kQ²(4/9)/(4R) + kQ²(1/9)/(2R) = kQ²/9R + kQ²/18R = kQ²/6R. Since kQ²/6R is less than kQ²/4R, energy has been lost — a third of it, in fact. Where did it go? Into the wire. While the charge was flowing there was a current, the wire has resistance however thin and however good the metal, and I²R heating dissipated the difference; any part not turned into heat was radiated as electromagnetic waves by the accelerating charge. This is not a violation of energy conservation but an illustration of it: electrostatic energy is not the whole ledger, and a process that redistributes charge irreversibly must pay for the redistribution. Notably, the loss does not vanish as the wire's resistance is made smaller — a smaller resistance means a larger current for a shorter time, and the product I²Rt stays put. (The second option applies conservation of charge and then stops, missing the condition that ends the flow; the third confuses where charge sits with how it apportions; the fourth gets the mechanism right and then assumes electrostatic energy is the only account.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दो विलगित धातु के गोले, एक त्रिज्या 2R वाला जिस पर आवेश Q है और एक त्रिज्या R वाला जिस पर कोई आवेश नहीं, एक लंबे पतले तार से जोड़े जाते हैं। विद्यार्थी भविष्यवाणी करता है कि आवेश उनमें बराबर बँट जाएगा। बताओ वास्तव में क्या होता है और ऊर्जा का हिसाब दो।",
+          "choices": [
+            "आवेश तब तक बहता है जब तक दोनों गोले एक ही विभव पर न आ जाएँ, तब तक नहीं जब तक वे एक ही आवेश न रखें। चूँकि V = kq/r, बराबर विभव के लिए q ∝ r चाहिए, अतः बड़ा गोला Q का दो-तिहाई रखता है और छोटा एक-तिहाई लेता है। पृष्ठ आवेश घनत्व तब छोटे गोले पर अधिक होता है, क्योंकि σ ∝ q/r² ∝ 1/r — इसीलिए आवेश नुकीले बिंदुओं पर जमा होता है। स्थानांतरण में ऊर्जा संरक्षित नहीं रहती: अंतिम स्थिरवैद्युत ऊर्जा आरंभिक से कम है, और अंतर जोड़ने वाले तार में ऊष्मा बनकर और विकिरित होकर चला जाता है",
+            "विद्यार्थी सही है: आवेश संरक्षित है और उसे एक गोले को वरीयता देने की कोई वजह नहीं, अतः हर एक Q/2 के साथ रह जाता है और विभव भिन्न रहते हैं",
+            "आवेश पृष्ठ क्षेत्रफलों के अनुपात में, चार से एक, बँटता है, क्योंकि आवेश पृष्ठ पर रहता है और बड़े गोले पर उसका चार गुना है",
+            "आवेश तब तक बहता है जब तक विभव बराबर न हो जाएँ और कुल स्थिरवैद्युत ऊर्जा अपरिवर्तित रहती है, क्योंकि किसी बाहरी कर्ता ने निकाय पर कार्य नहीं किया"
+          ],
+          "solution": "यहाँ तीन अलग विचार जाँचे जा रहे हैं, और हर एक वह जगह है जहाँ विद्यार्थी नियमित रूप से चूकते हैं। पहला, बहाव किसके लिए रुकता है? तार मुक्त आवेश को चलने देता है, और आवेश तभी चलता है जब जिस चालक में वह बैठा है उसके अनुदिश विभवांतर हो। अतः बहाव तब तक चलता है जब तक विभवांतर शून्य न हो — जब तक दोनों गोले, अब एक जुड़ा चालक, एक ही साझा विभव पर न आ जाएँ। रुकने की शर्त विभव की समानता है, आवेश की समानता कभी नहीं। आवेश वह है जो बहता है; विभव वह है जो बहाव चलाता है; और दोनों को गड्डमड्ड करना ऐसा है जैसे यह कहना कि पाइप से जुड़ा पानी टब और बाल्टी में बराबर बँटेगा। विलगित गोले के लिए V = kq/r. kq₁/(2R) = kq₂/R रखने पर q₁ = 2q₂, और संरक्षण से q₁ + q₂ = Q होने पर, बड़ा गोला 2Q/3 रखता है और छोटा Q/3 पाता है। दूसरा, पृष्ठ घनत्व। यह निष्कर्ष लुभाता है कि बड़ा गोला, जिसमें अधिक आवेश है, अधिक भारी आवेशित है। σ = q/(4πr²) निकालो: बड़े गोले के लिए σ₁ ∝ (2Q/3)/(4R²), छोटे के लिए σ₂ ∝ (Q/3)/R², अतः σ₂ = 2σ₁. छोटा गोला दुगुना पृष्ठ घनत्व रखता है। सामान्यतः σ ∝ 1/r, और चूँकि चालक के ठीक बाहर क्षेत्र σ/ε₀ है, क्षेत्र वहाँ सबसे प्रबल है जहाँ वक्रता त्रिज्या सबसे छोटी है। तड़ित चालक और नुकीले किनारों पर कोरोना विसर्जन की पूरी भौतिकी यही है: नोक बहुत छोटे r का क्षेत्र है, अतः σ और इसलिए E वहाँ इतने बड़े हो जाते हैं कि आसपास की वायु आयनित हो जाए, भले ही पूरा चालक मामूली विभव पर हो। तीसरा, ऊर्जा। उसे निकालो। आरंभ में U_i = kQ²/(2 · 2R) = kQ²/4R. अंत में U_f = k(2Q/3)²/(2 · 2R) + k(Q/3)²/(2R) = kQ²(4/9)/(4R) + kQ²(1/9)/(2R) = kQ²/9R + kQ²/18R = kQ²/6R. चूँकि kQ²/6R, kQ²/4R से कम है, ऊर्जा गई है — वस्तुतः उसका एक-तिहाई। कहाँ गई? तार में। जब आवेश बह रहा था तब धारा थी, तार कितना भी पतला और धातु कितनी भी अच्छी हो उसमें प्रतिरोध है, और I²R ऊष्मन ने अंतर खपा दिया; जो भाग ऊष्मा न बना वह त्वरित आवेश से विद्युत चुंबकीय तरंगों के रूप में विकिरित हुआ। यह ऊर्जा संरक्षण का उल्लंघन नहीं बल्कि उसका उदाहरण है: स्थिरवैद्युत ऊर्जा पूरा बहीखाता नहीं, और जो प्रक्रिया आवेश को अनुत्क्रमणीय ढंग से फिर बाँटती है उसे उस पुनर्वितरण की क़ीमत चुकानी पड़ती है। ध्यान देने योग्य बात यह कि तार का प्रतिरोध छोटा करने पर हानि लुप्त नहीं होती — छोटा प्रतिरोध मतलब कम समय के लिए बड़ी धारा, और गुणनफल I²Rt वहीं का वहीं रहता है। (दूसरा विकल्प आवेश संरक्षण लगाकर रुक जाता है और बहाव ख़त्म करने वाली शर्त चूक जाता है; तीसरा आवेश कहाँ बैठता है और वह कैसे बँटता है, दोनों को गड्डमड्ड करता है; चौथा क्रियाविधि ठीक पकड़कर मान लेता है कि स्थिरवैद्युत ऊर्जा ही एकमात्र खाता है।)"
+        },
+        "mr": {
+          "stem": "दोन एकाकी धातूचे गोल, एक त्रिज्या 2R असलेला ज्यावर प्रभार Q आहे आणि एक त्रिज्या R असलेला ज्यावर काहीच प्रभार नाही, एका लांब बारीक तारेने जोडले जातात. विद्यार्थी भाकीत करतो की प्रभार त्यांच्यात समान वाटला जाईल. प्रत्यक्षात काय घडते ते सांगा आणि ऊर्जेचा हिशेब द्या.",
+          "choices": [
+            "प्रभार तोवर वाहतो जोवर दोन्ही गोल एकाच विभवावर येत नाहीत, तोवर नव्हे जोवर ते एकच प्रभार बाळगत नाहीत. V = kq/r असल्याने, समान विभवासाठी q ∝ r लागते, म्हणून मोठा गोल Q चा दोन-तृतीयांश ठेवतो आणि लहान एक-तृतीयांश घेतो. पृष्ठ प्रभार घनता तेव्हा लहान गोलावर अधिक असते, कारण σ ∝ q/r² ∝ 1/r — म्हणूनच प्रभार टोकदार बिंदूंवर साठतो. हस्तांतरणात ऊर्जा संधारित राहत नाही: अंतिम स्थिरविद्युत ऊर्जा प्रारंभिकहून कमी आहे, आणि फरक जोडणाऱ्या तारेत उष्णता बनून व प्रारित होऊन निघून जातो",
+            "विद्यार्थी बरोबर आहे: प्रभार संधारित आहे आणि त्याला एका गोलाला प्राधान्य द्यायचे कारण नाही, म्हणून प्रत्येक Q/2 सह उरतो आणि विभव वेगळे राहतात",
+            "प्रभार पृष्ठफळांच्या गुणोत्तरात, चार ते एक, वाटला जातो, कारण प्रभार पृष्ठावर राहतो आणि मोठ्या गोलावर त्याचे चौपट आहे",
+            "प्रभार तोवर वाहतो जोवर विभव समान होत नाहीत आणि एकूण स्थिरविद्युत ऊर्जा अपरिवर्तित राहते, कारण कोणत्याही बाह्य कर्त्याने संस्थेवर कार्य केलेले नाही"
+          ],
+          "solution": "इथे तीन वेगळ्या कल्पना तपासल्या जात आहेत, आणि प्रत्येक ती जागा आहे जिथे विद्यार्थी नियमितपणे चुकतात. पहिली, वाहणे कशासाठी थांबते? तार मुक्त प्रभाराला हलू देते, आणि प्रभार तेव्हाच हलतो जेव्हा तो ज्या वाहकात बसला आहे त्याच्या दिशेने विभवांतर असते. म्हणून वाहणे तोवर चालते जोवर विभवांतर शून्य होत नाही — जोवर दोन्ही गोल, आता एक जोडलेला वाहक, एकाच सामायिक विभवावर येत नाहीत. थांबण्याची अट विभवाची समानता आहे, प्रभाराची समानता कधीच नाही. प्रभार तो जो वाहतो; विभव तो जो वाहणे चालवतो; आणि दोन्हींची गल्लत करणे म्हणजे नळाने जोडलेले पाणी टब आणि बादलीत समान वाटले जाईल असे भाकीत करण्यासारखे. एकाकी गोलासाठी V = kq/r. kq₁/(2R) = kq₂/R ठेवल्यास q₁ = 2q₂, आणि संधारणाने q₁ + q₂ = Q असल्याने, मोठा गोल 2Q/3 ठेवतो आणि लहान Q/3 मिळवतो. दुसरी, पृष्ठ घनता. मोठा गोल, ज्यात अधिक प्रभार, तोच अधिक जड प्रभारित असा निष्कर्ष मोह घालतो. σ = q/(4πr²) काढा: मोठ्या गोलासाठी σ₁ ∝ (2Q/3)/(4R²), लहानासाठी σ₂ ∝ (Q/3)/R², म्हणून σ₂ = 2σ₁. लहान गोल दुप्पट पृष्ठ घनता बाळगतो. सर्वसाधारणपणे σ ∝ 1/r, आणि वाहकाच्या अगदी बाहेरचे क्षेत्र σ/ε₀ असल्याने, क्षेत्र तिथे सर्वांत तीव्र जिथे वक्रता त्रिज्या सर्वांत लहान. वीजवाहक आणि टोकदार कडांवरील कोरोना विसर्जनाची अख्खी भौतिकी हीच आहे: टोक हा फार लहान r चा प्रदेश आहे, म्हणून σ आणि पर्यायाने E तिथे इतके मोठे होतात की आजूबाजूची हवा आयनित व्हावी, जरी अख्खा वाहक माफक विभवावर असला तरी. तिसरी, ऊर्जा. ती काढा. सुरुवातीला U_i = kQ²/(2 · 2R) = kQ²/4R. शेवटी U_f = k(2Q/3)²/(2 · 2R) + k(Q/3)²/(2R) = kQ²(4/9)/(4R) + kQ²(1/9)/(2R) = kQ²/9R + kQ²/18R = kQ²/6R. kQ²/6R हे kQ²/4R हून कमी असल्याने, ऊर्जा गेली आहे — प्रत्यक्षात तिचा एक-तृतीयांश. कुठे गेली? तारेत. प्रभार वाहत असताना धारा होती, तार कितीही बारीक आणि धातू कितीही चांगली असो तिच्यात रोध आहे, आणि I²R तापनाने फरक खर्च केला; जो भाग उष्णता झाला नाही तो त्वरित प्रभाराकडून विद्युतचुंबकीय लहरींच्या रूपात प्रारित झाला. हे ऊर्जा संधारणाचे उल्लंघन नसून त्याचे उदाहरण आहे: स्थिरविद्युत ऊर्जा हा अख्खा जमाखर्च नाही, आणि जी प्रक्रिया प्रभाराचे अपरिवर्तनीय पुनर्वाटप करते तिला त्या पुनर्वाटपाची किंमत मोजावी लागते. लक्षात घेण्याजोगे हे की तारेचा रोध लहान केल्याने हानी नाहीशी होत नाही — लहान रोध म्हणजे कमी काळासाठी मोठी धारा, आणि गुणाकार I²Rt जिथल्या तिथे राहतो. (दुसरा पर्याय प्रभार संधारण लावून थांबतो आणि वाहणे संपवणारी अट चुकवतो; तिसरा प्रभार कुठे बसतो आणि तो कसा वाटला जातो यांची गल्लत करतो; चौथा यंत्रणा बरोबर पकडून मग गृहीत धरतो की स्थिरविद्युत ऊर्जा हेच एकमेव खाते आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The electric potential at a point is 12 V. How much work, in joules, must be done to bring a charge of 3 C from infinity to that point?",
+      "choices": [
+        "9",
+        "15",
+        "36",
+        "4"
+      ],
+      "answerIndex": 2,
+      "solution": "Potential is work per unit charge, so work is potential times charge: 3 × 12 = 36 J. The definition runs both ways and the direction you read it in is chosen by what the question gives you. (4 divides the potential by the charge, and 15 adds the two numbers.)",
+      "checkExpr": "3*12",
+      "translations": {
+        "hi": {
+          "stem": "किसी बिंदु पर विद्युत विभव 12 V है। 3 C का आवेश अनंत से उस बिंदु तक लाने में कितना कार्य, जूल में, करना पड़ेगा?",
+          "choices": [
+            "9",
+            "15",
+            "36",
+            "4"
+          ],
+          "solution": "विभव प्रति एकांक आवेश कार्य है, अतः कार्य विभव गुणा आवेश है: 3 × 12 = 36 J. परिभाषा दोनों दिशाओं में चलती है और किस दिशा में पढ़नी है यह प्रश्न जो देता है उससे तय होता है। (4 विभव को आवेश से भाग दे देता है, और 15 दोनों संख्याएँ जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "एका बिंदूवरील विद्युत विभव 12 V आहे. 3 C चा प्रभार अनंतापासून त्या बिंदूपर्यंत आणण्यास किती कार्य, ज्यूलमध्ये, करावे लागेल?",
+          "choices": [
+            "9",
+            "15",
+            "36",
+            "4"
+          ],
+          "solution": "विभव म्हणजे प्रति एकक प्रभार कार्य, म्हणून कार्य म्हणजे विभव गुणिले प्रभार: 3 × 12 = 36 J. व्याख्या दोन्ही दिशांनी चालते आणि कोणत्या दिशेने वाचायची हे प्रश्न जे देतो त्यावरून ठरते. (4 विभवाला प्रभाराने भागते, आणि 15 दोन्ही संख्या जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A capacitor of 5 μF is charged to a potential difference of 20 V. What charge, in μC, does it then hold?",
+      "choices": [
+        "25",
+        "0.25",
+        "100",
+        "4"
+      ],
+      "answerIndex": 2,
+      "solution": "Capacitance is charge per volt, C = Q/V, so Q = CV = 5 × 20 = 100 μC. Because both the capacitance and the answer are in micro-units, the prefix cancels and never has to be written out. (4 divides the voltage by the capacitance, and 25 adds them.)",
+      "checkExpr": "5*20",
+      "translations": {
+        "hi": {
+          "stem": "5 μF का संधारित्र 20 V विभवांतर तक आवेशित किया जाता है। तब वह कितना आवेश, μC में, रखता है?",
+          "choices": [
+            "25",
+            "0.25",
+            "100",
+            "4"
+          ],
+          "solution": "धारिता प्रति वोल्ट आवेश है, C = Q/V, अतः Q = CV = 5 × 20 = 100 μC. चूँकि धारिता और उत्तर दोनों माइक्रो-मात्रकों में हैं, उपसर्ग कट जाता है और उसे लिखना ही नहीं पड़ता। (4 वोल्टता को धारिता से भाग देता है, और 25 उन्हें जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "5 μF चे धारित्र 20 V विभवांतरापर्यंत प्रभारित केले जाते. तेव्हा ते किती प्रभार, μC मध्ये, बाळगते?",
+          "choices": [
+            "25",
+            "0.25",
+            "100",
+            "4"
+          ],
+          "solution": "धारिता म्हणजे प्रति व्होल्ट प्रभार, C = Q/V, म्हणून Q = CV = 5 × 20 = 100 μC. धारिता आणि उत्तर दोन्ही मायक्रो-एककांत असल्याने, उपसर्ग कापला जातो आणि तो लिहावाच लागत नाही. (4 व्होल्टेजला धारितेने भागते, आणि 25 त्यांना जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Capacitors of 3 μF and 6 μF are joined in series. What is the equivalent capacitance, in μF?",
+      "choices": [
+        "4.5",
+        "18",
+        "2",
+        "9"
+      ],
+      "answerIndex": 2,
+      "solution": "In series the reciprocals add: 1/C = 1/3 + 1/6 = 1/2, so C = (3 × 6)/(3 + 6) = 18/9 = 2 μF. Note that the result is smaller than either capacitor — series always is, because the same charge now has to cross two gaps and produces a larger total voltage. (9 adds them, which is the rule for parallel; 4.5 averages them.)",
+      "checkExpr": "3*6/9",
+      "translations": {
+        "hi": {
+          "stem": "3 μF और 6 μF के संधारित्र श्रेणी में जोड़े जाते हैं। तुल्य धारिता, μF में, क्या है?",
+          "choices": [
+            "4.5",
+            "18",
+            "2",
+            "9"
+          ],
+          "solution": "श्रेणी में व्युत्क्रम जुड़ते हैं: 1/C = 1/3 + 1/6 = 1/2, अतः C = (3 × 6)/(3 + 6) = 18/9 = 2 μF. ध्यान दो कि परिणाम दोनों संधारित्रों से छोटा है — श्रेणी सदा ऐसी ही होती है, क्योंकि वही आवेश अब दो दरारें पार करता है और बड़ी कुल वोल्टता बनाता है। (9 उन्हें जोड़ देता है, जो समांतर का नियम है; 4.5 उनका औसत ले लेता है।)"
+        },
+        "mr": {
+          "stem": "3 μF आणि 6 μF ची धारित्रे श्रेणीत जोडली जातात. तुल्य धारिता, μF मध्ये, किती?",
+          "choices": [
+            "4.5",
+            "18",
+            "2",
+            "9"
+          ],
+          "solution": "श्रेणीत व्यस्तांक जुळतात: 1/C = 1/3 + 1/6 = 1/2, म्हणून C = (3 × 6)/(3 + 6) = 18/9 = 2 μF. लक्षात घ्या की निकाल दोन्ही धारित्रांहून लहान आहे — श्रेणी नेहमीच अशी असते, कारण तोच प्रभार आता दोन फटी ओलांडतो आणि मोठा एकूण व्होल्टेज बनवतो. (9 त्यांना जोडते, जो समांतरचा नियम आहे; 4.5 त्यांची सरासरी घेते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The same two capacitors, 3 μF and 6 μF, are joined in parallel instead. What is the equivalent capacitance, in μF?",
+      "choices": [
+        "2",
+        "9",
+        "18",
+        "4.5"
+      ],
+      "answerIndex": 1,
+      "solution": "In parallel the capacitances add directly: 3 + 6 = 9 μF. Both plates of each capacitor are at the same pair of potentials, so the arrangement is one capacitor with a larger plate area, and area is what capacitance is proportional to. Compared with the series case, this is the exact reverse of how resistors behave, which is why the two rules are worth learning as a contrasted pair. (2 applies the series rule; 18 multiplies without dividing.)",
+      "checkExpr": "3+6",
+      "translations": {
+        "hi": {
+          "stem": "वही दो संधारित्र, 3 μF और 6 μF, इस बार समांतर में जोड़े जाते हैं। तुल्य धारिता, μF में, क्या है?",
+          "choices": [
+            "2",
+            "9",
+            "18",
+            "4.5"
+          ],
+          "solution": "समांतर में धारिताएँ सीधे जुड़ती हैं: 3 + 6 = 9 μF. हर संधारित्र की दोनों प्लेटें विभवों के एक ही युग्म पर हैं, अतः यह व्यवस्था बड़ी प्लेट-क्षेत्रफल वाला एक ही संधारित्र है, और धारिता क्षेत्रफल की ही समानुपाती है। श्रेणी वाली स्थिति से तुलना करो तो यह प्रतिरोधकों के आचरण का ठीक उलटा है, इसीलिए दोनों नियम विपरीत युग्म की तरह सीखने योग्य हैं। (2 श्रेणी का नियम लगा देता है; 18 गुणा करता है और भाग नहीं देता।)"
+        },
+        "mr": {
+          "stem": "तीच दोन धारित्रे, 3 μF आणि 6 μF, यावेळी समांतरात जोडली जातात. तुल्य धारिता, μF मध्ये, किती?",
+          "choices": [
+            "2",
+            "9",
+            "18",
+            "4.5"
+          ],
+          "solution": "समांतरात धारिता थेट जुळतात: 3 + 6 = 9 μF. प्रत्येक धारित्राच्या दोन्ही पट्ट्या विभवांच्या एकाच जोडीवर आहेत, म्हणून ही मांडणी म्हणजे मोठे पट्टी-क्षेत्रफळ असलेले एकच धारित्र, आणि धारिता क्षेत्रफळाशीच समानुपाती आहे. श्रेणीच्या स्थितीशी तुलना केल्यास हे रोधकांच्या वर्तनाच्या नेमके उलट आहे, म्हणूनच दोन्ही नियम विरुद्ध जोडी म्हणून शिकण्याजोगे आहेत. (2 श्रेणीचा नियम लावते; 18 गुणते आणि भागत नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the electric potential at a point 3 m from a point charge of 2 nC? Take k = 9 × 10⁹ N m²/C².",
+      "choices": [
+        "6 V",
+        "2 V",
+        "18 V",
+        "54 V"
+      ],
+      "answerIndex": 0,
+      "solution": "V = kq/r = (9 × 10⁹ × 2 × 10⁻⁹)/3 = 18/3 = 6 V. The single difference from the field formula is the power of r: potential falls as 1/r while the field falls as 1/r², because the potential is the field integrated along the path and integration lowers the power by one. (2 divides by 9 as if this were the field; 18 forgets to divide by r at all.)",
+      "checkExpr": "18/3",
+      "translations": {
+        "hi": {
+          "stem": "2 nC के बिंदु आवेश से 3 m दूर बिंदु पर विद्युत विभव क्या है? k = 9 × 10⁹ N m²/C² लो।",
+          "choices": [
+            "6 V",
+            "2 V",
+            "18 V",
+            "54 V"
+          ],
+          "solution": "V = kq/r = (9 × 10⁹ × 2 × 10⁻⁹)/3 = 18/3 = 6 V. क्षेत्र के सूत्र से एकमात्र अंतर r की घात है: विभव 1/r से घटता है जबकि क्षेत्र 1/r² से, क्योंकि विभव पथ के अनुदिश समाकलित क्षेत्र है और समाकलन घात एक घटा देता है। (2 ऐसे 9 से भाग देता है मानो यह क्षेत्र हो; 18 r से भाग देना ही भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "2 nC च्या बिंदु प्रभारापासून 3 m दूर असलेल्या बिंदूवरील विद्युत विभव किती? k = 9 × 10⁹ N m²/C² घ्या.",
+          "choices": [
+            "6 V",
+            "2 V",
+            "18 V",
+            "54 V"
+          ],
+          "solution": "V = kq/r = (9 × 10⁹ × 2 × 10⁻⁹)/3 = 18/3 = 6 V. क्षेत्राच्या सूत्रापासूनचा एकमेव फरक म्हणजे r ची घात: विभव 1/r ने घटतो तर क्षेत्र 1/r² ने, कारण विभव म्हणजे मार्गाच्या दिशेने समाकलित केलेले क्षेत्र आणि समाकलन घात एकने घटवते. (2 असे 9 ने भागते जणू हे क्षेत्र असावे; 18 हे r ने भागणेच विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A capacitor of 2 μF is charged to 100 V. How much energy, in millijoules, does it store?",
+      "choices": [
+        "20",
+        "100",
+        "10",
+        "5"
+      ],
+      "answerIndex": 2,
+      "solution": "U = ½CV² = ½ × 2 × 10⁻⁶ × 100² = 10⁻² J, which is 10 mJ. The half is not decoration: the plates were charged gradually, and the first coulomb crossed at almost no voltage while the last crossed at the full 100, so the average is half the final value. (20 drops the factor of a half, and 5 halves twice.)",
+      "checkExpr": "0.5*2*10000/1000",
+      "translations": {
+        "hi": {
+          "stem": "2 μF का संधारित्र 100 V तक आवेशित किया जाता है। वह कितनी ऊर्जा, मिलीजूल में, संचित करता है?",
+          "choices": [
+            "20",
+            "100",
+            "10",
+            "5"
+          ],
+          "solution": "U = ½CV² = ½ × 2 × 10⁻⁶ × 100² = 10⁻² J, अर्थात् 10 mJ. आधा सजावट नहीं: प्लेटें धीरे-धीरे आवेशित हुईं, और पहला कूलॉम लगभग शून्य वोल्टता पर पार हुआ जबकि आख़िरी पूरे 100 पर, अतः औसत अंतिम मान का आधा है। (20 आधे का गुणक छोड़ देता है, और 5 दो बार आधा कर देता है।)"
+        },
+        "mr": {
+          "stem": "2 μF चे धारित्र 100 V पर्यंत प्रभारित केले जाते. ते किती ऊर्जा, मिलिज्यूलमध्ये, साठवते?",
+          "choices": [
+            "20",
+            "100",
+            "10",
+            "5"
+          ],
+          "solution": "U = ½CV² = ½ × 2 × 10⁻⁶ × 100² = 10⁻² J, म्हणजे 10 mJ. निम्मे ही सजावट नाही: पट्ट्या हळूहळू प्रभारित झाल्या, आणि पहिला कुलोम जवळपास शून्य व्होल्टेजवर ओलांडला तर शेवटचा पूर्ण 100 वर, म्हणून सरासरी अंतिम मूल्याच्या निम्मी आहे. (20 निम्म्याचा गुणक गाळते, आणि 5 दोनदा निम्मे करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A parallel plate capacitor of 4 pF has the space between its plates completely filled with a dielectric of constant 5. What is its new capacitance, in pF?",
+      "choices": [
+        "20",
+        "9",
+        "4",
+        "0.8"
+      ],
+      "answerIndex": 0,
+      "solution": "Filling the gap multiplies the capacitance by the dielectric constant: 4 × 5 = 20 pF. The mechanism is that polarisation sets up bound charge whose field opposes the applied one, so the same free charge now produces a smaller voltage — and capacitance is charge per volt. (0.8 divides by K, which is what happens to the field rather than to the capacitance; 9 adds instead of multiplying.)",
+      "checkExpr": "4*5",
+      "translations": {
+        "hi": {
+          "stem": "4 pF के समांतर पट्ट संधारित्र की प्लेटों के बीच की जगह परावैद्युतांक 5 वाले माध्यम से पूरी तरह भर दी जाती है। उसकी नई धारिता, pF में, क्या है?",
+          "choices": [
+            "20",
+            "9",
+            "4",
+            "0.8"
+          ],
+          "solution": "दरार भरने से धारिता परावैद्युतांक गुनी हो जाती है: 4 × 5 = 20 pF. क्रियाविधि यह कि ध्रुवण बद्ध आवेश खड़ा करता है जिसका क्षेत्र लगाए गए के विरुद्ध है, अतः वही मुक्त आवेश अब कम वोल्टता देता है — और धारिता प्रति वोल्ट आवेश है। (0.8 K से भाग दे देता है, जो धारिता के साथ नहीं क्षेत्र के साथ होता है; 9 गुणा करने के बजाय जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "4 pF च्या समांतर पट्ट धारित्राच्या पट्ट्यांमधली जागा पराविद्युतांक 5 असलेल्या माध्यमाने पूर्णपणे भरली जाते. त्याची नवी धारिता, pF मध्ये, किती?",
+          "choices": [
+            "20",
+            "9",
+            "4",
+            "0.8"
+          ],
+          "solution": "फट भरल्याने धारिता पराविद्युतांक पट होते: 4 × 5 = 20 pF. यंत्रणा अशी की ध्रुवण बद्ध प्रभार उभा करते ज्याचे क्षेत्र लावलेल्याविरुद्ध असते, म्हणून तोच मुक्त प्रभार आता कमी व्होल्टेज देतो — आणि धारिता म्हणजे प्रति व्होल्ट प्रभार. (0.8 हे K ने भागते, जे धारितेसोबत नव्हे तर क्षेत्रासोबत घडते; 9 गुणण्याऐवजी जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A 4 μF capacitor is charged to 100 V, disconnected from the battery, and then connected across an uncharged 1 μF capacitor. What is the common potential difference across the pair?",
+      "choices": [
+        "80 V",
+        "50 V",
+        "100 V",
+        "20 V"
+      ],
+      "answerIndex": 0,
+      "solution": "The charge is conserved and simply redistributes: Q = 4 × 100 = 400 μC. Once joined, the two capacitors are in parallel, so the combined capacitance is 4 + 1 = 5 μF and the shared voltage is V = Q/C = 400/5 = 80 V. The stopping condition is equality of POTENTIAL, not of charge — the larger capacitor keeps four-fifths of the charge because it takes four times as much charge to hold it at the same voltage. (50 splits the voltage as though the two were identical.)",
+      "checkExpr": "400/5",
+      "translations": {
+        "hi": {
+          "stem": "4 μF का संधारित्र 100 V तक आवेशित किया जाता है, बैटरी से अलग किया जाता है, और फिर एक अनावेशित 1 μF संधारित्र के आर-पार जोड़ा जाता है। युग्म के आर-पार साझा विभवांतर क्या है?",
+          "choices": [
+            "80 V",
+            "50 V",
+            "100 V",
+            "20 V"
+          ],
+          "solution": "आवेश संरक्षित है और बस फिर से बँट जाता है: Q = 4 × 100 = 400 μC. जुड़ते ही दोनों संधारित्र समांतर में हैं, अतः संयुक्त धारिता 4 + 1 = 5 μF और साझा वोल्टता V = Q/C = 400/5 = 80 V. रुकने की शर्त विभव की समानता है, आवेश की नहीं — बड़ा संधारित्र आवेश का चार-पाँचवाँ भाग रखता है क्योंकि उसे उसी वोल्टता पर रोकने के लिए चार गुना आवेश चाहिए। (50 वोल्टता को ऐसे बाँट देता है मानो दोनों एक जैसे हों।)"
+        },
+        "mr": {
+          "stem": "4 μF चे धारित्र 100 V पर्यंत प्रभारित केले जाते, बॅटरीपासून वेगळे केले जाते, आणि मग एका अप्रभारित 1 μF धारित्राच्या आरपार जोडले जाते. जोडीच्या आरपार सामायिक विभवांतर किती?",
+          "choices": [
+            "80 V",
+            "50 V",
+            "100 V",
+            "20 V"
+          ],
+          "solution": "प्रभार संधारित आहे आणि फक्त पुन्हा वाटला जातो: Q = 4 × 100 = 400 μC. जोडताच दोन्ही धारित्रे समांतरात आहेत, म्हणून एकत्रित धारिता 4 + 1 = 5 μF आणि सामायिक व्होल्टेज V = Q/C = 400/5 = 80 V. थांबण्याची अट विभवाची समानता आहे, प्रभाराची नव्हे — मोठे धारित्र प्रभाराचा चार-पंचमांश ठेवते कारण त्याला त्याच व्होल्टेजवर धरण्यासाठी चौपट प्रभार लागतो. (50 व्होल्टेज असे वाटते जणू दोन्ही सारखी असावीत.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "In that sharing between a 4 μF capacitor charged to 100 V and an uncharged 1 μF capacitor, how much energy, in millijoules, is lost?",
+      "choices": [
+        "2",
+        "4",
+        "36",
+        "0"
+      ],
+      "answerIndex": 1,
+      "solution": "Before: U = ½ × 4 × 100² μJ = 20000 μJ = 20 mJ. After: the pair sits at 80 V with a combined 5 μF, so U = ½ × 5 × 80² μJ = 16000 μJ = 16 mJ. The loss is 20 − 16 = 4 mJ, a fifth of what was there. Charge is conserved but electrostatic energy is not, and the difference goes as heat in the connecting wire and as radiation from the accelerating charge. Notably it does not vanish as the wire is made a better conductor: a lower resistance means a larger current for a shorter time, and I²Rt is unchanged. (0 assumes energy must be conserved because charge is.)",
+      "checkExpr": "20-16",
+      "translations": {
+        "hi": {
+          "stem": "100 V तक आवेशित 4 μF संधारित्र और अनावेशित 1 μF संधारित्र के बीच उसी बँटवारे में कितनी ऊर्जा, मिलीजूल में, नष्ट होती है?",
+          "choices": [
+            "2",
+            "4",
+            "36",
+            "0"
+          ],
+          "solution": "पहले: U = ½ × 4 × 100² μJ = 20000 μJ = 20 mJ. बाद में: युग्म 80 V पर बैठा है और संयुक्त धारिता 5 μF है, अतः U = ½ × 5 × 80² μJ = 16000 μJ = 16 mJ. हानि 20 − 16 = 4 mJ है, जो था उसका पाँचवाँ भाग। आवेश संरक्षित है पर स्थिरवैद्युत ऊर्जा नहीं, और अंतर जोड़ने वाले तार में ऊष्मा और त्वरित आवेश से विकिरण बनकर जाता है। ध्यान देने योग्य यह कि तार को बेहतर चालक बनाने से वह लुप्त नहीं होती: कम प्रतिरोध का अर्थ है कम समय के लिए बड़ी धारा, और I²Rt अपरिवर्तित रहता है। (0 मान लेता है कि आवेश संरक्षित है इसलिए ऊर्जा भी संरक्षित होनी चाहिए।)"
+        },
+        "mr": {
+          "stem": "100 V पर्यंत प्रभारित 4 μF धारित्र आणि अप्रभारित 1 μF धारित्र यांच्यातील त्याच वाटपात किती ऊर्जा, मिलिज्यूलमध्ये, नष्ट होते?",
+          "choices": [
+            "2",
+            "4",
+            "36",
+            "0"
+          ],
+          "solution": "आधी: U = ½ × 4 × 100² μJ = 20000 μJ = 20 mJ. नंतर: जोडी 80 V वर बसली आहे आणि एकत्रित धारिता 5 μF आहे, म्हणून U = ½ × 5 × 80² μJ = 16000 μJ = 16 mJ. हानी 20 − 16 = 4 mJ आहे, जे होते त्याचा पाचवा भाग. प्रभार संधारित आहे पण स्थिरविद्युत ऊर्जा नाही, आणि फरक जोडणाऱ्या तारेत उष्णता आणि त्वरित प्रभारापासून प्रारण बनून जातो. लक्षात घेण्याजोगे हे की तारेला अधिक चांगला वाहक बनवल्याने ती नाहीशी होत नाही: कमी रोध म्हणजे कमी काळासाठी मोठी धारा, आणि I²Rt अपरिवर्तित राहते. (0 गृहीत धरते की प्रभार संधारित आहे म्हणून ऊर्जाही संधारित असावी.)"
+        }
+      }
+    }
+  ]
+}

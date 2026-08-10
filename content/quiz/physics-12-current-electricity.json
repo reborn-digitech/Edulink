@@ -1,0 +1,1038 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 12,
+  "chapter": "Chapter 3 — Current Electricity",
+  "name": "Current Electricity",
+  "slug": "physics-12-current-electricity",
+  "summary": "Charge allowed to keep moving instead of settling: electrons that drift through a wire slower than a walking child while the signal to start arrives almost at the speed of light; a resistance that turns out to be a length and a thickness wrapped around a number belonging to the material itself; a proportionality between voltage and current that is a description of certain substances rather than a law of nature; a source whose stated voltage is never quite what its terminals deliver, because it has resistance of its own to push current through; and two bookkeeping rules for a network of junctions and loops that are conservation of charge and conservation of energy under other names.",
+  "position": 3,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "विद्युत धारा",
+      "summary": "जमने के बजाय चलते रहने दिया गया आवेश: वे इलेक्ट्रॉन जो तार में चलते बच्चे से भी धीमे बहते हैं जबकि चलने का संकेत लगभग प्रकाश की चाल से पहुँचता है; वह प्रतिरोध जो निकलकर एक लंबाई और एक मोटाई निकलता है जो पदार्थ की अपनी संख्या के चारों ओर लिपटी है; वोल्टता और धारा के बीच वह समानुपात जो प्रकृति का नियम नहीं बल्कि कुछ पदार्थों का वर्णन है; वह स्रोत जिसकी बताई वोल्टता उसके सिरे कभी ठीक-ठीक नहीं देते, क्योंकि धारा को धकेलने के लिए उसका अपना प्रतिरोध है; और संधियों तथा लूपों के जाल के लिए दो हिसाब-नियम जो दूसरे नामों से आवेश संरक्षण और ऊर्जा संरक्षण ही हैं।"
+    },
+    "mr": {
+      "name": "विद्युत धारा",
+      "summary": "स्थिरावण्याऐवजी चालत राहू दिलेला प्रभार: ते इलेक्ट्रॉन जे तारेतून चालणाऱ्या मुलाहूनही सावकाश वाहतात तर सुरू होण्याचा संकेत जवळपास प्रकाशाच्या वेगाने पोहोचतो; तो रोध जो निघून एक लांबी आणि एक जाडी निघते जी पदार्थाच्याच स्वतःच्या संख्येभोवती गुंडाळलेली आहे; व्होल्टेज आणि धारा यांतले ते समानुपात जे निसर्गाचा नियम नसून काही पदार्थांचे वर्णन आहे; तो स्रोत ज्याचा सांगितलेला व्होल्टेज त्याची टोके कधीच नेमका देत नाहीत, कारण धारा ढकलण्यासाठी त्याचा स्वतःचा रोध आहे; आणि संधी व वळशांच्या जाळ्यासाठी दोन हिशेब-नियम जे दुसऱ्या नावांनी प्रभार संधारण आणि ऊर्जा संधारणच आहेत."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Electrons in a copper wire move at hundreds of kilometres per second in random directions; superposed on that chaos is a slow, steady creep of the order of a millimetre per second along the wire. What is that creep called?",
+      "choices": [
+        "The limits of Ohm's law",
+        "Drift velocity",
+        "Resistivity",
+        "Electromotive force"
+      ],
+      "answerIndex": 1,
+      "solution": "Drift velocity is the small average velocity electrons acquire along a wire under an applied field, given by v_d = I/(nAe) and typically of the order of 10⁻⁴ m/s. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ताँबे के तार में इलेक्ट्रॉन सैकड़ों किलोमीटर प्रति सेकंड की चाल से यादृच्छिक दिशाओं में चलते हैं; उस अराजकता पर आरोपित है तार के अनुदिश लगभग एक मिलीमीटर प्रति सेकंड की धीमी, स्थिर सरकन। उस सरकन को क्या कहते हैं?",
+          "choices": [
+            "ओम के नियम की सीमाएँ",
+            "अपवाह वेग",
+            "प्रतिरोधकता",
+            "विद्युत वाहक बल"
+          ],
+          "solution": "अपवाह वेग वह छोटा औसत वेग है जो इलेक्ट्रॉन लगाए गए क्षेत्र में तार के अनुदिश पाते हैं, जो v_d = I/(nAe) से मिलता है और प्रायः 10⁻⁴ m/s की कोटि का होता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "तांब्याच्या तारेत इलेक्ट्रॉन शेकडो किलोमीटर प्रति सेकंद वेगाने यादृच्छिक दिशांनी हलतात; त्या गोंधळावर आरोपित आहे तारेच्या दिशेने सुमारे एक मिलीमीटर प्रति सेकंदाची सावकाश, स्थिर सरकण. त्या सरकणीला काय म्हणतात?",
+          "choices": [
+            "ओहमच्या नियमाच्या मर्यादा",
+            "अपवाह वेग",
+            "रोधकता",
+            "विद्युतचालक बल"
+          ],
+          "solution": "अपवाह वेग म्हणजे लावलेल्या क्षेत्रात इलेक्ट्रॉन तारेच्या दिशेने मिळवत असलेला लहान सरासरी वेग, जो v_d = I/(nAe) ने मिळतो आणि सहसा 10⁻⁴ m/s च्या कोटीचा असतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Resistivity is correct?",
+      "choices": [
+        "Drift velocity is the small average velocity electrons acquire along a wire under an applied field, given by v_d = I/(nAe) and typically of the order of 10⁻⁴ m/s.",
+        "Electromotive force is the work done per unit charge by a source in driving charge round the complete circuit, and it exceeds the terminal potential difference by the drop Ir across the source's own internal resistance.",
+        "Kirchhoff's junction rule says the algebraic sum of currents at any junction is zero, which is conservation of charge applied to a point that has no capacity to store any.",
+        "Resistivity ρ is the material's own opposition to current, defined by R = ρL/A, so resistance depends on shape while resistivity does not."
+      ],
+      "answerIndex": 3,
+      "solution": "Resistivity ρ is the material's own opposition to current, defined by R = ρL/A, so resistance depends on shape while resistivity does not. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रतिरोधकता के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "अपवाह वेग वह छोटा औसत वेग है जो इलेक्ट्रॉन लगाए गए क्षेत्र में तार के अनुदिश पाते हैं, जो v_d = I/(nAe) से मिलता है और प्रायः 10⁻⁴ m/s की कोटि का होता है।",
+            "विद्युत वाहक बल वह कार्य प्रति एकांक आवेश है जो स्रोत पूरे परिपथ में आवेश घुमाने में करता है, और वह सिरों के विभवांतर से स्रोत के अपने आंतरिक प्रतिरोध पर हुए Ir पतन जितना अधिक होता है।",
+            "किरचॉफ़ का संधि नियम कहता है कि किसी भी संधि पर धाराओं का बीजगणितीय योग शून्य है, जो ऐसे बिंदु पर लगाया गया आवेश संरक्षण है जिसमें कुछ भी संचित करने की क्षमता नहीं।",
+            "प्रतिरोधकता ρ धारा के प्रति पदार्थ का अपना विरोध है, जो R = ρL/A से परिभाषित है, अतः प्रतिरोध आकार पर निर्भर है जबकि प्रतिरोधकता नहीं।"
+          ],
+          "solution": "प्रतिरोधकता ρ धारा के प्रति पदार्थ का अपना विरोध है, जो R = ρL/A से परिभाषित है, अतः प्रतिरोध आकार पर निर्भर है जबकि प्रतिरोधकता नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "रोधकता विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "अपवाह वेग म्हणजे लावलेल्या क्षेत्रात इलेक्ट्रॉन तारेच्या दिशेने मिळवत असलेला लहान सरासरी वेग, जो v_d = I/(nAe) ने मिळतो आणि सहसा 10⁻⁴ m/s च्या कोटीचा असतो.",
+            "विद्युतचालक बल म्हणजे स्रोताने संपूर्ण परिपथातून प्रभार फिरवण्यात केलेले प्रति एकक प्रभार कार्य, आणि ते टोकांच्या विभवांतराहून स्रोताच्या स्वतःच्या अंतर्गत रोधावरील Ir घसरणीइतके अधिक असते.",
+            "किरचॉफचा संधी नियम सांगतो की कोणत्याही संधीवर धारांची बीजगणितीय बेरीज शून्य असते, जे अशा बिंदूवर लावलेले प्रभार संधारण आहे ज्याच्यात काहीही साठवण्याची क्षमता नाही.",
+            "रोधकता ρ म्हणजे धारेला पदार्थाचा स्वतःचा विरोध, जी R = ρL/A ने व्याख्यायित, म्हणून रोध आकारावर अवलंबून असतो तर रोधकता नसते."
+          ],
+          "solution": "रोधकता ρ म्हणजे धारेला पदार्थाचा स्वतःचा विरोध, जी R = ρL/A ने व्याख्यायित, म्हणून रोध आकारावर अवलंबून असतो तर रोधकता नसते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It is not a force at all: the name is a nineteenth-century survival, and its unit is the volt, which is why writing it in newtons is a mistake that costs marks every year.\" — which of these is this about?",
+      "choices": [
+        "Electromotive force",
+        "The limits of Ohm's law",
+        "Resistivity",
+        "Drift velocity"
+      ],
+      "answerIndex": 0,
+      "solution": "Electromotive force is the work done per unit charge by a source in driving charge round the complete circuit, and it exceeds the terminal potential difference by the drop Ir across the source's own internal resistance. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"यह बल है ही नहीं: नाम उन्नीसवीं सदी का बचा हुआ है, और इसका मात्रक वोल्ट है, इसीलिए इसे न्यूटन में लिखना वह भूल है जो हर साल अंक ले जाती है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "विद्युत वाहक बल",
+            "ओम के नियम की सीमाएँ",
+            "प्रतिरोधकता",
+            "अपवाह वेग"
+          ],
+          "solution": "विद्युत वाहक बल वह कार्य प्रति एकांक आवेश है जो स्रोत पूरे परिपथ में आवेश घुमाने में करता है, और वह सिरों के विभवांतर से स्रोत के अपने आंतरिक प्रतिरोध पर हुए Ir पतन जितना अधिक होता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"हे बल मुळीच नाही: नाव एकोणिसाव्या शतकातले उरलेले, आणि याचे एकक व्होल्ट आहे, म्हणूनच ते न्यूटनमध्ये लिहिणे ही चूक दरवर्षी गुण नेते.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "विद्युतचालक बल",
+            "ओहमच्या नियमाच्या मर्यादा",
+            "रोधकता",
+            "अपवाह वेग"
+          ],
+          "solution": "विद्युतचालक बल म्हणजे स्रोताने संपूर्ण परिपथातून प्रभार फिरवण्यात केलेले प्रति एकक प्रभार कार्य, आणि ते टोकांच्या विभवांतराहून स्रोताच्या स्वतःच्या अंतर्गत रोधावरील Ir घसरणीइतके अधिक असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A metal held at one temperature gives a straight line through the origin, while a diode, an electrolyte and a filament that heats as it glows each give a bent or lopsided graph without breaking any physics at all. What is that boundary called?",
+      "choices": [
+        "The limits of Ohm's law",
+        "Kirchhoff's loop rule",
+        "Kirchhoff's junction rule",
+        "Resistivity"
+      ],
+      "answerIndex": 0,
+      "solution": "The limits of Ohm's law are the conditions V = IR silently assumes — a single material at a fixed temperature whose resistance does not itself depend on the current — so a substance that fails the straight-line test is non-ohmic rather than anomalous. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ताप पर रखी धातु मूल बिंदु से जाती सरल रेखा देती है, जबकि डायोड, विद्युत अपघट्य और दमकते-दमकते गर्म होता तंतु — हर एक — मुड़ा या टेढ़ा ग्राफ़ देता है और कोई भौतिकी तोड़ता ही नहीं। उस सीमा को क्या कहते हैं?",
+          "choices": [
+            "ओम के नियम की सीमाएँ",
+            "किरचॉफ़ का लूप नियम",
+            "किरचॉफ़ का संधि नियम",
+            "प्रतिरोधकता"
+          ],
+          "solution": "ओम के नियम की सीमाएँ वे शर्तें हैं जो V = IR चुपचाप मान लेता है — निश्चित ताप पर एक ही पदार्थ जिसका प्रतिरोध स्वयं धारा पर निर्भर न हो — अतः जो पदार्थ सरल-रेखा की जाँच में विफल होता है वह असामान्य नहीं, अनओमी है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "एका तापमानावर ठेवलेली धातू मूळबिंदूतून जाणारी सरळ रेषा देते, तर डायोड, विद्युत अपघटनी आणि चमकता चमकता तापणारा तंतू — प्रत्येक — वाकडा वा तिरका आलेख देतो आणि कोणतीही भौतिकी मोडतच नाही. त्या सीमेला काय म्हणतात?",
+          "choices": [
+            "ओहमच्या नियमाच्या मर्यादा",
+            "किरचॉफचा वळसा नियम",
+            "किरचॉफचा संधी नियम",
+            "रोधकता"
+          ],
+          "solution": "ओहमच्या नियमाच्या मर्यादा म्हणजे V = IR ज्या अटी मुकाट्याने गृहीत धरतो — ठराविक तापमानावरचा एकच पदार्थ ज्याचा रोध स्वतः धारेवर अवलंबून नाही — म्हणून जो पदार्थ सरळ-रेषेच्या चाचणीत नापास होतो तो असामान्य नसून अनओहमी असतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Kirchhoff's junction rule is correct?",
+      "choices": [
+        "Kirchhoff's junction rule says the algebraic sum of currents at any junction is zero, which is conservation of charge applied to a point that has no capacity to store any.",
+        "Electromotive force is the work done per unit charge by a source in driving charge round the complete circuit, and it exceeds the terminal potential difference by the drop Ir across the source's own internal resistance.",
+        "Kirchhoff's loop rule says the algebraic sum of potential changes around any closed loop is zero, which is conservation of energy for a unit charge taken once round.",
+        "The limits of Ohm's law are the conditions V = IR silently assumes — a single material at a fixed temperature whose resistance does not itself depend on the current — so a substance that fails the straight-line test is non-ohmic rather than anomalous."
+      ],
+      "answerIndex": 0,
+      "solution": "Kirchhoff's junction rule says the algebraic sum of currents at any junction is zero, which is conservation of charge applied to a point that has no capacity to store any. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "किरचॉफ़ का संधि नियम के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "किरचॉफ़ का संधि नियम कहता है कि किसी भी संधि पर धाराओं का बीजगणितीय योग शून्य है, जो ऐसे बिंदु पर लगाया गया आवेश संरक्षण है जिसमें कुछ भी संचित करने की क्षमता नहीं।",
+            "विद्युत वाहक बल वह कार्य प्रति एकांक आवेश है जो स्रोत पूरे परिपथ में आवेश घुमाने में करता है, और वह सिरों के विभवांतर से स्रोत के अपने आंतरिक प्रतिरोध पर हुए Ir पतन जितना अधिक होता है।",
+            "किरचॉफ़ का लूप नियम कहता है कि किसी भी बंद लूप के चारों ओर विभव परिवर्तनों का बीजगणितीय योग शून्य है, जो एक बार घुमाए गए एकांक आवेश के लिए ऊर्जा संरक्षण है।",
+            "ओम के नियम की सीमाएँ वे शर्तें हैं जो V = IR चुपचाप मान लेता है — निश्चित ताप पर एक ही पदार्थ जिसका प्रतिरोध स्वयं धारा पर निर्भर न हो — अतः जो पदार्थ सरल-रेखा की जाँच में विफल होता है वह असामान्य नहीं, अनओमी है।"
+          ],
+          "solution": "किरचॉफ़ का संधि नियम कहता है कि किसी भी संधि पर धाराओं का बीजगणितीय योग शून्य है, जो ऐसे बिंदु पर लगाया गया आवेश संरक्षण है जिसमें कुछ भी संचित करने की क्षमता नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "किरचॉफचा संधी नियम विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "किरचॉफचा संधी नियम सांगतो की कोणत्याही संधीवर धारांची बीजगणितीय बेरीज शून्य असते, जे अशा बिंदूवर लावलेले प्रभार संधारण आहे ज्याच्यात काहीही साठवण्याची क्षमता नाही.",
+            "विद्युतचालक बल म्हणजे स्रोताने संपूर्ण परिपथातून प्रभार फिरवण्यात केलेले प्रति एकक प्रभार कार्य, आणि ते टोकांच्या विभवांतराहून स्रोताच्या स्वतःच्या अंतर्गत रोधावरील Ir घसरणीइतके अधिक असते.",
+            "किरचॉफचा वळसा नियम सांगतो की कोणत्याही बंद वळशाभोवती विभव बदलांची बीजगणितीय बेरीज शून्य असते, जे एकदा फिरवलेल्या एकक प्रभारासाठीचे ऊर्जा संधारण आहे.",
+            "ओहमच्या नियमाच्या मर्यादा म्हणजे V = IR ज्या अटी मुकाट्याने गृहीत धरतो — ठराविक तापमानावरचा एकच पदार्थ ज्याचा रोध स्वतः धारेवर अवलंबून नाही — म्हणून जो पदार्थ सरळ-रेषेच्या चाचणीत नापास होतो तो असामान्य नसून अनओहमी असतो."
+          ],
+          "solution": "किरचॉफचा संधी नियम सांगतो की कोणत्याही संधीवर धारांची बीजगणितीय बेरीज शून्य असते, जे अशा बिंदूवर लावलेले प्रभार संधारण आहे ज्याच्यात काहीही साठवण्याची क्षमता नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It works because potential is single-valued: each node has one number, and returning to a node must return to that number, exactly as walking round a hill brings you back to your original altitude.\" — which of these is this about?",
+      "choices": [
+        "The limits of Ohm's law",
+        "Resistivity",
+        "Kirchhoff's junction rule",
+        "Kirchhoff's loop rule"
+      ],
+      "answerIndex": 3,
+      "solution": "Kirchhoff's loop rule says the algebraic sum of potential changes around any closed loop is zero, which is conservation of energy for a unit charge taken once round. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"यह इसलिए चलता है कि विभव एकमानी है: हर गाँठ की एक संख्या है, और गाँठ पर लौटने का अर्थ उसी संख्या पर लौटना है, ठीक वैसे जैसे पहाड़ी के चारों ओर घूमकर तुम अपनी मूल ऊँचाई पर लौट आते हो।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "ओम के नियम की सीमाएँ",
+            "प्रतिरोधकता",
+            "किरचॉफ़ का संधि नियम",
+            "किरचॉफ़ का लूप नियम"
+          ],
+          "solution": "किरचॉफ़ का लूप नियम कहता है कि किसी भी बंद लूप के चारों ओर विभव परिवर्तनों का बीजगणितीय योग शून्य है, जो एक बार घुमाए गए एकांक आवेश के लिए ऊर्जा संरक्षण है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"हे यामुळे चालते की विभव एकमूल्यी आहे: प्रत्येक गाठीची एक संख्या आहे, आणि गाठीवर परतणे म्हणजे त्याच संख्येवर परतणे, अगदी तसेच जसे टेकडीभोवती फिरून तुम्ही आपल्या मूळ उंचीवर परत येता.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "ओहमच्या नियमाच्या मर्यादा",
+            "रोधकता",
+            "किरचॉफचा संधी नियम",
+            "किरचॉफचा वळसा नियम"
+          ],
+          "solution": "किरचॉफचा वळसा नियम सांगतो की कोणत्याही बंद वळशाभोवती विभव बदलांची बीजगणितीय बेरीज शून्य असते, जे एकदा फिरवलेल्या एकक प्रभारासाठीचे ऊर्जा संधारण आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A crawl hidden inside a stampede\" goes correctly with which of these?",
+      "choices": [
+        "Kirchhoff's loop rule",
+        "Kirchhoff's junction rule",
+        "the limits of Ohm's law",
+        "drift velocity"
+      ],
+      "answerIndex": 3,
+      "solution": "Drift velocity is the small average velocity electrons acquire along a wire under an applied field, given by v_d = I/(nAe) and typically of the order of 10⁻⁴ m/s. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"भगदड़ के भीतर छिपी रेंगन\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "किरचॉफ़ का लूप नियम",
+            "किरचॉफ़ का संधि नियम",
+            "ओम के नियम की सीमाएँ",
+            "अपवाह वेग"
+          ],
+          "solution": "अपवाह वेग वह छोटा औसत वेग है जो इलेक्ट्रॉन लगाए गए क्षेत्र में तार के अनुदिश पाते हैं, जो v_d = I/(nAe) से मिलता है और प्रायः 10⁻⁴ m/s की कोटि का होता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"चेंगराचेंगरीत लपलेली रांगण\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "किरचॉफचा वळसा नियम",
+            "किरचॉफचा संधी नियम",
+            "ओहमच्या नियमाच्या मर्यादा",
+            "अपवाह वेग"
+          ],
+          "solution": "अपवाह वेग म्हणजे लावलेल्या क्षेत्रात इलेक्ट्रॉन तारेच्या दिशेने मिळवत असलेला लहान सरासरी वेग, जो v_d = I/(nAe) ने मिळतो आणि सहसा 10⁻⁴ m/s च्या कोटीचा असतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"In the table of materials, not of components\" goes correctly with which of these?",
+      "choices": [
+        "drift velocity",
+        "electromotive force",
+        "resistivity",
+        "the limits of Ohm's law"
+      ],
+      "answerIndex": 2,
+      "solution": "Resistivity ρ is the material's own opposition to current, defined by R = ρL/A, so resistance depends on shape while resistivity does not. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"पुर्ज़ों की नहीं, पदार्थों की तालिका में\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "अपवाह वेग",
+            "विद्युत वाहक बल",
+            "प्रतिरोधकता",
+            "ओम के नियम की सीमाएँ"
+          ],
+          "solution": "प्रतिरोधकता ρ धारा के प्रति पदार्थ का अपना विरोध है, जो R = ρL/A से परिभाषित है, अतः प्रतिरोध आकार पर निर्भर है जबकि प्रतिरोधकता नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"सुट्या भागांच्या नव्हे, पदार्थांच्या कोष्टकात\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अपवाह वेग",
+            "विद्युतचालक बल",
+            "रोधकता",
+            "ओहमच्या नियमाच्या मर्यादा"
+          ],
+          "solution": "रोधकता ρ म्हणजे धारेला पदार्थाचा स्वतःचा विरोध, जी R = ρL/A ने व्याख्यायित, म्हणून रोध आकारावर अवलंबून असतो तर रोधकता नसते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Called a force, measured in volts\" goes correctly with which of these?",
+      "choices": [
+        "electromotive force",
+        "drift velocity",
+        "the limits of Ohm's law",
+        "resistivity"
+      ],
+      "answerIndex": 0,
+      "solution": "Electromotive force is the work done per unit charge by a source in driving charge round the complete circuit, and it exceeds the terminal potential difference by the drop Ir across the source's own internal resistance. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"कहलाता बल, नापा वोल्ट में\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "विद्युत वाहक बल",
+            "अपवाह वेग",
+            "ओम के नियम की सीमाएँ",
+            "प्रतिरोधकता"
+          ],
+          "solution": "विद्युत वाहक बल वह कार्य प्रति एकांक आवेश है जो स्रोत पूरे परिपथ में आवेश घुमाने में करता है, और वह सिरों के विभवांतर से स्रोत के अपने आंतरिक प्रतिरोध पर हुए Ir पतन जितना अधिक होता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"म्हटले बल, मोजले व्होल्टमध्ये\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "विद्युतचालक बल",
+            "अपवाह वेग",
+            "ओहमच्या नियमाच्या मर्यादा",
+            "रोधकता"
+          ],
+          "solution": "विद्युतचालक बल म्हणजे स्रोताने संपूर्ण परिपथातून प्रभार फिरवण्यात केलेले प्रति एकक प्रभार कार्य, आणि ते टोकांच्या विभवांतराहून स्रोताच्या स्वतःच्या अंतर्गत रोधावरील Ir घसरणीइतके अधिक असते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The straight line was a description, never a promise\" goes correctly with which of these?",
+      "choices": [
+        "the limits of Ohm's law",
+        "resistivity",
+        "drift velocity",
+        "Kirchhoff's loop rule"
+      ],
+      "answerIndex": 0,
+      "solution": "The limits of Ohm's law are the conditions V = IR silently assumes — a single material at a fixed temperature whose resistance does not itself depend on the current — so a substance that fails the straight-line test is non-ohmic rather than anomalous. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"सरल रेखा वर्णन थी, वादा कभी नहीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "ओम के नियम की सीमाएँ",
+            "प्रतिरोधकता",
+            "अपवाह वेग",
+            "किरचॉफ़ का लूप नियम"
+          ],
+          "solution": "ओम के नियम की सीमाएँ वे शर्तें हैं जो V = IR चुपचाप मान लेता है — निश्चित ताप पर एक ही पदार्थ जिसका प्रतिरोध स्वयं धारा पर निर्भर न हो — अतः जो पदार्थ सरल-रेखा की जाँच में विफल होता है वह असामान्य नहीं, अनओमी है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"सरळ रेषा वर्णन होते, वचन कधीच नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "ओहमच्या नियमाच्या मर्यादा",
+            "रोधकता",
+            "अपवाह वेग",
+            "किरचॉफचा वळसा नियम"
+          ],
+          "solution": "ओहमच्या नियमाच्या मर्यादा म्हणजे V = IR ज्या अटी मुकाट्याने गृहीत धरतो — ठराविक तापमानावरचा एकच पदार्थ ज्याचा रोध स्वतः धारेवर अवलंबून नाही — म्हणून जो पदार्थ सरळ-रेषेच्या चाचणीत नापास होतो तो असामान्य नसून अनओहमी असतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Nothing piles up where wires meet\" goes correctly with which of these?",
+      "choices": [
+        "resistivity",
+        "Kirchhoff's junction rule",
+        "drift velocity",
+        "Kirchhoff's loop rule"
+      ],
+      "answerIndex": 1,
+      "solution": "Kirchhoff's junction rule says the algebraic sum of currents at any junction is zero, which is conservation of charge applied to a point that has no capacity to store any. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"जहाँ तार मिलते हैं वहाँ कुछ जमा नहीं होता\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "प्रतिरोधकता",
+            "किरचॉफ़ का संधि नियम",
+            "अपवाह वेग",
+            "किरचॉफ़ का लूप नियम"
+          ],
+          "solution": "किरचॉफ़ का संधि नियम कहता है कि किसी भी संधि पर धाराओं का बीजगणितीय योग शून्य है, जो ऐसे बिंदु पर लगाया गया आवेश संरक्षण है जिसमें कुछ भी संचित करने की क्षमता नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"जिथे तारा भेटतात तिथे काहीच साठत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "रोधकता",
+            "किरचॉफचा संधी नियम",
+            "अपवाह वेग",
+            "किरचॉफचा वळसा नियम"
+          ],
+          "solution": "किरचॉफचा संधी नियम सांगतो की कोणत्याही संधीवर धारांची बीजगणितीय बेरीज शून्य असते, जे अशा बिंदूवर लावलेले प्रभार संधारण आहे ज्याच्यात काहीही साठवण्याची क्षमता नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Round the hill and back to the same altitude\" goes correctly with which of these?",
+      "choices": [
+        "electromotive force",
+        "Kirchhoff's junction rule",
+        "resistivity",
+        "Kirchhoff's loop rule"
+      ],
+      "answerIndex": 3,
+      "solution": "Kirchhoff's loop rule says the algebraic sum of potential changes around any closed loop is zero, which is conservation of energy for a unit charge taken once round. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"पहाड़ी के चारों ओर और उसी ऊँचाई पर वापस\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "विद्युत वाहक बल",
+            "किरचॉफ़ का संधि नियम",
+            "प्रतिरोधकता",
+            "किरचॉफ़ का लूप नियम"
+          ],
+          "solution": "किरचॉफ़ का लूप नियम कहता है कि किसी भी बंद लूप के चारों ओर विभव परिवर्तनों का बीजगणितीय योग शून्य है, जो एक बार घुमाए गए एकांक आवेश के लिए ऊर्जा संरक्षण है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"टेकडीभोवती आणि त्याच उंचीवर परत\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "विद्युतचालक बल",
+            "किरचॉफचा संधी नियम",
+            "रोधकता",
+            "किरचॉफचा वळसा नियम"
+          ],
+          "solution": "किरचॉफचा वळसा नियम सांगतो की कोणत्याही बंद वळशाभोवती विभव बदलांची बीजगणितीय बेरीज शून्य असते, जे एकदा फिरवलेल्या एकक प्रभारासाठीचे ऊर्जा संधारण आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Drift velocity EXCEPT —",
+      "choices": [
+        "It is an average and not a speed: individual electrons still hurtle about, and the drift is only what survives when their random velocities cancel over the whole population.",
+        "A wire's current is proportional to it, so doubling the current doubles the drift velocity — but a thicker wire carrying the same current has a slower drift, since the same charge per second is spread over more electrons.",
+        "Resistivity ρ is the material's own opposition to current, defined by R = ρL/A, so resistance depends on shape while resistivity does not.",
+        "Drift velocity is the small average velocity electrons acquire along a wire under an applied field, given by v_d = I/(nAe) and typically of the order of 10⁻⁴ m/s."
+      ],
+      "answerIndex": 2,
+      "solution": "Resistivity ρ is the material's own opposition to current, defined by R = ρL/A, so resistance depends on shape while resistivity does not. That belongs to Resistivity, not Drift velocity — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अपवाह वेग के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "यह औसत है, चाल नहीं: अलग-अलग इलेक्ट्रॉन अब भी दौड़ते रहते हैं, और अपवाह केवल वह है जो पूरी आबादी पर उनके यादृच्छिक वेग कटने के बाद बचता है।",
+            "तार की धारा इसके समानुपाती है, अतः धारा दुगुनी करने पर अपवाह वेग दुगुना होता है — पर उतनी ही धारा ले जाने वाले मोटे तार में अपवाह धीमा है, क्योंकि प्रति सेकंड वही आवेश अधिक इलेक्ट्रॉनों में बँटा है।",
+            "प्रतिरोधकता ρ धारा के प्रति पदार्थ का अपना विरोध है, जो R = ρL/A से परिभाषित है, अतः प्रतिरोध आकार पर निर्भर है जबकि प्रतिरोधकता नहीं।",
+            "अपवाह वेग वह छोटा औसत वेग है जो इलेक्ट्रॉन लगाए गए क्षेत्र में तार के अनुदिश पाते हैं, जो v_d = I/(nAe) से मिलता है और प्रायः 10⁻⁴ m/s की कोटि का होता है।"
+          ],
+          "solution": "प्रतिरोधकता ρ धारा के प्रति पदार्थ का अपना विरोध है, जो R = ρL/A से परिभाषित है, अतः प्रतिरोध आकार पर निर्भर है जबकि प्रतिरोधकता नहीं। यह प्रतिरोधकता की बात है, अपवाह वेग की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "अपवाह वेग विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "ही सरासरी आहे, वेग नव्हे: वैयक्तिक इलेक्ट्रॉन अजूनही धावतच असतात, आणि अपवाह म्हणजे संपूर्ण समुदायावर त्यांचे यादृच्छिक वेग कापल्यावर उरणारे तेवढेच.",
+            "तारेची धारा हिच्याशी समानुपाती आहे, म्हणून धारा दुप्पट केल्यास अपवाह वेग दुप्पट होतो — पण तितकीच धारा वाहणाऱ्या जाड तारेत अपवाह सावकाश असतो, कारण दर सेकंदाला तोच प्रभार अधिक इलेक्ट्रॉनांत वाटला जातो.",
+            "रोधकता ρ म्हणजे धारेला पदार्थाचा स्वतःचा विरोध, जी R = ρL/A ने व्याख्यायित, म्हणून रोध आकारावर अवलंबून असतो तर रोधकता नसते.",
+            "अपवाह वेग म्हणजे लावलेल्या क्षेत्रात इलेक्ट्रॉन तारेच्या दिशेने मिळवत असलेला लहान सरासरी वेग, जो v_d = I/(nAe) ने मिळतो आणि सहसा 10⁻⁴ m/s च्या कोटीचा असतो."
+          ],
+          "solution": "रोधकता ρ म्हणजे धारेला पदार्थाचा स्वतःचा विरोध, जी R = ρL/A ने व्याख्यायित, म्हणून रोध आकारावर अवलंबून असतो तर रोधकता नसते. हे रोधकता चे आहे, अपवाह वेग चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Resistivity EXCEPT —",
+      "choices": [
+        "Resistivity ρ is the material's own opposition to current, defined by R = ρL/A, so resistance depends on shape while resistivity does not.",
+        "Electromotive force is the work done per unit charge by a source in driving charge round the complete circuit, and it exceeds the terminal potential difference by the drop Ir across the source's own internal resistance.",
+        "Stretching a wire without removing metal changes both L and A at once, so doubling the length quarters the area and multiplies the resistance by four, not by two.",
+        "For a metal it rises with temperature, because hotter ions vibrate more and the electrons collide sooner; for a semiconductor it falls with temperature, because heat frees more carriers than it hinders."
+      ],
+      "answerIndex": 1,
+      "solution": "Electromotive force is the work done per unit charge by a source in driving charge round the complete circuit, and it exceeds the terminal potential difference by the drop Ir across the source's own internal resistance. That belongs to Electromotive force, not Resistivity — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रतिरोधकता के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "प्रतिरोधकता ρ धारा के प्रति पदार्थ का अपना विरोध है, जो R = ρL/A से परिभाषित है, अतः प्रतिरोध आकार पर निर्भर है जबकि प्रतिरोधकता नहीं।",
+            "विद्युत वाहक बल वह कार्य प्रति एकांक आवेश है जो स्रोत पूरे परिपथ में आवेश घुमाने में करता है, और वह सिरों के विभवांतर से स्रोत के अपने आंतरिक प्रतिरोध पर हुए Ir पतन जितना अधिक होता है।",
+            "धातु हटाए बिना तार खींचने पर L और A दोनों एक साथ बदलते हैं, अतः लंबाई दुगुनी करने पर क्षेत्रफल चौथाई होता है और प्रतिरोध चार गुना, दो गुना नहीं।",
+            "धातु के लिए यह ताप के साथ बढ़ती है, क्योंकि गर्म आयन अधिक कंपते हैं और इलेक्ट्रॉन जल्दी टकराते हैं; अर्धचालक के लिए यह ताप के साथ घटती है, क्योंकि ऊष्मा जितनी बाधा डालती है उससे अधिक वाहक मुक्त करती है।"
+          ],
+          "solution": "विद्युत वाहक बल वह कार्य प्रति एकांक आवेश है जो स्रोत पूरे परिपथ में आवेश घुमाने में करता है, और वह सिरों के विभवांतर से स्रोत के अपने आंतरिक प्रतिरोध पर हुए Ir पतन जितना अधिक होता है। यह विद्युत वाहक बल की बात है, प्रतिरोधकता की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "रोधकता विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "रोधकता ρ म्हणजे धारेला पदार्थाचा स्वतःचा विरोध, जी R = ρL/A ने व्याख्यायित, म्हणून रोध आकारावर अवलंबून असतो तर रोधकता नसते.",
+            "विद्युतचालक बल म्हणजे स्रोताने संपूर्ण परिपथातून प्रभार फिरवण्यात केलेले प्रति एकक प्रभार कार्य, आणि ते टोकांच्या विभवांतराहून स्रोताच्या स्वतःच्या अंतर्गत रोधावरील Ir घसरणीइतके अधिक असते.",
+            "धातू न काढता तार ताणल्यास L आणि A दोन्ही एकाच वेळी बदलतात, म्हणून लांबी दुप्पट केल्यास क्षेत्रफळ चतुर्थांश होते आणि रोध चौपट, दुप्पट नव्हे.",
+            "धातूसाठी ती तापमानासोबत वाढते, कारण तापलेले आयन अधिक कंप पावतात आणि इलेक्ट्रॉन लवकर आदळतात; अर्धवाहकासाठी ती तापमानासोबत घटते, कारण उष्णता जितका अडथळा आणते त्याहून अधिक वाहक मुक्त करते."
+          ],
+          "solution": "विद्युतचालक बल म्हणजे स्रोताने संपूर्ण परिपथातून प्रभार फिरवण्यात केलेले प्रति एकक प्रभार कार्य, आणि ते टोकांच्या विभवांतराहून स्रोताच्या स्वतःच्या अंतर्गत रोधावरील Ir घसरणीइतके अधिक असते. हे विद्युतचालक बल चे आहे, रोधकता चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Electromotive force EXCEPT —",
+      "choices": [
+        "Resistivity ρ is the material's own opposition to current, defined by R = ρL/A, so resistance depends on shape while resistivity does not.",
+        "It is not a force at all: the name is a nineteenth-century survival, and its unit is the volt, which is why writing it in newtons is a mistake that costs marks every year.",
+        "A cell's terminal voltage sags the moment a heavy load is connected, which is why a car's headlights dim while the starter motor turns and recover the instant the engine catches.",
+        "Electromotive force is the work done per unit charge by a source in driving charge round the complete circuit, and it exceeds the terminal potential difference by the drop Ir across the source's own internal resistance."
+      ],
+      "answerIndex": 0,
+      "solution": "Resistivity ρ is the material's own opposition to current, defined by R = ρL/A, so resistance depends on shape while resistivity does not. That belongs to Resistivity, not Electromotive force — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "विद्युत वाहक बल के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "प्रतिरोधकता ρ धारा के प्रति पदार्थ का अपना विरोध है, जो R = ρL/A से परिभाषित है, अतः प्रतिरोध आकार पर निर्भर है जबकि प्रतिरोधकता नहीं।",
+            "यह बल है ही नहीं: नाम उन्नीसवीं सदी का बचा हुआ है, और इसका मात्रक वोल्ट है, इसीलिए इसे न्यूटन में लिखना वह भूल है जो हर साल अंक ले जाती है।",
+            "भारी लोड जुड़ते ही सेल के सिरों की वोल्टता बैठ जाती है, इसीलिए स्टार्टर मोटर घूमते समय कार की बत्तियाँ मंद पड़ती हैं और इंजन चालू होते ही तुरंत लौट आती हैं।",
+            "विद्युत वाहक बल वह कार्य प्रति एकांक आवेश है जो स्रोत पूरे परिपथ में आवेश घुमाने में करता है, और वह सिरों के विभवांतर से स्रोत के अपने आंतरिक प्रतिरोध पर हुए Ir पतन जितना अधिक होता है।"
+          ],
+          "solution": "प्रतिरोधकता ρ धारा के प्रति पदार्थ का अपना विरोध है, जो R = ρL/A से परिभाषित है, अतः प्रतिरोध आकार पर निर्भर है जबकि प्रतिरोधकता नहीं। यह प्रतिरोधकता की बात है, विद्युत वाहक बल की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "विद्युतचालक बल विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "रोधकता ρ म्हणजे धारेला पदार्थाचा स्वतःचा विरोध, जी R = ρL/A ने व्याख्यायित, म्हणून रोध आकारावर अवलंबून असतो तर रोधकता नसते.",
+            "हे बल मुळीच नाही: नाव एकोणिसाव्या शतकातले उरलेले, आणि याचे एकक व्होल्ट आहे, म्हणूनच ते न्यूटनमध्ये लिहिणे ही चूक दरवर्षी गुण नेते.",
+            "जड भार जोडताच घटाच्या टोकांचा व्होल्टेज बसतो, म्हणूनच स्टार्टर मोटर फिरत असताना गाडीचे दिवे मंद होतात आणि इंजिन सुरू होताच लगेच परत येतात.",
+            "विद्युतचालक बल म्हणजे स्रोताने संपूर्ण परिपथातून प्रभार फिरवण्यात केलेले प्रति एकक प्रभार कार्य, आणि ते टोकांच्या विभवांतराहून स्रोताच्या स्वतःच्या अंतर्गत रोधावरील Ir घसरणीइतके अधिक असते."
+          ],
+          "solution": "रोधकता ρ म्हणजे धारेला पदार्थाचा स्वतःचा विरोध, जी R = ρL/A ने व्याख्यायित, म्हणून रोध आकारावर अवलंबून असतो तर रोधकता नसते. हे रोधकता चे आहे, विद्युतचालक बल चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The limits of Ohm's law EXCEPT —",
+      "choices": [
+        "Kirchhoff's loop rule says the algebraic sum of potential changes around any closed loop is zero, which is conservation of energy for a unit charge taken once round.",
+        "The condition usually dropped is the fixed temperature, and it matters: a bulb's filament has several times more resistance when glowing than when cold, so its graph bends away from the straight line the moment it starts to do its job.",
+        "The limits of Ohm's law are the conditions V = IR silently assumes — a single material at a fixed temperature whose resistance does not itself depend on the current — so a substance that fails the straight-line test is non-ohmic rather than anomalous.",
+        "The proportionality is a description of how certain substances happen to behave rather than a law of nature, and nothing else in the chapter would change if no material were ohmic at all."
+      ],
+      "answerIndex": 0,
+      "solution": "Kirchhoff's loop rule says the algebraic sum of potential changes around any closed loop is zero, which is conservation of energy for a unit charge taken once round. That belongs to Kirchhoff's loop rule, not The limits of Ohm's law — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ओम के नियम की सीमाएँ के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "किरचॉफ़ का लूप नियम कहता है कि किसी भी बंद लूप के चारों ओर विभव परिवर्तनों का बीजगणितीय योग शून्य है, जो एक बार घुमाए गए एकांक आवेश के लिए ऊर्जा संरक्षण है।",
+            "जो शर्त प्रायः छोड़ दी जाती है वह निश्चित ताप है, और वह मायने रखती है: बल्ब का तंतु दमकते समय ठंडे की तुलना में कई गुना अधिक प्रतिरोध रखता है, अतः जैसे ही वह अपना काम शुरू करता है उसका ग्राफ़ सरल रेखा से मुड़ जाता है।",
+            "ओम के नियम की सीमाएँ वे शर्तें हैं जो V = IR चुपचाप मान लेता है — निश्चित ताप पर एक ही पदार्थ जिसका प्रतिरोध स्वयं धारा पर निर्भर न हो — अतः जो पदार्थ सरल-रेखा की जाँच में विफल होता है वह असामान्य नहीं, अनओमी है।",
+            "समानुपात प्रकृति का नियम नहीं बल्कि इस बात का वर्णन है कि कुछ पदार्थ किस तरह बरतते हैं, और यदि कोई भी पदार्थ ओमी न होता तो अध्याय में और कुछ भी न बदलता।"
+          ],
+          "solution": "किरचॉफ़ का लूप नियम कहता है कि किसी भी बंद लूप के चारों ओर विभव परिवर्तनों का बीजगणितीय योग शून्य है, जो एक बार घुमाए गए एकांक आवेश के लिए ऊर्जा संरक्षण है। यह किरचॉफ़ का लूप नियम की बात है, ओम के नियम की सीमाएँ की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "ओहमच्या नियमाच्या मर्यादा विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "किरचॉफचा वळसा नियम सांगतो की कोणत्याही बंद वळशाभोवती विभव बदलांची बीजगणितीय बेरीज शून्य असते, जे एकदा फिरवलेल्या एकक प्रभारासाठीचे ऊर्जा संधारण आहे.",
+            "जी अट सहसा गाळली जाते ती ठराविक तापमानाची, आणि ती महत्त्वाची आहे: बल्बचा तंतू चमकताना थंड असतानाहून कितीतरी पट अधिक रोध बाळगतो, म्हणून तो आपले काम सुरू करताच त्याचा आलेख सरळ रेषेपासून वाकतो.",
+            "ओहमच्या नियमाच्या मर्यादा म्हणजे V = IR ज्या अटी मुकाट्याने गृहीत धरतो — ठराविक तापमानावरचा एकच पदार्थ ज्याचा रोध स्वतः धारेवर अवलंबून नाही — म्हणून जो पदार्थ सरळ-रेषेच्या चाचणीत नापास होतो तो असामान्य नसून अनओहमी असतो.",
+            "समानुपात हा निसर्गाचा नियम नसून काही पदार्थ कसे वागतात याचे वर्णन आहे, आणि जर कोणताही पदार्थ ओहमी नसता तर प्रकरणात दुसरे काहीही बदलले नसते."
+          ],
+          "solution": "किरचॉफचा वळसा नियम सांगतो की कोणत्याही बंद वळशाभोवती विभव बदलांची बीजगणितीय बेरीज शून्य असते, जे एकदा फिरवलेल्या एकक प्रभारासाठीचे ऊर्जा संधारण आहे. हे किरचॉफचा वळसा नियम चे आहे, ओहमच्या नियमाच्या मर्यादा चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student computes the drift velocity of electrons in the wire to a ceiling lamp and finds it to be about 0.1 mm per second — so an electron leaving the switch would take hours to reach the bulb. Yet the bulb lights the instant the switch is closed. Resolve the apparent contradiction.",
+      "choices": [
+        "Nothing has to travel from the switch to the bulb for the bulb to light. The wire is already full of free electrons everywhere along its length, including inside the filament. Closing the switch establishes an electric field along the conductor, and that field is set up at a speed close to the speed of light — so every electron in the circuit, including those already in the filament, begins drifting almost simultaneously. The delay is the time for the FIELD to propagate, microseconds at most, not the time for any particular electron to make the journey",
+        "The drift velocity calculation is wrong: electrons in a metal actually travel at close to the speed of light, which is why the effect is instantaneous",
+        "The electrons take hours, and the bulb only appears to light at once because the human eye cannot resolve the delay",
+        "Current in a wire is carried by the positive charges, which are far lighter than electrons and therefore move much faster"
+      ],
+      "answerIndex": 0,
+      "solution": "The calculation is right and the conclusion drawn from it is a category error. Take the arithmetic first, because it is worth trusting. With v_d = I/(nAe), a current of a few amperes in a copper wire of a square millimetre cross-section, and n ≈ 8.5 × 10²⁸ free electrons per cubic metre, the drift velocity really does come out at a fraction of a millimetre per second. Copper is extraordinarily crowded with carriers, and it is that crowding — not any great speed — that lets a modest drift carry a large current. So the student's number is fine. The error is in the picture that accompanies it: an image of electrons setting off from the switch like runners and the bulb waiting for the first of them to arrive. Nothing in the physics requires that. The wire is not an empty pipe waiting to be filled; it is already packed with free electrons along its entire length, and the filament of the bulb contains its own supply. What the switch does is not to release electrons but to COMPLETE THE CIRCUIT, and completing it establishes an electric field along the conductor. That field is a change in the electromagnetic configuration of space, and it propagates at a speed close to c — reduced somewhat by the wire and its surroundings, but still of the order of 10⁸ m/s. For a wire a few metres long, the field reaches the far end in a few nanoseconds. The moment it arrives, the electrons already sitting there feel a force and begin to drift. Every electron in the circuit starts moving at very nearly the same instant, and current appears everywhere at once. The good analogy is a pipe already full of water. Open a tap at one end and water comes out of the other immediately, because the pressure change travels through the water at the speed of sound in water, not because a molecule from the tap has crossed the pipe. Any particular molecule may take a very long time to make the trip. The analogy is worth keeping because it also predicts the right structure for the exception: if the pipe were empty, you would have to wait for water to cross it — and correspondingly, in a vacuum tube where there are no carriers waiting in the gap, the delay IS a transit time, and it is measurable. This is also why a long undersea cable has a real, appreciable propagation delay while an ordinary room circuit does not: what is being timed in both cases is the field, and the field cares about the length of the path and about the speed of light, not about how fast electrons crawl. (The second option throws away a correct calculation to save a wrong picture; the third saves the picture by inventing a perceptual limit; the fourth misidentifies the carrier in a metal, where the mobile charges are electrons and the positive ions are locked in the lattice.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक विद्यार्थी छत के लैंप तक जाने वाले तार में इलेक्ट्रॉनों का अपवाह वेग निकालता है और वह लगभग 0.1 mm प्रति सेकंड पाता है — अर्थात् स्विच से चला इलेक्ट्रॉन बल्ब तक पहुँचने में घंटों लेगा। फिर भी स्विच दबाते ही बल्ब जल उठता है। इस दिखते विरोधाभास को सुलझाओ।",
+          "choices": [
+            "बल्ब जलने के लिए स्विच से बल्ब तक किसी को यात्रा करने की ज़रूरत ही नहीं। तार अपनी पूरी लंबाई में पहले से ही हर जगह मुक्त इलेक्ट्रॉनों से भरा है, तंतु के भीतर भी। स्विच बंद करना चालक के अनुदिश विद्युत क्षेत्र खड़ा करता है, और वह क्षेत्र प्रकाश की चाल के निकट चाल से बनता है — अतः परिपथ का हर इलेक्ट्रॉन, तंतु में पहले से मौजूद वे भी, लगभग एक साथ बहना शुरू कर देता है। देरी क्षेत्र के फैलने का समय है, अधिक से अधिक माइक्रोसेकंड, किसी विशेष इलेक्ट्रॉन के यात्रा करने का समय नहीं",
+            "अपवाह वेग की गणना ग़लत है: धातु में इलेक्ट्रॉन वास्तव में प्रकाश की चाल के निकट चलते हैं, इसीलिए असर तत्काल है",
+            "इलेक्ट्रॉन घंटों लेते हैं, और बल्ब तत्काल जलता केवल इसलिए लगता है कि मानव आँख उस देरी को पकड़ नहीं पाती",
+            "तार में धारा धन आवेश ले जाते हैं, जो इलेक्ट्रॉनों से कहीं हल्के हैं और इसलिए बहुत तेज़ चलते हैं"
+          ],
+          "solution": "गणना सही है और उससे निकाला गया निष्कर्ष कोटि की भूल है। पहले अंकगणित लो, क्योंकि उस पर भरोसा करना चाहिए। v_d = I/(nAe) से, वर्ग मिलीमीटर परिच्छेद के ताँबे के तार में कुछ ऐम्पियर की धारा, और n ≈ 8.5 × 10²⁸ मुक्त इलेक्ट्रॉन प्रति घन मीटर लेने पर, अपवाह वेग सचमुच मिलीमीटर के अंश प्रति सेकंड निकलता है। ताँबा वाहकों से असाधारण रूप से भरा है, और वही भीड़ — न कि कोई बड़ी चाल — मामूली अपवाह से बड़ी धारा ढुलवाती है। अतः विद्यार्थी की संख्या ठीक है। भूल उसके साथ चलने वाले चित्र में है: वह छवि जिसमें इलेक्ट्रॉन स्विच से धावकों की तरह निकलते हैं और बल्ब पहले के पहुँचने की प्रतीक्षा करता है। भौतिकी में ऐसा कुछ भी नहीं जो यह माँगे। तार भरे जाने की प्रतीक्षा करता ख़ाली पाइप नहीं; वह अपनी पूरी लंबाई में पहले से मुक्त इलेक्ट्रॉनों से ठसा है, और बल्ब के तंतु के पास अपना भंडार है। स्विच जो करता है वह इलेक्ट्रॉन छोड़ना नहीं बल्कि परिपथ पूरा करना है, और उसे पूरा करना चालक के अनुदिश विद्युत क्षेत्र खड़ा कर देता है। वह क्षेत्र आकाश के विद्युत चुंबकीय विन्यास में परिवर्तन है, और वह c के निकट चाल से फैलता है — तार और उसके परिवेश से कुछ घटा हुआ, पर फिर भी 10⁸ m/s की कोटि का। कुछ मीटर लंबे तार के लिए, क्षेत्र दूर के सिरे तक कुछ नैनोसेकंड में पहुँच जाता है। पहुँचते ही, वहाँ पहले से बैठे इलेक्ट्रॉन बल अनुभव करते हैं और बहना शुरू कर देते हैं। परिपथ का हर इलेक्ट्रॉन लगभग उसी क्षण चलने लगता है, और धारा हर जगह एक साथ प्रकट होती है। अच्छी उपमा पहले से पानी भरा पाइप है। एक सिरे पर नल खोलो और दूसरे से पानी तुरंत निकलता है, क्योंकि दाब का परिवर्तन पानी में ध्वनि की चाल से चलता है, इसलिए नहीं कि नल का कोई अणु पाइप पार कर गया। कोई विशेष अणु यह यात्रा करने में बहुत लंबा समय ले सकता है। उपमा रखने योग्य है क्योंकि वह अपवाद की सही रचना भी बता देती है: यदि पाइप ख़ाली होता, तो तुम्हें पानी के पार आने की प्रतीक्षा करनी पड़ती — और तदनुरूप, निर्वात नलिका में जहाँ अंतराल में कोई वाहक बैठा नहीं, देरी सचमुच पारगमन समय है, और वह नापी जा सकती है। इसीलिए लंबे समुद्री केबल में असली, ध्यान देने योग्य संचरण-देरी होती है जबकि कमरे के साधारण परिपथ में नहीं: दोनों में जो समय नापा जा रहा है वह क्षेत्र का है, और क्षेत्र को पथ की लंबाई और प्रकाश की चाल की परवाह है, इस बात की नहीं कि इलेक्ट्रॉन कितनी धीमी रेंगते हैं। (दूसरा विकल्प ग़लत चित्र बचाने के लिए सही गणना फेंक देता है; तीसरा चित्र बचाने को बोध की सीमा गढ़ता है; चौथा धातु में वाहक की पहचान ग़लत करता है, जहाँ गतिशील आवेश इलेक्ट्रॉन हैं और धन आयन जालक में जकड़े हैं।)"
+        },
+        "mr": {
+          "stem": "एक विद्यार्थी छताच्या दिव्यापर्यंत जाणाऱ्या तारेतील इलेक्ट्रॉनांचा अपवाह वेग काढतो आणि तो सुमारे 0.1 mm प्रति सेकंद येतो — म्हणजे स्विचपासून निघालेला इलेक्ट्रॉन बल्बपर्यंत पोहोचायला तास लागतील. तरीही स्विच दाबताच बल्ब पेटतो. हा दिसणारा विरोधाभास सोडवा.",
+          "choices": [
+            "बल्ब पेटण्यासाठी स्विचपासून बल्बपर्यंत कोणालाही प्रवास करावा लागत नाही. तार आपल्या संपूर्ण लांबीत आधीच सर्वत्र मुक्त इलेक्ट्रॉनांनी भरलेली आहे, तंतूच्या आतही. स्विच बंद करणे वाहकाच्या दिशेने विद्युत क्षेत्र उभे करते, आणि ते क्षेत्र प्रकाशाच्या वेगाच्या जवळच्या वेगाने उभे राहते — म्हणून परिपथातील प्रत्येक इलेक्ट्रॉन, तंतूत आधीच असलेले तेही, जवळपास एकाच वेळी वाहू लागतो. विलंब हा क्षेत्र पसरण्याचा काळ आहे, फार तर मायक्रोसेकंद, कोणत्याही विशिष्ट इलेक्ट्रॉनाच्या प्रवासाचा काळ नव्हे",
+            "अपवाह वेगाची गणना चूक आहे: धातूत इलेक्ट्रॉन प्रत्यक्षात प्रकाशाच्या वेगाजवळ जातात, म्हणूनच परिणाम तात्काळ आहे",
+            "इलेक्ट्रॉन तास घेतात, आणि बल्ब लगेच पेटतो असे केवळ यामुळे वाटते की मानवी डोळा तो विलंब ओळखू शकत नाही",
+            "तारेतील धारा धन प्रभार वाहून नेतात, जे इलेक्ट्रॉनांहून कितीतरी हलके आहेत आणि म्हणून खूप वेगाने हलतात"
+          ],
+          "solution": "गणना बरोबर आहे आणि तिच्यातून काढलेला निष्कर्ष ही कोटीची चूक आहे. आधी अंकगणित घ्या, कारण त्यावर विश्वास ठेवायला हवा. v_d = I/(nAe) वापरून, चौरस मिलीमीटर छेदाच्या तांब्याच्या तारेत काही अँपिअरची धारा, आणि n ≈ 8.5 × 10²⁸ मुक्त इलेक्ट्रॉन प्रति घनमीटर घेतल्यास, अपवाह वेग खरोखर मिलीमीटरच्या अंशाइतका प्रति सेकंद निघतो. तांबे वाहकांनी विलक्षण दाटलेले आहे, आणि तीच दाटी — कोणताही मोठा वेग नव्हे — माफक अपवाहाकडून मोठी धारा वाहवते. म्हणून विद्यार्थ्याचा आकडा ठीक आहे. चूक त्याच्यासोबत येणाऱ्या चित्रात आहे: ते चित्र ज्यात इलेक्ट्रॉन स्विचपासून धावपटूंसारखे निघतात आणि बल्ब पहिल्याच्या पोहोचण्याची वाट पाहतो. भौतिकीत असे काहीही नाही जे हे मागेल. तार भरण्याची वाट पाहणारा रिकामा नळ नाही; ती आपल्या संपूर्ण लांबीत आधीपासून मुक्त इलेक्ट्रॉनांनी ठासलेली आहे, आणि बल्बच्या तंतूकडे स्वतःचा साठा आहे. स्विच जे करतो ते इलेक्ट्रॉन सोडणे नव्हे तर परिपथ पूर्ण करणे, आणि तो पूर्ण करणे वाहकाच्या दिशेने विद्युत क्षेत्र उभे करते. ते क्षेत्र म्हणजे अवकाशाच्या विद्युतचुंबकीय मांडणीतला बदल, आणि ते c च्या जवळच्या वेगाने पसरते — तार आणि तिच्या परिसराने काहीसे घटलेले, पण तरीही 10⁸ m/s च्या कोटीचे. काही मीटर लांब तारेसाठी, क्षेत्र दूरच्या टोकाला काही नॅनोसेकंदांत पोहोचते. पोहोचताच, तिथे आधीच बसलेले इलेक्ट्रॉन बल अनुभवतात आणि वाहू लागतात. परिपथातील प्रत्येक इलेक्ट्रॉन जवळपास त्याच क्षणी हलू लागतो, आणि धारा सर्वत्र एकाच वेळी प्रकट होते. चांगली उपमा म्हणजे आधीच पाण्याने भरलेला नळ. एका टोकाला नळ उघडा आणि दुसऱ्या टोकातून पाणी लगेच येते, कारण दाबाचा बदल पाण्यात ध्वनीच्या वेगाने चालतो, यामुळे नव्हे की नळाचा एखादा रेणू पाइप ओलांडून गेला. कोणताही विशिष्ट रेणू हा प्रवास करायला फार वेळ घेऊ शकतो. उपमा ठेवण्याजोगी आहे कारण ती अपवादाची बरोबर रचनाही सांगते: जर नळ रिकामा असता, तर तुम्हाला पाणी ओलांडून येण्याची वाट पाहावी लागली असती — आणि त्याअनुषंगाने, निर्वात नलिकेत जिथे फटीत कोणताही वाहक बसलेला नाही, विलंब खरोखर पारगमन काळ आहे, आणि तो मोजता येतो. म्हणूनच लांब समुद्री केबलमध्ये खरा, लक्षणीय संचरण-विलंब असतो तर खोलीच्या साध्या परिपथात नाही: दोन्हींत जो काळ मोजला जात आहे तो क्षेत्राचा आहे, आणि क्षेत्राला मार्गाच्या लांबीची आणि प्रकाशाच्या वेगाची पर्वा आहे, इलेक्ट्रॉन किती सावकाश रांगतात याची नाही. (दुसरा पर्याय चुकीचे चित्र वाचवण्यासाठी बरोबर गणना फेकून देतो; तिसरा चित्र वाचवायला आकलनाची मर्यादा घडवतो; चौथा धातूतल्या वाहकाची ओळख चुकवतो, जिथे गतिशील प्रभार इलेक्ट्रॉन आहेत आणि धन आयन जाळीत जखडलेले आहेत.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A car battery is marked 12 V. A voltmeter across its terminals reads 12.6 V with the engine off and nothing switched on, but drops to 9.5 V while the starter motor is cranking, then returns. The owner concludes the battery is faulty. Explain the readings and say what quantity would actually diagnose the battery.",
+      "choices": [
+        "Both readings are normal behaviour of a healthy cell. The terminal voltage is V = ε − Ir: with no load, I is nearly zero and the meter reads essentially the e.m.f., 12.6 V; a starter draws hundreds of amperes, so even an internal resistance of a hundredth of an ohm produces a drop of several volts. The quantity that diagnoses the battery is the INTERNAL RESISTANCE r, not the open-circuit reading — an ageing battery shows a normal 12.6 V at rest and collapses under load, so a no-load voltmeter test is precisely the test that cannot detect the commonest failure",
+        "The owner is right: a 12 V battery that reads 9.5 V under any condition has lost more than a fifth of its capacity and needs replacing",
+        "The drop is caused by the resistance of the thick starter cables, and the battery's own internal resistance plays no part in it",
+        "The 12.6 V reading is the faulty one, since a 12 V battery should read exactly 12 V when nothing is drawing current from it"
+      ],
+      "answerIndex": 0,
+      "solution": "The whole chapter's distinction between e.m.f. and terminal voltage is being asked for in a form where it has consequences. A real source is a seat of e.m.f. ε in series with an internal resistance r, and what a voltmeter across the terminals reads is V = ε − Ir. Read that equation twice: it says the terminal voltage is not a property of the battery alone, but of the battery and whatever current is being drawn from it. First reading, engine off, nothing switched on. The voltmeter itself has a very high resistance and draws microamperes, so I ≈ 0 and Ir ≈ 0. The meter reads V ≈ ε. So 12.6 V is the e.m.f., and it is exactly what a healthy fully charged lead-acid battery should show: six cells at about 2.1 V each. The nominal 12 V on the label is a naming convention, not a measurement — a battery sitting at exactly 12.0 V at rest is in fact partly discharged. Second reading, starter cranking. A starter motor turning a cold engine draws something of the order of 200 A. Suppose r = 0.015 Ω, an ordinary value for a serviceable battery. Then Ir = 200 × 0.015 = 3 V, and the terminal voltage falls to about 9.6 V — which is what the meter showed. No fault is required to explain it; the drop is arithmetic. And it recovers the moment the current stops, because the missing volts were never lost from the battery, they were being spent inside it. Now the diagnostic point, which is the part worth carrying away. Batteries fail mainly by internal resistance rising — plates sulphating, connections corroding, electrolyte degrading — and r appears in the terminal voltage only when multiplied by I. At I ≈ 0 it is invisible. A battery whose r has quadrupled will still read a healthy 12.6 V at rest and then collapse to 6 V under the starter, leaving a driver with a car that will not start and a voltmeter that says everything is fine. This is why garages test batteries under load: they apply a known heavy current, watch the terminal voltage fall, and compute r = (ε − V)/I. The general lesson is that a measurement made in the condition where a parameter has no effect is not a weak test of that parameter but no test at all — and choosing conditions in which the quantity you care about actually shows up is most of experimental design. (The second option treats a loaded reading as if it were an open-circuit one; the third denies internal resistance a role it demonstrably has, though the cables do contribute a smaller share; the fourth mistakes a nominal label for a specification.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक कार बैटरी पर 12 V अंकित है। इंजन बंद और कुछ भी चालू न होने पर उसके सिरों पर लगा वोल्टमापी 12.6 V दिखाता है, पर स्टार्टर मोटर घूमते समय गिरकर 9.5 V हो जाता है, फिर लौट आता है। मालिक निष्कर्ष निकालता है कि बैटरी ख़राब है। पाठ्यांक समझाओ और बताओ कि बैटरी की सचमुच जाँच कौन-सी राशि करेगी।",
+          "choices": [
+            "दोनों पाठ्यांक स्वस्थ सेल का सामान्य आचरण हैं। सिरों की वोल्टता V = ε − Ir है: बिना लोड के I लगभग शून्य है और मापी वस्तुतः विद्युत वाहक बल, 12.6 V दिखाता है; स्टार्टर सैकड़ों ऐम्पियर खींचता है, अतः एक ओम का सौवाँ भाग आंतरिक प्रतिरोध भी कई वोल्ट का पतन देता है। बैटरी की जाँच करने वाली राशि आंतरिक प्रतिरोध r है, खुले परिपथ का पाठ्यांक नहीं — बूढ़ी होती बैटरी विश्राम में सामान्य 12.6 V दिखाती है और लोड पड़ते ही बैठ जाती है, अतः बिना-लोड वोल्टमापी परीक्षण ठीक वही परीक्षण है जो सबसे आम ख़राबी पकड़ ही नहीं सकता",
+            "मालिक सही है: 12 V की बैटरी जो किसी भी स्थिति में 9.5 V दिखाए, अपनी क्षमता का पाँचवें से अधिक भाग खो चुकी है और बदलनी चाहिए",
+            "पतन मोटे स्टार्टर तारों के प्रतिरोध से होता है, और बैटरी का अपना आंतरिक प्रतिरोध उसमें कोई भूमिका नहीं निभाता",
+            "12.6 V वाला पाठ्यांक ही ख़राबी है, क्योंकि 12 V की बैटरी को तब ठीक 12 V दिखाना चाहिए जब उससे कोई धारा न ली जा रही हो"
+          ],
+          "solution": "पूरे अध्याय का विद्युत वाहक बल और सिरों की वोल्टता का भेद यहाँ ऐसे रूप में माँगा जा रहा है जहाँ उसके परिणाम हैं। असली स्रोत विद्युत वाहक बल ε की गद्दी है जो आंतरिक प्रतिरोध r के साथ श्रेणी में है, और सिरों पर लगा वोल्टमापी जो पढ़ता है वह V = ε − Ir है। उस समीकरण को दो बार पढ़ो: वह कहता है कि सिरों की वोल्टता अकेली बैटरी का गुण नहीं, बल्कि बैटरी और उससे ली जा रही धारा, दोनों का है। पहला पाठ्यांक, इंजन बंद, कुछ चालू नहीं। वोल्टमापी का अपना प्रतिरोध बहुत ऊँचा है और वह माइक्रोऐम्पियर खींचता है, अतः I ≈ 0 और Ir ≈ 0. मापी V ≈ ε पढ़ता है। अतः 12.6 V विद्युत वाहक बल है, और यह ठीक वही है जो स्वस्थ पूर्ण आवेशित सीसा-अम्ल बैटरी दिखानी चाहिए: छह सेल, हर एक लगभग 2.1 V. लेबल पर लिखा नाममात्र 12 V नामकरण की परिपाटी है, माप नहीं — विश्राम में ठीक 12.0 V पर बैठी बैटरी वस्तुतः आंशिक रूप से निरावेशित है। दूसरा पाठ्यांक, स्टार्टर घूमता हुआ। ठंडा इंजन घुमाता स्टार्टर मोटर लगभग 200 A कोटि की धारा खींचता है। मानो r = 0.015 Ω, चलती बैटरी का साधारण मान। तब Ir = 200 × 0.015 = 3 V, और सिरों की वोल्टता गिरकर लगभग 9.6 V हो जाती है — मापी ने यही दिखाया। इसे समझाने के लिए किसी ख़राबी की ज़रूरत नहीं; पतन अंकगणित है। और धारा रुकते ही वह लौट आता है, क्योंकि लुप्त वोल्ट बैटरी से कभी खोए नहीं थे, वे उसी के भीतर ख़र्च हो रहे थे। अब जाँच वाली बात, जो साथ ले जाने योग्य हिस्सा है। बैटरियाँ मुख्यतः आंतरिक प्रतिरोध बढ़ने से ख़राब होती हैं — प्लेटों पर सल्फ़ेट जमना, जोड़ों में जंग, विद्युत अपघट्य का बिगड़ना — और r सिरों की वोल्टता में तभी दिखता है जब वह I से गुणा हो। I ≈ 0 पर वह अदृश्य है। जिस बैटरी का r चार गुना हो गया है वह विश्राम में अब भी स्वस्थ 12.6 V दिखाएगी और फिर स्टार्टर के नीचे 6 V तक बैठ जाएगी, और चालक के पास ऐसी कार रह जाएगी जो चलती नहीं और ऐसा वोल्टमापी जो कहता है सब ठीक है। इसीलिए गैराज बैटरी की जाँच लोड के नीचे करते हैं: वे ज्ञात भारी धारा लगाते हैं, सिरों की वोल्टता गिरते देखते हैं, और r = (ε − V)/I निकालते हैं। सामान्य सीख यह कि जिस स्थिति में किसी प्राचल का कोई असर ही नहीं उसमें किया गया माप उस प्राचल की कमज़ोर जाँच नहीं बल्कि जाँच ही नहीं है — और ऐसी स्थितियाँ चुनना जिनमें तुम्हारी परवाह वाली राशि सचमुच दिखे, यही प्रायोगिक रचना का अधिकांश है। (दूसरा विकल्प लोड वाले पाठ्यांक को खुले परिपथ का मान लेता है; तीसरा आंतरिक प्रतिरोध से वह भूमिका छीनता है जो उसकी प्रत्यक्ष है, यद्यपि तार भी छोटा हिस्सा जोड़ते हैं; चौथा नाममात्र लेबल को विनिर्देश समझ लेता है।)"
+        },
+        "mr": {
+          "stem": "एका कारच्या बॅटरीवर 12 V लिहिलेले आहे. इंजिन बंद आणि काहीही चालू नसताना तिच्या टोकांवर लावलेला व्होल्टमापक 12.6 V दाखवतो, पण स्टार्टर मोटर फिरत असताना घसरून 9.5 V होतो, मग परत येतो. मालक निष्कर्ष काढतो की बॅटरी बिघडली आहे. वाचने समजावा आणि सांगा की बॅटरीचे खरे निदान कोणती राशी करेल.",
+          "choices": [
+            "दोन्ही वाचने निरोगी घटाचे सामान्य वर्तन आहेत. टोकांचा व्होल्टेज V = ε − Ir आहे: भाराविना I जवळपास शून्य आहे आणि मापक प्रत्यक्षात विद्युतचालक बल, 12.6 V दाखवतो; स्टार्टर शेकडो अँपिअर ओढतो, म्हणून एका ओहमचा शंभरावा भाग अंतर्गत रोधही कित्येक व्होल्टची घसरण देतो. बॅटरीचे निदान करणारी राशी म्हणजे अंतर्गत रोध r, उघड्या परिपथाचे वाचन नव्हे — वयस्कर बॅटरी विश्रांतीत सामान्य 12.6 V दाखवते आणि भार पडताच बसते, म्हणून भाराविनाची व्होल्टमापक चाचणी हीच ती चाचणी जी सर्वांत सामान्य बिघाड पकडूच शकत नाही",
+            "मालक बरोबर आहे: 12 V ची बॅटरी जी कोणत्याही स्थितीत 9.5 V दाखवते, तिने आपल्या क्षमतेचा पाचव्याहून अधिक भाग गमावला आहे आणि ती बदलावी लागेल",
+            "घसरण जाड स्टार्टर तारांच्या रोधामुळे होते, आणि बॅटरीचा स्वतःचा अंतर्गत रोध त्यात काहीच भूमिका बजावत नाही",
+            "12.6 V हेच वाचन बिघाडाचे आहे, कारण 12 V च्या बॅटरीने तेव्हा नेमके 12 V दाखवावे जेव्हा तिच्यातून कोणतीही धारा घेतली जात नसेल"
+          ],
+          "solution": "अख्ख्या प्रकरणातला विद्युतचालक बल आणि टोकांचा व्होल्टेज यांतला भेद इथे अशा स्वरूपात मागितला जात आहे जिथे त्याचे परिणाम आहेत. खरा स्रोत म्हणजे विद्युतचालक बल ε ची बैठक जी अंतर्गत रोध r शी श्रेणीत आहे, आणि टोकांवर लावलेला व्होल्टमापक जे वाचतो ते V = ε − Ir आहे. ते समीकरण दोनदा वाचा: ते सांगते की टोकांचा व्होल्टेज हा एकट्या बॅटरीचा गुणधर्म नसून बॅटरी आणि तिच्यातून घेतली जाणारी धारा या दोहोंचा आहे. पहिले वाचन, इंजिन बंद, काहीही चालू नाही. व्होल्टमापकाचा स्वतःचा रोध फार उंच आहे आणि तो मायक्रोअँपिअर ओढतो, म्हणून I ≈ 0 आणि Ir ≈ 0. मापक V ≈ ε वाचतो. म्हणून 12.6 V हे विद्युतचालक बल आहे, आणि हे नेमके तेच जे निरोगी पूर्ण प्रभारित शिसे-आम्ल बॅटरीने दाखवावे: सहा घट, प्रत्येक सुमारे 2.1 V. लेबलावरचे नाममात्र 12 V ही नामकरणाची संकेतपद्धत आहे, माप नव्हे — विश्रांतीत नेमके 12.0 V वर बसलेली बॅटरी प्रत्यक्षात अंशतः निर्प्रभारित आहे. दुसरे वाचन, स्टार्टर फिरत असताना. थंड इंजिन फिरवणारा स्टार्टर मोटर सुमारे 200 A कोटीची धारा ओढतो. समजा r = 0.015 Ω, चालू बॅटरीचे साधारण मूल्य. तर Ir = 200 × 0.015 = 3 V, आणि टोकांचा व्होल्टेज घसरून सुमारे 9.6 V होतो — मापकाने हेच दाखवले. हे समजावण्यासाठी कोणत्याही बिघाडाची गरज नाही; घसरण हे अंकगणित आहे. आणि धारा थांबताच ती परत येते, कारण हरवलेले व्होल्ट बॅटरीतून कधीच गमावले गेले नव्हते, ते तिच्याच आत खर्च होत होते. आता निदानाचा मुद्दा, जो सोबत न्यायचा भाग आहे. बॅटऱ्या मुख्यतः अंतर्गत रोध वाढल्याने बिघडतात — पट्ट्यांवर सल्फेट जमणे, सांधे गंजणे, विद्युत अपघटनी बिघडणे — आणि r टोकांच्या व्होल्टेजमध्ये तेव्हाच दिसतो जेव्हा तो I ने गुणलेला असतो. I ≈ 0 वर तो अदृश्य आहे. ज्या बॅटरीचा r चौपट झाला आहे ती विश्रांतीत अजूनही निरोगी 12.6 V दाखवेल आणि मग स्टार्टरखाली 6 V पर्यंत बसेल, आणि चालकाकडे अशी गाडी उरेल जी सुरू होत नाही आणि असा व्होल्टमापक जो म्हणतो सर्व ठीक आहे. म्हणूनच गॅरेज बॅटरीची चाचणी भाराखाली करतात: ते ज्ञात जड धारा लावतात, टोकांचा व्होल्टेज घसरताना पाहतात, आणि r = (ε − V)/I काढतात. सर्वसाधारण धडा असा की ज्या स्थितीत एखाद्या प्राचलाचा परिणामच नाही तिच्यात केलेले माप त्या प्राचलाची कमकुवत चाचणी नसून चाचणीच नाही — आणि ज्यांत तुम्हाला हवी असलेली राशी खरोखर दिसते अशा स्थिती निवडणे हाच प्रायोगिक रचनेचा बहुतांश आहे. (दुसरा पर्याय भाराखालच्या वाचनाला उघड्या परिपथाचे मानतो; तिसरा अंतर्गत रोधाकडून ती भूमिका हिरावतो जी त्याची स्पष्ट आहे, जरी तारा लहान वाटा जोडत असल्या तरी; चौथा नाममात्र लेबलाला विनिर्देश समजतो.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A charge of 60 C passes a given point in a wire in 12 s. What is the current in the wire?",
+      "choices": [
+        "720 A",
+        "72 A",
+        "0.2 A",
+        "5 A"
+      ],
+      "answerIndex": 3,
+      "solution": "Current is charge per unit time: I = Q/t = 60/12 = 5 A. It is a rate, not an amount, which is why a wire can carry a current all day without accumulating anything — as much charge leaves every point as arrives at it. (0.2 inverts the division, and 720 multiplies instead.)",
+      "checkExpr": "60/12",
+      "translations": {
+        "hi": {
+          "stem": "एक तार के किसी बिंदु से 12 s में 60 C आवेश गुज़रता है। तार में धारा क्या है?",
+          "choices": [
+            "720 A",
+            "72 A",
+            "0.2 A",
+            "5 A"
+          ],
+          "solution": "धारा प्रति एकांक समय आवेश है: I = Q/t = 60/12 = 5 A. यह दर है, मात्रा नहीं, इसीलिए तार दिन भर धारा ले जा सकता है बिना कुछ जमा किए — हर बिंदु से उतना ही आवेश निकलता है जितना वहाँ पहुँचता है। (0.2 भाग उलट देता है, और 720 गुणा कर देता है।)"
+        },
+        "mr": {
+          "stem": "एका तारेतील दिलेल्या बिंदूवरून 12 s मध्ये 60 C प्रभार जातो. तारेतील धारा किती?",
+          "choices": [
+            "720 A",
+            "72 A",
+            "0.2 A",
+            "5 A"
+          ],
+          "solution": "धारा म्हणजे प्रति एकक काळ प्रभार: I = Q/t = 60/12 = 5 A. हा दर आहे, प्रमाण नव्हे, म्हणूनच तार दिवसभर धारा वाहू शकते काहीही न साठवता — प्रत्येक बिंदूतून तितकाच प्रभार निघतो जितका तिथे पोहोचतो. (0.2 भागाकार उलटवते, आणि 720 गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A potential difference of 12 V drives a current of 2 A through a resistor. What is the resistance?",
+      "choices": [
+        "24 Ω",
+        "0.5 Ω",
+        "10 Ω",
+        "6 Ω"
+      ],
+      "answerIndex": 3,
+      "solution": "From V = IR, R = V/I = 12/2 = 6 Ω. The equation is worth reading as a definition of resistance rather than as a law: it defines R for any conductor, and the LAW is the separate claim that R stays the same when V changes. (0.5 inverts the ratio, and 24 multiplies.)",
+      "checkExpr": "12/2",
+      "translations": {
+        "hi": {
+          "stem": "12 V का विभवांतर एक प्रतिरोधक में से 2 A धारा चलाता है। प्रतिरोध क्या है?",
+          "choices": [
+            "24 Ω",
+            "0.5 Ω",
+            "10 Ω",
+            "6 Ω"
+          ],
+          "solution": "V = IR से, R = V/I = 12/2 = 6 Ω. समीकरण को नियम के बजाय प्रतिरोध की परिभाषा की तरह पढ़ना चाहिए: वह किसी भी चालक के लिए R परिभाषित करता है, और नियम यह अलग दावा है कि V बदलने पर R वही रहता है। (0.5 अनुपात उलट देता है, और 24 गुणा कर देता है।)"
+        },
+        "mr": {
+          "stem": "12 V चा विभवांतर एका रोधकातून 2 A धारा चालवतो. रोध किती?",
+          "choices": [
+            "24 Ω",
+            "0.5 Ω",
+            "10 Ω",
+            "6 Ω"
+          ],
+          "solution": "V = IR वरून, R = V/I = 12/2 = 6 Ω. समीकरण नियमाऐवजी रोधाची व्याख्या म्हणून वाचण्याजोगे आहे: ते कोणत्याही वाहकासाठी R व्याख्यायित करते, आणि नियम हा वेगळा दावा आहे की V बदलल्यावर R तोच राहतो. (0.5 गुणोत्तर उलटवते, आणि 24 गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Resistors of 2 Ω, 3 Ω and 5 Ω are joined end to end in series. What is the equivalent resistance?",
+      "choices": [
+        "3.33 Ω",
+        "0.97 Ω",
+        "10 Ω",
+        "30 Ω"
+      ],
+      "answerIndex": 2,
+      "solution": "In series the same current passes through each, so the voltage drops add and the resistances add: 2 + 3 + 5 = 10 Ω. The total is always larger than the largest member, which is a useful check on any series answer. (0.97 applies the parallel formula, and 3.33 averages.)",
+      "checkExpr": "2+3+5",
+      "translations": {
+        "hi": {
+          "stem": "2 Ω, 3 Ω और 5 Ω के प्रतिरोधक श्रेणी में सिरे से सिरे जोड़े जाते हैं। तुल्य प्रतिरोध क्या है?",
+          "choices": [
+            "3.33 Ω",
+            "0.97 Ω",
+            "10 Ω",
+            "30 Ω"
+          ],
+          "solution": "श्रेणी में हर एक में से वही धारा गुज़रती है, अतः वोल्टता के पतन जुड़ते हैं और प्रतिरोध जुड़ते हैं: 2 + 3 + 5 = 10 Ω. कुल सदा सबसे बड़े सदस्य से बड़ा होता है, और यह किसी भी श्रेणी उत्तर की उपयोगी जाँच है। (0.97 समांतर का सूत्र लगा देता है, और 3.33 औसत ले लेता है।)"
+        },
+        "mr": {
+          "stem": "2 Ω, 3 Ω आणि 5 Ω चे रोधक श्रेणीत टोकाला टोक जोडले जातात. तुल्य रोध किती?",
+          "choices": [
+            "3.33 Ω",
+            "0.97 Ω",
+            "10 Ω",
+            "30 Ω"
+          ],
+          "solution": "श्रेणीत प्रत्येकातून तीच धारा जाते, म्हणून व्होल्टेजच्या घसरणी जुळतात आणि रोध जुळतात: 2 + 3 + 5 = 10 Ω. एकूण नेहमी सर्वांत मोठ्या सदस्याहून मोठे असते, आणि ही कोणत्याही श्रेणी उत्तराची उपयुक्त तपासणी. (0.97 समांतरचे सूत्र लावते, आणि 3.33 सरासरी घेते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Resistors of 6 Ω and 3 Ω are connected in parallel. What is the equivalent resistance?",
+      "choices": [
+        "18 Ω",
+        "9 Ω",
+        "2 Ω",
+        "4.5 Ω"
+      ],
+      "answerIndex": 2,
+      "solution": "In parallel the conductances add: 1/R = 1/6 + 1/3 = 1/2, so R = (6 × 3)/(6 + 3) = 18/9 = 2 Ω. The result must be smaller than the smaller resistor, because adding a second path can only make it easier for current to get through. (9 adds them, which is the series rule; 4.5 averages.)",
+      "checkExpr": "6*3/9",
+      "translations": {
+        "hi": {
+          "stem": "6 Ω और 3 Ω के प्रतिरोधक समांतर में जोड़े जाते हैं। तुल्य प्रतिरोध क्या है?",
+          "choices": [
+            "18 Ω",
+            "9 Ω",
+            "2 Ω",
+            "4.5 Ω"
+          ],
+          "solution": "समांतर में चालकताएँ जुड़ती हैं: 1/R = 1/6 + 1/3 = 1/2, अतः R = (6 × 3)/(6 + 3) = 18/9 = 2 Ω. परिणाम छोटे प्रतिरोधक से भी छोटा होना चाहिए, क्योंकि दूसरा रास्ता जोड़ने से धारा के गुज़रने में आसानी ही हो सकती है। (9 उन्हें जोड़ देता है, जो श्रेणी का नियम है; 4.5 औसत ले लेता है।)"
+        },
+        "mr": {
+          "stem": "6 Ω आणि 3 Ω चे रोधक समांतरात जोडले जातात. तुल्य रोध किती?",
+          "choices": [
+            "18 Ω",
+            "9 Ω",
+            "2 Ω",
+            "4.5 Ω"
+          ],
+          "solution": "समांतरात वाहकता जुळतात: 1/R = 1/6 + 1/3 = 1/2, म्हणून R = (6 × 3)/(6 + 3) = 18/9 = 2 Ω. निकाल लहान रोधकाहूनही लहान असला पाहिजे, कारण दुसरा मार्ग जोडल्याने धारेला जाणे सोपेच होऊ शकते. (9 त्यांना जोडते, जो श्रेणीचा नियम आहे; 4.5 सरासरी घेते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A wire 2 m long has a cross-sectional area of 4 × 10⁻⁷ m² and is made of a material of resistivity 2 × 10⁻⁶ Ω m. What is its resistance?",
+      "choices": [
+        "20 Ω",
+        "2.5 Ω",
+        "10 Ω",
+        "5 Ω"
+      ],
+      "answerIndex": 2,
+      "solution": "R = ρL/A = (2 × 10⁻⁶ × 2)/(4 × 10⁻⁷) = (4 × 10⁻⁶)/(4 × 10⁻⁷) = 40/4 = 10 Ω. Work the digits and the powers of ten separately and the exponent arithmetic — a difference of one — is the only place a slip can happen. (2.5 inverts the ratio of length to area, and 20 loses the factor of ten in the exponents.)",
+      "checkExpr": "40/4",
+      "translations": {
+        "hi": {
+          "stem": "2 m लंबे तार का अनुप्रस्थ काट क्षेत्रफल 4 × 10⁻⁷ m² है और वह 2 × 10⁻⁶ Ω m प्रतिरोधकता वाले पदार्थ का बना है। उसका प्रतिरोध क्या है?",
+          "choices": [
+            "20 Ω",
+            "2.5 Ω",
+            "10 Ω",
+            "5 Ω"
+          ],
+          "solution": "R = ρL/A = (2 × 10⁻⁶ × 2)/(4 × 10⁻⁷) = (4 × 10⁻⁶)/(4 × 10⁻⁷) = 40/4 = 10 Ω. अंक और दस की घातें अलग-अलग साधो और घातांक का गणित — एक का अंतर — ही एकमात्र जगह है जहाँ चूक हो सकती है। (2.5 लंबाई और क्षेत्रफल का अनुपात उलट देता है, और 20 घातांकों में दस का गुणक खो देता है।)"
+        },
+        "mr": {
+          "stem": "2 m लांब तारेचे आडवे छेदक्षेत्रफळ 4 × 10⁻⁷ m² आहे आणि ती 2 × 10⁻⁶ Ω m रोधकता असलेल्या पदार्थाची बनलेली आहे. तिचा रोध किती?",
+          "choices": [
+            "20 Ω",
+            "2.5 Ω",
+            "10 Ω",
+            "5 Ω"
+          ],
+          "solution": "R = ρL/A = (2 × 10⁻⁶ × 2)/(4 × 10⁻⁷) = (4 × 10⁻⁶)/(4 × 10⁻⁷) = 40/4 = 10 Ω. अंक आणि दहाच्या घाती वेगवेगळ्या हाताळा आणि घातांकाचे गणित — एकाचा फरक — हीच एकमेव जागा जिथे चूक होऊ शकते. (2.5 लांबी आणि क्षेत्रफळाचे गुणोत्तर उलटवते, आणि 20 घातांकांतील दहाचा गुणक हरवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A lamp rated 60 W is designed to run on a 240 V supply. What current does it draw at that voltage?",
+      "choices": [
+        "180 A",
+        "0.25 A",
+        "4 A",
+        "0.4 A"
+      ],
+      "answerIndex": 1,
+      "solution": "Power is P = VI, so I = P/V = 60/240 = 0.25 A. The rating is a pair of numbers and neither alone describes the lamp — the same 60 W on a 120 V supply would need twice the current and a quarter the resistance. (4 inverts the division; 180 subtracts.)",
+      "checkExpr": "60/240",
+      "translations": {
+        "hi": {
+          "stem": "60 W का लैंप 240 V आपूर्ति पर चलने को बना है। उस वोल्टता पर वह कितनी धारा खींचता है?",
+          "choices": [
+            "180 A",
+            "0.25 A",
+            "4 A",
+            "0.4 A"
+          ],
+          "solution": "शक्ति P = VI है, अतः I = P/V = 60/240 = 0.25 A. निर्धारण संख्याओं का युग्म है और अकेली कोई भी लैंप का वर्णन नहीं करती — वही 60 W 120 V आपूर्ति पर दुगुनी धारा और चौथाई प्रतिरोध माँगता। (4 भाग उलट देता है; 180 घटा देता है।)"
+        },
+        "mr": {
+          "stem": "60 W चा दिवा 240 V पुरवठ्यावर चालण्यासाठी बनवलेला आहे. त्या व्होल्टेजवर तो किती धारा ओढतो?",
+          "choices": [
+            "180 A",
+            "0.25 A",
+            "4 A",
+            "0.4 A"
+          ],
+          "solution": "शक्ती P = VI आहे, म्हणून I = P/V = 60/240 = 0.25 A. निर्धारण म्हणजे संख्यांची जोडी आणि एकटी कोणतीही दिव्याचे वर्णन करत नाही — तेच 60 W हे 120 V पुरवठ्यावर दुप्पट धारा आणि चतुर्थांश रोध मागेल. (4 भागाकार उलटवते; 180 वजा करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A heating element of resistance 20 Ω carries a current of 5 A for 10 s. How much heat, in kilojoules, does it produce?",
+      "choices": [
+        "10",
+        "2.5",
+        "1",
+        "5"
+      ],
+      "answerIndex": 3,
+      "solution": "Joule heating gives H = I²Rt = 5² × 20 × 10 = 25 × 20 × 10 = 5000 J, which is 5 kJ. Squaring the current before multiplying is the step that matters: doubling the current quadruples the heat, which is why a slightly overloaded wire gets dangerously hot rather than slightly warm. (1 forgets to square the current, and 2.5 halves as if this were a kinetic-energy formula.)",
+      "checkExpr": "25*20*10/1000",
+      "translations": {
+        "hi": {
+          "stem": "20 Ω प्रतिरोध का तापन तत्व 10 s तक 5 A धारा ले जाता है। वह कितनी ऊष्मा, किलोजूल में, पैदा करता है?",
+          "choices": [
+            "10",
+            "2.5",
+            "1",
+            "5"
+          ],
+          "solution": "जूल तापन से H = I²Rt = 5² × 20 × 10 = 25 × 20 × 10 = 5000 J, अर्थात् 5 kJ. गुणा करने से पहले धारा का वर्ग करना ही निर्णायक चरण है: धारा दुगुनी करने पर ऊष्मा चौगुनी होती है, इसीलिए थोड़ा अधिक भारित तार थोड़ा गुनगुना नहीं बल्कि ख़तरनाक ढंग से गर्म हो जाता है। (1 धारा का वर्ग करना भूल जाता है, और 2.5 ऐसे आधा कर देता है मानो यह गतिज ऊर्जा का सूत्र हो।)"
+        },
+        "mr": {
+          "stem": "20 Ω रोधाचा तापक घटक 10 s पर्यंत 5 A धारा वाहतो. तो किती उष्णता, किलोज्यूलमध्ये, निर्माण करतो?",
+          "choices": [
+            "10",
+            "2.5",
+            "1",
+            "5"
+          ],
+          "solution": "ज्यूल तापनाने H = I²Rt = 5² × 20 × 10 = 25 × 20 × 10 = 5000 J, म्हणजे 5 kJ. गुणण्याआधी धारेचा वर्ग करणे हीच निर्णायक पायरी: धारा दुप्पट केल्यास उष्णता चौपट होते, म्हणूनच किंचित जास्त भारलेली तार किंचित कोमट न होता धोकादायकपणे तापते. (1 धारेचा वर्ग करणे विसरते, आणि 2.5 असे निम्मे करते जणू हे गतिज ऊर्जेचे सूत्र असावे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A wire of resistance 4 Ω is stretched uniformly until it is twice as long, with no metal lost. What is its new resistance?",
+      "choices": [
+        "1 Ω",
+        "8 Ω",
+        "2 Ω",
+        "16 Ω"
+      ],
+      "answerIndex": 3,
+      "solution": "The volume is fixed, so doubling the length halves the area, and R = ρL/A changes by 2 × 2 = 4: the new resistance is 4 × 4 = 16 Ω. The trap is to see only the length and answer 8; stretching changes two things at once, and the resistance always goes as the square of the stretch factor. (2 and 1 apply the change in the wrong direction.)",
+      "checkExpr": "4*4",
+      "translations": {
+        "hi": {
+          "stem": "4 Ω प्रतिरोध का तार एकसमान रूप से तब तक खींचा जाता है जब तक वह दुगुना लंबा न हो जाए, और कोई धातु नष्ट नहीं होती। उसका नया प्रतिरोध क्या है?",
+          "choices": [
+            "1 Ω",
+            "8 Ω",
+            "2 Ω",
+            "16 Ω"
+          ],
+          "solution": "आयतन नियत है, अतः लंबाई दुगुनी करने पर क्षेत्रफल आधा होता है, और R = ρL/A में 2 × 2 = 4 का परिवर्तन होता है: नया प्रतिरोध 4 × 4 = 16 Ω. जाल यह कि केवल लंबाई देखकर 8 कह दिया जाए; खिंचाव एक साथ दो चीज़ें बदलता है, और प्रतिरोध सदा खिंचाव-गुणक के वर्ग से चलता है। (2 और 1 परिवर्तन को ग़लत दिशा में लगाते हैं।)"
+        },
+        "mr": {
+          "stem": "4 Ω रोधाची तार एकसमानपणे तोवर ताणली जाते जोवर ती दुप्पट लांब होत नाही, आणि कोणतीही धातू गमावली जात नाही. तिचा नवा रोध किती?",
+          "choices": [
+            "1 Ω",
+            "8 Ω",
+            "2 Ω",
+            "16 Ω"
+          ],
+          "solution": "घनफळ स्थिर आहे, म्हणून लांबी दुप्पट केल्यास क्षेत्रफळ निम्मे होते, आणि R = ρL/A मध्ये 2 × 2 = 4 चा बदल होतो: नवा रोध 4 × 4 = 16 Ω. सापळा असा की केवळ लांबी पाहून 8 म्हणावे; ताणणे एकाच वेळी दोन गोष्टी बदलते, आणि रोध नेहमी ताण-गुणकाच्या वर्गाने चालतो. (2 आणि 1 बदल चुकीच्या दिशेने लावतात.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A cell of e.m.f. 12 V and internal resistance 2 Ω is connected across an external resistance of 4 Ω. What is the potential difference across the cell's terminals?",
+      "choices": [
+        "8 V",
+        "12 V",
+        "6 V",
+        "4 V"
+      ],
+      "answerIndex": 0,
+      "solution": "The current is set by the total resistance including the cell's own: I = 12/(4 + 2) = 2 A. The terminal voltage is then V = ε − Ir = 12 − 2 × 2 = 8 V, and the missing 4 V is spent inside the cell. Forgetting to include r in the total is the commonest slip and gives a current of 3 A. (12 quotes the e.m.f., which is what a voltmeter would read only with no current flowing.)",
+      "checkExpr": "12-2*2",
+      "translations": {
+        "hi": {
+          "stem": "12 V विद्युत वाहक बल और 2 Ω आंतरिक प्रतिरोध वाला सेल 4 Ω बाहरी प्रतिरोध के आर-पार जोड़ा जाता है। सेल के सिरों के आर-पार विभवांतर क्या है?",
+          "choices": [
+            "8 V",
+            "12 V",
+            "6 V",
+            "4 V"
+          ],
+          "solution": "धारा कुल प्रतिरोध से तय होती है, जिसमें सेल का अपना भी शामिल है: I = 12/(4 + 2) = 2 A. तब सिरों की वोल्टता V = ε − Ir = 12 − 2 × 2 = 8 V, और लुप्त 4 V सेल के भीतर ख़र्च होते हैं। कुल में r जोड़ना भूल जाना सबसे आम चूक है और वह 3 A की धारा देती है। (12 विद्युत वाहक बल बता देता है, जो वोल्टमापी तभी पढ़ता जब कोई धारा न बह रही हो।)"
+        },
+        "mr": {
+          "stem": "12 V विद्युतचालक बल आणि 2 Ω अंतर्गत रोध असलेला घट 4 Ω बाह्य रोधाच्या आरपार जोडला जातो. घटाच्या टोकांच्या आरपार विभवांतर किती?",
+          "choices": [
+            "8 V",
+            "12 V",
+            "6 V",
+            "4 V"
+          ],
+          "solution": "धारा एकूण रोधाने ठरते, ज्यात घटाचा स्वतःचाही समाविष्ट आहे: I = 12/(4 + 2) = 2 A. मग टोकांचा व्होल्टेज V = ε − Ir = 12 − 2 × 2 = 8 V, आणि हरवलेले 4 V घटाच्या आत खर्च होतात. एकूणात r जोडणे विसरणे ही सर्वांत सामान्य चूक आणि ती 3 A ची धारा देते. (12 विद्युतचालक बल सांगते, जे व्होल्टमापक तेव्हाच वाचेल जेव्हा कोणतीही धारा वाहत नसेल.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a metre bridge the balance point is found 40 cm from the left end, with an unknown resistance in the left gap and a 6 Ω standard in the right gap. What is the unknown resistance?",
+      "choices": [
+        "9 Ω",
+        "2.4 Ω",
+        "15 Ω",
+        "4 Ω"
+      ],
+      "answerIndex": 3,
+      "solution": "At balance the bridge gives R/S = l/(100 − l), so R = 6 × 40/60 = 4 Ω. The value is read off a LENGTH, and that is the point of the instrument: at balance no current flows through the galvanometer, so neither the cell's internal resistance nor the resistance of the connecting wires enters the answer at all. (9 uses the ratio the wrong way up, and 2.4 divides by 100 instead of by the remaining 60.)",
+      "checkExpr": "6*40/60",
+      "translations": {
+        "hi": {
+          "stem": "एक मीटर सेतु में संतुलन बिंदु बाएँ सिरे से 40 cm पर मिलता है, बाएँ अंतराल में अज्ञात प्रतिरोध और दाएँ अंतराल में 6 Ω का मानक है। अज्ञात प्रतिरोध क्या है?",
+          "choices": [
+            "9 Ω",
+            "2.4 Ω",
+            "15 Ω",
+            "4 Ω"
+          ],
+          "solution": "संतुलन पर सेतु R/S = l/(100 − l) देता है, अतः R = 6 × 40/60 = 4 Ω. मान एक लंबाई से पढ़ा जाता है, और यही यंत्र का मर्म है: संतुलन पर धारामापी में से कोई धारा नहीं बहती, अतः न सेल का आंतरिक प्रतिरोध और न जोड़ने वाले तारों का प्रतिरोध उत्तर में आता है। (9 अनुपात उलटा लगाता है, और 2.4 बचे 60 के बजाय 100 से भाग दे देता है।)"
+        },
+        "mr": {
+          "stem": "एका मीटर ब्रिजमध्ये तोल बिंदू डाव्या टोकापासून 40 cm वर मिळतो, डाव्या फटीत अज्ञात रोध आणि उजव्या फटीत 6 Ω चे मानक आहे. अज्ञात रोध किती?",
+          "choices": [
+            "9 Ω",
+            "2.4 Ω",
+            "15 Ω",
+            "4 Ω"
+          ],
+          "solution": "तोलावर ब्रिज R/S = l/(100 − l) देतो, म्हणून R = 6 × 40/60 = 4 Ω. मूल्य एका लांबीवरून वाचले जाते, आणि हाच उपकरणाचा गाभा: तोलावर गॅल्व्हॅनोमीटरमधून कोणतीही धारा वाहत नाही, म्हणून ना घटाचा अंतर्गत रोध ना जोडणाऱ्या तारांचा रोध उत्तरात येतो. (9 गुणोत्तर उलटे लावते, आणि 2.4 उरलेल्या 60 ऐवजी 100 ने भागते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A cell of e.m.f. 6 V and internal resistance 1 Ω is connected to a variable external resistance. What is the greatest power, in watts, that can be delivered to the external resistance?",
+      "choices": [
+        "4.5",
+        "36",
+        "9",
+        "18"
+      ],
+      "answerIndex": 2,
+      "solution": "The power in the external resistance is P = ε²R/(R + r)², and differentiating shows it peaks when R = r. Putting R = 1 Ω gives I = 6/2 = 3 A and P = I²R = 9 W, which is ε²/4r = 36/4 = 9 W. Two limits explain why a maximum has to exist somewhere in between: with R = 0 the current is largest but there is no external resistance for it to deliver power to, and with R very large the resistance is there but the current has been throttled to nothing. Note also that at the peak exactly half the total power is wasted inside the cell, so maximum power and maximum efficiency are different targets and a power station is designed for the second, not the first. (36 uses ε²/r, forgetting that the internal resistance takes its share.)",
+      "checkExpr": "36/4",
+      "translations": {
+        "hi": {
+          "stem": "6 V विद्युत वाहक बल और 1 Ω आंतरिक प्रतिरोध वाला सेल एक परिवर्ती बाहरी प्रतिरोध से जोड़ा जाता है। बाहरी प्रतिरोध को दी जा सकने वाली अधिकतम शक्ति, वाट में, क्या है?",
+          "choices": [
+            "4.5",
+            "36",
+            "9",
+            "18"
+          ],
+          "solution": "बाहरी प्रतिरोध में शक्ति P = ε²R/(R + r)² है, और अवकलन दिखाता है कि वह R = r पर शिखर पर होती है। R = 1 Ω रखने पर I = 6/2 = 3 A और P = I²R = 9 W, जो ε²/4r = 36/4 = 9 W है। दो सीमाएँ बताती हैं कि अधिकतम बीच में कहीं होना ही चाहिए: R = 0 पर धारा सबसे बड़ी है पर शक्ति देने को कोई बाहरी प्रतिरोध ही नहीं, और R बहुत बड़ा होने पर प्रतिरोध तो है पर धारा का गला घुट चुका है। यह भी ध्यान दो कि शिखर पर ठीक आधी कुल शक्ति सेल के भीतर बरबाद होती है, अतः अधिकतम शक्ति और अधिकतम दक्षता भिन्न लक्ष्य हैं और बिजलीघर दूसरे के लिए बनाया जाता है, पहले के लिए नहीं। (36 ε²/r लगाता है, यह भूलकर कि आंतरिक प्रतिरोध अपना हिस्सा लेता है।)"
+        },
+        "mr": {
+          "stem": "6 V विद्युतचालक बल आणि 1 Ω अंतर्गत रोध असलेला घट एका बदलत्या बाह्य रोधाला जोडला जातो. बाह्य रोधाला देता येणारी सर्वाधिक शक्ती, वॉटमध्ये, किती?",
+          "choices": [
+            "4.5",
+            "36",
+            "9",
+            "18"
+          ],
+          "solution": "बाह्य रोधातील शक्ती P = ε²R/(R + r)² आहे, आणि अवकलन दाखवते की ती R = r वर शिखरावर असते. R = 1 Ω ठेवल्यास I = 6/2 = 3 A आणि P = I²R = 9 W, जे ε²/4r = 36/4 = 9 W आहे. दोन मर्यादा सांगतात की कमाल मध्येच कुठेतरी असलेच पाहिजे: R = 0 वर धारा सर्वांत मोठी पण शक्ती द्यायला बाह्य रोधच नाही, आणि R फार मोठा असताना रोध तर आहे पण धारेचा गळा दाबला गेला आहे. हेही लक्षात घ्या की शिखरावर नेमकी निम्मी एकूण शक्ती घटाच्या आत वाया जाते, म्हणून कमाल शक्ती आणि कमाल कार्यक्षमता ही वेगळी उद्दिष्टे आहेत आणि वीजकेंद्र दुसऱ्यासाठी बांधले जाते, पहिल्यासाठी नाही. (36 हे ε²/r लावते, अंतर्गत रोध आपला वाटा घेतो हे विसरून.)"
+        }
+      }
+    }
+  ]
+}
