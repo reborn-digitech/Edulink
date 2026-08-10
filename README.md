@@ -2514,8 +2514,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 354
-  chapters / 6,310 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 356
+  chapters / 6,366 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2843,6 +2843,43 @@ navigation" means the actual list rather than one somebody maintained by hand.
   catch**: `(n−1)d` in an answer parses as −1; reworded to "the inner d
   orbitals", warnings back to 34. Suite re-pointed and green: 87 files, 1485
   tests.
+
+  **Two more Chemistry chapters** — 56 questions: Coordination Compounds
+  and Haloalkanes and Haloarenes. Coordination chemistry is where a
+  measurement decides a structure. [Fe(H₂O)₆]³⁺ has five unpaired
+  electrons and [Fe(CN)₆]³⁻ has one: same metal, same +3 state, same d⁵,
+  and the only difference is what is bolted to the outside — the ligand
+  field splitting Δ against the pairing energy P, and whichever is larger
+  wins. The spectrochemical series that orders the ligands is then an
+  awkward fact for the electrostatic picture that produced it, because
+  neutral CO outranks charged iodide; only a bonding model with π
+  back-donation explains that, and haemoglobin's spin switch on binding
+  oxygen is the same physics doing something useful. The L6 asks why the
+  ethylenediamine complex of nickel is ten million times more stable than
+  the hexammine when the Ni–N bonds are identical: the bonds are not where
+  the gain is — three chelates displace six ammonias, four free particles
+  become seven, and the whole effect is entropy. That is also why EDTA is
+  given for lead poisoning, and why it is given as the *calcium* disodium
+  salt: the free ligand would strip calcium from bone on the way. The
+  haloalkanes chapter is two mechanisms told apart by two independent
+  measurements that agree — a rate law and a stereochemical outcome. A
+  primary halide's rate depends on both concentrations and its product is
+  cleanly inverted, because the nucleophile must attack from behind the
+  leaving group and turns the carbon inside out like an umbrella; a
+  tertiary halide's rate ignores the nucleophile entirely, because a
+  species absent from the slow step cannot be in the rate law, and its
+  flat carbocation is attacked equally from both faces and racemises.
+  The L6 puts chlorobenzene beside chloroethane: minutes in warm alkali
+  against 623 K and 300 atmospheres, a factor of about 10¹⁰, caused by
+  three effects at once — resonance shortening the C–Cl bond from 177 pm
+  to 169 pm, an sp² carbon holding its electrons more tightly, and a π
+  cloud repelling the nucleophile while the SN1 escape stays shut because
+  an aryl cation cannot be delocalised at all. The way round is a
+  substituent effect that depends on POSITION and not merely strength:
+  nitro groups ortho and para stabilise exactly the intermediate a
+  nucleophile forms, meta ones barely help, and three of them let plain
+  warm water do the job — which is how picric acid is made. Verify clean,
+  warnings steady at 34, suite green: 87 files, 1485 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)

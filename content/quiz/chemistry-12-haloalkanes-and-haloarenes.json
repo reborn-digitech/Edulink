@@ -1,0 +1,1003 @@
+{
+  "subject": "CHEMISTRY",
+  "classLevel": 12,
+  "chapter": "Chapter 6 — Haloalkanes and Haloarenes",
+  "name": "Haloalkanes and Haloarenes",
+  "slug": "chemistry-12-haloalkanes-and-haloarenes",
+  "summary": "A carbon with a halogen on it, made reactive by a bond that is polarised towards the halogen and weak enough to break, so the carbon is left hungry for whatever lone pair comes near; two quite different ways for that substitution to happen, one a single push-and-leave in which the incoming group arrives as the old one departs and the molecule is turned inside out like an umbrella, the other a two-step affair in which the halide leaves first and a flat carbocation waits to be attacked from either face; a rule for which route a given halide takes that is decided by crowding at one end and by carbocation stability at the other, and which leaves a stereochemical fingerprint that says which happened; and the same halogen on a benzene ring, where none of it works at all.",
+  "position": 6,
+  "source": "EduLink original, written against NCERT Chemistry (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "हैलोऐल्केन तथा हैलोऐरीन",
+      "summary": "ऐसा कार्बन जिस पर हैलोजन लगा हो, जिसे वह बंध क्रियाशील बनाता है जो हैलोजन की ओर ध्रुवित है और टूटने भर कमज़ोर, अतः कार्बन उस किसी भी एकाकी युग्म के लिए भूखा रह जाता है जो पास आए; उस प्रतिस्थापन के होने के दो बिलकुल भिन्न रास्ते, एक अकेला धक्का-और-प्रस्थान जिसमें आता समूह पुराने के जाते ही पहुँचता है और अणु छाते की तरह उलट जाता है, दूसरा दो-चरणी मामला जिसमें हैलाइड पहले जाता है और चपटा कार्बोकैटायन किसी भी फलक से हमले की प्रतीक्षा करता है; कौन-सा हैलाइड कौन-सा रास्ता लेगा इसका नियम जो एक सिरे पर भीड़ और दूसरे पर कार्बोकैटायन स्थायित्व से तय होता है, और जो ऐसा त्रिविम अंगुलिचिह्न छोड़ता है जो बता देता है कि हुआ क्या; और वही हैलोजन बेंज़ीन वलय पर, जहाँ इनमें से कुछ भी नहीं चलता।"
+    },
+    "mr": {
+      "name": "हॅलोअल्केन आणि हॅलोअरीन",
+      "summary": "असा कार्बन ज्यावर हॅलोजन लागलेले असेल, ज्याला तो बंध क्रियाशील बनवतो जो हॅलोजनकडे ध्रुवित आहे आणि तुटण्याइतका क्षीण, म्हणून कार्बन जवळ येणाऱ्या कोणत्याही एकाकी जोडीसाठी भुकेला उरतो; त्या प्रतिस्थापनाचे घडण्याचे दोन अगदी वेगळे मार्ग, एक एकच धक्का-आणि-निर्गमन ज्यात येणारा गट जुना निघताच पोहोचतो आणि रेणू छत्रीसारखा उलटतो, दुसरा दोन-पायरीचे प्रकरण ज्यात हॅलाइड आधी निघते आणि सपाट कार्बोकॅटायन कोणत्याही पृष्ठभागाकडून हल्ल्याची वाट पाहते; कोणते हॅलाइड कोणता मार्ग घेईल याचा नियम जो एका टोकाला गर्दीने आणि दुसऱ्या टोकाला कार्बोकॅटायन स्थैर्याने ठरतो, आणि जो असा त्रिमित ठसा सोडतो जो सांगतो की काय घडले; आणि तेच हॅलोजन बेंझिन वलयावर, जिथे यांपैकी काहीही चालत नाही."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "The nucleophile attacks from the side opposite the leaving group, bond-making and bond-breaking happen together in one step, and the carbon's three other groups flip through like an umbrella in a gale. Which mechanism is this?",
+      "choices": [
+        "Inversion of configuration",
+        "The SN1 mechanism",
+        "The SN2 mechanism",
+        "Elimination against substitution"
+      ],
+      "answerIndex": 2,
+      "solution": "The SN2 mechanism is a single concerted step in which the nucleophile attacks the carbon from the face opposite the leaving group, so the rate depends on both concentrations and the configuration is inverted. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "नाभिकरागी उस ओर से हमला करता है जो प्रस्थायी समूह के विपरीत है, बंध बनना और टूटना एक ही चरण में साथ होते हैं, और कार्बन के बाक़ी तीन समूह आँधी में छाते की तरह पलट जाते हैं। यह कौन-सी क्रियाविधि है?",
+          "choices": [
+            "विन्यास का प्रतिलोमन",
+            "SN1 क्रियाविधि",
+            "SN2 क्रियाविधि",
+            "विलोपन बनाम प्रतिस्थापन"
+          ],
+          "solution": "SN2 क्रियाविधि एक ही सहवर्ती चरण है जिसमें नाभिकरागी कार्बन पर प्रस्थायी समूह के विपरीत फलक से हमला करता है, अतः वेग दोनों सांद्रताओं पर निर्भर है और विन्यास उलट जाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "नाभिकरागी त्या बाजूने हल्ला करतो जी निघणाऱ्या गटाच्या विरुद्ध आहे, बंध बनणे आणि तुटणे एकाच पायरीत एकत्र घडतात, आणि कार्बनचे बाकी तीन गट वादळात छत्रीसारखे पलटतात. ही कोणती यंत्रणा?",
+          "choices": [
+            "मांडणीचे प्रतिलोमन",
+            "SN1 यंत्रणा",
+            "SN2 यंत्रणा",
+            "निर्मूलन विरुद्ध प्रतिस्थापन"
+          ],
+          "solution": "SN2 यंत्रणा ही एकच सहवर्ती पायरी आहे जिच्यात नाभिकरागी कार्बनवर निघणाऱ्या गटाच्या विरुद्ध पृष्ठभागाकडून हल्ला करतो, म्हणून वेग दोन्ही संहतींवर अवलंबून असतो आणि मांडणी उलटते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The SN1 mechanism is correct?",
+      "choices": [
+        "The SN1 mechanism is a two-step process whose slow first step is the loss of the leaving group to form a carbocation, so the rate depends on the halide alone and the product is racemised.",
+        "The unreactivity of aryl halides towards nucleophilic substitution follows from the partial double-bond character of the C–X bond and from the halogen being attached to an sp² carbon.",
+        "The SN2 mechanism is a single concerted step in which the nucleophile attacks the carbon from the face opposite the leaving group, so the rate depends on both concentrations and the configuration is inverted.",
+        "Elimination against substitution is the competition between a nucleophile attacking carbon and a base removing a β-hydrogen, the second giving an alkene by loss of the halide as well."
+      ],
+      "answerIndex": 0,
+      "solution": "The SN1 mechanism is a two-step process whose slow first step is the loss of the leaving group to form a carbocation, so the rate depends on the halide alone and the product is racemised. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "SN1 क्रियाविधि के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "SN1 क्रियाविधि दो-चरणी प्रक्रिया है जिसका धीमा पहला चरण प्रस्थायी समूह का जाकर कार्बोकैटायन बनाना है, अतः वेग अकेले हैलाइड पर निर्भर है और उत्पाद रेसीमीकृत हो जाता है।",
+            "नाभिकरागी प्रतिस्थापन के प्रति ऐरिल हैलाइडों की अक्रियाशीलता C–X बंध के आंशिक द्विबंध लक्षण से और हैलोजन के sp² कार्बन से जुड़े होने से निकलती है।",
+            "SN2 क्रियाविधि एक ही सहवर्ती चरण है जिसमें नाभिकरागी कार्बन पर प्रस्थायी समूह के विपरीत फलक से हमला करता है, अतः वेग दोनों सांद्रताओं पर निर्भर है और विन्यास उलट जाता है।",
+            "विलोपन बनाम प्रतिस्थापन नाभिकरागी के कार्बन पर हमला करने और क्षार के β-हाइड्रोजन हटाने के बीच की होड़ है, और दूसरा हैलाइड के जाने के साथ ऐल्कीन देता है।"
+          ],
+          "solution": "SN1 क्रियाविधि दो-चरणी प्रक्रिया है जिसका धीमा पहला चरण प्रस्थायी समूह का जाकर कार्बोकैटायन बनाना है, अतः वेग अकेले हैलाइड पर निर्भर है और उत्पाद रेसीमीकृत हो जाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "SN1 यंत्रणा विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "SN1 यंत्रणा ही दोन-पायरीची प्रक्रिया आहे जिची सावकाश पहिली पायरी म्हणजे निघणारा गट जाऊन कार्बोकॅटायन बनणे, म्हणून वेग एकट्या हॅलाइडवर अवलंबून आहे आणि उत्पादन रेसिमीकृत होते.",
+            "नाभिकरागी प्रतिस्थापनाबाबत अरिल हॅलाइडांची अक्रियाशीलता C–X बंधाच्या अंशतः द्विबंध लक्षणातून आणि हॅलोजन sp² कार्बनशी जोडलेले असण्यातून निघते.",
+            "SN2 यंत्रणा ही एकच सहवर्ती पायरी आहे जिच्यात नाभिकरागी कार्बनवर निघणाऱ्या गटाच्या विरुद्ध पृष्ठभागाकडून हल्ला करतो, म्हणून वेग दोन्ही संहतींवर अवलंबून असतो आणि मांडणी उलटते.",
+            "निर्मूलन विरुद्ध प्रतिस्थापन ही नाभिकरागीने कार्बनवर हल्ला करणे आणि क्षाराने β-हायड्रोजन काढणे यांतील स्पर्धा आहे, आणि दुसरे हॅलाइड निघण्यासोबत अल्कीन देते."
+          ],
+          "solution": "SN1 यंत्रणा ही दोन-पायरीची प्रक्रिया आहे जिची सावकाश पहिली पायरी म्हणजे निघणारा गट जाऊन कार्बोकॅटायन बनणे, म्हणून वेग एकट्या हॅलाइडवर अवलंबून आहे आणि उत्पादन रेसिमीकृत होते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The same species is both a nucleophile and a base, so the conditions decide the outcome rather than the reagent: hydroxide in water substitutes, hydroxide in hot ethanol eliminates.\" — which of these is this about?",
+      "choices": [
+        "The SN1 mechanism",
+        "Elimination against substitution",
+        "The SN2 mechanism",
+        "The unreactivity of aryl halides"
+      ],
+      "answerIndex": 1,
+      "solution": "Elimination against substitution is the competition between a nucleophile attacking carbon and a base removing a β-hydrogen, the second giving an alkene by loss of the halide as well. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"वही स्पीशीज़ नाभिकरागी भी है और क्षार भी, अतः परिणाम अभिकर्मक नहीं बल्कि परिस्थितियाँ तय करती हैं: पानी में हाइड्रॉक्साइड प्रतिस्थापन करता है, गर्म एथेनॉल में हाइड्रॉक्साइड विलोपन।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "SN1 क्रियाविधि",
+            "विलोपन बनाम प्रतिस्थापन",
+            "SN2 क्रियाविधि",
+            "ऐरिल हैलाइडों की अक्रियाशीलता"
+          ],
+          "solution": "विलोपन बनाम प्रतिस्थापन नाभिकरागी के कार्बन पर हमला करने और क्षार के β-हाइड्रोजन हटाने के बीच की होड़ है, और दूसरा हैलाइड के जाने के साथ ऐल्कीन देता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तीच जाती नाभिकरागीही आहे आणि क्षारही, म्हणून निकाल अभिकर्मक नव्हे तर परिस्थिती ठरवते: पाण्यात हायड्रॉक्साइड प्रतिस्थापन करते, तप्त इथेनॉलात हायड्रॉक्साइड निर्मूलन.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "SN1 यंत्रणा",
+            "निर्मूलन विरुद्ध प्रतिस्थापन",
+            "SN2 यंत्रणा",
+            "अरिल हॅलाइडांची अक्रियाशीलता"
+          ],
+          "solution": "निर्मूलन विरुद्ध प्रतिस्थापन ही नाभिकरागीने कार्बनवर हल्ला करणे आणि क्षाराने β-हायड्रोजन काढणे यांतील स्पर्धा आहे, आणि दुसरे हॅलाइड निघण्यासोबत अल्कीन देते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A bond in which the shared pair sits closer to one atom, leaving the carbon slightly positive and open to attack, and which weakens steadily as the halogen grows heavier down the group. What is it?",
+      "choices": [
+        "The carbon–halogen bond",
+        "The unreactivity of aryl halides",
+        "Inversion of configuration",
+        "The SN1 mechanism"
+      ],
+      "answerIndex": 0,
+      "solution": "The carbon–halogen bond is polar because the halogen is the more electronegative, and it weakens from C–F to C–I as the overlap worsens with increasing halogen size. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ऐसा बंध जिसमें साझा युग्म एक परमाणु के पास बैठता है, कार्बन को थोड़ा धनात्मक और हमले के लिए खुला छोड़ता है, और जो वर्ग में नीचे जाते हुए हैलोजन के भारी होने पर लगातार कमज़ोर होता जाता है। यह क्या है?",
+          "choices": [
+            "कार्बन–हैलोजन बंध",
+            "ऐरिल हैलाइडों की अक्रियाशीलता",
+            "विन्यास का प्रतिलोमन",
+            "SN1 क्रियाविधि"
+          ],
+          "solution": "कार्बन–हैलोजन बंध ध्रुवीय है क्योंकि हैलोजन अधिक विद्युत ऋणात्मक है, और हैलोजन का आकार बढ़ने पर अतिव्यापन बिगड़ता है तथा बंध C–F से C–I तक कमज़ोर होता जाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "असा बंध ज्यात सामायिक जोडी एका अणूजवळ बसते, कार्बनला किंचित धन आणि हल्ल्यासाठी उघडा सोडते, आणि जो गटात खाली जाताना हॅलोजन जड होत असताना सतत क्षीण होत जातो. हा काय आहे?",
+          "choices": [
+            "कार्बन–हॅलोजन बंध",
+            "अरिल हॅलाइडांची अक्रियाशीलता",
+            "मांडणीचे प्रतिलोमन",
+            "SN1 यंत्रणा"
+          ],
+          "solution": "कार्बन–हॅलोजन बंध ध्रुवीय आहे कारण हॅलोजन अधिक विद्युत ऋण आहे, आणि हॅलोजनचा आकार वाढल्यावर आच्छादन बिघडते आणि बंध C–F पासून C–I पर्यंत क्षीण होत जातो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The unreactivity of aryl halides is correct?",
+      "choices": [
+        "The unreactivity of aryl halides towards nucleophilic substitution follows from the partial double-bond character of the C–X bond and from the halogen being attached to an sp² carbon.",
+        "Inversion of configuration is the reversal of arrangement at a chiral carbon in an SN2 reaction, because the nucleophile must attack from the face opposite the leaving group.",
+        "Elimination against substitution is the competition between a nucleophile attacking carbon and a base removing a β-hydrogen, the second giving an alkene by loss of the halide as well.",
+        "The carbon–halogen bond is polar because the halogen is the more electronegative, and it weakens from C–F to C–I as the overlap worsens with increasing halogen size."
+      ],
+      "answerIndex": 0,
+      "solution": "The unreactivity of aryl halides towards nucleophilic substitution follows from the partial double-bond character of the C–X bond and from the halogen being attached to an sp² carbon. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ऐरिल हैलाइडों की अक्रियाशीलता के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "नाभिकरागी प्रतिस्थापन के प्रति ऐरिल हैलाइडों की अक्रियाशीलता C–X बंध के आंशिक द्विबंध लक्षण से और हैलोजन के sp² कार्बन से जुड़े होने से निकलती है।",
+            "विन्यास का प्रतिलोमन SN2 अभिक्रिया में किसी काइरल कार्बन पर व्यवस्था का उलट जाना है, क्योंकि नाभिकरागी को प्रस्थायी समूह के विपरीत फलक से ही हमला करना पड़ता है।",
+            "विलोपन बनाम प्रतिस्थापन नाभिकरागी के कार्बन पर हमला करने और क्षार के β-हाइड्रोजन हटाने के बीच की होड़ है, और दूसरा हैलाइड के जाने के साथ ऐल्कीन देता है।",
+            "कार्बन–हैलोजन बंध ध्रुवीय है क्योंकि हैलोजन अधिक विद्युत ऋणात्मक है, और हैलोजन का आकार बढ़ने पर अतिव्यापन बिगड़ता है तथा बंध C–F से C–I तक कमज़ोर होता जाता है।"
+          ],
+          "solution": "नाभिकरागी प्रतिस्थापन के प्रति ऐरिल हैलाइडों की अक्रियाशीलता C–X बंध के आंशिक द्विबंध लक्षण से और हैलोजन के sp² कार्बन से जुड़े होने से निकलती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "अरिल हॅलाइडांची अक्रियाशीलता विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "नाभिकरागी प्रतिस्थापनाबाबत अरिल हॅलाइडांची अक्रियाशीलता C–X बंधाच्या अंशतः द्विबंध लक्षणातून आणि हॅलोजन sp² कार्बनशी जोडलेले असण्यातून निघते.",
+            "मांडणीचे प्रतिलोमन म्हणजे SN2 अभिक्रियेत एखाद्या कायरल कार्बनवरील मांडणीचे उलटणे, कारण नाभिकरागीला निघणाऱ्या गटाच्या विरुद्ध पृष्ठभागाकडूनच हल्ला करावा लागतो.",
+            "निर्मूलन विरुद्ध प्रतिस्थापन ही नाभिकरागीने कार्बनवर हल्ला करणे आणि क्षाराने β-हायड्रोजन काढणे यांतील स्पर्धा आहे, आणि दुसरे हॅलाइड निघण्यासोबत अल्कीन देते.",
+            "कार्बन–हॅलोजन बंध ध्रुवीय आहे कारण हॅलोजन अधिक विद्युत ऋण आहे, आणि हॅलोजनचा आकार वाढल्यावर आच्छादन बिघडते आणि बंध C–F पासून C–I पर्यंत क्षीण होत जातो."
+          ],
+          "solution": "नाभिकरागी प्रतिस्थापनाबाबत अरिल हॅलाइडांची अक्रियाशीलता C–X बंधाच्या अंशतः द्विबंध लक्षणातून आणि हॅलोजन sp² कार्बनशी जोडलेले असण्यातून निघते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It is the mechanism's fingerprint: a clean inversion says the reaction went in one step, and a racemic product says a flat carbocation was formed and attacked equally from both sides.\" — which of these is this about?",
+      "choices": [
+        "The unreactivity of aryl halides",
+        "The carbon–halogen bond",
+        "Inversion of configuration",
+        "The SN1 mechanism"
+      ],
+      "answerIndex": 2,
+      "solution": "Inversion of configuration is the reversal of arrangement at a chiral carbon in an SN2 reaction, because the nucleophile must attack from the face opposite the leaving group. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"यह क्रियाविधि का अंगुलिचिह्न है: साफ़ प्रतिलोमन कहता है कि अभिक्रिया एक ही चरण में हुई, और रेसीमी उत्पाद कहता है कि चपटा कार्बोकैटायन बना और उस पर दोनों ओर से बराबर हमला हुआ।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "ऐरिल हैलाइडों की अक्रियाशीलता",
+            "कार्बन–हैलोजन बंध",
+            "विन्यास का प्रतिलोमन",
+            "SN1 क्रियाविधि"
+          ],
+          "solution": "विन्यास का प्रतिलोमन SN2 अभिक्रिया में किसी काइरल कार्बन पर व्यवस्था का उलट जाना है, क्योंकि नाभिकरागी को प्रस्थायी समूह के विपरीत फलक से ही हमला करना पड़ता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"हे यंत्रणेचे बोटांचे ठसे आहे: स्वच्छ प्रतिलोमन सांगते की अभिक्रिया एकाच पायरीत झाली, आणि रेसिमी उत्पादन सांगते की सपाट कार्बोकॅटायन बनले आणि त्यावर दोन्ही बाजूंनी समान हल्ला झाला.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "अरिल हॅलाइडांची अक्रियाशीलता",
+            "कार्बन–हॅलोजन बंध",
+            "मांडणीचे प्रतिलोमन",
+            "SN1 यंत्रणा"
+          ],
+          "solution": "मांडणीचे प्रतिलोमन म्हणजे SN2 अभिक्रियेत एखाद्या कायरल कार्बनवरील मांडणीचे उलटणे, कारण नाभिकरागीला निघणाऱ्या गटाच्या विरुद्ध पृष्ठभागाकडूनच हल्ला करावा लागतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"An umbrella turned inside out in one movement\" goes correctly with which of these?",
+      "choices": [
+        "the SN1 mechanism",
+        "the carbon–halogen bond",
+        "inversion of configuration",
+        "the SN2 mechanism"
+      ],
+      "answerIndex": 3,
+      "solution": "The SN2 mechanism is a single concerted step in which the nucleophile attacks the carbon from the face opposite the leaving group, so the rate depends on both concentrations and the configuration is inverted. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"एक ही हरकत में उलट गया छाता\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "SN1 क्रियाविधि",
+            "कार्बन–हैलोजन बंध",
+            "विन्यास का प्रतिलोमन",
+            "SN2 क्रियाविधि"
+          ],
+          "solution": "SN2 क्रियाविधि एक ही सहवर्ती चरण है जिसमें नाभिकरागी कार्बन पर प्रस्थायी समूह के विपरीत फलक से हमला करता है, अतः वेग दोनों सांद्रताओं पर निर्भर है और विन्यास उलट जाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"एकाच हालचालीत उलटलेली छत्री\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "SN1 यंत्रणा",
+            "कार्बन–हॅलोजन बंध",
+            "मांडणीचे प्रतिलोमन",
+            "SN2 यंत्रणा"
+          ],
+          "solution": "SN2 यंत्रणा ही एकच सहवर्ती पायरी आहे जिच्यात नाभिकरागी कार्बनवर निघणाऱ्या गटाच्या विरुद्ध पृष्ठभागाकडून हल्ला करतो, म्हणून वेग दोन्ही संहतींवर अवलंबून असतो आणि मांडणी उलटते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The leaving group goes first and waits to be replaced\" goes correctly with which of these?",
+      "choices": [
+        "the unreactivity of aryl halides",
+        "the SN1 mechanism",
+        "inversion of configuration",
+        "the SN2 mechanism"
+      ],
+      "answerIndex": 1,
+      "solution": "The SN1 mechanism is a two-step process whose slow first step is the loss of the leaving group to form a carbocation, so the rate depends on the halide alone and the product is racemised. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"प्रस्थायी समूह पहले जाता है और बदले जाने की प्रतीक्षा करता है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "ऐरिल हैलाइडों की अक्रियाशीलता",
+            "SN1 क्रियाविधि",
+            "विन्यास का प्रतिलोमन",
+            "SN2 क्रियाविधि"
+          ],
+          "solution": "SN1 क्रियाविधि दो-चरणी प्रक्रिया है जिसका धीमा पहला चरण प्रस्थायी समूह का जाकर कार्बोकैटायन बनाना है, अतः वेग अकेले हैलाइड पर निर्भर है और उत्पाद रेसीमीकृत हो जाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"निघणारा गट आधी जातो आणि बदलले जाण्याची वाट पाहतो\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अरिल हॅलाइडांची अक्रियाशीलता",
+            "SN1 यंत्रणा",
+            "मांडणीचे प्रतिलोमन",
+            "SN2 यंत्रणा"
+          ],
+          "solution": "SN1 यंत्रणा ही दोन-पायरीची प्रक्रिया आहे जिची सावकाश पहिली पायरी म्हणजे निघणारा गट जाऊन कार्बोकॅटायन बनणे, म्हणून वेग एकट्या हॅलाइडवर अवलंबून आहे आणि उत्पादन रेसिमीकृत होते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Water gives an alcohol, hot ethanol gives an alkene\" goes correctly with which of these?",
+      "choices": [
+        "elimination against substitution",
+        "the SN1 mechanism",
+        "the carbon–halogen bond",
+        "the SN2 mechanism"
+      ],
+      "answerIndex": 0,
+      "solution": "Elimination against substitution is the competition between a nucleophile attacking carbon and a base removing a β-hydrogen, the second giving an alkene by loss of the halide as well. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"पानी ऐल्कोहॉल देता है, गर्म एथेनॉल ऐल्कीन\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "विलोपन बनाम प्रतिस्थापन",
+            "SN1 क्रियाविधि",
+            "कार्बन–हैलोजन बंध",
+            "SN2 क्रियाविधि"
+          ],
+          "solution": "विलोपन बनाम प्रतिस्थापन नाभिकरागी के कार्बन पर हमला करने और क्षार के β-हाइड्रोजन हटाने के बीच की होड़ है, और दूसरा हैलाइड के जाने के साथ ऐल्कीन देता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"पाणी अल्कोहोल देते, तप्त इथेनॉल अल्कीन\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "निर्मूलन विरुद्ध प्रतिस्थापन",
+            "SN1 यंत्रणा",
+            "कार्बन–हॅलोजन बंध",
+            "SN2 यंत्रणा"
+          ],
+          "solution": "निर्मूलन विरुद्ध प्रतिस्थापन ही नाभिकरागीने कार्बनवर हल्ला करणे आणि क्षाराने β-हायड्रोजन काढणे यांतील स्पर्धा आहे, आणि दुसरे हॅलाइड निघण्यासोबत अल्कीन देते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The most polar bond makes the least reactive compound\" goes correctly with which of these?",
+      "choices": [
+        "inversion of configuration",
+        "the SN2 mechanism",
+        "the carbon–halogen bond",
+        "the unreactivity of aryl halides"
+      ],
+      "answerIndex": 2,
+      "solution": "The carbon–halogen bond is polar because the halogen is the more electronegative, and it weakens from C–F to C–I as the overlap worsens with increasing halogen size. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"सबसे ध्रुवीय बंध सबसे कम क्रियाशील यौगिक बनाता है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "विन्यास का प्रतिलोमन",
+            "SN2 क्रियाविधि",
+            "कार्बन–हैलोजन बंध",
+            "ऐरिल हैलाइडों की अक्रियाशीलता"
+          ],
+          "solution": "कार्बन–हैलोजन बंध ध्रुवीय है क्योंकि हैलोजन अधिक विद्युत ऋणात्मक है, और हैलोजन का आकार बढ़ने पर अतिव्यापन बिगड़ता है तथा बंध C–F से C–I तक कमज़ोर होता जाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"सर्वांत ध्रुवीय बंध सर्वांत कमी क्रियाशील संयुग बनवतो\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "मांडणीचे प्रतिलोमन",
+            "SN2 यंत्रणा",
+            "कार्बन–हॅलोजन बंध",
+            "अरिल हॅलाइडांची अक्रियाशीलता"
+          ],
+          "solution": "कार्बन–हॅलोजन बंध ध्रुवीय आहे कारण हॅलोजन अधिक विद्युत ऋण आहे, आणि हॅलोजनचा आकार वाढल्यावर आच्छादन बिघडते आणि बंध C–F पासून C–I पर्यंत क्षीण होत जातो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Minutes in a test tube against three hundred atmospheres\" goes correctly with which of these?",
+      "choices": [
+        "the unreactivity of aryl halides",
+        "the SN1 mechanism",
+        "inversion of configuration",
+        "the carbon–halogen bond"
+      ],
+      "answerIndex": 0,
+      "solution": "The unreactivity of aryl halides towards nucleophilic substitution follows from the partial double-bond character of the C–X bond and from the halogen being attached to an sp² carbon. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"परखनली में मिनट बनाम तीन सौ वायुमंडल\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "ऐरिल हैलाइडों की अक्रियाशीलता",
+            "SN1 क्रियाविधि",
+            "विन्यास का प्रतिलोमन",
+            "कार्बन–हैलोजन बंध"
+          ],
+          "solution": "नाभिकरागी प्रतिस्थापन के प्रति ऐरिल हैलाइडों की अक्रियाशीलता C–X बंध के आंशिक द्विबंध लक्षण से और हैलोजन के sp² कार्बन से जुड़े होने से निकलती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"परीक्षानळीत मिनिटे विरुद्ध तीनशे वातावरणे\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अरिल हॅलाइडांची अक्रियाशीलता",
+            "SN1 यंत्रणा",
+            "मांडणीचे प्रतिलोमन",
+            "कार्बन–हॅलोजन बंध"
+          ],
+          "solution": "नाभिकरागी प्रतिस्थापनाबाबत अरिल हॅलाइडांची अक्रियाशीलता C–X बंधाच्या अंशतः द्विबंध लक्षणातून आणि हॅलोजन sp² कार्बनशी जोडलेले असण्यातून निघते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The product tells you which route the reaction took\" goes correctly with which of these?",
+      "choices": [
+        "elimination against substitution",
+        "the carbon–halogen bond",
+        "inversion of configuration",
+        "the SN1 mechanism"
+      ],
+      "answerIndex": 2,
+      "solution": "Inversion of configuration is the reversal of arrangement at a chiral carbon in an SN2 reaction, because the nucleophile must attack from the face opposite the leaving group. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"उत्पाद बता देता है कि अभिक्रिया ने कौन-सा रास्ता लिया\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "विलोपन बनाम प्रतिस्थापन",
+            "कार्बन–हैलोजन बंध",
+            "विन्यास का प्रतिलोमन",
+            "SN1 क्रियाविधि"
+          ],
+          "solution": "विन्यास का प्रतिलोमन SN2 अभिक्रिया में किसी काइरल कार्बन पर व्यवस्था का उलट जाना है, क्योंकि नाभिकरागी को प्रस्थायी समूह के विपरीत फलक से ही हमला करना पड़ता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"उत्पादन सांगते की अभिक्रियेने कोणता मार्ग घेतला\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "निर्मूलन विरुद्ध प्रतिस्थापन",
+            "कार्बन–हॅलोजन बंध",
+            "मांडणीचे प्रतिलोमन",
+            "SN1 यंत्रणा"
+          ],
+          "solution": "मांडणीचे प्रतिलोमन म्हणजे SN2 अभिक्रियेत एखाद्या कायरल कार्बनवरील मांडणीचे उलटणे, कारण नाभिकरागीला निघणाऱ्या गटाच्या विरुद्ध पृष्ठभागाकडूनच हल्ला करावा लागतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The SN2 mechanism EXCEPT —",
+      "choices": [
+        "Elimination against substitution is the competition between a nucleophile attacking carbon and a base removing a β-hydrogen, the second giving an alkene by loss of the halide as well.",
+        "Crowding kills it: a primary halide has room for the attack and a tertiary one has three groups in the way, which is why methyl and primary substrates go this route almost exclusively.",
+        "Because both molecules must meet, the rate law is second order — first in the halide and first in the nucleophile — and doubling either doubles the rate.",
+        "The SN2 mechanism is a single concerted step in which the nucleophile attacks the carbon from the face opposite the leaving group, so the rate depends on both concentrations and the configuration is inverted."
+      ],
+      "answerIndex": 0,
+      "solution": "Elimination against substitution is the competition between a nucleophile attacking carbon and a base removing a β-hydrogen, the second giving an alkene by loss of the halide as well. That belongs to Elimination against substitution, not The SN2 mechanism — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "SN2 क्रियाविधि के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "विलोपन बनाम प्रतिस्थापन नाभिकरागी के कार्बन पर हमला करने और क्षार के β-हाइड्रोजन हटाने के बीच की होड़ है, और दूसरा हैलाइड के जाने के साथ ऐल्कीन देता है।",
+            "भीड़ इसे मार देती है: प्राथमिक हैलाइड में हमले की जगह है और तृतीयक में तीन समूह रास्ते में हैं, इसीलिए मेथिल और प्राथमिक क्रियाधार लगभग विशेष रूप से यही रास्ता लेते हैं।",
+            "चूँकि दोनों अणुओं का मिलना ज़रूरी है, वेग नियम द्वितीय कोटि का है — हैलाइड में प्रथम और नाभिकरागी में प्रथम — और किसी भी एक को दुगुना करने पर वेग दुगुना हो जाता है।",
+            "SN2 क्रियाविधि एक ही सहवर्ती चरण है जिसमें नाभिकरागी कार्बन पर प्रस्थायी समूह के विपरीत फलक से हमला करता है, अतः वेग दोनों सांद्रताओं पर निर्भर है और विन्यास उलट जाता है।"
+          ],
+          "solution": "विलोपन बनाम प्रतिस्थापन नाभिकरागी के कार्बन पर हमला करने और क्षार के β-हाइड्रोजन हटाने के बीच की होड़ है, और दूसरा हैलाइड के जाने के साथ ऐल्कीन देता है। यह विलोपन बनाम प्रतिस्थापन की बात है, SN2 क्रियाविधि की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "SN2 यंत्रणा विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "निर्मूलन विरुद्ध प्रतिस्थापन ही नाभिकरागीने कार्बनवर हल्ला करणे आणि क्षाराने β-हायड्रोजन काढणे यांतील स्पर्धा आहे, आणि दुसरे हॅलाइड निघण्यासोबत अल्कीन देते.",
+            "गर्दी हिला मारते: प्राथमिक हॅलाइडमध्ये हल्ल्याला जागा आहे आणि तृतीयकात तीन गट वाटेत आहेत, म्हणूनच मिथिल आणि प्राथमिक क्रियाधार जवळपास केवळ हाच मार्ग घेतात.",
+            "दोन्ही रेणूंचे भेटणे आवश्यक असल्याने, वेग नियम द्वितीय कोटीचा आहे — हॅलाइडमध्ये प्रथम आणि नाभिकरागीत प्रथम — आणि कोणतेही एक दुप्पट केल्यास वेग दुप्पट होतो.",
+            "SN2 यंत्रणा ही एकच सहवर्ती पायरी आहे जिच्यात नाभिकरागी कार्बनवर निघणाऱ्या गटाच्या विरुद्ध पृष्ठभागाकडून हल्ला करतो, म्हणून वेग दोन्ही संहतींवर अवलंबून असतो आणि मांडणी उलटते."
+          ],
+          "solution": "निर्मूलन विरुद्ध प्रतिस्थापन ही नाभिकरागीने कार्बनवर हल्ला करणे आणि क्षाराने β-हायड्रोजन काढणे यांतील स्पर्धा आहे, आणि दुसरे हॅलाइड निघण्यासोबत अल्कीन देते. हे निर्मूलन विरुद्ध प्रतिस्थापन चे आहे, SN2 यंत्रणा चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The SN1 mechanism EXCEPT —",
+      "choices": [
+        "The SN1 mechanism is a two-step process whose slow first step is the loss of the leaving group to form a carbocation, so the rate depends on the halide alone and the product is racemised.",
+        "The rate law is first order and does not contain the nucleophile at all, which is a strong clue: adding more nucleophile makes no difference because it is not present in the step that limits the rate.",
+        "The SN2 mechanism is a single concerted step in which the nucleophile attacks the carbon from the face opposite the leaving group, so the rate depends on both concentrations and the configuration is inverted.",
+        "It needs a carbocation that can survive long enough to be attacked, so tertiary halides go this way and primary ones essentially never do, the order of stability being the exact reverse of the SN2 order."
+      ],
+      "answerIndex": 2,
+      "solution": "The SN2 mechanism is a single concerted step in which the nucleophile attacks the carbon from the face opposite the leaving group, so the rate depends on both concentrations and the configuration is inverted. That belongs to The SN2 mechanism, not The SN1 mechanism — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "SN1 क्रियाविधि के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "SN1 क्रियाविधि दो-चरणी प्रक्रिया है जिसका धीमा पहला चरण प्रस्थायी समूह का जाकर कार्बोकैटायन बनाना है, अतः वेग अकेले हैलाइड पर निर्भर है और उत्पाद रेसीमीकृत हो जाता है।",
+            "वेग नियम प्रथम कोटि का है और उसमें नाभिकरागी है ही नहीं, जो प्रबल सुराग़ है: अधिक नाभिकरागी डालने से कोई फ़र्क़ नहीं पड़ता क्योंकि वह उस चरण में मौजूद ही नहीं जो वेग सीमित करता है।",
+            "SN2 क्रियाविधि एक ही सहवर्ती चरण है जिसमें नाभिकरागी कार्बन पर प्रस्थायी समूह के विपरीत फलक से हमला करता है, अतः वेग दोनों सांद्रताओं पर निर्भर है और विन्यास उलट जाता है।",
+            "इसे ऐसा कार्बोकैटायन चाहिए जो हमले भर टिक सके, अतः तृतीयक हैलाइड यह रास्ता लेते हैं और प्राथमिक वस्तुतः कभी नहीं, और स्थायित्व का क्रम SN2 के क्रम का ठीक उलटा है।"
+          ],
+          "solution": "SN2 क्रियाविधि एक ही सहवर्ती चरण है जिसमें नाभिकरागी कार्बन पर प्रस्थायी समूह के विपरीत फलक से हमला करता है, अतः वेग दोनों सांद्रताओं पर निर्भर है और विन्यास उलट जाता है। यह SN2 क्रियाविधि की बात है, SN1 क्रियाविधि की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "SN1 यंत्रणा विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "SN1 यंत्रणा ही दोन-पायरीची प्रक्रिया आहे जिची सावकाश पहिली पायरी म्हणजे निघणारा गट जाऊन कार्बोकॅटायन बनणे, म्हणून वेग एकट्या हॅलाइडवर अवलंबून आहे आणि उत्पादन रेसिमीकृत होते.",
+            "वेग नियम प्रथम कोटीचा आहे आणि त्यात नाभिकरागी आहेच नाही, जो भक्कम सुगावा आहे: अधिक नाभिकरागी घातल्याने काहीही फरक पडत नाही कारण तो वेग मर्यादित करणाऱ्या पायरीत उपस्थितच नाही.",
+            "SN2 यंत्रणा ही एकच सहवर्ती पायरी आहे जिच्यात नाभिकरागी कार्बनवर निघणाऱ्या गटाच्या विरुद्ध पृष्ठभागाकडून हल्ला करतो, म्हणून वेग दोन्ही संहतींवर अवलंबून असतो आणि मांडणी उलटते.",
+            "याला असे कार्बोकॅटायन लागते जे हल्ल्यापुरते टिकू शकेल, म्हणून तृतीयक हॅलाइड हा मार्ग घेतात आणि प्राथमिक प्रत्यक्षात कधीच नाही, आणि स्थैर्याचा क्रम SN2 च्या क्रमाच्या नेमका उलट आहे."
+          ],
+          "solution": "SN2 यंत्रणा ही एकच सहवर्ती पायरी आहे जिच्यात नाभिकरागी कार्बनवर निघणाऱ्या गटाच्या विरुद्ध पृष्ठभागाकडून हल्ला करतो, म्हणून वेग दोन्ही संहतींवर अवलंबून असतो आणि मांडणी उलटते. हे SN2 यंत्रणा चे आहे, SN1 यंत्रणा चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Elimination against substitution EXCEPT —",
+      "choices": [
+        "Elimination against substitution is the competition between a nucleophile attacking carbon and a base removing a β-hydrogen, the second giving an alkene by loss of the halide as well.",
+        "The SN1 mechanism is a two-step process whose slow first step is the loss of the leaving group to form a carbocation, so the rate depends on the halide alone and the product is racemised.",
+        "Heat and a bulky base push towards elimination, and crowding pushes the same way, which is why tertiary halides are so hard to substitute cleanly and are usually used to make alkenes instead.",
+        "The same species is both a nucleophile and a base, so the conditions decide the outcome rather than the reagent: hydroxide in water substitutes, hydroxide in hot ethanol eliminates."
+      ],
+      "answerIndex": 1,
+      "solution": "The SN1 mechanism is a two-step process whose slow first step is the loss of the leaving group to form a carbocation, so the rate depends on the halide alone and the product is racemised. That belongs to The SN1 mechanism, not Elimination against substitution — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "विलोपन बनाम प्रतिस्थापन के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "विलोपन बनाम प्रतिस्थापन नाभिकरागी के कार्बन पर हमला करने और क्षार के β-हाइड्रोजन हटाने के बीच की होड़ है, और दूसरा हैलाइड के जाने के साथ ऐल्कीन देता है।",
+            "SN1 क्रियाविधि दो-चरणी प्रक्रिया है जिसका धीमा पहला चरण प्रस्थायी समूह का जाकर कार्बोकैटायन बनाना है, अतः वेग अकेले हैलाइड पर निर्भर है और उत्पाद रेसीमीकृत हो जाता है।",
+            "ऊष्मा और भारी क्षार विलोपन की ओर धकेलते हैं, और भीड़ भी उसी ओर, इसीलिए तृतीयक हैलाइडों का साफ़ प्रतिस्थापन इतना कठिन है और प्रायः उनसे ऐल्कीन ही बनाई जाती हैं।",
+            "वही स्पीशीज़ नाभिकरागी भी है और क्षार भी, अतः परिणाम अभिकर्मक नहीं बल्कि परिस्थितियाँ तय करती हैं: पानी में हाइड्रॉक्साइड प्रतिस्थापन करता है, गर्म एथेनॉल में हाइड्रॉक्साइड विलोपन।"
+          ],
+          "solution": "SN1 क्रियाविधि दो-चरणी प्रक्रिया है जिसका धीमा पहला चरण प्रस्थायी समूह का जाकर कार्बोकैटायन बनाना है, अतः वेग अकेले हैलाइड पर निर्भर है और उत्पाद रेसीमीकृत हो जाता है। यह SN1 क्रियाविधि की बात है, विलोपन बनाम प्रतिस्थापन की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "निर्मूलन विरुद्ध प्रतिस्थापन विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "निर्मूलन विरुद्ध प्रतिस्थापन ही नाभिकरागीने कार्बनवर हल्ला करणे आणि क्षाराने β-हायड्रोजन काढणे यांतील स्पर्धा आहे, आणि दुसरे हॅलाइड निघण्यासोबत अल्कीन देते.",
+            "SN1 यंत्रणा ही दोन-पायरीची प्रक्रिया आहे जिची सावकाश पहिली पायरी म्हणजे निघणारा गट जाऊन कार्बोकॅटायन बनणे, म्हणून वेग एकट्या हॅलाइडवर अवलंबून आहे आणि उत्पादन रेसिमीकृत होते.",
+            "उष्णता आणि अवजड क्षार निर्मूलनाकडे ढकलतात, आणि गर्दीही त्याच बाजूला, म्हणूनच तृतीयक हॅलाइडांचे स्वच्छ प्रतिस्थापन इतके कठीण आहे आणि बहुधा त्यांच्यापासून अल्कीनच बनवल्या जातात.",
+            "तीच जाती नाभिकरागीही आहे आणि क्षारही, म्हणून निकाल अभिकर्मक नव्हे तर परिस्थिती ठरवते: पाण्यात हायड्रॉक्साइड प्रतिस्थापन करते, तप्त इथेनॉलात हायड्रॉक्साइड निर्मूलन."
+          ],
+          "solution": "SN1 यंत्रणा ही दोन-पायरीची प्रक्रिया आहे जिची सावकाश पहिली पायरी म्हणजे निघणारा गट जाऊन कार्बोकॅटायन बनणे, म्हणून वेग एकट्या हॅलाइडवर अवलंबून आहे आणि उत्पादन रेसिमीकृत होते. हे SN1 यंत्रणा चे आहे, निर्मूलन विरुद्ध प्रतिस्थापन चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The carbon–halogen bond EXCEPT —",
+      "choices": [
+        "The two properties pull in opposite directions and the bond strength wins: fluorine is the most electronegative and so makes the most polar bond, yet fluoroalkanes are the least reactive because C–F is much the hardest to break.",
+        "The carbon–halogen bond is polar because the halogen is the more electronegative, and it weakens from C–F to C–I as the overlap worsens with increasing halogen size.",
+        "That is why iodides are the reagents of choice for substitution although iodine is the least electronegative halogen — the leaving group's willingness to leave matters more than the carbon's hunger.",
+        "The unreactivity of aryl halides towards nucleophilic substitution follows from the partial double-bond character of the C–X bond and from the halogen being attached to an sp² carbon."
+      ],
+      "answerIndex": 3,
+      "solution": "The unreactivity of aryl halides towards nucleophilic substitution follows from the partial double-bond character of the C–X bond and from the halogen being attached to an sp² carbon. That belongs to The unreactivity of aryl halides, not The carbon–halogen bond — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कार्बन–हैलोजन बंध के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "दोनों गुण उलटी दिशाओं में खींचते हैं और बंध की प्रबलता जीतती है: फ़्लुओरीन सबसे अधिक विद्युत ऋणात्मक है और इसलिए सबसे ध्रुवीय बंध बनाता है, फिर भी फ़्लुओरोऐल्केन सबसे कम क्रियाशील हैं क्योंकि C–F तोड़ना कहीं सबसे कठिन है।",
+            "कार्बन–हैलोजन बंध ध्रुवीय है क्योंकि हैलोजन अधिक विद्युत ऋणात्मक है, और हैलोजन का आकार बढ़ने पर अतिव्यापन बिगड़ता है तथा बंध C–F से C–I तक कमज़ोर होता जाता है।",
+            "इसीलिए प्रतिस्थापन के लिए आयोडाइड ही चुने जाते हैं यद्यपि आयोडीन सबसे कम विद्युत ऋणात्मक हैलोजन है — प्रस्थायी समूह के जाने की तत्परता कार्बन की भूख से अधिक मायने रखती है।",
+            "नाभिकरागी प्रतिस्थापन के प्रति ऐरिल हैलाइडों की अक्रियाशीलता C–X बंध के आंशिक द्विबंध लक्षण से और हैलोजन के sp² कार्बन से जुड़े होने से निकलती है।"
+          ],
+          "solution": "नाभिकरागी प्रतिस्थापन के प्रति ऐरिल हैलाइडों की अक्रियाशीलता C–X बंध के आंशिक द्विबंध लक्षण से और हैलोजन के sp² कार्बन से जुड़े होने से निकलती है। यह ऐरिल हैलाइडों की अक्रियाशीलता की बात है, कार्बन–हैलोजन बंध की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "कार्बन–हॅलोजन बंध विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "दोन्ही गुणधर्म उलट दिशांनी ओढतात आणि बंधाची तीव्रता जिंकते: फ्लोरिन सर्वांत अधिक विद्युत ऋण आहे आणि म्हणून सर्वांत ध्रुवीय बंध बनवते, तरीही फ्लोरोअल्केन सर्वांत कमी क्रियाशील आहेत कारण C–F तोडणे कितीतरी सर्वांत कठीण आहे.",
+            "कार्बन–हॅलोजन बंध ध्रुवीय आहे कारण हॅलोजन अधिक विद्युत ऋण आहे, आणि हॅलोजनचा आकार वाढल्यावर आच्छादन बिघडते आणि बंध C–F पासून C–I पर्यंत क्षीण होत जातो.",
+            "म्हणूनच प्रतिस्थापनासाठी आयोडाइडच निवडले जातात जरी आयोडीन सर्वांत कमी विद्युत ऋण हॅलोजन असले तरी — निघणाऱ्या गटाची निघण्याची तयारी कार्बनच्या भुकेहून अधिक महत्त्वाची आहे.",
+            "नाभिकरागी प्रतिस्थापनाबाबत अरिल हॅलाइडांची अक्रियाशीलता C–X बंधाच्या अंशतः द्विबंध लक्षणातून आणि हॅलोजन sp² कार्बनशी जोडलेले असण्यातून निघते."
+          ],
+          "solution": "नाभिकरागी प्रतिस्थापनाबाबत अरिल हॅलाइडांची अक्रियाशीलता C–X बंधाच्या अंशतः द्विबंध लक्षणातून आणि हॅलोजन sp² कार्बनशी जोडलेले असण्यातून निघते. हे अरिल हॅलाइडांची अक्रियाशीलता चे आहे, कार्बन–हॅलोजन बंध चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A primary halide reacts with hydroxide at a rate proportional to both concentrations and gives a single product of inverted configuration. A tertiary halide reacts at a rate that ignores the hydroxide entirely and gives an equal mixture of two forms. Explain both.",
+      "choices": [
+        "The primary halide goes by SN2: one concerted step in which hydroxide attacks the carbon from the face opposite the halide, so both species appear in the rate law and the carbon is turned inside out — a single inverted product. The tertiary halide goes by SN1: the halide leaves first in a slow step, and since hydroxide takes no part in that step it cannot appear in the rate law. The carbocation left behind is flat, so the nucleophile attacks either face with equal ease and the product is racemic. The change of route is decided by crowding, which blocks SN2 at a tertiary carbon, and by carbocation stability, which permits SN1 only there",
+        "The tertiary halide is simply less reactive, so its rate is too slow for the hydroxide dependence to be detected, and the mixture of products is an impurity effect",
+        "Both reactions go by the same mechanism, and the difference in rate law comes from the tertiary halide being used in much greater excess",
+        "The primary halide inverts because hydroxide is a strong base, and the tertiary one racemises because it is a weak one — the mechanism is the same in both"
+      ],
+      "answerIndex": 0,
+      "solution": "Two independent kinds of evidence are being offered — a rate law and a stereochemical outcome — and the point of the question is that they agree. When two different measurements point at the same mechanism, the conclusion is much stronger than either alone. THE PRIMARY HALIDE. Rate ∝ [halide][OH⁻] means both species are present in the slowest step, so that step must involve them meeting. There is only one way to arrange that: the hydroxide attacks the carbon at the same moment the halide leaves, in a single concerted motion. Now ask geometrically where the attack must come from. The halide is a large electron-rich group sitting on one face of the carbon and repelling anything that approaches from its side, and the new bond forms best where the old one is weakest — directly behind it, along the axis of the C–X bond. So the nucleophile comes in at 180° to the leaving group, and as the two exchange, the other three groups on the carbon are pushed through the plane. The molecule turns inside out like an umbrella in a gale, and a chiral centre ends up with its arrangement reversed. Hence a single product, of inverted configuration. THE TERTIARY HALIDE. Rate ∝ [halide] alone is the striking observation: adding ten times more hydroxide changes nothing. A species that does not appear in the rate law cannot be present in the rate-determining step, so hydroxide plays no part in the slow part of this reaction. The only thing the halide can do without it is fall apart: the C–X bond breaks heterolytically, the halide leaves with both electrons, and a carbocation is formed. That is slow and it alone sets the rate; the subsequent capture by hydroxide is fast and invisible to the kinetics. Now the stereochemistry follows automatically. A carbocation has only three groups and is sp² hybridised, so it is flat, with an empty p orbital sticking out on both sides. The nucleophile can attack either lobe with equal ease, and the two attacks give the two enantiomers in equal amounts — a racemic mixture, optically inactive. WHY EACH SUBSTRATE CHOOSES AS IT DOES. Two effects, and they happen to point the same way. Sterically, SN2 needs a clear path to the back of the carbon; a primary carbon has two small hydrogens in the way and a tertiary one has three alkyl groups, so the rate falls by a factor of thousands along the series. Electronically, SN1 needs a carbocation stable enough to exist for a moment; alkyl groups donate electron density and stabilise the positive charge, so tertiary cations form readily and primary ones essentially never. The two orders are exact opposites — SN2 goes methyl > primary > secondary > tertiary, SN1 the reverse — and secondary halides sit in the middle and do both, which is why they give partial racemisation. That partial figure is not a nuisance but a measurement: the proportion of inverted product tells you how much of the material went by each route. (The second option explains away a clean kinetic result as a detection failure; the third invents an excess that would not change the FORM of a rate law; the fourth attributes to acid–base strength what is a matter of mechanism and geometry.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक प्राथमिक हैलाइड हाइड्रॉक्साइड से ऐसे वेग पर अभिक्रिया करता है जो दोनों सांद्रताओं का समानुपाती है और प्रतिलोमित विन्यास का अकेला उत्पाद देता है। एक तृतीयक हैलाइड ऐसे वेग पर अभिक्रिया करता है जो हाइड्रॉक्साइड की बिलकुल परवाह नहीं करता और दो रूपों का बराबर मिश्रण देता है। दोनों समझाओ।",
+          "choices": [
+            "प्राथमिक हैलाइड SN2 से चलता है: एक सहवर्ती चरण जिसमें हाइड्रॉक्साइड कार्बन पर हैलाइड के विपरीत फलक से हमला करता है, अतः दोनों स्पीशीज़ वेग नियम में आती हैं और कार्बन उलट जाता है — एक अकेला प्रतिलोमित उत्पाद। तृतीयक हैलाइड SN1 से चलता है: हैलाइड धीमे चरण में पहले जाता है, और चूँकि हाइड्रॉक्साइड उस चरण में भाग नहीं लेता, वह वेग नियम में आ ही नहीं सकता। पीछे छूटा कार्बोकैटायन चपटा है, अतः नाभिकरागी किसी भी फलक पर बराबर आसानी से हमला करता है और उत्पाद रेसीमी है। रास्ते का बदलना भीड़ से तय होता है, जो तृतीयक कार्बन पर SN2 को रोकती है, और कार्बोकैटायन स्थायित्व से, जो SN1 को केवल वहीं होने देता है",
+            "तृतीयक हैलाइड बस कम क्रियाशील है, अतः उसका वेग इतना धीमा है कि हाइड्रॉक्साइड की निर्भरता पकड़ में न आए, और उत्पादों का मिश्रण अशुद्धि का प्रभाव है",
+            "दोनों अभिक्रियाएँ एक ही क्रियाविधि से चलती हैं, और वेग नियम का अंतर इससे आता है कि तृतीयक हैलाइड कहीं अधिक अधिकता में लिया गया",
+            "प्राथमिक हैलाइड इसलिए प्रतिलोमित होता है कि हाइड्रॉक्साइड प्रबल क्षार है, और तृतीयक इसलिए रेसीमीकृत होता है कि वह दुर्बल है — क्रियाविधि दोनों में वही है"
+          ],
+          "solution": "दो स्वतंत्र क़िस्म के प्रमाण दिए जा रहे हैं — एक वेग नियम और एक त्रिविम परिणाम — और प्रश्न का मर्म यह है कि वे आपस में मिलते हैं। जब दो भिन्न माप एक ही क्रियाविधि की ओर इशारा करें, तो निष्कर्ष किसी एक अकेले से कहीं प्रबल है। प्राथमिक हैलाइड। वेग ∝ [हैलाइड][OH⁻] का अर्थ है कि दोनों स्पीशीज़ सबसे धीमे चरण में मौजूद हैं, अतः उस चरण में उनका मिलना शामिल होना ही चाहिए। उसे जमाने का केवल एक ही तरीक़ा है: हाइड्रॉक्साइड कार्बन पर ठीक उसी क्षण हमला करे जब हैलाइड जा रहा हो, एक ही सहवर्ती हरकत में। अब ज्यामितीय रूप से पूछो कि हमला कहाँ से आना चाहिए। हैलाइड कार्बन के एक फलक पर बैठा बड़ा इलेक्ट्रॉन-समृद्ध समूह है और अपनी ओर से आते किसी को भी प्रतिकर्षित करता है, और नया बंध वहीं सबसे अच्छा बनता है जहाँ पुराना सबसे कमज़ोर है — ठीक उसके पीछे, C–X बंध की अक्ष के अनुदिश। अतः नाभिकरागी प्रस्थायी समूह से 180° पर भीतर आता है, और दोनों की अदला-बदली होते समय कार्बन के बाक़ी तीन समूह तल के आर-पार धकेल दिए जाते हैं। अणु आँधी में छाते की तरह उलट जाता है, और काइरल केंद्र की व्यवस्था उलटी होकर बचती है। इसलिए अकेला उत्पाद, प्रतिलोमित विन्यास का। तृतीयक हैलाइड। वेग ∝ अकेला [हैलाइड] चौंकाने वाला प्रेक्षण है: दस गुना अधिक हाइड्रॉक्साइड डालने से कुछ नहीं बदलता। जो स्पीशीज़ वेग नियम में नहीं आती वह वेग-निर्धारक चरण में मौजूद हो ही नहीं सकती, अतः इस अभिक्रिया के धीमे भाग में हाइड्रॉक्साइड की कोई भूमिका नहीं। उसके बिना हैलाइड जो कर सकता है वह केवल बिखर जाना है: C–X बंध विषमांश रूप से टूटता है, हैलाइड दोनों इलेक्ट्रॉन लेकर जाता है, और कार्बोकैटायन बनता है। वह धीमा है और वही अकेला वेग तय करता है; बाद में हाइड्रॉक्साइड का पकड़ना तेज़ है और बलगतिकी को अदृश्य। अब त्रिविम रसायन अपने आप निकलता है। कार्बोकैटायन के केवल तीन समूह हैं और वह sp² संकरित है, अतः वह चपटा है, और दोनों ओर ख़ाली p कक्षक निकला हुआ। नाभिकरागी किसी भी पाली पर बराबर आसानी से हमला कर सकता है, और दोनों हमले दोनों प्रतिबिंब रूप बराबर मात्रा में देते हैं — रेसीमी मिश्रण, प्रकाशिक रूप से निष्क्रिय। हर क्रियाधार वैसा क्यों चुनता है। दो प्रभाव, और वे संयोग से एक ही ओर इशारा करते हैं। त्रिविम रूप से, SN2 को कार्बन के पीछे तक साफ़ रास्ता चाहिए; प्राथमिक कार्बन पर रास्ते में दो छोटे हाइड्रोजन हैं और तृतीयक पर तीन ऐल्किल समूह, अतः श्रेणी भर में वेग हज़ारों के गुणक से गिरता है। इलेक्ट्रॉनी रूप से, SN1 को ऐसा कार्बोकैटायन चाहिए जो क्षण भर टिकने भर स्थायी हो; ऐल्किल समूह इलेक्ट्रॉन घनत्व देते हैं और धन आवेश को स्थायी करते हैं, अतः तृतीयक धनायन आसानी से बनते हैं और प्राथमिक वस्तुतः कभी नहीं। दोनों क्रम ठीक उलटे हैं — SN2 मेथिल > प्राथमिक > द्वितीयक > तृतीयक चलता है, SN1 उलटा — और द्वितीयक हैलाइड बीच में बैठकर दोनों करते हैं, इसीलिए वे आंशिक रेसीमीकरण देते हैं। वह आंशिक आँकड़ा उपद्रव नहीं बल्कि माप है: प्रतिलोमित उत्पाद का अनुपात बता देता है कि कितनी सामग्री किस रास्ते गई। (दूसरा विकल्प साफ़ बलगतिक परिणाम को संसूचन की विफलता कहकर टाल देता है; तीसरा ऐसी अधिकता गढ़ता है जो वेग नियम का रूप नहीं बदलती; चौथा जो क्रियाविधि और ज्यामिति का मामला है उसे अम्ल-क्षार की प्रबलता का बता देता है।)"
+        },
+        "mr": {
+          "stem": "एक प्राथमिक हॅलाइड हायड्रॉक्साइडशी अशा वेगाने अभिक्रिया करते जो दोन्ही संहतींशी समानुपाती आहे आणि प्रतिलोमित मांडणीचे एकच उत्पादन देते. एक तृतीयक हॅलाइड अशा वेगाने अभिक्रिया करते जो हायड्रॉक्साइडची मुळीच पर्वा करत नाही आणि दोन रूपांचे समान मिश्रण देते. दोन्ही समजावा.",
+          "choices": [
+            "प्राथमिक हॅलाइड SN2 ने चालते: एक सहवर्ती पायरी ज्यात हायड्रॉक्साइड कार्बनवर हॅलाइडच्या विरुद्ध पृष्ठभागाकडून हल्ला करते, म्हणून दोन्ही जाती वेग नियमात येतात आणि कार्बन उलटतो — एकच प्रतिलोमित उत्पादन. तृतीयक हॅलाइड SN1 ने चालते: हॅलाइड सावकाश पायरीत आधी निघते, आणि हायड्रॉक्साइड त्या पायरीत भाग घेत नसल्याने ते वेग नियमात येऊच शकत नाही. मागे उरलेले कार्बोकॅटायन सपाट आहे, म्हणून नाभिकरागी कोणत्याही पृष्ठभागावर समान सहजतेने हल्ला करतो आणि उत्पादन रेसिमी आहे. मार्गाचा बदल गर्दीने ठरतो, जी तृतीयक कार्बनवर SN2 अडवते, आणि कार्बोकॅटायन स्थैर्याने, जे SN1 ला केवळ तिथेच होऊ देते",
+            "तृतीयक हॅलाइड फक्त कमी क्रियाशील आहे, म्हणून त्याचा वेग इतका सावकाश की हायड्रॉक्साइडचे अवलंबित्व ओळखता येऊ नये, आणि उत्पादनांचे मिश्रण अशुद्धीचा परिणाम आहे",
+            "दोन्ही अभिक्रिया एकाच यंत्रणेने चालतात, आणि वेग नियमातील फरक तृतीयक हॅलाइड कितीतरी अधिकतेत घेतल्याने येतो",
+            "प्राथमिक हॅलाइड यासाठी प्रतिलोमित होते की हायड्रॉक्साइड तीव्र क्षार आहे, आणि तृतीयक यासाठी रेसिमीकृत होते की तो दुर्बल आहे — यंत्रणा दोन्हींत तीच आहे"
+          ],
+          "solution": "दोन स्वतंत्र प्रकारचे पुरावे दिले जात आहेत — एक वेग नियम आणि एक त्रिमित निकाल — आणि प्रश्नाचा गाभा हा की ते परस्पर जुळतात. जेव्हा दोन वेगळी मापे एकाच यंत्रणेकडे बोट दाखवतात, तेव्हा निष्कर्ष कोणत्याही एकट्याहून कितीतरी भक्कम असतो. प्राथमिक हॅलाइड. वेग ∝ [हॅलाइड][OH⁻] याचा अर्थ दोन्ही जाती सर्वांत सावकाश पायरीत उपस्थित आहेत, म्हणून त्या पायरीत त्यांचे भेटणे सामील असलेच पाहिजे. ते मांडण्याचा केवळ एकच मार्ग आहे: हायड्रॉक्साइडने कार्बनवर नेमक्या त्याच क्षणी हल्ला करावा जेव्हा हॅलाइड निघत असेल, एकाच सहवर्ती हालचालीत. आता भूमितीयदृष्ट्या विचारा की हल्ला कुठून यावा. हॅलाइड हा कार्बनच्या एका पृष्ठभागावर बसलेला मोठा इलेक्ट्रॉन-समृद्ध गट आहे आणि आपल्या बाजूने येणाऱ्या कोणालाही प्रतिकर्षित करतो, आणि नवा बंध तिथेच सर्वांत चांगला बनतो जिथे जुना सर्वांत क्षीण आहे — नेमका त्याच्यामागे, C–X बंधाच्या अक्षाच्या दिशेने. म्हणून नाभिकरागी निघणाऱ्या गटापासून 180° वर आत येतो, आणि दोघांची अदलाबदल होताना कार्बनचे बाकी तीन गट प्रतलाच्या आरपार ढकलले जातात. रेणू वादळात छत्रीसारखा उलटतो, आणि कायरल केंद्राची मांडणी उलटी होऊन उरते. म्हणून एकच उत्पादन, प्रतिलोमित मांडणीचे. तृतीयक हॅलाइड. वेग ∝ एकटे [हॅलाइड] हे चकित करणारे निरीक्षण आहे: दहापट अधिक हायड्रॉक्साइड घातल्याने काहीच बदलत नाही. जी जाती वेग नियमात येत नाही ती वेग-निर्धारक पायरीत उपस्थित असूच शकत नाही, म्हणून या अभिक्रियेच्या सावकाश भागात हायड्रॉक्साइडची कोणतीही भूमिका नाही. त्याविना हॅलाइड जे करू शकते ते केवळ विखुरणे: C–X बंध विषमांशरीत्या तुटतो, हॅलाइड दोन्ही इलेक्ट्रॉन घेऊन निघते, आणि कार्बोकॅटायन बनते. ते सावकाश आहे आणि तेच एकटे वेग ठरवते; नंतर हायड्रॉक्साइडने पकडणे जलद आहे आणि गतिकीला अदृश्य. आता त्रिमित रसायन आपोआप निघते. कार्बोकॅटायनला केवळ तीन गट आहेत आणि ते sp² संकरित आहे, म्हणून ते सपाट आहे, आणि दोन्ही बाजूंना रिकामे p कक्षक बाहेर आलेले. नाभिकरागी कोणत्याही पाकळीवर समान सहजतेने हल्ला करू शकतो, आणि दोन्ही हल्ले दोन्ही प्रतिबिंब रूपे समान प्रमाणात देतात — रेसिमी मिश्रण, प्रकाशीयदृष्ट्या निष्क्रिय. प्रत्येक क्रियाधार तसे का निवडतो. दोन परिणाम, आणि ते योगायोगाने एकाच दिशेने दाखवतात. त्रिमितदृष्ट्या, SN2 ला कार्बनच्या मागेपर्यंत स्वच्छ मार्ग लागतो; प्राथमिक कार्बनवर वाटेत दोन लहान हायड्रोजन आहेत आणि तृतीयकावर तीन अल्किल गट, म्हणून श्रेणीभर वेग हजारांच्या पटीने घसरतो. इलेक्ट्रॉनीदृष्ट्या, SN1 ला असे कार्बोकॅटायन लागते जे क्षणभर टिकण्याइतके स्थिर असेल; अल्किल गट इलेक्ट्रॉन घनता देतात आणि धन प्रभार स्थिर करतात, म्हणून तृतीयक धनायन सहज बनतात आणि प्राथमिक प्रत्यक्षात कधीच नाही. दोन्ही क्रम नेमके उलट आहेत — SN2 मिथिल > प्राथमिक > द्वितीयक > तृतीयक चालतो, SN1 उलटा — आणि द्वितीयक हॅलाइड मध्ये बसून दोन्ही करतात, म्हणूनच ते अंशतः रेसिमीकरण देतात. तो अंशतः आकडा उपद्रव नसून माप आहे: प्रतिलोमित उत्पादनाचे प्रमाण सांगते की किती सामग्री कोणत्या मार्गाने गेली. (दुसरा पर्याय स्वच्छ गतिक निकालाला संवेदनाचे अपयश म्हणून टाळतो; तिसरा अशी अधिकता घडवतो जी वेग नियमाचे स्वरूप बदलत नाही; चौथा जे यंत्रणेचे आणि भूमितीचे प्रकरण आहे ते आम्ल-क्षाराच्या तीव्रतेचे सांगतो.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Chloroethane is hydrolysed by warm aqueous sodium hydroxide within minutes. Chlorobenzene, which also has a chlorine on a carbon, needs 623 K and 300 atmospheres to do the same thing. Explain the difference, and say how it can be got round.",
+      "choices": [
+        "Three effects act together. The chlorine's lone pair delocalises into the ring, giving the C–Cl bond partial double-bond character — it is measurably shorter and stronger than in chloromethane. The carbon is sp² and so more electronegative, holding its electrons more tightly and resisting a nucleophile. And the ring's π cloud repels an approaching electron-rich nucleophile, while an SN1 route is barred because an aryl cation is far too unstable to form. The way round is to place strong electron-withdrawing groups at the ortho and para positions, which drain the ring and make the attack possible under ordinary conditions",
+        "Chlorobenzene is unreactive simply because the benzene ring is bulky and blocks the nucleophile's approach, and the way round is to use a smaller nucleophile",
+        "The C–Cl bond in chlorobenzene is longer and weaker than in chloromethane, and the compound is unreactive because the chlorine leaves before the nucleophile can arrive",
+        "Aryl halides are unreactive because aromatic compounds never undergo substitution of any kind, which is the defining property of aromaticity"
+      ],
+      "answerIndex": 0,
+      "solution": "The two compounds look alike on paper — a chlorine on a carbon in both — and behave so differently that the comparison is worth taking apart carefully. The difference in conditions is a factor of about 10¹⁰ in rate, which is not a matter of degree. FIRST EFFECT: RESONANCE. In chlorobenzene the chlorine has lone pairs, and one of them can overlap with the ring's π system. Draw the resonance structures and the C–Cl bond acquires partial double-bond character while negative charge appears at the ortho and para positions. A partial double bond is shorter and stronger than a single one, and the measurement confirms it: C–Cl in chlorobenzene is about 169 pm against 177 pm in chloromethane. Breaking it therefore costs more, and in any nucleophilic substitution that bond has to break. SECOND EFFECT: HYBRIDISATION. The carbon bearing the chlorine is sp² in chlorobenzene and sp³ in chloroethane. An sp² carbon has one third s character against one quarter, and s orbitals are closer to the nucleus, so an sp² carbon is more electronegative and holds its bonding electrons more tightly. It is correspondingly less willing to accept another pair from a nucleophile. THIRD EFFECT: REPULSION AND THE ABSENT ALTERNATIVE. The ring carries a π cloud above and below its plane, and a nucleophile is by definition electron-rich, so it is repelled as it approaches. And the escape route that a tertiary halide would take is closed: SN1 would require an aryl cation, in which the positive charge sits in an sp² orbital in the plane of the ring and cannot be delocalised by the π system at all. Aryl cations are so unstable that the mechanism simply does not run. So both ordinary routes are blocked at once, for different reasons. HOW IT IS GOT ROUND. Since the difficulty is that the ring is too electron-rich to be attacked, the remedy is to drain it. Put strongly electron-withdrawing groups — nitro groups are the standard choice — at the positions ortho and para to the halogen. Those are exactly the positions where negative charge accumulates in the intermediate formed when a nucleophile does attack, so the withdrawing groups stabilise that intermediate and lower the barrier. The effect is dramatic and cumulative: chlorobenzene needs 623 K and 300 atm; 2,4-dinitrochlorobenzene reacts with warm aqueous sodium carbonate; and 2,4,6-trinitrochlorobenzene is hydrolysed by plain warm water, which is how picric acid is made. Note the position requirement is not decoration — a nitro group at the meta position helps very little, because the negative charge in the intermediate never appears there. Two habits worth carrying from this. First, when a reaction fails, ask which step it fails at; here the answer is that neither available mechanism can run, and for different reasons. Second, a substituent effect that depends on POSITION rather than merely on strength is evidence about the intermediate, and reasoning backwards from where the substituent has to sit is one of the standard ways a mechanism is established. (The second option offers a steric explanation that a flat ring does not support and that a smaller nucleophile would defeat; the third reverses the measured bond length; the fourth denies electrophilic aromatic substitution, which is the entire chemistry of benzene.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "क्लोरोएथेन गर्म जलीय सोडियम हाइड्रॉक्साइड से मिनटों में जल-अपघटित हो जाता है। क्लोरोबेंज़ीन, जिसमें भी कार्बन पर क्लोरीन है, को वही करने के लिए 623 K और 300 वायुमंडल चाहिए। अंतर समझाओ, और बताओ कि उसे कैसे पार किया जा सकता है।",
+          "choices": [
+            "तीन प्रभाव साथ काम करते हैं। क्लोरीन का एकाकी युग्म वलय में विस्थानीकृत हो जाता है, जिससे C–Cl बंध को आंशिक द्विबंध लक्षण मिलता है — वह क्लोरोमेथेन से नापने लायक़ छोटा और प्रबल है। कार्बन sp² है और इसलिए अधिक विद्युत ऋणात्मक, अपने इलेक्ट्रॉन अधिक कसकर पकड़ता और नाभिकरागी का प्रतिरोध करता। और वलय का π बादल पास आते इलेक्ट्रॉन-समृद्ध नाभिकरागी को प्रतिकर्षित करता है, जबकि SN1 रास्ता वर्जित है क्योंकि ऐरिल धनायन बनने के लिए कहीं बहुत अस्थायी है। पार करने का रास्ता यह कि ऑर्थो और पैरा स्थानों पर प्रबल इलेक्ट्रॉन-खींचक समूह रखे जाएँ, जो वलय को निचोड़ देते हैं और साधारण परिस्थितियों में हमला संभव बना देते हैं",
+            "क्लोरोबेंज़ीन बस इसलिए अक्रियाशील है कि बेंज़ीन वलय भारी है और नाभिकरागी का पहुँचना रोकता है, और पार करने का रास्ता छोटा नाभिकरागी काम में लेना है",
+            "क्लोरोबेंज़ीन में C–Cl बंध क्लोरोमेथेन से लंबा और कमज़ोर है, और यौगिक इसलिए अक्रियाशील है कि नाभिकरागी के पहुँचने से पहले ही क्लोरीन चला जाता है",
+            "ऐरिल हैलाइड इसलिए अक्रियाशील हैं कि ऐरोमैटिक यौगिक किसी भी तरह का प्रतिस्थापन कभी नहीं करते, और यही ऐरोमैटिकता का परिभाषक गुण है"
+          ],
+          "solution": "दोनों यौगिक काग़ज़ पर एक जैसे दिखते हैं — दोनों में कार्बन पर क्लोरीन — और इतने भिन्न बरतते हैं कि तुलना को ध्यान से खोलना चाहिए। परिस्थितियों का अंतर वेग में लगभग 10¹⁰ का गुणक है, जो मात्रा का मामला नहीं। पहला प्रभाव: अनुनाद। क्लोरोबेंज़ीन में क्लोरीन के एकाकी युग्म हैं, और उनमें से एक वलय के π तंत्र से अतिव्यापन कर सकता है। अनुनाद संरचनाएँ खींचो और C–Cl बंध को आंशिक द्विबंध लक्षण मिल जाता है जबकि ऋण आवेश ऑर्थो और पैरा स्थानों पर प्रकट होता है। आंशिक द्विबंध एकल से छोटा और प्रबल है, और माप उसकी पुष्टि करता है: क्लोरोबेंज़ीन में C–Cl लगभग 169 pm है जबकि क्लोरोमेथेन में 177 pm. अतः उसे तोड़ना अधिक महँगा है, और किसी भी नाभिकरागी प्रतिस्थापन में उस बंध को टूटना ही है। दूसरा प्रभाव: संकरण। क्लोरीन वाला कार्बन क्लोरोबेंज़ीन में sp² है और क्लोरोएथेन में sp³. sp² कार्बन में एक-चौथाई के मुक़ाबले एक-तिहाई s लक्षण है, और s कक्षक नाभिक के अधिक पास हैं, अतः sp² कार्बन अधिक विद्युत ऋणात्मक है और अपने बंधन इलेक्ट्रॉन अधिक कसकर पकड़ता है। वह तदनुरूप नाभिकरागी से एक और युग्म लेने को कम तैयार है। तीसरा प्रभाव: प्रतिकर्षण और अनुपस्थित विकल्प। वलय अपने तल के ऊपर और नीचे π बादल ढोता है, और नाभिकरागी परिभाषा से इलेक्ट्रॉन-समृद्ध है, अतः पास आते ही वह प्रतिकर्षित होता है। और जो बचाव का रास्ता तृतीयक हैलाइड लेता, वह बंद है: SN1 को ऐरिल धनायन चाहिए, जिसमें धन आवेश वलय के तल में एक sp² कक्षक में बैठता है और π तंत्र से बिलकुल विस्थानीकृत नहीं हो सकता। ऐरिल धनायन इतने अस्थायी हैं कि क्रियाविधि चलती ही नहीं। अतः दोनों साधारण रास्ते एक साथ बंद हैं, भिन्न कारणों से। उसे पार कैसे किया जाता है। चूँकि कठिनाई यह है कि वलय हमले के लिए बहुत इलेक्ट्रॉन-समृद्ध है, उपाय उसे निचोड़ना है। हैलोजन के ऑर्थो और पैरा स्थानों पर प्रबल इलेक्ट्रॉन-खींचक समूह — नाइट्रो समूह मानक चुनाव हैं — रखो। ये ठीक वे स्थान हैं जहाँ नाभिकरागी के हमला करने पर बने मध्यवर्ती में ऋण आवेश जमा होता है, अतः खींचक समूह उस मध्यवर्ती को स्थायी करते हैं और अवरोध घटाते हैं। प्रभाव नाटकीय और संचयी है: क्लोरोबेंज़ीन को 623 K और 300 atm चाहिए; 2,4-डाइनाइट्रोक्लोरोबेंज़ीन गर्म जलीय सोडियम कार्बोनेट से अभिक्रिया करता है; और 2,4,6-ट्राइनाइट्रोक्लोरोबेंज़ीन सादे गर्म पानी से जल-अपघटित हो जाता है, और पिक्रिक अम्ल इसी तरह बनता है। ध्यान दो कि स्थान की शर्त सजावट नहीं — मेटा स्थान पर नाइट्रो समूह बहुत कम मदद करता है, क्योंकि मध्यवर्ती में ऋण आवेश वहाँ कभी आता ही नहीं। इससे साथ ले जाने योग्य दो आदतें। पहली, जब कोई अभिक्रिया विफल हो, तो पूछो कि वह किस चरण पर विफल होती है; यहाँ उत्तर यह कि उपलब्ध दोनों में से कोई क्रियाविधि चल ही नहीं सकती, और भिन्न कारणों से। दूसरी, प्रतिस्थापी का ऐसा प्रभाव जो केवल प्रबलता नहीं बल्कि स्थान पर निर्भर हो, मध्यवर्ती के बारे में प्रमाण है, और प्रतिस्थापी को कहाँ बैठना पड़ता है वहाँ से उलटा तर्क करना क्रियाविधि स्थापित करने के मानक रास्तों में से एक है। (दूसरा विकल्प ऐसी त्रिविम व्याख्या देता है जिसका चपटा वलय समर्थन नहीं करता और जिसे छोटा नाभिकरागी हरा देता; तीसरा नापी गई बंध लंबाई उलट देता है; चौथा इलेक्ट्रॉनरागी ऐरोमैटिक प्रतिस्थापन से इनकार करता है, जो बेंज़ीन का पूरा रसायन है।)"
+        },
+        "mr": {
+          "stem": "क्लोरोइथेन तप्त जलीय सोडियम हायड्रॉक्साइडने मिनिटांत जलअपघटित होते. क्लोरोबेंझिन, ज्यातही कार्बनवर क्लोरीन आहे, त्याला तेच करण्यास 623 K आणि 300 वातावरणे लागतात. फरक समजावा, आणि तो कसा पार करता येईल ते सांगा.",
+          "choices": [
+            "तीन परिणाम एकत्र काम करतात. क्लोरीनची एकाकी जोडी वलयात विस्थानित होते, ज्याने C–Cl बंधाला अंशतः द्विबंध लक्षण मिळते — तो क्लोरोमिथेनहून मोजण्याइतका लहान आणि तीव्र आहे. कार्बन sp² आहे आणि म्हणून अधिक विद्युत ऋण, आपले इलेक्ट्रॉन अधिक घट्ट धरतो आणि नाभिकरागीला विरोध करतो. आणि वलयाचे π ढग जवळ येणाऱ्या इलेक्ट्रॉन-समृद्ध नाभिकरागीला प्रतिकर्षित करते, तर SN1 मार्ग वर्ज्य आहे कारण अरिल धनायन बनण्यास कितीतरी अस्थिर आहे. पार करण्याचा मार्ग म्हणजे ऑर्थो आणि पॅरा जागी तीव्र इलेक्ट्रॉन-ओढक गट ठेवणे, जे वलय पिळून काढतात आणि साध्या परिस्थितीत हल्ला शक्य करतात",
+            "क्लोरोबेंझिन फक्त यासाठी अक्रियाशील आहे की बेंझिन वलय अवजड आहे आणि नाभिकरागीचे पोहोचणे अडवते, आणि पार करण्याचा मार्ग लहान नाभिकरागी वापरणे",
+            "क्लोरोबेंझिनमधला C–Cl बंध क्लोरोमिथेनहून लांब आणि क्षीण आहे, आणि संयुग यासाठी अक्रियाशील आहे की नाभिकरागी पोहोचण्याआधीच क्लोरीन निघून जाते",
+            "अरिल हॅलाइड यासाठी अक्रियाशील आहेत की सुगंधी संयुगे कोणत्याही प्रकारचे प्रतिस्थापन कधीच करत नाहीत, आणि हाच सुगंधीपणाचा व्याख्यात्मक गुणधर्म आहे"
+          ],
+          "solution": "दोन्ही संयुगे कागदावर सारखी दिसतात — दोन्हींत कार्बनवर क्लोरीन — आणि इतकी वेगळी वागतात की तुलना काळजीपूर्वक उलगडण्याजोगी आहे. परिस्थितींचा फरक वेगात सुमारे 10¹⁰ चा गुणक आहे, जो प्रमाणाची बाब नाही. पहिला परिणाम: अनुनाद. क्लोरोबेंझिनमध्ये क्लोरीनला एकाकी जोड्या आहेत, आणि त्यांतली एक वलयाच्या π प्रणालीशी आच्छादू शकते. अनुनाद रचना काढा आणि C–Cl बंधाला अंशतः द्विबंध लक्षण मिळते तर ऋण प्रभार ऑर्थो आणि पॅरा जागी प्रकट होतो. अंशतः द्विबंध एकेरीहून लहान आणि तीव्र आहे, आणि माप त्याची खात्री देते: क्लोरोबेंझिनमध्ये C–Cl सुमारे 169 pm आहे तर क्लोरोमिथेनमध्ये 177 pm. म्हणून तो तोडणे अधिक महाग आहे, आणि कोणत्याही नाभिकरागी प्रतिस्थापनात तो बंध तुटावाच लागतो. दुसरा परिणाम: संकरण. क्लोरीन असलेला कार्बन क्लोरोबेंझिनमध्ये sp² आहे आणि क्लोरोइथेनमध्ये sp³. sp² कार्बनमध्ये एक-चतुर्थांशच्या तुलनेत एक-तृतीयांश s लक्षण आहे, आणि s कक्षक केंद्रकाच्या अधिक जवळ आहेत, म्हणून sp² कार्बन अधिक विद्युत ऋण आहे आणि आपले बंधन इलेक्ट्रॉन अधिक घट्ट धरतो. तो त्याअनुषंगाने नाभिकरागीकडून आणखी एक जोडी घ्यायला कमी तयार आहे. तिसरा परिणाम: प्रतिकर्षण आणि अनुपस्थित पर्याय. वलय आपल्या प्रतलाच्या वर आणि खाली π ढग वाहते, आणि नाभिकरागी व्याख्येने इलेक्ट्रॉन-समृद्ध आहे, म्हणून जवळ येताच तो प्रतिकर्षित होतो. आणि जो सुटकेचा मार्ग तृतीयक हॅलाइड घेईल, तो बंद आहे: SN1 ला अरिल धनायन लागेल, ज्यात धन प्रभार वलयाच्या प्रतलात एका sp² कक्षकात बसतो आणि π प्रणालीने मुळीच विस्थानित होऊ शकत नाही. अरिल धनायने इतकी अस्थिर आहेत की यंत्रणा चालतच नाही. म्हणून दोन्ही साधे मार्ग एकाच वेळी बंद आहेत, वेगळ्या कारणांनी. तो कसा पार केला जातो. अडचण ही की वलय हल्ल्यासाठी फार इलेक्ट्रॉन-समृद्ध आहे, म्हणून उपाय ते पिळून काढणे. हॅलोजनच्या ऑर्थो आणि पॅरा जागी तीव्र इलेक्ट्रॉन-ओढक गट — नायट्रो गट प्रमाणित निवड — ठेवा. या नेमक्या त्या जागा जिथे नाभिकरागीने हल्ला केल्यावर बनलेल्या मध्यवर्तीत ऋण प्रभार साठतो, म्हणून ओढक गट त्या मध्यवर्तीला स्थिर करतात आणि अडसर घटवतात. परिणाम नाट्यमय आणि संचयी आहे: क्लोरोबेंझिनला 623 K आणि 300 atm लागतात; 2,4-डायनायट्रोक्लोरोबेंझिन तप्त जलीय सोडियम कार्बोनेटशी अभिक्रिया करते; आणि 2,4,6-ट्रायनायट्रोक्लोरोबेंझिन साध्या तप्त पाण्याने जलअपघटित होते, आणि पिक्रिक आम्ल याच प्रकारे बनते. लक्षात घ्या की जागेची अट सजावट नाही — मेटा जागी नायट्रो गट फार कमी मदत करतो, कारण मध्यवर्तीत ऋण प्रभार तिथे कधी येतच नाही. यातून सोबत न्यायच्या दोन सवयी. पहिली, जेव्हा एखादी अभिक्रिया अपयशी ठरते, तेव्हा विचारा की ती कोणत्या पायरीवर अपयशी ठरते; इथे उत्तर हे की उपलब्ध दोन्हींपैकी कोणतीही यंत्रणा चालूच शकत नाही, आणि वेगळ्या कारणांनी. दुसरी, प्रतिस्थापीचा असा परिणाम जो केवळ तीव्रतेवर नव्हे तर जागेवर अवलंबून असेल, तो मध्यवर्तीबद्दलचा पुरावा आहे, आणि प्रतिस्थापीला कुठे बसावे लागते तिथून उलटा युक्तिवाद करणे हा यंत्रणा प्रस्थापित करण्याच्या प्रमाणित मार्गांपैकी एक आहे. (दुसरा पर्याय अशी त्रिमित उपपत्ती देतो जिला सपाट वलय आधार देत नाही आणि जिला लहान नाभिकरागी हरवेल; तिसरा मोजलेली बंध लांबी उलटवतो; चौथा इलेक्ट्रॉनरागी सुगंधी प्रतिस्थापन नाकारतो, जे बेंझिनचे अख्खे रसायन आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many structural isomers are there of C₄H₉Br?",
+      "choices": [
+        "4",
+        "3",
+        "5",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "The four-carbon skeleton can be a straight chain or branched, and the bromine can go in two distinct places on each: 2 × 2 = 4 isomers — 1-bromobutane, 2-bromobutane, 1-bromo-2-methylpropane and 2-bromo-2-methylpropane. They span primary, secondary and tertiary, which is why this one formula can illustrate the whole substitution story. (2 counts only the skeletons.)",
+      "checkExpr": "2*2",
+      "translations": {
+        "hi": {
+          "stem": "C₄H₉Br के कितने संरचनात्मक समावयव हैं?",
+          "choices": [
+            "4",
+            "3",
+            "5",
+            "2"
+          ],
+          "solution": "चार कार्बन का ढाँचा सीधी शृंखला या शाखित हो सकता है, और ब्रोमीन हर एक पर दो भिन्न जगहों पर जा सकता है: 2 × 2 = 4 समावयव — 1-ब्रोमोब्यूटेन, 2-ब्रोमोब्यूटेन, 1-ब्रोमो-2-मेथिलप्रोपेन और 2-ब्रोमो-2-मेथिलप्रोपेन। वे प्राथमिक, द्वितीयक और तृतीयक तक फैले हैं, इसीलिए यह एक ही सूत्र प्रतिस्थापन की पूरी कहानी दिखा सकता है। (2 केवल ढाँचे गिनता है।)"
+        },
+        "mr": {
+          "stem": "C₄H₉Br चे किती संरचनात्मक समघटक आहेत?",
+          "choices": [
+            "4",
+            "3",
+            "5",
+            "2"
+          ],
+          "solution": "चार कार्बनचा सांगाडा सरळ साखळी वा फांदीदार असू शकतो, आणि ब्रोमीन प्रत्येकावर दोन वेगळ्या जागी जाऊ शकते: 2 × 2 = 4 समघटक — 1-ब्रोमोब्युटेन, 2-ब्रोमोब्युटेन, 1-ब्रोमो-2-मिथिलप्रोपेन आणि 2-ब्रोमो-2-मिथिलप्रोपेन. ते प्राथमिक, द्वितीयक आणि तृतीयकपर्यंत पसरलेले आहेत, म्हणूनच हे एकच सूत्र प्रतिस्थापनाची अख्खी कहाणी दाखवू शकते. (2 केवळ सांगाडे मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Bond enthalpies are 452 kJ/mol for C–F and 234 kJ/mol for C–I. By how much, in kJ/mol, is the C–F bond stronger?",
+      "choices": [
+        "686",
+        "101",
+        "118",
+        "218"
+      ],
+      "answerIndex": 3,
+      "solution": "452 − 234 = 218 kJ/mol, which is nearly double. This is why the reactivity of the haloalkanes runs iodide > bromide > chloride > fluoride, in exactly the reverse of what bond polarity alone would suggest — fluorine makes the most polar bond and the least reactive compound, because in substitution the bond has to break and C–F is far the hardest to break. (686 adds the two.)",
+      "checkExpr": "452-234",
+      "translations": {
+        "hi": {
+          "stem": "बंध एन्थैल्पी C–F के लिए 452 kJ/mol और C–I के लिए 234 kJ/mol है। C–F बंध कितना, kJ/mol में, अधिक प्रबल है?",
+          "choices": [
+            "686",
+            "101",
+            "118",
+            "218"
+          ],
+          "solution": "452 − 234 = 218 kJ/mol, जो लगभग दुगुना है। इसीलिए हैलोऐल्केनों की क्रियाशीलता आयोडाइड > ब्रोमाइड > क्लोराइड > फ़्लुओराइड चलती है, ठीक उलटी उससे जो अकेली बंध ध्रुवता सुझाती — फ़्लुओरीन सबसे ध्रुवीय बंध और सबसे कम क्रियाशील यौगिक बनाता है, क्योंकि प्रतिस्थापन में बंध को टूटना पड़ता है और C–F तोड़ना कहीं सबसे कठिन है। (686 दोनों जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "बंध एन्थॅल्पी C–F साठी 452 kJ/mol आणि C–I साठी 234 kJ/mol आहे. C–F बंध किती, kJ/mol ने, अधिक तीव्र आहे?",
+          "choices": [
+            "686",
+            "101",
+            "118",
+            "218"
+          ],
+          "solution": "452 − 234 = 218 kJ/mol, जे जवळपास दुप्पट आहे. म्हणूनच हॅलोअल्केनांची क्रियाशीलता आयोडाइड > ब्रोमाइड > क्लोराइड > फ्लोराइड चालते, नेमकी उलट त्याहून जी एकटी बंध ध्रुवता सुचवेल — फ्लोरिन सर्वांत ध्रुवीय बंध आणि सर्वांत कमी क्रियाशील संयुग बनवते, कारण प्रतिस्थापनात बंध तुटावाच लागतो आणि C–F तोडणे कितीतरी सर्वांत कठीण आहे. (686 दोन्ही जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "An SN2 reaction is first order in the halide and first order in the nucleophile. What is its overall order?",
+      "choices": [
+        "0",
+        "3",
+        "2",
+        "1"
+      ],
+      "answerIndex": 2,
+      "solution": "1 + 1 = 2, which is where the '2' in SN2 comes from — it records the molecularity of the single step, in which both species must meet. The name is therefore a statement about mechanism and not merely a label: SN1 is named for a rate-determining step involving one molecule, and the numbers are experimental findings rather than conventions. (1 gives the SN1 order.)",
+      "checkExpr": "1+1",
+      "translations": {
+        "hi": {
+          "stem": "कोई SN2 अभिक्रिया हैलाइड में प्रथम कोटि और नाभिकरागी में प्रथम कोटि की है। उसकी समग्र कोटि क्या है?",
+          "choices": [
+            "0",
+            "3",
+            "2",
+            "1"
+          ],
+          "solution": "1 + 1 = 2, और SN2 का '2' यहीं से आता है — वह उस अकेले चरण की आणविकता दर्ज करता है जिसमें दोनों स्पीशीज़ को मिलना ही पड़ता है। अतः नाम क्रियाविधि के बारे में कथन है, केवल लेबल नहीं: SN1 का नाम ऐसे वेग-निर्धारक चरण पर है जिसमें एक अणु शामिल है, और संख्याएँ परिपाटियाँ नहीं बल्कि प्रायोगिक निष्कर्ष हैं। (1 SN1 वाली कोटि देता है।)"
+        },
+        "mr": {
+          "stem": "एक SN2 अभिक्रिया हॅलाइडमध्ये प्रथम कोटी आणि नाभिकरागीत प्रथम कोटीची आहे. तिची एकूण कोटी किती?",
+          "choices": [
+            "0",
+            "3",
+            "2",
+            "1"
+          ],
+          "solution": "1 + 1 = 2, आणि SN2 मधला '2' इथूनच येतो — तो त्या एकाच पायरीची रेणुकता नोंदवतो ज्यात दोन्ही जातींना भेटावेच लागते. म्हणून नाव हे यंत्रणेबद्दलचे विधान आहे, केवळ लेबल नव्हे: SN1 चे नाव अशा वेग-निर्धारक पायरीवर आहे ज्यात एक रेणू सामील आहे, आणि संख्या संकेत नसून प्रायोगिक निष्कर्ष आहेत. (1 SN1 ची कोटी देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "In an SN2 reaction, both the halide and the nucleophile concentrations are doubled. By what factor does the rate rise?",
+      "choices": [
+        "1",
+        "2",
+        "4",
+        "8"
+      ],
+      "answerIndex": 2,
+      "solution": "Rate = k[halide][nucleophile], so doubling both multiplies the rate by 2 × 2 = 4. Running exactly this experiment is how the two mechanisms are told apart: an SN1 reaction under the same treatment would speed up by only 2, because the nucleophile does not appear in its rate law at all. (2 doubles only once, which is the SN1 answer.)",
+      "checkExpr": "2*2",
+      "translations": {
+        "hi": {
+          "stem": "किसी SN2 अभिक्रिया में हैलाइड और नाभिकरागी दोनों की सांद्रताएँ दुगुनी कर दी जाती हैं। वेग कितने गुणक से बढ़ता है?",
+          "choices": [
+            "1",
+            "2",
+            "4",
+            "8"
+          ],
+          "solution": "वेग = k[हैलाइड][नाभिकरागी], अतः दोनों दुगुने करने पर वेग 2 × 2 = 4 गुना हो जाता है। ठीक यही प्रयोग चलाकर दोनों क्रियाविधियाँ पहचानी जाती हैं: उसी उपचार में SN1 अभिक्रिया केवल 2 गुना तेज़ होती, क्योंकि उसके वेग नियम में नाभिकरागी है ही नहीं। (2 केवल एक बार दुगुना करता है, जो SN1 वाला उत्तर है।)"
+        },
+        "mr": {
+          "stem": "एका SN2 अभिक्रियेत हॅलाइड आणि नाभिकरागी दोघांच्या संहती दुप्पट केल्या जातात. वेग किती पटीने वाढतो?",
+          "choices": [
+            "1",
+            "2",
+            "4",
+            "8"
+          ],
+          "solution": "वेग = k[हॅलाइड][नाभिकरागी], म्हणून दोन्ही दुप्पट केल्यास वेग 2 × 2 = 4 पट होतो. नेमका हाच प्रयोग चालवून दोन्ही यंत्रणा ओळखल्या जातात: त्याच उपचारात SN1 अभिक्रिया केवळ 2 पट वेगवान होईल, कारण तिच्या वेग नियमात नाभिकरागी आहेच नाही. (2 केवळ एकदा दुप्पट करते, जे SN1 चे उत्तर आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "In an SN1 reaction the concentration of the nucleophile is doubled with the halide unchanged. By what factor does the rate rise?",
+      "choices": [
+        "0.5",
+        "2",
+        "1",
+        "4"
+      ],
+      "answerIndex": 2,
+      "solution": "The rate is unchanged — a factor of 2/2 = 1 — because the nucleophile takes no part in the slow first step, which is simply the halide falling apart to give a carbocation. A species absent from the rate-determining step cannot appear in the rate law however much of it is added. This is the single most useful diagnostic in the chapter: add more nucleophile and watch whether anything happens. (2 assumes the nucleophile matters, which is the SN2 case.)",
+      "checkExpr": "2/2",
+      "translations": {
+        "hi": {
+          "stem": "किसी SN1 अभिक्रिया में हैलाइड वही रखते हुए नाभिकरागी की सांद्रता दुगुनी कर दी जाती है। वेग कितने गुणक से बढ़ता है?",
+          "choices": [
+            "0.5",
+            "2",
+            "1",
+            "4"
+          ],
+          "solution": "वेग अपरिवर्तित रहता है — 2/2 = 1 का गुणक — क्योंकि नाभिकरागी धीमे पहले चरण में भाग नहीं लेता, जो बस हैलाइड का बिखरकर कार्बोकैटायन देना है। जो स्पीशीज़ वेग-निर्धारक चरण में अनुपस्थित हो वह वेग नियम में नहीं आ सकती, चाहे उसे कितना भी डाला जाए। यह अध्याय की सबसे काम की एकल जाँच है: और नाभिकरागी डालो और देखो कि कुछ होता है या नहीं। (2 मान लेता है कि नाभिकरागी मायने रखता है, जो SN2 वाली स्थिति है।)"
+        },
+        "mr": {
+          "stem": "एका SN1 अभिक्रियेत हॅलाइड तसेच ठेवून नाभिकरागीची संहती दुप्पट केली जाते. वेग किती पटीने वाढतो?",
+          "choices": [
+            "0.5",
+            "2",
+            "1",
+            "4"
+          ],
+          "solution": "वेग अपरिवर्तित राहतो — 2/2 = 1 चा गुणक — कारण नाभिकरागी सावकाश पहिल्या पायरीत भाग घेत नाही, जी फक्त हॅलाइडचे विखुरून कार्बोकॅटायन देणे आहे. जी जाती वेग-निर्धारक पायरीत अनुपस्थित असेल ती वेग नियमात येऊ शकत नाही, तिला कितीही घातले तरी. ही प्रकरणातली सर्वांत उपयुक्त एकेरी चाचणी आहे: आणखी नाभिकरागी घाला आणि पाहा की काही घडते का. (2 गृहीत धरते की नाभिकरागी महत्त्वाचा आहे, जी SN2 ची स्थिती आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A single enantiomer of a chiral halide reacts by a pure SN2 route. What percentage of the product has the inverted configuration?",
+      "choices": [
+        "100",
+        "25",
+        "0",
+        "50"
+      ],
+      "answerIndex": 0,
+      "solution": "All of it — 50 × 2 = 100 per cent — because the nucleophile can only attack from the face opposite the leaving group, so every molecule that reacts is turned inside out. There is no route by which a product of retained configuration can arise in a pure SN2 reaction. This makes the stereochemistry a decisive test: a single inverted product proves one step, and anything less than complete inversion says some SN1 was running alongside. (50 gives the racemic result that a pure SN1 route would produce.)",
+      "checkExpr": "50*2",
+      "translations": {
+        "hi": {
+          "stem": "किसी काइरल हैलाइड का एकल प्रतिबिंब रूप विशुद्ध SN2 रास्ते से अभिक्रिया करता है। उत्पाद का कितना प्रतिशत प्रतिलोमित विन्यास का है?",
+          "choices": [
+            "100",
+            "25",
+            "0",
+            "50"
+          ],
+          "solution": "पूरा — 50 × 2 = 100 प्रतिशत — क्योंकि नाभिकरागी केवल प्रस्थायी समूह के विपरीत फलक से हमला कर सकता है, अतः जो भी अणु अभिक्रिया करता है वह उलट जाता है। विशुद्ध SN2 अभिक्रिया में ऐसा कोई रास्ता नहीं जिससे धारित विन्यास का उत्पाद बन सके। इससे त्रिविम रसायन निर्णायक परीक्षण बन जाता है: अकेला प्रतिलोमित उत्पाद एक चरण सिद्ध करता है, और पूर्ण प्रतिलोमन से कम कुछ भी कहता है कि साथ-साथ कुछ SN1 भी चल रहा था। (50 वह रेसीमी परिणाम देता है जो विशुद्ध SN1 रास्ता देता।)"
+        },
+        "mr": {
+          "stem": "एका कायरल हॅलाइडचे एकेरी प्रतिबिंब रूप शुद्ध SN2 मार्गाने अभिक्रिया करते. उत्पादनाचा किती टक्के प्रतिलोमित मांडणीचा आहे?",
+          "choices": [
+            "100",
+            "25",
+            "0",
+            "50"
+          ],
+          "solution": "अख्खे — 50 × 2 = 100 टक्के — कारण नाभिकरागी केवळ निघणाऱ्या गटाच्या विरुद्ध पृष्ठभागाकडून हल्ला करू शकतो, म्हणून जो रेणू अभिक्रिया करतो तो उलटतोच. शुद्ध SN2 अभिक्रियेत असा कोणताही मार्ग नाही ज्याने टिकलेल्या मांडणीचे उत्पादन बनू शकेल. यामुळे त्रिमित रसायन निर्णायक चाचणी बनते: एकच प्रतिलोमित उत्पादन एक पायरी सिद्ध करते, आणि पूर्ण प्रतिलोमनाहून कमी काहीही सांगते की सोबत काही SN1 ही चालत होते. (50 तो रेसिमी निकाल देते जो शुद्ध SN1 मार्ग देईल.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A pure SN1 reaction proceeds through a flat carbocation and gives a racemic mixture. What percentage of the product is each enantiomer?",
+      "choices": [
+        "100",
+        "50",
+        "0",
+        "25"
+      ],
+      "answerIndex": 1,
+      "solution": "100/2 = 50 per cent of each, because the carbocation is planar and the nucleophile is equally likely to arrive at either face. The mixture is optically inactive: the two enantiomers rotate polarised light by equal amounts in opposite directions and cancel. Note what has been lost — the starting material was a single enantiomer and the product is not, so an SN1 reaction destroys stereochemical information that an SN2 reaction preserves and inverts. (100 assumes a single product.)",
+      "checkExpr": "100/2",
+      "translations": {
+        "hi": {
+          "stem": "विशुद्ध SN1 अभिक्रिया चपटे कार्बोकैटायन से होकर चलती है और रेसीमी मिश्रण देती है। उत्पाद का कितना प्रतिशत हर प्रतिबिंब रूप है?",
+          "choices": [
+            "100",
+            "50",
+            "0",
+            "25"
+          ],
+          "solution": "हर एक का 100/2 = 50 प्रतिशत, क्योंकि कार्बोकैटायन समतलीय है और नाभिकरागी के किसी भी फलक पर पहुँचने की संभावना बराबर है। मिश्रण प्रकाशिक रूप से निष्क्रिय है: दोनों प्रतिबिंब रूप ध्रुवित प्रकाश को बराबर मात्रा में उलटी दिशाओं में घुमाते हैं और कट जाते हैं। ध्यान दो कि क्या खोया — आरंभिक पदार्थ एकल प्रतिबिंब रूप था और उत्पाद नहीं है, अतः SN1 अभिक्रिया वह त्रिविम सूचना नष्ट कर देती है जिसे SN2 अभिक्रिया बचाती और उलटती है। (100 अकेला उत्पाद मान लेता है।)"
+        },
+        "mr": {
+          "stem": "शुद्ध SN1 अभिक्रिया सपाट कार्बोकॅटायनमधून चालते आणि रेसिमी मिश्रण देते. उत्पादनाचा किती टक्के प्रत्येक प्रतिबिंब रूप आहे?",
+          "choices": [
+            "100",
+            "50",
+            "0",
+            "25"
+          ],
+          "solution": "प्रत्येकाचे 100/2 = 50 टक्के, कारण कार्बोकॅटायन प्रतलीय आहे आणि नाभिकरागीची कोणत्याही पृष्ठभागावर पोहोचण्याची शक्यता समान आहे. मिश्रण प्रकाशीयदृष्ट्या निष्क्रिय आहे: दोन्ही प्रतिबिंब रूपे ध्रुवित प्रकाश समान प्रमाणात उलट दिशांनी फिरवतात आणि कापले जातात. काय गमावले ते लक्षात घ्या — प्रारंभिक पदार्थ एकेरी प्रतिबिंब रूप होता आणि उत्पादन नाही, म्हणून SN1 अभिक्रिया ती त्रिमित माहिती नष्ट करते जी SN2 अभिक्रिया टिकवते आणि उलटवते. (100 एकच उत्पादन गृहीत धरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Three moles of 1,2-dibromoethane are completely hydrolysed and the solution treated with excess silver nitrate. How many moles of silver bromide precipitate?",
+      "choices": [
+        "12",
+        "6",
+        "2",
+        "3"
+      ],
+      "answerIndex": 1,
+      "solution": "Each molecule carries two bromines, so three moles release 3 × 2 = 6 moles of bromide, and all of it precipitates as AgBr. The step that is easy to skip is the 'di' in the name: a formula's subscripts have to be read before any stoichiometry is done. Note also that the halide must be hydrolysed first — silver nitrate added to the haloalkane itself would precipitate nothing, because the bromine is covalently bound and not free as an ion. (3 counts the molecules rather than the halogens.)",
+      "checkExpr": "3*2",
+      "translations": {
+        "hi": {
+          "stem": "1,2-डाइब्रोमोएथेन के तीन मोल पूरी तरह जल-अपघटित किए जाते हैं और विलयन में अधिक मात्रा में सिल्वर नाइट्रेट डाला जाता है। सिल्वर ब्रोमाइड के कितने मोल अवक्षेपित होते हैं?",
+          "choices": [
+            "12",
+            "6",
+            "2",
+            "3"
+          ],
+          "solution": "हर अणु दो ब्रोमीन ढोता है, अतः तीन मोल 3 × 2 = 6 मोल ब्रोमाइड छोड़ते हैं, और वह सब AgBr बनकर अवक्षेपित होता है। जो चरण छोड़ना आसान है वह नाम का 'डाइ' है: कोई भी रससमीकरणमिति करने से पहले सूत्र के अधोलेख पढ़ने ही पड़ते हैं। यह भी ध्यान दो कि हैलाइड को पहले जल-अपघटित करना पड़ता है — स्वयं हैलोऐल्केन में सिल्वर नाइट्रेट डालने से कुछ भी अवक्षेपित नहीं होता, क्योंकि ब्रोमीन सहसंयोजक रूप से बँधा है, आयन के रूप में मुक्त नहीं। (3 हैलोजनों के बजाय अणु गिनता है।)"
+        },
+        "mr": {
+          "stem": "1,2-डायब्रोमोइथेनचे तीन मोल पूर्णपणे जलअपघटित केले जातात आणि द्रावणात जास्त प्रमाणात सिल्व्हर नायट्रेट टाकले जाते. सिल्व्हर ब्रोमाइडचे किती मोल अवक्षेपित होतात?",
+          "choices": [
+            "12",
+            "6",
+            "2",
+            "3"
+          ],
+          "solution": "प्रत्येक रेणू दोन ब्रोमीन वाहतो, म्हणून तीन मोल 3 × 2 = 6 मोल ब्रोमाइड सोडतात, आणि ते सर्व AgBr बनून अवक्षेपित होते. जी पायरी गाळणे सोपे ती नावातले 'डाय': कोणतीही रासायनिक गणिते करण्याआधी सूत्राचे अधोलेख वाचावेच लागतात. हेही लक्षात घ्या की हॅलाइड आधी जलअपघटित करावे लागते — स्वतः हॅलोअल्केनात सिल्व्हर नायट्रेट घातल्याने काहीही अवक्षेपित होत नाही, कारण ब्रोमीन सहसंयुजरीत्या बांधलेले आहे, आयन म्हणून मुक्त नाही. (3 हॅलोजनांऐवजी रेणू मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "An SN1 hydrolysis is first order in the halide. What percentage of the halide remains after two half-lives?",
+      "choices": [
+        "50",
+        "12.5",
+        "75",
+        "25"
+      ],
+      "answerIndex": 3,
+      "solution": "Two half-lives leave 100/2² = 100/4 = 25 per cent. That the first-order half-life applies at all is itself a finding: it says the slow step involves the halide alone, which is exactly what the SN1 mechanism claims. So the kinetics of an SN1 reaction have the same mathematical form as radioactive decay, for a related reason — each halide molecule has a fixed probability per second of losing its leaving group, regardless of what is around it. (50 stops one half-life short.)",
+      "checkExpr": "100/4",
+      "translations": {
+        "hi": {
+          "stem": "कोई SN1 जल-अपघटन हैलाइड में प्रथम कोटि का है। दो अर्धायुओं के बाद हैलाइड का कितना प्रतिशत बचता है?",
+          "choices": [
+            "50",
+            "12.5",
+            "75",
+            "25"
+          ],
+          "solution": "दो अर्धायुएँ 100/2² = 100/4 = 25 प्रतिशत छोड़ती हैं। प्रथम कोटि की अर्धायु का लागू होना ही अपने आप में एक निष्कर्ष है: वह कहता है कि धीमे चरण में अकेला हैलाइड शामिल है, और SN1 क्रियाविधि ठीक यही दावा करती है। अतः SN1 अभिक्रिया की बलगतिकी का गणितीय रूप रेडियोऐक्टिव क्षय जैसा ही है, और कारण भी जुड़ा हुआ — हर हैलाइड अणु के प्रति सेकंड अपना प्रस्थायी समूह खोने की संभावना नियत है, चाहे उसके गिर्द कुछ भी हो। (50 एक अर्धायु पहले रुक जाता है।)"
+        },
+        "mr": {
+          "stem": "एक SN1 जलअपघटन हॅलाइडमध्ये प्रथम कोटीचे आहे. दोन अर्धायुष्यांनंतर हॅलाइडचा किती टक्के उरतो?",
+          "choices": [
+            "50",
+            "12.5",
+            "75",
+            "25"
+          ],
+          "solution": "दोन अर्धायुष्ये 100/2² = 100/4 = 25 टक्के सोडतात. प्रथम कोटीचे अर्धायुष्य लागू होणे हेच स्वतःच एक निष्कर्ष आहे: ते सांगते की सावकाश पायरीत एकटे हॅलाइड सामील आहे, आणि SN1 यंत्रणा नेमका हाच दावा करते. म्हणून SN1 अभिक्रियेच्या गतिकीचे गणिती स्वरूप किरणोत्सर्गी क्षयासारखेच आहे, आणि कारणही जोडलेले — प्रत्येक हॅलाइड रेणूची दर सेकंदाला आपला निघणारा गट गमावण्याची शक्यता ठराविक आहे, त्याच्याभोवती काहीही असो. (50 एक अर्धायुष्य आधी थांबते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The C–Cl bond is 177 pm long in chloromethane and 169 pm in chlorobenzene. What is the difference, in pm?",
+      "choices": [
+        "346",
+        "0",
+        "16",
+        "8"
+      ],
+      "answerIndex": 3,
+      "solution": "177 − 169 = 8 pm. The number is small and what it records is not. A bond that is shorter is stronger, and this one has been shortened by resonance: the chlorine's lone pair delocalises into the ring, giving the C–Cl bond partial double-bond character. That is one of the three reasons chlorobenzene resists nucleophilic substitution — the others being that the carbon is sp² and therefore holds its electrons more tightly, and that the ring's π cloud repels an incoming nucleophile while offering no SN1 escape, since an aryl cation cannot be stabilised by delocalisation at all. The difference in conditions is stark: chloroethane hydrolyses in warm aqueous alkali within minutes, chlorobenzene needs 623 K and 300 atmospheres. Eight picometres is a small measurement standing in for a very large chemical fact. (346 adds the two lengths; 0 rounds the difference away.)",
+      "checkExpr": "177-169",
+      "translations": {
+        "hi": {
+          "stem": "C–Cl बंध क्लोरोमेथेन में 177 pm लंबा है और क्लोरोबेंज़ीन में 169 pm. अंतर, pm में, क्या है?",
+          "choices": [
+            "346",
+            "0",
+            "16",
+            "8"
+          ],
+          "solution": "177 − 169 = 8 pm. संख्या छोटी है और वह जो दर्ज करती है वह नहीं। जो बंध छोटा है वह प्रबल है, और यह अनुनाद से छोटा किया गया है: क्लोरीन का एकाकी युग्म वलय में विस्थानीकृत हो जाता है, जिससे C–Cl बंध को आंशिक द्विबंध लक्षण मिलता है। क्लोरोबेंज़ीन के नाभिकरागी प्रतिस्थापन का प्रतिरोध करने के तीन कारणों में से यह एक है — बाक़ी यह कि कार्बन sp² है और इसलिए अपने इलेक्ट्रॉन अधिक कसकर पकड़ता है, और यह कि वलय का π बादल आते नाभिकरागी को प्रतिकर्षित करता है और कोई SN1 बचाव भी नहीं देता, क्योंकि ऐरिल धनायन विस्थानीकरण से बिलकुल स्थायी नहीं हो सकता। परिस्थितियों का अंतर तीखा है: क्लोरोएथेन गर्म जलीय क्षार में मिनटों में जल-अपघटित होता है, क्लोरोबेंज़ीन को 623 K और 300 वायुमंडल चाहिए। आठ पिकोमीटर बहुत बड़े रासायनिक तथ्य के लिए खड़ा छोटा माप है। (346 दोनों लंबाइयाँ जोड़ देता है; 0 अंतर को गोल करके उड़ा देता है।)"
+        },
+        "mr": {
+          "stem": "C–Cl बंध क्लोरोमिथेनमध्ये 177 pm लांब आहे आणि क्लोरोबेंझिनमध्ये 169 pm. फरक, pm मध्ये, किती?",
+          "choices": [
+            "346",
+            "0",
+            "16",
+            "8"
+          ],
+          "solution": "177 − 169 = 8 pm. संख्या लहान आहे आणि ती जे नोंदवते ते नाही. जो बंध लहान आहे तो तीव्र आहे, आणि हा अनुनादाने लहान केला गेला आहे: क्लोरीनची एकाकी जोडी वलयात विस्थानित होते, ज्याने C–Cl बंधाला अंशतः द्विबंध लक्षण मिळते. क्लोरोबेंझिन नाभिकरागी प्रतिस्थापनाला विरोध करण्याच्या तीन कारणांपैकी हे एक — बाकीची अशी की कार्बन sp² आहे आणि म्हणून आपले इलेक्ट्रॉन अधिक घट्ट धरतो, आणि अशी की वलयाचे π ढग येणाऱ्या नाभिकरागीला प्रतिकर्षित करते आणि कोणताही SN1 सुटकेचा मार्गही देत नाही, कारण अरिल धनायन विस्थानीकरणाने मुळीच स्थिर होऊ शकत नाही. परिस्थितींचा फरक ठळक आहे: क्लोरोइथेन तप्त जलीय क्षारात मिनिटांत जलअपघटित होते, क्लोरोबेंझिनला 623 K आणि 300 वातावरणे लागतात. आठ पिकोमीटर हे फार मोठ्या रासायनिक सत्यासाठी उभे असलेले लहान माप आहे. (346 दोन्ही लांबी जोडते; 0 फरक गोल करून उडवते.)"
+        }
+      }
+    }
+  ]
+}

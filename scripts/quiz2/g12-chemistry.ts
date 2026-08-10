@@ -1425,6 +1425,703 @@ export const G12_CHEMISTRY: Chapter[] = [
     ],
   },
   /*C3*/
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 5 — Coordination Compounds                                      */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "chemistry-12-coordination-compounds",
+    subject: "CHEMISTRY",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 5 — Coordination Compounds",
+      hi: "अध्याय 5 — उपसहसंयोजन यौगिक",
+      mr: "प्रकरण 5 — उपसहसंयोजन संयुगे",
+    },
+    name: {
+      en: "Coordination Compounds",
+      hi: "उपसहसंयोजन यौगिक",
+      mr: "उपसहसंयोजन संयुगे",
+    },
+    summary: {
+      en: "Compounds in which a metal ion has already used up its ordinary valency and goes on bonding anyway, because a lone pair is being offered and an empty orbital is available to take it; a count of how many such donors are attached, which is a property of the metal and its size rather than of its charge; a ligand that grips with two hands or six instead of one and binds far more tightly for a reason that is about counting particles rather than about bond strength; a splitting of the d orbitals by the surrounding donors whose size decides both the colour and the magnetism; a series that ranks ligands by how large a splitting they cause, from water at the weak end to cyanide at the strong; and two possible arrangements of the same electrons in the same ion, chosen not by the metal but by whichever ligands happen to be around it.",
+      hi: "ऐसे यौगिक जिनमें धातु आयन अपनी साधारण संयोजकता पहले ही ख़र्च कर चुका है और फिर भी बंध बनाता रहता है, क्योंकि एक एकाकी युग्म पेश किया जा रहा है और उसे लेने को ख़ाली कक्षक उपलब्ध है; ऐसे कितने दाता जुड़े हैं इसकी गिनती, जो धातु और उसके आकार का गुण है, उसके आवेश का नहीं; ऐसा लिगैंड जो एक के बजाय दो हाथों या छह से पकड़ता है और कहीं अधिक कसकर बँधता है, और कारण बंध की प्रबलता का नहीं बल्कि कण गिनने का है; आसपास के दाताओं द्वारा d कक्षकों का विपाटन जिसका आकार रंग और चुंबकत्व दोनों तय करता है; ऐसी श्रेणी जो लिगैंडों को इससे क्रमित करती है कि वे कितना बड़ा विपाटन करते हैं, कमज़ोर सिरे के पानी से प्रबल के सायनाइड तक; और उन्हीं इलेक्ट्रॉनों की उसी आयन में दो संभव व्यवस्थाएँ, जिन्हें धातु नहीं बल्कि उसके गिर्द जो लिगैंड हों वे चुनते हैं।",
+      mr: "अशी संयुगे ज्यांत धातू आयन आपली साधी संयुजा आधीच खर्चून बसला आहे आणि तरीही बंध बनवत राहतो, कारण एक एकाकी जोडी पुढे केली जात आहे आणि ती घ्यायला रिकामे कक्षक उपलब्ध आहे; असे किती दाते जोडलेले आहेत याची मोजणी, जी धातू आणि त्याच्या आकाराचा गुणधर्म आहे, त्याच्या प्रभाराचा नव्हे; असे लिगँड जे एकाऐवजी दोन हातांनी वा सहाने पकडते आणि कितीतरी घट्ट बांधले जाते, आणि कारण बंधाच्या तीव्रतेचे नसून कण मोजण्याचे आहे; भोवतीच्या दात्यांकडून d कक्षकांचे विभाजन ज्याचा आकार रंग आणि चुंबकत्व दोन्ही ठरवतो; अशी श्रेणी जी लिगँडांना ते किती मोठे विभाजन करतात यावरून क्रमबद्ध करते, क्षीण टोकाच्या पाण्यापासून तीव्रच्या सायनाइडपर्यंत; आणि त्याच इलेक्ट्रॉनांच्या त्याच आयनातील दोन शक्य मांडण्या, ज्या धातू नव्हे तर त्याच्याभोवती जे लिगँड असतील ते निवडतात.",
+    },
+    position: 5,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "ligand-and-coordination-number",
+        name: {
+          en: "The ligand and the coordination number",
+          hi: "लिगैंड और उपसहसंयोजन संख्या",
+          mr: "लिगँड आणि उपसहसंयोजन संख्या",
+        },
+        kind: "structural feature",
+        prompt: {
+          en: "A species that donates a lone pair into an empty metal orbital, and a count of how many such donor atoms are directly attached to the central ion — a count that stays the same whether the ion is +2 or +3. What pair of ideas is this?",
+          hi: "ऐसी स्पीशीज़ जो ख़ाली धातु कक्षक में एकाकी युग्म देती है, और यह गिनती कि ऐसे कितने दाता परमाणु केंद्रीय आयन से सीधे जुड़े हैं — ऐसी गिनती जो आयन +2 हो या +3, वही रहती है। यह किन दो विचारों का युग्म है?",
+          mr: "अशी जाती जी रिकाम्या धातू कक्षकात एकाकी जोडी देते, आणि ही मोजणी की असे किती दाता अणू मध्यवर्ती आयनाशी थेट जोडलेले आहेत — अशी मोजणी जी आयन +2 असो वा +3, तीच राहते. ही कोणत्या दोन कल्पनांची जोडी?",
+        },
+        statement: {
+          en: "A ligand is a species donating a lone pair to a metal ion, and the coordination number is the number of donor atoms bonded directly to that ion, most commonly six or four.",
+          hi: "लिगैंड वह स्पीशीज़ है जो धातु आयन को एकाकी युग्म देती है, और उपसहसंयोजन संख्या उस आयन से सीधे बँधे दाता परमाणुओं की संख्या है, जो प्रायः छह या चार होती है।",
+          mr: "लिगँड म्हणजे धातू आयनाला एकाकी जोडी देणारी जाती, आणि उपसहसंयोजन संख्या म्हणजे त्या आयनाशी थेट बांधलेल्या दाता अणूंची संख्या, जी बहुधा सहा वा चार असते.",
+        },
+        detail: {
+          en: "It is not the same as the oxidation state and the two are often confused: in [Co(NH₃)₆]³⁺ the cobalt has oxidation state +3 and coordination number 6, and the two numbers are answering different questions.",
+          hi: "यह ऑक्सीकरण अवस्था जैसी नहीं है और दोनों प्रायः गड्डमड्ड होते हैं: [Co(NH₃)₆]³⁺ में कोबाल्ट की ऑक्सीकरण अवस्था +3 और उपसहसंयोजन संख्या 6 है, और दोनों संख्याएँ भिन्न प्रश्नों का उत्तर दे रही हैं।",
+          mr: "ही उपचयन अवस्थेसारखी नाही आणि दोन्ही बहुधा गोंधळल्या जातात: [Co(NH₃)₆]³⁺ मध्ये कोबाल्टची उपचयन अवस्था +3 आणि उपसहसंयोजन संख्या 6 आहे, आणि दोन्ही संख्या वेगळ्या प्रश्नांची उत्तरे देत आहेत.",
+        },
+        extra: {
+          en: "It is decided largely by how many donors fit around the metal, so a big ion takes six and a small or bulky-ligand case takes four — which is a geometrical constraint rather than an electronic one.",
+          hi: "यह मुख्यतः इससे तय होता है कि धातु के गिर्द कितने दाता समा जाते हैं, अतः बड़ा आयन छह लेता है और छोटा या भारी-लिगैंड वाली स्थिति चार — और यह इलेक्ट्रॉनी नहीं बल्कि ज्यामितीय बाधा है।",
+          mr: "हे मुख्यतः यावरून ठरते की धातूभोवती किती दाते मावतात, म्हणून मोठा आयन सहा घेतो आणि लहान वा अवजड-लिगँड असलेली स्थिती चार — आणि ही इलेक्ट्रॉनी नसून भूमितीय अडचण आहे.",
+        },
+        pair: {
+          left: {
+            en: "Counts donors, not charges",
+            hi: "दाता गिनती है, आवेश नहीं",
+            mr: "दाते मोजते, प्रभार नाही",
+          },
+          right: {
+            en: "the ligand and the coordination number",
+            hi: "लिगैंड और उपसहसंयोजन संख्या",
+            mr: "लिगँड आणि उपसहसंयोजन संख्या",
+          },
+        },
+      },
+      {
+        id: "chelate-effect",
+        name: {
+          en: "The chelate effect",
+          hi: "कीलेट प्रभाव",
+          mr: "कीलेट परिणाम",
+        },
+        kind: "structural feature",
+        prompt: {
+          en: "One molecule that grips a metal at six points binds it far more tightly than six separate molecules gripping at one point each, although the individual bonds are much the same. What is this called?",
+          hi: "एक ऐसा अणु जो धातु को छह जगहों से पकड़े, उसे छह अलग-अलग अणुओं से कहीं अधिक कसकर बाँधता है जो एक-एक जगह पकड़ते हैं, यद्यपि अलग-अलग बंध लगभग एक जैसे हैं। इसे क्या कहते हैं?",
+          mr: "एक असा रेणू जो धातूला सहा ठिकाणी पकडतो, तो सहा वेगवेगळ्या रेणूंहून कितीतरी घट्ट बांधतो जे एकेका ठिकाणी पकडतात, जरी वेगवेगळे बंध जवळपास सारखेच असले तरी. याला काय म्हणतात?",
+        },
+        statement: {
+          en: "The chelate effect is the extra stability of a complex formed by a multidentate ligand, and it comes chiefly from the increase in entropy when one ligand displaces several.",
+          hi: "कीलेट प्रभाव बहुदंतुर लिगैंड से बने संकुल का अतिरिक्त स्थायित्व है, और वह मुख्यतः उस एन्ट्रॉपी वृद्धि से आता है जो तब होती है जब एक लिगैंड कई को विस्थापित करता है।",
+          mr: "कीलेट परिणाम म्हणजे बहुदंती लिगँडाने बनलेल्या संकुलाचे जादा स्थैर्य, आणि तो मुख्यतः त्या एन्ट्रॉपी वाढीतून येतो जी एक लिगँड अनेकांना विस्थापित करताना होते.",
+        },
+        detail: {
+          en: "The bookkeeping is the whole explanation: one ethylenediamine replacing two ammonias turns two particles into three, and a reaction that increases the number of free particles is entropically favoured.",
+          hi: "हिसाब ही पूरी व्याख्या है: एक एथिलीनडाइऐमीन दो अमोनिया की जगह लेकर दो कणों को तीन बना देता है, और जो अभिक्रिया मुक्त कणों की संख्या बढ़ाए वह एन्ट्रॉपी की दृष्टि से अनुकूल है।",
+          mr: "हिशेब हाच अख्खे स्पष्टीकरण आहे: एक एथिलिनडायअमीन दोन अमोनियांची जागा घेऊन दोन कणांचे तीन करते, आणि जी अभिक्रिया मुक्त कणांची संख्या वाढवते ती एन्ट्रॉपीच्या दृष्टीने अनुकूल आहे.",
+        },
+        extra: {
+          en: "It is why EDTA, which grips at six points at once, is used to pull lead out of a poisoned patient and to soften water — one molecule that will not let go beats six that might.",
+          hi: "इसीलिए EDTA, जो एक साथ छह जगहों से पकड़ता है, विषाक्त रोगी से सीसा निकालने और पानी को मृदु करने में काम आता है — एक अणु जो छोड़ता ही नहीं, उन छह को मात देता है जो छोड़ सकते हैं।",
+          mr: "म्हणूनच EDTA, जो एकाच वेळी सहा ठिकाणी पकडतो, विषबाधित रुग्णातून शिसे काढायला आणि पाणी मृदू करायला वापरला जातो — एक रेणू जो सोडतच नाही, तो सहांना मात देतो जे सोडू शकतात.",
+        },
+        pair: {
+          left: {
+            en: "Two particles in, three out — and that is the reason",
+            hi: "दो कण भीतर, तीन बाहर — और कारण वही है",
+            mr: "दोन कण आत, तीन बाहेर — आणि कारण तेच",
+          },
+          right: {
+            en: "the chelate effect",
+            hi: "कीलेट प्रभाव",
+            mr: "कीलेट परिणाम",
+          },
+        },
+      },
+      {
+        id: "isomerism-in-complexes",
+        name: {
+          en: "Isomerism in coordination compounds",
+          hi: "उपसहसंयोजन यौगिकों में समावयवता",
+          mr: "उपसहसंयोजन संयुगांतील समघटकता",
+        },
+        kind: "structural feature",
+        prompt: {
+          en: "Two compounds with identical formulae, one green and one violet, differ only in whether two chloride ligands sit next to each other or opposite each other around the metal. What is this phenomenon?",
+          hi: "समरूप सूत्रों वाले दो यौगिक, एक हरा और एक बैंगनी, केवल इसमें भिन्न हैं कि धातु के गिर्द दो क्लोराइड लिगैंड एक-दूसरे के बग़ल में बैठे हैं या आमने-सामने। यह कौन-सी परिघटना है?",
+          mr: "सारखी सूत्रे असलेली दोन संयुगे, एक हिरवे आणि एक जांभळे, केवळ यात वेगळी आहेत की धातूभोवती दोन क्लोराइड लिगँड एकमेकांच्या शेजारी बसले आहेत की समोरासमोर. ही कोणती घटना?",
+        },
+        statement: {
+          en: "Isomerism in coordination compounds is the existence of distinct compounds with the same formula, differing in the arrangement of ligands in space or in which ligands are inside the coordination sphere.",
+          hi: "उपसहसंयोजन यौगिकों में समावयवता एक ही सूत्र वाले भिन्न यौगिकों का होना है, जो आकाश में लिगैंडों की व्यवस्था में या इसमें भिन्न हैं कि कौन-से लिगैंड उपसहसंयोजन मंडल के भीतर हैं।",
+          mr: "उपसहसंयोजन संयुगांतील समघटकता म्हणजे एकाच सूत्राची वेगळी संयुगे असणे, जी अवकाशातील लिगँडांच्या मांडणीत वा कोणते लिगँड उपसहसंयोजन मंडलाच्या आत आहेत यात वेगळी आहेत.",
+        },
+        detail: {
+          en: "The kinds are told apart by different tests: geometrical isomers usually differ in colour and dipole moment, optical ones only in how they rotate polarised light, and ionisation isomers in what they precipitate with silver nitrate.",
+          hi: "क़िस्में भिन्न परीक्षणों से पहचानी जाती हैं: ज्यामितीय समावयव प्रायः रंग और द्विध्रुव आघूर्ण में भिन्न होते हैं, प्रकाशिक केवल इसमें कि वे ध्रुवित प्रकाश को कैसे घुमाते हैं, और आयनन समावयव इसमें कि वे सिल्वर नाइट्रेट से क्या अवक्षेपित करते हैं।",
+          mr: "प्रकार वेगवेगळ्या चाचण्यांनी ओळखले जातात: भूमितीय समघटक बहुधा रंग आणि द्विध्रुव आघूर्णात वेगळे असतात, प्रकाशीय केवळ ते ध्रुवित प्रकाश कसा फिरवतात यात, आणि आयनन समघटक ते सिल्व्हर नायट्रेटने काय अवक्षेपित करतात यात.",
+        },
+        extra: {
+          en: "It was the existence of exactly two isomers of [Co(NH₃)₄Cl₂]⁺ and no more that let Werner argue for an octahedron over the flat structures his rivals proposed, which a mere formula could never have settled.",
+          hi: "[Co(NH₃)₄Cl₂]⁺ के ठीक दो समावयवों का होना और उससे अधिक का न होना ही वह था जिससे वर्नर अपने प्रतिद्वंद्वियों की सुझाई चपटी संरचनाओं के बजाय अष्टफलक के पक्ष में तर्क दे सका, जिसे केवल सूत्र कभी नहीं निपटा सकता था।",
+          mr: "[Co(NH₃)₄Cl₂]⁺ चे नेमके दोन समघटक असणे आणि त्याहून अधिक नसणे हेच ते ज्याने व्हर्नरला आपल्या प्रतिस्पर्ध्यांनी सुचवलेल्या सपाट रचनांऐवजी अष्टफलकाच्या बाजूने युक्तिवाद करू दिला, जे केवळ सूत्र कधीच निकालात काढू शकले नसते.",
+        },
+        pair: {
+          left: {
+            en: "Same formula, one green and one violet",
+            hi: "वही सूत्र, एक हरा और एक बैंगनी",
+            mr: "तेच सूत्र, एक हिरवे आणि एक जांभळे",
+          },
+          right: {
+            en: "isomerism in coordination compounds",
+            hi: "उपसहसंयोजन यौगिकों में समावयवता",
+            mr: "उपसहसंयोजन संयुगांतील समघटकता",
+          },
+        },
+      },
+      {
+        id: "crystal-field-splitting",
+        name: {
+          en: "Crystal field splitting",
+          hi: "क्रिस्टल क्षेत्र विपाटन",
+          mr: "स्फटिक क्षेत्र विभाजन",
+        },
+        kind: "bonding and its consequences",
+        prompt: {
+          en: "Five d orbitals that were equal in energy in a free ion stop being equal once six ligands approach along the axes, because two of them point straight at the incoming lone pairs and three point between. What is this?",
+          hi: "मुक्त आयन में बराबर ऊर्जा वाले पाँच d कक्षक तब बराबर नहीं रहते जब छह लिगैंड अक्षों के अनुदिश पास आते हैं, क्योंकि उनमें से दो आते हुए एकाकी युग्मों की ओर सीधे इशारा करते हैं और तीन बीच में। यह क्या है?",
+          mr: "मुक्त आयनात समान ऊर्जेचे पाच d कक्षक तेव्हा समान राहत नाहीत जेव्हा सहा लिगँड अक्षांच्या दिशेने जवळ येतात, कारण त्यांतले दोन येणाऱ्या एकाकी जोड्यांकडे थेट दाखवतात आणि तीन मध्ये. हे काय आहे?",
+        },
+        statement: {
+          en: "Crystal field splitting is the separation of the five d orbitals into groups of different energy by the electrostatic field of the ligands, the gap being written Δ.",
+          hi: "क्रिस्टल क्षेत्र विपाटन लिगैंडों के स्थिरवैद्युत क्षेत्र द्वारा पाँच d कक्षकों का भिन्न ऊर्जा के समूहों में अलग होना है, और अंतराल Δ लिखा जाता है।",
+          mr: "स्फटिक क्षेत्र विभाजन म्हणजे लिगँडांच्या स्थिरविद्युत क्षेत्राने पाच d कक्षकांचे वेगळ्या ऊर्जेच्या गटांत विभागले जाणे, आणि फट Δ लिहिली जाते.",
+        },
+        detail: {
+          en: "The size of Δ decides the colour, because a d electron jumping across the gap absorbs a photon of exactly that energy and the solution shows the complementary colour.",
+          hi: "Δ का आकार रंग तय करता है, क्योंकि अंतराल पार करता d इलेक्ट्रॉन ठीक उतनी ऊर्जा का फ़ोटॉन सोखता है और विलयन पूरक रंग दिखाता है।",
+          mr: "Δ चा आकार रंग ठरवतो, कारण फट ओलांडणारा d इलेक्ट्रॉन नेमक्या तितक्या ऊर्जेचा फोटॉन शोषतो आणि द्रावण पूरक रंग दाखवते.",
+        },
+        extra: {
+          en: "The geometry matters as much as the ligands: an octahedral field raises two orbitals and lowers three, while a tetrahedral field does the reverse and gives a splitting less than half as large.",
+          hi: "ज्यामिति लिगैंडों जितनी ही मायने रखती है: अष्टफलकीय क्षेत्र दो कक्षक ऊपर और तीन नीचे करता है, जबकि चतुष्फलकीय क्षेत्र उलटा करता है और आधे से भी कम बड़ा विपाटन देता है।",
+          mr: "भूमिती लिगँडांइतकीच महत्त्वाची आहे: अष्टफलकी क्षेत्र दोन कक्षक वर आणि तीन खाली करते, तर चतुष्फलकी क्षेत्र उलटे करते आणि निम्म्याहूनही कमी मोठे विभाजन देते.",
+        },
+        pair: {
+          left: {
+            en: "Two orbitals pointing at the ligands, three pointing between",
+            hi: "दो कक्षक लिगैंडों की ओर, तीन बीच की ओर",
+            mr: "दोन कक्षक लिगँडांकडे, तीन मधल्या दिशेने",
+          },
+          right: {
+            en: "crystal field splitting",
+            hi: "क्रिस्टल क्षेत्र विपाटन",
+            mr: "स्फटिक क्षेत्र विभाजन",
+          },
+        },
+      },
+      {
+        id: "spectrochemical-series",
+        name: {
+          en: "The spectrochemical series",
+          hi: "स्पेक्ट्रमरासायनिक श्रेणी",
+          mr: "वर्णपटरासायनिक श्रेणी",
+        },
+        kind: "bonding and its consequences",
+        prompt: {
+          en: "An ordering that runs iodide, bromide, chloride, fluoride, water, ammonia, cyanide and carbon monoxide, and which predicts for any metal ion which ligand will produce the larger energy gap. What is it?",
+          hi: "ऐसा क्रम जो आयोडाइड, ब्रोमाइड, क्लोराइड, फ़्लुओराइड, पानी, अमोनिया, सायनाइड और कार्बन मोनोऑक्साइड चलता है, और जो किसी भी धातु आयन के लिए बता देता है कि कौन-सा लिगैंड बड़ा ऊर्जा अंतराल देगा। यह क्या है?",
+          mr: "असा क्रम जो आयोडाइड, ब्रोमाइड, क्लोराइड, फ्लोराइड, पाणी, अमोनिया, सायनाइड आणि कार्बन मोनॉक्साइड चालतो, आणि जो कोणत्याही धातू आयनासाठी सांगतो की कोणते लिगँड मोठी ऊर्जा फट देईल. हे काय आहे?",
+        },
+        statement: {
+          en: "The spectrochemical series ranks ligands by the size of the crystal field splitting they produce, from weak-field halides through water and ammonia to strong-field cyanide and carbon monoxide.",
+          hi: "स्पेक्ट्रमरासायनिक श्रेणी लिगैंडों को उनके बनाए क्रिस्टल क्षेत्र विपाटन के आकार से क्रमित करती है, दुर्बल-क्षेत्र हैलाइडों से पानी और अमोनिया होते हुए प्रबल-क्षेत्र सायनाइड तथा कार्बन मोनोऑक्साइड तक।",
+          mr: "वर्णपटरासायनिक श्रेणी लिगँडांना त्यांनी घडवलेल्या स्फटिक क्षेत्र विभाजनाच्या आकाराने क्रमबद्ध करते, दुर्बल-क्षेत्र हॅलाइडांपासून पाणी आणि अमोनियामार्गे तीव्र-क्षेत्र सायनाइड आणि कार्बन मोनॉक्साइडपर्यंत.",
+        },
+        detail: {
+          en: "The order is largely independent of the metal, which is what makes it useful: knowing where a ligand sits lets you predict the splitting for any ion without measuring that particular complex.",
+          hi: "क्रम मुख्यतः धातु से स्वतंत्र है, और यही उसे काम का बनाता है: लिगैंड कहाँ बैठा है यह जानने पर किसी भी आयन का विपाटन बताया जा सकता है, बिना उस विशेष संकुल को नापे।",
+          mr: "क्रम मुख्यतः धातूपासून स्वतंत्र आहे, आणि हेच त्याला उपयुक्त बनवते: लिगँड कुठे बसले आहे हे जाणल्यास कोणत्याही आयनाचे विभाजन सांगता येते, ते विशिष्ट संकुल न मोजता.",
+        },
+        extra: {
+          en: "It cannot be explained by charge alone: the neutral molecules ammonia and carbon monoxide split more strongly than the negatively charged halides, which is why the purely electrostatic crystal field picture had eventually to be replaced.",
+          hi: "इसे अकेले आवेश से नहीं समझाया जा सकता: उदासीन अणु अमोनिया और कार्बन मोनोऑक्साइड ऋण आवेशित हैलाइडों से अधिक प्रबलता से विपाटित करते हैं, इसीलिए विशुद्ध स्थिरवैद्युत क्रिस्टल क्षेत्र चित्र को अंततः बदलना पड़ा।",
+          mr: "हे केवळ प्रभाराने समजावता येत नाही: उदासीन रेणू अमोनिया आणि कार्बन मोनॉक्साइड ऋण प्रभारित हॅलाइडांहून अधिक तीव्रपणे विभाजित करतात, म्हणूनच शुद्ध स्थिरविद्युत स्फटिक क्षेत्र चित्र अखेर बदलावे लागले.",
+        },
+        pair: {
+          left: {
+            en: "A neutral molecule outranking a charged ion",
+            hi: "आवेशित आयन से आगे निकलता उदासीन अणु",
+            mr: "प्रभारित आयनाहून पुढे जाणारा उदासीन रेणू",
+          },
+          right: {
+            en: "the spectrochemical series",
+            hi: "स्पेक्ट्रमरासायनिक श्रेणी",
+            mr: "वर्णपटरासायनिक श्रेणी",
+          },
+        },
+      },
+      {
+        id: "high-spin-low-spin",
+        name: {
+          en: "High-spin and low-spin complexes",
+          hi: "उच्च-चक्रण और निम्न-चक्रण संकुल",
+          mr: "उच्च-परिवलन आणि निम्न-परिवलन संकुले",
+        },
+        kind: "bonding and its consequences",
+        prompt: {
+          en: "The same metal in the same oxidation state has five unpaired electrons with one ligand and only one with another, because the electrons must choose between climbing a gap and sharing an orbital. What are these two cases called?",
+          hi: "वही धातु उसी ऑक्सीकरण अवस्था में एक लिगैंड के साथ पाँच अयुग्मित इलेक्ट्रॉन रखती है और दूसरे के साथ केवल एक, क्योंकि इलेक्ट्रॉनों को अंतराल चढ़ने और कक्षक साझा करने में से चुनना पड़ता है। इन दोनों स्थितियों को क्या कहते हैं?",
+          mr: "तीच धातू त्याच उपचयन अवस्थेत एका लिगँडासोबत पाच अयुग्मित इलेक्ट्रॉन बाळगते आणि दुसऱ्यासोबत केवळ एक, कारण इलेक्ट्रॉनांना फट चढणे आणि कक्षक वाटून घेणे यांतून निवडावे लागते. या दोन स्थितींना काय म्हणतात?",
+        },
+        statement: {
+          en: "High-spin and low-spin complexes differ in whether Δ is smaller or larger than the pairing energy: a small gap leaves electrons unpaired in the upper orbitals, a large one forces them to pair in the lower ones.",
+          hi: "उच्च-चक्रण और निम्न-चक्रण संकुल इसमें भिन्न हैं कि Δ युग्मन ऊर्जा से छोटा है या बड़ा: छोटा अंतराल इलेक्ट्रॉनों को ऊपरी कक्षकों में अयुग्मित छोड़ता है, बड़ा उन्हें नीचे वालों में युग्मित होने पर मजबूर करता है।",
+          mr: "उच्च-परिवलन आणि निम्न-परिवलन संकुले यात वेगळी आहेत की Δ युग्मन ऊर्जेहून लहान आहे की मोठा: लहान फट इलेक्ट्रॉनांना वरच्या कक्षकांत अयुग्मित सोडते, मोठी त्यांना खालच्यांत युग्मित व्हायला भाग पाडते.",
+        },
+        detail: {
+          en: "The choice is made by the ligand rather than by the metal, which is the striking part: iron in the +3 state is strongly magnetic with water around it and almost non-magnetic with cyanide.",
+          hi: "चुनाव धातु नहीं बल्कि लिगैंड करता है, और यही चौंकाने वाला हिस्सा है: +3 अवस्था का लोहा पानी से घिरा हो तो प्रबल चुंबकीय और सायनाइड से घिरा हो तो लगभग अचुंबकीय।",
+          mr: "निवड धातू नव्हे तर लिगँड करते, आणि हाच चकित करणारा भाग: +3 अवस्थेतले लोखंड पाण्याने वेढलेले असल्यास तीव्र चुंबकीय आणि सायनाइडने वेढलेले असल्यास जवळपास अचुंबकीय.",
+        },
+        extra: {
+          en: "It is why a magnetic measurement is a structural tool: counting unpaired electrons tells you which side of the pairing-energy boundary a complex falls on, without any crystallography at all.",
+          hi: "इसीलिए चुंबकीय माप संरचनात्मक उपकरण है: अयुग्मित इलेक्ट्रॉन गिनना बता देता है कि संकुल युग्मन-ऊर्जा की सीमा के किस ओर पड़ता है, बिना किसी क्रिस्टलिकी के।",
+          mr: "म्हणूनच चुंबकीय माप हे संरचनात्मक साधन आहे: अयुग्मित इलेक्ट्रॉन मोजणे सांगते की संकुल युग्मन-ऊर्जेच्या सीमेच्या कोणत्या बाजूला पडते, कोणत्याही स्फटिकीविना.",
+        },
+        pair: {
+          left: {
+            en: "The ligand decides, not the metal",
+            hi: "लिगैंड तय करता है, धातु नहीं",
+            mr: "लिगँड ठरवते, धातू नाही",
+          },
+          right: {
+            en: "high-spin and low-spin complexes",
+            hi: "उच्च-चक्रण और निम्न-चक्रण संकुल",
+            mr: "उच्च-परिवलन आणि निम्न-परिवलन संकुले",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "[Fe(H₂O)₆]³⁺ has five unpaired electrons and [Fe(CN)₆]³⁻ has one. Both contain iron in the +3 state with a d⁵ configuration. Explain how the same ion can give two such different answers.",
+          hi: "[Fe(H₂O)₆]³⁺ में पाँच अयुग्मित इलेक्ट्रॉन हैं और [Fe(CN)₆]³⁻ में एक। दोनों में लोहा +3 अवस्था में d⁵ विन्यास के साथ है। समझाओ कि वही आयन दो इतने भिन्न उत्तर कैसे दे सकता है।",
+          mr: "[Fe(H₂O)₆]³⁺ मध्ये पाच अयुग्मित इलेक्ट्रॉन आहेत आणि [Fe(CN)₆]³⁻ मध्ये एक. दोन्हींत लोखंड +3 अवस्थेत d⁵ मांडणीसह आहे. तोच आयन दोन इतकी वेगळी उत्तरे कशी देऊ शकतो ते समजावा.",
+        },
+        choices: [
+          {
+            en: "The ligands split the five d orbitals into a lower group of three and an upper group of two, and the electrons face a choice: climb the gap Δ to stay unpaired, or pay the pairing energy P and share a lower orbital. Water is a weak-field ligand, so Δ < P and all five electrons spread out singly — high spin, five unpaired. Cyanide is a strong-field ligand, so Δ > P and four electrons pair up in the lower three orbitals leaving one unpaired — low spin. The metal and its oxidation state are identical; what differs is the size of the splitting the LIGAND produces",
+            hi: "लिगैंड पाँच d कक्षकों को तीन के निचले समूह और दो के ऊपरी समूह में बाँट देते हैं, और इलेक्ट्रॉनों के सामने चुनाव है: अयुग्मित रहने को अंतराल Δ चढ़ो, या युग्मन ऊर्जा P चुकाकर निचला कक्षक साझा करो। पानी दुर्बल-क्षेत्र लिगैंड है, अतः Δ < P और पाँचों इलेक्ट्रॉन अकेले-अकेले फैल जाते हैं — उच्च चक्रण, पाँच अयुग्मित। सायनाइड प्रबल-क्षेत्र लिगैंड है, अतः Δ > P और चार इलेक्ट्रॉन निचले तीन कक्षकों में युग्मित हो जाते हैं और एक अयुग्मित बचता है — निम्न चक्रण। धातु और उसकी ऑक्सीकरण अवस्था समरूप हैं; जो भिन्न है वह उस विपाटन का आकार है जो लिगैंड बनाता है",
+            mr: "लिगँड पाच d कक्षकांना तिघांच्या खालच्या गटात आणि दोघांच्या वरच्या गटात विभागतात, आणि इलेक्ट्रॉनांसमोर निवड आहे: अयुग्मित राहायला फट Δ चढा, वा युग्मन ऊर्जा P भरून खालचा कक्षक वाटून घ्या. पाणी दुर्बल-क्षेत्र लिगँड आहे, म्हणून Δ < P आणि पाचही इलेक्ट्रॉन एकेकटे पसरतात — उच्च परिवलन, पाच अयुग्मित. सायनाइड तीव्र-क्षेत्र लिगँड आहे, म्हणून Δ > P आणि चार इलेक्ट्रॉन खालच्या तीन कक्षकांत युग्मित होतात आणि एक अयुग्मित उरतो — निम्न परिवलन. धातू आणि तिची उपचयन अवस्था सारखीच आहे; जे वेगळे आहे तो लिगँड घडवत असलेल्या विभाजनाचा आकार",
+          },
+          {
+            en: "Cyanide removes four of the iron's d electrons, which is why only one remains unpaired, and water does not because it is a neutral ligand",
+            hi: "सायनाइड लोहे के चार d इलेक्ट्रॉन हटा देता है, इसीलिए केवल एक अयुग्मित बचता है, और पानी नहीं हटाता क्योंकि वह उदासीन लिगैंड है",
+            mr: "सायनाइड लोखंडाचे चार d इलेक्ट्रॉन काढून टाकते, म्हणूनच केवळ एक अयुग्मित उरतो, आणि पाणी काढत नाही कारण ते उदासीन लिगँड आहे",
+          },
+          {
+            en: "The two complexes have different geometries — one octahedral and one tetrahedral — and the difference in unpaired electrons follows from that",
+            hi: "दोनों संकुलों की ज्यामितियाँ भिन्न हैं — एक अष्टफलकीय और एक चतुष्फलकीय — और अयुग्मित इलेक्ट्रॉनों का अंतर उसी से निकलता है",
+            mr: "दोन्ही संकुलांच्या भूमिती वेगळ्या आहेत — एक अष्टफलकी आणि एक चतुष्फलकी — आणि अयुग्मित इलेक्ट्रॉनांचा फरक त्यातूनच निघतो",
+          },
+          {
+            en: "One measurement must be wrong, since a given ion in a given oxidation state has a fixed number of unpaired electrons",
+            hi: "एक माप ग़लत ही होगा, क्योंकि किसी दी गई ऑक्सीकरण अवस्था के किसी दिए आयन के अयुग्मित इलेक्ट्रॉनों की संख्या नियत होती है",
+            mr: "एक माप चूकच असले पाहिजे, कारण दिलेल्या उपचयन अवस्थेतील दिलेल्या आयनाच्या अयुग्मित इलेक्ट्रॉनांची संख्या ठराविक असते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The observation is genuinely striking and the explanation is one competition decided two different ways. START WITH THE FREE ION. An isolated Fe³⁺ has five d electrons in five d orbitals of identical energy, and Hund's rule puts one in each with parallel spins: five unpaired. Nothing chooses between the orbitals because nothing distinguishes them. NOW BRING SIX LIGANDS IN ALONG THE AXES. The d orbitals are no longer equivalent, because they point in different directions. Two of them — d(x²−y²) and d(z²) — have their lobes along the axes, pointing straight at the approaching lone pairs, and an electron in one of those is being pushed hard. The other three point BETWEEN the axes and are pushed less. So the set splits: three lower orbitals and two upper ones, separated by an energy Δ. THE COMPETITION. Put five electrons into that arrangement and there are two sensible ways to do it. Route one: put three in the lower orbitals and two in the upper, all unpaired. This costs 2Δ, because two electrons have climbed. Route two: put all five into the lower three orbitals. This needs two of them to pair up, which costs 2P, where P is the pairing energy — the electrostatic penalty for putting two electrons in one orbital. Whichever is cheaper wins. If Δ < P, climbing is cheaper and the ion goes HIGH SPIN with five unpaired electrons. If Δ > P, pairing is cheaper and it goes LOW SPIN with one unpaired. WHICH LIGAND DOES WHICH. That is what the spectrochemical series records. Water sits near the weak-field end, produces a small Δ, and gives high spin: five unpaired, and a magnetic moment of about 5.9 Bohr magnetons. Cyanide sits at the strong-field end, produces a large Δ, and gives low spin: one unpaired, about 1.7 Bohr magnetons. The magnetic measurement distinguishes them instantly, and the difference is a factor of more than three. Two things are worth carrying beyond the example. FIRST, the strange thing about the series is that it cannot be explained electrostatically. Cyanide and carbon monoxide are strong-field but one is singly charged and the other neutral, while iodide is singly charged and weak-field. If splitting were purely a matter of electrostatic repulsion the order would follow charge, and it does not. The resolution needs bonding rather than repulsion — π back-donation from filled metal orbitals into empty ligand orbitals — and that is why crystal field theory, useful as it is, was eventually superseded by ligand field theory. A theory that gets the right answer for the wrong reason is still worth teaching, provided the boundary is stated. SECOND, this is the mechanism behind a fact of biology. Haemoglobin's iron switches between high-spin and low-spin as oxygen binds and leaves, and the accompanying small change in the iron's size is what pulls on the protein chain and triggers the cooperative binding that makes haemoglobin an efficient carrier at all. (The second option invents an oxidation that would change the charge on the complex; the third asserts a geometry difference that the formulae rule out — both are six-coordinate; the fourth denies a reproducible measurement rather than examining its assumption.)",
+          hi: "प्रेक्षण सचमुच चौंकाने वाला है और व्याख्या एक ही होड़ है जो दो भिन्न ढंगों से तय होती है। मुक्त आयन से शुरू करो। अलग-थलग Fe³⁺ के पाँच d इलेक्ट्रॉन समरूप ऊर्जा के पाँच d कक्षकों में हैं, और हुंड का नियम हर एक में एक-एक समांतर चक्रण के साथ रखता है: पाँच अयुग्मित। कक्षकों में से कोई नहीं चुना जाता क्योंकि उन्हें कुछ अलग नहीं करता। अब छह लिगैंड अक्षों के अनुदिश लाओ। d कक्षक अब समतुल्य नहीं, क्योंकि वे भिन्न दिशाओं में इशारा करते हैं। उनमें से दो — d(x²−y²) और d(z²) — की पालियाँ अक्षों के अनुदिश हैं, जो आते हुए एकाकी युग्मों की ओर सीधे इशारा करती हैं, और उनमें का इलेक्ट्रॉन ज़ोर से धकेला जा रहा है। बाक़ी तीन अक्षों के बीच इशारा करते हैं और कम धकेले जाते हैं। अतः समुच्चय बँट जाता है: तीन निचले कक्षक और दो ऊपरी, जिनके बीच Δ ऊर्जा है। होड़। उस व्यवस्था में पाँच इलेक्ट्रॉन रखो और ऐसा करने के दो समझदार रास्ते हैं। पहला रास्ता: तीन निचले कक्षकों में और दो ऊपरी में रखो, सब अयुग्मित। इसकी क़ीमत 2Δ है, क्योंकि दो इलेक्ट्रॉन चढ़े। दूसरा रास्ता: पाँचों को निचले तीन कक्षकों में रखो। इसके लिए उनमें से दो को युग्मित होना पड़ता है, जिसकी क़ीमत 2P है, जहाँ P युग्मन ऊर्जा है — एक कक्षक में दो इलेक्ट्रॉन रखने का स्थिरवैद्युत दंड। जो सस्ता हो वही जीतता है। यदि Δ < P, चढ़ना सस्ता है और आयन पाँच अयुग्मित इलेक्ट्रॉनों के साथ उच्च चक्रण में जाता है। यदि Δ > P, युग्मन सस्ता है और वह एक अयुग्मित के साथ निम्न चक्रण में जाता है। कौन-सा लिगैंड क्या करता है। यही स्पेक्ट्रमरासायनिक श्रेणी दर्ज करती है। पानी दुर्बल-क्षेत्र सिरे के पास बैठा है, छोटा Δ देता है, और उच्च चक्रण देता है: पाँच अयुग्मित, और लगभग 5.9 बोर मैग्नेटॉन का चुंबकीय आघूर्ण। सायनाइड प्रबल-क्षेत्र सिरे पर बैठा है, बड़ा Δ देता है, और निम्न चक्रण देता है: एक अयुग्मित, लगभग 1.7 बोर मैग्नेटॉन। चुंबकीय माप उन्हें तुरंत अलग कर देता है, और अंतर तीन से अधिक का गुणक है। उदाहरण से आगे ले जाने योग्य दो बातें। पहली, श्रेणी की विचित्र बात यह कि उसे स्थिरवैद्युत ढंग से समझाया नहीं जा सकता। सायनाइड और कार्बन मोनोऑक्साइड प्रबल-क्षेत्र हैं पर एक एकल आवेशित और दूसरा उदासीन, जबकि आयोडाइड एकल आवेशित और दुर्बल-क्षेत्र है। यदि विपाटन विशुद्ध रूप से स्थिरवैद्युत प्रतिकर्षण का मामला होता तो क्रम आवेश का पीछा करता, और वह नहीं करता। समाधान को प्रतिकर्षण नहीं बल्कि बंधन चाहिए — भरे धातु कक्षकों से ख़ाली लिगैंड कक्षकों में π प्रति-दान — और इसीलिए क्रिस्टल क्षेत्र सिद्धांत, जितना भी काम का हो, अंततः लिगैंड क्षेत्र सिद्धांत से बदल दिया गया। जो सिद्धांत ग़लत कारण से सही उत्तर देता है वह फिर भी पढ़ाने योग्य है, बशर्ते सीमा बता दी जाए। दूसरी, यही जीवविज्ञान के एक तथ्य के पीछे की क्रियाविधि है। हीमोग्लोबिन का लोहा ऑक्सीजन के जुड़ने और छूटने पर उच्च-चक्रण और निम्न-चक्रण के बीच बदलता है, और लोहे के आकार में साथ आया छोटा परिवर्तन ही प्रोटीन शृंखला को खींचता है और वह सहकारी बंधन शुरू करता है जो हीमोग्लोबिन को कुशल वाहक बनाता ही है। (दूसरा विकल्प ऐसा उपचयन गढ़ता है जो संकुल का आवेश बदल देता; तीसरा ज्यामिति का ऐसा भेद ठहराता है जिसे सूत्र ख़ारिज करते हैं — दोनों षट्-उपसहसंयोजित हैं; चौथा किसी दोहराए जा सकने वाले माप से इनकार करता है, उसकी मान्यता जाँचने के बजाय।)",
+          mr: "निरीक्षण खरोखर चकित करणारे आहे आणि स्पष्टीकरण म्हणजे एकच स्पर्धा जी दोन वेगळ्या प्रकारे ठरते. मुक्त आयनापासून सुरुवात करा. एकाकी Fe³⁺ चे पाच d इलेक्ट्रॉन सारख्या ऊर्जेच्या पाच d कक्षकांत आहेत, आणि हुंडचा नियम प्रत्येकात एकेक समांतर परिवलनासह ठेवतो: पाच अयुग्मित. कक्षकांपैकी कोणी निवडला जात नाही कारण त्यांना काही वेगळे करत नाही. आता सहा लिगँड अक्षांच्या दिशेने आणा. d कक्षक आता समतुल्य नाहीत, कारण ते वेगळ्या दिशांनी दाखवतात. त्यांतल्या दोघांच्या — d(x²−y²) आणि d(z²) — पाकळ्या अक्षांच्या दिशेने आहेत, ज्या येणाऱ्या एकाकी जोड्यांकडे थेट दाखवतात, आणि त्यांतला इलेक्ट्रॉन जोराने ढकलला जात आहे. बाकी तीन अक्षांच्या मध्ये दाखवतात आणि कमी ढकलले जातात. म्हणून संच विभागतो: तीन खालचे कक्षक आणि दोन वरचे, ज्यांच्यात Δ ऊर्जा आहे. स्पर्धा. त्या मांडणीत पाच इलेक्ट्रॉन ठेवा आणि तसे करण्याचे दोन शहाणे मार्ग आहेत. पहिला मार्ग: तीन खालच्या कक्षकांत आणि दोन वरच्यात ठेवा, सर्व अयुग्मित. याची किंमत 2Δ आहे, कारण दोन इलेक्ट्रॉन चढले. दुसरा मार्ग: पाचही खालच्या तीन कक्षकांत ठेवा. यासाठी त्यांतल्या दोघांना युग्मित व्हावे लागते, ज्याची किंमत 2P आहे, जिथे P ही युग्मन ऊर्जा — एका कक्षकात दोन इलेक्ट्रॉन ठेवण्याचा स्थिरविद्युत दंड. जे स्वस्त असेल तेच जिंकते. जर Δ < P, चढणे स्वस्त आहे आणि आयन पाच अयुग्मित इलेक्ट्रॉनांसह उच्च परिवलनात जातो. जर Δ > P, युग्मन स्वस्त आहे आणि तो एका अयुग्मितासह निम्न परिवलनात जातो. कोणते लिगँड काय करते. हेच वर्णपटरासायनिक श्रेणी नोंदवते. पाणी दुर्बल-क्षेत्र टोकाजवळ बसले आहे, लहान Δ देते, आणि उच्च परिवलन देते: पाच अयुग्मित, आणि सुमारे 5.9 बोर मॅग्नेटॉनचे चुंबकीय आघूर्ण. सायनाइड तीव्र-क्षेत्र टोकावर बसले आहे, मोठा Δ देते, आणि निम्न परिवलन देते: एक अयुग्मित, सुमारे 1.7 बोर मॅग्नेटॉन. चुंबकीय माप त्यांना लगेच वेगळे करते, आणि फरक तिनाहून अधिकचा गुणक आहे. उदाहरणापलीकडे न्यायच्या दोन गोष्टी. पहिली, श्रेणीची विचित्र बाब ही की तिला स्थिरविद्युतरीत्या समजावता येत नाही. सायनाइड आणि कार्बन मोनॉक्साइड तीव्र-क्षेत्र आहेत पण एक एकल प्रभारित आणि दुसरा उदासीन, तर आयोडाइड एकल प्रभारित आणि दुर्बल-क्षेत्र आहे. जर विभाजन शुद्धपणे स्थिरविद्युत प्रतिकर्षणाची बाब असती तर क्रम प्रभाराचा मागोवा घेता, आणि तो घेत नाही. उपायाला प्रतिकर्षण नव्हे तर बंधन लागते — भरलेल्या धातू कक्षकांतून रिकाम्या लिगँड कक्षकांत π प्रति-दान — आणि म्हणूनच स्फटिक क्षेत्र सिद्धांत, कितीही उपयुक्त असला तरी, अखेर लिगँड क्षेत्र सिद्धांताने बदलला गेला. जो सिद्धांत चुकीच्या कारणाने बरोबर उत्तर देतो तो तरीही शिकवण्याजोगा आहे, जर सीमा सांगितली तर. दुसरी, हीच जीवशास्त्रातल्या एका सत्यामागची यंत्रणा आहे. हिमोग्लोबिनचे लोखंड ऑक्सिजन जोडताना आणि सुटताना उच्च-परिवलन आणि निम्न-परिवलन यांत बदलते, आणि लोखंडाच्या आकारातील सोबत आलेला लहान बदलच प्रथिन साखळी ओढतो आणि ते सहकारी बंधन सुरू करतो जे हिमोग्लोबिनला मुळात कार्यक्षम वाहक बनवते. (दुसरा पर्याय असे उपचयन घडवतो जे संकुलाचा प्रभार बदलेल; तिसरा भूमितीचा असा भेद ठरवतो जो सूत्रे नाकारतात — दोन्ही षट्-उपसहसंयोजित आहेत; चौथा पुनरावृत्त करता येणारे माप नाकारतो, त्याचे गृहीतक तपासण्याऐवजी.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The complex of nickel with three ethylenediamine molecules is about ten million times more stable than the one with six ammonias, although the nickel–nitrogen bonds are almost identical in both. Explain, and say why EDTA is given to a patient with lead poisoning.",
+          hi: "तीन एथिलीनडाइऐमीन अणुओं वाला निकल का संकुल छह अमोनिया वाले से लगभग एक करोड़ गुना अधिक स्थायी है, यद्यपि निकल–नाइट्रोजन बंध दोनों में लगभग समरूप हैं। समझाओ, और बताओ कि सीसा-विषाक्तता वाले रोगी को EDTA क्यों दिया जाता है।",
+          mr: "तीन एथिलिनडायअमीन रेणू असलेले निकेलचे संकुल सहा अमोनिया असलेल्याहून सुमारे एक कोटी पट अधिक स्थिर आहे, जरी निकेल–नायट्रोजन बंध दोन्हींत जवळपास सारखेच असले तरी. समजावा, आणि शिसे-विषबाधा झालेल्या रुग्णाला EDTA का दिले जाते ते सांगा.",
+        },
+        choices: [
+          {
+            en: "The bonds are indeed almost identical, so the extra stability is not in the enthalpy — it is in the ENTROPY. Replacing six ammonia molecules with three ethylenediamines turns four free particles into seven, and a reaction that increases the number of independent particles is favoured. There is a second contribution: once a chelating ligand has attached by one end, the other end is held right beside the metal and reattaches almost immediately, so the complex effectively cannot fall apart. EDTA grips at six points at once, binds lead far more tightly than the body's own ligands do, and the resulting complex is soluble and is excreted",
+            hi: "बंध सचमुच लगभग समरूप हैं, अतः अतिरिक्त स्थायित्व एन्थैल्पी में नहीं — वह एन्ट्रॉपी में है। छह अमोनिया अणुओं की जगह तीन एथिलीनडाइऐमीन रखना चार मुक्त कणों को सात बना देता है, और जो अभिक्रिया स्वतंत्र कणों की संख्या बढ़ाए वह अनुकूल है। दूसरा अंश भी है: कीलेटी लिगैंड एक सिरे से जुड़ जाने के बाद दूसरा सिरा धातु के ठीक बग़ल में पकड़ा रहता है और लगभग तुरंत फिर जुड़ जाता है, अतः संकुल प्रभावतः बिखर ही नहीं सकता। EDTA एक साथ छह जगहों से पकड़ता है, सीसे को शरीर के अपने लिगैंडों से कहीं अधिक कसकर बाँधता है, और बना संकुल विलेय है तथा बाहर निकल जाता है",
+            mr: "बंध खरोखर जवळपास सारखेच आहेत, म्हणून जादा स्थैर्य एन्थॅल्पीत नाही — ते एन्ट्रॉपीत आहे. सहा अमोनिया रेणूंच्या जागी तीन एथिलिनडायअमीन ठेवणे चार मुक्त कणांचे सात करते, आणि जी अभिक्रिया स्वतंत्र कणांची संख्या वाढवते ती अनुकूल आहे. दुसरा वाटाही आहे: कीलेटी लिगँड एका टोकाने जोडले गेल्यावर दुसरे टोक धातूच्या अगदी शेजारी धरलेले राहते आणि जवळपास लगेच पुन्हा जोडले जाते, म्हणून संकुल प्रभावीपणे विखुरूच शकत नाही. EDTA एकाच वेळी सहा ठिकाणी पकडतो, शिशाला शरीराच्या स्वतःच्या लिगँडांहून कितीतरी घट्ट बांधतो, आणि बनलेले संकुल विद्राव्य आहे आणि बाहेर टाकले जाते",
+          },
+          {
+            en: "Ethylenediamine forms much stronger bonds to nickel than ammonia does, because it has two nitrogen atoms and therefore donates twice as much electron density per bond",
+            hi: "एथिलीनडाइऐमीन निकल से अमोनिया की तुलना में कहीं प्रबल बंध बनाता है, क्योंकि उसमें दो नाइट्रोजन परमाणु हैं और इसलिए वह प्रति बंध दुगुना इलेक्ट्रॉन घनत्व देता है",
+            mr: "एथिलिनडायअमीन निकेलशी अमोनियाहून कितीतरी तीव्र बंध बनवते, कारण त्यात दोन नायट्रोजन अणू आहेत आणि म्हणून ते प्रति बंध दुप्पट इलेक्ट्रॉन घनता देते",
+          },
+          {
+            en: "The chelate complex is more stable because the ring it forms is aromatic, and aromatic rings are always more stable than open chains",
+            hi: "कीलेट संकुल इसलिए अधिक स्थायी है कि वह जो वलय बनाता है वह ऐरोमैटिक है, और ऐरोमैटिक वलय खुली शृंखलाओं से सदा अधिक स्थायी होते हैं",
+            mr: "कीलेट संकुल यासाठी अधिक स्थिर आहे की ते जे वलय बनवते ते सुगंधी आहे, आणि सुगंधी वलये खुल्या साखळ्यांहून नेहमी अधिक स्थिर असतात",
+          },
+          {
+            en: "EDTA works against lead poisoning by chemically reducing the lead to the metal, which is then filtered out by the kidneys",
+            hi: "EDTA सीसा-विषाक्तता के विरुद्ध सीसे को रासायनिक रूप से धातु में अपचयित करके काम करता है, जिसे फिर गुर्दे छानकर निकाल देते हैं",
+            mr: "EDTA शिसे-विषबाधेविरुद्ध शिशाचे रासायनिकरीत्या धातूत अपचयन करून काम करते, जे मग मूत्रपिंडे गाळून काढतात.",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The question hands you the crucial piece of evidence and the answer is to notice what it rules out. The nickel–nitrogen bonds are almost identical in the two complexes, so the difference in stability is not being paid for by stronger bonding. ΔH is roughly the same for both. Since ΔG = ΔH − TΔS and ΔG is very different, the difference must be in ΔS. COUNT THE PARTICLES. Write the displacement reaction: [Ni(NH₃)₆]²⁺ + 3 en → [Ni(en)₃]²⁺ + 6 NH₃. On the left there are four species — one complex and three ethylenediamines. On the right there are seven — one complex and six ammonias. Three extra independent particles have been released into the solution, each free to wander where it likes, and that is a large increase in disorder. Entropy favours it, TΔS is positive and substantial, ΔG becomes much more negative, and the equilibrium constant is larger by the factor observed. The whole of the chelate effect is in that particle count. A SECOND CONTRIBUTION, which is kinetic rather than thermodynamic and worth separating from the first. Consider what has to happen for a complex to fall apart. A monodentate ammonia that lets go has simply left; it diffuses away and something else takes its place. But when one end of an ethylenediamine lets go, the other end is still attached, so the loose end is held within a fraction of a nanometre of the metal and its chance of reattaching before wandering off is overwhelming. Both ends would have to release simultaneously for the ligand to escape, and simultaneous events are rare. So a chelate is not only thermodynamically favoured but kinetically hard to dismantle, and the two reasons are independent. WHY THIS MATTERS MEDICALLY. Lead poisoning happens because Pb²⁺ binds to sulphur and nitrogen atoms in enzymes — exactly the sort of donors a metal ion looks for — and disables them. To treat it, something is needed that will take the lead away from the enzyme, which means a ligand that binds lead more tightly than the enzyme does, and that forms a complex the body can excrete. EDTA is that ligand. It is hexadentate: two nitrogens and four carboxylate oxygens, gripping a single metal ion at six points and wrapping around it completely. Its formation constant with lead is enormous, for both reasons above, so the equilibrium lies overwhelmingly on the side of the EDTA complex and the lead is stripped off the enzymes. The resulting complex is charged, water-soluble and not recognised by any transport system, so it passes to the kidneys and out. Note the honest complication, since it is the reason the treatment needs care: EDTA is not selective for lead. It will chelate calcium, zinc and magnesium too, and stripping those out would be its own kind of poisoning. The clinical answer is to administer it already loaded with calcium, as calcium disodium edetate — lead binds more strongly than calcium, so it displaces the calcium and the patient loses the lead without losing the calcium. The treatment is an application of exactly the same competition between formation constants that the chapter is about. (The second option contradicts the premise that the bonds are the same; the third invokes aromaticity for a saturated five-membered chelate ring that has none; the fourth invents a redox mechanism where the actual one is complexation.)",
+          hi: "प्रश्न तुम्हें निर्णायक प्रमाण थमा देता है और उत्तर यह देखना है कि वह क्या ख़ारिज करता है। दोनों संकुलों में निकल–नाइट्रोजन बंध लगभग समरूप हैं, अतः स्थायित्व का अंतर प्रबल बंधन से नहीं चुकाया जा रहा। दोनों के लिए ΔH मोटे तौर पर वही है। चूँकि ΔG = ΔH − TΔS और ΔG बहुत भिन्न है, अंतर ΔS में ही होना चाहिए। कण गिनो। विस्थापन अभिक्रिया लिखो: [Ni(NH₃)₆]²⁺ + 3 en → [Ni(en)₃]²⁺ + 6 NH₃. बाईं ओर चार स्पीशीज़ हैं — एक संकुल और तीन एथिलीनडाइऐमीन। दाईं ओर सात — एक संकुल और छह अमोनिया। तीन अतिरिक्त स्वतंत्र कण विलयन में छोड़ दिए गए हैं, हर एक जहाँ चाहे भटकने को स्वतंत्र, और यह अव्यवस्था में बड़ी वृद्धि है। एन्ट्रॉपी इसका पक्ष लेती है, TΔS धनात्मक और पर्याप्त है, ΔG कहीं अधिक ऋणात्मक हो जाता है, और साम्य स्थिरांक देखे गए गुणक से बड़ा है। कीलेट प्रभाव का पूरा सार उसी कण-गिनती में है। दूसरा अंश, जो ऊष्मागतिक नहीं बल्कि बलगतिक है और पहले से अलग रखने योग्य। सोचो कि संकुल के बिखरने के लिए क्या होना चाहिए। जो एकदंतुर अमोनिया छूट जाए वह बस चला गया; वह विसरित होकर दूर हो जाता है और कोई और उसकी जगह ले लेता है। पर जब एथिलीनडाइऐमीन का एक सिरा छूटता है, दूसरा अब भी जुड़ा है, अतः ढीला सिरा धातु से नैनोमीटर के अंश भर के भीतर पकड़ा रहता है और उसके भटकने से पहले फिर जुड़ जाने की संभावना भारी है। लिगैंड के निकलने के लिए दोनों सिरों को एक साथ छूटना पड़ेगा, और एक साथ की घटनाएँ दुर्लभ हैं। अतः कीलेट न केवल ऊष्मागतिक रूप से अनुकूल है बल्कि बलगतिक रूप से तोड़ना कठिन भी, और दोनों कारण स्वतंत्र हैं। यह चिकित्सा में क्यों मायने रखता है। सीसा-विषाक्तता इसलिए होती है कि Pb²⁺ एंज़ाइमों के गंधक और नाइट्रोजन परमाणुओं से बँध जाता है — ठीक उसी तरह के दाता जिन्हें धातु आयन ढूँढ़ता है — और उन्हें बेकार कर देता है। उसका इलाज करने को ऐसी चीज़ चाहिए जो सीसे को एंज़ाइम से ले ले, अर्थात् ऐसा लिगैंड जो सीसे को एंज़ाइम से अधिक कसकर बाँधे, और ऐसा संकुल बनाए जिसे शरीर बाहर निकाल सके। EDTA वही लिगैंड है। वह षट्दंतुर है: दो नाइट्रोजन और चार कार्बोक्सिलेट ऑक्सीजन, जो एक ही धातु आयन को छह जगहों से पकड़ते हैं और उसके चारों ओर पूरी तरह लिपट जाते हैं। सीसे के साथ उसका बनने का स्थिरांक विशाल है, ऊपर के दोनों कारणों से, अतः साम्य भारी रूप से EDTA संकुल की ओर पड़ता है और सीसा एंज़ाइमों से उतार लिया जाता है। बना संकुल आवेशित, जल-विलेय और किसी परिवहन तंत्र से न पहचाना जाने वाला है, अतः वह गुर्दों तक और बाहर चला जाता है। ईमानदार उलझन ध्यान दो, क्योंकि इसी से इलाज को सावधानी चाहिए: EDTA सीसे के लिए वरणात्मक नहीं। वह कैल्शियम, ज़िंक और मैग्नीशियम को भी कीलेटित करेगा, और उन्हें उतार लेना अपनी तरह की विषाक्तता होगी। नैदानिक उत्तर यह कि उसे पहले से कैल्शियम से लदा हुआ दिया जाए, कैल्शियम डाइसोडियम एडिटेट के रूप में — सीसा कैल्शियम से अधिक प्रबलता से बँधता है, अतः वह कैल्शियम को विस्थापित कर देता है और रोगी कैल्शियम खोए बिना सीसा खो देता है। इलाज बनने के स्थिरांकों के बीच ठीक उसी होड़ का प्रयोग है जिसके बारे में यह अध्याय है। (दूसरा विकल्प इस आधार का खंडन करता है कि बंध एक जैसे हैं; तीसरा संतृप्त पंचसदस्यीय कीलेट वलय के लिए ऐरोमैटिकता बुलाता है जो उसमें है ही नहीं; चौथा उपचयन-अपचयन की क्रियाविधि गढ़ता है जहाँ असली क्रियाविधि संकुलन है।)",
+          mr: "प्रश्न तुम्हाला निर्णायक पुरावा हातात देतो आणि उत्तर म्हणजे तो काय नाकारतो हे पाहणे. दोन्ही संकुलांत निकेल–नायट्रोजन बंध जवळपास सारखेच आहेत, म्हणून स्थैर्यातील फरक तीव्र बंधनाने भरला जात नाही. दोघांसाठी ΔH ढोबळमानाने तेच आहे. ΔG = ΔH − TΔS असल्याने आणि ΔG खूप वेगळा असल्याने, फरक ΔS मध्येच असला पाहिजे. कण मोजा. विस्थापन अभिक्रिया लिहा: [Ni(NH₃)₆]²⁺ + 3 en → [Ni(en)₃]²⁺ + 6 NH₃. डावीकडे चार जाती आहेत — एक संकुल आणि तीन एथिलिनडायअमीन. उजवीकडे सात — एक संकुल आणि सहा अमोनिया. तीन जादा स्वतंत्र कण द्रावणात सोडले गेले आहेत, प्रत्येक हवे तिथे भटकायला मुक्त, आणि ही अव्यवस्थेत मोठी वाढ आहे. एन्ट्रॉपी हिची बाजू घेते, TΔS धन आणि लक्षणीय आहे, ΔG कितीतरी अधिक ऋण होतो, आणि समतोल स्थिरांक निरीक्षिलेल्या पटीने मोठा आहे. कीलेट परिणामाचा अख्खा गाभा त्याच कण-मोजणीत आहे. दुसरा वाटा, जो उष्मागतिक नसून गतिक आहे आणि पहिल्यापासून वेगळा ठेवण्याजोगा. संकुल विखुरण्यासाठी काय घडावे लागते याचा विचार करा. जे एकदंती अमोनिया सुटते ते फक्त निघून गेले; ते विसरून दूर जाते आणि दुसरे कोणी त्याची जागा घेते. पण जेव्हा एथिलिनडायअमीनचे एक टोक सुटते, दुसरे अजून जोडलेले आहे, म्हणून सैल टोक धातूपासून नॅनोमीटरच्या अंशाइतक्या आत धरलेले राहते आणि त्याची भटकण्याआधी पुन्हा जोडले जाण्याची शक्यता प्रचंड आहे. लिगँड निसटण्यासाठी दोन्ही टोकांना एकाच वेळी सुटावे लागेल, आणि एकाच वेळच्या घटना दुर्मीळ आहेत. म्हणून कीलेट केवळ उष्मागतिकदृष्ट्या अनुकूल नाही तर गतिकदृष्ट्या तोडायला कठीणही, आणि दोन्ही कारणे स्वतंत्र आहेत. हे वैद्यकात का महत्त्वाचे. शिसे-विषबाधा यासाठी होते की Pb²⁺ विकरांच्या गंधक आणि नायट्रोजन अणूंशी बांधले जाते — नेमके तसेच दाते जे धातू आयन शोधतो — आणि त्यांना निकामी करते. त्यावर उपचार करायला अशी गोष्ट लागते जी शिसे विकराकडून घेईल, म्हणजे असे लिगँड जे शिशाला विकराहून अधिक घट्ट बांधेल, आणि असे संकुल बनवेल जे शरीर बाहेर टाकू शकेल. EDTA हेच ते लिगँड. ते षट्दंती आहे: दोन नायट्रोजन आणि चार कार्बोक्झिलेट ऑक्सिजन, जे एकाच धातू आयनाला सहा ठिकाणी पकडतात आणि त्याच्याभोवती पूर्णपणे गुंडाळतात. शिशासोबत त्याचा बनण्याचा स्थिरांक प्रचंड आहे, वरच्या दोन्ही कारणांनी, म्हणून समतोल प्रचंडपणे EDTA संकुलाच्या बाजूला पडतो आणि शिसे विकरांवरून उतरवले जाते. बनलेले संकुल प्रभारित, पाण्यात विद्राव्य आणि कोणत्याही वहन यंत्रणेने न ओळखले जाणारे आहे, म्हणून ते मूत्रपिंडांपर्यंत आणि बाहेर जाते. प्रामाणिक गुंतागुंत लक्षात घ्या, कारण याच कारणाने उपचाराला काळजी लागते: EDTA शिशासाठी निवडक नाही. ते कॅल्शियम, जस्त आणि मॅग्नेशियमलाही कीलेट करेल, आणि ते उतरवणे स्वतःच्या प्रकारची विषबाधा ठरेल. वैद्यकीय उत्तर हे की ते आधीच कॅल्शियमने भरलेले दिले जावे, कॅल्शियम डायसोडियम एडिटेट म्हणून — शिसे कॅल्शियमहून अधिक तीव्रपणे बांधले जाते, म्हणून ते कॅल्शियम विस्थापित करते आणि रुग्ण कॅल्शियम न गमावता शिसे गमावतो. उपचार म्हणजे बनण्याच्या स्थिरांकांमधल्या नेमक्या त्याच स्पर्धेचा वापर ज्याबद्दल हे प्रकरण आहे. (दुसरा पर्याय बंध सारखे आहेत या गृहीतकाचे खंडन करतो; तिसरा संपृक्त पंचसदस्यीय कीलेट वलयासाठी सुगंधीपणा बोलावतो जो त्याच्यात नाहीच; चौथा उपचयन-अपचयनाची यंत्रणा घडवतो जिथे खरी यंत्रणा संकुलन आहे.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 6 — Haloalkanes and Haloarenes                                  */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "chemistry-12-haloalkanes-and-haloarenes",
+    subject: "CHEMISTRY",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 6 — Haloalkanes and Haloarenes",
+      hi: "अध्याय 6 — हैलोऐल्केन तथा हैलोऐरीन",
+      mr: "प्रकरण 6 — हॅलोअल्केन आणि हॅलोअरीन",
+    },
+    name: {
+      en: "Haloalkanes and Haloarenes",
+      hi: "हैलोऐल्केन तथा हैलोऐरीन",
+      mr: "हॅलोअल्केन आणि हॅलोअरीन",
+    },
+    summary: {
+      en: "A carbon with a halogen on it, made reactive by a bond that is polarised towards the halogen and weak enough to break, so the carbon is left hungry for whatever lone pair comes near; two quite different ways for that substitution to happen, one a single push-and-leave in which the incoming group arrives as the old one departs and the molecule is turned inside out like an umbrella, the other a two-step affair in which the halide leaves first and a flat carbocation waits to be attacked from either face; a rule for which route a given halide takes that is decided by crowding at one end and by carbocation stability at the other, and which leaves a stereochemical fingerprint that says which happened; and the same halogen on a benzene ring, where none of it works at all.",
+      hi: "ऐसा कार्बन जिस पर हैलोजन लगा हो, जिसे वह बंध क्रियाशील बनाता है जो हैलोजन की ओर ध्रुवित है और टूटने भर कमज़ोर, अतः कार्बन उस किसी भी एकाकी युग्म के लिए भूखा रह जाता है जो पास आए; उस प्रतिस्थापन के होने के दो बिलकुल भिन्न रास्ते, एक अकेला धक्का-और-प्रस्थान जिसमें आता समूह पुराने के जाते ही पहुँचता है और अणु छाते की तरह उलट जाता है, दूसरा दो-चरणी मामला जिसमें हैलाइड पहले जाता है और चपटा कार्बोकैटायन किसी भी फलक से हमले की प्रतीक्षा करता है; कौन-सा हैलाइड कौन-सा रास्ता लेगा इसका नियम जो एक सिरे पर भीड़ और दूसरे पर कार्बोकैटायन स्थायित्व से तय होता है, और जो ऐसा त्रिविम अंगुलिचिह्न छोड़ता है जो बता देता है कि हुआ क्या; और वही हैलोजन बेंज़ीन वलय पर, जहाँ इनमें से कुछ भी नहीं चलता।",
+      mr: "असा कार्बन ज्यावर हॅलोजन लागलेले असेल, ज्याला तो बंध क्रियाशील बनवतो जो हॅलोजनकडे ध्रुवित आहे आणि तुटण्याइतका क्षीण, म्हणून कार्बन जवळ येणाऱ्या कोणत्याही एकाकी जोडीसाठी भुकेला उरतो; त्या प्रतिस्थापनाचे घडण्याचे दोन अगदी वेगळे मार्ग, एक एकच धक्का-आणि-निर्गमन ज्यात येणारा गट जुना निघताच पोहोचतो आणि रेणू छत्रीसारखा उलटतो, दुसरा दोन-पायरीचे प्रकरण ज्यात हॅलाइड आधी निघते आणि सपाट कार्बोकॅटायन कोणत्याही पृष्ठभागाकडून हल्ल्याची वाट पाहते; कोणते हॅलाइड कोणता मार्ग घेईल याचा नियम जो एका टोकाला गर्दीने आणि दुसऱ्या टोकाला कार्बोकॅटायन स्थैर्याने ठरतो, आणि जो असा त्रिमित ठसा सोडतो जो सांगतो की काय घडले; आणि तेच हॅलोजन बेंझिन वलयावर, जिथे यांपैकी काहीही चालत नाही.",
+    },
+    position: 6,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "sn2-mechanism",
+        name: {
+          en: "The SN2 mechanism",
+          hi: "SN2 क्रियाविधि",
+          mr: "SN2 यंत्रणा",
+        },
+        kind: "substitution mechanism",
+        prompt: {
+          en: "The nucleophile attacks from the side opposite the leaving group, bond-making and bond-breaking happen together in one step, and the carbon's three other groups flip through like an umbrella in a gale. Which mechanism is this?",
+          hi: "नाभिकरागी उस ओर से हमला करता है जो प्रस्थायी समूह के विपरीत है, बंध बनना और टूटना एक ही चरण में साथ होते हैं, और कार्बन के बाक़ी तीन समूह आँधी में छाते की तरह पलट जाते हैं। यह कौन-सी क्रियाविधि है?",
+          mr: "नाभिकरागी त्या बाजूने हल्ला करतो जी निघणाऱ्या गटाच्या विरुद्ध आहे, बंध बनणे आणि तुटणे एकाच पायरीत एकत्र घडतात, आणि कार्बनचे बाकी तीन गट वादळात छत्रीसारखे पलटतात. ही कोणती यंत्रणा?",
+        },
+        statement: {
+          en: "The SN2 mechanism is a single concerted step in which the nucleophile attacks the carbon from the face opposite the leaving group, so the rate depends on both concentrations and the configuration is inverted.",
+          hi: "SN2 क्रियाविधि एक ही सहवर्ती चरण है जिसमें नाभिकरागी कार्बन पर प्रस्थायी समूह के विपरीत फलक से हमला करता है, अतः वेग दोनों सांद्रताओं पर निर्भर है और विन्यास उलट जाता है।",
+          mr: "SN2 यंत्रणा ही एकच सहवर्ती पायरी आहे जिच्यात नाभिकरागी कार्बनवर निघणाऱ्या गटाच्या विरुद्ध पृष्ठभागाकडून हल्ला करतो, म्हणून वेग दोन्ही संहतींवर अवलंबून असतो आणि मांडणी उलटते.",
+        },
+        detail: {
+          en: "Because both molecules must meet, the rate law is second order — first in the halide and first in the nucleophile — and doubling either doubles the rate.",
+          hi: "चूँकि दोनों अणुओं का मिलना ज़रूरी है, वेग नियम द्वितीय कोटि का है — हैलाइड में प्रथम और नाभिकरागी में प्रथम — और किसी भी एक को दुगुना करने पर वेग दुगुना हो जाता है।",
+          mr: "दोन्ही रेणूंचे भेटणे आवश्यक असल्याने, वेग नियम द्वितीय कोटीचा आहे — हॅलाइडमध्ये प्रथम आणि नाभिकरागीत प्रथम — आणि कोणतेही एक दुप्पट केल्यास वेग दुप्पट होतो.",
+        },
+        extra: {
+          en: "Crowding kills it: a primary halide has room for the attack and a tertiary one has three groups in the way, which is why methyl and primary substrates go this route almost exclusively.",
+          hi: "भीड़ इसे मार देती है: प्राथमिक हैलाइड में हमले की जगह है और तृतीयक में तीन समूह रास्ते में हैं, इसीलिए मेथिल और प्राथमिक क्रियाधार लगभग विशेष रूप से यही रास्ता लेते हैं।",
+          mr: "गर्दी हिला मारते: प्राथमिक हॅलाइडमध्ये हल्ल्याला जागा आहे आणि तृतीयकात तीन गट वाटेत आहेत, म्हणूनच मिथिल आणि प्राथमिक क्रियाधार जवळपास केवळ हाच मार्ग घेतात.",
+        },
+        pair: {
+          left: {
+            en: "An umbrella turned inside out in one movement",
+            hi: "एक ही हरकत में उलट गया छाता",
+            mr: "एकाच हालचालीत उलटलेली छत्री",
+          },
+          right: {
+            en: "the SN2 mechanism",
+            hi: "SN2 क्रियाविधि",
+            mr: "SN2 यंत्रणा",
+          },
+        },
+      },
+      {
+        id: "sn1-mechanism",
+        name: {
+          en: "The SN1 mechanism",
+          hi: "SN1 क्रियाविधि",
+          mr: "SN1 यंत्रणा",
+        },
+        kind: "substitution mechanism",
+        prompt: {
+          en: "The halide leaves first, all by itself and slowly, and the flat three-coordinate cation left behind is then attacked from whichever face the nucleophile happens to approach. Which mechanism is this?",
+          hi: "हैलाइड पहले जाता है, बिलकुल अपने आप और धीरे, और पीछे छूटे चपटे त्रि-उपसहसंयोजित धनायन पर फिर उस फलक से हमला होता है जिस ओर से नाभिकरागी संयोग से आ जाए। यह कौन-सी क्रियाविधि है?",
+          mr: "हॅलाइड आधी निघते, अगदी स्वतःहून आणि सावकाश, आणि मागे उरलेल्या सपाट त्रि-उपसहसंयोजित धनायनावर मग त्या पृष्ठभागाकडून हल्ला होतो ज्या बाजूने नाभिकरागी योगायोगाने येईल. ही कोणती यंत्रणा?",
+        },
+        statement: {
+          en: "The SN1 mechanism is a two-step process whose slow first step is the loss of the leaving group to form a carbocation, so the rate depends on the halide alone and the product is racemised.",
+          hi: "SN1 क्रियाविधि दो-चरणी प्रक्रिया है जिसका धीमा पहला चरण प्रस्थायी समूह का जाकर कार्बोकैटायन बनाना है, अतः वेग अकेले हैलाइड पर निर्भर है और उत्पाद रेसीमीकृत हो जाता है।",
+          mr: "SN1 यंत्रणा ही दोन-पायरीची प्रक्रिया आहे जिची सावकाश पहिली पायरी म्हणजे निघणारा गट जाऊन कार्बोकॅटायन बनणे, म्हणून वेग एकट्या हॅलाइडवर अवलंबून आहे आणि उत्पादन रेसिमीकृत होते.",
+        },
+        detail: {
+          en: "The rate law is first order and does not contain the nucleophile at all, which is a strong clue: adding more nucleophile makes no difference because it is not present in the step that limits the rate.",
+          hi: "वेग नियम प्रथम कोटि का है और उसमें नाभिकरागी है ही नहीं, जो प्रबल सुराग़ है: अधिक नाभिकरागी डालने से कोई फ़र्क़ नहीं पड़ता क्योंकि वह उस चरण में मौजूद ही नहीं जो वेग सीमित करता है।",
+          mr: "वेग नियम प्रथम कोटीचा आहे आणि त्यात नाभिकरागी आहेच नाही, जो भक्कम सुगावा आहे: अधिक नाभिकरागी घातल्याने काहीही फरक पडत नाही कारण तो वेग मर्यादित करणाऱ्या पायरीत उपस्थितच नाही.",
+        },
+        extra: {
+          en: "It needs a carbocation that can survive long enough to be attacked, so tertiary halides go this way and primary ones essentially never do, the order of stability being the exact reverse of the SN2 order.",
+          hi: "इसे ऐसा कार्बोकैटायन चाहिए जो हमले भर टिक सके, अतः तृतीयक हैलाइड यह रास्ता लेते हैं और प्राथमिक वस्तुतः कभी नहीं, और स्थायित्व का क्रम SN2 के क्रम का ठीक उलटा है।",
+          mr: "याला असे कार्बोकॅटायन लागते जे हल्ल्यापुरते टिकू शकेल, म्हणून तृतीयक हॅलाइड हा मार्ग घेतात आणि प्राथमिक प्रत्यक्षात कधीच नाही, आणि स्थैर्याचा क्रम SN2 च्या क्रमाच्या नेमका उलट आहे.",
+        },
+        pair: {
+          left: {
+            en: "The leaving group goes first and waits to be replaced",
+            hi: "प्रस्थायी समूह पहले जाता है और बदले जाने की प्रतीक्षा करता है",
+            mr: "निघणारा गट आधी जातो आणि बदलले जाण्याची वाट पाहतो",
+          },
+          right: {
+            en: "the SN1 mechanism",
+            hi: "SN1 क्रियाविधि",
+            mr: "SN1 यंत्रणा",
+          },
+        },
+      },
+      {
+        id: "elimination-against-substitution",
+        name: {
+          en: "Elimination against substitution",
+          hi: "विलोपन बनाम प्रतिस्थापन",
+          mr: "निर्मूलन विरुद्ध प्रतिस्थापन",
+        },
+        kind: "substitution mechanism",
+        prompt: {
+          en: "The same halide with the same reagent gives an alcohol in aqueous solution and an alkene in hot alcoholic solution, because the incoming species can attack a carbon or pull off a neighbouring hydrogen. Which competition is this?",
+          hi: "वही हैलाइड उसी अभिकर्मक के साथ जलीय विलयन में ऐल्कोहॉल और गर्म ऐल्कोहॉली विलयन में ऐल्कीन देता है, क्योंकि आती हुई स्पीशीज़ कार्बन पर हमला कर सकती है या पड़ोसी हाइड्रोजन खींच सकती है। यह कौन-सी होड़ है?",
+          mr: "तेच हॅलाइड त्याच अभिकर्मकासोबत जलीय द्रावणात अल्कोहोल आणि तप्त अल्कोहोली द्रावणात अल्कीन देते, कारण येणारी जाती कार्बनवर हल्ला करू शकते वा शेजारचा हायड्रोजन ओढू शकते. ही कोणती स्पर्धा?",
+        },
+        statement: {
+          en: "Elimination against substitution is the competition between a nucleophile attacking carbon and a base removing a β-hydrogen, the second giving an alkene by loss of the halide as well.",
+          hi: "विलोपन बनाम प्रतिस्थापन नाभिकरागी के कार्बन पर हमला करने और क्षार के β-हाइड्रोजन हटाने के बीच की होड़ है, और दूसरा हैलाइड के जाने के साथ ऐल्कीन देता है।",
+          mr: "निर्मूलन विरुद्ध प्रतिस्थापन ही नाभिकरागीने कार्बनवर हल्ला करणे आणि क्षाराने β-हायड्रोजन काढणे यांतील स्पर्धा आहे, आणि दुसरे हॅलाइड निघण्यासोबत अल्कीन देते.",
+        },
+        detail: {
+          en: "The same species is both a nucleophile and a base, so the conditions decide the outcome rather than the reagent: hydroxide in water substitutes, hydroxide in hot ethanol eliminates.",
+          hi: "वही स्पीशीज़ नाभिकरागी भी है और क्षार भी, अतः परिणाम अभिकर्मक नहीं बल्कि परिस्थितियाँ तय करती हैं: पानी में हाइड्रॉक्साइड प्रतिस्थापन करता है, गर्म एथेनॉल में हाइड्रॉक्साइड विलोपन।",
+          mr: "तीच जाती नाभिकरागीही आहे आणि क्षारही, म्हणून निकाल अभिकर्मक नव्हे तर परिस्थिती ठरवते: पाण्यात हायड्रॉक्साइड प्रतिस्थापन करते, तप्त इथेनॉलात हायड्रॉक्साइड निर्मूलन.",
+        },
+        extra: {
+          en: "Heat and a bulky base push towards elimination, and crowding pushes the same way, which is why tertiary halides are so hard to substitute cleanly and are usually used to make alkenes instead.",
+          hi: "ऊष्मा और भारी क्षार विलोपन की ओर धकेलते हैं, और भीड़ भी उसी ओर, इसीलिए तृतीयक हैलाइडों का साफ़ प्रतिस्थापन इतना कठिन है और प्रायः उनसे ऐल्कीन ही बनाई जाती हैं।",
+          mr: "उष्णता आणि अवजड क्षार निर्मूलनाकडे ढकलतात, आणि गर्दीही त्याच बाजूला, म्हणूनच तृतीयक हॅलाइडांचे स्वच्छ प्रतिस्थापन इतके कठीण आहे आणि बहुधा त्यांच्यापासून अल्कीनच बनवल्या जातात.",
+        },
+        pair: {
+          left: {
+            en: "Water gives an alcohol, hot ethanol gives an alkene",
+            hi: "पानी ऐल्कोहॉल देता है, गर्म एथेनॉल ऐल्कीन",
+            mr: "पाणी अल्कोहोल देते, तप्त इथेनॉल अल्कीन",
+          },
+          right: {
+            en: "elimination against substitution",
+            hi: "विलोपन बनाम प्रतिस्थापन",
+            mr: "निर्मूलन विरुद्ध प्रतिस्थापन",
+          },
+        },
+      },
+      {
+        id: "carbon-halogen-bond",
+        name: {
+          en: "The carbon–halogen bond",
+          hi: "कार्बन–हैलोजन बंध",
+          mr: "कार्बन–हॅलोजन बंध",
+        },
+        kind: "structural fact",
+        prompt: {
+          en: "A bond in which the shared pair sits closer to one atom, leaving the carbon slightly positive and open to attack, and which weakens steadily as the halogen grows heavier down the group. What is it?",
+          hi: "ऐसा बंध जिसमें साझा युग्म एक परमाणु के पास बैठता है, कार्बन को थोड़ा धनात्मक और हमले के लिए खुला छोड़ता है, और जो वर्ग में नीचे जाते हुए हैलोजन के भारी होने पर लगातार कमज़ोर होता जाता है। यह क्या है?",
+          mr: "असा बंध ज्यात सामायिक जोडी एका अणूजवळ बसते, कार्बनला किंचित धन आणि हल्ल्यासाठी उघडा सोडते, आणि जो गटात खाली जाताना हॅलोजन जड होत असताना सतत क्षीण होत जातो. हा काय आहे?",
+        },
+        statement: {
+          en: "The carbon–halogen bond is polar because the halogen is the more electronegative, and it weakens from C–F to C–I as the overlap worsens with increasing halogen size.",
+          hi: "कार्बन–हैलोजन बंध ध्रुवीय है क्योंकि हैलोजन अधिक विद्युत ऋणात्मक है, और हैलोजन का आकार बढ़ने पर अतिव्यापन बिगड़ता है तथा बंध C–F से C–I तक कमज़ोर होता जाता है।",
+          mr: "कार्बन–हॅलोजन बंध ध्रुवीय आहे कारण हॅलोजन अधिक विद्युत ऋण आहे, आणि हॅलोजनचा आकार वाढल्यावर आच्छादन बिघडते आणि बंध C–F पासून C–I पर्यंत क्षीण होत जातो.",
+        },
+        detail: {
+          en: "The two properties pull in opposite directions and the bond strength wins: fluorine is the most electronegative and so makes the most polar bond, yet fluoroalkanes are the least reactive because C–F is much the hardest to break.",
+          hi: "दोनों गुण उलटी दिशाओं में खींचते हैं और बंध की प्रबलता जीतती है: फ़्लुओरीन सबसे अधिक विद्युत ऋणात्मक है और इसलिए सबसे ध्रुवीय बंध बनाता है, फिर भी फ़्लुओरोऐल्केन सबसे कम क्रियाशील हैं क्योंकि C–F तोड़ना कहीं सबसे कठिन है।",
+          mr: "दोन्ही गुणधर्म उलट दिशांनी ओढतात आणि बंधाची तीव्रता जिंकते: फ्लोरिन सर्वांत अधिक विद्युत ऋण आहे आणि म्हणून सर्वांत ध्रुवीय बंध बनवते, तरीही फ्लोरोअल्केन सर्वांत कमी क्रियाशील आहेत कारण C–F तोडणे कितीतरी सर्वांत कठीण आहे.",
+        },
+        extra: {
+          en: "That is why iodides are the reagents of choice for substitution although iodine is the least electronegative halogen — the leaving group's willingness to leave matters more than the carbon's hunger.",
+          hi: "इसीलिए प्रतिस्थापन के लिए आयोडाइड ही चुने जाते हैं यद्यपि आयोडीन सबसे कम विद्युत ऋणात्मक हैलोजन है — प्रस्थायी समूह के जाने की तत्परता कार्बन की भूख से अधिक मायने रखती है।",
+          mr: "म्हणूनच प्रतिस्थापनासाठी आयोडाइडच निवडले जातात जरी आयोडीन सर्वांत कमी विद्युत ऋण हॅलोजन असले तरी — निघणाऱ्या गटाची निघण्याची तयारी कार्बनच्या भुकेहून अधिक महत्त्वाची आहे.",
+        },
+        pair: {
+          left: {
+            en: "The most polar bond makes the least reactive compound",
+            hi: "सबसे ध्रुवीय बंध सबसे कम क्रियाशील यौगिक बनाता है",
+            mr: "सर्वांत ध्रुवीय बंध सर्वांत कमी क्रियाशील संयुग बनवतो",
+          },
+          right: {
+            en: "the carbon–halogen bond",
+            hi: "कार्बन–हैलोजन बंध",
+            mr: "कार्बन–हॅलोजन बंध",
+          },
+        },
+      },
+      {
+        id: "unreactivity-of-aryl-halides",
+        name: {
+          en: "The unreactivity of aryl halides",
+          hi: "ऐरिल हैलाइडों की अक्रियाशीलता",
+          mr: "अरिल हॅलाइडांची अक्रियाशीलता",
+        },
+        kind: "structural fact",
+        prompt: {
+          en: "Chloroethane is hydrolysed by warm aqueous alkali in minutes; chlorobenzene needs three hundred degrees and three hundred atmospheres to do the same thing. Which fact is this?",
+          hi: "क्लोरोएथेन गर्म जलीय क्षार से मिनटों में जल-अपघटित हो जाता है; क्लोरोबेंज़ीन को वही करने के लिए तीन सौ अंश और तीन सौ वायुमंडल चाहिए। यह कौन-सा तथ्य है?",
+          mr: "क्लोरोइथेन तप्त जलीय क्षाराने मिनिटांत जलअपघटित होते; क्लोरोबेंझिनला तेच करण्यास तीनशे अंश आणि तीनशे वातावरणे लागतात. हे कोणते सत्य?",
+        },
+        statement: {
+          en: "The unreactivity of aryl halides towards nucleophilic substitution follows from the partial double-bond character of the C–X bond and from the halogen being attached to an sp² carbon.",
+          hi: "नाभिकरागी प्रतिस्थापन के प्रति ऐरिल हैलाइडों की अक्रियाशीलता C–X बंध के आंशिक द्विबंध लक्षण से और हैलोजन के sp² कार्बन से जुड़े होने से निकलती है।",
+          mr: "नाभिकरागी प्रतिस्थापनाबाबत अरिल हॅलाइडांची अक्रियाशीलता C–X बंधाच्या अंशतः द्विबंध लक्षणातून आणि हॅलोजन sp² कार्बनशी जोडलेले असण्यातून निघते.",
+        },
+        detail: {
+          en: "The halogen's lone pair delocalises into the ring, shortening and strengthening the bond, and the measured C–Cl length in chlorobenzene is several picometres less than in chloromethane.",
+          hi: "हैलोजन का एकाकी युग्म वलय में विस्थानीकृत हो जाता है, जिससे बंध छोटा और प्रबल हो जाता है, और क्लोरोबेंज़ीन में नापी गई C–Cl लंबाई क्लोरोमेथेन से कई पिकोमीटर कम है।",
+          mr: "हॅलोजनची एकाकी जोडी वलयात विस्थानित होते, ज्याने बंध लहान आणि तीव्र होतो, आणि क्लोरोबेंझिनमधली मोजलेली C–Cl लांबी क्लोरोमिथेनहून कित्येक पिकोमीटर कमी आहे.",
+        },
+        extra: {
+          en: "It can be overcome by hanging strongly electron-withdrawing groups at the positions next to and opposite the halogen, which pull the ring's electrons away and let a nucleophile in — and picric acid is made that way.",
+          hi: "हैलोजन के बग़ल और आमने-सामने की जगहों पर प्रबल इलेक्ट्रॉन-खींचक समूह लटकाकर इसे पार किया जा सकता है, जो वलय के इलेक्ट्रॉन दूर खींच लेते हैं और नाभिकरागी को भीतर आने देते हैं — और पिक्रिक अम्ल इसी तरह बनता है।",
+          mr: "हॅलोजनच्या शेजारच्या आणि समोरच्या जागी तीव्र इलेक्ट्रॉन-ओढक गट लटकवून हे पार करता येते, जे वलयाचे इलेक्ट्रॉन दूर ओढतात आणि नाभिकरागीला आत येऊ देतात — आणि पिक्रिक आम्ल याच प्रकारे बनते.",
+        },
+        pair: {
+          left: {
+            en: "Minutes in a test tube against three hundred atmospheres",
+            hi: "परखनली में मिनट बनाम तीन सौ वायुमंडल",
+            mr: "परीक्षानळीत मिनिटे विरुद्ध तीनशे वातावरणे",
+          },
+          right: {
+            en: "the unreactivity of aryl halides",
+            hi: "ऐरिल हैलाइडों की अक्रियाशीलता",
+            mr: "अरिल हॅलाइडांची अक्रियाशीलता",
+          },
+        },
+      },
+      {
+        id: "inversion-of-configuration",
+        name: {
+          en: "Inversion of configuration",
+          hi: "विन्यास का प्रतिलोमन",
+          mr: "मांडणीचे प्रतिलोमन",
+        },
+        kind: "structural fact",
+        prompt: {
+          en: "Start with a single optically active halide, run one mechanism and get a single product rotating light the other way; run the other and get an equal mixture rotating it not at all. What is the first outcome called?",
+          hi: "किसी एक प्रकाशिक सक्रिय हैलाइड से शुरू करो, एक क्रियाविधि चलाओ और ऐसा अकेला उत्पाद पाओ जो प्रकाश को दूसरी ओर घुमाता है; दूसरी चलाओ और ऐसा बराबर मिश्रण पाओ जो उसे बिलकुल नहीं घुमाता। पहले परिणाम को क्या कहते हैं?",
+          mr: "एखाद्या एका प्रकाशीय सक्रिय हॅलाइडपासून सुरू करा, एक यंत्रणा चालवा आणि असे एकच उत्पादन मिळवा जे प्रकाश दुसऱ्या दिशेने फिरवते; दुसरी चालवा आणि असे समान मिश्रण मिळवा जे तो मुळीच फिरवत नाही. पहिल्या निकालाला काय म्हणतात?",
+        },
+        statement: {
+          en: "Inversion of configuration is the reversal of arrangement at a chiral carbon in an SN2 reaction, because the nucleophile must attack from the face opposite the leaving group.",
+          hi: "विन्यास का प्रतिलोमन SN2 अभिक्रिया में किसी काइरल कार्बन पर व्यवस्था का उलट जाना है, क्योंकि नाभिकरागी को प्रस्थायी समूह के विपरीत फलक से ही हमला करना पड़ता है।",
+          mr: "मांडणीचे प्रतिलोमन म्हणजे SN2 अभिक्रियेत एखाद्या कायरल कार्बनवरील मांडणीचे उलटणे, कारण नाभिकरागीला निघणाऱ्या गटाच्या विरुद्ध पृष्ठभागाकडूनच हल्ला करावा लागतो.",
+        },
+        detail: {
+          en: "It is the mechanism's fingerprint: a clean inversion says the reaction went in one step, and a racemic product says a flat carbocation was formed and attacked equally from both sides.",
+          hi: "यह क्रियाविधि का अंगुलिचिह्न है: साफ़ प्रतिलोमन कहता है कि अभिक्रिया एक ही चरण में हुई, और रेसीमी उत्पाद कहता है कि चपटा कार्बोकैटायन बना और उस पर दोनों ओर से बराबर हमला हुआ।",
+          mr: "हे यंत्रणेचे बोटांचे ठसे आहे: स्वच्छ प्रतिलोमन सांगते की अभिक्रिया एकाच पायरीत झाली, आणि रेसिमी उत्पादन सांगते की सपाट कार्बोकॅटायन बनले आणि त्यावर दोन्ही बाजूंनी समान हल्ला झाला.",
+        },
+        extra: {
+          en: "Real reactions often give partial racemisation, which is itself informative: it says both routes ran together, and the proportion of inverted product measures which one dominated.",
+          hi: "असली अभिक्रियाएँ प्रायः आंशिक रेसीमीकरण देती हैं, जो स्वयं ज्ञानप्रद है: वह कहता है कि दोनों रास्ते साथ चले, और प्रतिलोमित उत्पाद का अनुपात नापता है कि कौन-सा हावी रहा।",
+          mr: "खऱ्या अभिक्रिया बहुधा अंशतः रेसिमीकरण देतात, जे स्वतःच ज्ञानप्रद आहे: ते सांगते की दोन्ही मार्ग एकत्र चालले, आणि प्रतिलोमित उत्पादनाचे प्रमाण मोजते की कोणता वरचढ ठरला.",
+        },
+        pair: {
+          left: {
+            en: "The product tells you which route the reaction took",
+            hi: "उत्पाद बता देता है कि अभिक्रिया ने कौन-सा रास्ता लिया",
+            mr: "उत्पादन सांगते की अभिक्रियेने कोणता मार्ग घेतला",
+          },
+          right: {
+            en: "inversion of configuration",
+            hi: "विन्यास का प्रतिलोमन",
+            mr: "मांडणीचे प्रतिलोमन",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A primary halide reacts with hydroxide at a rate proportional to both concentrations and gives a single product of inverted configuration. A tertiary halide reacts at a rate that ignores the hydroxide entirely and gives an equal mixture of two forms. Explain both.",
+          hi: "एक प्राथमिक हैलाइड हाइड्रॉक्साइड से ऐसे वेग पर अभिक्रिया करता है जो दोनों सांद्रताओं का समानुपाती है और प्रतिलोमित विन्यास का अकेला उत्पाद देता है। एक तृतीयक हैलाइड ऐसे वेग पर अभिक्रिया करता है जो हाइड्रॉक्साइड की बिलकुल परवाह नहीं करता और दो रूपों का बराबर मिश्रण देता है। दोनों समझाओ।",
+          mr: "एक प्राथमिक हॅलाइड हायड्रॉक्साइडशी अशा वेगाने अभिक्रिया करते जो दोन्ही संहतींशी समानुपाती आहे आणि प्रतिलोमित मांडणीचे एकच उत्पादन देते. एक तृतीयक हॅलाइड अशा वेगाने अभिक्रिया करते जो हायड्रॉक्साइडची मुळीच पर्वा करत नाही आणि दोन रूपांचे समान मिश्रण देते. दोन्ही समजावा.",
+        },
+        choices: [
+          {
+            en: "The primary halide goes by SN2: one concerted step in which hydroxide attacks the carbon from the face opposite the halide, so both species appear in the rate law and the carbon is turned inside out — a single inverted product. The tertiary halide goes by SN1: the halide leaves first in a slow step, and since hydroxide takes no part in that step it cannot appear in the rate law. The carbocation left behind is flat, so the nucleophile attacks either face with equal ease and the product is racemic. The change of route is decided by crowding, which blocks SN2 at a tertiary carbon, and by carbocation stability, which permits SN1 only there",
+            hi: "प्राथमिक हैलाइड SN2 से चलता है: एक सहवर्ती चरण जिसमें हाइड्रॉक्साइड कार्बन पर हैलाइड के विपरीत फलक से हमला करता है, अतः दोनों स्पीशीज़ वेग नियम में आती हैं और कार्बन उलट जाता है — एक अकेला प्रतिलोमित उत्पाद। तृतीयक हैलाइड SN1 से चलता है: हैलाइड धीमे चरण में पहले जाता है, और चूँकि हाइड्रॉक्साइड उस चरण में भाग नहीं लेता, वह वेग नियम में आ ही नहीं सकता। पीछे छूटा कार्बोकैटायन चपटा है, अतः नाभिकरागी किसी भी फलक पर बराबर आसानी से हमला करता है और उत्पाद रेसीमी है। रास्ते का बदलना भीड़ से तय होता है, जो तृतीयक कार्बन पर SN2 को रोकती है, और कार्बोकैटायन स्थायित्व से, जो SN1 को केवल वहीं होने देता है",
+            mr: "प्राथमिक हॅलाइड SN2 ने चालते: एक सहवर्ती पायरी ज्यात हायड्रॉक्साइड कार्बनवर हॅलाइडच्या विरुद्ध पृष्ठभागाकडून हल्ला करते, म्हणून दोन्ही जाती वेग नियमात येतात आणि कार्बन उलटतो — एकच प्रतिलोमित उत्पादन. तृतीयक हॅलाइड SN1 ने चालते: हॅलाइड सावकाश पायरीत आधी निघते, आणि हायड्रॉक्साइड त्या पायरीत भाग घेत नसल्याने ते वेग नियमात येऊच शकत नाही. मागे उरलेले कार्बोकॅटायन सपाट आहे, म्हणून नाभिकरागी कोणत्याही पृष्ठभागावर समान सहजतेने हल्ला करतो आणि उत्पादन रेसिमी आहे. मार्गाचा बदल गर्दीने ठरतो, जी तृतीयक कार्बनवर SN2 अडवते, आणि कार्बोकॅटायन स्थैर्याने, जे SN1 ला केवळ तिथेच होऊ देते",
+          },
+          {
+            en: "The tertiary halide is simply less reactive, so its rate is too slow for the hydroxide dependence to be detected, and the mixture of products is an impurity effect",
+            hi: "तृतीयक हैलाइड बस कम क्रियाशील है, अतः उसका वेग इतना धीमा है कि हाइड्रॉक्साइड की निर्भरता पकड़ में न आए, और उत्पादों का मिश्रण अशुद्धि का प्रभाव है",
+            mr: "तृतीयक हॅलाइड फक्त कमी क्रियाशील आहे, म्हणून त्याचा वेग इतका सावकाश की हायड्रॉक्साइडचे अवलंबित्व ओळखता येऊ नये, आणि उत्पादनांचे मिश्रण अशुद्धीचा परिणाम आहे",
+          },
+          {
+            en: "Both reactions go by the same mechanism, and the difference in rate law comes from the tertiary halide being used in much greater excess",
+            hi: "दोनों अभिक्रियाएँ एक ही क्रियाविधि से चलती हैं, और वेग नियम का अंतर इससे आता है कि तृतीयक हैलाइड कहीं अधिक अधिकता में लिया गया",
+            mr: "दोन्ही अभिक्रिया एकाच यंत्रणेने चालतात, आणि वेग नियमातील फरक तृतीयक हॅलाइड कितीतरी अधिकतेत घेतल्याने येतो",
+          },
+          {
+            en: "The primary halide inverts because hydroxide is a strong base, and the tertiary one racemises because it is a weak one — the mechanism is the same in both",
+            hi: "प्राथमिक हैलाइड इसलिए प्रतिलोमित होता है कि हाइड्रॉक्साइड प्रबल क्षार है, और तृतीयक इसलिए रेसीमीकृत होता है कि वह दुर्बल है — क्रियाविधि दोनों में वही है",
+            mr: "प्राथमिक हॅलाइड यासाठी प्रतिलोमित होते की हायड्रॉक्साइड तीव्र क्षार आहे, आणि तृतीयक यासाठी रेसिमीकृत होते की तो दुर्बल आहे — यंत्रणा दोन्हींत तीच आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Two independent kinds of evidence are being offered — a rate law and a stereochemical outcome — and the point of the question is that they agree. When two different measurements point at the same mechanism, the conclusion is much stronger than either alone. THE PRIMARY HALIDE. Rate ∝ [halide][OH⁻] means both species are present in the slowest step, so that step must involve them meeting. There is only one way to arrange that: the hydroxide attacks the carbon at the same moment the halide leaves, in a single concerted motion. Now ask geometrically where the attack must come from. The halide is a large electron-rich group sitting on one face of the carbon and repelling anything that approaches from its side, and the new bond forms best where the old one is weakest — directly behind it, along the axis of the C–X bond. So the nucleophile comes in at 180° to the leaving group, and as the two exchange, the other three groups on the carbon are pushed through the plane. The molecule turns inside out like an umbrella in a gale, and a chiral centre ends up with its arrangement reversed. Hence a single product, of inverted configuration. THE TERTIARY HALIDE. Rate ∝ [halide] alone is the striking observation: adding ten times more hydroxide changes nothing. A species that does not appear in the rate law cannot be present in the rate-determining step, so hydroxide plays no part in the slow part of this reaction. The only thing the halide can do without it is fall apart: the C–X bond breaks heterolytically, the halide leaves with both electrons, and a carbocation is formed. That is slow and it alone sets the rate; the subsequent capture by hydroxide is fast and invisible to the kinetics. Now the stereochemistry follows automatically. A carbocation has only three groups and is sp² hybridised, so it is flat, with an empty p orbital sticking out on both sides. The nucleophile can attack either lobe with equal ease, and the two attacks give the two enantiomers in equal amounts — a racemic mixture, optically inactive. WHY EACH SUBSTRATE CHOOSES AS IT DOES. Two effects, and they happen to point the same way. Sterically, SN2 needs a clear path to the back of the carbon; a primary carbon has two small hydrogens in the way and a tertiary one has three alkyl groups, so the rate falls by a factor of thousands along the series. Electronically, SN1 needs a carbocation stable enough to exist for a moment; alkyl groups donate electron density and stabilise the positive charge, so tertiary cations form readily and primary ones essentially never. The two orders are exact opposites — SN2 goes methyl > primary > secondary > tertiary, SN1 the reverse — and secondary halides sit in the middle and do both, which is why they give partial racemisation. That partial figure is not a nuisance but a measurement: the proportion of inverted product tells you how much of the material went by each route. (The second option explains away a clean kinetic result as a detection failure; the third invents an excess that would not change the FORM of a rate law; the fourth attributes to acid–base strength what is a matter of mechanism and geometry.)",
+          hi: "दो स्वतंत्र क़िस्म के प्रमाण दिए जा रहे हैं — एक वेग नियम और एक त्रिविम परिणाम — और प्रश्न का मर्म यह है कि वे आपस में मिलते हैं। जब दो भिन्न माप एक ही क्रियाविधि की ओर इशारा करें, तो निष्कर्ष किसी एक अकेले से कहीं प्रबल है। प्राथमिक हैलाइड। वेग ∝ [हैलाइड][OH⁻] का अर्थ है कि दोनों स्पीशीज़ सबसे धीमे चरण में मौजूद हैं, अतः उस चरण में उनका मिलना शामिल होना ही चाहिए। उसे जमाने का केवल एक ही तरीक़ा है: हाइड्रॉक्साइड कार्बन पर ठीक उसी क्षण हमला करे जब हैलाइड जा रहा हो, एक ही सहवर्ती हरकत में। अब ज्यामितीय रूप से पूछो कि हमला कहाँ से आना चाहिए। हैलाइड कार्बन के एक फलक पर बैठा बड़ा इलेक्ट्रॉन-समृद्ध समूह है और अपनी ओर से आते किसी को भी प्रतिकर्षित करता है, और नया बंध वहीं सबसे अच्छा बनता है जहाँ पुराना सबसे कमज़ोर है — ठीक उसके पीछे, C–X बंध की अक्ष के अनुदिश। अतः नाभिकरागी प्रस्थायी समूह से 180° पर भीतर आता है, और दोनों की अदला-बदली होते समय कार्बन के बाक़ी तीन समूह तल के आर-पार धकेल दिए जाते हैं। अणु आँधी में छाते की तरह उलट जाता है, और काइरल केंद्र की व्यवस्था उलटी होकर बचती है। इसलिए अकेला उत्पाद, प्रतिलोमित विन्यास का। तृतीयक हैलाइड। वेग ∝ अकेला [हैलाइड] चौंकाने वाला प्रेक्षण है: दस गुना अधिक हाइड्रॉक्साइड डालने से कुछ नहीं बदलता। जो स्पीशीज़ वेग नियम में नहीं आती वह वेग-निर्धारक चरण में मौजूद हो ही नहीं सकती, अतः इस अभिक्रिया के धीमे भाग में हाइड्रॉक्साइड की कोई भूमिका नहीं। उसके बिना हैलाइड जो कर सकता है वह केवल बिखर जाना है: C–X बंध विषमांश रूप से टूटता है, हैलाइड दोनों इलेक्ट्रॉन लेकर जाता है, और कार्बोकैटायन बनता है। वह धीमा है और वही अकेला वेग तय करता है; बाद में हाइड्रॉक्साइड का पकड़ना तेज़ है और बलगतिकी को अदृश्य। अब त्रिविम रसायन अपने आप निकलता है। कार्बोकैटायन के केवल तीन समूह हैं और वह sp² संकरित है, अतः वह चपटा है, और दोनों ओर ख़ाली p कक्षक निकला हुआ। नाभिकरागी किसी भी पाली पर बराबर आसानी से हमला कर सकता है, और दोनों हमले दोनों प्रतिबिंब रूप बराबर मात्रा में देते हैं — रेसीमी मिश्रण, प्रकाशिक रूप से निष्क्रिय। हर क्रियाधार वैसा क्यों चुनता है। दो प्रभाव, और वे संयोग से एक ही ओर इशारा करते हैं। त्रिविम रूप से, SN2 को कार्बन के पीछे तक साफ़ रास्ता चाहिए; प्राथमिक कार्बन पर रास्ते में दो छोटे हाइड्रोजन हैं और तृतीयक पर तीन ऐल्किल समूह, अतः श्रेणी भर में वेग हज़ारों के गुणक से गिरता है। इलेक्ट्रॉनी रूप से, SN1 को ऐसा कार्बोकैटायन चाहिए जो क्षण भर टिकने भर स्थायी हो; ऐल्किल समूह इलेक्ट्रॉन घनत्व देते हैं और धन आवेश को स्थायी करते हैं, अतः तृतीयक धनायन आसानी से बनते हैं और प्राथमिक वस्तुतः कभी नहीं। दोनों क्रम ठीक उलटे हैं — SN2 मेथिल > प्राथमिक > द्वितीयक > तृतीयक चलता है, SN1 उलटा — और द्वितीयक हैलाइड बीच में बैठकर दोनों करते हैं, इसीलिए वे आंशिक रेसीमीकरण देते हैं। वह आंशिक आँकड़ा उपद्रव नहीं बल्कि माप है: प्रतिलोमित उत्पाद का अनुपात बता देता है कि कितनी सामग्री किस रास्ते गई। (दूसरा विकल्प साफ़ बलगतिक परिणाम को संसूचन की विफलता कहकर टाल देता है; तीसरा ऐसी अधिकता गढ़ता है जो वेग नियम का रूप नहीं बदलती; चौथा जो क्रियाविधि और ज्यामिति का मामला है उसे अम्ल-क्षार की प्रबलता का बता देता है।)",
+          mr: "दोन स्वतंत्र प्रकारचे पुरावे दिले जात आहेत — एक वेग नियम आणि एक त्रिमित निकाल — आणि प्रश्नाचा गाभा हा की ते परस्पर जुळतात. जेव्हा दोन वेगळी मापे एकाच यंत्रणेकडे बोट दाखवतात, तेव्हा निष्कर्ष कोणत्याही एकट्याहून कितीतरी भक्कम असतो. प्राथमिक हॅलाइड. वेग ∝ [हॅलाइड][OH⁻] याचा अर्थ दोन्ही जाती सर्वांत सावकाश पायरीत उपस्थित आहेत, म्हणून त्या पायरीत त्यांचे भेटणे सामील असलेच पाहिजे. ते मांडण्याचा केवळ एकच मार्ग आहे: हायड्रॉक्साइडने कार्बनवर नेमक्या त्याच क्षणी हल्ला करावा जेव्हा हॅलाइड निघत असेल, एकाच सहवर्ती हालचालीत. आता भूमितीयदृष्ट्या विचारा की हल्ला कुठून यावा. हॅलाइड हा कार्बनच्या एका पृष्ठभागावर बसलेला मोठा इलेक्ट्रॉन-समृद्ध गट आहे आणि आपल्या बाजूने येणाऱ्या कोणालाही प्रतिकर्षित करतो, आणि नवा बंध तिथेच सर्वांत चांगला बनतो जिथे जुना सर्वांत क्षीण आहे — नेमका त्याच्यामागे, C–X बंधाच्या अक्षाच्या दिशेने. म्हणून नाभिकरागी निघणाऱ्या गटापासून 180° वर आत येतो, आणि दोघांची अदलाबदल होताना कार्बनचे बाकी तीन गट प्रतलाच्या आरपार ढकलले जातात. रेणू वादळात छत्रीसारखा उलटतो, आणि कायरल केंद्राची मांडणी उलटी होऊन उरते. म्हणून एकच उत्पादन, प्रतिलोमित मांडणीचे. तृतीयक हॅलाइड. वेग ∝ एकटे [हॅलाइड] हे चकित करणारे निरीक्षण आहे: दहापट अधिक हायड्रॉक्साइड घातल्याने काहीच बदलत नाही. जी जाती वेग नियमात येत नाही ती वेग-निर्धारक पायरीत उपस्थित असूच शकत नाही, म्हणून या अभिक्रियेच्या सावकाश भागात हायड्रॉक्साइडची कोणतीही भूमिका नाही. त्याविना हॅलाइड जे करू शकते ते केवळ विखुरणे: C–X बंध विषमांशरीत्या तुटतो, हॅलाइड दोन्ही इलेक्ट्रॉन घेऊन निघते, आणि कार्बोकॅटायन बनते. ते सावकाश आहे आणि तेच एकटे वेग ठरवते; नंतर हायड्रॉक्साइडने पकडणे जलद आहे आणि गतिकीला अदृश्य. आता त्रिमित रसायन आपोआप निघते. कार्बोकॅटायनला केवळ तीन गट आहेत आणि ते sp² संकरित आहे, म्हणून ते सपाट आहे, आणि दोन्ही बाजूंना रिकामे p कक्षक बाहेर आलेले. नाभिकरागी कोणत्याही पाकळीवर समान सहजतेने हल्ला करू शकतो, आणि दोन्ही हल्ले दोन्ही प्रतिबिंब रूपे समान प्रमाणात देतात — रेसिमी मिश्रण, प्रकाशीयदृष्ट्या निष्क्रिय. प्रत्येक क्रियाधार तसे का निवडतो. दोन परिणाम, आणि ते योगायोगाने एकाच दिशेने दाखवतात. त्रिमितदृष्ट्या, SN2 ला कार्बनच्या मागेपर्यंत स्वच्छ मार्ग लागतो; प्राथमिक कार्बनवर वाटेत दोन लहान हायड्रोजन आहेत आणि तृतीयकावर तीन अल्किल गट, म्हणून श्रेणीभर वेग हजारांच्या पटीने घसरतो. इलेक्ट्रॉनीदृष्ट्या, SN1 ला असे कार्बोकॅटायन लागते जे क्षणभर टिकण्याइतके स्थिर असेल; अल्किल गट इलेक्ट्रॉन घनता देतात आणि धन प्रभार स्थिर करतात, म्हणून तृतीयक धनायन सहज बनतात आणि प्राथमिक प्रत्यक्षात कधीच नाही. दोन्ही क्रम नेमके उलट आहेत — SN2 मिथिल > प्राथमिक > द्वितीयक > तृतीयक चालतो, SN1 उलटा — आणि द्वितीयक हॅलाइड मध्ये बसून दोन्ही करतात, म्हणूनच ते अंशतः रेसिमीकरण देतात. तो अंशतः आकडा उपद्रव नसून माप आहे: प्रतिलोमित उत्पादनाचे प्रमाण सांगते की किती सामग्री कोणत्या मार्गाने गेली. (दुसरा पर्याय स्वच्छ गतिक निकालाला संवेदनाचे अपयश म्हणून टाळतो; तिसरा अशी अधिकता घडवतो जी वेग नियमाचे स्वरूप बदलत नाही; चौथा जे यंत्रणेचे आणि भूमितीचे प्रकरण आहे ते आम्ल-क्षाराच्या तीव्रतेचे सांगतो.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Chloroethane is hydrolysed by warm aqueous sodium hydroxide within minutes. Chlorobenzene, which also has a chlorine on a carbon, needs 623 K and 300 atmospheres to do the same thing. Explain the difference, and say how it can be got round.",
+          hi: "क्लोरोएथेन गर्म जलीय सोडियम हाइड्रॉक्साइड से मिनटों में जल-अपघटित हो जाता है। क्लोरोबेंज़ीन, जिसमें भी कार्बन पर क्लोरीन है, को वही करने के लिए 623 K और 300 वायुमंडल चाहिए। अंतर समझाओ, और बताओ कि उसे कैसे पार किया जा सकता है।",
+          mr: "क्लोरोइथेन तप्त जलीय सोडियम हायड्रॉक्साइडने मिनिटांत जलअपघटित होते. क्लोरोबेंझिन, ज्यातही कार्बनवर क्लोरीन आहे, त्याला तेच करण्यास 623 K आणि 300 वातावरणे लागतात. फरक समजावा, आणि तो कसा पार करता येईल ते सांगा.",
+        },
+        choices: [
+          {
+            en: "Three effects act together. The chlorine's lone pair delocalises into the ring, giving the C–Cl bond partial double-bond character — it is measurably shorter and stronger than in chloromethane. The carbon is sp² and so more electronegative, holding its electrons more tightly and resisting a nucleophile. And the ring's π cloud repels an approaching electron-rich nucleophile, while an SN1 route is barred because an aryl cation is far too unstable to form. The way round is to place strong electron-withdrawing groups at the ortho and para positions, which drain the ring and make the attack possible under ordinary conditions",
+            hi: "तीन प्रभाव साथ काम करते हैं। क्लोरीन का एकाकी युग्म वलय में विस्थानीकृत हो जाता है, जिससे C–Cl बंध को आंशिक द्विबंध लक्षण मिलता है — वह क्लोरोमेथेन से नापने लायक़ छोटा और प्रबल है। कार्बन sp² है और इसलिए अधिक विद्युत ऋणात्मक, अपने इलेक्ट्रॉन अधिक कसकर पकड़ता और नाभिकरागी का प्रतिरोध करता। और वलय का π बादल पास आते इलेक्ट्रॉन-समृद्ध नाभिकरागी को प्रतिकर्षित करता है, जबकि SN1 रास्ता वर्जित है क्योंकि ऐरिल धनायन बनने के लिए कहीं बहुत अस्थायी है। पार करने का रास्ता यह कि ऑर्थो और पैरा स्थानों पर प्रबल इलेक्ट्रॉन-खींचक समूह रखे जाएँ, जो वलय को निचोड़ देते हैं और साधारण परिस्थितियों में हमला संभव बना देते हैं",
+            mr: "तीन परिणाम एकत्र काम करतात. क्लोरीनची एकाकी जोडी वलयात विस्थानित होते, ज्याने C–Cl बंधाला अंशतः द्विबंध लक्षण मिळते — तो क्लोरोमिथेनहून मोजण्याइतका लहान आणि तीव्र आहे. कार्बन sp² आहे आणि म्हणून अधिक विद्युत ऋण, आपले इलेक्ट्रॉन अधिक घट्ट धरतो आणि नाभिकरागीला विरोध करतो. आणि वलयाचे π ढग जवळ येणाऱ्या इलेक्ट्रॉन-समृद्ध नाभिकरागीला प्रतिकर्षित करते, तर SN1 मार्ग वर्ज्य आहे कारण अरिल धनायन बनण्यास कितीतरी अस्थिर आहे. पार करण्याचा मार्ग म्हणजे ऑर्थो आणि पॅरा जागी तीव्र इलेक्ट्रॉन-ओढक गट ठेवणे, जे वलय पिळून काढतात आणि साध्या परिस्थितीत हल्ला शक्य करतात",
+          },
+          {
+            en: "Chlorobenzene is unreactive simply because the benzene ring is bulky and blocks the nucleophile's approach, and the way round is to use a smaller nucleophile",
+            hi: "क्लोरोबेंज़ीन बस इसलिए अक्रियाशील है कि बेंज़ीन वलय भारी है और नाभिकरागी का पहुँचना रोकता है, और पार करने का रास्ता छोटा नाभिकरागी काम में लेना है",
+            mr: "क्लोरोबेंझिन फक्त यासाठी अक्रियाशील आहे की बेंझिन वलय अवजड आहे आणि नाभिकरागीचे पोहोचणे अडवते, आणि पार करण्याचा मार्ग लहान नाभिकरागी वापरणे",
+          },
+          {
+            en: "The C–Cl bond in chlorobenzene is longer and weaker than in chloromethane, and the compound is unreactive because the chlorine leaves before the nucleophile can arrive",
+            hi: "क्लोरोबेंज़ीन में C–Cl बंध क्लोरोमेथेन से लंबा और कमज़ोर है, और यौगिक इसलिए अक्रियाशील है कि नाभिकरागी के पहुँचने से पहले ही क्लोरीन चला जाता है",
+            mr: "क्लोरोबेंझिनमधला C–Cl बंध क्लोरोमिथेनहून लांब आणि क्षीण आहे, आणि संयुग यासाठी अक्रियाशील आहे की नाभिकरागी पोहोचण्याआधीच क्लोरीन निघून जाते",
+          },
+          {
+            en: "Aryl halides are unreactive because aromatic compounds never undergo substitution of any kind, which is the defining property of aromaticity",
+            hi: "ऐरिल हैलाइड इसलिए अक्रियाशील हैं कि ऐरोमैटिक यौगिक किसी भी तरह का प्रतिस्थापन कभी नहीं करते, और यही ऐरोमैटिकता का परिभाषक गुण है",
+            mr: "अरिल हॅलाइड यासाठी अक्रियाशील आहेत की सुगंधी संयुगे कोणत्याही प्रकारचे प्रतिस्थापन कधीच करत नाहीत, आणि हाच सुगंधीपणाचा व्याख्यात्मक गुणधर्म आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The two compounds look alike on paper — a chlorine on a carbon in both — and behave so differently that the comparison is worth taking apart carefully. The difference in conditions is a factor of about 10¹⁰ in rate, which is not a matter of degree. FIRST EFFECT: RESONANCE. In chlorobenzene the chlorine has lone pairs, and one of them can overlap with the ring's π system. Draw the resonance structures and the C–Cl bond acquires partial double-bond character while negative charge appears at the ortho and para positions. A partial double bond is shorter and stronger than a single one, and the measurement confirms it: C–Cl in chlorobenzene is about 169 pm against 177 pm in chloromethane. Breaking it therefore costs more, and in any nucleophilic substitution that bond has to break. SECOND EFFECT: HYBRIDISATION. The carbon bearing the chlorine is sp² in chlorobenzene and sp³ in chloroethane. An sp² carbon has one third s character against one quarter, and s orbitals are closer to the nucleus, so an sp² carbon is more electronegative and holds its bonding electrons more tightly. It is correspondingly less willing to accept another pair from a nucleophile. THIRD EFFECT: REPULSION AND THE ABSENT ALTERNATIVE. The ring carries a π cloud above and below its plane, and a nucleophile is by definition electron-rich, so it is repelled as it approaches. And the escape route that a tertiary halide would take is closed: SN1 would require an aryl cation, in which the positive charge sits in an sp² orbital in the plane of the ring and cannot be delocalised by the π system at all. Aryl cations are so unstable that the mechanism simply does not run. So both ordinary routes are blocked at once, for different reasons. HOW IT IS GOT ROUND. Since the difficulty is that the ring is too electron-rich to be attacked, the remedy is to drain it. Put strongly electron-withdrawing groups — nitro groups are the standard choice — at the positions ortho and para to the halogen. Those are exactly the positions where negative charge accumulates in the intermediate formed when a nucleophile does attack, so the withdrawing groups stabilise that intermediate and lower the barrier. The effect is dramatic and cumulative: chlorobenzene needs 623 K and 300 atm; 2,4-dinitrochlorobenzene reacts with warm aqueous sodium carbonate; and 2,4,6-trinitrochlorobenzene is hydrolysed by plain warm water, which is how picric acid is made. Note the position requirement is not decoration — a nitro group at the meta position helps very little, because the negative charge in the intermediate never appears there. Two habits worth carrying from this. First, when a reaction fails, ask which step it fails at; here the answer is that neither available mechanism can run, and for different reasons. Second, a substituent effect that depends on POSITION rather than merely on strength is evidence about the intermediate, and reasoning backwards from where the substituent has to sit is one of the standard ways a mechanism is established. (The second option offers a steric explanation that a flat ring does not support and that a smaller nucleophile would defeat; the third reverses the measured bond length; the fourth denies electrophilic aromatic substitution, which is the entire chemistry of benzene.)",
+          hi: "दोनों यौगिक काग़ज़ पर एक जैसे दिखते हैं — दोनों में कार्बन पर क्लोरीन — और इतने भिन्न बरतते हैं कि तुलना को ध्यान से खोलना चाहिए। परिस्थितियों का अंतर वेग में लगभग 10¹⁰ का गुणक है, जो मात्रा का मामला नहीं। पहला प्रभाव: अनुनाद। क्लोरोबेंज़ीन में क्लोरीन के एकाकी युग्म हैं, और उनमें से एक वलय के π तंत्र से अतिव्यापन कर सकता है। अनुनाद संरचनाएँ खींचो और C–Cl बंध को आंशिक द्विबंध लक्षण मिल जाता है जबकि ऋण आवेश ऑर्थो और पैरा स्थानों पर प्रकट होता है। आंशिक द्विबंध एकल से छोटा और प्रबल है, और माप उसकी पुष्टि करता है: क्लोरोबेंज़ीन में C–Cl लगभग 169 pm है जबकि क्लोरोमेथेन में 177 pm. अतः उसे तोड़ना अधिक महँगा है, और किसी भी नाभिकरागी प्रतिस्थापन में उस बंध को टूटना ही है। दूसरा प्रभाव: संकरण। क्लोरीन वाला कार्बन क्लोरोबेंज़ीन में sp² है और क्लोरोएथेन में sp³. sp² कार्बन में एक-चौथाई के मुक़ाबले एक-तिहाई s लक्षण है, और s कक्षक नाभिक के अधिक पास हैं, अतः sp² कार्बन अधिक विद्युत ऋणात्मक है और अपने बंधन इलेक्ट्रॉन अधिक कसकर पकड़ता है। वह तदनुरूप नाभिकरागी से एक और युग्म लेने को कम तैयार है। तीसरा प्रभाव: प्रतिकर्षण और अनुपस्थित विकल्प। वलय अपने तल के ऊपर और नीचे π बादल ढोता है, और नाभिकरागी परिभाषा से इलेक्ट्रॉन-समृद्ध है, अतः पास आते ही वह प्रतिकर्षित होता है। और जो बचाव का रास्ता तृतीयक हैलाइड लेता, वह बंद है: SN1 को ऐरिल धनायन चाहिए, जिसमें धन आवेश वलय के तल में एक sp² कक्षक में बैठता है और π तंत्र से बिलकुल विस्थानीकृत नहीं हो सकता। ऐरिल धनायन इतने अस्थायी हैं कि क्रियाविधि चलती ही नहीं। अतः दोनों साधारण रास्ते एक साथ बंद हैं, भिन्न कारणों से। उसे पार कैसे किया जाता है। चूँकि कठिनाई यह है कि वलय हमले के लिए बहुत इलेक्ट्रॉन-समृद्ध है, उपाय उसे निचोड़ना है। हैलोजन के ऑर्थो और पैरा स्थानों पर प्रबल इलेक्ट्रॉन-खींचक समूह — नाइट्रो समूह मानक चुनाव हैं — रखो। ये ठीक वे स्थान हैं जहाँ नाभिकरागी के हमला करने पर बने मध्यवर्ती में ऋण आवेश जमा होता है, अतः खींचक समूह उस मध्यवर्ती को स्थायी करते हैं और अवरोध घटाते हैं। प्रभाव नाटकीय और संचयी है: क्लोरोबेंज़ीन को 623 K और 300 atm चाहिए; 2,4-डाइनाइट्रोक्लोरोबेंज़ीन गर्म जलीय सोडियम कार्बोनेट से अभिक्रिया करता है; और 2,4,6-ट्राइनाइट्रोक्लोरोबेंज़ीन सादे गर्म पानी से जल-अपघटित हो जाता है, और पिक्रिक अम्ल इसी तरह बनता है। ध्यान दो कि स्थान की शर्त सजावट नहीं — मेटा स्थान पर नाइट्रो समूह बहुत कम मदद करता है, क्योंकि मध्यवर्ती में ऋण आवेश वहाँ कभी आता ही नहीं। इससे साथ ले जाने योग्य दो आदतें। पहली, जब कोई अभिक्रिया विफल हो, तो पूछो कि वह किस चरण पर विफल होती है; यहाँ उत्तर यह कि उपलब्ध दोनों में से कोई क्रियाविधि चल ही नहीं सकती, और भिन्न कारणों से। दूसरी, प्रतिस्थापी का ऐसा प्रभाव जो केवल प्रबलता नहीं बल्कि स्थान पर निर्भर हो, मध्यवर्ती के बारे में प्रमाण है, और प्रतिस्थापी को कहाँ बैठना पड़ता है वहाँ से उलटा तर्क करना क्रियाविधि स्थापित करने के मानक रास्तों में से एक है। (दूसरा विकल्प ऐसी त्रिविम व्याख्या देता है जिसका चपटा वलय समर्थन नहीं करता और जिसे छोटा नाभिकरागी हरा देता; तीसरा नापी गई बंध लंबाई उलट देता है; चौथा इलेक्ट्रॉनरागी ऐरोमैटिक प्रतिस्थापन से इनकार करता है, जो बेंज़ीन का पूरा रसायन है।)",
+          mr: "दोन्ही संयुगे कागदावर सारखी दिसतात — दोन्हींत कार्बनवर क्लोरीन — आणि इतकी वेगळी वागतात की तुलना काळजीपूर्वक उलगडण्याजोगी आहे. परिस्थितींचा फरक वेगात सुमारे 10¹⁰ चा गुणक आहे, जो प्रमाणाची बाब नाही. पहिला परिणाम: अनुनाद. क्लोरोबेंझिनमध्ये क्लोरीनला एकाकी जोड्या आहेत, आणि त्यांतली एक वलयाच्या π प्रणालीशी आच्छादू शकते. अनुनाद रचना काढा आणि C–Cl बंधाला अंशतः द्विबंध लक्षण मिळते तर ऋण प्रभार ऑर्थो आणि पॅरा जागी प्रकट होतो. अंशतः द्विबंध एकेरीहून लहान आणि तीव्र आहे, आणि माप त्याची खात्री देते: क्लोरोबेंझिनमध्ये C–Cl सुमारे 169 pm आहे तर क्लोरोमिथेनमध्ये 177 pm. म्हणून तो तोडणे अधिक महाग आहे, आणि कोणत्याही नाभिकरागी प्रतिस्थापनात तो बंध तुटावाच लागतो. दुसरा परिणाम: संकरण. क्लोरीन असलेला कार्बन क्लोरोबेंझिनमध्ये sp² आहे आणि क्लोरोइथेनमध्ये sp³. sp² कार्बनमध्ये एक-चतुर्थांशच्या तुलनेत एक-तृतीयांश s लक्षण आहे, आणि s कक्षक केंद्रकाच्या अधिक जवळ आहेत, म्हणून sp² कार्बन अधिक विद्युत ऋण आहे आणि आपले बंधन इलेक्ट्रॉन अधिक घट्ट धरतो. तो त्याअनुषंगाने नाभिकरागीकडून आणखी एक जोडी घ्यायला कमी तयार आहे. तिसरा परिणाम: प्रतिकर्षण आणि अनुपस्थित पर्याय. वलय आपल्या प्रतलाच्या वर आणि खाली π ढग वाहते, आणि नाभिकरागी व्याख्येने इलेक्ट्रॉन-समृद्ध आहे, म्हणून जवळ येताच तो प्रतिकर्षित होतो. आणि जो सुटकेचा मार्ग तृतीयक हॅलाइड घेईल, तो बंद आहे: SN1 ला अरिल धनायन लागेल, ज्यात धन प्रभार वलयाच्या प्रतलात एका sp² कक्षकात बसतो आणि π प्रणालीने मुळीच विस्थानित होऊ शकत नाही. अरिल धनायने इतकी अस्थिर आहेत की यंत्रणा चालतच नाही. म्हणून दोन्ही साधे मार्ग एकाच वेळी बंद आहेत, वेगळ्या कारणांनी. तो कसा पार केला जातो. अडचण ही की वलय हल्ल्यासाठी फार इलेक्ट्रॉन-समृद्ध आहे, म्हणून उपाय ते पिळून काढणे. हॅलोजनच्या ऑर्थो आणि पॅरा जागी तीव्र इलेक्ट्रॉन-ओढक गट — नायट्रो गट प्रमाणित निवड — ठेवा. या नेमक्या त्या जागा जिथे नाभिकरागीने हल्ला केल्यावर बनलेल्या मध्यवर्तीत ऋण प्रभार साठतो, म्हणून ओढक गट त्या मध्यवर्तीला स्थिर करतात आणि अडसर घटवतात. परिणाम नाट्यमय आणि संचयी आहे: क्लोरोबेंझिनला 623 K आणि 300 atm लागतात; 2,4-डायनायट्रोक्लोरोबेंझिन तप्त जलीय सोडियम कार्बोनेटशी अभिक्रिया करते; आणि 2,4,6-ट्रायनायट्रोक्लोरोबेंझिन साध्या तप्त पाण्याने जलअपघटित होते, आणि पिक्रिक आम्ल याच प्रकारे बनते. लक्षात घ्या की जागेची अट सजावट नाही — मेटा जागी नायट्रो गट फार कमी मदत करतो, कारण मध्यवर्तीत ऋण प्रभार तिथे कधी येतच नाही. यातून सोबत न्यायच्या दोन सवयी. पहिली, जेव्हा एखादी अभिक्रिया अपयशी ठरते, तेव्हा विचारा की ती कोणत्या पायरीवर अपयशी ठरते; इथे उत्तर हे की उपलब्ध दोन्हींपैकी कोणतीही यंत्रणा चालूच शकत नाही, आणि वेगळ्या कारणांनी. दुसरी, प्रतिस्थापीचा असा परिणाम जो केवळ तीव्रतेवर नव्हे तर जागेवर अवलंबून असेल, तो मध्यवर्तीबद्दलचा पुरावा आहे, आणि प्रतिस्थापीला कुठे बसावे लागते तिथून उलटा युक्तिवाद करणे हा यंत्रणा प्रस्थापित करण्याच्या प्रमाणित मार्गांपैकी एक आहे. (दुसरा पर्याय अशी त्रिमित उपपत्ती देतो जिला सपाट वलय आधार देत नाही आणि जिला लहान नाभिकरागी हरवेल; तिसरा मोजलेली बंध लांबी उलटवतो; चौथा इलेक्ट्रॉनरागी सुगंधी प्रतिस्थापन नाकारतो, जे बेंझिनचे अख्खे रसायन आहे.)",
+        },
+      },
+    ],
+  },
+  /*C5*/
 ];
 
 export const G12_CHEMISTRY_NUMERIC: Record<string, NumQ[]> = {
@@ -2077,6 +2774,330 @@ export const G12_CHEMISTRY_NUMERIC: Record<string, NumQ[]> = {
         en: "160 − 159 = 1 pm. The arithmetic is trivial; what it records is not. Going down a group normally adds a whole shell and increases the radius substantially — titanium to zirconium gains about 15 pm. Zirconium to hafnium gains nothing, and the reason is that fourteen lanthanoids lie between them. Across that inner series the 4f electrons shield the added protons badly, so each step contracts the atom slightly, and fourteen such steps almost exactly cancel the expansion a new shell would have given. The consequence is chemical, not merely dimensional: size and charge govern behaviour, these two share both, and so they form the same compounds, occur in the same ores and resisted separation until 1923. It matters practically because zirconium is nearly transparent to neutrons and hafnium absorbs them, so reactor cladding needs one and control rods the other — two elements a chemist can barely distinguish are opposites to a neutron. (319 adds the radii; 0 rounds the difference away and loses the point that they are not quite identical.)",
         hi: "160 − 159 = 1 pm. अंकगणित मामूली है; वह जो दर्ज करता है वह नहीं। किसी वर्ग में नीचे जाने पर प्रायः पूरी खोल जुड़ती है और त्रिज्या काफ़ी बढ़ती है — टाइटेनियम से ज़र्कोनियम लगभग 15 pm पाता है। ज़र्कोनियम से हैफ़्नियम कुछ नहीं पाता, और कारण यह कि उनके बीच चौदह लैंथेनॉयड पड़े हैं। उस भीतरी श्रेणी के आर-पार 4f इलेक्ट्रॉन जोड़े गए प्रोटॉनों को बुरी तरह ढकते हैं, अतः हर क़दम परमाणु को थोड़ा सिकोड़ता है, और चौदह ऐसे क़दम उस प्रसार को लगभग ठीक-ठीक काट देते हैं जो नई खोल देती। परिणाम रासायनिक है, केवल विमीय नहीं: आकार और आवेश आचरण चलाते हैं, ये दोनों दोनों बाँटते हैं, अतः वे वही यौगिक बनाते हैं, वही अयस्कों में मिलते हैं और 1923 तक पृथक्करण का प्रतिरोध करते रहे। व्यावहारिक रूप से यह मायने रखता है क्योंकि ज़र्कोनियम न्यूट्रॉनों के लिए लगभग पारदर्शी है और हैफ़्नियम उन्हें सोखता है, अतः रिएक्टर के आवरण को एक चाहिए और नियंत्रण छड़ों को दूसरा — दो तत्व जिन्हें रसायनज्ञ मुश्किल से अलग बता सकता है, न्यूट्रॉन के लिए उलटे हैं। (319 त्रिज्याएँ जोड़ देता है; 0 अंतर को गोल करके उड़ा देता है और यह बात खो देता है कि वे बिलकुल समरूप नहीं हैं।)",
         mr: "160 − 159 = 1 pm. अंकगणित किरकोळ आहे; ते जे नोंदवते ते नाही. एखाद्या गटात खाली जाताना सहसा अख्खे कवच जोडले जाते आणि त्रिज्या बरीच वाढते — टायटॅनियमपासून झिर्कोनियम सुमारे 15 pm मिळवते. झिर्कोनियमपासून हाफ्नियम काहीच मिळवत नाही, आणि कारण हे की त्यांच्यामध्ये चौदा लॅंथेनॉइड पडले आहेत. त्या आतल्या श्रेणीच्या आरपार 4f इलेक्ट्रॉन जोडलेल्या प्रोटॉनांना वाईट रीतीने झाकतात, म्हणून प्रत्येक पाऊल अणूला थोडे आकुंचित करते, आणि चौदा अशी पावले त्या प्रसरणाला जवळपास नेमके कापतात जे नवे कवच देईल. परिणाम रासायनिक आहे, केवळ मितीय नाही: आकार आणि प्रभार वर्तन चालवतात, हे दोघे दोन्ही वाटून घेतात, म्हणून ते तीच संयुगे बनवतात, त्याच खनिजांत आढळतात आणि 1923 पर्यंत वेगळेपणाला विरोध करत राहिले. व्यावहारिकदृष्ट्या हे महत्त्वाचे कारण झिर्कोनियम न्यूट्रॉनांसाठी जवळपास पारदर्शक आहे आणि हाफ्नियम त्यांना शोषते, म्हणून अणुभट्टीच्या आवरणाला एक लागते आणि नियंत्रण कांड्यांना दुसरे — दोन मूलद्रव्ये जी रसायनशास्त्रज्ञ जेमतेम वेगळी सांगू शकतो, न्यूट्रॉनसाठी उलट आहेत. (319 त्रिज्या जोडते; 0 फरक गोल करून उडवते आणि ते अगदी सारखे नाहीत हा मुद्दा गमावते.)",
+      },
+    },
+  ],
+  "chemistry-12-coordination-compounds": [
+    {
+      level: 1,
+      stem: {
+        en: "In the complex ion [Co(NH₃)₆]³⁺, what is the coordination number of cobalt?",
+        hi: "संकुल आयन [Co(NH₃)₆]³⁺ में कोबाल्ट की उपसहसंयोजन संख्या क्या है?",
+        mr: "संकुल आयन [Co(NH₃)₆]³⁺ मध्ये कोबाल्टची उपसहसंयोजन संख्या किती?",
+      },
+      answer: 6,
+      wrong: [3, 2, 12],
+      checkExpr: "3*2",
+      solution: {
+        en: "Six ammonia molecules are attached, each donating one lone pair through its nitrogen, so the coordination number is 3 × 2 = 6. Note that the +3 charge on the ion is the oxidation state and a different thing altogether — the two numbers answer different questions and only coincide by accident. (3 quotes the charge instead.)",
+        hi: "छह अमोनिया अणु जुड़े हैं, हर एक अपने नाइट्रोजन से एक एकाकी युग्म देता हुआ, अतः उपसहसंयोजन संख्या 3 × 2 = 6 है। ध्यान दो कि आयन पर +3 आवेश ऑक्सीकरण अवस्था है और बिलकुल अलग चीज़ — दोनों संख्याएँ भिन्न प्रश्नों का उत्तर देती हैं और केवल संयोग से मिलती हैं। (3 इसके बजाय आवेश बता देता है।)",
+        mr: "सहा अमोनिया रेणू जोडलेले आहेत, प्रत्येक आपल्या नायट्रोजनमधून एक एकाकी जोडी देत, म्हणून उपसहसंयोजन संख्या 3 × 2 = 6 आहे. लक्षात घ्या की आयनावरचा +3 प्रभार ही उपचयन अवस्था आहे आणि पूर्णपणे वेगळी गोष्ट — दोन्ही संख्या वेगळ्या प्रश्नांची उत्तरे देतात आणि केवळ योगायोगाने जुळतात. (3 त्याऐवजी प्रभार सांगते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "In [Ni(CO)₄], what is the coordination number of nickel?",
+        hi: "[Ni(CO)₄] में निकल की उपसहसंयोजन संख्या क्या है?",
+        mr: "[Ni(CO)₄] मध्ये निकेलची उपसहसंयोजन संख्या किती?",
+      },
+      answer: 4,
+      wrong: [8, 2, 0],
+      checkExpr: "2*2",
+      solution: {
+        en: "Four carbon monoxide ligands are attached, each through its carbon, so the coordination number is 2 × 2 = 4 and the geometry is tetrahedral. Nickel here is in the zero oxidation state, which is possible only because carbon monoxide is a neutral ligand — another reminder that coordination number and oxidation state are independent. (8 counts the atoms in the ligands rather than the donor atoms.)",
+        hi: "चार कार्बन मोनोऑक्साइड लिगैंड जुड़े हैं, हर एक अपने कार्बन से, अतः उपसहसंयोजन संख्या 2 × 2 = 4 है और ज्यामिति चतुष्फलकीय। यहाँ निकल शून्य ऑक्सीकरण अवस्था में है, जो केवल इसलिए संभव है कि कार्बन मोनोऑक्साइड उदासीन लिगैंड है — यह भी याद दिलाता है कि उपसहसंयोजन संख्या और ऑक्सीकरण अवस्था स्वतंत्र हैं। (8 दाता परमाणुओं के बजाय लिगैंडों के परमाणु गिन लेता है।)",
+        mr: "चार कार्बन मोनॉक्साइड लिगँड जोडलेले आहेत, प्रत्येक आपल्या कार्बनमधून, म्हणून उपसहसंयोजन संख्या 2 × 2 = 4 आहे आणि भूमिती चतुष्फलकी. इथे निकेल शून्य उपचयन अवस्थेत आहे, जे केवळ यासाठी शक्य आहे की कार्बन मोनॉक्साइड उदासीन लिगँड आहे — हेही आठवण करून देते की उपसहसंयोजन संख्या आणि उपचयन अवस्था स्वतंत्र आहेत. (8 दाता अणूंऐवजी लिगँडांतले अणू मोजते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "In K₄[Fe(CN)₆], what is the oxidation state of iron? Take potassium as +1 and each cyanide as −1.",
+        hi: "K₄[Fe(CN)₆] में लोहे की ऑक्सीकरण अवस्था क्या है? पोटैशियम को +1 और हर सायनाइड को −1 लो।",
+        mr: "K₄[Fe(CN)₆] मध्ये लोखंडाची उपचयन अवस्था किती? पोटॅशियम +1 आणि प्रत्येक सायनाइड −1 घ्या.",
+      },
+      answer: 2,
+      wrong: [3, 4, 6],
+      checkExpr: "6-4",
+      solution: {
+        en: "Four potassiums give +4 outside, so the complex ion carries −4. Inside it, six cyanides give −6, so iron must supply 6 − 4 = +2. Work from the outside in: the counter-ions fix the charge on the complex, and the ligands then fix what is left for the metal. (3 gives the state in the ferricyanide, which has three potassiums.)",
+        hi: "चार पोटैशियम बाहर +4 देते हैं, अतः संकुल आयन −4 ढोता है। उसके भीतर छह सायनाइड −6 देते हैं, अतः लोहे को 6 − 4 = +2 देना ही पड़ेगा। बाहर से भीतर की ओर काम करो: प्रतिआयन संकुल का आवेश तय करते हैं, और फिर लिगैंड तय करते हैं कि धातु के लिए क्या बचा। (3 फ़ेरिसायनाइड वाली अवस्था देता है, जिसमें तीन पोटैशियम हैं।)",
+        mr: "चार पोटॅशियम बाहेर +4 देतात, म्हणून संकुल आयन −4 वाहतो. त्याच्या आत सहा सायनाइड −6 देतात, म्हणून लोखंडाला 6 − 4 = +2 द्यावेच लागेल. बाहेरून आत काम करा: प्रतिआयन संकुलाचा प्रभार ठरवतात, आणि मग लिगँड ठरवतात की धातूसाठी काय उरले. (3 फेरिसायनाइडची अवस्था देते, ज्यात तीन पोटॅशियम आहेत.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "How many ions does one formula unit of [Co(NH₃)₆]Cl₃ give when it dissolves in water?",
+        hi: "[Co(NH₃)₆]Cl₃ की एक सूत्र इकाई पानी में घुलने पर कितने आयन देती है?",
+        mr: "[Co(NH₃)₆]Cl₃ चे एक सूत्र एकक पाण्यात विरघळताना किती आयन देते?",
+      },
+      answer: 4,
+      wrong: [2, 3, 6],
+      checkExpr: "1+3",
+      solution: {
+        en: "The complex ion stays intact as a single unit and the three chlorides outside the square brackets go free, so 1 + 3 = 4 ions. The ammonia molecules do NOT come off — that is the whole point of the square brackets, and it is why the conductivity of this solution matches a 1:3 electrolyte rather than a 1:9 one. Werner used exactly this measurement to work out how many ligands were inside the sphere. (6 counts the ammonias as ions.)",
+        hi: "संकुल आयन एक ही इकाई के रूप में सलामत रहता है और वर्ग कोष्ठकों के बाहर के तीन क्लोराइड मुक्त हो जाते हैं, अतः 1 + 3 = 4 आयन। अमोनिया अणु नहीं निकलते — वर्ग कोष्ठकों का पूरा मर्म यही है, और इसीलिए इस विलयन की चालकता 1:9 के बजाय 1:3 विद्युत अपघट्य से मेल खाती है। वर्नर ने ठीक इसी माप से निकाला कि मंडल के भीतर कितने लिगैंड हैं। (6 अमोनिया को आयन गिन लेता है।)",
+        mr: "संकुल आयन एकाच एककाच्या रूपात शाबूत राहतो आणि चौकटी कंसाबाहेरचे तीन क्लोराइड मुक्त होतात, म्हणून 1 + 3 = 4 आयन. अमोनिया रेणू निघत नाहीत — चौकटी कंसांचा अख्खा गाभा हाच आहे, आणि म्हणूनच या द्रावणाची वाहकता 1:9 ऐवजी 1:3 विद्युत अपघटनीशी जुळते. व्हर्नरने नेमक्या याच मापाने काढले की मंडलाच्या आत किती लिगँड आहेत. (6 अमोनियाला आयन मोजते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "In [Fe(CN)₆]³⁻ the iron is d⁵ and the complex is low-spin. How many unpaired electrons does it have?",
+        hi: "[Fe(CN)₆]³⁻ में लोहा d⁵ है और संकुल निम्न-चक्रण है। उसके पास कितने अयुग्मित इलेक्ट्रॉन हैं?",
+        mr: "[Fe(CN)₆]³⁻ मध्ये लोखंड d⁵ आहे आणि संकुल निम्न-परिवलन आहे. त्याच्याकडे किती अयुग्मित इलेक्ट्रॉन आहेत?",
+      },
+      answer: 1,
+      wrong: [5, 3, 0],
+      checkExpr: "5-4",
+      solution: {
+        en: "Low spin means the splitting Δ is larger than the pairing energy, so all five electrons crowd into the lower three orbitals: two of them pair up, two more pair up, and one is left over — 5 − 4 = 1 unpaired. Cyanide is at the strong-field end of the spectrochemical series, which is what forces this arrangement. (5 gives the high-spin answer, which is what water would produce.)",
+        hi: "निम्न चक्रण का अर्थ है विपाटन Δ युग्मन ऊर्जा से बड़ा है, अतः पाँचों इलेक्ट्रॉन निचले तीन कक्षकों में ठस जाते हैं: उनमें से दो युग्मित होते हैं, दो और युग्मित होते हैं, और एक बचता है — 5 − 4 = 1 अयुग्मित। सायनाइड स्पेक्ट्रमरासायनिक श्रेणी के प्रबल-क्षेत्र सिरे पर है, और यही इस व्यवस्था को मजबूर करता है। (5 उच्च-चक्रण वाला उत्तर देता है, जो पानी देता।)",
+        mr: "निम्न परिवलन म्हणजे विभाजन Δ युग्मन ऊर्जेहून मोठा आहे, म्हणून पाचही इलेक्ट्रॉन खालच्या तीन कक्षकांत दाटतात: त्यांतले दोन युग्मित होतात, आणखी दोन युग्मित होतात, आणि एक उरतो — 5 − 4 = 1 अयुग्मित. सायनाइड वर्णपटरासायनिक श्रेणीच्या तीव्र-क्षेत्र टोकावर आहे, आणि हेच या मांडणीला भाग पाडते. (5 उच्च-परिवलन उत्तर देते, जे पाणी देईल.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "In [Fe(H₂O)₆]³⁺ the iron is d⁵ and the complex is high-spin. How many unpaired electrons does it have?",
+        hi: "[Fe(H₂O)₆]³⁺ में लोहा d⁵ है और संकुल उच्च-चक्रण है। उसके पास कितने अयुग्मित इलेक्ट्रॉन हैं?",
+        mr: "[Fe(H₂O)₆]³⁺ मध्ये लोखंड d⁵ आहे आणि संकुल उच्च-परिवलन आहे. त्याच्याकडे किती अयुग्मित इलेक्ट्रॉन आहेत?",
+      },
+      answer: 5,
+      wrong: [1, 3, 4],
+      checkExpr: "10/2",
+      solution: {
+        en: "High spin means Δ is smaller than the pairing energy, so the five electrons spread out one to each of the five orbitals rather than pairing up: 10/2 = 5 unpaired. Compare with the cyanide complex of the same ion in the same oxidation state, which has one — the metal is identical and only the ligand differs, which is why a magnetic measurement identifies the ligand field rather than the metal. (1 gives the low-spin answer.)",
+        hi: "उच्च चक्रण का अर्थ है Δ युग्मन ऊर्जा से छोटा है, अतः पाँचों इलेक्ट्रॉन युग्मित होने के बजाय पाँचों कक्षकों में एक-एक फैल जाते हैं: 10/2 = 5 अयुग्मित। उसी ऑक्सीकरण अवस्था के उसी आयन के सायनाइड संकुल से तुलना करो, जिसमें एक है — धातु समरूप है और केवल लिगैंड भिन्न, इसीलिए चुंबकीय माप धातु नहीं बल्कि लिगैंड क्षेत्र पहचानता है। (1 निम्न-चक्रण वाला उत्तर देता है।)",
+        mr: "उच्च परिवलन म्हणजे Δ युग्मन ऊर्जेहून लहान आहे, म्हणून पाचही इलेक्ट्रॉन युग्मित होण्याऐवजी पाचही कक्षकांत एकेक पसरतात: 10/2 = 5 अयुग्मित. त्याच उपचयन अवस्थेतील त्याच आयनाच्या सायनाइड संकुलाशी तुलना करा, ज्यात एक आहे — धातू सारखीच आहे आणि केवळ लिगँड वेगळे, म्हणूनच चुंबकीय माप धातू नव्हे तर लिगँड क्षेत्र ओळखते. (1 निम्न-परिवलन उत्तर देते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "An octahedral complex has four identical ligands of one kind and two of another. How many geometrical isomers does it have?",
+        hi: "किसी अष्टफलकीय संकुल में एक क़िस्म के चार समरूप लिगैंड और दूसरी क़िस्म के दो हैं। उसके कितने ज्यामितीय समावयव हैं?",
+        mr: "एका अष्टफलकी संकुलात एका प्रकाराचे चार सारखे लिगँड आणि दुसऱ्या प्रकाराचे दोन आहेत. त्याचे किती भूमितीय समघटक आहेत?",
+      },
+      answer: 2,
+      wrong: [3, 4, 1],
+      checkExpr: "4/2",
+      solution: {
+        en: "The two odd ligands can sit next to each other or directly opposite, and there is no third distinct arrangement: 4/2 = 2 isomers, cis and trans. Counting them correctly requires seeing that all the 'next to each other' placements are the same molecule seen from different angles. Werner's whole argument for the octahedron rested on exactly two isomers being found for this formula, where a flat hexagon would have given three. (3 counts the flat-structure answer that the experiment ruled out.)",
+        hi: "दोनों अलग लिगैंड एक-दूसरे के बग़ल में या ठीक आमने-सामने बैठ सकते हैं, और कोई तीसरी भिन्न व्यवस्था है ही नहीं: 4/2 = 2 समावयव, सिस और ट्रांस। उन्हें ठीक गिनने के लिए यह देखना पड़ता है कि 'बग़ल में' वाली सारी जगहें अलग-अलग कोणों से देखा गया एक ही अणु हैं। अष्टफलक के पक्ष में वर्नर का पूरा तर्क इसी पर टिका था कि इस सूत्र के ठीक दो समावयव मिले, जबकि चपटा षट्भुज तीन देता। (3 चपटी संरचना वाला उत्तर गिनता है जिसे प्रयोग ने ख़ारिज किया।)",
+        mr: "दोन्ही वेगळे लिगँड एकमेकांच्या शेजारी वा नेमके समोरासमोर बसू शकतात, आणि कोणतीही तिसरी वेगळी मांडणी नाहीच: 4/2 = 2 समघटक, सिस आणि ट्रान्स. त्यांना नीट मोजण्यासाठी हे पाहावे लागते की 'शेजारी' असलेल्या सर्व जागा वेगवेगळ्या कोनांतून पाहिलेला एकच रेणू आहेत. अष्टफलकाच्या बाजूने व्हर्नरचा अख्खा युक्तिवाद याच्यावर टिकला होता की या सूत्राचे नेमके दोन समघटक सापडले, तर सपाट षट्कोन तीन देईल. (3 सपाट रचनेचे उत्तर मोजते जे प्रयोगाने नाकारले.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "How many moles of silver chloride precipitate when one mole of [Cr(H₂O)₆]Cl₃ is treated with excess silver nitrate?",
+        hi: "[Cr(H₂O)₆]Cl₃ के एक मोल पर अधिक मात्रा में सिल्वर नाइट्रेट डालने पर सिल्वर क्लोराइड के कितने मोल अवक्षेपित होते हैं?",
+        mr: "[Cr(H₂O)₆]Cl₃ च्या एका मोलवर जास्त प्रमाणात सिल्व्हर नायट्रेट टाकल्यावर सिल्व्हर क्लोराइडचे किती मोल अवक्षेपित होतात?",
+      },
+      answer: 3,
+      wrong: [1, 2, 6],
+      checkExpr: "6-3",
+      solution: {
+        en: "All three chlorides are outside the coordination sphere and free in solution, so all three precipitate: 6 − 3 = 3 mol of AgCl. This test is how the ionisation isomers are told apart. The compound [Cr(H₂O)₅Cl]Cl₂·H₂O has the same overall formula but one chloride inside the sphere, so it gives only two moles of precipitate, and [Cr(H₂O)₄Cl₂]Cl·2H₂O gives one. Counting a precipitate has determined a structure. (1 assumes only one chloride is free.)",
+        hi: "तीनों क्लोराइड उपसहसंयोजन मंडल के बाहर और विलयन में मुक्त हैं, अतः तीनों अवक्षेपित होते हैं: 6 − 3 = 3 mol AgCl. इसी परीक्षण से आयनन समावयव पहचाने जाते हैं। यौगिक [Cr(H₂O)₅Cl]Cl₂·H₂O का समग्र सूत्र वही है पर एक क्लोराइड मंडल के भीतर है, अतः वह केवल दो मोल अवक्षेप देता है, और [Cr(H₂O)₄Cl₂]Cl·2H₂O एक देता है। अवक्षेप गिनकर संरचना तय कर ली गई है। (1 मान लेता है कि केवल एक क्लोराइड मुक्त है।)",
+        mr: "तिन्ही क्लोराइड उपसहसंयोजन मंडलाबाहेर आणि द्रावणात मुक्त आहेत, म्हणून तिन्ही अवक्षेपित होतात: 6 − 3 = 3 mol AgCl. याच चाचणीने आयनन समघटक ओळखले जातात. संयुग [Cr(H₂O)₅Cl]Cl₂·H₂O चे एकूण सूत्र तेच आहे पण एक क्लोराइड मंडलाच्या आत आहे, म्हणून ते केवळ दोन मोल अवक्षेप देते, आणि [Cr(H₂O)₄Cl₂]Cl·2H₂O एक देते. अवक्षेप मोजून रचना ठरवली गेली आहे. (1 गृहीत धरते की केवळ एक क्लोराइड मुक्त आहे.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "EDTA in its fully deprotonated form binds a metal ion through two nitrogen atoms and four carboxylate oxygen atoms. How many donor atoms does one EDTA use?",
+        hi: "पूर्णतः विप्रोटोनित रूप में EDTA किसी धातु आयन को दो नाइट्रोजन परमाणुओं और चार कार्बोक्सिलेट ऑक्सीजन परमाणुओं से बाँधता है। एक EDTA कितने दाता परमाणु काम में लाता है?",
+        mr: "पूर्णतः विप्रोटोनित रूपात EDTA एखाद्या धातू आयनाला दोन नायट्रोजन अणू आणि चार कार्बोक्झिलेट ऑक्सिजन अणूंनी बांधतो. एक EDTA किती दाता अणू वापरतो?",
+      },
+      answer: 6,
+      wrong: [4, 2, 3],
+      checkExpr: "2+4",
+      solution: {
+        en: "2 + 4 = 6 donor atoms, so EDTA is hexadentate and a single molecule fills an entire octahedral coordination sphere. That is the whole basis of its usefulness. Displacing six separate ligands with one turns a smaller number of free particles into a larger one, and the entropy gain makes the complex enormously more stable than any assembly of six monodentate ligands — the chelate effect. It is also kinetically hard to remove, because all six bonds would have to break at once for the ligand to escape. (4 counts only the oxygens.)",
+        hi: "2 + 4 = 6 दाता परमाणु, अतः EDTA षट्दंतुर है और एक ही अणु पूरा अष्टफलकीय उपसहसंयोजन मंडल भर देता है। उसकी उपयोगिता का पूरा आधार यही है। छह अलग लिगैंडों को एक से विस्थापित करना मुक्त कणों की कम संख्या को अधिक बना देता है, और एन्ट्रॉपी का लाभ संकुल को छह एकदंतुर लिगैंडों की किसी भी जमावट से अपार अधिक स्थायी बना देता है — कीलेट प्रभाव। उसे हटाना बलगतिक रूप से भी कठिन है, क्योंकि लिगैंड के निकलने के लिए छहों बंधों को एक साथ टूटना पड़ेगा। (4 केवल ऑक्सीजन गिनता है।)",
+        mr: "2 + 4 = 6 दाता अणू, म्हणून EDTA षट्दंती आहे आणि एकच रेणू अख्खे अष्टफलकी उपसहसंयोजन मंडल भरतो. त्याच्या उपयुक्ततेचा अख्खा आधार हाच. सहा वेगळ्या लिगँडांना एकाने विस्थापित करणे मुक्त कणांची कमी संख्या अधिक करते, आणि एन्ट्रॉपीचा लाभ संकुलाला सहा एकदंती लिगँडांच्या कोणत्याही मांडणीहून अफाट अधिक स्थिर बनवतो — कीलेट परिणाम. त्याला काढणे गतिकदृष्ट्याही कठीण आहे, कारण लिगँड निसटण्यासाठी सहाही बंध एकाच वेळी तुटावे लागतील. (4 केवळ ऑक्सिजन मोजते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "[Ni(CN)₄]²⁻ has nickel as d⁸, is square planar and is found to be diamagnetic. How many unpaired electrons does it have?",
+        hi: "[Ni(CN)₄]²⁻ में निकल d⁸ है, वह वर्ग समतलीय है और प्रतिचुंबकीय पाया जाता है। उसके कितने अयुग्मित इलेक्ट्रॉन हैं?",
+        mr: "[Ni(CN)₄]²⁻ मध्ये निकेल d⁸ आहे, तो चौरस प्रतलीय आहे आणि प्रतिचुंबकीय आढळतो. त्याच्याकडे किती अयुग्मित इलेक्ट्रॉन आहेत?",
+      },
+      answer: 0,
+      wrong: [2, 4, 8],
+      checkExpr: "8-8",
+      solution: {
+        en: "Diamagnetic means no unpaired electrons at all: 8 − 8 = 0. The chain of inference is worth following, because it runs from a measurement to a shape. In a square planar field the d orbital pointing at the four ligands is pushed far above the rest, leaving four lower orbitals to hold eight electrons — exactly enough for all of them to be paired. A tetrahedral field would give a much smaller splitting, the eight electrons would spread out, and two would be left unpaired. So the observed diamagnetism is not merely consistent with square planar geometry; it excludes the tetrahedral alternative. Compare [NiCl₄]²⁻, which has the same d⁸ nickel with weak-field chloride, is tetrahedral, and is paramagnetic with two unpaired electrons. Same metal, same oxidation state, opposite magnetism and opposite shape — decided entirely by the ligand. (2 gives the tetrahedral answer.)",
+        hi: "प्रतिचुंबकीय का अर्थ है कोई अयुग्मित इलेक्ट्रॉन नहीं: 8 − 8 = 0. अनुमान की शृंखला का पीछा करना चाहिए, क्योंकि वह एक माप से एक आकार तक जाती है। वर्ग समतलीय क्षेत्र में चारों लिगैंडों की ओर इशारा करता d कक्षक बाक़ी से बहुत ऊपर धकेल दिया जाता है, और आठ इलेक्ट्रॉन रखने को चार निचले कक्षक बचते हैं — ठीक इतने कि सब युग्मित हो जाएँ। चतुष्फलकीय क्षेत्र कहीं छोटा विपाटन देता, आठों इलेक्ट्रॉन फैल जाते, और दो अयुग्मित बचते। अतः देखा गया प्रतिचुंबकत्व वर्ग समतलीय ज्यामिति से केवल संगत नहीं; वह चतुष्फलकीय विकल्प को ख़ारिज कर देता है। [NiCl₄]²⁻ से तुलना करो, जिसमें वही d⁸ निकल दुर्बल-क्षेत्र क्लोराइड के साथ है, जो चतुष्फलकीय है, और दो अयुग्मित इलेक्ट्रॉनों के साथ अनुचुंबकीय। वही धातु, वही ऑक्सीकरण अवस्था, उलटा चुंबकत्व और उलटा आकार — पूरी तरह लिगैंड से तय। (2 चतुष्फलकीय उत्तर देता है।)",
+        mr: "प्रतिचुंबकीय म्हणजे एकही अयुग्मित इलेक्ट्रॉन नाही: 8 − 8 = 0. अनुमानाच्या साखळीचा मागोवा घेण्याजोगा आहे, कारण ती एका मापापासून एका आकारापर्यंत जाते. चौरस प्रतलीय क्षेत्रात चारही लिगँडांकडे दाखवणारा d कक्षक बाकीच्यांहून खूप वर ढकलला जातो, आणि आठ इलेक्ट्रॉन ठेवायला चार खालचे कक्षक उरतात — नेमके इतके की सर्व युग्मित व्हावेत. चतुष्फलकी क्षेत्र कितीतरी लहान विभाजन देईल, आठही इलेक्ट्रॉन पसरतील, आणि दोन अयुग्मित उरतील. म्हणून निरीक्षिलेले प्रतिचुंबकत्व चौरस प्रतलीय भूमितीशी केवळ सुसंगत नाही; ते चतुष्फलकी पर्याय नाकारते. [NiCl₄]²⁻ शी तुलना करा, ज्यात तेच d⁸ निकेल दुर्बल-क्षेत्र क्लोराइडसह आहे, जे चतुष्फलकी आहे, आणि दोन अयुग्मित इलेक्ट्रॉनांसह अनुचुंबकीय. तीच धातू, तीच उपचयन अवस्था, उलट चुंबकत्व आणि उलट आकार — पूर्णपणे लिगँडाने ठरलेले. (2 चतुष्फलकी उत्तर देते.)",
+      },
+    },
+  ],
+  "chemistry-12-haloalkanes-and-haloarenes": [
+    {
+      level: 1,
+      stem: {
+        en: "How many structural isomers are there of C₄H₉Br?",
+        hi: "C₄H₉Br के कितने संरचनात्मक समावयव हैं?",
+        mr: "C₄H₉Br चे किती संरचनात्मक समघटक आहेत?",
+      },
+      answer: 4,
+      wrong: [2, 3, 5],
+      checkExpr: "2*2",
+      solution: {
+        en: "The four-carbon skeleton can be a straight chain or branched, and the bromine can go in two distinct places on each: 2 × 2 = 4 isomers — 1-bromobutane, 2-bromobutane, 1-bromo-2-methylpropane and 2-bromo-2-methylpropane. They span primary, secondary and tertiary, which is why this one formula can illustrate the whole substitution story. (2 counts only the skeletons.)",
+        hi: "चार कार्बन का ढाँचा सीधी शृंखला या शाखित हो सकता है, और ब्रोमीन हर एक पर दो भिन्न जगहों पर जा सकता है: 2 × 2 = 4 समावयव — 1-ब्रोमोब्यूटेन, 2-ब्रोमोब्यूटेन, 1-ब्रोमो-2-मेथिलप्रोपेन और 2-ब्रोमो-2-मेथिलप्रोपेन। वे प्राथमिक, द्वितीयक और तृतीयक तक फैले हैं, इसीलिए यह एक ही सूत्र प्रतिस्थापन की पूरी कहानी दिखा सकता है। (2 केवल ढाँचे गिनता है।)",
+        mr: "चार कार्बनचा सांगाडा सरळ साखळी वा फांदीदार असू शकतो, आणि ब्रोमीन प्रत्येकावर दोन वेगळ्या जागी जाऊ शकते: 2 × 2 = 4 समघटक — 1-ब्रोमोब्युटेन, 2-ब्रोमोब्युटेन, 1-ब्रोमो-2-मिथिलप्रोपेन आणि 2-ब्रोमो-2-मिथिलप्रोपेन. ते प्राथमिक, द्वितीयक आणि तृतीयकपर्यंत पसरलेले आहेत, म्हणूनच हे एकच सूत्र प्रतिस्थापनाची अख्खी कहाणी दाखवू शकते. (2 केवळ सांगाडे मोजते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "Bond enthalpies are 452 kJ/mol for C–F and 234 kJ/mol for C–I. By how much, in kJ/mol, is the C–F bond stronger?",
+        hi: "बंध एन्थैल्पी C–F के लिए 452 kJ/mol और C–I के लिए 234 kJ/mol है। C–F बंध कितना, kJ/mol में, अधिक प्रबल है?",
+        mr: "बंध एन्थॅल्पी C–F साठी 452 kJ/mol आणि C–I साठी 234 kJ/mol आहे. C–F बंध किती, kJ/mol ने, अधिक तीव्र आहे?",
+      },
+      answer: 218,
+      wrong: [686, 118, 101],
+      checkExpr: "452-234",
+      solution: {
+        en: "452 − 234 = 218 kJ/mol, which is nearly double. This is why the reactivity of the haloalkanes runs iodide > bromide > chloride > fluoride, in exactly the reverse of what bond polarity alone would suggest — fluorine makes the most polar bond and the least reactive compound, because in substitution the bond has to break and C–F is far the hardest to break. (686 adds the two.)",
+        hi: "452 − 234 = 218 kJ/mol, जो लगभग दुगुना है। इसीलिए हैलोऐल्केनों की क्रियाशीलता आयोडाइड > ब्रोमाइड > क्लोराइड > फ़्लुओराइड चलती है, ठीक उलटी उससे जो अकेली बंध ध्रुवता सुझाती — फ़्लुओरीन सबसे ध्रुवीय बंध और सबसे कम क्रियाशील यौगिक बनाता है, क्योंकि प्रतिस्थापन में बंध को टूटना पड़ता है और C–F तोड़ना कहीं सबसे कठिन है। (686 दोनों जोड़ देता है।)",
+        mr: "452 − 234 = 218 kJ/mol, जे जवळपास दुप्पट आहे. म्हणूनच हॅलोअल्केनांची क्रियाशीलता आयोडाइड > ब्रोमाइड > क्लोराइड > फ्लोराइड चालते, नेमकी उलट त्याहून जी एकटी बंध ध्रुवता सुचवेल — फ्लोरिन सर्वांत ध्रुवीय बंध आणि सर्वांत कमी क्रियाशील संयुग बनवते, कारण प्रतिस्थापनात बंध तुटावाच लागतो आणि C–F तोडणे कितीतरी सर्वांत कठीण आहे. (686 दोन्ही जोडते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "An SN2 reaction is first order in the halide and first order in the nucleophile. What is its overall order?",
+        hi: "कोई SN2 अभिक्रिया हैलाइड में प्रथम कोटि और नाभिकरागी में प्रथम कोटि की है। उसकी समग्र कोटि क्या है?",
+        mr: "एक SN2 अभिक्रिया हॅलाइडमध्ये प्रथम कोटी आणि नाभिकरागीत प्रथम कोटीची आहे. तिची एकूण कोटी किती?",
+      },
+      answer: 2,
+      wrong: [1, 3, 0],
+      checkExpr: "1+1",
+      solution: {
+        en: "1 + 1 = 2, which is where the '2' in SN2 comes from — it records the molecularity of the single step, in which both species must meet. The name is therefore a statement about mechanism and not merely a label: SN1 is named for a rate-determining step involving one molecule, and the numbers are experimental findings rather than conventions. (1 gives the SN1 order.)",
+        hi: "1 + 1 = 2, और SN2 का '2' यहीं से आता है — वह उस अकेले चरण की आणविकता दर्ज करता है जिसमें दोनों स्पीशीज़ को मिलना ही पड़ता है। अतः नाम क्रियाविधि के बारे में कथन है, केवल लेबल नहीं: SN1 का नाम ऐसे वेग-निर्धारक चरण पर है जिसमें एक अणु शामिल है, और संख्याएँ परिपाटियाँ नहीं बल्कि प्रायोगिक निष्कर्ष हैं। (1 SN1 वाली कोटि देता है।)",
+        mr: "1 + 1 = 2, आणि SN2 मधला '2' इथूनच येतो — तो त्या एकाच पायरीची रेणुकता नोंदवतो ज्यात दोन्ही जातींना भेटावेच लागते. म्हणून नाव हे यंत्रणेबद्दलचे विधान आहे, केवळ लेबल नव्हे: SN1 चे नाव अशा वेग-निर्धारक पायरीवर आहे ज्यात एक रेणू सामील आहे, आणि संख्या संकेत नसून प्रायोगिक निष्कर्ष आहेत. (1 SN1 ची कोटी देते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "In an SN2 reaction, both the halide and the nucleophile concentrations are doubled. By what factor does the rate rise?",
+        hi: "किसी SN2 अभिक्रिया में हैलाइड और नाभिकरागी दोनों की सांद्रताएँ दुगुनी कर दी जाती हैं। वेग कितने गुणक से बढ़ता है?",
+        mr: "एका SN2 अभिक्रियेत हॅलाइड आणि नाभिकरागी दोघांच्या संहती दुप्पट केल्या जातात. वेग किती पटीने वाढतो?",
+      },
+      answer: 4,
+      wrong: [2, 8, 1],
+      checkExpr: "2*2",
+      solution: {
+        en: "Rate = k[halide][nucleophile], so doubling both multiplies the rate by 2 × 2 = 4. Running exactly this experiment is how the two mechanisms are told apart: an SN1 reaction under the same treatment would speed up by only 2, because the nucleophile does not appear in its rate law at all. (2 doubles only once, which is the SN1 answer.)",
+        hi: "वेग = k[हैलाइड][नाभिकरागी], अतः दोनों दुगुने करने पर वेग 2 × 2 = 4 गुना हो जाता है। ठीक यही प्रयोग चलाकर दोनों क्रियाविधियाँ पहचानी जाती हैं: उसी उपचार में SN1 अभिक्रिया केवल 2 गुना तेज़ होती, क्योंकि उसके वेग नियम में नाभिकरागी है ही नहीं। (2 केवल एक बार दुगुना करता है, जो SN1 वाला उत्तर है।)",
+        mr: "वेग = k[हॅलाइड][नाभिकरागी], म्हणून दोन्ही दुप्पट केल्यास वेग 2 × 2 = 4 पट होतो. नेमका हाच प्रयोग चालवून दोन्ही यंत्रणा ओळखल्या जातात: त्याच उपचारात SN1 अभिक्रिया केवळ 2 पट वेगवान होईल, कारण तिच्या वेग नियमात नाभिकरागी आहेच नाही. (2 केवळ एकदा दुप्पट करते, जे SN1 चे उत्तर आहे.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "In an SN1 reaction the concentration of the nucleophile is doubled with the halide unchanged. By what factor does the rate rise?",
+        hi: "किसी SN1 अभिक्रिया में हैलाइड वही रखते हुए नाभिकरागी की सांद्रता दुगुनी कर दी जाती है। वेग कितने गुणक से बढ़ता है?",
+        mr: "एका SN1 अभिक्रियेत हॅलाइड तसेच ठेवून नाभिकरागीची संहती दुप्पट केली जाते. वेग किती पटीने वाढतो?",
+      },
+      answer: 1,
+      wrong: [2, 4, 0.5],
+      checkExpr: "2/2",
+      solution: {
+        en: "The rate is unchanged — a factor of 2/2 = 1 — because the nucleophile takes no part in the slow first step, which is simply the halide falling apart to give a carbocation. A species absent from the rate-determining step cannot appear in the rate law however much of it is added. This is the single most useful diagnostic in the chapter: add more nucleophile and watch whether anything happens. (2 assumes the nucleophile matters, which is the SN2 case.)",
+        hi: "वेग अपरिवर्तित रहता है — 2/2 = 1 का गुणक — क्योंकि नाभिकरागी धीमे पहले चरण में भाग नहीं लेता, जो बस हैलाइड का बिखरकर कार्बोकैटायन देना है। जो स्पीशीज़ वेग-निर्धारक चरण में अनुपस्थित हो वह वेग नियम में नहीं आ सकती, चाहे उसे कितना भी डाला जाए। यह अध्याय की सबसे काम की एकल जाँच है: और नाभिकरागी डालो और देखो कि कुछ होता है या नहीं। (2 मान लेता है कि नाभिकरागी मायने रखता है, जो SN2 वाली स्थिति है।)",
+        mr: "वेग अपरिवर्तित राहतो — 2/2 = 1 चा गुणक — कारण नाभिकरागी सावकाश पहिल्या पायरीत भाग घेत नाही, जी फक्त हॅलाइडचे विखुरून कार्बोकॅटायन देणे आहे. जी जाती वेग-निर्धारक पायरीत अनुपस्थित असेल ती वेग नियमात येऊ शकत नाही, तिला कितीही घातले तरी. ही प्रकरणातली सर्वांत उपयुक्त एकेरी चाचणी आहे: आणखी नाभिकरागी घाला आणि पाहा की काही घडते का. (2 गृहीत धरते की नाभिकरागी महत्त्वाचा आहे, जी SN2 ची स्थिती आहे.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A single enantiomer of a chiral halide reacts by a pure SN2 route. What percentage of the product has the inverted configuration?",
+        hi: "किसी काइरल हैलाइड का एकल प्रतिबिंब रूप विशुद्ध SN2 रास्ते से अभिक्रिया करता है। उत्पाद का कितना प्रतिशत प्रतिलोमित विन्यास का है?",
+        mr: "एका कायरल हॅलाइडचे एकेरी प्रतिबिंब रूप शुद्ध SN2 मार्गाने अभिक्रिया करते. उत्पादनाचा किती टक्के प्रतिलोमित मांडणीचा आहे?",
+      },
+      answer: 100,
+      wrong: [50, 0, 25],
+      checkExpr: "50*2",
+      solution: {
+        en: "All of it — 50 × 2 = 100 per cent — because the nucleophile can only attack from the face opposite the leaving group, so every molecule that reacts is turned inside out. There is no route by which a product of retained configuration can arise in a pure SN2 reaction. This makes the stereochemistry a decisive test: a single inverted product proves one step, and anything less than complete inversion says some SN1 was running alongside. (50 gives the racemic result that a pure SN1 route would produce.)",
+        hi: "पूरा — 50 × 2 = 100 प्रतिशत — क्योंकि नाभिकरागी केवल प्रस्थायी समूह के विपरीत फलक से हमला कर सकता है, अतः जो भी अणु अभिक्रिया करता है वह उलट जाता है। विशुद्ध SN2 अभिक्रिया में ऐसा कोई रास्ता नहीं जिससे धारित विन्यास का उत्पाद बन सके। इससे त्रिविम रसायन निर्णायक परीक्षण बन जाता है: अकेला प्रतिलोमित उत्पाद एक चरण सिद्ध करता है, और पूर्ण प्रतिलोमन से कम कुछ भी कहता है कि साथ-साथ कुछ SN1 भी चल रहा था। (50 वह रेसीमी परिणाम देता है जो विशुद्ध SN1 रास्ता देता।)",
+        mr: "अख्खे — 50 × 2 = 100 टक्के — कारण नाभिकरागी केवळ निघणाऱ्या गटाच्या विरुद्ध पृष्ठभागाकडून हल्ला करू शकतो, म्हणून जो रेणू अभिक्रिया करतो तो उलटतोच. शुद्ध SN2 अभिक्रियेत असा कोणताही मार्ग नाही ज्याने टिकलेल्या मांडणीचे उत्पादन बनू शकेल. यामुळे त्रिमित रसायन निर्णायक चाचणी बनते: एकच प्रतिलोमित उत्पादन एक पायरी सिद्ध करते, आणि पूर्ण प्रतिलोमनाहून कमी काहीही सांगते की सोबत काही SN1 ही चालत होते. (50 तो रेसिमी निकाल देते जो शुद्ध SN1 मार्ग देईल.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A pure SN1 reaction proceeds through a flat carbocation and gives a racemic mixture. What percentage of the product is each enantiomer?",
+        hi: "विशुद्ध SN1 अभिक्रिया चपटे कार्बोकैटायन से होकर चलती है और रेसीमी मिश्रण देती है। उत्पाद का कितना प्रतिशत हर प्रतिबिंब रूप है?",
+        mr: "शुद्ध SN1 अभिक्रिया सपाट कार्बोकॅटायनमधून चालते आणि रेसिमी मिश्रण देते. उत्पादनाचा किती टक्के प्रत्येक प्रतिबिंब रूप आहे?",
+      },
+      answer: 50,
+      wrong: [100, 25, 0],
+      checkExpr: "100/2",
+      solution: {
+        en: "100/2 = 50 per cent of each, because the carbocation is planar and the nucleophile is equally likely to arrive at either face. The mixture is optically inactive: the two enantiomers rotate polarised light by equal amounts in opposite directions and cancel. Note what has been lost — the starting material was a single enantiomer and the product is not, so an SN1 reaction destroys stereochemical information that an SN2 reaction preserves and inverts. (100 assumes a single product.)",
+        hi: "हर एक का 100/2 = 50 प्रतिशत, क्योंकि कार्बोकैटायन समतलीय है और नाभिकरागी के किसी भी फलक पर पहुँचने की संभावना बराबर है। मिश्रण प्रकाशिक रूप से निष्क्रिय है: दोनों प्रतिबिंब रूप ध्रुवित प्रकाश को बराबर मात्रा में उलटी दिशाओं में घुमाते हैं और कट जाते हैं। ध्यान दो कि क्या खोया — आरंभिक पदार्थ एकल प्रतिबिंब रूप था और उत्पाद नहीं है, अतः SN1 अभिक्रिया वह त्रिविम सूचना नष्ट कर देती है जिसे SN2 अभिक्रिया बचाती और उलटती है। (100 अकेला उत्पाद मान लेता है।)",
+        mr: "प्रत्येकाचे 100/2 = 50 टक्के, कारण कार्बोकॅटायन प्रतलीय आहे आणि नाभिकरागीची कोणत्याही पृष्ठभागावर पोहोचण्याची शक्यता समान आहे. मिश्रण प्रकाशीयदृष्ट्या निष्क्रिय आहे: दोन्ही प्रतिबिंब रूपे ध्रुवित प्रकाश समान प्रमाणात उलट दिशांनी फिरवतात आणि कापले जातात. काय गमावले ते लक्षात घ्या — प्रारंभिक पदार्थ एकेरी प्रतिबिंब रूप होता आणि उत्पादन नाही, म्हणून SN1 अभिक्रिया ती त्रिमित माहिती नष्ट करते जी SN2 अभिक्रिया टिकवते आणि उलटवते. (100 एकच उत्पादन गृहीत धरते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "Three moles of 1,2-dibromoethane are completely hydrolysed and the solution treated with excess silver nitrate. How many moles of silver bromide precipitate?",
+        hi: "1,2-डाइब्रोमोएथेन के तीन मोल पूरी तरह जल-अपघटित किए जाते हैं और विलयन में अधिक मात्रा में सिल्वर नाइट्रेट डाला जाता है। सिल्वर ब्रोमाइड के कितने मोल अवक्षेपित होते हैं?",
+        mr: "1,2-डायब्रोमोइथेनचे तीन मोल पूर्णपणे जलअपघटित केले जातात आणि द्रावणात जास्त प्रमाणात सिल्व्हर नायट्रेट टाकले जाते. सिल्व्हर ब्रोमाइडचे किती मोल अवक्षेपित होतात?",
+      },
+      answer: 6,
+      wrong: [3, 2, 12],
+      checkExpr: "3*2",
+      solution: {
+        en: "Each molecule carries two bromines, so three moles release 3 × 2 = 6 moles of bromide, and all of it precipitates as AgBr. The step that is easy to skip is the 'di' in the name: a formula's subscripts have to be read before any stoichiometry is done. Note also that the halide must be hydrolysed first — silver nitrate added to the haloalkane itself would precipitate nothing, because the bromine is covalently bound and not free as an ion. (3 counts the molecules rather than the halogens.)",
+        hi: "हर अणु दो ब्रोमीन ढोता है, अतः तीन मोल 3 × 2 = 6 मोल ब्रोमाइड छोड़ते हैं, और वह सब AgBr बनकर अवक्षेपित होता है। जो चरण छोड़ना आसान है वह नाम का 'डाइ' है: कोई भी रससमीकरणमिति करने से पहले सूत्र के अधोलेख पढ़ने ही पड़ते हैं। यह भी ध्यान दो कि हैलाइड को पहले जल-अपघटित करना पड़ता है — स्वयं हैलोऐल्केन में सिल्वर नाइट्रेट डालने से कुछ भी अवक्षेपित नहीं होता, क्योंकि ब्रोमीन सहसंयोजक रूप से बँधा है, आयन के रूप में मुक्त नहीं। (3 हैलोजनों के बजाय अणु गिनता है।)",
+        mr: "प्रत्येक रेणू दोन ब्रोमीन वाहतो, म्हणून तीन मोल 3 × 2 = 6 मोल ब्रोमाइड सोडतात, आणि ते सर्व AgBr बनून अवक्षेपित होते. जी पायरी गाळणे सोपे ती नावातले 'डाय': कोणतीही रासायनिक गणिते करण्याआधी सूत्राचे अधोलेख वाचावेच लागतात. हेही लक्षात घ्या की हॅलाइड आधी जलअपघटित करावे लागते — स्वतः हॅलोअल्केनात सिल्व्हर नायट्रेट घातल्याने काहीही अवक्षेपित होत नाही, कारण ब्रोमीन सहसंयुजरीत्या बांधलेले आहे, आयन म्हणून मुक्त नाही. (3 हॅलोजनांऐवजी रेणू मोजते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "An SN1 hydrolysis is first order in the halide. What percentage of the halide remains after two half-lives?",
+        hi: "कोई SN1 जल-अपघटन हैलाइड में प्रथम कोटि का है। दो अर्धायुओं के बाद हैलाइड का कितना प्रतिशत बचता है?",
+        mr: "एक SN1 जलअपघटन हॅलाइडमध्ये प्रथम कोटीचे आहे. दोन अर्धायुष्यांनंतर हॅलाइडचा किती टक्के उरतो?",
+      },
+      answer: 25,
+      wrong: [50, 12.5, 75],
+      checkExpr: "100/4",
+      solution: {
+        en: "Two half-lives leave 100/2² = 100/4 = 25 per cent. That the first-order half-life applies at all is itself a finding: it says the slow step involves the halide alone, which is exactly what the SN1 mechanism claims. So the kinetics of an SN1 reaction have the same mathematical form as radioactive decay, for a related reason — each halide molecule has a fixed probability per second of losing its leaving group, regardless of what is around it. (50 stops one half-life short.)",
+        hi: "दो अर्धायुएँ 100/2² = 100/4 = 25 प्रतिशत छोड़ती हैं। प्रथम कोटि की अर्धायु का लागू होना ही अपने आप में एक निष्कर्ष है: वह कहता है कि धीमे चरण में अकेला हैलाइड शामिल है, और SN1 क्रियाविधि ठीक यही दावा करती है। अतः SN1 अभिक्रिया की बलगतिकी का गणितीय रूप रेडियोऐक्टिव क्षय जैसा ही है, और कारण भी जुड़ा हुआ — हर हैलाइड अणु के प्रति सेकंड अपना प्रस्थायी समूह खोने की संभावना नियत है, चाहे उसके गिर्द कुछ भी हो। (50 एक अर्धायु पहले रुक जाता है।)",
+        mr: "दोन अर्धायुष्ये 100/2² = 100/4 = 25 टक्के सोडतात. प्रथम कोटीचे अर्धायुष्य लागू होणे हेच स्वतःच एक निष्कर्ष आहे: ते सांगते की सावकाश पायरीत एकटे हॅलाइड सामील आहे, आणि SN1 यंत्रणा नेमका हाच दावा करते. म्हणून SN1 अभिक्रियेच्या गतिकीचे गणिती स्वरूप किरणोत्सर्गी क्षयासारखेच आहे, आणि कारणही जोडलेले — प्रत्येक हॅलाइड रेणूची दर सेकंदाला आपला निघणारा गट गमावण्याची शक्यता ठराविक आहे, त्याच्याभोवती काहीही असो. (50 एक अर्धायुष्य आधी थांबते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "The C–Cl bond is 177 pm long in chloromethane and 169 pm in chlorobenzene. What is the difference, in pm?",
+        hi: "C–Cl बंध क्लोरोमेथेन में 177 pm लंबा है और क्लोरोबेंज़ीन में 169 pm. अंतर, pm में, क्या है?",
+        mr: "C–Cl बंध क्लोरोमिथेनमध्ये 177 pm लांब आहे आणि क्लोरोबेंझिनमध्ये 169 pm. फरक, pm मध्ये, किती?",
+      },
+      answer: 8,
+      wrong: [346, 0, 16],
+      checkExpr: "177-169",
+      solution: {
+        en: "177 − 169 = 8 pm. The number is small and what it records is not. A bond that is shorter is stronger, and this one has been shortened by resonance: the chlorine's lone pair delocalises into the ring, giving the C–Cl bond partial double-bond character. That is one of the three reasons chlorobenzene resists nucleophilic substitution — the others being that the carbon is sp² and therefore holds its electrons more tightly, and that the ring's π cloud repels an incoming nucleophile while offering no SN1 escape, since an aryl cation cannot be stabilised by delocalisation at all. The difference in conditions is stark: chloroethane hydrolyses in warm aqueous alkali within minutes, chlorobenzene needs 623 K and 300 atmospheres. Eight picometres is a small measurement standing in for a very large chemical fact. (346 adds the two lengths; 0 rounds the difference away.)",
+        hi: "177 − 169 = 8 pm. संख्या छोटी है और वह जो दर्ज करती है वह नहीं। जो बंध छोटा है वह प्रबल है, और यह अनुनाद से छोटा किया गया है: क्लोरीन का एकाकी युग्म वलय में विस्थानीकृत हो जाता है, जिससे C–Cl बंध को आंशिक द्विबंध लक्षण मिलता है। क्लोरोबेंज़ीन के नाभिकरागी प्रतिस्थापन का प्रतिरोध करने के तीन कारणों में से यह एक है — बाक़ी यह कि कार्बन sp² है और इसलिए अपने इलेक्ट्रॉन अधिक कसकर पकड़ता है, और यह कि वलय का π बादल आते नाभिकरागी को प्रतिकर्षित करता है और कोई SN1 बचाव भी नहीं देता, क्योंकि ऐरिल धनायन विस्थानीकरण से बिलकुल स्थायी नहीं हो सकता। परिस्थितियों का अंतर तीखा है: क्लोरोएथेन गर्म जलीय क्षार में मिनटों में जल-अपघटित होता है, क्लोरोबेंज़ीन को 623 K और 300 वायुमंडल चाहिए। आठ पिकोमीटर बहुत बड़े रासायनिक तथ्य के लिए खड़ा छोटा माप है। (346 दोनों लंबाइयाँ जोड़ देता है; 0 अंतर को गोल करके उड़ा देता है।)",
+        mr: "177 − 169 = 8 pm. संख्या लहान आहे आणि ती जे नोंदवते ते नाही. जो बंध लहान आहे तो तीव्र आहे, आणि हा अनुनादाने लहान केला गेला आहे: क्लोरीनची एकाकी जोडी वलयात विस्थानित होते, ज्याने C–Cl बंधाला अंशतः द्विबंध लक्षण मिळते. क्लोरोबेंझिन नाभिकरागी प्रतिस्थापनाला विरोध करण्याच्या तीन कारणांपैकी हे एक — बाकीची अशी की कार्बन sp² आहे आणि म्हणून आपले इलेक्ट्रॉन अधिक घट्ट धरतो, आणि अशी की वलयाचे π ढग येणाऱ्या नाभिकरागीला प्रतिकर्षित करते आणि कोणताही SN1 सुटकेचा मार्गही देत नाही, कारण अरिल धनायन विस्थानीकरणाने मुळीच स्थिर होऊ शकत नाही. परिस्थितींचा फरक ठळक आहे: क्लोरोइथेन तप्त जलीय क्षारात मिनिटांत जलअपघटित होते, क्लोरोबेंझिनला 623 K आणि 300 वातावरणे लागतात. आठ पिकोमीटर हे फार मोठ्या रासायनिक सत्यासाठी उभे असलेले लहान माप आहे. (346 दोन्ही लांबी जोडते; 0 फरक गोल करून उडवते.)",
       },
     },
   ],
