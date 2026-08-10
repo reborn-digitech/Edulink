@@ -228,20 +228,20 @@ export const G12_PHYSICS: Chapter[] = [
       {
         id: "superposition-principle",
         name: {
-          en: "The principle of superposition",
-          hi: "अध्यारोपण का सिद्धांत",
-          mr: "अध्यारोपणाचे तत्त्व",
+          en: "Superposition of electrostatic forces",
+          hi: "स्थिरवैद्युत बलों का अध्यारोपण",
+          mr: "स्थिरविद्युत बलांचे अध्यारोपण",
         },
         kind: "law",
         prompt: {
-          en: "The force one charge exerts on another is exactly what it would be if the other charges in the room had been taken away, so the total is found by adding the separate forces as vectors. Which principle is this?",
-          hi: "एक आवेश दूसरे पर जो बल लगाता है वह ठीक वही है जो कमरे के बाक़ी आवेश हटा दिए जाने पर होता, अतः कुल बल अलग-अलग बलों को सदिश की तरह जोड़कर मिलता है। यह कौन-सा सिद्धांत है?",
-          mr: "एक प्रभार दुसऱ्यावर जे बल लावतो ते नेमके तेच असते जे खोलीतले बाकीचे प्रभार काढून टाकले असते तर असते, म्हणून एकूण बल वेगवेगळी बले सदिशाप्रमाणे जोडून मिळते. हे कोणते तत्त्व?",
+          en: "The force one charge exerts on another is exactly what it would be if the other charges in the room had been taken away, so the total is found by adding the separate forces as vectors. Which superposition is this?",
+          hi: "एक आवेश दूसरे पर जो बल लगाता है वह ठीक वही है जो कमरे के बाक़ी आवेश हटा दिए जाने पर होता, अतः कुल बल अलग-अलग बलों को सदिश की तरह जोड़कर मिलता है। यह किसका अध्यारोपण है?",
+          mr: "एक प्रभार दुसऱ्यावर जे बल लावतो ते नेमके तेच असते जे खोलीतले बाकीचे प्रभार काढून टाकले असते तर असते, म्हणून एकूण बल वेगवेगळी बले सदिशाप्रमाणे जोडून मिळते. हे कशाचे अध्यारोपण?",
         },
         statement: {
-          en: "The principle of superposition says the force between any two charges is unaffected by the presence of others, so the net force on a charge is the vector sum of the pairwise Coulomb forces.",
-          hi: "अध्यारोपण का सिद्धांत कहता है कि किन्हीं दो आवेशों के बीच बल दूसरों की उपस्थिति से अप्रभावित रहता है, अतः किसी आवेश पर कुल बल युग्मवार कूलॉम बलों का सदिश योग है।",
-          mr: "अध्यारोपणाचे तत्त्व सांगते की कोणत्याही दोन प्रभारांमधले बल इतरांच्या उपस्थितीने अप्रभावित राहते, म्हणून एखाद्या प्रभारावरचे एकूण बल जोडीनिहाय कुलोम बलांची सदिश बेरीज असते.",
+          en: "Superposition of electrostatic forces means the force between any two charges is unaffected by the presence of others, so the net force on a charge is the vector sum of the pairwise Coulomb forces.",
+          hi: "स्थिरवैद्युत बलों का अध्यारोपण कहता है कि किन्हीं दो आवेशों के बीच बल दूसरों की उपस्थिति से अप्रभावित रहता है, अतः किसी आवेश पर कुल बल युग्मवार कूलॉम बलों का सदिश योग है।",
+          mr: "स्थिरविद्युत बलांचे अध्यारोपण सांगते की कोणत्याही दोन प्रभारांमधले बल इतरांच्या उपस्थितीने अप्रभावित राहते, म्हणून एखाद्या प्रभारावरचे एकूण बल जोडीनिहाय कुलोम बलांची सदिश बेरीज असते.",
         },
         detail: {
           en: "It is an independent experimental fact, not a corollary of Coulomb's law: a force law could perfectly well be inverse-square and still have a third charge weaken the pull between the first two.",
@@ -260,9 +260,9 @@ export const G12_PHYSICS: Chapter[] = [
             mr: "प्रत्येक जोडी अशी वागते जणू बाकीचे नाहीतच",
           },
           right: {
-            en: "the principle of superposition",
-            hi: "अध्यारोपण का सिद्धांत",
-            mr: "अध्यारोपणाचे तत्त्व",
+            en: "superposition of electrostatic forces",
+            hi: "स्थिरवैद्युत बलों का अध्यारोपण",
+            mr: "स्थिरविद्युत बलांचे अध्यारोपण",
           },
         },
       },
@@ -2821,6 +2821,1399 @@ export const G12_PHYSICS: Chapter[] = [
     ],
   },
   /*C5*/
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 9 — Ray Optics and Optical Instruments                          */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "physics-12-ray-optics-and-optical-instruments",
+    subject: "PHYSICS",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 9 — Ray Optics and Optical Instruments",
+      hi: "अध्याय 9 — किरण प्रकाशिकी एवं प्रकाशिक यंत्र",
+      mr: "प्रकरण 9 — किरण प्रकाशिकी आणि प्रकाशीय उपकरणे",
+    },
+    name: {
+      en: "Ray Optics and Optical Instruments",
+      hi: "किरण प्रकाशिकी एवं प्रकाशिक यंत्र",
+      mr: "किरण प्रकाशिकी आणि प्रकाशीय उपकरणे",
+    },
+    summary: {
+      en: "Light bending at a boundary until, past a certain angle, it stops crossing altogether and is thrown back with nothing lost — which is how a signal travels a hundred kilometres down a glass thread; a formula that builds a lens's focal length out of two curvatures and one ratio of speeds, so the same piece of glass has a different focal length in air and in water while a mirror has the same one in both; a prism turned until the deviation stops decreasing and starts increasing again, that one position being the only one at which the index can be read off cleanly; and three instruments in which what is being enlarged is not the object but the angle it subtends at the eye.",
+      hi: "सीमा पर मुड़ता प्रकाश, जब तक कि किसी कोण के आगे वह पार जाना बिलकुल छोड़ न दे और बिना कुछ खोए लौटा न दिया जाए — और इसी तरह संकेत काँच के धागे में सौ किलोमीटर चलता है; वह सूत्र जो लेंस की फोकस दूरी को दो वक्रताओं और चालों के एक अनुपात से बनाता है, अतः वही काँच हवा और पानी में भिन्न फोकस दूरी रखता है जबकि दर्पण की दोनों में एक ही रहती है; वह प्रिज़्म जो तब तक घुमाया जाता है जब तक विचलन घटना छोड़कर फिर बढ़ना शुरू न कर दे, और वही एक स्थिति है जहाँ अपवर्तनांक साफ़-साफ़ पढ़ा जा सकता है; और तीन यंत्र जिनमें बड़ा किया जा रहा है वस्तु नहीं बल्कि वह कोण जो वह आँख पर बनाती है।",
+      mr: "सीमेवर वाकणारा प्रकाश, जोवर एका कोनापुढे तो पलीकडे जाणे पूर्णपणे थांबवत नाही आणि काहीही न गमावता परत फेकला जात नाही — आणि अशाच प्रकारे संकेत काचेच्या धाग्यातून शंभर किलोमीटर जातो; ते सूत्र जे भिंगाची नाभीय अंतर दोन वक्रता आणि वेगांच्या एका गुणोत्तरातून बनवते, म्हणून तीच काच हवेत आणि पाण्यात वेगळे नाभीय अंतर बाळगते तर आरशाचे दोन्हीत तेच राहते; तो लोलक जो तोवर फिरवला जातो जोवर विचलन घटणे थांबवून पुन्हा वाढू लागत नाही, आणि तीच एक स्थिती जिथे अपवर्तनांक स्वच्छपणे वाचता येतो; आणि तीन उपकरणे ज्यांत मोठे केले जात आहे ती वस्तू नसून तो कोन जो ती डोळ्यावर बनवते.",
+    },
+    position: 9,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "total-internal-reflection",
+        name: {
+          en: "Total internal reflection",
+          hi: "पूर्ण आंतरिक परावर्तन",
+          mr: "पूर्ण अंतर्गत परावर्तन",
+        },
+        kind: "result about refraction",
+        prompt: {
+          en: "Light going from glass into air bends further from the normal as the angle grows, until past a certain angle no light emerges at all and every ray is turned back into the glass. What is this called?",
+          hi: "काँच से हवा में जाता प्रकाश कोण बढ़ने पर अभिलंब से और दूर मुड़ता जाता है, जब तक कि किसी कोण के आगे बिलकुल कोई प्रकाश बाहर न निकले और हर किरण काँच में ही लौटा न दी जाए। इसे क्या कहते हैं?",
+          mr: "काचेतून हवेत जाणारा प्रकाश कोन वाढल्यावर लंबापासून आणखी दूर वाकत जातो, जोवर एका कोनापुढे मुळीच प्रकाश बाहेर पडत नाही आणि प्रत्येक किरण काचेतच परत फिरवला जात नाही. याला काय म्हणतात?",
+        },
+        statement: {
+          en: "Total internal reflection occurs when light meets a boundary to a rarer medium at more than the critical angle, given by sin C = 1/n, and the whole beam is reflected back with no refracted part at all.",
+          hi: "पूर्ण आंतरिक परावर्तन तब होता है जब प्रकाश विरल माध्यम की सीमा से क्रांतिक कोण से अधिक पर मिले, जो sin C = 1/n से मिलता है, और पूरा पुंज बिना किसी अपवर्तित भाग के लौटा दिया जाए।",
+          mr: "पूर्ण अंतर्गत परावर्तन तेव्हा घडते जेव्हा प्रकाश विरळ माध्यमाच्या सीमेला क्रांतिक कोनाहून अधिकवर भेटतो, जो sin C = 1/n ने मिळतो, आणि अख्खी शलाका कोणत्याही अपवर्तित भागाविना परत फिरवली जाते.",
+        },
+        detail: {
+          en: "It is the only reflection that is genuinely total: an ordinary mirror always absorbs a few per cent at each bounce, which after a thousand reflections would leave nothing at all.",
+          hi: "यही एकमात्र परावर्तन है जो सचमुच पूर्ण है: साधारण दर्पण हर उछाल पर कुछ प्रतिशत सोख ही लेता है, जो हज़ार परावर्तनों के बाद कुछ भी न छोड़ता।",
+          mr: "हेच एकमेव परावर्तन जे खरोखर पूर्ण आहे: साधा आरसा प्रत्येक उसळीवर काही टक्के शोषतोच, जे हजार परावर्तनांनंतर काहीही उरू देणार नाही.",
+        },
+        extra: {
+          en: "An optical fibre is that fact turned into a cable: light entering at a shallow enough angle strikes the wall above the critical angle every time and zigzags for kilometres without leaking.",
+          hi: "प्रकाशिक तंतु वही तथ्य केबल में बदला हुआ है: पर्याप्त उथले कोण पर घुसा प्रकाश हर बार दीवार से क्रांतिक कोण से ऊपर टकराता है और बिना रिसे किलोमीटरों तक टेढ़ा-मेढ़ा चलता है।",
+          mr: "प्रकाशीय तंतू म्हणजे तेच सत्य केबलमध्ये बदललेले: पुरेशा उथळ कोनात शिरलेला प्रकाश प्रत्येक वेळी भिंतीवर क्रांतिक कोनाहून वर आदळतो आणि न गळता किलोमीटर नागमोडी जातो.",
+        },
+        pair: {
+          left: {
+            en: "The one reflection that loses nothing",
+            hi: "वही एक परावर्तन जो कुछ नहीं खोता",
+            mr: "तेच एक परावर्तन जे काहीच गमावत नाही",
+          },
+          right: {
+            en: "total internal reflection",
+            hi: "पूर्ण आंतरिक परावर्तन",
+            mr: "पूर्ण अंतर्गत परावर्तन",
+          },
+        },
+      },
+      {
+        id: "lens-makers-formula",
+        name: {
+          en: "The lens maker's formula",
+          hi: "लेंस निर्माता सूत्र",
+          mr: "भिंग निर्मात्याचे सूत्र",
+        },
+        kind: "result about refraction",
+        prompt: {
+          en: "A relation that predicts a lens's focal length before it is ever tested, from the two radii it is ground to and the ratio of the speeds of light inside and outside it. Which formula is this?",
+          hi: "ऐसा संबंध जो लेंस की फोकस दूरी उसकी जाँच से पहले ही बता देता है, उन दो त्रिज्याओं से जिन पर वह घिसा गया और उसके भीतर तथा बाहर प्रकाश की चालों के अनुपात से। यह कौन-सा सूत्र है?",
+          mr: "असा संबंध जो भिंगाचे नाभीय अंतर त्याची चाचणी होण्याआधीच सांगतो, ज्या दोन त्रिज्यांवर ते घासले गेले त्यांवरून आणि त्याच्या आत व बाहेर प्रकाशाच्या वेगांच्या गुणोत्तरावरून. हे कोणते सूत्र?",
+        },
+        statement: {
+          en: "The lens maker's formula gives 1/f = (n₂/n₁ − 1)(1/R₁ − 1/R₂), so a lens's focal length depends on the surrounding medium as well as on the glass and the grinding.",
+          hi: "लेंस निर्माता सूत्र 1/f = (n₂/n₁ − 1)(1/R₁ − 1/R₂) देता है, अतः लेंस की फोकस दूरी काँच और घिसाई के साथ-साथ आसपास के माध्यम पर भी निर्भर है।",
+          mr: "भिंग निर्मात्याचे सूत्र 1/f = (n₂/n₁ − 1)(1/R₁ − 1/R₂) देते, म्हणून भिंगाचे नाभीय अंतर काच आणि घासणीसोबतच आजूबाजूच्या माध्यमावरही अवलंबून आहे.",
+        },
+        detail: {
+          en: "The bracket (n₂/n₁ − 1) is a RATIO, so a lens taken from air into water keeps its shape and loses most of its power, while a mirror carried into water is unchanged because reflection never involved a ratio at all.",
+          hi: "कोष्ठक (n₂/n₁ − 1) एक अनुपात है, अतः हवा से पानी में ले जाया गया लेंस अपना आकार रखता है और अपनी अधिकांश शक्ति खो देता है, जबकि पानी में ले जाया गया दर्पण अपरिवर्तित रहता है क्योंकि परावर्तन में कोई अनुपात कभी शामिल था ही नहीं।",
+          mr: "कंस (n₂/n₁ − 1) हे गुणोत्तर आहे, म्हणून हवेतून पाण्यात नेलेले भिंग आपला आकार टिकवते आणि आपली बहुतांश शक्ती गमावते, तर पाण्यात नेलेला आरसा अपरिवर्तित राहतो कारण परावर्तनात कोणतेही गुणोत्तर कधी सामीलच नव्हते.",
+        },
+        extra: {
+          en: "If the ratio drops below one — an air bubble inside water — the sign of the bracket flips, and a shape that converges in air diverges instead, which is why a bubble looks like a bright ring rather than a hot spot.",
+          hi: "यदि अनुपात एक से नीचे चला जाए — पानी के भीतर हवा का बुलबुला — तो कोष्ठक का चिह्न पलट जाता है, और जो आकार हवा में अभिसारी है वह अपसारी हो जाता है, इसीलिए बुलबुला गर्म बिंदु के बजाय चमकीले छल्ले जैसा दिखता है।",
+          mr: "जर गुणोत्तर एकाहून खाली गेले — पाण्याच्या आत हवेचा बुडबुडा — तर कंसाचे चिन्ह पलटते, आणि जो आकार हवेत अभिसारी आहे तो अपसारी होतो, म्हणूनच बुडबुडा तप्त बिंदूऐवजी चमकदार कड्यासारखा दिसतो.",
+        },
+        pair: {
+          left: {
+            en: "Change the water, change the lens",
+            hi: "पानी बदलो, लेंस बदल गया",
+            mr: "पाणी बदला, भिंग बदलले",
+          },
+          right: {
+            en: "the lens maker's formula",
+            hi: "लेंस निर्माता सूत्र",
+            mr: "भिंग निर्मात्याचे सूत्र",
+          },
+        },
+      },
+      {
+        id: "angle-of-minimum-deviation",
+        name: {
+          en: "The angle of minimum deviation",
+          hi: "न्यूनतम विचलन कोण",
+          mr: "किमान विचलन कोन",
+        },
+        kind: "result about refraction",
+        prompt: {
+          en: "Rotate a prism slowly in a beam and the bending of the emergent ray first decreases, reaches a least value, then increases again; at that turning point the ray inside the prism runs parallel to the base. What is that least value called?",
+          hi: "किसी पुंज में प्रिज़्म को धीरे-धीरे घुमाओ और निर्गत किरण का मुड़ना पहले घटता है, न्यूनतम मान तक पहुँचता है, फिर बढ़ता है; उस मोड़ पर प्रिज़्म के भीतर किरण आधार के समांतर चलती है। उस न्यूनतम मान को क्या कहते हैं?",
+          mr: "एखाद्या शलाकेत लोलक हळूहळू फिरवा आणि निर्गत किरणाचे वाकणे आधी घटते, किमान मूल्यापर्यंत पोहोचते, मग पुन्हा वाढते; त्या वळणावर लोलकाच्या आत किरण पायाला समांतर जातो. त्या किमान मूल्याला काय म्हणतात?",
+        },
+        statement: {
+          en: "The angle of minimum deviation is the least deviation a prism produces, occurring when the ray passes symmetrically, and it gives the refractive index as n = sin((A+D)/2)/sin(A/2).",
+          hi: "न्यूनतम विचलन कोण वह सबसे कम विचलन है जो प्रिज़्म देता है, जो तब होता है जब किरण सममित रूप से गुज़रे, और वह अपवर्तनांक n = sin((A+D)/2)/sin(A/2) देता है।",
+          mr: "किमान विचलन कोन म्हणजे लोलक देत असलेले सर्वांत कमी विचलन, जे किरण सममितपणे जाताना घडते, आणि ते अपवर्तनांक n = sin((A+D)/2)/sin(A/2) देते.",
+        },
+        detail: {
+          en: "The symmetry is what makes the measurement worth doing: at any other orientation the entry and exit angles differ and the algebra needs both, but at this one position a single reading of D suffices.",
+          hi: "सममिति ही उस माप को करने योग्य बनाती है: किसी और अभिविन्यास पर प्रवेश और निर्गम कोण भिन्न होते हैं और बीजगणित को दोनों चाहिए, पर इसी एक स्थिति पर D का एक ही पाठ्यांक पर्याप्त है।",
+          mr: "सममितीच त्या मापाला करण्याजोगे बनवते: इतर कोणत्याही मांडणीत प्रवेश आणि निर्गम कोन वेगळे असतात आणि बीजगणिताला दोन्ही लागतात, पण याच एका स्थितीत D चे एकच वाचन पुरते.",
+        },
+        extra: {
+          en: "Because n differs slightly for each colour, each colour has its own minimum deviation, and that difference is dispersion — the reason a prism spreads white light while a flat sheet of glass does not.",
+          hi: "चूँकि हर रंग के लिए n थोड़ा भिन्न है, हर रंग का अपना न्यूनतम विचलन है, और वही अंतर वर्ण-विक्षेपण है — यही कारण है कि प्रिज़्म श्वेत प्रकाश फैलाता है और काँच की चपटी चादर नहीं।",
+          mr: "प्रत्येक रंगासाठी n थोडा वेगळा असल्याने, प्रत्येक रंगाचे स्वतःचे किमान विचलन आहे, आणि तोच फरक म्हणजे वर्णविकिरण — म्हणूनच लोलक पांढरा प्रकाश पसरवतो आणि काचेची सपाट तावदान नाही.",
+        },
+        pair: {
+          left: {
+            en: "The one orientation where a single reading is enough",
+            hi: "वही एक अभिविन्यास जहाँ एक पाठ्यांक बहुत है",
+            mr: "तीच एक मांडणी जिथे एक वाचन पुरेसे",
+          },
+          right: {
+            en: "the angle of minimum deviation",
+            hi: "न्यूनतम विचलन कोण",
+            mr: "किमान विचलन कोन",
+          },
+        },
+      },
+      {
+        id: "simple-microscope",
+        name: {
+          en: "The simple microscope",
+          hi: "सरल सूक्ष्मदर्शी",
+          mr: "साधा सूक्ष्मदर्शी",
+        },
+        kind: "optical instrument",
+        prompt: {
+          en: "A single converging lens held close to the eye, with the object just inside its focus, producing an upright virtual image far larger in angle than the object could ever be brought to the naked eye. Which instrument is this?",
+          hi: "आँख के पास पकड़ा एक अकेला अभिसारी लेंस, जिसका वस्तु उसके फोकस के ठीक भीतर हो, और जो ऐसा सीधा आभासी प्रतिबिंब बनाए जो कोण में उससे कहीं बड़ा हो जितना वस्तु नंगी आँख तक कभी लाई जा सकती। यह कौन-सा यंत्र है?",
+          mr: "डोळ्याजवळ धरलेले एकच अभिसारी भिंग, ज्याची वस्तू त्याच्या नाभीच्या अगदी आत असते, आणि जे असे सरळ आभासी प्रतिमा बनवते जी कोनात त्याहून कितीतरी मोठी असते जितकी वस्तू उघड्या डोळ्यापर्यंत कधी आणता येईल. हे कोणते उपकरण?",
+        },
+        statement: {
+          en: "The simple microscope is a single converging lens used as a magnifier, giving an angular magnification of about D/f with the image at infinity, where D is the least distance of distinct vision.",
+          hi: "सरल सूक्ष्मदर्शी आवर्धक के रूप में काम आता एक अकेला अभिसारी लेंस है, जो प्रतिबिंब अनंत पर होने पर लगभग D/f कोणीय आवर्धन देता है, जहाँ D स्पष्ट दृष्टि की न्यूनतम दूरी है।",
+          mr: "साधा सूक्ष्मदर्शी म्हणजे मोठे करण्यासाठी वापरलेले एकच अभिसारी भिंग, जे प्रतिमा अनंतावर असताना सुमारे D/f कोनीय विवर्धन देते, जिथे D ही स्पष्ट दृष्टीची किमान अंतर आहे.",
+        },
+        detail: {
+          en: "What is magnified is the ANGLE subtended at the eye and not the object, because the eye judges size by angle — which is why the Moon and a coin can look the same size.",
+          hi: "बड़ा किया जाने वाला वह कोण है जो आँख पर बनता है, वस्तु नहीं, क्योंकि आँख आकार का अंदाज़ा कोण से लगाती है — इसीलिए चंद्रमा और सिक्का एक ही आकार के दिख सकते हैं।",
+          mr: "मोठा केला जाणारा तो कोन आहे जो डोळ्यावर बनतो, वस्तू नव्हे, कारण डोळा आकाराचा अंदाज कोनाने लावतो — म्हणूनच चंद्र आणि नाणे एकाच आकाराचे दिसू शकतात.",
+        },
+        extra: {
+          en: "Its magnification is limited to about ten in practice, because pushing f below a centimetre needs a lens so strongly curved that aberrations blur the image faster than the magnification improves it.",
+          hi: "व्यवहार में उसका आवर्धन लगभग दस तक सीमित है, क्योंकि f को सेंटीमीटर से नीचे धकेलने को इतना अधिक वक्र लेंस चाहिए कि विपथन प्रतिबिंब को उससे तेज़ धुँधला करते हैं जितना आवर्धन उसे सुधारता है।",
+          mr: "व्यवहारात त्याचे विवर्धन सुमारे दहापर्यंत मर्यादित आहे, कारण f ला सेंटीमीटरखाली ढकलण्यास इतके तीव्र वक्र भिंग लागते की विपथने प्रतिमेला विवर्धन सुधारण्याहून वेगाने धूसर करतात.",
+        },
+        pair: {
+          left: {
+            en: "Enlarges an angle, never an object",
+            hi: "कोण बड़ा करता है, वस्तु कभी नहीं",
+            mr: "कोन मोठा करतो, वस्तू कधीच नाही",
+          },
+          right: {
+            en: "the simple microscope",
+            hi: "सरल सूक्ष्मदर्शी",
+            mr: "साधा सूक्ष्मदर्शी",
+          },
+        },
+      },
+      {
+        id: "compound-microscope",
+        name: {
+          en: "The compound microscope",
+          hi: "संयुक्त सूक्ष्मदर्शी",
+          mr: "संयुक्त सूक्ष्मदर्शी",
+        },
+        kind: "optical instrument",
+        prompt: {
+          en: "Two lenses in a tube: the first, of very short focal length, throws a real enlarged image inside the tube, and the second is used as a magnifier to look at that image rather than at the specimen. Which instrument is this?",
+          hi: "एक नली में दो लेंस: पहला, बहुत छोटी फोकस दूरी वाला, नली के भीतर वास्तविक बड़ा प्रतिबिंब बनाता है, और दूसरा उस प्रतिबिंब को देखने के लिए आवर्धक की तरह काम आता है, नमूने को देखने के लिए नहीं। यह कौन-सा यंत्र है?",
+          mr: "एका नळीत दोन भिंगे: पहिले, अतिशय लहान नाभीय अंतराचे, नळीच्या आत वास्तव मोठी प्रतिमा बनवते, आणि दुसरे त्या प्रतिमेकडे पाहण्यासाठी विवर्धक म्हणून वापरले जाते, नमुन्याकडे पाहण्यासाठी नाही. हे कोणते उपकरण?",
+        },
+        statement: {
+          en: "The compound microscope uses an objective of very short focal length to form a real magnified image which an eyepiece then magnifies again, so the total magnification is the product of the two.",
+          hi: "संयुक्त सूक्ष्मदर्शी बहुत छोटी फोकस दूरी के अभिदृश्यक से वास्तविक बड़ा प्रतिबिंब बनाता है जिसे नेत्रिका फिर बड़ा करती है, अतः कुल आवर्धन दोनों का गुणनफल है।",
+          mr: "संयुक्त सूक्ष्मदर्शी अतिशय लहान नाभीय अंतराच्या वस्तुभिंगाने वास्तव मोठी प्रतिमा बनवतो जिला नेत्रभिंग पुन्हा मोठे करते, म्हणून एकूण विवर्धन दोहोंचा गुणाकार आहे.",
+        },
+        detail: {
+          en: "The magnifications multiply rather than add, which is why two modest lenses in series beat one extreme lens and why the instrument exists at all.",
+          hi: "आवर्धन जुड़ते नहीं, गुणा होते हैं, इसीलिए श्रेणी में दो मामूली लेंस एक चरम लेंस को मात देते हैं और इसीलिए यह यंत्र है ही।",
+          mr: "विवर्धने जुळत नाहीत, गुणली जातात, म्हणूनच श्रेणीत दोन माफक भिंगे एका टोकाच्या भिंगाला मात देतात आणि म्हणूनच हे उपकरण अस्तित्वात आहे.",
+        },
+        extra: {
+          en: "The objective must have a large aperture as well as a short focal length, because it is the objective's aperture and not the eyepiece that decides how fine a detail can be separated at all.",
+          hi: "अभिदृश्यक की छोटी फोकस दूरी के साथ बड़ा द्वारक भी होना चाहिए, क्योंकि यह अभिदृश्यक का द्वारक है, नेत्रिका नहीं, जो तय करता है कि कितना बारीक ब्योरा अलग किया जा सकता है।",
+          mr: "वस्तुभिंगाला लहान नाभीय अंतरासोबत मोठे द्वारकही असावे लागते, कारण वस्तुभिंगाचे द्वारक ठरवते, नेत्रभिंग नव्हे, की किती बारीक तपशील वेगळा करता येईल.",
+        },
+        pair: {
+          left: {
+            en: "The second lens looks at an image, not at the specimen",
+            hi: "दूसरा लेंस नमूने को नहीं, प्रतिबिंब को देखता है",
+            mr: "दुसरे भिंग नमुन्याकडे नव्हे, प्रतिमेकडे पाहते",
+          },
+          right: {
+            en: "the compound microscope",
+            hi: "संयुक्त सूक्ष्मदर्शी",
+            mr: "संयुक्त सूक्ष्मदर्शी",
+          },
+        },
+      },
+      {
+        id: "astronomical-telescope",
+        name: {
+          en: "The astronomical telescope",
+          hi: "खगोलीय दूरदर्शी",
+          mr: "खगोलीय दुर्बीण",
+        },
+        kind: "optical instrument",
+        prompt: {
+          en: "Two lenses again, but with the first of very LONG focal length, catching light from an object already effectively at infinity and forming its image at the common focus. Which instrument is this?",
+          hi: "फिर दो लेंस, पर पहला बहुत लंबी फोकस दूरी वाला, जो प्रभावतः पहले से अनंत पर पड़ी वस्तु से प्रकाश पकड़ता है और उसका प्रतिबिंब साझा फोकस पर बनाता है। यह कौन-सा यंत्र है?",
+          mr: "पुन्हा दोन भिंगे, पण पहिले अतिशय लांब नाभीय अंतराचे, जे प्रभावीपणे आधीच अनंतावर असलेल्या वस्तूकडून प्रकाश पकडते आणि तिची प्रतिमा सामायिक नाभीवर बनवते. हे कोणते उपकरण?",
+        },
+        statement: {
+          en: "The astronomical telescope has an objective of long focal length and an eyepiece of short focal length, giving an angular magnification of f_o/f_e and a tube length of f_o + f_e in normal adjustment.",
+          hi: "खगोलीय दूरदर्शी में लंबी फोकस दूरी का अभिदृश्यक और छोटी फोकस दूरी की नेत्रिका होती है, जो सामान्य समायोजन में f_o/f_e कोणीय आवर्धन और f_o + f_e नली लंबाई देती है।",
+          mr: "खगोलीय दुर्बिणीत लांब नाभीय अंतराचे वस्तुभिंग आणि लहान नाभीय अंतराचे नेत्रभिंग असते, जे सामान्य जुळणीत f_o/f_e कोनीय विवर्धन आणि f_o + f_e नळीलांबी देते.",
+        },
+        detail: {
+          en: "This is the exact opposite requirement to the microscope's objective, and the reason is the object's distance: a specimen a millimetre away needs a lens that bends hard, a star does not.",
+          hi: "यह सूक्ष्मदर्शी के अभिदृश्यक की ठीक उलटी माँग है, और कारण वस्तु की दूरी है: एक मिलीमीटर दूर नमूने को ज़ोर से मोड़ने वाला लेंस चाहिए, तारे को नहीं।",
+          mr: "ही सूक्ष्मदर्शीच्या वस्तुभिंगाच्या नेमकी उलट मागणी आहे, आणि कारण वस्तूचे अंतर आहे: एक मिलीमीटर दूरच्या नमुन्याला जोरात वाकवणारे भिंग लागते, ताऱ्याला नाही.",
+        },
+        extra: {
+          en: "What astronomers actually buy an objective for is its DIAMETER, since that fixes both how much light is gathered and how fine a pair of stars can be resolved — magnification beyond that limit only enlarges a blur.",
+          hi: "खगोलविद अभिदृश्यक वस्तुतः उसके व्यास के लिए ख़रीदते हैं, क्योंकि वही तय करता है कि कितना प्रकाश बटोरा जाएगा और तारों की कितनी बारीक जोड़ी अलग की जा सकेगी — उस सीमा से आगे आवर्धन केवल धब्बे को बड़ा करता है।",
+          mr: "खगोलशास्त्रज्ञ वस्तुभिंग प्रत्यक्षात त्याच्या व्यासासाठी विकत घेतात, कारण तेच ठरवते की किती प्रकाश गोळा होईल आणि ताऱ्यांची किती बारीक जोडी वेगळी करता येईल — त्या मर्यादेपुढे विवर्धन केवळ डागाला मोठे करते.",
+        },
+        pair: {
+          left: {
+            en: "The objective is bought by the inch, not by the power",
+            hi: "अभिदृश्यक इंच से ख़रीदा जाता है, शक्ति से नहीं",
+            mr: "वस्तुभिंग इंचाने विकत घेतले जाते, शक्तीने नव्हे",
+          },
+          right: {
+            en: "the astronomical telescope",
+            hi: "खगोलीय दूरदर्शी",
+            mr: "खगोलीय दुर्बीण",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A converging glass lens of focal length 20 cm in air is taken underwater, where a student finds it barely converges at all. A concave mirror taken into the same tank works exactly as before. Explain both observations, and say what an air bubble in water does.",
+          hi: "हवा में 20 cm फोकस दूरी वाला अभिसारी काँच का लेंस पानी के भीतर ले जाया जाता है, जहाँ विद्यार्थी पाता है कि वह मुश्किल से ही अभिसरित करता है। उसी टंकी में ले जाया गया अवतल दर्पण ठीक पहले जैसा ही चलता है। दोनों प्रेक्षण समझाओ, और बताओ कि पानी में हवा का बुलबुला क्या करता है।",
+          mr: "हवेत 20 cm नाभीय अंतर असलेले अभिसारी काचेचे भिंग पाण्याखाली नेले जाते, जिथे विद्यार्थ्याला आढळते की ते जेमतेमच अभिसरण करते. त्याच टाकीत नेलेला अंतर्वक्र आरसा अगदी पूर्वीसारखाच चालतो. दोन्ही निरीक्षणे समजावा, आणि पाण्यातील हवेचा बुडबुडा काय करतो ते सांगा.",
+        },
+        choices: [
+          {
+            en: "A lens works by refraction, and refraction depends on the RATIO of the two indices, not on the glass alone. In air the bracket is (1.5/1 − 1) = 0.5; in water it is (1.5/1.33 − 1) ≈ 0.13, so 1/f falls by about four and the focal length grows to roughly 80 cm. A mirror works by reflection, which has no such ratio in it — the law of reflection is the same in any transparent medium — so its focal length R/2 is untouched. An air bubble in water is a converging shape with a ratio BELOW one, (1/1.33 − 1) being negative, so the bracket's sign flips and the bubble diverges",
+            hi: "लेंस अपवर्तन से चलता है, और अपवर्तन दोनों अपवर्तनांकों के अनुपात पर निर्भर है, अकेले काँच पर नहीं। हवा में कोष्ठक (1.5/1 − 1) = 0.5 है; पानी में वह (1.5/1.33 − 1) ≈ 0.13, अतः 1/f लगभग चार गुना घटता है और फोकस दूरी बढ़कर लगभग 80 cm हो जाती है। दर्पण परावर्तन से चलता है, जिसमें ऐसा कोई अनुपात है ही नहीं — परावर्तन का नियम किसी भी पारदर्शी माध्यम में वही है — अतः उसकी फोकस दूरी R/2 अछूती रहती है। पानी में हवा का बुलबुला अभिसारी आकार है जिसका अनुपात एक से कम है, (1/1.33 − 1) ऋणात्मक होने से कोष्ठक का चिह्न पलट जाता है और बुलबुला अपसरित करता है",
+            mr: "भिंग अपवर्तनाने चालते, आणि अपवर्तन दोन अपवर्तनांकांच्या गुणोत्तरावर अवलंबून आहे, एकट्या काचेवर नाही. हवेत कंस (1.5/1 − 1) = 0.5 आहे; पाण्यात तो (1.5/1.33 − 1) ≈ 0.13, म्हणून 1/f सुमारे चौपटीने घटते आणि नाभीय अंतर वाढून सुमारे 80 cm होते. आरसा परावर्तनाने चालतो, ज्यात असे कोणतेही गुणोत्तर आहेच नाही — परावर्तनाचा नियम कोणत्याही पारदर्शक माध्यमात तोच आहे — म्हणून त्याचे नाभीय अंतर R/2 अस्पर्श राहते. पाण्यातील हवेचा बुडबुडा हा अभिसारी आकार आहे ज्याचे गुणोत्तर एकाहून कमी आहे, (1/1.33 − 1) ऋण असल्याने कंसाचे चिन्ह पलटते आणि बुडबुडा अपसरण करतो",
+          },
+          {
+            en: "The water absorbs part of the light, weakening the beam so that it no longer comes to a sharp focus, and the mirror is unaffected because it never lets light into the medium",
+            hi: "पानी प्रकाश का कुछ भाग सोख लेता है, जिससे पुंज कमज़ोर पड़कर तीखे फोकस पर नहीं आता, और दर्पण अप्रभावित रहता है क्योंकि वह प्रकाश को माध्यम में जाने ही नहीं देता",
+            mr: "पाणी प्रकाशाचा काही भाग शोषते, ज्यामुळे शलाका क्षीण होऊन तीक्ष्ण नाभीवर येत नाही, आणि आरसा अप्रभावित राहतो कारण तो प्रकाशाला माध्यमात जाऊच देत नाही",
+          },
+          {
+            en: "Both the lens and the mirror have longer focal lengths in water, but the mirror's change is too small to notice because reflection bends light less than refraction does",
+            hi: "पानी में लेंस और दर्पण दोनों की फोकस दूरी बढ़ जाती है, पर दर्पण का परिवर्तन ध्यान देने लायक़ नहीं क्योंकि परावर्तन प्रकाश को अपवर्तन से कम मोड़ता है",
+            mr: "पाण्यात भिंग आणि आरसा दोन्हींचे नाभीय अंतर वाढते, पण आरशाचा बदल लक्षात येण्याइतका नाही कारण परावर्तन प्रकाशाला अपवर्तनाहून कमी वाकवते",
+          },
+          {
+            en: "An air bubble in water converges light more strongly than a glass lens does, because air bends light the least of the three media",
+            hi: "पानी में हवा का बुलबुला काँच के लेंस से भी अधिक ज़ोर से प्रकाश अभिसरित करता है, क्योंकि तीनों माध्यमों में हवा प्रकाश को सबसे कम मोड़ती है",
+            mr: "पाण्यातील हवेचा बुडबुडा काचेच्या भिंगाहूनही अधिक जोराने प्रकाश अभिसरित करतो, कारण तिन्ही माध्यमांत हवा प्रकाशाला सर्वांत कमी वाकवते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Everything here follows from one habit: read a formula and ask which of its symbols describe the OBJECT and which describe the SURROUNDINGS. The lens maker's formula is 1/f = (n₂/n₁ − 1)(1/R₁ − 1/R₂). The second bracket is the grinding — the two radii the glass was cut to — and it does not change when the lens is moved. The first bracket contains n₁, the medium the lens is sitting in, and that is what has changed. In air, n₂/n₁ = 1.5/1 = 1.5, so the bracket is 0.5. In water, n₂/n₁ = 1.5/1.33 ≈ 1.13, so the bracket is about 0.13, smaller by a factor of nearly four. Since 1/f is proportional to that bracket, f grows by the same factor: a 20 cm lens becomes roughly an 80 cm lens, which in a small tank looks like barely converging at all. The physical picture is simpler than the algebra. Refraction is bending caused by a change of speed at a boundary, and the size of the bend depends on how BIG the change is. Glass slows light to two-thirds of c; water already slows it to three-quarters. Going from water into glass is a much smaller step than going from air into glass, so the ray turns much less. Now the mirror, and the reason it is in the question. Reflection does not involve a change of medium at all — the light never enters the mirror's substrate. The law is that the angle of incidence equals the angle of reflection, and there is no refractive index anywhere in it. The focal length of a spherical mirror is f = R/2, a statement purely about geometry, so it is the same in air, in water, in oil or in vacuum. This is a genuine structural difference between the two devices and not a matter of degree: an underwater camera needs its lens redesigned and its mirrors left alone. Finally the bubble, which tests whether the ratio has really been understood rather than memorised. Take a bubble of air inside water and it is a shape that converges in air — thicker in the middle. But now n₂ = 1 (the air inside) and n₁ = 1.33 (the water around), so n₂/n₁ = 0.75 and the bracket (0.75 − 1) = −0.25 is NEGATIVE. Every sign in the result flips: the shape that converged now diverges. Light entering the bubble speeds up rather than slowing down, so it bends the other way at both surfaces. This is why bubbles in a glass of water look like bright rings with dark centres rather than little burning-glasses, and it is a good check that a student is tracking the ratio rather than remembering that fat lenses converge. (The second option invents absorption, which would dim the image and not defocus it; the third gives the mirror a change it does not have; the fourth reverses the bubble's behaviour by treating 'bends least' as 'converges most'.)",
+          hi: "यहाँ सब कुछ एक आदत से निकलता है: सूत्र पढ़ो और पूछो कि उसके कौन-से प्रतीक वस्तु का वर्णन करते हैं और कौन-से परिवेश का। लेंस निर्माता सूत्र है 1/f = (n₂/n₁ − 1)(1/R₁ − 1/R₂). दूसरा कोष्ठक घिसाई है — वे दो त्रिज्याएँ जिन पर काँच काटा गया — और लेंस हिलाने पर वह नहीं बदलता। पहले कोष्ठक में n₁ है, वह माध्यम जिसमें लेंस बैठा है, और वही बदला है। हवा में n₂/n₁ = 1.5/1 = 1.5, अतः कोष्ठक 0.5. पानी में n₂/n₁ = 1.5/1.33 ≈ 1.13, अतः कोष्ठक लगभग 0.13, क़रीब चार गुना छोटा। चूँकि 1/f उस कोष्ठक का समानुपाती है, f उसी गुणक से बढ़ता है: 20 cm का लेंस मोटे तौर पर 80 cm का लेंस बन जाता है, जो छोटी टंकी में मुश्किल से अभिसरित करता दिखता है। भौतिक चित्र बीजगणित से सरल है। अपवर्तन सीमा पर चाल बदलने से आया मुड़ाव है, और मुड़ाव का आकार इस पर निर्भर है कि परिवर्तन कितना बड़ा है। काँच प्रकाश को c के दो-तिहाई तक धीमा करता है; पानी उसे पहले ही तीन-चौथाई तक धीमा कर चुका है। पानी से काँच में जाना हवा से काँच में जाने से कहीं छोटा क़दम है, अतः किरण कहीं कम मुड़ती है। अब दर्पण, और वह प्रश्न में क्यों है। परावर्तन में माध्यम का परिवर्तन शामिल है ही नहीं — प्रकाश दर्पण के आधार में कभी घुसता ही नहीं। नियम यह कि आपतन कोण परावर्तन कोण के बराबर है, और उसमें कहीं कोई अपवर्तनांक है ही नहीं। गोलीय दर्पण की फोकस दूरी f = R/2 है, जो पूर्णतः ज्यामिति का कथन है, अतः वह हवा में, पानी में, तेल में या निर्वात में वही है। यह दोनों युक्तियों के बीच असली संरचनात्मक भेद है, मात्रा का नहीं: पानी के भीतर के कैमरे का लेंस फिर से डिज़ाइन करना पड़ता है और दर्पण छोड़ दिए जाते हैं। अंत में बुलबुला, जो जाँचता है कि अनुपात सचमुच समझा गया है या रट लिया गया। पानी के भीतर हवा का बुलबुला लो और वह ऐसा आकार है जो हवा में अभिसरित करता — बीच में मोटा। पर अब n₂ = 1 (भीतर की हवा) और n₁ = 1.33 (चारों ओर का पानी), अतः n₂/n₁ = 0.75 और कोष्ठक (0.75 − 1) = −0.25 ऋणात्मक है। परिणाम का हर चिह्न पलट जाता है: जो आकार अभिसरित करता था वह अब अपसरित करता है। बुलबुले में घुसता प्रकाश धीमा होने के बजाय तेज़ होता है, अतः वह दोनों पृष्ठों पर उलटी ओर मुड़ता है। इसीलिए पानी के गिलास में बुलबुले नन्हे आतिशी शीशों के बजाय गहरे केंद्र वाले चमकीले छल्लों जैसे दिखते हैं, और यह अच्छी जाँच है कि विद्यार्थी अनुपात का पीछा कर रहा है या यह याद रखे बैठा है कि मोटे लेंस अभिसरित करते हैं। (दूसरा विकल्प अवशोषण गढ़ता है, जो प्रतिबिंब को मंद करता, अफोकस नहीं; तीसरा दर्पण को ऐसा परिवर्तन दे देता है जो उसमें है ही नहीं; चौथा 'सबसे कम मोड़ती है' को 'सबसे अधिक अभिसरित करती है' मानकर बुलबुले का आचरण उलट देता है।)",
+          mr: "इथे सर्व काही एका सवयीतून निघते: सूत्र वाचा आणि विचारा की त्यातली कोणती चिन्हे वस्तूचे वर्णन करतात आणि कोणती परिसराचे. भिंग निर्मात्याचे सूत्र आहे 1/f = (n₂/n₁ − 1)(1/R₁ − 1/R₂). दुसरा कंस म्हणजे घासणी — ज्या दोन त्रिज्यांवर काच कापली गेली — आणि भिंग हलवल्यावर तो बदलत नाही. पहिल्या कंसात n₁ आहे, ते माध्यम ज्यात भिंग बसले आहे, आणि तेच बदलले आहे. हवेत n₂/n₁ = 1.5/1 = 1.5, म्हणून कंस 0.5. पाण्यात n₂/n₁ = 1.5/1.33 ≈ 1.13, म्हणून कंस सुमारे 0.13, जवळपास चौपट लहान. 1/f हा त्या कंसाशी समानुपाती असल्याने, f त्याच पटीने वाढते: 20 cm चे भिंग ढोबळमानाने 80 cm चे भिंग बनते, जे लहान टाकीत जेमतेमच अभिसरण करताना दिसते. भौतिक चित्र बीजगणिताहून सोपे आहे. अपवर्तन म्हणजे सीमेवर वेग बदलल्याने आलेले वाकणे, आणि वाकण्याचा आकार यावर अवलंबून की बदल किती मोठा आहे. काच प्रकाशाला c च्या दोन-तृतीयांशपर्यंत सावकाश करते; पाणी त्याला आधीच तीन-चतुर्थांशपर्यंत सावकाश करून बसले आहे. पाण्यातून काचेत जाणे हे हवेतून काचेत जाण्याहून कितीतरी लहान पाऊल आहे, म्हणून किरण कितीतरी कमी वळतो. आता आरसा, आणि तो प्रश्नात का आहे. परावर्तनात माध्यमाचा बदल सामीलच नाही — प्रकाश आरशाच्या आधारात कधी शिरतच नाही. नियम असा की आपतन कोन परावर्तन कोनाइतका आहे, आणि त्यात कुठेही कोणताही अपवर्तनांक नाहीच. गोलीय आरशाचे नाभीय अंतर f = R/2 आहे, जे पूर्णपणे भूमितीचे विधान आहे, म्हणून ते हवेत, पाण्यात, तेलात वा निर्वातात तेच आहे. हा दोन साधनांमधला खरा संरचनात्मक भेद आहे, प्रमाणाचा नव्हे: पाण्याखालच्या कॅमेऱ्याचे भिंग पुन्हा रचावे लागते आणि आरसे तसेच सोडले जातात. शेवटी बुडबुडा, जो तपासतो की गुणोत्तर खरोखर समजले आहे की पाठ केले आहे. पाण्याच्या आत हवेचा बुडबुडा घ्या आणि तो असा आकार आहे जो हवेत अभिसरण करेल — मध्ये जाड. पण आता n₂ = 1 (आतली हवा) आणि n₁ = 1.33 (भोवतीचे पाणी), म्हणून n₂/n₁ = 0.75 आणि कंस (0.75 − 1) = −0.25 ऋण आहे. निकालातले प्रत्येक चिन्ह पलटते: जो आकार अभिसरण करत होता तो आता अपसरण करतो. बुडबुड्यात शिरणारा प्रकाश सावकाश होण्याऐवजी वेगवान होतो, म्हणून तो दोन्ही पृष्ठांवर उलट दिशेने वाकतो. म्हणूनच पाण्याच्या ग्लासातले बुडबुडे चिमुकल्या भिंगांऐवजी गडद केंद्र असलेल्या चमकदार कड्यांसारखे दिसतात, आणि ही चांगली तपासणी की विद्यार्थी गुणोत्तराचा मागोवा घेत आहे की जाड भिंगे अभिसरण करतात हे लक्षात ठेवून बसला आहे. (दुसरा पर्याय शोषण घडवतो, जे प्रतिमा मंद करेल, अनाभीय नाही; तिसरा आरशाला असा बदल देतो जो त्याच्यात नाहीच; चौथा 'सर्वांत कमी वाकवते' ला 'सर्वांत जास्त अभिसरण करते' मानून बुडबुड्याचे वर्तन उलटवतो.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A shop sells a small telescope advertised as '600× magnification'. An astronomer says the claim is meaningless for an instrument with a 60 mm objective, and that a 200 mm telescope at 200× would show far more. Explain what the astronomer means.",
+          hi: "एक दुकान '600× आवर्धन' के विज्ञापन के साथ छोटी दूरदर्शी बेचती है। एक खगोलविद कहता है कि 60 mm अभिदृश्यक वाले यंत्र के लिए यह दावा निरर्थक है, और 200× पर 200 mm की दूरदर्शी कहीं अधिक दिखाएगी। समझाओ कि खगोलविद का आशय क्या है।",
+          mr: "एक दुकान '600× विवर्धन' अशी जाहिरात करून लहान दुर्बीण विकते. एक खगोलशास्त्रज्ञ म्हणतो की 60 mm वस्तुभिंग असलेल्या उपकरणासाठी हा दावा निरर्थक आहे, आणि 200× वर 200 mm ची दुर्बीण कितीतरी अधिक दाखवेल. खगोलशास्त्रज्ञाचा आशय काय ते समजावा.",
+        },
+        choices: [
+          {
+            en: "Magnification and resolving power are different things, and only the second is limited by physics rather than by choice of eyepiece. Diffraction at the objective's aperture spreads every point source into a disc of angular size about 1.22λ/D, so the smallest detail separable is fixed by the DIAMETER D and by nothing else. Any magnification is obtainable by fitting a shorter eyepiece, but beyond about 2× the aperture in millimetres it only enlarges the diffraction blur — 'empty magnification'. A 60 mm objective is therefore limited to roughly 120×, while a 200 mm one both resolves three times finer detail and gathers eleven times more light",
+            hi: "आवर्धन और विभेदन क्षमता भिन्न चीज़ें हैं, और केवल दूसरी नेत्रिका के चुनाव से नहीं बल्कि भौतिकी से सीमित है। अभिदृश्यक के द्वारक पर विवर्तन हर बिंदु स्रोत को लगभग 1.22λ/D कोणीय आकार की चकती में फैला देता है, अतः अलग किया जा सकने वाला सबसे बारीक ब्योरा व्यास D से तय है और किसी और चीज़ से नहीं। छोटी नेत्रिका लगाकर कोई भी आवर्धन पाया जा सकता है, पर मिलीमीटर में द्वारक के लगभग 2× से आगे वह केवल विवर्तन के धब्बे को बड़ा करता है — 'खोखला आवर्धन'। अतः 60 mm का अभिदृश्यक मोटे तौर पर 120× तक सीमित है, जबकि 200 mm वाला तीन गुना बारीक ब्योरा विभेदित करता है और ग्यारह गुना अधिक प्रकाश बटोरता है",
+            mr: "विवर्धन आणि विभेदन क्षमता वेगळ्या गोष्टी आहेत, आणि केवळ दुसरी नेत्रभिंगाच्या निवडीने नव्हे तर भौतिकीने मर्यादित आहे. वस्तुभिंगाच्या द्वारकावरील विवर्तन प्रत्येक बिंदु स्रोताला सुमारे 1.22λ/D कोनीय आकाराच्या तबकडीत पसरवते, म्हणून वेगळा करता येणारा सर्वांत बारीक तपशील व्यास D ने ठरतो आणि दुसऱ्या कशानेही नाही. लहान नेत्रभिंग लावून कोणतेही विवर्धन मिळवता येते, पण मिलीमीटरमधल्या द्वारकाच्या सुमारे 2× पुढे ते केवळ विवर्तनाचा डाग मोठा करते — 'पोकळ विवर्धन'. म्हणून 60 mm चे वस्तुभिंग ढोबळमानाने 120× पर्यंत मर्यादित आहे, तर 200 mm चे तिप्पट बारीक तपशील विभेदित करते आणि अकरापट अधिक प्रकाश गोळा करते",
+          },
+          {
+            en: "The astronomer means only that cheap eyepieces are poorly made; with a good enough eyepiece the 60 mm telescope would indeed show as much at 600× as the larger one",
+            hi: "खगोलविद का आशय केवल इतना है कि सस्ती नेत्रिकाएँ ख़राब बनी होती हैं; पर्याप्त अच्छी नेत्रिका से 60 mm की दूरदर्शी 600× पर सचमुच उतना ही दिखाती जितना बड़ी वाली",
+            mr: "खगोलशास्त्रज्ञाचा आशय केवळ इतकाच की स्वस्त नेत्रभिंगे वाईट बनवलेली असतात; पुरेशा चांगल्या नेत्रभिंगाने 60 mm ची दुर्बीण 600× वर खरोखर तितकेच दाखवेल जितके मोठी",
+          },
+          {
+            en: "Magnification is limited by the objective's focal length rather than its diameter, so a longer tube would fix the problem without a larger lens",
+            hi: "आवर्धन अभिदृश्यक के व्यास के बजाय उसकी फोकस दूरी से सीमित है, अतः बड़े लेंस के बिना लंबी नली समस्या हल कर देती",
+            mr: "विवर्धन वस्तुभिंगाच्या व्यासाऐवजी त्याच्या नाभीय अंतराने मर्यादित आहे, म्हणून मोठ्या भिंगाविना लांब नळी समस्या सोडवेल",
+          },
+          {
+            en: "The claim fails only because the Earth's atmosphere blurs the image; above the atmosphere a 60 mm telescope at 600× would perform as well as any",
+            hi: "दावा केवल इसलिए विफल होता है कि पृथ्वी का वायुमंडल प्रतिबिंब धुँधला करता है; वायुमंडल के ऊपर 60 mm की दूरदर्शी 600× पर किसी से कम न होती",
+            mr: "दावा केवळ यामुळे अपयशी ठरतो की पृथ्वीचे वातावरण प्रतिमा धूसर करते; वातावरणाच्या वर 60 mm ची दुर्बीण 600× वर कोणाहूनही कमी नसती",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The advertisement is not false, and that is what makes it dishonest. A telescope's angular magnification is f_o/f_e, and since f_e is whatever eyepiece you screw in, ANY magnification is available from any telescope. Fit a 1 mm eyepiece to a 600 mm objective and you have 600×. Nothing prevents it, and nothing useful comes of it. The quantity that actually decides what can be seen is RESOLVING POWER, and it is not a matter of choice. Light passing through a circular aperture of diameter D diffracts, so even a perfect lens images a point star not as a point but as a small disc surrounded by faint rings. Two stars closer together than about θ = 1.22λ/D produce discs that overlap into one blur, and no amount of subsequent enlargement can separate them, because the information was destroyed at the aperture and not at the eyepiece. Put numbers to it. For green light, λ ≈ 550 nm. A 60 mm objective gives θ ≈ 1.22 × 550 × 10⁻⁹/0.06 ≈ 1.1 × 10⁻⁵ rad, about 2.3 seconds of arc. A 200 mm objective gives about 0.7 seconds of arc — three times finer, because the resolution scales as 1/D. This is why observers describe telescopes by aperture and never by magnification, and why the rule of thumb for the highest useful magnification is roughly twice the aperture in millimetres: 120× for the 60 mm instrument, 400× for the 200 mm one. Beyond that the eye is simply being shown a larger picture of the same diffraction pattern, which is why the effect has a name — empty magnification — and why a 600× view through a 60 mm telescope is a dim, wobbling, badly blurred version of what 120× showed crisply. The second advantage of aperture is independent of the first and just as decisive. Light gathered goes as the AREA, so a 200 mm objective collects (200/60)² ≈ 11 times as much light as a 60 mm one. Faint galaxies are not small, they are faint; magnifying them does nothing, and only aperture will show them at all. Meanwhile magnification spreads the light it does collect over a larger image, so the view gets DIMMER as the magnification rises — which is the second reason 600× on a small instrument shows less than 120× on the same instrument. There is a further practical ceiling worth knowing about, which the fourth option half-remembers. Atmospheric turbulence — 'seeing' — usually limits ground-based resolution to about one second of arc on a good night, so a 200 mm telescope is often working at the sky's limit rather than its own, and larger ground telescopes are built for light-gathering and for adaptive optics rather than for raw resolution. But that ceiling does not rescue the advertisement: the 60 mm instrument is limited by its own aperture long before the atmosphere becomes the binding constraint. (The second option blames manufacturing for a limit set by the wavelength of light; the third confuses focal length with aperture; the fourth cites a real effect that does not apply at the scale in question.)",
+          hi: "विज्ञापन झूठा नहीं है, और यही उसे बेईमान बनाता है। दूरदर्शी का कोणीय आवर्धन f_o/f_e है, और चूँकि f_e वही है जो नेत्रिका तुम कस दो, किसी भी दूरदर्शी से कोई भी आवर्धन उपलब्ध है। 600 mm के अभिदृश्यक पर 1 mm की नेत्रिका लगाओ और तुम्हारे पास 600× है। कुछ भी उसे रोकता नहीं, और उससे कुछ काम का निकलता नहीं। जो राशि वस्तुतः तय करती है कि क्या देखा जा सकता है वह विभेदन क्षमता है, और वह चुनाव की बात नहीं। D व्यास के वृत्तीय द्वारक से गुज़रता प्रकाश विवर्तित होता है, अतः पूर्ण लेंस भी बिंदु तारे का प्रतिबिंब बिंदु के रूप में नहीं बल्कि धुँधले छल्लों से घिरी छोटी चकती के रूप में बनाता है। लगभग θ = 1.22λ/D से अधिक पास दो तारे ऐसी चकतियाँ देते हैं जो एक धब्बे में मिल जाती हैं, और उसके बाद कितना भी बड़ा करने से वे अलग नहीं होते, क्योंकि सूचना द्वारक पर नष्ट हुई थी, नेत्रिका पर नहीं। उसमें संख्याएँ भरो। हरे प्रकाश के लिए λ ≈ 550 nm. 60 mm का अभिदृश्यक θ ≈ 1.22 × 550 × 10⁻⁹/0.06 ≈ 1.1 × 10⁻⁵ rad देता है, लगभग 2.3 चाप-सेकंड। 200 mm का अभिदृश्यक लगभग 0.7 चाप-सेकंड देता है — तीन गुना बारीक, क्योंकि विभेदन 1/D के अनुसार चलता है। इसीलिए प्रेक्षक दूरदर्शी का वर्णन द्वारक से करते हैं, आवर्धन से कभी नहीं, और इसीलिए सबसे ऊँचे काम के आवर्धन का अटकल-नियम मिलीमीटर में द्वारक का मोटे तौर पर दुगुना है: 60 mm के यंत्र के लिए 120×, 200 mm वाले के लिए 400×. उससे आगे आँख को बस उसी विवर्तन प्रतिरूप का बड़ा चित्र दिखाया जा रहा है, इसीलिए उस प्रभाव का नाम है — खोखला आवर्धन — और इसीलिए 60 mm की दूरदर्शी से 600× का दृश्य उसका मंद, डोलता, बुरी तरह धुँधला रूप है जो 120× ने साफ़ दिखाया था। द्वारक का दूसरा लाभ पहले से स्वतंत्र और उतना ही निर्णायक है। बटोरा गया प्रकाश क्षेत्रफल के अनुसार चलता है, अतः 200 mm का अभिदृश्यक 60 mm वाले से (200/60)² ≈ 11 गुना प्रकाश बटोरता है। धुँधली मंदाकिनियाँ छोटी नहीं, धुँधली हैं; उन्हें बड़ा करने से कुछ नहीं होता, और उन्हें दिखाएगा तो केवल द्वारक। इस बीच आवर्धन जो प्रकाश बटोरता है उसे बड़े प्रतिबिंब पर फैला देता है, अतः आवर्धन बढ़ने पर दृश्य मंद होता जाता है — और छोटे यंत्र पर 600× उसी यंत्र पर 120× से कम दिखाने का यह दूसरा कारण है। एक और व्यावहारिक छत जानने योग्य है, जिसे चौथा विकल्प आधा याद रखता है। वायुमंडलीय विक्षोभ — 'सीइंग' — अच्छी रात में भी प्रायः ज़मीनी विभेदन को लगभग एक चाप-सेकंड तक सीमित कर देता है, अतः 200 mm की दूरदर्शी प्रायः अपनी नहीं बल्कि आकाश की सीमा पर काम कर रही होती है, और बड़ी ज़मीनी दूरदर्शियाँ कच्चे विभेदन के लिए नहीं बल्कि प्रकाश बटोरने और अनुकूली प्रकाशिकी के लिए बनाई जाती हैं। पर वह छत विज्ञापन को नहीं बचाती: 60 mm का यंत्र वायुमंडल के बाधक बनने से बहुत पहले अपने ही द्वारक से सीमित हो जाता है। (दूसरा विकल्प उस सीमा का दोष निर्माण को देता है जो प्रकाश की तरंगदैर्ध्य ने तय की; तीसरा फोकस दूरी और द्वारक को गड्डमड्ड कर देता है; चौथा असली प्रभाव गिनाता है जो इस पैमाने पर लागू नहीं होता।)",
+          mr: "जाहिरात खोटी नाही, आणि हेच तिला अप्रामाणिक बनवते. दुर्बिणीचे कोनीय विवर्धन f_o/f_e आहे, आणि f_e म्हणजे तुम्ही जे नेत्रभिंग बसवाल ते असल्याने, कोणत्याही दुर्बिणीतून कोणतेही विवर्धन उपलब्ध आहे. 600 mm च्या वस्तुभिंगावर 1 mm चे नेत्रभिंग बसवा आणि तुमच्याकडे 600× आहे. काहीही ते रोखत नाही, आणि त्यातून काहीही उपयुक्त निघत नाही. जी राशी प्रत्यक्षात ठरवते की काय पाहता येईल ती विभेदन क्षमता आहे, आणि ती निवडीची बाब नाही. D व्यासाच्या वर्तुळाकार द्वारकातून जाणारा प्रकाश विवर्तित होतो, म्हणून पूर्ण भिंगही बिंदु ताऱ्याची प्रतिमा बिंदू म्हणून नव्हे तर धूसर कड्यांनी वेढलेल्या लहान तबकडीच्या रूपात बनवते. सुमारे θ = 1.22λ/D हून अधिक जवळचे दोन तारे अशा तबकड्या देतात ज्या एका डागात मिसळतात, आणि त्यानंतर कितीही मोठे केले तरी ते वेगळे होत नाहीत, कारण माहिती द्वारकावर नष्ट झाली होती, नेत्रभिंगावर नाही. त्यात संख्या भरा. हिरव्या प्रकाशासाठी λ ≈ 550 nm. 60 mm चे वस्तुभिंग θ ≈ 1.22 × 550 × 10⁻⁹/0.06 ≈ 1.1 × 10⁻⁵ rad देते, सुमारे 2.3 चाप-सेकंद. 200 mm चे वस्तुभिंग सुमारे 0.7 चाप-सेकंद देते — तिप्पट बारीक, कारण विभेदन 1/D नुसार चालते. म्हणूनच निरीक्षक दुर्बिणीचे वर्णन द्वारकाने करतात, विवर्धनाने कधीच नाही, आणि म्हणूनच सर्वांत उंच उपयुक्त विवर्धनाचा ढोबळ नियम मिलीमीटरमधल्या द्वारकाच्या साधारण दुप्पट आहे: 60 mm च्या उपकरणासाठी 120×, 200 mm च्यासाठी 400×. त्यापुढे डोळ्याला फक्त त्याच विवर्तन नमुन्याचे मोठे चित्र दाखवले जात आहे, म्हणूनच त्या परिणामाला नाव आहे — पोकळ विवर्धन — आणि म्हणूनच 60 mm दुर्बिणीतून 600× चे दृश्य हे त्याचेच मंद, डुलणारे, वाईट रीतीने धूसर रूप आहे जे 120× ने स्वच्छ दाखवले होते. द्वारकाचा दुसरा फायदा पहिल्यापासून स्वतंत्र आणि तितकाच निर्णायक आहे. गोळा केलेला प्रकाश क्षेत्रफळानुसार चालतो, म्हणून 200 mm चे वस्तुभिंग 60 mm च्याहून (200/60)² ≈ 11 पट प्रकाश गोळा करते. अंधुक दीर्घिका लहान नाहीत, अंधुक आहेत; त्यांना मोठे करून काहीही होत नाही, आणि त्यांना दाखवेल तर केवळ द्वारकच. दरम्यान विवर्धन जो प्रकाश गोळा करते तो मोठ्या प्रतिमेवर पसरवते, म्हणून विवर्धन वाढल्यावर दृश्य मंद होत जाते — आणि लहान उपकरणावर 600× हे त्याच उपकरणावरच्या 120× हून कमी दाखवण्याचे हे दुसरे कारण. आणखी एक व्यावहारिक कमाल मर्यादा जाणण्याजोगी आहे, जी चौथा पर्याय अर्धी लक्षात ठेवतो. वातावरणीय खळबळ — 'सीइंग' — चांगल्या रात्रीही बहुधा जमिनीवरील विभेदन सुमारे एका चाप-सेकंदापर्यंत मर्यादित करते, म्हणून 200 mm ची दुर्बीण बहुधा स्वतःच्या नव्हे तर आकाशाच्या मर्यादेवर काम करत असते, आणि मोठ्या जमिनीवरील दुर्बिणी कच्च्या विभेदनासाठी नव्हे तर प्रकाश गोळा करण्यासाठी आणि अनुकूली प्रकाशिकीसाठी बांधल्या जातात. पण ती मर्यादा जाहिरातीला वाचवत नाही: 60 mm चे उपकरण वातावरण अडसर बनण्याच्या कितीतरी आधी स्वतःच्याच द्वारकाने मर्यादित होते. (दुसरा पर्याय प्रकाशाच्या तरंगलांबीने ठरवलेल्या मर्यादेचा दोष निर्मितीला देतो; तिसरा नाभीय अंतर आणि द्वारक यांची गल्लत करतो; चौथा खरा परिणाम सांगतो जो या मापावर लागू होत नाही.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 10 — Wave Optics                                                */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "physics-12-wave-optics",
+    subject: "PHYSICS",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 10 — Wave Optics",
+      hi: "अध्याय 10 — तरंग प्रकाशिकी",
+      mr: "प्रकरण 10 — लहरी प्रकाशिकी",
+    },
+    name: {
+      en: "Wave Optics",
+      hi: "तरंग प्रकाशिकी",
+      mr: "लहरी प्रकाशिकी",
+    },
+    summary: {
+      en: "The chapter where the ray is finally admitted to be an approximation: light added to light that gives darkness, which no picture of travelling particles can produce; a beam that spreads instead of sharpening when the aperture it passes is narrowed, so a slit cannot be made small enough to define a ray; a way of building the next position of a wave out of secondary wavelets from every point of the present one, which delivers reflection, refraction and the whole of the rest; a strict requirement that two sources keep a fixed phase relation, which is why two lamps never interfere and one lamp split in two always does; and a transverse-ness that shows itself when a beam is passed through a crystal and comes out able to be extinguished by a second one.",
+      hi: "वह अध्याय जहाँ किरण को अंततः सन्निकटन मान लिया जाता है: प्रकाश में प्रकाश जोड़ने से मिलता अँधेरा, जो चलते कणों का कोई चित्र नहीं दे सकता; ऐसा पुंज जो जिस द्वारक से गुज़रता है उसे सँकरा करने पर तीखा होने के बजाय फैल जाता है, अतः किरण परिभाषित करने के लिए झिरी को पर्याप्त छोटा किया ही नहीं जा सकता; तरंग की अगली स्थिति को वर्तमान के हर बिंदु से निकली द्वितीयक तरंगिकाओं से बनाने का तरीक़ा, जो परावर्तन, अपवर्तन और बाक़ी सब कुछ दे देता है; यह कड़ी शर्त कि दो स्रोत निश्चित कला-संबंध बनाए रखें, इसीलिए दो लैंप कभी व्यतिकरण नहीं करते और दो में बाँटा गया एक लैंप सदा करता है; और वह अनुप्रस्थता जो तब दिखती है जब पुंज को किसी क्रिस्टल से गुज़ारा जाए और वह ऐसा निकले कि दूसरा क्रिस्टल उसे बुझा सके।",
+      mr: "ते प्रकरण जिथे किरणाला अखेर अंदाजे मानले जाते: प्रकाशात प्रकाश जोडल्याने मिळणारा अंधार, जो चालणाऱ्या कणांचे कोणतेही चित्र देऊ शकत नाही; अशी शलाका जी ज्या द्वारकातून जाते ते अरुंद केल्यावर तीक्ष्ण होण्याऐवजी पसरते, म्हणून किरण व्याख्यायित करण्यासाठी फट पुरेशी लहान करताच येत नाही; लहरीची पुढची स्थिती वर्तमानाच्या प्रत्येक बिंदूतून निघालेल्या दुय्यम लहरिकांतून बांधण्याची पद्धत, जी परावर्तन, अपवर्तन आणि बाकी सर्व देते; ही कडक अट की दोन स्रोतांनी ठराविक कला-संबंध टिकवावा, म्हणूनच दोन दिवे कधीच व्यतिकरण करत नाहीत आणि दोनांत विभागलेला एक दिवा नेहमी करतो; आणि ते अनुप्रस्थत्व जे तेव्हा दिसते जेव्हा शलाका एखाद्या स्फटिकातून जाते आणि अशी निघते की दुसरा स्फटिक तिला विझवू शकेल.",
+    },
+    position: 10,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "huygens-principle",
+        name: {
+          en: "Huygens' principle",
+          hi: "हाइगेंस का सिद्धांत",
+          mr: "हायगेन्सचे तत्त्व",
+        },
+        kind: "principle or law",
+        prompt: {
+          en: "Treat every point of a wavefront as a fresh source of little spherical wavelets, draw the surface that touches all of them a moment later, and you have the wavefront's next position. Which construction is this?",
+          hi: "तरंगाग्र के हर बिंदु को नन्ही गोलीय तरंगिकाओं का नया स्रोत मानो, वह पृष्ठ खींचो जो क्षण भर बाद उन सबको छूता है, और तुम्हारे पास तरंगाग्र की अगली स्थिति है। यह कौन-सी रचना है?",
+          mr: "तरंगाग्राच्या प्रत्येक बिंदूला चिमुकल्या गोलीय लहरिकांचा नवा स्रोत माना, ते पृष्ठ काढा जे क्षणभराने त्या सर्वांना स्पर्श करते, आणि तुमच्याकडे तरंगाग्राची पुढची स्थिती आहे. ही कोणती रचना?",
+        },
+        statement: {
+          en: "Huygens' principle builds each new wavefront as the envelope of secondary spherical wavelets sent out from every point of the old one, and from it reflection, refraction and Snell's law all follow.",
+          hi: "हाइगेंस का सिद्धांत हर नए तरंगाग्र को पुराने के हर बिंदु से निकली द्वितीयक गोलीय तरंगिकाओं के अन्वालोप के रूप में बनाता है, और उसी से परावर्तन, अपवर्तन और स्नेल का नियम निकल आते हैं।",
+          mr: "हायगेन्सचे तत्त्व प्रत्येक नवे तरंगाग्र जुन्याच्या प्रत्येक बिंदूतून निघालेल्या दुय्यम गोलीय लहरिकांच्या आवरणाच्या रूपात बांधते, आणि त्यातूनच परावर्तन, अपवर्तन आणि स्नेलचा नियम निघतात.",
+        },
+        detail: {
+          en: "It explains refraction as a change of speed rather than of anything else: one edge of a wavefront enters the denser medium first and slows, so the whole front pivots — the same reason a marching column turns when its inner file shortens step.",
+          hi: "यह अपवर्तन को किसी और चीज़ के नहीं बल्कि चाल के परिवर्तन के रूप में समझाता है: तरंगाग्र का एक किनारा पहले सघन माध्यम में घुसकर धीमा होता है, अतः पूरा अग्र घूम जाता है — उसी कारण से जिससे मार्च करती टुकड़ी तब मुड़ती है जब उसकी भीतरी पंक्ति क़दम छोटा कर ले।",
+          mr: "हे अपवर्तनाला दुसऱ्या कशाच्या नव्हे तर वेगाच्या बदलाच्या रूपात समजावते: तरंगाग्राची एक कड आधी घन माध्यमात शिरून सावकाश होते, म्हणून अख्खे अग्र वळते — त्याच कारणाने ज्याने संचलन करणारी तुकडी तिची आतली रांग पाऊल लहान करताच वळते.",
+        },
+        extra: {
+          en: "It also predicts what the particle picture cannot: light must travel SLOWER in glass than in air, and the measurement, when it was finally made, agreed with the wave account and not with Newton's.",
+          hi: "यह वह भी बताता है जो कण-चित्र नहीं बता सकता: प्रकाश को काँच में हवा से धीमा चलना ही चाहिए, और जब वह माप अंततः हुआ तो वह तरंग-कथन से मिला, न्यूटन के कथन से नहीं।",
+          mr: "हे तेही सांगते जे कण-चित्र सांगू शकत नाही: प्रकाशाने काचेत हवेहून सावकाश जावेच लागते, आणि ते माप अखेर झाले तेव्हा ते लहरी-कथनाशी जुळले, न्यूटनच्या कथनाशी नाही.",
+        },
+        pair: {
+          left: {
+            en: "Every point of the front is a fresh source",
+            hi: "अग्र का हर बिंदु एक नया स्रोत",
+            mr: "अग्राचा प्रत्येक बिंदू एक नवा स्रोत",
+          },
+          right: {
+            en: "Huygens' principle",
+            hi: "हाइगेंस का सिद्धांत",
+            mr: "हायगेन्सचे तत्त्व",
+          },
+        },
+      },
+      {
+        id: "coherence",
+        name: {
+          en: "The condition of coherence",
+          hi: "कलासंबद्धता की शर्त",
+          mr: "कलासंबद्धतेची अट",
+        },
+        kind: "principle or law",
+        prompt: {
+          en: "Two ordinary lamps side by side never produce fringes, however carefully they are matched in colour and brightness; one lamp whose light is split in two always does. What requirement is being failed and met?",
+          hi: "अगल-बगल रखे दो साधारण लैंप कभी फ्रिंज नहीं बनाते, चाहे उनका रंग और चमक कितनी भी सावधानी से मिलाई जाए; एक ऐसा लैंप जिसका प्रकाश दो में बाँटा जाए, सदा बनाता है। कौन-सी शर्त विफल हो रही है और पूरी हो रही है?",
+          mr: "शेजारीशेजारी ठेवलेले दोन साधे दिवे कधीच पट्टे बनवत नाहीत, त्यांचा रंग आणि तेज कितीही काळजीपूर्वक जुळवले तरी; ज्याचा प्रकाश दोनांत विभागला जातो असा एक दिवा नेहमी बनवतो. कोणती अट अपयशी ठरत आहे आणि पूर्ण होत आहे?",
+        },
+        statement: {
+          en: "The condition of coherence requires two sources to keep a constant phase difference over the observation time, which independent sources cannot do because each emits in random bursts lasting nanoseconds.",
+          hi: "कलासंबद्धता की शर्त माँगती है कि दो स्रोत प्रेक्षण-काल भर अचर कलांतर बनाए रखें, जो स्वतंत्र स्रोत नहीं कर सकते क्योंकि हर एक नैनोसेकंडों तक चलने वाले यादृच्छिक झोंकों में उत्सर्जित करता है।",
+          mr: "कलासंबद्धतेची अट मागते की दोन स्रोतांनी निरीक्षण-काळभर अचल कलांतर टिकवावा, जे स्वतंत्र स्रोत करू शकत नाहीत कारण प्रत्येक नॅनोसेकंद टिकणाऱ्या यादृच्छिक झोतांत उत्सर्जित करतो.",
+        },
+        detail: {
+          en: "The fringes from two lamps are not absent but reshuffled millions of times a second, so what the eye or the plate records is their average, which is uniform illumination.",
+          hi: "दो लैंपों से बनी फ्रिंज ग़ायब नहीं होतीं बल्कि सेकंड में लाखों बार फिर-फिर बदल जाती हैं, अतः आँख या प्लेट जो दर्ज करती है वह उनका औसत है, जो एकसमान प्रदीप्ति है।",
+          mr: "दोन दिव्यांचे पट्टे नाहीसे होत नाहीत तर सेकंदाला लाखो वेळा पुन्हा पुन्हा बदलतात, म्हणून डोळा वा पट्टिका जे नोंदवते ते त्यांची सरासरी आहे, जी एकसमान प्रदीप्ती आहे.",
+        },
+        extra: {
+          en: "The cure is to derive both beams from one source, which is why Young put a single slit before his double slit — the two slits then sample the same wavefront and inherit whatever phase it has.",
+          hi: "इलाज यह कि दोनों पुंज एक ही स्रोत से निकाले जाएँ, इसीलिए यंग ने अपनी दोहरी झिरी से पहले एक अकेली झिरी रखी — दोनों झिरियाँ तब उसी तरंगाग्र का नमूना लेती हैं और उसकी जो भी कला हो उसे विरासत में पाती हैं।",
+          mr: "उपाय म्हणजे दोन्ही शलाका एकाच स्रोतापासून काढणे, म्हणूनच यंगने आपल्या दुहेरी फटीआधी एकच फट ठेवली — दोन्ही फटी मग त्याच तरंगाग्राचा नमुना घेतात आणि त्याची जी काही कला असेल ती वारशाने मिळवतात.",
+        },
+        pair: {
+          left: {
+            en: "Two lamps never, one lamp split always",
+            hi: "दो लैंप कभी नहीं, बाँटा गया एक लैंप सदा",
+            mr: "दोन दिवे कधीच नाही, विभागलेला एक दिवा नेहमी",
+          },
+          right: {
+            en: "the condition of coherence",
+            hi: "कलासंबद्धता की शर्त",
+            mr: "कलासंबद्धतेची अट",
+          },
+        },
+      },
+      {
+        id: "brewsters-law",
+        name: {
+          en: "Brewster's law",
+          hi: "ब्रूस्टर का नियम",
+          mr: "ब्रूस्टरचा नियम",
+        },
+        kind: "principle or law",
+        prompt: {
+          en: "At one particular angle of incidence the reflected beam is completely plane polarised, and at that angle the reflected and refracted rays happen to be exactly at right angles to each other. Which law states this?",
+          hi: "आपतन के किसी एक विशेष कोण पर परावर्तित पुंज पूरी तरह समतल ध्रुवित होता है, और उस कोण पर परावर्तित तथा अपवर्तित किरणें ठीक एक-दूसरे के समकोण पर होती हैं। यह कौन-सा नियम कहता है?",
+          mr: "आपतनाच्या एका विशिष्ट कोनावर परावर्तित शलाका पूर्णपणे प्रतल ध्रुवित होते, आणि त्या कोनावर परावर्तित आणि अपवर्तित किरणे नेमकी एकमेकांना काटकोनात असतात. हा कोणता नियम सांगतो?",
+        },
+        statement: {
+          en: "Brewster's law says the polarising angle satisfies tan θ_p = n, and at that angle the reflected and refracted rays are perpendicular to one another.",
+          hi: "ब्रूस्टर का नियम कहता है कि ध्रुवण कोण tan θ_p = n को संतुष्ट करता है, और उस कोण पर परावर्तित और अपवर्तित किरणें आपस में लंबवत होती हैं।",
+          mr: "ब्रूस्टरचा नियम सांगतो की ध्रुवण कोन tan θ_p = n ला पूर्ण करतो, आणि त्या कोनावर परावर्तित आणि अपवर्तित किरणे परस्परांना लंब असतात.",
+        },
+        detail: {
+          en: "The mechanism is that an oscillating charge radiates nothing along its own line of vibration, so at exactly this geometry the component that would have been reflected has nowhere to go.",
+          hi: "क्रियाविधि यह कि दोलन करता आवेश अपनी कंपन-रेखा के अनुदिश कुछ भी विकिरित नहीं करता, अतः ठीक इसी ज्यामिति पर वह घटक जो परावर्तित होता, उसके पास जाने को कोई जगह ही नहीं।",
+          mr: "यंत्रणा अशी की दोलन करणारा प्रभार आपल्या कंपन-रेषेच्या दिशेने काहीही प्रारित करत नाही, म्हणून नेमक्या याच भूमितीत जो घटक परावर्तित झाला असता त्याला जायला जागाच नाही.",
+        },
+        extra: {
+          en: "It is why polarising sunglasses kill the glare off a wet road or a lake but not the light from the sky directly overhead: glare is reflected light near this angle and is therefore already polarised horizontally.",
+          hi: "इसीलिए ध्रुवक धूप-चश्मे गीली सड़क या झील की चौंध मार देते हैं पर ठीक ऊपर के आकाश का प्रकाश नहीं: चौंध इसी कोण के पास का परावर्तित प्रकाश है और इसलिए पहले से क्षैतिज ध्रुवित है।",
+          mr: "म्हणूनच ध्रुवक गॉगल ओल्या रस्त्याची वा तळ्याची चमक मारतात पण अगदी वरच्या आकाशाचा प्रकाश नाही: चमक याच कोनाजवळचा परावर्तित प्रकाश आहे आणि म्हणून आधीच आडवी ध्रुवित आहे.",
+        },
+        pair: {
+          left: {
+            en: "Reflected and refracted rays exactly at right angles",
+            hi: "परावर्तित और अपवर्तित किरणें ठीक समकोण पर",
+            mr: "परावर्तित आणि अपवर्तित किरणे नेमकी काटकोनात",
+          },
+          right: {
+            en: "Brewster's law",
+            hi: "ब्रूस्टर का नियम",
+            mr: "ब्रूस्टरचा नियम",
+          },
+        },
+      },
+      {
+        id: "interference",
+        name: {
+          en: "Interference of light",
+          hi: "प्रकाश का व्यतिकरण",
+          mr: "प्रकाशाचे व्यतिकरण",
+        },
+        kind: "wave phenomenon",
+        prompt: {
+          en: "Two beams from the same source are brought together and the screen shows alternate bright and dark bands, so that covering one beam makes a dark band brighter. Which phenomenon is this?",
+          hi: "एक ही स्रोत से आए दो पुंज मिलाए जाते हैं और पर्दा बारी-बारी से चमकीली और अँधेरी पट्टियाँ दिखाता है, अतः एक पुंज ढक देने से अँधेरी पट्टी अधिक चमकीली हो जाती है। यह कौन-सी परिघटना है?",
+          mr: "एकाच स्रोतापासून आलेल्या दोन शलाका एकत्र आणल्या जातात आणि पडदा आळीपाळीने तेजस्वी आणि अंधाऱ्या पट्ट्या दाखवतो, म्हणून एक शलाका झाकल्याने अंधारी पट्टी अधिक तेजस्वी होते. ही कोणती घटना?",
+        },
+        statement: {
+          en: "Interference of light is the redistribution of energy when coherent beams superpose, giving maxima where the path difference is a whole number of wavelengths and minima where it is an odd number of half wavelengths.",
+          hi: "प्रकाश का व्यतिकरण कलासंबद्ध पुंजों के अध्यारोपण पर ऊर्जा का पुनर्वितरण है, जो वहाँ उच्चिष्ठ देता है जहाँ पथांतर तरंगदैर्ध्य का पूर्णांक गुणक हो और निम्निष्ठ वहाँ जहाँ वह आधी तरंगदैर्ध्य का विषम गुणक हो।",
+          mr: "प्रकाशाचे व्यतिकरण म्हणजे कलासंबद्ध शलाका अध्यारोपित झाल्यावर ऊर्जेचे पुनर्वाटप, जे तिथे उच्चिष्ठ देते जिथे पथांतर तरंगलांबीचा पूर्णांक पट असेल आणि निम्निष्ठ तिथे जिथे तो अर्ध्या तरंगलांबीचा विषम पट असेल.",
+        },
+        detail: {
+          en: "Energy is redistributed and never destroyed: the light missing from the dark fringes is exactly the extra light in the bright ones, and the average across the pattern is what the two beams delivered separately.",
+          hi: "ऊर्जा का पुनर्वितरण होता है, नाश कभी नहीं: अँधेरी फ्रिंजों से लुप्त प्रकाश ठीक वही अतिरिक्त प्रकाश है जो चमकीली फ्रिंजों में है, और पूरे प्रतिरूप का औसत वही है जो दोनों पुंज अलग-अलग देते।",
+          mr: "ऊर्जेचे पुनर्वाटप होते, नाश कधीच नाही: अंधाऱ्या पट्ट्यांतून हरवलेला प्रकाश नेमका तोच जादा प्रकाश आहे जो तेजस्वी पट्ट्यांत आहे, आणि अख्ख्या नमुन्याची सरासरी तीच जी दोन्ही शलाका वेगवेगळ्या देतील.",
+        },
+        extra: {
+          en: "It is the reason a soap film and an oil slick show colours: the two reflections from the film's faces differ in path by a distance comparable to a wavelength, and which colour survives depends on the thickness.",
+          hi: "इसीलिए साबुन की झिल्ली और तेल की परत रंग दिखाती हैं: झिल्ली के दोनों फलकों से हुए परावर्तनों का पथांतर तरंगदैर्ध्य के दर्जे का होता है, और कौन-सा रंग बचेगा यह मोटाई पर निर्भर है।",
+          mr: "म्हणूनच साबणाचा पडदा आणि तेलाचा तवंग रंग दाखवतात: पडद्याच्या दोन्ही पृष्ठांवरील परावर्तनांचा पथांतर तरंगलांबीच्या तोडीचा असतो, आणि कोणता रंग टिकेल हे जाडीवर अवलंबून.",
+        },
+        pair: {
+          left: {
+            en: "Cover one beam and a dark band gets brighter",
+            hi: "एक पुंज ढको और अँधेरी पट्टी चमक उठे",
+            mr: "एक शलाका झाका आणि अंधारी पट्टी उजळते",
+          },
+          right: {
+            en: "interference of light",
+            hi: "प्रकाश का व्यतिकरण",
+            mr: "प्रकाशाचे व्यतिकरण",
+          },
+        },
+      },
+      {
+        id: "diffraction",
+        name: {
+          en: "Diffraction of light",
+          hi: "प्रकाश का विवर्तन",
+          mr: "प्रकाशाचे विवर्तन",
+        },
+        kind: "wave phenomenon",
+        prompt: {
+          en: "Narrow a slit and the patch of light on the screen behind it does not narrow but widens, spilling into the geometrical shadow with a broad bright centre and faint bands on either side. Which phenomenon is this?",
+          hi: "झिरी सँकरी करो और उसके पीछे पर्दे पर प्रकाश का धब्बा सँकरा नहीं होता बल्कि चौड़ा होता है, ज्यामितीय छाया में फैलकर, चौड़े चमकीले केंद्र और दोनों ओर धुँधली पट्टियों के साथ। यह कौन-सी परिघटना है?",
+          mr: "फट अरुंद करा आणि तिच्यामागे पडद्यावरचा प्रकाशाचा ठिपका अरुंद न होता रुंद होतो, भूमितीय सावलीत पसरून, रुंद तेजस्वी केंद्र आणि दोन्ही बाजूंना धूसर पट्ट्यांसह. ही कोणती घटना?",
+        },
+        statement: {
+          en: "Diffraction of light is the bending of a wave round the edges of an obstacle or aperture, giving a single-slit pattern whose first minimum lies at sin θ = λ/a.",
+          hi: "प्रकाश का विवर्तन किसी अवरोध या द्वारक के किनारों के गिर्द तरंग का मुड़ना है, जो एकल झिरी का ऐसा प्रतिरूप देता है जिसका पहला निम्निष्ठ sin θ = λ/a पर पड़ता है।",
+          mr: "प्रकाशाचे विवर्तन म्हणजे एखाद्या अडथळ्याच्या वा द्वारकाच्या कडांभोवती लहरीचे वाकणे, जे एकेरी फटीचा असा नमुना देते ज्याचा पहिला निम्निष्ठ sin θ = λ/a वर पडतो.",
+        },
+        detail: {
+          en: "The spreading goes as λ/a, so it is invisible for a slit a millimetre wide and unmissable for one a hundredth of that — which is why ray optics works at all in everyday life.",
+          hi: "फैलाव λ/a के अनुसार चलता है, अतः मिलीमीटर चौड़ी झिरी के लिए वह अदृश्य है और उसके सौवें भाग वाली के लिए अनदेखा करना असंभव — इसीलिए रोज़मर्रा में किरण प्रकाशिकी चलती ही है।",
+          mr: "पसरणे λ/a नुसार चालते, म्हणून मिलीमीटर रुंद फटीसाठी ते अदृश्य आहे आणि तिच्या शंभराव्या भागाच्या फटीसाठी दुर्लक्ष करणे अशक्य — म्हणूनच रोजच्या जगण्यात किरण प्रकाशिकी चालतेच.",
+        },
+        extra: {
+          en: "It is the reason a ray is only an approximation: any attempt to define one by making the aperture smaller destroys the very straightness it was meant to demonstrate.",
+          hi: "इसीलिए किरण केवल सन्निकटन है: द्वारक छोटा करके उसे परिभाषित करने की कोई भी कोशिश ठीक उसी सीधेपन को नष्ट कर देती है जिसे दिखाना था।",
+          mr: "म्हणूनच किरण हा केवळ अंदाज आहे: द्वारक लहान करून त्याची व्याख्या करण्याचा कोणताही प्रयत्न नेमके तेच सरळपण नष्ट करतो जे दाखवायचे होते.",
+        },
+        pair: {
+          left: {
+            en: "Make the hole smaller and the light spreads wider",
+            hi: "छेद छोटा करो और प्रकाश और चौड़ा फैले",
+            mr: "छिद्र लहान करा आणि प्रकाश अधिक रुंद पसरतो",
+          },
+          right: {
+            en: "diffraction of light",
+            hi: "प्रकाश का विवर्तन",
+            mr: "प्रकाशाचे विवर्तन",
+          },
+        },
+      },
+      {
+        id: "polarisation",
+        name: {
+          en: "Polarisation of light",
+          hi: "प्रकाश का ध्रुवण",
+          mr: "प्रकाशाचे ध्रुवीकरण",
+        },
+        kind: "wave phenomenon",
+        prompt: {
+          en: "Pass a beam through one crystal and nothing much seems to happen; pass it through a second and rotate that one, and the light dims to nothing twice in every full turn. Which phenomenon is this?",
+          hi: "पुंज को एक क्रिस्टल से गुज़ारो और कुछ ख़ास होता नहीं दिखता; दूसरे से गुज़ारो और उसे घुमाओ, और हर पूरे चक्कर में प्रकाश दो बार मंद होकर शून्य हो जाता है। यह कौन-सी परिघटना है?",
+          mr: "शलाका एका स्फटिकातून जाऊ द्या आणि फारसे काही घडत नाही असे वाटते; दुसऱ्यातून जाऊ द्या आणि तो फिरवा, आणि प्रत्येक पूर्ण फेऱ्यात प्रकाश दोनदा मंद होऊन शून्य होतो. ही कोणती घटना?",
+        },
+        statement: {
+          en: "Polarisation of light is the restriction of its vibrations to one plane, and the intensity through a second polaroid follows Malus's law, I = I₀ cos²θ.",
+          hi: "प्रकाश का ध्रुवण उसके कंपनों का एक तल तक सीमित होना है, और दूसरे पोलेरॉइड से गुज़री तीव्रता मैलस के नियम I = I₀ cos²θ को मानती है।",
+          mr: "प्रकाशाचे ध्रुवीकरण म्हणजे त्याच्या कंपनांचे एका प्रतलापुरते मर्यादित होणे, आणि दुसऱ्या पोलरॉइडमधून जाणारी तीव्रता मालसच्या नियमाला I = I₀ cos²θ मानते.",
+        },
+        detail: {
+          en: "It is possible only because light is transverse: a longitudinal wave vibrates along its direction of travel and has no plane to be restricted to, which is why sound cannot be polarised at all.",
+          hi: "यह केवल इसलिए संभव है कि प्रकाश अनुप्रस्थ है: अनुदैर्घ्य तरंग अपनी चलने की दिशा के अनुदिश कंपती है और उसके पास सीमित होने को कोई तल है ही नहीं, इसीलिए ध्वनि ध्रुवित हो ही नहीं सकती।",
+          mr: "हे केवळ यामुळे शक्य आहे की प्रकाश अनुप्रस्थ आहे: अनुदैर्घ्य लहर आपल्या प्रवासाच्या दिशेने कंप पावते आणि तिच्याकडे मर्यादित होण्यास कोणतेही प्रतल नाहीच, म्हणूनच ध्वनी ध्रुवित होऊच शकत नाही.",
+        },
+        extra: {
+          en: "Unpolarised light passing a first ideal polaroid always loses exactly half its intensity, because averaging cos²θ over all orientations gives one half whatever the polaroid's angle.",
+          hi: "पहले आदर्श पोलेरॉइड से गुज़रता अध्रुवित प्रकाश सदा ठीक आधी तीव्रता खोता है, क्योंकि सभी अभिविन्यासों पर cos²θ का औसत पोलेरॉइड का कोण चाहे जो हो, आधा ही आता है।",
+          mr: "पहिल्या आदर्श पोलरॉइडमधून जाणारा अध्रुवित प्रकाश नेहमी नेमकी निम्मी तीव्रता गमावतो, कारण सर्व मांडण्यांवर cos²θ ची सरासरी पोलरॉइडचा कोन कोणताही असो, निम्मीच येते.",
+        },
+        pair: {
+          left: {
+            en: "Sound can never do it, light always can",
+            hi: "ध्वनि यह कभी नहीं कर सकती, प्रकाश सदा कर सकता है",
+            mr: "ध्वनी हे कधीच करू शकत नाही, प्रकाश नेहमी करू शकतो",
+          },
+          right: {
+            en: "polarisation of light",
+            hi: "प्रकाश का ध्रुवण",
+            mr: "प्रकाशाचे ध्रुवीकरण",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A student sets up Young's experiment but replaces the single source with two identical lamps, one behind each slit, arguing that this gives more light and the same two beams. No fringes appear at all. Explain why, and why the standard arrangement works.",
+          hi: "एक विद्यार्थी यंग का प्रयोग जमाता है पर अकेले स्रोत की जगह दो समरूप लैंप रखता है, हर झिरी के पीछे एक, यह तर्क देकर कि इससे अधिक प्रकाश और वही दो पुंज मिलते हैं। कोई फ्रिंज बनती ही नहीं। समझाओ क्यों, और मानक व्यवस्था क्यों चलती है।",
+          mr: "एक विद्यार्थी यंगचा प्रयोग मांडतो पण एकट्या स्रोताच्या जागी दोन सारखे दिवे ठेवतो, प्रत्येक फटीमागे एक, असा युक्तिवाद करून की यातून अधिक प्रकाश आणि त्याच दोन शलाका मिळतात. एकही पट्टा दिसत नाही. का ते समजावा, आणि प्रमाणित मांडणी का चालते ते सांगा.",
+        },
+        choices: [
+          {
+            en: "Because the two lamps are not coherent. Each atom in a lamp radiates an independent burst lasting some nanoseconds, so the phase difference between the two sources changes randomly millions of times a second. Fringes do form at every instant, but their positions jump about far faster than the eye or the plate can follow, and what is recorded is the average — uniform illumination. Young's single slit before the double slit is exactly the fix: both slits then sample ONE wavefront, so whatever random phase the source has at any moment, both inherit it and the difference between them stays fixed",
+            hi: "क्योंकि दोनों लैंप कलासंबद्ध नहीं। लैंप का हर परमाणु कुछ नैनोसेकंड चलने वाला स्वतंत्र झोंका विकिरित करता है, अतः दोनों स्रोतों के बीच कलांतर सेकंड में लाखों बार यादृच्छिक ढंग से बदलता है। फ्रिंज हर क्षण बनती तो हैं, पर उनकी जगहें आँख या प्लेट के पीछा कर सकने से कहीं तेज़ी से उछलती रहती हैं, और जो दर्ज होता है वह औसत है — एकसमान प्रदीप्ति। दोहरी झिरी से पहले यंग की अकेली झिरी ठीक वही इलाज है: दोनों झिरियाँ तब एक ही तरंगाग्र का नमूना लेती हैं, अतः किसी भी क्षण स्रोत की जो भी यादृच्छिक कला हो, दोनों उसे विरासत में पाते हैं और उनके बीच का अंतर स्थिर रहता है",
+            mr: "कारण दोन्ही दिवे कलासंबद्ध नाहीत. दिव्यातला प्रत्येक अणू काही नॅनोसेकंद टिकणारा स्वतंत्र झोत प्रारित करतो, म्हणून दोन स्रोतांमधला कलांतर सेकंदाला लाखो वेळा यादृच्छिकपणे बदलतो. पट्टे प्रत्येक क्षणी तयार होतातच, पण त्यांच्या जागा डोळा वा पट्टिका मागोवा घेऊ शकेल त्याहून कितीतरी वेगाने उड्या मारतात, आणि जे नोंदले जाते ती सरासरी आहे — एकसमान प्रदीप्ती. दुहेरी फटीआधीची यंगची एकच फट नेमका तोच उपाय आहे: दोन्ही फटी मग एकाच तरंगाग्राचा नमुना घेतात, म्हणून कोणत्याही क्षणी स्रोताची जी काही यादृच्छिक कला असेल, दोन्ही ती वारशाने मिळवतात आणि त्यांच्यातला फरक स्थिर राहतो",
+          },
+          {
+            en: "Because two lamps give twice the intensity, and interference only shows up at low light levels where the individual photons can be distinguished",
+            hi: "क्योंकि दो लैंप दुगुनी तीव्रता देते हैं, और व्यतिकरण केवल कम प्रकाश में दिखता है जहाँ अलग-अलग फ़ोटॉन पहचाने जा सकें",
+            mr: "कारण दोन दिवे दुप्पट तीव्रता देतात, आणि व्यतिकरण केवळ कमी प्रकाशात दिसते जिथे वेगवेगळे फोटॉन ओळखता येतील",
+          },
+          {
+            en: "Because two separate lamps can never be made exactly the same wavelength, and interference requires the two beams to be perfectly monochromatic",
+            hi: "क्योंकि दो अलग लैंप कभी ठीक एक ही तरंगदैर्ध्य के नहीं बनाए जा सकते, और व्यतिकरण के लिए दोनों पुंजों का पूर्णतः एकवर्णी होना ज़रूरी है",
+            mr: "कारण दोन वेगळे दिवे कधीच नेमक्या एकाच तरंगलांबीचे बनवता येत नाहीत, आणि व्यतिकरणासाठी दोन्ही शलाका पूर्णपणे एकवर्णी असणे आवश्यक आहे",
+          },
+          {
+            en: "Because light from two sources cannot superpose at all — superposition applies only to waves that came from the same emitter",
+            hi: "क्योंकि दो स्रोतों का प्रकाश अध्यारोपित हो ही नहीं सकता — अध्यारोपण केवल उन तरंगों पर लागू होता है जो एक ही उत्सर्जक से आई हों",
+            mr: "कारण दोन स्रोतांचा प्रकाश अध्यारोपित होऊच शकत नाही — अध्यारोपण केवळ त्याच लहरींना लागू होते ज्या एकाच उत्सर्जकाकडून आल्या",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The student's reasoning has one hidden assumption, and naming it is the whole answer: that two sources emitting the same colour are interchangeable with one source split in two. They are not, and the difference is PHASE. Consider what an ordinary lamp actually is. Light comes from individual atoms dropping between energy levels, and each such event produces a wave train lasting of the order of 10⁻⁹ s. There is no mechanism keeping one atom in step with another; each starts when it happens to start. So a lamp is a stream of short, randomly phased bursts, and two lamps are two such streams with no relation between them whatever. Now put that into the interference formula. The intensity at a point depends on the phase difference φ between the two arriving waves as I = I₁ + I₂ + 2√(I₁I₂)cos φ. If φ is fixed, the cosine term survives and you get bright and dark places. If φ wanders at random over the observation, the AVERAGE of cos φ is zero, and the formula collapses to I = I₁ + I₂ — the two intensities simply add, everywhere, and the screen is uniformly lit. Note carefully what this does and does not say. The fringes are not prevented from forming; superposition still applies, and at any given instant a full fringe pattern exists on the screen. But the pattern's position depends on the current phase difference, which is being reshuffled every few nanoseconds, so the pattern washes across the screen far faster than any detector can follow. What is recorded is the time average of millions of different patterns, and that average is flat. A camera with a nanosecond shutter would in principle catch one. This is why the fix works. Young placed a single narrow slit before the pair, so that the light reaching both slits comes from the same small region of the same source. Whatever random phase a burst has, it arrives at both slits together, and the phase DIFFERENCE between the two — which is all the formula cares about — is set by the geometry of the path lengths and nothing else. The source can be as chaotic as it likes; the two derived beams stay locked to each other. The general principle is worth keeping: coherence is not a property of a beam but a RELATION between two of them, and the standard way to obtain it is to make both from one. Every classical interference arrangement does this — division of wavefront in Young's slits and Fresnel's biprism, division of amplitude in a thin film or a Michelson interferometer. A laser is the modern exception, because stimulated emission forces its atoms to radiate in step, and that is precisely why two separate lasers CAN be made to interfere while two separate candles cannot. (The second option makes interference a low-light effect, when it is seen perfectly well in bright light; the third cites monochromaticity, which helps fringe visibility but is not the failure here — two lamps of identical wavelength still would not interfere; the fourth denies superposition itself, which would forbid the pattern that a fast camera would in fact record.)",
+          hi: "विद्यार्थी के तर्क में एक छिपी मान्यता है, और उसे नाम देना ही पूरा उत्तर है: कि एक ही रंग उत्सर्जित करते दो स्रोत दो में बाँटे गए एक स्रोत से अदल-बदल किए जा सकते हैं। वे नहीं किए जा सकते, और अंतर कला का है। सोचो कि साधारण लैंप वस्तुतः है क्या। प्रकाश ऊर्जा स्तरों के बीच गिरते अलग-अलग परमाणुओं से आता है, और हर ऐसी घटना लगभग 10⁻⁹ s चलने वाली तरंग-रेल देती है। ऐसी कोई क्रियाविधि नहीं जो एक परमाणु को दूसरे के ताल में रखे; हर एक तब शुरू होता है जब हो जाए। अतः लैंप छोटे, यादृच्छिक कला वाले झोंकों की धारा है, और दो लैंप दो ऐसी धाराएँ हैं जिनमें आपस में कोई संबंध है ही नहीं। अब उसे व्यतिकरण के सूत्र में रखो। किसी बिंदु पर तीव्रता आती हुई दोनों तरंगों के कलांतर φ पर निर्भर है, I = I₁ + I₂ + 2√(I₁I₂)cos φ. यदि φ स्थिर है, कोज्या वाला पद बचा रहता है और तुम्हें चमकीली और अँधेरी जगहें मिलती हैं। यदि φ प्रेक्षण भर यादृच्छिक ढंग से भटकता है, तो cos φ का औसत शून्य है, और सूत्र सिमटकर I = I₁ + I₂ रह जाता है — दोनों तीव्रताएँ बस जुड़ जाती हैं, हर जगह, और पर्दा एकसमान प्रकाशित होता है। ध्यान से देखो कि यह क्या कहता है और क्या नहीं। फ्रिंजों को बनने से रोका नहीं जा रहा; अध्यारोपण अब भी लागू है, और किसी भी क्षण पर्दे पर पूरा फ्रिंज प्रतिरूप मौजूद है। पर प्रतिरूप की जगह वर्तमान कलांतर पर निर्भर है, जो हर कुछ नैनोसेकंड में फिर-फिर बदला जा रहा है, अतः प्रतिरूप पर्दे पर किसी भी संसूचक के पीछा कर सकने से कहीं तेज़ी से बह जाता है। जो दर्ज होता है वह लाखों भिन्न प्रतिरूपों का काल-औसत है, और वह औसत सपाट है। नैनोसेकंड शटर वाला कैमरा सिद्धांततः एक पकड़ लेता। इसीलिए इलाज चलता है। यंग ने जोड़ी से पहले एक सँकरी झिरी रखी, ताकि दोनों झिरियों तक पहुँचता प्रकाश उसी स्रोत के उसी छोटे भाग से आए। झोंके की जो भी यादृच्छिक कला हो, वह दोनों झिरियों पर साथ पहुँचती है, और दोनों के बीच कलांतर — जिसकी ही सूत्र को परवाह है — पथ-लंबाइयों की ज्यामिति से तय होता है और किसी चीज़ से नहीं। स्रोत जितना चाहे अराजक हो; उससे निकाले गए दोनों पुंज एक-दूसरे से बँधे रहते हैं। सामान्य सिद्धांत रखने योग्य है: कलासंबद्धता किसी पुंज का गुण नहीं बल्कि दो पुंजों के बीच का संबंध है, और उसे पाने का मानक रास्ता दोनों को एक से बनाना है। हर चिरसम्मत व्यतिकरण व्यवस्था यही करती है — यंग की झिरियों और फ़्रेनेल के द्विप्रिज़्म में तरंगाग्र का विभाजन, पतली झिल्ली या माइकेलसन व्यतिकरणमापी में आयाम का विभाजन। लेज़र आधुनिक अपवाद है, क्योंकि उद्दीपित उत्सर्जन उसके परमाणुओं को ताल में विकिरित करने पर बाध्य करता है, और ठीक इसीलिए दो अलग लेज़रों से व्यतिकरण कराया जा सकता है जबकि दो अलग मोमबत्तियों से नहीं। (दूसरा विकल्प व्यतिकरण को कम-प्रकाश का प्रभाव बना देता है, जबकि वह तेज़ प्रकाश में भी बख़ूबी दिखता है; तीसरा एकवर्णिता गिनाता है, जो फ्रिंज की दृश्यता में मदद करती है पर यहाँ विफलता वह नहीं — एक ही तरंगदैर्ध्य के दो लैंप भी व्यतिकरण नहीं करते; चौथा स्वयं अध्यारोपण से इनकार करता है, जो उस प्रतिरूप को मना कर देता जिसे तेज़ कैमरा वस्तुतः दर्ज कर लेता।)",
+          mr: "विद्यार्थ्याच्या युक्तिवादात एक लपलेली गृहीतकल्पना आहे, आणि तिला नाव देणे हेच अख्खे उत्तर आहे: की एकाच रंगाचे उत्सर्जन करणारे दोन स्रोत आणि दोनांत विभागलेला एक स्रोत अदलाबदल करण्याजोगे आहेत. ते नाहीत, आणि फरक कलेचा आहे. साधा दिवा प्रत्यक्षात काय आहे याचा विचार करा. प्रकाश ऊर्जा पातळ्यांमधून पडणाऱ्या वेगवेगळ्या अणूंकडून येतो, आणि प्रत्येक अशी घटना सुमारे 10⁻⁹ s टिकणारी लहर-गाडी देते. एका अणूला दुसऱ्याच्या तालात ठेवणारी अशी कोणतीही यंत्रणा नाही; प्रत्येक तेव्हा सुरू होतो जेव्हा होईल. म्हणून दिवा हा लहान, यादृच्छिक कलेच्या झोतांचा प्रवाह आहे, आणि दोन दिवे म्हणजे दोन असे प्रवाह ज्यांच्यात परस्पर कोणताही संबंध नाहीच. आता ते व्यतिकरणाच्या सूत्रात ठेवा. एखाद्या बिंदूवरची तीव्रता येणाऱ्या दोन्ही लहरींच्या कलांतर φ वर अवलंबून आहे, I = I₁ + I₂ + 2√(I₁I₂)cos φ. जर φ स्थिर असेल, कोसाइनचे पद टिकते आणि तुम्हाला तेजस्वी आणि अंधाऱ्या जागा मिळतात. जर φ निरीक्षणभर यादृच्छिकपणे भटकत असेल, तर cos φ ची सरासरी शून्य आहे, आणि सूत्र आकसून I = I₁ + I₂ उरते — दोन्ही तीव्रता फक्त जुळतात, सर्वत्र, आणि पडदा एकसमान उजळतो. हे काय सांगते आणि काय नाही ते काळजीपूर्वक पाहा. पट्ट्यांना तयार होण्यापासून रोखले जात नाही; अध्यारोपण अजूनही लागू आहे, आणि कोणत्याही क्षणी पडद्यावर पूर्ण पट्टा नमुना अस्तित्वात आहे. पण नमुन्याची जागा सध्याच्या कलांतरावर अवलंबून आहे, जो दर काही नॅनोसेकंदांनी पुन्हा पुन्हा बदलला जात आहे, म्हणून नमुना पडद्यावरून कोणताही संवेदक मागोवा घेऊ शकेल त्याहून कितीतरी वेगाने वाहून जातो. जे नोंदले जाते ती लाखो वेगवेगळ्या नमुन्यांची काल-सरासरी आहे, आणि ती सरासरी सपाट आहे. नॅनोसेकंद शटरचा कॅमेरा तत्त्वतः एक पकडेल. म्हणूनच उपाय चालतो. यंगने जोडीआधी एक अरुंद फट ठेवली, जेणेकरून दोन्ही फटींपर्यंत पोहोचणारा प्रकाश त्याच स्रोताच्या त्याच लहान भागातून यावा. झोताची जी काही यादृच्छिक कला असेल, ती दोन्ही फटींवर एकत्र पोहोचते, आणि दोघांतील कलांतर — ज्याचीच सूत्राला पर्वा आहे — मार्ग-लांबींच्या भूमितीने ठरतो आणि दुसऱ्या कशानेही नाही. स्रोत हवा तितका गोंधळलेला असो; त्यातून काढलेल्या दोन्ही शलाका एकमेकांशी जखडलेल्या राहतात. सर्वसाधारण तत्त्व ठेवण्याजोगे आहे: कलासंबद्धता ही कोणत्याही शलाकेचा गुणधर्म नसून दोन शलाकांमधला संबंध आहे, आणि ती मिळवण्याचा प्रमाणित मार्ग म्हणजे दोन्ही एकातून बनवणे. प्रत्येक चिरंतन व्यतिकरण मांडणी हेच करते — यंगच्या फटी आणि फ्रेनेलच्या द्विलोलकात तरंगाग्राचे विभाजन, पातळ पडद्यात वा मायकेलसन व्यतिकरणमापीत आयामाचे विभाजन. लेझर हा आधुनिक अपवाद आहे, कारण उद्दीपित उत्सर्जन त्याच्या अणूंना तालात प्रारित करायला भाग पाडते, आणि नेमके म्हणूनच दोन वेगळ्या लेझरांकडून व्यतिकरण करवून घेता येते तर दोन वेगळ्या मेणबत्त्यांकडून नाही. (दुसरा पर्याय व्यतिकरणाला कमी-प्रकाशाचा परिणाम बनवतो, तर तो तेजस्वी प्रकाशातही उत्तम दिसतो; तिसरा एकवर्णिता सांगतो, जी पट्ट्यांच्या दृश्यतेस मदत करते पण इथे अपयश ते नाही — एकाच तरंगलांबीचे दोन दिवेही व्यतिकरण करणार नाहीत; चौथा स्वतः अध्यारोपण नाकारतो, जे त्या नमुन्याला वर्ज्य करेल जो जलद कॅमेरा प्रत्यक्षात नोंदवेल.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "In a single-slit pattern the central bright band is twice as wide as the others, while in a double-slit pattern every fringe is the same width. A student says the two are the same phenomenon and the difference must be an error. Assess this, and say what happens as the slit is made narrower and narrower.",
+          hi: "एकल झिरी के प्रतिरूप में केंद्रीय चमकीली पट्टी बाक़ी सबसे दुगुनी चौड़ी होती है, जबकि दोहरी झिरी के प्रतिरूप में हर फ्रिंज एक ही चौड़ाई की होती है। विद्यार्थी कहता है कि दोनों एक ही परिघटना हैं और अंतर कोई त्रुटि होगी। इसका आकलन करो, और बताओ कि झिरी को और सँकरा करते जाने पर क्या होता है।",
+          mr: "एकेरी फटीच्या नमुन्यात मध्यवर्ती तेजस्वी पट्टी बाकी सर्वांहून दुप्पट रुंद असते, तर दुहेरी फटीच्या नमुन्यात प्रत्येक पट्टा एकाच रुंदीचा असतो. विद्यार्थी म्हणतो की दोन्ही एकच घटना आहेत आणि फरक ही काहीतरी चूक असावी. याचे मूल्यमापन करा, आणि फट अधिकाधिक अरुंद करत गेल्यावर काय होते ते सांगा.",
+        },
+        choices: [
+          {
+            en: "Both are superposition, so the student is half right, but they superpose different numbers of contributions and the difference in the pattern is real. Two slits give two beams whose path difference grows in equal steps, producing equally spaced fringes of equal width. One slit gives a continuum of wavelets from across its own width, and the minima occur where those cancel in pairs, at sin θ = mλ/a with m ≠ 0; the central maximum therefore stretches from the first minimum on one side to the first on the other and is twice as wide. As a is narrowed the whole pattern SPREADS, since the width goes as λ/a — so no slit is ever small enough to define a ray, and geometrical optics is recovered only in the opposite limit a ≫ λ",
+            hi: "दोनों अध्यारोपण हैं, अतः विद्यार्थी आधा सही है, पर वे भिन्न संख्या के अंशों को अध्यारोपित करते हैं और प्रतिरूप का अंतर असली है। दो झिरियाँ दो पुंज देती हैं जिनका पथांतर बराबर क़दमों में बढ़ता है, और वे बराबर दूरी पर बराबर चौड़ाई की फ्रिंज बनाती हैं। एक झिरी अपनी ही चौड़ाई भर से तरंगिकाओं का सातत्य देती है, और निम्निष्ठ वहाँ होते हैं जहाँ वे युग्मों में कट जाएँ, sin θ = mλ/a पर जिसमें m ≠ 0; अतः केंद्रीय उच्चिष्ठ एक ओर के पहले निम्निष्ठ से दूसरी ओर के पहले तक फैलता है और दुगुना चौड़ा है। a सँकरा करने पर पूरा प्रतिरूप फैलता है, क्योंकि चौड़ाई λ/a के अनुसार चलती है — अतः किरण परिभाषित करने के लिए कोई झिरी कभी पर्याप्त छोटी नहीं होती, और ज्यामितीय प्रकाशिकी केवल उलटी सीमा a ≫ λ में लौटती है",
+            mr: "दोन्ही अध्यारोपण आहेत, म्हणून विद्यार्थी अर्धा बरोबर आहे, पण ते वेगळ्या संख्येचे वाटे अध्यारोपित करतात आणि नमुन्यातला फरक खरा आहे. दोन फटी दोन शलाका देतात ज्यांचा पथांतर समान पावलांनी वाढतो, आणि त्या समान अंतरावर समान रुंदीचे पट्टे बनवतात. एक फट स्वतःच्याच रुंदीभर लहरिकांचे सातत्य देते, आणि निम्निष्ठ तिथे घडतात जिथे त्या जोड्यांत कापल्या जातात, sin θ = mλ/a वर जिथे m ≠ 0; म्हणून मध्यवर्ती उच्चिष्ठ एका बाजूच्या पहिल्या निम्निष्ठापासून दुसऱ्या बाजूच्या पहिल्यापर्यंत पसरतो आणि दुप्पट रुंद आहे. a अरुंद केल्यावर अख्खा नमुना पसरतो, कारण रुंदी λ/a नुसार चालते — म्हणून किरण व्याख्यायित करण्यास कोणतीही फट कधीच पुरेशी लहान नसते, आणि भूमितीय प्रकाशिकी केवळ उलट मर्यादेत a ≫ λ मध्ये परतते",
+          },
+          {
+            en: "The student is right that they are the same, and the double-slit fringes are also unequal — the middle one is twice as wide there too, but the difference is too small to see",
+            hi: "विद्यार्थी यह मानने में सही है कि दोनों एक हैं, और दोहरी झिरी की फ्रिंज भी असमान हैं — वहाँ भी बीच वाली दुगुनी चौड़ी है, पर अंतर देखने लायक़ नहीं",
+            mr: "विद्यार्थी हे मानण्यात बरोबर आहे की दोन्ही एकच आहेत, आणि दुहेरी फटीचे पट्टेही असमान आहेत — तिथेही मधला दुप्पट रुंद आहे, पण फरक दिसण्याइतका नाही",
+          },
+          {
+            en: "They are entirely unrelated: interference is a wave effect and diffraction is a particle effect caused by light striking the edges of the slit",
+            hi: "वे बिलकुल असंबद्ध हैं: व्यतिकरण तरंग-प्रभाव है और विवर्तन कण-प्रभाव है जो प्रकाश के झिरी के किनारों से टकराने से होता है",
+            mr: "ते पूर्णपणे असंबद्ध आहेत: व्यतिकरण हा लहरी-परिणाम आहे आणि विवर्तन हा कण-परिणाम आहे जो प्रकाश फटीच्या कडांवर आदळल्याने होतो",
+          },
+          {
+            en: "The central band is twice as wide only because it is brighter, and a longer exposure would make every band look equally wide",
+            hi: "केंद्रीय पट्टी केवल इसलिए दुगुनी चौड़ी है कि वह अधिक चमकीली है, और लंबे उद्भासन में हर पट्टी बराबर चौड़ी दिखने लगती",
+            mr: "मध्यवर्ती पट्टी केवळ यामुळे दुप्पट रुंद आहे की ती अधिक तेजस्वी आहे, आणि दीर्घ उद्भासनात प्रत्येक पट्टी समान रुंद दिसली असती",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The student has seen something true and drawn the wrong conclusion from it. Interference and diffraction are indeed the same physics — superposition of coherent waves — and the modern view does not treat them as separate laws. What differs is HOW MANY contributions are being added, and that difference has consequences you can measure with a ruler. TWO SLITS. There are exactly two beams. Their path difference at angle θ is d sin θ, and it grows steadily as you move along the screen, passing through 0, λ, 2λ, 3λ … at equally spaced positions. Bright fringes therefore sit at equal intervals β = λD/d, and each is as wide as its neighbours. Nothing distinguishes the central fringe except that its path difference happens to be zero. ONE SLIT. There are not two beams but infinitely many wavelets, one from every point across the slit's width a. The condition for a minimum is not 'two things cancel' but 'everything cancels in pairs': divide the slit into two halves, and when the extra path from the top of one half to the top of the other is λ/2, every wavelet in the first half is annulled by a partner in the second. That gives a sin θ = λ. Repeat with four strips, six strips, and you get a sin θ = mλ for m = 1, 2, 3 …, with m = 0 conspicuously excluded, because at θ = 0 there is no path difference to cancel anything and every wavelet arrives in phase. So the pattern runs: central maximum, first minimum at sin θ = λ/a, and the maxima after that lie roughly midway between successive minima. The central band therefore spans from −λ/a to +λ/a while every other band spans only λ/a — exactly twice as wide, and it is also far brighter because all the wavelets add there instead of mostly cancelling. Now the narrowing, which is the deeper half of the question. The angular half-width of the central maximum is λ/a. Halve the slit and it doubles. This runs directly against the intuition that a narrower hole gives a narrower beam, and it is the reason a ray cannot be constructed by making an aperture small: at a ≈ λ the pattern spreads through nearly a right angle, and the slit behaves as a single Huygens point source radiating into the whole forward hemisphere. Ray optics is the OPPOSITE limit. When a ≫ λ, λ/a is negligible, the spreading is unmeasurable, and light appears to travel in straight lines with sharp shadows. A millimetre slit and 500 nm light give a spreading of about 0.03°, which is why nothing in ordinary life contradicts the ray picture. Geometrical optics is therefore not a different theory but wave optics with a term thrown away, valid precisely when the wavelength is small compared with everything else in the problem — the same relationship classical mechanics has to quantum mechanics, and worth noticing as a pattern in how physics retires its older laws without discarding them. (The second option invents unequal double-slit fringes; the third resurrects a particle account that predicts the wrong direction of spreading; the fourth confuses brightness with width, which a measurement of the minima's positions settles immediately.)",
+          hi: "विद्यार्थी ने कुछ सच देखा है और उससे ग़लत निष्कर्ष निकाला है। व्यतिकरण और विवर्तन सचमुच एक ही भौतिकी हैं — कलासंबद्ध तरंगों का अध्यारोपण — और आधुनिक दृष्टि उन्हें अलग नियम नहीं मानती। जो भिन्न है वह यह कि कितने अंश जोड़े जा रहे हैं, और उस अंतर के ऐसे परिणाम हैं जिन्हें रूलर से नापा जा सकता है। दो झिरियाँ। ठीक दो पुंज हैं। कोण θ पर उनका पथांतर d sin θ है, और पर्दे पर चलते हुए वह लगातार बढ़ता है, बराबर दूरी की जगहों पर 0, λ, 2λ, 3λ … से गुज़रता हुआ। अतः चमकीली फ्रिंज बराबर अंतराल β = λD/d पर बैठती हैं, और हर एक अपने पड़ोसियों जितनी चौड़ी है। केंद्रीय फ्रिंज को कुछ अलग नहीं करता सिवाय इसके कि उसका पथांतर संयोग से शून्य है। एक झिरी। दो पुंज नहीं बल्कि असंख्य तरंगिकाएँ हैं, झिरी की चौड़ाई a भर के हर बिंदु से एक। निम्निष्ठ की शर्त 'दो चीज़ें कट जाएँ' नहीं बल्कि 'सब कुछ युग्मों में कट जाए' है: झिरी को दो हिस्सों में बाँटो, और जब एक हिस्से के ऊपरी सिरे से दूसरे के ऊपरी सिरे तक अतिरिक्त पथ λ/2 हो, तो पहले हिस्से की हर तरंगिका दूसरे में अपने साथी से मिट जाती है। इससे a sin θ = λ मिलता है। चार पट्टियों, छह पट्टियों से दोहराओ और m = 1, 2, 3 … के लिए a sin θ = mλ मिलता है, जिसमें m = 0 स्पष्ट रूप से बाहर है, क्योंकि θ = 0 पर कुछ काटने को पथांतर है ही नहीं और हर तरंगिका समान कला में पहुँचती है। अतः प्रतिरूप यों चलता है: केंद्रीय उच्चिष्ठ, sin θ = λ/a पर पहला निम्निष्ठ, और उसके बाद के उच्चिष्ठ मोटे तौर पर लगातार निम्निष्ठों के बीचोंबीच पड़ते हैं। इसलिए केंद्रीय पट्टी −λ/a से +λ/a तक फैलती है जबकि हर दूसरी पट्टी केवल λ/a — ठीक दुगुनी चौड़ी, और वह कहीं अधिक चमकीली भी है क्योंकि वहाँ सारी तरंगिकाएँ अधिकतर कटने के बजाय जुड़ती हैं। अब सँकरा करना, जो प्रश्न का गहरा आधा है। केंद्रीय उच्चिष्ठ की कोणीय अर्ध-चौड़ाई λ/a है। झिरी आधी करो और वह दुगुनी हो जाती है। यह सीधे उस अंतर्ज्ञान के विरुद्ध चलता है कि सँकरा छेद सँकरा पुंज देता है, और यही कारण है कि द्वारक छोटा करके किरण बनाई नहीं जा सकती: a ≈ λ पर प्रतिरूप लगभग समकोण भर फैल जाता है, और झिरी एक अकेले हाइगेंस बिंदु स्रोत की तरह पूरे अग्र अर्धगोले में विकिरित करती है। किरण प्रकाशिकी उलटी सीमा है। जब a ≫ λ, λ/a नगण्य है, फैलाव नापा नहीं जा सकता, और प्रकाश तीखी छायाओं के साथ सीधी रेखाओं में चलता दिखता है। मिलीमीटर की झिरी और 500 nm का प्रकाश लगभग 0.03° का फैलाव देते हैं, इसीलिए रोज़मर्रा में कुछ भी किरण-चित्र का खंडन नहीं करता। अतः ज्यामितीय प्रकाशिकी कोई भिन्न सिद्धांत नहीं बल्कि एक पद फेंक दी गई तरंग प्रकाशिकी है, जो ठीक तब वैध है जब तरंगदैर्ध्य समस्या की बाक़ी हर चीज़ की तुलना में छोटी हो — वही संबंध जो चिरसम्मत यांत्रिकी का क्वांटम यांत्रिकी से है, और यह ध्यान देने योग्य ढर्रा है कि भौतिकी अपने पुराने नियमों को फेंके बिना कैसे सेवानिवृत्त करती है। (दूसरा विकल्प दोहरी झिरी की असमान फ्रिंज गढ़ता है; तीसरा ऐसा कण-कथन पुनर्जीवित करता है जो फैलाव की ग़लत दिशा बताता है; चौथा चमक और चौड़ाई को गड्डमड्ड करता है, जिसे निम्निष्ठों की जगहों का माप तुरंत निपटा देता है।)",
+          mr: "विद्यार्थ्याने काहीतरी खरे पाहिले आहे आणि त्यातून चुकीचा निष्कर्ष काढला आहे. व्यतिकरण आणि विवर्तन खरोखर एकच भौतिकी आहेत — कलासंबद्ध लहरींचे अध्यारोपण — आणि आधुनिक दृष्टी त्यांना वेगळे नियम मानत नाही. जे वेगळे आहे ते हे की किती वाटे जोडले जात आहेत, आणि त्या फरकाचे असे परिणाम आहेत जे पट्टीने मोजता येतात. दोन फटी. नेमक्या दोन शलाका आहेत. कोन θ वर त्यांचा पथांतर d sin θ आहे, आणि पडद्यावर चालताना तो सतत वाढतो, समान अंतरावरच्या जागी 0, λ, 2λ, 3λ … मधून जात. म्हणून तेजस्वी पट्टे समान अंतर β = λD/d वर बसतात, आणि प्रत्येक आपल्या शेजाऱ्यांइतका रुंद आहे. मध्यवर्ती पट्ट्याला काहीही वेगळे करत नाही याखेरीज की त्याचा पथांतर योगायोगाने शून्य आहे. एक फट. दोन शलाका नव्हे तर असंख्य लहरिका आहेत, फटीच्या रुंदी a भरातील प्रत्येक बिंदूतून एक. निम्निष्ठाची अट 'दोन गोष्टी कापल्या जाव्यात' नसून 'सर्व काही जोड्यांत कापले जावे' अशी आहे: फटीचे दोन भाग करा, आणि एका भागाच्या वरच्या टोकापासून दुसऱ्याच्या वरच्या टोकापर्यंत जादा मार्ग λ/2 असेल, तेव्हा पहिल्या भागातील प्रत्येक लहरिका दुसऱ्यातल्या आपल्या जोडीदाराने पुसली जाते. यातून a sin θ = λ मिळते. चार पट्ट्या, सहा पट्ट्यांनी पुन्हा करा आणि m = 1, 2, 3 … साठी a sin θ = mλ मिळते, ज्यात m = 0 स्पष्टपणे वगळलेला आहे, कारण θ = 0 वर काही कापायला पथांतर आहेच नाही आणि प्रत्येक लहरिका समान कलेत पोहोचते. म्हणून नमुना असा चालतो: मध्यवर्ती उच्चिष्ठ, sin θ = λ/a वर पहिला निम्निष्ठ, आणि त्यानंतरचे उच्चिष्ठ ढोबळमानाने लागोपाठच्या निम्निष्ठांच्या मधोमध पडतात. म्हणून मध्यवर्ती पट्टी −λ/a पासून +λ/a पर्यंत पसरते तर इतर प्रत्येक पट्टी केवळ λ/a — नेमकी दुप्पट रुंद, आणि ती कितीतरी अधिक तेजस्वीही आहे कारण तिथे सर्व लहरिका बहुतांश कापल्या जाण्याऐवजी जुळतात. आता अरुंद करणे, जो प्रश्नाचा खोल अर्धा भाग आहे. मध्यवर्ती उच्चिष्ठाची कोनीय अर्ध-रुंदी λ/a आहे. फट निम्मी करा आणि ती दुप्पट होते. हे थेट त्या अंतःप्रेरणेविरुद्ध चालते की अरुंद छिद्र अरुंद शलाका देते, आणि हेच कारण की द्वारक लहान करून किरण बांधता येत नाही: a ≈ λ वर नमुना जवळपास काटकोनभर पसरतो, आणि फट एकाच हायगेन्स बिंदु स्रोताप्रमाणे अख्ख्या पुढच्या अर्धगोलात प्रारित करते. किरण प्रकाशिकी ही उलट मर्यादा आहे. जेव्हा a ≫ λ, λ/a नगण्य आहे, पसरणे मोजता येत नाही, आणि प्रकाश तीक्ष्ण सावल्यांसह सरळ रेषांत जाताना दिसतो. मिलीमीटरची फट आणि 500 nm प्रकाश सुमारे 0.03° चे पसरणे देतात, म्हणूनच रोजच्या जगण्यात काहीही किरण-चित्राचे खंडन करत नाही. म्हणून भूमितीय प्रकाशिकी हा वेगळा सिद्धांत नसून एक पद फेकून दिलेली लहरी प्रकाशिकी आहे, जी नेमकी तेव्हा वैध जेव्हा तरंगलांबी प्रश्नातल्या बाकी प्रत्येक गोष्टीच्या तुलनेत लहान असेल — तोच संबंध जो चिरंतन यांत्रिकीचा पुंज यांत्रिकीशी आहे, आणि भौतिकी आपले जुने नियम न फेकता कशी निवृत्त करते याचा हा लक्षात घेण्याजोगा आकृतिबंध. (दुसरा पर्याय दुहेरी फटीचे असमान पट्टे घडवतो; तिसरा असे कण-कथन पुनरुज्जीवित करतो जे पसरण्याची चुकीची दिशा सांगते; चौथा तेज आणि रुंदी यांची गल्लत करतो, जी निम्निष्ठांच्या जागांचे माप लगेच निकालात काढते.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 11 — Dual Nature of Radiation and Matter                        */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "physics-12-dual-nature-of-radiation-and-matter",
+    subject: "PHYSICS",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 11 — Dual Nature of Radiation and Matter",
+      hi: "अध्याय 11 — विकिरण तथा द्रव्य की द्वैत प्रकृति",
+      mr: "प्रकरण 11 — प्रारण आणि द्रव्य यांचे द्वैत स्वरूप",
+    },
+    name: {
+      en: "Dual Nature of Radiation and Matter",
+      hi: "विकिरण तथा द्रव्य की द्वैत प्रकृति",
+      mr: "प्रारण आणि द्रव्य यांचे द्वैत स्वरूप",
+    },
+    summary: {
+      en: "One experiment that the wave theory got wrong in three separate ways at once — a colour below which no amount of light ejects anything, an ejection energy that ignores brightness entirely, and an emission that begins the instant the lamp is switched on rather than after the hours a wave would need to deliver the energy; the repair, which is to say that light arrives in packets whose size is set by frequency alone, so brightness counts packets and colour weighs them; a threshold that is simply the price of getting out of the metal at all; and then the same idea run backwards, giving a wavelength to an electron and being believed only when a crystal diffracted a beam of them exactly as it diffracts X-rays.",
+      hi: "एक ऐसा प्रयोग जिसे तरंग सिद्धांत ने एक साथ तीन अलग-अलग ढंगों से ग़लत समझा — वह रंग जिससे नीचे कितना भी प्रकाश कुछ नहीं निकालता, वह निष्कासन ऊर्जा जो चमक की बिलकुल परवाह नहीं करती, और वह उत्सर्जन जो लैंप जलते ही शुरू हो जाता है, न कि उन घंटों बाद जो तरंग को ऊर्जा पहुँचाने में लगते; उसका इलाज, अर्थात् यह कहना कि प्रकाश पुड़ियों में आता है जिनका आकार केवल आवृत्ति तय करती है, अतः चमक पुड़ियाँ गिनती है और रंग उन्हें तौलता है; वह देहली जो केवल धातु से बाहर निकलने की क़ीमत है; और फिर वही विचार उलटा चलाया गया, इलेक्ट्रॉन को तरंगदैर्ध्य देते हुए, और माना तभी गया जब किसी क्रिस्टल ने उनके पुंज को ठीक वैसे विवर्तित किया जैसे वह X-किरणों को करता है।",
+      mr: "एक असा प्रयोग जो लहरी सिद्धांताने एकाच वेळी तीन वेगवेगळ्या प्रकारे चुकीचा समजला — तो रंग ज्याच्या खाली कितीही प्रकाश काहीही बाहेर काढत नाही, ती निष्कासन ऊर्जा जी तेजाची मुळीच पर्वा करत नाही, आणि ते उत्सर्जन जे दिवा लागताच सुरू होते, त्या तासांनंतर नव्हे जे लहरीला ऊर्जा पोहोचवायला लागतील; त्यावरचा उपाय, म्हणजे असे म्हणणे की प्रकाश पुड्यांत येतो ज्यांचा आकार केवळ वारंवारता ठरवते, म्हणून तेज पुड्या मोजते आणि रंग त्यांना तोलतो; तो उंबरठा जो केवळ धातूतून बाहेर पडण्याची किंमत आहे; आणि मग तीच कल्पना उलटी चालवली गेली, इलेक्ट्रॉनला तरंगलांबी देत, आणि मानली तेव्हाच गेली जेव्हा एका स्फटिकाने त्यांच्या शलाकेला नेमके तसेच विवर्तित केले जसे तो क्ष-किरणांना करतो.",
+    },
+    position: 11,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "threshold-frequency",
+        name: {
+          en: "The threshold frequency",
+          hi: "देहली आवृत्ति",
+          mr: "उंबरठा वारंवारता",
+        },
+        kind: "observed law of the photoelectric effect",
+        prompt: {
+          en: "Shine red light on a metal as brightly as you like and not one electron comes out; switch to dim violet and the current starts at once. What is the frequency below which nothing at all happens called?",
+          hi: "किसी धातु पर लाल प्रकाश जितना चाहो उतना चमकीला डालो और एक भी इलेक्ट्रॉन नहीं निकलता; मंद बैंगनी पर जाओ और धारा तुरंत शुरू हो जाती है। जिस आवृत्ति से नीचे कुछ भी नहीं होता, उसे क्या कहते हैं?",
+          mr: "एखाद्या धातूवर लाल प्रकाश हवा तितका तेजस्वी टाका आणि एकही इलेक्ट्रॉन बाहेर येत नाही; मंद जांभळ्यावर जा आणि धारा लगेच सुरू होते. ज्या वारंवारतेखाली काहीच घडत नाही तिला काय म्हणतात?",
+        },
+        statement: {
+          en: "The threshold frequency is the least frequency that can eject any photoelectron from a given metal, and below it no increase of intensity produces a single electron.",
+          hi: "देहली आवृत्ति वह न्यूनतम आवृत्ति है जो किसी दी गई धातु से कोई भी प्रकाश-इलेक्ट्रॉन निकाल सके, और उससे नीचे तीव्रता की कोई भी वृद्धि एक भी इलेक्ट्रॉन नहीं देती।",
+          mr: "उंबरठा वारंवारता म्हणजे ती किमान वारंवारता जी दिलेल्या धातूतून कोणताही प्रकाश-इलेक्ट्रॉन बाहेर काढू शकते, आणि तिच्याखाली तीव्रतेची कोणतीही वाढ एकही इलेक्ट्रॉन देत नाही.",
+        },
+        detail: {
+          en: "Its existence is the sharpest disproof of the wave account, which predicts that a dim beam of any colour should work if you simply wait long enough for the energy to accumulate.",
+          hi: "उसका होना ही तरंग-कथन का सबसे तीखा खंडन है, जो भविष्यवाणी करता है कि किसी भी रंग का मंद पुंज चलेगा यदि तुम ऊर्जा जमा होने के लिए बस पर्याप्त देर प्रतीक्षा करो।",
+          mr: "तिचे अस्तित्व हेच लहरी-कथनाचे सर्वांत तीक्ष्ण खंडन आहे, जे भाकीत करते की कोणत्याही रंगाची मंद शलाका चालेल जर तुम्ही ऊर्जा साठण्यासाठी फक्त पुरेसा वेळ थांबलात.",
+        },
+        extra: {
+          en: "It differs from metal to metal — caesium responds to visible light while zinc needs ultraviolet — which is why a photocell is chosen for the colour it must detect.",
+          hi: "यह धातु-धातु में भिन्न है — सीज़ियम दृश्य प्रकाश पर उत्तर देता है जबकि ज़िंक को पराबैंगनी चाहिए — इसीलिए प्रकाश-सेल उस रंग के हिसाब से चुना जाता है जिसे उसे पकड़ना है।",
+          mr: "ती धातूनुसार वेगळी आहे — सीझियम दृश्य प्रकाशाला उत्तर देतो तर जस्ताला अतिनील लागते — म्हणूनच प्रकाश-घट त्या रंगानुसार निवडला जातो जो त्याने ओळखायचा आहे.",
+        },
+        pair: {
+          left: {
+            en: "Bright red does nothing, dim violet works at once",
+            hi: "चमकीला लाल कुछ नहीं करता, मंद बैंगनी तुरंत चलता है",
+            mr: "तेजस्वी लाल काहीच करत नाही, मंद जांभळा लगेच चालतो",
+          },
+          right: {
+            en: "the threshold frequency",
+            hi: "देहली आवृत्ति",
+            mr: "उंबरठा वारंवारता",
+          },
+        },
+      },
+      {
+        id: "stopping-potential-independence",
+        name: {
+          en: "The stopping potential's independence of intensity",
+          hi: "निरोधी विभव का तीव्रता से स्वतंत्र होना",
+          mr: "निरोधी विभवाचे तीव्रतेपासून स्वातंत्र्य",
+        },
+        kind: "observed law of the photoelectric effect",
+        prompt: {
+          en: "Make the beam ten times brighter and ten times as many electrons come out, yet the reverse voltage needed to stop the fastest of them does not budge. Which observation is this?",
+          hi: "पुंज को दस गुना चमकीला करो और दस गुना इलेक्ट्रॉन निकलते हैं, फिर भी उनमें सबसे तेज़ को रोकने के लिए चाहिए उलटी वोल्टता हिलती तक नहीं। यह कौन-सा प्रेक्षण है?",
+          mr: "शलाका दहापट तेजस्वी करा आणि दहापट इलेक्ट्रॉन बाहेर येतात, तरीही त्यांतल्या सर्वांत वेगवानाला थांबवायला लागणारा उलटा व्होल्टेज हलतही नाही. हे कोणते निरीक्षण?",
+        },
+        statement: {
+          en: "The stopping potential's independence of intensity means the maximum kinetic energy of a photoelectron depends only on the frequency, while the number of electrons depends only on the brightness.",
+          hi: "निरोधी विभव का तीव्रता से स्वतंत्र होना यह है कि प्रकाश-इलेक्ट्रॉन की अधिकतम गतिज ऊर्जा केवल आवृत्ति पर निर्भर है, जबकि इलेक्ट्रॉनों की संख्या केवल चमक पर।",
+          mr: "निरोधी विभवाचे तीव्रतेपासून स्वातंत्र्य म्हणजे प्रकाश-इलेक्ट्रॉनची कमाल गतिज ऊर्जा केवळ वारंवारतेवर अवलंबून आहे, तर इलेक्ट्रॉनांची संख्या केवळ तेजावर.",
+        },
+        detail: {
+          en: "The two quantities being cleanly separated is the whole clue: brightness is a count and colour is an energy, and no wave picture can keep them apart because in a wave both mean more energy per second.",
+          hi: "दोनों राशियों का साफ़-साफ़ अलग होना ही पूरा सुराग़ है: चमक गिनती है और रंग ऊर्जा, और कोई तरंग-चित्र उन्हें अलग नहीं रख सकता क्योंकि तरंग में दोनों का अर्थ प्रति सेकंड अधिक ऊर्जा है।",
+          mr: "दोन्ही राशी स्वच्छपणे वेगळ्या होणे हाच अख्खा सुगावा आहे: तेज ही मोजणी आहे आणि रंग ही ऊर्जा, आणि कोणतेही लहरी-चित्र त्यांना वेगळे ठेवू शकत नाही कारण लहरीत दोन्हींचा अर्थ दर सेकंदाला अधिक ऊर्जा असा होतो.",
+        },
+        extra: {
+          en: "Plotting stopping potential against frequency gives a straight line whose slope is h/e for every metal ever tried, and whose intercept alone changes from one to the next.",
+          hi: "निरोधी विभव को आवृत्ति के विरुद्ध खींचने पर सरल रेखा मिलती है जिसकी प्रवणता आज तक जाँची गई हर धातु के लिए h/e है, और एक से दूसरी पर केवल उसका अंतःखंड बदलता है।",
+          mr: "निरोधी विभव वारंवारतेविरुद्ध काढल्यास सरळ रेषा मिळते जिचा उतार आजवर तपासलेल्या प्रत्येक धातूसाठी h/e आहे, आणि एकीकडून दुसरीकडे केवळ तिचा अंतःखंड बदलतो.",
+        },
+        pair: {
+          left: {
+            en: "More electrons, but not one of them faster",
+            hi: "अधिक इलेक्ट्रॉन, पर उनमें से एक भी तेज़ नहीं",
+            mr: "अधिक इलेक्ट्रॉन, पण त्यांतला एकही वेगवान नाही",
+          },
+          right: {
+            en: "the stopping potential's independence of intensity",
+            hi: "निरोधी विभव का तीव्रता से स्वतंत्र होना",
+            mr: "निरोधी विभवाचे तीव्रतेपासून स्वातंत्र्य",
+          },
+        },
+      },
+      {
+        id: "instantaneous-emission",
+        name: {
+          en: "The instantaneous emission",
+          hi: "तात्क्षणिक उत्सर्जन",
+          mr: "तात्कालिक उत्सर्जन",
+        },
+        kind: "observed law of the photoelectric effect",
+        prompt: {
+          en: "A beam so faint that a wave would need hours to feed one electron enough energy nevertheless produces a current within a thousand-millionth of a second of the shutter opening. Which observation is this?",
+          hi: "इतना मंद पुंज कि तरंग को एक इलेक्ट्रॉन को पर्याप्त ऊर्जा देने में घंटों लगते, फिर भी शटर खुलने के अरब वें भाग सेकंड के भीतर धारा दे देता है। यह कौन-सा प्रेक्षण है?",
+          mr: "इतकी मंद शलाका की लहरीला एका इलेक्ट्रॉनला पुरेशी ऊर्जा द्यायला तास लागतील, तरीही शटर उघडल्याच्या अब्जांश सेकंदाच्या आत धारा देते. हे कोणते निरीक्षण?",
+        },
+        statement: {
+          en: "The instantaneous emission is the observation that photoelectrons appear within about 10⁻⁹ s of illumination however weak the beam, leaving no time for energy to be gradually accumulated.",
+          hi: "तात्क्षणिक उत्सर्जन यह प्रेक्षण है कि पुंज कितना भी कमज़ोर हो, प्रकाश-इलेक्ट्रॉन प्रदीप्ति के लगभग 10⁻⁹ s के भीतर प्रकट हो जाते हैं, और ऊर्जा के धीरे-धीरे जमा होने के लिए कोई समय बचता ही नहीं।",
+          mr: "तात्कालिक उत्सर्जन हे निरीक्षण आहे की शलाका कितीही क्षीण असो, प्रकाश-इलेक्ट्रॉन प्रदीप्तीच्या सुमारे 10⁻⁹ s च्या आत प्रकट होतात, आणि ऊर्जा हळूहळू साठण्यासाठी वेळ उरतच नाही.",
+        },
+        detail: {
+          en: "The wave prediction can be computed and is not marginally wrong: spread a weak beam over the area of an atom and the wait comes out in hours, against a measured delay too short to detect.",
+          hi: "तरंग की भविष्यवाणी निकाली जा सकती है और वह थोड़ी-सी ग़लत नहीं है: कमज़ोर पुंज को एक परमाणु के क्षेत्रफल पर फैलाओ और प्रतीक्षा घंटों में निकलती है, जबकि नापी गई देरी इतनी छोटी है कि पकड़ में ही न आए।",
+          mr: "लहरीचे भाकीत काढता येते आणि ते किंचित चुकीचे नाही: क्षीण शलाका एका अणूच्या क्षेत्रफळावर पसरवा आणि प्रतीक्षा तासांत निघते, तर मोजलेला विलंब इतका लहान की तो ओळखताच येऊ नये.",
+        },
+        extra: {
+          en: "It is explained at once if the energy arrives already concentrated in a single packet: an electron either meets one and leaves immediately, or meets none and waits, but never collects energy in instalments.",
+          hi: "यदि ऊर्जा पहले से एक ही पुड़िया में सिमटी हुई आती है तो यह तुरंत समझ में आ जाता है: इलेक्ट्रॉन या तो एक से मिलता है और तुरंत निकल जाता है, या किसी से नहीं मिलता और प्रतीक्षा करता है, पर ऊर्जा किश्तों में कभी नहीं बटोरता।",
+          mr: "जर ऊर्जा आधीच एकाच पुडीत एकवटलेली येत असेल तर हे लगेच समजते: इलेक्ट्रॉन एकतर एकाला भेटतो आणि लगेच निघून जातो, वा कोणालाही भेटत नाही आणि थांबतो, पण ऊर्जा हप्त्यांत कधीच गोळा करत नाही.",
+        },
+        pair: {
+          left: {
+            en: "Hours predicted, nanoseconds measured",
+            hi: "घंटे भविष्यवाणी, नैनोसेकंड माप",
+            mr: "तास भाकीत, नॅनोसेकंद माप",
+          },
+          right: {
+            en: "the instantaneous emission",
+            hi: "तात्क्षणिक उत्सर्जन",
+            mr: "तात्कालिक उत्सर्जन",
+          },
+        },
+      },
+      {
+        id: "the-photon",
+        name: {
+          en: "The photon",
+          hi: "फ़ोटॉन",
+          mr: "फोटॉन",
+        },
+        kind: "concept",
+        prompt: {
+          en: "A packet of radiation carrying energy hf and momentum hf/c, having no rest mass, travelling only at c, and either delivered entire to one electron or not delivered at all. What is it?",
+          hi: "विकिरण की ऐसी पुड़िया जो hf ऊर्जा और hf/c संवेग ढोती है, जिसका विराम द्रव्यमान नहीं, जो केवल c से चलती है, और जो एक इलेक्ट्रॉन को या तो पूरी दी जाती है या दी ही नहीं जाती। यह क्या है?",
+          mr: "प्रारणाची अशी पुडी जी hf ऊर्जा आणि hf/c संवेग वाहते, जिला विश्रांती वस्तुमान नाही, जी केवळ c ने जाते, आणि जी एका इलेक्ट्रॉनला एकतर पूर्ण दिली जाते वा दिलीच जात नाही. ती काय आहे?",
+        },
+        statement: {
+          en: "The photon is a quantum of electromagnetic radiation of energy E = hf and momentum p = hf/c, indivisible in an interaction and having zero rest mass.",
+          hi: "फ़ोटॉन वैद्युतचुंबकीय विकिरण का क्वांटम है जिसकी ऊर्जा E = hf और संवेग p = hf/c है, जो अन्योन्यक्रिया में अविभाज्य है और जिसका विराम द्रव्यमान शून्य है।",
+          mr: "फोटॉन म्हणजे विद्युतचुंबकीय प्रारणाचा पुंज ज्याची ऊर्जा E = hf आणि संवेग p = hf/c आहे, जो परस्परक्रियेत अविभाज्य आहे आणि ज्याचे विश्रांती वस्तुमान शून्य आहे.",
+        },
+        detail: {
+          en: "Its energy is fixed by frequency alone, so brightening a beam sends more photons rather than stronger ones — which is exactly the separation the stopping-potential experiment demanded.",
+          hi: "उसकी ऊर्जा केवल आवृत्ति से तय है, अतः पुंज को चमकीला करने से अधिक फ़ोटॉन जाते हैं, अधिक प्रबल नहीं — और ठीक यही अलगाव निरोधी विभव के प्रयोग ने माँगा था।",
+          mr: "त्याची ऊर्जा केवळ वारंवारतेने ठरते, म्हणून शलाका तेजस्वी केल्याने अधिक फोटॉन जातात, अधिक तीव्र नव्हे — आणि नेमके हेच वेगळेपण निरोधी विभवाच्या प्रयोगाने मागितले होते.",
+        },
+        extra: {
+          en: "It carries momentum although it has no mass, because p = E/c holds for anything massless, and that momentum is what a solar sail and the Compton effect both put to work.",
+          hi: "यह द्रव्यमान न होते हुए भी संवेग ढोता है, क्योंकि p = E/c किसी भी द्रव्यमानहीन चीज़ के लिए सही है, और वही संवेग सौर पाल और कॉम्पटन प्रभाव दोनों काम में लाते हैं।",
+          mr: "हा वस्तुमान नसतानाही संवेग वाहतो, कारण p = E/c कोणत्याही वस्तुमानविरहित गोष्टीसाठी खरे आहे, आणि तोच संवेग सौर शीड आणि कॉम्प्टन परिणाम दोन्ही कामी लावतात.",
+        },
+        pair: {
+          left: {
+            en: "All of it to one electron, or none of it",
+            hi: "एक इलेक्ट्रॉन को पूरी, या बिलकुल नहीं",
+            mr: "एका इलेक्ट्रॉनला पूर्ण, वा मुळीच नाही",
+          },
+          right: {
+            en: "the photon",
+            hi: "फ़ोटॉन",
+            mr: "फोटॉन",
+          },
+        },
+      },
+      {
+        id: "work-function",
+        name: {
+          en: "The work function",
+          hi: "कार्यफलन",
+          mr: "कार्यफलन",
+        },
+        kind: "concept",
+        prompt: {
+          en: "The least energy an electron must be given before it can escape a metal's surface at all — the toll at the gate, paid before any of the remaining energy can appear as speed. What is this called?",
+          hi: "वह न्यूनतम ऊर्जा जो इलेक्ट्रॉन को दी ही जानी चाहिए इससे पहले कि वह धातु की सतह से बाहर निकल सके — फाटक का महसूल, जो बची हुई ऊर्जा के चाल बनकर दिखने से पहले चुकाना पड़ता है। इसे क्या कहते हैं?",
+          mr: "ती किमान ऊर्जा जी इलेक्ट्रॉनला द्यावीच लागते तो धातूच्या पृष्ठभागातून बाहेर पडू शकण्याआधी — फाटकावरचा कर, जो उरलेली ऊर्जा वेग बनून दिसण्याआधी भरावा लागतो. याला काय म्हणतात?",
+        },
+        statement: {
+          en: "The work function is the minimum energy needed to remove an electron from a metal's surface, and Einstein's equation says the rest of the photon's energy appears as kinetic energy: K_max = hf − φ.",
+          hi: "कार्यफलन वह न्यूनतम ऊर्जा है जो इलेक्ट्रॉन को धातु की सतह से हटाने के लिए चाहिए, और आइंस्टीन का समीकरण कहता है कि फ़ोटॉन की बची ऊर्जा गतिज ऊर्जा बनकर प्रकट होती है: K_max = hf − φ.",
+          mr: "कार्यफलन म्हणजे इलेक्ट्रॉनला धातूच्या पृष्ठभागातून काढण्यास लागणारी किमान ऊर्जा, आणि आइनस्टाइनचे समीकरण सांगते की फोटॉनची उरलेली ऊर्जा गतिज ऊर्जा बनून प्रकट होते: K_max = hf − φ.",
+        },
+        detail: {
+          en: "It is a property of the surface and not of the light, which is why the same beam ejects fast electrons from caesium and none at all from platinum.",
+          hi: "यह सतह का गुण है, प्रकाश का नहीं, इसीलिए वही पुंज सीज़ियम से तेज़ इलेक्ट्रॉन निकालता है और प्लैटिनम से एक भी नहीं।",
+          mr: "हा पृष्ठभागाचा गुणधर्म आहे, प्रकाशाचा नव्हे, म्हणूनच तीच शलाका सीझियममधून वेगवान इलेक्ट्रॉन काढते आणि प्लॅटिनममधून एकही नाही.",
+        },
+        extra: {
+          en: "The subscript on K_max matters: electrons from deeper in the metal lose more on the way out, so the equation gives the fastest ones and the rest spread downwards from there to zero.",
+          hi: "K_max का अधोलेख मायने रखता है: धातु के भीतर से आते इलेक्ट्रॉन बाहर निकलते समय अधिक खोते हैं, अतः समीकरण सबसे तेज़ वालों को देता है और बाक़ी वहाँ से नीचे शून्य तक फैले रहते हैं।",
+          mr: "K_max वरचा अधोलेख महत्त्वाचा आहे: धातूच्या आतून येणारे इलेक्ट्रॉन बाहेर पडताना अधिक गमावतात, म्हणून समीकरण सर्वांत वेगवानांना देते आणि बाकीचे तिथून खाली शून्यापर्यंत पसरलेले असतात.",
+        },
+        pair: {
+          left: {
+            en: "The toll at the gate, paid before any speed",
+            hi: "फाटक का महसूल, किसी भी चाल से पहले चुकाया",
+            mr: "फाटकावरचा कर, कोणत्याही वेगाआधी भरलेला",
+          },
+          right: {
+            en: "the work function",
+            hi: "कार्यफलन",
+            mr: "कार्यफलन",
+          },
+        },
+      },
+      {
+        id: "de-broglie-wavelength",
+        name: {
+          en: "The de Broglie wavelength",
+          hi: "दे ब्रॉग्ली तरंगदैर्ध्य",
+          mr: "द ब्रॉग्ली तरंगलांबी",
+        },
+        kind: "concept",
+        prompt: {
+          en: "If radiation with a wavelength can behave as particles with momentum, then particles with momentum should have a wavelength — h divided by p, for an electron as much as for a cricket ball. What is that wavelength called?",
+          hi: "यदि तरंगदैर्ध्य वाला विकिरण संवेग वाले कणों की तरह बरत सकता है, तो संवेग वाले कणों की तरंगदैर्ध्य होनी चाहिए — h बटा p, इलेक्ट्रॉन के लिए भी और क्रिकेट की गेंद के लिए भी। उस तरंगदैर्ध्य को क्या कहते हैं?",
+          mr: "जर तरंगलांबी असलेले प्रारण संवेग असलेल्या कणांसारखे वागू शकते, तर संवेग असलेल्या कणांना तरंगलांबी असावी — h भागिले p, इलेक्ट्रॉनसाठीही आणि क्रिकेटच्या चेंडूसाठीही. त्या तरंगलांबीला काय म्हणतात?",
+        },
+        statement: {
+          en: "The de Broglie wavelength is λ = h/p, assigned to any moving particle, and it is inversely proportional to the momentum so that heavier or faster means shorter.",
+          hi: "दे ब्रॉग्ली तरंगदैर्ध्य λ = h/p है, जो किसी भी चलते कण को दी जाती है, और वह संवेग की व्युत्क्रमानुपाती है, अतः भारी या तेज़ का अर्थ छोटी है।",
+          mr: "द ब्रॉग्ली तरंगलांबी म्हणजे λ = h/p, जी कोणत्याही हलत्या कणाला दिली जाते, आणि ती संवेगाशी व्यस्त समानुपाती आहे, म्हणून जड वा वेगवान म्हणजे लहान.",
+        },
+        detail: {
+          en: "For everyday objects it is fantastically small — a cricket ball comes out around 10⁻³⁴ m — so no aperture exists that could diffract one, and matter waves stay hidden at ordinary scales.",
+          hi: "रोज़मर्रा की वस्तुओं के लिए यह अकल्पनीय रूप से छोटी है — क्रिकेट की गेंद लगभग 10⁻³⁴ m निकलती है — अतः ऐसा कोई द्वारक है ही नहीं जो उसे विवर्तित कर सके, और द्रव्य-तरंगें साधारण पैमानों पर छिपी रहती हैं।",
+          mr: "रोजच्या वस्तूंसाठी ती अकल्पनीय लहान आहे — क्रिकेटचा चेंडू सुमारे 10⁻³⁴ m निघतो — म्हणून असे कोणतेही द्वारक नाहीच जे तिला विवर्तित करू शकेल, आणि द्रव्य-लहरी सामान्य मापांवर लपून राहतात.",
+        },
+        extra: {
+          en: "For an electron accelerated through a modest voltage it comes out near a tenth of a nanometre — the spacing of atoms in a crystal — which is why Davisson and Germer could confirm the idea with a nickel target.",
+          hi: "मामूली वोल्टता से त्वरित इलेक्ट्रॉन के लिए वह लगभग एक नैनोमीटर के दसवें भाग के पास निकलती है — क्रिस्टल में परमाणुओं का अंतराल — इसीलिए डेविसन और जर्मर निकल के लक्ष्य से इस विचार की पुष्टि कर सके।",
+          mr: "माफक व्होल्टेजने त्वरित केलेल्या इलेक्ट्रॉनसाठी ती सुमारे एका नॅनोमीटरच्या दशांशाजवळ निघते — स्फटिकातील अणूंचे अंतर — म्हणूनच डेव्हिसन आणि जर्मर निकेलच्या लक्ष्याने या कल्पनेची खात्री करू शकले.",
+        },
+        pair: {
+          left: {
+            en: "The cricket ball has one too, and it is 10⁻³⁴ m",
+            hi: "क्रिकेट की गेंद की भी है, और वह 10⁻³⁴ m है",
+            mr: "क्रिकेटच्या चेंडूचीही आहे, आणि ती 10⁻³⁴ m आहे",
+          },
+          right: {
+            en: "the de Broglie wavelength",
+            hi: "दे ब्रॉग्ली तरंगदैर्ध्य",
+            mr: "द ब्रॉग्ली तरंगलांबी",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A student proposes to rescue the wave theory of the photoelectric effect by arguing that a very intense beam of red light must eventually supply the energy an electron needs, since energy is energy. Set out the three separate ways the wave account fails, and how the photon picture repairs each.",
+          hi: "एक विद्यार्थी प्रकाश-विद्युत प्रभाव के तरंग सिद्धांत को यह तर्क देकर बचाना चाहता है कि लाल प्रकाश का बहुत तीव्र पुंज अंततः इलेक्ट्रॉन को चाहिए ऊर्जा दे ही देगा, क्योंकि ऊर्जा तो ऊर्जा है। तरंग-कथन जिन तीन अलग-अलग ढंगों से विफल होता है वे बताओ, और फ़ोटॉन-चित्र हर एक को कैसे सुधारता है।",
+          mr: "एक विद्यार्थी प्रकाश-विद्युत परिणामाचा लहरी सिद्धांत असा युक्तिवाद करून वाचवू पाहतो की लाल प्रकाशाची अतिशय तीव्र शलाका अखेर इलेक्ट्रॉनला लागणारी ऊर्जा देईलच, कारण ऊर्जा ती ऊर्जाच. लहरी-कथन ज्या तीन वेगवेगळ्या प्रकारे अपयशी ठरते ते मांडा, आणि फोटॉन-चित्र प्रत्येक कसे दुरुस्त करते ते सांगा.",
+        },
+        choices: [
+          {
+            en: "The wave account fails on the THRESHOLD (below a certain frequency no intensity works at all, whereas a wave should always succeed given time), on the ENERGY (the maximum kinetic energy depends on frequency and not at all on intensity, whereas a wave carries more energy when brighter), and on the TIMING (emission begins within nanoseconds even from a beam so faint that a wave would need hours to accumulate the energy). All three are repaired by one assumption: light arrives in indivisible packets of energy hf, so brightness sets how MANY arrive and frequency sets how BIG each is. An electron absorbs one whole packet or none, and K_max = hf − φ follows",
+            hi: "तरंग-कथन देहली पर विफल होता है (किसी आवृत्ति से नीचे कोई भी तीव्रता चलती ही नहीं, जबकि तरंग को समय मिलने पर सदा सफल होना चाहिए), ऊर्जा पर विफल होता है (अधिकतम गतिज ऊर्जा आवृत्ति पर निर्भर है और तीव्रता पर बिलकुल नहीं, जबकि तरंग चमकीली होने पर अधिक ऊर्जा ढोती है), और समय पर विफल होता है (उत्सर्जन ऐसे मंद पुंज से भी नैनोसेकंडों में शुरू हो जाता है जिससे तरंग को ऊर्जा जमा करने में घंटे लगते)। तीनों एक ही मान्यता से सुधर जाते हैं: प्रकाश hf ऊर्जा की अविभाज्य पुड़ियों में आता है, अतः चमक तय करती है कि कितनी आती हैं और आवृत्ति तय करती है कि हर एक कितनी बड़ी है। इलेक्ट्रॉन एक पूरी पुड़िया सोखता है या कोई नहीं, और K_max = hf − φ निकल आता है",
+            mr: "लहरी-कथन उंबरठ्यावर अपयशी ठरते (एका वारंवारतेखाली कोणतीही तीव्रता चालतच नाही, तर लहरीला वेळ मिळाल्यास नेहमी यशस्वी व्हावे लागेल), ऊर्जेवर अपयशी ठरते (कमाल गतिज ऊर्जा वारंवारतेवर अवलंबून आहे आणि तीव्रतेवर मुळीच नाही, तर लहर तेजस्वी असताना अधिक ऊर्जा वाहते), आणि वेळेवर अपयशी ठरते (उत्सर्जन अशा मंद शलाकेतूनही नॅनोसेकंदांत सुरू होते जिच्यातून लहरीला ऊर्जा साठवायला तास लागतील). तिन्ही एकाच गृहीतकाने दुरुस्त होतात: प्रकाश hf ऊर्जेच्या अविभाज्य पुड्यांत येतो, म्हणून तेज ठरवते की किती येतात आणि वारंवारता ठरवते की प्रत्येक किती मोठी आहे. इलेक्ट्रॉन एक पूर्ण पुडी शोषतो वा एकही नाही, आणि K_max = hf − φ निघते",
+          },
+          {
+            en: "The wave account fails only on the timing; the threshold and the energy dependence are both explained perfectly well by a wave once absorption in the metal is taken into account",
+            hi: "तरंग-कथन केवल समय पर विफल होता है; धातु में अवशोषण को गिन लेने पर देहली और ऊर्जा-निर्भरता दोनों तरंग से बख़ूबी समझ में आ जाते हैं",
+            mr: "लहरी-कथन केवळ वेळेवर अपयशी ठरते; धातूतील शोषण लक्षात घेतल्यावर उंबरठा आणि ऊर्जा-अवलंबित्व दोन्ही लहरीने उत्तम समजतात",
+          },
+          {
+            en: "The student is right in principle: a sufficiently intense red beam does eject electrons, and the threshold is only a practical limit set by how bright a lamp can be built",
+            hi: "विद्यार्थी सैद्धांतिक रूप से सही है: पर्याप्त तीव्र लाल पुंज इलेक्ट्रॉन निकालता ही है, और देहली केवल व्यावहारिक सीमा है जो इस बात से तय होती है कि लैंप कितना चमकीला बनाया जा सकता है",
+            mr: "विद्यार्थी तत्त्वतः बरोबर आहे: पुरेशी तीव्र लाल शलाका इलेक्ट्रॉन बाहेर काढतेच, आणि उंबरठा ही केवळ व्यावहारिक मर्यादा आहे जी दिवा किती तेजस्वी बनवता येईल यावरून ठरते",
+          },
+          {
+            en: "The photon picture repairs the threshold but makes the timing worse, since a packet of energy would take longer to be absorbed than a continuous wave",
+            hi: "फ़ोटॉन-चित्र देहली सुधारता है पर समय और बिगाड़ देता है, क्योंकि ऊर्जा की पुड़िया को सोखे जाने में सतत तरंग से अधिक समय लगता",
+            mr: "फोटॉन-चित्र उंबरठा दुरुस्त करते पण वेळ आणखी बिघडवते, कारण ऊर्जेची पुडी शोषली जायला सलग लहरीहून अधिक वेळ लागेल",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The student's premise — energy is energy — is exactly the assumption that has to be given up, and the experiment says so three separate times. Take the failures one at a time, because each rules out the wave picture on its own and together they leave no room for repair. FAILURE ONE: THE THRESHOLD. A wave delivers energy continuously and at a rate proportional to intensity. On that picture there can be no forbidden colour: red light of sufficient intensity, or of ordinary intensity given sufficient time, must eventually hand an electron the energy it needs. What is observed instead is a sharp frequency below which the current is exactly zero — not small, zero — no matter how bright the lamp or how long one waits. Caesium responds to yellow, zinc needs ultraviolet, and no amount of power moves the boundary. FAILURE TWO: THE ENERGY. On the wave picture a brighter beam has larger field amplitudes, so an electron shaken by it should be shaken harder and leave faster. Measure it and the stopping potential does not move: ten times the brightness ejects ten times as many electrons, every one of them with the same maximum energy as before. Change the colour instead, leaving the brightness alone, and the stopping potential shifts at once. Brightness and colour have been cleanly separated into a count and an energy, and a wave has no way to separate them, because in a wave both simply mean more joules per second. FAILURE THREE: THE TIMING. This one can be computed rather than argued. Take a beam weak enough that a square metre receives a microwatt, spread the energy uniformly over the surface as a wave demands, and ask how long an atom of cross-section about 10⁻²⁰ m² needs to collect the few electron-volts of the work function. The answer comes out in hours. The measured delay is under a nanosecond, and no refinement of the estimate closes a gap of that size. Now the repair, and the striking thing about it is that a single assumption fixes all three at once. Suppose light is not spread out but arrives in indivisible packets, each of energy hf, with intensity setting the NUMBER arriving per second and frequency setting the SIZE of each. The threshold follows: a packet either has enough energy to pay the work function or it does not, and if hf < φ then no packet will do, however many arrive — a thousand people who each have half the fare do not get one ticket between them. The energy dependence follows: K_max = hf − φ contains f and not intensity, so brightening the beam adds electrons and not speed. The timing follows: an electron does not accumulate anything, it either meets a packet and leaves immediately or it does not, so faint light means few electrons and never slow ones. The equation K_max = hf − φ is testable in a way that goes beyond the qualitative story. Plot stopping potential against frequency and it must be a straight line of slope h/e — the SAME slope for every metal, with only the intercept changing. Millikan set out to disprove Einstein's equation and spent ten years confirming it, and the value of h he extracted agreed with the one Planck had obtained from an entirely different experiment on hot bodies. That agreement, between two measurements with nothing in common but the constant, is what turned the packet from a device into a fact. (The second option concedes only the weakest of the three failures; the third denies an observation that has been checked to great precision; the fourth reverses the timing argument, which is the failure the photon picture explains most immediately.)",
+          hi: "विद्यार्थी का आधार — ऊर्जा तो ऊर्जा है — ठीक वही मान्यता है जिसे छोड़ना पड़ता है, और प्रयोग तीन अलग-अलग बार ऐसा कहता है। विफलताएँ एक-एक करके लो, क्योंकि हर एक अपने आप तरंग-चित्र को ख़ारिज करती है और साथ मिलकर वे सुधार की कोई गुंजाइश नहीं छोड़तीं। पहली विफलता: देहली। तरंग ऊर्जा सतत देती है और उस दर से जो तीव्रता की समानुपाती है। उस चित्र पर कोई वर्जित रंग हो ही नहीं सकता: पर्याप्त तीव्रता का लाल प्रकाश, या पर्याप्त समय दिया गया साधारण तीव्रता का, अंततः इलेक्ट्रॉन को चाहिए ऊर्जा दे ही देगा। इसके बजाय जो देखा जाता है वह तीखी आवृत्ति है जिससे नीचे धारा ठीक शून्य है — छोटी नहीं, शून्य — लैंप चाहे कितना चमकीला हो या कितनी देर प्रतीक्षा की जाए। सीज़ियम पीले पर उत्तर देता है, ज़िंक को पराबैंगनी चाहिए, और कितनी भी शक्ति उस सीमा को नहीं हिलाती। दूसरी विफलता: ऊर्जा। तरंग-चित्र पर चमकीले पुंज के क्षेत्र-आयाम बड़े होते हैं, अतः उससे हिलाया गया इलेक्ट्रॉन अधिक ज़ोर से हिलना और तेज़ निकलना चाहिए। नापो और निरोधी विभव हिलता तक नहीं: दस गुना चमक दस गुना इलेक्ट्रॉन निकालती है, और हर एक की अधिकतम ऊर्जा पहले जैसी ही। इसके बजाय रंग बदलो, चमक वैसी ही छोड़कर, और निरोधी विभव तुरंत खिसक जाता है। चमक और रंग साफ़-साफ़ एक गिनती और एक ऊर्जा में बँट गए हैं, और तरंग के पास उन्हें बाँटने का कोई रास्ता नहीं, क्योंकि तरंग में दोनों का अर्थ बस अधिक जूल प्रति सेकंड है। तीसरी विफलता: समय। यह तर्क करने के बजाय निकाली जा सकती है। इतना कमज़ोर पुंज लो कि वर्ग मीटर को एक माइक्रोवाट मिले, ऊर्जा को तरंग की माँग के अनुसार सतह पर एकसमान फैलाओ, और पूछो कि लगभग 10⁻²⁰ m² परिच्छेद के परमाणु को कार्यफलन के कुछ इलेक्ट्रॉन-वोल्ट बटोरने में कितना समय चाहिए। उत्तर घंटों में निकलता है। नापी गई देरी एक नैनोसेकंड से कम है, और अनुमान का कोई परिष्कार उतनी बड़ी खाई नहीं पाटता। अब इलाज, और उसकी सबसे चौंकाने वाली बात यह कि एक अकेली मान्यता तीनों को एक साथ ठीक कर देती है। मानो कि प्रकाश फैला हुआ नहीं बल्कि अविभाज्य पुड़ियों में आता है, हर एक hf ऊर्जा की, जिसमें तीव्रता तय करती है कि प्रति सेकंड कितनी आती हैं और आवृत्ति तय करती है कि हर एक कितनी बड़ी है। देहली निकल आती है: पुड़िया के पास कार्यफलन चुकाने लायक़ ऊर्जा या तो है या नहीं, और यदि hf < φ तो कोई पुड़िया काम नहीं आएगी, चाहे कितनी भी आएँ — हज़ार लोग जिनमें से हर एक के पास आधा किराया है, आपस में मिलकर एक टिकट नहीं पाते। ऊर्जा-निर्भरता निकल आती है: K_max = hf − φ में f है, तीव्रता नहीं, अतः पुंज चमकीला करने से इलेक्ट्रॉन जुड़ते हैं, चाल नहीं। समय निकल आता है: इलेक्ट्रॉन कुछ जमा नहीं करता, वह या तो पुड़िया से मिलता है और तुरंत निकल जाता है या नहीं मिलता, अतः मंद प्रकाश का अर्थ कम इलेक्ट्रॉन है, धीमे कभी नहीं। समीकरण K_max = hf − φ ऐसे ढंग से जाँचा जा सकता है जो गुणात्मक कहानी से आगे जाता है। निरोधी विभव को आवृत्ति के विरुद्ध खींचो और उसे h/e प्रवणता की सरल रेखा होना ही चाहिए — हर धातु के लिए वही प्रवणता, केवल अंतःखंड बदलता हुआ। मिलिकन आइंस्टीन के समीकरण को झुठलाने निकले और दस साल उसकी पुष्टि करते बिताए, और उन्होंने h का जो मान निकाला वह उससे मिला जो प्लांक ने गर्म पिंडों पर बिलकुल भिन्न प्रयोग से पाया था। दो मापों के बीच वह मेल, जिनमें उस स्थिरांक के सिवा कुछ साझा नहीं, वही है जिसने पुड़िया को युक्ति से तथ्य बना दिया। (दूसरा विकल्प तीनों में से केवल सबसे कमज़ोर विफलता मानता है; तीसरा ऐसे प्रेक्षण से इनकार करता है जो बड़ी परिशुद्धता से जाँचा गया है; चौथा समय वाला तर्क उलट देता है, जो वही विफलता है जिसे फ़ोटॉन-चित्र सबसे तुरंत समझाता है।)",
+          mr: "विद्यार्थ्याचे गृहीतक — ऊर्जा ती ऊर्जाच — नेमके तेच गृहीतक आहे जे सोडावे लागते, आणि प्रयोग तीन वेगवेगळ्या वेळा तसे सांगतो. अपयशे एकेक करून घ्या, कारण प्रत्येक स्वतःहून लहरी-चित्र नाकारते आणि एकत्रितपणे ती दुरुस्तीला जागाच ठेवत नाहीत. पहिले अपयश: उंबरठा. लहर ऊर्जा सलगपणे देते आणि तीव्रतेशी समानुपाती दराने. त्या चित्रावर कोणताही वर्ज्य रंग असूच शकत नाही: पुरेशा तीव्रतेचा लाल प्रकाश, वा पुरेसा वेळ दिलेला सामान्य तीव्रतेचा, अखेर इलेक्ट्रॉनला लागणारी ऊर्जा देईलच. त्याऐवजी जे निरीक्षिले जाते ती तीक्ष्ण वारंवारता आहे जिच्याखाली धारा नेमकी शून्य आहे — लहान नाही, शून्य — दिवा कितीही तेजस्वी असो वा कितीही वेळ थांबा. सीझियम पिवळ्याला उत्तर देतो, जस्ताला अतिनील लागते, आणि कितीही शक्ती ती सीमा हलवत नाही. दुसरे अपयश: ऊर्जा. लहरी-चित्रावर तेजस्वी शलाकेचे क्षेत्र-आयाम मोठे असतात, म्हणून तिने हलवलेला इलेक्ट्रॉन अधिक जोराने हलावा आणि वेगाने निघावा. मोजा आणि निरोधी विभव हलतही नाही: दहापट तेज दहापट इलेक्ट्रॉन बाहेर काढते, आणि प्रत्येकाची कमाल ऊर्जा पूर्वीसारखीच. त्याऐवजी रंग बदला, तेज तसेच ठेवून, आणि निरोधी विभव लगेच सरकतो. तेज आणि रंग स्वच्छपणे एका मोजणीत आणि एका ऊर्जेत विभागले गेले आहेत, आणि लहरीकडे त्यांना विभागण्याचा कोणताही मार्ग नाही, कारण लहरीत दोन्हींचा अर्थ फक्त अधिक ज्यूल प्रति सेकंद असा होतो. तिसरे अपयश: वेळ. हे युक्तिवादाऐवजी काढता येते. इतकी क्षीण शलाका घ्या की चौरस मीटरला एक मायक्रोवॅट मिळेल, ऊर्जा लहरीच्या मागणीनुसार पृष्ठभागावर एकसमान पसरवा, आणि विचारा की सुमारे 10⁻²⁰ m² छेदाच्या अणूला कार्यफलनाचे काही इलेक्ट्रॉन-व्होल्ट गोळा करायला किती वेळ लागेल. उत्तर तासांत निघते. मोजलेला विलंब एका नॅनोसेकंदाहून कमी आहे, आणि अंदाजाचे कोणतेही परिष्करण तितकी मोठी दरी भरत नाही. आता उपाय, आणि त्याची सर्वांत चकित करणारी गोष्ट ही की एकच गृहीतक तिन्ही एकाच वेळी दुरुस्त करते. समजा प्रकाश पसरलेला नसून अविभाज्य पुड्यांत येतो, प्रत्येक hf ऊर्जेची, ज्यात तीव्रता ठरवते की दर सेकंदाला किती येतात आणि वारंवारता ठरवते की प्रत्येक किती मोठी आहे. उंबरठा निघतो: पुडीकडे कार्यफलन भरण्याइतकी ऊर्जा एकतर आहे वा नाही, आणि जर hf < φ तर कोणतीही पुडी कामाची नाही, कितीही आल्या तरी — हजार माणसे ज्यांतल्या प्रत्येकाकडे अर्धे भाडे आहे, ती मिळून एकही तिकीट मिळवत नाहीत. ऊर्जा-अवलंबित्व निघते: K_max = hf − φ मध्ये f आहे, तीव्रता नाही, म्हणून शलाका तेजस्वी केल्याने इलेक्ट्रॉन जुळतात, वेग नाही. वेळ निघतो: इलेक्ट्रॉन काहीही साठवत नाही, तो एकतर पुडीला भेटतो आणि लगेच निघतो वा भेटत नाही, म्हणून मंद प्रकाश म्हणजे कमी इलेक्ट्रॉन, सावकाश कधीच नाही. समीकरण K_max = hf − φ अशा प्रकारे तपासता येते जे गुणात्मक कहाणीच्या पुढे जाते. निरोधी विभव वारंवारतेविरुद्ध काढा आणि ते h/e उताराची सरळ रेषा असलेच पाहिजे — प्रत्येक धातूसाठी तोच उतार, केवळ अंतःखंड बदलत. मिलिकन आइनस्टाइनचे समीकरण खोडायला निघाले आणि दहा वर्षे त्याची खात्री करण्यात घालवली, आणि त्यांनी काढलेले h चे मूल्य त्याच्याशी जुळले जे प्लांकने तप्त पदार्थांवरील पूर्णपणे वेगळ्या प्रयोगातून मिळवले होते. दोन मापांमधले ते जुळणे, ज्यांच्यात त्या स्थिरांकाखेरीज काहीही समान नाही, तेच ते ज्याने पुडीला साधनातून सत्य बनवले. (दुसरा पर्याय तिन्हींपैकी केवळ सर्वांत कमकुवत अपयश मान्य करतो; तिसरा असे निरीक्षण नाकारतो जे मोठ्या अचूकतेने तपासले गेले आहे; चौथा वेळेचा युक्तिवाद उलटवतो, जे तेच अपयश आहे जे फोटॉन-चित्र सर्वांत लगेच समजावते.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "De Broglie's relation λ = h/p applies to every moving body. A student objects that a cricket ball has never been seen to diffract, so the relation must be wrong for ordinary matter and true only for electrons. Assess this, and say what evidence settled the question.",
+          hi: "दे ब्रॉग्ली का संबंध λ = h/p हर चलते पिंड पर लागू होता है। विद्यार्थी आपत्ति करता है कि क्रिकेट की गेंद को कभी विवर्तित होते नहीं देखा गया, अतः यह संबंध साधारण द्रव्य के लिए ग़लत होगा और केवल इलेक्ट्रॉनों के लिए सही। इसका आकलन करो, और बताओ कि किस प्रमाण ने प्रश्न निपटाया।",
+          mr: "द ब्रॉग्लीचा संबंध λ = h/p प्रत्येक हलत्या पदार्थाला लागू होतो. विद्यार्थी आक्षेप घेतो की क्रिकेटचा चेंडू कधीच विवर्तित होताना दिसलेला नाही, म्हणून हा संबंध सामान्य द्रव्यासाठी चूक असावा आणि केवळ इलेक्ट्रॉनांसाठी बरोबर. याचे मूल्यमापन करा, आणि कोणत्या पुराव्याने प्रश्न निकालात काढला ते सांगा.",
+        },
+        choices: [
+          {
+            en: "The relation holds for the ball too; what fails is the possibility of ever DEMONSTRATING it. A 150 g ball at 30 m/s has p ≈ 4.5 kg m/s, so λ = h/p ≈ 1.5 × 10⁻³⁴ m — some twenty orders of magnitude smaller than an atomic nucleus, and diffraction needs an aperture comparable to the wavelength, which no structure in the universe provides. An electron accelerated through 100 V has λ ≈ 0.12 nm, comparable with the spacing of atoms in a crystal, so a crystal IS the required grating. Davisson and Germer fired electrons at nickel and got a diffraction pattern with maxima exactly where the de Broglie wavelength predicted",
+            hi: "संबंध गेंद पर भी लागू है; जो विफल होता है वह उसे कभी दिखा पाने की संभावना है। 30 m/s पर 150 g की गेंद का p ≈ 4.5 kg m/s है, अतः λ = h/p ≈ 1.5 × 10⁻³⁴ m — परमाणु के नाभिक से क़रीब बीस कोटि छोटी, और विवर्तन के लिए तरंगदैर्ध्य के दर्जे का द्वारक चाहिए, जो विश्व की कोई संरचना नहीं देती। 100 V से त्वरित इलेक्ट्रॉन की λ ≈ 0.12 nm है, जो क्रिस्टल में परमाणुओं के अंतराल के दर्जे की है, अतः क्रिस्टल ही वह चाहिए गया जालक है। डेविसन और जर्मर ने निकल पर इलेक्ट्रॉन दागे और ऐसा विवर्तन प्रतिरूप पाया जिसके उच्चिष्ठ ठीक वहीं थे जहाँ दे ब्रॉग्ली तरंगदैर्ध्य ने बताया था",
+            mr: "संबंध चेंडूलाही लागू आहे; जे अपयशी ठरते ते तो कधी दाखवू शकण्याची शक्यता. 30 m/s वर 150 g च्या चेंडूचा p ≈ 4.5 kg m/s आहे, म्हणून λ = h/p ≈ 1.5 × 10⁻³⁴ m — अणुकेंद्रकाहून सुमारे वीस कोटी लहान, आणि विवर्तनासाठी तरंगलांबीच्या तोडीचे द्वारक लागते, जे विश्वातील कोणतीही रचना देत नाही. 100 V ने त्वरित इलेक्ट्रॉनची λ ≈ 0.12 nm आहे, जी स्फटिकातील अणूंच्या अंतराच्या तोडीची आहे, म्हणून स्फटिकच ते लागणारे जाळे आहे. डेव्हिसन आणि जर्मर यांनी निकेलवर इलेक्ट्रॉन डागले आणि असा विवर्तन नमुना मिळवला ज्याचे उच्चिष्ठ नेमके तिथेच होते जिथे द ब्रॉग्ली तरंगलांबीने सांगितले होते",
+          },
+          {
+            en: "The student is right: the relation was derived for particles with no rest mass and applies only to electrons and other very light particles",
+            hi: "विद्यार्थी सही है: यह संबंध विराम द्रव्यमान रहित कणों के लिए निकाला गया था और केवल इलेक्ट्रॉनों तथा दूसरे बहुत हल्के कणों पर लागू होता है",
+            mr: "विद्यार्थी बरोबर आहे: हा संबंध विश्रांती वस्तुमान नसलेल्या कणांसाठी काढला गेला होता आणि केवळ इलेक्ट्रॉन व इतर अतिशय हलक्या कणांना लागू होतो",
+          },
+          {
+            en: "A cricket ball has no wavelength because it is made of many atoms, and only single particles can be assigned one",
+            hi: "क्रिकेट की गेंद की कोई तरंगदैर्ध्य नहीं क्योंकि वह बहुत सारे परमाणुओं से बनी है, और तरंगदैर्ध्य केवल एकल कणों को दी जा सकती है",
+            mr: "क्रिकेटच्या चेंडूला तरंगलांबी नाही कारण तो अनेक अणूंचा बनलेला आहे, आणि तरंगलांबी केवळ एकेरी कणांना देता येते",
+          },
+          {
+            en: "The relation is confirmed for the ball as well, since a fast bowler's delivery has been shown to bend around the batsman by a measurable amount",
+            hi: "संबंध गेंद के लिए भी पुष्ट है, क्योंकि तेज़ गेंदबाज़ की गेंद को बल्लेबाज़ के गिर्द नापी जा सकने वाली मात्रा में मुड़ते दिखाया गया है",
+            mr: "संबंध चेंडूसाठीही खात्रीलायक आहे, कारण वेगवान गोलंदाजाचा चेंडू फलंदाजाभोवती मोजता येईल इतका वाकताना दाखवला गेला आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The objection confuses two different claims: that a law is FALSE, and that its consequences are too small to detect. Only the second is true here, and separating them is the point of the question. Do the arithmetic for the ball. Its mass is 150 g, that is m = 0.15 kg, and v = 30 m/s, so p = 4.5 kg m/s. Then λ = h/p = 6.6 × 10⁻³⁴/4.5 ≈ 1.5 × 10⁻³⁴ m. It is worth pausing on how small that is. An atom is about 10⁻¹⁰ m across and a nucleus about 10⁻¹⁵ m, so this wavelength is smaller than a nucleus by a factor of 10¹⁹. Wave behaviour shows itself only when a wave meets an obstacle or aperture comparable to its own wavelength — that is the λ/a of the diffraction chapter — and there is no aperture in the known universe of the required size. The ball's wave nature is not absent; it is unobservable, which is a different statement and the one the physics actually makes. Now the electron, where the numbers fall the other way. An electron accelerated through a potential V gains energy eV, so p = √(2meV), and the standard result is λ = 1.227/√V nanometres with V in volts. At 100 V that is about 0.12 nm. Compare with the spacing of atoms in a crystal, which is around 0.1 to 0.3 nm — the same order of magnitude. A crystal is therefore a ready-made diffraction grating for electrons, exactly as it already was for X-rays of similar wavelength. That is what Davisson and Germer exploited in 1927, partly by accident: an air leak had forced them to anneal their nickel target, turning it into a few large crystals, and the scattered electron intensity then showed sharp peaks at particular angles. The angles obeyed the Bragg condition with the wavelength de Broglie's formula predicted from the accelerating voltage, and changing the voltage moved the peaks exactly as the formula required. G. P. Thomson independently obtained ring patterns from thin foils. Two things about this are worth carrying beyond the chapter. First, the confirmation was quantitative and not merely suggestive: the pattern's angles were predicted from a formula containing no adjustable parameter, and they came out right. A qualitative 'electrons behave oddly' would have proved nothing. Second, matter-wave diffraction has since been demonstrated for neutrons, for whole atoms, and for molecules of several hundred atoms — each heavier object requiring a slower beam and a finer grating, in exactly the way λ = h/p demands. The boundary between quantum and classical behaviour is not a boundary between kinds of object; it is a matter of how the wavelength compares with the apparatus, and every experiment since has pushed that boundary outward rather than found a wall. (The second option invents a restriction to massless particles, which would be self-contradictory since photons are massless and the relation was extended FROM them; the third invents a rule about composite bodies that molecular diffraction refutes directly; the fourth mistakes an aerodynamic effect for a quantum one, and by twenty orders of magnitude.)",
+          hi: "आपत्ति दो भिन्न दावों को गड्डमड्ड करती है: कि कोई नियम झूठा है, और कि उसके परिणाम पकड़ में आने के लिए बहुत छोटे हैं। यहाँ केवल दूसरा सच है, और उन्हें अलग करना ही प्रश्न का मर्म है। गेंद के लिए अंकगणित करो। उसका द्रव्यमान 150 g है, अर्थात् m = 0.15 kg, और v = 30 m/s, अतः p = 4.5 kg m/s. तब λ = h/p = 6.6 × 10⁻³⁴/4.5 ≈ 1.5 × 10⁻³⁴ m. यह कितनी छोटी है, इस पर रुकना चाहिए। परमाणु लगभग 10⁻¹⁰ m चौड़ा है और नाभिक लगभग 10⁻¹⁵ m, अतः यह तरंगदैर्ध्य नाभिक से भी 10¹⁹ गुणक से छोटी है। तरंग-आचरण तभी दिखता है जब तरंग अपनी ही तरंगदैर्ध्य के दर्जे के अवरोध या द्वारक से मिले — वही विवर्तन अध्याय का λ/a — और ज्ञात विश्व में उस आकार का कोई द्वारक है ही नहीं। गेंद की तरंग-प्रकृति अनुपस्थित नहीं; वह अप्रेक्ष्य है, जो भिन्न कथन है और वही है जो भौतिकी वस्तुतः करती है। अब इलेक्ट्रॉन, जहाँ संख्याएँ उलटी ओर गिरती हैं। विभव V से त्वरित इलेक्ट्रॉन eV ऊर्जा पाता है, अतः p = √(2meV), और मानक परिणाम λ = 1.227/√V नैनोमीटर है जिसमें V वोल्ट में। 100 V पर वह लगभग 0.12 nm है। क्रिस्टल में परमाणुओं के अंतराल से तुलना करो, जो लगभग 0.1 से 0.3 nm है — वही कोटि। अतः क्रिस्टल इलेक्ट्रॉनों के लिए बना-बनाया विवर्तन जालक है, ठीक वैसे जैसे वह उसी दर्जे की तरंगदैर्ध्य की X-किरणों के लिए पहले से था। डेविसन और जर्मर ने 1927 में यही काम में लिया, कुछ हद तक संयोग से: हवा के रिसाव ने उन्हें अपना निकल लक्ष्य तपाकर ठंडा करने पर मजबूर किया, जिससे वह कुछ बड़े क्रिस्टलों में बदल गया, और तब प्रकीर्ण इलेक्ट्रॉन तीव्रता ने विशेष कोणों पर तीखे शिखर दिखाए। कोण ब्रैग की शर्त मानते थे उसी तरंगदैर्ध्य के साथ जो दे ब्रॉग्ली के सूत्र ने त्वरक वोल्टता से बताई थी, और वोल्टता बदलने पर शिखर ठीक वैसे खिसके जैसे सूत्र माँगता था। जी. पी. थॉमसन ने स्वतंत्र रूप से पतली पन्नियों से वलय प्रतिरूप पाए। इस बारे में दो बातें अध्याय से आगे ले जाने योग्य हैं। पहली, पुष्टि मात्रात्मक थी, केवल संकेतात्मक नहीं: प्रतिरूप के कोण ऐसे सूत्र से बताए गए थे जिसमें कोई समायोज्य प्राचल नहीं, और वे ठीक निकले। गुणात्मक 'इलेक्ट्रॉन अजीब बरतते हैं' कुछ भी सिद्ध न करता। दूसरी, तब से द्रव्य-तरंग विवर्तन न्यूट्रॉनों के लिए, पूरे परमाणुओं के लिए, और कई सौ परमाणुओं के अणुओं के लिए दिखाया जा चुका है — हर भारी वस्तु को धीमा पुंज और बारीक जालक चाहिए, ठीक उसी ढंग से जैसे λ = h/p माँगता है। क्वांटम और चिरसम्मत आचरण के बीच की सीमा वस्तुओं की क़िस्मों के बीच की सीमा नहीं; वह इस बात की है कि तरंगदैर्ध्य उपकरण से कैसी तुलना में है, और तब से हर प्रयोग ने उस सीमा को बाहर धकेला है, दीवार नहीं पाई। (दूसरा विकल्प द्रव्यमानहीन कणों तक की पाबंदी गढ़ता है, जो स्वयं-विरोधी होगी क्योंकि फ़ोटॉन द्रव्यमानहीन हैं और संबंध उन्हीं से बढ़ाया गया था; तीसरा संयुक्त पिंडों के बारे में ऐसा नियम गढ़ता है जिसे आणविक विवर्तन सीधे झुठलाता है; चौथा वायुगतिकीय प्रभाव को क्वांटम प्रभाव समझ लेता है, और बीस कोटि के अंतर से।)",
+          mr: "आक्षेप दोन वेगळ्या दाव्यांची गल्लत करतो: की एखादा नियम खोटा आहे, आणि की त्याचे परिणाम ओळखण्याइतके नाहीत. इथे केवळ दुसरे खरे आहे, आणि त्यांना वेगळे करणे हाच प्रश्नाचा गाभा. चेंडूसाठी अंकगणित करा. त्याचे वस्तुमान 150 g आहे, म्हणजे m = 0.15 kg, आणि v = 30 m/s, म्हणून p = 4.5 kg m/s. मग λ = h/p = 6.6 × 10⁻³⁴/4.5 ≈ 1.5 × 10⁻³⁴ m. ती किती लहान आहे यावर थांबायला हवे. अणू सुमारे 10⁻¹⁰ m रुंद आहे आणि केंद्रक सुमारे 10⁻¹⁵ m, म्हणून ही तरंगलांबी केंद्रकाहूनही 10¹⁹ पटीने लहान आहे. लहरी-वर्तन तेव्हाच दिसते जेव्हा लहर स्वतःच्याच तरंगलांबीच्या तोडीच्या अडथळ्याला वा द्वारकाला भेटते — तेच विवर्तन प्रकरणातले λ/a — आणि ज्ञात विश्वात त्या आकाराचे कोणतेही द्वारक नाहीच. चेंडूचे लहरी स्वरूप अनुपस्थित नाही; ते अनिरीक्ष्य आहे, जे वेगळे विधान आहे आणि तेच जे भौतिकी प्रत्यक्षात करते. आता इलेक्ट्रॉन, जिथे संख्या उलट बाजूला पडतात. विभव V ने त्वरित इलेक्ट्रॉन eV ऊर्जा मिळवतो, म्हणून p = √(2meV), आणि प्रमाणित निकाल λ = 1.227/√V नॅनोमीटर आहे ज्यात V व्होल्टमध्ये. 100 V वर ते सुमारे 0.12 nm आहे. स्फटिकातील अणूंच्या अंतराशी तुलना करा, जे सुमारे 0.1 ते 0.3 nm आहे — तीच कोटी. म्हणून स्फटिक हे इलेक्ट्रॉनांसाठी तयार विवर्तन जाळे आहे, अगदी तसेच जसे ते त्याच तोडीच्या तरंगलांबीच्या क्ष-किरणांसाठी आधीच होते. डेव्हिसन आणि जर्मर यांनी 1927 मध्ये हेच वापरले, काहीसे योगायोगाने: हवेच्या गळतीने त्यांना आपले निकेल लक्ष्य तापवून थंड करावे लागले, ज्याने ते काही मोठ्या स्फटिकांत बदलले, आणि मग विखुरलेल्या इलेक्ट्रॉन तीव्रतेने विशिष्ट कोनांवर तीक्ष्ण शिखरे दाखवली. कोन ब्रॅगची अट मानत होते त्याच तरंगलांबीसह जी द ब्रॉग्लीच्या सूत्राने त्वरक व्होल्टेजवरून सांगितली होती, आणि व्होल्टेज बदलल्यावर शिखरे नेमकी तशीच सरकली जशी सूत्राने मागितली. जी. पी. थॉमसन यांनी स्वतंत्रपणे पातळ पत्र्यांतून वलय नमुने मिळवले. याबद्दल दोन गोष्टी प्रकरणापलीकडे न्यायच्या आहेत. पहिली, खात्री संख्यात्मक होती, केवळ सूचक नव्हे: नमुन्याचे कोन अशा सूत्रातून सांगितले गेले ज्यात कोणताही जुळवता येणारा प्राचल नाही, आणि ते बरोबर निघाले. गुणात्मक 'इलेक्ट्रॉन विचित्र वागतात' काहीच सिद्ध केले नसते. दुसरी, तेव्हापासून द्रव्य-लहर विवर्तन न्यूट्रॉनांसाठी, अख्ख्या अणूंसाठी, आणि कित्येकशे अणूंच्या रेणूंसाठी दाखवले गेले आहे — प्रत्येक जड वस्तूला सावकाश शलाका आणि बारीक जाळे लागते, नेमके तसेच जसे λ = h/p मागते. पुंज आणि चिरंतन वर्तन यांतली सीमा वस्तूंच्या प्रकारांमधली सीमा नाही; ती याची आहे की तरंगलांबी उपकरणाशी कशी तुलनेत आहे, आणि तेव्हापासून प्रत्येक प्रयोगाने ती सीमा बाहेर ढकलली आहे, भिंत सापडलेली नाही. (दुसरा पर्याय वस्तुमानविरहित कणांपुरती बंदी घडवतो, जी स्वतःशी विसंगत ठरेल कारण फोटॉन वस्तुमानविरहित आहेत आणि संबंध त्यांच्यापासूनच वाढवला गेला; तिसरा संयुक्त पदार्थांबद्दल असा नियम घडवतो ज्याला रेणवीय विवर्तन थेट खोडते; चौथा वायुगतिकीय परिणामाला पुंज परिणाम समजतो, आणि वीस कोटींच्या फरकाने.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 12 — Atoms                                                      */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "physics-12-atoms",
+    subject: "PHYSICS",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 12 — Atoms",
+      hi: "अध्याय 12 — परमाणु",
+      mr: "प्रकरण 12 — अणू",
+    },
+    name: {
+      en: "Atoms",
+      hi: "परमाणु",
+      mr: "अणू",
+    },
+    summary: {
+      en: "A few alpha particles in ten thousand coming straight back off a gold foil, which no smeared-out atom could ever do and which forces almost all the mass into a volume a hundred thousand times smaller than the atom; the immediate difficulty that an electron circling such a nucleus is an accelerating charge, so classical physics gives the atom about a hundredth of a nanosecond to live; a postulate that simply forbids radiation from certain orbits and is not derived from anything, but which then produces the hydrogen spectrum to four figures; angular momentum allowed only in whole multiples of one amount; and a ladder of energies going as 1/n² whose rungs are the wavelengths a hot gas actually emits.",
+      hi: "दस हज़ार में कुछ अल्फ़ा कण सोने की पन्नी से सीधे वापस आते हुए, जो कोई फैला हुआ परमाणु कभी नहीं कर सकता और जो लगभग सारा द्रव्यमान परमाणु से एक लाख गुना छोटे आयतन में ठूँस देता है; तुरंत आती कठिनाई कि ऐसे नाभिक की परिक्रमा करता इलेक्ट्रॉन त्वरित आवेश है, अतः चिरसम्मत भौतिकी परमाणु को नैनोसेकंड के लगभग सौवें भाग की आयु देती है; वह अभिगृहीत जो कुछ कक्षाओं से विकिरण को बस मना कर देता है और किसी चीज़ से निकाला नहीं गया, पर जो फिर हाइड्रोजन का स्पेक्ट्रम चार अंकों तक दे देता है; कोणीय संवेग जो केवल एक मात्रा के पूर्ण गुणकों में ही स्वीकार्य है; और 1/n² के अनुसार चलती ऊर्जाओं की सीढ़ी जिसके डंडे वही तरंगदैर्ध्य हैं जो गर्म गैस वस्तुतः उत्सर्जित करती है।",
+      mr: "दहा हजारांत काही अल्फा कण सोन्याच्या पन्नीवरून सरळ परत येताना, जे कोणताही पसरलेला अणू कधीच करू शकत नाही आणि जे जवळपास सारे वस्तुमान अणूहून लाखपट लहान घनफळात कोंबते; लगेच येणारी अडचण की अशा केंद्रकाभोवती फिरणारा इलेक्ट्रॉन हा त्वरित प्रभार आहे, म्हणून चिरंतन भौतिकी अणूला नॅनोसेकंदाच्या सुमारे शंभराव्या भागाचे आयुष्य देते; ते गृहीतक जे काही कक्षांतून प्रारण फक्त वर्ज्य करते आणि कशातूनही काढलेले नाही, पण जे मग हायड्रोजनचा वर्णपट चार अंकांपर्यंत देते; कोनीय संवेग जो केवळ एका प्रमाणाच्या पूर्ण पटींतच स्वीकार्य आहे; आणि 1/n² नुसार चालणारी ऊर्जांची शिडी जिच्या पायऱ्या त्याच तरंगलांबी आहेत ज्या तप्त वायू प्रत्यक्षात उत्सर्जित करतो.",
+    },
+    position: 12,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "alpha-scattering",
+        name: {
+          en: "The alpha-particle scattering experiment",
+          hi: "अल्फ़ा कण प्रकीर्णन प्रयोग",
+          mr: "अल्फा कण विखुरण प्रयोग",
+        },
+        kind: "experiment or model",
+        prompt: {
+          en: "Almost every particle fired at a thin gold foil went straight through, but roughly one in eight thousand bounced back through more than a right angle — as unexpected, its author said, as a shell rebounding from tissue paper. Which experiment is this?",
+          hi: "सोने की पतली पन्नी पर दागा गया लगभग हर कण सीधा निकल गया, पर मोटे तौर पर आठ हज़ार में एक समकोण से अधिक मुड़कर लौट आया — उसके करने वाले के शब्दों में उतना ही अप्रत्याशित जितना काग़ज़ से गोले का टकराकर लौटना। यह कौन-सा प्रयोग है?",
+          mr: "सोन्याच्या पातळ पन्नीवर डागलेला जवळपास प्रत्येक कण सरळ निघून गेला, पण ढोबळमानाने आठ हजारांत एक काटकोनाहून अधिक वळून परत आला — त्याच्या कर्त्याच्या शब्दांत तितकाच अनपेक्षित जितका कागदावरून तोफगोळ्याचे परत येणे. हा कोणता प्रयोग?",
+        },
+        statement: {
+          en: "The alpha-particle scattering experiment showed that an atom's positive charge and nearly all its mass are concentrated in a nucleus about 10⁻¹⁵ m across, ten thousand times smaller than the atom.",
+          hi: "अल्फ़ा कण प्रकीर्णन प्रयोग ने दिखाया कि परमाणु का धन आवेश और लगभग सारा द्रव्यमान लगभग 10⁻¹⁵ m चौड़े नाभिक में सिमटा है, जो परमाणु से दस हज़ार गुना छोटा है।",
+          mr: "अल्फा कण विखुरण प्रयोगाने दाखवले की अणूचा धन प्रभार आणि जवळपास सारे वस्तुमान सुमारे 10⁻¹⁵ m रुंद केंद्रकात एकवटले आहे, जे अणूहून दहा हजारपट लहान आहे.",
+        },
+        detail: {
+          en: "The rare large deflections carried the argument, not the common small ones: a charge spread over the whole atom could never produce a force big enough to turn a fast alpha particle right round.",
+          hi: "तर्क दुर्लभ बड़े विक्षेपों ने चलाया, आम छोटे विक्षेपों ने नहीं: पूरे परमाणु पर फैला आवेश कभी इतना बड़ा बल नहीं दे सकता कि तेज़ अल्फ़ा कण को पूरा घुमा दे।",
+          mr: "युक्तिवाद दुर्मीळ मोठ्या विचलनांनी चालवला, सामान्य लहान विचलनांनी नव्हे: अख्ख्या अणूवर पसरलेला प्रभार कधीच इतके मोठे बल देऊ शकत नाही की वेगवान अल्फा कणाला पूर्ण फिरवावे.",
+        },
+        extra: {
+          en: "The emptiness is the other half of the result and the harder half to picture: if a nucleus were a marble on the centre spot, the nearest electron would be somewhere in the stands.",
+          hi: "ख़ालीपन परिणाम का दूसरा आधा है और चित्र में लाने को कठिन आधा: यदि नाभिक मैदान के बीच में रखी कंचा हो, तो निकटतम इलेक्ट्रॉन कहीं दर्शक-दीर्घा में होगा।",
+          mr: "रिकामेपण हा निकालाचा दुसरा अर्धा भाग आणि चित्रात आणायला कठीण अर्धा: जर केंद्रक मैदानाच्या मध्यभागी ठेवलेली गोटी असेल, तर जवळचा इलेक्ट्रॉन कुठेतरी प्रेक्षक-गॅलरीत असेल.",
+        },
+        pair: {
+          left: {
+            en: "A shell rebounding from tissue paper",
+            hi: "काग़ज़ से टकराकर लौटता गोला",
+            mr: "कागदावरून परत येणारा तोफगोळा",
+          },
+          right: {
+            en: "the alpha-particle scattering experiment",
+            hi: "अल्फ़ा कण प्रकीर्णन प्रयोग",
+            mr: "अल्फा कण विखुरण प्रयोग",
+          },
+        },
+      },
+      {
+        id: "classical-instability",
+        name: {
+          en: "The classical instability of the nuclear atom",
+          hi: "नाभिकीय परमाणु की चिरसम्मत अस्थिरता",
+          mr: "केंद्रकीय अणूची चिरंतन अस्थिरता",
+        },
+        kind: "experiment or model",
+        prompt: {
+          en: "An electron held in a circular orbit is accelerating, and Maxwell's equations say an accelerating charge must radiate — so the orbit should shrink and the atom collapse in about 10⁻¹¹ s. What is this difficulty called?",
+          hi: "वृत्तीय कक्षा में रखा इलेक्ट्रॉन त्वरित हो रहा है, और मैक्सवेल के समीकरण कहते हैं कि त्वरित आवेश को विकिरित करना ही है — अतः कक्षा सिकुड़नी चाहिए और परमाणु लगभग 10⁻¹¹ s में ढह जाना चाहिए। इस कठिनाई को क्या कहते हैं?",
+          mr: "वर्तुळाकार कक्षेत धरलेला इलेक्ट्रॉन त्वरित होत आहे, आणि मॅक्सवेलची समीकरणे सांगतात की त्वरित प्रभाराने प्रारित करावेच लागते — म्हणून कक्षा आकसावी आणि अणू सुमारे 10⁻¹¹ s मध्ये कोसळावा. या अडचणीला काय म्हणतात?",
+        },
+        statement: {
+          en: "The classical instability of the nuclear atom is the prediction that an orbiting electron radiates continuously, spirals inward and reaches the nucleus in a fraction of a nanosecond, so that no atom could exist at all.",
+          hi: "नाभिकीय परमाणु की चिरसम्मत अस्थिरता यह भविष्यवाणी है कि परिक्रमा करता इलेक्ट्रॉन लगातार विकिरित करता है, भीतर की ओर सर्पिल में जाता है और नैनोसेकंड के अंश में नाभिक तक पहुँच जाता है, जिससे कोई परमाणु हो ही नहीं सकता।",
+          mr: "केंद्रकीय अणूची चिरंतन अस्थिरता म्हणजे हे भाकीत की कक्षेत फिरणारा इलेक्ट्रॉन सतत प्रारित करतो, आत सर्पिलात जातो आणि नॅनोसेकंदाच्या अंशात केंद्रकापर्यंत पोहोचतो, ज्यामुळे कोणताही अणू असूच शकत नाही.",
+        },
+        detail: {
+          en: "It also predicts the wrong kind of light: a continuously shrinking orbit means a continuously rising frequency, so atoms should emit smooth rainbows rather than the sharp lines they are actually seen to emit.",
+          hi: "यह ग़लत क़िस्म का प्रकाश भी बताती है: लगातार सिकुड़ती कक्षा का अर्थ लगातार बढ़ती आवृत्ति है, अतः परमाणुओं को चिकने इंद्रधनुष उत्सर्जित करने चाहिए, न कि वे तीखी रेखाएँ जो वस्तुतः देखी जाती हैं।",
+          mr: "ती चुकीच्या प्रकारचा प्रकाशही सांगते: सतत आकसणाऱ्या कक्षेचा अर्थ सतत वाढणारी वारंवारता, म्हणून अणूंनी गुळगुळीत इंद्रधनुष्ये उत्सर्जित करावीत, त्या तीक्ष्ण रेषा नव्हे ज्या प्रत्यक्षात दिसतात.",
+        },
+        extra: {
+          en: "The failure is not a small numerical one that better calculation could mend: matter exists, so the classical account is wrong by the whole of its prediction and something has to be added from outside it.",
+          hi: "यह विफलता कोई छोटी संख्यात्मक चूक नहीं जिसे बेहतर गणना सुधार दे: द्रव्य मौजूद है, अतः चिरसम्मत कथन अपनी पूरी भविष्यवाणी जितना ग़लत है और उसके बाहर से कुछ जोड़ना ही पड़ेगा।",
+          mr: "हे अपयश कोणतीही लहान संख्यात्मक चूक नाही जी अधिक चांगली गणना दुरुस्त करेल: द्रव्य अस्तित्वात आहे, म्हणून चिरंतन कथन आपल्या अख्ख्या भाकिताइतके चूक आहे आणि त्याच्या बाहेरून काहीतरी जोडावेच लागेल.",
+        },
+        pair: {
+          left: {
+            en: "Theory gives the atom a hundredth of a nanosecond",
+            hi: "सिद्धांत परमाणु को नैनोसेकंड का सौवाँ भाग देता है",
+            mr: "सिद्धांत अणूला नॅनोसेकंदाचा शंभरावा भाग देतो",
+          },
+          right: {
+            en: "the classical instability of the nuclear atom",
+            hi: "नाभिकीय परमाणु की चिरसम्मत अस्थिरता",
+            mr: "केंद्रकीय अणूची चिरंतन अस्थिरता",
+          },
+        },
+      },
+      {
+        id: "bohr-model",
+        name: {
+          en: "The Bohr model of the atom",
+          hi: "परमाणु का बोर मॉडल",
+          mr: "अणूचे बोर प्रारूप",
+        },
+        kind: "experiment or model",
+        prompt: {
+          en: "A model that keeps Newton's mechanics and Coulomb's law but adds two rules by decree: certain orbits do not radiate at all, and light is emitted only in the jump from one to another. Which model is this?",
+          hi: "ऐसा मॉडल जो न्यूटन की यांत्रिकी और कूलॉम का नियम रखता है पर आदेश से दो नियम जोड़ देता है: कुछ कक्षाएँ विकिरित करती ही नहीं, और प्रकाश केवल एक से दूसरी में छलाँग पर उत्सर्जित होता है। यह कौन-सा मॉडल है?",
+          mr: "असे प्रारूप जे न्यूटनची यांत्रिकी आणि कुलोमचा नियम ठेवते पण हुकुमाने दोन नियम जोडते: काही कक्षा प्रारित करतच नाहीत, आणि प्रकाश केवळ एकीकडून दुसरीकडे उडी मारताना उत्सर्जित होतो. हे कोणते प्रारूप?",
+        },
+        statement: {
+          en: "The Bohr model postulates stationary orbits in which the electron does not radiate and emission only on transitions, with hf equal to the difference of the two energies.",
+          hi: "बोर मॉडल ऐसी स्थायी कक्षाएँ मानता है जिनमें इलेक्ट्रॉन विकिरित नहीं करता और उत्सर्जन केवल संक्रमणों पर होता है, जिसमें hf दोनों ऊर्जाओं के अंतर के बराबर है।",
+          mr: "बोर प्रारूप अशा स्थिर कक्षा गृहीत धरते ज्यांत इलेक्ट्रॉन प्रारित करत नाही आणि उत्सर्जन केवळ संक्रमणांवर होते, ज्यात hf दोन ऊर्जांच्या फरकाइतके आहे.",
+        },
+        detail: {
+          en: "The postulates are not derived from anything; they are stipulated because they work, and Bohr said as much — the model buys an exact spectrum at the price of an unexplained rule.",
+          hi: "अभिगृहीत किसी चीज़ से निकाले नहीं गए; वे इसलिए ठहरा दिए गए कि वे चलते हैं, और बोर ने यह कहा भी — मॉडल एक अनसमझे नियम की क़ीमत पर ठीक-ठीक स्पेक्ट्रम ख़रीदता है।",
+          mr: "गृहीतके कशातूनही काढलेली नाहीत; ती यासाठी ठरवली गेली की ती चालतात, आणि बोरने तसे म्हटलेही — प्रारूप एका न समजावलेल्या नियमाच्या किमतीवर नेमका वर्णपट विकत घेते.",
+        },
+        extra: {
+          en: "It succeeds for hydrogen and for any one-electron ion, and fails for helium onwards, which locates the trouble precisely: the model has no way to handle the repulsion between two electrons.",
+          hi: "यह हाइड्रोजन और किसी भी एक-इलेक्ट्रॉन आयन के लिए सफल है, और हीलियम से आगे विफल, जो गड़बड़ को ठीक-ठीक जगह देता है: मॉडल के पास दो इलेक्ट्रॉनों के बीच प्रतिकर्षण सँभालने का कोई रास्ता नहीं।",
+          mr: "हे हायड्रोजनसाठी आणि कोणत्याही एक-इलेक्ट्रॉन आयनासाठी यशस्वी आहे, आणि हेलियमपासून पुढे अपयशी, जे अडचणीला नेमकी जागा देते: प्रारूपाकडे दोन इलेक्ट्रॉनांमधले प्रतिकर्षण हाताळण्याचा कोणताही मार्ग नाही.",
+        },
+        pair: {
+          left: {
+            en: "Two rules laid down because they work",
+            hi: "दो नियम, इसलिए ठहराए गए कि वे चलते हैं",
+            mr: "दोन नियम, यासाठी ठरवलेले की ते चालतात",
+          },
+          right: {
+            en: "the Bohr model of the atom",
+            hi: "परमाणु का बोर मॉडल",
+            mr: "अणूचे बोर प्रारूप",
+          },
+        },
+      },
+      {
+        id: "quantised-angular-momentum",
+        name: {
+          en: "The quantisation of angular momentum",
+          hi: "कोणीय संवेग का क्वांटमीकरण",
+          mr: "कोनीय संवेगाचे पुंजीकरण",
+        },
+        kind: "property of the hydrogen atom",
+        prompt: {
+          en: "The rule that selects which orbits are allowed: the electron's angular momentum may only be a whole-number multiple of h/2π, and no orbit between two such values exists. What is this called?",
+          hi: "वह नियम जो चुनता है कि कौन-सी कक्षाएँ स्वीकार्य हैं: इलेक्ट्रॉन का कोणीय संवेग केवल h/2π का पूर्णांक गुणक हो सकता है, और ऐसे दो मानों के बीच कोई कक्षा है ही नहीं। इसे क्या कहते हैं?",
+          mr: "तो नियम जो निवडतो की कोणत्या कक्षा स्वीकार्य आहेत: इलेक्ट्रॉनचा कोनीय संवेग केवळ h/2π चा पूर्णांक पट असू शकतो, आणि अशा दोन मूल्यांमध्ये कोणतीही कक्षा नाहीच. याला काय म्हणतात?",
+        },
+        statement: {
+          en: "The quantisation of angular momentum is the condition mvr = nh/2π with n a whole number, and it is the single assumption from which the allowed radii and energies both follow.",
+          hi: "कोणीय संवेग का क्वांटमीकरण mvr = nh/2π शर्त है जिसमें n पूर्णांक है, और वही एक मान्यता है जिससे स्वीकार्य त्रिज्याएँ और ऊर्जाएँ दोनों निकल आती हैं।",
+          mr: "कोनीय संवेगाचे पुंजीकरण म्हणजे mvr = nh/2π ही अट जिथे n पूर्णांक आहे, आणि तेच एकमेव गृहीतक ज्यातून स्वीकार्य त्रिज्या आणि ऊर्जा दोन्ही निघतात.",
+        },
+        detail: {
+          en: "It looks arbitrary until de Broglie's wavelength is put in, when it becomes the statement that the orbit's circumference is a whole number of electron wavelengths — a standing wave that closes on itself.",
+          hi: "यह मनमाना लगता है जब तक दे ब्रॉग्ली की तरंगदैर्ध्य न रखी जाए, जिसके बाद वह यह कथन बन जाता है कि कक्षा की परिधि इलेक्ट्रॉन-तरंगदैर्ध्यों का पूर्णांक गुणक है — ऐसी अप्रगामी तरंग जो अपने पर बंद हो जाती है।",
+          mr: "हे मनमानी वाटते जोवर द ब्रॉग्लीची तरंगलांबी ठेवली जात नाही, ज्यानंतर ते हे विधान बनते की कक्षेचा परीघ इलेक्ट्रॉन-तरंगलांबींचा पूर्णांक पट आहे — अशी अप्रगामी लहर जी स्वतःवर बंद होते.",
+        },
+        extra: {
+          en: "The smallest allowed value is n = 1 and not n = 0, which is what stops the electron from simply sitting on the nucleus and is therefore the real answer to why the atom does not collapse.",
+          hi: "सबसे छोटा स्वीकार्य मान n = 1 है, n = 0 नहीं, और यही इलेक्ट्रॉन को नाभिक पर बैठ जाने से रोकता है और इसलिए परमाणु के न ढहने का असली उत्तर है।",
+          mr: "सर्वांत लहान स्वीकार्य मूल्य n = 1 आहे, n = 0 नाही, आणि हेच इलेक्ट्रॉनला केंद्रकावर बसण्यापासून रोखते आणि म्हणून अणू का कोसळत नाही याचे खरे उत्तर आहे.",
+        },
+        pair: {
+          left: {
+            en: "A standing wave that closes on itself",
+            hi: "अपने पर बंद होती अप्रगामी तरंग",
+            mr: "स्वतःवर बंद होणारी अप्रगामी लहर",
+          },
+          right: {
+            en: "the quantisation of angular momentum",
+            hi: "कोणीय संवेग का क्वांटमीकरण",
+            mr: "कोनीय संवेगाचे पुंजीकरण",
+          },
+        },
+      },
+      {
+        id: "energy-levels",
+        name: {
+          en: "The hydrogen energy levels",
+          hi: "हाइड्रोजन के ऊर्जा स्तर",
+          mr: "हायड्रोजनच्या ऊर्जा पातळ्या",
+        },
+        kind: "property of the hydrogen atom",
+        prompt: {
+          en: "A ladder of allowed energies given by −13.6/n² electron-volts, negative throughout, crowding closer and closer together as the rungs climb towards zero. What is this ladder?",
+          hi: "स्वीकार्य ऊर्जाओं की सीढ़ी जो −13.6/n² इलेक्ट्रॉन-वोल्ट से मिलती है, आद्यंत ऋणात्मक, और जिसके डंडे शून्य की ओर चढ़ते हुए पास-पास होते जाते हैं। यह सीढ़ी क्या है?",
+          mr: "स्वीकार्य ऊर्जांची शिडी जी −13.6/n² इलेक्ट्रॉन-व्होल्टने मिळते, आद्यंत ऋण, आणि जिच्या पायऱ्या शून्याकडे चढताना जवळजवळ होत जातात. ही शिडी काय आहे?",
+        },
+        statement: {
+          en: "The hydrogen energy levels are E_n = −13.6/n² eV, so the ground state lies at −13.6 eV and the levels bunch up towards zero, which is the energy of a free electron at rest.",
+          hi: "हाइड्रोजन के ऊर्जा स्तर E_n = −13.6/n² eV हैं, अतः निम्नतम अवस्था −13.6 eV पर पड़ती है और स्तर शून्य की ओर सिमटते जाते हैं, जो विरामावस्था में मुक्त इलेक्ट्रॉन की ऊर्जा है।",
+          mr: "हायड्रोजनच्या ऊर्जा पातळ्या E_n = −13.6/n² eV आहेत, म्हणून तळपातळी −13.6 eV वर असते आणि पातळ्या शून्याकडे दाटत जातात, जी विश्रांतीतल्या मुक्त इलेक्ट्रॉनची ऊर्जा आहे.",
+        },
+        detail: {
+          en: "The sign is a statement about binding, not a defect: negative means work must be supplied to remove the electron, and the 13.6 eV needed to reach zero is exactly the ionisation energy.",
+          hi: "चिह्न बंधन के बारे में कथन है, दोष नहीं: ऋणात्मक का अर्थ है इलेक्ट्रॉन हटाने के लिए कार्य देना पड़ेगा, और शून्य तक पहुँचने को चाहिए 13.6 eV ठीक आयनन ऊर्जा है।",
+          mr: "चिन्ह हे बंधनाबद्दलचे विधान आहे, दोष नव्हे: ऋण म्हणजे इलेक्ट्रॉन काढण्यास कार्य द्यावे लागेल, आणि शून्यापर्यंत पोहोचायला लागणारे 13.6 eV हीच नेमकी आयनन ऊर्जा आहे.",
+        },
+        extra: {
+          en: "For a one-electron ion of charge Z the whole ladder scales as Z², so singly ionised helium sits four times deeper, and its lines were mistaken for hydrogen's until the factor was noticed.",
+          hi: "Z आवेश वाले एक-इलेक्ट्रॉन आयन के लिए पूरी सीढ़ी Z² के अनुसार बदलती है, अतः एकल आयनित हीलियम चार गुना गहरा बैठता है, और उसकी रेखाएँ हाइड्रोजन की समझी जाती रहीं जब तक वह गुणक ध्यान में न आया।",
+          mr: "Z प्रभार असलेल्या एक-इलेक्ट्रॉन आयनासाठी अख्खी शिडी Z² नुसार बदलते, म्हणून एकदा आयनित हेलियम चौपट खोल बसतो, आणि त्याच्या रेषा हायड्रोजनच्या समजल्या जात राहिल्या जोवर तो गुणक लक्षात आला नाही.",
+        },
+        pair: {
+          left: {
+            en: "Negative all the way, and zero means free",
+            hi: "आद्यंत ऋणात्मक, और शून्य का अर्थ मुक्त",
+            mr: "आद्यंत ऋण, आणि शून्य म्हणजे मुक्त",
+          },
+          right: {
+            en: "the hydrogen energy levels",
+            hi: "हाइड्रोजन के ऊर्जा स्तर",
+            mr: "हायड्रोजनच्या ऊर्जा पातळ्या",
+          },
+        },
+      },
+      {
+        id: "spectral-series",
+        name: {
+          en: "The hydrogen spectral series",
+          hi: "हाइड्रोजन की स्पेक्ट्रमी श्रेणियाँ",
+          mr: "हायड्रोजनच्या वर्णपटीय श्रेणी",
+        },
+        kind: "property of the hydrogen atom",
+        prompt: {
+          en: "Groups of emission lines, each group being all the jumps that end on the same level — the ones ending on the second level falling in visible light and the ones ending on the first in the ultraviolet. What are these groups called?",
+          hi: "उत्सर्जन रेखाओं के समूह, हर समूह वे सब छलाँगें जो एक ही स्तर पर ख़त्म होती हैं — दूसरे स्तर पर ख़त्म होने वाली दृश्य प्रकाश में पड़ती हैं और पहले पर ख़त्म होने वाली पराबैंगनी में। इन समूहों को क्या कहते हैं?",
+          mr: "उत्सर्जन रेषांचे गट, प्रत्येक गट म्हणजे त्या सर्व उड्या ज्या एकाच पातळीवर संपतात — दुसऱ्या पातळीवर संपणाऱ्या दृश्य प्रकाशात पडतात आणि पहिल्यावर संपणाऱ्या अतिनीलात. या गटांना काय म्हणतात?",
+        },
+        statement: {
+          en: "The hydrogen spectral series are the families of lines sharing a final level — Lyman ending on n = 1 in the ultraviolet, Balmer on n = 2 in the visible, Paschen on n = 3 in the infrared.",
+          hi: "हाइड्रोजन की स्पेक्ट्रमी श्रेणियाँ रेखाओं के वे कुल हैं जो अंतिम स्तर साझा करते हैं — लाइमन पराबैंगनी में n = 1 पर, बामर दृश्य में n = 2 पर, पाशन अवरक्त में n = 3 पर।",
+          mr: "हायड्रोजनच्या वर्णपटीय श्रेणी म्हणजे अंतिम पातळी वाटून घेणारी रेषांची कुळे — लायमन अतिनीलात n = 1 वर, बामर दृश्यात n = 2 वर, पाशन अवरक्तात n = 3 वर.",
+        },
+        detail: {
+          en: "The wavelengths were measured and fitted by an empirical formula decades before anyone could say why, and Bohr's achievement was to derive that formula's constant from h, m and e.",
+          hi: "तरंगदैर्ध्य नापी गईं और एक अनुभवजन्य सूत्र से बिठाई गईं, कारण बता सकने से दशकों पहले, और बोर की उपलब्धि उस सूत्र का स्थिरांक h, m और e से निकालना थी।",
+          mr: "तरंगलांबी मोजल्या गेल्या आणि एका अनुभवजन्य सूत्राने बसवल्या गेल्या, कारण सांगू शकण्याच्या दशके आधी, आणि बोरची कामगिरी त्या सूत्राचा स्थिरांक h, m आणि e पासून काढणे ही होती.",
+        },
+        extra: {
+          en: "Each series crowds towards a shortest wavelength, its series limit, which corresponds to a jump all the way from a free electron — so the limit's wavelength measures the binding energy of that level directly.",
+          hi: "हर श्रेणी सबसे छोटी तरंगदैर्ध्य की ओर सिमटती है, अपनी श्रेणी सीमा, जो मुक्त इलेक्ट्रॉन से पूरी छलाँग के अनुरूप है — अतः सीमा की तरंगदैर्ध्य उस स्तर की बंधन ऊर्जा सीधे नाप देती है।",
+          mr: "प्रत्येक श्रेणी सर्वांत लहान तरंगलांबीकडे दाटते, तिची श्रेणी मर्यादा, जी मुक्त इलेक्ट्रॉनपासूनच्या पूर्ण उडीशी जुळते — म्हणून मर्यादेची तरंगलांबी त्या पातळीची बंधन ऊर्जा थेट मोजते.",
+        },
+        pair: {
+          left: {
+            en: "Grouped by where the jump ends, not where it starts",
+            hi: "छलाँग कहाँ ख़त्म होती है उससे समूहित, कहाँ से शुरू उससे नहीं",
+            mr: "उडी कुठे संपते त्याने गटबद्ध, कुठून सुरू त्याने नव्हे",
+          },
+          right: {
+            en: "the hydrogen spectral series",
+            hi: "हाइड्रोजन की स्पेक्ट्रमी श्रेणियाँ",
+            mr: "हायड्रोजनच्या वर्णपटीय श्रेणी",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Rutherford's nuclear atom was accepted immediately, yet it predicts that every atom should collapse in about 10⁻¹¹ seconds. Explain the prediction, why it was not treated as a refutation of the nuclear model, and what Bohr's postulate actually bought and at what price.",
+          hi: "रदरफ़ोर्ड का नाभिकीय परमाणु तुरंत स्वीकार हो गया, फिर भी वह बताता है कि हर परमाणु लगभग 10⁻¹¹ सेकंड में ढह जाना चाहिए। भविष्यवाणी समझाओ, बताओ कि उसे नाभिकीय मॉडल का खंडन क्यों नहीं माना गया, और बोर के अभिगृहीत ने वस्तुतः क्या ख़रीदा और किस क़ीमत पर।",
+          mr: "रदरफर्डचा केंद्रकीय अणू लगेच स्वीकारला गेला, तरीही तो सांगतो की प्रत्येक अणू सुमारे 10⁻¹¹ सेकंदांत कोसळला पाहिजे. भाकीत समजावा, तो केंद्रकीय प्रारूपाचे खंडन का मानला गेला नाही ते सांगा, आणि बोरच्या गृहीतकाने प्रत्यक्षात काय विकत घेतले आणि कोणत्या किमतीवर.",
+        },
+        choices: [
+          {
+            en: "An electron in a circular orbit is accelerating, and Maxwell's electrodynamics requires an accelerating charge to radiate; radiating, it loses energy and spirals in, reaching the nucleus in about 10⁻¹¹ s while emitting a continuous rising frequency rather than sharp lines. The scattering evidence for a nucleus was direct and could not be argued away, so the fault had to lie with applying classical electrodynamics inside an atom. Bohr's postulate — that certain orbits simply do not radiate — bought the exact hydrogen spectrum, including the value of Rydberg's constant from h, m and e. Its price was that the postulate is stipulated rather than derived, and nothing in the model says why those orbits are special",
+            hi: "वृत्तीय कक्षा में इलेक्ट्रॉन त्वरित हो रहा है, और मैक्सवेल की विद्युतगतिकी माँगती है कि त्वरित आवेश विकिरित करे; विकिरित करते हुए वह ऊर्जा खोता है और भीतर सर्पिल में जाता है, लगभग 10⁻¹¹ s में नाभिक तक पहुँचते हुए, और तीखी रेखाओं के बजाय लगातार बढ़ती आवृत्ति उत्सर्जित करते हुए। नाभिक का प्रकीर्णन प्रमाण प्रत्यक्ष था और उसे तर्क से हटाया नहीं जा सकता था, अतः दोष परमाणु के भीतर चिरसम्मत विद्युतगतिकी लगाने में ही होना था। बोर के अभिगृहीत ने — कि कुछ कक्षाएँ विकिरित करती ही नहीं — ठीक-ठीक हाइड्रोजन स्पेक्ट्रम ख़रीदा, जिसमें h, m और e से रिडबर्ग के स्थिरांक का मान भी शामिल था। उसकी क़ीमत यह थी कि अभिगृहीत निकाला नहीं गया, ठहराया गया, और मॉडल में कुछ भी नहीं कहता कि वे कक्षाएँ विशेष क्यों हैं",
+            mr: "वर्तुळाकार कक्षेतील इलेक्ट्रॉन त्वरित होत आहे, आणि मॅक्सवेलची विद्युतगतिकी मागते की त्वरित प्रभाराने प्रारित करावे; प्रारित करत तो ऊर्जा गमावतो आणि आत सर्पिलात जातो, सुमारे 10⁻¹¹ s मध्ये केंद्रकापर्यंत पोहोचत, आणि तीक्ष्ण रेषांऐवजी सतत वाढणारी वारंवारता उत्सर्जित करत. केंद्रकाचा विखुरण पुरावा थेट होता आणि तो युक्तिवादाने बाजूला करता येत नव्हता, म्हणून दोष अणूच्या आत चिरंतन विद्युतगतिकी लावण्यातच असावा लागला. बोरच्या गृहीतकाने — की काही कक्षा प्रारित करतच नाहीत — नेमका हायड्रोजन वर्णपट विकत घेतला, ज्यात h, m आणि e पासून रिडबर्गच्या स्थिरांकाचे मूल्यही होते. त्याची किंमत ही की गृहीतक काढलेले नाही, ठरवलेले आहे, आणि प्रारूपात काहीही सांगत नाही की त्या कक्षा विशेष का आहेत",
+          },
+          {
+            en: "The collapse does not actually follow, because the electron's orbit is a closed path and a charge going round a closed path radiates nothing over a complete cycle",
+            hi: "ढहना वस्तुतः निकलता ही नहीं, क्योंकि इलेक्ट्रॉन की कक्षा बंद पथ है और बंद पथ पर घूमता आवेश पूरे चक्र पर कुछ भी विकिरित नहीं करता",
+            mr: "कोसळणे प्रत्यक्षात निघतच नाही, कारण इलेक्ट्रॉनची कक्षा बंद मार्ग आहे आणि बंद मार्गावर फिरणारा प्रभार पूर्ण चक्रावर काहीही प्रारित करत नाही",
+          },
+          {
+            en: "The prediction was treated as refuting the nuclear model, and the nucleus was only accepted after Bohr's work provided a stable alternative",
+            hi: "उस भविष्यवाणी को नाभिकीय मॉडल का खंडन माना गया था, और नाभिक तभी स्वीकार हुआ जब बोर के काम ने स्थायी विकल्प दिया",
+            mr: "ते भाकीत केंद्रकीय प्रारूपाचे खंडन मानले गेले होते, आणि केंद्रक तेव्हाच स्वीकारले गेले जेव्हा बोरच्या कामाने स्थिर पर्याय दिला",
+          },
+          {
+            en: "Bohr derived his postulate from Maxwell's equations, so the model has no unexplained assumptions and the collapse problem was solved without any cost",
+            hi: "बोर ने अपना अभिगृहीत मैक्सवेल के समीकरणों से निकाला, अतः मॉडल में कोई अनसमझी मान्यता नहीं और ढहने की समस्या बिना किसी क़ीमत के हल हो गई",
+            mr: "बोरने आपले गृहीतक मॅक्सवेलच्या समीकरणांतून काढले, म्हणून प्रारूपात कोणतेही न समजावलेले गृहीतक नाही आणि कोसळण्याची समस्या कोणत्याही किमतीविना सुटली",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The situation in 1911 is worth reconstructing, because it is a clean example of how physics behaves when two well-supported things contradict each other. THE PREDICTION. Circular motion is accelerated motion — the direction of the velocity changes even at constant speed — and Maxwell's electrodynamics, tested and trusted, says an accelerating charge radiates electromagnetic waves. An orbiting electron must therefore lose energy continuously. Losing energy, it cannot keep its orbit; it spirals inward, and since a smaller orbit means a faster revolution, the frequency of the radiation climbs as it goes. Carry out the integration with the Larmor formula and the electron reaches the nucleus in of the order of 10⁻¹¹ s. Two things are predicted, and both are catastrophic. First, no atom lasts long enough to be an atom. Second, the light emitted on the way in sweeps continuously up in frequency, so every element should show a smooth continuum, when in fact a hydrogen discharge shows a handful of razor-sharp lines at wavelengths that can be measured to seven figures. WHY THE NUCLEUS SURVIVED ANYWAY. Because the scattering evidence was of a different quality from the theoretical objection. Rutherford's large-angle deflections are a direct measurement: a spread-out positive charge simply cannot exert a force sufficient to reverse a fast alpha particle, and the observed one-in-eight-thousand backscatter rate matches a point charge quantitatively. Against that stands a prediction obtained by applying classical electrodynamics in a regime where it had never been tested — the interior of an atom. When a direct measurement and an extrapolated theory disagree, it is the extrapolation that is suspect. The nucleus stayed; classical electrodynamics inside the atom went. WHAT BOHR BOUGHT. He postulated, without derivation, that among all the classically possible orbits certain ones are stationary — the electron in them simply does not radiate — and that light is emitted only when the electron jumps between two of them, with hf = E₂ − E₁. Selecting the orbits by mvr = nh/2π then yields r_n ∝ n², E_n = −13.6/n² eV, and the wavelength of every hydrogen line. The decisive point is that this was not a fit. The Balmer formula had been known empirically since 1885, complete with a constant R measured to high precision and explained by nobody. Bohr's model produced R as a combination of m, e, h and ε₀, and the number came out right. A theory that reproduces a precisely known constant it was not adjusted to match has done something no amount of curve-fitting can do. AT WHAT PRICE. The postulate explains nothing about itself. Why do these orbits not radiate, when the same electron in the same circular motion would radiate anywhere else? The model is silent. It also keeps classical mechanics for the orbit while suspending classical electrodynamics for the radiation, which is not a consistent theory but a working hybrid. And its scope is narrow in a way that shows where the trouble is: it works for hydrogen and for He⁺, Li²⁺ and any other one-electron ion, and fails for neutral helium onwards, because there is no way to include the repulsion between two electrons. It says nothing about the relative brightness of the lines, and nothing about why some transitions are forbidden. Bohr knew all this and said so. The model's status is that of a productive wrong theory — right about energy levels, right about photons carrying the difference, wrong about electrons following orbits at all — and it was replaced within fifteen years by a wave mechanics in which the electron has no trajectory and the quantisation is a consequence rather than a decree. (The second option denies radiation from accelerated charges, which every radio aerial contradicts; the third reverses the history and the epistemology; the fourth claims a derivation Bohr explicitly did not have.)",
+          hi: "1911 की स्थिति फिर से खड़ी करने योग्य है, क्योंकि वह इसका साफ़ उदाहरण है कि जब दो अच्छी तरह समर्थित चीज़ें एक-दूसरे का खंडन करती हैं तब भौतिकी कैसे बरतती है। भविष्यवाणी। वृत्तीय गति त्वरित गति है — अचर चाल पर भी वेग की दिशा बदलती है — और मैक्सवेल की विद्युतगतिकी, जाँची और भरोसे की, कहती है कि त्वरित आवेश वैद्युतचुंबकीय तरंगें विकिरित करता है। अतः परिक्रमा करते इलेक्ट्रॉन को लगातार ऊर्जा खोनी ही है। ऊर्जा खोते हुए वह अपनी कक्षा रख नहीं सकता; वह भीतर सर्पिल में जाता है, और चूँकि छोटी कक्षा का अर्थ तेज़ परिक्रमा है, विकिरण की आवृत्ति चलते-चलते चढ़ती जाती है। लार्मर सूत्र से समाकलन करो और इलेक्ट्रॉन लगभग 10⁻¹¹ s की कोटि में नाभिक तक पहुँच जाता है। दो चीज़ें बताई जाती हैं, और दोनों विनाशकारी हैं। पहली, कोई परमाणु परमाणु होने भर को भी नहीं टिकता। दूसरी, भीतर जाते समय उत्सर्जित प्रकाश की आवृत्ति लगातार ऊपर बहती है, अतः हर तत्व को चिकना सातत्य दिखाना चाहिए, जबकि वस्तुतः हाइड्रोजन का विसर्जन मुट्ठी भर उस्तरे जैसी तीखी रेखाएँ दिखाता है जिनकी तरंगदैर्ध्य सात अंकों तक नापी जा सकती है। फिर भी नाभिक क्यों बचा। क्योंकि प्रकीर्णन का प्रमाण सैद्धांतिक आपत्ति से भिन्न कोटि का था। रदरफ़ोर्ड के बड़े कोण के विक्षेप सीधा माप हैं: फैला हुआ धन आवेश तेज़ अल्फ़ा कण को उलटाने लायक़ बल दे ही नहीं सकता, और आठ हज़ार में एक की देखी गई पश्च-प्रकीर्णन दर बिंदु आवेश से संख्यात्मक रूप से मिलती है। उसके सामने ऐसी भविष्यवाणी है जो चिरसम्मत विद्युतगतिकी को ऐसे क्षेत्र में लगाकर पाई गई जहाँ वह कभी जाँची ही नहीं गई थी — परमाणु का भीतरी भाग। जब सीधा माप और आगे बढ़ाया गया सिद्धांत असहमत हों, तो संदेह आगे बढ़ाने पर है। नाभिक रहा; परमाणु के भीतर की चिरसम्मत विद्युतगतिकी गई। बोर ने क्या ख़रीदा। उन्होंने बिना व्युत्पत्ति के यह ठहराया कि चिरसम्मत रूप से संभव सारी कक्षाओं में से कुछ स्थायी हैं — उनमें इलेक्ट्रॉन विकिरित करता ही नहीं — और प्रकाश केवल तब उत्सर्जित होता है जब इलेक्ट्रॉन उनमें से दो के बीच छलाँग लगाए, जिसमें hf = E₂ − E₁. फिर mvr = nh/2π से कक्षाएँ चुनने पर r_n ∝ n², E_n = −13.6/n² eV, और हाइड्रोजन की हर रेखा की तरंगदैर्ध्य निकल आती है। निर्णायक बात यह कि यह कोई फ़िटिंग नहीं थी। बामर का सूत्र 1885 से अनुभवजन्य रूप से ज्ञात था, ऊँची परिशुद्धता से नापे गए स्थिरांक R के साथ, जिसे कोई समझा नहीं सका था। बोर के मॉडल ने R को m, e, h और ε₀ के संयोजन के रूप में दिया, और संख्या ठीक निकली। जो सिद्धांत ऐसे परिशुद्ध ज्ञात स्थिरांक को फिर से देता है जिससे मिलाने के लिए उसे समायोजित नहीं किया गया था, उसने वह किया है जो कितनी भी वक्र-फ़िटिंग नहीं कर सकती। किस क़ीमत पर। अभिगृहीत अपने बारे में कुछ नहीं समझाता। ये कक्षाएँ विकिरित क्यों नहीं करतीं, जबकि वही इलेक्ट्रॉन उसी वृत्तीय गति में और कहीं भी विकिरित करता? मॉडल चुप है। वह कक्षा के लिए चिरसम्मत यांत्रिकी रखता है और विकिरण के लिए चिरसम्मत विद्युतगतिकी को स्थगित कर देता है, जो संगत सिद्धांत नहीं बल्कि चलता-फिरता मिश्रण है। और उसका दायरा ऐसे ढंग से सँकरा है जो दिखा देता है कि गड़बड़ कहाँ है: वह हाइड्रोजन के लिए और He⁺, Li²⁺ तथा किसी भी एक-इलेक्ट्रॉन आयन के लिए चलता है, और उदासीन हीलियम से आगे विफल हो जाता है, क्योंकि दो इलेक्ट्रॉनों के बीच प्रतिकर्षण जोड़ने का कोई रास्ता नहीं। वह रेखाओं की सापेक्ष चमक के बारे में कुछ नहीं कहता, और यह भी नहीं कि कुछ संक्रमण वर्जित क्यों हैं। बोर यह सब जानते थे और उन्होंने कहा भी। मॉडल की हैसियत उपजाऊ ग़लत सिद्धांत की है — ऊर्जा स्तरों के बारे में सही, अंतर ढोते फ़ोटॉनों के बारे में सही, इस बारे में ग़लत कि इलेक्ट्रॉन कक्षाओं में चलते हैं ही — और पंद्रह वर्षों के भीतर उसकी जगह ऐसी तरंग यांत्रिकी ने ले ली जिसमें इलेक्ट्रॉन का कोई प्रक्षेप-पथ नहीं और क्वांटमीकरण आदेश नहीं बल्कि परिणाम है। (दूसरा विकल्प त्वरित आवेशों से विकिरण को नकारता है, जिसका खंडन हर रेडियो एरियल करता है; तीसरा इतिहास और ज्ञानमीमांसा दोनों उलट देता है; चौथा ऐसी व्युत्पत्ति का दावा करता है जो बोर के पास स्पष्ट रूप से थी ही नहीं।)",
+          mr: "1911 ची स्थिती पुन्हा उभी करण्याजोगी आहे, कारण ती याचे स्वच्छ उदाहरण आहे की दोन चांगल्या आधारलेल्या गोष्टी परस्परविरोधी असताना भौतिकी कशी वागते. भाकीत. वर्तुळाकार गती ही त्वरित गती आहे — अचल वेगावरही वेगाची दिशा बदलते — आणि मॅक्सवेलची विद्युतगतिकी, तपासलेली आणि विश्वासाची, सांगते की त्वरित प्रभार विद्युतचुंबकीय लहरी प्रारित करतो. म्हणून कक्षेत फिरणाऱ्या इलेक्ट्रॉनला सतत ऊर्जा गमवावीच लागते. ऊर्जा गमावत तो आपली कक्षा ठेवू शकत नाही; तो आत सर्पिलात जातो, आणि लहान कक्षा म्हणजे जलद फेरी असल्याने, प्रारणाची वारंवारता जाता जाता चढत जाते. लार्मर सूत्राने समाकलन करा आणि इलेक्ट्रॉन सुमारे 10⁻¹¹ s च्या कोटीत केंद्रकापर्यंत पोहोचतो. दोन गोष्टी सांगितल्या जातात, आणि दोन्ही विनाशक आहेत. पहिली, कोणताही अणू अणू असण्याइतकाही टिकत नाही. दुसरी, आत जाताना उत्सर्जित प्रकाशाची वारंवारता सतत वर वाहते, म्हणून प्रत्येक मूलद्रव्याने गुळगुळीत सातत्य दाखवावे, तर प्रत्यक्षात हायड्रोजनचे विसर्जन मूठभर वस्तऱ्यासारख्या तीक्ष्ण रेषा दाखवते ज्यांच्या तरंगलांबी सात अंकांपर्यंत मोजता येतात. तरीही केंद्रक का टिकले. कारण विखुरणाचा पुरावा सैद्धांतिक आक्षेपाहून वेगळ्या दर्जाचा होता. रदरफर्डची मोठ्या कोनाची विचलने हे थेट माप आहे: पसरलेला धन प्रभार वेगवान अल्फा कणाला उलटवण्याइतके बल देऊच शकत नाही, आणि आठ हजारांत एक ही निरीक्षिलेली पश्च-विखुरण दर बिंदु प्रभाराशी संख्यात्मकरीत्या जुळते. त्यासमोर असे भाकीत आहे जे चिरंतन विद्युतगतिकी अशा प्रदेशात लावून मिळाले जिथे ती कधीच तपासली गेली नव्हती — अणूचा आतला भाग. जेव्हा थेट माप आणि पुढे नेलेला सिद्धांत असहमत असतात, तेव्हा संशय पुढे नेण्यावर असतो. केंद्रक राहिले; अणूच्या आतली चिरंतन विद्युतगतिकी गेली. बोरने काय विकत घेतले. त्यांनी उपपत्तीविना असे ठरवले की चिरंतनरीत्या शक्य असलेल्या सर्व कक्षांपैकी काही स्थिर आहेत — त्यांत इलेक्ट्रॉन प्रारित करतच नाही — आणि प्रकाश केवळ तेव्हाच उत्सर्जित होतो जेव्हा इलेक्ट्रॉन त्यांतल्या दोहोंमध्ये उडी मारतो, ज्यात hf = E₂ − E₁. मग mvr = nh/2π ने कक्षा निवडल्यास r_n ∝ n², E_n = −13.6/n² eV, आणि हायड्रोजनच्या प्रत्येक रेषेची तरंगलांबी निघते. निर्णायक मुद्दा हा की ही जुळवाजुळव नव्हती. बामरचे सूत्र 1885 पासून अनुभवजन्यरीत्या ज्ञात होते, उंच अचूकतेने मोजलेल्या स्थिरांक R सह, जो कोणी समजावू शकला नव्हता. बोरच्या प्रारूपाने R हा m, e, h आणि ε₀ यांच्या संयोजनाच्या रूपात दिला, आणि आकडा बरोबर निघाला. जो सिद्धांत अशा नेमकेपणाने ज्ञात स्थिरांकाची पुनर्निर्मिती करतो ज्याच्याशी जुळवण्यासाठी तो जुळवलेला नव्हता, त्याने ते केले आहे जे कितीही वक्र-जुळवणी करू शकत नाही. कोणत्या किमतीवर. गृहीतक स्वतःबद्दल काहीही समजावत नाही. या कक्षा प्रारित का करत नाहीत, तर तोच इलेक्ट्रॉन त्याच वर्तुळाकार गतीत इतरत्र कुठेही प्रारित करेल? प्रारूप गप्प आहे. ते कक्षेसाठी चिरंतन यांत्रिकी ठेवते आणि प्रारणासाठी चिरंतन विद्युतगतिकी स्थगित करते, जे सुसंगत सिद्धांत नसून चालतीफिरती संकर आहे. आणि त्याची व्याप्ती अशा प्रकारे अरुंद आहे जी अडचण कुठे आहे ते दाखवते: ते हायड्रोजनसाठी आणि He⁺, Li²⁺ तसेच कोणत्याही एक-इलेक्ट्रॉन आयनासाठी चालते, आणि उदासीन हेलियमपासून पुढे अपयशी ठरते, कारण दोन इलेक्ट्रॉनांमधले प्रतिकर्षण जोडण्याचा मार्ग नाही. ते रेषांच्या सापेक्ष तेजाबद्दल काहीही सांगत नाही, आणि काही संक्रमणे वर्ज्य का आहेत हेही नाही. बोर हे सर्व जाणत होते आणि त्यांनी तसे म्हटलेही. प्रारूपाचा दर्जा सुपीक चुकीच्या सिद्धांताचा आहे — ऊर्जा पातळ्यांबद्दल बरोबर, फरक वाहणाऱ्या फोटॉनांबद्दल बरोबर, इलेक्ट्रॉन मुळात कक्षांतून जातात याबद्दल चूक — आणि पंधरा वर्षांत त्याची जागा अशा लहरी यांत्रिकीने घेतली जिच्यात इलेक्ट्रॉनला मार्गच नाही आणि पुंजीकरण हुकूम नसून परिणाम आहे. (दुसरा पर्याय त्वरित प्रभारांकडून प्रारण नाकारतो, ज्याचे खंडन प्रत्येक रेडिओ एरियल करते; तिसरा इतिहास आणि ज्ञानमीमांसा दोन्ही उलटवतो; चौथा अशा उपपत्तीचा दावा करतो जी बोरकडे स्पष्टपणे नव्हतीच.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Bohr's model predicts every line of the hydrogen spectrum to four figures, and also predicts the spectrum of singly ionised helium correctly. It fails completely for neutral helium, the next element up. What does this pattern of success and failure tell you about the model?",
+          hi: "बोर का मॉडल हाइड्रोजन स्पेक्ट्रम की हर रेखा चार अंकों तक बताता है, और एकल आयनित हीलियम का स्पेक्ट्रम भी ठीक बताता है। अगले ही तत्व, उदासीन हीलियम, के लिए वह पूरी तरह विफल हो जाता है। सफलता और विफलता का यह ढर्रा मॉडल के बारे में तुम्हें क्या बताता है?",
+          mr: "बोरचे प्रारूप हायड्रोजन वर्णपटाची प्रत्येक रेषा चार अंकांपर्यंत सांगते, आणि एकदा आयनित हेलियमचा वर्णपटही बरोबर सांगते. पुढच्याच मूलद्रव्यासाठी, उदासीन हेलियमसाठी, ते पूर्णपणे अपयशी ठरते. यशाचा आणि अपयशाचा हा आकृतिबंध प्रारूपाबद्दल तुम्हाला काय सांगतो?",
+        },
+        choices: [
+          {
+            en: "The dividing line is not hydrogen versus the rest but ONE electron versus more than one. Every system the model gets right — H, He⁺, Li²⁺ — has a single electron in a pure Coulomb field, where the orbit is a well-defined two-body problem. Neutral helium adds a second electron, and the model has no way to represent the repulsion between them: each electron's field alters the other's orbit, and there are no closed orbits to quantise. So the failure locates the model's real defect precisely — it is not that the quantisation rule is wrong but that the picture of electrons on definite orbits cannot survive more than one electron, which is what wave mechanics later abandoned",
+            hi: "विभाजक रेखा हाइड्रोजन बनाम बाक़ी नहीं बल्कि एक इलेक्ट्रॉन बनाम एक से अधिक है। मॉडल जिन निकायों को ठीक बताता है — H, He⁺, Li²⁺ — उन सबमें शुद्ध कूलॉम क्षेत्र में एक ही इलेक्ट्रॉन है, जहाँ कक्षा सुपरिभाषित द्वि-पिंड समस्या है। उदासीन हीलियम दूसरा इलेक्ट्रॉन जोड़ देता है, और मॉडल के पास उनके बीच प्रतिकर्षण दिखाने का कोई रास्ता नहीं: हर इलेक्ट्रॉन का क्षेत्र दूसरे की कक्षा बदल देता है, और क्वांटमीकृत करने को कोई बंद कक्षा बचती ही नहीं। अतः विफलता मॉडल के असली दोष को ठीक-ठीक जगह देती है — गड़बड़ यह नहीं कि क्वांटमीकरण का नियम ग़लत है बल्कि यह कि निश्चित कक्षाओं पर इलेक्ट्रॉनों का चित्र एक से अधिक इलेक्ट्रॉन नहीं झेल सकता, और तरंग यांत्रिकी ने बाद में उसे ही छोड़ा",
+            mr: "विभाजक रेषा हायड्रोजन विरुद्ध बाकी नसून एक इलेक्ट्रॉन विरुद्ध एकाहून अधिक अशी आहे. प्रारूप ज्या संस्था बरोबर सांगते — H, He⁺, Li²⁺ — त्या सर्वांत शुद्ध कुलोम क्षेत्रात एकच इलेक्ट्रॉन आहे, जिथे कक्षा सुव्याख्यायित द्वि-पदार्थ प्रश्न आहे. उदासीन हेलियम दुसरा इलेक्ट्रॉन जोडतो, आणि प्रारूपाकडे त्यांच्यातले प्रतिकर्षण दाखवण्याचा मार्ग नाही: प्रत्येक इलेक्ट्रॉनचे क्षेत्र दुसऱ्याची कक्षा बदलते, आणि पुंजित करायला कोणतीही बंद कक्षा उरतच नाही. म्हणून अपयश प्रारूपाच्या खऱ्या दोषाला नेमकी जागा देते — अडचण ही नाही की पुंजीकरणाचा नियम चूक आहे तर ही की ठराविक कक्षांवरील इलेक्ट्रॉनांचे चित्र एकाहून अधिक इलेक्ट्रॉन सोसू शकत नाही, आणि लहरी यांत्रिकीने नंतर तेच सोडले",
+          },
+          {
+            en: "It tells you the model is simply wrong and its hydrogen success is a coincidence, since a theory that fails for one element cannot be trusted for another",
+            hi: "यह बताता है कि मॉडल बस ग़लत है और उसकी हाइड्रोजन वाली सफलता संयोग है, क्योंकि जो सिद्धांत एक तत्व के लिए विफल हो वह दूसरे के लिए भरोसे लायक़ नहीं",
+            mr: "हे सांगते की प्रारूप फक्त चूक आहे आणि त्याचे हायड्रोजनमधले यश योगायोग आहे, कारण जो सिद्धांत एका मूलद्रव्यासाठी अपयशी ठरतो तो दुसऱ्यासाठी विश्वासार्ह नाही",
+          },
+          {
+            en: "It tells you the model works only for the lightest atoms, and would succeed for helium too if relativistic corrections were included",
+            hi: "यह बताता है कि मॉडल केवल सबसे हल्के परमाणुओं के लिए चलता है, और आपेक्षिकीय संशोधन जोड़ दिए जाएँ तो हीलियम के लिए भी सफल हो जाता",
+            mr: "हे सांगते की प्रारूप केवळ सर्वांत हलक्या अणूंसाठी चालते, आणि सापेक्षतावादी दुरुस्त्या जोडल्या तर हेलियमसाठीही यशस्वी झाले असते",
+          },
+          {
+            en: "It tells you nothing in particular, since every model has a range of validity and there is no reason to expect the boundary to be informative",
+            hi: "यह ख़ास कुछ नहीं बताता, क्योंकि हर मॉडल की वैधता की एक सीमा होती है और यह अपेक्षा करने का कोई कारण नहीं कि वह सीमा कुछ बताती होगी",
+            mr: "हे विशेष काहीही सांगत नाही, कारण प्रत्येक प्रारूपाची वैधतेची मर्यादा असते आणि ती मर्यादा काही सांगेल अशी अपेक्षा करण्याचे कारण नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The question is really about how to read a theory's failures, and the method it teaches is more durable than the Bohr model itself: when a theory works in some cases and not others, LOOK AT WHERE THE BOUNDARY FALLS, because the boundary usually names the assumption that is doing the damage. Start by drawing the boundary carefully. It is tempting to say 'the model works for hydrogen', which suggests the relevant variable is atomic number or mass. But He⁺ has Z = 2 and works; Li²⁺ has Z = 3 and works; and the model even gets the Z² scaling of the energy levels right, which is why some of He⁺'s lines were long mistaken for hydrogen's. Meanwhile neutral helium, with the same nucleus as He⁺, fails completely. So the variable is not Z, not mass, not which element. It is the NUMBER OF ELECTRONS. One electron: exact. Two: nothing works. Now ask what changes when the second electron arrives. With one electron, the problem is a particle in a fixed inverse-square field, which is the Kepler problem — closed elliptical orbits, a single conserved angular momentum, and a clean rule to quantise. With two, each electron moves in a field that is partly the nucleus's and partly the other electron's, and the other electron is itself moving. There are no longer closed orbits to select from; the trajectories do not repeat, the angular momentum of each electron individually is not conserved, and there is nothing well-defined for mvr = nh/2π to be applied to. The model does not merely give the wrong answer for helium — it does not give an answer at all, because the object it quantises has ceased to exist. That is what makes the failure informative rather than embarrassing. It says the fatal assumption is not the quantisation rule but the ORBIT: the idea that an electron follows a definite path with a definite radius and speed. Quantisation survived the transition to modern physics essentially intact — energy levels are still discrete, angular momentum still comes in units of ħ, and hf = ΔE is still exactly right. The orbit did not. Wave mechanics replaced it in 1926 with a probability amplitude spread through space, in which the electron has no trajectory to speak of and quantisation appears as a boundary condition on a wave rather than as a decree about which orbits are permitted. And multi-electron atoms became tractable — approximately, by treating each electron as moving in the averaged field of the others, but tractably — precisely because nothing had to close on itself any more. A general lesson worth carrying: a theory that fails everywhere teaches little, but a theory that succeeds sharply and fails sharply tells you where its content lies. The same reading applies elsewhere in the syllabus — Ohm's law works for metals at constant temperature and fails for a filament that heats, and the boundary names 'constant temperature' as the load-bearing assumption; ray optics works when a ≫ λ and fails otherwise, naming the wavelength. Learning to read boundaries is a large part of learning what a model is for. (The second option discards a quantitatively confirmed success as coincidence; the third proposes a correction that is real but tiny and irrelevant to the failure; the fourth declines to look at the boundary at all, which is exactly the habit the question is trying to build.)",
+          hi: "प्रश्न वस्तुतः इस बारे में है कि किसी सिद्धांत की विफलताएँ कैसे पढ़ी जाएँ, और जो विधि वह सिखाता है वह ख़ुद बोर मॉडल से अधिक टिकाऊ है: जब कोई सिद्धांत कुछ स्थितियों में चले और कुछ में नहीं, तो देखो कि सीमा कहाँ पड़ती है, क्योंकि सीमा प्रायः उस मान्यता का नाम बता देती है जो नुक़सान कर रही है। पहले सीमा ध्यान से खींचो। 'मॉडल हाइड्रोजन के लिए चलता है' कहना लुभाता है, जिससे लगता है कि प्रासंगिक चर परमाणु संख्या या द्रव्यमान है। पर He⁺ का Z = 2 है और वह चलता है; Li²⁺ का Z = 3 है और वह चलता है; और मॉडल ऊर्जा स्तरों का Z² अनुमापन तक ठीक बताता है, इसीलिए He⁺ की कुछ रेखाएँ लंबे समय तक हाइड्रोजन की समझी जाती रहीं। इस बीच उदासीन हीलियम, जिसका नाभिक He⁺ जैसा ही है, पूरी तरह विफल हो जाता है। अतः चर न Z है, न द्रव्यमान, न कौन-सा तत्व। वह इलेक्ट्रॉनों की संख्या है। एक इलेक्ट्रॉन: ठीक-ठीक। दो: कुछ भी नहीं चलता। अब पूछो कि दूसरा इलेक्ट्रॉन आने पर क्या बदलता है। एक इलेक्ट्रॉन के साथ, समस्या नियत व्युत्क्रम-वर्ग क्षेत्र में कण की है, जो केप्लर की समस्या है — बंद दीर्घवृत्तीय कक्षाएँ, एक संरक्षित कोणीय संवेग, और क्वांटमीकृत करने को साफ़ नियम। दो के साथ, हर इलेक्ट्रॉन ऐसे क्षेत्र में चलता है जो कुछ नाभिक का है और कुछ दूसरे इलेक्ट्रॉन का, और दूसरा इलेक्ट्रॉन स्वयं चल रहा है। अब चुनने को बंद कक्षाएँ रहीं ही नहीं; प्रक्षेप-पथ दोहराते नहीं, हर इलेक्ट्रॉन का अपना कोणीय संवेग संरक्षित नहीं, और mvr = nh/2π को लगाने के लिए कोई सुपरिभाषित चीज़ बची ही नहीं। मॉडल हीलियम के लिए केवल ग़लत उत्तर नहीं देता — वह उत्तर देता ही नहीं, क्योंकि जिस वस्तु को वह क्वांटमीकृत करता है वह रही ही नहीं। यही उस विफलता को शर्मनाक के बजाय ज्ञानप्रद बनाता है। वह कहती है कि घातक मान्यता क्वांटमीकरण का नियम नहीं बल्कि कक्षा है: यह विचार कि इलेक्ट्रॉन निश्चित त्रिज्या और चाल के निश्चित पथ पर चलता है। क्वांटमीकरण आधुनिक भौतिकी में जाते हुए मूलतः ज्यों का त्यों बचा — ऊर्जा स्तर अब भी विविक्त हैं, कोणीय संवेग अब भी ħ की इकाइयों में आता है, और hf = ΔE अब भी ठीक-ठीक सही है। कक्षा नहीं बची। 1926 में तरंग यांत्रिकी ने उसकी जगह आकाश में फैला प्रायिकता आयाम रख दिया, जिसमें इलेक्ट्रॉन का कहने लायक़ कोई प्रक्षेप-पथ नहीं और क्वांटमीकरण किसी तरंग पर सीमा-शर्त के रूप में प्रकट होता है, न कि इस आदेश के रूप में कि कौन-सी कक्षाएँ स्वीकार्य हैं। और बहु-इलेक्ट्रॉन परमाणु सुलझने लायक़ हो गए — सन्निकट रूप से, हर इलेक्ट्रॉन को बाक़ी के औसत क्षेत्र में चलता मानकर, पर सुलझने लायक़ — ठीक इसलिए कि अब किसी चीज़ को अपने पर बंद होना ज़रूरी नहीं रहा। साथ ले जाने योग्य सामान्य सीख: जो सिद्धांत हर जगह विफल हो वह कम सिखाता है, पर जो तीखेपन से सफल और तीखेपन से विफल हो वह बता देता है कि उसकी सामग्री कहाँ है। यही पाठ पाठ्यक्रम में और जगह भी लागू होता है — ओम का नियम अचर ताप पर धातुओं के लिए चलता है और गर्म होते तंतु के लिए विफल, और सीमा 'अचर ताप' को भार उठाती मान्यता के रूप में नाम देती है; किरण प्रकाशिकी a ≫ λ पर चलती है और अन्यथा विफल, तरंगदैर्ध्य का नाम लेती हुई। सीमाएँ पढ़ना सीखना यह सीखने का बड़ा हिस्सा है कि मॉडल किसलिए होता है। (दूसरा विकल्प संख्यात्मक रूप से पुष्ट सफलता को संयोग कहकर फेंक देता है; तीसरा ऐसा संशोधन सुझाता है जो असली पर नन्हा है और विफलता से असंबद्ध; चौथा सीमा देखने से ही इनकार कर देता है, और यह प्रश्न ठीक वही आदत बनाना चाहता है।)",
+          mr: "प्रश्न प्रत्यक्षात याबद्दल आहे की एखाद्या सिद्धांताची अपयशे कशी वाचावीत, आणि जी पद्धत तो शिकवतो ती स्वतः बोर प्रारूपाहून अधिक टिकाऊ आहे: जेव्हा एखादा सिद्धांत काही स्थितींत चालतो आणि काहींत नाही, तेव्हा सीमा कुठे पडते ते पाहा, कारण सीमा बहुधा नुकसान करणाऱ्या गृहीतकाचे नाव सांगते. आधी सीमा काळजीपूर्वक काढा. 'प्रारूप हायड्रोजनसाठी चालते' असे म्हणणे मोह घालते, ज्यातून वाटते की संबंधित चल अणुक्रमांक वा वस्तुमान आहे. पण He⁺ चा Z = 2 आहे आणि तो चालतो; Li²⁺ चा Z = 3 आहे आणि तो चालतो; आणि प्रारूप ऊर्जा पातळ्यांचे Z² मापनही बरोबर सांगते, म्हणूनच He⁺ च्या काही रेषा दीर्घकाळ हायड्रोजनच्या समजल्या जात राहिल्या. दरम्यान उदासीन हेलियम, ज्याचे केंद्रक He⁺ सारखेच आहे, पूर्णपणे अपयशी ठरतो. म्हणून चल हा Z नाही, वस्तुमान नाही, कोणते मूलद्रव्य हेही नाही. तो इलेक्ट्रॉनांची संख्या आहे. एक इलेक्ट्रॉन: नेमके. दोन: काहीही चालत नाही. आता विचारा की दुसरा इलेक्ट्रॉन आल्यावर काय बदलते. एका इलेक्ट्रॉनसह, प्रश्न स्थिर व्यस्त-वर्ग क्षेत्रातील कणाचा आहे, जो केप्लरचा प्रश्न आहे — बंद विवृत्ताकार कक्षा, एक संधारित कोनीय संवेग, आणि पुंजित करायला स्वच्छ नियम. दोघांसह, प्रत्येक इलेक्ट्रॉन अशा क्षेत्रात हलतो जे काही केंद्रकाचे आहे आणि काही दुसऱ्या इलेक्ट्रॉनचे, आणि दुसरा इलेक्ट्रॉन स्वतः हलत आहे. आता निवडायला बंद कक्षा उरल्याच नाहीत; मार्ग पुनरावृत्त होत नाहीत, प्रत्येक इलेक्ट्रॉनचा स्वतःचा कोनीय संवेग संधारित नाही, आणि mvr = nh/2π लावायला कोणतीही सुव्याख्यायित गोष्ट उरतच नाही. प्रारूप हेलियमसाठी केवळ चुकीचे उत्तर देत नाही — ते उत्तर देतच नाही, कारण जी वस्तू ते पुंजित करते ती उरलीच नाही. हेच त्या अपयशाला लाजिरवाण्याऐवजी ज्ञानप्रद बनवते. ते सांगते की घातक गृहीतक पुंजीकरणाचा नियम नसून कक्षा आहे: ही कल्पना की इलेक्ट्रॉन ठराविक त्रिज्या आणि वेगाच्या ठराविक मार्गावरून जातो. पुंजीकरण आधुनिक भौतिकीत जाताना मूलतः जसेच्या तसे टिकले — ऊर्जा पातळ्या अजूनही विविक्त आहेत, कोनीय संवेग अजूनही ħ च्या एककांत येतो, आणि hf = ΔE अजूनही नेमके बरोबर आहे. कक्षा टिकली नाही. 1926 मध्ये लहरी यांत्रिकीने तिच्या जागी अवकाशात पसरलेले संभाव्यता आयाम ठेवले, ज्यात इलेक्ट्रॉनला सांगण्याजोगा मार्गच नाही आणि पुंजीकरण एखाद्या लहरीवरील सीमा-अट म्हणून प्रकट होते, कोणत्या कक्षा स्वीकार्य आहेत या हुकुमाच्या रूपात नव्हे. आणि बहु-इलेक्ट्रॉन अणू सोडवण्याजोगे झाले — अंदाजे, प्रत्येक इलेक्ट्रॉनला बाकीच्यांच्या सरासरी क्षेत्रात हलणारा मानून, पण सोडवण्याजोगे — नेमके यामुळे की आता कशालाही स्वतःवर बंद व्हावे लागत नव्हते. सोबत न्यायचा सर्वसाधारण धडा: जो सिद्धांत सर्वत्र अपयशी ठरतो तो थोडे शिकवतो, पण जो तीक्ष्णपणे यशस्वी आणि तीक्ष्णपणे अपयशी ठरतो तो त्याची सामग्री कुठे आहे ते सांगतो. हेच वाचन अभ्यासक्रमात इतरत्रही लागू होते — ओहमचा नियम अचल तापमानावर धातूंसाठी चालतो आणि तापणाऱ्या तंतूसाठी अपयशी ठरतो, आणि सीमा 'अचल तापमान' ला भार उचलणारे गृहीतक म्हणून नाव देते; किरण प्रकाशिकी a ≫ λ वर चालते आणि अन्यथा अपयशी, तरंगलांबीचे नाव घेत. सीमा वाचायला शिकणे हा प्रारूप कशासाठी असते हे शिकण्याचा मोठा भाग आहे. (दुसरा पर्याय संख्यात्मकरीत्या खात्री झालेले यश योगायोग म्हणून फेकतो; तिसरा अशी दुरुस्ती सुचवतो जी खरी पण चिमुकली आणि अपयशाशी असंबद्ध आहे; चौथा सीमा पाहायलाच नकार देतो, आणि हा प्रश्न नेमकी तीच सवय बांधू पाहत आहे.)",
+        },
+      },
+    ],
+  },
+  /*C9*/
 ];
 
 export const G12_PHYSICS_NUMERIC: Record<string, NumQ[]> = {
@@ -4128,6 +5521,656 @@ export const G12_PHYSICS_NUMERIC: Record<string, NumQ[]> = {
         en: "λ = c/f = (3 × 10⁸)/(2.5 × 10⁹) = 0.12 m, which is 30/2.5 = 12 cm. Two consequences follow from that number and are worth carrying. First, the oven cavity is only a few wavelengths across, so a standing-wave pattern forms with real nodes inside the food — which is exactly what the turntable exists to defeat, and why an oven without one leaves cold patches at fixed positions. Second, this frequency is not a resonance of the water molecule, a claim repeated everywhere and false: it was chosen partly because absorption is broad and gentle enough to heat food through rather than only at the surface. (1.2 misplaces the exponent by one; 8.33 inverts the division.)",
         hi: "λ = c/f = (3 × 10⁸)/(2.5 × 10⁹) = 0.12 m, अर्थात् 30/2.5 = 12 cm. उस संख्या से दो परिणाम निकलते हैं जिन्हें साथ ले जाना चाहिए। पहला, चूल्हे की गुहा आर-पार कुछ ही तरंगदैर्ध्य चौड़ी है, अतः भोजन के भीतर असली निस्पंदों के साथ अप्रगामी तरंग का प्रतिरूप बनता है — घूमने वाली तश्तरी ठीक इसी को हराने के लिए है, और इसीलिए उसके बिना चूल्हा नियत जगहों पर ठंडे टुकड़े छोड़ देता है। दूसरा, यह आवृत्ति जल अणु का अनुनाद नहीं है, जो दावा सब जगह दोहराया जाता है और झूठा है: वह आंशिक रूप से इसलिए चुनी गई कि अवशोषण इतना चौड़ा और हल्का है कि भोजन केवल सतह पर नहीं बल्कि आर-पार गर्म हो। (1.2 घातांक एक से चूक जाता है; 8.33 भाग उलट देता है।)",
         mr: "λ = c/f = (3 × 10⁸)/(2.5 × 10⁹) = 0.12 m, म्हणजे 30/2.5 = 12 cm. त्या आकड्यातून दोन परिणाम निघतात जे सोबत न्यायला हवेत. पहिला, शेगडीची पोकळी आरपार काहीच तरंगलांबी रुंद आहे, म्हणून अन्नाच्या आत खऱ्या निस्पंदांसह अप्रगामी लहरीचा नमुना तयार होतो — फिरणारी तबकडी नेमकी हेच हरवण्यासाठी आहे, आणि म्हणूनच तिच्याविना शेगडी ठराविक जागी थंड तुकडे सोडते. दुसरा, ही वारंवारता पाण्याच्या रेणूचा अनुनाद नाही, हा दावा सर्वत्र पुन्हा पुन्हा केला जातो आणि खोटा आहे: ती अंशतः यासाठी निवडली गेली की शोषण इतके रुंद आणि सौम्य आहे की अन्न केवळ पृष्ठभागावर नव्हे तर आरपार तापावे. (1.2 घातांक एकाने चुकवते; 8.33 भागाकार उलटवते.)",
+      },
+    },
+  ],
+  "physics-12-ray-optics-and-optical-instruments": [
+    {
+      level: 1,
+      stem: {
+        en: "The refractive index of a glass is 1.5. What is the speed of light in that glass, in units of 10⁸ m/s? Take c = 3 × 10⁸ m/s.",
+        hi: "किसी काँच का अपवर्तनांक 1.5 है। उस काँच में प्रकाश की चाल, 10⁸ m/s की इकाइयों में, क्या है? c = 3 × 10⁸ m/s लो।",
+        mr: "एका काचेचा अपवर्तनांक 1.5 आहे. त्या काचेत प्रकाशाचा वेग, 10⁸ m/s च्या एककांत, किती? c = 3 × 10⁸ m/s घ्या.",
+      },
+      answer: 2,
+      wrong: [4.5, 1.5, 0.5],
+      checkExpr: "3/1.5",
+      solution: {
+        en: "The refractive index is defined as n = c/v, so v = c/n = 3/1.5 = 2, that is 2 × 10⁸ m/s. Light in a medium is always slower than in vacuum, so n is always greater than 1 and the division always makes the answer smaller — a useful check on which way round to divide. (4.5 multiplies instead of dividing.)",
+        hi: "अपवर्तनांक की परिभाषा n = c/v है, अतः v = c/n = 3/1.5 = 2, अर्थात् 2 × 10⁸ m/s. माध्यम में प्रकाश निर्वात से सदा धीमा है, अतः n सदा 1 से बड़ा है और भाग देने से उत्तर सदा छोटा होता है — किस ओर भाग देना है इसकी उपयोगी जाँच। (4.5 भाग देने के बजाय गुणा कर देता है।)",
+        mr: "अपवर्तनांकाची व्याख्या n = c/v आहे, म्हणून v = c/n = 3/1.5 = 2, म्हणजे 2 × 10⁸ m/s. माध्यमात प्रकाश निर्वाताहून नेहमी सावकाश असतो, म्हणून n नेहमी 1 हून मोठा असतो आणि भागल्याने उत्तर नेहमी लहान होते — कोणत्या बाजूने भागायचे याची उपयुक्त तपासणी. (4.5 भागण्याऐवजी गुणते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "A converging lens has a focal length of 20 cm. What is its power, in dioptres?",
+        hi: "एक अभिसारी लेंस की फोकस दूरी 20 cm है। उसकी शक्ति, डाइऑप्टर में, क्या है?",
+        mr: "एका अभिसारी भिंगाचे नाभीय अंतर 20 cm आहे. त्याची शक्ती, डायऑप्टरमध्ये, किती?",
+      },
+      answer: 5,
+      wrong: [0.05, 20, 0.2],
+      checkExpr: "100/20",
+      solution: {
+        en: "Power is the reciprocal of the focal length IN METRES: f = 0.2 m, so P = 1/0.2 = 100/20 = 5 D. Forgetting to convert the centimetres is the standard slip and gives 0.05. Power is used rather than focal length because lenses in contact simply add their powers, which is why a spectacle prescription is written in dioptres. (20 quotes the focal length itself.)",
+        hi: "शक्ति फोकस दूरी का व्युत्क्रम है, मीटर में: f = 0.2 m, अतः P = 1/0.2 = 100/20 = 5 D. सेंटीमीटर बदलना भूल जाना मानक चूक है और 0.05 देती है। फोकस दूरी के बजाय शक्ति इसलिए काम आती है कि सटे हुए लेंस अपनी शक्तियाँ बस जोड़ लेते हैं, इसीलिए चश्मे का नुस्ख़ा डाइऑप्टर में लिखा जाता है। (20 फोकस दूरी ही बता देता है।)",
+        mr: "शक्ती म्हणजे नाभीय अंतराचा व्यस्तांक, मीटरमध्ये: f = 0.2 m, म्हणून P = 1/0.2 = 100/20 = 5 D. सेंटीमीटर बदलणे विसरणे ही प्रमाणित चूक आहे आणि ती 0.05 देते. नाभीय अंतराऐवजी शक्ती यासाठी वापरली जाते की चिकटलेली भिंगे आपल्या शक्ती फक्त जोडतात, म्हणूनच चष्म्याची चिठ्ठी डायऑप्टरमध्ये लिहिली जाते. (20 नाभीय अंतरच सांगते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A medium has refractive index 2. What is its critical angle for light going into air, in degrees? Take the angle whose sine is 0.5 to be 30°.",
+        hi: "किसी माध्यम का अपवर्तनांक 2 है। हवा में जाते प्रकाश के लिए उसका क्रांतिक कोण, अंश में, क्या है? जिस कोण की ज्या 0.5 है उसे 30° लो।",
+        mr: "एका माध्यमाचा अपवर्तनांक 2 आहे. हवेत जाणाऱ्या प्रकाशासाठी त्याचा क्रांतिक कोन, अंशांत, किती? ज्या कोनाचा साइन 0.5 आहे तो 30° घ्या.",
+      },
+      answer: 30,
+      wrong: [45, 60, 15],
+      checkExpr: "60/2",
+      solution: {
+        en: "The critical angle satisfies sin C = 1/n = 1/2, so C = 30°, which is 60/2. A denser medium has a smaller critical angle, so a diamond at n = 2.42 traps light beyond about 24° and returns it many times before it escapes — which is where the sparkle comes from. (45 corresponds to n = 1.41 and 60 to n = 1.15.)",
+        hi: "क्रांतिक कोण sin C = 1/n = 1/2 को संतुष्ट करता है, अतः C = 30°, जो 60/2 है। सघन माध्यम का क्रांतिक कोण छोटा होता है, अतः n = 2.42 वाला हीरा लगभग 24° से आगे प्रकाश को फँसा लेता है और निकलने से पहले उसे कई बार लौटाता है — चमक वहीं से आती है। (45, n = 1.41 के अनुरूप है और 60, n = 1.15 के।)",
+        mr: "क्रांतिक कोन sin C = 1/n = 1/2 ला पूर्ण करतो, म्हणून C = 30°, जे 60/2 आहे. घन माध्यमाचा क्रांतिक कोन लहान असतो, म्हणून n = 2.42 चा हिरा सुमारे 24° पुढे प्रकाश अडकवतो आणि तो निसटण्याआधी अनेकदा परत करतो — चमक तिथूनच येते. (45 हे n = 1.41 शी आणि 60 हे n = 1.15 शी जुळते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Two thin lenses of powers +5 D and −2 D are placed in contact. What is the power of the combination, in dioptres?",
+        hi: "+5 D और −2 D शक्तियों के दो पतले लेंस सटाकर रखे जाते हैं। संयोजन की शक्ति, डाइऑप्टर में, क्या है?",
+        mr: "+5 D आणि −2 D शक्तींची दोन पातळ भिंगे चिकटवून ठेवली जातात. जोडणीची शक्ती, डायऑप्टरमध्ये, किती?",
+      },
+      answer: 3,
+      wrong: [7, 10, 2.5],
+      checkExpr: "5-2",
+      solution: {
+        en: "Powers of thin lenses in contact add algebraically: 5 + (−2) = 3 D. The signs are doing the work — a diverging lens has negative power and subtracts — and the combination is still converging because the positive lens is the stronger. This additivity is exactly why opticians work in dioptres and not in focal lengths, which would need the reciprocal formula instead. (7 adds the magnitudes; 10 multiplies.)",
+        hi: "सटे हुए पतले लेंसों की शक्तियाँ बीजगणितीय रूप से जुड़ती हैं: 5 + (−2) = 3 D. काम चिह्न कर रहे हैं — अपसारी लेंस की शक्ति ऋणात्मक है और वह घटती है — और संयोजन फिर भी अभिसारी है क्योंकि धन लेंस अधिक प्रबल है। यही योज्यता कारण है कि दृष्टि-विशेषज्ञ डाइऑप्टर में काम करते हैं, फोकस दूरियों में नहीं, जिनके लिए व्युत्क्रम सूत्र लगाना पड़ता। (7 परिमाण जोड़ देता है; 10 गुणा कर देता है।)",
+        mr: "चिकटलेल्या पातळ भिंगांच्या शक्ती बीजगणितीयरीत्या जुळतात: 5 + (−2) = 3 D. काम चिन्हे करत आहेत — अपसारी भिंगाची शक्ती ऋण असते आणि ती वजा होते — आणि जोडणी तरीही अभिसारी आहे कारण धन भिंग अधिक तीव्र आहे. हीच योगात्मकता कारण आहे की दृष्टीतज्ज्ञ डायऑप्टरमध्ये काम करतात, नाभीय अंतरांत नाही, ज्यांसाठी व्यस्त सूत्र लावावे लागले असते. (7 परिमाणे जोडते; 10 गुणते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "An object is placed 30 cm from a converging lens of focal length 20 cm. How far from the lens, in cm, is the image formed?",
+        hi: "20 cm फोकस दूरी के अभिसारी लेंस से 30 cm दूर एक वस्तु रखी जाती है। प्रतिबिंब लेंस से कितनी दूर, cm में, बनता है?",
+        mr: "20 cm नाभीय अंतराच्या अभिसारी भिंगापासून 30 cm दूर एक वस्तू ठेवली जाते. प्रतिमा भिंगापासून किती दूर, cm मध्ये, तयार होते?",
+      },
+      answer: 60,
+      wrong: [12, 50, 10],
+      checkExpr: "30*20/10",
+      solution: {
+        en: "From 1/v − 1/u = 1/f with the object at 30 cm and f = 20 cm, the magnitudes give 1/v = 1/20 − 1/30 = 1/60, so v = 60 cm — which is also 30 × 20/10. The object lies between f and 2f, so the image must be real, inverted and beyond 2f on the other side, and 60 cm duly is. (12 applies the formula as if the lens were diverging; 50 adds the two distances.)",
+        hi: "1/v − 1/u = 1/f से, वस्तु 30 cm पर और f = 20 cm लेने पर, परिमाणों से 1/v = 1/20 − 1/30 = 1/60, अतः v = 60 cm — जो 30 × 20/10 भी है। वस्तु f और 2f के बीच है, अतः प्रतिबिंब वास्तविक, उलटा और दूसरी ओर 2f से परे होना ही चाहिए, और 60 cm ठीक वही है। (12 सूत्र ऐसे लगाता है मानो लेंस अपसारी हो; 50 दोनों दूरियाँ जोड़ देता है।)",
+        mr: "1/v − 1/u = 1/f वरून, वस्तू 30 cm वर आणि f = 20 cm घेतल्यास, परिमाणांतून 1/v = 1/20 − 1/30 = 1/60, म्हणून v = 60 cm — जे 30 × 20/10 सुद्धा आहे. वस्तू f आणि 2f यांच्यात आहे, म्हणून प्रतिमा वास्तव, उलटी आणि दुसऱ्या बाजूला 2f पलीकडे असलीच पाहिजे, आणि 60 cm नेमकी तीच आहे. (12 सूत्र असे लावते जणू भिंग अपसारी असावे; 50 दोन्ही अंतरे जोडते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "For that same lens and object — object at 30 cm, image at 60 cm — what is the magnitude of the linear magnification?",
+        hi: "उसी लेंस और वस्तु के लिए — वस्तु 30 cm पर, प्रतिबिंब 60 cm पर — रैखिक आवर्धन का परिमाण क्या है?",
+        mr: "त्याच भिंगासाठी आणि वस्तूसाठी — वस्तू 30 cm वर, प्रतिमा 60 cm वर — रेषीय विवर्धनाचे परिमाण किती?",
+      },
+      answer: 2,
+      wrong: [0.5, 3, 1.5],
+      checkExpr: "60/30",
+      solution: {
+        en: "The magnification is m = v/u in magnitude: 60/30 = 2, so the image is twice the size of the object. Since the image is real it is also inverted, which the sign convention records as m = −2. A magnification greater than one always means the image is further from the lens than the object, and comparing v with u is the quickest check on an answer. (0.5 inverts the ratio.)",
+        hi: "आवर्धन परिमाण में m = v/u है: 60/30 = 2, अतः प्रतिबिंब वस्तु से दुगुना बड़ा है। चूँकि प्रतिबिंब वास्तविक है वह उलटा भी है, जिसे चिह्न-परिपाटी m = −2 के रूप में दर्ज करती है। एक से बड़ा आवर्धन सदा यही कहता है कि प्रतिबिंब लेंस से वस्तु की तुलना में दूर है, और v की u से तुलना उत्तर की सबसे तेज़ जाँच है। (0.5 अनुपात उलट देता है।)",
+        mr: "विवर्धन परिमाणात m = v/u आहे: 60/30 = 2, म्हणून प्रतिमा वस्तूच्या दुप्पट आहे. प्रतिमा वास्तव असल्याने ती उलटीही आहे, जे चिन्ह-संकेत m = −2 म्हणून नोंदवते. एकाहून मोठे विवर्धन नेहमी हेच सांगते की प्रतिमा भिंगापासून वस्तूहून दूर आहे, आणि v ची u शी तुलना ही उत्तराची सर्वांत जलद तपासणी. (0.5 गुणोत्तर उलटवते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A prism of refracting angle 60° gives a minimum deviation of 30°. What is its refractive index? Take sin 45° = 0.707 and sin 30° = 0.5.",
+        hi: "60° अपवर्तक कोण का प्रिज़्म 30° न्यूनतम विचलन देता है। उसका अपवर्तनांक क्या है? sin 45° = 0.707 और sin 30° = 0.5 लो।",
+        mr: "60° अपवर्तक कोनाचा लोलक 30° किमान विचलन देतो. त्याचा अपवर्तनांक किती? sin 45° = 0.707 आणि sin 30° = 0.5 घ्या.",
+      },
+      answer: 1.414,
+      wrong: [2, 1, 0.5],
+      checkExpr: "0.707/0.5",
+      solution: {
+        en: "At minimum deviation n = sin((A + D)/2)/sin(A/2) = sin(45°)/sin(30°) = 0.707/0.5 = 1.414. Both half-angles must be taken before the sines, which is the step most often skipped. The value is √2, so this is a prism of ordinary crown glass a little denser than usual. (2 divides the angles instead of their sines.)",
+        hi: "न्यूनतम विचलन पर n = sin((A + D)/2)/sin(A/2) = sin(45°)/sin(30°) = 0.707/0.5 = 1.414. ज्या लेने से पहले दोनों अर्ध-कोण लेने ही पड़ते हैं, और यही वह चरण है जो सबसे अधिक छोड़ा जाता है। मान √2 है, अतः यह साधारण क्राउन काँच का प्रिज़्म है जो सामान्य से थोड़ा सघन है। (2 ज्याओं के बजाय कोणों को भाग दे देता है।)",
+        mr: "किमान विचलनावर n = sin((A + D)/2)/sin(A/2) = sin(45°)/sin(30°) = 0.707/0.5 = 1.414. साइन घेण्याआधी दोन्ही अर्ध-कोन घ्यावेच लागतात, आणि हीच ती पायरी जी सर्वांत जास्त गाळली जाते. मूल्य √2 आहे, म्हणून हा साध्या क्राउन काचेचा लोलक आहे जो नेहमीहून किंचित घन आहे. (2 साइनऐवजी कोनांना भागते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A compound microscope has an objective of magnification 10 and an eyepiece of magnification 5. What is the total magnification?",
+        hi: "एक संयुक्त सूक्ष्मदर्शी के अभिदृश्यक का आवर्धन 10 और नेत्रिका का 5 है। कुल आवर्धन क्या है?",
+        mr: "एका संयुक्त सूक्ष्मदर्शीच्या वस्तुभिंगाचे विवर्धन 10 आणि नेत्रभिंगाचे 5 आहे. एकूण विवर्धन किती?",
+      },
+      answer: 50,
+      wrong: [15, 2, 5],
+      checkExpr: "10*5",
+      solution: {
+        en: "The eyepiece magnifies the image the objective made, so the magnifications multiply: 10 × 5 = 50. This is why two moderate lenses beat one extreme one — reaching 50× with a single lens would need a focal length of about half a centimetre, at which aberrations ruin the image. (15 adds them; 2 divides.)",
+        hi: "नेत्रिका उस प्रतिबिंब को बड़ा करती है जो अभिदृश्यक ने बनाया, अतः आवर्धन गुणा होते हैं: 10 × 5 = 50. इसीलिए दो मामूली लेंस एक चरम लेंस को मात देते हैं — अकेले लेंस से 50× तक पहुँचने को लगभग आधा सेंटीमीटर फोकस दूरी चाहिए, जहाँ विपथन प्रतिबिंब बिगाड़ देते हैं। (15 उन्हें जोड़ देता है; 2 भाग दे देता है।)",
+        mr: "नेत्रभिंग वस्तुभिंगाने बनवलेली प्रतिमा मोठी करते, म्हणून विवर्धने गुणली जातात: 10 × 5 = 50. म्हणूनच दोन माफक भिंगे एका टोकाच्या भिंगाला मात देतात — एकाच भिंगाने 50× पर्यंत पोहोचायला सुमारे अर्धा सेंटीमीटर नाभीय अंतर लागेल, जिथे विपथने प्रतिमा बिघडवतात. (15 त्यांना जोडते; 2 भागते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "An astronomical telescope has an objective of focal length 100 cm and an eyepiece of focal length 5 cm. What is its magnifying power in normal adjustment?",
+        hi: "एक खगोलीय दूरदर्शी के अभिदृश्यक की फोकस दूरी 100 cm और नेत्रिका की 5 cm है। सामान्य समायोजन में उसकी आवर्धन क्षमता क्या है?",
+        mr: "एका खगोलीय दुर्बिणीच्या वस्तुभिंगाचे नाभीय अंतर 100 cm आणि नेत्रभिंगाचे 5 cm आहे. सामान्य जुळणीत तिची विवर्धन क्षमता किती?",
+      },
+      answer: 20,
+      wrong: [500, 105, 0.05],
+      checkExpr: "100/5",
+      solution: {
+        en: "In normal adjustment the magnifying power is f_o/f_e = 100/5 = 20. Note the opposite requirements from the microscope: a telescope wants a LONG objective and a short eyepiece, because its object is already at infinity and needs no strong bending, only a large image formed at the objective's focus. (500 multiplies; 105 gives the tube length instead.)",
+        hi: "सामान्य समायोजन में आवर्धन क्षमता f_o/f_e = 100/5 = 20 है। सूक्ष्मदर्शी से उलटी माँगें ध्यान दो: दूरदर्शी को लंबा अभिदृश्यक और छोटी नेत्रिका चाहिए, क्योंकि उसकी वस्तु पहले से अनंत पर है और उसे ज़ोरदार मुड़ाव नहीं, केवल अभिदृश्यक के फोकस पर बना बड़ा प्रतिबिंब चाहिए। (500 गुणा कर देता है; 105 इसके बजाय नली की लंबाई दे देता है।)",
+        mr: "सामान्य जुळणीत विवर्धन क्षमता f_o/f_e = 100/5 = 20 आहे. सूक्ष्मदर्शीहून उलट मागण्या लक्षात घ्या: दुर्बिणीला लांब वस्तुभिंग आणि लहान नेत्रभिंग हवे, कारण तिची वस्तू आधीच अनंतावर आहे आणि तिला जोरदार वाकवणे नको, केवळ वस्तुभिंगाच्या नाभीवर बनलेली मोठी प्रतिमा हवी. (500 गुणते; 105 त्याऐवजी नळीची लांबी देते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "For that same telescope — objective 100 cm, eyepiece 5 cm — what is the length of the tube in normal adjustment, in cm?",
+        hi: "उसी दूरदर्शी के लिए — अभिदृश्यक 100 cm, नेत्रिका 5 cm — सामान्य समायोजन में नली की लंबाई, cm में, क्या है?",
+        mr: "त्याच दुर्बिणीसाठी — वस्तुभिंग 100 cm, नेत्रभिंग 5 cm — सामान्य जुळणीत नळीची लांबी, cm मध्ये, किती?",
+      },
+      answer: 105,
+      wrong: [95, 20, 500],
+      checkExpr: "100+5",
+      solution: {
+        en: "In normal adjustment the objective's focus and the eyepiece's focus coincide, so the separation is f_o + f_e = 100 + 5 = 105 cm. Compare this with the magnifying power of the previous question and a design tension appears: magnification f_o/f_e and length f_o + f_e both grow with f_o, so a high-power refractor is necessarily a long one. That is why nineteenth-century observatories built tubes many metres long, and why the reflecting design — which folds the light path with a mirror — eventually replaced the refractor for large instruments. (95 subtracts instead of adding.)",
+        hi: "सामान्य समायोजन में अभिदृश्यक का फोकस और नेत्रिका का फोकस एक ही जगह पड़ते हैं, अतः दूरी f_o + f_e = 100 + 5 = 105 cm है। इसकी पिछले प्रश्न की आवर्धन क्षमता से तुलना करो और रचना का एक तनाव प्रकट होता है: आवर्धन f_o/f_e और लंबाई f_o + f_e दोनों f_o के साथ बढ़ते हैं, अतः ऊँची शक्ति का अपवर्तक दूरदर्शी अनिवार्यतः लंबा होता है। इसीलिए उन्नीसवीं सदी की वेधशालाओं ने कई मीटर लंबी नलियाँ बनाईं, और इसीलिए परावर्तक रचना — जो दर्पण से प्रकाश-पथ को मोड़ देती है — बड़े यंत्रों के लिए अंततः अपवर्तक की जगह ले आई। (95 जोड़ने के बजाय घटा देता है।)",
+        mr: "सामान्य जुळणीत वस्तुभिंगाची नाभी आणि नेत्रभिंगाची नाभी एकाच जागी पडतात, म्हणून अंतर f_o + f_e = 100 + 5 = 105 cm आहे. याची मागच्या प्रश्नातील विवर्धन क्षमतेशी तुलना करा आणि रचनेतला एक ताण प्रकट होतो: विवर्धन f_o/f_e आणि लांबी f_o + f_e दोन्ही f_o सोबत वाढतात, म्हणून उंच शक्तीची अपवर्तक दुर्बीण अपरिहार्यपणे लांब असते. म्हणूनच एकोणिसाव्या शतकातल्या वेधशाळांनी कित्येक मीटर लांब नळ्या बांधल्या, आणि म्हणूनच परावर्तक रचना — जी आरशाने प्रकाश-मार्ग दुमडते — मोठ्या उपकरणांसाठी अखेर अपवर्तकाची जागा घेऊन आली. (95 जोडण्याऐवजी वजा करते.)",
+      },
+    },
+  ],
+  "physics-12-wave-optics": [
+    {
+      level: 1,
+      stem: {
+        en: "In Young's experiment the slits are 1 mm apart, the screen is 1 m away, and the light has wavelength 600 nm. What is the fringe width, in mm?",
+        hi: "यंग के प्रयोग में झिरियाँ 1 mm दूर हैं, पर्दा 1 m दूर है, और प्रकाश की तरंगदैर्ध्य 600 nm है। फ्रिंज चौड़ाई, mm में, क्या है?",
+        mr: "यंगच्या प्रयोगात फटी 1 mm अंतरावर आहेत, पडदा 1 m दूर आहे, आणि प्रकाशाची तरंगलांबी 600 nm आहे. पट्टा रुंदी, mm मध्ये, किती?",
+      },
+      answer: 0.6,
+      wrong: [6, 0.06, 1.67],
+      checkExpr: "600/1000",
+      solution: {
+        en: "β = λD/d = (600 × 10⁻⁹ × 1)/(1 × 10⁻³) = 6 × 10⁻⁴ m, which is 600/1000 = 0.6 mm. The fringes are only visible at all because D/d is a thousand: the pattern is a magnified picture of a path difference of less than a micrometre, and shrinking d or lengthening D is the only way to make it big enough to see. (1.67 inverts the ratio; 6 misplaces the exponent by one.)",
+        hi: "β = λD/d = (600 × 10⁻⁹ × 1)/(1 × 10⁻³) = 6 × 10⁻⁴ m, जो 600/1000 = 0.6 mm है। फ्रिंज दिखती ही इसलिए हैं कि D/d एक हज़ार है: प्रतिरूप एक माइक्रोमीटर से भी कम के पथांतर का बड़ा किया हुआ चित्र है, और उसे देखने लायक़ बड़ा करने का एकमात्र रास्ता d घटाना या D बढ़ाना है। (1.67 अनुपात उलट देता है; 6 घातांक एक से चूक जाता है।)",
+        mr: "β = λD/d = (600 × 10⁻⁹ × 1)/(1 × 10⁻³) = 6 × 10⁻⁴ m, जे 600/1000 = 0.6 mm आहे. पट्टे दिसतातच यामुळे की D/d एक हजार आहे: नमुना हा एका मायक्रोमीटरहूनही कमी पथांतराचे मोठे केलेले चित्र आहे, आणि तो दिसण्याइतका मोठा करण्याचा एकमेव मार्ग म्हणजे d घटवणे वा D वाढवणे. (1.67 गुणोत्तर उलटवते; 6 घातांक एकाने चुकवते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "Two coherent sources of equal intensity I interfere. At a point of constructive interference the intensity is what multiple of I?",
+        hi: "बराबर तीव्रता I के दो कलासंबद्ध स्रोत व्यतिकरण करते हैं। संपोषी व्यतिकरण के बिंदु पर तीव्रता I की कितनी गुनी है?",
+        mr: "समान तीव्रता I चे दोन कलासंबद्ध स्रोत व्यतिकरण करतात. संपोषी व्यतिकरणाच्या बिंदूवर तीव्रता I च्या किती पट आहे?",
+      },
+      answer: 4,
+      wrong: [2, 1, 8],
+      checkExpr: "2*2",
+      solution: {
+        en: "Amplitudes add, not intensities: two waves of amplitude a give 2a, and intensity goes as the square, so I_max = (2a)² ∝ 4I, that is 2 × 2 = 4 times one source alone. The extra 2I is not created — it is exactly what is missing from the dark fringes, where the amplitudes cancel to zero and the intensity is 0 rather than 2I. Averaged over the whole pattern, the total is the 2I the two sources delivered. (2 adds the intensities directly.)",
+        hi: "आयाम जुड़ते हैं, तीव्रताएँ नहीं: आयाम a की दो तरंगें 2a देती हैं, और तीव्रता वर्ग के अनुसार चलती है, अतः I_max = (2a)² ∝ 4I, अर्थात् अकेले एक स्रोत का 2 × 2 = 4 गुना। अतिरिक्त 2I बनाया नहीं गया — वह ठीक वही है जो अँधेरी फ्रिंजों से लुप्त है, जहाँ आयाम कटकर शून्य हो जाते हैं और तीव्रता 2I नहीं बल्कि 0 है। पूरे प्रतिरूप पर औसत लो तो कुल वही 2I है जो दोनों स्रोतों ने दिया। (2 तीव्रताएँ सीधे जोड़ देता है।)",
+        mr: "आयाम जुळतात, तीव्रता नाही: आयाम a च्या दोन लहरी 2a देतात, आणि तीव्रता वर्गानुसार चालते, म्हणून I_max = (2a)² ∝ 4I, म्हणजे एकट्या स्रोताच्या 2 × 2 = 4 पट. जादा 2I निर्माण झालेला नाही — तो नेमका तोच जो अंधाऱ्या पट्ट्यांतून हरवला आहे, जिथे आयाम कापले जाऊन शून्य होतात आणि तीव्रता 2I नव्हे तर 0 आहे. अख्ख्या नमुन्यावर सरासरी घेतल्यास एकूण तेच 2I आहे जे दोन्ही स्रोतांनी दिले. (2 तीव्रता थेट जोडते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "In a double-slit pattern the fringe width is 0.5 mm. How far from the centre, in mm, is the fourth bright fringe?",
+        hi: "दोहरी झिरी के प्रतिरूप में फ्रिंज चौड़ाई 0.5 mm है। चौथी चमकीली फ्रिंज केंद्र से कितनी दूर, mm में, है?",
+        mr: "दुहेरी फटीच्या नमुन्यात पट्टा रुंदी 0.5 mm आहे. चौथा तेजस्वी पट्टा केंद्रापासून किती दूर, mm मध्ये, आहे?",
+      },
+      answer: 2,
+      wrong: [0.125, 2.5, 1.75],
+      checkExpr: "0.5*4",
+      solution: {
+        en: "Bright fringes are equally spaced at intervals of β, so the nth from the centre is at nβ: 4 × 0.5 = 2 mm. The equal spacing is the signature of two-source interference — a single-slit diffraction pattern would not be evenly spaced and its central band would be double width. (2.5 counts the central fringe as the first; 0.125 inverts the product.)",
+        hi: "चमकीली फ्रिंज β के बराबर अंतरालों पर हैं, अतः केंद्र से nवीं nβ पर है: 4 × 0.5 = 2 mm. बराबर अंतराल दो-स्रोत व्यतिकरण की पहचान है — एकल झिरी का विवर्तन प्रतिरूप बराबर अंतराल पर नहीं होता और उसकी केंद्रीय पट्टी दुगुनी चौड़ी होती। (2.5 केंद्रीय फ्रिंज को पहली गिन लेता है; 0.125 गुणनफल उलट देता है।)",
+        mr: "तेजस्वी पट्टे β च्या समान अंतरांवर आहेत, म्हणून केंद्रापासून nवा nβ वर आहे: 4 × 0.5 = 2 mm. समान अंतर हे दोन-स्रोत व्यतिकरणाची खूण आहे — एकेरी फटीचा विवर्तन नमुना समान अंतरावर नसतो आणि त्याची मध्यवर्ती पट्टी दुप्पट रुंद असते. (2.5 मध्यवर्ती पट्ट्याला पहिला मोजते; 0.125 गुणाकार उलटवते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A double-slit arrangement gives a fringe width of 0.8 mm. The slit separation is then doubled, everything else unchanged. What is the new fringe width, in mm?",
+        hi: "एक दोहरी झिरी व्यवस्था 0.8 mm फ्रिंज चौड़ाई देती है। फिर झिरियों की दूरी दुगुनी कर दी जाती है, बाक़ी सब वही। नई फ्रिंज चौड़ाई, mm में, क्या है?",
+        mr: "एक दुहेरी फट मांडणी 0.8 mm पट्टा रुंदी देते. मग फटींमधले अंतर दुप्पट केले जाते, बाकी सर्व तसेच. नवी पट्टा रुंदी, mm मध्ये, किती?",
+      },
+      answer: 0.4,
+      wrong: [1.6, 0.2, 0.8],
+      checkExpr: "0.8/2",
+      solution: {
+        en: "β = λD/d has d in the denominator, so doubling d halves the fringe width: 0.8/2 = 0.4 mm. Wider slits, narrower fringes — the inverse relation is the reason the two slits in a demonstration are made as close together as the apparatus allows. (1.6 doubles instead of halving.)",
+        hi: "β = λD/d में d हर में है, अतः d दुगुना करने पर फ्रिंज चौड़ाई आधी हो जाती है: 0.8/2 = 0.4 mm. झिरियाँ दूर, फ्रिंज सँकरी — यही व्युत्क्रम संबंध कारण है कि प्रदर्शन में दोनों झिरियाँ जितना उपकरण होने दे उतनी पास बनाई जाती हैं। (1.6 आधा करने के बजाय दुगुना कर देता है।)",
+        mr: "β = λD/d मध्ये d छेदात आहे, म्हणून d दुप्पट केल्यास पट्टा रुंदी निम्मी होते: 0.8/2 = 0.4 mm. फटी दूर, पट्टे अरुंद — हाच व्यस्त संबंध कारण आहे की प्रात्यक्षिकात दोन्ही फटी उपकरण देईल तितक्या जवळ बनवल्या जातात. (1.6 निम्मे करण्याऐवजी दुप्पट करते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "In a double-slit pattern, the path difference at the third dark fringe from the centre is how many wavelengths?",
+        hi: "दोहरी झिरी के प्रतिरूप में केंद्र से तीसरी अँधेरी फ्रिंज पर पथांतर कितनी तरंगदैर्ध्य है?",
+        mr: "दुहेरी फटीच्या नमुन्यात केंद्रापासून तिसऱ्या अंधाऱ्या पट्ट्यावर पथांतर किती तरंगलांबी आहे?",
+      },
+      answer: 2.5,
+      wrong: [3, 2, 1.5],
+      checkExpr: "5/2",
+      solution: {
+        en: "Dark fringes occur at odd multiples of half a wavelength: λ/2, 3λ/2, 5λ/2 … so the third is 5λ/2 = 5/2 = 2.5 wavelengths. Counting is where this goes wrong — the FIRST dark fringe already needs half a wavelength, so the nth needs (2n − 1)/2 and not n − 1/2 counted from zero. (1.5 gives the second dark fringe; 3 uses the bright-fringe condition.)",
+        hi: "अँधेरी फ्रिंज आधी तरंगदैर्ध्य के विषम गुणकों पर होती हैं: λ/2, 3λ/2, 5λ/2 … अतः तीसरी 5λ/2 = 5/2 = 2.5 तरंगदैर्ध्य है। गिनती में ही गड़बड़ होती है — पहली अँधेरी फ्रिंज को ही आधी तरंगदैर्ध्य चाहिए, अतः nवीं को (2n − 1)/2 चाहिए, शून्य से गिनी गई n − 1/2 नहीं। (1.5 दूसरी अँधेरी फ्रिंज देता है; 3 चमकीली फ्रिंज की शर्त लगाता है।)",
+        mr: "अंधारे पट्टे अर्ध्या तरंगलांबीच्या विषम पटींवर घडतात: λ/2, 3λ/2, 5λ/2 … म्हणून तिसरा 5λ/2 = 5/2 = 2.5 तरंगलांबी आहे. मोजणीतच गडबड होते — पहिल्या अंधाऱ्या पट्ट्यालाच अर्धी तरंगलांबी लागते, म्हणून nव्याला (2n − 1)/2 लागते, शून्यापासून मोजलेली n − 1/2 नाही. (1.5 दुसरा अंधारा पट्टा देते; 3 तेजस्वी पट्ट्याची अट लावते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A single slit of width 0.2 mm is lit by light of wavelength 600 nm, with a screen 1 m away. How far from the centre, in mm, is the first minimum?",
+        hi: "0.2 mm चौड़ी एकल झिरी पर 600 nm तरंगदैर्ध्य का प्रकाश पड़ता है, और पर्दा 1 m दूर है। पहला निम्निष्ठ केंद्र से कितनी दूर, mm में, है?",
+        mr: "0.2 mm रुंद एकेरी फटीवर 600 nm तरंगलांबीचा प्रकाश पडतो, आणि पडदा 1 m दूर आहे. पहिला निम्निष्ठ केंद्रापासून किती दूर, mm मध्ये, आहे?",
+      },
+      answer: 3,
+      wrong: [1.5, 6, 0.33],
+      checkExpr: "600/200",
+      solution: {
+        en: "The first minimum lies at sin θ = λ/a, so its distance is λD/a = (600 × 10⁻⁹ × 1)/(2 × 10⁻⁴) = 3 × 10⁻³ m, which is 600/200 = 3 mm. That distance is also the HALF-width of the central maximum, which therefore spans 6 mm from first minimum to first minimum — twice as wide as any other band, since the outer bands lie between successive minima. (1.5 halves it; 0.33 inverts the ratio.)",
+        hi: "पहला निम्निष्ठ sin θ = λ/a पर पड़ता है, अतः उसकी दूरी λD/a = (600 × 10⁻⁹ × 1)/(2 × 10⁻⁴) = 3 × 10⁻³ m है, जो 600/200 = 3 mm है। वही दूरी केंद्रीय उच्चिष्ठ की अर्ध-चौड़ाई भी है, जो इसलिए एक निम्निष्ठ से दूसरे तक 6 mm फैलता है — किसी भी दूसरी पट्टी से दुगुना चौड़ा, क्योंकि बाहरी पट्टियाँ लगातार निम्निष्ठों के बीच पड़ती हैं। (1.5 उसे आधा कर देता है; 0.33 अनुपात उलट देता है।)",
+        mr: "पहिला निम्निष्ठ sin θ = λ/a वर पडतो, म्हणून त्याचे अंतर λD/a = (600 × 10⁻⁹ × 1)/(2 × 10⁻⁴) = 3 × 10⁻³ m आहे, जे 600/200 = 3 mm आहे. तेच अंतर मध्यवर्ती उच्चिष्ठाची अर्ध-रुंदीही आहे, जो म्हणून एका निम्निष्ठापासून दुसऱ्यापर्यंत 6 mm पसरतो — इतर कोणत्याही पट्ट्याहून दुप्पट रुंद, कारण बाहेरचे पट्टे लागोपाठच्या निम्निष्ठांमध्ये पडतात. (1.5 ते निम्मे करते; 0.33 गुणोत्तर उलटवते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "Unpolarised light of intensity 100 W/m² passes through a single ideal polaroid. What intensity, in W/m², emerges?",
+        hi: "100 W/m² तीव्रता का अध्रुवित प्रकाश एक आदर्श पोलेरॉइड से गुज़रता है। कितनी तीव्रता, W/m² में, निकलती है?",
+        mr: "100 W/m² तीव्रतेचा अध्रुवित प्रकाश एका आदर्श पोलरॉइडमधून जातो. किती तीव्रता, W/m² मध्ये, बाहेर पडते?",
+      },
+      answer: 50,
+      wrong: [100, 25, 0],
+      checkExpr: "100/2",
+      solution: {
+        en: "Unpolarised light contains all orientations equally, and the average of cos²θ over a full turn is exactly one half, so the transmitted intensity is 100/2 = 50 W/m² whatever angle the polaroid is set to. Note that this halving happens only at the FIRST polaroid; after it the light is polarised and Malus's law with a definite angle takes over. (100 assumes an ideal polaroid transmits everything.)",
+        hi: "अध्रुवित प्रकाश में सभी अभिविन्यास बराबर हैं, और पूरे चक्कर पर cos²θ का औसत ठीक आधा है, अतः पोलेरॉइड चाहे किसी भी कोण पर हो, निकलती तीव्रता 100/2 = 50 W/m² है। ध्यान दो कि यह आधा होना केवल पहले पोलेरॉइड पर होता है; उसके बाद प्रकाश ध्रुवित है और निश्चित कोण वाला मैलस का नियम सँभाल लेता है। (100 मान लेता है कि आदर्श पोलेरॉइड सब कुछ जाने देता है।)",
+        mr: "अध्रुवित प्रकाशात सर्व मांडण्या समान असतात, आणि पूर्ण फेऱ्यावर cos²θ ची सरासरी नेमकी निम्मी आहे, म्हणून पोलरॉइड कोणत्याही कोनावर असो, बाहेर पडणारी तीव्रता 100/2 = 50 W/m² आहे. लक्षात घ्या की हे निम्मे होणे केवळ पहिल्या पोलरॉइडवर घडते; त्यानंतर प्रकाश ध्रुवित आहे आणि ठराविक कोनाचा मालसचा नियम ताबा घेतो. (100 गृहीत धरते की आदर्श पोलरॉइड सर्व काही जाऊ देतो.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A medium has refractive index 1.732. What is its polarising angle, in degrees? Take the angle whose tangent is 1.732 to be 60°.",
+        hi: "किसी माध्यम का अपवर्तनांक 1.732 है। उसका ध्रुवण कोण, अंश में, क्या है? जिस कोण की स्पर्शज्या 1.732 है उसे 60° लो।",
+        mr: "एका माध्यमाचा अपवर्तनांक 1.732 आहे. त्याचा ध्रुवण कोन, अंशांत, किती? ज्या कोनाची स्पर्शिका 1.732 आहे तो 60° घ्या.",
+      },
+      answer: 60,
+      wrong: [30, 45, 90],
+      checkExpr: "180/3",
+      solution: {
+        en: "Brewster's law is tan θ_p = n, so θ_p = 60°, which is 180/3. At that angle the reflected and refracted rays are exactly perpendicular, since θ_p + θ_r = 90° follows from combining Brewster's law with Snell's. The reflected light is then completely polarised parallel to the surface, which is why polarising sunglasses are cut to block the horizontal component and kill glare off roads and water. (45 corresponds to n = 1.)",
+        hi: "ब्रूस्टर का नियम tan θ_p = n है, अतः θ_p = 60°, जो 180/3 है। उस कोण पर परावर्तित और अपवर्तित किरणें ठीक लंबवत हैं, क्योंकि ब्रूस्टर के नियम को स्नेल के नियम से मिलाने पर θ_p + θ_r = 90° निकलता है। तब परावर्तित प्रकाश पृष्ठ के समांतर पूरी तरह ध्रुवित है, इसीलिए ध्रुवक धूप-चश्मे क्षैतिज घटक रोकने को काटे जाते हैं और सड़क तथा पानी की चौंध मार देते हैं। (45, n = 1 के अनुरूप है।)",
+        mr: "ब्रूस्टरचा नियम tan θ_p = n आहे, म्हणून θ_p = 60°, जे 180/3 आहे. त्या कोनावर परावर्तित आणि अपवर्तित किरणे नेमकी लंब आहेत, कारण ब्रूस्टरचा नियम स्नेलच्या नियमाशी जोडल्यास θ_p + θ_r = 90° निघते. तेव्हा परावर्तित प्रकाश पृष्ठाला समांतर पूर्णपणे ध्रुवित आहे, म्हणूनच ध्रुवक गॉगल आडवा घटक अडवण्यासाठी कापले जातात आणि रस्ता व पाण्याची चमक मारतात. (45 हे n = 1 शी जुळते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "Light already polarised, of intensity 80 W/m², falls on a polaroid whose axis is at 60° to the plane of polarisation. What intensity, in W/m², is transmitted? Take cos 60° = 0.5.",
+        hi: "पहले से ध्रुवित 80 W/m² तीव्रता का प्रकाश ऐसे पोलेरॉइड पर पड़ता है जिसकी अक्ष ध्रुवण तल से 60° पर है। कितनी तीव्रता, W/m² में, निकलती है? cos 60° = 0.5 लो।",
+        mr: "आधीच ध्रुवित 80 W/m² तीव्रतेचा प्रकाश अशा पोलरॉइडवर पडतो ज्याचा अक्ष ध्रुवण प्रतलाशी 60° वर आहे. किती तीव्रता, W/m² मध्ये, बाहेर पडते? cos 60° = 0.5 घ्या.",
+      },
+      answer: 20,
+      wrong: [40, 60, 0],
+      checkExpr: "80*0.25",
+      solution: {
+        en: "Malus's law gives I = I₀ cos²θ = 80 × (0.5)² = 80 × 0.25 = 20 W/m². The cosine is SQUARED because it applies to the amplitude while intensity goes as amplitude squared — dropping the square is the commonest error here and would give 40. Note also that no halving applies: the light arrived already polarised, so the one-half factor for unpolarised light does not enter. (0 assumes a 60° setting extinguishes the beam, which happens only at 90°.)",
+        hi: "मैलस का नियम देता है I = I₀ cos²θ = 80 × (0.5)² = 80 × 0.25 = 20 W/m². कोज्या का वर्ग है क्योंकि वह आयाम पर लगती है जबकि तीव्रता आयाम के वर्ग के अनुसार चलती है — वर्ग छोड़ देना यहाँ की सबसे आम भूल है और 40 देती। यह भी ध्यान दो कि आधा करना लागू नहीं: प्रकाश पहले से ध्रुवित आया, अतः अध्रुवित प्रकाश वाला आधे का गुणक आता ही नहीं। (0 मान लेता है कि 60° की सेटिंग पुंज बुझा देती है, जो केवल 90° पर होता है।)",
+        mr: "मालसचा नियम देतो I = I₀ cos²θ = 80 × (0.5)² = 80 × 0.25 = 20 W/m². कोसाइनचा वर्ग आहे कारण तो आयामावर लागतो तर तीव्रता आयामाच्या वर्गानुसार चालते — वर्ग गाळणे ही इथली सर्वांत सामान्य चूक आणि ती 40 देईल. हेही लक्षात घ्या की निम्मे करणे लागू नाही: प्रकाश आधीच ध्रुवित आला, म्हणून अध्रुवित प्रकाशाचा निम्म्याचा गुणक येतच नाही. (0 गृहीत धरते की 60° ची मांडणी शलाका विझवते, जे केवळ 90° वर घडते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "A Young's experiment giving fringes 0.8 mm wide in air is completely immersed in water of refractive index 4/3. What is the new fringe width, in mm?",
+        hi: "हवा में 0.8 mm चौड़ी फ्रिंज देने वाला यंग का प्रयोग 4/3 अपवर्तनांक के पानी में पूरी तरह डुबो दिया जाता है। नई फ्रिंज चौड़ाई, mm में, क्या है?",
+        mr: "हवेत 0.8 mm रुंद पट्टे देणारा यंगचा प्रयोग 4/3 अपवर्तनांकाच्या पाण्यात पूर्णपणे बुडवला जातो. नवी पट्टा रुंदी, mm मध्ये, किती?",
+      },
+      answer: 0.6,
+      wrong: [1.07, 0.8, 0.2],
+      checkExpr: "0.8*3/4",
+      solution: {
+        en: "The frequency of light is fixed by the source and cannot change on entering the water; what changes is the speed, and therefore the wavelength, which becomes λ/n. Since β = λD/d is proportional to the wavelength, the fringes shrink by the same factor: 0.8 × 3/4 = 0.6 mm. It is worth being explicit about which quantity is conserved, because the opposite assumption — that the wavelength is fixed and the frequency changes — would make a red object change colour underwater, which it does not. The pattern also confirms that interference depends on the wavelength IN THE MEDIUM and not on the vacuum wavelength, which is why a thin film's colours depend on its refractive index as well as its thickness. (0.8 assumes nothing changes; 1.07 multiplies by n instead of dividing.)",
+        hi: "प्रकाश की आवृत्ति स्रोत से तय है और पानी में घुसने पर बदल नहीं सकती; जो बदलता है वह चाल है, और इसलिए तरंगदैर्ध्य, जो λ/n हो जाती है। चूँकि β = λD/d तरंगदैर्ध्य का समानुपाती है, फ्रिंज उसी गुणक से सिकुड़ती हैं: 0.8 × 3/4 = 0.6 mm. कौन-सी राशि संरक्षित है यह स्पष्ट कहना चाहिए, क्योंकि उलटी मान्यता — कि तरंगदैर्ध्य नियत है और आवृत्ति बदलती है — लाल वस्तु का रंग पानी के भीतर बदल देती, जो नहीं बदलता। प्रतिरूप यह भी पुष्ट करता है कि व्यतिकरण माध्यम में की तरंगदैर्ध्य पर निर्भर है, निर्वात की तरंगदैर्ध्य पर नहीं, इसीलिए पतली झिल्ली के रंग उसकी मोटाई के साथ-साथ उसके अपवर्तनांक पर भी निर्भर हैं। (0.8 मान लेता है कि कुछ नहीं बदलता; 1.07 भाग देने के बजाय n से गुणा कर देता है।)",
+        mr: "प्रकाशाची वारंवारता स्रोताने ठरलेली आहे आणि पाण्यात शिरताना बदलू शकत नाही; जे बदलते तो वेग, आणि म्हणून तरंगलांबी, जी λ/n होते. β = λD/d हे तरंगलांबीशी समानुपाती असल्याने, पट्टे त्याच पटीने आकसतात: 0.8 × 3/4 = 0.6 mm. कोणती राशी संधारित आहे हे स्पष्ट सांगायला हवे, कारण उलटे गृहीतक — की तरंगलांबी स्थिर आहे आणि वारंवारता बदलते — लाल वस्तूचा रंग पाण्याखाली बदलेल, जो बदलत नाही. नमुना हेही खात्रीने सांगतो की व्यतिकरण माध्यमातील तरंगलांबीवर अवलंबून आहे, निर्वातातील तरंगलांबीवर नाही, म्हणूनच पातळ पडद्याचे रंग त्याच्या जाडीसोबतच त्याच्या अपवर्तनांकावरही अवलंबून आहेत. (0.8 गृहीत धरते की काहीच बदलत नाही; 1.07 भागण्याऐवजी n ने गुणते.)",
+      },
+    },
+  ],
+  "physics-12-dual-nature-of-radiation-and-matter": [
+    {
+      level: 1,
+      stem: {
+        en: "What is the energy, in eV, of a photon of frequency 5 × 10¹⁴ Hz? Take h = 4.14 × 10⁻¹⁵ eV s.",
+        hi: "5 × 10¹⁴ Hz आवृत्ति के फ़ोटॉन की ऊर्जा, eV में, क्या है? h = 4.14 × 10⁻¹⁵ eV s लो।",
+        mr: "5 × 10¹⁴ Hz वारंवारतेच्या फोटॉनची ऊर्जा, eV मध्ये, किती? h = 4.14 × 10⁻¹⁵ eV s घ्या.",
+      },
+      answer: 2.07,
+      wrong: [0.83, 20.7, 1.24],
+      checkExpr: "4.14*5/10",
+      solution: {
+        en: "E = hf = 4.14 × 10⁻¹⁵ × 5 × 10¹⁴. Handle the digits and the powers separately: 4.14 × 5 = 20.7 and 10⁻¹⁵ × 10¹⁴ = 10⁻¹, so E = 20.7/10 = 2.07 eV. This is orange light, and 2.07 eV is comfortably above caesium's work function but well below zinc's — which is why the same beam empties one metal and does nothing to the other. (20.7 ignores the leftover power of ten; 0.83 divides instead of multiplying.)",
+        hi: "E = hf = 4.14 × 10⁻¹⁵ × 5 × 10¹⁴. अंक और घातें अलग-अलग सँभालो: 4.14 × 5 = 20.7 और 10⁻¹⁵ × 10¹⁴ = 10⁻¹, अतः E = 20.7/10 = 2.07 eV. यह नारंगी प्रकाश है, और 2.07 eV सीज़ियम के कार्यफलन से आराम से ऊपर पर ज़िंक के कार्यफलन से काफ़ी नीचे है — इसीलिए वही पुंज एक धातु को ख़ाली कर देता है और दूसरी का कुछ नहीं बिगाड़ता। (20.7 बची हुई दस की घात अनदेखी कर देता है; 0.83 गुणा करने के बजाय भाग दे देता है।)",
+        mr: "E = hf = 4.14 × 10⁻¹⁵ × 5 × 10¹⁴. अंक आणि घाती वेगवेगळे हाताळा: 4.14 × 5 = 20.7 आणि 10⁻¹⁵ × 10¹⁴ = 10⁻¹, म्हणून E = 20.7/10 = 2.07 eV. हा नारिंगी प्रकाश आहे, आणि 2.07 eV हे सीझियमच्या कार्यफलनाहून आरामात वर पण जस्ताच्या कार्यफलनाहून बरेच खाली आहे — म्हणूनच तीच शलाका एका धातूला रिकामी करते आणि दुसरीचे काहीही बिघडवत नाही. (20.7 उरलेली दहाची घात दुर्लक्षिते; 0.83 गुणण्याऐवजी भागते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "A photon of energy 5 eV falls on a metal whose work function is 2 eV. What is the maximum kinetic energy, in eV, of the ejected electron?",
+        hi: "5 eV ऊर्जा का फ़ोटॉन ऐसी धातु पर पड़ता है जिसका कार्यफलन 2 eV है। निकले इलेक्ट्रॉन की अधिकतम गतिज ऊर्जा, eV में, क्या है?",
+        mr: "5 eV ऊर्जेचा फोटॉन अशा धातूवर पडतो जिचे कार्यफलन 2 eV आहे. बाहेर पडलेल्या इलेक्ट्रॉनची कमाल गतिज ऊर्जा, eV मध्ये, किती?",
+      },
+      answer: 3,
+      wrong: [7, 2.5, 10],
+      checkExpr: "5-2",
+      solution: {
+        en: "Einstein's photoelectric equation gives K_max = hf − φ = 5 − 2 = 3 eV. The work function is a toll paid at the gate: nothing of the photon's energy can appear as speed until the 2 eV of escape has been met, and what is left over is the fastest electron's energy. Electrons starting deeper in the metal lose more on the way out, so 3 eV is a maximum and the rest spread downwards from it. (7 adds instead of subtracting.)",
+        hi: "आइंस्टीन का प्रकाश-विद्युत समीकरण देता है K_max = hf − φ = 5 − 2 = 3 eV. कार्यफलन फाटक पर चुकाया महसूल है: फ़ोटॉन की ऊर्जा का कुछ भी चाल बनकर तब तक नहीं दिख सकता जब तक निकलने के 2 eV पूरे न हो जाएँ, और जो बचता है वही सबसे तेज़ इलेक्ट्रॉन की ऊर्जा है। धातु के भीतर से चले इलेक्ट्रॉन बाहर आते समय अधिक खोते हैं, अतः 3 eV अधिकतम है और बाक़ी उससे नीचे फैले हैं। (7 घटाने के बजाय जोड़ देता है।)",
+        mr: "आइनस्टाइनचे प्रकाश-विद्युत समीकरण देते K_max = hf − φ = 5 − 2 = 3 eV. कार्यफलन हा फाटकावर भरलेला कर आहे: फोटॉनच्या ऊर्जेतले काहीही वेग बनून तोवर दिसू शकत नाही जोवर निसटण्याचे 2 eV पूर्ण होत नाहीत, आणि जे उरते तीच सर्वांत वेगवान इलेक्ट्रॉनची ऊर्जा. धातूच्या आतून निघालेले इलेक्ट्रॉन बाहेर येताना अधिक गमावतात, म्हणून 3 eV ही कमाल आहे आणि बाकीचे तिच्याखाली पसरलेले आहेत. (7 वजा करण्याऐवजी जोडते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "The threshold wavelength of a metal is 620 nm. What is its work function, in eV? Take hc = 1240 eV nm.",
+        hi: "किसी धातु की देहली तरंगदैर्ध्य 620 nm है। उसका कार्यफलन, eV में, क्या है? hc = 1240 eV nm लो।",
+        mr: "एका धातूची उंबरठा तरंगलांबी 620 nm आहे. तिचे कार्यफलन, eV मध्ये, किती? hc = 1240 eV nm घ्या.",
+      },
+      answer: 2,
+      wrong: [0.5, 4, 620],
+      checkExpr: "1240/620",
+      solution: {
+        en: "At threshold the whole photon energy goes into escaping, so φ = hc/λ₀ = 1240/620 = 2 eV. The constant 1240 eV nm is worth memorising: photon energy in electron-volts is simply 1240 divided by the wavelength in nanometres, which turns most of this chapter's arithmetic into one division. A LONGER threshold wavelength means a SMALLER work function, so this metal responds to red light. (0.5 inverts the ratio.)",
+        hi: "देहली पर पूरी फ़ोटॉन ऊर्जा निकलने में लग जाती है, अतः φ = hc/λ₀ = 1240/620 = 2 eV. स्थिरांक 1240 eV nm याद रखने योग्य है: इलेक्ट्रॉन-वोल्ट में फ़ोटॉन ऊर्जा बस 1240 बटा नैनोमीटर में तरंगदैर्ध्य है, जो इस अध्याय का अधिकांश गणित एक ही भाग में बदल देता है। लंबी देहली तरंगदैर्ध्य का अर्थ छोटा कार्यफलन है, अतः यह धातु लाल प्रकाश पर उत्तर देती है। (0.5 अनुपात उलट देता है।)",
+        mr: "उंबरठ्यावर अख्खी फोटॉन ऊर्जा निसटण्यात जाते, म्हणून φ = hc/λ₀ = 1240/620 = 2 eV. स्थिरांक 1240 eV nm लक्षात ठेवण्याजोगा आहे: इलेक्ट्रॉन-व्होल्टमधली फोटॉन ऊर्जा म्हणजे फक्त 1240 भागिले नॅनोमीटरमधली तरंगलांबी, जे या प्रकरणातले बहुतांश गणित एकाच भागाकारात बदलते. लांब उंबरठा तरंगलांबी म्हणजे लहान कार्यफलन, म्हणून ही धातू लाल प्रकाशाला उत्तर देते. (0.5 गुणोत्तर उलटवते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Photons of energy 5 eV fall on a metal of work function 2.6 eV. What stopping potential, in volts, is needed?",
+        hi: "5 eV ऊर्जा के फ़ोटॉन 2.6 eV कार्यफलन की धातु पर पड़ते हैं। कितना निरोधी विभव, वोल्ट में, चाहिए?",
+        mr: "5 eV ऊर्जेचे फोटॉन 2.6 eV कार्यफलनाच्या धातूवर पडतात. किती निरोधी विभव, व्होल्टमध्ये, लागतो?",
+      },
+      answer: 2.4,
+      wrong: [7.6, 1.92, 5],
+      checkExpr: "5-2.6",
+      fmt: volts,
+      solution: {
+        en: "The stopping potential is the voltage that just turns back the fastest electron, so eV₀ = K_max and V₀ = (5 − 2.6) = 2.4 V. The convenience of electron-volts is that the numbers transfer directly: an energy of 2.4 eV needs 2.4 V to stop it, because the electron's charge cancels on both sides. Brightening the beam would change nothing here — the stopping potential is set by the frequency alone. (7.6 adds the two energies.)",
+        hi: "निरोधी विभव वह वोल्टता है जो सबसे तेज़ इलेक्ट्रॉन को बस लौटा देती है, अतः eV₀ = K_max और V₀ = (5 − 2.6) = 2.4 V. इलेक्ट्रॉन-वोल्ट की सुविधा यह कि संख्याएँ सीधे उतर आती हैं: 2.4 eV की ऊर्जा को रोकने को 2.4 V चाहिए, क्योंकि इलेक्ट्रॉन का आवेश दोनों ओर से कट जाता है। पुंज चमकीला करने से यहाँ कुछ नहीं बदलता — निरोधी विभव केवल आवृत्ति से तय है। (7.6 दोनों ऊर्जाएँ जोड़ देता है।)",
+        mr: "निरोधी विभव म्हणजे तो व्होल्टेज जो सर्वांत वेगवान इलेक्ट्रॉनला जेमतेम परत फिरवतो, म्हणून eV₀ = K_max आणि V₀ = (5 − 2.6) = 2.4 V. इलेक्ट्रॉन-व्होल्टची सोय अशी की संख्या थेट उतरतात: 2.4 eV ची ऊर्जा थांबवायला 2.4 V लागतात, कारण इलेक्ट्रॉनचा प्रभार दोन्ही बाजूंनी कापला जातो. शलाका तेजस्वी केल्याने इथे काहीही बदलत नाही — निरोधी विभव केवळ वारंवारतेने ठरतो. (7.6 दोन्ही ऊर्जा जोडते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A particle has a de Broglie wavelength of 0.4 nm. Its momentum is then doubled. What is the new wavelength, in nm?",
+        hi: "किसी कण की दे ब्रॉग्ली तरंगदैर्ध्य 0.4 nm है। फिर उसका संवेग दुगुना कर दिया जाता है। नई तरंगदैर्ध्य, nm में, क्या है?",
+        mr: "एका कणाची द ब्रॉग्ली तरंगलांबी 0.4 nm आहे. मग त्याचा संवेग दुप्पट केला जातो. नवी तरंगलांबी, nm मध्ये, किती?",
+      },
+      answer: 0.2,
+      wrong: [0.8, 0.1, 0.4],
+      checkExpr: "0.4/2",
+      solution: {
+        en: "λ = h/p has the momentum in the denominator, so doubling p halves the wavelength: 0.4/2 = 0.2 nm. The inverse relation is why heavy or fast objects are so hard to catch behaving as waves — a cricket ball's enormous momentum puts its wavelength around 10⁻³⁴ m, and no aperture that small exists to diffract it. (0.8 doubles instead of halving.)",
+        hi: "λ = h/p में संवेग हर में है, अतः p दुगुना करने पर तरंगदैर्ध्य आधी हो जाती है: 0.4/2 = 0.2 nm. व्युत्क्रम संबंध ही कारण है कि भारी या तेज़ वस्तुओं को तरंग की तरह बरतते पकड़ना इतना कठिन है — क्रिकेट की गेंद का विशाल संवेग उसकी तरंगदैर्ध्य लगभग 10⁻³⁴ m कर देता है, और उसे विवर्तित करने को उतना छोटा कोई द्वारक है ही नहीं। (0.8 आधा करने के बजाय दुगुना कर देता है।)",
+        mr: "λ = h/p मध्ये संवेग छेदात आहे, म्हणून p दुप्पट केल्यास तरंगलांबी निम्मी होते: 0.4/2 = 0.2 nm. व्यस्त संबंध हेच कारण की जड वा वेगवान वस्तूंना लहरीसारखे वागताना पकडणे इतके कठीण आहे — क्रिकेटच्या चेंडूचा प्रचंड संवेग त्याची तरंगलांबी सुमारे 10⁻³⁴ m करतो, आणि तिला विवर्तित करायला तितके लहान कोणतेही द्वारक नाहीच. (0.8 निम्मे करण्याऐवजी दुप्पट करते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "What is the energy, in eV, of a photon of wavelength 400 nm? Take hc = 1240 eV nm.",
+        hi: "400 nm तरंगदैर्ध्य के फ़ोटॉन की ऊर्जा, eV में, क्या है? hc = 1240 eV nm लो।",
+        mr: "400 nm तरंगलांबीच्या फोटॉनची ऊर्जा, eV मध्ये, किती? hc = 1240 eV nm घ्या.",
+      },
+      answer: 3.1,
+      wrong: [0.32, 310, 4.13],
+      checkExpr: "1240/400",
+      solution: {
+        en: "E = hc/λ = 1240/400 = 3.1 eV. This is violet light at the edge of the visible band, and 3.1 eV is already comparable with the energy of a weak chemical bond — which is why the near ultraviolet just beyond it begins to do damage while the red end of the spectrum, at about half this energy, does not. (0.32 inverts the ratio; 310 misplaces the exponent.)",
+        hi: "E = hc/λ = 1240/400 = 3.1 eV. यह दृश्य पट्टी के किनारे का बैंगनी प्रकाश है, और 3.1 eV पहले से कमज़ोर रासायनिक बंध की ऊर्जा के दर्जे का है — इसीलिए उसके ठीक आगे का निकट-पराबैंगनी नुक़सान करने लगता है जबकि स्पेक्ट्रम का लाल सिरा, लगभग आधी इस ऊर्जा पर, नहीं करता। (0.32 अनुपात उलट देता है; 310 घातांक चूक जाता है।)",
+        mr: "E = hc/λ = 1240/400 = 3.1 eV. हा दृश्य पट्ट्याच्या कडेचा जांभळा प्रकाश आहे, आणि 3.1 eV हे आधीच क्षीण रासायनिक बंधाच्या ऊर्जेच्या तोडीचे आहे — म्हणूनच त्याच्या अगदी पुढचे निकट-अतिनील हानी करू लागते तर वर्णपटाचे लाल टोक, सुमारे निम्म्या या ऊर्जेवर, करत नाही. (0.32 गुणोत्तर उलटवते; 310 घातांक चुकवते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A lamp radiates 100 W as photons of 2 eV each. How many photons does it emit per second, in units of 10²⁰? Take 1 eV = 1.6 × 10⁻¹⁹ J.",
+        hi: "एक लैंप 100 W का विकिरण 2 eV वाले फ़ोटॉनों के रूप में करता है। वह प्रति सेकंड कितने फ़ोटॉन, 10²⁰ की इकाइयों में, उत्सर्जित करता है? 1 eV = 1.6 × 10⁻¹⁹ J लो।",
+        mr: "एक दिवा 100 W चे प्रारण 2 eV च्या फोटॉनांच्या रूपात करतो. तो दर सेकंदाला किती फोटॉन, 10²⁰ च्या एककांत, उत्सर्जित करतो? 1 eV = 1.6 × 10⁻¹⁹ J घ्या.",
+      },
+      answer: 3.125,
+      wrong: [0.32, 31.25, 1.6],
+      checkExpr: "100/32",
+      solution: {
+        en: "One photon carries 2 × 1.6 × 10⁻¹⁹ = 3.2 × 10⁻¹⁹ J, so the number per second is 100/(3.2 × 10⁻¹⁹) = 3.125 × 10²⁰, that is 100/32 = 3.125 in the units asked. The size of that number is the point: with 10²⁰ photons arriving every second the graininess is undetectable and light looks perfectly continuous, which is why the quantum nature of light stayed hidden until experiments were done one electron at a time. (31.25 misplaces the exponent by one.)",
+        hi: "एक फ़ोटॉन 2 × 1.6 × 10⁻¹⁹ = 3.2 × 10⁻¹⁹ J ढोता है, अतः प्रति सेकंड संख्या 100/(3.2 × 10⁻¹⁹) = 3.125 × 10²⁰ है, अर्थात् पूछी गई इकाइयों में 100/32 = 3.125. उस संख्या का आकार ही मर्म है: हर सेकंड 10²⁰ फ़ोटॉन आते हों तो दानेदारी पकड़ में नहीं आती और प्रकाश पूरी तरह सतत लगता है, इसीलिए प्रकाश की क्वांटम प्रकृति तब तक छिपी रही जब तक एक-एक इलेक्ट्रॉन पर प्रयोग नहीं हुए। (31.25 घातांक एक से चूक जाता है।)",
+        mr: "एक फोटॉन 2 × 1.6 × 10⁻¹⁹ = 3.2 × 10⁻¹⁹ J वाहतो, म्हणून दर सेकंदाची संख्या 100/(3.2 × 10⁻¹⁹) = 3.125 × 10²⁰ आहे, म्हणजे विचारलेल्या एककांत 100/32 = 3.125. त्या संख्येचा आकार हाच गाभा: दर सेकंदाला 10²⁰ फोटॉन येत असतील तर दाणेदारपणा ओळखता येत नाही आणि प्रकाश पूर्णपणे सलग वाटतो, म्हणूनच प्रकाशाचे पुंज स्वरूप तोवर लपून राहिले जोवर एकेका इलेक्ट्रॉनवर प्रयोग झाले नाहीत. (31.25 घातांक एकाने चुकवते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A photocell above threshold gives a saturation current of 8 μA. The intensity is trebled at the same frequency. What is the new saturation current, in μA?",
+        hi: "देहली से ऊपर चलता एक प्रकाश-सेल 8 μA संतृप्ति धारा देता है। उसी आवृत्ति पर तीव्रता तिगुनी कर दी जाती है। नई संतृप्ति धारा, μA में, क्या है?",
+        mr: "उंबरठ्यावरचा एक प्रकाश-घट 8 μA संपृक्तता धारा देतो. त्याच वारंवारतेवर तीव्रता तिप्पट केली जाते. नवी संपृक्तता धारा, μA मध्ये, किती?",
+      },
+      answer: 24,
+      wrong: [8, 2.67, 11],
+      checkExpr: "8*3",
+      solution: {
+        en: "Intensity sets the number of photons per second and therefore the number of electrons ejected, so the saturation current is proportional to it: 8 × 3 = 24 μA. Note what does NOT change — the stopping potential, because the frequency is untouched and each photon still carries the same energy. The two halves of the experiment separate cleanly: brightness moves the current, colour moves the stopping potential. (8 assumes nothing changes, which is true of the stopping potential and false of the current.)",
+        hi: "तीव्रता प्रति सेकंड फ़ोटॉनों की संख्या तय करती है और इसलिए निकले इलेक्ट्रॉनों की संख्या, अतः संतृप्ति धारा उसकी समानुपाती है: 8 × 3 = 24 μA. ध्यान दो कि क्या नहीं बदलता — निरोधी विभव, क्योंकि आवृत्ति अछूती है और हर फ़ोटॉन अब भी वही ऊर्जा ढोता है। प्रयोग के दोनों आधे साफ़-साफ़ बँट जाते हैं: चमक धारा हिलाती है, रंग निरोधी विभव। (8 मान लेता है कि कुछ नहीं बदलता, जो निरोधी विभव के लिए सच और धारा के लिए झूठ है।)",
+        mr: "तीव्रता दर सेकंदाच्या फोटॉनांची संख्या ठरवते आणि म्हणून बाहेर पडलेल्या इलेक्ट्रॉनांची संख्या, म्हणून संपृक्तता धारा तिच्याशी समानुपाती आहे: 8 × 3 = 24 μA. काय बदलत नाही ते लक्षात घ्या — निरोधी विभव, कारण वारंवारता अस्पर्श आहे आणि प्रत्येक फोटॉन अजूनही तीच ऊर्जा वाहतो. प्रयोगाचे दोन्ही अर्धे स्वच्छपणे विभागतात: तेज धारा हलवते, रंग निरोधी विभव. (8 गृहीत धरते की काहीच बदलत नाही, जे निरोधी विभवासाठी खरे आणि धारेसाठी खोटे आहे.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "Light of wavelength 310 nm falls on a metal of work function 2 eV. What is the stopping potential, in volts? Take hc = 1240 eV nm.",
+        hi: "310 nm तरंगदैर्ध्य का प्रकाश 2 eV कार्यफलन की धातु पर पड़ता है। निरोधी विभव, वोल्ट में, क्या है? hc = 1240 eV nm लो।",
+        mr: "310 nm तरंगलांबीचा प्रकाश 2 eV कार्यफलनाच्या धातूवर पडतो. निरोधी विभव, व्होल्टमध्ये, किती? hc = 1240 eV nm घ्या.",
+      },
+      answer: 2,
+      wrong: [4, 6, 0.5],
+      checkExpr: "1240/310-2",
+      fmt: volts,
+      solution: {
+        en: "First convert the wavelength to a photon energy: hc/λ = 1240/310 = 4 eV. Then subtract the work function: K_max = 4 − 2 = 2 eV, so the stopping potential is 2 V. The two-step order matters, because the work function is an energy and cannot be subtracted from a wavelength — a surprising number of wrong answers come from mixing the units rather than from the physics. (4 forgets the work function altogether.)",
+        hi: "पहले तरंगदैर्ध्य को फ़ोटॉन ऊर्जा में बदलो: hc/λ = 1240/310 = 4 eV. फिर कार्यफलन घटाओ: K_max = 4 − 2 = 2 eV, अतः निरोधी विभव 2 V है। दो चरणों का क्रम मायने रखता है, क्योंकि कार्यफलन ऊर्जा है और उसे तरंगदैर्ध्य में से घटाया नहीं जा सकता — चौंकाने वाली संख्या में ग़लत उत्तर भौतिकी से नहीं, मात्रक मिला देने से आते हैं। (4 कार्यफलन को बिलकुल भूल जाता है।)",
+        mr: "आधी तरंगलांबीचे फोटॉन ऊर्जेत रूपांतर करा: hc/λ = 1240/310 = 4 eV. मग कार्यफलन वजा करा: K_max = 4 − 2 = 2 eV, म्हणून निरोधी विभव 2 V आहे. दोन पायऱ्यांचा क्रम महत्त्वाचा आहे, कारण कार्यफलन ही ऊर्जा आहे आणि ती तरंगलांबीतून वजा करता येत नाही — चकित करणाऱ्या संख्येने चुकीची उत्तरे भौतिकीतून नव्हे तर एकके मिसळण्यातून येतात. (4 कार्यफलन पूर्णपणे विसरते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "Two metals have work functions 2 eV and 4 eV. Photons of 5 eV fall on both. The ratio of the maximum kinetic energies is n : 1. What is n?",
+        hi: "दो धातुओं के कार्यफलन 2 eV और 4 eV हैं। 5 eV के फ़ोटॉन दोनों पर पड़ते हैं। अधिकतम गतिज ऊर्जाओं का अनुपात n : 1 है। n क्या है?",
+        mr: "दोन धातूंची कार्यफलने 2 eV आणि 4 eV आहेत. 5 eV चे फोटॉन दोन्हींवर पडतात. कमाल गतिज ऊर्जांचे गुणोत्तर n : 1 आहे. n किती?",
+      },
+      answer: 3,
+      wrong: [2, 0.5, 1.25],
+      checkExpr: "(5-2)/(5-4)",
+      solution: {
+        en: "K_max is 5 − 2 = 3 eV for the first metal and 5 − 4 = 1 eV for the second, so the ratio is 3 : 1 and n = 3. The point worth taking is that the work functions differ by a factor of 2 while the kinetic energies differ by a factor of 3: the relation is a SUBTRACTION and not a proportionality, so ratios of work functions tell you nothing directly about ratios of electron energies. Push the second work function to 4.9 eV and the ratio becomes 30 : 1 from work functions that still differ by less than a factor of three. The same subtraction explains why a metal just below threshold gives nothing at all rather than something small. (2 takes the ratio of the work functions instead.)",
+        hi: "पहली धातु के लिए K_max, 5 − 2 = 3 eV है और दूसरी के लिए 5 − 4 = 1 eV, अतः अनुपात 3 : 1 है और n = 3. लेने योग्य बात यह कि कार्यफलन 2 के गुणक से भिन्न हैं जबकि गतिज ऊर्जाएँ 3 के गुणक से: संबंध घटाव है, समानुपात नहीं, अतः कार्यफलनों के अनुपात इलेक्ट्रॉन ऊर्जाओं के अनुपातों के बारे में सीधे कुछ नहीं बताते। दूसरे कार्यफलन को 4.9 eV तक धकेलो और अनुपात 30 : 1 हो जाता है, ऐसे कार्यफलनों से जो अब भी तीन गुने से कम भिन्न हैं। वही घटाव समझाता है कि देहली से ठीक नीचे की धातु कुछ छोटा देने के बजाय कुछ भी क्यों नहीं देती। (2 इसके बजाय कार्यफलनों का अनुपात ले लेता है।)",
+        mr: "पहिल्या धातूसाठी K_max हे 5 − 2 = 3 eV आहे आणि दुसऱ्यासाठी 5 − 4 = 1 eV, म्हणून गुणोत्तर 3 : 1 आहे आणि n = 3. घेण्याजोगा मुद्दा हा की कार्यफलने 2 च्या पटीने वेगळी आहेत तर गतिज ऊर्जा 3 च्या पटीने: संबंध वजाबाकी आहे, समानुपात नव्हे, म्हणून कार्यफलनांची गुणोत्तरे इलेक्ट्रॉन ऊर्जांच्या गुणोत्तरांबद्दल थेट काहीही सांगत नाहीत. दुसरे कार्यफलन 4.9 eV पर्यंत ढकला आणि गुणोत्तर 30 : 1 होते, अशा कार्यफलनांतून जी अजूनही तिपटीहून कमी वेगळी आहेत. तीच वजाबाकी समजावते की उंबरठ्याच्या अगदी खालची धातू काहीतरी लहान देण्याऐवजी काहीच का देत नाही. (2 त्याऐवजी कार्यफलनांचे गुणोत्तर घेते.)",
+      },
+    },
+  ],
+  "physics-12-atoms": [
+    {
+      level: 1,
+      stem: {
+        en: "The ground state energy of hydrogen is −13.6 eV. What is the energy of the n = 2 level, in eV?",
+        hi: "हाइड्रोजन की निम्नतम अवस्था की ऊर्जा −13.6 eV है। n = 2 स्तर की ऊर्जा, eV में, क्या है?",
+        mr: "हायड्रोजनच्या तळपातळीची ऊर्जा −13.6 eV आहे. n = 2 पातळीची ऊर्जा, eV मध्ये, किती?",
+      },
+      answer: -3.4,
+      wrong: [-6.8, -27.2, -13.6],
+      checkExpr: "-13.6/4",
+      solution: {
+        en: "E_n = −13.6/n² eV, so E₂ = −13.6/2² = −13.6/4 = −3.4 eV. The square in the denominator is what makes the levels bunch up: the gap from n = 1 to n = 2 is 10.2 eV while the gap from n = 2 to n = 3 is only 1.9 eV, and the whole infinite ladder above n = 1 fits inside 13.6 eV. (−6.8 divides by n instead of n².)",
+        hi: "E_n = −13.6/n² eV, अतः E₂ = −13.6/2² = −13.6/4 = −3.4 eV. हर में वर्ग ही स्तरों को सिमटाता है: n = 1 से n = 2 का अंतर 10.2 eV है जबकि n = 2 से n = 3 का केवल 1.9 eV, और n = 1 के ऊपर की पूरी अनंत सीढ़ी 13.6 eV के भीतर समा जाती है। (−6.8 n² के बजाय n से भाग देता है।)",
+        mr: "E_n = −13.6/n² eV, म्हणून E₂ = −13.6/2² = −13.6/4 = −3.4 eV. छेदातला वर्गच पातळ्यांना दाटवतो: n = 1 ते n = 2 चा फरक 10.2 eV आहे तर n = 2 ते n = 3 चा केवळ 1.9 eV, आणि n = 1 वरची अख्खी अनंत शिडी 13.6 eV च्या आत मावते. (−6.8 हे n² ऐवजी n ने भागते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "How much energy, in eV, must be supplied to take a hydrogen atom from its ground state at −13.6 eV to a free electron at rest, whose energy is zero?",
+        hi: "हाइड्रोजन परमाणु को −13.6 eV की निम्नतम अवस्था से विरामावस्था के मुक्त इलेक्ट्रॉन तक, जिसकी ऊर्जा शून्य है, ले जाने के लिए कितनी ऊर्जा, eV में, देनी पड़ेगी?",
+        mr: "हायड्रोजन अणूला −13.6 eV च्या तळपातळीपासून विश्रांतीतल्या मुक्त इलेक्ट्रॉनपर्यंत, ज्याची ऊर्जा शून्य आहे, नेण्यास किती ऊर्जा, eV मध्ये, द्यावी लागेल?",
+      },
+      answer: 13.6,
+      wrong: [-13.6, 27.2, 3.4],
+      checkExpr: "13.6-0",
+      solution: {
+        en: "The energy needed is the difference between the final and initial levels: 0 − (−13.6) = 13.6 eV, which is 13.6 − 0. This is the ionisation energy of hydrogen, and it explains what the negative sign was for: a bound electron sits below the zero of energy, and the depth below zero is exactly the work required to free it. (−13.6 quotes the level rather than the energy needed.)",
+        hi: "चाहिए ऊर्जा अंतिम और आरंभिक स्तरों का अंतर है: 0 − (−13.6) = 13.6 eV, जो 13.6 − 0 है। यह हाइड्रोजन की आयनन ऊर्जा है, और यह समझाती है कि ऋण चिह्न किसलिए था: बँधा इलेक्ट्रॉन ऊर्जा के शून्य से नीचे बैठता है, और शून्य से नीचे की गहराई ठीक वही कार्य है जो उसे मुक्त करने को चाहिए। (−13.6 चाहिए ऊर्जा के बजाय स्तर बता देता है।)",
+        mr: "लागणारी ऊर्जा म्हणजे अंतिम आणि प्रारंभिक पातळ्यांचा फरक: 0 − (−13.6) = 13.6 eV, जे 13.6 − 0 आहे. ही हायड्रोजनची आयनन ऊर्जा आहे, आणि ती समजावते की ऋण चिन्ह कशासाठी होते: बद्ध इलेक्ट्रॉन ऊर्जेच्या शून्याखाली बसतो, आणि शून्याखालची खोली नेमके तेच कार्य आहे जे त्याला मुक्त करायला लागते. (−13.6 लागणाऱ्या ऊर्जेऐवजी पातळी सांगते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A hydrogen atom falls from the n = 2 level at −3.4 eV to the ground state at −13.6 eV. What is the energy, in eV, of the photon emitted?",
+        hi: "एक हाइड्रोजन परमाणु −3.4 eV के n = 2 स्तर से −13.6 eV की निम्नतम अवस्था में गिरता है। उत्सर्जित फ़ोटॉन की ऊर्जा, eV में, क्या है?",
+        mr: "एक हायड्रोजन अणू −3.4 eV च्या n = 2 पातळीवरून −13.6 eV च्या तळपातळीवर पडतो. उत्सर्जित फोटॉनची ऊर्जा, eV मध्ये, किती?",
+      },
+      answer: 10.2,
+      wrong: [3.4, 13.6, 17],
+      checkExpr: "13.6-3.4",
+      solution: {
+        en: "The photon carries the difference between the two levels: (−3.4) − (−13.6) = 13.6 − 3.4 = 10.2 eV. This is the first line of the Lyman series, and 10.2 eV corresponds to about 122 nm, well into the ultraviolet — which is why every Lyman line is invisible and the visible hydrogen lines all belong to the Balmer series ending on n = 2. (17 adds the magnitudes instead of subtracting.)",
+        hi: "फ़ोटॉन दोनों स्तरों का अंतर ढोता है: (−3.4) − (−13.6) = 13.6 − 3.4 = 10.2 eV. यह लाइमन श्रेणी की पहली रेखा है, और 10.2 eV लगभग 122 nm के अनुरूप है, ठीक पराबैंगनी में — इसीलिए हर लाइमन रेखा अदृश्य है और हाइड्रोजन की दृश्य रेखाएँ सब n = 2 पर ख़त्म होती बामर श्रेणी की हैं। (17 घटाने के बजाय परिमाण जोड़ देता है।)",
+        mr: "फोटॉन दोन पातळ्यांचा फरक वाहतो: (−3.4) − (−13.6) = 13.6 − 3.4 = 10.2 eV. ही लायमन श्रेणीची पहिली रेषा आहे, आणि 10.2 eV सुमारे 122 nm शी जुळते, अगदी अतिनीलात — म्हणूनच प्रत्येक लायमन रेषा अदृश्य आहे आणि हायड्रोजनच्या दृश्य रेषा सर्व n = 2 वर संपणाऱ्या बामर श्रेणीच्या आहेत. (17 वजा करण्याऐवजी परिमाणे जोडते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "In the Bohr model the radius of the nth orbit of hydrogen is n² times the first. How many times the first Bohr radius is the n = 3 orbit?",
+        hi: "बोर मॉडल में हाइड्रोजन की nवीं कक्षा की त्रिज्या पहली से n² गुनी है। n = 3 कक्षा पहली बोर त्रिज्या की कितनी गुनी है?",
+        mr: "बोर प्रारूपात हायड्रोजनच्या nव्या कक्षेची त्रिज्या पहिलीच्या n² पट आहे. n = 3 कक्षा पहिल्या बोर त्रिज्येच्या किती पट आहे?",
+      },
+      answer: 9,
+      wrong: [3, 6, 27],
+      checkExpr: "3*3",
+      solution: {
+        en: "r_n ∝ n², so r₃ = 3² = 3 × 3 = 9 times the Bohr radius. Note how differently the two quantities scale: radius as n² and energy as 1/n², so the fourth orbit is sixteen times as wide but only a sixteenth as deep. That is why highly excited atoms are enormous and barely bound, and why a gentle collision can ionise them. (27 uses n³; 3 forgets the square.)",
+        hi: "r_n ∝ n², अतः r₃ = 3² = 3 × 3 = 9 गुनी बोर त्रिज्या। ध्यान दो कि दोनों राशियाँ कितने भिन्न ढंग से चलती हैं: त्रिज्या n² के अनुसार और ऊर्जा 1/n² के अनुसार, अतः चौथी कक्षा सोलह गुनी चौड़ी है पर केवल सोलहवें भाग जितनी गहरी। इसीलिए अत्यधिक उत्तेजित परमाणु विशाल और मुश्किल से बँधे होते हैं, और इसीलिए हल्की-सी टक्कर उन्हें आयनित कर देती है। (27 n³ लगा देता है; 3 वर्ग भूल जाता है।)",
+        mr: "r_n ∝ n², म्हणून r₃ = 3² = 3 × 3 = 9 पट बोर त्रिज्या. दोन्ही राशी किती वेगळ्या प्रकारे चालतात ते लक्षात घ्या: त्रिज्या n² नुसार आणि ऊर्जा 1/n² नुसार, म्हणून चौथी कक्षा सोळापट रुंद आहे पण केवळ सोळाव्या भागाइतकी खोल. म्हणूनच अतिशय उत्तेजित अणू प्रचंड आणि जेमतेम बद्ध असतात, आणि म्हणूनच हलकीशी टक्कर त्यांना आयनित करते. (27 हे n³ लावते; 3 वर्ग विसरते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "In the Bohr model the electron's angular momentum in the nth orbit is n times h/2π. In the n = 4 orbit it is how many units of h/2π?",
+        hi: "बोर मॉडल में nवीं कक्षा में इलेक्ट्रॉन का कोणीय संवेग h/2π का n गुना है। n = 4 कक्षा में वह h/2π की कितनी इकाइयाँ है?",
+        mr: "बोर प्रारूपात nव्या कक्षेत इलेक्ट्रॉनचा कोनीय संवेग h/2π च्या n पट आहे. n = 4 कक्षेत तो h/2π ची किती एकके आहे?",
+      },
+      answer: 4,
+      wrong: [2, 16, 1],
+      checkExpr: "8/2",
+      solution: {
+        en: "The quantisation rule is mvr = nh/2π, which is linear in n, so the n = 4 orbit carries 4 units — that is 8/2. Unlike the radius and the energy, angular momentum is the one quantity that scales simply, which is a clue that it is the fundamental one: it is the rule that was postulated, and the n² and 1/n² behaviour of the other quantities are consequences of it. (16 squares n, borrowing the radius's rule.)",
+        hi: "क्वांटमीकरण का नियम mvr = nh/2π है, जो n में रैखिक है, अतः n = 4 कक्षा 4 इकाइयाँ ढोती है — अर्थात् 8/2. त्रिज्या और ऊर्जा के विपरीत, कोणीय संवेग वही एक राशि है जो सीधे-सीधे चलती है, और यही सुराग़ है कि वही मूल है: वही नियम ठहराया गया था, और दूसरी राशियों का n² तथा 1/n² आचरण उसी के परिणाम हैं। (16 n का वर्ग कर देता है, त्रिज्या का नियम उधार लेकर।)",
+        mr: "पुंजीकरणाचा नियम mvr = nh/2π आहे, जो n मध्ये रेषीय आहे, म्हणून n = 4 कक्षा 4 एकके वाहते — म्हणजे 8/2. त्रिज्या आणि ऊर्जेच्या उलट, कोनीय संवेग हीच एक राशी जी सरळसोट चालते, आणि हाच सुगावा की तीच मूलभूत आहे: तोच नियम ठरवला गेला होता, आणि इतर राशींचे n² आणि 1/n² वर्तन त्याचेच परिणाम आहेत. (16 हे n चा वर्ग करते, त्रिज्येचा नियम उसना घेऊन.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A transition emits a photon of energy 12.4 eV. What is its wavelength, in nm? Take hc = 1240 eV nm.",
+        hi: "एक संक्रमण 12.4 eV ऊर्जा का फ़ोटॉन उत्सर्जित करता है। उसकी तरंगदैर्ध्य, nm में, क्या है? hc = 1240 eV nm लो।",
+        mr: "एक संक्रमण 12.4 eV ऊर्जेचा फोटॉन उत्सर्जित करते. त्याची तरंगलांबी, nm मध्ये, किती? hc = 1240 eV nm घ्या.",
+      },
+      answer: 100,
+      wrong: [10, 1000, 12.4],
+      checkExpr: "1240/12.4",
+      solution: {
+        en: "λ = hc/E = 1240/12.4 = 100 nm. That wavelength is deep in the ultraviolet, which is what one should expect: hydrogen's levels are spaced by several electron-volts near the ground state, and any transition ending on n = 1 costs at least 10.2 eV, putting the entire Lyman series below 122 nm and out of sight. (10 misplaces the exponent; 12.4 quotes the energy back as a wavelength.)",
+        hi: "λ = hc/E = 1240/12.4 = 100 nm. वह तरंगदैर्ध्य गहरे पराबैंगनी में है, और यही अपेक्षित है: निम्नतम अवस्था के पास हाइड्रोजन के स्तर कई इलेक्ट्रॉन-वोल्ट की दूरी पर हैं, और n = 1 पर ख़त्म होते किसी भी संक्रमण की क़ीमत कम से कम 10.2 eV है, जो पूरी लाइमन श्रेणी को 122 nm से नीचे और नज़रों से बाहर रख देती है। (10 घातांक चूक जाता है; 12.4 ऊर्जा को ही तरंगदैर्ध्य बताकर लौटा देता है।)",
+        mr: "λ = hc/E = 1240/12.4 = 100 nm. ती तरंगलांबी खोल अतिनीलात आहे, आणि हेच अपेक्षित: तळपातळीजवळ हायड्रोजनच्या पातळ्या कित्येक इलेक्ट्रॉन-व्होल्टच्या अंतरावर आहेत, आणि n = 1 वर संपणाऱ्या कोणत्याही संक्रमणाची किंमत किमान 10.2 eV आहे, जी अख्खी लायमन श्रेणी 122 nm खाली आणि नजरेबाहेर ठेवते. (10 घातांक चुकवते; 12.4 ऊर्जाच तरंगलांबी म्हणून परत सांगते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "For a one-electron ion of nuclear charge Z the energy levels are Z² times those of hydrogen. What is the ground state energy of He⁺, in eV, given hydrogen's is −13.6 eV?",
+        hi: "Z नाभिकीय आवेश वाले एक-इलेक्ट्रॉन आयन के ऊर्जा स्तर हाइड्रोजन के Z² गुने होते हैं। हाइड्रोजन का −13.6 eV होने पर He⁺ की निम्नतम अवस्था की ऊर्जा, eV में, क्या है?",
+        mr: "Z केंद्रकीय प्रभार असलेल्या एक-इलेक्ट्रॉन आयनाच्या ऊर्जा पातळ्या हायड्रोजनच्या Z² पट असतात. हायड्रोजनची −13.6 eV असताना He⁺ च्या तळपातळीची ऊर्जा, eV मध्ये, किती?",
+      },
+      answer: -54.4,
+      wrong: [-27.2, -13.6, -6.8],
+      checkExpr: "-13.6*4",
+      solution: {
+        en: "Helium has Z = 2, so the levels scale by Z² = 4: E₁ = −13.6 × 4 = −54.4 eV. The stronger nuclear charge binds the single electron four times more deeply, and the whole spectrum shifts to shorter wavelengths by the same factor. Some of He⁺'s lines fall close to hydrogen's and were long attributed to hydrogen, until the Z² factor explained the discrepancy — which was itself early evidence for the Bohr model. (−27.2 uses Z instead of Z².)",
+        hi: "हीलियम का Z = 2 है, अतः स्तर Z² = 4 के अनुसार बदलते हैं: E₁ = −13.6 × 4 = −54.4 eV. प्रबल नाभिकीय आवेश अकेले इलेक्ट्रॉन को चार गुना गहरा बाँधता है, और पूरा स्पेक्ट्रम उसी गुणक से छोटी तरंगदैर्ध्यों की ओर खिसक जाता है। He⁺ की कुछ रेखाएँ हाइड्रोजन की रेखाओं के पास पड़ती हैं और लंबे समय तक हाइड्रोजन की मानी जाती रहीं, जब तक Z² गुणक ने अंतर समझा नहीं दिया — जो स्वयं बोर मॉडल का आरंभिक प्रमाण था। (−27.2 Z² के बजाय Z लगा देता है।)",
+        mr: "हेलियमचा Z = 2 आहे, म्हणून पातळ्या Z² = 4 नुसार बदलतात: E₁ = −13.6 × 4 = −54.4 eV. तीव्र केंद्रकीय प्रभार एकट्या इलेक्ट्रॉनला चौपट खोल बांधतो, आणि अख्खा वर्णपट त्याच पटीने लहान तरंगलांबींकडे सरकतो. He⁺ च्या काही रेषा हायड्रोजनच्या जवळ पडतात आणि दीर्घकाळ हायड्रोजनच्या मानल्या जात राहिल्या, जोवर Z² गुणकाने फरक समजावला नाही — जो स्वतःच बोर प्रारूपाचा प्रारंभिक पुरावा होता. (−27.2 हे Z² ऐवजी Z लावते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A hydrogen atom is excited to the n = 4 level. How many different spectral lines can it emit as it returns to the ground state?",
+        hi: "एक हाइड्रोजन परमाणु n = 4 स्तर तक उत्तेजित किया जाता है। निम्नतम अवस्था में लौटते हुए वह कितनी भिन्न स्पेक्ट्रमी रेखाएँ उत्सर्जित कर सकता है?",
+        mr: "एक हायड्रोजन अणू n = 4 पातळीपर्यंत उत्तेजित केला जातो. तळपातळीवर परतताना तो किती वेगवेगळ्या वर्णपटीय रेषा उत्सर्जित करू शकतो?",
+      },
+      answer: 6,
+      wrong: [3, 4, 10],
+      checkExpr: "4*3/2",
+      solution: {
+        en: "Every distinct pair of levels gives one line, so the count is n(n − 1)/2 = 4 × 3/2 = 6: the transitions 4→3, 4→2, 4→1, 3→2, 3→1 and 2→1. The atom does not emit all six itself — it takes one route down — but a gas of many atoms takes all the routes between them, which is why a discharge tube shows every line at once. (3 counts only the direct cascade 4→3→2→1.)",
+        hi: "स्तरों का हर भिन्न युग्म एक रेखा देता है, अतः गिनती n(n − 1)/2 = 4 × 3/2 = 6 है: संक्रमण 4→3, 4→2, 4→1, 3→2, 3→1 और 2→1. परमाणु स्वयं छहों उत्सर्जित नहीं करता — वह नीचे आने का एक रास्ता लेता है — पर बहुत सारे परमाणुओं की गैस आपस में सारे रास्ते ले लेती है, इसीलिए विसर्जन नलिका एक साथ हर रेखा दिखाती है। (3 केवल सीधी सोपान-शृंखला 4→3→2→1 गिनता है।)",
+        mr: "पातळ्यांची प्रत्येक वेगळी जोडी एक रेषा देते, म्हणून मोजणी n(n − 1)/2 = 4 × 3/2 = 6 आहे: संक्रमणे 4→3, 4→2, 4→1, 3→2, 3→1 आणि 2→1. अणू स्वतः सहाही उत्सर्जित करत नाही — तो खाली येण्याचा एक मार्ग घेतो — पण अनेक अणूंचा वायू आपापसात सर्व मार्ग घेतो, म्हणूनच विसर्जन नळी एकाच वेळी प्रत्येक रेषा दाखवते. (3 केवळ थेट पायऱ्यांची साखळी 4→3→2→1 मोजते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "In the Bohr model the electron's speed in the nth orbit is inversely proportional to n. If the speed in the first orbit is c/137, what is it in the second, in units of c/137?",
+        hi: "बोर मॉडल में nवीं कक्षा में इलेक्ट्रॉन की चाल n की व्युत्क्रमानुपाती है। यदि पहली कक्षा में चाल c/137 है, तो दूसरी में वह c/137 की कितनी इकाइयाँ है?",
+        mr: "बोर प्रारूपात nव्या कक्षेत इलेक्ट्रॉनचा वेग n च्या व्यस्त समानुपाती आहे. जर पहिल्या कक्षेतील वेग c/137 असेल, तर दुसऱ्यातील तो c/137 ची किती एकके आहे?",
+      },
+      answer: 0.5,
+      wrong: [2, 0.25, 4],
+      checkExpr: "1/2",
+      solution: {
+        en: "v_n ∝ 1/n, so v₂ = 1/2 = 0.5 in these units. The number 1/137 is the fine structure constant, and its smallness is what licenses the whole non-relativistic treatment: an electron moving at under one per cent of the speed of light needs no relativistic correction to four-figure accuracy. That is a piece of luck the model depends on, and it fails for the innermost electrons of heavy atoms, where Z is large enough to push the speed towards c. (0.25 uses 1/n².)",
+        hi: "v_n ∝ 1/n, अतः इन इकाइयों में v₂ = 1/2 = 0.5. संख्या 1/137 सूक्ष्म संरचना स्थिरांक है, और उसका छोटा होना ही पूरे अनापेक्षिकीय व्यवहार को जायज़ ठहराता है: प्रकाश की चाल के एक प्रतिशत से कम पर चलते इलेक्ट्रॉन को चार अंकों की शुद्धता तक कोई आपेक्षिकीय संशोधन नहीं चाहिए। यह भाग्य का टुकड़ा है जिस पर मॉडल टिका है, और वह भारी परमाणुओं के अंतरतम इलेक्ट्रॉनों के लिए विफल हो जाता है, जहाँ Z इतना बड़ा है कि चाल को c की ओर धकेल दे। (0.25 1/n² लगा देता है।)",
+        mr: "v_n ∝ 1/n, म्हणून या एककांत v₂ = 1/2 = 0.5. संख्या 1/137 हा सूक्ष्म संरचना स्थिरांक आहे, आणि त्याचे लहान असणेच अख्ख्या असापेक्षतावादी हाताळणीला रास्त ठरवते: प्रकाशाच्या वेगाच्या एक टक्क्याहून कमी वेगाने जाणाऱ्या इलेक्ट्रॉनला चार अंकांच्या अचूकतेपर्यंत कोणतीही सापेक्षतावादी दुरुस्ती लागत नाही. हा नशिबाचा तुकडा आहे ज्यावर प्रारूप टिकले आहे, आणि तो जड अणूंच्या अंतर्भागातल्या इलेक्ट्रॉनांसाठी अपयशी ठरतो, जिथे Z इतका मोठा आहे की वेगाला c कडे ढकलावे. (0.25 हे 1/n² लावते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "In an alpha-scattering experiment about one particle in eight thousand is turned through more than 90°. If 4 × 10⁷ particles are fired at the foil, roughly how many are deflected by more than 90°?",
+        hi: "अल्फ़ा प्रकीर्णन प्रयोग में लगभग आठ हज़ार में एक कण 90° से अधिक मुड़ जाता है। यदि पन्नी पर 4 × 10⁷ कण दागे जाएँ, तो मोटे तौर पर कितने 90° से अधिक विक्षेपित होंगे?",
+        mr: "अल्फा विखुरण प्रयोगात सुमारे आठ हजारांत एक कण 90° हून अधिक वळतो. जर पन्नीवर 4 × 10⁷ कण डागले, तर ढोबळमानाने किती 90° हून अधिक विचलित होतील?",
+      },
+      answer: 5000,
+      wrong: [500, 8000, 50000],
+      checkExpr: "40000000/8000",
+      solution: {
+        en: "The count is 4 × 10⁷/8000 = 40000000/8000 = 5000 particles. The arithmetic is easy; the interesting part is what the fraction means. One in eight thousand sounds like a rare event, and it is — which is exactly why the atom must be mostly empty. But it is also far too COMMON for a spread-out charge: on the Thomson model the chance of a deflection past 90° works out at around 10⁻³⁵⁰⁰, a number so small that not one such event would occur in the age of the universe. So the observation is squeezed between two impossibilities and fixes the nucleus's size quite tightly — big enough to be hit five thousand times in forty million, small enough that the other 39,995,000 pass by untouched. This is a good example of a measurement whose value lies in an ORDER OF MAGNITUDE rather than in a precise figure. (500 and 50000 misplace the exponent by one.)",
+        hi: "गिनती 4 × 10⁷/8000 = 40000000/8000 = 5000 कण है। अंकगणित आसान है; दिलचस्प भाग यह है कि वह भिन्न क्या कहती है। आठ हज़ार में एक दुर्लभ घटना लगती है, और वह है भी — ठीक इसीलिए परमाणु अधिकांशतः ख़ाली होना ही चाहिए। पर वह फैले हुए आवेश के लिए कहीं बहुत आम भी है: थॉमसन मॉडल पर 90° से आगे विक्षेप की संभावना लगभग 10⁻³⁵⁰⁰ निकलती है, ऐसी छोटी संख्या कि विश्व की आयु में एक भी ऐसी घटना न हो। अतः प्रेक्षण दो असंभवताओं के बीच दबा है और नाभिक का आकार काफ़ी कसकर तय कर देता है — इतना बड़ा कि चार करोड़ में पाँच हज़ार बार टकराए, इतना छोटा कि बाक़ी 39,995,000 बिना छुए निकल जाएँ। यह ऐसे माप का अच्छा उदाहरण है जिसका मूल्य परिशुद्ध आँकड़े में नहीं बल्कि कोटि में है। (500 और 50000 घातांक एक से चूक जाते हैं।)",
+        mr: "मोजणी 4 × 10⁷/8000 = 40000000/8000 = 5000 कण आहे. अंकगणित सोपे आहे; रोचक भाग हा की तो अपूर्णांक काय सांगतो. आठ हजारांत एक ही दुर्मीळ घटना वाटते, आणि ती आहेही — नेमके म्हणूनच अणू बहुतांश रिकामा असलाच पाहिजे. पण ती पसरलेल्या प्रभारासाठी कितीतरी सामान्यही आहे: थॉमसन प्रारूपावर 90° पुढे विचलनाची शक्यता सुमारे 10⁻³⁵⁰⁰ निघते, इतकी लहान संख्या की विश्वाच्या आयुष्यात एकही अशी घटना घडणार नाही. म्हणून निरीक्षण दोन अशक्यतांमध्ये दाबले आहे आणि केंद्रकाचा आकार बऱ्यापैकी घट्ट ठरवते — इतका मोठा की चार कोटींत पाच हजार वेळा आदळावा, इतका लहान की उरलेले 39,995,000 न स्पर्शता निघून जावेत. हे अशा मापाचे चांगले उदाहरण आहे ज्याचे मूल्य नेमक्या आकड्यात नसून कोटीत आहे. (500 आणि 50000 घातांक एकाने चुकवतात.)",
       },
     },
   ],

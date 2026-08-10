@@ -2514,8 +2514,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 344
-  chapters / 6,030 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 348
+  chapters / 6,142 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2760,7 +2760,31 @@ navigation" means the actual list rather than one somebody maintained by hand.
   chapter closes on why a 50 kW radio mast is safe to stand beside while a few
   minutes of sunlight burns: damage is decided by hf per quantum, not by watts,
   and turning a transmitter up sends more photons and never more energetic ones.
-  Suite re-pointed and green: 87 files, 1485 tests.
+  **Four more followed** — 113 questions: Ray Optics and Optical Instruments,
+  Wave Optics, Dual Nature of Radiation and Matter, and Atoms. The run is the
+  ray being retired: it survives Chapter 9 as a working approximation, is shown
+  in Chapter 10 to be an approximation (narrow the slit and the beam SPREADS, so
+  no aperture is ever small enough to define one), and by Chapter 11 light is
+  arriving in packets and electrons are diffracting off nickel. Chapter 9's own
+  through-line is the ratio: a lens taken underwater keeps its shape and loses
+  most of its power because (n₂/n₁ − 1) is a ratio, a mirror carried into the
+  same tank is unchanged because reflection has no ratio in it, and an air
+  bubble in water is a converging shape whose bracket has gone negative, so it
+  diverges. Two of the hard questions are about how to read a theory rather than
+  how to use one: Bohr's postulate is stipulated and not derived, and it buys
+  the hydrogen spectrum — including Rydberg's constant out of h, m and e — at
+  the price of an unexplained rule; and the model's failure at neutral helium is
+  *informative*, because the boundary falls at one electron versus more than
+  one, which names the orbit rather than the quantisation as the fatal
+  assumption. The advertised '600× telescope' question makes the same move
+  commercially: any magnification is available from any eyepiece, and the
+  quantity physics limits is resolving power, fixed by the objective's diameter
+  alone. **One latent collision was closed while in the area** — a Class 12
+  electrostatics fact named "The principle of superposition" shared its name
+  with Class 11 Waves and was avoiding a duplicate-stem error only by luck of
+  the seeded shuffle; it is now "Superposition of electrostatic forces", which
+  is the more precise name anyway. Suite re-pointed and green: 87 files, 1485
+  tests.
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)

@@ -1,0 +1,1003 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 12,
+  "chapter": "Chapter 10 — Wave Optics",
+  "name": "Wave Optics",
+  "slug": "physics-12-wave-optics",
+  "summary": "The chapter where the ray is finally admitted to be an approximation: light added to light that gives darkness, which no picture of travelling particles can produce; a beam that spreads instead of sharpening when the aperture it passes is narrowed, so a slit cannot be made small enough to define a ray; a way of building the next position of a wave out of secondary wavelets from every point of the present one, which delivers reflection, refraction and the whole of the rest; a strict requirement that two sources keep a fixed phase relation, which is why two lamps never interfere and one lamp split in two always does; and a transverse-ness that shows itself when a beam is passed through a crystal and comes out able to be extinguished by a second one.",
+  "position": 10,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "तरंग प्रकाशिकी",
+      "summary": "वह अध्याय जहाँ किरण को अंततः सन्निकटन मान लिया जाता है: प्रकाश में प्रकाश जोड़ने से मिलता अँधेरा, जो चलते कणों का कोई चित्र नहीं दे सकता; ऐसा पुंज जो जिस द्वारक से गुज़रता है उसे सँकरा करने पर तीखा होने के बजाय फैल जाता है, अतः किरण परिभाषित करने के लिए झिरी को पर्याप्त छोटा किया ही नहीं जा सकता; तरंग की अगली स्थिति को वर्तमान के हर बिंदु से निकली द्वितीयक तरंगिकाओं से बनाने का तरीक़ा, जो परावर्तन, अपवर्तन और बाक़ी सब कुछ दे देता है; यह कड़ी शर्त कि दो स्रोत निश्चित कला-संबंध बनाए रखें, इसीलिए दो लैंप कभी व्यतिकरण नहीं करते और दो में बाँटा गया एक लैंप सदा करता है; और वह अनुप्रस्थता जो तब दिखती है जब पुंज को किसी क्रिस्टल से गुज़ारा जाए और वह ऐसा निकले कि दूसरा क्रिस्टल उसे बुझा सके।"
+    },
+    "mr": {
+      "name": "लहरी प्रकाशिकी",
+      "summary": "ते प्रकरण जिथे किरणाला अखेर अंदाजे मानले जाते: प्रकाशात प्रकाश जोडल्याने मिळणारा अंधार, जो चालणाऱ्या कणांचे कोणतेही चित्र देऊ शकत नाही; अशी शलाका जी ज्या द्वारकातून जाते ते अरुंद केल्यावर तीक्ष्ण होण्याऐवजी पसरते, म्हणून किरण व्याख्यायित करण्यासाठी फट पुरेशी लहान करताच येत नाही; लहरीची पुढची स्थिती वर्तमानाच्या प्रत्येक बिंदूतून निघालेल्या दुय्यम लहरिकांतून बांधण्याची पद्धत, जी परावर्तन, अपवर्तन आणि बाकी सर्व देते; ही कडक अट की दोन स्रोतांनी ठराविक कला-संबंध टिकवावा, म्हणूनच दोन दिवे कधीच व्यतिकरण करत नाहीत आणि दोनांत विभागलेला एक दिवा नेहमी करतो; आणि ते अनुप्रस्थत्व जे तेव्हा दिसते जेव्हा शलाका एखाद्या स्फटिकातून जाते आणि अशी निघते की दुसरा स्फटिक तिला विझवू शकेल."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Treat every point of a wavefront as a fresh source of little spherical wavelets, draw the surface that touches all of them a moment later, and you have the wavefront's next position. Which construction is this?",
+      "choices": [
+        "Brewster's law",
+        "Interference of light",
+        "Huygens' principle",
+        "The condition of coherence"
+      ],
+      "answerIndex": 2,
+      "solution": "Huygens' principle builds each new wavefront as the envelope of secondary spherical wavelets sent out from every point of the old one, and from it reflection, refraction and Snell's law all follow. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "तरंगाग्र के हर बिंदु को नन्ही गोलीय तरंगिकाओं का नया स्रोत मानो, वह पृष्ठ खींचो जो क्षण भर बाद उन सबको छूता है, और तुम्हारे पास तरंगाग्र की अगली स्थिति है। यह कौन-सी रचना है?",
+          "choices": [
+            "ब्रूस्टर का नियम",
+            "प्रकाश का व्यतिकरण",
+            "हाइगेंस का सिद्धांत",
+            "कलासंबद्धता की शर्त"
+          ],
+          "solution": "हाइगेंस का सिद्धांत हर नए तरंगाग्र को पुराने के हर बिंदु से निकली द्वितीयक गोलीय तरंगिकाओं के अन्वालोप के रूप में बनाता है, और उसी से परावर्तन, अपवर्तन और स्नेल का नियम निकल आते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "तरंगाग्राच्या प्रत्येक बिंदूला चिमुकल्या गोलीय लहरिकांचा नवा स्रोत माना, ते पृष्ठ काढा जे क्षणभराने त्या सर्वांना स्पर्श करते, आणि तुमच्याकडे तरंगाग्राची पुढची स्थिती आहे. ही कोणती रचना?",
+          "choices": [
+            "ब्रूस्टरचा नियम",
+            "प्रकाशाचे व्यतिकरण",
+            "हायगेन्सचे तत्त्व",
+            "कलासंबद्धतेची अट"
+          ],
+          "solution": "हायगेन्सचे तत्त्व प्रत्येक नवे तरंगाग्र जुन्याच्या प्रत्येक बिंदूतून निघालेल्या दुय्यम गोलीय लहरिकांच्या आवरणाच्या रूपात बांधते, आणि त्यातूनच परावर्तन, अपवर्तन आणि स्नेलचा नियम निघतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The condition of coherence is correct?",
+      "choices": [
+        "Polarisation of light is the restriction of its vibrations to one plane, and the intensity through a second polaroid follows Malus's law, I = I₀ cos²θ.",
+        "The condition of coherence requires two sources to keep a constant phase difference over the observation time, which independent sources cannot do because each emits in random bursts lasting nanoseconds.",
+        "Brewster's law says the polarising angle satisfies tan θ_p = n, and at that angle the reflected and refracted rays are perpendicular to one another.",
+        "Huygens' principle builds each new wavefront as the envelope of secondary spherical wavelets sent out from every point of the old one, and from it reflection, refraction and Snell's law all follow."
+      ],
+      "answerIndex": 1,
+      "solution": "The condition of coherence requires two sources to keep a constant phase difference over the observation time, which independent sources cannot do because each emits in random bursts lasting nanoseconds. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कलासंबद्धता की शर्त के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "प्रकाश का ध्रुवण उसके कंपनों का एक तल तक सीमित होना है, और दूसरे पोलेरॉइड से गुज़री तीव्रता मैलस के नियम I = I₀ cos²θ को मानती है।",
+            "कलासंबद्धता की शर्त माँगती है कि दो स्रोत प्रेक्षण-काल भर अचर कलांतर बनाए रखें, जो स्वतंत्र स्रोत नहीं कर सकते क्योंकि हर एक नैनोसेकंडों तक चलने वाले यादृच्छिक झोंकों में उत्सर्जित करता है।",
+            "ब्रूस्टर का नियम कहता है कि ध्रुवण कोण tan θ_p = n को संतुष्ट करता है, और उस कोण पर परावर्तित और अपवर्तित किरणें आपस में लंबवत होती हैं।",
+            "हाइगेंस का सिद्धांत हर नए तरंगाग्र को पुराने के हर बिंदु से निकली द्वितीयक गोलीय तरंगिकाओं के अन्वालोप के रूप में बनाता है, और उसी से परावर्तन, अपवर्तन और स्नेल का नियम निकल आते हैं।"
+          ],
+          "solution": "कलासंबद्धता की शर्त माँगती है कि दो स्रोत प्रेक्षण-काल भर अचर कलांतर बनाए रखें, जो स्वतंत्र स्रोत नहीं कर सकते क्योंकि हर एक नैनोसेकंडों तक चलने वाले यादृच्छिक झोंकों में उत्सर्जित करता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "कलासंबद्धतेची अट विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "प्रकाशाचे ध्रुवीकरण म्हणजे त्याच्या कंपनांचे एका प्रतलापुरते मर्यादित होणे, आणि दुसऱ्या पोलरॉइडमधून जाणारी तीव्रता मालसच्या नियमाला I = I₀ cos²θ मानते.",
+            "कलासंबद्धतेची अट मागते की दोन स्रोतांनी निरीक्षण-काळभर अचल कलांतर टिकवावा, जे स्वतंत्र स्रोत करू शकत नाहीत कारण प्रत्येक नॅनोसेकंद टिकणाऱ्या यादृच्छिक झोतांत उत्सर्जित करतो.",
+            "ब्रूस्टरचा नियम सांगतो की ध्रुवण कोन tan θ_p = n ला पूर्ण करतो, आणि त्या कोनावर परावर्तित आणि अपवर्तित किरणे परस्परांना लंब असतात.",
+            "हायगेन्सचे तत्त्व प्रत्येक नवे तरंगाग्र जुन्याच्या प्रत्येक बिंदूतून निघालेल्या दुय्यम गोलीय लहरिकांच्या आवरणाच्या रूपात बांधते, आणि त्यातूनच परावर्तन, अपवर्तन आणि स्नेलचा नियम निघतात."
+          ],
+          "solution": "कलासंबद्धतेची अट मागते की दोन स्रोतांनी निरीक्षण-काळभर अचल कलांतर टिकवावा, जे स्वतंत्र स्रोत करू शकत नाहीत कारण प्रत्येक नॅनोसेकंद टिकणाऱ्या यादृच्छिक झोतांत उत्सर्जित करतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The mechanism is that an oscillating charge radiates nothing along its own line of vibration, so at exactly this geometry the component that would have been reflected has nowhere to go.\" — which of these is this about?",
+      "choices": [
+        "Brewster's law",
+        "The condition of coherence",
+        "Diffraction of light",
+        "Huygens' principle"
+      ],
+      "answerIndex": 0,
+      "solution": "Brewster's law says the polarising angle satisfies tan θ_p = n, and at that angle the reflected and refracted rays are perpendicular to one another. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"क्रियाविधि यह कि दोलन करता आवेश अपनी कंपन-रेखा के अनुदिश कुछ भी विकिरित नहीं करता, अतः ठीक इसी ज्यामिति पर वह घटक जो परावर्तित होता, उसके पास जाने को कोई जगह ही नहीं।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "ब्रूस्टर का नियम",
+            "कलासंबद्धता की शर्त",
+            "प्रकाश का विवर्तन",
+            "हाइगेंस का सिद्धांत"
+          ],
+          "solution": "ब्रूस्टर का नियम कहता है कि ध्रुवण कोण tan θ_p = n को संतुष्ट करता है, और उस कोण पर परावर्तित और अपवर्तित किरणें आपस में लंबवत होती हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"यंत्रणा अशी की दोलन करणारा प्रभार आपल्या कंपन-रेषेच्या दिशेने काहीही प्रारित करत नाही, म्हणून नेमक्या याच भूमितीत जो घटक परावर्तित झाला असता त्याला जायला जागाच नाही.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "ब्रूस्टरचा नियम",
+            "कलासंबद्धतेची अट",
+            "प्रकाशाचे विवर्तन",
+            "हायगेन्सचे तत्त्व"
+          ],
+          "solution": "ब्रूस्टरचा नियम सांगतो की ध्रुवण कोन tan θ_p = n ला पूर्ण करतो, आणि त्या कोनावर परावर्तित आणि अपवर्तित किरणे परस्परांना लंब असतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Two beams from the same source are brought together and the screen shows alternate bright and dark bands, so that covering one beam makes a dark band brighter. Which phenomenon is this?",
+      "choices": [
+        "Huygens' principle",
+        "Interference of light",
+        "Diffraction of light",
+        "Polarisation of light"
+      ],
+      "answerIndex": 1,
+      "solution": "Interference of light is the redistribution of energy when coherent beams superpose, giving maxima where the path difference is a whole number of wavelengths and minima where it is an odd number of half wavelengths. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक ही स्रोत से आए दो पुंज मिलाए जाते हैं और पर्दा बारी-बारी से चमकीली और अँधेरी पट्टियाँ दिखाता है, अतः एक पुंज ढक देने से अँधेरी पट्टी अधिक चमकीली हो जाती है। यह कौन-सी परिघटना है?",
+          "choices": [
+            "हाइगेंस का सिद्धांत",
+            "प्रकाश का व्यतिकरण",
+            "प्रकाश का विवर्तन",
+            "प्रकाश का ध्रुवण"
+          ],
+          "solution": "प्रकाश का व्यतिकरण कलासंबद्ध पुंजों के अध्यारोपण पर ऊर्जा का पुनर्वितरण है, जो वहाँ उच्चिष्ठ देता है जहाँ पथांतर तरंगदैर्ध्य का पूर्णांक गुणक हो और निम्निष्ठ वहाँ जहाँ वह आधी तरंगदैर्ध्य का विषम गुणक हो। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "एकाच स्रोतापासून आलेल्या दोन शलाका एकत्र आणल्या जातात आणि पडदा आळीपाळीने तेजस्वी आणि अंधाऱ्या पट्ट्या दाखवतो, म्हणून एक शलाका झाकल्याने अंधारी पट्टी अधिक तेजस्वी होते. ही कोणती घटना?",
+          "choices": [
+            "हायगेन्सचे तत्त्व",
+            "प्रकाशाचे व्यतिकरण",
+            "प्रकाशाचे विवर्तन",
+            "प्रकाशाचे ध्रुवीकरण"
+          ],
+          "solution": "प्रकाशाचे व्यतिकरण म्हणजे कलासंबद्ध शलाका अध्यारोपित झाल्यावर ऊर्जेचे पुनर्वाटप, जे तिथे उच्चिष्ठ देते जिथे पथांतर तरंगलांबीचा पूर्णांक पट असेल आणि निम्निष्ठ तिथे जिथे तो अर्ध्या तरंगलांबीचा विषम पट असेल. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Diffraction of light is correct?",
+      "choices": [
+        "Polarisation of light is the restriction of its vibrations to one plane, and the intensity through a second polaroid follows Malus's law, I = I₀ cos²θ.",
+        "Interference of light is the redistribution of energy when coherent beams superpose, giving maxima where the path difference is a whole number of wavelengths and minima where it is an odd number of half wavelengths.",
+        "Brewster's law says the polarising angle satisfies tan θ_p = n, and at that angle the reflected and refracted rays are perpendicular to one another.",
+        "Diffraction of light is the bending of a wave round the edges of an obstacle or aperture, giving a single-slit pattern whose first minimum lies at sin θ = λ/a."
+      ],
+      "answerIndex": 3,
+      "solution": "Diffraction of light is the bending of a wave round the edges of an obstacle or aperture, giving a single-slit pattern whose first minimum lies at sin θ = λ/a. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रकाश का विवर्तन के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "प्रकाश का ध्रुवण उसके कंपनों का एक तल तक सीमित होना है, और दूसरे पोलेरॉइड से गुज़री तीव्रता मैलस के नियम I = I₀ cos²θ को मानती है।",
+            "प्रकाश का व्यतिकरण कलासंबद्ध पुंजों के अध्यारोपण पर ऊर्जा का पुनर्वितरण है, जो वहाँ उच्चिष्ठ देता है जहाँ पथांतर तरंगदैर्ध्य का पूर्णांक गुणक हो और निम्निष्ठ वहाँ जहाँ वह आधी तरंगदैर्ध्य का विषम गुणक हो।",
+            "ब्रूस्टर का नियम कहता है कि ध्रुवण कोण tan θ_p = n को संतुष्ट करता है, और उस कोण पर परावर्तित और अपवर्तित किरणें आपस में लंबवत होती हैं।",
+            "प्रकाश का विवर्तन किसी अवरोध या द्वारक के किनारों के गिर्द तरंग का मुड़ना है, जो एकल झिरी का ऐसा प्रतिरूप देता है जिसका पहला निम्निष्ठ sin θ = λ/a पर पड़ता है।"
+          ],
+          "solution": "प्रकाश का विवर्तन किसी अवरोध या द्वारक के किनारों के गिर्द तरंग का मुड़ना है, जो एकल झिरी का ऐसा प्रतिरूप देता है जिसका पहला निम्निष्ठ sin θ = λ/a पर पड़ता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "प्रकाशाचे विवर्तन विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "प्रकाशाचे ध्रुवीकरण म्हणजे त्याच्या कंपनांचे एका प्रतलापुरते मर्यादित होणे, आणि दुसऱ्या पोलरॉइडमधून जाणारी तीव्रता मालसच्या नियमाला I = I₀ cos²θ मानते.",
+            "प्रकाशाचे व्यतिकरण म्हणजे कलासंबद्ध शलाका अध्यारोपित झाल्यावर ऊर्जेचे पुनर्वाटप, जे तिथे उच्चिष्ठ देते जिथे पथांतर तरंगलांबीचा पूर्णांक पट असेल आणि निम्निष्ठ तिथे जिथे तो अर्ध्या तरंगलांबीचा विषम पट असेल.",
+            "ब्रूस्टरचा नियम सांगतो की ध्रुवण कोन tan θ_p = n ला पूर्ण करतो, आणि त्या कोनावर परावर्तित आणि अपवर्तित किरणे परस्परांना लंब असतात.",
+            "प्रकाशाचे विवर्तन म्हणजे एखाद्या अडथळ्याच्या वा द्वारकाच्या कडांभोवती लहरीचे वाकणे, जे एकेरी फटीचा असा नमुना देते ज्याचा पहिला निम्निष्ठ sin θ = λ/a वर पडतो."
+          ],
+          "solution": "प्रकाशाचे विवर्तन म्हणजे एखाद्या अडथळ्याच्या वा द्वारकाच्या कडांभोवती लहरीचे वाकणे, जे एकेरी फटीचा असा नमुना देते ज्याचा पहिला निम्निष्ठ sin θ = λ/a वर पडतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It is possible only because light is transverse: a longitudinal wave vibrates along its direction of travel and has no plane to be restricted to, which is why sound cannot be polarised at all.\" — which of these is this about?",
+      "choices": [
+        "Huygens' principle",
+        "Diffraction of light",
+        "Polarisation of light",
+        "Interference of light"
+      ],
+      "answerIndex": 2,
+      "solution": "Polarisation of light is the restriction of its vibrations to one plane, and the intensity through a second polaroid follows Malus's law, I = I₀ cos²θ. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"यह केवल इसलिए संभव है कि प्रकाश अनुप्रस्थ है: अनुदैर्घ्य तरंग अपनी चलने की दिशा के अनुदिश कंपती है और उसके पास सीमित होने को कोई तल है ही नहीं, इसीलिए ध्वनि ध्रुवित हो ही नहीं सकती।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "हाइगेंस का सिद्धांत",
+            "प्रकाश का विवर्तन",
+            "प्रकाश का ध्रुवण",
+            "प्रकाश का व्यतिकरण"
+          ],
+          "solution": "प्रकाश का ध्रुवण उसके कंपनों का एक तल तक सीमित होना है, और दूसरे पोलेरॉइड से गुज़री तीव्रता मैलस के नियम I = I₀ cos²θ को मानती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"हे केवळ यामुळे शक्य आहे की प्रकाश अनुप्रस्थ आहे: अनुदैर्घ्य लहर आपल्या प्रवासाच्या दिशेने कंप पावते आणि तिच्याकडे मर्यादित होण्यास कोणतेही प्रतल नाहीच, म्हणूनच ध्वनी ध्रुवित होऊच शकत नाही.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "हायगेन्सचे तत्त्व",
+            "प्रकाशाचे विवर्तन",
+            "प्रकाशाचे ध्रुवीकरण",
+            "प्रकाशाचे व्यतिकरण"
+          ],
+          "solution": "प्रकाशाचे ध्रुवीकरण म्हणजे त्याच्या कंपनांचे एका प्रतलापुरते मर्यादित होणे, आणि दुसऱ्या पोलरॉइडमधून जाणारी तीव्रता मालसच्या नियमाला I = I₀ cos²θ मानते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Every point of the front is a fresh source\" goes correctly with which of these?",
+      "choices": [
+        "the condition of coherence",
+        "Huygens' principle",
+        "polarisation of light",
+        "interference of light"
+      ],
+      "answerIndex": 1,
+      "solution": "Huygens' principle builds each new wavefront as the envelope of secondary spherical wavelets sent out from every point of the old one, and from it reflection, refraction and Snell's law all follow. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"अग्र का हर बिंदु एक नया स्रोत\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "कलासंबद्धता की शर्त",
+            "हाइगेंस का सिद्धांत",
+            "प्रकाश का ध्रुवण",
+            "प्रकाश का व्यतिकरण"
+          ],
+          "solution": "हाइगेंस का सिद्धांत हर नए तरंगाग्र को पुराने के हर बिंदु से निकली द्वितीयक गोलीय तरंगिकाओं के अन्वालोप के रूप में बनाता है, और उसी से परावर्तन, अपवर्तन और स्नेल का नियम निकल आते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"अग्राचा प्रत्येक बिंदू एक नवा स्रोत\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "कलासंबद्धतेची अट",
+            "हायगेन्सचे तत्त्व",
+            "प्रकाशाचे ध्रुवीकरण",
+            "प्रकाशाचे व्यतिकरण"
+          ],
+          "solution": "हायगेन्सचे तत्त्व प्रत्येक नवे तरंगाग्र जुन्याच्या प्रत्येक बिंदूतून निघालेल्या दुय्यम गोलीय लहरिकांच्या आवरणाच्या रूपात बांधते, आणि त्यातूनच परावर्तन, अपवर्तन आणि स्नेलचा नियम निघतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Two lamps never, one lamp split always\" goes correctly with which of these?",
+      "choices": [
+        "diffraction of light",
+        "Brewster's law",
+        "polarisation of light",
+        "the condition of coherence"
+      ],
+      "answerIndex": 3,
+      "solution": "The condition of coherence requires two sources to keep a constant phase difference over the observation time, which independent sources cannot do because each emits in random bursts lasting nanoseconds. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"दो लैंप कभी नहीं, बाँटा गया एक लैंप सदा\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "प्रकाश का विवर्तन",
+            "ब्रूस्टर का नियम",
+            "प्रकाश का ध्रुवण",
+            "कलासंबद्धता की शर्त"
+          ],
+          "solution": "कलासंबद्धता की शर्त माँगती है कि दो स्रोत प्रेक्षण-काल भर अचर कलांतर बनाए रखें, जो स्वतंत्र स्रोत नहीं कर सकते क्योंकि हर एक नैनोसेकंडों तक चलने वाले यादृच्छिक झोंकों में उत्सर्जित करता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"दोन दिवे कधीच नाही, विभागलेला एक दिवा नेहमी\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "प्रकाशाचे विवर्तन",
+            "ब्रूस्टरचा नियम",
+            "प्रकाशाचे ध्रुवीकरण",
+            "कलासंबद्धतेची अट"
+          ],
+          "solution": "कलासंबद्धतेची अट मागते की दोन स्रोतांनी निरीक्षण-काळभर अचल कलांतर टिकवावा, जे स्वतंत्र स्रोत करू शकत नाहीत कारण प्रत्येक नॅनोसेकंद टिकणाऱ्या यादृच्छिक झोतांत उत्सर्जित करतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Reflected and refracted rays exactly at right angles\" goes correctly with which of these?",
+      "choices": [
+        "polarisation of light",
+        "Brewster's law",
+        "interference of light",
+        "diffraction of light"
+      ],
+      "answerIndex": 1,
+      "solution": "Brewster's law says the polarising angle satisfies tan θ_p = n, and at that angle the reflected and refracted rays are perpendicular to one another. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"परावर्तित और अपवर्तित किरणें ठीक समकोण पर\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "प्रकाश का ध्रुवण",
+            "ब्रूस्टर का नियम",
+            "प्रकाश का व्यतिकरण",
+            "प्रकाश का विवर्तन"
+          ],
+          "solution": "ब्रूस्टर का नियम कहता है कि ध्रुवण कोण tan θ_p = n को संतुष्ट करता है, और उस कोण पर परावर्तित और अपवर्तित किरणें आपस में लंबवत होती हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"परावर्तित आणि अपवर्तित किरणे नेमकी काटकोनात\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "प्रकाशाचे ध्रुवीकरण",
+            "ब्रूस्टरचा नियम",
+            "प्रकाशाचे व्यतिकरण",
+            "प्रकाशाचे विवर्तन"
+          ],
+          "solution": "ब्रूस्टरचा नियम सांगतो की ध्रुवण कोन tan θ_p = n ला पूर्ण करतो, आणि त्या कोनावर परावर्तित आणि अपवर्तित किरणे परस्परांना लंब असतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Cover one beam and a dark band gets brighter\" goes correctly with which of these?",
+      "choices": [
+        "interference of light",
+        "the condition of coherence",
+        "diffraction of light",
+        "Brewster's law"
+      ],
+      "answerIndex": 0,
+      "solution": "Interference of light is the redistribution of energy when coherent beams superpose, giving maxima where the path difference is a whole number of wavelengths and minima where it is an odd number of half wavelengths. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"एक पुंज ढको और अँधेरी पट्टी चमक उठे\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "प्रकाश का व्यतिकरण",
+            "कलासंबद्धता की शर्त",
+            "प्रकाश का विवर्तन",
+            "ब्रूस्टर का नियम"
+          ],
+          "solution": "प्रकाश का व्यतिकरण कलासंबद्ध पुंजों के अध्यारोपण पर ऊर्जा का पुनर्वितरण है, जो वहाँ उच्चिष्ठ देता है जहाँ पथांतर तरंगदैर्ध्य का पूर्णांक गुणक हो और निम्निष्ठ वहाँ जहाँ वह आधी तरंगदैर्ध्य का विषम गुणक हो। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"एक शलाका झाका आणि अंधारी पट्टी उजळते\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "प्रकाशाचे व्यतिकरण",
+            "कलासंबद्धतेची अट",
+            "प्रकाशाचे विवर्तन",
+            "ब्रूस्टरचा नियम"
+          ],
+          "solution": "प्रकाशाचे व्यतिकरण म्हणजे कलासंबद्ध शलाका अध्यारोपित झाल्यावर ऊर्जेचे पुनर्वाटप, जे तिथे उच्चिष्ठ देते जिथे पथांतर तरंगलांबीचा पूर्णांक पट असेल आणि निम्निष्ठ तिथे जिथे तो अर्ध्या तरंगलांबीचा विषम पट असेल. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Make the hole smaller and the light spreads wider\" goes correctly with which of these?",
+      "choices": [
+        "diffraction of light",
+        "interference of light",
+        "Huygens' principle",
+        "polarisation of light"
+      ],
+      "answerIndex": 0,
+      "solution": "Diffraction of light is the bending of a wave round the edges of an obstacle or aperture, giving a single-slit pattern whose first minimum lies at sin θ = λ/a. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"छेद छोटा करो और प्रकाश और चौड़ा फैले\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "प्रकाश का विवर्तन",
+            "प्रकाश का व्यतिकरण",
+            "हाइगेंस का सिद्धांत",
+            "प्रकाश का ध्रुवण"
+          ],
+          "solution": "प्रकाश का विवर्तन किसी अवरोध या द्वारक के किनारों के गिर्द तरंग का मुड़ना है, जो एकल झिरी का ऐसा प्रतिरूप देता है जिसका पहला निम्निष्ठ sin θ = λ/a पर पड़ता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"छिद्र लहान करा आणि प्रकाश अधिक रुंद पसरतो\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "प्रकाशाचे विवर्तन",
+            "प्रकाशाचे व्यतिकरण",
+            "हायगेन्सचे तत्त्व",
+            "प्रकाशाचे ध्रुवीकरण"
+          ],
+          "solution": "प्रकाशाचे विवर्तन म्हणजे एखाद्या अडथळ्याच्या वा द्वारकाच्या कडांभोवती लहरीचे वाकणे, जे एकेरी फटीचा असा नमुना देते ज्याचा पहिला निम्निष्ठ sin θ = λ/a वर पडतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Sound can never do it, light always can\" goes correctly with which of these?",
+      "choices": [
+        "interference of light",
+        "Huygens' principle",
+        "polarisation of light",
+        "Brewster's law"
+      ],
+      "answerIndex": 2,
+      "solution": "Polarisation of light is the restriction of its vibrations to one plane, and the intensity through a second polaroid follows Malus's law, I = I₀ cos²θ. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ध्वनि यह कभी नहीं कर सकती, प्रकाश सदा कर सकता है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "प्रकाश का व्यतिकरण",
+            "हाइगेंस का सिद्धांत",
+            "प्रकाश का ध्रुवण",
+            "ब्रूस्टर का नियम"
+          ],
+          "solution": "प्रकाश का ध्रुवण उसके कंपनों का एक तल तक सीमित होना है, और दूसरे पोलेरॉइड से गुज़री तीव्रता मैलस के नियम I = I₀ cos²θ को मानती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ध्वनी हे कधीच करू शकत नाही, प्रकाश नेहमी करू शकतो\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "प्रकाशाचे व्यतिकरण",
+            "हायगेन्सचे तत्त्व",
+            "प्रकाशाचे ध्रुवीकरण",
+            "ब्रूस्टरचा नियम"
+          ],
+          "solution": "प्रकाशाचे ध्रुवीकरण म्हणजे त्याच्या कंपनांचे एका प्रतलापुरते मर्यादित होणे, आणि दुसऱ्या पोलरॉइडमधून जाणारी तीव्रता मालसच्या नियमाला I = I₀ cos²θ मानते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Huygens' principle EXCEPT —",
+      "choices": [
+        "Huygens' principle builds each new wavefront as the envelope of secondary spherical wavelets sent out from every point of the old one, and from it reflection, refraction and Snell's law all follow.",
+        "It also predicts what the particle picture cannot: light must travel SLOWER in glass than in air, and the measurement, when it was finally made, agreed with the wave account and not with Newton's.",
+        "It explains refraction as a change of speed rather than of anything else: one edge of a wavefront enters the denser medium first and slows, so the whole front pivots — the same reason a marching column turns when its inner file shortens step.",
+        "The condition of coherence requires two sources to keep a constant phase difference over the observation time, which independent sources cannot do because each emits in random bursts lasting nanoseconds."
+      ],
+      "answerIndex": 3,
+      "solution": "The condition of coherence requires two sources to keep a constant phase difference over the observation time, which independent sources cannot do because each emits in random bursts lasting nanoseconds. That belongs to The condition of coherence, not Huygens' principle — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "हाइगेंस का सिद्धांत के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "हाइगेंस का सिद्धांत हर नए तरंगाग्र को पुराने के हर बिंदु से निकली द्वितीयक गोलीय तरंगिकाओं के अन्वालोप के रूप में बनाता है, और उसी से परावर्तन, अपवर्तन और स्नेल का नियम निकल आते हैं।",
+            "यह वह भी बताता है जो कण-चित्र नहीं बता सकता: प्रकाश को काँच में हवा से धीमा चलना ही चाहिए, और जब वह माप अंततः हुआ तो वह तरंग-कथन से मिला, न्यूटन के कथन से नहीं।",
+            "यह अपवर्तन को किसी और चीज़ के नहीं बल्कि चाल के परिवर्तन के रूप में समझाता है: तरंगाग्र का एक किनारा पहले सघन माध्यम में घुसकर धीमा होता है, अतः पूरा अग्र घूम जाता है — उसी कारण से जिससे मार्च करती टुकड़ी तब मुड़ती है जब उसकी भीतरी पंक्ति क़दम छोटा कर ले।",
+            "कलासंबद्धता की शर्त माँगती है कि दो स्रोत प्रेक्षण-काल भर अचर कलांतर बनाए रखें, जो स्वतंत्र स्रोत नहीं कर सकते क्योंकि हर एक नैनोसेकंडों तक चलने वाले यादृच्छिक झोंकों में उत्सर्जित करता है।"
+          ],
+          "solution": "कलासंबद्धता की शर्त माँगती है कि दो स्रोत प्रेक्षण-काल भर अचर कलांतर बनाए रखें, जो स्वतंत्र स्रोत नहीं कर सकते क्योंकि हर एक नैनोसेकंडों तक चलने वाले यादृच्छिक झोंकों में उत्सर्जित करता है। यह कलासंबद्धता की शर्त की बात है, हाइगेंस का सिद्धांत की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "हायगेन्सचे तत्त्व विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "हायगेन्सचे तत्त्व प्रत्येक नवे तरंगाग्र जुन्याच्या प्रत्येक बिंदूतून निघालेल्या दुय्यम गोलीय लहरिकांच्या आवरणाच्या रूपात बांधते, आणि त्यातूनच परावर्तन, अपवर्तन आणि स्नेलचा नियम निघतात.",
+            "हे तेही सांगते जे कण-चित्र सांगू शकत नाही: प्रकाशाने काचेत हवेहून सावकाश जावेच लागते, आणि ते माप अखेर झाले तेव्हा ते लहरी-कथनाशी जुळले, न्यूटनच्या कथनाशी नाही.",
+            "हे अपवर्तनाला दुसऱ्या कशाच्या नव्हे तर वेगाच्या बदलाच्या रूपात समजावते: तरंगाग्राची एक कड आधी घन माध्यमात शिरून सावकाश होते, म्हणून अख्खे अग्र वळते — त्याच कारणाने ज्याने संचलन करणारी तुकडी तिची आतली रांग पाऊल लहान करताच वळते.",
+            "कलासंबद्धतेची अट मागते की दोन स्रोतांनी निरीक्षण-काळभर अचल कलांतर टिकवावा, जे स्वतंत्र स्रोत करू शकत नाहीत कारण प्रत्येक नॅनोसेकंद टिकणाऱ्या यादृच्छिक झोतांत उत्सर्जित करतो."
+          ],
+          "solution": "कलासंबद्धतेची अट मागते की दोन स्रोतांनी निरीक्षण-काळभर अचल कलांतर टिकवावा, जे स्वतंत्र स्रोत करू शकत नाहीत कारण प्रत्येक नॅनोसेकंद टिकणाऱ्या यादृच्छिक झोतांत उत्सर्जित करतो. हे कलासंबद्धतेची अट चे आहे, हायगेन्सचे तत्त्व चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The condition of coherence EXCEPT —",
+      "choices": [
+        "The condition of coherence requires two sources to keep a constant phase difference over the observation time, which independent sources cannot do because each emits in random bursts lasting nanoseconds.",
+        "Brewster's law says the polarising angle satisfies tan θ_p = n, and at that angle the reflected and refracted rays are perpendicular to one another.",
+        "The fringes from two lamps are not absent but reshuffled millions of times a second, so what the eye or the plate records is their average, which is uniform illumination.",
+        "The cure is to derive both beams from one source, which is why Young put a single slit before his double slit — the two slits then sample the same wavefront and inherit whatever phase it has."
+      ],
+      "answerIndex": 1,
+      "solution": "Brewster's law says the polarising angle satisfies tan θ_p = n, and at that angle the reflected and refracted rays are perpendicular to one another. That belongs to Brewster's law, not The condition of coherence — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कलासंबद्धता की शर्त के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "कलासंबद्धता की शर्त माँगती है कि दो स्रोत प्रेक्षण-काल भर अचर कलांतर बनाए रखें, जो स्वतंत्र स्रोत नहीं कर सकते क्योंकि हर एक नैनोसेकंडों तक चलने वाले यादृच्छिक झोंकों में उत्सर्जित करता है।",
+            "ब्रूस्टर का नियम कहता है कि ध्रुवण कोण tan θ_p = n को संतुष्ट करता है, और उस कोण पर परावर्तित और अपवर्तित किरणें आपस में लंबवत होती हैं।",
+            "दो लैंपों से बनी फ्रिंज ग़ायब नहीं होतीं बल्कि सेकंड में लाखों बार फिर-फिर बदल जाती हैं, अतः आँख या प्लेट जो दर्ज करती है वह उनका औसत है, जो एकसमान प्रदीप्ति है।",
+            "इलाज यह कि दोनों पुंज एक ही स्रोत से निकाले जाएँ, इसीलिए यंग ने अपनी दोहरी झिरी से पहले एक अकेली झिरी रखी — दोनों झिरियाँ तब उसी तरंगाग्र का नमूना लेती हैं और उसकी जो भी कला हो उसे विरासत में पाती हैं।"
+          ],
+          "solution": "ब्रूस्टर का नियम कहता है कि ध्रुवण कोण tan θ_p = n को संतुष्ट करता है, और उस कोण पर परावर्तित और अपवर्तित किरणें आपस में लंबवत होती हैं। यह ब्रूस्टर का नियम की बात है, कलासंबद्धता की शर्त की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "कलासंबद्धतेची अट विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "कलासंबद्धतेची अट मागते की दोन स्रोतांनी निरीक्षण-काळभर अचल कलांतर टिकवावा, जे स्वतंत्र स्रोत करू शकत नाहीत कारण प्रत्येक नॅनोसेकंद टिकणाऱ्या यादृच्छिक झोतांत उत्सर्जित करतो.",
+            "ब्रूस्टरचा नियम सांगतो की ध्रुवण कोन tan θ_p = n ला पूर्ण करतो, आणि त्या कोनावर परावर्तित आणि अपवर्तित किरणे परस्परांना लंब असतात.",
+            "दोन दिव्यांचे पट्टे नाहीसे होत नाहीत तर सेकंदाला लाखो वेळा पुन्हा पुन्हा बदलतात, म्हणून डोळा वा पट्टिका जे नोंदवते ते त्यांची सरासरी आहे, जी एकसमान प्रदीप्ती आहे.",
+            "उपाय म्हणजे दोन्ही शलाका एकाच स्रोतापासून काढणे, म्हणूनच यंगने आपल्या दुहेरी फटीआधी एकच फट ठेवली — दोन्ही फटी मग त्याच तरंगाग्राचा नमुना घेतात आणि त्याची जी काही कला असेल ती वारशाने मिळवतात."
+          ],
+          "solution": "ब्रूस्टरचा नियम सांगतो की ध्रुवण कोन tan θ_p = n ला पूर्ण करतो, आणि त्या कोनावर परावर्तित आणि अपवर्तित किरणे परस्परांना लंब असतात. हे ब्रूस्टरचा नियम चे आहे, कलासंबद्धतेची अट चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Brewster's law EXCEPT —",
+      "choices": [
+        "Brewster's law says the polarising angle satisfies tan θ_p = n, and at that angle the reflected and refracted rays are perpendicular to one another.",
+        "It is why polarising sunglasses kill the glare off a wet road or a lake but not the light from the sky directly overhead: glare is reflected light near this angle and is therefore already polarised horizontally.",
+        "The mechanism is that an oscillating charge radiates nothing along its own line of vibration, so at exactly this geometry the component that would have been reflected has nowhere to go.",
+        "Huygens' principle builds each new wavefront as the envelope of secondary spherical wavelets sent out from every point of the old one, and from it reflection, refraction and Snell's law all follow."
+      ],
+      "answerIndex": 3,
+      "solution": "Huygens' principle builds each new wavefront as the envelope of secondary spherical wavelets sent out from every point of the old one, and from it reflection, refraction and Snell's law all follow. That belongs to Huygens' principle, not Brewster's law — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ब्रूस्टर का नियम के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "ब्रूस्टर का नियम कहता है कि ध्रुवण कोण tan θ_p = n को संतुष्ट करता है, और उस कोण पर परावर्तित और अपवर्तित किरणें आपस में लंबवत होती हैं।",
+            "इसीलिए ध्रुवक धूप-चश्मे गीली सड़क या झील की चौंध मार देते हैं पर ठीक ऊपर के आकाश का प्रकाश नहीं: चौंध इसी कोण के पास का परावर्तित प्रकाश है और इसलिए पहले से क्षैतिज ध्रुवित है।",
+            "क्रियाविधि यह कि दोलन करता आवेश अपनी कंपन-रेखा के अनुदिश कुछ भी विकिरित नहीं करता, अतः ठीक इसी ज्यामिति पर वह घटक जो परावर्तित होता, उसके पास जाने को कोई जगह ही नहीं।",
+            "हाइगेंस का सिद्धांत हर नए तरंगाग्र को पुराने के हर बिंदु से निकली द्वितीयक गोलीय तरंगिकाओं के अन्वालोप के रूप में बनाता है, और उसी से परावर्तन, अपवर्तन और स्नेल का नियम निकल आते हैं।"
+          ],
+          "solution": "हाइगेंस का सिद्धांत हर नए तरंगाग्र को पुराने के हर बिंदु से निकली द्वितीयक गोलीय तरंगिकाओं के अन्वालोप के रूप में बनाता है, और उसी से परावर्तन, अपवर्तन और स्नेल का नियम निकल आते हैं। यह हाइगेंस का सिद्धांत की बात है, ब्रूस्टर का नियम की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "ब्रूस्टरचा नियम विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "ब्रूस्टरचा नियम सांगतो की ध्रुवण कोन tan θ_p = n ला पूर्ण करतो, आणि त्या कोनावर परावर्तित आणि अपवर्तित किरणे परस्परांना लंब असतात.",
+            "म्हणूनच ध्रुवक गॉगल ओल्या रस्त्याची वा तळ्याची चमक मारतात पण अगदी वरच्या आकाशाचा प्रकाश नाही: चमक याच कोनाजवळचा परावर्तित प्रकाश आहे आणि म्हणून आधीच आडवी ध्रुवित आहे.",
+            "यंत्रणा अशी की दोलन करणारा प्रभार आपल्या कंपन-रेषेच्या दिशेने काहीही प्रारित करत नाही, म्हणून नेमक्या याच भूमितीत जो घटक परावर्तित झाला असता त्याला जायला जागाच नाही.",
+            "हायगेन्सचे तत्त्व प्रत्येक नवे तरंगाग्र जुन्याच्या प्रत्येक बिंदूतून निघालेल्या दुय्यम गोलीय लहरिकांच्या आवरणाच्या रूपात बांधते, आणि त्यातूनच परावर्तन, अपवर्तन आणि स्नेलचा नियम निघतात."
+          ],
+          "solution": "हायगेन्सचे तत्त्व प्रत्येक नवे तरंगाग्र जुन्याच्या प्रत्येक बिंदूतून निघालेल्या दुय्यम गोलीय लहरिकांच्या आवरणाच्या रूपात बांधते, आणि त्यातूनच परावर्तन, अपवर्तन आणि स्नेलचा नियम निघतात. हे हायगेन्सचे तत्त्व चे आहे, ब्रूस्टरचा नियम चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Interference of light EXCEPT —",
+      "choices": [
+        "Interference of light is the redistribution of energy when coherent beams superpose, giving maxima where the path difference is a whole number of wavelengths and minima where it is an odd number of half wavelengths.",
+        "Energy is redistributed and never destroyed: the light missing from the dark fringes is exactly the extra light in the bright ones, and the average across the pattern is what the two beams delivered separately.",
+        "Diffraction of light is the bending of a wave round the edges of an obstacle or aperture, giving a single-slit pattern whose first minimum lies at sin θ = λ/a.",
+        "It is the reason a soap film and an oil slick show colours: the two reflections from the film's faces differ in path by a distance comparable to a wavelength, and which colour survives depends on the thickness."
+      ],
+      "answerIndex": 2,
+      "solution": "Diffraction of light is the bending of a wave round the edges of an obstacle or aperture, giving a single-slit pattern whose first minimum lies at sin θ = λ/a. That belongs to Diffraction of light, not Interference of light — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रकाश का व्यतिकरण के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "प्रकाश का व्यतिकरण कलासंबद्ध पुंजों के अध्यारोपण पर ऊर्जा का पुनर्वितरण है, जो वहाँ उच्चिष्ठ देता है जहाँ पथांतर तरंगदैर्ध्य का पूर्णांक गुणक हो और निम्निष्ठ वहाँ जहाँ वह आधी तरंगदैर्ध्य का विषम गुणक हो।",
+            "ऊर्जा का पुनर्वितरण होता है, नाश कभी नहीं: अँधेरी फ्रिंजों से लुप्त प्रकाश ठीक वही अतिरिक्त प्रकाश है जो चमकीली फ्रिंजों में है, और पूरे प्रतिरूप का औसत वही है जो दोनों पुंज अलग-अलग देते।",
+            "प्रकाश का विवर्तन किसी अवरोध या द्वारक के किनारों के गिर्द तरंग का मुड़ना है, जो एकल झिरी का ऐसा प्रतिरूप देता है जिसका पहला निम्निष्ठ sin θ = λ/a पर पड़ता है।",
+            "इसीलिए साबुन की झिल्ली और तेल की परत रंग दिखाती हैं: झिल्ली के दोनों फलकों से हुए परावर्तनों का पथांतर तरंगदैर्ध्य के दर्जे का होता है, और कौन-सा रंग बचेगा यह मोटाई पर निर्भर है।"
+          ],
+          "solution": "प्रकाश का विवर्तन किसी अवरोध या द्वारक के किनारों के गिर्द तरंग का मुड़ना है, जो एकल झिरी का ऐसा प्रतिरूप देता है जिसका पहला निम्निष्ठ sin θ = λ/a पर पड़ता है। यह प्रकाश का विवर्तन की बात है, प्रकाश का व्यतिकरण की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "प्रकाशाचे व्यतिकरण विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "प्रकाशाचे व्यतिकरण म्हणजे कलासंबद्ध शलाका अध्यारोपित झाल्यावर ऊर्जेचे पुनर्वाटप, जे तिथे उच्चिष्ठ देते जिथे पथांतर तरंगलांबीचा पूर्णांक पट असेल आणि निम्निष्ठ तिथे जिथे तो अर्ध्या तरंगलांबीचा विषम पट असेल.",
+            "ऊर्जेचे पुनर्वाटप होते, नाश कधीच नाही: अंधाऱ्या पट्ट्यांतून हरवलेला प्रकाश नेमका तोच जादा प्रकाश आहे जो तेजस्वी पट्ट्यांत आहे, आणि अख्ख्या नमुन्याची सरासरी तीच जी दोन्ही शलाका वेगवेगळ्या देतील.",
+            "प्रकाशाचे विवर्तन म्हणजे एखाद्या अडथळ्याच्या वा द्वारकाच्या कडांभोवती लहरीचे वाकणे, जे एकेरी फटीचा असा नमुना देते ज्याचा पहिला निम्निष्ठ sin θ = λ/a वर पडतो.",
+            "म्हणूनच साबणाचा पडदा आणि तेलाचा तवंग रंग दाखवतात: पडद्याच्या दोन्ही पृष्ठांवरील परावर्तनांचा पथांतर तरंगलांबीच्या तोडीचा असतो, आणि कोणता रंग टिकेल हे जाडीवर अवलंबून."
+          ],
+          "solution": "प्रकाशाचे विवर्तन म्हणजे एखाद्या अडथळ्याच्या वा द्वारकाच्या कडांभोवती लहरीचे वाकणे, जे एकेरी फटीचा असा नमुना देते ज्याचा पहिला निम्निष्ठ sin θ = λ/a वर पडतो. हे प्रकाशाचे विवर्तन चे आहे, प्रकाशाचे व्यतिकरण चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student sets up Young's experiment but replaces the single source with two identical lamps, one behind each slit, arguing that this gives more light and the same two beams. No fringes appear at all. Explain why, and why the standard arrangement works.",
+      "choices": [
+        "Because the two lamps are not coherent. Each atom in a lamp radiates an independent burst lasting some nanoseconds, so the phase difference between the two sources changes randomly millions of times a second. Fringes do form at every instant, but their positions jump about far faster than the eye or the plate can follow, and what is recorded is the average — uniform illumination. Young's single slit before the double slit is exactly the fix: both slits then sample ONE wavefront, so whatever random phase the source has at any moment, both inherit it and the difference between them stays fixed",
+        "Because two lamps give twice the intensity, and interference only shows up at low light levels where the individual photons can be distinguished",
+        "Because two separate lamps can never be made exactly the same wavelength, and interference requires the two beams to be perfectly monochromatic",
+        "Because light from two sources cannot superpose at all — superposition applies only to waves that came from the same emitter"
+      ],
+      "answerIndex": 0,
+      "solution": "The student's reasoning has one hidden assumption, and naming it is the whole answer: that two sources emitting the same colour are interchangeable with one source split in two. They are not, and the difference is PHASE. Consider what an ordinary lamp actually is. Light comes from individual atoms dropping between energy levels, and each such event produces a wave train lasting of the order of 10⁻⁹ s. There is no mechanism keeping one atom in step with another; each starts when it happens to start. So a lamp is a stream of short, randomly phased bursts, and two lamps are two such streams with no relation between them whatever. Now put that into the interference formula. The intensity at a point depends on the phase difference φ between the two arriving waves as I = I₁ + I₂ + 2√(I₁I₂)cos φ. If φ is fixed, the cosine term survives and you get bright and dark places. If φ wanders at random over the observation, the AVERAGE of cos φ is zero, and the formula collapses to I = I₁ + I₂ — the two intensities simply add, everywhere, and the screen is uniformly lit. Note carefully what this does and does not say. The fringes are not prevented from forming; superposition still applies, and at any given instant a full fringe pattern exists on the screen. But the pattern's position depends on the current phase difference, which is being reshuffled every few nanoseconds, so the pattern washes across the screen far faster than any detector can follow. What is recorded is the time average of millions of different patterns, and that average is flat. A camera with a nanosecond shutter would in principle catch one. This is why the fix works. Young placed a single narrow slit before the pair, so that the light reaching both slits comes from the same small region of the same source. Whatever random phase a burst has, it arrives at both slits together, and the phase DIFFERENCE between the two — which is all the formula cares about — is set by the geometry of the path lengths and nothing else. The source can be as chaotic as it likes; the two derived beams stay locked to each other. The general principle is worth keeping: coherence is not a property of a beam but a RELATION between two of them, and the standard way to obtain it is to make both from one. Every classical interference arrangement does this — division of wavefront in Young's slits and Fresnel's biprism, division of amplitude in a thin film or a Michelson interferometer. A laser is the modern exception, because stimulated emission forces its atoms to radiate in step, and that is precisely why two separate lasers CAN be made to interfere while two separate candles cannot. (The second option makes interference a low-light effect, when it is seen perfectly well in bright light; the third cites monochromaticity, which helps fringe visibility but is not the failure here — two lamps of identical wavelength still would not interfere; the fourth denies superposition itself, which would forbid the pattern that a fast camera would in fact record.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक विद्यार्थी यंग का प्रयोग जमाता है पर अकेले स्रोत की जगह दो समरूप लैंप रखता है, हर झिरी के पीछे एक, यह तर्क देकर कि इससे अधिक प्रकाश और वही दो पुंज मिलते हैं। कोई फ्रिंज बनती ही नहीं। समझाओ क्यों, और मानक व्यवस्था क्यों चलती है।",
+          "choices": [
+            "क्योंकि दोनों लैंप कलासंबद्ध नहीं। लैंप का हर परमाणु कुछ नैनोसेकंड चलने वाला स्वतंत्र झोंका विकिरित करता है, अतः दोनों स्रोतों के बीच कलांतर सेकंड में लाखों बार यादृच्छिक ढंग से बदलता है। फ्रिंज हर क्षण बनती तो हैं, पर उनकी जगहें आँख या प्लेट के पीछा कर सकने से कहीं तेज़ी से उछलती रहती हैं, और जो दर्ज होता है वह औसत है — एकसमान प्रदीप्ति। दोहरी झिरी से पहले यंग की अकेली झिरी ठीक वही इलाज है: दोनों झिरियाँ तब एक ही तरंगाग्र का नमूना लेती हैं, अतः किसी भी क्षण स्रोत की जो भी यादृच्छिक कला हो, दोनों उसे विरासत में पाते हैं और उनके बीच का अंतर स्थिर रहता है",
+            "क्योंकि दो लैंप दुगुनी तीव्रता देते हैं, और व्यतिकरण केवल कम प्रकाश में दिखता है जहाँ अलग-अलग फ़ोटॉन पहचाने जा सकें",
+            "क्योंकि दो अलग लैंप कभी ठीक एक ही तरंगदैर्ध्य के नहीं बनाए जा सकते, और व्यतिकरण के लिए दोनों पुंजों का पूर्णतः एकवर्णी होना ज़रूरी है",
+            "क्योंकि दो स्रोतों का प्रकाश अध्यारोपित हो ही नहीं सकता — अध्यारोपण केवल उन तरंगों पर लागू होता है जो एक ही उत्सर्जक से आई हों"
+          ],
+          "solution": "विद्यार्थी के तर्क में एक छिपी मान्यता है, और उसे नाम देना ही पूरा उत्तर है: कि एक ही रंग उत्सर्जित करते दो स्रोत दो में बाँटे गए एक स्रोत से अदल-बदल किए जा सकते हैं। वे नहीं किए जा सकते, और अंतर कला का है। सोचो कि साधारण लैंप वस्तुतः है क्या। प्रकाश ऊर्जा स्तरों के बीच गिरते अलग-अलग परमाणुओं से आता है, और हर ऐसी घटना लगभग 10⁻⁹ s चलने वाली तरंग-रेल देती है। ऐसी कोई क्रियाविधि नहीं जो एक परमाणु को दूसरे के ताल में रखे; हर एक तब शुरू होता है जब हो जाए। अतः लैंप छोटे, यादृच्छिक कला वाले झोंकों की धारा है, और दो लैंप दो ऐसी धाराएँ हैं जिनमें आपस में कोई संबंध है ही नहीं। अब उसे व्यतिकरण के सूत्र में रखो। किसी बिंदु पर तीव्रता आती हुई दोनों तरंगों के कलांतर φ पर निर्भर है, I = I₁ + I₂ + 2√(I₁I₂)cos φ. यदि φ स्थिर है, कोज्या वाला पद बचा रहता है और तुम्हें चमकीली और अँधेरी जगहें मिलती हैं। यदि φ प्रेक्षण भर यादृच्छिक ढंग से भटकता है, तो cos φ का औसत शून्य है, और सूत्र सिमटकर I = I₁ + I₂ रह जाता है — दोनों तीव्रताएँ बस जुड़ जाती हैं, हर जगह, और पर्दा एकसमान प्रकाशित होता है। ध्यान से देखो कि यह क्या कहता है और क्या नहीं। फ्रिंजों को बनने से रोका नहीं जा रहा; अध्यारोपण अब भी लागू है, और किसी भी क्षण पर्दे पर पूरा फ्रिंज प्रतिरूप मौजूद है। पर प्रतिरूप की जगह वर्तमान कलांतर पर निर्भर है, जो हर कुछ नैनोसेकंड में फिर-फिर बदला जा रहा है, अतः प्रतिरूप पर्दे पर किसी भी संसूचक के पीछा कर सकने से कहीं तेज़ी से बह जाता है। जो दर्ज होता है वह लाखों भिन्न प्रतिरूपों का काल-औसत है, और वह औसत सपाट है। नैनोसेकंड शटर वाला कैमरा सिद्धांततः एक पकड़ लेता। इसीलिए इलाज चलता है। यंग ने जोड़ी से पहले एक सँकरी झिरी रखी, ताकि दोनों झिरियों तक पहुँचता प्रकाश उसी स्रोत के उसी छोटे भाग से आए। झोंके की जो भी यादृच्छिक कला हो, वह दोनों झिरियों पर साथ पहुँचती है, और दोनों के बीच कलांतर — जिसकी ही सूत्र को परवाह है — पथ-लंबाइयों की ज्यामिति से तय होता है और किसी चीज़ से नहीं। स्रोत जितना चाहे अराजक हो; उससे निकाले गए दोनों पुंज एक-दूसरे से बँधे रहते हैं। सामान्य सिद्धांत रखने योग्य है: कलासंबद्धता किसी पुंज का गुण नहीं बल्कि दो पुंजों के बीच का संबंध है, और उसे पाने का मानक रास्ता दोनों को एक से बनाना है। हर चिरसम्मत व्यतिकरण व्यवस्था यही करती है — यंग की झिरियों और फ़्रेनेल के द्विप्रिज़्म में तरंगाग्र का विभाजन, पतली झिल्ली या माइकेलसन व्यतिकरणमापी में आयाम का विभाजन। लेज़र आधुनिक अपवाद है, क्योंकि उद्दीपित उत्सर्जन उसके परमाणुओं को ताल में विकिरित करने पर बाध्य करता है, और ठीक इसीलिए दो अलग लेज़रों से व्यतिकरण कराया जा सकता है जबकि दो अलग मोमबत्तियों से नहीं। (दूसरा विकल्प व्यतिकरण को कम-प्रकाश का प्रभाव बना देता है, जबकि वह तेज़ प्रकाश में भी बख़ूबी दिखता है; तीसरा एकवर्णिता गिनाता है, जो फ्रिंज की दृश्यता में मदद करती है पर यहाँ विफलता वह नहीं — एक ही तरंगदैर्ध्य के दो लैंप भी व्यतिकरण नहीं करते; चौथा स्वयं अध्यारोपण से इनकार करता है, जो उस प्रतिरूप को मना कर देता जिसे तेज़ कैमरा वस्तुतः दर्ज कर लेता।)"
+        },
+        "mr": {
+          "stem": "एक विद्यार्थी यंगचा प्रयोग मांडतो पण एकट्या स्रोताच्या जागी दोन सारखे दिवे ठेवतो, प्रत्येक फटीमागे एक, असा युक्तिवाद करून की यातून अधिक प्रकाश आणि त्याच दोन शलाका मिळतात. एकही पट्टा दिसत नाही. का ते समजावा, आणि प्रमाणित मांडणी का चालते ते सांगा.",
+          "choices": [
+            "कारण दोन्ही दिवे कलासंबद्ध नाहीत. दिव्यातला प्रत्येक अणू काही नॅनोसेकंद टिकणारा स्वतंत्र झोत प्रारित करतो, म्हणून दोन स्रोतांमधला कलांतर सेकंदाला लाखो वेळा यादृच्छिकपणे बदलतो. पट्टे प्रत्येक क्षणी तयार होतातच, पण त्यांच्या जागा डोळा वा पट्टिका मागोवा घेऊ शकेल त्याहून कितीतरी वेगाने उड्या मारतात, आणि जे नोंदले जाते ती सरासरी आहे — एकसमान प्रदीप्ती. दुहेरी फटीआधीची यंगची एकच फट नेमका तोच उपाय आहे: दोन्ही फटी मग एकाच तरंगाग्राचा नमुना घेतात, म्हणून कोणत्याही क्षणी स्रोताची जी काही यादृच्छिक कला असेल, दोन्ही ती वारशाने मिळवतात आणि त्यांच्यातला फरक स्थिर राहतो",
+            "कारण दोन दिवे दुप्पट तीव्रता देतात, आणि व्यतिकरण केवळ कमी प्रकाशात दिसते जिथे वेगवेगळे फोटॉन ओळखता येतील",
+            "कारण दोन वेगळे दिवे कधीच नेमक्या एकाच तरंगलांबीचे बनवता येत नाहीत, आणि व्यतिकरणासाठी दोन्ही शलाका पूर्णपणे एकवर्णी असणे आवश्यक आहे",
+            "कारण दोन स्रोतांचा प्रकाश अध्यारोपित होऊच शकत नाही — अध्यारोपण केवळ त्याच लहरींना लागू होते ज्या एकाच उत्सर्जकाकडून आल्या"
+          ],
+          "solution": "विद्यार्थ्याच्या युक्तिवादात एक लपलेली गृहीतकल्पना आहे, आणि तिला नाव देणे हेच अख्खे उत्तर आहे: की एकाच रंगाचे उत्सर्जन करणारे दोन स्रोत आणि दोनांत विभागलेला एक स्रोत अदलाबदल करण्याजोगे आहेत. ते नाहीत, आणि फरक कलेचा आहे. साधा दिवा प्रत्यक्षात काय आहे याचा विचार करा. प्रकाश ऊर्जा पातळ्यांमधून पडणाऱ्या वेगवेगळ्या अणूंकडून येतो, आणि प्रत्येक अशी घटना सुमारे 10⁻⁹ s टिकणारी लहर-गाडी देते. एका अणूला दुसऱ्याच्या तालात ठेवणारी अशी कोणतीही यंत्रणा नाही; प्रत्येक तेव्हा सुरू होतो जेव्हा होईल. म्हणून दिवा हा लहान, यादृच्छिक कलेच्या झोतांचा प्रवाह आहे, आणि दोन दिवे म्हणजे दोन असे प्रवाह ज्यांच्यात परस्पर कोणताही संबंध नाहीच. आता ते व्यतिकरणाच्या सूत्रात ठेवा. एखाद्या बिंदूवरची तीव्रता येणाऱ्या दोन्ही लहरींच्या कलांतर φ वर अवलंबून आहे, I = I₁ + I₂ + 2√(I₁I₂)cos φ. जर φ स्थिर असेल, कोसाइनचे पद टिकते आणि तुम्हाला तेजस्वी आणि अंधाऱ्या जागा मिळतात. जर φ निरीक्षणभर यादृच्छिकपणे भटकत असेल, तर cos φ ची सरासरी शून्य आहे, आणि सूत्र आकसून I = I₁ + I₂ उरते — दोन्ही तीव्रता फक्त जुळतात, सर्वत्र, आणि पडदा एकसमान उजळतो. हे काय सांगते आणि काय नाही ते काळजीपूर्वक पाहा. पट्ट्यांना तयार होण्यापासून रोखले जात नाही; अध्यारोपण अजूनही लागू आहे, आणि कोणत्याही क्षणी पडद्यावर पूर्ण पट्टा नमुना अस्तित्वात आहे. पण नमुन्याची जागा सध्याच्या कलांतरावर अवलंबून आहे, जो दर काही नॅनोसेकंदांनी पुन्हा पुन्हा बदलला जात आहे, म्हणून नमुना पडद्यावरून कोणताही संवेदक मागोवा घेऊ शकेल त्याहून कितीतरी वेगाने वाहून जातो. जे नोंदले जाते ती लाखो वेगवेगळ्या नमुन्यांची काल-सरासरी आहे, आणि ती सरासरी सपाट आहे. नॅनोसेकंद शटरचा कॅमेरा तत्त्वतः एक पकडेल. म्हणूनच उपाय चालतो. यंगने जोडीआधी एक अरुंद फट ठेवली, जेणेकरून दोन्ही फटींपर्यंत पोहोचणारा प्रकाश त्याच स्रोताच्या त्याच लहान भागातून यावा. झोताची जी काही यादृच्छिक कला असेल, ती दोन्ही फटींवर एकत्र पोहोचते, आणि दोघांतील कलांतर — ज्याचीच सूत्राला पर्वा आहे — मार्ग-लांबींच्या भूमितीने ठरतो आणि दुसऱ्या कशानेही नाही. स्रोत हवा तितका गोंधळलेला असो; त्यातून काढलेल्या दोन्ही शलाका एकमेकांशी जखडलेल्या राहतात. सर्वसाधारण तत्त्व ठेवण्याजोगे आहे: कलासंबद्धता ही कोणत्याही शलाकेचा गुणधर्म नसून दोन शलाकांमधला संबंध आहे, आणि ती मिळवण्याचा प्रमाणित मार्ग म्हणजे दोन्ही एकातून बनवणे. प्रत्येक चिरंतन व्यतिकरण मांडणी हेच करते — यंगच्या फटी आणि फ्रेनेलच्या द्विलोलकात तरंगाग्राचे विभाजन, पातळ पडद्यात वा मायकेलसन व्यतिकरणमापीत आयामाचे विभाजन. लेझर हा आधुनिक अपवाद आहे, कारण उद्दीपित उत्सर्जन त्याच्या अणूंना तालात प्रारित करायला भाग पाडते, आणि नेमके म्हणूनच दोन वेगळ्या लेझरांकडून व्यतिकरण करवून घेता येते तर दोन वेगळ्या मेणबत्त्यांकडून नाही. (दुसरा पर्याय व्यतिकरणाला कमी-प्रकाशाचा परिणाम बनवतो, तर तो तेजस्वी प्रकाशातही उत्तम दिसतो; तिसरा एकवर्णिता सांगतो, जी पट्ट्यांच्या दृश्यतेस मदत करते पण इथे अपयश ते नाही — एकाच तरंगलांबीचे दोन दिवेही व्यतिकरण करणार नाहीत; चौथा स्वतः अध्यारोपण नाकारतो, जे त्या नमुन्याला वर्ज्य करेल जो जलद कॅमेरा प्रत्यक्षात नोंदवेल.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a single-slit pattern the central bright band is twice as wide as the others, while in a double-slit pattern every fringe is the same width. A student says the two are the same phenomenon and the difference must be an error. Assess this, and say what happens as the slit is made narrower and narrower.",
+      "choices": [
+        "Both are superposition, so the student is half right, but they superpose different numbers of contributions and the difference in the pattern is real. Two slits give two beams whose path difference grows in equal steps, producing equally spaced fringes of equal width. One slit gives a continuum of wavelets from across its own width, and the minima occur where those cancel in pairs, at sin θ = mλ/a with m ≠ 0; the central maximum therefore stretches from the first minimum on one side to the first on the other and is twice as wide. As a is narrowed the whole pattern SPREADS, since the width goes as λ/a — so no slit is ever small enough to define a ray, and geometrical optics is recovered only in the opposite limit a ≫ λ",
+        "The student is right that they are the same, and the double-slit fringes are also unequal — the middle one is twice as wide there too, but the difference is too small to see",
+        "They are entirely unrelated: interference is a wave effect and diffraction is a particle effect caused by light striking the edges of the slit",
+        "The central band is twice as wide only because it is brighter, and a longer exposure would make every band look equally wide"
+      ],
+      "answerIndex": 0,
+      "solution": "The student has seen something true and drawn the wrong conclusion from it. Interference and diffraction are indeed the same physics — superposition of coherent waves — and the modern view does not treat them as separate laws. What differs is HOW MANY contributions are being added, and that difference has consequences you can measure with a ruler. TWO SLITS. There are exactly two beams. Their path difference at angle θ is d sin θ, and it grows steadily as you move along the screen, passing through 0, λ, 2λ, 3λ … at equally spaced positions. Bright fringes therefore sit at equal intervals β = λD/d, and each is as wide as its neighbours. Nothing distinguishes the central fringe except that its path difference happens to be zero. ONE SLIT. There are not two beams but infinitely many wavelets, one from every point across the slit's width a. The condition for a minimum is not 'two things cancel' but 'everything cancels in pairs': divide the slit into two halves, and when the extra path from the top of one half to the top of the other is λ/2, every wavelet in the first half is annulled by a partner in the second. That gives a sin θ = λ. Repeat with four strips, six strips, and you get a sin θ = mλ for m = 1, 2, 3 …, with m = 0 conspicuously excluded, because at θ = 0 there is no path difference to cancel anything and every wavelet arrives in phase. So the pattern runs: central maximum, first minimum at sin θ = λ/a, and the maxima after that lie roughly midway between successive minima. The central band therefore spans from −λ/a to +λ/a while every other band spans only λ/a — exactly twice as wide, and it is also far brighter because all the wavelets add there instead of mostly cancelling. Now the narrowing, which is the deeper half of the question. The angular half-width of the central maximum is λ/a. Halve the slit and it doubles. This runs directly against the intuition that a narrower hole gives a narrower beam, and it is the reason a ray cannot be constructed by making an aperture small: at a ≈ λ the pattern spreads through nearly a right angle, and the slit behaves as a single Huygens point source radiating into the whole forward hemisphere. Ray optics is the OPPOSITE limit. When a ≫ λ, λ/a is negligible, the spreading is unmeasurable, and light appears to travel in straight lines with sharp shadows. A millimetre slit and 500 nm light give a spreading of about 0.03°, which is why nothing in ordinary life contradicts the ray picture. Geometrical optics is therefore not a different theory but wave optics with a term thrown away, valid precisely when the wavelength is small compared with everything else in the problem — the same relationship classical mechanics has to quantum mechanics, and worth noticing as a pattern in how physics retires its older laws without discarding them. (The second option invents unequal double-slit fringes; the third resurrects a particle account that predicts the wrong direction of spreading; the fourth confuses brightness with width, which a measurement of the minima's positions settles immediately.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एकल झिरी के प्रतिरूप में केंद्रीय चमकीली पट्टी बाक़ी सबसे दुगुनी चौड़ी होती है, जबकि दोहरी झिरी के प्रतिरूप में हर फ्रिंज एक ही चौड़ाई की होती है। विद्यार्थी कहता है कि दोनों एक ही परिघटना हैं और अंतर कोई त्रुटि होगी। इसका आकलन करो, और बताओ कि झिरी को और सँकरा करते जाने पर क्या होता है।",
+          "choices": [
+            "दोनों अध्यारोपण हैं, अतः विद्यार्थी आधा सही है, पर वे भिन्न संख्या के अंशों को अध्यारोपित करते हैं और प्रतिरूप का अंतर असली है। दो झिरियाँ दो पुंज देती हैं जिनका पथांतर बराबर क़दमों में बढ़ता है, और वे बराबर दूरी पर बराबर चौड़ाई की फ्रिंज बनाती हैं। एक झिरी अपनी ही चौड़ाई भर से तरंगिकाओं का सातत्य देती है, और निम्निष्ठ वहाँ होते हैं जहाँ वे युग्मों में कट जाएँ, sin θ = mλ/a पर जिसमें m ≠ 0; अतः केंद्रीय उच्चिष्ठ एक ओर के पहले निम्निष्ठ से दूसरी ओर के पहले तक फैलता है और दुगुना चौड़ा है। a सँकरा करने पर पूरा प्रतिरूप फैलता है, क्योंकि चौड़ाई λ/a के अनुसार चलती है — अतः किरण परिभाषित करने के लिए कोई झिरी कभी पर्याप्त छोटी नहीं होती, और ज्यामितीय प्रकाशिकी केवल उलटी सीमा a ≫ λ में लौटती है",
+            "विद्यार्थी यह मानने में सही है कि दोनों एक हैं, और दोहरी झिरी की फ्रिंज भी असमान हैं — वहाँ भी बीच वाली दुगुनी चौड़ी है, पर अंतर देखने लायक़ नहीं",
+            "वे बिलकुल असंबद्ध हैं: व्यतिकरण तरंग-प्रभाव है और विवर्तन कण-प्रभाव है जो प्रकाश के झिरी के किनारों से टकराने से होता है",
+            "केंद्रीय पट्टी केवल इसलिए दुगुनी चौड़ी है कि वह अधिक चमकीली है, और लंबे उद्भासन में हर पट्टी बराबर चौड़ी दिखने लगती"
+          ],
+          "solution": "विद्यार्थी ने कुछ सच देखा है और उससे ग़लत निष्कर्ष निकाला है। व्यतिकरण और विवर्तन सचमुच एक ही भौतिकी हैं — कलासंबद्ध तरंगों का अध्यारोपण — और आधुनिक दृष्टि उन्हें अलग नियम नहीं मानती। जो भिन्न है वह यह कि कितने अंश जोड़े जा रहे हैं, और उस अंतर के ऐसे परिणाम हैं जिन्हें रूलर से नापा जा सकता है। दो झिरियाँ। ठीक दो पुंज हैं। कोण θ पर उनका पथांतर d sin θ है, और पर्दे पर चलते हुए वह लगातार बढ़ता है, बराबर दूरी की जगहों पर 0, λ, 2λ, 3λ … से गुज़रता हुआ। अतः चमकीली फ्रिंज बराबर अंतराल β = λD/d पर बैठती हैं, और हर एक अपने पड़ोसियों जितनी चौड़ी है। केंद्रीय फ्रिंज को कुछ अलग नहीं करता सिवाय इसके कि उसका पथांतर संयोग से शून्य है। एक झिरी। दो पुंज नहीं बल्कि असंख्य तरंगिकाएँ हैं, झिरी की चौड़ाई a भर के हर बिंदु से एक। निम्निष्ठ की शर्त 'दो चीज़ें कट जाएँ' नहीं बल्कि 'सब कुछ युग्मों में कट जाए' है: झिरी को दो हिस्सों में बाँटो, और जब एक हिस्से के ऊपरी सिरे से दूसरे के ऊपरी सिरे तक अतिरिक्त पथ λ/2 हो, तो पहले हिस्से की हर तरंगिका दूसरे में अपने साथी से मिट जाती है। इससे a sin θ = λ मिलता है। चार पट्टियों, छह पट्टियों से दोहराओ और m = 1, 2, 3 … के लिए a sin θ = mλ मिलता है, जिसमें m = 0 स्पष्ट रूप से बाहर है, क्योंकि θ = 0 पर कुछ काटने को पथांतर है ही नहीं और हर तरंगिका समान कला में पहुँचती है। अतः प्रतिरूप यों चलता है: केंद्रीय उच्चिष्ठ, sin θ = λ/a पर पहला निम्निष्ठ, और उसके बाद के उच्चिष्ठ मोटे तौर पर लगातार निम्निष्ठों के बीचोंबीच पड़ते हैं। इसलिए केंद्रीय पट्टी −λ/a से +λ/a तक फैलती है जबकि हर दूसरी पट्टी केवल λ/a — ठीक दुगुनी चौड़ी, और वह कहीं अधिक चमकीली भी है क्योंकि वहाँ सारी तरंगिकाएँ अधिकतर कटने के बजाय जुड़ती हैं। अब सँकरा करना, जो प्रश्न का गहरा आधा है। केंद्रीय उच्चिष्ठ की कोणीय अर्ध-चौड़ाई λ/a है। झिरी आधी करो और वह दुगुनी हो जाती है। यह सीधे उस अंतर्ज्ञान के विरुद्ध चलता है कि सँकरा छेद सँकरा पुंज देता है, और यही कारण है कि द्वारक छोटा करके किरण बनाई नहीं जा सकती: a ≈ λ पर प्रतिरूप लगभग समकोण भर फैल जाता है, और झिरी एक अकेले हाइगेंस बिंदु स्रोत की तरह पूरे अग्र अर्धगोले में विकिरित करती है। किरण प्रकाशिकी उलटी सीमा है। जब a ≫ λ, λ/a नगण्य है, फैलाव नापा नहीं जा सकता, और प्रकाश तीखी छायाओं के साथ सीधी रेखाओं में चलता दिखता है। मिलीमीटर की झिरी और 500 nm का प्रकाश लगभग 0.03° का फैलाव देते हैं, इसीलिए रोज़मर्रा में कुछ भी किरण-चित्र का खंडन नहीं करता। अतः ज्यामितीय प्रकाशिकी कोई भिन्न सिद्धांत नहीं बल्कि एक पद फेंक दी गई तरंग प्रकाशिकी है, जो ठीक तब वैध है जब तरंगदैर्ध्य समस्या की बाक़ी हर चीज़ की तुलना में छोटी हो — वही संबंध जो चिरसम्मत यांत्रिकी का क्वांटम यांत्रिकी से है, और यह ध्यान देने योग्य ढर्रा है कि भौतिकी अपने पुराने नियमों को फेंके बिना कैसे सेवानिवृत्त करती है। (दूसरा विकल्प दोहरी झिरी की असमान फ्रिंज गढ़ता है; तीसरा ऐसा कण-कथन पुनर्जीवित करता है जो फैलाव की ग़लत दिशा बताता है; चौथा चमक और चौड़ाई को गड्डमड्ड करता है, जिसे निम्निष्ठों की जगहों का माप तुरंत निपटा देता है।)"
+        },
+        "mr": {
+          "stem": "एकेरी फटीच्या नमुन्यात मध्यवर्ती तेजस्वी पट्टी बाकी सर्वांहून दुप्पट रुंद असते, तर दुहेरी फटीच्या नमुन्यात प्रत्येक पट्टा एकाच रुंदीचा असतो. विद्यार्थी म्हणतो की दोन्ही एकच घटना आहेत आणि फरक ही काहीतरी चूक असावी. याचे मूल्यमापन करा, आणि फट अधिकाधिक अरुंद करत गेल्यावर काय होते ते सांगा.",
+          "choices": [
+            "दोन्ही अध्यारोपण आहेत, म्हणून विद्यार्थी अर्धा बरोबर आहे, पण ते वेगळ्या संख्येचे वाटे अध्यारोपित करतात आणि नमुन्यातला फरक खरा आहे. दोन फटी दोन शलाका देतात ज्यांचा पथांतर समान पावलांनी वाढतो, आणि त्या समान अंतरावर समान रुंदीचे पट्टे बनवतात. एक फट स्वतःच्याच रुंदीभर लहरिकांचे सातत्य देते, आणि निम्निष्ठ तिथे घडतात जिथे त्या जोड्यांत कापल्या जातात, sin θ = mλ/a वर जिथे m ≠ 0; म्हणून मध्यवर्ती उच्चिष्ठ एका बाजूच्या पहिल्या निम्निष्ठापासून दुसऱ्या बाजूच्या पहिल्यापर्यंत पसरतो आणि दुप्पट रुंद आहे. a अरुंद केल्यावर अख्खा नमुना पसरतो, कारण रुंदी λ/a नुसार चालते — म्हणून किरण व्याख्यायित करण्यास कोणतीही फट कधीच पुरेशी लहान नसते, आणि भूमितीय प्रकाशिकी केवळ उलट मर्यादेत a ≫ λ मध्ये परतते",
+            "विद्यार्थी हे मानण्यात बरोबर आहे की दोन्ही एकच आहेत, आणि दुहेरी फटीचे पट्टेही असमान आहेत — तिथेही मधला दुप्पट रुंद आहे, पण फरक दिसण्याइतका नाही",
+            "ते पूर्णपणे असंबद्ध आहेत: व्यतिकरण हा लहरी-परिणाम आहे आणि विवर्तन हा कण-परिणाम आहे जो प्रकाश फटीच्या कडांवर आदळल्याने होतो",
+            "मध्यवर्ती पट्टी केवळ यामुळे दुप्पट रुंद आहे की ती अधिक तेजस्वी आहे, आणि दीर्घ उद्भासनात प्रत्येक पट्टी समान रुंद दिसली असती"
+          ],
+          "solution": "विद्यार्थ्याने काहीतरी खरे पाहिले आहे आणि त्यातून चुकीचा निष्कर्ष काढला आहे. व्यतिकरण आणि विवर्तन खरोखर एकच भौतिकी आहेत — कलासंबद्ध लहरींचे अध्यारोपण — आणि आधुनिक दृष्टी त्यांना वेगळे नियम मानत नाही. जे वेगळे आहे ते हे की किती वाटे जोडले जात आहेत, आणि त्या फरकाचे असे परिणाम आहेत जे पट्टीने मोजता येतात. दोन फटी. नेमक्या दोन शलाका आहेत. कोन θ वर त्यांचा पथांतर d sin θ आहे, आणि पडद्यावर चालताना तो सतत वाढतो, समान अंतरावरच्या जागी 0, λ, 2λ, 3λ … मधून जात. म्हणून तेजस्वी पट्टे समान अंतर β = λD/d वर बसतात, आणि प्रत्येक आपल्या शेजाऱ्यांइतका रुंद आहे. मध्यवर्ती पट्ट्याला काहीही वेगळे करत नाही याखेरीज की त्याचा पथांतर योगायोगाने शून्य आहे. एक फट. दोन शलाका नव्हे तर असंख्य लहरिका आहेत, फटीच्या रुंदी a भरातील प्रत्येक बिंदूतून एक. निम्निष्ठाची अट 'दोन गोष्टी कापल्या जाव्यात' नसून 'सर्व काही जोड्यांत कापले जावे' अशी आहे: फटीचे दोन भाग करा, आणि एका भागाच्या वरच्या टोकापासून दुसऱ्याच्या वरच्या टोकापर्यंत जादा मार्ग λ/2 असेल, तेव्हा पहिल्या भागातील प्रत्येक लहरिका दुसऱ्यातल्या आपल्या जोडीदाराने पुसली जाते. यातून a sin θ = λ मिळते. चार पट्ट्या, सहा पट्ट्यांनी पुन्हा करा आणि m = 1, 2, 3 … साठी a sin θ = mλ मिळते, ज्यात m = 0 स्पष्टपणे वगळलेला आहे, कारण θ = 0 वर काही कापायला पथांतर आहेच नाही आणि प्रत्येक लहरिका समान कलेत पोहोचते. म्हणून नमुना असा चालतो: मध्यवर्ती उच्चिष्ठ, sin θ = λ/a वर पहिला निम्निष्ठ, आणि त्यानंतरचे उच्चिष्ठ ढोबळमानाने लागोपाठच्या निम्निष्ठांच्या मधोमध पडतात. म्हणून मध्यवर्ती पट्टी −λ/a पासून +λ/a पर्यंत पसरते तर इतर प्रत्येक पट्टी केवळ λ/a — नेमकी दुप्पट रुंद, आणि ती कितीतरी अधिक तेजस्वीही आहे कारण तिथे सर्व लहरिका बहुतांश कापल्या जाण्याऐवजी जुळतात. आता अरुंद करणे, जो प्रश्नाचा खोल अर्धा भाग आहे. मध्यवर्ती उच्चिष्ठाची कोनीय अर्ध-रुंदी λ/a आहे. फट निम्मी करा आणि ती दुप्पट होते. हे थेट त्या अंतःप्रेरणेविरुद्ध चालते की अरुंद छिद्र अरुंद शलाका देते, आणि हेच कारण की द्वारक लहान करून किरण बांधता येत नाही: a ≈ λ वर नमुना जवळपास काटकोनभर पसरतो, आणि फट एकाच हायगेन्स बिंदु स्रोताप्रमाणे अख्ख्या पुढच्या अर्धगोलात प्रारित करते. किरण प्रकाशिकी ही उलट मर्यादा आहे. जेव्हा a ≫ λ, λ/a नगण्य आहे, पसरणे मोजता येत नाही, आणि प्रकाश तीक्ष्ण सावल्यांसह सरळ रेषांत जाताना दिसतो. मिलीमीटरची फट आणि 500 nm प्रकाश सुमारे 0.03° चे पसरणे देतात, म्हणूनच रोजच्या जगण्यात काहीही किरण-चित्राचे खंडन करत नाही. म्हणून भूमितीय प्रकाशिकी हा वेगळा सिद्धांत नसून एक पद फेकून दिलेली लहरी प्रकाशिकी आहे, जी नेमकी तेव्हा वैध जेव्हा तरंगलांबी प्रश्नातल्या बाकी प्रत्येक गोष्टीच्या तुलनेत लहान असेल — तोच संबंध जो चिरंतन यांत्रिकीचा पुंज यांत्रिकीशी आहे, आणि भौतिकी आपले जुने नियम न फेकता कशी निवृत्त करते याचा हा लक्षात घेण्याजोगा आकृतिबंध. (दुसरा पर्याय दुहेरी फटीचे असमान पट्टे घडवतो; तिसरा असे कण-कथन पुनरुज्जीवित करतो जे पसरण्याची चुकीची दिशा सांगते; चौथा तेज आणि रुंदी यांची गल्लत करतो, जी निम्निष्ठांच्या जागांचे माप लगेच निकालात काढते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "In Young's experiment the slits are 1 mm apart, the screen is 1 m away, and the light has wavelength 600 nm. What is the fringe width, in mm?",
+      "choices": [
+        "1.67",
+        "0.6",
+        "6",
+        "0.06"
+      ],
+      "answerIndex": 1,
+      "solution": "β = λD/d = (600 × 10⁻⁹ × 1)/(1 × 10⁻³) = 6 × 10⁻⁴ m, which is 600/1000 = 0.6 mm. The fringes are only visible at all because D/d is a thousand: the pattern is a magnified picture of a path difference of less than a micrometre, and shrinking d or lengthening D is the only way to make it big enough to see. (1.67 inverts the ratio; 6 misplaces the exponent by one.)",
+      "checkExpr": "600/1000",
+      "translations": {
+        "hi": {
+          "stem": "यंग के प्रयोग में झिरियाँ 1 mm दूर हैं, पर्दा 1 m दूर है, और प्रकाश की तरंगदैर्ध्य 600 nm है। फ्रिंज चौड़ाई, mm में, क्या है?",
+          "choices": [
+            "1.67",
+            "0.6",
+            "6",
+            "0.06"
+          ],
+          "solution": "β = λD/d = (600 × 10⁻⁹ × 1)/(1 × 10⁻³) = 6 × 10⁻⁴ m, जो 600/1000 = 0.6 mm है। फ्रिंज दिखती ही इसलिए हैं कि D/d एक हज़ार है: प्रतिरूप एक माइक्रोमीटर से भी कम के पथांतर का बड़ा किया हुआ चित्र है, और उसे देखने लायक़ बड़ा करने का एकमात्र रास्ता d घटाना या D बढ़ाना है। (1.67 अनुपात उलट देता है; 6 घातांक एक से चूक जाता है।)"
+        },
+        "mr": {
+          "stem": "यंगच्या प्रयोगात फटी 1 mm अंतरावर आहेत, पडदा 1 m दूर आहे, आणि प्रकाशाची तरंगलांबी 600 nm आहे. पट्टा रुंदी, mm मध्ये, किती?",
+          "choices": [
+            "1.67",
+            "0.6",
+            "6",
+            "0.06"
+          ],
+          "solution": "β = λD/d = (600 × 10⁻⁹ × 1)/(1 × 10⁻³) = 6 × 10⁻⁴ m, जे 600/1000 = 0.6 mm आहे. पट्टे दिसतातच यामुळे की D/d एक हजार आहे: नमुना हा एका मायक्रोमीटरहूनही कमी पथांतराचे मोठे केलेले चित्र आहे, आणि तो दिसण्याइतका मोठा करण्याचा एकमेव मार्ग म्हणजे d घटवणे वा D वाढवणे. (1.67 गुणोत्तर उलटवते; 6 घातांक एकाने चुकवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Two coherent sources of equal intensity I interfere. At a point of constructive interference the intensity is what multiple of I?",
+      "choices": [
+        "4",
+        "1",
+        "8",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "Amplitudes add, not intensities: two waves of amplitude a give 2a, and intensity goes as the square, so I_max = (2a)² ∝ 4I, that is 2 × 2 = 4 times one source alone. The extra 2I is not created — it is exactly what is missing from the dark fringes, where the amplitudes cancel to zero and the intensity is 0 rather than 2I. Averaged over the whole pattern, the total is the 2I the two sources delivered. (2 adds the intensities directly.)",
+      "checkExpr": "2*2",
+      "translations": {
+        "hi": {
+          "stem": "बराबर तीव्रता I के दो कलासंबद्ध स्रोत व्यतिकरण करते हैं। संपोषी व्यतिकरण के बिंदु पर तीव्रता I की कितनी गुनी है?",
+          "choices": [
+            "4",
+            "1",
+            "8",
+            "2"
+          ],
+          "solution": "आयाम जुड़ते हैं, तीव्रताएँ नहीं: आयाम a की दो तरंगें 2a देती हैं, और तीव्रता वर्ग के अनुसार चलती है, अतः I_max = (2a)² ∝ 4I, अर्थात् अकेले एक स्रोत का 2 × 2 = 4 गुना। अतिरिक्त 2I बनाया नहीं गया — वह ठीक वही है जो अँधेरी फ्रिंजों से लुप्त है, जहाँ आयाम कटकर शून्य हो जाते हैं और तीव्रता 2I नहीं बल्कि 0 है। पूरे प्रतिरूप पर औसत लो तो कुल वही 2I है जो दोनों स्रोतों ने दिया। (2 तीव्रताएँ सीधे जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "समान तीव्रता I चे दोन कलासंबद्ध स्रोत व्यतिकरण करतात. संपोषी व्यतिकरणाच्या बिंदूवर तीव्रता I च्या किती पट आहे?",
+          "choices": [
+            "4",
+            "1",
+            "8",
+            "2"
+          ],
+          "solution": "आयाम जुळतात, तीव्रता नाही: आयाम a च्या दोन लहरी 2a देतात, आणि तीव्रता वर्गानुसार चालते, म्हणून I_max = (2a)² ∝ 4I, म्हणजे एकट्या स्रोताच्या 2 × 2 = 4 पट. जादा 2I निर्माण झालेला नाही — तो नेमका तोच जो अंधाऱ्या पट्ट्यांतून हरवला आहे, जिथे आयाम कापले जाऊन शून्य होतात आणि तीव्रता 2I नव्हे तर 0 आहे. अख्ख्या नमुन्यावर सरासरी घेतल्यास एकूण तेच 2I आहे जे दोन्ही स्रोतांनी दिले. (2 तीव्रता थेट जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "In a double-slit pattern the fringe width is 0.5 mm. How far from the centre, in mm, is the fourth bright fringe?",
+      "choices": [
+        "0.125",
+        "2",
+        "2.5",
+        "1.75"
+      ],
+      "answerIndex": 1,
+      "solution": "Bright fringes are equally spaced at intervals of β, so the nth from the centre is at nβ: 4 × 0.5 = 2 mm. The equal spacing is the signature of two-source interference — a single-slit diffraction pattern would not be evenly spaced and its central band would be double width. (2.5 counts the central fringe as the first; 0.125 inverts the product.)",
+      "checkExpr": "0.5*4",
+      "translations": {
+        "hi": {
+          "stem": "दोहरी झिरी के प्रतिरूप में फ्रिंज चौड़ाई 0.5 mm है। चौथी चमकीली फ्रिंज केंद्र से कितनी दूर, mm में, है?",
+          "choices": [
+            "0.125",
+            "2",
+            "2.5",
+            "1.75"
+          ],
+          "solution": "चमकीली फ्रिंज β के बराबर अंतरालों पर हैं, अतः केंद्र से nवीं nβ पर है: 4 × 0.5 = 2 mm. बराबर अंतराल दो-स्रोत व्यतिकरण की पहचान है — एकल झिरी का विवर्तन प्रतिरूप बराबर अंतराल पर नहीं होता और उसकी केंद्रीय पट्टी दुगुनी चौड़ी होती। (2.5 केंद्रीय फ्रिंज को पहली गिन लेता है; 0.125 गुणनफल उलट देता है।)"
+        },
+        "mr": {
+          "stem": "दुहेरी फटीच्या नमुन्यात पट्टा रुंदी 0.5 mm आहे. चौथा तेजस्वी पट्टा केंद्रापासून किती दूर, mm मध्ये, आहे?",
+          "choices": [
+            "0.125",
+            "2",
+            "2.5",
+            "1.75"
+          ],
+          "solution": "तेजस्वी पट्टे β च्या समान अंतरांवर आहेत, म्हणून केंद्रापासून nवा nβ वर आहे: 4 × 0.5 = 2 mm. समान अंतर हे दोन-स्रोत व्यतिकरणाची खूण आहे — एकेरी फटीचा विवर्तन नमुना समान अंतरावर नसतो आणि त्याची मध्यवर्ती पट्टी दुप्पट रुंद असते. (2.5 मध्यवर्ती पट्ट्याला पहिला मोजते; 0.125 गुणाकार उलटवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A double-slit arrangement gives a fringe width of 0.8 mm. The slit separation is then doubled, everything else unchanged. What is the new fringe width, in mm?",
+      "choices": [
+        "0.2",
+        "1.6",
+        "0.4",
+        "0.8"
+      ],
+      "answerIndex": 2,
+      "solution": "β = λD/d has d in the denominator, so doubling d halves the fringe width: 0.8/2 = 0.4 mm. Wider slits, narrower fringes — the inverse relation is the reason the two slits in a demonstration are made as close together as the apparatus allows. (1.6 doubles instead of halving.)",
+      "checkExpr": "0.8/2",
+      "translations": {
+        "hi": {
+          "stem": "एक दोहरी झिरी व्यवस्था 0.8 mm फ्रिंज चौड़ाई देती है। फिर झिरियों की दूरी दुगुनी कर दी जाती है, बाक़ी सब वही। नई फ्रिंज चौड़ाई, mm में, क्या है?",
+          "choices": [
+            "0.2",
+            "1.6",
+            "0.4",
+            "0.8"
+          ],
+          "solution": "β = λD/d में d हर में है, अतः d दुगुना करने पर फ्रिंज चौड़ाई आधी हो जाती है: 0.8/2 = 0.4 mm. झिरियाँ दूर, फ्रिंज सँकरी — यही व्युत्क्रम संबंध कारण है कि प्रदर्शन में दोनों झिरियाँ जितना उपकरण होने दे उतनी पास बनाई जाती हैं। (1.6 आधा करने के बजाय दुगुना कर देता है।)"
+        },
+        "mr": {
+          "stem": "एक दुहेरी फट मांडणी 0.8 mm पट्टा रुंदी देते. मग फटींमधले अंतर दुप्पट केले जाते, बाकी सर्व तसेच. नवी पट्टा रुंदी, mm मध्ये, किती?",
+          "choices": [
+            "0.2",
+            "1.6",
+            "0.4",
+            "0.8"
+          ],
+          "solution": "β = λD/d मध्ये d छेदात आहे, म्हणून d दुप्पट केल्यास पट्टा रुंदी निम्मी होते: 0.8/2 = 0.4 mm. फटी दूर, पट्टे अरुंद — हाच व्यस्त संबंध कारण आहे की प्रात्यक्षिकात दोन्ही फटी उपकरण देईल तितक्या जवळ बनवल्या जातात. (1.6 निम्मे करण्याऐवजी दुप्पट करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "In a double-slit pattern, the path difference at the third dark fringe from the centre is how many wavelengths?",
+      "choices": [
+        "1.5",
+        "3",
+        "2.5",
+        "2"
+      ],
+      "answerIndex": 2,
+      "solution": "Dark fringes occur at odd multiples of half a wavelength: λ/2, 3λ/2, 5λ/2 … so the third is 5λ/2 = 5/2 = 2.5 wavelengths. Counting is where this goes wrong — the FIRST dark fringe already needs half a wavelength, so the nth needs (2n − 1)/2 and not n − 1/2 counted from zero. (1.5 gives the second dark fringe; 3 uses the bright-fringe condition.)",
+      "checkExpr": "5/2",
+      "translations": {
+        "hi": {
+          "stem": "दोहरी झिरी के प्रतिरूप में केंद्र से तीसरी अँधेरी फ्रिंज पर पथांतर कितनी तरंगदैर्ध्य है?",
+          "choices": [
+            "1.5",
+            "3",
+            "2.5",
+            "2"
+          ],
+          "solution": "अँधेरी फ्रिंज आधी तरंगदैर्ध्य के विषम गुणकों पर होती हैं: λ/2, 3λ/2, 5λ/2 … अतः तीसरी 5λ/2 = 5/2 = 2.5 तरंगदैर्ध्य है। गिनती में ही गड़बड़ होती है — पहली अँधेरी फ्रिंज को ही आधी तरंगदैर्ध्य चाहिए, अतः nवीं को (2n − 1)/2 चाहिए, शून्य से गिनी गई n − 1/2 नहीं। (1.5 दूसरी अँधेरी फ्रिंज देता है; 3 चमकीली फ्रिंज की शर्त लगाता है।)"
+        },
+        "mr": {
+          "stem": "दुहेरी फटीच्या नमुन्यात केंद्रापासून तिसऱ्या अंधाऱ्या पट्ट्यावर पथांतर किती तरंगलांबी आहे?",
+          "choices": [
+            "1.5",
+            "3",
+            "2.5",
+            "2"
+          ],
+          "solution": "अंधारे पट्टे अर्ध्या तरंगलांबीच्या विषम पटींवर घडतात: λ/2, 3λ/2, 5λ/2 … म्हणून तिसरा 5λ/2 = 5/2 = 2.5 तरंगलांबी आहे. मोजणीतच गडबड होते — पहिल्या अंधाऱ्या पट्ट्यालाच अर्धी तरंगलांबी लागते, म्हणून nव्याला (2n − 1)/2 लागते, शून्यापासून मोजलेली n − 1/2 नाही. (1.5 दुसरा अंधारा पट्टा देते; 3 तेजस्वी पट्ट्याची अट लावते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A single slit of width 0.2 mm is lit by light of wavelength 600 nm, with a screen 1 m away. How far from the centre, in mm, is the first minimum?",
+      "choices": [
+        "6",
+        "0.33",
+        "1.5",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "The first minimum lies at sin θ = λ/a, so its distance is λD/a = (600 × 10⁻⁹ × 1)/(2 × 10⁻⁴) = 3 × 10⁻³ m, which is 600/200 = 3 mm. That distance is also the HALF-width of the central maximum, which therefore spans 6 mm from first minimum to first minimum — twice as wide as any other band, since the outer bands lie between successive minima. (1.5 halves it; 0.33 inverts the ratio.)",
+      "checkExpr": "600/200",
+      "translations": {
+        "hi": {
+          "stem": "0.2 mm चौड़ी एकल झिरी पर 600 nm तरंगदैर्ध्य का प्रकाश पड़ता है, और पर्दा 1 m दूर है। पहला निम्निष्ठ केंद्र से कितनी दूर, mm में, है?",
+          "choices": [
+            "6",
+            "0.33",
+            "1.5",
+            "3"
+          ],
+          "solution": "पहला निम्निष्ठ sin θ = λ/a पर पड़ता है, अतः उसकी दूरी λD/a = (600 × 10⁻⁹ × 1)/(2 × 10⁻⁴) = 3 × 10⁻³ m है, जो 600/200 = 3 mm है। वही दूरी केंद्रीय उच्चिष्ठ की अर्ध-चौड़ाई भी है, जो इसलिए एक निम्निष्ठ से दूसरे तक 6 mm फैलता है — किसी भी दूसरी पट्टी से दुगुना चौड़ा, क्योंकि बाहरी पट्टियाँ लगातार निम्निष्ठों के बीच पड़ती हैं। (1.5 उसे आधा कर देता है; 0.33 अनुपात उलट देता है।)"
+        },
+        "mr": {
+          "stem": "0.2 mm रुंद एकेरी फटीवर 600 nm तरंगलांबीचा प्रकाश पडतो, आणि पडदा 1 m दूर आहे. पहिला निम्निष्ठ केंद्रापासून किती दूर, mm मध्ये, आहे?",
+          "choices": [
+            "6",
+            "0.33",
+            "1.5",
+            "3"
+          ],
+          "solution": "पहिला निम्निष्ठ sin θ = λ/a वर पडतो, म्हणून त्याचे अंतर λD/a = (600 × 10⁻⁹ × 1)/(2 × 10⁻⁴) = 3 × 10⁻³ m आहे, जे 600/200 = 3 mm आहे. तेच अंतर मध्यवर्ती उच्चिष्ठाची अर्ध-रुंदीही आहे, जो म्हणून एका निम्निष्ठापासून दुसऱ्यापर्यंत 6 mm पसरतो — इतर कोणत्याही पट्ट्याहून दुप्पट रुंद, कारण बाहेरचे पट्टे लागोपाठच्या निम्निष्ठांमध्ये पडतात. (1.5 ते निम्मे करते; 0.33 गुणोत्तर उलटवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Unpolarised light of intensity 100 W/m² passes through a single ideal polaroid. What intensity, in W/m², emerges?",
+      "choices": [
+        "0",
+        "50",
+        "100",
+        "25"
+      ],
+      "answerIndex": 1,
+      "solution": "Unpolarised light contains all orientations equally, and the average of cos²θ over a full turn is exactly one half, so the transmitted intensity is 100/2 = 50 W/m² whatever angle the polaroid is set to. Note that this halving happens only at the FIRST polaroid; after it the light is polarised and Malus's law with a definite angle takes over. (100 assumes an ideal polaroid transmits everything.)",
+      "checkExpr": "100/2",
+      "translations": {
+        "hi": {
+          "stem": "100 W/m² तीव्रता का अध्रुवित प्रकाश एक आदर्श पोलेरॉइड से गुज़रता है। कितनी तीव्रता, W/m² में, निकलती है?",
+          "choices": [
+            "0",
+            "50",
+            "100",
+            "25"
+          ],
+          "solution": "अध्रुवित प्रकाश में सभी अभिविन्यास बराबर हैं, और पूरे चक्कर पर cos²θ का औसत ठीक आधा है, अतः पोलेरॉइड चाहे किसी भी कोण पर हो, निकलती तीव्रता 100/2 = 50 W/m² है। ध्यान दो कि यह आधा होना केवल पहले पोलेरॉइड पर होता है; उसके बाद प्रकाश ध्रुवित है और निश्चित कोण वाला मैलस का नियम सँभाल लेता है। (100 मान लेता है कि आदर्श पोलेरॉइड सब कुछ जाने देता है।)"
+        },
+        "mr": {
+          "stem": "100 W/m² तीव्रतेचा अध्रुवित प्रकाश एका आदर्श पोलरॉइडमधून जातो. किती तीव्रता, W/m² मध्ये, बाहेर पडते?",
+          "choices": [
+            "0",
+            "50",
+            "100",
+            "25"
+          ],
+          "solution": "अध्रुवित प्रकाशात सर्व मांडण्या समान असतात, आणि पूर्ण फेऱ्यावर cos²θ ची सरासरी नेमकी निम्मी आहे, म्हणून पोलरॉइड कोणत्याही कोनावर असो, बाहेर पडणारी तीव्रता 100/2 = 50 W/m² आहे. लक्षात घ्या की हे निम्मे होणे केवळ पहिल्या पोलरॉइडवर घडते; त्यानंतर प्रकाश ध्रुवित आहे आणि ठराविक कोनाचा मालसचा नियम ताबा घेतो. (100 गृहीत धरते की आदर्श पोलरॉइड सर्व काही जाऊ देतो.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A medium has refractive index 1.732. What is its polarising angle, in degrees? Take the angle whose tangent is 1.732 to be 60°.",
+      "choices": [
+        "90",
+        "45",
+        "60",
+        "30"
+      ],
+      "answerIndex": 2,
+      "solution": "Brewster's law is tan θ_p = n, so θ_p = 60°, which is 180/3. At that angle the reflected and refracted rays are exactly perpendicular, since θ_p + θ_r = 90° follows from combining Brewster's law with Snell's. The reflected light is then completely polarised parallel to the surface, which is why polarising sunglasses are cut to block the horizontal component and kill glare off roads and water. (45 corresponds to n = 1.)",
+      "checkExpr": "180/3",
+      "translations": {
+        "hi": {
+          "stem": "किसी माध्यम का अपवर्तनांक 1.732 है। उसका ध्रुवण कोण, अंश में, क्या है? जिस कोण की स्पर्शज्या 1.732 है उसे 60° लो।",
+          "choices": [
+            "90",
+            "45",
+            "60",
+            "30"
+          ],
+          "solution": "ब्रूस्टर का नियम tan θ_p = n है, अतः θ_p = 60°, जो 180/3 है। उस कोण पर परावर्तित और अपवर्तित किरणें ठीक लंबवत हैं, क्योंकि ब्रूस्टर के नियम को स्नेल के नियम से मिलाने पर θ_p + θ_r = 90° निकलता है। तब परावर्तित प्रकाश पृष्ठ के समांतर पूरी तरह ध्रुवित है, इसीलिए ध्रुवक धूप-चश्मे क्षैतिज घटक रोकने को काटे जाते हैं और सड़क तथा पानी की चौंध मार देते हैं। (45, n = 1 के अनुरूप है।)"
+        },
+        "mr": {
+          "stem": "एका माध्यमाचा अपवर्तनांक 1.732 आहे. त्याचा ध्रुवण कोन, अंशांत, किती? ज्या कोनाची स्पर्शिका 1.732 आहे तो 60° घ्या.",
+          "choices": [
+            "90",
+            "45",
+            "60",
+            "30"
+          ],
+          "solution": "ब्रूस्टरचा नियम tan θ_p = n आहे, म्हणून θ_p = 60°, जे 180/3 आहे. त्या कोनावर परावर्तित आणि अपवर्तित किरणे नेमकी लंब आहेत, कारण ब्रूस्टरचा नियम स्नेलच्या नियमाशी जोडल्यास θ_p + θ_r = 90° निघते. तेव्हा परावर्तित प्रकाश पृष्ठाला समांतर पूर्णपणे ध्रुवित आहे, म्हणूनच ध्रुवक गॉगल आडवा घटक अडवण्यासाठी कापले जातात आणि रस्ता व पाण्याची चमक मारतात. (45 हे n = 1 शी जुळते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Light already polarised, of intensity 80 W/m², falls on a polaroid whose axis is at 60° to the plane of polarisation. What intensity, in W/m², is transmitted? Take cos 60° = 0.5.",
+      "choices": [
+        "20",
+        "40",
+        "0",
+        "60"
+      ],
+      "answerIndex": 0,
+      "solution": "Malus's law gives I = I₀ cos²θ = 80 × (0.5)² = 80 × 0.25 = 20 W/m². The cosine is SQUARED because it applies to the amplitude while intensity goes as amplitude squared — dropping the square is the commonest error here and would give 40. Note also that no halving applies: the light arrived already polarised, so the one-half factor for unpolarised light does not enter. (0 assumes a 60° setting extinguishes the beam, which happens only at 90°.)",
+      "checkExpr": "80*0.25",
+      "translations": {
+        "hi": {
+          "stem": "पहले से ध्रुवित 80 W/m² तीव्रता का प्रकाश ऐसे पोलेरॉइड पर पड़ता है जिसकी अक्ष ध्रुवण तल से 60° पर है। कितनी तीव्रता, W/m² में, निकलती है? cos 60° = 0.5 लो।",
+          "choices": [
+            "20",
+            "40",
+            "0",
+            "60"
+          ],
+          "solution": "मैलस का नियम देता है I = I₀ cos²θ = 80 × (0.5)² = 80 × 0.25 = 20 W/m². कोज्या का वर्ग है क्योंकि वह आयाम पर लगती है जबकि तीव्रता आयाम के वर्ग के अनुसार चलती है — वर्ग छोड़ देना यहाँ की सबसे आम भूल है और 40 देती। यह भी ध्यान दो कि आधा करना लागू नहीं: प्रकाश पहले से ध्रुवित आया, अतः अध्रुवित प्रकाश वाला आधे का गुणक आता ही नहीं। (0 मान लेता है कि 60° की सेटिंग पुंज बुझा देती है, जो केवल 90° पर होता है।)"
+        },
+        "mr": {
+          "stem": "आधीच ध्रुवित 80 W/m² तीव्रतेचा प्रकाश अशा पोलरॉइडवर पडतो ज्याचा अक्ष ध्रुवण प्रतलाशी 60° वर आहे. किती तीव्रता, W/m² मध्ये, बाहेर पडते? cos 60° = 0.5 घ्या.",
+          "choices": [
+            "20",
+            "40",
+            "0",
+            "60"
+          ],
+          "solution": "मालसचा नियम देतो I = I₀ cos²θ = 80 × (0.5)² = 80 × 0.25 = 20 W/m². कोसाइनचा वर्ग आहे कारण तो आयामावर लागतो तर तीव्रता आयामाच्या वर्गानुसार चालते — वर्ग गाळणे ही इथली सर्वांत सामान्य चूक आणि ती 40 देईल. हेही लक्षात घ्या की निम्मे करणे लागू नाही: प्रकाश आधीच ध्रुवित आला, म्हणून अध्रुवित प्रकाशाचा निम्म्याचा गुणक येतच नाही. (0 गृहीत धरते की 60° ची मांडणी शलाका विझवते, जे केवळ 90° वर घडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A Young's experiment giving fringes 0.8 mm wide in air is completely immersed in water of refractive index 4/3. What is the new fringe width, in mm?",
+      "choices": [
+        "0.8",
+        "1.07",
+        "0.6",
+        "0.2"
+      ],
+      "answerIndex": 2,
+      "solution": "The frequency of light is fixed by the source and cannot change on entering the water; what changes is the speed, and therefore the wavelength, which becomes λ/n. Since β = λD/d is proportional to the wavelength, the fringes shrink by the same factor: 0.8 × 3/4 = 0.6 mm. It is worth being explicit about which quantity is conserved, because the opposite assumption — that the wavelength is fixed and the frequency changes — would make a red object change colour underwater, which it does not. The pattern also confirms that interference depends on the wavelength IN THE MEDIUM and not on the vacuum wavelength, which is why a thin film's colours depend on its refractive index as well as its thickness. (0.8 assumes nothing changes; 1.07 multiplies by n instead of dividing.)",
+      "checkExpr": "0.8*3/4",
+      "translations": {
+        "hi": {
+          "stem": "हवा में 0.8 mm चौड़ी फ्रिंज देने वाला यंग का प्रयोग 4/3 अपवर्तनांक के पानी में पूरी तरह डुबो दिया जाता है। नई फ्रिंज चौड़ाई, mm में, क्या है?",
+          "choices": [
+            "0.8",
+            "1.07",
+            "0.6",
+            "0.2"
+          ],
+          "solution": "प्रकाश की आवृत्ति स्रोत से तय है और पानी में घुसने पर बदल नहीं सकती; जो बदलता है वह चाल है, और इसलिए तरंगदैर्ध्य, जो λ/n हो जाती है। चूँकि β = λD/d तरंगदैर्ध्य का समानुपाती है, फ्रिंज उसी गुणक से सिकुड़ती हैं: 0.8 × 3/4 = 0.6 mm. कौन-सी राशि संरक्षित है यह स्पष्ट कहना चाहिए, क्योंकि उलटी मान्यता — कि तरंगदैर्ध्य नियत है और आवृत्ति बदलती है — लाल वस्तु का रंग पानी के भीतर बदल देती, जो नहीं बदलता। प्रतिरूप यह भी पुष्ट करता है कि व्यतिकरण माध्यम में की तरंगदैर्ध्य पर निर्भर है, निर्वात की तरंगदैर्ध्य पर नहीं, इसीलिए पतली झिल्ली के रंग उसकी मोटाई के साथ-साथ उसके अपवर्तनांक पर भी निर्भर हैं। (0.8 मान लेता है कि कुछ नहीं बदलता; 1.07 भाग देने के बजाय n से गुणा कर देता है।)"
+        },
+        "mr": {
+          "stem": "हवेत 0.8 mm रुंद पट्टे देणारा यंगचा प्रयोग 4/3 अपवर्तनांकाच्या पाण्यात पूर्णपणे बुडवला जातो. नवी पट्टा रुंदी, mm मध्ये, किती?",
+          "choices": [
+            "0.8",
+            "1.07",
+            "0.6",
+            "0.2"
+          ],
+          "solution": "प्रकाशाची वारंवारता स्रोताने ठरलेली आहे आणि पाण्यात शिरताना बदलू शकत नाही; जे बदलते तो वेग, आणि म्हणून तरंगलांबी, जी λ/n होते. β = λD/d हे तरंगलांबीशी समानुपाती असल्याने, पट्टे त्याच पटीने आकसतात: 0.8 × 3/4 = 0.6 mm. कोणती राशी संधारित आहे हे स्पष्ट सांगायला हवे, कारण उलटे गृहीतक — की तरंगलांबी स्थिर आहे आणि वारंवारता बदलते — लाल वस्तूचा रंग पाण्याखाली बदलेल, जो बदलत नाही. नमुना हेही खात्रीने सांगतो की व्यतिकरण माध्यमातील तरंगलांबीवर अवलंबून आहे, निर्वातातील तरंगलांबीवर नाही, म्हणूनच पातळ पडद्याचे रंग त्याच्या जाडीसोबतच त्याच्या अपवर्तनांकावरही अवलंबून आहेत. (0.8 गृहीत धरते की काहीच बदलत नाही; 1.07 भागण्याऐवजी n ने गुणते.)"
+        }
+      }
+    }
+  ]
+}
