@@ -2514,8 +2514,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 327
-  chapters / 5,681 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 332
+  chapters / 5,751 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2679,7 +2679,23 @@ navigation" means the actual list rather than one somebody maintained by hand.
   subset that wrongly drops the empty set, the discriminant taken as b² − 4c,
   the greatest integer less than 4 given as 4, tan(A + B) with a plus in the
   denominator, and the modulus of 3 + 4i added to 7 instead of squared to 5.
-  Nine chapters of Class 11 Maths remain, and Class 12 after them.
+  **Five more Class 11 Maths chapters followed** — 70 questions: Permutations
+  and Combinations, Binomial Theorem, Sequences and Series, Straight Lines and
+  Conic Sections. The counting thread runs through all five: a combination is a
+  permutation with the double-counting divided out, a repeated letter is the
+  same division wearing a different hat, and the binomial coefficients turn out
+  to be those same combinations read off a bracket. Sequences carries the one
+  genuinely strange result at this level — an endless sum that stops at a
+  finite number, which is why a ball bouncing infinitely often travels 72
+  metres and not infinitely far. Lines and Conics do geometry with arithmetic:
+  a distance from a point to a line without drawing the perpendicular, three
+  points tested for collinearity by comparing two slopes, and a circle through
+  three points found by recognising a semicircle rather than solving three
+  equations. Distractors again encode the real slips — ⁸P₃ where ⁸C₃ was asked,
+  the binomial coefficient without the 2 inside the bracket squared with it,
+  the 5th term quoted where the sum of five was wanted, a perpendicular slope
+  inverted but not negated, and the intercepts added instead of Pythagorased.
+  Four chapters of Class 11 Maths remain, and Class 12 after them.
   Suite re-pointed and green: 87 files, 1485 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**

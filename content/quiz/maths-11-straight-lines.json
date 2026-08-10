@@ -1,0 +1,513 @@
+{
+  "slug": "maths-11-straight-lines",
+  "subject": "MATHS",
+  "classLevel": 11,
+  "chapter": "Chapter 9 — Straight Lines",
+  "name": "Straight Lines",
+  "summary": "A line turned into an equation and then interrogated by arithmetic: a slope that decides at a glance whether two lines meet, a formula that measures the distance from a point to a line without drawing the perpendicular, and three points tested for collinearity by comparing two slopes rather than by looking.",
+  "position": 9,
+  "translations": {
+    "hi": {
+      "name": "सरल रेखाएँ",
+      "summary": "रेखा को समीकरण बनाकर फिर अंकगणित से पूछताछ: ऐसी ढाल जो एक नज़र में तय कर दे कि दो रेखाएँ मिलेंगी या नहीं, ऐसा सूत्र जो लंब खींचे बिना किसी बिंदु से रेखा की दूरी नाप ले, और तीन बिंदु जिनकी संरेखता देखकर नहीं, दो ढालों की तुलना करके जाँची जाती है।"
+    },
+    "mr": {
+      "name": "सरळ रेषा",
+      "summary": "रेषेला समीकरण बनवून मग अंकगणिताने विचारपूस: अशी उतारी जी एका नजरेत ठरवते की दोन रेषा भेटतील का, असे सूत्र जे लंब न काढता एखाद्या बिंदूपासून रेषेचे अंतर मोजते, आणि तीन बिंदू ज्यांची एकरेषीयता पाहून नव्हे, दोन उतारींची तुलना करून तपासली जाते."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the slope of the line joining the points (1, 2) and (3, 6)?",
+      "choices": [
+        "2",
+        "0.5",
+        "8",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "Slope is the rise divided by the run: (6 − 2)/(3 − 1) = 4/2 = 2. Taking the points in the other order gives (2 − 6)/(1 − 3) = −4/−2 = 2 as well, which is the check worth doing — the slope of a line cannot depend on which end you started from. (0.5 divides the run by the rise, inverting the definition.)",
+      "checkExpr": "(6-2)/(3-1)",
+      "translations": {
+        "hi": {
+          "stem": "बिंदुओं (1, 2) और (3, 6) को मिलाने वाली रेखा की ढाल क्या है?",
+          "choices": [
+            "2",
+            "0.5",
+            "8",
+            "4"
+          ],
+          "solution": "ढाल है चढ़ाव बटा बढ़ाव: (6 − 2)/(3 − 1) = 4/2 = 2. बिंदुओं को उलटे क्रम में लेने पर (2 − 6)/(1 − 3) = −4/−2 = 2 भी मिलता है, और यही करने योग्य जाँच है — किसी रेखा की ढाल इस पर निर्भर नहीं हो सकती कि तुमने किस सिरे से शुरू किया। (0.5 चढ़ाव से बढ़ाव को भाग देकर परिभाषा उलट देता है।)"
+        },
+        "mr": {
+          "stem": "बिंदू (1, 2) आणि (3, 6) यांना जोडणाऱ्या रेषेची उतारी किती?",
+          "choices": [
+            "2",
+            "0.5",
+            "8",
+            "4"
+          ],
+          "solution": "उतारी म्हणजे चढ भागिले सरक: (6 − 2)/(3 − 1) = 4/2 = 2. बिंदू उलट्या क्रमाने घेतल्यावर (2 − 6)/(1 − 3) = −4/−2 = 2 सुद्धा मिळते, आणि हीच करण्याजोगी तपासणी — रेषेची उतारी तुम्ही कोणत्या टोकापासून सुरू केले यावर अवलंबून असू शकत नाही. (0.5 चढाने सरक भागून व्याख्या उलटवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the slope of the line y = 3x + 5?",
+      "choices": [
+        "3",
+        "15",
+        "5",
+        "8"
+      ],
+      "answerIndex": 0,
+      "solution": "In the form y = mx + c the slope is m, read straight off the coefficient of x: here 3. The 5 is the y-intercept, the height at which the line crosses the vertical axis, and it has no effect on steepness at all — every line y = 3x + c is parallel to this one. (5 quotes the intercept instead of the slope.)",
+      "checkExpr": "3*1",
+      "translations": {
+        "hi": {
+          "stem": "रेखा y = 3x + 5 की ढाल क्या है?",
+          "choices": [
+            "3",
+            "15",
+            "5",
+            "8"
+          ],
+          "solution": "रूप y = mx + c में ढाल m है, जो x के गुणांक से सीधे पढ़ी जाती है: यहाँ 3. 5 y-अंतःखंड है, वह ऊँचाई जिस पर रेखा ऊर्ध्व अक्ष काटती है, और उसका तीव्रता पर कोई प्रभाव नहीं — हर रेखा y = 3x + c इसके समांतर है। (5 ढाल के बजाय अंतःखंड बता देता है।)"
+        },
+        "mr": {
+          "stem": "रेषा y = 3x + 5 ची उतारी किती?",
+          "choices": [
+            "3",
+            "15",
+            "5",
+            "8"
+          ],
+          "solution": "रूप y = mx + c मध्ये उतारी m आहे, जी x च्या सहगुणकावरून थेट वाचली जाते: इथे 3. 5 हा y-अंतःखंड, ती उंची जिथे रेषा उभा अक्ष कापते, आणि त्याचा तीव्रतेवर काहीच परिणाम नाही — प्रत्येक रेषा y = 3x + c ही हिच्या समांतर आहे. (5 उतारीऐवजी अंतःखंड सांगते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the y-intercept of the line 2x + y = 7?",
+      "choices": [
+        "0",
+        "2",
+        "3.5",
+        "7"
+      ],
+      "answerIndex": 3,
+      "solution": "The y-intercept is the value of y where the line meets the vertical axis, which is where x = 0. Substituting gives y = 7 − 0 = 7. Rearranging to y = −2x + 7 shows the same thing in the familiar form. (3.5 gives the x-intercept, found by setting y to zero instead.)",
+      "checkExpr": "7-0",
+      "translations": {
+        "hi": {
+          "stem": "रेखा 2x + y = 7 का y-अंतःखंड क्या है?",
+          "choices": [
+            "0",
+            "2",
+            "3.5",
+            "7"
+          ],
+          "solution": "y-अंतःखंड y का वह मान है जहाँ रेखा ऊर्ध्व अक्ष से मिलती है, यानी जहाँ x = 0. प्रतिस्थापन से y = 7 − 0 = 7. y = −2x + 7 में जमाने पर वही बात परिचित रूप में दिखती है। (3.5 x-अंतःखंड देता है, जो इसके बजाय y को शून्य रखने से मिलता है।)"
+        },
+        "mr": {
+          "stem": "रेषा 2x + y = 7 चा y-अंतःखंड किती?",
+          "choices": [
+            "0",
+            "2",
+            "3.5",
+            "7"
+          ],
+          "solution": "y-अंतःखंड म्हणजे y चे ते मूल्य जिथे रेषा उभ्या अक्षाला भेटते, म्हणजे जिथे x = 0. प्रतिस्थापनाने y = 7 − 0 = 7. y = −2x + 7 असे मांडल्यावर तीच गोष्ट परिचित रूपात दिसते. (3.5 x-अंतःखंड देते, जो त्याऐवजी y शून्य ठेवल्याने मिळतो.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the slope of a line perpendicular to y = 2x + 1?",
+      "choices": [
+        "-2",
+        "-0.5",
+        "0.5",
+        "2"
+      ],
+      "answerIndex": 1,
+      "solution": "Perpendicular slopes multiply to −1, so the required slope is −1/2 = −0.5. Both changes matter: flip the fraction AND change the sign. Doing only one of them gives 0.5 or −2, which are the two commonest wrong answers and both appear here. (0.5 inverts without changing the sign.)",
+      "checkExpr": "(0-1)/2",
+      "translations": {
+        "hi": {
+          "stem": "y = 2x + 1 पर लंब रेखा की ढाल क्या है?",
+          "choices": [
+            "-2",
+            "-0.5",
+            "0.5",
+            "2"
+          ],
+          "solution": "लंब ढालों का गुणनफल −1 होता है, अतः चाहिए ढाल −1/2 = −0.5. दोनों बदलाव मायने रखते हैं: भिन्न उलटो और चिह्न भी बदलो। इनमें से केवल एक करने पर 0.5 या −2 मिलता है, जो दो सबसे आम ग़लत उत्तर हैं और दोनों यहाँ मौजूद हैं। (0.5 उलटता है पर चिह्न नहीं बदलता।)"
+        },
+        "mr": {
+          "stem": "y = 2x + 1 ला लंब असलेल्या रेषेची उतारी किती?",
+          "choices": [
+            "-2",
+            "-0.5",
+            "0.5",
+            "2"
+          ],
+          "solution": "लंब उतारींचा गुणाकार −1 असतो, म्हणून हवी असलेली उतारी −1/2 = −0.5. दोन्ही बदल महत्त्वाचे: अपूर्णांक उलटा आणि चिन्हही बदला. यांपैकी केवळ एक केल्यास 0.5 वा −2 मिळते, जी दोन सर्वांत सामान्य चुकीची उत्तरे आणि दोन्ही इथे हजर आहेत. (0.5 उलटवते पण चिन्ह बदलत नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the slope of a line parallel to 4x + 2y = 5?",
+      "choices": [
+        "4",
+        "2",
+        "-0.5",
+        "-2"
+      ],
+      "answerIndex": 3,
+      "solution": "Rearrange to y = −2x + 2.5, so the slope is −2, and parallel lines share it exactly. For a line written as ax + by = c the slope is always −a/b, which here is −4/2 = −2 without any rearranging at all. The minus sign is not optional — a line with a positive x-coefficient and a positive y-coefficient always slopes downward. (2 drops the sign.)",
+      "checkExpr": "(0-4)/2",
+      "translations": {
+        "hi": {
+          "stem": "4x + 2y = 5 के समांतर रेखा की ढाल क्या है?",
+          "choices": [
+            "4",
+            "2",
+            "-0.5",
+            "-2"
+          ],
+          "solution": "y = −2x + 2.5 में जमाओ, अतः ढाल −2 है, और समांतर रेखाएँ उसे ठीक-ठीक साझा करती हैं। ax + by = c रूप में लिखी रेखा की ढाल सदा −a/b होती है, जो यहाँ बिना कुछ जमाए ही −4/2 = −2 है। ऋण चिह्न वैकल्पिक नहीं — धनात्मक x-गुणांक और धनात्मक y-गुणांक वाली रेखा सदा नीचे की ओर ढलती है। (2 चिह्न गिरा देता है।)"
+        },
+        "mr": {
+          "stem": "4x + 2y = 5 ला समांतर असलेल्या रेषेची उतारी किती?",
+          "choices": [
+            "4",
+            "2",
+            "-0.5",
+            "-2"
+          ],
+          "solution": "y = −2x + 2.5 असे मांडा, म्हणून उतारी −2, आणि समांतर रेषा ती नेमकी वाटून घेतात. ax + by = c या रूपात लिहिलेल्या रेषेची उतारी नेहमी −a/b असते, जी इथे काहीही न मांडता −4/2 = −2 आहे. ऋण चिन्ह ऐच्छिक नाही — धन x-सहगुणक आणि धन y-सहगुणक असलेली रेषा नेहमी खालच्या दिशेने उतरते. (2 चिन्ह गाळते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the x-intercept of the line 3x + 4y = 12?",
+      "choices": [
+        "12",
+        "6",
+        "4",
+        "3"
+      ],
+      "answerIndex": 2,
+      "solution": "The x-intercept is where the line crosses the horizontal axis, so set y = 0: 3x = 12 and x = 12/3 = 4. The y-intercept comes from the mirror step, setting x = 0 to get y = 3. Knowing both lets you sketch any such line from two dots and a ruler, with no table of values at all. (3 gives the y-intercept, having set the wrong variable to zero.)",
+      "checkExpr": "12/3",
+      "translations": {
+        "hi": {
+          "stem": "रेखा 3x + 4y = 12 का x-अंतःखंड क्या है?",
+          "choices": [
+            "12",
+            "6",
+            "4",
+            "3"
+          ],
+          "solution": "x-अंतःखंड वहाँ है जहाँ रेखा क्षैतिज अक्ष काटती है, अतः y = 0 रखो: 3x = 12 और x = 12/3 = 4. y-अंतःखंड दर्पण-चरण से आता है, x = 0 रखकर y = 3. दोनों जानने पर तुम ऐसी कोई भी रेखा दो बिंदुओं और एक पैमाने से खींच सकते हो, बिना किसी मान-सारणी के। (3 y-अंतःखंड देता है, ग़लत चर को शून्य रखकर।)"
+        },
+        "mr": {
+          "stem": "रेषा 3x + 4y = 12 चा x-अंतःखंड किती?",
+          "choices": [
+            "12",
+            "6",
+            "4",
+            "3"
+          ],
+          "solution": "x-अंतःखंड तिथे जिथे रेषा आडवा अक्ष कापते, म्हणून y = 0 ठेवा: 3x = 12 आणि x = 12/3 = 4. y-अंतःखंड आरसा-पायरीतून येतो, x = 0 ठेवून y = 3. दोन्ही जाणल्यावर तुम्ही अशी कोणतीही रेषा दोन ठिपके आणि एका पट्टीने काढू शकता, कोणत्याही मूल्य-कोष्टकाविना. (3 y-अंतःखंड देते, चुकीचे चल शून्य ठेवून.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the perpendicular distance of the point (5, 6) from the line 3x + 4y − 10 = 0?",
+      "choices": [
+        "7.25",
+        "5.8",
+        "29",
+        "5"
+      ],
+      "answerIndex": 1,
+      "solution": "Substitute the point into the left-hand side and divide by the square root of the sum of the squares of the coefficients: (3 × 5 + 4 × 6 − 10)/√(9 + 16) = 29/5 = 5.8. The division is what makes it a distance rather than just a number — without it the answer would change if the equation were multiplied through by 2, even though the line had not moved. (29 stops at the numerator and never scales it.)",
+      "checkExpr": "(3*5+4*6-10)/5",
+      "translations": {
+        "hi": {
+          "stem": "बिंदु (5, 6) की रेखा 3x + 4y − 10 = 0 से लंब दूरी क्या है?",
+          "choices": [
+            "7.25",
+            "5.8",
+            "29",
+            "5"
+          ],
+          "solution": "बिंदु को बाईं ओर रखो और गुणांकों के वर्गों के योग के वर्गमूल से भाग दो: (3 × 5 + 4 × 6 − 10)/√(9 + 16) = 29/5 = 5.8. वही भाग इसे दूरी बनाता है, केवल संख्या नहीं — उसके बिना उत्तर बदल जाता यदि समीकरण को 2 से गुणा कर दिया जाता, भले ही रेखा हिली ही न हो। (29 अंश पर रुक जाता है और उसे कभी मापता नहीं।)"
+        },
+        "mr": {
+          "stem": "बिंदू (5, 6) चे रेषा 3x + 4y − 10 = 0 पासूनचे लंब अंतर किती?",
+          "choices": [
+            "7.25",
+            "5.8",
+            "29",
+            "5"
+          ],
+          "solution": "बिंदू डाव्या बाजूत ठेवा आणि सहगुणकांच्या वर्गांच्या बेरजेच्या वर्गमुळाने भागा: (3 × 5 + 4 × 6 − 10)/√(9 + 16) = 29/5 = 5.8. तोच भागाकार याला अंतर बनवतो, केवळ संख्या नव्हे — त्याविना उत्तर बदलले असते जर समीकरण 2 ने गुणले असते, जरी रेषा हललीच नसती तरी. (29 अंशावर थांबते आणि त्याला कधी मोजत नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A line through the point (2, 3) has slope 2. At what value of y does it cross the y-axis?",
+      "choices": [
+        "1",
+        "-7",
+        "-1",
+        "7"
+      ],
+      "answerIndex": 2,
+      "solution": "Use y = mx + c with the known point: 3 = 2 × 2 + c, so c = 3 − 4 = −1. Equivalently, walking from x = 2 back to x = 0 means going two steps left, and each step down the line loses 2 in height, so the height falls from 3 to −1. Both routes agree, and the second is worth having because it needs no algebra at all. (7 adds the two instead of subtracting, walking the wrong way along the line.)",
+      "checkExpr": "3-2*2",
+      "translations": {
+        "hi": {
+          "stem": "बिंदु (2, 3) से जाती किसी रेखा की ढाल 2 है। वह y-अक्ष को y के किस मान पर काटती है?",
+          "choices": [
+            "1",
+            "-7",
+            "-1",
+            "7"
+          ],
+          "solution": "ज्ञात बिंदु के साथ y = mx + c लो: 3 = 2 × 2 + c, अतः c = 3 − 4 = −1. उसी बात को यों कहो: x = 2 से x = 0 तक लौटने का अर्थ है दो क़दम बाएँ, और रेखा पर हर क़दम ऊँचाई में 2 खोता है, अतः ऊँचाई 3 से −1 तक गिरती है। दोनों रास्ते सहमत हैं, और दूसरा रखने योग्य है क्योंकि उसमें बीजगणित लगता ही नहीं। (7 घटाने के बजाय जोड़ देता है, रेखा पर ग़लत दिशा चलकर।)"
+        },
+        "mr": {
+          "stem": "बिंदू (2, 3) मधून जाणाऱ्या एका रेषेची उतारी 2 आहे. ती y-अक्ष y च्या कोणत्या मूल्यावर कापते?",
+          "choices": [
+            "1",
+            "-7",
+            "-1",
+            "7"
+          ],
+          "solution": "ज्ञात बिंदूसह y = mx + c घ्या: 3 = 2 × 2 + c, म्हणून c = 3 − 4 = −1. तेच वेगळ्या शब्दांत: x = 2 पासून x = 0 पर्यंत परतणे म्हणजे दोन पावले डावीकडे, आणि रेषेवरचे प्रत्येक पाऊल उंचीत 2 गमावते, म्हणून उंची 3 वरून −1 पर्यंत उतरते. दोन्ही मार्ग सहमत आहेत, आणि दुसरा ठेवण्याजोगा कारण त्यात बीजगणित लागतच नाही. (7 वजा करण्याऐवजी जोडते, रेषेवर चुकीच्या दिशेने चालून.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the area of the triangle formed by the line 3x + 4y = 12 with the two coordinate axes?",
+      "choices": [
+        "7",
+        "12",
+        "6",
+        "24"
+      ],
+      "answerIndex": 2,
+      "solution": "The line meets the axes at (4, 0) and (0, 3), and together with the origin those points form a right-angled triangle whose legs are the two intercepts. Its area is 4 × 3/2 = 6. The right angle at the origin is what makes this easy — the two intercepts serve directly as base and height, with no need to find any perpendicular. (12 multiplies the intercepts and forgets to halve.)",
+      "checkExpr": "4*3/2",
+      "translations": {
+        "hi": {
+          "stem": "रेखा 3x + 4y = 12 द्वारा दोनों निर्देशांक अक्षों के साथ बने त्रिभुज का क्षेत्रफल क्या है?",
+          "choices": [
+            "7",
+            "12",
+            "6",
+            "24"
+          ],
+          "solution": "रेखा अक्षों से (4, 0) और (0, 3) पर मिलती है, और मूलबिंदु के साथ मिलकर वे बिंदु ऐसा समकोण त्रिभुज बनाते हैं जिसकी भुजाएँ दोनों अंतःखंड हैं। उसका क्षेत्रफल 4 × 3/2 = 6. मूलबिंदु पर समकोण ही इसे आसान बनाता है — दोनों अंतःखंड सीधे आधार और ऊँचाई का काम करते हैं, किसी लंब को ढूँढ़ने की ज़रूरत ही नहीं। (12 अंतःखंड गुणा करके आधा करना भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "रेषा 3x + 4y = 12 ने दोन्ही निर्देशांक अक्षांसह बनवलेल्या त्रिकोणाचे क्षेत्रफळ किती?",
+          "choices": [
+            "7",
+            "12",
+            "6",
+            "24"
+          ],
+          "solution": "रेषा अक्षांना (4, 0) आणि (0, 3) वर भेटते, आणि आरंभबिंदूसह ते बिंदू असा काटकोन त्रिकोण बनवतात ज्याच्या बाजू दोन्ही अंतःखंड आहेत. त्याचे क्षेत्रफळ 4 × 3/2 = 6. आरंभबिंदूवरचा काटकोनच हे सोपे करतो — दोन्ही अंतःखंड थेट पाया आणि उंचीचे काम करतात, कोणताही लंब शोधण्याची गरजच नाही. (12 अंतःखंड गुणून निम्मे करणे विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the distance between the parallel lines 3x + 4y = 10 and 3x + 4y = 60?",
+      "choices": [
+        "5",
+        "10",
+        "25",
+        "50"
+      ],
+      "answerIndex": 1,
+      "solution": "For two lines with identical left-hand sides, the distance is the gap between the constants divided by √(a² + b²): (60 − 10)/√(9 + 16) = 50/5 = 10. The lines must be written with matching coefficients first — if the second had been given as 6x + 8y = 120 it would be the same line, and dividing through by 2 is what reveals that. (50 gives the raw difference and never divides.)",
+      "checkExpr": "(60-10)/5",
+      "translations": {
+        "hi": {
+          "stem": "समांतर रेखाओं 3x + 4y = 10 और 3x + 4y = 60 के बीच की दूरी क्या है?",
+          "choices": [
+            "5",
+            "10",
+            "25",
+            "50"
+          ],
+          "solution": "जिन दो रेखाओं का बायाँ पक्ष एक जैसा हो, उनके बीच की दूरी अचरों का अंतर बटा √(a² + b²) है: (60 − 10)/√(9 + 16) = 50/5 = 10. रेखाओं को पहले मेल खाते गुणांकों के साथ लिखना ही पड़ता है — यदि दूसरी 6x + 8y = 120 दी होती तो वह वही रेखा होती, और 2 से भाग देना ही यह उजागर करता है। (50 कच्चा अंतर देता है और भाग देता ही नहीं।)"
+        },
+        "mr": {
+          "stem": "समांतर रेषा 3x + 4y = 10 आणि 3x + 4y = 60 यांच्यातील अंतर किती?",
+          "choices": [
+            "5",
+            "10",
+            "25",
+            "50"
+          ],
+          "solution": "ज्या दोन रेषांची डावी बाजू सारखी असेल, त्यांच्यातले अंतर म्हणजे स्थिरांकांतला फरक भागिले √(a² + b²): (60 − 10)/√(9 + 16) = 50/5 = 10. रेषा आधी जुळणाऱ्या सहगुणकांसह लिहाव्याच लागतात — दुसरी 6x + 8y = 120 अशी दिली असती तर ती तीच रेषा असती, आणि 2 ने भागणेच ते उघड करते. (50 कच्चा फरक देते आणि भागतच नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "For what value of k are the lines 2x + 3y = 7 and kx − 6y = 5 perpendicular?",
+      "choices": [
+        "-9",
+        "9",
+        "6",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "The slopes are −2/3 and −k/(−6) = k/6. For perpendicularity their product must be −1: (−2/3)(k/6) = −1, so −2k = −18 and k = 9. The two minus signs are where this goes wrong — the second line has −6y, so its slope is positive, and missing that produces −9. A quick check confirms the answer: the slopes are then −2/3 and 3/2, which do multiply to −1. (−9 mishandles the sign of the second slope.)",
+      "checkExpr": "18/2",
+      "translations": {
+        "hi": {
+          "stem": "k के किस मान पर रेखाएँ 2x + 3y = 7 और kx − 6y = 5 परस्पर लंब हैं?",
+          "choices": [
+            "-9",
+            "9",
+            "6",
+            "4"
+          ],
+          "solution": "ढालें हैं −2/3 और −k/(−6) = k/6. लंबता के लिए उनका गुणनफल −1 होना चाहिए: (−2/3)(k/6) = −1, अतः −2k = −18 और k = 9. दोनों ऋण चिह्न ही वह जगह हैं जहाँ यह बिगड़ता है — दूसरी रेखा में −6y है, अतः उसकी ढाल धनात्मक है, और उसे चूकने पर −9 बनता है। तेज़ जाँच उत्तर की पुष्टि करती है: तब ढालें −2/3 और 3/2 हैं, जिनका गुणनफल सचमुच −1 है। (−9 दूसरी ढाल का चिह्न ग़लत सँभालता है।)"
+        },
+        "mr": {
+          "stem": "k च्या कोणत्या मूल्यावर रेषा 2x + 3y = 7 आणि kx − 6y = 5 परस्पर लंब आहेत?",
+          "choices": [
+            "-9",
+            "9",
+            "6",
+            "4"
+          ],
+          "solution": "उतारी आहेत −2/3 आणि −k/(−6) = k/6. लंबतेसाठी त्यांचा गुणाकार −1 असावा: (−2/3)(k/6) = −1, म्हणून −2k = −18 आणि k = 9. दोन्ही ऋण चिन्हे हीच ती जागा जिथे हे बिघडते — दुसऱ्या रेषेत −6y आहे, म्हणून तिची उतारी धन आहे, आणि ते चुकवल्यास −9 बनते. झटपट तपासणी उत्तराची खात्री देते: तेव्हा उतारी −2/3 आणि 3/2 आहेत, ज्यांचा गुणाकार खरोखर −1. (−9 दुसऱ्या उतारीचे चिन्ह चुकीचे हाताळते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A line segment joins (1, 2) and (5, 8). What is the sum of the coordinates of its midpoint?",
+      "choices": [
+        "8",
+        "16",
+        "9",
+        "7"
+      ],
+      "answerIndex": 0,
+      "solution": "The midpoint averages each coordinate separately: x = (1 + 5)/2 = 3 and y = (2 + 8)/2 = 5, so the point is (3, 5) and the sum asked for is 8. Averaging the two coordinates independently is the whole method, and it is worth seeing why it works — the midpoint is half a step along in both directions at once, and the two directions do not interfere. (16 adds all four coordinates without halving.)",
+      "checkExpr": "(1+5)/2+(2+8)/2",
+      "translations": {
+        "hi": {
+          "stem": "कोई रेखाखंड (1, 2) और (5, 8) को मिलाता है। उसके मध्यबिंदु के निर्देशांकों का योग क्या है?",
+          "choices": [
+            "8",
+            "16",
+            "9",
+            "7"
+          ],
+          "solution": "मध्यबिंदु हर निर्देशांक का अलग-अलग औसत लेता है: x = (1 + 5)/2 = 3 और y = (2 + 8)/2 = 5, अतः बिंदु (3, 5) है और माँगा गया योग 8. दोनों निर्देशांकों का स्वतंत्र औसत लेना ही पूरी विधि है, और यह देखने योग्य है कि वह क्यों चलती है — मध्यबिंदु दोनों दिशाओं में एक साथ आधा क़दम है, और दोनों दिशाएँ एक-दूसरे में दख़ल नहीं देतीं। (16 चारों निर्देशांक जोड़ देता है बिना आधा किए।)"
+        },
+        "mr": {
+          "stem": "एक रेषाखंड (1, 2) आणि (5, 8) यांना जोडतो. त्याच्या मध्यबिंदूच्या निर्देशांकांची बेरीज किती?",
+          "choices": [
+            "8",
+            "16",
+            "9",
+            "7"
+          ],
+          "solution": "मध्यबिंदू प्रत्येक निर्देशांकाची वेगवेगळी सरासरी घेतो: x = (1 + 5)/2 = 3 आणि y = (2 + 8)/2 = 5, म्हणून बिंदू (3, 5) आणि विचारलेली बेरीज 8. दोन्ही निर्देशांकांची स्वतंत्र सरासरी घेणे हीच अख्खी पद्धत, आणि ती का चालते हे पाहण्याजोगे — मध्यबिंदू दोन्ही दिशांना एकाच वेळी अर्धे पाऊल आहे, आणि दोन्ही दिशा एकमेकांत ढवळाढवळ करत नाहीत. (16 चारही निर्देशांक जोडते निम्मे न करता.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The points (1, 2), (3, k) and (5, 8) are collinear. What is k?",
+      "choices": [
+        "6",
+        "5",
+        "4",
+        "10"
+      ],
+      "answerIndex": 1,
+      "solution": "Collinear means all three lie on one line, so any two of them give the same slope. The outer pair gives (8 − 2)/(5 − 1) = 6/4 = 1.5. Starting at (1, 2) and moving 2 across therefore lifts you 2 × 1.5 = 3, so k = 2 + 3 = 5. Testing collinearity by comparing slopes is the arithmetic version of looking along a ruler, and it is exact where the eye is not. Note that the middle point here happens to be the midpoint of the outer two, which is why the answer is also the average of 2 and 8. (6 uses a slope of 2, read from the y-values alone without dividing by the x-gap.)",
+      "checkExpr": "2+(8-2)/4*2",
+      "translations": {
+        "hi": {
+          "stem": "बिंदु (1, 2), (3, k) और (5, 8) संरेख हैं। k क्या है?",
+          "choices": [
+            "6",
+            "5",
+            "4",
+            "10"
+          ],
+          "solution": "संरेख का अर्थ है तीनों एक ही रेखा पर हैं, अतः उनमें से कोई भी दो वही ढाल देते हैं। बाहरी युग्म देता है (8 − 2)/(5 − 1) = 6/4 = 1.5. अतः (1, 2) से चलकर 2 आगे बढ़ने पर तुम 2 × 1.5 = 3 ऊपर उठते हो, अतः k = 2 + 3 = 5. ढालों की तुलना करके संरेखता जाँचना पैमाने के साथ नज़र दौड़ाने का अंकगणितीय रूप है, और वह वहाँ यथार्थ है जहाँ आँख नहीं। ध्यान दो कि यहाँ बीच का बिंदु संयोग से बाहरी दोनों का मध्यबिंदु है, इसीलिए उत्तर 2 और 8 का औसत भी है। (6 ढाल 2 लेता है, केवल y-मानों से पढ़कर, x-अंतर से भाग दिए बिना।)"
+        },
+        "mr": {
+          "stem": "बिंदू (1, 2), (3, k) आणि (5, 8) एकरेषीय आहेत. k किती?",
+          "choices": [
+            "6",
+            "5",
+            "4",
+            "10"
+          ],
+          "solution": "एकरेषीय म्हणजे तिन्ही एकाच रेषेवर आहेत, म्हणून त्यांपैकी कोणतेही दोन तीच उतारी देतात. बाहेरची जोडी देते (8 − 2)/(5 − 1) = 6/4 = 1.5. म्हणून (1, 2) पासून चालून 2 पुढे सरकल्यावर तुम्ही 2 × 1.5 = 3 वर उचलले जाता, म्हणून k = 2 + 3 = 5. उतारींची तुलना करून एकरेषीयता तपासणे हे पट्टीबरोबर नजर फिरवण्याचे अंकगणिती रूप, आणि ते तिथे अचूक जिथे डोळा नाही. लक्षात घ्या की इथे मधला बिंदू योगायोगाने बाहेरच्या दोघांचा मध्यबिंदू आहे, म्हणूनच उत्तर 2 आणि 8 ची सरासरीही आहे. (6 उतारी 2 घेते, केवळ y-मूल्यांवरून वाचून, x-फरकाने न भागता.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The line 4x + 3y = 24 cuts the axes at two points. How long is the segment between them?",
+      "choices": [
+        "14",
+        "7",
+        "10",
+        "25"
+      ],
+      "answerIndex": 2,
+      "solution": "The intercepts are at (6, 0) and (0, 8), so the segment is the hypotenuse of a right-angled triangle with legs 6 and 8: √(36 + 64) = √100 = 10. Reaching for Pythagoras rather than the distance formula is the shortcut worth having here, because the right angle at the origin is already given. Note the trap the first option sets — the length of the slanted segment is not the sum of the two intercepts, and 6 + 8 = 14 would be the distance only if you walked along the axes instead of straight across. (14 adds the intercepts as though travelling along the axes.)",
+      "checkExpr": "(36+64)/10",
+      "translations": {
+        "hi": {
+          "stem": "रेखा 4x + 3y = 24 अक्षों को दो बिंदुओं पर काटती है। उनके बीच का खंड कितना लंबा है?",
+          "choices": [
+            "14",
+            "7",
+            "10",
+            "25"
+          ],
+          "solution": "अंतःखंड (6, 0) और (0, 8) पर हैं, अतः खंड 6 और 8 भुजाओं वाले समकोण त्रिभुज का कर्ण है: √(36 + 64) = √100 = 10. दूरी-सूत्र के बजाय पाइथागोरस की ओर हाथ बढ़ाना यहाँ रखने योग्य शॉर्टकट है, क्योंकि मूलबिंदु पर समकोण पहले से दिया हुआ है। पहला विकल्प जो जाल बिछाता है उस पर ध्यान दो — तिरछे खंड की लंबाई दोनों अंतःखंडों का योग नहीं, और 6 + 8 = 14 दूरी तभी होती जब तुम सीधे पार जाने के बजाय अक्षों के साथ-साथ चलते। (14 अंतःखंड जोड़ देता है मानो अक्षों के साथ चला जा रहा हो।)"
+        },
+        "mr": {
+          "stem": "रेषा 4x + 3y = 24 अक्षांना दोन बिंदूंवर कापते. त्यांच्यातील खंड किती लांब आहे?",
+          "choices": [
+            "14",
+            "7",
+            "10",
+            "25"
+          ],
+          "solution": "अंतःखंड (6, 0) आणि (0, 8) वर आहेत, म्हणून खंड हा 6 आणि 8 बाजू असलेल्या काटकोन त्रिकोणाचा कर्ण: √(36 + 64) = √100 = 10. अंतर-सूत्राऐवजी पायथागोरसकडे हात वळवणे हा इथे ठेवण्याजोगा शॉर्टकट, कारण आरंभबिंदूवरचा काटकोन आधीच दिलेला आहे. पहिला पर्याय जो सापळा रचतो त्याकडे लक्ष द्या — तिरप्या खंडाची लांबी दोन्ही अंतःखंडांची बेरीज नव्हे, आणि 6 + 8 = 14 हे अंतर तेव्हाच झाले असते जेव्हा तुम्ही सरळ पार जाण्याऐवजी अक्षांबरोबर चालला असता. (14 अंतःखंड जोडते जणू अक्षांबरोबर चालले जात असावे.)"
+        }
+      }
+    }
+  ]
+}

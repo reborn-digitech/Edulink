@@ -1,0 +1,513 @@
+{
+  "slug": "maths-11-sequences-and-series",
+  "subject": "MATHS",
+  "classLevel": 11,
+  "chapter": "Chapter 8 — Sequences and Series",
+  "name": "Sequences and Series",
+  "summary": "A list built by repeated multiplication rather than repeated addition, and the strange result that follows: when each term is a fraction of the one before, an endless sum can still stop at a finite number — which is why a bouncing ball travels a measurable distance in infinitely many bounces.",
+  "position": 8,
+  "translations": {
+    "hi": {
+      "name": "अनुक्रम तथा श्रेणी",
+      "summary": "बार-बार जोड़ने के बजाय बार-बार गुणा करके बनी सूची, और उससे निकलता अजीब परिणाम: जब हर पद पिछले का कोई अंश हो, अनंत योग भी किसी परिमित संख्या पर रुक सकता है — इसीलिए उछलती गेंद अनंत उछालों में एक मापी जा सकने वाली दूरी तय करती है।"
+    },
+    "mr": {
+      "name": "श्रेढी आणि श्रेणी",
+      "summary": "पुन्हा पुन्हा बेरजेऐवजी पुन्हा पुन्हा गुणाकाराने बनलेली यादी, आणि त्यातून निघणारा विचित्र निकाल: प्रत्येक पद आधीच्याचा अंश असेल, तेव्हा अनंत बेरीजही एखाद्या सांत संख्येवर थांबू शकते — म्हणूनच उसळणारा चेंडू अनंत उसळ्यांत मोजता येण्याजोगे अंतर कापतो."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A geometric progression has first term 2 and common ratio 3. What is its 3rd term?",
+      "choices": [
+        "6",
+        "54",
+        "18",
+        "12"
+      ],
+      "answerIndex": 2,
+      "solution": "Each term is the previous one multiplied by 3, so the terms run 2, 6, 18. The nth term is a·rⁿ⁻¹, and for n = 3 that is 2 × 3² = 18 — note the exponent is 2, not 3, because the first term has not been multiplied at all. (54 uses r³ and multiplies once too often.)",
+      "checkExpr": "2*3*3",
+      "translations": {
+        "hi": {
+          "stem": "किसी गुणोत्तर श्रेढी का पहला पद 2 और सार्व अनुपात 3 है। उसका तीसरा पद क्या है?",
+          "choices": [
+            "6",
+            "54",
+            "18",
+            "12"
+          ],
+          "solution": "हर पद पिछले को 3 से गुणा करके बनता है, अतः पद 2, 6, 18 चलते हैं। nवाँ पद a·rⁿ⁻¹ है, और n = 3 के लिए वह 2 × 3² = 18 — ध्यान दो कि घातांक 2 है, 3 नहीं, क्योंकि पहला पद गुणा हुआ ही नहीं। (54 r³ लेता है और एक बार अधिक गुणा कर देता है।)"
+        },
+        "mr": {
+          "stem": "एका गुणोत्तर श्रेढीचे पहिले पद 2 आणि सामाईक गुणोत्तर 3 आहे. तिचे तिसरे पद किती?",
+          "choices": [
+            "6",
+            "54",
+            "18",
+            "12"
+          ],
+          "solution": "प्रत्येक पद आधीच्याला 3 ने गुणून बनते, म्हणून पदे 2, 6, 18 अशी चालतात. nवे पद a·rⁿ⁻¹ आहे, आणि n = 3 साठी ते 2 × 3² = 18 — लक्षात घ्या की घातांक 2 आहे, 3 नव्हे, कारण पहिले पद गुणलेच गेले नाही. (54 r³ घेते आणि एकदा जास्त गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the common ratio of the geometric progression 3, 12, 48, … ?",
+      "choices": [
+        "9",
+        "4",
+        "16",
+        "3"
+      ],
+      "answerIndex": 1,
+      "solution": "Divide any term by the one before it: 12/3 = 4, and checking the next pair gives 48/12 = 4 as well. Dividing rather than subtracting is what separates a geometric progression from an arithmetic one, and doing the check on a second pair is what confirms the sequence really is geometric. (9 subtracts the terms, which would be the common difference if this were an arithmetic progression.)",
+      "checkExpr": "12/3",
+      "translations": {
+        "hi": {
+          "stem": "गुणोत्तर श्रेढी 3, 12, 48, … का सार्व अनुपात क्या है?",
+          "choices": [
+            "9",
+            "4",
+            "16",
+            "3"
+          ],
+          "solution": "किसी भी पद को उससे पहले वाले से भाग दो: 12/3 = 4, और अगला युग्म जाँचने पर 48/12 = 4 भी। घटाने के बजाय भाग देना ही गुणोत्तर श्रेढी को समांतर श्रेढी से अलग करता है, और दूसरे युग्म पर जाँच करना ही पक्का करता है कि अनुक्रम सचमुच गुणोत्तर है। (9 पद घटा देता है, जो समांतर श्रेढी होती तो सार्व अंतर होता।)"
+        },
+        "mr": {
+          "stem": "गुणोत्तर श्रेढी 3, 12, 48, … चे सामाईक गुणोत्तर किती?",
+          "choices": [
+            "9",
+            "4",
+            "16",
+            "3"
+          ],
+          "solution": "कोणतेही पद त्याच्या आधीच्याने भागा: 12/3 = 4, आणि पुढची जोडी तपासल्यावर 48/12 = 4 सुद्धा. वजा करण्याऐवजी भागणे हेच गुणोत्तर श्रेढीला समांतर श्रेढीपासून वेगळे करते, आणि दुसऱ्या जोडीवर तपासणी करणेच पक्के करते की श्रेढी खरोखर गुणोत्तर आहे. (9 पदे वजा करते, जे समांतर श्रेढी असती तर सामाईक फरक झाला असता.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the sum of the first 4 terms of the geometric progression 1, 2, 4, 8, … ?",
+      "choices": [
+        "15",
+        "16",
+        "8",
+        "14"
+      ],
+      "answerIndex": 0,
+      "solution": "Simply add them: 1 + 2 + 4 + 8 = 15. The pattern is worth spotting — the sum is always one less than the next term, because 1 + 2 + 4 + 8 = 16 − 1. That is the doubling series behind the old story of the grains of rice on a chessboard, where the last square alone holds more than every square before it put together. (16 gives the next term rather than the sum of the four.)",
+      "checkExpr": "1+2+4+8",
+      "translations": {
+        "hi": {
+          "stem": "गुणोत्तर श्रेढी 1, 2, 4, 8, … के पहले 4 पदों का योग क्या है?",
+          "choices": [
+            "15",
+            "16",
+            "8",
+            "14"
+          ],
+          "solution": "बस जोड़ो: 1 + 2 + 4 + 8 = 15. ढर्रा पकड़ने योग्य है — योग सदा अगले पद से एक कम होता है, क्योंकि 1 + 2 + 4 + 8 = 16 − 1. यही दोगुनी होती श्रेणी शतरंज की बिसात पर चावल के दानों की पुरानी कहानी के पीछे है, जहाँ अकेला अंतिम ख़ाना उससे पहले के सब ख़ानों को मिलाकर भी अधिक रखता है। (16 चारों का योग नहीं, अगला पद देता है।)"
+        },
+        "mr": {
+          "stem": "गुणोत्तर श्रेढी 1, 2, 4, 8, … च्या पहिल्या 4 पदांची बेरीज किती?",
+          "choices": [
+            "15",
+            "16",
+            "8",
+            "14"
+          ],
+          "solution": "फक्त जोडा: 1 + 2 + 4 + 8 = 15. साचा पकडण्याजोगा — बेरीज नेहमी पुढच्या पदाहून एकने कमी असते, कारण 1 + 2 + 4 + 8 = 16 − 1. हीच दुप्पट होणारी श्रेणी बुद्धिबळाच्या पटावरील तांदळाच्या दाण्यांच्या जुन्या गोष्टीमागे आहे, जिथे एकटा शेवटचा घर त्याच्या आधीच्या सर्व घरांना मिळूनही अधिक धरतो. (16 चौघांची बेरीज नव्हे, पुढचे पद देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A geometric progression has first term 5 and common ratio 2. What is its 6th term?",
+      "choices": [
+        "60",
+        "160",
+        "320",
+        "80"
+      ],
+      "answerIndex": 1,
+      "solution": "The 6th term is a·r⁵ = 5 × 2⁵ = 5 × 32 = 160. Counting the multiplications rather than the terms is the safe habit: going from the 1st term to the 6th means five steps, so the exponent is 5. (320 uses r⁶ and takes one step too many.)",
+      "checkExpr": "5*2*2*2*2*2",
+      "translations": {
+        "hi": {
+          "stem": "किसी गुणोत्तर श्रेढी का पहला पद 5 और सार्व अनुपात 2 है। उसका छठा पद क्या है?",
+          "choices": [
+            "60",
+            "160",
+            "320",
+            "80"
+          ],
+          "solution": "छठा पद a·r⁵ = 5 × 2⁵ = 5 × 32 = 160. पद नहीं, गुणा गिनना सुरक्षित आदत है: पहले पद से छठे तक जाना पाँच क़दम हैं, अतः घातांक 5 है। (320 r⁶ लेता है और एक क़दम अधिक चल जाता है।)"
+        },
+        "mr": {
+          "stem": "एका गुणोत्तर श्रेढीचे पहिले पद 5 आणि सामाईक गुणोत्तर 2 आहे. तिचे सहावे पद किती?",
+          "choices": [
+            "60",
+            "160",
+            "320",
+            "80"
+          ],
+          "solution": "सहावे पद a·r⁵ = 5 × 2⁵ = 5 × 32 = 160. पदे नव्हे, गुणाकार मोजणे ही सुरक्षित सवय: पहिल्या पदापासून सहाव्यापर्यंत जाणे म्हणजे पाच पावले, म्हणून घातांक 5. (320 r⁶ घेते आणि एक पाऊल जास्त चालते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the sum to infinity of the geometric progression with first term 8 and common ratio 0.5?",
+      "choices": [
+        "32",
+        "16",
+        "4",
+        "8"
+      ],
+      "answerIndex": 1,
+      "solution": "The sum to infinity is a/(1 − r) = 8/(1 − 0.5) = 8/0.5 = 16. Adding endlessly many positive numbers and arriving at a finite total is the surprise of the chapter, and it works only because the terms shrink fast enough: 8 + 4 + 2 + 1 + 0.5 + … creeps towards 16 without ever reaching it. The formula holds only when the ratio lies strictly between −1 and 1; outside that range the terms do not shrink and there is no sum at all. (8 quotes the first term as if the rest added to nothing.)",
+      "checkExpr": "8/(1-0.5)",
+      "translations": {
+        "hi": {
+          "stem": "पहला पद 8 और सार्व अनुपात 0.5 वाली गुणोत्तर श्रेढी का अनंत तक योग क्या है?",
+          "choices": [
+            "32",
+            "16",
+            "4",
+            "8"
+          ],
+          "solution": "अनंत तक योग है a/(1 − r) = 8/(1 − 0.5) = 8/0.5 = 16. अंतहीन धनात्मक संख्याएँ जोड़कर परिमित कुल पर पहुँचना ही अध्याय का आश्चर्य है, और वह केवल इसलिए चलता है कि पद पर्याप्त तेज़ी से सिकुड़ते हैं: 8 + 4 + 2 + 1 + 0.5 + … 16 की ओर सरकता है और उस तक कभी पहुँचता नहीं। सूत्र तभी चलता है जब अनुपात कठोरता से −1 और 1 के बीच हो; उस परास के बाहर पद सिकुड़ते ही नहीं और कोई योग होता ही नहीं। (8 पहला पद बता देता है मानो बाक़ी जुड़कर कुछ न बनते हों।)"
+        },
+        "mr": {
+          "stem": "पहिले पद 8 आणि सामाईक गुणोत्तर 0.5 असलेल्या गुणोत्तर श्रेढीची अनंतापर्यंतची बेरीज किती?",
+          "choices": [
+            "32",
+            "16",
+            "4",
+            "8"
+          ],
+          "solution": "अनंतापर्यंतची बेरीज आहे a/(1 − r) = 8/(1 − 0.5) = 8/0.5 = 16. अंतहीन धन संख्या जोडून सांत एकूणावर पोहोचणे हेच प्रकरणाचे आश्चर्य, आणि ते केवळ यासाठी चालते की पदे पुरेशा वेगाने आकसतात: 8 + 4 + 2 + 1 + 0.5 + … 16 कडे सरकते आणि तिथवर कधीच पोहोचत नाही. सूत्र तेव्हाच चालते जेव्हा गुणोत्तर काटेकोरपणे −1 आणि 1 दरम्यान असेल; त्या पल्ल्याबाहेर पदे आकसतच नाहीत आणि बेरीज असतच नाही. (8 पहिले पद सांगते जणू बाकीची जुळून काहीच बनत नसावीत.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the SQUARE of the geometric mean of 4 and 9?",
+      "choices": [
+        "6.5",
+        "6",
+        "13",
+        "36"
+      ],
+      "answerIndex": 3,
+      "solution": "If G is the geometric mean of a and b then a, G, b form a geometric progression, so G/a = b/G and therefore G² = ab = 4 × 9 = 36. The mean itself is 6, and the question asks for its square precisely because the square is the quantity the definition hands you directly. Compare it with the arithmetic mean of the same pair, (4 + 9)/2 = 6.5: the geometric mean is the smaller of the two, and that is true of every pair of distinct positive numbers. (13 adds the two numbers instead of multiplying them.)",
+      "checkExpr": "4*9",
+      "translations": {
+        "hi": {
+          "stem": "4 और 9 के गुणोत्तर माध्य का वर्ग क्या है?",
+          "choices": [
+            "6.5",
+            "6",
+            "13",
+            "36"
+          ],
+          "solution": "यदि G, a और b का गुणोत्तर माध्य है तो a, G, b गुणोत्तर श्रेढी बनाते हैं, अतः G/a = b/G और इसलिए G² = ab = 4 × 9 = 36. माध्य स्वयं 6 है, और प्रश्न उसका वर्ग ठीक इसलिए माँगता है कि वर्ग ही वह राशि है जो परिभाषा सीधे सौंपती है। उसी युग्म के समांतर माध्य (4 + 9)/2 = 6.5 से तुलना करो: गुणोत्तर माध्य दोनों में छोटा है, और यह हर भिन्न धनात्मक युग्म के लिए सच है। (13 दोनों संख्याएँ गुणा करने के बजाय जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "4 आणि 9 च्या गुणोत्तर माध्याचा वर्ग किती?",
+          "choices": [
+            "6.5",
+            "6",
+            "13",
+            "36"
+          ],
+          "solution": "जर G हा a आणि b चा गुणोत्तर माध्य असेल तर a, G, b गुणोत्तर श्रेढी बनवतात, म्हणून G/a = b/G आणि म्हणून G² = ab = 4 × 9 = 36. माध्य स्वतः 6 आहे, आणि प्रश्न त्याचा वर्ग नेमके यासाठी विचारतो की वर्गच ती राशी जी व्याख्या थेट सोपवते. त्याच जोडीच्या समांतर माध्याशी (4 + 9)/2 = 6.5 तुलना करा: गुणोत्तर माध्य दोघांतला लहान आहे, आणि हे प्रत्येक वेगळ्या धन जोडीसाठी खरे. (13 दोन्ही संख्या गुणण्याऐवजी जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the arithmetic mean of 4 and 9?",
+      "choices": [
+        "13",
+        "5",
+        "6.5",
+        "6"
+      ],
+      "answerIndex": 2,
+      "solution": "The arithmetic mean is (4 + 9)/2 = 6.5, the number that sits midway between the two so that 4, 6.5, 9 is an arithmetic progression with common difference 2.5. Set it beside the geometric mean of the same pair, which is 6: the arithmetic mean is always the larger unless the two numbers are equal, in which case both means coincide. That inequality is one of the most used facts in all of algebra. (6 gives the geometric mean instead.)",
+      "checkExpr": "(4+9)/2",
+      "translations": {
+        "hi": {
+          "stem": "4 और 9 का समांतर माध्य क्या है?",
+          "choices": [
+            "13",
+            "5",
+            "6.5",
+            "6"
+          ],
+          "solution": "समांतर माध्य है (4 + 9)/2 = 6.5, वह संख्या जो दोनों के ठीक बीच बैठती है ताकि 4, 6.5, 9 सार्व अंतर 2.5 की समांतर श्रेढी बने। इसे उसी युग्म के गुणोत्तर माध्य के साथ रखो, जो 6 है: समांतर माध्य सदा बड़ा होता है, बशर्ते दोनों संख्याएँ बराबर न हों, और तब दोनों माध्य एक हो जाते हैं। वह असमिका पूरे बीजगणित में सबसे अधिक काम में आने वाले तथ्यों में है। (6 इसके बदले गुणोत्तर माध्य दे देता है।)"
+        },
+        "mr": {
+          "stem": "4 आणि 9 चा समांतर माध्य किती?",
+          "choices": [
+            "13",
+            "5",
+            "6.5",
+            "6"
+          ],
+          "solution": "समांतर माध्य आहे (4 + 9)/2 = 6.5, ती संख्या जी दोघांच्या नेमकी मध्ये बसते जेणेकरून 4, 6.5, 9 ही सामाईक फरक 2.5 ची समांतर श्रेढी बनावी. हे त्याच जोडीच्या गुणोत्तर माध्याशेजारी ठेवा, जो 6 आहे: समांतर माध्य नेहमी मोठा असतो, जोवर दोन्ही संख्या समान नसतील, आणि तेव्हा दोन्ही माध्य एक होतात. ती असमानता अख्ख्या बीजगणितातल्या सर्वाधिक वापरल्या जाणाऱ्या तथ्यांपैकी एक. (6 त्याऐवजी गुणोत्तर माध्य देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the sum of the first 10 natural numbers?",
+      "choices": [
+        "45",
+        "50",
+        "55",
+        "100"
+      ],
+      "answerIndex": 2,
+      "solution": "The formula is n(n + 1)/2 = 10 × 11/2 = 55. The reason is worth seeing rather than memorising: pair the first with the last, the second with the second-last, and so on — 1 + 10, 2 + 9, 3 + 8 — and every pair adds to 11, with five such pairs. That is Gauss's schoolroom trick and it explains the shape of the formula exactly. (45 gives the sum of the first 9, or equivalently n(n − 1)/2.)",
+      "checkExpr": "10*11/2",
+      "translations": {
+        "hi": {
+          "stem": "पहली 10 प्राकृत संख्याओं का योग क्या है?",
+          "choices": [
+            "45",
+            "50",
+            "55",
+            "100"
+          ],
+          "solution": "सूत्र है n(n + 1)/2 = 10 × 11/2 = 55. कारण रटने के बजाय देखने योग्य है: पहले को अंतिम के साथ, दूसरे को दूसरे-अंतिम के साथ जोड़ो — 1 + 10, 2 + 9, 3 + 8 — और हर युग्म 11 बनाता है, और ऐसे पाँच युग्म हैं। यही गाउस की कक्षा वाली तरकीब है और वही सूत्र का आकार ठीक-ठीक समझाती है। (45 पहली 9 का योग देता है, यानी n(n − 1)/2.)"
+        },
+        "mr": {
+          "stem": "पहिल्या 10 नैसर्गिक संख्यांची बेरीज किती?",
+          "choices": [
+            "45",
+            "50",
+            "55",
+            "100"
+          ],
+          "solution": "सूत्र आहे n(n + 1)/2 = 10 × 11/2 = 55. कारण पाठ करण्याऐवजी पाहण्याजोगे: पहिल्याला शेवटच्याशी, दुसऱ्याला दुसऱ्या-शेवटच्याशी जोडा — 1 + 10, 2 + 9, 3 + 8 — आणि प्रत्येक जोडी 11 बनवते, आणि अशा पाच जोड्या आहेत. हीच गाउसची वर्गातली युक्ती आणि तीच सूत्राचा आकार नेमका समजावते. (45 पहिल्या 9 ची बेरीज देते, म्हणजे n(n − 1)/2.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the sum of the squares of the first 6 natural numbers?",
+      "choices": [
+        "91",
+        "21",
+        "441",
+        "55"
+      ],
+      "answerIndex": 0,
+      "solution": "The formula is n(n + 1)(2n + 1)/6 = 6 × 7 × 13/6 = 91, which you can check by adding directly: 1 + 4 + 9 + 16 + 25 + 36 = 91. Note the trap the third option sets — the sum of the squares is not the square of the sum. The first 6 numbers add to 21, and 21² = 441, which is nearly five times too big. (441 squares the sum instead of summing the squares.)",
+      "checkExpr": "6*7*13/6",
+      "translations": {
+        "hi": {
+          "stem": "पहली 6 प्राकृत संख्याओं के वर्गों का योग क्या है?",
+          "choices": [
+            "91",
+            "21",
+            "441",
+            "55"
+          ],
+          "solution": "सूत्र है n(n + 1)(2n + 1)/6 = 6 × 7 × 13/6 = 91, जिसे सीधे जोड़कर जाँचा जा सकता है: 1 + 4 + 9 + 16 + 25 + 36 = 91. तीसरा विकल्प जो जाल बिछाता है उस पर ध्यान दो — वर्गों का योग, योग का वर्ग नहीं होता। पहली 6 संख्याएँ जुड़कर 21 बनती हैं, और 21² = 441, जो लगभग पाँच गुना अधिक है। (441 वर्गों को जोड़ने के बजाय योग का वर्ग कर देता है।)"
+        },
+        "mr": {
+          "stem": "पहिल्या 6 नैसर्गिक संख्यांच्या वर्गांची बेरीज किती?",
+          "choices": [
+            "91",
+            "21",
+            "441",
+            "55"
+          ],
+          "solution": "सूत्र आहे n(n + 1)(2n + 1)/6 = 6 × 7 × 13/6 = 91, जे थेट जोडून तपासता येते: 1 + 4 + 9 + 16 + 25 + 36 = 91. तिसरा पर्याय जो सापळा रचतो त्याकडे लक्ष द्या — वर्गांची बेरीज ही बेरजेचा वर्ग नसते. पहिल्या 6 संख्या जुळून 21 बनतात, आणि 21² = 441, जे जवळपास पाचपट अधिक. (441 वर्ग जोडण्याऐवजी बेरजेचा वर्ग करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the sum of the first 5 terms of a geometric progression with first term 3 and common ratio 2?",
+      "choices": [
+        "93",
+        "48",
+        "31",
+        "96"
+      ],
+      "answerIndex": 0,
+      "solution": "The sum of n terms is a(rⁿ − 1)/(r − 1) = 3(2⁵ − 1)/(2 − 1) = 3 × 31 = 93, which matches adding directly: 3 + 6 + 12 + 24 + 48 = 93. The exponent in the formula is n, not n − 1 — that is the one place it differs from the nth-term formula, and confusing the two is the usual error. (48 gives the 5th term rather than the sum of the five.)",
+      "checkExpr": "3*(32-1)/(2-1)",
+      "translations": {
+        "hi": {
+          "stem": "पहला पद 3 और सार्व अनुपात 2 वाली गुणोत्तर श्रेढी के पहले 5 पदों का योग क्या है?",
+          "choices": [
+            "93",
+            "48",
+            "31",
+            "96"
+          ],
+          "solution": "n पदों का योग है a(rⁿ − 1)/(r − 1) = 3(2⁵ − 1)/(2 − 1) = 3 × 31 = 93, जो सीधे जोड़ने से मेल खाता है: 3 + 6 + 12 + 24 + 48 = 93. सूत्र में घातांक n है, n − 1 नहीं — यही इकलौती जगह है जहाँ वह nवें पद के सूत्र से भिन्न है, और दोनों को गड्डमड्ड करना आम भूल है। (48 पाँचों का योग नहीं, पाँचवाँ पद देता है।)"
+        },
+        "mr": {
+          "stem": "पहिले पद 3 आणि सामाईक गुणोत्तर 2 असलेल्या गुणोत्तर श्रेढीच्या पहिल्या 5 पदांची बेरीज किती?",
+          "choices": [
+            "93",
+            "48",
+            "31",
+            "96"
+          ],
+          "solution": "n पदांची बेरीज आहे a(rⁿ − 1)/(r − 1) = 3(2⁵ − 1)/(2 − 1) = 3 × 31 = 93, जे थेट जोडण्याशी जुळते: 3 + 6 + 12 + 24 + 48 = 93. सूत्रातला घातांक n आहे, n − 1 नव्हे — हीच एकमेव जागा जिथे तो nव्या पदाच्या सूत्राहून वेगळा आहे, आणि दोन्ही गोंधळणे ही नेहमीची चूक. (48 पाचांची बेरीज नव्हे, पाचवे पद देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a geometric progression the 3rd term is 12 and the 6th term is 96. What is r³ ?",
+      "choices": [
+        "84",
+        "4",
+        "2",
+        "8"
+      ],
+      "answerIndex": 3,
+      "solution": "Going from the 3rd term to the 6th means multiplying by r three times, so the 6th term is the 3rd times r³. Dividing gives r³ = 96/12 = 8, from which r = 2 and the progression is 3, 6, 12, 24, 48, 96. Dividing one term by another to cancel the unknown first term is the standard opening move for this kind of question, and it works because the two terms share everything except the powers of r. (84 subtracts the terms, which is what you would do in an arithmetic progression.)",
+      "checkExpr": "96/12",
+      "translations": {
+        "hi": {
+          "stem": "किसी गुणोत्तर श्रेढी का तीसरा पद 12 और छठा पद 96 है। r³ क्या है?",
+          "choices": [
+            "84",
+            "4",
+            "2",
+            "8"
+          ],
+          "solution": "तीसरे पद से छठे तक जाने का अर्थ है r से तीन बार गुणा, अतः छठा पद तीसरे गुणा r³ है। भाग देने पर r³ = 96/12 = 8, जिससे r = 2 और श्रेढी 3, 6, 12, 24, 48, 96 है। अज्ञात पहला पद काटने को एक पद को दूसरे से भाग देना इस तरह के प्रश्न की मानक शुरुआती चाल है, और वह इसलिए चलती है कि दोनों पदों में r की घातों को छोड़कर सब साझा है। (84 पद घटा देता है, जो तुम समांतर श्रेढी में करते।)"
+        },
+        "mr": {
+          "stem": "एका गुणोत्तर श्रेढीचे तिसरे पद 12 आणि सहावे पद 96 आहे. r³ किती?",
+          "choices": [
+            "84",
+            "4",
+            "2",
+            "8"
+          ],
+          "solution": "तिसऱ्या पदापासून सहाव्यापर्यंत जाणे म्हणजे r ने तीनदा गुणणे, म्हणून सहावे पद हे तिसरे गुणिले r³. भागल्यावर r³ = 96/12 = 8, ज्यातून r = 2 आणि श्रेढी 3, 6, 12, 24, 48, 96. अज्ञात पहिले पद छेदण्यासाठी एका पदाला दुसऱ्याने भागणे ही या प्रकारच्या प्रश्नाची प्रमाण सुरुवातीची खेळी, आणि ती यासाठी चालते की दोन्ही पदांत r च्या घाती वगळता सारे सामायिक. (84 पदे वजा करते, जे तुम्ही समांतर श्रेढीत केले असते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "An infinite geometric progression has first term 5 and sums to 20. What is its common ratio?",
+      "choices": [
+        "0.5",
+        "0.75",
+        "0.25",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "From S = a/(1 − r) comes 20 = 5/(1 − r), so 1 − r = 5/20 = 0.25 and r = 0.75. The progression is 5, 3.75, 2.8125, … creeping towards 20. A quick sanity check: the ratio has to lie strictly between −1 and 1 for the sum to exist at all, so an answer of 4 would have been impossible before any arithmetic was done. And the closer the ratio is to 1, the larger the total — which is why a sum four times the first term needs a ratio as high as three-quarters. (0.25 gives 1 − r rather than r.)",
+      "checkExpr": "1-5/20",
+      "translations": {
+        "hi": {
+          "stem": "किसी अनंत गुणोत्तर श्रेढी का पहला पद 5 है और योग 20. उसका सार्व अनुपात क्या है?",
+          "choices": [
+            "0.5",
+            "0.75",
+            "0.25",
+            "4"
+          ],
+          "solution": "S = a/(1 − r) से 20 = 5/(1 − r), अतः 1 − r = 5/20 = 0.25 और r = 0.75. श्रेढी 5, 3.75, 2.8125, … है जो 20 की ओर सरकती है। एक तेज़ समझ-जाँच: योग के होने के लिए अनुपात को कठोरता से −1 और 1 के बीच होना ही पड़ता है, अतः 4 का उत्तर कोई गणित करने से पहले ही असंभव था। और अनुपात 1 के जितना पास, कुल उतना बड़ा — इसीलिए पहले पद से चार गुने योग को तीन-चौथाई जितना ऊँचा अनुपात चाहिए। (0.25 r के बजाय 1 − r देता है।)"
+        },
+        "mr": {
+          "stem": "एका अनंत गुणोत्तर श्रेढीचे पहिले पद 5 आहे आणि बेरीज 20. तिचे सामाईक गुणोत्तर किती?",
+          "choices": [
+            "0.5",
+            "0.75",
+            "0.25",
+            "4"
+          ],
+          "solution": "S = a/(1 − r) यातून 20 = 5/(1 − r), म्हणून 1 − r = 5/20 = 0.25 आणि r = 0.75. श्रेढी 5, 3.75, 2.8125, … अशी 20 कडे सरकते. एक झटपट समजून-तपासणी: बेरीज अस्तित्वात असण्यासाठी गुणोत्तर काटेकोरपणे −1 आणि 1 दरम्यान असावेच लागते, म्हणून 4 चे उत्तर कोणतेही गणित करण्याआधीच अशक्य होते. आणि गुणोत्तर 1 च्या जितके जवळ, एकूण तितकी मोठी — म्हणूनच पहिल्या पदाच्या चौपट बेरजेला तीनचतुर्थांशाइतके उच्च गुणोत्तर लागते. (0.25 r ऐवजी 1 − r देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A ball is dropped from a height of 24 m and rebounds to half its previous height each time. What total distance does it travel before coming to rest?",
+      "choices": [
+        "72 m",
+        "24 m",
+        "96 m",
+        "48 m"
+      ],
+      "answerIndex": 0,
+      "solution": "The first fall is 24 m. After that the ball rises 12 m and falls 12 m, rises 6 and falls 6, and so on — every rebound height is travelled twice. So the total is 24 + 2(12 + 6 + 3 + …), and the bracket is an infinite geometric progression with first term 12 and ratio 0.5, summing to 12/0.5 = 24. The total is 24 + 2 × 24 = 72 m. Two things make this question worth doing. The first drop is counted once and everything after it twice, which is the step most people miss. And the answer is finite even though the ball bounces infinitely often, because the distances shrink faster than the count of bounces grows — in the same way the total TIME is finite too, which is why the ball actually stops. (48 counts each rebound only once.)",
+      "checkExpr": "24+2*12/(1-0.5)",
+      "translations": {
+        "hi": {
+          "stem": "कोई गेंद 24 m की ऊँचाई से गिराई जाती है और हर बार पिछली ऊँचाई के आधे तक उछलती है। रुकने से पहले वह कुल कितनी दूरी तय करती है?",
+          "choices": [
+            "72 m",
+            "24 m",
+            "96 m",
+            "48 m"
+          ],
+          "solution": "पहला गिरना 24 m है। उसके बाद गेंद 12 m चढ़ती और 12 m गिरती है, 6 चढ़ती और 6 गिरती है, और यों ही — हर उछाल की ऊँचाई दो बार तय होती है। अतः कुल है 24 + 2(12 + 6 + 3 + …), और कोष्ठक एक अनंत गुणोत्तर श्रेढी है जिसका पहला पद 12 और अनुपात 0.5 है, जिसका योग 12/0.5 = 24. कुल हुआ 24 + 2 × 24 = 72 m. दो बातें इस प्रश्न को करने योग्य बनाती हैं। पहला गिरना एक बार गिना जाता है और उसके बाद सब दो बार, और यही वह चरण है जो अधिकांश लोग चूक जाते हैं। और उत्तर परिमित है भले ही गेंद अनंत बार उछले, क्योंकि दूरियाँ उछालों की गिनती बढ़ने से तेज़ी से सिकुड़ती हैं — उसी तरह कुल समय भी परिमित है, इसीलिए गेंद वस्तुतः रुक जाती है। (48 हर उछाल केवल एक बार गिनता है।)"
+        },
+        "mr": {
+          "stem": "एक चेंडू 24 m उंचीवरून टाकला जातो आणि प्रत्येक वेळी आधीच्या उंचीच्या निम्म्यापर्यंत उसळतो. थांबण्याआधी तो एकूण किती अंतर कापतो?",
+          "choices": [
+            "72 m",
+            "24 m",
+            "96 m",
+            "48 m"
+          ],
+          "solution": "पहिले पडणे 24 m. त्यानंतर चेंडू 12 m चढतो आणि 12 m पडतो, 6 चढतो आणि 6 पडतो, असेच — प्रत्येक उसळीची उंची दोनदा कापली जाते. म्हणून एकूण आहे 24 + 2(12 + 6 + 3 + …), आणि कंस ही अनंत गुणोत्तर श्रेढी जिचे पहिले पद 12 आणि गुणोत्तर 0.5, जिची बेरीज 12/0.5 = 24. एकूण झाले 24 + 2 × 24 = 72 m. दोन गोष्टी हा प्रश्न करण्याजोगा करतात. पहिले पडणे एकदा मोजले जाते आणि त्यानंतरचे सारे दोनदा, आणि हीच ती पायरी जी बहुतेकजण चुकवतात. आणि उत्तर सांत आहे जरी चेंडू अनंत वेळा उसळला तरी, कारण अंतरे उसळ्यांच्या मोजणीहून वेगाने आकसतात — त्याचप्रमाणे एकूण वेळही सांत आहे, म्हणूनच चेंडू प्रत्यक्षात थांबतो. (48 प्रत्येक उसळी केवळ एकदा मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "What is the sum of the infinite series 1 + 1/3 + 1/9 + 1/27 + … ?",
+      "choices": [
+        "2",
+        "3",
+        "1.33",
+        "1.5"
+      ],
+      "answerIndex": 3,
+      "solution": "The first term is 1 and each term is a third of the one before, so the sum is a/(1 − r) = 1/(1 − 1/3) = 1/(2/3) = 3/2 = 1.5. Watching the partial sums makes the result believable: 1, then 1.333, then 1.444, then 1.481 — climbing steadily and never passing 1.5. That is what convergence looks like, and it is the reason an infinite sum can be written down as a single number at all. The condition is only that the ratio's size is under 1; had the terms been 1 + 3 + 9 + 27 the same formula would have produced a nonsense answer of −1/2, which is the standard warning against applying it without checking. (3 inverts the denominator, using 1/r rather than 1/(1 − r).)",
+      "checkExpr": "1/(1-1/3)",
+      "translations": {
+        "hi": {
+          "stem": "अनंत श्रेणी 1 + 1/3 + 1/9 + 1/27 + … का योग क्या है?",
+          "choices": [
+            "2",
+            "3",
+            "1.33",
+            "1.5"
+          ],
+          "solution": "पहला पद 1 है और हर पद पिछले का तिहाई, अतः योग है a/(1 − r) = 1/(1 − 1/3) = 1/(2/3) = 3/2 = 1.5. आंशिक योग देखने से परिणाम विश्वसनीय लगता है: 1, फिर 1.333, फिर 1.444, फिर 1.481 — लगातार चढ़ते और 1.5 कभी पार न करते। अभिसरण ऐसा ही दिखता है, और यही कारण है कि कोई अनंत योग एक अकेली संख्या के रूप में लिखा जा सकता है। शर्त केवल यह है कि अनुपात का आकार 1 से कम हो; यदि पद 1 + 3 + 9 + 27 होते तो वही सूत्र −1/2 का बेतुका उत्तर बनाता, और यही बिना जाँचे उसे लगाने के विरुद्ध मानक चेतावनी है। (3 हर उलट देता है, 1/(1 − r) के बजाय 1/r लेकर।)"
+        },
+        "mr": {
+          "stem": "अनंत श्रेणी 1 + 1/3 + 1/9 + 1/27 + … ची बेरीज किती?",
+          "choices": [
+            "2",
+            "3",
+            "1.33",
+            "1.5"
+          ],
+          "solution": "पहिले पद 1 आहे आणि प्रत्येक पद आधीच्याचा तृतीयांश, म्हणून बेरीज आहे a/(1 − r) = 1/(1 − 1/3) = 1/(2/3) = 3/2 = 1.5. आंशिक बेरजा पाहिल्याने निकाल विश्वासार्ह वाटतो: 1, मग 1.333, मग 1.444, मग 1.481 — सतत चढत आणि 1.5 कधीच ओलांडत नाही. अभिसरण असेच दिसते, आणि हेच कारण की कोणतीही अनंत बेरीज एका संख्येच्या रूपात लिहिता येते. अट केवळ इतकीच की गुणोत्तराचा आकार 1 हून कमी असावा; पदे 1 + 3 + 9 + 27 असती तर तेच सूत्र −1/2 चे निरर्थक उत्तर बनवले असते, आणि हीच न तपासता ते लावण्याविरुद्धची प्रमाण सूचना. (3 छेद उलटवते, 1/(1 − r) ऐवजी 1/r घेऊन.)"
+        }
+      }
+    }
+  ]
+}

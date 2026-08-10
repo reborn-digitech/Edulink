@@ -1564,10 +1564,1542 @@ function linearInequalities11(): TopicFileOut {
   );
 }
 
+/* ------------------------------------------------------------------------- */
+/* Chapter 6 — Permutations and Combinations (counting without listing)      */
+/* ------------------------------------------------------------------------- */
+function permutations11(): TopicFileOut {
+  const rand = rng("maths-11-permutations-and-combinations");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the value of 5! ?",
+          hi: "5! का मान क्या है?",
+          mr: "5! चे मूल्य किती?",
+        },
+        answer: 120,
+        wrong: [25, 20, 60],
+        checkExpr: "5*4*3*2*1",
+        solution: {
+          en: "The factorial multiplies every whole number from 5 down to 1: 5 × 4 × 3 × 2 × 1 = 120. It counts the arrangements of five distinct objects, which is why it grows so fast — 10! is already over three million. (25 squares the number instead of multiplying the chain.)",
+          hi: "क्रमगुणित 5 से नीचे 1 तक हर पूर्ण संख्या को गुणा करता है: 5 × 4 × 3 × 2 × 1 = 120. वह पाँच भिन्न वस्तुओं की व्यवस्थाएँ गिनता है, इसीलिए वह इतनी तेज़ी से बढ़ता है — 10! पहले ही तीस लाख से ऊपर है। (25 शृंखला गुणा करने के बजाय संख्या का वर्ग कर देता है।)",
+          mr: "क्रमगुणित 5 पासून खाली 1 पर्यंत प्रत्येक पूर्ण संख्या गुणतो: 5 × 4 × 3 × 2 × 1 = 120. तो पाच वेगळ्या वस्तूंच्या मांडण्या मोजतो, म्हणूनच तो इतक्या वेगाने वाढतो — 10! आधीच तीस लाखांहून वर आहे. (25 साखळी गुणण्याऐवजी संख्येचा वर्ग करते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "In how many ways can 4 different books be arranged in a row on a shelf?",
+          hi: "4 भिन्न पुस्तकों को किसी ताक़ पर एक क़तार में कितने तरीक़ों से जमाया जा सकता है?",
+          mr: "4 वेगवेगळी पुस्तके एका फळीवर रांगेत किती प्रकारे मांडता येतील?",
+        },
+        answer: 24,
+        wrong: [16, 12, 8],
+        checkExpr: "4*3*2*1",
+        solution: {
+          en: "There are 4 books to choose for the first place, 3 left for the second, 2 for the third and 1 for the last: 4 × 3 × 2 × 1 = 24. Each choice removes one option from the next, which is exactly what makes this a factorial rather than a power. (16 uses 4 choices at every place, which would be right only if books could repeat.)",
+          hi: "पहले स्थान के लिए 4 पुस्तकें, दूसरे के लिए बची 3, तीसरे के लिए 2 और अंतिम के लिए 1: 4 × 3 × 2 × 1 = 24. हर चुनाव अगले से एक विकल्प हटा देता है, और ठीक यही इसे घात नहीं, क्रमगुणित बनाता है। (16 हर स्थान पर 4 विकल्प लेता है, जो तभी ठीक होता जब पुस्तकें दोहराई जा सकतीं।)",
+          mr: "पहिल्या जागेसाठी 4 पुस्तके, दुसऱ्यासाठी उरलेली 3, तिसऱ्यासाठी 2 आणि शेवटच्यासाठी 1: 4 × 3 × 2 × 1 = 24. प्रत्येक निवड पुढच्यातून एक पर्याय काढते, आणि नेमके हेच याला घात नव्हे, क्रमगुणित बनवते. (16 प्रत्येक जागी 4 पर्याय घेते, जे पुस्तके पुन्हा वापरता आली असती तरच बरोबर.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "In how many ways can 2 pupils be chosen from a group of 6?",
+          hi: "6 के समूह से 2 विद्यार्थी कितने तरीक़ों से चुने जा सकते हैं?",
+          mr: "6 च्या गटातून 2 विद्यार्थी किती प्रकारे निवडता येतील?",
+        },
+        answer: 15,
+        wrong: [30, 12, 36],
+        checkExpr: "6*5/2",
+        solution: {
+          en: "There are 6 × 5 = 30 ways to pick a first and a second pupil, but choosing Asha then Bina gives the same PAIR as choosing Bina then Asha, so every pair has been counted twice: 30/2 = 15. Dividing out the double count is the only thing that separates a combination from a permutation. (30 counts ordered pairs and never divides.)",
+          hi: "पहला और दूसरा विद्यार्थी चुनने के 6 × 5 = 30 तरीक़े हैं, पर पहले आशा फिर बीना चुनना वही युग्म देता है जो पहले बीना फिर आशा, अतः हर युग्म दो बार गिना गया: 30/2 = 15. दोहरी गिनती को भाग देकर हटाना ही इकलौती बात है जो संचय को क्रमचय से अलग करती है। (30 क्रमित युग्म गिनता है और भाग देता ही नहीं।)",
+          mr: "पहिला आणि दुसरा विद्यार्थी निवडण्याचे 6 × 5 = 30 मार्ग आहेत, पण आधी आशा मग बीना निवडणे तीच जोडी देते जी आधी बीना मग आशा, म्हणून प्रत्येक जोडी दोनदा मोजली गेली: 30/2 = 15. दुहेरी मोजणी भागाकाराने काढणे हीच एकमेव गोष्ट जी संचयाला क्रमचयापासून वेगळी करते. (30 क्रमित जोड्या मोजते आणि भागतच नाही.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the value of ⁷P₂ ?",
+          hi: "⁷P₂ का मान क्या है?",
+          mr: "⁷P₂ चे मूल्य किती?",
+        },
+        answer: 42,
+        wrong: [21, 14, 49],
+        checkExpr: "7*6",
+        solution: {
+          en: "A permutation of 2 objects from 7 fills two ordered places: 7 choices then 6, so 7 × 6 = 42. The general shape is that ⁿPᵣ is r factors counted down from n — no more and no fewer — so ⁷P₂ needs exactly two of them. (21 divides by 2, which would turn the permutation into the combination ⁷C₂.)",
+          hi: "7 में से 2 वस्तुओं का क्रमचय दो क्रमित स्थान भरता है: 7 विकल्प फिर 6, अतः 7 × 6 = 42. सामान्य आकार यह है कि ⁿPᵣ में n से नीचे गिनते r गुणनखंड होते हैं — न अधिक न कम — अतः ⁷P₂ को ठीक दो चाहिए। (21 2 से भाग दे देता है, जो क्रमचय को संचय ⁷C₂ बना देता।)",
+          mr: "7 पैकी 2 वस्तूंचा क्रमचय दोन क्रमित जागा भरतो: 7 पर्याय मग 6, म्हणून 7 × 6 = 42. सामान्य आकार असा की ⁿPᵣ मध्ये n पासून खाली मोजत r अवयव असतात — ना अधिक ना कमी — म्हणून ⁷P₂ ला नेमके दोन लागतात. (21 2 ने भागते, जे क्रमचयाला संचय ⁷C₂ बनवले असते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "How many 3-digit numbers can be formed from the digits 1, 2, 3, 4, 5 if no digit is repeated?",
+          hi: "अंक 1, 2, 3, 4, 5 से कितनी 3-अंकीय संख्याएँ बन सकती हैं यदि कोई अंक दोहराया न जाए?",
+          mr: "अंक 1, 2, 3, 4, 5 पासून किती 3-अंकी संख्या बनू शकतात जर कोणताही अंक पुनरावृत्त होत नसेल?",
+        },
+        answer: 60,
+        wrong: [125, 15, 10],
+        checkExpr: "5*4*3",
+        solution: {
+          en: "Fill the places left to right: 5 digits for the hundreds, 4 remaining for the tens, 3 for the units — 5 × 4 × 3 = 60. Order matters here because 123 and 321 are different numbers, so this is a permutation and nothing gets divided out. (125 allows repetition, giving 5 × 5 × 5.)",
+          hi: "स्थान बाएँ से दाएँ भरो: सैकड़े के लिए 5 अंक, दहाई के लिए बचे 4, इकाई के लिए 3 — 5 × 4 × 3 = 60. यहाँ क्रम मायने रखता है क्योंकि 123 और 321 भिन्न संख्याएँ हैं, अतः यह क्रमचय है और कुछ भाग देकर हटाया नहीं जाता। (125 दोहराव की छूट देता है, जिससे 5 × 5 × 5.)",
+          mr: "जागा डावीकडून उजवीकडे भरा: शतकासाठी 5 अंक, दशकासाठी उरलेले 4, एककासाठी 3 — 5 × 4 × 3 = 60. इथे क्रम महत्त्वाचा कारण 123 आणि 321 वेगळ्या संख्या आहेत, म्हणून हा क्रमचय आणि काहीही भागाकाराने काढले जात नाही. (125 पुनरावृत्तीची मुभा देते, ज्यातून 5 × 5 × 5.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the value of ⁸C₃ ?",
+          hi: "⁸C₃ का मान क्या है?",
+          mr: "⁸C₃ चे मूल्य किती?",
+        },
+        answer: 56,
+        wrong: [336, 24, 112],
+        checkExpr: "8*7*6/(3*2*1)",
+        solution: {
+          en: "Take three factors counting down from 8 and divide by 3!: (8 × 7 × 6)/(3 × 2 × 1) = 336/6 = 56. The division removes the 6 different orders in which the same three people could have been picked. A useful check is that ⁸C₃ must equal ⁸C₅, since choosing three to include is the same as choosing five to leave out. (336 gives ⁸P₃ and forgets to divide by 3!.)",
+          hi: "8 से नीचे गिनते तीन गुणनखंड लो और 3! से भाग दो: (8 × 7 × 6)/(3 × 2 × 1) = 336/6 = 56. भाग वे 6 भिन्न क्रम हटा देता है जिनमें वही तीन लोग चुने जा सकते थे। एक उपयोगी जाँच यह है कि ⁸C₃ को ⁸C₅ के बराबर होना चाहिए, क्योंकि तीन को भीतर लेना पाँच को बाहर छोड़ना ही है। (336 ⁸P₃ देता है और 3! से भाग देना भूल जाता है।)",
+          mr: "8 पासून खाली मोजत तीन अवयव घ्या आणि 3! ने भागा: (8 × 7 × 6)/(3 × 2 × 1) = 336/6 = 56. भागाकार ते 6 वेगळे क्रम काढतो ज्यांत तीच तीन माणसे निवडली गेली असती. एक उपयुक्त तपासणी अशी की ⁸C₃ हे ⁸C₅ इतके असावे, कारण तिघांना आत घेणे म्हणजे पाचांना बाहेर सोडणेच. (336 ⁸P₃ देते आणि 3! ने भागणे विसरते.)",
+        },
+      },
+      rand,
+    ),
+  );
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "In how many ways can a committee of 3 be formed from 10 people?",
+          hi: "10 लोगों में से 3 की समिति कितने तरीक़ों से बनाई जा सकती है?",
+          mr: "10 लोकांतून 3 जणांची समिती किती प्रकारे बनवता येईल?",
+        },
+        answer: 120,
+        wrong: [720, 30, 1000],
+        checkExpr: "10*9*8/(3*2*1)",
+        solution: {
+          en: "A committee has no first or second member, so order does not matter: (10 × 9 × 8)/(3 × 2 × 1) = 720/6 = 120. The single question to ask before choosing a formula is whether swapping two of the chosen people would give a different outcome. For a committee it would not; for a president and a secretary it would, and then the answer would be 720. (720 counts ordered selections, which is the answer to a different question.)",
+          hi: "समिति में पहला या दूसरा सदस्य नहीं होता, अतः क्रम मायने नहीं रखता: (10 × 9 × 8)/(3 × 2 × 1) = 720/6 = 120. सूत्र चुनने से पहले पूछने का इकलौता प्रश्न यह है कि चुने गए दो लोगों को अदल-बदल देने से परिणाम बदलेगा या नहीं। समिति के लिए नहीं बदलेगा; अध्यक्ष और सचिव के लिए बदलेगा, और तब उत्तर 720 होता। (720 क्रमित चयन गिनता है, जो दूसरे प्रश्न का उत्तर है।)",
+          mr: "समितीत पहिला वा दुसरा सदस्य नसतो, म्हणून क्रम महत्त्वाचा नाही: (10 × 9 × 8)/(3 × 2 × 1) = 720/6 = 120. सूत्र निवडण्याआधी विचारण्याचा एकमेव प्रश्न असा की निवडलेल्या दोघांची अदलाबदल केल्याने निकाल बदलेल का. समितीसाठी बदलणार नाही; अध्यक्ष आणि सचिवासाठी बदलेल, आणि तेव्हा उत्तर 720 झाले असते. (720 क्रमित निवडी मोजते, जे वेगळ्या प्रश्नाचे उत्तर.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "How many distinct arrangements are there of the letters of the word LEVEL?",
+          hi: "शब्द LEVEL के अक्षरों की कितनी भिन्न व्यवस्थाएँ हैं?",
+          mr: "LEVEL या शब्दाच्या अक्षरांच्या किती वेगळ्या मांडण्या आहेत?",
+        },
+        answer: 30,
+        wrong: [120, 60, 20],
+        checkExpr: "5*4*3*2*1/(2*2)",
+        solution: {
+          en: "There are 5 letters, so 5! = 120 arrangements if all were different — but the two L's can be swapped without changing anything, and so can the two E's. Divide by 2! for each: 120/(2 × 2) = 30. Repeated letters are the same double-counting problem as an unordered committee, wearing a different hat. (120 treats all five letters as distinct.)",
+          hi: "5 अक्षर हैं, अतः सब भिन्न होते तो 5! = 120 व्यवस्थाएँ — पर दोनों L बिना कुछ बदले अदल-बदल सकते हैं, और दोनों E भी। हर एक के लिए 2! से भाग दो: 120/(2 × 2) = 30. दोहराए गए अक्षर वही दोहरी-गिनती की समस्या हैं जो अक्रमित समिति की है, बस दूसरी टोपी पहने। (120 पाँचों अक्षरों को भिन्न मान लेता है।)",
+          mr: "5 अक्षरे आहेत, म्हणून सर्व वेगळी असती तर 5! = 120 मांडण्या — पण दोन्ही L काहीही न बदलता अदलाबदल करू शकतात, आणि दोन्ही E सुद्धा. प्रत्येकासाठी 2! ने भागा: 120/(2 × 2) = 30. पुनरावृत्त अक्षरे हीच दुहेरी-मोजणीची अडचण जी अक्रमित समितीची आहे, फक्त दुसरी टोपी घालून. (120 पाचही अक्षरे वेगळी मानते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "In how many ways can 7 people be seated around a circular table?",
+          hi: "7 लोगों को गोल मेज़ के चारों ओर कितने तरीक़ों से बिठाया जा सकता है?",
+          mr: "7 लोकांना गोल टेबलाभोवती किती प्रकारे बसवता येईल?",
+        },
+        answer: 720,
+        wrong: [5040, 120, 49],
+        checkExpr: "6*5*4*3*2*1",
+        solution: {
+          en: "Around a circle there is no first seat, so rotating everyone by one place gives the same arrangement. Fix one person and arrange the other six relative to them: 6! = 720. In general n people in a circle give (n − 1)! arrangements, and the whole difference from a row is that a circle has no starting point. (5040 gives 7!, the answer for a straight row.)",
+          hi: "गोल में कोई पहली कुर्सी नहीं होती, अतः सबको एक स्थान घुमा देने पर वही व्यवस्था मिलती है। एक व्यक्ति को स्थिर करो और बाक़ी छह को उसके सापेक्ष जमाओ: 6! = 720. सामान्यतः गोल में n लोग (n − 1)! व्यवस्थाएँ देते हैं, और क़तार से पूरा अंतर यही है कि गोल का कोई आरंभ-बिंदु नहीं। (5040 7! देता है, जो सीधी क़तार का उत्तर है।)",
+          mr: "गोलात पहिली खुर्ची नसते, म्हणून सर्वांना एक जागा फिरवल्यावर तीच मांडणी मिळते. एका व्यक्तीला स्थिर करा आणि उरलेल्या सहांना तिच्या सापेक्ष मांडा: 6! = 720. सामान्यतः गोलात n माणसे (n − 1)! मांडण्या देतात, आणि रांगेहून अख्खा फरक हाच की गोलाला आरंभबिंदू नाही. (5040 7! देते, जे सरळ रांगेचे उत्तर.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "From 5 men and 4 women, how many committees of 3 can be formed containing exactly 2 men?",
+          hi: "5 पुरुषों और 4 स्त्रियों में से 3 की कितनी समितियाँ बनाई जा सकती हैं जिनमें ठीक 2 पुरुष हों?",
+          mr: "5 पुरुष आणि 4 स्त्रियांतून 3 जणांच्या किती समित्या बनवता येतील ज्यांत नेमके 2 पुरुष असतील?",
+        },
+        answer: 40,
+        wrong: [60, 20, 84],
+        checkExpr: "5*4/2*4",
+        solution: {
+          en: "Choose the men and the women separately, then multiply: ⁵C₂ = 10 ways to pick two men, ⁴C₁ = 4 ways to pick one woman, giving 10 × 4 = 40. Multiplying is right because every choice of men can go with every choice of women — the two decisions are independent. Note that the word EXACTLY does real work: without it you would have to add the cases of three men, two men, one man and none, which comes to ⁹C₃ = 84. (84 counts every committee of three regardless of composition.)",
+          hi: "पुरुष और स्त्रियाँ अलग-अलग चुनो, फिर गुणा करो: दो पुरुष चुनने के ⁵C₂ = 10 तरीक़े, एक स्त्री चुनने के ⁴C₁ = 4, जिससे 10 × 4 = 40. गुणा इसलिए ठीक है कि पुरुषों का हर चुनाव स्त्रियों के हर चुनाव के साथ जा सकता है — दोनों निर्णय स्वतंत्र हैं। ध्यान दो कि ठीक शब्द असली काम करता है: उसके बिना तीन पुरुष, दो, एक और शून्य के मामले जोड़ने पड़ते, जो ⁹C₃ = 84 बनता है। (84 संरचना की परवाह किए बिना तीन की हर समिति गिनता है।)",
+          mr: "पुरुष आणि स्त्रिया वेगवेगळ्या निवडा, मग गुणा: दोन पुरुष निवडण्याचे ⁵C₂ = 10 मार्ग, एक स्त्री निवडण्याचे ⁴C₁ = 4, ज्यातून 10 × 4 = 40. गुणाकार यासाठी बरोबर की पुरुषांची प्रत्येक निवड स्त्रियांच्या प्रत्येक निवडीसोबत जाऊ शकते — दोन्ही निर्णय स्वतंत्र आहेत. लक्षात घ्या की नेमके हा शब्द खरे काम करतो: त्याविना तीन पुरुष, दोन, एक आणि शून्य ही प्रकरणे जोडावी लागली असती, जे ⁹C₃ = 84 बनते. (84 रचनेची पर्वा न करता तिघांची प्रत्येक समिती मोजते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "How many 4-letter arrangements can be made from the 8 distinct letters of EQUATION if no letter is repeated?",
+          hi: "EQUATION के 8 भिन्न अक्षरों से 4-अक्षरी कितनी व्यवस्थाएँ बन सकती हैं यदि कोई अक्षर दोहराया न जाए?",
+          mr: "EQUATION च्या 8 वेगळ्या अक्षरांतून 4-अक्षरी किती मांडण्या बनू शकतील जर कोणतेही अक्षर पुनरावृत्त होत नसेल?",
+        },
+        answer: 1680,
+        wrong: [70, 4096, 336],
+        checkExpr: "8*7*6*5",
+        solution: {
+          en: "Four ordered places, filled from eight letters without repetition: 8 × 7 × 6 × 5 = 1680, which is ⁸P₄. The word ARRANGEMENTS is the signal that order counts — had the question asked how many SETS of four letters could be chosen, the answer would be ⁸C₄ = 70, smaller by the 24 orderings of each set. (70 answers the combination question instead of the permutation one.)",
+          hi: "चार क्रमित स्थान, आठ अक्षरों से बिना दोहराव भरे: 8 × 7 × 6 × 5 = 1680, जो ⁸P₄ है। व्यवस्थाएँ शब्द ही संकेत है कि क्रम गिना जाता है — यदि प्रश्न पूछता कि चार अक्षरों के कितने समुच्चय चुने जा सकते हैं, तो उत्तर ⁸C₄ = 70 होता, हर समुच्चय के 24 क्रमों जितना छोटा। (70 क्रमचय के बजाय संचय वाले प्रश्न का उत्तर देता है।)",
+          mr: "चार क्रमित जागा, आठ अक्षरांतून पुनरावृत्तीविना भरलेल्या: 8 × 7 × 6 × 5 = 1680, जे ⁸P₄ आहे. मांडण्या हा शब्दच संकेत की क्रम मोजला जातो — प्रश्नाने चार अक्षरांचे किती संच निवडता येतील असे विचारले असते, तर उत्तर ⁸C₄ = 70 झाले असते, प्रत्येक संचाच्या 24 क्रमांइतके लहान. (70 क्रमचयाऐवजी संचयाच्या प्रश्नाचे उत्तर देते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "In how many ways can 5 boys and 3 girls sit in a row so that no two girls are next to each other?",
+          hi: "5 लड़के और 3 लड़कियाँ एक क़तार में कितने तरीक़ों से बैठ सकते हैं कि कोई दो लड़कियाँ साथ-साथ न हों?",
+          mr: "5 मुले आणि 3 मुली एका रांगेत किती प्रकारे बसू शकतील की कोणत्याही दोन मुली शेजारी नसतील?",
+        },
+        answer: 14400,
+        wrong: [720, 2880, 40320],
+        checkExpr: "5*4*3*2*1*6*5*4",
+        solution: {
+          en: "Seat the boys first: 5! = 120 ways. That creates 6 gaps — one at each end and four between them — and the girls must go into different gaps, which is ⁶P₃ = 6 × 5 × 4 = 120 ways. Multiply: 120 × 120 = 14400. The technique is worth naming: when a condition forbids two things from touching, arrange everything else first and drop the restricted items into the gaps that arrangement creates. (40320 gives 8!, the count with no restriction at all.)",
+          hi: "पहले लड़कों को बिठाओ: 5! = 120 तरीक़े। इससे 6 अंतराल बनते हैं — हर सिरे पर एक और बीच में चार — और लड़कियों को भिन्न अंतरालों में जाना है, जो ⁶P₃ = 6 × 5 × 4 = 120 तरीक़े हैं। गुणा करो: 120 × 120 = 14400. तकनीक का नाम लेने योग्य है: जब कोई शर्त दो चीज़ों को छूने से रोके, पहले बाक़ी सब जमाओ और प्रतिबंधित वस्तुओं को उस व्यवस्था से बने अंतरालों में गिरा दो। (40320 8! देता है, जो बिना किसी प्रतिबंध की गिनती है।)",
+          mr: "आधी मुलांना बसवा: 5! = 120 मार्ग. यातून 6 फटी बनतात — प्रत्येक टोकाला एक आणि मध्ये चार — आणि मुलींना वेगवेगळ्या फटींत जायचे आहे, जे ⁶P₃ = 6 × 5 × 4 = 120 मार्ग. गुणा: 120 × 120 = 14400. तंत्राचे नाव घेण्याजोगे: जेव्हा एखादी अट दोन गोष्टींना स्पर्श करण्यापासून रोखते, तेव्हा आधी बाकी सारे मांडा आणि निर्बंधित वस्तू त्या मांडणीतून बनलेल्या फटींत टाका. (40320 8! देते, जी कोणत्याही निर्बंधाविनाची मोजणी.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "How many diagonals does a polygon with 10 sides have?",
+          hi: "10 भुजाओं वाले बहुभुज में कितने विकर्ण होते हैं?",
+          mr: "10 बाजू असलेल्या बहुभुजात किती कर्ण असतात?",
+        },
+        answer: 35,
+        wrong: [45, 20, 90],
+        checkExpr: "10*9/2-10",
+        solution: {
+          en: "Every pair of vertices joins to make a straight segment, and there are ¹⁰C₂ = 45 such pairs. But 10 of those segments are the sides of the polygon rather than diagonals, so 45 − 10 = 35. The whole method is to count something easy and then subtract what should not have been counted — which is far quicker than trying to enumerate diagonals directly, and generalises to n(n − 3)/2 for any polygon. (45 counts every segment, sides included.)",
+          hi: "शीर्षों का हर युग्म जुड़कर एक सरल खंड बनाता है, और ऐसे ¹⁰C₂ = 45 युग्म हैं। पर उनमें से 10 खंड विकर्ण नहीं, बहुभुज की भुजाएँ हैं, अतः 45 − 10 = 35. पूरी विधि यह है कि कोई आसान चीज़ गिनो और फिर वह घटा दो जिसे गिना नहीं जाना चाहिए था — जो विकर्ण सीधे गिनने की कोशिश से कहीं तेज़ है, और किसी भी बहुभुज के लिए n(n − 3)/2 बन जाता है। (45 भुजाओं सहित हर खंड गिनता है।)",
+          mr: "शिरोबिंदूंची प्रत्येक जोडी जुळून एक सरळ खंड बनवते, आणि असे ¹⁰C₂ = 45 जोड्या आहेत. पण त्यांपैकी 10 खंड कर्ण नव्हे, बहुभुजाच्या बाजू आहेत, म्हणून 45 − 10 = 35. अख्खी पद्धत अशी की काहीतरी सोपे मोजा आणि मग जे मोजायला नको होते ते वजा करा — जे कर्ण थेट मोजण्याच्या प्रयत्नाहून कितीतरी वेगवान, आणि कोणत्याही बहुभुजासाठी n(n − 3)/2 बनते. (45 बाजूंसह प्रत्येक खंड मोजते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "How many distinct arrangements are there of the letters of the word ALLAHABAD?",
+          hi: "शब्द ALLAHABAD के अक्षरों की कितनी भिन्न व्यवस्थाएँ हैं?",
+          mr: "ALLAHABAD या शब्दाच्या अक्षरांच्या किती वेगळ्या मांडण्या आहेत?",
+        },
+        answer: 7560,
+        wrong: [362880, 15120, 3780],
+        checkExpr: "9*8*7*6*5*4*3*2*1/(24*2)",
+        solution: {
+          en: "The word has 9 letters, of which A appears 4 times and L appears twice, while H, B and D appear once each. Were all nine distinct there would be 9! = 362880 arrangements; but the four A's can be permuted among themselves in 4! = 24 ways without changing the word, and the two L's in 2! = 2 ways. Divide both out: 362880/(24 × 2) = 362880/48 = 7560. Two habits make this safe. Count the letters before anything else — nine, not eight, since it is easy to miss a repeat. And divide by the factorial of each repeat COUNT, not by the count itself; dividing by 4 × 2 instead of 24 × 2 gives 45360 and is the commonest error here. (362880 treats all nine letters as different.)",
+          hi: "शब्द में 9 अक्षर हैं, जिनमें A चार बार आता है और L दो बार, जबकि H, B और D एक-एक बार। नौ भिन्न होते तो 9! = 362880 व्यवस्थाएँ होतीं; पर चारों A आपस में 4! = 24 तरीक़ों से बदल सकते हैं बिना शब्द बदले, और दोनों L 2! = 2 तरीक़ों से। दोनों भाग देकर हटाओ: 362880/(24 × 2) = 362880/48 = 7560. दो आदतें इसे सुरक्षित बनाती हैं। किसी और चीज़ से पहले अक्षर गिनो — नौ, आठ नहीं, क्योंकि कोई दोहराव छूट जाना आसान है। और हर दोहराव की गिनती के क्रमगुणित से भाग दो, गिनती से नहीं; 24 × 2 के बजाय 4 × 2 से भाग देने पर 45360 मिलता है और यही यहाँ की सबसे आम भूल है। (362880 नौों अक्षरों को भिन्न मान लेता है।)",
+          mr: "शब्दात 9 अक्षरे आहेत, ज्यांत A चार वेळा येते आणि L दोनदा, तर H, B आणि D एकेकदा. नऊही वेगळी असती तर 9! = 362880 मांडण्या झाल्या असत्या; पण चारही A आपापसात 4! = 24 प्रकारे बदलू शकतात शब्द न बदलता, आणि दोन्ही L 2! = 2 प्रकारे. दोन्ही भागाकाराने काढा: 362880/(24 × 2) = 362880/48 = 7560. दोन सवयी हे सुरक्षित करतात. इतर कशाहीआधी अक्षरे मोजा — नऊ, आठ नव्हे, कारण एखादी पुनरावृत्ती निसटणे सोपे. आणि प्रत्येक पुनरावृत्तीच्या मोजणीच्या क्रमगुणिताने भागा, मोजणीने नव्हे; 24 × 2 ऐवजी 4 × 2 ने भागल्यास 45360 मिळते आणि हीच इथली सर्वांत सामान्य चूक. (362880 नऊही अक्षरे वेगळी मानते.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-11-permutations-and-combinations",
+      subject: "MATHS",
+      classLevel: 11,
+      chapter: "Chapter 6 — Permutations and Combinations",
+      name: "Permutations and Combinations",
+      summary:
+        "Counting arrangements too numerous to list, by multiplying the choices instead: the one question that decides everything is whether order matters, and after that it is a matter of dividing out the arrangements you have counted twice — of a committee that does not care who was picked first, or of two letters that look the same.",
+      position: 6,
+      translations: {
+        hi: {
+          name: "क्रमचय तथा संचय",
+          summary:
+            "इतनी अधिक व्यवस्थाएँ गिनना कि सूची बने ही नहीं, और वह भी विकल्पों को गुणा करके: सब कुछ तय करने वाला इकलौता प्रश्न यह है कि क्रम मायने रखता है या नहीं, और उसके बाद बात इतनी रह जाती है कि जो व्यवस्थाएँ दो बार गिनी गईं उन्हें भाग देकर हटा दो — उस समिति की जिसे परवाह नहीं कि पहले किसे चुना गया, या उन दो अक्षरों की जो एक जैसे दिखते हैं।",
+        },
+        mr: {
+          name: "क्रमचय आणि संचय",
+          summary:
+            "यादी बनवता येणार नाहीत इतक्या मांडण्या मोजणे, आणि तेही पर्याय गुणून: सारे ठरवणारा एकमेव प्रश्न म्हणजे क्रम महत्त्वाचा आहे का, आणि त्यानंतर गोष्ट इतकीच उरते की दोनदा मोजल्या गेलेल्या मांडण्या भागाकाराने काढून टाका — त्या समितीच्या जिला आधी कोणाला निवडले याची पर्वा नाही, वा त्या दोन अक्षरांच्या जी सारखी दिसतात.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 7 — Binomial Theorem (a bracket expanded without expanding it)    */
+/* ------------------------------------------------------------------------- */
+function binomialTheorem11(): TopicFileOut {
+  const rand = rng("maths-11-binomial-theorem");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many terms are there in the expansion of (a + b)⁷ ?",
+          hi: "(a + b)⁷ के प्रसार में कितने पद हैं?",
+          mr: "(a + b)⁷ च्या विस्तारात किती पदे आहेत?",
+        },
+        answer: 8,
+        wrong: [7, 14, 6],
+        checkExpr: "7+1",
+        solution: {
+          en: "The exponent of a runs from 7 down to 0, which is 8 values, so there are 7 + 1 = 8 terms. Counting from a zero rather than a one is the whole trap — the same reason a fence with 7 gaps needs 8 posts. (7 quotes the power and forgets the term in which a has vanished.)",
+          hi: "a का घातांक 7 से नीचे 0 तक चलता है, जो 8 मान हैं, अतः 7 + 1 = 8 पद हैं। शून्य से गिनना, एक से नहीं, ही पूरा जाल है — वही कारण कि 7 अंतरालों की बाड़ को 8 खंभे चाहिए। (7 घात बता देता है और वह पद भूल जाता है जिसमें a लुप्त हो चुका है।)",
+          mr: "a चा घातांक 7 पासून खाली 0 पर्यंत चालतो, जी 8 मूल्ये आहेत, म्हणून 7 + 1 = 8 पदे. शून्यापासून मोजणे, एकापासून नव्हे, हाच अख्खा सापळा — तेच कारण की 7 फटींच्या कुंपणाला 8 खांब लागतात. (7 घात सांगते आणि ते पद विसरते ज्यात a नाहीसा झाला आहे.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the sum of all the binomial coefficients in the expansion of (1 + x)⁵ ?",
+          hi: "(1 + x)⁵ के प्रसार के सभी द्विपद गुणांकों का योग क्या है?",
+          mr: "(1 + x)⁵ च्या विस्तारातील सर्व द्विपद सहगुणकांची बेरीज किती?",
+        },
+        answer: 32,
+        wrong: [10, 5, 25],
+        checkExpr: "2*2*2*2*2",
+        solution: {
+          en: "Put x = 1 and every term collapses to its coefficient, so the sum is (1 + 1)⁵ = 2⁵ = 32. That substitution trick works for any binomial: the sum of the coefficients is always what the expression itself equals when every variable is set to 1. It also matches the counting story, since the coefficients are ⁵C₀ through ⁵C₅ and those add to the number of subsets of a 5-element set. (10 gives just the largest single coefficient, ⁵C₂.)",
+          hi: "x = 1 रखो और हर पद अपने गुणांक पर सिमट जाता है, अतः योग (1 + 1)⁵ = 2⁵ = 32. वह प्रतिस्थापन-तरकीब किसी भी द्विपद पर चलती है: गुणांकों का योग सदा वही है जो हर चर को 1 रखने पर व्यंजक स्वयं बनता है। यह गिनती की कहानी से भी मेल खाता है, क्योंकि गुणांक ⁵C₀ से ⁵C₅ तक हैं और वे 5-अवयवी समुच्चय के उपसमुच्चयों की संख्या बनाते हैं। (10 केवल सबसे बड़ा अकेला गुणांक ⁵C₂ देता है।)",
+          mr: "x = 1 ठेवा आणि प्रत्येक पद आपल्या सहगुणकावर येते, म्हणून बेरीज (1 + 1)⁵ = 2⁵ = 32. ती प्रतिस्थापन-युक्ती कोणत्याही द्विपदावर चालते: सहगुणकांची बेरीज नेहमी तीच जी प्रत्येक चलाला 1 ठेवल्यावर पदावली स्वतः बनते. हे मोजणीच्या कथेशीही जुळते, कारण सहगुणक ⁵C₀ पासून ⁵C₅ पर्यंत आहेत आणि ते 5-घटकी संचाच्या उपसंचांची संख्या बनवतात. (10 केवळ सर्वांत मोठा एकटा सहगुणक ⁵C₂ देते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the coefficient of x² in the expansion of (1 + x)⁵ ?",
+          hi: "(1 + x)⁵ के प्रसार में x² का गुणांक क्या है?",
+          mr: "(1 + x)⁵ च्या विस्तारात x² चा सहगुणक किती?",
+        },
+        answer: 10,
+        wrong: [20, 5, 25],
+        checkExpr: "5*4/2",
+        solution: {
+          en: "The coefficient of xʳ in (1 + x)ⁿ is ⁿCᵣ, so here it is ⁵C₂ = (5 × 4)/2 = 10. The reason is pure counting: expanding the product means choosing x from two of the five brackets and 1 from the rest, and there are ⁵C₂ ways to decide which two. (20 gives ⁵P₂ and forgets that the brackets chosen have no order.)",
+          hi: "(1 + x)ⁿ में xʳ का गुणांक ⁿCᵣ है, अतः यहाँ वह ⁵C₂ = (5 × 4)/2 = 10. कारण विशुद्ध गिनती है: गुणनफल खोलने का अर्थ है पाँच कोष्ठकों में से दो से x लेना और बाक़ी से 1, और कौन-से दो यह तय करने के ⁵C₂ तरीक़े हैं। (20 ⁵P₂ देता है और भूल जाता है कि चुने गए कोष्ठकों का कोई क्रम नहीं।)",
+          mr: "(1 + x)ⁿ मध्ये xʳ चा सहगुणक ⁿCᵣ आहे, म्हणून इथे तो ⁵C₂ = (5 × 4)/2 = 10. कारण निव्वळ मोजणी: गुणाकार उलगडणे म्हणजे पाच कंसांपैकी दोघांतून x घेणे आणि बाकीच्यांतून 1, आणि कोणते दोन हे ठरवण्याचे ⁵C₂ मार्ग आहेत. (20 ⁵P₂ देते आणि निवडलेल्या कंसांना क्रम नाही हे विसरते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "In the expansion of (a + b)⁸, which term is the middle one? Give its position number.",
+          hi: "(a + b)⁸ के प्रसार में बीच का पद कौन-सा है? उसका स्थान-क्रमांक बताओ।",
+          mr: "(a + b)⁸ च्या विस्तारात मधले पद कोणते? त्याचा जागा-क्रमांक सांगा.",
+        },
+        answer: 5,
+        wrong: [4, 9, 8],
+        checkExpr: "8/2+1",
+        solution: {
+          en: "There are 9 terms in all, and the middle of an odd number of terms is a single one: position 8/2 + 1 = 5. When the power is even there is exactly one middle term; when it is odd the count of terms is even and there are two middle terms instead. (4 halves the power and forgets that positions start at 1.)",
+          hi: "कुल 9 पद हैं, और विषम संख्या के पदों का बीच एक ही होता है: स्थान 8/2 + 1 = 5. जब घात सम हो तो ठीक एक बीच का पद होता है; जब विषम हो तो पदों की गिनती सम होती है और बीच के पद दो होते हैं। (4 घात आधी कर देता है और भूल जाता है कि स्थान 1 से शुरू होते हैं।)",
+          mr: "एकूण 9 पदे आहेत, आणि विषम संख्येच्या पदांचा मध्य एकच असतो: जागा 8/2 + 1 = 5. घात सम असेल तेव्हा नेमके एक मधले पद असते; विषम असेल तेव्हा पदांची मोजणी सम असते आणि मधली पदे दोन असतात. (4 घात निम्मी करते आणि जागा 1 पासून सुरू होतात हे विसरते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the coefficient of x³ in the expansion of (1 + x)⁶ ?",
+          hi: "(1 + x)⁶ के प्रसार में x³ का गुणांक क्या है?",
+          mr: "(1 + x)⁶ च्या विस्तारात x³ चा सहगुणक किती?",
+        },
+        answer: 20,
+        wrong: [15, 6, 120],
+        checkExpr: "6*5*4/(3*2*1)",
+        solution: {
+          en: "The coefficient is ⁶C₃ = (6 × 5 × 4)/(3 × 2 × 1) = 120/6 = 20. This is the largest coefficient in the row, which is always the case when the power is even and the index sits exactly in the middle — the binomial coefficients rise to a peak and fall away symmetrically. (120 gives ⁶P₃ and never divides by 3!.)",
+          hi: "गुणांक है ⁶C₃ = (6 × 5 × 4)/(3 × 2 × 1) = 120/6 = 20. यह पंक्ति का सबसे बड़ा गुणांक है, जो सदा तब होता है जब घात सम हो और सूचकांक ठीक बीच में बैठे — द्विपद गुणांक एक शिखर तक चढ़ते हैं और सममित रूप से उतर जाते हैं। (120 ⁶P₃ देता है और 3! से भाग देता ही नहीं।)",
+          mr: "सहगुणक आहे ⁶C₃ = (6 × 5 × 4)/(3 × 2 × 1) = 120/6 = 20. हा ओळीतला सर्वांत मोठा सहगुणक, जे नेहमी तेव्हा घडते जेव्हा घात सम असते आणि निर्देशांक नेमका मध्यात बसतो — द्विपद सहगुणक एका शिखरापर्यंत चढतात आणि सममितपणे उतरतात. (120 ⁶P₃ देते आणि 3! ने भागतच नाही.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "In the expansion of (a + b)⁹, what is the exponent of a in the 4th term?",
+          hi: "(a + b)⁹ के प्रसार में चौथे पद में a का घातांक क्या है?",
+          mr: "(a + b)⁹ च्या विस्तारात चौथ्या पदात a चा घातांक किती?",
+        },
+        answer: 6,
+        wrong: [5, 4, 3],
+        checkExpr: "9-3",
+        solution: {
+          en: "The general term is the (r + 1)th, carrying aⁿ⁻ʳbʳ, so the 4th term has r = 3 and the exponent of a is 9 − 3 = 6. The off-by-one between the term NUMBER and the value of r is where most marks go, and the check is easy: the two exponents must add to the power, and 6 + 3 = 9. (5 uses r = 4, reading the term number as r itself.)",
+          hi: "व्यापक पद (r + 1)वाँ है, जो aⁿ⁻ʳbʳ ढोता है, अतः चौथे पद में r = 3 और a का घातांक 9 − 3 = 6. पद-संख्या और r के मान के बीच का एक का अंतर ही अधिकांश अंक खा जाता है, और जाँच आसान है: दोनों घातांक जुड़कर वही घात बनें, और 6 + 3 = 9. (5 r = 4 लेता है, पद-संख्या को ही r पढ़कर।)",
+          mr: "व्यापक पद (r + 1)वे आहे, जे aⁿ⁻ʳbʳ वाहते, म्हणून चौथ्या पदात r = 3 आणि a चा घातांक 9 − 3 = 6. पद-संख्या आणि r चे मूल्य यांच्यातला एकाचा फरक बहुतांश गुण खातो, आणि तपासणी सोपी: दोन्ही घातांक जुळून तीच घात बनावी, आणि 6 + 3 = 9. (5 r = 4 घेते, पद-संख्येलाच r वाचून.)",
+        },
+      },
+      rand,
+    ),
+  );
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is the coefficient of x³ in the expansion of (1 + x)⁸ ?",
+          hi: "(1 + x)⁸ के प्रसार में x³ का गुणांक क्या है?",
+          mr: "(1 + x)⁸ च्या विस्तारात x³ चा सहगुणक किती?",
+        },
+        answer: 56,
+        wrong: [24, 336, 70],
+        checkExpr: "8*7*6/(3*2*1)",
+        solution: {
+          en: "It is ⁸C₃ = (8 × 7 × 6)/(3 × 2 × 1) = 336/6 = 56. Worth noticing that this equals ⁸C₅, because choosing which three brackets supply an x is the same decision as choosing which five supply a 1 — every row of coefficients reads the same forwards and backwards. (70 is ⁸C₄, the peak of the row rather than the term asked for.)",
+          hi: "वह ⁸C₃ = (8 × 7 × 6)/(3 × 2 × 1) = 336/6 = 56. ध्यान देने योग्य है कि यह ⁸C₅ के बराबर है, क्योंकि कौन-से तीन कोष्ठक x देंगे यह चुनना वही निर्णय है जो कौन-से पाँच 1 देंगे — गुणांकों की हर पंक्ति आगे से और पीछे से एक जैसी पढ़ी जाती है। (70 ⁸C₄ है, पंक्ति का शिखर, माँगा गया पद नहीं।)",
+          mr: "तो ⁸C₃ = (8 × 7 × 6)/(3 × 2 × 1) = 336/6 = 56. लक्षात घेण्याजोगे की हा ⁸C₅ इतकाच आहे, कारण कोणते तीन कंस x देतील हे निवडणे तोच निर्णय जो कोणते पाच 1 देतील — सहगुणकांची प्रत्येक ओळ पुढून आणि मागून सारखीच वाचली जाते. (70 हा ⁸C₄, ओळीचे शिखर, विचारलेले पद नव्हे.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is the constant term (the term free of x) in the expansion of (2x + 3)⁴ ?",
+          hi: "(2x + 3)⁴ के प्रसार में अचर पद (x से मुक्त पद) क्या है?",
+          mr: "(2x + 3)⁴ च्या विस्तारात स्थिर पद (x विरहित पद) किती?",
+        },
+        answer: 81,
+        wrong: [16, 12, 24],
+        checkExpr: "3*3*3*3",
+        solution: {
+          en: "The only term with no x is the one that takes 3 from all four brackets: 3⁴ = 81, with a coefficient of ⁴C₀ = 1. It is also what the whole expression becomes at x = 0, which is a quick way to check any constant term without expanding. (16 gives 2⁴, taking 2x from every bracket instead, which is the term in x⁴.)",
+          hi: "बिना x वाला इकलौता पद वही है जो चारों कोष्ठकों से 3 लेता है: 3⁴ = 81, और गुणांक ⁴C₀ = 1. वह वही भी है जो x = 0 पर पूरा व्यंजक बनता है, और यह बिना प्रसार किए किसी भी अचर पद की जाँच का तेज़ रास्ता है। (16 2⁴ देता है, हर कोष्ठक से 2x लेकर, जो x⁴ वाला पद है।)",
+          mr: "x विरहित एकमेव पद तेच जे चारही कंसांतून 3 घेते: 3⁴ = 81, आणि सहगुणक ⁴C₀ = 1. तेच x = 0 वर अख्खी पदावली बनते, आणि हा विस्तार न करता कोणतेही स्थिर पद तपासण्याचा वेगवान मार्ग. (16 2⁴ देते, प्रत्येक कंसातून 2x घेऊन, जे x⁴ चे पद आहे.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "What is the coefficient of x² in the expansion of (1 + 2x)⁵ ?",
+          hi: "(1 + 2x)⁵ के प्रसार में x² का गुणांक क्या है?",
+          mr: "(1 + 2x)⁵ च्या विस्तारात x² चा सहगुणक किती?",
+        },
+        answer: 40,
+        wrong: [10, 20, 80],
+        checkExpr: "5*4/2*4",
+        solution: {
+          en: "The term is ⁵C₂ (2x)² = 10 × 4x², so the coefficient is 40. The 2 inside the bracket is squared along with the x, and forgetting that is the standard slip — it turns a factor of 4 into a factor of 2, or into nothing at all. Always raise the whole of the second term to the power, coefficient included. (10 gives the binomial coefficient alone and ignores the 2.)",
+          hi: "पद है ⁵C₂ (2x)² = 10 × 4x², अतः गुणांक 40. कोष्ठक के भीतर का 2 भी x के साथ वर्ग होता है, और उसे भूलना मानक चूक है — वह 4 के गुणक को 2 का बना देती है, या बिलकुल ही मिटा देती है। दूसरे पद को सदा गुणांक सहित पूरा घात तक उठाओ। (10 अकेला द्विपद गुणांक देता है और 2 की अनदेखी कर देता है।)",
+          mr: "पद आहे ⁵C₂ (2x)² = 10 × 4x², म्हणून सहगुणक 40. कंसातला 2 सुद्धा x सोबत वर्ग होतो, आणि तो विसरणे ही प्रमाण चूक — ती 4 च्या गुणकाला 2 चा बनवते, वा अजिबातच मिटवते. दुसरे पद नेहमी सहगुणकासह पूर्ण घातापर्यंत न्या. (10 एकटा द्विपद सहगुणक देते आणि 2 दुर्लक्षते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "What is the coefficient of the middle term in the expansion of (x + 1/x)¹⁰ ?",
+          hi: "(x + 1/x)¹⁰ के प्रसार में बीच के पद का गुणांक क्या है?",
+          mr: "(x + 1/x)¹⁰ च्या विस्तारात मधल्या पदाचा सहगुणक किती?",
+        },
+        answer: 252,
+        wrong: [210, 120, 45],
+        checkExpr: "10*9*8*7*6/(5*4*3*2*1)",
+        solution: {
+          en: "There are 11 terms, so the middle one is the 6th, with r = 5: ¹⁰C₅ x⁵ (1/x)⁵ = ¹⁰C₅. That works out to (10 × 9 × 8 × 7 × 6)/(5 × 4 × 3 × 2 × 1) = 30240/120 = 252. Notice that the x's cancel exactly here, so the middle term is also the constant term — which is why this particular expansion is a favourite for asking about the term independent of x. (210 gives ¹⁰C₄, the term one place to the left.)",
+          hi: "11 पद हैं, अतः बीच वाला छठा है, जिसमें r = 5: ¹⁰C₅ x⁵ (1/x)⁵ = ¹⁰C₅. वह बनता है (10 × 9 × 8 × 7 × 6)/(5 × 4 × 3 × 2 × 1) = 30240/120 = 252. ध्यान दो कि यहाँ x ठीक-ठीक कट जाते हैं, अतः बीच का पद अचर पद भी है — इसीलिए x से स्वतंत्र पद पूछने के लिए यही प्रसार सबसे प्रिय है। (210 ¹⁰C₄ देता है, बाईं ओर एक स्थान का पद।)",
+          mr: "11 पदे आहेत, म्हणून मधले सहावे, ज्यात r = 5: ¹⁰C₅ x⁵ (1/x)⁵ = ¹⁰C₅. ते बनते (10 × 9 × 8 × 7 × 6)/(5 × 4 × 3 × 2 × 1) = 30240/120 = 252. लक्षात घ्या की इथे x नेमके छेदतात, म्हणून मधले पद हे स्थिर पदही आहे — म्हणूनच x पासून स्वतंत्र पद विचारण्यासाठी हाच विस्तार सर्वांत आवडता. (210 ¹⁰C₄ देते, डावीकडे एक जागेचे पद.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "What is the term independent of x in the expansion of (x² + 1/x)⁶ ?",
+          hi: "(x² + 1/x)⁶ के प्रसार में x से स्वतंत्र पद क्या है?",
+          mr: "(x² + 1/x)⁶ च्या विस्तारात x पासून स्वतंत्र पद किती?",
+        },
+        answer: 15,
+        wrong: [20, 6, 30],
+        checkExpr: "6*5/2",
+        solution: {
+          en: "The general term is ⁶Cᵣ (x²)⁶⁻ʳ (1/x)ʳ, whose power of x is 2(6 − r) − r = 12 − 3r. Setting 12 − 3r = 0 gives r = 4, so the term is ⁶C₄ = ⁶C₂ = 15. The method is worth extracting: write the exponent of x as a formula in r, set it to zero, and solve. If r had come out fractional or negative there would simply be no such term, which is itself a legitimate answer to this kind of question. (20 gives ⁶C₃, taking the middle term without checking where the x's cancel.)",
+          hi: "व्यापक पद है ⁶Cᵣ (x²)⁶⁻ʳ (1/x)ʳ, जिसमें x की घात 2(6 − r) − r = 12 − 3r है। 12 − 3r = 0 रखने पर r = 4, अतः पद ⁶C₄ = ⁶C₂ = 15. विधि निकालने योग्य है: x का घातांक r में सूत्र के रूप में लिखो, उसे शून्य रखो, और हल करो। यदि r भिन्नात्मक या ऋणात्मक निकलता तो ऐसा कोई पद होता ही नहीं, और वह भी इस तरह के प्रश्न का वैध उत्तर है। (20 ⁶C₃ देता है, बीच का पद लेकर बिना जाँचे कि x कहाँ कटते हैं।)",
+          mr: "व्यापक पद आहे ⁶Cᵣ (x²)⁶⁻ʳ (1/x)ʳ, ज्यात x ची घात 2(6 − r) − r = 12 − 3r आहे. 12 − 3r = 0 ठेवल्यावर r = 4, म्हणून पद ⁶C₄ = ⁶C₂ = 15. पद्धत काढण्याजोगी: x चा घातांक r मध्ये सूत्र म्हणून लिहा, तो शून्य ठेवा, आणि सोडवा. r अपूर्णांकी वा ऋण निघाला असता तर असे पद नसतेच, आणि तेही या प्रकारच्या प्रश्नाचे वैध उत्तर आहे. (20 ⁶C₃ देते, मधले पद घेऊन x कुठे छेदतात हे न तपासता.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Using the first two terms of the binomial expansion, what is the approximate value of (1.01)⁵ ?",
+          hi: "द्विपद प्रसार के पहले दो पदों से (1.01)⁵ का सन्निकट मान क्या है?",
+          mr: "द्विपद विस्ताराच्या पहिल्या दोन पदांनी (1.01)⁵ चे अंदाजे मूल्य किती?",
+        },
+        answer: 1.05,
+        wrong: [1.5, 1.01, 1.005],
+        checkExpr: "1+5*0.01",
+        solution: {
+          en: "Write it as (1 + 0.01)⁵ and expand: 1 + 5(0.01) + 10(0.01)² + … The first two terms give 1 + 0.05 = 1.05. The third term is only 0.001, and the ones after it are smaller still, which is what makes stopping early legitimate — the expansion converges quickly because 0.01 raised to a power shrinks fast. The true value is 1.0510, so the approximation is right to three decimal places. This is the everyday use of the theorem: not expanding brackets but estimating a power that would be tedious to compute exactly. (1.5 treats 0.01 as 0.1.)",
+          hi: "इसे (1 + 0.01)⁵ लिखकर खोलो: 1 + 5(0.01) + 10(0.01)² + … पहले दो पद देते हैं 1 + 0.05 = 1.05. तीसरा पद केवल 0.001 है, और उसके बाद वाले और भी छोटे, और यही जल्दी रुकना वैध बनाता है — प्रसार तेज़ी से अभिसरित होता है क्योंकि 0.01 घात तक उठकर तेज़ी से सिकुड़ता है। असली मान 1.0510 है, अतः सन्निकटन तीन दशमलव स्थानों तक ठीक है। प्रमेय का रोज़मर्रा का उपयोग यही है: कोष्ठक खोलना नहीं, बल्कि ऐसी घात का अनुमान लगाना जिसे ठीक-ठीक निकालना थकाऊ हो। (1.5 0.01 को 0.1 मान लेता है।)",
+          mr: "हे (1 + 0.01)⁵ असे लिहून उलगडा: 1 + 5(0.01) + 10(0.01)² + … पहिली दोन पदे देतात 1 + 0.05 = 1.05. तिसरे पद केवळ 0.001 आहे, आणि त्यानंतरची आणखी लहान, आणि हेच लवकर थांबणे वैध करते — विस्तार वेगाने अभिसरतो कारण 0.01 घातापर्यंत जाऊन वेगाने आकसतो. खरे मूल्य 1.0510 आहे, म्हणून अंदाज तीन दशांश स्थानांपर्यंत बरोबर. प्रमेयाचा रोजचा उपयोग हाच: कंस उलगडणे नव्हे, तर अशा घातेचा अंदाज लावणे जी नेमकी काढणे कंटाळवाणे असेल. (1.5 0.01 ला 0.1 मानते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "In the expansion of (1 + x)ⁿ the coefficient of x² is 66. What is n?",
+          hi: "(1 + x)ⁿ के प्रसार में x² का गुणांक 66 है। n क्या है?",
+          mr: "(1 + x)ⁿ च्या विस्तारात x² चा सहगुणक 66 आहे. n किती?",
+        },
+        answer: 12,
+        wrong: [11, 66, 33],
+        checkExpr: "132/11",
+        solution: {
+          en: "The coefficient of x² is ⁿC₂ = n(n − 1)/2, so n(n − 1) = 132. Looking for two consecutive whole numbers whose product is 132 gives 12 × 11, so n = 12. Solving the quadratic n² − n − 132 = 0 gives the same pair, 12 and −11, and the negative root is discarded because a power cannot be negative. Note the useful shortcut: n(n − 1) = 132 means n is close to the square root of 132, which is a little under 12 — so trying 12 first is not a guess but an estimate. (11 gives n − 1 rather than n.)",
+          hi: "x² का गुणांक ⁿC₂ = n(n − 1)/2 है, अतः n(n − 1) = 132. ऐसी दो क्रमागत पूर्ण संख्याएँ ढूँढ़ो जिनका गुणनफल 132 हो, वे 12 × 11 हैं, अतः n = 12. द्विघात n² − n − 132 = 0 हल करने पर वही युग्म मिलता है, 12 और −11, और ऋणात्मक मूल छोड़ दिया जाता है क्योंकि घात ऋणात्मक नहीं हो सकती। उपयोगी शॉर्टकट ध्यान दो: n(n − 1) = 132 का अर्थ है कि n 132 के वर्गमूल के पास है, जो 12 से कुछ नीचे है — अतः पहले 12 आज़माना अनुमान नहीं, आकलन है। (11 n के बजाय n − 1 देता है।)",
+          mr: "x² चा सहगुणक ⁿC₂ = n(n − 1)/2 आहे, म्हणून n(n − 1) = 132. अशा दोन लागोपाठच्या पूर्ण संख्या शोधा ज्यांचा गुणाकार 132 असेल, त्या 12 × 11 आहेत, म्हणून n = 12. वर्गसमीकरण n² − n − 132 = 0 सोडवल्यावर तीच जोडी मिळते, 12 आणि −11, आणि ऋण मूळ सोडले जाते कारण घात ऋण असू शकत नाही. उपयुक्त शॉर्टकट लक्षात घ्या: n(n − 1) = 132 म्हणजे n हा 132 च्या वर्गमुळाजवळ आहे, जो 12 हून काहीसा खाली — म्हणून आधी 12 आजमावणे अंदाज नव्हे, आकलन आहे. (11 n ऐवजी n − 1 देते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "What is the greatest binomial coefficient in the expansion of (1 + x)⁸ ?",
+          hi: "(1 + x)⁸ के प्रसार का सबसे बड़ा द्विपद गुणांक क्या है?",
+          mr: "(1 + x)⁸ च्या विस्तारातील सर्वांत मोठा द्विपद सहगुणक किती?",
+        },
+        answer: 70,
+        wrong: [56, 256, 28],
+        checkExpr: "8*7*6*5/(4*3*2*1)",
+        solution: {
+          en: "The coefficients ⁸C₀ through ⁸C₈ rise to a single peak in the middle and fall away symmetrically, so the largest is ⁸C₄ = (8 × 7 × 6 × 5)/(4 × 3 × 2 × 1) = 1680/24 = 70. Two things generalise. When n is even the peak is a single coefficient at r = n/2; when n is odd there are two equal largest coefficients side by side, at r = (n − 1)/2 and (n + 1)/2. And the peak is not the sum — the coefficients here total 2⁸ = 256, so the largest single one is well under a third of the whole. (256 gives the sum of all the coefficients rather than the biggest.)",
+          hi: "गुणांक ⁸C₀ से ⁸C₈ तक बीच में एक ही शिखर तक चढ़ते हैं और सममित रूप से उतर जाते हैं, अतः सबसे बड़ा ⁸C₄ = (8 × 7 × 6 × 5)/(4 × 3 × 2 × 1) = 1680/24 = 70. दो बातें सामान्य हैं। n सम हो तो शिखर r = n/2 पर एक अकेला गुणांक है; n विषम हो तो दो बराबर सबसे बड़े गुणांक साथ-साथ होते हैं, r = (n − 1)/2 और (n + 1)/2 पर। और शिखर योग नहीं है — यहाँ गुणांकों का कुल 2⁸ = 256 है, अतः सबसे बड़ा अकेला पूरे के तिहाई से भी अच्छा-ख़ासा नीचे है। (256 सबसे बड़े के बजाय सभी गुणांकों का योग देता है।)",
+          mr: "सहगुणक ⁸C₀ पासून ⁸C₈ पर्यंत मध्यात एकाच शिखरापर्यंत चढतात आणि सममितपणे उतरतात, म्हणून सर्वांत मोठा ⁸C₄ = (8 × 7 × 6 × 5)/(4 × 3 × 2 × 1) = 1680/24 = 70. दोन गोष्टी सामान्य आहेत. n सम असेल तर शिखर r = n/2 वर एकच सहगुणक; n विषम असेल तर दोन समान सर्वांत मोठे सहगुणक शेजारी असतात, r = (n − 1)/2 आणि (n + 1)/2 वर. आणि शिखर ही बेरीज नव्हे — इथे सहगुणकांची एकूण 2⁸ = 256 आहे, म्हणून सर्वांत मोठा एकटा अख्ख्याच्या तृतीयांशाहूनही बराच खाली. (256 सर्वांत मोठ्याऐवजी सर्व सहगुणकांची बेरीज देते.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-11-binomial-theorem",
+      subject: "MATHS",
+      classLevel: 11,
+      chapter: "Chapter 7 — Binomial Theorem",
+      name: "Binomial Theorem",
+      summary:
+        "A bracket raised to a high power, read one term at a time instead of multiplied out: the coefficients turn out to be the combinations of the last chapter, the exponents of the two letters always add to the power, and a single general term lets you reach the middle of an expansion without writing any of it down.",
+      position: 7,
+      translations: {
+        hi: {
+          name: "द्विपद प्रमेय",
+          summary:
+            "ऊँची घात तक उठाया कोष्ठक, पूरा गुणा किए बिना एक-एक पद पढ़ा हुआ: गुणांक पिछले अध्याय के संचय ही निकलते हैं, दोनों अक्षरों के घातांक सदा जुड़कर वही घात बनाते हैं, और एक अकेला व्यापक पद तुम्हें प्रसार का बीच तक पहुँचा देता है बिना उसमें से कुछ भी लिखे।",
+        },
+        mr: {
+          name: "द्विपद प्रमेय",
+          summary:
+            "उच्च घातापर्यंत नेलेला कंस, पूर्ण गुणाकार न करता एकेक पद वाचलेला: सहगुणक मागच्या प्रकरणातले संचयच निघतात, दोन्ही अक्षरांचे घातांक नेहमी जुळून तीच घात बनवतात, आणि एकच व्यापक पद तुम्हाला विस्ताराच्या मध्यापर्यंत नेते त्यातले काहीही न लिहिता.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 8 — Sequences and Series (a list with a rule, and its total)      */
+/* ------------------------------------------------------------------------- */
+function sequences11(): TopicFileOut {
+  const rand = rng("maths-11-sequences-and-series");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A geometric progression has first term 2 and common ratio 3. What is its 3rd term?",
+          hi: "किसी गुणोत्तर श्रेढी का पहला पद 2 और सार्व अनुपात 3 है। उसका तीसरा पद क्या है?",
+          mr: "एका गुणोत्तर श्रेढीचे पहिले पद 2 आणि सामाईक गुणोत्तर 3 आहे. तिचे तिसरे पद किती?",
+        },
+        answer: 18,
+        wrong: [6, 54, 12],
+        checkExpr: "2*3*3",
+        solution: {
+          en: "Each term is the previous one multiplied by 3, so the terms run 2, 6, 18. The nth term is a·rⁿ⁻¹, and for n = 3 that is 2 × 3² = 18 — note the exponent is 2, not 3, because the first term has not been multiplied at all. (54 uses r³ and multiplies once too often.)",
+          hi: "हर पद पिछले को 3 से गुणा करके बनता है, अतः पद 2, 6, 18 चलते हैं। nवाँ पद a·rⁿ⁻¹ है, और n = 3 के लिए वह 2 × 3² = 18 — ध्यान दो कि घातांक 2 है, 3 नहीं, क्योंकि पहला पद गुणा हुआ ही नहीं। (54 r³ लेता है और एक बार अधिक गुणा कर देता है।)",
+          mr: "प्रत्येक पद आधीच्याला 3 ने गुणून बनते, म्हणून पदे 2, 6, 18 अशी चालतात. nवे पद a·rⁿ⁻¹ आहे, आणि n = 3 साठी ते 2 × 3² = 18 — लक्षात घ्या की घातांक 2 आहे, 3 नव्हे, कारण पहिले पद गुणलेच गेले नाही. (54 r³ घेते आणि एकदा जास्त गुणते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the common ratio of the geometric progression 3, 12, 48, … ?",
+          hi: "गुणोत्तर श्रेढी 3, 12, 48, … का सार्व अनुपात क्या है?",
+          mr: "गुणोत्तर श्रेढी 3, 12, 48, … चे सामाईक गुणोत्तर किती?",
+        },
+        answer: 4,
+        wrong: [9, 3, 16],
+        checkExpr: "12/3",
+        solution: {
+          en: "Divide any term by the one before it: 12/3 = 4, and checking the next pair gives 48/12 = 4 as well. Dividing rather than subtracting is what separates a geometric progression from an arithmetic one, and doing the check on a second pair is what confirms the sequence really is geometric. (9 subtracts the terms, which would be the common difference if this were an arithmetic progression.)",
+          hi: "किसी भी पद को उससे पहले वाले से भाग दो: 12/3 = 4, और अगला युग्म जाँचने पर 48/12 = 4 भी। घटाने के बजाय भाग देना ही गुणोत्तर श्रेढी को समांतर श्रेढी से अलग करता है, और दूसरे युग्म पर जाँच करना ही पक्का करता है कि अनुक्रम सचमुच गुणोत्तर है। (9 पद घटा देता है, जो समांतर श्रेढी होती तो सार्व अंतर होता।)",
+          mr: "कोणतेही पद त्याच्या आधीच्याने भागा: 12/3 = 4, आणि पुढची जोडी तपासल्यावर 48/12 = 4 सुद्धा. वजा करण्याऐवजी भागणे हेच गुणोत्तर श्रेढीला समांतर श्रेढीपासून वेगळे करते, आणि दुसऱ्या जोडीवर तपासणी करणेच पक्के करते की श्रेढी खरोखर गुणोत्तर आहे. (9 पदे वजा करते, जे समांतर श्रेढी असती तर सामाईक फरक झाला असता.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the sum of the first 4 terms of the geometric progression 1, 2, 4, 8, … ?",
+          hi: "गुणोत्तर श्रेढी 1, 2, 4, 8, … के पहले 4 पदों का योग क्या है?",
+          mr: "गुणोत्तर श्रेढी 1, 2, 4, 8, … च्या पहिल्या 4 पदांची बेरीज किती?",
+        },
+        answer: 15,
+        wrong: [16, 8, 14],
+        checkExpr: "1+2+4+8",
+        solution: {
+          en: "Simply add them: 1 + 2 + 4 + 8 = 15. The pattern is worth spotting — the sum is always one less than the next term, because 1 + 2 + 4 + 8 = 16 − 1. That is the doubling series behind the old story of the grains of rice on a chessboard, where the last square alone holds more than every square before it put together. (16 gives the next term rather than the sum of the four.)",
+          hi: "बस जोड़ो: 1 + 2 + 4 + 8 = 15. ढर्रा पकड़ने योग्य है — योग सदा अगले पद से एक कम होता है, क्योंकि 1 + 2 + 4 + 8 = 16 − 1. यही दोगुनी होती श्रेणी शतरंज की बिसात पर चावल के दानों की पुरानी कहानी के पीछे है, जहाँ अकेला अंतिम ख़ाना उससे पहले के सब ख़ानों को मिलाकर भी अधिक रखता है। (16 चारों का योग नहीं, अगला पद देता है।)",
+          mr: "फक्त जोडा: 1 + 2 + 4 + 8 = 15. साचा पकडण्याजोगा — बेरीज नेहमी पुढच्या पदाहून एकने कमी असते, कारण 1 + 2 + 4 + 8 = 16 − 1. हीच दुप्पट होणारी श्रेणी बुद्धिबळाच्या पटावरील तांदळाच्या दाण्यांच्या जुन्या गोष्टीमागे आहे, जिथे एकटा शेवटचा घर त्याच्या आधीच्या सर्व घरांना मिळूनही अधिक धरतो. (16 चौघांची बेरीज नव्हे, पुढचे पद देते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A geometric progression has first term 5 and common ratio 2. What is its 6th term?",
+          hi: "किसी गुणोत्तर श्रेढी का पहला पद 5 और सार्व अनुपात 2 है। उसका छठा पद क्या है?",
+          mr: "एका गुणोत्तर श्रेढीचे पहिले पद 5 आणि सामाईक गुणोत्तर 2 आहे. तिचे सहावे पद किती?",
+        },
+        answer: 160,
+        wrong: [320, 60, 80],
+        checkExpr: "5*2*2*2*2*2",
+        solution: {
+          en: "The 6th term is a·r⁵ = 5 × 2⁵ = 5 × 32 = 160. Counting the multiplications rather than the terms is the safe habit: going from the 1st term to the 6th means five steps, so the exponent is 5. (320 uses r⁶ and takes one step too many.)",
+          hi: "छठा पद a·r⁵ = 5 × 2⁵ = 5 × 32 = 160. पद नहीं, गुणा गिनना सुरक्षित आदत है: पहले पद से छठे तक जाना पाँच क़दम हैं, अतः घातांक 5 है। (320 r⁶ लेता है और एक क़दम अधिक चल जाता है।)",
+          mr: "सहावे पद a·r⁵ = 5 × 2⁵ = 5 × 32 = 160. पदे नव्हे, गुणाकार मोजणे ही सुरक्षित सवय: पहिल्या पदापासून सहाव्यापर्यंत जाणे म्हणजे पाच पावले, म्हणून घातांक 5. (320 r⁶ घेते आणि एक पाऊल जास्त चालते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the sum to infinity of the geometric progression with first term 8 and common ratio 0.5?",
+          hi: "पहला पद 8 और सार्व अनुपात 0.5 वाली गुणोत्तर श्रेढी का अनंत तक योग क्या है?",
+          mr: "पहिले पद 8 आणि सामाईक गुणोत्तर 0.5 असलेल्या गुणोत्तर श्रेढीची अनंतापर्यंतची बेरीज किती?",
+        },
+        answer: 16,
+        wrong: [8, 4, 32],
+        checkExpr: "8/(1-0.5)",
+        solution: {
+          en: "The sum to infinity is a/(1 − r) = 8/(1 − 0.5) = 8/0.5 = 16. Adding endlessly many positive numbers and arriving at a finite total is the surprise of the chapter, and it works only because the terms shrink fast enough: 8 + 4 + 2 + 1 + 0.5 + … creeps towards 16 without ever reaching it. The formula holds only when the ratio lies strictly between −1 and 1; outside that range the terms do not shrink and there is no sum at all. (8 quotes the first term as if the rest added to nothing.)",
+          hi: "अनंत तक योग है a/(1 − r) = 8/(1 − 0.5) = 8/0.5 = 16. अंतहीन धनात्मक संख्याएँ जोड़कर परिमित कुल पर पहुँचना ही अध्याय का आश्चर्य है, और वह केवल इसलिए चलता है कि पद पर्याप्त तेज़ी से सिकुड़ते हैं: 8 + 4 + 2 + 1 + 0.5 + … 16 की ओर सरकता है और उस तक कभी पहुँचता नहीं। सूत्र तभी चलता है जब अनुपात कठोरता से −1 और 1 के बीच हो; उस परास के बाहर पद सिकुड़ते ही नहीं और कोई योग होता ही नहीं। (8 पहला पद बता देता है मानो बाक़ी जुड़कर कुछ न बनते हों।)",
+          mr: "अनंतापर्यंतची बेरीज आहे a/(1 − r) = 8/(1 − 0.5) = 8/0.5 = 16. अंतहीन धन संख्या जोडून सांत एकूणावर पोहोचणे हेच प्रकरणाचे आश्चर्य, आणि ते केवळ यासाठी चालते की पदे पुरेशा वेगाने आकसतात: 8 + 4 + 2 + 1 + 0.5 + … 16 कडे सरकते आणि तिथवर कधीच पोहोचत नाही. सूत्र तेव्हाच चालते जेव्हा गुणोत्तर काटेकोरपणे −1 आणि 1 दरम्यान असेल; त्या पल्ल्याबाहेर पदे आकसतच नाहीत आणि बेरीज असतच नाही. (8 पहिले पद सांगते जणू बाकीची जुळून काहीच बनत नसावीत.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the SQUARE of the geometric mean of 4 and 9?",
+          hi: "4 और 9 के गुणोत्तर माध्य का वर्ग क्या है?",
+          mr: "4 आणि 9 च्या गुणोत्तर माध्याचा वर्ग किती?",
+        },
+        answer: 36,
+        wrong: [13, 6.5, 6],
+        checkExpr: "4*9",
+        solution: {
+          en: "If G is the geometric mean of a and b then a, G, b form a geometric progression, so G/a = b/G and therefore G² = ab = 4 × 9 = 36. The mean itself is 6, and the question asks for its square precisely because the square is the quantity the definition hands you directly. Compare it with the arithmetic mean of the same pair, (4 + 9)/2 = 6.5: the geometric mean is the smaller of the two, and that is true of every pair of distinct positive numbers. (13 adds the two numbers instead of multiplying them.)",
+          hi: "यदि G, a और b का गुणोत्तर माध्य है तो a, G, b गुणोत्तर श्रेढी बनाते हैं, अतः G/a = b/G और इसलिए G² = ab = 4 × 9 = 36. माध्य स्वयं 6 है, और प्रश्न उसका वर्ग ठीक इसलिए माँगता है कि वर्ग ही वह राशि है जो परिभाषा सीधे सौंपती है। उसी युग्म के समांतर माध्य (4 + 9)/2 = 6.5 से तुलना करो: गुणोत्तर माध्य दोनों में छोटा है, और यह हर भिन्न धनात्मक युग्म के लिए सच है। (13 दोनों संख्याएँ गुणा करने के बजाय जोड़ देता है।)",
+          mr: "जर G हा a आणि b चा गुणोत्तर माध्य असेल तर a, G, b गुणोत्तर श्रेढी बनवतात, म्हणून G/a = b/G आणि म्हणून G² = ab = 4 × 9 = 36. माध्य स्वतः 6 आहे, आणि प्रश्न त्याचा वर्ग नेमके यासाठी विचारतो की वर्गच ती राशी जी व्याख्या थेट सोपवते. त्याच जोडीच्या समांतर माध्याशी (4 + 9)/2 = 6.5 तुलना करा: गुणोत्तर माध्य दोघांतला लहान आहे, आणि हे प्रत्येक वेगळ्या धन जोडीसाठी खरे. (13 दोन्ही संख्या गुणण्याऐवजी जोडते.)",
+        },
+      },
+      rand,
+    ),
+  );
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is the arithmetic mean of 4 and 9?",
+          hi: "4 और 9 का समांतर माध्य क्या है?",
+          mr: "4 आणि 9 चा समांतर माध्य किती?",
+        },
+        answer: 6.5,
+        wrong: [6, 13, 5],
+        checkExpr: "(4+9)/2",
+        solution: {
+          en: "The arithmetic mean is (4 + 9)/2 = 6.5, the number that sits midway between the two so that 4, 6.5, 9 is an arithmetic progression with common difference 2.5. Set it beside the geometric mean of the same pair, which is 6: the arithmetic mean is always the larger unless the two numbers are equal, in which case both means coincide. That inequality is one of the most used facts in all of algebra. (6 gives the geometric mean instead.)",
+          hi: "समांतर माध्य है (4 + 9)/2 = 6.5, वह संख्या जो दोनों के ठीक बीच बैठती है ताकि 4, 6.5, 9 सार्व अंतर 2.5 की समांतर श्रेढी बने। इसे उसी युग्म के गुणोत्तर माध्य के साथ रखो, जो 6 है: समांतर माध्य सदा बड़ा होता है, बशर्ते दोनों संख्याएँ बराबर न हों, और तब दोनों माध्य एक हो जाते हैं। वह असमिका पूरे बीजगणित में सबसे अधिक काम में आने वाले तथ्यों में है। (6 इसके बदले गुणोत्तर माध्य दे देता है।)",
+          mr: "समांतर माध्य आहे (4 + 9)/2 = 6.5, ती संख्या जी दोघांच्या नेमकी मध्ये बसते जेणेकरून 4, 6.5, 9 ही सामाईक फरक 2.5 ची समांतर श्रेढी बनावी. हे त्याच जोडीच्या गुणोत्तर माध्याशेजारी ठेवा, जो 6 आहे: समांतर माध्य नेहमी मोठा असतो, जोवर दोन्ही संख्या समान नसतील, आणि तेव्हा दोन्ही माध्य एक होतात. ती असमानता अख्ख्या बीजगणितातल्या सर्वाधिक वापरल्या जाणाऱ्या तथ्यांपैकी एक. (6 त्याऐवजी गुणोत्तर माध्य देते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is the sum of the first 10 natural numbers?",
+          hi: "पहली 10 प्राकृत संख्याओं का योग क्या है?",
+          mr: "पहिल्या 10 नैसर्गिक संख्यांची बेरीज किती?",
+        },
+        answer: 55,
+        wrong: [50, 100, 45],
+        checkExpr: "10*11/2",
+        solution: {
+          en: "The formula is n(n + 1)/2 = 10 × 11/2 = 55. The reason is worth seeing rather than memorising: pair the first with the last, the second with the second-last, and so on — 1 + 10, 2 + 9, 3 + 8 — and every pair adds to 11, with five such pairs. That is Gauss's schoolroom trick and it explains the shape of the formula exactly. (45 gives the sum of the first 9, or equivalently n(n − 1)/2.)",
+          hi: "सूत्र है n(n + 1)/2 = 10 × 11/2 = 55. कारण रटने के बजाय देखने योग्य है: पहले को अंतिम के साथ, दूसरे को दूसरे-अंतिम के साथ जोड़ो — 1 + 10, 2 + 9, 3 + 8 — और हर युग्म 11 बनाता है, और ऐसे पाँच युग्म हैं। यही गाउस की कक्षा वाली तरकीब है और वही सूत्र का आकार ठीक-ठीक समझाती है। (45 पहली 9 का योग देता है, यानी n(n − 1)/2.)",
+          mr: "सूत्र आहे n(n + 1)/2 = 10 × 11/2 = 55. कारण पाठ करण्याऐवजी पाहण्याजोगे: पहिल्याला शेवटच्याशी, दुसऱ्याला दुसऱ्या-शेवटच्याशी जोडा — 1 + 10, 2 + 9, 3 + 8 — आणि प्रत्येक जोडी 11 बनवते, आणि अशा पाच जोड्या आहेत. हीच गाउसची वर्गातली युक्ती आणि तीच सूत्राचा आकार नेमका समजावते. (45 पहिल्या 9 ची बेरीज देते, म्हणजे n(n − 1)/2.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "What is the sum of the squares of the first 6 natural numbers?",
+          hi: "पहली 6 प्राकृत संख्याओं के वर्गों का योग क्या है?",
+          mr: "पहिल्या 6 नैसर्गिक संख्यांच्या वर्गांची बेरीज किती?",
+        },
+        answer: 91,
+        wrong: [441, 21, 55],
+        checkExpr: "6*7*13/6",
+        solution: {
+          en: "The formula is n(n + 1)(2n + 1)/6 = 6 × 7 × 13/6 = 91, which you can check by adding directly: 1 + 4 + 9 + 16 + 25 + 36 = 91. Note the trap the third option sets — the sum of the squares is not the square of the sum. The first 6 numbers add to 21, and 21² = 441, which is nearly five times too big. (441 squares the sum instead of summing the squares.)",
+          hi: "सूत्र है n(n + 1)(2n + 1)/6 = 6 × 7 × 13/6 = 91, जिसे सीधे जोड़कर जाँचा जा सकता है: 1 + 4 + 9 + 16 + 25 + 36 = 91. तीसरा विकल्प जो जाल बिछाता है उस पर ध्यान दो — वर्गों का योग, योग का वर्ग नहीं होता। पहली 6 संख्याएँ जुड़कर 21 बनती हैं, और 21² = 441, जो लगभग पाँच गुना अधिक है। (441 वर्गों को जोड़ने के बजाय योग का वर्ग कर देता है।)",
+          mr: "सूत्र आहे n(n + 1)(2n + 1)/6 = 6 × 7 × 13/6 = 91, जे थेट जोडून तपासता येते: 1 + 4 + 9 + 16 + 25 + 36 = 91. तिसरा पर्याय जो सापळा रचतो त्याकडे लक्ष द्या — वर्गांची बेरीज ही बेरजेचा वर्ग नसते. पहिल्या 6 संख्या जुळून 21 बनतात, आणि 21² = 441, जे जवळपास पाचपट अधिक. (441 वर्ग जोडण्याऐवजी बेरजेचा वर्ग करते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "What is the sum of the first 5 terms of a geometric progression with first term 3 and common ratio 2?",
+          hi: "पहला पद 3 और सार्व अनुपात 2 वाली गुणोत्तर श्रेढी के पहले 5 पदों का योग क्या है?",
+          mr: "पहिले पद 3 आणि सामाईक गुणोत्तर 2 असलेल्या गुणोत्तर श्रेढीच्या पहिल्या 5 पदांची बेरीज किती?",
+        },
+        answer: 93,
+        wrong: [48, 96, 31],
+        checkExpr: "3*(32-1)/(2-1)",
+        solution: {
+          en: "The sum of n terms is a(rⁿ − 1)/(r − 1) = 3(2⁵ − 1)/(2 − 1) = 3 × 31 = 93, which matches adding directly: 3 + 6 + 12 + 24 + 48 = 93. The exponent in the formula is n, not n − 1 — that is the one place it differs from the nth-term formula, and confusing the two is the usual error. (48 gives the 5th term rather than the sum of the five.)",
+          hi: "n पदों का योग है a(rⁿ − 1)/(r − 1) = 3(2⁵ − 1)/(2 − 1) = 3 × 31 = 93, जो सीधे जोड़ने से मेल खाता है: 3 + 6 + 12 + 24 + 48 = 93. सूत्र में घातांक n है, n − 1 नहीं — यही इकलौती जगह है जहाँ वह nवें पद के सूत्र से भिन्न है, और दोनों को गड्डमड्ड करना आम भूल है। (48 पाँचों का योग नहीं, पाँचवाँ पद देता है।)",
+          mr: "n पदांची बेरीज आहे a(rⁿ − 1)/(r − 1) = 3(2⁵ − 1)/(2 − 1) = 3 × 31 = 93, जे थेट जोडण्याशी जुळते: 3 + 6 + 12 + 24 + 48 = 93. सूत्रातला घातांक n आहे, n − 1 नव्हे — हीच एकमेव जागा जिथे तो nव्या पदाच्या सूत्राहून वेगळा आहे, आणि दोन्ही गोंधळणे ही नेहमीची चूक. (48 पाचांची बेरीज नव्हे, पाचवे पद देते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "In a geometric progression the 3rd term is 12 and the 6th term is 96. What is r³ ?",
+          hi: "किसी गुणोत्तर श्रेढी का तीसरा पद 12 और छठा पद 96 है। r³ क्या है?",
+          mr: "एका गुणोत्तर श्रेढीचे तिसरे पद 12 आणि सहावे पद 96 आहे. r³ किती?",
+        },
+        answer: 8,
+        wrong: [4, 84, 2],
+        checkExpr: "96/12",
+        solution: {
+          en: "Going from the 3rd term to the 6th means multiplying by r three times, so the 6th term is the 3rd times r³. Dividing gives r³ = 96/12 = 8, from which r = 2 and the progression is 3, 6, 12, 24, 48, 96. Dividing one term by another to cancel the unknown first term is the standard opening move for this kind of question, and it works because the two terms share everything except the powers of r. (84 subtracts the terms, which is what you would do in an arithmetic progression.)",
+          hi: "तीसरे पद से छठे तक जाने का अर्थ है r से तीन बार गुणा, अतः छठा पद तीसरे गुणा r³ है। भाग देने पर r³ = 96/12 = 8, जिससे r = 2 और श्रेढी 3, 6, 12, 24, 48, 96 है। अज्ञात पहला पद काटने को एक पद को दूसरे से भाग देना इस तरह के प्रश्न की मानक शुरुआती चाल है, और वह इसलिए चलती है कि दोनों पदों में r की घातों को छोड़कर सब साझा है। (84 पद घटा देता है, जो तुम समांतर श्रेढी में करते।)",
+          mr: "तिसऱ्या पदापासून सहाव्यापर्यंत जाणे म्हणजे r ने तीनदा गुणणे, म्हणून सहावे पद हे तिसरे गुणिले r³. भागल्यावर r³ = 96/12 = 8, ज्यातून r = 2 आणि श्रेढी 3, 6, 12, 24, 48, 96. अज्ञात पहिले पद छेदण्यासाठी एका पदाला दुसऱ्याने भागणे ही या प्रकारच्या प्रश्नाची प्रमाण सुरुवातीची खेळी, आणि ती यासाठी चालते की दोन्ही पदांत r च्या घाती वगळता सारे सामायिक. (84 पदे वजा करते, जे तुम्ही समांतर श्रेढीत केले असते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "An infinite geometric progression has first term 5 and sums to 20. What is its common ratio?",
+          hi: "किसी अनंत गुणोत्तर श्रेढी का पहला पद 5 है और योग 20. उसका सार्व अनुपात क्या है?",
+          mr: "एका अनंत गुणोत्तर श्रेढीचे पहिले पद 5 आहे आणि बेरीज 20. तिचे सामाईक गुणोत्तर किती?",
+        },
+        answer: 0.75,
+        wrong: [0.25, 4, 0.5],
+        checkExpr: "1-5/20",
+        solution: {
+          en: "From S = a/(1 − r) comes 20 = 5/(1 − r), so 1 − r = 5/20 = 0.25 and r = 0.75. The progression is 5, 3.75, 2.8125, … creeping towards 20. A quick sanity check: the ratio has to lie strictly between −1 and 1 for the sum to exist at all, so an answer of 4 would have been impossible before any arithmetic was done. And the closer the ratio is to 1, the larger the total — which is why a sum four times the first term needs a ratio as high as three-quarters. (0.25 gives 1 − r rather than r.)",
+          hi: "S = a/(1 − r) से 20 = 5/(1 − r), अतः 1 − r = 5/20 = 0.25 और r = 0.75. श्रेढी 5, 3.75, 2.8125, … है जो 20 की ओर सरकती है। एक तेज़ समझ-जाँच: योग के होने के लिए अनुपात को कठोरता से −1 और 1 के बीच होना ही पड़ता है, अतः 4 का उत्तर कोई गणित करने से पहले ही असंभव था। और अनुपात 1 के जितना पास, कुल उतना बड़ा — इसीलिए पहले पद से चार गुने योग को तीन-चौथाई जितना ऊँचा अनुपात चाहिए। (0.25 r के बजाय 1 − r देता है।)",
+          mr: "S = a/(1 − r) यातून 20 = 5/(1 − r), म्हणून 1 − r = 5/20 = 0.25 आणि r = 0.75. श्रेढी 5, 3.75, 2.8125, … अशी 20 कडे सरकते. एक झटपट समजून-तपासणी: बेरीज अस्तित्वात असण्यासाठी गुणोत्तर काटेकोरपणे −1 आणि 1 दरम्यान असावेच लागते, म्हणून 4 चे उत्तर कोणतेही गणित करण्याआधीच अशक्य होते. आणि गुणोत्तर 1 च्या जितके जवळ, एकूण तितकी मोठी — म्हणूनच पहिल्या पदाच्या चौपट बेरजेला तीनचतुर्थांशाइतके उच्च गुणोत्तर लागते. (0.25 r ऐवजी 1 − r देते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A ball is dropped from a height of 24 m and rebounds to half its previous height each time. What total distance does it travel before coming to rest?",
+          hi: "कोई गेंद 24 m की ऊँचाई से गिराई जाती है और हर बार पिछली ऊँचाई के आधे तक उछलती है। रुकने से पहले वह कुल कितनी दूरी तय करती है?",
+          mr: "एक चेंडू 24 m उंचीवरून टाकला जातो आणि प्रत्येक वेळी आधीच्या उंचीच्या निम्म्यापर्यंत उसळतो. थांबण्याआधी तो एकूण किती अंतर कापतो?",
+        },
+        answer: 72,
+        wrong: [48, 24, 96],
+        checkExpr: "24+2*12/(1-0.5)",
+        solution: {
+          en: "The first fall is 24 m. After that the ball rises 12 m and falls 12 m, rises 6 and falls 6, and so on — every rebound height is travelled twice. So the total is 24 + 2(12 + 6 + 3 + …), and the bracket is an infinite geometric progression with first term 12 and ratio 0.5, summing to 12/0.5 = 24. The total is 24 + 2 × 24 = 72 m. Two things make this question worth doing. The first drop is counted once and everything after it twice, which is the step most people miss. And the answer is finite even though the ball bounces infinitely often, because the distances shrink faster than the count of bounces grows — in the same way the total TIME is finite too, which is why the ball actually stops. (48 counts each rebound only once.)",
+          hi: "पहला गिरना 24 m है। उसके बाद गेंद 12 m चढ़ती और 12 m गिरती है, 6 चढ़ती और 6 गिरती है, और यों ही — हर उछाल की ऊँचाई दो बार तय होती है। अतः कुल है 24 + 2(12 + 6 + 3 + …), और कोष्ठक एक अनंत गुणोत्तर श्रेढी है जिसका पहला पद 12 और अनुपात 0.5 है, जिसका योग 12/0.5 = 24. कुल हुआ 24 + 2 × 24 = 72 m. दो बातें इस प्रश्न को करने योग्य बनाती हैं। पहला गिरना एक बार गिना जाता है और उसके बाद सब दो बार, और यही वह चरण है जो अधिकांश लोग चूक जाते हैं। और उत्तर परिमित है भले ही गेंद अनंत बार उछले, क्योंकि दूरियाँ उछालों की गिनती बढ़ने से तेज़ी से सिकुड़ती हैं — उसी तरह कुल समय भी परिमित है, इसीलिए गेंद वस्तुतः रुक जाती है। (48 हर उछाल केवल एक बार गिनता है।)",
+          mr: "पहिले पडणे 24 m. त्यानंतर चेंडू 12 m चढतो आणि 12 m पडतो, 6 चढतो आणि 6 पडतो, असेच — प्रत्येक उसळीची उंची दोनदा कापली जाते. म्हणून एकूण आहे 24 + 2(12 + 6 + 3 + …), आणि कंस ही अनंत गुणोत्तर श्रेढी जिचे पहिले पद 12 आणि गुणोत्तर 0.5, जिची बेरीज 12/0.5 = 24. एकूण झाले 24 + 2 × 24 = 72 m. दोन गोष्टी हा प्रश्न करण्याजोगा करतात. पहिले पडणे एकदा मोजले जाते आणि त्यानंतरचे सारे दोनदा, आणि हीच ती पायरी जी बहुतेकजण चुकवतात. आणि उत्तर सांत आहे जरी चेंडू अनंत वेळा उसळला तरी, कारण अंतरे उसळ्यांच्या मोजणीहून वेगाने आकसतात — त्याचप्रमाणे एकूण वेळही सांत आहे, म्हणूनच चेंडू प्रत्यक्षात थांबतो. (48 प्रत्येक उसळी केवळ एकदा मोजते.)",
+        },
+        fmt: unit("m"),
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "What is the sum of the infinite series 1 + 1/3 + 1/9 + 1/27 + … ?",
+          hi: "अनंत श्रेणी 1 + 1/3 + 1/9 + 1/27 + … का योग क्या है?",
+          mr: "अनंत श्रेणी 1 + 1/3 + 1/9 + 1/27 + … ची बेरीज किती?",
+        },
+        answer: 1.5,
+        wrong: [3, 2, 1.33],
+        checkExpr: "1/(1-1/3)",
+        solution: {
+          en: "The first term is 1 and each term is a third of the one before, so the sum is a/(1 − r) = 1/(1 − 1/3) = 1/(2/3) = 3/2 = 1.5. Watching the partial sums makes the result believable: 1, then 1.333, then 1.444, then 1.481 — climbing steadily and never passing 1.5. That is what convergence looks like, and it is the reason an infinite sum can be written down as a single number at all. The condition is only that the ratio's size is under 1; had the terms been 1 + 3 + 9 + 27 the same formula would have produced a nonsense answer of −1/2, which is the standard warning against applying it without checking. (3 inverts the denominator, using 1/r rather than 1/(1 − r).)",
+          hi: "पहला पद 1 है और हर पद पिछले का तिहाई, अतः योग है a/(1 − r) = 1/(1 − 1/3) = 1/(2/3) = 3/2 = 1.5. आंशिक योग देखने से परिणाम विश्वसनीय लगता है: 1, फिर 1.333, फिर 1.444, फिर 1.481 — लगातार चढ़ते और 1.5 कभी पार न करते। अभिसरण ऐसा ही दिखता है, और यही कारण है कि कोई अनंत योग एक अकेली संख्या के रूप में लिखा जा सकता है। शर्त केवल यह है कि अनुपात का आकार 1 से कम हो; यदि पद 1 + 3 + 9 + 27 होते तो वही सूत्र −1/2 का बेतुका उत्तर बनाता, और यही बिना जाँचे उसे लगाने के विरुद्ध मानक चेतावनी है। (3 हर उलट देता है, 1/(1 − r) के बजाय 1/r लेकर।)",
+          mr: "पहिले पद 1 आहे आणि प्रत्येक पद आधीच्याचा तृतीयांश, म्हणून बेरीज आहे a/(1 − r) = 1/(1 − 1/3) = 1/(2/3) = 3/2 = 1.5. आंशिक बेरजा पाहिल्याने निकाल विश्वासार्ह वाटतो: 1, मग 1.333, मग 1.444, मग 1.481 — सतत चढत आणि 1.5 कधीच ओलांडत नाही. अभिसरण असेच दिसते, आणि हेच कारण की कोणतीही अनंत बेरीज एका संख्येच्या रूपात लिहिता येते. अट केवळ इतकीच की गुणोत्तराचा आकार 1 हून कमी असावा; पदे 1 + 3 + 9 + 27 असती तर तेच सूत्र −1/2 चे निरर्थक उत्तर बनवले असते, आणि हीच न तपासता ते लावण्याविरुद्धची प्रमाण सूचना. (3 छेद उलटवते, 1/(1 − r) ऐवजी 1/r घेऊन.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-11-sequences-and-series",
+      subject: "MATHS",
+      classLevel: 11,
+      chapter: "Chapter 8 — Sequences and Series",
+      name: "Sequences and Series",
+      summary:
+        "A list built by repeated multiplication rather than repeated addition, and the strange result that follows: when each term is a fraction of the one before, an endless sum can still stop at a finite number — which is why a bouncing ball travels a measurable distance in infinitely many bounces.",
+      position: 8,
+      translations: {
+        hi: {
+          name: "अनुक्रम तथा श्रेणी",
+          summary:
+            "बार-बार जोड़ने के बजाय बार-बार गुणा करके बनी सूची, और उससे निकलता अजीब परिणाम: जब हर पद पिछले का कोई अंश हो, अनंत योग भी किसी परिमित संख्या पर रुक सकता है — इसीलिए उछलती गेंद अनंत उछालों में एक मापी जा सकने वाली दूरी तय करती है।",
+        },
+        mr: {
+          name: "श्रेढी आणि श्रेणी",
+          summary:
+            "पुन्हा पुन्हा बेरजेऐवजी पुन्हा पुन्हा गुणाकाराने बनलेली यादी, आणि त्यातून निघणारा विचित्र निकाल: प्रत्येक पद आधीच्याचा अंश असेल, तेव्हा अनंत बेरीजही एखाद्या सांत संख्येवर थांबू शकते — म्हणूनच उसळणारा चेंडू अनंत उसळ्यांत मोजता येण्याजोगे अंतर कापतो.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 9 — Straight Lines (geometry done with arithmetic)                */
+/* ------------------------------------------------------------------------- */
+function straightLines11(): TopicFileOut {
+  const rand = rng("maths-11-straight-lines");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the slope of the line joining the points (1, 2) and (3, 6)?",
+          hi: "बिंदुओं (1, 2) और (3, 6) को मिलाने वाली रेखा की ढाल क्या है?",
+          mr: "बिंदू (1, 2) आणि (3, 6) यांना जोडणाऱ्या रेषेची उतारी किती?",
+        },
+        answer: 2,
+        wrong: [4, 0.5, 8],
+        checkExpr: "(6-2)/(3-1)",
+        solution: {
+          en: "Slope is the rise divided by the run: (6 − 2)/(3 − 1) = 4/2 = 2. Taking the points in the other order gives (2 − 6)/(1 − 3) = −4/−2 = 2 as well, which is the check worth doing — the slope of a line cannot depend on which end you started from. (0.5 divides the run by the rise, inverting the definition.)",
+          hi: "ढाल है चढ़ाव बटा बढ़ाव: (6 − 2)/(3 − 1) = 4/2 = 2. बिंदुओं को उलटे क्रम में लेने पर (2 − 6)/(1 − 3) = −4/−2 = 2 भी मिलता है, और यही करने योग्य जाँच है — किसी रेखा की ढाल इस पर निर्भर नहीं हो सकती कि तुमने किस सिरे से शुरू किया। (0.5 चढ़ाव से बढ़ाव को भाग देकर परिभाषा उलट देता है।)",
+          mr: "उतारी म्हणजे चढ भागिले सरक: (6 − 2)/(3 − 1) = 4/2 = 2. बिंदू उलट्या क्रमाने घेतल्यावर (2 − 6)/(1 − 3) = −4/−2 = 2 सुद्धा मिळते, आणि हीच करण्याजोगी तपासणी — रेषेची उतारी तुम्ही कोणत्या टोकापासून सुरू केले यावर अवलंबून असू शकत नाही. (0.5 चढाने सरक भागून व्याख्या उलटवते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the slope of the line y = 3x + 5?",
+          hi: "रेखा y = 3x + 5 की ढाल क्या है?",
+          mr: "रेषा y = 3x + 5 ची उतारी किती?",
+        },
+        answer: 3,
+        wrong: [5, 8, 15],
+        checkExpr: "3*1",
+        solution: {
+          en: "In the form y = mx + c the slope is m, read straight off the coefficient of x: here 3. The 5 is the y-intercept, the height at which the line crosses the vertical axis, and it has no effect on steepness at all — every line y = 3x + c is parallel to this one. (5 quotes the intercept instead of the slope.)",
+          hi: "रूप y = mx + c में ढाल m है, जो x के गुणांक से सीधे पढ़ी जाती है: यहाँ 3. 5 y-अंतःखंड है, वह ऊँचाई जिस पर रेखा ऊर्ध्व अक्ष काटती है, और उसका तीव्रता पर कोई प्रभाव नहीं — हर रेखा y = 3x + c इसके समांतर है। (5 ढाल के बजाय अंतःखंड बता देता है।)",
+          mr: "रूप y = mx + c मध्ये उतारी m आहे, जी x च्या सहगुणकावरून थेट वाचली जाते: इथे 3. 5 हा y-अंतःखंड, ती उंची जिथे रेषा उभा अक्ष कापते, आणि त्याचा तीव्रतेवर काहीच परिणाम नाही — प्रत्येक रेषा y = 3x + c ही हिच्या समांतर आहे. (5 उतारीऐवजी अंतःखंड सांगते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the y-intercept of the line 2x + y = 7?",
+          hi: "रेखा 2x + y = 7 का y-अंतःखंड क्या है?",
+          mr: "रेषा 2x + y = 7 चा y-अंतःखंड किती?",
+        },
+        answer: 7,
+        wrong: [3.5, 2, 0],
+        checkExpr: "7-0",
+        solution: {
+          en: "The y-intercept is the value of y where the line meets the vertical axis, which is where x = 0. Substituting gives y = 7 − 0 = 7. Rearranging to y = −2x + 7 shows the same thing in the familiar form. (3.5 gives the x-intercept, found by setting y to zero instead.)",
+          hi: "y-अंतःखंड y का वह मान है जहाँ रेखा ऊर्ध्व अक्ष से मिलती है, यानी जहाँ x = 0. प्रतिस्थापन से y = 7 − 0 = 7. y = −2x + 7 में जमाने पर वही बात परिचित रूप में दिखती है। (3.5 x-अंतःखंड देता है, जो इसके बजाय y को शून्य रखने से मिलता है।)",
+          mr: "y-अंतःखंड म्हणजे y चे ते मूल्य जिथे रेषा उभ्या अक्षाला भेटते, म्हणजे जिथे x = 0. प्रतिस्थापनाने y = 7 − 0 = 7. y = −2x + 7 असे मांडल्यावर तीच गोष्ट परिचित रूपात दिसते. (3.5 x-अंतःखंड देते, जो त्याऐवजी y शून्य ठेवल्याने मिळतो.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the slope of a line perpendicular to y = 2x + 1?",
+          hi: "y = 2x + 1 पर लंब रेखा की ढाल क्या है?",
+          mr: "y = 2x + 1 ला लंब असलेल्या रेषेची उतारी किती?",
+        },
+        answer: -0.5,
+        wrong: [2, 0.5, -2],
+        checkExpr: "(0-1)/2",
+        solution: {
+          en: "Perpendicular slopes multiply to −1, so the required slope is −1/2 = −0.5. Both changes matter: flip the fraction AND change the sign. Doing only one of them gives 0.5 or −2, which are the two commonest wrong answers and both appear here. (0.5 inverts without changing the sign.)",
+          hi: "लंब ढालों का गुणनफल −1 होता है, अतः चाहिए ढाल −1/2 = −0.5. दोनों बदलाव मायने रखते हैं: भिन्न उलटो और चिह्न भी बदलो। इनमें से केवल एक करने पर 0.5 या −2 मिलता है, जो दो सबसे आम ग़लत उत्तर हैं और दोनों यहाँ मौजूद हैं। (0.5 उलटता है पर चिह्न नहीं बदलता।)",
+          mr: "लंब उतारींचा गुणाकार −1 असतो, म्हणून हवी असलेली उतारी −1/2 = −0.5. दोन्ही बदल महत्त्वाचे: अपूर्णांक उलटा आणि चिन्हही बदला. यांपैकी केवळ एक केल्यास 0.5 वा −2 मिळते, जी दोन सर्वांत सामान्य चुकीची उत्तरे आणि दोन्ही इथे हजर आहेत. (0.5 उलटवते पण चिन्ह बदलत नाही.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the slope of a line parallel to 4x + 2y = 5?",
+          hi: "4x + 2y = 5 के समांतर रेखा की ढाल क्या है?",
+          mr: "4x + 2y = 5 ला समांतर असलेल्या रेषेची उतारी किती?",
+        },
+        answer: -2,
+        wrong: [2, 4, -0.5],
+        checkExpr: "(0-4)/2",
+        solution: {
+          en: "Rearrange to y = −2x + 2.5, so the slope is −2, and parallel lines share it exactly. For a line written as ax + by = c the slope is always −a/b, which here is −4/2 = −2 without any rearranging at all. The minus sign is not optional — a line with a positive x-coefficient and a positive y-coefficient always slopes downward. (2 drops the sign.)",
+          hi: "y = −2x + 2.5 में जमाओ, अतः ढाल −2 है, और समांतर रेखाएँ उसे ठीक-ठीक साझा करती हैं। ax + by = c रूप में लिखी रेखा की ढाल सदा −a/b होती है, जो यहाँ बिना कुछ जमाए ही −4/2 = −2 है। ऋण चिह्न वैकल्पिक नहीं — धनात्मक x-गुणांक और धनात्मक y-गुणांक वाली रेखा सदा नीचे की ओर ढलती है। (2 चिह्न गिरा देता है।)",
+          mr: "y = −2x + 2.5 असे मांडा, म्हणून उतारी −2, आणि समांतर रेषा ती नेमकी वाटून घेतात. ax + by = c या रूपात लिहिलेल्या रेषेची उतारी नेहमी −a/b असते, जी इथे काहीही न मांडता −4/2 = −2 आहे. ऋण चिन्ह ऐच्छिक नाही — धन x-सहगुणक आणि धन y-सहगुणक असलेली रेषा नेहमी खालच्या दिशेने उतरते. (2 चिन्ह गाळते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the x-intercept of the line 3x + 4y = 12?",
+          hi: "रेखा 3x + 4y = 12 का x-अंतःखंड क्या है?",
+          mr: "रेषा 3x + 4y = 12 चा x-अंतःखंड किती?",
+        },
+        answer: 4,
+        wrong: [3, 12, 6],
+        checkExpr: "12/3",
+        solution: {
+          en: "The x-intercept is where the line crosses the horizontal axis, so set y = 0: 3x = 12 and x = 12/3 = 4. The y-intercept comes from the mirror step, setting x = 0 to get y = 3. Knowing both lets you sketch any such line from two dots and a ruler, with no table of values at all. (3 gives the y-intercept, having set the wrong variable to zero.)",
+          hi: "x-अंतःखंड वहाँ है जहाँ रेखा क्षैतिज अक्ष काटती है, अतः y = 0 रखो: 3x = 12 और x = 12/3 = 4. y-अंतःखंड दर्पण-चरण से आता है, x = 0 रखकर y = 3. दोनों जानने पर तुम ऐसी कोई भी रेखा दो बिंदुओं और एक पैमाने से खींच सकते हो, बिना किसी मान-सारणी के। (3 y-अंतःखंड देता है, ग़लत चर को शून्य रखकर।)",
+          mr: "x-अंतःखंड तिथे जिथे रेषा आडवा अक्ष कापते, म्हणून y = 0 ठेवा: 3x = 12 आणि x = 12/3 = 4. y-अंतःखंड आरसा-पायरीतून येतो, x = 0 ठेवून y = 3. दोन्ही जाणल्यावर तुम्ही अशी कोणतीही रेषा दोन ठिपके आणि एका पट्टीने काढू शकता, कोणत्याही मूल्य-कोष्टकाविना. (3 y-अंतःखंड देते, चुकीचे चल शून्य ठेवून.)",
+        },
+      },
+      rand,
+    ),
+  );
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is the perpendicular distance of the point (5, 6) from the line 3x + 4y − 10 = 0?",
+          hi: "बिंदु (5, 6) की रेखा 3x + 4y − 10 = 0 से लंब दूरी क्या है?",
+          mr: "बिंदू (5, 6) चे रेषा 3x + 4y − 10 = 0 पासूनचे लंब अंतर किती?",
+        },
+        answer: 5.8,
+        wrong: [29, 5, 7.25],
+        checkExpr: "(3*5+4*6-10)/5",
+        solution: {
+          en: "Substitute the point into the left-hand side and divide by the square root of the sum of the squares of the coefficients: (3 × 5 + 4 × 6 − 10)/√(9 + 16) = 29/5 = 5.8. The division is what makes it a distance rather than just a number — without it the answer would change if the equation were multiplied through by 2, even though the line had not moved. (29 stops at the numerator and never scales it.)",
+          hi: "बिंदु को बाईं ओर रखो और गुणांकों के वर्गों के योग के वर्गमूल से भाग दो: (3 × 5 + 4 × 6 − 10)/√(9 + 16) = 29/5 = 5.8. वही भाग इसे दूरी बनाता है, केवल संख्या नहीं — उसके बिना उत्तर बदल जाता यदि समीकरण को 2 से गुणा कर दिया जाता, भले ही रेखा हिली ही न हो। (29 अंश पर रुक जाता है और उसे कभी मापता नहीं।)",
+          mr: "बिंदू डाव्या बाजूत ठेवा आणि सहगुणकांच्या वर्गांच्या बेरजेच्या वर्गमुळाने भागा: (3 × 5 + 4 × 6 − 10)/√(9 + 16) = 29/5 = 5.8. तोच भागाकार याला अंतर बनवतो, केवळ संख्या नव्हे — त्याविना उत्तर बदलले असते जर समीकरण 2 ने गुणले असते, जरी रेषा हललीच नसती तरी. (29 अंशावर थांबते आणि त्याला कधी मोजत नाही.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A line through the point (2, 3) has slope 2. At what value of y does it cross the y-axis?",
+          hi: "बिंदु (2, 3) से जाती किसी रेखा की ढाल 2 है। वह y-अक्ष को y के किस मान पर काटती है?",
+          mr: "बिंदू (2, 3) मधून जाणाऱ्या एका रेषेची उतारी 2 आहे. ती y-अक्ष y च्या कोणत्या मूल्यावर कापते?",
+        },
+        answer: -1,
+        wrong: [1, 7, -7],
+        checkExpr: "3-2*2",
+        solution: {
+          en: "Use y = mx + c with the known point: 3 = 2 × 2 + c, so c = 3 − 4 = −1. Equivalently, walking from x = 2 back to x = 0 means going two steps left, and each step down the line loses 2 in height, so the height falls from 3 to −1. Both routes agree, and the second is worth having because it needs no algebra at all. (7 adds the two instead of subtracting, walking the wrong way along the line.)",
+          hi: "ज्ञात बिंदु के साथ y = mx + c लो: 3 = 2 × 2 + c, अतः c = 3 − 4 = −1. उसी बात को यों कहो: x = 2 से x = 0 तक लौटने का अर्थ है दो क़दम बाएँ, और रेखा पर हर क़दम ऊँचाई में 2 खोता है, अतः ऊँचाई 3 से −1 तक गिरती है। दोनों रास्ते सहमत हैं, और दूसरा रखने योग्य है क्योंकि उसमें बीजगणित लगता ही नहीं। (7 घटाने के बजाय जोड़ देता है, रेखा पर ग़लत दिशा चलकर।)",
+          mr: "ज्ञात बिंदूसह y = mx + c घ्या: 3 = 2 × 2 + c, म्हणून c = 3 − 4 = −1. तेच वेगळ्या शब्दांत: x = 2 पासून x = 0 पर्यंत परतणे म्हणजे दोन पावले डावीकडे, आणि रेषेवरचे प्रत्येक पाऊल उंचीत 2 गमावते, म्हणून उंची 3 वरून −1 पर्यंत उतरते. दोन्ही मार्ग सहमत आहेत, आणि दुसरा ठेवण्याजोगा कारण त्यात बीजगणित लागतच नाही. (7 वजा करण्याऐवजी जोडते, रेषेवर चुकीच्या दिशेने चालून.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "What is the area of the triangle formed by the line 3x + 4y = 12 with the two coordinate axes?",
+          hi: "रेखा 3x + 4y = 12 द्वारा दोनों निर्देशांक अक्षों के साथ बने त्रिभुज का क्षेत्रफल क्या है?",
+          mr: "रेषा 3x + 4y = 12 ने दोन्ही निर्देशांक अक्षांसह बनवलेल्या त्रिकोणाचे क्षेत्रफळ किती?",
+        },
+        answer: 6,
+        wrong: [12, 24, 7],
+        checkExpr: "4*3/2",
+        solution: {
+          en: "The line meets the axes at (4, 0) and (0, 3), and together with the origin those points form a right-angled triangle whose legs are the two intercepts. Its area is 4 × 3/2 = 6. The right angle at the origin is what makes this easy — the two intercepts serve directly as base and height, with no need to find any perpendicular. (12 multiplies the intercepts and forgets to halve.)",
+          hi: "रेखा अक्षों से (4, 0) और (0, 3) पर मिलती है, और मूलबिंदु के साथ मिलकर वे बिंदु ऐसा समकोण त्रिभुज बनाते हैं जिसकी भुजाएँ दोनों अंतःखंड हैं। उसका क्षेत्रफल 4 × 3/2 = 6. मूलबिंदु पर समकोण ही इसे आसान बनाता है — दोनों अंतःखंड सीधे आधार और ऊँचाई का काम करते हैं, किसी लंब को ढूँढ़ने की ज़रूरत ही नहीं। (12 अंतःखंड गुणा करके आधा करना भूल जाता है।)",
+          mr: "रेषा अक्षांना (4, 0) आणि (0, 3) वर भेटते, आणि आरंभबिंदूसह ते बिंदू असा काटकोन त्रिकोण बनवतात ज्याच्या बाजू दोन्ही अंतःखंड आहेत. त्याचे क्षेत्रफळ 4 × 3/2 = 6. आरंभबिंदूवरचा काटकोनच हे सोपे करतो — दोन्ही अंतःखंड थेट पाया आणि उंचीचे काम करतात, कोणताही लंब शोधण्याची गरजच नाही. (12 अंतःखंड गुणून निम्मे करणे विसरते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "What is the distance between the parallel lines 3x + 4y = 10 and 3x + 4y = 60?",
+          hi: "समांतर रेखाओं 3x + 4y = 10 और 3x + 4y = 60 के बीच की दूरी क्या है?",
+          mr: "समांतर रेषा 3x + 4y = 10 आणि 3x + 4y = 60 यांच्यातील अंतर किती?",
+        },
+        answer: 10,
+        wrong: [50, 5, 25],
+        checkExpr: "(60-10)/5",
+        solution: {
+          en: "For two lines with identical left-hand sides, the distance is the gap between the constants divided by √(a² + b²): (60 − 10)/√(9 + 16) = 50/5 = 10. The lines must be written with matching coefficients first — if the second had been given as 6x + 8y = 120 it would be the same line, and dividing through by 2 is what reveals that. (50 gives the raw difference and never divides.)",
+          hi: "जिन दो रेखाओं का बायाँ पक्ष एक जैसा हो, उनके बीच की दूरी अचरों का अंतर बटा √(a² + b²) है: (60 − 10)/√(9 + 16) = 50/5 = 10. रेखाओं को पहले मेल खाते गुणांकों के साथ लिखना ही पड़ता है — यदि दूसरी 6x + 8y = 120 दी होती तो वह वही रेखा होती, और 2 से भाग देना ही यह उजागर करता है। (50 कच्चा अंतर देता है और भाग देता ही नहीं।)",
+          mr: "ज्या दोन रेषांची डावी बाजू सारखी असेल, त्यांच्यातले अंतर म्हणजे स्थिरांकांतला फरक भागिले √(a² + b²): (60 − 10)/√(9 + 16) = 50/5 = 10. रेषा आधी जुळणाऱ्या सहगुणकांसह लिहाव्याच लागतात — दुसरी 6x + 8y = 120 अशी दिली असती तर ती तीच रेषा असती, आणि 2 ने भागणेच ते उघड करते. (50 कच्चा फरक देते आणि भागतच नाही.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "For what value of k are the lines 2x + 3y = 7 and kx − 6y = 5 perpendicular?",
+          hi: "k के किस मान पर रेखाएँ 2x + 3y = 7 और kx − 6y = 5 परस्पर लंब हैं?",
+          mr: "k च्या कोणत्या मूल्यावर रेषा 2x + 3y = 7 आणि kx − 6y = 5 परस्पर लंब आहेत?",
+        },
+        answer: 9,
+        wrong: [4, 6, -9],
+        checkExpr: "18/2",
+        solution: {
+          en: "The slopes are −2/3 and −k/(−6) = k/6. For perpendicularity their product must be −1: (−2/3)(k/6) = −1, so −2k = −18 and k = 9. The two minus signs are where this goes wrong — the second line has −6y, so its slope is positive, and missing that produces −9. A quick check confirms the answer: the slopes are then −2/3 and 3/2, which do multiply to −1. (−9 mishandles the sign of the second slope.)",
+          hi: "ढालें हैं −2/3 और −k/(−6) = k/6. लंबता के लिए उनका गुणनफल −1 होना चाहिए: (−2/3)(k/6) = −1, अतः −2k = −18 और k = 9. दोनों ऋण चिह्न ही वह जगह हैं जहाँ यह बिगड़ता है — दूसरी रेखा में −6y है, अतः उसकी ढाल धनात्मक है, और उसे चूकने पर −9 बनता है। तेज़ जाँच उत्तर की पुष्टि करती है: तब ढालें −2/3 और 3/2 हैं, जिनका गुणनफल सचमुच −1 है। (−9 दूसरी ढाल का चिह्न ग़लत सँभालता है।)",
+          mr: "उतारी आहेत −2/3 आणि −k/(−6) = k/6. लंबतेसाठी त्यांचा गुणाकार −1 असावा: (−2/3)(k/6) = −1, म्हणून −2k = −18 आणि k = 9. दोन्ही ऋण चिन्हे हीच ती जागा जिथे हे बिघडते — दुसऱ्या रेषेत −6y आहे, म्हणून तिची उतारी धन आहे, आणि ते चुकवल्यास −9 बनते. झटपट तपासणी उत्तराची खात्री देते: तेव्हा उतारी −2/3 आणि 3/2 आहेत, ज्यांचा गुणाकार खरोखर −1. (−9 दुसऱ्या उतारीचे चिन्ह चुकीचे हाताळते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A line segment joins (1, 2) and (5, 8). What is the sum of the coordinates of its midpoint?",
+          hi: "कोई रेखाखंड (1, 2) और (5, 8) को मिलाता है। उसके मध्यबिंदु के निर्देशांकों का योग क्या है?",
+          mr: "एक रेषाखंड (1, 2) आणि (5, 8) यांना जोडतो. त्याच्या मध्यबिंदूच्या निर्देशांकांची बेरीज किती?",
+        },
+        answer: 8,
+        wrong: [16, 7, 9],
+        checkExpr: "(1+5)/2+(2+8)/2",
+        solution: {
+          en: "The midpoint averages each coordinate separately: x = (1 + 5)/2 = 3 and y = (2 + 8)/2 = 5, so the point is (3, 5) and the sum asked for is 8. Averaging the two coordinates independently is the whole method, and it is worth seeing why it works — the midpoint is half a step along in both directions at once, and the two directions do not interfere. (16 adds all four coordinates without halving.)",
+          hi: "मध्यबिंदु हर निर्देशांक का अलग-अलग औसत लेता है: x = (1 + 5)/2 = 3 और y = (2 + 8)/2 = 5, अतः बिंदु (3, 5) है और माँगा गया योग 8. दोनों निर्देशांकों का स्वतंत्र औसत लेना ही पूरी विधि है, और यह देखने योग्य है कि वह क्यों चलती है — मध्यबिंदु दोनों दिशाओं में एक साथ आधा क़दम है, और दोनों दिशाएँ एक-दूसरे में दख़ल नहीं देतीं। (16 चारों निर्देशांक जोड़ देता है बिना आधा किए।)",
+          mr: "मध्यबिंदू प्रत्येक निर्देशांकाची वेगवेगळी सरासरी घेतो: x = (1 + 5)/2 = 3 आणि y = (2 + 8)/2 = 5, म्हणून बिंदू (3, 5) आणि विचारलेली बेरीज 8. दोन्ही निर्देशांकांची स्वतंत्र सरासरी घेणे हीच अख्खी पद्धत, आणि ती का चालते हे पाहण्याजोगे — मध्यबिंदू दोन्ही दिशांना एकाच वेळी अर्धे पाऊल आहे, आणि दोन्ही दिशा एकमेकांत ढवळाढवळ करत नाहीत. (16 चारही निर्देशांक जोडते निम्मे न करता.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "The points (1, 2), (3, k) and (5, 8) are collinear. What is k?",
+          hi: "बिंदु (1, 2), (3, k) और (5, 8) संरेख हैं। k क्या है?",
+          mr: "बिंदू (1, 2), (3, k) आणि (5, 8) एकरेषीय आहेत. k किती?",
+        },
+        answer: 5,
+        wrong: [4, 6, 10],
+        checkExpr: "2+(8-2)/4*2",
+        solution: {
+          en: "Collinear means all three lie on one line, so any two of them give the same slope. The outer pair gives (8 − 2)/(5 − 1) = 6/4 = 1.5. Starting at (1, 2) and moving 2 across therefore lifts you 2 × 1.5 = 3, so k = 2 + 3 = 5. Testing collinearity by comparing slopes is the arithmetic version of looking along a ruler, and it is exact where the eye is not. Note that the middle point here happens to be the midpoint of the outer two, which is why the answer is also the average of 2 and 8. (6 uses a slope of 2, read from the y-values alone without dividing by the x-gap.)",
+          hi: "संरेख का अर्थ है तीनों एक ही रेखा पर हैं, अतः उनमें से कोई भी दो वही ढाल देते हैं। बाहरी युग्म देता है (8 − 2)/(5 − 1) = 6/4 = 1.5. अतः (1, 2) से चलकर 2 आगे बढ़ने पर तुम 2 × 1.5 = 3 ऊपर उठते हो, अतः k = 2 + 3 = 5. ढालों की तुलना करके संरेखता जाँचना पैमाने के साथ नज़र दौड़ाने का अंकगणितीय रूप है, और वह वहाँ यथार्थ है जहाँ आँख नहीं। ध्यान दो कि यहाँ बीच का बिंदु संयोग से बाहरी दोनों का मध्यबिंदु है, इसीलिए उत्तर 2 और 8 का औसत भी है। (6 ढाल 2 लेता है, केवल y-मानों से पढ़कर, x-अंतर से भाग दिए बिना।)",
+          mr: "एकरेषीय म्हणजे तिन्ही एकाच रेषेवर आहेत, म्हणून त्यांपैकी कोणतेही दोन तीच उतारी देतात. बाहेरची जोडी देते (8 − 2)/(5 − 1) = 6/4 = 1.5. म्हणून (1, 2) पासून चालून 2 पुढे सरकल्यावर तुम्ही 2 × 1.5 = 3 वर उचलले जाता, म्हणून k = 2 + 3 = 5. उतारींची तुलना करून एकरेषीयता तपासणे हे पट्टीबरोबर नजर फिरवण्याचे अंकगणिती रूप, आणि ते तिथे अचूक जिथे डोळा नाही. लक्षात घ्या की इथे मधला बिंदू योगायोगाने बाहेरच्या दोघांचा मध्यबिंदू आहे, म्हणूनच उत्तर 2 आणि 8 ची सरासरीही आहे. (6 उतारी 2 घेते, केवळ y-मूल्यांवरून वाचून, x-फरकाने न भागता.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "The line 4x + 3y = 24 cuts the axes at two points. How long is the segment between them?",
+          hi: "रेखा 4x + 3y = 24 अक्षों को दो बिंदुओं पर काटती है। उनके बीच का खंड कितना लंबा है?",
+          mr: "रेषा 4x + 3y = 24 अक्षांना दोन बिंदूंवर कापते. त्यांच्यातील खंड किती लांब आहे?",
+        },
+        answer: 10,
+        wrong: [14, 25, 7],
+        checkExpr: "(36+64)/10",
+        solution: {
+          en: "The intercepts are at (6, 0) and (0, 8), so the segment is the hypotenuse of a right-angled triangle with legs 6 and 8: √(36 + 64) = √100 = 10. Reaching for Pythagoras rather than the distance formula is the shortcut worth having here, because the right angle at the origin is already given. Note the trap the first option sets — the length of the slanted segment is not the sum of the two intercepts, and 6 + 8 = 14 would be the distance only if you walked along the axes instead of straight across. (14 adds the intercepts as though travelling along the axes.)",
+          hi: "अंतःखंड (6, 0) और (0, 8) पर हैं, अतः खंड 6 और 8 भुजाओं वाले समकोण त्रिभुज का कर्ण है: √(36 + 64) = √100 = 10. दूरी-सूत्र के बजाय पाइथागोरस की ओर हाथ बढ़ाना यहाँ रखने योग्य शॉर्टकट है, क्योंकि मूलबिंदु पर समकोण पहले से दिया हुआ है। पहला विकल्प जो जाल बिछाता है उस पर ध्यान दो — तिरछे खंड की लंबाई दोनों अंतःखंडों का योग नहीं, और 6 + 8 = 14 दूरी तभी होती जब तुम सीधे पार जाने के बजाय अक्षों के साथ-साथ चलते। (14 अंतःखंड जोड़ देता है मानो अक्षों के साथ चला जा रहा हो।)",
+          mr: "अंतःखंड (6, 0) आणि (0, 8) वर आहेत, म्हणून खंड हा 6 आणि 8 बाजू असलेल्या काटकोन त्रिकोणाचा कर्ण: √(36 + 64) = √100 = 10. अंतर-सूत्राऐवजी पायथागोरसकडे हात वळवणे हा इथे ठेवण्याजोगा शॉर्टकट, कारण आरंभबिंदूवरचा काटकोन आधीच दिलेला आहे. पहिला पर्याय जो सापळा रचतो त्याकडे लक्ष द्या — तिरप्या खंडाची लांबी दोन्ही अंतःखंडांची बेरीज नव्हे, आणि 6 + 8 = 14 हे अंतर तेव्हाच झाले असते जेव्हा तुम्ही सरळ पार जाण्याऐवजी अक्षांबरोबर चालला असता. (14 अंतःखंड जोडते जणू अक्षांबरोबर चालले जात असावे.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-11-straight-lines",
+      subject: "MATHS",
+      classLevel: 11,
+      chapter: "Chapter 9 — Straight Lines",
+      name: "Straight Lines",
+      summary:
+        "A line turned into an equation and then interrogated by arithmetic: a slope that decides at a glance whether two lines meet, a formula that measures the distance from a point to a line without drawing the perpendicular, and three points tested for collinearity by comparing two slopes rather than by looking.",
+      position: 9,
+      translations: {
+        hi: {
+          name: "सरल रेखाएँ",
+          summary:
+            "रेखा को समीकरण बनाकर फिर अंकगणित से पूछताछ: ऐसी ढाल जो एक नज़र में तय कर दे कि दो रेखाएँ मिलेंगी या नहीं, ऐसा सूत्र जो लंब खींचे बिना किसी बिंदु से रेखा की दूरी नाप ले, और तीन बिंदु जिनकी संरेखता देखकर नहीं, दो ढालों की तुलना करके जाँची जाती है।",
+        },
+        mr: {
+          name: "सरळ रेषा",
+          summary:
+            "रेषेला समीकरण बनवून मग अंकगणिताने विचारपूस: अशी उतारी जी एका नजरेत ठरवते की दोन रेषा भेटतील का, असे सूत्र जे लंब न काढता एखाद्या बिंदूपासून रेषेचे अंतर मोजते, आणि तीन बिंदू ज्यांची एकरेषीयता पाहून नव्हे, दोन उतारींची तुलना करून तपासली जाते.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 10 — Conic Sections (one cone, four curves)                       */
+/* ------------------------------------------------------------------------- */
+function conicSections11(): TopicFileOut {
+  const rand = rng("maths-11-conic-sections");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the radius of the circle x² + y² = 49?",
+          hi: "वृत्त x² + y² = 49 की त्रिज्या क्या है?",
+          mr: "वर्तुळ x² + y² = 49 ची त्रिज्या किती?",
+        },
+        answer: 7,
+        wrong: [49, 24.5, 14],
+        checkExpr: "49/7",
+        solution: {
+          en: "In the form x² + y² = r² the right-hand side is the radius SQUARED, so r² = 49 and r = 7. The equation is just Pythagoras applied to every point: a point (x, y) lies on the circle exactly when its distance from the origin is 7. (49 quotes the square rather than the radius itself.)",
+          hi: "रूप x² + y² = r² में दायाँ पक्ष त्रिज्या का वर्ग है, अतः r² = 49 और r = 7. समीकरण हर बिंदु पर लगाया गया पाइथागोरस ही है: बिंदु (x, y) वृत्त पर ठीक तभी है जब मूलबिंदु से उसकी दूरी 7 हो। (49 त्रिज्या नहीं, उसका वर्ग बता देता है।)",
+          mr: "रूप x² + y² = r² मध्ये उजवी बाजू ही त्रिज्येचा वर्ग आहे, म्हणून r² = 49 आणि r = 7. समीकरण म्हणजे प्रत्येक बिंदूवर लावलेला पायथागोरसच: बिंदू (x, y) वर्तुळावर नेमका तेव्हाच जेव्हा आरंभबिंदूपासून त्याचे अंतर 7 असेल. (49 त्रिज्या नव्हे, तिचा वर्ग सांगते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "For the circle (x − 3)² + (y + 4)² = 25, what is the SUM of the coordinates of the centre?",
+          hi: "वृत्त (x − 3)² + (y + 4)² = 25 के केंद्र के निर्देशांकों का योग क्या है?",
+          mr: "वर्तुळ (x − 3)² + (y + 4)² = 25 च्या केंद्राच्या निर्देशांकांची बेरीज किती?",
+        },
+        answer: -1,
+        wrong: [7, 1, -7],
+        checkExpr: "3-4",
+        solution: {
+          en: "The centre is read off with the signs REVERSED: (x − 3)² gives 3 and (y + 4)² gives −4, so the centre is (3, −4) and the sum is 3 − 4 = −1. Writing the second bracket as (y − (−4))² makes the reversal obvious rather than a rule to memorise. (7 takes the signs as written and reads the centre as (3, 4).)",
+          hi: "केंद्र चिह्न उलटकर पढ़ा जाता है: (x − 3)² से 3 और (y + 4)² से −4, अतः केंद्र (3, −4) है और योग 3 − 4 = −1. दूसरे कोष्ठक को (y − (−4))² लिखने पर उलटाव नियम रटने के बजाय स्पष्ट दिखने लगता है। (7 चिह्न जैसे लिखे हैं वैसे ले लेता है और केंद्र (3, 4) पढ़ता है।)",
+          mr: "केंद्र चिन्हे उलटवून वाचले जाते: (x − 3)² मधून 3 आणि (y + 4)² मधून −4, म्हणून केंद्र (3, −4) आणि बेरीज 3 − 4 = −1. दुसरा कंस (y − (−4))² असा लिहिल्यावर उलटापालट नियम पाठ करण्याऐवजी स्पष्ट दिसते. (7 चिन्हे लिहिल्याप्रमाणे घेते आणि केंद्र (3, 4) वाचते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the radius of the circle (x − 3)² + (y + 4)² = 25?",
+          hi: "वृत्त (x − 3)² + (y + 4)² = 25 की त्रिज्या क्या है?",
+          mr: "वर्तुळ (x − 3)² + (y + 4)² = 25 ची त्रिज्या किती?",
+        },
+        answer: 5,
+        wrong: [25, 12.5, 10],
+        checkExpr: "25/5",
+        solution: {
+          en: "Again the right-hand side is r², so r = 5. Moving the centre away from the origin changes nothing about the radius — shifting a circle does not resize it, and the two brackets carry the position while the constant carries the size. (25 gives r² instead of r.)",
+          hi: "फिर दायाँ पक्ष r² है, अतः r = 5. केंद्र को मूलबिंदु से हटाने पर त्रिज्या के बारे में कुछ नहीं बदलता — वृत्त को सरकाने से उसका आकार नहीं बदलता, और दोनों कोष्ठक स्थिति ढोते हैं जबकि अचर आकार। (25 r के बजाय r² दे देता है।)",
+          mr: "पुन्हा उजवी बाजू r² आहे, म्हणून r = 5. केंद्र आरंभबिंदूपासून हलवल्याने त्रिज्येबद्दल काहीच बदलत नाही — वर्तुळ सरकवल्याने त्याचा आकार बदलत नाही, आणि दोन्ही कंस स्थान वाहतात तर स्थिरांक आकार. (25 r ऐवजी r² देते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "For the parabola y² = 12x, what is the x-coordinate of the focus?",
+          hi: "परवलय y² = 12x के लिए नाभि का x-निर्देशांक क्या है?",
+          mr: "पॅराबोला y² = 12x साठी नाभीचा x-निर्देशांक किती?",
+        },
+        answer: 3,
+        wrong: [12, 6, 1.5],
+        checkExpr: "12/4",
+        solution: {
+          en: "Compare with the standard form y² = 4ax: here 4a = 12, so a = 3 and the focus is at (3, 0). The same a places the directrix at x = −3, the mirror of the focus on the other side of the vertex — and every point of the curve is equidistant from those two. (6 halves 12 instead of quartering it.)",
+          hi: "मानक रूप y² = 4ax से तुलना करो: यहाँ 4a = 12, अतः a = 3 और नाभि (3, 0) पर है। वही a नियता को x = −3 पर रखता है, जो शीर्ष के दूसरी ओर नाभि का दर्पण है — और वक्र का हर बिंदु उन दोनों से समान दूरी पर है। (6 12 को चौथाई करने के बजाय आधा कर देता है।)",
+          mr: "प्रमाण रूप y² = 4ax शी तुलना करा: इथे 4a = 12, म्हणून a = 3 आणि नाभी (3, 0) वर आहे. तोच a नियताला x = −3 वर ठेवतो, जो शिरोबिंदूच्या दुसऱ्या बाजूला नाभीचा आरसा — आणि वक्राचा प्रत्येक बिंदू त्या दोघांपासून समान अंतरावर आहे. (6 12 ला चतुर्थांश करण्याऐवजी निम्मे करते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the length of the latus rectum of the parabola y² = 12x?",
+          hi: "परवलय y² = 12x के नाभिलंब की लंबाई क्या है?",
+          mr: "पॅराबोला y² = 12x च्या नाभिलंबाची लांबी किती?",
+        },
+        answer: 12,
+        wrong: [3, 6, 24],
+        checkExpr: "4*3",
+        solution: {
+          en: "The latus rectum is the chord through the focus at right angles to the axis, and its length is 4a = 4 × 3 = 12 — which is exactly the coefficient of x, already sitting in the equation. That is worth noticing: for y² = 4ax the number in front of x IS the latus rectum, so no working is needed once the form is recognised. (3 gives a, the distance from vertex to focus.)",
+          hi: "नाभिलंब वह जीवा है जो नाभि से होकर अक्ष पर लंब है, और उसकी लंबाई 4a = 4 × 3 = 12 है — जो ठीक x का गुणांक है, समीकरण में पहले से बैठा हुआ। यह ध्यान देने योग्य है: y² = 4ax के लिए x के आगे की संख्या ही नाभिलंब है, अतः रूप पहचान लेने पर कोई काम करना ही नहीं पड़ता। (3 a देता है, शीर्ष से नाभि तक की दूरी।)",
+          mr: "नाभिलंब ही ती जीवा जी नाभीतून जाऊन अक्षाला लंब आहे, आणि तिची लांबी 4a = 4 × 3 = 12 — जो नेमका x चा सहगुणक, समीकरणात आधीच बसलेला. हे लक्षात घेण्याजोगे: y² = 4ax साठी x पुढची संख्याच नाभिलंब आहे, म्हणून रूप ओळखल्यावर काहीही काम करावे लागत नाही. (3 a देते, शिरोबिंदूपासून नाभीपर्यंतचे अंतर.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "For the ellipse x²/25 + y²/9 = 1, what is the length of the major axis?",
+          hi: "दीर्घवृत्त x²/25 + y²/9 = 1 के दीर्घ अक्ष की लंबाई क्या है?",
+          mr: "दीर्घवर्तुळ x²/25 + y²/9 = 1 च्या दीर्घ अक्षाची लांबी किती?",
+        },
+        answer: 10,
+        wrong: [5, 25, 6],
+        checkExpr: "2*5",
+        solution: {
+          en: "The larger denominator is a² = 25, so a = 5 and the major axis, which stretches from one end of the ellipse to the other through the centre, is 2a = 10. The word AXIS means the whole width, not the half — that doubling is the step most often dropped. (5 gives a, the semi-major axis.)",
+          hi: "बड़ा हर a² = 25 है, अतः a = 5 और दीर्घ अक्ष, जो दीर्घवृत्त के एक सिरे से केंद्र होकर दूसरे तक फैलता है, 2a = 10 है। अक्ष शब्द का अर्थ पूरी चौड़ाई है, आधी नहीं — वही दुगुना करना सबसे अधिक छूटता है। (5 a देता है, अर्ध-दीर्घ अक्ष।)",
+          mr: "मोठा छेद a² = 25 आहे, म्हणून a = 5 आणि दीर्घ अक्ष, जो दीर्घवर्तुळाच्या एका टोकापासून केंद्रातून दुसऱ्यापर्यंत पसरतो, 2a = 10 आहे. अक्ष या शब्दाचा अर्थ अख्खी रुंदी, अर्धी नव्हे — तेच दुप्पट करणे सर्वाधिक वेळा गळते. (5 a देते, अर्ध-दीर्घ अक्ष.)",
+        },
+      },
+      rand,
+    ),
+  );
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "For the ellipse x²/25 + y²/9 = 1, what is the length of the minor axis?",
+          hi: "दीर्घवृत्त x²/25 + y²/9 = 1 के लघु अक्ष की लंबाई क्या है?",
+          mr: "दीर्घवर्तुळ x²/25 + y²/9 = 1 च्या लघु अक्षाची लांबी किती?",
+        },
+        answer: 6,
+        wrong: [3, 9, 18],
+        checkExpr: "2*3",
+        solution: {
+          en: "The smaller denominator is b² = 9, so b = 3 and the minor axis is 2b = 6. Which denominator is larger decides which way the ellipse is stretched — here the 25 sits under x², so the long direction is horizontal. Swap the two numbers and the same ellipse stands on its end. (3 gives the semi-minor axis rather than the full width.)",
+          hi: "छोटा हर b² = 9 है, अतः b = 3 और लघु अक्ष 2b = 6. कौन-सा हर बड़ा है यह तय करता है कि दीर्घवृत्त किस ओर खिंचा है — यहाँ 25 x² के नीचे है, अतः लंबी दिशा क्षैतिज है। दोनों संख्याएँ अदल-बदल दो और वही दीर्घवृत्त खड़ा हो जाता है। (3 पूरी चौड़ाई नहीं, अर्ध-लघु अक्ष देता है।)",
+          mr: "लहान छेद b² = 9 आहे, म्हणून b = 3 आणि लघु अक्ष 2b = 6. कोणता छेद मोठा हे ठरवते की दीर्घवर्तुळ कोणत्या दिशेने ताणले आहे — इथे 25 हा x² खाली आहे, म्हणून लांब दिशा आडवी. दोन्ही संख्या अदलाबदल करा आणि तेच दीर्घवर्तुळ उभे राहते. (3 अख्खी रुंदी नव्हे, अर्ध-लघु अक्ष देते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is the eccentricity of the ellipse x²/25 + y²/9 = 1?",
+          hi: "दीर्घवृत्त x²/25 + y²/9 = 1 की उत्केंद्रता क्या है?",
+          mr: "दीर्घवर्तुळ x²/25 + y²/9 = 1 ची उत्केंद्रता किती?",
+        },
+        answer: 0.8,
+        wrong: [0.6, 1.25, 0.36],
+        checkExpr: "4/5",
+        solution: {
+          en: "For an ellipse c² = a² − b² = 25 − 9 = 16, so c = 4 and e = c/a = 4/5 = 0.8. The eccentricity measures how far the shape has departed from a circle: at e = 0 the two foci coincide at the centre and the ellipse IS a circle, while as e approaches 1 it flattens towards a line segment. An answer above 1 is therefore impossible here, which rules out one of the options before any arithmetic. (1.25 inverts the ratio, giving a/c.)",
+          hi: "दीर्घवृत्त के लिए c² = a² − b² = 25 − 9 = 16, अतः c = 4 और e = c/a = 4/5 = 0.8. उत्केंद्रता मापती है कि आकृति वृत्त से कितनी दूर चली गई है: e = 0 पर दोनों नाभियाँ केंद्र पर मिल जाती हैं और दीर्घवृत्त वृत्त ही होता है, जबकि e के 1 के पास पहुँचते ही वह रेखाखंड की ओर चपटा हो जाता है। अतः यहाँ 1 से ऊपर का उत्तर असंभव है, जो कोई गणित करने से पहले ही एक विकल्प बाहर कर देता है। (1.25 अनुपात उलट देता है, a/c देकर।)",
+          mr: "दीर्घवर्तुळासाठी c² = a² − b² = 25 − 9 = 16, म्हणून c = 4 आणि e = c/a = 4/5 = 0.8. उत्केंद्रता मोजते की आकृती वर्तुळापासून किती दूर गेली आहे: e = 0 वर दोन्ही नाभी केंद्रावर एकत्र येतात आणि दीर्घवर्तुळ वर्तुळच असते, तर e 1 च्या जवळ जाताच ते रेषाखंडाकडे सपाट होते. म्हणून इथे 1 हून वरचे उत्तर अशक्य आहे, जे कोणतेही गणित करण्याआधीच एक पर्याय बाद करते. (1.25 गुणोत्तर उलटवते, a/c देऊन.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "What is the eccentricity of the hyperbola x²/16 − y²/9 = 1?",
+          hi: "अतिपरवलय x²/16 − y²/9 = 1 की उत्केंद्रता क्या है?",
+          mr: "अतिपरावलय x²/16 − y²/9 = 1 ची उत्केंद्रता किती?",
+        },
+        answer: 1.25,
+        wrong: [0.8, 0.75, 1.75],
+        checkExpr: "5/4",
+        solution: {
+          en: "For a hyperbola c² = a² + b² = 16 + 9 = 25, so c = 5 and e = c/a = 5/4 = 1.25. Note the single change from the ellipse: the relation adds instead of subtracting, which follows from the minus sign in the equation. That one sign is the whole difference between the two curves, and it forces the eccentricity above 1 — a hyperbola always has e greater than 1, an ellipse always less, and a parabola sits exactly at 1. (0.8 uses the ellipse relation with subtraction.)",
+          hi: "अतिपरवलय के लिए c² = a² + b² = 16 + 9 = 25, अतः c = 5 और e = c/a = 5/4 = 1.25. दीर्घवृत्त से इकलौता बदलाव ध्यान दो: संबंध घटाने के बजाय जोड़ता है, जो समीकरण के ऋण चिह्न से निकलता है। वही एक चिह्न दोनों वक्रों का पूरा अंतर है, और वह उत्केंद्रता को 1 से ऊपर कर देता है — अतिपरवलय का e सदा 1 से बड़ा, दीर्घवृत्त का सदा छोटा, और परवलय ठीक 1 पर बैठता है। (0.8 घटाव के साथ दीर्घवृत्त वाला संबंध लगा देता है।)",
+          mr: "अतिपरावलयासाठी c² = a² + b² = 16 + 9 = 25, म्हणून c = 5 आणि e = c/a = 5/4 = 1.25. दीर्घवर्तुळाहून एकमेव बदल लक्षात घ्या: संबंध वजा करण्याऐवजी जोडतो, जो समीकरणातल्या ऋण चिन्हातून निघतो. तेच एक चिन्ह दोन्ही वक्रांचा अख्खा फरक, आणि ते उत्केंद्रता 1 हून वर नेते — अतिपरावलयाचा e नेहमी 1 हून मोठा, दीर्घवर्तुळाचा नेहमी लहान, आणि पॅराबोला नेमका 1 वर बसतो. (0.8 वजाबाकीसह दीर्घवर्तुळाचा संबंध लावते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "What is the radius of the circle x² + y² − 6x − 8y = 0?",
+          hi: "वृत्त x² + y² − 6x − 8y = 0 की त्रिज्या क्या है?",
+          mr: "वर्तुळ x² + y² − 6x − 8y = 0 ची त्रिज्या किती?",
+        },
+        answer: 5,
+        wrong: [25, 7, 10],
+        checkExpr: "(9+16)/5",
+        solution: {
+          en: "Complete the square in each variable: (x − 3)² + (y − 4)² = 9 + 16 = 25, so the centre is (3, 4) and the radius is 5. Notice that the equation has no constant term, which means the origin satisfies it — the circle passes through (0, 0), and indeed the distance from (3, 4) to the origin is exactly 5. That is a free check on the working. (25 quotes r² without taking the root.)",
+          hi: "हर चर में वर्ग पूरा करो: (x − 3)² + (y − 4)² = 9 + 16 = 25, अतः केंद्र (3, 4) और त्रिज्या 5. ध्यान दो कि समीकरण में कोई अचर पद नहीं, जिसका अर्थ है कि मूलबिंदु उसे संतुष्ट करता है — वृत्त (0, 0) से होकर जाता है, और सचमुच (3, 4) से मूलबिंदु की दूरी ठीक 5 है। यह काम की मुफ़्त जाँच है। (25 r² बता देता है, मूल लिए बिना।)",
+          mr: "प्रत्येक चलात वर्ग पूर्ण करा: (x − 3)² + (y − 4)² = 9 + 16 = 25, म्हणून केंद्र (3, 4) आणि त्रिज्या 5. लक्षात घ्या की समीकरणात स्थिर पद नाही, म्हणजे आरंभबिंदू ते समाधानी करतो — वर्तुळ (0, 0) मधून जाते, आणि खरोखर (3, 4) पासून आरंभबिंदूचे अंतर नेमके 5 आहे. ही कामाची फुकट तपासणी. (25 r² सांगते, मूळ न घेता.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "For the parabola x² = 16y, what is the distance from the vertex to the directrix?",
+          hi: "परवलय x² = 16y के लिए शीर्ष से नियता तक की दूरी क्या है?",
+          mr: "पॅराबोला x² = 16y साठी शिरोबिंदूपासून नियतेपर्यंतचे अंतर किती?",
+        },
+        answer: 4,
+        wrong: [16, 8, 2],
+        checkExpr: "16/4",
+        solution: {
+          en: "This parabola opens upward, so compare it with x² = 4ay: 4a = 16 gives a = 4. The focus is at (0, 4) and the directrix is the line y = −4, both a distance of 4 from the vertex at the origin. The vertex is always exactly halfway between focus and directrix — that is what the defining property demands, since the vertex is a point of the curve and must be equidistant from the two. Note that the roles of x and y have swapped from the earlier questions; the curve opens along whichever variable is NOT squared. (8 gives the distance from the focus to the directrix, which is twice the answer.)",
+          hi: "यह परवलय ऊपर की ओर खुलता है, अतः x² = 4ay से तुलना करो: 4a = 16 से a = 4. नाभि (0, 4) पर है और नियता रेखा y = −4, दोनों मूलबिंदु पर बैठे शीर्ष से 4 की दूरी पर। शीर्ष सदा नाभि और नियता के ठीक बीच होता है — परिभाषक गुण यही माँगता है, क्योंकि शीर्ष वक्र का बिंदु है और उसे दोनों से समान दूरी पर होना ही पड़ता है। ध्यान दो कि पहले के प्रश्नों से x और y की भूमिकाएँ बदल गई हैं; वक्र उसी चर के साथ खुलता है जिसका वर्ग नहीं है। (8 नाभि से नियता तक की दूरी देता है, जो उत्तर की दुगुनी है।)",
+          mr: "हा पॅराबोला वरच्या दिशेने उघडतो, म्हणून x² = 4ay शी तुलना करा: 4a = 16 यातून a = 4. नाभी (0, 4) वर आहे आणि नियता ही रेषा y = −4, दोन्ही आरंभबिंदूवरच्या शिरोबिंदूपासून 4 अंतरावर. शिरोबिंदू नेहमी नाभी आणि नियतेच्या नेमका मध्ये असतो — परिभाषक गुणधर्म हेच मागतो, कारण शिरोबिंदू हा वक्राचा बिंदू आहे आणि त्याला दोघांपासून समान अंतरावर असावेच लागते. लक्षात घ्या की आधीच्या प्रश्नांहून x आणि y च्या भूमिका बदलल्या आहेत; वक्र त्याच चलाबरोबर उघडतो ज्याचा वर्ग नाही. (8 नाभीपासून नियतेपर्यंतचे अंतर देते, जे उत्तराच्या दुप्पट.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "An ellipse has a major axis of 26 and a minor axis of 24. What is the distance between its two foci?",
+          hi: "किसी दीर्घवृत्त का दीर्घ अक्ष 26 और लघु अक्ष 24 है। उसकी दोनों नाभियों के बीच की दूरी क्या है?",
+          mr: "एका दीर्घवर्तुळाचा दीर्घ अक्ष 26 आणि लघु अक्ष 24 आहे. त्याच्या दोन नाभींमधील अंतर किती?",
+        },
+        answer: 10,
+        wrong: [5, 13, 24],
+        checkExpr: "2*5",
+        solution: {
+          en: "Halve the axes first: a = 13 and b = 12. Then c² = a² − b² = 169 − 144 = 25, so c = 5 and the two foci, one on each side of the centre, are 2c = 10 apart. Two halvings and one doubling is the shape of this question, and skipping either is where marks go. The eccentricity here is 5/13, well under 1, so the ellipse is only mildly flattened — consistent with axes that differ by less than a tenth. (5 gives c, the distance from the centre to ONE focus.)",
+          hi: "पहले अक्ष आधे करो: a = 13 और b = 12. फिर c² = a² − b² = 169 − 144 = 25, अतः c = 5 और दोनों नाभियाँ, केंद्र के हर ओर एक, 2c = 10 दूर हैं। दो बार आधा और एक बार दुगुना करना ही इस प्रश्न का आकार है, और इनमें से कोई छोड़ना ही अंक खाता है। यहाँ उत्केंद्रता 5/13 है, 1 से अच्छी-ख़ासी नीचे, अतः दीर्घवृत्त केवल हल्का-सा चपटा है — उन अक्षों के अनुरूप जो दसवें भाग से भी कम भिन्न हैं। (5 c देता है, केंद्र से एक नाभि तक की दूरी।)",
+          mr: "आधी अक्ष निम्मे करा: a = 13 आणि b = 12. मग c² = a² − b² = 169 − 144 = 25, म्हणून c = 5 आणि दोन्ही नाभी, केंद्राच्या प्रत्येक बाजूला एक, 2c = 10 अंतरावर. दोनदा निम्मे आणि एकदा दुप्पट करणे हाच या प्रश्नाचा आकार, आणि यांपैकी कोणतेही सोडणे गुण खाते. इथे उत्केंद्रता 5/13 आहे, 1 हून बरीच खाली, म्हणून दीर्घवर्तुळ केवळ किंचित सपाट — दशांशाहूनही कमी वेगळ्या असलेल्या अक्षांशी सुसंगत. (5 c देते, केंद्रापासून एका नाभीपर्यंतचे अंतर.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A parabolic reflector is 20 cm across at its rim and 5 cm deep at the centre. How far from the vertex is its focus?",
+          hi: "कोई परवलयी परावर्तक अपने किनारे पर 20 cm चौड़ा और बीच में 5 cm गहरा है। उसकी नाभि शीर्ष से कितनी दूर है?",
+          mr: "एक पॅराबोलिक परावर्तक आपल्या कडेला 20 cm रुंद आणि मध्यात 5 cm खोल आहे. त्याची नाभी शिरोबिंदूपासून किती दूर आहे?",
+        },
+        answer: 5,
+        wrong: [10, 20, 2.5],
+        checkExpr: "100/20",
+        solution: {
+          en: "Put the vertex at the origin with the dish opening along the x-axis, so the curve is y² = 4ax. The rim is 20 cm across, meaning it reaches 10 cm above the axis, and it does so at a depth of 5 cm — so the point (5, 10) lies on the curve. Substituting: 100 = 4a × 5 = 20a, giving a = 5 cm. The focus is therefore 5 cm from the vertex, which happens to be exactly at the plane of the rim. Setting up the axes yourself is the real work in a question like this; the algebra afterwards is one substitution. This is also why the shape is used at all — every ray arriving parallel to the axis is reflected through that single point, which is what makes a dish antenna, a torch reflector and a solar cooker possible. (10 uses the full width of 20 as the y-value instead of half of it.)",
+          hi: "शीर्ष को मूलबिंदु पर रखो और थाली को x-अक्ष के साथ खुलने दो, अतः वक्र y² = 4ax है। किनारा 20 cm चौड़ा है, यानी वह अक्ष से 10 cm ऊपर पहुँचता है, और वह भी 5 cm की गहराई पर — अतः बिंदु (5, 10) वक्र पर है। प्रतिस्थापन: 100 = 4a × 5 = 20a, जिससे a = 5 cm. अतः नाभि शीर्ष से 5 cm दूर है, जो संयोग से ठीक किनारे के तल पर पड़ती है। ऐसे प्रश्न में असली काम अक्ष स्वयं जमाना है; उसके बाद का बीजगणित एक प्रतिस्थापन है। यही कारण भी है कि यह आकार काम में लिया जाता है — अक्ष के समांतर आती हर किरण उसी एक बिंदु से होकर परावर्तित होती है, और इसी से डिश एंटीना, टॉर्च का परावर्तक और सौर कुकर संभव होते हैं। (10 आधी के बजाय पूरी 20 की चौड़ाई को y-मान मान लेता है।)",
+          mr: "शिरोबिंदू आरंभबिंदूवर ठेवा आणि तबकडी x-अक्षाबरोबर उघडू द्या, म्हणून वक्र y² = 4ax. कडा 20 cm रुंद आहे, म्हणजे ती अक्षापासून 10 cm वर पोहोचते, आणि तेही 5 cm खोलीवर — म्हणून बिंदू (5, 10) वक्रावर आहे. प्रतिस्थापन: 100 = 4a × 5 = 20a, ज्यातून a = 5 cm. म्हणून नाभी शिरोबिंदूपासून 5 cm दूर, जी योगायोगाने नेमकी कडेच्या पातळीवर पडते. अशा प्रश्नात खरे काम अक्ष स्वतः मांडणे; त्यानंतरचे बीजगणित एक प्रतिस्थापन. हेच कारणही की हा आकार वापरला जातो — अक्षाला समांतर येणारा प्रत्येक किरण त्याच एका बिंदूतून परावर्तित होतो, आणि यातूनच डिश अँटेना, बॅटरीचा परावर्तक आणि सौर कुकर शक्य होतात. (10 अर्ध्याऐवजी अख्खी 20 ची रुंदी y-मूल्य मानते.)",
+        },
+        fmt: unit("cm"),
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A circle passes through the points (0, 0), (6, 0) and (0, 8). What is the SUM of the coordinates of its centre?",
+          hi: "कोई वृत्त बिंदुओं (0, 0), (6, 0) और (0, 8) से होकर जाता है। उसके केंद्र के निर्देशांकों का योग क्या है?",
+          mr: "एक वर्तुळ बिंदू (0, 0), (6, 0) आणि (0, 8) मधून जाते. त्याच्या केंद्राच्या निर्देशांकांची बेरीज किती?",
+        },
+        answer: 7,
+        wrong: [10, 5, 14],
+        checkExpr: "6/2+8/2",
+        solution: {
+          en: "The three points form a right-angled triangle with the right angle at the origin, and a well-known fact settles it at once: an angle in a semicircle is a right angle, so the hypotenuse joining (6, 0) and (0, 8) must be a diameter. The centre is therefore its midpoint, (3, 4), and the sum is 6/2 + 8/2 = 7. The alternative is to substitute all three points into x² + y² + 2gx + 2fy + c = 0 and solve three equations — which gives the same answer and takes ten times as long. Recognising the geometry before reaching for the algebra is the point of the question. As a check, the radius is 5, and each of the three points is indeed 5 away from (3, 4). (10 gives the length of the diameter rather than the sum of the centre's coordinates.)",
+          hi: "तीनों बिंदु मूलबिंदु पर समकोण वाला समकोण त्रिभुज बनाते हैं, और एक जाना-माना तथ्य इसे तुरंत तय कर देता है: अर्धवृत्त में बना कोण समकोण होता है, अतः (6, 0) और (0, 8) को मिलाता कर्ण व्यास होना ही चाहिए। अतः केंद्र उसका मध्यबिंदु (3, 4) है, और योग 6/2 + 8/2 = 7. विकल्प यह है कि तीनों बिंदु x² + y² + 2gx + 2fy + c = 0 में रखो और तीन समीकरण हल करो — जो वही उत्तर देता है और दस गुना समय लेता है। बीजगणित की ओर हाथ बढ़ाने से पहले ज्यामिति पहचानना ही प्रश्न का प्रयोजन है। जाँच के तौर पर, त्रिज्या 5 है, और तीनों बिंदु सचमुच (3, 4) से 5 दूर हैं। (10 केंद्र के निर्देशांकों के योग के बजाय व्यास की लंबाई देता है।)",
+          mr: "तिन्ही बिंदू आरंभबिंदूवर काटकोन असलेला काटकोन त्रिकोण बनवतात, आणि एक सुप्रसिद्ध तथ्य हे लगेच ठरवते: अर्धवर्तुळातला कोन काटकोन असतो, म्हणून (6, 0) आणि (0, 8) यांना जोडणारा कर्ण व्यासच असला पाहिजे. म्हणून केंद्र हा त्याचा मध्यबिंदू (3, 4), आणि बेरीज 6/2 + 8/2 = 7. पर्याय असा की तिन्ही बिंदू x² + y² + 2gx + 2fy + c = 0 मध्ये ठेवा आणि तीन समीकरणे सोडवा — जे तेच उत्तर देते आणि दहापट वेळ घेते. बीजगणिताकडे हात वळवण्याआधी भूमिती ओळखणे हाच प्रश्नाचा हेतू. तपासणी म्हणून, त्रिज्या 5 आहे, आणि तिन्ही बिंदू खरोखर (3, 4) पासून 5 दूर आहेत. (10 केंद्राच्या निर्देशांकांच्या बेरजेऐवजी व्यासाची लांबी देते.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-11-conic-sections",
+      subject: "MATHS",
+      classLevel: 11,
+      chapter: "Chapter 10 — Conic Sections",
+      name: "Conic Sections",
+      summary:
+        "Four curves cut from one cone by tilting the knife: a circle where every point is the same distance from a centre, a parabola where a point is as far from a focus as from a line, and an ellipse and a hyperbola separated by nothing more than the sign between two squares.",
+      position: 10,
+      translations: {
+        hi: {
+          name: "शंकु परिच्छेद",
+          summary:
+            "एक ही शंकु से छुरी झुकाकर काटी गई चार वक्र: वृत्त जिसमें हर बिंदु केंद्र से एक ही दूरी पर है, परवलय जिसमें कोई बिंदु नाभि से उतना ही दूर है जितना एक रेखा से, और दीर्घवृत्त तथा अतिपरवलय जिन्हें दो वर्गों के बीच के चिह्न से अधिक कुछ अलग नहीं करता।",
+        },
+        mr: {
+          name: "शंकुच्छेद",
+          summary:
+            "एकाच शंकूतून सुरी कलती करून कापलेली चार वक्रे: वर्तुळ ज्यात प्रत्येक बिंदू केंद्रापासून एकाच अंतरावर, पॅराबोला ज्यात एखादा बिंदू नाभीपासून जितका दूर तितकाच एका रेषेपासून, आणि दीर्घवर्तुळ व अतिपरावलय ज्यांना दोन वर्गांमधल्या चिन्हाहून अधिक काहीच वेगळे करत नाही.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
 export const G11_MATHS: TopicFileOut[] = [
   sets11(),
   relationsFunctions11(),
   trigFunctions11(),
   complexNumbers11(),
   linearInequalities11(),
+  permutations11(),
+  binomialTheorem11(),
+  sequences11(),
+  straightLines11(),
+  conicSections11(),
 ];

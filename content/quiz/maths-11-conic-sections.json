@@ -1,0 +1,513 @@
+{
+  "slug": "maths-11-conic-sections",
+  "subject": "MATHS",
+  "classLevel": 11,
+  "chapter": "Chapter 10 — Conic Sections",
+  "name": "Conic Sections",
+  "summary": "Four curves cut from one cone by tilting the knife: a circle where every point is the same distance from a centre, a parabola where a point is as far from a focus as from a line, and an ellipse and a hyperbola separated by nothing more than the sign between two squares.",
+  "position": 10,
+  "translations": {
+    "hi": {
+      "name": "शंकु परिच्छेद",
+      "summary": "एक ही शंकु से छुरी झुकाकर काटी गई चार वक्र: वृत्त जिसमें हर बिंदु केंद्र से एक ही दूरी पर है, परवलय जिसमें कोई बिंदु नाभि से उतना ही दूर है जितना एक रेखा से, और दीर्घवृत्त तथा अतिपरवलय जिन्हें दो वर्गों के बीच के चिह्न से अधिक कुछ अलग नहीं करता।"
+    },
+    "mr": {
+      "name": "शंकुच्छेद",
+      "summary": "एकाच शंकूतून सुरी कलती करून कापलेली चार वक्रे: वर्तुळ ज्यात प्रत्येक बिंदू केंद्रापासून एकाच अंतरावर, पॅराबोला ज्यात एखादा बिंदू नाभीपासून जितका दूर तितकाच एका रेषेपासून, आणि दीर्घवर्तुळ व अतिपरावलय ज्यांना दोन वर्गांमधल्या चिन्हाहून अधिक काहीच वेगळे करत नाही."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the radius of the circle x² + y² = 49?",
+      "choices": [
+        "7",
+        "24.5",
+        "14",
+        "49"
+      ],
+      "answerIndex": 0,
+      "solution": "In the form x² + y² = r² the right-hand side is the radius SQUARED, so r² = 49 and r = 7. The equation is just Pythagoras applied to every point: a point (x, y) lies on the circle exactly when its distance from the origin is 7. (49 quotes the square rather than the radius itself.)",
+      "checkExpr": "49/7",
+      "translations": {
+        "hi": {
+          "stem": "वृत्त x² + y² = 49 की त्रिज्या क्या है?",
+          "choices": [
+            "7",
+            "24.5",
+            "14",
+            "49"
+          ],
+          "solution": "रूप x² + y² = r² में दायाँ पक्ष त्रिज्या का वर्ग है, अतः r² = 49 और r = 7. समीकरण हर बिंदु पर लगाया गया पाइथागोरस ही है: बिंदु (x, y) वृत्त पर ठीक तभी है जब मूलबिंदु से उसकी दूरी 7 हो। (49 त्रिज्या नहीं, उसका वर्ग बता देता है।)"
+        },
+        "mr": {
+          "stem": "वर्तुळ x² + y² = 49 ची त्रिज्या किती?",
+          "choices": [
+            "7",
+            "24.5",
+            "14",
+            "49"
+          ],
+          "solution": "रूप x² + y² = r² मध्ये उजवी बाजू ही त्रिज्येचा वर्ग आहे, म्हणून r² = 49 आणि r = 7. समीकरण म्हणजे प्रत्येक बिंदूवर लावलेला पायथागोरसच: बिंदू (x, y) वर्तुळावर नेमका तेव्हाच जेव्हा आरंभबिंदूपासून त्याचे अंतर 7 असेल. (49 त्रिज्या नव्हे, तिचा वर्ग सांगते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "For the circle (x − 3)² + (y + 4)² = 25, what is the SUM of the coordinates of the centre?",
+      "choices": [
+        "-1",
+        "1",
+        "-7",
+        "7"
+      ],
+      "answerIndex": 0,
+      "solution": "The centre is read off with the signs REVERSED: (x − 3)² gives 3 and (y + 4)² gives −4, so the centre is (3, −4) and the sum is 3 − 4 = −1. Writing the second bracket as (y − (−4))² makes the reversal obvious rather than a rule to memorise. (7 takes the signs as written and reads the centre as (3, 4).)",
+      "checkExpr": "3-4",
+      "translations": {
+        "hi": {
+          "stem": "वृत्त (x − 3)² + (y + 4)² = 25 के केंद्र के निर्देशांकों का योग क्या है?",
+          "choices": [
+            "-1",
+            "1",
+            "-7",
+            "7"
+          ],
+          "solution": "केंद्र चिह्न उलटकर पढ़ा जाता है: (x − 3)² से 3 और (y + 4)² से −4, अतः केंद्र (3, −4) है और योग 3 − 4 = −1. दूसरे कोष्ठक को (y − (−4))² लिखने पर उलटाव नियम रटने के बजाय स्पष्ट दिखने लगता है। (7 चिह्न जैसे लिखे हैं वैसे ले लेता है और केंद्र (3, 4) पढ़ता है।)"
+        },
+        "mr": {
+          "stem": "वर्तुळ (x − 3)² + (y + 4)² = 25 च्या केंद्राच्या निर्देशांकांची बेरीज किती?",
+          "choices": [
+            "-1",
+            "1",
+            "-7",
+            "7"
+          ],
+          "solution": "केंद्र चिन्हे उलटवून वाचले जाते: (x − 3)² मधून 3 आणि (y + 4)² मधून −4, म्हणून केंद्र (3, −4) आणि बेरीज 3 − 4 = −1. दुसरा कंस (y − (−4))² असा लिहिल्यावर उलटापालट नियम पाठ करण्याऐवजी स्पष्ट दिसते. (7 चिन्हे लिहिल्याप्रमाणे घेते आणि केंद्र (3, 4) वाचते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the radius of the circle (x − 3)² + (y + 4)² = 25?",
+      "choices": [
+        "5",
+        "25",
+        "12.5",
+        "10"
+      ],
+      "answerIndex": 0,
+      "solution": "Again the right-hand side is r², so r = 5. Moving the centre away from the origin changes nothing about the radius — shifting a circle does not resize it, and the two brackets carry the position while the constant carries the size. (25 gives r² instead of r.)",
+      "checkExpr": "25/5",
+      "translations": {
+        "hi": {
+          "stem": "वृत्त (x − 3)² + (y + 4)² = 25 की त्रिज्या क्या है?",
+          "choices": [
+            "5",
+            "25",
+            "12.5",
+            "10"
+          ],
+          "solution": "फिर दायाँ पक्ष r² है, अतः r = 5. केंद्र को मूलबिंदु से हटाने पर त्रिज्या के बारे में कुछ नहीं बदलता — वृत्त को सरकाने से उसका आकार नहीं बदलता, और दोनों कोष्ठक स्थिति ढोते हैं जबकि अचर आकार। (25 r के बजाय r² दे देता है।)"
+        },
+        "mr": {
+          "stem": "वर्तुळ (x − 3)² + (y + 4)² = 25 ची त्रिज्या किती?",
+          "choices": [
+            "5",
+            "25",
+            "12.5",
+            "10"
+          ],
+          "solution": "पुन्हा उजवी बाजू r² आहे, म्हणून r = 5. केंद्र आरंभबिंदूपासून हलवल्याने त्रिज्येबद्दल काहीच बदलत नाही — वर्तुळ सरकवल्याने त्याचा आकार बदलत नाही, आणि दोन्ही कंस स्थान वाहतात तर स्थिरांक आकार. (25 r ऐवजी r² देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "For the parabola y² = 12x, what is the x-coordinate of the focus?",
+      "choices": [
+        "1.5",
+        "6",
+        "12",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "Compare with the standard form y² = 4ax: here 4a = 12, so a = 3 and the focus is at (3, 0). The same a places the directrix at x = −3, the mirror of the focus on the other side of the vertex — and every point of the curve is equidistant from those two. (6 halves 12 instead of quartering it.)",
+      "checkExpr": "12/4",
+      "translations": {
+        "hi": {
+          "stem": "परवलय y² = 12x के लिए नाभि का x-निर्देशांक क्या है?",
+          "choices": [
+            "1.5",
+            "6",
+            "12",
+            "3"
+          ],
+          "solution": "मानक रूप y² = 4ax से तुलना करो: यहाँ 4a = 12, अतः a = 3 और नाभि (3, 0) पर है। वही a नियता को x = −3 पर रखता है, जो शीर्ष के दूसरी ओर नाभि का दर्पण है — और वक्र का हर बिंदु उन दोनों से समान दूरी पर है। (6 12 को चौथाई करने के बजाय आधा कर देता है।)"
+        },
+        "mr": {
+          "stem": "पॅराबोला y² = 12x साठी नाभीचा x-निर्देशांक किती?",
+          "choices": [
+            "1.5",
+            "6",
+            "12",
+            "3"
+          ],
+          "solution": "प्रमाण रूप y² = 4ax शी तुलना करा: इथे 4a = 12, म्हणून a = 3 आणि नाभी (3, 0) वर आहे. तोच a नियताला x = −3 वर ठेवतो, जो शिरोबिंदूच्या दुसऱ्या बाजूला नाभीचा आरसा — आणि वक्राचा प्रत्येक बिंदू त्या दोघांपासून समान अंतरावर आहे. (6 12 ला चतुर्थांश करण्याऐवजी निम्मे करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the length of the latus rectum of the parabola y² = 12x?",
+      "choices": [
+        "6",
+        "24",
+        "12",
+        "3"
+      ],
+      "answerIndex": 2,
+      "solution": "The latus rectum is the chord through the focus at right angles to the axis, and its length is 4a = 4 × 3 = 12 — which is exactly the coefficient of x, already sitting in the equation. That is worth noticing: for y² = 4ax the number in front of x IS the latus rectum, so no working is needed once the form is recognised. (3 gives a, the distance from vertex to focus.)",
+      "checkExpr": "4*3",
+      "translations": {
+        "hi": {
+          "stem": "परवलय y² = 12x के नाभिलंब की लंबाई क्या है?",
+          "choices": [
+            "6",
+            "24",
+            "12",
+            "3"
+          ],
+          "solution": "नाभिलंब वह जीवा है जो नाभि से होकर अक्ष पर लंब है, और उसकी लंबाई 4a = 4 × 3 = 12 है — जो ठीक x का गुणांक है, समीकरण में पहले से बैठा हुआ। यह ध्यान देने योग्य है: y² = 4ax के लिए x के आगे की संख्या ही नाभिलंब है, अतः रूप पहचान लेने पर कोई काम करना ही नहीं पड़ता। (3 a देता है, शीर्ष से नाभि तक की दूरी।)"
+        },
+        "mr": {
+          "stem": "पॅराबोला y² = 12x च्या नाभिलंबाची लांबी किती?",
+          "choices": [
+            "6",
+            "24",
+            "12",
+            "3"
+          ],
+          "solution": "नाभिलंब ही ती जीवा जी नाभीतून जाऊन अक्षाला लंब आहे, आणि तिची लांबी 4a = 4 × 3 = 12 — जो नेमका x चा सहगुणक, समीकरणात आधीच बसलेला. हे लक्षात घेण्याजोगे: y² = 4ax साठी x पुढची संख्याच नाभिलंब आहे, म्हणून रूप ओळखल्यावर काहीही काम करावे लागत नाही. (3 a देते, शिरोबिंदूपासून नाभीपर्यंतचे अंतर.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "For the ellipse x²/25 + y²/9 = 1, what is the length of the major axis?",
+      "choices": [
+        "10",
+        "6",
+        "25",
+        "5"
+      ],
+      "answerIndex": 0,
+      "solution": "The larger denominator is a² = 25, so a = 5 and the major axis, which stretches from one end of the ellipse to the other through the centre, is 2a = 10. The word AXIS means the whole width, not the half — that doubling is the step most often dropped. (5 gives a, the semi-major axis.)",
+      "checkExpr": "2*5",
+      "translations": {
+        "hi": {
+          "stem": "दीर्घवृत्त x²/25 + y²/9 = 1 के दीर्घ अक्ष की लंबाई क्या है?",
+          "choices": [
+            "10",
+            "6",
+            "25",
+            "5"
+          ],
+          "solution": "बड़ा हर a² = 25 है, अतः a = 5 और दीर्घ अक्ष, जो दीर्घवृत्त के एक सिरे से केंद्र होकर दूसरे तक फैलता है, 2a = 10 है। अक्ष शब्द का अर्थ पूरी चौड़ाई है, आधी नहीं — वही दुगुना करना सबसे अधिक छूटता है। (5 a देता है, अर्ध-दीर्घ अक्ष।)"
+        },
+        "mr": {
+          "stem": "दीर्घवर्तुळ x²/25 + y²/9 = 1 च्या दीर्घ अक्षाची लांबी किती?",
+          "choices": [
+            "10",
+            "6",
+            "25",
+            "5"
+          ],
+          "solution": "मोठा छेद a² = 25 आहे, म्हणून a = 5 आणि दीर्घ अक्ष, जो दीर्घवर्तुळाच्या एका टोकापासून केंद्रातून दुसऱ्यापर्यंत पसरतो, 2a = 10 आहे. अक्ष या शब्दाचा अर्थ अख्खी रुंदी, अर्धी नव्हे — तेच दुप्पट करणे सर्वाधिक वेळा गळते. (5 a देते, अर्ध-दीर्घ अक्ष.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "For the ellipse x²/25 + y²/9 = 1, what is the length of the minor axis?",
+      "choices": [
+        "18",
+        "9",
+        "6",
+        "3"
+      ],
+      "answerIndex": 2,
+      "solution": "The smaller denominator is b² = 9, so b = 3 and the minor axis is 2b = 6. Which denominator is larger decides which way the ellipse is stretched — here the 25 sits under x², so the long direction is horizontal. Swap the two numbers and the same ellipse stands on its end. (3 gives the semi-minor axis rather than the full width.)",
+      "checkExpr": "2*3",
+      "translations": {
+        "hi": {
+          "stem": "दीर्घवृत्त x²/25 + y²/9 = 1 के लघु अक्ष की लंबाई क्या है?",
+          "choices": [
+            "18",
+            "9",
+            "6",
+            "3"
+          ],
+          "solution": "छोटा हर b² = 9 है, अतः b = 3 और लघु अक्ष 2b = 6. कौन-सा हर बड़ा है यह तय करता है कि दीर्घवृत्त किस ओर खिंचा है — यहाँ 25 x² के नीचे है, अतः लंबी दिशा क्षैतिज है। दोनों संख्याएँ अदल-बदल दो और वही दीर्घवृत्त खड़ा हो जाता है। (3 पूरी चौड़ाई नहीं, अर्ध-लघु अक्ष देता है।)"
+        },
+        "mr": {
+          "stem": "दीर्घवर्तुळ x²/25 + y²/9 = 1 च्या लघु अक्षाची लांबी किती?",
+          "choices": [
+            "18",
+            "9",
+            "6",
+            "3"
+          ],
+          "solution": "लहान छेद b² = 9 आहे, म्हणून b = 3 आणि लघु अक्ष 2b = 6. कोणता छेद मोठा हे ठरवते की दीर्घवर्तुळ कोणत्या दिशेने ताणले आहे — इथे 25 हा x² खाली आहे, म्हणून लांब दिशा आडवी. दोन्ही संख्या अदलाबदल करा आणि तेच दीर्घवर्तुळ उभे राहते. (3 अख्खी रुंदी नव्हे, अर्ध-लघु अक्ष देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the eccentricity of the ellipse x²/25 + y²/9 = 1?",
+      "choices": [
+        "0.6",
+        "0.36",
+        "1.25",
+        "0.8"
+      ],
+      "answerIndex": 3,
+      "solution": "For an ellipse c² = a² − b² = 25 − 9 = 16, so c = 4 and e = c/a = 4/5 = 0.8. The eccentricity measures how far the shape has departed from a circle: at e = 0 the two foci coincide at the centre and the ellipse IS a circle, while as e approaches 1 it flattens towards a line segment. An answer above 1 is therefore impossible here, which rules out one of the options before any arithmetic. (1.25 inverts the ratio, giving a/c.)",
+      "checkExpr": "4/5",
+      "translations": {
+        "hi": {
+          "stem": "दीर्घवृत्त x²/25 + y²/9 = 1 की उत्केंद्रता क्या है?",
+          "choices": [
+            "0.6",
+            "0.36",
+            "1.25",
+            "0.8"
+          ],
+          "solution": "दीर्घवृत्त के लिए c² = a² − b² = 25 − 9 = 16, अतः c = 4 और e = c/a = 4/5 = 0.8. उत्केंद्रता मापती है कि आकृति वृत्त से कितनी दूर चली गई है: e = 0 पर दोनों नाभियाँ केंद्र पर मिल जाती हैं और दीर्घवृत्त वृत्त ही होता है, जबकि e के 1 के पास पहुँचते ही वह रेखाखंड की ओर चपटा हो जाता है। अतः यहाँ 1 से ऊपर का उत्तर असंभव है, जो कोई गणित करने से पहले ही एक विकल्प बाहर कर देता है। (1.25 अनुपात उलट देता है, a/c देकर।)"
+        },
+        "mr": {
+          "stem": "दीर्घवर्तुळ x²/25 + y²/9 = 1 ची उत्केंद्रता किती?",
+          "choices": [
+            "0.6",
+            "0.36",
+            "1.25",
+            "0.8"
+          ],
+          "solution": "दीर्घवर्तुळासाठी c² = a² − b² = 25 − 9 = 16, म्हणून c = 4 आणि e = c/a = 4/5 = 0.8. उत्केंद्रता मोजते की आकृती वर्तुळापासून किती दूर गेली आहे: e = 0 वर दोन्ही नाभी केंद्रावर एकत्र येतात आणि दीर्घवर्तुळ वर्तुळच असते, तर e 1 च्या जवळ जाताच ते रेषाखंडाकडे सपाट होते. म्हणून इथे 1 हून वरचे उत्तर अशक्य आहे, जे कोणतेही गणित करण्याआधीच एक पर्याय बाद करते. (1.25 गुणोत्तर उलटवते, a/c देऊन.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the eccentricity of the hyperbola x²/16 − y²/9 = 1?",
+      "choices": [
+        "0.8",
+        "0.75",
+        "1.75",
+        "1.25"
+      ],
+      "answerIndex": 3,
+      "solution": "For a hyperbola c² = a² + b² = 16 + 9 = 25, so c = 5 and e = c/a = 5/4 = 1.25. Note the single change from the ellipse: the relation adds instead of subtracting, which follows from the minus sign in the equation. That one sign is the whole difference between the two curves, and it forces the eccentricity above 1 — a hyperbola always has e greater than 1, an ellipse always less, and a parabola sits exactly at 1. (0.8 uses the ellipse relation with subtraction.)",
+      "checkExpr": "5/4",
+      "translations": {
+        "hi": {
+          "stem": "अतिपरवलय x²/16 − y²/9 = 1 की उत्केंद्रता क्या है?",
+          "choices": [
+            "0.8",
+            "0.75",
+            "1.75",
+            "1.25"
+          ],
+          "solution": "अतिपरवलय के लिए c² = a² + b² = 16 + 9 = 25, अतः c = 5 और e = c/a = 5/4 = 1.25. दीर्घवृत्त से इकलौता बदलाव ध्यान दो: संबंध घटाने के बजाय जोड़ता है, जो समीकरण के ऋण चिह्न से निकलता है। वही एक चिह्न दोनों वक्रों का पूरा अंतर है, और वह उत्केंद्रता को 1 से ऊपर कर देता है — अतिपरवलय का e सदा 1 से बड़ा, दीर्घवृत्त का सदा छोटा, और परवलय ठीक 1 पर बैठता है। (0.8 घटाव के साथ दीर्घवृत्त वाला संबंध लगा देता है।)"
+        },
+        "mr": {
+          "stem": "अतिपरावलय x²/16 − y²/9 = 1 ची उत्केंद्रता किती?",
+          "choices": [
+            "0.8",
+            "0.75",
+            "1.75",
+            "1.25"
+          ],
+          "solution": "अतिपरावलयासाठी c² = a² + b² = 16 + 9 = 25, म्हणून c = 5 आणि e = c/a = 5/4 = 1.25. दीर्घवर्तुळाहून एकमेव बदल लक्षात घ्या: संबंध वजा करण्याऐवजी जोडतो, जो समीकरणातल्या ऋण चिन्हातून निघतो. तेच एक चिन्ह दोन्ही वक्रांचा अख्खा फरक, आणि ते उत्केंद्रता 1 हून वर नेते — अतिपरावलयाचा e नेहमी 1 हून मोठा, दीर्घवर्तुळाचा नेहमी लहान, आणि पॅराबोला नेमका 1 वर बसतो. (0.8 वजाबाकीसह दीर्घवर्तुळाचा संबंध लावते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the radius of the circle x² + y² − 6x − 8y = 0?",
+      "choices": [
+        "25",
+        "10",
+        "5",
+        "7"
+      ],
+      "answerIndex": 2,
+      "solution": "Complete the square in each variable: (x − 3)² + (y − 4)² = 9 + 16 = 25, so the centre is (3, 4) and the radius is 5. Notice that the equation has no constant term, which means the origin satisfies it — the circle passes through (0, 0), and indeed the distance from (3, 4) to the origin is exactly 5. That is a free check on the working. (25 quotes r² without taking the root.)",
+      "checkExpr": "(9+16)/5",
+      "translations": {
+        "hi": {
+          "stem": "वृत्त x² + y² − 6x − 8y = 0 की त्रिज्या क्या है?",
+          "choices": [
+            "25",
+            "10",
+            "5",
+            "7"
+          ],
+          "solution": "हर चर में वर्ग पूरा करो: (x − 3)² + (y − 4)² = 9 + 16 = 25, अतः केंद्र (3, 4) और त्रिज्या 5. ध्यान दो कि समीकरण में कोई अचर पद नहीं, जिसका अर्थ है कि मूलबिंदु उसे संतुष्ट करता है — वृत्त (0, 0) से होकर जाता है, और सचमुच (3, 4) से मूलबिंदु की दूरी ठीक 5 है। यह काम की मुफ़्त जाँच है। (25 r² बता देता है, मूल लिए बिना।)"
+        },
+        "mr": {
+          "stem": "वर्तुळ x² + y² − 6x − 8y = 0 ची त्रिज्या किती?",
+          "choices": [
+            "25",
+            "10",
+            "5",
+            "7"
+          ],
+          "solution": "प्रत्येक चलात वर्ग पूर्ण करा: (x − 3)² + (y − 4)² = 9 + 16 = 25, म्हणून केंद्र (3, 4) आणि त्रिज्या 5. लक्षात घ्या की समीकरणात स्थिर पद नाही, म्हणजे आरंभबिंदू ते समाधानी करतो — वर्तुळ (0, 0) मधून जाते, आणि खरोखर (3, 4) पासून आरंभबिंदूचे अंतर नेमके 5 आहे. ही कामाची फुकट तपासणी. (25 r² सांगते, मूळ न घेता.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "For the parabola x² = 16y, what is the distance from the vertex to the directrix?",
+      "choices": [
+        "16",
+        "2",
+        "4",
+        "8"
+      ],
+      "answerIndex": 2,
+      "solution": "This parabola opens upward, so compare it with x² = 4ay: 4a = 16 gives a = 4. The focus is at (0, 4) and the directrix is the line y = −4, both a distance of 4 from the vertex at the origin. The vertex is always exactly halfway between focus and directrix — that is what the defining property demands, since the vertex is a point of the curve and must be equidistant from the two. Note that the roles of x and y have swapped from the earlier questions; the curve opens along whichever variable is NOT squared. (8 gives the distance from the focus to the directrix, which is twice the answer.)",
+      "checkExpr": "16/4",
+      "translations": {
+        "hi": {
+          "stem": "परवलय x² = 16y के लिए शीर्ष से नियता तक की दूरी क्या है?",
+          "choices": [
+            "16",
+            "2",
+            "4",
+            "8"
+          ],
+          "solution": "यह परवलय ऊपर की ओर खुलता है, अतः x² = 4ay से तुलना करो: 4a = 16 से a = 4. नाभि (0, 4) पर है और नियता रेखा y = −4, दोनों मूलबिंदु पर बैठे शीर्ष से 4 की दूरी पर। शीर्ष सदा नाभि और नियता के ठीक बीच होता है — परिभाषक गुण यही माँगता है, क्योंकि शीर्ष वक्र का बिंदु है और उसे दोनों से समान दूरी पर होना ही पड़ता है। ध्यान दो कि पहले के प्रश्नों से x और y की भूमिकाएँ बदल गई हैं; वक्र उसी चर के साथ खुलता है जिसका वर्ग नहीं है। (8 नाभि से नियता तक की दूरी देता है, जो उत्तर की दुगुनी है।)"
+        },
+        "mr": {
+          "stem": "पॅराबोला x² = 16y साठी शिरोबिंदूपासून नियतेपर्यंतचे अंतर किती?",
+          "choices": [
+            "16",
+            "2",
+            "4",
+            "8"
+          ],
+          "solution": "हा पॅराबोला वरच्या दिशेने उघडतो, म्हणून x² = 4ay शी तुलना करा: 4a = 16 यातून a = 4. नाभी (0, 4) वर आहे आणि नियता ही रेषा y = −4, दोन्ही आरंभबिंदूवरच्या शिरोबिंदूपासून 4 अंतरावर. शिरोबिंदू नेहमी नाभी आणि नियतेच्या नेमका मध्ये असतो — परिभाषक गुणधर्म हेच मागतो, कारण शिरोबिंदू हा वक्राचा बिंदू आहे आणि त्याला दोघांपासून समान अंतरावर असावेच लागते. लक्षात घ्या की आधीच्या प्रश्नांहून x आणि y च्या भूमिका बदलल्या आहेत; वक्र त्याच चलाबरोबर उघडतो ज्याचा वर्ग नाही. (8 नाभीपासून नियतेपर्यंतचे अंतर देते, जे उत्तराच्या दुप्पट.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "An ellipse has a major axis of 26 and a minor axis of 24. What is the distance between its two foci?",
+      "choices": [
+        "5",
+        "13",
+        "10",
+        "24"
+      ],
+      "answerIndex": 2,
+      "solution": "Halve the axes first: a = 13 and b = 12. Then c² = a² − b² = 169 − 144 = 25, so c = 5 and the two foci, one on each side of the centre, are 2c = 10 apart. Two halvings and one doubling is the shape of this question, and skipping either is where marks go. The eccentricity here is 5/13, well under 1, so the ellipse is only mildly flattened — consistent with axes that differ by less than a tenth. (5 gives c, the distance from the centre to ONE focus.)",
+      "checkExpr": "2*5",
+      "translations": {
+        "hi": {
+          "stem": "किसी दीर्घवृत्त का दीर्घ अक्ष 26 और लघु अक्ष 24 है। उसकी दोनों नाभियों के बीच की दूरी क्या है?",
+          "choices": [
+            "5",
+            "13",
+            "10",
+            "24"
+          ],
+          "solution": "पहले अक्ष आधे करो: a = 13 और b = 12. फिर c² = a² − b² = 169 − 144 = 25, अतः c = 5 और दोनों नाभियाँ, केंद्र के हर ओर एक, 2c = 10 दूर हैं। दो बार आधा और एक बार दुगुना करना ही इस प्रश्न का आकार है, और इनमें से कोई छोड़ना ही अंक खाता है। यहाँ उत्केंद्रता 5/13 है, 1 से अच्छी-ख़ासी नीचे, अतः दीर्घवृत्त केवल हल्का-सा चपटा है — उन अक्षों के अनुरूप जो दसवें भाग से भी कम भिन्न हैं। (5 c देता है, केंद्र से एक नाभि तक की दूरी।)"
+        },
+        "mr": {
+          "stem": "एका दीर्घवर्तुळाचा दीर्घ अक्ष 26 आणि लघु अक्ष 24 आहे. त्याच्या दोन नाभींमधील अंतर किती?",
+          "choices": [
+            "5",
+            "13",
+            "10",
+            "24"
+          ],
+          "solution": "आधी अक्ष निम्मे करा: a = 13 आणि b = 12. मग c² = a² − b² = 169 − 144 = 25, म्हणून c = 5 आणि दोन्ही नाभी, केंद्राच्या प्रत्येक बाजूला एक, 2c = 10 अंतरावर. दोनदा निम्मे आणि एकदा दुप्पट करणे हाच या प्रश्नाचा आकार, आणि यांपैकी कोणतेही सोडणे गुण खाते. इथे उत्केंद्रता 5/13 आहे, 1 हून बरीच खाली, म्हणून दीर्घवर्तुळ केवळ किंचित सपाट — दशांशाहूनही कमी वेगळ्या असलेल्या अक्षांशी सुसंगत. (5 c देते, केंद्रापासून एका नाभीपर्यंतचे अंतर.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A parabolic reflector is 20 cm across at its rim and 5 cm deep at the centre. How far from the vertex is its focus?",
+      "choices": [
+        "20 cm",
+        "10 cm",
+        "2.5 cm",
+        "5 cm"
+      ],
+      "answerIndex": 3,
+      "solution": "Put the vertex at the origin with the dish opening along the x-axis, so the curve is y² = 4ax. The rim is 20 cm across, meaning it reaches 10 cm above the axis, and it does so at a depth of 5 cm — so the point (5, 10) lies on the curve. Substituting: 100 = 4a × 5 = 20a, giving a = 5 cm. The focus is therefore 5 cm from the vertex, which happens to be exactly at the plane of the rim. Setting up the axes yourself is the real work in a question like this; the algebra afterwards is one substitution. This is also why the shape is used at all — every ray arriving parallel to the axis is reflected through that single point, which is what makes a dish antenna, a torch reflector and a solar cooker possible. (10 uses the full width of 20 as the y-value instead of half of it.)",
+      "checkExpr": "100/20",
+      "translations": {
+        "hi": {
+          "stem": "कोई परवलयी परावर्तक अपने किनारे पर 20 cm चौड़ा और बीच में 5 cm गहरा है। उसकी नाभि शीर्ष से कितनी दूर है?",
+          "choices": [
+            "20 cm",
+            "10 cm",
+            "2.5 cm",
+            "5 cm"
+          ],
+          "solution": "शीर्ष को मूलबिंदु पर रखो और थाली को x-अक्ष के साथ खुलने दो, अतः वक्र y² = 4ax है। किनारा 20 cm चौड़ा है, यानी वह अक्ष से 10 cm ऊपर पहुँचता है, और वह भी 5 cm की गहराई पर — अतः बिंदु (5, 10) वक्र पर है। प्रतिस्थापन: 100 = 4a × 5 = 20a, जिससे a = 5 cm. अतः नाभि शीर्ष से 5 cm दूर है, जो संयोग से ठीक किनारे के तल पर पड़ती है। ऐसे प्रश्न में असली काम अक्ष स्वयं जमाना है; उसके बाद का बीजगणित एक प्रतिस्थापन है। यही कारण भी है कि यह आकार काम में लिया जाता है — अक्ष के समांतर आती हर किरण उसी एक बिंदु से होकर परावर्तित होती है, और इसी से डिश एंटीना, टॉर्च का परावर्तक और सौर कुकर संभव होते हैं। (10 आधी के बजाय पूरी 20 की चौड़ाई को y-मान मान लेता है।)"
+        },
+        "mr": {
+          "stem": "एक पॅराबोलिक परावर्तक आपल्या कडेला 20 cm रुंद आणि मध्यात 5 cm खोल आहे. त्याची नाभी शिरोबिंदूपासून किती दूर आहे?",
+          "choices": [
+            "20 cm",
+            "10 cm",
+            "2.5 cm",
+            "5 cm"
+          ],
+          "solution": "शिरोबिंदू आरंभबिंदूवर ठेवा आणि तबकडी x-अक्षाबरोबर उघडू द्या, म्हणून वक्र y² = 4ax. कडा 20 cm रुंद आहे, म्हणजे ती अक्षापासून 10 cm वर पोहोचते, आणि तेही 5 cm खोलीवर — म्हणून बिंदू (5, 10) वक्रावर आहे. प्रतिस्थापन: 100 = 4a × 5 = 20a, ज्यातून a = 5 cm. म्हणून नाभी शिरोबिंदूपासून 5 cm दूर, जी योगायोगाने नेमकी कडेच्या पातळीवर पडते. अशा प्रश्नात खरे काम अक्ष स्वतः मांडणे; त्यानंतरचे बीजगणित एक प्रतिस्थापन. हेच कारणही की हा आकार वापरला जातो — अक्षाला समांतर येणारा प्रत्येक किरण त्याच एका बिंदूतून परावर्तित होतो, आणि यातूनच डिश अँटेना, बॅटरीचा परावर्तक आणि सौर कुकर शक्य होतात. (10 अर्ध्याऐवजी अख्खी 20 ची रुंदी y-मूल्य मानते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A circle passes through the points (0, 0), (6, 0) and (0, 8). What is the SUM of the coordinates of its centre?",
+      "choices": [
+        "5",
+        "10",
+        "14",
+        "7"
+      ],
+      "answerIndex": 3,
+      "solution": "The three points form a right-angled triangle with the right angle at the origin, and a well-known fact settles it at once: an angle in a semicircle is a right angle, so the hypotenuse joining (6, 0) and (0, 8) must be a diameter. The centre is therefore its midpoint, (3, 4), and the sum is 6/2 + 8/2 = 7. The alternative is to substitute all three points into x² + y² + 2gx + 2fy + c = 0 and solve three equations — which gives the same answer and takes ten times as long. Recognising the geometry before reaching for the algebra is the point of the question. As a check, the radius is 5, and each of the three points is indeed 5 away from (3, 4). (10 gives the length of the diameter rather than the sum of the centre's coordinates.)",
+      "checkExpr": "6/2+8/2",
+      "translations": {
+        "hi": {
+          "stem": "कोई वृत्त बिंदुओं (0, 0), (6, 0) और (0, 8) से होकर जाता है। उसके केंद्र के निर्देशांकों का योग क्या है?",
+          "choices": [
+            "5",
+            "10",
+            "14",
+            "7"
+          ],
+          "solution": "तीनों बिंदु मूलबिंदु पर समकोण वाला समकोण त्रिभुज बनाते हैं, और एक जाना-माना तथ्य इसे तुरंत तय कर देता है: अर्धवृत्त में बना कोण समकोण होता है, अतः (6, 0) और (0, 8) को मिलाता कर्ण व्यास होना ही चाहिए। अतः केंद्र उसका मध्यबिंदु (3, 4) है, और योग 6/2 + 8/2 = 7. विकल्प यह है कि तीनों बिंदु x² + y² + 2gx + 2fy + c = 0 में रखो और तीन समीकरण हल करो — जो वही उत्तर देता है और दस गुना समय लेता है। बीजगणित की ओर हाथ बढ़ाने से पहले ज्यामिति पहचानना ही प्रश्न का प्रयोजन है। जाँच के तौर पर, त्रिज्या 5 है, और तीनों बिंदु सचमुच (3, 4) से 5 दूर हैं। (10 केंद्र के निर्देशांकों के योग के बजाय व्यास की लंबाई देता है।)"
+        },
+        "mr": {
+          "stem": "एक वर्तुळ बिंदू (0, 0), (6, 0) आणि (0, 8) मधून जाते. त्याच्या केंद्राच्या निर्देशांकांची बेरीज किती?",
+          "choices": [
+            "5",
+            "10",
+            "14",
+            "7"
+          ],
+          "solution": "तिन्ही बिंदू आरंभबिंदूवर काटकोन असलेला काटकोन त्रिकोण बनवतात, आणि एक सुप्रसिद्ध तथ्य हे लगेच ठरवते: अर्धवर्तुळातला कोन काटकोन असतो, म्हणून (6, 0) आणि (0, 8) यांना जोडणारा कर्ण व्यासच असला पाहिजे. म्हणून केंद्र हा त्याचा मध्यबिंदू (3, 4), आणि बेरीज 6/2 + 8/2 = 7. पर्याय असा की तिन्ही बिंदू x² + y² + 2gx + 2fy + c = 0 मध्ये ठेवा आणि तीन समीकरणे सोडवा — जे तेच उत्तर देते आणि दहापट वेळ घेते. बीजगणिताकडे हात वळवण्याआधी भूमिती ओळखणे हाच प्रश्नाचा हेतू. तपासणी म्हणून, त्रिज्या 5 आहे, आणि तिन्ही बिंदू खरोखर (3, 4) पासून 5 दूर आहेत. (10 केंद्राच्या निर्देशांकांच्या बेरजेऐवजी व्यासाची लांबी देते.)"
+        }
+      }
+    }
+  ]
+}

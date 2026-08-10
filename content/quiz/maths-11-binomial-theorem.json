@@ -1,0 +1,513 @@
+{
+  "slug": "maths-11-binomial-theorem",
+  "subject": "MATHS",
+  "classLevel": 11,
+  "chapter": "Chapter 7 — Binomial Theorem",
+  "name": "Binomial Theorem",
+  "summary": "A bracket raised to a high power, read one term at a time instead of multiplied out: the coefficients turn out to be the combinations of the last chapter, the exponents of the two letters always add to the power, and a single general term lets you reach the middle of an expansion without writing any of it down.",
+  "position": 7,
+  "translations": {
+    "hi": {
+      "name": "द्विपद प्रमेय",
+      "summary": "ऊँची घात तक उठाया कोष्ठक, पूरा गुणा किए बिना एक-एक पद पढ़ा हुआ: गुणांक पिछले अध्याय के संचय ही निकलते हैं, दोनों अक्षरों के घातांक सदा जुड़कर वही घात बनाते हैं, और एक अकेला व्यापक पद तुम्हें प्रसार का बीच तक पहुँचा देता है बिना उसमें से कुछ भी लिखे।"
+    },
+    "mr": {
+      "name": "द्विपद प्रमेय",
+      "summary": "उच्च घातापर्यंत नेलेला कंस, पूर्ण गुणाकार न करता एकेक पद वाचलेला: सहगुणक मागच्या प्रकरणातले संचयच निघतात, दोन्ही अक्षरांचे घातांक नेहमी जुळून तीच घात बनवतात, आणि एकच व्यापक पद तुम्हाला विस्ताराच्या मध्यापर्यंत नेते त्यातले काहीही न लिहिता."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "How many terms are there in the expansion of (a + b)⁷ ?",
+      "choices": [
+        "8",
+        "6",
+        "14",
+        "7"
+      ],
+      "answerIndex": 0,
+      "solution": "The exponent of a runs from 7 down to 0, which is 8 values, so there are 7 + 1 = 8 terms. Counting from a zero rather than a one is the whole trap — the same reason a fence with 7 gaps needs 8 posts. (7 quotes the power and forgets the term in which a has vanished.)",
+      "checkExpr": "7+1",
+      "translations": {
+        "hi": {
+          "stem": "(a + b)⁷ के प्रसार में कितने पद हैं?",
+          "choices": [
+            "8",
+            "6",
+            "14",
+            "7"
+          ],
+          "solution": "a का घातांक 7 से नीचे 0 तक चलता है, जो 8 मान हैं, अतः 7 + 1 = 8 पद हैं। शून्य से गिनना, एक से नहीं, ही पूरा जाल है — वही कारण कि 7 अंतरालों की बाड़ को 8 खंभे चाहिए। (7 घात बता देता है और वह पद भूल जाता है जिसमें a लुप्त हो चुका है।)"
+        },
+        "mr": {
+          "stem": "(a + b)⁷ च्या विस्तारात किती पदे आहेत?",
+          "choices": [
+            "8",
+            "6",
+            "14",
+            "7"
+          ],
+          "solution": "a चा घातांक 7 पासून खाली 0 पर्यंत चालतो, जी 8 मूल्ये आहेत, म्हणून 7 + 1 = 8 पदे. शून्यापासून मोजणे, एकापासून नव्हे, हाच अख्खा सापळा — तेच कारण की 7 फटींच्या कुंपणाला 8 खांब लागतात. (7 घात सांगते आणि ते पद विसरते ज्यात a नाहीसा झाला आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the sum of all the binomial coefficients in the expansion of (1 + x)⁵ ?",
+      "choices": [
+        "5",
+        "25",
+        "32",
+        "10"
+      ],
+      "answerIndex": 2,
+      "solution": "Put x = 1 and every term collapses to its coefficient, so the sum is (1 + 1)⁵ = 2⁵ = 32. That substitution trick works for any binomial: the sum of the coefficients is always what the expression itself equals when every variable is set to 1. It also matches the counting story, since the coefficients are ⁵C₀ through ⁵C₅ and those add to the number of subsets of a 5-element set. (10 gives just the largest single coefficient, ⁵C₂.)",
+      "checkExpr": "2*2*2*2*2",
+      "translations": {
+        "hi": {
+          "stem": "(1 + x)⁵ के प्रसार के सभी द्विपद गुणांकों का योग क्या है?",
+          "choices": [
+            "5",
+            "25",
+            "32",
+            "10"
+          ],
+          "solution": "x = 1 रखो और हर पद अपने गुणांक पर सिमट जाता है, अतः योग (1 + 1)⁵ = 2⁵ = 32. वह प्रतिस्थापन-तरकीब किसी भी द्विपद पर चलती है: गुणांकों का योग सदा वही है जो हर चर को 1 रखने पर व्यंजक स्वयं बनता है। यह गिनती की कहानी से भी मेल खाता है, क्योंकि गुणांक ⁵C₀ से ⁵C₅ तक हैं और वे 5-अवयवी समुच्चय के उपसमुच्चयों की संख्या बनाते हैं। (10 केवल सबसे बड़ा अकेला गुणांक ⁵C₂ देता है।)"
+        },
+        "mr": {
+          "stem": "(1 + x)⁵ च्या विस्तारातील सर्व द्विपद सहगुणकांची बेरीज किती?",
+          "choices": [
+            "5",
+            "25",
+            "32",
+            "10"
+          ],
+          "solution": "x = 1 ठेवा आणि प्रत्येक पद आपल्या सहगुणकावर येते, म्हणून बेरीज (1 + 1)⁵ = 2⁵ = 32. ती प्रतिस्थापन-युक्ती कोणत्याही द्विपदावर चालते: सहगुणकांची बेरीज नेहमी तीच जी प्रत्येक चलाला 1 ठेवल्यावर पदावली स्वतः बनते. हे मोजणीच्या कथेशीही जुळते, कारण सहगुणक ⁵C₀ पासून ⁵C₅ पर्यंत आहेत आणि ते 5-घटकी संचाच्या उपसंचांची संख्या बनवतात. (10 केवळ सर्वांत मोठा एकटा सहगुणक ⁵C₂ देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the coefficient of x² in the expansion of (1 + x)⁵ ?",
+      "choices": [
+        "20",
+        "5",
+        "10",
+        "25"
+      ],
+      "answerIndex": 2,
+      "solution": "The coefficient of xʳ in (1 + x)ⁿ is ⁿCᵣ, so here it is ⁵C₂ = (5 × 4)/2 = 10. The reason is pure counting: expanding the product means choosing x from two of the five brackets and 1 from the rest, and there are ⁵C₂ ways to decide which two. (20 gives ⁵P₂ and forgets that the brackets chosen have no order.)",
+      "checkExpr": "5*4/2",
+      "translations": {
+        "hi": {
+          "stem": "(1 + x)⁵ के प्रसार में x² का गुणांक क्या है?",
+          "choices": [
+            "20",
+            "5",
+            "10",
+            "25"
+          ],
+          "solution": "(1 + x)ⁿ में xʳ का गुणांक ⁿCᵣ है, अतः यहाँ वह ⁵C₂ = (5 × 4)/2 = 10. कारण विशुद्ध गिनती है: गुणनफल खोलने का अर्थ है पाँच कोष्ठकों में से दो से x लेना और बाक़ी से 1, और कौन-से दो यह तय करने के ⁵C₂ तरीक़े हैं। (20 ⁵P₂ देता है और भूल जाता है कि चुने गए कोष्ठकों का कोई क्रम नहीं।)"
+        },
+        "mr": {
+          "stem": "(1 + x)⁵ च्या विस्तारात x² चा सहगुणक किती?",
+          "choices": [
+            "20",
+            "5",
+            "10",
+            "25"
+          ],
+          "solution": "(1 + x)ⁿ मध्ये xʳ चा सहगुणक ⁿCᵣ आहे, म्हणून इथे तो ⁵C₂ = (5 × 4)/2 = 10. कारण निव्वळ मोजणी: गुणाकार उलगडणे म्हणजे पाच कंसांपैकी दोघांतून x घेणे आणि बाकीच्यांतून 1, आणि कोणते दोन हे ठरवण्याचे ⁵C₂ मार्ग आहेत. (20 ⁵P₂ देते आणि निवडलेल्या कंसांना क्रम नाही हे विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "In the expansion of (a + b)⁸, which term is the middle one? Give its position number.",
+      "choices": [
+        "9",
+        "4",
+        "5",
+        "8"
+      ],
+      "answerIndex": 2,
+      "solution": "There are 9 terms in all, and the middle of an odd number of terms is a single one: position 8/2 + 1 = 5. When the power is even there is exactly one middle term; when it is odd the count of terms is even and there are two middle terms instead. (4 halves the power and forgets that positions start at 1.)",
+      "checkExpr": "8/2+1",
+      "translations": {
+        "hi": {
+          "stem": "(a + b)⁸ के प्रसार में बीच का पद कौन-सा है? उसका स्थान-क्रमांक बताओ।",
+          "choices": [
+            "9",
+            "4",
+            "5",
+            "8"
+          ],
+          "solution": "कुल 9 पद हैं, और विषम संख्या के पदों का बीच एक ही होता है: स्थान 8/2 + 1 = 5. जब घात सम हो तो ठीक एक बीच का पद होता है; जब विषम हो तो पदों की गिनती सम होती है और बीच के पद दो होते हैं। (4 घात आधी कर देता है और भूल जाता है कि स्थान 1 से शुरू होते हैं।)"
+        },
+        "mr": {
+          "stem": "(a + b)⁸ च्या विस्तारात मधले पद कोणते? त्याचा जागा-क्रमांक सांगा.",
+          "choices": [
+            "9",
+            "4",
+            "5",
+            "8"
+          ],
+          "solution": "एकूण 9 पदे आहेत, आणि विषम संख्येच्या पदांचा मध्य एकच असतो: जागा 8/2 + 1 = 5. घात सम असेल तेव्हा नेमके एक मधले पद असते; विषम असेल तेव्हा पदांची मोजणी सम असते आणि मधली पदे दोन असतात. (4 घात निम्मी करते आणि जागा 1 पासून सुरू होतात हे विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the coefficient of x³ in the expansion of (1 + x)⁶ ?",
+      "choices": [
+        "6",
+        "20",
+        "120",
+        "15"
+      ],
+      "answerIndex": 1,
+      "solution": "The coefficient is ⁶C₃ = (6 × 5 × 4)/(3 × 2 × 1) = 120/6 = 20. This is the largest coefficient in the row, which is always the case when the power is even and the index sits exactly in the middle — the binomial coefficients rise to a peak and fall away symmetrically. (120 gives ⁶P₃ and never divides by 3!.)",
+      "checkExpr": "6*5*4/(3*2*1)",
+      "translations": {
+        "hi": {
+          "stem": "(1 + x)⁶ के प्रसार में x³ का गुणांक क्या है?",
+          "choices": [
+            "6",
+            "20",
+            "120",
+            "15"
+          ],
+          "solution": "गुणांक है ⁶C₃ = (6 × 5 × 4)/(3 × 2 × 1) = 120/6 = 20. यह पंक्ति का सबसे बड़ा गुणांक है, जो सदा तब होता है जब घात सम हो और सूचकांक ठीक बीच में बैठे — द्विपद गुणांक एक शिखर तक चढ़ते हैं और सममित रूप से उतर जाते हैं। (120 ⁶P₃ देता है और 3! से भाग देता ही नहीं।)"
+        },
+        "mr": {
+          "stem": "(1 + x)⁶ च्या विस्तारात x³ चा सहगुणक किती?",
+          "choices": [
+            "6",
+            "20",
+            "120",
+            "15"
+          ],
+          "solution": "सहगुणक आहे ⁶C₃ = (6 × 5 × 4)/(3 × 2 × 1) = 120/6 = 20. हा ओळीतला सर्वांत मोठा सहगुणक, जे नेहमी तेव्हा घडते जेव्हा घात सम असते आणि निर्देशांक नेमका मध्यात बसतो — द्विपद सहगुणक एका शिखरापर्यंत चढतात आणि सममितपणे उतरतात. (120 ⁶P₃ देते आणि 3! ने भागतच नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "In the expansion of (a + b)⁹, what is the exponent of a in the 4th term?",
+      "choices": [
+        "5",
+        "6",
+        "3",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "The general term is the (r + 1)th, carrying aⁿ⁻ʳbʳ, so the 4th term has r = 3 and the exponent of a is 9 − 3 = 6. The off-by-one between the term NUMBER and the value of r is where most marks go, and the check is easy: the two exponents must add to the power, and 6 + 3 = 9. (5 uses r = 4, reading the term number as r itself.)",
+      "checkExpr": "9-3",
+      "translations": {
+        "hi": {
+          "stem": "(a + b)⁹ के प्रसार में चौथे पद में a का घातांक क्या है?",
+          "choices": [
+            "5",
+            "6",
+            "3",
+            "4"
+          ],
+          "solution": "व्यापक पद (r + 1)वाँ है, जो aⁿ⁻ʳbʳ ढोता है, अतः चौथे पद में r = 3 और a का घातांक 9 − 3 = 6. पद-संख्या और r के मान के बीच का एक का अंतर ही अधिकांश अंक खा जाता है, और जाँच आसान है: दोनों घातांक जुड़कर वही घात बनें, और 6 + 3 = 9. (5 r = 4 लेता है, पद-संख्या को ही r पढ़कर।)"
+        },
+        "mr": {
+          "stem": "(a + b)⁹ च्या विस्तारात चौथ्या पदात a चा घातांक किती?",
+          "choices": [
+            "5",
+            "6",
+            "3",
+            "4"
+          ],
+          "solution": "व्यापक पद (r + 1)वे आहे, जे aⁿ⁻ʳbʳ वाहते, म्हणून चौथ्या पदात r = 3 आणि a चा घातांक 9 − 3 = 6. पद-संख्या आणि r चे मूल्य यांच्यातला एकाचा फरक बहुतांश गुण खातो, आणि तपासणी सोपी: दोन्ही घातांक जुळून तीच घात बनावी, आणि 6 + 3 = 9. (5 r = 4 घेते, पद-संख्येलाच r वाचून.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the coefficient of x³ in the expansion of (1 + x)⁸ ?",
+      "choices": [
+        "24",
+        "56",
+        "336",
+        "70"
+      ],
+      "answerIndex": 1,
+      "solution": "It is ⁸C₃ = (8 × 7 × 6)/(3 × 2 × 1) = 336/6 = 56. Worth noticing that this equals ⁸C₅, because choosing which three brackets supply an x is the same decision as choosing which five supply a 1 — every row of coefficients reads the same forwards and backwards. (70 is ⁸C₄, the peak of the row rather than the term asked for.)",
+      "checkExpr": "8*7*6/(3*2*1)",
+      "translations": {
+        "hi": {
+          "stem": "(1 + x)⁸ के प्रसार में x³ का गुणांक क्या है?",
+          "choices": [
+            "24",
+            "56",
+            "336",
+            "70"
+          ],
+          "solution": "वह ⁸C₃ = (8 × 7 × 6)/(3 × 2 × 1) = 336/6 = 56. ध्यान देने योग्य है कि यह ⁸C₅ के बराबर है, क्योंकि कौन-से तीन कोष्ठक x देंगे यह चुनना वही निर्णय है जो कौन-से पाँच 1 देंगे — गुणांकों की हर पंक्ति आगे से और पीछे से एक जैसी पढ़ी जाती है। (70 ⁸C₄ है, पंक्ति का शिखर, माँगा गया पद नहीं।)"
+        },
+        "mr": {
+          "stem": "(1 + x)⁸ च्या विस्तारात x³ चा सहगुणक किती?",
+          "choices": [
+            "24",
+            "56",
+            "336",
+            "70"
+          ],
+          "solution": "तो ⁸C₃ = (8 × 7 × 6)/(3 × 2 × 1) = 336/6 = 56. लक्षात घेण्याजोगे की हा ⁸C₅ इतकाच आहे, कारण कोणते तीन कंस x देतील हे निवडणे तोच निर्णय जो कोणते पाच 1 देतील — सहगुणकांची प्रत्येक ओळ पुढून आणि मागून सारखीच वाचली जाते. (70 हा ⁸C₄, ओळीचे शिखर, विचारलेले पद नव्हे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the constant term (the term free of x) in the expansion of (2x + 3)⁴ ?",
+      "choices": [
+        "24",
+        "12",
+        "81",
+        "16"
+      ],
+      "answerIndex": 2,
+      "solution": "The only term with no x is the one that takes 3 from all four brackets: 3⁴ = 81, with a coefficient of ⁴C₀ = 1. It is also what the whole expression becomes at x = 0, which is a quick way to check any constant term without expanding. (16 gives 2⁴, taking 2x from every bracket instead, which is the term in x⁴.)",
+      "checkExpr": "3*3*3*3",
+      "translations": {
+        "hi": {
+          "stem": "(2x + 3)⁴ के प्रसार में अचर पद (x से मुक्त पद) क्या है?",
+          "choices": [
+            "24",
+            "12",
+            "81",
+            "16"
+          ],
+          "solution": "बिना x वाला इकलौता पद वही है जो चारों कोष्ठकों से 3 लेता है: 3⁴ = 81, और गुणांक ⁴C₀ = 1. वह वही भी है जो x = 0 पर पूरा व्यंजक बनता है, और यह बिना प्रसार किए किसी भी अचर पद की जाँच का तेज़ रास्ता है। (16 2⁴ देता है, हर कोष्ठक से 2x लेकर, जो x⁴ वाला पद है।)"
+        },
+        "mr": {
+          "stem": "(2x + 3)⁴ च्या विस्तारात स्थिर पद (x विरहित पद) किती?",
+          "choices": [
+            "24",
+            "12",
+            "81",
+            "16"
+          ],
+          "solution": "x विरहित एकमेव पद तेच जे चारही कंसांतून 3 घेते: 3⁴ = 81, आणि सहगुणक ⁴C₀ = 1. तेच x = 0 वर अख्खी पदावली बनते, आणि हा विस्तार न करता कोणतेही स्थिर पद तपासण्याचा वेगवान मार्ग. (16 2⁴ देते, प्रत्येक कंसातून 2x घेऊन, जे x⁴ चे पद आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the coefficient of x² in the expansion of (1 + 2x)⁵ ?",
+      "choices": [
+        "80",
+        "10",
+        "40",
+        "20"
+      ],
+      "answerIndex": 2,
+      "solution": "The term is ⁵C₂ (2x)² = 10 × 4x², so the coefficient is 40. The 2 inside the bracket is squared along with the x, and forgetting that is the standard slip — it turns a factor of 4 into a factor of 2, or into nothing at all. Always raise the whole of the second term to the power, coefficient included. (10 gives the binomial coefficient alone and ignores the 2.)",
+      "checkExpr": "5*4/2*4",
+      "translations": {
+        "hi": {
+          "stem": "(1 + 2x)⁵ के प्रसार में x² का गुणांक क्या है?",
+          "choices": [
+            "80",
+            "10",
+            "40",
+            "20"
+          ],
+          "solution": "पद है ⁵C₂ (2x)² = 10 × 4x², अतः गुणांक 40. कोष्ठक के भीतर का 2 भी x के साथ वर्ग होता है, और उसे भूलना मानक चूक है — वह 4 के गुणक को 2 का बना देती है, या बिलकुल ही मिटा देती है। दूसरे पद को सदा गुणांक सहित पूरा घात तक उठाओ। (10 अकेला द्विपद गुणांक देता है और 2 की अनदेखी कर देता है।)"
+        },
+        "mr": {
+          "stem": "(1 + 2x)⁵ च्या विस्तारात x² चा सहगुणक किती?",
+          "choices": [
+            "80",
+            "10",
+            "40",
+            "20"
+          ],
+          "solution": "पद आहे ⁵C₂ (2x)² = 10 × 4x², म्हणून सहगुणक 40. कंसातला 2 सुद्धा x सोबत वर्ग होतो, आणि तो विसरणे ही प्रमाण चूक — ती 4 च्या गुणकाला 2 चा बनवते, वा अजिबातच मिटवते. दुसरे पद नेहमी सहगुणकासह पूर्ण घातापर्यंत न्या. (10 एकटा द्विपद सहगुणक देते आणि 2 दुर्लक्षते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the coefficient of the middle term in the expansion of (x + 1/x)¹⁰ ?",
+      "choices": [
+        "210",
+        "252",
+        "45",
+        "120"
+      ],
+      "answerIndex": 1,
+      "solution": "There are 11 terms, so the middle one is the 6th, with r = 5: ¹⁰C₅ x⁵ (1/x)⁵ = ¹⁰C₅. That works out to (10 × 9 × 8 × 7 × 6)/(5 × 4 × 3 × 2 × 1) = 30240/120 = 252. Notice that the x's cancel exactly here, so the middle term is also the constant term — which is why this particular expansion is a favourite for asking about the term independent of x. (210 gives ¹⁰C₄, the term one place to the left.)",
+      "checkExpr": "10*9*8*7*6/(5*4*3*2*1)",
+      "translations": {
+        "hi": {
+          "stem": "(x + 1/x)¹⁰ के प्रसार में बीच के पद का गुणांक क्या है?",
+          "choices": [
+            "210",
+            "252",
+            "45",
+            "120"
+          ],
+          "solution": "11 पद हैं, अतः बीच वाला छठा है, जिसमें r = 5: ¹⁰C₅ x⁵ (1/x)⁵ = ¹⁰C₅. वह बनता है (10 × 9 × 8 × 7 × 6)/(5 × 4 × 3 × 2 × 1) = 30240/120 = 252. ध्यान दो कि यहाँ x ठीक-ठीक कट जाते हैं, अतः बीच का पद अचर पद भी है — इसीलिए x से स्वतंत्र पद पूछने के लिए यही प्रसार सबसे प्रिय है। (210 ¹⁰C₄ देता है, बाईं ओर एक स्थान का पद।)"
+        },
+        "mr": {
+          "stem": "(x + 1/x)¹⁰ च्या विस्तारात मधल्या पदाचा सहगुणक किती?",
+          "choices": [
+            "210",
+            "252",
+            "45",
+            "120"
+          ],
+          "solution": "11 पदे आहेत, म्हणून मधले सहावे, ज्यात r = 5: ¹⁰C₅ x⁵ (1/x)⁵ = ¹⁰C₅. ते बनते (10 × 9 × 8 × 7 × 6)/(5 × 4 × 3 × 2 × 1) = 30240/120 = 252. लक्षात घ्या की इथे x नेमके छेदतात, म्हणून मधले पद हे स्थिर पदही आहे — म्हणूनच x पासून स्वतंत्र पद विचारण्यासाठी हाच विस्तार सर्वांत आवडता. (210 ¹⁰C₄ देते, डावीकडे एक जागेचे पद.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is the term independent of x in the expansion of (x² + 1/x)⁶ ?",
+      "choices": [
+        "20",
+        "6",
+        "15",
+        "30"
+      ],
+      "answerIndex": 2,
+      "solution": "The general term is ⁶Cᵣ (x²)⁶⁻ʳ (1/x)ʳ, whose power of x is 2(6 − r) − r = 12 − 3r. Setting 12 − 3r = 0 gives r = 4, so the term is ⁶C₄ = ⁶C₂ = 15. The method is worth extracting: write the exponent of x as a formula in r, set it to zero, and solve. If r had come out fractional or negative there would simply be no such term, which is itself a legitimate answer to this kind of question. (20 gives ⁶C₃, taking the middle term without checking where the x's cancel.)",
+      "checkExpr": "6*5/2",
+      "translations": {
+        "hi": {
+          "stem": "(x² + 1/x)⁶ के प्रसार में x से स्वतंत्र पद क्या है?",
+          "choices": [
+            "20",
+            "6",
+            "15",
+            "30"
+          ],
+          "solution": "व्यापक पद है ⁶Cᵣ (x²)⁶⁻ʳ (1/x)ʳ, जिसमें x की घात 2(6 − r) − r = 12 − 3r है। 12 − 3r = 0 रखने पर r = 4, अतः पद ⁶C₄ = ⁶C₂ = 15. विधि निकालने योग्य है: x का घातांक r में सूत्र के रूप में लिखो, उसे शून्य रखो, और हल करो। यदि r भिन्नात्मक या ऋणात्मक निकलता तो ऐसा कोई पद होता ही नहीं, और वह भी इस तरह के प्रश्न का वैध उत्तर है। (20 ⁶C₃ देता है, बीच का पद लेकर बिना जाँचे कि x कहाँ कटते हैं।)"
+        },
+        "mr": {
+          "stem": "(x² + 1/x)⁶ च्या विस्तारात x पासून स्वतंत्र पद किती?",
+          "choices": [
+            "20",
+            "6",
+            "15",
+            "30"
+          ],
+          "solution": "व्यापक पद आहे ⁶Cᵣ (x²)⁶⁻ʳ (1/x)ʳ, ज्यात x ची घात 2(6 − r) − r = 12 − 3r आहे. 12 − 3r = 0 ठेवल्यावर r = 4, म्हणून पद ⁶C₄ = ⁶C₂ = 15. पद्धत काढण्याजोगी: x चा घातांक r मध्ये सूत्र म्हणून लिहा, तो शून्य ठेवा, आणि सोडवा. r अपूर्णांकी वा ऋण निघाला असता तर असे पद नसतेच, आणि तेही या प्रकारच्या प्रश्नाचे वैध उत्तर आहे. (20 ⁶C₃ देते, मधले पद घेऊन x कुठे छेदतात हे न तपासता.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Using the first two terms of the binomial expansion, what is the approximate value of (1.01)⁵ ?",
+      "choices": [
+        "1.01",
+        "1.005",
+        "1.5",
+        "1.05"
+      ],
+      "answerIndex": 3,
+      "solution": "Write it as (1 + 0.01)⁵ and expand: 1 + 5(0.01) + 10(0.01)² + … The first two terms give 1 + 0.05 = 1.05. The third term is only 0.001, and the ones after it are smaller still, which is what makes stopping early legitimate — the expansion converges quickly because 0.01 raised to a power shrinks fast. The true value is 1.0510, so the approximation is right to three decimal places. This is the everyday use of the theorem: not expanding brackets but estimating a power that would be tedious to compute exactly. (1.5 treats 0.01 as 0.1.)",
+      "checkExpr": "1+5*0.01",
+      "translations": {
+        "hi": {
+          "stem": "द्विपद प्रसार के पहले दो पदों से (1.01)⁵ का सन्निकट मान क्या है?",
+          "choices": [
+            "1.01",
+            "1.005",
+            "1.5",
+            "1.05"
+          ],
+          "solution": "इसे (1 + 0.01)⁵ लिखकर खोलो: 1 + 5(0.01) + 10(0.01)² + … पहले दो पद देते हैं 1 + 0.05 = 1.05. तीसरा पद केवल 0.001 है, और उसके बाद वाले और भी छोटे, और यही जल्दी रुकना वैध बनाता है — प्रसार तेज़ी से अभिसरित होता है क्योंकि 0.01 घात तक उठकर तेज़ी से सिकुड़ता है। असली मान 1.0510 है, अतः सन्निकटन तीन दशमलव स्थानों तक ठीक है। प्रमेय का रोज़मर्रा का उपयोग यही है: कोष्ठक खोलना नहीं, बल्कि ऐसी घात का अनुमान लगाना जिसे ठीक-ठीक निकालना थकाऊ हो। (1.5 0.01 को 0.1 मान लेता है।)"
+        },
+        "mr": {
+          "stem": "द्विपद विस्ताराच्या पहिल्या दोन पदांनी (1.01)⁵ चे अंदाजे मूल्य किती?",
+          "choices": [
+            "1.01",
+            "1.005",
+            "1.5",
+            "1.05"
+          ],
+          "solution": "हे (1 + 0.01)⁵ असे लिहून उलगडा: 1 + 5(0.01) + 10(0.01)² + … पहिली दोन पदे देतात 1 + 0.05 = 1.05. तिसरे पद केवळ 0.001 आहे, आणि त्यानंतरची आणखी लहान, आणि हेच लवकर थांबणे वैध करते — विस्तार वेगाने अभिसरतो कारण 0.01 घातापर्यंत जाऊन वेगाने आकसतो. खरे मूल्य 1.0510 आहे, म्हणून अंदाज तीन दशांश स्थानांपर्यंत बरोबर. प्रमेयाचा रोजचा उपयोग हाच: कंस उलगडणे नव्हे, तर अशा घातेचा अंदाज लावणे जी नेमकी काढणे कंटाळवाणे असेल. (1.5 0.01 ला 0.1 मानते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "In the expansion of (1 + x)ⁿ the coefficient of x² is 66. What is n?",
+      "choices": [
+        "33",
+        "11",
+        "12",
+        "66"
+      ],
+      "answerIndex": 2,
+      "solution": "The coefficient of x² is ⁿC₂ = n(n − 1)/2, so n(n − 1) = 132. Looking for two consecutive whole numbers whose product is 132 gives 12 × 11, so n = 12. Solving the quadratic n² − n − 132 = 0 gives the same pair, 12 and −11, and the negative root is discarded because a power cannot be negative. Note the useful shortcut: n(n − 1) = 132 means n is close to the square root of 132, which is a little under 12 — so trying 12 first is not a guess but an estimate. (11 gives n − 1 rather than n.)",
+      "checkExpr": "132/11",
+      "translations": {
+        "hi": {
+          "stem": "(1 + x)ⁿ के प्रसार में x² का गुणांक 66 है। n क्या है?",
+          "choices": [
+            "33",
+            "11",
+            "12",
+            "66"
+          ],
+          "solution": "x² का गुणांक ⁿC₂ = n(n − 1)/2 है, अतः n(n − 1) = 132. ऐसी दो क्रमागत पूर्ण संख्याएँ ढूँढ़ो जिनका गुणनफल 132 हो, वे 12 × 11 हैं, अतः n = 12. द्विघात n² − n − 132 = 0 हल करने पर वही युग्म मिलता है, 12 और −11, और ऋणात्मक मूल छोड़ दिया जाता है क्योंकि घात ऋणात्मक नहीं हो सकती। उपयोगी शॉर्टकट ध्यान दो: n(n − 1) = 132 का अर्थ है कि n 132 के वर्गमूल के पास है, जो 12 से कुछ नीचे है — अतः पहले 12 आज़माना अनुमान नहीं, आकलन है। (11 n के बजाय n − 1 देता है।)"
+        },
+        "mr": {
+          "stem": "(1 + x)ⁿ च्या विस्तारात x² चा सहगुणक 66 आहे. n किती?",
+          "choices": [
+            "33",
+            "11",
+            "12",
+            "66"
+          ],
+          "solution": "x² चा सहगुणक ⁿC₂ = n(n − 1)/2 आहे, म्हणून n(n − 1) = 132. अशा दोन लागोपाठच्या पूर्ण संख्या शोधा ज्यांचा गुणाकार 132 असेल, त्या 12 × 11 आहेत, म्हणून n = 12. वर्गसमीकरण n² − n − 132 = 0 सोडवल्यावर तीच जोडी मिळते, 12 आणि −11, आणि ऋण मूळ सोडले जाते कारण घात ऋण असू शकत नाही. उपयुक्त शॉर्टकट लक्षात घ्या: n(n − 1) = 132 म्हणजे n हा 132 च्या वर्गमुळाजवळ आहे, जो 12 हून काहीसा खाली — म्हणून आधी 12 आजमावणे अंदाज नव्हे, आकलन आहे. (11 n ऐवजी n − 1 देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "What is the greatest binomial coefficient in the expansion of (1 + x)⁸ ?",
+      "choices": [
+        "70",
+        "256",
+        "56",
+        "28"
+      ],
+      "answerIndex": 0,
+      "solution": "The coefficients ⁸C₀ through ⁸C₈ rise to a single peak in the middle and fall away symmetrically, so the largest is ⁸C₄ = (8 × 7 × 6 × 5)/(4 × 3 × 2 × 1) = 1680/24 = 70. Two things generalise. When n is even the peak is a single coefficient at r = n/2; when n is odd there are two equal largest coefficients side by side, at r = (n − 1)/2 and (n + 1)/2. And the peak is not the sum — the coefficients here total 2⁸ = 256, so the largest single one is well under a third of the whole. (256 gives the sum of all the coefficients rather than the biggest.)",
+      "checkExpr": "8*7*6*5/(4*3*2*1)",
+      "translations": {
+        "hi": {
+          "stem": "(1 + x)⁸ के प्रसार का सबसे बड़ा द्विपद गुणांक क्या है?",
+          "choices": [
+            "70",
+            "256",
+            "56",
+            "28"
+          ],
+          "solution": "गुणांक ⁸C₀ से ⁸C₈ तक बीच में एक ही शिखर तक चढ़ते हैं और सममित रूप से उतर जाते हैं, अतः सबसे बड़ा ⁸C₄ = (8 × 7 × 6 × 5)/(4 × 3 × 2 × 1) = 1680/24 = 70. दो बातें सामान्य हैं। n सम हो तो शिखर r = n/2 पर एक अकेला गुणांक है; n विषम हो तो दो बराबर सबसे बड़े गुणांक साथ-साथ होते हैं, r = (n − 1)/2 और (n + 1)/2 पर। और शिखर योग नहीं है — यहाँ गुणांकों का कुल 2⁸ = 256 है, अतः सबसे बड़ा अकेला पूरे के तिहाई से भी अच्छा-ख़ासा नीचे है। (256 सबसे बड़े के बजाय सभी गुणांकों का योग देता है।)"
+        },
+        "mr": {
+          "stem": "(1 + x)⁸ च्या विस्तारातील सर्वांत मोठा द्विपद सहगुणक किती?",
+          "choices": [
+            "70",
+            "256",
+            "56",
+            "28"
+          ],
+          "solution": "सहगुणक ⁸C₀ पासून ⁸C₈ पर्यंत मध्यात एकाच शिखरापर्यंत चढतात आणि सममितपणे उतरतात, म्हणून सर्वांत मोठा ⁸C₄ = (8 × 7 × 6 × 5)/(4 × 3 × 2 × 1) = 1680/24 = 70. दोन गोष्टी सामान्य आहेत. n सम असेल तर शिखर r = n/2 वर एकच सहगुणक; n विषम असेल तर दोन समान सर्वांत मोठे सहगुणक शेजारी असतात, r = (n − 1)/2 आणि (n + 1)/2 वर. आणि शिखर ही बेरीज नव्हे — इथे सहगुणकांची एकूण 2⁸ = 256 आहे, म्हणून सर्वांत मोठा एकटा अख्ख्याच्या तृतीयांशाहूनही बराच खाली. (256 सर्वांत मोठ्याऐवजी सर्व सहगुणकांची बेरीज देते.)"
+        }
+      }
+    }
+  ]
+}

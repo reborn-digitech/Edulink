@@ -1,0 +1,513 @@
+{
+  "slug": "maths-11-permutations-and-combinations",
+  "subject": "MATHS",
+  "classLevel": 11,
+  "chapter": "Chapter 6 — Permutations and Combinations",
+  "name": "Permutations and Combinations",
+  "summary": "Counting arrangements too numerous to list, by multiplying the choices instead: the one question that decides everything is whether order matters, and after that it is a matter of dividing out the arrangements you have counted twice — of a committee that does not care who was picked first, or of two letters that look the same.",
+  "position": 6,
+  "translations": {
+    "hi": {
+      "name": "क्रमचय तथा संचय",
+      "summary": "इतनी अधिक व्यवस्थाएँ गिनना कि सूची बने ही नहीं, और वह भी विकल्पों को गुणा करके: सब कुछ तय करने वाला इकलौता प्रश्न यह है कि क्रम मायने रखता है या नहीं, और उसके बाद बात इतनी रह जाती है कि जो व्यवस्थाएँ दो बार गिनी गईं उन्हें भाग देकर हटा दो — उस समिति की जिसे परवाह नहीं कि पहले किसे चुना गया, या उन दो अक्षरों की जो एक जैसे दिखते हैं।"
+    },
+    "mr": {
+      "name": "क्रमचय आणि संचय",
+      "summary": "यादी बनवता येणार नाहीत इतक्या मांडण्या मोजणे, आणि तेही पर्याय गुणून: सारे ठरवणारा एकमेव प्रश्न म्हणजे क्रम महत्त्वाचा आहे का, आणि त्यानंतर गोष्ट इतकीच उरते की दोनदा मोजल्या गेलेल्या मांडण्या भागाकाराने काढून टाका — त्या समितीच्या जिला आधी कोणाला निवडले याची पर्वा नाही, वा त्या दोन अक्षरांच्या जी सारखी दिसतात."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the value of 5! ?",
+      "choices": [
+        "60",
+        "120",
+        "25",
+        "20"
+      ],
+      "answerIndex": 1,
+      "solution": "The factorial multiplies every whole number from 5 down to 1: 5 × 4 × 3 × 2 × 1 = 120. It counts the arrangements of five distinct objects, which is why it grows so fast — 10! is already over three million. (25 squares the number instead of multiplying the chain.)",
+      "checkExpr": "5*4*3*2*1",
+      "translations": {
+        "hi": {
+          "stem": "5! का मान क्या है?",
+          "choices": [
+            "60",
+            "120",
+            "25",
+            "20"
+          ],
+          "solution": "क्रमगुणित 5 से नीचे 1 तक हर पूर्ण संख्या को गुणा करता है: 5 × 4 × 3 × 2 × 1 = 120. वह पाँच भिन्न वस्तुओं की व्यवस्थाएँ गिनता है, इसीलिए वह इतनी तेज़ी से बढ़ता है — 10! पहले ही तीस लाख से ऊपर है। (25 शृंखला गुणा करने के बजाय संख्या का वर्ग कर देता है।)"
+        },
+        "mr": {
+          "stem": "5! चे मूल्य किती?",
+          "choices": [
+            "60",
+            "120",
+            "25",
+            "20"
+          ],
+          "solution": "क्रमगुणित 5 पासून खाली 1 पर्यंत प्रत्येक पूर्ण संख्या गुणतो: 5 × 4 × 3 × 2 × 1 = 120. तो पाच वेगळ्या वस्तूंच्या मांडण्या मोजतो, म्हणूनच तो इतक्या वेगाने वाढतो — 10! आधीच तीस लाखांहून वर आहे. (25 साखळी गुणण्याऐवजी संख्येचा वर्ग करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "In how many ways can 4 different books be arranged in a row on a shelf?",
+      "choices": [
+        "8",
+        "16",
+        "24",
+        "12"
+      ],
+      "answerIndex": 2,
+      "solution": "There are 4 books to choose for the first place, 3 left for the second, 2 for the third and 1 for the last: 4 × 3 × 2 × 1 = 24. Each choice removes one option from the next, which is exactly what makes this a factorial rather than a power. (16 uses 4 choices at every place, which would be right only if books could repeat.)",
+      "checkExpr": "4*3*2*1",
+      "translations": {
+        "hi": {
+          "stem": "4 भिन्न पुस्तकों को किसी ताक़ पर एक क़तार में कितने तरीक़ों से जमाया जा सकता है?",
+          "choices": [
+            "8",
+            "16",
+            "24",
+            "12"
+          ],
+          "solution": "पहले स्थान के लिए 4 पुस्तकें, दूसरे के लिए बची 3, तीसरे के लिए 2 और अंतिम के लिए 1: 4 × 3 × 2 × 1 = 24. हर चुनाव अगले से एक विकल्प हटा देता है, और ठीक यही इसे घात नहीं, क्रमगुणित बनाता है। (16 हर स्थान पर 4 विकल्प लेता है, जो तभी ठीक होता जब पुस्तकें दोहराई जा सकतीं।)"
+        },
+        "mr": {
+          "stem": "4 वेगवेगळी पुस्तके एका फळीवर रांगेत किती प्रकारे मांडता येतील?",
+          "choices": [
+            "8",
+            "16",
+            "24",
+            "12"
+          ],
+          "solution": "पहिल्या जागेसाठी 4 पुस्तके, दुसऱ्यासाठी उरलेली 3, तिसऱ्यासाठी 2 आणि शेवटच्यासाठी 1: 4 × 3 × 2 × 1 = 24. प्रत्येक निवड पुढच्यातून एक पर्याय काढते, आणि नेमके हेच याला घात नव्हे, क्रमगुणित बनवते. (16 प्रत्येक जागी 4 पर्याय घेते, जे पुस्तके पुन्हा वापरता आली असती तरच बरोबर.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "In how many ways can 2 pupils be chosen from a group of 6?",
+      "choices": [
+        "12",
+        "30",
+        "36",
+        "15"
+      ],
+      "answerIndex": 3,
+      "solution": "There are 6 × 5 = 30 ways to pick a first and a second pupil, but choosing Asha then Bina gives the same PAIR as choosing Bina then Asha, so every pair has been counted twice: 30/2 = 15. Dividing out the double count is the only thing that separates a combination from a permutation. (30 counts ordered pairs and never divides.)",
+      "checkExpr": "6*5/2",
+      "translations": {
+        "hi": {
+          "stem": "6 के समूह से 2 विद्यार्थी कितने तरीक़ों से चुने जा सकते हैं?",
+          "choices": [
+            "12",
+            "30",
+            "36",
+            "15"
+          ],
+          "solution": "पहला और दूसरा विद्यार्थी चुनने के 6 × 5 = 30 तरीक़े हैं, पर पहले आशा फिर बीना चुनना वही युग्म देता है जो पहले बीना फिर आशा, अतः हर युग्म दो बार गिना गया: 30/2 = 15. दोहरी गिनती को भाग देकर हटाना ही इकलौती बात है जो संचय को क्रमचय से अलग करती है। (30 क्रमित युग्म गिनता है और भाग देता ही नहीं।)"
+        },
+        "mr": {
+          "stem": "6 च्या गटातून 2 विद्यार्थी किती प्रकारे निवडता येतील?",
+          "choices": [
+            "12",
+            "30",
+            "36",
+            "15"
+          ],
+          "solution": "पहिला आणि दुसरा विद्यार्थी निवडण्याचे 6 × 5 = 30 मार्ग आहेत, पण आधी आशा मग बीना निवडणे तीच जोडी देते जी आधी बीना मग आशा, म्हणून प्रत्येक जोडी दोनदा मोजली गेली: 30/2 = 15. दुहेरी मोजणी भागाकाराने काढणे हीच एकमेव गोष्ट जी संचयाला क्रमचयापासून वेगळी करते. (30 क्रमित जोड्या मोजते आणि भागतच नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the value of ⁷P₂ ?",
+      "choices": [
+        "49",
+        "21",
+        "14",
+        "42"
+      ],
+      "answerIndex": 3,
+      "solution": "A permutation of 2 objects from 7 fills two ordered places: 7 choices then 6, so 7 × 6 = 42. The general shape is that ⁿPᵣ is r factors counted down from n — no more and no fewer — so ⁷P₂ needs exactly two of them. (21 divides by 2, which would turn the permutation into the combination ⁷C₂.)",
+      "checkExpr": "7*6",
+      "translations": {
+        "hi": {
+          "stem": "⁷P₂ का मान क्या है?",
+          "choices": [
+            "49",
+            "21",
+            "14",
+            "42"
+          ],
+          "solution": "7 में से 2 वस्तुओं का क्रमचय दो क्रमित स्थान भरता है: 7 विकल्प फिर 6, अतः 7 × 6 = 42. सामान्य आकार यह है कि ⁿPᵣ में n से नीचे गिनते r गुणनखंड होते हैं — न अधिक न कम — अतः ⁷P₂ को ठीक दो चाहिए। (21 2 से भाग दे देता है, जो क्रमचय को संचय ⁷C₂ बना देता।)"
+        },
+        "mr": {
+          "stem": "⁷P₂ चे मूल्य किती?",
+          "choices": [
+            "49",
+            "21",
+            "14",
+            "42"
+          ],
+          "solution": "7 पैकी 2 वस्तूंचा क्रमचय दोन क्रमित जागा भरतो: 7 पर्याय मग 6, म्हणून 7 × 6 = 42. सामान्य आकार असा की ⁿPᵣ मध्ये n पासून खाली मोजत r अवयव असतात — ना अधिक ना कमी — म्हणून ⁷P₂ ला नेमके दोन लागतात. (21 2 ने भागते, जे क्रमचयाला संचय ⁷C₂ बनवले असते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "How many 3-digit numbers can be formed from the digits 1, 2, 3, 4, 5 if no digit is repeated?",
+      "choices": [
+        "10",
+        "15",
+        "125",
+        "60"
+      ],
+      "answerIndex": 3,
+      "solution": "Fill the places left to right: 5 digits for the hundreds, 4 remaining for the tens, 3 for the units — 5 × 4 × 3 = 60. Order matters here because 123 and 321 are different numbers, so this is a permutation and nothing gets divided out. (125 allows repetition, giving 5 × 5 × 5.)",
+      "checkExpr": "5*4*3",
+      "translations": {
+        "hi": {
+          "stem": "अंक 1, 2, 3, 4, 5 से कितनी 3-अंकीय संख्याएँ बन सकती हैं यदि कोई अंक दोहराया न जाए?",
+          "choices": [
+            "10",
+            "15",
+            "125",
+            "60"
+          ],
+          "solution": "स्थान बाएँ से दाएँ भरो: सैकड़े के लिए 5 अंक, दहाई के लिए बचे 4, इकाई के लिए 3 — 5 × 4 × 3 = 60. यहाँ क्रम मायने रखता है क्योंकि 123 और 321 भिन्न संख्याएँ हैं, अतः यह क्रमचय है और कुछ भाग देकर हटाया नहीं जाता। (125 दोहराव की छूट देता है, जिससे 5 × 5 × 5.)"
+        },
+        "mr": {
+          "stem": "अंक 1, 2, 3, 4, 5 पासून किती 3-अंकी संख्या बनू शकतात जर कोणताही अंक पुनरावृत्त होत नसेल?",
+          "choices": [
+            "10",
+            "15",
+            "125",
+            "60"
+          ],
+          "solution": "जागा डावीकडून उजवीकडे भरा: शतकासाठी 5 अंक, दशकासाठी उरलेले 4, एककासाठी 3 — 5 × 4 × 3 = 60. इथे क्रम महत्त्वाचा कारण 123 आणि 321 वेगळ्या संख्या आहेत, म्हणून हा क्रमचय आणि काहीही भागाकाराने काढले जात नाही. (125 पुनरावृत्तीची मुभा देते, ज्यातून 5 × 5 × 5.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the value of ⁸C₃ ?",
+      "choices": [
+        "56",
+        "24",
+        "112",
+        "336"
+      ],
+      "answerIndex": 0,
+      "solution": "Take three factors counting down from 8 and divide by 3!: (8 × 7 × 6)/(3 × 2 × 1) = 336/6 = 56. The division removes the 6 different orders in which the same three people could have been picked. A useful check is that ⁸C₃ must equal ⁸C₅, since choosing three to include is the same as choosing five to leave out. (336 gives ⁸P₃ and forgets to divide by 3!.)",
+      "checkExpr": "8*7*6/(3*2*1)",
+      "translations": {
+        "hi": {
+          "stem": "⁸C₃ का मान क्या है?",
+          "choices": [
+            "56",
+            "24",
+            "112",
+            "336"
+          ],
+          "solution": "8 से नीचे गिनते तीन गुणनखंड लो और 3! से भाग दो: (8 × 7 × 6)/(3 × 2 × 1) = 336/6 = 56. भाग वे 6 भिन्न क्रम हटा देता है जिनमें वही तीन लोग चुने जा सकते थे। एक उपयोगी जाँच यह है कि ⁸C₃ को ⁸C₅ के बराबर होना चाहिए, क्योंकि तीन को भीतर लेना पाँच को बाहर छोड़ना ही है। (336 ⁸P₃ देता है और 3! से भाग देना भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "⁸C₃ चे मूल्य किती?",
+          "choices": [
+            "56",
+            "24",
+            "112",
+            "336"
+          ],
+          "solution": "8 पासून खाली मोजत तीन अवयव घ्या आणि 3! ने भागा: (8 × 7 × 6)/(3 × 2 × 1) = 336/6 = 56. भागाकार ते 6 वेगळे क्रम काढतो ज्यांत तीच तीन माणसे निवडली गेली असती. एक उपयुक्त तपासणी अशी की ⁸C₃ हे ⁸C₅ इतके असावे, कारण तिघांना आत घेणे म्हणजे पाचांना बाहेर सोडणेच. (336 ⁸P₃ देते आणि 3! ने भागणे विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "In how many ways can a committee of 3 be formed from 10 people?",
+      "choices": [
+        "30",
+        "120",
+        "1000",
+        "720"
+      ],
+      "answerIndex": 1,
+      "solution": "A committee has no first or second member, so order does not matter: (10 × 9 × 8)/(3 × 2 × 1) = 720/6 = 120. The single question to ask before choosing a formula is whether swapping two of the chosen people would give a different outcome. For a committee it would not; for a president and a secretary it would, and then the answer would be 720. (720 counts ordered selections, which is the answer to a different question.)",
+      "checkExpr": "10*9*8/(3*2*1)",
+      "translations": {
+        "hi": {
+          "stem": "10 लोगों में से 3 की समिति कितने तरीक़ों से बनाई जा सकती है?",
+          "choices": [
+            "30",
+            "120",
+            "1000",
+            "720"
+          ],
+          "solution": "समिति में पहला या दूसरा सदस्य नहीं होता, अतः क्रम मायने नहीं रखता: (10 × 9 × 8)/(3 × 2 × 1) = 720/6 = 120. सूत्र चुनने से पहले पूछने का इकलौता प्रश्न यह है कि चुने गए दो लोगों को अदल-बदल देने से परिणाम बदलेगा या नहीं। समिति के लिए नहीं बदलेगा; अध्यक्ष और सचिव के लिए बदलेगा, और तब उत्तर 720 होता। (720 क्रमित चयन गिनता है, जो दूसरे प्रश्न का उत्तर है।)"
+        },
+        "mr": {
+          "stem": "10 लोकांतून 3 जणांची समिती किती प्रकारे बनवता येईल?",
+          "choices": [
+            "30",
+            "120",
+            "1000",
+            "720"
+          ],
+          "solution": "समितीत पहिला वा दुसरा सदस्य नसतो, म्हणून क्रम महत्त्वाचा नाही: (10 × 9 × 8)/(3 × 2 × 1) = 720/6 = 120. सूत्र निवडण्याआधी विचारण्याचा एकमेव प्रश्न असा की निवडलेल्या दोघांची अदलाबदल केल्याने निकाल बदलेल का. समितीसाठी बदलणार नाही; अध्यक्ष आणि सचिवासाठी बदलेल, आणि तेव्हा उत्तर 720 झाले असते. (720 क्रमित निवडी मोजते, जे वेगळ्या प्रश्नाचे उत्तर.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "How many distinct arrangements are there of the letters of the word LEVEL?",
+      "choices": [
+        "30",
+        "60",
+        "120",
+        "20"
+      ],
+      "answerIndex": 0,
+      "solution": "There are 5 letters, so 5! = 120 arrangements if all were different — but the two L's can be swapped without changing anything, and so can the two E's. Divide by 2! for each: 120/(2 × 2) = 30. Repeated letters are the same double-counting problem as an unordered committee, wearing a different hat. (120 treats all five letters as distinct.)",
+      "checkExpr": "5*4*3*2*1/(2*2)",
+      "translations": {
+        "hi": {
+          "stem": "शब्द LEVEL के अक्षरों की कितनी भिन्न व्यवस्थाएँ हैं?",
+          "choices": [
+            "30",
+            "60",
+            "120",
+            "20"
+          ],
+          "solution": "5 अक्षर हैं, अतः सब भिन्न होते तो 5! = 120 व्यवस्थाएँ — पर दोनों L बिना कुछ बदले अदल-बदल सकते हैं, और दोनों E भी। हर एक के लिए 2! से भाग दो: 120/(2 × 2) = 30. दोहराए गए अक्षर वही दोहरी-गिनती की समस्या हैं जो अक्रमित समिति की है, बस दूसरी टोपी पहने। (120 पाँचों अक्षरों को भिन्न मान लेता है।)"
+        },
+        "mr": {
+          "stem": "LEVEL या शब्दाच्या अक्षरांच्या किती वेगळ्या मांडण्या आहेत?",
+          "choices": [
+            "30",
+            "60",
+            "120",
+            "20"
+          ],
+          "solution": "5 अक्षरे आहेत, म्हणून सर्व वेगळी असती तर 5! = 120 मांडण्या — पण दोन्ही L काहीही न बदलता अदलाबदल करू शकतात, आणि दोन्ही E सुद्धा. प्रत्येकासाठी 2! ने भागा: 120/(2 × 2) = 30. पुनरावृत्त अक्षरे हीच दुहेरी-मोजणीची अडचण जी अक्रमित समितीची आहे, फक्त दुसरी टोपी घालून. (120 पाचही अक्षरे वेगळी मानते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "In how many ways can 7 people be seated around a circular table?",
+      "choices": [
+        "120",
+        "49",
+        "5040",
+        "720"
+      ],
+      "answerIndex": 3,
+      "solution": "Around a circle there is no first seat, so rotating everyone by one place gives the same arrangement. Fix one person and arrange the other six relative to them: 6! = 720. In general n people in a circle give (n − 1)! arrangements, and the whole difference from a row is that a circle has no starting point. (5040 gives 7!, the answer for a straight row.)",
+      "checkExpr": "6*5*4*3*2*1",
+      "translations": {
+        "hi": {
+          "stem": "7 लोगों को गोल मेज़ के चारों ओर कितने तरीक़ों से बिठाया जा सकता है?",
+          "choices": [
+            "120",
+            "49",
+            "5040",
+            "720"
+          ],
+          "solution": "गोल में कोई पहली कुर्सी नहीं होती, अतः सबको एक स्थान घुमा देने पर वही व्यवस्था मिलती है। एक व्यक्ति को स्थिर करो और बाक़ी छह को उसके सापेक्ष जमाओ: 6! = 720. सामान्यतः गोल में n लोग (n − 1)! व्यवस्थाएँ देते हैं, और क़तार से पूरा अंतर यही है कि गोल का कोई आरंभ-बिंदु नहीं। (5040 7! देता है, जो सीधी क़तार का उत्तर है।)"
+        },
+        "mr": {
+          "stem": "7 लोकांना गोल टेबलाभोवती किती प्रकारे बसवता येईल?",
+          "choices": [
+            "120",
+            "49",
+            "5040",
+            "720"
+          ],
+          "solution": "गोलात पहिली खुर्ची नसते, म्हणून सर्वांना एक जागा फिरवल्यावर तीच मांडणी मिळते. एका व्यक्तीला स्थिर करा आणि उरलेल्या सहांना तिच्या सापेक्ष मांडा: 6! = 720. सामान्यतः गोलात n माणसे (n − 1)! मांडण्या देतात, आणि रांगेहून अख्खा फरक हाच की गोलाला आरंभबिंदू नाही. (5040 7! देते, जे सरळ रांगेचे उत्तर.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "From 5 men and 4 women, how many committees of 3 can be formed containing exactly 2 men?",
+      "choices": [
+        "84",
+        "60",
+        "40",
+        "20"
+      ],
+      "answerIndex": 2,
+      "solution": "Choose the men and the women separately, then multiply: ⁵C₂ = 10 ways to pick two men, ⁴C₁ = 4 ways to pick one woman, giving 10 × 4 = 40. Multiplying is right because every choice of men can go with every choice of women — the two decisions are independent. Note that the word EXACTLY does real work: without it you would have to add the cases of three men, two men, one man and none, which comes to ⁹C₃ = 84. (84 counts every committee of three regardless of composition.)",
+      "checkExpr": "5*4/2*4",
+      "translations": {
+        "hi": {
+          "stem": "5 पुरुषों और 4 स्त्रियों में से 3 की कितनी समितियाँ बनाई जा सकती हैं जिनमें ठीक 2 पुरुष हों?",
+          "choices": [
+            "84",
+            "60",
+            "40",
+            "20"
+          ],
+          "solution": "पुरुष और स्त्रियाँ अलग-अलग चुनो, फिर गुणा करो: दो पुरुष चुनने के ⁵C₂ = 10 तरीक़े, एक स्त्री चुनने के ⁴C₁ = 4, जिससे 10 × 4 = 40. गुणा इसलिए ठीक है कि पुरुषों का हर चुनाव स्त्रियों के हर चुनाव के साथ जा सकता है — दोनों निर्णय स्वतंत्र हैं। ध्यान दो कि ठीक शब्द असली काम करता है: उसके बिना तीन पुरुष, दो, एक और शून्य के मामले जोड़ने पड़ते, जो ⁹C₃ = 84 बनता है। (84 संरचना की परवाह किए बिना तीन की हर समिति गिनता है।)"
+        },
+        "mr": {
+          "stem": "5 पुरुष आणि 4 स्त्रियांतून 3 जणांच्या किती समित्या बनवता येतील ज्यांत नेमके 2 पुरुष असतील?",
+          "choices": [
+            "84",
+            "60",
+            "40",
+            "20"
+          ],
+          "solution": "पुरुष आणि स्त्रिया वेगवेगळ्या निवडा, मग गुणा: दोन पुरुष निवडण्याचे ⁵C₂ = 10 मार्ग, एक स्त्री निवडण्याचे ⁴C₁ = 4, ज्यातून 10 × 4 = 40. गुणाकार यासाठी बरोबर की पुरुषांची प्रत्येक निवड स्त्रियांच्या प्रत्येक निवडीसोबत जाऊ शकते — दोन्ही निर्णय स्वतंत्र आहेत. लक्षात घ्या की नेमके हा शब्द खरे काम करतो: त्याविना तीन पुरुष, दोन, एक आणि शून्य ही प्रकरणे जोडावी लागली असती, जे ⁹C₃ = 84 बनते. (84 रचनेची पर्वा न करता तिघांची प्रत्येक समिती मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "How many 4-letter arrangements can be made from the 8 distinct letters of EQUATION if no letter is repeated?",
+      "choices": [
+        "4096",
+        "70",
+        "336",
+        "1680"
+      ],
+      "answerIndex": 3,
+      "solution": "Four ordered places, filled from eight letters without repetition: 8 × 7 × 6 × 5 = 1680, which is ⁸P₄. The word ARRANGEMENTS is the signal that order counts — had the question asked how many SETS of four letters could be chosen, the answer would be ⁸C₄ = 70, smaller by the 24 orderings of each set. (70 answers the combination question instead of the permutation one.)",
+      "checkExpr": "8*7*6*5",
+      "translations": {
+        "hi": {
+          "stem": "EQUATION के 8 भिन्न अक्षरों से 4-अक्षरी कितनी व्यवस्थाएँ बन सकती हैं यदि कोई अक्षर दोहराया न जाए?",
+          "choices": [
+            "4096",
+            "70",
+            "336",
+            "1680"
+          ],
+          "solution": "चार क्रमित स्थान, आठ अक्षरों से बिना दोहराव भरे: 8 × 7 × 6 × 5 = 1680, जो ⁸P₄ है। व्यवस्थाएँ शब्द ही संकेत है कि क्रम गिना जाता है — यदि प्रश्न पूछता कि चार अक्षरों के कितने समुच्चय चुने जा सकते हैं, तो उत्तर ⁸C₄ = 70 होता, हर समुच्चय के 24 क्रमों जितना छोटा। (70 क्रमचय के बजाय संचय वाले प्रश्न का उत्तर देता है।)"
+        },
+        "mr": {
+          "stem": "EQUATION च्या 8 वेगळ्या अक्षरांतून 4-अक्षरी किती मांडण्या बनू शकतील जर कोणतेही अक्षर पुनरावृत्त होत नसेल?",
+          "choices": [
+            "4096",
+            "70",
+            "336",
+            "1680"
+          ],
+          "solution": "चार क्रमित जागा, आठ अक्षरांतून पुनरावृत्तीविना भरलेल्या: 8 × 7 × 6 × 5 = 1680, जे ⁸P₄ आहे. मांडण्या हा शब्दच संकेत की क्रम मोजला जातो — प्रश्नाने चार अक्षरांचे किती संच निवडता येतील असे विचारले असते, तर उत्तर ⁸C₄ = 70 झाले असते, प्रत्येक संचाच्या 24 क्रमांइतके लहान. (70 क्रमचयाऐवजी संचयाच्या प्रश्नाचे उत्तर देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "In how many ways can 5 boys and 3 girls sit in a row so that no two girls are next to each other?",
+      "choices": [
+        "14400",
+        "40320",
+        "2880",
+        "720"
+      ],
+      "answerIndex": 0,
+      "solution": "Seat the boys first: 5! = 120 ways. That creates 6 gaps — one at each end and four between them — and the girls must go into different gaps, which is ⁶P₃ = 6 × 5 × 4 = 120 ways. Multiply: 120 × 120 = 14400. The technique is worth naming: when a condition forbids two things from touching, arrange everything else first and drop the restricted items into the gaps that arrangement creates. (40320 gives 8!, the count with no restriction at all.)",
+      "checkExpr": "5*4*3*2*1*6*5*4",
+      "translations": {
+        "hi": {
+          "stem": "5 लड़के और 3 लड़कियाँ एक क़तार में कितने तरीक़ों से बैठ सकते हैं कि कोई दो लड़कियाँ साथ-साथ न हों?",
+          "choices": [
+            "14400",
+            "40320",
+            "2880",
+            "720"
+          ],
+          "solution": "पहले लड़कों को बिठाओ: 5! = 120 तरीक़े। इससे 6 अंतराल बनते हैं — हर सिरे पर एक और बीच में चार — और लड़कियों को भिन्न अंतरालों में जाना है, जो ⁶P₃ = 6 × 5 × 4 = 120 तरीक़े हैं। गुणा करो: 120 × 120 = 14400. तकनीक का नाम लेने योग्य है: जब कोई शर्त दो चीज़ों को छूने से रोके, पहले बाक़ी सब जमाओ और प्रतिबंधित वस्तुओं को उस व्यवस्था से बने अंतरालों में गिरा दो। (40320 8! देता है, जो बिना किसी प्रतिबंध की गिनती है।)"
+        },
+        "mr": {
+          "stem": "5 मुले आणि 3 मुली एका रांगेत किती प्रकारे बसू शकतील की कोणत्याही दोन मुली शेजारी नसतील?",
+          "choices": [
+            "14400",
+            "40320",
+            "2880",
+            "720"
+          ],
+          "solution": "आधी मुलांना बसवा: 5! = 120 मार्ग. यातून 6 फटी बनतात — प्रत्येक टोकाला एक आणि मध्ये चार — आणि मुलींना वेगवेगळ्या फटींत जायचे आहे, जे ⁶P₃ = 6 × 5 × 4 = 120 मार्ग. गुणा: 120 × 120 = 14400. तंत्राचे नाव घेण्याजोगे: जेव्हा एखादी अट दोन गोष्टींना स्पर्श करण्यापासून रोखते, तेव्हा आधी बाकी सारे मांडा आणि निर्बंधित वस्तू त्या मांडणीतून बनलेल्या फटींत टाका. (40320 8! देते, जी कोणत्याही निर्बंधाविनाची मोजणी.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "How many diagonals does a polygon with 10 sides have?",
+      "choices": [
+        "20",
+        "35",
+        "90",
+        "45"
+      ],
+      "answerIndex": 1,
+      "solution": "Every pair of vertices joins to make a straight segment, and there are ¹⁰C₂ = 45 such pairs. But 10 of those segments are the sides of the polygon rather than diagonals, so 45 − 10 = 35. The whole method is to count something easy and then subtract what should not have been counted — which is far quicker than trying to enumerate diagonals directly, and generalises to n(n − 3)/2 for any polygon. (45 counts every segment, sides included.)",
+      "checkExpr": "10*9/2-10",
+      "translations": {
+        "hi": {
+          "stem": "10 भुजाओं वाले बहुभुज में कितने विकर्ण होते हैं?",
+          "choices": [
+            "20",
+            "35",
+            "90",
+            "45"
+          ],
+          "solution": "शीर्षों का हर युग्म जुड़कर एक सरल खंड बनाता है, और ऐसे ¹⁰C₂ = 45 युग्म हैं। पर उनमें से 10 खंड विकर्ण नहीं, बहुभुज की भुजाएँ हैं, अतः 45 − 10 = 35. पूरी विधि यह है कि कोई आसान चीज़ गिनो और फिर वह घटा दो जिसे गिना नहीं जाना चाहिए था — जो विकर्ण सीधे गिनने की कोशिश से कहीं तेज़ है, और किसी भी बहुभुज के लिए n(n − 3)/2 बन जाता है। (45 भुजाओं सहित हर खंड गिनता है।)"
+        },
+        "mr": {
+          "stem": "10 बाजू असलेल्या बहुभुजात किती कर्ण असतात?",
+          "choices": [
+            "20",
+            "35",
+            "90",
+            "45"
+          ],
+          "solution": "शिरोबिंदूंची प्रत्येक जोडी जुळून एक सरळ खंड बनवते, आणि असे ¹⁰C₂ = 45 जोड्या आहेत. पण त्यांपैकी 10 खंड कर्ण नव्हे, बहुभुजाच्या बाजू आहेत, म्हणून 45 − 10 = 35. अख्खी पद्धत अशी की काहीतरी सोपे मोजा आणि मग जे मोजायला नको होते ते वजा करा — जे कर्ण थेट मोजण्याच्या प्रयत्नाहून कितीतरी वेगवान, आणि कोणत्याही बहुभुजासाठी n(n − 3)/2 बनते. (45 बाजूंसह प्रत्येक खंड मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "How many distinct arrangements are there of the letters of the word ALLAHABAD?",
+      "choices": [
+        "3780",
+        "7560",
+        "362880",
+        "15120"
+      ],
+      "answerIndex": 1,
+      "solution": "The word has 9 letters, of which A appears 4 times and L appears twice, while H, B and D appear once each. Were all nine distinct there would be 9! = 362880 arrangements; but the four A's can be permuted among themselves in 4! = 24 ways without changing the word, and the two L's in 2! = 2 ways. Divide both out: 362880/(24 × 2) = 362880/48 = 7560. Two habits make this safe. Count the letters before anything else — nine, not eight, since it is easy to miss a repeat. And divide by the factorial of each repeat COUNT, not by the count itself; dividing by 4 × 2 instead of 24 × 2 gives 45360 and is the commonest error here. (362880 treats all nine letters as different.)",
+      "checkExpr": "9*8*7*6*5*4*3*2*1/(24*2)",
+      "translations": {
+        "hi": {
+          "stem": "शब्द ALLAHABAD के अक्षरों की कितनी भिन्न व्यवस्थाएँ हैं?",
+          "choices": [
+            "3780",
+            "7560",
+            "362880",
+            "15120"
+          ],
+          "solution": "शब्द में 9 अक्षर हैं, जिनमें A चार बार आता है और L दो बार, जबकि H, B और D एक-एक बार। नौ भिन्न होते तो 9! = 362880 व्यवस्थाएँ होतीं; पर चारों A आपस में 4! = 24 तरीक़ों से बदल सकते हैं बिना शब्द बदले, और दोनों L 2! = 2 तरीक़ों से। दोनों भाग देकर हटाओ: 362880/(24 × 2) = 362880/48 = 7560. दो आदतें इसे सुरक्षित बनाती हैं। किसी और चीज़ से पहले अक्षर गिनो — नौ, आठ नहीं, क्योंकि कोई दोहराव छूट जाना आसान है। और हर दोहराव की गिनती के क्रमगुणित से भाग दो, गिनती से नहीं; 24 × 2 के बजाय 4 × 2 से भाग देने पर 45360 मिलता है और यही यहाँ की सबसे आम भूल है। (362880 नौों अक्षरों को भिन्न मान लेता है।)"
+        },
+        "mr": {
+          "stem": "ALLAHABAD या शब्दाच्या अक्षरांच्या किती वेगळ्या मांडण्या आहेत?",
+          "choices": [
+            "3780",
+            "7560",
+            "362880",
+            "15120"
+          ],
+          "solution": "शब्दात 9 अक्षरे आहेत, ज्यांत A चार वेळा येते आणि L दोनदा, तर H, B आणि D एकेकदा. नऊही वेगळी असती तर 9! = 362880 मांडण्या झाल्या असत्या; पण चारही A आपापसात 4! = 24 प्रकारे बदलू शकतात शब्द न बदलता, आणि दोन्ही L 2! = 2 प्रकारे. दोन्ही भागाकाराने काढा: 362880/(24 × 2) = 362880/48 = 7560. दोन सवयी हे सुरक्षित करतात. इतर कशाहीआधी अक्षरे मोजा — नऊ, आठ नव्हे, कारण एखादी पुनरावृत्ती निसटणे सोपे. आणि प्रत्येक पुनरावृत्तीच्या मोजणीच्या क्रमगुणिताने भागा, मोजणीने नव्हे; 24 × 2 ऐवजी 4 × 2 ने भागल्यास 45360 मिळते आणि हीच इथली सर्वांत सामान्य चूक. (362880 नऊही अक्षरे वेगळी मानते.)"
+        }
+      }
+    }
+  ]
+}
