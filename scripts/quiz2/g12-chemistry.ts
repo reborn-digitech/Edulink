@@ -728,6 +728,703 @@ export const G12_CHEMISTRY: Chapter[] = [
     ],
   },
   /*C1*/
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 3 — Chemical Kinetics                                           */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "chemistry-12-chemical-kinetics",
+    subject: "CHEMISTRY",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 3 — Chemical Kinetics",
+      hi: "अध्याय 3 — रासायनिक बलगतिकी",
+      mr: "प्रकरण 3 — रासायनिक गतिकी",
+    },
+    name: {
+      en: "Chemical Kinetics",
+      hi: "रासायनिक बलगतिकी",
+      mr: "रासायनिक गतिकी",
+    },
+    summary: {
+      en: "The half of chemistry that thermodynamics leaves out: a diamond is thermodynamically bound to turn into graphite and does not, because nothing in a free energy change says how long. A rate law that has to be found by experiment because it cannot be read off the balanced equation, and whose exponents are therefore evidence about a mechanism rather than a restatement of the recipe; a constant whose units change with the order, which is a warning that it is not one quantity but a family; a hill the reactants must climb before they can fall, so that a reaction which releases energy may still need some to start; a temperature dependence so steep that ten degrees can double a rate; and a catalyst that lowers the hill from both sides at once and therefore changes when equilibrium is reached without changing where.",
+      hi: "रसायन का वह आधा जो ऊष्मागतिकी छोड़ देती है: हीरे को ऊष्मागतिकी की दृष्टि से ग्रैफ़ाइट बन ही जाना चाहिए और वह नहीं बनता, क्योंकि मुक्त ऊर्जा परिवर्तन में कहीं नहीं लिखा कि कितनी देर में। ऐसा वेग नियम जिसे प्रयोग से खोजना पड़ता है क्योंकि वह संतुलित समीकरण से पढ़ा नहीं जा सकता, और जिसकी घातें इसलिए किसी क्रियाविधि का प्रमाण हैं, नुस्ख़े का दुहराव नहीं; ऐसा स्थिरांक जिसके मात्रक कोटि के साथ बदलते हैं, जो चेतावनी है कि वह एक राशि नहीं बल्कि एक कुल है; वह पहाड़ी जिस पर अभिकारकों को गिरने से पहले चढ़ना पड़ता है, अतः जो अभिक्रिया ऊर्जा देती है उसे भी शुरू होने के लिए कुछ चाहिए हो सकती है; इतनी तीखी ताप-निर्भरता कि दस अंश वेग दुगुना कर दें; और वह उत्प्रेरक जो पहाड़ी को दोनों ओर से एक साथ नीचा करता है और इसलिए बदलता है कि साम्य कब आएगा, यह नहीं कि कहाँ।",
+      mr: "रसायनाचा तो अर्धा भाग जो उष्मागतिकी सोडून देते: हिऱ्याने उष्मागतिकीच्या दृष्टीने ग्रॅफाइट बनायलाच हवे आणि तो बनत नाही, कारण मुक्त ऊर्जा बदलात कुठेही लिहिलेले नाही की किती वेळात. असा वेग नियम जो प्रयोगाने शोधावा लागतो कारण तो संतुलित समीकरणावरून वाचता येत नाही, आणि ज्याच्या घाती म्हणून एखाद्या यंत्रणेचा पुरावा आहेत, कृतीची पुनरुक्ती नव्हे; असा स्थिरांक ज्याची एकके कोटीसोबत बदलतात, जी सूचना आहे की तो एक राशी नसून एक कुळ आहे; ती टेकडी जिच्यावर अभिक्रियकांना पडण्याआधी चढावे लागते, म्हणून जी अभिक्रिया ऊर्जा देते तिलाही सुरू होण्यास काहीशी लागू शकते; इतकी तीक्ष्ण तापमान-अवलंबिता की दहा अंश वेग दुप्पट करावेत; आणि तो उत्प्रेरक जो टेकडी दोन्ही बाजूंनी एकाच वेळी खाली आणतो आणि म्हणून बदलतो की समतोल कधी येईल, हे नाही की कुठे.",
+    },
+    position: 3,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "rate-law-and-order",
+        name: {
+          en: "The rate law and order of reaction",
+          hi: "वेग नियम और अभिक्रिया की कोटि",
+          mr: "वेग नियम आणि अभिक्रियेची कोटी",
+        },
+        kind: "rate concept",
+        prompt: {
+          en: "An equation showing how the rate depends on the concentrations, with exponents that must be found by measurement and which frequently do not match the coefficients in the balanced equation at all. What is this?",
+          hi: "ऐसा समीकरण जो दिखाता है कि वेग सांद्रताओं पर कैसे निर्भर है, जिसकी घातें माप से खोजनी पड़ती हैं और जो प्रायः संतुलित समीकरण के गुणांकों से मेल खाती ही नहीं। यह क्या है?",
+          mr: "असे समीकरण जे दाखवते की वेग संहतींवर कसा अवलंबून आहे, ज्याच्या घाती मापनाने शोधाव्या लागतात आणि ज्या बहुधा संतुलित समीकरणाच्या गुणकांशी जुळतच नाहीत. हे काय आहे?",
+        },
+        statement: {
+          en: "The rate law expresses the rate as k[A]^x[B]^y with x and y determined experimentally, and their sum is the order of the reaction.",
+          hi: "वेग नियम वेग को k[A]^x[B]^y के रूप में व्यक्त करता है जिसमें x और y प्रयोग से तय होते हैं, और उनका योग अभिक्रिया की कोटि है।",
+          mr: "वेग नियम वेगाला k[A]^x[B]^y या रूपात मांडतो जिथे x आणि y प्रयोगाने ठरतात, आणि त्यांची बेरीज अभिक्रियेची कोटी आहे.",
+        },
+        detail: {
+          en: "Order is a property of the mechanism while the coefficients are a property of the bookkeeping, so a reaction written with a 2 in front of a reactant may still be first order in it.",
+          hi: "कोटि क्रियाविधि का गुण है जबकि गुणांक हिसाब का गुण हैं, अतः जिस अभिक्रिया के किसी अभिकारक के आगे 2 लिखा हो वह उसमें प्रथम कोटि की हो सकती है।",
+          mr: "कोटी ही यंत्रणेचा गुणधर्म आहे तर गुणक हिशेबाचा गुणधर्म आहेत, म्हणून ज्या अभिक्रियेच्या एखाद्या अभिक्रियकासमोर 2 लिहिलेले असेल ती त्यात प्रथम कोटीची असू शकते.",
+        },
+        extra: {
+          en: "It can be zero or even fractional, which no molecular count could ever be, and that alone shows the exponents are not counting molecules colliding but describing a many-step process from outside.",
+          hi: "वह शून्य या भिन्नात्मक तक हो सकती है, जो कोई आणविक गिनती कभी नहीं हो सकती, और यही अकेला दिखा देता है कि घातें टकराते अणु नहीं गिन रहीं बल्कि बहु-चरण प्रक्रिया को बाहर से बता रही हैं।",
+          mr: "ती शून्य वा अपूर्णांकीही असू शकते, जी कोणतीही रेणवीय मोजणी कधीच असू शकत नाही, आणि हेच एकटे दाखवते की घाती आदळणारे रेणू मोजत नसून बहु-पायरी प्रक्रियेचे बाहेरून वर्णन करत आहेत.",
+        },
+        pair: {
+          left: {
+            en: "Found by experiment, never read off the equation",
+            hi: "प्रयोग से खोजी गई, समीकरण से कभी नहीं पढ़ी गई",
+            mr: "प्रयोगाने शोधलेली, समीकरणावरून कधीच वाचलेली नाही",
+          },
+          right: {
+            en: "the rate law and order of reaction",
+            hi: "वेग नियम और अभिक्रिया की कोटि",
+            mr: "वेग नियम आणि अभिक्रियेची कोटी",
+          },
+        },
+      },
+      {
+        id: "rate-constant",
+        name: {
+          en: "The rate constant",
+          hi: "वेग स्थिरांक",
+          mr: "वेग स्थिरांक",
+        },
+        kind: "rate concept",
+        prompt: {
+          en: "The proportionality factor in a rate law, unchanged by how much of anything is present but changed sharply by temperature — and whose very units give away the order of the reaction. What is it?",
+          hi: "वेग नियम का समानुपात गुणक, जो कितना कुछ मौजूद है इससे नहीं बदलता पर ताप से तीखेपन से बदलता है — और जिसके मात्रक ही अभिक्रिया की कोटि बता देते हैं। यह क्या है?",
+          mr: "वेग नियमातील समानुपात गुणक, जो किती काही उपस्थित आहे याने बदलत नाही पण तापमानाने तीव्रपणे बदलतो — आणि ज्याची एककेच अभिक्रियेची कोटी सांगून टाकतात. हा काय आहे?",
+        },
+        statement: {
+          en: "The rate constant k is the rate when every concentration is unity, independent of concentration but strongly dependent on temperature and on the presence of a catalyst.",
+          hi: "वेग स्थिरांक k वह वेग है जब हर सांद्रता एकांक हो, जो सांद्रता से स्वतंत्र है पर ताप और उत्प्रेरक की उपस्थिति पर प्रबल रूप से निर्भर।",
+          mr: "वेग स्थिरांक k म्हणजे तो वेग जेव्हा प्रत्येक संहती एकक असेल, जो संहतीपासून स्वतंत्र आहे पण तापमानावर आणि उत्प्रेरकाच्या उपस्थितीवर तीव्रपणे अवलंबून.",
+        },
+        detail: {
+          en: "Its units change with the order — s⁻¹ for first order, L mol⁻¹ s⁻¹ for second — so quoting a rate constant without saying the order is like quoting a length without saying whether it is metres or feet.",
+          hi: "उसके मात्रक कोटि के साथ बदलते हैं — प्रथम कोटि के लिए s⁻¹, द्वितीय के लिए L mol⁻¹ s⁻¹ — अतः कोटि बताए बिना वेग स्थिरांक बताना ऐसा है जैसे यह कहे बिना लंबाई बताना कि वह मीटर में है या फुट में।",
+          mr: "त्याची एकके कोटीसोबत बदलतात — प्रथम कोटीसाठी s⁻¹, द्वितीयसाठी L mol⁻¹ s⁻¹ — म्हणून कोटी न सांगता वेग स्थिरांक सांगणे म्हणजे मीटरमध्ये आहे की फुटांत हे न सांगता लांबी सांगण्यासारखे.",
+        },
+        extra: {
+          en: "It is a constant only with respect to concentration, which is exactly the sense in which it is useful: it lets a rate measured at one concentration predict the rate at another without repeating the experiment.",
+          hi: "वह केवल सांद्रता के सापेक्ष स्थिरांक है, और ठीक उसी अर्थ में वह काम का है: वह एक सांद्रता पर नापे गए वेग से दूसरी सांद्रता का वेग बता देता है, प्रयोग दोहराए बिना।",
+          mr: "तो केवळ संहतीच्या सापेक्ष स्थिरांक आहे, आणि नेमक्या त्याच अर्थाने तो उपयुक्त आहे: तो एका संहतीवर मोजलेल्या वेगावरून दुसऱ्या संहतीचा वेग सांगतो, प्रयोग पुन्हा न करता.",
+        },
+        pair: {
+          left: {
+            en: "Its units confess the order",
+            hi: "उसके मात्रक कोटि उगल देते हैं",
+            mr: "त्याची एकके कोटी सांगून टाकतात",
+          },
+          right: {
+            en: "the rate constant",
+            hi: "वेग स्थिरांक",
+            mr: "वेग स्थिरांक",
+          },
+        },
+      },
+      {
+        id: "first-order-half-life",
+        name: {
+          en: "The half-life of a first-order reaction",
+          hi: "प्रथम कोटि अभिक्रिया की अर्धायु",
+          mr: "प्रथम कोटी अभिक्रियेचे अर्धायुष्य",
+        },
+        kind: "rate concept",
+        prompt: {
+          en: "The time in which half of what is present is used up, and which for one particular order comes out the same whether you start with a gram or a tonne. Which quantity is this?",
+          hi: "वह समय जिसमें जो मौजूद है उसका आधा खप जाता है, और जो एक विशेष कोटि के लिए एक जैसा निकलता है, चाहे तुम एक ग्राम से शुरू करो या एक टन से। यह कौन-सी राशि है?",
+          mr: "तो काळ ज्यात जे उपस्थित आहे त्याचा निम्मा खर्च होतो, आणि जो एका विशिष्ट कोटीसाठी सारखाच निघतो, तुम्ही एका ग्रॅमपासून सुरू करा वा एका टनापासून. ही कोणती राशी?",
+        },
+        statement: {
+          en: "The half-life of a first-order reaction is t½ = 0.693/k, independent of the starting concentration, so successive halvings take equal times.",
+          hi: "प्रथम कोटि अभिक्रिया की अर्धायु t½ = 0.693/k है, जो आरंभिक सांद्रता से स्वतंत्र है, अतः लगातार आधे होने में बराबर समय लगता है।",
+          mr: "प्रथम कोटी अभिक्रियेचे अर्धायुष्य t½ = 0.693/k आहे, जे प्रारंभिक संहतीपासून स्वतंत्र आहे, म्हणून लागोपाठ निम्मे होण्यास समान काळ लागतो.",
+        },
+        detail: {
+          en: "The independence is the signature of first order and of no other: a zero-order half-life halves as the concentration halves, and a second-order one doubles.",
+          hi: "यह स्वतंत्रता प्रथम कोटि की पहचान है और किसी और की नहीं: शून्य कोटि की अर्धायु सांद्रता आधी होते ही आधी हो जाती है, और द्वितीय कोटि की दुगुनी।",
+          mr: "हे स्वातंत्र्य प्रथम कोटीची खूण आहे आणि दुसऱ्या कोणाचीही नाही: शून्य कोटीचे अर्धायुष्य संहती निम्मी होताच निम्मे होते, आणि द्वितीय कोटीचे दुप्पट.",
+        },
+        extra: {
+          en: "It is the same mathematics as radioactive decay, and for the same reason: in both, each individual has a fixed chance of reacting per second regardless of how many neighbours it has.",
+          hi: "यह रेडियोऐक्टिव क्षय जैसा ही गणित है, और उसी कारण से: दोनों में हर व्यक्ति के प्रति सेकंड अभिक्रिया करने की संभावना नियत है, चाहे उसके कितने भी पड़ोसी हों।",
+          mr: "हे किरणोत्सर्गी क्षयासारखेच गणित आहे, आणि त्याच कारणाने: दोन्हींत प्रत्येक व्यक्तीची दर सेकंदाला अभिक्रिया करण्याची शक्यता ठराविक आहे, त्याला कितीही शेजारी असोत.",
+        },
+        pair: {
+          left: {
+            en: "The same whether you start with a gram or a tonne",
+            hi: "एक जैसी, चाहे ग्राम से शुरू करो या टन से",
+            mr: "सारखेच, ग्रॅमपासून सुरू करा वा टनापासून",
+          },
+          right: {
+            en: "the half-life of a first-order reaction",
+            hi: "प्रथम कोटि अभिक्रिया की अर्धायु",
+            mr: "प्रथम कोटी अभिक्रियेचे अर्धायुष्य",
+          },
+        },
+      },
+      {
+        id: "activation-energy",
+        name: {
+          en: "Activation energy",
+          hi: "सक्रियण ऊर्जा",
+          mr: "सक्रियण ऊर्जा",
+        },
+        kind: "what changes the rate",
+        prompt: {
+          en: "The barrier that must be climbed before bonds can be rearranged, which is why a mixture of petrol and air sits in a tank for months and then burns in a millisecond once a spark supplies the first push. What is it?",
+          hi: "वह अवरोध जिस पर चढ़े बिना बंध फिर से जमाए नहीं जा सकते, इसीलिए पेट्रोल और हवा का मिश्रण टंकी में महीनों पड़ा रहता है और चिनगारी पहला धक्का देते ही मिलीसेकंड में जल जाता है। यह क्या है?",
+          mr: "तो अडसर ज्यावर चढल्याशिवाय बंध पुन्हा मांडता येत नाहीत, म्हणूनच पेट्रोल आणि हवेचे मिश्रण टाकीत महिने पडून राहते आणि ठिणगी पहिला धक्का देताच मिलिसेकंदात जळते. हे काय आहे?",
+        },
+        statement: {
+          en: "Activation energy is the minimum energy a colliding pair must have for reaction, measured from the reactants up to the top of the barrier and not from the products.",
+          hi: "सक्रियण ऊर्जा वह न्यूनतम ऊर्जा है जो टकराते युग्म के पास अभिक्रिया के लिए होनी चाहिए, जो अभिकारकों से अवरोध की चोटी तक नापी जाती है, उत्पादों से नहीं।",
+          mr: "सक्रियण ऊर्जा म्हणजे ती किमान ऊर्जा जी आदळणाऱ्या जोडीकडे अभिक्रियेसाठी असावी लागते, जी अभिक्रियकांपासून अडसराच्या शिखरापर्यंत मोजली जाते, उत्पादनांपासून नाही.",
+        },
+        detail: {
+          en: "It is entirely separate from the enthalpy change: a strongly exothermic reaction can have a huge barrier and be immeasurably slow, which is why diamond has not turned into graphite.",
+          hi: "यह एन्थैल्पी परिवर्तन से पूरी तरह अलग है: प्रबल ऊष्माक्षेपी अभिक्रिया का अवरोध विशाल हो सकता है और वह अनापनीय रूप से धीमी हो सकती है, इसीलिए हीरा ग्रैफ़ाइट नहीं बना है।",
+          mr: "हे एन्थॅल्पी बदलापासून पूर्णपणे वेगळे आहे: तीव्र उष्माक्षेपी अभिक्रियेचा अडसर प्रचंड असू शकतो आणि ती अमापनीयरीत्या सावकाश असू शकते, म्हणूनच हिरा ग्रॅफाइट बनलेला नाही.",
+        },
+        extra: {
+          en: "The forward and reverse barriers differ by exactly the enthalpy change, so knowing two of the three fixes the third and the energy profile can be drawn from either end.",
+          hi: "अग्र और प्रतीप अवरोध ठीक एन्थैल्पी परिवर्तन जितने भिन्न हैं, अतः तीन में से दो जानने पर तीसरा तय हो जाता है और ऊर्जा-रूपरेखा किसी भी सिरे से खींची जा सकती है।",
+          mr: "अग्र आणि प्रतीप अडसर नेमक्या एन्थॅल्पी बदलाइतके वेगळे आहेत, म्हणून तिघांपैकी दोन जाणल्यास तिसरा ठरतो आणि ऊर्जा-आराखडा कोणत्याही टोकाकडून काढता येतो.",
+        },
+        pair: {
+          left: {
+            en: "Why a tank of petrol is safe until it is not",
+            hi: "इसीलिए पेट्रोल की टंकी तब तक सुरक्षित है जब तक नहीं है",
+            mr: "म्हणूनच पेट्रोलची टाकी तोवर सुरक्षित जोवर नाही",
+          },
+          right: {
+            en: "activation energy",
+            hi: "सक्रियण ऊर्जा",
+            mr: "सक्रियण ऊर्जा",
+          },
+        },
+      },
+      {
+        id: "arrhenius-temperature-dependence",
+        name: {
+          en: "The Arrhenius dependence on temperature",
+          hi: "ताप पर आरेनियस निर्भरता",
+          mr: "तापमानावरील अरेनियस अवलंबिता",
+        },
+        kind: "what changes the rate",
+        prompt: {
+          en: "Raising the temperature by ten degrees near room temperature roughly doubles most rates, although the molecules are moving only about two per cent faster. Which relation accounts for that mismatch?",
+          hi: "कमरे के ताप के पास ताप दस अंश बढ़ाने से अधिकांश वेग मोटे तौर पर दुगुने हो जाते हैं, यद्यपि अणु केवल लगभग दो प्रतिशत तेज़ चल रहे होते हैं। उस बेमेल का हिसाब कौन-सा संबंध देता है?",
+          mr: "खोलीच्या तापमानाजवळ तापमान दहा अंशांनी वाढवल्याने बहुतांश वेग ढोबळमानाने दुप्पट होतात, जरी रेणू केवळ सुमारे दोन टक्के वेगाने जात असले तरी. त्या विजोडपणाचा हिशेब कोणता संबंध देतो?",
+        },
+        statement: {
+          en: "The Arrhenius dependence is k = A e^(−Ea/RT), so the rate constant depends exponentially on temperature through the fraction of collisions energetic enough to react.",
+          hi: "आरेनियस निर्भरता k = A e^(−Ea/RT) है, अतः वेग स्थिरांक ताप पर चरघातांकी रूप से निर्भर है, उन टक्करों के अंश के माध्यम से जो अभिक्रिया करने लायक़ ऊर्जावान हैं।",
+          mr: "अरेनियस अवलंबिता k = A e^(−Ea/RT) आहे, म्हणून वेग स्थिरांक तापमानावर घातांकीरीत्या अवलंबून आहे, अभिक्रिया करण्याइतक्या ऊर्जावान टकरांच्या अंशामार्गे.",
+        },
+        detail: {
+          en: "The steepness comes from the exponential and not from faster motion: heating shifts only a little of the energy distribution, but it is the far tail above Ea that matters and that tail can double.",
+          hi: "तीखापन चरघातांक से आता है, तेज़ गति से नहीं: गर्म करने से ऊर्जा वितरण का थोड़ा ही खिसकता है, पर मायने Ea से ऊपर वाली दूर की पूँछ रखती है और वह पूँछ दुगुनी हो सकती है।",
+          mr: "तीक्ष्णपणा घातांकातून येतो, वेगवान गतीतून नाही: तापवल्याने ऊर्जा वितरणाचा थोडाच सरकतो, पण महत्त्वाची Ea च्या वरची दूरची शेपूट आहे आणि ती शेपूट दुप्पट होऊ शकते.",
+        },
+        extra: {
+          en: "Plotting log k against 1/T gives a straight line whose slope is −Ea/2.303R, which is how activation energies are measured — from two rate constants at two temperatures and nothing else.",
+          hi: "log k को 1/T के विरुद्ध खींचने पर सरल रेखा मिलती है जिसकी प्रवणता −Ea/2.303R है, और सक्रियण ऊर्जाएँ इसी तरह नापी जाती हैं — दो तापों पर दो वेग स्थिरांकों से और किसी चीज़ से नहीं।",
+          mr: "log k हे 1/T विरुद्ध काढल्यास सरळ रेषा मिळते जिचा उतार −Ea/2.303R आहे, आणि सक्रियण ऊर्जा अशाच मोजल्या जातात — दोन तापमानांवरील दोन वेग स्थिरांकांतून आणि दुसऱ्या कशातूनही नाही.",
+        },
+        pair: {
+          left: {
+            en: "Two per cent faster, twice as fast a reaction",
+            hi: "दो प्रतिशत तेज़ गति, दुगुनी तेज़ अभिक्रिया",
+            mr: "दोन टक्के वेगवान गती, दुप्पट वेगवान अभिक्रिया",
+          },
+          right: {
+            en: "the Arrhenius dependence on temperature",
+            hi: "ताप पर आरेनियस निर्भरता",
+            mr: "तापमानावरील अरेनियस अवलंबिता",
+          },
+        },
+      },
+      {
+        id: "catalyst",
+        name: {
+          en: "The catalyst",
+          hi: "उत्प्रेरक",
+          mr: "उत्प्रेरक",
+        },
+        kind: "what changes the rate",
+        prompt: {
+          en: "Something that provides a different route with a lower barrier, is recovered unchanged at the end, and speeds the reverse reaction by exactly the same factor as the forward one. What is it?",
+          hi: "ऐसी चीज़ जो कम अवरोध वाला भिन्न रास्ता देती है, अंत में अपरिवर्तित लौट आती है, और प्रतीप अभिक्रिया को ठीक उतने ही गुणक से तेज़ करती है जितने से अग्र को। यह क्या है?",
+          mr: "अशी गोष्ट जी कमी अडसराचा वेगळा मार्ग देते, शेवटी अपरिवर्तित परत मिळते, आणि प्रतीप अभिक्रिया नेमक्या तितक्याच पटीने वेगवान करते जितक्याने अग्र. ती काय आहे?",
+        },
+        statement: {
+          en: "A catalyst provides an alternative path of lower activation energy and is regenerated unchanged, so it alters the rate without being consumed or appearing in the overall equation.",
+          hi: "उत्प्रेरक कम सक्रियण ऊर्जा का वैकल्पिक पथ देता है और अपरिवर्तित पुनर्जनित होता है, अतः वह वेग बदलता है बिना खपे और बिना समग्र समीकरण में आए।",
+          mr: "उत्प्रेरक कमी सक्रियण ऊर्जेचा पर्यायी मार्ग देतो आणि अपरिवर्तित पुनर्निर्मित होतो, म्हणून तो वेग बदलतो, न खर्च होता आणि एकूण समीकरणात न येता.",
+        },
+        detail: {
+          en: "It lowers the barrier from both sides by the same amount, so the forward and reverse rates rise by the same factor and the position of equilibrium is left exactly where it was.",
+          hi: "वह अवरोध को दोनों ओर से उतना ही नीचा करता है, अतः अग्र और प्रतीप वेग उसी गुणक से बढ़ते हैं और साम्य की स्थिति ठीक वहीं रहती है जहाँ थी।",
+          mr: "तो अडसर दोन्ही बाजूंनी तितकाच खाली आणतो, म्हणून अग्र आणि प्रतीप वेग त्याच पटीने वाढतात आणि समतोलाची जागा नेमकी तिथेच राहते जिथे होती.",
+        },
+        extra: {
+          en: "That is why a catalyst can only bring forward a reaction that was going to happen anyway, and why no catalyst has ever been found for a reaction with a positive free energy change.",
+          hi: "इसीलिए उत्प्रेरक केवल उस अभिक्रिया को जल्दी ला सकता है जो वैसे भी होने वाली थी, और इसीलिए धनात्मक मुक्त ऊर्जा परिवर्तन वाली अभिक्रिया के लिए कोई उत्प्रेरक आज तक नहीं मिला।",
+          mr: "म्हणूनच उत्प्रेरक केवळ त्या अभिक्रियेला लवकर आणू शकतो जी तसेही होणार होती, आणि म्हणूनच धन मुक्त ऊर्जा बदल असलेल्या अभिक्रियेसाठी कोणताही उत्प्रेरक आजवर सापडलेला नाही.",
+        },
+        pair: {
+          left: {
+            en: "Changes when equilibrium arrives, never where",
+            hi: "बदलता है कि साम्य कब आएगा, कभी नहीं कि कहाँ",
+            mr: "बदलतो की समतोल कधी येईल, कधीच नाही की कुठे",
+          },
+          right: {
+            en: "the catalyst",
+            hi: "उत्प्रेरक",
+            mr: "उत्प्रेरक",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "For the reaction 2NO + O₂ → 2NO₂ the rate law is found to be k[NO]²[O₂], which matches the coefficients. For CH₃COOC₂H₅ + H₂O → acid + alcohol in dilute solution the rate law is k[ester], although water appears in the equation. Explain both, and say what order and molecularity are.",
+          hi: "अभिक्रिया 2NO + O₂ → 2NO₂ के लिए वेग नियम k[NO]²[O₂] पाया जाता है, जो गुणांकों से मेल खाता है। तनु विलयन में CH₃COOC₂H₅ + H₂O → अम्ल + ऐल्कोहॉल के लिए वेग नियम k[एस्टर] है, यद्यपि समीकरण में पानी आता है। दोनों समझाओ, और बताओ कि कोटि और आणविकता क्या हैं।",
+          mr: "अभिक्रिया 2NO + O₂ → 2NO₂ साठी वेग नियम k[NO]²[O₂] आढळतो, जो गुणकांशी जुळतो. विरळ द्रावणात CH₃COOC₂H₅ + H₂O → आम्ल + अल्कोहोल साठी वेग नियम k[एस्टर] आहे, जरी समीकरणात पाणी येते. दोन्ही समजावा, आणि कोटी व रेणुकता म्हणजे काय ते सांगा.",
+        },
+        choices: [
+          {
+            en: "Order is experimental and describes the observed dependence; molecularity counts the particles in a single elementary step and can only be a small whole number. The first rate law matches the coefficients by coincidence — because that reaction happens in one step. The ester hydrolysis does not: water is present in vast excess, so its concentration barely changes as the reaction runs and its effect is absorbed into k. The reaction is genuinely second order but behaves as first order under these conditions, which is called PSEUDO first order. Matching coefficients is therefore evidence for a one-step mechanism, and a mismatch is evidence against it",
+            hi: "कोटि प्रायोगिक है और देखी गई निर्भरता बताती है; आणविकता एक ही प्रारंभिक चरण के कणों को गिनती है और केवल छोटा पूर्णांक हो सकती है। पहला वेग नियम गुणांकों से संयोग से मेल खाता है — क्योंकि वह अभिक्रिया एक ही चरण में होती है। एस्टर का जल-अपघटन नहीं: पानी विशाल अधिकता में है, अतः अभिक्रिया चलते समय उसकी सांद्रता मुश्किल से बदलती है और उसका प्रभाव k में समा जाता है। अभिक्रिया वस्तुतः द्वितीय कोटि की है पर इन शर्तों में प्रथम कोटि जैसी बरतती है, और इसे छद्म प्रथम कोटि कहते हैं। अतः गुणांकों का मेल एक-चरण क्रियाविधि का प्रमाण है, और बेमेल उसके विरुद्ध प्रमाण",
+            mr: "कोटी प्रायोगिक आहे आणि निरीक्षिलेले अवलंबित्व सांगते; रेणुकता एकाच प्राथमिक पायरीतले कण मोजते आणि केवळ लहान पूर्णांक असू शकते. पहिला वेग नियम गुणकांशी योगायोगाने जुळतो — कारण ती अभिक्रिया एकाच पायरीत घडते. एस्टरचे जलअपघटन नाही: पाणी प्रचंड अधिकतेत आहे, म्हणून अभिक्रिया चालताना त्याची संहती जेमतेम बदलते आणि त्याचा परिणाम k मध्ये सामावतो. अभिक्रिया प्रत्यक्षात द्वितीय कोटीची आहे पण या अटींत प्रथम कोटीसारखी वागते, आणि याला छद्म प्रथम कोटी म्हणतात. म्हणून गुणकांचे जुळणे एक-पायरी यंत्रणेचा पुरावा आहे, आणि विजोड त्याविरुद्ध पुरावा",
+          },
+          {
+            en: "The ester reaction is first order because water is a solvent and solvents never appear in rate laws, which is a general rule with no exceptions",
+            hi: "एस्टर की अभिक्रिया प्रथम कोटि की है क्योंकि पानी विलायक है और विलायक वेग नियमों में कभी नहीं आते, और यह बिना अपवाद का सामान्य नियम है",
+            mr: "एस्टरची अभिक्रिया प्रथम कोटीची आहे कारण पाणी द्रावक आहे आणि द्रावक वेग नियमांत कधीच येत नाहीत, आणि हा अपवादाविना सर्वसाधारण नियम आहे",
+          },
+          {
+            en: "Order and molecularity are two names for the same thing, and the ester result must therefore be an experimental error",
+            hi: "कोटि और आणविकता एक ही चीज़ के दो नाम हैं, अतः एस्टर वाला परिणाम प्रायोगिक त्रुटि ही होगी",
+            mr: "कोटी आणि रेणुकता ही एकाच गोष्टीची दोन नावे आहेत, म्हणून एस्टरचा निकाल प्रायोगिक चूकच असावी",
+          },
+          {
+            en: "The rate law can always be written from the balanced equation, and the ester case differs only because the equation is usually written without its catalyst",
+            hi: "वेग नियम सदा संतुलित समीकरण से लिखा जा सकता है, और एस्टर वाली स्थिति केवल इसलिए भिन्न है कि समीकरण प्रायः अपने उत्प्रेरक के बिना लिखा जाता है",
+            mr: "वेग नियम नेहमी संतुलित समीकरणावरून लिहिता येतो, आणि एस्टरची स्थिती केवळ यासाठी वेगळी की समीकरण बहुधा त्याच्या उत्प्रेरकाविना लिहिले जाते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The habit this question is trying to break is reading a rate law off a balanced equation, and the two examples are chosen because one appears to license the habit and the other refutes it. FIRST, THE TWO WORDS. MOLECULARITY is the number of species that must come together in a SINGLE elementary step — one for a decomposition, two for a collision, three for the rare simultaneous three-body encounter. It is a theoretical count about a step nobody sees directly, and it must be a small positive whole number, because you cannot have half a molecule colliding. ORDER is the sum of the exponents in the experimentally measured rate law. It is a description of what a graph does, it can be zero, fractional or even negative, and it belongs to the reaction as a whole rather than to any one step. The two coincide only for a reaction that happens in one step, and that coincidence is exactly the information a kineticist is after. NOW 2NO + O₂. The measured law k[NO]²[O₂] is third order and matches the coefficients. That is consistent with the reaction happening in a single termolecular step, and for this reaction it is believed to be roughly what happens. But note the direction of the inference: the experiment came first and the mechanism was fitted to it. Had the measured law come out k[NO]², nobody would have been entitled to insist on the coefficients. NOW THE ESTER. Written out, the reaction consumes one ester and one water. Measure the rate and it depends on the ester alone. There is nothing wrong with the measurement, and water is certainly involved — it ends up in the products. What has happened is that the experiment was done in dilute aqueous solution, where water is present at about 55 mol/L against perhaps 0.01 mol/L of ester. Even when every ester molecule has reacted, the water concentration has fallen by less than a fiftieth of one per cent. A quantity that does not change cannot show up as a dependence, so [H₂O] behaves as a constant and is quietly absorbed into k. The true law is rate = k'[ester][H₂O]; what is measured is rate = k[ester] with k = k'[H₂O]. The reaction is second order and pseudo first order under these conditions. The word 'pseudo' is doing honest work: it records that the observed simplicity is a property of the experiment and not of the chemistry, and it warns that the same reaction run in a non-aqueous solvent with limited water would show the second-order behaviour plainly. Two consequences worth carrying. First, a rate law is evidence about mechanism and nothing else — the exponents are a fingerprint, and a mismatch with the coefficients proves the reaction takes more than one step. A reaction with a coefficient of 4 in front of a reactant is essentially never fourth order in it, because a four-body simultaneous collision is vanishingly rare; the mechanism must be a sequence, and the rate law reports whichever step is slowest. Second, pseudo-order conditions are a deliberate technique, not an accident: flooding a system with all but one reactant is how a complicated rate law is taken apart one variable at a time, and it is called the isolation method for that reason. (The second option turns a useful approximation into a law without exceptions; the third denies a distinction the chapter is built on; the fourth is the very habit the question exists to break.)",
+          hi: "यह प्रश्न जिस आदत को तोड़ना चाहता है वह है संतुलित समीकरण से वेग नियम पढ़ लेना, और दोनों उदाहरण इसलिए चुने गए कि एक उस आदत को जायज़ ठहराता दिखता है और दूसरा उसे झुठलाता है। पहले, दो शब्द। आणविकता उन स्पीशीज़ की संख्या है जिन्हें एक ही प्रारंभिक चरण में साथ आना पड़े — वियोजन के लिए एक, टक्कर के लिए दो, दुर्लभ एक साथ तीन-पिंड मुलाक़ात के लिए तीन। यह ऐसे चरण के बारे में सैद्धांतिक गिनती है जिसे कोई सीधे देखता नहीं, और वह छोटा धन पूर्णांक होनी ही चाहिए, क्योंकि आधा अणु टकरा नहीं सकता। कोटि प्रयोग से नापे गए वेग नियम की घातों का योग है। वह इस बात का वर्णन है कि ग्राफ़ क्या करता है, वह शून्य, भिन्नात्मक या ऋणात्मक तक हो सकती है, और वह किसी एक चरण की नहीं बल्कि पूरी अभिक्रिया की है। दोनों केवल उस अभिक्रिया के लिए मिलते हैं जो एक ही चरण में होती है, और वही मेल वह सूचना है जिसके पीछे बलगतिकीविद् है। अब 2NO + O₂. नापा गया नियम k[NO]²[O₂] तृतीय कोटि का है और गुणांकों से मेल खाता है। यह इस बात से संगत है कि अभिक्रिया एक ही त्रिअणुक चरण में होती है, और इस अभिक्रिया के लिए माना जाता है कि मोटे तौर पर यही होता है। पर अनुमान की दिशा पर ध्यान दो: प्रयोग पहले आया और क्रियाविधि उससे मिलाई गई। यदि नापा गया नियम k[NO]² निकलता, तो किसी को गुणांकों पर अड़ने का अधिकार न होता। अब एस्टर। लिखने पर अभिक्रिया एक एस्टर और एक पानी खपाती है। वेग नापो और वह अकेले एस्टर पर निर्भर है। माप में कुछ ग़लत नहीं, और पानी निश्चय ही शामिल है — वह उत्पादों में पहुँचता है। जो हुआ वह यह कि प्रयोग तनु जलीय विलयन में किया गया, जहाँ पानी लगभग 55 mol/L पर है और एस्टर शायद 0.01 mol/L पर। हर एस्टर अणु के अभिक्रिया कर लेने पर भी पानी की सांद्रता एक प्रतिशत के पचासवें भाग से भी कम गिरी है। जो राशि बदलती नहीं वह निर्भरता के रूप में दिख नहीं सकती, अतः [H₂O] स्थिरांक की तरह बरतता है और चुपचाप k में समा जाता है। सच्चा नियम वेग = k'[एस्टर][H₂O] है; जो नापा जाता है वह वेग = k[एस्टर] है जिसमें k = k'[H₂O]. अभिक्रिया द्वितीय कोटि की है और इन शर्तों में छद्म प्रथम कोटि की। 'छद्म' शब्द ईमानदार काम कर रहा है: वह दर्ज करता है कि देखी गई सरलता प्रयोग का गुण है, रसायन का नहीं, और चेताता है कि वही अभिक्रिया सीमित पानी वाले अजलीय विलायक में चलाई जाए तो द्वितीय कोटि का आचरण साफ़ दिखा देगी। साथ ले जाने योग्य दो परिणाम। पहला, वेग नियम क्रियाविधि का प्रमाण है और कुछ नहीं — घातें एक अंगुलिचिह्न हैं, और गुणांकों से बेमेल सिद्ध करता है कि अभिक्रिया एक से अधिक चरण लेती है। जिस अभिक्रिया में किसी अभिकारक के आगे 4 का गुणांक हो वह उसमें चतुर्थ कोटि की वस्तुतः कभी नहीं होती, क्योंकि चार पिंडों की एक साथ टक्कर लुप्तप्राय दुर्लभ है; क्रियाविधि को अनुक्रम होना ही पड़ेगा, और वेग नियम बताता है कि उनमें सबसे धीमा चरण कौन-सा है। दूसरा, छद्म-कोटि शर्तें जान-बूझकर अपनाई गई तकनीक हैं, संयोग नहीं: एक को छोड़कर सारे अभिकारकों से तंत्र को भर देना ही वह रास्ता है जिससे उलझा वेग नियम एक-एक चर करके खोला जाता है, और उसी कारण उसे पृथक्करण विधि कहते हैं। (दूसरा विकल्प काम के सन्निकटन को बिना अपवाद के नियम बना देता है; तीसरा उस भेद से इनकार करता है जिस पर अध्याय खड़ा है; चौथा वही आदत है जिसे तोड़ने के लिए प्रश्न है।)",
+          mr: "हा प्रश्न ज्या सवयीला मोडू पाहतो ती म्हणजे संतुलित समीकरणावरून वेग नियम वाचून टाकणे, आणि दोन्ही उदाहरणे यासाठी निवडली की एक त्या सवयीला रास्त ठरवताना दिसते आणि दुसरे तिला खोडते. आधी, दोन शब्द. रेणुकता म्हणजे त्या जातींची संख्या ज्यांना एकाच प्राथमिक पायरीत एकत्र यावे लागते — विघटनासाठी एक, टकरीसाठी दोन, दुर्मीळ एकाच वेळी तीन-पदार्थ भेटीसाठी तीन. ही अशा पायरीबद्दलची सैद्धांतिक मोजणी आहे जिला कोणी थेट पाहत नाही, आणि ती लहान धन पूर्णांक असलीच पाहिजे, कारण अर्धा रेणू आदळू शकत नाही. कोटी म्हणजे प्रयोगाने मोजलेल्या वेग नियमातील घातींची बेरीज. ती आलेख काय करतो याचे वर्णन आहे, ती शून्य, अपूर्णांकी वा ऋणही असू शकते, आणि ती कोणत्याही एका पायरीची नसून अख्ख्या अभिक्रियेची आहे. दोन्ही केवळ त्या अभिक्रियेसाठी जुळतात जी एकाच पायरीत घडते, आणि तेच जुळणे ही ती माहिती जिच्या मागे गतिकीतज्ज्ञ आहे. आता 2NO + O₂. मोजलेला नियम k[NO]²[O₂] तृतीय कोटीचा आहे आणि गुणकांशी जुळतो. हे अभिक्रिया एकाच त्रिरेणुक पायरीत घडते याच्याशी सुसंगत आहे, आणि या अभिक्रियेसाठी ढोबळमानाने तेच घडते असे मानले जाते. पण अनुमानाची दिशा लक्षात घ्या: प्रयोग आधी आला आणि यंत्रणा त्याच्याशी जुळवली गेली. मोजलेला नियम k[NO]² निघाला असता, तर कोणालाही गुणकांवर अडून बसण्याचा अधिकार नव्हता. आता एस्टर. लिहिल्यास अभिक्रिया एक एस्टर आणि एक पाणी खर्चते. वेग मोजा आणि तो एकट्या एस्टरवर अवलंबून आहे. मापात काहीही चूक नाही, आणि पाणी नक्कीच सामील आहे — ते उत्पादनांत पोहोचते. जे घडले ते हे की प्रयोग विरळ जलीय द्रावणात केला गेला, जिथे पाणी सुमारे 55 mol/L वर आहे आणि एस्टर कदाचित 0.01 mol/L वर. प्रत्येक एस्टर रेणूने अभिक्रिया केल्यावरही पाण्याची संहती एका टक्क्याच्या पन्नासाव्या भागाहूनही कमी घसरली आहे. जी राशी बदलत नाही ती अवलंबित्वाच्या रूपात दिसू शकत नाही, म्हणून [H₂O] स्थिरांकासारखे वागते आणि मुकाट्याने k मध्ये सामावते. खरा नियम वेग = k'[एस्टर][H₂O] आहे; जे मोजले जाते ते वेग = k[एस्टर] आहे जिथे k = k'[H₂O]. अभिक्रिया द्वितीय कोटीची आहे आणि या अटींत छद्म प्रथम कोटीची. 'छद्म' हा शब्द प्रामाणिक काम करत आहे: तो नोंदवतो की निरीक्षिलेली साधेपणा प्रयोगाचा गुणधर्म आहे, रसायनाचा नाही, आणि इशारा देतो की तीच अभिक्रिया मर्यादित पाणी असलेल्या अजलीय द्रावकात चालवली तर द्वितीय कोटीचे वर्तन स्पष्ट दाखवेल. सोबत न्यायचे दोन परिणाम. पहिला, वेग नियम हा यंत्रणेचा पुरावा आहे आणि दुसरे काही नाही — घाती हे बोटांचे ठसे आहेत, आणि गुणकांशी विजोड सिद्ध करतो की अभिक्रिया एकाहून अधिक पायऱ्या घेते. ज्या अभिक्रियेत एखाद्या अभिक्रियकासमोर 4 चा गुणक असेल ती त्यात चतुर्थ कोटीची प्रत्यक्षात कधीच नसते, कारण चार पदार्थांची एकाच वेळी टक्कर नाहीशी होण्याइतकी दुर्मीळ आहे; यंत्रणा क्रम असलीच पाहिजे, आणि वेग नियम सांगतो की त्यांतली सर्वांत सावकाश पायरी कोणती. दुसरा, छद्म-कोटी अटी या जाणीवपूर्वक स्वीकारलेले तंत्र आहे, योगायोग नव्हे: एक सोडून सर्व अभिक्रियकांनी संस्था भरून टाकणे हाच तो मार्ग ज्याने गुंतागुंतीचा वेग नियम एकेक चल करून उलगडला जातो, आणि त्याच कारणाने त्याला पृथक्करण पद्धत म्हणतात. (दुसरा पर्याय उपयुक्त अंदाजाला अपवादाविना नियम बनवतो; तिसरा ज्या भेदावर प्रकरण उभे आहे तोच नाकारतो; चौथा तीच सवय आहे जी मोडण्यासाठी प्रश्न आहे.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A student proposes that since a catalyst speeds up a reaction, adding one to a reversible reaction at equilibrium will push it towards the products and increase the yield. Assess this, and say precisely what a catalyst does and does not change.",
+          hi: "एक विद्यार्थी सुझाव देता है कि चूँकि उत्प्रेरक अभिक्रिया तेज़ करता है, साम्य पर पड़ी उत्क्रमणीय अभिक्रिया में उसे जोड़ना उसे उत्पादों की ओर धकेलेगा और उपज बढ़ाएगा। इसका आकलन करो, और ठीक-ठीक बताओ कि उत्प्रेरक क्या बदलता है और क्या नहीं।",
+          mr: "एक विद्यार्थी सुचवतो की उत्प्रेरक अभिक्रिया वेगवान करत असल्याने, समतोलावर असलेल्या उलट करता येणाऱ्या अभिक्रियेत तो जोडल्याने ती उत्पादनांकडे ढकलली जाईल आणि उत्पन्न वाढेल. याचे मूल्यमापन करा, आणि नेमके सांगा की उत्प्रेरक काय बदलतो आणि काय नाही.",
+        },
+        choices: [
+          {
+            en: "It will not. A catalyst provides a lower-energy path, and that path is available in BOTH directions — the barrier from the products' side is lowered by exactly the same amount, so the forward and reverse rate constants rise by the same factor. Since K = k_forward/k_reverse, the equilibrium constant is unchanged and so is the yield. What the catalyst changes is the TIME taken to reach equilibrium, which may be the difference between a useful industrial process and one that takes a century. It cannot make a reaction with a positive ΔG happen at all",
+            hi: "नहीं धकेलेगा। उत्प्रेरक कम ऊर्जा का पथ देता है, और वह पथ दोनों दिशाओं में उपलब्ध है — उत्पादों की ओर से अवरोध ठीक उतना ही नीचा होता है, अतः अग्र और प्रतीप वेग स्थिरांक उसी गुणक से बढ़ते हैं। चूँकि K = k_अग्र/k_प्रतीप, साम्य स्थिरांक अपरिवर्तित रहता है और उपज भी। उत्प्रेरक जो बदलता है वह साम्य तक पहुँचने में लगा समय है, जो काम के औद्योगिक प्रक्रम और सदी भर लेने वाले प्रक्रम का अंतर हो सकता है। धनात्मक ΔG वाली अभिक्रिया को वह घटित करा ही नहीं सकता",
+            mr: "ढकलणार नाही. उत्प्रेरक कमी ऊर्जेचा मार्ग देतो, आणि तो मार्ग दोन्ही दिशांनी उपलब्ध आहे — उत्पादनांच्या बाजूकडून अडसर नेमका तितकाच खाली येतो, म्हणून अग्र आणि प्रतीप वेग स्थिरांक त्याच पटीने वाढतात. K = k_अग्र/k_प्रतीप असल्याने, समतोल स्थिरांक अपरिवर्तित राहतो आणि उत्पन्नही. उत्प्रेरक जे बदलतो ते समतोलापर्यंत पोहोचायला लागलेला काळ, जो उपयुक्त औद्योगिक प्रक्रिया आणि शतकभर घेणारी प्रक्रिया यांतील फरक असू शकतो. धन ΔG असलेली अभिक्रिया तो घडवूच शकत नाही",
+          },
+          {
+            en: "The student is right: a catalyst lowers the forward activation energy only, since it is designed to help the reaction go forwards, and the yield therefore rises",
+            hi: "विद्यार्थी सही है: उत्प्रेरक केवल अग्र सक्रियण ऊर्जा घटाता है, क्योंकि वह अभिक्रिया को आगे बढ़ाने में मदद के लिए बना है, अतः उपज बढ़ती है",
+            mr: "विद्यार्थी बरोबर आहे: उत्प्रेरक केवळ अग्र सक्रियण ऊर्जा घटवतो, कारण तो अभिक्रिया पुढे नेण्यास मदत करण्यासाठी बनवलेला आहे, म्हणून उत्पन्न वाढते",
+          },
+          {
+            en: "The catalyst leaves both the rate and the yield unchanged and only makes the reaction cleaner by suppressing side products",
+            hi: "उत्प्रेरक वेग और उपज दोनों को अपरिवर्तित छोड़ता है और केवल पार्श्व उत्पादों को दबाकर अभिक्रिया को साफ़ बनाता है",
+            mr: "उत्प्रेरक वेग आणि उत्पन्न दोन्ही अपरिवर्तित सोडतो आणि केवळ उप-उत्पादने दाबून अभिक्रिया स्वच्छ बनवतो",
+          },
+          {
+            en: "A catalyst does increase the yield, but only for exothermic reactions, because it removes the heat that would otherwise shift the equilibrium backwards",
+            hi: "उत्प्रेरक उपज बढ़ाता तो है, पर केवल ऊष्माक्षेपी अभिक्रियाओं के लिए, क्योंकि वह वह ऊष्मा हटा देता है जो अन्यथा साम्य को पीछे खिसका देती",
+            mr: "उत्प्रेरक उत्पन्न वाढवतो खरे, पण केवळ उष्माक्षेपी अभिक्रियांसाठी, कारण तो ती उष्णता काढून टाकतो जी अन्यथा समतोल मागे सरकवेल",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The proposal is reasonable and wrong, and seeing exactly where it fails is worth more than the conclusion. Draw the energy profile. Reactants sit at one level, products at another, and between them is a hill whose summit is the transition state. The forward activation energy is the climb from reactants to summit; the reverse is the climb from products to the same summit. Those two are not independent — their difference is fixed at ΔH, the enthalpy change, because the two ends of the profile do not move. Now add a catalyst. It does not tunnel through the hill; it opens a different route with a lower summit. But the summit is a single point on the diagram, and lowering it lowers the climb from BOTH ends by the same amount. If Ea forward falls by 20 kJ/mol, Ea reverse falls by 20 kJ/mol too. The reactants and the products are where they always were; only the pass between them has been dug out. The arithmetic follows immediately. By Arrhenius, k = A e^(−Ea/RT), so lowering both barriers by the same amount multiplies both rate constants by the same factor e^(+20000/RT). But the equilibrium constant is K = k_forward/k_reverse, and a common factor in numerator and denominator cancels. K is exactly what it was. So is the position of equilibrium, so is the yield, so is every equilibrium concentration. This is not a coincidence but a requirement. K is fixed by ΔG° through ΔG° = −RT ln K, and ΔG° is a difference between two states — reactants and products — which a catalyst does not touch. If a catalyst could shift K, one could build a machine that adds catalyst, extracts product, removes catalyst and repeats, generating free energy from nothing. The impossibility of that machine is the thermodynamic reason no such catalyst exists. What a catalyst does change is worth stating just as precisely, because it is enormous. It changes the TIME. The Haber process at 700 K without iron would reach the same equilibrium composition it reaches with iron, but not in any human timescale; industrially the difference between an hour and a millennium is the whole difference between a process and a curiosity. Enzymes routinely accelerate reactions by factors of 10¹⁰ or more without altering a single equilibrium constant in the cell. Two further boundaries are worth marking. First, a catalyst cannot make a non-spontaneous reaction go: if ΔG is positive, K is less than one and stays less than one, and no catalyst has ever been found that changes this — a catalyst shortens the wait for something that was going to happen, and there is no waiting for something that is not. Second, a catalyst that appears to improve yield in practice is almost always doing something else: it is a SELECTIVE catalyst, speeding one of several competing reactions more than the others, so more of the material ends up in the wanted product before the mixture is quenched. That is a kinetic effect on a system not at equilibrium, and it is why industrial chemists talk about selectivity as a separate property from activity. (The second option gives a catalyst a directionality that an energy profile forbids; the third denies the rate change that is a catalyst's entire purpose; the fourth invokes a heat-removal mechanism that would be a change of temperature, not of catalysis.)",
+          hi: "सुझाव उचित है और ग़लत है, और वह ठीक कहाँ विफल होता है यह देखना निष्कर्ष से अधिक मूल्यवान है। ऊर्जा-रूपरेखा खींचो। अभिकारक एक स्तर पर बैठे हैं, उत्पाद दूसरे पर, और उनके बीच वह पहाड़ी है जिसकी चोटी संक्रमण अवस्था है। अग्र सक्रियण ऊर्जा अभिकारकों से चोटी तक की चढ़ाई है; प्रतीप उसी चोटी तक उत्पादों से की चढ़ाई। ये दोनों स्वतंत्र नहीं — उनका अंतर ΔH पर नियत है, अर्थात् एन्थैल्पी परिवर्तन, क्योंकि रूपरेखा के दोनों सिरे हिलते नहीं। अब उत्प्रेरक जोड़ो। वह पहाड़ी में सुरंग नहीं बनाता; वह नीची चोटी वाला भिन्न रास्ता खोलता है। पर चोटी आरेख पर एक ही बिंदु है, और उसे नीचा करना दोनों सिरों से चढ़ाई को उतना ही नीचा कर देता है। यदि अग्र Ea 20 kJ/mol गिरे, तो प्रतीप Ea भी 20 kJ/mol गिरता है। अभिकारक और उत्पाद वहीं हैं जहाँ सदा थे; केवल उनके बीच का दर्रा खोदा गया है। अंकगणित तुरंत निकलता है। आरेनियस से k = A e^(−Ea/RT), अतः दोनों अवरोध उतने ही नीचे करने से दोनों वेग स्थिरांक उसी गुणक e^(+20000/RT) से गुणा हो जाते हैं। पर साम्य स्थिरांक K = k_अग्र/k_प्रतीप है, और अंश तथा हर का साझा गुणक कट जाता है। K ठीक वही है जो था। साम्य की स्थिति भी, उपज भी, और हर साम्य सांद्रता भी। यह संयोग नहीं बल्कि आवश्यकता है। K को ΔG° तय करता है ΔG° = −RT ln K के ज़रिए, और ΔG° दो अवस्थाओं का अंतर है — अभिकारक और उत्पाद — जिन्हें उत्प्रेरक छूता नहीं। यदि उत्प्रेरक K खिसका सकता, तो ऐसी मशीन बनाई जा सकती जो उत्प्रेरक जोड़े, उत्पाद निकाले, उत्प्रेरक हटाए और दोहराए, और शून्य से मुक्त ऊर्जा बनाती रहे। उस मशीन की असंभवता ही वह ऊष्मागतिक कारण है कि ऐसा कोई उत्प्रेरक नहीं। उत्प्रेरक जो बदलता है उसे भी उतनी ही ठीकाई से कहना चाहिए, क्योंकि वह विशाल है। वह समय बदलता है। 700 K पर लोहे के बिना हैबर प्रक्रम वही साम्य संघटन पाता जो लोहे के साथ पाता है, पर किसी मानवीय काल-पैमाने में नहीं; औद्योगिक रूप से एक घंटे और एक सहस्राब्दी का अंतर ही प्रक्रम और कौतुक का पूरा अंतर है। एंज़ाइम नियमित रूप से अभिक्रियाओं को 10¹⁰ या अधिक गुणकों से तेज़ करते हैं और कोशिका का एक भी साम्य स्थिरांक नहीं बदलते। दो और सीमाएँ अंकित करने योग्य हैं। पहली, उत्प्रेरक अस्वतःप्रवर्तित अभिक्रिया को चला नहीं सकता: यदि ΔG धनात्मक है, तो K एक से कम है और कम ही रहता है, और आज तक ऐसा कोई उत्प्रेरक नहीं मिला जो इसे बदले — उत्प्रेरक उस चीज़ की प्रतीक्षा छोटी करता है जो होने वाली थी, और जो होने वाली ही नहीं उसकी कोई प्रतीक्षा है ही नहीं। दूसरी, जो उत्प्रेरक व्यवहार में उपज सुधारता दिखता है वह लगभग सदा कुछ और कर रहा होता है: वह वरणात्मक उत्प्रेरक है, जो कई प्रतिस्पर्धी अभिक्रियाओं में से एक को बाक़ी से अधिक तेज़ करता है, अतः मिश्रण बुझाए जाने से पहले अधिक पदार्थ चाहे गए उत्पाद में पहुँच जाता है। वह साम्य पर न पड़े तंत्र पर बलगतिक प्रभाव है, और इसीलिए औद्योगिक रसायनज्ञ वरणात्मकता की बात सक्रियता से अलग गुण के रूप में करते हैं। (दूसरा विकल्प उत्प्रेरक को ऐसी दिशात्मकता देता है जिसे ऊर्जा-रूपरेखा मना करती है; तीसरा उसी वेग-परिवर्तन से इनकार करता है जो उत्प्रेरक का पूरा प्रयोजन है; चौथा ऊष्मा हटाने की ऐसी क्रियाविधि बुलाता है जो ताप का परिवर्तन होगी, उत्प्रेरण का नहीं।)",
+          mr: "सूचना रास्त आहे आणि चूक आहे, आणि ती नेमकी कुठे अपयशी ठरते हे पाहणे निष्कर्षाहून अधिक मोलाचे आहे. ऊर्जा-आराखडा काढा. अभिक्रियक एका पातळीवर बसले आहेत, उत्पादने दुसऱ्या, आणि त्यांच्यामध्ये ती टेकडी आहे जिचे शिखर संक्रमण अवस्था आहे. अग्र सक्रियण ऊर्जा म्हणजे अभिक्रियकांपासून शिखरापर्यंतची चढाई; प्रतीप म्हणजे त्याच शिखरापर्यंत उत्पादनांपासूनची चढाई. ही दोन्ही स्वतंत्र नाहीत — त्यांचा फरक ΔH वर स्थिर आहे, म्हणजे एन्थॅल्पी बदल, कारण आराखड्याची दोन्ही टोके हलत नाहीत. आता उत्प्रेरक जोडा. तो टेकडीत बोगदा करत नाही; तो खालच्या शिखराचा वेगळा मार्ग उघडतो. पण शिखर हा आकृतीवरचा एकच बिंदू आहे, आणि तो खाली आणल्याने दोन्ही टोकांकडून चढाई तितकीच खाली येते. जर अग्र Ea 20 kJ/mol ने घसरला, तर प्रतीप Ea सुद्धा 20 kJ/mol ने घसरतो. अभिक्रियक आणि उत्पादने तिथेच आहेत जिथे नेहमी होती; केवळ त्यांच्यामधली खिंड खोदली गेली आहे. अंकगणित लगेच निघते. अरेनियसनुसार k = A e^(−Ea/RT), म्हणून दोन्ही अडसर तितकेच खाली आणल्याने दोन्ही वेग स्थिरांक त्याच गुणक e^(+20000/RT) ने गुणले जातात. पण समतोल स्थिरांक K = k_अग्र/k_प्रतीप आहे, आणि अंश व छेदातला समान गुणक कापला जातो. K नेमके तेच आहे जे होते. समतोलाची जागाही, उत्पन्नही, आणि प्रत्येक समतोल संहतीही. हा योगायोग नसून आवश्यकता आहे. K हे ΔG° ठरवते ΔG° = −RT ln K मार्गे, आणि ΔG° हा दोन अवस्थांचा फरक आहे — अभिक्रियक आणि उत्पादने — ज्यांना उत्प्रेरक स्पर्शत नाही. जर उत्प्रेरक K सरकवू शकला असता, तर असे यंत्र बांधता आले असते जे उत्प्रेरक जोडेल, उत्पादन काढेल, उत्प्रेरक काढेल आणि पुन्हा करेल, आणि शून्यातून मुक्त ऊर्जा घडवत राहील. त्या यंत्राची अशक्यता हेच ते उष्मागतिक कारण की असा कोणताही उत्प्रेरक नाही. उत्प्रेरक जे बदलतो तेही तितक्याच नेमकेपणाने सांगायला हवे, कारण ते प्रचंड आहे. तो काळ बदलतो. 700 K वर लोखंडाविना हेबर प्रक्रिया तेच समतोल संघटन गाठेल जे लोखंडासह गाठते, पण कोणत्याही मानवी कालमापात नाही; औद्योगिकदृष्ट्या एक तास आणि एक सहस्रक यांतील फरक हाच प्रक्रिया आणि कुतूहल यांतील अख्खा फरक. विकरे नियमितपणे अभिक्रिया 10¹⁰ वा अधिक पटींनी वेगवान करतात आणि पेशीतला एकही समतोल स्थिरांक बदलत नाहीत. आणखी दोन सीमा नोंदवण्याजोग्या आहेत. पहिली, उत्प्रेरक अस्वयंस्फूर्त अभिक्रिया चालवू शकत नाही: जर ΔG धन असेल, तर K एकाहून कमी आहे आणि कमीच राहतो, आणि आजवर असा कोणताही उत्प्रेरक सापडलेला नाही जो हे बदलेल — उत्प्रेरक त्या गोष्टीची प्रतीक्षा लहान करतो जी होणार होती, आणि जी होणारच नाही तिची कोणतीही प्रतीक्षा नाहीच. दुसरी, जो उत्प्रेरक व्यवहारात उत्पन्न सुधारताना दिसतो तो जवळपास नेहमी दुसरे काहीतरी करत असतो: तो निवडक उत्प्रेरक आहे, जो अनेक स्पर्धी अभिक्रियांपैकी एकीला बाकीच्यांहून अधिक वेगवान करतो, म्हणून मिश्रण विझवण्याआधी अधिक पदार्थ हव्या असलेल्या उत्पादनात पोहोचतो. तो समतोलावर नसलेल्या संस्थेवरचा गतिक परिणाम आहे, आणि म्हणूनच औद्योगिक रसायनशास्त्रज्ञ निवडकतेची चर्चा क्रियाशीलतेहून वेगळा गुणधर्म म्हणून करतात. (दुसरा पर्याय उत्प्रेरकाला अशी दिशात्मकता देतो जिला ऊर्जा-आराखडा वर्ज्य करतो; तिसरा तोच वेग-बदल नाकारतो जो उत्प्रेरकाचा अख्खा हेतू आहे; चौथा उष्णता काढण्याची अशी यंत्रणा बोलावतो जी तापमानाचा बदल ठरेल, उत्प्रेरणाचा नाही.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 4 — The d- and f-Block Elements                                 */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "chemistry-12-d-and-f-block-elements",
+    subject: "CHEMISTRY",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 4 — The d- and f-Block Elements",
+      hi: "अध्याय 4 — d एवं f ब्लॉक के तत्व",
+      mr: "प्रकरण 4 — d व f खंडातील मूलद्रव्ये",
+    },
+    name: {
+      en: "The d- and f-Block Elements",
+      hi: "d एवं f ब्लॉक के तत्व",
+      mr: "d व f खंडातील मूलद्रव्ये",
+    },
+    summary: {
+      en: "A block of elements whose two outermost sets of orbitals are so close in energy that the atom cannot decide how many electrons to give away, which is why manganese runs from +2 to +7 while sodium only ever manages +1; ions that are coloured because a small energy gap happens to fall in the visible, and colourless when the shell is empty or full; metals that catalyse by lending electrons and taking them back, which a fixed-valency metal cannot do; a row across which the radius barely changes because each added proton is matched by an added electron in the shell just inside; a magnetism that counts unpaired electrons and can therefore be used to count them; and, one row lower, a contraction accumulated over fourteen elements that makes the metal below almost exactly the size of the metal above it.",
+      hi: "तत्वों का ऐसा ब्लॉक जिसके दो बाहरतम कक्षक-समुच्चय ऊर्जा में इतने पास हैं कि परमाणु तय ही नहीं कर पाता कि कितने इलेक्ट्रॉन दे दे, इसीलिए मैंगनीज़ +2 से +7 तक जाता है जबकि सोडियम कभी +1 से आगे नहीं; ऐसे आयन जो इसलिए रंगीन हैं कि एक छोटा ऊर्जा अंतराल संयोग से दृश्य में पड़ता है, और खोल ख़ाली या भरी हो तो रंगहीन; ऐसी धातुएँ जो इलेक्ट्रॉन उधार देकर और वापस लेकर उत्प्रेरण करती हैं, जो नियत संयोजकता वाली धातु नहीं कर सकती; ऐसी पंक्ति जिसके आर-पार त्रिज्या मुश्किल से बदलती है क्योंकि हर जोड़े गए प्रोटॉन का जवाब ठीक भीतर वाली खोल में जोड़ा गया इलेक्ट्रॉन दे देता है; ऐसा चुंबकत्व जो अयुग्मित इलेक्ट्रॉन गिनता है और इसलिए उन्हें गिनने को काम में लाया जा सकता है; और एक पंक्ति नीचे, चौदह तत्वों पर जमा हुआ ऐसा संकुचन जो नीचे की धातु को ऊपर वाली धातु के लगभग ठीक बराबर कर देता है।",
+      mr: "मूलद्रव्यांचा असा खंड ज्याचे दोन बाहेरचे कक्षक-संच ऊर्जेत इतके जवळ आहेत की अणू ठरवूच शकत नाही की किती इलेक्ट्रॉन देऊन टाकावेत, म्हणूनच मँगेनीज +2 पासून +7 पर्यंत जातो तर सोडियम कधी +1 च्या पुढे जात नाही; असे आयन जे यासाठी रंगीत आहेत की एक लहान ऊर्जा फट योगायोगाने दृश्यात पडते, आणि कवच रिकामे वा भरलेले असल्यास रंगहीन; अशा धातू ज्या इलेक्ट्रॉन उसने देऊन आणि परत घेऊन उत्प्रेरण करतात, जे ठराविक संयुजा असलेली धातू करू शकत नाही; अशी रांग जिच्या आरपार त्रिज्या जेमतेम बदलते कारण प्रत्येक जोडलेल्या प्रोटॉनला अगदी आतल्या कवचात जोडलेला इलेक्ट्रॉन उत्तर देतो; असे चुंबकत्व जे अयुग्मित इलेक्ट्रॉन मोजते आणि म्हणून त्यांना मोजायला वापरता येते; आणि एक रांग खाली, चौदा मूलद्रव्यांवर साठलेले असे आकुंचन जे खालच्या धातूला वरच्या धातूच्या जवळपास नेमके बरोबर करते.",
+    },
+    position: 4,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "variable-oxidation-states",
+        name: {
+          en: "Variable oxidation states",
+          hi: "परिवर्ती ऑक्सीकरण अवस्थाएँ",
+          mr: "बदलत्या उपचयन अवस्था",
+        },
+        kind: "property of the transition metals",
+        prompt: {
+          en: "Manganese is found as +2, +3, +4, +6 and +7 in ordinary compounds; sodium next door manages only +1 and nothing else, ever. Which property is this?",
+          hi: "मैंगनीज़ साधारण यौगिकों में +2, +3, +4, +6 और +7 के रूप में मिलता है; बग़ल का सोडियम केवल +1 सँभालता है और कभी कुछ और नहीं। यह कौन-सा गुण है?",
+          mr: "मँगेनीज साध्या संयुगांत +2, +3, +4, +6 आणि +7 म्हणून आढळतो; शेजारचा सोडियम केवळ +1 सांभाळतो आणि कधी दुसरे काहीही नाही. हा कोणता गुणधर्म?",
+        },
+        statement: {
+          en: "Variable oxidation states arise because the (n−1)d and ns orbitals are close in energy, so a transition metal can lose a varying number of electrons with little difference in cost.",
+          hi: "परिवर्ती ऑक्सीकरण अवस्थाएँ इसलिए उठती हैं कि (n−1)d और ns कक्षक ऊर्जा में पास हैं, अतः संक्रमण धातु भिन्न-भिन्न संख्या में इलेक्ट्रॉन खो सकती है और क़ीमत में ख़ास अंतर नहीं पड़ता।",
+          mr: "बदलत्या उपचयन अवस्था यासाठी उद्भवतात की (n−1)d आणि ns कक्षक ऊर्जेत जवळ आहेत, म्हणून संक्रमण धातू वेगवेगळ्या संख्येने इलेक्ट्रॉन गमावू शकते आणि किमतीत फारसा फरक पडत नाही.",
+        },
+        detail: {
+          en: "The states differ by one rather than by two, unlike the p-block, because electrons are being removed one at a time from orbitals of nearly equal energy rather than from a filled pair.",
+          hi: "अवस्थाएँ p-ब्लॉक के विपरीत दो के बजाय एक-एक से भिन्न हैं, क्योंकि इलेक्ट्रॉन भरे हुए युग्म से नहीं बल्कि लगभग बराबर ऊर्जा के कक्षकों से एक-एक करके हटाए जा रहे हैं।",
+          mr: "अवस्था p-खंडाच्या उलट दोनऐवजी एकेकाने वेगळ्या आहेत, कारण इलेक्ट्रॉन भरलेल्या जोडीतून नव्हे तर जवळपास समान ऊर्जेच्या कक्षकांतून एकेक करून काढले जात आहेत.",
+        },
+        extra: {
+          en: "The highest states appear only with oxygen and fluorine, which are small and strongly electronegative enough to hold seven bonds together — permanganate exists and heptachloride does not.",
+          hi: "सबसे ऊँची अवस्थाएँ केवल ऑक्सीजन और फ़्लुओरीन के साथ आती हैं, जो सात बंध साथ रखने भर छोटे और प्रबल विद्युत ऋणात्मक हैं — परमैंगनेट है और हेप्टाक्लोराइड नहीं।",
+          mr: "सर्वांत उंच अवस्था केवळ ऑक्सिजन आणि फ्लोरिनसोबत येतात, जे सात बंध एकत्र ठेवण्याइतके लहान आणि तीव्र विद्युत ऋण आहेत — परमँगेनेट आहे आणि हेप्टाक्लोराइड नाही.",
+        },
+        pair: {
+          left: {
+            en: "Cannot decide how many electrons to part with",
+            hi: "तय नहीं कर पाता कि कितने इलेक्ट्रॉन छोड़े",
+            mr: "किती इलेक्ट्रॉन सोडावेत हे ठरवू शकत नाही",
+          },
+          right: {
+            en: "variable oxidation states",
+            hi: "परिवर्ती ऑक्सीकरण अवस्थाएँ",
+            mr: "बदलत्या उपचयन अवस्था",
+          },
+        },
+      },
+      {
+        id: "colour-of-transition-ions",
+        name: {
+          en: "The colour of transition metal ions",
+          hi: "संक्रमण धातु आयनों का रंग",
+          mr: "संक्रमण धातू आयनांचा रंग",
+        },
+        kind: "property of the transition metals",
+        prompt: {
+          en: "Copper sulphate solution is blue and nickel salts green, but zinc and scandium salts are colourless — and the difference tracks exactly whether the d-shell is partly filled. Which property is this?",
+          hi: "कॉपर सल्फ़ेट का विलयन नीला और निकल के लवण हरे हैं, पर ज़िंक और स्कैंडियम के लवण रंगहीन — और अंतर ठीक इस बात के साथ चलता है कि d-खोल आंशिक रूप से भरी है या नहीं। यह कौन-सा गुण है?",
+          mr: "कॉपर सल्फेटचे द्रावण निळे आणि निकेलचे क्षार हिरवे आहेत, पण जस्त आणि स्कँडियमचे क्षार रंगहीन — आणि फरक नेमका d-कवच अंशतः भरलेले आहे की नाही याच्यासोबत चालतो. हा कोणता गुणधर्म?",
+        },
+        statement: {
+          en: "The colour of transition metal ions comes from electrons jumping between d-orbitals split by the surrounding ligands, and requires a partly filled d-shell.",
+          hi: "संक्रमण धातु आयनों का रंग उन इलेक्ट्रॉनों से आता है जो आसपास के लिगैंडों से विपाटित d-कक्षकों के बीच छलाँग लगाते हैं, और उसके लिए आंशिक भरी d-खोल चाहिए।",
+          mr: "संक्रमण धातू आयनांचा रंग त्या इलेक्ट्रॉनांतून येतो जे भोवतीच्या लिगँडांनी विभाजित d-कक्षकांमध्ये उड्या मारतात, आणि त्यासाठी अंशतः भरलेले d-कवच लागते.",
+        },
+        detail: {
+          en: "The colour seen is the COMPLEMENT of the colour absorbed: copper solutions look blue because the ion absorbs in the orange and red and what passes through is what is left.",
+          hi: "जो रंग दिखता है वह सोखे गए रंग का पूरक है: ताँबे के विलयन नीले दिखते हैं क्योंकि आयन नारंगी और लाल में सोखता है और जो पार निकलता है वही बचा हुआ है।",
+          mr: "जो रंग दिसतो तो शोषलेल्या रंगाचा पूरक आहे: तांब्याची द्रावणे निळी दिसतात कारण आयन नारिंगी आणि लालात शोषतो आणि जे पलीकडे जाते तेच उरलेले आहे.",
+        },
+        extra: {
+          en: "The size of the splitting depends on the ligands, so the same metal ion changes colour when its surroundings change — which is why copper turns from pale blue to deep blue on adding ammonia.",
+          hi: "विपाटन का आकार लिगैंडों पर निर्भर है, अतः वही धातु आयन परिवेश बदलने पर रंग बदल लेता है — इसीलिए अमोनिया डालने पर ताँबा हल्के नीले से गहरे नीले में बदल जाता है।",
+          mr: "विभाजनाचा आकार लिगँडांवर अवलंबून आहे, म्हणून तोच धातू आयन परिसर बदलल्यावर रंग बदलतो — म्हणूनच अमोनिया घातल्यावर तांबे फिकट निळ्यातून गडद निळ्यात बदलते.",
+        },
+        pair: {
+          left: {
+            en: "Empty or full d-shell means colourless",
+            hi: "ख़ाली या भरी d-खोल का अर्थ रंगहीन",
+            mr: "रिकामे वा भरलेले d-कवच म्हणजे रंगहीन",
+          },
+          right: {
+            en: "the colour of transition metal ions",
+            hi: "संक्रमण धातु आयनों का रंग",
+            mr: "संक्रमण धातू आयनांचा रंग",
+          },
+        },
+      },
+      {
+        id: "catalytic-activity",
+        name: {
+          en: "Catalytic activity of the transition metals",
+          hi: "संक्रमण धातुओं की उत्प्रेरक सक्रियता",
+          mr: "संक्रमण धातूंची उत्प्रेरक क्रियाशीलता",
+        },
+        kind: "property of the transition metals",
+        prompt: {
+          en: "Iron in the Haber process, vanadium pentoxide in the contact process, nickel in hydrogenation, platinum in a car's exhaust — one block supplies almost every industrial catalyst there is. Which property explains that?",
+          hi: "हैबर प्रक्रम में लोहा, संस्पर्श प्रक्रम में वैनेडियम पेंटॉक्साइड, हाइड्रोजनीकरण में निकल, कार के निकास में प्लैटिनम — लगभग हर औद्योगिक उत्प्रेरक एक ही ब्लॉक से आता है। कौन-सा गुण इसे समझाता है?",
+          mr: "हेबर प्रक्रियेत लोखंड, संपर्क प्रक्रियेत व्हॅनेडियम पेंटॉक्साइड, हायड्रोजनीकरणात निकेल, गाडीच्या धुरात प्लॅटिनम — जवळपास प्रत्येक औद्योगिक उत्प्रेरक एकाच खंडातून येतो. कोणता गुणधर्म हे समजावतो?",
+        },
+        statement: {
+          en: "Catalytic activity of the transition metals rests on their variable oxidation states and their ability to adsorb reactants on a surface, both of which let them lend electrons and take them back.",
+          hi: "संक्रमण धातुओं की उत्प्रेरक सक्रियता उनकी परिवर्ती ऑक्सीकरण अवस्थाओं और सतह पर अभिकारकों को अधिशोषित कर सकने की क्षमता पर टिकी है, और दोनों उन्हें इलेक्ट्रॉन उधार देने तथा वापस लेने देते हैं।",
+          mr: "संक्रमण धातूंची उत्प्रेरक क्रियाशीलता त्यांच्या बदलत्या उपचयन अवस्थांवर आणि पृष्ठभागावर अभिक्रियक अधिशोषित करू शकण्याच्या क्षमतेवर टिकली आहे, आणि दोन्ही त्यांना इलेक्ट्रॉन उसने देऊ आणि परत घेऊ देतात.",
+        },
+        detail: {
+          en: "A catalyst must change and then change back, which is exactly what a metal with several accessible oxidation states can do and a fixed-valency metal such as sodium cannot.",
+          hi: "उत्प्रेरक को बदलना और फिर लौट आना पड़ता है, और यही वह धातु कर सकती है जिसकी कई ऑक्सीकरण अवस्थाएँ पहुँच में हों, तथा सोडियम जैसी नियत संयोजकता वाली धातु नहीं कर सकती।",
+          mr: "उत्प्रेरकाला बदलावे आणि मग परत यावे लागते, आणि हेच ती धातू करू शकते जिच्या अनेक उपचयन अवस्था आवाक्यात असतील, आणि सोडियमसारखी ठराविक संयुजेची धातू करू शकत नाही.",
+        },
+        extra: {
+          en: "Surface adsorption does a second job: it holds two reactants next to each other in the right orientation, so a collision that would otherwise be a matter of chance becomes something close to a certainty.",
+          hi: "सतह पर अधिशोषण दूसरा काम भी करता है: वह दो अभिकारकों को सही अभिविन्यास में अगल-बगल पकड़े रखता है, अतः जो टक्कर अन्यथा संयोग की बात होती वह लगभग निश्चितता बन जाती है।",
+          mr: "पृष्ठभागावरील अधिशोषण दुसरे कामही करते: ते दोन अभिक्रियकांना योग्य मांडणीत शेजारीशेजारी धरून ठेवते, म्हणून जी टक्कर अन्यथा योगायोगाची बाब असती ती जवळपास निश्चितता बनते.",
+        },
+        pair: {
+          left: {
+            en: "Must change and change back, which sodium cannot",
+            hi: "बदलना और लौटना पड़ता है, जो सोडियम नहीं कर सकता",
+            mr: "बदलावे आणि परत यावे लागते, जे सोडियम करू शकत नाही",
+          },
+          right: {
+            en: "catalytic activity of the transition metals",
+            hi: "संक्रमण धातुओं की उत्प्रेरक सक्रियता",
+            mr: "संक्रमण धातूंची उत्प्रेरक क्रियाशीलता",
+          },
+        },
+      },
+      {
+        id: "near-constant-radii",
+        name: {
+          en: "The near-constant radii across a series",
+          hi: "एक श्रेणी में लगभग अचर त्रिज्याएँ",
+          mr: "एका श्रेणीत जवळपास अचल त्रिज्या",
+        },
+        kind: "trend across the block",
+        prompt: {
+          en: "Going from titanium to copper adds eight protons, yet the atoms barely shrink — a striking contrast with a p-block row, where the same number of protons squeezes the atom noticeably. Which trend is this?",
+          hi: "टाइटेनियम से ताँबे तक जाने में आठ प्रोटॉन जुड़ते हैं, फिर भी परमाणु मुश्किल से सिकुड़ते हैं — p-ब्लॉक की पंक्ति से चौंकाने वाला विरोधाभास, जहाँ उतने ही प्रोटॉन परमाणु को ध्यान देने योग्य ढंग से दबा देते हैं। यह कौन-सी प्रवृत्ति है?",
+          mr: "टायटॅनियमपासून तांब्यापर्यंत जाताना आठ प्रोटॉन जोडले जातात, तरीही अणू जेमतेम आकुंचन पावतात — p-खंडाच्या रांगेशी चकित करणारा विरोधाभास, जिथे तितकेच प्रोटॉन अणूला लक्षणीयरीत्या दाबतात. ही कोणती प्रवृत्ती?",
+        },
+        statement: {
+          en: "The near-constant radii across a transition series arise because each added electron enters an inner (n−1)d orbital and screens the added proton from the outermost electrons almost completely.",
+          hi: "संक्रमण श्रेणी में लगभग अचर त्रिज्याएँ इसलिए हैं कि हर जोड़ा गया इलेक्ट्रॉन भीतरी (n−1)d कक्षक में जाता है और जोड़े गए प्रोटॉन को बाहरतम इलेक्ट्रॉनों से लगभग पूरी तरह ढक देता है।",
+          mr: "संक्रमण श्रेणीत जवळपास अचल त्रिज्या यासाठी आहेत की प्रत्येक जोडलेला इलेक्ट्रॉन आतल्या (n−1)d कक्षकात जातो आणि जोडलेल्या प्रोटॉनला बाहेरच्या इलेक्ट्रॉनांपासून जवळपास पूर्णपणे झाकतो.",
+        },
+        detail: {
+          en: "The two effects nearly cancel: the extra nuclear charge pulls inwards and the extra inner electron pushes outwards, and neither wins by much.",
+          hi: "दोनों प्रभाव लगभग कट जाते हैं: अतिरिक्त नाभिकीय आवेश भीतर खींचता है और अतिरिक्त भीतरी इलेक्ट्रॉन बाहर धकेलता है, और कोई ख़ास नहीं जीतता।",
+          mr: "दोन्ही परिणाम जवळपास कापले जातात: जादा केंद्रकीय प्रभार आत ओढतो आणि जादा आतला इलेक्ट्रॉन बाहेर ढकलतो, आणि कोणीही फारसे जिंकत नाही.",
+        },
+        extra: {
+          en: "It is why transition metals form alloys so freely with each other: atoms of nearly equal size can substitute in a lattice without straining it, which is what brass, bronze and steel all depend on.",
+          hi: "इसीलिए संक्रमण धातुएँ एक-दूसरे से इतनी सहजता से मिश्रधातु बनाती हैं: लगभग बराबर आकार के परमाणु जालक में एक-दूसरे की जगह ले सकते हैं बिना उसे तनाव दिए, और पीतल, काँसा तथा इस्पात सब इसी पर निर्भर हैं।",
+          mr: "म्हणूनच संक्रमण धातू एकमेकांशी इतक्या सहजतेने मिश्रधातू बनवतात: जवळपास समान आकाराचे अणू जाळीत एकमेकांची जागा घेऊ शकतात तिला ताण न देता, आणि पितळ, कांस्य तसेच पोलाद सर्व यावर अवलंबून आहेत.",
+        },
+        pair: {
+          left: {
+            en: "Eight more protons and hardly any smaller",
+            hi: "आठ और प्रोटॉन और मुश्किल से कुछ छोटा",
+            mr: "आठ अधिक प्रोटॉन आणि जेमतेम काही लहान",
+          },
+          right: {
+            en: "the near-constant radii across a series",
+            hi: "एक श्रेणी में लगभग अचर त्रिज्याएँ",
+            mr: "एका श्रेणीत जवळपास अचल त्रिज्या",
+          },
+        },
+      },
+      {
+        id: "lanthanoid-contraction",
+        name: {
+          en: "The lanthanoid contraction",
+          hi: "लैंथेनॉयड संकुचन",
+          mr: "लॅंथेनॉइड आकुंचन",
+        },
+        kind: "trend across the block",
+        prompt: {
+          en: "Fourteen small shrinkages accumulated across one inner series leave hafnium almost exactly the size of zirconium in the row above, so the two are chemically almost inseparable. What is this effect called?",
+          hi: "एक भीतरी श्रेणी में जमा हुए चौदह छोटे संकुचन हैफ़्नियम को ऊपर की पंक्ति के ज़र्कोनियम के लगभग ठीक बराबर छोड़ देते हैं, अतः दोनों रासायनिक रूप से लगभग अवियोज्य हैं। इस प्रभाव को क्या कहते हैं?",
+          mr: "एका आतल्या श्रेणीत साठलेली चौदा लहान आकुंचने हाफ्नियमला वरच्या रांगेतील झिर्कोनियमच्या जवळपास नेमके बरोबर सोडतात, म्हणून दोन्ही रासायनिकदृष्ट्या जवळपास अविभाज्य आहेत. या परिणामाला काय म्हणतात?",
+        },
+        statement: {
+          en: "The lanthanoid contraction is the steady decrease in size across the fourteen lanthanoids, caused by poor shielding by 4f electrons, and it shrinks every element that follows them.",
+          hi: "लैंथेनॉयड संकुचन चौदह लैंथेनॉयडों में आकार की लगातार कमी है, जो 4f इलेक्ट्रॉनों के कमज़ोर परिरक्षण से होती है, और वह उनके बाद आने वाले हर तत्व को सिकोड़ देती है।",
+          mr: "लॅंथेनॉइड आकुंचन म्हणजे चौदा लॅंथेनॉइडांत आकाराची सतत घट, जी 4f इलेक्ट्रॉनांच्या कमकुवत आवरणामुळे होते, आणि ती त्यांच्यानंतर येणाऱ्या प्रत्येक मूलद्रव्याला आकुंचित करते.",
+        },
+        detail: {
+          en: "The 4f orbitals are diffuse and shield badly, so each added proton is felt more than it is cancelled, and a small deficit repeated fourteen times becomes a large one.",
+          hi: "4f कक्षक फैले हुए हैं और बुरी तरह परिरक्षण करते हैं, अतः हर जोड़ा गया प्रोटॉन जितना कटता है उससे अधिक महसूस होता है, और चौदह बार दोहराई गई छोटी कमी बड़ी बन जाती है।",
+          mr: "4f कक्षक पसरलेले आहेत आणि वाईट आवरण करतात, म्हणून प्रत्येक जोडलेला प्रोटॉन जितका कापला जातो त्याहून अधिक जाणवतो, आणि चौदा वेळा पुनरावृत्त झालेली लहान तूट मोठी बनते.",
+        },
+        extra: {
+          en: "The consequence reaches far beyond the lanthanoids themselves: the second and third transition series resemble each other far more than either resembles the first, which is not a coincidence but this contraction's shadow.",
+          hi: "परिणाम स्वयं लैंथेनॉयडों से कहीं आगे तक पहुँचता है: दूसरी और तीसरी संक्रमण श्रेणियाँ एक-दूसरे से कहीं अधिक मिलती हैं, बनिस्बत किसी के पहली से मिलने के, और यह संयोग नहीं बल्कि इसी संकुचन की छाया है।",
+          mr: "परिणाम स्वतः लॅंथेनॉइडांहून कितीतरी पुढे पोहोचतो: दुसरी आणि तिसरी संक्रमण श्रेणी एकमेकांशी कितीतरी अधिक जुळतात, कोणाच्याही पहिलीशी जुळण्याहून, आणि हा योगायोग नसून याच आकुंचनाची सावली आहे.",
+        },
+        pair: {
+          left: {
+            en: "Fourteen small deficits that add up to a whole row",
+            hi: "चौदह छोटी कमियाँ जो जुड़कर पूरी पंक्ति बन जाती हैं",
+            mr: "चौदा लहान तुटी ज्या जुळून अख्खी रांग बनतात",
+          },
+          right: {
+            en: "the lanthanoid contraction",
+            hi: "लैंथेनॉयड संकुचन",
+            mr: "लॅंथेनॉइड आकुंचन",
+          },
+        },
+      },
+      {
+        id: "magnetic-moment-unpaired",
+        name: {
+          en: "Magnetic moment and unpaired electrons",
+          hi: "चुंबकीय आघूर्ण और अयुग्मित इलेक्ट्रॉन",
+          mr: "चुंबकीय आघूर्ण आणि अयुग्मित इलेक्ट्रॉन",
+        },
+        kind: "trend across the block",
+        prompt: {
+          en: "Weigh a sample in and out of a magnetic field, convert the difference into a number of Bohr magnetons, and you have counted something inside the atom that no chemical test could reach. What is being counted?",
+          hi: "किसी नमूने को चुंबकीय क्षेत्र के भीतर और बाहर तौलो, अंतर को बोर मैग्नेटॉनों की संख्या में बदलो, और तुमने परमाणु के भीतर ऐसी चीज़ गिन ली जहाँ कोई रासायनिक परीक्षण पहुँच ही नहीं सकता। क्या गिना जा रहा है?",
+          mr: "एखादा नमुना चुंबकीय क्षेत्राच्या आत आणि बाहेर तोला, फरकाचे बोर मॅग्नेटॉनांच्या संख्येत रूपांतर करा, आणि तुम्ही अणूच्या आत अशी गोष्ट मोजली जिथे कोणतीही रासायनिक चाचणी पोहोचूच शकत नाही. काय मोजले जात आहे?",
+        },
+        statement: {
+          en: "The spin-only magnetic moment is μ = √(n(n+2)) Bohr magnetons with n the number of unpaired electrons, so a magnetic measurement counts them directly.",
+          hi: "केवल-चक्रण चुंबकीय आघूर्ण μ = √(n(n+2)) बोर मैग्नेटॉन है जिसमें n अयुग्मित इलेक्ट्रॉनों की संख्या है, अतः चुंबकीय माप उन्हें सीधे गिन देता है।",
+          mr: "केवळ-परिवलन चुंबकीय आघूर्ण μ = √(n(n+2)) बोर मॅग्नेटॉन आहे जिथे n ही अयुग्मित इलेक्ट्रॉनांची संख्या आहे, म्हणून चुंबकीय माप त्यांना थेट मोजते.",
+        },
+        detail: {
+          en: "Paired electrons contribute nothing because their spins cancel, so the measurement is blind to the great majority of the atom's electrons and sees only the odd ones out.",
+          hi: "युग्मित इलेक्ट्रॉन कुछ नहीं जोड़ते क्योंकि उनके चक्रण कट जाते हैं, अतः माप परमाणु के अधिकांश इलेक्ट्रॉनों के प्रति अंधा है और केवल बचे हुए अकेलों को देखता है।",
+          mr: "युग्मित इलेक्ट्रॉन काहीही जोडत नाहीत कारण त्यांची परिवलने कापली जातात, म्हणून माप अणूच्या बहुतांश इलेक्ट्रॉनांबाबत आंधळे आहे आणि केवळ उरलेल्या एकट्यांना पाहते.",
+        },
+        extra: {
+          en: "It is how a complex is diagnosed as high-spin or low-spin without any structural work at all: the same ion with the same charge gives two quite different moments depending on which ligands surround it.",
+          hi: "इसी से किसी संकुल को उच्च-चक्रण या निम्न-चक्रण ठहराया जाता है, बिना किसी संरचनात्मक काम के: वही आयन उसी आवेश के साथ दो बिलकुल भिन्न आघूर्ण देता है, यह इस पर निर्भर कि उसे कौन-से लिगैंड घेरे हैं।",
+          mr: "याच मार्गाने एखादे संकुल उच्च-परिवलन वा निम्न-परिवलन ठरवले जाते, कोणत्याही संरचनात्मक कामाविना: तोच आयन त्याच प्रभारासह दोन अगदी वेगळी आघूर्णे देतो, हे कोणते लिगँड त्याला वेढले आहेत यावर अवलंबून.",
+        },
+        pair: {
+          left: {
+            en: "A balance that counts electrons",
+            hi: "ऐसी तराज़ू जो इलेक्ट्रॉन गिनती है",
+            mr: "असा तराजू जो इलेक्ट्रॉन मोजतो",
+          },
+          right: {
+            en: "magnetic moment and unpaired electrons",
+            hi: "चुंबकीय आघूर्ण और अयुग्मित इलेक्ट्रॉन",
+            mr: "चुंबकीय आघूर्ण आणि अयुग्मित इलेक्ट्रॉन",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Sodium forms only Na⁺ and magnesium only Mg²⁺, but manganese forms compounds in every state from +2 to +7. A student says this must be because manganese has more electrons. Assess that and give the real reason.",
+          hi: "सोडियम केवल Na⁺ बनाता है और मैग्नीशियम केवल Mg²⁺, पर मैंगनीज़ +2 से +7 तक हर अवस्था में यौगिक बनाता है। विद्यार्थी कहता है कि इसका कारण यही होगा कि मैंगनीज़ के पास अधिक इलेक्ट्रॉन हैं। इसका आकलन करो और असली कारण दो।",
+          mr: "सोडियम केवळ Na⁺ बनवतो आणि मॅग्नेशियम केवळ Mg²⁺, पण मँगेनीज +2 पासून +7 पर्यंत प्रत्येक अवस्थेत संयुगे बनवतो. विद्यार्थी म्हणतो की याचे कारण हेच असावे की मँगेनीजकडे अधिक इलेक्ट्रॉन आहेत. याचे मूल्यमापन करा आणि खरे कारण द्या.",
+        },
+        choices: [
+          {
+            en: "Having more electrons is not enough — caesium has fifty-five and still forms only Cs⁺. What matters is that in a transition metal the inner d orbitals and the outer s orbitals lie CLOSE IN ENERGY, so removing a d electron costs little more than removing an s electron and the atom has several nearly equally cheap options. In sodium the next electron after the 3s lies in a filled inner shell far below, so removing it is prohibitively expensive and +1 is the only accessible state. The states differ by one rather than two, and the highest ones appear only with small electronegative partners such as oxygen and fluorine",
+            hi: "अधिक इलेक्ट्रॉन होना पर्याप्त नहीं — सीज़ियम के पचपन हैं और वह फिर भी केवल Cs⁺ बनाता है। मायने यह रखता है कि संक्रमण धातु में भीतरी d कक्षक और बाहरी s कक्षक ऊर्जा में पास पड़े हैं, अतः d इलेक्ट्रॉन हटाने की क़ीमत s इलेक्ट्रॉन हटाने से ख़ास अधिक नहीं और परमाणु के पास कई लगभग बराबर सस्ते विकल्प हैं। सोडियम में 3s के बाद अगला इलेक्ट्रॉन बहुत नीचे भरी भीतरी खोल में पड़ा है, अतः उसे हटाना निषेधात्मक रूप से महँगा है और +1 ही एकमात्र पहुँच वाली अवस्था। अवस्थाएँ दो के बजाय एक से भिन्न हैं, और सबसे ऊँची केवल ऑक्सीजन तथा फ़्लुओरीन जैसे छोटे विद्युत ऋणात्मक साथियों के साथ आती हैं",
+            mr: "अधिक इलेक्ट्रॉन असणे पुरेसे नाही — सीझियमकडे पंचावन्न आहेत आणि तो तरीही केवळ Cs⁺ बनवतो. महत्त्वाचे हे की संक्रमण धातूत आतले d कक्षक आणि बाहेरचे s कक्षक ऊर्जेत जवळ पडलेले आहेत, म्हणून d इलेक्ट्रॉन काढण्याची किंमत s इलेक्ट्रॉन काढण्याहून फारशी अधिक नाही आणि अणूकडे अनेक जवळपास समान स्वस्त पर्याय आहेत. सोडियममध्ये 3s नंतरचा पुढचा इलेक्ट्रॉन खूप खाली भरलेल्या आतल्या कवचात पडला आहे, म्हणून तो काढणे निषिद्धपणे महाग आहे आणि +1 हीच एकमेव आवाक्यातली अवस्था. अवस्था दोनऐवजी एकाने वेगळ्या आहेत, आणि सर्वांत उंच केवळ ऑक्सिजन आणि फ्लोरिनसारख्या लहान विद्युत ऋण साथीदारांसोबत येतात",
+          },
+          {
+            en: "The student is right: the number of oxidation states is simply the number of electrons an element has, which is why heavier elements always show more of them",
+            hi: "विद्यार्थी सही है: ऑक्सीकरण अवस्थाओं की संख्या बस उन इलेक्ट्रॉनों की संख्या है जो तत्व के पास हैं, इसीलिए भारी तत्व सदा अधिक दिखाते हैं",
+            mr: "विद्यार्थी बरोबर आहे: उपचयन अवस्थांची संख्या म्हणजे मूलद्रव्याकडे असलेल्या इलेक्ट्रॉनांची संख्याच, म्हणूनच जड मूलद्रव्ये नेहमी अधिक दाखवतात",
+          },
+          {
+            en: "Manganese shows many states because it is a metal, and all metals lose as many electrons as their partners demand",
+            hi: "मैंगनीज़ कई अवस्थाएँ इसलिए दिखाता है कि वह धातु है, और सभी धातुएँ उतने इलेक्ट्रॉन खोती हैं जितने उनके साथी माँगें",
+            mr: "मँगेनीज अनेक अवस्था यासाठी दाखवतो की तो धातू आहे, आणि सर्व धातू तितके इलेक्ट्रॉन गमावतात जितके त्यांचे साथीदार मागतील",
+          },
+          {
+            en: "The variety comes from manganese's d-orbitals being empty, so there is nothing to prevent electrons being removed from anywhere in the atom",
+            hi: "विविधता मैंगनीज़ के d-कक्षकों के ख़ाली होने से आती है, अतः परमाणु में कहीं से भी इलेक्ट्रॉन हटाने से रोकने वाला कुछ नहीं",
+            mr: "विविधता मँगेनीजचे d-कक्षक रिकामे असल्याने येते, म्हणून अणूत कुठूनही इलेक्ट्रॉन काढण्यापासून रोखणारे काही नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The student's suggestion has an easy counterexample and it is worth producing first, because a counterexample settles the matter faster than an explanation. Caesium has fifty-five electrons — more than manganese's twenty-five — and forms Cs⁺ and nothing else, ever. Barium has fifty-six and manages only Ba²⁺. Having many electrons is plainly not sufficient. The real question is not how many electrons an atom has but HOW MUCH IT COSTS TO REMOVE THE NEXT ONE. Look at sodium first. Its configuration is [Ne]3s¹. Take the 3s electron away and you have a neon core: a complete, tightly bound shell in which every electron is much closer to the nucleus and much more strongly held. The second ionisation energy is nearly ten times the first — 4562 kJ/mol against 496 — and nothing an ordinary chemical partner can offer comes close to paying it. So Na⁺ and only Na⁺. The energy landscape has a cliff immediately after the first electron. Now manganese, [Ar]3d⁵4s². The 4s and 3d orbitals are close in energy — so close that which fills first is a matter of a few tens of kilojoules and depends on the element. Removing the two 4s electrons gives Mn²⁺. Removing a 3d electron after that costs somewhat more, but not enormously more, because the 3d electrons are not in a deeper closed shell; they are in the same energy neighbourhood. So the ionisation energies climb gently rather than jumping, and each successive state is reachable if the partner offers enough in return. The landscape is a slope, not a cliff. Three consequences follow from that single structural fact. FIRST, the states differ by ONE. In the p-block, oxidation states usually differ by two — thallium shows +1 and +3, tin +2 and +4 — because electrons come and go in pairs from a filled s orbital. In the d-block they differ by one, because electrons are being removed singly from a set of near-degenerate orbitals. SECOND, the highest states need particular partners. Manganese reaches +7 in permanganate and in Mn₂O₇, both with oxygen, and never in a chloride. Oxygen and fluorine are small enough to crowd around one metal atom and electronegative enough to stabilise the enormous positive charge; chlorine is neither, and instead of forming MnCl₇ the system oxidises the chloride to chlorine gas. So the accessible state depends on the partner as much as on the metal. THIRD, the middle states are often the most stable, and the extremes are strong oxidising or reducing agents for the obvious reason — Mn⁷⁺ is a powerful oxidant because it has a long way to fall, and Cr²⁺ is a reducing agent because it has room to rise. A final structural note worth carrying: the d⁵ and d¹⁰ configurations show up repeatedly as unusually stable, which is why Mn²⁺ is the most common manganese state and Fe³⁺ is more stable than Fe²⁺ although iron is the later element. Half-filled and fully-filled sets are a recurring theme in this block, and noticing them explains a great many otherwise arbitrary-looking preferences. (The second option is refuted by caesium; the third would predict variable valency for every metal including sodium; the fourth misstates manganese's configuration, which has five d electrons and not none.)",
+          hi: "विद्यार्थी के सुझाव का आसान प्रतिउदाहरण है और उसे पहले रखना चाहिए, क्योंकि प्रतिउदाहरण मामला किसी व्याख्या से तेज़ी से निपटा देता है। सीज़ियम के पचपन इलेक्ट्रॉन हैं — मैंगनीज़ के पच्चीस से अधिक — और वह Cs⁺ बनाता है और कभी कुछ और नहीं। बेरियम के छप्पन हैं और वह केवल Ba²⁺ सँभालता है। बहुत इलेक्ट्रॉन होना स्पष्टतः पर्याप्त नहीं। असली प्रश्न यह नहीं कि परमाणु के पास कितने इलेक्ट्रॉन हैं बल्कि यह कि अगला हटाने में कितना ख़र्च आता है। पहले सोडियम देखो। उसका विन्यास [Ne]3s¹ है। 3s इलेक्ट्रॉन हटाओ और तुम्हारे पास नियॉन का क्रोड है: पूरी, कसकर बँधी खोल जिसमें हर इलेक्ट्रॉन नाभिक के कहीं अधिक पास और कहीं अधिक प्रबलता से पकड़ा है। द्वितीय आयनन ऊर्जा प्रथम की लगभग दस गुनी है — 4562 kJ/mol बनाम 496 — और कोई साधारण रासायनिक साथी जो दे सकता है वह उसके पास तक नहीं पहुँचता। अतः Na⁺ और केवल Na⁺. ऊर्जा-भूदृश्य में पहले इलेक्ट्रॉन के तुरंत बाद खाई है। अब मैंगनीज़, [Ar]3d⁵4s². 4s और 3d कक्षक ऊर्जा में पास हैं — इतने पास कि कौन पहले भरता है यह कुछ दसियों किलोजूल की बात है और तत्व पर निर्भर है। दोनों 4s इलेक्ट्रॉन हटाने से Mn²⁺ मिलता है। उसके बाद एक 3d इलेक्ट्रॉन हटाना कुछ अधिक महँगा है, पर बहुत अधिक नहीं, क्योंकि 3d इलेक्ट्रॉन किसी गहरी बंद खोल में नहीं; वे उसी ऊर्जा-पड़ोस में हैं। अतः आयनन ऊर्जाएँ छलाँग लगाने के बजाय धीरे-धीरे चढ़ती हैं, और हर अगली अवस्था पहुँच में है यदि साथी बदले में पर्याप्त दे। भूदृश्य ढलान है, खाई नहीं। उसी एक संरचनात्मक तथ्य से तीन परिणाम निकलते हैं। पहला, अवस्थाएँ एक से भिन्न हैं। p-ब्लॉक में ऑक्सीकरण अवस्थाएँ प्रायः दो से भिन्न होती हैं — थैलियम +1 और +3 दिखाता है, टिन +2 और +4 — क्योंकि इलेक्ट्रॉन भरे s कक्षक से युग्मों में आते-जाते हैं। d-ब्लॉक में वे एक से भिन्न हैं, क्योंकि इलेक्ट्रॉन लगभग समान ऊर्जा के कक्षकों के समुच्चय से एक-एक करके हटाए जा रहे हैं। दूसरा, सबसे ऊँची अवस्थाओं को विशेष साथी चाहिए। मैंगनीज़ परमैंगनेट और Mn₂O₇ में +7 तक पहुँचता है, दोनों ऑक्सीजन के साथ, और किसी क्लोराइड में कभी नहीं। ऑक्सीजन और फ़्लुओरीन एक धातु परमाणु के गिर्द भीड़ करने भर छोटे और उस विशाल धन आवेश को स्थायी करने भर विद्युत ऋणात्मक हैं; क्लोरीन दोनों नहीं, और MnCl₇ बनाने के बजाय तंत्र क्लोराइड को क्लोरीन गैस में उपचयित कर देता है। अतः पहुँच वाली अवस्था धातु जितनी ही साथी पर निर्भर है। तीसरा, बीच की अवस्थाएँ प्रायः सबसे स्थायी हैं, और सिरे प्रबल उपचायक या अपचायक हैं, और कारण स्पष्ट है — Mn⁷⁺ प्रबल उपचायक है क्योंकि उसे गिरने को लंबा रास्ता है, और Cr²⁺ अपचायक है क्योंकि उसे चढ़ने की जगह है। साथ ले जाने योग्य एक अंतिम संरचनात्मक टिप्पणी: d⁵ और d¹⁰ विन्यास बार-बार असामान्य रूप से स्थायी निकलते हैं, इसीलिए Mn²⁺ मैंगनीज़ की सबसे आम अवस्था है और Fe³⁺, Fe²⁺ से अधिक स्थायी है यद्यपि लोहा बाद का तत्व है। आधी भरी और पूरी भरी समुच्चय इस ब्लॉक का लौटता विषय हैं, और उन्हें पहचानना बहुत सारी अन्यथा मनमानी दिखती वरीयताओं को समझा देता है। (दूसरा विकल्प सीज़ियम से झुठलाया जाता है; तीसरा सोडियम सहित हर धातु के लिए परिवर्ती संयोजकता की भविष्यवाणी करता; चौथा मैंगनीज़ का विन्यास ग़लत बताता है, जिसमें पाँच d इलेक्ट्रॉन हैं, कोई नहीं ऐसा नहीं।)",
+          mr: "विद्यार्थ्याच्या सूचनेला सोपे प्रतिउदाहरण आहे आणि ते आधी मांडायला हवे, कारण प्रतिउदाहरण प्रकरण कोणत्याही स्पष्टीकरणाहून वेगाने निकालात काढते. सीझियमकडे पंचावन्न इलेक्ट्रॉन आहेत — मँगेनीजच्या पंचवीसहून अधिक — आणि तो Cs⁺ बनवतो आणि कधी दुसरे काहीही नाही. बेरियमकडे छप्पन आहेत आणि तो केवळ Ba²⁺ सांभाळतो. पुष्कळ इलेक्ट्रॉन असणे स्पष्टपणे पुरेसे नाही. खरा प्रश्न हा नाही की अणूकडे किती इलेक्ट्रॉन आहेत तर हा की पुढचा काढायला किती खर्च येतो. आधी सोडियम पाहा. त्याची मांडणी [Ne]3s¹ आहे. 3s इलेक्ट्रॉन काढा आणि तुमच्याकडे निऑनचा गाभा आहे: पूर्ण, घट्ट बांधलेले कवच ज्यात प्रत्येक इलेक्ट्रॉन केंद्रकाच्या कितीतरी जवळ आणि कितीतरी तीव्रपणे धरलेला. द्वितीय आयनन ऊर्जा प्रथमच्या जवळपास दहापट आहे — 4562 kJ/mol विरुद्ध 496 — आणि कोणताही साधा रासायनिक साथीदार जे देऊ शकतो ते तिच्याजवळही पोहोचत नाही. म्हणून Na⁺ आणि केवळ Na⁺. ऊर्जा-भूदृश्यात पहिल्या इलेक्ट्रॉननंतर लगेच दरी आहे. आता मँगेनीज, [Ar]3d⁵4s². 4s आणि 3d कक्षक ऊर्जेत जवळ आहेत — इतके जवळ की कोण आधी भरतो ही काही दशकांच्या किलोज्यूलची बाब आहे आणि मूलद्रव्यावर अवलंबून आहे. दोन्ही 4s इलेक्ट्रॉन काढल्याने Mn²⁺ मिळतो. त्यानंतर एक 3d इलेक्ट्रॉन काढणे काहीसे महाग आहे, पण फार अधिक नाही, कारण 3d इलेक्ट्रॉन कोणत्याही खोल बंद कवचात नाहीत; ते त्याच ऊर्जा-शेजारात आहेत. म्हणून आयनन ऊर्जा उडी मारण्याऐवजी हळूहळू चढतात, आणि प्रत्येक पुढची अवस्था आवाक्यात आहे जर साथीदार बदल्यात पुरेसे देईल. भूदृश्य उतार आहे, दरी नाही. त्याच एका संरचनात्मक सत्यातून तीन परिणाम निघतात. पहिला, अवस्था एकाने वेगळ्या आहेत. p-खंडात उपचयन अवस्था बहुधा दोनने वेगळ्या असतात — थॅलियम +1 आणि +3 दाखवतो, कथिल +2 आणि +4 — कारण इलेक्ट्रॉन भरलेल्या s कक्षकातून जोड्यांत येतात-जातात. d-खंडात त्या एकाने वेगळ्या आहेत, कारण इलेक्ट्रॉन जवळपास समान ऊर्जेच्या कक्षकांच्या संचातून एकेक करून काढले जात आहेत. दुसरा, सर्वांत उंच अवस्थांना विशिष्ट साथीदार लागतात. मँगेनीज परमँगेनेट आणि Mn₂O₇ मध्ये +7 पर्यंत पोहोचतो, दोन्ही ऑक्सिजनसह, आणि कोणत्याही क्लोराइडमध्ये कधीच नाही. ऑक्सिजन आणि फ्लोरिन एका धातू अणूभोवती गर्दी करण्याइतके लहान आणि त्या प्रचंड धन प्रभाराला स्थिर करण्याइतके विद्युत ऋण आहेत; क्लोरीन दोन्ही नाही, आणि MnCl₇ बनवण्याऐवजी संस्था क्लोराइडचे क्लोरीन वायूत उपचयन करते. म्हणून आवाक्यातली अवस्था धातूइतकीच साथीदारावर अवलंबून आहे. तिसरा, मधल्या अवस्था बहुधा सर्वांत स्थिर आहेत, आणि टोके तीव्र उपचायक वा अपचायक आहेत, आणि कारण स्पष्ट आहे — Mn⁷⁺ तीव्र उपचायक आहे कारण त्याला पडायला लांब वाट आहे, आणि Cr²⁺ अपचायक आहे कारण त्याला चढायला जागा आहे. सोबत न्यायची एक अखेरची संरचनात्मक टीप: d⁵ आणि d¹⁰ मांडण्या वारंवार असामान्यपणे स्थिर निघतात, म्हणूनच Mn²⁺ ही मँगेनीजची सर्वांत सामान्य अवस्था आहे आणि Fe³⁺ हे Fe²⁺ हून अधिक स्थिर आहे जरी लोखंड नंतरचे मूलद्रव्य असले तरी. अर्धी भरलेली आणि पूर्ण भरलेली संचे या खंडाचा परतणारा विषय आहेत, आणि त्यांना ओळखणे पुष्कळशा अन्यथा मनमानी दिसणाऱ्या प्राधान्यांना समजावते. (दुसरा पर्याय सीझियमने खोडला जातो; तिसरा सोडियमसह प्रत्येक धातूसाठी बदलती संयुजा भाकीत करेल; चौथा मँगेनीजची मांडणी चुकीची सांगतो, जिच्यात पाच d इलेक्ट्रॉन आहेत, एकही नाही असे नाही.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Zirconium and hafnium have almost identical atomic radii — about 160 pm each — although hafnium is a whole period lower and has thirty-two more protons. They were not separated until 1923 and are still hard to separate. Explain.",
+          hi: "ज़र्कोनियम और हैफ़्नियम की परमाणु त्रिज्याएँ लगभग समरूप हैं — हर एक लगभग 160 pm — यद्यपि हैफ़्नियम पूरी एक आवर्त नीचे है और उसके बत्तीस प्रोटॉन अधिक हैं। वे 1923 तक अलग नहीं किए जा सके और आज भी अलग करना कठिन है। समझाओ।",
+          mr: "झिर्कोनियम आणि हाफ्नियम यांच्या अणुत्रिज्या जवळपास सारख्या आहेत — प्रत्येकी सुमारे 160 pm — जरी हाफ्नियम अख्खी एक आवर्त खाली आहे आणि त्याच्याकडे बत्तीस प्रोटॉन अधिक आहेत. ते 1923 पर्यंत वेगळे केले जाऊ शकले नाहीत आणि आजही वेगळे करणे कठीण आहे. समजावा.",
+        },
+        choices: [
+          {
+            en: "Between them lie the fourteen lanthanoids, across which the 4f electrons shield the nucleus badly, so each added proton pulls the outer shell in a little more than the added electron pushes it out. Fourteen small contractions accumulate into a large one, and it almost exactly cancels the increase in size that going down a period would otherwise give. Since chemical behaviour is governed mainly by size and charge, and these two share both, they behave almost identically — which is why they occur together in ores and resisted separation for over a century",
+            hi: "उनके बीच चौदह लैंथेनॉयड पड़े हैं, जिनके आर-पार 4f इलेक्ट्रॉन नाभिक को बुरी तरह ढकते हैं, अतः हर जोड़ा गया प्रोटॉन बाहरी खोल को उससे थोड़ा अधिक भीतर खींचता है जितना जोड़ा गया इलेक्ट्रॉन उसे बाहर धकेलता है। चौदह छोटे संकुचन जुड़कर एक बड़ा बनते हैं, और वह आकार में उस वृद्धि को लगभग ठीक-ठीक काट देता है जो एक आवर्त नीचे जाने से अन्यथा मिलती। चूँकि रासायनिक आचरण मुख्यतः आकार और आवेश से चलता है, और ये दोनों दोनों बाँटते हैं, वे लगभग समरूप बरतते हैं — इसीलिए वे अयस्कों में साथ मिलते हैं और सदी भर से अधिक पृथक्करण का प्रतिरोध करते रहे",
+            mr: "त्यांच्यामध्ये चौदा लॅंथेनॉइड पडले आहेत, ज्यांच्या आरपार 4f इलेक्ट्रॉन केंद्रकाला वाईट रीतीने झाकतात, म्हणून प्रत्येक जोडलेला प्रोटॉन बाहेरचे कवच त्याहून थोडे अधिक आत ओढतो जितके जोडलेला इलेक्ट्रॉन ते बाहेर ढकलतो. चौदा लहान आकुंचने जुळून एक मोठे बनतात, आणि ते आकारातील त्या वाढीला जवळपास नेमके कापते जी एक आवर्त खाली गेल्याने अन्यथा मिळाली असती. रासायनिक वर्तन मुख्यतः आकार आणि प्रभाराने चालत असल्याने, आणि हे दोघे दोन्ही वाटून घेत असल्याने, ते जवळपास सारखे वागतात — म्हणूनच ते खनिजांत एकत्र आढळतात आणि शतकाहून अधिक काळ वेगळेपणाला विरोध करत राहिले",
+          },
+          {
+            en: "The two are almost the same size because hafnium's extra protons are balanced by its extra neutrons, which add mass without adding charge",
+            hi: "दोनों लगभग एक ही आकार के हैं क्योंकि हैफ़्नियम के अतिरिक्त प्रोटॉन उसके अतिरिक्त न्यूट्रॉनों से संतुलित हैं, जो आवेश जोड़े बिना द्रव्यमान जोड़ते हैं",
+            mr: "दोघे जवळपास एकाच आकाराचे आहेत कारण हाफ्नियमचे जादा प्रोटॉन त्याच्या जादा न्यूट्रॉनांनी तोलले जातात, जे प्रभार न जोडता वस्तुमान जोडतात",
+          },
+          {
+            en: "They are the same size by coincidence, and there is no general reason — the second and third transition series are otherwise quite unlike each other",
+            hi: "वे संयोग से एक आकार के हैं, और कोई सामान्य कारण नहीं — दूसरी और तीसरी संक्रमण श्रेणियाँ अन्यथा एक-दूसरे से काफ़ी भिन्न हैं",
+            mr: "ते योगायोगाने एकाच आकाराचे आहेत, आणि कोणतेही सर्वसाधारण कारण नाही — दुसरी आणि तिसरी संक्रमण श्रेणी अन्यथा एकमेकांहून बऱ्याच वेगळ्या आहेत",
+          },
+          {
+            en: "Hafnium is smaller than expected because its 5d electrons are held in orbitals that do not extend as far as 4d ones, which has nothing to do with the lanthanoids",
+            hi: "हैफ़्नियम अपेक्षा से छोटा है क्योंकि उसके 5d इलेक्ट्रॉन ऐसे कक्षकों में हैं जो 4d जितनी दूर नहीं फैलते, और इसका लैंथेनॉयडों से कोई लेना-देना नहीं",
+            mr: "हाफ्नियम अपेक्षेहून लहान आहे कारण त्याचे 5d इलेक्ट्रॉन अशा कक्षकांत आहेत जे 4d इतके दूर पसरत नाहीत, आणि याचा लॅंथेनॉइडांशी काहीही संबंध नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "This is a case where a small effect, repeated enough times, changes the chemistry of a whole row — and it is worth working through because the reasoning generalises. WHAT THE EXPECTATION IS. Going down a group normally increases the atomic radius substantially: a new shell is added, and the outer electrons sit further out. Titanium to zirconium is a jump of about 15 pm. On that pattern zirconium to hafnium should be a similar jump, and hafnium should be noticeably the larger. It is not. The two measure about 160 and 159 pm — a difference of a picometre, which is nothing. WHAT INTERVENES. Between zirconium (Z = 40) and hafnium (Z = 72) lie the fourteen lanthanoids, and going across them adds fourteen protons while filling the 4f subshell. The key point is about SHIELDING. An added electron partly cancels the effect of the added proton on the outer electrons, and how well it does so depends on the shape of the orbital it occupies. An s electron shields well; a p electron less well; a d electron less again; and a 4f electron shields poorly, because 4f orbitals are diffuse and heavily lobed and spend little time between the nucleus and the outer shell. So across the lanthanoids each added proton is felt by the outer electrons more than the added 4f electron cancels it. The net effective nuclear charge creeps up, and the atom contracts a little at each step. A single step is small — a picometre or two. Fourteen of them are not. The accumulated contraction is enough to cancel almost exactly the expansion that adding a shell would have produced, and hafnium ends up the same size as zirconium. WHAT FOLLOWS. Chemical behaviour is governed largely by size and by charge, and these two elements share both: same group, same common oxidation state of +4, same ionic radius to within a fraction of a picometre. So they form the same compounds with the same structures and almost the same solubilities. They occur together in the same ores, and hafnium was not identified as a separate element until 1923 — the last stable element to be discovered, hidden inside zirconium samples the whole time. Separating them today is done by solvent extraction or ion exchange, and it is expensive; it matters because zirconium is nearly transparent to neutrons and hafnium absorbs them greedily, so nuclear reactor cladding needs hafnium-free zirconium and control rods want the hafnium. Two elements a chemist can barely tell apart are opposites to a neutron. THE GENERAL POINT. The lanthanoid contraction is why the second and third transition series resemble each other far more closely than either resembles the first — niobium and tantalum, molybdenum and tungsten, ruthenium and osmium are all near-twins for the same reason. A small systematic effect, accumulated over enough steps, has restructured the periodic table's lower half. That is worth noticing as a pattern in its own right: many chemical trends are not single large causes but small ones that were repeated. (The second option gives neutrons an electrostatic role they do not have; the third denies a general effect that explains an entire row of near-twins; the fourth invents an orbital-extent argument that would apply equally to titanium and zirconium and so cannot explain the anomaly.)",
+          hi: "यह ऐसी स्थिति है जहाँ छोटा प्रभाव, पर्याप्त बार दोहराया जाकर, पूरी पंक्ति का रसायन बदल देता है — और इसे साधना चाहिए क्योंकि तर्क सामान्यीकृत होता है। अपेक्षा क्या है। किसी वर्ग में नीचे जाने पर परमाणु त्रिज्या प्रायः काफ़ी बढ़ती है: नई खोल जुड़ती है, और बाहरी इलेक्ट्रॉन अधिक बाहर बैठते हैं। टाइटेनियम से ज़र्कोनियम लगभग 15 pm की छलाँग है। उस ढर्रे पर ज़र्कोनियम से हैफ़्नियम भी वैसी ही छलाँग होनी चाहिए, और हैफ़्नियम ध्यान देने योग्य ढंग से बड़ा होना चाहिए। वह नहीं है। दोनों लगभग 160 और 159 pm नापते हैं — एक पिकोमीटर का अंतर, जो कुछ भी नहीं। बीच में क्या पड़ता है। ज़र्कोनियम (Z = 40) और हैफ़्नियम (Z = 72) के बीच चौदह लैंथेनॉयड पड़े हैं, और उनके आर-पार जाने में चौदह प्रोटॉन जुड़ते हैं जबकि 4f उपखोल भरती है। मुख्य बात परिरक्षण की है। जोड़ा गया इलेक्ट्रॉन बाहरी इलेक्ट्रॉनों पर जोड़े गए प्रोटॉन के प्रभाव को आंशिक रूप से काटता है, और वह कितना अच्छा काटता है यह उस कक्षक के आकार पर निर्भर है जिसमें वह बैठा है। s इलेक्ट्रॉन अच्छा परिरक्षण करता है; p इलेक्ट्रॉन उससे कम; d इलेक्ट्रॉन फिर कम; और 4f इलेक्ट्रॉन बुरा परिरक्षण करता है, क्योंकि 4f कक्षक फैले हुए और बहुत पालियों वाले हैं तथा नाभिक और बाहरी खोल के बीच कम समय बिताते हैं। अतः लैंथेनॉयडों के आर-पार हर जोड़ा गया प्रोटॉन बाहरी इलेक्ट्रॉनों को उससे अधिक महसूस होता है जितना जोड़ा गया 4f इलेक्ट्रॉन उसे काटता है। प्रभावी नाभिकीय आवेश चुपचाप चढ़ता है, और हर क़दम पर परमाणु थोड़ा सिकुड़ता है। एक क़दम छोटा है — एक-दो पिकोमीटर। उनमें से चौदह नहीं। जमा हुआ संकुचन उस प्रसार को लगभग ठीक-ठीक काटने भर है जो खोल जोड़ने से मिलता, और हैफ़्नियम ज़र्कोनियम जितना ही निकलता है। इससे क्या निकलता है। रासायनिक आचरण मुख्यतः आकार और आवेश से चलता है, और ये दोनों दोनों बाँटते हैं: वही वर्ग, वही आम ऑक्सीकरण अवस्था +4, वही आयनिक त्रिज्या पिकोमीटर के अंश तक। अतः वे एक ही संरचनाओं वाले वही यौगिक और लगभग वही विलेयताएँ बनाते हैं। वे उन्हीं अयस्कों में साथ मिलते हैं, और हैफ़्नियम 1923 तक अलग तत्व के रूप में पहचाना ही नहीं गया — खोजा गया अंतिम स्थायी तत्व, पूरे समय ज़र्कोनियम के नमूनों के भीतर छिपा। आज उन्हें विलायक निष्कर्षण या आयन विनिमय से अलग किया जाता है, और वह महँगा है; वह मायने इसलिए रखता है कि ज़र्कोनियम न्यूट्रॉनों के लिए लगभग पारदर्शी है और हैफ़्नियम उन्हें लालच से सोखता है, अतः नाभिकीय रिएक्टर के आवरण को हैफ़्नियम-रहित ज़र्कोनियम चाहिए और नियंत्रण छड़ों को हैफ़्नियम। दो तत्व जिन्हें रसायनज्ञ मुश्किल से अलग बता सकता है, न्यूट्रॉन के लिए उलटे हैं। सामान्य बात। लैंथेनॉयड संकुचन ही कारण है कि दूसरी और तीसरी संक्रमण श्रेणियाँ एक-दूसरे से कहीं अधिक मिलती हैं, बनिस्बत किसी के पहली से — नाइओबियम और टैंटलम, मॉलिब्डेनम और टंगस्टन, रूथीनियम और ऑस्मियम सब उसी कारण लगभग जुड़वाँ हैं। छोटा व्यवस्थित प्रभाव, पर्याप्त क़दमों पर जमा होकर, आवर्त सारणी का निचला आधा फिर से गढ़ चुका है। यह अपने आप में ढर्रे के रूप में ध्यान देने योग्य है: बहुत सारी रासायनिक प्रवृत्तियाँ एकल बड़े कारण नहीं बल्कि छोटे कारण हैं जो दोहराए गए। (दूसरा विकल्प न्यूट्रॉनों को ऐसी स्थिरवैद्युत भूमिका देता है जो उनकी नहीं; तीसरा ऐसे सामान्य प्रभाव से इनकार करता है जो लगभग जुड़वाँ तत्वों की पूरी पंक्ति समझाता है; चौथा कक्षक-विस्तार का तर्क गढ़ता है जो टाइटेनियम और ज़र्कोनियम पर भी उतना ही लागू होता और इसलिए विषमता समझा नहीं सकता।)",
+          mr: "ही अशी स्थिती आहे जिथे लहान परिणाम, पुरेशा वेळा पुनरावृत्त होऊन, अख्ख्या रांगेचे रसायन बदलतो — आणि हे सोडवण्याजोगे आहे कारण युक्तिवाद सर्वसाधारण होतो. अपेक्षा काय आहे. एखाद्या गटात खाली जाताना अणुत्रिज्या सहसा बरीच वाढते: नवे कवच जोडले जाते, आणि बाहेरचे इलेक्ट्रॉन अधिक बाहेर बसतात. टायटॅनियमपासून झिर्कोनियम ही सुमारे 15 pm ची उडी आहे. त्या आकृतिबंधावर झिर्कोनियमपासून हाफ्नियमही तशीच उडी असावी, आणि हाफ्नियम लक्षणीयरीत्या मोठे असावे. ते नाही. दोन्ही सुमारे 160 आणि 159 pm मोजतात — एका पिकोमीटरचा फरक, जो काहीच नाही. मध्ये काय पडते. झिर्कोनियम (Z = 40) आणि हाफ्नियम (Z = 72) यांच्यामध्ये चौदा लॅंथेनॉइड पडले आहेत, आणि त्यांच्या आरपार जाताना चौदा प्रोटॉन जोडले जातात तर 4f उपकवच भरते. मुख्य मुद्दा आवरणाचा आहे. जोडलेला इलेक्ट्रॉन बाहेरच्या इलेक्ट्रॉनांवरील जोडलेल्या प्रोटॉनचा परिणाम अंशतः कापतो, आणि तो किती चांगला कापतो हे तो ज्या कक्षकात बसला आहे त्याच्या आकारावर अवलंबून आहे. s इलेक्ट्रॉन चांगले आवरण करतो; p इलेक्ट्रॉन त्याहून कमी; d इलेक्ट्रॉन आणखी कमी; आणि 4f इलेक्ट्रॉन वाईट आवरण करतो, कारण 4f कक्षक पसरलेले आणि खूप पाकळ्यांचे आहेत आणि केंद्रक व बाहेरचे कवच यांच्यामध्ये कमी वेळ घालवतात. म्हणून लॅंथेनॉइडांच्या आरपार प्रत्येक जोडलेला प्रोटॉन बाहेरच्या इलेक्ट्रॉनांना त्याहून अधिक जाणवतो जितका जोडलेला 4f इलेक्ट्रॉन त्याला कापतो. प्रभावी केंद्रकीय प्रभार मुकाट्याने चढतो, आणि प्रत्येक पावलावर अणू थोडा आकुंचन पावतो. एक पाऊल लहान आहे — एक-दोन पिकोमीटर. त्यांतली चौदा नाहीत. साठलेले आकुंचन त्या प्रसरणाला जवळपास नेमके कापण्याइतके आहे जे कवच जोडल्याने मिळाले असते, आणि हाफ्नियम झिर्कोनियमइतकेच निघते. यातून काय निघते. रासायनिक वर्तन मुख्यतः आकार आणि प्रभाराने चालते, आणि हे दोघे दोन्ही वाटून घेतात: तोच गट, तीच सामान्य उपचयन अवस्था +4, तीच आयनी त्रिज्या पिकोमीटरच्या अंशापर्यंत. म्हणून ते एकाच रचनांची तीच संयुगे आणि जवळपास त्याच विद्राव्यता बनवतात. ते त्याच खनिजांत एकत्र आढळतात, आणि हाफ्नियम 1923 पर्यंत वेगळे मूलद्रव्य म्हणून ओळखलेच गेले नाही — शोधलेले शेवटचे स्थिर मूलद्रव्य, अख्खा काळ झिर्कोनियमच्या नमुन्यांत लपलेले. आज त्यांना द्रावक निष्कर्षण वा आयन विनिमयाने वेगळे केले जाते, आणि ते महाग आहे; ते महत्त्वाचे यासाठी की झिर्कोनियम न्यूट्रॉनांसाठी जवळपास पारदर्शक आहे आणि हाफ्नियम त्यांना लोभाने शोषते, म्हणून केंद्रकीय अणुभट्टीच्या आवरणाला हाफ्नियम-विरहित झिर्कोनियम लागते आणि नियंत्रण कांड्यांना हाफ्नियम. दोन मूलद्रव्ये जी रसायनशास्त्रज्ञ जेमतेम वेगळी सांगू शकतो, न्यूट्रॉनसाठी उलट आहेत. सर्वसाधारण मुद्दा. लॅंथेनॉइड आकुंचन हेच कारण की दुसरी आणि तिसरी संक्रमण श्रेणी एकमेकांशी कितीतरी अधिक जुळतात, कोणाच्याही पहिलीशी जुळण्याहून — नायोबियम आणि टँटॅलम, मॉलिब्डेनम आणि टंगस्टन, रुथेनियम आणि ऑस्मियम सर्व त्याच कारणाने जवळपास जुळे आहेत. लहान पद्धतशीर परिणाम, पुरेशा पावलांवर साठून, आवर्त सारणीचा खालचा अर्धा भाग पुन्हा घडवून बसला आहे. हे स्वतःच आकृतिबंध म्हणून लक्षात घेण्याजोगे आहे: पुष्कळशा रासायनिक प्रवृत्ती एकेरी मोठी कारणे नसून लहान कारणे आहेत जी पुनरावृत्त झाली. (दुसरा पर्याय न्यूट्रॉनांना अशी स्थिरविद्युत भूमिका देतो जी त्यांची नाही; तिसरा असा सर्वसाधारण परिणाम नाकारतो जो जवळपास जुळ्या मूलद्रव्यांची अख्खी रांग समजावतो; चौथा कक्षक-विस्ताराचा युक्तिवाद घडवतो जो टायटॅनियम आणि झिर्कोनियमवरही तितकाच लागू होईल आणि म्हणून विसंगती समजावू शकत नाही.)",
+        },
+      },
+    ],
+  },
+  /*C3*/
 ];
 
 export const G12_CHEMISTRY_NUMERIC: Record<string, NumQ[]> = {
@@ -1056,6 +1753,330 @@ export const G12_CHEMISTRY_NUMERIC: Record<string, NumQ[]> = {
         en: "α = Λ_m/Λ°m = 20/400 = 0.05, that is 5 per cent. The reasoning behind the ratio is worth stating: Λ°m is what the acid would conduct if every molecule had dissociated, and Λ_m is what it actually conducts, so the ratio is the fraction that has. Two things follow. First, this is a measurement of a chemical equilibrium made with a conductivity cell and no chemistry at all — no ions are detected individually, only their collective effect. Second, α feeds straight into the dissociation constant through K_a = cα²/(1 − α), so a single conductivity reading at known concentration yields the strength of the acid. Note that Λ°m for a weak acid cannot itself be measured, and has to come from Kohlrausch's law applied to three strong electrolytes — so this apparently simple ratio rests on a piece of indirect reasoning done earlier. (20 quotes Λ_m as a percentage; 0.05 gives the fraction where a percentage was asked.)",
         hi: "α = Λ_m/Λ°m = 20/400 = 0.05, अर्थात् 5 प्रतिशत। अनुपात के पीछे का तर्क कहने योग्य है: Λ°m वह है जो अम्ल तब चालन करता यदि हर अणु वियोजित हो जाता, और Λ_m वह है जो वह वस्तुतः करता है, अतः अनुपात वही अंश है जो हुआ। दो बातें निकलती हैं। पहली, यह रासायनिक साम्य का माप है जो चालकता सेल से और बिना किसी रसायन के किया गया — कोई आयन अलग से पकड़ा नहीं गया, केवल उनका सामूहिक प्रभाव। दूसरी, α सीधे वियोजन स्थिरांक में जाता है K_a = cα²/(1 − α) के ज़रिए, अतः ज्ञात सांद्रता पर एक ही चालकता पाठ्यांक अम्ल की प्रबलता दे देता है। ध्यान दो कि दुर्बल अम्ल का Λ°m स्वयं नापा नहीं जा सकता, और उसे तीन प्रबल विद्युत अपघट्यों पर लगे कोह्लराउश के नियम से आना पड़ता है — अतः यह देखने में सरल अनुपात पहले किए गए एक अप्रत्यक्ष तर्क पर टिका है। (20 Λ_m को ही प्रतिशत बता देता है; 0.05 अंश देता है जहाँ प्रतिशत पूछा गया था।)",
         mr: "α = Λ_m/Λ°m = 20/400 = 0.05, म्हणजे 5 टक्के. गुणोत्तरामागचा युक्तिवाद सांगण्याजोगा आहे: Λ°m हे ते जे आम्ल तेव्हा वहन करेल जर प्रत्येक रेणू विघटित झाला असता, आणि Λ_m हे ते जे ते प्रत्यक्षात करते, म्हणून गुणोत्तर हाच तो अंश जो झाला. दोन गोष्टी निघतात. पहिली, हे रासायनिक समतोलाचे माप आहे जे वाहकता घटाने आणि कोणत्याही रसायनाविना केले — कोणताही आयन वेगळा पकडला गेला नाही, केवळ त्यांचा सामूहिक परिणाम. दुसरी, α थेट विघटन स्थिरांकात जातो K_a = cα²/(1 − α) मार्गे, म्हणून ज्ञात संहतीवर एकच वाहकता वाचन आम्लाची तीव्रता देते. लक्षात घ्या की दुर्बल आम्लाचे Λ°m स्वतः मोजता येत नाही, आणि ते तीन तीव्र विद्युत अपघटनींवर लावलेल्या कोहलराउशच्या नियमातून यावे लागते — म्हणून हे दिसायला साधे गुणोत्तर आधी केलेल्या एका अप्रत्यक्ष युक्तिवादावर टिकले आहे. (20 Λ_m लाच टक्केवारी सांगते; 0.05 अंश देते जिथे टक्केवारी विचारली होती.)",
+      },
+    },
+  ],
+  "chemistry-12-chemical-kinetics": [
+    {
+      level: 1,
+      stem: {
+        en: "A first-order reaction has a rate constant of 0.0231 min⁻¹. What is its half-life, in minutes? Take ln 2 = 0.693.",
+        hi: "किसी प्रथम कोटि अभिक्रिया का वेग स्थिरांक 0.0231 min⁻¹ है। उसकी अर्धायु, मिनट में, क्या है? ln 2 = 0.693 लो।",
+        mr: "एका प्रथम कोटी अभिक्रियेचा वेग स्थिरांक 0.0231 min⁻¹ आहे. तिचे अर्धायुष्य, मिनिटांत, किती? ln 2 = 0.693 घ्या.",
+      },
+      answer: 30,
+      wrong: [0.0231, 3, 300],
+      checkExpr: "0.693/0.0231",
+      solution: {
+        en: "t½ = 0.693/k = 0.693/0.0231 = 30 min. Note what the answer does NOT contain: the starting concentration. For first order alone the half-life is independent of how much you began with, which is why a first-order plot can be identified from the data without knowing the initial amount. (0.0231 quotes k back as a time.)",
+        hi: "t½ = 0.693/k = 0.693/0.0231 = 30 min. ध्यान दो कि उत्तर में क्या नहीं है: आरंभिक सांद्रता। केवल प्रथम कोटि के लिए अर्धायु इस बात से स्वतंत्र है कि तुमने कितने से शुरू किया, इसीलिए प्रथम कोटि का ग्राफ़ आरंभिक मात्रा जाने बिना आँकड़ों से पहचाना जा सकता है। (0.0231 k को ही समय बताकर लौटा देता है।)",
+        mr: "t½ = 0.693/k = 0.693/0.0231 = 30 min. उत्तरात काय नाही ते लक्षात घ्या: प्रारंभिक संहती. केवळ प्रथम कोटीसाठी अर्धायुष्य तुम्ही किती पासून सुरू केले यापासून स्वतंत्र आहे, म्हणूनच प्रथम कोटीचा आलेख प्रारंभिक प्रमाण न जाणता माहितीवरून ओळखता येतो. (0.0231 k लाच काळ म्हणून परत सांगते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "A reaction has the experimentally determined rate law rate = k[A][B]². What is its overall order?",
+        hi: "किसी अभिक्रिया का प्रयोग से तय वेग नियम वेग = k[A][B]² है। उसकी समग्र कोटि क्या है?",
+        mr: "एका अभिक्रियेचा प्रयोगाने ठरलेला वेग नियम वेग = k[A][B]² आहे. तिची एकूण कोटी किती?",
+      },
+      answer: 3,
+      wrong: [2, 4, 1],
+      checkExpr: "1+2",
+      solution: {
+        en: "Overall order is the sum of the exponents: 1 + 2 = 3. The reaction is first order in A and second order in B, and the two facts together make it third order overall. Note that this says nothing about the coefficients in the balanced equation, which are a separate matter entirely. (2 counts only the largest exponent.)",
+        hi: "समग्र कोटि घातों का योग है: 1 + 2 = 3. अभिक्रिया A में प्रथम कोटि की और B में द्वितीय कोटि की है, और दोनों तथ्य मिलकर उसे समग्र रूप से तृतीय कोटि का बनाते हैं। ध्यान दो कि यह संतुलित समीकरण के गुणांकों के बारे में कुछ नहीं कहता, जो बिलकुल अलग मामला हैं। (2 केवल सबसे बड़ी घात गिन लेता है।)",
+        mr: "एकूण कोटी म्हणजे घातींची बेरीज: 1 + 2 = 3. अभिक्रिया A मध्ये प्रथम कोटीची आणि B मध्ये द्वितीय कोटीची आहे, आणि दोन्ही सत्ये मिळून तिला एकूण तृतीय कोटीची बनवतात. लक्षात घ्या की हे संतुलित समीकरणाच्या गुणकांबद्दल काहीही सांगत नाही, जे पूर्णपणे वेगळे प्रकरण आहे. (2 केवळ सर्वांत मोठी घात मोजते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Doubling the concentration of A quadruples the rate, with everything else held constant. What is the order of the reaction with respect to A?",
+        hi: "बाक़ी सब स्थिर रखते हुए A की सांद्रता दुगुनी करने पर वेग चौगुना हो जाता है। A के सापेक्ष अभिक्रिया की कोटि क्या है?",
+        mr: "बाकी सर्व स्थिर ठेवून A ची संहती दुप्पट केल्यावर वेग चौपट होतो. A च्या सापेक्ष अभिक्रियेची कोटी किती?",
+      },
+      answer: 2,
+      wrong: [1, 4, 0.5],
+      checkExpr: "4/2",
+      solution: {
+        en: "If doubling gives 2ⁿ = 4, then n = 2 — that is, 4/2 = 2. Changing one concentration at a time and watching what the rate does is exactly how orders are measured, and it is the only way: no amount of staring at the balanced equation would have given this. (4 quotes the rate factor as the order.)",
+        hi: "यदि दुगुना करने पर 2ⁿ = 4, तो n = 2 — अर्थात् 4/2 = 2. एक बार में एक सांद्रता बदलना और देखना कि वेग क्या करता है, ठीक इसी तरह कोटियाँ नापी जाती हैं, और यही एकमात्र रास्ता है: संतुलित समीकरण को कितना भी घूरने से यह नहीं मिलता। (4 वेग के गुणक को ही कोटि बता देता है।)",
+        mr: "जर दुप्पट केल्यावर 2ⁿ = 4, तर n = 2 — म्हणजे 4/2 = 2. एका वेळी एक संहती बदलणे आणि वेग काय करतो ते पाहणे, नेमक्या याच प्रकारे कोट्या मोजल्या जातात, आणि हाच एकमेव मार्ग: संतुलित समीकरणाकडे कितीही टक लावून पाहून हे मिळाले नसते. (4 वेगाचा गुणकच कोटी सांगते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A first-order reaction is 75 per cent complete in 20 minutes. What is its half-life, in minutes?",
+        hi: "कोई प्रथम कोटि अभिक्रिया 20 मिनट में 75 प्रतिशत पूरी हो जाती है। उसकी अर्धायु, मिनट में, क्या है?",
+        mr: "एक प्रथम कोटी अभिक्रिया 20 मिनिटांत 75 टक्के पूर्ण होते. तिचे अर्धायुष्य, मिनिटांत, किती?",
+      },
+      answer: 10,
+      wrong: [15, 5, 40],
+      checkExpr: "20/2",
+      solution: {
+        en: "Seventy-five per cent complete means a quarter remains, which is two halvings, so 20 minutes is two half-lives and each is 20/2 = 10 min. Counting in halvings rather than in percentages is much the quicker route: 50 per cent is one, 75 is two, 87.5 is three. (15 treats the decay as linear in time.)",
+        hi: "पचहत्तर प्रतिशत पूरी होने का अर्थ है चौथाई बचा, जो दो बार आधा होना है, अतः 20 मिनट दो अर्धायुएँ हैं और हर एक 20/2 = 10 min. प्रतिशतों के बजाय आधे होने में गिनना कहीं तेज़ रास्ता है: 50 प्रतिशत एक है, 75 दो, 87.5 तीन। (15 क्षय को समय में रैखिक मान लेता है।)",
+        mr: "पंचाहत्तर टक्के पूर्ण होणे म्हणजे चतुर्थांश उरला, जे दोनदा निम्मे होणे आहे, म्हणून 20 मिनिटे ही दोन अर्धायुष्ये आहेत आणि प्रत्येक 20/2 = 10 min. टक्केवारीऐवजी निम्मे होण्यात मोजणे कितीतरी जलद मार्ग: 50 टक्के एक आहे, 75 दोन, 87.5 तीन. (15 क्षयाला काळात रेषीय मानते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A first-order reaction has k = 0.05 s⁻¹. What is the rate, in mol L⁻¹ s⁻¹, when the concentration is 2 mol/L?",
+        hi: "किसी प्रथम कोटि अभिक्रिया का k = 0.05 s⁻¹ है। सांद्रता 2 mol/L होने पर वेग, mol L⁻¹ s⁻¹ में, क्या है?",
+        mr: "एका प्रथम कोटी अभिक्रियेचा k = 0.05 s⁻¹ आहे. संहती 2 mol/L असताना वेग, mol L⁻¹ s⁻¹ मध्ये, किती?",
+      },
+      answer: 0.1,
+      wrong: [0.025, 40, 0.2],
+      checkExpr: "0.05*2",
+      solution: {
+        en: "Rate = k[A] = 0.05 × 2 = 0.1 mol L⁻¹ s⁻¹. Notice that the rate falls as the reaction proceeds and the concentration drops, while k does not — the rate is a moving quantity and the rate constant is the fixed one, and confusing them is the commonest error in this chapter. (0.025 divides rather than multiplying.)",
+        hi: "वेग = k[A] = 0.05 × 2 = 0.1 mol L⁻¹ s⁻¹. ध्यान दो कि अभिक्रिया चलते और सांद्रता गिरते हुए वेग घटता है, जबकि k नहीं — वेग चलती राशि है और वेग स्थिरांक स्थिर, और उन्हें गड्डमड्ड करना इस अध्याय की सबसे आम भूल है। (0.025 गुणा करने के बजाय भाग दे देता है।)",
+        mr: "वेग = k[A] = 0.05 × 2 = 0.1 mol L⁻¹ s⁻¹. लक्षात घ्या की अभिक्रिया चालताना आणि संहती घसरताना वेग घटतो, तर k नाही — वेग ही हलती राशी आहे आणि वेग स्थिरांक स्थिर, आणि त्यांची गल्लत करणे ही या प्रकरणातली सर्वांत सामान्य चूक. (0.025 गुणण्याऐवजी भागते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A reaction's rate constant doubles for every 10 K rise in temperature. By what factor does it change for a rise of 30 K?",
+        hi: "किसी अभिक्रिया का वेग स्थिरांक ताप में हर 10 K की वृद्धि पर दुगुना हो जाता है। 30 K की वृद्धि पर वह कितने गुणक से बदलता है?",
+        mr: "एका अभिक्रियेचा वेग स्थिरांक तापमानातील प्रत्येक 10 K वाढीवर दुप्पट होतो. 30 K च्या वाढीवर तो किती पटीने बदलतो?",
+      },
+      answer: 8,
+      wrong: [6, 3, 4],
+      checkExpr: "2*2*2",
+      solution: {
+        en: "Three ten-degree steps multiply rather than add: 2 × 2 × 2 = 8. That a modest warming can make a reaction eight times faster while the molecules speed up by only a few per cent is the point of the Arrhenius exponential — it is not the average speed that matters but the tail of the distribution above the activation energy. (6 adds the doublings instead of multiplying them.)",
+        hi: "दस-अंश के तीन क़दम जुड़ते नहीं, गुणा होते हैं: 2 × 2 × 2 = 8. मामूली गर्माहट अभिक्रिया को आठ गुना तेज़ कर सकती है जबकि अणु केवल कुछ प्रतिशत तेज़ होते हैं — यही आरेनियस चरघातांक का मर्म है: मायने औसत चाल नहीं बल्कि सक्रियण ऊर्जा से ऊपर वितरण की पूँछ रखती है। (6 दुगुने होने को गुणा करने के बजाय जोड़ देता है।)",
+        mr: "दहा-अंशांची तीन पावले जुळत नाहीत, गुणली जातात: 2 × 2 × 2 = 8. माफक ऊब अभिक्रिया आठपट वेगवान करू शकते तर रेणू केवळ काही टक्के वेगवान होतात — हाच अरेनियस घातांकाचा गाभा: महत्त्वाची सरासरी गती नसून सक्रियण ऊर्जेवरची वितरणाची शेपूट. (6 दुप्पट होणे गुणण्याऐवजी जोडते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A first-order reaction has a half-life of 5 minutes. What percentage of the reactant remains after 15 minutes?",
+        hi: "किसी प्रथम कोटि अभिक्रिया की अर्धायु 5 मिनट है। 15 मिनट बाद अभिकारक का कितना प्रतिशत बचता है?",
+        mr: "एका प्रथम कोटी अभिक्रियेचे अर्धायुष्य 5 मिनिटे आहे. 15 मिनिटांनंतर अभिक्रियकाचा किती टक्के उरतो?",
+      },
+      answer: 12.5,
+      wrong: [25, 50, 6.25],
+      checkExpr: "100/8",
+      solution: {
+        en: "Fifteen minutes is three half-lives, so the survivor is 100/2³ = 100/8 = 12.5 per cent. Follow it step by step: 100 → 50 → 25 → 12.5. The reactant never reaches zero exactly, because each interval removes a fraction rather than an amount, which is why a first-order reaction is quoted as complete after some agreed number of half-lives rather than at a definite time. (25 stops one half-life short.)",
+        hi: "पंद्रह मिनट तीन अर्धायुएँ हैं, अतः बचा 100/2³ = 100/8 = 12.5 प्रतिशत है। क़दम-दर-क़दम पीछा करो: 100 → 50 → 25 → 12.5. अभिकारक ठीक शून्य तक कभी नहीं पहुँचता, क्योंकि हर अंतराल मात्रा के बजाय एक अंश हटाता है, इसीलिए प्रथम कोटि अभिक्रिया को किसी निश्चित समय पर नहीं बल्कि सहमत अर्धायुओं की संख्या के बाद पूरी बताया जाता है। (25 एक अर्धायु पहले रुक जाता है।)",
+        mr: "पंधरा मिनिटे म्हणजे तीन अर्धायुष्ये, म्हणून उरलेला 100/2³ = 100/8 = 12.5 टक्के आहे. पावलापावलाने मागोवा घ्या: 100 → 50 → 25 → 12.5. अभिक्रियक नेमक्या शून्यापर्यंत कधीच पोहोचत नाही, कारण प्रत्येक अंतराल प्रमाणाऐवजी एक अंश काढते, म्हणूनच प्रथम कोटी अभिक्रिया कोणत्याही ठराविक वेळेवर नव्हे तर संमत अर्धायुष्यांच्या संख्येनंतर पूर्ण सांगितली जाते. (25 एक अर्धायुष्य आधी थांबते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A reaction has a forward activation energy of 50 kJ/mol and an enthalpy change of −30 kJ/mol. What is the activation energy of the reverse reaction, in kJ/mol?",
+        hi: "किसी अभिक्रिया की अग्र सक्रियण ऊर्जा 50 kJ/mol और एन्थैल्पी परिवर्तन −30 kJ/mol है। प्रतीप अभिक्रिया की सक्रियण ऊर्जा, kJ/mol में, क्या है?",
+        mr: "एका अभिक्रियेची अग्र सक्रियण ऊर्जा 50 kJ/mol आणि एन्थॅल्पी बदल −30 kJ/mol आहे. प्रतीप अभिक्रियेची सक्रियण ऊर्जा, kJ/mol मध्ये, किती?",
+      },
+      answer: 80,
+      wrong: [20, 30, 50],
+      checkExpr: "50+30",
+      solution: {
+        en: "The products lie 30 kJ/mol below the reactants, and the summit is 50 above the reactants, so the climb from the products is 50 + 30 = 80 kJ/mol. Drawing the profile makes it obvious and is worth the ten seconds: the reverse barrier of an exothermic reaction is always the larger, which is why exothermic reactions are usually the ones that go. (20 subtracts instead of adding.)",
+        hi: "उत्पाद अभिकारकों से 30 kJ/mol नीचे पड़े हैं, और चोटी अभिकारकों से 50 ऊपर, अतः उत्पादों से चढ़ाई 50 + 30 = 80 kJ/mol है। रूपरेखा खींचना इसे स्पष्ट कर देता है और वे दस सेकंड लगाने योग्य हैं: ऊष्माक्षेपी अभिक्रिया का प्रतीप अवरोध सदा बड़ा होता है, इसीलिए प्रायः ऊष्माक्षेपी अभिक्रियाएँ ही चलती हैं। (20 जोड़ने के बजाय घटा देता है।)",
+        mr: "उत्पादने अभिक्रियकांहून 30 kJ/mol खाली पडली आहेत, आणि शिखर अभिक्रियकांहून 50 वर, म्हणून उत्पादनांपासून चढाई 50 + 30 = 80 kJ/mol आहे. आराखडा काढणे हे स्पष्ट करते आणि ती दहा सेकंदे घालवण्याजोगी आहेत: उष्माक्षेपी अभिक्रियेचा प्रतीप अडसर नेहमी मोठा असतो, म्हणूनच बहुधा उष्माक्षेपी अभिक्रियाच चालतात. (20 जोडण्याऐवजी वजा करते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "A zero-order reaction has k = 0.02 mol L⁻¹ s⁻¹ and an initial concentration of 1 mol/L. After how many seconds is the reactant completely used up?",
+        hi: "किसी शून्य कोटि अभिक्रिया का k = 0.02 mol L⁻¹ s⁻¹ है और आरंभिक सांद्रता 1 mol/L. कितने सेकंड बाद अभिकारक पूरी तरह खप जाता है?",
+        mr: "एका शून्य कोटी अभिक्रियेचा k = 0.02 mol L⁻¹ s⁻¹ आहे आणि प्रारंभिक संहती 1 mol/L. किती सेकंदांनंतर अभिक्रियक पूर्णपणे खर्च होतो?",
+      },
+      answer: 50,
+      wrong: [0.02, 100, 25],
+      checkExpr: "1/0.02",
+      solution: {
+        en: "A zero-order reaction proceeds at a constant rate regardless of concentration, so the time is simply amount divided by rate: 1/0.02 = 50 s. The contrast with first order is worth dwelling on. A first-order reaction never finishes, because each interval removes a fraction; a zero-order one finishes at a definite moment, because it removes a fixed amount per second right up to the last molecule. Zero order usually means something else is rate-limiting — a saturated enzyme, a catalyst surface with every site occupied — so the reactant's concentration has stopped mattering. (100 doubles the answer.)",
+        hi: "शून्य कोटि अभिक्रिया सांद्रता की परवाह किए बिना अचर वेग से चलती है, अतः समय बस मात्रा बटा वेग है: 1/0.02 = 50 s. प्रथम कोटि से विरोधाभास पर ठहरना चाहिए। प्रथम कोटि अभिक्रिया कभी ख़त्म नहीं होती, क्योंकि हर अंतराल एक अंश हटाता है; शून्य कोटि वाली निश्चित क्षण पर ख़त्म होती है, क्योंकि वह अंतिम अणु तक प्रति सेकंड नियत मात्रा हटाती है। शून्य कोटि प्रायः यह कहती है कि वेग कोई और चीज़ सीमित कर रही है — संतृप्त एंज़ाइम, ऐसी उत्प्रेरक सतह जिसका हर स्थल भरा है — अतः अभिकारक की सांद्रता मायने रखना बंद कर चुकी है। (100 उत्तर दुगुना कर देता है।)",
+        mr: "शून्य कोटी अभिक्रिया संहतीची पर्वा न करता अचल वेगाने चालते, म्हणून काळ म्हणजे फक्त प्रमाण भागिले वेग: 1/0.02 = 50 s. प्रथम कोटीशी विरोधाभासावर थांबण्याजोगे आहे. प्रथम कोटी अभिक्रिया कधीच संपत नाही, कारण प्रत्येक अंतराल एक अंश काढते; शून्य कोटीची ठराविक क्षणी संपते, कारण ती शेवटच्या रेणूपर्यंत दर सेकंदाला ठराविक प्रमाण काढते. शून्य कोटी बहुधा हे सांगते की वेग दुसरे काहीतरी मर्यादित करत आहे — संपृक्त विकर, अशी उत्प्रेरक पृष्ठभाग जिचे प्रत्येक स्थळ भरलेले आहे — म्हणून अभिक्रियकाची संहती महत्त्वाची असणे थांबले आहे. (100 उत्तर दुप्पट करते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "A catalyst lowers the forward activation energy of a reaction from 80 to 60 kJ/mol. By how much, in kJ/mol, does it lower the activation energy of the reverse reaction?",
+        hi: "एक उत्प्रेरक किसी अभिक्रिया की अग्र सक्रियण ऊर्जा 80 से घटाकर 60 kJ/mol कर देता है। वह प्रतीप अभिक्रिया की सक्रियण ऊर्जा कितनी, kJ/mol में, घटाता है?",
+        mr: "एक उत्प्रेरक एका अभिक्रियेची अग्र सक्रियण ऊर्जा 80 वरून घटवून 60 kJ/mol करतो. तो प्रतीप अभिक्रियेची सक्रियण ऊर्जा किती, kJ/mol ने, घटवतो?",
+      },
+      answer: 20,
+      wrong: [0, 40, 60],
+      checkExpr: "80-60",
+      solution: {
+        en: "By exactly the same amount, 80 − 60 = 20 kJ/mol. The reason is geometric rather than chemical: the reactants and the products sit at fixed energies and the catalyst lowers only the summit between them, so the climb from EITHER side shortens by the height the summit dropped. That single fact is why a catalyst cannot shift an equilibrium. Both rate constants rise by the same factor through the Arrhenius expression, and since K = k_forward/k_reverse the common factor cancels — the equilibrium constant, the position of equilibrium and the yield are all untouched. What has changed is only how long the mixture takes to get there, which for the Haber process is the difference between an industry and a curiosity. (0 assumes the catalyst helps only the forward direction, which would let it manufacture free energy.)",
+        hi: "ठीक उतनी ही, 80 − 60 = 20 kJ/mol. कारण रासायनिक नहीं, ज्यामितीय है: अभिकारक और उत्पाद नियत ऊर्जाओं पर बैठे हैं और उत्प्रेरक केवल उनके बीच की चोटी नीची करता है, अतः किसी भी ओर से चढ़ाई उतनी ही छोटी हो जाती है जितनी चोटी गिरी। वही एक तथ्य कारण है कि उत्प्रेरक साम्य नहीं खिसका सकता। आरेनियस व्यंजक से दोनों वेग स्थिरांक उसी गुणक से बढ़ते हैं, और चूँकि K = k_अग्र/k_प्रतीप, साझा गुणक कट जाता है — साम्य स्थिरांक, साम्य की स्थिति और उपज सब अछूते हैं। जो बदला है वह केवल यह कि मिश्रण को वहाँ पहुँचने में कितना समय लगता है, और हैबर प्रक्रम के लिए वही उद्योग और कौतुक का अंतर है। (0 मान लेता है कि उत्प्रेरक केवल अग्र दिशा में मदद करता है, जिससे वह मुक्त ऊर्जा बना सकता।)",
+        mr: "नेमकी तितकीच, 80 − 60 = 20 kJ/mol. कारण रासायनिक नसून भूमितीय आहे: अभिक्रियक आणि उत्पादने स्थिर ऊर्जांवर बसली आहेत आणि उत्प्रेरक केवळ त्यांच्यामधले शिखर खाली आणतो, म्हणून कोणत्याही बाजूकडून चढाई तितकीच लहान होते जितके शिखर घसरले. तेच एक सत्य कारण आहे की उत्प्रेरक समतोल सरकवू शकत नाही. अरेनियस पदावलीने दोन्ही वेग स्थिरांक त्याच पटीने वाढतात, आणि K = k_अग्र/k_प्रतीप असल्याने समान गुणक कापला जातो — समतोल स्थिरांक, समतोलाची जागा आणि उत्पन्न सर्व अस्पर्श आहेत. जे बदलले ते केवळ हे की मिश्रणाला तिथे पोहोचायला किती वेळ लागतो, आणि हेबर प्रक्रियेसाठी तोच उद्योग आणि कुतूहल यांतील फरक. (0 गृहीत धरते की उत्प्रेरक केवळ अग्र दिशेला मदत करतो, ज्याने तो मुक्त ऊर्जा घडवू शकला असता.)",
+      },
+    },
+  ],
+  "chemistry-12-d-and-f-block-elements": [
+    {
+      level: 1,
+      stem: {
+        en: "Chromium has the configuration [Ar]3d⁵4s¹. How many unpaired electrons does the atom have?",
+        hi: "क्रोमियम का विन्यास [Ar]3d⁵4s¹ है। परमाणु के पास कितने अयुग्मित इलेक्ट्रॉन हैं?",
+        mr: "क्रोमियमची मांडणी [Ar]3d⁵4s¹ आहे. अणूकडे किती अयुग्मित इलेक्ट्रॉन आहेत?",
+      },
+      answer: 6,
+      wrong: [5, 4, 1],
+      checkExpr: "5+1",
+      solution: {
+        en: "Five d electrons occupy the five d orbitals singly and the one s electron is alone in its orbital, so 5 + 1 = 6 unpaired electrons. The configuration is itself the point: chromium promotes an s electron to reach a half-filled d shell, which is more stable than the 3d⁴4s² arrangement the filling rules would naively predict. (5 counts only the d electrons.)",
+        hi: "पाँच d इलेक्ट्रॉन पाँचों d कक्षकों में अकेले-अकेले बैठते हैं और एक s इलेक्ट्रॉन अपने कक्षक में अकेला है, अतः 5 + 1 = 6 अयुग्मित इलेक्ट्रॉन। विन्यास स्वयं ही मर्म है: क्रोमियम आधी भरी d खोल पाने के लिए एक s इलेक्ट्रॉन को ऊपर चढ़ा देता है, जो उस 3d⁴4s² व्यवस्था से अधिक स्थायी है जिसकी भरने के नियम सीधे-सादे ढंग से भविष्यवाणी करते। (5 केवल d इलेक्ट्रॉन गिनता है।)",
+        mr: "पाच d इलेक्ट्रॉन पाचही d कक्षकांत एकेकटे बसतात आणि एक s इलेक्ट्रॉन आपल्या कक्षकात एकटा आहे, म्हणून 5 + 1 = 6 अयुग्मित इलेक्ट्रॉन. मांडणी स्वतःच गाभा आहे: क्रोमियम अर्धे भरलेले d कवच मिळवण्यासाठी एक s इलेक्ट्रॉन वर चढवतो, जे त्या 3d⁴4s² मांडणीहून अधिक स्थिर आहे जिचे भरण्याचे नियम साधेपणाने भाकीत करतील. (5 केवळ d इलेक्ट्रॉन मोजते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "The spin-only magnetic moment is μ = √(n(n+2)) Bohr magnetons. For n = 5 unpaired electrons, what is the value of n(n+2)?",
+        hi: "केवल-चक्रण चुंबकीय आघूर्ण μ = √(n(n+2)) बोर मैग्नेटॉन है। n = 5 अयुग्मित इलेक्ट्रॉनों के लिए n(n+2) का मान क्या है?",
+        mr: "केवळ-परिवलन चुंबकीय आघूर्ण μ = √(n(n+2)) बोर मॅग्नेटॉन आहे. n = 5 अयुग्मित इलेक्ट्रॉनांसाठी n(n+2) चे मूल्य किती?",
+      },
+      answer: 35,
+      wrong: [25, 30, 10],
+      checkExpr: "5*7",
+      solution: {
+        en: "n(n+2) = 5 × 7 = 35, so μ = √35 ≈ 5.92 Bohr magnetons. Five unpaired electrons is the maximum for a d-block ion and gives the largest spin-only moment available, which is why Mn²⁺ and Fe³⁺ — both d⁵ — are the most strongly paramagnetic common ions of the first series. (25 squares n instead of taking n(n+2).)",
+        hi: "n(n+2) = 5 × 7 = 35, अतः μ = √35 ≈ 5.92 बोर मैग्नेटॉन। पाँच अयुग्मित इलेक्ट्रॉन d-ब्लॉक आयन के लिए अधिकतम हैं और उपलब्ध सबसे बड़ा केवल-चक्रण आघूर्ण देते हैं, इसीलिए Mn²⁺ और Fe³⁺ — दोनों d⁵ — पहली श्रेणी के सबसे प्रबल अनुचुंबकीय आम आयन हैं। (25 n(n+2) लेने के बजाय n का वर्ग कर देता है।)",
+        mr: "n(n+2) = 5 × 7 = 35, म्हणून μ = √35 ≈ 5.92 बोर मॅग्नेटॉन. पाच अयुग्मित इलेक्ट्रॉन d-खंड आयनासाठी कमाल आहेत आणि उपलब्ध सर्वांत मोठे केवळ-परिवलन आघूर्ण देतात, म्हणूनच Mn²⁺ आणि Fe³⁺ — दोन्ही d⁵ — पहिल्या श्रेणीचे सर्वांत तीव्र अनुचुंबकीय सामान्य आयन आहेत. (25 n(n+2) घेण्याऐवजी n चा वर्ग करते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Fe²⁺ has the configuration 3d⁶. In a high-spin octahedral complex, how many unpaired electrons does it have?",
+        hi: "Fe²⁺ का विन्यास 3d⁶ है। उच्च-चक्रण अष्टफलकीय संकुल में उसके पास कितने अयुग्मित इलेक्ट्रॉन हैं?",
+        mr: "Fe²⁺ ची मांडणी 3d⁶ आहे. उच्च-परिवलन अष्टफलकी संकुलात त्याच्याकडे किती अयुग्मित इलेक्ट्रॉन आहेत?",
+      },
+      answer: 4,
+      wrong: [6, 2, 5],
+      checkExpr: "6-2",
+      solution: {
+        en: "In a high-spin arrangement all five orbitals are singly filled before any pairing begins, so the sixth electron must pair with one of them: five singles minus the one now paired leaves 6 − 2 = 4 unpaired. High spin is what happens when the field splitting is smaller than the energy cost of pairing, so electrons prefer the upper orbitals to a shared one. (6 counts every d electron as unpaired.)",
+        hi: "उच्च-चक्रण व्यवस्था में युग्मन शुरू होने से पहले पाँचों कक्षक अकेले-अकेले भर जाते हैं, अतः छठे इलेक्ट्रॉन को उनमें से एक के साथ युग्मित होना ही पड़ता है: पाँच अकेले में से अब युग्मित हुआ एक घटाने पर 6 − 2 = 4 अयुग्मित बचते हैं। उच्च चक्रण तब होता है जब क्षेत्र का विपाटन युग्मन की ऊर्जा-क़ीमत से छोटा हो, अतः इलेक्ट्रॉन साझा कक्षक के बजाय ऊपरी कक्षक चुनते हैं। (6 हर d इलेक्ट्रॉन को अयुग्मित गिन लेता है।)",
+        mr: "उच्च-परिवलन मांडणीत युग्मन सुरू होण्याआधी पाचही कक्षक एकेकटे भरतात, म्हणून सहाव्या इलेक्ट्रॉनला त्यांतल्या एकाशी युग्मित व्हावेच लागते: पाच एकट्यांतून आता युग्मित झालेला एक वजा केल्यास 6 − 2 = 4 अयुग्मित उरतात. उच्च परिवलन तेव्हा घडते जेव्हा क्षेत्राचे विभाजन युग्मनाच्या ऊर्जा-किमतीहून लहान असेल, म्हणून इलेक्ट्रॉन सामायिक कक्षकाऐवजी वरचे कक्षक निवडतात. (6 प्रत्येक d इलेक्ट्रॉनला अयुग्मित मोजते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "For an ion with 3 unpaired electrons, what is the value of n(n+2) in the spin-only formula?",
+        hi: "3 अयुग्मित इलेक्ट्रॉनों वाले आयन के लिए केवल-चक्रण सूत्र में n(n+2) का मान क्या है?",
+        mr: "3 अयुग्मित इलेक्ट्रॉन असलेल्या आयनासाठी केवळ-परिवलन सूत्रात n(n+2) चे मूल्य किती?",
+      },
+      answer: 15,
+      wrong: [9, 12, 6],
+      checkExpr: "3*5",
+      solution: {
+        en: "n(n+2) = 3 × 5 = 15, giving μ = √15 ≈ 3.87 Bohr magnetons. Working with n(n+2) before taking the root keeps the arithmetic exact and makes the pattern visible: the values run 3, 8, 15, 24, 35 for one to five unpaired electrons, so a measured moment can be matched to a whole number of electrons without ambiguity. (9 squares n.)",
+        hi: "n(n+2) = 3 × 5 = 15, जिससे μ = √15 ≈ 3.87 बोर मैग्नेटॉन। मूल लेने से पहले n(n+2) से काम करना अंकगणित को ठीक रखता है और ढर्रा दिखा देता है: एक से पाँच अयुग्मित इलेक्ट्रॉनों के लिए मान 3, 8, 15, 24, 35 चलते हैं, अतः नापा गया आघूर्ण बिना दुविधा इलेक्ट्रॉनों की पूर्णांक संख्या से मिलाया जा सकता है। (9 n का वर्ग कर देता है।)",
+        mr: "n(n+2) = 3 × 5 = 15, ज्यातून μ = √15 ≈ 3.87 बोर मॅग्नेटॉन. मूळ घेण्याआधी n(n+2) ने काम करणे अंकगणित नेमके ठेवते आणि आकृतिबंध दाखवते: एक ते पाच अयुग्मित इलेक्ट्रॉनांसाठी मूल्ये 3, 8, 15, 24, 35 चालतात, म्हणून मोजलेले आघूर्ण संदिग्धतेविना इलेक्ट्रॉनांच्या पूर्णांक संख्येशी जुळवता येते. (9 n चा वर्ग करते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "What is the oxidation number of manganese in KMnO₄? Take potassium as +1 and each oxygen as −2.",
+        hi: "KMnO₄ में मैंगनीज़ की ऑक्सीकरण संख्या क्या है? पोटैशियम को +1 और हर ऑक्सीजन को −2 लो।",
+        mr: "KMnO₄ मध्ये मँगेनीजची उपचयन संख्या किती? पोटॅशियम +1 आणि प्रत्येक ऑक्सिजन −2 घ्या.",
+      },
+      answer: 7,
+      wrong: [6, 4, 2],
+      checkExpr: "8-1",
+      solution: {
+        en: "The four oxygens contribute −8 and potassium +1, and the compound is neutral, so manganese must be 8 − 1 = +7. This is the highest oxidation state manganese reaches, and it is available only with oxygen: MnCl₇ does not exist, because chlorine would be oxidised to chlorine gas rather than hold a metal at +7. (6 gives the state in a dichromate rather than a permanganate.)",
+        hi: "चार ऑक्सीजन −8 और पोटैशियम +1 जोड़ते हैं, और यौगिक उदासीन है, अतः मैंगनीज़ को 8 − 1 = +7 होना ही पड़ेगा। यह सबसे ऊँची ऑक्सीकरण अवस्था है जहाँ मैंगनीज़ पहुँचता है, और वह केवल ऑक्सीजन के साथ उपलब्ध है: MnCl₇ है ही नहीं, क्योंकि क्लोरीन धातु को +7 पर रखने के बजाय ख़ुद क्लोरीन गैस में उपचयित हो जाती। (6 परमैंगनेट के बजाय डाइक्रोमेट वाली अवस्था दे देता है।)",
+        mr: "चार ऑक्सिजन −8 आणि पोटॅशियम +1 जोडतात, आणि संयुग उदासीन आहे, म्हणून मँगेनीजला 8 − 1 = +7 असावेच लागेल. ही सर्वांत उंच उपचयन अवस्था आहे जिथे मँगेनीज पोहोचतो, आणि ती केवळ ऑक्सिजनसोबत उपलब्ध आहे: MnCl₇ अस्तित्वातच नाही, कारण क्लोरीन धातूला +7 वर ठेवण्याऐवजी स्वतः क्लोरीन वायूत उपचयित होईल. (6 परमँगेनेटऐवजी डायक्रोमेटची अवस्था देते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "What is the oxidation number of chromium in K₂Cr₂O₇? Take potassium as +1 and each oxygen as −2.",
+        hi: "K₂Cr₂O₇ में क्रोमियम की ऑक्सीकरण संख्या क्या है? पोटैशियम को +1 और हर ऑक्सीजन को −2 लो।",
+        mr: "K₂Cr₂O₇ मध्ये क्रोमियमची उपचयन संख्या किती? पोटॅशियम +1 आणि प्रत्येक ऑक्सिजन −2 घ्या.",
+      },
+      answer: 6,
+      wrong: [7, 3, 12],
+      checkExpr: "(14-2)/2",
+      solution: {
+        en: "Seven oxygens give −14 and two potassiums give +2, so the two chromiums together must supply +12 and each is (14 − 2)/2 = +6. The division by two is the step most often missed: the formula contains two chromium atoms, and the charge is shared between them. (12 gives the total for both atoms rather than the number per atom.)",
+        hi: "सात ऑक्सीजन −14 देते हैं और दो पोटैशियम +2, अतः दोनों क्रोमियम मिलकर +12 देने ही चाहिए और हर एक (14 − 2)/2 = +6 है। दो से भाग देना वही चरण है जो सबसे अधिक छूटता है: सूत्र में दो क्रोमियम परमाणु हैं, और आवेश उनमें बँटा है। (12 प्रति परमाणु संख्या के बजाय दोनों का कुल दे देता है।)",
+        mr: "सात ऑक्सिजन −14 देतात आणि दोन पोटॅशियम +2, म्हणून दोन्ही क्रोमियम मिळून +12 द्यावेच लागतील आणि प्रत्येक (14 − 2)/2 = +6 आहे. दोनने भागणे हीच ती पायरी जी सर्वांत जास्त सुटते: सूत्रात दोन क्रोमियम अणू आहेत, आणि प्रभार त्यांच्यात वाटलेला आहे. (12 प्रति अणू संख्येऐवजी दोघांचे एकूण देते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "Copper has the configuration [Ar]3d¹⁰4s¹. How many 3d electrons has the Cu²⁺ ion?",
+        hi: "ताँबे का विन्यास [Ar]3d¹⁰4s¹ है। Cu²⁺ आयन के पास कितने 3d इलेक्ट्रॉन हैं?",
+        mr: "तांब्याची मांडणी [Ar]3d¹⁰4s¹ आहे. Cu²⁺ आयनाकडे किती 3d इलेक्ट्रॉन आहेत?",
+      },
+      answer: 9,
+      wrong: [10, 11, 7],
+      checkExpr: "10-1",
+      solution: {
+        en: "The 4s electron goes first and the second electron then comes from the 3d shell, leaving 10 − 1 = 9. The order matters and catches people out: 4s fills before 3d but empties before it too, because once the d orbitals are occupied they drop below the 4s in energy. Nine d electrons means one unpaired, which is why Cu²⁺ salts are paramagnetic and coloured while Cu⁺ salts, with a full d¹⁰ shell, are neither. (10 removes both electrons from the 4s, which holds only one.)",
+        hi: "4s इलेक्ट्रॉन पहले जाता है और दूसरा इलेक्ट्रॉन फिर 3d खोल से आता है, जिससे 10 − 1 = 9 बचते हैं। क्रम मायने रखता है और लोगों को चकमा देता है: 4s, 3d से पहले भरता है पर उससे पहले ख़ाली भी होता है, क्योंकि d कक्षक भर जाने पर वे ऊर्जा में 4s से नीचे चले जाते हैं। नौ d इलेक्ट्रॉन का अर्थ एक अयुग्मित है, इसीलिए Cu²⁺ लवण अनुचुंबकीय और रंगीन हैं जबकि पूरी d¹⁰ खोल वाले Cu⁺ लवण दोनों में से कुछ नहीं। (10 दोनों इलेक्ट्रॉन 4s से हटा देता है, जिसमें केवल एक है।)",
+        mr: "4s इलेक्ट्रॉन आधी जातो आणि दुसरा इलेक्ट्रॉन मग 3d कवचातून येतो, ज्यामुळे 10 − 1 = 9 उरतात. क्रम महत्त्वाचा आहे आणि लोकांना फसवतो: 4s हे 3d आधी भरते पण त्याआधी रिकामेही होते, कारण d कक्षक भरताच ते ऊर्जेत 4s हून खाली जातात. नऊ d इलेक्ट्रॉन म्हणजे एक अयुग्मित, म्हणूनच Cu²⁺ क्षार अनुचुंबकीय आणि रंगीत आहेत तर पूर्ण d¹⁰ कवच असलेले Cu⁺ क्षार दोन्हींपैकी काहीही नाहीत. (10 दोन्ही इलेक्ट्रॉन 4s मधून काढते, ज्यात केवळ एक आहे.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "The lanthanoids run from cerium, atomic number 58, to lutetium, atomic number 71. How many elements is that?",
+        hi: "लैंथेनॉयड सीरियम, परमाणु संख्या 58, से ल्यूटीशियम, परमाणु संख्या 71, तक चलते हैं। यह कितने तत्व हैं?",
+        mr: "लॅंथेनॉइड सीरियम, अणुक्रमांक 58, पासून ल्युटेशियम, अणुक्रमांक 71, पर्यंत चालतात. ही किती मूलद्रव्ये आहेत?",
+      },
+      answer: 14,
+      wrong: [15, 13, 71],
+      checkExpr: "71-58+1",
+      solution: {
+        en: "Counting inclusively, 71 − 58 + 1 = 14 elements. The plus one is the fencepost: both ends are members, so subtracting alone counts the gaps rather than the elements. Fourteen is exactly the number of electrons a 4f subshell holds, which is not a coincidence — the series exists precisely to fill it, and it is those fourteen poorly shielding electrons whose accumulated effect is the lanthanoid contraction. (13 forgets to count both endpoints.)",
+        hi: "समावेशी गिनती से, 71 − 58 + 1 = 14 तत्व। जोड़ा गया एक बाड़-खंभे वाली बात है: दोनों सिरे सदस्य हैं, अतः केवल घटाने से तत्व नहीं बल्कि अंतराल गिने जाते हैं। चौदह ठीक उतने ही इलेक्ट्रॉन हैं जितने 4f उपखोल रखती है, और यह संयोग नहीं — श्रेणी ठीक उसे भरने के लिए है, और वही चौदह कमज़ोर परिरक्षण करते इलेक्ट्रॉन हैं जिनका जमा प्रभाव लैंथेनॉयड संकुचन है। (13 दोनों सिरे गिनना भूल जाता है।)",
+        mr: "समावेशक मोजणीने, 71 − 58 + 1 = 14 मूलद्रव्ये. जोडलेला एक ही कुंपण-खांबाची बाब आहे: दोन्ही टोके सदस्य आहेत, म्हणून केवळ वजा केल्याने मूलद्रव्ये नव्हे तर अंतरे मोजली जातात. चौदा हे नेमके तितकेच इलेक्ट्रॉन आहेत जितके 4f उपकवच धरते, आणि हा योगायोग नाही — श्रेणी नेमकी ते भरण्यासाठी आहे, आणि तेच चौदा कमकुवत आवरण करणारे इलेक्ट्रॉन आहेत ज्यांचा साठलेला परिणाम लॅंथेनॉइड आकुंचन आहे. (13 दोन्ही टोके मोजणे विसरते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "The first transition series runs from scandium, atomic number 21, to zinc, atomic number 30. How many elements does it contain?",
+        hi: "पहली संक्रमण श्रेणी स्कैंडियम, परमाणु संख्या 21, से ज़िंक, परमाणु संख्या 30, तक चलती है। उसमें कितने तत्व हैं?",
+        mr: "पहिली संक्रमण श्रेणी स्कँडियम, अणुक्रमांक 21, पासून जस्त, अणुक्रमांक 30, पर्यंत चालते. तिच्यात किती मूलद्रव्ये आहेत?",
+      },
+      answer: 10,
+      wrong: [8, 9, 11],
+      checkExpr: "30-21+1",
+      solution: {
+        en: "30 − 21 + 1 = 10 elements, matching the ten electrons a d subshell can hold. Two of them sit awkwardly with the strict definition of a transition element as one with a partly filled d shell in at least one of its common oxidation states: scandium is d⁰ as Sc³⁺ and zinc is d¹⁰ as Zn²⁺, so on that definition neither qualifies. This is worth noticing rather than glossing over, because it explains why zinc compounds are colourless and diamagnetic while every element between behaves as the chapter describes — the definition and the block boundary do not quite coincide. (8 counts only the strict transition elements without saying so.)",
+        hi: "30 − 21 + 1 = 10 तत्व, जो d उपखोल के रख सकने वाले दस इलेक्ट्रॉनों से मेल खाते हैं। उनमें से दो संक्रमण तत्व की कड़ी परिभाषा के साथ असहज बैठते हैं, जो कहती है कि उसकी कम से कम एक आम ऑक्सीकरण अवस्था में d खोल आंशिक भरी हो: स्कैंडियम Sc³⁺ के रूप में d⁰ है और ज़िंक Zn²⁺ के रूप में d¹⁰, अतः उस परिभाषा पर कोई भी योग्य नहीं। इसे टाल देने के बजाय ध्यान देना चाहिए, क्योंकि यह समझाता है कि ज़िंक के यौगिक रंगहीन और प्रतिचुंबकीय क्यों हैं जबकि बीच का हर तत्व वैसा बरतता है जैसा अध्याय बताता है — परिभाषा और ब्लॉक की सीमा ठीक-ठीक मेल नहीं खातीं। (8 कड़ी परिभाषा वाले संक्रमण तत्व ही गिनता है, यह कहे बिना।)",
+        mr: "30 − 21 + 1 = 10 मूलद्रव्ये, जी d उपकवच धरू शकणाऱ्या दहा इलेक्ट्रॉनांशी जुळतात. त्यांतली दोन संक्रमण मूलद्रव्याच्या कडक व्याख्येशी अवघडून बसतात, जी सांगते की त्याच्या किमान एका सामान्य उपचयन अवस्थेत d कवच अंशतः भरलेले असावे: स्कँडियम Sc³⁺ म्हणून d⁰ आहे आणि जस्त Zn²⁺ म्हणून d¹⁰, म्हणून त्या व्याख्येवर कोणीही पात्र नाही. हे टाळण्याऐवजी लक्षात घ्यायला हवे, कारण हे समजावते की जस्ताची संयुगे रंगहीन आणि प्रतिचुंबकीय का आहेत तर मधले प्रत्येक मूलद्रव्य प्रकरण सांगते तसे वागते — व्याख्या आणि खंडाची सीमा नेमक्या जुळत नाहीत. (8 कडक व्याख्येची संक्रमण मूलद्रव्येच मोजते, तसे न सांगता.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "Zirconium has an atomic radius of 160 pm and hafnium, a whole period lower, has 159 pm. What is the difference, in pm?",
+        hi: "ज़र्कोनियम की परमाणु त्रिज्या 160 pm है और पूरी एक आवर्त नीचे के हैफ़्नियम की 159 pm. अंतर, pm में, क्या है?",
+        mr: "झिर्कोनियमची अणुत्रिज्या 160 pm आहे आणि अख्खी एक आवर्त खालच्या हाफ्नियमची 159 pm. फरक, pm मध्ये, किती?",
+      },
+      answer: 1,
+      wrong: [319, 0, 2],
+      checkExpr: "160-159",
+      solution: {
+        en: "160 − 159 = 1 pm. The arithmetic is trivial; what it records is not. Going down a group normally adds a whole shell and increases the radius substantially — titanium to zirconium gains about 15 pm. Zirconium to hafnium gains nothing, and the reason is that fourteen lanthanoids lie between them. Across that inner series the 4f electrons shield the added protons badly, so each step contracts the atom slightly, and fourteen such steps almost exactly cancel the expansion a new shell would have given. The consequence is chemical, not merely dimensional: size and charge govern behaviour, these two share both, and so they form the same compounds, occur in the same ores and resisted separation until 1923. It matters practically because zirconium is nearly transparent to neutrons and hafnium absorbs them, so reactor cladding needs one and control rods the other — two elements a chemist can barely distinguish are opposites to a neutron. (319 adds the radii; 0 rounds the difference away and loses the point that they are not quite identical.)",
+        hi: "160 − 159 = 1 pm. अंकगणित मामूली है; वह जो दर्ज करता है वह नहीं। किसी वर्ग में नीचे जाने पर प्रायः पूरी खोल जुड़ती है और त्रिज्या काफ़ी बढ़ती है — टाइटेनियम से ज़र्कोनियम लगभग 15 pm पाता है। ज़र्कोनियम से हैफ़्नियम कुछ नहीं पाता, और कारण यह कि उनके बीच चौदह लैंथेनॉयड पड़े हैं। उस भीतरी श्रेणी के आर-पार 4f इलेक्ट्रॉन जोड़े गए प्रोटॉनों को बुरी तरह ढकते हैं, अतः हर क़दम परमाणु को थोड़ा सिकोड़ता है, और चौदह ऐसे क़दम उस प्रसार को लगभग ठीक-ठीक काट देते हैं जो नई खोल देती। परिणाम रासायनिक है, केवल विमीय नहीं: आकार और आवेश आचरण चलाते हैं, ये दोनों दोनों बाँटते हैं, अतः वे वही यौगिक बनाते हैं, वही अयस्कों में मिलते हैं और 1923 तक पृथक्करण का प्रतिरोध करते रहे। व्यावहारिक रूप से यह मायने रखता है क्योंकि ज़र्कोनियम न्यूट्रॉनों के लिए लगभग पारदर्शी है और हैफ़्नियम उन्हें सोखता है, अतः रिएक्टर के आवरण को एक चाहिए और नियंत्रण छड़ों को दूसरा — दो तत्व जिन्हें रसायनज्ञ मुश्किल से अलग बता सकता है, न्यूट्रॉन के लिए उलटे हैं। (319 त्रिज्याएँ जोड़ देता है; 0 अंतर को गोल करके उड़ा देता है और यह बात खो देता है कि वे बिलकुल समरूप नहीं हैं।)",
+        mr: "160 − 159 = 1 pm. अंकगणित किरकोळ आहे; ते जे नोंदवते ते नाही. एखाद्या गटात खाली जाताना सहसा अख्खे कवच जोडले जाते आणि त्रिज्या बरीच वाढते — टायटॅनियमपासून झिर्कोनियम सुमारे 15 pm मिळवते. झिर्कोनियमपासून हाफ्नियम काहीच मिळवत नाही, आणि कारण हे की त्यांच्यामध्ये चौदा लॅंथेनॉइड पडले आहेत. त्या आतल्या श्रेणीच्या आरपार 4f इलेक्ट्रॉन जोडलेल्या प्रोटॉनांना वाईट रीतीने झाकतात, म्हणून प्रत्येक पाऊल अणूला थोडे आकुंचित करते, आणि चौदा अशी पावले त्या प्रसरणाला जवळपास नेमके कापतात जे नवे कवच देईल. परिणाम रासायनिक आहे, केवळ मितीय नाही: आकार आणि प्रभार वर्तन चालवतात, हे दोघे दोन्ही वाटून घेतात, म्हणून ते तीच संयुगे बनवतात, त्याच खनिजांत आढळतात आणि 1923 पर्यंत वेगळेपणाला विरोध करत राहिले. व्यावहारिकदृष्ट्या हे महत्त्वाचे कारण झिर्कोनियम न्यूट्रॉनांसाठी जवळपास पारदर्शक आहे आणि हाफ्नियम त्यांना शोषते, म्हणून अणुभट्टीच्या आवरणाला एक लागते आणि नियंत्रण कांड्यांना दुसरे — दोन मूलद्रव्ये जी रसायनशास्त्रज्ञ जेमतेम वेगळी सांगू शकतो, न्यूट्रॉनसाठी उलट आहेत. (319 त्रिज्या जोडते; 0 फरक गोल करून उडवते आणि ते अगदी सारखे नाहीत हा मुद्दा गमावते.)",
       },
     },
   ],

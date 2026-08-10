@@ -1,0 +1,1003 @@
+{
+  "subject": "CHEMISTRY",
+  "classLevel": 12,
+  "chapter": "Chapter 3 — Chemical Kinetics",
+  "name": "Chemical Kinetics",
+  "slug": "chemistry-12-chemical-kinetics",
+  "summary": "The half of chemistry that thermodynamics leaves out: a diamond is thermodynamically bound to turn into graphite and does not, because nothing in a free energy change says how long. A rate law that has to be found by experiment because it cannot be read off the balanced equation, and whose exponents are therefore evidence about a mechanism rather than a restatement of the recipe; a constant whose units change with the order, which is a warning that it is not one quantity but a family; a hill the reactants must climb before they can fall, so that a reaction which releases energy may still need some to start; a temperature dependence so steep that ten degrees can double a rate; and a catalyst that lowers the hill from both sides at once and therefore changes when equilibrium is reached without changing where.",
+  "position": 3,
+  "source": "EduLink original, written against NCERT Chemistry (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "रासायनिक बलगतिकी",
+      "summary": "रसायन का वह आधा जो ऊष्मागतिकी छोड़ देती है: हीरे को ऊष्मागतिकी की दृष्टि से ग्रैफ़ाइट बन ही जाना चाहिए और वह नहीं बनता, क्योंकि मुक्त ऊर्जा परिवर्तन में कहीं नहीं लिखा कि कितनी देर में। ऐसा वेग नियम जिसे प्रयोग से खोजना पड़ता है क्योंकि वह संतुलित समीकरण से पढ़ा नहीं जा सकता, और जिसकी घातें इसलिए किसी क्रियाविधि का प्रमाण हैं, नुस्ख़े का दुहराव नहीं; ऐसा स्थिरांक जिसके मात्रक कोटि के साथ बदलते हैं, जो चेतावनी है कि वह एक राशि नहीं बल्कि एक कुल है; वह पहाड़ी जिस पर अभिकारकों को गिरने से पहले चढ़ना पड़ता है, अतः जो अभिक्रिया ऊर्जा देती है उसे भी शुरू होने के लिए कुछ चाहिए हो सकती है; इतनी तीखी ताप-निर्भरता कि दस अंश वेग दुगुना कर दें; और वह उत्प्रेरक जो पहाड़ी को दोनों ओर से एक साथ नीचा करता है और इसलिए बदलता है कि साम्य कब आएगा, यह नहीं कि कहाँ।"
+    },
+    "mr": {
+      "name": "रासायनिक गतिकी",
+      "summary": "रसायनाचा तो अर्धा भाग जो उष्मागतिकी सोडून देते: हिऱ्याने उष्मागतिकीच्या दृष्टीने ग्रॅफाइट बनायलाच हवे आणि तो बनत नाही, कारण मुक्त ऊर्जा बदलात कुठेही लिहिलेले नाही की किती वेळात. असा वेग नियम जो प्रयोगाने शोधावा लागतो कारण तो संतुलित समीकरणावरून वाचता येत नाही, आणि ज्याच्या घाती म्हणून एखाद्या यंत्रणेचा पुरावा आहेत, कृतीची पुनरुक्ती नव्हे; असा स्थिरांक ज्याची एकके कोटीसोबत बदलतात, जी सूचना आहे की तो एक राशी नसून एक कुळ आहे; ती टेकडी जिच्यावर अभिक्रियकांना पडण्याआधी चढावे लागते, म्हणून जी अभिक्रिया ऊर्जा देते तिलाही सुरू होण्यास काहीशी लागू शकते; इतकी तीक्ष्ण तापमान-अवलंबिता की दहा अंश वेग दुप्पट करावेत; आणि तो उत्प्रेरक जो टेकडी दोन्ही बाजूंनी एकाच वेळी खाली आणतो आणि म्हणून बदलतो की समतोल कधी येईल, हे नाही की कुठे."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "An equation showing how the rate depends on the concentrations, with exponents that must be found by measurement and which frequently do not match the coefficients in the balanced equation at all. What is this?",
+      "choices": [
+        "The rate law and order of reaction",
+        "Activation energy",
+        "The rate constant",
+        "The half-life of a first-order reaction"
+      ],
+      "answerIndex": 0,
+      "solution": "The rate law expresses the rate as k[A]^x[B]^y with x and y determined experimentally, and their sum is the order of the reaction. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ऐसा समीकरण जो दिखाता है कि वेग सांद्रताओं पर कैसे निर्भर है, जिसकी घातें माप से खोजनी पड़ती हैं और जो प्रायः संतुलित समीकरण के गुणांकों से मेल खाती ही नहीं। यह क्या है?",
+          "choices": [
+            "वेग नियम और अभिक्रिया की कोटि",
+            "सक्रियण ऊर्जा",
+            "वेग स्थिरांक",
+            "प्रथम कोटि अभिक्रिया की अर्धायु"
+          ],
+          "solution": "वेग नियम वेग को k[A]^x[B]^y के रूप में व्यक्त करता है जिसमें x और y प्रयोग से तय होते हैं, और उनका योग अभिक्रिया की कोटि है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "असे समीकरण जे दाखवते की वेग संहतींवर कसा अवलंबून आहे, ज्याच्या घाती मापनाने शोधाव्या लागतात आणि ज्या बहुधा संतुलित समीकरणाच्या गुणकांशी जुळतच नाहीत. हे काय आहे?",
+          "choices": [
+            "वेग नियम आणि अभिक्रियेची कोटी",
+            "सक्रियण ऊर्जा",
+            "वेग स्थिरांक",
+            "प्रथम कोटी अभिक्रियेचे अर्धायुष्य"
+          ],
+          "solution": "वेग नियम वेगाला k[A]^x[B]^y या रूपात मांडतो जिथे x आणि y प्रयोगाने ठरतात, आणि त्यांची बेरीज अभिक्रियेची कोटी आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The rate constant is correct?",
+      "choices": [
+        "The half-life of a first-order reaction is t½ = 0.693/k, independent of the starting concentration, so successive halvings take equal times.",
+        "The rate law expresses the rate as k[A]^x[B]^y with x and y determined experimentally, and their sum is the order of the reaction.",
+        "The Arrhenius dependence is k = A e^(−Ea/RT), so the rate constant depends exponentially on temperature through the fraction of collisions energetic enough to react.",
+        "The rate constant k is the rate when every concentration is unity, independent of concentration but strongly dependent on temperature and on the presence of a catalyst."
+      ],
+      "answerIndex": 3,
+      "solution": "The rate constant k is the rate when every concentration is unity, independent of concentration but strongly dependent on temperature and on the presence of a catalyst. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "वेग स्थिरांक के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "प्रथम कोटि अभिक्रिया की अर्धायु t½ = 0.693/k है, जो आरंभिक सांद्रता से स्वतंत्र है, अतः लगातार आधे होने में बराबर समय लगता है।",
+            "वेग नियम वेग को k[A]^x[B]^y के रूप में व्यक्त करता है जिसमें x और y प्रयोग से तय होते हैं, और उनका योग अभिक्रिया की कोटि है।",
+            "आरेनियस निर्भरता k = A e^(−Ea/RT) है, अतः वेग स्थिरांक ताप पर चरघातांकी रूप से निर्भर है, उन टक्करों के अंश के माध्यम से जो अभिक्रिया करने लायक़ ऊर्जावान हैं।",
+            "वेग स्थिरांक k वह वेग है जब हर सांद्रता एकांक हो, जो सांद्रता से स्वतंत्र है पर ताप और उत्प्रेरक की उपस्थिति पर प्रबल रूप से निर्भर।"
+          ],
+          "solution": "वेग स्थिरांक k वह वेग है जब हर सांद्रता एकांक हो, जो सांद्रता से स्वतंत्र है पर ताप और उत्प्रेरक की उपस्थिति पर प्रबल रूप से निर्भर। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "वेग स्थिरांक विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "प्रथम कोटी अभिक्रियेचे अर्धायुष्य t½ = 0.693/k आहे, जे प्रारंभिक संहतीपासून स्वतंत्र आहे, म्हणून लागोपाठ निम्मे होण्यास समान काळ लागतो.",
+            "वेग नियम वेगाला k[A]^x[B]^y या रूपात मांडतो जिथे x आणि y प्रयोगाने ठरतात, आणि त्यांची बेरीज अभिक्रियेची कोटी आहे.",
+            "अरेनियस अवलंबिता k = A e^(−Ea/RT) आहे, म्हणून वेग स्थिरांक तापमानावर घातांकीरीत्या अवलंबून आहे, अभिक्रिया करण्याइतक्या ऊर्जावान टकरांच्या अंशामार्गे.",
+            "वेग स्थिरांक k म्हणजे तो वेग जेव्हा प्रत्येक संहती एकक असेल, जो संहतीपासून स्वतंत्र आहे पण तापमानावर आणि उत्प्रेरकाच्या उपस्थितीवर तीव्रपणे अवलंबून."
+          ],
+          "solution": "वेग स्थिरांक k म्हणजे तो वेग जेव्हा प्रत्येक संहती एकक असेल, जो संहतीपासून स्वतंत्र आहे पण तापमानावर आणि उत्प्रेरकाच्या उपस्थितीवर तीव्रपणे अवलंबून. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The independence is the signature of first order and of no other: a zero-order half-life halves as the concentration halves, and a second-order one doubles.\" — which of these is this about?",
+      "choices": [
+        "The rate law and order of reaction",
+        "Activation energy",
+        "The half-life of a first-order reaction",
+        "The rate constant"
+      ],
+      "answerIndex": 2,
+      "solution": "The half-life of a first-order reaction is t½ = 0.693/k, independent of the starting concentration, so successive halvings take equal times. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"यह स्वतंत्रता प्रथम कोटि की पहचान है और किसी और की नहीं: शून्य कोटि की अर्धायु सांद्रता आधी होते ही आधी हो जाती है, और द्वितीय कोटि की दुगुनी।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "वेग नियम और अभिक्रिया की कोटि",
+            "सक्रियण ऊर्जा",
+            "प्रथम कोटि अभिक्रिया की अर्धायु",
+            "वेग स्थिरांक"
+          ],
+          "solution": "प्रथम कोटि अभिक्रिया की अर्धायु t½ = 0.693/k है, जो आरंभिक सांद्रता से स्वतंत्र है, अतः लगातार आधे होने में बराबर समय लगता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"हे स्वातंत्र्य प्रथम कोटीची खूण आहे आणि दुसऱ्या कोणाचीही नाही: शून्य कोटीचे अर्धायुष्य संहती निम्मी होताच निम्मे होते, आणि द्वितीय कोटीचे दुप्पट.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "वेग नियम आणि अभिक्रियेची कोटी",
+            "सक्रियण ऊर्जा",
+            "प्रथम कोटी अभिक्रियेचे अर्धायुष्य",
+            "वेग स्थिरांक"
+          ],
+          "solution": "प्रथम कोटी अभिक्रियेचे अर्धायुष्य t½ = 0.693/k आहे, जे प्रारंभिक संहतीपासून स्वतंत्र आहे, म्हणून लागोपाठ निम्मे होण्यास समान काळ लागतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The barrier that must be climbed before bonds can be rearranged, which is why a mixture of petrol and air sits in a tank for months and then burns in a millisecond once a spark supplies the first push. What is it?",
+      "choices": [
+        "The rate law and order of reaction",
+        "The catalyst",
+        "Activation energy",
+        "The Arrhenius dependence on temperature"
+      ],
+      "answerIndex": 2,
+      "solution": "Activation energy is the minimum energy a colliding pair must have for reaction, measured from the reactants up to the top of the barrier and not from the products. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "वह अवरोध जिस पर चढ़े बिना बंध फिर से जमाए नहीं जा सकते, इसीलिए पेट्रोल और हवा का मिश्रण टंकी में महीनों पड़ा रहता है और चिनगारी पहला धक्का देते ही मिलीसेकंड में जल जाता है। यह क्या है?",
+          "choices": [
+            "वेग नियम और अभिक्रिया की कोटि",
+            "उत्प्रेरक",
+            "सक्रियण ऊर्जा",
+            "ताप पर आरेनियस निर्भरता"
+          ],
+          "solution": "सक्रियण ऊर्जा वह न्यूनतम ऊर्जा है जो टकराते युग्म के पास अभिक्रिया के लिए होनी चाहिए, जो अभिकारकों से अवरोध की चोटी तक नापी जाती है, उत्पादों से नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "तो अडसर ज्यावर चढल्याशिवाय बंध पुन्हा मांडता येत नाहीत, म्हणूनच पेट्रोल आणि हवेचे मिश्रण टाकीत महिने पडून राहते आणि ठिणगी पहिला धक्का देताच मिलिसेकंदात जळते. हे काय आहे?",
+          "choices": [
+            "वेग नियम आणि अभिक्रियेची कोटी",
+            "उत्प्रेरक",
+            "सक्रियण ऊर्जा",
+            "तापमानावरील अरेनियस अवलंबिता"
+          ],
+          "solution": "सक्रियण ऊर्जा म्हणजे ती किमान ऊर्जा जी आदळणाऱ्या जोडीकडे अभिक्रियेसाठी असावी लागते, जी अभिक्रियकांपासून अडसराच्या शिखरापर्यंत मोजली जाते, उत्पादनांपासून नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The Arrhenius dependence on temperature is correct?",
+      "choices": [
+        "The Arrhenius dependence is k = A e^(−Ea/RT), so the rate constant depends exponentially on temperature through the fraction of collisions energetic enough to react.",
+        "The rate law expresses the rate as k[A]^x[B]^y with x and y determined experimentally, and their sum is the order of the reaction.",
+        "A catalyst provides an alternative path of lower activation energy and is regenerated unchanged, so it alters the rate without being consumed or appearing in the overall equation.",
+        "Activation energy is the minimum energy a colliding pair must have for reaction, measured from the reactants up to the top of the barrier and not from the products."
+      ],
+      "answerIndex": 0,
+      "solution": "The Arrhenius dependence is k = A e^(−Ea/RT), so the rate constant depends exponentially on temperature through the fraction of collisions energetic enough to react. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ताप पर आरेनियस निर्भरता के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "आरेनियस निर्भरता k = A e^(−Ea/RT) है, अतः वेग स्थिरांक ताप पर चरघातांकी रूप से निर्भर है, उन टक्करों के अंश के माध्यम से जो अभिक्रिया करने लायक़ ऊर्जावान हैं।",
+            "वेग नियम वेग को k[A]^x[B]^y के रूप में व्यक्त करता है जिसमें x और y प्रयोग से तय होते हैं, और उनका योग अभिक्रिया की कोटि है।",
+            "उत्प्रेरक कम सक्रियण ऊर्जा का वैकल्पिक पथ देता है और अपरिवर्तित पुनर्जनित होता है, अतः वह वेग बदलता है बिना खपे और बिना समग्र समीकरण में आए।",
+            "सक्रियण ऊर्जा वह न्यूनतम ऊर्जा है जो टकराते युग्म के पास अभिक्रिया के लिए होनी चाहिए, जो अभिकारकों से अवरोध की चोटी तक नापी जाती है, उत्पादों से नहीं।"
+          ],
+          "solution": "आरेनियस निर्भरता k = A e^(−Ea/RT) है, अतः वेग स्थिरांक ताप पर चरघातांकी रूप से निर्भर है, उन टक्करों के अंश के माध्यम से जो अभिक्रिया करने लायक़ ऊर्जावान हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "तापमानावरील अरेनियस अवलंबिता विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "अरेनियस अवलंबिता k = A e^(−Ea/RT) आहे, म्हणून वेग स्थिरांक तापमानावर घातांकीरीत्या अवलंबून आहे, अभिक्रिया करण्याइतक्या ऊर्जावान टकरांच्या अंशामार्गे.",
+            "वेग नियम वेगाला k[A]^x[B]^y या रूपात मांडतो जिथे x आणि y प्रयोगाने ठरतात, आणि त्यांची बेरीज अभिक्रियेची कोटी आहे.",
+            "उत्प्रेरक कमी सक्रियण ऊर्जेचा पर्यायी मार्ग देतो आणि अपरिवर्तित पुनर्निर्मित होतो, म्हणून तो वेग बदलतो, न खर्च होता आणि एकूण समीकरणात न येता.",
+            "सक्रियण ऊर्जा म्हणजे ती किमान ऊर्जा जी आदळणाऱ्या जोडीकडे अभिक्रियेसाठी असावी लागते, जी अभिक्रियकांपासून अडसराच्या शिखरापर्यंत मोजली जाते, उत्पादनांपासून नाही."
+          ],
+          "solution": "अरेनियस अवलंबिता k = A e^(−Ea/RT) आहे, म्हणून वेग स्थिरांक तापमानावर घातांकीरीत्या अवलंबून आहे, अभिक्रिया करण्याइतक्या ऊर्जावान टकरांच्या अंशामार्गे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It lowers the barrier from both sides by the same amount, so the forward and reverse rates rise by the same factor and the position of equilibrium is left exactly where it was.\" — which of these is this about?",
+      "choices": [
+        "Activation energy",
+        "The rate constant",
+        "The Arrhenius dependence on temperature",
+        "The catalyst"
+      ],
+      "answerIndex": 3,
+      "solution": "A catalyst provides an alternative path of lower activation energy and is regenerated unchanged, so it alters the rate without being consumed or appearing in the overall equation. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"वह अवरोध को दोनों ओर से उतना ही नीचा करता है, अतः अग्र और प्रतीप वेग उसी गुणक से बढ़ते हैं और साम्य की स्थिति ठीक वहीं रहती है जहाँ थी।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "सक्रियण ऊर्जा",
+            "वेग स्थिरांक",
+            "ताप पर आरेनियस निर्भरता",
+            "उत्प्रेरक"
+          ],
+          "solution": "उत्प्रेरक कम सक्रियण ऊर्जा का वैकल्पिक पथ देता है और अपरिवर्तित पुनर्जनित होता है, अतः वह वेग बदलता है बिना खपे और बिना समग्र समीकरण में आए। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तो अडसर दोन्ही बाजूंनी तितकाच खाली आणतो, म्हणून अग्र आणि प्रतीप वेग त्याच पटीने वाढतात आणि समतोलाची जागा नेमकी तिथेच राहते जिथे होती.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "सक्रियण ऊर्जा",
+            "वेग स्थिरांक",
+            "तापमानावरील अरेनियस अवलंबिता",
+            "उत्प्रेरक"
+          ],
+          "solution": "उत्प्रेरक कमी सक्रियण ऊर्जेचा पर्यायी मार्ग देतो आणि अपरिवर्तित पुनर्निर्मित होतो, म्हणून तो वेग बदलतो, न खर्च होता आणि एकूण समीकरणात न येता. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Found by experiment, never read off the equation\" goes correctly with which of these?",
+      "choices": [
+        "the Arrhenius dependence on temperature",
+        "the rate law and order of reaction",
+        "activation energy",
+        "the half-life of a first-order reaction"
+      ],
+      "answerIndex": 1,
+      "solution": "The rate law expresses the rate as k[A]^x[B]^y with x and y determined experimentally, and their sum is the order of the reaction. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"प्रयोग से खोजी गई, समीकरण से कभी नहीं पढ़ी गई\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "ताप पर आरेनियस निर्भरता",
+            "वेग नियम और अभिक्रिया की कोटि",
+            "सक्रियण ऊर्जा",
+            "प्रथम कोटि अभिक्रिया की अर्धायु"
+          ],
+          "solution": "वेग नियम वेग को k[A]^x[B]^y के रूप में व्यक्त करता है जिसमें x और y प्रयोग से तय होते हैं, और उनका योग अभिक्रिया की कोटि है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"प्रयोगाने शोधलेली, समीकरणावरून कधीच वाचलेली नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "तापमानावरील अरेनियस अवलंबिता",
+            "वेग नियम आणि अभिक्रियेची कोटी",
+            "सक्रियण ऊर्जा",
+            "प्रथम कोटी अभिक्रियेचे अर्धायुष्य"
+          ],
+          "solution": "वेग नियम वेगाला k[A]^x[B]^y या रूपात मांडतो जिथे x आणि y प्रयोगाने ठरतात, आणि त्यांची बेरीज अभिक्रियेची कोटी आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Its units confess the order\" goes correctly with which of these?",
+      "choices": [
+        "the rate constant",
+        "activation energy",
+        "the catalyst",
+        "the rate law and order of reaction"
+      ],
+      "answerIndex": 0,
+      "solution": "The rate constant k is the rate when every concentration is unity, independent of concentration but strongly dependent on temperature and on the presence of a catalyst. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"उसके मात्रक कोटि उगल देते हैं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "वेग स्थिरांक",
+            "सक्रियण ऊर्जा",
+            "उत्प्रेरक",
+            "वेग नियम और अभिक्रिया की कोटि"
+          ],
+          "solution": "वेग स्थिरांक k वह वेग है जब हर सांद्रता एकांक हो, जो सांद्रता से स्वतंत्र है पर ताप और उत्प्रेरक की उपस्थिति पर प्रबल रूप से निर्भर। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"त्याची एकके कोटी सांगून टाकतात\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "वेग स्थिरांक",
+            "सक्रियण ऊर्जा",
+            "उत्प्रेरक",
+            "वेग नियम आणि अभिक्रियेची कोटी"
+          ],
+          "solution": "वेग स्थिरांक k म्हणजे तो वेग जेव्हा प्रत्येक संहती एकक असेल, जो संहतीपासून स्वतंत्र आहे पण तापमानावर आणि उत्प्रेरकाच्या उपस्थितीवर तीव्रपणे अवलंबून. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The same whether you start with a gram or a tonne\" goes correctly with which of these?",
+      "choices": [
+        "the catalyst",
+        "the rate law and order of reaction",
+        "the half-life of a first-order reaction",
+        "activation energy"
+      ],
+      "answerIndex": 2,
+      "solution": "The half-life of a first-order reaction is t½ = 0.693/k, independent of the starting concentration, so successive halvings take equal times. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"एक जैसी, चाहे ग्राम से शुरू करो या टन से\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "उत्प्रेरक",
+            "वेग नियम और अभिक्रिया की कोटि",
+            "प्रथम कोटि अभिक्रिया की अर्धायु",
+            "सक्रियण ऊर्जा"
+          ],
+          "solution": "प्रथम कोटि अभिक्रिया की अर्धायु t½ = 0.693/k है, जो आरंभिक सांद्रता से स्वतंत्र है, अतः लगातार आधे होने में बराबर समय लगता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"सारखेच, ग्रॅमपासून सुरू करा वा टनापासून\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "उत्प्रेरक",
+            "वेग नियम आणि अभिक्रियेची कोटी",
+            "प्रथम कोटी अभिक्रियेचे अर्धायुष्य",
+            "सक्रियण ऊर्जा"
+          ],
+          "solution": "प्रथम कोटी अभिक्रियेचे अर्धायुष्य t½ = 0.693/k आहे, जे प्रारंभिक संहतीपासून स्वतंत्र आहे, म्हणून लागोपाठ निम्मे होण्यास समान काळ लागतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Why a tank of petrol is safe until it is not\" goes correctly with which of these?",
+      "choices": [
+        "the half-life of a first-order reaction",
+        "the Arrhenius dependence on temperature",
+        "the catalyst",
+        "activation energy"
+      ],
+      "answerIndex": 3,
+      "solution": "Activation energy is the minimum energy a colliding pair must have for reaction, measured from the reactants up to the top of the barrier and not from the products. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"इसीलिए पेट्रोल की टंकी तब तक सुरक्षित है जब तक नहीं है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "प्रथम कोटि अभिक्रिया की अर्धायु",
+            "ताप पर आरेनियस निर्भरता",
+            "उत्प्रेरक",
+            "सक्रियण ऊर्जा"
+          ],
+          "solution": "सक्रियण ऊर्जा वह न्यूनतम ऊर्जा है जो टकराते युग्म के पास अभिक्रिया के लिए होनी चाहिए, जो अभिकारकों से अवरोध की चोटी तक नापी जाती है, उत्पादों से नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"म्हणूनच पेट्रोलची टाकी तोवर सुरक्षित जोवर नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "प्रथम कोटी अभिक्रियेचे अर्धायुष्य",
+            "तापमानावरील अरेनियस अवलंबिता",
+            "उत्प्रेरक",
+            "सक्रियण ऊर्जा"
+          ],
+          "solution": "सक्रियण ऊर्जा म्हणजे ती किमान ऊर्जा जी आदळणाऱ्या जोडीकडे अभिक्रियेसाठी असावी लागते, जी अभिक्रियकांपासून अडसराच्या शिखरापर्यंत मोजली जाते, उत्पादनांपासून नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Two per cent faster, twice as fast a reaction\" goes correctly with which of these?",
+      "choices": [
+        "the rate constant",
+        "the rate law and order of reaction",
+        "the half-life of a first-order reaction",
+        "the Arrhenius dependence on temperature"
+      ],
+      "answerIndex": 3,
+      "solution": "The Arrhenius dependence is k = A e^(−Ea/RT), so the rate constant depends exponentially on temperature through the fraction of collisions energetic enough to react. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"दो प्रतिशत तेज़ गति, दुगुनी तेज़ अभिक्रिया\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "वेग स्थिरांक",
+            "वेग नियम और अभिक्रिया की कोटि",
+            "प्रथम कोटि अभिक्रिया की अर्धायु",
+            "ताप पर आरेनियस निर्भरता"
+          ],
+          "solution": "आरेनियस निर्भरता k = A e^(−Ea/RT) है, अतः वेग स्थिरांक ताप पर चरघातांकी रूप से निर्भर है, उन टक्करों के अंश के माध्यम से जो अभिक्रिया करने लायक़ ऊर्जावान हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"दोन टक्के वेगवान गती, दुप्पट वेगवान अभिक्रिया\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "वेग स्थिरांक",
+            "वेग नियम आणि अभिक्रियेची कोटी",
+            "प्रथम कोटी अभिक्रियेचे अर्धायुष्य",
+            "तापमानावरील अरेनियस अवलंबिता"
+          ],
+          "solution": "अरेनियस अवलंबिता k = A e^(−Ea/RT) आहे, म्हणून वेग स्थिरांक तापमानावर घातांकीरीत्या अवलंबून आहे, अभिक्रिया करण्याइतक्या ऊर्जावान टकरांच्या अंशामार्गे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Changes when equilibrium arrives, never where\" goes correctly with which of these?",
+      "choices": [
+        "the rate law and order of reaction",
+        "the Arrhenius dependence on temperature",
+        "the rate constant",
+        "the catalyst"
+      ],
+      "answerIndex": 3,
+      "solution": "A catalyst provides an alternative path of lower activation energy and is regenerated unchanged, so it alters the rate without being consumed or appearing in the overall equation. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"बदलता है कि साम्य कब आएगा, कभी नहीं कि कहाँ\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "वेग नियम और अभिक्रिया की कोटि",
+            "ताप पर आरेनियस निर्भरता",
+            "वेग स्थिरांक",
+            "उत्प्रेरक"
+          ],
+          "solution": "उत्प्रेरक कम सक्रियण ऊर्जा का वैकल्पिक पथ देता है और अपरिवर्तित पुनर्जनित होता है, अतः वह वेग बदलता है बिना खपे और बिना समग्र समीकरण में आए। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"बदलतो की समतोल कधी येईल, कधीच नाही की कुठे\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "वेग नियम आणि अभिक्रियेची कोटी",
+            "तापमानावरील अरेनियस अवलंबिता",
+            "वेग स्थिरांक",
+            "उत्प्रेरक"
+          ],
+          "solution": "उत्प्रेरक कमी सक्रियण ऊर्जेचा पर्यायी मार्ग देतो आणि अपरिवर्तित पुनर्निर्मित होतो, म्हणून तो वेग बदलतो, न खर्च होता आणि एकूण समीकरणात न येता. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The rate law and order of reaction EXCEPT —",
+      "choices": [
+        "The rate constant k is the rate when every concentration is unity, independent of concentration but strongly dependent on temperature and on the presence of a catalyst.",
+        "Order is a property of the mechanism while the coefficients are a property of the bookkeeping, so a reaction written with a 2 in front of a reactant may still be first order in it.",
+        "The rate law expresses the rate as k[A]^x[B]^y with x and y determined experimentally, and their sum is the order of the reaction.",
+        "It can be zero or even fractional, which no molecular count could ever be, and that alone shows the exponents are not counting molecules colliding but describing a many-step process from outside."
+      ],
+      "answerIndex": 0,
+      "solution": "The rate constant k is the rate when every concentration is unity, independent of concentration but strongly dependent on temperature and on the presence of a catalyst. That belongs to The rate constant, not The rate law and order of reaction — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "वेग नियम और अभिक्रिया की कोटि के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "वेग स्थिरांक k वह वेग है जब हर सांद्रता एकांक हो, जो सांद्रता से स्वतंत्र है पर ताप और उत्प्रेरक की उपस्थिति पर प्रबल रूप से निर्भर।",
+            "कोटि क्रियाविधि का गुण है जबकि गुणांक हिसाब का गुण हैं, अतः जिस अभिक्रिया के किसी अभिकारक के आगे 2 लिखा हो वह उसमें प्रथम कोटि की हो सकती है।",
+            "वेग नियम वेग को k[A]^x[B]^y के रूप में व्यक्त करता है जिसमें x और y प्रयोग से तय होते हैं, और उनका योग अभिक्रिया की कोटि है।",
+            "वह शून्य या भिन्नात्मक तक हो सकती है, जो कोई आणविक गिनती कभी नहीं हो सकती, और यही अकेला दिखा देता है कि घातें टकराते अणु नहीं गिन रहीं बल्कि बहु-चरण प्रक्रिया को बाहर से बता रही हैं।"
+          ],
+          "solution": "वेग स्थिरांक k वह वेग है जब हर सांद्रता एकांक हो, जो सांद्रता से स्वतंत्र है पर ताप और उत्प्रेरक की उपस्थिति पर प्रबल रूप से निर्भर। यह वेग स्थिरांक की बात है, वेग नियम और अभिक्रिया की कोटि की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "वेग नियम आणि अभिक्रियेची कोटी विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "वेग स्थिरांक k म्हणजे तो वेग जेव्हा प्रत्येक संहती एकक असेल, जो संहतीपासून स्वतंत्र आहे पण तापमानावर आणि उत्प्रेरकाच्या उपस्थितीवर तीव्रपणे अवलंबून.",
+            "कोटी ही यंत्रणेचा गुणधर्म आहे तर गुणक हिशेबाचा गुणधर्म आहेत, म्हणून ज्या अभिक्रियेच्या एखाद्या अभिक्रियकासमोर 2 लिहिलेले असेल ती त्यात प्रथम कोटीची असू शकते.",
+            "वेग नियम वेगाला k[A]^x[B]^y या रूपात मांडतो जिथे x आणि y प्रयोगाने ठरतात, आणि त्यांची बेरीज अभिक्रियेची कोटी आहे.",
+            "ती शून्य वा अपूर्णांकीही असू शकते, जी कोणतीही रेणवीय मोजणी कधीच असू शकत नाही, आणि हेच एकटे दाखवते की घाती आदळणारे रेणू मोजत नसून बहु-पायरी प्रक्रियेचे बाहेरून वर्णन करत आहेत."
+          ],
+          "solution": "वेग स्थिरांक k म्हणजे तो वेग जेव्हा प्रत्येक संहती एकक असेल, जो संहतीपासून स्वतंत्र आहे पण तापमानावर आणि उत्प्रेरकाच्या उपस्थितीवर तीव्रपणे अवलंबून. हे वेग स्थिरांक चे आहे, वेग नियम आणि अभिक्रियेची कोटी चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The rate constant EXCEPT —",
+      "choices": [
+        "The rate constant k is the rate when every concentration is unity, independent of concentration but strongly dependent on temperature and on the presence of a catalyst.",
+        "It is a constant only with respect to concentration, which is exactly the sense in which it is useful: it lets a rate measured at one concentration predict the rate at another without repeating the experiment.",
+        "The rate law expresses the rate as k[A]^x[B]^y with x and y determined experimentally, and their sum is the order of the reaction.",
+        "Its units change with the order — s⁻¹ for first order, L mol⁻¹ s⁻¹ for second — so quoting a rate constant without saying the order is like quoting a length without saying whether it is metres or feet."
+      ],
+      "answerIndex": 2,
+      "solution": "The rate law expresses the rate as k[A]^x[B]^y with x and y determined experimentally, and their sum is the order of the reaction. That belongs to The rate law and order of reaction, not The rate constant — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "वेग स्थिरांक के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "वेग स्थिरांक k वह वेग है जब हर सांद्रता एकांक हो, जो सांद्रता से स्वतंत्र है पर ताप और उत्प्रेरक की उपस्थिति पर प्रबल रूप से निर्भर।",
+            "वह केवल सांद्रता के सापेक्ष स्थिरांक है, और ठीक उसी अर्थ में वह काम का है: वह एक सांद्रता पर नापे गए वेग से दूसरी सांद्रता का वेग बता देता है, प्रयोग दोहराए बिना।",
+            "वेग नियम वेग को k[A]^x[B]^y के रूप में व्यक्त करता है जिसमें x और y प्रयोग से तय होते हैं, और उनका योग अभिक्रिया की कोटि है।",
+            "उसके मात्रक कोटि के साथ बदलते हैं — प्रथम कोटि के लिए s⁻¹, द्वितीय के लिए L mol⁻¹ s⁻¹ — अतः कोटि बताए बिना वेग स्थिरांक बताना ऐसा है जैसे यह कहे बिना लंबाई बताना कि वह मीटर में है या फुट में।"
+          ],
+          "solution": "वेग नियम वेग को k[A]^x[B]^y के रूप में व्यक्त करता है जिसमें x और y प्रयोग से तय होते हैं, और उनका योग अभिक्रिया की कोटि है। यह वेग नियम और अभिक्रिया की कोटि की बात है, वेग स्थिरांक की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "वेग स्थिरांक विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "वेग स्थिरांक k म्हणजे तो वेग जेव्हा प्रत्येक संहती एकक असेल, जो संहतीपासून स्वतंत्र आहे पण तापमानावर आणि उत्प्रेरकाच्या उपस्थितीवर तीव्रपणे अवलंबून.",
+            "तो केवळ संहतीच्या सापेक्ष स्थिरांक आहे, आणि नेमक्या त्याच अर्थाने तो उपयुक्त आहे: तो एका संहतीवर मोजलेल्या वेगावरून दुसऱ्या संहतीचा वेग सांगतो, प्रयोग पुन्हा न करता.",
+            "वेग नियम वेगाला k[A]^x[B]^y या रूपात मांडतो जिथे x आणि y प्रयोगाने ठरतात, आणि त्यांची बेरीज अभिक्रियेची कोटी आहे.",
+            "त्याची एकके कोटीसोबत बदलतात — प्रथम कोटीसाठी s⁻¹, द्वितीयसाठी L mol⁻¹ s⁻¹ — म्हणून कोटी न सांगता वेग स्थिरांक सांगणे म्हणजे मीटरमध्ये आहे की फुटांत हे न सांगता लांबी सांगण्यासारखे."
+          ],
+          "solution": "वेग नियम वेगाला k[A]^x[B]^y या रूपात मांडतो जिथे x आणि y प्रयोगाने ठरतात, आणि त्यांची बेरीज अभिक्रियेची कोटी आहे. हे वेग नियम आणि अभिक्रियेची कोटी चे आहे, वेग स्थिरांक चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The half-life of a first-order reaction EXCEPT —",
+      "choices": [
+        "It is the same mathematics as radioactive decay, and for the same reason: in both, each individual has a fixed chance of reacting per second regardless of how many neighbours it has.",
+        "The independence is the signature of first order and of no other: a zero-order half-life halves as the concentration halves, and a second-order one doubles.",
+        "The rate law expresses the rate as k[A]^x[B]^y with x and y determined experimentally, and their sum is the order of the reaction.",
+        "The half-life of a first-order reaction is t½ = 0.693/k, independent of the starting concentration, so successive halvings take equal times."
+      ],
+      "answerIndex": 2,
+      "solution": "The rate law expresses the rate as k[A]^x[B]^y with x and y determined experimentally, and their sum is the order of the reaction. That belongs to The rate law and order of reaction, not The half-life of a first-order reaction — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रथम कोटि अभिक्रिया की अर्धायु के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "यह रेडियोऐक्टिव क्षय जैसा ही गणित है, और उसी कारण से: दोनों में हर व्यक्ति के प्रति सेकंड अभिक्रिया करने की संभावना नियत है, चाहे उसके कितने भी पड़ोसी हों।",
+            "यह स्वतंत्रता प्रथम कोटि की पहचान है और किसी और की नहीं: शून्य कोटि की अर्धायु सांद्रता आधी होते ही आधी हो जाती है, और द्वितीय कोटि की दुगुनी।",
+            "वेग नियम वेग को k[A]^x[B]^y के रूप में व्यक्त करता है जिसमें x और y प्रयोग से तय होते हैं, और उनका योग अभिक्रिया की कोटि है।",
+            "प्रथम कोटि अभिक्रिया की अर्धायु t½ = 0.693/k है, जो आरंभिक सांद्रता से स्वतंत्र है, अतः लगातार आधे होने में बराबर समय लगता है।"
+          ],
+          "solution": "वेग नियम वेग को k[A]^x[B]^y के रूप में व्यक्त करता है जिसमें x और y प्रयोग से तय होते हैं, और उनका योग अभिक्रिया की कोटि है। यह वेग नियम और अभिक्रिया की कोटि की बात है, प्रथम कोटि अभिक्रिया की अर्धायु की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "प्रथम कोटी अभिक्रियेचे अर्धायुष्य विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "हे किरणोत्सर्गी क्षयासारखेच गणित आहे, आणि त्याच कारणाने: दोन्हींत प्रत्येक व्यक्तीची दर सेकंदाला अभिक्रिया करण्याची शक्यता ठराविक आहे, त्याला कितीही शेजारी असोत.",
+            "हे स्वातंत्र्य प्रथम कोटीची खूण आहे आणि दुसऱ्या कोणाचीही नाही: शून्य कोटीचे अर्धायुष्य संहती निम्मी होताच निम्मे होते, आणि द्वितीय कोटीचे दुप्पट.",
+            "वेग नियम वेगाला k[A]^x[B]^y या रूपात मांडतो जिथे x आणि y प्रयोगाने ठरतात, आणि त्यांची बेरीज अभिक्रियेची कोटी आहे.",
+            "प्रथम कोटी अभिक्रियेचे अर्धायुष्य t½ = 0.693/k आहे, जे प्रारंभिक संहतीपासून स्वतंत्र आहे, म्हणून लागोपाठ निम्मे होण्यास समान काळ लागतो."
+          ],
+          "solution": "वेग नियम वेगाला k[A]^x[B]^y या रूपात मांडतो जिथे x आणि y प्रयोगाने ठरतात, आणि त्यांची बेरीज अभिक्रियेची कोटी आहे. हे वेग नियम आणि अभिक्रियेची कोटी चे आहे, प्रथम कोटी अभिक्रियेचे अर्धायुष्य चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Activation energy EXCEPT —",
+      "choices": [
+        "The forward and reverse barriers differ by exactly the enthalpy change, so knowing two of the three fixes the third and the energy profile can be drawn from either end.",
+        "Activation energy is the minimum energy a colliding pair must have for reaction, measured from the reactants up to the top of the barrier and not from the products.",
+        "The Arrhenius dependence is k = A e^(−Ea/RT), so the rate constant depends exponentially on temperature through the fraction of collisions energetic enough to react.",
+        "It is entirely separate from the enthalpy change: a strongly exothermic reaction can have a huge barrier and be immeasurably slow, which is why diamond has not turned into graphite."
+      ],
+      "answerIndex": 2,
+      "solution": "The Arrhenius dependence is k = A e^(−Ea/RT), so the rate constant depends exponentially on temperature through the fraction of collisions energetic enough to react. That belongs to The Arrhenius dependence on temperature, not Activation energy — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "सक्रियण ऊर्जा के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "अग्र और प्रतीप अवरोध ठीक एन्थैल्पी परिवर्तन जितने भिन्न हैं, अतः तीन में से दो जानने पर तीसरा तय हो जाता है और ऊर्जा-रूपरेखा किसी भी सिरे से खींची जा सकती है।",
+            "सक्रियण ऊर्जा वह न्यूनतम ऊर्जा है जो टकराते युग्म के पास अभिक्रिया के लिए होनी चाहिए, जो अभिकारकों से अवरोध की चोटी तक नापी जाती है, उत्पादों से नहीं।",
+            "आरेनियस निर्भरता k = A e^(−Ea/RT) है, अतः वेग स्थिरांक ताप पर चरघातांकी रूप से निर्भर है, उन टक्करों के अंश के माध्यम से जो अभिक्रिया करने लायक़ ऊर्जावान हैं।",
+            "यह एन्थैल्पी परिवर्तन से पूरी तरह अलग है: प्रबल ऊष्माक्षेपी अभिक्रिया का अवरोध विशाल हो सकता है और वह अनापनीय रूप से धीमी हो सकती है, इसीलिए हीरा ग्रैफ़ाइट नहीं बना है।"
+          ],
+          "solution": "आरेनियस निर्भरता k = A e^(−Ea/RT) है, अतः वेग स्थिरांक ताप पर चरघातांकी रूप से निर्भर है, उन टक्करों के अंश के माध्यम से जो अभिक्रिया करने लायक़ ऊर्जावान हैं। यह ताप पर आरेनियस निर्भरता की बात है, सक्रियण ऊर्जा की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "सक्रियण ऊर्जा विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "अग्र आणि प्रतीप अडसर नेमक्या एन्थॅल्पी बदलाइतके वेगळे आहेत, म्हणून तिघांपैकी दोन जाणल्यास तिसरा ठरतो आणि ऊर्जा-आराखडा कोणत्याही टोकाकडून काढता येतो.",
+            "सक्रियण ऊर्जा म्हणजे ती किमान ऊर्जा जी आदळणाऱ्या जोडीकडे अभिक्रियेसाठी असावी लागते, जी अभिक्रियकांपासून अडसराच्या शिखरापर्यंत मोजली जाते, उत्पादनांपासून नाही.",
+            "अरेनियस अवलंबिता k = A e^(−Ea/RT) आहे, म्हणून वेग स्थिरांक तापमानावर घातांकीरीत्या अवलंबून आहे, अभिक्रिया करण्याइतक्या ऊर्जावान टकरांच्या अंशामार्गे.",
+            "हे एन्थॅल्पी बदलापासून पूर्णपणे वेगळे आहे: तीव्र उष्माक्षेपी अभिक्रियेचा अडसर प्रचंड असू शकतो आणि ती अमापनीयरीत्या सावकाश असू शकते, म्हणूनच हिरा ग्रॅफाइट बनलेला नाही."
+          ],
+          "solution": "अरेनियस अवलंबिता k = A e^(−Ea/RT) आहे, म्हणून वेग स्थिरांक तापमानावर घातांकीरीत्या अवलंबून आहे, अभिक्रिया करण्याइतक्या ऊर्जावान टकरांच्या अंशामार्गे. हे तापमानावरील अरेनियस अवलंबिता चे आहे, सक्रियण ऊर्जा चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "For the reaction 2NO + O₂ → 2NO₂ the rate law is found to be k[NO]²[O₂], which matches the coefficients. For CH₃COOC₂H₅ + H₂O → acid + alcohol in dilute solution the rate law is k[ester], although water appears in the equation. Explain both, and say what order and molecularity are.",
+      "choices": [
+        "Order is experimental and describes the observed dependence; molecularity counts the particles in a single elementary step and can only be a small whole number. The first rate law matches the coefficients by coincidence — because that reaction happens in one step. The ester hydrolysis does not: water is present in vast excess, so its concentration barely changes as the reaction runs and its effect is absorbed into k. The reaction is genuinely second order but behaves as first order under these conditions, which is called PSEUDO first order. Matching coefficients is therefore evidence for a one-step mechanism, and a mismatch is evidence against it",
+        "The ester reaction is first order because water is a solvent and solvents never appear in rate laws, which is a general rule with no exceptions",
+        "Order and molecularity are two names for the same thing, and the ester result must therefore be an experimental error",
+        "The rate law can always be written from the balanced equation, and the ester case differs only because the equation is usually written without its catalyst"
+      ],
+      "answerIndex": 0,
+      "solution": "The habit this question is trying to break is reading a rate law off a balanced equation, and the two examples are chosen because one appears to license the habit and the other refutes it. FIRST, THE TWO WORDS. MOLECULARITY is the number of species that must come together in a SINGLE elementary step — one for a decomposition, two for a collision, three for the rare simultaneous three-body encounter. It is a theoretical count about a step nobody sees directly, and it must be a small positive whole number, because you cannot have half a molecule colliding. ORDER is the sum of the exponents in the experimentally measured rate law. It is a description of what a graph does, it can be zero, fractional or even negative, and it belongs to the reaction as a whole rather than to any one step. The two coincide only for a reaction that happens in one step, and that coincidence is exactly the information a kineticist is after. NOW 2NO + O₂. The measured law k[NO]²[O₂] is third order and matches the coefficients. That is consistent with the reaction happening in a single termolecular step, and for this reaction it is believed to be roughly what happens. But note the direction of the inference: the experiment came first and the mechanism was fitted to it. Had the measured law come out k[NO]², nobody would have been entitled to insist on the coefficients. NOW THE ESTER. Written out, the reaction consumes one ester and one water. Measure the rate and it depends on the ester alone. There is nothing wrong with the measurement, and water is certainly involved — it ends up in the products. What has happened is that the experiment was done in dilute aqueous solution, where water is present at about 55 mol/L against perhaps 0.01 mol/L of ester. Even when every ester molecule has reacted, the water concentration has fallen by less than a fiftieth of one per cent. A quantity that does not change cannot show up as a dependence, so [H₂O] behaves as a constant and is quietly absorbed into k. The true law is rate = k'[ester][H₂O]; what is measured is rate = k[ester] with k = k'[H₂O]. The reaction is second order and pseudo first order under these conditions. The word 'pseudo' is doing honest work: it records that the observed simplicity is a property of the experiment and not of the chemistry, and it warns that the same reaction run in a non-aqueous solvent with limited water would show the second-order behaviour plainly. Two consequences worth carrying. First, a rate law is evidence about mechanism and nothing else — the exponents are a fingerprint, and a mismatch with the coefficients proves the reaction takes more than one step. A reaction with a coefficient of 4 in front of a reactant is essentially never fourth order in it, because a four-body simultaneous collision is vanishingly rare; the mechanism must be a sequence, and the rate law reports whichever step is slowest. Second, pseudo-order conditions are a deliberate technique, not an accident: flooding a system with all but one reactant is how a complicated rate law is taken apart one variable at a time, and it is called the isolation method for that reason. (The second option turns a useful approximation into a law without exceptions; the third denies a distinction the chapter is built on; the fourth is the very habit the question exists to break.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अभिक्रिया 2NO + O₂ → 2NO₂ के लिए वेग नियम k[NO]²[O₂] पाया जाता है, जो गुणांकों से मेल खाता है। तनु विलयन में CH₃COOC₂H₅ + H₂O → अम्ल + ऐल्कोहॉल के लिए वेग नियम k[एस्टर] है, यद्यपि समीकरण में पानी आता है। दोनों समझाओ, और बताओ कि कोटि और आणविकता क्या हैं।",
+          "choices": [
+            "कोटि प्रायोगिक है और देखी गई निर्भरता बताती है; आणविकता एक ही प्रारंभिक चरण के कणों को गिनती है और केवल छोटा पूर्णांक हो सकती है। पहला वेग नियम गुणांकों से संयोग से मेल खाता है — क्योंकि वह अभिक्रिया एक ही चरण में होती है। एस्टर का जल-अपघटन नहीं: पानी विशाल अधिकता में है, अतः अभिक्रिया चलते समय उसकी सांद्रता मुश्किल से बदलती है और उसका प्रभाव k में समा जाता है। अभिक्रिया वस्तुतः द्वितीय कोटि की है पर इन शर्तों में प्रथम कोटि जैसी बरतती है, और इसे छद्म प्रथम कोटि कहते हैं। अतः गुणांकों का मेल एक-चरण क्रियाविधि का प्रमाण है, और बेमेल उसके विरुद्ध प्रमाण",
+            "एस्टर की अभिक्रिया प्रथम कोटि की है क्योंकि पानी विलायक है और विलायक वेग नियमों में कभी नहीं आते, और यह बिना अपवाद का सामान्य नियम है",
+            "कोटि और आणविकता एक ही चीज़ के दो नाम हैं, अतः एस्टर वाला परिणाम प्रायोगिक त्रुटि ही होगी",
+            "वेग नियम सदा संतुलित समीकरण से लिखा जा सकता है, और एस्टर वाली स्थिति केवल इसलिए भिन्न है कि समीकरण प्रायः अपने उत्प्रेरक के बिना लिखा जाता है"
+          ],
+          "solution": "यह प्रश्न जिस आदत को तोड़ना चाहता है वह है संतुलित समीकरण से वेग नियम पढ़ लेना, और दोनों उदाहरण इसलिए चुने गए कि एक उस आदत को जायज़ ठहराता दिखता है और दूसरा उसे झुठलाता है। पहले, दो शब्द। आणविकता उन स्पीशीज़ की संख्या है जिन्हें एक ही प्रारंभिक चरण में साथ आना पड़े — वियोजन के लिए एक, टक्कर के लिए दो, दुर्लभ एक साथ तीन-पिंड मुलाक़ात के लिए तीन। यह ऐसे चरण के बारे में सैद्धांतिक गिनती है जिसे कोई सीधे देखता नहीं, और वह छोटा धन पूर्णांक होनी ही चाहिए, क्योंकि आधा अणु टकरा नहीं सकता। कोटि प्रयोग से नापे गए वेग नियम की घातों का योग है। वह इस बात का वर्णन है कि ग्राफ़ क्या करता है, वह शून्य, भिन्नात्मक या ऋणात्मक तक हो सकती है, और वह किसी एक चरण की नहीं बल्कि पूरी अभिक्रिया की है। दोनों केवल उस अभिक्रिया के लिए मिलते हैं जो एक ही चरण में होती है, और वही मेल वह सूचना है जिसके पीछे बलगतिकीविद् है। अब 2NO + O₂. नापा गया नियम k[NO]²[O₂] तृतीय कोटि का है और गुणांकों से मेल खाता है। यह इस बात से संगत है कि अभिक्रिया एक ही त्रिअणुक चरण में होती है, और इस अभिक्रिया के लिए माना जाता है कि मोटे तौर पर यही होता है। पर अनुमान की दिशा पर ध्यान दो: प्रयोग पहले आया और क्रियाविधि उससे मिलाई गई। यदि नापा गया नियम k[NO]² निकलता, तो किसी को गुणांकों पर अड़ने का अधिकार न होता। अब एस्टर। लिखने पर अभिक्रिया एक एस्टर और एक पानी खपाती है। वेग नापो और वह अकेले एस्टर पर निर्भर है। माप में कुछ ग़लत नहीं, और पानी निश्चय ही शामिल है — वह उत्पादों में पहुँचता है। जो हुआ वह यह कि प्रयोग तनु जलीय विलयन में किया गया, जहाँ पानी लगभग 55 mol/L पर है और एस्टर शायद 0.01 mol/L पर। हर एस्टर अणु के अभिक्रिया कर लेने पर भी पानी की सांद्रता एक प्रतिशत के पचासवें भाग से भी कम गिरी है। जो राशि बदलती नहीं वह निर्भरता के रूप में दिख नहीं सकती, अतः [H₂O] स्थिरांक की तरह बरतता है और चुपचाप k में समा जाता है। सच्चा नियम वेग = k'[एस्टर][H₂O] है; जो नापा जाता है वह वेग = k[एस्टर] है जिसमें k = k'[H₂O]. अभिक्रिया द्वितीय कोटि की है और इन शर्तों में छद्म प्रथम कोटि की। 'छद्म' शब्द ईमानदार काम कर रहा है: वह दर्ज करता है कि देखी गई सरलता प्रयोग का गुण है, रसायन का नहीं, और चेताता है कि वही अभिक्रिया सीमित पानी वाले अजलीय विलायक में चलाई जाए तो द्वितीय कोटि का आचरण साफ़ दिखा देगी। साथ ले जाने योग्य दो परिणाम। पहला, वेग नियम क्रियाविधि का प्रमाण है और कुछ नहीं — घातें एक अंगुलिचिह्न हैं, और गुणांकों से बेमेल सिद्ध करता है कि अभिक्रिया एक से अधिक चरण लेती है। जिस अभिक्रिया में किसी अभिकारक के आगे 4 का गुणांक हो वह उसमें चतुर्थ कोटि की वस्तुतः कभी नहीं होती, क्योंकि चार पिंडों की एक साथ टक्कर लुप्तप्राय दुर्लभ है; क्रियाविधि को अनुक्रम होना ही पड़ेगा, और वेग नियम बताता है कि उनमें सबसे धीमा चरण कौन-सा है। दूसरा, छद्म-कोटि शर्तें जान-बूझकर अपनाई गई तकनीक हैं, संयोग नहीं: एक को छोड़कर सारे अभिकारकों से तंत्र को भर देना ही वह रास्ता है जिससे उलझा वेग नियम एक-एक चर करके खोला जाता है, और उसी कारण उसे पृथक्करण विधि कहते हैं। (दूसरा विकल्प काम के सन्निकटन को बिना अपवाद के नियम बना देता है; तीसरा उस भेद से इनकार करता है जिस पर अध्याय खड़ा है; चौथा वही आदत है जिसे तोड़ने के लिए प्रश्न है।)"
+        },
+        "mr": {
+          "stem": "अभिक्रिया 2NO + O₂ → 2NO₂ साठी वेग नियम k[NO]²[O₂] आढळतो, जो गुणकांशी जुळतो. विरळ द्रावणात CH₃COOC₂H₅ + H₂O → आम्ल + अल्कोहोल साठी वेग नियम k[एस्टर] आहे, जरी समीकरणात पाणी येते. दोन्ही समजावा, आणि कोटी व रेणुकता म्हणजे काय ते सांगा.",
+          "choices": [
+            "कोटी प्रायोगिक आहे आणि निरीक्षिलेले अवलंबित्व सांगते; रेणुकता एकाच प्राथमिक पायरीतले कण मोजते आणि केवळ लहान पूर्णांक असू शकते. पहिला वेग नियम गुणकांशी योगायोगाने जुळतो — कारण ती अभिक्रिया एकाच पायरीत घडते. एस्टरचे जलअपघटन नाही: पाणी प्रचंड अधिकतेत आहे, म्हणून अभिक्रिया चालताना त्याची संहती जेमतेम बदलते आणि त्याचा परिणाम k मध्ये सामावतो. अभिक्रिया प्रत्यक्षात द्वितीय कोटीची आहे पण या अटींत प्रथम कोटीसारखी वागते, आणि याला छद्म प्रथम कोटी म्हणतात. म्हणून गुणकांचे जुळणे एक-पायरी यंत्रणेचा पुरावा आहे, आणि विजोड त्याविरुद्ध पुरावा",
+            "एस्टरची अभिक्रिया प्रथम कोटीची आहे कारण पाणी द्रावक आहे आणि द्रावक वेग नियमांत कधीच येत नाहीत, आणि हा अपवादाविना सर्वसाधारण नियम आहे",
+            "कोटी आणि रेणुकता ही एकाच गोष्टीची दोन नावे आहेत, म्हणून एस्टरचा निकाल प्रायोगिक चूकच असावी",
+            "वेग नियम नेहमी संतुलित समीकरणावरून लिहिता येतो, आणि एस्टरची स्थिती केवळ यासाठी वेगळी की समीकरण बहुधा त्याच्या उत्प्रेरकाविना लिहिले जाते"
+          ],
+          "solution": "हा प्रश्न ज्या सवयीला मोडू पाहतो ती म्हणजे संतुलित समीकरणावरून वेग नियम वाचून टाकणे, आणि दोन्ही उदाहरणे यासाठी निवडली की एक त्या सवयीला रास्त ठरवताना दिसते आणि दुसरे तिला खोडते. आधी, दोन शब्द. रेणुकता म्हणजे त्या जातींची संख्या ज्यांना एकाच प्राथमिक पायरीत एकत्र यावे लागते — विघटनासाठी एक, टकरीसाठी दोन, दुर्मीळ एकाच वेळी तीन-पदार्थ भेटीसाठी तीन. ही अशा पायरीबद्दलची सैद्धांतिक मोजणी आहे जिला कोणी थेट पाहत नाही, आणि ती लहान धन पूर्णांक असलीच पाहिजे, कारण अर्धा रेणू आदळू शकत नाही. कोटी म्हणजे प्रयोगाने मोजलेल्या वेग नियमातील घातींची बेरीज. ती आलेख काय करतो याचे वर्णन आहे, ती शून्य, अपूर्णांकी वा ऋणही असू शकते, आणि ती कोणत्याही एका पायरीची नसून अख्ख्या अभिक्रियेची आहे. दोन्ही केवळ त्या अभिक्रियेसाठी जुळतात जी एकाच पायरीत घडते, आणि तेच जुळणे ही ती माहिती जिच्या मागे गतिकीतज्ज्ञ आहे. आता 2NO + O₂. मोजलेला नियम k[NO]²[O₂] तृतीय कोटीचा आहे आणि गुणकांशी जुळतो. हे अभिक्रिया एकाच त्रिरेणुक पायरीत घडते याच्याशी सुसंगत आहे, आणि या अभिक्रियेसाठी ढोबळमानाने तेच घडते असे मानले जाते. पण अनुमानाची दिशा लक्षात घ्या: प्रयोग आधी आला आणि यंत्रणा त्याच्याशी जुळवली गेली. मोजलेला नियम k[NO]² निघाला असता, तर कोणालाही गुणकांवर अडून बसण्याचा अधिकार नव्हता. आता एस्टर. लिहिल्यास अभिक्रिया एक एस्टर आणि एक पाणी खर्चते. वेग मोजा आणि तो एकट्या एस्टरवर अवलंबून आहे. मापात काहीही चूक नाही, आणि पाणी नक्कीच सामील आहे — ते उत्पादनांत पोहोचते. जे घडले ते हे की प्रयोग विरळ जलीय द्रावणात केला गेला, जिथे पाणी सुमारे 55 mol/L वर आहे आणि एस्टर कदाचित 0.01 mol/L वर. प्रत्येक एस्टर रेणूने अभिक्रिया केल्यावरही पाण्याची संहती एका टक्क्याच्या पन्नासाव्या भागाहूनही कमी घसरली आहे. जी राशी बदलत नाही ती अवलंबित्वाच्या रूपात दिसू शकत नाही, म्हणून [H₂O] स्थिरांकासारखे वागते आणि मुकाट्याने k मध्ये सामावते. खरा नियम वेग = k'[एस्टर][H₂O] आहे; जे मोजले जाते ते वेग = k[एस्टर] आहे जिथे k = k'[H₂O]. अभिक्रिया द्वितीय कोटीची आहे आणि या अटींत छद्म प्रथम कोटीची. 'छद्म' हा शब्द प्रामाणिक काम करत आहे: तो नोंदवतो की निरीक्षिलेली साधेपणा प्रयोगाचा गुणधर्म आहे, रसायनाचा नाही, आणि इशारा देतो की तीच अभिक्रिया मर्यादित पाणी असलेल्या अजलीय द्रावकात चालवली तर द्वितीय कोटीचे वर्तन स्पष्ट दाखवेल. सोबत न्यायचे दोन परिणाम. पहिला, वेग नियम हा यंत्रणेचा पुरावा आहे आणि दुसरे काही नाही — घाती हे बोटांचे ठसे आहेत, आणि गुणकांशी विजोड सिद्ध करतो की अभिक्रिया एकाहून अधिक पायऱ्या घेते. ज्या अभिक्रियेत एखाद्या अभिक्रियकासमोर 4 चा गुणक असेल ती त्यात चतुर्थ कोटीची प्रत्यक्षात कधीच नसते, कारण चार पदार्थांची एकाच वेळी टक्कर नाहीशी होण्याइतकी दुर्मीळ आहे; यंत्रणा क्रम असलीच पाहिजे, आणि वेग नियम सांगतो की त्यांतली सर्वांत सावकाश पायरी कोणती. दुसरा, छद्म-कोटी अटी या जाणीवपूर्वक स्वीकारलेले तंत्र आहे, योगायोग नव्हे: एक सोडून सर्व अभिक्रियकांनी संस्था भरून टाकणे हाच तो मार्ग ज्याने गुंतागुंतीचा वेग नियम एकेक चल करून उलगडला जातो, आणि त्याच कारणाने त्याला पृथक्करण पद्धत म्हणतात. (दुसरा पर्याय उपयुक्त अंदाजाला अपवादाविना नियम बनवतो; तिसरा ज्या भेदावर प्रकरण उभे आहे तोच नाकारतो; चौथा तीच सवय आहे जी मोडण्यासाठी प्रश्न आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student proposes that since a catalyst speeds up a reaction, adding one to a reversible reaction at equilibrium will push it towards the products and increase the yield. Assess this, and say precisely what a catalyst does and does not change.",
+      "choices": [
+        "It will not. A catalyst provides a lower-energy path, and that path is available in BOTH directions — the barrier from the products' side is lowered by exactly the same amount, so the forward and reverse rate constants rise by the same factor. Since K = k_forward/k_reverse, the equilibrium constant is unchanged and so is the yield. What the catalyst changes is the TIME taken to reach equilibrium, which may be the difference between a useful industrial process and one that takes a century. It cannot make a reaction with a positive ΔG happen at all",
+        "The student is right: a catalyst lowers the forward activation energy only, since it is designed to help the reaction go forwards, and the yield therefore rises",
+        "The catalyst leaves both the rate and the yield unchanged and only makes the reaction cleaner by suppressing side products",
+        "A catalyst does increase the yield, but only for exothermic reactions, because it removes the heat that would otherwise shift the equilibrium backwards"
+      ],
+      "answerIndex": 0,
+      "solution": "The proposal is reasonable and wrong, and seeing exactly where it fails is worth more than the conclusion. Draw the energy profile. Reactants sit at one level, products at another, and between them is a hill whose summit is the transition state. The forward activation energy is the climb from reactants to summit; the reverse is the climb from products to the same summit. Those two are not independent — their difference is fixed at ΔH, the enthalpy change, because the two ends of the profile do not move. Now add a catalyst. It does not tunnel through the hill; it opens a different route with a lower summit. But the summit is a single point on the diagram, and lowering it lowers the climb from BOTH ends by the same amount. If Ea forward falls by 20 kJ/mol, Ea reverse falls by 20 kJ/mol too. The reactants and the products are where they always were; only the pass between them has been dug out. The arithmetic follows immediately. By Arrhenius, k = A e^(−Ea/RT), so lowering both barriers by the same amount multiplies both rate constants by the same factor e^(+20000/RT). But the equilibrium constant is K = k_forward/k_reverse, and a common factor in numerator and denominator cancels. K is exactly what it was. So is the position of equilibrium, so is the yield, so is every equilibrium concentration. This is not a coincidence but a requirement. K is fixed by ΔG° through ΔG° = −RT ln K, and ΔG° is a difference between two states — reactants and products — which a catalyst does not touch. If a catalyst could shift K, one could build a machine that adds catalyst, extracts product, removes catalyst and repeats, generating free energy from nothing. The impossibility of that machine is the thermodynamic reason no such catalyst exists. What a catalyst does change is worth stating just as precisely, because it is enormous. It changes the TIME. The Haber process at 700 K without iron would reach the same equilibrium composition it reaches with iron, but not in any human timescale; industrially the difference between an hour and a millennium is the whole difference between a process and a curiosity. Enzymes routinely accelerate reactions by factors of 10¹⁰ or more without altering a single equilibrium constant in the cell. Two further boundaries are worth marking. First, a catalyst cannot make a non-spontaneous reaction go: if ΔG is positive, K is less than one and stays less than one, and no catalyst has ever been found that changes this — a catalyst shortens the wait for something that was going to happen, and there is no waiting for something that is not. Second, a catalyst that appears to improve yield in practice is almost always doing something else: it is a SELECTIVE catalyst, speeding one of several competing reactions more than the others, so more of the material ends up in the wanted product before the mixture is quenched. That is a kinetic effect on a system not at equilibrium, and it is why industrial chemists talk about selectivity as a separate property from activity. (The second option gives a catalyst a directionality that an energy profile forbids; the third denies the rate change that is a catalyst's entire purpose; the fourth invokes a heat-removal mechanism that would be a change of temperature, not of catalysis.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक विद्यार्थी सुझाव देता है कि चूँकि उत्प्रेरक अभिक्रिया तेज़ करता है, साम्य पर पड़ी उत्क्रमणीय अभिक्रिया में उसे जोड़ना उसे उत्पादों की ओर धकेलेगा और उपज बढ़ाएगा। इसका आकलन करो, और ठीक-ठीक बताओ कि उत्प्रेरक क्या बदलता है और क्या नहीं।",
+          "choices": [
+            "नहीं धकेलेगा। उत्प्रेरक कम ऊर्जा का पथ देता है, और वह पथ दोनों दिशाओं में उपलब्ध है — उत्पादों की ओर से अवरोध ठीक उतना ही नीचा होता है, अतः अग्र और प्रतीप वेग स्थिरांक उसी गुणक से बढ़ते हैं। चूँकि K = k_अग्र/k_प्रतीप, साम्य स्थिरांक अपरिवर्तित रहता है और उपज भी। उत्प्रेरक जो बदलता है वह साम्य तक पहुँचने में लगा समय है, जो काम के औद्योगिक प्रक्रम और सदी भर लेने वाले प्रक्रम का अंतर हो सकता है। धनात्मक ΔG वाली अभिक्रिया को वह घटित करा ही नहीं सकता",
+            "विद्यार्थी सही है: उत्प्रेरक केवल अग्र सक्रियण ऊर्जा घटाता है, क्योंकि वह अभिक्रिया को आगे बढ़ाने में मदद के लिए बना है, अतः उपज बढ़ती है",
+            "उत्प्रेरक वेग और उपज दोनों को अपरिवर्तित छोड़ता है और केवल पार्श्व उत्पादों को दबाकर अभिक्रिया को साफ़ बनाता है",
+            "उत्प्रेरक उपज बढ़ाता तो है, पर केवल ऊष्माक्षेपी अभिक्रियाओं के लिए, क्योंकि वह वह ऊष्मा हटा देता है जो अन्यथा साम्य को पीछे खिसका देती"
+          ],
+          "solution": "सुझाव उचित है और ग़लत है, और वह ठीक कहाँ विफल होता है यह देखना निष्कर्ष से अधिक मूल्यवान है। ऊर्जा-रूपरेखा खींचो। अभिकारक एक स्तर पर बैठे हैं, उत्पाद दूसरे पर, और उनके बीच वह पहाड़ी है जिसकी चोटी संक्रमण अवस्था है। अग्र सक्रियण ऊर्जा अभिकारकों से चोटी तक की चढ़ाई है; प्रतीप उसी चोटी तक उत्पादों से की चढ़ाई। ये दोनों स्वतंत्र नहीं — उनका अंतर ΔH पर नियत है, अर्थात् एन्थैल्पी परिवर्तन, क्योंकि रूपरेखा के दोनों सिरे हिलते नहीं। अब उत्प्रेरक जोड़ो। वह पहाड़ी में सुरंग नहीं बनाता; वह नीची चोटी वाला भिन्न रास्ता खोलता है। पर चोटी आरेख पर एक ही बिंदु है, और उसे नीचा करना दोनों सिरों से चढ़ाई को उतना ही नीचा कर देता है। यदि अग्र Ea 20 kJ/mol गिरे, तो प्रतीप Ea भी 20 kJ/mol गिरता है। अभिकारक और उत्पाद वहीं हैं जहाँ सदा थे; केवल उनके बीच का दर्रा खोदा गया है। अंकगणित तुरंत निकलता है। आरेनियस से k = A e^(−Ea/RT), अतः दोनों अवरोध उतने ही नीचे करने से दोनों वेग स्थिरांक उसी गुणक e^(+20000/RT) से गुणा हो जाते हैं। पर साम्य स्थिरांक K = k_अग्र/k_प्रतीप है, और अंश तथा हर का साझा गुणक कट जाता है। K ठीक वही है जो था। साम्य की स्थिति भी, उपज भी, और हर साम्य सांद्रता भी। यह संयोग नहीं बल्कि आवश्यकता है। K को ΔG° तय करता है ΔG° = −RT ln K के ज़रिए, और ΔG° दो अवस्थाओं का अंतर है — अभिकारक और उत्पाद — जिन्हें उत्प्रेरक छूता नहीं। यदि उत्प्रेरक K खिसका सकता, तो ऐसी मशीन बनाई जा सकती जो उत्प्रेरक जोड़े, उत्पाद निकाले, उत्प्रेरक हटाए और दोहराए, और शून्य से मुक्त ऊर्जा बनाती रहे। उस मशीन की असंभवता ही वह ऊष्मागतिक कारण है कि ऐसा कोई उत्प्रेरक नहीं। उत्प्रेरक जो बदलता है उसे भी उतनी ही ठीकाई से कहना चाहिए, क्योंकि वह विशाल है। वह समय बदलता है। 700 K पर लोहे के बिना हैबर प्रक्रम वही साम्य संघटन पाता जो लोहे के साथ पाता है, पर किसी मानवीय काल-पैमाने में नहीं; औद्योगिक रूप से एक घंटे और एक सहस्राब्दी का अंतर ही प्रक्रम और कौतुक का पूरा अंतर है। एंज़ाइम नियमित रूप से अभिक्रियाओं को 10¹⁰ या अधिक गुणकों से तेज़ करते हैं और कोशिका का एक भी साम्य स्थिरांक नहीं बदलते। दो और सीमाएँ अंकित करने योग्य हैं। पहली, उत्प्रेरक अस्वतःप्रवर्तित अभिक्रिया को चला नहीं सकता: यदि ΔG धनात्मक है, तो K एक से कम है और कम ही रहता है, और आज तक ऐसा कोई उत्प्रेरक नहीं मिला जो इसे बदले — उत्प्रेरक उस चीज़ की प्रतीक्षा छोटी करता है जो होने वाली थी, और जो होने वाली ही नहीं उसकी कोई प्रतीक्षा है ही नहीं। दूसरी, जो उत्प्रेरक व्यवहार में उपज सुधारता दिखता है वह लगभग सदा कुछ और कर रहा होता है: वह वरणात्मक उत्प्रेरक है, जो कई प्रतिस्पर्धी अभिक्रियाओं में से एक को बाक़ी से अधिक तेज़ करता है, अतः मिश्रण बुझाए जाने से पहले अधिक पदार्थ चाहे गए उत्पाद में पहुँच जाता है। वह साम्य पर न पड़े तंत्र पर बलगतिक प्रभाव है, और इसीलिए औद्योगिक रसायनज्ञ वरणात्मकता की बात सक्रियता से अलग गुण के रूप में करते हैं। (दूसरा विकल्प उत्प्रेरक को ऐसी दिशात्मकता देता है जिसे ऊर्जा-रूपरेखा मना करती है; तीसरा उसी वेग-परिवर्तन से इनकार करता है जो उत्प्रेरक का पूरा प्रयोजन है; चौथा ऊष्मा हटाने की ऐसी क्रियाविधि बुलाता है जो ताप का परिवर्तन होगी, उत्प्रेरण का नहीं।)"
+        },
+        "mr": {
+          "stem": "एक विद्यार्थी सुचवतो की उत्प्रेरक अभिक्रिया वेगवान करत असल्याने, समतोलावर असलेल्या उलट करता येणाऱ्या अभिक्रियेत तो जोडल्याने ती उत्पादनांकडे ढकलली जाईल आणि उत्पन्न वाढेल. याचे मूल्यमापन करा, आणि नेमके सांगा की उत्प्रेरक काय बदलतो आणि काय नाही.",
+          "choices": [
+            "ढकलणार नाही. उत्प्रेरक कमी ऊर्जेचा मार्ग देतो, आणि तो मार्ग दोन्ही दिशांनी उपलब्ध आहे — उत्पादनांच्या बाजूकडून अडसर नेमका तितकाच खाली येतो, म्हणून अग्र आणि प्रतीप वेग स्थिरांक त्याच पटीने वाढतात. K = k_अग्र/k_प्रतीप असल्याने, समतोल स्थिरांक अपरिवर्तित राहतो आणि उत्पन्नही. उत्प्रेरक जे बदलतो ते समतोलापर्यंत पोहोचायला लागलेला काळ, जो उपयुक्त औद्योगिक प्रक्रिया आणि शतकभर घेणारी प्रक्रिया यांतील फरक असू शकतो. धन ΔG असलेली अभिक्रिया तो घडवूच शकत नाही",
+            "विद्यार्थी बरोबर आहे: उत्प्रेरक केवळ अग्र सक्रियण ऊर्जा घटवतो, कारण तो अभिक्रिया पुढे नेण्यास मदत करण्यासाठी बनवलेला आहे, म्हणून उत्पन्न वाढते",
+            "उत्प्रेरक वेग आणि उत्पन्न दोन्ही अपरिवर्तित सोडतो आणि केवळ उप-उत्पादने दाबून अभिक्रिया स्वच्छ बनवतो",
+            "उत्प्रेरक उत्पन्न वाढवतो खरे, पण केवळ उष्माक्षेपी अभिक्रियांसाठी, कारण तो ती उष्णता काढून टाकतो जी अन्यथा समतोल मागे सरकवेल"
+          ],
+          "solution": "सूचना रास्त आहे आणि चूक आहे, आणि ती नेमकी कुठे अपयशी ठरते हे पाहणे निष्कर्षाहून अधिक मोलाचे आहे. ऊर्जा-आराखडा काढा. अभिक्रियक एका पातळीवर बसले आहेत, उत्पादने दुसऱ्या, आणि त्यांच्यामध्ये ती टेकडी आहे जिचे शिखर संक्रमण अवस्था आहे. अग्र सक्रियण ऊर्जा म्हणजे अभिक्रियकांपासून शिखरापर्यंतची चढाई; प्रतीप म्हणजे त्याच शिखरापर्यंत उत्पादनांपासूनची चढाई. ही दोन्ही स्वतंत्र नाहीत — त्यांचा फरक ΔH वर स्थिर आहे, म्हणजे एन्थॅल्पी बदल, कारण आराखड्याची दोन्ही टोके हलत नाहीत. आता उत्प्रेरक जोडा. तो टेकडीत बोगदा करत नाही; तो खालच्या शिखराचा वेगळा मार्ग उघडतो. पण शिखर हा आकृतीवरचा एकच बिंदू आहे, आणि तो खाली आणल्याने दोन्ही टोकांकडून चढाई तितकीच खाली येते. जर अग्र Ea 20 kJ/mol ने घसरला, तर प्रतीप Ea सुद्धा 20 kJ/mol ने घसरतो. अभिक्रियक आणि उत्पादने तिथेच आहेत जिथे नेहमी होती; केवळ त्यांच्यामधली खिंड खोदली गेली आहे. अंकगणित लगेच निघते. अरेनियसनुसार k = A e^(−Ea/RT), म्हणून दोन्ही अडसर तितकेच खाली आणल्याने दोन्ही वेग स्थिरांक त्याच गुणक e^(+20000/RT) ने गुणले जातात. पण समतोल स्थिरांक K = k_अग्र/k_प्रतीप आहे, आणि अंश व छेदातला समान गुणक कापला जातो. K नेमके तेच आहे जे होते. समतोलाची जागाही, उत्पन्नही, आणि प्रत्येक समतोल संहतीही. हा योगायोग नसून आवश्यकता आहे. K हे ΔG° ठरवते ΔG° = −RT ln K मार्गे, आणि ΔG° हा दोन अवस्थांचा फरक आहे — अभिक्रियक आणि उत्पादने — ज्यांना उत्प्रेरक स्पर्शत नाही. जर उत्प्रेरक K सरकवू शकला असता, तर असे यंत्र बांधता आले असते जे उत्प्रेरक जोडेल, उत्पादन काढेल, उत्प्रेरक काढेल आणि पुन्हा करेल, आणि शून्यातून मुक्त ऊर्जा घडवत राहील. त्या यंत्राची अशक्यता हेच ते उष्मागतिक कारण की असा कोणताही उत्प्रेरक नाही. उत्प्रेरक जे बदलतो तेही तितक्याच नेमकेपणाने सांगायला हवे, कारण ते प्रचंड आहे. तो काळ बदलतो. 700 K वर लोखंडाविना हेबर प्रक्रिया तेच समतोल संघटन गाठेल जे लोखंडासह गाठते, पण कोणत्याही मानवी कालमापात नाही; औद्योगिकदृष्ट्या एक तास आणि एक सहस्रक यांतील फरक हाच प्रक्रिया आणि कुतूहल यांतील अख्खा फरक. विकरे नियमितपणे अभिक्रिया 10¹⁰ वा अधिक पटींनी वेगवान करतात आणि पेशीतला एकही समतोल स्थिरांक बदलत नाहीत. आणखी दोन सीमा नोंदवण्याजोग्या आहेत. पहिली, उत्प्रेरक अस्वयंस्फूर्त अभिक्रिया चालवू शकत नाही: जर ΔG धन असेल, तर K एकाहून कमी आहे आणि कमीच राहतो, आणि आजवर असा कोणताही उत्प्रेरक सापडलेला नाही जो हे बदलेल — उत्प्रेरक त्या गोष्टीची प्रतीक्षा लहान करतो जी होणार होती, आणि जी होणारच नाही तिची कोणतीही प्रतीक्षा नाहीच. दुसरी, जो उत्प्रेरक व्यवहारात उत्पन्न सुधारताना दिसतो तो जवळपास नेहमी दुसरे काहीतरी करत असतो: तो निवडक उत्प्रेरक आहे, जो अनेक स्पर्धी अभिक्रियांपैकी एकीला बाकीच्यांहून अधिक वेगवान करतो, म्हणून मिश्रण विझवण्याआधी अधिक पदार्थ हव्या असलेल्या उत्पादनात पोहोचतो. तो समतोलावर नसलेल्या संस्थेवरचा गतिक परिणाम आहे, आणि म्हणूनच औद्योगिक रसायनशास्त्रज्ञ निवडकतेची चर्चा क्रियाशीलतेहून वेगळा गुणधर्म म्हणून करतात. (दुसरा पर्याय उत्प्रेरकाला अशी दिशात्मकता देतो जिला ऊर्जा-आराखडा वर्ज्य करतो; तिसरा तोच वेग-बदल नाकारतो जो उत्प्रेरकाचा अख्खा हेतू आहे; चौथा उष्णता काढण्याची अशी यंत्रणा बोलावतो जी तापमानाचा बदल ठरेल, उत्प्रेरणाचा नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A first-order reaction has a rate constant of 0.0231 min⁻¹. What is its half-life, in minutes? Take ln 2 = 0.693.",
+      "choices": [
+        "300",
+        "3",
+        "0.0231",
+        "30"
+      ],
+      "answerIndex": 3,
+      "solution": "t½ = 0.693/k = 0.693/0.0231 = 30 min. Note what the answer does NOT contain: the starting concentration. For first order alone the half-life is independent of how much you began with, which is why a first-order plot can be identified from the data without knowing the initial amount. (0.0231 quotes k back as a time.)",
+      "checkExpr": "0.693/0.0231",
+      "translations": {
+        "hi": {
+          "stem": "किसी प्रथम कोटि अभिक्रिया का वेग स्थिरांक 0.0231 min⁻¹ है। उसकी अर्धायु, मिनट में, क्या है? ln 2 = 0.693 लो।",
+          "choices": [
+            "300",
+            "3",
+            "0.0231",
+            "30"
+          ],
+          "solution": "t½ = 0.693/k = 0.693/0.0231 = 30 min. ध्यान दो कि उत्तर में क्या नहीं है: आरंभिक सांद्रता। केवल प्रथम कोटि के लिए अर्धायु इस बात से स्वतंत्र है कि तुमने कितने से शुरू किया, इसीलिए प्रथम कोटि का ग्राफ़ आरंभिक मात्रा जाने बिना आँकड़ों से पहचाना जा सकता है। (0.0231 k को ही समय बताकर लौटा देता है।)"
+        },
+        "mr": {
+          "stem": "एका प्रथम कोटी अभिक्रियेचा वेग स्थिरांक 0.0231 min⁻¹ आहे. तिचे अर्धायुष्य, मिनिटांत, किती? ln 2 = 0.693 घ्या.",
+          "choices": [
+            "300",
+            "3",
+            "0.0231",
+            "30"
+          ],
+          "solution": "t½ = 0.693/k = 0.693/0.0231 = 30 min. उत्तरात काय नाही ते लक्षात घ्या: प्रारंभिक संहती. केवळ प्रथम कोटीसाठी अर्धायुष्य तुम्ही किती पासून सुरू केले यापासून स्वतंत्र आहे, म्हणूनच प्रथम कोटीचा आलेख प्रारंभिक प्रमाण न जाणता माहितीवरून ओळखता येतो. (0.0231 k लाच काळ म्हणून परत सांगते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A reaction has the experimentally determined rate law rate = k[A][B]². What is its overall order?",
+      "choices": [
+        "4",
+        "2",
+        "1",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "Overall order is the sum of the exponents: 1 + 2 = 3. The reaction is first order in A and second order in B, and the two facts together make it third order overall. Note that this says nothing about the coefficients in the balanced equation, which are a separate matter entirely. (2 counts only the largest exponent.)",
+      "checkExpr": "1+2",
+      "translations": {
+        "hi": {
+          "stem": "किसी अभिक्रिया का प्रयोग से तय वेग नियम वेग = k[A][B]² है। उसकी समग्र कोटि क्या है?",
+          "choices": [
+            "4",
+            "2",
+            "1",
+            "3"
+          ],
+          "solution": "समग्र कोटि घातों का योग है: 1 + 2 = 3. अभिक्रिया A में प्रथम कोटि की और B में द्वितीय कोटि की है, और दोनों तथ्य मिलकर उसे समग्र रूप से तृतीय कोटि का बनाते हैं। ध्यान दो कि यह संतुलित समीकरण के गुणांकों के बारे में कुछ नहीं कहता, जो बिलकुल अलग मामला हैं। (2 केवल सबसे बड़ी घात गिन लेता है।)"
+        },
+        "mr": {
+          "stem": "एका अभिक्रियेचा प्रयोगाने ठरलेला वेग नियम वेग = k[A][B]² आहे. तिची एकूण कोटी किती?",
+          "choices": [
+            "4",
+            "2",
+            "1",
+            "3"
+          ],
+          "solution": "एकूण कोटी म्हणजे घातींची बेरीज: 1 + 2 = 3. अभिक्रिया A मध्ये प्रथम कोटीची आणि B मध्ये द्वितीय कोटीची आहे, आणि दोन्ही सत्ये मिळून तिला एकूण तृतीय कोटीची बनवतात. लक्षात घ्या की हे संतुलित समीकरणाच्या गुणकांबद्दल काहीही सांगत नाही, जे पूर्णपणे वेगळे प्रकरण आहे. (2 केवळ सर्वांत मोठी घात मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Doubling the concentration of A quadruples the rate, with everything else held constant. What is the order of the reaction with respect to A?",
+      "choices": [
+        "2",
+        "0.5",
+        "4",
+        "1"
+      ],
+      "answerIndex": 0,
+      "solution": "If doubling gives 2ⁿ = 4, then n = 2 — that is, 4/2 = 2. Changing one concentration at a time and watching what the rate does is exactly how orders are measured, and it is the only way: no amount of staring at the balanced equation would have given this. (4 quotes the rate factor as the order.)",
+      "checkExpr": "4/2",
+      "translations": {
+        "hi": {
+          "stem": "बाक़ी सब स्थिर रखते हुए A की सांद्रता दुगुनी करने पर वेग चौगुना हो जाता है। A के सापेक्ष अभिक्रिया की कोटि क्या है?",
+          "choices": [
+            "2",
+            "0.5",
+            "4",
+            "1"
+          ],
+          "solution": "यदि दुगुना करने पर 2ⁿ = 4, तो n = 2 — अर्थात् 4/2 = 2. एक बार में एक सांद्रता बदलना और देखना कि वेग क्या करता है, ठीक इसी तरह कोटियाँ नापी जाती हैं, और यही एकमात्र रास्ता है: संतुलित समीकरण को कितना भी घूरने से यह नहीं मिलता। (4 वेग के गुणक को ही कोटि बता देता है।)"
+        },
+        "mr": {
+          "stem": "बाकी सर्व स्थिर ठेवून A ची संहती दुप्पट केल्यावर वेग चौपट होतो. A च्या सापेक्ष अभिक्रियेची कोटी किती?",
+          "choices": [
+            "2",
+            "0.5",
+            "4",
+            "1"
+          ],
+          "solution": "जर दुप्पट केल्यावर 2ⁿ = 4, तर n = 2 — म्हणजे 4/2 = 2. एका वेळी एक संहती बदलणे आणि वेग काय करतो ते पाहणे, नेमक्या याच प्रकारे कोट्या मोजल्या जातात, आणि हाच एकमेव मार्ग: संतुलित समीकरणाकडे कितीही टक लावून पाहून हे मिळाले नसते. (4 वेगाचा गुणकच कोटी सांगते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A first-order reaction is 75 per cent complete in 20 minutes. What is its half-life, in minutes?",
+      "choices": [
+        "10",
+        "5",
+        "15",
+        "40"
+      ],
+      "answerIndex": 0,
+      "solution": "Seventy-five per cent complete means a quarter remains, which is two halvings, so 20 minutes is two half-lives and each is 20/2 = 10 min. Counting in halvings rather than in percentages is much the quicker route: 50 per cent is one, 75 is two, 87.5 is three. (15 treats the decay as linear in time.)",
+      "checkExpr": "20/2",
+      "translations": {
+        "hi": {
+          "stem": "कोई प्रथम कोटि अभिक्रिया 20 मिनट में 75 प्रतिशत पूरी हो जाती है। उसकी अर्धायु, मिनट में, क्या है?",
+          "choices": [
+            "10",
+            "5",
+            "15",
+            "40"
+          ],
+          "solution": "पचहत्तर प्रतिशत पूरी होने का अर्थ है चौथाई बचा, जो दो बार आधा होना है, अतः 20 मिनट दो अर्धायुएँ हैं और हर एक 20/2 = 10 min. प्रतिशतों के बजाय आधे होने में गिनना कहीं तेज़ रास्ता है: 50 प्रतिशत एक है, 75 दो, 87.5 तीन। (15 क्षय को समय में रैखिक मान लेता है।)"
+        },
+        "mr": {
+          "stem": "एक प्रथम कोटी अभिक्रिया 20 मिनिटांत 75 टक्के पूर्ण होते. तिचे अर्धायुष्य, मिनिटांत, किती?",
+          "choices": [
+            "10",
+            "5",
+            "15",
+            "40"
+          ],
+          "solution": "पंचाहत्तर टक्के पूर्ण होणे म्हणजे चतुर्थांश उरला, जे दोनदा निम्मे होणे आहे, म्हणून 20 मिनिटे ही दोन अर्धायुष्ये आहेत आणि प्रत्येक 20/2 = 10 min. टक्केवारीऐवजी निम्मे होण्यात मोजणे कितीतरी जलद मार्ग: 50 टक्के एक आहे, 75 दोन, 87.5 तीन. (15 क्षयाला काळात रेषीय मानते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A first-order reaction has k = 0.05 s⁻¹. What is the rate, in mol L⁻¹ s⁻¹, when the concentration is 2 mol/L?",
+      "choices": [
+        "40",
+        "0.025",
+        "0.2",
+        "0.1"
+      ],
+      "answerIndex": 3,
+      "solution": "Rate = k[A] = 0.05 × 2 = 0.1 mol L⁻¹ s⁻¹. Notice that the rate falls as the reaction proceeds and the concentration drops, while k does not — the rate is a moving quantity and the rate constant is the fixed one, and confusing them is the commonest error in this chapter. (0.025 divides rather than multiplying.)",
+      "checkExpr": "0.05*2",
+      "translations": {
+        "hi": {
+          "stem": "किसी प्रथम कोटि अभिक्रिया का k = 0.05 s⁻¹ है। सांद्रता 2 mol/L होने पर वेग, mol L⁻¹ s⁻¹ में, क्या है?",
+          "choices": [
+            "40",
+            "0.025",
+            "0.2",
+            "0.1"
+          ],
+          "solution": "वेग = k[A] = 0.05 × 2 = 0.1 mol L⁻¹ s⁻¹. ध्यान दो कि अभिक्रिया चलते और सांद्रता गिरते हुए वेग घटता है, जबकि k नहीं — वेग चलती राशि है और वेग स्थिरांक स्थिर, और उन्हें गड्डमड्ड करना इस अध्याय की सबसे आम भूल है। (0.025 गुणा करने के बजाय भाग दे देता है।)"
+        },
+        "mr": {
+          "stem": "एका प्रथम कोटी अभिक्रियेचा k = 0.05 s⁻¹ आहे. संहती 2 mol/L असताना वेग, mol L⁻¹ s⁻¹ मध्ये, किती?",
+          "choices": [
+            "40",
+            "0.025",
+            "0.2",
+            "0.1"
+          ],
+          "solution": "वेग = k[A] = 0.05 × 2 = 0.1 mol L⁻¹ s⁻¹. लक्षात घ्या की अभिक्रिया चालताना आणि संहती घसरताना वेग घटतो, तर k नाही — वेग ही हलती राशी आहे आणि वेग स्थिरांक स्थिर, आणि त्यांची गल्लत करणे ही या प्रकरणातली सर्वांत सामान्य चूक. (0.025 गुणण्याऐवजी भागते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A reaction's rate constant doubles for every 10 K rise in temperature. By what factor does it change for a rise of 30 K?",
+      "choices": [
+        "3",
+        "6",
+        "4",
+        "8"
+      ],
+      "answerIndex": 3,
+      "solution": "Three ten-degree steps multiply rather than add: 2 × 2 × 2 = 8. That a modest warming can make a reaction eight times faster while the molecules speed up by only a few per cent is the point of the Arrhenius exponential — it is not the average speed that matters but the tail of the distribution above the activation energy. (6 adds the doublings instead of multiplying them.)",
+      "checkExpr": "2*2*2",
+      "translations": {
+        "hi": {
+          "stem": "किसी अभिक्रिया का वेग स्थिरांक ताप में हर 10 K की वृद्धि पर दुगुना हो जाता है। 30 K की वृद्धि पर वह कितने गुणक से बदलता है?",
+          "choices": [
+            "3",
+            "6",
+            "4",
+            "8"
+          ],
+          "solution": "दस-अंश के तीन क़दम जुड़ते नहीं, गुणा होते हैं: 2 × 2 × 2 = 8. मामूली गर्माहट अभिक्रिया को आठ गुना तेज़ कर सकती है जबकि अणु केवल कुछ प्रतिशत तेज़ होते हैं — यही आरेनियस चरघातांक का मर्म है: मायने औसत चाल नहीं बल्कि सक्रियण ऊर्जा से ऊपर वितरण की पूँछ रखती है। (6 दुगुने होने को गुणा करने के बजाय जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "एका अभिक्रियेचा वेग स्थिरांक तापमानातील प्रत्येक 10 K वाढीवर दुप्पट होतो. 30 K च्या वाढीवर तो किती पटीने बदलतो?",
+          "choices": [
+            "3",
+            "6",
+            "4",
+            "8"
+          ],
+          "solution": "दहा-अंशांची तीन पावले जुळत नाहीत, गुणली जातात: 2 × 2 × 2 = 8. माफक ऊब अभिक्रिया आठपट वेगवान करू शकते तर रेणू केवळ काही टक्के वेगवान होतात — हाच अरेनियस घातांकाचा गाभा: महत्त्वाची सरासरी गती नसून सक्रियण ऊर्जेवरची वितरणाची शेपूट. (6 दुप्पट होणे गुणण्याऐवजी जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A first-order reaction has a half-life of 5 minutes. What percentage of the reactant remains after 15 minutes?",
+      "choices": [
+        "12.5",
+        "6.25",
+        "50",
+        "25"
+      ],
+      "answerIndex": 0,
+      "solution": "Fifteen minutes is three half-lives, so the survivor is 100/2³ = 100/8 = 12.5 per cent. Follow it step by step: 100 → 50 → 25 → 12.5. The reactant never reaches zero exactly, because each interval removes a fraction rather than an amount, which is why a first-order reaction is quoted as complete after some agreed number of half-lives rather than at a definite time. (25 stops one half-life short.)",
+      "checkExpr": "100/8",
+      "translations": {
+        "hi": {
+          "stem": "किसी प्रथम कोटि अभिक्रिया की अर्धायु 5 मिनट है। 15 मिनट बाद अभिकारक का कितना प्रतिशत बचता है?",
+          "choices": [
+            "12.5",
+            "6.25",
+            "50",
+            "25"
+          ],
+          "solution": "पंद्रह मिनट तीन अर्धायुएँ हैं, अतः बचा 100/2³ = 100/8 = 12.5 प्रतिशत है। क़दम-दर-क़दम पीछा करो: 100 → 50 → 25 → 12.5. अभिकारक ठीक शून्य तक कभी नहीं पहुँचता, क्योंकि हर अंतराल मात्रा के बजाय एक अंश हटाता है, इसीलिए प्रथम कोटि अभिक्रिया को किसी निश्चित समय पर नहीं बल्कि सहमत अर्धायुओं की संख्या के बाद पूरी बताया जाता है। (25 एक अर्धायु पहले रुक जाता है।)"
+        },
+        "mr": {
+          "stem": "एका प्रथम कोटी अभिक्रियेचे अर्धायुष्य 5 मिनिटे आहे. 15 मिनिटांनंतर अभिक्रियकाचा किती टक्के उरतो?",
+          "choices": [
+            "12.5",
+            "6.25",
+            "50",
+            "25"
+          ],
+          "solution": "पंधरा मिनिटे म्हणजे तीन अर्धायुष्ये, म्हणून उरलेला 100/2³ = 100/8 = 12.5 टक्के आहे. पावलापावलाने मागोवा घ्या: 100 → 50 → 25 → 12.5. अभिक्रियक नेमक्या शून्यापर्यंत कधीच पोहोचत नाही, कारण प्रत्येक अंतराल प्रमाणाऐवजी एक अंश काढते, म्हणूनच प्रथम कोटी अभिक्रिया कोणत्याही ठराविक वेळेवर नव्हे तर संमत अर्धायुष्यांच्या संख्येनंतर पूर्ण सांगितली जाते. (25 एक अर्धायुष्य आधी थांबते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A reaction has a forward activation energy of 50 kJ/mol and an enthalpy change of −30 kJ/mol. What is the activation energy of the reverse reaction, in kJ/mol?",
+      "choices": [
+        "80",
+        "30",
+        "50",
+        "20"
+      ],
+      "answerIndex": 0,
+      "solution": "The products lie 30 kJ/mol below the reactants, and the summit is 50 above the reactants, so the climb from the products is 50 + 30 = 80 kJ/mol. Drawing the profile makes it obvious and is worth the ten seconds: the reverse barrier of an exothermic reaction is always the larger, which is why exothermic reactions are usually the ones that go. (20 subtracts instead of adding.)",
+      "checkExpr": "50+30",
+      "translations": {
+        "hi": {
+          "stem": "किसी अभिक्रिया की अग्र सक्रियण ऊर्जा 50 kJ/mol और एन्थैल्पी परिवर्तन −30 kJ/mol है। प्रतीप अभिक्रिया की सक्रियण ऊर्जा, kJ/mol में, क्या है?",
+          "choices": [
+            "80",
+            "30",
+            "50",
+            "20"
+          ],
+          "solution": "उत्पाद अभिकारकों से 30 kJ/mol नीचे पड़े हैं, और चोटी अभिकारकों से 50 ऊपर, अतः उत्पादों से चढ़ाई 50 + 30 = 80 kJ/mol है। रूपरेखा खींचना इसे स्पष्ट कर देता है और वे दस सेकंड लगाने योग्य हैं: ऊष्माक्षेपी अभिक्रिया का प्रतीप अवरोध सदा बड़ा होता है, इसीलिए प्रायः ऊष्माक्षेपी अभिक्रियाएँ ही चलती हैं। (20 जोड़ने के बजाय घटा देता है।)"
+        },
+        "mr": {
+          "stem": "एका अभिक्रियेची अग्र सक्रियण ऊर्जा 50 kJ/mol आणि एन्थॅल्पी बदल −30 kJ/mol आहे. प्रतीप अभिक्रियेची सक्रियण ऊर्जा, kJ/mol मध्ये, किती?",
+          "choices": [
+            "80",
+            "30",
+            "50",
+            "20"
+          ],
+          "solution": "उत्पादने अभिक्रियकांहून 30 kJ/mol खाली पडली आहेत, आणि शिखर अभिक्रियकांहून 50 वर, म्हणून उत्पादनांपासून चढाई 50 + 30 = 80 kJ/mol आहे. आराखडा काढणे हे स्पष्ट करते आणि ती दहा सेकंदे घालवण्याजोगी आहेत: उष्माक्षेपी अभिक्रियेचा प्रतीप अडसर नेहमी मोठा असतो, म्हणूनच बहुधा उष्माक्षेपी अभिक्रियाच चालतात. (20 जोडण्याऐवजी वजा करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A zero-order reaction has k = 0.02 mol L⁻¹ s⁻¹ and an initial concentration of 1 mol/L. After how many seconds is the reactant completely used up?",
+      "choices": [
+        "50",
+        "25",
+        "0.02",
+        "100"
+      ],
+      "answerIndex": 0,
+      "solution": "A zero-order reaction proceeds at a constant rate regardless of concentration, so the time is simply amount divided by rate: 1/0.02 = 50 s. The contrast with first order is worth dwelling on. A first-order reaction never finishes, because each interval removes a fraction; a zero-order one finishes at a definite moment, because it removes a fixed amount per second right up to the last molecule. Zero order usually means something else is rate-limiting — a saturated enzyme, a catalyst surface with every site occupied — so the reactant's concentration has stopped mattering. (100 doubles the answer.)",
+      "checkExpr": "1/0.02",
+      "translations": {
+        "hi": {
+          "stem": "किसी शून्य कोटि अभिक्रिया का k = 0.02 mol L⁻¹ s⁻¹ है और आरंभिक सांद्रता 1 mol/L. कितने सेकंड बाद अभिकारक पूरी तरह खप जाता है?",
+          "choices": [
+            "50",
+            "25",
+            "0.02",
+            "100"
+          ],
+          "solution": "शून्य कोटि अभिक्रिया सांद्रता की परवाह किए बिना अचर वेग से चलती है, अतः समय बस मात्रा बटा वेग है: 1/0.02 = 50 s. प्रथम कोटि से विरोधाभास पर ठहरना चाहिए। प्रथम कोटि अभिक्रिया कभी ख़त्म नहीं होती, क्योंकि हर अंतराल एक अंश हटाता है; शून्य कोटि वाली निश्चित क्षण पर ख़त्म होती है, क्योंकि वह अंतिम अणु तक प्रति सेकंड नियत मात्रा हटाती है। शून्य कोटि प्रायः यह कहती है कि वेग कोई और चीज़ सीमित कर रही है — संतृप्त एंज़ाइम, ऐसी उत्प्रेरक सतह जिसका हर स्थल भरा है — अतः अभिकारक की सांद्रता मायने रखना बंद कर चुकी है। (100 उत्तर दुगुना कर देता है।)"
+        },
+        "mr": {
+          "stem": "एका शून्य कोटी अभिक्रियेचा k = 0.02 mol L⁻¹ s⁻¹ आहे आणि प्रारंभिक संहती 1 mol/L. किती सेकंदांनंतर अभिक्रियक पूर्णपणे खर्च होतो?",
+          "choices": [
+            "50",
+            "25",
+            "0.02",
+            "100"
+          ],
+          "solution": "शून्य कोटी अभिक्रिया संहतीची पर्वा न करता अचल वेगाने चालते, म्हणून काळ म्हणजे फक्त प्रमाण भागिले वेग: 1/0.02 = 50 s. प्रथम कोटीशी विरोधाभासावर थांबण्याजोगे आहे. प्रथम कोटी अभिक्रिया कधीच संपत नाही, कारण प्रत्येक अंतराल एक अंश काढते; शून्य कोटीची ठराविक क्षणी संपते, कारण ती शेवटच्या रेणूपर्यंत दर सेकंदाला ठराविक प्रमाण काढते. शून्य कोटी बहुधा हे सांगते की वेग दुसरे काहीतरी मर्यादित करत आहे — संपृक्त विकर, अशी उत्प्रेरक पृष्ठभाग जिचे प्रत्येक स्थळ भरलेले आहे — म्हणून अभिक्रियकाची संहती महत्त्वाची असणे थांबले आहे. (100 उत्तर दुप्पट करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A catalyst lowers the forward activation energy of a reaction from 80 to 60 kJ/mol. By how much, in kJ/mol, does it lower the activation energy of the reverse reaction?",
+      "choices": [
+        "60",
+        "0",
+        "40",
+        "20"
+      ],
+      "answerIndex": 3,
+      "solution": "By exactly the same amount, 80 − 60 = 20 kJ/mol. The reason is geometric rather than chemical: the reactants and the products sit at fixed energies and the catalyst lowers only the summit between them, so the climb from EITHER side shortens by the height the summit dropped. That single fact is why a catalyst cannot shift an equilibrium. Both rate constants rise by the same factor through the Arrhenius expression, and since K = k_forward/k_reverse the common factor cancels — the equilibrium constant, the position of equilibrium and the yield are all untouched. What has changed is only how long the mixture takes to get there, which for the Haber process is the difference between an industry and a curiosity. (0 assumes the catalyst helps only the forward direction, which would let it manufacture free energy.)",
+      "checkExpr": "80-60",
+      "translations": {
+        "hi": {
+          "stem": "एक उत्प्रेरक किसी अभिक्रिया की अग्र सक्रियण ऊर्जा 80 से घटाकर 60 kJ/mol कर देता है। वह प्रतीप अभिक्रिया की सक्रियण ऊर्जा कितनी, kJ/mol में, घटाता है?",
+          "choices": [
+            "60",
+            "0",
+            "40",
+            "20"
+          ],
+          "solution": "ठीक उतनी ही, 80 − 60 = 20 kJ/mol. कारण रासायनिक नहीं, ज्यामितीय है: अभिकारक और उत्पाद नियत ऊर्जाओं पर बैठे हैं और उत्प्रेरक केवल उनके बीच की चोटी नीची करता है, अतः किसी भी ओर से चढ़ाई उतनी ही छोटी हो जाती है जितनी चोटी गिरी। वही एक तथ्य कारण है कि उत्प्रेरक साम्य नहीं खिसका सकता। आरेनियस व्यंजक से दोनों वेग स्थिरांक उसी गुणक से बढ़ते हैं, और चूँकि K = k_अग्र/k_प्रतीप, साझा गुणक कट जाता है — साम्य स्थिरांक, साम्य की स्थिति और उपज सब अछूते हैं। जो बदला है वह केवल यह कि मिश्रण को वहाँ पहुँचने में कितना समय लगता है, और हैबर प्रक्रम के लिए वही उद्योग और कौतुक का अंतर है। (0 मान लेता है कि उत्प्रेरक केवल अग्र दिशा में मदद करता है, जिससे वह मुक्त ऊर्जा बना सकता।)"
+        },
+        "mr": {
+          "stem": "एक उत्प्रेरक एका अभिक्रियेची अग्र सक्रियण ऊर्जा 80 वरून घटवून 60 kJ/mol करतो. तो प्रतीप अभिक्रियेची सक्रियण ऊर्जा किती, kJ/mol ने, घटवतो?",
+          "choices": [
+            "60",
+            "0",
+            "40",
+            "20"
+          ],
+          "solution": "नेमकी तितकीच, 80 − 60 = 20 kJ/mol. कारण रासायनिक नसून भूमितीय आहे: अभिक्रियक आणि उत्पादने स्थिर ऊर्जांवर बसली आहेत आणि उत्प्रेरक केवळ त्यांच्यामधले शिखर खाली आणतो, म्हणून कोणत्याही बाजूकडून चढाई तितकीच लहान होते जितके शिखर घसरले. तेच एक सत्य कारण आहे की उत्प्रेरक समतोल सरकवू शकत नाही. अरेनियस पदावलीने दोन्ही वेग स्थिरांक त्याच पटीने वाढतात, आणि K = k_अग्र/k_प्रतीप असल्याने समान गुणक कापला जातो — समतोल स्थिरांक, समतोलाची जागा आणि उत्पन्न सर्व अस्पर्श आहेत. जे बदलले ते केवळ हे की मिश्रणाला तिथे पोहोचायला किती वेळ लागतो, आणि हेबर प्रक्रियेसाठी तोच उद्योग आणि कुतूहल यांतील फरक. (0 गृहीत धरते की उत्प्रेरक केवळ अग्र दिशेला मदत करतो, ज्याने तो मुक्त ऊर्जा घडवू शकला असता.)"
+        }
+      }
+    }
+  ]
+}

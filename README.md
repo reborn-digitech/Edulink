@@ -2514,8 +2514,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 352
-  chapters / 6,254 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 354
+  chapters / 6,310 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2821,8 +2821,28 @@ navigation" means the actual list rather than one somebody maintained by hand.
   experiment can reach by arranging three measurable ones so the unreachable
   parts cancel. **One more `numberIn` catch**: the answer rendered "1.1 V" while
   the solution wrote "1.10 V", and the token-boundary check correctly refused to
-  match — fixed in the prose, warnings back to 34. Suite re-pointed and green:
-  87 files, 1485 tests.
+  match — fixed in the prose, warnings back to 34. **Two more Chemistry chapters
+  followed** — 56 questions: Chemical Kinetics and the d- and f-Block Elements.
+  Kinetics is the half of chemistry thermodynamics leaves out — a diamond is
+  bound to become graphite and does not, because a free energy change says
+  nothing about how long. The L5 breaks the habit of reading a rate law off a
+  balanced equation: 2NO + O₂ happens to match its coefficients because it goes
+  in one step, while ester hydrolysis is genuinely second order and only *looks*
+  first order because water is in fiftyfold excess — pseudo-order is a property
+  of the experiment, not the chemistry. The L6 is the catalyst that cannot shift
+  an equilibrium: it lowers the summit, and a summit is one point, so both
+  climbs shorten equally, both rate constants rise by the same factor, and
+  K = k_f/k_r cancels it. The d-block chapter answers "why does manganese manage
+  +2 to +7 and sodium only +1" — not by counting electrons (caesium has
+  fifty-five and still only manages +1) but by how much the NEXT one costs:
+  sodium has a cliff after the first, manganese a slope. And zirconium and
+  hafnium are the same size a period apart because fourteen lanthanoids sit
+  between them, each contracting the atom slightly because 4f shields badly —
+  fourteen small deficits that restructured the periodic table's lower half, and
+  the reason hafnium was the last stable element found. **One more `numberIn`
+  catch**: `(n−1)d` in an answer parses as −1; reworded to "the inner d
+  orbitals", warnings back to 34. Suite re-pointed and green: 87 files, 1485
+  tests.
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)
