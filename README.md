@@ -2514,8 +2514,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 322
-  chapters / 5,611 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 327
+  chapters / 5,681 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2665,7 +2665,21 @@ navigation" means the actual list rather than one somebody maintained by hand.
   a pupil must be able to defend — and taxonomy, anatomy, the plant regulators
   and the whole endocrine chapter have none that is not invented. Chapter 19's
   absence from `G11_BIOLOGY_NUMERIC` is written up in the file as a claim
-  rather than a gap. Class 11 has all of Maths left, and Class 12 after it.
+  rather than a gap. **Class 11 Maths then opened** in `g11-maths.ts` — five
+  chapters, 70 questions: Sets, Relations and Functions, Trigonometric
+  Functions, Complex Numbers and Quadratic Equations, and Linear Inequalities.
+  It is the one Class 11 family that arrives fully built like Classes 3–10
+  rather than as a conceptual ladder with problems bolted on, because a set, a
+  relation and a discriminant are already the things being counted. What is new
+  at this level is a question whose answer is a fact about a STRUCTURE rather
+  than a measurement — how many subsets, how many relations from A to A, how
+  many one-one functions exist and why none can exist the other way round — and
+  those are still provable, so they carry a `checkExpr` like everything else.
+  The distractors are the real slips: the union counted twice, the proper
+  subset that wrongly drops the empty set, the discriminant taken as b² − 4c,
+  the greatest integer less than 4 given as 4, tan(A + B) with a plus in the
+  denominator, and the modulus of 3 + 4i added to 7 instead of squared to 5.
+  Nine chapters of Class 11 Maths remain, and Class 12 after them.
   Suite re-pointed and green: 87 files, 1485 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**

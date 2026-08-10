@@ -1,0 +1,513 @@
+{
+  "slug": "maths-11-complex-numbers",
+  "subject": "MATHS",
+  "classLevel": 11,
+  "chapter": "Chapter 4 — Complex Numbers and Quadratic Equations",
+  "name": "Complex Numbers and Quadratic Equations",
+  "summary": "One invented number closes a gap the real line could not: powers of i that cycle in fours, a modulus that is a distance and therefore never negative, a conjugate that clears the imaginary part by multiplication, and a discriminant that stops predicting no roots and starts predicting two.",
+  "position": 4,
+  "translations": {
+    "hi": {
+      "name": "सम्मिश्र संख्याएँ तथा द्विघात समीकरण",
+      "summary": "एक गढ़ी हुई संख्या वह खाई पाट देती है जो वास्तविक रेखा नहीं पाट सकी: i की घातें जो चार-चार में चक्कर काटती हैं, ऐसा मापांक जो दूरी है और इसलिए कभी ऋणात्मक नहीं, ऐसा संयुग्मी जो गुणा से काल्पनिक भाग साफ़ कर देता है, और वह विविक्तकर जो अब मूल न होने की नहीं, दो मूल होने की भविष्यवाणी करता है।"
+    },
+    "mr": {
+      "name": "संमिश्र संख्या आणि वर्गसमीकरणे",
+      "summary": "एक घडवलेली संख्या ती दरी भरते जी वास्तव रेषा भरू शकली नाही: i च्या घाती ज्या चार-चारांत फेरी मारतात, असे मापांक जे अंतर आहे आणि म्हणून कधीच ऋण नाही, असे संयुग्मी जे गुणाकाराने काल्पनिक भाग साफ करते, आणि तो विविक्तकर जो आता मुळे नसण्याची नव्हे, दोन मुळे असण्याची भविष्यवाणी करतो."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Given that i² = −1, what is the value of i⁴?",
+      "choices": [
+        "-1",
+        "0",
+        "2",
+        "1"
+      ],
+      "answerIndex": 3,
+      "solution": "i⁴ is i² times i², which is (−1) × (−1) = 1. That single result is what makes the powers of i cycle: i, −1, −i, 1, and then round again, so any power can be settled by dividing the exponent by 4 and looking at the remainder. (−1 gives i², stopping one step early.)",
+      "checkExpr": "(0-1)*(0-1)",
+      "translations": {
+        "hi": {
+          "stem": "यह देखते हुए कि i² = −1, i⁴ का मान क्या है?",
+          "choices": [
+            "-1",
+            "0",
+            "2",
+            "1"
+          ],
+          "solution": "i⁴ है i² गुणा i², जो (−1) × (−1) = 1 है। वही एक परिणाम i की घातों को चक्कर कटवाता है: i, −1, −i, 1, और फिर से वही, अतः कोई भी घात घातांक को 4 से भाग देकर शेषफल देखकर तय की जा सकती है। (−1 i² देता है, एक क़दम पहले रुककर।)"
+        },
+        "mr": {
+          "stem": "i² = −1 हे पाहता, i⁴ चे मूल्य किती?",
+          "choices": [
+            "-1",
+            "0",
+            "2",
+            "1"
+          ],
+          "solution": "i⁴ म्हणजे i² गुणिले i², जे (−1) × (−1) = 1. तोच एक निकाल i च्या घातींना फेरी मारायला लावतो: i, −1, −i, 1, आणि पुन्हा तेच, म्हणून कोणतीही घात घातांकाला 4 ने भागून बाकी पाहून ठरवता येते. (−1 i² देते, एक पाऊल आधी थांबून.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the imaginary part of (3 + 2i) + (1 + 4i)?",
+      "choices": [
+        "4",
+        "5",
+        "8",
+        "6"
+      ],
+      "answerIndex": 3,
+      "solution": "Complex numbers add componentwise: the real parts give 3 + 1 = 4 and the imaginary parts give 2 + 4 = 6, so the sum is 4 + 6i and the imaginary part is 6. Note that the imaginary part is the coefficient of i, a plain real number — not 6i. (4 quotes the real part instead.)",
+      "checkExpr": "2+4",
+      "translations": {
+        "hi": {
+          "stem": "(3 + 2i) + (1 + 4i) का काल्पनिक भाग क्या है?",
+          "choices": [
+            "4",
+            "5",
+            "8",
+            "6"
+          ],
+          "solution": "सम्मिश्र संख्याएँ घटकवार जुड़ती हैं: वास्तविक भाग 3 + 1 = 4 देते हैं और काल्पनिक भाग 2 + 4 = 6, अतः योग 4 + 6i है और काल्पनिक भाग 6. ध्यान दो कि काल्पनिक भाग i का गुणांक है, एक सादा वास्तविक संख्या — 6i नहीं। (4 इसके बदले वास्तविक भाग बता देता है।)"
+        },
+        "mr": {
+          "stem": "(3 + 2i) + (1 + 4i) चा काल्पनिक भाग किती?",
+          "choices": [
+            "4",
+            "5",
+            "8",
+            "6"
+          ],
+          "solution": "संमिश्र संख्या घटकनिहाय जुळतात: वास्तव भाग 3 + 1 = 4 देतात आणि काल्पनिक भाग 2 + 4 = 6, म्हणून बेरीज 4 + 6i आणि काल्पनिक भाग 6. लक्षात घ्या की काल्पनिक भाग हा i चा सहगुणक आहे, एक साधी वास्तव संख्या — 6i नव्हे. (4 त्याऐवजी वास्तव भाग सांगते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the modulus of the complex number 3 + 4i?",
+      "choices": [
+        "25",
+        "5",
+        "12",
+        "7"
+      ],
+      "answerIndex": 1,
+      "solution": "The modulus is √(3² + 4²) = √25 = 5, which is exactly the distance from the origin to the point (3, 4) on the plane. Because it is a distance it can never be negative, whatever the signs of the parts — the modulus of −3 − 4i is also 5. (7 adds the two parts, which is what you would do for a real number and never for a point in a plane.)",
+      "checkExpr": "(9+16)/5",
+      "translations": {
+        "hi": {
+          "stem": "सम्मिश्र संख्या 3 + 4i का मापांक क्या है?",
+          "choices": [
+            "25",
+            "5",
+            "12",
+            "7"
+          ],
+          "solution": "मापांक है √(3² + 4²) = √25 = 5, जो ठीक मूलबिंदु से तल पर बिंदु (3, 4) तक की दूरी है। चूँकि वह दूरी है, वह कभी ऋणात्मक नहीं हो सकता, भागों के चिह्न चाहे जो हों — −3 − 4i का मापांक भी 5 है। (7 दोनों भाग जोड़ देता है, जो तुम किसी वास्तविक संख्या के लिए करते और तल के किसी बिंदु के लिए कभी नहीं।)"
+        },
+        "mr": {
+          "stem": "संमिश्र संख्या 3 + 4i चे मापांक किती?",
+          "choices": [
+            "25",
+            "5",
+            "12",
+            "7"
+          ],
+          "solution": "मापांक म्हणजे √(3² + 4²) = √25 = 5, जे नेमके आरंभबिंदूपासून प्रतलावरील बिंदू (3, 4) पर्यंतचे अंतर. ते अंतर असल्याने ते कधीच ऋण असू शकत नाही, भागांची चिन्हे कोणतीही असोत — −3 − 4i चे मापांकही 5 आहे. (7 दोन्ही भाग जोडते, जे तुम्ही एखाद्या वास्तव संख्येसाठी केले असते आणि प्रतलावरील बिंदूसाठी कधीच नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the value of i¹⁰ + i²⁰?",
+      "choices": [
+        "0",
+        "-2",
+        "2",
+        "1"
+      ],
+      "answerIndex": 0,
+      "solution": "Divide each exponent by 4 and keep the remainder. 10 leaves 2, so i¹⁰ = i² = −1; 20 leaves 0, so i²⁰ = i⁴ = 1. The sum is −1 + 1 = 0. Reducing the exponent modulo 4 turns any power of i, however large, into one of exactly four values. (2 treats both terms as 1, forgetting that 10 is not a multiple of 4.)",
+      "checkExpr": "(0-1)+1",
+      "translations": {
+        "hi": {
+          "stem": "i¹⁰ + i²⁰ का मान क्या है?",
+          "choices": [
+            "0",
+            "-2",
+            "2",
+            "1"
+          ],
+          "solution": "हर घातांक को 4 से भाग दो और शेषफल रखो। 10 का शेष 2, अतः i¹⁰ = i² = −1; 20 का शेष 0, अतः i²⁰ = i⁴ = 1. योग −1 + 1 = 0. घातांक को 4 से मापांकित करना i की किसी भी घात को, चाहे कितनी बड़ी हो, ठीक चार मानों में से एक बना देता है। (2 दोनों पदों को 1 मान लेता है, यह भूलकर कि 10, 4 का गुणज नहीं।)"
+        },
+        "mr": {
+          "stem": "i¹⁰ + i²⁰ चे मूल्य किती?",
+          "choices": [
+            "0",
+            "-2",
+            "2",
+            "1"
+          ],
+          "solution": "प्रत्येक घातांकाला 4 ने भागा आणि बाकी ठेवा. 10 ची बाकी 2, म्हणून i¹⁰ = i² = −1; 20 ची बाकी 0, म्हणून i²⁰ = i⁴ = 1. बेरीज −1 + 1 = 0. घातांकाला 4 ने मापांकित करणे i ची कोणतीही घात, कितीही मोठी असो, नेमक्या चार मूल्यांपैकी एक बनवते. (2 दोन्ही पदे 1 मानते, 10 हा 4 चा पट नाही हे विसरून.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the value of (2 + 3i)(2 − 3i)?",
+      "choices": [
+        "5",
+        "-5",
+        "4",
+        "13"
+      ],
+      "answerIndex": 3,
+      "solution": "This is a difference of two squares: 2² − (3i)² = 4 − 9i² = 4 + 9 = 13, because i² is −1 and the minus becomes a plus. Multiplying a complex number by its conjugate always leaves a real answer equal to the square of the modulus, and that is precisely why the conjugate is the tool used to clear an i out of a denominator. (−5 keeps i² as +1 and gets 4 − 9.)",
+      "checkExpr": "2*2+3*3",
+      "translations": {
+        "hi": {
+          "stem": "(2 + 3i)(2 − 3i) का मान क्या है?",
+          "choices": [
+            "5",
+            "-5",
+            "4",
+            "13"
+          ],
+          "solution": "यह दो वर्गों का अंतर है: 2² − (3i)² = 4 − 9i² = 4 + 9 = 13, क्योंकि i² −1 है और ऋण धन बन जाता है। किसी सम्मिश्र संख्या को उसके संयुग्मी से गुणा करने पर सदा वास्तविक उत्तर बचता है जो मापांक के वर्ग के बराबर है, और ठीक इसीलिए हर में से i हटाने का औज़ार संयुग्मी है। (−5 i² को +1 रखकर 4 − 9 पा लेता है।)"
+        },
+        "mr": {
+          "stem": "(2 + 3i)(2 − 3i) चे मूल्य किती?",
+          "choices": [
+            "5",
+            "-5",
+            "4",
+            "13"
+          ],
+          "solution": "हा दोन वर्गांचा फरक आहे: 2² − (3i)² = 4 − 9i² = 4 + 9 = 13, कारण i² हा −1 आहे आणि ऋण धन बनते. एखाद्या संमिश्र संख्येला तिच्या संयुग्मीने गुणल्यावर नेहमी वास्तव उत्तर उरते जे मापांकाच्या वर्गाइतके, आणि नेमके म्हणूनच छेदातून i काढण्याचे हत्यार म्हणजे संयुग्मी. (−5 i² ला +1 ठेवून 4 − 9 मिळवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the imaginary part of the conjugate of 5 − 7i?",
+      "choices": [
+        "-7",
+        "7",
+        "12",
+        "5"
+      ],
+      "answerIndex": 1,
+      "solution": "Taking the conjugate flips the sign of the imaginary part and leaves the real part alone, so the conjugate of 5 − 7i is 5 + 7i and its imaginary part is 7. Geometrically the conjugate is the mirror image in the real axis, which is why the modulus is unchanged by it. (−7 gives the imaginary part of the original number rather than of its conjugate.)",
+      "checkExpr": "0+7",
+      "translations": {
+        "hi": {
+          "stem": "5 − 7i के संयुग्मी का काल्पनिक भाग क्या है?",
+          "choices": [
+            "-7",
+            "7",
+            "12",
+            "5"
+          ],
+          "solution": "संयुग्मी लेने पर काल्पनिक भाग का चिह्न पलटता है और वास्तविक भाग वैसा ही रहता है, अतः 5 − 7i का संयुग्मी 5 + 7i है और उसका काल्पनिक भाग 7. ज्यामितीय रूप से संयुग्मी वास्तविक अक्ष में दर्पण-प्रतिबिंब है, इसीलिए उससे मापांक नहीं बदलता। (−7 संयुग्मी के नहीं, मूल संख्या के काल्पनिक भाग को देता है।)"
+        },
+        "mr": {
+          "stem": "5 − 7i च्या संयुग्मीचा काल्पनिक भाग किती?",
+          "choices": [
+            "-7",
+            "7",
+            "12",
+            "5"
+          ],
+          "solution": "संयुग्मी घेतल्यावर काल्पनिक भागाचे चिन्ह उलटते आणि वास्तव भाग तसाच राहतो, म्हणून 5 − 7i चा संयुग्मी 5 + 7i आणि त्याचा काल्पनिक भाग 7. भूमितीयदृष्ट्या संयुग्मी हे वास्तव अक्षातले आरशातले प्रतिबिंब आहे, म्हणूनच त्याने मापांक बदलत नाही. (−7 संयुग्मीचा नव्हे, मूळ संख्येचा काल्पनिक भाग देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the discriminant of x² + 4x + 5?",
+      "choices": [
+        "4",
+        "36",
+        "11",
+        "-4"
+      ],
+      "answerIndex": 3,
+      "solution": "The discriminant is b² − 4ac = 16 − 20 = −4. Its sign is the whole message: negative means no real roots, and before this chapter that would have been the end of the matter. Now it means the two roots are complex conjugates instead — a quadratic always has exactly two roots once the number system is wide enough to hold them. (11 computes b² − 4c and forgets the coefficient a.)",
+      "checkExpr": "4*4-4*1*5",
+      "translations": {
+        "hi": {
+          "stem": "x² + 4x + 5 का विविक्तकर क्या है?",
+          "choices": [
+            "4",
+            "36",
+            "11",
+            "-4"
+          ],
+          "solution": "विविक्तकर है b² − 4ac = 16 − 20 = −4. उसका चिह्न ही पूरा संदेश है: ऋणात्मक का अर्थ कोई वास्तविक मूल नहीं, और इस अध्याय से पहले बात वहीं ख़त्म हो जाती। अब उसका अर्थ है कि दोनों मूल सम्मिश्र संयुग्मी हैं — द्विघात के सदा ठीक दो मूल होते हैं, बशर्ते संख्या-पद्धति उन्हें रखने लायक़ चौड़ी हो। (11 b² − 4c निकालता है और गुणांक a भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "x² + 4x + 5 चा विविक्तकर किती?",
+          "choices": [
+            "4",
+            "36",
+            "11",
+            "-4"
+          ],
+          "solution": "विविक्तकर म्हणजे b² − 4ac = 16 − 20 = −4. त्याचे चिन्हच अख्खा संदेश आहे: ऋण म्हणजे कोणतीही वास्तव मुळे नाहीत, आणि या प्रकरणाआधी गोष्ट तिथेच संपली असती. आता त्याचा अर्थ दोन्ही मुळे संमिश्र संयुग्मी आहेत — वर्गसमीकरणाला नेहमी नेमकी दोन मुळे असतात, जर संख्या-पद्धती ती ठेवण्याइतकी रुंद असेल तर. (11 b² − 4c काढते आणि सहगुणक a विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "How many REAL roots does the equation x² + 1 = 0 have?",
+      "choices": [
+        "2",
+        "0",
+        "-1",
+        "1"
+      ],
+      "answerIndex": 1,
+      "solution": "A real number squared is never negative, so x² = −1 has no solution among the reals and the count is 0. The equation does have two roots, i and −i, but they are not real — which is exactly the gap this chapter was invented to fill. Note that the question asks how MANY, so the answer is a count and can never itself be negative. (2 counts the complex roots, which the question excluded.)",
+      "checkExpr": "1-1",
+      "translations": {
+        "hi": {
+          "stem": "समीकरण x² + 1 = 0 के कितने वास्तविक मूल हैं?",
+          "choices": [
+            "2",
+            "0",
+            "-1",
+            "1"
+          ],
+          "solution": "किसी वास्तविक संख्या का वर्ग कभी ऋणात्मक नहीं होता, अतः x² = −1 का वास्तविकों में कोई हल नहीं और गिनती 0 है। समीकरण के दो मूल हैं ही, i और −i, पर वे वास्तविक नहीं — और ठीक यही खाई पाटने को यह अध्याय गढ़ा गया। ध्यान दो कि प्रश्न कितने पूछता है, अतः उत्तर गिनती है और स्वयं कभी ऋणात्मक नहीं हो सकता। (2 सम्मिश्र मूल गिन लेता है, जिन्हें प्रश्न ने बाहर रखा था।)"
+        },
+        "mr": {
+          "stem": "समीकरण x² + 1 = 0 ला किती वास्तव मुळे आहेत?",
+          "choices": [
+            "2",
+            "0",
+            "-1",
+            "1"
+          ],
+          "solution": "कोणत्याही वास्तव संख्येचा वर्ग कधीच ऋण नसतो, म्हणून x² = −1 ला वास्तवांत कोणतेही उत्तर नाही आणि मोजणी 0 आहे. समीकरणाला दोन मुळे आहेतच, i आणि −i, पण ती वास्तव नाहीत — आणि नेमकी हीच दरी भरण्यासाठी हे प्रकरण घडवले गेले. लक्षात घ्या की प्रश्न किती विचारतो, म्हणून उत्तर ही मोजणी आहे आणि ती स्वतः कधीच ऋण असू शकत नाही. (2 संमिश्र मुळे मोजते, जी प्रश्नाने वगळली होती.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "If z = 1 + i, what is the value of |z|²?",
+      "choices": [
+        "0",
+        "2",
+        "1",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "The modulus is √(1² + 1²) = √2, so its square is 2 — and squaring undoes the root, which is why |z|² is always the tidier quantity to work with: 1² + 1² = 2, no surd anywhere. It is also equal to z times its conjugate, which is the identity that makes division of complex numbers possible. (4 squares the sum of the parts, computing (1 + 1)² instead of 1² + 1².)",
+      "checkExpr": "1*1+1*1",
+      "translations": {
+        "hi": {
+          "stem": "यदि z = 1 + i, तो |z|² का मान क्या है?",
+          "choices": [
+            "0",
+            "2",
+            "1",
+            "4"
+          ],
+          "solution": "मापांक है √(1² + 1²) = √2, अतः उसका वर्ग 2 है — और वर्ग करने से मूल कट जाता है, इसीलिए |z|² सदा काम करने को साफ़-सुथरी राशि है: 1² + 1² = 2, कहीं कोई करणी नहीं। वह z गुणा उसके संयुग्मी के भी बराबर है, और वही सर्वसमिका सम्मिश्र संख्याओं का भाग संभव बनाती है। (4 भागों के योग का वर्ग करता है, 1² + 1² के बजाय (1 + 1)² निकालकर।)"
+        },
+        "mr": {
+          "stem": "जर z = 1 + i, तर |z|² चे मूल्य किती?",
+          "choices": [
+            "0",
+            "2",
+            "1",
+            "4"
+          ],
+          "solution": "मापांक म्हणजे √(1² + 1²) = √2, म्हणून त्याचा वर्ग 2 — आणि वर्ग केल्याने मूळ छेदते, म्हणूनच |z|² ही नेहमी काम करण्यास स्वच्छ राशी: 1² + 1² = 2, कुठेही करणी नाही. ती z गुणिले त्याचा संयुग्मी यालाही समान आहे, आणि तेच नित्यसमीकरण संमिश्र संख्यांचा भागाकार शक्य करते. (4 भागांच्या बेरजेचा वर्ग करते, 1² + 1² ऐवजी (1 + 1)² काढून.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "What is the sum of the roots of 2x² − 6x + 5 = 0?",
+      "choices": [
+        "3",
+        "-3",
+        "6",
+        "2.5"
+      ],
+      "answerIndex": 0,
+      "solution": "The sum of the roots is −b/a = 6/2 = 3. The point of the formula is that it works without finding the roots at all — and here that matters, because the discriminant is 36 − 40 = −4, so the roots are complex. Two complex conjugate roots still add to a real number, since their imaginary parts cancel. (−3 keeps the minus sign that the formula has already used up on the negative b.)",
+      "checkExpr": "6/2",
+      "translations": {
+        "hi": {
+          "stem": "2x² − 6x + 5 = 0 के मूलों का योग क्या है?",
+          "choices": [
+            "3",
+            "-3",
+            "6",
+            "2.5"
+          ],
+          "solution": "मूलों का योग है −b/a = 6/2 = 3. सूत्र का प्रयोजन यह है कि वह मूल निकाले बिना ही काम करता है — और यहाँ यह मायने रखता है, क्योंकि विविक्तकर 36 − 40 = −4 है, अतः मूल सम्मिश्र हैं। दो सम्मिश्र संयुग्मी मूल फिर भी वास्तविक संख्या में जुड़ते हैं, क्योंकि उनके काल्पनिक भाग कट जाते हैं। (−3 वह ऋण चिह्न बनाए रखता है जिसे सूत्र ऋणात्मक b पर पहले ही ख़र्च कर चुका है।)"
+        },
+        "mr": {
+          "stem": "2x² − 6x + 5 = 0 च्या मुळांची बेरीज किती?",
+          "choices": [
+            "3",
+            "-3",
+            "6",
+            "2.5"
+          ],
+          "solution": "मुळांची बेरीज म्हणजे −b/a = 6/2 = 3. सूत्राचा हेतू हा की ते मुळे न काढताच चालते — आणि इथे हे महत्त्वाचे, कारण विविक्तकर 36 − 40 = −4 आहे, म्हणून मुळे संमिश्र आहेत. दोन संमिश्र संयुग्मी मुळे तरीही वास्तव संख्येत जुळतात, कारण त्यांचे काल्पनिक भाग छेदतात. (−3 ते ऋण चिन्ह टिकवते जे सूत्राने ऋण b वर आधीच खर्चले आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is the product of the roots of 3x² + 5x + 12 = 0?",
+      "choices": [
+        "-4",
+        "12",
+        "3",
+        "4"
+      ],
+      "answerIndex": 3,
+      "solution": "The product of the roots is c/a = 12/3 = 4, with no minus sign — that belongs to the sum, which is −5/3. Mixing the two up is the single commonest error in this chapter, and the fix is to remember that only the sum carries the sign flip. Once more the roots themselves are complex, since 25 − 144 is negative, and once more the product comes out real, because a complex number times its conjugate is |z|². (−4 borrows the minus sign from the sum formula.)",
+      "checkExpr": "12/3",
+      "translations": {
+        "hi": {
+          "stem": "3x² + 5x + 12 = 0 के मूलों का गुणनफल क्या है?",
+          "choices": [
+            "-4",
+            "12",
+            "3",
+            "4"
+          ],
+          "solution": "मूलों का गुणनफल है c/a = 12/3 = 4, बिना किसी ऋण चिह्न के — वह योग का है, जो −5/3 है। दोनों को गड्डमड्ड करना इस अध्याय की इकलौती सबसे आम भूल है, और उपाय है यह याद रखना कि चिह्न-पलट केवल योग ढोता है। एक बार फिर मूल स्वयं सम्मिश्र हैं, क्योंकि 25 − 144 ऋणात्मक है, और एक बार फिर गुणनफल वास्तविक निकलता है, क्योंकि सम्मिश्र संख्या गुणा उसका संयुग्मी |z|² है। (−4 योग-सूत्र से ऋण चिह्न उधार ले लेता है।)"
+        },
+        "mr": {
+          "stem": "3x² + 5x + 12 = 0 च्या मुळांचा गुणाकार किती?",
+          "choices": [
+            "-4",
+            "12",
+            "3",
+            "4"
+          ],
+          "solution": "मुळांचा गुणाकार म्हणजे c/a = 12/3 = 4, कोणत्याही ऋण चिन्हाविना — ते बेरजेचे आहे, जी −5/3 आहे. दोन्ही गोंधळून टाकणे ही या प्रकरणातली सर्वांत सामान्य चूक, आणि उपाय म्हणजे हे लक्षात ठेवणे की चिन्ह-पालट केवळ बेरीजच वाहते. पुन्हा एकदा मुळे स्वतः संमिश्र आहेत, कारण 25 − 144 ऋण आहे, आणि पुन्हा एकदा गुणाकार वास्तव निघतो, कारण संमिश्र संख्या गुणिले तिचा संयुग्मी म्हणजे |z|². (−4 बेरीज-सूत्रातून ऋण चिन्ह उसने घेते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "One root of x² − 6x + k = 0 is 2. What is k?",
+      "choices": [
+        "2",
+        "4",
+        "8",
+        "12"
+      ],
+      "answerIndex": 2,
+      "solution": "Substituting the root must satisfy the equation: 4 − 12 + k = 0, so k = 8, or in one line k = 6 × 2 − 2 × 2 = 8. There is a second route worth knowing — the roots sum to 6, so the other root is 4, and the product 2 × 4 = 8 is k directly. When two methods agree the answer is worth trusting, and when they disagree one of them has misremembered a sign. (4 gives the other root rather than k.)",
+      "checkExpr": "6*2-2*2",
+      "translations": {
+        "hi": {
+          "stem": "x² − 6x + k = 0 का एक मूल 2 है। k क्या है?",
+          "choices": [
+            "2",
+            "4",
+            "8",
+            "12"
+          ],
+          "solution": "मूल रखने पर समीकरण संतुष्ट होना ही चाहिए: 4 − 12 + k = 0, अतः k = 8, या एक पंक्ति में k = 6 × 2 − 2 × 2 = 8. एक दूसरा रास्ता भी जानने योग्य है — मूलों का योग 6 है, अतः दूसरा मूल 4 है, और गुणनफल 2 × 4 = 8 सीधे k है। जब दो विधियाँ सहमत हों तो उत्तर पर भरोसा करने योग्य है, और जब असहमत हों तो उनमें से एक ने कोई चिह्न ग़लत याद रखा है। (4 k के बजाय दूसरा मूल देता है।)"
+        },
+        "mr": {
+          "stem": "x² − 6x + k = 0 चे एक मूळ 2 आहे. k किती?",
+          "choices": [
+            "2",
+            "4",
+            "8",
+            "12"
+          ],
+          "solution": "मूळ ठेवल्यावर समीकरण समाधानी व्हायलाच हवे: 4 − 12 + k = 0, म्हणून k = 8, वा एका ओळीत k = 6 × 2 − 2 × 2 = 8. दुसरा मार्गही जाणण्याजोगा — मुळांची बेरीज 6 आहे, म्हणून दुसरे मूळ 4 आहे, आणि गुणाकार 2 × 4 = 8 हा थेट k. दोन पद्धती सहमत असतील तर उत्तरावर विश्वास ठेवण्याजोगे, आणि असहमत असतील तर त्यांपैकी एकीने एखादे चिन्ह चुकीचे लक्षात ठेवले आहे. (4 k ऐवजी दुसरे मूळ देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "What is the modulus of (1 + i)/(1 − i)?",
+      "choices": [
+        "0.5",
+        "0",
+        "1",
+        "2"
+      ],
+      "answerIndex": 2,
+      "solution": "The modulus of a quotient is the quotient of the moduli, so there is no need to simplify the fraction at all: |1 + i| = √2 and |1 − i| = √2, and the ratio is 1. Working with the squares avoids the surds entirely — (1 + 1)/(1 + 1) = 1. If you do simplify, multiplying top and bottom by (1 + i) gives 2i/2 = i, whose modulus is indeed 1, and the two routes agreeing is the check. Note the general lesson: a modulus turns multiplication and division into ordinary arithmetic, which is why it is worth reaching for before the algebra. (2 adds the two moduli instead of dividing them.)",
+      "checkExpr": "(1+1)/(1+1)",
+      "translations": {
+        "hi": {
+          "stem": "(1 + i)/(1 − i) का मापांक क्या है?",
+          "choices": [
+            "0.5",
+            "0",
+            "1",
+            "2"
+          ],
+          "solution": "किसी भागफल का मापांक मापांकों का भागफल है, अतः भिन्न को सरल करने की ज़रूरत ही नहीं: |1 + i| = √2 और |1 − i| = √2, और अनुपात 1. वर्गों से काम करना करणियों से पूरी तरह बचा देता है — (1 + 1)/(1 + 1) = 1. यदि सरल करो भी, तो ऊपर-नीचे (1 + i) से गुणा करने पर 2i/2 = i मिलता है, जिसका मापांक सचमुच 1 है, और दोनों रास्तों का सहमत होना ही जाँच है। सामान्य सीख ध्यान दो: मापांक गुणा और भाग को साधारण अंकगणित बना देता है, इसीलिए बीजगणित से पहले उसकी ओर हाथ बढ़ाना उचित है। (2 दोनों मापांक भाग देने के बजाय जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "(1 + i)/(1 − i) चे मापांक किती?",
+          "choices": [
+            "0.5",
+            "0",
+            "1",
+            "2"
+          ],
+          "solution": "कोणत्याही भागाकाराचे मापांक म्हणजे मापांकांचा भागाकार, म्हणून अपूर्णांक सोपा करण्याची गरजच नाही: |1 + i| = √2 आणि |1 − i| = √2, आणि गुणोत्तर 1. वर्गांनी काम करणे करणींपासून पूर्ण वाचवते — (1 + 1)/(1 + 1) = 1. सोपे केलेच तर वर-खाली (1 + i) ने गुणल्यावर 2i/2 = i मिळते, ज्याचे मापांक खरोखर 1 आहे, आणि दोन्ही मार्ग सहमत असणे हीच तपासणी. सामान्य धडा लक्षात घ्या: मापांक गुणाकार आणि भागाकाराला साधे अंकगणित बनवते, म्हणूनच बीजगणिताआधी त्याकडे हात वळवणे योग्य. (2 दोन्ही मापांके भागण्याऐवजी जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "If z = 2 + 3i and z̄ is its conjugate, what is the value of z·z̄ + |z|²?",
+      "choices": [
+        "52",
+        "26",
+        "13",
+        "39"
+      ],
+      "answerIndex": 1,
+      "solution": "The two terms are the same quantity written twice. z·z̄ = (2 + 3i)(2 − 3i) = 4 + 9 = 13, and |z|² = 2² + 3² = 13 as well, so the total is 2 × 13 = 26. Recognising that z·z̄ IS |z|² is the point of the question — it is the identity that lets you divide by a complex number, since multiplying top and bottom by the conjugate turns the denominator into a plain real number. The alternative is to expand both terms separately and hope the arithmetic agrees, which is slower and no safer. (13 works out one of the two terms and stops.)",
+      "checkExpr": "2*(2*2+3*3)",
+      "translations": {
+        "hi": {
+          "stem": "यदि z = 2 + 3i और z̄ उसका संयुग्मी है, तो z·z̄ + |z|² का मान क्या है?",
+          "choices": [
+            "52",
+            "26",
+            "13",
+            "39"
+          ],
+          "solution": "दोनों पद एक ही राशि दो बार लिखी हुई हैं। z·z̄ = (2 + 3i)(2 − 3i) = 4 + 9 = 13, और |z|² = 2² + 3² = 13 भी, अतः कुल 2 × 13 = 26. यह पहचानना कि z·z̄ ही |z|² है प्रश्न का प्रयोजन है — वही सर्वसमिका सम्मिश्र संख्या से भाग देने देती है, क्योंकि ऊपर-नीचे संयुग्मी से गुणा करने पर हर सादा वास्तविक संख्या बन जाता है। विकल्प है दोनों पद अलग-अलग खोलकर आशा करना कि गणित मेल खाए, जो धीमा है और अधिक सुरक्षित नहीं। (13 दोनों में से एक पद निकालकर रुक जाता है।)"
+        },
+        "mr": {
+          "stem": "जर z = 2 + 3i आणि z̄ हा त्याचा संयुग्मी असेल, तर z·z̄ + |z|² चे मूल्य किती?",
+          "choices": [
+            "52",
+            "26",
+            "13",
+            "39"
+          ],
+          "solution": "दोन्ही पदे म्हणजे एकच राशी दोनदा लिहिलेली. z·z̄ = (2 + 3i)(2 − 3i) = 4 + 9 = 13, आणि |z|² = 2² + 3² = 13 सुद्धा, म्हणून एकूण 2 × 13 = 26. z·z̄ हेच |z|² आहे हे ओळखणे हा प्रश्नाचा हेतू — तेच नित्यसमीकरण संमिश्र संख्येने भागू देते, कारण वर-खाली संयुग्मीने गुणल्यावर छेद साधी वास्तव संख्या बनतो. पर्याय म्हणजे दोन्ही पदे वेगवेगळी उलगडून गणित जुळेल अशी आशा करणे, जे मंद आहे आणि अधिक सुरक्षितही नाही. (13 दोघांपैकी एक पद काढून थांबते.)"
+        }
+      }
+    }
+  ]
+}

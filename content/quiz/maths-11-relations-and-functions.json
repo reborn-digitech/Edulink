@@ -1,0 +1,513 @@
+{
+  "slug": "maths-11-relations-and-functions",
+  "subject": "MATHS",
+  "classLevel": 11,
+  "chapter": "Chapter 2 — Relations and Functions",
+  "name": "Relations and Functions",
+  "summary": "Every possible pairing of two sets laid out as a grid, every relation a choice of which cells to keep, and a function the special case where each row is allowed exactly one — which is why the relations are counted with powers of two and the functions are not.",
+  "position": 2,
+  "translations": {
+    "hi": {
+      "name": "संबंध एवं फलन",
+      "summary": "दो समुच्चयों के हर संभव युग्म को एक जाल की तरह बिछाना, हर संबंध यह चुनाव कि कौन-से ख़ाने रखने हैं, और फलन वह विशेष स्थिति जहाँ हर पंक्ति को ठीक एक की अनुमति है — इसीलिए संबंध दो की घातों से गिने जाते हैं और फलन नहीं।"
+    },
+    "mr": {
+      "name": "संबंध आणि फलने",
+      "summary": "दोन संचांच्या प्रत्येक शक्य जोडीला जाळ्यासारखे मांडणे, प्रत्येक संबंध म्हणजे कोणते कप्पे ठेवायचे ही निवड, आणि फलन ही ती खास स्थिती जिथे प्रत्येक ओळीला नेमके एकच परवानगी — म्हणूनच संबंध दोनच्या घातांनी मोजले जातात आणि फलने नाहीत."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A has 3 elements and B has 4. How many elements does A × B have?",
+      "choices": [
+        "16",
+        "9",
+        "7",
+        "12"
+      ],
+      "answerIndex": 3,
+      "solution": "Every element of A can be paired with every element of B, so the count is 3 × 4 = 12. Picture it as a grid with 3 rows and 4 columns and the multiplication becomes obvious. Note also that A × B and B × A have the same size but are not the same set, because (1, a) is not the pair (a, 1). (7 adds the two sizes instead of multiplying them.)",
+      "checkExpr": "3*4",
+      "translations": {
+        "hi": {
+          "stem": "A में 3 अवयव हैं और B में 4. A × B में कितने अवयव हैं?",
+          "choices": [
+            "16",
+            "9",
+            "7",
+            "12"
+          ],
+          "solution": "A का हर अवयव B के हर अवयव के साथ युग्म बना सकता है, अतः गिनती 3 × 4 = 12. इसे 3 पंक्तियों और 4 स्तंभों के जाल की तरह देखो और गुणा स्पष्ट हो जाता है। यह भी ध्यान दो कि A × B और B × A का आकार वही है पर वे एक ही समुच्चय नहीं, क्योंकि (1, a) युग्म (a, 1) नहीं है। (7 दोनों आकार गुणा करने के बजाय जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "A मध्ये 3 घटक आहेत आणि B मध्ये 4. A × B मध्ये किती घटक आहेत?",
+          "choices": [
+            "16",
+            "9",
+            "7",
+            "12"
+          ],
+          "solution": "A चा प्रत्येक घटक B च्या प्रत्येक घटकाशी जोडी बनवू शकतो, म्हणून मोजणी 3 × 4 = 12. याला 3 ओळी आणि 4 स्तंभांचे जाळे म्हणून पाहा आणि गुणाकार स्पष्ट होतो. हेही लक्षात घ्या की A × B आणि B × A यांचा आकार तोच पण ते एकच संच नाहीत, कारण (1, a) ही जोडी (a, 1) नाही. (7 दोन्ही आकार गुणण्याऐवजी जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A = {1, 2} and B = {3, 4, 5}. How many different relations are there from A to B?",
+      "choices": [
+        "6",
+        "12",
+        "32",
+        "64"
+      ],
+      "answerIndex": 3,
+      "solution": "A relation from A to B is any subset of A × B, and A × B has 2 × 3 = 6 pairs. Each of those six pairs is either kept or dropped, giving 2 × 2 × 2 × 2 × 2 × 2 = 64 relations. The empty relation and the whole of A × B are both counted, because both are subsets. (6 gives the size of A × B rather than the number of its subsets.)",
+      "checkExpr": "2*2*2*2*2*2",
+      "translations": {
+        "hi": {
+          "stem": "A = {1, 2} और B = {3, 4, 5}. A से B तक कितने भिन्न संबंध हैं?",
+          "choices": [
+            "6",
+            "12",
+            "32",
+            "64"
+          ],
+          "solution": "A से B तक कोई संबंध A × B का कोई भी उपसमुच्चय है, और A × B में 2 × 3 = 6 युग्म हैं। उन छह में से हर युग्म या तो रखा जाता है या छोड़ा, जिससे 2 × 2 × 2 × 2 × 2 × 2 = 64 संबंध। रिक्त संबंध और पूरा A × B दोनों गिने जाते हैं, क्योंकि दोनों उपसमुच्चय हैं। (6 A × B का आकार देता है, उसके उपसमुच्चयों की संख्या नहीं।)"
+        },
+        "mr": {
+          "stem": "A = {1, 2} आणि B = {3, 4, 5}. A पासून B पर्यंत किती वेगवेगळे संबंध आहेत?",
+          "choices": [
+            "6",
+            "12",
+            "32",
+            "64"
+          ],
+          "solution": "A पासून B पर्यंतचा कोणताही संबंध म्हणजे A × B चा कोणताही उपसंच, आणि A × B मध्ये 2 × 3 = 6 जोड्या आहेत. त्या सहापैकी प्रत्येक जोडी एकतर ठेवली जाते वा सोडली, ज्यातून 2 × 2 × 2 × 2 × 2 × 2 = 64 संबंध. रिक्त संबंध आणि अख्खा A × B दोन्ही मोजले जातात, कारण दोन्ही उपसंच आहेत. (6 A × B चा आकार देते, त्याच्या उपसंचांची संख्या नव्हे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "If (x + 1, 5) = (3, y), what is x + y?",
+      "choices": [
+        "3",
+        "7",
+        "8",
+        "2"
+      ],
+      "answerIndex": 1,
+      "solution": "Two ordered pairs are equal only when their first entries match and their second entries match, so x + 1 = 3 and 5 = y. That gives x = 2 and y = 5, so x + y = 7. The rule is worth stating out loud because it is what makes an ordered pair different from a set: {1, 2} equals {2, 1}, but (1, 2) does not equal (2, 1). (8 forgets to subtract the 1 and takes x as 3.)",
+      "checkExpr": "3-1+5",
+      "translations": {
+        "hi": {
+          "stem": "यदि (x + 1, 5) = (3, y), तो x + y क्या है?",
+          "choices": [
+            "3",
+            "7",
+            "8",
+            "2"
+          ],
+          "solution": "दो क्रमित युग्म तभी बराबर हैं जब उनकी पहली प्रविष्टियाँ मेल खाएँ और दूसरी भी, अतः x + 1 = 3 और 5 = y. इससे x = 2 और y = 5, अतः x + y = 7. नियम को ज़ोर से कहने योग्य है क्योंकि वही क्रमित युग्म को समुच्चय से अलग करता है: {1, 2} बराबर है {2, 1} के, पर (1, 2) बराबर नहीं (2, 1) के। (8 1 घटाना भूलकर x को 3 मान लेता है।)"
+        },
+        "mr": {
+          "stem": "जर (x + 1, 5) = (3, y), तर x + y किती?",
+          "choices": [
+            "3",
+            "7",
+            "8",
+            "2"
+          ],
+          "solution": "दोन क्रमित जोड्या तेव्हाच समान जेव्हा त्यांच्या पहिल्या नोंदी जुळतात आणि दुसऱ्याही, म्हणून x + 1 = 3 आणि 5 = y. यातून x = 2 आणि y = 5, म्हणून x + y = 7. नियम मोठ्याने सांगण्याजोगा कारण तोच क्रमित जोडीला संचापासून वेगळा करतो: {1, 2} बरोबर आहे {2, 1} शी, पण (1, 2) बरोबर नाही (2, 1) शी. (8 1 वजा करणे विसरून x ला 3 मानते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A has 4 elements and B has 3. How many functions are there from A to B?",
+      "choices": [
+        "7",
+        "12",
+        "64",
+        "81"
+      ],
+      "answerIndex": 3,
+      "solution": "A function must send each element of A to exactly one element of B, so there are 3 choices for each of the 4 elements: 3 × 3 × 3 × 3 = 81. Note which number goes upstairs — it is the size of the CODOMAIN raised to the size of the domain, not the other way round, because the choosing is done once per element of A. (64 raises 4 to the power 3, swapping the two.)",
+      "checkExpr": "3*3*3*3",
+      "translations": {
+        "hi": {
+          "stem": "A में 4 अवयव हैं और B में 3. A से B तक कितने फलन हैं?",
+          "choices": [
+            "7",
+            "12",
+            "64",
+            "81"
+          ],
+          "solution": "फलन को A के हर अवयव को B के ठीक एक अवयव पर भेजना पड़ता है, अतः 4 अवयवों में से हर एक के लिए 3 विकल्प: 3 × 3 × 3 × 3 = 81. ध्यान दो कि ऊपर कौन-सी संख्या जाती है — वह सहप्रांत का आकार है जो प्रांत के आकार की घात तक उठता है, उलटा नहीं, क्योंकि चुनाव A के प्रति अवयव एक बार होता है। (64 4 को 3 की घात तक उठाकर दोनों बदल देता है।)"
+        },
+        "mr": {
+          "stem": "A मध्ये 4 घटक आहेत आणि B मध्ये 3. A पासून B पर्यंत किती फलने आहेत?",
+          "choices": [
+            "7",
+            "12",
+            "64",
+            "81"
+          ],
+          "solution": "फलनाला A च्या प्रत्येक घटकाला B च्या नेमक्या एका घटकावर पाठवावे लागते, म्हणून 4 घटकांपैकी प्रत्येकासाठी 3 पर्याय: 3 × 3 × 3 × 3 = 81. लक्षात घ्या की वर कोणती संख्या जाते — ती सहप्रांताचा आकार आहे जो प्रांताच्या आकाराच्या घातापर्यंत जातो, उलट नव्हे, कारण निवड A च्या प्रति घटक एकदा होते. (64 4 ला 3 च्या घातापर्यंत नेऊन दोन्ही बदलते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "If f(x) = 2x + 3, what is f(4)?",
+      "choices": [
+        "14",
+        "10",
+        "11",
+        "5"
+      ],
+      "answerIndex": 2,
+      "solution": "Substitute 4 wherever x appears: 2 × 4 + 3 = 11. The order matters — multiply first, then add — and writing the substitution out rather than doing it in the head is what prevents the commonest slip here. (14 adds 3 to 4 first and then doubles, which is the rule for f(x) = 2(x + 3).)",
+      "checkExpr": "2*4+3",
+      "translations": {
+        "hi": {
+          "stem": "यदि f(x) = 2x + 3, तो f(4) क्या है?",
+          "choices": [
+            "14",
+            "10",
+            "11",
+            "5"
+          ],
+          "solution": "जहाँ भी x आए वहाँ 4 रखो: 2 × 4 + 3 = 11. क्रम मायने रखता है — पहले गुणा, फिर जोड़ — और प्रतिस्थापन को मन में करने के बजाय लिखकर करना ही यहाँ की सबसे आम चूक रोकता है। (14 पहले 4 में 3 जोड़ता है और फिर दोगुना करता है, जो f(x) = 2(x + 3) का नियम है।)"
+        },
+        "mr": {
+          "stem": "जर f(x) = 2x + 3, तर f(4) किती?",
+          "choices": [
+            "14",
+            "10",
+            "11",
+            "5"
+          ],
+          "solution": "जिथे जिथे x येईल तिथे 4 ठेवा: 2 × 4 + 3 = 11. क्रम महत्त्वाचा — आधी गुणाकार, मग बेरीज — आणि प्रतिस्थापन मनात करण्याऐवजी लिहून करणेच इथली सर्वांत सामान्य चूक टाळते. (14 आधी 4 मध्ये 3 जोडते आणि मग दुप्पट करते, जो f(x) = 2(x + 3) चा नियम आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "f(x) = x² − 1 with domain {−2, −1, 0, 1, 2}. How many DISTINCT values does the range contain?",
+      "choices": [
+        "3",
+        "2",
+        "4",
+        "5"
+      ],
+      "answerIndex": 0,
+      "solution": "The five inputs give 3, 0, −1, 0 and 3, and a range is a SET, so repeats are written once: {−1, 0, 3}, which is 3 values. Five inputs minus the two duplicates leaves 5 − 2 = 3. This is exactly why a function may be many-one: two different inputs are allowed to share an output, and only the reverse is forbidden. (5 counts one range value per input and forgets that a set does not repeat.)",
+      "checkExpr": "5-2",
+      "translations": {
+        "hi": {
+          "stem": "f(x) = x² − 1 और प्रांत {−2, −1, 0, 1, 2}. परिसर में कितने भिन्न मान हैं?",
+          "choices": [
+            "3",
+            "2",
+            "4",
+            "5"
+          ],
+          "solution": "पाँच निवेश 3, 0, −1, 0 और 3 देते हैं, और परिसर एक समुच्चय है, अतः दोहराव एक बार ही लिखे जाते हैं: {−1, 0, 3}, यानी 3 मान। पाँच निवेश में से दो दोहराव घटाकर 5 − 2 = 3 बचते हैं। ठीक इसीलिए फलन बहु-एक हो सकता है: दो भिन्न निवेशों को एक निर्गम साझा करने की छूट है, और केवल उलटा वर्जित है। (5 प्रति निवेश एक परिसर-मान गिन लेता है और भूल जाता है कि समुच्चय दोहराता नहीं।)"
+        },
+        "mr": {
+          "stem": "f(x) = x² − 1 आणि प्रांत {−2, −1, 0, 1, 2}. परिसरात किती वेगळी मूल्ये आहेत?",
+          "choices": [
+            "3",
+            "2",
+            "4",
+            "5"
+          ],
+          "solution": "पाच आदाने 3, 0, −1, 0 आणि 3 देतात, आणि परिसर हा एक संच आहे, म्हणून पुनरावृत्ती एकदाच लिहिली जाते: {−1, 0, 3}, म्हणजे 3 मूल्ये. पाच आदानांतून दोन पुनरावृत्ती वजा करून 5 − 2 = 3 उरतात. नेमके म्हणूनच फलन बहु-एक असू शकते: दोन वेगळ्या आदानांना एक निर्गम वाटून घेण्याची मुभा आहे, आणि केवळ उलटे निषिद्ध. (5 प्रति आदान एक परिसर-मूल्य मोजते आणि संच पुनरावृत्ती करत नाही हे विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "f(x) = x² and g(x) = 2x + 1. What is (f + g)(3)?",
+      "choices": [
+        "13",
+        "16",
+        "10",
+        "22"
+      ],
+      "answerIndex": 1,
+      "solution": "The sum of two functions is defined pointwise: work out each at 3 and add. f(3) = 9, g(3) = 7, so (f + g)(3) = 16. Note what is NOT being asked — f(g(3)) would be f(7) = 49, and composing is a different operation from adding. (13 computes f(3) + 3 + 1, dropping the coefficient in g.)",
+      "checkExpr": "3*3+2*3+1",
+      "translations": {
+        "hi": {
+          "stem": "f(x) = x² और g(x) = 2x + 1. (f + g)(3) क्या है?",
+          "choices": [
+            "13",
+            "16",
+            "10",
+            "22"
+          ],
+          "solution": "दो फलनों का योग बिंदुवार परिभाषित है: हर एक का 3 पर मान निकालो और जोड़ो। f(3) = 9, g(3) = 7, अतः (f + g)(3) = 16. ध्यान दो कि क्या नहीं पूछा गया — f(g(3)) होता f(7) = 49, और संयोजन जोड़ से अलग संक्रिया है। (13 f(3) + 3 + 1 निकालता है, g का गुणांक छोड़कर।)"
+        },
+        "mr": {
+          "stem": "f(x) = x² आणि g(x) = 2x + 1. (f + g)(3) किती?",
+          "choices": [
+            "13",
+            "16",
+            "10",
+            "22"
+          ],
+          "solution": "दोन फलनांची बेरीज बिंदूनिहाय व्याख्यायित आहे: प्रत्येकाचे 3 वरचे मूल्य काढा आणि जोडा. f(3) = 9, g(3) = 7, म्हणून (f + g)(3) = 16. लक्षात घ्या की काय विचारले नाही — f(g(3)) झाले असते f(7) = 49, आणि संयोजन ही बेरजेहून वेगळी क्रिया आहे. (13 f(3) + 3 + 1 काढते, g चा सहगुणक सोडून.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "f(x) = (x² − 9)/(x − 3). What is f(5)?",
+      "choices": [
+        "2",
+        "16",
+        "8",
+        "4"
+      ],
+      "answerIndex": 2,
+      "solution": "Substituting gives (25 − 9)/(5 − 3) = 16/2 = 8. It is worth noticing what the expression simplifies to: x² − 9 factorises as (x − 3)(x + 3), so f(x) = x + 3 for every x except 3, where the denominator is zero and the function is undefined. That single excluded point is the whole reason a domain has to be stated rather than assumed. (16 stops at the numerator and never divides.)",
+      "checkExpr": "(5*5-9)/(5-3)",
+      "translations": {
+        "hi": {
+          "stem": "f(x) = (x² − 9)/(x − 3). f(5) क्या है?",
+          "choices": [
+            "2",
+            "16",
+            "8",
+            "4"
+          ],
+          "solution": "प्रतिस्थापन से (25 − 9)/(5 − 3) = 16/2 = 8. ध्यान देने योग्य है कि व्यंजक सरल होकर क्या बनता है: x² − 9 का गुणनखंड (x − 3)(x + 3) है, अतः 3 को छोड़कर हर x के लिए f(x) = x + 3, और 3 पर हर शून्य है और फलन अपरिभाषित। वही एक बहिष्कृत बिंदु पूरा कारण है कि प्रांत मान नहीं लिया जाता, बताया जाता है। (16 अंश पर रुक जाता है और भाग देता ही नहीं।)"
+        },
+        "mr": {
+          "stem": "f(x) = (x² − 9)/(x − 3). f(5) किती?",
+          "choices": [
+            "2",
+            "16",
+            "8",
+            "4"
+          ],
+          "solution": "प्रतिस्थापनाने (25 − 9)/(5 − 3) = 16/2 = 8. लक्षात घेण्याजोगे की पदावली सोपी होऊन काय बनते: x² − 9 चे अवयव (x − 3)(x + 3) आहेत, म्हणून 3 वगळता प्रत्येक x साठी f(x) = x + 3, आणि 3 वर छेद शून्य आहे आणि फलन अव्याख्यायित. तोच एक वगळलेला बिंदू अख्खे कारण की प्रांत गृहीत धरला जात नाही, सांगितला जातो. (16 अंशावर थांबते आणि भागाकार करतच नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "f(x) = 3x − 2 and f(a) = 13. What is a?",
+      "choices": [
+        "3",
+        "11",
+        "5",
+        "15"
+      ],
+      "answerIndex": 2,
+      "solution": "This runs the rule backwards. From 3a − 2 = 13 comes 3a = 15 and a = 5, or in one line a = (13 + 2)/3 = 5. Undoing operations in reverse order is the whole skill: the rule multiplied then subtracted, so the undoing adds then divides. (11 applies the rule forwards to 13 instead of reversing it.)",
+      "checkExpr": "(13+2)/3",
+      "translations": {
+        "hi": {
+          "stem": "f(x) = 3x − 2 और f(a) = 13. a क्या है?",
+          "choices": [
+            "3",
+            "11",
+            "5",
+            "15"
+          ],
+          "solution": "यह नियम को उलटा चलाना है। 3a − 2 = 13 से 3a = 15 और a = 5, या एक पंक्ति में a = (13 + 2)/3 = 5. संक्रियाओं को उलटे क्रम में खोलना ही पूरा कौशल है: नियम ने पहले गुणा किया फिर घटाया, अतः खोलना पहले जोड़ता है फिर भाग देता है। (11 उलटने के बजाय 13 पर नियम सीधा लगा देता है।)"
+        },
+        "mr": {
+          "stem": "f(x) = 3x − 2 आणि f(a) = 13. a किती?",
+          "choices": [
+            "3",
+            "11",
+            "5",
+            "15"
+          ],
+          "solution": "हे नियम उलटा चालवणे आहे. 3a − 2 = 13 यातून 3a = 15 आणि a = 5, वा एका ओळीत a = (13 + 2)/3 = 5. क्रिया उलट्या क्रमाने सोडवणे हेच अख्खे कौशल्य: नियमाने आधी गुणले मग वजा केले, म्हणून सोडवणे आधी जोडते मग भागते. (11 उलटवण्याऐवजी 13 वर नियम सरळ लावते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "How many ONE-ONE functions are there from a set of 3 elements into a set of 4 elements?",
+      "choices": [
+        "81",
+        "64",
+        "12",
+        "24"
+      ],
+      "answerIndex": 3,
+      "solution": "One-one means no two inputs may share an output, so each choice uses up a target: 4 choices for the first element, 3 left for the second, 2 for the third — 4 × 3 × 2 = 24. Compare it with the count of ALL functions, which is 4 × 4 × 4 = 64, and the difference is exactly the ones that repeat a target. Note also that no one-one function could exist the other way round, from 4 elements into 3, because the fourth would have nowhere left to go. (64 counts every function and ignores the one-one condition.)",
+      "checkExpr": "4*3*2",
+      "translations": {
+        "hi": {
+          "stem": "3 अवयवों के समुच्चय से 4 अवयवों के समुच्चय में कितने एकैकी फलन हैं?",
+          "choices": [
+            "81",
+            "64",
+            "12",
+            "24"
+          ],
+          "solution": "एकैकी का अर्थ है कि दो निवेश एक निर्गम साझा नहीं कर सकते, अतः हर चुनाव एक लक्ष्य खा जाता है: पहले अवयव के लिए 4 विकल्प, दूसरे के लिए बचे 3, तीसरे के लिए 2 — 4 × 3 × 2 = 24. इसकी तुलना सभी फलनों की गिनती से करो, जो 4 × 4 × 4 = 64 है, और अंतर ठीक वे हैं जो कोई लक्ष्य दोहराते हैं। यह भी ध्यान दो कि उलटी दिशा में, 4 अवयवों से 3 में, कोई एकैकी फलन हो ही नहीं सकता, क्योंकि चौथे के लिए जगह ही नहीं बचती। (64 हर फलन गिनता है और एकैकी शर्त अनदेखी कर देता है।)"
+        },
+        "mr": {
+          "stem": "3 घटकांच्या संचातून 4 घटकांच्या संचात किती एकास-एक फलने आहेत?",
+          "choices": [
+            "81",
+            "64",
+            "12",
+            "24"
+          ],
+          "solution": "एकास-एक म्हणजे दोन आदाने एक निर्गम वाटून घेऊ शकत नाहीत, म्हणून प्रत्येक निवड एक लक्ष्य संपवते: पहिल्या घटकासाठी 4 पर्याय, दुसऱ्यासाठी उरलेले 3, तिसऱ्यासाठी 2 — 4 × 3 × 2 = 24. याची तुलना सर्व फलनांच्या मोजणीशी करा, जी 4 × 4 × 4 = 64 आहे, आणि फरक नेमका तीच जी एखादे लक्ष्य पुन्हा वापरतात. हेही लक्षात घ्या की उलट दिशेने, 4 घटकांतून 3 मध्ये, कोणतेही एकास-एक फलन असूच शकत नाही, कारण चौथ्यासाठी जागाच उरत नाही. (64 प्रत्येक फलन मोजते आणि एकास-एक अट दुर्लक्षते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "f(x) = x² + 2x + 3. What is f(1) + f(−1)?",
+      "choices": [
+        "8",
+        "12",
+        "6",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "f(1) = 1 + 2 + 3 = 6 and f(−1) = 1 − 2 + 3 = 2, so the sum is 8. The square makes both x² terms positive while the linear term changes sign, which is why the two values differ by exactly twice the linear part. A useful check: adding f(x) and f(−x) always cancels every odd-powered term and doubles every even one, so here the answer had to be 2(1 + 3) = 8. (12 doubles f(1), assuming the two values are equal.)",
+      "checkExpr": "(1+2+3)+(1-2+3)",
+      "translations": {
+        "hi": {
+          "stem": "f(x) = x² + 2x + 3. f(1) + f(−1) क्या है?",
+          "choices": [
+            "8",
+            "12",
+            "6",
+            "4"
+          ],
+          "solution": "f(1) = 1 + 2 + 3 = 6 और f(−1) = 1 − 2 + 3 = 2, अतः योग 8. वर्ग दोनों x² पदों को धनात्मक रखता है जबकि रैखिक पद चिह्न बदल देता है, इसीलिए दोनों मान ठीक रैखिक भाग के दुगुने से भिन्न हैं। एक उपयोगी जाँच: f(x) और f(−x) जोड़ने पर हर विषम-घात पद कट जाता है और हर सम-घात दोगुना हो जाता है, अतः यहाँ उत्तर 2(1 + 3) = 8 होना ही था। (12 f(1) को दोगुना कर देता है, यह मानकर कि दोनों मान बराबर हैं।)"
+        },
+        "mr": {
+          "stem": "f(x) = x² + 2x + 3. f(1) + f(−1) किती?",
+          "choices": [
+            "8",
+            "12",
+            "6",
+            "4"
+          ],
+          "solution": "f(1) = 1 + 2 + 3 = 6 आणि f(−1) = 1 − 2 + 3 = 2, म्हणून बेरीज 8. वर्ग दोन्ही x² पदे धन ठेवतो तर रेषीय पद चिन्ह बदलते, म्हणूनच दोन्ही मूल्ये नेमकी रेषीय भागाच्या दुपटीने वेगळी. एक उपयुक्त तपासणी: f(x) आणि f(−x) जोडल्यावर प्रत्येक विषम-घात पद छेदते आणि प्रत्येक सम-घात दुप्पट होते, म्हणून इथे उत्तर 2(1 + 3) = 8 असणारच होते. (12 f(1) दुप्पट करते, दोन्ही मूल्ये समान मानून.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A = {1, 2, 3} and R = {(1,1), (2,2), (3,3), (1,2), (2,1)} is a relation on A. How many more ordered pairs would have to be added to make R equal to A × A?",
+      "choices": [
+        "4",
+        "3",
+        "5",
+        "9"
+      ],
+      "answerIndex": 0,
+      "solution": "A × A has 3 × 3 = 9 ordered pairs and R already holds 5, so 9 − 5 = 4 are missing — namely (1,3), (3,1), (2,3) and (3,2). The point of listing them is to see that A × A is the largest relation on A and the empty set is the smallest, with every other relation sitting somewhere between. (9 gives the size of A × A and forgets that five pairs are already there.)",
+      "checkExpr": "3*3-5",
+      "translations": {
+        "hi": {
+          "stem": "A = {1, 2, 3} और R = {(1,1), (2,2), (3,3), (1,2), (2,1)} A पर एक संबंध है। R को A × A के बराबर करने के लिए और कितने क्रमित युग्म जोड़ने पड़ेंगे?",
+          "choices": [
+            "4",
+            "3",
+            "5",
+            "9"
+          ],
+          "solution": "A × A में 3 × 3 = 9 क्रमित युग्म हैं और R में पहले से 5, अतः 9 − 5 = 4 अनुपस्थित हैं — यानी (1,3), (3,1), (2,3) और (3,2). उन्हें गिनाने का प्रयोजन यह देखना है कि A × A, A पर सबसे बड़ा संबंध है और रिक्त समुच्चय सबसे छोटा, और बाक़ी हर संबंध कहीं बीच में बैठता है। (9 A × A का आकार देता है और भूल जाता है कि पाँच युग्म पहले से हैं।)"
+        },
+        "mr": {
+          "stem": "A = {1, 2, 3} आणि R = {(1,1), (2,2), (3,3), (1,2), (2,1)} हा A वरचा एक संबंध आहे. R ला A × A बरोबर करण्यासाठी आणखी किती क्रमित जोड्या जोडाव्या लागतील?",
+          "choices": [
+            "4",
+            "3",
+            "5",
+            "9"
+          ],
+          "solution": "A × A मध्ये 3 × 3 = 9 क्रमित जोड्या आहेत आणि R मध्ये आधीच 5, म्हणून 9 − 5 = 4 गैरहजर आहेत — म्हणजे (1,3), (3,1), (2,3) आणि (3,2). त्यांची यादी करण्याचा हेतू हे पाहणे की A × A हा A वरचा सर्वांत मोठा संबंध आणि रिक्त संच सर्वांत लहान, आणि उरलेला प्रत्येक संबंध कुठेतरी मध्ये बसतो. (9 A × A चा आकार देते आणि पाच जोड्या आधीच आहेत हे विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A set A has 3 elements. How many different relations can be defined FROM A TO A?",
+      "choices": [
+        "512",
+        "9",
+        "64",
+        "81"
+      ],
+      "answerIndex": 0,
+      "solution": "A × A has 3 × 3 = 9 ordered pairs, and a relation is any subset of those nine, so the count is 2 raised to the ninth power: 512. Two levels of counting are stacked here, and getting them in the right order is the whole question — first count the pairs by multiplying, then count the subsets by exponentiating. It is worth feeling how fast this grows: a set of four elements gives 16 pairs and 65536 relations, and a set of five gives over thirty million. (9 stops after counting the pairs.)",
+      "checkExpr": "2*2*2*2*2*2*2*2*2",
+      "translations": {
+        "hi": {
+          "stem": "किसी समुच्चय A में 3 अवयव हैं। A से A तक कितने भिन्न संबंध परिभाषित किए जा सकते हैं?",
+          "choices": [
+            "512",
+            "9",
+            "64",
+            "81"
+          ],
+          "solution": "A × A में 3 × 3 = 9 क्रमित युग्म हैं, और संबंध उन नौ का कोई भी उपसमुच्चय है, अतः गिनती 2 की नौवीं घात है: 512. यहाँ गिनती की दो परतें एक पर एक रखी हैं, और उन्हें सही क्रम में लेना ही पूरा प्रश्न है — पहले गुणा करके युग्म गिनो, फिर घात लगाकर उपसमुच्चय। यह महसूस करने योग्य है कि यह कितनी तेज़ी से बढ़ता है: चार अवयवों का समुच्चय 16 युग्म और 65536 संबंध देता है, और पाँच का तीन करोड़ से ऊपर। (9 युग्म गिनकर रुक जाता है।)"
+        },
+        "mr": {
+          "stem": "एका संच A मध्ये 3 घटक आहेत. A पासून A पर्यंत किती वेगवेगळे संबंध व्याख्यायित करता येतील?",
+          "choices": [
+            "512",
+            "9",
+            "64",
+            "81"
+          ],
+          "solution": "A × A मध्ये 3 × 3 = 9 क्रमित जोड्या आहेत, आणि संबंध म्हणजे त्या नऊंचा कोणताही उपसंच, म्हणून मोजणी 2 ची नववी घात: 512. इथे मोजणीचे दोन थर एकावर एक ठेवले आहेत, आणि ते योग्य क्रमाने घेणे हाच अख्खा प्रश्न — आधी गुणून जोड्या मोजा, मग घात लावून उपसंच. हे जाणवण्याजोगे की हे किती वेगाने वाढते: चार घटकांचा संच 16 जोड्या आणि 65536 संबंध देतो, आणि पाचचा तीन कोटींहून वर. (9 जोड्या मोजून थांबते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "f(x) = (x − 1)/(x + 1). What is f(f(2))?",
+      "choices": [
+        "-0.5",
+        "2",
+        "-2",
+        "0.5"
+      ],
+      "answerIndex": 0,
+      "solution": "Work from the inside out. f(2) = 1/3. Then f(1/3) = (1/3 − 1)/(1/3 + 1) = (−2/3)/(4/3) = −1/2 = −0.5. Two habits keep this clean: never simplify the outer call before the inner one has a number, and clear the fractions by multiplying top and bottom by 3 rather than wrestling with them. There is a pattern hiding here worth chasing — apply f twice more and you return to 2, so this function has period four under composition. (0.5 loses the minus sign when dividing a negative by a positive.)",
+      "checkExpr": "((2-1)/(2+1)-1)/((2-1)/(2+1)+1)",
+      "translations": {
+        "hi": {
+          "stem": "f(x) = (x − 1)/(x + 1). f(f(2)) क्या है?",
+          "choices": [
+            "-0.5",
+            "2",
+            "-2",
+            "0.5"
+          ],
+          "solution": "भीतर से बाहर चलो। f(2) = 1/3. फिर f(1/3) = (1/3 − 1)/(1/3 + 1) = (−2/3)/(4/3) = −1/2 = −0.5. दो आदतें इसे साफ़ रखती हैं: भीतरी आह्वान को संख्या मिलने से पहले बाहरी को कभी सरल मत करो, और भिन्नों से जूझने के बजाय ऊपर-नीचे 3 से गुणा करके उन्हें साफ़ कर दो। यहाँ एक ढर्रा छिपा है जिसका पीछा करने योग्य है — f को दो बार और लगाओ और तुम 2 पर लौट आते हो, अतः संयोजन के अंतर्गत इस फलन का आवर्तकाल चार है। (0.5 ऋण को धन से भाग देते समय ऋण चिह्न खो देता है।)"
+        },
+        "mr": {
+          "stem": "f(x) = (x − 1)/(x + 1). f(f(2)) किती?",
+          "choices": [
+            "-0.5",
+            "2",
+            "-2",
+            "0.5"
+          ],
+          "solution": "आतून बाहेर चला. f(2) = 1/3. मग f(1/3) = (1/3 − 1)/(1/3 + 1) = (−2/3)/(4/3) = −1/2 = −0.5. दोन सवयी हे स्वच्छ ठेवतात: आतल्या आवाहनाला संख्या मिळण्याआधी बाहेरचे कधीही सोपे करू नका, आणि अपूर्णांकांशी झगडण्याऐवजी वर-खाली 3 ने गुणून ते साफ करा. इथे एक साचा दडलेला आहे ज्याचा मागोवा घेण्याजोगा — f आणखी दोनदा लावा आणि तुम्ही 2 वर परतता, म्हणून संयोजनाखाली या फलनाचा आवर्तकाल चार आहे. (0.5 ऋणाला धनाने भागताना ऋण चिन्ह गमावते.)"
+        }
+      }
+    }
+  ]
+}

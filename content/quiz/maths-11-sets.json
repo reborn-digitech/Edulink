@@ -1,0 +1,513 @@
+{
+  "slug": "maths-11-sets",
+  "subject": "MATHS",
+  "classLevel": 11,
+  "chapter": "Chapter 1 — Sets",
+  "name": "Sets",
+  "summary": "A collection given a name and then counted: how many subsets a set of n members has, why the union has to subtract the overlap it counted twice, and how three overlapping surveys are added and subtracted back into one honest total.",
+  "position": 1,
+  "translations": {
+    "hi": {
+      "name": "समुच्चय",
+      "summary": "किसी संग्रह को नाम देकर फिर गिनना: n सदस्यों के समुच्चय के कितने उपसमुच्चय होते हैं, सम्मिलन को वह अतिव्यापन क्यों घटाना पड़ता है जिसे उसने दो बार गिना, और तीन अतिव्यापी सर्वेक्षण जोड़-घटाकर एक ईमानदार कुल कैसे बनते हैं।"
+    },
+    "mr": {
+      "name": "संच",
+      "summary": "एखाद्या संग्रहाला नाव देऊन मग मोजणे: n सदस्यांच्या संचाचे किती उपसंच असतात, संयोगाला त्याने दोनदा मोजलेले आच्छादन का वजा करावे लागते, आणि तीन आच्छादित सर्वेक्षणे बेरीज-वजाबाकी करून एक प्रामाणिक एकूण कशी बनतात."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A set has 3 elements. How many subsets does it have altogether?",
+      "choices": [
+        "6",
+        "9",
+        "3",
+        "8"
+      ],
+      "answerIndex": 3,
+      "solution": "Each element is either in a subset or out of it, so there are two choices per element and 2 × 2 × 2 = 8 subsets in all. That count includes the empty set and the whole set itself, both of which are subsets. (6 doubles the number of elements instead of raising 2 to that power.)",
+      "checkExpr": "2*2*2",
+      "translations": {
+        "hi": {
+          "stem": "किसी समुच्चय में 3 अवयव हैं। उसके कुल कितने उपसमुच्चय हैं?",
+          "choices": [
+            "6",
+            "9",
+            "3",
+            "8"
+          ],
+          "solution": "हर अवयव या तो किसी उपसमुच्चय में है या बाहर, अतः प्रति अवयव दो विकल्प और कुल 2 × 2 × 2 = 8 उपसमुच्चय। उस गिनती में रिक्त समुच्चय और स्वयं पूरा समुच्चय दोनों शामिल हैं, और दोनों उपसमुच्चय हैं। (6 अवयवों की संख्या दोगुनी कर देता है, 2 को उस घात तक उठाने के बजाय।)"
+        },
+        "mr": {
+          "stem": "एका संचात 3 घटक आहेत. त्याचे एकूण किती उपसंच आहेत?",
+          "choices": [
+            "6",
+            "9",
+            "3",
+            "8"
+          ],
+          "solution": "प्रत्येक घटक एकतर एखाद्या उपसंचात असतो किंवा बाहेर, म्हणून प्रति घटक दोन पर्याय आणि एकूण 2 × 2 × 2 = 8 उपसंच. त्या मोजणीत रिक्त संच आणि स्वतः अख्खा संच दोन्ही समाविष्ट, आणि दोन्ही उपसंच आहेत. (6 घटकांची संख्या दुप्पट करते, 2 ला त्या घातापर्यंत नेण्याऐवजी.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A set has 4 elements. How many PROPER subsets does it have?",
+      "choices": [
+        "14",
+        "15",
+        "8",
+        "16"
+      ],
+      "answerIndex": 1,
+      "solution": "There are 2 × 2 × 2 × 2 = 16 subsets in all, and a proper subset is any one of them except the set itself, so 16 − 1 = 15. The empty set is still counted, because it is a proper subset of every non-empty set. (16 forgets to remove the set itself; 14 removes the empty set as well, which the definition does not.)",
+      "checkExpr": "2*2*2*2-1",
+      "translations": {
+        "hi": {
+          "stem": "किसी समुच्चय में 4 अवयव हैं। उसके कितने उचित उपसमुच्चय हैं?",
+          "choices": [
+            "14",
+            "15",
+            "8",
+            "16"
+          ],
+          "solution": "कुल 2 × 2 × 2 × 2 = 16 उपसमुच्चय हैं, और उचित उपसमुच्चय उनमें से स्वयं समुच्चय को छोड़कर कोई भी है, अतः 16 − 1 = 15. रिक्त समुच्चय फिर भी गिना जाता है, क्योंकि वह हर अरिक्त समुच्चय का उचित उपसमुच्चय है। (16 स्वयं समुच्चय हटाना भूल जाता है; 14 रिक्त समुच्चय भी हटा देता है, जो परिभाषा नहीं कहती।)"
+        },
+        "mr": {
+          "stem": "एका संचात 4 घटक आहेत. त्याचे किती उचित उपसंच आहेत?",
+          "choices": [
+            "14",
+            "15",
+            "8",
+            "16"
+          ],
+          "solution": "एकूण 2 × 2 × 2 × 2 = 16 उपसंच आहेत, आणि उचित उपसंच म्हणजे त्यांपैकी स्वतः संच वगळता कोणताही, म्हणून 16 − 1 = 15. रिक्त संच तरीही मोजला जातो, कारण तो प्रत्येक अरिक्त संचाचा उचित उपसंच आहे. (16 स्वतः संच काढणे विसरते; 14 रिक्त संचही काढते, जे व्याख्या सांगत नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "n(A) = 4, n(B) = 3 and n(A ∩ B) = 2. What is n(A ∪ B)?",
+      "choices": [
+        "2",
+        "5",
+        "7",
+        "9"
+      ],
+      "answerIndex": 1,
+      "solution": "Adding 4 and 3 counts the two shared elements twice over, so one copy has to be taken back: 4 + 3 − 2 = 5. This subtraction is the whole reason the union formula exists, and forgetting it is the commonest mistake in the chapter. (7 adds the two sets and never removes the overlap.)",
+      "checkExpr": "4+3-2",
+      "translations": {
+        "hi": {
+          "stem": "n(A) = 4, n(B) = 3 और n(A ∩ B) = 2. n(A ∪ B) क्या है?",
+          "choices": [
+            "2",
+            "5",
+            "7",
+            "9"
+          ],
+          "solution": "4 और 3 जोड़ने पर दोनों साझा अवयव दो बार गिने जाते हैं, अतः एक प्रति वापस लेनी पड़ती है: 4 + 3 − 2 = 5. यही घटाव सम्मिलन सूत्र के होने का पूरा कारण है, और उसे भूलना इस अध्याय की सबसे आम भूल है। (7 दोनों समुच्चय जोड़ देता है और अतिव्यापन कभी हटाता नहीं।)"
+        },
+        "mr": {
+          "stem": "n(A) = 4, n(B) = 3 आणि n(A ∩ B) = 2. n(A ∪ B) किती?",
+          "choices": [
+            "2",
+            "5",
+            "7",
+            "9"
+          ],
+          "solution": "4 आणि 3 जोडल्यावर दोन्ही सामायिक घटक दोनदा मोजले जातात, म्हणून एक प्रत परत घ्यावी लागते: 4 + 3 − 2 = 5. हीच वजाबाकी संयोग सूत्र असण्याचे अख्खे कारण, आणि ती विसरणे ही या प्रकरणातली सर्वांत सामान्य चूक. (7 दोन्ही संच जोडते आणि आच्छादन कधीच काढत नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "In a class of 40 pupils, 25 like tea and 20 like coffee, and 10 like both. How many like at least one of the two?",
+      "choices": [
+        "45",
+        "35",
+        "55",
+        "15"
+      ],
+      "answerIndex": 1,
+      "solution": "At least one means the union: 25 + 20 − 10 = 35. Notice that the class size of 40 is not needed here — it is only needed for the next question, which asks about the ones left out. (45 adds the two groups and counts the ten who like both twice.)",
+      "checkExpr": "25+20-10",
+      "translations": {
+        "hi": {
+          "stem": "40 विद्यार्थियों की कक्षा में 25 को चाय पसंद है और 20 को कॉफ़ी, और 10 को दोनों। कितनों को दोनों में से कम से कम एक पसंद है?",
+          "choices": [
+            "45",
+            "35",
+            "55",
+            "15"
+          ],
+          "solution": "कम से कम एक का अर्थ है सम्मिलन: 25 + 20 − 10 = 35. ध्यान दो कि 40 की कक्षा-संख्या यहाँ चाहिए ही नहीं — वह केवल अगले प्रश्न के लिए चाहिए, जो बचे हुओं के बारे में पूछता है। (45 दोनों समूह जोड़ देता है और दोनों पसंद करने वाले दस को दो बार गिनता है।)"
+        },
+        "mr": {
+          "stem": "40 विद्यार्थ्यांच्या वर्गात 25 जणांना चहा आवडतो आणि 20 जणांना कॉफी, आणि 10 जणांना दोन्ही. किती जणांना दोघांपैकी किमान एक आवडतो?",
+          "choices": [
+            "45",
+            "35",
+            "55",
+            "15"
+          ],
+          "solution": "किमान एक म्हणजे संयोग: 25 + 20 − 10 = 35. लक्षात घ्या की 40 ची वर्गसंख्या इथे लागतच नाही — ती केवळ पुढच्या प्रश्नासाठी लागते, जो उरलेल्यांबद्दल विचारतो. (45 दोन्ही गट जोडते आणि दोन्ही आवडणाऱ्या दहांना दोनदा मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "In the same class of 40, with 25 liking tea, 20 liking coffee and 10 liking both, how many like neither?",
+      "choices": [
+        "10",
+        "0",
+        "5",
+        "15"
+      ],
+      "answerIndex": 2,
+      "solution": "Take the union away from the whole class: 40 − (25 + 20 − 10) = 40 − 35 = 5. In set language these five are the complement of A ∪ B, and the fact that the answer came out positive is a check on the data — if it had come out negative, the numbers could not all be true at once. (10 subtracts only the tea drinkers' overlap.)",
+      "checkExpr": "40-(25+20-10)",
+      "translations": {
+        "hi": {
+          "stem": "उसी 40 की कक्षा में, जहाँ 25 को चाय, 20 को कॉफ़ी और 10 को दोनों पसंद हैं, कितनों को इनमें से कुछ भी पसंद नहीं?",
+          "choices": [
+            "10",
+            "0",
+            "5",
+            "15"
+          ],
+          "solution": "पूरी कक्षा में से सम्मिलन घटाओ: 40 − (25 + 20 − 10) = 40 − 35 = 5. समुच्चय की भाषा में ये पाँच A ∪ B के पूरक हैं, और उत्तर का धनात्मक निकलना आँकड़ों की जाँच है — यदि ऋणात्मक निकलता तो सारी संख्याएँ एक साथ सच नहीं हो सकतीं। (10 केवल चाय वालों का अतिव्यापन घटा देता है।)"
+        },
+        "mr": {
+          "stem": "त्याच 40 च्या वर्गात, जिथे 25 जणांना चहा, 20 जणांना कॉफी आणि 10 जणांना दोन्ही आवडतात, किती जणांना यांपैकी काहीच आवडत नाही?",
+          "choices": [
+            "10",
+            "0",
+            "5",
+            "15"
+          ],
+          "solution": "अख्ख्या वर्गातून संयोग वजा करा: 40 − (25 + 20 − 10) = 40 − 35 = 5. संचाच्या भाषेत हे पाच म्हणजे A ∪ B चे पूरक, आणि उत्तर धन निघणे ही आकडेवारीची तपासणी — ऋण निघाले असते तर सर्व संख्या एकाच वेळी खऱ्या असू शकल्या नसत्या. (10 केवळ चहा घेणाऱ्यांचे आच्छादन वजा करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A has 5 elements, B has 8, and every element of A is also in B. What is n(A ∪ B)?",
+      "choices": [
+        "13",
+        "5",
+        "8",
+        "3"
+      ],
+      "answerIndex": 2,
+      "solution": "If A is contained in B then the intersection IS A, so n(A ∩ B) = 5 and the union is 5 + 8 − 5 = 8. Put more plainly, adding a subset to its superset adds nothing new. The general lesson: before using the formula, ask what the intersection actually is — here it was given in words rather than as a number. (13 adds the two counts as though the sets were disjoint.)",
+      "checkExpr": "5+8-5",
+      "translations": {
+        "hi": {
+          "stem": "A में 5 अवयव हैं, B में 8, और A का हर अवयव B में भी है। n(A ∪ B) क्या है?",
+          "choices": [
+            "13",
+            "5",
+            "8",
+            "3"
+          ],
+          "solution": "यदि A, B में समाहित है तो प्रतिच्छेदन A ही है, अतः n(A ∩ B) = 5 और सम्मिलन 5 + 8 − 5 = 8. सीधे कहें तो किसी उपसमुच्चय को उसके अधिसमुच्चय में जोड़ने से कुछ नया नहीं जुड़ता। सामान्य सीख: सूत्र लगाने से पहले पूछो कि प्रतिच्छेदन वस्तुतः क्या है — यहाँ वह संख्या के रूप में नहीं, शब्दों में दिया गया था। (13 दोनों गिनतियाँ ऐसे जोड़ देता है मानो समुच्चय असंयुक्त हों।)"
+        },
+        "mr": {
+          "stem": "A मध्ये 5 घटक आहेत, B मध्ये 8, आणि A चा प्रत्येक घटक B मध्येही आहे. n(A ∪ B) किती?",
+          "choices": [
+            "13",
+            "5",
+            "8",
+            "3"
+          ],
+          "solution": "जर A हा B मध्ये सामावलेला असेल तर छेद हा A च आहे, म्हणून n(A ∩ B) = 5 आणि संयोग 5 + 8 − 5 = 8. सरळ सांगायचे तर एखादा उपसंच त्याच्या अधिसंचात जोडल्याने काहीही नवे जोडले जात नाही. सामान्य धडा: सूत्र लावण्याआधी विचारा की छेद प्रत्यक्षात काय आहे — इथे तो संख्येच्या रूपात नव्हे, शब्दांत दिला होता. (13 दोन्ही मोजण्या असे जोडते जणू संच विभक्त असावेत.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A set A has 2 elements. How many elements does the power set of the power set of A have?",
+      "choices": [
+        "4",
+        "16",
+        "32",
+        "8"
+      ],
+      "answerIndex": 1,
+      "solution": "Work outward one layer at a time. P(A) has 2 × 2 = 4 elements, and the power set of a 4-element set has 2 × 2 × 2 × 2 = 16. The trap is to double 4 rather than raise 2 to the fourth power — the count of subsets grows explosively, and by the next layer it would be over sixty-five thousand. (8 doubles the previous answer instead of exponentiating it.)",
+      "checkExpr": "2*2*2*2",
+      "translations": {
+        "hi": {
+          "stem": "किसी समुच्चय A में 2 अवयव हैं। A के घात समुच्चय के घात समुच्चय में कितने अवयव हैं?",
+          "choices": [
+            "4",
+            "16",
+            "32",
+            "8"
+          ],
+          "solution": "एक-एक परत बाहर की ओर चलो। P(A) में 2 × 2 = 4 अवयव हैं, और 4 अवयवों वाले समुच्चय के घात समुच्चय में 2 × 2 × 2 × 2 = 16. जाल यह है कि 4 को दोगुना कर दो, न कि 2 को चौथी घात तक उठाओ — उपसमुच्चयों की गिनती विस्फोटक ढंग से बढ़ती है, और अगली परत पर वह पैंसठ हज़ार से ऊपर होती। (8 पिछले उत्तर को दोगुना कर देता है, घात लगाने के बजाय।)"
+        },
+        "mr": {
+          "stem": "एका संच A मध्ये 2 घटक आहेत. A च्या घातसंचाच्या घातसंचात किती घटक आहेत?",
+          "choices": [
+            "4",
+            "16",
+            "32",
+            "8"
+          ],
+          "solution": "एकेक थर बाहेरच्या दिशेने चला. P(A) मध्ये 2 × 2 = 4 घटक आहेत, आणि 4 घटकांच्या संचाच्या घातसंचात 2 × 2 × 2 × 2 = 16. सापळा असा की 4 दुप्पट करावे, 2 ला चौथ्या घातापर्यंत नेण्याऐवजी — उपसंचांची मोजणी स्फोटकपणे वाढते, आणि पुढच्या थरावर ती पासष्ट हजारांहून वर गेली असती. (8 मागचे उत्तर दुप्पट करते, घात लावण्याऐवजी.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A = {x : x is a natural number, x < 10 and x is divisible by 3}. How many elements does A have?",
+      "choices": [
+        "4",
+        "9",
+        "2",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "The multiples of 3 below 10 are 3, 6 and 9, so 9/3 = 3 elements. The two things worth checking every time a set is given in this builder form are whether the bound is strict and whether zero counts: 10 itself is excluded because the condition says less than 10, and 0 is excluded because it is not a natural number. (4 counts 0 as a multiple of 3.)",
+      "checkExpr": "9/3",
+      "translations": {
+        "hi": {
+          "stem": "A = {x : x प्राकृत संख्या है, x < 10 और x, 3 से विभाज्य है}. A में कितने अवयव हैं?",
+          "choices": [
+            "4",
+            "9",
+            "2",
+            "3"
+          ],
+          "solution": "10 से नीचे 3 के गुणज 3, 6 और 9 हैं, अतः 9/3 = 3 अवयव। जब भी समुच्चय इस निर्माण-रूप में दिया जाए तब हर बार दो बातें जाँचने योग्य हैं: सीमा कठोर है या नहीं और शून्य गिना जाएगा या नहीं: 10 स्वयं बाहर है क्योंकि शर्त 10 से कम कहती है, और 0 बाहर है क्योंकि वह प्राकृत संख्या नहीं। (4 शून्य को 3 का गुणज गिन लेता है।)"
+        },
+        "mr": {
+          "stem": "A = {x : x ही नैसर्गिक संख्या आहे, x < 10 आणि x हा 3 ने भाग जाणारा}. A मध्ये किती घटक आहेत?",
+          "choices": [
+            "4",
+            "9",
+            "2",
+            "3"
+          ],
+          "solution": "10 खालचे 3 चे पट 3, 6 आणि 9 आहेत, म्हणून 9/3 = 3 घटक. संच या बांधणी-रूपात दिला जातो तेव्हा प्रत्येक वेळी दोन गोष्टी तपासण्याजोग्या: मर्यादा कठोर आहे का आणि शून्य मोजायचे का: 10 स्वतः बाहेर आहे कारण अट 10 हून कमी म्हणते, आणि 0 बाहेर आहे कारण ती नैसर्गिक संख्या नाही. (4 शून्याला 3 चा पट मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Of 100 people surveyed, 60 read newspaper A, 50 read newspaper B and 30 read both. How many read EXACTLY ONE of the two?",
+      "choices": [
+        "50",
+        "30",
+        "20",
+        "80"
+      ],
+      "answerIndex": 0,
+      "solution": "Exactly one is not the same as at least one. Those who read only A number 60 − 30 = 30 and those who read only B number 50 − 30 = 20, giving 50 — which is the union minus the overlap once more, so the thirty are removed TWICE in total: 60 + 50 − 2 × 30 = 50. (80 answers at least one, which removes the overlap only once.)",
+      "checkExpr": "60+50-2*30",
+      "translations": {
+        "hi": {
+          "stem": "सर्वेक्षण किए गए 100 लोगों में 60 समाचार-पत्र A पढ़ते हैं, 50 समाचार-पत्र B और 30 दोनों। कितने ठीक एक ही पढ़ते हैं?",
+          "choices": [
+            "50",
+            "30",
+            "20",
+            "80"
+          ],
+          "solution": "ठीक एक और कम से कम एक एक बात नहीं। केवल A पढ़ने वाले 60 − 30 = 30 और केवल B पढ़ने वाले 50 − 30 = 20, जिससे 50 — जो सम्मिलन में से अतिव्यापन एक बार और घटाना है, अतः वे तीस कुल मिलाकर दो बार हटते हैं: 60 + 50 − 2 × 30 = 50. (80 कम से कम एक का उत्तर देता है, जो अतिव्यापन केवल एक बार हटाता है।)"
+        },
+        "mr": {
+          "stem": "सर्वेक्षण केलेल्या 100 लोकांपैकी 60 जण वृत्तपत्र A वाचतात, 50 जण वृत्तपत्र B आणि 30 जण दोन्ही. किती जण नेमके एकच वाचतात?",
+          "choices": [
+            "50",
+            "30",
+            "20",
+            "80"
+          ],
+          "solution": "नेमके एक आणि किमान एक एकच गोष्ट नाही. केवळ A वाचणारे 60 − 30 = 30 आणि केवळ B वाचणारे 50 − 30 = 20, ज्यातून 50 — जे संयोगातून आच्छादन आणखी एकदा वजा करणे, म्हणून ते तीस एकूण दोनदा वजा होतात: 60 + 50 − 2 × 30 = 50. (80 किमान एकचे उत्तर देते, जे आच्छादन केवळ एकदा वजा करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "n(A) = 20, n(B) = 15, n(C) = 10, n(A ∩ B) = 5, n(B ∩ C) = 4, n(A ∩ C) = 3 and n(A ∩ B ∩ C) = 2. What is n(A ∪ B ∪ C)?",
+      "choices": [
+        "37",
+        "35",
+        "33",
+        "45"
+      ],
+      "answerIndex": 1,
+      "solution": "Add the three, take back each pairwise overlap, then put the triple overlap back: 20 + 15 + 10 − 5 − 4 − 3 + 2 = 35. The final addition looks arbitrary until you track one person in all three sets: they were counted three times by the additions and removed three times by the subtractions, leaving them out altogether, so one copy has to be restored. (33 subtracts the triple overlap instead of adding it back.)",
+      "checkExpr": "20+15+10-5-4-3+2",
+      "translations": {
+        "hi": {
+          "stem": "n(A) = 20, n(B) = 15, n(C) = 10, n(A ∩ B) = 5, n(B ∩ C) = 4, n(A ∩ C) = 3 और n(A ∩ B ∩ C) = 2. n(A ∪ B ∪ C) क्या है?",
+          "choices": [
+            "37",
+            "35",
+            "33",
+            "45"
+          ],
+          "solution": "तीनों जोड़ो, हर युग्म-अतिव्यापन वापस लो, फिर त्रिक अतिव्यापन लौटा दो: 20 + 15 + 10 − 5 − 4 − 3 + 2 = 35. अंतिम जोड़ मनमाना लगता है जब तक तुम तीनों समुच्चयों में आए एक व्यक्ति का पीछा न करो: उसे जोड़ों ने तीन बार गिना और घटावों ने तीन बार हटाया, जिससे वह पूरी तरह छूट गया, अतः एक प्रति लौटानी पड़ती है। (33 त्रिक अतिव्यापन लौटाने के बजाय घटा देता है।)"
+        },
+        "mr": {
+          "stem": "n(A) = 20, n(B) = 15, n(C) = 10, n(A ∩ B) = 5, n(B ∩ C) = 4, n(A ∩ C) = 3 आणि n(A ∩ B ∩ C) = 2. n(A ∪ B ∪ C) किती?",
+          "choices": [
+            "37",
+            "35",
+            "33",
+            "45"
+          ],
+          "solution": "तिन्ही जोडा, प्रत्येक जोडी-आच्छादन परत घ्या, मग त्रिक आच्छादन परत घाला: 20 + 15 + 10 − 5 − 4 − 3 + 2 = 35. शेवटची बेरीज मनमानी वाटते जोवर तुम्ही तिन्ही संचांत आलेल्या एका व्यक्तीचा मागोवा घेत नाही: तिला बेरजांनी तीनदा मोजले आणि वजाबाकींनी तीनदा काढले, ज्याने ती पूर्णपणे सुटली, म्हणून एक प्रत परत आणावी लागते. (33 त्रिक आच्छादन परत घालण्याऐवजी वजा करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a group of 65 people, every person likes cricket or tennis or both. 40 like cricket and 10 like both. How many like tennis ONLY?",
+      "choices": [
+        "15",
+        "35",
+        "30",
+        "25"
+      ],
+      "answerIndex": 3,
+      "solution": "Because nobody is outside the union, everyone who does not like cricket must like tennis: 65 − 40 = 25 like tennis only. Note what the ten who like both are for — they are not needed for this answer, but they give the tennis total, which is 25 + 10 = 35. Reading the question as tennis ONLY rather than tennis altogether is the whole difficulty. (35 gives the total who like tennis, including those who also like cricket.)",
+      "checkExpr": "65-40",
+      "translations": {
+        "hi": {
+          "stem": "65 लोगों के समूह में हर व्यक्ति को क्रिकेट या टेनिस या दोनों पसंद हैं। 40 को क्रिकेट पसंद है और 10 को दोनों। कितनों को केवल टेनिस पसंद है?",
+          "choices": [
+            "15",
+            "35",
+            "30",
+            "25"
+          ],
+          "solution": "चूँकि कोई सम्मिलन के बाहर नहीं, जिसे क्रिकेट पसंद नहीं उसे टेनिस पसंद होना ही चाहिए: 65 − 40 = 25 को केवल टेनिस पसंद है। ध्यान दो कि दोनों पसंद करने वाले दस किसलिए हैं — इस उत्तर के लिए वे चाहिए नहीं, पर वे टेनिस का कुल देते हैं, जो 25 + 10 = 35 है। प्रश्न को कुल टेनिस नहीं, केवल टेनिस पढ़ना ही पूरी कठिनाई है। (35 टेनिस पसंद करने वालों का कुल देता है, उन्हें मिलाकर जिन्हें क्रिकेट भी पसंद है।)"
+        },
+        "mr": {
+          "stem": "65 लोकांच्या गटात प्रत्येकाला क्रिकेट किंवा टेनिस किंवा दोन्ही आवडतात. 40 जणांना क्रिकेट आवडते आणि 10 जणांना दोन्ही. किती जणांना फक्त टेनिस आवडते?",
+          "choices": [
+            "15",
+            "35",
+            "30",
+            "25"
+          ],
+          "solution": "कोणीही संयोगाबाहेर नसल्याने, ज्याला क्रिकेट आवडत नाही त्याला टेनिस आवडलेच पाहिजे: 65 − 40 = 25 जणांना फक्त टेनिस आवडते. लक्षात घ्या की दोन्ही आवडणारे दहा कशासाठी आहेत — या उत्तरासाठी ते लागत नाहीत, पण ते टेनिसचे एकूण देतात, जे 25 + 10 = 35. प्रश्न एकूण टेनिस नव्हे, फक्त टेनिस वाचणे हीच अख्खी अडचण. (35 टेनिस आवडणाऱ्यांचे एकूण देते, ज्यांना क्रिकेटही आवडते त्यांच्यासह.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "In a class of 60, 30 play football and 25 play hockey, while 10 play neither. How many play both?",
+      "choices": [
+        "5",
+        "10",
+        "15",
+        "20"
+      ],
+      "answerIndex": 0,
+      "solution": "This runs the union formula backwards. The union is everyone except the ten who play neither, so n(A ∪ B) = 60 − 10 = 50. Then 30 + 25 − n(A ∩ B) = 50 gives n(A ∩ B) = 5. Whenever a question gives you the neither figure, it is really handing you the union in disguise — convert it first and the formula does the rest. (15 forgets the ten who play neither and works from a union of 60.)",
+      "checkExpr": "30+25-(60-10)",
+      "translations": {
+        "hi": {
+          "stem": "60 की कक्षा में 30 फ़ुटबॉल खेलते हैं और 25 हॉकी, जबकि 10 कोई भी नहीं खेलते। कितने दोनों खेलते हैं?",
+          "choices": [
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "solution": "यह सम्मिलन सूत्र को उलटा चलाना है। सम्मिलन है वे सब जो कोई भी न खेलने वाले दस को छोड़कर हैं, अतः n(A ∪ B) = 60 − 10 = 50. फिर 30 + 25 − n(A ∩ B) = 50 से n(A ∩ B) = 5. जब भी प्रश्न कोई भी नहीं का आँकड़ा दे, वह असल में भेस बदलकर सम्मिलन ही सौंप रहा है — पहले उसे बदलो और बाक़ी सूत्र कर देता है। (15 कोई भी न खेलने वाले दस को भूलकर 60 के सम्मिलन से चलता है।)"
+        },
+        "mr": {
+          "stem": "60 च्या वर्गात 30 जण फुटबॉल खेळतात आणि 25 जण हॉकी, तर 10 जण दोन्हीही खेळत नाहीत. किती जण दोन्ही खेळतात?",
+          "choices": [
+            "5",
+            "10",
+            "15",
+            "20"
+          ],
+          "solution": "हे संयोग सूत्र उलटे चालवणे आहे. संयोग म्हणजे दोन्हीही न खेळणाऱ्या दहा वगळता सर्वजण, म्हणून n(A ∪ B) = 60 − 10 = 50. मग 30 + 25 − n(A ∩ B) = 50 यातून n(A ∩ B) = 5. जेव्हा जेव्हा प्रश्न दोन्हीही नाही असा आकडा देतो, तो प्रत्यक्षात वेष बदलून संयोगच सोपवत असतो — आधी त्याचे रूपांतर करा आणि बाकी सूत्र करते. (15 दोन्हीही न खेळणारे दहा विसरून 60 च्या संयोगातून चालते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "In a town of 10000 families, 3500 take newspaper A, 2500 take newspaper B and 1200 take both. How many families take neither?",
+      "choices": [
+        "4800",
+        "4000",
+        "5200",
+        "5800"
+      ],
+      "answerIndex": 2,
+      "solution": "The union is 3500 + 2500 − 1200 = 4800, so the families outside it number 10000 − 4800 = 5200. The size of the numbers changes nothing about the method, which is the point of putting a large one here: the same two steps that handled a class of forty handle a town of ten thousand. It is worth sanity-checking the result — more than half the town takes no paper at all, which is entirely plausible and would not have been if the answer had come out above 10000. (4800 answers the union rather than its complement.)",
+      "checkExpr": "10000-(3500+2500-1200)",
+      "translations": {
+        "hi": {
+          "stem": "10000 परिवारों के नगर में 3500 समाचार-पत्र A लेते हैं, 2500 समाचार-पत्र B और 1200 दोनों। कितने परिवार कोई भी नहीं लेते?",
+          "choices": [
+            "4800",
+            "4000",
+            "5200",
+            "5800"
+          ],
+          "solution": "सम्मिलन 3500 + 2500 − 1200 = 4800 है, अतः उसके बाहर के परिवार 10000 − 4800 = 5200. संख्याओं का बड़ा होना तरीक़े में कुछ नहीं बदलता, और यहाँ बड़ी संख्या रखने का प्रयोजन यही है: चालीस की कक्षा जिन दो चरणों से निपटी उन्हीं से दस हज़ार का नगर निपटता है। परिणाम की समझ-जाँच करने योग्य है — नगर का आधे से अधिक कोई पत्र नहीं लेता, जो पूरी तरह संभव है और तब न होता जब उत्तर 10000 से ऊपर निकलता। (4800 पूरक के बजाय सम्मिलन का उत्तर देता है।)"
+        },
+        "mr": {
+          "stem": "10000 कुटुंबांच्या गावात 3500 कुटुंबे वृत्तपत्र A घेतात, 2500 कुटुंबे वृत्तपत्र B आणि 1200 दोन्ही. किती कुटुंबे एकही घेत नाहीत?",
+          "choices": [
+            "4800",
+            "4000",
+            "5200",
+            "5800"
+          ],
+          "solution": "संयोग 3500 + 2500 − 1200 = 4800 आहे, म्हणून त्याबाहेरची कुटुंबे 10000 − 4800 = 5200. संख्या मोठ्या असणे पद्धतीत काहीच बदलत नाही, आणि इथे मोठी संख्या ठेवण्याचा हेतू हाच: चाळीसच्या वर्गाला ज्या दोन पायऱ्यांनी हाताळले त्याच दहा हजारांच्या गावाला हाताळतात. निकालाची समजून-तपासणी करण्याजोगी — गावातली निम्म्याहून अधिक कुटुंबे कोणतेच वृत्तपत्र घेत नाहीत, जे पूर्णपणे संभवनीय आहे आणि उत्तर 10000 हून वर निघाले असते तर नसते. (4800 पूरकाऐवजी संयोगाचे उत्तर देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Of 200 students, 120 take maths, 90 take physics and 70 take chemistry; 40 take maths and physics, 30 take physics and chemistry, 50 take maths and chemistry, and 20 take all three. How many take none of the three?",
+      "choices": [
+        "180",
+        "0",
+        "30",
+        "20"
+      ],
+      "answerIndex": 3,
+      "solution": "The three-set union is 120 + 90 + 70 − 40 − 30 − 50 + 20 = 180, so 200 − 180 = 20 take none. Two habits make this kind of question safe. First, keep the alternating pattern in order — add the singles, subtract the pairs, add the triple — because it is the only part that has to be memorised. Second, check the result against the data before writing it down: a union of 180 out of 200 leaves a positive remainder, whereas an arithmetic slip that pushed the union above 200 would be flagged immediately by an impossible negative. (180 answers the union instead of what is left outside it.)",
+      "checkExpr": "200-(120+90+70-40-30-50+20)",
+      "translations": {
+        "hi": {
+          "stem": "200 विद्यार्थियों में 120 गणित लेते हैं, 90 भौतिकी और 70 रसायन; 40 गणित और भौतिकी, 30 भौतिकी और रसायन, 50 गणित और रसायन, तथा 20 तीनों लेते हैं। कितने तीनों में से कोई नहीं लेते?",
+          "choices": [
+            "180",
+            "0",
+            "30",
+            "20"
+          ],
+          "solution": "तीन-समुच्चय सम्मिलन 120 + 90 + 70 − 40 − 30 − 50 + 20 = 180 है, अतः 200 − 180 = 20 कोई नहीं लेते। दो आदतें ऐसे प्रश्न को सुरक्षित बनाती हैं। पहली, बारी-बारी का क्रम बनाए रखो — इकाइयाँ जोड़ो, युग्म घटाओ, त्रिक जोड़ो — क्योंकि केवल यही हिस्सा याद रखना पड़ता है। दूसरी, लिखने से पहले परिणाम को आँकड़ों के सामने जाँचो: 200 में से 180 का सम्मिलन धनात्मक शेष छोड़ता है, जबकि गणित की जो चूक सम्मिलन को 200 से ऊपर ठेल देती वह असंभव ऋणात्मक बनकर तुरंत पकड़ी जाती। (180 बाहर बचे हुए के बजाय सम्मिलन का उत्तर देता है।)"
+        },
+        "mr": {
+          "stem": "200 विद्यार्थ्यांपैकी 120 जण गणित घेतात, 90 जण भौतिकी आणि 70 जण रसायन; 40 जण गणित आणि भौतिकी, 30 जण भौतिकी आणि रसायन, 50 जण गणित आणि रसायन, आणि 20 जण तिन्ही घेतात. किती जण तिन्हींपैकी एकही घेत नाहीत?",
+          "choices": [
+            "180",
+            "0",
+            "30",
+            "20"
+          ],
+          "solution": "तीन-संच संयोग 120 + 90 + 70 − 40 − 30 − 50 + 20 = 180 आहे, म्हणून 200 − 180 = 20 जण एकही घेत नाहीत. दोन सवयी असा प्रश्न सुरक्षित करतात. पहिली, आळीपाळीचा क्रम टिकवा — एकके जोडा, जोड्या वजा करा, त्रिक जोडा — कारण केवळ हाच भाग लक्षात ठेवावा लागतो. दुसरी, लिहिण्याआधी निकाल आकडेवारीसमोर तपासा: 200 पैकी 180 चा संयोग धन शिल्लक ठेवतो, तर गणिताची जी चूक संयोगाला 200 हून वर ढकलेल ती अशक्य ऋण बनून लगेच पकडली गेली असती. (180 बाहेर उरलेल्याऐवजी संयोगाचे उत्तर देते.)"
+        }
+      }
+    }
+  ]
+}

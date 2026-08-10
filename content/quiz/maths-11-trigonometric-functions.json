@@ -1,0 +1,513 @@
+{
+  "slug": "maths-11-trigonometric-functions",
+  "subject": "MATHS",
+  "classLevel": 11,
+  "chapter": "Chapter 3 — Trigonometric Functions",
+  "name": "Trigonometric Functions",
+  "summary": "The ratios cut loose from the right-angled triangle: an angle measured by the arc it cuts rather than by degrees, a function that repeats for ever and therefore has a period, a bounded value with a largest and smallest, and addition formulae that turn two known angles into a third.",
+  "position": 3,
+  "translations": {
+    "hi": {
+      "name": "त्रिकोणमितीय फलन",
+      "summary": "अनुपात समकोण त्रिभुज से खुले: कोण डिग्री से नहीं, काटे गए चाप से मापा गया, ऐसा फलन जो सदा दोहराता है और इसीलिए जिसका आवर्तकाल है, अधिकतम और न्यूनतम वाला परिबद्ध मान, और योग सूत्र जो दो ज्ञात कोणों से तीसरा बना देते हैं।"
+    },
+    "mr": {
+      "name": "त्रिकोणमितीय फलने",
+      "summary": "गुणोत्तरे काटकोन त्रिकोणापासून मोकळी: कोन अंशांनी नव्हे, कापलेल्या कमानीने मोजलेला, असे फलन जे सदैव पुनरावृत्त होते आणि म्हणून ज्याला आवर्तकाल आहे, कमाल आणि किमान असलेले परिबद्ध मूल्य, आणि बेरीज सूत्रे जी दोन ज्ञात कोनांतून तिसरा बनवतात."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "How many degrees is an angle of π/3 radians?",
+      "choices": [
+        "90",
+        "45",
+        "30",
+        "60"
+      ],
+      "answerIndex": 3,
+      "solution": "π radians is a straight angle, which is 180 degrees, so π/3 is 180/3 = 60 degrees. That one equivalence converts every angle in the chapter in either direction — multiply by 180/π to reach degrees, by π/180 to reach radians. (30 halves the answer, which is π/6.)",
+      "checkExpr": "180/3",
+      "translations": {
+        "hi": {
+          "stem": "π/3 रेडियन का कोण कितने डिग्री का है?",
+          "choices": [
+            "90",
+            "45",
+            "30",
+            "60"
+          ],
+          "solution": "π रेडियन ऋजु कोण है, जो 180 डिग्री का है, अतः π/3 है 180/3 = 60 डिग्री। वही एक तुल्यता अध्याय के हर कोण को दोनों दिशाओं में बदल देती है — डिग्री तक पहुँचने को 180/π से गुणा, रेडियन तक पहुँचने को π/180 से। (30 उत्तर आधा कर देता है, जो π/6 है।)"
+        },
+        "mr": {
+          "stem": "π/3 रेडियनचा कोन किती अंशांचा आहे?",
+          "choices": [
+            "90",
+            "45",
+            "30",
+            "60"
+          ],
+          "solution": "π रेडियन हा सरळ कोन आहे, जो 180 अंशांचा, म्हणून π/3 म्हणजे 180/3 = 60 अंश. तीच एक समतुल्यता प्रकरणातला प्रत्येक कोन दोन्ही दिशांना बदलते — अंशांपर्यंत जाण्यास 180/π ने गुणा, रेडियनपर्यंत जाण्यास π/180 ने. (30 उत्तर निम्मे करते, जे π/6 आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many degrees is an angle of 2π/5 radians?",
+      "choices": [
+        "36",
+        "60",
+        "72",
+        "144"
+      ],
+      "answerIndex": 2,
+      "solution": "Replace π by 180: 2 × 180/5 = 360/5 = 72 degrees. Keeping the numerator and denominator apart until the end avoids the usual slip of dividing before multiplying. The angle is worth recognising — 72 degrees is a fifth of a full turn, the angle at the centre of a regular pentagon. (36 divides 180 by 5 and forgets the 2 on top.)",
+      "checkExpr": "2*180/5",
+      "translations": {
+        "hi": {
+          "stem": "2π/5 रेडियन का कोण कितने डिग्री का है?",
+          "choices": [
+            "36",
+            "60",
+            "72",
+            "144"
+          ],
+          "solution": "π की जगह 180 रखो: 2 × 180/5 = 360/5 = 72 डिग्री। अंश और हर को अंत तक अलग रखना उस आम चूक से बचाता है जिसमें गुणा से पहले भाग दे दिया जाता है। कोण पहचानने योग्य है — 72 डिग्री पूरे चक्कर का पाँचवाँ भाग है, समपंचभुज के केंद्र पर बना कोण। (36 180 को 5 से भाग देकर ऊपर का 2 भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "2π/5 रेडियनचा कोन किती अंशांचा आहे?",
+          "choices": [
+            "36",
+            "60",
+            "72",
+            "144"
+          ],
+          "solution": "π च्या जागी 180 ठेवा: 2 × 180/5 = 360/5 = 72 अंश. अंश आणि छेद शेवटपर्यंत वेगळे ठेवणे त्या सामान्य चुकीपासून वाचवते जिच्यात गुणाकाराआधी भागाकार केला जातो. कोन ओळखण्याजोगा — 72 अंश हा पूर्ण फेऱ्याचा पाचवा भाग, समपंचकोनाच्या केंद्रावरचा कोन. (36 180 ला 5 ने भागून वरचा 2 विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the value of tan 45° + cot 45°?",
+      "choices": [
+        "1",
+        "2",
+        "0",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "At 45 degrees the opposite and adjacent sides are equal, so tan 45° = 1, and cot is its reciprocal, which is also 1. The sum is 1 + 1 = 2. The reason both come out to 1 at exactly this angle is worth holding: it is the only acute angle at which a right-angled triangle is isosceles. (1 gives just one of the two terms.)",
+      "checkExpr": "1+1",
+      "translations": {
+        "hi": {
+          "stem": "tan 45° + cot 45° का मान क्या है?",
+          "choices": [
+            "1",
+            "2",
+            "0",
+            "4"
+          ],
+          "solution": "45 डिग्री पर सम्मुख और संलग्न भुजाएँ बराबर हैं, अतः tan 45° = 1, और cot उसका व्युत्क्रम है, जो भी 1 है। योग 1 + 1 = 2. ठीक इसी कोण पर दोनों का 1 निकलना पकड़ने योग्य है: यही इकलौता न्यून कोण है जिस पर समकोण त्रिभुज समद्विबाहु होता है। (1 दोनों में से केवल एक पद देता है।)"
+        },
+        "mr": {
+          "stem": "tan 45° + cot 45° चे मूल्य किती?",
+          "choices": [
+            "1",
+            "2",
+            "0",
+            "4"
+          ],
+          "solution": "45 अंशांवर समोरची आणि लगतची बाजू समान असतात, म्हणून tan 45° = 1, आणि cot हा त्याचा व्यस्त, जोही 1 आहे. बेरीज 1 + 1 = 2. नेमक्या याच कोनावर दोन्हींचे 1 निघणे धरून ठेवण्याजोगे: हाच एकमेव लघुकोन ज्यावर काटकोन त्रिकोण समद्विभुज असतो. (1 दोघांपैकी केवळ एक पद देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the period of the function sin x, measured in degrees?",
+      "choices": [
+        "180",
+        "360",
+        "720",
+        "90"
+      ],
+      "answerIndex": 1,
+      "solution": "The sine is defined by a point going round a circle, and the point returns to where it started after one full turn: 180 × 2 = 360 degrees, or 2π radians. Note that a period is the SMALLEST such repeat — 720 degrees also returns the value, which is why 720 is wrong rather than merely unusual. (180 gives the period of tan x instead.)",
+      "checkExpr": "180*2",
+      "translations": {
+        "hi": {
+          "stem": "फलन sin x का आवर्तकाल डिग्री में कितना है?",
+          "choices": [
+            "180",
+            "360",
+            "720",
+            "90"
+          ],
+          "solution": "ज्या को वृत्त पर घूमते एक बिंदु से परिभाषित किया जाता है, और बिंदु एक पूरे चक्कर के बाद वहीं लौट आता है जहाँ से चला था: 180 × 2 = 360 डिग्री, या 2π रेडियन। ध्यान दो कि आवर्तकाल सबसे छोटा ऐसा दोहराव है — 720 डिग्री पर भी मान लौटता है, इसीलिए 720 केवल असामान्य नहीं, ग़लत है। (180 इसके बदले tan x का आवर्तकाल दे देता है।)"
+        },
+        "mr": {
+          "stem": "फलन sin x चा आवर्तकाल अंशांत किती?",
+          "choices": [
+            "180",
+            "360",
+            "720",
+            "90"
+          ],
+          "solution": "ज्या ही वर्तुळावर फिरणाऱ्या एका बिंदूने व्याख्यायित होते, आणि बिंदू एका पूर्ण फेऱ्यानंतर जिथून निघाला तिथेच परततो: 180 × 2 = 360 अंश, वा 2π रेडियन. लक्षात घ्या की आवर्तकाल म्हणजे सर्वांत लहान अशी पुनरावृत्ती — 720 अंशांवरही मूल्य परतते, म्हणूनच 720 केवळ असामान्य नव्हे, चुकीचे आहे. (180 त्याऐवजी tan x चा आवर्तकाल देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the period of the function tan x, measured in degrees?",
+      "choices": [
+        "45",
+        "360",
+        "90",
+        "180"
+      ],
+      "answerIndex": 3,
+      "solution": "Tangent is sine over cosine, and both change sign together after half a turn, so the ratio is unchanged: 360/2 = 180 degrees. This is why tan repeats twice as often as sin and cos, and why its graph has a break every 180 degrees where cosine is zero. (360 assumes every trigonometric function shares the sine's period.)",
+      "checkExpr": "360/2",
+      "translations": {
+        "hi": {
+          "stem": "फलन tan x का आवर्तकाल डिग्री में कितना है?",
+          "choices": [
+            "45",
+            "360",
+            "90",
+            "180"
+          ],
+          "solution": "स्पर्शज्या ज्या बटा कोज्या है, और आधे चक्कर के बाद दोनों साथ-साथ चिह्न बदलते हैं, अतः अनुपात वही रहता है: 360/2 = 180 डिग्री। इसीलिए tan, sin और cos से दुगुनी बार दोहराता है, और इसीलिए उसके आलेख में हर 180 डिग्री पर एक टूट है जहाँ कोज्या शून्य है। (360 मान लेता है कि हर त्रिकोणमितीय फलन का आवर्तकाल ज्या जैसा है।)"
+        },
+        "mr": {
+          "stem": "फलन tan x चा आवर्तकाल अंशांत किती?",
+          "choices": [
+            "45",
+            "360",
+            "90",
+            "180"
+          ],
+          "solution": "स्पर्शिका ही ज्या भागिले कोज्या आहे, आणि अर्ध्या फेऱ्यानंतर दोन्ही एकत्रच चिन्ह बदलतात, म्हणून गुणोत्तर तेच राहते: 360/2 = 180 अंश. म्हणूनच tan हा sin आणि cos हून दुप्पट वेळा पुनरावृत्त होतो, आणि म्हणूनच त्याच्या आलेखात दर 180 अंशांवर एक तुटलेपण आहे जिथे कोज्या शून्य आहे. (360 गृहीत धरते की प्रत्येक त्रिकोणमितीय फलनाचा आवर्तकाल ज्येसारखा आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the maximum value of 3 sin x + 4?",
+      "choices": [
+        "7",
+        "4",
+        "1",
+        "3"
+      ],
+      "answerIndex": 0,
+      "solution": "The sine never exceeds 1 and never falls below −1, so 3 sin x runs from −3 to 3 and the whole expression from 1 to 7. The maximum is 3 + 4 = 7, reached when sin x = 1. Every question of this shape reduces to the same two steps: scale the bounds by the coefficient, then shift them by the constant. (1 gives the minimum instead of the maximum.)",
+      "checkExpr": "3+4",
+      "translations": {
+        "hi": {
+          "stem": "3 sin x + 4 का अधिकतम मान क्या है?",
+          "choices": [
+            "7",
+            "4",
+            "1",
+            "3"
+          ],
+          "solution": "ज्या कभी 1 से ऊपर नहीं जाती और कभी −1 से नीचे नहीं, अतः 3 sin x −3 से 3 तक चलता है और पूरा व्यंजक 1 से 7 तक। अधिकतम 3 + 4 = 7 है, जो sin x = 1 पर मिलता है। इस आकार का हर प्रश्न उन्हीं दो चरणों पर सिमट जाता है: सीमाओं को गुणांक से बढ़ाओ, फिर उन्हें अचर से खिसकाओ। (1 अधिकतम के बजाय न्यूनतम देता है।)"
+        },
+        "mr": {
+          "stem": "3 sin x + 4 चे कमाल मूल्य किती?",
+          "choices": [
+            "7",
+            "4",
+            "1",
+            "3"
+          ],
+          "solution": "ज्या कधीच 1 हून वर जात नाही आणि कधीच −1 हून खाली नाही, म्हणून 3 sin x −3 पासून 3 पर्यंत चालतो आणि अख्खी पदावली 1 पासून 7 पर्यंत. कमाल 3 + 4 = 7 आहे, जे sin x = 1 वर मिळते. या आकाराचा प्रत्येक प्रश्न त्याच दोन पायऱ्यांवर येतो: मर्यादा सहगुणकाने वाढवा, मग त्या स्थिरांकाने सरकवा. (1 कमालऐवजी किमान देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the maximum value of 5 sin x − 12 cos x?",
+      "choices": [
+        "13",
+        "17",
+        "7",
+        "12"
+      ],
+      "answerIndex": 0,
+      "solution": "An expression a sin x + b cos x can always be rewritten as a single sine wave of amplitude √(a² + b²), so the largest value it reaches is √(25 + 144) = √169 = 13. The minus sign changes nothing, because b is squared. The trap is to add the coefficients: 5 + 12 = 17 is impossible, since the two terms peak at different angles and can never both be at their maximum together. (17 adds the coefficients as though both peaked at once.)",
+      "checkExpr": "(25+144)/13",
+      "translations": {
+        "hi": {
+          "stem": "5 sin x − 12 cos x का अधिकतम मान क्या है?",
+          "choices": [
+            "13",
+            "17",
+            "7",
+            "12"
+          ],
+          "solution": "व्यंजक a sin x + b cos x को सदा √(a² + b²) आयाम की एक ही ज्या-तरंग के रूप में फिर से लिखा जा सकता है, अतः उसका सबसे बड़ा मान √(25 + 144) = √169 = 13. ऋण चिह्न कुछ नहीं बदलता, क्योंकि b का वर्ग होता है। जाल है गुणांक जोड़ देना: 5 + 12 = 17 असंभव है, क्योंकि दोनों पद भिन्न कोणों पर शिखर छूते हैं और दोनों एक साथ कभी अपने अधिकतम पर नहीं हो सकते। (17 गुणांक ऐसे जोड़ देता है मानो दोनों एक साथ शिखर छूते हों।)"
+        },
+        "mr": {
+          "stem": "5 sin x − 12 cos x चे कमाल मूल्य किती?",
+          "choices": [
+            "13",
+            "17",
+            "7",
+            "12"
+          ],
+          "solution": "पदावली a sin x + b cos x नेहमी √(a² + b²) मोठेपणाच्या एकाच ज्या-लहरीच्या रूपात पुन्हा लिहिता येते, म्हणून तिचे सर्वांत मोठे मूल्य √(25 + 144) = √169 = 13. ऋण चिन्ह काहीच बदलत नाही, कारण b चा वर्ग होतो. सापळा म्हणजे सहगुणक जोडणे: 5 + 12 = 17 अशक्य आहे, कारण दोन्ही पदे वेगवेगळ्या कोनांवर शिखर गाठतात आणि दोन्ही एकाच वेळी कधीच आपल्या कमालवर असू शकत नाहीत. (17 सहगुणक असे जोडते जणू दोन्ही एकाच वेळी शिखर गाठत असावेत.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "If sin θ = 3/5, what is the value of 25 cos²θ?",
+      "choices": [
+        "25",
+        "4",
+        "16",
+        "9"
+      ],
+      "answerIndex": 2,
+      "solution": "From sin²θ + cos²θ = 1 comes cos²θ = 1 − 9/25 = 16/25, so 25 cos²θ = 16. Multiplying the identity through by 25 first is quicker still: 25 sin²θ + 25 cos²θ = 25, and 25 sin²θ = 9, leaving 25 − 9 = 16. Notice that the question deliberately asks for the SQUARE, which sidesteps the ambiguity of sign — cos θ itself could be 4/5 or −4/5 depending on the quadrant. (9 answers 25 sin²θ instead.)",
+      "checkExpr": "25-9",
+      "translations": {
+        "hi": {
+          "stem": "यदि sin θ = 3/5, तो 25 cos²θ का मान क्या है?",
+          "choices": [
+            "25",
+            "4",
+            "16",
+            "9"
+          ],
+          "solution": "sin²θ + cos²θ = 1 से cos²θ = 1 − 9/25 = 16/25, अतः 25 cos²θ = 16. सर्वसमिका को पहले 25 से गुणा करना और भी तेज़ है: 25 sin²θ + 25 cos²θ = 25, और 25 sin²θ = 9, अतः 25 − 9 = 16 बचता है। ध्यान दो कि प्रश्न जानबूझकर वर्ग माँगता है, जो चिह्न की द्विअर्थता टाल देता है — cos θ स्वयं चतुर्थांश के अनुसार 4/5 या −4/5 हो सकता है। (9 इसके बदले 25 sin²θ का उत्तर देता है।)"
+        },
+        "mr": {
+          "stem": "जर sin θ = 3/5, तर 25 cos²θ चे मूल्य किती?",
+          "choices": [
+            "25",
+            "4",
+            "16",
+            "9"
+          ],
+          "solution": "sin²θ + cos²θ = 1 यातून cos²θ = 1 − 9/25 = 16/25, म्हणून 25 cos²θ = 16. नित्यसमीकरण आधी 25 ने गुणणे आणखी वेगवान: 25 sin²θ + 25 cos²θ = 25, आणि 25 sin²θ = 9, म्हणून 25 − 9 = 16 उरते. लक्षात घ्या की प्रश्न मुद्दाम वर्ग विचारतो, जे चिन्हाची द्विअर्थता टाळते — cos θ स्वतः चतुर्थांशानुसार 4/5 वा −4/5 असू शकतो. (9 त्याऐवजी 25 sin²θ चे उत्तर देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "In a circle of radius 7 cm, an arc subtends an angle of 2 radians at the centre. How long is the arc?",
+      "choices": [
+        "28 cm",
+        "14 cm",
+        "49 cm",
+        "3.5 cm"
+      ],
+      "answerIndex": 1,
+      "solution": "Arc length is radius times angle in radians: 7 × 2 = 14 cm. This is the whole reason radians exist as a unit — the formula has no conversion factor in it, whereas in degrees it would need a π/180. The definition follows from the same equation: one radian is exactly the angle whose arc equals the radius. (3.5 divides instead of multiplying.)",
+      "checkExpr": "7*2",
+      "translations": {
+        "hi": {
+          "stem": "7 cm त्रिज्या के वृत्त में एक चाप केंद्र पर 2 रेडियन का कोण बनाता है। चाप कितना लंबा है?",
+          "choices": [
+            "28 cm",
+            "14 cm",
+            "49 cm",
+            "3.5 cm"
+          ],
+          "solution": "चाप की लंबाई त्रिज्या गुणा रेडियन में कोण है: 7 × 2 = 14 cm. रेडियन के मात्रक के रूप में होने का पूरा कारण यही है — सूत्र में कोई रूपांतरण गुणक है ही नहीं, जबकि डिग्री में π/180 चाहिए होता। परिभाषा उसी समीकरण से निकलती है: एक रेडियन ठीक वह कोण है जिसका चाप त्रिज्या के बराबर हो। (3.5 गुणा करने के बजाय भाग दे देता है।)"
+        },
+        "mr": {
+          "stem": "7 cm त्रिज्येच्या वर्तुळात एक कमान केंद्रावर 2 रेडियनचा कोन करते. कमान किती लांब आहे?",
+          "choices": [
+            "28 cm",
+            "14 cm",
+            "49 cm",
+            "3.5 cm"
+          ],
+          "solution": "कमानीची लांबी म्हणजे त्रिज्या गुणिले रेडियनमधला कोन: 7 × 2 = 14 cm. रेडियन हे एकक असण्याचे अख्खे कारण हेच — सूत्रात कोणताही रूपांतर गुणक नाहीच, तर अंशांत π/180 लागला असता. व्याख्या त्याच समीकरणातून निघते: एक रेडियन म्हणजे नेमका तो कोन ज्याची कमान त्रिज्येइतकी असेल. (3.5 गुणण्याऐवजी भागते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A wheel makes 60 revolutions per minute. Through how many degrees does it turn in one second?",
+      "choices": [
+        "360",
+        "6",
+        "3600",
+        "60"
+      ],
+      "answerIndex": 0,
+      "solution": "Sixty revolutions in sixty seconds is one revolution per second, and one revolution is 360 degrees: 60 × 360/60 = 360. Watch the units rather than the numbers and the cancellation does itself — revolutions per minute, times degrees per revolution, divided by seconds per minute, leaves degrees per second. (60 quotes the revolutions and forgets to convert them to degrees.)",
+      "checkExpr": "60*360/60",
+      "translations": {
+        "hi": {
+          "stem": "कोई पहिया प्रति मिनट 60 चक्कर लगाता है। एक सेकंड में वह कितने डिग्री घूमता है?",
+          "choices": [
+            "360",
+            "6",
+            "3600",
+            "60"
+          ],
+          "solution": "साठ सेकंड में साठ चक्कर यानी प्रति सेकंड एक चक्कर, और एक चक्कर 360 डिग्री का: 60 × 360/60 = 360. संख्याओं के बजाय मात्रकों पर नज़र रखो और कटाई अपने आप हो जाती है — चक्कर प्रति मिनट, गुणा डिग्री प्रति चक्कर, बटा सेकंड प्रति मिनट, बचा डिग्री प्रति सेकंड। (60 चक्कर बता देता है और उन्हें डिग्री में बदलना भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "एक चाक प्रति मिनिट 60 फेऱ्या मारते. एका सेकंदात ते किती अंश फिरते?",
+          "choices": [
+            "360",
+            "6",
+            "3600",
+            "60"
+          ],
+          "solution": "साठ सेकंदांत साठ फेऱ्या म्हणजे प्रति सेकंद एक फेरी, आणि एक फेरी 360 अंशांची: 60 × 360/60 = 360. संख्यांऐवजी एककांवर लक्ष ठेवा आणि छेदन आपोआप होते — फेऱ्या प्रति मिनिट, गुणिले अंश प्रति फेरी, भागिले सेकंद प्रति मिनिट, उरते अंश प्रति सेकंद. (60 फेऱ्या सांगते आणि त्यांना अंशांत बदलणे विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A and B are acute angles with sin A = 3/5 and cos B = 5/13. What is the value of 65 sin(A + B)?",
+      "choices": [
+        "16",
+        "33",
+        "63",
+        "56"
+      ],
+      "answerIndex": 2,
+      "solution": "Fill in the missing ratios first: since A is acute, cos A = 4/5, and since B is acute, sin B = 12/13. Then sin(A + B) = sin A cos B + cos A sin B = 15/65 + 48/65 = 63/65, so 65 sin(A + B) = 3 × 5 + 4 × 12 = 63. The question multiplies by 65 precisely so that the answer is a whole number and the two products stay visible. Note that both angles had to be acute for the missing ratios to be positive — that phrase in the question is doing real work. (56 uses sin A sin B + cos A cos B, which is the formula for cos(A − B).)",
+      "checkExpr": "3*5+4*12",
+      "translations": {
+        "hi": {
+          "stem": "A और B न्यून कोण हैं जिनमें sin A = 3/5 और cos B = 5/13. 65 sin(A + B) का मान क्या है?",
+          "choices": [
+            "16",
+            "33",
+            "63",
+            "56"
+          ],
+          "solution": "पहले लुप्त अनुपात भरो: चूँकि A न्यून है, cos A = 4/5, और चूँकि B न्यून है, sin B = 12/13. फिर sin(A + B) = sin A cos B + cos A sin B = 15/65 + 48/65 = 63/65, अतः 65 sin(A + B) = 3 × 5 + 4 × 12 = 63. प्रश्न 65 से गुणा ठीक इसलिए करता है कि उत्तर पूर्ण संख्या रहे और दोनों गुणनफल दिखते रहें। ध्यान दो कि लुप्त अनुपात धनात्मक होने के लिए दोनों कोणों का न्यून होना ज़रूरी था — प्रश्न का वह वाक्यांश असली काम कर रहा है। (56 sin A sin B + cos A cos B लगाता है, जो cos(A − B) का सूत्र है।)"
+        },
+        "mr": {
+          "stem": "A आणि B हे लघुकोन असून sin A = 3/5 आणि cos B = 5/13. 65 sin(A + B) चे मूल्य किती?",
+          "choices": [
+            "16",
+            "33",
+            "63",
+            "56"
+          ],
+          "solution": "आधी हरवलेली गुणोत्तरे भरा: A लघुकोन असल्याने cos A = 4/5, आणि B लघुकोन असल्याने sin B = 12/13. मग sin(A + B) = sin A cos B + cos A sin B = 15/65 + 48/65 = 63/65, म्हणून 65 sin(A + B) = 3 × 5 + 4 × 12 = 63. प्रश्न 65 ने गुणतो नेमके यासाठी की उत्तर पूर्ण संख्या राहावे आणि दोन्ही गुणाकार दिसत राहावेत. लक्षात घ्या की हरवलेली गुणोत्तरे धन असण्यासाठी दोन्ही कोन लघुकोन असणे आवश्यक होते — प्रश्नातला तो वाक्यांश खरे काम करतो आहे. (56 sin A sin B + cos A cos B लावते, जे cos(A − B) चे सूत्र आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "If cos θ = 3/5, what is the value of cos 2θ?",
+      "choices": [
+        "-0.28",
+        "0.28",
+        "0.6",
+        "-0.6"
+      ],
+      "answerIndex": 0,
+      "solution": "Use the form of the double-angle identity that needs only the cosine: cos 2θ = 2cos²θ − 1 = 2 × 9/25 − 1 = 18/25 − 1 = −7/25 = −0.28. Choosing that form rather than cos²θ − sin²θ saves finding sin θ at all, and it also sidesteps the sign ambiguity, since only the square appears. The negative result is worth pausing on: doubling an angle whose cosine is positive can easily carry it past 90 degrees into the second quadrant. (0.6 doubles the value of cos θ, which is what the notation invites and never what it means.)",
+      "checkExpr": "2*(3/5)*(3/5)-1",
+      "translations": {
+        "hi": {
+          "stem": "यदि cos θ = 3/5, तो cos 2θ का मान क्या है?",
+          "choices": [
+            "-0.28",
+            "0.28",
+            "0.6",
+            "-0.6"
+          ],
+          "solution": "द्विकोण सर्वसमिका का वह रूप लो जिसे केवल कोज्या चाहिए: cos 2θ = 2cos²θ − 1 = 2 × 9/25 − 1 = 18/25 − 1 = −7/25 = −0.28. cos²θ − sin²θ के बजाय वह रूप चुनना sin θ निकालने से पूरी तरह बचा लेता है, और चिह्न की द्विअर्थता भी टाल देता है, क्योंकि केवल वर्ग आता है। ऋणात्मक परिणाम पर ठहरने योग्य है: जिस कोण की कोज्या धनात्मक है उसे दोगुना करने पर वह आसानी से 90 डिग्री पार करके दूसरे चतुर्थांश में जा सकता है। (0.6 cos θ का मान दोगुना कर देता है, जिसका निमंत्रण संकेतन देता है और अर्थ कभी नहीं।)"
+        },
+        "mr": {
+          "stem": "जर cos θ = 3/5, तर cos 2θ चे मूल्य किती?",
+          "choices": [
+            "-0.28",
+            "0.28",
+            "0.6",
+            "-0.6"
+          ],
+          "solution": "द्विकोन नित्यसमीकरणाचे ते रूप घ्या ज्याला केवळ कोज्या लागते: cos 2θ = 2cos²θ − 1 = 2 × 9/25 − 1 = 18/25 − 1 = −7/25 = −0.28. cos²θ − sin²θ ऐवजी ते रूप निवडणे sin θ काढण्यापासून पूर्ण वाचवते, आणि चिन्हाची द्विअर्थताही टाळते, कारण केवळ वर्ग येतो. ऋण निकालावर थांबण्याजोगे: ज्या कोनाची कोज्या धन आहे तो दुप्पट केल्यावर तो सहज 90 अंश ओलांडून दुसऱ्या चतुर्थांशात जाऊ शकतो. (0.6 cos θ चे मूल्य दुप्पट करते, ज्याचे निमंत्रण संकेतन देते आणि अर्थ कधीच नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The angles of a triangle are in the ratio 1 : 2 : 3. How many degrees is the largest angle?",
+      "choices": [
+        "60",
+        "120",
+        "30",
+        "90"
+      ],
+      "answerIndex": 3,
+      "solution": "The ratio splits the angle sum into 1 + 2 + 3 = 6 parts, so each part is 180/6 = 30 degrees and the largest is 3 parts: 180 × 3/6 = 90. The result is worth noticing rather than just recording — any triangle whose angles are in the ratio 1 : 2 : 3 is right-angled, and it is exactly the 30-60-90 triangle whose exact ratios the chapter keeps using. (60 gives the middle angle.)",
+      "checkExpr": "180*3/6",
+      "translations": {
+        "hi": {
+          "stem": "किसी त्रिभुज के कोण 1 : 2 : 3 के अनुपात में हैं। सबसे बड़ा कोण कितने डिग्री का है?",
+          "choices": [
+            "60",
+            "120",
+            "30",
+            "90"
+          ],
+          "solution": "अनुपात कोण-योग को 1 + 2 + 3 = 6 भागों में बाँटता है, अतः हर भाग 180/6 = 30 डिग्री का है और सबसे बड़ा 3 भाग: 180 × 3/6 = 90. परिणाम केवल दर्ज करने के बजाय देखने योग्य है — जिस भी त्रिभुज के कोण 1 : 2 : 3 के अनुपात में हों वह समकोण है, और वह ठीक वही 30-60-90 त्रिभुज है जिसके यथार्थ अनुपात अध्याय बार-बार काम में लेता है। (60 बीच का कोण देता है।)"
+        },
+        "mr": {
+          "stem": "एका त्रिकोणाचे कोन 1 : 2 : 3 या प्रमाणात आहेत. सर्वांत मोठा कोन किती अंशांचा?",
+          "choices": [
+            "60",
+            "120",
+            "30",
+            "90"
+          ],
+          "solution": "प्रमाण कोन-बेरीज 1 + 2 + 3 = 6 भागांत वाटते, म्हणून प्रत्येक भाग 180/6 = 30 अंशांचा आणि सर्वांत मोठा 3 भाग: 180 × 3/6 = 90. निकाल केवळ नोंदवण्याऐवजी पाहण्याजोगा — ज्या कोणत्याही त्रिकोणाचे कोन 1 : 2 : 3 प्रमाणात असतील तो काटकोन त्रिकोण आहे, आणि तो नेमका तोच 30-60-90 त्रिकोण ज्याची अचूक गुणोत्तरे प्रकरण पुन्हा पुन्हा वापरते. (60 मधला कोन देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "If tan A = 1/2 and tan B = 1/3, what is tan(A + B)?",
+      "choices": [
+        "2",
+        "1",
+        "0.5",
+        "5"
+      ],
+      "answerIndex": 1,
+      "solution": "The addition formula is tan(A + B) = (tan A + tan B)/(1 − tan A tan B). The top is 1/2 + 1/3 = 5/6 and the bottom is 1 − 1/6 = 5/6, so the whole thing is exactly 1. That answer says something rather elegant: since tan 45° = 1, the two angles A and B add to precisely 45 degrees, even though neither is a familiar angle on its own. The denominator is where most of the marks are lost — it is a subtraction, not an addition, and forgetting it turns the answer into 5/6. (0.5 quotes tan A and never applies the formula.)",
+      "checkExpr": "(1/2+1/3)/(1-1/6)",
+      "translations": {
+        "hi": {
+          "stem": "यदि tan A = 1/2 और tan B = 1/3, तो tan(A + B) क्या है?",
+          "choices": [
+            "2",
+            "1",
+            "0.5",
+            "5"
+          ],
+          "solution": "योग सूत्र है tan(A + B) = (tan A + tan B)/(1 − tan A tan B). ऊपर 1/2 + 1/3 = 5/6 और नीचे 1 − 1/6 = 5/6, अतः पूरा ठीक 1 है। वह उत्तर कुछ सुंदर कहता है: चूँकि tan 45° = 1, दोनों कोण A और B ठीक 45 डिग्री बनाते हैं, भले ही अकेला कोई भी परिचित कोण न हो। हर वहीं है जहाँ अधिकांश अंक जाते हैं — वह घटाव है, जोड़ नहीं, और उसे भूलने पर उत्तर 5/6 बन जाता है। (0.5 tan A बता देता है और सूत्र लगाता ही नहीं।)"
+        },
+        "mr": {
+          "stem": "जर tan A = 1/2 आणि tan B = 1/3, तर tan(A + B) किती?",
+          "choices": [
+            "2",
+            "1",
+            "0.5",
+            "5"
+          ],
+          "solution": "बेरीज सूत्र आहे tan(A + B) = (tan A + tan B)/(1 − tan A tan B). वर 1/2 + 1/3 = 5/6 आणि खाली 1 − 1/6 = 5/6, म्हणून अख्खे नेमके 1 आहे. ते उत्तर काहीतरी देखणे सांगते: tan 45° = 1 असल्याने, दोन्ही कोन A आणि B नेमके 45 अंश बनवतात, जरी एकटा कोणीही परिचित कोन नसला तरी. छेद तिथेच आहे जिथे बहुतांश गुण जातात — ती वजाबाकी आहे, बेरीज नव्हे, आणि ती विसरल्यावर उत्तर 5/6 बनते. (0.5 tan A सांगते आणि सूत्र लावतच नाही.)"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,513 @@
+{
+  "slug": "maths-11-linear-inequalities",
+  "subject": "MATHS",
+  "classLevel": 11,
+  "chapter": "Chapter 5 — Linear Inequalities",
+  "name": "Linear Inequalities",
+  "summary": "The first equations whose answer is a range rather than a number: dividing by a negative that turns the sign around, a solution set that has to be reported as the largest or smallest whole number in it, and word problems where the question is not what the length is but how long it is allowed to be.",
+  "position": 5,
+  "translations": {
+    "hi": {
+      "name": "रैखिक असमिकाएँ",
+      "summary": "पहले ऐसे समीकरण जिनका उत्तर संख्या नहीं, परास है: ऋणात्मक से भाग जो चिह्न पलट देता है, ऐसा हल-समुच्चय जिसे उसमें की सबसे बड़ी या सबसे छोटी पूर्ण संख्या के रूप में बताना पड़ता है, और वे शब्द-प्रश्न जहाँ पूछा यह नहीं जाता कि लंबाई कितनी है बल्कि यह कि कितनी होने की छूट है।"
+    },
+    "mr": {
+      "name": "रेषीय असमानता",
+      "summary": "पहिली अशी समीकरणे ज्यांचे उत्तर संख्या नव्हे, पल्ला आहे: ऋणाने भागाकार जो चिन्ह उलटवतो, असा उत्तर-संच जो त्यातल्या सर्वांत मोठ्या वा सर्वांत लहान पूर्ण संख्येच्या रूपात सांगावा लागतो, आणि ते शब्द-प्रश्न जिथे विचारले जाते ते लांबी किती आहे हे नव्हे तर किती असण्याची मुभा आहे हे."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Solve 3x < 12. What is the greatest INTEGER value of x that satisfies it?",
+      "choices": [
+        "5",
+        "3",
+        "2",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "Dividing both sides by 3 gives x < 4. Since the sign is strict, 4 itself does not satisfy it, so the greatest integer is 12/3 − 1 = 3. The habit worth building is to solve for the range first and only then read off whatever the question actually asked for. (4 gives the boundary, which is excluded by the strict inequality.)",
+      "checkExpr": "12/3-1",
+      "translations": {
+        "hi": {
+          "stem": "3x < 12 हल करो। x का सबसे बड़ा पूर्णांक मान क्या है जो इसे संतुष्ट करता है?",
+          "choices": [
+            "5",
+            "3",
+            "2",
+            "4"
+          ],
+          "solution": "दोनों ओर 3 से भाग देने पर x < 4. चूँकि चिह्न कठोर है, 4 स्वयं उसे संतुष्ट नहीं करता, अतः सबसे बड़ा पूर्णांक 12/3 − 1 = 3. बनाने योग्य आदत यह है कि पहले परास हल करो और तभी वह पढ़ो जो प्रश्न ने वस्तुतः माँगा है। (4 सीमा देता है, जिसे कठोर असमिका बाहर रखती है।)"
+        },
+        "mr": {
+          "stem": "3x < 12 सोडवा. x चे सर्वांत मोठे पूर्णांक मूल्य किती जे हे समाधानी करते?",
+          "choices": [
+            "5",
+            "3",
+            "2",
+            "4"
+          ],
+          "solution": "दोन्ही बाजूंना 3 ने भागल्यावर x < 4. चिन्ह कठोर असल्याने 4 स्वतः ते समाधानी करत नाही, म्हणून सर्वांत मोठा पूर्णांक 12/3 − 1 = 3. बांधण्याजोगी सवय अशी की आधी पल्ला सोडवा आणि तेव्हाच प्रश्नाने प्रत्यक्षात जे मागितले ते वाचा. (4 सीमा देते, जिला कठोर असमानता बाहेर ठेवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Solve 2x + 5 ≤ 11. How many NATURAL numbers satisfy it?",
+      "choices": [
+        "4",
+        "6",
+        "2",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "Subtracting 5 and halving gives x ≤ (11 − 5)/2 = 3, and the natural numbers meeting that are 1, 2 and 3 — three of them. Because the sign allows equality, 3 itself counts. Note that the answer is a COUNT, not the boundary, even though the two happen to coincide here — they would not have if the question had allowed zero. (4 counts 0 as a natural number.)",
+      "checkExpr": "(11-5)/2",
+      "translations": {
+        "hi": {
+          "stem": "2x + 5 ≤ 11 हल करो। कितनी प्राकृत संख्याएँ इसे संतुष्ट करती हैं?",
+          "choices": [
+            "4",
+            "6",
+            "2",
+            "3"
+          ],
+          "solution": "5 घटाकर आधा करने पर x ≤ (11 − 5)/2 = 3, और इसे पूरा करने वाली प्राकृत संख्याएँ 1, 2 और 3 हैं — तीन। चूँकि चिह्न बराबरी की छूट देता है, 3 स्वयं गिना जाता है। ध्यान दो कि उत्तर गिनती है, सीमा नहीं, भले ही यहाँ दोनों संयोग से एक हों — यदि प्रश्न शून्य की छूट देता तो न होते। (4 शून्य को प्राकृत संख्या गिन लेता है।)"
+        },
+        "mr": {
+          "stem": "2x + 5 ≤ 11 सोडवा. किती नैसर्गिक संख्या हे समाधानी करतात?",
+          "choices": [
+            "4",
+            "6",
+            "2",
+            "3"
+          ],
+          "solution": "5 वजा करून निम्मे केल्यावर x ≤ (11 − 5)/2 = 3, आणि हे पूर्ण करणाऱ्या नैसर्गिक संख्या 1, 2 आणि 3 आहेत — तीन. चिन्ह समानतेची मुभा देत असल्याने 3 स्वतः मोजले जाते. लक्षात घ्या की उत्तर ही मोजणी आहे, सीमा नव्हे, जरी इथे दोन्ही योगायोगाने एक असली तरी — प्रश्नाने शून्याची मुभा दिली असती तर नसती. (4 शून्याला नैसर्गिक संख्या मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Solve x − 3 > 0. What is the smallest INTEGER value of x that satisfies it?",
+      "choices": [
+        "4",
+        "3",
+        "0",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "Adding 3 to both sides gives x > 3, and because the inequality is strict, 3 does not qualify — the smallest integer that does is 3 + 1 = 4. Every question of this kind turns on one word: greater than excludes the boundary, greater than or equal to includes it. (3 gives the boundary that the strict sign has just ruled out.)",
+      "checkExpr": "3+1",
+      "translations": {
+        "hi": {
+          "stem": "x − 3 > 0 हल करो। x का सबसे छोटा पूर्णांक मान क्या है जो इसे संतुष्ट करता है?",
+          "choices": [
+            "4",
+            "3",
+            "0",
+            "2"
+          ],
+          "solution": "दोनों ओर 3 जोड़ने पर x > 3, और चूँकि असमिका कठोर है, 3 योग्य नहीं — सबसे छोटा योग्य पूर्णांक 3 + 1 = 4 है। इस तरह का हर प्रश्न एक शब्द पर टिका है: से बड़ा सीमा को बाहर रखता है, से बड़ा या बराबर उसे भीतर लेता है। (3 वही सीमा देता है जिसे कठोर चिह्न अभी-अभी बाहर कर चुका है।)"
+        },
+        "mr": {
+          "stem": "x − 3 > 0 सोडवा. x चे सर्वांत लहान पूर्णांक मूल्य किती जे हे समाधानी करते?",
+          "choices": [
+            "4",
+            "3",
+            "0",
+            "2"
+          ],
+          "solution": "दोन्ही बाजूंना 3 जोडल्यावर x > 3, आणि असमानता कठोर असल्याने 3 पात्र नाही — सर्वांत लहान पात्र पूर्णांक 3 + 1 = 4. या प्रकारचा प्रत्येक प्रश्न एका शब्दावर उभा आहे: हून मोठा सीमा बाहेर ठेवतो, हून मोठा वा समान तिला आत घेतो. (3 तीच सीमा देते जिला कठोर चिन्हाने आत्ताच बाहेर केले आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Solve −2x > 6. What is the greatest INTEGER value of x that satisfies it?",
+      "choices": [
+        "4",
+        "3",
+        "-4",
+        "-3"
+      ],
+      "answerIndex": 2,
+      "solution": "Dividing both sides by −2 REVERSES the inequality, giving x < −3, so the greatest integer is −4. This is the one rule that separates inequalities from equations, and the reason for it is easy to see with numbers: 2 is less than 5, but multiplying both by −1 makes −2 greater than −5. (−3 gives the boundary and also forgets that it is excluded; 3 forgets to reverse the sign at all.)",
+      "checkExpr": "(0-6)/2-1",
+      "translations": {
+        "hi": {
+          "stem": "−2x > 6 हल करो। x का सबसे बड़ा पूर्णांक मान क्या है जो इसे संतुष्ट करता है?",
+          "choices": [
+            "4",
+            "3",
+            "-4",
+            "-3"
+          ],
+          "solution": "दोनों ओर −2 से भाग देने पर असमिका पलट जाती है, जिससे x < −3, अतः सबसे बड़ा पूर्णांक −4. यही एक नियम असमिकाओं को समीकरणों से अलग करता है, और उसका कारण संख्याओं से आसानी से दिखता है: 2, 5 से छोटा है, पर दोनों को −1 से गुणा करने पर −2, −5 से बड़ा हो जाता है। (−3 सीमा देता है और यह भी भूल जाता है कि वह बाहर है; 3 चिह्न पलटना ही भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "−2x > 6 सोडवा. x चे सर्वांत मोठे पूर्णांक मूल्य किती जे हे समाधानी करते?",
+          "choices": [
+            "4",
+            "3",
+            "-4",
+            "-3"
+          ],
+          "solution": "दोन्ही बाजूंना −2 ने भागल्यावर असमानता उलटते, ज्यातून x < −3, म्हणून सर्वांत मोठा पूर्णांक −4. हाच एक नियम असमानतांना समीकरणांपासून वेगळा करतो, आणि त्याचे कारण संख्यांनी सहज दिसते: 2 हा 5 हून लहान, पण दोघांना −1 ने गुणल्यावर −2 हा −5 हून मोठा होतो. (−3 सीमा देते आणि ती वगळली आहे हेही विसरते; 3 चिन्ह उलटवणेच विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Solve 5x − 3 < 3x + 1. How many POSITIVE INTEGERS satisfy it?",
+      "choices": [
+        "3",
+        "0",
+        "1",
+        "2"
+      ],
+      "answerIndex": 2,
+      "solution": "Collect the x terms on one side: 2x < 4, so x < 2. The positive integers below 2 are just 1, so the count is (1 + 3)/2 − 1 = 1. Moving terms across works exactly as it does for an equation — it is only multiplying or dividing by a negative that flips the sign. (2 counts the boundary value 2, which a strict inequality excludes.)",
+      "checkExpr": "(1+3)/2-1",
+      "translations": {
+        "hi": {
+          "stem": "5x − 3 < 3x + 1 हल करो। कितने धन पूर्णांक इसे संतुष्ट करते हैं?",
+          "choices": [
+            "3",
+            "0",
+            "1",
+            "2"
+          ],
+          "solution": "x वाले पद एक ओर इकट्ठे करो: 2x < 4, अतः x < 2. 2 से नीचे के धन पूर्णांक केवल 1 है, अतः गिनती (1 + 3)/2 − 1 = 1. पदों को इधर-उधर ले जाना ठीक वैसे ही चलता है जैसे किसी समीकरण में — केवल ऋणात्मक से गुणा या भाग ही चिह्न पलटता है। (2 सीमा-मान 2 को गिन लेता है, जिसे कठोर असमिका बाहर रखती है।)"
+        },
+        "mr": {
+          "stem": "5x − 3 < 3x + 1 सोडवा. किती धन पूर्णांक हे समाधानी करतात?",
+          "choices": [
+            "3",
+            "0",
+            "1",
+            "2"
+          ],
+          "solution": "x ची पदे एका बाजूला गोळा करा: 2x < 4, म्हणून x < 2. 2 खालचे धन पूर्णांक केवळ 1 आहे, म्हणून मोजणी (1 + 3)/2 − 1 = 1. पदे इकडून तिकडे नेणे नेमके समीकरणाप्रमाणेच चालते — केवळ ऋणाने गुणाकार वा भागाकारच चिन्ह उलटवतो. (2 सीमा-मूल्य 2 मोजते, जिला कठोर असमानता वगळते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Solve 4x + 3 ≥ 2x + 17. What is the smallest INTEGER value of x that satisfies it?",
+      "choices": [
+        "8",
+        "10",
+        "14",
+        "7"
+      ],
+      "answerIndex": 3,
+      "solution": "Gathering terms gives 2x ≥ 14, so x ≥ 7 and the smallest integer is 7 itself — this time the boundary IS included, because the sign allows equality. Comparing this with the previous question is the whole lesson: the algebra was the same and only one symbol differed, and that symbol decided whether the answer was the boundary or the next number along. (8 excludes the boundary as though the inequality were strict.)",
+      "checkExpr": "(17-3)/2",
+      "translations": {
+        "hi": {
+          "stem": "4x + 3 ≥ 2x + 17 हल करो। x का सबसे छोटा पूर्णांक मान क्या है जो इसे संतुष्ट करता है?",
+          "choices": [
+            "8",
+            "10",
+            "14",
+            "7"
+          ],
+          "solution": "पद इकट्ठे करने पर 2x ≥ 14, अतः x ≥ 7 और सबसे छोटा पूर्णांक 7 ही है — इस बार सीमा भीतर है, क्योंकि चिह्न बराबरी की छूट देता है। इसकी पिछले प्रश्न से तुलना ही पूरा पाठ है: बीजगणित वही था और केवल एक संकेत भिन्न, और उसी संकेत ने तय किया कि उत्तर सीमा है या उससे अगली संख्या। (8 सीमा को ऐसे बाहर कर देता है मानो असमिका कठोर हो।)"
+        },
+        "mr": {
+          "stem": "4x + 3 ≥ 2x + 17 सोडवा. x चे सर्वांत लहान पूर्णांक मूल्य किती जे हे समाधानी करते?",
+          "choices": [
+            "8",
+            "10",
+            "14",
+            "7"
+          ],
+          "solution": "पदे गोळा केल्यावर 2x ≥ 14, म्हणून x ≥ 7 आणि सर्वांत लहान पूर्णांक 7 च आहे — यावेळी सीमा आत आहे, कारण चिन्ह समानतेची मुभा देते. याची मागच्या प्रश्नाशी तुलना हाच अख्खा धडा: बीजगणित तेच होते आणि केवळ एक चिन्ह वेगळे, आणि त्याच चिन्हाने ठरवले की उत्तर सीमा आहे की तिच्यापुढची संख्या. (8 सीमा अशी वगळते जणू असमानता कठोर असावी.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Solve 3(x − 1) ≤ 2(x − 3). What is the greatest INTEGER value of x that satisfies it?",
+      "choices": [
+        "-2",
+        "-4",
+        "-3",
+        "3"
+      ],
+      "answerIndex": 2,
+      "solution": "Expand both sides first: 3x − 3 ≤ 2x − 6. Subtracting 2x and adding 3 gives x ≤ −3, so the greatest integer is −3 itself, since equality is allowed. Expanding before collecting is what keeps this safe — trying to cancel the brackets by inspection is where the sign of the 6 usually goes astray. (−4 excludes the boundary, forgetting that the sign permits equality.)",
+      "checkExpr": "3-6",
+      "translations": {
+        "hi": {
+          "stem": "3(x − 1) ≤ 2(x − 3) हल करो। x का सबसे बड़ा पूर्णांक मान क्या है जो इसे संतुष्ट करता है?",
+          "choices": [
+            "-2",
+            "-4",
+            "-3",
+            "3"
+          ],
+          "solution": "पहले दोनों ओर खोलो: 3x − 3 ≤ 2x − 6. 2x घटाकर और 3 जोड़कर x ≤ −3, अतः सबसे बड़ा पूर्णांक −3 ही है, क्योंकि बराबरी की छूट है। इकट्ठा करने से पहले खोलना ही इसे सुरक्षित रखता है — कोष्ठकों को देखकर काटने की कोशिश में ही 6 का चिह्न प्रायः भटक जाता है। (−4 सीमा को बाहर कर देता है, यह भूलकर कि चिह्न बराबरी की छूट देता है।)"
+        },
+        "mr": {
+          "stem": "3(x − 1) ≤ 2(x − 3) सोडवा. x चे सर्वांत मोठे पूर्णांक मूल्य किती जे हे समाधानी करते?",
+          "choices": [
+            "-2",
+            "-4",
+            "-3",
+            "3"
+          ],
+          "solution": "आधी दोन्ही बाजू उघडा: 3x − 3 ≤ 2x − 6. 2x वजा करून आणि 3 जोडून x ≤ −3, म्हणून सर्वांत मोठा पूर्णांक −3 च आहे, कारण समानतेची मुभा आहे. गोळा करण्याआधी उघडणेच हे सुरक्षित ठेवते — कंस पाहून छेदण्याच्या प्रयत्नातच 6 चे चिन्ह बहुधा भरकटते. (−4 सीमा वगळते, चिन्ह समानतेची मुभा देते हे विसरून.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "How many INTEGERS x satisfy −3 ≤ x < 4?",
+      "choices": [
+        "3",
+        "6",
+        "8",
+        "7"
+      ],
+      "answerIndex": 3,
+      "solution": "List them: −3, −2, −1, 0, 1, 2, 3 — seven values. The count is 4 − (−3) = 7, and it works out neatly because one end is included and the other excluded, so the two adjustments cancel. Change either sign and the count changes: with both ends closed it would be 8, with both open it would be 6. Counting zero is the other place this goes wrong — it is an integer and belongs in the list. (6 drops zero from the count.)",
+      "checkExpr": "4-(0-3)",
+      "translations": {
+        "hi": {
+          "stem": "कितने पूर्णांक x, −3 ≤ x < 4 को संतुष्ट करते हैं?",
+          "choices": [
+            "3",
+            "6",
+            "8",
+            "7"
+          ],
+          "solution": "गिनाओ: −3, −2, −1, 0, 1, 2, 3 — सात मान। गिनती 4 − (−3) = 7 है, और यह साफ़ बैठती है क्योंकि एक सिरा भीतर है और दूसरा बाहर, अतः दोनों समायोजन कट जाते हैं। कोई भी चिह्न बदलो और गिनती बदल जाती है: दोनों सिरे बंद हों तो 8, दोनों खुले हों तो 6. शून्य गिनना वह दूसरी जगह है जहाँ यह बिगड़ता है — वह पूर्णांक है और सूची में है। (6 गिनती से शून्य गिरा देता है।)"
+        },
+        "mr": {
+          "stem": "किती पूर्णांक x, −3 ≤ x < 4 समाधानी करतात?",
+          "choices": [
+            "3",
+            "6",
+            "8",
+            "7"
+          ],
+          "solution": "यादी करा: −3, −2, −1, 0, 1, 2, 3 — सात मूल्ये. मोजणी 4 − (−3) = 7 आहे, आणि ती स्वच्छ बसते कारण एक टोक आत आहे आणि दुसरे बाहेर, म्हणून दोन्ही जुळवण्या छेदतात. कोणतेही चिन्ह बदला आणि मोजणी बदलते: दोन्ही टोके बंद असतील तर 8, दोन्ही उघडी असतील तर 6. शून्य मोजणे ही ती दुसरी जागा जिथे हे बिघडते — तो पूर्णांक आहे आणि यादीत आहे. (6 मोजणीतून शून्य वगळते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Ravi scored 70 and 75 in his first two tests. What is the minimum he must score in the third for his average over the three to be at least 60?",
+      "choices": [
+        "35",
+        "45",
+        "60",
+        "25"
+      ],
+      "answerIndex": 0,
+      "solution": "An average of at least 60 over three tests means a total of at least 3 × 60 = 180. He already has 145, so he needs 180 − 145 = 35. Turning an average condition into a TOTAL condition is the move that makes every question of this family straightforward — averages are awkward to manipulate, totals are not. Note that the answer being comfortably low is a real result, not a mistake: two good scores buy a lot of room in the third. (45 works from an average of 60 on the two remaining marks rather than on all three.)",
+      "checkExpr": "3*60-70-75",
+      "translations": {
+        "hi": {
+          "stem": "रवि ने अपनी पहली दो परीक्षाओं में 70 और 75 अंक पाए। तीनों का औसत कम से कम 60 होने के लिए उसे तीसरी में न्यूनतम कितने अंक चाहिए?",
+          "choices": [
+            "35",
+            "45",
+            "60",
+            "25"
+          ],
+          "solution": "तीन परीक्षाओं में कम से कम 60 के औसत का अर्थ है कम से कम 3 × 60 = 180 का कुल। उसके पास पहले से 145 हैं, अतः उसे 180 − 145 = 35 चाहिए। औसत की शर्त को कुल की शर्त में बदलना ही वह चाल है जो इस परिवार के हर प्रश्न को सीधा कर देती है — औसत के साथ खेलना असुविधाजनक है, कुल के साथ नहीं। ध्यान दो कि उत्तर का आराम से कम निकलना असली परिणाम है, भूल नहीं: दो अच्छे अंक तीसरे में बहुत जगह ख़रीद लेते हैं। (45 शेष अंकों पर 60 के औसत से चलता है, तीनों पर नहीं।)"
+        },
+        "mr": {
+          "stem": "रवीला त्याच्या पहिल्या दोन चाचण्यांत 70 आणि 75 गुण मिळाले. तिन्हींची सरासरी किमान 60 होण्यासाठी त्याला तिसरीत किमान किती गुण हवेत?",
+          "choices": [
+            "35",
+            "45",
+            "60",
+            "25"
+          ],
+          "solution": "तीन चाचण्यांत किमान 60 च्या सरासरीचा अर्थ किमान 3 × 60 = 180 ची बेरीज. त्याच्याकडे आधीच 145 आहेत, म्हणून त्याला 180 − 145 = 35 हवेत. सरासरीची अट बेरजेच्या अटीत बदलणे हीच ती खेळी जी या कुटुंबातला प्रत्येक प्रश्न सरळ करते — सरासरीशी खेळणे गैरसोयीचे, बेरजेशी नाही. लक्षात घ्या की उत्तर आरामात कमी निघणे हा खरा निकाल आहे, चूक नव्हे: दोन चांगले गुण तिसऱ्यात भरपूर जागा विकत घेतात. (45 उरलेल्या गुणांवर 60 च्या सरासरीने चालते, तिन्हींवर नव्हे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "The longest side of a triangle is 3 times the shortest and the third side is 2 cm shorter than the longest. If the perimeter is more than 61 cm, what is the smallest possible WHOLE-NUMBER length of the shortest side?",
+      "choices": [
+        "10 cm",
+        "63 cm",
+        "11 cm",
+        "9 cm"
+      ],
+      "answerIndex": 0,
+      "solution": "Call the shortest side x. Then the sides are x, 3x and 3x − 2, and the perimeter is 7x − 2 > 61, giving 7x > 63 and x > 9. Since the inequality is strict, 9 does not qualify and the smallest whole number that does is 10. Naming the unknown as the quantity the question asks about — rather than as one of the other sides — is what keeps the algebra short. (9 gives the boundary the strict sign has just excluded.)",
+      "checkExpr": "(61+2)/7+1",
+      "translations": {
+        "hi": {
+          "stem": "किसी त्रिभुज की सबसे लंबी भुजा सबसे छोटी की 3 गुनी है और तीसरी भुजा सबसे लंबी से 2 cm छोटी है। यदि परिमाप 61 cm से अधिक है, तो सबसे छोटी भुजा की न्यूनतम संभव पूर्ण-संख्या लंबाई क्या है?",
+          "choices": [
+            "10 cm",
+            "63 cm",
+            "11 cm",
+            "9 cm"
+          ],
+          "solution": "सबसे छोटी भुजा को x कहो। तब भुजाएँ x, 3x और 3x − 2 हैं, और परिमाप 7x − 2 > 61, जिससे 7x > 63 और x > 9. चूँकि असमिका कठोर है, 9 योग्य नहीं और सबसे छोटी योग्य पूर्ण संख्या 10 है। अज्ञात को वही राशि नाम देना जिसके बारे में प्रश्न पूछता है — न कि दूसरी भुजाओं में से कोई — ही बीजगणित छोटा रखता है। (9 वही सीमा देता है जिसे कठोर चिह्न अभी बाहर कर चुका है।)"
+        },
+        "mr": {
+          "stem": "एका त्रिकोणाची सर्वांत लांब बाजू सर्वांत लहान बाजूच्या 3 पट आहे आणि तिसरी बाजू सर्वांत लांब बाजूहून 2 cm आखूड आहे. जर परिमिती 61 cm हून अधिक असेल, तर सर्वांत लहान बाजूची किमान शक्य पूर्ण-संख्या लांबी किती?",
+          "choices": [
+            "10 cm",
+            "63 cm",
+            "11 cm",
+            "9 cm"
+          ],
+          "solution": "सर्वांत लहान बाजूला x म्हणा. मग बाजू x, 3x आणि 3x − 2 आहेत, आणि परिमिती 7x − 2 > 61, ज्यातून 7x > 63 आणि x > 9. असमानता कठोर असल्याने 9 पात्र नाही आणि सर्वांत लहान पात्र पूर्ण संख्या 10. अज्ञाताला तीच राशी नाव देणे जिच्याबद्दल प्रश्न विचारतो — इतर बाजूंपैकी कोणतीही नव्हे — हेच बीजगणित आखूड ठेवते. (9 तीच सीमा देते जिला कठोर चिन्हाने आत्ताच वगळले आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A man cuts three lengths from a board 91 cm long. The second is 3 cm longer than the shortest and the third is twice the shortest. What is the maximum possible length of the shortest piece?",
+      "choices": [
+        "88 cm",
+        "23 cm",
+        "22 cm",
+        "8 cm"
+      ],
+      "answerIndex": 2,
+      "solution": "Let the shortest be x. The three pieces are x, x + 3 and 2x, and together they cannot exceed the board: 4x + 3 ≤ 91, so 4x ≤ 88 and x ≤ 22. The maximum is therefore 22 cm. Two checks are worth making before writing that down. The pieces then measure 22, 25 and 44, which sum to 91 exactly — the board is used up with nothing wasted. And the answer had to be a maximum rather than a minimum, because the constraint was an upper limit on total length; a question that asked for a minimum would need a different constraint entirely. (23 rounds the wrong way past a boundary that equality allows.)",
+      "checkExpr": "(91-3)/4",
+      "translations": {
+        "hi": {
+          "stem": "एक आदमी 91 cm लंबे तख़्ते से तीन टुकड़े काटता है। दूसरा सबसे छोटे से 3 cm लंबा है और तीसरा सबसे छोटे का दुगुना। सबसे छोटे टुकड़े की अधिकतम संभव लंबाई क्या है?",
+          "choices": [
+            "88 cm",
+            "23 cm",
+            "22 cm",
+            "8 cm"
+          ],
+          "solution": "सबसे छोटे को x कहो। तीनों टुकड़े x, x + 3 और 2x हैं, और मिलकर वे तख़्ते से अधिक नहीं हो सकते: 4x + 3 ≤ 91, अतः 4x ≤ 88 और x ≤ 22. अतः अधिकतम 22 cm है। लिखने से पहले दो जाँचें करने योग्य हैं। तब टुकड़े 22, 25 और 44 के हैं, जो ठीक 91 बनते हैं — तख़्ता पूरा काम आ जाता है और कुछ बर्बाद नहीं होता। और उत्तर को न्यूनतम नहीं, अधिकतम होना ही था, क्योंकि प्रतिबंध कुल लंबाई की ऊपरी सीमा था; न्यूनतम माँगने वाले प्रश्न को बिलकुल दूसरा प्रतिबंध चाहिए होता। (23 उस सीमा से आगे ग़लत दिशा में जाता है जिसकी बराबरी छूट देती है।)"
+        },
+        "mr": {
+          "stem": "एक माणूस 91 cm लांब फळीतून तीन तुकडे कापतो. दुसरा सर्वांत लहानाहून 3 cm लांब आहे आणि तिसरा सर्वांत लहानाच्या दुप्पट. सर्वांत लहान तुकड्याची कमाल शक्य लांबी किती?",
+          "choices": [
+            "88 cm",
+            "23 cm",
+            "22 cm",
+            "8 cm"
+          ],
+          "solution": "सर्वांत लहानाला x म्हणा. तिन्ही तुकडे x, x + 3 आणि 2x आहेत, आणि मिळून ते फळीहून अधिक असू शकत नाहीत: 4x + 3 ≤ 91, म्हणून 4x ≤ 88 आणि x ≤ 22. म्हणून कमाल 22 cm. लिहिण्याआधी दोन तपासण्या करण्याजोग्या. मग तुकडे 22, 25 आणि 44 चे आहेत, जे नेमके 91 बनतात — फळी पूर्ण वापरली जाते आणि काहीच वाया जात नाही. आणि उत्तर किमान नव्हे, कमालच असायला हवे होते, कारण अट ही एकूण लांबीची वरची मर्यादा होती; किमान विचारणाऱ्या प्रश्नाला अगदी वेगळी अट लागली असती. (23 त्या सीमेपलीकडे चुकीच्या दिशेने जाते जिला समानता मुभा देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "640 litres of an 8% boric acid solution is to be diluted with a 2% solution so that the mixture is more than 4% and less than 6%. What is the smallest WHOLE NUMBER of litres of the 2% solution that must be added?",
+      "choices": [
+        "640 litres",
+        "1280 litres",
+        "320 litres",
+        "321 litres"
+      ],
+      "answerIndex": 3,
+      "solution": "Let x litres of the 2% solution be added. The acid present is 2x + 8 × 640 parts in a total of x + 640 litres. The upper condition, mixture below 6%, gives 2x + 5120 < 6x + 3840, so 4x > 1280 and x > 320. The lower condition, above 4%, gives 2x + 5120 > 4x + 2560, so x < 1280. The permitted range is therefore 320 < x < 1280, and the smallest whole number in it is 321. Note which end each condition produced: making the mixture weaker needs MORE of the dilute solution, so the 6% ceiling sets the lower bound and the 4% floor sets the upper one. Getting that pairing backwards is the main trap, and the check is a sanity test — adding nothing at all would leave the mixture at 8%, which is above both limits, so the lower bound has to be positive. (320 gives the boundary, which the strict inequality excludes.)",
+      "checkExpr": "1280/4+1",
+      "translations": {
+        "hi": {
+          "stem": "8% बोरिक अम्ल विलयन के 640 लीटर को 2% विलयन से इतना तनु करना है कि मिश्रण 4% से अधिक और 6% से कम हो। 2% विलयन के कम से कम कितने पूर्ण लीटर मिलाने पड़ेंगे?",
+          "choices": [
+            "640 litres",
+            "1280 litres",
+            "320 litres",
+            "321 litres"
+          ],
+          "solution": "मान लो 2% विलयन के x लीटर मिलाए जाते हैं। कुल x + 640 लीटर में उपस्थित अम्ल 2x + 8 × 640 भाग है। ऊपरी शर्त, मिश्रण 6% से नीचे, देती है 2x + 5120 < 6x + 3840, अतः 4x > 1280 और x > 320. निचली शर्त, 4% से ऊपर, देती है 2x + 5120 > 4x + 2560, अतः x < 1280. अतः अनुमत परास 320 < x < 1280 है, और उसमें सबसे छोटी पूर्ण संख्या 321. ध्यान दो कि हर शर्त ने कौन-सा सिरा बनाया: मिश्रण को कमज़ोर करने को तनु विलयन अधिक चाहिए, अतः 6% की छत निचली सीमा बनाती है और 4% का फ़र्श ऊपरी। इस जोड़ी को उलट देना ही मुख्य जाल है, और जाँच एक समझ-परीक्षा है — कुछ भी न मिलाने पर मिश्रण 8% पर रहता, जो दोनों सीमाओं से ऊपर है, अतः निचली सीमा का धनात्मक होना ज़रूरी था। (320 सीमा देता है, जिसे कठोर असमिका बाहर रखती है।)"
+        },
+        "mr": {
+          "stem": "8% बोरिक आम्ल द्रावणाचे 640 लिटर 2% द्रावणाने इतके विरळ करायचे आहे की मिश्रण 4% हून अधिक आणि 6% हून कमी व्हावे. 2% द्रावणाचे किमान किती पूर्ण लिटर मिसळावे लागतील?",
+          "choices": [
+            "640 litres",
+            "1280 litres",
+            "320 litres",
+            "321 litres"
+          ],
+          "solution": "समजा 2% द्रावणाचे x लिटर मिसळले जातात. एकूण x + 640 लिटरात असलेले आम्ल 2x + 8 × 640 भाग आहे. वरची अट, मिश्रण 6% खाली, देते 2x + 5120 < 6x + 3840, म्हणून 4x > 1280 आणि x > 320. खालची अट, 4% वर, देते 2x + 5120 > 4x + 2560, म्हणून x < 1280. म्हणून अनुज्ञेय पल्ला 320 < x < 1280, आणि त्यातली सर्वांत लहान पूर्ण संख्या 321. लक्षात घ्या की प्रत्येक अटीने कोणते टोक बनवले: मिश्रण दुर्बळ करण्यास विरळ द्रावण अधिक लागते, म्हणून 6% चे छत खालची मर्यादा बनवते आणि 4% ची जमीन वरची. ही जोडी उलटवणे हाच मुख्य सापळा, आणि तपासणी ही समजून-परीक्षा — काहीही न मिसळल्यास मिश्रण 8% वर राहिले असते, जे दोन्ही मर्यादांहून वर आहे, म्हणून खालची मर्यादा धन असणे आवश्यक होते. (320 सीमा देते, जिला कठोर असमानता वगळते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "IQ is 100 × MA/CA, where MA is mental age and CA is chronological age. For a group of 12-year-olds whose IQ lies between 80 and 140, what is the LEAST possible mental age in years?",
+      "choices": [
+        "16.8 years",
+        "9.4 years",
+        "9.6 years",
+        "12 years"
+      ],
+      "answerIndex": 2,
+      "solution": "Rearrange the definition to make MA the subject: MA = IQ × CA/100. With CA fixed at 12, the least mental age comes from the least IQ: 80 × 12/100 = 9.6 years. The other end gives 140 × 12/100 = 16.8, so the range is 9.6 to 16.8 years. Two things are worth taking from this. Because MA depends on IQ through a positive multiplier, the smaller IQ produces the smaller MA and the inequality keeps its direction throughout — had the relationship been a reciprocal, the ends would have swapped. And the answer need not be a whole number of years; a mental age is a measured quantity, not a count of birthdays. (16.8 answers the greatest instead of the least.)",
+      "checkExpr": "80*12/100",
+      "translations": {
+        "hi": {
+          "stem": "IQ = 100 × MA/CA है, जहाँ MA मानसिक आयु और CA कालानुक्रमिक आयु है। 12 वर्ष के उस समूह के लिए जिसका IQ 80 और 140 के बीच है, न्यूनतम संभव मानसिक आयु वर्षों में कितनी है?",
+          "choices": [
+            "16.8 years",
+            "9.4 years",
+            "9.6 years",
+            "12 years"
+          ],
+          "solution": "परिभाषा को इस तरह जमाओ कि MA विषय बने: MA = IQ × CA/100. CA 12 पर स्थिर रहते हुए, न्यूनतम मानसिक आयु न्यूनतम IQ से आती है: 80 × 12/100 = 9.6 वर्ष। दूसरा सिरा देता है 140 × 12/100 = 16.8, अतः परास 9.6 से 16.8 वर्ष है। इससे दो बातें लेने योग्य हैं। चूँकि MA, IQ पर एक धनात्मक गुणक से निर्भर है, छोटा IQ छोटा MA बनाता है और असमिका पूरे समय अपनी दिशा बनाए रखती है — यदि संबंध व्युत्क्रम होता, तो सिरे बदल जाते। और उत्तर का पूर्ण वर्षों में होना ज़रूरी नहीं; मानसिक आयु मापी गई राशि है, जन्मदिनों की गिनती नहीं। (16.8 न्यूनतम के बजाय अधिकतम का उत्तर देता है।)"
+        },
+        "mr": {
+          "stem": "IQ = 100 × MA/CA आहे, जिथे MA ही मानसिक वये आणि CA ही कालानुक्रमिक वये. 12 वर्षांच्या त्या गटासाठी ज्याचा IQ 80 आणि 140 दरम्यान आहे, किमान शक्य मानसिक वय वर्षांत किती?",
+          "choices": [
+            "16.8 years",
+            "9.4 years",
+            "9.6 years",
+            "12 years"
+          ],
+          "solution": "व्याख्या अशी मांडा की MA विषय बनेल: MA = IQ × CA/100. CA 12 वर स्थिर असताना, किमान मानसिक वय किमान IQ मधून येते: 80 × 12/100 = 9.6 वर्षे. दुसरे टोक देते 140 × 12/100 = 16.8, म्हणून पल्ला 9.6 ते 16.8 वर्षे. यातून दोन गोष्टी घेण्याजोग्या. MA हा IQ वर एका धन गुणकाने अवलंबून असल्याने, लहान IQ लहान MA बनवतो आणि असमानता अख्खा वेळ आपली दिशा टिकवते — संबंध व्यस्त असता, तर टोके बदलली असती. आणि उत्तर पूर्ण वर्षांत असणे आवश्यक नाही; मानसिक वय ही मोजलेली राशी आहे, वाढदिवसांची मोजणी नव्हे. (16.8 किमानऐवजी कमालचे उत्तर देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A solution must be kept between 68°F and 77°F. Using C = 5(F − 32)/9, what is the upper limit of the range in degrees Celsius?",
+      "choices": [
+        "45 °C",
+        "30 °C",
+        "20 °C",
+        "25 °C"
+      ],
+      "answerIndex": 3,
+      "solution": "Convert each end separately: 5 × (68 − 32)/9 = 20 and 5 × (77 − 32)/9 = 25, so the range is 20°C to 25°C and the upper limit is 25. The conversion has a positive multiplier, so the order of the two ends is preserved and the larger Fahrenheit value stays the larger Celsius one. That is worth stating because it is not automatic — any conversion involving a negative factor would reverse the inequality, and the two ends would have to swap places. Note also that the subtraction of 32 must happen before the multiplication by 5/9; doing it the other way round is the arithmetic slip that produces 45. (45 multiplies before subtracting the 32.)",
+      "checkExpr": "5*(77-32)/9",
+      "translations": {
+        "hi": {
+          "stem": "किसी विलयन को 68°F और 77°F के बीच रखना है। C = 5(F − 32)/9 काम में लेकर, परास की ऊपरी सीमा सेल्सियस में कितनी है?",
+          "choices": [
+            "45 °C",
+            "30 °C",
+            "20 °C",
+            "25 °C"
+          ],
+          "solution": "हर सिरा अलग-अलग बदलो: 5 × (68 − 32)/9 = 20 और 5 × (77 − 32)/9 = 25, अतः परास 20°C से 25°C है और ऊपरी सीमा 25. रूपांतरण का गुणक धनात्मक है, अतः दोनों सिरों का क्रम बना रहता है और बड़ा फ़ारेनहाइट मान बड़ा सेल्सियस ही रहता है। यह कहने योग्य है क्योंकि वह अपने आप नहीं होता — ऋणात्मक गुणक वाला कोई भी रूपांतरण असमिका पलट देता और दोनों सिरों को जगह बदलनी पड़ती। यह भी ध्यान दो कि 32 का घटाव 5/9 से गुणा करने से पहले होना चाहिए; उलटा करना वही अंकगणितीय चूक है जो 45 बनाती है। (45 32 घटाने से पहले गुणा कर देता है।)"
+        },
+        "mr": {
+          "stem": "एखादे द्रावण 68°F आणि 77°F दरम्यान ठेवायचे आहे. C = 5(F − 32)/9 वापरून, पल्ल्याची वरची मर्यादा सेल्सियसमध्ये किती?",
+          "choices": [
+            "45 °C",
+            "30 °C",
+            "20 °C",
+            "25 °C"
+          ],
+          "solution": "प्रत्येक टोक वेगवेगळे बदला: 5 × (68 − 32)/9 = 20 आणि 5 × (77 − 32)/9 = 25, म्हणून पल्ला 20°C ते 25°C आणि वरची मर्यादा 25. रूपांतरणाचा गुणक धन आहे, म्हणून दोन्ही टोकांचा क्रम टिकतो आणि मोठे फॅरनहाइट मूल्य मोठे सेल्सियसच राहते. हे सांगण्याजोगे कारण ते आपोआप घडत नाही — ऋण गुणक असलेले कोणतेही रूपांतर असमानता उलटवले असते आणि दोन्ही टोकांना जागा बदलावी लागली असती. हेही लक्षात घ्या की 32 ची वजाबाकी 5/9 ने गुणण्याआधी व्हायला हवी; उलटे करणे हीच ती अंकगणिती चूक जी 45 बनवते. (45 32 वजा करण्याआधी गुणते.)"
+        }
+      }
+    }
+  ]
+}
