@@ -2122,6 +2122,703 @@ export const G12_CHEMISTRY: Chapter[] = [
     ],
   },
   /*C5*/
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 7 — Alcohols, Phenols and Ethers                                */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "chemistry-12-alcohols-phenols-and-ethers",
+    subject: "CHEMISTRY",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 7 — Alcohols, Phenols and Ethers",
+      hi: "अध्याय 7 — ऐल्कोहॉल, फ़ीनॉल तथा ईथर",
+      mr: "प्रकरण 7 — अल्कोहोल, फिनॉल आणि ईथर",
+    },
+    name: {
+      en: "Alcohols, Phenols and Ethers",
+      hi: "ऐल्कोहॉल, फ़ीनॉल तथा ईथर",
+      mr: "अल्कोहोल, फिनॉल आणि ईथर",
+    },
+    summary: {
+      en: "The same group of one oxygen and one hydrogen, put on a chain and put on a ring, and behaving so differently that the comparison is the whole chapter: on a chain it is barely acidic at all and on a ring it will turn litmus and dissolve in alkali, because the charge left behind when the hydrogen goes has somewhere to spread on the ring and nowhere to spread on the chain; a boiling point far above what the molecular mass alone would predict, caused by a bond between molecules rather than within them, and lost the moment the same atoms are rearranged into an ether; a group that can be pushed off as water and a group that cannot; and a family of reactions in which the ring, once it carries this substituent, is attacked at places it would not otherwise be attacked, which is the substituent talking to the ring.",
+      hi: "एक ऑक्सीजन और एक हाइड्रोजन का वही समूह, शृंखला पर रखा और वलय पर रखा, और इतना भिन्न बरतता कि तुलना ही पूरा अध्याय है: शृंखला पर वह मुश्किल से अम्लीय है और वलय पर वह लिटमस बदल देगा और क्षार में घुल जाएगा, क्योंकि हाइड्रोजन के जाने पर पीछे छूटे आवेश को वलय पर फैलने की जगह है और शृंखला पर नहीं; ऐसा क्वथनांक जो अकेले आणविक द्रव्यमान की भविष्यवाणी से कहीं ऊपर है, जो अणुओं के भीतर नहीं बल्कि उनके बीच के बंध से आता है, और उन्हीं परमाणुओं को ईथर में पुनर्व्यवस्थित करते ही खो जाता है; ऐसा समूह जिसे पानी बनाकर हटाया जा सकता है और ऐसा जिसे नहीं; और अभिक्रियाओं का ऐसा कुल जिसमें यह प्रतिस्थापी लगने के बाद वलय पर वहाँ हमला होता है जहाँ अन्यथा न होता, और यही प्रतिस्थापी का वलय से बात करना है।",
+      mr: "एका ऑक्सिजन आणि एका हायड्रोजनचा तोच गट, साखळीवर ठेवलेला आणि वलयावर ठेवलेला, आणि इतका वेगळा वागणारा की तुलना हेच अख्खे प्रकरण आहे: साखळीवर तो जेमतेम आम्लधर्मी आहे आणि वलयावर तो लिटमस बदलेल आणि क्षारात विरघळेल, कारण हायड्रोजन गेल्यावर मागे उरलेल्या प्रभाराला वलयावर पसरण्याची जागा आहे आणि साखळीवर नाही; असा उत्कलनांक जो एकट्या रेणुवस्तुमानाच्या अंदाजाहून कितीतरी वर आहे, जो रेणूंच्या आत नव्हे तर त्यांच्यातील बंधातून येतो, आणि तेच अणू ईथरात पुनर्रचित करताच हरवतो; असा गट जो पाणी बनवून काढता येतो आणि असा जो काढता येत नाही; आणि अभिक्रियांचे असे कुळ ज्यात हा प्रतिस्थापी लागल्यावर वलयावर तिथे हल्ला होतो जिथे अन्यथा झाला नसता, आणि हेच प्रतिस्थापीचे वलयाशी बोलणे आहे.",
+    },
+    position: 7,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "acidity-of-phenol",
+        name: {
+          en: "The acidity of phenol",
+          hi: "फ़ीनॉल की अम्लता",
+          mr: "फिनॉलची आम्लता",
+        },
+        kind: "property and its cause",
+        prompt: {
+          en: "Ethanol leaves water neutral, but the same hydroxyl group on a benzene ring gives a compound that dissolves in sodium hydroxide and has a pKa of about ten. Which property is this?",
+          hi: "एथेनॉल पानी को उदासीन छोड़ता है, पर वही हाइड्रॉक्सिल समूह बेंज़ीन वलय पर ऐसा यौगिक देता है जो सोडियम हाइड्रॉक्साइड में घुल जाता है और जिसका pKa लगभग दस है। यह कौन-सा गुण है?",
+          mr: "इथेनॉल पाणी उदासीन ठेवते, पण तोच हायड्रॉक्सिल गट बेंझिन वलयावर असे संयुग देतो जे सोडियम हायड्रॉक्साइडमध्ये विरघळते आणि ज्याचा pKa सुमारे दहा आहे. हा कोणता गुणधर्म?",
+        },
+        statement: {
+          en: "The acidity of phenol comes from the delocalisation of the negative charge of the phenoxide ion over the ring, which stabilises the ion the alcohol's alkoxide has no way of achieving.",
+          hi: "फ़ीनॉल की अम्लता फ़ीनॉक्साइड आयन के ऋण आवेश के वलय पर विस्थानीकरण से आती है, जो उस आयन को स्थायी करता है और ऐल्कोहॉल का ऐल्कॉक्साइड यह कर ही नहीं सकता।",
+          mr: "फिनॉलची आम्लता फिनॉक्साइड आयनाच्या ऋण प्रभाराच्या वलयावरील विस्थानीकरणातून येते, जे त्या आयनाला स्थिर करते आणि अल्कोहोलच्या अल्कॉक्साइडला हे साधतच नाही.",
+        },
+        detail: {
+          en: "The charge is shared over the oxygen and three carbons of the ring instead of sitting entirely on one oxygen, and an ion whose charge is spread out is lower in energy and therefore easier to form.",
+          hi: "आवेश पूरी तरह एक ऑक्सीजन पर बैठने के बजाय ऑक्सीजन और वलय के तीन कार्बनों पर बँटा रहता है, और जिस आयन का आवेश फैला हो वह कम ऊर्जा का है और इसलिए बनाना आसान।",
+          mr: "प्रभार पूर्णपणे एका ऑक्सिजनवर बसण्याऐवजी ऑक्सिजन आणि वलयाच्या तीन कार्बनांवर वाटलेला राहतो, आणि ज्या आयनाचा प्रभार पसरलेला असतो तो कमी ऊर्जेचा असतो आणि म्हणून बनवणे सोपे.",
+        },
+        extra: {
+          en: "Electron-withdrawing groups on the ring make it stronger still — nitrophenols are more acidic than phenol and picric acid is a genuinely strong acid — while electron-donating groups such as methyl push the other way.",
+          hi: "वलय पर इलेक्ट्रॉन-खींचक समूह उसे और प्रबल बनाते हैं — नाइट्रोफ़ीनॉल फ़ीनॉल से अधिक अम्लीय हैं और पिक्रिक अम्ल वस्तुतः प्रबल अम्ल है — जबकि मेथिल जैसे इलेक्ट्रॉन-दाता समूह उलटी ओर धकेलते हैं।",
+          mr: "वलयावर इलेक्ट्रॉन-ओढक गट त्याला आणखी तीव्र बनवतात — नायट्रोफिनॉल फिनॉलहून अधिक आम्लधर्मी आहेत आणि पिक्रिक आम्ल खरोखर तीव्र आम्ल आहे — तर मिथिलसारखे इलेक्ट्रॉन-दाता गट उलट बाजूला ढकलतात.",
+        },
+        pair: {
+          left: {
+            en: "The same group is neutral on a chain and acidic on a ring",
+            hi: "वही समूह शृंखला पर उदासीन और वलय पर अम्लीय है",
+            mr: "तोच गट साखळीवर उदासीन आणि वलयावर आम्लधर्मी आहे",
+          },
+          right: {
+            en: "the acidity of phenol",
+            hi: "फ़ीनॉल की अम्लता",
+            mr: "फिनॉलची आम्लता",
+          },
+        },
+      },
+      {
+        id: "hydrogen-bonding-in-alcohols",
+        name: {
+          en: "Hydrogen bonding in alcohols",
+          hi: "ऐल्कोहॉलों में हाइड्रोजन आबंधन",
+          mr: "अल्कोहोलांतील हायड्रोजन बंधन",
+        },
+        kind: "property and its cause",
+        prompt: {
+          en: "Ethanol boils at 351 K and dimethyl ether, which has exactly the same atoms in the same numbers, boils at 248 K. What accounts for the hundred-degree gap?",
+          hi: "एथेनॉल 351 K पर उबलता है और डाइमेथिल ईथर, जिसमें ठीक वही परमाणु उतनी ही संख्या में हैं, 248 K पर उबलता है। सौ अंश के इस अंतर का कारण क्या है?",
+          mr: "इथेनॉल 351 K वर उकळते आणि डायमिथिल ईथर, ज्यात नेमके तेच अणू तितक्याच संख्येत आहेत, 248 K वर उकळते. शंभर अंशांच्या या फरकाचे कारण काय?",
+        },
+        statement: {
+          en: "Hydrogen bonding in alcohols is the attraction between the hydrogen of one hydroxyl group and the oxygen of the next, which holds the molecules together in the liquid and must be paid for before any of them can boil away.",
+          hi: "ऐल्कोहॉलों में हाइड्रोजन आबंधन एक हाइड्रॉक्सिल समूह के हाइड्रोजन और अगले के ऑक्सीजन के बीच का आकर्षण है, जो अणुओं को द्रव में जोड़े रखता है और उनमें से किसी के उबलकर उड़ने से पहले उसकी क़ीमत चुकानी पड़ती है।",
+          mr: "अल्कोहोलांतील हायड्रोजन बंधन म्हणजे एका हायड्रॉक्सिल गटाच्या हायड्रोजन आणि पुढच्याच्या ऑक्सिजनमधले आकर्षण, जे रेणूंना द्रवात जोडून ठेवते आणि त्यांपैकी कोणीही उकळून उडण्याआधी त्याची किंमत मोजावी लागते.",
+        },
+        detail: {
+          en: "An ether has the same oxygen but no hydrogen attached to it, so it can accept such a bond and cannot donate one, and a chain of molecules never forms.",
+          hi: "ईथर में वही ऑक्सीजन है पर उससे जुड़ा कोई हाइड्रोजन नहीं, अतः वह ऐसा बंध ले सकता है और दे नहीं सकता, और अणुओं की शृंखला बनती ही नहीं।",
+          mr: "ईथरात तोच ऑक्सिजन आहे पण त्याला जोडलेला कोणताही हायड्रोजन नाही, म्हणून तो असा बंध घेऊ शकतो आणि देऊ शकत नाही, आणि रेणूंची साखळी बनतच नाही.",
+        },
+        extra: {
+          en: "The same bond explains solubility: the small alcohols mix with water in all proportions because they can join its network, and the effect fades as the carbon chain lengthens and the molecule becomes mostly hydrocarbon.",
+          hi: "वही बंध विलेयता भी समझाता है: छोटे ऐल्कोहॉल हर अनुपात में पानी से मिल जाते हैं क्योंकि वे उसके जाल में जुड़ सकते हैं, और कार्बन शृंखला लंबी होने तथा अणु के अधिकांशतः हाइड्रोकार्बन हो जाने पर यह प्रभाव मिट जाता है।",
+          mr: "तोच बंध विद्राव्यताही समजावतो: लहान अल्कोहोल प्रत्येक प्रमाणात पाण्याशी मिसळतात कारण ते त्याच्या जाळ्यात जोडले जाऊ शकतात, आणि कार्बन साखळी लांब होताना व रेणू बहुतांशी हायड्रोकार्बन होताना हा परिणाम मावळतो.",
+        },
+        pair: {
+          left: {
+            en: "Identical atoms, a hundred degrees apart",
+            hi: "समरूप परमाणु, सौ अंश अलग",
+            mr: "सारखेच अणू, शंभर अंश दूर",
+          },
+          right: {
+            en: "hydrogen bonding in alcohols",
+            hi: "ऐल्कोहॉलों में हाइड्रोजन आबंधन",
+            mr: "अल्कोहोलांतील हायड्रोजन बंधन",
+          },
+        },
+      },
+      {
+        id: "phenols-resist-substitution",
+        name: {
+          en: "Why phenols resist substitution of the hydroxyl group",
+          hi: "फ़ीनॉल हाइड्रॉक्सिल समूह के प्रतिस्थापन का प्रतिरोध क्यों करते हैं",
+          mr: "फिनॉल हायड्रॉक्सिल गटाच्या प्रतिस्थापनाला विरोध का करतात",
+        },
+        kind: "property and its cause",
+        prompt: {
+          en: "Concentrated hydrochloric acid turns an alcohol into a chloride readily enough, but the same treatment leaves the ring compound untouched. Which fact is this?",
+          hi: "सांद्र हाइड्रोक्लोरिक अम्ल ऐल्कोहॉल को काफ़ी आसानी से क्लोराइड बना देता है, पर वही उपचार वलय वाले यौगिक को अछूता छोड़ देता है। यह कौन-सा तथ्य है?",
+          mr: "संहत हायड्रोक्लोरिक आम्ल अल्कोहोलला बऱ्यापैकी सहज क्लोराइड बनवते, पण तोच उपचार वलय असलेल्या संयुगाला अस्पर्श सोडतो. हे कोणते सत्य?",
+        },
+        statement: {
+          en: "Phenols resist substitution of the hydroxyl group because the C–O bond has partial double-bond character from delocalisation into the ring, so it is shorter and stronger than the C–O bond of an alcohol.",
+          hi: "फ़ीनॉल हाइड्रॉक्सिल समूह के प्रतिस्थापन का प्रतिरोध इसलिए करते हैं कि वलय में विस्थानीकरण से C–O बंध को आंशिक द्विबंध लक्षण मिल जाता है, अतः वह ऐल्कोहॉल के C–O बंध से छोटा और प्रबल है।",
+          mr: "फिनॉल हायड्रॉक्सिल गटाच्या प्रतिस्थापनाला विरोध यासाठी करतात की वलयात विस्थानीकरणाने C–O बंधाला अंशतः द्विबंध लक्षण मिळते, म्हणून तो अल्कोहोलच्या C–O बंधाहून लहान आणि तीव्र आहे.",
+        },
+        detail: {
+          en: "The same delocalisation that makes the hydrogen easy to remove makes the whole hydroxyl group hard to remove, which is one cause producing two opposite-looking effects.",
+          hi: "वही विस्थानीकरण जो हाइड्रोजन को हटाना आसान बनाता है, पूरे हाइड्रॉक्सिल समूह को हटाना कठिन बना देता है, और यह एक ही कारण से निकले दो उलटे दिखते प्रभाव हैं।",
+          mr: "तेच विस्थानीकरण जे हायड्रोजन काढणे सोपे करते, ते अख्खा हायड्रॉक्सिल गट काढणे कठीण करते, आणि हे एकाच कारणातून निघालेले दोन उलट दिसणारे परिणाम आहेत.",
+        },
+        extra: {
+          en: "It is also why phenol is not made from benzene by the route that would be obvious, and industrially comes from cumene instead, in a process whose other product is acetone.",
+          hi: "इसीलिए फ़ीनॉल बेंज़ीन से उस रास्ते नहीं बनता जो स्पष्ट लगता, और औद्योगिक रूप से क्यूमीन से आता है, ऐसी प्रक्रिया में जिसका दूसरा उत्पाद ऐसीटोन है।",
+          mr: "म्हणूनच फिनॉल बेंझिनपासून त्या मार्गाने बनत नाही जो स्पष्ट वाटेल, आणि औद्योगिकदृष्ट्या क्युमिनपासून येते, अशा प्रक्रियेत जिचे दुसरे उत्पादन अ‍ॅसिटोन आहे.",
+        },
+        pair: {
+          left: {
+            en: "One cause makes the hydrogen leave easily and the group stay put",
+            hi: "एक ही कारण हाइड्रोजन को आसानी से जाने देता है और समूह को जमा रखता है",
+            mr: "एकच कारण हायड्रोजनला सहज जाऊ देते आणि गटाला जागीच ठेवते",
+          },
+          right: {
+            en: "why phenols resist substitution of the hydroxyl group",
+            hi: "फ़ीनॉल हाइड्रॉक्सिल समूह के प्रतिस्थापन का प्रतिरोध क्यों करते हैं",
+            mr: "फिनॉल हायड्रॉक्सिल गटाच्या प्रतिस्थापनाला विरोध का करतात",
+          },
+        },
+      },
+      {
+        id: "dehydration-of-alcohols",
+        name: {
+          en: "Dehydration of alcohols",
+          hi: "ऐल्कोहॉलों का निर्जलीकरण",
+          mr: "अल्कोहोलांचे निर्जलीकरण",
+        },
+        kind: "reaction and what it reveals",
+        prompt: {
+          en: "Heat an alcohol with concentrated sulphuric acid and a double bond appears where a hydroxyl group and a neighbouring hydrogen used to be. Which reaction is this?",
+          hi: "किसी ऐल्कोहॉल को सांद्र सल्फ़्यूरिक अम्ल के साथ गर्म करो और जहाँ हाइड्रॉक्सिल समूह और पड़ोसी हाइड्रोजन थे वहाँ द्विबंध प्रकट हो जाता है। यह कौन-सी अभिक्रिया है?",
+          mr: "एखादे अल्कोहोल संहत सल्फ्युरिक आम्लासोबत तापवा आणि जिथे हायड्रॉक्सिल गट आणि शेजारचा हायड्रोजन होते तिथे द्विबंध प्रकट होतो. ही कोणती अभिक्रिया?",
+        },
+        statement: {
+          en: "Dehydration of alcohols is the acid-catalysed loss of water to give an alkene, and it proceeds through protonation of the oxygen followed by loss of water to form a carbocation.",
+          hi: "ऐल्कोहॉलों का निर्जलीकरण अम्ल-उत्प्रेरित जल-हानि है जो ऐल्कीन देती है, और वह ऑक्सीजन के प्रोटॉनन के बाद जल-हानि से कार्बोकैटायन बनने के रास्ते चलती है।",
+          mr: "अल्कोहोलांचे निर्जलीकरण म्हणजे आम्ल-उत्प्रेरित जलहानी जी अल्कीन देते, आणि ती ऑक्सिजनच्या प्रोटॉनीकरणानंतर जलहानीने कार्बोकॅटायन बनण्याच्या मार्गाने चालते.",
+        },
+        detail: {
+          en: "The acid is needed because hydroxide is a poor leaving group and water is a good one, so the first thing the reaction does is convert one into the other.",
+          hi: "अम्ल इसलिए चाहिए कि हाइड्रॉक्साइड ख़राब प्रस्थायी समूह है और पानी अच्छा, अतः अभिक्रिया सबसे पहले एक को दूसरे में बदलती है।",
+          mr: "आम्ल यासाठी लागते की हायड्रॉक्साइड वाईट निघणारा गट आहे आणि पाणी चांगला, म्हणून अभिक्रिया सर्वप्रथम एकाचे दुसऱ्यात रूपांतर करते.",
+        },
+        extra: {
+          en: "The order of ease is tertiary above secondary above primary, exactly the order of carbocation stability, which is evidence that a carbocation really is formed on the way.",
+          hi: "सुगमता का क्रम तृतीयक, फिर द्वितीयक, फिर प्राथमिक है, ठीक कार्बोकैटायन स्थायित्व का क्रम, जो प्रमाण है कि रास्ते में सचमुच कार्बोकैटायन बनता है।",
+          mr: "सुलभतेचा क्रम तृतीयक, मग द्वितीयक, मग प्राथमिक आहे, नेमका कार्बोकॅटायन स्थैर्याचा क्रम, जो पुरावा आहे की वाटेत खरोखर कार्बोकॅटायन बनते.",
+        },
+        pair: {
+          left: {
+            en: "A bad leaving group is turned into a good one first",
+            hi: "पहले ख़राब प्रस्थायी समूह को अच्छा बना लिया जाता है",
+            mr: "आधी वाईट निघणारा गट चांगला बनवला जातो",
+          },
+          right: {
+            en: "dehydration of alcohols",
+            hi: "ऐल्कोहॉलों का निर्जलीकरण",
+            mr: "अल्कोहोलांचे निर्जलीकरण",
+          },
+        },
+      },
+      {
+        id: "oxidation-of-alcohols",
+        name: {
+          en: "Oxidation of alcohols",
+          hi: "ऐल्कोहॉलों का ऑक्सीकरण",
+          mr: "अल्कोहोलांचे उपचयन",
+        },
+        kind: "reaction and what it reveals",
+        prompt: {
+          en: "One alcohol gives an aldehyde and then an acid, a second stops at a ketone, and a third is untouched — and which happens tells you how many hydrogens sat on the carbon carrying the oxygen. Which reaction is this?",
+          hi: "एक ऐल्कोहॉल ऐल्डिहाइड और फिर अम्ल देता है, दूसरा कीटोन पर रुक जाता है, और तीसरा अछूता रहता है — और क्या होता है यह बता देता है कि ऑक्सीजन वाले कार्बन पर कितने हाइड्रोजन बैठे थे। यह कौन-सी अभिक्रिया है?",
+          mr: "एक अल्कोहोल अल्डिहाइड आणि मग आम्ल देते, दुसरे कीटोनवर थांबते, आणि तिसरे अस्पर्श राहते — आणि काय घडते हे सांगते की ऑक्सिजन असलेल्या कार्बनवर किती हायड्रोजन बसले होते. ही कोणती अभिक्रिया?",
+        },
+        statement: {
+          en: "Oxidation of alcohols removes hydrogen from the carbon bearing the hydroxyl group, so a primary alcohol goes to an aldehyde and then an acid, a secondary one to a ketone, and a tertiary one not at all.",
+          hi: "ऐल्कोहॉलों का ऑक्सीकरण हाइड्रॉक्सिल वाले कार्बन से हाइड्रोजन हटाता है, अतः प्राथमिक ऐल्कोहॉल ऐल्डिहाइड और फिर अम्ल तक जाता है, द्वितीयक कीटोन तक, और तृतीयक बिलकुल नहीं।",
+          mr: "अल्कोहोलांचे उपचयन हायड्रॉक्सिल असलेल्या कार्बनवरून हायड्रोजन काढते, म्हणून प्राथमिक अल्कोहोल अल्डिहाइड आणि मग आम्लापर्यंत जाते, द्वितीयक कीटोनपर्यंत, आणि तृतीयक मुळीच नाही.",
+        },
+        detail: {
+          en: "A tertiary alcohol has no hydrogen on that carbon at all, so there is nothing to remove without breaking a carbon–carbon bond, which ordinary oxidising agents will not do.",
+          hi: "तृतीयक ऐल्कोहॉल में उस कार्बन पर कोई हाइड्रोजन है ही नहीं, अतः कार्बन–कार्बन बंध तोड़े बिना हटाने को कुछ नहीं, और साधारण ऑक्सीकारक वह नहीं करेंगे।",
+          mr: "तृतीयक अल्कोहोलात त्या कार्बनवर कोणताही हायड्रोजन नाहीच, म्हणून कार्बन–कार्बन बंध तोडल्याविना काढायला काही नाही, आणि साधे उपचयक ते करणार नाहीत.",
+        },
+        extra: {
+          en: "Stopping a primary alcohol cleanly at the aldehyde needs a reagent that does not work in water, since it is easier to oxidise the aldehyde than the alcohol it came from.",
+          hi: "प्राथमिक ऐल्कोहॉल को ऐल्डिहाइड पर साफ़ रोकने के लिए ऐसा अभिकर्मक चाहिए जो पानी में काम न करे, क्योंकि ऐल्डिहाइड का ऑक्सीकरण उस ऐल्कोहॉल से आसान है जिससे वह आया।",
+          mr: "प्राथमिक अल्कोहोलला अल्डिहाइडवर स्वच्छ थांबवण्यास असा अभिकर्मक लागतो जो पाण्यात चालत नाही, कारण अल्डिहाइडचे उपचयन ज्या अल्कोहोलपासून ते आले त्याहून सोपे आहे.",
+        },
+        pair: {
+          left: {
+            en: "The product counts the hydrogens on one carbon",
+            hi: "उत्पाद एक कार्बन पर के हाइड्रोजन गिन देता है",
+            mr: "उत्पादन एका कार्बनवरचे हायड्रोजन मोजते",
+          },
+          right: {
+            en: "oxidation of alcohols",
+            hi: "ऐल्कोहॉलों का ऑक्सीकरण",
+            mr: "अल्कोहोलांचे उपचयन",
+          },
+        },
+      },
+      {
+        id: "ring-substitution-in-phenol",
+        name: {
+          en: "Ring substitution in phenol",
+          hi: "फ़ीनॉल में वलय प्रतिस्थापन",
+          mr: "फिनॉलमधील वलय प्रतिस्थापन",
+        },
+        kind: "reaction and what it reveals",
+        prompt: {
+          en: "Bromine water needs a catalyst and gives one product with benzene, but with this compound it needs no catalyst at all and puts three bromines on at once. Which behaviour is this?",
+          hi: "ब्रोमीन जल को बेंज़ीन के साथ उत्प्रेरक चाहिए और वह एक उत्पाद देता है, पर इस यौगिक के साथ उसे कोई उत्प्रेरक नहीं चाहिए और वह एक साथ तीन ब्रोमीन लगा देता है। यह कौन-सा बरताव है?",
+          mr: "ब्रोमीन जलाला बेंझिनसोबत उत्प्रेरक लागतो आणि ते एक उत्पादन देते, पण या संयुगासोबत त्याला कोणताही उत्प्रेरक लागत नाही आणि ते एकाच वेळी तीन ब्रोमीन लावते. हे कोणते वर्तन?",
+        },
+        statement: {
+          en: "Ring substitution in phenol is much easier than in benzene and goes at the ortho and para positions, because the oxygen's lone pair is donated into the ring and raises the electron density exactly there.",
+          hi: "फ़ीनॉल में वलय प्रतिस्थापन बेंज़ीन से कहीं आसान है और ऑर्थो तथा पैरा स्थानों पर होता है, क्योंकि ऑक्सीजन का एकाकी युग्म वलय में दिया जाता है और ठीक वहीं इलेक्ट्रॉन घनत्व बढ़ा देता है।",
+          mr: "फिनॉलमधील वलय प्रतिस्थापन बेंझिनहून कितीतरी सोपे आहे आणि ऑर्थो व पॅरा जागी होते, कारण ऑक्सिजनची एकाकी जोडी वलयात दिली जाते आणि नेमकी तिथेच इलेक्ट्रॉन घनता वाढवते.",
+        },
+        detail: {
+          en: "The positions are not chosen at random: drawing the resonance structures shows negative charge appearing at the ortho and para carbons and nowhere else, and that is where the electrophile attacks.",
+          hi: "स्थान बेतरतीब नहीं चुने जाते: अनुनाद संरचनाएँ खींचने पर ऋण आवेश ऑर्थो और पैरा कार्बनों पर प्रकट होता दिखता है और कहीं नहीं, और इलेक्ट्रॉनरागी वहीं हमला करता है।",
+          mr: "जागा बेजबाबदारपणे निवडल्या जात नाहीत: अनुनाद रचना काढल्यावर ऋण प्रभार ऑर्थो आणि पॅरा कार्बनांवर प्रकट होताना दिसतो आणि इतरत्र कुठेही नाही, आणि इलेक्ट्रॉनरागी तिथेच हल्ला करतो.",
+        },
+        extra: {
+          en: "The activation is strong enough that phenol gives a white precipitate with bromine water instantly, which is used as a test, and the same donation is what makes the hydroxyl group hard to displace.",
+          hi: "सक्रियण इतना प्रबल है कि फ़ीनॉल ब्रोमीन जल के साथ तुरंत सफ़ेद अवक्षेप देता है, जिसे परीक्षण के रूप में काम में लिया जाता है, और वही दान हाइड्रॉक्सिल समूह को विस्थापित करना कठिन बनाता है।",
+          mr: "सक्रियण इतके तीव्र आहे की फिनॉल ब्रोमीन जलासोबत लगेच पांढरा अवक्षेप देते, जे चाचणी म्हणून वापरले जाते, आणि तेच दान हायड्रॉक्सिल गट विस्थापित करणे कठीण करते.",
+        },
+        pair: {
+          left: {
+            en: "No catalyst needed, and three at once",
+            hi: "कोई उत्प्रेरक नहीं चाहिए, और एक साथ तीन",
+            mr: "कोणताही उत्प्रेरक नको, आणि एकाच वेळी तीन",
+          },
+          right: {
+            en: "ring substitution in phenol",
+            hi: "फ़ीनॉल में वलय प्रतिस्थापन",
+            mr: "फिनॉलमधील वलय प्रतिस्थापन",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Ethanol has a pKa of about 16 and phenol about 10 — a difference of a million in acid strength, although both give up a hydrogen from an oxygen. Explain the difference, and say what it predicts about substituted phenols.",
+          hi: "एथेनॉल का pKa लगभग 16 है और फ़ीनॉल का लगभग 10 — अम्ल प्रबलता में दस लाख का अंतर, यद्यपि दोनों ऑक्सीजन से हाइड्रोजन छोड़ते हैं। अंतर समझाओ, और बताओ कि वह प्रतिस्थापित फ़ीनॉलों के बारे में क्या भविष्यवाणी करता है।",
+          mr: "इथेनॉलचा pKa सुमारे 16 आहे आणि फिनॉलचा सुमारे 10 — आम्ल तीव्रतेत दहा लाखांचा फरक, जरी दोघेही ऑक्सिजनमधून हायड्रोजन सोडतात. फरक समजावा, आणि तो प्रतिस्थापित फिनॉलांबद्दल काय भाकीत करतो ते सांगा.",
+        },
+        choices: [
+          {
+            en: "Acidity is decided by the stability of the ion left behind, not by the strength of the O–H bond. In ethoxide the negative charge is stuck on one oxygen, and the ethyl group even pushes electron density towards it, making things worse. In phenoxide the charge is delocalised over the oxygen and the ortho and para carbons of the ring, so the ion is far lower in energy and forms far more readily. The prediction follows at once: electron-withdrawing groups on the ring pull charge away and increase acidity, and they do so most from the ortho and para positions where the charge actually sits, while electron-donating groups decrease it",
+            hi: "अम्लता पीछे छूटे आयन की स्थिरता से तय होती है, O–H बंध की प्रबलता से नहीं। एथॉक्साइड में ऋण आवेश एक ऑक्सीजन पर अटका है, और एथिल समूह तो उसकी ओर इलेक्ट्रॉन घनत्व धकेलकर बात और बिगाड़ देता है। फ़ीनॉक्साइड में आवेश ऑक्सीजन तथा वलय के ऑर्थो और पैरा कार्बनों पर विस्थानीकृत है, अतः आयन कहीं कम ऊर्जा का है और कहीं आसानी से बनता है। भविष्यवाणी तुरंत निकलती है: वलय पर इलेक्ट्रॉन-खींचक समूह आवेश दूर खींचते हैं और अम्लता बढ़ाते हैं, और सबसे अधिक ऑर्थो तथा पैरा स्थानों से जहाँ आवेश सचमुच बैठा है, जबकि इलेक्ट्रॉन-दाता समूह उसे घटाते हैं",
+            mr: "आम्लता मागे उरलेल्या आयनाच्या स्थैर्याने ठरते, O–H बंधाच्या तीव्रतेने नव्हे. इथॉक्साइडमध्ये ऋण प्रभार एका ऑक्सिजनवर अडकला आहे, आणि इथिल गट तर त्याच्याकडे इलेक्ट्रॉन घनता ढकलून गोष्ट आणखी बिघडवतो. फिनॉक्साइडमध्ये प्रभार ऑक्सिजन आणि वलयाच्या ऑर्थो व पॅरा कार्बनांवर विस्थानित आहे, म्हणून आयन कितीतरी कमी ऊर्जेचा आहे आणि कितीतरी सहज बनतो. भाकीत लगेच निघते: वलयावर इलेक्ट्रॉन-ओढक गट प्रभार दूर ओढतात आणि आम्लता वाढवतात, आणि सर्वाधिक ऑर्थो व पॅरा जागांवरून जिथे प्रभार खरोखर बसला आहे, तर इलेक्ट्रॉन-दाता गट ती घटवतात",
+          },
+          {
+            en: "Phenol is more acidic because the O–H bond in it is weaker, the ring having stretched it, and substituents on the ring will therefore matter only if they are large enough to strain the bond further",
+            hi: "फ़ीनॉल इसलिए अधिक अम्लीय है कि उसमें O–H बंध कमज़ोर है, वलय ने उसे खींच दिया है, और अतः वलय पर प्रतिस्थापी तभी मायने रखेंगे जब वे बंध को और तनाव देने भर बड़े हों",
+            mr: "फिनॉल यासाठी अधिक आम्लधर्मी आहे की त्यात O–H बंध क्षीण आहे, वलयाने तो ताणला आहे, आणि म्हणून वलयावरचे प्रतिस्थापी तेव्हाच महत्त्वाचे ठरतील जेव्हा ते बंधाला आणखी ताण देण्याइतके मोठे असतील",
+          },
+          {
+            en: "Phenol is more acidic simply because it is aromatic, and all aromatic compounds are acidic while aliphatic ones are not",
+            hi: "फ़ीनॉल बस इसलिए अधिक अम्लीय है कि वह ऐरोमैटिक है, और सारे ऐरोमैटिक यौगिक अम्लीय होते हैं जबकि ऐलिफ़ैटिक नहीं",
+            mr: "फिनॉल फक्त यासाठी अधिक आम्लधर्मी आहे की तो सुगंधी आहे, आणि सर्व सुगंधी संयुगे आम्लधर्मी असतात तर अ‍ॅलिफॅटिक नसतात",
+          },
+          {
+            en: "Ethanol is less acidic because its molecules hydrogen-bond to each other and hold the hydrogen in place, and a substituent on phenol will change its acidity only by changing its solubility",
+            hi: "एथेनॉल इसलिए कम अम्लीय है कि उसके अणु आपस में हाइड्रोजन बंध बनाकर हाइड्रोजन को जकड़े रखते हैं, और फ़ीनॉल पर कोई प्रतिस्थापी उसकी अम्लता केवल विलेयता बदलकर बदलेगा",
+            mr: "इथेनॉल यासाठी कमी आम्लधर्मी आहे की त्याचे रेणू परस्पर हायड्रोजन बंध बनवून हायड्रोजनला जागी धरून ठेवतात, आणि फिनॉलवरचा कोणताही प्रतिस्थापी त्याची आम्लता केवळ विद्राव्यता बदलून बदलेल",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The first move is to stop asking about the acid and start asking about its conjugate base. An acid is strong when the ion it leaves behind is comfortable, because equilibrium runs towards whatever is lower in energy; the strength of the bond that breaks matters much less than the fate of the charge that is created. THE ALKOXIDE. When ethanol loses its hydrogen, the negative charge has nowhere to go: it sits on one oxygen atom, concentrated. Worse, the ethyl group is weakly electron-donating, so it pushes further electron density towards an atom that already has too much. The ion is high in energy, and ethanol is correspondingly a very weak acid — pKa 16 is barely acidic at all, weaker than water. THE PHENOXIDE. When phenol loses its hydrogen, the oxygen's lone pair can overlap with the ring's π system. Draw the resonance structures and the charge appears in turn on the oxygen, on the ortho carbon, on the para carbon, and on the other ortho carbon. Spreading a charge over four atoms rather than one lowers the energy substantially, so the phenoxide ion is much easier to form. Six pKa units is a factor of 10⁶ in the equilibrium constant — the ionisation is a million times more favourable. THE PREDICTION. Now the argument earns its keep, because it says where a substituent has to sit. If the stabilisation works by delocalising negative charge onto the ortho and para carbons, then a group that removes electron density from those carbons will stabilise the ion further and make the acid stronger. And it will do so far more effectively from the ortho or para position, where it is conjugated with the charge, than from meta, where it is not. The data agree: phenol pKa 10.0, 4-nitrophenol 7.2, 2,4-dinitrophenol 4.1, and 2,4,6-trinitrophenol — picric acid — about 0.4, which is a genuinely strong acid, stronger than acetic by four orders of magnitude. Meanwhile 3-nitrophenol sits at 8.4, appreciably less acidic than its para isomer with the same group on the same ring. Electron-donating groups run the other way: 4-methylphenol is slightly weaker than phenol itself. THE COMPANION FACT WORTH NOTICING. The very delocalisation that makes the hydrogen easy to remove also gives the C–O bond partial double-bond character, which makes the whole hydroxyl group hard to remove. So phenol is a better acid than ethanol and a far worse substrate for substitution — one cause, two effects that look opposite until you see the mechanism underneath. (The second option locates the effect in the O–H bond rather than the anion; the third invents a rule that would make benzene itself acidic; the fourth confuses a bulk physical property with a thermodynamic one.)",
+          hi: "पहला क़दम अम्ल के बारे में पूछना छोड़कर उसके संयुग्मी क्षार के बारे में पूछना है। अम्ल तब प्रबल है जब पीछे छूटा आयन सहज हो, क्योंकि साम्य उसी ओर चलता है जो कम ऊर्जा का हो; जो बंध टूटता है उसकी प्रबलता उस आवेश की नियति से कहीं कम मायने रखती है जो बनता है। ऐल्कॉक्साइड। जब एथेनॉल अपना हाइड्रोजन खोता है, ऋण आवेश के पास जाने की कोई जगह नहीं: वह एक ऑक्सीजन परमाणु पर बैठता है, संकेंद्रित। और बुरा यह कि एथिल समूह दुर्बल इलेक्ट्रॉन-दाता है, अतः वह ऐसे परमाणु की ओर और इलेक्ट्रॉन घनत्व धकेलता है जिसके पास पहले ही बहुत है। आयन उच्च ऊर्जा का है, और एथेनॉल तदनुरूप बहुत दुर्बल अम्ल — pKa 16 मुश्किल से अम्लीय है, पानी से भी दुर्बल। फ़ीनॉक्साइड। जब फ़ीनॉल अपना हाइड्रोजन खोता है, ऑक्सीजन का एकाकी युग्म वलय के π तंत्र से अतिव्यापन कर सकता है। अनुनाद संरचनाएँ खींचो और आवेश बारी-बारी से ऑक्सीजन पर, ऑर्थो कार्बन पर, पैरा कार्बन पर, और दूसरे ऑर्थो कार्बन पर प्रकट होता है। आवेश को एक के बजाय चार परमाणुओं पर फैलाना ऊर्जा को काफ़ी घटा देता है, अतः फ़ीनॉक्साइड आयन कहीं आसानी से बनता है। छह pKa इकाइयाँ साम्य स्थिरांक में 10⁶ का गुणक हैं — आयनन दस लाख गुना अधिक अनुकूल है। भविष्यवाणी। अब तर्क अपनी क़ीमत चुकाता है, क्योंकि वह बताता है कि प्रतिस्थापी को कहाँ बैठना पड़ेगा। यदि स्थिरीकरण ऋण आवेश को ऑर्थो और पैरा कार्बनों पर विस्थानीकृत करके काम करता है, तो जो समूह उन कार्बनों से इलेक्ट्रॉन घनत्व हटाएगा वह आयन को और स्थायी करेगा और अम्ल को प्रबल बनाएगा। और वह ऑर्थो या पैरा स्थान से कहीं अधिक प्रभावी होगा, जहाँ वह आवेश से संयुग्मित है, बनिस्बत मेटा के, जहाँ नहीं। आँकड़े सहमत हैं: फ़ीनॉल pKa 10.0, 4-नाइट्रोफ़ीनॉल 7.2, 2,4-डाइनाइट्रोफ़ीनॉल 4.1, और 2,4,6-ट्राइनाइट्रोफ़ीनॉल — पिक्रिक अम्ल — लगभग 0.4, जो वस्तुतः प्रबल अम्ल है, ऐसीटिक से चार कोटि प्रबल। वहीं 3-नाइट्रोफ़ीनॉल 8.4 पर बैठा है, उसी वलय पर उसी समूह वाले अपने पैरा समावयव से क़ाबिले-ग़ौर कम अम्लीय। इलेक्ट्रॉन-दाता समूह उलटी ओर चलते हैं: 4-मेथिलफ़ीनॉल स्वयं फ़ीनॉल से थोड़ा दुर्बल है। ध्यान देने लायक़ साथी तथ्य। वही विस्थानीकरण जो हाइड्रोजन हटाना आसान बनाता है, C–O बंध को आंशिक द्विबंध लक्षण भी देता है, जो पूरे हाइड्रॉक्सिल समूह को हटाना कठिन बना देता है। अतः फ़ीनॉल एथेनॉल से बेहतर अम्ल है और प्रतिस्थापन के लिए कहीं बदतर क्रियाधार — एक कारण, दो प्रभाव जो तब तक उलटे लगते हैं जब तक नीचे की क्रियाविधि न दिखे। (दूसरा विकल्प प्रभाव को ऋणायन के बजाय O–H बंध में रखता है; तीसरा ऐसा नियम गढ़ता है जो स्वयं बेंज़ीन को अम्लीय बना देता; चौथा स्थूल भौतिक गुण को ऊष्मागतिक गुण से गड्डमड्ड करता है।)",
+          mr: "पहिली पायरी म्हणजे आम्लाबद्दल विचारणे थांबवून त्याच्या संयुग्मी क्षाराबद्दल विचारणे. आम्ल तेव्हा तीव्र असते जेव्हा मागे उरलेला आयन सुखी असतो, कारण समतोल त्याच बाजूला चालतो जो कमी ऊर्जेचा असतो; जो बंध तुटतो त्याची तीव्रता जो प्रभार बनतो त्याच्या नियतीहून कितीतरी कमी महत्त्वाची. अल्कॉक्साइड. जेव्हा इथेनॉल आपला हायड्रोजन गमावते, तेव्हा ऋण प्रभाराला जायला कोणतीही जागा नाही: तो एका ऑक्सिजन अणूवर बसतो, संकेंद्रित. आणखी वाईट म्हणजे इथिल गट दुर्बल इलेक्ट्रॉन-दाता आहे, म्हणून तो अशा अणूकडे आणखी इलेक्ट्रॉन घनता ढकलतो ज्याच्याकडे आधीच खूप आहे. आयन उच्च ऊर्जेचा आहे, आणि इथेनॉल त्याअनुषंगाने फार दुर्बल आम्ल — pKa 16 जेमतेम आम्लधर्मी आहे, पाण्याहूनही दुर्बल. फिनॉक्साइड. जेव्हा फिनॉल आपला हायड्रोजन गमावतो, तेव्हा ऑक्सिजनची एकाकी जोडी वलयाच्या π प्रणालीशी आच्छादू शकते. अनुनाद रचना काढा आणि प्रभार क्रमाक्रमाने ऑक्सिजनवर, ऑर्थो कार्बनवर, पॅरा कार्बनवर, आणि दुसऱ्या ऑर्थो कार्बनवर प्रकट होतो. प्रभार एकाऐवजी चार अणूंवर पसरवणे ऊर्जा बरीच घटवते, म्हणून फिनॉक्साइड आयन कितीतरी सहज बनतो. सहा pKa एकके समतोल स्थिरांकात 10⁶ चा गुणक आहेत — आयनन दहा लाख पट अधिक अनुकूल आहे. भाकीत. आता युक्तिवाद आपली किंमत वसूल करतो, कारण तो सांगतो की प्रतिस्थापीला कुठे बसावे लागेल. जर स्थिरीकरण ऋण प्रभाराला ऑर्थो आणि पॅरा कार्बनांवर विस्थानित करून काम करत असेल, तर जो गट त्या कार्बनांतून इलेक्ट्रॉन घनता काढेल तो आयन आणखी स्थिर करेल आणि आम्ल तीव्र बनवेल. आणि तो ऑर्थो वा पॅरा जागेवरून कितीतरी अधिक परिणामकारक ठरेल, जिथे तो प्रभाराशी संयुग्मित आहे, मेटाच्या तुलनेत, जिथे नाही. आकडे सहमत आहेत: फिनॉल pKa 10.0, 4-नायट्रोफिनॉल 7.2, 2,4-डायनायट्रोफिनॉल 4.1, आणि 2,4,6-ट्रायनायट्रोफिनॉल — पिक्रिक आम्ल — सुमारे 0.4, जे खरोखर तीव्र आम्ल आहे, अ‍ॅसिटिकहून चार कोटींनी तीव्र. तर 3-नायट्रोफिनॉल 8.4 वर बसला आहे, त्याच वलयावर त्याच गटासह असलेल्या आपल्या पॅरा समघटकाहून लक्षणीय कमी आम्लधर्मी. इलेक्ट्रॉन-दाता गट उलट बाजूला चालतात: 4-मिथिलफिनॉल स्वतः फिनॉलहून किंचित दुर्बल आहे. लक्षात घेण्याजोगे सोबतीचे सत्य. तेच विस्थानीकरण जे हायड्रोजन काढणे सोपे करते, ते C–O बंधाला अंशतः द्विबंध लक्षणही देते, जे अख्खा हायड्रॉक्सिल गट काढणे कठीण करते. म्हणून फिनॉल इथेनॉलहून चांगले आम्ल आहे आणि प्रतिस्थापनासाठी कितीतरी वाईट क्रियाधार — एक कारण, दोन परिणाम जे खालची यंत्रणा दिसेपर्यंत उलट वाटतात. (दुसरा पर्याय परिणाम ऋणायनाऐवजी O–H बंधात ठेवतो; तिसरा असा नियम घडवतो जो स्वतः बेंझिनला आम्लधर्मी करेल; चौथा स्थूल भौतिक गुणधर्माची उष्मागतिक गुणधर्माशी गल्लत करतो.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Ethanol (molar mass 46) boils at 351 K while dimethyl ether (molar mass 46, the same atoms rearranged) boils at 248 K. Ethanol also mixes with water in all proportions while hexan-1-ol barely dissolves. Account for both observations.",
+          hi: "एथेनॉल (मोलर द्रव्यमान 46) 351 K पर उबलता है जबकि डाइमेथिल ईथर (मोलर द्रव्यमान 46, वही परमाणु पुनर्व्यवस्थित) 248 K पर। एथेनॉल हर अनुपात में पानी से मिल भी जाता है जबकि हेक्सेन-1-ऑल मुश्किल से घुलता है। दोनों प्रेक्षणों का कारण बताओ।",
+          mr: "इथेनॉल (मोलर वस्तुमान 46) 351 K वर उकळते तर डायमिथिल ईथर (मोलर वस्तुमान 46, तेच अणू पुनर्रचित) 248 K वर. इथेनॉल प्रत्येक प्रमाणात पाण्याशी मिसळतेही तर हेक्झेन-1-ऑल जेमतेम विरघळते. दोन्ही निरीक्षणांचे कारण सांगा.",
+        },
+        choices: [
+          {
+            en: "Boiling separates molecules from one another, so a boiling point measures the forces BETWEEN molecules and not within them. Ethanol's hydroxyl hydrogen is bonded to the oxygen of a neighbouring molecule, so the liquid is a network that must be pulled apart. An ether has the same oxygen but no hydrogen on it, so it can accept a hydrogen bond and cannot donate one, and no network forms — hence a hundred degrees lower with identical atoms. Solubility is the same effect between different molecules: a small alcohol joins water's network, but as the chain lengthens the molecule is mostly hydrocarbon, which water must reorganise around at a cost, and the solubility falls away",
+            hi: "उबलना अणुओं को एक-दूसरे से अलग करता है, अतः क्वथनांक अणुओं के बीच के बल नापता है, उनके भीतर के नहीं। एथेनॉल का हाइड्रॉक्सिल हाइड्रोजन पड़ोसी अणु के ऑक्सीजन से बँधा है, अतः द्रव एक जाल है जिसे खींचकर तोड़ना पड़ता है। ईथर में वही ऑक्सीजन है पर उस पर कोई हाइड्रोजन नहीं, अतः वह हाइड्रोजन बंध ले सकता है और दे नहीं सकता, और कोई जाल बनता ही नहीं — इसलिए समरूप परमाणुओं के साथ सौ अंश नीचे। विलेयता वही प्रभाव है, बस भिन्न अणुओं के बीच: छोटा ऐल्कोहॉल पानी के जाल में जुड़ जाता है, पर शृंखला लंबी होने पर अणु अधिकांशतः हाइड्रोकार्बन है, जिसके गिर्द पानी को क़ीमत देकर पुनर्व्यवस्थित होना पड़ता है, और विलेयता ढह जाती है",
+            mr: "उकळणे रेणूंना एकमेकांपासून वेगळे करते, म्हणून उत्कलनांक रेणूंमधले बल मोजतो, त्यांच्या आतले नव्हे. इथेनॉलचा हायड्रॉक्सिल हायड्रोजन शेजारच्या रेणूच्या ऑक्सिजनशी बांधलेला आहे, म्हणून द्रव हे एक जाळे आहे जे ओढून तोडावे लागते. ईथरात तोच ऑक्सिजन आहे पण त्यावर कोणताही हायड्रोजन नाही, म्हणून तो हायड्रोजन बंध घेऊ शकतो आणि देऊ शकत नाही, आणि कोणतेही जाळे बनतच नाही — म्हणून सारख्याच अणूंसह शंभर अंश खाली. विद्राव्यता हाच परिणाम आहे, फक्त वेगळ्या रेणूंमध्ये: लहान अल्कोहोल पाण्याच्या जाळ्यात जोडले जाते, पण साखळी लांब होताना रेणू बहुतांशी हायड्रोकार्बन असतो, ज्याभोवती पाण्याला किंमत देऊन पुनर्रचित व्हावे लागते, आणि विद्राव्यता कोसळते",
+          },
+          {
+            en: "Ethanol boils higher because its O–H bond is stronger than the C–O bonds of the ether and more energy is needed to break it, and hexan-1-ol is insoluble because its O–H bond is weaker still",
+            hi: "एथेनॉल इसलिए ऊँचे पर उबलता है कि उसका O–H बंध ईथर के C–O बंधों से प्रबल है और उसे तोड़ने को अधिक ऊर्जा चाहिए, और हेक्सेन-1-ऑल इसलिए अविलेय है कि उसका O–H बंध और भी दुर्बल है",
+            mr: "इथेनॉल यासाठी वर उकळते की त्याचा O–H बंध ईथरच्या C–O बंधांहून तीव्र आहे आणि तो तोडायला अधिक ऊर्जा लागते, आणि हेक्झेन-1-ऑल यासाठी अविद्राव्य आहे की त्याचा O–H बंध आणखीच दुर्बल आहे",
+          },
+          {
+            en: "The difference is one of molecular shape only: ethanol is a straight molecule that packs closely and the ether is bent, and solubility likewise depends on shape rather than on any interaction with water",
+            hi: "अंतर केवल आणविक आकार का है: एथेनॉल सीधा अणु है जो पास-पास जमता है और ईथर मुड़ा हुआ है, और विलेयता भी पानी से किसी अन्योन्यक्रिया के बजाय आकार पर निर्भर है",
+            mr: "फरक केवळ रेणुआकाराचा आहे: इथेनॉल सरळ रेणू आहे जो जवळजवळ बसतो आणि ईथर वाकडा आहे, आणि विद्राव्यताही पाण्याशी कोणत्याही परस्परक्रियेऐवजी आकारावर अवलंबून आहे",
+          },
+          {
+            en: "Ethers cannot form hydrogen bonds of any kind because their oxygen has no lone pairs left after bonding to two carbons, and hexan-1-ol is insoluble because alcohols above four carbons have no hydroxyl group",
+            hi: "ईथर किसी भी तरह के हाइड्रोजन बंध नहीं बना सकते क्योंकि दो कार्बनों से बँधने के बाद उनके ऑक्सीजन पर कोई एकाकी युग्म बचता ही नहीं, और हेक्सेन-1-ऑल इसलिए अविलेय है कि चार कार्बन से ऊपर के ऐल्कोहॉलों में हाइड्रॉक्सिल समूह होता ही नहीं",
+            mr: "ईथर कोणत्याही प्रकारचे हायड्रोजन बंध बनवू शकत नाहीत कारण दोन कार्बनांशी बांधल्यावर त्यांच्या ऑक्सिजनवर कोणतीही एकाकी जोडी उरतच नाही, आणि हेक्झेन-1-ऑल यासाठी अविद्राव्य आहे की चार कार्बनांवरील अल्कोहोलांत हायड्रॉक्सिल गट नसतोच",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The two compounds are isomers — C₂H₆O both — so molar mass, electron count and dispersion forces are all matched. Anything that differs must come from the arrangement, and that is what makes this pair worth a hundred degrees of attention. WHAT A BOILING POINT MEASURES. Boiling does not break any bond inside a molecule; it separates whole molecules from one another. So a boiling point is a measurement of intermolecular force, and reading it as a measure of bond strength is the commonest mistake available here. Ethanol's structure is CH₃CH₂–O–H: a hydrogen attached directly to a small, very electronegative atom, which leaves that hydrogen unusually bare of electron density. It is attracted strongly to the lone pair of the oxygen on the next molecule, and the liquid becomes an extended network. Every molecule that escapes must break out of several such bonds, at roughly 20 kJ/mol each. Dimethyl ether is CH₃–O–CH₃: the same oxygen with its two lone pairs, so it can ACCEPT a hydrogen bond perfectly well, but it has no O–H of its own and so cannot DONATE one. In the pure liquid there is nothing to donate to it, no network forms, and only dipole and dispersion forces remain — hence 248 K. The asymmetry is the key detail: hydrogen bonding needs a donor and an acceptor, and an ether brings only half of what is required. NOW THE SOLUBILITY, WHICH IS THE SAME PHYSICS BETWEEN UNLIKE MOLECULES. Ethanol dissolves in water without limit because it can both donate and accept, so it slots into water's network as an almost-equal member. Note that dimethyl ether, despite its low boiling point, is appreciably soluble in water — because here the water supplies the donor and the ether need only accept. That single observation confirms the analysis: the ether's problem in the pure liquid was never an inability to hydrogen-bond, only an inability to donate. Lengthening the chain then works against solubility for a quite different reason. Hexan-1-ol still has its hydroxyl group and still hydrogen-bonds, but five sixths of the molecule is a hydrocarbon tail which water cannot bond to and must instead form a cage around, at an entropic cost. Beyond about four carbons that cost outweighs the gain from the one hydroxyl, and solubility collapses. This is why soaps and detergents are built exactly this way — a hydrogen-bonding head and a long hydrocarbon tail — and why they gather at surfaces rather than dissolving properly. THE TRANSFERABLE POINT. Always ask what a measurement actually measures before explaining it. Boiling points measure forces between molecules; bond enthalpies measure forces within them; and the two are answering different questions about the same substance. (The second option explains an intermolecular observation with an intramolecular quantity; the third appeals to packing, which cannot produce a hundred-degree gap; the fourth denies the ether's lone pairs, which its solubility in water disproves.)",
+          hi: "दोनों यौगिक समावयव हैं — दोनों C₂H₆O — अतः मोलर द्रव्यमान, इलेक्ट्रॉन संख्या और परिक्षेपण बल सब बराबर हैं। जो भी भिन्न है वह व्यवस्था से ही आएगा, और यही इस युग्म को सौ अंश के ध्यान के क़ाबिल बनाता है। क्वथनांक क्या नापता है। उबलना अणु के भीतर कोई बंध नहीं तोड़ता; वह पूरे अणुओं को एक-दूसरे से अलग करता है। अतः क्वथनांक अंतराणविक बल का माप है, और उसे बंध प्रबलता का माप पढ़ना यहाँ उपलब्ध सबसे आम भूल है। एथेनॉल की संरचना CH₃CH₂–O–H है: छोटे, अत्यंत विद्युत ऋणात्मक परमाणु से सीधा जुड़ा हाइड्रोजन, जिससे वह हाइड्रोजन इलेक्ट्रॉन घनत्व से असामान्य रूप से नंगा रह जाता है। वह अगले अणु के ऑक्सीजन के एकाकी युग्म की ओर प्रबलता से आकर्षित होता है, और द्रव एक विस्तृत जाल बन जाता है। जो भी अणु निकलता है उसे ऐसे कई बंधों से बाहर टूटना पड़ता है, हर एक मोटे तौर पर 20 kJ/mol का। डाइमेथिल ईथर CH₃–O–CH₃ है: वही ऑक्सीजन अपने दो एकाकी युग्मों के साथ, अतः वह हाइड्रोजन बंध बख़ूबी ले सकता है, पर उसका अपना कोई O–H नहीं और इसलिए वह दे नहीं सकता। शुद्ध द्रव में उसे देने वाला कोई नहीं, कोई जाल नहीं बनता, और केवल द्विध्रुव तथा परिक्षेपण बल बचते हैं — इसलिए 248 K. विषमता ही कुंजी है: हाइड्रोजन आबंधन को दाता और ग्राही दोनों चाहिए, और ईथर आवश्यक का केवल आधा लाता है। अब विलेयता, जो असमान अणुओं के बीच वही भौतिकी है। एथेनॉल पानी में बिना सीमा घुलता है क्योंकि वह दे भी सकता है और ले भी, अतः वह पानी के जाल में लगभग बराबर सदस्य की तरह बैठ जाता है। ध्यान दो कि डाइमेथिल ईथर, अपने नीचे क्वथनांक के बावजूद, पानी में क़ाबिले-ग़ौर विलेय है — क्योंकि यहाँ पानी दाता देता है और ईथर को केवल लेना है। वही अकेला प्रेक्षण विश्लेषण की पुष्टि करता है: शुद्ध द्रव में ईथर की समस्या हाइड्रोजन बंध बनाने की अक्षमता कभी थी ही नहीं, केवल देने की अक्षमता थी। शृंखला लंबी करना फिर बिलकुल अलग कारण से विलेयता के विरुद्ध काम करता है। हेक्सेन-1-ऑल के पास अब भी उसका हाइड्रॉक्सिल समूह है और वह अब भी हाइड्रोजन बंध बनाता है, पर अणु का पाँच-छठाई हिस्सा हाइड्रोकार्बन पूँछ है जिससे पानी बंध नहीं बना सकता और उसके बदले उसके गिर्द पिंजरा बनाना पड़ता है, एन्ट्रॉपी की क़ीमत पर। लगभग चार कार्बन से आगे वह क़ीमत उस एक हाइड्रॉक्सिल के लाभ से भारी पड़ जाती है, और विलेयता ढह जाती है। इसीलिए साबुन और अपमार्जक ठीक इसी तरह बने हैं — हाइड्रोजन-आबंधी सिर और लंबी हाइड्रोकार्बन पूँछ — और इसीलिए वे ठीक से घुलने के बजाय सतहों पर जमा होते हैं। ले जाने योग्य बात। किसी माप को समझाने से पहले हमेशा पूछो कि वह नापता क्या है। क्वथनांक अणुओं के बीच के बल नापते हैं; बंध एन्थैल्पी उनके भीतर के; और दोनों एक ही पदार्थ के बारे में भिन्न प्रश्नों का उत्तर दे रहे हैं। (दूसरा विकल्प अंतराणविक प्रेक्षण को अंतःआणविक राशि से समझाता है; तीसरा जमावट की दुहाई देता है, जो सौ अंश का अंतर नहीं पैदा कर सकती; चौथा ईथर के एकाकी युग्मों से इनकार करता है, जिसे उसकी जल-विलेयता ग़लत सिद्ध करती है।)",
+          mr: "दोन्ही संयुगे समघटक आहेत — दोन्ही C₂H₆O — म्हणून मोलर वस्तुमान, इलेक्ट्रॉन संख्या आणि विकिरण बले सर्व जुळलेली आहेत. जे काही वेगळे आहे ते मांडणीतूनच येईल, आणि हेच या जोडीला शंभर अंशांच्या लक्षाला पात्र बनवते. उत्कलनांक काय मोजतो. उकळणे रेणूच्या आत कोणताही बंध तोडत नाही; ते अख्खे रेणू एकमेकांपासून वेगळे करते. म्हणून उत्कलनांक हा आंतररेणवीय बलाचे माप आहे, आणि त्याला बंध तीव्रतेचे माप वाचणे ही इथे उपलब्ध सर्वांत सामान्य चूक आहे. इथेनॉलची रचना CH₃CH₂–O–H आहे: लहान, अत्यंत विद्युत ऋण अणूशी थेट जोडलेला हायड्रोजन, ज्याने तो हायड्रोजन इलेक्ट्रॉन घनतेने असामान्यपणे उघडा राहतो. तो पुढच्या रेणूच्या ऑक्सिजनच्या एकाकी जोडीकडे तीव्रतेने आकर्षित होतो, आणि द्रव एक विस्तृत जाळे बनतो. जो रेणू निसटतो त्याला अशा कित्येक बंधांतून बाहेर तुटावे लागते, प्रत्येक साधारण 20 kJ/mol चा. डायमिथिल ईथर CH₃–O–CH₃ आहे: तोच ऑक्सिजन आपल्या दोन एकाकी जोड्यांसह, म्हणून तो हायड्रोजन बंध उत्तम प्रकारे घेऊ शकतो, पण त्याचा स्वतःचा कोणताही O–H नाही आणि म्हणून तो देऊ शकत नाही. शुद्ध द्रवात त्याला देणारा कोणी नाही, कोणतेही जाळे बनत नाही, आणि केवळ द्विध्रुव व विकिरण बले उरतात — म्हणून 248 K. विषमता हीच किल्ली आहे: हायड्रोजन बंधनाला दाता आणि ग्राही दोन्ही लागतात, आणि ईथर आवश्यकतेचा केवळ अर्धा भाग आणतो. आता विद्राव्यता, जी असमान रेणूंमधली तीच भौतिकी आहे. इथेनॉल पाण्यात मर्यादेविना विरघळते कारण ते देऊही शकते आणि घेऊही, म्हणून ते पाण्याच्या जाळ्यात जवळपास समान सदस्यासारखे बसते. लक्षात घ्या की डायमिथिल ईथर, आपल्या खालच्या उत्कलनांकाखेरीजही, पाण्यात लक्षणीय विद्राव्य आहे — कारण इथे पाणी दाता पुरवते आणि ईथरला केवळ घ्यायचे आहे. तेच एक निरीक्षण विश्लेषणाची खात्री देते: शुद्ध द्रवात ईथरची अडचण हायड्रोजन बंध बनवण्याची अक्षमता कधीच नव्हती, केवळ देण्याची अक्षमता होती. साखळी लांब करणे मग अगदी वेगळ्या कारणाने विद्राव्यतेविरुद्ध काम करते. हेक्झेन-1-ऑलकडे अजूनही त्याचा हायड्रॉक्सिल गट आहे आणि ते अजूनही हायड्रोजन बंध बनवते, पण रेणूचा पाच-षष्ठांश भाग हायड्रोकार्बन शेपूट आहे जिच्याशी पाणी बंध बनवू शकत नाही आणि त्याऐवजी तिच्याभोवती पिंजरा बनवावा लागतो, एन्ट्रॉपीच्या किमतीवर. सुमारे चार कार्बनांपुढे ती किंमत त्या एका हायड्रॉक्सिलच्या लाभाहून जड होते, आणि विद्राव्यता कोसळते. म्हणूनच साबण आणि अपमार्जक नेमके याच प्रकारे बनलेले आहेत — हायड्रोजन-बंधी डोके आणि लांब हायड्रोकार्बन शेपूट — आणि म्हणूनच ते नीट विरघळण्याऐवजी पृष्ठभागांवर जमतात. सोबत न्यायचा मुद्दा. कोणतेही माप समजावण्याआधी नेहमी विचारा की ते मोजते काय. उत्कलनांक रेणूंमधली बले मोजतात; बंध एन्थॅल्पी त्यांच्या आतली; आणि दोन्ही एकाच पदार्थाबद्दल वेगळ्या प्रश्नांची उत्तरे देत आहेत. (दुसरा पर्याय आंतररेणवीय निरीक्षणाला आंतःरेणवीय राशीने समजावतो; तिसरा मांडणीचा आधार घेतो, जी शंभर अंशांचा फरक निर्माण करू शकत नाही; चौथा ईथरच्या एकाकी जोड्या नाकारतो, ज्याला त्याची जलविद्राव्यता खोटे ठरवते.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 8 — Aldehydes, Ketones and Carboxylic Acids                     */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "chemistry-12-aldehydes-ketones-and-carboxylic-acids",
+    subject: "CHEMISTRY",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 8 — Aldehydes, Ketones and Carboxylic Acids",
+      hi: "अध्याय 8 — ऐल्डिहाइड, कीटोन तथा कार्बोक्सिलिक अम्ल",
+      mr: "प्रकरण 8 — अल्डिहाइड, कीटोन आणि कार्बोक्झिलिक आम्ले",
+    },
+    name: {
+      en: "Aldehydes, Ketones and Carboxylic Acids",
+      hi: "ऐल्डिहाइड, कीटोन तथा कार्बोक्सिलिक अम्ल",
+      mr: "अल्डिहाइड, कीटोन आणि कार्बोक्झिलिक आम्ले",
+    },
+    summary: {
+      en: "A carbon joined to an oxygen by two bonds, which is not two single bonds but something with the electrons pulled so far towards the oxygen that the carbon is left short and open to anything carrying a lone pair; a whole family of reactions that are therefore additions rather than substitutions, and that slow down as groups are put around that carbon and as those groups feed it electron density, so a chain length is a rate and a rate is a structure; a hydrogen on the carbon next door that is acidic for no reason to do with that carbon and every reason to do with where the charge can go once it leaves; and the same double bond with a hydroxyl beside it, which makes an acid ten thousand times stronger than an alcohol and yet weaker than the mineral acids, because two oxygens sharing one charge is better than one holding it and still not as good as a fully separated ion.",
+      hi: "ऑक्सीजन से दो बंधों द्वारा जुड़ा कार्बन, जो दो एकल बंध नहीं बल्कि कुछ ऐसा है जिसमें इलेक्ट्रॉन इतने ऑक्सीजन की ओर खिंचे हैं कि कार्बन कमी में और किसी भी एकाकी युग्म वाले के लिए खुला रह जाता है; इसलिए अभिक्रियाओं का पूरा कुल प्रतिस्थापन नहीं बल्कि योग है, और वह उस कार्बन के गिर्द समूह रखने पर तथा उन समूहों के उसे इलेक्ट्रॉन घनत्व देने पर धीमा पड़ता है, अतः शृंखला की लंबाई एक वेग है और वेग एक संरचना; पड़ोसी कार्बन पर ऐसा हाइड्रोजन जो उस कार्बन से जुड़े किसी कारण से नहीं बल्कि इस कारण से अम्लीय है कि जाने के बाद आवेश कहाँ जा सकता है; और वही द्विबंध बग़ल में हाइड्रॉक्सिल के साथ, जो ऐसा अम्ल बनाता है जो ऐल्कोहॉल से दस हज़ार गुना प्रबल है और फिर भी खनिज अम्लों से दुर्बल, क्योंकि एक आवेश को दो ऑक्सीजन का बाँटना एक के थामने से बेहतर है और तब भी पूरी तरह अलग हुए आयन जितना अच्छा नहीं।",
+      mr: "ऑक्सिजनशी दोन बंधांनी जोडलेला कार्बन, जो दोन एकेरी बंध नव्हे तर असे काही आहे ज्यात इलेक्ट्रॉन इतके ऑक्सिजनकडे ओढले आहेत की कार्बन कमतरतेत आणि कोणत्याही एकाकी जोडी वाहणाऱ्यासाठी उघडा राहतो; म्हणून अभिक्रियांचे अख्खे कुळ प्रतिस्थापन नव्हे तर योग आहे, आणि ते त्या कार्बनभोवती गट ठेवल्यावर आणि त्या गटांनी त्याला इलेक्ट्रॉन घनता दिल्यावर मंदावते, म्हणून साखळीची लांबी हा एक वेग आहे आणि वेग ही एक रचना; शेजारच्या कार्बनवरचा असा हायड्रोजन जो त्या कार्बनशी संबंधित कोणत्याही कारणाने नव्हे तर या कारणाने आम्लधर्मी आहे की निघाल्यावर प्रभार कुठे जाऊ शकतो; आणि तोच द्विबंध शेजारी हायड्रॉक्सिलसह, जो असे आम्ल बनवतो जे अल्कोहोलहून दहा हजार पट तीव्र आहे आणि तरीही खनिज आम्लांहून दुर्बल, कारण एक प्रभार दोन ऑक्सिजनांनी वाटणे एकाने धरण्याहून चांगले आहे आणि तरीही पूर्णपणे वेगळ्या झालेल्या आयनाइतके चांगले नाही.",
+    },
+    position: 8,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "polarity-of-the-carbonyl-group",
+        name: {
+          en: "The polarity of the carbonyl group",
+          hi: "कार्बोनिल समूह की ध्रुवता",
+          mr: "कार्बोनिल गटाची ध्रुवता",
+        },
+        kind: "structural feature",
+        prompt: {
+          en: "A double bond between two atoms of very unequal appetite for electrons, leaving one end short and the other end rich, which is why this group is attacked by species carrying a lone pair. Which feature is this?",
+          hi: "इलेक्ट्रॉनों की बहुत असमान भूख वाले दो परमाणुओं के बीच द्विबंध, जो एक सिरे को कमी में और दूसरे को समृद्ध छोड़ता है, और इसीलिए इस समूह पर एकाकी युग्म वाली स्पीशीज़ हमला करती हैं। यह कौन-सा लक्षण है?",
+          mr: "इलेक्ट्रॉनांची फार असमान भूक असलेल्या दोन अणूंमधला द्विबंध, जो एक टोक कमतरतेत आणि दुसरे समृद्ध सोडतो, आणि म्हणूनच या गटावर एकाकी जोडी असलेल्या जाती हल्ला करतात. हे कोणते लक्षण?",
+        },
+        statement: {
+          en: "The polarity of the carbonyl group leaves the carbon partially positive and the oxygen partially negative, so nucleophiles attack the carbon and electrophiles attach to the oxygen.",
+          hi: "कार्बोनिल समूह की ध्रुवता कार्बन को आंशिक धनात्मक और ऑक्सीजन को आंशिक ऋणात्मक छोड़ती है, अतः नाभिकरागी कार्बन पर हमला करते हैं और इलेक्ट्रॉनरागी ऑक्सीजन से जुड़ते हैं।",
+          mr: "कार्बोनिल गटाची ध्रुवता कार्बनला अंशतः धन आणि ऑक्सिजनला अंशतः ऋण सोडते, म्हणून नाभिकरागी कार्बनवर हल्ला करतात आणि इलेक्ट्रॉनरागी ऑक्सिजनला जोडले जातात.",
+        },
+        detail: {
+          en: "This is why the whole family adds rather than substitutes: the π bond can break to accommodate the incoming group without anything having to leave.",
+          hi: "इसीलिए पूरा कुल प्रतिस्थापन नहीं बल्कि योग करता है: π बंध टूटकर आते समूह के लिए जगह बना सकता है और किसी को जाना नहीं पड़ता।",
+          mr: "म्हणूनच अख्खे कुळ प्रतिस्थापन नव्हे तर योग करते: π बंध तुटून येणाऱ्या गटासाठी जागा करू शकतो आणि कोणालाही जावे लागत नाही.",
+        },
+        extra: {
+          en: "The carbon is planar and sp² hybridised, so the attacking group arrives perpendicular to that plane and the carbon becomes tetrahedral in the product.",
+          hi: "कार्बन समतलीय और sp² संकरित है, अतः हमलावर समूह उस तल के लंबवत आता है और उत्पाद में कार्बन चतुष्फलकीय हो जाता है।",
+          mr: "कार्बन प्रतलीय आणि sp² संकरित आहे, म्हणून हल्ला करणारा गट त्या प्रतलाला लंब येतो आणि उत्पादनात कार्बन चतुष्फलकी होतो.",
+        },
+        pair: {
+          left: {
+            en: "One end short, the other rich, in the same bond",
+            hi: "एक ही बंध में एक सिरा कमी में, दूसरा समृद्ध",
+            mr: "एकाच बंधात एक टोक कमतरतेत, दुसरे समृद्ध",
+          },
+          right: {
+            en: "the polarity of the carbonyl group",
+            hi: "कार्बोनिल समूह की ध्रुवता",
+            mr: "कार्बोनिल गटाची ध्रुवता",
+          },
+        },
+      },
+      {
+        id: "alpha-hydrogen-acidity",
+        name: {
+          en: "The acidity of the α-hydrogen",
+          hi: "α-हाइड्रोजन की अम्लता",
+          mr: "α-हायड्रोजनची आम्लता",
+        },
+        kind: "structural feature",
+        prompt: {
+          en: "A hydrogen on an ordinary carbon, one place along from the double bond, which a base can nevertheless remove — unlike every other hydrogen on the chain. Which feature is this?",
+          hi: "किसी साधारण कार्बन पर का हाइड्रोजन, द्विबंध से एक जगह आगे, जिसे फिर भी क्षार हटा सकता है — शृंखला के हर दूसरे हाइड्रोजन के विपरीत। यह कौन-सा लक्षण है?",
+          mr: "एखाद्या साध्या कार्बनवरचा हायड्रोजन, द्विबंधापासून एक जागा पुढे, जो तरीही क्षार काढू शकतो — साखळीवरच्या इतर प्रत्येक हायड्रोजनच्या उलट. हे कोणते लक्षण?",
+        },
+        statement: {
+          en: "The acidity of the α-hydrogen arises because the anion left when it is removed can put its charge on the carbonyl oxygen, which delocalisation an ordinary carbanion cannot manage.",
+          hi: "α-हाइड्रोजन की अम्लता इसलिए उठती है कि उसे हटाने पर बचा ऋणायन अपना आवेश कार्बोनिल ऑक्सीजन पर रख सकता है, और यह विस्थानीकरण साधारण कार्बऋणायन नहीं कर सकता।",
+          mr: "α-हायड्रोजनची आम्लता यासाठी उद्भवते की तो काढल्यावर उरलेला ऋणायन आपला प्रभार कार्बोनिल ऑक्सिजनवर ठेवू शकतो, आणि हे विस्थानीकरण साध्या कार्बऋणायनाला जमत नाही.",
+        },
+        detail: {
+          en: "The hydrogen itself is on an ordinary carbon and nothing about that carbon explains the acidity — the explanation is entirely about where the charge goes afterwards.",
+          hi: "हाइड्रोजन स्वयं साधारण कार्बन पर है और उस कार्बन की कोई बात अम्लता नहीं समझाती — व्याख्या पूरी तरह इस बारे में है कि बाद में आवेश कहाँ जाता है।",
+          mr: "हायड्रोजन स्वतः साध्या कार्बनवर आहे आणि त्या कार्बनची कोणतीही गोष्ट आम्लता समजावत नाही — स्पष्टीकरण पूर्णपणे नंतर प्रभार कुठे जातो याबद्दल आहे.",
+        },
+        extra: {
+          en: "It is the source of the aldol reaction, of halogenation next to the carbonyl, and of the iodoform test, and a compound with no such hydrogen does none of them.",
+          hi: "यही ऐल्डॉल अभिक्रिया, कार्बोनिल के बग़ल के हैलोजनन, और आयोडोफ़ॉर्म परीक्षण का स्रोत है, और ऐसा हाइड्रोजन न रखने वाला यौगिक इनमें से कुछ नहीं करता।",
+          mr: "हाच अल्डॉल अभिक्रिया, कार्बोनिलशेजारच्या हॅलोजनीकरण, आणि आयोडोफॉर्म चाचणीचा स्रोत आहे, आणि असा हायड्रोजन नसलेले संयुग यांपैकी काहीही करत नाही.",
+        },
+        pair: {
+          left: {
+            en: "The reason is not where the hydrogen is but where the charge goes",
+            hi: "कारण यह नहीं कि हाइड्रोजन कहाँ है बल्कि यह कि आवेश कहाँ जाता है",
+            mr: "कारण हायड्रोजन कुठे आहे हे नव्हे तर प्रभार कुठे जातो हे",
+          },
+          right: {
+            en: "the acidity of the α-hydrogen",
+            hi: "α-हाइड्रोजन की अम्लता",
+            mr: "α-हायड्रोजनची आम्लता",
+          },
+        },
+      },
+      {
+        id: "resonance-in-the-carboxylate-ion",
+        name: {
+          en: "Resonance in the carboxylate ion",
+          hi: "कार्बोक्सिलेट आयन में अनुनाद",
+          mr: "कार्बोक्झिलेट आयनातील अनुनाद",
+        },
+        kind: "structural feature",
+        prompt: {
+          en: "An ion in which the two carbon–oxygen bonds are found to be exactly the same length, although the structure it is drawn from shows one double and one single. What accounts for this?",
+          hi: "ऐसा आयन जिसमें दोनों कार्बन–ऑक्सीजन बंध ठीक बराबर लंबाई के पाए जाते हैं, यद्यपि जिस संरचना से वह खींचा गया है उसमें एक द्वि और एक एकल दिखता है। इसका कारण क्या है?",
+          mr: "असा आयन ज्यात दोन्ही कार्बन–ऑक्सिजन बंध नेमके सारख्याच लांबीचे आढळतात, जरी ज्या रचनेतून तो काढला आहे तिच्यात एक द्वि आणि एक एकेरी दिसतो. याचे कारण काय?",
+        },
+        statement: {
+          en: "Resonance in the carboxylate ion spreads the negative charge equally over both oxygens, so neither bond is purely single or purely double and the two are identical.",
+          hi: "कार्बोक्सिलेट आयन में अनुनाद ऋण आवेश को दोनों ऑक्सीजनों पर बराबर फैला देता है, अतः कोई बंध विशुद्ध एकल या विशुद्ध द्वि नहीं है और दोनों समरूप हैं।",
+          mr: "कार्बोक्झिलेट आयनातील अनुनाद ऋण प्रभार दोन्ही ऑक्सिजनांवर समान पसरवतो, म्हणून कोणताही बंध शुद्ध एकेरी वा शुद्ध द्वि नाही आणि दोन्ही सारखे आहेत.",
+        },
+        detail: {
+          en: "This is why a carboxylic acid is far stronger than an alcohol: the ion it leaves is stabilised in a way an alkoxide cannot be.",
+          hi: "इसीलिए कार्बोक्सिलिक अम्ल ऐल्कोहॉल से कहीं प्रबल है: वह जो आयन छोड़ता है वह इस तरह स्थायी है जो ऐल्कॉक्साइड हो ही नहीं सकता।",
+          mr: "म्हणूनच कार्बोक्झिलिक आम्ल अल्कोहोलहून कितीतरी तीव्र आहे: ते जो आयन सोडते तो अशा प्रकारे स्थिर आहे जो अल्कॉक्साइड होऊच शकत नाही.",
+        },
+        extra: {
+          en: "The measured bond lengths settle the argument: both are about 127 pm, between the 123 pm of a carbonyl and the 136 pm of a single C–O.",
+          hi: "नापी गई बंध लंबाइयाँ बहस निपटा देती हैं: दोनों लगभग 127 pm हैं, कार्बोनिल के 123 pm और एकल C–O के 136 pm के बीच।",
+          mr: "मोजलेल्या बंध लांबी वाद मिटवतात: दोन्ही सुमारे 127 pm आहेत, कार्बोनिलच्या 123 pm आणि एकेरी C–O च्या 136 pm यांच्यामध्ये.",
+        },
+        pair: {
+          left: {
+            en: "Two bonds drawn differently and measured the same",
+            hi: "दो बंध अलग-अलग खींचे और एक जैसे नापे गए",
+            mr: "दोन बंध वेगवेगळे काढलेले आणि सारखेच मोजलेले",
+          },
+          right: {
+            en: "resonance in the carboxylate ion",
+            hi: "कार्बोक्सिलेट आयन में अनुनाद",
+            mr: "कार्बोक्झिलेट आयनातील अनुनाद",
+          },
+        },
+      },
+      {
+        id: "nucleophilic-addition",
+        name: {
+          en: "Nucleophilic addition to a carbonyl",
+          hi: "कार्बोनिल पर नाभिकरागी योग",
+          mr: "कार्बोनिलवरील नाभिकरागी योग",
+        },
+        kind: "reaction and what it shows",
+        prompt: {
+          en: "Cyanide attacks the carbon, the π bond breaks, the oxygen takes the electrons and is then protonated, and nothing has left the molecule. Which reaction is this?",
+          hi: "सायनाइड कार्बन पर हमला करता है, π बंध टूटता है, ऑक्सीजन इलेक्ट्रॉन ले लेता है और फिर प्रोटॉनित हो जाता है, और अणु से कुछ भी नहीं गया। यह कौन-सी अभिक्रिया है?",
+          mr: "सायनाइड कार्बनवर हल्ला करते, π बंध तुटतो, ऑक्सिजन इलेक्ट्रॉन घेतो आणि मग प्रोटॉनित होतो, आणि रेणूतून काहीही गेलेले नाही. ही कोणती अभिक्रिया?",
+        },
+        statement: {
+          en: "Nucleophilic addition to a carbonyl converts a planar sp² carbon into a tetrahedral sp³ one, and its rate falls steeply as more or bulkier groups are attached to that carbon.",
+          hi: "कार्बोनिल पर नाभिकरागी योग समतलीय sp² कार्बन को चतुष्फलकीय sp³ में बदल देता है, और उस कार्बन पर अधिक या अधिक भारी समूह जुड़ने पर उसका वेग तेज़ी से गिरता है।",
+          mr: "कार्बोनिलवरील नाभिकरागी योग प्रतलीय sp² कार्बनचे चतुष्फलकी sp³ मध्ये रूपांतर करतो, आणि त्या कार्बनवर अधिक वा अधिक अवजड गट जोडल्यावर त्याचा वेग झपाट्याने घसरतो.",
+        },
+        detail: {
+          en: "Two causes act the same way: alkyl groups are electron-donating and reduce the carbon's positive character, and they also crowd the space the nucleophile needs.",
+          hi: "दो कारण एक ही दिशा में काम करते हैं: ऐल्किल समूह इलेक्ट्रॉन-दाता हैं और कार्बन का धन लक्षण घटाते हैं, और वे उस जगह में भीड़ भी करते हैं जो नाभिकरागी को चाहिए।",
+          mr: "दोन कारणे एकाच दिशेने काम करतात: अल्किल गट इलेक्ट्रॉन-दाता आहेत आणि कार्बनचे धन लक्षण घटवतात, आणि ते नाभिकरागीला लागणाऱ्या जागेत गर्दीही करतात.",
+        },
+        extra: {
+          en: "So the order of reactivity is methanal above other aldehydes above ketones, and it is the same order whether the reagent is cyanide, a bisulphite or a Grignard.",
+          hi: "अतः क्रियाशीलता का क्रम मेथेनल, फिर अन्य ऐल्डिहाइड, फिर कीटोन है, और अभिकर्मक सायनाइड हो, बाइसल्फ़ाइट हो या ग्रीन्यार, क्रम वही रहता है।",
+          mr: "म्हणून क्रियाशीलतेचा क्रम मिथेनल, मग इतर अल्डिहाइड, मग कीटोन आहे, आणि अभिकर्मक सायनाइड असो, बायसल्फाइट असो वा ग्रीन्यार, क्रम तोच राहतो.",
+        },
+        pair: {
+          left: {
+            en: "The group joins and nothing departs",
+            hi: "समूह जुड़ता है और कुछ विदा नहीं होता",
+            mr: "गट जोडला जातो आणि काहीही निघून जात नाही",
+          },
+          right: {
+            en: "nucleophilic addition to a carbonyl",
+            hi: "कार्बोनिल पर नाभिकरागी योग",
+            mr: "कार्बोनिलवरील नाभिकरागी योग",
+          },
+        },
+      },
+      {
+        id: "tests-that-separate-aldehydes-from-ketones",
+        name: {
+          en: "The tests that separate aldehydes from ketones",
+          hi: "ऐल्डिहाइडों को कीटोनों से अलग करने वाले परीक्षण",
+          mr: "अल्डिहाइडांना कीटोनांपासून वेगळे करणाऱ्या चाचण्या",
+        },
+        kind: "reaction and what it shows",
+        prompt: {
+          en: "A silver mirror on the inside of the tube with one compound and nothing at all with the other, the difference being one hydrogen on the carbon carrying the oxygen. Which pair of tests is this?",
+          hi: "एक यौगिक के साथ नली के भीतर चाँदी का दर्पण और दूसरे के साथ कुछ भी नहीं, और अंतर है ऑक्सीजन वाले कार्बन पर एक हाइड्रोजन। यह कौन-से परीक्षणों का युग्म है?",
+          mr: "एका संयुगासोबत नळीच्या आत चांदीचा आरसा आणि दुसऱ्यासोबत काहीच नाही, आणि फरक आहे ऑक्सिजन असलेल्या कार्बनवरचा एक हायड्रोजन. ही कोणत्या चाचण्यांची जोडी?",
+        },
+        statement: {
+          en: "The tests that separate aldehydes from ketones work because an aldehyde has a hydrogen on the carbonyl carbon and can be oxidised to an acid without breaking a carbon–carbon bond, while a ketone cannot.",
+          hi: "ऐल्डिहाइडों को कीटोनों से अलग करने वाले परीक्षण इसलिए चलते हैं कि ऐल्डिहाइड में कार्बोनिल कार्बन पर हाइड्रोजन है और वह कार्बन–कार्बन बंध तोड़े बिना अम्ल तक ऑक्सीकृत हो सकता है, जबकि कीटोन नहीं।",
+          mr: "अल्डिहाइडांना कीटोनांपासून वेगळे करणाऱ्या चाचण्या यासाठी चालतात की अल्डिहाइडात कार्बोनिल कार्बनवर हायड्रोजन आहे आणि ते कार्बन–कार्बन बंध न तोडता आम्लापर्यंत उपचयित होऊ शकते, तर कीटोन नाही.",
+        },
+        detail: {
+          en: "Tollens' reagent deposits silver and Fehling's gives a red precipitate of copper(I) oxide, and both are the aldehyde reducing the metal ion while being oxidised itself.",
+          hi: "टॉलेन अभिकर्मक चाँदी जमा करता है और फ़ेहलिंग कॉपर(I) ऑक्साइड का लाल अवक्षेप देता है, और दोनों में ऐल्डिहाइड धातु आयन को अपचयित करते हुए स्वयं ऑक्सीकृत होता है।",
+          mr: "टॉलेन अभिकर्मक चांदी जमवतो आणि फेहलिंग कॉपर(I) ऑक्साइडचा तांबडा अवक्षेप देतो, आणि दोन्हींत अल्डिहाइड धातू आयनाचे अपचयन करत स्वतः उपचयित होते.",
+        },
+        extra: {
+          en: "The reagents are deliberately mild, which is the point: a strong oxidising agent would eventually attack a ketone too, and the test would stop distinguishing anything.",
+          hi: "अभिकर्मक जान-बूझकर मृदु हैं, और मर्म यही है: प्रबल ऑक्सीकारक अंततः कीटोन पर भी हमला कर देता, और परीक्षण कुछ भी भेद करना बंद कर देता।",
+          mr: "अभिकर्मक जाणीवपूर्वक सौम्य आहेत, आणि गाभा हाच आहे: तीव्र उपचयक अखेरीस कीटोनवरही हल्ला करेल, आणि चाचणी काहीही भेद करणे थांबवेल.",
+        },
+        pair: {
+          left: {
+            en: "A mirror in the tube or nothing at all",
+            hi: "नली में दर्पण या कुछ भी नहीं",
+            mr: "नळीत आरसा वा काहीच नाही",
+          },
+          right: {
+            en: "the tests that separate aldehydes from ketones",
+            hi: "ऐल्डिहाइडों को कीटोनों से अलग करने वाले परीक्षण",
+            mr: "अल्डिहाइडांना कीटोनांपासून वेगळे करणाऱ्या चाचण्या",
+          },
+        },
+      },
+      {
+        id: "substituent-effects-on-acid-strength",
+        name: {
+          en: "Substituent effects on acid strength",
+          hi: "अम्ल प्रबलता पर प्रतिस्थापी प्रभाव",
+          mr: "आम्ल तीव्रतेवरील प्रतिस्थापी परिणाम",
+        },
+        kind: "reaction and what it shows",
+        prompt: {
+          en: "Acetic acid has a pKa of 4.76, and putting one chlorine on the neighbouring carbon takes it to 2.86, while moving that same chlorine two carbons further away takes it almost back. Which effect is this?",
+          hi: "ऐसीटिक अम्ल का pKa 4.76 है, और पड़ोसी कार्बन पर एक क्लोरीन रखने से वह 2.86 हो जाता है, जबकि उसी क्लोरीन को दो कार्बन और दूर हटाने से वह लगभग वापस चला जाता है। यह कौन-सा प्रभाव है?",
+          mr: "अ‍ॅसिटिक आम्लाचा pKa 4.76 आहे, आणि शेजारच्या कार्बनवर एक क्लोरीन ठेवल्यास तो 2.86 होतो, तर तेच क्लोरीन दोन कार्बन आणखी दूर हलवल्यास तो जवळपास परत जातो. हा कोणता परिणाम?",
+        },
+        statement: {
+          en: "Substituent effects on acid strength work by pulling electron density away from the carboxylate ion or pushing it towards it, and they fade rapidly with distance along the chain.",
+          hi: "अम्ल प्रबलता पर प्रतिस्थापी प्रभाव कार्बोक्सिलेट आयन से इलेक्ट्रॉन घनत्व दूर खींचकर या उसकी ओर धकेलकर काम करते हैं, और शृंखला पर दूरी बढ़ने के साथ तेज़ी से मिटते हैं।",
+          mr: "आम्ल तीव्रतेवरील प्रतिस्थापी परिणाम कार्बोक्झिलेट आयनापासून इलेक्ट्रॉन घनता दूर ओढून वा तिच्याकडे ढकलून काम करतात, आणि साखळीवर अंतर वाढताच झपाट्याने मावळतात.",
+        },
+        detail: {
+          en: "The fall with distance is the signature of an inductive effect transmitted through σ bonds, as against a resonance effect, which does not fade in that way.",
+          hi: "दूरी के साथ यह गिरावट σ बंधों से संचारित प्रेरणिक प्रभाव का चिह्न है, न कि अनुनाद प्रभाव का, जो इस तरह नहीं मिटता।",
+          mr: "अंतरासोबतची ही घसरण σ बंधांतून संक्रमित होणाऱ्या प्रेरणिक परिणामाची खूण आहे, अनुनाद परिणामाची नव्हे, जो अशा प्रकारे मावळत नाही.",
+        },
+        extra: {
+          en: "The effects add up: trichloroacetic acid has a pKa of 0.66 and is a stronger acid than phosphoric, from three atoms none of which is anywhere near the hydrogen that leaves.",
+          hi: "प्रभाव जुड़ते जाते हैं: ट्राइक्लोरोऐसीटिक अम्ल का pKa 0.66 है और वह फ़ॉस्फ़ोरिक से प्रबल अम्ल है, तीन ऐसे परमाणुओं से जिनमें से कोई भी उस हाइड्रोजन के पास कहीं नहीं जो जाता है।",
+          mr: "परिणाम जमत जातात: ट्रायक्लोरोअ‍ॅसिटिक आम्लाचा pKa 0.66 आहे आणि ते फॉस्फोरिकहून तीव्र आम्ल आहे, अशा तीन अणूंतून ज्यांपैकी कोणीही निघणाऱ्या हायड्रोजनजवळ कुठेही नाही.",
+        },
+        pair: {
+          left: {
+            en: "Two carbons away and the effect is nearly gone",
+            hi: "दो कार्बन दूर और प्रभाव लगभग ख़त्म",
+            mr: "दोन कार्बन दूर आणि परिणाम जवळपास संपला",
+          },
+          right: {
+            en: "substituent effects on acid strength",
+            hi: "अम्ल प्रबलता पर प्रतिस्थापी प्रभाव",
+            mr: "आम्ल तीव्रतेवरील प्रतिस्थापी परिणाम",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Towards the same nucleophile, methanal reacts fastest, ethanal more slowly, propanone more slowly still, and 2,2,4,4-tetramethylpentan-3-one hardly at all. Explain the order, and say what would happen to it if the reagent were changed.",
+          hi: "उसी नाभिकरागी के प्रति मेथेनल सबसे तेज़ अभिक्रिया करता है, एथेनल धीमे, प्रोपेनोन और भी धीमे, और 2,2,4,4-टेट्रामेथिलपेंटेन-3-ऑन लगभग बिलकुल नहीं। क्रम समझाओ, और बताओ कि अभिकर्मक बदल देने पर उसका क्या होगा।",
+          mr: "त्याच नाभिकरागीबाबत मिथेनल सर्वांत जलद अभिक्रिया करते, इथेनल सावकाश, प्रोपेनोन आणखी सावकाश, आणि 2,2,4,4-टेट्रामिथिलपेंटेन-3-ओन जवळपास मुळीच नाही. क्रम समजावा, आणि अभिकर्मक बदलल्यास त्याचे काय होईल ते सांगा.",
+        },
+        choices: [
+          {
+            en: "Two effects run in the same direction. Electronically, alkyl groups donate electron density to the carbonyl carbon and reduce the partial positive charge a nucleophile is attracted to, so each one added slows the reaction. Sterically, the attack comes perpendicular to the planar carbon and the carbon becomes tetrahedral in the product, so groups already crowding that space resist both the approach and the change of shape — which is why the tetramethyl ketone, with two very bulky groups, is almost inert. Because both causes are properties of the substrate rather than of the reagent, the order is the same for cyanide, bisulphite or a Grignard, and only the absolute rates change",
+            hi: "दो प्रभाव एक ही दिशा में चलते हैं। इलेक्ट्रॉनी रूप से, ऐल्किल समूह कार्बोनिल कार्बन को इलेक्ट्रॉन घनत्व देते हैं और उस आंशिक धन आवेश को घटाते हैं जिसकी ओर नाभिकरागी आकर्षित होता है, अतः हर जुड़ा समूह अभिक्रिया धीमी करता है। त्रिविम रूप से, हमला समतलीय कार्बन के लंबवत आता है और उत्पाद में कार्बन चतुष्फलकीय हो जाता है, अतः उस जगह पहले से भीड़ करते समूह पहुँच और आकार-परिवर्तन दोनों का विरोध करते हैं — इसीलिए दो बहुत भारी समूहों वाला टेट्रामेथिल कीटोन लगभग निष्क्रिय है। चूँकि दोनों कारण अभिकर्मक के नहीं बल्कि क्रियाधार के गुण हैं, क्रम सायनाइड, बाइसल्फ़ाइट या ग्रीन्यार सबके लिए वही रहता है, और केवल निरपेक्ष वेग बदलते हैं",
+            mr: "दोन परिणाम एकाच दिशेने चालतात. इलेक्ट्रॉनीदृष्ट्या, अल्किल गट कार्बोनिल कार्बनला इलेक्ट्रॉन घनता देतात आणि ज्या अंशतः धन प्रभाराकडे नाभिकरागी आकर्षित होतो तो घटवतात, म्हणून जोडलेला प्रत्येक गट अभिक्रिया मंदावतो. त्रिमितदृष्ट्या, हल्ला प्रतलीय कार्बनला लंब येतो आणि उत्पादनात कार्बन चतुष्फलकी होतो, म्हणून त्या जागी आधीच गर्दी करणारे गट पोहोच आणि आकारबदल दोन्हींना विरोध करतात — म्हणूनच दोन फार अवजड गट असलेले टेट्रामिथिल कीटोन जवळपास निष्क्रिय आहे. दोन्ही कारणे अभिकर्मकाची नव्हे तर क्रियाधाराची गुणधर्म असल्याने, क्रम सायनाइड, बायसल्फाइट वा ग्रीन्यार सर्वांसाठी तोच राहतो, आणि केवळ निरपेक्ष वेग बदलतात",
+          },
+          {
+            en: "The order follows molecular mass: the heavier the molecule the slower it diffuses and the fewer collisions it makes, so reversing it would need a lighter reagent",
+            hi: "क्रम आणविक द्रव्यमान के अनुसार है: अणु जितना भारी उतना धीमा विसरित होता है और उतनी कम टक्करें करता है, अतः उसे उलटने के लिए हल्का अभिकर्मक चाहिए",
+            mr: "क्रम रेणुवस्तुमानानुसार आहे: रेणू जितका जड तितका सावकाश विसरतो आणि तितक्या कमी टकरा करतो, म्हणून तो उलटवण्यास हलका अभिकर्मक लागेल",
+          },
+          {
+            en: "Aldehydes are faster because they are acidic and ketones are not, and changing to a basic reagent would reverse the whole order",
+            hi: "ऐल्डिहाइड इसलिए तेज़ हैं कि वे अम्लीय हैं और कीटोन नहीं, और क्षारीय अभिकर्मक पर जाने से पूरा क्रम उलट जाएगा",
+            mr: "अल्डिहाइड यासाठी जलद आहेत की ते आम्लधर्मी आहेत आणि कीटोन नाहीत, आणि क्षारधर्मी अभिकर्मकावर गेल्यास अख्खा क्रम उलटेल",
+          },
+          {
+            en: "The differences are entirely steric and have nothing to do with electron density, so replacing the nucleophile with a much smaller one would remove the order altogether",
+            hi: "अंतर पूरी तरह त्रिविम हैं और इलेक्ट्रॉन घनत्व से उनका कोई लेना-देना नहीं, अतः नाभिकरागी को कहीं छोटे से बदल देने पर क्रम पूरी तरह मिट जाएगा",
+            mr: "फरक पूर्णपणे त्रिमित आहेत आणि इलेक्ट्रॉन घनतेशी त्यांचा काहीही संबंध नाही, म्हणून नाभिकरागीला कितीतरी लहानाने बदलल्यास क्रम पूर्णपणे मिटेल",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The series is constructed so that only one thing changes along it: the number and size of the groups attached to the carbonyl carbon. Methanal has two hydrogens there, ethanal one hydrogen and one methyl, propanone two methyls, and the last compound two tert-butyl groups. So whatever explains the order must be a property of that position. THE ELECTRONIC CAUSE. The carbonyl carbon is attacked because it carries a partial positive charge, the oxygen having pulled the π electrons towards itself. An alkyl group is weakly electron-donating, so every alkyl group attached to that carbon pushes electron density back and reduces the very deficiency the nucleophile is attracted to. Two methyls reduce it more than one, and one reduces it more than none. The effect is not large per group, but it is in the right direction and it accumulates. THE STERIC CAUSE. Look at the geometry rather than the charge. The carbonyl carbon is sp² and planar with three groups around it; the nucleophile must arrive roughly perpendicular to that plane, and in the product the carbon has four groups and is tetrahedral. Two things therefore resist bulky substituents: the approach itself is obstructed, and the change from three groups at 120° to four at 109° pushes those groups closer together. A methyl is a mild obstruction; a tert-butyl is a severe one, and two of them make the last compound almost unreactive towards nucleophiles that add readily to propanone. THE PREDICTION ABOUT CHANGING THE REAGENT. Both causes are properties of the SUBSTRATE — the electron density at its carbon and the space around it. Neither depends on which nucleophile is used. So the order should survive a change of reagent, and it does: cyanide, sodium bisulphite, Grignard reagents and hydride donors all rank these compounds the same way, even though their absolute rates differ by orders of magnitude. That invariance is the real evidence for the explanation. If the order changed with the reagent, something about the reagent would have to be in the causal story, and it is not. A USEFUL CONSEQUENCE. The bisulphite addition compound forms with aldehydes and with methyl ketones but not with bulkier ketones, and it is crystalline and reversible — which is why it is used to purify carbonyl compounds. A steric limitation has been turned into a separation method. (The second option invokes diffusion, which varies far too weakly with mass to produce this range; the third confuses the acidity of the α-hydrogen with reactivity at the carbonyl carbon; the fourth discards the electronic cause, which the trend from methanal to ethanal to propanone — barely differing in bulk — requires.)",
+          hi: "यह श्रेणी ऐसे बनाई गई है कि उसमें केवल एक चीज़ बदलती है: कार्बोनिल कार्बन से जुड़े समूहों की संख्या और आकार। मेथेनल के पास वहाँ दो हाइड्रोजन हैं, एथेनल के पास एक हाइड्रोजन और एक मेथिल, प्रोपेनोन के पास दो मेथिल, और अंतिम यौगिक के पास दो टर्शियरी-ब्यूटिल समूह। अतः जो भी क्रम समझाए वह उसी स्थान का गुण होना चाहिए। इलेक्ट्रॉनी कारण। कार्बोनिल कार्बन पर इसलिए हमला होता है कि वह आंशिक धन आवेश ढोता है, क्योंकि ऑक्सीजन ने π इलेक्ट्रॉन अपनी ओर खींच लिए हैं। ऐल्किल समूह दुर्बल इलेक्ट्रॉन-दाता है, अतः उस कार्बन से जुड़ा हर ऐल्किल समूह इलेक्ट्रॉन घनत्व वापस धकेलता है और ठीक उसी कमी को घटाता है जिसकी ओर नाभिकरागी आकर्षित होता है। दो मेथिल एक से अधिक घटाते हैं, और एक शून्य से अधिक। प्रति समूह प्रभाव बड़ा नहीं, पर सही दिशा में है और जुड़ता जाता है। त्रिविम कारण। आवेश के बजाय ज्यामिति देखो। कार्बोनिल कार्बन sp² और समतलीय है, गिर्द तीन समूह; नाभिकरागी को उस तल के मोटे तौर पर लंबवत आना है, और उत्पाद में कार्बन के पास चार समूह हैं और वह चतुष्फलकीय है। अतः दो चीज़ें भारी प्रतिस्थापियों का विरोध करती हैं: पहुँच स्वयं बाधित है, और 120° पर तीन समूहों से 109° पर चार में जाना उन समूहों को और पास धकेल देता है। मेथिल हल्की बाधा है; टर्शियरी-ब्यूटिल गंभीर, और उनमें से दो अंतिम यौगिक को उन नाभिकरागियों के प्रति लगभग अक्रिय कर देते हैं जो प्रोपेनोन से आसानी से जुड़ जाते हैं। अभिकर्मक बदलने के बारे में भविष्यवाणी। दोनों कारण क्रियाधार के गुण हैं — उसके कार्बन पर इलेक्ट्रॉन घनत्व और उसके गिर्द जगह। कोई भी इस पर निर्भर नहीं कि कौन-सा नाभिकरागी काम में लिया गया। अतः क्रम अभिकर्मक बदलने पर भी टिकना चाहिए, और टिकता है: सायनाइड, सोडियम बाइसल्फ़ाइट, ग्रीन्यार अभिकर्मक और हाइड्राइड दाता सब इन यौगिकों को एक ही तरह क्रम देते हैं, यद्यपि उनके निरपेक्ष वेग कोटियों से भिन्न हैं। वही अपरिवर्तनीयता व्याख्या का असली प्रमाण है। यदि क्रम अभिकर्मक के साथ बदलता, तो अभिकर्मक की कोई बात कारण-कथा में होनी पड़ती, और वह नहीं है। एक काम का परिणाम। बाइसल्फ़ाइट योगज ऐल्डिहाइडों और मेथिल कीटोनों के साथ बनता है पर अधिक भारी कीटोनों के साथ नहीं, और वह क्रिस्टलीय तथा उत्क्रमणीय है — इसीलिए उसे कार्बोनिल यौगिकों के शोधन में काम में लिया जाता है। त्रिविम सीमा को पृथक्करण की विधि बना लिया गया है। (दूसरा विकल्प विसरण की दुहाई देता है, जो द्रव्यमान के साथ इस परास को पैदा करने के लिए कहीं बहुत दुर्बल रूप से बदलता है; तीसरा α-हाइड्रोजन की अम्लता को कार्बोनिल कार्बन पर की क्रियाशीलता से गड्डमड्ड करता है; चौथा इलेक्ट्रॉनी कारण फेंक देता है, जिसे मेथेनल से एथेनल से प्रोपेनोन तक की प्रवृत्ति — जिनके भारीपन में मुश्किल से अंतर है — माँगती है।)",
+          mr: "ही श्रेणी अशी बनवली आहे की तिच्यात केवळ एकच गोष्ट बदलते: कार्बोनिल कार्बनशी जोडलेल्या गटांची संख्या आणि आकार. मिथेनलकडे तिथे दोन हायड्रोजन आहेत, इथेनलकडे एक हायड्रोजन आणि एक मिथिल, प्रोपेनोनकडे दोन मिथिल, आणि शेवटच्या संयुगाकडे दोन टर्शरी-ब्युटिल गट. म्हणून जे काही क्रम समजावेल तो त्याच जागेचा गुणधर्म असला पाहिजे. इलेक्ट्रॉनी कारण. कार्बोनिल कार्बनवर यासाठी हल्ला होतो की तो अंशतः धन प्रभार वाहतो, कारण ऑक्सिजनने π इलेक्ट्रॉन आपल्याकडे ओढले आहेत. अल्किल गट दुर्बल इलेक्ट्रॉन-दाता आहे, म्हणून त्या कार्बनशी जोडलेला प्रत्येक अल्किल गट इलेक्ट्रॉन घनता परत ढकलतो आणि नेमकी तीच कमतरता घटवतो जिच्याकडे नाभिकरागी आकर्षित होतो. दोन मिथिल एकाहून अधिक घटवतात, आणि एक शून्याहून अधिक. प्रति गट परिणाम मोठा नाही, पण योग्य दिशेने आहे आणि जमत जातो. त्रिमित कारण. प्रभाराऐवजी भूमिती पाहा. कार्बोनिल कार्बन sp² आणि प्रतलीय आहे, भोवती तीन गट; नाभिकरागीला त्या प्रतलाला साधारण लंब यायचे आहे, आणि उत्पादनात कार्बनकडे चार गट आहेत आणि तो चतुष्फलकी आहे. म्हणून दोन गोष्टी अवजड प्रतिस्थापींना विरोध करतात: पोहोच स्वतः अडवली जाते, आणि 120° वर तीन गटांकडून 109° वर चारकडे जाणे त्या गटांना आणखी जवळ ढकलते. मिथिल सौम्य अडथळा आहे; टर्शरी-ब्युटिल गंभीर, आणि त्यांपैकी दोन शेवटच्या संयुगाला त्या नाभिकरागींबाबत जवळपास अक्रिय करतात जे प्रोपेनोनशी सहज जोडले जातात. अभिकर्मक बदलण्याबद्दलचे भाकीत. दोन्ही कारणे क्रियाधाराचे गुणधर्म आहेत — त्याच्या कार्बनवरची इलेक्ट्रॉन घनता आणि त्याभोवतीची जागा. कोणतेही यावर अवलंबून नाही की कोणता नाभिकरागी वापरला. म्हणून क्रम अभिकर्मक बदलल्यावरही टिकावा, आणि टिकतो: सायनाइड, सोडियम बायसल्फाइट, ग्रीन्यार अभिकर्मक आणि हायड्राइड दाता सर्व या संयुगांना एकाच प्रकारे क्रम देतात, जरी त्यांचे निरपेक्ष वेग कोटींनी वेगळे असले तरी. तीच अपरिवर्तनीयता स्पष्टीकरणाचा खरा पुरावा आहे. जर क्रम अभिकर्मकासोबत बदलला असता, तर अभिकर्मकाची काहीतरी बाब कारणकथेत असावी लागली असती, आणि ती नाही. एक उपयुक्त परिणाम. बायसल्फाइट योगज अल्डिहाइडांसोबत आणि मिथिल कीटोनांसोबत बनते पण अधिक अवजड कीटोनांसोबत नाही, आणि ते स्फटिकी व उत्क्रमणीय आहे — म्हणूनच ते कार्बोनिल संयुगांच्या शुद्धीकरणात वापरले जाते. त्रिमित मर्यादेचे पृथक्करणाच्या पद्धतीत रूपांतर केले गेले आहे. (दुसरा पर्याय विसरणाचा आधार घेतो, जे वस्तुमानासोबत ही व्याप्ती निर्माण करण्यास कितीतरी दुर्बलपणे बदलते; तिसरा α-हायड्रोजनच्या आम्लतेची कार्बोनिल कार्बनवरील क्रियाशीलतेशी गल्लत करतो; चौथा इलेक्ट्रॉनी कारण फेकून देतो, जे मिथेनलपासून इथेनलपासून प्रोपेनोनपर्यंतच्या प्रवृत्तीला — ज्यांच्या अवजडपणात जेमतेम फरक आहे — आवश्यक आहे.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Ethanol has a pKa of about 16, acetic acid 4.76, chloroacetic acid 2.86 and trichloroacetic acid 0.66, while 4-chlorobutanoic acid is 4.52 — barely different from acetic. Account for the whole set with one argument.",
+          hi: "एथेनॉल का pKa लगभग 16 है, ऐसीटिक अम्ल का 4.76, क्लोरोऐसीटिक अम्ल का 2.86 और ट्राइक्लोरोऐसीटिक अम्ल का 0.66, जबकि 4-क्लोरोब्यूटेनोइक अम्ल का 4.52 — ऐसीटिक से मुश्किल से भिन्न। पूरे समुच्चय का कारण एक ही तर्क से बताओ।",
+          mr: "इथेनॉलचा pKa सुमारे 16 आहे, अ‍ॅसिटिक आम्लाचा 4.76, क्लोरोअ‍ॅसिटिक आम्लाचा 2.86 आणि ट्रायक्लोरोअ‍ॅसिटिक आम्लाचा 0.66, तर 4-क्लोरोब्युटॅनोइक आम्लाचा 4.52 — अ‍ॅसिटिकहून जेमतेम वेगळा. अख्ख्या संचाचे कारण एकाच युक्तिवादाने सांगा.",
+        },
+        choices: [
+          {
+            en: "Every step is the stability of the anion. Ethoxide puts its whole charge on one oxygen and has nowhere to spread it, so ethanol barely ionises. Acetate spreads the charge equally over two oxygens by resonance — both C–O bonds measure the same 127 pm — which is worth eleven pKa units. A chlorine on the neighbouring carbon then withdraws electron density through the σ bonds and helps carry the charge away, worth nearly two more units, and three chlorines nearly four. But that inductive pull is transmitted through bonds and weakens sharply with each one, so a chlorine three carbons away is almost invisible — which is itself the evidence that the effect is inductive and not resonance, since resonance would not fall off with distance in that way",
+            hi: "हर क़दम ऋणायन की स्थिरता है। एथॉक्साइड अपना पूरा आवेश एक ऑक्सीजन पर रखता है और उसे फैलाने की कोई जगह नहीं, अतः एथेनॉल मुश्किल से आयनित होता है। ऐसीटेट अनुनाद से आवेश को दो ऑक्सीजनों पर बराबर फैलाता है — दोनों C–O बंध वही 127 pm नापते हैं — जो ग्यारह pKa इकाइयों के बराबर है। फिर पड़ोसी कार्बन पर क्लोरीन σ बंधों से इलेक्ट्रॉन घनत्व खींचकर आवेश ढोने में मदद करता है, जो लगभग दो और इकाइयाँ है, और तीन क्लोरीन लगभग चार। पर वह प्रेरणिक खिंचाव बंधों से संचारित होता है और हर एक के साथ तेज़ी से दुर्बल पड़ता है, अतः तीन कार्बन दूर का क्लोरीन लगभग अदृश्य है — और यही स्वयं प्रमाण है कि प्रभाव प्रेरणिक है, अनुनाद नहीं, क्योंकि अनुनाद दूरी के साथ इस तरह नहीं गिरता",
+            mr: "प्रत्येक पायरी ऋणायनाचे स्थैर्य आहे. इथॉक्साइड आपला अख्खा प्रभार एका ऑक्सिजनवर ठेवते आणि तो पसरवायला कोणतीही जागा नाही, म्हणून इथेनॉल जेमतेम आयनित होते. अ‍ॅसिटेट अनुनादाने प्रभार दोन ऑक्सिजनांवर समान पसरवते — दोन्ही C–O बंध तेच 127 pm मोजतात — जे अकरा pKa एककांइतके आहे. मग शेजारच्या कार्बनवरचे क्लोरीन σ बंधांतून इलेक्ट्रॉन घनता ओढून प्रभार वाहण्यात मदत करते, जे जवळपास आणखी दोन एकके आहे, आणि तीन क्लोरीन जवळपास चार. पण ती प्रेरणिक ओढ बंधांतून संक्रमित होते आणि प्रत्येकासोबत झपाट्याने दुर्बल होते, म्हणून तीन कार्बन दूरचे क्लोरीन जवळपास अदृश्य आहे — आणि हाच स्वतः पुरावा आहे की परिणाम प्रेरणिक आहे, अनुनाद नव्हे, कारण अनुनाद अंतरासोबत अशा प्रकारे घसरत नाही",
+          },
+          {
+            en: "The acidity is set by how strongly the O–H bond is held, and chlorine weakens it by its size; the distant chlorine has no effect because it is too far away to touch the hydrogen physically",
+            hi: "अम्लता इससे तय होती है कि O–H बंध कितनी मज़बूती से थामा गया है, और क्लोरीन अपने आकार से उसे कमज़ोर करता है; दूर वाला क्लोरीन इसलिए बेअसर है कि वह हाइड्रोजन को भौतिक रूप से छूने के लिए बहुत दूर है",
+            mr: "आम्लता यावरून ठरते की O–H बंध किती घट्ट धरला आहे, आणि क्लोरीन आपल्या आकाराने तो क्षीण करते; दूरचे क्लोरीन यासाठी निष्प्रभ आहे की ते हायड्रोजनला भौतिकरीत्या स्पर्श करण्यास फार दूर आहे",
+          },
+          {
+            en: "Carboxylic acids are stronger than alcohols because they contain more oxygen atoms, and each chlorine adds acidity because chlorides are acidic in water",
+            hi: "कार्बोक्सिलिक अम्ल ऐल्कोहॉलों से इसलिए प्रबल हैं कि उनमें अधिक ऑक्सीजन परमाणु हैं, और हर क्लोरीन इसलिए अम्लता बढ़ाता है कि क्लोराइड पानी में अम्लीय होते हैं",
+            mr: "कार्बोक्झिलिक आम्ले अल्कोहोलांहून यासाठी तीव्र आहेत की त्यांच्यात अधिक ऑक्सिजन अणू आहेत, आणि प्रत्येक क्लोरीन यासाठी आम्लता वाढवते की क्लोराइड पाण्यात आम्लधर्मी असतात",
+          },
+          {
+            en: "The effect is one of solubility throughout: the chlorinated acids dissolve better and so appear stronger, and the distant chlorine changes solubility least",
+            hi: "प्रभाव आद्योपांत विलेयता का है: क्लोरीनित अम्ल बेहतर घुलते हैं और इसलिए प्रबल दिखते हैं, और दूर वाला क्लोरीन विलेयता सबसे कम बदलता है",
+            mr: "परिणाम सर्वत्र विद्राव्यतेचा आहे: क्लोरिनयुक्त आम्ले अधिक चांगली विरघळतात आणि म्हणून तीव्र दिसतात, आणि दूरचे क्लोरीन विद्राव्यता सर्वांत कमी बदलते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Five numbers spanning sixteen orders of magnitude, and one principle underneath all of them: an acid is strong to the extent that the anion it leaves behind is comfortable. Ask what happens to the negative charge, every time. STEP ONE, ETHANOL TO ACETIC ACID — eleven pKa units, a factor of 10¹¹. Ethoxide has its charge on a single oxygen with nowhere to put it. Acetate has two oxygens and a π system connecting them, so the charge is shared equally between them. The measurement settles that this is real rather than a drawing convention: in the acid the two C–O bonds are different — a short C=O near 123 pm and a longer C–OH near 136 pm — while in the ion both are 127 pm, identical, and intermediate. The two structures we draw are not alternating; the ion is one thing, with a bond and a half on each side. STEP TWO, ONE CHLORINE — nearly two units, a factor of about eighty. Chlorine is electronegative and withdraws electron density along the σ framework. That pull does not just sit on the neighbouring carbon; it propagates towards the carboxylate and takes a share of the burden of the negative charge. Charge spread over more atoms is charge more comfortably held, and the anion forms more readily. STEP THREE, THREE CHLORINES — pKa 0.66, stronger than phosphoric acid. Inductive effects add, roughly but genuinely, and three withdrawing groups triple the help. Note what has been achieved: an acid whose strength rivals a mineral acid, built from three atoms none of which is bonded to the hydrogen that leaves. STEP FOUR, AND THE ONE THAT PROVES THE MECHANISM. 4-Chlorobutanoic acid has the same chlorine on the same kind of carbon, but three bonds further from the carboxylate — and its pKa is 4.52, against 4.76 for acetic acid with no chlorine at all. The effect has essentially vanished. That is exactly what an inductive effect must do: it is transmitted through σ bonds and each bond passes on only a fraction, so the influence falls off steeply — roughly to a third with each carbon. A resonance effect behaves quite differently, since a conjugated system carries charge to a distant position without attenuating in that way; that is why a nitro group para to a phenol still matters strongly. So the DISTANCE DEPENDENCE is not a footnote but the diagnostic: it tells you which of the two effects is operating. THE HABIT TO CARRY AWAY. When a series of numbers is put in front of you, look for the one member that breaks the pattern — here the distant chlorine — because that is usually the one carrying the information. Three chlorines make a strong acid, which is interesting; a chlorine that does nothing at three bonds' remove tells you HOW the other three worked. (The second option locates the effect in the O–H bond and then explains the distance dependence by physical contact, which is not how induction travels; the third counts atoms in place of reasoning about charge, and misattributes acidity to chloride ion; the fourth substitutes a solubility argument for a thermodynamic one, and pKa values are measured in dilute solution where all these acids are fully dissolved.)",
+          hi: "सोलह कोटियों में फैली पाँच संख्याएँ, और उन सबके नीचे एक ही सिद्धांत: अम्ल उतना ही प्रबल है जितना पीछे छूटा ऋणायन सहज हो। हर बार पूछो कि ऋण आवेश का क्या होता है। पहला क़दम, एथेनॉल से ऐसीटिक अम्ल — ग्यारह pKa इकाइयाँ, 10¹¹ का गुणक। एथॉक्साइड का आवेश अकेले ऑक्सीजन पर है और उसे रखने की कोई जगह नहीं। ऐसीटेट के पास दो ऑक्सीजन हैं और उन्हें जोड़ता π तंत्र, अतः आवेश उनके बीच बराबर बँटा है। माप तय कर देता है कि यह खींचने की परिपाटी नहीं बल्कि असली है: अम्ल में दोनों C–O बंध भिन्न हैं — 123 pm के पास छोटा C=O और 136 pm के पास लंबा C–OH — जबकि आयन में दोनों 127 pm हैं, समरूप, और बीच के। हम जो दो संरचनाएँ खींचते हैं वे बारी-बारी नहीं आतीं; आयन एक ही चीज़ है, दोनों ओर डेढ़-डेढ़ बंध के साथ। दूसरा क़दम, एक क्लोरीन — लगभग दो इकाइयाँ, क़रीब अस्सी का गुणक। क्लोरीन विद्युत ऋणात्मक है और σ ढाँचे के अनुदिश इलेक्ट्रॉन घनत्व खींचता है। वह खिंचाव केवल पड़ोसी कार्बन पर नहीं बैठता; वह कार्बोक्सिलेट की ओर फैलता है और ऋण आवेश के बोझ का हिस्सा उठाता है। अधिक परमाणुओं पर फैला आवेश अधिक सहज ढोया आवेश है, और ऋणायन अधिक आसानी से बनता है। तीसरा क़दम, तीन क्लोरीन — pKa 0.66, फ़ॉस्फ़ोरिक अम्ल से प्रबल। प्रेरणिक प्रभाव मोटे तौर पर पर वस्तुतः जुड़ते हैं, और तीन खींचक समूह मदद तिगुनी कर देते हैं। ध्यान दो कि क्या हासिल हुआ: ऐसा अम्ल जिसकी प्रबलता खनिज अम्ल की टक्कर की है, तीन ऐसे परमाणुओं से बना जिनमें से कोई उस हाइड्रोजन से बँधा नहीं जो जाता है। चौथा क़दम, और वही जो क्रियाविधि सिद्ध करता है। 4-क्लोरोब्यूटेनोइक अम्ल में वही क्लोरीन उसी क़िस्म के कार्बन पर है, पर कार्बोक्सिलेट से तीन बंध और दूर — और उसका pKa 4.52 है, बनिस्बत बिना किसी क्लोरीन वाले ऐसीटिक अम्ल के 4.76 के। प्रभाव वस्तुतः लुप्त हो गया। प्रेरणिक प्रभाव को ठीक यही करना चाहिए: वह σ बंधों से संचारित होता है और हर बंध केवल एक अंश आगे बढ़ाता है, अतः प्रभाव तेज़ी से गिरता है — मोटे तौर पर हर कार्बन के साथ एक-तिहाई पर। अनुनाद प्रभाव काफ़ी अलग बरतता है, क्योंकि संयुग्मित तंत्र आवेश को दूर के स्थान तक इस तरह क्षीण हुए बिना ले जाता है; इसीलिए फ़ीनॉल के पैरा पर नाइट्रो समूह अब भी प्रबलता से मायने रखता है। अतः दूरी-निर्भरता पाद-टिप्पणी नहीं बल्कि निदान है: वह बताती है कि दोनों में से कौन-सा प्रभाव चल रहा है। ले जाने योग्य आदत। जब संख्याओं की श्रेणी सामने रखी जाए, तो उस एक सदस्य को ढूँढ़ो जो प्रतिरूप तोड़ता है — यहाँ दूर वाला क्लोरीन — क्योंकि प्रायः वही सूचना ढोता है। तीन क्लोरीन प्रबल अम्ल बनाते हैं, जो रोचक है; पर तीन बंध दूर से कुछ न करने वाला क्लोरीन बता देता है कि बाक़ी तीन ने काम कैसे किया। (दूसरा विकल्प प्रभाव को O–H बंध में रखता है और फिर दूरी-निर्भरता को भौतिक संपर्क से समझाता है, जबकि प्रेरण ऐसे नहीं चलता; तीसरा आवेश पर तर्क करने के बजाय परमाणु गिनता है, और अम्लता का श्रेय क्लोराइड आयन को दे देता है; चौथा ऊष्मागतिक तर्क की जगह विलेयता का तर्क रख देता है, जबकि pKa तनु विलयन में नापे जाते हैं जहाँ ये सब अम्ल पूरी तरह घुले हुए हैं।)",
+          mr: "सोळा कोटींमध्ये पसरलेल्या पाच संख्या, आणि त्या सर्वांखाली एकच तत्त्व: आम्ल तितकेच तीव्र आहे जितका मागे उरलेला ऋणायन सुखी असेल. प्रत्येक वेळी विचारा की ऋण प्रभाराचे काय होते. पहिली पायरी, इथेनॉलपासून अ‍ॅसिटिक आम्लापर्यंत — अकरा pKa एकके, 10¹¹ चा गुणक. इथॉक्साइडचा प्रभार एकट्या ऑक्सिजनवर आहे आणि तो ठेवायला कोणतीही जागा नाही. अ‍ॅसिटेटकडे दोन ऑक्सिजन आहेत आणि त्यांना जोडणारी π प्रणाली, म्हणून प्रभार त्यांच्यात समान वाटलेला आहे. माप ठरवते की ही काढण्याची संकेतपद्धत नसून खरी गोष्ट आहे: आम्लात दोन्ही C–O बंध वेगळे आहेत — 123 pm जवळचा लहान C=O आणि 136 pm जवळचा लांब C–OH — तर आयनात दोन्ही 127 pm आहेत, सारखे, आणि मधले. आपण ज्या दोन रचना काढतो त्या आळीपाळीने येत नाहीत; आयन एकच गोष्ट आहे, दोन्ही बाजूंना दीड-दीड बंधासह. दुसरी पायरी, एक क्लोरीन — जवळपास दोन एकके, सुमारे ऐंशीचा गुणक. क्लोरीन विद्युत ऋण आहे आणि σ चौकटीच्या दिशेने इलेक्ट्रॉन घनता ओढते. ती ओढ केवळ शेजारच्या कार्बनवर बसत नाही; ती कार्बोक्झिलेटकडे पसरते आणि ऋण प्रभाराच्या ओझ्याचा वाटा उचलते. अधिक अणूंवर पसरलेला प्रभार अधिक सहजतेने वाहिलेला प्रभार आहे, आणि ऋणायन अधिक सहज बनतो. तिसरी पायरी, तीन क्लोरीन — pKa 0.66, फॉस्फोरिक आम्लाहून तीव्र. प्रेरणिक परिणाम ढोबळपणे पण खरोखर जमतात, आणि तीन ओढक गट मदत तिप्पट करतात. काय साधले ते लक्षात घ्या: असे आम्ल ज्याची तीव्रता खनिज आम्लाशी टक्कर देते, अशा तीन अणूंतून बनलेले ज्यांपैकी कोणीही निघणाऱ्या हायड्रोजनशी बांधलेला नाही. चौथी पायरी, आणि तीच जी यंत्रणा सिद्ध करते. 4-क्लोरोब्युटॅनोइक आम्लात तेच क्लोरीन त्याच प्रकारच्या कार्बनवर आहे, पण कार्बोक्झिलेटपासून तीन बंध आणखी दूर — आणि त्याचा pKa 4.52 आहे, कोणतेही क्लोरीन नसलेल्या अ‍ॅसिटिक आम्लाच्या 4.76 च्या तुलनेत. परिणाम प्रत्यक्षात नाहीसा झाला. प्रेरणिक परिणामाने नेमके हेच करावे: तो σ बंधांतून संक्रमित होतो आणि प्रत्येक बंध केवळ एक अंश पुढे नेतो, म्हणून प्रभाव झपाट्याने घसरतो — ढोबळपणे प्रत्येक कार्बनसोबत एक-तृतीयांशावर. अनुनाद परिणाम बराच वेगळा वागतो, कारण संयुग्मित प्रणाली प्रभार दूरच्या जागेपर्यंत अशा प्रकारे क्षीण न होता नेते; म्हणूनच फिनॉलच्या पॅरावरचा नायट्रो गट अजूनही तीव्रतेने महत्त्वाचा ठरतो. म्हणून अंतर-अवलंबित्व ही तळटीप नसून निदान आहे: ते सांगते की दोहोंपैकी कोणता परिणाम चालू आहे. सोबत न्यायची सवय. जेव्हा संख्यांची मालिका समोर ठेवली जाते, तेव्हा तो एक सदस्य शोधा जो नमुना मोडतो — इथे दूरचे क्लोरीन — कारण बहुधा तोच माहिती वाहतो. तीन क्लोरीन तीव्र आम्ल बनवतात, जे रोचक आहे; पण तीन बंध दूरवरून काहीही न करणारे क्लोरीन सांगते की बाकीच्या तिघांनी काम कसे केले. (दुसरा पर्याय परिणाम O–H बंधात ठेवतो आणि मग अंतर-अवलंबित्व भौतिक संपर्काने समजावतो, तर प्रेरण असे चालत नाही; तिसरा प्रभारावर युक्तिवाद करण्याऐवजी अणू मोजतो, आणि आम्लतेचे श्रेय क्लोराइड आयनाला देतो; चौथा उष्मागतिक युक्तिवादाच्या जागी विद्राव्यतेचा युक्तिवाद ठेवतो, तर pKa विरल द्रावणात मोजले जातात जिथे ही सर्व आम्ले पूर्णपणे विरघळलेली आहेत.)",
+        },
+      },
+    ],
+  },
+  /*C7*/
 ];
 
 export const G12_CHEMISTRY_NUMERIC: Record<string, NumQ[]> = {
@@ -3098,6 +3795,330 @@ export const G12_CHEMISTRY_NUMERIC: Record<string, NumQ[]> = {
         en: "177 − 169 = 8 pm. The number is small and what it records is not. A bond that is shorter is stronger, and this one has been shortened by resonance: the chlorine's lone pair delocalises into the ring, giving the C–Cl bond partial double-bond character. That is one of the three reasons chlorobenzene resists nucleophilic substitution — the others being that the carbon is sp² and therefore holds its electrons more tightly, and that the ring's π cloud repels an incoming nucleophile while offering no SN1 escape, since an aryl cation cannot be stabilised by delocalisation at all. The difference in conditions is stark: chloroethane hydrolyses in warm aqueous alkali within minutes, chlorobenzene needs 623 K and 300 atmospheres. Eight picometres is a small measurement standing in for a very large chemical fact. (346 adds the two lengths; 0 rounds the difference away.)",
         hi: "177 − 169 = 8 pm. संख्या छोटी है और वह जो दर्ज करती है वह नहीं। जो बंध छोटा है वह प्रबल है, और यह अनुनाद से छोटा किया गया है: क्लोरीन का एकाकी युग्म वलय में विस्थानीकृत हो जाता है, जिससे C–Cl बंध को आंशिक द्विबंध लक्षण मिलता है। क्लोरोबेंज़ीन के नाभिकरागी प्रतिस्थापन का प्रतिरोध करने के तीन कारणों में से यह एक है — बाक़ी यह कि कार्बन sp² है और इसलिए अपने इलेक्ट्रॉन अधिक कसकर पकड़ता है, और यह कि वलय का π बादल आते नाभिकरागी को प्रतिकर्षित करता है और कोई SN1 बचाव भी नहीं देता, क्योंकि ऐरिल धनायन विस्थानीकरण से बिलकुल स्थायी नहीं हो सकता। परिस्थितियों का अंतर तीखा है: क्लोरोएथेन गर्म जलीय क्षार में मिनटों में जल-अपघटित होता है, क्लोरोबेंज़ीन को 623 K और 300 वायुमंडल चाहिए। आठ पिकोमीटर बहुत बड़े रासायनिक तथ्य के लिए खड़ा छोटा माप है। (346 दोनों लंबाइयाँ जोड़ देता है; 0 अंतर को गोल करके उड़ा देता है।)",
         mr: "177 − 169 = 8 pm. संख्या लहान आहे आणि ती जे नोंदवते ते नाही. जो बंध लहान आहे तो तीव्र आहे, आणि हा अनुनादाने लहान केला गेला आहे: क्लोरीनची एकाकी जोडी वलयात विस्थानित होते, ज्याने C–Cl बंधाला अंशतः द्विबंध लक्षण मिळते. क्लोरोबेंझिन नाभिकरागी प्रतिस्थापनाला विरोध करण्याच्या तीन कारणांपैकी हे एक — बाकीची अशी की कार्बन sp² आहे आणि म्हणून आपले इलेक्ट्रॉन अधिक घट्ट धरतो, आणि अशी की वलयाचे π ढग येणाऱ्या नाभिकरागीला प्रतिकर्षित करते आणि कोणताही SN1 सुटकेचा मार्गही देत नाही, कारण अरिल धनायन विस्थानीकरणाने मुळीच स्थिर होऊ शकत नाही. परिस्थितींचा फरक ठळक आहे: क्लोरोइथेन तप्त जलीय क्षारात मिनिटांत जलअपघटित होते, क्लोरोबेंझिनला 623 K आणि 300 वातावरणे लागतात. आठ पिकोमीटर हे फार मोठ्या रासायनिक सत्यासाठी उभे असलेले लहान माप आहे. (346 दोन्ही लांबी जोडते; 0 फरक गोल करून उडवते.)",
+      },
+    },
+  ],
+  "chemistry-12-alcohols-phenols-and-ethers": [
+    {
+      level: 1,
+      stem: {
+        en: "How many structural isomers of C₃H₈O contain a hydroxyl group?",
+        hi: "C₃H₈O के कितने संरचनात्मक समावयवों में हाइड्रॉक्सिल समूह है?",
+        mr: "C₃H₈O च्या किती संरचनात्मक समघटकांत हायड्रॉक्सिल गट आहे?",
+      },
+      answer: 2,
+      wrong: [3, 1, 4],
+      checkExpr: "1+1",
+      solution: {
+        en: "The oxygen can sit at the end of the three-carbon chain or in the middle: 1 + 1 = 2 alcohols, propan-1-ol and propan-2-ol. The formula also has a third isomer, methoxyethane, but its oxygen is between two carbons and carries no hydrogen, so it is an ether and not an alcohol — which is exactly why it boils some seventy degrees lower. (3 counts that ether as well.)",
+        hi: "ऑक्सीजन तीन कार्बन की शृंखला के सिरे पर या बीच में बैठ सकता है: 1 + 1 = 2 ऐल्कोहॉल, प्रोपेन-1-ऑल और प्रोपेन-2-ऑल। इस सूत्र का तीसरा समावयव मेथॉक्सीएथेन भी है, पर उसका ऑक्सीजन दो कार्बनों के बीच है और कोई हाइड्रोजन नहीं ढोता, अतः वह ईथर है ऐल्कोहॉल नहीं — और ठीक इसीलिए वह क़रीब सत्तर अंश नीचे उबलता है। (3 उस ईथर को भी गिन लेता है।)",
+        mr: "ऑक्सिजन तीन कार्बनांच्या साखळीच्या टोकाला वा मध्यभागी बसू शकतो: 1 + 1 = 2 अल्कोहोल, प्रोपेन-1-ऑल आणि प्रोपेन-2-ऑल. या सूत्राचा तिसरा समघटक मिथॉक्सीइथेनही आहे, पण त्याचा ऑक्सिजन दोन कार्बनांमध्ये आहे आणि कोणताही हायड्रोजन वाहत नाही, म्हणून तो ईथर आहे अल्कोहोल नव्हे — आणि नेमके म्हणूनच तो सुमारे सत्तर अंश खाली उकळतो. (3 त्या ईथरलाही मोजते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "Ethanol boils at 351 K and dimethyl ether at 248 K. What is the difference, in kelvin?",
+        hi: "एथेनॉल 351 K पर उबलता है और डाइमेथिल ईथर 248 K पर। अंतर, केल्विन में, क्या है?",
+        mr: "इथेनॉल 351 K वर उकळते आणि डायमिथिल ईथर 248 K वर. फरक, केल्विनमध्ये, किती?",
+      },
+      answer: 103,
+      wrong: [599, 148, 46],
+      checkExpr: "351-248",
+      solution: {
+        en: "351 − 248 = 103 K. Both compounds are C₂H₆O, so molar mass, electron count and dispersion forces are matched exactly and the whole gap is caused by arrangement. Ethanol's hydrogen sits on the oxygen and can bond to the oxygen of the next molecule; the ether's oxygen has no hydrogen on it, so it can accept such a bond and cannot donate one, and no network forms. (599 adds the two temperatures.)",
+        hi: "351 − 248 = 103 K. दोनों यौगिक C₂H₆O हैं, अतः मोलर द्रव्यमान, इलेक्ट्रॉन संख्या और परिक्षेपण बल ठीक बराबर हैं और पूरा अंतर व्यवस्था से आया है। एथेनॉल का हाइड्रोजन ऑक्सीजन पर बैठा है और अगले अणु के ऑक्सीजन से बंध बना सकता है; ईथर के ऑक्सीजन पर कोई हाइड्रोजन नहीं, अतः वह ऐसा बंध ले सकता है और दे नहीं सकता, और कोई जाल नहीं बनता। (599 दोनों तापों को जोड़ देता है।)",
+        mr: "351 − 248 = 103 K. दोन्ही संयुगे C₂H₆O आहेत, म्हणून मोलर वस्तुमान, इलेक्ट्रॉन संख्या आणि विकिरण बले नेमकी जुळलेली आहेत आणि अख्खा फरक मांडणीतून आला आहे. इथेनॉलचा हायड्रोजन ऑक्सिजनवर बसला आहे आणि पुढच्या रेणूच्या ऑक्सिजनशी बंध बनवू शकतो; ईथरच्या ऑक्सिजनवर कोणताही हायड्रोजन नाही, म्हणून तो असा बंध घेऊ शकतो आणि देऊ शकत नाही, आणि कोणतेही जाळे बनत नाही. (599 दोन्ही तापमाने जोडते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Phenol has a pKa of 10 and ethanol about 16. By what factor is phenol the stronger acid? Give the power of ten.",
+        hi: "फ़ीनॉल का pKa 10 है और एथेनॉल का लगभग 16. फ़ीनॉल कितने गुणक से प्रबल अम्ल है? दस की घात बताओ।",
+        mr: "फिनॉलचा pKa 10 आहे आणि इथेनॉलचा सुमारे 16. फिनॉल किती पटीने तीव्र आम्ल आहे? दहाची घात सांगा.",
+      },
+      answer: 6,
+      wrong: [26, 16, 60],
+      checkExpr: "16-10",
+      solution: {
+        en: "16 − 10 = 6, so phenol ionises 10⁶ times more readily — a million-fold. A pKa difference is a difference of exponents, not of quantities, so subtracting is right and adding is not. The cause is the phenoxide ion spreading its charge over the ring while the ethoxide has to hold it all on one oxygen. (26 adds the two values.)",
+        hi: "16 − 10 = 6, अतः फ़ीनॉल 10⁶ गुना अधिक आसानी से आयनित होता है — दस लाख गुना। pKa का अंतर घातों का अंतर है, राशियों का नहीं, अतः घटाना ठीक है और जोड़ना नहीं। कारण यह कि फ़ीनॉक्साइड आयन अपना आवेश वलय पर फैलाता है जबकि एथॉक्साइड को वह सब एक ऑक्सीजन पर थामना पड़ता है। (26 दोनों मान जोड़ देता है।)",
+        mr: "16 − 10 = 6, म्हणून फिनॉल 10⁶ पट अधिक सहज आयनित होते — दहा लाख पट. pKa चा फरक हा घातांचा फरक आहे, राशींचा नव्हे, म्हणून वजा करणे बरोबर आहे आणि बेरीज करणे नाही. कारण असे की फिनॉक्साइड आयन आपला प्रभार वलयावर पसरवतो तर अल्कॉक्साइडला तो सर्व एका ऑक्सिजनवर धरावा लागतो. (26 दोन्ही मूल्ये जोडते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "How many carbon atoms in phenol are attacked preferentially when it reacts with bromine water?",
+        hi: "ब्रोमीन जल से अभिक्रिया करने पर फ़ीनॉल के कितने कार्बन परमाणुओं पर वरीयता से हमला होता है?",
+        mr: "ब्रोमीन जलाशी अभिक्रिया करताना फिनॉलच्या किती कार्बन अणूंवर प्राधान्याने हल्ला होतो?",
+      },
+      answer: 3,
+      wrong: [6, 2, 1],
+      checkExpr: "2+1",
+      solution: {
+        en: "The two ortho carbons and the one para carbon: 2 + 1 = 3, which is why the product is 2,4,6-tribromophenol and why it appears as a white precipitate immediately, with no catalyst. Those three positions are not chosen arbitrarily — drawing the resonance structures shows the oxygen's lone pair placing electron density on exactly those carbons and on no others. (6 counts every carbon in the ring.)",
+        hi: "दोनों ऑर्थो कार्बन और एक पैरा कार्बन: 2 + 1 = 3, इसीलिए उत्पाद 2,4,6-ट्राइब्रोमोफ़ीनॉल है और इसीलिए वह बिना उत्प्रेरक तुरंत सफ़ेद अवक्षेप बनकर आता है। वे तीन स्थान मनमाने नहीं चुने गए — अनुनाद संरचनाएँ खींचने पर दिखता है कि ऑक्सीजन का एकाकी युग्म ठीक उन्हीं कार्बनों पर इलेक्ट्रॉन घनत्व रखता है, और किसी पर नहीं। (6 वलय के हर कार्बन को गिन लेता है।)",
+        mr: "दोन्ही ऑर्थो कार्बन आणि एक पॅरा कार्बन: 2 + 1 = 3, म्हणूनच उत्पादन 2,4,6-ट्रायब्रोमोफिनॉल आहे आणि म्हणूनच ते उत्प्रेरकाविना लगेच पांढरा अवक्षेप बनून येते. त्या तीन जागा मनमानी निवडलेल्या नाहीत — अनुनाद रचना काढल्यावर दिसते की ऑक्सिजनची एकाकी जोडी नेमक्या त्याच कार्बनांवर इलेक्ट्रॉन घनता ठेवते, आणि इतर कोणावर नाही. (6 वलयातला प्रत्येक कार्बन मोजते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "Complete oxidation converts a primary alcohol first to an aldehyde and then to a carboxylic acid. How many hydrogen atoms are removed from the carbon bearing the oxygen in the first of those steps?",
+        hi: "पूर्ण ऑक्सीकरण किसी प्राथमिक ऐल्कोहॉल को पहले ऐल्डिहाइड और फिर कार्बोक्सिलिक अम्ल में बदलता है। उन चरणों में से पहले में ऑक्सीजन वाले कार्बन से कितने हाइड्रोजन परमाणु हटाए जाते हैं?",
+        mr: "पूर्ण उपचयन एखाद्या प्राथमिक अल्कोहोलचे आधी अल्डिहाइड आणि मग कार्बोक्झिलिक आम्लात रूपांतर करते. त्या पायऱ्यांपैकी पहिलीत ऑक्सिजन असलेल्या कार्बनवरून किती हायड्रोजन अणू काढले जातात?",
+      },
+      answer: 2,
+      wrong: [1, 3, 4],
+      checkExpr: "1+1",
+      solution: {
+        en: "One hydrogen goes from the carbon and one from the hydroxyl oxygen: 1 + 1 = 2, and the carbon–oxygen single bond becomes a double bond. Counting them explains the whole ladder. A secondary alcohol has only one hydrogen on that carbon, so it can lose two and stop at a ketone with nothing further to give. A tertiary alcohol has none at all, so ordinary oxidising agents leave it alone — the reaction is not slow, it is impossible without breaking a carbon–carbon bond. (1 counts only the carbon's hydrogen.)",
+        hi: "एक हाइड्रोजन कार्बन से जाता है और एक हाइड्रॉक्सिल ऑक्सीजन से: 1 + 1 = 2, और कार्बन–ऑक्सीजन एकल बंध द्विबंध बन जाता है। उन्हें गिनना पूरी सीढ़ी समझा देता है। द्वितीयक ऐल्कोहॉल में उस कार्बन पर केवल एक हाइड्रोजन है, अतः वह दो खोकर कीटोन पर रुक जाता है और आगे देने को कुछ नहीं। तृतीयक ऐल्कोहॉल में कोई है ही नहीं, अतः साधारण ऑक्सीकारक उसे छोड़ देते हैं — अभिक्रिया धीमी नहीं, कार्बन–कार्बन बंध तोड़े बिना असंभव है। (1 केवल कार्बन का हाइड्रोजन गिनता है।)",
+        mr: "एक हायड्रोजन कार्बनवरून जातो आणि एक हायड्रॉक्सिल ऑक्सिजनवरून: 1 + 1 = 2, आणि कार्बन–ऑक्सिजन एकेरी बंध द्विबंध बनतो. त्यांना मोजणे अख्खी शिडी समजावते. द्वितीयक अल्कोहोलात त्या कार्बनवर केवळ एक हायड्रोजन आहे, म्हणून तो दोन गमावून कीटोनवर थांबतो आणि पुढे द्यायला काही नाही. तृतीयक अल्कोहोलात एकही नाहीच, म्हणून साधे उपचयक त्याला सोडून देतात — अभिक्रिया सावकाश नाही, कार्बन–कार्बन बंध तोडल्याविना अशक्य आहे. (1 केवळ कार्बनचा हायड्रोजन मोजते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "Ethanol has molar mass 46 g/mol. How many grams are in 2.5 moles?",
+        hi: "एथेनॉल का मोलर द्रव्यमान 46 g/mol है। 2.5 मोल में कितने ग्राम हैं?",
+        mr: "इथेनॉलचे मोलर वस्तुमान 46 g/mol आहे. 2.5 मोलमध्ये किती ग्रॅम आहेत?",
+      },
+      answer: 115,
+      wrong: [18.4, 48.5, 46],
+      checkExpr: "46*2.5",
+      solution: {
+        en: "46 × 2.5 = 115 g. The molar mass itself is worth assembling once: two carbons at 12, six hydrogens at 1 and one oxygen at 16 give 24 + 6 + 16 = 46, which is also exactly the molar mass of dimethyl ether, since they are isomers built from the same atoms. (18.4 divides instead of multiplying.)",
+        hi: "46 × 2.5 = 115 g. मोलर द्रव्यमान स्वयं एक बार जोड़ लेना काम का है: 12 वाले दो कार्बन, 1 वाले छह हाइड्रोजन और 16 वाला एक ऑक्सीजन मिलकर 24 + 6 + 16 = 46 देते हैं, जो डाइमेथिल ईथर का भी ठीक वही मोलर द्रव्यमान है, क्योंकि वे उन्हीं परमाणुओं से बने समावयव हैं। (18.4 गुणा करने के बजाय भाग दे देता है।)",
+        mr: "46 × 2.5 = 115 g. मोलर वस्तुमान स्वतः एकदा जुळवून घेणे उपयुक्त आहे: 12 चे दोन कार्बन, 1 चे सहा हायड्रोजन आणि 16 चा एक ऑक्सिजन मिळून 24 + 6 + 16 = 46 देतात, जे डायमिथिल ईथरचेही नेमके तेच मोलर वस्तुमान आहे, कारण ते त्याच अणूंतून बनलेले समघटक आहेत. (18.4 गुणण्याऐवजी भागते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "How many moles of hydrogen gas are released when 3 moles of ethanol react completely with sodium?",
+        hi: "एथेनॉल के 3 मोल सोडियम से पूरी तरह अभिक्रिया करने पर हाइड्रोजन गैस के कितने मोल निकलते हैं?",
+        mr: "इथेनॉलचे 3 मोल सोडियमशी पूर्णपणे अभिक्रिया करताना हायड्रोजन वायूचे किती मोल निघतात?",
+      },
+      answer: 1.5,
+      wrong: [3, 6, 0.75],
+      checkExpr: "3/2",
+      solution: {
+        en: "Each alcohol gives up one hydrogen atom, and two hydrogen atoms make one molecule of H₂, so 3/2 = 1.5 mol. The halving is the step to be careful with — the equation is 2C₂H₅OH + 2Na → 2C₂H₅ONa + H₂, and reading the coefficient of one alcohol off the product directly is the usual slip. Note also that an ether gives no hydrogen at all with sodium, because it has none on its oxygen — a simple test that tells the two families apart. (3 counts one H₂ per alcohol.)",
+        hi: "हर ऐल्कोहॉल एक हाइड्रोजन परमाणु देता है, और दो हाइड्रोजन परमाणु H₂ का एक अणु बनाते हैं, अतः 3/2 = 1.5 mol. आधा करना ही वह क़दम है जहाँ सावधानी चाहिए — समीकरण 2C₂H₅OH + 2Na → 2C₂H₅ONa + H₂ है, और एक ऐल्कोहॉल का गुणांक सीधे उत्पाद से पढ़ लेना आम चूक है। यह भी ध्यान दो कि ईथर सोडियम से कोई हाइड्रोजन नहीं देता, क्योंकि उसके ऑक्सीजन पर कोई है ही नहीं — यह सरल परीक्षण दोनों कुलों को अलग कर देता है। (3 प्रति ऐल्कोहॉल एक H₂ गिनता है।)",
+        mr: "प्रत्येक अल्कोहोल एक हायड्रोजन अणू देते, आणि दोन हायड्रोजन अणू H₂ चा एक रेणू बनवतात, म्हणून 3/2 = 1.5 mol. निम्मे करणे हीच ती पायरी जिथे काळजी हवी — समीकरण 2C₂H₅OH + 2Na → 2C₂H₅ONa + H₂ आहे, आणि एका अल्कोहोलचा गुणांक थेट उत्पादनातून वाचणे ही नेहमीची चूक. हेही लक्षात घ्या की ईथर सोडियमसोबत कोणताही हायड्रोजन देत नाही, कारण त्याच्या ऑक्सिजनवर एकही नाहीच — ही साधी चाचणी दोन्ही कुळे वेगळी करते. (3 प्रति अल्कोहोल एक H₂ मोजते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "The C–O bond is 136 pm in an alcohol and 129 pm in phenol. By how many pm is it shorter in phenol?",
+        hi: "C–O बंध ऐल्कोहॉल में 136 pm और फ़ीनॉल में 129 pm है। फ़ीनॉल में वह कितने pm छोटा है?",
+        mr: "C–O बंध अल्कोहोलात 136 pm आणि फिनॉलात 129 pm आहे. फिनॉलात तो किती pm ने लहान आहे?",
+      },
+      answer: 7,
+      wrong: [265, 13, 5],
+      checkExpr: "136-129",
+      solution: {
+        en: "136 − 129 = 7 pm. The shortening is the signature of partial double-bond character: the oxygen's lone pair is delocalised into the ring, so the C–O bond is part way to being a double bond and is correspondingly harder to break. That single fact explains why phenol will not undergo the substitution reactions an alcohol undergoes readily — and it is the same delocalisation that makes phenol the stronger acid, one cause with two effects that look opposite. (265 adds the two lengths.)",
+        hi: "136 − 129 = 7 pm. यह छोटा होना आंशिक द्विबंध लक्षण का चिह्न है: ऑक्सीजन का एकाकी युग्म वलय में विस्थानीकृत है, अतः C–O बंध द्विबंध होने की ओर आधे रास्ते है और तदनुरूप तोड़ना कठिन। वही अकेला तथ्य समझा देता है कि फ़ीनॉल वे प्रतिस्थापन अभिक्रियाएँ क्यों नहीं करता जो ऐल्कोहॉल आसानी से करता है — और वही विस्थानीकरण फ़ीनॉल को प्रबल अम्ल भी बनाता है, एक कारण और दो उलटे दिखते प्रभाव। (265 दोनों लंबाइयाँ जोड़ देता है।)",
+        mr: "136 − 129 = 7 pm. हे लहान होणे अंशतः द्विबंध लक्षणाची खूण आहे: ऑक्सिजनची एकाकी जोडी वलयात विस्थानित आहे, म्हणून C–O बंध द्विबंध होण्याच्या अर्ध्या वाटेवर आहे आणि त्याअनुषंगाने तोडणे कठीण. तेच एक सत्य समजावते की फिनॉल त्या प्रतिस्थापन अभिक्रिया का करत नाही ज्या अल्कोहोल सहज करते — आणि तेच विस्थानीकरण फिनॉलला तीव्र आम्लही बनवते, एक कारण आणि दोन उलट दिसणारे परिणाम. (265 दोन्ही लांबी जोडते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "Dehydration of ethanol gives ethene. If 4 moles of ethanol are dehydrated completely, how many moles of water are formed?",
+        hi: "एथेनॉल का निर्जलीकरण एथीन देता है। यदि एथेनॉल के 4 मोल पूरी तरह निर्जलित किए जाएँ, तो पानी के कितने मोल बनते हैं?",
+        mr: "इथेनॉलचे निर्जलीकरण इथीन देते. जर इथेनॉलचे 4 मोल पूर्णपणे निर्जलित केले, तर पाण्याचे किती मोल बनतात?",
+      },
+      answer: 4,
+      wrong: [2, 8, 1],
+      checkExpr: "4*1",
+      solution: {
+        en: "One molecule of water per molecule of alcohol: 4 × 1 = 4 mol. The arithmetic is easy and the mechanism behind it is the point. Hydroxide is a poor leaving group, so the acid's first job is to protonate the oxygen and convert it into water, which is a good one. The water then leaves to give a carbocation, and a neighbouring hydrogen is lost to form the double bond. That a carbocation really is involved is not an assumption: the ease of dehydration runs tertiary > secondary > primary, exactly the order of carbocation stability, and that agreement is the evidence. (2 halves the count as though two alcohols shared one water — which is the ether-forming reaction at a lower temperature, a genuinely different product.)",
+        hi: "प्रति ऐल्कोहॉल अणु पानी का एक अणु: 4 × 1 = 4 mol. गणित आसान है और मर्म उसके पीछे की क्रियाविधि है। हाइड्रॉक्साइड ख़राब प्रस्थायी समूह है, अतः अम्ल का पहला काम ऑक्सीजन को प्रोटॉनित कर उसे पानी बना देना है, जो अच्छा है। फिर पानी जाकर कार्बोकैटायन देता है, और पड़ोसी हाइड्रोजन खोकर द्विबंध बनता है। कार्बोकैटायन का सचमुच शामिल होना धारणा नहीं है: निर्जलीकरण की सुगमता तृतीयक > द्वितीयक > प्राथमिक चलती है, ठीक कार्बोकैटायन स्थायित्व का क्रम, और वही सहमति प्रमाण है। (2 गिनती आधी कर देता है मानो दो ऐल्कोहॉल एक पानी बाँटते हों — जो कम ताप पर ईथर बनाने वाली अभिक्रिया है, वस्तुतः भिन्न उत्पाद।)",
+        mr: "प्रति अल्कोहोल रेणू पाण्याचा एक रेणू: 4 × 1 = 4 mol. गणित सोपे आहे आणि गाभा त्यामागची यंत्रणा आहे. हायड्रॉक्साइड वाईट निघणारा गट आहे, म्हणून आम्लाचे पहिले काम ऑक्सिजनला प्रोटॉनित करून त्याचे पाणी बनवणे, जे चांगले आहे. मग पाणी निघून कार्बोकॅटायन देते, आणि शेजारचा हायड्रोजन गमावून द्विबंध बनतो. कार्बोकॅटायन खरोखर सामील असणे ही धारणा नाही: निर्जलीकरणाची सुलभता तृतीयक > द्वितीयक > प्राथमिक चालते, नेमका कार्बोकॅटायन स्थैर्याचा क्रम, आणि तीच सहमती पुरावा आहे. (2 मोजणी निम्मी करते जणू दोन अल्कोहोल एक पाणी वाटतात — जी कमी तापमानावर ईथर बनवणारी अभिक्रिया आहे, खरोखर वेगळे उत्पादन.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "Phenol has a pKa of 10.0 and picric acid, which carries three nitro groups on the same ring, has a pKa of 0.4. By how many pKa units is picric acid the stronger?",
+        hi: "फ़ीनॉल का pKa 10.0 है और पिक्रिक अम्ल का, जो उसी वलय पर तीन नाइट्रो समूह ढोता है, pKa 0.4 है। पिक्रिक अम्ल कितनी pKa इकाइयों से प्रबल है?",
+        mr: "फिनॉलचा pKa 10.0 आहे आणि पिक्रिक आम्लाचा, जे त्याच वलयावर तीन नायट्रो गट वाहते, pKa 0.4 आहे. पिक्रिक आम्ल किती pKa एककांनी तीव्र आहे?",
+      },
+      answer: 9.6,
+      wrong: [10.4, 4.8, 25],
+      checkExpr: "10.0-0.4",
+      solution: {
+        en: "10.0 − 0.4 = 9.6 units, which is a factor of about four billion in the ionisation constant, produced by three groups none of which touches the hydrogen that leaves. The argument is worth stating carefully, because it also tells you where those groups must sit. Acidity is decided by the stability of the anion, and the phenoxide ion is stabilised by putting its negative charge onto the ortho and para carbons of the ring. A nitro group is strongly electron-withdrawing, so placing one at exactly those positions takes charge away from where it has accumulated, stabilising the ion further. Position therefore matters as much as strength: 4-nitrophenol has pKa 7.2 while 3-nitrophenol, with the same group on the same ring, manages only 8.4, because the meta position is not one where the charge appears. Three groups at the two ortho positions and the para position give an acid stronger than acetic by four orders of magnitude — from substituents that never come near the O–H bond. (10.4 adds the two values instead of subtracting.)",
+        hi: "10.0 − 0.4 = 9.6 इकाइयाँ, जो आयनन स्थिरांक में लगभग चार अरब का गुणक है, और वह तीन ऐसे समूहों से पैदा हुआ जिनमें से कोई उस हाइड्रोजन को छूता तक नहीं जो जाता है। तर्क को ध्यान से कहना चाहिए, क्योंकि वह यह भी बताता है कि उन समूहों को कहाँ बैठना पड़ेगा। अम्लता ऋणायन की स्थिरता से तय होती है, और फ़ीनॉक्साइड आयन अपना ऋण आवेश वलय के ऑर्थो तथा पैरा कार्बनों पर रखकर स्थायी होता है। नाइट्रो समूह प्रबल इलेक्ट्रॉन-खींचक है, अतः ठीक उन्हीं स्थानों पर एक रखना आवेश को वहाँ से हटा देता है जहाँ वह जमा हुआ है, और आयन को और स्थायी करता है। अतः स्थान उतना ही मायने रखता है जितनी प्रबलता: 4-नाइट्रोफ़ीनॉल का pKa 7.2 है जबकि 3-नाइट्रोफ़ीनॉल, उसी वलय पर उसी समूह के साथ, केवल 8.4 तक पहुँचता है, क्योंकि मेटा वह स्थान नहीं जहाँ आवेश प्रकट होता है। दोनों ऑर्थो स्थानों और पैरा स्थान पर तीन समूह ऐसा अम्ल देते हैं जो ऐसीटिक से चार कोटि प्रबल है — ऐसे प्रतिस्थापियों से जो O–H बंध के पास कभी आते ही नहीं। (10.4 घटाने के बजाय दोनों मान जोड़ देता है।)",
+        mr: "10.0 − 0.4 = 9.6 एकके, जे आयनन स्थिरांकात सुमारे चार अब्जांचा गुणक आहे, आणि तो अशा तीन गटांतून निर्माण झाला ज्यांपैकी कोणीही निघणाऱ्या हायड्रोजनला स्पर्शही करत नाही. युक्तिवाद काळजीपूर्वक मांडण्याजोगा आहे, कारण तो हेही सांगतो की त्या गटांना कुठे बसावे लागेल. आम्लता ऋणायनाच्या स्थैर्याने ठरते, आणि फिनॉक्साइड आयन आपला ऋण प्रभार वलयाच्या ऑर्थो व पॅरा कार्बनांवर ठेवून स्थिर होतो. नायट्रो गट तीव्र इलेक्ट्रॉन-ओढक आहे, म्हणून नेमक्या त्याच जागी एक ठेवणे प्रभार तिथून काढून टाकते जिथे तो साठला आहे, आणि आयनाला आणखी स्थिर करते. म्हणून जागा तितकीच महत्त्वाची जितकी तीव्रता: 4-नायट्रोफिनॉलचा pKa 7.2 आहे तर 3-नायट्रोफिनॉल, त्याच वलयावर त्याच गटासह, केवळ 8.4 पर्यंत पोहोचतो, कारण मेटा ही ती जागा नाही जिथे प्रभार प्रकट होतो. दोन्ही ऑर्थो जागी आणि पॅरा जागी तीन गट असे आम्ल देतात जे अ‍ॅसिटिकहून चार कोटींनी तीव्र आहे — अशा प्रतिस्थापींतून जे O–H बंधाजवळ कधी येतच नाहीत. (10.4 वजा करण्याऐवजी दोन्ही मूल्ये जोडते.)",
+      },
+    },
+  ],
+  "chemistry-12-aldehydes-ketones-and-carboxylic-acids": [
+    {
+      level: 1,
+      stem: {
+        en: "How many hydrogen atoms are attached to the carbonyl carbon in a ketone?",
+        hi: "किसी कीटोन में कार्बोनिल कार्बन से कितने हाइड्रोजन परमाणु जुड़े हैं?",
+        mr: "एखाद्या कीटोनात कार्बोनिल कार्बनशी किती हायड्रोजन अणू जोडलेले आहेत?",
+      },
+      answer: 0,
+      wrong: [1, 2, 3],
+      checkExpr: "1-1",
+      solution: {
+        en: "None: 1 − 1 = 0, because both remaining bonds go to carbon atoms. An aldehyde has one hydrogen there and methanal has two, and that single difference is what the Tollens' and Fehling's tests detect — an aldehyde can be oxidised to an acid without breaking a carbon–carbon bond, and a ketone cannot. (1 gives the aldehyde's count.)",
+        hi: "कोई नहीं: 1 − 1 = 0, क्योंकि बचे दोनों बंध कार्बन परमाणुओं तक जाते हैं। ऐल्डिहाइड में वहाँ एक हाइड्रोजन है और मेथेनल में दो, और वही अकेला अंतर टॉलेन तथा फ़ेहलिंग परीक्षण पकड़ते हैं — ऐल्डिहाइड कार्बन–कार्बन बंध तोड़े बिना अम्ल तक ऑक्सीकृत हो सकता है, कीटोन नहीं। (1 ऐल्डिहाइड की गिनती देता है।)",
+        mr: "एकही नाही: 1 − 1 = 0, कारण उरलेले दोन्ही बंध कार्बन अणूंकडे जातात. अल्डिहाइडात तिथे एक हायड्रोजन आहे आणि मिथेनलात दोन, आणि तोच एक फरक टॉलेन व फेहलिंग चाचण्या पकडतात — अल्डिहाइड कार्बन–कार्बन बंध न तोडता आम्लापर्यंत उपचयित होऊ शकते, कीटोन नाही. (1 अल्डिहाइडची मोजणी देते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "How many oxygen atoms are there in one molecule of a carboxylic acid group?",
+        hi: "कार्बोक्सिलिक अम्ल समूह के एक अणु में कितने ऑक्सीजन परमाणु हैं?",
+        mr: "कार्बोक्झिलिक आम्ल गटाच्या एका रेणूत किती ऑक्सिजन अणू आहेत?",
+      },
+      answer: 2,
+      wrong: [1, 3, 4],
+      checkExpr: "1+1",
+      solution: {
+        en: "One doubly bonded and one carrying the hydrogen: 1 + 1 = 2. The presence of the second oxygen is the whole reason a carboxylic acid is about 10¹¹ times stronger an acid than an alcohol — when the hydrogen leaves, the charge is shared between the two oxygens instead of being stuck on one. (1 counts the hydroxyl oxygen alone.)",
+        hi: "एक द्विबंधित और एक हाइड्रोजन ढोता हुआ: 1 + 1 = 2. दूसरे ऑक्सीजन का होना ही पूरा कारण है कि कार्बोक्सिलिक अम्ल ऐल्कोहॉल से लगभग 10¹¹ गुना प्रबल अम्ल है — हाइड्रोजन के जाने पर आवेश एक पर अटकने के बजाय दोनों ऑक्सीजनों में बँट जाता है। (1 अकेला हाइड्रॉक्सिल ऑक्सीजन गिनता है।)",
+        mr: "एक द्विबंधित आणि एक हायड्रोजन वाहणारा: 1 + 1 = 2. दुसऱ्या ऑक्सिजनचे असणे हेच अख्खे कारण आहे की कार्बोक्झिलिक आम्ल अल्कोहोलहून सुमारे 10¹¹ पट तीव्र आम्ल आहे — हायड्रोजन गेल्यावर प्रभार एकावर अडकण्याऐवजी दोन्ही ऑक्सिजनांत वाटला जातो. (1 एकटा हायड्रॉक्सिल ऑक्सिजन मोजते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "The C–O bonds in a carboxylate ion measure 127 pm each, while the C=O of the acid is 123 pm and its C–OH is 136 pm. By how many pm do the acid's two bonds differ?",
+        hi: "कार्बोक्सिलेट आयन में C–O बंध प्रत्येक 127 pm नापते हैं, जबकि अम्ल का C=O 123 pm और उसका C–OH 136 pm है। अम्ल के दोनों बंधों में कितने pm का अंतर है?",
+        mr: "कार्बोक्झिलेट आयनातील C–O बंध प्रत्येकी 127 pm मोजतात, तर आम्लाचा C=O 123 pm आणि त्याचा C–OH 136 pm आहे. आम्लाच्या दोन बंधांत किती pm चा फरक आहे?",
+      },
+      answer: 13,
+      wrong: [259, 4, 9],
+      checkExpr: "136-123",
+      solution: {
+        en: "136 − 123 = 13 pm apart in the acid, and exactly zero apart in the ion, where both are 127 pm — a value lying between the two. That is the experimental proof that resonance is a real description and not a drawing convention: the ion is not flickering between two structures, it is one structure with a bond and a half on each side and the charge shared equally. (259 adds the two lengths.)",
+        hi: "अम्ल में 136 − 123 = 13 pm का अंतर, और आयन में ठीक शून्य, जहाँ दोनों 127 pm हैं — ऐसा मान जो दोनों के बीच पड़ता है। यही प्रायोगिक प्रमाण है कि अनुनाद असली वर्णन है, खींचने की परिपाटी नहीं: आयन दो संरचनाओं के बीच झिलमिला नहीं रहा, वह एक ही संरचना है जिसके दोनों ओर डेढ़-डेढ़ बंध है और आवेश बराबर बँटा है। (259 दोनों लंबाइयाँ जोड़ देता है।)",
+        mr: "आम्लात 136 − 123 = 13 pm चा फरक, आणि आयनात नेमका शून्य, जिथे दोन्ही 127 pm आहेत — असे मूल्य जे दोघांच्या मध्ये पडते. हाच प्रायोगिक पुरावा आहे की अनुनाद हे खरे वर्णन आहे, काढण्याची संकेतपद्धत नव्हे: आयन दोन रचनांमध्ये लुकलुकत नाही, तो एकच रचना आहे जिच्या दोन्ही बाजूंना दीड-दीड बंध आहे आणि प्रभार समान वाटलेला आहे. (259 दोन्ही लांबी जोडते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Acetic acid has a pKa of 4.76 and chloroacetic acid 2.86. By how many pKa units is the chlorinated acid stronger?",
+        hi: "ऐसीटिक अम्ल का pKa 4.76 है और क्लोरोऐसीटिक अम्ल का 2.86. क्लोरीनित अम्ल कितनी pKa इकाइयों से प्रबल है?",
+        mr: "अ‍ॅसिटिक आम्लाचा pKa 4.76 आहे आणि क्लोरोअ‍ॅसिटिक आम्लाचा 2.86. क्लोरिनयुक्त आम्ल किती pKa एककांनी तीव्र आहे?",
+      },
+      answer: 1.9,
+      wrong: [7.62, 2.9, 0.9],
+      checkExpr: "4.76-2.86",
+      solution: {
+        en: "4.76 − 2.86 = 1.9 units, a factor of about eighty in the ionisation constant from a single chlorine atom that is not even bonded to the hydrogen that leaves. Chlorine is electronegative and pulls electron density along the σ bonds towards itself, which helps the carboxylate ion carry its negative charge, and an anion whose charge is easier to hold is an anion more readily formed. (7.62 adds the two values.)",
+        hi: "4.76 − 2.86 = 1.9 इकाइयाँ, अकेले एक क्लोरीन परमाणु से आयनन स्थिरांक में क़रीब अस्सी का गुणक, और वह परमाणु उस हाइड्रोजन से बँधा तक नहीं जो जाता है। क्लोरीन विद्युत ऋणात्मक है और σ बंधों के अनुदिश इलेक्ट्रॉन घनत्व अपनी ओर खींचता है, जिससे कार्बोक्सिलेट आयन को अपना ऋण आवेश ढोने में मदद मिलती है, और जिस ऋणायन का आवेश थामना आसान है वह ऋणायन अधिक आसानी से बनता है। (7.62 दोनों मान जोड़ देता है।)",
+        mr: "4.76 − 2.86 = 1.9 एकके, एकट्या एका क्लोरीन अणूमुळे आयनन स्थिरांकात सुमारे ऐंशीचा गुणक, आणि तो अणू निघणाऱ्या हायड्रोजनशी बांधलेलाही नाही. क्लोरीन विद्युत ऋण आहे आणि σ बंधांच्या दिशेने इलेक्ट्रॉन घनता आपल्याकडे ओढते, ज्याने कार्बोक्झिलेट आयनाला आपला ऋण प्रभार वाहायला मदत होते, आणि ज्या ऋणायनाचा प्रभार धरणे सोपे तो ऋणायन अधिक सहज बनतो. (7.62 दोन्ही मूल्ये जोडते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "How many α-hydrogens does propanone have?",
+        hi: "प्रोपेनोन में कितने α-हाइड्रोजन हैं?",
+        mr: "प्रोपेनोनात किती α-हायड्रोजन आहेत?",
+      },
+      answer: 6,
+      wrong: [3, 2, 8],
+      checkExpr: "3*2",
+      solution: {
+        en: "Two methyl groups flank the carbonyl, and each carries three hydrogens: 3 × 2 = 6. Those are the hydrogens a base can remove, not because their carbon is special but because the anion left behind can place its charge on the carbonyl oxygen. They are the source of the aldol reaction and of the iodoform test, and a ketone with no α-hydrogen at all — benzophenone, for instance — does neither. (3 counts one methyl only.)",
+        hi: "कार्बोनिल के दोनों ओर दो मेथिल समूह हैं, और हर एक तीन हाइड्रोजन ढोता है: 3 × 2 = 6. वही हाइड्रोजन हैं जिन्हें क्षार हटा सकता है, इसलिए नहीं कि उनका कार्बन ख़ास है बल्कि इसलिए कि पीछे छूटा ऋणायन अपना आवेश कार्बोनिल ऑक्सीजन पर रख सकता है। वे ऐल्डॉल अभिक्रिया और आयोडोफ़ॉर्म परीक्षण का स्रोत हैं, और जिस कीटोन में कोई α-हाइड्रोजन नहीं — जैसे बेंज़ोफ़ीनोन — वह इनमें से कुछ नहीं करता। (3 केवल एक मेथिल गिनता है।)",
+        mr: "कार्बोनिलच्या दोन्ही बाजूंना दोन मिथिल गट आहेत, आणि प्रत्येक तीन हायड्रोजन वाहतो: 3 × 2 = 6. तेच हायड्रोजन आहेत जे क्षार काढू शकतो, यासाठी नव्हे की त्यांचा कार्बन खास आहे तर यासाठी की मागे उरलेला ऋणायन आपला प्रभार कार्बोनिल ऑक्सिजनवर ठेवू शकतो. ते अल्डॉल अभिक्रिया आणि आयोडोफॉर्म चाचणीचे स्रोत आहेत, आणि ज्या कीटोनात एकही α-हायड्रोजन नाही — उदाहरणार्थ बेंझोफिनोन — तो यांपैकी काहीही करत नाही. (3 केवळ एक मिथिल मोजते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "Acetic acid has molar mass 60 g/mol. How many moles are there in 30 g?",
+        hi: "ऐसीटिक अम्ल का मोलर द्रव्यमान 60 g/mol है। 30 g में कितने मोल हैं?",
+        mr: "अ‍ॅसिटिक आम्लाचे मोलर वस्तुमान 60 g/mol आहे. 30 g मध्ये किती मोल आहेत?",
+      },
+      answer: 0.5,
+      wrong: [2, 1800, 1],
+      checkExpr: "30/60",
+      solution: {
+        en: "30/60 = 0.5 mol. The molar mass assembles as two carbons at 12, four hydrogens at 1 and two oxygens at 16: 24 + 4 + 32 = 60. Both oxygens are needed in that sum, and both are needed in the chemistry too — it is the second one that lets the anion share its charge and makes this an acid rather than an alcohol. (2 inverts the division.)",
+        hi: "30/60 = 0.5 mol. मोलर द्रव्यमान ऐसे जुड़ता है: 12 वाले दो कार्बन, 1 वाले चार हाइड्रोजन और 16 वाले दो ऑक्सीजन: 24 + 4 + 32 = 60. उस जोड़ में दोनों ऑक्सीजन चाहिए, और रसायन में भी दोनों चाहिए — दूसरा ही ऋणायन को अपना आवेश बाँटने देता है और इसे ऐल्कोहॉल के बजाय अम्ल बनाता है। (2 भाग को उलट देता है।)",
+        mr: "30/60 = 0.5 mol. मोलर वस्तुमान असे जुळते: 12 चे दोन कार्बन, 1 चे चार हायड्रोजन आणि 16 चे दोन ऑक्सिजन: 24 + 4 + 32 = 60. त्या बेरजेत दोन्ही ऑक्सिजन लागतात, आणि रसायनातही दोन्ही लागतात — दुसराच ऋणायनाला आपला प्रभार वाटू देतो आणि याला अल्कोहोलऐवजी आम्ल बनवतो. (2 भागाकार उलटवते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "How many moles of carbon dioxide are released when 2 moles of acetic acid react completely with excess sodium bicarbonate?",
+        hi: "ऐसीटिक अम्ल के 2 मोल अधिक मात्रा में सोडियम बाइकार्बोनेट से पूरी तरह अभिक्रिया करने पर कार्बन डाइऑक्साइड के कितने मोल निकलते हैं?",
+        mr: "अ‍ॅसिटिक आम्लाचे 2 मोल जास्त प्रमाणात सोडियम बायकार्बोनेटशी पूर्णपणे अभिक्रिया करताना कार्बन डायऑक्साइडचे किती मोल निघतात?",
+      },
+      answer: 2,
+      wrong: [1, 4, 0.5],
+      checkExpr: "2*1",
+      solution: {
+        en: "One molecule of CO₂ per molecule of acid: 2 × 1 = 2 mol. The reaction is also a test worth understanding rather than memorising. Carboxylic acids release carbon dioxide from bicarbonate and phenols do not, even though both are acidic, because bicarbonate is a weak enough base to deprotonate an acid of pKa 4.76 and not one of pKa 10. So the fizz separates the two families — and sodium hydroxide, being stronger, would dissolve both and separate nothing. (1 halves the count for no reason the equation gives.)",
+        hi: "प्रति अम्ल अणु CO₂ का एक अणु: 2 × 1 = 2 mol. यह अभिक्रिया ऐसा परीक्षण भी है जिसे रटने के बजाय समझना चाहिए। कार्बोक्सिलिक अम्ल बाइकार्बोनेट से कार्बन डाइऑक्साइड छोड़ते हैं और फ़ीनॉल नहीं, यद्यपि दोनों अम्लीय हैं, क्योंकि बाइकार्बोनेट इतना ही दुर्बल क्षार है कि pKa 4.76 वाले अम्ल से प्रोटॉन ले ले और pKa 10 वाले से नहीं। अतः बुलबुले दोनों कुलों को अलग कर देते हैं — और सोडियम हाइड्रॉक्साइड, अधिक प्रबल होने के कारण, दोनों को घोल देता और कुछ अलग न करता। (1 गिनती आधी कर देता है, जिसका कोई कारण समीकरण नहीं देता।)",
+        mr: "प्रति आम्ल रेणू CO₂ चा एक रेणू: 2 × 1 = 2 mol. ही अभिक्रिया अशी चाचणीही आहे जी पाठ करण्याऐवजी समजून घ्यावी. कार्बोक्झिलिक आम्ले बायकार्बोनेटमधून कार्बन डायऑक्साइड सोडतात आणि फिनॉल नाहीत, जरी दोन्ही आम्लधर्मी असले तरी, कारण बायकार्बोनेट इतकेच दुर्बल क्षार आहे की pKa 4.76 च्या आम्लाकडून प्रोटॉन घ्यावा आणि pKa 10 च्याकडून नाही. म्हणून बुडबुडे दोन्ही कुळे वेगळी करतात — आणि सोडियम हायड्रॉक्साइड, अधिक तीव्र असल्याने, दोन्ही विरघळवेल आणि काहीही वेगळे करणार नाही. (1 मोजणी निम्मी करते, ज्याचे कोणतेही कारण समीकरण देत नाही.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "How many carbon atoms does the aldol product have when two molecules of ethanal combine?",
+        hi: "एथेनल के दो अणु मिलने पर बने ऐल्डॉल उत्पाद में कितने कार्बन परमाणु हैं?",
+        mr: "इथेनलचे दोन रेणू एकत्र येताना बनलेल्या अल्डॉल उत्पादनात किती कार्बन अणू आहेत?",
+      },
+      answer: 4,
+      wrong: [2, 3, 6],
+      checkExpr: "2*2",
+      solution: {
+        en: "Ethanal has two carbons and nothing is lost when the two molecules join: 2 × 2 = 4, giving 3-hydroxybutanal. The reaction needs an α-hydrogen — a base removes one to make a carbanion, and that carbanion attacks the carbonyl carbon of a second molecule. So a compound with no α-hydrogen, such as methanal or benzaldehyde, cannot do this at all, which is exactly the distinction the reaction is used to draw. (2 counts one molecule only.)",
+        hi: "एथेनल में दो कार्बन हैं और दोनों अणुओं के जुड़ने पर कुछ खोता नहीं: 2 × 2 = 4, जो 3-हाइड्रॉक्सीब्यूटेनल देता है। अभिक्रिया को α-हाइड्रोजन चाहिए — क्षार एक हटाकर कार्बऋणायन बनाता है, और वह कार्बऋणायन दूसरे अणु के कार्बोनिल कार्बन पर हमला करता है। अतः जिस यौगिक में कोई α-हाइड्रोजन नहीं, जैसे मेथेनल या बेंज़ैल्डिहाइड, वह यह कर ही नहीं सकता, और ठीक यही भेद खींचने को अभिक्रिया काम में ली जाती है। (2 केवल एक अणु गिनता है।)",
+        mr: "इथेनलात दोन कार्बन आहेत आणि दोन्ही रेणू जोडताना काहीही हरवत नाही: 2 × 2 = 4, जे 3-हायड्रॉक्सीब्युटॅनल देते. अभिक्रियेला α-हायड्रोजन लागतो — क्षार एक काढून कार्बऋणायन बनवतो, आणि तो कार्बऋणायन दुसऱ्या रेणूच्या कार्बोनिल कार्बनवर हल्ला करतो. म्हणून ज्या संयुगात एकही α-हायड्रोजन नाही, जसे मिथेनल वा बेंझाल्डिहाइड, ते हे करूच शकत नाही, आणि नेमका हाच भेद काढायला अभिक्रिया वापरली जाते. (2 केवळ एक रेणू मोजते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "Trichloroacetic acid has a pKa of 0.66 and acetic acid 4.76. By how many pKa units do the three chlorines strengthen the acid?",
+        hi: "ट्राइक्लोरोऐसीटिक अम्ल का pKa 0.66 है और ऐसीटिक अम्ल का 4.76. तीन क्लोरीन अम्ल को कितनी pKa इकाइयों से प्रबल करते हैं?",
+        mr: "ट्रायक्लोरोअ‍ॅसिटिक आम्लाचा pKa 0.66 आहे आणि अ‍ॅसिटिक आम्लाचा 4.76. तीन क्लोरीन आम्लाला किती pKa एककांनी तीव्र करतात?",
+      },
+      answer: 4.1,
+      wrong: [5.42, 1.9, 3.1],
+      checkExpr: "4.76-0.66",
+      solution: {
+        en: "4.76 − 0.66 = 4.1 units, a factor of more than ten thousand, and the result is an acid stronger than phosphoric — built from three atoms none of which is bonded to the hydrogen that ionises. Compare the single chlorine, which was worth 1.9 units: inductive effects add roughly, though not exactly, since each additional chlorine acts on a carbon already drained by the others. The crucial companion observation is what happens when the chlorine is moved away: 4-chlorobutanoic acid has pKa 4.52 against acetic acid's 4.76, so three bonds' distance has all but erased the effect. That steep fall with distance is what identifies the effect as inductive, transmitted through σ bonds, rather than resonance, which carries charge to a distant conjugated position without weakening in the same way. (5.42 adds the two values.)",
+        hi: "4.76 − 0.66 = 4.1 इकाइयाँ, दस हज़ार से अधिक का गुणक, और परिणाम फ़ॉस्फ़ोरिक से प्रबल अम्ल — तीन ऐसे परमाणुओं से बना जिनमें से कोई उस हाइड्रोजन से बँधा नहीं जो आयनित होता है। अकेले क्लोरीन से तुलना करो, जो 1.9 इकाइयों का था: प्रेरणिक प्रभाव मोटे तौर पर जुड़ते हैं, यद्यपि ठीक-ठीक नहीं, क्योंकि हर अतिरिक्त क्लोरीन ऐसे कार्बन पर काम करता है जिसे बाक़ी पहले ही निचोड़ चुके हैं। निर्णायक साथी प्रेक्षण यह कि क्लोरीन को दूर हटाने पर क्या होता है: 4-क्लोरोब्यूटेनोइक अम्ल का pKa 4.52 है बनिस्बत ऐसीटिक अम्ल के 4.76 के, अतः तीन बंध की दूरी ने प्रभाव लगभग मिटा दिया। दूरी के साथ वह तीखी गिरावट ही प्रभाव को प्रेरणिक पहचानती है, σ बंधों से संचारित, न कि अनुनाद, जो आवेश को दूर की संयुग्मित जगह तक उसी तरह दुर्बल हुए बिना ले जाता है। (5.42 दोनों मान जोड़ देता है।)",
+        mr: "4.76 − 0.66 = 4.1 एकके, दहा हजारांहून अधिकचा गुणक, आणि निकाल फॉस्फोरिकहून तीव्र आम्ल — अशा तीन अणूंतून बनलेले ज्यांपैकी कोणीही आयनित होणाऱ्या हायड्रोजनशी बांधलेला नाही. एकट्या क्लोरीनशी तुलना करा, जो 1.9 एककांचा होता: प्रेरणिक परिणाम ढोबळपणे जमतात, जरी नेमके नाही, कारण प्रत्येक अतिरिक्त क्लोरीन अशा कार्बनवर काम करते ज्याला बाकीच्यांनी आधीच पिळून काढले आहे. निर्णायक सोबतीचे निरीक्षण म्हणजे क्लोरीन दूर हलवल्यावर काय होते: 4-क्लोरोब्युटॅनोइक आम्लाचा pKa 4.52 आहे अ‍ॅसिटिक आम्लाच्या 4.76 च्या तुलनेत, म्हणून तीन बंधांच्या अंतराने परिणाम जवळपास पुसून टाकला. अंतरासोबतची ती तीव्र घसरणच परिणामाला प्रेरणिक ओळखते, σ बंधांतून संक्रमित, अनुनाद नव्हे, जो प्रभार दूरच्या संयुग्मित जागेपर्यंत त्याच प्रकारे दुर्बल न होता नेतो. (5.42 दोन्ही मूल्ये जोडते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "In the iodoform test a methyl ketone is treated with iodine and alkali. How many iodine atoms end up in one molecule of the yellow product?",
+        hi: "आयोडोफ़ॉर्म परीक्षण में मेथिल कीटोन को आयोडीन तथा क्षार से उपचारित किया जाता है। पीले उत्पाद के एक अणु में कितने आयोडीन परमाणु पहुँचते हैं?",
+        mr: "आयोडोफॉर्म चाचणीत मिथिल कीटोनवर आयोडीन आणि क्षाराने उपचार केला जातो. पिवळ्या उत्पादनाच्या एका रेणूत किती आयोडीन अणू पोहोचतात?",
+      },
+      answer: 3,
+      wrong: [1, 2, 4],
+      checkExpr: "1*3",
+      solution: {
+        en: "Three, one for each hydrogen of the methyl group: 1 × 3 = 3, giving CHI₃, which separates as a yellow solid with a characteristic smell. The mechanism is a good demonstration of how one structural feature produces a specific test. The methyl group next to the carbonyl carries three α-hydrogens, each acidic for the same reason — the anion left when one is removed can place its charge on the carbonyl oxygen. Base removes them one at a time and iodine replaces each, and every substitution makes the next easier, because the iodines already present withdraw electron density and stabilise the next anion. Once all three are in place, the CI₃ group is a good enough leaving group for hydroxide to attack the carbonyl and split the molecule, giving iodoform and a carboxylate. The test is therefore positive for methyl ketones and for ethanal, and also for alcohols that oxidise to those under the conditions — but never for a ketone whose carbonyl has no methyl beside it, however many α-hydrogens it has elsewhere. A test that seems to be about a colour is really about counting hydrogens in one position. (1 counts a single substitution.)",
+        hi: "तीन, मेथिल समूह के हर हाइड्रोजन के लिए एक: 1 × 3 = 3, जो CHI₃ देता है, जो विशिष्ट गंध वाले पीले ठोस के रूप में अलग हो जाता है। क्रियाविधि इसका अच्छा प्रदर्शन है कि एक संरचनात्मक लक्षण कैसे विशिष्ट परीक्षण पैदा करता है। कार्बोनिल के बग़ल का मेथिल समूह तीन α-हाइड्रोजन ढोता है, हर एक उसी कारण से अम्लीय — किसी एक के हटने पर बचा ऋणायन अपना आवेश कार्बोनिल ऑक्सीजन पर रख सकता है। क्षार उन्हें एक-एक कर हटाता है और आयोडीन हर एक की जगह लेता है, और हर प्रतिस्थापन अगले को आसान बनाता है, क्योंकि पहले से लगे आयोडीन इलेक्ट्रॉन घनत्व खींचते हैं और अगले ऋणायन को स्थायी करते हैं। तीनों के लग जाने पर CI₃ समूह इतना अच्छा प्रस्थायी समूह है कि हाइड्रॉक्साइड कार्बोनिल पर हमला कर अणु को तोड़ दे, और आयोडोफ़ॉर्म तथा कार्बोक्सिलेट दे। अतः परीक्षण मेथिल कीटोनों और एथेनल के लिए धनात्मक है, और उन ऐल्कोहॉलों के लिए भी जो उन्हीं परिस्थितियों में उन तक ऑक्सीकृत हो जाएँ — पर ऐसे कीटोन के लिए कभी नहीं जिसके कार्बोनिल के बग़ल कोई मेथिल न हो, चाहे उसके पास और कहीं कितने भी α-हाइड्रोजन हों। जो परीक्षण रंग के बारे में लगता है, वह असल में एक स्थान पर हाइड्रोजन गिनने के बारे में है। (1 एक ही प्रतिस्थापन गिनता है।)",
+        mr: "तीन, मिथिल गटाच्या प्रत्येक हायड्रोजनसाठी एक: 1 × 3 = 3, जे CHI₃ देते, जे वैशिष्ट्यपूर्ण वासाच्या पिवळ्या घनरूपात वेगळे होते. यंत्रणा हे चांगले दाखवते की एक संरचनात्मक लक्षण विशिष्ट चाचणी कशी निर्माण करते. कार्बोनिलशेजारचा मिथिल गट तीन α-हायड्रोजन वाहतो, प्रत्येक त्याच कारणाने आम्लधर्मी — एक काढल्यावर उरलेला ऋणायन आपला प्रभार कार्बोनिल ऑक्सिजनवर ठेवू शकतो. क्षार त्यांना एकेक करून काढतो आणि आयोडीन प्रत्येकाची जागा घेते, आणि प्रत्येक प्रतिस्थापन पुढचे सोपे करते, कारण आधीच लागलेली आयोडीने इलेक्ट्रॉन घनता ओढतात आणि पुढचा ऋणायन स्थिर करतात. तिन्ही लागल्यावर CI₃ गट इतका चांगला निघणारा गट आहे की हायड्रॉक्साइडने कार्बोनिलवर हल्ला करून रेणू फोडावा, आणि आयोडोफॉर्म व कार्बोक्झिलेट द्यावे. म्हणून चाचणी मिथिल कीटोनांसाठी आणि इथेनलसाठी धन आहे, आणि त्या अल्कोहोलांसाठीही जी त्याच परिस्थितीत त्यांच्यापर्यंत उपचयित होतात — पण अशा कीटोनसाठी कधीच नाही ज्याच्या कार्बोनिलशेजारी मिथिल नाही, त्याच्याकडे इतरत्र कितीही α-हायड्रोजन असोत. जी चाचणी रंगाबद्दल वाटते, ती प्रत्यक्षात एका जागी हायड्रोजन मोजण्याबद्दल आहे. (1 एकच प्रतिस्थापन मोजते.)",
       },
     },
   ],

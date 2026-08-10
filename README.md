@@ -2514,8 +2514,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 356
-  chapters / 6,366 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 358
+  chapters / 6,422 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2880,6 +2880,40 @@ navigation" means the actual list rather than one somebody maintained by hand.
   nucleophile forms, meta ones barely help, and three of them let plain
   warm water do the job — which is how picric acid is made. Verify clean,
   warnings steady at 34, suite green: 87 files, 1485 tests.
+
+  **Two more Chemistry chapters** — 56 questions: Alcohols, Phenols and
+  Ethers, and Aldehydes, Ketones and Carboxylic Acids. The first chapter is
+  one functional group put in two places and behaving unrecognisably: on a
+  chain it is barely acidic, on a ring it turns litmus, and the L5 is that
+  six-pKa gap. The move worth learning is to stop asking about the acid and
+  ask about its conjugate base — ethoxide has its charge stuck on one
+  oxygen while phenoxide spreads it over the ring, and once that is the
+  explanation it predicts *where* a substituent must sit: nitro groups
+  ortho and para take phenol's pKa from 10.0 to 0.4, while a meta one
+  barely moves it, because the charge never appears there. The same
+  delocalisation shortens the C–O bond by 7 pm and makes the hydroxyl group
+  hard to displace — one cause, two effects that look opposite. The L6 puts
+  ethanol against dimethyl ether: identical atoms, 103 K apart, because a
+  boiling point measures forces BETWEEN molecules and an ether can accept a
+  hydrogen bond but not donate one. The clincher is that the ether is still
+  appreciably water-soluble, which proves its problem was never an
+  inability to hydrogen-bond. The carbonyl chapter is about a carbon left
+  hungry by an oxygen that pulled the π electrons across, and the reactions
+  are therefore additions rather than substitutions. The L5 walks methanal
+  → ethanal → propanone → a di-tert-butyl ketone and shows two causes
+  running the same way, electronic and steric — and then makes the real
+  point, which is that the order survives a change of reagent, because both
+  causes are properties of the substrate. That invariance is the evidence.
+  The L6 reads five pKa values across sixteen orders of magnitude with one
+  argument: carboxylate's two C–O bonds both measure 127 pm where the
+  acid's differ by 13 pm, which is resonance shown rather than asserted;
+  chlorines then add inductively; and the member that breaks the pattern —
+  a chlorine three bonds away doing almost nothing — is the one carrying
+  the information, since that steep fall with distance is exactly what
+  distinguishes induction from resonance. One authoring correction: a fact
+  was drafted with a `seq` field, which the engine reserves for chronology
+  in history chapters, not step lists — rewritten as a `pair`. Verify
+  clean, warnings steady at 34, suite green: 87 files, 1485 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)
