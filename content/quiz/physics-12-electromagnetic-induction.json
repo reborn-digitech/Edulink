@@ -1,0 +1,1003 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 12,
+  "chapter": "Chapter 6 — Electromagnetic Induction",
+  "name": "Electromagnetic Induction",
+  "slug": "physics-12-electromagnetic-induction",
+  "summary": "The discovery that the traffic runs both ways: a current had already been shown to make a magnetic field, and here a magnetic field that CHANGES makes a current. What matters is the rate of change and not the size of the field, so a strong steady field does nothing at all while a weak one being swept past a coil does plenty; the direction of the induced current is fixed by the requirement that it oppose whatever produced it, which is energy conservation rather than a rule of thumb; a circuit turns out to induce a voltage in itself when its own current changes; and the same effect that runs every generator in the world also shows up as unwanted heat in a lump of metal near a changing field.",
+  "position": 6,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "वैद्युतचुंबकीय प्रेरण",
+      "summary": "यह खोज कि यातायात दोनों दिशाओं में चलता है: धारा से चुंबकीय क्षेत्र बनना पहले ही दिखाया जा चुका था, और यहाँ बदलता हुआ चुंबकीय क्षेत्र धारा बनाता है। मायने परिवर्तन की दर रखती है, क्षेत्र का आकार नहीं, अतः प्रबल स्थिर क्षेत्र कुछ भी नहीं करता जबकि कुंडली के पास से गुज़ारा जाता कमज़ोर क्षेत्र बहुत कुछ करता है; प्रेरित धारा की दिशा इस माँग से तय होती है कि वह उसी का विरोध करे जिसने उसे बनाया, और यह अटकल का नियम नहीं बल्कि ऊर्जा संरक्षण है; कोई परिपथ अपनी ही धारा बदलने पर अपने भीतर वोल्टता प्रेरित करता निकलता है; और वही प्रभाव जो दुनिया का हर जनित्र चलाता है, बदलते क्षेत्र के पास पड़ी धातु के टुकड़े में अनचाही ऊष्मा बनकर भी प्रकट होता है।"
+    },
+    "mr": {
+      "name": "विद्युतचुंबकीय प्रेरण",
+      "summary": "हा शोध की वाहतूक दोन्ही दिशांनी चालते: धारेपासून चुंबकीय क्षेत्र बनते हे आधीच दाखवले गेले होते, आणि इथे बदलणारे चुंबकीय क्षेत्र धारा बनवते. महत्त्वाची असते बदलाची गती, क्षेत्राचा आकार नव्हे, म्हणून तीव्र स्थिर क्षेत्र काहीच करत नाही तर वेटोळ्याजवळून सरकवलेले क्षीण क्षेत्र बरेच काही करते; प्रेरित धारेची दिशा या मागणीने ठरते की तिने ज्याने तिला घडवले त्याचाच विरोध करावा, आणि हा अंदाजाचा नियम नसून ऊर्जा संधारण आहे; एखादा परिपथ स्वतःची धारा बदलल्यावर स्वतःतच व्होल्टेज प्रेरित करतो असे निघते; आणि तोच परिणाम जो जगातले प्रत्येक जनित्र चालवतो, बदलत्या क्षेत्राजवळ पडलेल्या धातूच्या तुकड्यात नकोशी उष्णता बनूनही प्रकट होतो."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "The quantity that counts how much field passes through a loop, which can be changed by altering the field, by altering the loop's area, or by simply turning the loop without touching either. What is it?",
+      "choices": [
+        "Eddy currents",
+        "Magnetic flux",
+        "Motional e.m.f.",
+        "Self-inductance"
+      ],
+      "answerIndex": 1,
+      "solution": "Magnetic flux is Φ = BA cos θ, the product of the field, the area and the cosine of the angle between the field and the normal to the surface, and it is measured in webers. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "वह राशि जो गिनती है कि किसी लूप में से कितना क्षेत्र गुज़रता है, और जिसे क्षेत्र बदलकर, लूप का क्षेत्रफल बदलकर, या दोनों को छुए बिना बस लूप घुमाकर बदला जा सकता है। यह क्या है?",
+          "choices": [
+            "भँवर धाराएँ",
+            "चुंबकीय फ्लक्स",
+            "गतिक विद्युत वाहक बल",
+            "स्वप्रेरकत्व"
+          ],
+          "solution": "चुंबकीय फ्लक्स Φ = BA cos θ है, अर्थात् क्षेत्र, क्षेत्रफल और क्षेत्र तथा पृष्ठ के अभिलंब के बीच के कोण की कोज्या का गुणनफल, और वह वेबर में नापा जाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "ती राशी जी मोजते की एखाद्या वळशातून किती क्षेत्र जाते, आणि जी क्षेत्र बदलून, वळशाचे क्षेत्रफळ बदलून, वा दोन्हींना स्पर्श न करता फक्त वळसा फिरवून बदलता येते. ती काय आहे?",
+          "choices": [
+            "भोवरा धारा",
+            "चुंबकीय फ्लक्स",
+            "गतिक विद्युतचालक बल",
+            "स्वयंप्रेरकत्व"
+          ],
+          "solution": "चुंबकीय फ्लक्स म्हणजे Φ = BA cos θ, म्हणजे क्षेत्र, क्षेत्रफळ आणि क्षेत्र व पृष्ठाचा लंब यांतील कोनाचा कोसाइन यांचा गुणाकार, आणि तो वेबरमध्ये मोजला जातो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Self-inductance is correct?",
+      "choices": [
+        "Lenz's law says the induced current always flows in the direction that opposes the change producing it, which is what the minus sign in Faraday's law stands for.",
+        "Eddy currents are circulating currents induced within the body of a conductor by a changing flux, dissipating energy as heat and producing a force that opposes the relative motion.",
+        "Magnetic flux is Φ = BA cos θ, the product of the field, the area and the cosine of the angle between the field and the normal to the surface, and it is measured in webers.",
+        "Self-inductance L is the flux linkage per unit current, and it makes a coil produce a back-e.m.f. of −L dI/dt whenever its own current changes."
+      ],
+      "answerIndex": 3,
+      "solution": "Self-inductance L is the flux linkage per unit current, and it makes a coil produce a back-e.m.f. of −L dI/dt whenever its own current changes. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "स्वप्रेरकत्व के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "लेंज़ का नियम कहता है कि प्रेरित धारा सदा उस दिशा में बहती है जो उसे पैदा करने वाले परिवर्तन का विरोध करे, और फैराडे के नियम का ऋण चिह्न यही दर्शाता है।",
+            "भँवर धाराएँ वे परिक्रमा करती धाराएँ हैं जो बदलते फ्लक्स से चालक के पिंड के भीतर प्रेरित होती हैं, ऊर्जा को ऊष्मा के रूप में खपाती हैं और ऐसा बल बनाती हैं जो सापेक्ष गति का विरोध करता है।",
+            "चुंबकीय फ्लक्स Φ = BA cos θ है, अर्थात् क्षेत्र, क्षेत्रफल और क्षेत्र तथा पृष्ठ के अभिलंब के बीच के कोण की कोज्या का गुणनफल, और वह वेबर में नापा जाता है।",
+            "स्वप्रेरकत्व L प्रति एकांक धारा फ्लक्स-बंधन है, और वह कुंडली से −L dI/dt का प्रति-विद्युत वाहक बल पैदा करवाता है जब भी उसकी अपनी धारा बदले।"
+          ],
+          "solution": "स्वप्रेरकत्व L प्रति एकांक धारा फ्लक्स-बंधन है, और वह कुंडली से −L dI/dt का प्रति-विद्युत वाहक बल पैदा करवाता है जब भी उसकी अपनी धारा बदले। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "स्वयंप्रेरकत्व विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "लेंझचा नियम सांगतो की प्रेरित धारा नेहमी त्या दिशेने वाहते जी तिला घडवणाऱ्या बदलाला विरोध करते, आणि फॅरेडेच्या नियमातले ऋण चिन्ह हेच दर्शवते.",
+            "भोवरा धारा म्हणजे बदलत्या फ्लक्सने वाहकाच्या शरीरात प्रेरित होणाऱ्या फिरत्या धारा, ज्या ऊर्जा उष्णतेच्या रूपात खर्चतात आणि सापेक्ष गतीला विरोध करणारे बल निर्माण करतात.",
+            "चुंबकीय फ्लक्स म्हणजे Φ = BA cos θ, म्हणजे क्षेत्र, क्षेत्रफळ आणि क्षेत्र व पृष्ठाचा लंब यांतील कोनाचा कोसाइन यांचा गुणाकार, आणि तो वेबरमध्ये मोजला जातो.",
+            "स्वयंप्रेरकत्व L म्हणजे प्रति एकक धारा फ्लक्स-बंधन, आणि ते वेटोळ्याकडून −L dI/dt इतके प्रति-विद्युतचालक बल निर्माण करवते जेव्हा जेव्हा त्याची स्वतःची धारा बदलेल."
+          ],
+          "solution": "स्वयंप्रेरकत्व L म्हणजे प्रति एकक धारा फ्लक्स-बंधन, आणि ते वेटोळ्याकडून −L dI/dt इतके प्रति-विद्युतचालक बल निर्माण करवते जेव्हा जेव्हा त्याची स्वतःची धारा बदलेल. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"They are a nuisance in a transformer core and the whole point in an induction hob, so the same physics is engineered out of one device and engineered into the next.\" — which of these is this about?",
+      "choices": [
+        "Lenz's law",
+        "Magnetic flux",
+        "Eddy currents",
+        "Self-inductance"
+      ],
+      "answerIndex": 2,
+      "solution": "Eddy currents are circulating currents induced within the body of a conductor by a changing flux, dissipating energy as heat and producing a force that opposes the relative motion. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ट्रांसफ़ॉर्मर की क्रोड में वे उपद्रव हैं और प्रेरण चूल्हे में वही सारा मक़सद, अतः वही भौतिकी एक युक्ति से निकाली जाती है और अगली में डाली जाती है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "लेंज़ का नियम",
+            "चुंबकीय फ्लक्स",
+            "भँवर धाराएँ",
+            "स्वप्रेरकत्व"
+          ],
+          "solution": "भँवर धाराएँ वे परिक्रमा करती धाराएँ हैं जो बदलते फ्लक्स से चालक के पिंड के भीतर प्रेरित होती हैं, ऊर्जा को ऊष्मा के रूप में खपाती हैं और ऐसा बल बनाती हैं जो सापेक्ष गति का विरोध करता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ट्रान्सफॉर्मरच्या गाभ्यात त्या उपद्रव आहेत आणि प्रेरण शेगडीत तोच सगळा हेतू, म्हणून तीच भौतिकी एका साधनातून काढली जाते आणि पुढच्यात घातली जाते.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "लेंझचा नियम",
+            "चुंबकीय फ्लक्स",
+            "भोवरा धारा",
+            "स्वयंप्रेरकत्व"
+          ],
+          "solution": "भोवरा धारा म्हणजे बदलत्या फ्लक्सने वाहकाच्या शरीरात प्रेरित होणाऱ्या फिरत्या धारा, ज्या ऊर्जा उष्णतेच्या रूपात खर्चतात आणि सापेक्ष गतीला विरोध करणारे बल निर्माण करतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A magnet held motionless inside a coil, however powerful, produces nothing; the same magnet moved produces a voltage, and moving it faster produces more. Which law says exactly this?",
+      "choices": [
+        "Motional e.m.f.",
+        "Faraday's law of induction",
+        "Self-inductance",
+        "Lenz's law"
+      ],
+      "answerIndex": 1,
+      "solution": "Faraday's law of induction states that the induced e.m.f. equals the negative rate of change of magnetic flux, ε = −dΦ/dt, so it is the rate and not the amount of flux that matters. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कुंडली के भीतर निश्चल पकड़ा चुंबक, चाहे कितना ही शक्तिशाली हो, कुछ नहीं देता; वही चुंबक हिलाने पर वोल्टता देता है, और तेज़ हिलाने पर अधिक। यह ठीक-ठीक कौन-सा नियम कहता है?",
+          "choices": [
+            "गतिक विद्युत वाहक बल",
+            "फैराडे का प्रेरण नियम",
+            "स्वप्रेरकत्व",
+            "लेंज़ का नियम"
+          ],
+          "solution": "फैराडे का प्रेरण नियम कहता है कि प्रेरित विद्युत वाहक बल चुंबकीय फ्लक्स के परिवर्तन की ऋणात्मक दर के बराबर है, ε = −dΦ/dt, अतः मायने दर रखती है, फ्लक्स की मात्रा नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "वेटोळ्याच्या आत निश्चल धरलेला चुंबक, कितीही शक्तिशाली असो, काहीच देत नाही; तोच चुंबक हलवल्यावर व्होल्टेज देतो, आणि जोरात हलवल्यावर अधिक. हे नेमके कोणता नियम सांगतो?",
+          "choices": [
+            "गतिक विद्युतचालक बल",
+            "फॅरेडेचा प्रेरण नियम",
+            "स्वयंप्रेरकत्व",
+            "लेंझचा नियम"
+          ],
+          "solution": "फॅरेडेचा प्रेरण नियम सांगतो की प्रेरित विद्युतचालक बल हे चुंबकीय फ्लक्सच्या बदलाच्या ऋण गतीइतके आहे, ε = −dΦ/dt, म्हणून महत्त्वाची असते गती, फ्लक्सचे प्रमाण नव्हे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Lenz's law is correct?",
+      "choices": [
+        "Faraday's law of induction states that the induced e.m.f. equals the negative rate of change of magnetic flux, ε = −dΦ/dt, so it is the rate and not the amount of flux that matters.",
+        "Motional e.m.f. is the voltage ε = Blv induced across a conductor of length l moving with speed v perpendicular to a field B, and it arises from the magnetic force on the charges the conductor carries with it.",
+        "Magnetic flux is Φ = BA cos θ, the product of the field, the area and the cosine of the angle between the field and the normal to the surface, and it is measured in webers.",
+        "Lenz's law says the induced current always flows in the direction that opposes the change producing it, which is what the minus sign in Faraday's law stands for."
+      ],
+      "answerIndex": 3,
+      "solution": "Lenz's law says the induced current always flows in the direction that opposes the change producing it, which is what the minus sign in Faraday's law stands for. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "लेंज़ का नियम के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "फैराडे का प्रेरण नियम कहता है कि प्रेरित विद्युत वाहक बल चुंबकीय फ्लक्स के परिवर्तन की ऋणात्मक दर के बराबर है, ε = −dΦ/dt, अतः मायने दर रखती है, फ्लक्स की मात्रा नहीं।",
+            "गतिक विद्युत वाहक बल वह वोल्टता ε = Blv है जो क्षेत्र B के लंबवत v चाल से चलती l लंबाई की चालक छड़ के आर-पार प्रेरित होती है, और वह उन आवेशों पर लगे चुंबकीय बल से उठती है जिन्हें चालक अपने साथ ले जाता है।",
+            "चुंबकीय फ्लक्स Φ = BA cos θ है, अर्थात् क्षेत्र, क्षेत्रफल और क्षेत्र तथा पृष्ठ के अभिलंब के बीच के कोण की कोज्या का गुणनफल, और वह वेबर में नापा जाता है।",
+            "लेंज़ का नियम कहता है कि प्रेरित धारा सदा उस दिशा में बहती है जो उसे पैदा करने वाले परिवर्तन का विरोध करे, और फैराडे के नियम का ऋण चिह्न यही दर्शाता है।"
+          ],
+          "solution": "लेंज़ का नियम कहता है कि प्रेरित धारा सदा उस दिशा में बहती है जो उसे पैदा करने वाले परिवर्तन का विरोध करे, और फैराडे के नियम का ऋण चिह्न यही दर्शाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "लेंझचा नियम विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "फॅरेडेचा प्रेरण नियम सांगतो की प्रेरित विद्युतचालक बल हे चुंबकीय फ्लक्सच्या बदलाच्या ऋण गतीइतके आहे, ε = −dΦ/dt, म्हणून महत्त्वाची असते गती, फ्लक्सचे प्रमाण नव्हे.",
+            "गतिक विद्युतचालक बल म्हणजे तो व्होल्टेज ε = Blv जो क्षेत्र B ला लंब v वेगाने जाणाऱ्या l लांबीच्या वाहकाच्या आरपार प्रेरित होतो, आणि तो वाहक स्वतःसोबत नेत असलेल्या प्रभारांवरील चुंबकीय बलातून उद्भवतो.",
+            "चुंबकीय फ्लक्स म्हणजे Φ = BA cos θ, म्हणजे क्षेत्र, क्षेत्रफळ आणि क्षेत्र व पृष्ठाचा लंब यांतील कोनाचा कोसाइन यांचा गुणाकार, आणि तो वेबरमध्ये मोजला जातो.",
+            "लेंझचा नियम सांगतो की प्रेरित धारा नेहमी त्या दिशेने वाहते जी तिला घडवणाऱ्या बदलाला विरोध करते, आणि फॅरेडेच्या नियमातले ऋण चिन्ह हेच दर्शवते."
+          ],
+          "solution": "लेंझचा नियम सांगतो की प्रेरित धारा नेहमी त्या दिशेने वाहते जी तिला घडवणाऱ्या बदलाला विरोध करते, आणि फॅरेडेच्या नियमातले ऋण चिन्ह हेच दर्शवते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It is the one case where the flux rule and the Lorentz force can be checked against each other, and their agreement is what makes induction one phenomenon rather than two coincidences.\" — which of these is this about?",
+      "choices": [
+        "Faraday's law of induction",
+        "Lenz's law",
+        "Motional e.m.f.",
+        "Self-inductance"
+      ],
+      "answerIndex": 2,
+      "solution": "Motional e.m.f. is the voltage ε = Blv induced across a conductor of length l moving with speed v perpendicular to a field B, and it arises from the magnetic force on the charges the conductor carries with it. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"यही वह एक स्थिति है जहाँ फ्लक्स नियम और लॉरेंज़ बल को आपस में जाँचा जा सकता है, और उनका मिलना ही प्रेरण को दो संयोगों के बजाय एक परिघटना बनाता है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "फैराडे का प्रेरण नियम",
+            "लेंज़ का नियम",
+            "गतिक विद्युत वाहक बल",
+            "स्वप्रेरकत्व"
+          ],
+          "solution": "गतिक विद्युत वाहक बल वह वोल्टता ε = Blv है जो क्षेत्र B के लंबवत v चाल से चलती l लंबाई की चालक छड़ के आर-पार प्रेरित होती है, और वह उन आवेशों पर लगे चुंबकीय बल से उठती है जिन्हें चालक अपने साथ ले जाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"हीच ती एक स्थिती जिथे फ्लक्स नियम आणि लॉरेन्ट्झ बल एकमेकांशी तपासता येतात, आणि त्यांचे जुळणेच प्रेरणाला दोन योगायोगांऐवजी एक घटना बनवते.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "फॅरेडेचा प्रेरण नियम",
+            "लेंझचा नियम",
+            "गतिक विद्युतचालक बल",
+            "स्वयंप्रेरकत्व"
+          ],
+          "solution": "गतिक विद्युतचालक बल म्हणजे तो व्होल्टेज ε = Blv जो क्षेत्र B ला लंब v वेगाने जाणाऱ्या l लांबीच्या वाहकाच्या आरपार प्रेरित होतो, आणि तो वाहक स्वतःसोबत नेत असलेल्या प्रभारांवरील चुंबकीय बलातून उद्भवतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Three handles: the field, the area, the angle\" goes correctly with which of these?",
+      "choices": [
+        "Faraday's law of induction",
+        "motional e.m.f.",
+        "magnetic flux",
+        "eddy currents"
+      ],
+      "answerIndex": 2,
+      "solution": "Magnetic flux is Φ = BA cos θ, the product of the field, the area and the cosine of the angle between the field and the normal to the surface, and it is measured in webers. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"तीन मुठ्ठे: क्षेत्र, क्षेत्रफल, कोण\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "फैराडे का प्रेरण नियम",
+            "गतिक विद्युत वाहक बल",
+            "चुंबकीय फ्लक्स",
+            "भँवर धाराएँ"
+          ],
+          "solution": "चुंबकीय फ्लक्स Φ = BA cos θ है, अर्थात् क्षेत्र, क्षेत्रफल और क्षेत्र तथा पृष्ठ के अभिलंब के बीच के कोण की कोज्या का गुणनफल, और वह वेबर में नापा जाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तीन मुठी: क्षेत्र, क्षेत्रफळ, कोन\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "फॅरेडेचा प्रेरण नियम",
+            "गतिक विद्युतचालक बल",
+            "चुंबकीय फ्लक्स",
+            "भोवरा धारा"
+          ],
+          "solution": "चुंबकीय फ्लक्स म्हणजे Φ = BA cos θ, म्हणजे क्षेत्र, क्षेत्रफळ आणि क्षेत्र व पृष्ठाचा लंब यांतील कोनाचा कोसाइन यांचा गुणाकार, आणि तो वेबरमध्ये मोजला जातो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Sluggish to start, reluctant to stop\" goes correctly with which of these?",
+      "choices": [
+        "Faraday's law of induction",
+        "motional e.m.f.",
+        "eddy currents",
+        "self-inductance"
+      ],
+      "answerIndex": 3,
+      "solution": "Self-inductance L is the flux linkage per unit current, and it makes a coil produce a back-e.m.f. of −L dI/dt whenever its own current changes. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"चलने में सुस्त, रुकने में अनिच्छुक\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "फैराडे का प्रेरण नियम",
+            "गतिक विद्युत वाहक बल",
+            "भँवर धाराएँ",
+            "स्वप्रेरकत्व"
+          ],
+          "solution": "स्वप्रेरकत्व L प्रति एकांक धारा फ्लक्स-बंधन है, और वह कुंडली से −L dI/dt का प्रति-विद्युत वाहक बल पैदा करवाता है जब भी उसकी अपनी धारा बदले। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"सुरू व्हायला सुस्त, थांबायला नाखूश\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "फॅरेडेचा प्रेरण नियम",
+            "गतिक विद्युतचालक बल",
+            "भोवरा धारा",
+            "स्वयंप्रेरकत्व"
+          ],
+          "solution": "स्वयंप्रेरकत्व L म्हणजे प्रति एकक धारा फ्लक्स-बंधन, आणि ते वेटोळ्याकडून −L dI/dt इतके प्रति-विद्युतचालक बल निर्माण करवते जेव्हा जेव्हा त्याची स्वतःची धारा बदलेल. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A nuisance in one machine, the whole point in the next\" goes correctly with which of these?",
+      "choices": [
+        "Faraday's law of induction",
+        "motional e.m.f.",
+        "eddy currents",
+        "Lenz's law"
+      ],
+      "answerIndex": 2,
+      "solution": "Eddy currents are circulating currents induced within the body of a conductor by a changing flux, dissipating energy as heat and producing a force that opposes the relative motion. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"एक मशीन में उपद्रव, अगली में सारा मक़सद\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "फैराडे का प्रेरण नियम",
+            "गतिक विद्युत वाहक बल",
+            "भँवर धाराएँ",
+            "लेंज़ का नियम"
+          ],
+          "solution": "भँवर धाराएँ वे परिक्रमा करती धाराएँ हैं जो बदलते फ्लक्स से चालक के पिंड के भीतर प्रेरित होती हैं, ऊर्जा को ऊष्मा के रूप में खपाती हैं और ऐसा बल बनाती हैं जो सापेक्ष गति का विरोध करता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"एका यंत्रात उपद्रव, पुढच्यात सगळा हेतू\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "फॅरेडेचा प्रेरण नियम",
+            "गतिक विद्युतचालक बल",
+            "भोवरा धारा",
+            "लेंझचा नियम"
+          ],
+          "solution": "भोवरा धारा म्हणजे बदलत्या फ्लक्सने वाहकाच्या शरीरात प्रेरित होणाऱ्या फिरत्या धारा, ज्या ऊर्जा उष्णतेच्या रूपात खर्चतात आणि सापेक्ष गतीला विरोध करणारे बल निर्माण करतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Hold it still and nothing happens, however strong it is\" goes correctly with which of these?",
+      "choices": [
+        "Faraday's law of induction",
+        "eddy currents",
+        "magnetic flux",
+        "self-inductance"
+      ],
+      "answerIndex": 0,
+      "solution": "Faraday's law of induction states that the induced e.m.f. equals the negative rate of change of magnetic flux, ε = −dΦ/dt, so it is the rate and not the amount of flux that matters. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"स्थिर पकड़ो और कुछ नहीं होता, चाहे वह कितना ही प्रबल हो\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "फैराडे का प्रेरण नियम",
+            "भँवर धाराएँ",
+            "चुंबकीय फ्लक्स",
+            "स्वप्रेरकत्व"
+          ],
+          "solution": "फैराडे का प्रेरण नियम कहता है कि प्रेरित विद्युत वाहक बल चुंबकीय फ्लक्स के परिवर्तन की ऋणात्मक दर के बराबर है, ε = −dΦ/dt, अतः मायने दर रखती है, फ्लक्स की मात्रा नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"स्थिर धरा आणि काहीच घडत नाही, तो कितीही तीव्र असो\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "फॅरेडेचा प्रेरण नियम",
+            "भोवरा धारा",
+            "चुंबकीय फ्लक्स",
+            "स्वयंप्रेरकत्व"
+          ],
+          "solution": "फॅरेडेचा प्रेरण नियम सांगतो की प्रेरित विद्युतचालक बल हे चुंबकीय फ्लक्सच्या बदलाच्या ऋण गतीइतके आहे, ε = −dΦ/dt, म्हणून महत्त्वाची असते गती, फ्लक्सचे प्रमाण नव्हे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The minus sign, spelled out in words\" goes correctly with which of these?",
+      "choices": [
+        "Faraday's law of induction",
+        "Lenz's law",
+        "motional e.m.f.",
+        "magnetic flux"
+      ],
+      "answerIndex": 1,
+      "solution": "Lenz's law says the induced current always flows in the direction that opposes the change producing it, which is what the minus sign in Faraday's law stands for. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"शब्दों में लिखा हुआ ऋण चिह्न\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "फैराडे का प्रेरण नियम",
+            "लेंज़ का नियम",
+            "गतिक विद्युत वाहक बल",
+            "चुंबकीय फ्लक्स"
+          ],
+          "solution": "लेंज़ का नियम कहता है कि प्रेरित धारा सदा उस दिशा में बहती है जो उसे पैदा करने वाले परिवर्तन का विरोध करे, और फैराडे के नियम का ऋण चिह्न यही दर्शाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"शब्दांत मांडलेले ऋण चिन्ह\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "फॅरेडेचा प्रेरण नियम",
+            "लेंझचा नियम",
+            "गतिक विद्युतचालक बल",
+            "चुंबकीय फ्लक्स"
+          ],
+          "solution": "लेंझचा नियम सांगतो की प्रेरित धारा नेहमी त्या दिशेने वाहते जी तिला घडवणाऱ्या बदलाला विरोध करते, आणि फॅरेडेच्या नियमातले ऋण चिन्ह हेच दर्शवते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Two derivations, one answer\" goes correctly with which of these?",
+      "choices": [
+        "motional e.m.f.",
+        "Faraday's law of induction",
+        "eddy currents",
+        "self-inductance"
+      ],
+      "answerIndex": 0,
+      "solution": "Motional e.m.f. is the voltage ε = Blv induced across a conductor of length l moving with speed v perpendicular to a field B, and it arises from the magnetic force on the charges the conductor carries with it. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"दो व्युत्पत्तियाँ, एक उत्तर\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "गतिक विद्युत वाहक बल",
+            "फैराडे का प्रेरण नियम",
+            "भँवर धाराएँ",
+            "स्वप्रेरकत्व"
+          ],
+          "solution": "गतिक विद्युत वाहक बल वह वोल्टता ε = Blv है जो क्षेत्र B के लंबवत v चाल से चलती l लंबाई की चालक छड़ के आर-पार प्रेरित होती है, और वह उन आवेशों पर लगे चुंबकीय बल से उठती है जिन्हें चालक अपने साथ ले जाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"दोन उपपत्ती, एक उत्तर\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "गतिक विद्युतचालक बल",
+            "फॅरेडेचा प्रेरण नियम",
+            "भोवरा धारा",
+            "स्वयंप्रेरकत्व"
+          ],
+          "solution": "गतिक विद्युतचालक बल म्हणजे तो व्होल्टेज ε = Blv जो क्षेत्र B ला लंब v वेगाने जाणाऱ्या l लांबीच्या वाहकाच्या आरपार प्रेरित होतो, आणि तो वाहक स्वतःसोबत नेत असलेल्या प्रभारांवरील चुंबकीय बलातून उद्भवतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Magnetic flux EXCEPT —",
+      "choices": [
+        "Three independent handles change it, and a question is usually testing which one is being turned: B, A or θ — a coil rotating in a steady field has both B and A fixed and still produces a changing flux.",
+        "It is a scalar despite being built out of a vector, which is why fluxes through the turns of a coil simply add and a coil of N turns has flux linkage NΦ.",
+        "Magnetic flux is Φ = BA cos θ, the product of the field, the area and the cosine of the angle between the field and the normal to the surface, and it is measured in webers.",
+        "Self-inductance L is the flux linkage per unit current, and it makes a coil produce a back-e.m.f. of −L dI/dt whenever its own current changes."
+      ],
+      "answerIndex": 3,
+      "solution": "Self-inductance L is the flux linkage per unit current, and it makes a coil produce a back-e.m.f. of −L dI/dt whenever its own current changes. That belongs to Self-inductance, not Magnetic flux — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "चुंबकीय फ्लक्स के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "तीन स्वतंत्र मुठ्ठे उसे बदलते हैं, और प्रश्न प्रायः यही जाँचता है कि कौन-सा घुमाया जा रहा है: B, A या θ — स्थिर क्षेत्र में घूमती कुंडली में B और A दोनों नियत हैं और फिर भी वह बदलता फ्लक्स बनाती है।",
+            "सदिश से बना होने के बावजूद यह अदिश है, इसीलिए कुंडली के फेरों से गुज़रते फ्लक्स बस जुड़ जाते हैं और N फेरों की कुंडली का फ्लक्स-बंधन NΦ होता है।",
+            "चुंबकीय फ्लक्स Φ = BA cos θ है, अर्थात् क्षेत्र, क्षेत्रफल और क्षेत्र तथा पृष्ठ के अभिलंब के बीच के कोण की कोज्या का गुणनफल, और वह वेबर में नापा जाता है।",
+            "स्वप्रेरकत्व L प्रति एकांक धारा फ्लक्स-बंधन है, और वह कुंडली से −L dI/dt का प्रति-विद्युत वाहक बल पैदा करवाता है जब भी उसकी अपनी धारा बदले।"
+          ],
+          "solution": "स्वप्रेरकत्व L प्रति एकांक धारा फ्लक्स-बंधन है, और वह कुंडली से −L dI/dt का प्रति-विद्युत वाहक बल पैदा करवाता है जब भी उसकी अपनी धारा बदले। यह स्वप्रेरकत्व की बात है, चुंबकीय फ्लक्स की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "चुंबकीय फ्लक्स विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "तीन स्वतंत्र मुठी तो बदलतात, आणि प्रश्न बहुधा हेच तपासतो की कोणती फिरवली जात आहे: B, A की θ — स्थिर क्षेत्रात फिरणाऱ्या वेटोळ्यात B आणि A दोन्ही स्थिर आहेत आणि तरीही ते बदलता फ्लक्स बनवते.",
+            "सदिशापासून बनलेला असूनही हा अदिश आहे, म्हणूनच वेटोळ्याच्या वेढ्यांतून जाणारे फ्लक्स फक्त जुळतात आणि N वेढ्यांच्या वेटोळ्याचे फ्लक्स-बंधन NΦ असते.",
+            "चुंबकीय फ्लक्स म्हणजे Φ = BA cos θ, म्हणजे क्षेत्र, क्षेत्रफळ आणि क्षेत्र व पृष्ठाचा लंब यांतील कोनाचा कोसाइन यांचा गुणाकार, आणि तो वेबरमध्ये मोजला जातो.",
+            "स्वयंप्रेरकत्व L म्हणजे प्रति एकक धारा फ्लक्स-बंधन, आणि ते वेटोळ्याकडून −L dI/dt इतके प्रति-विद्युतचालक बल निर्माण करवते जेव्हा जेव्हा त्याची स्वतःची धारा बदलेल."
+          ],
+          "solution": "स्वयंप्रेरकत्व L म्हणजे प्रति एकक धारा फ्लक्स-बंधन, आणि ते वेटोळ्याकडून −L dI/dt इतके प्रति-विद्युतचालक बल निर्माण करवते जेव्हा जेव्हा त्याची स्वतःची धारा बदलेल. हे स्वयंप्रेरकत्व चे आहे, चुंबकीय फ्लक्स चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Self-inductance EXCEPT —",
+      "choices": [
+        "The energy ½LI² is stored in the field rather than in the wire, which is why breaking the circuit of a large electromagnet draws an arc across the opening switch as that energy insists on going somewhere.",
+        "It depends only on geometry and the core material, exactly as capacitance does, so a coil's inductance is fixed the moment it is wound and does not change with the current it happens to be carrying.",
+        "Eddy currents are circulating currents induced within the body of a conductor by a changing flux, dissipating energy as heat and producing a force that opposes the relative motion.",
+        "Self-inductance L is the flux linkage per unit current, and it makes a coil produce a back-e.m.f. of −L dI/dt whenever its own current changes."
+      ],
+      "answerIndex": 2,
+      "solution": "Eddy currents are circulating currents induced within the body of a conductor by a changing flux, dissipating energy as heat and producing a force that opposes the relative motion. That belongs to Eddy currents, not Self-inductance — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "स्वप्रेरकत्व के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "ऊर्जा ½LI² तार में नहीं बल्कि क्षेत्र में संचित होती है, इसीलिए बड़े विद्युत चुंबक का परिपथ तोड़ने पर खुलते स्विच के आर-पार चाप खिंच जाता है, क्योंकि वह ऊर्जा कहीं न कहीं जाने पर अड़ जाती है।",
+            "यह केवल ज्यामिति और क्रोड के पदार्थ पर निर्भर है, ठीक जैसे धारिता, अतः कुंडली का प्रेरकत्व लपेटते ही तय हो जाता है और उसमें जो धारा बह रही हो उससे नहीं बदलता।",
+            "भँवर धाराएँ वे परिक्रमा करती धाराएँ हैं जो बदलते फ्लक्स से चालक के पिंड के भीतर प्रेरित होती हैं, ऊर्जा को ऊष्मा के रूप में खपाती हैं और ऐसा बल बनाती हैं जो सापेक्ष गति का विरोध करता है।",
+            "स्वप्रेरकत्व L प्रति एकांक धारा फ्लक्स-बंधन है, और वह कुंडली से −L dI/dt का प्रति-विद्युत वाहक बल पैदा करवाता है जब भी उसकी अपनी धारा बदले।"
+          ],
+          "solution": "भँवर धाराएँ वे परिक्रमा करती धाराएँ हैं जो बदलते फ्लक्स से चालक के पिंड के भीतर प्रेरित होती हैं, ऊर्जा को ऊष्मा के रूप में खपाती हैं और ऐसा बल बनाती हैं जो सापेक्ष गति का विरोध करता है। यह भँवर धाराएँ की बात है, स्वप्रेरकत्व की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "स्वयंप्रेरकत्व विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "ऊर्जा ½LI² ही तारेत नव्हे तर क्षेत्रात साठते, म्हणूनच मोठ्या विद्युत चुंबकाचा परिपथ तोडल्यावर उघडणाऱ्या स्विचच्या आरपार चाप ओढला जातो, कारण ती ऊर्जा कुठेतरी जाण्यावर अडून बसते.",
+            "हे केवळ भूमिती आणि गाभ्याच्या पदार्थावर अवलंबून आहे, अगदी धारितेप्रमाणे, म्हणून वेटोळ्याचे प्रेरकत्व गुंडाळताच ठरते आणि त्यात जी धारा वाहत असेल तिच्याने बदलत नाही.",
+            "भोवरा धारा म्हणजे बदलत्या फ्लक्सने वाहकाच्या शरीरात प्रेरित होणाऱ्या फिरत्या धारा, ज्या ऊर्जा उष्णतेच्या रूपात खर्चतात आणि सापेक्ष गतीला विरोध करणारे बल निर्माण करतात.",
+            "स्वयंप्रेरकत्व L म्हणजे प्रति एकक धारा फ्लक्स-बंधन, आणि ते वेटोळ्याकडून −L dI/dt इतके प्रति-विद्युतचालक बल निर्माण करवते जेव्हा जेव्हा त्याची स्वतःची धारा बदलेल."
+          ],
+          "solution": "भोवरा धारा म्हणजे बदलत्या फ्लक्सने वाहकाच्या शरीरात प्रेरित होणाऱ्या फिरत्या धारा, ज्या ऊर्जा उष्णतेच्या रूपात खर्चतात आणि सापेक्ष गतीला विरोध करणारे बल निर्माण करतात. हे भोवरा धारा चे आहे, स्वयंप्रेरकत्व चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Eddy currents EXCEPT —",
+      "choices": [
+        "Magnetic flux is Φ = BA cos θ, the product of the field, the area and the cosine of the angle between the field and the normal to the surface, and it is measured in webers.",
+        "The cure where they are unwanted is to laminate the metal into thin sheets separated by insulation, which leaves the useful magnetic path intact while chopping the circulating paths into pieces too small to carry much current.",
+        "They are a nuisance in a transformer core and the whole point in an induction hob, so the same physics is engineered out of one device and engineered into the next.",
+        "Eddy currents are circulating currents induced within the body of a conductor by a changing flux, dissipating energy as heat and producing a force that opposes the relative motion."
+      ],
+      "answerIndex": 0,
+      "solution": "Magnetic flux is Φ = BA cos θ, the product of the field, the area and the cosine of the angle between the field and the normal to the surface, and it is measured in webers. That belongs to Magnetic flux, not Eddy currents — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "भँवर धाराएँ के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "चुंबकीय फ्लक्स Φ = BA cos θ है, अर्थात् क्षेत्र, क्षेत्रफल और क्षेत्र तथा पृष्ठ के अभिलंब के बीच के कोण की कोज्या का गुणनफल, और वह वेबर में नापा जाता है।",
+            "जहाँ वे अनचाही हैं वहाँ इलाज यह है कि धातु को विद्युतरोधी से अलग की गई पतली परतों में बाँट दिया जाए, जिससे काम का चुंबकीय पथ ज्यों का त्यों रहता है और परिक्रमा-पथ इतने छोटे टुकड़ों में कट जाते हैं कि अधिक धारा ले ही न सकें।",
+            "ट्रांसफ़ॉर्मर की क्रोड में वे उपद्रव हैं और प्रेरण चूल्हे में वही सारा मक़सद, अतः वही भौतिकी एक युक्ति से निकाली जाती है और अगली में डाली जाती है।",
+            "भँवर धाराएँ वे परिक्रमा करती धाराएँ हैं जो बदलते फ्लक्स से चालक के पिंड के भीतर प्रेरित होती हैं, ऊर्जा को ऊष्मा के रूप में खपाती हैं और ऐसा बल बनाती हैं जो सापेक्ष गति का विरोध करता है।"
+          ],
+          "solution": "चुंबकीय फ्लक्स Φ = BA cos θ है, अर्थात् क्षेत्र, क्षेत्रफल और क्षेत्र तथा पृष्ठ के अभिलंब के बीच के कोण की कोज्या का गुणनफल, और वह वेबर में नापा जाता है। यह चुंबकीय फ्लक्स की बात है, भँवर धाराएँ की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "भोवरा धारा विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "चुंबकीय फ्लक्स म्हणजे Φ = BA cos θ, म्हणजे क्षेत्र, क्षेत्रफळ आणि क्षेत्र व पृष्ठाचा लंब यांतील कोनाचा कोसाइन यांचा गुणाकार, आणि तो वेबरमध्ये मोजला जातो.",
+            "जिथे त्या नकोशा आहेत तिथे उपाय म्हणजे धातूला विद्युतरोधकाने वेगळ्या केलेल्या पातळ पापुद्र्यांत विभागणे, ज्यामुळे उपयुक्त चुंबकीय मार्ग जसाच्या तसा राहतो आणि फिरण्याचे मार्ग इतक्या लहान तुकड्यांत कापले जातात की जास्त धारा वाहूच शकत नाहीत.",
+            "ट्रान्सफॉर्मरच्या गाभ्यात त्या उपद्रव आहेत आणि प्रेरण शेगडीत तोच सगळा हेतू, म्हणून तीच भौतिकी एका साधनातून काढली जाते आणि पुढच्यात घातली जाते.",
+            "भोवरा धारा म्हणजे बदलत्या फ्लक्सने वाहकाच्या शरीरात प्रेरित होणाऱ्या फिरत्या धारा, ज्या ऊर्जा उष्णतेच्या रूपात खर्चतात आणि सापेक्ष गतीला विरोध करणारे बल निर्माण करतात."
+          ],
+          "solution": "चुंबकीय फ्लक्स म्हणजे Φ = BA cos θ, म्हणजे क्षेत्र, क्षेत्रफळ आणि क्षेत्र व पृष्ठाचा लंब यांतील कोनाचा कोसाइन यांचा गुणाकार, आणि तो वेबरमध्ये मोजला जातो. हे चुंबकीय फ्लक्स चे आहे, भोवरा धारा चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Faraday's law of induction EXCEPT —",
+      "choices": [
+        "For a coil of N turns the e.m.f. is N times larger, since each turn is a separate loop threaded by the same flux and their e.m.f.s are in series.",
+        "The law is indifferent to WHICH of the three handles is being turned: moving the magnet, squashing the loop and rotating the coil all count, and the same formula covers all three.",
+        "Faraday's law of induction states that the induced e.m.f. equals the negative rate of change of magnetic flux, ε = −dΦ/dt, so it is the rate and not the amount of flux that matters.",
+        "Motional e.m.f. is the voltage ε = Blv induced across a conductor of length l moving with speed v perpendicular to a field B, and it arises from the magnetic force on the charges the conductor carries with it."
+      ],
+      "answerIndex": 3,
+      "solution": "Motional e.m.f. is the voltage ε = Blv induced across a conductor of length l moving with speed v perpendicular to a field B, and it arises from the magnetic force on the charges the conductor carries with it. That belongs to Motional e.m.f., not Faraday's law of induction — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "फैराडे का प्रेरण नियम के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "N फेरों की कुंडली के लिए विद्युत वाहक बल N गुना है, क्योंकि हर फेरा वही फ्लक्स समेटे अलग लूप है और उनके विद्युत वाहक बल श्रेणी में हैं।",
+            "नियम को इससे मतलब नहीं कि तीनों मुठ्ठों में से कौन घुमाया जा रहा है: चुंबक हिलाना, लूप को दबाना और कुंडली घुमाना, सब गिने जाते हैं, और वही सूत्र तीनों को समेटता है।",
+            "फैराडे का प्रेरण नियम कहता है कि प्रेरित विद्युत वाहक बल चुंबकीय फ्लक्स के परिवर्तन की ऋणात्मक दर के बराबर है, ε = −dΦ/dt, अतः मायने दर रखती है, फ्लक्स की मात्रा नहीं।",
+            "गतिक विद्युत वाहक बल वह वोल्टता ε = Blv है जो क्षेत्र B के लंबवत v चाल से चलती l लंबाई की चालक छड़ के आर-पार प्रेरित होती है, और वह उन आवेशों पर लगे चुंबकीय बल से उठती है जिन्हें चालक अपने साथ ले जाता है।"
+          ],
+          "solution": "गतिक विद्युत वाहक बल वह वोल्टता ε = Blv है जो क्षेत्र B के लंबवत v चाल से चलती l लंबाई की चालक छड़ के आर-पार प्रेरित होती है, और वह उन आवेशों पर लगे चुंबकीय बल से उठती है जिन्हें चालक अपने साथ ले जाता है। यह गतिक विद्युत वाहक बल की बात है, फैराडे का प्रेरण नियम की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "फॅरेडेचा प्रेरण नियम विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "N वेढ्यांच्या वेटोळ्यासाठी विद्युतचालक बल N पट आहे, कारण प्रत्येक वेढा तोच फ्लक्स सामावणारा वेगळा वळसा आहे आणि त्यांची विद्युतचालक बले श्रेणीत आहेत.",
+            "नियमाला याच्याशी देणेघेणे नाही की तीन मुठींपैकी कोणती फिरवली जात आहे: चुंबक हलवणे, वळसा दाबणे आणि वेटोळे फिरवणे, सर्व मोजले जातात, आणि तेच सूत्र तिन्हींना सामावते.",
+            "फॅरेडेचा प्रेरण नियम सांगतो की प्रेरित विद्युतचालक बल हे चुंबकीय फ्लक्सच्या बदलाच्या ऋण गतीइतके आहे, ε = −dΦ/dt, म्हणून महत्त्वाची असते गती, फ्लक्सचे प्रमाण नव्हे.",
+            "गतिक विद्युतचालक बल म्हणजे तो व्होल्टेज ε = Blv जो क्षेत्र B ला लंब v वेगाने जाणाऱ्या l लांबीच्या वाहकाच्या आरपार प्रेरित होतो, आणि तो वाहक स्वतःसोबत नेत असलेल्या प्रभारांवरील चुंबकीय बलातून उद्भवतो."
+          ],
+          "solution": "गतिक विद्युतचालक बल म्हणजे तो व्होल्टेज ε = Blv जो क्षेत्र B ला लंब v वेगाने जाणाऱ्या l लांबीच्या वाहकाच्या आरपार प्रेरित होतो, आणि तो वाहक स्वतःसोबत नेत असलेल्या प्रभारांवरील चुंबकीय बलातून उद्भवतो. हे गतिक विद्युतचालक बल चे आहे, फॅरेडेचा प्रेरण नियम चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A strong magnet dropped down a vertical copper pipe takes several seconds to fall a metre, while an identical unmagnetised slug of the same mass falls straight through. Copper is not magnetic. Explain the delay and say where the magnet's missing kinetic energy has gone.",
+      "choices": [
+        "As the magnet falls, the flux through each ring of copper around it changes, and eddy currents are induced in the pipe wall. By Lenz's law those currents must oppose the change, so the ring ahead of the magnet repels it and the ring behind attracts it — both forces act upwards. The magnet reaches a terminal velocity at which this retarding force equals its weight. The lost gravitational potential energy has become heat: the eddy currents dissipate I²R in the copper, and the pipe warms by a measurable amount. Copper's not being ferromagnetic is irrelevant; what matters is only that it conducts",
+        "Copper is weakly diamagnetic, and it is this diamagnetic repulsion that holds the magnet up as it falls",
+        "Air trapped between the magnet and the pipe wall cannot escape quickly enough, and the magnet falls slowly for the same reason a piston does in a cylinder",
+        "The induced currents store the energy in the pipe's magnetic field and give it back as the magnet leaves, so no energy is lost and only the timing changes"
+      ],
+      "answerIndex": 0,
+      "solution": "The demonstration is worth doing because it looks like magic and is entirely Chapter 6. Note first what the control tells you: an unmagnetised slug of identical mass and shape falls normally, so the effect is not about mass, friction or air. It is about the magnet. Think of the copper pipe as a stack of closed conducting rings. As the magnet approaches a given ring, the flux through that ring increases; as it passes and recedes, the flux decreases. Faraday's law says a changing flux drives an e.m.f. in each ring, and because copper conducts and the rings are complete circuits, real currents flow — eddy currents. Now apply Lenz's law twice, once on each side of the magnet, and notice that both answers point the same way. In the ring AHEAD, the flux is increasing, so the induced current opposes the increase: that ring's field faces the magnet with a like pole and pushes it back, upwards. In the ring BEHIND, the flux is decreasing, so the induced current opposes the decrease: that ring's field faces the magnet with an unlike pole and pulls it back, also upwards. Nothing here is a coincidence. Lenz's law opposes CHANGE, and both approaching and receding are changes, so the force is retarding in both cases and the two contributions add. The motion settles into a terminal velocity. The retarding force grows with speed — faster fall, faster flux change, bigger e.m.f., bigger current, bigger force — so the magnet accelerates only until that force equals mg, and then descends steadily. This is the same mathematical shape as terminal velocity in a fluid, arrived at by a completely different mechanism. Now the energy, which is the part the question is really asking. The magnet has descended a metre and gained almost no kinetic energy, so mgh has gone somewhere. It has gone into the pipe as heat. The eddy currents are real currents in a real resistance, and they dissipate I²R; drop a strong magnet down a thin-walled pipe repeatedly and the pipe becomes perceptibly warm. Energy conservation is not merely respected here, it is the REASON for the direction: if the induced current had been the other way, the force would have accelerated the magnet, which would have induced more current, which would have accelerated it further — free energy from a dropped magnet. Lenz's law is what forbids that, and it is why the law is a consequence of conservation rather than a separate observation. Two checks confirm the mechanism. Use a plastic pipe of the same dimensions and the magnet falls freely, because no current can flow. Use a copper pipe with a slit cut along its whole length and the magnet falls almost freely too, because the slit breaks every ring and the circulating paths are gone — which is exactly the laminating trick used to suppress eddy currents in transformer cores. (The second option cites a real but far too feeble effect; the third invents a fluid explanation the plastic-pipe control refutes; the fourth makes the process reversible, which would leave the pipe cold and the magnet fast.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ताँबे की खड़ी नली में गिराया गया प्रबल चुंबक एक मीटर गिरने में कई सेकंड लेता है, जबकि उसी द्रव्यमान का समरूप अचुंबकित टुकड़ा सीधा निकल जाता है। ताँबा चुंबकीय नहीं है। देरी समझाओ और बताओ कि चुंबक की लुप्त गतिज ऊर्जा कहाँ गई।",
+          "choices": [
+            "चुंबक के गिरते हुए, उसके चारों ओर ताँबे के हर छल्ले से गुज़रता फ्लक्स बदलता है, और नली की दीवार में भँवर धाराएँ प्रेरित होती हैं। लेंज़ के नियम से उन धाराओं को परिवर्तन का विरोध करना ही है, अतः चुंबक के आगे वाला छल्ला उसे प्रतिकर्षित करता है और पीछे वाला आकर्षित — दोनों बल ऊपर की ओर लगते हैं। चुंबक उस सीमांत वेग पर पहुँच जाता है जहाँ यह अवरोधक बल उसके भार के बराबर हो। खोई गुरुत्वीय स्थितिज ऊर्जा ऊष्मा बन गई है: भँवर धाराएँ ताँबे में I²R खपाती हैं, और नली नापी जा सकने वाली मात्रा में गर्म होती है। ताँबे का लौहचुंबकीय न होना अप्रासंगिक है; मायने केवल यह रखता है कि वह चालक है",
+            "ताँबा कमज़ोर प्रतिचुंबकीय है, और यही प्रतिचुंबकीय प्रतिकर्षण गिरते समय चुंबक को थामे रखता है",
+            "चुंबक और नली की दीवार के बीच फँसी हवा पर्याप्त तेज़ी से नहीं निकल पाती, और चुंबक उसी कारण धीरे गिरता है जिस कारण सिलिंडर में पिस्टन",
+            "प्रेरित धाराएँ ऊर्जा को नली के चुंबकीय क्षेत्र में संचित कर लेती हैं और चुंबक के निकलते ही लौटा देती हैं, अतः कोई ऊर्जा नष्ट नहीं होती और केवल समय बदलता है"
+          ],
+          "solution": "यह प्रदर्शन करने योग्य है क्योंकि वह जादू लगता है और पूरा का पूरा छठा अध्याय है। पहले ध्यान दो कि नियंत्रण क्या बताता है: उसी द्रव्यमान और आकार का अचुंबकित टुकड़ा सामान्य ढंग से गिरता है, अतः प्रभाव द्रव्यमान, घर्षण या हवा का नहीं। वह चुंबक का है। ताँबे की नली को बंद चालक छल्लों की चट्टी समझो। जैसे-जैसे चुंबक किसी छल्ले के पास आता है, उस छल्ले से गुज़रता फ्लक्स बढ़ता है; जैसे-जैसे वह पार करके दूर जाता है, फ्लक्स घटता है। फैराडे का नियम कहता है कि बदलता फ्लक्स हर छल्ले में विद्युत वाहक बल चलाता है, और चूँकि ताँबा चालक है और छल्ले पूरे परिपथ हैं, असली धाराएँ बहती हैं — भँवर धाराएँ। अब लेंज़ का नियम दो बार लगाओ, चुंबक की हर ओर एक बार, और ध्यान दो कि दोनों उत्तर एक ही दिशा दिखाते हैं। आगे वाले छल्ले में फ्लक्स बढ़ रहा है, अतः प्रेरित धारा वृद्धि का विरोध करती है: उस छल्ले का क्षेत्र चुंबक की ओर समान ध्रुव करके उसे ऊपर की ओर लौटा धकेलता है। पीछे वाले छल्ले में फ्लक्स घट रहा है, अतः प्रेरित धारा कमी का विरोध करती है: उस छल्ले का क्षेत्र चुंबक की ओर विपरीत ध्रुव करके उसे पीछे खींचता है, वह भी ऊपर की ओर। यहाँ कुछ भी संयोग नहीं। लेंज़ का नियम परिवर्तन का विरोध करता है, और पास आना तथा दूर जाना दोनों परिवर्तन हैं, अतः दोनों स्थितियों में बल अवरोधक है और दोनों अंश जुड़ जाते हैं। गति सीमांत वेग पर जम जाती है। अवरोधक बल चाल के साथ बढ़ता है — तेज़ गिरना, तेज़ फ्लक्स परिवर्तन, बड़ा विद्युत वाहक बल, बड़ी धारा, बड़ा बल — अतः चुंबक तभी तक त्वरित होता है जब तक वह बल mg के बराबर न हो जाए, और फिर स्थिर चाल से उतरता है। यह द्रव में सीमांत वेग का वही गणितीय आकार है, जिस तक बिलकुल भिन्न क्रियाविधि से पहुँचा गया। अब ऊर्जा, जो प्रश्न वस्तुतः पूछ रहा है। चुंबक एक मीटर उतर चुका है और उसने लगभग कोई गतिज ऊर्जा नहीं पाई, अतः mgh कहीं गया है। वह नली में ऊष्मा बनकर गया है। भँवर धाराएँ असली प्रतिरोध में असली धाराएँ हैं, और वे I²R खपाती हैं; पतली दीवार वाली नली में प्रबल चुंबक बार-बार गिराओ और नली महसूस होने लायक़ गर्म हो जाती है। यहाँ ऊर्जा संरक्षण का केवल पालन नहीं होता, वही दिशा का कारण है: यदि प्रेरित धारा उलटी होती, तो बल चुंबक को त्वरित करता, जो और धारा प्रेरित करती, जो उसे और त्वरित करती — गिराए गए चुंबक से मुफ़्त ऊर्जा। लेंज़ का नियम वही है जो इसे मना करता है, और इसीलिए वह नियम अलग प्रेक्षण नहीं बल्कि संरक्षण का परिणाम है। दो जाँचें क्रियाविधि की पुष्टि करती हैं। उन्हीं मापों की प्लास्टिक नली लो और चुंबक स्वतंत्र रूप से गिरता है, क्योंकि कोई धारा बह ही नहीं सकती। पूरी लंबाई में चीरा लगी ताँबे की नली लो और चुंबक लगभग स्वतंत्र रूप से गिरता है, क्योंकि चीरा हर छल्ला तोड़ देता है और परिक्रमा-पथ ख़त्म हो जाते हैं — और ट्रांसफ़ॉर्मर की क्रोड में भँवर धाराएँ दबाने की परत वाली तरकीब ठीक यही है। (दूसरा विकल्प असली पर कहीं अधिक कमज़ोर प्रभाव गिनाता है; तीसरा तरल की व्याख्या गढ़ता है जिसे प्लास्टिक नली का नियंत्रण झुठला देता है; चौथा प्रक्रिया को उत्क्रमणीय बना देता है, जिससे नली ठंडी और चुंबक तेज़ रह जाता।)"
+        },
+        "mr": {
+          "stem": "तांब्याच्या उभ्या नळीत टाकलेला तीव्र चुंबक एक मीटर पडायला कित्येक सेकंद घेतो, तर त्याच वस्तुमानाचा तसाच अचुंबकित तुकडा सरळ निघून जातो. तांबे चुंबकीय नाही. विलंब समजावा आणि चुंबकाची हरवलेली गतिज ऊर्जा कुठे गेली ते सांगा.",
+          "choices": [
+            "चुंबक पडत असताना, त्याच्याभोवतीच्या तांब्याच्या प्रत्येक कड्यातून जाणारा फ्लक्स बदलतो, आणि नळीच्या भिंतीत भोवरा धारा प्रेरित होतात. लेंझच्या नियमाने त्या धारांना बदलाला विरोध करावाच लागतो, म्हणून चुंबकाच्या पुढचे कडे त्याला प्रतिकर्षित करते आणि मागचे आकर्षित — दोन्ही बले वरच्या दिशेने लागतात. चुंबक त्या सीमांत वेगावर पोहोचतो जिथे हे अवरोधक बल त्याच्या वजनाइतके होते. गमावलेली गुरुत्वीय स्थितिज ऊर्जा उष्णता बनली आहे: भोवरा धारा तांब्यात I²R खर्चतात, आणि नळी मोजता येईल इतकी तापते. तांबे लोहचुंबकीय नसणे असंबद्ध आहे; महत्त्वाचे केवळ इतकेच की तो वाहक आहे",
+            "तांबे क्षीण प्रतिचुंबकीय आहे, आणि हेच प्रतिचुंबकीय प्रतिकर्षण पडताना चुंबकाला धरून ठेवते",
+            "चुंबक आणि नळीच्या भिंतीमध्ये अडकलेली हवा पुरेशा वेगाने बाहेर पडू शकत नाही, आणि चुंबक त्याच कारणाने सावकाश पडतो ज्या कारणाने सिलिंडरमध्ये पिस्टन",
+            "प्रेरित धारा ऊर्जा नळीच्या चुंबकीय क्षेत्रात साठवतात आणि चुंबक बाहेर पडताच परत देतात, म्हणून कोणतीही ऊर्जा नष्ट होत नाही आणि केवळ वेळ बदलतो"
+          ],
+          "solution": "हे प्रात्यक्षिक करण्याजोगे आहे कारण ते जादू वाटते आणि पूर्णपणे सहावे प्रकरण आहे. आधी लक्षात घ्या की नियंत्रण काय सांगते: त्याच वस्तुमानाचा आणि आकाराचा अचुंबकित तुकडा सामान्यपणे पडतो, म्हणून परिणाम वस्तुमान, घर्षण वा हवेचा नाही. तो चुंबकाचा आहे. तांब्याच्या नळीला बंद वाहक कड्यांची चळत समजा. चुंबक एखाद्या कड्याजवळ येताना, त्या कड्यातून जाणारा फ्लक्स वाढतो; तो ओलांडून दूर जाताना, फ्लक्स घटतो. फॅरेडेचा नियम सांगतो की बदलता फ्लक्स प्रत्येक कड्यात विद्युतचालक बल चालवतो, आणि तांबे वाहक असल्याने आणि कडी पूर्ण परिपथ असल्याने, खऱ्या धारा वाहतात — भोवरा धारा. आता लेंझचा नियम दोनदा लावा, चुंबकाच्या प्रत्येक बाजूला एकदा, आणि लक्षात घ्या की दोन्ही उत्तरे एकाच दिशेने दाखवतात. पुढच्या कड्यात फ्लक्स वाढत आहे, म्हणून प्रेरित धारा वाढीला विरोध करते: त्या कड्याचे क्षेत्र चुंबकाकडे सारखा ध्रुव करून त्याला वरच्या दिशेने परत ढकलते. मागच्या कड्यात फ्लक्स घटत आहे, म्हणून प्रेरित धारा घटीला विरोध करते: त्या कड्याचे क्षेत्र चुंबकाकडे विरुद्ध ध्रुव करून त्याला मागे ओढते, तेही वरच्या दिशेने. इथे काहीही योगायोग नाही. लेंझचा नियम बदलाला विरोध करतो, आणि जवळ येणे व दूर जाणे दोन्ही बदल आहेत, म्हणून दोन्ही स्थितींत बल अवरोधक आहे आणि दोन्ही वाटे जुळतात. गती सीमांत वेगावर स्थिरावते. अवरोधक बल वेगासोबत वाढते — जलद पडणे, जलद फ्लक्स बदल, मोठे विद्युतचालक बल, मोठी धारा, मोठे बल — म्हणून चुंबक तोवरच त्वरित होतो जोवर ते बल mg इतके होत नाही, आणि मग स्थिर वेगाने उतरतो. हा द्रवातील सीमांत वेगाचाच गणिती आकार आहे, ज्यापर्यंत पूर्णपणे वेगळ्या यंत्रणेने पोहोचले गेले. आता ऊर्जा, जी प्रश्न प्रत्यक्षात विचारत आहे. चुंबक एक मीटर उतरला आहे आणि त्याने जवळपास कोणतीही गतिज ऊर्जा मिळवली नाही, म्हणून mgh कुठेतरी गेले आहे. ते नळीत उष्णता बनून गेले आहे. भोवरा धारा खऱ्या रोधातल्या खऱ्या धारा आहेत, आणि त्या I²R खर्चतात; पातळ भिंतीच्या नळीत तीव्र चुंबक पुन्हा पुन्हा टाका आणि नळी जाणवण्याइतकी तापते. इथे ऊर्जा संधारणाचे केवळ पालन होत नाही, तेच दिशेचे कारण आहे: जर प्रेरित धारा उलटी असती, तर बलाने चुंबकाला त्वरित केले असते, ज्याने अधिक धारा प्रेरित केली असती, ज्याने त्याला आणखी त्वरित केले असते — टाकलेल्या चुंबकापासून फुकट ऊर्जा. लेंझचा नियम हाच तो जो हे वर्ज्य करतो, आणि म्हणूनच तो नियम वेगळे निरीक्षण नसून संधारणाचा परिणाम आहे. दोन तपासण्या यंत्रणेची खात्री देतात. त्याच मापांची प्लास्टिक नळी घ्या आणि चुंबक मुक्तपणे पडतो, कारण कोणतीही धारा वाहूच शकत नाही. संपूर्ण लांबीत चीर पडलेली तांब्याची नळी घ्या आणि चुंबक जवळपास मुक्तपणे पडतो, कारण चीर प्रत्येक कडे तोडते आणि फिरण्याचे मार्ग संपतात — आणि ट्रान्सफॉर्मरच्या गाभ्यात भोवरा धारा दाबण्याची पापुद्र्यांची युक्ती नेमकी हीच आहे. (दुसरा पर्याय खरा पण कितीतरी क्षीण परिणाम सांगतो; तिसरा द्रवाचे स्पष्टीकरण घडवतो जे प्लास्टिक नळीचे नियंत्रण खोडून काढते; चौथा प्रक्रिया परिवर्तनीय बनवतो, ज्याने नळी थंड आणि चुंबक वेगवान राहिला असता.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A rod of length l slides at constant speed v along frictionless rails in a field B, the circuit having resistance R. A student computes the e.m.f. two ways — from the flux swept out, and from the magnetic force on the electrons in the rod — and gets Blv both times, then asks whether this is a coincidence and where the electrical energy comes from.",
+      "choices": [
+        "It is not a coincidence but a consistency check that induction has to pass, and it does. The energy comes from whoever is pushing the rod. Once current I = Blv/R flows, the rod carries a current in a field and so feels a force BIl = B²l²v/R directed against its motion; keeping v constant therefore requires an applied force of exactly that size. The mechanical power supplied is Fv = B²l²v²/R, and the electrical power dissipated is ε²/R = B²l²v²/R — identical. The rails are frictionless, so nothing is lost anywhere else: this is a machine that converts mechanical work into electrical energy with the books balancing term by term, which is what a generator is",
+        "It is a coincidence of this particular geometry; in general the flux rule and the Lorentz force give different answers, and the flux rule is the more reliable of the two",
+        "The energy comes from the magnetic field, which is gradually used up as the rod slides and must eventually be replenished",
+        "No external force is needed because the rails are frictionless, so the electrical energy appears without any work being done — this is the one case where energy conservation genuinely fails"
+      ],
+      "answerIndex": 0,
+      "solution": "Take the two derivations first, because seeing why they must agree is half the answer. THE FLUX ROUTE. In time dt the rod moves v dt, and the circuit's area grows by l·v dt, so the flux grows by dΦ = B l v dt. Faraday's law gives |ε| = dΦ/dt = Blv. Nothing here mentions charges at all; the argument is about the geometry of a circuit whose area is changing. THE FORCE ROUTE. Every free electron in the rod is carried sideways at speed v through the field, so it feels a magnetic force qvB along the rod. Charges pile up at the ends until the electric field they create balances that force, which happens when E = vB, and the potential difference across a length l is then El = Blv. Nothing here mentions flux; the argument is about individual charges obeying the Lorentz force. Two entirely different pictures, one answer. That is a demand physics makes on itself: induction is one phenomenon, so any two legitimate ways of computing the same measurable number must land on the same value, and if they had not, one of the two laws would have been wrong. It is worth adding the honest caveat that the flux rule is a rule and not a fundamental law — there are contrived arrangements (a rocking plate contact, a disc with a sliding brush) where applying the flux rule carelessly gives the wrong answer and the Lorentz force plus Faraday's law in field form gives the right one. But in the ordinary cases of this chapter the two agree exactly, as here. NOW THE ENERGY, which is what the question is really after. The circuit dissipates ε²/R = B²l²v²/R watts in the resistance. That energy is real; the resistor gets warm. It cannot come from nowhere, and the rails are frictionless, so the only candidate is whoever keeps the rod moving. Follow the chain. The e.m.f. drives a current I = Blv/R through the rod. The rod is now a current-carrying conductor sitting in a magnetic field, so from Chapter 4 it experiences a force F = BIl. Substituting, F = B²l²v/R. By Lenz's law this force must oppose the motion, and it does — it points backwards along the rails. So to keep the speed constant an external agent must push with an equal forward force, and the mechanical power supplied is P = Fv = B²l²v²/R. Compare that with the electrical power dissipated, B²l²v²/R. They are the same expression. Not approximately, not on average — identically, term for term. This is the whole content of a generator, stated in one line: mechanical work in, electrical energy out, and Lenz's law as the mechanism that charges you for it. Three consequences fall out immediately. Open the circuit and R becomes infinite: no current, no retarding force, and the rod slides freely — a generator on no load is easy to turn. Short the rails and R becomes small: a huge current, a huge retarding force, and the rod is almost impossible to push — which is exactly why a bicycle dynamo makes pedalling harder the moment the lamp is switched on, and why a power station burns more coal when the city switches on its lights. (The second option denies a consistency that is demonstrable here; the third treats a static field as a fuel tank, when the field does no work at all; the fourth abandons conservation instead of looking for the agent doing the work.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "l लंबाई की छड़ क्षेत्र B में घर्षणहीन पटरियों पर अचर चाल v से सरकती है, और परिपथ का प्रतिरोध R है। विद्यार्थी विद्युत वाहक बल दो तरह से निकालता है — बुहारे गए फ्लक्स से, और छड़ के इलेक्ट्रॉनों पर चुंबकीय बल से — और दोनों बार Blv पाता है, फिर पूछता है कि क्या यह संयोग है और विद्युत ऊर्जा कहाँ से आती है।",
+          "choices": [
+            "यह संयोग नहीं बल्कि वह संगति-जाँच है जो प्रेरण को पास करनी ही है, और वह करता है। ऊर्जा उससे आती है जो छड़ को धकेल रहा है। धारा I = Blv/R बहते ही, छड़ क्षेत्र में धारा ले जाती है और इसलिए अपनी गति के विरुद्ध BIl = B²l²v/R बल अनुभव करती है; अतः v को अचर रखने के लिए ठीक उतना ही लगाया गया बल चाहिए। दी गई यांत्रिक शक्ति Fv = B²l²v²/R है, और खपने वाली विद्युत शक्ति ε²/R = B²l²v²/R — एक जैसी। पटरियाँ घर्षणहीन हैं, अतः और कहीं कुछ नष्ट नहीं होता: यह वह मशीन है जो यांत्रिक कार्य को विद्युत ऊर्जा में बदलती है और बहीखाता पद-दर-पद बराबर बैठता है, और जनित्र यही है",
+            "यह इसी विशेष ज्यामिति का संयोग है; सामान्यतः फ्लक्स नियम और लॉरेंज़ बल भिन्न उत्तर देते हैं, और दोनों में फ्लक्स नियम अधिक भरोसेमंद है",
+            "ऊर्जा चुंबकीय क्षेत्र से आती है, जो छड़ के सरकने के साथ धीरे-धीरे ख़र्च होता है और अंततः फिर भरना पड़ता है",
+            "किसी बाहरी बल की ज़रूरत नहीं क्योंकि पटरियाँ घर्षणहीन हैं, अतः बिना कोई कार्य हुए विद्युत ऊर्जा प्रकट होती है — यही वह एक स्थिति है जहाँ ऊर्जा संरक्षण सचमुच विफल हो जाता है"
+          ],
+          "solution": "पहले दोनों व्युत्पत्तियाँ लो, क्योंकि यह देखना कि उन्हें मिलना ही क्यों है, आधा उत्तर है। फ्लक्स वाला रास्ता। समय dt में छड़ v dt चलती है, और परिपथ का क्षेत्रफल l·v dt बढ़ता है, अतः फ्लक्स dΦ = B l v dt बढ़ता है। फैराडे का नियम देता है |ε| = dΦ/dt = Blv. यहाँ आवेशों का ज़िक्र ही नहीं; तर्क ऐसे परिपथ की ज्यामिति का है जिसका क्षेत्रफल बदल रहा है। बल वाला रास्ता। छड़ का हर मुक्त इलेक्ट्रॉन v चाल से क्षेत्र में से बग़ल में ले जाया जाता है, अतः वह छड़ के अनुदिश qvB बल अनुभव करता है। सिरों पर आवेश तब तक जमा होते हैं जब तक उनका बनाया विद्युत क्षेत्र उस बल को संतुलित न कर दे, जो तब होता है जब E = vB, और तब l लंबाई के आर-पार विभवांतर El = Blv है। यहाँ फ्लक्स का ज़िक्र नहीं; तर्क लॉरेंज़ बल मानते अलग-अलग आवेशों का है। दो बिलकुल भिन्न चित्र, एक उत्तर। यह माँग भौतिकी अपने से करती है: प्रेरण एक परिघटना है, अतः वही नापी जा सकने वाली संख्या निकालने के किन्हीं दो जायज़ रास्तों को एक ही मान पर उतरना ही चाहिए, और यदि न उतरते तो दोनों नियमों में से एक ग़लत होता। ईमानदार चेतावनी जोड़नी चाहिए कि फ्लक्स नियम नियम है, मूल नियम नहीं — ऐसी गढ़ी हुई व्यवस्थाएँ हैं (हिलता प्लेट-संपर्क, सरकते ब्रश वाली चकती) जहाँ फ्लक्स नियम लापरवाही से लगाने पर ग़लत उत्तर आता है और लॉरेंज़ बल तथा क्षेत्र-रूप में लिखा फैराडे का नियम सही देता है। पर इस अध्याय की साधारण स्थितियों में दोनों ठीक-ठीक मिलते हैं, जैसे यहाँ। अब ऊर्जा, जो प्रश्न वस्तुतः चाहता है। परिपथ प्रतिरोध में ε²/R = B²l²v²/R वाट खपाता है। वह ऊर्जा असली है; प्रतिरोधक गर्म होता है। वह कहीं से आ नहीं सकती, और पटरियाँ घर्षणहीन हैं, अतः एकमात्र उम्मीदवार वही है जो छड़ को चलाए रखता है। शृंखला का पीछा करो। विद्युत वाहक बल छड़ में से I = Blv/R धारा चलाता है। छड़ अब चुंबकीय क्षेत्र में बैठा धारावाही चालक है, अतः चौथे अध्याय से वह F = BIl बल अनुभव करती है। रखने पर F = B²l²v/R. लेंज़ के नियम से इस बल को गति का विरोध करना ही है, और वह करता है — वह पटरियों के अनुदिश पीछे की ओर है। अतः चाल अचर रखने को बाहरी कर्ता को उतने ही आगे के बल से धकेलना पड़ता है, और दी गई यांत्रिक शक्ति P = Fv = B²l²v²/R है। उसकी खपने वाली विद्युत शक्ति B²l²v²/R से तुलना करो। वे वही व्यंजक हैं। लगभग नहीं, औसतन नहीं — सर्वसमतः, पद-दर-पद। जनित्र का पूरा सार यही है, एक पंक्ति में: यांत्रिक कार्य भीतर, विद्युत ऊर्जा बाहर, और लेंज़ का नियम वह क्रियाविधि जो तुमसे उसका दाम वसूलती है। तीन परिणाम तुरंत निकलते हैं। परिपथ खोल दो और R अनंत हो जाता है: कोई धारा नहीं, कोई अवरोधक बल नहीं, और छड़ स्वतंत्र सरकती है — बिना लोड जनित्र घुमाना आसान है। पटरियाँ शॉर्ट कर दो और R छोटा हो जाता है: विशाल धारा, विशाल अवरोधक बल, और छड़ को धकेलना लगभग असंभव — और ठीक इसीलिए साइकिल की डायनमो बत्ती जलते ही पैडल कठिन कर देती है, और इसीलिए शहर के बत्तियाँ जलाते ही बिजलीघर अधिक कोयला जलाता है। (दूसरा विकल्प उस संगति से इनकार करता है जो यहाँ दिखाई जा सकती है; तीसरा स्थिर क्षेत्र को ईंधन की टंकी मान लेता है, जबकि क्षेत्र कोई कार्य करता ही नहीं; चौथा कार्य करने वाले कर्ता को ढूँढ़ने के बजाय संरक्षण छोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "l लांबीची कांडी क्षेत्र B मध्ये घर्षणविरहित रुळांवर अचल वेग v ने सरकते, आणि परिपथाचा रोध R आहे. विद्यार्थी विद्युतचालक बल दोन प्रकारे काढतो — झाडलेल्या फ्लक्सवरून, आणि कांडीतल्या इलेक्ट्रॉनांवरील चुंबकीय बलावरून — आणि दोन्ही वेळा Blv मिळवतो, मग विचारतो की हा योगायोग आहे का आणि विद्युत ऊर्जा कुठून येते.",
+          "choices": [
+            "हा योगायोग नसून ती सुसंगती-चाचणी आहे जी प्रेरणाला उत्तीर्ण व्हावीच लागते, आणि तो होतो. ऊर्जा त्याच्याकडून येते जो कांडी ढकलत आहे. धारा I = Blv/R वाहू लागताच, कांडी क्षेत्रात धारा वाहते आणि म्हणून आपल्या गतीविरुद्ध BIl = B²l²v/R इतके बल अनुभवते; म्हणून v अचल ठेवण्यास नेमके तितकेच लावलेले बल लागते. दिलेली यांत्रिक शक्ती Fv = B²l²v²/R आहे, आणि खर्च होणारी विद्युत शक्ती ε²/R = B²l²v²/R — सारखीच. रूळ घर्षणविरहित आहेत, म्हणून इतरत्र कुठेही काहीही नष्ट होत नाही: हे ते यंत्र आहे जे यांत्रिक कार्याचे विद्युत ऊर्जेत रूपांतर करते आणि जमाखर्च पदावर पद जुळतो, आणि जनित्र हेच आहे",
+            "हा याच विशिष्ट भूमितीचा योगायोग आहे; सर्वसाधारणपणे फ्लक्स नियम आणि लॉरेन्ट्झ बल वेगळी उत्तरे देतात, आणि दोहोंत फ्लक्स नियम अधिक विश्वासार्ह आहे",
+            "ऊर्जा चुंबकीय क्षेत्रातून येते, जे कांडी सरकताना हळूहळू खर्च होते आणि अखेरीस पुन्हा भरावे लागते",
+            "कोणत्याही बाह्य बलाची गरज नाही कारण रूळ घर्षणविरहित आहेत, म्हणून कोणतेही कार्य न होता विद्युत ऊर्जा प्रकट होते — हीच ती एक स्थिती जिथे ऊर्जा संधारण खरोखर अपयशी ठरते"
+          ],
+          "solution": "आधी दोन्ही उपपत्ती घ्या, कारण त्या जुळल्याच पाहिजेत हे पाहणे अर्धे उत्तर आहे. फ्लक्सचा मार्ग. dt काळात कांडी v dt हलते, आणि परिपथाचे क्षेत्रफळ l·v dt ने वाढते, म्हणून फ्लक्स dΦ = B l v dt ने वाढतो. फॅरेडेचा नियम देतो |ε| = dΦ/dt = Blv. इथे प्रभारांचा उल्लेखच नाही; युक्तिवाद अशा परिपथाच्या भूमितीचा आहे ज्याचे क्षेत्रफळ बदलत आहे. बलाचा मार्ग. कांडीतला प्रत्येक मुक्त इलेक्ट्रॉन v वेगाने क्षेत्रातून बाजूला नेला जातो, म्हणून त्याला कांडीच्या दिशेने qvB बल जाणवते. टोकांवर प्रभार तोवर साठतात जोवर त्यांनी बनवलेले विद्युत क्षेत्र त्या बलाला तोलत नाही, जे तेव्हा घडते जेव्हा E = vB, आणि मग l लांबीच्या आरपार विभवांतर El = Blv आहे. इथे फ्लक्सचा उल्लेख नाही; युक्तिवाद लॉरेन्ट्झ बल मानणाऱ्या वेगवेगळ्या प्रभारांचा आहे. दोन पूर्णपणे वेगळी चित्रे, एक उत्तर. ही मागणी भौतिकी स्वतःकडून करते: प्रेरण ही एक घटना आहे, म्हणून तीच मोजता येणारी संख्या काढण्याच्या कोणत्याही दोन रास्त मार्गांना एकाच मूल्यावर उतरावेच लागते, आणि उतरले नसते तर दोन नियमांपैकी एक चूक ठरला असता. प्रामाणिक इशारा जोडायला हवा की फ्लक्स नियम हा नियम आहे, मूलभूत नियम नव्हे — अशा घडवलेल्या मांडण्या आहेत (डुलणारा पट्टी-संपर्क, सरकत्या ब्रशची तबकडी) जिथे फ्लक्स नियम निष्काळजीपणे लावल्यास चुकीचे उत्तर येते आणि लॉरेन्ट्झ बल तसेच क्षेत्र-रूपात लिहिलेला फॅरेडेचा नियम बरोबर देतो. पण या प्रकरणाच्या साध्या स्थितींत दोन्ही नेमके जुळतात, जसे इथे. आता ऊर्जा, जी प्रश्नाला प्रत्यक्षात हवी आहे. परिपथ रोधात ε²/R = B²l²v²/R वॅट खर्चतो. ती ऊर्जा खरी आहे; रोधक तापतो. ती कुठूनही येऊ शकत नाही, आणि रूळ घर्षणविरहित आहेत, म्हणून एकमेव उमेदवार तोच जो कांडी चालवत ठेवतो. साखळीचा मागोवा घ्या. विद्युतचालक बल कांडीतून I = Blv/R धारा चालवते. कांडी आता चुंबकीय क्षेत्रात बसलेला धारावाही वाहक आहे, म्हणून चौथ्या प्रकरणावरून तिला F = BIl बल जाणवते. ठेवल्यास F = B²l²v/R. लेंझच्या नियमाने या बलाला गतीला विरोध करावाच लागतो, आणि तो करतो — ते रुळांच्या दिशेने मागे आहे. म्हणून वेग अचल ठेवण्यास बाह्य कर्त्याला तितक्याच पुढच्या बलाने ढकलावे लागते, आणि दिलेली यांत्रिक शक्ती P = Fv = B²l²v²/R आहे. तिची खर्च होणाऱ्या विद्युत शक्ती B²l²v²/R शी तुलना करा. ती तीच पदावली आहेत. जवळपास नाही, सरासरीने नाही — सर्वसमतः, पदावर पद. जनित्राचा अख्खा आशय हाच, एका ओळीत: यांत्रिक कार्य आत, विद्युत ऊर्जा बाहेर, आणि लेंझचा नियम ती यंत्रणा जी तुमच्याकडून त्याची किंमत वसूल करते. तीन परिणाम लगेच निघतात. परिपथ उघडा आणि R अनंत होतो: धारा नाही, अवरोधक बल नाही, आणि कांडी मुक्तपणे सरकते — भाराविना जनित्र फिरवणे सोपे. रूळ शॉर्ट करा आणि R लहान होतो: प्रचंड धारा, प्रचंड अवरोधक बल, आणि कांडी ढकलणे जवळपास अशक्य — आणि नेमके म्हणूनच सायकलचा डायनामो दिवा लावताच पायडल कठीण करतो, आणि म्हणूनच शहराने दिवे लावताच वीजकेंद्र अधिक कोळसा जाळते. (दुसरा पर्याय इथे दाखवता येणारी सुसंगती नाकारतो; तिसरा स्थिर क्षेत्राला इंधनाची टाकी मानतो, तर क्षेत्र कोणतेही कार्य करतच नाही; चौथा कार्य करणारा कर्ता शोधण्याऐवजी संधारण सोडून देतो.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A coil of area 0.2 m² is placed with its plane at right angles to a uniform field of 0.5 T. What is the magnetic flux through it, in Wb?",
+      "choices": [
+        "0.25",
+        "0.7",
+        "2.5",
+        "0.1"
+      ],
+      "answerIndex": 3,
+      "solution": "With the plane of the coil perpendicular to the field, the normal to the coil is along the field, θ = 0 and cos θ = 1, so Φ = BA = 0.5 × 0.2 = 0.1 Wb. The trap is the wording: the angle in the formula is measured to the NORMAL, not to the plane, so 'plane perpendicular to the field' is the maximum-flux case and not the zero-flux case. (0.7 adds the two numbers; 2.5 inverts the product.)",
+      "checkExpr": "0.2*0.5",
+      "translations": {
+        "hi": {
+          "stem": "0.2 m² क्षेत्रफल की कुंडली इस तरह रखी जाती है कि उसका तल 0.5 T के एकसमान क्षेत्र के समकोण पर हो। उससे गुज़रता चुंबकीय फ्लक्स, Wb में, क्या है?",
+          "choices": [
+            "0.25",
+            "0.7",
+            "2.5",
+            "0.1"
+          ],
+          "solution": "कुंडली का तल क्षेत्र के लंबवत होने पर कुंडली का अभिलंब क्षेत्र के अनुदिश है, θ = 0 और cos θ = 1, अतः Φ = BA = 0.5 × 0.2 = 0.1 Wb. जाल शब्दों में है: सूत्र में कोण अभिलंब से नापा जाता है, तल से नहीं, अतः 'तल क्षेत्र के लंबवत' अधिकतम फ्लक्स की स्थिति है, शून्य फ्लक्स की नहीं। (0.7 दोनों संख्याएँ जोड़ देता है; 2.5 गुणनफल उलट देता है।)"
+        },
+        "mr": {
+          "stem": "0.2 m² क्षेत्रफळाचे वेटोळे असे ठेवले जाते की त्याचे प्रतल 0.5 T च्या एकसमान क्षेत्राला काटकोनात असेल. त्यातून जाणारा चुंबकीय फ्लक्स, Wb मध्ये, किती?",
+          "choices": [
+            "0.25",
+            "0.7",
+            "2.5",
+            "0.1"
+          ],
+          "solution": "वेटोळ्याचे प्रतल क्षेत्राला लंब असल्याने वेटोळ्याचा लंब क्षेत्राच्या दिशेने आहे, θ = 0 आणि cos θ = 1, म्हणून Φ = BA = 0.5 × 0.2 = 0.1 Wb. सापळा शब्दांत आहे: सूत्रातला कोन लंबापासून मोजला जातो, प्रतलापासून नाही, म्हणून 'प्रतल क्षेत्राला लंब' ही कमाल फ्लक्सची स्थिती आहे, शून्य फ्लक्सची नाही. (0.7 दोन्ही संख्या जोडते; 2.5 गुणाकार उलटवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The magnetic flux through a single loop falls from 0.6 Wb to 0.2 Wb in 0.1 s. What is the magnitude of the induced e.m.f.?",
+      "choices": [
+        "4 V",
+        "8 V",
+        "2 V",
+        "0.04 V"
+      ],
+      "answerIndex": 0,
+      "solution": "Faraday's law gives |ε| = |ΔΦ|/Δt = 0.4/0.1 = 4 V. Only the CHANGE and the time enter; the actual values 0.6 and 0.2 matter to nothing except their difference, which is why a huge steady flux induces nothing at all. (0.04 multiplies by the time instead of dividing; 8 doubles.)",
+      "checkExpr": "0.4/0.1",
+      "translations": {
+        "hi": {
+          "stem": "एक अकेले लूप से गुज़रता चुंबकीय फ्लक्स 0.1 s में 0.6 Wb से घटकर 0.2 Wb हो जाता है। प्रेरित विद्युत वाहक बल का परिमाण क्या है?",
+          "choices": [
+            "4 V",
+            "8 V",
+            "2 V",
+            "0.04 V"
+          ],
+          "solution": "फैराडे का नियम देता है |ε| = |ΔΦ|/Δt = 0.4/0.1 = 4 V. केवल परिवर्तन और समय आते हैं; वास्तविक मान 0.6 और 0.2 उनके अंतर के सिवा किसी काम के नहीं, इसीलिए विशाल स्थिर फ्लक्स कुछ भी प्रेरित नहीं करता। (0.04 भाग देने के बजाय समय से गुणा कर देता है; 8 दुगुना कर देता है।)"
+        },
+        "mr": {
+          "stem": "एका वळशातून जाणारा चुंबकीय फ्लक्स 0.1 s मध्ये 0.6 Wb वरून घटून 0.2 Wb होतो. प्रेरित विद्युतचालक बलाचे परिमाण किती?",
+          "choices": [
+            "4 V",
+            "8 V",
+            "2 V",
+            "0.04 V"
+          ],
+          "solution": "फॅरेडेचा नियम देतो |ε| = |ΔΦ|/Δt = 0.4/0.1 = 4 V. केवळ बदल आणि काळ येतात; प्रत्यक्ष मूल्ये 0.6 आणि 0.2 त्यांच्या फरकाखेरीज कशाच्याही उपयोगाची नाहीत, म्हणूनच प्रचंड स्थिर फ्लक्स काहीही प्रेरित करत नाही. (0.04 भागण्याऐवजी काळाने गुणते; 8 दुप्पट करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A coil of 200 turns has the flux through each turn changed by 0.01 Wb in 0.4 s. What is the induced e.m.f.?",
+      "choices": [
+        "0.005 V",
+        "50 V",
+        "0.5 V",
+        "5 V"
+      ],
+      "answerIndex": 3,
+      "solution": "For N turns, |ε| = N|ΔΦ|/Δt = 200 × 0.01/0.4 = 5 V. Each turn is a separate loop threaded by the same flux, and their e.m.f.s are in series, which is why winding more turns is the cheapest way to raise the output of any induction device. (0.005 forgets the turns; 50 divides by 0.04.)",
+      "checkExpr": "200*0.01/0.4",
+      "translations": {
+        "hi": {
+          "stem": "200 फेरों की कुंडली में हर फेरे से गुज़रता फ्लक्स 0.4 s में 0.01 Wb बदलता है। प्रेरित विद्युत वाहक बल क्या है?",
+          "choices": [
+            "0.005 V",
+            "50 V",
+            "0.5 V",
+            "5 V"
+          ],
+          "solution": "N फेरों के लिए, |ε| = N|ΔΦ|/Δt = 200 × 0.01/0.4 = 5 V. हर फेरा वही फ्लक्स समेटे अलग लूप है, और उनके विद्युत वाहक बल श्रेणी में हैं, इसीलिए अधिक फेरे लपेटना किसी भी प्रेरण युक्ति का उत्पादन बढ़ाने का सबसे सस्ता रास्ता है। (0.005 फेरे भूल जाता है; 50 0.04 से भाग दे देता है।)"
+        },
+        "mr": {
+          "stem": "200 वेढ्यांच्या वेटोळ्यात प्रत्येक वेढ्यातून जाणारा फ्लक्स 0.4 s मध्ये 0.01 Wb ने बदलतो. प्रेरित विद्युतचालक बल किती?",
+          "choices": [
+            "0.005 V",
+            "50 V",
+            "0.5 V",
+            "5 V"
+          ],
+          "solution": "N वेढ्यांसाठी, |ε| = N|ΔΦ|/Δt = 200 × 0.01/0.4 = 5 V. प्रत्येक वेढा तोच फ्लक्स सामावणारा वेगळा वळसा आहे, आणि त्यांची विद्युतचालक बले श्रेणीत आहेत, म्हणूनच अधिक वेढे गुंडाळणे हा कोणत्याही प्रेरण साधनाचे उत्पादन वाढवण्याचा सर्वांत स्वस्त मार्ग आहे. (0.005 वेढे विसरते; 50 हे 0.04 ने भागते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A straight rod 0.5 m long moves at 4 m/s at right angles to both its own length and a field of 0.2 T. What e.m.f. appears across its ends?",
+      "choices": [
+        "1.6 V",
+        "0.4 V",
+        "4 V",
+        "0.1 V"
+      ],
+      "answerIndex": 1,
+      "solution": "ε = Blv = 0.2 × 0.5 × 4 = 0.4 V. The rod need not be part of a circuit for this voltage to exist — the charges simply pile up at the ends until their own electric field balances the magnetic force. Complete the circuit and the same voltage drives a current; leave it open and the voltage sits there. (0.1 leaves out the speed; 1.6 divides by the field instead of multiplying.)",
+      "checkExpr": "0.2*0.5*4",
+      "translations": {
+        "hi": {
+          "stem": "0.5 m लंबी सीधी छड़ अपनी लंबाई और 0.2 T के क्षेत्र दोनों के समकोण पर 4 m/s से चलती है। उसके सिरों के आर-पार कौन-सा विद्युत वाहक बल प्रकट होता है?",
+          "choices": [
+            "1.6 V",
+            "0.4 V",
+            "4 V",
+            "0.1 V"
+          ],
+          "solution": "ε = Blv = 0.2 × 0.5 × 4 = 0.4 V. इस वोल्टता के होने के लिए छड़ का किसी परिपथ का भाग होना ज़रूरी नहीं — आवेश बस सिरों पर तब तक जमा होते हैं जब तक उनका अपना विद्युत क्षेत्र चुंबकीय बल को संतुलित न कर दे। परिपथ पूरा करो और वही वोल्टता धारा चलाती है; खुला छोड़ दो और वोल्टता वहीं बैठी रहती है। (0.1 चाल छोड़ देता है; 1.6 क्षेत्र से गुणा करने के बजाय भाग दे देता है।)"
+        },
+        "mr": {
+          "stem": "0.5 m लांब सरळ कांडी आपल्या लांबीला आणि 0.2 T च्या क्षेत्राला दोन्हींना काटकोनात 4 m/s ने हलते. तिच्या टोकांच्या आरपार कोणते विद्युतचालक बल प्रकट होते?",
+          "choices": [
+            "1.6 V",
+            "0.4 V",
+            "4 V",
+            "0.1 V"
+          ],
+          "solution": "ε = Blv = 0.2 × 0.5 × 4 = 0.4 V. हा व्होल्टेज असण्यासाठी कांडीने कोणत्याही परिपथाचा भाग असणे गरजेचे नाही — प्रभार फक्त टोकांवर तोवर साठतात जोवर त्यांचे स्वतःचे विद्युत क्षेत्र चुंबकीय बलाला तोलत नाही. परिपथ पूर्ण करा आणि तोच व्होल्टेज धारा चालवतो; उघडा ठेवा आणि व्होल्टेज तिथेच बसून राहतो. (0.1 वेग गाळते; 1.6 क्षेत्राने गुणण्याऐवजी भागते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A coil of self-inductance 2 H carries a current that is changing at 3 A/s. What is the magnitude of the induced e.m.f.?",
+      "choices": [
+        "1.5 V",
+        "6 V",
+        "0.5 V",
+        "5 V"
+      ],
+      "answerIndex": 1,
+      "solution": "|ε| = L|dI/dt| = 2 × 3 = 6 V. The e.m.f. depends on the RATE at which the current changes and not on the current itself, so a coil carrying a large steady current induces nothing while one carrying almost none but switching quickly can induce a great deal — which is why opening the switch on an electromagnet is where the spark appears. (1.5 inverts the ratio; 5 adds the two numbers.)",
+      "checkExpr": "2*3",
+      "translations": {
+        "hi": {
+          "stem": "2 H स्वप्रेरकत्व वाली कुंडली में बहती धारा 3 A/s की दर से बदल रही है। प्रेरित विद्युत वाहक बल का परिमाण क्या है?",
+          "choices": [
+            "1.5 V",
+            "6 V",
+            "0.5 V",
+            "5 V"
+          ],
+          "solution": "|ε| = L|dI/dt| = 2 × 3 = 6 V. विद्युत वाहक बल धारा के बदलने की दर पर निर्भर है, स्वयं धारा पर नहीं, अतः बड़ी स्थिर धारा ले जाती कुंडली कुछ प्रेरित नहीं करती जबकि लगभग कोई धारा न ले जाती पर तेज़ी से स्विच होती कुंडली बहुत कुछ प्रेरित कर सकती है — इसीलिए विद्युत चुंबक का स्विच खोलने पर ही चिनगारी दिखती है। (1.5 अनुपात उलट देता है; 5 दोनों संख्याएँ जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "2 H स्वयंप्रेरकत्व असलेल्या वेटोळ्यातून वाहणारी धारा 3 A/s या गतीने बदलत आहे. प्रेरित विद्युतचालक बलाचे परिमाण किती?",
+          "choices": [
+            "1.5 V",
+            "6 V",
+            "0.5 V",
+            "5 V"
+          ],
+          "solution": "|ε| = L|dI/dt| = 2 × 3 = 6 V. विद्युतचालक बल धारा बदलण्याच्या गतीवर अवलंबून आहे, स्वतः धारेवर नाही, म्हणून मोठी स्थिर धारा वाहणारे वेटोळे काहीही प्रेरित करत नाही तर जवळपास काहीच धारा न वाहणारे पण झटपट स्विच होणारे वेटोळे बरेच काही प्रेरित करू शकते — म्हणूनच विद्युत चुंबकाचा स्विच उघडतानाच ठिणगी दिसते. (1.5 गुणोत्तर उलटवते; 5 दोन्ही संख्या जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "How much energy, in joules, is stored in an inductor of 4 H carrying a steady current of 3 A?",
+      "choices": [
+        "18",
+        "12",
+        "6",
+        "36"
+      ],
+      "answerIndex": 0,
+      "solution": "U = ½LI² = 0.5 × 4 × 3² = 0.5 × 4 × 9 = 18 J. The energy is stored in the magnetic field rather than in the wire, and it has to go somewhere when the circuit is broken — which is why a large inductor draws an arc across an opening switch and why such circuits are fitted with a diode to give the current a path home. (36 drops the half; 6 forgets to square the current.)",
+      "checkExpr": "0.5*4*9",
+      "translations": {
+        "hi": {
+          "stem": "3 A की स्थिर धारा ले जाते 4 H के प्रेरक में कितनी ऊर्जा, जूल में, संचित है?",
+          "choices": [
+            "18",
+            "12",
+            "6",
+            "36"
+          ],
+          "solution": "U = ½LI² = 0.5 × 4 × 3² = 0.5 × 4 × 9 = 18 J. ऊर्जा तार में नहीं बल्कि चुंबकीय क्षेत्र में संचित है, और परिपथ टूटने पर उसे कहीं जाना ही पड़ता है — इसीलिए बड़ा प्रेरक खुलते स्विच के आर-पार चाप खींचता है और इसीलिए ऐसे परिपथों में धारा को घर लौटने का रास्ता देने को डायोड लगाया जाता है। (36 आधा छोड़ देता है; 6 धारा का वर्ग करना भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "3 A ची स्थिर धारा वाहणाऱ्या 4 H च्या प्रेरकात किती ऊर्जा, ज्यूलमध्ये, साठलेली आहे?",
+          "choices": [
+            "18",
+            "12",
+            "6",
+            "36"
+          ],
+          "solution": "U = ½LI² = 0.5 × 4 × 3² = 0.5 × 4 × 9 = 18 J. ऊर्जा तारेत नव्हे तर चुंबकीय क्षेत्रात साठलेली आहे, आणि परिपथ तुटल्यावर तिला कुठेतरी जावेच लागते — म्हणूनच मोठा प्रेरक उघडणाऱ्या स्विचच्या आरपार चाप ओढतो आणि म्हणूनच अशा परिपथांत धारेला घरी परतायचा मार्ग देण्यास डायोड लावला जातो. (36 निम्मे गाळते; 6 धारेचा वर्ग करणे विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A current of 5 A in a coil produces a total flux linkage of 0.4 Wb. What is the coil's self-inductance, in H?",
+      "choices": [
+        "12.5",
+        "2",
+        "0.8",
+        "0.08"
+      ],
+      "answerIndex": 3,
+      "solution": "L is defined as flux linkage per unit current: L = NΦ/I = 0.4/5 = 0.08 H. Like capacitance, it is fixed by geometry and the core, so this same coil would give 0.8 Wb at 10 A and its inductance would still read 0.08 H. (12.5 inverts the ratio; 2 multiplies instead of dividing.)",
+      "checkExpr": "0.4/5",
+      "translations": {
+        "hi": {
+          "stem": "किसी कुंडली में 5 A धारा 0.4 Wb का कुल फ्लक्स-बंधन देती है। कुंडली का स्वप्रेरकत्व, H में, क्या है?",
+          "choices": [
+            "12.5",
+            "2",
+            "0.8",
+            "0.08"
+          ],
+          "solution": "L की परिभाषा प्रति एकांक धारा फ्लक्स-बंधन है: L = NΦ/I = 0.4/5 = 0.08 H. धारिता की तरह यह ज्यामिति और क्रोड से तय है, अतः वही कुंडली 10 A पर 0.8 Wb देती और उसका प्रेरकत्व फिर भी 0.08 H ही पढ़ा जाता। (12.5 अनुपात उलट देता है; 2 भाग देने के बजाय गुणा कर देता है।)"
+        },
+        "mr": {
+          "stem": "एका वेटोळ्यात 5 A धारा 0.4 Wb चे एकूण फ्लक्स-बंधन देते. वेटोळ्याचे स्वयंप्रेरकत्व, H मध्ये, किती?",
+          "choices": [
+            "12.5",
+            "2",
+            "0.8",
+            "0.08"
+          ],
+          "solution": "L ची व्याख्या प्रति एकक धारा फ्लक्स-बंधन अशी आहे: L = NΦ/I = 0.4/5 = 0.08 H. धारितेप्रमाणे हे भूमिती आणि गाभ्याने ठरलेले आहे, म्हणून तेच वेटोळे 10 A वर 0.8 Wb देईल आणि त्याचे प्रेरकत्व तरीही 0.08 H च वाचले जाईल. (12.5 गुणोत्तर उलटवते; 2 भागण्याऐवजी गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Two coils have a mutual inductance of 0.5 H. The current in the first is changing at 20 A/s. What e.m.f. is induced in the second?",
+      "choices": [
+        "0.025 V",
+        "2.5 V",
+        "10 V",
+        "40 V"
+      ],
+      "answerIndex": 2,
+      "solution": "|ε| = M|dI/dt| = 0.5 × 20 = 10 V. Mutual inductance is symmetric — the same M works either way round, so changing the current in the second coil at 20 A/s would induce 10 V in the first — and a transformer is nothing but this arrangement with the coupling made as close to complete as an iron core can manage. (2.5 inverts the ratio; 40 doubles.)",
+      "checkExpr": "0.5*20",
+      "translations": {
+        "hi": {
+          "stem": "दो कुंडलियों का अन्योन्य प्रेरकत्व 0.5 H है। पहली में धारा 20 A/s की दर से बदल रही है। दूसरी में कौन-सा विद्युत वाहक बल प्रेरित होता है?",
+          "choices": [
+            "0.025 V",
+            "2.5 V",
+            "10 V",
+            "40 V"
+          ],
+          "solution": "|ε| = M|dI/dt| = 0.5 × 20 = 10 V. अन्योन्य प्रेरकत्व सममित है — वही M दोनों दिशाओं में चलता है, अतः दूसरी कुंडली में धारा 20 A/s से बदलने पर पहली में 10 V प्रेरित होता — और ट्रांसफ़ॉर्मर इसी व्यवस्था के सिवा कुछ नहीं, जिसमें युग्मन को लोहे की क्रोड जितना पूर्ण कर सके उतना पूर्ण कर दिया गया है। (2.5 अनुपात उलट देता है; 40 दुगुना कर देता है।)"
+        },
+        "mr": {
+          "stem": "दोन वेटोळ्यांचे अन्योन्य प्रेरकत्व 0.5 H आहे. पहिल्यातील धारा 20 A/s या गतीने बदलत आहे. दुसऱ्यात कोणते विद्युतचालक बल प्रेरित होते?",
+          "choices": [
+            "0.025 V",
+            "2.5 V",
+            "10 V",
+            "40 V"
+          ],
+          "solution": "|ε| = M|dI/dt| = 0.5 × 20 = 10 V. अन्योन्य प्रेरकत्व सममित आहे — तोच M दोन्ही दिशांनी चालतो, म्हणून दुसऱ्या वेटोळ्यातील धारा 20 A/s ने बदलल्यास पहिल्यात 10 V प्रेरित होईल — आणि ट्रान्सफॉर्मर याच मांडणीखेरीज काहीच नाही, ज्यात जोडणी लोखंडाचा गाभा जितकी पूर्ण करू शकेल तितकी पूर्ण केली आहे. (2.5 गुणोत्तर उलटवते; 40 दुप्पट करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A rod of length 1 m slides on frictionless rails at 2 m/s in a field of 0.5 T, the circuit having a total resistance of 0.5 Ω. What force must be applied to keep the rod moving at constant speed?",
+      "choices": [
+        "1 N",
+        "0.5 N",
+        "2 N",
+        "4 N"
+      ],
+      "answerIndex": 0,
+      "solution": "The motional e.m.f. is Blv = 0.5 × 1 × 2 = 1 V, so the current is I = 1/0.5 = 2 A, and the rod carrying that current in the field feels F = BIl = 0.5 × 2 × 1 = 1 N against its motion. Combining, F = B²l²v/R = 0.25 × 2/0.5 = 1 N, and the applied force must match it exactly since the rails are frictionless and the speed is constant. Note that the force grows with speed, so this arrangement has a terminal velocity if the rod is simply released on a slope. (0.5 stops at the e.m.f.; 4 forgets to square the field.)",
+      "checkExpr": "0.25*2/0.5",
+      "translations": {
+        "hi": {
+          "stem": "1 m लंबी छड़ 0.5 T के क्षेत्र में घर्षणहीन पटरियों पर 2 m/s से सरकती है, और परिपथ का कुल प्रतिरोध 0.5 Ω है। छड़ को अचर चाल पर चलाए रखने के लिए कितना बल लगाना पड़ेगा?",
+          "choices": [
+            "1 N",
+            "0.5 N",
+            "2 N",
+            "4 N"
+          ],
+          "solution": "गतिक विद्युत वाहक बल Blv = 0.5 × 1 × 2 = 1 V है, अतः धारा I = 1/0.5 = 2 A, और क्षेत्र में वह धारा ले जाती छड़ अपनी गति के विरुद्ध F = BIl = 0.5 × 2 × 1 = 1 N अनुभव करती है। मिलाकर, F = B²l²v/R = 0.25 × 2/0.5 = 1 N, और लगाया गया बल ठीक उतना ही होना चाहिए क्योंकि पटरियाँ घर्षणहीन हैं और चाल अचर है। ध्यान दो कि बल चाल के साथ बढ़ता है, अतः छड़ को ढलान पर यों ही छोड़ दिया जाए तो इस व्यवस्था का सीमांत वेग होता है। (0.5 विद्युत वाहक बल पर रुक जाता है; 4 क्षेत्र का वर्ग करना भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "1 m लांब कांडी 0.5 T च्या क्षेत्रात घर्षणविरहित रुळांवर 2 m/s ने सरकते, आणि परिपथाचा एकूण रोध 0.5 Ω आहे. कांडीला अचल वेगावर चालवत ठेवण्यासाठी किती बल लावावे लागेल?",
+          "choices": [
+            "1 N",
+            "0.5 N",
+            "2 N",
+            "4 N"
+          ],
+          "solution": "गतिक विद्युतचालक बल Blv = 0.5 × 1 × 2 = 1 V आहे, म्हणून धारा I = 1/0.5 = 2 A, आणि क्षेत्रात ती धारा वाहणारी कांडी आपल्या गतीविरुद्ध F = BIl = 0.5 × 2 × 1 = 1 N अनुभवते. मिळून, F = B²l²v/R = 0.25 × 2/0.5 = 1 N, आणि लावलेले बल नेमके तितकेच असावे कारण रूळ घर्षणविरहित आहेत आणि वेग अचल आहे. लक्षात घ्या की बल वेगासोबत वाढते, म्हणून कांडी उतारावर नुसती सोडली तर या मांडणीला सीमांत वेग असतो. (0.5 विद्युतचालक बलावर थांबते; 4 क्षेत्राचा वर्ग करणे विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "For that same rod — 1 m long, 2 m/s, 0.5 T, circuit resistance 0.5 Ω — what electrical power, in watts, is dissipated in the resistance?",
+      "choices": [
+        "0.5",
+        "4",
+        "2",
+        "1"
+      ],
+      "answerIndex": 2,
+      "solution": "P = ε²/R = 1²/0.5 = 1/0.5 = 2 W. Now check the books against the previous question: the applied force there was 1 N and the speed is 2 m/s, so the mechanical power supplied is Fv = 1 × 2 = 2 W — the same number. This is not a coincidence but the whole content of a generator: mechanical work goes in, electrical energy comes out, and Lenz's law is the mechanism that makes you pay. Open the circuit and R becomes infinite: no current, no retarding force, and the rod slides freely — which is why a dynamo is easy to turn until the lamp is switched on. (1 quotes the e.m.f. or the force; 4 squares the current without the resistance.)",
+      "checkExpr": "1/0.5",
+      "translations": {
+        "hi": {
+          "stem": "उसी छड़ के लिए — 1 m लंबी, 2 m/s, 0.5 T, परिपथ प्रतिरोध 0.5 Ω — प्रतिरोध में कितनी विद्युत शक्ति, वाट में, खपती है?",
+          "choices": [
+            "0.5",
+            "4",
+            "2",
+            "1"
+          ],
+          "solution": "P = ε²/R = 1²/0.5 = 1/0.5 = 2 W. अब पिछले प्रश्न से बहीखाता मिलाओ: वहाँ लगाया गया बल 1 N था और चाल 2 m/s है, अतः दी गई यांत्रिक शक्ति Fv = 1 × 2 = 2 W — वही संख्या। यह संयोग नहीं बल्कि जनित्र का पूरा सार है: यांत्रिक कार्य भीतर जाता है, विद्युत ऊर्जा बाहर आती है, और लेंज़ का नियम वह क्रियाविधि है जो तुमसे दाम वसूलती है। परिपथ खोल दो और R अनंत हो जाता है: कोई धारा नहीं, कोई अवरोधक बल नहीं, और छड़ स्वतंत्र सरकती है — इसीलिए डायनमो बत्ती जलने तक घुमाने में आसान रहता है। (1 विद्युत वाहक बल या बल बता देता है; 4 प्रतिरोध के बिना धारा का वर्ग कर देता है।)"
+        },
+        "mr": {
+          "stem": "त्याच कांडीसाठी — 1 m लांब, 2 m/s, 0.5 T, परिपथ रोध 0.5 Ω — रोधात किती विद्युत शक्ती, वॉटमध्ये, खर्च होते?",
+          "choices": [
+            "0.5",
+            "4",
+            "2",
+            "1"
+          ],
+          "solution": "P = ε²/R = 1²/0.5 = 1/0.5 = 2 W. आता मागच्या प्रश्नाशी जमाखर्च ताळून पाहा: तिथले लावलेले बल 1 N होते आणि वेग 2 m/s आहे, म्हणून दिलेली यांत्रिक शक्ती Fv = 1 × 2 = 2 W — तीच संख्या. हा योगायोग नसून जनित्राचा अख्खा आशय आहे: यांत्रिक कार्य आत जाते, विद्युत ऊर्जा बाहेर येते, आणि लेंझचा नियम ती यंत्रणा जी तुमच्याकडून किंमत वसूल करते. परिपथ उघडा आणि R अनंत होतो: धारा नाही, अवरोधक बल नाही, आणि कांडी मुक्तपणे सरकते — म्हणूनच डायनामो दिवा लागेपर्यंत फिरवायला सोपा राहतो. (1 विद्युतचालक बल वा बल सांगते; 4 रोधाविना धारेचा वर्ग करते.)"
+        }
+      }
+    }
+  ]
+}

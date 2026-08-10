@@ -1428,6 +1428,1399 @@ export const G12_PHYSICS: Chapter[] = [
     ],
   },
   /*C1*/
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 5 — Magnetism and Matter                                        */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "physics-12-magnetism-and-matter",
+    subject: "PHYSICS",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 5 — Magnetism and Matter",
+      hi: "अध्याय 5 — चुंबकत्व एवं द्रव्य",
+      mr: "प्रकरण 5 — चुंबकत्व आणि द्रव्य",
+    },
+    name: {
+      en: "Magnetism and Matter",
+      hi: "चुंबकत्व एवं द्रव्य",
+      mr: "चुंबकत्व आणि द्रव्य",
+    },
+    summary: {
+      en: "A field whose lines never begin or end anywhere, so that no closed surface can ever have a net outward flux and no isolated pole has ever been found; a bar magnet which turns out on inspection to be a coil of circulating charge rather than a thing with two ends; a planet whose own field is described by a direction, a tilt and a strength that none of the three can be got from either of the others; and three ways matter can answer a field it is put into — feebly against it, feebly with it, or overwhelmingly with it and then remembering afterwards what it was asked to do.",
+      hi: "ऐसा क्षेत्र जिसकी रेखाएँ कहीं शुरू या ख़त्म होती ही नहीं, अतः किसी बंद पृष्ठ से नेट बाहरगामी फ्लक्स कभी नहीं हो सकता और अलग-थलग ध्रुव आज तक मिला नहीं; वह छड़ चुंबक जो जाँचने पर दो सिरों वाली वस्तु के बजाय परिक्रमा करते आवेश की कुंडली निकलती है; वह ग्रह जिसका अपना क्षेत्र एक दिशा, एक झुकाव और एक प्रबलता से बताया जाता है और तीनों में से कोई भी दूसरे दो से नहीं निकाला जा सकता; और तीन तरीक़े जिनसे द्रव्य उस क्षेत्र को उत्तर दे सकता है जिसमें उसे रखा गया — कमज़ोर होकर उसके विरुद्ध, कमज़ोर होकर उसके साथ, या अत्यधिक बल से उसके साथ और फिर बाद में यह याद रखते हुए कि उससे क्या करने को कहा गया था।",
+      mr: "असे क्षेत्र ज्याच्या रेषा कुठेही सुरू वा संपतच नाहीत, म्हणून कोणत्याही बंद पृष्ठातून निव्वळ बहिर्गामी फ्लक्स कधीच असू शकत नाही आणि एकाकी ध्रुव आजवर सापडलेला नाही; तो दांडा चुंबक जो तपासल्यावर दोन टोके असलेली वस्तू नसून फिरणाऱ्या प्रभाराचे वेटोळे निघतो; तो ग्रह ज्याचे स्वतःचे क्षेत्र एक दिशा, एक कल आणि एक तीव्रता यांनी वर्णिले जाते आणि तिन्हींपैकी कोणतेही उरलेल्या दोहोंतून काढता येत नाही; आणि तीन मार्ग ज्यांनी द्रव्य त्या क्षेत्राला उत्तर देऊ शकते ज्यात त्याला ठेवले गेले — क्षीणपणे त्याच्याविरुद्ध, क्षीणपणे त्याच्यासोबत, वा प्रचंड जोराने त्याच्यासोबत आणि मग नंतर हे लक्षात ठेवत की त्याला काय करायला सांगितले होते.",
+    },
+    position: 5,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "gauss-law-for-magnetism",
+        name: {
+          en: "Gauss's law for magnetism",
+          hi: "चुंबकत्व के लिए गाउस का नियम",
+          mr: "चुंबकत्वासाठी गॉसचा नियम",
+        },
+        kind: "general fact about magnetism",
+        prompt: {
+          en: "Draw any closed surface anywhere, around anything, and the total outward magnetic flux through it is zero — every line that enters has to leave. Which law states this?",
+          hi: "कहीं भी, किसी भी चीज़ के चारों ओर, कोई भी बंद पृष्ठ खींचो और उससे कुल बाहरगामी चुंबकीय फ्लक्स शून्य होता है — जो रेखा भीतर आती है उसे निकलना ही पड़ता है। यह कौन-सा नियम कहता है?",
+          mr: "कुठेही, कशाच्याही भोवती, कोणतेही बंद पृष्ठ काढा आणि त्यातून जाणारा एकूण बहिर्गामी चुंबकीय फ्लक्स शून्य असतो — जी रेषा आत येते तिला बाहेर पडावेच लागते. हा कोणता नियम सांगतो?",
+        },
+        statement: {
+          en: "Gauss's law for magnetism says the net magnetic flux through any closed surface is exactly zero, which is the formal statement that isolated magnetic poles do not exist.",
+          hi: "चुंबकत्व के लिए गाउस का नियम कहता है कि किसी भी बंद पृष्ठ से नेट चुंबकीय फ्लक्स ठीक शून्य है, जो इस बात का औपचारिक कथन है कि अलग-थलग चुंबकीय ध्रुव होते ही नहीं।",
+          mr: "चुंबकत्वासाठी गॉसचा नियम सांगतो की कोणत्याही बंद पृष्ठातून जाणारा निव्वळ चुंबकीय फ्लक्स नेमका शून्य आहे, जे एकाकी चुंबकीय ध्रुव अस्तित्वातच नाहीत याचे औपचारिक विधान आहे.",
+        },
+        detail: {
+          en: "It is the exact counterpart of the electrostatic Gauss's law with the right-hand side replaced by nothing, and that missing term is the whole difference between electricity and magnetism.",
+          hi: "यह स्थिरवैद्युत गाउस नियम का ठीक समकक्ष है जिसमें दाएँ पक्ष की जगह कुछ भी नहीं है, और वही लुप्त पद विद्युत और चुंबकत्व के बीच का पूरा अंतर है।",
+          mr: "हा स्थिरविद्युत गॉस नियमाचा नेमका समकक्ष आहे ज्यात उजव्या बाजूच्या जागी काहीही नाही, आणि तेच हरवलेले पद विद्युत आणि चुंबकत्व यांतला अख्खा फरक आहे.",
+        },
+        extra: {
+          en: "The consequence for pictures is that magnetic field lines are always closed loops, continuing through the inside of a magnet from its south pole to its north — where electric lines would simply have stopped on a charge.",
+          hi: "चित्रों के लिए परिणाम यह कि चुंबकीय क्षेत्र रेखाएँ सदा बंद लूप होती हैं, जो चुंबक के भीतर से होकर उसके दक्षिण ध्रुव से उत्तर ध्रुव तक चलती रहती हैं — जहाँ विद्युत रेखाएँ किसी आवेश पर बस रुक गई होतीं।",
+          mr: "चित्रांसाठीचा परिणाम असा की चुंबकीय क्षेत्ररेषा नेहमी बंद वळसे असतात, ज्या चुंबकाच्या आतून त्याच्या दक्षिण ध्रुवापासून उत्तर ध्रुवापर्यंत चालत राहतात — जिथे विद्युत रेषा एखाद्या प्रभारावर नुसत्या थांबल्या असत्या.",
+        },
+        pair: {
+          left: {
+            en: "A right-hand side with nothing on it",
+            hi: "ऐसा दायाँ पक्ष जिस पर कुछ भी नहीं",
+            mr: "अशी उजवी बाजू जिच्यावर काहीच नाही",
+          },
+          right: {
+            en: "Gauss's law for magnetism",
+            hi: "चुंबकत्व के लिए गाउस का नियम",
+            mr: "चुंबकत्वासाठी गॉसचा नियम",
+          },
+        },
+      },
+      {
+        id: "bar-magnet-as-solenoid",
+        name: {
+          en: "The bar magnet as an equivalent solenoid",
+          hi: "समतुल्य परिनालिका के रूप में छड़ चुंबक",
+          mr: "समतुल्य सोलेनॉइड म्हणून दांडा चुंबक",
+        },
+        kind: "general fact about magnetism",
+        prompt: {
+          en: "Hold a current-carrying coil and a lump of magnetised iron behind a screen and no measurement outside can tell which is which — the field pattern, the torque in an external field and the far-away behaviour all match. Which identification is this?",
+          hi: "पर्दे के पीछे धारा ले जाती कुंडली और चुंबकित लोहे का टुकड़ा रखो और बाहर का कोई माप नहीं बता सकता कि कौन क्या है — क्षेत्र का प्रतिरूप, बाहरी क्षेत्र में बल-आघूर्ण और दूर का आचरण, सब मिलते हैं। यह कौन-सी पहचान है?",
+          mr: "पडद्यामागे धारा वाहणारे वेटोळे आणि चुंबकित लोखंडाचा तुकडा ठेवा आणि बाहेरचे कोणतेही माप सांगू शकत नाही की कोण काय आहे — क्षेत्राचा नमुना, बाह्य क्षेत्रातले बलआघूर्ण आणि दूरचे वर्तन, सर्व जुळतात. ही कोणती ओळख?",
+        },
+        statement: {
+          en: "The bar magnet as an equivalent solenoid is the recognition that a magnet's field is produced by circulating charge inside it, so a magnet is a dipole with moment m and never a pair of separable poles.",
+          hi: "समतुल्य परिनालिका के रूप में छड़ चुंबक यह पहचान है कि चुंबक का क्षेत्र उसके भीतर परिक्रमा करते आवेश से बनता है, अतः चुंबक m आघूर्ण वाला द्विध्रुव है, अलग किए जा सकने वाले ध्रुवों का युग्म कभी नहीं।",
+          mr: "समतुल्य सोलेनॉइड म्हणून दांडा चुंबक ही ती ओळख की चुंबकाचे क्षेत्र त्याच्या आत फिरणाऱ्या प्रभारापासून बनते, म्हणून चुंबक हा m आघूर्ण असलेला द्विध्रुव आहे, वेगळे करता येणाऱ्या ध्रुवांची जोडी कधीच नाही.",
+        },
+        detail: {
+          en: "The circulating charge is real and microscopic: each electron's orbital motion and its own spin are tiny current loops, and a magnet is what happens when enough of them line up.",
+          hi: "परिक्रमा करता आवेश असली और सूक्ष्म है: हर इलेक्ट्रॉन की कक्षीय गति और उसका अपना चक्रण नन्हे धारा-लूप हैं, और चुंबक वही है जो तब होता है जब उनमें से पर्याप्त संरेखित हो जाएँ।",
+          mr: "फिरणारा प्रभार खरा आणि सूक्ष्म आहे: प्रत्येक इलेक्ट्रॉनची कक्षीय गती आणि त्याचे स्वतःचे परिवलन ही चिमुकली धारा-वळसे आहेत, आणि चुंबक म्हणजे तेच जे पुरेसे संरेखित झाल्यावर घडते.",
+        },
+        extra: {
+          en: "It is why cutting a magnet in two gives two complete magnets rather than a north and a south: cutting a solenoid in half gives two shorter solenoids, and there was never a pole to be separated off.",
+          hi: "इसीलिए चुंबक को दो टुकड़ों में काटने से एक उत्तर और एक दक्षिण नहीं बल्कि दो पूरे चुंबक मिलते हैं: परिनालिका को बीच से काटने पर दो छोटी परिनालिकाएँ मिलती हैं, और अलग किए जाने को ध्रुव कभी था ही नहीं।",
+          mr: "म्हणूनच चुंबकाचे दोन तुकडे केल्यावर एक उत्तर आणि एक दक्षिण न मिळता दोन पूर्ण चुंबक मिळतात: सोलेनॉइड मधून कापल्यास दोन लहान सोलेनॉइड मिळतात, आणि वेगळा करायला ध्रुव कधी होताच नाही.",
+        },
+        pair: {
+          left: {
+            en: "Behind a screen, no measurement can tell them apart",
+            hi: "पर्दे के पीछे, कोई माप उनमें भेद नहीं कर सकता",
+            mr: "पडद्यामागे, कोणतेही माप त्यांत भेद करू शकत नाही",
+          },
+          right: {
+            en: "the bar magnet as an equivalent solenoid",
+            hi: "समतुल्य परिनालिका के रूप में छड़ चुंबक",
+            mr: "समतुल्य सोलेनॉइड म्हणून दांडा चुंबक",
+          },
+        },
+      },
+      {
+        id: "earths-magnetic-elements",
+        name: {
+          en: "The Earth's magnetic elements",
+          hi: "पृथ्वी के चुंबकीय अवयव",
+          mr: "पृथ्वीचे चुंबकीय घटक",
+        },
+        kind: "general fact about magnetism",
+        prompt: {
+          en: "Three numbers are needed at any place before the local field is fully described: how far the compass points from true north, how far a freely suspended needle tips below the horizontal, and how strong the horizontal part is. What are these three called?",
+          hi: "किसी भी जगह स्थानीय क्षेत्र पूरी तरह बताने से पहले तीन संख्याएँ चाहिए: दिक्सूचक सच्चे उत्तर से कितना हटकर दिखाता है, स्वतंत्र लटकी सुई क्षैतिज से कितना नीचे झुकती है, और क्षैतिज भाग कितना प्रबल है। इन तीनों को क्या कहते हैं?",
+          mr: "कोणत्याही ठिकाणी स्थानिक क्षेत्र पूर्णपणे वर्णन करण्याआधी तीन संख्या लागतात: होकायंत्र खऱ्या उत्तरेपासून किती दूर दाखवतो, मुक्तपणे टांगलेली सुई आडव्यापासून किती खाली झुकते, आणि आडवा भाग किती तीव्र आहे. या तिघांना काय म्हणतात?",
+        },
+        statement: {
+          en: "The Earth's magnetic elements are declination, dip and the horizontal component, and all three are needed because a field is a vector while each measurement gives only one number about it.",
+          hi: "पृथ्वी के चुंबकीय अवयव दिक्पात, नति और क्षैतिज घटक हैं, और तीनों चाहिए क्योंकि क्षेत्र सदिश है जबकि हर माप उसके बारे में केवल एक संख्या देता है।",
+          mr: "पृथ्वीचे चुंबकीय घटक म्हणजे दिक्पात, नती आणि आडवा घटक, आणि तिन्ही लागतात कारण क्षेत्र सदिश आहे तर प्रत्येक माप त्याबद्दल केवळ एक संख्या देते.",
+        },
+        detail: {
+          en: "The total field follows from two of them by B = H/cos δ, so the vertical component and the total are not extra measurements but consequences of the dip and the horizontal component together.",
+          hi: "कुल क्षेत्र इनमें से दो से B = H/cos δ द्वारा निकलता है, अतः ऊर्ध्वाधर घटक और कुल क्षेत्र अतिरिक्त माप नहीं बल्कि नति और क्षैतिज घटक के साथ मिलकर निकले परिणाम हैं।",
+          mr: "एकूण क्षेत्र यांपैकी दोहोंतून B = H/cos δ ने निघते, म्हणून उभा घटक आणि एकूण ही जादा मापे नसून नती आणि आडवा घटक यांच्या मिळून निघालेले परिणाम आहेत.",
+        },
+        extra: {
+          en: "The magnetic poles are not the geographic ones and they wander by tens of kilometres a year, which is why declination is printed on charts with a date and why the field has reversed many times in the rock record.",
+          hi: "चुंबकीय ध्रुव भौगोलिक ध्रुव नहीं हैं और वे साल में दसियों किलोमीटर घूमते हैं, इसीलिए दिक्पात मानचित्रों पर तारीख़ के साथ छपता है और इसीलिए चट्टानों के अभिलेख में क्षेत्र कई बार उलट चुका है।",
+          mr: "चुंबकीय ध्रुव हे भौगोलिक ध्रुव नाहीत आणि ते वर्षाला दहा-वीस किलोमीटर भटकतात, म्हणूनच दिक्पात नकाशांवर तारखेसह छापला जातो आणि म्हणूनच खडकांच्या नोंदीत क्षेत्र अनेकदा उलटले आहे.",
+        },
+        pair: {
+          left: {
+            en: "Three numbers, because a field is a vector",
+            hi: "तीन संख्याएँ, क्योंकि क्षेत्र सदिश है",
+            mr: "तीन संख्या, कारण क्षेत्र सदिश आहे",
+          },
+          right: {
+            en: "the Earth's magnetic elements",
+            hi: "पृथ्वी के चुंबकीय अवयव",
+            mr: "पृथ्वीचे चुंबकीय घटक",
+          },
+        },
+      },
+      {
+        id: "diamagnetism",
+        name: {
+          en: "Diamagnetism",
+          hi: "प्रतिचुंबकत्व",
+          mr: "प्रतिचुंबकत्व",
+        },
+        kind: "class of magnetic material",
+        prompt: {
+          en: "Bismuth, copper and water are all pushed feebly OUT of a strong field and towards the weaker region, and cooling them makes no difference whatever. Which class of material behaves like this?",
+          hi: "बिस्मथ, ताँबा और पानी सब प्रबल क्षेत्र से बाहर, कमज़ोर भाग की ओर, कमज़ोरी से धकेले जाते हैं, और उन्हें ठंडा करने से कोई फ़र्क़ पड़ता ही नहीं। पदार्थों का कौन-सा वर्ग ऐसा बरतता है?",
+          mr: "बिस्मथ, तांबे आणि पाणी हे सर्व तीव्र क्षेत्रातून बाहेर, क्षीण भागाकडे, क्षीणपणे ढकलले जातात, आणि त्यांना थंड केल्याने काहीही फरक पडत नाही. पदार्थांचा कोणता वर्ग असा वागतो?",
+        },
+        statement: {
+          en: "Diamagnetism is a feeble repulsion from a field, arising in substances whose atoms have no net magnetic moment of their own, so the field itself induces opposing moments in them.",
+          hi: "प्रतिचुंबकत्व क्षेत्र से कमज़ोर प्रतिकर्षण है, जो उन पदार्थों में उठता है जिनके परमाणुओं का अपना कोई नेट चुंबकीय आघूर्ण नहीं, अतः क्षेत्र स्वयं उनमें विरोधी आघूर्ण प्रेरित कर देता है।",
+          mr: "प्रतिचुंबकत्व म्हणजे क्षेत्रापासूनचे क्षीण प्रतिकर्षण, जे अशा पदार्थांत उद्भवते ज्यांच्या अणूंना स्वतःचे कोणतेही निव्वळ चुंबकीय आघूर्ण नाही, म्हणून क्षेत्रच त्यांच्यात विरोधी आघूर्ण प्रेरित करते.",
+        },
+        detail: {
+          en: "It is present in every substance, being a direct consequence of induction opposing the change that caused it, but in most materials a stronger effect of the opposite sign hides it completely.",
+          hi: "यह हर पदार्थ में मौजूद है, क्योंकि यह प्रेरण के उस परिवर्तन का विरोध करने का सीधा परिणाम है जिसने उसे पैदा किया, पर अधिकांश पदार्थों में विपरीत चिह्न का प्रबल प्रभाव उसे पूरी तरह छिपा देता है।",
+          mr: "हे प्रत्येक पदार्थात उपस्थित आहे, कारण हे प्रेरणाने ज्या बदलाने ते घडवले त्याचाच विरोध करण्याचा थेट परिणाम आहे, पण बहुतेक पदार्थांत विरुद्ध चिन्हाचा तीव्र परिणाम त्याला पूर्णपणे झाकतो.",
+        },
+        extra: {
+          en: "It is the only one of the three that does not weaken as temperature rises, because there are no permanent moments for heat to disorder — a superconductor is the extreme case, expelling the field entirely.",
+          hi: "तीनों में यही एक है जो ताप बढ़ने पर कमज़ोर नहीं होता, क्योंकि ऊष्मा को अव्यवस्थित करने को कोई स्थायी आघूर्ण है ही नहीं — अतिचालक चरम स्थिति है, जो क्षेत्र को पूरी तरह बाहर धकेल देता है।",
+          mr: "तिन्हींपैकी हेच एक जे तापमान वाढल्यावर क्षीण होत नाही, कारण उष्णतेला अव्यवस्थित करायला कोणतेही कायम आघूर्ण नाहीच — अतिवाहक ही टोकाची स्थिती, जी क्षेत्र पूर्णपणे बाहेर लोटते.",
+        },
+        pair: {
+          left: {
+            en: "Pushed towards the weaker part of the field",
+            hi: "क्षेत्र के कमज़ोर भाग की ओर धकेला गया",
+            mr: "क्षेत्राच्या क्षीण भागाकडे ढकललेला",
+          },
+          right: {
+            en: "diamagnetism",
+            hi: "प्रतिचुंबकत्व",
+            mr: "प्रतिचुंबकत्व",
+          },
+        },
+      },
+      {
+        id: "paramagnetism",
+        name: {
+          en: "Paramagnetism",
+          hi: "अनुचुंबकत्व",
+          mr: "अनुचुंबकत्व",
+        },
+        kind: "class of magnetic material",
+        prompt: {
+          en: "Aluminium and liquid oxygen are drawn feebly INTO a strong field, the pull grows as they are cooled, and it disappears the moment the field is switched off. Which class of material is this?",
+          hi: "ऐलुमिनियम और द्रव ऑक्सीजन प्रबल क्षेत्र में कमज़ोरी से खिंचते हैं, ठंडा करने पर खिंचाव बढ़ता है, और क्षेत्र बंद करते ही वह ग़ायब हो जाता है। यह पदार्थों का कौन-सा वर्ग है?",
+          mr: "ॲल्युमिनियम आणि द्रव ऑक्सिजन तीव्र क्षेत्रात क्षीणपणे ओढले जातात, थंड केल्यावर ओढ वाढते, आणि क्षेत्र बंद करताच ती नाहीशी होते. हा पदार्थांचा कोणता वर्ग?",
+        },
+        statement: {
+          en: "Paramagnetism is a feeble attraction into a field, shown by substances whose atoms carry permanent magnetic moments that the field partially aligns against the disordering effect of heat.",
+          hi: "अनुचुंबकत्व क्षेत्र में कमज़ोर आकर्षण है, जो उन पदार्थों में दिखता है जिनके परमाणु स्थायी चुंबकीय आघूर्ण रखते हैं जिन्हें क्षेत्र ऊष्मा के अव्यवस्थित करने वाले प्रभाव के विरुद्ध आंशिक रूप से संरेखित करता है।",
+          mr: "अनुचुंबकत्व म्हणजे क्षेत्रात होणारे क्षीण आकर्षण, जे अशा पदार्थांत दिसते ज्यांचे अणू कायम चुंबकीय आघूर्ण बाळगतात आणि क्षेत्र त्यांना उष्णतेच्या अव्यवस्थित करणाऱ्या परिणामाविरुद्ध अंशतः संरेखित करते.",
+        },
+        detail: {
+          en: "The alignment is a competition, which is why the magnetisation obeys Curie's law and is inversely proportional to the absolute temperature: colder means less jostling and a larger fraction pointing the right way.",
+          hi: "संरेखण एक होड़ है, इसीलिए चुंबकन क्यूरी के नियम को मानता है और परम ताप के व्युत्क्रमानुपाती है: ठंडा होने का अर्थ है कम धक्कमपेल और सही दिशा में इशारा करता बड़ा अंश।",
+          mr: "संरेखन ही एक स्पर्धा आहे, म्हणूनच चुंबकन क्युरीच्या नियमाला मानते आणि निरपेक्ष तापमानाशी व्यस्त समानुपाती असते: थंड म्हणजे कमी धक्काबुक्की आणि योग्य दिशेने दाखवणारा मोठा अंश.",
+        },
+        extra: {
+          en: "Nothing is retained when the field is removed — thermal motion scrambles the moments again within an instant — which is exactly what separates it from the third class.",
+          hi: "क्षेत्र हटाते ही कुछ भी बचा नहीं रहता — ऊष्मीय गति क्षण भर में आघूर्णों को फिर उलट-पुलट देती है — और ठीक यही उसे तीसरे वर्ग से अलग करता है।",
+          mr: "क्षेत्र काढताच काहीही टिकत नाही — औष्णिक गती क्षणार्धात आघूर्णे पुन्हा विस्कटते — आणि नेमके हेच त्याला तिसऱ्या वर्गापासून वेगळे करते.",
+        },
+        pair: {
+          left: {
+            en: "A tug that grows in the cold and vanishes with the field",
+            hi: "ऐसा खिंचाव जो ठंड में बढ़े और क्षेत्र के साथ ग़ायब हो",
+            mr: "अशी ओढ जी थंडीत वाढते आणि क्षेत्रासोबत नाहीशी होते",
+          },
+          right: {
+            en: "paramagnetism",
+            hi: "अनुचुंबकत्व",
+            mr: "अनुचुंबकत्व",
+          },
+        },
+      },
+      {
+        id: "ferromagnetism",
+        name: {
+          en: "Ferromagnetism",
+          hi: "लौहचुंबकत्व",
+          mr: "लोहचुंबकत्व",
+        },
+        kind: "class of magnetic material",
+        prompt: {
+          en: "Iron, cobalt and nickel are pulled powerfully into a field, thousands of times more strongly than the feeble classes, and a piece of iron keeps some of its magnetisation after the field is taken away. Which class is this?",
+          hi: "लोहा, कोबाल्ट और निकल क्षेत्र में ज़ोर से खिंचते हैं, कमज़ोर वर्गों से हज़ारों गुना अधिक बल से, और लोहे का टुकड़ा क्षेत्र हटा लेने के बाद भी अपना कुछ चुंबकन रखे रहता है। यह कौन-सा वर्ग है?",
+          mr: "लोखंड, कोबाल्ट आणि निकेल क्षेत्रात जोराने ओढले जातात, क्षीण वर्गांहून हजारो पट अधिक जोराने, आणि लोखंडाचा तुकडा क्षेत्र काढून घेतल्यावरही आपले काही चुंबकन टिकवून ठेवतो. हा कोणता वर्ग?",
+        },
+        statement: {
+          en: "Ferromagnetism is a very strong attraction into a field, produced when neighbouring atomic moments lock parallel to one another over whole domains rather than aligning one at a time.",
+          hi: "लौहचुंबकत्व क्षेत्र में बहुत प्रबल आकर्षण है, जो तब बनता है जब पड़ोसी परमाणविक आघूर्ण एक-एक करके संरेखित होने के बजाय पूरे प्रांतों में एक-दूसरे के समांतर जकड़ जाते हैं।",
+          mr: "लोहचुंबकत्व म्हणजे क्षेत्रात होणारे अतिशय तीव्र आकर्षण, जे तेव्हा घडते जेव्हा शेजारची अणुआघूर्णे एकेक करून संरेखित होण्याऐवजी अख्ख्या प्रांतांत एकमेकांना समांतर जखडतात.",
+        },
+        detail: {
+          en: "Magnetising such a material is largely a matter of favourably oriented domains GROWING at the expense of their neighbours, which is a rearrangement of boundaries rather than a turning of individual atoms.",
+          hi: "ऐसे पदार्थ का चुंबकन मुख्यतः इसका मामला है कि अनुकूल दिशा वाले प्रांत अपने पड़ोसियों की क़ीमत पर बढ़ते हैं, जो अलग-अलग परमाणुओं के घूमने के बजाय सीमाओं का पुनर्विन्यास है।",
+          mr: "अशा पदार्थाचे चुंबकन मुख्यतः याची बाब आहे की अनुकूल दिशेचे प्रांत आपल्या शेजाऱ्यांच्या खर्चाने वाढतात, जे वेगवेगळ्या अणूंच्या फिरण्याऐवजी सीमांची पुनर्मांडणी आहे.",
+        },
+        extra: {
+          en: "Above a definite temperature — 1043 K for iron — the domain order collapses and the material turns paramagnetic, which is why a red-hot nail is no longer picked up by a magnet.",
+          hi: "एक निश्चित ताप से ऊपर — लोहे के लिए 1043 K — प्रांतों की व्यवस्था ढह जाती है और पदार्थ अनुचुंबकीय हो जाता है, इसीलिए लाल-गर्म कील को चुंबक अब नहीं उठाता।",
+          mr: "एका ठराविक तापमानाच्या वर — लोखंडासाठी 1043 K — प्रांतांची व्यवस्था कोसळते आणि पदार्थ अनुचुंबकीय होतो, म्हणूनच लालबुंद तापलेला खिळा चुंबक आता उचलत नाही.",
+        },
+        pair: {
+          left: {
+            en: "Remembers, after the field has gone",
+            hi: "क्षेत्र चले जाने के बाद भी याद रखता है",
+            mr: "क्षेत्र गेल्यावरही लक्षात ठेवतो",
+          },
+          right: {
+            en: "ferromagnetism",
+            hi: "लौहचुंबकत्व",
+            mr: "लोहचुंबकत्व",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A student cuts a bar magnet in half expecting to obtain a separate north pole and a separate south pole, and finds instead two complete magnets. Cutting again gives four. Explain why no amount of cutting will ever isolate a pole, and what law records this.",
+          hi: "एक विद्यार्थी छड़ चुंबक को बीच से काटता है यह आशा करते हुए कि उसे अलग उत्तर ध्रुव और अलग दक्षिण ध्रुव मिलेंगे, और उसके बजाय दो पूरे चुंबक पाता है। फिर काटने पर चार। समझाओ कि कितना भी काटने से कोई ध्रुव कभी अलग क्यों नहीं होगा, और कौन-सा नियम इसे दर्ज करता है।",
+          mr: "एक विद्यार्थी दांडा चुंबक मधून कापतो, वेगळा उत्तर ध्रुव आणि वेगळा दक्षिण ध्रुव मिळेल अशी आशा करत, आणि त्याऐवजी दोन पूर्ण चुंबक मिळवतो. पुन्हा कापल्यावर चार. कितीही कापले तरी एकही ध्रुव कधीच वेगळा का होणार नाही, आणि कोणता नियम हे नोंदवतो, ते समजावा.",
+        },
+        choices: [
+          {
+            en: "Because there were never two poles to separate. The magnet's field comes from circulating charge inside it — orbiting and spinning electrons acting as microscopic current loops — so it is a DIPOLE, and cutting a dipole in half gives two smaller dipoles exactly as cutting a solenoid gives two shorter solenoids. The 'poles' are the two ends of one object, not two objects stuck together. This is recorded as Gauss's law for magnetism: the net magnetic flux through ANY closed surface is zero, because a lone pole would be a source from which lines began, and magnetic field lines are always closed loops that continue through the magnet's interior",
+            hi: "क्योंकि अलग करने को दो ध्रुव कभी थे ही नहीं। चुंबक का क्षेत्र उसके भीतर परिक्रमा करते आवेश से आता है — कक्षा में घूमते और चक्रण करते इलेक्ट्रॉन सूक्ष्म धारा-लूप की तरह — अतः वह द्विध्रुव है, और द्विध्रुव को बीच से काटने पर दो छोटे द्विध्रुव मिलते हैं, ठीक वैसे जैसे परिनालिका काटने पर दो छोटी परिनालिकाएँ। 'ध्रुव' एक ही वस्तु के दो सिरे हैं, चिपकाई हुई दो वस्तुएँ नहीं। यह चुंबकत्व के लिए गाउस के नियम के रूप में दर्ज है: किसी भी बंद पृष्ठ से नेट चुंबकीय फ्लक्स शून्य है, क्योंकि अकेला ध्रुव वह स्रोत होता जहाँ से रेखाएँ शुरू होतीं, और चुंबकीय क्षेत्र रेखाएँ सदा बंद लूप हैं जो चुंबक के भीतर से होकर चलती रहती हैं",
+            mr: "कारण वेगळे करायला दोन ध्रुव कधी होतेच नाहीत. चुंबकाचे क्षेत्र त्याच्या आत फिरणाऱ्या प्रभारापासून येते — कक्षेत फिरणारे आणि परिवलन करणारे इलेक्ट्रॉन सूक्ष्म धारा-वळशांसारखे — म्हणून तो द्विध्रुव आहे, आणि द्विध्रुव मधून कापल्यास दोन लहान द्विध्रुव मिळतात, अगदी तसेच जसे सोलेनॉइड कापल्यास दोन लहान सोलेनॉइड. 'ध्रुव' ही एकाच वस्तूची दोन टोके आहेत, चिकटवलेल्या दोन वस्तू नव्हे. हे चुंबकत्वासाठीच्या गॉसच्या नियमाच्या रूपात नोंदलेले आहे: कोणत्याही बंद पृष्ठातून जाणारा निव्वळ चुंबकीय फ्लक्स शून्य आहे, कारण एकटा ध्रुव हा तो स्रोत ठरला असता जिथून रेषा सुरू होतात, आणि चुंबकीय क्षेत्ररेषा नेहमी बंद वळसे आहेत जे चुंबकाच्या आतून चालत राहतात",
+          },
+          {
+            en: "Because the cut is never clean enough: a perfectly sharp cut through the exact centre of a magnet would in fact separate the two poles",
+            hi: "क्योंकि कटान कभी पर्याप्त साफ़ नहीं होता: चुंबक के ठीक केंद्र से एकदम तेज़ कटान वस्तुतः दोनों ध्रुवों को अलग कर देता",
+            mr: "कारण कापणी कधीच पुरेशी स्वच्छ नसते: चुंबकाच्या नेमक्या केंद्रातून अगदी धारदार कापणी प्रत्यक्षात दोन्ही ध्रुव वेगळे करेल",
+          },
+          {
+            en: "Because each half instantly re-magnetises the other by induction, so a pole is isolated for a moment and then destroyed",
+            hi: "क्योंकि हर आधा भाग प्रेरण से दूसरे को तुरंत फिर चुंबकित कर देता है, अतः ध्रुव एक क्षण के लिए अलग होता है और फिर नष्ट हो जाता है",
+            mr: "कारण प्रत्येक अर्धा भाग प्रेरणाने दुसऱ्याला लगेच पुन्हा चुंबकित करतो, म्हणून ध्रुव क्षणभर वेगळा होतो आणि मग नष्ट होतो",
+          },
+          {
+            en: "Because magnetic poles always occur in pairs by convention, and a single pole would simply be given both names at once",
+            hi: "क्योंकि चुंबकीय ध्रुव परिपाटी से सदा युग्मों में आते हैं, और अकेले ध्रुव को बस दोनों नाम एक साथ दे दिए जाते",
+            mr: "कारण चुंबकीय ध्रुव संकेतानुसार नेहमी जोड्यांत येतात, आणि एकट्या ध्रुवाला फक्त दोन्ही नावे एकाच वेळी दिली गेली असती",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The experiment is real, it has been done to the limit of what can be cut, and the answer is not that isolation is difficult — it is that there is nothing there to isolate. Start with what a magnet is. The whole of Chapter 4 was about currents producing magnetic fields, and this chapter's central identification is that a bar magnet is doing the same thing with currents you cannot see: each electron contributes a tiny loop from its orbital motion and another from its spin, and in iron enough of these lock parallel that their fields add to something you can hang a fridge note from. So a magnet is not an object with a north thing at one end and a south thing at the other. It is a solenoid whose windings are electrons. Now cut it. Cut a solenoid across the middle and you get two shorter solenoids, each with its own field emerging from one end and re-entering the other. Nothing about the halves is anomalous; each is simply a solenoid with fewer turns. The 'poles' were never components — they were the two ENDS of one thing, in the same way that cutting a stick in half gives two sticks and never a left-end without a right-end. The formal statement is Gauss's law for magnetism: the net magnetic flux through any closed surface is exactly zero. Compare it with its electric partner. The electrostatic law has q_enclosed/ε₀ on the right, and that term is a licence to have a source: draw a surface round a positive charge and lines stream out through it with nothing coming back in. The magnetic law has zero there. There is no such thing as enclosed magnetic charge, so a surface can never have more lines leaving than entering, and a lone pole — which by definition would be a place lines started from — is forbidden. Draw a surface round one end of a bar magnet and the lines that emerge from the pole face all re-enter through the part of the surface that cuts through the middle of the magnet, because inside the magnet the field runs from south to north. The total is zero, as the law requires. Two footnotes are worth keeping. First, this is a statement about what has been observed, not a theorem: nothing in the rest of electromagnetism would break if monopoles existed, and searches for them continue, with the theory adjusted to a non-zero right-hand side if one is ever found. Second, the asymmetry has a visible consequence in every field diagram in the book — electric lines begin and end on charges, magnetic lines close on themselves, and a diagram of a magnetic field with a loose end in it is wrong on inspection. (The second and third options treat the impossibility as practical rather than structural; the fourth makes it a matter of naming, when it is a measurable claim about flux.)",
+          hi: "प्रयोग असली है, जितना काटा जा सकता है वहाँ तक किया जा चुका है, और उत्तर यह नहीं कि अलग करना कठिन है — उत्तर यह है कि अलग करने को वहाँ कुछ है ही नहीं। पहले यह लो कि चुंबक है क्या। पूरा चौथा अध्याय धाराओं से चुंबकीय क्षेत्र बनने के बारे में था, और इस अध्याय की केंद्रीय पहचान यह है कि छड़ चुंबक वही काम उन धाराओं से कर रहा है जो तुम्हें दिखती नहीं: हर इलेक्ट्रॉन अपनी कक्षीय गति से एक नन्हा लूप देता है और अपने चक्रण से दूसरा, और लोहे में इनमें से पर्याप्त समांतर जकड़ जाते हैं कि उनके क्षेत्र जुड़कर वह बन जाएँ जिससे तुम फ़्रिज पर पर्ची टाँग सको। अतः चुंबक ऐसी वस्तु नहीं जिसके एक सिरे पर उत्तर नाम की चीज़ और दूसरे पर दक्षिण नाम की। वह ऐसी परिनालिका है जिसकी लपेटें इलेक्ट्रॉन हैं। अब उसे काटो। परिनालिका को बीच से काटो और दो छोटी परिनालिकाएँ मिलती हैं, हर एक का अपना क्षेत्र एक सिरे से निकलता और दूसरे से लौटता। आधों में कुछ भी असामान्य नहीं; हर एक बस कम फेरों वाली परिनालिका है। 'ध्रुव' कभी घटक थे ही नहीं — वे एक ही चीज़ के दो सिरे थे, ठीक वैसे जैसे छड़ी को बीच से काटने पर दो छड़ियाँ मिलती हैं, बाएँ सिरे बिना दाएँ सिरे के कभी नहीं। औपचारिक कथन चुंबकत्व के लिए गाउस का नियम है: किसी भी बंद पृष्ठ से नेट चुंबकीय फ्लक्स ठीक शून्य है। उसकी विद्युत जोड़ी से तुलना करो। स्थिरवैद्युत नियम के दाईं ओर q_घिरा/ε₀ है, और वह पद स्रोत रखने का लाइसेंस है: धन आवेश के चारों ओर पृष्ठ खींचो और रेखाएँ उसमें से बाहर बहती हैं, भीतर कुछ नहीं लौटता। चुंबकीय नियम के वहाँ शून्य है। घिरा चुंबकीय आवेश जैसी कोई चीज़ है ही नहीं, अतः किसी पृष्ठ से निकलने वाली रेखाएँ आने वाली से अधिक कभी नहीं हो सकतीं, और अकेला ध्रुव — जो परिभाषा से वह जगह होता जहाँ से रेखाएँ शुरू होतीं — वर्जित है। छड़ चुंबक के एक सिरे के चारों ओर पृष्ठ खींचो और ध्रुव-फलक से निकलने वाली सारी रेखाएँ पृष्ठ के उस भाग से फिर भीतर आ जाती हैं जो चुंबक के बीच से कटता है, क्योंकि चुंबक के भीतर क्षेत्र दक्षिण से उत्तर की ओर चलता है। कुल शून्य है, जैसा नियम माँगता है। दो टिप्पणियाँ रखने योग्य हैं। पहली, यह इस बारे में कथन है कि क्या देखा गया, प्रमेय नहीं: यदि एकध्रुव होते तो शेष विद्युत चुंबकत्व में कुछ भी न टूटता, और उनकी खोज जारी है, और कभी एक मिल गया तो सिद्धांत को शून्येतर दाएँ पक्ष के साथ ढाल लिया जाएगा। दूसरी, इस असममिति का पुस्तक के हर क्षेत्र-चित्र में दिखने वाला परिणाम है — विद्युत रेखाएँ आवेशों पर शुरू और ख़त्म होती हैं, चुंबकीय रेखाएँ अपने पर बंद होती हैं, और जिस चुंबकीय क्षेत्र के चित्र में कोई खुला सिरा हो वह देखते ही ग़लत है। (दूसरा और तीसरा विकल्प असंभवता को संरचनात्मक के बजाय व्यावहारिक बना देते हैं; चौथा उसे नामकरण की बात बना देता है, जबकि वह फ्लक्स के बारे में नापा जा सकने वाला दावा है।)",
+          mr: "प्रयोग खरा आहे, जितके कापता येईल तिथवर तो केला गेला आहे, आणि उत्तर हे नाही की वेगळे करणे कठीण आहे — उत्तर हे आहे की वेगळे करायला तिथे काहीच नाही. आधी चुंबक म्हणजे काय ते घ्या. अख्खे चौथे प्रकरण धारांपासून चुंबकीय क्षेत्रे बनण्याबद्दल होते, आणि या प्रकरणाची मध्यवर्ती ओळख अशी की दांडा चुंबक तेच काम त्या धारांनी करत आहे ज्या तुम्हाला दिसत नाहीत: प्रत्येक इलेक्ट्रॉन आपल्या कक्षीय गतीतून एक चिमुकले वळसे देतो आणि आपल्या परिवलनातून दुसरे, आणि लोखंडात यांपैकी पुरेसे समांतर जखडतात की त्यांची क्षेत्रे जुळून ते बनते ज्यातून तुम्ही फ्रिजवर चिठ्ठी लटकवू शकता. म्हणून चुंबक ही अशी वस्तू नाही जिच्या एका टोकाला उत्तर नावाची गोष्ट आणि दुसऱ्या टोकाला दक्षिण. तो असे सोलेनॉइड आहे ज्याचे वेढे इलेक्ट्रॉन आहेत. आता तो कापा. सोलेनॉइड मधून कापा आणि दोन लहान सोलेनॉइड मिळतात, प्रत्येकाचे स्वतःचे क्षेत्र एका टोकातून निघते आणि दुसऱ्यातून परतते. अर्ध्यांत काहीही असामान्य नाही; प्रत्येक फक्त कमी वेढ्यांचे सोलेनॉइड आहे. 'ध्रुव' कधी घटक होतेच नाहीत — ती एकाच गोष्टीची दोन टोके होती, अगदी तसेच जसे काठी मधून कापल्यास दोन काठ्या मिळतात, उजव्या टोकाविना डावे टोक कधीच नाही. औपचारिक विधान म्हणजे चुंबकत्वासाठीचा गॉसचा नियम: कोणत्याही बंद पृष्ठातून जाणारा निव्वळ चुंबकीय फ्लक्स नेमका शून्य आहे. त्याच्या विद्युत जोडीदाराशी तुलना करा. स्थिरविद्युत नियमाच्या उजवीकडे q_घेरलेला/ε₀ आहे, आणि ते पद स्रोत बाळगण्याचा परवाना आहे: धन प्रभाराभोवती पृष्ठ काढा आणि रेषा त्यातून बाहेर वाहतात, आत काहीच परतत नाही. चुंबकीय नियमाच्या तिथे शून्य आहे. घेरलेला चुंबकीय प्रभार अशी गोष्टच नाही, म्हणून कोणत्याही पृष्ठातून बाहेर पडणाऱ्या रेषा आत येणाऱ्यांहून अधिक कधीच असू शकत नाहीत, आणि एकटा ध्रुव — जो व्याख्येने ती जागा ठरली असती जिथून रेषा सुरू होतात — वर्ज्य आहे. दांडा चुंबकाच्या एका टोकाभोवती पृष्ठ काढा आणि ध्रुव-पृष्ठभागातून निघणाऱ्या सर्व रेषा पृष्ठाच्या त्या भागातून पुन्हा आत येतात जो चुंबकाच्या मधून कापतो, कारण चुंबकाच्या आत क्षेत्र दक्षिणेकडून उत्तरेकडे चालते. एकूण शून्य आहे, जसे नियम मागतो. दोन टिपा ठेवण्याजोग्या आहेत. पहिली, हे काय निरीक्षिले गेले याबद्दलचे विधान आहे, प्रमेय नव्हे: एकध्रुव अस्तित्वात असते तर उरलेल्या विद्युतचुंबकत्वात काहीही मोडले नसते, आणि त्यांचा शोध चालूच आहे, आणि कधी एक सापडला तर सिद्धांत शून्येतर उजव्या बाजूसह जुळवून घेतला जाईल. दुसरी, या असममितीचा पुस्तकातल्या प्रत्येक क्षेत्र-चित्रात दिसणारा परिणाम आहे — विद्युत रेषा प्रभारांवर सुरू आणि संपतात, चुंबकीय रेषा स्वतःवर बंद होतात, आणि ज्या चुंबकीय क्षेत्राच्या चित्रात मोकळे टोक असेल ते पाहताक्षणी चूक आहे. (दुसरा आणि तिसरा पर्याय अशक्यतेला संरचनात्मक ऐवजी व्यावहारिक बनवतात; चौथा तिला नामकरणाची बाब बनवतो, तर ती फ्लक्सबद्दलचा मोजता येणारा दावा आहे.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A workshop must choose between two ferromagnetic alloys. Alloy P has a tall narrow hysteresis loop; alloy Q has a wide loop enclosing a large area. One is to become the core of a mains transformer and the other a permanent magnet for a loudspeaker. Assign them and justify the assignment.",
+          hi: "एक कारख़ाने को दो लौहचुंबकीय मिश्रधातुओं में से चुनना है। मिश्रधातु P का शैथिल्य लूप ऊँचा और सँकरा है; मिश्रधातु Q का लूप चौड़ा है और बड़ा क्षेत्रफल घेरता है। एक को मुख्य आपूर्ति के ट्रांसफ़ॉर्मर की क्रोड बनना है और दूसरे को लाउडस्पीकर का स्थायी चुंबक। उन्हें बाँटो और बँटवारे को न्यायसंगत ठहराओ।",
+          mr: "एका कार्यशाळेला दोन लोहचुंबकीय मिश्रधातूंपैकी निवडायचे आहे. मिश्रधातू P चा शैथिल्य वळसा उंच आणि अरुंद आहे; मिश्रधातू Q चा वळसा रुंद असून मोठे क्षेत्रफळ घेरतो. एकाला मुख्य पुरवठ्याच्या ट्रान्सफॉर्मरचा गाभा बनायचे आहे आणि दुसऱ्याला लाउडस्पीकरचा कायम चुंबक. त्यांची नेमणूक करा आणि ती न्याय्य ठरवा.",
+        },
+        choices: [
+          {
+            en: "P becomes the transformer core and Q the permanent magnet. The area of the hysteresis loop is the energy dissipated as heat per unit volume per cycle, and a mains core is taken round its loop fifty times a second, so a narrow loop — low coercivity, easily magnetised and easily reversed — keeps that loss small. A permanent magnet is magnetised once and must then resist being demagnetised by stray fields, knocks and heat, so it wants high coercivity and high retentivity, which is exactly what a wide loop describes. The two requirements are opposite, which is why no single alloy serves both jobs",
+            hi: "P ट्रांसफ़ॉर्मर की क्रोड बनता है और Q स्थायी चुंबक। शैथिल्य लूप का क्षेत्रफल प्रति एकांक आयतन प्रति चक्र ऊष्मा के रूप में खोई ऊर्जा है, और मुख्य आपूर्ति की क्रोड सेकंड में पचास बार अपने लूप का चक्कर लगाती है, अतः सँकरा लूप — कम निग्राहिता, आसानी से चुंबकित और आसानी से उलटा — उस हानि को छोटा रखता है। स्थायी चुंबक एक बार चुंबकित होता है और फिर उसे भटके क्षेत्रों, ठोकरों और ऊष्मा से विचुंबकित होने का प्रतिरोध करना पड़ता है, अतः उसे ऊँची निग्राहिता और ऊँची धारणशीलता चाहिए, और चौड़ा लूप ठीक यही बताता है। दोनों माँगें उलटी हैं, इसीलिए कोई अकेली मिश्रधातु दोनों काम नहीं करती",
+            mr: "P हा ट्रान्सफॉर्मरचा गाभा बनतो आणि Q कायम चुंबक. शैथिल्य वळशाचे क्षेत्रफळ म्हणजे प्रति एकक घनफळ प्रति चक्र उष्णतेच्या रूपात गमावलेली ऊर्जा, आणि मुख्य पुरवठ्याचा गाभा सेकंदाला पन्नास वेळा आपल्या वळशाची फेरी मारतो, म्हणून अरुंद वळसा — कमी निग्राहिता, सहज चुंबकित आणि सहज उलटवला जाणारा — ती हानी लहान ठेवतो. कायम चुंबक एकदा चुंबकित होतो आणि मग त्याला भरकटलेल्या क्षेत्रांपासून, धक्क्यांपासून आणि उष्णतेपासून विचुंबकित होण्याला विरोध करावा लागतो, म्हणून त्याला उंच निग्राहिता आणि उंच धारणशीलता हवी, आणि रुंद वळसा नेमके हेच वर्णन करतो. दोन्ही मागण्या उलट आहेत, म्हणूनच कोणतीही एकच मिश्रधातू दोन्ही कामे करत नाही",
+          },
+          {
+            en: "Q becomes the transformer core and P the permanent magnet, because a wide loop means the material holds a strong field and a core must hold a strong field to transfer power",
+            hi: "Q ट्रांसफ़ॉर्मर की क्रोड बनता है और P स्थायी चुंबक, क्योंकि चौड़े लूप का अर्थ है पदार्थ प्रबल क्षेत्र रोके रखता है और शक्ति स्थानांतरित करने के लिए क्रोड को प्रबल क्षेत्र रोकना ही पड़ता है",
+            mr: "Q हा ट्रान्सफॉर्मरचा गाभा बनतो आणि P कायम चुंबक, कारण रुंद वळसा म्हणजे पदार्थ तीव्र क्षेत्र धरून ठेवतो आणि शक्ती हस्तांतरित करण्यासाठी गाभ्याला तीव्र क्षेत्र धरावेच लागते",
+          },
+          {
+            en: "Either alloy will serve either purpose, since the loop's shape affects only how quickly the material magnetises and not how much energy it uses",
+            hi: "कोई भी मिश्रधातु किसी भी काम के लिए चलेगी, क्योंकि लूप का आकार केवल यह तय करता है कि पदार्थ कितनी जल्दी चुंबकित होता है, यह नहीं कि वह कितनी ऊर्जा ख़र्च करता है",
+            mr: "कोणतीही मिश्रधातू कोणत्याही कामासाठी चालेल, कारण वळशाचा आकार केवळ पदार्थ किती लवकर चुंबकित होतो हे ठरवतो, तो किती ऊर्जा खर्च करतो हे नाही",
+          },
+          {
+            en: "P becomes the transformer core and Q the permanent magnet, but only because P is the cheaper alloy — magnetically the two are interchangeable",
+            hi: "P ट्रांसफ़ॉर्मर की क्रोड बनता है और Q स्थायी चुंबक, पर केवल इसलिए कि P सस्ती मिश्रधातु है — चुंबकीय दृष्टि से दोनों आपस में बदले जा सकते हैं",
+            mr: "P हा ट्रान्सफॉर्मरचा गाभा बनतो आणि Q कायम चुंबक, पण केवळ यामुळे की P स्वस्त मिश्रधातू आहे — चुंबकीय दृष्ट्या दोन्ही अदलाबदल करण्याजोगे आहेत",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "A hysteresis loop looks like a curiosity when it is first drawn and turns out to be an engineering specification. Read the axes: the horizontal is the magnetising field H applied from outside, the vertical is the magnetisation B the material actually reaches. Take a ferromagnet round a full cycle of H and the curve does not retrace itself — B lags behind H, so the return path lies above the outgoing one, and the two enclose an area. Three numbers can be read straight off. RETENTIVITY is the value of B left when H has been brought back to zero: what the material remembers. COERCIVITY is the reverse field needed to push B back to zero: how hard it is to make it forget. And the AREA of the loop is the energy dissipated as heat per unit volume per cycle, because going round the loop is a process in which the domain walls move against friction and do not give the work back. Now the two applications, which want opposite things. A mains transformer core is magnetised, demagnetised, magnetised the other way and demagnetised again, fifty times every second, for as long as the transformer is switched on. Every one of those cycles costs the loop's area in heat, and that heat is pure loss — it warms the core, it must be carried away, and it appears on the electricity bill of everyone downstream. So the core wants the SMALLEST possible loop area: low coercivity, easily flipped, remembering as little as possible. Soft iron and silicon steel are chosen for exactly this, and the same reasoning drives the other core losses — the laminations that break up eddy currents are a separate but parallel economy. A loudspeaker magnet has the opposite job. It is magnetised once at the factory and then must hold that magnetisation for twenty years while the voice coil's own field pushes at it thousands of times a second, while the speaker is dropped, and while the cabinet warms up. Anything that demagnetises easily is useless. So it wants high retentivity, so that it keeps a strong field with no external help, and high coercivity, so that stray fields cannot undo it — and those two together are precisely a wide loop. The dissipation that made a wide loop unacceptable in the transformer is irrelevant here, because this magnet is never taken round its loop at all after the first time. That is the general shape of the answer, and it is worth stating on its own: the hysteresis loop is not good or bad, and a material is not better or worse for having a wide one. The loop is a description, and which description you want depends on whether the material is going to be cycled continuously or set once and left alone. (The second option reads the loop's width as field strength; the third denies that the area is an energy; the fourth reaches the right assignment by an irrelevant route, which in an examination is worth no more than the wrong assignment.)",
+          hi: "शैथिल्य लूप पहली बार खींचे जाने पर कौतुक लगता है और निकलता अभियांत्रिकी विनिर्देश है। अक्ष पढ़ो: क्षैतिज बाहर से लगाया गया चुंबकन क्षेत्र H है, ऊर्ध्वाधर वह चुंबकन B है जो पदार्थ वस्तुतः पाता है। लौहचुंबक को H के पूरे चक्र पर घुमाओ और वक्र अपने ही रास्ते नहीं लौटता — B, H से पीछे रहता है, अतः लौटने का पथ जाने वाले के ऊपर पड़ता है, और दोनों मिलकर एक क्षेत्रफल घेरते हैं। तीन संख्याएँ सीधे पढ़ी जा सकती हैं। धारणशीलता वह B है जो H के शून्य पर लौट आने पर बचा रहता है: पदार्थ जो याद रखता है। निग्राहिता वह उलटा क्षेत्र है जो B को शून्य तक धकेलने को चाहिए: उसे भुलाना कितना कठिन है। और लूप का क्षेत्रफल प्रति एकांक आयतन प्रति चक्र ऊष्मा के रूप में खोई ऊर्जा है, क्योंकि लूप का चक्कर वह प्रक्रिया है जिसमें प्रांतों की दीवारें घर्षण के विरुद्ध चलती हैं और कार्य वापस नहीं देतीं। अब दोनों उपयोग, जो उलटी चीज़ें चाहते हैं। मुख्य आपूर्ति के ट्रांसफ़ॉर्मर की क्रोड चुंबकित, विचुंबकित, दूसरी ओर चुंबकित और फिर विचुंबकित होती है, हर सेकंड पचास बार, जब तक ट्रांसफ़ॉर्मर चालू है। उनमें से हर चक्र लूप के क्षेत्रफल जितनी ऊष्मा लेता है, और वह ऊष्मा शुद्ध हानि है — वह क्रोड को गर्म करती है, उसे हटाना पड़ता है, और वह आगे के सब उपभोक्ताओं के बिजली बिल पर आती है। अतः क्रोड सबसे छोटा संभव लूप क्षेत्रफल चाहती है: कम निग्राहिता, आसानी से पलटने वाली, जितना कम हो सके उतना याद रखने वाली। नरम लोहा और सिलिकॉन इस्पात ठीक इसीलिए चुने जाते हैं, और वही तर्क क्रोड की दूसरी हानियों को भी चलाता है — भँवर धाराएँ तोड़ने वाली परतें अलग पर समांतर बचत हैं। लाउडस्पीकर के चुंबक का काम उलटा है। वह कारख़ाने में एक बार चुंबकित होता है और फिर बीस साल तक वह चुंबकन रोके रखना है जबकि वाक-कुंडली का अपना क्षेत्र उस पर सेकंड में हज़ारों बार धक्का देता है, जबकि स्पीकर गिरता है, और जबकि केबिनेट गर्म होती है। जो कुछ भी आसानी से विचुंबकित हो जाए वह बेकार है। अतः उसे ऊँची धारणशीलता चाहिए, ताकि वह बिना बाहरी मदद के प्रबल क्षेत्र रखे, और ऊँची निग्राहिता, ताकि भटके क्षेत्र उसे मिटा न सकें — और ये दोनों मिलकर ठीक चौड़ा लूप हैं। जिस क्षय ने चौड़े लूप को ट्रांसफ़ॉर्मर में अस्वीकार्य बनाया वह यहाँ अप्रासंगिक है, क्योंकि यह चुंबक पहली बार के बाद अपने लूप का चक्कर लगाता ही नहीं। उत्तर का सामान्य आकार यही है, और उसे अपने आप में कहना चाहिए: शैथिल्य लूप अच्छा या बुरा नहीं होता, और चौड़ा लूप होने से पदार्थ बेहतर या बदतर नहीं हो जाता। लूप एक वर्णन है, और तुम्हें कौन-सा वर्णन चाहिए यह इस पर निर्भर है कि पदार्थ लगातार चक्रित होने वाला है या एक बार जमाकर छोड़ दिया जाने वाला। (दूसरा विकल्प लूप की चौड़ाई को क्षेत्र की प्रबलता पढ़ लेता है; तीसरा इससे इनकार करता है कि क्षेत्रफल एक ऊर्जा है; चौथा सही बँटवारे तक अप्रासंगिक रास्ते से पहुँचता है, जो परीक्षा में ग़लत बँटवारे से अधिक मूल्य का नहीं।)",
+          mr: "शैथिल्य वळसा प्रथम काढल्यावर कुतूहल वाटतो आणि निघतो अभियांत्रिकी विनिर्देश. अक्ष वाचा: आडवा म्हणजे बाहेरून लावलेले चुंबकन क्षेत्र H, उभा म्हणजे पदार्थ प्रत्यक्षात गाठत असलेले चुंबकन B. लोहचुंबकाला H च्या पूर्ण चक्रावर फिरवा आणि वक्र आपल्याच मार्गाने परतत नाही — B हा H च्या मागे राहतो, म्हणून परतीचा मार्ग जाणाऱ्याच्या वर पडतो, आणि दोन्ही मिळून एक क्षेत्रफळ घेरतात. तीन संख्या थेट वाचता येतात. धारणशीलता म्हणजे H शून्यावर परत आणल्यावर उरणारे B: पदार्थ जे लक्षात ठेवतो. निग्राहिता म्हणजे B ला शून्यापर्यंत ढकलण्यास लागणारे उलट क्षेत्र: त्याला विसरायला लावणे किती कठीण. आणि वळशाचे क्षेत्रफळ म्हणजे प्रति एकक घनफळ प्रति चक्र उष्णतेच्या रूपात गमावलेली ऊर्जा, कारण वळशाची फेरी ही अशी प्रक्रिया आहे जिच्यात प्रांतांच्या भिंती घर्षणाविरुद्ध हलतात आणि कार्य परत देत नाहीत. आता दोन उपयोग, ज्यांना उलट गोष्टी हव्या आहेत. मुख्य पुरवठ्याच्या ट्रान्सफॉर्मरचा गाभा चुंबकित, विचुंबकित, दुसऱ्या दिशेने चुंबकित आणि पुन्हा विचुंबकित होतो, दर सेकंदाला पन्नास वेळा, जोवर ट्रान्सफॉर्मर चालू आहे. त्यांतले प्रत्येक चक्र वळशाच्या क्षेत्रफळाइतकी उष्णता घेते, आणि ती उष्णता शुद्ध हानी आहे — ती गाभा तापवते, ती वाहून न्यावी लागते, आणि ती पुढच्या सर्व ग्राहकांच्या वीजबिलावर येते. म्हणून गाभ्याला सर्वांत लहान शक्य वळसा-क्षेत्रफळ हवे: कमी निग्राहिता, सहज पलटणारा, शक्य तितके कमी लक्षात ठेवणारा. मऊ लोखंड आणि सिलिकॉन पोलाद नेमके यासाठीच निवडले जातात, आणि तोच युक्तिवाद गाभ्याच्या इतर हानीही चालवतो — भोवरा धारा तोडणारे पापुद्रे ही वेगळी पण समांतर बचत आहे. लाउडस्पीकरच्या चुंबकाचे काम उलट आहे. तो कारखान्यात एकदा चुंबकित होतो आणि मग वीस वर्षे ते चुंबकन टिकवायचे आहे तर ध्वनिवेटोळ्याचे स्वतःचे क्षेत्र त्याच्यावर सेकंदाला हजारो वेळा ढकलते, तर स्पीकर पडतो, आणि तर पेटी तापते. जे काही सहज विचुंबकित होते ते निरुपयोगी. म्हणून त्याला उंच धारणशीलता हवी, जेणेकरून तो बाह्य मदतीविना तीव्र क्षेत्र ठेवेल, आणि उंच निग्राहिता, जेणेकरून भरकटलेली क्षेत्रे ते पुसू शकणार नाहीत — आणि ही दोन्ही मिळून नेमका रुंद वळसा आहे. ज्या हानीने रुंद वळसा ट्रान्सफॉर्मरमध्ये अस्वीकार्य केला ती इथे असंबद्ध आहे, कारण हा चुंबक पहिल्या वेळेनंतर आपल्या वळशाची फेरी मारतच नाही. उत्तराचा सर्वसाधारण आकार हाच आहे, आणि तो स्वतंत्रपणे सांगण्याजोगा आहे: शैथिल्य वळसा चांगला वा वाईट नसतो, आणि रुंद वळसा असल्याने पदार्थ चांगला वा वाईट होत नाही. वळसा हे वर्णन आहे, आणि तुम्हाला कोणते वर्णन हवे हे यावर अवलंबून की पदार्थ सतत चक्रित होणार आहे की एकदा जमवून सोडून द्यायचा आहे. (दुसरा पर्याय वळशाच्या रुंदीला क्षेत्राची तीव्रता वाचतो; तिसरा क्षेत्रफळ ही ऊर्जा आहे हे नाकारतो; चौथा बरोबर नेमणुकीपर्यंत असंबद्ध मार्गाने पोहोचतो, जे परीक्षेत चुकीच्या नेमणुकीहून अधिक मोलाचे नाही.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 6 — Electromagnetic Induction                                   */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "physics-12-electromagnetic-induction",
+    subject: "PHYSICS",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 6 — Electromagnetic Induction",
+      hi: "अध्याय 6 — वैद्युतचुंबकीय प्रेरण",
+      mr: "प्रकरण 6 — विद्युतचुंबकीय प्रेरण",
+    },
+    name: {
+      en: "Electromagnetic Induction",
+      hi: "वैद्युतचुंबकीय प्रेरण",
+      mr: "विद्युतचुंबकीय प्रेरण",
+    },
+    summary: {
+      en: "The discovery that the traffic runs both ways: a current had already been shown to make a magnetic field, and here a magnetic field that CHANGES makes a current. What matters is the rate of change and not the size of the field, so a strong steady field does nothing at all while a weak one being swept past a coil does plenty; the direction of the induced current is fixed by the requirement that it oppose whatever produced it, which is energy conservation rather than a rule of thumb; a circuit turns out to induce a voltage in itself when its own current changes; and the same effect that runs every generator in the world also shows up as unwanted heat in a lump of metal near a changing field.",
+      hi: "यह खोज कि यातायात दोनों दिशाओं में चलता है: धारा से चुंबकीय क्षेत्र बनना पहले ही दिखाया जा चुका था, और यहाँ बदलता हुआ चुंबकीय क्षेत्र धारा बनाता है। मायने परिवर्तन की दर रखती है, क्षेत्र का आकार नहीं, अतः प्रबल स्थिर क्षेत्र कुछ भी नहीं करता जबकि कुंडली के पास से गुज़ारा जाता कमज़ोर क्षेत्र बहुत कुछ करता है; प्रेरित धारा की दिशा इस माँग से तय होती है कि वह उसी का विरोध करे जिसने उसे बनाया, और यह अटकल का नियम नहीं बल्कि ऊर्जा संरक्षण है; कोई परिपथ अपनी ही धारा बदलने पर अपने भीतर वोल्टता प्रेरित करता निकलता है; और वही प्रभाव जो दुनिया का हर जनित्र चलाता है, बदलते क्षेत्र के पास पड़ी धातु के टुकड़े में अनचाही ऊष्मा बनकर भी प्रकट होता है।",
+      mr: "हा शोध की वाहतूक दोन्ही दिशांनी चालते: धारेपासून चुंबकीय क्षेत्र बनते हे आधीच दाखवले गेले होते, आणि इथे बदलणारे चुंबकीय क्षेत्र धारा बनवते. महत्त्वाची असते बदलाची गती, क्षेत्राचा आकार नव्हे, म्हणून तीव्र स्थिर क्षेत्र काहीच करत नाही तर वेटोळ्याजवळून सरकवलेले क्षीण क्षेत्र बरेच काही करते; प्रेरित धारेची दिशा या मागणीने ठरते की तिने ज्याने तिला घडवले त्याचाच विरोध करावा, आणि हा अंदाजाचा नियम नसून ऊर्जा संधारण आहे; एखादा परिपथ स्वतःची धारा बदलल्यावर स्वतःतच व्होल्टेज प्रेरित करतो असे निघते; आणि तोच परिणाम जो जगातले प्रत्येक जनित्र चालवतो, बदलत्या क्षेत्राजवळ पडलेल्या धातूच्या तुकड्यात नकोशी उष्णता बनूनही प्रकट होतो.",
+    },
+    position: 6,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "magnetic-flux",
+        name: {
+          en: "Magnetic flux",
+          hi: "चुंबकीय फ्लक्स",
+          mr: "चुंबकीय फ्लक्स",
+        },
+        kind: "quantity or effect",
+        prompt: {
+          en: "The quantity that counts how much field passes through a loop, which can be changed by altering the field, by altering the loop's area, or by simply turning the loop without touching either. What is it?",
+          hi: "वह राशि जो गिनती है कि किसी लूप में से कितना क्षेत्र गुज़रता है, और जिसे क्षेत्र बदलकर, लूप का क्षेत्रफल बदलकर, या दोनों को छुए बिना बस लूप घुमाकर बदला जा सकता है। यह क्या है?",
+          mr: "ती राशी जी मोजते की एखाद्या वळशातून किती क्षेत्र जाते, आणि जी क्षेत्र बदलून, वळशाचे क्षेत्रफळ बदलून, वा दोन्हींना स्पर्श न करता फक्त वळसा फिरवून बदलता येते. ती काय आहे?",
+        },
+        statement: {
+          en: "Magnetic flux is Φ = BA cos θ, the product of the field, the area and the cosine of the angle between the field and the normal to the surface, and it is measured in webers.",
+          hi: "चुंबकीय फ्लक्स Φ = BA cos θ है, अर्थात् क्षेत्र, क्षेत्रफल और क्षेत्र तथा पृष्ठ के अभिलंब के बीच के कोण की कोज्या का गुणनफल, और वह वेबर में नापा जाता है।",
+          mr: "चुंबकीय फ्लक्स म्हणजे Φ = BA cos θ, म्हणजे क्षेत्र, क्षेत्रफळ आणि क्षेत्र व पृष्ठाचा लंब यांतील कोनाचा कोसाइन यांचा गुणाकार, आणि तो वेबरमध्ये मोजला जातो.",
+        },
+        detail: {
+          en: "Three independent handles change it, and a question is usually testing which one is being turned: B, A or θ — a coil rotating in a steady field has both B and A fixed and still produces a changing flux.",
+          hi: "तीन स्वतंत्र मुठ्ठे उसे बदलते हैं, और प्रश्न प्रायः यही जाँचता है कि कौन-सा घुमाया जा रहा है: B, A या θ — स्थिर क्षेत्र में घूमती कुंडली में B और A दोनों नियत हैं और फिर भी वह बदलता फ्लक्स बनाती है।",
+          mr: "तीन स्वतंत्र मुठी तो बदलतात, आणि प्रश्न बहुधा हेच तपासतो की कोणती फिरवली जात आहे: B, A की θ — स्थिर क्षेत्रात फिरणाऱ्या वेटोळ्यात B आणि A दोन्ही स्थिर आहेत आणि तरीही ते बदलता फ्लक्स बनवते.",
+        },
+        extra: {
+          en: "It is a scalar despite being built out of a vector, which is why fluxes through the turns of a coil simply add and a coil of N turns has flux linkage NΦ.",
+          hi: "सदिश से बना होने के बावजूद यह अदिश है, इसीलिए कुंडली के फेरों से गुज़रते फ्लक्स बस जुड़ जाते हैं और N फेरों की कुंडली का फ्लक्स-बंधन NΦ होता है।",
+          mr: "सदिशापासून बनलेला असूनही हा अदिश आहे, म्हणूनच वेटोळ्याच्या वेढ्यांतून जाणारे फ्लक्स फक्त जुळतात आणि N वेढ्यांच्या वेटोळ्याचे फ्लक्स-बंधन NΦ असते.",
+        },
+        pair: {
+          left: {
+            en: "Three handles: the field, the area, the angle",
+            hi: "तीन मुठ्ठे: क्षेत्र, क्षेत्रफल, कोण",
+            mr: "तीन मुठी: क्षेत्र, क्षेत्रफळ, कोन",
+          },
+          right: {
+            en: "magnetic flux",
+            hi: "चुंबकीय फ्लक्स",
+            mr: "चुंबकीय फ्लक्स",
+          },
+        },
+      },
+      {
+        id: "self-inductance",
+        name: {
+          en: "Self-inductance",
+          hi: "स्वप्रेरकत्व",
+          mr: "स्वयंप्रेरकत्व",
+        },
+        kind: "quantity or effect",
+        prompt: {
+          en: "A coil's own changing current changes its own flux, and the coil therefore opposes changes in the current flowing through it — sluggish to start and reluctant to stop. Which property measures this?",
+          hi: "कुंडली की अपनी बदलती धारा उसका अपना फ्लक्स बदलती है, और इसलिए कुंडली अपने भीतर बहती धारा के परिवर्तनों का विरोध करती है — चलने में सुस्त और रुकने में अनिच्छुक। कौन-सा गुण इसे नापता है?",
+          mr: "वेटोळ्याची स्वतःची बदलती धारा त्याचाच फ्लक्स बदलते, आणि म्हणून वेटोळे स्वतःतून वाहणाऱ्या धारेच्या बदलांना विरोध करते — सुरू व्हायला सुस्त आणि थांबायला नाखूश. कोणता गुणधर्म हे मोजतो?",
+        },
+        statement: {
+          en: "Self-inductance L is the flux linkage per unit current, and it makes a coil produce a back-e.m.f. of −L dI/dt whenever its own current changes.",
+          hi: "स्वप्रेरकत्व L प्रति एकांक धारा फ्लक्स-बंधन है, और वह कुंडली से −L dI/dt का प्रति-विद्युत वाहक बल पैदा करवाता है जब भी उसकी अपनी धारा बदले।",
+          mr: "स्वयंप्रेरकत्व L म्हणजे प्रति एकक धारा फ्लक्स-बंधन, आणि ते वेटोळ्याकडून −L dI/dt इतके प्रति-विद्युतचालक बल निर्माण करवते जेव्हा जेव्हा त्याची स्वतःची धारा बदलेल.",
+        },
+        detail: {
+          en: "It depends only on geometry and the core material, exactly as capacitance does, so a coil's inductance is fixed the moment it is wound and does not change with the current it happens to be carrying.",
+          hi: "यह केवल ज्यामिति और क्रोड के पदार्थ पर निर्भर है, ठीक जैसे धारिता, अतः कुंडली का प्रेरकत्व लपेटते ही तय हो जाता है और उसमें जो धारा बह रही हो उससे नहीं बदलता।",
+          mr: "हे केवळ भूमिती आणि गाभ्याच्या पदार्थावर अवलंबून आहे, अगदी धारितेप्रमाणे, म्हणून वेटोळ्याचे प्रेरकत्व गुंडाळताच ठरते आणि त्यात जी धारा वाहत असेल तिच्याने बदलत नाही.",
+        },
+        extra: {
+          en: "The energy ½LI² is stored in the field rather than in the wire, which is why breaking the circuit of a large electromagnet draws an arc across the opening switch as that energy insists on going somewhere.",
+          hi: "ऊर्जा ½LI² तार में नहीं बल्कि क्षेत्र में संचित होती है, इसीलिए बड़े विद्युत चुंबक का परिपथ तोड़ने पर खुलते स्विच के आर-पार चाप खिंच जाता है, क्योंकि वह ऊर्जा कहीं न कहीं जाने पर अड़ जाती है।",
+          mr: "ऊर्जा ½LI² ही तारेत नव्हे तर क्षेत्रात साठते, म्हणूनच मोठ्या विद्युत चुंबकाचा परिपथ तोडल्यावर उघडणाऱ्या स्विचच्या आरपार चाप ओढला जातो, कारण ती ऊर्जा कुठेतरी जाण्यावर अडून बसते.",
+        },
+        pair: {
+          left: {
+            en: "Sluggish to start, reluctant to stop",
+            hi: "चलने में सुस्त, रुकने में अनिच्छुक",
+            mr: "सुरू व्हायला सुस्त, थांबायला नाखूश",
+          },
+          right: {
+            en: "self-inductance",
+            hi: "स्वप्रेरकत्व",
+            mr: "स्वयंप्रेरकत्व",
+          },
+        },
+      },
+      {
+        id: "eddy-currents",
+        name: {
+          en: "Eddy currents",
+          hi: "भँवर धाराएँ",
+          mr: "भोवरा धारा",
+        },
+        kind: "quantity or effect",
+        prompt: {
+          en: "A solid block of metal near a changing field has no wires and no circuit, yet loops of current swirl inside it, heating it and dragging on whatever is moving. What are these called?",
+          hi: "बदलते क्षेत्र के पास धातु के ठोस टुकड़े में न तार हैं न परिपथ, फिर भी उसके भीतर धारा के लूप घूमते हैं, उसे गर्म करते और जो कुछ चल रहा हो उसे खींचते हैं। इन्हें क्या कहते हैं?",
+          mr: "बदलत्या क्षेत्राजवळ धातूच्या घन तुकड्यात ना तारा आहेत ना परिपथ, तरीही त्याच्या आत धारेचे वळसे घुमतात, त्याला तापवतात आणि जे काही हलत असेल त्याला ओढतात. यांना काय म्हणतात?",
+        },
+        statement: {
+          en: "Eddy currents are circulating currents induced within the body of a conductor by a changing flux, dissipating energy as heat and producing a force that opposes the relative motion.",
+          hi: "भँवर धाराएँ वे परिक्रमा करती धाराएँ हैं जो बदलते फ्लक्स से चालक के पिंड के भीतर प्रेरित होती हैं, ऊर्जा को ऊष्मा के रूप में खपाती हैं और ऐसा बल बनाती हैं जो सापेक्ष गति का विरोध करता है।",
+          mr: "भोवरा धारा म्हणजे बदलत्या फ्लक्सने वाहकाच्या शरीरात प्रेरित होणाऱ्या फिरत्या धारा, ज्या ऊर्जा उष्णतेच्या रूपात खर्चतात आणि सापेक्ष गतीला विरोध करणारे बल निर्माण करतात.",
+        },
+        detail: {
+          en: "They are a nuisance in a transformer core and the whole point in an induction hob, so the same physics is engineered out of one device and engineered into the next.",
+          hi: "ट्रांसफ़ॉर्मर की क्रोड में वे उपद्रव हैं और प्रेरण चूल्हे में वही सारा मक़सद, अतः वही भौतिकी एक युक्ति से निकाली जाती है और अगली में डाली जाती है।",
+          mr: "ट्रान्सफॉर्मरच्या गाभ्यात त्या उपद्रव आहेत आणि प्रेरण शेगडीत तोच सगळा हेतू, म्हणून तीच भौतिकी एका साधनातून काढली जाते आणि पुढच्यात घातली जाते.",
+        },
+        extra: {
+          en: "The cure where they are unwanted is to laminate the metal into thin sheets separated by insulation, which leaves the useful magnetic path intact while chopping the circulating paths into pieces too small to carry much current.",
+          hi: "जहाँ वे अनचाही हैं वहाँ इलाज यह है कि धातु को विद्युतरोधी से अलग की गई पतली परतों में बाँट दिया जाए, जिससे काम का चुंबकीय पथ ज्यों का त्यों रहता है और परिक्रमा-पथ इतने छोटे टुकड़ों में कट जाते हैं कि अधिक धारा ले ही न सकें।",
+          mr: "जिथे त्या नकोशा आहेत तिथे उपाय म्हणजे धातूला विद्युतरोधकाने वेगळ्या केलेल्या पातळ पापुद्र्यांत विभागणे, ज्यामुळे उपयुक्त चुंबकीय मार्ग जसाच्या तसा राहतो आणि फिरण्याचे मार्ग इतक्या लहान तुकड्यांत कापले जातात की जास्त धारा वाहूच शकत नाहीत.",
+        },
+        pair: {
+          left: {
+            en: "A nuisance in one machine, the whole point in the next",
+            hi: "एक मशीन में उपद्रव, अगली में सारा मक़सद",
+            mr: "एका यंत्रात उपद्रव, पुढच्यात सगळा हेतू",
+          },
+          right: {
+            en: "eddy currents",
+            hi: "भँवर धाराएँ",
+            mr: "भोवरा धारा",
+          },
+        },
+      },
+      {
+        id: "faradays-law",
+        name: {
+          en: "Faraday's law of induction",
+          hi: "फैराडे का प्रेरण नियम",
+          mr: "फॅरेडेचा प्रेरण नियम",
+        },
+        kind: "law of induction",
+        prompt: {
+          en: "A magnet held motionless inside a coil, however powerful, produces nothing; the same magnet moved produces a voltage, and moving it faster produces more. Which law says exactly this?",
+          hi: "कुंडली के भीतर निश्चल पकड़ा चुंबक, चाहे कितना ही शक्तिशाली हो, कुछ नहीं देता; वही चुंबक हिलाने पर वोल्टता देता है, और तेज़ हिलाने पर अधिक। यह ठीक-ठीक कौन-सा नियम कहता है?",
+          mr: "वेटोळ्याच्या आत निश्चल धरलेला चुंबक, कितीही शक्तिशाली असो, काहीच देत नाही; तोच चुंबक हलवल्यावर व्होल्टेज देतो, आणि जोरात हलवल्यावर अधिक. हे नेमके कोणता नियम सांगतो?",
+        },
+        statement: {
+          en: "Faraday's law of induction states that the induced e.m.f. equals the negative rate of change of magnetic flux, ε = −dΦ/dt, so it is the rate and not the amount of flux that matters.",
+          hi: "फैराडे का प्रेरण नियम कहता है कि प्रेरित विद्युत वाहक बल चुंबकीय फ्लक्स के परिवर्तन की ऋणात्मक दर के बराबर है, ε = −dΦ/dt, अतः मायने दर रखती है, फ्लक्स की मात्रा नहीं।",
+          mr: "फॅरेडेचा प्रेरण नियम सांगतो की प्रेरित विद्युतचालक बल हे चुंबकीय फ्लक्सच्या बदलाच्या ऋण गतीइतके आहे, ε = −dΦ/dt, म्हणून महत्त्वाची असते गती, फ्लक्सचे प्रमाण नव्हे.",
+        },
+        detail: {
+          en: "The law is indifferent to WHICH of the three handles is being turned: moving the magnet, squashing the loop and rotating the coil all count, and the same formula covers all three.",
+          hi: "नियम को इससे मतलब नहीं कि तीनों मुठ्ठों में से कौन घुमाया जा रहा है: चुंबक हिलाना, लूप को दबाना और कुंडली घुमाना, सब गिने जाते हैं, और वही सूत्र तीनों को समेटता है।",
+          mr: "नियमाला याच्याशी देणेघेणे नाही की तीन मुठींपैकी कोणती फिरवली जात आहे: चुंबक हलवणे, वळसा दाबणे आणि वेटोळे फिरवणे, सर्व मोजले जातात, आणि तेच सूत्र तिन्हींना सामावते.",
+        },
+        extra: {
+          en: "For a coil of N turns the e.m.f. is N times larger, since each turn is a separate loop threaded by the same flux and their e.m.f.s are in series.",
+          hi: "N फेरों की कुंडली के लिए विद्युत वाहक बल N गुना है, क्योंकि हर फेरा वही फ्लक्स समेटे अलग लूप है और उनके विद्युत वाहक बल श्रेणी में हैं।",
+          mr: "N वेढ्यांच्या वेटोळ्यासाठी विद्युतचालक बल N पट आहे, कारण प्रत्येक वेढा तोच फ्लक्स सामावणारा वेगळा वळसा आहे आणि त्यांची विद्युतचालक बले श्रेणीत आहेत.",
+        },
+        pair: {
+          left: {
+            en: "Hold it still and nothing happens, however strong it is",
+            hi: "स्थिर पकड़ो और कुछ नहीं होता, चाहे वह कितना ही प्रबल हो",
+            mr: "स्थिर धरा आणि काहीच घडत नाही, तो कितीही तीव्र असो",
+          },
+          right: {
+            en: "Faraday's law of induction",
+            hi: "फैराडे का प्रेरण नियम",
+            mr: "फॅरेडेचा प्रेरण नियम",
+          },
+        },
+      },
+      {
+        id: "lenz-law",
+        name: {
+          en: "Lenz's law",
+          hi: "लेंज़ का नियम",
+          mr: "लेंझचा नियम",
+        },
+        kind: "law of induction",
+        prompt: {
+          en: "Push a north pole towards a coil and the coil's near face becomes a north pole to push back; pull it away and that face turns south to hold on. Which law fixes the direction like this?",
+          hi: "उत्तर ध्रुव को कुंडली की ओर धकेलो और कुंडली का पास वाला फलक धकेलकर लौटाने को उत्तर ध्रुव बन जाता है; उसे खींचो और वही फलक पकड़े रखने को दक्षिण हो जाता है। दिशा को इस तरह कौन-सा नियम तय करता है?",
+          mr: "उत्तर ध्रुव वेटोळ्याकडे ढकला आणि वेटोळ्याचा जवळचा पृष्ठभाग परत ढकलण्यासाठी उत्तर ध्रुव बनतो; तो ओढा आणि तोच पृष्ठभाग धरून ठेवण्यासाठी दक्षिण होतो. दिशा अशी कोणता नियम ठरवतो?",
+        },
+        statement: {
+          en: "Lenz's law says the induced current always flows in the direction that opposes the change producing it, which is what the minus sign in Faraday's law stands for.",
+          hi: "लेंज़ का नियम कहता है कि प्रेरित धारा सदा उस दिशा में बहती है जो उसे पैदा करने वाले परिवर्तन का विरोध करे, और फैराडे के नियम का ऋण चिह्न यही दर्शाता है।",
+          mr: "लेंझचा नियम सांगतो की प्रेरित धारा नेहमी त्या दिशेने वाहते जी तिला घडवणाऱ्या बदलाला विरोध करते, आणि फॅरेडेच्या नियमातले ऋण चिन्ह हेच दर्शवते.",
+        },
+        detail: {
+          en: "It is not an extra empirical rule but a consequence of energy conservation: a current helping the change would accelerate the magnet, which would induce more current, which would accelerate it further.",
+          hi: "यह कोई अतिरिक्त प्रायोगिक नियम नहीं बल्कि ऊर्जा संरक्षण का परिणाम है: परिवर्तन में मदद करती धारा चुंबक को त्वरित करती, जो और धारा प्रेरित करती, जो उसे और त्वरित करती।",
+          mr: "हा जादा प्रायोगिक नियम नसून ऊर्जा संधारणाचा परिणाम आहे: बदलाला मदत करणारी धारा चुंबकाला त्वरित करेल, जी अधिक धारा प्रेरित करेल, जी त्याला आणखी त्वरित करेल.",
+        },
+        extra: {
+          en: "The opposition is what has to be paid for: the work done pushing the magnet against the induced repulsion is exactly the electrical energy that appears in the circuit, so a generator is hard to turn precisely when it is delivering power.",
+          hi: "विरोध ही वह है जिसकी क़ीमत चुकानी पड़ती है: प्रेरित प्रतिकर्षण के विरुद्ध चुंबक धकेलने में किया गया कार्य ठीक वही विद्युत ऊर्जा है जो परिपथ में प्रकट होती है, अतः जनित्र को घुमाना ठीक तभी कठिन होता है जब वह शक्ति दे रहा हो।",
+          mr: "विरोध हाच तो ज्याची किंमत मोजावी लागते: प्रेरित प्रतिकर्षणाविरुद्ध चुंबक ढकलण्यात केलेले कार्य नेमकी तीच विद्युत ऊर्जा आहे जी परिपथात प्रकट होते, म्हणून जनित्र फिरवणे नेमके तेव्हाच कठीण असते जेव्हा ते शक्ती देत असते.",
+        },
+        pair: {
+          left: {
+            en: "The minus sign, spelled out in words",
+            hi: "शब्दों में लिखा हुआ ऋण चिह्न",
+            mr: "शब्दांत मांडलेले ऋण चिन्ह",
+          },
+          right: {
+            en: "Lenz's law",
+            hi: "लेंज़ का नियम",
+            mr: "लेंझचा नियम",
+          },
+        },
+      },
+      {
+        id: "motional-emf",
+        name: {
+          en: "Motional e.m.f.",
+          hi: "गतिक विद्युत वाहक बल",
+          mr: "गतिक विद्युतचालक बल",
+        },
+        kind: "law of induction",
+        prompt: {
+          en: "A straight rod slid sideways across a field develops a voltage between its ends, and the same number Blv comes out whether you count the flux swept or push each free electron with the magnetic force. What is that voltage called?",
+          hi: "क्षेत्र के आर-पार बग़ल में सरकाई गई सीधी छड़ के सिरों के बीच वोल्टता बन जाती है, और वही संख्या Blv निकलती है चाहे तुम बुहारा गया फ्लक्स गिनो या हर मुक्त इलेक्ट्रॉन को चुंबकीय बल से धकेलो। उस वोल्टता को क्या कहते हैं?",
+          mr: "क्षेत्राच्या आरपार बाजूला सरकवलेल्या सरळ कांडीच्या टोकांमध्ये व्होल्टेज तयार होतो, आणि तीच संख्या Blv निघते मग तुम्ही झाडलेला फ्लक्स मोजा वा प्रत्येक मुक्त इलेक्ट्रॉनला चुंबकीय बलाने ढकला. त्या व्होल्टेजला काय म्हणतात?",
+        },
+        statement: {
+          en: "Motional e.m.f. is the voltage ε = Blv induced across a conductor of length l moving with speed v perpendicular to a field B, and it arises from the magnetic force on the charges the conductor carries with it.",
+          hi: "गतिक विद्युत वाहक बल वह वोल्टता ε = Blv है जो क्षेत्र B के लंबवत v चाल से चलती l लंबाई की चालक छड़ के आर-पार प्रेरित होती है, और वह उन आवेशों पर लगे चुंबकीय बल से उठती है जिन्हें चालक अपने साथ ले जाता है।",
+          mr: "गतिक विद्युतचालक बल म्हणजे तो व्होल्टेज ε = Blv जो क्षेत्र B ला लंब v वेगाने जाणाऱ्या l लांबीच्या वाहकाच्या आरपार प्रेरित होतो, आणि तो वाहक स्वतःसोबत नेत असलेल्या प्रभारांवरील चुंबकीय बलातून उद्भवतो.",
+        },
+        detail: {
+          en: "It is the one case where the flux rule and the Lorentz force can be checked against each other, and their agreement is what makes induction one phenomenon rather than two coincidences.",
+          hi: "यही वह एक स्थिति है जहाँ फ्लक्स नियम और लॉरेंज़ बल को आपस में जाँचा जा सकता है, और उनका मिलना ही प्रेरण को दो संयोगों के बजाय एक परिघटना बनाता है।",
+          mr: "हीच ती एक स्थिती जिथे फ्लक्स नियम आणि लॉरेन्ट्झ बल एकमेकांशी तपासता येतात, आणि त्यांचे जुळणेच प्रेरणाला दोन योगायोगांऐवजी एक घटना बनवते.",
+        },
+        extra: {
+          en: "Once current flows, the rod carrying it feels BIL against its motion, so keeping the speed constant needs a steady applied force and the mechanical power supplied equals the electrical power dissipated exactly.",
+          hi: "धारा बहते ही उसे ले जाती छड़ अपनी गति के विरुद्ध BIL अनुभव करती है, अतः चाल अचर रखने को लगातार बल लगाना पड़ता है और दी गई यांत्रिक शक्ति ठीक उसी विद्युत शक्ति के बराबर होती है जो खपती है।",
+          mr: "धारा वाहू लागताच ती वाहणारी कांडी आपल्या गतीविरुद्ध BIL अनुभवते, म्हणून वेग अचल ठेवण्यास सतत बल लावावे लागते आणि दिलेली यांत्रिक शक्ती नेमकी तितक्याच खर्च होणाऱ्या विद्युत शक्तीइतकी असते.",
+        },
+        pair: {
+          left: {
+            en: "Two derivations, one answer",
+            hi: "दो व्युत्पत्तियाँ, एक उत्तर",
+            mr: "दोन उपपत्ती, एक उत्तर",
+          },
+          right: {
+            en: "motional e.m.f.",
+            hi: "गतिक विद्युत वाहक बल",
+            mr: "गतिक विद्युतचालक बल",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A strong magnet dropped down a vertical copper pipe takes several seconds to fall a metre, while an identical unmagnetised slug of the same mass falls straight through. Copper is not magnetic. Explain the delay and say where the magnet's missing kinetic energy has gone.",
+          hi: "ताँबे की खड़ी नली में गिराया गया प्रबल चुंबक एक मीटर गिरने में कई सेकंड लेता है, जबकि उसी द्रव्यमान का समरूप अचुंबकित टुकड़ा सीधा निकल जाता है। ताँबा चुंबकीय नहीं है। देरी समझाओ और बताओ कि चुंबक की लुप्त गतिज ऊर्जा कहाँ गई।",
+          mr: "तांब्याच्या उभ्या नळीत टाकलेला तीव्र चुंबक एक मीटर पडायला कित्येक सेकंद घेतो, तर त्याच वस्तुमानाचा तसाच अचुंबकित तुकडा सरळ निघून जातो. तांबे चुंबकीय नाही. विलंब समजावा आणि चुंबकाची हरवलेली गतिज ऊर्जा कुठे गेली ते सांगा.",
+        },
+        choices: [
+          {
+            en: "As the magnet falls, the flux through each ring of copper around it changes, and eddy currents are induced in the pipe wall. By Lenz's law those currents must oppose the change, so the ring ahead of the magnet repels it and the ring behind attracts it — both forces act upwards. The magnet reaches a terminal velocity at which this retarding force equals its weight. The lost gravitational potential energy has become heat: the eddy currents dissipate I²R in the copper, and the pipe warms by a measurable amount. Copper's not being ferromagnetic is irrelevant; what matters is only that it conducts",
+            hi: "चुंबक के गिरते हुए, उसके चारों ओर ताँबे के हर छल्ले से गुज़रता फ्लक्स बदलता है, और नली की दीवार में भँवर धाराएँ प्रेरित होती हैं। लेंज़ के नियम से उन धाराओं को परिवर्तन का विरोध करना ही है, अतः चुंबक के आगे वाला छल्ला उसे प्रतिकर्षित करता है और पीछे वाला आकर्षित — दोनों बल ऊपर की ओर लगते हैं। चुंबक उस सीमांत वेग पर पहुँच जाता है जहाँ यह अवरोधक बल उसके भार के बराबर हो। खोई गुरुत्वीय स्थितिज ऊर्जा ऊष्मा बन गई है: भँवर धाराएँ ताँबे में I²R खपाती हैं, और नली नापी जा सकने वाली मात्रा में गर्म होती है। ताँबे का लौहचुंबकीय न होना अप्रासंगिक है; मायने केवल यह रखता है कि वह चालक है",
+            mr: "चुंबक पडत असताना, त्याच्याभोवतीच्या तांब्याच्या प्रत्येक कड्यातून जाणारा फ्लक्स बदलतो, आणि नळीच्या भिंतीत भोवरा धारा प्रेरित होतात. लेंझच्या नियमाने त्या धारांना बदलाला विरोध करावाच लागतो, म्हणून चुंबकाच्या पुढचे कडे त्याला प्रतिकर्षित करते आणि मागचे आकर्षित — दोन्ही बले वरच्या दिशेने लागतात. चुंबक त्या सीमांत वेगावर पोहोचतो जिथे हे अवरोधक बल त्याच्या वजनाइतके होते. गमावलेली गुरुत्वीय स्थितिज ऊर्जा उष्णता बनली आहे: भोवरा धारा तांब्यात I²R खर्चतात, आणि नळी मोजता येईल इतकी तापते. तांबे लोहचुंबकीय नसणे असंबद्ध आहे; महत्त्वाचे केवळ इतकेच की तो वाहक आहे",
+          },
+          {
+            en: "Copper is weakly diamagnetic, and it is this diamagnetic repulsion that holds the magnet up as it falls",
+            hi: "ताँबा कमज़ोर प्रतिचुंबकीय है, और यही प्रतिचुंबकीय प्रतिकर्षण गिरते समय चुंबक को थामे रखता है",
+            mr: "तांबे क्षीण प्रतिचुंबकीय आहे, आणि हेच प्रतिचुंबकीय प्रतिकर्षण पडताना चुंबकाला धरून ठेवते",
+          },
+          {
+            en: "Air trapped between the magnet and the pipe wall cannot escape quickly enough, and the magnet falls slowly for the same reason a piston does in a cylinder",
+            hi: "चुंबक और नली की दीवार के बीच फँसी हवा पर्याप्त तेज़ी से नहीं निकल पाती, और चुंबक उसी कारण धीरे गिरता है जिस कारण सिलिंडर में पिस्टन",
+            mr: "चुंबक आणि नळीच्या भिंतीमध्ये अडकलेली हवा पुरेशा वेगाने बाहेर पडू शकत नाही, आणि चुंबक त्याच कारणाने सावकाश पडतो ज्या कारणाने सिलिंडरमध्ये पिस्टन",
+          },
+          {
+            en: "The induced currents store the energy in the pipe's magnetic field and give it back as the magnet leaves, so no energy is lost and only the timing changes",
+            hi: "प्रेरित धाराएँ ऊर्जा को नली के चुंबकीय क्षेत्र में संचित कर लेती हैं और चुंबक के निकलते ही लौटा देती हैं, अतः कोई ऊर्जा नष्ट नहीं होती और केवल समय बदलता है",
+            mr: "प्रेरित धारा ऊर्जा नळीच्या चुंबकीय क्षेत्रात साठवतात आणि चुंबक बाहेर पडताच परत देतात, म्हणून कोणतीही ऊर्जा नष्ट होत नाही आणि केवळ वेळ बदलतो",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The demonstration is worth doing because it looks like magic and is entirely Chapter 6. Note first what the control tells you: an unmagnetised slug of identical mass and shape falls normally, so the effect is not about mass, friction or air. It is about the magnet. Think of the copper pipe as a stack of closed conducting rings. As the magnet approaches a given ring, the flux through that ring increases; as it passes and recedes, the flux decreases. Faraday's law says a changing flux drives an e.m.f. in each ring, and because copper conducts and the rings are complete circuits, real currents flow — eddy currents. Now apply Lenz's law twice, once on each side of the magnet, and notice that both answers point the same way. In the ring AHEAD, the flux is increasing, so the induced current opposes the increase: that ring's field faces the magnet with a like pole and pushes it back, upwards. In the ring BEHIND, the flux is decreasing, so the induced current opposes the decrease: that ring's field faces the magnet with an unlike pole and pulls it back, also upwards. Nothing here is a coincidence. Lenz's law opposes CHANGE, and both approaching and receding are changes, so the force is retarding in both cases and the two contributions add. The motion settles into a terminal velocity. The retarding force grows with speed — faster fall, faster flux change, bigger e.m.f., bigger current, bigger force — so the magnet accelerates only until that force equals mg, and then descends steadily. This is the same mathematical shape as terminal velocity in a fluid, arrived at by a completely different mechanism. Now the energy, which is the part the question is really asking. The magnet has descended a metre and gained almost no kinetic energy, so mgh has gone somewhere. It has gone into the pipe as heat. The eddy currents are real currents in a real resistance, and they dissipate I²R; drop a strong magnet down a thin-walled pipe repeatedly and the pipe becomes perceptibly warm. Energy conservation is not merely respected here, it is the REASON for the direction: if the induced current had been the other way, the force would have accelerated the magnet, which would have induced more current, which would have accelerated it further — free energy from a dropped magnet. Lenz's law is what forbids that, and it is why the law is a consequence of conservation rather than a separate observation. Two checks confirm the mechanism. Use a plastic pipe of the same dimensions and the magnet falls freely, because no current can flow. Use a copper pipe with a slit cut along its whole length and the magnet falls almost freely too, because the slit breaks every ring and the circulating paths are gone — which is exactly the laminating trick used to suppress eddy currents in transformer cores. (The second option cites a real but far too feeble effect; the third invents a fluid explanation the plastic-pipe control refutes; the fourth makes the process reversible, which would leave the pipe cold and the magnet fast.)",
+          hi: "यह प्रदर्शन करने योग्य है क्योंकि वह जादू लगता है और पूरा का पूरा छठा अध्याय है। पहले ध्यान दो कि नियंत्रण क्या बताता है: उसी द्रव्यमान और आकार का अचुंबकित टुकड़ा सामान्य ढंग से गिरता है, अतः प्रभाव द्रव्यमान, घर्षण या हवा का नहीं। वह चुंबक का है। ताँबे की नली को बंद चालक छल्लों की चट्टी समझो। जैसे-जैसे चुंबक किसी छल्ले के पास आता है, उस छल्ले से गुज़रता फ्लक्स बढ़ता है; जैसे-जैसे वह पार करके दूर जाता है, फ्लक्स घटता है। फैराडे का नियम कहता है कि बदलता फ्लक्स हर छल्ले में विद्युत वाहक बल चलाता है, और चूँकि ताँबा चालक है और छल्ले पूरे परिपथ हैं, असली धाराएँ बहती हैं — भँवर धाराएँ। अब लेंज़ का नियम दो बार लगाओ, चुंबक की हर ओर एक बार, और ध्यान दो कि दोनों उत्तर एक ही दिशा दिखाते हैं। आगे वाले छल्ले में फ्लक्स बढ़ रहा है, अतः प्रेरित धारा वृद्धि का विरोध करती है: उस छल्ले का क्षेत्र चुंबक की ओर समान ध्रुव करके उसे ऊपर की ओर लौटा धकेलता है। पीछे वाले छल्ले में फ्लक्स घट रहा है, अतः प्रेरित धारा कमी का विरोध करती है: उस छल्ले का क्षेत्र चुंबक की ओर विपरीत ध्रुव करके उसे पीछे खींचता है, वह भी ऊपर की ओर। यहाँ कुछ भी संयोग नहीं। लेंज़ का नियम परिवर्तन का विरोध करता है, और पास आना तथा दूर जाना दोनों परिवर्तन हैं, अतः दोनों स्थितियों में बल अवरोधक है और दोनों अंश जुड़ जाते हैं। गति सीमांत वेग पर जम जाती है। अवरोधक बल चाल के साथ बढ़ता है — तेज़ गिरना, तेज़ फ्लक्स परिवर्तन, बड़ा विद्युत वाहक बल, बड़ी धारा, बड़ा बल — अतः चुंबक तभी तक त्वरित होता है जब तक वह बल mg के बराबर न हो जाए, और फिर स्थिर चाल से उतरता है। यह द्रव में सीमांत वेग का वही गणितीय आकार है, जिस तक बिलकुल भिन्न क्रियाविधि से पहुँचा गया। अब ऊर्जा, जो प्रश्न वस्तुतः पूछ रहा है। चुंबक एक मीटर उतर चुका है और उसने लगभग कोई गतिज ऊर्जा नहीं पाई, अतः mgh कहीं गया है। वह नली में ऊष्मा बनकर गया है। भँवर धाराएँ असली प्रतिरोध में असली धाराएँ हैं, और वे I²R खपाती हैं; पतली दीवार वाली नली में प्रबल चुंबक बार-बार गिराओ और नली महसूस होने लायक़ गर्म हो जाती है। यहाँ ऊर्जा संरक्षण का केवल पालन नहीं होता, वही दिशा का कारण है: यदि प्रेरित धारा उलटी होती, तो बल चुंबक को त्वरित करता, जो और धारा प्रेरित करती, जो उसे और त्वरित करती — गिराए गए चुंबक से मुफ़्त ऊर्जा। लेंज़ का नियम वही है जो इसे मना करता है, और इसीलिए वह नियम अलग प्रेक्षण नहीं बल्कि संरक्षण का परिणाम है। दो जाँचें क्रियाविधि की पुष्टि करती हैं। उन्हीं मापों की प्लास्टिक नली लो और चुंबक स्वतंत्र रूप से गिरता है, क्योंकि कोई धारा बह ही नहीं सकती। पूरी लंबाई में चीरा लगी ताँबे की नली लो और चुंबक लगभग स्वतंत्र रूप से गिरता है, क्योंकि चीरा हर छल्ला तोड़ देता है और परिक्रमा-पथ ख़त्म हो जाते हैं — और ट्रांसफ़ॉर्मर की क्रोड में भँवर धाराएँ दबाने की परत वाली तरकीब ठीक यही है। (दूसरा विकल्प असली पर कहीं अधिक कमज़ोर प्रभाव गिनाता है; तीसरा तरल की व्याख्या गढ़ता है जिसे प्लास्टिक नली का नियंत्रण झुठला देता है; चौथा प्रक्रिया को उत्क्रमणीय बना देता है, जिससे नली ठंडी और चुंबक तेज़ रह जाता।)",
+          mr: "हे प्रात्यक्षिक करण्याजोगे आहे कारण ते जादू वाटते आणि पूर्णपणे सहावे प्रकरण आहे. आधी लक्षात घ्या की नियंत्रण काय सांगते: त्याच वस्तुमानाचा आणि आकाराचा अचुंबकित तुकडा सामान्यपणे पडतो, म्हणून परिणाम वस्तुमान, घर्षण वा हवेचा नाही. तो चुंबकाचा आहे. तांब्याच्या नळीला बंद वाहक कड्यांची चळत समजा. चुंबक एखाद्या कड्याजवळ येताना, त्या कड्यातून जाणारा फ्लक्स वाढतो; तो ओलांडून दूर जाताना, फ्लक्स घटतो. फॅरेडेचा नियम सांगतो की बदलता फ्लक्स प्रत्येक कड्यात विद्युतचालक बल चालवतो, आणि तांबे वाहक असल्याने आणि कडी पूर्ण परिपथ असल्याने, खऱ्या धारा वाहतात — भोवरा धारा. आता लेंझचा नियम दोनदा लावा, चुंबकाच्या प्रत्येक बाजूला एकदा, आणि लक्षात घ्या की दोन्ही उत्तरे एकाच दिशेने दाखवतात. पुढच्या कड्यात फ्लक्स वाढत आहे, म्हणून प्रेरित धारा वाढीला विरोध करते: त्या कड्याचे क्षेत्र चुंबकाकडे सारखा ध्रुव करून त्याला वरच्या दिशेने परत ढकलते. मागच्या कड्यात फ्लक्स घटत आहे, म्हणून प्रेरित धारा घटीला विरोध करते: त्या कड्याचे क्षेत्र चुंबकाकडे विरुद्ध ध्रुव करून त्याला मागे ओढते, तेही वरच्या दिशेने. इथे काहीही योगायोग नाही. लेंझचा नियम बदलाला विरोध करतो, आणि जवळ येणे व दूर जाणे दोन्ही बदल आहेत, म्हणून दोन्ही स्थितींत बल अवरोधक आहे आणि दोन्ही वाटे जुळतात. गती सीमांत वेगावर स्थिरावते. अवरोधक बल वेगासोबत वाढते — जलद पडणे, जलद फ्लक्स बदल, मोठे विद्युतचालक बल, मोठी धारा, मोठे बल — म्हणून चुंबक तोवरच त्वरित होतो जोवर ते बल mg इतके होत नाही, आणि मग स्थिर वेगाने उतरतो. हा द्रवातील सीमांत वेगाचाच गणिती आकार आहे, ज्यापर्यंत पूर्णपणे वेगळ्या यंत्रणेने पोहोचले गेले. आता ऊर्जा, जी प्रश्न प्रत्यक्षात विचारत आहे. चुंबक एक मीटर उतरला आहे आणि त्याने जवळपास कोणतीही गतिज ऊर्जा मिळवली नाही, म्हणून mgh कुठेतरी गेले आहे. ते नळीत उष्णता बनून गेले आहे. भोवरा धारा खऱ्या रोधातल्या खऱ्या धारा आहेत, आणि त्या I²R खर्चतात; पातळ भिंतीच्या नळीत तीव्र चुंबक पुन्हा पुन्हा टाका आणि नळी जाणवण्याइतकी तापते. इथे ऊर्जा संधारणाचे केवळ पालन होत नाही, तेच दिशेचे कारण आहे: जर प्रेरित धारा उलटी असती, तर बलाने चुंबकाला त्वरित केले असते, ज्याने अधिक धारा प्रेरित केली असती, ज्याने त्याला आणखी त्वरित केले असते — टाकलेल्या चुंबकापासून फुकट ऊर्जा. लेंझचा नियम हाच तो जो हे वर्ज्य करतो, आणि म्हणूनच तो नियम वेगळे निरीक्षण नसून संधारणाचा परिणाम आहे. दोन तपासण्या यंत्रणेची खात्री देतात. त्याच मापांची प्लास्टिक नळी घ्या आणि चुंबक मुक्तपणे पडतो, कारण कोणतीही धारा वाहूच शकत नाही. संपूर्ण लांबीत चीर पडलेली तांब्याची नळी घ्या आणि चुंबक जवळपास मुक्तपणे पडतो, कारण चीर प्रत्येक कडे तोडते आणि फिरण्याचे मार्ग संपतात — आणि ट्रान्सफॉर्मरच्या गाभ्यात भोवरा धारा दाबण्याची पापुद्र्यांची युक्ती नेमकी हीच आहे. (दुसरा पर्याय खरा पण कितीतरी क्षीण परिणाम सांगतो; तिसरा द्रवाचे स्पष्टीकरण घडवतो जे प्लास्टिक नळीचे नियंत्रण खोडून काढते; चौथा प्रक्रिया परिवर्तनीय बनवतो, ज्याने नळी थंड आणि चुंबक वेगवान राहिला असता.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A rod of length l slides at constant speed v along frictionless rails in a field B, the circuit having resistance R. A student computes the e.m.f. two ways — from the flux swept out, and from the magnetic force on the electrons in the rod — and gets Blv both times, then asks whether this is a coincidence and where the electrical energy comes from.",
+          hi: "l लंबाई की छड़ क्षेत्र B में घर्षणहीन पटरियों पर अचर चाल v से सरकती है, और परिपथ का प्रतिरोध R है। विद्यार्थी विद्युत वाहक बल दो तरह से निकालता है — बुहारे गए फ्लक्स से, और छड़ के इलेक्ट्रॉनों पर चुंबकीय बल से — और दोनों बार Blv पाता है, फिर पूछता है कि क्या यह संयोग है और विद्युत ऊर्जा कहाँ से आती है।",
+          mr: "l लांबीची कांडी क्षेत्र B मध्ये घर्षणविरहित रुळांवर अचल वेग v ने सरकते, आणि परिपथाचा रोध R आहे. विद्यार्थी विद्युतचालक बल दोन प्रकारे काढतो — झाडलेल्या फ्लक्सवरून, आणि कांडीतल्या इलेक्ट्रॉनांवरील चुंबकीय बलावरून — आणि दोन्ही वेळा Blv मिळवतो, मग विचारतो की हा योगायोग आहे का आणि विद्युत ऊर्जा कुठून येते.",
+        },
+        choices: [
+          {
+            en: "It is not a coincidence but a consistency check that induction has to pass, and it does. The energy comes from whoever is pushing the rod. Once current I = Blv/R flows, the rod carries a current in a field and so feels a force BIl = B²l²v/R directed against its motion; keeping v constant therefore requires an applied force of exactly that size. The mechanical power supplied is Fv = B²l²v²/R, and the electrical power dissipated is ε²/R = B²l²v²/R — identical. The rails are frictionless, so nothing is lost anywhere else: this is a machine that converts mechanical work into electrical energy with the books balancing term by term, which is what a generator is",
+            hi: "यह संयोग नहीं बल्कि वह संगति-जाँच है जो प्रेरण को पास करनी ही है, और वह करता है। ऊर्जा उससे आती है जो छड़ को धकेल रहा है। धारा I = Blv/R बहते ही, छड़ क्षेत्र में धारा ले जाती है और इसलिए अपनी गति के विरुद्ध BIl = B²l²v/R बल अनुभव करती है; अतः v को अचर रखने के लिए ठीक उतना ही लगाया गया बल चाहिए। दी गई यांत्रिक शक्ति Fv = B²l²v²/R है, और खपने वाली विद्युत शक्ति ε²/R = B²l²v²/R — एक जैसी। पटरियाँ घर्षणहीन हैं, अतः और कहीं कुछ नष्ट नहीं होता: यह वह मशीन है जो यांत्रिक कार्य को विद्युत ऊर्जा में बदलती है और बहीखाता पद-दर-पद बराबर बैठता है, और जनित्र यही है",
+            mr: "हा योगायोग नसून ती सुसंगती-चाचणी आहे जी प्रेरणाला उत्तीर्ण व्हावीच लागते, आणि तो होतो. ऊर्जा त्याच्याकडून येते जो कांडी ढकलत आहे. धारा I = Blv/R वाहू लागताच, कांडी क्षेत्रात धारा वाहते आणि म्हणून आपल्या गतीविरुद्ध BIl = B²l²v/R इतके बल अनुभवते; म्हणून v अचल ठेवण्यास नेमके तितकेच लावलेले बल लागते. दिलेली यांत्रिक शक्ती Fv = B²l²v²/R आहे, आणि खर्च होणारी विद्युत शक्ती ε²/R = B²l²v²/R — सारखीच. रूळ घर्षणविरहित आहेत, म्हणून इतरत्र कुठेही काहीही नष्ट होत नाही: हे ते यंत्र आहे जे यांत्रिक कार्याचे विद्युत ऊर्जेत रूपांतर करते आणि जमाखर्च पदावर पद जुळतो, आणि जनित्र हेच आहे",
+          },
+          {
+            en: "It is a coincidence of this particular geometry; in general the flux rule and the Lorentz force give different answers, and the flux rule is the more reliable of the two",
+            hi: "यह इसी विशेष ज्यामिति का संयोग है; सामान्यतः फ्लक्स नियम और लॉरेंज़ बल भिन्न उत्तर देते हैं, और दोनों में फ्लक्स नियम अधिक भरोसेमंद है",
+            mr: "हा याच विशिष्ट भूमितीचा योगायोग आहे; सर्वसाधारणपणे फ्लक्स नियम आणि लॉरेन्ट्झ बल वेगळी उत्तरे देतात, आणि दोहोंत फ्लक्स नियम अधिक विश्वासार्ह आहे",
+          },
+          {
+            en: "The energy comes from the magnetic field, which is gradually used up as the rod slides and must eventually be replenished",
+            hi: "ऊर्जा चुंबकीय क्षेत्र से आती है, जो छड़ के सरकने के साथ धीरे-धीरे ख़र्च होता है और अंततः फिर भरना पड़ता है",
+            mr: "ऊर्जा चुंबकीय क्षेत्रातून येते, जे कांडी सरकताना हळूहळू खर्च होते आणि अखेरीस पुन्हा भरावे लागते",
+          },
+          {
+            en: "No external force is needed because the rails are frictionless, so the electrical energy appears without any work being done — this is the one case where energy conservation genuinely fails",
+            hi: "किसी बाहरी बल की ज़रूरत नहीं क्योंकि पटरियाँ घर्षणहीन हैं, अतः बिना कोई कार्य हुए विद्युत ऊर्जा प्रकट होती है — यही वह एक स्थिति है जहाँ ऊर्जा संरक्षण सचमुच विफल हो जाता है",
+            mr: "कोणत्याही बाह्य बलाची गरज नाही कारण रूळ घर्षणविरहित आहेत, म्हणून कोणतेही कार्य न होता विद्युत ऊर्जा प्रकट होते — हीच ती एक स्थिती जिथे ऊर्जा संधारण खरोखर अपयशी ठरते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Take the two derivations first, because seeing why they must agree is half the answer. THE FLUX ROUTE. In time dt the rod moves v dt, and the circuit's area grows by l·v dt, so the flux grows by dΦ = B l v dt. Faraday's law gives |ε| = dΦ/dt = Blv. Nothing here mentions charges at all; the argument is about the geometry of a circuit whose area is changing. THE FORCE ROUTE. Every free electron in the rod is carried sideways at speed v through the field, so it feels a magnetic force qvB along the rod. Charges pile up at the ends until the electric field they create balances that force, which happens when E = vB, and the potential difference across a length l is then El = Blv. Nothing here mentions flux; the argument is about individual charges obeying the Lorentz force. Two entirely different pictures, one answer. That is a demand physics makes on itself: induction is one phenomenon, so any two legitimate ways of computing the same measurable number must land on the same value, and if they had not, one of the two laws would have been wrong. It is worth adding the honest caveat that the flux rule is a rule and not a fundamental law — there are contrived arrangements (a rocking plate contact, a disc with a sliding brush) where applying the flux rule carelessly gives the wrong answer and the Lorentz force plus Faraday's law in field form gives the right one. But in the ordinary cases of this chapter the two agree exactly, as here. NOW THE ENERGY, which is what the question is really after. The circuit dissipates ε²/R = B²l²v²/R watts in the resistance. That energy is real; the resistor gets warm. It cannot come from nowhere, and the rails are frictionless, so the only candidate is whoever keeps the rod moving. Follow the chain. The e.m.f. drives a current I = Blv/R through the rod. The rod is now a current-carrying conductor sitting in a magnetic field, so from Chapter 4 it experiences a force F = BIl. Substituting, F = B²l²v/R. By Lenz's law this force must oppose the motion, and it does — it points backwards along the rails. So to keep the speed constant an external agent must push with an equal forward force, and the mechanical power supplied is P = Fv = B²l²v²/R. Compare that with the electrical power dissipated, B²l²v²/R. They are the same expression. Not approximately, not on average — identically, term for term. This is the whole content of a generator, stated in one line: mechanical work in, electrical energy out, and Lenz's law as the mechanism that charges you for it. Three consequences fall out immediately. Open the circuit and R becomes infinite: no current, no retarding force, and the rod slides freely — a generator on no load is easy to turn. Short the rails and R becomes small: a huge current, a huge retarding force, and the rod is almost impossible to push — which is exactly why a bicycle dynamo makes pedalling harder the moment the lamp is switched on, and why a power station burns more coal when the city switches on its lights. (The second option denies a consistency that is demonstrable here; the third treats a static field as a fuel tank, when the field does no work at all; the fourth abandons conservation instead of looking for the agent doing the work.)",
+          hi: "पहले दोनों व्युत्पत्तियाँ लो, क्योंकि यह देखना कि उन्हें मिलना ही क्यों है, आधा उत्तर है। फ्लक्स वाला रास्ता। समय dt में छड़ v dt चलती है, और परिपथ का क्षेत्रफल l·v dt बढ़ता है, अतः फ्लक्स dΦ = B l v dt बढ़ता है। फैराडे का नियम देता है |ε| = dΦ/dt = Blv. यहाँ आवेशों का ज़िक्र ही नहीं; तर्क ऐसे परिपथ की ज्यामिति का है जिसका क्षेत्रफल बदल रहा है। बल वाला रास्ता। छड़ का हर मुक्त इलेक्ट्रॉन v चाल से क्षेत्र में से बग़ल में ले जाया जाता है, अतः वह छड़ के अनुदिश qvB बल अनुभव करता है। सिरों पर आवेश तब तक जमा होते हैं जब तक उनका बनाया विद्युत क्षेत्र उस बल को संतुलित न कर दे, जो तब होता है जब E = vB, और तब l लंबाई के आर-पार विभवांतर El = Blv है। यहाँ फ्लक्स का ज़िक्र नहीं; तर्क लॉरेंज़ बल मानते अलग-अलग आवेशों का है। दो बिलकुल भिन्न चित्र, एक उत्तर। यह माँग भौतिकी अपने से करती है: प्रेरण एक परिघटना है, अतः वही नापी जा सकने वाली संख्या निकालने के किन्हीं दो जायज़ रास्तों को एक ही मान पर उतरना ही चाहिए, और यदि न उतरते तो दोनों नियमों में से एक ग़लत होता। ईमानदार चेतावनी जोड़नी चाहिए कि फ्लक्स नियम नियम है, मूल नियम नहीं — ऐसी गढ़ी हुई व्यवस्थाएँ हैं (हिलता प्लेट-संपर्क, सरकते ब्रश वाली चकती) जहाँ फ्लक्स नियम लापरवाही से लगाने पर ग़लत उत्तर आता है और लॉरेंज़ बल तथा क्षेत्र-रूप में लिखा फैराडे का नियम सही देता है। पर इस अध्याय की साधारण स्थितियों में दोनों ठीक-ठीक मिलते हैं, जैसे यहाँ। अब ऊर्जा, जो प्रश्न वस्तुतः चाहता है। परिपथ प्रतिरोध में ε²/R = B²l²v²/R वाट खपाता है। वह ऊर्जा असली है; प्रतिरोधक गर्म होता है। वह कहीं से आ नहीं सकती, और पटरियाँ घर्षणहीन हैं, अतः एकमात्र उम्मीदवार वही है जो छड़ को चलाए रखता है। शृंखला का पीछा करो। विद्युत वाहक बल छड़ में से I = Blv/R धारा चलाता है। छड़ अब चुंबकीय क्षेत्र में बैठा धारावाही चालक है, अतः चौथे अध्याय से वह F = BIl बल अनुभव करती है। रखने पर F = B²l²v/R. लेंज़ के नियम से इस बल को गति का विरोध करना ही है, और वह करता है — वह पटरियों के अनुदिश पीछे की ओर है। अतः चाल अचर रखने को बाहरी कर्ता को उतने ही आगे के बल से धकेलना पड़ता है, और दी गई यांत्रिक शक्ति P = Fv = B²l²v²/R है। उसकी खपने वाली विद्युत शक्ति B²l²v²/R से तुलना करो। वे वही व्यंजक हैं। लगभग नहीं, औसतन नहीं — सर्वसमतः, पद-दर-पद। जनित्र का पूरा सार यही है, एक पंक्ति में: यांत्रिक कार्य भीतर, विद्युत ऊर्जा बाहर, और लेंज़ का नियम वह क्रियाविधि जो तुमसे उसका दाम वसूलती है। तीन परिणाम तुरंत निकलते हैं। परिपथ खोल दो और R अनंत हो जाता है: कोई धारा नहीं, कोई अवरोधक बल नहीं, और छड़ स्वतंत्र सरकती है — बिना लोड जनित्र घुमाना आसान है। पटरियाँ शॉर्ट कर दो और R छोटा हो जाता है: विशाल धारा, विशाल अवरोधक बल, और छड़ को धकेलना लगभग असंभव — और ठीक इसीलिए साइकिल की डायनमो बत्ती जलते ही पैडल कठिन कर देती है, और इसीलिए शहर के बत्तियाँ जलाते ही बिजलीघर अधिक कोयला जलाता है। (दूसरा विकल्प उस संगति से इनकार करता है जो यहाँ दिखाई जा सकती है; तीसरा स्थिर क्षेत्र को ईंधन की टंकी मान लेता है, जबकि क्षेत्र कोई कार्य करता ही नहीं; चौथा कार्य करने वाले कर्ता को ढूँढ़ने के बजाय संरक्षण छोड़ देता है।)",
+          mr: "आधी दोन्ही उपपत्ती घ्या, कारण त्या जुळल्याच पाहिजेत हे पाहणे अर्धे उत्तर आहे. फ्लक्सचा मार्ग. dt काळात कांडी v dt हलते, आणि परिपथाचे क्षेत्रफळ l·v dt ने वाढते, म्हणून फ्लक्स dΦ = B l v dt ने वाढतो. फॅरेडेचा नियम देतो |ε| = dΦ/dt = Blv. इथे प्रभारांचा उल्लेखच नाही; युक्तिवाद अशा परिपथाच्या भूमितीचा आहे ज्याचे क्षेत्रफळ बदलत आहे. बलाचा मार्ग. कांडीतला प्रत्येक मुक्त इलेक्ट्रॉन v वेगाने क्षेत्रातून बाजूला नेला जातो, म्हणून त्याला कांडीच्या दिशेने qvB बल जाणवते. टोकांवर प्रभार तोवर साठतात जोवर त्यांनी बनवलेले विद्युत क्षेत्र त्या बलाला तोलत नाही, जे तेव्हा घडते जेव्हा E = vB, आणि मग l लांबीच्या आरपार विभवांतर El = Blv आहे. इथे फ्लक्सचा उल्लेख नाही; युक्तिवाद लॉरेन्ट्झ बल मानणाऱ्या वेगवेगळ्या प्रभारांचा आहे. दोन पूर्णपणे वेगळी चित्रे, एक उत्तर. ही मागणी भौतिकी स्वतःकडून करते: प्रेरण ही एक घटना आहे, म्हणून तीच मोजता येणारी संख्या काढण्याच्या कोणत्याही दोन रास्त मार्गांना एकाच मूल्यावर उतरावेच लागते, आणि उतरले नसते तर दोन नियमांपैकी एक चूक ठरला असता. प्रामाणिक इशारा जोडायला हवा की फ्लक्स नियम हा नियम आहे, मूलभूत नियम नव्हे — अशा घडवलेल्या मांडण्या आहेत (डुलणारा पट्टी-संपर्क, सरकत्या ब्रशची तबकडी) जिथे फ्लक्स नियम निष्काळजीपणे लावल्यास चुकीचे उत्तर येते आणि लॉरेन्ट्झ बल तसेच क्षेत्र-रूपात लिहिलेला फॅरेडेचा नियम बरोबर देतो. पण या प्रकरणाच्या साध्या स्थितींत दोन्ही नेमके जुळतात, जसे इथे. आता ऊर्जा, जी प्रश्नाला प्रत्यक्षात हवी आहे. परिपथ रोधात ε²/R = B²l²v²/R वॅट खर्चतो. ती ऊर्जा खरी आहे; रोधक तापतो. ती कुठूनही येऊ शकत नाही, आणि रूळ घर्षणविरहित आहेत, म्हणून एकमेव उमेदवार तोच जो कांडी चालवत ठेवतो. साखळीचा मागोवा घ्या. विद्युतचालक बल कांडीतून I = Blv/R धारा चालवते. कांडी आता चुंबकीय क्षेत्रात बसलेला धारावाही वाहक आहे, म्हणून चौथ्या प्रकरणावरून तिला F = BIl बल जाणवते. ठेवल्यास F = B²l²v/R. लेंझच्या नियमाने या बलाला गतीला विरोध करावाच लागतो, आणि तो करतो — ते रुळांच्या दिशेने मागे आहे. म्हणून वेग अचल ठेवण्यास बाह्य कर्त्याला तितक्याच पुढच्या बलाने ढकलावे लागते, आणि दिलेली यांत्रिक शक्ती P = Fv = B²l²v²/R आहे. तिची खर्च होणाऱ्या विद्युत शक्ती B²l²v²/R शी तुलना करा. ती तीच पदावली आहेत. जवळपास नाही, सरासरीने नाही — सर्वसमतः, पदावर पद. जनित्राचा अख्खा आशय हाच, एका ओळीत: यांत्रिक कार्य आत, विद्युत ऊर्जा बाहेर, आणि लेंझचा नियम ती यंत्रणा जी तुमच्याकडून त्याची किंमत वसूल करते. तीन परिणाम लगेच निघतात. परिपथ उघडा आणि R अनंत होतो: धारा नाही, अवरोधक बल नाही, आणि कांडी मुक्तपणे सरकते — भाराविना जनित्र फिरवणे सोपे. रूळ शॉर्ट करा आणि R लहान होतो: प्रचंड धारा, प्रचंड अवरोधक बल, आणि कांडी ढकलणे जवळपास अशक्य — आणि नेमके म्हणूनच सायकलचा डायनामो दिवा लावताच पायडल कठीण करतो, आणि म्हणूनच शहराने दिवे लावताच वीजकेंद्र अधिक कोळसा जाळते. (दुसरा पर्याय इथे दाखवता येणारी सुसंगती नाकारतो; तिसरा स्थिर क्षेत्राला इंधनाची टाकी मानतो, तर क्षेत्र कोणतेही कार्य करतच नाही; चौथा कार्य करणारा कर्ता शोधण्याऐवजी संधारण सोडून देतो.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 7 — Alternating Current                                         */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "physics-12-alternating-current",
+    subject: "PHYSICS",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 7 — Alternating Current",
+      hi: "अध्याय 7 — प्रत्यावर्ती धारा",
+      mr: "प्रकरण 7 — प्रत्यावर्ती धारा",
+    },
+    name: {
+      en: "Alternating Current",
+      hi: "प्रत्यावर्ती धारा",
+      mr: "प्रत्यावर्ती धारा",
+    },
+    summary: {
+      en: "A current that reverses a hundred times a second and therefore averages to nothing, quoted instead by the steady value that would heat a resistor equally; components that impede it without ever dissipating anything, because they hand energy back in the quarter-cycle after they take it; two such opposing components that can be made to cancel exactly, leaving a circuit that answers one frequency and ignores the rest; a voltage that can be traded for current with almost no loss, which is the only reason power can be generated hundreds of kilometres from where it is used; and a factory whose meter and whose cables disagree about how much current it is really costing the grid.",
+      hi: "ऐसी धारा जो सेकंड में सौ बार उलटती है और इसलिए औसत में शून्य हो जाती है, और इसीलिए उस स्थिर मान से बताई जाती है जो प्रतिरोधक को उतना ही गर्म करता; ऐसे पुर्ज़े जो उसे रोकते हैं पर कुछ भी खपाते नहीं, क्योंकि जो लेते हैं वह अगले चौथाई चक्र में लौटा देते हैं; ऐसे दो विरोधी पुर्ज़े जिन्हें ठीक-ठीक कटवाया जा सकता है, जिससे ऐसा परिपथ बचता है जो एक आवृत्ति को उत्तर देता है और बाक़ी की अनसुनी कर देता है; ऐसी वोल्टता जिसे लगभग बिना हानि धारा से बदला जा सकता है, और केवल इसी कारण बिजली वहाँ से सैकड़ों किलोमीटर दूर बन सकती है जहाँ वह काम आती है; और ऐसा कारख़ाना जिसका मीटर और जिसके तार इस बात पर असहमत हैं कि वह ग्रिड को वस्तुतः कितनी धारा का ख़र्च दे रहा है।",
+      mr: "अशी धारा जी सेकंदाला शंभर वेळा उलटते आणि म्हणून सरासरीत शून्य होते, आणि म्हणूनच त्या स्थिर मूल्याने सांगितली जाते जे रोधकाला तितकेच तापवेल; असे घटक जे तिला अडवतात पण काहीही खर्चत नाहीत, कारण जे घेतात ते पुढच्या चतुर्थांश चक्रात परत देतात; असे दोन विरोधी घटक ज्यांना नेमके कापता येते, ज्यातून असा परिपथ उरतो जो एका वारंवारतेला उत्तर देतो आणि बाकीच्यांकडे दुर्लक्ष करतो; असा व्होल्टेज ज्याची जवळपास हानीविना धारेशी अदलाबदल करता येते, आणि केवळ याच कारणाने वीज तिथून शेकडो किलोमीटर दूर बनू शकते जिथे ती वापरली जाते; आणि असा कारखाना ज्याचे मीटर आणि ज्याच्या तारा यावर असहमत आहेत की तो ग्रिडला प्रत्यक्षात किती धारेचा खर्च देत आहे.",
+    },
+    position: 7,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "rms-value",
+        name: {
+          en: "The root mean square value",
+          hi: "वर्ग माध्य मूल मान",
+          mr: "वर्ग माध्य मूळ मूल्य",
+        },
+        kind: "defined quantity",
+        prompt: {
+          en: "The plain average of an alternating current over a cycle is zero, yet the wire certainly gets hot, so the quantity actually quoted is the steady current that would produce the same heating. What is that quantity called?",
+          hi: "एक चक्र पर प्रत्यावर्ती धारा का सादा औसत शून्य है, फिर भी तार निश्चय ही गर्म होता है, अतः वस्तुतः वह राशि बताई जाती है जो उतना ही तापन देने वाली स्थिर धारा हो। उस राशि को क्या कहते हैं?",
+          mr: "एका चक्रावर प्रत्यावर्ती धारेची साधी सरासरी शून्य आहे, तरीही तार नक्कीच तापते, म्हणून प्रत्यक्षात ती राशी सांगितली जाते जी तितकेच तापन देणारी स्थिर धारा असेल. त्या राशीला काय म्हणतात?",
+        },
+        statement: {
+          en: "The root mean square value is the steady current or voltage that would dissipate the same power in a resistor, and for a sinusoid it is the peak value divided by √2.",
+          hi: "वर्ग माध्य मूल मान वह स्थिर धारा या वोल्टता है जो प्रतिरोधक में उतनी ही शक्ति खपाती, और ज्यावक्रीय के लिए वह शिखर मान बटा √2 है।",
+          mr: "वर्ग माध्य मूळ मूल्य म्हणजे ती स्थिर धारा वा व्होल्टेज जी रोधकात तितकीच शक्ती खर्चेल, आणि ज्यावक्रीयासाठी ते शिखर मूल्य भागिले √2 आहे.",
+        },
+        detail: {
+          en: "The squaring is what saves the definition: the current is negative half the time but its SQUARE never is, so the mean of the square is honestly positive and the root restores the original units.",
+          hi: "वर्ग करना ही परिभाषा को बचाता है: धारा आधे समय ऋणात्मक है पर उसका वर्ग कभी नहीं, अतः वर्ग का माध्य ईमानदारी से धनात्मक है और मूल मूल मात्रक लौटा देता है।",
+          mr: "वर्ग करणेच व्याख्येला वाचवते: धारा अर्धा वेळ ऋण असते पण तिचा वर्ग कधीच नाही, म्हणून वर्गाचा माध्य प्रामाणिकपणे धन आहे आणि मूळ मूळ एकके परत आणते.",
+        },
+        extra: {
+          en: "The 220 V of a domestic supply is an rms figure, so the insulation must actually survive a peak of about 311 V, which is why a component's voltage rating and the supply's stated voltage are not the same number.",
+          hi: "घरेलू आपूर्ति के 220 V वर्ग माध्य मूल आँकड़ा है, अतः विद्युतरोधन को वस्तुतः लगभग 311 V का शिखर झेलना पड़ता है, इसीलिए किसी पुर्ज़े का वोल्टता निर्धारण और आपूर्ति की बताई वोल्टता एक ही संख्या नहीं हैं।",
+          mr: "घरगुती पुरवठ्याचे 220 V हा वर्ग माध्य मूळ आकडा आहे, म्हणून विद्युतरोधनाला प्रत्यक्षात सुमारे 311 V चे शिखर सोसावे लागते, म्हणूनच एखाद्या घटकाचे व्होल्टेज निर्धारण आणि पुरवठ्याचा सांगितलेला व्होल्टेज एकच संख्या नाहीत.",
+        },
+        pair: {
+          left: {
+            en: "The steady current that would heat the wire equally",
+            hi: "वह स्थिर धारा जो तार को उतना ही गर्म करती",
+            mr: "ती स्थिर धारा जी तारेला तितकेच तापवेल",
+          },
+          right: {
+            en: "the root mean square value",
+            hi: "वर्ग माध्य मूल मान",
+            mr: "वर्ग माध्य मूळ मूल्य",
+          },
+        },
+      },
+      {
+        id: "reactance",
+        name: {
+          en: "Reactance",
+          hi: "प्रतिघात",
+          mr: "प्रतिघात",
+        },
+        kind: "defined quantity",
+        prompt: {
+          en: "An inductor and a capacitor each limit the current in an a.c. circuit and each is measured in ohms, yet neither gets warm and neither consumes any energy over a full cycle. What is this kind of opposition called?",
+          hi: "प्रेरक और संधारित्र दोनों प्रत्यावर्ती परिपथ में धारा सीमित करते हैं और दोनों ओम में नापे जाते हैं, फिर भी न कोई गर्म होता है न पूरे चक्र पर कोई ऊर्जा खपाता है। इस तरह के विरोध को क्या कहते हैं?",
+          mr: "प्रेरक आणि धारित्र दोन्ही प्रत्यावर्ती परिपथात धारा मर्यादित करतात आणि दोन्ही ओहममध्ये मोजले जातात, तरीही ना कोणी तापतो ना पूर्ण चक्रावर कोणी ऊर्जा खर्चतो. अशा विरोधाला काय म्हणतात?",
+        },
+        statement: {
+          en: "Reactance is the opposition to alternating current offered by an inductor or capacitor without dissipation, being X_L = ωL for an inductor and X_C = 1/ωC for a capacitor.",
+          hi: "प्रतिघात प्रेरक या संधारित्र द्वारा बिना क्षय दिया गया प्रत्यावर्ती धारा का विरोध है, जो प्रेरक के लिए X_L = ωL और संधारित्र के लिए X_C = 1/ωC है।",
+          mr: "प्रतिघात म्हणजे प्रेरक वा धारित्राने क्षयाविना दिलेला प्रत्यावर्ती धारेचा विरोध, जो प्रेरकासाठी X_L = ωL आणि धारित्रासाठी X_C = 1/ωC आहे.",
+        },
+        detail: {
+          en: "The two behave in opposite ways as the frequency rises: an inductor blocks more and more, a capacitor blocks less and less, and at zero frequency the first is a plain wire and the second a broken circuit.",
+          hi: "आवृत्ति बढ़ने पर दोनों उलटे ढंग से बरतते हैं: प्रेरक अधिकाधिक रोकता है, संधारित्र कमोकम, और शून्य आवृत्ति पर पहला सादा तार है और दूसरा टूटा परिपथ।",
+          mr: "वारंवारता वाढताना दोन्ही उलट प्रकारे वागतात: प्रेरक अधिकाधिक अडवतो, धारित्र कमीकमी, आणि शून्य वारंवारतेवर पहिला साधी तार आहे आणि दुसरा तुटलेला परिपथ.",
+        },
+        extra: {
+          en: "Nothing is dissipated because the current and voltage are a quarter of a cycle apart, so energy taken from the source in one quarter is handed straight back in the next.",
+          hi: "कुछ भी नहीं खपता क्योंकि धारा और वोल्टता चक्र के चौथाई भाग से अलग हैं, अतः एक चौथाई में स्रोत से ली गई ऊर्जा अगले में सीधे लौटा दी जाती है।",
+          mr: "काहीही खर्च होत नाही कारण धारा आणि व्होल्टेज चक्राच्या चतुर्थांशाने वेगळे आहेत, म्हणून एका चतुर्थांशात स्रोताकडून घेतलेली ऊर्जा पुढच्यात थेट परत दिली जाते.",
+        },
+        pair: {
+          left: {
+            en: "Measured in ohms, and never gets warm",
+            hi: "ओम में नापा जाता है, और कभी गर्म नहीं होता",
+            mr: "ओहममध्ये मोजला जातो, आणि कधीच तापत नाही",
+          },
+          right: {
+            en: "reactance",
+            hi: "प्रतिघात",
+            mr: "प्रतिघात",
+          },
+        },
+      },
+      {
+        id: "power-factor",
+        name: {
+          en: "Power factor",
+          hi: "शक्ति गुणांक",
+          mr: "शक्ती गुणक",
+        },
+        kind: "defined quantity",
+        prompt: {
+          en: "Multiplying the rms voltage by the rms current gives a number that is generally larger than the power actually consumed, and the ratio between the two depends on how far the current lags or leads the voltage. What is that ratio called?",
+          hi: "वर्ग माध्य मूल वोल्टता को वर्ग माध्य मूल धारा से गुणा करने पर जो संख्या मिलती है वह प्रायः वस्तुतः खपी शक्ति से बड़ी होती है, और दोनों का अनुपात इस पर निर्भर है कि धारा वोल्टता से कितना पीछे या आगे है। उस अनुपात को क्या कहते हैं?",
+          mr: "वर्ग माध्य मूळ व्होल्टेजला वर्ग माध्य मूळ धारेने गुणल्यावर जी संख्या मिळते ती बहुधा प्रत्यक्षात खर्च झालेल्या शक्तीहून मोठी असते, आणि दोहोंचे गुणोत्तर यावर अवलंबून की धारा व्होल्टेजच्या किती मागे वा पुढे आहे. त्या गुणोत्तराला काय म्हणतात?",
+        },
+        statement: {
+          en: "Power factor is cos φ, the cosine of the phase angle between current and voltage, so the average power is P = V_rms I_rms cos φ rather than the plain product.",
+          hi: "शक्ति गुणांक cos φ है, अर्थात् धारा और वोल्टता के बीच के कलांतर की कोज्या, अतः औसत शक्ति सादे गुणनफल के बजाय P = V_rms I_rms cos φ है।",
+          mr: "शक्ती गुणक म्हणजे cos φ, म्हणजे धारा आणि व्होल्टेज यांतील कलाकोनाचा कोसाइन, म्हणून सरासरी शक्ती साध्या गुणाकाराऐवजी P = V_rms I_rms cos φ आहे.",
+        },
+        detail: {
+          en: "It is 1 for a pure resistance and exactly 0 for a pure inductor or capacitor, where the current is said to be wattless: it flows, it heats the supply cables, and it delivers no energy to the load at all.",
+          hi: "शुद्ध प्रतिरोध के लिए यह 1 है और शुद्ध प्रेरक या संधारित्र के लिए ठीक 0, जहाँ धारा को वाटहीन कहते हैं: वह बहती है, आपूर्ति के तारों को गर्म करती है, और लोड को कोई ऊर्जा देती ही नहीं।",
+          mr: "शुद्ध रोधासाठी हा 1 आहे आणि शुद्ध प्रेरक वा धारित्रासाठी नेमका 0, जिथे धारेला वॅटविरहित म्हणतात: ती वाहते, पुरवठ्याच्या तारा तापवते, आणि भाराला कोणतीही ऊर्जा देतच नाही.",
+        },
+        extra: {
+          en: "Industrial consumers are billed a penalty for a low value, because the generator and the cables must be sized for the current they carry and not for the power the meter records.",
+          hi: "औद्योगिक उपभोक्ताओं से कम मान पर जुर्माना लिया जाता है, क्योंकि जनित्र और तार उस धारा के हिसाब से बनाने पड़ते हैं जो वे ढोते हैं, उस शक्ति के हिसाब से नहीं जो मीटर दर्ज करता है।",
+          mr: "औद्योगिक ग्राहकांकडून कमी मूल्यावर दंड घेतला जातो, कारण जनित्र आणि तारा त्या धारेच्या हिशेबाने बनवाव्या लागतात जी त्या वाहतात, त्या शक्तीच्या हिशेबाने नव्हे जी मीटर नोंदवते.",
+        },
+        pair: {
+          left: {
+            en: "Why the cables must be bigger than the bill suggests",
+            hi: "इसीलिए तार उससे मोटे चाहिए जितना बिल सुझाता है",
+            mr: "म्हणूनच तारा बिल सुचवते त्याहून जाड हव्यात",
+          },
+          right: {
+            en: "power factor",
+            hi: "शक्ति गुणांक",
+            mr: "शक्ती गुणक",
+          },
+        },
+      },
+      {
+        id: "series-resonance",
+        name: {
+          en: "Series resonance",
+          hi: "श्रेणी अनुनाद",
+          mr: "श्रेणी अनुनाद",
+        },
+        kind: "circuit phenomenon or device",
+        prompt: {
+          en: "At one particular frequency the inductor's opposition and the capacitor's opposition are equal and opposite, they cancel completely, and the circuit behaves as though only its resistance were there. What is this condition called?",
+          hi: "किसी एक विशेष आवृत्ति पर प्रेरक का विरोध और संधारित्र का विरोध बराबर और विपरीत होते हैं, वे पूरी तरह कट जाते हैं, और परिपथ ऐसे बरतता है मानो केवल उसका प्रतिरोध ही हो। इस स्थिति को क्या कहते हैं?",
+          mr: "एका विशिष्ट वारंवारतेवर प्रेरकाचा विरोध आणि धारित्राचा विरोध समान व विरुद्ध असतात, ते पूर्णपणे कापले जातात, आणि परिपथ असा वागतो जणू केवळ त्याचा रोधच असावा. या स्थितीला काय म्हणतात?",
+        },
+        statement: {
+          en: "Series resonance occurs when X_L = X_C, at ω₀ = 1/√(LC), where the impedance falls to its minimum value R and the current reaches its maximum.",
+          hi: "श्रेणी अनुनाद तब होता है जब X_L = X_C, अर्थात् ω₀ = 1/√(LC) पर, जहाँ प्रतिबाधा घटकर अपने न्यूनतम मान R पर आ जाती है और धारा अपने अधिकतम पर पहुँचती है।",
+          mr: "श्रेणी अनुनाद तेव्हा घडतो जेव्हा X_L = X_C, म्हणजे ω₀ = 1/√(LC) वर, जिथे प्रतिबाधा घटून आपल्या किमान मूल्य R वर येते आणि धारा आपल्या कमालीवर पोहोचते.",
+        },
+        detail: {
+          en: "The current is in phase with the voltage there, so the power factor is 1 and the circuit is drawing everything it takes and using all of it.",
+          hi: "वहाँ धारा वोल्टता के साथ समान कला में है, अतः शक्ति गुणांक 1 है और परिपथ जो कुछ लेता है सब ले रहा है और सब काम में ला रहा है।",
+          mr: "तिथे धारा व्होल्टेजशी समान कलेत आहे, म्हणून शक्ती गुणक 1 आहे आणि परिपथ जे काही घेतो ते सर्व घेत आहे आणि सर्व वापरत आहे.",
+        },
+        extra: {
+          en: "The sharper the peak — the higher the Q — the better the circuit distinguishes one station from its neighbour, which is exactly what happens when a radio is tuned.",
+          hi: "शिखर जितना तेज़ — Q जितना ऊँचा — परिपथ एक स्टेशन को उसके पड़ोसी से उतना ही बेहतर अलग करता है, और रेडियो मिलाने पर ठीक यही होता है।",
+          mr: "शिखर जितके तीक्ष्ण — Q जितके उंच — परिपथ एका केंद्राला त्याच्या शेजाऱ्यापासून तितका चांगला वेगळा करतो, आणि रेडिओ जुळवताना नेमके हेच घडते.",
+        },
+        pair: {
+          left: {
+            en: "One frequency answered, the rest ignored",
+            hi: "एक आवृत्ति को उत्तर, बाक़ी की अनसुनी",
+            mr: "एका वारंवारतेला उत्तर, बाकीच्यांकडे दुर्लक्ष",
+          },
+          right: {
+            en: "series resonance",
+            hi: "श्रेणी अनुनाद",
+            mr: "श्रेणी अनुनाद",
+          },
+        },
+      },
+      {
+        id: "transformer",
+        name: {
+          en: "The transformer",
+          hi: "ट्रांसफ़ॉर्मर",
+          mr: "ट्रान्सफॉर्मर",
+        },
+        kind: "circuit phenomenon or device",
+        prompt: {
+          en: "Two coils share an iron core and no electrical connection whatever, yet a changing voltage on one appears on the other multiplied by the ratio of their turns — and it refuses to work at all on a battery. What device is this?",
+          hi: "दो कुंडलियाँ लोहे की क्रोड साझा करती हैं और उनमें कोई विद्युत संबंध है ही नहीं, फिर भी एक पर बदलती वोल्टता दूसरी पर उनके फेरों के अनुपात से गुणा होकर प्रकट होती है — और वह बैटरी पर चलती ही नहीं। यह कौन-सी युक्ति है?",
+          mr: "दोन वेटोळी लोखंडाचा गाभा वाटून घेतात आणि त्यांच्यात कोणताही विद्युत संबंध नाहीच, तरीही एकावरचा बदलता व्होल्टेज दुसऱ्यावर त्यांच्या वेढ्यांच्या गुणोत्तराने गुणून प्रकट होतो — आणि ते बॅटरीवर चालतच नाही. हे कोणते साधन?",
+        },
+        statement: {
+          en: "A transformer changes an alternating voltage in the ratio of the turns on its two windings, V_s/V_p = N_s/N_p, transferring power between circuits that are not electrically connected.",
+          hi: "ट्रांसफ़ॉर्मर प्रत्यावर्ती वोल्टता को अपनी दो लपेटों के फेरों के अनुपात में बदलता है, V_s/V_p = N_s/N_p, और ऐसे परिपथों के बीच शक्ति स्थानांतरित करता है जो विद्युत रूप से जुड़े नहीं हैं।",
+          mr: "ट्रान्सफॉर्मर प्रत्यावर्ती व्होल्टेज आपल्या दोन वेढणींच्या वेढ्यांच्या गुणोत्तरात बदलतो, V_s/V_p = N_s/N_p, आणि विद्युतदृष्ट्या जोडलेल्या नसलेल्या परिपथांमध्ये शक्ती हस्तांतरित करतो.",
+        },
+        detail: {
+          en: "Power is conserved in an ideal one, so stepping the voltage up steps the current down by the same factor and nothing is gained — the device trades one for the other and never manufactures energy.",
+          hi: "आदर्श में शक्ति संरक्षित रहती है, अतः वोल्टता बढ़ाने पर धारा उसी गुणक से घटती है और कुछ मिलता नहीं — युक्ति एक को दूसरे से बदलती है, ऊर्जा कभी बनाती नहीं।",
+          mr: "आदर्शात शक्ती संधारित राहते, म्हणून व्होल्टेज वाढवल्यास धारा त्याच पटीने घटते आणि काहीही मिळत नाही — साधन एकाची दुसऱ्याशी अदलाबदल करते, ऊर्जा कधीच घडवत नाही.",
+        },
+        extra: {
+          en: "That trade is what makes long-distance transmission possible, since the loss in a cable is I²R and halving the current quarters the loss — which is why the grid runs at hundreds of kilovolts and steps down only at the street corner.",
+          hi: "वही अदला-बदली लंबी दूरी के संचरण को संभव बनाती है, क्योंकि तार में हानि I²R है और धारा आधी करने पर हानि चौथाई रह जाती है — इसीलिए ग्रिड सैकड़ों किलोवोल्ट पर चलता है और गली के मोड़ पर ही घटाता है।",
+          mr: "तीच अदलाबदल लांब पल्ल्याचे संचरण शक्य करते, कारण तारेतील हानी I²R आहे आणि धारा निम्मी केल्यास हानी चतुर्थांश उरते — म्हणूनच ग्रिड शेकडो किलोव्होल्टवर चालतो आणि गल्लीच्या कोपऱ्यावरच खाली आणतो.",
+        },
+        pair: {
+          left: {
+            en: "Refuses to work on a battery",
+            hi: "बैटरी पर चलने से इनकार करता है",
+            mr: "बॅटरीवर चालायला नकार देतो",
+          },
+          right: {
+            en: "the transformer",
+            hi: "ट्रांसफ़ॉर्मर",
+            mr: "ट्रान्सफॉर्मर",
+          },
+        },
+      },
+      {
+        id: "choke-coil",
+        name: {
+          en: "The choke coil",
+          hi: "चोक कुंडली",
+          mr: "चोक वेटोळे",
+        },
+        kind: "circuit phenomenon or device",
+        prompt: {
+          en: "To cut the current in an a.c. circuit a resistor would work but would waste the difference as heat; this component does the same job and wastes almost nothing, because its opposition is reactive rather than resistive. What is it?",
+          hi: "प्रत्यावर्ती परिपथ में धारा घटाने को प्रतिरोधक काम करता पर अंतर को ऊष्मा बनाकर बरबाद कर देता; यह पुर्ज़ा वही काम करता है और लगभग कुछ भी बरबाद नहीं करता, क्योंकि उसका विरोध प्रतिरोधी नहीं प्रतिघाती है। यह क्या है?",
+          mr: "प्रत्यावर्ती परिपथात धारा कमी करायला रोधक चालला असता पण फरक उष्णता बनवून वाया घालवला असता; हा घटक तेच काम करतो आणि जवळपास काहीही वाया घालवत नाही, कारण त्याचा विरोध रोधी नसून प्रतिघाती आहे. हा काय आहे?",
+        },
+        statement: {
+          en: "A choke coil is an inductor used to limit alternating current without appreciable power loss, since its opposition ωL is reactive and its phase angle is close to 90°.",
+          hi: "चोक कुंडली वह प्रेरक है जो प्रत्यावर्ती धारा को ध्यान देने योग्य शक्ति-हानि के बिना सीमित करने को काम आता है, क्योंकि उसका विरोध ωL प्रतिघाती है और उसका कलांतर 90° के निकट है।",
+          mr: "चोक वेटोळे म्हणजे प्रत्यावर्ती धारा लक्षणीय शक्ती-हानीविना मर्यादित करण्यासाठी वापरलेला प्रेरक, कारण त्याचा विरोध ωL प्रतिघाती आहे आणि त्याचा कलाकोन 90° च्या जवळ आहे.",
+        },
+        detail: {
+          en: "It works only on alternating current: on a steady supply ω is zero, the reactance vanishes, and the coil is nothing but the small resistance of its own wire.",
+          hi: "यह केवल प्रत्यावर्ती धारा पर चलता है: स्थिर आपूर्ति पर ω शून्य है, प्रतिघात लुप्त हो जाता है, और कुंडली अपने ही तार के छोटे प्रतिरोध से अधिक कुछ नहीं रह जाती।",
+          mr: "हे केवळ प्रत्यावर्ती धारेवर चालते: स्थिर पुरवठ्यावर ω शून्य आहे, प्रतिघात नाहीसा होतो, आणि वेटोळे स्वतःच्याच तारेच्या लहान रोधाहून अधिक काही उरत नाही.",
+        },
+        extra: {
+          en: "The old fluorescent tube used one to hold its current down after the tube struck, and the reason it was preferred to a resistor was a running cost measured in units of electricity every hour it was on.",
+          hi: "पुरानी प्रतिदीप्त नलिका जलने के बाद अपनी धारा दबाए रखने को इसी का उपयोग करती थी, और प्रतिरोधक के बजाय इसे चुनने का कारण वह चलती लागत थी जो हर घंटे बिजली की इकाइयों में नापी जाती।",
+          mr: "जुनी प्रतिदीप्त नळी पेटल्यानंतर आपली धारा दाबून ठेवायला हेच वापरत असे, आणि रोधकाऐवजी हे निवडण्याचे कारण ती चालू खर्चाची रक्कम होती जी दर तासाला विजेच्या एककांत मोजली जाई.",
+        },
+        pair: {
+          left: {
+            en: "Cuts the current and sends no bill for it",
+            hi: "धारा घटाता है और उसका बिल नहीं भेजता",
+            mr: "धारा कमी करतो आणि त्याचे बिल पाठवत नाही",
+          },
+          right: {
+            en: "the choke coil",
+            hi: "चोक कुंडली",
+            mr: "चोक वेटोळे",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A student objects that the Indian mains cannot really be 220 V, since the voltage spends half of every cycle negative and its average over a cycle is exactly zero. A friend replies that the meaningful figure is 311 V because that is the largest value reached. Assess both claims.",
+          hi: "एक विद्यार्थी आपत्ति करता है कि भारतीय मुख्य आपूर्ति वस्तुतः 220 V हो ही नहीं सकती, क्योंकि वोल्टता हर चक्र का आधा समय ऋणात्मक रहती है और चक्र पर उसका औसत ठीक शून्य है। मित्र उत्तर देता है कि सार्थक आँकड़ा 311 V है क्योंकि वही सबसे बड़ा मान है जो पहुँचता है। दोनों दावों का आकलन करो।",
+          mr: "एक विद्यार्थी आक्षेप घेतो की भारतीय मुख्य पुरवठा प्रत्यक्षात 220 V असूच शकत नाही, कारण व्होल्टेज प्रत्येक चक्राचा अर्धा वेळ ऋण असतो आणि चक्रावर त्याची सरासरी नेमकी शून्य आहे. मित्र उत्तर देतो की अर्थपूर्ण आकडा 311 V आहे कारण तेच सर्वांत मोठे मूल्य आहे जे गाठले जाते. दोन्ही दाव्यांचे मूल्यमापन करा.",
+        },
+        choices: [
+          {
+            en: "The first student's arithmetic is right and his conclusion is wrong; the friend has named a real number that answers a different question. The plain average of a sinusoid over a cycle IS zero, which is why nobody quotes it — a zero average would predict no heating, and mains wires certainly heat. Heating depends on i², which is positive in both halves, so the useful figure is the root of the mean of the square: 220 V is the rms value, the steady voltage that would heat a resistor equally. The friend's 311 V is the PEAK, √2 times the rms, and it matters for insulation and component ratings but not for power",
+            hi: "पहले विद्यार्थी का अंकगणित सही है और उसका निष्कर्ष ग़लत; मित्र ने ऐसी असली संख्या बताई है जो किसी और प्रश्न का उत्तर देती है। चक्र पर ज्यावक्र का सादा औसत शून्य है ही, इसीलिए उसे कोई बताता नहीं — शून्य औसत यह भविष्यवाणी करता कि कोई तापन नहीं होगा, और मुख्य आपूर्ति के तार निश्चय ही गर्म होते हैं। तापन i² पर निर्भर है, जो दोनों आधों में धनात्मक है, अतः काम का आँकड़ा वर्ग के माध्य का मूल है: 220 V वर्ग माध्य मूल मान है, वह स्थिर वोल्टता जो प्रतिरोधक को उतना ही गर्म करती। मित्र का 311 V शिखर है, वर्ग माध्य मूल का √2 गुना, और वह विद्युतरोधन तथा पुर्ज़ों के निर्धारण के लिए मायने रखता है, शक्ति के लिए नहीं",
+            mr: "पहिल्या विद्यार्थ्याचे अंकगणित बरोबर आहे आणि त्याचा निष्कर्ष चूक; मित्राने अशी खरी संख्या सांगितली आहे जी दुसऱ्याच प्रश्नाचे उत्तर देते. चक्रावर ज्यावक्राची साधी सरासरी शून्य आहेच, म्हणूनच ती कोणी सांगत नाही — शून्य सरासरी असे भाकीत करेल की तापन होणार नाही, आणि मुख्य पुरवठ्याच्या तारा नक्कीच तापतात. तापन i² वर अवलंबून आहे, जो दोन्ही अर्ध्यांत धन आहे, म्हणून उपयुक्त आकडा वर्गाच्या माध्याचे मूळ आहे: 220 V हे वर्ग माध्य मूळ मूल्य आहे, तो स्थिर व्होल्टेज जो रोधकाला तितकेच तापवेल. मित्राचा 311 V हा शिखर आहे, वर्ग माध्य मूळाच्या √2 पट, आणि तो विद्युतरोधन आणि घटकांच्या निर्धारणासाठी महत्त्वाचा आहे, शक्तीसाठी नाही",
+          },
+          {
+            en: "The first student is right: alternating supplies are quoted at 220 V only by convention, and no physical quantity actually equals 220 V anywhere in the circuit",
+            hi: "पहला विद्यार्थी सही है: प्रत्यावर्ती आपूर्तियाँ 220 V केवल परिपाटी से बताई जाती हैं, और परिपथ में कहीं भी कोई भौतिक राशि वस्तुतः 220 V के बराबर नहीं है",
+            mr: "पहिला विद्यार्थी बरोबर आहे: प्रत्यावर्ती पुरवठे 220 V केवळ संकेताने सांगितले जातात, आणि परिपथात कुठेही कोणतीही भौतिक राशी प्रत्यक्षात 220 V इतकी नाही",
+          },
+          {
+            en: "The friend is right: 311 V is the correct figure and 220 V is simply the average of the positive half of the cycle",
+            hi: "मित्र सही है: 311 V सही आँकड़ा है और 220 V बस चक्र के धनात्मक आधे का औसत है",
+            mr: "मित्र बरोबर आहे: 311 V हा बरोबर आकडा आहे आणि 220 V म्हणजे फक्त चक्राच्या धन अर्ध्याची सरासरी",
+          },
+          {
+            en: "Both are wrong, because an alternating voltage cannot be given any single value at all and must always be quoted as a function of time",
+            hi: "दोनों ग़लत हैं, क्योंकि प्रत्यावर्ती वोल्टता को कोई एक मान दिया ही नहीं जा सकता और उसे सदा समय के फलन के रूप में बताना पड़ता है",
+            mr: "दोघेही चूक आहेत, कारण प्रत्यावर्ती व्होल्टेजला कोणतेही एकच मूल्य देताच येत नाही आणि तो नेहमी काळाचे फलन म्हणूनच सांगावा लागतो",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The objection is a good one and the answer is not that the student has miscalculated. The mean of sin over a full cycle really is zero, and that is precisely why the average is not the quantity anyone quotes. The right question is: what is an alternating supply FOR, and which single number captures it? Almost always the answer is heating — or, more generally, power delivered. Consider a resistor. The instantaneous power is p = i²R. Whatever i is doing, i² is positive: in the negative half-cycle the current runs backwards, but it heats the resistor exactly as much as it did going forwards, because reversing the direction of a current does not cool anything down. So the average power over a cycle is R times the MEAN OF i², and that mean is emphatically not zero. Define I_rms as the square root of that mean, and the average power becomes I²_rms R — the same expression as for a direct current. That is the point of the definition: it is constructed so that every d.c. power formula continues to work unchanged. For a sinusoid the arithmetic gives I_rms = I₀/√2, because the average of sin² over a cycle is exactly ½. So 220 V is not a convention or an approximation. It is a statement with experimental content: a heater run on this supply produces the same heat per second as it would on a 220 V battery. That is what a voltmeter marked for a.c. is built to display, and it is the number the electricity meter's arithmetic is founded on. Now the friend's 311 V, which is a real quantity wrongly promoted. It is the PEAK, V₀ = √2 × 220 ≈ 311 V, and it matters for a different set of decisions. Insulation must withstand it, or the appliance flashes over at the top of every cycle. A capacitor's voltage rating must exceed it. A rectifier diode must block it in reverse, and the smoothed d.c. produced by rectifying the mains sits near 311 V, not 220 V — a fact that surprises people building power supplies for the first time. The general lesson is worth extracting because it is not about electricity. When a quantity varies, no single number describes it, so a number must be CHOSEN, and it is chosen for a purpose. Average for the total charge transported, rms for the heating, peak for the insulation. The complaint that a single figure fails to capture a varying quantity is always true and never useful; the question is which failure is acceptable for the job at hand. (The second option confuses 'defined for a purpose' with 'arbitrary'; the third would give a very different number — the average of a half sinusoid is 2V₀/π ≈ 198 V, not 220 V; the fourth refuses to summarise at all, which would leave no way to sell electricity or rate a component.)",
+          hi: "आपत्ति अच्छी है और उत्तर यह नहीं कि विद्यार्थी की गणना ग़लत है। पूरे चक्र पर ज्या का माध्य सचमुच शून्य है, और ठीक इसीलिए औसत वह राशि नहीं जिसे कोई बताता है। सही प्रश्न यह है: प्रत्यावर्ती आपूर्ति किसलिए है, और उसे कौन-सी एक संख्या पकड़ती है? लगभग सदा उत्तर तापन है — या अधिक सामान्य रूप से, दी गई शक्ति। प्रतिरोधक लो। तात्क्षणिक शक्ति p = i²R है। i चाहे जो कर रहा हो, i² धनात्मक है: ऋण अर्ध-चक्र में धारा उलटी बहती है, पर वह प्रतिरोधक को ठीक उतना ही गर्म करती है जितना आगे जाते हुए करती थी, क्योंकि धारा की दिशा उलटने से कुछ ठंडा नहीं होता। अतः चक्र पर औसत शक्ति R गुना i² का माध्य है, और वह माध्य ज़ोर देकर शून्य नहीं है। I_rms को उस माध्य का वर्गमूल परिभाषित करो, और औसत शक्ति I²_rms R बन जाती है — दिष्ट धारा जैसा ही व्यंजक। परिभाषा का मर्म यही है: वह ऐसे गढ़ी गई है कि दिष्ट धारा का हर शक्ति-सूत्र ज्यों का त्यों चलता रहे। ज्यावक्र के लिए अंकगणित I_rms = I₀/√2 देता है, क्योंकि चक्र पर sin² का औसत ठीक ½ है। अतः 220 V परिपाटी या सन्निकटन नहीं। वह प्रायोगिक अर्थ वाला कथन है: इस आपूर्ति पर चलता हीटर प्रति सेकंड उतनी ही ऊष्मा देता है जितनी वह 220 V की बैटरी पर देता। प्रत्यावर्ती के लिए अंकित वोल्टमापी यही दिखाने को बना है, और बिजली के मीटर का गणित इसी संख्या पर टिका है। अब मित्र का 311 V, जो असली राशि है पर ग़लत जगह बिठाई गई। वह शिखर है, V₀ = √2 × 220 ≈ 311 V, और वह निर्णयों के दूसरे समुच्चय के लिए मायने रखता है। विद्युतरोधन को उसे झेलना ही है, वरना उपकरण हर चक्र के शीर्ष पर चटक जाएगा। संधारित्र का वोल्टता निर्धारण उससे अधिक होना चाहिए। दिष्टकारी डायोड को उसे उलटी दिशा में रोकना होगा, और मुख्य आपूर्ति को दिष्ट करके बनी चिकनी दिष्ट धारा 311 V के पास बैठती है, 220 V के नहीं — यह तथ्य पहली बार बिजली-आपूर्ति बनाने वालों को चौंकाता है। सामान्य सीख निकालने योग्य है क्योंकि वह बिजली के बारे में है ही नहीं। जब कोई राशि बदलती है, तो कोई एक संख्या उसका वर्णन नहीं करती, अतः एक संख्या चुननी पड़ती है, और वह किसी प्रयोजन के लिए चुनी जाती है। ढोए गए कुल आवेश के लिए औसत, तापन के लिए वर्ग माध्य मूल, विद्युतरोधन के लिए शिखर। यह शिकायत कि एक आँकड़ा बदलती राशि को नहीं पकड़ता, सदा सच है और कभी काम की नहीं; प्रश्न यह है कि हाथ के काम के लिए कौन-सी चूक स्वीकार्य है। (दूसरा विकल्प 'प्रयोजन के लिए परिभाषित' को 'मनमाना' समझ लेता है; तीसरा बहुत भिन्न संख्या देता — आधे ज्यावक्र का औसत 2V₀/π ≈ 198 V है, 220 V नहीं; चौथा सारांश देने से ही इनकार कर देता है, जिससे न बिजली बेची जा सकती न पुर्ज़ा निर्धारित किया जा सकता।)",
+          mr: "आक्षेप चांगला आहे आणि उत्तर हे नाही की विद्यार्थ्याची गणना चुकली आहे. पूर्ण चक्रावर साइनचा माध्य खरोखर शून्य आहे, आणि नेमके म्हणूनच सरासरी ही ती राशी नाही जी कोणी सांगते. योग्य प्रश्न हा आहे: प्रत्यावर्ती पुरवठा कशासाठी आहे, आणि त्याला कोणती एक संख्या पकडते? जवळपास नेहमी उत्तर तापन असते — किंवा अधिक सर्वसाधारणपणे, दिलेली शक्ती. रोधक घ्या. तात्कालिक शक्ती p = i²R आहे. i काहीही करत असो, i² धन आहे: ऋण अर्ध-चक्रात धारा उलटी वाहते, पण ती रोधकाला नेमके तितकेच तापवते जितके पुढे जाताना तापवत होती, कारण धारेची दिशा उलटल्याने काहीही थंड होत नाही. म्हणून चक्रावरची सरासरी शक्ती R गुणिले i² चा माध्य आहे, आणि तो माध्य ठामपणे शून्य नाही. I_rms ला त्या माध्याचे वर्गमूळ म्हणून व्याख्यायित करा, आणि सरासरी शक्ती I²_rms R होते — दिष्ट धारेसारखीच पदावली. व्याख्येचा गाभा हाच: ती अशी घडवली आहे की दिष्ट धारेचे प्रत्येक शक्ती-सूत्र जसेच्या तसे चालत राहावे. ज्यावक्रासाठी अंकगणित I_rms = I₀/√2 देते, कारण चक्रावर sin² ची सरासरी नेमकी ½ आहे. म्हणून 220 V हा संकेत वा अंदाज नाही. ते प्रायोगिक अर्थ असलेले विधान आहे: या पुरवठ्यावर चालणारा हीटर दर सेकंदाला तितकीच उष्णता देतो जितकी तो 220 V च्या बॅटरीवर देईल. प्रत्यावर्तीसाठी खुणा असलेला व्होल्टमापक हेच दाखवायला बनवलेला आहे, आणि विजेच्या मीटरचे गणित याच संख्येवर टिकलेले आहे. आता मित्राचा 311 V, जो खरी राशी आहे पण चुकीच्या जागी बसवलेली. तो शिखर आहे, V₀ = √2 × 220 ≈ 311 V, आणि तो निर्णयांच्या दुसऱ्या संचासाठी महत्त्वाचा आहे. विद्युतरोधनाला तो सोसावाच लागतो, अन्यथा उपकरण प्रत्येक चक्राच्या शिखरावर तडकेल. धारित्राचे व्होल्टेज निर्धारण त्याहून अधिक असावे लागते. दिष्टकारी डायोडला तो उलट दिशेने अडवावा लागतो, आणि मुख्य पुरवठा दिष्ट करून बनलेली गुळगुळीत दिष्ट धारा 311 V जवळ बसते, 220 V जवळ नाही — हे सत्य प्रथमच वीजपुरवठा बनवणाऱ्यांना चकित करते. सर्वसाधारण धडा काढण्याजोगा आहे कारण तो विजेबद्दल आहेच नाही. जेव्हा एखादी राशी बदलते, तेव्हा कोणतीही एक संख्या तिचे वर्णन करत नाही, म्हणून एक संख्या निवडावी लागते, आणि ती एखाद्या हेतूसाठी निवडली जाते. वाहून नेलेल्या एकूण प्रभारासाठी सरासरी, तापनासाठी वर्ग माध्य मूळ, विद्युतरोधनासाठी शिखर. एक आकडा बदलती राशी पकडत नाही ही तक्रार नेहमी खरी असते आणि कधीच उपयोगी नसते; प्रश्न हा की हातातल्या कामासाठी कोणती उणीव स्वीकारार्ह आहे. (दुसरा पर्याय 'हेतूसाठी व्याख्यायित' आणि 'मनमानी' यांची गल्लत करतो; तिसरा फार वेगळी संख्या देईल — अर्ध्या ज्यावक्राची सरासरी 2V₀/π ≈ 198 V आहे, 220 V नाही; चौथा सारांश देण्यासच नकार देतो, ज्याने ना वीज विकता येईल ना घटक निर्धारित करता येईल.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A factory's meter records 40 kW, but the supply company measures 250 A flowing at 400 V — a product of 100 kVA — and charges a penalty. The manager argues that since the meter is honest about the energy used, the extra current costs the company nothing. Explain the physics and what the factory should install.",
+          hi: "एक कारख़ाने का मीटर 40 kW दर्ज करता है, पर आपूर्ति कंपनी 400 V पर 250 A बहती नापती है — गुणनफल 100 kVA — और जुर्माना लगाती है। प्रबंधक तर्क देता है कि चूँकि मीटर काम में ली गई ऊर्जा के बारे में ईमानदार है, अतिरिक्त धारा से कंपनी का कुछ नहीं बिगड़ता। भौतिकी समझाओ और बताओ कि कारख़ाने को क्या लगाना चाहिए।",
+          mr: "एका कारखान्याचे मीटर 40 kW नोंदवते, पण पुरवठा कंपनी 400 V वर 250 A वाहताना मोजते — गुणाकार 100 kVA — आणि दंड लावते. व्यवस्थापक युक्तिवाद करतो की मीटर वापरलेल्या ऊर्जेबद्दल प्रामाणिक असल्याने, जादा धारेमुळे कंपनीचे काहीही बिघडत नाही. भौतिकी समजावा आणि कारखान्याने काय बसवावे ते सांगा.",
+        },
+        choices: [
+          {
+            en: "The power factor is 40/100 = 0.4, so the current lags the voltage by about 66° — the load is dominated by induction motors, which are inductive. The manager is wrong that the extra current is free: the cables, the transformer and the generator all have to be sized for 250 A, and the I²R loss in the supply network scales with the SQUARE of that current, so 250 A wastes over six times as much in the lines as the 100 A that 40 kW at unity power factor would need. The cure is a bank of capacitors across the supply, whose leading current cancels the motors' lagging current, raising the power factor towards 1 and cutting the line current without changing the useful power at all",
+            hi: "शक्ति गुणांक 40/100 = 0.4 है, अतः धारा वोल्टता से लगभग 66° पीछे है — लोड पर प्रेरण मोटरें हावी हैं, जो प्रेरकीय हैं। प्रबंधक यह मानने में ग़लत है कि अतिरिक्त धारा मुफ़्त है: तार, ट्रांसफ़ॉर्मर और जनित्र सबको 250 A के हिसाब से बनाना पड़ता है, और आपूर्ति जाल में I²R हानि उसी धारा के वर्ग के साथ चलती है, अतः 250 A लाइनों में उससे छह गुना से अधिक बरबाद करता है जितना एकांक शक्ति गुणांक पर 40 kW के लिए चाहिए 100 A करता। इलाज आपूर्ति के आर-पार संधारित्रों की पंक्ति है, जिसकी अग्रगामी धारा मोटरों की पश्चगामी धारा को काट देती है, शक्ति गुणांक को 1 की ओर उठाती है और काम की शक्ति बिलकुल बदले बिना लाइन की धारा घटा देती है",
+            mr: "शक्ती गुणक 40/100 = 0.4 आहे, म्हणून धारा व्होल्टेजच्या सुमारे 66° मागे आहे — भारावर प्रेरण मोटारींचे वर्चस्व आहे, ज्या प्रेरकी आहेत. व्यवस्थापक हे मानण्यात चूक करतो की जादा धारा फुकट आहे: तारा, ट्रान्सफॉर्मर आणि जनित्र या सर्वांना 250 A च्या हिशेबाने बनवावे लागते, आणि पुरवठा जाळ्यातील I²R हानी त्याच धारेच्या वर्गासोबत चालते, म्हणून 250 A तारांमध्ये त्याहून सहापटींहून अधिक वाया घालवते जितके एकक शक्ती गुणकावर 40 kW साठी लागणारे 100 A घालवेल. उपाय म्हणजे पुरवठ्याच्या आरपार धारित्रांची रांग, जिची अग्रगामी धारा मोटारींची पश्चगामी धारा कापते, शक्ती गुणक 1 कडे उचलते आणि उपयुक्त शक्ती मुळीच न बदलता तारेतील धारा घटवते",
+          },
+          {
+            en: "The manager is right: the extra current is wattless, and a wattless current by definition carries no energy and therefore costs nobody anything",
+            hi: "प्रबंधक सही है: अतिरिक्त धारा वाटहीन है, और वाटहीन धारा परिभाषा से कोई ऊर्जा नहीं ढोती और इसलिए किसी का कुछ नहीं बिगाड़ती",
+            mr: "व्यवस्थापक बरोबर आहे: जादा धारा वॅटविरहित आहे, आणि वॅटविरहित धारा व्याख्येने कोणतीही ऊर्जा वाहत नाही आणि म्हणून कोणाचेही काहीही बिघडवत नाही",
+          },
+          {
+            en: "The meter is faulty, since the true power consumed must be 100 kW and the factory is being undercharged rather than penalised",
+            hi: "मीटर ख़राब है, क्योंकि वस्तुतः खपी शक्ति 100 kW होनी चाहिए और कारख़ाने से जुर्माना नहीं बल्कि कम वसूली हो रही है",
+            mr: "मीटर बिघडलेले आहे, कारण प्रत्यक्षात खर्च झालेली शक्ती 100 kW असली पाहिजे आणि कारखान्याकडून दंड नव्हे तर कमी वसुली होत आहे",
+          },
+          {
+            en: "The factory should install a large resistor in series with the supply, which will bring the current down to the level the power warrants",
+            hi: "कारख़ाने को आपूर्ति के श्रेणी में बड़ा प्रतिरोधक लगाना चाहिए, जो धारा को उस स्तर तक ले आएगा जितने की शक्ति गवाही देती है",
+            mr: "कारखान्याने पुरवठ्याच्या श्रेणीत मोठा रोधक बसवावा, जो धारा त्या पातळीवर आणेल जितकी शक्ती दर्शवते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Start by reading the two numbers correctly, because they are not measuring the same thing. The meter's 40 kW is real power — the average of vi over a cycle, the rate at which energy is actually converted to motion, heat and light inside the factory. The company's 400 V × 250 A = 100 kVA is apparent power, the plain product of rms voltage and rms current, which ignores the phase between them. Their ratio is the power factor: cos φ = 40/100 = 0.4, corresponding to a phase angle of about 66°. That the current LAGS is the signature of an inductive load, and an industrial site is full of them — induction motors are coils of wire wound on iron, and a motor running lightly loaded is close to a pure inductor. Now the manager's argument, which is half right in a way that matters. He is correct that the out-of-phase component of the current — the wattless current — delivers no net energy to his machines. Over each cycle it flows one way and back, borrowing energy from the supply in one quarter and returning it in the next, and integrated over a cycle its contribution to power is exactly zero. That is why the meter reads 40 kW and not 100 kW, and the meter is not lying. But the conclusion does not follow, and the reason is that the wattless current is not imaginary. It is real charge moving through real copper. The supply cables do not know or care what the phase is; they carry 250 A, and they dissipate I²R while doing it. Because the loss goes as the SQUARE of the current, this is not a small effect: the same 40 kW delivered at unity power factor would need only 100 A, and (250/100)² = 6.25, so the poor power factor is costing the network more than six times the transmission loss it would otherwise incur. The same current also sets the size of everything upstream — the cable's cross-section, the transformer's rating, the switchgear, the generator's winding. All of it must be built for 250 A while only 40 kW is being sold. The penalty is therefore not arbitrary; it is a charge for capacity the factory occupies and does not pay for through the energy meter. The remedy follows from the diagnosis. If the trouble is a lagging current, add something whose current leads: a capacitor. Connected in parallel across the supply, a capacitor bank draws a leading current that cancels part of the motors' lagging current, so the two reactive contributions subtract while the real power is untouched. The line current falls towards the 100 A the load genuinely needs, the power factor rises towards 1, the cables run cooler and the penalty disappears. Note what has NOT happened: the factory's machines are doing exactly the same work as before, and the meter still reads 40 kW. Nothing has been saved inside the factory. What has been fixed is the current in the wires leading to it. (The second option correctly identifies the wattless current and then forgets that it still flows through resistance; the third mistakes apparent power for real power; the fourth would reduce the current by wasting the difference as heat, which is the one solution that costs more than the problem.)",
+          hi: "पहले दोनों संख्याएँ ठीक से पढ़ो, क्योंकि वे एक ही चीज़ नहीं नाप रहीं। मीटर के 40 kW वास्तविक शक्ति हैं — चक्र पर vi का औसत, वह दर जिससे ऊर्जा वस्तुतः कारख़ाने के भीतर गति, ऊष्मा और प्रकाश में बदलती है। कंपनी के 400 V × 250 A = 100 kVA आभासी शक्ति हैं, वर्ग माध्य मूल वोल्टता और धारा का सादा गुणनफल, जो उनके बीच की कला की अनदेखी करता है। उनका अनुपात शक्ति गुणांक है: cos φ = 40/100 = 0.4, जो लगभग 66° के कलांतर से मेल खाता है। धारा का पीछे रहना प्रेरकीय लोड की पहचान है, और औद्योगिक स्थल उनसे भरा है — प्रेरण मोटरें लोहे पर लपेटी तार की कुंडलियाँ हैं, और हल्के लोड पर चलती मोटर शुद्ध प्रेरक के निकट है। अब प्रबंधक का तर्क, जो ऐसे ढंग से आधा सही है जो मायने रखता है। वह इस बारे में सही है कि धारा का कला-बाहर घटक — वाटहीन धारा — उसकी मशीनों को कोई नेट ऊर्जा नहीं देता। हर चक्र में वह एक ओर जाती और लौटती है, एक चौथाई में आपूर्ति से ऊर्जा उधार लेती और अगले में लौटाती है, और चक्र पर समाकलित करने पर शक्ति में उसका अंश ठीक शून्य है। इसीलिए मीटर 40 kW पढ़ता है, 100 kW नहीं, और मीटर झूठ नहीं बोल रहा। पर निष्कर्ष नहीं निकलता, और कारण यह कि वाटहीन धारा काल्पनिक नहीं है। वह असली ताँबे में चलता असली आवेश है। आपूर्ति के तारों को न पता है न परवाह कि कला क्या है; वे 250 A ढोते हैं, और ऐसा करते हुए I²R खपाते हैं। चूँकि हानि धारा के वर्ग से चलती है, यह छोटा प्रभाव नहीं: वही 40 kW एकांक शक्ति गुणांक पर देने को केवल 100 A चाहिए होते, और (250/100)² = 6.25, अतः ख़राब शक्ति गुणांक जाल को उस संचरण हानि से छह गुना से अधिक की क़ीमत दे रहा है जो अन्यथा लगती। वही धारा ऊपर की हर चीज़ का आकार भी तय करती है — तार का परिच्छेद, ट्रांसफ़ॉर्मर का निर्धारण, स्विचगियर, जनित्र की लपेट। यह सब 250 A के लिए बनाना पड़ता है जबकि बेचे केवल 40 kW जा रहे हैं। अतः जुर्माना मनमाना नहीं; वह उस क्षमता का शुल्क है जो कारख़ाना घेरता है और ऊर्जा मीटर के ज़रिए जिसका दाम नहीं चुकाता। उपाय निदान से निकलता है। यदि गड़बड़ पश्चगामी धारा है, तो ऐसा कुछ जोड़ो जिसकी धारा अग्रगामी हो: संधारित्र। आपूर्ति के आर-पार समांतर में जोड़ी गई संधारित्र-पंक्ति अग्रगामी धारा खींचती है जो मोटरों की पश्चगामी धारा का एक भाग काट देती है, अतः दोनों प्रतिघाती अंश घटते हैं जबकि वास्तविक शक्ति अछूती रहती है। लाइन की धारा उन 100 A की ओर गिरती है जो लोड को सचमुच चाहिए, शक्ति गुणांक 1 की ओर उठता है, तार ठंडे चलते हैं और जुर्माना ग़ायब हो जाता है। ध्यान दो कि क्या नहीं हुआ: कारख़ाने की मशीनें ठीक वही काम कर रही हैं जो पहले करती थीं, और मीटर अब भी 40 kW पढ़ता है। कारख़ाने के भीतर कुछ भी नहीं बचा। जो ठीक हुआ वह उस तक जाते तारों की धारा है। (दूसरा विकल्प वाटहीन धारा की पहचान ठीक करता है और फिर भूल जाता है कि वह अब भी प्रतिरोध में से बहती है; तीसरा आभासी शक्ति को वास्तविक शक्ति समझ लेता है; चौथा धारा तो घटा देता पर अंतर को ऊष्मा बनाकर, और यही वह एक हल है जो समस्या से महँगा पड़ता है।)",
+          mr: "आधी दोन्ही संख्या नीट वाचा, कारण त्या एकच गोष्ट मोजत नाहीत. मीटरचे 40 kW ही वास्तविक शक्ती आहे — चक्रावर vi ची सरासरी, ती गती ज्याने ऊर्जा प्रत्यक्षात कारखान्याच्या आत गती, उष्णता आणि प्रकाशात बदलते. कंपनीचे 400 V × 250 A = 100 kVA ही आभासी शक्ती आहे, वर्ग माध्य मूळ व्होल्टेज आणि धारा यांचा साधा गुणाकार, जो त्यांच्यातील कलेकडे दुर्लक्ष करतो. त्यांचे गुणोत्तर म्हणजे शक्ती गुणक: cos φ = 40/100 = 0.4, जे सुमारे 66° च्या कलाकोनाशी जुळते. धारेचे मागे राहणे ही प्रेरकी भाराची खूण आहे, आणि औद्योगिक जागा त्यांनी भरलेली आहे — प्रेरण मोटारी लोखंडावर गुंडाळलेली तारेची वेटोळी आहेत, आणि हलक्या भारावर चालणारी मोटार शुद्ध प्रेरकाच्या जवळ आहे. आता व्यवस्थापकाचा युक्तिवाद, जो महत्त्वाच्या पद्धतीने अर्धा बरोबर आहे. तो याबाबत बरोबर आहे की धारेचा कला-बाहेरचा घटक — वॅटविरहित धारा — त्याच्या यंत्रांना कोणतीही निव्वळ ऊर्जा देत नाही. प्रत्येक चक्रात ती एका दिशेने जाते आणि परतते, एका चतुर्थांशात पुरवठ्याकडून ऊर्जा उसनी घेते आणि पुढच्यात परत करते, आणि चक्रावर समाकलित केल्यावर शक्तीतला तिचा वाटा नेमका शून्य आहे. म्हणूनच मीटर 40 kW वाचते, 100 kW नाही, आणि मीटर खोटे बोलत नाही. पण निष्कर्ष निघत नाही, आणि कारण असे की वॅटविरहित धारा काल्पनिक नाही. ती खऱ्या तांब्यातून जाणारा खरा प्रभार आहे. पुरवठ्याच्या तारांना ना माहीत आहे ना पर्वा की कला काय आहे; त्या 250 A वाहतात, आणि तसे करताना I²R खर्चतात. हानी धारेच्या वर्गाने चालत असल्याने, हा लहान परिणाम नाही: तेच 40 kW एकक शक्ती गुणकावर द्यायला केवळ 100 A लागले असते, आणि (250/100)² = 6.25, म्हणून खराब शक्ती गुणक जाळ्याला अन्यथा लागणाऱ्या संचरण हानीहून सहापटींहून अधिक किंमत देत आहे. तीच धारा वरच्या प्रत्येक गोष्टीचा आकारही ठरवते — तारेचा छेद, ट्रान्सफॉर्मरचे निर्धारण, स्विचगियर, जनित्राची वेढणी. हे सर्व 250 A साठी बांधावे लागते तर विकले जातात केवळ 40 kW. म्हणून दंड मनमानी नाही; तो त्या क्षमतेचे शुल्क आहे जी कारखाना व्यापतो आणि ऊर्जा मीटरमार्फत जिची किंमत मोजत नाही. उपाय निदानातून निघतो. जर अडचण पश्चगामी धारा असेल, तर असे काही जोडा ज्याची धारा अग्रगामी असेल: धारित्र. पुरवठ्याच्या आरपार समांतरात जोडलेली धारित्रांची रांग अग्रगामी धारा ओढते जी मोटारींच्या पश्चगामी धारेचा भाग कापते, म्हणून दोन्ही प्रतिघाती वाटे वजा होतात तर वास्तविक शक्ती अस्पर्श राहते. तारेतील धारा त्या 100 A कडे घसरते जी भाराला खरोखर हवी, शक्ती गुणक 1 कडे उचलतो, तारा थंड चालतात आणि दंड नाहीसा होतो. काय घडले नाही ते लक्षात घ्या: कारखान्याची यंत्रे नेमके तेच काम करत आहेत जे आधी करत होती, आणि मीटर अजूनही 40 kW वाचते. कारखान्याच्या आत काहीही वाचले नाही. जे दुरुस्त झाले ते त्याच्याकडे जाणाऱ्या तारांतील धारा आहे. (दुसरा पर्याय वॅटविरहित धारेची ओळख बरोबर करतो आणि मग विसरतो की ती अजूनही रोधातून वाहते; तिसरा आभासी शक्तीला वास्तविक शक्ती समजतो; चौथा धारा घटवेल पण फरक उष्णता बनवून, आणि हाच तो एक उपाय जो समस्येहून महाग पडतो.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 8 — Electromagnetic Waves                                       */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "physics-12-electromagnetic-waves",
+    subject: "PHYSICS",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 8 — Electromagnetic Waves",
+      hi: "अध्याय 8 — वैद्युतचुंबकीय तरंगें",
+      mr: "प्रकरण 8 — विद्युतचुंबकीय लहरी",
+    },
+    name: {
+      en: "Electromagnetic Waves",
+      hi: "वैद्युतचुंबकीय तरंगें",
+      mr: "विद्युतचुंबकीय लहरी",
+    },
+    summary: {
+      en: "A gap in a law found by taking two different surfaces with the same rim and getting two different answers, mended by admitting that a changing electric field does everything a current does; the consequence that a changing field of either kind makes the other, so the pair can leave their source behind and travel with nothing to travel in; a speed that drops out of two constants measured in a laboratory with no light involved, and matches the measured speed of light closely enough to settle what light is; and one continuous family of such waves, differing in nothing but frequency, whose ends are so unlike in what they do to a body that only the ordering makes sense of it.",
+      hi: "एक नियम में वह छेद जो एक ही किनारे वाले दो भिन्न पृष्ठ लेकर दो भिन्न उत्तर पाने से मिला, और यह मानकर भरा गया कि बदलता विद्युत क्षेत्र वह सब करता है जो धारा करती है; उसका परिणाम यह कि किसी भी क़िस्म का बदलता क्षेत्र दूसरे को बनाता है, अतः युग्म अपने स्रोत को पीछे छोड़ सकता है और बिना किसी माध्यम के चल सकता है; वह चाल जो प्रयोगशाला में बिना किसी प्रकाश के नापे गए दो स्थिरांकों से निकल आती है, और प्रकाश की नापी गई चाल से इतनी मिलती है कि यह तय हो जाए कि प्रकाश है क्या; और ऐसी तरंगों का एक सतत कुल, जो आवृत्ति के सिवा किसी बात में भिन्न नहीं, और जिसके दोनों सिरे शरीर के साथ जो करते हैं उसमें इतने असमान हैं कि केवल वह क्रम ही उसे समझाता है।",
+      mr: "एका नियमातले ते छिद्र जे एकाच कडेची दोन वेगळी पृष्ठे घेऊन दोन वेगळी उत्तरे मिळवण्याने सापडले, आणि हे मान्य करून भरले गेले की बदलते विद्युत क्षेत्र ते सर्व करते जे धारा करते; त्याचा परिणाम असा की कोणत्याही प्रकारचे बदलते क्षेत्र दुसरे बनवते, म्हणून जोडी आपला स्रोत मागे सोडू शकते आणि कशातही न प्रवास करता प्रवास करू शकते; तो वेग जो प्रयोगशाळेत कोणत्याही प्रकाशाविना मोजलेल्या दोन स्थिरांकांतून निघतो, आणि प्रकाशाच्या मोजलेल्या वेगाशी इतका जुळतो की प्रकाश काय आहे हे ठरावे; आणि अशा लहरींचे एक सलग कुळ, जे वारंवारतेखेरीज कशातही वेगळे नाही, आणि ज्याची दोन टोके शरीराशी जे करतात त्यात इतकी असमान आहेत की केवळ तो क्रमच त्याचा अर्थ लावतो.",
+    },
+    position: 8,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "displacement-current",
+        name: {
+          en: "Displacement current",
+          hi: "विस्थापन धारा",
+          mr: "विस्थापन धारा",
+        },
+        kind: "foundational idea",
+        prompt: {
+          en: "No charge crosses the gap between a charging capacitor's plates, yet the magnetic field around the gap is exactly what a continuing current would produce, so a term proportional to the rate of change of the electric field had to be added. What is that term called?",
+          hi: "आवेशित होते संधारित्र की प्लेटों के बीच की दरार को कोई आवेश पार नहीं करता, फिर भी दरार के चारों ओर चुंबकीय क्षेत्र ठीक वही है जो चलती रहती धारा देती, अतः विद्युत क्षेत्र के परिवर्तन की दर के समानुपाती एक पद जोड़ना पड़ा। उस पद को क्या कहते हैं?",
+          mr: "प्रभारित होणाऱ्या धारित्राच्या पट्ट्यांमधली फट कोणताही प्रभार ओलांडत नाही, तरीही फटीभोवतीचे चुंबकीय क्षेत्र नेमके तेच आहे जे चालू राहणारी धारा देईल, म्हणून विद्युत क्षेत्राच्या बदलाच्या गतीशी समानुपाती एक पद जोडावे लागले. त्या पदाला काय म्हणतात?",
+        },
+        statement: {
+          en: "Displacement current is ε₀ dΦ_E/dt, the term Maxwell added to Ampère's law so that a changing electric field produces a magnetic field exactly as a conduction current does.",
+          hi: "विस्थापन धारा ε₀ dΦ_E/dt है, वह पद जो मैक्सवेल ने ऐम्पियर के नियम में जोड़ा ताकि बदलता विद्युत क्षेत्र ठीक उसी तरह चुंबकीय क्षेत्र बनाए जैसे चालन धारा बनाती है।",
+          mr: "विस्थापन धारा म्हणजे ε₀ dΦ_E/dt, ते पद जे मॅक्सवेलने अँपिअरच्या नियमात जोडले जेणेकरून बदलते विद्युत क्षेत्र नेमके तसेच चुंबकीय क्षेत्र बनवेल जसे वहन धारा बनवते.",
+        },
+        detail: {
+          en: "It was not fitted to an experiment but forced by a contradiction: Ampère's law gave two different answers for the same loop depending on which surface bounded by it was chosen.",
+          hi: "यह किसी प्रयोग से नहीं मिलाया गया था बल्कि एक विरोधाभास ने इसे बाध्य किया: ऐम्पियर का नियम एक ही लूप के लिए दो भिन्न उत्तर देता था, यह इस पर निर्भर कि उससे घिरा कौन-सा पृष्ठ चुना गया।",
+          mr: "हे कोणत्याही प्रयोगाशी जुळवले गेले नव्हते तर एका विरोधाभासाने ते भाग पाडले: अँपिअरचा नियम एकाच वळशासाठी दोन वेगळी उत्तरे देत होता, ते यावर अवलंबून की त्याने घेरलेले कोणते पृष्ठ निवडले.",
+        },
+        extra: {
+          en: "Its real importance is not the capacitor at all but what it made possible: with this term in place a changing electric field creates a magnetic one and a changing magnetic field creates an electric one, and the pair can sustain each other indefinitely as a wave.",
+          hi: "इसका असली महत्त्व संधारित्र है ही नहीं बल्कि वह है जो इसने संभव किया: यह पद रखते ही बदलता विद्युत क्षेत्र चुंबकीय बनाता है और बदलता चुंबकीय विद्युत, और युग्म एक-दूसरे को तरंग के रूप में अनिश्चित काल तक बनाए रख सकता है।",
+          mr: "याचे खरे महत्त्व धारित्र आहेच नाही तर ते आहे जे याने शक्य केले: हे पद ठेवताच बदलते विद्युत क्षेत्र चुंबकीय बनवते आणि बदलते चुंबकीय विद्युत, आणि जोडी एकमेकांना लहर म्हणून अनिश्चित काळ टिकवू शकते.",
+        },
+        pair: {
+          left: {
+            en: "Demanded by a contradiction, not by a measurement",
+            hi: "किसी माप ने नहीं, एक विरोधाभास ने माँगा",
+            mr: "कोणत्याही मापाने नव्हे, एका विरोधाभासाने मागितले",
+          },
+          right: {
+            en: "displacement current",
+            hi: "विस्थापन धारा",
+            mr: "विस्थापन धारा",
+          },
+        },
+      },
+      {
+        id: "nature-of-em-wave",
+        name: {
+          en: "The nature of an electromagnetic wave",
+          hi: "वैद्युतचुंबकीय तरंग की प्रकृति",
+          mr: "विद्युतचुंबकीय लहरीचे स्वरूप",
+        },
+        kind: "foundational idea",
+        prompt: {
+          en: "Two fields oscillate in step, at right angles to each other and both at right angles to the direction of travel, and the whole arrangement needs no medium to move through. Which description is this?",
+          hi: "दो क्षेत्र एक ही कला में दोलन करते हैं, आपस में समकोण पर और दोनों चलने की दिशा के समकोण पर, और पूरी व्यवस्था को चलने के लिए किसी माध्यम की ज़रूरत नहीं। यह कौन-सा वर्णन है?",
+          mr: "दोन क्षेत्रे एकाच कलेत दोलन करतात, एकमेकांना काटकोनात आणि दोन्ही प्रवासाच्या दिशेला काटकोनात, आणि अख्ख्या मांडणीला हलण्यासाठी कोणत्याही माध्यमाची गरज नाही. हे कोणते वर्णन?",
+        },
+        statement: {
+          en: "An electromagnetic wave is a transverse wave in which E and B oscillate in phase, perpendicular to each other and to the direction of propagation, and it requires no material medium.",
+          hi: "वैद्युतचुंबकीय तरंग वह अनुप्रस्थ तरंग है जिसमें E और B एक ही कला में, आपस में और संचरण की दिशा के लंबवत दोलन करते हैं, और उसे किसी भौतिक माध्यम की ज़रूरत नहीं।",
+          mr: "विद्युतचुंबकीय लहर ही अशी अनुप्रस्थ लहर आहे जिच्यात E आणि B एकाच कलेत, एकमेकांना आणि संचरणाच्या दिशेला लंब दोलन करतात, आणि तिला कोणत्याही भौतिक माध्यमाची गरज नाही.",
+        },
+        detail: {
+          en: "The two amplitudes are locked together by E₀ = cB₀, so the magnetic part looks numerically tiny in SI units and is not weak at all — the units are simply chosen so that c appears in the ratio.",
+          hi: "दोनों आयाम E₀ = cB₀ से आपस में बँधे हैं, अतः SI मात्रकों में चुंबकीय भाग संख्या में नन्हा दिखता है और वह कमज़ोर है ही नहीं — मात्रक बस ऐसे चुने गए हैं कि अनुपात में c आ जाए।",
+          mr: "दोन्ही आयाम E₀ = cB₀ ने एकमेकांशी बांधलेले आहेत, म्हणून SI एककांत चुंबकीय भाग संख्येने चिमुकला दिसतो आणि तो क्षीण आहेच नाही — एकके फक्त अशी निवडली आहेत की गुणोत्तरात c यावा.",
+        },
+        extra: {
+          en: "It carries energy and momentum, so light exerts a real pressure — small enough to be ignored on a table, large enough over the area of a solar sail or the surface of a comet to be seen at work.",
+          hi: "यह ऊर्जा और संवेग दोनों ढोती है, अतः प्रकाश असली दाब डालता है — मेज़ पर अनदेखा करने लायक़ छोटा, सौर पाल के क्षेत्रफल या धूमकेतु के पृष्ठ पर काम करता दिखने लायक़ बड़ा।",
+          mr: "ती ऊर्जा आणि संवेग दोन्ही वाहते, म्हणून प्रकाश खरा दाब देतो — टेबलावर दुर्लक्ष करण्याइतका लहान, सौर शिडाच्या क्षेत्रफळावर वा धूमकेतूच्या पृष्ठावर काम करताना दिसण्याइतका मोठा.",
+        },
+        pair: {
+          left: {
+            en: "Needs nothing to travel in",
+            hi: "चलने के लिए कुछ भी नहीं चाहिए",
+            mr: "प्रवास करायला काहीही लागत नाही",
+          },
+          right: {
+            en: "the nature of an electromagnetic wave",
+            hi: "वैद्युतचुंबकीय तरंग की प्रकृति",
+            mr: "विद्युतचुंबकीय लहरीचे स्वरूप",
+          },
+        },
+      },
+      {
+        id: "speed-from-constants",
+        name: {
+          en: "The speed built from ε₀ and μ₀",
+          hi: "ε₀ और μ₀ से बनी चाल",
+          mr: "ε₀ आणि μ₀ पासून बनलेला वेग",
+        },
+        kind: "foundational idea",
+        prompt: {
+          en: "Two constants measured by weighing forces between charges and between wires — no optics anywhere in either experiment — combine as 1/√(ε₀μ₀) to give a number that turns out to be the measured speed of light. Which result is this?",
+          hi: "दो स्थिरांक जो आवेशों के बीच और तारों के बीच बल तौलकर नापे गए — दोनों प्रयोगों में कहीं कोई प्रकाशिकी नहीं — 1/√(ε₀μ₀) के रूप में मिलकर ऐसी संख्या देते हैं जो प्रकाश की नापी गई चाल निकलती है। यह कौन-सा परिणाम है?",
+          mr: "दोन स्थिरांक जे प्रभारांमधली आणि तारांमधली बले तोलून मोजले गेले — दोन्ही प्रयोगांत कुठेही प्रकाशिकी नाही — 1/√(ε₀μ₀) या रूपात मिळून अशी संख्या देतात जी प्रकाशाचा मोजलेला वेग निघते. हा कोणता निकाल?",
+        },
+        statement: {
+          en: "The speed built from ε₀ and μ₀ is c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s, the speed Maxwell's equations require of an electromagnetic wave in vacuum.",
+          hi: "ε₀ और μ₀ से बनी चाल c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s है, वही चाल जो मैक्सवेल के समीकरण निर्वात में वैद्युतचुंबकीय तरंग से माँगते हैं।",
+          mr: "ε₀ आणि μ₀ पासून बनलेला वेग म्हणजे c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s, तोच वेग जो मॅक्सवेलची समीकरणे निर्वातात विद्युतचुंबकीय लहरीकडून मागतात.",
+        },
+        detail: {
+          en: "The agreement was the argument: neither constant has anything to do with light, so the match was strong evidence that light IS an electromagnetic wave rather than a separate phenomenon.",
+          hi: "मिलान ही तर्क था: किसी भी स्थिरांक का प्रकाश से कोई लेना-देना नहीं, अतः वह मेल इस बात का प्रबल प्रमाण था कि प्रकाश कोई अलग परिघटना नहीं बल्कि वैद्युतचुंबकीय तरंग ही है।",
+          mr: "जुळणे हाच युक्तिवाद होता: कोणत्याही स्थिरांकाचा प्रकाशाशी काहीही संबंध नाही, म्हणून ते जुळणे हा प्रकाश ही वेगळी घटना नसून विद्युतचुंबकीय लहरच आहे याचा भक्कम पुरावा होता.",
+        },
+        extra: {
+          en: "In a medium the speed becomes 1/√(εμ), always less than c, and the ratio of the two is exactly the refractive index that optics had been measuring for two centuries without knowing what it was.",
+          hi: "माध्यम में चाल 1/√(εμ) हो जाती है, सदा c से कम, और दोनों का अनुपात ठीक वही अपवर्तनांक है जिसे प्रकाशिकी दो सदियों से नापती आ रही थी बिना यह जाने कि वह है क्या।",
+          mr: "माध्यमात वेग 1/√(εμ) होतो, नेहमी c हून कमी, आणि दोहोंचे गुणोत्तर नेमका तोच अपवर्तनांक आहे जो प्रकाशिकी दोन शतके मोजत होती तो काय आहे हे न जाणता.",
+        },
+        pair: {
+          left: {
+            en: "No optics in either experiment, and light comes out",
+            hi: "किसी भी प्रयोग में प्रकाशिकी नहीं, और प्रकाश निकल आता है",
+            mr: "कोणत्याही प्रयोगात प्रकाशिकी नाही, आणि प्रकाश निघतो",
+          },
+          right: {
+            en: "the speed built from ε₀ and μ₀",
+            hi: "ε₀ और μ₀ से बनी चाल",
+            mr: "ε₀ आणि μ₀ पासून बनलेला वेग",
+          },
+        },
+      },
+      {
+        id: "microwaves",
+        name: {
+          en: "Microwaves",
+          hi: "सूक्ष्म तरंगें",
+          mr: "सूक्ष्म लहरी",
+        },
+        kind: "region of the spectrum",
+        prompt: {
+          en: "Wavelengths of a few centimetres, produced by klystrons and magnetrons, short enough to be aimed in a narrow beam by a dish and long enough to pass through cloud. Which region is this?",
+          hi: "कुछ सेंटीमीटर की तरंगदैर्ध्य, क्लाइस्ट्रॉन और मैग्नेट्रॉन से बनी, इतनी छोटी कि तश्तरी से सँकरे पुंज में साधी जा सकें और इतनी बड़ी कि बादलों के आर-पार निकल जाएँ। यह कौन-सा भाग है?",
+          mr: "काही सेंटीमीटरच्या तरंगलांबी, क्लायस्ट्रॉन आणि मॅग्नेट्रॉनने बनवलेल्या, इतक्या लहान की तबकडीने अरुंद शलाकेत रोखता याव्यात आणि इतक्या मोठ्या की ढगांच्या आरपार जाव्यात. हा कोणता भाग?",
+        },
+        statement: {
+          en: "Microwaves occupy wavelengths of roughly a millimetre to a metre, are generated by vacuum-tube oscillators such as the magnetron, and are used for radar, satellite links and cooking.",
+          hi: "सूक्ष्म तरंगें लगभग एक मिलीमीटर से एक मीटर तक की तरंगदैर्ध्य घेरती हैं, मैग्नेट्रॉन जैसे निर्वात-नलिका दोलकों से बनती हैं, और रडार, उपग्रह संपर्क तथा पकाने में काम आती हैं।",
+          mr: "सूक्ष्म लहरी साधारण एक मिलीमीटर ते एक मीटर तरंगलांबी व्यापतात, मॅग्नेट्रॉनसारख्या निर्वात-नलिका दोलकांनी बनतात, आणि रडार, उपग्रह संपर्क तसेच स्वयंपाकात वापरल्या जातात.",
+        },
+        detail: {
+          en: "An oven works because water molecules are electric dipoles that try to follow the reversing field, and the energy of that jostling appears as heat throughout the food rather than only at its surface.",
+          hi: "चूल्हा इसलिए चलता है कि पानी के अणु विद्युत द्विध्रुव हैं जो उलटते क्षेत्र का पीछा करने की कोशिश करते हैं, और उस धक्कमपेल की ऊर्जा केवल सतह पर नहीं बल्कि पूरे भोजन में ऊष्मा बनकर प्रकट होती है।",
+          mr: "शेगडी यामुळे चालते की पाण्याचे रेणू विद्युत द्विध्रुव आहेत जे उलटणाऱ्या क्षेत्राचा पाठलाग करू पाहतात, आणि त्या धक्काबुक्कीची ऊर्जा केवळ पृष्ठभागावर नव्हे तर अख्ख्या अन्नात उष्णता बनून प्रकट होते.",
+        },
+        extra: {
+          en: "Radar depends on the short wavelength: a wave is only reflected usefully by an object comparable to or larger than itself, which is why an aircraft returns a centimetre wave and a raindrop mostly does not.",
+          hi: "रडार छोटी तरंगदैर्ध्य पर निर्भर है: तरंग केवल उसी वस्तु से उपयोगी ढंग से परावर्तित होती है जो उसके बराबर या उससे बड़ी हो, इसीलिए विमान सेंटीमीटर तरंग लौटाता है और वर्षा की बूँद प्रायः नहीं।",
+          mr: "रडार लहान तरंगलांबीवर अवलंबून आहे: लहर केवळ त्याच वस्तूकडून उपयुक्तपणे परावर्तित होते जी तिच्याइतकी वा तिहून मोठी असेल, म्हणूनच विमान सेंटीमीटर लहर परत करते आणि पावसाचा थेंब बहुधा नाही.",
+        },
+        pair: {
+          left: {
+            en: "Aimed by a dish, and it heats water from the inside",
+            hi: "तश्तरी से साधी जाती हैं, और पानी को भीतर से गर्म करती हैं",
+            mr: "तबकडीने रोखल्या जातात, आणि पाणी आतून तापवतात",
+          },
+          right: {
+            en: "microwaves",
+            hi: "सूक्ष्म तरंगें",
+            mr: "सूक्ष्म लहरी",
+          },
+        },
+      },
+      {
+        id: "infrared",
+        name: {
+          en: "Infrared radiation",
+          hi: "अवरक्त विकिरण",
+          mr: "अवरक्त प्रारण",
+        },
+        kind: "region of the spectrum",
+        prompt: {
+          en: "Emitted by everything warm, felt on the skin as radiant heat, absorbed strongly by carbon dioxide and water vapour, and used by night-vision cameras to see a person in complete darkness. Which region is this?",
+          hi: "हर गर्म चीज़ से निकलता है, त्वचा पर विकिरित ऊष्मा की तरह महसूस होता है, कार्बन डाइऑक्साइड और जलवाष्प से प्रबलता से अवशोषित होता है, और रात्रि-दृष्टि कैमरे उससे पूरे अँधेरे में व्यक्ति देख लेते हैं। यह कौन-सा भाग है?",
+          mr: "प्रत्येक उबदार गोष्टीतून निघते, त्वचेवर प्रारित उष्णतेसारखे जाणवते, कार्बन डायऑक्साइड आणि जलबाष्पाकडून तीव्रपणे शोषले जाते, आणि रात्रदृष्टी कॅमेरे त्याने पूर्ण अंधारात माणूस पाहतात. हा कोणता भाग?",
+        },
+        statement: {
+          en: "Infrared radiation lies just beyond the red end of the visible band, is emitted by every warm body, and is absorbed by the vibrational modes of molecules rather than by their electrons.",
+          hi: "अवरक्त विकिरण दृश्य पट्टी के लाल सिरे के ठीक आगे पड़ता है, हर गर्म पिंड से निकलता है, और अणुओं के इलेक्ट्रॉनों से नहीं बल्कि उनके कंपन-रूपों से अवशोषित होता है।",
+          mr: "अवरक्त प्रारण दृश्य पट्ट्याच्या लाल टोकाच्या अगदी पुढे असते, प्रत्येक उबदार पदार्थातून निघते, आणि रेणूंच्या इलेक्ट्रॉनांकडून नव्हे तर त्यांच्या कंपन-रूपांकडून शोषले जाते.",
+        },
+        detail: {
+          en: "The greenhouse effect is entirely its story: the atmosphere is transparent to the visible light coming in and opaque to the infrared going out, so energy enters more easily than it leaves.",
+          hi: "हरितगृह प्रभाव पूरा का पूरा इसी की कहानी है: वायुमंडल भीतर आते दृश्य प्रकाश के लिए पारदर्शी और बाहर जाते अवरक्त के लिए अपारदर्शी है, अतः ऊर्जा निकलने से अधिक आसानी से भीतर आती है।",
+          mr: "हरितगृह परिणाम पूर्णपणे याचीच कहाणी आहे: वातावरण आत येणाऱ्या दृश्य प्रकाशासाठी पारदर्शक आणि बाहेर जाणाऱ्या अवरक्तासाठी अपारदर्शक आहे, म्हणून ऊर्जा बाहेर पडण्याहून अधिक सहज आत येते.",
+        },
+        extra: {
+          en: "A body's emission shifts to shorter wavelengths as it heats, which is why a poker glows dull red before it glows white and why a room-temperature object emits only in the infrared.",
+          hi: "गर्म होने पर पिंड का उत्सर्जन छोटी तरंगदैर्ध्यों की ओर खिसकता है, इसीलिए सलाख़ सफ़ेद दमकने से पहले धुँधली लाल दमकती है और इसीलिए कमरे के ताप की वस्तु केवल अवरक्त में उत्सर्जित करती है।",
+          mr: "तापल्यावर पदार्थाचे उत्सर्जन लहान तरंगलांबींकडे सरकते, म्हणूनच सळई पांढरी चमकण्याआधी मंद लाल चमकते आणि म्हणूनच खोलीच्या तापमानाची वस्तू केवळ अवरक्तात उत्सर्जित करते.",
+        },
+        pair: {
+          left: {
+            en: "In through the window, and it cannot get back out",
+            hi: "खिड़की से भीतर, और वह बाहर लौट नहीं सकता",
+            mr: "खिडकीतून आत, आणि ते बाहेर परतू शकत नाही",
+          },
+          right: {
+            en: "infrared radiation",
+            hi: "अवरक्त विकिरण",
+            mr: "अवरक्त प्रारण",
+          },
+        },
+      },
+      {
+        id: "ultraviolet",
+        name: {
+          en: "Ultraviolet radiation",
+          hi: "पराबैंगनी विकिरण",
+          mr: "अतिनील प्रारण",
+        },
+        kind: "region of the spectrum",
+        prompt: {
+          en: "Just beyond the violet end, energetic enough to break chemical bonds and damage DNA, stopped by ordinary window glass and by a layer of a particular gas high in the atmosphere. Which region is this?",
+          hi: "बैंगनी सिरे के ठीक आगे, रासायनिक बंध तोड़ने और DNA को नुक़सान पहुँचाने लायक़ ऊर्जावान, साधारण खिड़की के काँच से और वायुमंडल में ऊँची एक विशेष गैस की परत से रुक जाता है। यह कौन-सा भाग है?",
+          mr: "जांभळ्या टोकाच्या अगदी पुढे, रासायनिक बंध तोडण्याइतके आणि DNA ला हानी पोहोचवण्याइतके ऊर्जावान, साध्या खिडकीच्या काचेने आणि वातावरणात उंचावरच्या एका विशिष्ट वायूच्या थराने अडवले जाते. हा कोणता भाग?",
+        },
+        statement: {
+          en: "Ultraviolet radiation lies just beyond the violet end of the visible band and carries enough energy per quantum to ionise atoms and break molecular bonds, which is why it causes sunburn and damages DNA.",
+          hi: "पराबैंगनी विकिरण दृश्य पट्टी के बैंगनी सिरे के ठीक आगे पड़ता है और प्रति क्वांटम इतनी ऊर्जा ढोता है कि परमाणु आयनित हों और आणविक बंध टूटें, इसीलिए वह धूप से जलन देता है और DNA को नुक़सान पहुँचाता है।",
+          mr: "अतिनील प्रारण दृश्य पट्ट्याच्या जांभळ्या टोकाच्या अगदी पुढे असते आणि प्रति पुंज इतकी ऊर्जा वाहते की अणू आयनित व्हावेत आणि रेणवीय बंध तुटावेत, म्हणूनच ते उन्हाने भाजते आणि DNA ला हानी पोहोचवते.",
+        },
+        detail: {
+          en: "The ozone layer absorbs most of it before it reaches the ground, which is why a hole in that layer is a health question and not merely an atmospheric curiosity.",
+          hi: "ओज़ोन परत उसका अधिकांश भाग ज़मीन तक पहुँचने से पहले सोख लेती है, इसीलिए उस परत में छेद स्वास्थ्य का प्रश्न है, केवल वायुमंडलीय कौतुक नहीं।",
+          mr: "ओझोन थर त्याचा बहुतांश भाग जमिनीपर्यंत पोहोचण्याआधी शोषून घेतो, म्हणूनच त्या थरातले छिद्र आरोग्याचा प्रश्न आहे, केवळ वातावरणीय कुतूहल नव्हे.",
+        },
+        extra: {
+          en: "Ordinary glass blocks most of it, which is why one is not sunburnt through a closed car window while still being warmed by the infrared and lit by the visible light coming through the same pane.",
+          hi: "साधारण काँच उसका अधिकांश रोक देता है, इसीलिए बंद कार की खिड़की से धूप की जलन नहीं होती जबकि उसी शीशे से आते अवरक्त से गर्मी और दृश्य प्रकाश से रोशनी मिलती रहती है।",
+          mr: "साधी काच त्याचा बहुतांश अडवते, म्हणूनच बंद गाडीच्या खिडकीतून ऊन भाजत नाही तर त्याच तावदानातून येणाऱ्या अवरक्ताने ऊब आणि दृश्य प्रकाशाने उजेड मिळत राहतो.",
+        },
+        pair: {
+          left: {
+            en: "Stopped by a car window, stopped by a layer of ozone",
+            hi: "कार की खिड़की से रुका, ओज़ोन की परत से रुका",
+            mr: "गाडीच्या खिडकीने अडवले, ओझोनच्या थराने अडवले",
+          },
+          right: {
+            en: "ultraviolet radiation",
+            hi: "पराबैंगनी विकिरण",
+            mr: "अतिनील प्रारण",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A capacitor is being charged. Around the connecting wire, draw a circular loop and apply Ampère's law. Bounded by that loop, one may choose a flat disc that the wire pierces, or a bag-shaped surface that passes between the capacitor's plates. The first encloses a current I, the second encloses none. What is wrong, and how was it repaired?",
+          hi: "एक संधारित्र आवेशित हो रहा है। जोड़ने वाले तार के चारों ओर वृत्तीय लूप खींचो और ऐम्पियर का नियम लगाओ। उस लूप से घिरा हुआ, या तो ऐसी चपटी चकती चुनी जा सकती है जिसे तार बेधता है, या ऐसा थैलीनुमा पृष्ठ जो संधारित्र की प्लेटों के बीच से गुज़रे। पहले में धारा I घिरी है, दूसरे में कोई नहीं। क्या ग़लत है, और उसे कैसे सुधारा गया?",
+          mr: "एक धारित्र प्रभारित होत आहे. जोडणाऱ्या तारेभोवती वर्तुळाकार वळसा काढा आणि अँपिअरचा नियम लावा. त्या वळशाने घेरलेले, एकतर अशी सपाट तबकडी निवडता येते जिला तार भेदते, वा अशी पिशवीसारखी पृष्ठभाग जी धारित्राच्या पट्ट्यांमधून जाते. पहिलीत धारा I घेरलेली आहे, दुसरीत काहीच नाही. काय चूक आहे, आणि ती कशी दुरुस्त केली गेली?",
+        },
+        choices: [
+          {
+            en: "Ampère's law as originally written is incomplete: it must give one answer for one loop, and here it gives two, so the law itself is at fault rather than either choice of surface. Maxwell repaired it by adding a displacement current ε₀ dΦ_E/dt to the enclosed current. Between the plates no charge crosses, but the electric field there is growing at exactly the rate needed for ε₀ dΦ_E/dt to equal I, so both surfaces now give the same answer. The repair was demanded by internal consistency, and its consequence — that a changing electric field sources a magnetic field — is what makes electromagnetic waves possible",
+            hi: "ऐम्पियर का नियम जैसा मूल रूप में लिखा गया अधूरा है: उसे एक लूप के लिए एक उत्तर देना चाहिए, और यहाँ वह दो देता है, अतः दोष पृष्ठ के किसी चुनाव में नहीं बल्कि स्वयं नियम में है। मैक्सवेल ने घिरी धारा में ε₀ dΦ_E/dt विस्थापन धारा जोड़कर उसे सुधारा। प्लेटों के बीच कोई आवेश पार नहीं करता, पर वहाँ विद्युत क्षेत्र ठीक उसी दर से बढ़ रहा है जिससे ε₀ dΦ_E/dt, I के बराबर हो जाए, अतः अब दोनों पृष्ठ वही उत्तर देते हैं। यह सुधार आंतरिक संगति ने माँगा था, और उसका परिणाम — कि बदलता विद्युत क्षेत्र चुंबकीय क्षेत्र का स्रोत है — वही वैद्युतचुंबकीय तरंगों को संभव बनाता है",
+            mr: "अँपिअरचा नियम मूळ रूपात लिहिल्याप्रमाणे अपूर्ण आहे: त्याने एका वळशासाठी एक उत्तर द्यावे, आणि इथे तो दोन देतो, म्हणून दोष पृष्ठाच्या कोणत्याही निवडीत नसून स्वतः नियमात आहे. मॅक्सवेलने घेरलेल्या धारेत ε₀ dΦ_E/dt ही विस्थापन धारा जोडून तो दुरुस्त केला. पट्ट्यांमध्ये कोणताही प्रभार ओलांडत नाही, पण तिथले विद्युत क्षेत्र नेमक्या त्याच गतीने वाढत आहे जिने ε₀ dΦ_E/dt हे I इतके व्हावे, म्हणून आता दोन्ही पृष्ठे तेच उत्तर देतात. ही दुरुस्ती अंतर्गत सुसंगतीने मागितली होती, आणि तिचा परिणाम — की बदलते विद्युत क्षेत्र चुंबकीय क्षेत्राचा स्रोत आहे — तोच विद्युतचुंबकीय लहरी शक्य करतो",
+          },
+          {
+            en: "Nothing is wrong: the flat disc is the correct surface and the bag-shaped one is simply an illegitimate choice, since a surface used with Ampère's law must be flat",
+            hi: "कुछ भी ग़लत नहीं: चपटी चकती ही सही पृष्ठ है और थैलीनुमा बस नाजायज़ चुनाव है, क्योंकि ऐम्पियर के नियम में काम आने वाला पृष्ठ चपटा होना चाहिए",
+            mr: "काहीही चूक नाही: सपाट तबकडीच बरोबर पृष्ठ आहे आणि पिशवीसारखी फक्त बेकायदेशीर निवड आहे, कारण अँपिअरच्या नियमात वापरले जाणारे पृष्ठ सपाट असावे लागते",
+          },
+          {
+            en: "A real current does cross the gap, carried by charges that jump between the plates through the dielectric, and the second surface encloses it after all",
+            hi: "असली धारा दरार को पार करती ही है, जिसे परावैद्युत में से प्लेटों के बीच कूदते आवेश ढोते हैं, और दूसरा पृष्ठ आख़िर उसे घेरता ही है",
+            mr: "खरी धारा फट ओलांडतेच, जी पराविद्युतातून पट्ट्यांमध्ये उड्या मारणारे प्रभार वाहतात, आणि दुसरे पृष्ठ अखेर तिला घेरतेच",
+          },
+          {
+            en: "The contradiction is real but harmless, since Ampère's law was only ever intended for steady currents and a charging capacitor is outside its scope",
+            hi: "विरोधाभास असली है पर हानिरहित, क्योंकि ऐम्पियर का नियम कभी केवल स्थायी धाराओं के लिए ही था और आवेशित होता संधारित्र उसकी परिधि से बाहर है",
+            mr: "विरोधाभास खरा आहे पण निरुपद्रवी, कारण अँपिअरचा नियम कधीही केवळ स्थिर धारांसाठीच होता आणि प्रभारित होणारे धारित्र त्याच्या कक्षेबाहेर आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "This is one of the few places in school physics where a law is shown to be WRONG rather than merely limited, and the repair is worth following in detail because the result is the rest of the chapter. Set the problem up carefully. Ampère's law says that the line integral of B round a closed loop equals μ₀ times the current threading it. Notice the word 'threading': the current has to pass through some surface whose boundary is the loop. The law never specifies which surface, and it does not need to, because for a steady current any two surfaces sharing a rim are pierced by the same current — charge cannot pile up anywhere, so what enters one region leaves it. Now take the charging capacitor and keep the same loop, a circle round the wire. Choose the flat disc: the wire pierces it, the enclosed current is I, and the law gives ∮B·dl = μ₀I. Choose the bag: stretch the surface out from the same circular rim, over and around one plate, so that it passes through the gap between the plates without touching either. No charge crosses that gap. The enclosed current is zero, and the law gives ∮B·dl = 0. The left-hand side has not changed — it is the same loop, and B on it is whatever B on it is, a measurable thing. So the law has produced two different values for one measurable quantity, which is not a difficulty of interpretation but a straightforward inconsistency. Something has to give, and it cannot be the freedom to choose the surface, because that freedom is built into what the law says. Maxwell's move was to look at what IS happening in the gap. Charge is arriving on the plate at the rate I, so the field between the plates, E = σ/ε₀ = q/(ε₀A), is growing. The electric flux Φ_E = EA = q/ε₀ is therefore growing at the rate dΦ_E/dt = (1/ε₀)(dq/dt) = I/ε₀. Multiply by ε₀ and you get exactly I. So the quantity ε₀ dΦ_E/dt in the gap equals, to the last digit, the conduction current in the wire. Add it to the law as a second source of magnetic field, and the two surfaces agree: the disc sees conduction current I and no changing flux, the bag sees no conduction current and a displacement current I. The inconsistency is gone, and it is gone by construction rather than by luck. Two things deserve emphasis. First, the name is a historical misnomer — nothing is displaced and nothing flows. It is a changing electric field, given a current's name because it does a current's job of making a magnetic field. Second, and far more important, the correction was not made to fit any measurement. It was forced by requiring the theory to be self-consistent, and the payoff came afterwards: with this term present, Maxwell's equations become symmetric, a changing E makes a B and a changing B makes an E, and the pair can propagate as a wave through empty space at 1/√(ε₀μ₀). Hertz produced and detected those waves two decades later. A term added to close a logical gap turned out to predict radio. (The second option invents a restriction on surfaces that no formulation of the law contains; the third invents charge carriers that a vacuum-gap capacitor demonstrably does not have; the fourth notices the inconsistency and declines to fix it, which forfeits everything the fix made possible.)",
+          hi: "यह विद्यालयी भौतिकी की उन थोड़ी जगहों में है जहाँ किसी नियम को केवल सीमित नहीं बल्कि ग़लत दिखाया जाता है, और सुधार को ब्योरे से देखना चाहिए क्योंकि उसका परिणाम बाक़ी पूरा अध्याय है। समस्या ध्यान से खड़ी करो। ऐम्पियर का नियम कहता है कि बंद लूप पर B का रेखा समाकल उसमें से गुज़रती धारा का μ₀ गुना है। 'गुज़रती' शब्द पर ध्यान दो: धारा को किसी ऐसे पृष्ठ से पार होना है जिसकी सीमा वह लूप हो। नियम कभी नहीं बताता कि कौन-सा पृष्ठ, और उसे बताने की ज़रूरत भी नहीं, क्योंकि स्थायी धारा के लिए एक ही किनारा साझा करते किन्हीं दो पृष्ठों को वही धारा बेधती है — आवेश कहीं जमा हो नहीं सकता, अतः जो एक क्षेत्र में घुसता है वही निकलता है। अब आवेशित होता संधारित्र लो और वही लूप रखो, तार के चारों ओर एक वृत्त। चपटी चकती चुनो: तार उसे बेधता है, घिरी धारा I है, और नियम देता है ∮B·dl = μ₀I. थैली चुनो: उसी वृत्तीय किनारे से पृष्ठ को खींचकर एक प्लेट के ऊपर और चारों ओर फैलाओ, ताकि वह प्लेटों के बीच की दरार से किसी को छुए बिना गुज़रे। उस दरार को कोई आवेश पार नहीं करता। घिरी धारा शून्य है, और नियम देता है ∮B·dl = 0. बायाँ पक्ष बदला नहीं — वही लूप है, और उस पर B जो है सो है, नापी जा सकने वाली चीज़। अतः नियम ने एक नापी जा सकने वाली राशि के दो भिन्न मान दे दिए, जो व्याख्या की कठिनाई नहीं बल्कि सीधी-सादी असंगति है। कुछ न कुछ छोड़ना ही पड़ेगा, और पृष्ठ चुनने की स्वतंत्रता नहीं छोड़ी जा सकती, क्योंकि वह स्वतंत्रता नियम के कथन में ही गढ़ी है। मैक्सवेल की चाल यह देखने की थी कि दरार में हो क्या रहा है। प्लेट पर आवेश I दर से पहुँच रहा है, अतः प्लेटों के बीच क्षेत्र, E = σ/ε₀ = q/(ε₀A), बढ़ रहा है। इसलिए विद्युत फ्लक्स Φ_E = EA = q/ε₀, dΦ_E/dt = (1/ε₀)(dq/dt) = I/ε₀ दर से बढ़ रहा है। ε₀ से गुणा करो और ठीक I मिलता है। अतः दरार में राशि ε₀ dΦ_E/dt तार की चालन धारा के अंतिम अंक तक बराबर है। उसे चुंबकीय क्षेत्र के दूसरे स्रोत के रूप में नियम में जोड़ो, और दोनों पृष्ठ सहमत हो जाते हैं: चकती चालन धारा I देखती है और कोई बदलता फ्लक्स नहीं, थैली कोई चालन धारा नहीं देखती और विस्थापन धारा I देखती है। असंगति चली गई, और वह संयोग से नहीं बल्कि रचना से गई। दो बातों पर ज़ोर देना चाहिए। पहली, नाम ऐतिहासिक ग़लतफ़हमी है — कुछ भी विस्थापित नहीं होता और कुछ भी बहता नहीं। वह बदलता विद्युत क्षेत्र है, जिसे धारा का नाम इसलिए दिया गया कि वह चुंबकीय क्षेत्र बनाने का धारा वाला काम करता है। दूसरी, और कहीं अधिक महत्त्वपूर्ण, यह सुधार किसी माप से मिलाने के लिए नहीं किया गया था। वह सिद्धांत को आत्मसंगत रखने की माँग ने बाध्य किया, और लाभ बाद में आया: यह पद रहते मैक्सवेल के समीकरण सममित हो जाते हैं, बदलता E एक B बनाता है और बदलता B एक E, और युग्म ख़ाली आकाश में 1/√(ε₀μ₀) चाल से तरंग की तरह संचरित हो सकता है। हर्ट्ज़ ने दो दशक बाद वे तरंगें बनाईं और पकड़ीं। एक तार्किक छेद भरने को जोड़ा गया पद रेडियो की भविष्यवाणी निकला। (दूसरा विकल्प पृष्ठों पर ऐसी पाबंदी गढ़ता है जो नियम के किसी रूप में नहीं; तीसरा ऐसे आवेश-वाहक गढ़ता है जो निर्वात-दरार वाले संधारित्र में स्पष्टतः नहीं; चौथा असंगति देख लेता है और उसे सुधारने से इनकार करता है, जिससे वह सब हाथ से जाता है जो सुधार ने संभव किया।)",
+          mr: "हे शालेय भौतिकीतल्या त्या थोड्या जागांपैकी आहे जिथे एखादा नियम केवळ मर्यादित नव्हे तर चूक दाखवला जातो, आणि दुरुस्ती तपशिलाने पाहण्याजोगी आहे कारण तिचा निकाल उरलेले अख्खे प्रकरण आहे. प्रश्न काळजीपूर्वक मांडा. अँपिअरचा नियम सांगतो की बंद वळशावरील B चे रेषा समाकलन त्यातून जाणाऱ्या धारेच्या μ₀ पट आहे. 'जाणाऱ्या' या शब्दाकडे लक्ष द्या: धारेला अशा एखाद्या पृष्ठातून जावे लागते ज्याची सीमा तो वळसा असेल. नियम कधीच सांगत नाही की कोणते पृष्ठ, आणि त्याला सांगण्याची गरजही नाही, कारण स्थिर धारेसाठी एकच कड वाटून घेणाऱ्या कोणत्याही दोन पृष्ठांना तीच धारा भेदते — प्रभार कुठेही साठू शकत नाही, म्हणून जे एका प्रदेशात शिरते तेच बाहेर पडते. आता प्रभारित होणारे धारित्र घ्या आणि तोच वळसा ठेवा, तारेभोवती एक वर्तुळ. सपाट तबकडी निवडा: तार तिला भेदते, घेरलेली धारा I आहे, आणि नियम देतो ∮B·dl = μ₀I. पिशवी निवडा: त्याच वर्तुळाकार कडेपासून पृष्ठ ओढून एका पट्टीच्या वर आणि भोवती पसरवा, जेणेकरून ती पट्ट्यांमधल्या फटीतून कोणालाही स्पर्श न करता जाईल. ती फट कोणताही प्रभार ओलांडत नाही. घेरलेली धारा शून्य आहे, आणि नियम देतो ∮B·dl = 0. डावी बाजू बदलली नाही — तोच वळसा आहे, आणि त्यावरचे B जे आहे ते आहे, मोजता येणारी गोष्ट. म्हणून नियमाने एका मोजता येणाऱ्या राशीची दोन वेगळी मूल्ये दिली, जी अर्थ लावण्याची अडचण नसून सरळसोट विसंगती आहे. काहीतरी सोडावेच लागेल, आणि पृष्ठ निवडण्याचे स्वातंत्र्य सोडता येत नाही, कारण ते स्वातंत्र्य नियमाच्या विधानातच घडवलेले आहे. मॅक्सवेलची चाल म्हणजे फटीत काय घडत आहे ते पाहणे. पट्टीवर प्रभार I गतीने पोहोचत आहे, म्हणून पट्ट्यांमधले क्षेत्र, E = σ/ε₀ = q/(ε₀A), वाढत आहे. म्हणून विद्युत फ्लक्स Φ_E = EA = q/ε₀ हा dΦ_E/dt = (1/ε₀)(dq/dt) = I/ε₀ या गतीने वाढत आहे. ε₀ ने गुणा आणि नेमके I मिळते. म्हणून फटीतली राशी ε₀ dΦ_E/dt ही तारेतील वहन धारेइतकी, शेवटच्या अंकापर्यंत, आहे. तिला चुंबकीय क्षेत्राचा दुसरा स्रोत म्हणून नियमात जोडा, आणि दोन्ही पृष्ठे सहमत होतात: तबकडी वहन धारा I पाहते आणि कोणताही बदलता फ्लक्स नाही, पिशवी कोणतीही वहन धारा पाहत नाही आणि विस्थापन धारा I पाहते. विसंगती गेली, आणि ती योगायोगाने नव्हे तर रचनेने गेली. दोन गोष्टींवर भर द्यायला हवा. पहिली, नाव हा ऐतिहासिक गैरसमज आहे — काहीही विस्थापित होत नाही आणि काहीही वाहत नाही. ते बदलते विद्युत क्षेत्र आहे, ज्याला धारेचे नाव यासाठी दिले गेले की ते चुंबकीय क्षेत्र बनवण्याचे धारेचे काम करते. दुसरी, आणि कितीतरी अधिक महत्त्वाची, ही दुरुस्ती कोणत्याही मापाशी जुळवण्यासाठी केली गेली नव्हती. ती सिद्धांताला स्वतःशी सुसंगत ठेवण्याच्या मागणीने भाग पाडली, आणि फायदा नंतर आला: हे पद असताना मॅक्सवेलची समीकरणे सममित होतात, बदलता E एक B बनवतो आणि बदलता B एक E, आणि जोडी रिकाम्या अवकाशात 1/√(ε₀μ₀) वेगाने लहर म्हणून संचरू शकते. हर्ट्झने दोन दशकांनंतर त्या लहरी बनवल्या आणि पकडल्या. एक तार्किक छिद्र भरायला जोडलेले पद रेडिओचे भाकीत निघाले. (दुसरा पर्याय पृष्ठांवर अशी बंदी घडवतो जी नियमाच्या कोणत्याही रूपात नाही; तिसरा असे प्रभार-वाहक घडवतो जे निर्वात-फट असलेल्या धारित्रात स्पष्टपणे नाहीत; चौथा विसंगती पाहतो आणि ती दुरुस्त करायला नकार देतो, ज्याने दुरुस्तीने शक्य केलेले सर्व हातून जाते.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A radio mast radiates 50 kW and a person may stand beside it all day; a few minutes of midday sunlight, delivering a tiny fraction of that power to the same skin, causes sunburn. A student concludes that the radio measurement must be wrong. Resolve this.",
+          hi: "एक रेडियो मस्तूल 50 kW विकिरित करता है और व्यक्ति दिन भर उसके पास खड़ा रह सकता है; दोपहर की धूप के कुछ मिनट, उसी त्वचा को उस शक्ति का नन्हा-सा अंश देकर, धूप की जलन कर देते हैं। विद्यार्थी निष्कर्ष निकालता है कि रेडियो का माप ग़लत होगा। इसे सुलझाओ।",
+          mr: "एक रेडिओ मनोरा 50 kW प्रारित करतो आणि माणूस दिवसभर त्याच्याजवळ उभा राहू शकतो; दुपारच्या उन्हाची काही मिनिटे, त्याच त्वचेला त्या शक्तीचा चिमुकला अंश देऊन, उन्हाने भाजतात. विद्यार्थी निष्कर्ष काढतो की रेडिओचे माप चूक असले पाहिजे. हे सोडवा.",
+        },
+        choices: [
+          {
+            en: "Both measurements are right, because damage of this kind is not decided by total power but by the energy carried by each individual quantum, E = hf. Radio photons at 10⁸ Hz carry about 10⁻⁷ eV each — far too little to break any chemical bond, so an enormous number of them merely warm the tissue. Ultraviolet photons at 10¹⁵ Hz carry several eV, comparable with bond energies, so a single one can break a DNA bond however few arrive. Turning the transmitter up sends more photons, not more energetic ones, so it can never do what UV does",
+            hi: "दोनों माप सही हैं, क्योंकि इस क़िस्म की क्षति कुल शक्ति से नहीं बल्कि हर अलग क्वांटम की ढोई ऊर्जा से तय होती है, E = hf. 10⁸ Hz के रेडियो फ़ोटॉन हर एक लगभग 10⁻⁷ eV ढोते हैं — किसी रासायनिक बंध को तोड़ने के लिए कहीं बहुत कम, अतः उनकी विशाल संख्या ऊतक को बस गर्म करती है। 10¹⁵ Hz के पराबैंगनी फ़ोटॉन कई eV ढोते हैं, बंध-ऊर्जाओं के बराबर, अतः एक अकेला ही DNA का बंध तोड़ सकता है चाहे कितने ही कम आएँ। प्रेषक तेज़ करने से अधिक फ़ोटॉन जाते हैं, अधिक ऊर्जावान नहीं, अतः वह वह कभी नहीं कर सकता जो पराबैंगनी करता है",
+            mr: "दोन्ही मापे बरोबर आहेत, कारण अशा प्रकारची हानी एकूण शक्तीने नव्हे तर प्रत्येक वेगळ्या पुंजाने वाहलेल्या ऊर्जेने ठरते, E = hf. 10⁸ Hz चे रेडिओ फोटॉन प्रत्येकी सुमारे 10⁻⁷ eV वाहतात — कोणताही रासायनिक बंध तोडायला कितीतरी कमी, म्हणून त्यांची प्रचंड संख्या ऊतीला फक्त तापवते. 10¹⁵ Hz चे अतिनील फोटॉन कित्येक eV वाहतात, बंध-ऊर्जांच्या तोडीचे, म्हणून एकटाच DNA चा बंध तोडू शकतो कितीही कमी आले तरी. प्रक्षेपक वाढवल्याने अधिक फोटॉन जातात, अधिक ऊर्जावान नव्हे, म्हणून तो ते कधीच करू शकत नाही जे अतिनील करते",
+          },
+          {
+            en: "The radio measurement is indeed wrong, since 50 kW delivered to a human body would be lethal within seconds by any mechanism",
+            hi: "रेडियो का माप सचमुच ग़लत है, क्योंकि मानव शरीर को दिए गए 50 kW किसी भी क्रियाविधि से सेकंडों में प्राणघातक होते",
+            mr: "रेडिओचे माप खरोखर चूक आहे, कारण मानवी शरीराला दिलेले 50 kW कोणत्याही यंत्रणेने सेकंदांत प्राणघातक ठरले असते",
+          },
+          {
+            en: "Radio waves are longer than the body and therefore pass through it without interacting at all, while ultraviolet is short enough to be absorbed",
+            hi: "रेडियो तरंगें शरीर से लंबी हैं और इसलिए बिना किसी अन्योन्यक्रिया के उसके आर-पार निकल जाती हैं, जबकि पराबैंगनी इतनी छोटी है कि सोख ली जाए",
+            mr: "रेडिओ लहरी शरीराहून लांब आहेत आणि म्हणून कोणत्याही परस्परक्रियेविना त्यातून आरपार जातात, तर अतिनील इतकी लहान आहे की शोषली जावी",
+          },
+          {
+            en: "The difference is one of distance only: the Sun is far away but its total output is enormous, and a radio mast at the same total output would burn the skin equally",
+            hi: "अंतर केवल दूरी का है: सूर्य दूर है पर उसका कुल उत्पादन विशाल है, और उतने ही कुल उत्पादन वाला रेडियो मस्तूल त्वचा को उतना ही जलाता",
+            mr: "फरक केवळ अंतराचा आहे: सूर्य दूर आहे पण त्याचे एकूण उत्पादन प्रचंड आहे, आणि तितक्याच एकूण उत्पादनाचा रेडिओ मनोरा त्वचेला तितकेच भाजला असता",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The two observations are both accurate, and the reason they seem to conflict is that the student is measuring the wrong thing. Power is energy per second delivered in total; what determines whether a chemical bond breaks is the energy delivered in one indivisible packet. A spectrum ordered by frequency is therefore also ordered by how violently each individual arrival can act. Set the numbers side by side. The Planck relation gives E = hf. For an FM broadcast at about 10⁸ Hz, E ≈ 6.6 × 10⁻³⁴ × 10⁸ ≈ 6.6 × 10⁻²⁶ J, which is about 4 × 10⁻⁷ eV. For ultraviolet at about 10¹⁵ Hz, E ≈ 6.6 × 10⁻¹⁹ J, which is about 4 eV. The ratio is roughly ten million. Now compare each with the thing that has to be broken. A typical covalent bond in a biological molecule costs a few electron-volts to break — the C–C bond about 3.6 eV, a hydrogen bond much less, the bonds whose rupture causes a thymine dimer in DNA around 3 to 4 eV. Ultraviolet quanta sit exactly in that range. Radio quanta are seven orders of magnitude below it. That gap is decisive because energy arriving in separate packets does not pool. Ten million radio photons striking one molecule do not add up to one ultraviolet photon's worth of bond-breaking; each interacts, delivers its 10⁻⁷ eV, and the molecule simply jiggles and passes the energy on as heat to its neighbours. This is the same argument that runs the photoelectric effect in a later chapter, where increasing the INTENSITY of light below the threshold frequency ejects no electrons at all however bright it becomes, and it is worth recognising as one idea in two places. So what does a 50 kW mast do to a body? It heats it, slightly and harmlessly at any ordinary distance, because heating is exactly the collective effect that many low-energy quanta can produce. Push the power far enough and heating becomes the hazard — this is why safety limits for radio and microwave exposure are written in watts per square metre and are thermal limits. Ultraviolet is regulated differently, in terms of dose, because its damage is not thermal and does not require the skin to get hot at all. Two consequences follow that are worth carrying. First, the labels IONISING and NON-IONISING divide the spectrum at roughly the far ultraviolet, and they divide it by photon energy, not by power. Radio, microwave, infrared and visible light are non-ionising; ultraviolet, X-rays and gamma rays are ionising. Second, a stronger transmitter is not a more dangerous one in kind. Turning it up sends MORE photons, not more energetic ones, so it moves a source further along a scale it was already on and never moves it onto the other scale. (The second option rejects a correct measurement rather than the assumption behind the puzzle; the third invents a transparency that a warming body refutes; the fourth reduces a difference of quantum energy to a difference of intensity, which is precisely the confusion the question is built on.)",
+          hi: "दोनों प्रेक्षण यथार्थ हैं, और वे टकराते इसलिए लगते हैं कि विद्यार्थी ग़लत चीज़ नाप रहा है। शक्ति कुल मिलाकर प्रति सेकंड दी गई ऊर्जा है; रासायनिक बंध टूटेगा या नहीं यह उस ऊर्जा से तय होता है जो एक अविभाज्य पुड़िया में आती है। अतः आवृत्ति से क्रमित स्पेक्ट्रम इससे भी क्रमित है कि हर अलग आगमन कितनी हिंसा से काम कर सकता है। संख्याएँ अगल-बगल रखो। प्लांक संबंध देता है E = hf. लगभग 10⁸ Hz के FM प्रसारण के लिए, E ≈ 6.6 × 10⁻³⁴ × 10⁸ ≈ 6.6 × 10⁻²⁶ J, जो लगभग 4 × 10⁻⁷ eV है। लगभग 10¹⁵ Hz के पराबैंगनी के लिए, E ≈ 6.6 × 10⁻¹⁹ J, जो लगभग 4 eV है। अनुपात मोटे तौर पर एक करोड़ है। अब हर एक की तुलना उससे करो जिसे तोड़ना है। जैविक अणु में विशिष्ट सहसंयोजक बंध तोड़ने में कुछ इलेक्ट्रॉन-वोल्ट लगते हैं — C–C बंध लगभग 3.6 eV, हाइड्रोजन बंध उससे बहुत कम, वे बंध जिनके टूटने से DNA में थाइमीन द्विलक बनता है लगभग 3 से 4 eV. पराबैंगनी क्वांटम ठीक उसी परास में बैठते हैं। रेडियो क्वांटम उससे सात कोटि नीचे हैं। वह खाई निर्णायक है क्योंकि अलग-अलग पुड़ियों में आती ऊर्जा इकट्ठी नहीं होती। एक अणु से टकराते एक करोड़ रेडियो फ़ोटॉन मिलकर एक पराबैंगनी फ़ोटॉन जितना बंध-भंजन नहीं करते; हर एक अन्योन्यक्रिया करता है, अपने 10⁻⁷ eV देता है, और अणु बस हिलता है और ऊर्जा अपने पड़ोसियों को ऊष्मा बनाकर आगे बढ़ा देता है। यह वही तर्क है जो आगे के अध्याय में प्रकाश-विद्युत प्रभाव चलाता है, जहाँ देहली आवृत्ति से नीचे प्रकाश की तीव्रता बढ़ाने पर एक भी इलेक्ट्रॉन नहीं निकलता चाहे वह कितना भी चमकीला हो जाए, और इसे दो जगहों पर एक ही विचार के रूप में पहचानना चाहिए। तो 50 kW का मस्तूल शरीर के साथ करता क्या है? वह उसे गर्म करता है, किसी भी साधारण दूरी पर हल्के से और बिना नुक़सान के, क्योंकि तापन ठीक वही सामूहिक प्रभाव है जो बहुत सारे कम-ऊर्जा क्वांटम दे सकते हैं। शक्ति पर्याप्त बढ़ाओ और तापन ही ख़तरा बन जाता है — इसीलिए रेडियो और सूक्ष्म तरंग के संपर्क की सुरक्षा सीमाएँ वाट प्रति वर्ग मीटर में लिखी जाती हैं और वे तापीय सीमाएँ हैं। पराबैंगनी का नियमन भिन्न है, मात्रा के रूप में, क्योंकि उसकी क्षति तापीय नहीं और उसके लिए त्वचा का गर्म होना ज़रूरी ही नहीं। दो परिणाम निकलते हैं जिन्हें साथ ले जाना चाहिए। पहला, आयनकारी और अनायनकारी लेबल स्पेक्ट्रम को मोटे तौर पर दूर पराबैंगनी पर बाँटते हैं, और वे उसे फ़ोटॉन ऊर्जा से बाँटते हैं, शक्ति से नहीं। रेडियो, सूक्ष्म तरंग, अवरक्त और दृश्य प्रकाश अनायनकारी हैं; पराबैंगनी, X-किरणें और गामा किरणें आयनकारी। दूसरा, अधिक प्रबल प्रेषक क़िस्म में अधिक ख़तरनाक नहीं होता। उसे तेज़ करने से अधिक फ़ोटॉन जाते हैं, अधिक ऊर्जावान नहीं, अतः वह स्रोत को उसी पैमाने पर आगे सरकाता है जिस पर वह पहले से था और दूसरे पैमाने पर कभी नहीं ले जाता। (दूसरा विकल्प पहेली के पीछे की मान्यता के बजाय सही माप को ख़ारिज कर देता है; तीसरा ऐसी पारदर्शिता गढ़ता है जिसे गर्म होता शरीर झुठला देता है; चौथा क्वांटम ऊर्जा के अंतर को तीव्रता के अंतर में घटा देता है, और प्रश्न ठीक इसी भ्रम पर बना है।)",
+          mr: "दोन्ही निरीक्षणे अचूक आहेत, आणि ती परस्परविरोधी वाटतात कारण विद्यार्थी चुकीची गोष्ट मोजत आहे. शक्ती म्हणजे एकूण मिळून दर सेकंदाला दिलेली ऊर्जा; रासायनिक बंध तुटेल की नाही हे त्या ऊर्जेने ठरते जी एका अविभाज्य पुडीत येते. म्हणून वारंवारतेने क्रमित वर्णपट यानेही क्रमित आहे की प्रत्येक वेगळे आगमन किती हिंसकपणे काम करू शकते. संख्या शेजारीशेजारी ठेवा. प्लांक संबंध देतो E = hf. सुमारे 10⁸ Hz च्या FM प्रक्षेपणासाठी, E ≈ 6.6 × 10⁻³⁴ × 10⁸ ≈ 6.6 × 10⁻²⁶ J, जे सुमारे 4 × 10⁻⁷ eV आहे. सुमारे 10¹⁵ Hz च्या अतिनीलासाठी, E ≈ 6.6 × 10⁻¹⁹ J, जे सुमारे 4 eV आहे. गुणोत्तर ढोबळमानाने एक कोटी आहे. आता प्रत्येकाची तुलना ज्याला तोडायचे आहे त्याच्याशी करा. जैविक रेणूतील नमुनेदार सहसंयुज बंध तोडायला काही इलेक्ट्रॉन-व्होल्ट लागतात — C–C बंध सुमारे 3.6 eV, हायड्रोजन बंध त्याहून खूप कमी, ज्यांच्या तुटण्याने DNA मध्ये थायमिन द्विलक बनतो ते बंध सुमारे 3 ते 4 eV. अतिनील पुंज नेमके त्याच पल्ल्यात बसतात. रेडिओ पुंज त्याहून सात कोटी खाली आहेत. ती दरी निर्णायक आहे कारण वेगवेगळ्या पुड्यांत येणारी ऊर्जा एकत्र होत नाही. एका रेणूवर आदळणारे एक कोटी रेडिओ फोटॉन मिळून एका अतिनील फोटॉनइतके बंध-भंजन करत नाहीत; प्रत्येक परस्परक्रिया करतो, आपले 10⁻⁷ eV देतो, आणि रेणू फक्त हलतो आणि ऊर्जा आपल्या शेजाऱ्यांना उष्णता बनवून पुढे देतो. हाच तो युक्तिवाद जो पुढच्या प्रकरणात प्रकाश-विद्युत परिणाम चालवतो, जिथे उंबरठा वारंवारतेखालच्या प्रकाशाची तीव्रता वाढवल्यावर एकही इलेक्ट्रॉन निघत नाही तो कितीही तेजस्वी झाला तरी, आणि हे दोन ठिकाणी एकच कल्पना म्हणून ओळखण्याजोगे आहे. तर 50 kW चा मनोरा शरीराशी करतो काय? तो त्याला तापवतो, कोणत्याही सामान्य अंतरावर किंचित आणि निरुपद्रवीपणे, कारण तापन हाच तो सामूहिक परिणाम जो पुष्कळ कमी-ऊर्जा पुंज देऊ शकतात. शक्ती पुरेशी वाढवा आणि तापनच धोका बनतो — म्हणूनच रेडिओ आणि सूक्ष्म लहरी संपर्काच्या सुरक्षा मर्यादा वॅट प्रति चौरस मीटरमध्ये लिहिल्या जातात आणि त्या औष्णिक मर्यादा आहेत. अतिनीलाचे नियमन वेगळे आहे, मात्रेच्या रूपात, कारण त्याची हानी औष्णिक नाही आणि तिच्यासाठी त्वचा तापणे आवश्यकच नाही. दोन परिणाम निघतात जे सोबत न्यायला हवेत. पहिला, आयनकारी आणि अनायनकारी ही लेबले वर्णपटाला ढोबळमानाने दूर अतिनीलावर विभागतात, आणि ती त्याला फोटॉन ऊर्जेने विभागतात, शक्तीने नव्हे. रेडिओ, सूक्ष्म लहरी, अवरक्त आणि दृश्य प्रकाश अनायनकारी आहेत; अतिनील, क्ष-किरणे आणि गॅमा किरणे आयनकारी. दुसरा, अधिक तीव्र प्रक्षेपक प्रकाराने अधिक धोकादायक नसतो. तो वाढवल्याने अधिक फोटॉन जातात, अधिक ऊर्जावान नव्हे, म्हणून तो स्रोताला त्याच मापदंडावर पुढे सरकवतो ज्यावर तो आधीच होता आणि दुसऱ्या मापदंडावर कधीच नेत नाही. (दुसरा पर्याय कोड्यामागच्या गृहीतकाऐवजी बरोबर माप नाकारतो; तिसरा अशी पारदर्शकता घडवतो जिला तापणारे शरीर खोडून काढते; चौथा पुंज ऊर्जेचा फरक तीव्रतेच्या फरकात घटवतो, आणि प्रश्न नेमका याच गोंधळावर बांधलेला आहे.)",
+        },
+      },
+    ],
+  },
+  /*C5*/
 ];
 
 export const G12_PHYSICS_NUMERIC: Record<string, NumQ[]> = {
@@ -2076,6 +3469,665 @@ export const G12_PHYSICS_NUMERIC: Record<string, NumQ[]> = {
         en: "F/L = (μ₀/2π)I₁I₂/r = 0.2 × 10 × 20/0.5 = 80 μN/m, and it is an ATTRACTION because the currents run the same way. The mechanism is worth stating in two steps rather than one: the first wire sets up a field at the second, and the second then feels BIL in that field — there is no direct wire-to-wire law, only the field standing between them. This is also the arrangement that once defined the ampere, and defining a base unit through a force is what tied electrical measurement to mechanical measurement before the modern fixed-constant definitions replaced it. (40 leaves out one factor of the separation; 400 forgets the constant.)",
         hi: "F/L = (μ₀/2π)I₁I₂/r = 0.2 × 10 × 20/0.5 = 80 μN/m, और यह आकर्षण है क्योंकि धाराएँ एक ही ओर बहती हैं। क्रियाविधि एक के बजाय दो चरणों में कहनी चाहिए: पहला तार दूसरे पर क्षेत्र खड़ा करता है, और दूसरा फिर उस क्षेत्र में BIL अनुभव करता है — तार-से-तार का कोई सीधा नियम है ही नहीं, केवल उनके बीच खड़ा क्षेत्र है। यही वह व्यवस्था भी है जो कभी ऐम्पियर को परिभाषित करती थी, और किसी मूल मात्रक को बल के माध्यम से परिभाषित करना ही वह था जिसने आधुनिक नियत-स्थिरांक परिभाषाओं के आने से पहले विद्युत माप को यांत्रिक माप से बाँधा। (40 दूरी का एक गुणक छोड़ देता है; 400 स्थिरांक भूल जाता है।)",
         mr: "F/L = (μ₀/2π)I₁I₂/r = 0.2 × 10 × 20/0.5 = 80 μN/m, आणि हे आकर्षण आहे कारण धारा एकाच दिशेने वाहतात. यंत्रणा एकाऐवजी दोन पायऱ्यांत सांगण्याजोगी आहे: पहिली तार दुसरीवर क्षेत्र उभे करते, आणि दुसरी मग त्या क्षेत्रात BIL अनुभवते — तार-ते-तार असा थेट नियम आहेच नाही, केवळ त्यांच्यामध्ये उभे असलेले क्षेत्र आहे. हीच ती मांडणी जी एकेकाळी अँपिअरची व्याख्या करत होती, आणि एखाद्या मूलभूत एककाची व्याख्या बलामार्गे करणे हेच ते ज्याने आधुनिक स्थिर-स्थिरांक व्याख्या येण्याआधी विद्युत मापनाला यांत्रिक मापनाशी बांधले. (40 अंतराचा एक गुणक गाळते; 400 स्थिरांक विसरते.)",
+      },
+    },
+  ],
+  "physics-12-magnetism-and-matter": [
+    {
+      level: 1,
+      stem: {
+        en: "A bar magnet 0.2 m long has a pole strength of 5 A m. What is its magnetic moment, in A m²?",
+        hi: "0.2 m लंबी छड़ चुंबक की ध्रुव प्रबलता 5 A m है। उसका चुंबकीय आघूर्ण, A m² में, क्या है?",
+        mr: "0.2 m लांब दांडा चुंबकाची ध्रुव तीव्रता 5 A m आहे. त्याचे चुंबकीय आघूर्ण, A m² मध्ये, किती?",
+      },
+      answer: 1,
+      wrong: [25, 0.04, 10],
+      checkExpr: "5*0.2",
+      solution: {
+        en: "The magnetic moment is pole strength times magnetic length: 5 × 0.2 = 1 A m². Pole strength is a bookkeeping device rather than a real thing — a magnet has no isolated poles — but the product it forms is genuine and is what a field actually exerts a torque on. (0.04 divides the length by the pole strength; 25 multiplies by 5 again.)",
+        hi: "चुंबकीय आघूर्ण ध्रुव प्रबलता गुणा चुंबकीय लंबाई है: 5 × 0.2 = 1 A m². ध्रुव प्रबलता असली चीज़ नहीं बल्कि हिसाब की युक्ति है — चुंबक में अलग-थलग ध्रुव होते ही नहीं — पर वह जो गुणनफल बनाती है वह असली है और क्षेत्र वस्तुतः उसी पर बल-आघूर्ण लगाता है। (0.04 लंबाई को ध्रुव प्रबलता से भाग देता है; 25 फिर से 5 से गुणा कर देता है।)",
+        mr: "चुंबकीय आघूर्ण म्हणजे ध्रुव तीव्रता गुणिले चुंबकीय लांबी: 5 × 0.2 = 1 A m². ध्रुव तीव्रता ही खरी गोष्ट नसून हिशेबाची युक्ती आहे — चुंबकात एकाकी ध्रुव असतातच नाहीत — पण ती जो गुणाकार बनवते तो खरा आहे आणि क्षेत्र प्रत्यक्षात त्यावरच बलआघूर्ण लावते. (0.04 लांबीला ध्रुव तीव्रतेने भागते; 25 पुन्हा 5 ने गुणते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "A magnet of moment 4 A m² is held at right angles to a uniform field of 0.5 T. What torque, in N m, acts on it?",
+        hi: "4 A m² आघूर्ण वाला चुंबक 0.5 T के एकसमान क्षेत्र के समकोण पर रखा है। उस पर कितना बल-आघूर्ण, N m में, लगता है?",
+        mr: "4 A m² आघूर्ण असलेला चुंबक 0.5 T च्या एकसमान क्षेत्राला काटकोनात धरला आहे. त्यावर किती बलआघूर्ण, N m मध्ये, लागते?",
+      },
+      answer: 2,
+      wrong: [8, 0.125, 0.5],
+      checkExpr: "4*0.5",
+      solution: {
+        en: "τ = mB sin θ, and at right angles sin θ = 1, so τ = 4 × 0.5 = 2 N m. This is the maximum the field can exert; align the magnet with the field and the torque falls to zero, which is why a compass needle settles pointing along the field rather than across it. (0.125 inverts the ratio; 8 doubles.)",
+        hi: "τ = mB sin θ, और समकोण पर sin θ = 1, अतः τ = 4 × 0.5 = 2 N m. क्षेत्र जितना अधिकतम लगा सकता है यह वही है; चुंबक को क्षेत्र के अनुदिश कर दो और बल-आघूर्ण शून्य हो जाता है, इसीलिए दिक्सूचक की सुई क्षेत्र के आर-पार नहीं बल्कि उसके अनुदिश जमती है। (0.125 अनुपात उलट देता है; 8 दुगुना कर देता है।)",
+        mr: "τ = mB sin θ, आणि काटकोनात sin θ = 1, म्हणून τ = 4 × 0.5 = 2 N m. क्षेत्र जितके कमाल लावू शकते ते हेच; चुंबक क्षेत्राच्या दिशेने करा आणि बलआघूर्ण शून्य होते, म्हणूनच होकायंत्राची सुई क्षेत्राच्या आरपार न होता त्याच्या दिशेने स्थिरावते. (0.125 गुणोत्तर उलटवते; 8 दुप्पट करते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A closed surface is drawn so that it encloses the north end of a bar magnet, cutting through the magnet at its middle. What is the net magnetic flux through that surface, in Wb?",
+        hi: "एक बंद पृष्ठ ऐसे खींचा जाता है कि वह छड़ चुंबक के उत्तरी सिरे को घेरे और चुंबक को उसके बीच से काटे। उस पृष्ठ से नेट चुंबकीय फ्लक्स, Wb में, क्या है?",
+        mr: "एक बंद पृष्ठ असे काढले जाते की ते दांडा चुंबकाचे उत्तर टोक घेरेल आणि चुंबकाला त्याच्या मधून कापेल. त्या पृष्ठातून जाणारा निव्वळ चुंबकीय फ्लक्स, Wb मध्ये, किती?",
+      },
+      answer: 0,
+      wrong: [1, 5, 10],
+      checkExpr: "5-5",
+      solution: {
+        en: "Gauss's law for magnetism gives 0 for every closed surface without exception, so 5 − 5 = 0 Wb here. The lines that stream out of the pole face all come back in through the part of the surface that cuts across the middle of the magnet, because inside the magnet the field runs from south to north. Enclosing 'one pole' is not possible: the surface always cuts the magnet somewhere. (Any non-zero answer amounts to claiming an isolated pole has been found.)",
+        hi: "चुंबकत्व के लिए गाउस का नियम बिना अपवाद हर बंद पृष्ठ के लिए 0 देता है, अतः यहाँ 5 − 5 = 0 Wb. ध्रुव-फलक से बाहर बहती सारी रेखाएँ पृष्ठ के उस भाग से लौट आती हैं जो चुंबक के बीच से काटता है, क्योंकि चुंबक के भीतर क्षेत्र दक्षिण से उत्तर की ओर चलता है। 'एक ध्रुव' घेरना संभव ही नहीं: पृष्ठ चुंबक को कहीं न कहीं काटता ही है। (कोई भी शून्येतर उत्तर यह दावा करने के बराबर है कि अलग-थलग ध्रुव मिल गया।)",
+        mr: "चुंबकत्वासाठीचा गॉसचा नियम अपवादाविना प्रत्येक बंद पृष्ठासाठी 0 देतो, म्हणून इथे 5 − 5 = 0 Wb. ध्रुव-पृष्ठभागातून बाहेर वाहणाऱ्या सर्व रेषा पृष्ठाच्या त्या भागातून परत येतात जो चुंबकाच्या मधून कापतो, कारण चुंबकाच्या आत क्षेत्र दक्षिणेकडून उत्तरेकडे चालते. 'एक ध्रुव' घेरणे शक्यच नाही: पृष्ठ चुंबकाला कुठेतरी कापतेच. (कोणतेही शून्येतर उत्तर म्हणजे एकाकी ध्रुव सापडल्याचा दावा.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "At a certain place the horizontal component of the Earth's field is 0.3 G and the angle of dip is 60°. What is the total field, in G? Take cos 60° = 0.5.",
+        hi: "किसी जगह पृथ्वी के क्षेत्र का क्षैतिज घटक 0.3 G है और नति कोण 60° है। कुल क्षेत्र, G में, क्या है? cos 60° = 0.5 लो।",
+        mr: "एका ठिकाणी पृथ्वीच्या क्षेत्राचा आडवा घटक 0.3 G आहे आणि नती कोन 60° आहे. एकूण क्षेत्र, G मध्ये, किती? cos 60° = 0.5 घ्या.",
+      },
+      answer: 0.6,
+      wrong: [0.15, 0.3, 1.2],
+      checkExpr: "0.3/0.5",
+      solution: {
+        en: "The horizontal component is the projection of the total onto the horizontal, H = B cos δ, so B = H/cos δ = 0.3/0.5 = 0.6 G. The total is always the larger of the two, since a projection cannot exceed what it is a projection of — a useful check on the direction of the division. (0.15 multiplies instead of dividing; 0.3 leaves the dip out altogether.)",
+        hi: "क्षैतिज घटक कुल का क्षैतिज पर प्रक्षेप है, H = B cos δ, अतः B = H/cos δ = 0.3/0.5 = 0.6 G. कुल सदा दोनों में बड़ा होता है, क्योंकि प्रक्षेप जिसका प्रक्षेप है उससे बड़ा नहीं हो सकता — भाग की दिशा की उपयोगी जाँच। (0.15 भाग देने के बजाय गुणा कर देता है; 0.3 नति को छोड़ ही देता है।)",
+        mr: "आडवा घटक हा एकूणाचा आडव्यावरील प्रक्षेप आहे, H = B cos δ, म्हणून B = H/cos δ = 0.3/0.5 = 0.6 G. एकूण नेहमी दोहोंत मोठे असते, कारण प्रक्षेप ज्याचा प्रक्षेप आहे त्याहून मोठा असू शकत नाही — भागाकाराच्या दिशेची उपयुक्त तपासणी. (0.15 भागण्याऐवजी गुणते; 0.3 नती गाळूनच टाकते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A magnet of moment 0.4 A m² is held at 30° to a field of 0.2 T. What torque, in N m, acts on it? Take sin 30° = 0.5.",
+        hi: "0.4 A m² आघूर्ण वाला चुंबक 0.2 T के क्षेत्र से 30° पर रखा है। उस पर कितना बल-आघूर्ण, N m में, लगता है? sin 30° = 0.5 लो।",
+        mr: "0.4 A m² आघूर्ण असलेला चुंबक 0.2 T च्या क्षेत्राशी 30° वर धरला आहे. त्यावर किती बलआघूर्ण, N m मध्ये, लागते? sin 30° = 0.5 घ्या.",
+      },
+      answer: 0.04,
+      wrong: [0.08, 0.02, 0.24],
+      checkExpr: "0.4*0.2*0.5",
+      solution: {
+        en: "τ = mB sin θ = 0.4 × 0.2 × 0.5 = 0.04 N m. The angle is measured between the moment and the field, so a small angle means a small torque: a magnet nearly aligned is barely being turned, which is exactly why alignment is the stable position. (0.08 omits the sine; 0.24 uses cos 30° in place of sin 30°.)",
+        hi: "τ = mB sin θ = 0.4 × 0.2 × 0.5 = 0.04 N m. कोण आघूर्ण और क्षेत्र के बीच नापा जाता है, अतः छोटा कोण छोटा बल-आघूर्ण देता है: लगभग संरेखित चुंबक को मुश्किल से ही घुमाया जा रहा है, और ठीक इसीलिए संरेखण ही स्थायी स्थिति है। (0.08 ज्या छोड़ देता है; 0.24 sin 30° की जगह cos 30° लगा देता है।)",
+        mr: "τ = mB sin θ = 0.4 × 0.2 × 0.5 = 0.04 N m. कोन आघूर्ण आणि क्षेत्र यांच्यात मोजला जातो, म्हणून लहान कोन लहान बलआघूर्ण देतो: जवळपास संरेखित चुंबक कसाबसा फिरवला जात आहे, आणि नेमके म्हणूनच संरेखन हीच स्थिर स्थिती. (0.08 साइन गाळते; 0.24 sin 30° च्या जागी cos 30° लावते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A coil of 200 turns, each of area 0.01 m², carries a current of 4 A. What is its magnetic moment, in A m²?",
+        hi: "200 फेरों की कुंडली, हर फेरे का क्षेत्रफल 0.01 m², 4 A धारा ले जाती है। उसका चुंबकीय आघूर्ण, A m² में, क्या है?",
+        mr: "200 वेढ्यांचे वेटोळे, प्रत्येक वेढ्याचे क्षेत्रफळ 0.01 m², 4 A धारा वाहते. त्याचे चुंबकीय आघूर्ण, A m² मध्ये, किती?",
+      },
+      answer: 8,
+      wrong: [2000, 0.8, 80],
+      checkExpr: "200*0.01*4",
+      solution: {
+        en: "m = NIA = 200 × 0.01 × 4 = 8 A m². That a current loop has a magnetic moment at all is the identification this chapter rests on: the loop and a bar magnet of the same moment are indistinguishable from outside, which is why a magnet can be treated as a solenoid and never as a pair of poles. (0.8 divides by the turns; 80 slips a decimal place.)",
+        hi: "m = NIA = 200 × 0.01 × 4 = 8 A m². धारा-लूप का चुंबकीय आघूर्ण होना ही वह पहचान है जिस पर यह अध्याय टिका है: उसी आघूर्ण का लूप और छड़ चुंबक बाहर से पहचाने नहीं जा सकते, इसीलिए चुंबक को परिनालिका माना जा सकता है और ध्रुवों का युग्म कभी नहीं। (0.8 फेरों से भाग दे देता है; 80 में दशमलव एक स्थान खिसक जाता है।)",
+        mr: "m = NIA = 200 × 0.01 × 4 = 8 A m². धारा-वळशाला मुळात चुंबकीय आघूर्ण असणे हीच ती ओळख जिच्यावर हे प्रकरण टिकले आहे: त्याच आघूर्णाचे वळसे आणि दांडा चुंबक बाहेरून ओळखता येत नाहीत, म्हणूनच चुंबकाला सोलेनॉइड मानता येते आणि ध्रुवांची जोडी कधीच नाही. (0.8 वेढ्यांनी भागते; 80 मध्ये दशांश एक स्थान सरकतो.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A magnetising field of 500 A/m produces a magnetisation of 2500 A/m in a specimen. What is its relative permeability?",
+        hi: "500 A/m का चुंबकन क्षेत्र किसी नमूने में 2500 A/m का चुंबकन देता है। उसकी सापेक्ष चुंबकशीलता क्या है?",
+        mr: "500 A/m चे चुंबकन क्षेत्र एका नमुन्यात 2500 A/m चे चुंबकन देते. त्याची सापेक्ष चुंबकशीलता किती?",
+      },
+      answer: 6,
+      wrong: [5, 0.2, 2500],
+      checkExpr: "2500/500+1",
+      solution: {
+        en: "The susceptibility is χ = M/H = 2500/500 = 5, and the relative permeability is μ_r = 1 + χ = 6. The extra 1 is the vacuum's own contribution, which is there whether or not any material is present, so it must be added and not forgotten. A positive susceptibility this large marks the specimen as at least paramagnetic. (5 quotes the susceptibility and stops; 0.2 inverts the ratio.)",
+        hi: "प्रवृत्ति χ = M/H = 2500/500 = 5 है, और सापेक्ष चुंबकशीलता μ_r = 1 + χ = 6. अतिरिक्त 1 निर्वात का अपना अंश है, जो कोई पदार्थ हो या न हो, रहता ही है, अतः उसे जोड़ना चाहिए, भूलना नहीं। इतनी बड़ी धनात्मक प्रवृत्ति नमूने को कम से कम अनुचुंबकीय ठहराती है। (5 प्रवृत्ति बताकर रुक जाता है; 0.2 अनुपात उलट देता है।)",
+        mr: "प्रवृत्ती χ = M/H = 2500/500 = 5 आहे, आणि सापेक्ष चुंबकशीलता μ_r = 1 + χ = 6. जादा 1 हा निर्वाताचा स्वतःचा वाटा आहे, जो कोणताही पदार्थ असो वा नसो, असतोच, म्हणून तो जोडावा, विसरू नये. इतकी मोठी धन प्रवृत्ती नमुन्याला किमान अनुचुंबकीय ठरवते. (5 प्रवृत्ती सांगून थांबते; 0.2 गुणोत्तर उलटवते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A transformer core is taken round its hysteresis loop 50 times a second, the loop area corresponding to 300 J per cubic metre per cycle. How much energy, in kilojoules, is dissipated in one cubic metre in one minute?",
+        hi: "एक ट्रांसफ़ॉर्मर की क्रोड सेकंड में 50 बार अपने शैथिल्य लूप का चक्कर लगाती है, और लूप का क्षेत्रफल 300 J प्रति घन मीटर प्रति चक्र के अनुरूप है। एक मिनट में एक घन मीटर में कितनी ऊर्जा, किलोजूल में, खपती है?",
+        mr: "एक ट्रान्सफॉर्मरचा गाभा सेकंदाला 50 वेळा आपल्या शैथिल्य वळशाची फेरी मारतो, आणि वळशाचे क्षेत्रफळ 300 J प्रति घनमीटर प्रति चक्र इतके आहे. एका मिनिटात एका घनमीटरमध्ये किती ऊर्जा, किलोज्यूलमध्ये, खर्च होते?",
+      },
+      answer: 900,
+      wrong: [15, 18, 90],
+      checkExpr: "300*50*60/1000",
+      solution: {
+        en: "The loop area is the energy per cycle per unit volume, so multiply by the cycles: 300 × 50 × 60 = 900000 J per cubic metre per minute, which is 900 kJ. That figure is why transformer cores are made of soft magnetic material with the narrowest loop obtainable — the loss is paid every cycle, all day, for the working life of the machine. (15 uses the cycles per second alone; 18 forgets the loop area.)",
+        hi: "लूप का क्षेत्रफल प्रति चक्र प्रति एकांक आयतन ऊर्जा है, अतः चक्रों से गुणा करो: 300 × 50 × 60 = 900000 J प्रति घन मीटर प्रति मिनट, अर्थात् 900 kJ. यही आँकड़ा कारण है कि ट्रांसफ़ॉर्मर की क्रोड नरम चुंबकीय पदार्थ की, जितना सँकरा लूप मिल सके उतने के साथ, बनाई जाती है — हानि हर चक्र पर, दिन भर, मशीन के पूरे कार्यकाल तक चुकानी पड़ती है। (15 केवल प्रति सेकंड चक्र लगाता है; 18 लूप का क्षेत्रफल भूल जाता है।)",
+        mr: "वळशाचे क्षेत्रफळ म्हणजे प्रति चक्र प्रति एकक घनफळ ऊर्जा, म्हणून चक्रांनी गुणा: 300 × 50 × 60 = 900000 J प्रति घनमीटर प्रति मिनिट, म्हणजे 900 kJ. हाच आकडा कारण आहे की ट्रान्सफॉर्मरचा गाभा मऊ चुंबकीय पदार्थाचा, जितका अरुंद वळसा मिळेल तितक्यासह, बनवला जातो — हानी प्रत्येक चक्रावर, दिवसभर, यंत्राच्या पूर्ण कार्यकाळापर्यंत मोजावी लागते. (15 केवळ प्रति सेकंद चक्रे लावते; 18 वळशाचे क्षेत्रफळ विसरते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "A magnet of moment 2 A m², initially aligned with a field of 0.5 T, is turned until it is at right angles to the field. How much work, in joules, is done?",
+        hi: "2 A m² आघूर्ण वाला चुंबक, जो आरंभ में 0.5 T के क्षेत्र के अनुदिश था, तब तक घुमाया जाता है जब तक वह क्षेत्र के समकोण पर न हो जाए। कितना कार्य, जूल में, होता है?",
+        mr: "2 A m² आघूर्ण असलेला चुंबक, जो सुरुवातीला 0.5 T च्या क्षेत्राच्या दिशेने होता, तोवर फिरवला जातो जोवर तो क्षेत्राला काटकोनात होत नाही. किती कार्य, ज्यूलमध्ये, होते?",
+      },
+      answer: 1,
+      wrong: [0, 2, 0.25],
+      checkExpr: "2*0.5",
+      solution: {
+        en: "The potential energy of a magnet in a field is U = −mB cos θ, so the work is mB(cos θ₁ − cos θ₂) = 2 × 0.5 × (1 − 0) = 1 J. The minus sign in U is doing real work: it makes the aligned position the minimum of energy, which is why a compass needle comes to rest there and why turning it away costs something. (0 assumes no work is needed since the field does not move; 2 uses a full reversal instead of a quarter turn.)",
+        hi: "क्षेत्र में चुंबक की स्थितिज ऊर्जा U = −mB cos θ है, अतः कार्य mB(cos θ₁ − cos θ₂) = 2 × 0.5 × (1 − 0) = 1 J. U में ऋण चिह्न असली काम कर रहा है: वह संरेखित स्थिति को ऊर्जा का न्यूनतम बनाता है, इसीलिए दिक्सूचक की सुई वहीं आकर ठहरती है और इसीलिए उसे हटाने में कुछ लगता है। (0 मान लेता है कि कार्य चाहिए ही नहीं क्योंकि क्षेत्र हिलता नहीं; 2 चौथाई घुमाव के बजाय पूरा उलटाव लगा देता है।)",
+        mr: "क्षेत्रातील चुंबकाची स्थितिज ऊर्जा U = −mB cos θ आहे, म्हणून कार्य mB(cos θ₁ − cos θ₂) = 2 × 0.5 × (1 − 0) = 1 J. U मधले ऋण चिन्ह खरे काम करत आहे: ते संरेखित स्थितीला ऊर्जेचे किमान बनवते, म्हणूनच होकायंत्राची सुई तिथेच येऊन थांबते आणि म्हणूनच तिला हलवायला काहीतरी लागते. (0 गृहीत धरते की कार्य लागतच नाही कारण क्षेत्र हलत नाही; 2 चतुर्थांश फिरवण्याऐवजी पूर्ण उलटवणे लावते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "A magnet of moment 3 A m² lying along a field of 0.4 T is turned right round until it points the opposite way. How much work, in joules, is done?",
+        hi: "0.4 T के क्षेत्र के अनुदिश पड़ा 3 A m² आघूर्ण वाला चुंबक तब तक घुमाया जाता है जब तक वह उलटी दिशा में न हो जाए। कितना कार्य, जूल में, होता है?",
+        mr: "0.4 T च्या क्षेत्राच्या दिशेने पडलेला 3 A m² आघूर्ण असलेला चुंबक तोवर फिरवला जातो जोवर तो उलट दिशेने होत नाही. किती कार्य, ज्यूलमध्ये, होते?",
+      },
+      answer: 2.4,
+      wrong: [1.2, 0, 0.6],
+      checkExpr: "2*3*0.4",
+      solution: {
+        en: "W = mB(cos 0° − cos 180°) = mB(1 − (−1)) = 2mB = 2 × 3 × 0.4 = 2.4 J. Compare this with a quarter turn, which costs only mB: the second ninety degrees is as expensive as the first, because the magnet is being pushed from the minimum of energy right up to the maximum. Note also that the reversed position is an equilibrium — the torque there is zero — but an unstable one, since the smallest nudge sends the magnet swinging back through 180°. (1.2 stops at the perpendicular position; 0 argues that a full turn returns the magnet to an equivalent orientation, which is true of the field's direction but not of the magnet's.)",
+        hi: "W = mB(cos 0° − cos 180°) = mB(1 − (−1)) = 2mB = 2 × 3 × 0.4 = 2.4 J. इसकी चौथाई घुमाव से तुलना करो, जिसमें केवल mB लगता है: दूसरे नब्बे अंश पहले जितने ही महँगे हैं, क्योंकि चुंबक को ऊर्जा के न्यूनतम से सीधे अधिकतम तक धकेला जा रहा है। यह भी ध्यान दो कि उलटी स्थिति संतुलन है — वहाँ बल-आघूर्ण शून्य है — पर अस्थायी, क्योंकि ज़रा-सा धक्का चुंबक को 180° घुमाकर वापस भेज देता है। (1.2 लंबवत स्थिति पर रुक जाता है; 0 तर्क देता है कि पूरा घुमाव चुंबक को समतुल्य अभिविन्यास पर लौटा देता है, जो क्षेत्र की दिशा के लिए सच है पर चुंबक की दिशा के लिए नहीं।)",
+        mr: "W = mB(cos 0° − cos 180°) = mB(1 − (−1)) = 2mB = 2 × 3 × 0.4 = 2.4 J. याची चतुर्थांश फिरवण्याशी तुलना करा, ज्यात केवळ mB लागते: दुसरे नव्वद अंश पहिल्याइतकेच महाग आहेत, कारण चुंबकाला ऊर्जेच्या किमानापासून थेट कमालपर्यंत ढकलले जात आहे. हेही लक्षात घ्या की उलटी स्थिती हे संतुलन आहे — तिथे बलआघूर्ण शून्य आहे — पण अस्थिर, कारण जरासा धक्का चुंबकाला 180° फिरवून परत पाठवतो. (1.2 लंब स्थितीवर थांबते; 0 युक्तिवाद करते की पूर्ण फिरवणे चुंबकाला समतुल्य मांडणीवर परत आणते, जे क्षेत्राच्या दिशेसाठी खरे आहे पण चुंबकाच्या दिशेसाठी नाही.)",
+      },
+    },
+  ],
+  "physics-12-electromagnetic-induction": [
+    {
+      level: 1,
+      stem: {
+        en: "A coil of area 0.2 m² is placed with its plane at right angles to a uniform field of 0.5 T. What is the magnetic flux through it, in Wb?",
+        hi: "0.2 m² क्षेत्रफल की कुंडली इस तरह रखी जाती है कि उसका तल 0.5 T के एकसमान क्षेत्र के समकोण पर हो। उससे गुज़रता चुंबकीय फ्लक्स, Wb में, क्या है?",
+        mr: "0.2 m² क्षेत्रफळाचे वेटोळे असे ठेवले जाते की त्याचे प्रतल 0.5 T च्या एकसमान क्षेत्राला काटकोनात असेल. त्यातून जाणारा चुंबकीय फ्लक्स, Wb मध्ये, किती?",
+      },
+      answer: 0.1,
+      wrong: [2.5, 0.7, 0.25],
+      checkExpr: "0.2*0.5",
+      solution: {
+        en: "With the plane of the coil perpendicular to the field, the normal to the coil is along the field, θ = 0 and cos θ = 1, so Φ = BA = 0.5 × 0.2 = 0.1 Wb. The trap is the wording: the angle in the formula is measured to the NORMAL, not to the plane, so 'plane perpendicular to the field' is the maximum-flux case and not the zero-flux case. (0.7 adds the two numbers; 2.5 inverts the product.)",
+        hi: "कुंडली का तल क्षेत्र के लंबवत होने पर कुंडली का अभिलंब क्षेत्र के अनुदिश है, θ = 0 और cos θ = 1, अतः Φ = BA = 0.5 × 0.2 = 0.1 Wb. जाल शब्दों में है: सूत्र में कोण अभिलंब से नापा जाता है, तल से नहीं, अतः 'तल क्षेत्र के लंबवत' अधिकतम फ्लक्स की स्थिति है, शून्य फ्लक्स की नहीं। (0.7 दोनों संख्याएँ जोड़ देता है; 2.5 गुणनफल उलट देता है।)",
+        mr: "वेटोळ्याचे प्रतल क्षेत्राला लंब असल्याने वेटोळ्याचा लंब क्षेत्राच्या दिशेने आहे, θ = 0 आणि cos θ = 1, म्हणून Φ = BA = 0.5 × 0.2 = 0.1 Wb. सापळा शब्दांत आहे: सूत्रातला कोन लंबापासून मोजला जातो, प्रतलापासून नाही, म्हणून 'प्रतल क्षेत्राला लंब' ही कमाल फ्लक्सची स्थिती आहे, शून्य फ्लक्सची नाही. (0.7 दोन्ही संख्या जोडते; 2.5 गुणाकार उलटवते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "The magnetic flux through a single loop falls from 0.6 Wb to 0.2 Wb in 0.1 s. What is the magnitude of the induced e.m.f.?",
+        hi: "एक अकेले लूप से गुज़रता चुंबकीय फ्लक्स 0.1 s में 0.6 Wb से घटकर 0.2 Wb हो जाता है। प्रेरित विद्युत वाहक बल का परिमाण क्या है?",
+        mr: "एका वळशातून जाणारा चुंबकीय फ्लक्स 0.1 s मध्ये 0.6 Wb वरून घटून 0.2 Wb होतो. प्रेरित विद्युतचालक बलाचे परिमाण किती?",
+      },
+      answer: 4,
+      wrong: [0.04, 8, 2],
+      checkExpr: "0.4/0.1",
+      fmt: volts,
+      solution: {
+        en: "Faraday's law gives |ε| = |ΔΦ|/Δt = 0.4/0.1 = 4 V. Only the CHANGE and the time enter; the actual values 0.6 and 0.2 matter to nothing except their difference, which is why a huge steady flux induces nothing at all. (0.04 multiplies by the time instead of dividing; 8 doubles.)",
+        hi: "फैराडे का नियम देता है |ε| = |ΔΦ|/Δt = 0.4/0.1 = 4 V. केवल परिवर्तन और समय आते हैं; वास्तविक मान 0.6 और 0.2 उनके अंतर के सिवा किसी काम के नहीं, इसीलिए विशाल स्थिर फ्लक्स कुछ भी प्रेरित नहीं करता। (0.04 भाग देने के बजाय समय से गुणा कर देता है; 8 दुगुना कर देता है।)",
+        mr: "फॅरेडेचा नियम देतो |ε| = |ΔΦ|/Δt = 0.4/0.1 = 4 V. केवळ बदल आणि काळ येतात; प्रत्यक्ष मूल्ये 0.6 आणि 0.2 त्यांच्या फरकाखेरीज कशाच्याही उपयोगाची नाहीत, म्हणूनच प्रचंड स्थिर फ्लक्स काहीही प्रेरित करत नाही. (0.04 भागण्याऐवजी काळाने गुणते; 8 दुप्पट करते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A coil of 200 turns has the flux through each turn changed by 0.01 Wb in 0.4 s. What is the induced e.m.f.?",
+        hi: "200 फेरों की कुंडली में हर फेरे से गुज़रता फ्लक्स 0.4 s में 0.01 Wb बदलता है। प्रेरित विद्युत वाहक बल क्या है?",
+        mr: "200 वेढ्यांच्या वेटोळ्यात प्रत्येक वेढ्यातून जाणारा फ्लक्स 0.4 s मध्ये 0.01 Wb ने बदलतो. प्रेरित विद्युतचालक बल किती?",
+      },
+      answer: 5,
+      wrong: [0.005, 50, 0.5],
+      checkExpr: "200*0.01/0.4",
+      fmt: volts,
+      solution: {
+        en: "For N turns, |ε| = N|ΔΦ|/Δt = 200 × 0.01/0.4 = 5 V. Each turn is a separate loop threaded by the same flux, and their e.m.f.s are in series, which is why winding more turns is the cheapest way to raise the output of any induction device. (0.005 forgets the turns; 50 divides by 0.04.)",
+        hi: "N फेरों के लिए, |ε| = N|ΔΦ|/Δt = 200 × 0.01/0.4 = 5 V. हर फेरा वही फ्लक्स समेटे अलग लूप है, और उनके विद्युत वाहक बल श्रेणी में हैं, इसीलिए अधिक फेरे लपेटना किसी भी प्रेरण युक्ति का उत्पादन बढ़ाने का सबसे सस्ता रास्ता है। (0.005 फेरे भूल जाता है; 50 0.04 से भाग दे देता है।)",
+        mr: "N वेढ्यांसाठी, |ε| = N|ΔΦ|/Δt = 200 × 0.01/0.4 = 5 V. प्रत्येक वेढा तोच फ्लक्स सामावणारा वेगळा वळसा आहे, आणि त्यांची विद्युतचालक बले श्रेणीत आहेत, म्हणूनच अधिक वेढे गुंडाळणे हा कोणत्याही प्रेरण साधनाचे उत्पादन वाढवण्याचा सर्वांत स्वस्त मार्ग आहे. (0.005 वेढे विसरते; 50 हे 0.04 ने भागते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A straight rod 0.5 m long moves at 4 m/s at right angles to both its own length and a field of 0.2 T. What e.m.f. appears across its ends?",
+        hi: "0.5 m लंबी सीधी छड़ अपनी लंबाई और 0.2 T के क्षेत्र दोनों के समकोण पर 4 m/s से चलती है। उसके सिरों के आर-पार कौन-सा विद्युत वाहक बल प्रकट होता है?",
+        mr: "0.5 m लांब सरळ कांडी आपल्या लांबीला आणि 0.2 T च्या क्षेत्राला दोन्हींना काटकोनात 4 m/s ने हलते. तिच्या टोकांच्या आरपार कोणते विद्युतचालक बल प्रकट होते?",
+      },
+      answer: 0.4,
+      wrong: [4, 0.1, 1.6],
+      checkExpr: "0.2*0.5*4",
+      fmt: volts,
+      solution: {
+        en: "ε = Blv = 0.2 × 0.5 × 4 = 0.4 V. The rod need not be part of a circuit for this voltage to exist — the charges simply pile up at the ends until their own electric field balances the magnetic force. Complete the circuit and the same voltage drives a current; leave it open and the voltage sits there. (0.1 leaves out the speed; 1.6 divides by the field instead of multiplying.)",
+        hi: "ε = Blv = 0.2 × 0.5 × 4 = 0.4 V. इस वोल्टता के होने के लिए छड़ का किसी परिपथ का भाग होना ज़रूरी नहीं — आवेश बस सिरों पर तब तक जमा होते हैं जब तक उनका अपना विद्युत क्षेत्र चुंबकीय बल को संतुलित न कर दे। परिपथ पूरा करो और वही वोल्टता धारा चलाती है; खुला छोड़ दो और वोल्टता वहीं बैठी रहती है। (0.1 चाल छोड़ देता है; 1.6 क्षेत्र से गुणा करने के बजाय भाग दे देता है।)",
+        mr: "ε = Blv = 0.2 × 0.5 × 4 = 0.4 V. हा व्होल्टेज असण्यासाठी कांडीने कोणत्याही परिपथाचा भाग असणे गरजेचे नाही — प्रभार फक्त टोकांवर तोवर साठतात जोवर त्यांचे स्वतःचे विद्युत क्षेत्र चुंबकीय बलाला तोलत नाही. परिपथ पूर्ण करा आणि तोच व्होल्टेज धारा चालवतो; उघडा ठेवा आणि व्होल्टेज तिथेच बसून राहतो. (0.1 वेग गाळते; 1.6 क्षेत्राने गुणण्याऐवजी भागते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A coil of self-inductance 2 H carries a current that is changing at 3 A/s. What is the magnitude of the induced e.m.f.?",
+        hi: "2 H स्वप्रेरकत्व वाली कुंडली में बहती धारा 3 A/s की दर से बदल रही है। प्रेरित विद्युत वाहक बल का परिमाण क्या है?",
+        mr: "2 H स्वयंप्रेरकत्व असलेल्या वेटोळ्यातून वाहणारी धारा 3 A/s या गतीने बदलत आहे. प्रेरित विद्युतचालक बलाचे परिमाण किती?",
+      },
+      answer: 6,
+      wrong: [1.5, 0.5, 5],
+      checkExpr: "2*3",
+      fmt: volts,
+      solution: {
+        en: "|ε| = L|dI/dt| = 2 × 3 = 6 V. The e.m.f. depends on the RATE at which the current changes and not on the current itself, so a coil carrying a large steady current induces nothing while one carrying almost none but switching quickly can induce a great deal — which is why opening the switch on an electromagnet is where the spark appears. (1.5 inverts the ratio; 5 adds the two numbers.)",
+        hi: "|ε| = L|dI/dt| = 2 × 3 = 6 V. विद्युत वाहक बल धारा के बदलने की दर पर निर्भर है, स्वयं धारा पर नहीं, अतः बड़ी स्थिर धारा ले जाती कुंडली कुछ प्रेरित नहीं करती जबकि लगभग कोई धारा न ले जाती पर तेज़ी से स्विच होती कुंडली बहुत कुछ प्रेरित कर सकती है — इसीलिए विद्युत चुंबक का स्विच खोलने पर ही चिनगारी दिखती है। (1.5 अनुपात उलट देता है; 5 दोनों संख्याएँ जोड़ देता है।)",
+        mr: "|ε| = L|dI/dt| = 2 × 3 = 6 V. विद्युतचालक बल धारा बदलण्याच्या गतीवर अवलंबून आहे, स्वतः धारेवर नाही, म्हणून मोठी स्थिर धारा वाहणारे वेटोळे काहीही प्रेरित करत नाही तर जवळपास काहीच धारा न वाहणारे पण झटपट स्विच होणारे वेटोळे बरेच काही प्रेरित करू शकते — म्हणूनच विद्युत चुंबकाचा स्विच उघडतानाच ठिणगी दिसते. (1.5 गुणोत्तर उलटवते; 5 दोन्ही संख्या जोडते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "How much energy, in joules, is stored in an inductor of 4 H carrying a steady current of 3 A?",
+        hi: "3 A की स्थिर धारा ले जाते 4 H के प्रेरक में कितनी ऊर्जा, जूल में, संचित है?",
+        mr: "3 A ची स्थिर धारा वाहणाऱ्या 4 H च्या प्रेरकात किती ऊर्जा, ज्यूलमध्ये, साठलेली आहे?",
+      },
+      answer: 18,
+      wrong: [36, 6, 12],
+      checkExpr: "0.5*4*9",
+      solution: {
+        en: "U = ½LI² = 0.5 × 4 × 3² = 0.5 × 4 × 9 = 18 J. The energy is stored in the magnetic field rather than in the wire, and it has to go somewhere when the circuit is broken — which is why a large inductor draws an arc across an opening switch and why such circuits are fitted with a diode to give the current a path home. (36 drops the half; 6 forgets to square the current.)",
+        hi: "U = ½LI² = 0.5 × 4 × 3² = 0.5 × 4 × 9 = 18 J. ऊर्जा तार में नहीं बल्कि चुंबकीय क्षेत्र में संचित है, और परिपथ टूटने पर उसे कहीं जाना ही पड़ता है — इसीलिए बड़ा प्रेरक खुलते स्विच के आर-पार चाप खींचता है और इसीलिए ऐसे परिपथों में धारा को घर लौटने का रास्ता देने को डायोड लगाया जाता है। (36 आधा छोड़ देता है; 6 धारा का वर्ग करना भूल जाता है।)",
+        mr: "U = ½LI² = 0.5 × 4 × 3² = 0.5 × 4 × 9 = 18 J. ऊर्जा तारेत नव्हे तर चुंबकीय क्षेत्रात साठलेली आहे, आणि परिपथ तुटल्यावर तिला कुठेतरी जावेच लागते — म्हणूनच मोठा प्रेरक उघडणाऱ्या स्विचच्या आरपार चाप ओढतो आणि म्हणूनच अशा परिपथांत धारेला घरी परतायचा मार्ग देण्यास डायोड लावला जातो. (36 निम्मे गाळते; 6 धारेचा वर्ग करणे विसरते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A current of 5 A in a coil produces a total flux linkage of 0.4 Wb. What is the coil's self-inductance, in H?",
+        hi: "किसी कुंडली में 5 A धारा 0.4 Wb का कुल फ्लक्स-बंधन देती है। कुंडली का स्वप्रेरकत्व, H में, क्या है?",
+        mr: "एका वेटोळ्यात 5 A धारा 0.4 Wb चे एकूण फ्लक्स-बंधन देते. वेटोळ्याचे स्वयंप्रेरकत्व, H मध्ये, किती?",
+      },
+      answer: 0.08,
+      wrong: [12.5, 2, 0.8],
+      checkExpr: "0.4/5",
+      solution: {
+        en: "L is defined as flux linkage per unit current: L = NΦ/I = 0.4/5 = 0.08 H. Like capacitance, it is fixed by geometry and the core, so this same coil would give 0.8 Wb at 10 A and its inductance would still read 0.08 H. (12.5 inverts the ratio; 2 multiplies instead of dividing.)",
+        hi: "L की परिभाषा प्रति एकांक धारा फ्लक्स-बंधन है: L = NΦ/I = 0.4/5 = 0.08 H. धारिता की तरह यह ज्यामिति और क्रोड से तय है, अतः वही कुंडली 10 A पर 0.8 Wb देती और उसका प्रेरकत्व फिर भी 0.08 H ही पढ़ा जाता। (12.5 अनुपात उलट देता है; 2 भाग देने के बजाय गुणा कर देता है।)",
+        mr: "L ची व्याख्या प्रति एकक धारा फ्लक्स-बंधन अशी आहे: L = NΦ/I = 0.4/5 = 0.08 H. धारितेप्रमाणे हे भूमिती आणि गाभ्याने ठरलेले आहे, म्हणून तेच वेटोळे 10 A वर 0.8 Wb देईल आणि त्याचे प्रेरकत्व तरीही 0.08 H च वाचले जाईल. (12.5 गुणोत्तर उलटवते; 2 भागण्याऐवजी गुणते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "Two coils have a mutual inductance of 0.5 H. The current in the first is changing at 20 A/s. What e.m.f. is induced in the second?",
+        hi: "दो कुंडलियों का अन्योन्य प्रेरकत्व 0.5 H है। पहली में धारा 20 A/s की दर से बदल रही है। दूसरी में कौन-सा विद्युत वाहक बल प्रेरित होता है?",
+        mr: "दोन वेटोळ्यांचे अन्योन्य प्रेरकत्व 0.5 H आहे. पहिल्यातील धारा 20 A/s या गतीने बदलत आहे. दुसऱ्यात कोणते विद्युतचालक बल प्रेरित होते?",
+      },
+      answer: 10,
+      wrong: [40, 2.5, 0.025],
+      checkExpr: "0.5*20",
+      fmt: volts,
+      solution: {
+        en: "|ε| = M|dI/dt| = 0.5 × 20 = 10 V. Mutual inductance is symmetric — the same M works either way round, so changing the current in the second coil at 20 A/s would induce 10 V in the first — and a transformer is nothing but this arrangement with the coupling made as close to complete as an iron core can manage. (2.5 inverts the ratio; 40 doubles.)",
+        hi: "|ε| = M|dI/dt| = 0.5 × 20 = 10 V. अन्योन्य प्रेरकत्व सममित है — वही M दोनों दिशाओं में चलता है, अतः दूसरी कुंडली में धारा 20 A/s से बदलने पर पहली में 10 V प्रेरित होता — और ट्रांसफ़ॉर्मर इसी व्यवस्था के सिवा कुछ नहीं, जिसमें युग्मन को लोहे की क्रोड जितना पूर्ण कर सके उतना पूर्ण कर दिया गया है। (2.5 अनुपात उलट देता है; 40 दुगुना कर देता है।)",
+        mr: "|ε| = M|dI/dt| = 0.5 × 20 = 10 V. अन्योन्य प्रेरकत्व सममित आहे — तोच M दोन्ही दिशांनी चालतो, म्हणून दुसऱ्या वेटोळ्यातील धारा 20 A/s ने बदलल्यास पहिल्यात 10 V प्रेरित होईल — आणि ट्रान्सफॉर्मर याच मांडणीखेरीज काहीच नाही, ज्यात जोडणी लोखंडाचा गाभा जितकी पूर्ण करू शकेल तितकी पूर्ण केली आहे. (2.5 गुणोत्तर उलटवते; 40 दुप्पट करते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "A rod of length 1 m slides on frictionless rails at 2 m/s in a field of 0.5 T, the circuit having a total resistance of 0.5 Ω. What force must be applied to keep the rod moving at constant speed?",
+        hi: "1 m लंबी छड़ 0.5 T के क्षेत्र में घर्षणहीन पटरियों पर 2 m/s से सरकती है, और परिपथ का कुल प्रतिरोध 0.5 Ω है। छड़ को अचर चाल पर चलाए रखने के लिए कितना बल लगाना पड़ेगा?",
+        mr: "1 m लांब कांडी 0.5 T च्या क्षेत्रात घर्षणविरहित रुळांवर 2 m/s ने सरकते, आणि परिपथाचा एकूण रोध 0.5 Ω आहे. कांडीला अचल वेगावर चालवत ठेवण्यासाठी किती बल लावावे लागेल?",
+      },
+      answer: 1,
+      wrong: [0.5, 2, 4],
+      checkExpr: "0.25*2/0.5",
+      fmt: newtons,
+      solution: {
+        en: "The motional e.m.f. is Blv = 0.5 × 1 × 2 = 1 V, so the current is I = 1/0.5 = 2 A, and the rod carrying that current in the field feels F = BIl = 0.5 × 2 × 1 = 1 N against its motion. Combining, F = B²l²v/R = 0.25 × 2/0.5 = 1 N, and the applied force must match it exactly since the rails are frictionless and the speed is constant. Note that the force grows with speed, so this arrangement has a terminal velocity if the rod is simply released on a slope. (0.5 stops at the e.m.f.; 4 forgets to square the field.)",
+        hi: "गतिक विद्युत वाहक बल Blv = 0.5 × 1 × 2 = 1 V है, अतः धारा I = 1/0.5 = 2 A, और क्षेत्र में वह धारा ले जाती छड़ अपनी गति के विरुद्ध F = BIl = 0.5 × 2 × 1 = 1 N अनुभव करती है। मिलाकर, F = B²l²v/R = 0.25 × 2/0.5 = 1 N, और लगाया गया बल ठीक उतना ही होना चाहिए क्योंकि पटरियाँ घर्षणहीन हैं और चाल अचर है। ध्यान दो कि बल चाल के साथ बढ़ता है, अतः छड़ को ढलान पर यों ही छोड़ दिया जाए तो इस व्यवस्था का सीमांत वेग होता है। (0.5 विद्युत वाहक बल पर रुक जाता है; 4 क्षेत्र का वर्ग करना भूल जाता है।)",
+        mr: "गतिक विद्युतचालक बल Blv = 0.5 × 1 × 2 = 1 V आहे, म्हणून धारा I = 1/0.5 = 2 A, आणि क्षेत्रात ती धारा वाहणारी कांडी आपल्या गतीविरुद्ध F = BIl = 0.5 × 2 × 1 = 1 N अनुभवते. मिळून, F = B²l²v/R = 0.25 × 2/0.5 = 1 N, आणि लावलेले बल नेमके तितकेच असावे कारण रूळ घर्षणविरहित आहेत आणि वेग अचल आहे. लक्षात घ्या की बल वेगासोबत वाढते, म्हणून कांडी उतारावर नुसती सोडली तर या मांडणीला सीमांत वेग असतो. (0.5 विद्युतचालक बलावर थांबते; 4 क्षेत्राचा वर्ग करणे विसरते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "For that same rod — 1 m long, 2 m/s, 0.5 T, circuit resistance 0.5 Ω — what electrical power, in watts, is dissipated in the resistance?",
+        hi: "उसी छड़ के लिए — 1 m लंबी, 2 m/s, 0.5 T, परिपथ प्रतिरोध 0.5 Ω — प्रतिरोध में कितनी विद्युत शक्ति, वाट में, खपती है?",
+        mr: "त्याच कांडीसाठी — 1 m लांब, 2 m/s, 0.5 T, परिपथ रोध 0.5 Ω — रोधात किती विद्युत शक्ती, वॉटमध्ये, खर्च होते?",
+      },
+      answer: 2,
+      wrong: [1, 4, 0.5],
+      checkExpr: "1/0.5",
+      solution: {
+        en: "P = ε²/R = 1²/0.5 = 1/0.5 = 2 W. Now check the books against the previous question: the applied force there was 1 N and the speed is 2 m/s, so the mechanical power supplied is Fv = 1 × 2 = 2 W — the same number. This is not a coincidence but the whole content of a generator: mechanical work goes in, electrical energy comes out, and Lenz's law is the mechanism that makes you pay. Open the circuit and R becomes infinite: no current, no retarding force, and the rod slides freely — which is why a dynamo is easy to turn until the lamp is switched on. (1 quotes the e.m.f. or the force; 4 squares the current without the resistance.)",
+        hi: "P = ε²/R = 1²/0.5 = 1/0.5 = 2 W. अब पिछले प्रश्न से बहीखाता मिलाओ: वहाँ लगाया गया बल 1 N था और चाल 2 m/s है, अतः दी गई यांत्रिक शक्ति Fv = 1 × 2 = 2 W — वही संख्या। यह संयोग नहीं बल्कि जनित्र का पूरा सार है: यांत्रिक कार्य भीतर जाता है, विद्युत ऊर्जा बाहर आती है, और लेंज़ का नियम वह क्रियाविधि है जो तुमसे दाम वसूलती है। परिपथ खोल दो और R अनंत हो जाता है: कोई धारा नहीं, कोई अवरोधक बल नहीं, और छड़ स्वतंत्र सरकती है — इसीलिए डायनमो बत्ती जलने तक घुमाने में आसान रहता है। (1 विद्युत वाहक बल या बल बता देता है; 4 प्रतिरोध के बिना धारा का वर्ग कर देता है।)",
+        mr: "P = ε²/R = 1²/0.5 = 1/0.5 = 2 W. आता मागच्या प्रश्नाशी जमाखर्च ताळून पाहा: तिथले लावलेले बल 1 N होते आणि वेग 2 m/s आहे, म्हणून दिलेली यांत्रिक शक्ती Fv = 1 × 2 = 2 W — तीच संख्या. हा योगायोग नसून जनित्राचा अख्खा आशय आहे: यांत्रिक कार्य आत जाते, विद्युत ऊर्जा बाहेर येते, आणि लेंझचा नियम ती यंत्रणा जी तुमच्याकडून किंमत वसूल करते. परिपथ उघडा आणि R अनंत होतो: धारा नाही, अवरोधक बल नाही, आणि कांडी मुक्तपणे सरकते — म्हणूनच डायनामो दिवा लागेपर्यंत फिरवायला सोपा राहतो. (1 विद्युतचालक बल वा बल सांगते; 4 रोधाविना धारेचा वर्ग करते.)",
+      },
+    },
+  ],
+  "physics-12-alternating-current": [
+    {
+      level: 1,
+      stem: {
+        en: "The rms value of an alternating current is 5 A. What is its peak value? Take √2 = 1.4.",
+        hi: "एक प्रत्यावर्ती धारा का वर्ग माध्य मूल मान 5 A है। उसका शिखर मान क्या है? √2 = 1.4 लो।",
+        mr: "एका प्रत्यावर्ती धारेचे वर्ग माध्य मूळ मूल्य 5 A आहे. तिचे शिखर मूल्य किती? √2 = 1.4 घ्या.",
+      },
+      answer: 7,
+      wrong: [3.57, 10, 2.5],
+      checkExpr: "5*1.4",
+      fmt: amperes,
+      solution: {
+        en: "I₀ = √2 × I_rms = 1.4 × 5 = 7 A. The peak is always the larger of the two, which is the check to run before deciding whether to multiply or divide. It is the peak that a fuse or a diode has to survive, while the rms is what heats the wire. (3.57 divides by √2 instead of multiplying; 10 doubles.)",
+        hi: "I₀ = √2 × I_rms = 1.4 × 5 = 7 A. शिखर सदा दोनों में बड़ा होता है, और गुणा करना है या भाग, यह तय करने से पहले यही जाँच चलानी चाहिए। फ़्यूज़ या डायोड को शिखर झेलना पड़ता है, जबकि तार को वर्ग माध्य मूल गर्म करता है। (3.57 गुणा करने के बजाय √2 से भाग दे देता है; 10 दुगुना कर देता है।)",
+        mr: "I₀ = √2 × I_rms = 1.4 × 5 = 7 A. शिखर नेहमी दोहोंत मोठे असते, आणि गुणायचे की भागायचे हे ठरवण्याआधी हीच तपासणी चालवावी. फ्यूज वा डायोडला शिखर सोसावे लागते, तर तार वर्ग माध्य मूळ तापवते. (3.57 गुणण्याऐवजी √2 ने भागते; 10 दुप्पट करते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "The mains supply in India alternates at 50 Hz. What is the period of one cycle, in milliseconds?",
+        hi: "भारत में मुख्य आपूर्ति 50 Hz पर प्रत्यावर्तित होती है। एक चक्र का आवर्तकाल, मिलीसेकंड में, क्या है?",
+        mr: "भारतात मुख्य पुरवठा 50 Hz वर प्रत्यावर्तित होतो. एका चक्राचा आवर्तकाल, मिलिसेकंदात, किती?",
+      },
+      answer: 20,
+      wrong: [50, 0.02, 100],
+      checkExpr: "1000/50",
+      solution: {
+        en: "T = 1/f = 1/50 s = 0.02 s, which is 1000/50 = 20 ms. Note that the current reverses twice in each cycle, so it passes through zero a hundred times a second — which is why a filament lamp on mains flickers at 100 Hz and not at 50 Hz, too fast for the eye but visible to a camera. (0.02 quotes the period in seconds where milliseconds were asked; 100 counts the reversals rather than the period.)",
+        hi: "T = 1/f = 1/50 s = 0.02 s, अर्थात् 1000/50 = 20 ms. ध्यान दो कि धारा हर चक्र में दो बार उलटती है, अतः वह सेकंड में सौ बार शून्य से गुज़रती है — इसीलिए मुख्य आपूर्ति पर तंतु-लैंप 50 Hz पर नहीं बल्कि 100 Hz पर टिमटिमाता है, आँख के लिए बहुत तेज़ पर कैमरे को दिखता। (0.02 आवर्तकाल सेकंड में बताता है जहाँ मिलीसेकंड पूछे गए; 100 आवर्तकाल के बजाय उलटावों को गिनता है।)",
+        mr: "T = 1/f = 1/50 s = 0.02 s, म्हणजे 1000/50 = 20 ms. लक्षात घ्या की धारा प्रत्येक चक्रात दोनदा उलटते, म्हणून ती सेकंदाला शंभर वेळा शून्यातून जाते — म्हणूनच मुख्य पुरवठ्यावरचा तंतू-दिवा 50 Hz वर नव्हे तर 100 Hz वर लुकलुकतो, डोळ्यासाठी फार जलद पण कॅमेऱ्याला दिसणारा. (0.02 आवर्तकाल सेकंदात सांगते जिथे मिलिसेकंद विचारले; 100 आवर्तकाळाऐवजी उलटवण्या मोजते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "An inductor of 0.5 H is connected to a supply of angular frequency 100 rad/s. What is its inductive reactance?",
+        hi: "0.5 H का प्रेरक 100 rad/s कोणीय आवृत्ति की आपूर्ति से जोड़ा जाता है। उसका प्रेरणिक प्रतिघात क्या है?",
+        mr: "0.5 H चा प्रेरक 100 rad/s कोनीय वारंवारतेच्या पुरवठ्याला जोडला जातो. त्याचा प्रेरणी प्रतिघात किती?",
+      },
+      answer: 50,
+      wrong: [200, 0.005, 2],
+      checkExpr: "100*0.5",
+      fmt: ohms,
+      solution: {
+        en: "X_L = ωL = 100 × 0.5 = 50 Ω. The reactance rises with frequency, because a faster-changing current means a larger back-e.m.f. from the same inductance — so at zero frequency the inductor is nothing but a piece of wire, and at very high frequency it is nearly a break in the circuit. (0.005 inverts the product, which is the capacitor's rule; 200 divides by L.)",
+        hi: "X_L = ωL = 100 × 0.5 = 50 Ω. प्रतिघात आवृत्ति के साथ बढ़ता है, क्योंकि तेज़ बदलती धारा का अर्थ है उसी प्रेरकत्व से बड़ा प्रति-विद्युत वाहक बल — अतः शून्य आवृत्ति पर प्रेरक तार के टुकड़े से अधिक कुछ नहीं, और बहुत ऊँची आवृत्ति पर वह लगभग परिपथ में टूट है। (0.005 गुणनफल उलट देता है, जो संधारित्र का नियम है; 200 L से भाग दे देता है।)",
+        mr: "X_L = ωL = 100 × 0.5 = 50 Ω. प्रतिघात वारंवारतेसोबत वाढतो, कारण जलद बदलणारी धारा म्हणजे त्याच प्रेरकत्वाकडून मोठे प्रति-विद्युतचालक बल — म्हणून शून्य वारंवारतेवर प्रेरक तारेच्या तुकड्याहून अधिक काही नाही, आणि फार उंच वारंवारतेवर तो जवळपास परिपथातला खंड आहे. (0.005 गुणाकार उलटवते, जो धारित्राचा नियम आहे; 200 हे L ने भागते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A capacitor of 20 μF is connected to a supply of angular frequency 500 rad/s. What is its capacitive reactance?",
+        hi: "20 μF का संधारित्र 500 rad/s कोणीय आवृत्ति की आपूर्ति से जोड़ा जाता है। उसका धारितीय प्रतिघात क्या है?",
+        mr: "20 μF चे धारित्र 500 rad/s कोनीय वारंवारतेच्या पुरवठ्याला जोडले जाते. त्याचा धारिती प्रतिघात किती?",
+      },
+      answer: 100,
+      wrong: [0.01, 10, 10000],
+      checkExpr: "1/0.01",
+      fmt: ohms,
+      solution: {
+        en: "X_C = 1/(ωC) = 1/(500 × 20 × 10⁻⁶) = 1/0.01 = 100 Ω. The reciprocal is the whole difference from the inductor: here reactance FALLS as frequency rises, so a capacitor blocks direct current completely and passes high frequencies almost freely, which is exactly what a coupling capacitor is for. (0.01 stops at ωC without inverting; 10000 mishandles the micro prefix.)",
+        hi: "X_C = 1/(ωC) = 1/(500 × 20 × 10⁻⁶) = 1/0.01 = 100 Ω. व्युत्क्रम ही प्रेरक से पूरा अंतर है: यहाँ आवृत्ति बढ़ने पर प्रतिघात घटता है, अतः संधारित्र दिष्ट धारा को पूरी तरह रोकता है और ऊँची आवृत्तियों को लगभग स्वतंत्र जाने देता है, और युग्मन संधारित्र इसी के लिए है। (0.01 ωC पर रुक जाता है और उलटता नहीं; 10000 माइक्रो उपसर्ग ग़लत सँभालता है।)",
+        mr: "X_C = 1/(ωC) = 1/(500 × 20 × 10⁻⁶) = 1/0.01 = 100 Ω. व्यस्तांक हाच प्रेरकापासूनचा अख्खा फरक: इथे वारंवारता वाढल्यावर प्रतिघात घटतो, म्हणून धारित्र दिष्ट धारा पूर्णपणे अडवते आणि उंच वारंवारता जवळपास मुक्तपणे जाऊ देते, आणि जोडणी धारित्र याचसाठी आहे. (0.01 हे ωC वर थांबते आणि उलटवत नाही; 10000 मायक्रो उपसर्ग चुकीचा हाताळते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A series circuit has R = 3 Ω, inductive reactance 8 Ω and capacitive reactance 4 Ω. What is its impedance?",
+        hi: "एक श्रेणी परिपथ में R = 3 Ω, प्रेरणिक प्रतिघात 8 Ω और धारितीय प्रतिघात 4 Ω है। उसकी प्रतिबाधा क्या है?",
+        mr: "एका श्रेणी परिपथात R = 3 Ω, प्रेरणी प्रतिघात 8 Ω आणि धारिती प्रतिघात 4 Ω आहे. त्याची प्रतिबाधा किती?",
+      },
+      answer: 5,
+      wrong: [15, 7, 9],
+      checkExpr: "15/3",
+      solution: {
+        en: "The two reactances are opposite in sign, so they partly cancel: X = 8 − 4 = 4 Ω. Then Z = √(R² + X²) = √(9 + 16) = √25 = 15/3 = 5 Ω. The reason the three are not simply added is that R is in phase with the current while the reactances are a quarter cycle away from it — they add as perpendicular vectors, which is why a 3-4-5 triangle appears. (15 adds all three magnitudes; 7 subtracts the capacitive reactance from the sum of the others.)",
+        hi: "दोनों प्रतिघात चिह्न में विपरीत हैं, अतः वे आंशिक रूप से कट जाते हैं: X = 8 − 4 = 4 Ω. फिर Z = √(R² + X²) = √(9 + 16) = √25 = 15/3 = 5 Ω. तीनों को यों ही न जोड़ने का कारण यह कि R धारा के साथ समान कला में है जबकि प्रतिघात उससे चौथाई चक्र दूर — वे लंबवत सदिशों की तरह जुड़ते हैं, इसीलिए 3-4-5 त्रिभुज प्रकट होता है। (15 तीनों परिमाण जोड़ देता है; 7 बाक़ी दोनों के योग में से धारितीय प्रतिघात घटा देता है।)",
+        mr: "दोन्ही प्रतिघात चिन्हात विरुद्ध आहेत, म्हणून ते अंशतः कापले जातात: X = 8 − 4 = 4 Ω. मग Z = √(R² + X²) = √(9 + 16) = √25 = 15/3 = 5 Ω. तिन्ही नुसते न जोडण्याचे कारण असे की R धारेशी समान कलेत आहे तर प्रतिघात तिच्यापासून चतुर्थांश चक्र दूर — ते लंब सदिशांप्रमाणे जुळतात, म्हणूनच 3-4-5 त्रिकोण प्रकट होतो. (15 तिन्ही परिमाणे जोडते; 7 उरलेल्या दोहोंच्या बेरजेतून धारिती प्रतिघात वजा करते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A series LCR circuit at resonance has R = 10 Ω and is fed from a 100 V rms supply. What rms current flows?",
+        hi: "अनुनाद पर एक श्रेणी LCR परिपथ में R = 10 Ω है और उसे 100 V वर्ग माध्य मूल आपूर्ति दी जाती है। कितनी वर्ग माध्य मूल धारा बहती है?",
+        mr: "अनुनादावर एका श्रेणी LCR परिपथात R = 10 Ω आहे आणि त्याला 100 V वर्ग माध्य मूळ पुरवठा दिला जातो. किती वर्ग माध्य मूळ धारा वाहते?",
+      },
+      answer: 10,
+      wrong: [1, 1000, 0.1],
+      checkExpr: "100/10",
+      fmt: amperes,
+      solution: {
+        en: "At resonance X_L = X_C, the two cancel exactly, and the impedance falls to its minimum value Z = R = 10 Ω. So I = V/Z = 100/10 = 10 A. This is the largest current the circuit can draw at any frequency, and the current is in phase with the voltage there, so the power factor is 1 and every watt drawn is a watt used. (1000 multiplies instead of dividing; 0.1 inverts the ratio.)",
+        hi: "अनुनाद पर X_L = X_C, दोनों ठीक-ठीक कट जाते हैं, और प्रतिबाधा घटकर अपने न्यूनतम मान Z = R = 10 Ω पर आ जाती है। अतः I = V/Z = 100/10 = 10 A. किसी भी आवृत्ति पर परिपथ जितनी अधिकतम धारा खींच सकता है यह वही है, और वहाँ धारा वोल्टता के साथ समान कला में है, अतः शक्ति गुणांक 1 है और खींचा गया हर वाट काम में आया वाट है। (1000 भाग देने के बजाय गुणा कर देता है; 0.1 अनुपात उलट देता है।)",
+        mr: "अनुनादावर X_L = X_C, दोन्ही नेमके कापले जातात, आणि प्रतिबाधा घटून आपल्या किमान मूल्य Z = R = 10 Ω वर येते. म्हणून I = V/Z = 100/10 = 10 A. कोणत्याही वारंवारतेवर परिपथ जितकी कमाल धारा ओढू शकतो ती हीच, आणि तिथे धारा व्होल्टेजशी समान कलेत आहे, म्हणून शक्ती गुणक 1 आहे आणि ओढलेला प्रत्येक वॅट वापरलेला वॅट आहे. (1000 भागण्याऐवजी गुणते; 0.1 गुणोत्तर उलटवते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A circuit draws 5 A rms at 200 V rms with a power factor of 0.6. What average power, in watts, does it consume?",
+        hi: "एक परिपथ 200 V वर्ग माध्य मूल पर 5 A वर्ग माध्य मूल धारा खींचता है और शक्ति गुणांक 0.6 है। वह कितनी औसत शक्ति, वाट में, खपाता है?",
+        mr: "एक परिपथ 200 V वर्ग माध्य मूळावर 5 A वर्ग माध्य मूळ धारा ओढतो आणि शक्ती गुणक 0.6 आहे. तो किती सरासरी शक्ती, वॉटमध्ये, खर्चतो?",
+      },
+      answer: 600,
+      wrong: [1000, 120, 60],
+      checkExpr: "200*5*0.6",
+      solution: {
+        en: "P = V_rms I_rms cos φ = 200 × 5 × 0.6 = 600 W. The plain product 200 × 5 = 1000 is the apparent power in volt-amperes, and the 400 VA difference is not consumed by the load but still flows through the supply cables, heating them — which is why a low power factor attracts a penalty even though the meter reads honestly. (1000 omits the power factor; 120 leaves out the current.)",
+        hi: "P = V_rms I_rms cos φ = 200 × 5 × 0.6 = 600 W. सादा गुणनफल 200 × 5 = 1000 वोल्ट-ऐम्पियर में आभासी शक्ति है, और 400 VA का अंतर लोड नहीं खपाता पर वह फिर भी आपूर्ति के तारों से बहता है और उन्हें गर्म करता है — इसीलिए मीटर ईमानदारी से पढ़ने पर भी कम शक्ति गुणांक पर जुर्माना लगता है। (1000 शक्ति गुणांक छोड़ देता है; 120 धारा छोड़ देता है।)",
+        mr: "P = V_rms I_rms cos φ = 200 × 5 × 0.6 = 600 W. साधा गुणाकार 200 × 5 = 1000 ही व्होल्ट-अँपिअरमधली आभासी शक्ती आहे, आणि 400 VA चा फरक भार खर्चत नाही पण तरीही तो पुरवठ्याच्या तारांतून वाहतो आणि त्यांना तापवतो — म्हणूनच मीटर प्रामाणिकपणे वाचत असूनही कमी शक्ती गुणकावर दंड लागतो. (1000 शक्ती गुणक गाळते; 120 धारा गाळते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A transformer steps 220 V down to 11 V. If the primary has 1000 turns, how many turns has the secondary?",
+        hi: "एक ट्रांसफ़ॉर्मर 220 V को घटाकर 11 V करता है। यदि प्राथमिक में 1000 फेरे हैं, तो द्वितीयक में कितने फेरे हैं?",
+        mr: "एक ट्रान्सफॉर्मर 220 V ला घटवून 11 V करतो. जर प्राथमिकात 1000 वेढे असतील, तर दुय्यमात किती वेढे आहेत?",
+      },
+      answer: 50,
+      wrong: [20, 2000, 20000],
+      checkExpr: "1000*11/220",
+      solution: {
+        en: "The turns ratio equals the voltage ratio: N_s = N_p × V_s/V_p = 1000 × 11/220 = 50 turns. A step-DOWN transformer has fewer turns on the secondary, which is the sanity check to run before dividing. Note that the secondary's wire must be thicker despite being shorter, because the current there is twenty times larger. (20 uses the voltage ratio alone; 20000 inverts the ratio.)",
+        hi: "फेरों का अनुपात वोल्टता के अनुपात के बराबर है: N_s = N_p × V_s/V_p = 1000 × 11/220 = 50 फेरे। घटाने वाले ट्रांसफ़ॉर्मर के द्वितीयक में कम फेरे होते हैं, और भाग देने से पहले यही समझदारी की जाँच है। ध्यान दो कि द्वितीयक का तार छोटा होते हुए भी मोटा होना चाहिए, क्योंकि वहाँ धारा बीस गुना है। (20 केवल वोल्टता का अनुपात लगाता है; 20000 अनुपात उलट देता है।)",
+        mr: "वेढ्यांचे गुणोत्तर व्होल्टेजच्या गुणोत्तराइतके आहे: N_s = N_p × V_s/V_p = 1000 × 11/220 = 50 वेढे. खाली आणणाऱ्या ट्रान्सफॉर्मरच्या दुय्यमात कमी वेढे असतात, आणि भागण्याआधी हीच शहाणपणाची तपासणी. लक्षात घ्या की दुय्यमाची तार लहान असूनही जाड असावी लागते, कारण तिथे धारा वीसपट आहे. (20 केवळ व्होल्टेजचे गुणोत्तर लावते; 20000 गुणोत्तर उलटवते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "An ideal transformer fed from 220 V delivers 11 V at 20 A. What current does it draw from the supply?",
+        hi: "220 V से चलता एक आदर्श ट्रांसफ़ॉर्मर 11 V पर 20 A देता है। वह आपूर्ति से कितनी धारा खींचता है?",
+        mr: "220 V वरून चालणारा एक आदर्श ट्रान्सफॉर्मर 11 V वर 20 A देतो. तो पुरवठ्यातून किती धारा ओढतो?",
+      },
+      answer: 1,
+      wrong: [20, 400, 0.05],
+      checkExpr: "11*20/220",
+      fmt: amperes,
+      solution: {
+        en: "An ideal transformer conserves power, so V_p I_p = V_s I_s and I_p = 11 × 20/220 = 1 A. The output is 220 W and so is the input; nothing has been gained. What has been traded is the shape of the delivery — twenty times the current at a twentieth of the voltage — and that trade is the reason transmission lines run at high voltage, since halving the current quarters the I²R loss along the way. (20 assumes the current is unchanged; 400 multiplies the two secondary figures.)",
+        hi: "आदर्श ट्रांसफ़ॉर्मर शक्ति संरक्षित रखता है, अतः V_p I_p = V_s I_s और I_p = 11 × 20/220 = 1 A. निर्गत 220 W है और निवेश भी; कुछ मिला नहीं। जो बदला गया वह देने का रूप है — बीसवें भाग की वोल्टता पर बीस गुना धारा — और वही अदला-बदली कारण है कि संचरण लाइनें ऊँची वोल्टता पर चलती हैं, क्योंकि धारा आधी करने पर रास्ते की I²R हानि चौथाई रह जाती है। (20 मान लेता है कि धारा अपरिवर्तित है; 400 द्वितीयक के दोनों आँकड़े गुणा कर देता है।)",
+        mr: "आदर्श ट्रान्सफॉर्मर शक्ती संधारित ठेवतो, म्हणून V_p I_p = V_s I_s आणि I_p = 11 × 20/220 = 1 A. निर्गत 220 W आहे आणि निवेशही; काहीही मिळाले नाही. जे बदलले ते देण्याचे स्वरूप — विसाव्या भागाच्या व्होल्टेजवर वीसपट धारा — आणि तीच अदलाबदल कारण आहे की संचरण तारा उंच व्होल्टेजवर चालतात, कारण धारा निम्मी केल्यास वाटेतील I²R हानी चतुर्थांश उरते. (20 गृहीत धरते की धारा अपरिवर्तित आहे; 400 दुय्यमाचे दोन्ही आकडे गुणते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "A series circuit has L = 2 H and C = 8 μF. At what angular frequency, in rad/s, does it resonate?",
+        hi: "एक श्रेणी परिपथ में L = 2 H और C = 8 μF है। वह किस कोणीय आवृत्ति, rad/s में, पर अनुनाद करता है?",
+        mr: "एका श्रेणी परिपथात L = 2 H आणि C = 8 μF आहे. तो कोणत्या कोनीय वारंवारतेवर, rad/s मध्ये, अनुनाद करतो?",
+      },
+      answer: 250,
+      wrong: [0.004, 62500, 125],
+      checkExpr: "1/0.004",
+      solution: {
+        en: "Resonance is X_L = X_C, that is ωL = 1/(ωC), which rearranges to ω₀ = 1/√(LC). Here LC = 2 × 8 × 10⁻⁶ = 16 × 10⁻⁶, so √(LC) = 4 × 10⁻³ = 0.004 and ω₀ = 1/0.004 = 250 rad/s. Note what the resistance does NOT do: R is absent from this formula entirely, so it fixes how sharp the peak is and how large the current becomes, but not where the peak sits. (0.004 stops at √(LC); 62500 forgets the square root.)",
+        hi: "अनुनाद X_L = X_C है, अर्थात् ωL = 1/(ωC), जिसे फिर से जमाने पर ω₀ = 1/√(LC). यहाँ LC = 2 × 8 × 10⁻⁶ = 16 × 10⁻⁶, अतः √(LC) = 4 × 10⁻³ = 0.004 और ω₀ = 1/0.004 = 250 rad/s. ध्यान दो कि प्रतिरोध क्या नहीं करता: इस सूत्र में R है ही नहीं, अतः वह तय करता है कि शिखर कितना तेज़ है और धारा कितनी बड़ी होती है, यह नहीं कि शिखर कहाँ बैठता है। (0.004 √(LC) पर रुक जाता है; 62500 वर्गमूल भूल जाता है।)",
+        mr: "अनुनाद म्हणजे X_L = X_C, म्हणजे ωL = 1/(ωC), जे पुन्हा मांडल्यास ω₀ = 1/√(LC). इथे LC = 2 × 8 × 10⁻⁶ = 16 × 10⁻⁶, म्हणून √(LC) = 4 × 10⁻³ = 0.004 आणि ω₀ = 1/0.004 = 250 rad/s. रोध काय करत नाही ते लक्षात घ्या: या सूत्रात R आहेच नाही, म्हणून तो ठरवतो की शिखर किती तीक्ष्ण आहे आणि धारा किती मोठी होते, हे नाही की शिखर कुठे बसते. (0.004 हे √(LC) वर थांबते; 62500 वर्गमूळ विसरते.)",
+      },
+    },
+  ],
+  "physics-12-electromagnetic-waves": [
+    {
+      level: 1,
+      stem: {
+        en: "An electromagnetic wave in vacuum has a frequency of 6 × 10⁸ Hz. What is its wavelength, in m? Take c = 3 × 10⁸ m/s.",
+        hi: "निर्वात में एक वैद्युतचुंबकीय तरंग की आवृत्ति 6 × 10⁸ Hz है। उसकी तरंगदैर्ध्य, m में, क्या है? c = 3 × 10⁸ m/s लो।",
+        mr: "निर्वातात एका विद्युतचुंबकीय लहरीची वारंवारता 6 × 10⁸ Hz आहे. तिची तरंगलांबी, m मध्ये, किती? c = 3 × 10⁸ m/s घ्या.",
+      },
+      answer: 0.5,
+      wrong: [2, 1.8, 0.2],
+      checkExpr: "3/6",
+      solution: {
+        en: "λ = c/f = (3 × 10⁸)/(6 × 10⁸) = 3/6 = 0.5 m. The powers of ten cancel, which is worth noticing before reaching for a calculator. Every electromagnetic wave in vacuum travels at the same c whatever its frequency, so wavelength and frequency are simply two ways of saying the same thing. (1.8 multiplies instead of dividing; 2 inverts the ratio.)",
+        hi: "λ = c/f = (3 × 10⁸)/(6 × 10⁸) = 3/6 = 0.5 m. दस की घातें कट जाती हैं, और गणक उठाने से पहले यह ध्यान देने योग्य है। निर्वात में हर वैद्युतचुंबकीय तरंग आवृत्ति चाहे जो हो, उसी c से चलती है, अतः तरंगदैर्ध्य और आवृत्ति एक ही बात कहने के दो तरीक़े हैं। (1.8 भाग देने के बजाय गुणा कर देता है; 2 अनुपात उलट देता है।)",
+        mr: "λ = c/f = (3 × 10⁸)/(6 × 10⁸) = 3/6 = 0.5 m. दहाच्या घाती कापल्या जातात, आणि गणकयंत्र उचलण्याआधी हे लक्षात घेण्याजोगे. निर्वातात प्रत्येक विद्युतचुंबकीय लहर वारंवारता कोणतीही असो, त्याच c ने जाते, म्हणून तरंगलांबी आणि वारंवारता एकच गोष्ट सांगण्याचे दोन मार्ग आहेत. (1.8 भागण्याऐवजी गुणते; 2 गुणोत्तर उलटवते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "How many seconds does light take to travel 9 × 10⁸ m in vacuum? Take c = 3 × 10⁸ m/s.",
+        hi: "निर्वात में 9 × 10⁸ m चलने में प्रकाश कितने सेकंड लेता है? c = 3 × 10⁸ m/s लो।",
+        mr: "निर्वातात 9 × 10⁸ m जाण्यास प्रकाश किती सेकंद घेतो? c = 3 × 10⁸ m/s घ्या.",
+      },
+      answer: 3,
+      wrong: [0.33, 27, 2.7],
+      checkExpr: "9/3",
+      solution: {
+        en: "t = d/c = (9 × 10⁸)/(3 × 10⁸) = 9/3 = 3 s. For scale, light takes about 1.3 s to reach us from the Moon and about 500 s from the Sun, so a three-second journey is roughly twice the Earth–Moon distance. (0.33 inverts the division; 27 multiplies.)",
+        hi: "t = d/c = (9 × 10⁸)/(3 × 10⁸) = 9/3 = 3 s. पैमाने के लिए, प्रकाश चंद्रमा से हम तक लगभग 1.3 s और सूर्य से लगभग 500 s लेता है, अतः तीन सेकंड की यात्रा मोटे तौर पर पृथ्वी-चंद्रमा दूरी की दुगुनी है। (0.33 भाग उलट देता है; 27 गुणा कर देता है।)",
+        mr: "t = d/c = (9 × 10⁸)/(3 × 10⁸) = 9/3 = 3 s. मापासाठी, प्रकाश चंद्रापासून आपल्यापर्यंत सुमारे 1.3 s आणि सूर्यापासून सुमारे 500 s घेतो, म्हणून तीन सेकंदांचा प्रवास ढोबळमानाने पृथ्वी-चंद्र अंतराच्या दुप्पट आहे. (0.33 भागाकार उलटवते; 27 गुणते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "The electric field amplitude of an electromagnetic wave in vacuum is 60 V/m. What is the magnetic field amplitude, in nT? Take c = 3 × 10⁸ m/s.",
+        hi: "निर्वात में एक वैद्युतचुंबकीय तरंग का विद्युत क्षेत्र आयाम 60 V/m है। चुंबकीय क्षेत्र आयाम, nT में, क्या है? c = 3 × 10⁸ m/s लो।",
+        mr: "निर्वातात एका विद्युतचुंबकीय लहरीचे विद्युत क्षेत्र आयाम 60 V/m आहे. चुंबकीय क्षेत्र आयाम, nT मध्ये, किती? c = 3 × 10⁸ m/s घ्या.",
+      },
+      answer: 200,
+      wrong: [20, 180, 2],
+      checkExpr: "60/3*10",
+      solution: {
+        en: "B₀ = E₀/c = 60/(3 × 10⁸) = 20 × 10⁻⁸ T = 2 × 10⁻⁷ T. One nanotesla is 10⁻⁹ T, so that is 60/3 × 10 = 200 nT. The magnetic amplitude looks tiny only because of the units: the two fields carry equal energy densities in the wave, and neither is the junior partner. (20 stops before converting to nanotesla; 180 multiplies by 3 instead of dividing.)",
+        hi: "B₀ = E₀/c = 60/(3 × 10⁸) = 20 × 10⁻⁸ T = 2 × 10⁻⁷ T. एक नैनोटेस्ला 10⁻⁹ T है, अतः वह 60/3 × 10 = 200 nT है। चुंबकीय आयाम केवल मात्रकों के कारण नन्हा दिखता है: तरंग में दोनों क्षेत्र बराबर ऊर्जा घनत्व ढोते हैं, और कोई भी कनिष्ठ साझीदार नहीं। (20 नैनोटेस्ला में बदलने से पहले रुक जाता है; 180 भाग देने के बजाय 3 से गुणा कर देता है।)",
+        mr: "B₀ = E₀/c = 60/(3 × 10⁸) = 20 × 10⁻⁸ T = 2 × 10⁻⁷ T. एक नॅनोटेस्ला म्हणजे 10⁻⁹ T, म्हणून ते 60/3 × 10 = 200 nT आहे. चुंबकीय आयाम केवळ एककांमुळे चिमुकला दिसतो: लहरीत दोन्ही क्षेत्रे समान ऊर्जा घनता वाहतात, आणि कोणीही कनिष्ठ भागीदार नाही. (20 नॅनोटेस्लात बदलण्याआधी थांबते; 180 भागण्याऐवजी 3 ने गुणते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "The charge on a capacitor's plates grows steadily from 2 mC to 8 mC in 3 s. What is the displacement current between the plates, in mA?",
+        hi: "संधारित्र की प्लेटों पर आवेश 3 s में 2 mC से बढ़कर स्थिर दर से 8 mC हो जाता है। प्लेटों के बीच विस्थापन धारा, mA में, क्या है?",
+        mr: "धारित्राच्या पट्ट्यांवरील प्रभार 3 s मध्ये 2 mC वरून स्थिर गतीने वाढून 8 mC होतो. पट्ट्यांमधली विस्थापन धारा, mA मध्ये, किती?",
+      },
+      answer: 2,
+      wrong: [6, 3, 10],
+      checkExpr: "(8-2)/3",
+      solution: {
+        en: "Between the plates the displacement current ε₀ dΦ_E/dt works out to exactly dq/dt, the rate at which charge is arriving on the plates: (8 − 2)/3 = 2 mA. That it equals the conduction current in the wire is not a coincidence but the reason the term was invented — it is what makes Ampère's law give the same answer whichever surface is chosen. Note that no charge crosses the gap at all. (6 quotes the change in charge without dividing by the time.)",
+        hi: "प्लेटों के बीच विस्थापन धारा ε₀ dΦ_E/dt ठीक dq/dt निकलती है, अर्थात् वह दर जिससे आवेश प्लेटों पर पहुँच रहा है: (8 − 2)/3 = 2 mA. उसका तार की चालन धारा के बराबर होना संयोग नहीं बल्कि उसी कारण से है जिसके लिए वह पद गढ़ा गया — वही ऐम्पियर के नियम को कोई भी पृष्ठ चुनने पर एक ही उत्तर दिलवाता है। ध्यान दो कि दरार को कोई आवेश पार करता ही नहीं। (6 आवेश का परिवर्तन बता देता है और समय से भाग नहीं देता।)",
+        mr: "पट्ट्यांमध्ये विस्थापन धारा ε₀ dΦ_E/dt नेमकी dq/dt निघते, म्हणजे ती गती जिने प्रभार पट्ट्यांवर पोहोचत आहे: (8 − 2)/3 = 2 mA. ती तारेतील वहन धारेइतकी असणे हा योगायोग नसून त्याच कारणाने आहे ज्यासाठी ते पद घडवले — तेच अँपिअरच्या नियमाला कोणतेही पृष्ठ निवडले तरी एकच उत्तर देववते. लक्षात घ्या की फट कोणताही प्रभार ओलांडतच नाही. (6 प्रभारातील बदल सांगते आणि काळाने भागत नाही.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "Light of wavelength 600 nm travels in vacuum. What is its frequency, in units of 10¹⁴ Hz? Take c = 3 × 10⁸ m/s.",
+        hi: "600 nm तरंगदैर्ध्य का प्रकाश निर्वात में चलता है। उसकी आवृत्ति, 10¹⁴ Hz की इकाइयों में, क्या है? c = 3 × 10⁸ m/s लो।",
+        mr: "600 nm तरंगलांबीचा प्रकाश निर्वातात जातो. त्याची वारंवारता, 10¹⁴ Hz च्या एककांत, किती? c = 3 × 10⁸ m/s घ्या.",
+      },
+      answer: 5,
+      wrong: [2, 18, 0.5],
+      checkExpr: "3/0.6",
+      solution: {
+        en: "f = c/λ = (3 × 10⁸)/(600 × 10⁻⁹) = (3 × 10⁸)/(6 × 10⁻⁷) = 3/0.6 × 10¹⁴ = 5 × 10¹⁴ Hz. Converting the nanometres to metres before dividing is where the exponent arithmetic has to be done carefully, and it is the one step this question exists to drill. Orange light at this frequency sits comfortably inside the visible band. (18 multiplies instead of dividing; 0.5 slips the decimal by a factor of ten.)",
+        hi: "f = c/λ = (3 × 10⁸)/(600 × 10⁻⁹) = (3 × 10⁸)/(6 × 10⁻⁷) = 3/0.6 × 10¹⁴ = 5 × 10¹⁴ Hz. भाग देने से पहले नैनोमीटर को मीटर में बदलना ही वह जगह है जहाँ घातांक का गणित ध्यान से करना पड़ता है, और यह प्रश्न उसी एक चरण का अभ्यास कराने को है। इस आवृत्ति का नारंगी प्रकाश दृश्य पट्टी के भीतर आराम से बैठता है। (18 भाग देने के बजाय गुणा कर देता है; 0.5 में दशमलव दस के गुणक से खिसक जाता है।)",
+        mr: "f = c/λ = (3 × 10⁸)/(600 × 10⁻⁹) = (3 × 10⁸)/(6 × 10⁻⁷) = 3/0.6 × 10¹⁴ = 5 × 10¹⁴ Hz. भागण्याआधी नॅनोमीटरचे मीटरमध्ये रूपांतर करणे हीच ती जागा जिथे घातांकाचे गणित काळजीपूर्वक करावे लागते, आणि हा प्रश्न त्याच एका पायरीचा सराव देण्यासाठी आहे. या वारंवारतेचा नारिंगी प्रकाश दृश्य पट्ट्याच्या आत आरामात बसतो. (18 भागण्याऐवजी गुणते; 0.5 मध्ये दशांश दहाच्या पटीने सरकतो.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "The total average energy density of an electromagnetic wave is 8 × 10⁻⁹ J/m³. What is the part carried by the electric field, in units of 10⁻⁹ J/m³?",
+        hi: "एक वैद्युतचुंबकीय तरंग का कुल औसत ऊर्जा घनत्व 8 × 10⁻⁹ J/m³ है। विद्युत क्षेत्र द्वारा ढोया गया भाग, 10⁻⁹ J/m³ की इकाइयों में, क्या है?",
+        mr: "एका विद्युतचुंबकीय लहरीची एकूण सरासरी ऊर्जा घनता 8 × 10⁻⁹ J/m³ आहे. विद्युत क्षेत्राने वाहलेला भाग, 10⁻⁹ J/m³ च्या एककांत, किती?",
+      },
+      answer: 4,
+      wrong: [8, 16, 2],
+      checkExpr: "8/2",
+      solution: {
+        en: "The two fields share the energy equally in an electromagnetic wave, so the electric part is 8/2 = 4 × 10⁻⁹ J/m³ and the magnetic part is the same. The equality is not an accident: E₀ = cB₀ is exactly the relation that makes ½ε₀E² and B²/2μ₀ come out identical. (8 gives the whole to one field; 16 doubles rather than halving.)",
+        hi: "वैद्युतचुंबकीय तरंग में दोनों क्षेत्र ऊर्जा बराबर बाँटते हैं, अतः विद्युत भाग 8/2 = 4 × 10⁻⁹ J/m³ और चुंबकीय भाग उतना ही। यह बराबरी संयोग नहीं: E₀ = cB₀ ठीक वही संबंध है जो ½ε₀E² और B²/2μ₀ को एक जैसा बना देता है। (8 पूरा एक ही क्षेत्र को दे देता है; 16 आधा करने के बजाय दुगुना कर देता है।)",
+        mr: "विद्युतचुंबकीय लहरीत दोन्ही क्षेत्रे ऊर्जा समान वाटून घेतात, म्हणून विद्युत भाग 8/2 = 4 × 10⁻⁹ J/m³ आणि चुंबकीय भाग तितकाच. ही समानता योगायोग नाही: E₀ = cB₀ हाच तो संबंध जो ½ε₀E² आणि B²/2μ₀ यांना सारखे बनवतो. (8 अख्खे एकाच क्षेत्राला देते; 16 निम्मे करण्याऐवजी दुप्पट करते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "Radiation of intensity 30 W/m² falls on a perfectly absorbing surface. What is the radiation pressure, in units of 10⁻⁸ Pa? Take c = 3 × 10⁸ m/s.",
+        hi: "30 W/m² तीव्रता का विकिरण पूर्ण अवशोषक पृष्ठ पर पड़ता है। विकिरण दाब, 10⁻⁸ Pa की इकाइयों में, क्या है? c = 3 × 10⁸ m/s लो।",
+        mr: "30 W/m² तीव्रतेचे प्रारण पूर्ण शोषक पृष्ठावर पडते. प्रारण दाब, 10⁻⁸ Pa च्या एककांत, किती? c = 3 × 10⁸ m/s घ्या.",
+      },
+      answer: 10,
+      wrong: [90, 1, 100],
+      checkExpr: "30/3",
+      solution: {
+        en: "For complete absorption p = I/c = 30/(3 × 10⁸) = 10 × 10⁻⁸ Pa. The pressure is real but minute — atmospheric pressure is about 10⁵ Pa, some twelve orders of magnitude larger — which is why it is invisible in a room and yet enough to shape a comet's tail and to drive a solar sail over months. A perfect mirror would feel twice this, since reflecting reverses the momentum instead of merely absorbing it. (90 multiplies by 3 instead of dividing.)",
+        hi: "पूर्ण अवशोषण के लिए p = I/c = 30/(3 × 10⁸) = 10 × 10⁻⁸ Pa. दाब असली पर नन्हा है — वायुमंडलीय दाब लगभग 10⁵ Pa है, क़रीब बारह कोटि बड़ा — इसीलिए वह कमरे में अदृश्य है और फिर भी धूमकेतु की पूँछ गढ़ने और महीनों में सौर पाल चलाने के लिए पर्याप्त। पूर्ण दर्पण इससे दुगुना अनुभव करता, क्योंकि परावर्तन संवेग को केवल सोखने के बजाय उलट देता है। (90 भाग देने के बजाय 3 से गुणा कर देता है।)",
+        mr: "पूर्ण शोषणासाठी p = I/c = 30/(3 × 10⁸) = 10 × 10⁻⁸ Pa. दाब खरा पण चिमुकला आहे — वातावरणीय दाब सुमारे 10⁵ Pa आहे, जवळपास बारा कोटी मोठा — म्हणूनच तो खोलीत अदृश्य आहे आणि तरीही धूमकेतूची शेपटी घडवायला आणि महिन्यांत सौर शीड चालवायला पुरेसा. पूर्ण आरसा याहून दुप्पट अनुभवेल, कारण परावर्तन संवेग केवळ शोषण्याऐवजी उलटवते. (90 भागण्याऐवजी 3 ने गुणते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A radio station broadcasts at 100 MHz. What is the wavelength of its signal, in m? Take c = 3 × 10⁸ m/s.",
+        hi: "एक रेडियो स्टेशन 100 MHz पर प्रसारण करता है। उसके संकेत की तरंगदैर्ध्य, m में, क्या है? c = 3 × 10⁸ m/s लो।",
+        mr: "एक रेडिओ केंद्र 100 MHz वर प्रक्षेपण करते. त्याच्या संकेताची तरंगलांबी, m मध्ये, किती? c = 3 × 10⁸ m/s घ्या.",
+      },
+      answer: 3,
+      wrong: [0.33, 30, 3000],
+      checkExpr: "300/100",
+      solution: {
+        en: "λ = c/f = (3 × 10⁸)/(100 × 10⁶) = 300/100 = 3 m. The shortcut worth remembering is that λ in metres equals 300 divided by the frequency in MHz. A metre or two is also the useful length for an antenna, since an aerial works best when it is a simple fraction of a wavelength — which is why FM aerials are about the size of a car and long-wave ones are the size of a field. (0.33 inverts the ratio; 30 misplaces the exponent by one.)",
+        hi: "λ = c/f = (3 × 10⁸)/(100 × 10⁶) = 300/100 = 3 m. याद रखने लायक़ छोटा रास्ता यह कि मीटर में λ, MHz में आवृत्ति से 300 भाग देकर मिलता है। एक-दो मीटर एंटीना के लिए भी काम की लंबाई है, क्योंकि एरियल तभी सबसे अच्छा चलता है जब वह तरंगदैर्ध्य का सरल अंश हो — इसीलिए FM एरियल कार जितने और लंबी-तरंग वाले खेत जितने होते हैं। (0.33 अनुपात उलट देता है; 30 घातांक एक से चूक जाता है।)",
+        mr: "λ = c/f = (3 × 10⁸)/(100 × 10⁶) = 300/100 = 3 m. लक्षात ठेवण्याजोगा शॉर्टकट असा की मीटरमधली λ म्हणजे MHz मधल्या वारंवारतेने 300 भागिले. एक-दोन मीटर ही अँटेनासाठीही उपयुक्त लांबी आहे, कारण एरियल तेव्हाच सर्वांत चांगले चालते जेव्हा ते तरंगलांबीचा साधा अंश असेल — म्हणूनच FM एरियल गाडीएवढे आणि लांब-लहरीचे शेताएवढे असतात. (0.33 गुणोत्तर उलटवते; 30 घातांक एकाने चुकवते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "Gamma rays of wavelength 10⁻¹² m and radio waves of wavelength 10³ m are compared. The gamma frequency is larger by a factor of 10ⁿ. What is n?",
+        hi: "10⁻¹² m तरंगदैर्ध्य की गामा किरणों और 10³ m तरंगदैर्ध्य की रेडियो तरंगों की तुलना की जाती है। गामा की आवृत्ति 10ⁿ गुणक से बड़ी है। n क्या है?",
+        mr: "10⁻¹² m तरंगलांबीची गॅमा किरणे आणि 10³ m तरंगलांबीच्या रेडिओ लहरी यांची तुलना केली जाते. गॅमाची वारंवारता 10ⁿ पटीने मोठी आहे. n किती?",
+      },
+      answer: 15,
+      wrong: [9, 12, 1000],
+      checkExpr: "3+12",
+      solution: {
+        en: "Both travel at c, so f is inversely proportional to λ and the frequency ratio is the reciprocal of the wavelength ratio: 10³/10⁻¹² = 10¹⁵, giving n = 3 + 12 = 15. Subtracting a negative exponent is the step where signs go wrong, and it is worth writing out rather than doing in the head. Fifteen orders of magnitude is the whole span of the spectrum, and the two ends are the same kind of wave differing in nothing but this number — which is why the ordering, and not the names, is what explains their behaviour. (12 drops the radio wave's exponent; 9 subtracts where it should add.)",
+        hi: "दोनों c से चलती हैं, अतः f, λ के व्युत्क्रमानुपाती है और आवृत्ति का अनुपात तरंगदैर्ध्य के अनुपात का व्युत्क्रम है: 10³/10⁻¹² = 10¹⁵, जिससे n = 3 + 12 = 15. ऋण घातांक घटाना वही चरण है जहाँ चिह्न बिगड़ते हैं, और उसे मन में करने के बजाय लिखकर करना चाहिए। पंद्रह कोटियाँ पूरे स्पेक्ट्रम का विस्तार हैं, और दोनों सिरे एक ही क़िस्म की तरंग हैं जो इस संख्या के सिवा किसी बात में भिन्न नहीं — इसीलिए उनका आचरण नाम नहीं बल्कि वह क्रम समझाता है। (12 रेडियो तरंग का घातांक छोड़ देता है; 9 वहाँ घटा देता है जहाँ जोड़ना था।)",
+        mr: "दोन्ही c ने जातात, म्हणून f हा λ शी व्यस्त समानुपाती आहे आणि वारंवारतेचे गुणोत्तर तरंगलांबीच्या गुणोत्तराचा व्यस्तांक आहे: 10³/10⁻¹² = 10¹⁵, ज्यातून n = 3 + 12 = 15. ऋण घातांक वजा करणे हीच ती पायरी जिथे चिन्हे बिघडतात, आणि ती मनात करण्याऐवजी लिहून करावी. पंधरा कोटी हा अख्ख्या वर्णपटाचा विस्तार आहे, आणि दोन्ही टोके एकाच प्रकारची लहर आहेत जी या संख्येखेरीज कशातही वेगळी नाही — म्हणूनच त्यांचे वर्तन नावे नव्हे तर तो क्रमच समजावतो. (12 रेडिओ लहरीचा घातांक गाळते; 9 जिथे जोडायचे तिथे वजा करते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "A microwave oven operates at about 2.5 GHz. What is the wavelength of the radiation inside it, in cm? Take c = 3 × 10⁸ m/s.",
+        hi: "एक सूक्ष्म तरंग चूल्हा लगभग 2.5 GHz पर चलता है। उसके भीतर विकिरण की तरंगदैर्ध्य, cm में, क्या है? c = 3 × 10⁸ m/s लो।",
+        mr: "एक सूक्ष्म लहरी शेगडी सुमारे 2.5 GHz वर चालते. तिच्या आत प्रारणाची तरंगलांबी, cm मध्ये, किती? c = 3 × 10⁸ m/s घ्या.",
+      },
+      answer: 12,
+      wrong: [1.2, 120, 8.33],
+      checkExpr: "30/2.5",
+      solution: {
+        en: "λ = c/f = (3 × 10⁸)/(2.5 × 10⁹) = 0.12 m, which is 30/2.5 = 12 cm. Two consequences follow from that number and are worth carrying. First, the oven cavity is only a few wavelengths across, so a standing-wave pattern forms with real nodes inside the food — which is exactly what the turntable exists to defeat, and why an oven without one leaves cold patches at fixed positions. Second, this frequency is not a resonance of the water molecule, a claim repeated everywhere and false: it was chosen partly because absorption is broad and gentle enough to heat food through rather than only at the surface. (1.2 misplaces the exponent by one; 8.33 inverts the division.)",
+        hi: "λ = c/f = (3 × 10⁸)/(2.5 × 10⁹) = 0.12 m, अर्थात् 30/2.5 = 12 cm. उस संख्या से दो परिणाम निकलते हैं जिन्हें साथ ले जाना चाहिए। पहला, चूल्हे की गुहा आर-पार कुछ ही तरंगदैर्ध्य चौड़ी है, अतः भोजन के भीतर असली निस्पंदों के साथ अप्रगामी तरंग का प्रतिरूप बनता है — घूमने वाली तश्तरी ठीक इसी को हराने के लिए है, और इसीलिए उसके बिना चूल्हा नियत जगहों पर ठंडे टुकड़े छोड़ देता है। दूसरा, यह आवृत्ति जल अणु का अनुनाद नहीं है, जो दावा सब जगह दोहराया जाता है और झूठा है: वह आंशिक रूप से इसलिए चुनी गई कि अवशोषण इतना चौड़ा और हल्का है कि भोजन केवल सतह पर नहीं बल्कि आर-पार गर्म हो। (1.2 घातांक एक से चूक जाता है; 8.33 भाग उलट देता है।)",
+        mr: "λ = c/f = (3 × 10⁸)/(2.5 × 10⁹) = 0.12 m, म्हणजे 30/2.5 = 12 cm. त्या आकड्यातून दोन परिणाम निघतात जे सोबत न्यायला हवेत. पहिला, शेगडीची पोकळी आरपार काहीच तरंगलांबी रुंद आहे, म्हणून अन्नाच्या आत खऱ्या निस्पंदांसह अप्रगामी लहरीचा नमुना तयार होतो — फिरणारी तबकडी नेमकी हेच हरवण्यासाठी आहे, आणि म्हणूनच तिच्याविना शेगडी ठराविक जागी थंड तुकडे सोडते. दुसरा, ही वारंवारता पाण्याच्या रेणूचा अनुनाद नाही, हा दावा सर्वत्र पुन्हा पुन्हा केला जातो आणि खोटा आहे: ती अंशतः यासाठी निवडली गेली की शोषण इतके रुंद आणि सौम्य आहे की अन्न केवळ पृष्ठभागावर नव्हे तर आरपार तापावे. (1.2 घातांक एकाने चुकवते; 8.33 भागाकार उलटवते.)",
       },
     },
   ],

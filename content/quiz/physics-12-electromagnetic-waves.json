@@ -1,0 +1,1003 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 12,
+  "chapter": "Chapter 8 — Electromagnetic Waves",
+  "name": "Electromagnetic Waves",
+  "slug": "physics-12-electromagnetic-waves",
+  "summary": "A gap in a law found by taking two different surfaces with the same rim and getting two different answers, mended by admitting that a changing electric field does everything a current does; the consequence that a changing field of either kind makes the other, so the pair can leave their source behind and travel with nothing to travel in; a speed that drops out of two constants measured in a laboratory with no light involved, and matches the measured speed of light closely enough to settle what light is; and one continuous family of such waves, differing in nothing but frequency, whose ends are so unlike in what they do to a body that only the ordering makes sense of it.",
+  "position": 8,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "वैद्युतचुंबकीय तरंगें",
+      "summary": "एक नियम में वह छेद जो एक ही किनारे वाले दो भिन्न पृष्ठ लेकर दो भिन्न उत्तर पाने से मिला, और यह मानकर भरा गया कि बदलता विद्युत क्षेत्र वह सब करता है जो धारा करती है; उसका परिणाम यह कि किसी भी क़िस्म का बदलता क्षेत्र दूसरे को बनाता है, अतः युग्म अपने स्रोत को पीछे छोड़ सकता है और बिना किसी माध्यम के चल सकता है; वह चाल जो प्रयोगशाला में बिना किसी प्रकाश के नापे गए दो स्थिरांकों से निकल आती है, और प्रकाश की नापी गई चाल से इतनी मिलती है कि यह तय हो जाए कि प्रकाश है क्या; और ऐसी तरंगों का एक सतत कुल, जो आवृत्ति के सिवा किसी बात में भिन्न नहीं, और जिसके दोनों सिरे शरीर के साथ जो करते हैं उसमें इतने असमान हैं कि केवल वह क्रम ही उसे समझाता है।"
+    },
+    "mr": {
+      "name": "विद्युतचुंबकीय लहरी",
+      "summary": "एका नियमातले ते छिद्र जे एकाच कडेची दोन वेगळी पृष्ठे घेऊन दोन वेगळी उत्तरे मिळवण्याने सापडले, आणि हे मान्य करून भरले गेले की बदलते विद्युत क्षेत्र ते सर्व करते जे धारा करते; त्याचा परिणाम असा की कोणत्याही प्रकारचे बदलते क्षेत्र दुसरे बनवते, म्हणून जोडी आपला स्रोत मागे सोडू शकते आणि कशातही न प्रवास करता प्रवास करू शकते; तो वेग जो प्रयोगशाळेत कोणत्याही प्रकाशाविना मोजलेल्या दोन स्थिरांकांतून निघतो, आणि प्रकाशाच्या मोजलेल्या वेगाशी इतका जुळतो की प्रकाश काय आहे हे ठरावे; आणि अशा लहरींचे एक सलग कुळ, जे वारंवारतेखेरीज कशातही वेगळे नाही, आणि ज्याची दोन टोके शरीराशी जे करतात त्यात इतकी असमान आहेत की केवळ तो क्रमच त्याचा अर्थ लावतो."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "No charge crosses the gap between a charging capacitor's plates, yet the magnetic field around the gap is exactly what a continuing current would produce, so a term proportional to the rate of change of the electric field had to be added. What is that term called?",
+      "choices": [
+        "Microwaves",
+        "The speed built from ε₀ and μ₀",
+        "Displacement current",
+        "The nature of an electromagnetic wave"
+      ],
+      "answerIndex": 2,
+      "solution": "Displacement current is ε₀ dΦ_E/dt, the term Maxwell added to Ampère's law so that a changing electric field produces a magnetic field exactly as a conduction current does. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "आवेशित होते संधारित्र की प्लेटों के बीच की दरार को कोई आवेश पार नहीं करता, फिर भी दरार के चारों ओर चुंबकीय क्षेत्र ठीक वही है जो चलती रहती धारा देती, अतः विद्युत क्षेत्र के परिवर्तन की दर के समानुपाती एक पद जोड़ना पड़ा। उस पद को क्या कहते हैं?",
+          "choices": [
+            "सूक्ष्म तरंगें",
+            "ε₀ और μ₀ से बनी चाल",
+            "विस्थापन धारा",
+            "वैद्युतचुंबकीय तरंग की प्रकृति"
+          ],
+          "solution": "विस्थापन धारा ε₀ dΦ_E/dt है, वह पद जो मैक्सवेल ने ऐम्पियर के नियम में जोड़ा ताकि बदलता विद्युत क्षेत्र ठीक उसी तरह चुंबकीय क्षेत्र बनाए जैसे चालन धारा बनाती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "प्रभारित होणाऱ्या धारित्राच्या पट्ट्यांमधली फट कोणताही प्रभार ओलांडत नाही, तरीही फटीभोवतीचे चुंबकीय क्षेत्र नेमके तेच आहे जे चालू राहणारी धारा देईल, म्हणून विद्युत क्षेत्राच्या बदलाच्या गतीशी समानुपाती एक पद जोडावे लागले. त्या पदाला काय म्हणतात?",
+          "choices": [
+            "सूक्ष्म लहरी",
+            "ε₀ आणि μ₀ पासून बनलेला वेग",
+            "विस्थापन धारा",
+            "विद्युतचुंबकीय लहरीचे स्वरूप"
+          ],
+          "solution": "विस्थापन धारा म्हणजे ε₀ dΦ_E/dt, ते पद जे मॅक्सवेलने अँपिअरच्या नियमात जोडले जेणेकरून बदलते विद्युत क्षेत्र नेमके तसेच चुंबकीय क्षेत्र बनवेल जसे वहन धारा बनवते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The nature of an electromagnetic wave is correct?",
+      "choices": [
+        "The speed built from ε₀ and μ₀ is c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s, the speed Maxwell's equations require of an electromagnetic wave in vacuum.",
+        "Infrared radiation lies just beyond the red end of the visible band, is emitted by every warm body, and is absorbed by the vibrational modes of molecules rather than by their electrons.",
+        "An electromagnetic wave is a transverse wave in which E and B oscillate in phase, perpendicular to each other and to the direction of propagation, and it requires no material medium.",
+        "Displacement current is ε₀ dΦ_E/dt, the term Maxwell added to Ampère's law so that a changing electric field produces a magnetic field exactly as a conduction current does."
+      ],
+      "answerIndex": 2,
+      "solution": "An electromagnetic wave is a transverse wave in which E and B oscillate in phase, perpendicular to each other and to the direction of propagation, and it requires no material medium. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "वैद्युतचुंबकीय तरंग की प्रकृति के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "ε₀ और μ₀ से बनी चाल c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s है, वही चाल जो मैक्सवेल के समीकरण निर्वात में वैद्युतचुंबकीय तरंग से माँगते हैं।",
+            "अवरक्त विकिरण दृश्य पट्टी के लाल सिरे के ठीक आगे पड़ता है, हर गर्म पिंड से निकलता है, और अणुओं के इलेक्ट्रॉनों से नहीं बल्कि उनके कंपन-रूपों से अवशोषित होता है।",
+            "वैद्युतचुंबकीय तरंग वह अनुप्रस्थ तरंग है जिसमें E और B एक ही कला में, आपस में और संचरण की दिशा के लंबवत दोलन करते हैं, और उसे किसी भौतिक माध्यम की ज़रूरत नहीं।",
+            "विस्थापन धारा ε₀ dΦ_E/dt है, वह पद जो मैक्सवेल ने ऐम्पियर के नियम में जोड़ा ताकि बदलता विद्युत क्षेत्र ठीक उसी तरह चुंबकीय क्षेत्र बनाए जैसे चालन धारा बनाती है।"
+          ],
+          "solution": "वैद्युतचुंबकीय तरंग वह अनुप्रस्थ तरंग है जिसमें E और B एक ही कला में, आपस में और संचरण की दिशा के लंबवत दोलन करते हैं, और उसे किसी भौतिक माध्यम की ज़रूरत नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "विद्युतचुंबकीय लहरीचे स्वरूप विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "ε₀ आणि μ₀ पासून बनलेला वेग म्हणजे c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s, तोच वेग जो मॅक्सवेलची समीकरणे निर्वातात विद्युतचुंबकीय लहरीकडून मागतात.",
+            "अवरक्त प्रारण दृश्य पट्ट्याच्या लाल टोकाच्या अगदी पुढे असते, प्रत्येक उबदार पदार्थातून निघते, आणि रेणूंच्या इलेक्ट्रॉनांकडून नव्हे तर त्यांच्या कंपन-रूपांकडून शोषले जाते.",
+            "विद्युतचुंबकीय लहर ही अशी अनुप्रस्थ लहर आहे जिच्यात E आणि B एकाच कलेत, एकमेकांना आणि संचरणाच्या दिशेला लंब दोलन करतात, आणि तिला कोणत्याही भौतिक माध्यमाची गरज नाही.",
+            "विस्थापन धारा म्हणजे ε₀ dΦ_E/dt, ते पद जे मॅक्सवेलने अँपिअरच्या नियमात जोडले जेणेकरून बदलते विद्युत क्षेत्र नेमके तसेच चुंबकीय क्षेत्र बनवेल जसे वहन धारा बनवते."
+          ],
+          "solution": "विद्युतचुंबकीय लहर ही अशी अनुप्रस्थ लहर आहे जिच्यात E आणि B एकाच कलेत, एकमेकांना आणि संचरणाच्या दिशेला लंब दोलन करतात, आणि तिला कोणत्याही भौतिक माध्यमाची गरज नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The agreement was the argument: neither constant has anything to do with light, so the match was strong evidence that light IS an electromagnetic wave rather than a separate phenomenon.\" — which of these is this about?",
+      "choices": [
+        "Ultraviolet radiation",
+        "The speed built from ε₀ and μ₀",
+        "Displacement current",
+        "The nature of an electromagnetic wave"
+      ],
+      "answerIndex": 1,
+      "solution": "The speed built from ε₀ and μ₀ is c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s, the speed Maxwell's equations require of an electromagnetic wave in vacuum. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"मिलान ही तर्क था: किसी भी स्थिरांक का प्रकाश से कोई लेना-देना नहीं, अतः वह मेल इस बात का प्रबल प्रमाण था कि प्रकाश कोई अलग परिघटना नहीं बल्कि वैद्युतचुंबकीय तरंग ही है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "पराबैंगनी विकिरण",
+            "ε₀ और μ₀ से बनी चाल",
+            "विस्थापन धारा",
+            "वैद्युतचुंबकीय तरंग की प्रकृति"
+          ],
+          "solution": "ε₀ और μ₀ से बनी चाल c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s है, वही चाल जो मैक्सवेल के समीकरण निर्वात में वैद्युतचुंबकीय तरंग से माँगते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"जुळणे हाच युक्तिवाद होता: कोणत्याही स्थिरांकाचा प्रकाशाशी काहीही संबंध नाही, म्हणून ते जुळणे हा प्रकाश ही वेगळी घटना नसून विद्युतचुंबकीय लहरच आहे याचा भक्कम पुरावा होता.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "अतिनील प्रारण",
+            "ε₀ आणि μ₀ पासून बनलेला वेग",
+            "विस्थापन धारा",
+            "विद्युतचुंबकीय लहरीचे स्वरूप"
+          ],
+          "solution": "ε₀ आणि μ₀ पासून बनलेला वेग म्हणजे c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s, तोच वेग जो मॅक्सवेलची समीकरणे निर्वातात विद्युतचुंबकीय लहरीकडून मागतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Wavelengths of a few centimetres, produced by klystrons and magnetrons, short enough to be aimed in a narrow beam by a dish and long enough to pass through cloud. Which region is this?",
+      "choices": [
+        "The speed built from ε₀ and μ₀",
+        "Infrared radiation",
+        "Microwaves",
+        "Ultraviolet radiation"
+      ],
+      "answerIndex": 2,
+      "solution": "Microwaves occupy wavelengths of roughly a millimetre to a metre, are generated by vacuum-tube oscillators such as the magnetron, and are used for radar, satellite links and cooking. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कुछ सेंटीमीटर की तरंगदैर्ध्य, क्लाइस्ट्रॉन और मैग्नेट्रॉन से बनी, इतनी छोटी कि तश्तरी से सँकरे पुंज में साधी जा सकें और इतनी बड़ी कि बादलों के आर-पार निकल जाएँ। यह कौन-सा भाग है?",
+          "choices": [
+            "ε₀ और μ₀ से बनी चाल",
+            "अवरक्त विकिरण",
+            "सूक्ष्म तरंगें",
+            "पराबैंगनी विकिरण"
+          ],
+          "solution": "सूक्ष्म तरंगें लगभग एक मिलीमीटर से एक मीटर तक की तरंगदैर्ध्य घेरती हैं, मैग्नेट्रॉन जैसे निर्वात-नलिका दोलकों से बनती हैं, और रडार, उपग्रह संपर्क तथा पकाने में काम आती हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "काही सेंटीमीटरच्या तरंगलांबी, क्लायस्ट्रॉन आणि मॅग्नेट्रॉनने बनवलेल्या, इतक्या लहान की तबकडीने अरुंद शलाकेत रोखता याव्यात आणि इतक्या मोठ्या की ढगांच्या आरपार जाव्यात. हा कोणता भाग?",
+          "choices": [
+            "ε₀ आणि μ₀ पासून बनलेला वेग",
+            "अवरक्त प्रारण",
+            "सूक्ष्म लहरी",
+            "अतिनील प्रारण"
+          ],
+          "solution": "सूक्ष्म लहरी साधारण एक मिलीमीटर ते एक मीटर तरंगलांबी व्यापतात, मॅग्नेट्रॉनसारख्या निर्वात-नलिका दोलकांनी बनतात, आणि रडार, उपग्रह संपर्क तसेच स्वयंपाकात वापरल्या जातात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Infrared radiation is correct?",
+      "choices": [
+        "Infrared radiation lies just beyond the red end of the visible band, is emitted by every warm body, and is absorbed by the vibrational modes of molecules rather than by their electrons.",
+        "Ultraviolet radiation lies just beyond the violet end of the visible band and carries enough energy per quantum to ionise atoms and break molecular bonds, which is why it causes sunburn and damages DNA.",
+        "Displacement current is ε₀ dΦ_E/dt, the term Maxwell added to Ampère's law so that a changing electric field produces a magnetic field exactly as a conduction current does.",
+        "Microwaves occupy wavelengths of roughly a millimetre to a metre, are generated by vacuum-tube oscillators such as the magnetron, and are used for radar, satellite links and cooking."
+      ],
+      "answerIndex": 0,
+      "solution": "Infrared radiation lies just beyond the red end of the visible band, is emitted by every warm body, and is absorbed by the vibrational modes of molecules rather than by their electrons. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अवरक्त विकिरण के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "अवरक्त विकिरण दृश्य पट्टी के लाल सिरे के ठीक आगे पड़ता है, हर गर्म पिंड से निकलता है, और अणुओं के इलेक्ट्रॉनों से नहीं बल्कि उनके कंपन-रूपों से अवशोषित होता है।",
+            "पराबैंगनी विकिरण दृश्य पट्टी के बैंगनी सिरे के ठीक आगे पड़ता है और प्रति क्वांटम इतनी ऊर्जा ढोता है कि परमाणु आयनित हों और आणविक बंध टूटें, इसीलिए वह धूप से जलन देता है और DNA को नुक़सान पहुँचाता है।",
+            "विस्थापन धारा ε₀ dΦ_E/dt है, वह पद जो मैक्सवेल ने ऐम्पियर के नियम में जोड़ा ताकि बदलता विद्युत क्षेत्र ठीक उसी तरह चुंबकीय क्षेत्र बनाए जैसे चालन धारा बनाती है।",
+            "सूक्ष्म तरंगें लगभग एक मिलीमीटर से एक मीटर तक की तरंगदैर्ध्य घेरती हैं, मैग्नेट्रॉन जैसे निर्वात-नलिका दोलकों से बनती हैं, और रडार, उपग्रह संपर्क तथा पकाने में काम आती हैं।"
+          ],
+          "solution": "अवरक्त विकिरण दृश्य पट्टी के लाल सिरे के ठीक आगे पड़ता है, हर गर्म पिंड से निकलता है, और अणुओं के इलेक्ट्रॉनों से नहीं बल्कि उनके कंपन-रूपों से अवशोषित होता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "अवरक्त प्रारण विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "अवरक्त प्रारण दृश्य पट्ट्याच्या लाल टोकाच्या अगदी पुढे असते, प्रत्येक उबदार पदार्थातून निघते, आणि रेणूंच्या इलेक्ट्रॉनांकडून नव्हे तर त्यांच्या कंपन-रूपांकडून शोषले जाते.",
+            "अतिनील प्रारण दृश्य पट्ट्याच्या जांभळ्या टोकाच्या अगदी पुढे असते आणि प्रति पुंज इतकी ऊर्जा वाहते की अणू आयनित व्हावेत आणि रेणवीय बंध तुटावेत, म्हणूनच ते उन्हाने भाजते आणि DNA ला हानी पोहोचवते.",
+            "विस्थापन धारा म्हणजे ε₀ dΦ_E/dt, ते पद जे मॅक्सवेलने अँपिअरच्या नियमात जोडले जेणेकरून बदलते विद्युत क्षेत्र नेमके तसेच चुंबकीय क्षेत्र बनवेल जसे वहन धारा बनवते.",
+            "सूक्ष्म लहरी साधारण एक मिलीमीटर ते एक मीटर तरंगलांबी व्यापतात, मॅग्नेट्रॉनसारख्या निर्वात-नलिका दोलकांनी बनतात, आणि रडार, उपग्रह संपर्क तसेच स्वयंपाकात वापरल्या जातात."
+          ],
+          "solution": "अवरक्त प्रारण दृश्य पट्ट्याच्या लाल टोकाच्या अगदी पुढे असते, प्रत्येक उबदार पदार्थातून निघते, आणि रेणूंच्या इलेक्ट्रॉनांकडून नव्हे तर त्यांच्या कंपन-रूपांकडून शोषले जाते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The ozone layer absorbs most of it before it reaches the ground, which is why a hole in that layer is a health question and not merely an atmospheric curiosity.\" — which of these is this about?",
+      "choices": [
+        "The speed built from ε₀ and μ₀",
+        "Microwaves",
+        "Ultraviolet radiation",
+        "Infrared radiation"
+      ],
+      "answerIndex": 2,
+      "solution": "Ultraviolet radiation lies just beyond the violet end of the visible band and carries enough energy per quantum to ionise atoms and break molecular bonds, which is why it causes sunburn and damages DNA. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ओज़ोन परत उसका अधिकांश भाग ज़मीन तक पहुँचने से पहले सोख लेती है, इसीलिए उस परत में छेद स्वास्थ्य का प्रश्न है, केवल वायुमंडलीय कौतुक नहीं।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "ε₀ और μ₀ से बनी चाल",
+            "सूक्ष्म तरंगें",
+            "पराबैंगनी विकिरण",
+            "अवरक्त विकिरण"
+          ],
+          "solution": "पराबैंगनी विकिरण दृश्य पट्टी के बैंगनी सिरे के ठीक आगे पड़ता है और प्रति क्वांटम इतनी ऊर्जा ढोता है कि परमाणु आयनित हों और आणविक बंध टूटें, इसीलिए वह धूप से जलन देता है और DNA को नुक़सान पहुँचाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ओझोन थर त्याचा बहुतांश भाग जमिनीपर्यंत पोहोचण्याआधी शोषून घेतो, म्हणूनच त्या थरातले छिद्र आरोग्याचा प्रश्न आहे, केवळ वातावरणीय कुतूहल नव्हे.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "ε₀ आणि μ₀ पासून बनलेला वेग",
+            "सूक्ष्म लहरी",
+            "अतिनील प्रारण",
+            "अवरक्त प्रारण"
+          ],
+          "solution": "अतिनील प्रारण दृश्य पट्ट्याच्या जांभळ्या टोकाच्या अगदी पुढे असते आणि प्रति पुंज इतकी ऊर्जा वाहते की अणू आयनित व्हावेत आणि रेणवीय बंध तुटावेत, म्हणूनच ते उन्हाने भाजते आणि DNA ला हानी पोहोचवते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Demanded by a contradiction, not by a measurement\" goes correctly with which of these?",
+      "choices": [
+        "the nature of an electromagnetic wave",
+        "displacement current",
+        "the speed built from ε₀ and μ₀",
+        "microwaves"
+      ],
+      "answerIndex": 1,
+      "solution": "Displacement current is ε₀ dΦ_E/dt, the term Maxwell added to Ampère's law so that a changing electric field produces a magnetic field exactly as a conduction current does. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"किसी माप ने नहीं, एक विरोधाभास ने माँगा\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "वैद्युतचुंबकीय तरंग की प्रकृति",
+            "विस्थापन धारा",
+            "ε₀ और μ₀ से बनी चाल",
+            "सूक्ष्म तरंगें"
+          ],
+          "solution": "विस्थापन धारा ε₀ dΦ_E/dt है, वह पद जो मैक्सवेल ने ऐम्पियर के नियम में जोड़ा ताकि बदलता विद्युत क्षेत्र ठीक उसी तरह चुंबकीय क्षेत्र बनाए जैसे चालन धारा बनाती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"कोणत्याही मापाने नव्हे, एका विरोधाभासाने मागितले\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "विद्युतचुंबकीय लहरीचे स्वरूप",
+            "विस्थापन धारा",
+            "ε₀ आणि μ₀ पासून बनलेला वेग",
+            "सूक्ष्म लहरी"
+          ],
+          "solution": "विस्थापन धारा म्हणजे ε₀ dΦ_E/dt, ते पद जे मॅक्सवेलने अँपिअरच्या नियमात जोडले जेणेकरून बदलते विद्युत क्षेत्र नेमके तसेच चुंबकीय क्षेत्र बनवेल जसे वहन धारा बनवते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Needs nothing to travel in\" goes correctly with which of these?",
+      "choices": [
+        "infrared radiation",
+        "the speed built from ε₀ and μ₀",
+        "the nature of an electromagnetic wave",
+        "microwaves"
+      ],
+      "answerIndex": 2,
+      "solution": "An electromagnetic wave is a transverse wave in which E and B oscillate in phase, perpendicular to each other and to the direction of propagation, and it requires no material medium. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"चलने के लिए कुछ भी नहीं चाहिए\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "अवरक्त विकिरण",
+            "ε₀ और μ₀ से बनी चाल",
+            "वैद्युतचुंबकीय तरंग की प्रकृति",
+            "सूक्ष्म तरंगें"
+          ],
+          "solution": "वैद्युतचुंबकीय तरंग वह अनुप्रस्थ तरंग है जिसमें E और B एक ही कला में, आपस में और संचरण की दिशा के लंबवत दोलन करते हैं, और उसे किसी भौतिक माध्यम की ज़रूरत नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"प्रवास करायला काहीही लागत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अवरक्त प्रारण",
+            "ε₀ आणि μ₀ पासून बनलेला वेग",
+            "विद्युतचुंबकीय लहरीचे स्वरूप",
+            "सूक्ष्म लहरी"
+          ],
+          "solution": "विद्युतचुंबकीय लहर ही अशी अनुप्रस्थ लहर आहे जिच्यात E आणि B एकाच कलेत, एकमेकांना आणि संचरणाच्या दिशेला लंब दोलन करतात, आणि तिला कोणत्याही भौतिक माध्यमाची गरज नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"No optics in either experiment, and light comes out\" goes correctly with which of these?",
+      "choices": [
+        "the nature of an electromagnetic wave",
+        "ultraviolet radiation",
+        "the speed built from ε₀ and μ₀",
+        "displacement current"
+      ],
+      "answerIndex": 2,
+      "solution": "The speed built from ε₀ and μ₀ is c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s, the speed Maxwell's equations require of an electromagnetic wave in vacuum. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"किसी भी प्रयोग में प्रकाशिकी नहीं, और प्रकाश निकल आता है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "वैद्युतचुंबकीय तरंग की प्रकृति",
+            "पराबैंगनी विकिरण",
+            "ε₀ और μ₀ से बनी चाल",
+            "विस्थापन धारा"
+          ],
+          "solution": "ε₀ और μ₀ से बनी चाल c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s है, वही चाल जो मैक्सवेल के समीकरण निर्वात में वैद्युतचुंबकीय तरंग से माँगते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"कोणत्याही प्रयोगात प्रकाशिकी नाही, आणि प्रकाश निघतो\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "विद्युतचुंबकीय लहरीचे स्वरूप",
+            "अतिनील प्रारण",
+            "ε₀ आणि μ₀ पासून बनलेला वेग",
+            "विस्थापन धारा"
+          ],
+          "solution": "ε₀ आणि μ₀ पासून बनलेला वेग म्हणजे c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s, तोच वेग जो मॅक्सवेलची समीकरणे निर्वातात विद्युतचुंबकीय लहरीकडून मागतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Aimed by a dish, and it heats water from the inside\" goes correctly with which of these?",
+      "choices": [
+        "the nature of an electromagnetic wave",
+        "ultraviolet radiation",
+        "the speed built from ε₀ and μ₀",
+        "microwaves"
+      ],
+      "answerIndex": 3,
+      "solution": "Microwaves occupy wavelengths of roughly a millimetre to a metre, are generated by vacuum-tube oscillators such as the magnetron, and are used for radar, satellite links and cooking. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"तश्तरी से साधी जाती हैं, और पानी को भीतर से गर्म करती हैं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "वैद्युतचुंबकीय तरंग की प्रकृति",
+            "पराबैंगनी विकिरण",
+            "ε₀ और μ₀ से बनी चाल",
+            "सूक्ष्म तरंगें"
+          ],
+          "solution": "सूक्ष्म तरंगें लगभग एक मिलीमीटर से एक मीटर तक की तरंगदैर्ध्य घेरती हैं, मैग्नेट्रॉन जैसे निर्वात-नलिका दोलकों से बनती हैं, और रडार, उपग्रह संपर्क तथा पकाने में काम आती हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तबकडीने रोखल्या जातात, आणि पाणी आतून तापवतात\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "विद्युतचुंबकीय लहरीचे स्वरूप",
+            "अतिनील प्रारण",
+            "ε₀ आणि μ₀ पासून बनलेला वेग",
+            "सूक्ष्म लहरी"
+          ],
+          "solution": "सूक्ष्म लहरी साधारण एक मिलीमीटर ते एक मीटर तरंगलांबी व्यापतात, मॅग्नेट्रॉनसारख्या निर्वात-नलिका दोलकांनी बनतात, आणि रडार, उपग्रह संपर्क तसेच स्वयंपाकात वापरल्या जातात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"In through the window, and it cannot get back out\" goes correctly with which of these?",
+      "choices": [
+        "ultraviolet radiation",
+        "infrared radiation",
+        "displacement current",
+        "microwaves"
+      ],
+      "answerIndex": 1,
+      "solution": "Infrared radiation lies just beyond the red end of the visible band, is emitted by every warm body, and is absorbed by the vibrational modes of molecules rather than by their electrons. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"खिड़की से भीतर, और वह बाहर लौट नहीं सकता\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "पराबैंगनी विकिरण",
+            "अवरक्त विकिरण",
+            "विस्थापन धारा",
+            "सूक्ष्म तरंगें"
+          ],
+          "solution": "अवरक्त विकिरण दृश्य पट्टी के लाल सिरे के ठीक आगे पड़ता है, हर गर्म पिंड से निकलता है, और अणुओं के इलेक्ट्रॉनों से नहीं बल्कि उनके कंपन-रूपों से अवशोषित होता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"खिडकीतून आत, आणि ते बाहेर परतू शकत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अतिनील प्रारण",
+            "अवरक्त प्रारण",
+            "विस्थापन धारा",
+            "सूक्ष्म लहरी"
+          ],
+          "solution": "अवरक्त प्रारण दृश्य पट्ट्याच्या लाल टोकाच्या अगदी पुढे असते, प्रत्येक उबदार पदार्थातून निघते, आणि रेणूंच्या इलेक्ट्रॉनांकडून नव्हे तर त्यांच्या कंपन-रूपांकडून शोषले जाते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Stopped by a car window, stopped by a layer of ozone\" goes correctly with which of these?",
+      "choices": [
+        "the speed built from ε₀ and μ₀",
+        "microwaves",
+        "ultraviolet radiation",
+        "the nature of an electromagnetic wave"
+      ],
+      "answerIndex": 2,
+      "solution": "Ultraviolet radiation lies just beyond the violet end of the visible band and carries enough energy per quantum to ionise atoms and break molecular bonds, which is why it causes sunburn and damages DNA. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"कार की खिड़की से रुका, ओज़ोन की परत से रुका\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "ε₀ और μ₀ से बनी चाल",
+            "सूक्ष्म तरंगें",
+            "पराबैंगनी विकिरण",
+            "वैद्युतचुंबकीय तरंग की प्रकृति"
+          ],
+          "solution": "पराबैंगनी विकिरण दृश्य पट्टी के बैंगनी सिरे के ठीक आगे पड़ता है और प्रति क्वांटम इतनी ऊर्जा ढोता है कि परमाणु आयनित हों और आणविक बंध टूटें, इसीलिए वह धूप से जलन देता है और DNA को नुक़सान पहुँचाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"गाडीच्या खिडकीने अडवले, ओझोनच्या थराने अडवले\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "ε₀ आणि μ₀ पासून बनलेला वेग",
+            "सूक्ष्म लहरी",
+            "अतिनील प्रारण",
+            "विद्युतचुंबकीय लहरीचे स्वरूप"
+          ],
+          "solution": "अतिनील प्रारण दृश्य पट्ट्याच्या जांभळ्या टोकाच्या अगदी पुढे असते आणि प्रति पुंज इतकी ऊर्जा वाहते की अणू आयनित व्हावेत आणि रेणवीय बंध तुटावेत, म्हणूनच ते उन्हाने भाजते आणि DNA ला हानी पोहोचवते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Displacement current EXCEPT —",
+      "choices": [
+        "The speed built from ε₀ and μ₀ is c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s, the speed Maxwell's equations require of an electromagnetic wave in vacuum.",
+        "Displacement current is ε₀ dΦ_E/dt, the term Maxwell added to Ampère's law so that a changing electric field produces a magnetic field exactly as a conduction current does.",
+        "Its real importance is not the capacitor at all but what it made possible: with this term in place a changing electric field creates a magnetic one and a changing magnetic field creates an electric one, and the pair can sustain each other indefinitely as a wave.",
+        "It was not fitted to an experiment but forced by a contradiction: Ampère's law gave two different answers for the same loop depending on which surface bounded by it was chosen."
+      ],
+      "answerIndex": 0,
+      "solution": "The speed built from ε₀ and μ₀ is c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s, the speed Maxwell's equations require of an electromagnetic wave in vacuum. That belongs to The speed built from ε₀ and μ₀, not Displacement current — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "विस्थापन धारा के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "ε₀ और μ₀ से बनी चाल c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s है, वही चाल जो मैक्सवेल के समीकरण निर्वात में वैद्युतचुंबकीय तरंग से माँगते हैं।",
+            "विस्थापन धारा ε₀ dΦ_E/dt है, वह पद जो मैक्सवेल ने ऐम्पियर के नियम में जोड़ा ताकि बदलता विद्युत क्षेत्र ठीक उसी तरह चुंबकीय क्षेत्र बनाए जैसे चालन धारा बनाती है।",
+            "इसका असली महत्त्व संधारित्र है ही नहीं बल्कि वह है जो इसने संभव किया: यह पद रखते ही बदलता विद्युत क्षेत्र चुंबकीय बनाता है और बदलता चुंबकीय विद्युत, और युग्म एक-दूसरे को तरंग के रूप में अनिश्चित काल तक बनाए रख सकता है।",
+            "यह किसी प्रयोग से नहीं मिलाया गया था बल्कि एक विरोधाभास ने इसे बाध्य किया: ऐम्पियर का नियम एक ही लूप के लिए दो भिन्न उत्तर देता था, यह इस पर निर्भर कि उससे घिरा कौन-सा पृष्ठ चुना गया।"
+          ],
+          "solution": "ε₀ और μ₀ से बनी चाल c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s है, वही चाल जो मैक्सवेल के समीकरण निर्वात में वैद्युतचुंबकीय तरंग से माँगते हैं। यह ε₀ और μ₀ से बनी चाल की बात है, विस्थापन धारा की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "विस्थापन धारा विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "ε₀ आणि μ₀ पासून बनलेला वेग म्हणजे c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s, तोच वेग जो मॅक्सवेलची समीकरणे निर्वातात विद्युतचुंबकीय लहरीकडून मागतात.",
+            "विस्थापन धारा म्हणजे ε₀ dΦ_E/dt, ते पद जे मॅक्सवेलने अँपिअरच्या नियमात जोडले जेणेकरून बदलते विद्युत क्षेत्र नेमके तसेच चुंबकीय क्षेत्र बनवेल जसे वहन धारा बनवते.",
+            "याचे खरे महत्त्व धारित्र आहेच नाही तर ते आहे जे याने शक्य केले: हे पद ठेवताच बदलते विद्युत क्षेत्र चुंबकीय बनवते आणि बदलते चुंबकीय विद्युत, आणि जोडी एकमेकांना लहर म्हणून अनिश्चित काळ टिकवू शकते.",
+            "हे कोणत्याही प्रयोगाशी जुळवले गेले नव्हते तर एका विरोधाभासाने ते भाग पाडले: अँपिअरचा नियम एकाच वळशासाठी दोन वेगळी उत्तरे देत होता, ते यावर अवलंबून की त्याने घेरलेले कोणते पृष्ठ निवडले."
+          ],
+          "solution": "ε₀ आणि μ₀ पासून बनलेला वेग म्हणजे c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s, तोच वेग जो मॅक्सवेलची समीकरणे निर्वातात विद्युतचुंबकीय लहरीकडून मागतात. हे ε₀ आणि μ₀ पासून बनलेला वेग चे आहे, विस्थापन धारा चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The nature of an electromagnetic wave EXCEPT —",
+      "choices": [
+        "The speed built from ε₀ and μ₀ is c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s, the speed Maxwell's equations require of an electromagnetic wave in vacuum.",
+        "It carries energy and momentum, so light exerts a real pressure — small enough to be ignored on a table, large enough over the area of a solar sail or the surface of a comet to be seen at work.",
+        "The two amplitudes are locked together by E₀ = cB₀, so the magnetic part looks numerically tiny in SI units and is not weak at all — the units are simply chosen so that c appears in the ratio.",
+        "An electromagnetic wave is a transverse wave in which E and B oscillate in phase, perpendicular to each other and to the direction of propagation, and it requires no material medium."
+      ],
+      "answerIndex": 0,
+      "solution": "The speed built from ε₀ and μ₀ is c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s, the speed Maxwell's equations require of an electromagnetic wave in vacuum. That belongs to The speed built from ε₀ and μ₀, not The nature of an electromagnetic wave — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "वैद्युतचुंबकीय तरंग की प्रकृति के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "ε₀ और μ₀ से बनी चाल c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s है, वही चाल जो मैक्सवेल के समीकरण निर्वात में वैद्युतचुंबकीय तरंग से माँगते हैं।",
+            "यह ऊर्जा और संवेग दोनों ढोती है, अतः प्रकाश असली दाब डालता है — मेज़ पर अनदेखा करने लायक़ छोटा, सौर पाल के क्षेत्रफल या धूमकेतु के पृष्ठ पर काम करता दिखने लायक़ बड़ा।",
+            "दोनों आयाम E₀ = cB₀ से आपस में बँधे हैं, अतः SI मात्रकों में चुंबकीय भाग संख्या में नन्हा दिखता है और वह कमज़ोर है ही नहीं — मात्रक बस ऐसे चुने गए हैं कि अनुपात में c आ जाए।",
+            "वैद्युतचुंबकीय तरंग वह अनुप्रस्थ तरंग है जिसमें E और B एक ही कला में, आपस में और संचरण की दिशा के लंबवत दोलन करते हैं, और उसे किसी भौतिक माध्यम की ज़रूरत नहीं।"
+          ],
+          "solution": "ε₀ और μ₀ से बनी चाल c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s है, वही चाल जो मैक्सवेल के समीकरण निर्वात में वैद्युतचुंबकीय तरंग से माँगते हैं। यह ε₀ और μ₀ से बनी चाल की बात है, वैद्युतचुंबकीय तरंग की प्रकृति की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "विद्युतचुंबकीय लहरीचे स्वरूप विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "ε₀ आणि μ₀ पासून बनलेला वेग म्हणजे c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s, तोच वेग जो मॅक्सवेलची समीकरणे निर्वातात विद्युतचुंबकीय लहरीकडून मागतात.",
+            "ती ऊर्जा आणि संवेग दोन्ही वाहते, म्हणून प्रकाश खरा दाब देतो — टेबलावर दुर्लक्ष करण्याइतका लहान, सौर शिडाच्या क्षेत्रफळावर वा धूमकेतूच्या पृष्ठावर काम करताना दिसण्याइतका मोठा.",
+            "दोन्ही आयाम E₀ = cB₀ ने एकमेकांशी बांधलेले आहेत, म्हणून SI एककांत चुंबकीय भाग संख्येने चिमुकला दिसतो आणि तो क्षीण आहेच नाही — एकके फक्त अशी निवडली आहेत की गुणोत्तरात c यावा.",
+            "विद्युतचुंबकीय लहर ही अशी अनुप्रस्थ लहर आहे जिच्यात E आणि B एकाच कलेत, एकमेकांना आणि संचरणाच्या दिशेला लंब दोलन करतात, आणि तिला कोणत्याही भौतिक माध्यमाची गरज नाही."
+          ],
+          "solution": "ε₀ आणि μ₀ पासून बनलेला वेग म्हणजे c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s, तोच वेग जो मॅक्सवेलची समीकरणे निर्वातात विद्युतचुंबकीय लहरीकडून मागतात. हे ε₀ आणि μ₀ पासून बनलेला वेग चे आहे, विद्युतचुंबकीय लहरीचे स्वरूप चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The speed built from ε₀ and μ₀ EXCEPT —",
+      "choices": [
+        "Displacement current is ε₀ dΦ_E/dt, the term Maxwell added to Ampère's law so that a changing electric field produces a magnetic field exactly as a conduction current does.",
+        "The agreement was the argument: neither constant has anything to do with light, so the match was strong evidence that light IS an electromagnetic wave rather than a separate phenomenon.",
+        "In a medium the speed becomes 1/√(εμ), always less than c, and the ratio of the two is exactly the refractive index that optics had been measuring for two centuries without knowing what it was.",
+        "The speed built from ε₀ and μ₀ is c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s, the speed Maxwell's equations require of an electromagnetic wave in vacuum."
+      ],
+      "answerIndex": 0,
+      "solution": "Displacement current is ε₀ dΦ_E/dt, the term Maxwell added to Ampère's law so that a changing electric field produces a magnetic field exactly as a conduction current does. That belongs to Displacement current, not The speed built from ε₀ and μ₀ — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ε₀ और μ₀ से बनी चाल के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "विस्थापन धारा ε₀ dΦ_E/dt है, वह पद जो मैक्सवेल ने ऐम्पियर के नियम में जोड़ा ताकि बदलता विद्युत क्षेत्र ठीक उसी तरह चुंबकीय क्षेत्र बनाए जैसे चालन धारा बनाती है।",
+            "मिलान ही तर्क था: किसी भी स्थिरांक का प्रकाश से कोई लेना-देना नहीं, अतः वह मेल इस बात का प्रबल प्रमाण था कि प्रकाश कोई अलग परिघटना नहीं बल्कि वैद्युतचुंबकीय तरंग ही है।",
+            "माध्यम में चाल 1/√(εμ) हो जाती है, सदा c से कम, और दोनों का अनुपात ठीक वही अपवर्तनांक है जिसे प्रकाशिकी दो सदियों से नापती आ रही थी बिना यह जाने कि वह है क्या।",
+            "ε₀ और μ₀ से बनी चाल c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s है, वही चाल जो मैक्सवेल के समीकरण निर्वात में वैद्युतचुंबकीय तरंग से माँगते हैं।"
+          ],
+          "solution": "विस्थापन धारा ε₀ dΦ_E/dt है, वह पद जो मैक्सवेल ने ऐम्पियर के नियम में जोड़ा ताकि बदलता विद्युत क्षेत्र ठीक उसी तरह चुंबकीय क्षेत्र बनाए जैसे चालन धारा बनाती है। यह विस्थापन धारा की बात है, ε₀ और μ₀ से बनी चाल की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "ε₀ आणि μ₀ पासून बनलेला वेग विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "विस्थापन धारा म्हणजे ε₀ dΦ_E/dt, ते पद जे मॅक्सवेलने अँपिअरच्या नियमात जोडले जेणेकरून बदलते विद्युत क्षेत्र नेमके तसेच चुंबकीय क्षेत्र बनवेल जसे वहन धारा बनवते.",
+            "जुळणे हाच युक्तिवाद होता: कोणत्याही स्थिरांकाचा प्रकाशाशी काहीही संबंध नाही, म्हणून ते जुळणे हा प्रकाश ही वेगळी घटना नसून विद्युतचुंबकीय लहरच आहे याचा भक्कम पुरावा होता.",
+            "माध्यमात वेग 1/√(εμ) होतो, नेहमी c हून कमी, आणि दोहोंचे गुणोत्तर नेमका तोच अपवर्तनांक आहे जो प्रकाशिकी दोन शतके मोजत होती तो काय आहे हे न जाणता.",
+            "ε₀ आणि μ₀ पासून बनलेला वेग म्हणजे c = 1/√(ε₀μ₀) ≈ 3 × 10⁸ m/s, तोच वेग जो मॅक्सवेलची समीकरणे निर्वातात विद्युतचुंबकीय लहरीकडून मागतात."
+          ],
+          "solution": "विस्थापन धारा म्हणजे ε₀ dΦ_E/dt, ते पद जे मॅक्सवेलने अँपिअरच्या नियमात जोडले जेणेकरून बदलते विद्युत क्षेत्र नेमके तसेच चुंबकीय क्षेत्र बनवेल जसे वहन धारा बनवते. हे विस्थापन धारा चे आहे, ε₀ आणि μ₀ पासून बनलेला वेग चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Microwaves EXCEPT —",
+      "choices": [
+        "Ultraviolet radiation lies just beyond the violet end of the visible band and carries enough energy per quantum to ionise atoms and break molecular bonds, which is why it causes sunburn and damages DNA.",
+        "Microwaves occupy wavelengths of roughly a millimetre to a metre, are generated by vacuum-tube oscillators such as the magnetron, and are used for radar, satellite links and cooking.",
+        "An oven works because water molecules are electric dipoles that try to follow the reversing field, and the energy of that jostling appears as heat throughout the food rather than only at its surface.",
+        "Radar depends on the short wavelength: a wave is only reflected usefully by an object comparable to or larger than itself, which is why an aircraft returns a centimetre wave and a raindrop mostly does not."
+      ],
+      "answerIndex": 0,
+      "solution": "Ultraviolet radiation lies just beyond the violet end of the visible band and carries enough energy per quantum to ionise atoms and break molecular bonds, which is why it causes sunburn and damages DNA. That belongs to Ultraviolet radiation, not Microwaves — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "सूक्ष्म तरंगें के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "पराबैंगनी विकिरण दृश्य पट्टी के बैंगनी सिरे के ठीक आगे पड़ता है और प्रति क्वांटम इतनी ऊर्जा ढोता है कि परमाणु आयनित हों और आणविक बंध टूटें, इसीलिए वह धूप से जलन देता है और DNA को नुक़सान पहुँचाता है।",
+            "सूक्ष्म तरंगें लगभग एक मिलीमीटर से एक मीटर तक की तरंगदैर्ध्य घेरती हैं, मैग्नेट्रॉन जैसे निर्वात-नलिका दोलकों से बनती हैं, और रडार, उपग्रह संपर्क तथा पकाने में काम आती हैं।",
+            "चूल्हा इसलिए चलता है कि पानी के अणु विद्युत द्विध्रुव हैं जो उलटते क्षेत्र का पीछा करने की कोशिश करते हैं, और उस धक्कमपेल की ऊर्जा केवल सतह पर नहीं बल्कि पूरे भोजन में ऊष्मा बनकर प्रकट होती है।",
+            "रडार छोटी तरंगदैर्ध्य पर निर्भर है: तरंग केवल उसी वस्तु से उपयोगी ढंग से परावर्तित होती है जो उसके बराबर या उससे बड़ी हो, इसीलिए विमान सेंटीमीटर तरंग लौटाता है और वर्षा की बूँद प्रायः नहीं।"
+          ],
+          "solution": "पराबैंगनी विकिरण दृश्य पट्टी के बैंगनी सिरे के ठीक आगे पड़ता है और प्रति क्वांटम इतनी ऊर्जा ढोता है कि परमाणु आयनित हों और आणविक बंध टूटें, इसीलिए वह धूप से जलन देता है और DNA को नुक़सान पहुँचाता है। यह पराबैंगनी विकिरण की बात है, सूक्ष्म तरंगें की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "सूक्ष्म लहरी विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "अतिनील प्रारण दृश्य पट्ट्याच्या जांभळ्या टोकाच्या अगदी पुढे असते आणि प्रति पुंज इतकी ऊर्जा वाहते की अणू आयनित व्हावेत आणि रेणवीय बंध तुटावेत, म्हणूनच ते उन्हाने भाजते आणि DNA ला हानी पोहोचवते.",
+            "सूक्ष्म लहरी साधारण एक मिलीमीटर ते एक मीटर तरंगलांबी व्यापतात, मॅग्नेट्रॉनसारख्या निर्वात-नलिका दोलकांनी बनतात, आणि रडार, उपग्रह संपर्क तसेच स्वयंपाकात वापरल्या जातात.",
+            "शेगडी यामुळे चालते की पाण्याचे रेणू विद्युत द्विध्रुव आहेत जे उलटणाऱ्या क्षेत्राचा पाठलाग करू पाहतात, आणि त्या धक्काबुक्कीची ऊर्जा केवळ पृष्ठभागावर नव्हे तर अख्ख्या अन्नात उष्णता बनून प्रकट होते.",
+            "रडार लहान तरंगलांबीवर अवलंबून आहे: लहर केवळ त्याच वस्तूकडून उपयुक्तपणे परावर्तित होते जी तिच्याइतकी वा तिहून मोठी असेल, म्हणूनच विमान सेंटीमीटर लहर परत करते आणि पावसाचा थेंब बहुधा नाही."
+          ],
+          "solution": "अतिनील प्रारण दृश्य पट्ट्याच्या जांभळ्या टोकाच्या अगदी पुढे असते आणि प्रति पुंज इतकी ऊर्जा वाहते की अणू आयनित व्हावेत आणि रेणवीय बंध तुटावेत, म्हणूनच ते उन्हाने भाजते आणि DNA ला हानी पोहोचवते. हे अतिनील प्रारण चे आहे, सूक्ष्म लहरी चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A capacitor is being charged. Around the connecting wire, draw a circular loop and apply Ampère's law. Bounded by that loop, one may choose a flat disc that the wire pierces, or a bag-shaped surface that passes between the capacitor's plates. The first encloses a current I, the second encloses none. What is wrong, and how was it repaired?",
+      "choices": [
+        "Ampère's law as originally written is incomplete: it must give one answer for one loop, and here it gives two, so the law itself is at fault rather than either choice of surface. Maxwell repaired it by adding a displacement current ε₀ dΦ_E/dt to the enclosed current. Between the plates no charge crosses, but the electric field there is growing at exactly the rate needed for ε₀ dΦ_E/dt to equal I, so both surfaces now give the same answer. The repair was demanded by internal consistency, and its consequence — that a changing electric field sources a magnetic field — is what makes electromagnetic waves possible",
+        "Nothing is wrong: the flat disc is the correct surface and the bag-shaped one is simply an illegitimate choice, since a surface used with Ampère's law must be flat",
+        "A real current does cross the gap, carried by charges that jump between the plates through the dielectric, and the second surface encloses it after all",
+        "The contradiction is real but harmless, since Ampère's law was only ever intended for steady currents and a charging capacitor is outside its scope"
+      ],
+      "answerIndex": 0,
+      "solution": "This is one of the few places in school physics where a law is shown to be WRONG rather than merely limited, and the repair is worth following in detail because the result is the rest of the chapter. Set the problem up carefully. Ampère's law says that the line integral of B round a closed loop equals μ₀ times the current threading it. Notice the word 'threading': the current has to pass through some surface whose boundary is the loop. The law never specifies which surface, and it does not need to, because for a steady current any two surfaces sharing a rim are pierced by the same current — charge cannot pile up anywhere, so what enters one region leaves it. Now take the charging capacitor and keep the same loop, a circle round the wire. Choose the flat disc: the wire pierces it, the enclosed current is I, and the law gives ∮B·dl = μ₀I. Choose the bag: stretch the surface out from the same circular rim, over and around one plate, so that it passes through the gap between the plates without touching either. No charge crosses that gap. The enclosed current is zero, and the law gives ∮B·dl = 0. The left-hand side has not changed — it is the same loop, and B on it is whatever B on it is, a measurable thing. So the law has produced two different values for one measurable quantity, which is not a difficulty of interpretation but a straightforward inconsistency. Something has to give, and it cannot be the freedom to choose the surface, because that freedom is built into what the law says. Maxwell's move was to look at what IS happening in the gap. Charge is arriving on the plate at the rate I, so the field between the plates, E = σ/ε₀ = q/(ε₀A), is growing. The electric flux Φ_E = EA = q/ε₀ is therefore growing at the rate dΦ_E/dt = (1/ε₀)(dq/dt) = I/ε₀. Multiply by ε₀ and you get exactly I. So the quantity ε₀ dΦ_E/dt in the gap equals, to the last digit, the conduction current in the wire. Add it to the law as a second source of magnetic field, and the two surfaces agree: the disc sees conduction current I and no changing flux, the bag sees no conduction current and a displacement current I. The inconsistency is gone, and it is gone by construction rather than by luck. Two things deserve emphasis. First, the name is a historical misnomer — nothing is displaced and nothing flows. It is a changing electric field, given a current's name because it does a current's job of making a magnetic field. Second, and far more important, the correction was not made to fit any measurement. It was forced by requiring the theory to be self-consistent, and the payoff came afterwards: with this term present, Maxwell's equations become symmetric, a changing E makes a B and a changing B makes an E, and the pair can propagate as a wave through empty space at 1/√(ε₀μ₀). Hertz produced and detected those waves two decades later. A term added to close a logical gap turned out to predict radio. (The second option invents a restriction on surfaces that no formulation of the law contains; the third invents charge carriers that a vacuum-gap capacitor demonstrably does not have; the fourth notices the inconsistency and declines to fix it, which forfeits everything the fix made possible.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक संधारित्र आवेशित हो रहा है। जोड़ने वाले तार के चारों ओर वृत्तीय लूप खींचो और ऐम्पियर का नियम लगाओ। उस लूप से घिरा हुआ, या तो ऐसी चपटी चकती चुनी जा सकती है जिसे तार बेधता है, या ऐसा थैलीनुमा पृष्ठ जो संधारित्र की प्लेटों के बीच से गुज़रे। पहले में धारा I घिरी है, दूसरे में कोई नहीं। क्या ग़लत है, और उसे कैसे सुधारा गया?",
+          "choices": [
+            "ऐम्पियर का नियम जैसा मूल रूप में लिखा गया अधूरा है: उसे एक लूप के लिए एक उत्तर देना चाहिए, और यहाँ वह दो देता है, अतः दोष पृष्ठ के किसी चुनाव में नहीं बल्कि स्वयं नियम में है। मैक्सवेल ने घिरी धारा में ε₀ dΦ_E/dt विस्थापन धारा जोड़कर उसे सुधारा। प्लेटों के बीच कोई आवेश पार नहीं करता, पर वहाँ विद्युत क्षेत्र ठीक उसी दर से बढ़ रहा है जिससे ε₀ dΦ_E/dt, I के बराबर हो जाए, अतः अब दोनों पृष्ठ वही उत्तर देते हैं। यह सुधार आंतरिक संगति ने माँगा था, और उसका परिणाम — कि बदलता विद्युत क्षेत्र चुंबकीय क्षेत्र का स्रोत है — वही वैद्युतचुंबकीय तरंगों को संभव बनाता है",
+            "कुछ भी ग़लत नहीं: चपटी चकती ही सही पृष्ठ है और थैलीनुमा बस नाजायज़ चुनाव है, क्योंकि ऐम्पियर के नियम में काम आने वाला पृष्ठ चपटा होना चाहिए",
+            "असली धारा दरार को पार करती ही है, जिसे परावैद्युत में से प्लेटों के बीच कूदते आवेश ढोते हैं, और दूसरा पृष्ठ आख़िर उसे घेरता ही है",
+            "विरोधाभास असली है पर हानिरहित, क्योंकि ऐम्पियर का नियम कभी केवल स्थायी धाराओं के लिए ही था और आवेशित होता संधारित्र उसकी परिधि से बाहर है"
+          ],
+          "solution": "यह विद्यालयी भौतिकी की उन थोड़ी जगहों में है जहाँ किसी नियम को केवल सीमित नहीं बल्कि ग़लत दिखाया जाता है, और सुधार को ब्योरे से देखना चाहिए क्योंकि उसका परिणाम बाक़ी पूरा अध्याय है। समस्या ध्यान से खड़ी करो। ऐम्पियर का नियम कहता है कि बंद लूप पर B का रेखा समाकल उसमें से गुज़रती धारा का μ₀ गुना है। 'गुज़रती' शब्द पर ध्यान दो: धारा को किसी ऐसे पृष्ठ से पार होना है जिसकी सीमा वह लूप हो। नियम कभी नहीं बताता कि कौन-सा पृष्ठ, और उसे बताने की ज़रूरत भी नहीं, क्योंकि स्थायी धारा के लिए एक ही किनारा साझा करते किन्हीं दो पृष्ठों को वही धारा बेधती है — आवेश कहीं जमा हो नहीं सकता, अतः जो एक क्षेत्र में घुसता है वही निकलता है। अब आवेशित होता संधारित्र लो और वही लूप रखो, तार के चारों ओर एक वृत्त। चपटी चकती चुनो: तार उसे बेधता है, घिरी धारा I है, और नियम देता है ∮B·dl = μ₀I. थैली चुनो: उसी वृत्तीय किनारे से पृष्ठ को खींचकर एक प्लेट के ऊपर और चारों ओर फैलाओ, ताकि वह प्लेटों के बीच की दरार से किसी को छुए बिना गुज़रे। उस दरार को कोई आवेश पार नहीं करता। घिरी धारा शून्य है, और नियम देता है ∮B·dl = 0. बायाँ पक्ष बदला नहीं — वही लूप है, और उस पर B जो है सो है, नापी जा सकने वाली चीज़। अतः नियम ने एक नापी जा सकने वाली राशि के दो भिन्न मान दे दिए, जो व्याख्या की कठिनाई नहीं बल्कि सीधी-सादी असंगति है। कुछ न कुछ छोड़ना ही पड़ेगा, और पृष्ठ चुनने की स्वतंत्रता नहीं छोड़ी जा सकती, क्योंकि वह स्वतंत्रता नियम के कथन में ही गढ़ी है। मैक्सवेल की चाल यह देखने की थी कि दरार में हो क्या रहा है। प्लेट पर आवेश I दर से पहुँच रहा है, अतः प्लेटों के बीच क्षेत्र, E = σ/ε₀ = q/(ε₀A), बढ़ रहा है। इसलिए विद्युत फ्लक्स Φ_E = EA = q/ε₀, dΦ_E/dt = (1/ε₀)(dq/dt) = I/ε₀ दर से बढ़ रहा है। ε₀ से गुणा करो और ठीक I मिलता है। अतः दरार में राशि ε₀ dΦ_E/dt तार की चालन धारा के अंतिम अंक तक बराबर है। उसे चुंबकीय क्षेत्र के दूसरे स्रोत के रूप में नियम में जोड़ो, और दोनों पृष्ठ सहमत हो जाते हैं: चकती चालन धारा I देखती है और कोई बदलता फ्लक्स नहीं, थैली कोई चालन धारा नहीं देखती और विस्थापन धारा I देखती है। असंगति चली गई, और वह संयोग से नहीं बल्कि रचना से गई। दो बातों पर ज़ोर देना चाहिए। पहली, नाम ऐतिहासिक ग़लतफ़हमी है — कुछ भी विस्थापित नहीं होता और कुछ भी बहता नहीं। वह बदलता विद्युत क्षेत्र है, जिसे धारा का नाम इसलिए दिया गया कि वह चुंबकीय क्षेत्र बनाने का धारा वाला काम करता है। दूसरी, और कहीं अधिक महत्त्वपूर्ण, यह सुधार किसी माप से मिलाने के लिए नहीं किया गया था। वह सिद्धांत को आत्मसंगत रखने की माँग ने बाध्य किया, और लाभ बाद में आया: यह पद रहते मैक्सवेल के समीकरण सममित हो जाते हैं, बदलता E एक B बनाता है और बदलता B एक E, और युग्म ख़ाली आकाश में 1/√(ε₀μ₀) चाल से तरंग की तरह संचरित हो सकता है। हर्ट्ज़ ने दो दशक बाद वे तरंगें बनाईं और पकड़ीं। एक तार्किक छेद भरने को जोड़ा गया पद रेडियो की भविष्यवाणी निकला। (दूसरा विकल्प पृष्ठों पर ऐसी पाबंदी गढ़ता है जो नियम के किसी रूप में नहीं; तीसरा ऐसे आवेश-वाहक गढ़ता है जो निर्वात-दरार वाले संधारित्र में स्पष्टतः नहीं; चौथा असंगति देख लेता है और उसे सुधारने से इनकार करता है, जिससे वह सब हाथ से जाता है जो सुधार ने संभव किया।)"
+        },
+        "mr": {
+          "stem": "एक धारित्र प्रभारित होत आहे. जोडणाऱ्या तारेभोवती वर्तुळाकार वळसा काढा आणि अँपिअरचा नियम लावा. त्या वळशाने घेरलेले, एकतर अशी सपाट तबकडी निवडता येते जिला तार भेदते, वा अशी पिशवीसारखी पृष्ठभाग जी धारित्राच्या पट्ट्यांमधून जाते. पहिलीत धारा I घेरलेली आहे, दुसरीत काहीच नाही. काय चूक आहे, आणि ती कशी दुरुस्त केली गेली?",
+          "choices": [
+            "अँपिअरचा नियम मूळ रूपात लिहिल्याप्रमाणे अपूर्ण आहे: त्याने एका वळशासाठी एक उत्तर द्यावे, आणि इथे तो दोन देतो, म्हणून दोष पृष्ठाच्या कोणत्याही निवडीत नसून स्वतः नियमात आहे. मॅक्सवेलने घेरलेल्या धारेत ε₀ dΦ_E/dt ही विस्थापन धारा जोडून तो दुरुस्त केला. पट्ट्यांमध्ये कोणताही प्रभार ओलांडत नाही, पण तिथले विद्युत क्षेत्र नेमक्या त्याच गतीने वाढत आहे जिने ε₀ dΦ_E/dt हे I इतके व्हावे, म्हणून आता दोन्ही पृष्ठे तेच उत्तर देतात. ही दुरुस्ती अंतर्गत सुसंगतीने मागितली होती, आणि तिचा परिणाम — की बदलते विद्युत क्षेत्र चुंबकीय क्षेत्राचा स्रोत आहे — तोच विद्युतचुंबकीय लहरी शक्य करतो",
+            "काहीही चूक नाही: सपाट तबकडीच बरोबर पृष्ठ आहे आणि पिशवीसारखी फक्त बेकायदेशीर निवड आहे, कारण अँपिअरच्या नियमात वापरले जाणारे पृष्ठ सपाट असावे लागते",
+            "खरी धारा फट ओलांडतेच, जी पराविद्युतातून पट्ट्यांमध्ये उड्या मारणारे प्रभार वाहतात, आणि दुसरे पृष्ठ अखेर तिला घेरतेच",
+            "विरोधाभास खरा आहे पण निरुपद्रवी, कारण अँपिअरचा नियम कधीही केवळ स्थिर धारांसाठीच होता आणि प्रभारित होणारे धारित्र त्याच्या कक्षेबाहेर आहे"
+          ],
+          "solution": "हे शालेय भौतिकीतल्या त्या थोड्या जागांपैकी आहे जिथे एखादा नियम केवळ मर्यादित नव्हे तर चूक दाखवला जातो, आणि दुरुस्ती तपशिलाने पाहण्याजोगी आहे कारण तिचा निकाल उरलेले अख्खे प्रकरण आहे. प्रश्न काळजीपूर्वक मांडा. अँपिअरचा नियम सांगतो की बंद वळशावरील B चे रेषा समाकलन त्यातून जाणाऱ्या धारेच्या μ₀ पट आहे. 'जाणाऱ्या' या शब्दाकडे लक्ष द्या: धारेला अशा एखाद्या पृष्ठातून जावे लागते ज्याची सीमा तो वळसा असेल. नियम कधीच सांगत नाही की कोणते पृष्ठ, आणि त्याला सांगण्याची गरजही नाही, कारण स्थिर धारेसाठी एकच कड वाटून घेणाऱ्या कोणत्याही दोन पृष्ठांना तीच धारा भेदते — प्रभार कुठेही साठू शकत नाही, म्हणून जे एका प्रदेशात शिरते तेच बाहेर पडते. आता प्रभारित होणारे धारित्र घ्या आणि तोच वळसा ठेवा, तारेभोवती एक वर्तुळ. सपाट तबकडी निवडा: तार तिला भेदते, घेरलेली धारा I आहे, आणि नियम देतो ∮B·dl = μ₀I. पिशवी निवडा: त्याच वर्तुळाकार कडेपासून पृष्ठ ओढून एका पट्टीच्या वर आणि भोवती पसरवा, जेणेकरून ती पट्ट्यांमधल्या फटीतून कोणालाही स्पर्श न करता जाईल. ती फट कोणताही प्रभार ओलांडत नाही. घेरलेली धारा शून्य आहे, आणि नियम देतो ∮B·dl = 0. डावी बाजू बदलली नाही — तोच वळसा आहे, आणि त्यावरचे B जे आहे ते आहे, मोजता येणारी गोष्ट. म्हणून नियमाने एका मोजता येणाऱ्या राशीची दोन वेगळी मूल्ये दिली, जी अर्थ लावण्याची अडचण नसून सरळसोट विसंगती आहे. काहीतरी सोडावेच लागेल, आणि पृष्ठ निवडण्याचे स्वातंत्र्य सोडता येत नाही, कारण ते स्वातंत्र्य नियमाच्या विधानातच घडवलेले आहे. मॅक्सवेलची चाल म्हणजे फटीत काय घडत आहे ते पाहणे. पट्टीवर प्रभार I गतीने पोहोचत आहे, म्हणून पट्ट्यांमधले क्षेत्र, E = σ/ε₀ = q/(ε₀A), वाढत आहे. म्हणून विद्युत फ्लक्स Φ_E = EA = q/ε₀ हा dΦ_E/dt = (1/ε₀)(dq/dt) = I/ε₀ या गतीने वाढत आहे. ε₀ ने गुणा आणि नेमके I मिळते. म्हणून फटीतली राशी ε₀ dΦ_E/dt ही तारेतील वहन धारेइतकी, शेवटच्या अंकापर्यंत, आहे. तिला चुंबकीय क्षेत्राचा दुसरा स्रोत म्हणून नियमात जोडा, आणि दोन्ही पृष्ठे सहमत होतात: तबकडी वहन धारा I पाहते आणि कोणताही बदलता फ्लक्स नाही, पिशवी कोणतीही वहन धारा पाहत नाही आणि विस्थापन धारा I पाहते. विसंगती गेली, आणि ती योगायोगाने नव्हे तर रचनेने गेली. दोन गोष्टींवर भर द्यायला हवा. पहिली, नाव हा ऐतिहासिक गैरसमज आहे — काहीही विस्थापित होत नाही आणि काहीही वाहत नाही. ते बदलते विद्युत क्षेत्र आहे, ज्याला धारेचे नाव यासाठी दिले गेले की ते चुंबकीय क्षेत्र बनवण्याचे धारेचे काम करते. दुसरी, आणि कितीतरी अधिक महत्त्वाची, ही दुरुस्ती कोणत्याही मापाशी जुळवण्यासाठी केली गेली नव्हती. ती सिद्धांताला स्वतःशी सुसंगत ठेवण्याच्या मागणीने भाग पाडली, आणि फायदा नंतर आला: हे पद असताना मॅक्सवेलची समीकरणे सममित होतात, बदलता E एक B बनवतो आणि बदलता B एक E, आणि जोडी रिकाम्या अवकाशात 1/√(ε₀μ₀) वेगाने लहर म्हणून संचरू शकते. हर्ट्झने दोन दशकांनंतर त्या लहरी बनवल्या आणि पकडल्या. एक तार्किक छिद्र भरायला जोडलेले पद रेडिओचे भाकीत निघाले. (दुसरा पर्याय पृष्ठांवर अशी बंदी घडवतो जी नियमाच्या कोणत्याही रूपात नाही; तिसरा असे प्रभार-वाहक घडवतो जे निर्वात-फट असलेल्या धारित्रात स्पष्टपणे नाहीत; चौथा विसंगती पाहतो आणि ती दुरुस्त करायला नकार देतो, ज्याने दुरुस्तीने शक्य केलेले सर्व हातून जाते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A radio mast radiates 50 kW and a person may stand beside it all day; a few minutes of midday sunlight, delivering a tiny fraction of that power to the same skin, causes sunburn. A student concludes that the radio measurement must be wrong. Resolve this.",
+      "choices": [
+        "Both measurements are right, because damage of this kind is not decided by total power but by the energy carried by each individual quantum, E = hf. Radio photons at 10⁸ Hz carry about 10⁻⁷ eV each — far too little to break any chemical bond, so an enormous number of them merely warm the tissue. Ultraviolet photons at 10¹⁵ Hz carry several eV, comparable with bond energies, so a single one can break a DNA bond however few arrive. Turning the transmitter up sends more photons, not more energetic ones, so it can never do what UV does",
+        "The radio measurement is indeed wrong, since 50 kW delivered to a human body would be lethal within seconds by any mechanism",
+        "Radio waves are longer than the body and therefore pass through it without interacting at all, while ultraviolet is short enough to be absorbed",
+        "The difference is one of distance only: the Sun is far away but its total output is enormous, and a radio mast at the same total output would burn the skin equally"
+      ],
+      "answerIndex": 0,
+      "solution": "The two observations are both accurate, and the reason they seem to conflict is that the student is measuring the wrong thing. Power is energy per second delivered in total; what determines whether a chemical bond breaks is the energy delivered in one indivisible packet. A spectrum ordered by frequency is therefore also ordered by how violently each individual arrival can act. Set the numbers side by side. The Planck relation gives E = hf. For an FM broadcast at about 10⁸ Hz, E ≈ 6.6 × 10⁻³⁴ × 10⁸ ≈ 6.6 × 10⁻²⁶ J, which is about 4 × 10⁻⁷ eV. For ultraviolet at about 10¹⁵ Hz, E ≈ 6.6 × 10⁻¹⁹ J, which is about 4 eV. The ratio is roughly ten million. Now compare each with the thing that has to be broken. A typical covalent bond in a biological molecule costs a few electron-volts to break — the C–C bond about 3.6 eV, a hydrogen bond much less, the bonds whose rupture causes a thymine dimer in DNA around 3 to 4 eV. Ultraviolet quanta sit exactly in that range. Radio quanta are seven orders of magnitude below it. That gap is decisive because energy arriving in separate packets does not pool. Ten million radio photons striking one molecule do not add up to one ultraviolet photon's worth of bond-breaking; each interacts, delivers its 10⁻⁷ eV, and the molecule simply jiggles and passes the energy on as heat to its neighbours. This is the same argument that runs the photoelectric effect in a later chapter, where increasing the INTENSITY of light below the threshold frequency ejects no electrons at all however bright it becomes, and it is worth recognising as one idea in two places. So what does a 50 kW mast do to a body? It heats it, slightly and harmlessly at any ordinary distance, because heating is exactly the collective effect that many low-energy quanta can produce. Push the power far enough and heating becomes the hazard — this is why safety limits for radio and microwave exposure are written in watts per square metre and are thermal limits. Ultraviolet is regulated differently, in terms of dose, because its damage is not thermal and does not require the skin to get hot at all. Two consequences follow that are worth carrying. First, the labels IONISING and NON-IONISING divide the spectrum at roughly the far ultraviolet, and they divide it by photon energy, not by power. Radio, microwave, infrared and visible light are non-ionising; ultraviolet, X-rays and gamma rays are ionising. Second, a stronger transmitter is not a more dangerous one in kind. Turning it up sends MORE photons, not more energetic ones, so it moves a source further along a scale it was already on and never moves it onto the other scale. (The second option rejects a correct measurement rather than the assumption behind the puzzle; the third invents a transparency that a warming body refutes; the fourth reduces a difference of quantum energy to a difference of intensity, which is precisely the confusion the question is built on.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक रेडियो मस्तूल 50 kW विकिरित करता है और व्यक्ति दिन भर उसके पास खड़ा रह सकता है; दोपहर की धूप के कुछ मिनट, उसी त्वचा को उस शक्ति का नन्हा-सा अंश देकर, धूप की जलन कर देते हैं। विद्यार्थी निष्कर्ष निकालता है कि रेडियो का माप ग़लत होगा। इसे सुलझाओ।",
+          "choices": [
+            "दोनों माप सही हैं, क्योंकि इस क़िस्म की क्षति कुल शक्ति से नहीं बल्कि हर अलग क्वांटम की ढोई ऊर्जा से तय होती है, E = hf. 10⁸ Hz के रेडियो फ़ोटॉन हर एक लगभग 10⁻⁷ eV ढोते हैं — किसी रासायनिक बंध को तोड़ने के लिए कहीं बहुत कम, अतः उनकी विशाल संख्या ऊतक को बस गर्म करती है। 10¹⁵ Hz के पराबैंगनी फ़ोटॉन कई eV ढोते हैं, बंध-ऊर्जाओं के बराबर, अतः एक अकेला ही DNA का बंध तोड़ सकता है चाहे कितने ही कम आएँ। प्रेषक तेज़ करने से अधिक फ़ोटॉन जाते हैं, अधिक ऊर्जावान नहीं, अतः वह वह कभी नहीं कर सकता जो पराबैंगनी करता है",
+            "रेडियो का माप सचमुच ग़लत है, क्योंकि मानव शरीर को दिए गए 50 kW किसी भी क्रियाविधि से सेकंडों में प्राणघातक होते",
+            "रेडियो तरंगें शरीर से लंबी हैं और इसलिए बिना किसी अन्योन्यक्रिया के उसके आर-पार निकल जाती हैं, जबकि पराबैंगनी इतनी छोटी है कि सोख ली जाए",
+            "अंतर केवल दूरी का है: सूर्य दूर है पर उसका कुल उत्पादन विशाल है, और उतने ही कुल उत्पादन वाला रेडियो मस्तूल त्वचा को उतना ही जलाता"
+          ],
+          "solution": "दोनों प्रेक्षण यथार्थ हैं, और वे टकराते इसलिए लगते हैं कि विद्यार्थी ग़लत चीज़ नाप रहा है। शक्ति कुल मिलाकर प्रति सेकंड दी गई ऊर्जा है; रासायनिक बंध टूटेगा या नहीं यह उस ऊर्जा से तय होता है जो एक अविभाज्य पुड़िया में आती है। अतः आवृत्ति से क्रमित स्पेक्ट्रम इससे भी क्रमित है कि हर अलग आगमन कितनी हिंसा से काम कर सकता है। संख्याएँ अगल-बगल रखो। प्लांक संबंध देता है E = hf. लगभग 10⁸ Hz के FM प्रसारण के लिए, E ≈ 6.6 × 10⁻³⁴ × 10⁸ ≈ 6.6 × 10⁻²⁶ J, जो लगभग 4 × 10⁻⁷ eV है। लगभग 10¹⁵ Hz के पराबैंगनी के लिए, E ≈ 6.6 × 10⁻¹⁹ J, जो लगभग 4 eV है। अनुपात मोटे तौर पर एक करोड़ है। अब हर एक की तुलना उससे करो जिसे तोड़ना है। जैविक अणु में विशिष्ट सहसंयोजक बंध तोड़ने में कुछ इलेक्ट्रॉन-वोल्ट लगते हैं — C–C बंध लगभग 3.6 eV, हाइड्रोजन बंध उससे बहुत कम, वे बंध जिनके टूटने से DNA में थाइमीन द्विलक बनता है लगभग 3 से 4 eV. पराबैंगनी क्वांटम ठीक उसी परास में बैठते हैं। रेडियो क्वांटम उससे सात कोटि नीचे हैं। वह खाई निर्णायक है क्योंकि अलग-अलग पुड़ियों में आती ऊर्जा इकट्ठी नहीं होती। एक अणु से टकराते एक करोड़ रेडियो फ़ोटॉन मिलकर एक पराबैंगनी फ़ोटॉन जितना बंध-भंजन नहीं करते; हर एक अन्योन्यक्रिया करता है, अपने 10⁻⁷ eV देता है, और अणु बस हिलता है और ऊर्जा अपने पड़ोसियों को ऊष्मा बनाकर आगे बढ़ा देता है। यह वही तर्क है जो आगे के अध्याय में प्रकाश-विद्युत प्रभाव चलाता है, जहाँ देहली आवृत्ति से नीचे प्रकाश की तीव्रता बढ़ाने पर एक भी इलेक्ट्रॉन नहीं निकलता चाहे वह कितना भी चमकीला हो जाए, और इसे दो जगहों पर एक ही विचार के रूप में पहचानना चाहिए। तो 50 kW का मस्तूल शरीर के साथ करता क्या है? वह उसे गर्म करता है, किसी भी साधारण दूरी पर हल्के से और बिना नुक़सान के, क्योंकि तापन ठीक वही सामूहिक प्रभाव है जो बहुत सारे कम-ऊर्जा क्वांटम दे सकते हैं। शक्ति पर्याप्त बढ़ाओ और तापन ही ख़तरा बन जाता है — इसीलिए रेडियो और सूक्ष्म तरंग के संपर्क की सुरक्षा सीमाएँ वाट प्रति वर्ग मीटर में लिखी जाती हैं और वे तापीय सीमाएँ हैं। पराबैंगनी का नियमन भिन्न है, मात्रा के रूप में, क्योंकि उसकी क्षति तापीय नहीं और उसके लिए त्वचा का गर्म होना ज़रूरी ही नहीं। दो परिणाम निकलते हैं जिन्हें साथ ले जाना चाहिए। पहला, आयनकारी और अनायनकारी लेबल स्पेक्ट्रम को मोटे तौर पर दूर पराबैंगनी पर बाँटते हैं, और वे उसे फ़ोटॉन ऊर्जा से बाँटते हैं, शक्ति से नहीं। रेडियो, सूक्ष्म तरंग, अवरक्त और दृश्य प्रकाश अनायनकारी हैं; पराबैंगनी, X-किरणें और गामा किरणें आयनकारी। दूसरा, अधिक प्रबल प्रेषक क़िस्म में अधिक ख़तरनाक नहीं होता। उसे तेज़ करने से अधिक फ़ोटॉन जाते हैं, अधिक ऊर्जावान नहीं, अतः वह स्रोत को उसी पैमाने पर आगे सरकाता है जिस पर वह पहले से था और दूसरे पैमाने पर कभी नहीं ले जाता। (दूसरा विकल्प पहेली के पीछे की मान्यता के बजाय सही माप को ख़ारिज कर देता है; तीसरा ऐसी पारदर्शिता गढ़ता है जिसे गर्म होता शरीर झुठला देता है; चौथा क्वांटम ऊर्जा के अंतर को तीव्रता के अंतर में घटा देता है, और प्रश्न ठीक इसी भ्रम पर बना है।)"
+        },
+        "mr": {
+          "stem": "एक रेडिओ मनोरा 50 kW प्रारित करतो आणि माणूस दिवसभर त्याच्याजवळ उभा राहू शकतो; दुपारच्या उन्हाची काही मिनिटे, त्याच त्वचेला त्या शक्तीचा चिमुकला अंश देऊन, उन्हाने भाजतात. विद्यार्थी निष्कर्ष काढतो की रेडिओचे माप चूक असले पाहिजे. हे सोडवा.",
+          "choices": [
+            "दोन्ही मापे बरोबर आहेत, कारण अशा प्रकारची हानी एकूण शक्तीने नव्हे तर प्रत्येक वेगळ्या पुंजाने वाहलेल्या ऊर्जेने ठरते, E = hf. 10⁸ Hz चे रेडिओ फोटॉन प्रत्येकी सुमारे 10⁻⁷ eV वाहतात — कोणताही रासायनिक बंध तोडायला कितीतरी कमी, म्हणून त्यांची प्रचंड संख्या ऊतीला फक्त तापवते. 10¹⁵ Hz चे अतिनील फोटॉन कित्येक eV वाहतात, बंध-ऊर्जांच्या तोडीचे, म्हणून एकटाच DNA चा बंध तोडू शकतो कितीही कमी आले तरी. प्रक्षेपक वाढवल्याने अधिक फोटॉन जातात, अधिक ऊर्जावान नव्हे, म्हणून तो ते कधीच करू शकत नाही जे अतिनील करते",
+            "रेडिओचे माप खरोखर चूक आहे, कारण मानवी शरीराला दिलेले 50 kW कोणत्याही यंत्रणेने सेकंदांत प्राणघातक ठरले असते",
+            "रेडिओ लहरी शरीराहून लांब आहेत आणि म्हणून कोणत्याही परस्परक्रियेविना त्यातून आरपार जातात, तर अतिनील इतकी लहान आहे की शोषली जावी",
+            "फरक केवळ अंतराचा आहे: सूर्य दूर आहे पण त्याचे एकूण उत्पादन प्रचंड आहे, आणि तितक्याच एकूण उत्पादनाचा रेडिओ मनोरा त्वचेला तितकेच भाजला असता"
+          ],
+          "solution": "दोन्ही निरीक्षणे अचूक आहेत, आणि ती परस्परविरोधी वाटतात कारण विद्यार्थी चुकीची गोष्ट मोजत आहे. शक्ती म्हणजे एकूण मिळून दर सेकंदाला दिलेली ऊर्जा; रासायनिक बंध तुटेल की नाही हे त्या ऊर्जेने ठरते जी एका अविभाज्य पुडीत येते. म्हणून वारंवारतेने क्रमित वर्णपट यानेही क्रमित आहे की प्रत्येक वेगळे आगमन किती हिंसकपणे काम करू शकते. संख्या शेजारीशेजारी ठेवा. प्लांक संबंध देतो E = hf. सुमारे 10⁸ Hz च्या FM प्रक्षेपणासाठी, E ≈ 6.6 × 10⁻³⁴ × 10⁸ ≈ 6.6 × 10⁻²⁶ J, जे सुमारे 4 × 10⁻⁷ eV आहे. सुमारे 10¹⁵ Hz च्या अतिनीलासाठी, E ≈ 6.6 × 10⁻¹⁹ J, जे सुमारे 4 eV आहे. गुणोत्तर ढोबळमानाने एक कोटी आहे. आता प्रत्येकाची तुलना ज्याला तोडायचे आहे त्याच्याशी करा. जैविक रेणूतील नमुनेदार सहसंयुज बंध तोडायला काही इलेक्ट्रॉन-व्होल्ट लागतात — C–C बंध सुमारे 3.6 eV, हायड्रोजन बंध त्याहून खूप कमी, ज्यांच्या तुटण्याने DNA मध्ये थायमिन द्विलक बनतो ते बंध सुमारे 3 ते 4 eV. अतिनील पुंज नेमके त्याच पल्ल्यात बसतात. रेडिओ पुंज त्याहून सात कोटी खाली आहेत. ती दरी निर्णायक आहे कारण वेगवेगळ्या पुड्यांत येणारी ऊर्जा एकत्र होत नाही. एका रेणूवर आदळणारे एक कोटी रेडिओ फोटॉन मिळून एका अतिनील फोटॉनइतके बंध-भंजन करत नाहीत; प्रत्येक परस्परक्रिया करतो, आपले 10⁻⁷ eV देतो, आणि रेणू फक्त हलतो आणि ऊर्जा आपल्या शेजाऱ्यांना उष्णता बनवून पुढे देतो. हाच तो युक्तिवाद जो पुढच्या प्रकरणात प्रकाश-विद्युत परिणाम चालवतो, जिथे उंबरठा वारंवारतेखालच्या प्रकाशाची तीव्रता वाढवल्यावर एकही इलेक्ट्रॉन निघत नाही तो कितीही तेजस्वी झाला तरी, आणि हे दोन ठिकाणी एकच कल्पना म्हणून ओळखण्याजोगे आहे. तर 50 kW चा मनोरा शरीराशी करतो काय? तो त्याला तापवतो, कोणत्याही सामान्य अंतरावर किंचित आणि निरुपद्रवीपणे, कारण तापन हाच तो सामूहिक परिणाम जो पुष्कळ कमी-ऊर्जा पुंज देऊ शकतात. शक्ती पुरेशी वाढवा आणि तापनच धोका बनतो — म्हणूनच रेडिओ आणि सूक्ष्म लहरी संपर्काच्या सुरक्षा मर्यादा वॅट प्रति चौरस मीटरमध्ये लिहिल्या जातात आणि त्या औष्णिक मर्यादा आहेत. अतिनीलाचे नियमन वेगळे आहे, मात्रेच्या रूपात, कारण त्याची हानी औष्णिक नाही आणि तिच्यासाठी त्वचा तापणे आवश्यकच नाही. दोन परिणाम निघतात जे सोबत न्यायला हवेत. पहिला, आयनकारी आणि अनायनकारी ही लेबले वर्णपटाला ढोबळमानाने दूर अतिनीलावर विभागतात, आणि ती त्याला फोटॉन ऊर्जेने विभागतात, शक्तीने नव्हे. रेडिओ, सूक्ष्म लहरी, अवरक्त आणि दृश्य प्रकाश अनायनकारी आहेत; अतिनील, क्ष-किरणे आणि गॅमा किरणे आयनकारी. दुसरा, अधिक तीव्र प्रक्षेपक प्रकाराने अधिक धोकादायक नसतो. तो वाढवल्याने अधिक फोटॉन जातात, अधिक ऊर्जावान नव्हे, म्हणून तो स्रोताला त्याच मापदंडावर पुढे सरकवतो ज्यावर तो आधीच होता आणि दुसऱ्या मापदंडावर कधीच नेत नाही. (दुसरा पर्याय कोड्यामागच्या गृहीतकाऐवजी बरोबर माप नाकारतो; तिसरा अशी पारदर्शकता घडवतो जिला तापणारे शरीर खोडून काढते; चौथा पुंज ऊर्जेचा फरक तीव्रतेच्या फरकात घटवतो, आणि प्रश्न नेमका याच गोंधळावर बांधलेला आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "An electromagnetic wave in vacuum has a frequency of 6 × 10⁸ Hz. What is its wavelength, in m? Take c = 3 × 10⁸ m/s.",
+      "choices": [
+        "0.2",
+        "0.5",
+        "2",
+        "1.8"
+      ],
+      "answerIndex": 1,
+      "solution": "λ = c/f = (3 × 10⁸)/(6 × 10⁸) = 3/6 = 0.5 m. The powers of ten cancel, which is worth noticing before reaching for a calculator. Every electromagnetic wave in vacuum travels at the same c whatever its frequency, so wavelength and frequency are simply two ways of saying the same thing. (1.8 multiplies instead of dividing; 2 inverts the ratio.)",
+      "checkExpr": "3/6",
+      "translations": {
+        "hi": {
+          "stem": "निर्वात में एक वैद्युतचुंबकीय तरंग की आवृत्ति 6 × 10⁸ Hz है। उसकी तरंगदैर्ध्य, m में, क्या है? c = 3 × 10⁸ m/s लो।",
+          "choices": [
+            "0.2",
+            "0.5",
+            "2",
+            "1.8"
+          ],
+          "solution": "λ = c/f = (3 × 10⁸)/(6 × 10⁸) = 3/6 = 0.5 m. दस की घातें कट जाती हैं, और गणक उठाने से पहले यह ध्यान देने योग्य है। निर्वात में हर वैद्युतचुंबकीय तरंग आवृत्ति चाहे जो हो, उसी c से चलती है, अतः तरंगदैर्ध्य और आवृत्ति एक ही बात कहने के दो तरीक़े हैं। (1.8 भाग देने के बजाय गुणा कर देता है; 2 अनुपात उलट देता है।)"
+        },
+        "mr": {
+          "stem": "निर्वातात एका विद्युतचुंबकीय लहरीची वारंवारता 6 × 10⁸ Hz आहे. तिची तरंगलांबी, m मध्ये, किती? c = 3 × 10⁸ m/s घ्या.",
+          "choices": [
+            "0.2",
+            "0.5",
+            "2",
+            "1.8"
+          ],
+          "solution": "λ = c/f = (3 × 10⁸)/(6 × 10⁸) = 3/6 = 0.5 m. दहाच्या घाती कापल्या जातात, आणि गणकयंत्र उचलण्याआधी हे लक्षात घेण्याजोगे. निर्वातात प्रत्येक विद्युतचुंबकीय लहर वारंवारता कोणतीही असो, त्याच c ने जाते, म्हणून तरंगलांबी आणि वारंवारता एकच गोष्ट सांगण्याचे दोन मार्ग आहेत. (1.8 भागण्याऐवजी गुणते; 2 गुणोत्तर उलटवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many seconds does light take to travel 9 × 10⁸ m in vacuum? Take c = 3 × 10⁸ m/s.",
+      "choices": [
+        "2.7",
+        "27",
+        "0.33",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "t = d/c = (9 × 10⁸)/(3 × 10⁸) = 9/3 = 3 s. For scale, light takes about 1.3 s to reach us from the Moon and about 500 s from the Sun, so a three-second journey is roughly twice the Earth–Moon distance. (0.33 inverts the division; 27 multiplies.)",
+      "checkExpr": "9/3",
+      "translations": {
+        "hi": {
+          "stem": "निर्वात में 9 × 10⁸ m चलने में प्रकाश कितने सेकंड लेता है? c = 3 × 10⁸ m/s लो।",
+          "choices": [
+            "2.7",
+            "27",
+            "0.33",
+            "3"
+          ],
+          "solution": "t = d/c = (9 × 10⁸)/(3 × 10⁸) = 9/3 = 3 s. पैमाने के लिए, प्रकाश चंद्रमा से हम तक लगभग 1.3 s और सूर्य से लगभग 500 s लेता है, अतः तीन सेकंड की यात्रा मोटे तौर पर पृथ्वी-चंद्रमा दूरी की दुगुनी है। (0.33 भाग उलट देता है; 27 गुणा कर देता है।)"
+        },
+        "mr": {
+          "stem": "निर्वातात 9 × 10⁸ m जाण्यास प्रकाश किती सेकंद घेतो? c = 3 × 10⁸ m/s घ्या.",
+          "choices": [
+            "2.7",
+            "27",
+            "0.33",
+            "3"
+          ],
+          "solution": "t = d/c = (9 × 10⁸)/(3 × 10⁸) = 9/3 = 3 s. मापासाठी, प्रकाश चंद्रापासून आपल्यापर्यंत सुमारे 1.3 s आणि सूर्यापासून सुमारे 500 s घेतो, म्हणून तीन सेकंदांचा प्रवास ढोबळमानाने पृथ्वी-चंद्र अंतराच्या दुप्पट आहे. (0.33 भागाकार उलटवते; 27 गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The electric field amplitude of an electromagnetic wave in vacuum is 60 V/m. What is the magnetic field amplitude, in nT? Take c = 3 × 10⁸ m/s.",
+      "choices": [
+        "200",
+        "20",
+        "180",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "B₀ = E₀/c = 60/(3 × 10⁸) = 20 × 10⁻⁸ T = 2 × 10⁻⁷ T. One nanotesla is 10⁻⁹ T, so that is 60/3 × 10 = 200 nT. The magnetic amplitude looks tiny only because of the units: the two fields carry equal energy densities in the wave, and neither is the junior partner. (20 stops before converting to nanotesla; 180 multiplies by 3 instead of dividing.)",
+      "checkExpr": "60/3*10",
+      "translations": {
+        "hi": {
+          "stem": "निर्वात में एक वैद्युतचुंबकीय तरंग का विद्युत क्षेत्र आयाम 60 V/m है। चुंबकीय क्षेत्र आयाम, nT में, क्या है? c = 3 × 10⁸ m/s लो।",
+          "choices": [
+            "200",
+            "20",
+            "180",
+            "2"
+          ],
+          "solution": "B₀ = E₀/c = 60/(3 × 10⁸) = 20 × 10⁻⁸ T = 2 × 10⁻⁷ T. एक नैनोटेस्ला 10⁻⁹ T है, अतः वह 60/3 × 10 = 200 nT है। चुंबकीय आयाम केवल मात्रकों के कारण नन्हा दिखता है: तरंग में दोनों क्षेत्र बराबर ऊर्जा घनत्व ढोते हैं, और कोई भी कनिष्ठ साझीदार नहीं। (20 नैनोटेस्ला में बदलने से पहले रुक जाता है; 180 भाग देने के बजाय 3 से गुणा कर देता है।)"
+        },
+        "mr": {
+          "stem": "निर्वातात एका विद्युतचुंबकीय लहरीचे विद्युत क्षेत्र आयाम 60 V/m आहे. चुंबकीय क्षेत्र आयाम, nT मध्ये, किती? c = 3 × 10⁸ m/s घ्या.",
+          "choices": [
+            "200",
+            "20",
+            "180",
+            "2"
+          ],
+          "solution": "B₀ = E₀/c = 60/(3 × 10⁸) = 20 × 10⁻⁸ T = 2 × 10⁻⁷ T. एक नॅनोटेस्ला म्हणजे 10⁻⁹ T, म्हणून ते 60/3 × 10 = 200 nT आहे. चुंबकीय आयाम केवळ एककांमुळे चिमुकला दिसतो: लहरीत दोन्ही क्षेत्रे समान ऊर्जा घनता वाहतात, आणि कोणीही कनिष्ठ भागीदार नाही. (20 नॅनोटेस्लात बदलण्याआधी थांबते; 180 भागण्याऐवजी 3 ने गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The charge on a capacitor's plates grows steadily from 2 mC to 8 mC in 3 s. What is the displacement current between the plates, in mA?",
+      "choices": [
+        "3",
+        "6",
+        "2",
+        "10"
+      ],
+      "answerIndex": 2,
+      "solution": "Between the plates the displacement current ε₀ dΦ_E/dt works out to exactly dq/dt, the rate at which charge is arriving on the plates: (8 − 2)/3 = 2 mA. That it equals the conduction current in the wire is not a coincidence but the reason the term was invented — it is what makes Ampère's law give the same answer whichever surface is chosen. Note that no charge crosses the gap at all. (6 quotes the change in charge without dividing by the time.)",
+      "checkExpr": "(8-2)/3",
+      "translations": {
+        "hi": {
+          "stem": "संधारित्र की प्लेटों पर आवेश 3 s में 2 mC से बढ़कर स्थिर दर से 8 mC हो जाता है। प्लेटों के बीच विस्थापन धारा, mA में, क्या है?",
+          "choices": [
+            "3",
+            "6",
+            "2",
+            "10"
+          ],
+          "solution": "प्लेटों के बीच विस्थापन धारा ε₀ dΦ_E/dt ठीक dq/dt निकलती है, अर्थात् वह दर जिससे आवेश प्लेटों पर पहुँच रहा है: (8 − 2)/3 = 2 mA. उसका तार की चालन धारा के बराबर होना संयोग नहीं बल्कि उसी कारण से है जिसके लिए वह पद गढ़ा गया — वही ऐम्पियर के नियम को कोई भी पृष्ठ चुनने पर एक ही उत्तर दिलवाता है। ध्यान दो कि दरार को कोई आवेश पार करता ही नहीं। (6 आवेश का परिवर्तन बता देता है और समय से भाग नहीं देता।)"
+        },
+        "mr": {
+          "stem": "धारित्राच्या पट्ट्यांवरील प्रभार 3 s मध्ये 2 mC वरून स्थिर गतीने वाढून 8 mC होतो. पट्ट्यांमधली विस्थापन धारा, mA मध्ये, किती?",
+          "choices": [
+            "3",
+            "6",
+            "2",
+            "10"
+          ],
+          "solution": "पट्ट्यांमध्ये विस्थापन धारा ε₀ dΦ_E/dt नेमकी dq/dt निघते, म्हणजे ती गती जिने प्रभार पट्ट्यांवर पोहोचत आहे: (8 − 2)/3 = 2 mA. ती तारेतील वहन धारेइतकी असणे हा योगायोग नसून त्याच कारणाने आहे ज्यासाठी ते पद घडवले — तेच अँपिअरच्या नियमाला कोणतेही पृष्ठ निवडले तरी एकच उत्तर देववते. लक्षात घ्या की फट कोणताही प्रभार ओलांडतच नाही. (6 प्रभारातील बदल सांगते आणि काळाने भागत नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Light of wavelength 600 nm travels in vacuum. What is its frequency, in units of 10¹⁴ Hz? Take c = 3 × 10⁸ m/s.",
+      "choices": [
+        "5",
+        "0.5",
+        "2",
+        "18"
+      ],
+      "answerIndex": 0,
+      "solution": "f = c/λ = (3 × 10⁸)/(600 × 10⁻⁹) = (3 × 10⁸)/(6 × 10⁻⁷) = 3/0.6 × 10¹⁴ = 5 × 10¹⁴ Hz. Converting the nanometres to metres before dividing is where the exponent arithmetic has to be done carefully, and it is the one step this question exists to drill. Orange light at this frequency sits comfortably inside the visible band. (18 multiplies instead of dividing; 0.5 slips the decimal by a factor of ten.)",
+      "checkExpr": "3/0.6",
+      "translations": {
+        "hi": {
+          "stem": "600 nm तरंगदैर्ध्य का प्रकाश निर्वात में चलता है। उसकी आवृत्ति, 10¹⁴ Hz की इकाइयों में, क्या है? c = 3 × 10⁸ m/s लो।",
+          "choices": [
+            "5",
+            "0.5",
+            "2",
+            "18"
+          ],
+          "solution": "f = c/λ = (3 × 10⁸)/(600 × 10⁻⁹) = (3 × 10⁸)/(6 × 10⁻⁷) = 3/0.6 × 10¹⁴ = 5 × 10¹⁴ Hz. भाग देने से पहले नैनोमीटर को मीटर में बदलना ही वह जगह है जहाँ घातांक का गणित ध्यान से करना पड़ता है, और यह प्रश्न उसी एक चरण का अभ्यास कराने को है। इस आवृत्ति का नारंगी प्रकाश दृश्य पट्टी के भीतर आराम से बैठता है। (18 भाग देने के बजाय गुणा कर देता है; 0.5 में दशमलव दस के गुणक से खिसक जाता है।)"
+        },
+        "mr": {
+          "stem": "600 nm तरंगलांबीचा प्रकाश निर्वातात जातो. त्याची वारंवारता, 10¹⁴ Hz च्या एककांत, किती? c = 3 × 10⁸ m/s घ्या.",
+          "choices": [
+            "5",
+            "0.5",
+            "2",
+            "18"
+          ],
+          "solution": "f = c/λ = (3 × 10⁸)/(600 × 10⁻⁹) = (3 × 10⁸)/(6 × 10⁻⁷) = 3/0.6 × 10¹⁴ = 5 × 10¹⁴ Hz. भागण्याआधी नॅनोमीटरचे मीटरमध्ये रूपांतर करणे हीच ती जागा जिथे घातांकाचे गणित काळजीपूर्वक करावे लागते, आणि हा प्रश्न त्याच एका पायरीचा सराव देण्यासाठी आहे. या वारंवारतेचा नारिंगी प्रकाश दृश्य पट्ट्याच्या आत आरामात बसतो. (18 भागण्याऐवजी गुणते; 0.5 मध्ये दशांश दहाच्या पटीने सरकतो.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The total average energy density of an electromagnetic wave is 8 × 10⁻⁹ J/m³. What is the part carried by the electric field, in units of 10⁻⁹ J/m³?",
+      "choices": [
+        "4",
+        "16",
+        "2",
+        "8"
+      ],
+      "answerIndex": 0,
+      "solution": "The two fields share the energy equally in an electromagnetic wave, so the electric part is 8/2 = 4 × 10⁻⁹ J/m³ and the magnetic part is the same. The equality is not an accident: E₀ = cB₀ is exactly the relation that makes ½ε₀E² and B²/2μ₀ come out identical. (8 gives the whole to one field; 16 doubles rather than halving.)",
+      "checkExpr": "8/2",
+      "translations": {
+        "hi": {
+          "stem": "एक वैद्युतचुंबकीय तरंग का कुल औसत ऊर्जा घनत्व 8 × 10⁻⁹ J/m³ है। विद्युत क्षेत्र द्वारा ढोया गया भाग, 10⁻⁹ J/m³ की इकाइयों में, क्या है?",
+          "choices": [
+            "4",
+            "16",
+            "2",
+            "8"
+          ],
+          "solution": "वैद्युतचुंबकीय तरंग में दोनों क्षेत्र ऊर्जा बराबर बाँटते हैं, अतः विद्युत भाग 8/2 = 4 × 10⁻⁹ J/m³ और चुंबकीय भाग उतना ही। यह बराबरी संयोग नहीं: E₀ = cB₀ ठीक वही संबंध है जो ½ε₀E² और B²/2μ₀ को एक जैसा बना देता है। (8 पूरा एक ही क्षेत्र को दे देता है; 16 आधा करने के बजाय दुगुना कर देता है।)"
+        },
+        "mr": {
+          "stem": "एका विद्युतचुंबकीय लहरीची एकूण सरासरी ऊर्जा घनता 8 × 10⁻⁹ J/m³ आहे. विद्युत क्षेत्राने वाहलेला भाग, 10⁻⁹ J/m³ च्या एककांत, किती?",
+          "choices": [
+            "4",
+            "16",
+            "2",
+            "8"
+          ],
+          "solution": "विद्युतचुंबकीय लहरीत दोन्ही क्षेत्रे ऊर्जा समान वाटून घेतात, म्हणून विद्युत भाग 8/2 = 4 × 10⁻⁹ J/m³ आणि चुंबकीय भाग तितकाच. ही समानता योगायोग नाही: E₀ = cB₀ हाच तो संबंध जो ½ε₀E² आणि B²/2μ₀ यांना सारखे बनवतो. (8 अख्खे एकाच क्षेत्राला देते; 16 निम्मे करण्याऐवजी दुप्पट करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Radiation of intensity 30 W/m² falls on a perfectly absorbing surface. What is the radiation pressure, in units of 10⁻⁸ Pa? Take c = 3 × 10⁸ m/s.",
+      "choices": [
+        "10",
+        "90",
+        "1",
+        "100"
+      ],
+      "answerIndex": 0,
+      "solution": "For complete absorption p = I/c = 30/(3 × 10⁸) = 10 × 10⁻⁸ Pa. The pressure is real but minute — atmospheric pressure is about 10⁵ Pa, some twelve orders of magnitude larger — which is why it is invisible in a room and yet enough to shape a comet's tail and to drive a solar sail over months. A perfect mirror would feel twice this, since reflecting reverses the momentum instead of merely absorbing it. (90 multiplies by 3 instead of dividing.)",
+      "checkExpr": "30/3",
+      "translations": {
+        "hi": {
+          "stem": "30 W/m² तीव्रता का विकिरण पूर्ण अवशोषक पृष्ठ पर पड़ता है। विकिरण दाब, 10⁻⁸ Pa की इकाइयों में, क्या है? c = 3 × 10⁸ m/s लो।",
+          "choices": [
+            "10",
+            "90",
+            "1",
+            "100"
+          ],
+          "solution": "पूर्ण अवशोषण के लिए p = I/c = 30/(3 × 10⁸) = 10 × 10⁻⁸ Pa. दाब असली पर नन्हा है — वायुमंडलीय दाब लगभग 10⁵ Pa है, क़रीब बारह कोटि बड़ा — इसीलिए वह कमरे में अदृश्य है और फिर भी धूमकेतु की पूँछ गढ़ने और महीनों में सौर पाल चलाने के लिए पर्याप्त। पूर्ण दर्पण इससे दुगुना अनुभव करता, क्योंकि परावर्तन संवेग को केवल सोखने के बजाय उलट देता है। (90 भाग देने के बजाय 3 से गुणा कर देता है।)"
+        },
+        "mr": {
+          "stem": "30 W/m² तीव्रतेचे प्रारण पूर्ण शोषक पृष्ठावर पडते. प्रारण दाब, 10⁻⁸ Pa च्या एककांत, किती? c = 3 × 10⁸ m/s घ्या.",
+          "choices": [
+            "10",
+            "90",
+            "1",
+            "100"
+          ],
+          "solution": "पूर्ण शोषणासाठी p = I/c = 30/(3 × 10⁸) = 10 × 10⁻⁸ Pa. दाब खरा पण चिमुकला आहे — वातावरणीय दाब सुमारे 10⁵ Pa आहे, जवळपास बारा कोटी मोठा — म्हणूनच तो खोलीत अदृश्य आहे आणि तरीही धूमकेतूची शेपटी घडवायला आणि महिन्यांत सौर शीड चालवायला पुरेसा. पूर्ण आरसा याहून दुप्पट अनुभवेल, कारण परावर्तन संवेग केवळ शोषण्याऐवजी उलटवते. (90 भागण्याऐवजी 3 ने गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A radio station broadcasts at 100 MHz. What is the wavelength of its signal, in m? Take c = 3 × 10⁸ m/s.",
+      "choices": [
+        "30",
+        "3000",
+        "3",
+        "0.33"
+      ],
+      "answerIndex": 2,
+      "solution": "λ = c/f = (3 × 10⁸)/(100 × 10⁶) = 300/100 = 3 m. The shortcut worth remembering is that λ in metres equals 300 divided by the frequency in MHz. A metre or two is also the useful length for an antenna, since an aerial works best when it is a simple fraction of a wavelength — which is why FM aerials are about the size of a car and long-wave ones are the size of a field. (0.33 inverts the ratio; 30 misplaces the exponent by one.)",
+      "checkExpr": "300/100",
+      "translations": {
+        "hi": {
+          "stem": "एक रेडियो स्टेशन 100 MHz पर प्रसारण करता है। उसके संकेत की तरंगदैर्ध्य, m में, क्या है? c = 3 × 10⁸ m/s लो।",
+          "choices": [
+            "30",
+            "3000",
+            "3",
+            "0.33"
+          ],
+          "solution": "λ = c/f = (3 × 10⁸)/(100 × 10⁶) = 300/100 = 3 m. याद रखने लायक़ छोटा रास्ता यह कि मीटर में λ, MHz में आवृत्ति से 300 भाग देकर मिलता है। एक-दो मीटर एंटीना के लिए भी काम की लंबाई है, क्योंकि एरियल तभी सबसे अच्छा चलता है जब वह तरंगदैर्ध्य का सरल अंश हो — इसीलिए FM एरियल कार जितने और लंबी-तरंग वाले खेत जितने होते हैं। (0.33 अनुपात उलट देता है; 30 घातांक एक से चूक जाता है।)"
+        },
+        "mr": {
+          "stem": "एक रेडिओ केंद्र 100 MHz वर प्रक्षेपण करते. त्याच्या संकेताची तरंगलांबी, m मध्ये, किती? c = 3 × 10⁸ m/s घ्या.",
+          "choices": [
+            "30",
+            "3000",
+            "3",
+            "0.33"
+          ],
+          "solution": "λ = c/f = (3 × 10⁸)/(100 × 10⁶) = 300/100 = 3 m. लक्षात ठेवण्याजोगा शॉर्टकट असा की मीटरमधली λ म्हणजे MHz मधल्या वारंवारतेने 300 भागिले. एक-दोन मीटर ही अँटेनासाठीही उपयुक्त लांबी आहे, कारण एरियल तेव्हाच सर्वांत चांगले चालते जेव्हा ते तरंगलांबीचा साधा अंश असेल — म्हणूनच FM एरियल गाडीएवढे आणि लांब-लहरीचे शेताएवढे असतात. (0.33 गुणोत्तर उलटवते; 30 घातांक एकाने चुकवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Gamma rays of wavelength 10⁻¹² m and radio waves of wavelength 10³ m are compared. The gamma frequency is larger by a factor of 10ⁿ. What is n?",
+      "choices": [
+        "12",
+        "15",
+        "1000",
+        "9"
+      ],
+      "answerIndex": 1,
+      "solution": "Both travel at c, so f is inversely proportional to λ and the frequency ratio is the reciprocal of the wavelength ratio: 10³/10⁻¹² = 10¹⁵, giving n = 3 + 12 = 15. Subtracting a negative exponent is the step where signs go wrong, and it is worth writing out rather than doing in the head. Fifteen orders of magnitude is the whole span of the spectrum, and the two ends are the same kind of wave differing in nothing but this number — which is why the ordering, and not the names, is what explains their behaviour. (12 drops the radio wave's exponent; 9 subtracts where it should add.)",
+      "checkExpr": "3+12",
+      "translations": {
+        "hi": {
+          "stem": "10⁻¹² m तरंगदैर्ध्य की गामा किरणों और 10³ m तरंगदैर्ध्य की रेडियो तरंगों की तुलना की जाती है। गामा की आवृत्ति 10ⁿ गुणक से बड़ी है। n क्या है?",
+          "choices": [
+            "12",
+            "15",
+            "1000",
+            "9"
+          ],
+          "solution": "दोनों c से चलती हैं, अतः f, λ के व्युत्क्रमानुपाती है और आवृत्ति का अनुपात तरंगदैर्ध्य के अनुपात का व्युत्क्रम है: 10³/10⁻¹² = 10¹⁵, जिससे n = 3 + 12 = 15. ऋण घातांक घटाना वही चरण है जहाँ चिह्न बिगड़ते हैं, और उसे मन में करने के बजाय लिखकर करना चाहिए। पंद्रह कोटियाँ पूरे स्पेक्ट्रम का विस्तार हैं, और दोनों सिरे एक ही क़िस्म की तरंग हैं जो इस संख्या के सिवा किसी बात में भिन्न नहीं — इसीलिए उनका आचरण नाम नहीं बल्कि वह क्रम समझाता है। (12 रेडियो तरंग का घातांक छोड़ देता है; 9 वहाँ घटा देता है जहाँ जोड़ना था।)"
+        },
+        "mr": {
+          "stem": "10⁻¹² m तरंगलांबीची गॅमा किरणे आणि 10³ m तरंगलांबीच्या रेडिओ लहरी यांची तुलना केली जाते. गॅमाची वारंवारता 10ⁿ पटीने मोठी आहे. n किती?",
+          "choices": [
+            "12",
+            "15",
+            "1000",
+            "9"
+          ],
+          "solution": "दोन्ही c ने जातात, म्हणून f हा λ शी व्यस्त समानुपाती आहे आणि वारंवारतेचे गुणोत्तर तरंगलांबीच्या गुणोत्तराचा व्यस्तांक आहे: 10³/10⁻¹² = 10¹⁵, ज्यातून n = 3 + 12 = 15. ऋण घातांक वजा करणे हीच ती पायरी जिथे चिन्हे बिघडतात, आणि ती मनात करण्याऐवजी लिहून करावी. पंधरा कोटी हा अख्ख्या वर्णपटाचा विस्तार आहे, आणि दोन्ही टोके एकाच प्रकारची लहर आहेत जी या संख्येखेरीज कशातही वेगळी नाही — म्हणूनच त्यांचे वर्तन नावे नव्हे तर तो क्रमच समजावतो. (12 रेडिओ लहरीचा घातांक गाळते; 9 जिथे जोडायचे तिथे वजा करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A microwave oven operates at about 2.5 GHz. What is the wavelength of the radiation inside it, in cm? Take c = 3 × 10⁸ m/s.",
+      "choices": [
+        "120",
+        "1.2",
+        "8.33",
+        "12"
+      ],
+      "answerIndex": 3,
+      "solution": "λ = c/f = (3 × 10⁸)/(2.5 × 10⁹) = 0.12 m, which is 30/2.5 = 12 cm. Two consequences follow from that number and are worth carrying. First, the oven cavity is only a few wavelengths across, so a standing-wave pattern forms with real nodes inside the food — which is exactly what the turntable exists to defeat, and why an oven without one leaves cold patches at fixed positions. Second, this frequency is not a resonance of the water molecule, a claim repeated everywhere and false: it was chosen partly because absorption is broad and gentle enough to heat food through rather than only at the surface. (1.2 misplaces the exponent by one; 8.33 inverts the division.)",
+      "checkExpr": "30/2.5",
+      "translations": {
+        "hi": {
+          "stem": "एक सूक्ष्म तरंग चूल्हा लगभग 2.5 GHz पर चलता है। उसके भीतर विकिरण की तरंगदैर्ध्य, cm में, क्या है? c = 3 × 10⁸ m/s लो।",
+          "choices": [
+            "120",
+            "1.2",
+            "8.33",
+            "12"
+          ],
+          "solution": "λ = c/f = (3 × 10⁸)/(2.5 × 10⁹) = 0.12 m, अर्थात् 30/2.5 = 12 cm. उस संख्या से दो परिणाम निकलते हैं जिन्हें साथ ले जाना चाहिए। पहला, चूल्हे की गुहा आर-पार कुछ ही तरंगदैर्ध्य चौड़ी है, अतः भोजन के भीतर असली निस्पंदों के साथ अप्रगामी तरंग का प्रतिरूप बनता है — घूमने वाली तश्तरी ठीक इसी को हराने के लिए है, और इसीलिए उसके बिना चूल्हा नियत जगहों पर ठंडे टुकड़े छोड़ देता है। दूसरा, यह आवृत्ति जल अणु का अनुनाद नहीं है, जो दावा सब जगह दोहराया जाता है और झूठा है: वह आंशिक रूप से इसलिए चुनी गई कि अवशोषण इतना चौड़ा और हल्का है कि भोजन केवल सतह पर नहीं बल्कि आर-पार गर्म हो। (1.2 घातांक एक से चूक जाता है; 8.33 भाग उलट देता है।)"
+        },
+        "mr": {
+          "stem": "एक सूक्ष्म लहरी शेगडी सुमारे 2.5 GHz वर चालते. तिच्या आत प्रारणाची तरंगलांबी, cm मध्ये, किती? c = 3 × 10⁸ m/s घ्या.",
+          "choices": [
+            "120",
+            "1.2",
+            "8.33",
+            "12"
+          ],
+          "solution": "λ = c/f = (3 × 10⁸)/(2.5 × 10⁹) = 0.12 m, म्हणजे 30/2.5 = 12 cm. त्या आकड्यातून दोन परिणाम निघतात जे सोबत न्यायला हवेत. पहिला, शेगडीची पोकळी आरपार काहीच तरंगलांबी रुंद आहे, म्हणून अन्नाच्या आत खऱ्या निस्पंदांसह अप्रगामी लहरीचा नमुना तयार होतो — फिरणारी तबकडी नेमकी हेच हरवण्यासाठी आहे, आणि म्हणूनच तिच्याविना शेगडी ठराविक जागी थंड तुकडे सोडते. दुसरा, ही वारंवारता पाण्याच्या रेणूचा अनुनाद नाही, हा दावा सर्वत्र पुन्हा पुन्हा केला जातो आणि खोटा आहे: ती अंशतः यासाठी निवडली गेली की शोषण इतके रुंद आणि सौम्य आहे की अन्न केवळ पृष्ठभागावर नव्हे तर आरपार तापावे. (1.2 घातांक एकाने चुकवते; 8.33 भागाकार उलटवते.)"
+        }
+      }
+    }
+  ]
+}

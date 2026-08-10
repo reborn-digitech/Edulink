@@ -1,0 +1,1003 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 12,
+  "chapter": "Chapter 7 — Alternating Current",
+  "name": "Alternating Current",
+  "slug": "physics-12-alternating-current",
+  "summary": "A current that reverses a hundred times a second and therefore averages to nothing, quoted instead by the steady value that would heat a resistor equally; components that impede it without ever dissipating anything, because they hand energy back in the quarter-cycle after they take it; two such opposing components that can be made to cancel exactly, leaving a circuit that answers one frequency and ignores the rest; a voltage that can be traded for current with almost no loss, which is the only reason power can be generated hundreds of kilometres from where it is used; and a factory whose meter and whose cables disagree about how much current it is really costing the grid.",
+  "position": 7,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "प्रत्यावर्ती धारा",
+      "summary": "ऐसी धारा जो सेकंड में सौ बार उलटती है और इसलिए औसत में शून्य हो जाती है, और इसीलिए उस स्थिर मान से बताई जाती है जो प्रतिरोधक को उतना ही गर्म करता; ऐसे पुर्ज़े जो उसे रोकते हैं पर कुछ भी खपाते नहीं, क्योंकि जो लेते हैं वह अगले चौथाई चक्र में लौटा देते हैं; ऐसे दो विरोधी पुर्ज़े जिन्हें ठीक-ठीक कटवाया जा सकता है, जिससे ऐसा परिपथ बचता है जो एक आवृत्ति को उत्तर देता है और बाक़ी की अनसुनी कर देता है; ऐसी वोल्टता जिसे लगभग बिना हानि धारा से बदला जा सकता है, और केवल इसी कारण बिजली वहाँ से सैकड़ों किलोमीटर दूर बन सकती है जहाँ वह काम आती है; और ऐसा कारख़ाना जिसका मीटर और जिसके तार इस बात पर असहमत हैं कि वह ग्रिड को वस्तुतः कितनी धारा का ख़र्च दे रहा है।"
+    },
+    "mr": {
+      "name": "प्रत्यावर्ती धारा",
+      "summary": "अशी धारा जी सेकंदाला शंभर वेळा उलटते आणि म्हणून सरासरीत शून्य होते, आणि म्हणूनच त्या स्थिर मूल्याने सांगितली जाते जे रोधकाला तितकेच तापवेल; असे घटक जे तिला अडवतात पण काहीही खर्चत नाहीत, कारण जे घेतात ते पुढच्या चतुर्थांश चक्रात परत देतात; असे दोन विरोधी घटक ज्यांना नेमके कापता येते, ज्यातून असा परिपथ उरतो जो एका वारंवारतेला उत्तर देतो आणि बाकीच्यांकडे दुर्लक्ष करतो; असा व्होल्टेज ज्याची जवळपास हानीविना धारेशी अदलाबदल करता येते, आणि केवळ याच कारणाने वीज तिथून शेकडो किलोमीटर दूर बनू शकते जिथे ती वापरली जाते; आणि असा कारखाना ज्याचे मीटर आणि ज्याच्या तारा यावर असहमत आहेत की तो ग्रिडला प्रत्यक्षात किती धारेचा खर्च देत आहे."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "The plain average of an alternating current over a cycle is zero, yet the wire certainly gets hot, so the quantity actually quoted is the steady current that would produce the same heating. What is that quantity called?",
+      "choices": [
+        "Reactance",
+        "Series resonance",
+        "The root mean square value",
+        "Power factor"
+      ],
+      "answerIndex": 2,
+      "solution": "The root mean square value is the steady current or voltage that would dissipate the same power in a resistor, and for a sinusoid it is the peak value divided by √2. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक चक्र पर प्रत्यावर्ती धारा का सादा औसत शून्य है, फिर भी तार निश्चय ही गर्म होता है, अतः वस्तुतः वह राशि बताई जाती है जो उतना ही तापन देने वाली स्थिर धारा हो। उस राशि को क्या कहते हैं?",
+          "choices": [
+            "प्रतिघात",
+            "श्रेणी अनुनाद",
+            "वर्ग माध्य मूल मान",
+            "शक्ति गुणांक"
+          ],
+          "solution": "वर्ग माध्य मूल मान वह स्थिर धारा या वोल्टता है जो प्रतिरोधक में उतनी ही शक्ति खपाती, और ज्यावक्रीय के लिए वह शिखर मान बटा √2 है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "एका चक्रावर प्रत्यावर्ती धारेची साधी सरासरी शून्य आहे, तरीही तार नक्कीच तापते, म्हणून प्रत्यक्षात ती राशी सांगितली जाते जी तितकेच तापन देणारी स्थिर धारा असेल. त्या राशीला काय म्हणतात?",
+          "choices": [
+            "प्रतिघात",
+            "श्रेणी अनुनाद",
+            "वर्ग माध्य मूळ मूल्य",
+            "शक्ती गुणक"
+          ],
+          "solution": "वर्ग माध्य मूळ मूल्य म्हणजे ती स्थिर धारा वा व्होल्टेज जी रोधकात तितकीच शक्ती खर्चेल, आणि ज्यावक्रीयासाठी ते शिखर मूल्य भागिले √2 आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Reactance is correct?",
+      "choices": [
+        "Power factor is cos φ, the cosine of the phase angle between current and voltage, so the average power is P = V_rms I_rms cos φ rather than the plain product.",
+        "The root mean square value is the steady current or voltage that would dissipate the same power in a resistor, and for a sinusoid it is the peak value divided by √2.",
+        "Reactance is the opposition to alternating current offered by an inductor or capacitor without dissipation, being X_L = ωL for an inductor and X_C = 1/ωC for a capacitor.",
+        "A transformer changes an alternating voltage in the ratio of the turns on its two windings, V_s/V_p = N_s/N_p, transferring power between circuits that are not electrically connected."
+      ],
+      "answerIndex": 2,
+      "solution": "Reactance is the opposition to alternating current offered by an inductor or capacitor without dissipation, being X_L = ωL for an inductor and X_C = 1/ωC for a capacitor. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रतिघात के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "शक्ति गुणांक cos φ है, अर्थात् धारा और वोल्टता के बीच के कलांतर की कोज्या, अतः औसत शक्ति सादे गुणनफल के बजाय P = V_rms I_rms cos φ है।",
+            "वर्ग माध्य मूल मान वह स्थिर धारा या वोल्टता है जो प्रतिरोधक में उतनी ही शक्ति खपाती, और ज्यावक्रीय के लिए वह शिखर मान बटा √2 है।",
+            "प्रतिघात प्रेरक या संधारित्र द्वारा बिना क्षय दिया गया प्रत्यावर्ती धारा का विरोध है, जो प्रेरक के लिए X_L = ωL और संधारित्र के लिए X_C = 1/ωC है।",
+            "ट्रांसफ़ॉर्मर प्रत्यावर्ती वोल्टता को अपनी दो लपेटों के फेरों के अनुपात में बदलता है, V_s/V_p = N_s/N_p, और ऐसे परिपथों के बीच शक्ति स्थानांतरित करता है जो विद्युत रूप से जुड़े नहीं हैं।"
+          ],
+          "solution": "प्रतिघात प्रेरक या संधारित्र द्वारा बिना क्षय दिया गया प्रत्यावर्ती धारा का विरोध है, जो प्रेरक के लिए X_L = ωL और संधारित्र के लिए X_C = 1/ωC है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "प्रतिघात विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "शक्ती गुणक म्हणजे cos φ, म्हणजे धारा आणि व्होल्टेज यांतील कलाकोनाचा कोसाइन, म्हणून सरासरी शक्ती साध्या गुणाकाराऐवजी P = V_rms I_rms cos φ आहे.",
+            "वर्ग माध्य मूळ मूल्य म्हणजे ती स्थिर धारा वा व्होल्टेज जी रोधकात तितकीच शक्ती खर्चेल, आणि ज्यावक्रीयासाठी ते शिखर मूल्य भागिले √2 आहे.",
+            "प्रतिघात म्हणजे प्रेरक वा धारित्राने क्षयाविना दिलेला प्रत्यावर्ती धारेचा विरोध, जो प्रेरकासाठी X_L = ωL आणि धारित्रासाठी X_C = 1/ωC आहे.",
+            "ट्रान्सफॉर्मर प्रत्यावर्ती व्होल्टेज आपल्या दोन वेढणींच्या वेढ्यांच्या गुणोत्तरात बदलतो, V_s/V_p = N_s/N_p, आणि विद्युतदृष्ट्या जोडलेल्या नसलेल्या परिपथांमध्ये शक्ती हस्तांतरित करतो."
+          ],
+          "solution": "प्रतिघात म्हणजे प्रेरक वा धारित्राने क्षयाविना दिलेला प्रत्यावर्ती धारेचा विरोध, जो प्रेरकासाठी X_L = ωL आणि धारित्रासाठी X_C = 1/ωC आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It is 1 for a pure resistance and exactly 0 for a pure inductor or capacitor, where the current is said to be wattless: it flows, it heats the supply cables, and it delivers no energy to the load at all.\" — which of these is this about?",
+      "choices": [
+        "The transformer",
+        "The root mean square value",
+        "Reactance",
+        "Power factor"
+      ],
+      "answerIndex": 3,
+      "solution": "Power factor is cos φ, the cosine of the phase angle between current and voltage, so the average power is P = V_rms I_rms cos φ rather than the plain product. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"शुद्ध प्रतिरोध के लिए यह 1 है और शुद्ध प्रेरक या संधारित्र के लिए ठीक 0, जहाँ धारा को वाटहीन कहते हैं: वह बहती है, आपूर्ति के तारों को गर्म करती है, और लोड को कोई ऊर्जा देती ही नहीं।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "ट्रांसफ़ॉर्मर",
+            "वर्ग माध्य मूल मान",
+            "प्रतिघात",
+            "शक्ति गुणांक"
+          ],
+          "solution": "शक्ति गुणांक cos φ है, अर्थात् धारा और वोल्टता के बीच के कलांतर की कोज्या, अतः औसत शक्ति सादे गुणनफल के बजाय P = V_rms I_rms cos φ है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"शुद्ध रोधासाठी हा 1 आहे आणि शुद्ध प्रेरक वा धारित्रासाठी नेमका 0, जिथे धारेला वॅटविरहित म्हणतात: ती वाहते, पुरवठ्याच्या तारा तापवते, आणि भाराला कोणतीही ऊर्जा देतच नाही.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "ट्रान्सफॉर्मर",
+            "वर्ग माध्य मूळ मूल्य",
+            "प्रतिघात",
+            "शक्ती गुणक"
+          ],
+          "solution": "शक्ती गुणक म्हणजे cos φ, म्हणजे धारा आणि व्होल्टेज यांतील कलाकोनाचा कोसाइन, म्हणून सरासरी शक्ती साध्या गुणाकाराऐवजी P = V_rms I_rms cos φ आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "At one particular frequency the inductor's opposition and the capacitor's opposition are equal and opposite, they cancel completely, and the circuit behaves as though only its resistance were there. What is this condition called?",
+      "choices": [
+        "The transformer",
+        "Series resonance",
+        "The choke coil",
+        "Power factor"
+      ],
+      "answerIndex": 1,
+      "solution": "Series resonance occurs when X_L = X_C, at ω₀ = 1/√(LC), where the impedance falls to its minimum value R and the current reaches its maximum. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "किसी एक विशेष आवृत्ति पर प्रेरक का विरोध और संधारित्र का विरोध बराबर और विपरीत होते हैं, वे पूरी तरह कट जाते हैं, और परिपथ ऐसे बरतता है मानो केवल उसका प्रतिरोध ही हो। इस स्थिति को क्या कहते हैं?",
+          "choices": [
+            "ट्रांसफ़ॉर्मर",
+            "श्रेणी अनुनाद",
+            "चोक कुंडली",
+            "शक्ति गुणांक"
+          ],
+          "solution": "श्रेणी अनुनाद तब होता है जब X_L = X_C, अर्थात् ω₀ = 1/√(LC) पर, जहाँ प्रतिबाधा घटकर अपने न्यूनतम मान R पर आ जाती है और धारा अपने अधिकतम पर पहुँचती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "एका विशिष्ट वारंवारतेवर प्रेरकाचा विरोध आणि धारित्राचा विरोध समान व विरुद्ध असतात, ते पूर्णपणे कापले जातात, आणि परिपथ असा वागतो जणू केवळ त्याचा रोधच असावा. या स्थितीला काय म्हणतात?",
+          "choices": [
+            "ट्रान्सफॉर्मर",
+            "श्रेणी अनुनाद",
+            "चोक वेटोळे",
+            "शक्ती गुणक"
+          ],
+          "solution": "श्रेणी अनुनाद तेव्हा घडतो जेव्हा X_L = X_C, म्हणजे ω₀ = 1/√(LC) वर, जिथे प्रतिबाधा घटून आपल्या किमान मूल्य R वर येते आणि धारा आपल्या कमालीवर पोहोचते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The transformer is correct?",
+      "choices": [
+        "A choke coil is an inductor used to limit alternating current without appreciable power loss, since its opposition ωL is reactive and its phase angle is close to 90°.",
+        "Series resonance occurs when X_L = X_C, at ω₀ = 1/√(LC), where the impedance falls to its minimum value R and the current reaches its maximum.",
+        "Power factor is cos φ, the cosine of the phase angle between current and voltage, so the average power is P = V_rms I_rms cos φ rather than the plain product.",
+        "A transformer changes an alternating voltage in the ratio of the turns on its two windings, V_s/V_p = N_s/N_p, transferring power between circuits that are not electrically connected."
+      ],
+      "answerIndex": 3,
+      "solution": "A transformer changes an alternating voltage in the ratio of the turns on its two windings, V_s/V_p = N_s/N_p, transferring power between circuits that are not electrically connected. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ट्रांसफ़ॉर्मर के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "चोक कुंडली वह प्रेरक है जो प्रत्यावर्ती धारा को ध्यान देने योग्य शक्ति-हानि के बिना सीमित करने को काम आता है, क्योंकि उसका विरोध ωL प्रतिघाती है और उसका कलांतर 90° के निकट है।",
+            "श्रेणी अनुनाद तब होता है जब X_L = X_C, अर्थात् ω₀ = 1/√(LC) पर, जहाँ प्रतिबाधा घटकर अपने न्यूनतम मान R पर आ जाती है और धारा अपने अधिकतम पर पहुँचती है।",
+            "शक्ति गुणांक cos φ है, अर्थात् धारा और वोल्टता के बीच के कलांतर की कोज्या, अतः औसत शक्ति सादे गुणनफल के बजाय P = V_rms I_rms cos φ है।",
+            "ट्रांसफ़ॉर्मर प्रत्यावर्ती वोल्टता को अपनी दो लपेटों के फेरों के अनुपात में बदलता है, V_s/V_p = N_s/N_p, और ऐसे परिपथों के बीच शक्ति स्थानांतरित करता है जो विद्युत रूप से जुड़े नहीं हैं।"
+          ],
+          "solution": "ट्रांसफ़ॉर्मर प्रत्यावर्ती वोल्टता को अपनी दो लपेटों के फेरों के अनुपात में बदलता है, V_s/V_p = N_s/N_p, और ऐसे परिपथों के बीच शक्ति स्थानांतरित करता है जो विद्युत रूप से जुड़े नहीं हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "ट्रान्सफॉर्मर विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "चोक वेटोळे म्हणजे प्रत्यावर्ती धारा लक्षणीय शक्ती-हानीविना मर्यादित करण्यासाठी वापरलेला प्रेरक, कारण त्याचा विरोध ωL प्रतिघाती आहे आणि त्याचा कलाकोन 90° च्या जवळ आहे.",
+            "श्रेणी अनुनाद तेव्हा घडतो जेव्हा X_L = X_C, म्हणजे ω₀ = 1/√(LC) वर, जिथे प्रतिबाधा घटून आपल्या किमान मूल्य R वर येते आणि धारा आपल्या कमालीवर पोहोचते.",
+            "शक्ती गुणक म्हणजे cos φ, म्हणजे धारा आणि व्होल्टेज यांतील कलाकोनाचा कोसाइन, म्हणून सरासरी शक्ती साध्या गुणाकाराऐवजी P = V_rms I_rms cos φ आहे.",
+            "ट्रान्सफॉर्मर प्रत्यावर्ती व्होल्टेज आपल्या दोन वेढणींच्या वेढ्यांच्या गुणोत्तरात बदलतो, V_s/V_p = N_s/N_p, आणि विद्युतदृष्ट्या जोडलेल्या नसलेल्या परिपथांमध्ये शक्ती हस्तांतरित करतो."
+          ],
+          "solution": "ट्रान्सफॉर्मर प्रत्यावर्ती व्होल्टेज आपल्या दोन वेढणींच्या वेढ्यांच्या गुणोत्तरात बदलतो, V_s/V_p = N_s/N_p, आणि विद्युतदृष्ट्या जोडलेल्या नसलेल्या परिपथांमध्ये शक्ती हस्तांतरित करतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It works only on alternating current: on a steady supply ω is zero, the reactance vanishes, and the coil is nothing but the small resistance of its own wire.\" — which of these is this about?",
+      "choices": [
+        "The root mean square value",
+        "The transformer",
+        "Series resonance",
+        "The choke coil"
+      ],
+      "answerIndex": 3,
+      "solution": "A choke coil is an inductor used to limit alternating current without appreciable power loss, since its opposition ωL is reactive and its phase angle is close to 90°. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"यह केवल प्रत्यावर्ती धारा पर चलता है: स्थिर आपूर्ति पर ω शून्य है, प्रतिघात लुप्त हो जाता है, और कुंडली अपने ही तार के छोटे प्रतिरोध से अधिक कुछ नहीं रह जाती।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "वर्ग माध्य मूल मान",
+            "ट्रांसफ़ॉर्मर",
+            "श्रेणी अनुनाद",
+            "चोक कुंडली"
+          ],
+          "solution": "चोक कुंडली वह प्रेरक है जो प्रत्यावर्ती धारा को ध्यान देने योग्य शक्ति-हानि के बिना सीमित करने को काम आता है, क्योंकि उसका विरोध ωL प्रतिघाती है और उसका कलांतर 90° के निकट है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"हे केवळ प्रत्यावर्ती धारेवर चालते: स्थिर पुरवठ्यावर ω शून्य आहे, प्रतिघात नाहीसा होतो, आणि वेटोळे स्वतःच्याच तारेच्या लहान रोधाहून अधिक काही उरत नाही.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "वर्ग माध्य मूळ मूल्य",
+            "ट्रान्सफॉर्मर",
+            "श्रेणी अनुनाद",
+            "चोक वेटोळे"
+          ],
+          "solution": "चोक वेटोळे म्हणजे प्रत्यावर्ती धारा लक्षणीय शक्ती-हानीविना मर्यादित करण्यासाठी वापरलेला प्रेरक, कारण त्याचा विरोध ωL प्रतिघाती आहे आणि त्याचा कलाकोन 90° च्या जवळ आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The steady current that would heat the wire equally\" goes correctly with which of these?",
+      "choices": [
+        "the root mean square value",
+        "reactance",
+        "the choke coil",
+        "power factor"
+      ],
+      "answerIndex": 0,
+      "solution": "The root mean square value is the steady current or voltage that would dissipate the same power in a resistor, and for a sinusoid it is the peak value divided by √2. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"वह स्थिर धारा जो तार को उतना ही गर्म करती\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "वर्ग माध्य मूल मान",
+            "प्रतिघात",
+            "चोक कुंडली",
+            "शक्ति गुणांक"
+          ],
+          "solution": "वर्ग माध्य मूल मान वह स्थिर धारा या वोल्टता है जो प्रतिरोधक में उतनी ही शक्ति खपाती, और ज्यावक्रीय के लिए वह शिखर मान बटा √2 है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ती स्थिर धारा जी तारेला तितकेच तापवेल\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "वर्ग माध्य मूळ मूल्य",
+            "प्रतिघात",
+            "चोक वेटोळे",
+            "शक्ती गुणक"
+          ],
+          "solution": "वर्ग माध्य मूळ मूल्य म्हणजे ती स्थिर धारा वा व्होल्टेज जी रोधकात तितकीच शक्ती खर्चेल, आणि ज्यावक्रीयासाठी ते शिखर मूल्य भागिले √2 आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Measured in ohms, and never gets warm\" goes correctly with which of these?",
+      "choices": [
+        "power factor",
+        "the transformer",
+        "reactance",
+        "series resonance"
+      ],
+      "answerIndex": 2,
+      "solution": "Reactance is the opposition to alternating current offered by an inductor or capacitor without dissipation, being X_L = ωL for an inductor and X_C = 1/ωC for a capacitor. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ओम में नापा जाता है, और कभी गर्म नहीं होता\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "शक्ति गुणांक",
+            "ट्रांसफ़ॉर्मर",
+            "प्रतिघात",
+            "श्रेणी अनुनाद"
+          ],
+          "solution": "प्रतिघात प्रेरक या संधारित्र द्वारा बिना क्षय दिया गया प्रत्यावर्ती धारा का विरोध है, जो प्रेरक के लिए X_L = ωL और संधारित्र के लिए X_C = 1/ωC है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ओहममध्ये मोजला जातो, आणि कधीच तापत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "शक्ती गुणक",
+            "ट्रान्सफॉर्मर",
+            "प्रतिघात",
+            "श्रेणी अनुनाद"
+          ],
+          "solution": "प्रतिघात म्हणजे प्रेरक वा धारित्राने क्षयाविना दिलेला प्रत्यावर्ती धारेचा विरोध, जो प्रेरकासाठी X_L = ωL आणि धारित्रासाठी X_C = 1/ωC आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Why the cables must be bigger than the bill suggests\" goes correctly with which of these?",
+      "choices": [
+        "series resonance",
+        "power factor",
+        "the root mean square value",
+        "the transformer"
+      ],
+      "answerIndex": 1,
+      "solution": "Power factor is cos φ, the cosine of the phase angle between current and voltage, so the average power is P = V_rms I_rms cos φ rather than the plain product. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"इसीलिए तार उससे मोटे चाहिए जितना बिल सुझाता है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "श्रेणी अनुनाद",
+            "शक्ति गुणांक",
+            "वर्ग माध्य मूल मान",
+            "ट्रांसफ़ॉर्मर"
+          ],
+          "solution": "शक्ति गुणांक cos φ है, अर्थात् धारा और वोल्टता के बीच के कलांतर की कोज्या, अतः औसत शक्ति सादे गुणनफल के बजाय P = V_rms I_rms cos φ है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"म्हणूनच तारा बिल सुचवते त्याहून जाड हव्यात\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "श्रेणी अनुनाद",
+            "शक्ती गुणक",
+            "वर्ग माध्य मूळ मूल्य",
+            "ट्रान्सफॉर्मर"
+          ],
+          "solution": "शक्ती गुणक म्हणजे cos φ, म्हणजे धारा आणि व्होल्टेज यांतील कलाकोनाचा कोसाइन, म्हणून सरासरी शक्ती साध्या गुणाकाराऐवजी P = V_rms I_rms cos φ आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"One frequency answered, the rest ignored\" goes correctly with which of these?",
+      "choices": [
+        "power factor",
+        "the root mean square value",
+        "the transformer",
+        "series resonance"
+      ],
+      "answerIndex": 3,
+      "solution": "Series resonance occurs when X_L = X_C, at ω₀ = 1/√(LC), where the impedance falls to its minimum value R and the current reaches its maximum. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"एक आवृत्ति को उत्तर, बाक़ी की अनसुनी\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "शक्ति गुणांक",
+            "वर्ग माध्य मूल मान",
+            "ट्रांसफ़ॉर्मर",
+            "श्रेणी अनुनाद"
+          ],
+          "solution": "श्रेणी अनुनाद तब होता है जब X_L = X_C, अर्थात् ω₀ = 1/√(LC) पर, जहाँ प्रतिबाधा घटकर अपने न्यूनतम मान R पर आ जाती है और धारा अपने अधिकतम पर पहुँचती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"एका वारंवारतेला उत्तर, बाकीच्यांकडे दुर्लक्ष\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "शक्ती गुणक",
+            "वर्ग माध्य मूळ मूल्य",
+            "ट्रान्सफॉर्मर",
+            "श्रेणी अनुनाद"
+          ],
+          "solution": "श्रेणी अनुनाद तेव्हा घडतो जेव्हा X_L = X_C, म्हणजे ω₀ = 1/√(LC) वर, जिथे प्रतिबाधा घटून आपल्या किमान मूल्य R वर येते आणि धारा आपल्या कमालीवर पोहोचते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Refuses to work on a battery\" goes correctly with which of these?",
+      "choices": [
+        "the transformer",
+        "series resonance",
+        "power factor",
+        "the root mean square value"
+      ],
+      "answerIndex": 0,
+      "solution": "A transformer changes an alternating voltage in the ratio of the turns on its two windings, V_s/V_p = N_s/N_p, transferring power between circuits that are not electrically connected. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"बैटरी पर चलने से इनकार करता है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "ट्रांसफ़ॉर्मर",
+            "श्रेणी अनुनाद",
+            "शक्ति गुणांक",
+            "वर्ग माध्य मूल मान"
+          ],
+          "solution": "ट्रांसफ़ॉर्मर प्रत्यावर्ती वोल्टता को अपनी दो लपेटों के फेरों के अनुपात में बदलता है, V_s/V_p = N_s/N_p, और ऐसे परिपथों के बीच शक्ति स्थानांतरित करता है जो विद्युत रूप से जुड़े नहीं हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"बॅटरीवर चालायला नकार देतो\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "ट्रान्सफॉर्मर",
+            "श्रेणी अनुनाद",
+            "शक्ती गुणक",
+            "वर्ग माध्य मूळ मूल्य"
+          ],
+          "solution": "ट्रान्सफॉर्मर प्रत्यावर्ती व्होल्टेज आपल्या दोन वेढणींच्या वेढ्यांच्या गुणोत्तरात बदलतो, V_s/V_p = N_s/N_p, आणि विद्युतदृष्ट्या जोडलेल्या नसलेल्या परिपथांमध्ये शक्ती हस्तांतरित करतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Cuts the current and sends no bill for it\" goes correctly with which of these?",
+      "choices": [
+        "series resonance",
+        "the choke coil",
+        "power factor",
+        "the transformer"
+      ],
+      "answerIndex": 1,
+      "solution": "A choke coil is an inductor used to limit alternating current without appreciable power loss, since its opposition ωL is reactive and its phase angle is close to 90°. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"धारा घटाता है और उसका बिल नहीं भेजता\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "श्रेणी अनुनाद",
+            "चोक कुंडली",
+            "शक्ति गुणांक",
+            "ट्रांसफ़ॉर्मर"
+          ],
+          "solution": "चोक कुंडली वह प्रेरक है जो प्रत्यावर्ती धारा को ध्यान देने योग्य शक्ति-हानि के बिना सीमित करने को काम आता है, क्योंकि उसका विरोध ωL प्रतिघाती है और उसका कलांतर 90° के निकट है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"धारा कमी करतो आणि त्याचे बिल पाठवत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "श्रेणी अनुनाद",
+            "चोक वेटोळे",
+            "शक्ती गुणक",
+            "ट्रान्सफॉर्मर"
+          ],
+          "solution": "चोक वेटोळे म्हणजे प्रत्यावर्ती धारा लक्षणीय शक्ती-हानीविना मर्यादित करण्यासाठी वापरलेला प्रेरक, कारण त्याचा विरोध ωL प्रतिघाती आहे आणि त्याचा कलाकोन 90° च्या जवळ आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The root mean square value EXCEPT —",
+      "choices": [
+        "The squaring is what saves the definition: the current is negative half the time but its SQUARE never is, so the mean of the square is honestly positive and the root restores the original units.",
+        "The 220 V of a domestic supply is an rms figure, so the insulation must actually survive a peak of about 311 V, which is why a component's voltage rating and the supply's stated voltage are not the same number.",
+        "The root mean square value is the steady current or voltage that would dissipate the same power in a resistor, and for a sinusoid it is the peak value divided by √2.",
+        "Reactance is the opposition to alternating current offered by an inductor or capacitor without dissipation, being X_L = ωL for an inductor and X_C = 1/ωC for a capacitor."
+      ],
+      "answerIndex": 3,
+      "solution": "Reactance is the opposition to alternating current offered by an inductor or capacitor without dissipation, being X_L = ωL for an inductor and X_C = 1/ωC for a capacitor. That belongs to Reactance, not The root mean square value — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "वर्ग माध्य मूल मान के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "वर्ग करना ही परिभाषा को बचाता है: धारा आधे समय ऋणात्मक है पर उसका वर्ग कभी नहीं, अतः वर्ग का माध्य ईमानदारी से धनात्मक है और मूल मूल मात्रक लौटा देता है।",
+            "घरेलू आपूर्ति के 220 V वर्ग माध्य मूल आँकड़ा है, अतः विद्युतरोधन को वस्तुतः लगभग 311 V का शिखर झेलना पड़ता है, इसीलिए किसी पुर्ज़े का वोल्टता निर्धारण और आपूर्ति की बताई वोल्टता एक ही संख्या नहीं हैं।",
+            "वर्ग माध्य मूल मान वह स्थिर धारा या वोल्टता है जो प्रतिरोधक में उतनी ही शक्ति खपाती, और ज्यावक्रीय के लिए वह शिखर मान बटा √2 है।",
+            "प्रतिघात प्रेरक या संधारित्र द्वारा बिना क्षय दिया गया प्रत्यावर्ती धारा का विरोध है, जो प्रेरक के लिए X_L = ωL और संधारित्र के लिए X_C = 1/ωC है।"
+          ],
+          "solution": "प्रतिघात प्रेरक या संधारित्र द्वारा बिना क्षय दिया गया प्रत्यावर्ती धारा का विरोध है, जो प्रेरक के लिए X_L = ωL और संधारित्र के लिए X_C = 1/ωC है। यह प्रतिघात की बात है, वर्ग माध्य मूल मान की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "वर्ग माध्य मूळ मूल्य विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "वर्ग करणेच व्याख्येला वाचवते: धारा अर्धा वेळ ऋण असते पण तिचा वर्ग कधीच नाही, म्हणून वर्गाचा माध्य प्रामाणिकपणे धन आहे आणि मूळ मूळ एकके परत आणते.",
+            "घरगुती पुरवठ्याचे 220 V हा वर्ग माध्य मूळ आकडा आहे, म्हणून विद्युतरोधनाला प्रत्यक्षात सुमारे 311 V चे शिखर सोसावे लागते, म्हणूनच एखाद्या घटकाचे व्होल्टेज निर्धारण आणि पुरवठ्याचा सांगितलेला व्होल्टेज एकच संख्या नाहीत.",
+            "वर्ग माध्य मूळ मूल्य म्हणजे ती स्थिर धारा वा व्होल्टेज जी रोधकात तितकीच शक्ती खर्चेल, आणि ज्यावक्रीयासाठी ते शिखर मूल्य भागिले √2 आहे.",
+            "प्रतिघात म्हणजे प्रेरक वा धारित्राने क्षयाविना दिलेला प्रत्यावर्ती धारेचा विरोध, जो प्रेरकासाठी X_L = ωL आणि धारित्रासाठी X_C = 1/ωC आहे."
+          ],
+          "solution": "प्रतिघात म्हणजे प्रेरक वा धारित्राने क्षयाविना दिलेला प्रत्यावर्ती धारेचा विरोध, जो प्रेरकासाठी X_L = ωL आणि धारित्रासाठी X_C = 1/ωC आहे. हे प्रतिघात चे आहे, वर्ग माध्य मूळ मूल्य चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Reactance EXCEPT —",
+      "choices": [
+        "Reactance is the opposition to alternating current offered by an inductor or capacitor without dissipation, being X_L = ωL for an inductor and X_C = 1/ωC for a capacitor.",
+        "Nothing is dissipated because the current and voltage are a quarter of a cycle apart, so energy taken from the source in one quarter is handed straight back in the next.",
+        "The root mean square value is the steady current or voltage that would dissipate the same power in a resistor, and for a sinusoid it is the peak value divided by √2.",
+        "The two behave in opposite ways as the frequency rises: an inductor blocks more and more, a capacitor blocks less and less, and at zero frequency the first is a plain wire and the second a broken circuit."
+      ],
+      "answerIndex": 2,
+      "solution": "The root mean square value is the steady current or voltage that would dissipate the same power in a resistor, and for a sinusoid it is the peak value divided by √2. That belongs to The root mean square value, not Reactance — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रतिघात के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "प्रतिघात प्रेरक या संधारित्र द्वारा बिना क्षय दिया गया प्रत्यावर्ती धारा का विरोध है, जो प्रेरक के लिए X_L = ωL और संधारित्र के लिए X_C = 1/ωC है।",
+            "कुछ भी नहीं खपता क्योंकि धारा और वोल्टता चक्र के चौथाई भाग से अलग हैं, अतः एक चौथाई में स्रोत से ली गई ऊर्जा अगले में सीधे लौटा दी जाती है।",
+            "वर्ग माध्य मूल मान वह स्थिर धारा या वोल्टता है जो प्रतिरोधक में उतनी ही शक्ति खपाती, और ज्यावक्रीय के लिए वह शिखर मान बटा √2 है।",
+            "आवृत्ति बढ़ने पर दोनों उलटे ढंग से बरतते हैं: प्रेरक अधिकाधिक रोकता है, संधारित्र कमोकम, और शून्य आवृत्ति पर पहला सादा तार है और दूसरा टूटा परिपथ।"
+          ],
+          "solution": "वर्ग माध्य मूल मान वह स्थिर धारा या वोल्टता है जो प्रतिरोधक में उतनी ही शक्ति खपाती, और ज्यावक्रीय के लिए वह शिखर मान बटा √2 है। यह वर्ग माध्य मूल मान की बात है, प्रतिघात की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "प्रतिघात विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "प्रतिघात म्हणजे प्रेरक वा धारित्राने क्षयाविना दिलेला प्रत्यावर्ती धारेचा विरोध, जो प्रेरकासाठी X_L = ωL आणि धारित्रासाठी X_C = 1/ωC आहे.",
+            "काहीही खर्च होत नाही कारण धारा आणि व्होल्टेज चक्राच्या चतुर्थांशाने वेगळे आहेत, म्हणून एका चतुर्थांशात स्रोताकडून घेतलेली ऊर्जा पुढच्यात थेट परत दिली जाते.",
+            "वर्ग माध्य मूळ मूल्य म्हणजे ती स्थिर धारा वा व्होल्टेज जी रोधकात तितकीच शक्ती खर्चेल, आणि ज्यावक्रीयासाठी ते शिखर मूल्य भागिले √2 आहे.",
+            "वारंवारता वाढताना दोन्ही उलट प्रकारे वागतात: प्रेरक अधिकाधिक अडवतो, धारित्र कमीकमी, आणि शून्य वारंवारतेवर पहिला साधी तार आहे आणि दुसरा तुटलेला परिपथ."
+          ],
+          "solution": "वर्ग माध्य मूळ मूल्य म्हणजे ती स्थिर धारा वा व्होल्टेज जी रोधकात तितकीच शक्ती खर्चेल, आणि ज्यावक्रीयासाठी ते शिखर मूल्य भागिले √2 आहे. हे वर्ग माध्य मूळ मूल्य चे आहे, प्रतिघात चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Power factor EXCEPT —",
+      "choices": [
+        "It is 1 for a pure resistance and exactly 0 for a pure inductor or capacitor, where the current is said to be wattless: it flows, it heats the supply cables, and it delivers no energy to the load at all.",
+        "Industrial consumers are billed a penalty for a low value, because the generator and the cables must be sized for the current they carry and not for the power the meter records.",
+        "Power factor is cos φ, the cosine of the phase angle between current and voltage, so the average power is P = V_rms I_rms cos φ rather than the plain product.",
+        "The root mean square value is the steady current or voltage that would dissipate the same power in a resistor, and for a sinusoid it is the peak value divided by √2."
+      ],
+      "answerIndex": 3,
+      "solution": "The root mean square value is the steady current or voltage that would dissipate the same power in a resistor, and for a sinusoid it is the peak value divided by √2. That belongs to The root mean square value, not Power factor — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "शक्ति गुणांक के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "शुद्ध प्रतिरोध के लिए यह 1 है और शुद्ध प्रेरक या संधारित्र के लिए ठीक 0, जहाँ धारा को वाटहीन कहते हैं: वह बहती है, आपूर्ति के तारों को गर्म करती है, और लोड को कोई ऊर्जा देती ही नहीं।",
+            "औद्योगिक उपभोक्ताओं से कम मान पर जुर्माना लिया जाता है, क्योंकि जनित्र और तार उस धारा के हिसाब से बनाने पड़ते हैं जो वे ढोते हैं, उस शक्ति के हिसाब से नहीं जो मीटर दर्ज करता है।",
+            "शक्ति गुणांक cos φ है, अर्थात् धारा और वोल्टता के बीच के कलांतर की कोज्या, अतः औसत शक्ति सादे गुणनफल के बजाय P = V_rms I_rms cos φ है।",
+            "वर्ग माध्य मूल मान वह स्थिर धारा या वोल्टता है जो प्रतिरोधक में उतनी ही शक्ति खपाती, और ज्यावक्रीय के लिए वह शिखर मान बटा √2 है।"
+          ],
+          "solution": "वर्ग माध्य मूल मान वह स्थिर धारा या वोल्टता है जो प्रतिरोधक में उतनी ही शक्ति खपाती, और ज्यावक्रीय के लिए वह शिखर मान बटा √2 है। यह वर्ग माध्य मूल मान की बात है, शक्ति गुणांक की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "शक्ती गुणक विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "शुद्ध रोधासाठी हा 1 आहे आणि शुद्ध प्रेरक वा धारित्रासाठी नेमका 0, जिथे धारेला वॅटविरहित म्हणतात: ती वाहते, पुरवठ्याच्या तारा तापवते, आणि भाराला कोणतीही ऊर्जा देतच नाही.",
+            "औद्योगिक ग्राहकांकडून कमी मूल्यावर दंड घेतला जातो, कारण जनित्र आणि तारा त्या धारेच्या हिशेबाने बनवाव्या लागतात जी त्या वाहतात, त्या शक्तीच्या हिशेबाने नव्हे जी मीटर नोंदवते.",
+            "शक्ती गुणक म्हणजे cos φ, म्हणजे धारा आणि व्होल्टेज यांतील कलाकोनाचा कोसाइन, म्हणून सरासरी शक्ती साध्या गुणाकाराऐवजी P = V_rms I_rms cos φ आहे.",
+            "वर्ग माध्य मूळ मूल्य म्हणजे ती स्थिर धारा वा व्होल्टेज जी रोधकात तितकीच शक्ती खर्चेल, आणि ज्यावक्रीयासाठी ते शिखर मूल्य भागिले √2 आहे."
+          ],
+          "solution": "वर्ग माध्य मूळ मूल्य म्हणजे ती स्थिर धारा वा व्होल्टेज जी रोधकात तितकीच शक्ती खर्चेल, आणि ज्यावक्रीयासाठी ते शिखर मूल्य भागिले √2 आहे. हे वर्ग माध्य मूळ मूल्य चे आहे, शक्ती गुणक चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Series resonance EXCEPT —",
+      "choices": [
+        "The current is in phase with the voltage there, so the power factor is 1 and the circuit is drawing everything it takes and using all of it.",
+        "The sharper the peak — the higher the Q — the better the circuit distinguishes one station from its neighbour, which is exactly what happens when a radio is tuned.",
+        "Series resonance occurs when X_L = X_C, at ω₀ = 1/√(LC), where the impedance falls to its minimum value R and the current reaches its maximum.",
+        "A choke coil is an inductor used to limit alternating current without appreciable power loss, since its opposition ωL is reactive and its phase angle is close to 90°."
+      ],
+      "answerIndex": 3,
+      "solution": "A choke coil is an inductor used to limit alternating current without appreciable power loss, since its opposition ωL is reactive and its phase angle is close to 90°. That belongs to The choke coil, not Series resonance — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "श्रेणी अनुनाद के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "वहाँ धारा वोल्टता के साथ समान कला में है, अतः शक्ति गुणांक 1 है और परिपथ जो कुछ लेता है सब ले रहा है और सब काम में ला रहा है।",
+            "शिखर जितना तेज़ — Q जितना ऊँचा — परिपथ एक स्टेशन को उसके पड़ोसी से उतना ही बेहतर अलग करता है, और रेडियो मिलाने पर ठीक यही होता है।",
+            "श्रेणी अनुनाद तब होता है जब X_L = X_C, अर्थात् ω₀ = 1/√(LC) पर, जहाँ प्रतिबाधा घटकर अपने न्यूनतम मान R पर आ जाती है और धारा अपने अधिकतम पर पहुँचती है।",
+            "चोक कुंडली वह प्रेरक है जो प्रत्यावर्ती धारा को ध्यान देने योग्य शक्ति-हानि के बिना सीमित करने को काम आता है, क्योंकि उसका विरोध ωL प्रतिघाती है और उसका कलांतर 90° के निकट है।"
+          ],
+          "solution": "चोक कुंडली वह प्रेरक है जो प्रत्यावर्ती धारा को ध्यान देने योग्य शक्ति-हानि के बिना सीमित करने को काम आता है, क्योंकि उसका विरोध ωL प्रतिघाती है और उसका कलांतर 90° के निकट है। यह चोक कुंडली की बात है, श्रेणी अनुनाद की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "श्रेणी अनुनाद विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "तिथे धारा व्होल्टेजशी समान कलेत आहे, म्हणून शक्ती गुणक 1 आहे आणि परिपथ जे काही घेतो ते सर्व घेत आहे आणि सर्व वापरत आहे.",
+            "शिखर जितके तीक्ष्ण — Q जितके उंच — परिपथ एका केंद्राला त्याच्या शेजाऱ्यापासून तितका चांगला वेगळा करतो, आणि रेडिओ जुळवताना नेमके हेच घडते.",
+            "श्रेणी अनुनाद तेव्हा घडतो जेव्हा X_L = X_C, म्हणजे ω₀ = 1/√(LC) वर, जिथे प्रतिबाधा घटून आपल्या किमान मूल्य R वर येते आणि धारा आपल्या कमालीवर पोहोचते.",
+            "चोक वेटोळे म्हणजे प्रत्यावर्ती धारा लक्षणीय शक्ती-हानीविना मर्यादित करण्यासाठी वापरलेला प्रेरक, कारण त्याचा विरोध ωL प्रतिघाती आहे आणि त्याचा कलाकोन 90° च्या जवळ आहे."
+          ],
+          "solution": "चोक वेटोळे म्हणजे प्रत्यावर्ती धारा लक्षणीय शक्ती-हानीविना मर्यादित करण्यासाठी वापरलेला प्रेरक, कारण त्याचा विरोध ωL प्रतिघाती आहे आणि त्याचा कलाकोन 90° च्या जवळ आहे. हे चोक वेटोळे चे आहे, श्रेणी अनुनाद चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student objects that the Indian mains cannot really be 220 V, since the voltage spends half of every cycle negative and its average over a cycle is exactly zero. A friend replies that the meaningful figure is 311 V because that is the largest value reached. Assess both claims.",
+      "choices": [
+        "The first student's arithmetic is right and his conclusion is wrong; the friend has named a real number that answers a different question. The plain average of a sinusoid over a cycle IS zero, which is why nobody quotes it — a zero average would predict no heating, and mains wires certainly heat. Heating depends on i², which is positive in both halves, so the useful figure is the root of the mean of the square: 220 V is the rms value, the steady voltage that would heat a resistor equally. The friend's 311 V is the PEAK, √2 times the rms, and it matters for insulation and component ratings but not for power",
+        "The first student is right: alternating supplies are quoted at 220 V only by convention, and no physical quantity actually equals 220 V anywhere in the circuit",
+        "The friend is right: 311 V is the correct figure and 220 V is simply the average of the positive half of the cycle",
+        "Both are wrong, because an alternating voltage cannot be given any single value at all and must always be quoted as a function of time"
+      ],
+      "answerIndex": 0,
+      "solution": "The objection is a good one and the answer is not that the student has miscalculated. The mean of sin over a full cycle really is zero, and that is precisely why the average is not the quantity anyone quotes. The right question is: what is an alternating supply FOR, and which single number captures it? Almost always the answer is heating — or, more generally, power delivered. Consider a resistor. The instantaneous power is p = i²R. Whatever i is doing, i² is positive: in the negative half-cycle the current runs backwards, but it heats the resistor exactly as much as it did going forwards, because reversing the direction of a current does not cool anything down. So the average power over a cycle is R times the MEAN OF i², and that mean is emphatically not zero. Define I_rms as the square root of that mean, and the average power becomes I²_rms R — the same expression as for a direct current. That is the point of the definition: it is constructed so that every d.c. power formula continues to work unchanged. For a sinusoid the arithmetic gives I_rms = I₀/√2, because the average of sin² over a cycle is exactly ½. So 220 V is not a convention or an approximation. It is a statement with experimental content: a heater run on this supply produces the same heat per second as it would on a 220 V battery. That is what a voltmeter marked for a.c. is built to display, and it is the number the electricity meter's arithmetic is founded on. Now the friend's 311 V, which is a real quantity wrongly promoted. It is the PEAK, V₀ = √2 × 220 ≈ 311 V, and it matters for a different set of decisions. Insulation must withstand it, or the appliance flashes over at the top of every cycle. A capacitor's voltage rating must exceed it. A rectifier diode must block it in reverse, and the smoothed d.c. produced by rectifying the mains sits near 311 V, not 220 V — a fact that surprises people building power supplies for the first time. The general lesson is worth extracting because it is not about electricity. When a quantity varies, no single number describes it, so a number must be CHOSEN, and it is chosen for a purpose. Average for the total charge transported, rms for the heating, peak for the insulation. The complaint that a single figure fails to capture a varying quantity is always true and never useful; the question is which failure is acceptable for the job at hand. (The second option confuses 'defined for a purpose' with 'arbitrary'; the third would give a very different number — the average of a half sinusoid is 2V₀/π ≈ 198 V, not 220 V; the fourth refuses to summarise at all, which would leave no way to sell electricity or rate a component.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक विद्यार्थी आपत्ति करता है कि भारतीय मुख्य आपूर्ति वस्तुतः 220 V हो ही नहीं सकती, क्योंकि वोल्टता हर चक्र का आधा समय ऋणात्मक रहती है और चक्र पर उसका औसत ठीक शून्य है। मित्र उत्तर देता है कि सार्थक आँकड़ा 311 V है क्योंकि वही सबसे बड़ा मान है जो पहुँचता है। दोनों दावों का आकलन करो।",
+          "choices": [
+            "पहले विद्यार्थी का अंकगणित सही है और उसका निष्कर्ष ग़लत; मित्र ने ऐसी असली संख्या बताई है जो किसी और प्रश्न का उत्तर देती है। चक्र पर ज्यावक्र का सादा औसत शून्य है ही, इसीलिए उसे कोई बताता नहीं — शून्य औसत यह भविष्यवाणी करता कि कोई तापन नहीं होगा, और मुख्य आपूर्ति के तार निश्चय ही गर्म होते हैं। तापन i² पर निर्भर है, जो दोनों आधों में धनात्मक है, अतः काम का आँकड़ा वर्ग के माध्य का मूल है: 220 V वर्ग माध्य मूल मान है, वह स्थिर वोल्टता जो प्रतिरोधक को उतना ही गर्म करती। मित्र का 311 V शिखर है, वर्ग माध्य मूल का √2 गुना, और वह विद्युतरोधन तथा पुर्ज़ों के निर्धारण के लिए मायने रखता है, शक्ति के लिए नहीं",
+            "पहला विद्यार्थी सही है: प्रत्यावर्ती आपूर्तियाँ 220 V केवल परिपाटी से बताई जाती हैं, और परिपथ में कहीं भी कोई भौतिक राशि वस्तुतः 220 V के बराबर नहीं है",
+            "मित्र सही है: 311 V सही आँकड़ा है और 220 V बस चक्र के धनात्मक आधे का औसत है",
+            "दोनों ग़लत हैं, क्योंकि प्रत्यावर्ती वोल्टता को कोई एक मान दिया ही नहीं जा सकता और उसे सदा समय के फलन के रूप में बताना पड़ता है"
+          ],
+          "solution": "आपत्ति अच्छी है और उत्तर यह नहीं कि विद्यार्थी की गणना ग़लत है। पूरे चक्र पर ज्या का माध्य सचमुच शून्य है, और ठीक इसीलिए औसत वह राशि नहीं जिसे कोई बताता है। सही प्रश्न यह है: प्रत्यावर्ती आपूर्ति किसलिए है, और उसे कौन-सी एक संख्या पकड़ती है? लगभग सदा उत्तर तापन है — या अधिक सामान्य रूप से, दी गई शक्ति। प्रतिरोधक लो। तात्क्षणिक शक्ति p = i²R है। i चाहे जो कर रहा हो, i² धनात्मक है: ऋण अर्ध-चक्र में धारा उलटी बहती है, पर वह प्रतिरोधक को ठीक उतना ही गर्म करती है जितना आगे जाते हुए करती थी, क्योंकि धारा की दिशा उलटने से कुछ ठंडा नहीं होता। अतः चक्र पर औसत शक्ति R गुना i² का माध्य है, और वह माध्य ज़ोर देकर शून्य नहीं है। I_rms को उस माध्य का वर्गमूल परिभाषित करो, और औसत शक्ति I²_rms R बन जाती है — दिष्ट धारा जैसा ही व्यंजक। परिभाषा का मर्म यही है: वह ऐसे गढ़ी गई है कि दिष्ट धारा का हर शक्ति-सूत्र ज्यों का त्यों चलता रहे। ज्यावक्र के लिए अंकगणित I_rms = I₀/√2 देता है, क्योंकि चक्र पर sin² का औसत ठीक ½ है। अतः 220 V परिपाटी या सन्निकटन नहीं। वह प्रायोगिक अर्थ वाला कथन है: इस आपूर्ति पर चलता हीटर प्रति सेकंड उतनी ही ऊष्मा देता है जितनी वह 220 V की बैटरी पर देता। प्रत्यावर्ती के लिए अंकित वोल्टमापी यही दिखाने को बना है, और बिजली के मीटर का गणित इसी संख्या पर टिका है। अब मित्र का 311 V, जो असली राशि है पर ग़लत जगह बिठाई गई। वह शिखर है, V₀ = √2 × 220 ≈ 311 V, और वह निर्णयों के दूसरे समुच्चय के लिए मायने रखता है। विद्युतरोधन को उसे झेलना ही है, वरना उपकरण हर चक्र के शीर्ष पर चटक जाएगा। संधारित्र का वोल्टता निर्धारण उससे अधिक होना चाहिए। दिष्टकारी डायोड को उसे उलटी दिशा में रोकना होगा, और मुख्य आपूर्ति को दिष्ट करके बनी चिकनी दिष्ट धारा 311 V के पास बैठती है, 220 V के नहीं — यह तथ्य पहली बार बिजली-आपूर्ति बनाने वालों को चौंकाता है। सामान्य सीख निकालने योग्य है क्योंकि वह बिजली के बारे में है ही नहीं। जब कोई राशि बदलती है, तो कोई एक संख्या उसका वर्णन नहीं करती, अतः एक संख्या चुननी पड़ती है, और वह किसी प्रयोजन के लिए चुनी जाती है। ढोए गए कुल आवेश के लिए औसत, तापन के लिए वर्ग माध्य मूल, विद्युतरोधन के लिए शिखर। यह शिकायत कि एक आँकड़ा बदलती राशि को नहीं पकड़ता, सदा सच है और कभी काम की नहीं; प्रश्न यह है कि हाथ के काम के लिए कौन-सी चूक स्वीकार्य है। (दूसरा विकल्प 'प्रयोजन के लिए परिभाषित' को 'मनमाना' समझ लेता है; तीसरा बहुत भिन्न संख्या देता — आधे ज्यावक्र का औसत 2V₀/π ≈ 198 V है, 220 V नहीं; चौथा सारांश देने से ही इनकार कर देता है, जिससे न बिजली बेची जा सकती न पुर्ज़ा निर्धारित किया जा सकता।)"
+        },
+        "mr": {
+          "stem": "एक विद्यार्थी आक्षेप घेतो की भारतीय मुख्य पुरवठा प्रत्यक्षात 220 V असूच शकत नाही, कारण व्होल्टेज प्रत्येक चक्राचा अर्धा वेळ ऋण असतो आणि चक्रावर त्याची सरासरी नेमकी शून्य आहे. मित्र उत्तर देतो की अर्थपूर्ण आकडा 311 V आहे कारण तेच सर्वांत मोठे मूल्य आहे जे गाठले जाते. दोन्ही दाव्यांचे मूल्यमापन करा.",
+          "choices": [
+            "पहिल्या विद्यार्थ्याचे अंकगणित बरोबर आहे आणि त्याचा निष्कर्ष चूक; मित्राने अशी खरी संख्या सांगितली आहे जी दुसऱ्याच प्रश्नाचे उत्तर देते. चक्रावर ज्यावक्राची साधी सरासरी शून्य आहेच, म्हणूनच ती कोणी सांगत नाही — शून्य सरासरी असे भाकीत करेल की तापन होणार नाही, आणि मुख्य पुरवठ्याच्या तारा नक्कीच तापतात. तापन i² वर अवलंबून आहे, जो दोन्ही अर्ध्यांत धन आहे, म्हणून उपयुक्त आकडा वर्गाच्या माध्याचे मूळ आहे: 220 V हे वर्ग माध्य मूळ मूल्य आहे, तो स्थिर व्होल्टेज जो रोधकाला तितकेच तापवेल. मित्राचा 311 V हा शिखर आहे, वर्ग माध्य मूळाच्या √2 पट, आणि तो विद्युतरोधन आणि घटकांच्या निर्धारणासाठी महत्त्वाचा आहे, शक्तीसाठी नाही",
+            "पहिला विद्यार्थी बरोबर आहे: प्रत्यावर्ती पुरवठे 220 V केवळ संकेताने सांगितले जातात, आणि परिपथात कुठेही कोणतीही भौतिक राशी प्रत्यक्षात 220 V इतकी नाही",
+            "मित्र बरोबर आहे: 311 V हा बरोबर आकडा आहे आणि 220 V म्हणजे फक्त चक्राच्या धन अर्ध्याची सरासरी",
+            "दोघेही चूक आहेत, कारण प्रत्यावर्ती व्होल्टेजला कोणतेही एकच मूल्य देताच येत नाही आणि तो नेहमी काळाचे फलन म्हणूनच सांगावा लागतो"
+          ],
+          "solution": "आक्षेप चांगला आहे आणि उत्तर हे नाही की विद्यार्थ्याची गणना चुकली आहे. पूर्ण चक्रावर साइनचा माध्य खरोखर शून्य आहे, आणि नेमके म्हणूनच सरासरी ही ती राशी नाही जी कोणी सांगते. योग्य प्रश्न हा आहे: प्रत्यावर्ती पुरवठा कशासाठी आहे, आणि त्याला कोणती एक संख्या पकडते? जवळपास नेहमी उत्तर तापन असते — किंवा अधिक सर्वसाधारणपणे, दिलेली शक्ती. रोधक घ्या. तात्कालिक शक्ती p = i²R आहे. i काहीही करत असो, i² धन आहे: ऋण अर्ध-चक्रात धारा उलटी वाहते, पण ती रोधकाला नेमके तितकेच तापवते जितके पुढे जाताना तापवत होती, कारण धारेची दिशा उलटल्याने काहीही थंड होत नाही. म्हणून चक्रावरची सरासरी शक्ती R गुणिले i² चा माध्य आहे, आणि तो माध्य ठामपणे शून्य नाही. I_rms ला त्या माध्याचे वर्गमूळ म्हणून व्याख्यायित करा, आणि सरासरी शक्ती I²_rms R होते — दिष्ट धारेसारखीच पदावली. व्याख्येचा गाभा हाच: ती अशी घडवली आहे की दिष्ट धारेचे प्रत्येक शक्ती-सूत्र जसेच्या तसे चालत राहावे. ज्यावक्रासाठी अंकगणित I_rms = I₀/√2 देते, कारण चक्रावर sin² ची सरासरी नेमकी ½ आहे. म्हणून 220 V हा संकेत वा अंदाज नाही. ते प्रायोगिक अर्थ असलेले विधान आहे: या पुरवठ्यावर चालणारा हीटर दर सेकंदाला तितकीच उष्णता देतो जितकी तो 220 V च्या बॅटरीवर देईल. प्रत्यावर्तीसाठी खुणा असलेला व्होल्टमापक हेच दाखवायला बनवलेला आहे, आणि विजेच्या मीटरचे गणित याच संख्येवर टिकलेले आहे. आता मित्राचा 311 V, जो खरी राशी आहे पण चुकीच्या जागी बसवलेली. तो शिखर आहे, V₀ = √2 × 220 ≈ 311 V, आणि तो निर्णयांच्या दुसऱ्या संचासाठी महत्त्वाचा आहे. विद्युतरोधनाला तो सोसावाच लागतो, अन्यथा उपकरण प्रत्येक चक्राच्या शिखरावर तडकेल. धारित्राचे व्होल्टेज निर्धारण त्याहून अधिक असावे लागते. दिष्टकारी डायोडला तो उलट दिशेने अडवावा लागतो, आणि मुख्य पुरवठा दिष्ट करून बनलेली गुळगुळीत दिष्ट धारा 311 V जवळ बसते, 220 V जवळ नाही — हे सत्य प्रथमच वीजपुरवठा बनवणाऱ्यांना चकित करते. सर्वसाधारण धडा काढण्याजोगा आहे कारण तो विजेबद्दल आहेच नाही. जेव्हा एखादी राशी बदलते, तेव्हा कोणतीही एक संख्या तिचे वर्णन करत नाही, म्हणून एक संख्या निवडावी लागते, आणि ती एखाद्या हेतूसाठी निवडली जाते. वाहून नेलेल्या एकूण प्रभारासाठी सरासरी, तापनासाठी वर्ग माध्य मूळ, विद्युतरोधनासाठी शिखर. एक आकडा बदलती राशी पकडत नाही ही तक्रार नेहमी खरी असते आणि कधीच उपयोगी नसते; प्रश्न हा की हातातल्या कामासाठी कोणती उणीव स्वीकारार्ह आहे. (दुसरा पर्याय 'हेतूसाठी व्याख्यायित' आणि 'मनमानी' यांची गल्लत करतो; तिसरा फार वेगळी संख्या देईल — अर्ध्या ज्यावक्राची सरासरी 2V₀/π ≈ 198 V आहे, 220 V नाही; चौथा सारांश देण्यासच नकार देतो, ज्याने ना वीज विकता येईल ना घटक निर्धारित करता येईल.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A factory's meter records 40 kW, but the supply company measures 250 A flowing at 400 V — a product of 100 kVA — and charges a penalty. The manager argues that since the meter is honest about the energy used, the extra current costs the company nothing. Explain the physics and what the factory should install.",
+      "choices": [
+        "The power factor is 40/100 = 0.4, so the current lags the voltage by about 66° — the load is dominated by induction motors, which are inductive. The manager is wrong that the extra current is free: the cables, the transformer and the generator all have to be sized for 250 A, and the I²R loss in the supply network scales with the SQUARE of that current, so 250 A wastes over six times as much in the lines as the 100 A that 40 kW at unity power factor would need. The cure is a bank of capacitors across the supply, whose leading current cancels the motors' lagging current, raising the power factor towards 1 and cutting the line current without changing the useful power at all",
+        "The manager is right: the extra current is wattless, and a wattless current by definition carries no energy and therefore costs nobody anything",
+        "The meter is faulty, since the true power consumed must be 100 kW and the factory is being undercharged rather than penalised",
+        "The factory should install a large resistor in series with the supply, which will bring the current down to the level the power warrants"
+      ],
+      "answerIndex": 0,
+      "solution": "Start by reading the two numbers correctly, because they are not measuring the same thing. The meter's 40 kW is real power — the average of vi over a cycle, the rate at which energy is actually converted to motion, heat and light inside the factory. The company's 400 V × 250 A = 100 kVA is apparent power, the plain product of rms voltage and rms current, which ignores the phase between them. Their ratio is the power factor: cos φ = 40/100 = 0.4, corresponding to a phase angle of about 66°. That the current LAGS is the signature of an inductive load, and an industrial site is full of them — induction motors are coils of wire wound on iron, and a motor running lightly loaded is close to a pure inductor. Now the manager's argument, which is half right in a way that matters. He is correct that the out-of-phase component of the current — the wattless current — delivers no net energy to his machines. Over each cycle it flows one way and back, borrowing energy from the supply in one quarter and returning it in the next, and integrated over a cycle its contribution to power is exactly zero. That is why the meter reads 40 kW and not 100 kW, and the meter is not lying. But the conclusion does not follow, and the reason is that the wattless current is not imaginary. It is real charge moving through real copper. The supply cables do not know or care what the phase is; they carry 250 A, and they dissipate I²R while doing it. Because the loss goes as the SQUARE of the current, this is not a small effect: the same 40 kW delivered at unity power factor would need only 100 A, and (250/100)² = 6.25, so the poor power factor is costing the network more than six times the transmission loss it would otherwise incur. The same current also sets the size of everything upstream — the cable's cross-section, the transformer's rating, the switchgear, the generator's winding. All of it must be built for 250 A while only 40 kW is being sold. The penalty is therefore not arbitrary; it is a charge for capacity the factory occupies and does not pay for through the energy meter. The remedy follows from the diagnosis. If the trouble is a lagging current, add something whose current leads: a capacitor. Connected in parallel across the supply, a capacitor bank draws a leading current that cancels part of the motors' lagging current, so the two reactive contributions subtract while the real power is untouched. The line current falls towards the 100 A the load genuinely needs, the power factor rises towards 1, the cables run cooler and the penalty disappears. Note what has NOT happened: the factory's machines are doing exactly the same work as before, and the meter still reads 40 kW. Nothing has been saved inside the factory. What has been fixed is the current in the wires leading to it. (The second option correctly identifies the wattless current and then forgets that it still flows through resistance; the third mistakes apparent power for real power; the fourth would reduce the current by wasting the difference as heat, which is the one solution that costs more than the problem.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक कारख़ाने का मीटर 40 kW दर्ज करता है, पर आपूर्ति कंपनी 400 V पर 250 A बहती नापती है — गुणनफल 100 kVA — और जुर्माना लगाती है। प्रबंधक तर्क देता है कि चूँकि मीटर काम में ली गई ऊर्जा के बारे में ईमानदार है, अतिरिक्त धारा से कंपनी का कुछ नहीं बिगड़ता। भौतिकी समझाओ और बताओ कि कारख़ाने को क्या लगाना चाहिए।",
+          "choices": [
+            "शक्ति गुणांक 40/100 = 0.4 है, अतः धारा वोल्टता से लगभग 66° पीछे है — लोड पर प्रेरण मोटरें हावी हैं, जो प्रेरकीय हैं। प्रबंधक यह मानने में ग़लत है कि अतिरिक्त धारा मुफ़्त है: तार, ट्रांसफ़ॉर्मर और जनित्र सबको 250 A के हिसाब से बनाना पड़ता है, और आपूर्ति जाल में I²R हानि उसी धारा के वर्ग के साथ चलती है, अतः 250 A लाइनों में उससे छह गुना से अधिक बरबाद करता है जितना एकांक शक्ति गुणांक पर 40 kW के लिए चाहिए 100 A करता। इलाज आपूर्ति के आर-पार संधारित्रों की पंक्ति है, जिसकी अग्रगामी धारा मोटरों की पश्चगामी धारा को काट देती है, शक्ति गुणांक को 1 की ओर उठाती है और काम की शक्ति बिलकुल बदले बिना लाइन की धारा घटा देती है",
+            "प्रबंधक सही है: अतिरिक्त धारा वाटहीन है, और वाटहीन धारा परिभाषा से कोई ऊर्जा नहीं ढोती और इसलिए किसी का कुछ नहीं बिगाड़ती",
+            "मीटर ख़राब है, क्योंकि वस्तुतः खपी शक्ति 100 kW होनी चाहिए और कारख़ाने से जुर्माना नहीं बल्कि कम वसूली हो रही है",
+            "कारख़ाने को आपूर्ति के श्रेणी में बड़ा प्रतिरोधक लगाना चाहिए, जो धारा को उस स्तर तक ले आएगा जितने की शक्ति गवाही देती है"
+          ],
+          "solution": "पहले दोनों संख्याएँ ठीक से पढ़ो, क्योंकि वे एक ही चीज़ नहीं नाप रहीं। मीटर के 40 kW वास्तविक शक्ति हैं — चक्र पर vi का औसत, वह दर जिससे ऊर्जा वस्तुतः कारख़ाने के भीतर गति, ऊष्मा और प्रकाश में बदलती है। कंपनी के 400 V × 250 A = 100 kVA आभासी शक्ति हैं, वर्ग माध्य मूल वोल्टता और धारा का सादा गुणनफल, जो उनके बीच की कला की अनदेखी करता है। उनका अनुपात शक्ति गुणांक है: cos φ = 40/100 = 0.4, जो लगभग 66° के कलांतर से मेल खाता है। धारा का पीछे रहना प्रेरकीय लोड की पहचान है, और औद्योगिक स्थल उनसे भरा है — प्रेरण मोटरें लोहे पर लपेटी तार की कुंडलियाँ हैं, और हल्के लोड पर चलती मोटर शुद्ध प्रेरक के निकट है। अब प्रबंधक का तर्क, जो ऐसे ढंग से आधा सही है जो मायने रखता है। वह इस बारे में सही है कि धारा का कला-बाहर घटक — वाटहीन धारा — उसकी मशीनों को कोई नेट ऊर्जा नहीं देता। हर चक्र में वह एक ओर जाती और लौटती है, एक चौथाई में आपूर्ति से ऊर्जा उधार लेती और अगले में लौटाती है, और चक्र पर समाकलित करने पर शक्ति में उसका अंश ठीक शून्य है। इसीलिए मीटर 40 kW पढ़ता है, 100 kW नहीं, और मीटर झूठ नहीं बोल रहा। पर निष्कर्ष नहीं निकलता, और कारण यह कि वाटहीन धारा काल्पनिक नहीं है। वह असली ताँबे में चलता असली आवेश है। आपूर्ति के तारों को न पता है न परवाह कि कला क्या है; वे 250 A ढोते हैं, और ऐसा करते हुए I²R खपाते हैं। चूँकि हानि धारा के वर्ग से चलती है, यह छोटा प्रभाव नहीं: वही 40 kW एकांक शक्ति गुणांक पर देने को केवल 100 A चाहिए होते, और (250/100)² = 6.25, अतः ख़राब शक्ति गुणांक जाल को उस संचरण हानि से छह गुना से अधिक की क़ीमत दे रहा है जो अन्यथा लगती। वही धारा ऊपर की हर चीज़ का आकार भी तय करती है — तार का परिच्छेद, ट्रांसफ़ॉर्मर का निर्धारण, स्विचगियर, जनित्र की लपेट। यह सब 250 A के लिए बनाना पड़ता है जबकि बेचे केवल 40 kW जा रहे हैं। अतः जुर्माना मनमाना नहीं; वह उस क्षमता का शुल्क है जो कारख़ाना घेरता है और ऊर्जा मीटर के ज़रिए जिसका दाम नहीं चुकाता। उपाय निदान से निकलता है। यदि गड़बड़ पश्चगामी धारा है, तो ऐसा कुछ जोड़ो जिसकी धारा अग्रगामी हो: संधारित्र। आपूर्ति के आर-पार समांतर में जोड़ी गई संधारित्र-पंक्ति अग्रगामी धारा खींचती है जो मोटरों की पश्चगामी धारा का एक भाग काट देती है, अतः दोनों प्रतिघाती अंश घटते हैं जबकि वास्तविक शक्ति अछूती रहती है। लाइन की धारा उन 100 A की ओर गिरती है जो लोड को सचमुच चाहिए, शक्ति गुणांक 1 की ओर उठता है, तार ठंडे चलते हैं और जुर्माना ग़ायब हो जाता है। ध्यान दो कि क्या नहीं हुआ: कारख़ाने की मशीनें ठीक वही काम कर रही हैं जो पहले करती थीं, और मीटर अब भी 40 kW पढ़ता है। कारख़ाने के भीतर कुछ भी नहीं बचा। जो ठीक हुआ वह उस तक जाते तारों की धारा है। (दूसरा विकल्प वाटहीन धारा की पहचान ठीक करता है और फिर भूल जाता है कि वह अब भी प्रतिरोध में से बहती है; तीसरा आभासी शक्ति को वास्तविक शक्ति समझ लेता है; चौथा धारा तो घटा देता पर अंतर को ऊष्मा बनाकर, और यही वह एक हल है जो समस्या से महँगा पड़ता है।)"
+        },
+        "mr": {
+          "stem": "एका कारखान्याचे मीटर 40 kW नोंदवते, पण पुरवठा कंपनी 400 V वर 250 A वाहताना मोजते — गुणाकार 100 kVA — आणि दंड लावते. व्यवस्थापक युक्तिवाद करतो की मीटर वापरलेल्या ऊर्जेबद्दल प्रामाणिक असल्याने, जादा धारेमुळे कंपनीचे काहीही बिघडत नाही. भौतिकी समजावा आणि कारखान्याने काय बसवावे ते सांगा.",
+          "choices": [
+            "शक्ती गुणक 40/100 = 0.4 आहे, म्हणून धारा व्होल्टेजच्या सुमारे 66° मागे आहे — भारावर प्रेरण मोटारींचे वर्चस्व आहे, ज्या प्रेरकी आहेत. व्यवस्थापक हे मानण्यात चूक करतो की जादा धारा फुकट आहे: तारा, ट्रान्सफॉर्मर आणि जनित्र या सर्वांना 250 A च्या हिशेबाने बनवावे लागते, आणि पुरवठा जाळ्यातील I²R हानी त्याच धारेच्या वर्गासोबत चालते, म्हणून 250 A तारांमध्ये त्याहून सहापटींहून अधिक वाया घालवते जितके एकक शक्ती गुणकावर 40 kW साठी लागणारे 100 A घालवेल. उपाय म्हणजे पुरवठ्याच्या आरपार धारित्रांची रांग, जिची अग्रगामी धारा मोटारींची पश्चगामी धारा कापते, शक्ती गुणक 1 कडे उचलते आणि उपयुक्त शक्ती मुळीच न बदलता तारेतील धारा घटवते",
+            "व्यवस्थापक बरोबर आहे: जादा धारा वॅटविरहित आहे, आणि वॅटविरहित धारा व्याख्येने कोणतीही ऊर्जा वाहत नाही आणि म्हणून कोणाचेही काहीही बिघडवत नाही",
+            "मीटर बिघडलेले आहे, कारण प्रत्यक्षात खर्च झालेली शक्ती 100 kW असली पाहिजे आणि कारखान्याकडून दंड नव्हे तर कमी वसुली होत आहे",
+            "कारखान्याने पुरवठ्याच्या श्रेणीत मोठा रोधक बसवावा, जो धारा त्या पातळीवर आणेल जितकी शक्ती दर्शवते"
+          ],
+          "solution": "आधी दोन्ही संख्या नीट वाचा, कारण त्या एकच गोष्ट मोजत नाहीत. मीटरचे 40 kW ही वास्तविक शक्ती आहे — चक्रावर vi ची सरासरी, ती गती ज्याने ऊर्जा प्रत्यक्षात कारखान्याच्या आत गती, उष्णता आणि प्रकाशात बदलते. कंपनीचे 400 V × 250 A = 100 kVA ही आभासी शक्ती आहे, वर्ग माध्य मूळ व्होल्टेज आणि धारा यांचा साधा गुणाकार, जो त्यांच्यातील कलेकडे दुर्लक्ष करतो. त्यांचे गुणोत्तर म्हणजे शक्ती गुणक: cos φ = 40/100 = 0.4, जे सुमारे 66° च्या कलाकोनाशी जुळते. धारेचे मागे राहणे ही प्रेरकी भाराची खूण आहे, आणि औद्योगिक जागा त्यांनी भरलेली आहे — प्रेरण मोटारी लोखंडावर गुंडाळलेली तारेची वेटोळी आहेत, आणि हलक्या भारावर चालणारी मोटार शुद्ध प्रेरकाच्या जवळ आहे. आता व्यवस्थापकाचा युक्तिवाद, जो महत्त्वाच्या पद्धतीने अर्धा बरोबर आहे. तो याबाबत बरोबर आहे की धारेचा कला-बाहेरचा घटक — वॅटविरहित धारा — त्याच्या यंत्रांना कोणतीही निव्वळ ऊर्जा देत नाही. प्रत्येक चक्रात ती एका दिशेने जाते आणि परतते, एका चतुर्थांशात पुरवठ्याकडून ऊर्जा उसनी घेते आणि पुढच्यात परत करते, आणि चक्रावर समाकलित केल्यावर शक्तीतला तिचा वाटा नेमका शून्य आहे. म्हणूनच मीटर 40 kW वाचते, 100 kW नाही, आणि मीटर खोटे बोलत नाही. पण निष्कर्ष निघत नाही, आणि कारण असे की वॅटविरहित धारा काल्पनिक नाही. ती खऱ्या तांब्यातून जाणारा खरा प्रभार आहे. पुरवठ्याच्या तारांना ना माहीत आहे ना पर्वा की कला काय आहे; त्या 250 A वाहतात, आणि तसे करताना I²R खर्चतात. हानी धारेच्या वर्गाने चालत असल्याने, हा लहान परिणाम नाही: तेच 40 kW एकक शक्ती गुणकावर द्यायला केवळ 100 A लागले असते, आणि (250/100)² = 6.25, म्हणून खराब शक्ती गुणक जाळ्याला अन्यथा लागणाऱ्या संचरण हानीहून सहापटींहून अधिक किंमत देत आहे. तीच धारा वरच्या प्रत्येक गोष्टीचा आकारही ठरवते — तारेचा छेद, ट्रान्सफॉर्मरचे निर्धारण, स्विचगियर, जनित्राची वेढणी. हे सर्व 250 A साठी बांधावे लागते तर विकले जातात केवळ 40 kW. म्हणून दंड मनमानी नाही; तो त्या क्षमतेचे शुल्क आहे जी कारखाना व्यापतो आणि ऊर्जा मीटरमार्फत जिची किंमत मोजत नाही. उपाय निदानातून निघतो. जर अडचण पश्चगामी धारा असेल, तर असे काही जोडा ज्याची धारा अग्रगामी असेल: धारित्र. पुरवठ्याच्या आरपार समांतरात जोडलेली धारित्रांची रांग अग्रगामी धारा ओढते जी मोटारींच्या पश्चगामी धारेचा भाग कापते, म्हणून दोन्ही प्रतिघाती वाटे वजा होतात तर वास्तविक शक्ती अस्पर्श राहते. तारेतील धारा त्या 100 A कडे घसरते जी भाराला खरोखर हवी, शक्ती गुणक 1 कडे उचलतो, तारा थंड चालतात आणि दंड नाहीसा होतो. काय घडले नाही ते लक्षात घ्या: कारखान्याची यंत्रे नेमके तेच काम करत आहेत जे आधी करत होती, आणि मीटर अजूनही 40 kW वाचते. कारखान्याच्या आत काहीही वाचले नाही. जे दुरुस्त झाले ते त्याच्याकडे जाणाऱ्या तारांतील धारा आहे. (दुसरा पर्याय वॅटविरहित धारेची ओळख बरोबर करतो आणि मग विसरतो की ती अजूनही रोधातून वाहते; तिसरा आभासी शक्तीला वास्तविक शक्ती समजतो; चौथा धारा घटवेल पण फरक उष्णता बनवून, आणि हाच तो एक उपाय जो समस्येहून महाग पडतो.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The rms value of an alternating current is 5 A. What is its peak value? Take √2 = 1.4.",
+      "choices": [
+        "2.5 A",
+        "7 A",
+        "3.57 A",
+        "10 A"
+      ],
+      "answerIndex": 1,
+      "solution": "I₀ = √2 × I_rms = 1.4 × 5 = 7 A. The peak is always the larger of the two, which is the check to run before deciding whether to multiply or divide. It is the peak that a fuse or a diode has to survive, while the rms is what heats the wire. (3.57 divides by √2 instead of multiplying; 10 doubles.)",
+      "checkExpr": "5*1.4",
+      "translations": {
+        "hi": {
+          "stem": "एक प्रत्यावर्ती धारा का वर्ग माध्य मूल मान 5 A है। उसका शिखर मान क्या है? √2 = 1.4 लो।",
+          "choices": [
+            "2.5 A",
+            "7 A",
+            "3.57 A",
+            "10 A"
+          ],
+          "solution": "I₀ = √2 × I_rms = 1.4 × 5 = 7 A. शिखर सदा दोनों में बड़ा होता है, और गुणा करना है या भाग, यह तय करने से पहले यही जाँच चलानी चाहिए। फ़्यूज़ या डायोड को शिखर झेलना पड़ता है, जबकि तार को वर्ग माध्य मूल गर्म करता है। (3.57 गुणा करने के बजाय √2 से भाग दे देता है; 10 दुगुना कर देता है।)"
+        },
+        "mr": {
+          "stem": "एका प्रत्यावर्ती धारेचे वर्ग माध्य मूळ मूल्य 5 A आहे. तिचे शिखर मूल्य किती? √2 = 1.4 घ्या.",
+          "choices": [
+            "2.5 A",
+            "7 A",
+            "3.57 A",
+            "10 A"
+          ],
+          "solution": "I₀ = √2 × I_rms = 1.4 × 5 = 7 A. शिखर नेहमी दोहोंत मोठे असते, आणि गुणायचे की भागायचे हे ठरवण्याआधी हीच तपासणी चालवावी. फ्यूज वा डायोडला शिखर सोसावे लागते, तर तार वर्ग माध्य मूळ तापवते. (3.57 गुणण्याऐवजी √2 ने भागते; 10 दुप्पट करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The mains supply in India alternates at 50 Hz. What is the period of one cycle, in milliseconds?",
+      "choices": [
+        "50",
+        "20",
+        "100",
+        "0.02"
+      ],
+      "answerIndex": 1,
+      "solution": "T = 1/f = 1/50 s = 0.02 s, which is 1000/50 = 20 ms. Note that the current reverses twice in each cycle, so it passes through zero a hundred times a second — which is why a filament lamp on mains flickers at 100 Hz and not at 50 Hz, too fast for the eye but visible to a camera. (0.02 quotes the period in seconds where milliseconds were asked; 100 counts the reversals rather than the period.)",
+      "checkExpr": "1000/50",
+      "translations": {
+        "hi": {
+          "stem": "भारत में मुख्य आपूर्ति 50 Hz पर प्रत्यावर्तित होती है। एक चक्र का आवर्तकाल, मिलीसेकंड में, क्या है?",
+          "choices": [
+            "50",
+            "20",
+            "100",
+            "0.02"
+          ],
+          "solution": "T = 1/f = 1/50 s = 0.02 s, अर्थात् 1000/50 = 20 ms. ध्यान दो कि धारा हर चक्र में दो बार उलटती है, अतः वह सेकंड में सौ बार शून्य से गुज़रती है — इसीलिए मुख्य आपूर्ति पर तंतु-लैंप 50 Hz पर नहीं बल्कि 100 Hz पर टिमटिमाता है, आँख के लिए बहुत तेज़ पर कैमरे को दिखता। (0.02 आवर्तकाल सेकंड में बताता है जहाँ मिलीसेकंड पूछे गए; 100 आवर्तकाल के बजाय उलटावों को गिनता है।)"
+        },
+        "mr": {
+          "stem": "भारतात मुख्य पुरवठा 50 Hz वर प्रत्यावर्तित होतो. एका चक्राचा आवर्तकाल, मिलिसेकंदात, किती?",
+          "choices": [
+            "50",
+            "20",
+            "100",
+            "0.02"
+          ],
+          "solution": "T = 1/f = 1/50 s = 0.02 s, म्हणजे 1000/50 = 20 ms. लक्षात घ्या की धारा प्रत्येक चक्रात दोनदा उलटते, म्हणून ती सेकंदाला शंभर वेळा शून्यातून जाते — म्हणूनच मुख्य पुरवठ्यावरचा तंतू-दिवा 50 Hz वर नव्हे तर 100 Hz वर लुकलुकतो, डोळ्यासाठी फार जलद पण कॅमेऱ्याला दिसणारा. (0.02 आवर्तकाल सेकंदात सांगते जिथे मिलिसेकंद विचारले; 100 आवर्तकाळाऐवजी उलटवण्या मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "An inductor of 0.5 H is connected to a supply of angular frequency 100 rad/s. What is its inductive reactance?",
+      "choices": [
+        "0.005 Ω",
+        "50 Ω",
+        "2 Ω",
+        "200 Ω"
+      ],
+      "answerIndex": 1,
+      "solution": "X_L = ωL = 100 × 0.5 = 50 Ω. The reactance rises with frequency, because a faster-changing current means a larger back-e.m.f. from the same inductance — so at zero frequency the inductor is nothing but a piece of wire, and at very high frequency it is nearly a break in the circuit. (0.005 inverts the product, which is the capacitor's rule; 200 divides by L.)",
+      "checkExpr": "100*0.5",
+      "translations": {
+        "hi": {
+          "stem": "0.5 H का प्रेरक 100 rad/s कोणीय आवृत्ति की आपूर्ति से जोड़ा जाता है। उसका प्रेरणिक प्रतिघात क्या है?",
+          "choices": [
+            "0.005 Ω",
+            "50 Ω",
+            "2 Ω",
+            "200 Ω"
+          ],
+          "solution": "X_L = ωL = 100 × 0.5 = 50 Ω. प्रतिघात आवृत्ति के साथ बढ़ता है, क्योंकि तेज़ बदलती धारा का अर्थ है उसी प्रेरकत्व से बड़ा प्रति-विद्युत वाहक बल — अतः शून्य आवृत्ति पर प्रेरक तार के टुकड़े से अधिक कुछ नहीं, और बहुत ऊँची आवृत्ति पर वह लगभग परिपथ में टूट है। (0.005 गुणनफल उलट देता है, जो संधारित्र का नियम है; 200 L से भाग दे देता है।)"
+        },
+        "mr": {
+          "stem": "0.5 H चा प्रेरक 100 rad/s कोनीय वारंवारतेच्या पुरवठ्याला जोडला जातो. त्याचा प्रेरणी प्रतिघात किती?",
+          "choices": [
+            "0.005 Ω",
+            "50 Ω",
+            "2 Ω",
+            "200 Ω"
+          ],
+          "solution": "X_L = ωL = 100 × 0.5 = 50 Ω. प्रतिघात वारंवारतेसोबत वाढतो, कारण जलद बदलणारी धारा म्हणजे त्याच प्रेरकत्वाकडून मोठे प्रति-विद्युतचालक बल — म्हणून शून्य वारंवारतेवर प्रेरक तारेच्या तुकड्याहून अधिक काही नाही, आणि फार उंच वारंवारतेवर तो जवळपास परिपथातला खंड आहे. (0.005 गुणाकार उलटवते, जो धारित्राचा नियम आहे; 200 हे L ने भागते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A capacitor of 20 μF is connected to a supply of angular frequency 500 rad/s. What is its capacitive reactance?",
+      "choices": [
+        "0.01 Ω",
+        "10 Ω",
+        "10000 Ω",
+        "100 Ω"
+      ],
+      "answerIndex": 3,
+      "solution": "X_C = 1/(ωC) = 1/(500 × 20 × 10⁻⁶) = 1/0.01 = 100 Ω. The reciprocal is the whole difference from the inductor: here reactance FALLS as frequency rises, so a capacitor blocks direct current completely and passes high frequencies almost freely, which is exactly what a coupling capacitor is for. (0.01 stops at ωC without inverting; 10000 mishandles the micro prefix.)",
+      "checkExpr": "1/0.01",
+      "translations": {
+        "hi": {
+          "stem": "20 μF का संधारित्र 500 rad/s कोणीय आवृत्ति की आपूर्ति से जोड़ा जाता है। उसका धारितीय प्रतिघात क्या है?",
+          "choices": [
+            "0.01 Ω",
+            "10 Ω",
+            "10000 Ω",
+            "100 Ω"
+          ],
+          "solution": "X_C = 1/(ωC) = 1/(500 × 20 × 10⁻⁶) = 1/0.01 = 100 Ω. व्युत्क्रम ही प्रेरक से पूरा अंतर है: यहाँ आवृत्ति बढ़ने पर प्रतिघात घटता है, अतः संधारित्र दिष्ट धारा को पूरी तरह रोकता है और ऊँची आवृत्तियों को लगभग स्वतंत्र जाने देता है, और युग्मन संधारित्र इसी के लिए है। (0.01 ωC पर रुक जाता है और उलटता नहीं; 10000 माइक्रो उपसर्ग ग़लत सँभालता है।)"
+        },
+        "mr": {
+          "stem": "20 μF चे धारित्र 500 rad/s कोनीय वारंवारतेच्या पुरवठ्याला जोडले जाते. त्याचा धारिती प्रतिघात किती?",
+          "choices": [
+            "0.01 Ω",
+            "10 Ω",
+            "10000 Ω",
+            "100 Ω"
+          ],
+          "solution": "X_C = 1/(ωC) = 1/(500 × 20 × 10⁻⁶) = 1/0.01 = 100 Ω. व्यस्तांक हाच प्रेरकापासूनचा अख्खा फरक: इथे वारंवारता वाढल्यावर प्रतिघात घटतो, म्हणून धारित्र दिष्ट धारा पूर्णपणे अडवते आणि उंच वारंवारता जवळपास मुक्तपणे जाऊ देते, आणि जोडणी धारित्र याचसाठी आहे. (0.01 हे ωC वर थांबते आणि उलटवत नाही; 10000 मायक्रो उपसर्ग चुकीचा हाताळते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A series circuit has R = 3 Ω, inductive reactance 8 Ω and capacitive reactance 4 Ω. What is its impedance?",
+      "choices": [
+        "9",
+        "5",
+        "7",
+        "15"
+      ],
+      "answerIndex": 1,
+      "solution": "The two reactances are opposite in sign, so they partly cancel: X = 8 − 4 = 4 Ω. Then Z = √(R² + X²) = √(9 + 16) = √25 = 15/3 = 5 Ω. The reason the three are not simply added is that R is in phase with the current while the reactances are a quarter cycle away from it — they add as perpendicular vectors, which is why a 3-4-5 triangle appears. (15 adds all three magnitudes; 7 subtracts the capacitive reactance from the sum of the others.)",
+      "checkExpr": "15/3",
+      "translations": {
+        "hi": {
+          "stem": "एक श्रेणी परिपथ में R = 3 Ω, प्रेरणिक प्रतिघात 8 Ω और धारितीय प्रतिघात 4 Ω है। उसकी प्रतिबाधा क्या है?",
+          "choices": [
+            "9",
+            "5",
+            "7",
+            "15"
+          ],
+          "solution": "दोनों प्रतिघात चिह्न में विपरीत हैं, अतः वे आंशिक रूप से कट जाते हैं: X = 8 − 4 = 4 Ω. फिर Z = √(R² + X²) = √(9 + 16) = √25 = 15/3 = 5 Ω. तीनों को यों ही न जोड़ने का कारण यह कि R धारा के साथ समान कला में है जबकि प्रतिघात उससे चौथाई चक्र दूर — वे लंबवत सदिशों की तरह जुड़ते हैं, इसीलिए 3-4-5 त्रिभुज प्रकट होता है। (15 तीनों परिमाण जोड़ देता है; 7 बाक़ी दोनों के योग में से धारितीय प्रतिघात घटा देता है।)"
+        },
+        "mr": {
+          "stem": "एका श्रेणी परिपथात R = 3 Ω, प्रेरणी प्रतिघात 8 Ω आणि धारिती प्रतिघात 4 Ω आहे. त्याची प्रतिबाधा किती?",
+          "choices": [
+            "9",
+            "5",
+            "7",
+            "15"
+          ],
+          "solution": "दोन्ही प्रतिघात चिन्हात विरुद्ध आहेत, म्हणून ते अंशतः कापले जातात: X = 8 − 4 = 4 Ω. मग Z = √(R² + X²) = √(9 + 16) = √25 = 15/3 = 5 Ω. तिन्ही नुसते न जोडण्याचे कारण असे की R धारेशी समान कलेत आहे तर प्रतिघात तिच्यापासून चतुर्थांश चक्र दूर — ते लंब सदिशांप्रमाणे जुळतात, म्हणूनच 3-4-5 त्रिकोण प्रकट होतो. (15 तिन्ही परिमाणे जोडते; 7 उरलेल्या दोहोंच्या बेरजेतून धारिती प्रतिघात वजा करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A series LCR circuit at resonance has R = 10 Ω and is fed from a 100 V rms supply. What rms current flows?",
+      "choices": [
+        "1000 A",
+        "1 A",
+        "0.1 A",
+        "10 A"
+      ],
+      "answerIndex": 3,
+      "solution": "At resonance X_L = X_C, the two cancel exactly, and the impedance falls to its minimum value Z = R = 10 Ω. So I = V/Z = 100/10 = 10 A. This is the largest current the circuit can draw at any frequency, and the current is in phase with the voltage there, so the power factor is 1 and every watt drawn is a watt used. (1000 multiplies instead of dividing; 0.1 inverts the ratio.)",
+      "checkExpr": "100/10",
+      "translations": {
+        "hi": {
+          "stem": "अनुनाद पर एक श्रेणी LCR परिपथ में R = 10 Ω है और उसे 100 V वर्ग माध्य मूल आपूर्ति दी जाती है। कितनी वर्ग माध्य मूल धारा बहती है?",
+          "choices": [
+            "1000 A",
+            "1 A",
+            "0.1 A",
+            "10 A"
+          ],
+          "solution": "अनुनाद पर X_L = X_C, दोनों ठीक-ठीक कट जाते हैं, और प्रतिबाधा घटकर अपने न्यूनतम मान Z = R = 10 Ω पर आ जाती है। अतः I = V/Z = 100/10 = 10 A. किसी भी आवृत्ति पर परिपथ जितनी अधिकतम धारा खींच सकता है यह वही है, और वहाँ धारा वोल्टता के साथ समान कला में है, अतः शक्ति गुणांक 1 है और खींचा गया हर वाट काम में आया वाट है। (1000 भाग देने के बजाय गुणा कर देता है; 0.1 अनुपात उलट देता है।)"
+        },
+        "mr": {
+          "stem": "अनुनादावर एका श्रेणी LCR परिपथात R = 10 Ω आहे आणि त्याला 100 V वर्ग माध्य मूळ पुरवठा दिला जातो. किती वर्ग माध्य मूळ धारा वाहते?",
+          "choices": [
+            "1000 A",
+            "1 A",
+            "0.1 A",
+            "10 A"
+          ],
+          "solution": "अनुनादावर X_L = X_C, दोन्ही नेमके कापले जातात, आणि प्रतिबाधा घटून आपल्या किमान मूल्य Z = R = 10 Ω वर येते. म्हणून I = V/Z = 100/10 = 10 A. कोणत्याही वारंवारतेवर परिपथ जितकी कमाल धारा ओढू शकतो ती हीच, आणि तिथे धारा व्होल्टेजशी समान कलेत आहे, म्हणून शक्ती गुणक 1 आहे आणि ओढलेला प्रत्येक वॅट वापरलेला वॅट आहे. (1000 भागण्याऐवजी गुणते; 0.1 गुणोत्तर उलटवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A circuit draws 5 A rms at 200 V rms with a power factor of 0.6. What average power, in watts, does it consume?",
+      "choices": [
+        "1000",
+        "60",
+        "120",
+        "600"
+      ],
+      "answerIndex": 3,
+      "solution": "P = V_rms I_rms cos φ = 200 × 5 × 0.6 = 600 W. The plain product 200 × 5 = 1000 is the apparent power in volt-amperes, and the 400 VA difference is not consumed by the load but still flows through the supply cables, heating them — which is why a low power factor attracts a penalty even though the meter reads honestly. (1000 omits the power factor; 120 leaves out the current.)",
+      "checkExpr": "200*5*0.6",
+      "translations": {
+        "hi": {
+          "stem": "एक परिपथ 200 V वर्ग माध्य मूल पर 5 A वर्ग माध्य मूल धारा खींचता है और शक्ति गुणांक 0.6 है। वह कितनी औसत शक्ति, वाट में, खपाता है?",
+          "choices": [
+            "1000",
+            "60",
+            "120",
+            "600"
+          ],
+          "solution": "P = V_rms I_rms cos φ = 200 × 5 × 0.6 = 600 W. सादा गुणनफल 200 × 5 = 1000 वोल्ट-ऐम्पियर में आभासी शक्ति है, और 400 VA का अंतर लोड नहीं खपाता पर वह फिर भी आपूर्ति के तारों से बहता है और उन्हें गर्म करता है — इसीलिए मीटर ईमानदारी से पढ़ने पर भी कम शक्ति गुणांक पर जुर्माना लगता है। (1000 शक्ति गुणांक छोड़ देता है; 120 धारा छोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "एक परिपथ 200 V वर्ग माध्य मूळावर 5 A वर्ग माध्य मूळ धारा ओढतो आणि शक्ती गुणक 0.6 आहे. तो किती सरासरी शक्ती, वॉटमध्ये, खर्चतो?",
+          "choices": [
+            "1000",
+            "60",
+            "120",
+            "600"
+          ],
+          "solution": "P = V_rms I_rms cos φ = 200 × 5 × 0.6 = 600 W. साधा गुणाकार 200 × 5 = 1000 ही व्होल्ट-अँपिअरमधली आभासी शक्ती आहे, आणि 400 VA चा फरक भार खर्चत नाही पण तरीही तो पुरवठ्याच्या तारांतून वाहतो आणि त्यांना तापवतो — म्हणूनच मीटर प्रामाणिकपणे वाचत असूनही कमी शक्ती गुणकावर दंड लागतो. (1000 शक्ती गुणक गाळते; 120 धारा गाळते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A transformer steps 220 V down to 11 V. If the primary has 1000 turns, how many turns has the secondary?",
+      "choices": [
+        "20",
+        "50",
+        "20000",
+        "2000"
+      ],
+      "answerIndex": 1,
+      "solution": "The turns ratio equals the voltage ratio: N_s = N_p × V_s/V_p = 1000 × 11/220 = 50 turns. A step-DOWN transformer has fewer turns on the secondary, which is the sanity check to run before dividing. Note that the secondary's wire must be thicker despite being shorter, because the current there is twenty times larger. (20 uses the voltage ratio alone; 20000 inverts the ratio.)",
+      "checkExpr": "1000*11/220",
+      "translations": {
+        "hi": {
+          "stem": "एक ट्रांसफ़ॉर्मर 220 V को घटाकर 11 V करता है। यदि प्राथमिक में 1000 फेरे हैं, तो द्वितीयक में कितने फेरे हैं?",
+          "choices": [
+            "20",
+            "50",
+            "20000",
+            "2000"
+          ],
+          "solution": "फेरों का अनुपात वोल्टता के अनुपात के बराबर है: N_s = N_p × V_s/V_p = 1000 × 11/220 = 50 फेरे। घटाने वाले ट्रांसफ़ॉर्मर के द्वितीयक में कम फेरे होते हैं, और भाग देने से पहले यही समझदारी की जाँच है। ध्यान दो कि द्वितीयक का तार छोटा होते हुए भी मोटा होना चाहिए, क्योंकि वहाँ धारा बीस गुना है। (20 केवल वोल्टता का अनुपात लगाता है; 20000 अनुपात उलट देता है।)"
+        },
+        "mr": {
+          "stem": "एक ट्रान्सफॉर्मर 220 V ला घटवून 11 V करतो. जर प्राथमिकात 1000 वेढे असतील, तर दुय्यमात किती वेढे आहेत?",
+          "choices": [
+            "20",
+            "50",
+            "20000",
+            "2000"
+          ],
+          "solution": "वेढ्यांचे गुणोत्तर व्होल्टेजच्या गुणोत्तराइतके आहे: N_s = N_p × V_s/V_p = 1000 × 11/220 = 50 वेढे. खाली आणणाऱ्या ट्रान्सफॉर्मरच्या दुय्यमात कमी वेढे असतात, आणि भागण्याआधी हीच शहाणपणाची तपासणी. लक्षात घ्या की दुय्यमाची तार लहान असूनही जाड असावी लागते, कारण तिथे धारा वीसपट आहे. (20 केवळ व्होल्टेजचे गुणोत्तर लावते; 20000 गुणोत्तर उलटवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "An ideal transformer fed from 220 V delivers 11 V at 20 A. What current does it draw from the supply?",
+      "choices": [
+        "0.05 A",
+        "400 A",
+        "1 A",
+        "20 A"
+      ],
+      "answerIndex": 2,
+      "solution": "An ideal transformer conserves power, so V_p I_p = V_s I_s and I_p = 11 × 20/220 = 1 A. The output is 220 W and so is the input; nothing has been gained. What has been traded is the shape of the delivery — twenty times the current at a twentieth of the voltage — and that trade is the reason transmission lines run at high voltage, since halving the current quarters the I²R loss along the way. (20 assumes the current is unchanged; 400 multiplies the two secondary figures.)",
+      "checkExpr": "11*20/220",
+      "translations": {
+        "hi": {
+          "stem": "220 V से चलता एक आदर्श ट्रांसफ़ॉर्मर 11 V पर 20 A देता है। वह आपूर्ति से कितनी धारा खींचता है?",
+          "choices": [
+            "0.05 A",
+            "400 A",
+            "1 A",
+            "20 A"
+          ],
+          "solution": "आदर्श ट्रांसफ़ॉर्मर शक्ति संरक्षित रखता है, अतः V_p I_p = V_s I_s और I_p = 11 × 20/220 = 1 A. निर्गत 220 W है और निवेश भी; कुछ मिला नहीं। जो बदला गया वह देने का रूप है — बीसवें भाग की वोल्टता पर बीस गुना धारा — और वही अदला-बदली कारण है कि संचरण लाइनें ऊँची वोल्टता पर चलती हैं, क्योंकि धारा आधी करने पर रास्ते की I²R हानि चौथाई रह जाती है। (20 मान लेता है कि धारा अपरिवर्तित है; 400 द्वितीयक के दोनों आँकड़े गुणा कर देता है।)"
+        },
+        "mr": {
+          "stem": "220 V वरून चालणारा एक आदर्श ट्रान्सफॉर्मर 11 V वर 20 A देतो. तो पुरवठ्यातून किती धारा ओढतो?",
+          "choices": [
+            "0.05 A",
+            "400 A",
+            "1 A",
+            "20 A"
+          ],
+          "solution": "आदर्श ट्रान्सफॉर्मर शक्ती संधारित ठेवतो, म्हणून V_p I_p = V_s I_s आणि I_p = 11 × 20/220 = 1 A. निर्गत 220 W आहे आणि निवेशही; काहीही मिळाले नाही. जे बदलले ते देण्याचे स्वरूप — विसाव्या भागाच्या व्होल्टेजवर वीसपट धारा — आणि तीच अदलाबदल कारण आहे की संचरण तारा उंच व्होल्टेजवर चालतात, कारण धारा निम्मी केल्यास वाटेतील I²R हानी चतुर्थांश उरते. (20 गृहीत धरते की धारा अपरिवर्तित आहे; 400 दुय्यमाचे दोन्ही आकडे गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A series circuit has L = 2 H and C = 8 μF. At what angular frequency, in rad/s, does it resonate?",
+      "choices": [
+        "125",
+        "62500",
+        "250",
+        "0.004"
+      ],
+      "answerIndex": 2,
+      "solution": "Resonance is X_L = X_C, that is ωL = 1/(ωC), which rearranges to ω₀ = 1/√(LC). Here LC = 2 × 8 × 10⁻⁶ = 16 × 10⁻⁶, so √(LC) = 4 × 10⁻³ = 0.004 and ω₀ = 1/0.004 = 250 rad/s. Note what the resistance does NOT do: R is absent from this formula entirely, so it fixes how sharp the peak is and how large the current becomes, but not where the peak sits. (0.004 stops at √(LC); 62500 forgets the square root.)",
+      "checkExpr": "1/0.004",
+      "translations": {
+        "hi": {
+          "stem": "एक श्रेणी परिपथ में L = 2 H और C = 8 μF है। वह किस कोणीय आवृत्ति, rad/s में, पर अनुनाद करता है?",
+          "choices": [
+            "125",
+            "62500",
+            "250",
+            "0.004"
+          ],
+          "solution": "अनुनाद X_L = X_C है, अर्थात् ωL = 1/(ωC), जिसे फिर से जमाने पर ω₀ = 1/√(LC). यहाँ LC = 2 × 8 × 10⁻⁶ = 16 × 10⁻⁶, अतः √(LC) = 4 × 10⁻³ = 0.004 और ω₀ = 1/0.004 = 250 rad/s. ध्यान दो कि प्रतिरोध क्या नहीं करता: इस सूत्र में R है ही नहीं, अतः वह तय करता है कि शिखर कितना तेज़ है और धारा कितनी बड़ी होती है, यह नहीं कि शिखर कहाँ बैठता है। (0.004 √(LC) पर रुक जाता है; 62500 वर्गमूल भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "एका श्रेणी परिपथात L = 2 H आणि C = 8 μF आहे. तो कोणत्या कोनीय वारंवारतेवर, rad/s मध्ये, अनुनाद करतो?",
+          "choices": [
+            "125",
+            "62500",
+            "250",
+            "0.004"
+          ],
+          "solution": "अनुनाद म्हणजे X_L = X_C, म्हणजे ωL = 1/(ωC), जे पुन्हा मांडल्यास ω₀ = 1/√(LC). इथे LC = 2 × 8 × 10⁻⁶ = 16 × 10⁻⁶, म्हणून √(LC) = 4 × 10⁻³ = 0.004 आणि ω₀ = 1/0.004 = 250 rad/s. रोध काय करत नाही ते लक्षात घ्या: या सूत्रात R आहेच नाही, म्हणून तो ठरवतो की शिखर किती तीक्ष्ण आहे आणि धारा किती मोठी होते, हे नाही की शिखर कुठे बसते. (0.004 हे √(LC) वर थांबते; 62500 वर्गमूळ विसरते.)"
+        }
+      }
+    }
+  ]
+}

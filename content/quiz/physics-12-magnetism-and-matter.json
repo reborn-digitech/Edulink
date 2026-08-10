@@ -1,0 +1,1003 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 12,
+  "chapter": "Chapter 5 — Magnetism and Matter",
+  "name": "Magnetism and Matter",
+  "slug": "physics-12-magnetism-and-matter",
+  "summary": "A field whose lines never begin or end anywhere, so that no closed surface can ever have a net outward flux and no isolated pole has ever been found; a bar magnet which turns out on inspection to be a coil of circulating charge rather than a thing with two ends; a planet whose own field is described by a direction, a tilt and a strength that none of the three can be got from either of the others; and three ways matter can answer a field it is put into — feebly against it, feebly with it, or overwhelmingly with it and then remembering afterwards what it was asked to do.",
+  "position": 5,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "चुंबकत्व एवं द्रव्य",
+      "summary": "ऐसा क्षेत्र जिसकी रेखाएँ कहीं शुरू या ख़त्म होती ही नहीं, अतः किसी बंद पृष्ठ से नेट बाहरगामी फ्लक्स कभी नहीं हो सकता और अलग-थलग ध्रुव आज तक मिला नहीं; वह छड़ चुंबक जो जाँचने पर दो सिरों वाली वस्तु के बजाय परिक्रमा करते आवेश की कुंडली निकलती है; वह ग्रह जिसका अपना क्षेत्र एक दिशा, एक झुकाव और एक प्रबलता से बताया जाता है और तीनों में से कोई भी दूसरे दो से नहीं निकाला जा सकता; और तीन तरीक़े जिनसे द्रव्य उस क्षेत्र को उत्तर दे सकता है जिसमें उसे रखा गया — कमज़ोर होकर उसके विरुद्ध, कमज़ोर होकर उसके साथ, या अत्यधिक बल से उसके साथ और फिर बाद में यह याद रखते हुए कि उससे क्या करने को कहा गया था।"
+    },
+    "mr": {
+      "name": "चुंबकत्व आणि द्रव्य",
+      "summary": "असे क्षेत्र ज्याच्या रेषा कुठेही सुरू वा संपतच नाहीत, म्हणून कोणत्याही बंद पृष्ठातून निव्वळ बहिर्गामी फ्लक्स कधीच असू शकत नाही आणि एकाकी ध्रुव आजवर सापडलेला नाही; तो दांडा चुंबक जो तपासल्यावर दोन टोके असलेली वस्तू नसून फिरणाऱ्या प्रभाराचे वेटोळे निघतो; तो ग्रह ज्याचे स्वतःचे क्षेत्र एक दिशा, एक कल आणि एक तीव्रता यांनी वर्णिले जाते आणि तिन्हींपैकी कोणतेही उरलेल्या दोहोंतून काढता येत नाही; आणि तीन मार्ग ज्यांनी द्रव्य त्या क्षेत्राला उत्तर देऊ शकते ज्यात त्याला ठेवले गेले — क्षीणपणे त्याच्याविरुद्ध, क्षीणपणे त्याच्यासोबत, वा प्रचंड जोराने त्याच्यासोबत आणि मग नंतर हे लक्षात ठेवत की त्याला काय करायला सांगितले होते."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Draw any closed surface anywhere, around anything, and the total outward magnetic flux through it is zero — every line that enters has to leave. Which law states this?",
+      "choices": [
+        "Gauss's law for magnetism",
+        "The bar magnet as an equivalent solenoid",
+        "Paramagnetism",
+        "The Earth's magnetic elements"
+      ],
+      "answerIndex": 0,
+      "solution": "Gauss's law for magnetism says the net magnetic flux through any closed surface is exactly zero, which is the formal statement that isolated magnetic poles do not exist. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "कहीं भी, किसी भी चीज़ के चारों ओर, कोई भी बंद पृष्ठ खींचो और उससे कुल बाहरगामी चुंबकीय फ्लक्स शून्य होता है — जो रेखा भीतर आती है उसे निकलना ही पड़ता है। यह कौन-सा नियम कहता है?",
+          "choices": [
+            "चुंबकत्व के लिए गाउस का नियम",
+            "समतुल्य परिनालिका के रूप में छड़ चुंबक",
+            "अनुचुंबकत्व",
+            "पृथ्वी के चुंबकीय अवयव"
+          ],
+          "solution": "चुंबकत्व के लिए गाउस का नियम कहता है कि किसी भी बंद पृष्ठ से नेट चुंबकीय फ्लक्स ठीक शून्य है, जो इस बात का औपचारिक कथन है कि अलग-थलग चुंबकीय ध्रुव होते ही नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "कुठेही, कशाच्याही भोवती, कोणतेही बंद पृष्ठ काढा आणि त्यातून जाणारा एकूण बहिर्गामी चुंबकीय फ्लक्स शून्य असतो — जी रेषा आत येते तिला बाहेर पडावेच लागते. हा कोणता नियम सांगतो?",
+          "choices": [
+            "चुंबकत्वासाठी गॉसचा नियम",
+            "समतुल्य सोलेनॉइड म्हणून दांडा चुंबक",
+            "अनुचुंबकत्व",
+            "पृथ्वीचे चुंबकीय घटक"
+          ],
+          "solution": "चुंबकत्वासाठी गॉसचा नियम सांगतो की कोणत्याही बंद पृष्ठातून जाणारा निव्वळ चुंबकीय फ्लक्स नेमका शून्य आहे, जे एकाकी चुंबकीय ध्रुव अस्तित्वातच नाहीत याचे औपचारिक विधान आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The bar magnet as an equivalent solenoid is correct?",
+      "choices": [
+        "The bar magnet as an equivalent solenoid is the recognition that a magnet's field is produced by circulating charge inside it, so a magnet is a dipole with moment m and never a pair of separable poles.",
+        "Paramagnetism is a feeble attraction into a field, shown by substances whose atoms carry permanent magnetic moments that the field partially aligns against the disordering effect of heat.",
+        "The Earth's magnetic elements are declination, dip and the horizontal component, and all three are needed because a field is a vector while each measurement gives only one number about it.",
+        "Gauss's law for magnetism says the net magnetic flux through any closed surface is exactly zero, which is the formal statement that isolated magnetic poles do not exist."
+      ],
+      "answerIndex": 0,
+      "solution": "The bar magnet as an equivalent solenoid is the recognition that a magnet's field is produced by circulating charge inside it, so a magnet is a dipole with moment m and never a pair of separable poles. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "समतुल्य परिनालिका के रूप में छड़ चुंबक के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "समतुल्य परिनालिका के रूप में छड़ चुंबक यह पहचान है कि चुंबक का क्षेत्र उसके भीतर परिक्रमा करते आवेश से बनता है, अतः चुंबक m आघूर्ण वाला द्विध्रुव है, अलग किए जा सकने वाले ध्रुवों का युग्म कभी नहीं।",
+            "अनुचुंबकत्व क्षेत्र में कमज़ोर आकर्षण है, जो उन पदार्थों में दिखता है जिनके परमाणु स्थायी चुंबकीय आघूर्ण रखते हैं जिन्हें क्षेत्र ऊष्मा के अव्यवस्थित करने वाले प्रभाव के विरुद्ध आंशिक रूप से संरेखित करता है।",
+            "पृथ्वी के चुंबकीय अवयव दिक्पात, नति और क्षैतिज घटक हैं, और तीनों चाहिए क्योंकि क्षेत्र सदिश है जबकि हर माप उसके बारे में केवल एक संख्या देता है।",
+            "चुंबकत्व के लिए गाउस का नियम कहता है कि किसी भी बंद पृष्ठ से नेट चुंबकीय फ्लक्स ठीक शून्य है, जो इस बात का औपचारिक कथन है कि अलग-थलग चुंबकीय ध्रुव होते ही नहीं।"
+          ],
+          "solution": "समतुल्य परिनालिका के रूप में छड़ चुंबक यह पहचान है कि चुंबक का क्षेत्र उसके भीतर परिक्रमा करते आवेश से बनता है, अतः चुंबक m आघूर्ण वाला द्विध्रुव है, अलग किए जा सकने वाले ध्रुवों का युग्म कभी नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "समतुल्य सोलेनॉइड म्हणून दांडा चुंबक विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "समतुल्य सोलेनॉइड म्हणून दांडा चुंबक ही ती ओळख की चुंबकाचे क्षेत्र त्याच्या आत फिरणाऱ्या प्रभारापासून बनते, म्हणून चुंबक हा m आघूर्ण असलेला द्विध्रुव आहे, वेगळे करता येणाऱ्या ध्रुवांची जोडी कधीच नाही.",
+            "अनुचुंबकत्व म्हणजे क्षेत्रात होणारे क्षीण आकर्षण, जे अशा पदार्थांत दिसते ज्यांचे अणू कायम चुंबकीय आघूर्ण बाळगतात आणि क्षेत्र त्यांना उष्णतेच्या अव्यवस्थित करणाऱ्या परिणामाविरुद्ध अंशतः संरेखित करते.",
+            "पृथ्वीचे चुंबकीय घटक म्हणजे दिक्पात, नती आणि आडवा घटक, आणि तिन्ही लागतात कारण क्षेत्र सदिश आहे तर प्रत्येक माप त्याबद्दल केवळ एक संख्या देते.",
+            "चुंबकत्वासाठी गॉसचा नियम सांगतो की कोणत्याही बंद पृष्ठातून जाणारा निव्वळ चुंबकीय फ्लक्स नेमका शून्य आहे, जे एकाकी चुंबकीय ध्रुव अस्तित्वातच नाहीत याचे औपचारिक विधान आहे."
+          ],
+          "solution": "समतुल्य सोलेनॉइड म्हणून दांडा चुंबक ही ती ओळख की चुंबकाचे क्षेत्र त्याच्या आत फिरणाऱ्या प्रभारापासून बनते, म्हणून चुंबक हा m आघूर्ण असलेला द्विध्रुव आहे, वेगळे करता येणाऱ्या ध्रुवांची जोडी कधीच नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The total field follows from two of them by B = H/cos δ, so the vertical component and the total are not extra measurements but consequences of the dip and the horizontal component together.\" — which of these is this about?",
+      "choices": [
+        "The bar magnet as an equivalent solenoid",
+        "The Earth's magnetic elements",
+        "Gauss's law for magnetism",
+        "Diamagnetism"
+      ],
+      "answerIndex": 1,
+      "solution": "The Earth's magnetic elements are declination, dip and the horizontal component, and all three are needed because a field is a vector while each measurement gives only one number about it. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"कुल क्षेत्र इनमें से दो से B = H/cos δ द्वारा निकलता है, अतः ऊर्ध्वाधर घटक और कुल क्षेत्र अतिरिक्त माप नहीं बल्कि नति और क्षैतिज घटक के साथ मिलकर निकले परिणाम हैं।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "समतुल्य परिनालिका के रूप में छड़ चुंबक",
+            "पृथ्वी के चुंबकीय अवयव",
+            "चुंबकत्व के लिए गाउस का नियम",
+            "प्रतिचुंबकत्व"
+          ],
+          "solution": "पृथ्वी के चुंबकीय अवयव दिक्पात, नति और क्षैतिज घटक हैं, और तीनों चाहिए क्योंकि क्षेत्र सदिश है जबकि हर माप उसके बारे में केवल एक संख्या देता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"एकूण क्षेत्र यांपैकी दोहोंतून B = H/cos δ ने निघते, म्हणून उभा घटक आणि एकूण ही जादा मापे नसून नती आणि आडवा घटक यांच्या मिळून निघालेले परिणाम आहेत.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "समतुल्य सोलेनॉइड म्हणून दांडा चुंबक",
+            "पृथ्वीचे चुंबकीय घटक",
+            "चुंबकत्वासाठी गॉसचा नियम",
+            "प्रतिचुंबकत्व"
+          ],
+          "solution": "पृथ्वीचे चुंबकीय घटक म्हणजे दिक्पात, नती आणि आडवा घटक, आणि तिन्ही लागतात कारण क्षेत्र सदिश आहे तर प्रत्येक माप त्याबद्दल केवळ एक संख्या देते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Bismuth, copper and water are all pushed feebly OUT of a strong field and towards the weaker region, and cooling them makes no difference whatever. Which class of material behaves like this?",
+      "choices": [
+        "Diamagnetism",
+        "Ferromagnetism",
+        "Paramagnetism",
+        "Gauss's law for magnetism"
+      ],
+      "answerIndex": 0,
+      "solution": "Diamagnetism is a feeble repulsion from a field, arising in substances whose atoms have no net magnetic moment of their own, so the field itself induces opposing moments in them. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बिस्मथ, ताँबा और पानी सब प्रबल क्षेत्र से बाहर, कमज़ोर भाग की ओर, कमज़ोरी से धकेले जाते हैं, और उन्हें ठंडा करने से कोई फ़र्क़ पड़ता ही नहीं। पदार्थों का कौन-सा वर्ग ऐसा बरतता है?",
+          "choices": [
+            "प्रतिचुंबकत्व",
+            "लौहचुंबकत्व",
+            "अनुचुंबकत्व",
+            "चुंबकत्व के लिए गाउस का नियम"
+          ],
+          "solution": "प्रतिचुंबकत्व क्षेत्र से कमज़ोर प्रतिकर्षण है, जो उन पदार्थों में उठता है जिनके परमाणुओं का अपना कोई नेट चुंबकीय आघूर्ण नहीं, अतः क्षेत्र स्वयं उनमें विरोधी आघूर्ण प्रेरित कर देता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "बिस्मथ, तांबे आणि पाणी हे सर्व तीव्र क्षेत्रातून बाहेर, क्षीण भागाकडे, क्षीणपणे ढकलले जातात, आणि त्यांना थंड केल्याने काहीही फरक पडत नाही. पदार्थांचा कोणता वर्ग असा वागतो?",
+          "choices": [
+            "प्रतिचुंबकत्व",
+            "लोहचुंबकत्व",
+            "अनुचुंबकत्व",
+            "चुंबकत्वासाठी गॉसचा नियम"
+          ],
+          "solution": "प्रतिचुंबकत्व म्हणजे क्षेत्रापासूनचे क्षीण प्रतिकर्षण, जे अशा पदार्थांत उद्भवते ज्यांच्या अणूंना स्वतःचे कोणतेही निव्वळ चुंबकीय आघूर्ण नाही, म्हणून क्षेत्रच त्यांच्यात विरोधी आघूर्ण प्रेरित करते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Paramagnetism is correct?",
+      "choices": [
+        "Ferromagnetism is a very strong attraction into a field, produced when neighbouring atomic moments lock parallel to one another over whole domains rather than aligning one at a time.",
+        "The Earth's magnetic elements are declination, dip and the horizontal component, and all three are needed because a field is a vector while each measurement gives only one number about it.",
+        "Paramagnetism is a feeble attraction into a field, shown by substances whose atoms carry permanent magnetic moments that the field partially aligns against the disordering effect of heat.",
+        "Diamagnetism is a feeble repulsion from a field, arising in substances whose atoms have no net magnetic moment of their own, so the field itself induces opposing moments in them."
+      ],
+      "answerIndex": 2,
+      "solution": "Paramagnetism is a feeble attraction into a field, shown by substances whose atoms carry permanent magnetic moments that the field partially aligns against the disordering effect of heat. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अनुचुंबकत्व के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "लौहचुंबकत्व क्षेत्र में बहुत प्रबल आकर्षण है, जो तब बनता है जब पड़ोसी परमाणविक आघूर्ण एक-एक करके संरेखित होने के बजाय पूरे प्रांतों में एक-दूसरे के समांतर जकड़ जाते हैं।",
+            "पृथ्वी के चुंबकीय अवयव दिक्पात, नति और क्षैतिज घटक हैं, और तीनों चाहिए क्योंकि क्षेत्र सदिश है जबकि हर माप उसके बारे में केवल एक संख्या देता है।",
+            "अनुचुंबकत्व क्षेत्र में कमज़ोर आकर्षण है, जो उन पदार्थों में दिखता है जिनके परमाणु स्थायी चुंबकीय आघूर्ण रखते हैं जिन्हें क्षेत्र ऊष्मा के अव्यवस्थित करने वाले प्रभाव के विरुद्ध आंशिक रूप से संरेखित करता है।",
+            "प्रतिचुंबकत्व क्षेत्र से कमज़ोर प्रतिकर्षण है, जो उन पदार्थों में उठता है जिनके परमाणुओं का अपना कोई नेट चुंबकीय आघूर्ण नहीं, अतः क्षेत्र स्वयं उनमें विरोधी आघूर्ण प्रेरित कर देता है।"
+          ],
+          "solution": "अनुचुंबकत्व क्षेत्र में कमज़ोर आकर्षण है, जो उन पदार्थों में दिखता है जिनके परमाणु स्थायी चुंबकीय आघूर्ण रखते हैं जिन्हें क्षेत्र ऊष्मा के अव्यवस्थित करने वाले प्रभाव के विरुद्ध आंशिक रूप से संरेखित करता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "अनुचुंबकत्व विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "लोहचुंबकत्व म्हणजे क्षेत्रात होणारे अतिशय तीव्र आकर्षण, जे तेव्हा घडते जेव्हा शेजारची अणुआघूर्णे एकेक करून संरेखित होण्याऐवजी अख्ख्या प्रांतांत एकमेकांना समांतर जखडतात.",
+            "पृथ्वीचे चुंबकीय घटक म्हणजे दिक्पात, नती आणि आडवा घटक, आणि तिन्ही लागतात कारण क्षेत्र सदिश आहे तर प्रत्येक माप त्याबद्दल केवळ एक संख्या देते.",
+            "अनुचुंबकत्व म्हणजे क्षेत्रात होणारे क्षीण आकर्षण, जे अशा पदार्थांत दिसते ज्यांचे अणू कायम चुंबकीय आघूर्ण बाळगतात आणि क्षेत्र त्यांना उष्णतेच्या अव्यवस्थित करणाऱ्या परिणामाविरुद्ध अंशतः संरेखित करते.",
+            "प्रतिचुंबकत्व म्हणजे क्षेत्रापासूनचे क्षीण प्रतिकर्षण, जे अशा पदार्थांत उद्भवते ज्यांच्या अणूंना स्वतःचे कोणतेही निव्वळ चुंबकीय आघूर्ण नाही, म्हणून क्षेत्रच त्यांच्यात विरोधी आघूर्ण प्रेरित करते."
+          ],
+          "solution": "अनुचुंबकत्व म्हणजे क्षेत्रात होणारे क्षीण आकर्षण, जे अशा पदार्थांत दिसते ज्यांचे अणू कायम चुंबकीय आघूर्ण बाळगतात आणि क्षेत्र त्यांना उष्णतेच्या अव्यवस्थित करणाऱ्या परिणामाविरुद्ध अंशतः संरेखित करते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"Magnetising such a material is largely a matter of favourably oriented domains GROWING at the expense of their neighbours, which is a rearrangement of boundaries rather than a turning of individual atoms.\" — which of these is this about?",
+      "choices": [
+        "Diamagnetism",
+        "The Earth's magnetic elements",
+        "Ferromagnetism",
+        "Paramagnetism"
+      ],
+      "answerIndex": 2,
+      "solution": "Ferromagnetism is a very strong attraction into a field, produced when neighbouring atomic moments lock parallel to one another over whole domains rather than aligning one at a time. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ऐसे पदार्थ का चुंबकन मुख्यतः इसका मामला है कि अनुकूल दिशा वाले प्रांत अपने पड़ोसियों की क़ीमत पर बढ़ते हैं, जो अलग-अलग परमाणुओं के घूमने के बजाय सीमाओं का पुनर्विन्यास है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "प्रतिचुंबकत्व",
+            "पृथ्वी के चुंबकीय अवयव",
+            "लौहचुंबकत्व",
+            "अनुचुंबकत्व"
+          ],
+          "solution": "लौहचुंबकत्व क्षेत्र में बहुत प्रबल आकर्षण है, जो तब बनता है जब पड़ोसी परमाणविक आघूर्ण एक-एक करके संरेखित होने के बजाय पूरे प्रांतों में एक-दूसरे के समांतर जकड़ जाते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"अशा पदार्थाचे चुंबकन मुख्यतः याची बाब आहे की अनुकूल दिशेचे प्रांत आपल्या शेजाऱ्यांच्या खर्चाने वाढतात, जे वेगवेगळ्या अणूंच्या फिरण्याऐवजी सीमांची पुनर्मांडणी आहे.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "प्रतिचुंबकत्व",
+            "पृथ्वीचे चुंबकीय घटक",
+            "लोहचुंबकत्व",
+            "अनुचुंबकत्व"
+          ],
+          "solution": "लोहचुंबकत्व म्हणजे क्षेत्रात होणारे अतिशय तीव्र आकर्षण, जे तेव्हा घडते जेव्हा शेजारची अणुआघूर्णे एकेक करून संरेखित होण्याऐवजी अख्ख्या प्रांतांत एकमेकांना समांतर जखडतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A right-hand side with nothing on it\" goes correctly with which of these?",
+      "choices": [
+        "paramagnetism",
+        "diamagnetism",
+        "Gauss's law for magnetism",
+        "ferromagnetism"
+      ],
+      "answerIndex": 2,
+      "solution": "Gauss's law for magnetism says the net magnetic flux through any closed surface is exactly zero, which is the formal statement that isolated magnetic poles do not exist. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ऐसा दायाँ पक्ष जिस पर कुछ भी नहीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "अनुचुंबकत्व",
+            "प्रतिचुंबकत्व",
+            "चुंबकत्व के लिए गाउस का नियम",
+            "लौहचुंबकत्व"
+          ],
+          "solution": "चुंबकत्व के लिए गाउस का नियम कहता है कि किसी भी बंद पृष्ठ से नेट चुंबकीय फ्लक्स ठीक शून्य है, जो इस बात का औपचारिक कथन है कि अलग-थलग चुंबकीय ध्रुव होते ही नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"अशी उजवी बाजू जिच्यावर काहीच नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अनुचुंबकत्व",
+            "प्रतिचुंबकत्व",
+            "चुंबकत्वासाठी गॉसचा नियम",
+            "लोहचुंबकत्व"
+          ],
+          "solution": "चुंबकत्वासाठी गॉसचा नियम सांगतो की कोणत्याही बंद पृष्ठातून जाणारा निव्वळ चुंबकीय फ्लक्स नेमका शून्य आहे, जे एकाकी चुंबकीय ध्रुव अस्तित्वातच नाहीत याचे औपचारिक विधान आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Behind a screen, no measurement can tell them apart\" goes correctly with which of these?",
+      "choices": [
+        "ferromagnetism",
+        "paramagnetism",
+        "the Earth's magnetic elements",
+        "the bar magnet as an equivalent solenoid"
+      ],
+      "answerIndex": 3,
+      "solution": "The bar magnet as an equivalent solenoid is the recognition that a magnet's field is produced by circulating charge inside it, so a magnet is a dipole with moment m and never a pair of separable poles. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"पर्दे के पीछे, कोई माप उनमें भेद नहीं कर सकता\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "लौहचुंबकत्व",
+            "अनुचुंबकत्व",
+            "पृथ्वी के चुंबकीय अवयव",
+            "समतुल्य परिनालिका के रूप में छड़ चुंबक"
+          ],
+          "solution": "समतुल्य परिनालिका के रूप में छड़ चुंबक यह पहचान है कि चुंबक का क्षेत्र उसके भीतर परिक्रमा करते आवेश से बनता है, अतः चुंबक m आघूर्ण वाला द्विध्रुव है, अलग किए जा सकने वाले ध्रुवों का युग्म कभी नहीं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"पडद्यामागे, कोणतेही माप त्यांत भेद करू शकत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "लोहचुंबकत्व",
+            "अनुचुंबकत्व",
+            "पृथ्वीचे चुंबकीय घटक",
+            "समतुल्य सोलेनॉइड म्हणून दांडा चुंबक"
+          ],
+          "solution": "समतुल्य सोलेनॉइड म्हणून दांडा चुंबक ही ती ओळख की चुंबकाचे क्षेत्र त्याच्या आत फिरणाऱ्या प्रभारापासून बनते, म्हणून चुंबक हा m आघूर्ण असलेला द्विध्रुव आहे, वेगळे करता येणाऱ्या ध्रुवांची जोडी कधीच नाही. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Three numbers, because a field is a vector\" goes correctly with which of these?",
+      "choices": [
+        "the bar magnet as an equivalent solenoid",
+        "diamagnetism",
+        "ferromagnetism",
+        "the Earth's magnetic elements"
+      ],
+      "answerIndex": 3,
+      "solution": "The Earth's magnetic elements are declination, dip and the horizontal component, and all three are needed because a field is a vector while each measurement gives only one number about it. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"तीन संख्याएँ, क्योंकि क्षेत्र सदिश है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "समतुल्य परिनालिका के रूप में छड़ चुंबक",
+            "प्रतिचुंबकत्व",
+            "लौहचुंबकत्व",
+            "पृथ्वी के चुंबकीय अवयव"
+          ],
+          "solution": "पृथ्वी के चुंबकीय अवयव दिक्पात, नति और क्षैतिज घटक हैं, और तीनों चाहिए क्योंकि क्षेत्र सदिश है जबकि हर माप उसके बारे में केवल एक संख्या देता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तीन संख्या, कारण क्षेत्र सदिश आहे\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "समतुल्य सोलेनॉइड म्हणून दांडा चुंबक",
+            "प्रतिचुंबकत्व",
+            "लोहचुंबकत्व",
+            "पृथ्वीचे चुंबकीय घटक"
+          ],
+          "solution": "पृथ्वीचे चुंबकीय घटक म्हणजे दिक्पात, नती आणि आडवा घटक, आणि तिन्ही लागतात कारण क्षेत्र सदिश आहे तर प्रत्येक माप त्याबद्दल केवळ एक संख्या देते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Pushed towards the weaker part of the field\" goes correctly with which of these?",
+      "choices": [
+        "diamagnetism",
+        "Gauss's law for magnetism",
+        "the bar magnet as an equivalent solenoid",
+        "paramagnetism"
+      ],
+      "answerIndex": 0,
+      "solution": "Diamagnetism is a feeble repulsion from a field, arising in substances whose atoms have no net magnetic moment of their own, so the field itself induces opposing moments in them. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"क्षेत्र के कमज़ोर भाग की ओर धकेला गया\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "प्रतिचुंबकत्व",
+            "चुंबकत्व के लिए गाउस का नियम",
+            "समतुल्य परिनालिका के रूप में छड़ चुंबक",
+            "अनुचुंबकत्व"
+          ],
+          "solution": "प्रतिचुंबकत्व क्षेत्र से कमज़ोर प्रतिकर्षण है, जो उन पदार्थों में उठता है जिनके परमाणुओं का अपना कोई नेट चुंबकीय आघूर्ण नहीं, अतः क्षेत्र स्वयं उनमें विरोधी आघूर्ण प्रेरित कर देता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"क्षेत्राच्या क्षीण भागाकडे ढकललेला\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "प्रतिचुंबकत्व",
+            "चुंबकत्वासाठी गॉसचा नियम",
+            "समतुल्य सोलेनॉइड म्हणून दांडा चुंबक",
+            "अनुचुंबकत्व"
+          ],
+          "solution": "प्रतिचुंबकत्व म्हणजे क्षेत्रापासूनचे क्षीण प्रतिकर्षण, जे अशा पदार्थांत उद्भवते ज्यांच्या अणूंना स्वतःचे कोणतेही निव्वळ चुंबकीय आघूर्ण नाही, म्हणून क्षेत्रच त्यांच्यात विरोधी आघूर्ण प्रेरित करते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A tug that grows in the cold and vanishes with the field\" goes correctly with which of these?",
+      "choices": [
+        "Gauss's law for magnetism",
+        "diamagnetism",
+        "paramagnetism",
+        "the Earth's magnetic elements"
+      ],
+      "answerIndex": 2,
+      "solution": "Paramagnetism is a feeble attraction into a field, shown by substances whose atoms carry permanent magnetic moments that the field partially aligns against the disordering effect of heat. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ऐसा खिंचाव जो ठंड में बढ़े और क्षेत्र के साथ ग़ायब हो\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "चुंबकत्व के लिए गाउस का नियम",
+            "प्रतिचुंबकत्व",
+            "अनुचुंबकत्व",
+            "पृथ्वी के चुंबकीय अवयव"
+          ],
+          "solution": "अनुचुंबकत्व क्षेत्र में कमज़ोर आकर्षण है, जो उन पदार्थों में दिखता है जिनके परमाणु स्थायी चुंबकीय आघूर्ण रखते हैं जिन्हें क्षेत्र ऊष्मा के अव्यवस्थित करने वाले प्रभाव के विरुद्ध आंशिक रूप से संरेखित करता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"अशी ओढ जी थंडीत वाढते आणि क्षेत्रासोबत नाहीशी होते\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "चुंबकत्वासाठी गॉसचा नियम",
+            "प्रतिचुंबकत्व",
+            "अनुचुंबकत्व",
+            "पृथ्वीचे चुंबकीय घटक"
+          ],
+          "solution": "अनुचुंबकत्व म्हणजे क्षेत्रात होणारे क्षीण आकर्षण, जे अशा पदार्थांत दिसते ज्यांचे अणू कायम चुंबकीय आघूर्ण बाळगतात आणि क्षेत्र त्यांना उष्णतेच्या अव्यवस्थित करणाऱ्या परिणामाविरुद्ध अंशतः संरेखित करते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Remembers, after the field has gone\" goes correctly with which of these?",
+      "choices": [
+        "the bar magnet as an equivalent solenoid",
+        "ferromagnetism",
+        "paramagnetism",
+        "the Earth's magnetic elements"
+      ],
+      "answerIndex": 1,
+      "solution": "Ferromagnetism is a very strong attraction into a field, produced when neighbouring atomic moments lock parallel to one another over whole domains rather than aligning one at a time. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"क्षेत्र चले जाने के बाद भी याद रखता है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "समतुल्य परिनालिका के रूप में छड़ चुंबक",
+            "लौहचुंबकत्व",
+            "अनुचुंबकत्व",
+            "पृथ्वी के चुंबकीय अवयव"
+          ],
+          "solution": "लौहचुंबकत्व क्षेत्र में बहुत प्रबल आकर्षण है, जो तब बनता है जब पड़ोसी परमाणविक आघूर्ण एक-एक करके संरेखित होने के बजाय पूरे प्रांतों में एक-दूसरे के समांतर जकड़ जाते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"क्षेत्र गेल्यावरही लक्षात ठेवतो\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "समतुल्य सोलेनॉइड म्हणून दांडा चुंबक",
+            "लोहचुंबकत्व",
+            "अनुचुंबकत्व",
+            "पृथ्वीचे चुंबकीय घटक"
+          ],
+          "solution": "लोहचुंबकत्व म्हणजे क्षेत्रात होणारे अतिशय तीव्र आकर्षण, जे तेव्हा घडते जेव्हा शेजारची अणुआघूर्णे एकेक करून संरेखित होण्याऐवजी अख्ख्या प्रांतांत एकमेकांना समांतर जखडतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Gauss's law for magnetism EXCEPT —",
+      "choices": [
+        "The consequence for pictures is that magnetic field lines are always closed loops, continuing through the inside of a magnet from its south pole to its north — where electric lines would simply have stopped on a charge.",
+        "It is the exact counterpart of the electrostatic Gauss's law with the right-hand side replaced by nothing, and that missing term is the whole difference between electricity and magnetism.",
+        "The Earth's magnetic elements are declination, dip and the horizontal component, and all three are needed because a field is a vector while each measurement gives only one number about it.",
+        "Gauss's law for magnetism says the net magnetic flux through any closed surface is exactly zero, which is the formal statement that isolated magnetic poles do not exist."
+      ],
+      "answerIndex": 2,
+      "solution": "The Earth's magnetic elements are declination, dip and the horizontal component, and all three are needed because a field is a vector while each measurement gives only one number about it. That belongs to The Earth's magnetic elements, not Gauss's law for magnetism — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "चुंबकत्व के लिए गाउस का नियम के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "चित्रों के लिए परिणाम यह कि चुंबकीय क्षेत्र रेखाएँ सदा बंद लूप होती हैं, जो चुंबक के भीतर से होकर उसके दक्षिण ध्रुव से उत्तर ध्रुव तक चलती रहती हैं — जहाँ विद्युत रेखाएँ किसी आवेश पर बस रुक गई होतीं।",
+            "यह स्थिरवैद्युत गाउस नियम का ठीक समकक्ष है जिसमें दाएँ पक्ष की जगह कुछ भी नहीं है, और वही लुप्त पद विद्युत और चुंबकत्व के बीच का पूरा अंतर है।",
+            "पृथ्वी के चुंबकीय अवयव दिक्पात, नति और क्षैतिज घटक हैं, और तीनों चाहिए क्योंकि क्षेत्र सदिश है जबकि हर माप उसके बारे में केवल एक संख्या देता है।",
+            "चुंबकत्व के लिए गाउस का नियम कहता है कि किसी भी बंद पृष्ठ से नेट चुंबकीय फ्लक्स ठीक शून्य है, जो इस बात का औपचारिक कथन है कि अलग-थलग चुंबकीय ध्रुव होते ही नहीं।"
+          ],
+          "solution": "पृथ्वी के चुंबकीय अवयव दिक्पात, नति और क्षैतिज घटक हैं, और तीनों चाहिए क्योंकि क्षेत्र सदिश है जबकि हर माप उसके बारे में केवल एक संख्या देता है। यह पृथ्वी के चुंबकीय अवयव की बात है, चुंबकत्व के लिए गाउस का नियम की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "चुंबकत्वासाठी गॉसचा नियम विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "चित्रांसाठीचा परिणाम असा की चुंबकीय क्षेत्ररेषा नेहमी बंद वळसे असतात, ज्या चुंबकाच्या आतून त्याच्या दक्षिण ध्रुवापासून उत्तर ध्रुवापर्यंत चालत राहतात — जिथे विद्युत रेषा एखाद्या प्रभारावर नुसत्या थांबल्या असत्या.",
+            "हा स्थिरविद्युत गॉस नियमाचा नेमका समकक्ष आहे ज्यात उजव्या बाजूच्या जागी काहीही नाही, आणि तेच हरवलेले पद विद्युत आणि चुंबकत्व यांतला अख्खा फरक आहे.",
+            "पृथ्वीचे चुंबकीय घटक म्हणजे दिक्पात, नती आणि आडवा घटक, आणि तिन्ही लागतात कारण क्षेत्र सदिश आहे तर प्रत्येक माप त्याबद्दल केवळ एक संख्या देते.",
+            "चुंबकत्वासाठी गॉसचा नियम सांगतो की कोणत्याही बंद पृष्ठातून जाणारा निव्वळ चुंबकीय फ्लक्स नेमका शून्य आहे, जे एकाकी चुंबकीय ध्रुव अस्तित्वातच नाहीत याचे औपचारिक विधान आहे."
+          ],
+          "solution": "पृथ्वीचे चुंबकीय घटक म्हणजे दिक्पात, नती आणि आडवा घटक, आणि तिन्ही लागतात कारण क्षेत्र सदिश आहे तर प्रत्येक माप त्याबद्दल केवळ एक संख्या देते. हे पृथ्वीचे चुंबकीय घटक चे आहे, चुंबकत्वासाठी गॉसचा नियम चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The bar magnet as an equivalent solenoid EXCEPT —",
+      "choices": [
+        "It is why cutting a magnet in two gives two complete magnets rather than a north and a south: cutting a solenoid in half gives two shorter solenoids, and there was never a pole to be separated off.",
+        "The bar magnet as an equivalent solenoid is the recognition that a magnet's field is produced by circulating charge inside it, so a magnet is a dipole with moment m and never a pair of separable poles.",
+        "The circulating charge is real and microscopic: each electron's orbital motion and its own spin are tiny current loops, and a magnet is what happens when enough of them line up.",
+        "Gauss's law for magnetism says the net magnetic flux through any closed surface is exactly zero, which is the formal statement that isolated magnetic poles do not exist."
+      ],
+      "answerIndex": 3,
+      "solution": "Gauss's law for magnetism says the net magnetic flux through any closed surface is exactly zero, which is the formal statement that isolated magnetic poles do not exist. That belongs to Gauss's law for magnetism, not The bar magnet as an equivalent solenoid — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "समतुल्य परिनालिका के रूप में छड़ चुंबक के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "इसीलिए चुंबक को दो टुकड़ों में काटने से एक उत्तर और एक दक्षिण नहीं बल्कि दो पूरे चुंबक मिलते हैं: परिनालिका को बीच से काटने पर दो छोटी परिनालिकाएँ मिलती हैं, और अलग किए जाने को ध्रुव कभी था ही नहीं।",
+            "समतुल्य परिनालिका के रूप में छड़ चुंबक यह पहचान है कि चुंबक का क्षेत्र उसके भीतर परिक्रमा करते आवेश से बनता है, अतः चुंबक m आघूर्ण वाला द्विध्रुव है, अलग किए जा सकने वाले ध्रुवों का युग्म कभी नहीं।",
+            "परिक्रमा करता आवेश असली और सूक्ष्म है: हर इलेक्ट्रॉन की कक्षीय गति और उसका अपना चक्रण नन्हे धारा-लूप हैं, और चुंबक वही है जो तब होता है जब उनमें से पर्याप्त संरेखित हो जाएँ।",
+            "चुंबकत्व के लिए गाउस का नियम कहता है कि किसी भी बंद पृष्ठ से नेट चुंबकीय फ्लक्स ठीक शून्य है, जो इस बात का औपचारिक कथन है कि अलग-थलग चुंबकीय ध्रुव होते ही नहीं।"
+          ],
+          "solution": "चुंबकत्व के लिए गाउस का नियम कहता है कि किसी भी बंद पृष्ठ से नेट चुंबकीय फ्लक्स ठीक शून्य है, जो इस बात का औपचारिक कथन है कि अलग-थलग चुंबकीय ध्रुव होते ही नहीं। यह चुंबकत्व के लिए गाउस का नियम की बात है, समतुल्य परिनालिका के रूप में छड़ चुंबक की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "समतुल्य सोलेनॉइड म्हणून दांडा चुंबक विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "म्हणूनच चुंबकाचे दोन तुकडे केल्यावर एक उत्तर आणि एक दक्षिण न मिळता दोन पूर्ण चुंबक मिळतात: सोलेनॉइड मधून कापल्यास दोन लहान सोलेनॉइड मिळतात, आणि वेगळा करायला ध्रुव कधी होताच नाही.",
+            "समतुल्य सोलेनॉइड म्हणून दांडा चुंबक ही ती ओळख की चुंबकाचे क्षेत्र त्याच्या आत फिरणाऱ्या प्रभारापासून बनते, म्हणून चुंबक हा m आघूर्ण असलेला द्विध्रुव आहे, वेगळे करता येणाऱ्या ध्रुवांची जोडी कधीच नाही.",
+            "फिरणारा प्रभार खरा आणि सूक्ष्म आहे: प्रत्येक इलेक्ट्रॉनची कक्षीय गती आणि त्याचे स्वतःचे परिवलन ही चिमुकली धारा-वळसे आहेत, आणि चुंबक म्हणजे तेच जे पुरेसे संरेखित झाल्यावर घडते.",
+            "चुंबकत्वासाठी गॉसचा नियम सांगतो की कोणत्याही बंद पृष्ठातून जाणारा निव्वळ चुंबकीय फ्लक्स नेमका शून्य आहे, जे एकाकी चुंबकीय ध्रुव अस्तित्वातच नाहीत याचे औपचारिक विधान आहे."
+          ],
+          "solution": "चुंबकत्वासाठी गॉसचा नियम सांगतो की कोणत्याही बंद पृष्ठातून जाणारा निव्वळ चुंबकीय फ्लक्स नेमका शून्य आहे, जे एकाकी चुंबकीय ध्रुव अस्तित्वातच नाहीत याचे औपचारिक विधान आहे. हे चुंबकत्वासाठी गॉसचा नियम चे आहे, समतुल्य सोलेनॉइड म्हणून दांडा चुंबक चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The Earth's magnetic elements EXCEPT —",
+      "choices": [
+        "The magnetic poles are not the geographic ones and they wander by tens of kilometres a year, which is why declination is printed on charts with a date and why the field has reversed many times in the rock record.",
+        "Gauss's law for magnetism says the net magnetic flux through any closed surface is exactly zero, which is the formal statement that isolated magnetic poles do not exist.",
+        "The Earth's magnetic elements are declination, dip and the horizontal component, and all three are needed because a field is a vector while each measurement gives only one number about it.",
+        "The total field follows from two of them by B = H/cos δ, so the vertical component and the total are not extra measurements but consequences of the dip and the horizontal component together."
+      ],
+      "answerIndex": 1,
+      "solution": "Gauss's law for magnetism says the net magnetic flux through any closed surface is exactly zero, which is the formal statement that isolated magnetic poles do not exist. That belongs to Gauss's law for magnetism, not The Earth's magnetic elements — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "पृथ्वी के चुंबकीय अवयव के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "चुंबकीय ध्रुव भौगोलिक ध्रुव नहीं हैं और वे साल में दसियों किलोमीटर घूमते हैं, इसीलिए दिक्पात मानचित्रों पर तारीख़ के साथ छपता है और इसीलिए चट्टानों के अभिलेख में क्षेत्र कई बार उलट चुका है।",
+            "चुंबकत्व के लिए गाउस का नियम कहता है कि किसी भी बंद पृष्ठ से नेट चुंबकीय फ्लक्स ठीक शून्य है, जो इस बात का औपचारिक कथन है कि अलग-थलग चुंबकीय ध्रुव होते ही नहीं।",
+            "पृथ्वी के चुंबकीय अवयव दिक्पात, नति और क्षैतिज घटक हैं, और तीनों चाहिए क्योंकि क्षेत्र सदिश है जबकि हर माप उसके बारे में केवल एक संख्या देता है।",
+            "कुल क्षेत्र इनमें से दो से B = H/cos δ द्वारा निकलता है, अतः ऊर्ध्वाधर घटक और कुल क्षेत्र अतिरिक्त माप नहीं बल्कि नति और क्षैतिज घटक के साथ मिलकर निकले परिणाम हैं।"
+          ],
+          "solution": "चुंबकत्व के लिए गाउस का नियम कहता है कि किसी भी बंद पृष्ठ से नेट चुंबकीय फ्लक्स ठीक शून्य है, जो इस बात का औपचारिक कथन है कि अलग-थलग चुंबकीय ध्रुव होते ही नहीं। यह चुंबकत्व के लिए गाउस का नियम की बात है, पृथ्वी के चुंबकीय अवयव की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "पृथ्वीचे चुंबकीय घटक विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "चुंबकीय ध्रुव हे भौगोलिक ध्रुव नाहीत आणि ते वर्षाला दहा-वीस किलोमीटर भटकतात, म्हणूनच दिक्पात नकाशांवर तारखेसह छापला जातो आणि म्हणूनच खडकांच्या नोंदीत क्षेत्र अनेकदा उलटले आहे.",
+            "चुंबकत्वासाठी गॉसचा नियम सांगतो की कोणत्याही बंद पृष्ठातून जाणारा निव्वळ चुंबकीय फ्लक्स नेमका शून्य आहे, जे एकाकी चुंबकीय ध्रुव अस्तित्वातच नाहीत याचे औपचारिक विधान आहे.",
+            "पृथ्वीचे चुंबकीय घटक म्हणजे दिक्पात, नती आणि आडवा घटक, आणि तिन्ही लागतात कारण क्षेत्र सदिश आहे तर प्रत्येक माप त्याबद्दल केवळ एक संख्या देते.",
+            "एकूण क्षेत्र यांपैकी दोहोंतून B = H/cos δ ने निघते, म्हणून उभा घटक आणि एकूण ही जादा मापे नसून नती आणि आडवा घटक यांच्या मिळून निघालेले परिणाम आहेत."
+          ],
+          "solution": "चुंबकत्वासाठी गॉसचा नियम सांगतो की कोणत्याही बंद पृष्ठातून जाणारा निव्वळ चुंबकीय फ्लक्स नेमका शून्य आहे, जे एकाकी चुंबकीय ध्रुव अस्तित्वातच नाहीत याचे औपचारिक विधान आहे. हे चुंबकत्वासाठी गॉसचा नियम चे आहे, पृथ्वीचे चुंबकीय घटक चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Diamagnetism EXCEPT —",
+      "choices": [
+        "Paramagnetism is a feeble attraction into a field, shown by substances whose atoms carry permanent magnetic moments that the field partially aligns against the disordering effect of heat.",
+        "It is the only one of the three that does not weaken as temperature rises, because there are no permanent moments for heat to disorder — a superconductor is the extreme case, expelling the field entirely.",
+        "Diamagnetism is a feeble repulsion from a field, arising in substances whose atoms have no net magnetic moment of their own, so the field itself induces opposing moments in them.",
+        "It is present in every substance, being a direct consequence of induction opposing the change that caused it, but in most materials a stronger effect of the opposite sign hides it completely."
+      ],
+      "answerIndex": 0,
+      "solution": "Paramagnetism is a feeble attraction into a field, shown by substances whose atoms carry permanent magnetic moments that the field partially aligns against the disordering effect of heat. That belongs to Paramagnetism, not Diamagnetism — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रतिचुंबकत्व के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "अनुचुंबकत्व क्षेत्र में कमज़ोर आकर्षण है, जो उन पदार्थों में दिखता है जिनके परमाणु स्थायी चुंबकीय आघूर्ण रखते हैं जिन्हें क्षेत्र ऊष्मा के अव्यवस्थित करने वाले प्रभाव के विरुद्ध आंशिक रूप से संरेखित करता है।",
+            "तीनों में यही एक है जो ताप बढ़ने पर कमज़ोर नहीं होता, क्योंकि ऊष्मा को अव्यवस्थित करने को कोई स्थायी आघूर्ण है ही नहीं — अतिचालक चरम स्थिति है, जो क्षेत्र को पूरी तरह बाहर धकेल देता है।",
+            "प्रतिचुंबकत्व क्षेत्र से कमज़ोर प्रतिकर्षण है, जो उन पदार्थों में उठता है जिनके परमाणुओं का अपना कोई नेट चुंबकीय आघूर्ण नहीं, अतः क्षेत्र स्वयं उनमें विरोधी आघूर्ण प्रेरित कर देता है।",
+            "यह हर पदार्थ में मौजूद है, क्योंकि यह प्रेरण के उस परिवर्तन का विरोध करने का सीधा परिणाम है जिसने उसे पैदा किया, पर अधिकांश पदार्थों में विपरीत चिह्न का प्रबल प्रभाव उसे पूरी तरह छिपा देता है।"
+          ],
+          "solution": "अनुचुंबकत्व क्षेत्र में कमज़ोर आकर्षण है, जो उन पदार्थों में दिखता है जिनके परमाणु स्थायी चुंबकीय आघूर्ण रखते हैं जिन्हें क्षेत्र ऊष्मा के अव्यवस्थित करने वाले प्रभाव के विरुद्ध आंशिक रूप से संरेखित करता है। यह अनुचुंबकत्व की बात है, प्रतिचुंबकत्व की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "प्रतिचुंबकत्व विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "अनुचुंबकत्व म्हणजे क्षेत्रात होणारे क्षीण आकर्षण, जे अशा पदार्थांत दिसते ज्यांचे अणू कायम चुंबकीय आघूर्ण बाळगतात आणि क्षेत्र त्यांना उष्णतेच्या अव्यवस्थित करणाऱ्या परिणामाविरुद्ध अंशतः संरेखित करते.",
+            "तिन्हींपैकी हेच एक जे तापमान वाढल्यावर क्षीण होत नाही, कारण उष्णतेला अव्यवस्थित करायला कोणतेही कायम आघूर्ण नाहीच — अतिवाहक ही टोकाची स्थिती, जी क्षेत्र पूर्णपणे बाहेर लोटते.",
+            "प्रतिचुंबकत्व म्हणजे क्षेत्रापासूनचे क्षीण प्रतिकर्षण, जे अशा पदार्थांत उद्भवते ज्यांच्या अणूंना स्वतःचे कोणतेही निव्वळ चुंबकीय आघूर्ण नाही, म्हणून क्षेत्रच त्यांच्यात विरोधी आघूर्ण प्रेरित करते.",
+            "हे प्रत्येक पदार्थात उपस्थित आहे, कारण हे प्रेरणाने ज्या बदलाने ते घडवले त्याचाच विरोध करण्याचा थेट परिणाम आहे, पण बहुतेक पदार्थांत विरुद्ध चिन्हाचा तीव्र परिणाम त्याला पूर्णपणे झाकतो."
+          ],
+          "solution": "अनुचुंबकत्व म्हणजे क्षेत्रात होणारे क्षीण आकर्षण, जे अशा पदार्थांत दिसते ज्यांचे अणू कायम चुंबकीय आघूर्ण बाळगतात आणि क्षेत्र त्यांना उष्णतेच्या अव्यवस्थित करणाऱ्या परिणामाविरुद्ध अंशतः संरेखित करते. हे अनुचुंबकत्व चे आहे, प्रतिचुंबकत्व चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student cuts a bar magnet in half expecting to obtain a separate north pole and a separate south pole, and finds instead two complete magnets. Cutting again gives four. Explain why no amount of cutting will ever isolate a pole, and what law records this.",
+      "choices": [
+        "Because there were never two poles to separate. The magnet's field comes from circulating charge inside it — orbiting and spinning electrons acting as microscopic current loops — so it is a DIPOLE, and cutting a dipole in half gives two smaller dipoles exactly as cutting a solenoid gives two shorter solenoids. The 'poles' are the two ends of one object, not two objects stuck together. This is recorded as Gauss's law for magnetism: the net magnetic flux through ANY closed surface is zero, because a lone pole would be a source from which lines began, and magnetic field lines are always closed loops that continue through the magnet's interior",
+        "Because the cut is never clean enough: a perfectly sharp cut through the exact centre of a magnet would in fact separate the two poles",
+        "Because each half instantly re-magnetises the other by induction, so a pole is isolated for a moment and then destroyed",
+        "Because magnetic poles always occur in pairs by convention, and a single pole would simply be given both names at once"
+      ],
+      "answerIndex": 0,
+      "solution": "The experiment is real, it has been done to the limit of what can be cut, and the answer is not that isolation is difficult — it is that there is nothing there to isolate. Start with what a magnet is. The whole of Chapter 4 was about currents producing magnetic fields, and this chapter's central identification is that a bar magnet is doing the same thing with currents you cannot see: each electron contributes a tiny loop from its orbital motion and another from its spin, and in iron enough of these lock parallel that their fields add to something you can hang a fridge note from. So a magnet is not an object with a north thing at one end and a south thing at the other. It is a solenoid whose windings are electrons. Now cut it. Cut a solenoid across the middle and you get two shorter solenoids, each with its own field emerging from one end and re-entering the other. Nothing about the halves is anomalous; each is simply a solenoid with fewer turns. The 'poles' were never components — they were the two ENDS of one thing, in the same way that cutting a stick in half gives two sticks and never a left-end without a right-end. The formal statement is Gauss's law for magnetism: the net magnetic flux through any closed surface is exactly zero. Compare it with its electric partner. The electrostatic law has q_enclosed/ε₀ on the right, and that term is a licence to have a source: draw a surface round a positive charge and lines stream out through it with nothing coming back in. The magnetic law has zero there. There is no such thing as enclosed magnetic charge, so a surface can never have more lines leaving than entering, and a lone pole — which by definition would be a place lines started from — is forbidden. Draw a surface round one end of a bar magnet and the lines that emerge from the pole face all re-enter through the part of the surface that cuts through the middle of the magnet, because inside the magnet the field runs from south to north. The total is zero, as the law requires. Two footnotes are worth keeping. First, this is a statement about what has been observed, not a theorem: nothing in the rest of electromagnetism would break if monopoles existed, and searches for them continue, with the theory adjusted to a non-zero right-hand side if one is ever found. Second, the asymmetry has a visible consequence in every field diagram in the book — electric lines begin and end on charges, magnetic lines close on themselves, and a diagram of a magnetic field with a loose end in it is wrong on inspection. (The second and third options treat the impossibility as practical rather than structural; the fourth makes it a matter of naming, when it is a measurable claim about flux.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक विद्यार्थी छड़ चुंबक को बीच से काटता है यह आशा करते हुए कि उसे अलग उत्तर ध्रुव और अलग दक्षिण ध्रुव मिलेंगे, और उसके बजाय दो पूरे चुंबक पाता है। फिर काटने पर चार। समझाओ कि कितना भी काटने से कोई ध्रुव कभी अलग क्यों नहीं होगा, और कौन-सा नियम इसे दर्ज करता है।",
+          "choices": [
+            "क्योंकि अलग करने को दो ध्रुव कभी थे ही नहीं। चुंबक का क्षेत्र उसके भीतर परिक्रमा करते आवेश से आता है — कक्षा में घूमते और चक्रण करते इलेक्ट्रॉन सूक्ष्म धारा-लूप की तरह — अतः वह द्विध्रुव है, और द्विध्रुव को बीच से काटने पर दो छोटे द्विध्रुव मिलते हैं, ठीक वैसे जैसे परिनालिका काटने पर दो छोटी परिनालिकाएँ। 'ध्रुव' एक ही वस्तु के दो सिरे हैं, चिपकाई हुई दो वस्तुएँ नहीं। यह चुंबकत्व के लिए गाउस के नियम के रूप में दर्ज है: किसी भी बंद पृष्ठ से नेट चुंबकीय फ्लक्स शून्य है, क्योंकि अकेला ध्रुव वह स्रोत होता जहाँ से रेखाएँ शुरू होतीं, और चुंबकीय क्षेत्र रेखाएँ सदा बंद लूप हैं जो चुंबक के भीतर से होकर चलती रहती हैं",
+            "क्योंकि कटान कभी पर्याप्त साफ़ नहीं होता: चुंबक के ठीक केंद्र से एकदम तेज़ कटान वस्तुतः दोनों ध्रुवों को अलग कर देता",
+            "क्योंकि हर आधा भाग प्रेरण से दूसरे को तुरंत फिर चुंबकित कर देता है, अतः ध्रुव एक क्षण के लिए अलग होता है और फिर नष्ट हो जाता है",
+            "क्योंकि चुंबकीय ध्रुव परिपाटी से सदा युग्मों में आते हैं, और अकेले ध्रुव को बस दोनों नाम एक साथ दे दिए जाते"
+          ],
+          "solution": "प्रयोग असली है, जितना काटा जा सकता है वहाँ तक किया जा चुका है, और उत्तर यह नहीं कि अलग करना कठिन है — उत्तर यह है कि अलग करने को वहाँ कुछ है ही नहीं। पहले यह लो कि चुंबक है क्या। पूरा चौथा अध्याय धाराओं से चुंबकीय क्षेत्र बनने के बारे में था, और इस अध्याय की केंद्रीय पहचान यह है कि छड़ चुंबक वही काम उन धाराओं से कर रहा है जो तुम्हें दिखती नहीं: हर इलेक्ट्रॉन अपनी कक्षीय गति से एक नन्हा लूप देता है और अपने चक्रण से दूसरा, और लोहे में इनमें से पर्याप्त समांतर जकड़ जाते हैं कि उनके क्षेत्र जुड़कर वह बन जाएँ जिससे तुम फ़्रिज पर पर्ची टाँग सको। अतः चुंबक ऐसी वस्तु नहीं जिसके एक सिरे पर उत्तर नाम की चीज़ और दूसरे पर दक्षिण नाम की। वह ऐसी परिनालिका है जिसकी लपेटें इलेक्ट्रॉन हैं। अब उसे काटो। परिनालिका को बीच से काटो और दो छोटी परिनालिकाएँ मिलती हैं, हर एक का अपना क्षेत्र एक सिरे से निकलता और दूसरे से लौटता। आधों में कुछ भी असामान्य नहीं; हर एक बस कम फेरों वाली परिनालिका है। 'ध्रुव' कभी घटक थे ही नहीं — वे एक ही चीज़ के दो सिरे थे, ठीक वैसे जैसे छड़ी को बीच से काटने पर दो छड़ियाँ मिलती हैं, बाएँ सिरे बिना दाएँ सिरे के कभी नहीं। औपचारिक कथन चुंबकत्व के लिए गाउस का नियम है: किसी भी बंद पृष्ठ से नेट चुंबकीय फ्लक्स ठीक शून्य है। उसकी विद्युत जोड़ी से तुलना करो। स्थिरवैद्युत नियम के दाईं ओर q_घिरा/ε₀ है, और वह पद स्रोत रखने का लाइसेंस है: धन आवेश के चारों ओर पृष्ठ खींचो और रेखाएँ उसमें से बाहर बहती हैं, भीतर कुछ नहीं लौटता। चुंबकीय नियम के वहाँ शून्य है। घिरा चुंबकीय आवेश जैसी कोई चीज़ है ही नहीं, अतः किसी पृष्ठ से निकलने वाली रेखाएँ आने वाली से अधिक कभी नहीं हो सकतीं, और अकेला ध्रुव — जो परिभाषा से वह जगह होता जहाँ से रेखाएँ शुरू होतीं — वर्जित है। छड़ चुंबक के एक सिरे के चारों ओर पृष्ठ खींचो और ध्रुव-फलक से निकलने वाली सारी रेखाएँ पृष्ठ के उस भाग से फिर भीतर आ जाती हैं जो चुंबक के बीच से कटता है, क्योंकि चुंबक के भीतर क्षेत्र दक्षिण से उत्तर की ओर चलता है। कुल शून्य है, जैसा नियम माँगता है। दो टिप्पणियाँ रखने योग्य हैं। पहली, यह इस बारे में कथन है कि क्या देखा गया, प्रमेय नहीं: यदि एकध्रुव होते तो शेष विद्युत चुंबकत्व में कुछ भी न टूटता, और उनकी खोज जारी है, और कभी एक मिल गया तो सिद्धांत को शून्येतर दाएँ पक्ष के साथ ढाल लिया जाएगा। दूसरी, इस असममिति का पुस्तक के हर क्षेत्र-चित्र में दिखने वाला परिणाम है — विद्युत रेखाएँ आवेशों पर शुरू और ख़त्म होती हैं, चुंबकीय रेखाएँ अपने पर बंद होती हैं, और जिस चुंबकीय क्षेत्र के चित्र में कोई खुला सिरा हो वह देखते ही ग़लत है। (दूसरा और तीसरा विकल्प असंभवता को संरचनात्मक के बजाय व्यावहारिक बना देते हैं; चौथा उसे नामकरण की बात बना देता है, जबकि वह फ्लक्स के बारे में नापा जा सकने वाला दावा है।)"
+        },
+        "mr": {
+          "stem": "एक विद्यार्थी दांडा चुंबक मधून कापतो, वेगळा उत्तर ध्रुव आणि वेगळा दक्षिण ध्रुव मिळेल अशी आशा करत, आणि त्याऐवजी दोन पूर्ण चुंबक मिळवतो. पुन्हा कापल्यावर चार. कितीही कापले तरी एकही ध्रुव कधीच वेगळा का होणार नाही, आणि कोणता नियम हे नोंदवतो, ते समजावा.",
+          "choices": [
+            "कारण वेगळे करायला दोन ध्रुव कधी होतेच नाहीत. चुंबकाचे क्षेत्र त्याच्या आत फिरणाऱ्या प्रभारापासून येते — कक्षेत फिरणारे आणि परिवलन करणारे इलेक्ट्रॉन सूक्ष्म धारा-वळशांसारखे — म्हणून तो द्विध्रुव आहे, आणि द्विध्रुव मधून कापल्यास दोन लहान द्विध्रुव मिळतात, अगदी तसेच जसे सोलेनॉइड कापल्यास दोन लहान सोलेनॉइड. 'ध्रुव' ही एकाच वस्तूची दोन टोके आहेत, चिकटवलेल्या दोन वस्तू नव्हे. हे चुंबकत्वासाठीच्या गॉसच्या नियमाच्या रूपात नोंदलेले आहे: कोणत्याही बंद पृष्ठातून जाणारा निव्वळ चुंबकीय फ्लक्स शून्य आहे, कारण एकटा ध्रुव हा तो स्रोत ठरला असता जिथून रेषा सुरू होतात, आणि चुंबकीय क्षेत्ररेषा नेहमी बंद वळसे आहेत जे चुंबकाच्या आतून चालत राहतात",
+            "कारण कापणी कधीच पुरेशी स्वच्छ नसते: चुंबकाच्या नेमक्या केंद्रातून अगदी धारदार कापणी प्रत्यक्षात दोन्ही ध्रुव वेगळे करेल",
+            "कारण प्रत्येक अर्धा भाग प्रेरणाने दुसऱ्याला लगेच पुन्हा चुंबकित करतो, म्हणून ध्रुव क्षणभर वेगळा होतो आणि मग नष्ट होतो",
+            "कारण चुंबकीय ध्रुव संकेतानुसार नेहमी जोड्यांत येतात, आणि एकट्या ध्रुवाला फक्त दोन्ही नावे एकाच वेळी दिली गेली असती"
+          ],
+          "solution": "प्रयोग खरा आहे, जितके कापता येईल तिथवर तो केला गेला आहे, आणि उत्तर हे नाही की वेगळे करणे कठीण आहे — उत्तर हे आहे की वेगळे करायला तिथे काहीच नाही. आधी चुंबक म्हणजे काय ते घ्या. अख्खे चौथे प्रकरण धारांपासून चुंबकीय क्षेत्रे बनण्याबद्दल होते, आणि या प्रकरणाची मध्यवर्ती ओळख अशी की दांडा चुंबक तेच काम त्या धारांनी करत आहे ज्या तुम्हाला दिसत नाहीत: प्रत्येक इलेक्ट्रॉन आपल्या कक्षीय गतीतून एक चिमुकले वळसे देतो आणि आपल्या परिवलनातून दुसरे, आणि लोखंडात यांपैकी पुरेसे समांतर जखडतात की त्यांची क्षेत्रे जुळून ते बनते ज्यातून तुम्ही फ्रिजवर चिठ्ठी लटकवू शकता. म्हणून चुंबक ही अशी वस्तू नाही जिच्या एका टोकाला उत्तर नावाची गोष्ट आणि दुसऱ्या टोकाला दक्षिण. तो असे सोलेनॉइड आहे ज्याचे वेढे इलेक्ट्रॉन आहेत. आता तो कापा. सोलेनॉइड मधून कापा आणि दोन लहान सोलेनॉइड मिळतात, प्रत्येकाचे स्वतःचे क्षेत्र एका टोकातून निघते आणि दुसऱ्यातून परतते. अर्ध्यांत काहीही असामान्य नाही; प्रत्येक फक्त कमी वेढ्यांचे सोलेनॉइड आहे. 'ध्रुव' कधी घटक होतेच नाहीत — ती एकाच गोष्टीची दोन टोके होती, अगदी तसेच जसे काठी मधून कापल्यास दोन काठ्या मिळतात, उजव्या टोकाविना डावे टोक कधीच नाही. औपचारिक विधान म्हणजे चुंबकत्वासाठीचा गॉसचा नियम: कोणत्याही बंद पृष्ठातून जाणारा निव्वळ चुंबकीय फ्लक्स नेमका शून्य आहे. त्याच्या विद्युत जोडीदाराशी तुलना करा. स्थिरविद्युत नियमाच्या उजवीकडे q_घेरलेला/ε₀ आहे, आणि ते पद स्रोत बाळगण्याचा परवाना आहे: धन प्रभाराभोवती पृष्ठ काढा आणि रेषा त्यातून बाहेर वाहतात, आत काहीच परतत नाही. चुंबकीय नियमाच्या तिथे शून्य आहे. घेरलेला चुंबकीय प्रभार अशी गोष्टच नाही, म्हणून कोणत्याही पृष्ठातून बाहेर पडणाऱ्या रेषा आत येणाऱ्यांहून अधिक कधीच असू शकत नाहीत, आणि एकटा ध्रुव — जो व्याख्येने ती जागा ठरली असती जिथून रेषा सुरू होतात — वर्ज्य आहे. दांडा चुंबकाच्या एका टोकाभोवती पृष्ठ काढा आणि ध्रुव-पृष्ठभागातून निघणाऱ्या सर्व रेषा पृष्ठाच्या त्या भागातून पुन्हा आत येतात जो चुंबकाच्या मधून कापतो, कारण चुंबकाच्या आत क्षेत्र दक्षिणेकडून उत्तरेकडे चालते. एकूण शून्य आहे, जसे नियम मागतो. दोन टिपा ठेवण्याजोग्या आहेत. पहिली, हे काय निरीक्षिले गेले याबद्दलचे विधान आहे, प्रमेय नव्हे: एकध्रुव अस्तित्वात असते तर उरलेल्या विद्युतचुंबकत्वात काहीही मोडले नसते, आणि त्यांचा शोध चालूच आहे, आणि कधी एक सापडला तर सिद्धांत शून्येतर उजव्या बाजूसह जुळवून घेतला जाईल. दुसरी, या असममितीचा पुस्तकातल्या प्रत्येक क्षेत्र-चित्रात दिसणारा परिणाम आहे — विद्युत रेषा प्रभारांवर सुरू आणि संपतात, चुंबकीय रेषा स्वतःवर बंद होतात, आणि ज्या चुंबकीय क्षेत्राच्या चित्रात मोकळे टोक असेल ते पाहताक्षणी चूक आहे. (दुसरा आणि तिसरा पर्याय अशक्यतेला संरचनात्मक ऐवजी व्यावहारिक बनवतात; चौथा तिला नामकरणाची बाब बनवतो, तर ती फ्लक्सबद्दलचा मोजता येणारा दावा आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A workshop must choose between two ferromagnetic alloys. Alloy P has a tall narrow hysteresis loop; alloy Q has a wide loop enclosing a large area. One is to become the core of a mains transformer and the other a permanent magnet for a loudspeaker. Assign them and justify the assignment.",
+      "choices": [
+        "P becomes the transformer core and Q the permanent magnet. The area of the hysteresis loop is the energy dissipated as heat per unit volume per cycle, and a mains core is taken round its loop fifty times a second, so a narrow loop — low coercivity, easily magnetised and easily reversed — keeps that loss small. A permanent magnet is magnetised once and must then resist being demagnetised by stray fields, knocks and heat, so it wants high coercivity and high retentivity, which is exactly what a wide loop describes. The two requirements are opposite, which is why no single alloy serves both jobs",
+        "Q becomes the transformer core and P the permanent magnet, because a wide loop means the material holds a strong field and a core must hold a strong field to transfer power",
+        "Either alloy will serve either purpose, since the loop's shape affects only how quickly the material magnetises and not how much energy it uses",
+        "P becomes the transformer core and Q the permanent magnet, but only because P is the cheaper alloy — magnetically the two are interchangeable"
+      ],
+      "answerIndex": 0,
+      "solution": "A hysteresis loop looks like a curiosity when it is first drawn and turns out to be an engineering specification. Read the axes: the horizontal is the magnetising field H applied from outside, the vertical is the magnetisation B the material actually reaches. Take a ferromagnet round a full cycle of H and the curve does not retrace itself — B lags behind H, so the return path lies above the outgoing one, and the two enclose an area. Three numbers can be read straight off. RETENTIVITY is the value of B left when H has been brought back to zero: what the material remembers. COERCIVITY is the reverse field needed to push B back to zero: how hard it is to make it forget. And the AREA of the loop is the energy dissipated as heat per unit volume per cycle, because going round the loop is a process in which the domain walls move against friction and do not give the work back. Now the two applications, which want opposite things. A mains transformer core is magnetised, demagnetised, magnetised the other way and demagnetised again, fifty times every second, for as long as the transformer is switched on. Every one of those cycles costs the loop's area in heat, and that heat is pure loss — it warms the core, it must be carried away, and it appears on the electricity bill of everyone downstream. So the core wants the SMALLEST possible loop area: low coercivity, easily flipped, remembering as little as possible. Soft iron and silicon steel are chosen for exactly this, and the same reasoning drives the other core losses — the laminations that break up eddy currents are a separate but parallel economy. A loudspeaker magnet has the opposite job. It is magnetised once at the factory and then must hold that magnetisation for twenty years while the voice coil's own field pushes at it thousands of times a second, while the speaker is dropped, and while the cabinet warms up. Anything that demagnetises easily is useless. So it wants high retentivity, so that it keeps a strong field with no external help, and high coercivity, so that stray fields cannot undo it — and those two together are precisely a wide loop. The dissipation that made a wide loop unacceptable in the transformer is irrelevant here, because this magnet is never taken round its loop at all after the first time. That is the general shape of the answer, and it is worth stating on its own: the hysteresis loop is not good or bad, and a material is not better or worse for having a wide one. The loop is a description, and which description you want depends on whether the material is going to be cycled continuously or set once and left alone. (The second option reads the loop's width as field strength; the third denies that the area is an energy; the fourth reaches the right assignment by an irrelevant route, which in an examination is worth no more than the wrong assignment.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक कारख़ाने को दो लौहचुंबकीय मिश्रधातुओं में से चुनना है। मिश्रधातु P का शैथिल्य लूप ऊँचा और सँकरा है; मिश्रधातु Q का लूप चौड़ा है और बड़ा क्षेत्रफल घेरता है। एक को मुख्य आपूर्ति के ट्रांसफ़ॉर्मर की क्रोड बनना है और दूसरे को लाउडस्पीकर का स्थायी चुंबक। उन्हें बाँटो और बँटवारे को न्यायसंगत ठहराओ।",
+          "choices": [
+            "P ट्रांसफ़ॉर्मर की क्रोड बनता है और Q स्थायी चुंबक। शैथिल्य लूप का क्षेत्रफल प्रति एकांक आयतन प्रति चक्र ऊष्मा के रूप में खोई ऊर्जा है, और मुख्य आपूर्ति की क्रोड सेकंड में पचास बार अपने लूप का चक्कर लगाती है, अतः सँकरा लूप — कम निग्राहिता, आसानी से चुंबकित और आसानी से उलटा — उस हानि को छोटा रखता है। स्थायी चुंबक एक बार चुंबकित होता है और फिर उसे भटके क्षेत्रों, ठोकरों और ऊष्मा से विचुंबकित होने का प्रतिरोध करना पड़ता है, अतः उसे ऊँची निग्राहिता और ऊँची धारणशीलता चाहिए, और चौड़ा लूप ठीक यही बताता है। दोनों माँगें उलटी हैं, इसीलिए कोई अकेली मिश्रधातु दोनों काम नहीं करती",
+            "Q ट्रांसफ़ॉर्मर की क्रोड बनता है और P स्थायी चुंबक, क्योंकि चौड़े लूप का अर्थ है पदार्थ प्रबल क्षेत्र रोके रखता है और शक्ति स्थानांतरित करने के लिए क्रोड को प्रबल क्षेत्र रोकना ही पड़ता है",
+            "कोई भी मिश्रधातु किसी भी काम के लिए चलेगी, क्योंकि लूप का आकार केवल यह तय करता है कि पदार्थ कितनी जल्दी चुंबकित होता है, यह नहीं कि वह कितनी ऊर्जा ख़र्च करता है",
+            "P ट्रांसफ़ॉर्मर की क्रोड बनता है और Q स्थायी चुंबक, पर केवल इसलिए कि P सस्ती मिश्रधातु है — चुंबकीय दृष्टि से दोनों आपस में बदले जा सकते हैं"
+          ],
+          "solution": "शैथिल्य लूप पहली बार खींचे जाने पर कौतुक लगता है और निकलता अभियांत्रिकी विनिर्देश है। अक्ष पढ़ो: क्षैतिज बाहर से लगाया गया चुंबकन क्षेत्र H है, ऊर्ध्वाधर वह चुंबकन B है जो पदार्थ वस्तुतः पाता है। लौहचुंबक को H के पूरे चक्र पर घुमाओ और वक्र अपने ही रास्ते नहीं लौटता — B, H से पीछे रहता है, अतः लौटने का पथ जाने वाले के ऊपर पड़ता है, और दोनों मिलकर एक क्षेत्रफल घेरते हैं। तीन संख्याएँ सीधे पढ़ी जा सकती हैं। धारणशीलता वह B है जो H के शून्य पर लौट आने पर बचा रहता है: पदार्थ जो याद रखता है। निग्राहिता वह उलटा क्षेत्र है जो B को शून्य तक धकेलने को चाहिए: उसे भुलाना कितना कठिन है। और लूप का क्षेत्रफल प्रति एकांक आयतन प्रति चक्र ऊष्मा के रूप में खोई ऊर्जा है, क्योंकि लूप का चक्कर वह प्रक्रिया है जिसमें प्रांतों की दीवारें घर्षण के विरुद्ध चलती हैं और कार्य वापस नहीं देतीं। अब दोनों उपयोग, जो उलटी चीज़ें चाहते हैं। मुख्य आपूर्ति के ट्रांसफ़ॉर्मर की क्रोड चुंबकित, विचुंबकित, दूसरी ओर चुंबकित और फिर विचुंबकित होती है, हर सेकंड पचास बार, जब तक ट्रांसफ़ॉर्मर चालू है। उनमें से हर चक्र लूप के क्षेत्रफल जितनी ऊष्मा लेता है, और वह ऊष्मा शुद्ध हानि है — वह क्रोड को गर्म करती है, उसे हटाना पड़ता है, और वह आगे के सब उपभोक्ताओं के बिजली बिल पर आती है। अतः क्रोड सबसे छोटा संभव लूप क्षेत्रफल चाहती है: कम निग्राहिता, आसानी से पलटने वाली, जितना कम हो सके उतना याद रखने वाली। नरम लोहा और सिलिकॉन इस्पात ठीक इसीलिए चुने जाते हैं, और वही तर्क क्रोड की दूसरी हानियों को भी चलाता है — भँवर धाराएँ तोड़ने वाली परतें अलग पर समांतर बचत हैं। लाउडस्पीकर के चुंबक का काम उलटा है। वह कारख़ाने में एक बार चुंबकित होता है और फिर बीस साल तक वह चुंबकन रोके रखना है जबकि वाक-कुंडली का अपना क्षेत्र उस पर सेकंड में हज़ारों बार धक्का देता है, जबकि स्पीकर गिरता है, और जबकि केबिनेट गर्म होती है। जो कुछ भी आसानी से विचुंबकित हो जाए वह बेकार है। अतः उसे ऊँची धारणशीलता चाहिए, ताकि वह बिना बाहरी मदद के प्रबल क्षेत्र रखे, और ऊँची निग्राहिता, ताकि भटके क्षेत्र उसे मिटा न सकें — और ये दोनों मिलकर ठीक चौड़ा लूप हैं। जिस क्षय ने चौड़े लूप को ट्रांसफ़ॉर्मर में अस्वीकार्य बनाया वह यहाँ अप्रासंगिक है, क्योंकि यह चुंबक पहली बार के बाद अपने लूप का चक्कर लगाता ही नहीं। उत्तर का सामान्य आकार यही है, और उसे अपने आप में कहना चाहिए: शैथिल्य लूप अच्छा या बुरा नहीं होता, और चौड़ा लूप होने से पदार्थ बेहतर या बदतर नहीं हो जाता। लूप एक वर्णन है, और तुम्हें कौन-सा वर्णन चाहिए यह इस पर निर्भर है कि पदार्थ लगातार चक्रित होने वाला है या एक बार जमाकर छोड़ दिया जाने वाला। (दूसरा विकल्प लूप की चौड़ाई को क्षेत्र की प्रबलता पढ़ लेता है; तीसरा इससे इनकार करता है कि क्षेत्रफल एक ऊर्जा है; चौथा सही बँटवारे तक अप्रासंगिक रास्ते से पहुँचता है, जो परीक्षा में ग़लत बँटवारे से अधिक मूल्य का नहीं।)"
+        },
+        "mr": {
+          "stem": "एका कार्यशाळेला दोन लोहचुंबकीय मिश्रधातूंपैकी निवडायचे आहे. मिश्रधातू P चा शैथिल्य वळसा उंच आणि अरुंद आहे; मिश्रधातू Q चा वळसा रुंद असून मोठे क्षेत्रफळ घेरतो. एकाला मुख्य पुरवठ्याच्या ट्रान्सफॉर्मरचा गाभा बनायचे आहे आणि दुसऱ्याला लाउडस्पीकरचा कायम चुंबक. त्यांची नेमणूक करा आणि ती न्याय्य ठरवा.",
+          "choices": [
+            "P हा ट्रान्सफॉर्मरचा गाभा बनतो आणि Q कायम चुंबक. शैथिल्य वळशाचे क्षेत्रफळ म्हणजे प्रति एकक घनफळ प्रति चक्र उष्णतेच्या रूपात गमावलेली ऊर्जा, आणि मुख्य पुरवठ्याचा गाभा सेकंदाला पन्नास वेळा आपल्या वळशाची फेरी मारतो, म्हणून अरुंद वळसा — कमी निग्राहिता, सहज चुंबकित आणि सहज उलटवला जाणारा — ती हानी लहान ठेवतो. कायम चुंबक एकदा चुंबकित होतो आणि मग त्याला भरकटलेल्या क्षेत्रांपासून, धक्क्यांपासून आणि उष्णतेपासून विचुंबकित होण्याला विरोध करावा लागतो, म्हणून त्याला उंच निग्राहिता आणि उंच धारणशीलता हवी, आणि रुंद वळसा नेमके हेच वर्णन करतो. दोन्ही मागण्या उलट आहेत, म्हणूनच कोणतीही एकच मिश्रधातू दोन्ही कामे करत नाही",
+            "Q हा ट्रान्सफॉर्मरचा गाभा बनतो आणि P कायम चुंबक, कारण रुंद वळसा म्हणजे पदार्थ तीव्र क्षेत्र धरून ठेवतो आणि शक्ती हस्तांतरित करण्यासाठी गाभ्याला तीव्र क्षेत्र धरावेच लागते",
+            "कोणतीही मिश्रधातू कोणत्याही कामासाठी चालेल, कारण वळशाचा आकार केवळ पदार्थ किती लवकर चुंबकित होतो हे ठरवतो, तो किती ऊर्जा खर्च करतो हे नाही",
+            "P हा ट्रान्सफॉर्मरचा गाभा बनतो आणि Q कायम चुंबक, पण केवळ यामुळे की P स्वस्त मिश्रधातू आहे — चुंबकीय दृष्ट्या दोन्ही अदलाबदल करण्याजोगे आहेत"
+          ],
+          "solution": "शैथिल्य वळसा प्रथम काढल्यावर कुतूहल वाटतो आणि निघतो अभियांत्रिकी विनिर्देश. अक्ष वाचा: आडवा म्हणजे बाहेरून लावलेले चुंबकन क्षेत्र H, उभा म्हणजे पदार्थ प्रत्यक्षात गाठत असलेले चुंबकन B. लोहचुंबकाला H च्या पूर्ण चक्रावर फिरवा आणि वक्र आपल्याच मार्गाने परतत नाही — B हा H च्या मागे राहतो, म्हणून परतीचा मार्ग जाणाऱ्याच्या वर पडतो, आणि दोन्ही मिळून एक क्षेत्रफळ घेरतात. तीन संख्या थेट वाचता येतात. धारणशीलता म्हणजे H शून्यावर परत आणल्यावर उरणारे B: पदार्थ जे लक्षात ठेवतो. निग्राहिता म्हणजे B ला शून्यापर्यंत ढकलण्यास लागणारे उलट क्षेत्र: त्याला विसरायला लावणे किती कठीण. आणि वळशाचे क्षेत्रफळ म्हणजे प्रति एकक घनफळ प्रति चक्र उष्णतेच्या रूपात गमावलेली ऊर्जा, कारण वळशाची फेरी ही अशी प्रक्रिया आहे जिच्यात प्रांतांच्या भिंती घर्षणाविरुद्ध हलतात आणि कार्य परत देत नाहीत. आता दोन उपयोग, ज्यांना उलट गोष्टी हव्या आहेत. मुख्य पुरवठ्याच्या ट्रान्सफॉर्मरचा गाभा चुंबकित, विचुंबकित, दुसऱ्या दिशेने चुंबकित आणि पुन्हा विचुंबकित होतो, दर सेकंदाला पन्नास वेळा, जोवर ट्रान्सफॉर्मर चालू आहे. त्यांतले प्रत्येक चक्र वळशाच्या क्षेत्रफळाइतकी उष्णता घेते, आणि ती उष्णता शुद्ध हानी आहे — ती गाभा तापवते, ती वाहून न्यावी लागते, आणि ती पुढच्या सर्व ग्राहकांच्या वीजबिलावर येते. म्हणून गाभ्याला सर्वांत लहान शक्य वळसा-क्षेत्रफळ हवे: कमी निग्राहिता, सहज पलटणारा, शक्य तितके कमी लक्षात ठेवणारा. मऊ लोखंड आणि सिलिकॉन पोलाद नेमके यासाठीच निवडले जातात, आणि तोच युक्तिवाद गाभ्याच्या इतर हानीही चालवतो — भोवरा धारा तोडणारे पापुद्रे ही वेगळी पण समांतर बचत आहे. लाउडस्पीकरच्या चुंबकाचे काम उलट आहे. तो कारखान्यात एकदा चुंबकित होतो आणि मग वीस वर्षे ते चुंबकन टिकवायचे आहे तर ध्वनिवेटोळ्याचे स्वतःचे क्षेत्र त्याच्यावर सेकंदाला हजारो वेळा ढकलते, तर स्पीकर पडतो, आणि तर पेटी तापते. जे काही सहज विचुंबकित होते ते निरुपयोगी. म्हणून त्याला उंच धारणशीलता हवी, जेणेकरून तो बाह्य मदतीविना तीव्र क्षेत्र ठेवेल, आणि उंच निग्राहिता, जेणेकरून भरकटलेली क्षेत्रे ते पुसू शकणार नाहीत — आणि ही दोन्ही मिळून नेमका रुंद वळसा आहे. ज्या हानीने रुंद वळसा ट्रान्सफॉर्मरमध्ये अस्वीकार्य केला ती इथे असंबद्ध आहे, कारण हा चुंबक पहिल्या वेळेनंतर आपल्या वळशाची फेरी मारतच नाही. उत्तराचा सर्वसाधारण आकार हाच आहे, आणि तो स्वतंत्रपणे सांगण्याजोगा आहे: शैथिल्य वळसा चांगला वा वाईट नसतो, आणि रुंद वळसा असल्याने पदार्थ चांगला वा वाईट होत नाही. वळसा हे वर्णन आहे, आणि तुम्हाला कोणते वर्णन हवे हे यावर अवलंबून की पदार्थ सतत चक्रित होणार आहे की एकदा जमवून सोडून द्यायचा आहे. (दुसरा पर्याय वळशाच्या रुंदीला क्षेत्राची तीव्रता वाचतो; तिसरा क्षेत्रफळ ही ऊर्जा आहे हे नाकारतो; चौथा बरोबर नेमणुकीपर्यंत असंबद्ध मार्गाने पोहोचतो, जे परीक्षेत चुकीच्या नेमणुकीहून अधिक मोलाचे नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A bar magnet 0.2 m long has a pole strength of 5 A m. What is its magnetic moment, in A m²?",
+      "choices": [
+        "1",
+        "10",
+        "25",
+        "0.04"
+      ],
+      "answerIndex": 0,
+      "solution": "The magnetic moment is pole strength times magnetic length: 5 × 0.2 = 1 A m². Pole strength is a bookkeeping device rather than a real thing — a magnet has no isolated poles — but the product it forms is genuine and is what a field actually exerts a torque on. (0.04 divides the length by the pole strength; 25 multiplies by 5 again.)",
+      "checkExpr": "5*0.2",
+      "translations": {
+        "hi": {
+          "stem": "0.2 m लंबी छड़ चुंबक की ध्रुव प्रबलता 5 A m है। उसका चुंबकीय आघूर्ण, A m² में, क्या है?",
+          "choices": [
+            "1",
+            "10",
+            "25",
+            "0.04"
+          ],
+          "solution": "चुंबकीय आघूर्ण ध्रुव प्रबलता गुणा चुंबकीय लंबाई है: 5 × 0.2 = 1 A m². ध्रुव प्रबलता असली चीज़ नहीं बल्कि हिसाब की युक्ति है — चुंबक में अलग-थलग ध्रुव होते ही नहीं — पर वह जो गुणनफल बनाती है वह असली है और क्षेत्र वस्तुतः उसी पर बल-आघूर्ण लगाता है। (0.04 लंबाई को ध्रुव प्रबलता से भाग देता है; 25 फिर से 5 से गुणा कर देता है।)"
+        },
+        "mr": {
+          "stem": "0.2 m लांब दांडा चुंबकाची ध्रुव तीव्रता 5 A m आहे. त्याचे चुंबकीय आघूर्ण, A m² मध्ये, किती?",
+          "choices": [
+            "1",
+            "10",
+            "25",
+            "0.04"
+          ],
+          "solution": "चुंबकीय आघूर्ण म्हणजे ध्रुव तीव्रता गुणिले चुंबकीय लांबी: 5 × 0.2 = 1 A m². ध्रुव तीव्रता ही खरी गोष्ट नसून हिशेबाची युक्ती आहे — चुंबकात एकाकी ध्रुव असतातच नाहीत — पण ती जो गुणाकार बनवते तो खरा आहे आणि क्षेत्र प्रत्यक्षात त्यावरच बलआघूर्ण लावते. (0.04 लांबीला ध्रुव तीव्रतेने भागते; 25 पुन्हा 5 ने गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A magnet of moment 4 A m² is held at right angles to a uniform field of 0.5 T. What torque, in N m, acts on it?",
+      "choices": [
+        "8",
+        "2",
+        "0.5",
+        "0.125"
+      ],
+      "answerIndex": 1,
+      "solution": "τ = mB sin θ, and at right angles sin θ = 1, so τ = 4 × 0.5 = 2 N m. This is the maximum the field can exert; align the magnet with the field and the torque falls to zero, which is why a compass needle settles pointing along the field rather than across it. (0.125 inverts the ratio; 8 doubles.)",
+      "checkExpr": "4*0.5",
+      "translations": {
+        "hi": {
+          "stem": "4 A m² आघूर्ण वाला चुंबक 0.5 T के एकसमान क्षेत्र के समकोण पर रखा है। उस पर कितना बल-आघूर्ण, N m में, लगता है?",
+          "choices": [
+            "8",
+            "2",
+            "0.5",
+            "0.125"
+          ],
+          "solution": "τ = mB sin θ, और समकोण पर sin θ = 1, अतः τ = 4 × 0.5 = 2 N m. क्षेत्र जितना अधिकतम लगा सकता है यह वही है; चुंबक को क्षेत्र के अनुदिश कर दो और बल-आघूर्ण शून्य हो जाता है, इसीलिए दिक्सूचक की सुई क्षेत्र के आर-पार नहीं बल्कि उसके अनुदिश जमती है। (0.125 अनुपात उलट देता है; 8 दुगुना कर देता है।)"
+        },
+        "mr": {
+          "stem": "4 A m² आघूर्ण असलेला चुंबक 0.5 T च्या एकसमान क्षेत्राला काटकोनात धरला आहे. त्यावर किती बलआघूर्ण, N m मध्ये, लागते?",
+          "choices": [
+            "8",
+            "2",
+            "0.5",
+            "0.125"
+          ],
+          "solution": "τ = mB sin θ, आणि काटकोनात sin θ = 1, म्हणून τ = 4 × 0.5 = 2 N m. क्षेत्र जितके कमाल लावू शकते ते हेच; चुंबक क्षेत्राच्या दिशेने करा आणि बलआघूर्ण शून्य होते, म्हणूनच होकायंत्राची सुई क्षेत्राच्या आरपार न होता त्याच्या दिशेने स्थिरावते. (0.125 गुणोत्तर उलटवते; 8 दुप्पट करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A closed surface is drawn so that it encloses the north end of a bar magnet, cutting through the magnet at its middle. What is the net magnetic flux through that surface, in Wb?",
+      "choices": [
+        "0",
+        "1",
+        "10",
+        "5"
+      ],
+      "answerIndex": 0,
+      "solution": "Gauss's law for magnetism gives 0 for every closed surface without exception, so 5 − 5 = 0 Wb here. The lines that stream out of the pole face all come back in through the part of the surface that cuts across the middle of the magnet, because inside the magnet the field runs from south to north. Enclosing 'one pole' is not possible: the surface always cuts the magnet somewhere. (Any non-zero answer amounts to claiming an isolated pole has been found.)",
+      "checkExpr": "5-5",
+      "translations": {
+        "hi": {
+          "stem": "एक बंद पृष्ठ ऐसे खींचा जाता है कि वह छड़ चुंबक के उत्तरी सिरे को घेरे और चुंबक को उसके बीच से काटे। उस पृष्ठ से नेट चुंबकीय फ्लक्स, Wb में, क्या है?",
+          "choices": [
+            "0",
+            "1",
+            "10",
+            "5"
+          ],
+          "solution": "चुंबकत्व के लिए गाउस का नियम बिना अपवाद हर बंद पृष्ठ के लिए 0 देता है, अतः यहाँ 5 − 5 = 0 Wb. ध्रुव-फलक से बाहर बहती सारी रेखाएँ पृष्ठ के उस भाग से लौट आती हैं जो चुंबक के बीच से काटता है, क्योंकि चुंबक के भीतर क्षेत्र दक्षिण से उत्तर की ओर चलता है। 'एक ध्रुव' घेरना संभव ही नहीं: पृष्ठ चुंबक को कहीं न कहीं काटता ही है। (कोई भी शून्येतर उत्तर यह दावा करने के बराबर है कि अलग-थलग ध्रुव मिल गया।)"
+        },
+        "mr": {
+          "stem": "एक बंद पृष्ठ असे काढले जाते की ते दांडा चुंबकाचे उत्तर टोक घेरेल आणि चुंबकाला त्याच्या मधून कापेल. त्या पृष्ठातून जाणारा निव्वळ चुंबकीय फ्लक्स, Wb मध्ये, किती?",
+          "choices": [
+            "0",
+            "1",
+            "10",
+            "5"
+          ],
+          "solution": "चुंबकत्वासाठीचा गॉसचा नियम अपवादाविना प्रत्येक बंद पृष्ठासाठी 0 देतो, म्हणून इथे 5 − 5 = 0 Wb. ध्रुव-पृष्ठभागातून बाहेर वाहणाऱ्या सर्व रेषा पृष्ठाच्या त्या भागातून परत येतात जो चुंबकाच्या मधून कापतो, कारण चुंबकाच्या आत क्षेत्र दक्षिणेकडून उत्तरेकडे चालते. 'एक ध्रुव' घेरणे शक्यच नाही: पृष्ठ चुंबकाला कुठेतरी कापतेच. (कोणतेही शून्येतर उत्तर म्हणजे एकाकी ध्रुव सापडल्याचा दावा.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "At a certain place the horizontal component of the Earth's field is 0.3 G and the angle of dip is 60°. What is the total field, in G? Take cos 60° = 0.5.",
+      "choices": [
+        "0.3",
+        "0.6",
+        "1.2",
+        "0.15"
+      ],
+      "answerIndex": 1,
+      "solution": "The horizontal component is the projection of the total onto the horizontal, H = B cos δ, so B = H/cos δ = 0.3/0.5 = 0.6 G. The total is always the larger of the two, since a projection cannot exceed what it is a projection of — a useful check on the direction of the division. (0.15 multiplies instead of dividing; 0.3 leaves the dip out altogether.)",
+      "checkExpr": "0.3/0.5",
+      "translations": {
+        "hi": {
+          "stem": "किसी जगह पृथ्वी के क्षेत्र का क्षैतिज घटक 0.3 G है और नति कोण 60° है। कुल क्षेत्र, G में, क्या है? cos 60° = 0.5 लो।",
+          "choices": [
+            "0.3",
+            "0.6",
+            "1.2",
+            "0.15"
+          ],
+          "solution": "क्षैतिज घटक कुल का क्षैतिज पर प्रक्षेप है, H = B cos δ, अतः B = H/cos δ = 0.3/0.5 = 0.6 G. कुल सदा दोनों में बड़ा होता है, क्योंकि प्रक्षेप जिसका प्रक्षेप है उससे बड़ा नहीं हो सकता — भाग की दिशा की उपयोगी जाँच। (0.15 भाग देने के बजाय गुणा कर देता है; 0.3 नति को छोड़ ही देता है।)"
+        },
+        "mr": {
+          "stem": "एका ठिकाणी पृथ्वीच्या क्षेत्राचा आडवा घटक 0.3 G आहे आणि नती कोन 60° आहे. एकूण क्षेत्र, G मध्ये, किती? cos 60° = 0.5 घ्या.",
+          "choices": [
+            "0.3",
+            "0.6",
+            "1.2",
+            "0.15"
+          ],
+          "solution": "आडवा घटक हा एकूणाचा आडव्यावरील प्रक्षेप आहे, H = B cos δ, म्हणून B = H/cos δ = 0.3/0.5 = 0.6 G. एकूण नेहमी दोहोंत मोठे असते, कारण प्रक्षेप ज्याचा प्रक्षेप आहे त्याहून मोठा असू शकत नाही — भागाकाराच्या दिशेची उपयुक्त तपासणी. (0.15 भागण्याऐवजी गुणते; 0.3 नती गाळूनच टाकते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A magnet of moment 0.4 A m² is held at 30° to a field of 0.2 T. What torque, in N m, acts on it? Take sin 30° = 0.5.",
+      "choices": [
+        "0.08",
+        "0.02",
+        "0.04",
+        "0.24"
+      ],
+      "answerIndex": 2,
+      "solution": "τ = mB sin θ = 0.4 × 0.2 × 0.5 = 0.04 N m. The angle is measured between the moment and the field, so a small angle means a small torque: a magnet nearly aligned is barely being turned, which is exactly why alignment is the stable position. (0.08 omits the sine; 0.24 uses cos 30° in place of sin 30°.)",
+      "checkExpr": "0.4*0.2*0.5",
+      "translations": {
+        "hi": {
+          "stem": "0.4 A m² आघूर्ण वाला चुंबक 0.2 T के क्षेत्र से 30° पर रखा है। उस पर कितना बल-आघूर्ण, N m में, लगता है? sin 30° = 0.5 लो।",
+          "choices": [
+            "0.08",
+            "0.02",
+            "0.04",
+            "0.24"
+          ],
+          "solution": "τ = mB sin θ = 0.4 × 0.2 × 0.5 = 0.04 N m. कोण आघूर्ण और क्षेत्र के बीच नापा जाता है, अतः छोटा कोण छोटा बल-आघूर्ण देता है: लगभग संरेखित चुंबक को मुश्किल से ही घुमाया जा रहा है, और ठीक इसीलिए संरेखण ही स्थायी स्थिति है। (0.08 ज्या छोड़ देता है; 0.24 sin 30° की जगह cos 30° लगा देता है।)"
+        },
+        "mr": {
+          "stem": "0.4 A m² आघूर्ण असलेला चुंबक 0.2 T च्या क्षेत्राशी 30° वर धरला आहे. त्यावर किती बलआघूर्ण, N m मध्ये, लागते? sin 30° = 0.5 घ्या.",
+          "choices": [
+            "0.08",
+            "0.02",
+            "0.04",
+            "0.24"
+          ],
+          "solution": "τ = mB sin θ = 0.4 × 0.2 × 0.5 = 0.04 N m. कोन आघूर्ण आणि क्षेत्र यांच्यात मोजला जातो, म्हणून लहान कोन लहान बलआघूर्ण देतो: जवळपास संरेखित चुंबक कसाबसा फिरवला जात आहे, आणि नेमके म्हणूनच संरेखन हीच स्थिर स्थिती. (0.08 साइन गाळते; 0.24 sin 30° च्या जागी cos 30° लावते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A coil of 200 turns, each of area 0.01 m², carries a current of 4 A. What is its magnetic moment, in A m²?",
+      "choices": [
+        "0.8",
+        "80",
+        "2000",
+        "8"
+      ],
+      "answerIndex": 3,
+      "solution": "m = NIA = 200 × 0.01 × 4 = 8 A m². That a current loop has a magnetic moment at all is the identification this chapter rests on: the loop and a bar magnet of the same moment are indistinguishable from outside, which is why a magnet can be treated as a solenoid and never as a pair of poles. (0.8 divides by the turns; 80 slips a decimal place.)",
+      "checkExpr": "200*0.01*4",
+      "translations": {
+        "hi": {
+          "stem": "200 फेरों की कुंडली, हर फेरे का क्षेत्रफल 0.01 m², 4 A धारा ले जाती है। उसका चुंबकीय आघूर्ण, A m² में, क्या है?",
+          "choices": [
+            "0.8",
+            "80",
+            "2000",
+            "8"
+          ],
+          "solution": "m = NIA = 200 × 0.01 × 4 = 8 A m². धारा-लूप का चुंबकीय आघूर्ण होना ही वह पहचान है जिस पर यह अध्याय टिका है: उसी आघूर्ण का लूप और छड़ चुंबक बाहर से पहचाने नहीं जा सकते, इसीलिए चुंबक को परिनालिका माना जा सकता है और ध्रुवों का युग्म कभी नहीं। (0.8 फेरों से भाग दे देता है; 80 में दशमलव एक स्थान खिसक जाता है।)"
+        },
+        "mr": {
+          "stem": "200 वेढ्यांचे वेटोळे, प्रत्येक वेढ्याचे क्षेत्रफळ 0.01 m², 4 A धारा वाहते. त्याचे चुंबकीय आघूर्ण, A m² मध्ये, किती?",
+          "choices": [
+            "0.8",
+            "80",
+            "2000",
+            "8"
+          ],
+          "solution": "m = NIA = 200 × 0.01 × 4 = 8 A m². धारा-वळशाला मुळात चुंबकीय आघूर्ण असणे हीच ती ओळख जिच्यावर हे प्रकरण टिकले आहे: त्याच आघूर्णाचे वळसे आणि दांडा चुंबक बाहेरून ओळखता येत नाहीत, म्हणूनच चुंबकाला सोलेनॉइड मानता येते आणि ध्रुवांची जोडी कधीच नाही. (0.8 वेढ्यांनी भागते; 80 मध्ये दशांश एक स्थान सरकतो.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A magnetising field of 500 A/m produces a magnetisation of 2500 A/m in a specimen. What is its relative permeability?",
+      "choices": [
+        "2500",
+        "6",
+        "0.2",
+        "5"
+      ],
+      "answerIndex": 1,
+      "solution": "The susceptibility is χ = M/H = 2500/500 = 5, and the relative permeability is μ_r = 1 + χ = 6. The extra 1 is the vacuum's own contribution, which is there whether or not any material is present, so it must be added and not forgotten. A positive susceptibility this large marks the specimen as at least paramagnetic. (5 quotes the susceptibility and stops; 0.2 inverts the ratio.)",
+      "checkExpr": "2500/500+1",
+      "translations": {
+        "hi": {
+          "stem": "500 A/m का चुंबकन क्षेत्र किसी नमूने में 2500 A/m का चुंबकन देता है। उसकी सापेक्ष चुंबकशीलता क्या है?",
+          "choices": [
+            "2500",
+            "6",
+            "0.2",
+            "5"
+          ],
+          "solution": "प्रवृत्ति χ = M/H = 2500/500 = 5 है, और सापेक्ष चुंबकशीलता μ_r = 1 + χ = 6. अतिरिक्त 1 निर्वात का अपना अंश है, जो कोई पदार्थ हो या न हो, रहता ही है, अतः उसे जोड़ना चाहिए, भूलना नहीं। इतनी बड़ी धनात्मक प्रवृत्ति नमूने को कम से कम अनुचुंबकीय ठहराती है। (5 प्रवृत्ति बताकर रुक जाता है; 0.2 अनुपात उलट देता है।)"
+        },
+        "mr": {
+          "stem": "500 A/m चे चुंबकन क्षेत्र एका नमुन्यात 2500 A/m चे चुंबकन देते. त्याची सापेक्ष चुंबकशीलता किती?",
+          "choices": [
+            "2500",
+            "6",
+            "0.2",
+            "5"
+          ],
+          "solution": "प्रवृत्ती χ = M/H = 2500/500 = 5 आहे, आणि सापेक्ष चुंबकशीलता μ_r = 1 + χ = 6. जादा 1 हा निर्वाताचा स्वतःचा वाटा आहे, जो कोणताही पदार्थ असो वा नसो, असतोच, म्हणून तो जोडावा, विसरू नये. इतकी मोठी धन प्रवृत्ती नमुन्याला किमान अनुचुंबकीय ठरवते. (5 प्रवृत्ती सांगून थांबते; 0.2 गुणोत्तर उलटवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A transformer core is taken round its hysteresis loop 50 times a second, the loop area corresponding to 300 J per cubic metre per cycle. How much energy, in kilojoules, is dissipated in one cubic metre in one minute?",
+      "choices": [
+        "18",
+        "90",
+        "15",
+        "900"
+      ],
+      "answerIndex": 3,
+      "solution": "The loop area is the energy per cycle per unit volume, so multiply by the cycles: 300 × 50 × 60 = 900000 J per cubic metre per minute, which is 900 kJ. That figure is why transformer cores are made of soft magnetic material with the narrowest loop obtainable — the loss is paid every cycle, all day, for the working life of the machine. (15 uses the cycles per second alone; 18 forgets the loop area.)",
+      "checkExpr": "300*50*60/1000",
+      "translations": {
+        "hi": {
+          "stem": "एक ट्रांसफ़ॉर्मर की क्रोड सेकंड में 50 बार अपने शैथिल्य लूप का चक्कर लगाती है, और लूप का क्षेत्रफल 300 J प्रति घन मीटर प्रति चक्र के अनुरूप है। एक मिनट में एक घन मीटर में कितनी ऊर्जा, किलोजूल में, खपती है?",
+          "choices": [
+            "18",
+            "90",
+            "15",
+            "900"
+          ],
+          "solution": "लूप का क्षेत्रफल प्रति चक्र प्रति एकांक आयतन ऊर्जा है, अतः चक्रों से गुणा करो: 300 × 50 × 60 = 900000 J प्रति घन मीटर प्रति मिनट, अर्थात् 900 kJ. यही आँकड़ा कारण है कि ट्रांसफ़ॉर्मर की क्रोड नरम चुंबकीय पदार्थ की, जितना सँकरा लूप मिल सके उतने के साथ, बनाई जाती है — हानि हर चक्र पर, दिन भर, मशीन के पूरे कार्यकाल तक चुकानी पड़ती है। (15 केवल प्रति सेकंड चक्र लगाता है; 18 लूप का क्षेत्रफल भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "एक ट्रान्सफॉर्मरचा गाभा सेकंदाला 50 वेळा आपल्या शैथिल्य वळशाची फेरी मारतो, आणि वळशाचे क्षेत्रफळ 300 J प्रति घनमीटर प्रति चक्र इतके आहे. एका मिनिटात एका घनमीटरमध्ये किती ऊर्जा, किलोज्यूलमध्ये, खर्च होते?",
+          "choices": [
+            "18",
+            "90",
+            "15",
+            "900"
+          ],
+          "solution": "वळशाचे क्षेत्रफळ म्हणजे प्रति चक्र प्रति एकक घनफळ ऊर्जा, म्हणून चक्रांनी गुणा: 300 × 50 × 60 = 900000 J प्रति घनमीटर प्रति मिनिट, म्हणजे 900 kJ. हाच आकडा कारण आहे की ट्रान्सफॉर्मरचा गाभा मऊ चुंबकीय पदार्थाचा, जितका अरुंद वळसा मिळेल तितक्यासह, बनवला जातो — हानी प्रत्येक चक्रावर, दिवसभर, यंत्राच्या पूर्ण कार्यकाळापर्यंत मोजावी लागते. (15 केवळ प्रति सेकंद चक्रे लावते; 18 वळशाचे क्षेत्रफळ विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A magnet of moment 2 A m², initially aligned with a field of 0.5 T, is turned until it is at right angles to the field. How much work, in joules, is done?",
+      "choices": [
+        "1",
+        "0.25",
+        "0",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "The potential energy of a magnet in a field is U = −mB cos θ, so the work is mB(cos θ₁ − cos θ₂) = 2 × 0.5 × (1 − 0) = 1 J. The minus sign in U is doing real work: it makes the aligned position the minimum of energy, which is why a compass needle comes to rest there and why turning it away costs something. (0 assumes no work is needed since the field does not move; 2 uses a full reversal instead of a quarter turn.)",
+      "checkExpr": "2*0.5",
+      "translations": {
+        "hi": {
+          "stem": "2 A m² आघूर्ण वाला चुंबक, जो आरंभ में 0.5 T के क्षेत्र के अनुदिश था, तब तक घुमाया जाता है जब तक वह क्षेत्र के समकोण पर न हो जाए। कितना कार्य, जूल में, होता है?",
+          "choices": [
+            "1",
+            "0.25",
+            "0",
+            "2"
+          ],
+          "solution": "क्षेत्र में चुंबक की स्थितिज ऊर्जा U = −mB cos θ है, अतः कार्य mB(cos θ₁ − cos θ₂) = 2 × 0.5 × (1 − 0) = 1 J. U में ऋण चिह्न असली काम कर रहा है: वह संरेखित स्थिति को ऊर्जा का न्यूनतम बनाता है, इसीलिए दिक्सूचक की सुई वहीं आकर ठहरती है और इसीलिए उसे हटाने में कुछ लगता है। (0 मान लेता है कि कार्य चाहिए ही नहीं क्योंकि क्षेत्र हिलता नहीं; 2 चौथाई घुमाव के बजाय पूरा उलटाव लगा देता है।)"
+        },
+        "mr": {
+          "stem": "2 A m² आघूर्ण असलेला चुंबक, जो सुरुवातीला 0.5 T च्या क्षेत्राच्या दिशेने होता, तोवर फिरवला जातो जोवर तो क्षेत्राला काटकोनात होत नाही. किती कार्य, ज्यूलमध्ये, होते?",
+          "choices": [
+            "1",
+            "0.25",
+            "0",
+            "2"
+          ],
+          "solution": "क्षेत्रातील चुंबकाची स्थितिज ऊर्जा U = −mB cos θ आहे, म्हणून कार्य mB(cos θ₁ − cos θ₂) = 2 × 0.5 × (1 − 0) = 1 J. U मधले ऋण चिन्ह खरे काम करत आहे: ते संरेखित स्थितीला ऊर्जेचे किमान बनवते, म्हणूनच होकायंत्राची सुई तिथेच येऊन थांबते आणि म्हणूनच तिला हलवायला काहीतरी लागते. (0 गृहीत धरते की कार्य लागतच नाही कारण क्षेत्र हलत नाही; 2 चतुर्थांश फिरवण्याऐवजी पूर्ण उलटवणे लावते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A magnet of moment 3 A m² lying along a field of 0.4 T is turned right round until it points the opposite way. How much work, in joules, is done?",
+      "choices": [
+        "0",
+        "0.6",
+        "1.2",
+        "2.4"
+      ],
+      "answerIndex": 3,
+      "solution": "W = mB(cos 0° − cos 180°) = mB(1 − (−1)) = 2mB = 2 × 3 × 0.4 = 2.4 J. Compare this with a quarter turn, which costs only mB: the second ninety degrees is as expensive as the first, because the magnet is being pushed from the minimum of energy right up to the maximum. Note also that the reversed position is an equilibrium — the torque there is zero — but an unstable one, since the smallest nudge sends the magnet swinging back through 180°. (1.2 stops at the perpendicular position; 0 argues that a full turn returns the magnet to an equivalent orientation, which is true of the field's direction but not of the magnet's.)",
+      "checkExpr": "2*3*0.4",
+      "translations": {
+        "hi": {
+          "stem": "0.4 T के क्षेत्र के अनुदिश पड़ा 3 A m² आघूर्ण वाला चुंबक तब तक घुमाया जाता है जब तक वह उलटी दिशा में न हो जाए। कितना कार्य, जूल में, होता है?",
+          "choices": [
+            "0",
+            "0.6",
+            "1.2",
+            "2.4"
+          ],
+          "solution": "W = mB(cos 0° − cos 180°) = mB(1 − (−1)) = 2mB = 2 × 3 × 0.4 = 2.4 J. इसकी चौथाई घुमाव से तुलना करो, जिसमें केवल mB लगता है: दूसरे नब्बे अंश पहले जितने ही महँगे हैं, क्योंकि चुंबक को ऊर्जा के न्यूनतम से सीधे अधिकतम तक धकेला जा रहा है। यह भी ध्यान दो कि उलटी स्थिति संतुलन है — वहाँ बल-आघूर्ण शून्य है — पर अस्थायी, क्योंकि ज़रा-सा धक्का चुंबक को 180° घुमाकर वापस भेज देता है। (1.2 लंबवत स्थिति पर रुक जाता है; 0 तर्क देता है कि पूरा घुमाव चुंबक को समतुल्य अभिविन्यास पर लौटा देता है, जो क्षेत्र की दिशा के लिए सच है पर चुंबक की दिशा के लिए नहीं।)"
+        },
+        "mr": {
+          "stem": "0.4 T च्या क्षेत्राच्या दिशेने पडलेला 3 A m² आघूर्ण असलेला चुंबक तोवर फिरवला जातो जोवर तो उलट दिशेने होत नाही. किती कार्य, ज्यूलमध्ये, होते?",
+          "choices": [
+            "0",
+            "0.6",
+            "1.2",
+            "2.4"
+          ],
+          "solution": "W = mB(cos 0° − cos 180°) = mB(1 − (−1)) = 2mB = 2 × 3 × 0.4 = 2.4 J. याची चतुर्थांश फिरवण्याशी तुलना करा, ज्यात केवळ mB लागते: दुसरे नव्वद अंश पहिल्याइतकेच महाग आहेत, कारण चुंबकाला ऊर्जेच्या किमानापासून थेट कमालपर्यंत ढकलले जात आहे. हेही लक्षात घ्या की उलटी स्थिती हे संतुलन आहे — तिथे बलआघूर्ण शून्य आहे — पण अस्थिर, कारण जरासा धक्का चुंबकाला 180° फिरवून परत पाठवतो. (1.2 लंब स्थितीवर थांबते; 0 युक्तिवाद करते की पूर्ण फिरवणे चुंबकाला समतुल्य मांडणीवर परत आणते, जे क्षेत्राच्या दिशेसाठी खरे आहे पण चुंबकाच्या दिशेसाठी नाही.)"
+        }
+      }
+    }
+  ]
+}

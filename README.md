@@ -2514,8 +2514,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 340
-  chapters / 5,918 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 344
+  chapters / 6,030 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2734,7 +2734,33 @@ navigation" means the actual list rather than one somebody maintained by hand.
   EXCEPT stem identical to Class 10 Science's, and the fix was to rewrite the
   fact as what is genuinely new at this level — the *limits* of Ohm's law, the
   conditions V = IR silently assumes — instead of renaming it to dodge the
-  check. Suite re-pointed and green: 87 files, 1485 tests.
+  check. **Four more Class 12 Physics chapters followed** — 112 questions:
+  Magnetism and Matter, Electromagnetic Induction, Alternating Current and
+  Electromagnetic Waves. The run has a spine: a magnetic field that begins and
+  ends nowhere, a changing one that drives a current, that current made to
+  alternate, and the pair of fields finally leaving their source behind
+  altogether. Cutting a bar magnet gives two magnets rather than two poles
+  because there were never two poles — it is a solenoid whose windings are
+  electrons — and Gauss's law for magnetism is that fact written as a
+  right-hand side with nothing on it. A magnet dropped down a copper pipe falls
+  slowly although copper is not magnetic, and Lenz's law is not a rule of thumb
+  there but the only direction energy conservation permits: the other sign would
+  accelerate the magnet, induce more current, and accelerate it further. A rod
+  on frictionless rails gets the same Blv two ways — flux swept, and Lorentz
+  force on the electrons — and then the mechanical power Fv turns out to equal
+  the electrical ε²/R term for term, which is a generator stated in one line.
+  Two of the hard questions are arguments the student half-wins: the mains
+  cannot be 220 V because a sinusoid averages to zero (true, and the reason
+  nobody quotes the average — heating goes as i², which is positive in both
+  halves), and a factory's wattless current delivers no energy to its machines
+  (true, and irrelevant to the cables, which carry it and dissipate I²R while
+  doing so). Ampère's law is shown to be **wrong** rather than merely limited —
+  one loop, two surfaces, two answers — and displacement current is the repair
+  that a contradiction demanded rather than a measurement suggested. The last
+  chapter closes on why a 50 kW radio mast is safe to stand beside while a few
+  minutes of sunlight burns: damage is decided by hf per quantum, not by watts,
+  and turning a transmitter up sends more photons and never more energetic ones.
+  Suite re-pointed and green: 87 files, 1485 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)
