@@ -2514,8 +2514,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 308
-  chapters / 5,269 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 313
+  chapters / 5,386 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2615,8 +2615,25 @@ navigation" means the actual list rather than one somebody maintained by hand.
   flowering plant stocks a seed only after the order is confirmed, why a
   whale is not a fish and a bat is not a bird, why an empty space in the
   body is a better classifier than any organ, and why a potato is a stem
-  and a carrot is a root. Class 11 has fourteen Biology chapters and all
-  of Maths left, and Class 12 after them.
+  and a carrot is a root. **Biology is now ten chapters in** — 216 questions,
+  the second five carrying the structural half of the syllabus: Anatomy of
+  Flowering Plants, Structural Organisation in Animals, Cell: The Unit of
+  Life, Biomolecules, and Cell Cycle and Cell Division. They ask why a nail
+  hammered into a trunk is at the same height forty years later, why a ring
+  can be counted in Himachal and not in an evergreen belt and not at all in a
+  palm, why a cockroach's blood is not bad at carrying oxygen but is never
+  asked to, why a frog's skin cannot both breathe and hold water, why an
+  amoeba could not reach the size of a fist however much it ate, why an
+  antibiotic that jams a ribosome spares the patient AND the fungus, why a
+  boiled egg keeps every peptide bond and never works again, why a cow does
+  not digest grass and its bacteria do, why one division cannot halve a
+  chromosome number, and what sexual reproduction buys for the fifty per cent
+  tax it pays. **Three of the ten carry numerics and seven do not**, which is
+  the honest shape of the subject: ploidy in Plant Kingdom, the
+  surface-area-to-volume ratio in Cell, polymer arithmetic in Biomolecules and
+  chromosome bookkeeping in Cell Cycle are all real counting a pupil must be
+  able to do, and taxonomy has none that is not invented. Class 11 has nine
+  Biology chapters and all of Maths left, and Class 12 after them.
   Suite re-pointed and green: 84 files, 1453 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**

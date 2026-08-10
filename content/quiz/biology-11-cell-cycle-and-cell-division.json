@@ -1,0 +1,968 @@
+{
+  "subject": "BIOLOGY",
+  "classLevel": 11,
+  "chapter": "Chapter 10 — Cell Cycle and Cell Division",
+  "name": "Cell Cycle and Cell Division",
+  "slug": "biology-11-cell-cycle-and-cell-division",
+  "summary": "Dividing is the visible tenth of a cell's life and the copying that makes it possible is the invisible rest, so the chapter is really about bookkeeping: one division that keeps the chromosome number exactly and one that halves it in two goes, a swap between partners that makes every gamete unique, a checkpoint that can be bribed, and a plant that builds a wall where an animal pinches a waist.",
+  "position": 10,
+  "source": "EduLink original, written against NCERT Biology (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "कोशिका चक्र और कोशिका विभाजन",
+      "summary": "विभाजन कोशिका के जीवन का दिखने वाला दसवाँ भाग है और उसे संभव बनाती नक़ल अदृश्य बाक़ी हिस्सा, अतः अध्याय असल में बहीखाते का है: एक विभाजन जो गुणसूत्र संख्या ठीक-ठीक बनाए रखता है और एक जो उसे दो चरणों में आधा करता है, साथियों के बीच अदला-बदली जो हर युग्मक को अद्वितीय बनाती है, एक जाँच-चौकी जिसे रिश्वत दी जा सकती है, और वह पादप जो दीवार बनाता है जहाँ प्राणी कमर दबाता है।"
+    },
+    "mr": {
+      "name": "पेशीचक्र आणि पेशीविभाजन",
+      "summary": "विभाजन हा पेशीच्या आयुष्याचा दिसणारा दशांश आणि ते शक्य करणारी नक्कल हा अदृश्य उरलेला भाग, म्हणून प्रकरण खरे तर हिशेबाचे: एक विभाजन जे गुणसूत्रसंख्या नेमकी टिकवते आणि एक जे ती दोन टप्प्यांत निम्मी करते, जोडीदारांमधली अदलाबदल जी प्रत्येक युग्मक अद्वितीय करते, एक तपासनाका ज्याला लाच देता येते, आणि ती वनस्पती जी भिंत बांधते जिथे प्राणी कंबर आवळतो."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Watch a dividing tissue for a day and you see chromosomes moving for less than an hour of it; the other twenty-odd hours look like nothing happening and are when the cell copies everything it owns. What is this?",
+      "choices": [
+        "The gate a cell must pass before it may divide",
+        "The visible tenth, and the invisible rest",
+        "The division that changes nothing at all",
+        "The swap that makes every gamete new"
+      ],
+      "answerIndex": 1,
+      "solution": "The cell cycle is interphase followed by division, and interphase is by far the longer: G1 for growth, S for copying the DNA, and G2 for preparing to divide. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "विभाजित होते ऊतक को दिन भर देखो और गुणसूत्रों को हिलते हुए एक घंटे से कम ही दिखोगे; बाक़ी बीसेक घंटे ऐसे लगते हैं मानो कुछ हो ही नहीं रहा और तभी कोशिका अपनी हर चीज़ की नक़ल करती है। यह क्या है?",
+          "choices": [
+            "वह द्वार जिससे कोशिका को विभाजन से पहले गुज़रना है",
+            "दिखने वाला दसवाँ भाग, और अदृश्य बाक़ी",
+            "वह विभाजन जो कुछ भी नहीं बदलता",
+            "वह अदला-बदली जो हर युग्मक को नया बनाती है"
+          ],
+          "solution": "कोशिका चक्र अंतरावस्था और उसके बाद विभाजन है, और अंतरावस्था कहीं अधिक लंबी है: वृद्धि के लिए G1, DNA की नक़ल के लिए S, और विभाजन की तैयारी के लिए G2. यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "विभाजित होणारी ऊती दिवसभर पाहा आणि गुणसूत्रे हलताना तासाहून कमीच दिसतील; उरलेले वीसेक तास काहीच घडत नसल्यासारखे वाटतात आणि तेव्हाच पेशी आपल्या प्रत्येक गोष्टीची नक्कल करते. हे काय?",
+          "choices": [
+            "विभाजनाआधी पेशीला ओलांडावे लागणारे ते दार",
+            "दिसणारा दशांश, आणि अदृश्य उरलेला",
+            "काहीच न बदलणारे ते विभाजन",
+            "प्रत्येक युग्मक नवे करणारी ती अदलाबदल"
+          ],
+          "solution": "पेशीचक्र म्हणजे आंतरावस्था आणि नंतर विभाजन, आणि आंतरावस्था कितीतरी अधिक लांब: वाढीसाठी G1, DNA च्या नकलेसाठी S, आणि विभाजनाच्या तयारीसाठी G2. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The division that changes nothing at all is correct?",
+      "choices": [
+        "Crossing over is the exchange of segments between homologous chromosomes during the first meiotic prophase, at points called chiasmata, and it produces chromosomes carrying a new combination of the parents' alleles.",
+        "The cell cycle is interphase followed by division, and interphase is by far the longer: G1 for growth, S for copying the DNA, and G2 for preparing to divide.",
+        "Meiosis is one round of DNA replication followed by two divisions, giving four cells with half the chromosome number: the first division separates the homologous pairs and the second separates the sister chromatids.",
+        "Mitosis is one division producing two daughter cells with the same chromosome number and the same genes as the parent, and it is how a body grows, repairs and replaces."
+      ],
+      "answerIndex": 3,
+      "solution": "Mitosis is one division producing two daughter cells with the same chromosome number and the same genes as the parent, and it is how a body grows, repairs and replaces. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "वह विभाजन जो कुछ भी नहीं बदलता के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "जीन-विनिमय पहली अर्धसूत्री पूर्वावस्था में समजात गुणसूत्रों के बीच खंडों की अदला-बदली है, काएज़्मा कहे जाते बिंदुओं पर, और वह माता-पिता के युग्मविकल्पियों का नया संयोजन ढोते गुणसूत्र बनाता है।",
+            "कोशिका चक्र अंतरावस्था और उसके बाद विभाजन है, और अंतरावस्था कहीं अधिक लंबी है: वृद्धि के लिए G1, DNA की नक़ल के लिए S, और विभाजन की तैयारी के लिए G2.",
+            "अर्धसूत्री विभाजन DNA की एक बार प्रतिकृति और उसके बाद दो विभाजन है, जो आधी गुणसूत्र संख्या वाली चार कोशिकाएँ देता है: पहला विभाजन समजात युग्मों को अलग करता है और दूसरा सहोदर अर्धगुणसूत्रों को।",
+            "समसूत्री विभाजन एक ऐसा विभाजन है जो जनक जितनी ही गुणसूत्र संख्या और वही जीन रखती दो संतति कोशिकाएँ बनाता है, और शरीर इसी से बढ़ता, मरम्मत करता और बदलता है।"
+          ],
+          "solution": "समसूत्री विभाजन एक ऐसा विभाजन है जो जनक जितनी ही गुणसूत्र संख्या और वही जीन रखती दो संतति कोशिकाएँ बनाता है, और शरीर इसी से बढ़ता, मरम्मत करता और बदलता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "काहीच न बदलणारे ते विभाजन विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "जनुक-विनिमय म्हणजे पहिल्या अर्धसूत्री पूर्वावस्थेत समजात गुणसूत्रांमधली खंडांची अदलाबदल, कायाझ्मा म्हटल्या जाणाऱ्या बिंदूंवर, आणि तो आई-वडिलांच्या युग्मविकल्पींचे नवे संयोजन वाहणारी गुणसूत्रे बनवतो.",
+            "पेशीचक्र म्हणजे आंतरावस्था आणि नंतर विभाजन, आणि आंतरावस्था कितीतरी अधिक लांब: वाढीसाठी G1, DNA च्या नकलेसाठी S, आणि विभाजनाच्या तयारीसाठी G2.",
+            "अर्धसूत्री विभाजन म्हणजे DNA ची एकदा प्रतिकृती आणि नंतर दोन विभाजने, जे निम्मी गुणसूत्रसंख्या असलेल्या चार पेशी देते: पहिले विभाजन समजात जोड्या वेगळ्या करते आणि दुसरे सहोदर अर्धगुणसूत्रे.",
+            "समविभाजन म्हणजे एक असे विभाजन जे जनकाइतकीच गुणसूत्रसंख्या आणि तीच जनुके असलेल्या दोन कन्यापेशी बनवते, आणि शरीर याच्यानेच वाढते, दुरुस्त करते आणि बदलते."
+          ],
+          "solution": "समविभाजन म्हणजे एक असे विभाजन जे जनकाइतकीच गुणसूत्रसंख्या आणि तीच जनुके असलेल्या दोन कन्यापेशी बनवते, आणि शरीर याच्यानेच वाढते, दुरुस्त करते आणि बदलते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The halving happens entirely in the FIRST division, which is why it is called reductional and the second, which merely splits chromatids like a mitosis, is called equational.\" — which of these is this about?",
+      "choices": [
+        "The visible tenth, and the invisible rest",
+        "The division that changes nothing at all",
+        "The swap that makes every gamete new",
+        "Halving the number, in two goes"
+      ],
+      "answerIndex": 3,
+      "solution": "Meiosis is one round of DNA replication followed by two divisions, giving four cells with half the chromosome number: the first division separates the homologous pairs and the second separates the sister chromatids. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"आधा होना पूरी तरह पहले विभाजन में होता है, इसीलिए उसे न्यूनकारी कहते हैं और दूसरे को, जो समसूत्री विभाजन की तरह बस अर्धगुणसूत्र बाँटता है, समकारी।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "दिखने वाला दसवाँ भाग, और अदृश्य बाक़ी",
+            "वह विभाजन जो कुछ भी नहीं बदलता",
+            "वह अदला-बदली जो हर युग्मक को नया बनाती है",
+            "संख्या आधी करना, दो चरणों में"
+          ],
+          "solution": "अर्धसूत्री विभाजन DNA की एक बार प्रतिकृति और उसके बाद दो विभाजन है, जो आधी गुणसूत्र संख्या वाली चार कोशिकाएँ देता है: पहला विभाजन समजात युग्मों को अलग करता है और दूसरा सहोदर अर्धगुणसूत्रों को। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"निम्मे होणे संपूर्णपणे पहिल्या विभाजनात घडते, म्हणूनच त्याला न्यूनकारी म्हणतात आणि दुसऱ्याला, जे समविभाजनासारखे फक्त अर्धगुणसूत्रे वाटते, समकारी.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "दिसणारा दशांश, आणि अदृश्य उरलेला",
+            "काहीच न बदलणारे ते विभाजन",
+            "प्रत्येक युग्मक नवे करणारी ती अदलाबदल",
+            "संख्या निम्मी करणे, दोन टप्प्यांत"
+          ],
+          "solution": "अर्धसूत्री विभाजन म्हणजे DNA ची एकदा प्रतिकृती आणि नंतर दोन विभाजने, जे निम्मी गुणसूत्रसंख्या असलेल्या चार पेशी देते: पहिले विभाजन समजात जोड्या वेगळ्या करते आणि दुसरे सहोदर अर्धगुणसूत्रे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Two chromosomes of a pair lie side by side, break at matching points and exchange the pieces, so a chromosome that leaves is neither the one from the mother nor the one from the father. What is this?",
+      "choices": [
+        "A wall built where an animal pinches a waist",
+        "The swap that makes every gamete new",
+        "Halving the number, in two goes",
+        "The division that changes nothing at all"
+      ],
+      "answerIndex": 1,
+      "solution": "Crossing over is the exchange of segments between homologous chromosomes during the first meiotic prophase, at points called chiasmata, and it produces chromosomes carrying a new combination of the parents' alleles. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "युग्म के दो गुणसूत्र अगल-बग़ल पड़ते हैं, मेल खाते बिंदुओं पर टूटते हैं और टुकड़े अदल-बदल लेते हैं, अतः जो गुणसूत्र निकलता है वह न माता वाला है न पिता वाला। यह क्या है?",
+          "choices": [
+            "वहाँ बनी दीवार जहाँ प्राणी कमर दबाता है",
+            "वह अदला-बदली जो हर युग्मक को नया बनाती है",
+            "संख्या आधी करना, दो चरणों में",
+            "वह विभाजन जो कुछ भी नहीं बदलता"
+          ],
+          "solution": "जीन-विनिमय पहली अर्धसूत्री पूर्वावस्था में समजात गुणसूत्रों के बीच खंडों की अदला-बदली है, काएज़्मा कहे जाते बिंदुओं पर, और वह माता-पिता के युग्मविकल्पियों का नया संयोजन ढोते गुणसूत्र बनाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "जोडीतली दोन गुणसूत्रे शेजारीशेजारी पडतात, जुळणाऱ्या बिंदूंवर तुटतात आणि तुकडे अदलाबदल करतात, म्हणून जे गुणसूत्र निघते ते ना आईचे ना वडिलांचे. हे काय?",
+          "choices": [
+            "प्राणी कंबर आवळतो तिथे बांधलेली भिंत",
+            "प्रत्येक युग्मक नवे करणारी ती अदलाबदल",
+            "संख्या निम्मी करणे, दोन टप्प्यांत",
+            "काहीच न बदलणारे ते विभाजन"
+          ],
+          "solution": "जनुक-विनिमय म्हणजे पहिल्या अर्धसूत्री पूर्वावस्थेत समजात गुणसूत्रांमधली खंडांची अदलाबदल, कायाझ्मा म्हटल्या जाणाऱ्या बिंदूंवर, आणि तो आई-वडिलांच्या युग्मविकल्पींचे नवे संयोजन वाहणारी गुणसूत्रे बनवतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The gate a cell must pass before it may divide is correct?",
+      "choices": [
+        "Mitosis is one division producing two daughter cells with the same chromosome number and the same genes as the parent, and it is how a body grows, repairs and replaces.",
+        "Meiosis is one round of DNA replication followed by two divisions, giving four cells with half the chromosome number: the first division separates the homologous pairs and the second separates the sister chromatids.",
+        "Crossing over is the exchange of segments between homologous chromosomes during the first meiotic prophase, at points called chiasmata, and it produces chromosomes carrying a new combination of the parents' alleles.",
+        "Checkpoints are control points in the cell cycle where division halts unless conditions are met — DNA undamaged, replication complete, chromosomes properly attached — and a cell that fails and cannot repair is normally destroyed."
+      ],
+      "answerIndex": 3,
+      "solution": "Checkpoints are control points in the cell cycle where division halts unless conditions are met — DNA undamaged, replication complete, chromosomes properly attached — and a cell that fails and cannot repair is normally destroyed. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "वह द्वार जिससे कोशिका को विभाजन से पहले गुज़रना है के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "समसूत्री विभाजन एक ऐसा विभाजन है जो जनक जितनी ही गुणसूत्र संख्या और वही जीन रखती दो संतति कोशिकाएँ बनाता है, और शरीर इसी से बढ़ता, मरम्मत करता और बदलता है।",
+            "अर्धसूत्री विभाजन DNA की एक बार प्रतिकृति और उसके बाद दो विभाजन है, जो आधी गुणसूत्र संख्या वाली चार कोशिकाएँ देता है: पहला विभाजन समजात युग्मों को अलग करता है और दूसरा सहोदर अर्धगुणसूत्रों को।",
+            "जीन-विनिमय पहली अर्धसूत्री पूर्वावस्था में समजात गुणसूत्रों के बीच खंडों की अदला-बदली है, काएज़्मा कहे जाते बिंदुओं पर, और वह माता-पिता के युग्मविकल्पियों का नया संयोजन ढोते गुणसूत्र बनाता है।",
+            "जाँच-चौकियाँ कोशिका चक्र के वे नियंत्रण-बिंदु हैं जहाँ शर्तें पूरी न होने पर विभाजन रुक जाता है — DNA अक्षत, प्रतिकृति पूर्ण, गुणसूत्र ठीक से जुड़े — और जो कोशिका विफल हो और मरम्मत न कर सके वह सामान्यतः नष्ट कर दी जाती है।"
+          ],
+          "solution": "जाँच-चौकियाँ कोशिका चक्र के वे नियंत्रण-बिंदु हैं जहाँ शर्तें पूरी न होने पर विभाजन रुक जाता है — DNA अक्षत, प्रतिकृति पूर्ण, गुणसूत्र ठीक से जुड़े — और जो कोशिका विफल हो और मरम्मत न कर सके वह सामान्यतः नष्ट कर दी जाती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "विभाजनाआधी पेशीला ओलांडावे लागणारे ते दार विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "समविभाजन म्हणजे एक असे विभाजन जे जनकाइतकीच गुणसूत्रसंख्या आणि तीच जनुके असलेल्या दोन कन्यापेशी बनवते, आणि शरीर याच्यानेच वाढते, दुरुस्त करते आणि बदलते.",
+            "अर्धसूत्री विभाजन म्हणजे DNA ची एकदा प्रतिकृती आणि नंतर दोन विभाजने, जे निम्मी गुणसूत्रसंख्या असलेल्या चार पेशी देते: पहिले विभाजन समजात जोड्या वेगळ्या करते आणि दुसरे सहोदर अर्धगुणसूत्रे.",
+            "जनुक-विनिमय म्हणजे पहिल्या अर्धसूत्री पूर्वावस्थेत समजात गुणसूत्रांमधली खंडांची अदलाबदल, कायाझ्मा म्हटल्या जाणाऱ्या बिंदूंवर, आणि तो आई-वडिलांच्या युग्मविकल्पींचे नवे संयोजन वाहणारी गुणसूत्रे बनवतो.",
+            "तपासनाके ही पेशीचक्रातील ती नियंत्रण-स्थळे जिथे अटी पूर्ण न झाल्यास विभाजन थांबते — DNA अक्षत, प्रतिकृती पूर्ण, गुणसूत्रे नीट जोडलेली — आणि जी पेशी अपयशी ठरते आणि दुरुस्त करू शकत नाही ती सामान्यतः नष्ट केली जाते."
+          ],
+          "solution": "तपासनाके ही पेशीचक्रातील ती नियंत्रण-स्थळे जिथे अटी पूर्ण न झाल्यास विभाजन थांबते — DNA अक्षत, प्रतिकृती पूर्ण, गुणसूत्रे नीट जोडलेली — आणि जी पेशी अपयशी ठरते आणि दुरुस्त करू शकत नाही ती सामान्यतः नष्ट केली जाते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The plate grows from the middle outwards while the furrow closes from the outside in, which is the geometry each is forced into by having or not having a wall.\" — which of these is this about?",
+      "choices": [
+        "The gate a cell must pass before it may divide",
+        "The visible tenth, and the invisible rest",
+        "A wall built where an animal pinches a waist",
+        "The swap that makes every gamete new"
+      ],
+      "answerIndex": 2,
+      "solution": "Cytokinesis divides the cytoplasm by a cleavage furrow in animal cells, where a contractile ring pinches the cell in two, and by a cell plate in plant cells, which grows outwards from the centre into a new wall. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"पट्टिका बीच से बाहर की ओर बढ़ती है जबकि खाँच बाहर से भीतर की ओर बंद होती है, और भित्ति होने या न होने से हर एक पर यही ज्यामिति थोपी जाती है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "वह द्वार जिससे कोशिका को विभाजन से पहले गुज़रना है",
+            "दिखने वाला दसवाँ भाग, और अदृश्य बाक़ी",
+            "वहाँ बनी दीवार जहाँ प्राणी कमर दबाता है",
+            "वह अदला-बदली जो हर युग्मक को नया बनाती है"
+          ],
+          "solution": "कोशिकाद्रव्य विभाजन प्राणी कोशिकाओं में विदलन खाँच से होता है, जहाँ संकुचनशील वलय कोशिका को दो में दबा देता है, और पादप कोशिकाओं में कोशिका-पट्टिका से, जो केंद्र से बाहर की ओर बढ़कर नई भित्ति बन जाती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"पट्टी मध्यातून बाहेरच्या दिशेने वाढते तर खाच बाहेरून आतल्या दिशेने बंद होते, आणि भित्तिका असणे वा नसणे यानेच प्रत्येकावर हीच भूमिती लादली जाते.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "विभाजनाआधी पेशीला ओलांडावे लागणारे ते दार",
+            "दिसणारा दशांश, आणि अदृश्य उरलेला",
+            "प्राणी कंबर आवळतो तिथे बांधलेली भिंत",
+            "प्रत्येक युग्मक नवे करणारी ती अदलाबदल"
+          ],
+          "solution": "पेशीद्रव्य विभाजन प्राणिपेशींत विदलन खाचेने होते, जिथे आकुंचनशील वलय पेशीला दोनांत दाबते, आणि वनस्पतिपेशींत पेशी-पट्टीने, जी मध्यातून बाहेरच्या दिशेने वाढून नवी भित्तिका बनते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A nerve cell spends your whole life in G0\" goes correctly with which of these?",
+      "choices": [
+        "halving the number, in two goes",
+        "the visible tenth, and the invisible rest",
+        "the swap that makes every gamete new",
+        "a wall built where an animal pinches a waist"
+      ],
+      "answerIndex": 1,
+      "solution": "The cell cycle is interphase followed by division, and interphase is by far the longer: G1 for growth, S for copying the DNA, and G2 for preparing to divide. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"तंत्रिका कोशिका तुम्हारा पूरा जीवन G0 में बिताती है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "संख्या आधी करना, दो चरणों में",
+            "दिखने वाला दसवाँ भाग, और अदृश्य बाक़ी",
+            "वह अदला-बदली जो हर युग्मक को नया बनाती है",
+            "वहाँ बनी दीवार जहाँ प्राणी कमर दबाता है"
+          ],
+          "solution": "कोशिका चक्र अंतरावस्था और उसके बाद विभाजन है, और अंतरावस्था कहीं अधिक लंबी है: वृद्धि के लिए G1, DNA की नक़ल के लिए S, और विभाजन की तैयारी के लिए G2. यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"चेतापेशी तुमचे अख्खे आयुष्य G0 मध्ये घालवते\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "संख्या निम्मी करणे, दोन टप्प्यांत",
+            "दिसणारा दशांश, आणि अदृश्य उरलेला",
+            "प्रत्येक युग्मक नवे करणारी ती अदलाबदल",
+            "प्राणी कंबर आवळतो तिथे बांधलेली भिंत"
+          ],
+          "solution": "पेशीचक्र म्हणजे आंतरावस्था आणि नंतर विभाजन, आणि आंतरावस्था कितीतरी अधिक लांब: वाढीसाठी G1, DNA च्या नकलेसाठी S, आणि विभाजनाच्या तयारीसाठी G2. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Division without a stop signal is a tumour\" goes correctly with which of these?",
+      "choices": [
+        "the visible tenth, and the invisible rest",
+        "the swap that makes every gamete new",
+        "the division that changes nothing at all",
+        "halving the number, in two goes"
+      ],
+      "answerIndex": 2,
+      "solution": "Mitosis is one division producing two daughter cells with the same chromosome number and the same genes as the parent, and it is how a body grows, repairs and replaces. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"रुकने के संकेत बिना विभाजन अर्बुद है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "दिखने वाला दसवाँ भाग, और अदृश्य बाक़ी",
+            "वह अदला-बदली जो हर युग्मक को नया बनाती है",
+            "वह विभाजन जो कुछ भी नहीं बदलता",
+            "संख्या आधी करना, दो चरणों में"
+          ],
+          "solution": "समसूत्री विभाजन एक ऐसा विभाजन है जो जनक जितनी ही गुणसूत्र संख्या और वही जीन रखती दो संतति कोशिकाएँ बनाता है, और शरीर इसी से बढ़ता, मरम्मत करता और बदलता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"थांबण्याच्या संकेताविना विभाजन म्हणजे अर्बुद\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "दिसणारा दशांश, आणि अदृश्य उरलेला",
+            "प्रत्येक युग्मक नवे करणारी ती अदलाबदल",
+            "काहीच न बदलणारे ते विभाजन",
+            "संख्या निम्मी करणे, दोन टप्प्यांत"
+          ],
+          "solution": "समविभाजन म्हणजे एक असे विभाजन जे जनकाइतकीच गुणसूत्रसंख्या आणि तीच जनुके असलेल्या दोन कन्यापेशी बनवते, आणि शरीर याच्यानेच वाढते, दुरुस्त करते आणि बदलते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Remove one and the count doubles every generation\" goes correctly with which of these?",
+      "choices": [
+        "halving the number, in two goes",
+        "the gate a cell must pass before it may divide",
+        "the swap that makes every gamete new",
+        "a wall built where an animal pinches a waist"
+      ],
+      "answerIndex": 0,
+      "solution": "Meiosis is one round of DNA replication followed by two divisions, giving four cells with half the chromosome number: the first division separates the homologous pairs and the second separates the sister chromatids. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"एक हटाओ और गिनती हर पीढ़ी दोगुनी\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "संख्या आधी करना, दो चरणों में",
+            "वह द्वार जिससे कोशिका को विभाजन से पहले गुज़रना है",
+            "वह अदला-बदली जो हर युग्मक को नया बनाती है",
+            "वहाँ बनी दीवार जहाँ प्राणी कमर दबाता है"
+          ],
+          "solution": "अर्धसूत्री विभाजन DNA की एक बार प्रतिकृति और उसके बाद दो विभाजन है, जो आधी गुणसूत्र संख्या वाली चार कोशिकाएँ देता है: पहला विभाजन समजात युग्मों को अलग करता है और दूसरा सहोदर अर्धगुणसूत्रों को। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"एक काढा आणि मोजणी प्रत्येक पिढीत दुप्पट\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "संख्या निम्मी करणे, दोन टप्प्यांत",
+            "विभाजनाआधी पेशीला ओलांडावे लागणारे ते दार",
+            "प्रत्येक युग्मक नवे करणारी ती अदलाबदल",
+            "प्राणी कंबर आवळतो तिथे बांधलेली भिंत"
+          ],
+          "solution": "अर्धसूत्री विभाजन म्हणजे DNA ची एकदा प्रतिकृती आणि नंतर दोन विभाजने, जे निम्मी गुणसूत्रसंख्या असलेल्या चार पेशी देते: पहिले विभाजन समजात जोड्या वेगळ्या करते आणि दुसरे सहोदर अर्धगुणसूत्रे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"No two children of one pair are ever the same\" goes correctly with which of these?",
+      "choices": [
+        "halving the number, in two goes",
+        "the swap that makes every gamete new",
+        "the visible tenth, and the invisible rest",
+        "a wall built where an animal pinches a waist"
+      ],
+      "answerIndex": 1,
+      "solution": "Crossing over is the exchange of segments between homologous chromosomes during the first meiotic prophase, at points called chiasmata, and it produces chromosomes carrying a new combination of the parents' alleles. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"एक ही युग्म के दो बच्चे कभी एक जैसे नहीं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "संख्या आधी करना, दो चरणों में",
+            "वह अदला-बदली जो हर युग्मक को नया बनाती है",
+            "दिखने वाला दसवाँ भाग, और अदृश्य बाक़ी",
+            "वहाँ बनी दीवार जहाँ प्राणी कमर दबाता है"
+          ],
+          "solution": "जीन-विनिमय पहली अर्धसूत्री पूर्वावस्था में समजात गुणसूत्रों के बीच खंडों की अदला-बदली है, काएज़्मा कहे जाते बिंदुओं पर, और वह माता-पिता के युग्मविकल्पियों का नया संयोजन ढोते गुणसूत्र बनाता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"एकाच जोडप्याची दोन मुले कधीच सारखी नाहीत\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "संख्या निम्मी करणे, दोन टप्प्यांत",
+            "प्रत्येक युग्मक नवे करणारी ती अदलाबदल",
+            "दिसणारा दशांश, आणि अदृश्य उरलेला",
+            "प्राणी कंबर आवळतो तिथे बांधलेली भिंत"
+          ],
+          "solution": "जनुक-विनिमय म्हणजे पहिल्या अर्धसूत्री पूर्वावस्थेत समजात गुणसूत्रांमधली खंडांची अदलाबदल, कायाझ्मा म्हटल्या जाणाऱ्या बिंदूंवर, आणि तो आई-वडिलांच्या युग्मविकल्पींचे नवे संयोजन वाहणारी गुणसूत्रे बनवतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Neither stopped nor died\" goes correctly with which of these?",
+      "choices": [
+        "the swap that makes every gamete new",
+        "the division that changes nothing at all",
+        "halving the number, in two goes",
+        "the gate a cell must pass before it may divide"
+      ],
+      "answerIndex": 3,
+      "solution": "Checkpoints are control points in the cell cycle where division halts unless conditions are met — DNA undamaged, replication complete, chromosomes properly attached — and a cell that fails and cannot repair is normally destroyed. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"न रुकी, न मरी\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "वह अदला-बदली जो हर युग्मक को नया बनाती है",
+            "वह विभाजन जो कुछ भी नहीं बदलता",
+            "संख्या आधी करना, दो चरणों में",
+            "वह द्वार जिससे कोशिका को विभाजन से पहले गुज़रना है"
+          ],
+          "solution": "जाँच-चौकियाँ कोशिका चक्र के वे नियंत्रण-बिंदु हैं जहाँ शर्तें पूरी न होने पर विभाजन रुक जाता है — DNA अक्षत, प्रतिकृति पूर्ण, गुणसूत्र ठीक से जुड़े — और जो कोशिका विफल हो और मरम्मत न कर सके वह सामान्यतः नष्ट कर दी जाती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"ना थांबली, ना मेली\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "प्रत्येक युग्मक नवे करणारी ती अदलाबदल",
+            "काहीच न बदलणारे ते विभाजन",
+            "संख्या निम्मी करणे, दोन टप्प्यांत",
+            "विभाजनाआधी पेशीला ओलांडावे लागणारे ते दार"
+          ],
+          "solution": "तपासनाके ही पेशीचक्रातील ती नियंत्रण-स्थळे जिथे अटी पूर्ण न झाल्यास विभाजन थांबते — DNA अक्षत, प्रतिकृती पूर्ण, गुणसूत्रे नीट जोडलेली — आणि जी पेशी अपयशी ठरते आणि दुरुस्त करू शकत नाही ती सामान्यतः नष्ट केली जाते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Coconut water is a cell that never finished dividing\" goes correctly with which of these?",
+      "choices": [
+        "a wall built where an animal pinches a waist",
+        "the division that changes nothing at all",
+        "the visible tenth, and the invisible rest",
+        "the swap that makes every gamete new"
+      ],
+      "answerIndex": 0,
+      "solution": "Cytokinesis divides the cytoplasm by a cleavage furrow in animal cells, where a contractile ring pinches the cell in two, and by a cell plate in plant cells, which grows outwards from the centre into a new wall. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"नारियल का पानी वह कोशिका है जिसका विभाजन कभी पूरा नहीं हुआ\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "वहाँ बनी दीवार जहाँ प्राणी कमर दबाता है",
+            "वह विभाजन जो कुछ भी नहीं बदलता",
+            "दिखने वाला दसवाँ भाग, और अदृश्य बाक़ी",
+            "वह अदला-बदली जो हर युग्मक को नया बनाती है"
+          ],
+          "solution": "कोशिकाद्रव्य विभाजन प्राणी कोशिकाओं में विदलन खाँच से होता है, जहाँ संकुचनशील वलय कोशिका को दो में दबा देता है, और पादप कोशिकाओं में कोशिका-पट्टिका से, जो केंद्र से बाहर की ओर बढ़कर नई भित्ति बन जाती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"नारळाचे पाणी म्हणजे विभाजन कधीच पूर्ण न झालेली पेशी\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "प्राणी कंबर आवळतो तिथे बांधलेली भिंत",
+            "काहीच न बदलणारे ते विभाजन",
+            "दिसणारा दशांश, आणि अदृश्य उरलेला",
+            "प्रत्येक युग्मक नवे करणारी ती अदलाबदल"
+          ],
+          "solution": "पेशीद्रव्य विभाजन प्राणिपेशींत विदलन खाचेने होते, जिथे आकुंचनशील वलय पेशीला दोनांत दाबते, आणि वनस्पतिपेशींत पेशी-पट्टीने, जी मध्यातून बाहेरच्या दिशेने वाढून नवी भित्तिका बनते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The visible tenth, and the invisible rest EXCEPT —",
+      "choices": [
+        "Only in S phase does the DNA amount double while the chromosome NUMBER stays the same, because each chromosome becomes two sister chromatids still joined at the centromere.",
+        "Mitosis is one division producing two daughter cells with the same chromosome number and the same genes as the parent, and it is how a body grows, repairs and replaces.",
+        "The cell cycle is interphase followed by division, and interphase is by far the longer: G1 for growth, S for copying the DNA, and G2 for preparing to divide.",
+        "Cells that will never divide again leave the cycle altogether into a resting state called G0, which is where a mature nerve cell spends the whole of your life."
+      ],
+      "answerIndex": 1,
+      "solution": "Mitosis is one division producing two daughter cells with the same chromosome number and the same genes as the parent, and it is how a body grows, repairs and replaces. That belongs to The division that changes nothing at all, not The visible tenth, and the invisible rest — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दिखने वाला दसवाँ भाग, और अदृश्य बाक़ी के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "केवल S प्रावस्था में DNA की मात्रा दोगुनी होती है जबकि गुणसूत्र संख्या वही रहती है, क्योंकि हर गुणसूत्र दो सहोदर अर्धगुणसूत्र बन जाता है जो अब भी गुणसूत्रबिंदु पर जुड़े हैं।",
+            "समसूत्री विभाजन एक ऐसा विभाजन है जो जनक जितनी ही गुणसूत्र संख्या और वही जीन रखती दो संतति कोशिकाएँ बनाता है, और शरीर इसी से बढ़ता, मरम्मत करता और बदलता है।",
+            "कोशिका चक्र अंतरावस्था और उसके बाद विभाजन है, और अंतरावस्था कहीं अधिक लंबी है: वृद्धि के लिए G1, DNA की नक़ल के लिए S, और विभाजन की तैयारी के लिए G2.",
+            "जो कोशिकाएँ फिर कभी विभाजित नहीं होंगी वे चक्र से पूरी तरह निकलकर G0 नाम की विश्राम-अवस्था में चली जाती हैं, और वहीं परिपक्व तंत्रिका कोशिका तुम्हारा पूरा जीवन बिताती है।"
+          ],
+          "solution": "समसूत्री विभाजन एक ऐसा विभाजन है जो जनक जितनी ही गुणसूत्र संख्या और वही जीन रखती दो संतति कोशिकाएँ बनाता है, और शरीर इसी से बढ़ता, मरम्मत करता और बदलता है। यह वह विभाजन जो कुछ भी नहीं बदलता की बात है, दिखने वाला दसवाँ भाग, और अदृश्य बाक़ी की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "दिसणारा दशांश, आणि अदृश्य उरलेला विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "केवळ S प्रावस्थेत DNA चे प्रमाण दुप्पट होते तर गुणसूत्रांची संख्या तीच राहते, कारण प्रत्येक गुणसूत्र दोन सहोदर अर्धगुणसूत्रे बनते जी अजूनही गुणसूत्रबिंदूवर जोडलेली.",
+            "समविभाजन म्हणजे एक असे विभाजन जे जनकाइतकीच गुणसूत्रसंख्या आणि तीच जनुके असलेल्या दोन कन्यापेशी बनवते, आणि शरीर याच्यानेच वाढते, दुरुस्त करते आणि बदलते.",
+            "पेशीचक्र म्हणजे आंतरावस्था आणि नंतर विभाजन, आणि आंतरावस्था कितीतरी अधिक लांब: वाढीसाठी G1, DNA च्या नकलेसाठी S, आणि विभाजनाच्या तयारीसाठी G2.",
+            "ज्या पेशी पुन्हा कधीच विभाजित होणार नाहीत त्या चक्रातून पूर्णपणे निघून G0 नावाच्या विश्रांती-अवस्थेत जातात, आणि तिथेच प्रौढ चेतापेशी तुमचे अख्खे आयुष्य घालवते."
+          ],
+          "solution": "समविभाजन म्हणजे एक असे विभाजन जे जनकाइतकीच गुणसूत्रसंख्या आणि तीच जनुके असलेल्या दोन कन्यापेशी बनवते, आणि शरीर याच्यानेच वाढते, दुरुस्त करते आणि बदलते. हे काहीच न बदलणारे ते विभाजन चे आहे, दिसणारा दशांश, आणि अदृश्य उरलेला चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The division that changes nothing at all EXCEPT —",
+      "choices": [
+        "In plants it happens in meristems and in animals almost everywhere, and where it happens without a stop signal being obeyed the result is a tumour.",
+        "Mitosis is one division producing two daughter cells with the same chromosome number and the same genes as the parent, and it is how a body grows, repairs and replaces.",
+        "The number is kept because S phase doubled the DNA first and mitosis then separates sister chromatids, so each daughter gets one of each pair and the count returns to where it started.",
+        "Crossing over is the exchange of segments between homologous chromosomes during the first meiotic prophase, at points called chiasmata, and it produces chromosomes carrying a new combination of the parents' alleles."
+      ],
+      "answerIndex": 3,
+      "solution": "Crossing over is the exchange of segments between homologous chromosomes during the first meiotic prophase, at points called chiasmata, and it produces chromosomes carrying a new combination of the parents' alleles. That belongs to The swap that makes every gamete new, not The division that changes nothing at all — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "वह विभाजन जो कुछ भी नहीं बदलता के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "पादपों में यह विभज्योतकों में होता है और प्राणियों में लगभग हर जगह, और जहाँ यह रुकने का संकेत माने बिना होता है वहाँ परिणाम अर्बुद है।",
+            "समसूत्री विभाजन एक ऐसा विभाजन है जो जनक जितनी ही गुणसूत्र संख्या और वही जीन रखती दो संतति कोशिकाएँ बनाता है, और शरीर इसी से बढ़ता, मरम्मत करता और बदलता है।",
+            "संख्या इसलिए बनी रहती है कि S प्रावस्था ने पहले DNA दोगुना किया और फिर समसूत्री विभाजन सहोदर अर्धगुणसूत्रों को अलग करता है, अतः हर संतति को हर युग्म का एक मिलता है और गिनती वहीं लौट आती है जहाँ से शुरू हुई थी।",
+            "जीन-विनिमय पहली अर्धसूत्री पूर्वावस्था में समजात गुणसूत्रों के बीच खंडों की अदला-बदली है, काएज़्मा कहे जाते बिंदुओं पर, और वह माता-पिता के युग्मविकल्पियों का नया संयोजन ढोते गुणसूत्र बनाता है।"
+          ],
+          "solution": "जीन-विनिमय पहली अर्धसूत्री पूर्वावस्था में समजात गुणसूत्रों के बीच खंडों की अदला-बदली है, काएज़्मा कहे जाते बिंदुओं पर, और वह माता-पिता के युग्मविकल्पियों का नया संयोजन ढोते गुणसूत्र बनाता है। यह वह अदला-बदली जो हर युग्मक को नया बनाती है की बात है, वह विभाजन जो कुछ भी नहीं बदलता की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "काहीच न बदलणारे ते विभाजन विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "वनस्पतींत हे विभाजी ऊतींत घडते आणि प्राण्यांत जवळपास सर्वत्र, आणि जिथे हे थांबण्याचा संकेत न पाळता घडते तिथे परिणाम अर्बुद.",
+            "समविभाजन म्हणजे एक असे विभाजन जे जनकाइतकीच गुणसूत्रसंख्या आणि तीच जनुके असलेल्या दोन कन्यापेशी बनवते, आणि शरीर याच्यानेच वाढते, दुरुस्त करते आणि बदलते.",
+            "संख्या यासाठी टिकते की S प्रावस्थेने आधी DNA दुप्पट केले आणि मग समविभाजन सहोदर अर्धगुणसूत्रे वेगळी करते, म्हणून प्रत्येक कन्येला प्रत्येक जोडीतले एक मिळते आणि मोजणी जिथून सुरू झाली तिथेच परतते.",
+            "जनुक-विनिमय म्हणजे पहिल्या अर्धसूत्री पूर्वावस्थेत समजात गुणसूत्रांमधली खंडांची अदलाबदल, कायाझ्मा म्हटल्या जाणाऱ्या बिंदूंवर, आणि तो आई-वडिलांच्या युग्मविकल्पींचे नवे संयोजन वाहणारी गुणसूत्रे बनवतो."
+          ],
+          "solution": "जनुक-विनिमय म्हणजे पहिल्या अर्धसूत्री पूर्वावस्थेत समजात गुणसूत्रांमधली खंडांची अदलाबदल, कायाझ्मा म्हटल्या जाणाऱ्या बिंदूंवर, आणि तो आई-वडिलांच्या युग्मविकल्पींचे नवे संयोजन वाहणारी गुणसूत्रे बनवतो. हे प्रत्येक युग्मक नवे करणारी ती अदलाबदल चे आहे, काहीच न बदलणारे ते विभाजन चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Halving the number, in two goes EXCEPT —",
+      "choices": [
+        "Fertilisation restores the number, so meiosis and fertilisation are a matched pair — take one away and the chromosome count would double every generation.",
+        "The halving happens entirely in the FIRST division, which is why it is called reductional and the second, which merely splits chromatids like a mitosis, is called equational.",
+        "Mitosis is one division producing two daughter cells with the same chromosome number and the same genes as the parent, and it is how a body grows, repairs and replaces.",
+        "Meiosis is one round of DNA replication followed by two divisions, giving four cells with half the chromosome number: the first division separates the homologous pairs and the second separates the sister chromatids."
+      ],
+      "answerIndex": 2,
+      "solution": "Mitosis is one division producing two daughter cells with the same chromosome number and the same genes as the parent, and it is how a body grows, repairs and replaces. That belongs to The division that changes nothing at all, not Halving the number, in two goes — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "संख्या आधी करना, दो चरणों में के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "निषेचन संख्या लौटा देता है, अतः अर्धसूत्री विभाजन और निषेचन जोड़ीदार हैं — एक को हटा दो और गुणसूत्र संख्या हर पीढ़ी दोगुनी होती जाए।",
+            "आधा होना पूरी तरह पहले विभाजन में होता है, इसीलिए उसे न्यूनकारी कहते हैं और दूसरे को, जो समसूत्री विभाजन की तरह बस अर्धगुणसूत्र बाँटता है, समकारी।",
+            "समसूत्री विभाजन एक ऐसा विभाजन है जो जनक जितनी ही गुणसूत्र संख्या और वही जीन रखती दो संतति कोशिकाएँ बनाता है, और शरीर इसी से बढ़ता, मरम्मत करता और बदलता है।",
+            "अर्धसूत्री विभाजन DNA की एक बार प्रतिकृति और उसके बाद दो विभाजन है, जो आधी गुणसूत्र संख्या वाली चार कोशिकाएँ देता है: पहला विभाजन समजात युग्मों को अलग करता है और दूसरा सहोदर अर्धगुणसूत्रों को।"
+          ],
+          "solution": "समसूत्री विभाजन एक ऐसा विभाजन है जो जनक जितनी ही गुणसूत्र संख्या और वही जीन रखती दो संतति कोशिकाएँ बनाता है, और शरीर इसी से बढ़ता, मरम्मत करता और बदलता है। यह वह विभाजन जो कुछ भी नहीं बदलता की बात है, संख्या आधी करना, दो चरणों में की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "संख्या निम्मी करणे, दोन टप्प्यांत विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "फलन संख्या परत आणते, म्हणून अर्धसूत्री विभाजन आणि फलन ही जुळी जोडी — एक काढा आणि गुणसूत्रसंख्या प्रत्येक पिढीत दुप्पट होत जाईल.",
+            "निम्मे होणे संपूर्णपणे पहिल्या विभाजनात घडते, म्हणूनच त्याला न्यूनकारी म्हणतात आणि दुसऱ्याला, जे समविभाजनासारखे फक्त अर्धगुणसूत्रे वाटते, समकारी.",
+            "समविभाजन म्हणजे एक असे विभाजन जे जनकाइतकीच गुणसूत्रसंख्या आणि तीच जनुके असलेल्या दोन कन्यापेशी बनवते, आणि शरीर याच्यानेच वाढते, दुरुस्त करते आणि बदलते.",
+            "अर्धसूत्री विभाजन म्हणजे DNA ची एकदा प्रतिकृती आणि नंतर दोन विभाजने, जे निम्मी गुणसूत्रसंख्या असलेल्या चार पेशी देते: पहिले विभाजन समजात जोड्या वेगळ्या करते आणि दुसरे सहोदर अर्धगुणसूत्रे."
+          ],
+          "solution": "समविभाजन म्हणजे एक असे विभाजन जे जनकाइतकीच गुणसूत्रसंख्या आणि तीच जनुके असलेल्या दोन कन्यापेशी बनवते, आणि शरीर याच्यानेच वाढते, दुरुस्त करते आणि बदलते. हे काहीच न बदलणारे ते विभाजन चे आहे, संख्या निम्मी करणे, दोन टप्प्यांत चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The swap that makes every gamete new EXCEPT —",
+      "choices": [
+        "Crossing over is the exchange of segments between homologous chromosomes during the first meiotic prophase, at points called chiasmata, and it produces chromosomes carrying a new combination of the parents' alleles.",
+        "Between the two, a human can make more than eight million chromosome combinations before crossing over is even counted, which is why no two children of the same parents are ever the same.",
+        "It is the second of two shuffles: the pairs also line up independently at the metaphase plate, so which member of each pair goes to which pole is decided afresh for every pair.",
+        "Meiosis is one round of DNA replication followed by two divisions, giving four cells with half the chromosome number: the first division separates the homologous pairs and the second separates the sister chromatids."
+      ],
+      "answerIndex": 3,
+      "solution": "Meiosis is one round of DNA replication followed by two divisions, giving four cells with half the chromosome number: the first division separates the homologous pairs and the second separates the sister chromatids. That belongs to Halving the number, in two goes, not The swap that makes every gamete new — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "वह अदला-बदली जो हर युग्मक को नया बनाती है के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "जीन-विनिमय पहली अर्धसूत्री पूर्वावस्था में समजात गुणसूत्रों के बीच खंडों की अदला-बदली है, काएज़्मा कहे जाते बिंदुओं पर, और वह माता-पिता के युग्मविकल्पियों का नया संयोजन ढोते गुणसूत्र बनाता है।",
+            "दोनों मिलकर, जीन-विनिमय गिनने से पहले ही मनुष्य अस्सी लाख से अधिक गुणसूत्र-संयोजन बना सकता है, इसीलिए एक ही माता-पिता के दो बच्चे कभी एक जैसे नहीं होते।",
+            "यह दो फेंटनों में दूसरा है: युग्म मध्यावस्था पट्टिका पर स्वतंत्र रूप से भी क़तार में लगते हैं, अतः हर युग्म का कौन-सा सदस्य किस ध्रुव पर जाएगा यह हर युग्म के लिए नए सिरे से तय होता है।",
+            "अर्धसूत्री विभाजन DNA की एक बार प्रतिकृति और उसके बाद दो विभाजन है, जो आधी गुणसूत्र संख्या वाली चार कोशिकाएँ देता है: पहला विभाजन समजात युग्मों को अलग करता है और दूसरा सहोदर अर्धगुणसूत्रों को।"
+          ],
+          "solution": "अर्धसूत्री विभाजन DNA की एक बार प्रतिकृति और उसके बाद दो विभाजन है, जो आधी गुणसूत्र संख्या वाली चार कोशिकाएँ देता है: पहला विभाजन समजात युग्मों को अलग करता है और दूसरा सहोदर अर्धगुणसूत्रों को। यह संख्या आधी करना, दो चरणों में की बात है, वह अदला-बदली जो हर युग्मक को नया बनाती है की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "प्रत्येक युग्मक नवे करणारी ती अदलाबदल विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "जनुक-विनिमय म्हणजे पहिल्या अर्धसूत्री पूर्वावस्थेत समजात गुणसूत्रांमधली खंडांची अदलाबदल, कायाझ्मा म्हटल्या जाणाऱ्या बिंदूंवर, आणि तो आई-वडिलांच्या युग्मविकल्पींचे नवे संयोजन वाहणारी गुणसूत्रे बनवतो.",
+            "दोन्ही मिळून, जनुक-विनिमय मोजण्याआधीच माणूस ऐंशी लाखांहून अधिक गुणसूत्र-संयोजने बनवू शकतो, म्हणूनच एकाच आई-वडिलांची दोन मुले कधीच सारखी नसतात.",
+            "हे दोन फेरबदलांतले दुसरे: जोड्या मध्यावस्था पट्टीवर स्वतंत्रपणेही रांगेत लागतात, म्हणून प्रत्येक जोडीतला कोणता सदस्य कोणत्या ध्रुवाकडे जाईल हे प्रत्येक जोडीसाठी नव्याने ठरते.",
+            "अर्धसूत्री विभाजन म्हणजे DNA ची एकदा प्रतिकृती आणि नंतर दोन विभाजने, जे निम्मी गुणसूत्रसंख्या असलेल्या चार पेशी देते: पहिले विभाजन समजात जोड्या वेगळ्या करते आणि दुसरे सहोदर अर्धगुणसूत्रे."
+          ],
+          "solution": "अर्धसूत्री विभाजन म्हणजे DNA ची एकदा प्रतिकृती आणि नंतर दोन विभाजने, जे निम्मी गुणसूत्रसंख्या असलेल्या चार पेशी देते: पहिले विभाजन समजात जोड्या वेगळ्या करते आणि दुसरे सहोदर अर्धगुणसूत्रे. हे संख्या निम्मी करणे, दोन टप्प्यांत चे आहे, प्रत्येक युग्मक नवे करणारी ती अदलाबदल चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A student says meiosis needs two divisions because one could not possibly halve the chromosome number. Explain why one division genuinely cannot do it, and what each of the two actually separates.",
+      "choices": [
+        "The conclusion is right and the reason needs stating precisely. The cell entered meiosis having already copied its DNA, so every chromosome is two sister chromatids joined at a centromere. The FIRST division separates the homologous pairs — the maternal chromosome goes one way and the paternal the other, still as doubled chromosomes — and that is where the number halves, which is why it is called reductional. The SECOND division then separates those sister chromatids, exactly as a mitosis does, without changing the number again — the equational one. One division could deliver either the halving or the chromatid separation, never both",
+        "The student is wrong: one division could halve the number, and the second exists only to produce four gametes instead of two",
+        "The first division separates sister chromatids and the second separates the homologous pairs, so the halving happens in the second",
+        "Two divisions are needed because the DNA is copied twice, once before each, and each division undoes one copying"
+      ],
+      "answerIndex": 0,
+      "solution": "The student has the right answer and a vague reason, and making the reason exact is the whole of the learning here. Begin with what the cell is holding when meiosis starts. Interphase has already run, including S phase, so the DNA has been copied. A human cell entering meiosis therefore has 46 chromosomes, and each of those 46 is two identical sister chromatids stuck together at a centromere. The chromosome COUNT is 46; the DNA amount is double what a resting cell carries. Two separate things could be pulled apart here, and they are genuinely different. The homologous pairs could be separated: the chromosome 7 that came from the mother going one way, the chromosome 7 that came from the father going the other. That halves the count, from 46 to 23, and each of the 23 is still a doubled chromosome. Or the sister chromatids could be separated: each chromosome splitting at its centromere so that both daughters get 46 single chromosomes. That keeps the count and undoes the doubling — which is precisely what mitosis does. One division can perform one of those. It physically cannot perform both, because the two require the chromosomes to be attached to the spindle in different ways: in the first, both chromatids of one chromosome face the SAME pole and it is the pair that is pulled apart; in the second, the two chromatids of one chromosome face OPPOSITE poles. A chromosome cannot be arranged both ways at once. So meiosis does them in order, and the names record which is which. Meiosis I is reductional: homologues part, 46 becomes 23, and it is here that crossing over and independent assortment have already shuffled the alleles. Meiosis II is equational: the 23 doubled chromosomes split into 23 single ones in each of two cells, so four cells result, each with 23 single chromosomes. The count halved once and only once. Check the arithmetic of the DNA alongside the chromosome count, because tracking both is what makes the whole thing legible. Call a resting cell's DNA content 2C. After S phase it is 4C with 46 chromosomes. After meiosis I: 2C with 23 chromosomes. After meiosis II: 1C with 23 chromosomes. The chromosome number halved at the first division and the DNA content halved at both — two different quantities, halving at different times, which is exactly the confusion the two names exist to prevent. (The second answer misses that the count could not halve twice; the third swaps the two divisions, which would leave every gamete with 46 chromosomes; and the fourth invents a second S phase, which does not occur — the single replication is what makes the second division possible without a third.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक विद्यार्थी कहता है कि अर्धसूत्री विभाजन को दो विभाजन चाहिए क्योंकि एक से गुणसूत्र संख्या आधी हो ही नहीं सकती। समझाओ कि एक विभाजन वास्तव में ऐसा क्यों नहीं कर सकता, और दोनों में से हर एक वस्तुतः क्या अलग करता है।",
+          "choices": [
+            "निष्कर्ष सही है और कारण सटीक कहा जाना चाहिए। कोशिका अर्धसूत्री विभाजन में अपना DNA पहले ही नक़ल कर चुकी होकर घुसी, अतः हर गुणसूत्र गुणसूत्रबिंदु पर जुड़े दो सहोदर अर्धगुणसूत्र है। पहला विभाजन समजात युग्मों को अलग करता है — मातृ गुणसूत्र एक ओर और पितृ दूसरी ओर, अब भी दोहरे गुणसूत्रों के रूप में — और वहीं संख्या आधी होती है, इसीलिए उसे न्यूनकारी कहते हैं। फिर दूसरा विभाजन उन्हीं सहोदर अर्धगुणसूत्रों को अलग करता है, ठीक जैसे समसूत्री विभाजन करता है, संख्या फिर बदले बिना — वही समकारी है। एक विभाजन या तो आधा करना दे सकता था या अर्धगुणसूत्र अलग करना, दोनों कभी नहीं",
+            "विद्यार्थी ग़लत है: एक विभाजन संख्या आधी कर सकता था, और दूसरा केवल दो के बजाय चार युग्मक बनाने को है",
+            "पहला विभाजन सहोदर अर्धगुणसूत्रों को अलग करता है और दूसरा समजात युग्मों को, अतः आधा होना दूसरे में होता है",
+            "दो विभाजन इसलिए चाहिए कि DNA दो बार नक़ल होता है, हर एक से पहले एक बार, और हर विभाजन एक नक़ल पलट देता है"
+          ],
+          "solution": "विद्यार्थी के पास सही उत्तर है और अस्पष्ट कारण, और कारण को सटीक करना ही यहाँ की पूरी सीख है। शुरू करो इससे कि अर्धसूत्री विभाजन शुरू होते समय कोशिका थामे क्या है। अंतरावस्था चल चुकी है, S प्रावस्था सहित, अतः DNA नक़ल हो चुका है। अर्धसूत्री विभाजन में घुसती मानव कोशिका के पास इसलिए 46 गुणसूत्र हैं, और उन 46 में से हर एक गुणसूत्रबिंदु पर चिपके दो समान सहोदर अर्धगुणसूत्र है। गुणसूत्र गिनती 46 है; DNA की मात्रा विश्राम कर रही कोशिका से दोगुनी। यहाँ दो अलग चीज़ें खींची जा सकती थीं, और वे सचमुच भिन्न हैं। समजात युग्म अलग किए जा सकते थे: माता से आया गुणसूत्र 7 एक ओर, पिता से आया गुणसूत्र 7 दूसरी ओर। इससे गिनती आधी होती है, 46 से 23, और 23 में से हर एक अब भी दोहरा गुणसूत्र है। या सहोदर अर्धगुणसूत्र अलग किए जा सकते थे: हर गुणसूत्र अपने गुणसूत्रबिंदु पर बँटकर, ताकि दोनों संततियों को 46 एकल गुणसूत्र मिलें। इससे गिनती बनी रहती है और दोहरापन पलट जाता है — ठीक वही जो समसूत्री विभाजन करता है। एक विभाजन इनमें से एक कर सकता है। वह भौतिक रूप से दोनों नहीं कर सकता, क्योंकि दोनों के लिए गुणसूत्रों का तर्कु से भिन्न ढंग से जुड़ना ज़रूरी है: पहले में एक गुणसूत्र के दोनों अर्धगुणसूत्र उसी ध्रुव की ओर मुँह किए हैं और युग्म खींचकर अलग किया जाता है; दूसरे में एक गुणसूत्र के दो अर्धगुणसूत्र विपरीत ध्रुवों की ओर। कोई गुणसूत्र एक साथ दोनों ढंग से नहीं सज सकता। अतः अर्धसूत्री विभाजन उन्हें क्रम से करता है, और नाम दर्ज करते हैं कि कौन-सा कौन है। अर्धसूत्री I न्यूनकारी है: समजात अलग होते हैं, 46 से 23 होता है, और यहीं जीन-विनिमय और स्वतंत्र अपव्यूहन पहले ही युग्मविकल्पी फेंट चुके हैं। अर्धसूत्री II समकारी है: 23 दोहरे गुणसूत्र दो कोशिकाओं में से हर एक में 23 एकल में बँट जाते हैं, अतः चार कोशिकाएँ बनती हैं, हर एक में 23 एकल गुणसूत्र। गिनती एक बार आधी हुई और केवल एक बार। गुणसूत्र गिनती के साथ-साथ DNA का गणित भी जाँचो, क्योंकि दोनों का पीछा करना ही पूरी बात पठनीय बनाता है। विश्राम कर रही कोशिका की DNA मात्रा 2C कहो। S प्रावस्था के बाद वह 46 गुणसूत्रों के साथ 4C है। अर्धसूत्री I के बाद: 23 गुणसूत्रों के साथ 2C. अर्धसूत्री II के बाद: 23 गुणसूत्रों के साथ 1C. गुणसूत्र संख्या पहले विभाजन पर आधी हुई और DNA मात्रा दोनों पर — दो भिन्न राशियाँ, भिन्न समय पर आधी होतीं, और ठीक वही भ्रम रोकने को दोनों नाम हैं। (दूसरा उत्तर चूक जाता है कि गिनती दो बार आधी नहीं हो सकती थी; तीसरा दोनों विभाजन अदल-बदल देता है, जिससे हर युग्मक में 46 गुणसूत्र रह जाते; और चौथा दूसरी S प्रावस्था गढ़ता है, जो होती नहीं — इकलौती प्रतिकृति ही दूसरे विभाजन को तीसरे बिना संभव बनाती है।)"
+        },
+        "mr": {
+          "stem": "एक विद्यार्थी म्हणतो की अर्धसूत्री विभाजनाला दोन विभाजने लागतात कारण एकाने गुणसूत्रसंख्या निम्मी होऊच शकत नाही. एक विभाजन प्रत्यक्षात असे का करू शकत नाही, आणि दोघांपैकी प्रत्येक प्रत्यक्षात काय वेगळे करते, ते समजावा.",
+          "choices": [
+            "निष्कर्ष बरोबर आणि कारण नेमके सांगायला हवे. पेशी अर्धसूत्री विभाजनात आपले DNA आधीच नक्कल करून शिरली, म्हणून प्रत्येक गुणसूत्र गुणसूत्रबिंदूवर जोडलेली दोन सहोदर अर्धगुणसूत्रे. पहिले विभाजन समजात जोड्या वेगळ्या करते — मातृ गुणसूत्र एका बाजूला आणि पितृ दुसऱ्या, अजूनही दुहेरी गुणसूत्रांच्या रूपात — आणि तिथेच संख्या निम्मी होते, म्हणूनच त्याला न्यूनकारी म्हणतात. मग दुसरे विभाजन त्याच सहोदर अर्धगुणसूत्रांना वेगळे करते, नेमके समविभाजन करते तसे, संख्या पुन्हा न बदलता — तेच समकारी. एक विभाजन एकतर निम्मे करणे देऊ शकले असते वा अर्धगुणसूत्रे वेगळी करणे, दोन्ही कधीच नाही",
+            "विद्यार्थी चुकीचा: एक विभाजन संख्या निम्मी करू शकले असते, आणि दुसरे केवळ दोनऐवजी चार युग्मके बनवायला आहे",
+            "पहिले विभाजन सहोदर अर्धगुणसूत्रे वेगळी करते आणि दुसरे समजात जोड्या, म्हणून निम्मे होणे दुसऱ्यात घडते",
+            "दोन विभाजने यासाठी लागतात की DNA दोनदा नक्कल होते, प्रत्येकाआधी एकदा, आणि प्रत्येक विभाजन एक नक्कल उलटवते"
+          ],
+          "solution": "विद्यार्थ्याकडे बरोबर उत्तर आहे आणि अस्पष्ट कारण, आणि कारण नेमके करणे हीच इथली अख्खी शिकवण. सुरुवात यापासून की अर्धसूत्री विभाजन सुरू होताना पेशी काय धरून आहे. आंतरावस्था चालून गेली आहे, S प्रावस्थेसह, म्हणून DNA नक्कल झाले आहे. अर्धसूत्री विभाजनात शिरणाऱ्या मानवी पेशीकडे म्हणून 46 गुणसूत्रे, आणि त्या 46 पैकी प्रत्येक गुणसूत्रबिंदूवर चिकटलेली दोन सारखी सहोदर अर्धगुणसूत्रे. गुणसूत्र मोजणी 46; DNA चे प्रमाण विश्रांती घेणाऱ्या पेशीच्या दुप्पट. इथे दोन वेगळ्या गोष्टी ओढल्या जाऊ शकत होत्या, आणि त्या खरोखर वेगळ्या. समजात जोड्या वेगळ्या करता आल्या असत्या: आईकडून आलेले गुणसूत्र 7 एका बाजूला, वडिलांकडून आलेले गुणसूत्र 7 दुसऱ्या. याने मोजणी निम्मी होते, 46 वरून 23, आणि 23 पैकी प्रत्येक अजूनही दुहेरी गुणसूत्र. वा सहोदर अर्धगुणसूत्रे वेगळी करता आली असती: प्रत्येक गुणसूत्र आपल्या गुणसूत्रबिंदूवर विभागून, जेणेकरून दोन्ही कन्यांना 46 एकेरी गुणसूत्रे मिळावीत. याने मोजणी टिकते आणि दुहेरीपणा उलटतो — नेमके तेच जे समविभाजन करते. एक विभाजन यांतले एक करू शकते. ते भौतिकदृष्ट्या दोन्ही करू शकत नाही, कारण दोन्हींसाठी गुणसूत्रे तर्कूला वेगळ्या पद्धतीने जोडली जाणे आवश्यक: पहिल्यात एका गुणसूत्राची दोन्ही अर्धगुणसूत्रे त्याच ध्रुवाकडे तोंड करून आणि जोडी ओढून वेगळी केली जाते; दुसऱ्यात एका गुणसूत्राची दोन अर्धगुणसूत्रे विरुद्ध ध्रुवांकडे. कोणतेही गुणसूत्र एकाच वेळी दोन्ही पद्धतींनी मांडले जाऊ शकत नाही. म्हणून अर्धसूत्री विभाजन ती क्रमाने करते, आणि नावे नोंदवतात की कोणते कोणते. अर्धसूत्री I न्यूनकारी: समजात वेगळे होतात, 46 चे 23 होते, आणि इथेच जनुक-विनिमय आणि स्वतंत्र अपव्यूहन आधीच युग्मविकल्पी फेटून गेले आहेत. अर्धसूत्री II समकारी: 23 दुहेरी गुणसूत्रे दोन पेशींपैकी प्रत्येकीत 23 एकेरींत विभागतात, म्हणून चार पेशी बनतात, प्रत्येकीत 23 एकेरी गुणसूत्रे. मोजणी एकदा निम्मी झाली आणि फक्त एकदाच. गुणसूत्र मोजणीसोबतच DNA चे गणितही तपासा, कारण दोन्हींचा माग काढणेच अख्खी गोष्ट वाचनीय करते. विश्रांती घेणाऱ्या पेशीचे DNA प्रमाण 2C म्हणा. S प्रावस्थेनंतर ते 46 गुणसूत्रांसह 4C. अर्धसूत्री I नंतर: 23 गुणसूत्रांसह 2C. अर्धसूत्री II नंतर: 23 गुणसूत्रांसह 1C. गुणसूत्रसंख्या पहिल्या विभाजनावर निम्मी झाली आणि DNA प्रमाण दोन्हींवर — दोन वेगळ्या राशी, वेगळ्या वेळी निम्म्या होत, आणि नेमका तोच गोंधळ टाळायला दोन्ही नावे आहेत. (दुसरे उत्तर चुकवते की मोजणी दोनदा निम्मी होऊ शकली नसती; तिसरे दोन्ही विभाजने अदलाबदल करते, ज्याने प्रत्येक युग्मकात 46 गुणसूत्रे उरली असती; आणि चौथे दुसरी S प्रावस्था रचते, जी घडत नाही — एकमेव प्रतिकृतीच दुसरे विभाजन तिसऱ्याविना शक्य करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student asks why sexual reproduction is worth its cost, since an organism that simply copied itself would pass on all its genes instead of half. Answer using what meiosis does.",
+      "choices": [
+        "The cost is real — halving your genetic contribution is a fifty per cent tax — and what it buys is variation in the offspring. Meiosis shuffles twice: crossing over rewrites each chromosome as a mix of the two parents', and independent assortment sends either member of each pair to either pole, giving 2²³ combinations in a human before crossing over is counted. Fertilisation then combines two such shuffles. An asexual line passes on a fixed genome and can only wait for mutation, so when a parasite or a climate changes, the varied population almost always contains someone who survives and the clone may contain nobody",
+        "There is no real cost: meiosis halves the number but fertilisation restores it, so a sexual parent passes on just as many genes as an asexual one",
+        "Sexual reproduction is worth it because it produces more offspring than asexual reproduction, and numbers are what survival depends on",
+        "It is worth it because meiosis repairs mutations, so sexual offspring carry fewer damaged genes than their parents did"
+      ],
+      "answerIndex": 0,
+      "solution": "The student has spotted a genuine problem — biologists call it the twofold cost of sex — and the answer is not that the cost is imaginary but that something is bought with it. State the cost honestly first. An asexual female puts a complete copy of her genome into every offspring. A sexual female puts half of hers into each, and spends the other half of each offspring on somebody else's genes. On the arithmetic of gene transmission alone, asexual reproduction wins by a factor of two, every generation, forever. Any explanation that waves this away has not understood the question. Now what meiosis produces for the price. It shuffles twice, and the two shuffles are independent. INDEPENDENT ASSORTMENT: at metaphase I each homologous pair lines up with either member facing either pole, and each pair decides separately. With 23 pairs that is 2²³ — about 8.4 million — different chromosome combinations from one person, before anything else happens. CROSSING OVER: during prophase I the homologues exchange segments at chiasmata, so the chromosome that ends up in a gamete is not the mother's or the father's but a new mosaic of both. Since the breakpoints vary, this makes the number of possible gametes effectively unlimited. Fertilisation then multiplies two such numbers together. The result is that no two siblings are alike and no gamete has ever been made twice. What that is FOR is the second half of the answer. A clone's offspring are as fit as the parent was and no fitter, and their only route to novelty is mutation, which is slow and mostly harmful. A sexual population carries variation as standing stock, spread across individuals. When the environment changes — a new parasite, a drought, a pesticide — the question is no longer whether a helpful mutation might arise, but whether somebody in the population already has the combination that works. Usually somebody does. This matters most against living opponents, because a parasite evolves too. A clone is the same lock every generation, and a parasite that picks it once picks it in every host; a sexual population changes the lock each generation, which is why the fastest sexual reproduction is often found where parasite pressure is highest. Two honest qualifications keep the answer from becoming a slogan. Asexual reproduction is not a mistake — it is superior when conditions are stable and a well-adapted genome should be preserved intact, which is why aphids clone all summer and reproduce sexually only before winter, and why a farmer propagates a good mango variety by grafting rather than from seed. And meiosis does not repair anything; recombination can bring damaged genes together as easily as it separates them, and what it does is create the variation on which selection then acts. The general shape is worth keeping: when biology pays an obvious price for something, look for what the price buys, and expect the answer to be about a changing world rather than a static one. (The second answer denies the cost, which is the whole question; the third makes a claim about numbers that is usually the reverse of true; and the fourth attributes a repair function to meiosis that it does not have.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक विद्यार्थी पूछता है कि लैंगिक जनन अपनी क़ीमत के लायक़ क्यों है, जबकि जो जीव बस अपनी नक़ल बनाता वह आधे नहीं, अपने सारे जीन आगे पहुँचाता। अर्धसूत्री विभाजन जो करता है उससे उत्तर दो।",
+          "choices": [
+            "क़ीमत असली है — अपना आनुवंशिक योगदान आधा करना पचास प्रतिशत कर है — और वह ख़रीदती है संतान में विभिन्नता। अर्धसूत्री विभाजन दो बार फेंटता है: जीन-विनिमय हर गुणसूत्र को दोनों जनकों के मिश्रण के रूप में फिर से लिखता है, और स्वतंत्र अपव्यूहन हर युग्म का कोई भी सदस्य किसी भी ध्रुव पर भेजता है, जो मनुष्य में जीन-विनिमय गिनने से पहले ही 2²³ संयोजन देता है। फिर निषेचन ऐसे दो फेंटन जोड़ देता है। अलैंगिक वंश एक निश्चित जीनोम आगे देता है और केवल उत्परिवर्तन की प्रतीक्षा कर सकता है, अतः जब कोई परजीवी या जलवायु बदले, विविध समष्टि में लगभग सदा कोई ऐसा होता है जो बच जाए और क्लोन में कोई नहीं भी हो सकता",
+            "कोई असली क़ीमत नहीं: अर्धसूत्री विभाजन संख्या आधी करता है पर निषेचन उसे लौटा देता है, अतः लैंगिक जनक अलैंगिक जितने ही जीन आगे देता है",
+            "लैंगिक जनन इसलिए सार्थक है कि वह अलैंगिक जनन से अधिक संतान बनाता है, और उत्तरजीविता संख्या पर ही निर्भर है",
+            "यह इसलिए सार्थक है कि अर्धसूत्री विभाजन उत्परिवर्तनों की मरम्मत करता है, अतः लैंगिक संतान अपने जनकों से कम क्षतिग्रस्त जीन ढोती है"
+          ],
+          "solution": "विद्यार्थी ने असली समस्या पकड़ी है — जीवविज्ञानी उसे लिंग की दोगुनी क़ीमत कहते हैं — और उत्तर यह नहीं कि क़ीमत काल्पनिक है, बल्कि यह कि उससे कुछ ख़रीदा जाता है। पहले क़ीमत ईमानदारी से बताओ। अलैंगिक मादा अपने जीनोम की पूरी प्रति हर संतान में डालती है। लैंगिक मादा हर एक में अपना आधा डालती है, और हर संतान का दूसरा आधा किसी और के जीनों पर ख़र्च करती है। केवल जीन-संचरण के गणित पर अलैंगिक जनन दो के गुणक से जीतता है, हर पीढ़ी, सदा। जो व्याख्या इसे टाल दे उसने प्रश्न समझा ही नहीं। अब अर्धसूत्री विभाजन उस क़ीमत पर बनाता क्या है। वह दो बार फेंटता है, और दोनों फेंटन स्वतंत्र हैं। स्वतंत्र अपव्यूहन: मध्यावस्था I पर हर समजात युग्म ऐसे क़तार में लगता है कि कोई भी सदस्य किसी भी ध्रुव की ओर मुँह किए हो, और हर युग्म अलग तय करता है। 23 युग्मों के साथ वह 2²³ है — लगभग 84 लाख — एक व्यक्ति से भिन्न गुणसूत्र-संयोजन, और कुछ होने से पहले। जीन-विनिमय: पूर्वावस्था I में समजात काएज़्मा पर खंड अदल-बदलते हैं, अतः युग्मक में पहुँचता गुणसूत्र न माता का है न पिता का, बल्कि दोनों का नया पच्चीकारी है। चूँकि टूटने के बिंदु बदलते हैं, इससे संभव युग्मकों की संख्या प्रभावतः असीमित हो जाती है। फिर निषेचन ऐसी दो संख्याएँ गुणा कर देता है। परिणाम यह कि दो भाई-बहन एक जैसे नहीं और कोई युग्मक कभी दो बार नहीं बना। वह किसलिए है यह उत्तर का दूसरा आधा है। क्लोन की संतान जनक जितनी ही योग्य है, उससे अधिक नहीं, और नएपन का उनका इकलौता रास्ता उत्परिवर्तन है, जो धीमा और अधिकतर हानिकारक है। लैंगिक समष्टि विभिन्नता को खड़े भंडार के रूप में ढोती है, व्यष्टियों में बँटी। पर्यावरण बदलने पर — नया परजीवी, सूखा, कीटनाशी — प्रश्न अब यह नहीं कि कोई उपयोगी उत्परिवर्तन उठ सकता है या नहीं, बल्कि यह कि समष्टि में किसी के पास पहले से वह संयोजन है या नहीं जो काम करे। प्रायः किसी के पास होता है। यह जीवित प्रतिद्वंद्वियों के विरुद्ध सबसे अधिक मायने रखता है, क्योंकि परजीवी भी विकसित होता है। क्लोन हर पीढ़ी वही ताला है, और जो परजीवी उसे एक बार खोल ले वह हर परपोषी में खोल लेता है; लैंगिक समष्टि हर पीढ़ी ताला बदल देती है, इसीलिए सबसे तेज़ लैंगिक जनन प्रायः वहाँ मिलता है जहाँ परजीवी का दबाव सबसे अधिक है। दो ईमानदार शर्तें उत्तर को नारा बनने से रोकती हैं। अलैंगिक जनन भूल नहीं — वह तब श्रेष्ठ है जब परिस्थितियाँ स्थिर हों और भलीभाँति अनुकूलित जीनोम अक्षत रखा जाना चाहिए, इसीलिए ऐफ़िड पूरी गर्मी क्लोन बनाते हैं और लैंगिक जनन केवल सर्दी से पहले करते हैं, और इसीलिए किसान आम की अच्छी क़िस्म बीज से नहीं, कलम से बढ़ाता है। और अर्धसूत्री विभाजन कुछ मरम्मत नहीं करता; पुनर्संयोजन क्षतिग्रस्त जीनों को जितनी आसानी से अलग करता है उतनी ही आसानी से साथ भी ला सकता है, और वह जो करता है वह वही विभिन्नता बनाना है जिस पर फिर वरण काम करता है। सामान्य आकार रखने योग्य है: जब जीवविज्ञान किसी चीज़ की स्पष्ट क़ीमत चुकाए, देखो कि वह क़ीमत ख़रीदती क्या है, और अपेक्षा रखो कि उत्तर स्थिर नहीं, बदलती दुनिया के बारे में होगा। (दूसरा उत्तर क़ीमत से ही इनकार करता है, जो पूरा प्रश्न है; तीसरा संख्याओं के बारे में ऐसा दावा करता है जो प्रायः सच का उलटा है; और चौथा अर्धसूत्री विभाजन को मरम्मत का काम सौंपता है जो उसका है ही नहीं।)"
+        },
+        "mr": {
+          "stem": "एक विद्यार्थी विचारतो की लैंगिक प्रजनन आपल्या किमतीला योग्य का, जेव्हा जो सजीव फक्त स्वतःची नक्कल करेल तो निम्मी नव्हे, आपली सर्व जनुके पुढे पोहोचवेल. अर्धसूत्री विभाजन जे करते त्यातून उत्तर द्या.",
+          "choices": [
+            "किंमत खरी आहे — आपले अनुवंशिक योगदान निम्मे करणे हा पन्नास टक्के कर — आणि ती विकत घेते संततीतली विविधता. अर्धसूत्री विभाजन दोनदा फेटते: जनुक-विनिमय प्रत्येक गुणसूत्राला दोन्ही जनकांच्या मिश्रणाच्या रूपात पुन्हा लिहितो, आणि स्वतंत्र अपव्यूहन प्रत्येक जोडीतला कोणताही सदस्य कोणत्याही ध्रुवाकडे पाठवते, जे माणसात जनुक-विनिमय मोजण्याआधीच 2²³ संयोजने देते. मग फलन अशी दोन फेटणी जोडते. अलैंगिक वंश एक ठरावीक जीनोम पुढे देतो आणि केवळ उत्परिवर्तनाची वाट पाहू शकतो, म्हणून जेव्हा एखादा परजीवी वा हवामान बदलते, विविध लोकसंख्येत जवळपास नेहमी कोणीतरी असतो जो वाचतो आणि क्लोनमध्ये कोणीही नसू शकतो",
+            "कोणतीही खरी किंमत नाही: अर्धसूत्री विभाजन संख्या निम्मी करते पण फलन ती परत आणते, म्हणून लैंगिक जनक अलैंगिकाइतकीच जनुके पुढे देतो",
+            "लैंगिक प्रजनन यासाठी सार्थक की ते अलैंगिक प्रजननाहून अधिक संतती बनवते, आणि जगणे संख्येवरच अवलंबून",
+            "हे यासाठी सार्थक की अर्धसूत्री विभाजन उत्परिवर्तने दुरुस्त करते, म्हणून लैंगिक संतती आपल्या जनकांहून कमी क्षतिग्रस्त जनुके वाहते"
+          ],
+          "solution": "विद्यार्थ्याने खरी समस्या पकडली आहे — जीवशास्त्रज्ञ तिला लिंगाची दुप्पट किंमत म्हणतात — आणि उत्तर हे नाही की किंमत काल्पनिक आहे, तर हे की तिच्याने काहीतरी विकत घेतले जाते. आधी किंमत प्रामाणिकपणे सांगा. अलैंगिक मादी आपल्या जीनोमची पूर्ण प्रत प्रत्येक संततीत घालते. लैंगिक मादी प्रत्येकात आपले निम्मे घालते, आणि प्रत्येक संततीचा दुसरा निम्मा भाग दुसऱ्याच्या जनुकांवर खर्च करते. केवळ जनुक-संक्रमणाच्या गणितावर अलैंगिक प्रजनन दोनच्या पटीने जिंकते, प्रत्येक पिढीत, कायम. जे स्पष्टीकरण हे टाळते त्याने प्रश्न समजलाच नाही. आता अर्धसूत्री विभाजन त्या किमतीवर बनवते काय. ते दोनदा फेटते, आणि दोन्ही फेटणी स्वतंत्र. स्वतंत्र अपव्यूहन: मध्यावस्था I वर प्रत्येक समजात जोडी अशी रांगेत लागते की कोणताही सदस्य कोणत्याही ध्रुवाकडे तोंड करून असावा, आणि प्रत्येक जोडी वेगळी ठरवते. 23 जोड्यांसह ते 2²³ — सुमारे 84 लाख — एका व्यक्तीकडून वेगळी गुणसूत्र-संयोजने, आणि दुसरे काही घडण्याआधी. जनुक-विनिमय: पूर्वावस्था I मध्ये समजात कायाझ्मावर खंड अदलाबदल करतात, म्हणून युग्मकात पोहोचणारे गुणसूत्र ना आईचे ना वडिलांचे, तर दोघांचे नवे कलाकाम. तुटण्याचे बिंदू बदलत असल्याने, यामुळे शक्य युग्मकांची संख्या प्रभावीपणे अमर्याद होते. मग फलन अशा दोन संख्या गुणते. परिणाम असा की दोन भावंडे सारखी नाहीत आणि कोणतेही युग्मक कधीच दोनदा बनले नाही. ते कशासाठी हा उत्तराचा दुसरा अर्धा भाग. क्लोनची संतती जनकाइतकीच सक्षम, तिच्याहून अधिक नाही, आणि नावीन्याचा त्यांचा एकमेव मार्ग उत्परिवर्तन, जे मंद आणि बहुतांशी हानिकारक. लैंगिक लोकसंख्या विविधता उभा साठा म्हणून वाहते, व्यक्तींत विभागलेली. पर्यावरण बदलताच — नवा परजीवी, दुष्काळ, कीटकनाशक — प्रश्न आता हा नाही की एखादे उपयुक्त उत्परिवर्तन उद्भवू शकते का, तर हा की लोकसंख्येत कोणाकडे आधीच ते संयोजन आहे का जे चालते. बहुधा कोणाकडे तरी असते. हे जिवंत प्रतिस्पर्ध्यांविरुद्ध सर्वांत महत्त्वाचे, कारण परजीवीही उत्क्रांत होतो. क्लोन प्रत्येक पिढीत तेच कुलूप, आणि जो परजीवी ते एकदा उघडतो तो प्रत्येक यजमानात उघडतो; लैंगिक लोकसंख्या प्रत्येक पिढीत कुलूप बदलते, म्हणूनच सर्वांत वेगवान लैंगिक प्रजनन बहुधा तिथे आढळते जिथे परजीवीचा दबाव सर्वाधिक. दोन प्रामाणिक अटी उत्तराला घोषणा बनण्यापासून रोखतात. अलैंगिक प्रजनन ही चूक नव्हे — ते तेव्हा श्रेष्ठ जेव्हा परिस्थिती स्थिर आणि उत्तम अनुकूलित जीनोम अक्षत ठेवायचा असेल, म्हणूनच मावा अख्खा उन्हाळा क्लोन बनवतो आणि लैंगिक प्रजनन केवळ हिवाळ्याआधी करतो, आणि म्हणूनच शेतकरी आंब्याची चांगली जात बीजातून नव्हे, कलमाने वाढवतो. आणि अर्धसूत्री विभाजन काहीही दुरुस्त करत नाही; पुनर्संयोजन क्षतिग्रस्त जनुके जितक्या सहजतेने वेगळी करते तितक्याच सहजतेने एकत्रही आणू शकते, आणि ते जे करते ते तीच विविधता निर्माण करणे जिच्यावर मग निवड काम करते. सामान्य आकार ठेवण्याजोगा: जेव्हा जीवशास्त्र एखाद्या गोष्टीची स्पष्ट किंमत मोजते, ती किंमत काय विकत घेते ते पाहा, आणि उत्तर स्थिर नव्हे, बदलत्या जगाबद्दल असेल अशी अपेक्षा ठेवा. (दुसरे उत्तर किंमतच नाकारते, जो अख्खा प्रश्न आहे; तिसरे संख्यांबद्दल असा दावा करते जो बहुधा सत्याच्या उलट; आणि चौथे अर्धसूत्री विभाजनाला दुरुस्तीचे काम देते जे त्याचे नाहीच.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A cell with 24 chromosomes divides by mitosis. How many chromosomes does each daughter cell have?",
+      "choices": [
+        "48",
+        "6",
+        "12",
+        "24"
+      ],
+      "answerIndex": 3,
+      "solution": "Mitosis keeps the number, so 24. The DNA was doubled in S phase and then split again when the sister chromatids separated, so the count returns exactly to where it started — which is the whole point of a division used for growth and repair. (12 applies meiosis to a mitosis.)",
+      "checkExpr": "24*1",
+      "translations": {
+        "hi": {
+          "stem": "24 गुणसूत्रों वाली कोशिका समसूत्री विभाजन करती है। हर संतति कोशिका में कितने गुणसूत्र हैं?",
+          "choices": [
+            "48",
+            "6",
+            "12",
+            "24"
+          ],
+          "solution": "समसूत्री विभाजन संख्या बनाए रखता है, अतः 24. DNA S प्रावस्था में दोगुना हुआ था और सहोदर अर्धगुणसूत्रों के अलग होने पर फिर बँट गया, अतः गिनती ठीक वहीं लौट आती है जहाँ से शुरू हुई थी — और वृद्धि तथा मरम्मत के लिए बरते जाने वाले विभाजन का यही पूरा प्रयोजन है। (12 समसूत्री पर अर्धसूत्री लगा देता है।)"
+        },
+        "mr": {
+          "stem": "24 गुणसूत्रे असलेली पेशी समविभाजन करते. प्रत्येक कन्यापेशीत किती गुणसूत्रे आहेत?",
+          "choices": [
+            "48",
+            "6",
+            "12",
+            "24"
+          ],
+          "solution": "समविभाजन संख्या टिकवते, म्हणून 24. DNA S प्रावस्थेत दुप्पट झाले होते आणि सहोदर अर्धगुणसूत्रे वेगळी होताच पुन्हा विभागले, म्हणून मोजणी नेमकी जिथून सुरू झाली तिथेच परतते — आणि वाढ व दुरुस्तीसाठी वापरल्या जाणाऱ्या विभाजनाचा हाच अख्खा हेतू. (12 समविभाजनावर अर्धसूत्री लावते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A cell with 24 chromosomes undergoes meiosis. How many chromosomes does each gamete have?",
+      "choices": [
+        "24",
+        "12",
+        "6",
+        "48"
+      ],
+      "answerIndex": 1,
+      "solution": "24/2 = 12. The halving happens once, entirely in the first division, when the homologous pairs are separated. Fertilisation will put two twelves back together and the species returns to 24 — which is why meiosis and fertilisation only make sense as a pair. (24 keeps the parent's number.)",
+      "checkExpr": "24/2",
+      "translations": {
+        "hi": {
+          "stem": "24 गुणसूत्रों वाली कोशिका अर्धसूत्री विभाजन करती है। हर युग्मक में कितने गुणसूत्र हैं?",
+          "choices": [
+            "24",
+            "12",
+            "6",
+            "48"
+          ],
+          "solution": "24/2 = 12. आधा होना एक बार होता है, पूरी तरह पहले विभाजन में, जब समजात युग्म अलग किए जाते हैं। निषेचन दो बारह फिर जोड़ देगा और जाति 24 पर लौट आएगी — इसीलिए अर्धसूत्री विभाजन और निषेचन केवल जोड़ी के रूप में अर्थ रखते हैं। (24 जनक की संख्या बनाए रखता है।)"
+        },
+        "mr": {
+          "stem": "24 गुणसूत्रे असलेली पेशी अर्धसूत्री विभाजन करते. प्रत्येक युग्मकात किती गुणसूत्रे आहेत?",
+          "choices": [
+            "24",
+            "12",
+            "6",
+            "48"
+          ],
+          "solution": "24/2 = 12. निम्मे होणे एकदाच घडते, संपूर्णपणे पहिल्या विभाजनात, जेव्हा समजात जोड्या वेगळ्या केल्या जातात. फलन दोन बारा पुन्हा जोडेल आणि जात 24 वर परतेल — म्हणूनच अर्धसूत्री विभाजन आणि फलन केवळ जोडी म्हणूनच अर्थ ठेवतात. (24 जनकाची संख्या टिकवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "One cell divides by mitosis, and each daughter divides again, and so on for 4 rounds. How many cells are there at the end?",
+      "choices": [
+        "32",
+        "8",
+        "16",
+        "4"
+      ],
+      "answerIndex": 2,
+      "solution": "2⁴ = 16. Each round doubles the count, so growth by mitosis is exponential — which is how a single fertilised egg reaches a few trillion cells, and also why an unchecked division is dangerous so quickly. (8 gives three rounds.)",
+      "checkExpr": "2^4",
+      "translations": {
+        "hi": {
+          "stem": "एक कोशिका समसूत्री विभाजन करती है, और हर संतति फिर विभाजित होती है, और ऐसे 4 चक्र चलते हैं। अंत में कितनी कोशिकाएँ हैं?",
+          "choices": [
+            "32",
+            "8",
+            "16",
+            "4"
+          ],
+          "solution": "2⁴ = 16. हर चक्र गिनती दोगुनी करता है, अतः समसूत्री विभाजन से वृद्धि चरघातांकी है — इसी से एक निषेचित अंडा कुछ खरब कोशिकाओं तक पहुँचता है, और इसीलिए बिना रोक-टोक विभाजन इतनी जल्दी ख़तरनाक है। (8 तीन चक्र देता है।)"
+        },
+        "mr": {
+          "stem": "एक पेशी समविभाजन करते, आणि प्रत्येक कन्या पुन्हा विभागते, आणि असे 4 फेरे चालतात. शेवटी किती पेशी आहेत?",
+          "choices": [
+            "32",
+            "8",
+            "16",
+            "4"
+          ],
+          "solution": "2⁴ = 16. प्रत्येक फेरा मोजणी दुप्पट करतो, म्हणून समविभाजनाने वाढ घातांकी — याच्यानेच एक फलित अंडे काही ट्रिलियन पेशींपर्यंत पोहोचते, आणि म्हणूनच बेबंद विभाजन इतक्या लवकर धोकादायक. (8 तीन फेरे देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "How many cells does ONE cell produce by completing meiosis?",
+      "choices": [
+        "2",
+        "8",
+        "4",
+        "1"
+      ],
+      "answerIndex": 2,
+      "solution": "Two divisions, each doubling the cell count: 2 × 2 = 4. In a male all four become sperm; in a female only one becomes the egg and three are discarded as polar bodies, because the cytoplasm is worth more concentrated in one. (2 counts only the first division.)",
+      "checkExpr": "2*2",
+      "translations": {
+        "hi": {
+          "stem": "एक कोशिका अर्धसूत्री विभाजन पूरा करके कितनी कोशिकाएँ बनाती है?",
+          "choices": [
+            "2",
+            "8",
+            "4",
+            "1"
+          ],
+          "solution": "दो विभाजन, हर एक कोशिका-गिनती दोगुनी करता: 2 × 2 = 4. नर में चारों शुक्राणु बनते हैं; मादा में केवल एक अंड बनता है और तीन ध्रुवीय काय के रूप में छोड़ दिए जाते हैं, क्योंकि कोशिकाद्रव्य एक में केंद्रित होकर अधिक क़ीमती है। (2 केवल पहला विभाजन गिनता है।)"
+        },
+        "mr": {
+          "stem": "एक पेशी अर्धसूत्री विभाजन पूर्ण करून किती पेशी बनवते?",
+          "choices": [
+            "2",
+            "8",
+            "4",
+            "1"
+          ],
+          "solution": "दोन विभाजने, प्रत्येक पेशी-मोजणी दुप्पट करत: 2 × 2 = 4. नरात चारही शुक्राणू बनतात; मादीत केवळ एक अंडे बनते आणि तीन ध्रुवीय काय म्हणून टाकली जातात, कारण पेशीद्रव्य एकात केंद्रित होऊन अधिक मोलाचे. (2 केवळ पहिले विभाजन मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A human cell has 46 chromosomes. How many chromatids does it contain at the end of S phase?",
+      "choices": [
+        "184",
+        "23",
+        "92",
+        "46"
+      ],
+      "answerIndex": 2,
+      "solution": "Each chromosome becomes two sister chromatids, so 46 × 2 = 92 chromatids — while the chromosome NUMBER is still 46, because the two chromatids stay joined at one centromere and count as one chromosome until they part. Counting centromeres rather than arms is the reliable way to count chromosomes. (46 counts chromosomes rather than chromatids.)",
+      "checkExpr": "46*2",
+      "translations": {
+        "hi": {
+          "stem": "किसी मानव कोशिका में 46 गुणसूत्र हैं। S प्रावस्था के अंत में उसमें कितने अर्धगुणसूत्र हैं?",
+          "choices": [
+            "184",
+            "23",
+            "92",
+            "46"
+          ],
+          "solution": "हर गुणसूत्र दो सहोदर अर्धगुणसूत्र बन जाता है, अतः 46 × 2 = 92 अर्धगुणसूत्र — जबकि गुणसूत्र संख्या अब भी 46 है, क्योंकि दोनों अर्धगुणसूत्र एक ही गुणसूत्रबिंदु पर जुड़े रहते हैं और अलग होने तक एक गुणसूत्र गिने जाते हैं। भुजाओं के बजाय गुणसूत्रबिंदु गिनना गुणसूत्र गिनने का भरोसेमंद तरीक़ा है। (46 अर्धगुणसूत्रों के बजाय गुणसूत्र गिन लेता है।)"
+        },
+        "mr": {
+          "stem": "एका मानवी पेशीत 46 गुणसूत्रे आहेत. S प्रावस्थेच्या शेवटी तिच्यात किती अर्धगुणसूत्रे आहेत?",
+          "choices": [
+            "184",
+            "23",
+            "92",
+            "46"
+          ],
+          "solution": "प्रत्येक गुणसूत्र दोन सहोदर अर्धगुणसूत्रे बनते, म्हणून 46 × 2 = 92 अर्धगुणसूत्रे — तर गुणसूत्रांची संख्या अजूनही 46, कारण दोन्ही अर्धगुणसूत्रे एकाच गुणसूत्रबिंदूवर जोडलेली राहतात आणि वेगळी होईपर्यंत एक गुणसूत्र मोजली जातात. भुजांऐवजी गुणसूत्रबिंदू मोजणे हा गुणसूत्रे मोजण्याचा विश्वासार्ह मार्ग. (46 अर्धगुणसूत्रांऐवजी गुणसूत्रे मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A cell has 20 chromosomes. How many chromosomes are in each cell at the end of the FIRST meiotic division?",
+      "choices": [
+        "5",
+        "10",
+        "20",
+        "40"
+      ],
+      "answerIndex": 1,
+      "solution": "20/2 = 10. All the halving happens here — this is the reductional division, where homologous pairs are separated. Each of those 10 is still a doubled chromosome of two chromatids; the second division will split them without changing the count. (20 assumes the number falls only at the end.)",
+      "checkExpr": "20/2",
+      "translations": {
+        "hi": {
+          "stem": "किसी कोशिका में 20 गुणसूत्र हैं। पहले अर्धसूत्री विभाजन के अंत में हर कोशिका में कितने गुणसूत्र हैं?",
+          "choices": [
+            "5",
+            "10",
+            "20",
+            "40"
+          ],
+          "solution": "20/2 = 10. सारा आधा होना यहीं होता है — यही न्यूनकारी विभाजन है, जहाँ समजात युग्म अलग किए जाते हैं। उन 10 में से हर एक अब भी दो अर्धगुणसूत्रों वाला दोहरा गुणसूत्र है; दूसरा विभाजन उन्हें गिनती बदले बिना बाँट देगा। (20 मान लेता है कि संख्या केवल अंत में गिरती है।)"
+        },
+        "mr": {
+          "stem": "एका पेशीत 20 गुणसूत्रे आहेत. पहिल्या अर्धसूत्री विभाजनाच्या शेवटी प्रत्येक पेशीत किती गुणसूत्रे आहेत?",
+          "choices": [
+            "5",
+            "10",
+            "20",
+            "40"
+          ],
+          "solution": "20/2 = 10. सर्व निम्मे होणे इथेच घडते — हेच न्यूनकारी विभाजन, जिथे समजात जोड्या वेगळ्या केल्या जातात. त्या 10 पैकी प्रत्येक अजूनही दोन अर्धगुणसूत्रांचे दुहेरी गुणसूत्र; दुसरे विभाजन त्यांना मोजणी न बदलता विभागेल. (20 गृहीत धरते की संख्या केवळ शेवटी घटते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A species has 8 pairs of chromosomes. How many different chromosome combinations can independent assortment alone produce in a gamete?",
+      "choices": [
+        "8",
+        "256",
+        "16",
+        "64"
+      ],
+      "answerIndex": 1,
+      "solution": "Each pair independently sends either member to either pole, so 2⁸ = 256. Note it is 2 to the power of the number of PAIRS, not of chromosomes — with 16 chromosomes in 8 pairs the exponent is 8. For a human's 23 pairs this gives 2²³, about 8.4 million, and crossing over multiplies it further. (16 counts the chromosomes instead.)",
+      "checkExpr": "2^8",
+      "translations": {
+        "hi": {
+          "stem": "किसी जाति में गुणसूत्रों के 8 युग्म हैं। अकेला स्वतंत्र अपव्यूहन युग्मक में कितने भिन्न गुणसूत्र-संयोजन बना सकता है?",
+          "choices": [
+            "8",
+            "256",
+            "16",
+            "64"
+          ],
+          "solution": "हर युग्म स्वतंत्र रूप से कोई भी सदस्य किसी भी ध्रुव पर भेजता है, अतः 2⁸ = 256. ध्यान दो कि यह युग्मों की संख्या की घात 2 है, गुणसूत्रों की नहीं — 8 युग्मों में 16 गुणसूत्र होने पर घातांक 8 है। मनुष्य के 23 युग्मों के लिए यह 2²³ देता है, लगभग 84 लाख, और जीन-विनिमय उसे और गुणा कर देता है। (16 इसके बजाय गुणसूत्र गिन लेता है।)"
+        },
+        "mr": {
+          "stem": "एका जातीत गुणसूत्रांच्या 8 जोड्या आहेत. एकटे स्वतंत्र अपव्यूहन युग्मकात किती वेगळी गुणसूत्र-संयोजने बनवू शकते?",
+          "choices": [
+            "8",
+            "256",
+            "16",
+            "64"
+          ],
+          "solution": "प्रत्येक जोडी स्वतंत्रपणे कोणताही सदस्य कोणत्याही ध्रुवाकडे पाठवते, म्हणून 2⁸ = 256. लक्षात घ्या की हे जोड्यांच्या संख्येची घात 2 आहे, गुणसूत्रांची नव्हे — 8 जोड्यांत 16 गुणसूत्रे असताना घातांक 8. माणसाच्या 23 जोड्यांसाठी हे 2²³ देते, सुमारे 84 लाख, आणि जनुक-विनिमय ते आणखी गुणते. (16 त्याऐवजी गुणसूत्रे मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "An onion root-tip cell has 16 chromosomes. Counting every cell produced, how many chromosomes are there in total after one mitosis?",
+      "choices": [
+        "32",
+        "64",
+        "16",
+        "8"
+      ],
+      "answerIndex": 0,
+      "solution": "Two daughter cells of 16 each, so 32 chromosomes in total. Nothing was created from nothing: S phase copied the DNA first, so the 16 became 16 doubled chromosomes — 32 chromatids — and the division simply gave each daughter one chromatid of each pair. This is the distinction that makes the chapter's arithmetic work. PER CELL, mitosis is conservative: 16 in, 16 out, and every daughter is genetically identical to the parent. IN TOTAL, the material has doubled, and it doubled during interphase rather than during the division everyone watches. A pupil who tracks only the per-cell number thinks nothing happened; one who tracks only the total thinks mitosis creates chromosomes. Both quantities have to be carried at once, which is why examiners ask this in the total form. (16 gives the per-cell number and 64 doubles a doubling that already happened.)",
+      "checkExpr": "2*16",
+      "translations": {
+        "hi": {
+          "stem": "प्याज़ की मूल-नोक की कोशिका में 16 गुणसूत्र हैं। बनी हर कोशिका गिनते हुए, एक समसूत्री विभाजन के बाद कुल कितने गुणसूत्र हैं?",
+          "choices": [
+            "32",
+            "64",
+            "16",
+            "8"
+          ],
+          "solution": "16-16 की दो संतति कोशिकाएँ, अतः कुल 32 गुणसूत्र। शून्य से कुछ नहीं बना: S प्रावस्था ने पहले DNA की नक़ल की, अतः 16 दोहरे गुणसूत्र बन गए — 32 अर्धगुणसूत्र — और विभाजन ने बस हर संतति को हर युग्म का एक अर्धगुणसूत्र दे दिया। यही वह भेद है जो अध्याय का गणित चलाता है। प्रति कोशिका, समसूत्री विभाजन संरक्षी है: 16 भीतर, 16 बाहर, और हर संतति जनक की आनुवंशिक प्रतिलिपि। कुल में, पदार्थ दोगुना हुआ है, और वह अंतरावस्था में दोगुना हुआ, उस विभाजन में नहीं जिसे सब देखते हैं। जो विद्यार्थी केवल प्रति-कोशिका संख्या का पीछा करे वह सोचता है कुछ हुआ ही नहीं; जो केवल कुल का पीछा करे वह सोचता है समसूत्री विभाजन गुणसूत्र बनाता है। दोनों राशियाँ एक साथ ढोनी पड़ती हैं, इसीलिए परीक्षक इसे कुल के रूप में पूछते हैं। (16 प्रति-कोशिका संख्या देता है और 64 पहले ही हो चुके दुगुने को फिर दोगुना कर देता है।)"
+        },
+        "mr": {
+          "stem": "कांद्याच्या मूळटोकाच्या पेशीत 16 गुणसूत्रे आहेत. बनलेली प्रत्येक पेशी मोजून, एका समविभाजनानंतर एकूण किती गुणसूत्रे आहेत?",
+          "choices": [
+            "32",
+            "64",
+            "16",
+            "8"
+          ],
+          "solution": "16-16 च्या दोन कन्यापेशी, म्हणून एकूण 32 गुणसूत्रे. शून्यातून काहीही बनले नाही: S प्रावस्थेने आधी DNA ची नक्कल केली, म्हणून 16 दुहेरी गुणसूत्रे बनली — 32 अर्धगुणसूत्रे — आणि विभाजनाने फक्त प्रत्येक कन्येला प्रत्येक जोडीतले एक अर्धगुणसूत्र दिले. हाच तो भेद जो प्रकरणाचे गणित चालवतो. प्रति पेशी, समविभाजन संरक्षी: 16 आत, 16 बाहेर, आणि प्रत्येक कन्या जनकाची अनुवंशिक प्रत. एकूणात, द्रव्य दुप्पट झाले आहे, आणि ते आंतरावस्थेत दुप्पट झाले, सर्व जे पाहतात त्या विभाजनात नव्हे. जो विद्यार्थी केवळ प्रति-पेशी संख्येचा माग काढतो त्याला वाटते काहीच घडले नाही; जो केवळ एकूणाचा माग काढतो त्याला वाटते समविभाजन गुणसूत्रे बनवते. दोन्ही राशी एकाच वेळी वाहाव्या लागतात, म्हणूनच परीक्षक हे एकूणाच्या रूपात विचारतात. (16 प्रति-पेशी संख्या देते आणि 64 आधीच झालेले दुप्पट पुन्हा दुप्पट करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A cell has 12 chromosomes and completes meiosis. Counting every cell produced, how many chromosomes are there in total at the end?",
+      "choices": [
+        "24",
+        "6",
+        "48",
+        "12"
+      ],
+      "answerIndex": 0,
+      "solution": "Four cells of 6 chromosomes each: 4 × 6 = 24. Walking the whole cycle with both quantities in hand is what this question is for, so do it properly. Start: 12 chromosomes, DNA content call it 2C. After S phase: still 12 chromosomes, now 24 chromatids, DNA 4C. After meiosis I: two cells, 6 chromosomes each, each chromosome still two chromatids, so 12 chromatids and 2C per cell. After meiosis II: four cells, 6 chromosomes each, one chromatid apiece, 1C per cell. Total chromosomes across the four cells: 24. Now read the two quantities against each other, because this is the confusion the whole chapter is built to prevent. The chromosome NUMBER per cell halved ONCE, at meiosis I, when homologous pairs were pulled apart. The DNA CONTENT per cell halved TWICE — 4C to 2C at the first division, 2C to 1C at the second — because the second division separated chromatids without touching the number. Two different quantities, halving at different moments, which is exactly why the divisions have the names reductional and equational. And notice the total is 24 rather than 12 for the same reason as in the mitosis question: interphase copied everything before any division happened, so 12 chromosomes' worth of material became 24 chromatids' worth, and the two divisions distributed that material into four packets rather than creating any. The check that catches an error here is the same one that works throughout: material is conserved across a division, and only interphase adds any. If a calculation produces more chromosomes at the end than replication could account for, a doubling has been counted twice. (12 forgets that four cells were made; 48 doubles the replication; and 6 gives the per-cell number.)",
+      "checkExpr": "4*6",
+      "translations": {
+        "hi": {
+          "stem": "किसी कोशिका में 12 गुणसूत्र हैं और वह अर्धसूत्री विभाजन पूरा करती है। बनी हर कोशिका गिनते हुए, अंत में कुल कितने गुणसूत्र हैं?",
+          "choices": [
+            "24",
+            "6",
+            "48",
+            "12"
+          ],
+          "solution": "6-6 गुणसूत्रों की चार कोशिकाएँ: 4 × 6 = 24. दोनों राशियाँ हाथ में लेकर पूरा चक्र चलना ही इस प्रश्न का प्रयोजन है, अतः उसे ठीक से करो। शुरुआत: 12 गुणसूत्र, DNA मात्रा उसे 2C कहो। S प्रावस्था के बाद: अब भी 12 गुणसूत्र, अब 24 अर्धगुणसूत्र, DNA 4C. अर्धसूत्री I के बाद: दो कोशिकाएँ, 6-6 गुणसूत्र, हर गुणसूत्र अब भी दो अर्धगुणसूत्रों का, अतः प्रति कोशिका 12 अर्धगुणसूत्र और 2C. अर्धसूत्री II के बाद: चार कोशिकाएँ, 6-6 गुणसूत्र, प्रत्येक में एक-एक अर्धगुणसूत्र, प्रति कोशिका 1C. चारों कोशिकाओं में कुल गुणसूत्र: 24. अब दोनों राशियाँ एक-दूसरे के सामने पढ़ो, क्योंकि पूरा अध्याय यही भ्रम रोकने को बना है। प्रति कोशिका गुणसूत्र संख्या एक बार आधी हुई, अर्धसूत्री I पर, जब समजात युग्म खींचकर अलग किए गए। प्रति कोशिका DNA मात्रा दो बार आधी हुई — पहले विभाजन पर 4C से 2C, दूसरे पर 2C से 1C — क्योंकि दूसरे विभाजन ने संख्या छुए बिना अर्धगुणसूत्र अलग किए। दो भिन्न राशियाँ, भिन्न क्षणों पर आधी होतीं, ठीक इसीलिए विभाजनों के नाम न्यूनकारी और समकारी हैं। और ध्यान दो कि कुल 12 नहीं 24 है, उसी कारण से जो समसूत्री वाले प्रश्न में था: अंतरावस्था ने किसी भी विभाजन से पहले सब कुछ नक़ल कर लिया, अतः 12 गुणसूत्रों जितना पदार्थ 24 अर्धगुणसूत्रों जितना हो गया, और दोनों विभाजनों ने उस पदार्थ को चार पुड़ियों में बाँटा, बनाया कुछ नहीं। यहाँ त्रुटि पकड़ने वाली जाँच वही है जो हर जगह चलती है: विभाजन के आर-पार पदार्थ संरक्षित है, और जोड़ती केवल अंतरावस्था है। यदि कोई गणना अंत में उससे अधिक गुणसूत्र दे जितने प्रतिकृति से समझाए जा सकें, तो कहीं दुगुना दो बार गिना गया है। (12 भूल जाता है कि चार कोशिकाएँ बनीं; 48 प्रतिकृति दोगुनी कर देता है; और 6 प्रति-कोशिका संख्या देता है।)"
+        },
+        "mr": {
+          "stem": "एका पेशीत 12 गुणसूत्रे आहेत आणि ती अर्धसूत्री विभाजन पूर्ण करते. बनलेली प्रत्येक पेशी मोजून, शेवटी एकूण किती गुणसूत्रे आहेत?",
+          "choices": [
+            "24",
+            "6",
+            "48",
+            "12"
+          ],
+          "solution": "6-6 गुणसूत्रांच्या चार पेशी: 4 × 6 = 24. दोन्ही राशी हातात घेऊन अख्खे चक्र चालणे हाच या प्रश्नाचा हेतू, म्हणून ते नीट करा. सुरुवात: 12 गुणसूत्रे, DNA प्रमाण त्याला 2C म्हणा. S प्रावस्थेनंतर: अजूनही 12 गुणसूत्रे, आता 24 अर्धगुणसूत्रे, DNA 4C. अर्धसूत्री I नंतर: दोन पेशी, 6-6 गुणसूत्रे, प्रत्येक गुणसूत्र अजूनही दोन अर्धगुणसूत्रांचे, म्हणून प्रति पेशी 12 अर्धगुणसूत्रे आणि 2C. अर्धसूत्री II नंतर: चार पेशी, 6-6 गुणसूत्रे, प्रत्येकात एकेक अर्धगुणसूत्र, प्रति पेशी 1C. चारही पेशींत एकूण गुणसूत्रे: 24. आता दोन्ही राशी एकमेकांसमोर वाचा, कारण अख्खे प्रकरण हाच गोंधळ टाळायला बांधलेले. प्रति पेशी गुणसूत्रसंख्या एकदा निम्मी झाली, अर्धसूत्री I वर, जेव्हा समजात जोड्या ओढून वेगळ्या केल्या. प्रति पेशी DNA प्रमाण दोनदा निम्मे झाले — पहिल्या विभाजनावर 4C वरून 2C, दुसऱ्यावर 2C वरून 1C — कारण दुसऱ्या विभाजनाने संख्येला स्पर्श न करता अर्धगुणसूत्रे वेगळी केली. दोन वेगळ्या राशी, वेगळ्या क्षणी निम्म्या होत, नेमक्या याच कारणाने विभाजनांची नावे न्यूनकारी आणि समकारी. आणि लक्षात घ्या की एकूण 12 नव्हे 24 आहे, त्याच कारणाने जे समविभाजनाच्या प्रश्नात होते: आंतरावस्थेने कोणत्याही विभाजनाआधी सर्व काही नक्कल केले, म्हणून 12 गुणसूत्रांइतके द्रव्य 24 अर्धगुणसूत्रांइतके झाले, आणि दोन्ही विभाजनांनी ते द्रव्य चार पुड्यांत वाटले, बनवले काहीच नाही. इथे चूक पकडणारी तपासणी तीच जी सर्वत्र चालते: विभाजनापलीकडे द्रव्य संरक्षित, आणि जोडते केवळ आंतरावस्था. एखादी गणना शेवटी प्रतिकृतीने समजावता येईल त्याहून अधिक गुणसूत्रे देत असेल, तर कुठेतरी दुप्पट दोनदा मोजले गेले आहे. (12 विसरते की चार पेशी बनल्या; 48 प्रतिकृती दुप्पट करते; आणि 6 प्रति-पेशी संख्या देते.)"
+        }
+      }
+    }
+  ]
+}
