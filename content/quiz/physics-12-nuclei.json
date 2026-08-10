@@ -1,0 +1,1003 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 12,
+  "chapter": "Chapter 13 — Nuclei",
+  "name": "Nuclei",
+  "slug": "physics-12-nuclei",
+  "summary": "A radius that grows only as the cube root of the number of particles, so every nucleus has the same density and a teaspoon of the stuff would weigh as much as a mountain; a mass that comes out LESS than the sum of the parts, the missing amount being the energy that holds them together; a curve of that energy per particle which rises to a peak near iron and falls away on both sides, so that splitting a heavy nucleus and joining two light ones both move downhill and both release; three ways an unstable nucleus can change, two of which alter what element it is; and a decay law in which the chance of any one nucleus going in the next second never changes, however long it has already waited.",
+  "position": 13,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "नाभिक",
+      "summary": "ऐसी त्रिज्या जो कणों की संख्या के केवल घनमूल के अनुसार बढ़ती है, अतः हर नाभिक का घनत्व एक ही है और उस पदार्थ की एक चम्मच का भार पहाड़ जितना होगा; ऐसा द्रव्यमान जो भागों के योग से कम निकलता है, और लुप्त मात्रा वही ऊर्जा है जो उन्हें साथ बाँधे रखती है; प्रति कण उस ऊर्जा का वह वक्र जो लोहे के पास शिखर तक चढ़ता है और दोनों ओर गिरता है, अतः भारी नाभिक को तोड़ना और दो हल्कों को जोड़ना, दोनों ढलान से नीचे जाते हैं और दोनों ऊर्जा देते हैं; तीन तरीक़े जिनसे अस्थिर नाभिक बदल सकता है, जिनमें से दो बदल देते हैं कि वह कौन-सा तत्व है; और वह क्षय नियम जिसमें किसी भी एक नाभिक के अगले सेकंड में जाने की संभावना कभी नहीं बदलती, चाहे वह पहले कितनी ही देर प्रतीक्षा कर चुका हो।"
+    },
+    "mr": {
+      "name": "केंद्रक",
+      "summary": "अशी त्रिज्या जी कणांच्या संख्येच्या केवळ घनमुळानुसार वाढते, म्हणून प्रत्येक केंद्रकाची घनता एकच आहे आणि त्या पदार्थाच्या एका चमच्याचे वजन डोंगराइतके असेल; असे वस्तुमान जे भागांच्या बेरजेहून कमी निघते, आणि हरवलेले प्रमाण हीच ती ऊर्जा जी त्यांना एकत्र बांधून ठेवते; प्रति कण त्या ऊर्जेचा तो वक्र जो लोखंडाजवळ शिखरापर्यंत चढतो आणि दोन्ही बाजूंनी घसरतो, म्हणून जड केंद्रक तोडणे आणि दोन हलकी जोडणे, दोन्ही उतारावरून खाली जातात आणि दोन्ही ऊर्जा देतात; तीन मार्ग ज्यांनी अस्थिर केंद्रक बदलू शकते, ज्यांपैकी दोन ते कोणते मूलद्रव्य आहे हे बदलतात; आणि तो क्षय नियम ज्यात कोणत्याही एका केंद्रकाच्या पुढच्या सेकंदात जाण्याची शक्यता कधीच बदलत नाही, ते आधी कितीही वेळ थांबलेले असो."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "The radius goes as the cube root of the mass number, so volume rises in step with the number of particles and the ratio of mass to volume comes out the same for uranium as for helium. Which property is this?",
+      "choices": [
+        "Mass defect and binding energy",
+        "The constancy of nuclear density",
+        "Beta decay",
+        "The binding energy per nucleon curve"
+      ],
+      "answerIndex": 1,
+      "solution": "The constancy of nuclear density follows from a radius equal to R₀ times the cube root of A, with R₀ ≈ 1.2 fm, which makes volume proportional to A and the density about 2.3 × 10¹⁷ kg/m³ for every nucleus. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "त्रिज्या द्रव्यमान संख्या के घनमूल के अनुसार चलती है, अतः आयतन कणों की संख्या के साथ बढ़ता है और द्रव्यमान बटा आयतन यूरेनियम के लिए वही निकलता है जो हीलियम के लिए। यह कौन-सा गुणधर्म है?",
+          "choices": [
+            "द्रव्यमान क्षति और बंधन ऊर्जा",
+            "नाभिकीय घनत्व की अचरता",
+            "बीटा क्षय",
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र"
+          ],
+          "solution": "नाभिकीय घनत्व की अचरता ऐसी त्रिज्या से निकलती है जो R₀ गुणा A का घनमूल है, जिसमें R₀ ≈ 1.2 fm, और जो आयतन को A का समानुपाती बनाती है और घनत्व हर नाभिक के लिए लगभग 2.3 × 10¹⁷ kg/m³. यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "त्रिज्या वस्तुमान संख्येच्या घनमुळानुसार चालते, म्हणून घनफळ कणांच्या संख्येसोबत वाढते आणि वस्तुमान भागिले घनफळ युरेनियमसाठी तेच निघते जे हेलियमसाठी. हा कोणता गुणधर्म?",
+          "choices": [
+            "वस्तुमान क्षती आणि बंधन ऊर्जा",
+            "केंद्रकीय घनतेची अचलता",
+            "बीटा क्षय",
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र"
+          ],
+          "solution": "केंद्रकीय घनतेची अचलता अशा त्रिज्येतून निघते जी R₀ गुणिले A चे घनमूळ आहे, जिथे R₀ ≈ 1.2 fm, आणि जी घनफळाला A शी समानुपाती बनवते आणि घनता प्रत्येक केंद्रकासाठी सुमारे 2.3 × 10¹⁷ kg/m³. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Mass defect and binding energy is correct?",
+      "choices": [
+        "The law of radioactive decay is N = N₀e^(−λt), from which the half-life T = 0.693/λ follows, so the surviving fraction after n half-lives is (1/2)ⁿ.",
+        "The binding energy per nucleon curve peaks near A = 56 at about 8.8 MeV, so nuclei on either side become more tightly bound by moving towards the peak, releasing energy as they do.",
+        "The constancy of nuclear density follows from a radius equal to R₀ times the cube root of A, with R₀ ≈ 1.2 fm, which makes volume proportional to A and the density about 2.3 × 10¹⁷ kg/m³ for every nucleus.",
+        "Mass defect is the amount by which a nucleus's mass falls short of the sum of its nucleons, and the binding energy is that defect converted by E = Δmc², with 1 u worth about 931.5 MeV."
+      ],
+      "answerIndex": 3,
+      "solution": "Mass defect is the amount by which a nucleus's mass falls short of the sum of its nucleons, and the binding energy is that defect converted by E = Δmc², with 1 u worth about 931.5 MeV. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "द्रव्यमान क्षति और बंधन ऊर्जा के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "रेडियोऐक्टिव क्षय का नियम N = N₀e^(−λt) है, जिससे अर्धायु T = 0.693/λ निकलती है, अतः n अर्धायुओं के बाद बचा अंश (1/2)ⁿ है।",
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र A = 56 के पास लगभग 8.8 MeV पर शिखर पर है, अतः दोनों ओर के नाभिक शिखर की ओर बढ़कर अधिक कसकर बँधते हैं, और ऐसा करते हुए ऊर्जा छोड़ते हैं।",
+            "नाभिकीय घनत्व की अचरता ऐसी त्रिज्या से निकलती है जो R₀ गुणा A का घनमूल है, जिसमें R₀ ≈ 1.2 fm, और जो आयतन को A का समानुपाती बनाती है और घनत्व हर नाभिक के लिए लगभग 2.3 × 10¹⁷ kg/m³.",
+            "द्रव्यमान क्षति वह मात्रा है जितनी नाभिक का द्रव्यमान अपने न्यूक्लिऑनों के योग से कम पड़ता है, और बंधन ऊर्जा वही क्षति E = Δmc² से बदली हुई है, जिसमें 1 u लगभग 931.5 MeV के बराबर है।"
+          ],
+          "solution": "द्रव्यमान क्षति वह मात्रा है जितनी नाभिक का द्रव्यमान अपने न्यूक्लिऑनों के योग से कम पड़ता है, और बंधन ऊर्जा वही क्षति E = Δmc² से बदली हुई है, जिसमें 1 u लगभग 931.5 MeV के बराबर है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "वस्तुमान क्षती आणि बंधन ऊर्जा विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "किरणोत्सर्गी क्षयाचा नियम N = N₀e^(−λt) आहे, ज्यातून अर्धायुष्य T = 0.693/λ निघते, म्हणून n अर्धायुष्यांनंतर उरलेला अंश (1/2)ⁿ आहे.",
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र A = 56 जवळ सुमारे 8.8 MeV वर शिखरावर आहे, म्हणून दोन्ही बाजूंची केंद्रके शिखराकडे सरकून अधिक घट्ट बांधली जातात, आणि तसे करताना ऊर्जा सोडतात.",
+            "केंद्रकीय घनतेची अचलता अशा त्रिज्येतून निघते जी R₀ गुणिले A चे घनमूळ आहे, जिथे R₀ ≈ 1.2 fm, आणि जी घनफळाला A शी समानुपाती बनवते आणि घनता प्रत्येक केंद्रकासाठी सुमारे 2.3 × 10¹⁷ kg/m³.",
+            "वस्तुमान क्षती म्हणजे केंद्रकाचे वस्तुमान त्याच्या न्यूक्लिऑनांच्या बेरजेहून जितके कमी पडते ते प्रमाण, आणि बंधन ऊर्जा म्हणजे तीच क्षती E = Δmc² ने बदललेली, जिथे 1 u हे सुमारे 931.5 MeV इतके आहे."
+          ],
+          "solution": "वस्तुमान क्षती म्हणजे केंद्रकाचे वस्तुमान त्याच्या न्यूक्लिऑनांच्या बेरजेहून जितके कमी पडते ते प्रमाण, आणि बंधन ऊर्जा म्हणजे तीच क्षती E = Δmc² ने बदललेली, जिथे 1 u हे सुमारे 931.5 MeV इतके आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The flatness of the middle is itself informative: it means a nucleon is bound mainly to its immediate neighbours, since a force reaching every other nucleon would make the binding rise with A instead of levelling off.\" — which of these is this about?",
+      "choices": [
+        "The constancy of nuclear density",
+        "Mass defect and binding energy",
+        "The law of radioactive decay",
+        "The binding energy per nucleon curve"
+      ],
+      "answerIndex": 3,
+      "solution": "The binding energy per nucleon curve peaks near A = 56 at about 8.8 MeV, so nuclei on either side become more tightly bound by moving towards the peak, releasing energy as they do. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"बीच का सपाटपन स्वयं ज्ञानप्रद है: उसका अर्थ है कि न्यूक्लिऑन मुख्यतः अपने तात्कालिक पड़ोसियों से बँधा है, क्योंकि हर दूसरे न्यूक्लिऑन तक पहुँचता बल बंधन को समतल होने के बजाय A के साथ बढ़ाता।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "नाभिकीय घनत्व की अचरता",
+            "द्रव्यमान क्षति और बंधन ऊर्जा",
+            "रेडियोऐक्टिव क्षय का नियम",
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र"
+          ],
+          "solution": "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र A = 56 के पास लगभग 8.8 MeV पर शिखर पर है, अतः दोनों ओर के नाभिक शिखर की ओर बढ़कर अधिक कसकर बँधते हैं, और ऐसा करते हुए ऊर्जा छोड़ते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"मधला सपाटपणा स्वतःच ज्ञानप्रद आहे: त्याचा अर्थ न्यूक्लिऑन मुख्यतः आपल्या लगतच्या शेजाऱ्यांशी बांधलेला आहे, कारण प्रत्येक दुसऱ्या न्यूक्लिऑनपर्यंत पोहोचणारे बल बंधनाला सपाट होण्याऐवजी A सोबत वाढवेल.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "केंद्रकीय घनतेची अचलता",
+            "वस्तुमान क्षती आणि बंधन ऊर्जा",
+            "किरणोत्सर्गी क्षयाचा नियम",
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र"
+          ],
+          "solution": "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र A = 56 जवळ सुमारे 8.8 MeV वर शिखरावर आहे, म्हणून दोन्ही बाजूंची केंद्रके शिखराकडे सरकून अधिक घट्ट बांधली जातात, आणि तसे करताना ऊर्जा सोडतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A heavy nucleus throws out a tightly bound bundle of two protons and two neutrons, dropping four in mass number and two in atomic number and landing two places back in the periodic table. Which decay is this?",
+      "choices": [
+        "The binding energy per nucleon curve",
+        "Beta decay",
+        "Alpha decay",
+        "The law of radioactive decay"
+      ],
+      "answerIndex": 2,
+      "solution": "Alpha decay is the emission of a helium-4 nucleus, reducing the mass number by 4 and the atomic number by 2, and it occurs almost exclusively among the heaviest nuclei. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "भारी नाभिक दो प्रोटॉन और दो न्यूट्रॉन का कसकर बँधा गट्ठर बाहर फेंकता है, द्रव्यमान संख्या में चार और परमाणु संख्या में दो गिरता है और आवर्त सारणी में दो जगह पीछे जा बैठता है। यह कौन-सा क्षय है?",
+          "choices": [
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र",
+            "बीटा क्षय",
+            "अल्फ़ा क्षय",
+            "रेडियोऐक्टिव क्षय का नियम"
+          ],
+          "solution": "अल्फ़ा क्षय हीलियम-4 नाभिक का उत्सर्जन है, जो द्रव्यमान संख्या 4 और परमाणु संख्या 2 घटाता है, और वह लगभग विशेष रूप से सबसे भारी नाभिकों में होता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "जड केंद्रक दोन प्रोटॉन आणि दोन न्यूट्रॉनचे घट्ट बांधलेले गाठोडे बाहेर फेकते, वस्तुमान संख्येत चार आणि अणुक्रमांकात दोन घसरते आणि आवर्त सारणीत दोन जागा मागे जाऊन बसते. हा कोणता क्षय?",
+          "choices": [
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र",
+            "बीटा क्षय",
+            "अल्फा क्षय",
+            "किरणोत्सर्गी क्षयाचा नियम"
+          ],
+          "solution": "अल्फा क्षय म्हणजे हेलियम-4 केंद्रकाचे उत्सर्जन, जे वस्तुमान संख्या 4 आणि अणुक्रमांक 2 ने घटवते, आणि तो जवळपास केवळ सर्वांत जड केंद्रकांतच घडतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about Beta decay is correct?",
+      "choices": [
+        "The law of radioactive decay is N = N₀e^(−λt), from which the half-life T = 0.693/λ follows, so the surviving fraction after n half-lives is (1/2)ⁿ.",
+        "Beta-minus decay converts a neutron into a proton with the emission of an electron and an antineutrino, leaving the mass number unchanged and raising the atomic number by one.",
+        "Alpha decay is the emission of a helium-4 nucleus, reducing the mass number by 4 and the atomic number by 2, and it occurs almost exclusively among the heaviest nuclei.",
+        "The constancy of nuclear density follows from a radius equal to R₀ times the cube root of A, with R₀ ≈ 1.2 fm, which makes volume proportional to A and the density about 2.3 × 10¹⁷ kg/m³ for every nucleus."
+      ],
+      "answerIndex": 1,
+      "solution": "Beta-minus decay converts a neutron into a proton with the emission of an electron and an antineutrino, leaving the mass number unchanged and raising the atomic number by one. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "बीटा क्षय के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "रेडियोऐक्टिव क्षय का नियम N = N₀e^(−λt) है, जिससे अर्धायु T = 0.693/λ निकलती है, अतः n अर्धायुओं के बाद बचा अंश (1/2)ⁿ है।",
+            "बीटा-ऋण क्षय न्यूट्रॉन को प्रोटॉन में बदलता है और साथ ही इलेक्ट्रॉन तथा प्रतिन्यूट्रीनो उत्सर्जित करता है, जिससे द्रव्यमान संख्या अपरिवर्तित रहती है और परमाणु संख्या एक बढ़ जाती है।",
+            "अल्फ़ा क्षय हीलियम-4 नाभिक का उत्सर्जन है, जो द्रव्यमान संख्या 4 और परमाणु संख्या 2 घटाता है, और वह लगभग विशेष रूप से सबसे भारी नाभिकों में होता है।",
+            "नाभिकीय घनत्व की अचरता ऐसी त्रिज्या से निकलती है जो R₀ गुणा A का घनमूल है, जिसमें R₀ ≈ 1.2 fm, और जो आयतन को A का समानुपाती बनाती है और घनत्व हर नाभिक के लिए लगभग 2.3 × 10¹⁷ kg/m³."
+          ],
+          "solution": "बीटा-ऋण क्षय न्यूट्रॉन को प्रोटॉन में बदलता है और साथ ही इलेक्ट्रॉन तथा प्रतिन्यूट्रीनो उत्सर्जित करता है, जिससे द्रव्यमान संख्या अपरिवर्तित रहती है और परमाणु संख्या एक बढ़ जाती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "बीटा क्षय विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "किरणोत्सर्गी क्षयाचा नियम N = N₀e^(−λt) आहे, ज्यातून अर्धायुष्य T = 0.693/λ निघते, म्हणून n अर्धायुष्यांनंतर उरलेला अंश (1/2)ⁿ आहे.",
+            "बीटा-ऋण क्षय न्यूट्रॉनचे प्रोटॉनमध्ये रूपांतर करतो आणि सोबत इलेक्ट्रॉन तसेच प्रतिन्यूट्रिनो उत्सर्जित करतो, ज्यामुळे वस्तुमान संख्या अपरिवर्तित राहते आणि अणुक्रमांक एकने वाढतो.",
+            "अल्फा क्षय म्हणजे हेलियम-4 केंद्रकाचे उत्सर्जन, जे वस्तुमान संख्या 4 आणि अणुक्रमांक 2 ने घटवते, आणि तो जवळपास केवळ सर्वांत जड केंद्रकांतच घडतो.",
+            "केंद्रकीय घनतेची अचलता अशा त्रिज्येतून निघते जी R₀ गुणिले A चे घनमूळ आहे, जिथे R₀ ≈ 1.2 fm, आणि जी घनफळाला A शी समानुपाती बनवते आणि घनता प्रत्येक केंद्रकासाठी सुमारे 2.3 × 10¹⁷ kg/m³."
+          ],
+          "solution": "बीटा-ऋण क्षय न्यूट्रॉनचे प्रोटॉनमध्ये रूपांतर करतो आणि सोबत इलेक्ट्रॉन तसेच प्रतिन्यूट्रिनो उत्सर्जित करतो, ज्यामुळे वस्तुमान संख्या अपरिवर्तित राहते आणि अणुक्रमांक एकने वाढतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"The decay constant λ is the probability per second that any one nucleus goes, and it does not depend on how long that nucleus has already existed — an old nucleus is no likelier to decay than a new one.\" — which of these is this about?",
+      "choices": [
+        "Beta decay",
+        "Mass defect and binding energy",
+        "Alpha decay",
+        "The law of radioactive decay"
+      ],
+      "answerIndex": 3,
+      "solution": "The law of radioactive decay is N = N₀e^(−λt), from which the half-life T = 0.693/λ follows, so the surviving fraction after n half-lives is (1/2)ⁿ. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"क्षय नियतांक λ किसी भी एक नाभिक के प्रति सेकंड जाने की संभावना है, और वह इस पर निर्भर नहीं कि वह नाभिक पहले से कितनी देर से मौजूद है — पुराना नाभिक नए से अधिक संभावित नहीं।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "बीटा क्षय",
+            "द्रव्यमान क्षति और बंधन ऊर्जा",
+            "अल्फ़ा क्षय",
+            "रेडियोऐक्टिव क्षय का नियम"
+          ],
+          "solution": "रेडियोऐक्टिव क्षय का नियम N = N₀e^(−λt) है, जिससे अर्धायु T = 0.693/λ निकलती है, अतः n अर्धायुओं के बाद बचा अंश (1/2)ⁿ है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"क्षय स्थिरांक λ म्हणजे कोणत्याही एका केंद्रकाच्या दर सेकंदाला जाण्याची शक्यता, आणि ती ते केंद्रक आधीपासून किती वेळ अस्तित्वात आहे यावर अवलंबून नाही — जुने केंद्रक नव्याहून अधिक संभवनीय नाही.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "बीटा क्षय",
+            "वस्तुमान क्षती आणि बंधन ऊर्जा",
+            "अल्फा क्षय",
+            "किरणोत्सर्गी क्षयाचा नियम"
+          ],
+          "solution": "किरणोत्सर्गी क्षयाचा नियम N = N₀e^(−λt) आहे, ज्यातून अर्धायुष्य T = 0.693/λ निघते, म्हणून n अर्धायुष्यांनंतर उरलेला अंश (1/2)ⁿ आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A teaspoon of it would outweigh a mountain\" goes correctly with which of these?",
+      "choices": [
+        "alpha decay",
+        "the binding energy per nucleon curve",
+        "the constancy of nuclear density",
+        "beta decay"
+      ],
+      "answerIndex": 2,
+      "solution": "The constancy of nuclear density follows from a radius equal to R₀ times the cube root of A, with R₀ ≈ 1.2 fm, which makes volume proportional to A and the density about 2.3 × 10¹⁷ kg/m³ for every nucleus. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"उसकी एक चम्मच पहाड़ से भारी होगी\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "अल्फ़ा क्षय",
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र",
+            "नाभिकीय घनत्व की अचरता",
+            "बीटा क्षय"
+          ],
+          "solution": "नाभिकीय घनत्व की अचरता ऐसी त्रिज्या से निकलती है जो R₀ गुणा A का घनमूल है, जिसमें R₀ ≈ 1.2 fm, और जो आयतन को A का समानुपाती बनाती है और घनत्व हर नाभिक के लिए लगभग 2.3 × 10¹⁷ kg/m³. यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"त्याचा एक चमचा डोंगराहून जड असेल\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अल्फा क्षय",
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र",
+            "केंद्रकीय घनतेची अचलता",
+            "बीटा क्षय"
+          ],
+          "solution": "केंद्रकीय घनतेची अचलता अशा त्रिज्येतून निघते जी R₀ गुणिले A चे घनमूळ आहे, जिथे R₀ ≈ 1.2 fm, आणि जी घनफळाला A शी समानुपाती बनवते आणि घनता प्रत्येक केंद्रकासाठी सुमारे 2.3 × 10¹⁷ kg/m³. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"The parts weigh more than the whole\" goes correctly with which of these?",
+      "choices": [
+        "the binding energy per nucleon curve",
+        "the constancy of nuclear density",
+        "mass defect and binding energy",
+        "beta decay"
+      ],
+      "answerIndex": 2,
+      "solution": "Mass defect is the amount by which a nucleus's mass falls short of the sum of its nucleons, and the binding energy is that defect converted by E = Δmc², with 1 u worth about 931.5 MeV. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"भाग पूरे से भारी हैं\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र",
+            "नाभिकीय घनत्व की अचरता",
+            "द्रव्यमान क्षति और बंधन ऊर्जा",
+            "बीटा क्षय"
+          ],
+          "solution": "द्रव्यमान क्षति वह मात्रा है जितनी नाभिक का द्रव्यमान अपने न्यूक्लिऑनों के योग से कम पड़ता है, और बंधन ऊर्जा वही क्षति E = Δmc² से बदली हुई है, जिसमें 1 u लगभग 931.5 MeV के बराबर है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"भाग पूर्णाहून जड आहेत\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र",
+            "केंद्रकीय घनतेची अचलता",
+            "वस्तुमान क्षती आणि बंधन ऊर्जा",
+            "बीटा क्षय"
+          ],
+          "solution": "वस्तुमान क्षती म्हणजे केंद्रकाचे वस्तुमान त्याच्या न्यूक्लिऑनांच्या बेरजेहून जितके कमी पडते ते प्रमाण, आणि बंधन ऊर्जा म्हणजे तीच क्षती E = Δmc² ने बदललेली, जिथे 1 u हे सुमारे 931.5 MeV इतके आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Both fission and fusion run downhill towards iron\" goes correctly with which of these?",
+      "choices": [
+        "the binding energy per nucleon curve",
+        "alpha decay",
+        "mass defect and binding energy",
+        "the law of radioactive decay"
+      ],
+      "answerIndex": 0,
+      "solution": "The binding energy per nucleon curve peaks near A = 56 at about 8.8 MeV, so nuclei on either side become more tightly bound by moving towards the peak, releasing energy as they do. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"विखंडन और संलयन दोनों लोहे की ओर ढलान से नीचे\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र",
+            "अल्फ़ा क्षय",
+            "द्रव्यमान क्षति और बंधन ऊर्जा",
+            "रेडियोऐक्टिव क्षय का नियम"
+          ],
+          "solution": "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र A = 56 के पास लगभग 8.8 MeV पर शिखर पर है, अतः दोनों ओर के नाभिक शिखर की ओर बढ़कर अधिक कसकर बँधते हैं, और ऐसा करते हुए ऊर्जा छोड़ते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"विखंडन आणि संमीलन दोन्ही लोखंडाकडे उतारावरून खाली\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र",
+            "अल्फा क्षय",
+            "वस्तुमान क्षती आणि बंधन ऊर्जा",
+            "किरणोत्सर्गी क्षयाचा नियम"
+          ],
+          "solution": "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र A = 56 जवळ सुमारे 8.8 MeV वर शिखरावर आहे, म्हणून दोन्ही बाजूंची केंद्रके शिखराकडे सरकून अधिक घट्ट बांधली जातात, आणि तसे करताना ऊर्जा सोडतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Stopped by paper, and worst of all if swallowed\" goes correctly with which of these?",
+      "choices": [
+        "alpha decay",
+        "mass defect and binding energy",
+        "beta decay",
+        "the binding energy per nucleon curve"
+      ],
+      "answerIndex": 0,
+      "solution": "Alpha decay is the emission of a helium-4 nucleus, reducing the mass number by 4 and the atomic number by 2, and it occurs almost exclusively among the heaviest nuclei. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"काग़ज़ से रुकता है, और निगला जाए तो सबसे बुरा\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "अल्फ़ा क्षय",
+            "द्रव्यमान क्षति और बंधन ऊर्जा",
+            "बीटा क्षय",
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र"
+          ],
+          "solution": "अल्फ़ा क्षय हीलियम-4 नाभिक का उत्सर्जन है, जो द्रव्यमान संख्या 4 और परमाणु संख्या 2 घटाता है, और वह लगभग विशेष रूप से सबसे भारी नाभिकों में होता है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"कागदाने थांबतो, आणि गिळला तर सर्वांत वाईट\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "अल्फा क्षय",
+            "वस्तुमान क्षती आणि बंधन ऊर्जा",
+            "बीटा क्षय",
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र"
+          ],
+          "solution": "अल्फा क्षय म्हणजे हेलियम-4 केंद्रकाचे उत्सर्जन, जे वस्तुमान संख्या 4 आणि अणुक्रमांक 2 ने घटवते, आणि तो जवळपास केवळ सर्वांत जड केंद्रकांतच घडतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"An electron created, not released\" goes correctly with which of these?",
+      "choices": [
+        "mass defect and binding energy",
+        "beta decay",
+        "the constancy of nuclear density",
+        "the binding energy per nucleon curve"
+      ],
+      "answerIndex": 1,
+      "solution": "Beta-minus decay converts a neutron into a proton with the emission of an electron and an antineutrino, leaving the mass number unchanged and raising the atomic number by one. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"इलेक्ट्रॉन बनाया गया, छोड़ा नहीं गया\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "द्रव्यमान क्षति और बंधन ऊर्जा",
+            "बीटा क्षय",
+            "नाभिकीय घनत्व की अचरता",
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र"
+          ],
+          "solution": "बीटा-ऋण क्षय न्यूट्रॉन को प्रोटॉन में बदलता है और साथ ही इलेक्ट्रॉन तथा प्रतिन्यूट्रीनो उत्सर्जित करता है, जिससे द्रव्यमान संख्या अपरिवर्तित रहती है और परमाणु संख्या एक बढ़ जाती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"इलेक्ट्रॉन तयार झाला, सोडला नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "वस्तुमान क्षती आणि बंधन ऊर्जा",
+            "बीटा क्षय",
+            "केंद्रकीय घनतेची अचलता",
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र"
+          ],
+          "solution": "बीटा-ऋण क्षय न्यूट्रॉनचे प्रोटॉनमध्ये रूपांतर करतो आणि सोबत इलेक्ट्रॉन तसेच प्रतिन्यूट्रिनो उत्सर्जित करतो, ज्यामुळे वस्तुमान संख्या अपरिवर्तित राहते आणि अणुक्रमांक एकने वाढतो. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A nucleus with no memory of how long it has waited\" goes correctly with which of these?",
+      "choices": [
+        "the law of radioactive decay",
+        "the binding energy per nucleon curve",
+        "the constancy of nuclear density",
+        "beta decay"
+      ],
+      "answerIndex": 0,
+      "solution": "The law of radioactive decay is N = N₀e^(−λt), from which the half-life T = 0.693/λ follows, so the surviving fraction after n half-lives is (1/2)ⁿ. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ऐसा नाभिक जिसे याद ही नहीं कि वह कितनी देर से प्रतीक्षा कर रहा है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "रेडियोऐक्टिव क्षय का नियम",
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र",
+            "नाभिकीय घनत्व की अचरता",
+            "बीटा क्षय"
+          ],
+          "solution": "रेडियोऐक्टिव क्षय का नियम N = N₀e^(−λt) है, जिससे अर्धायु T = 0.693/λ निकलती है, अतः n अर्धायुओं के बाद बचा अंश (1/2)ⁿ है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"असे केंद्रक ज्याला ते किती वेळ थांबले आहे याची आठवणच नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "किरणोत्सर्गी क्षयाचा नियम",
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र",
+            "केंद्रकीय घनतेची अचलता",
+            "बीटा क्षय"
+          ],
+          "solution": "किरणोत्सर्गी क्षयाचा नियम N = N₀e^(−λt) आहे, ज्यातून अर्धायुष्य T = 0.693/λ निघते, म्हणून n अर्धायुष्यांनंतर उरलेला अंश (1/2)ⁿ आहे. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The constancy of nuclear density EXCEPT —",
+      "choices": [
+        "The figure is about 10¹⁴ times the density of water, which is why a neutron star — essentially one enormous nucleus — packs the mass of the Sun into a sphere the size of a city.",
+        "Mass defect is the amount by which a nucleus's mass falls short of the sum of its nucleons, and the binding energy is that defect converted by E = Δmc², with 1 u worth about 931.5 MeV.",
+        "It says nucleons are packed like marbles in a bag rather than spread out like electrons: each takes up its own fixed volume and the next one has to go beside it, not through it.",
+        "The constancy of nuclear density follows from a radius equal to R₀ times the cube root of A, with R₀ ≈ 1.2 fm, which makes volume proportional to A and the density about 2.3 × 10¹⁷ kg/m³ for every nucleus."
+      ],
+      "answerIndex": 1,
+      "solution": "Mass defect is the amount by which a nucleus's mass falls short of the sum of its nucleons, and the binding energy is that defect converted by E = Δmc², with 1 u worth about 931.5 MeV. That belongs to Mass defect and binding energy, not The constancy of nuclear density — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "नाभिकीय घनत्व की अचरता के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "यह आँकड़ा पानी के घनत्व का लगभग 10¹⁴ गुना है, इसीलिए न्यूट्रॉन तारा — जो वस्तुतः एक विशाल नाभिक है — सूर्य का द्रव्यमान शहर के आकार के गोले में ठूँस देता है।",
+            "द्रव्यमान क्षति वह मात्रा है जितनी नाभिक का द्रव्यमान अपने न्यूक्लिऑनों के योग से कम पड़ता है, और बंधन ऊर्जा वही क्षति E = Δmc² से बदली हुई है, जिसमें 1 u लगभग 931.5 MeV के बराबर है।",
+            "यह कहता है कि न्यूक्लिऑन इलेक्ट्रॉनों की तरह फैले नहीं बल्कि थैले में कंचों की तरह ठसे हैं: हर एक अपना नियत आयतन घेरता है और अगले को उसके बग़ल में जाना पड़ता है, उसमें से होकर नहीं।",
+            "नाभिकीय घनत्व की अचरता ऐसी त्रिज्या से निकलती है जो R₀ गुणा A का घनमूल है, जिसमें R₀ ≈ 1.2 fm, और जो आयतन को A का समानुपाती बनाती है और घनत्व हर नाभिक के लिए लगभग 2.3 × 10¹⁷ kg/m³."
+          ],
+          "solution": "द्रव्यमान क्षति वह मात्रा है जितनी नाभिक का द्रव्यमान अपने न्यूक्लिऑनों के योग से कम पड़ता है, और बंधन ऊर्जा वही क्षति E = Δmc² से बदली हुई है, जिसमें 1 u लगभग 931.5 MeV के बराबर है। यह द्रव्यमान क्षति और बंधन ऊर्जा की बात है, नाभिकीय घनत्व की अचरता की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "केंद्रकीय घनतेची अचलता विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "हा आकडा पाण्याच्या घनतेच्या सुमारे 10¹⁴ पट आहे, म्हणूनच न्यूट्रॉन तारा — जो प्रत्यक्षात एक प्रचंड केंद्रक आहे — सूर्याचे वस्तुमान शहराच्या आकाराच्या गोलात कोंबतो.",
+            "वस्तुमान क्षती म्हणजे केंद्रकाचे वस्तुमान त्याच्या न्यूक्लिऑनांच्या बेरजेहून जितके कमी पडते ते प्रमाण, आणि बंधन ऊर्जा म्हणजे तीच क्षती E = Δmc² ने बदललेली, जिथे 1 u हे सुमारे 931.5 MeV इतके आहे.",
+            "हे सांगते की न्यूक्लिऑन इलेक्ट्रॉनांप्रमाणे पसरलेले नसून पिशवीत गोट्यांप्रमाणे ठासलेले आहेत: प्रत्येक आपले ठराविक घनफळ व्यापतो आणि पुढच्याला त्याच्या बाजूला जावे लागते, त्यातून नव्हे.",
+            "केंद्रकीय घनतेची अचलता अशा त्रिज्येतून निघते जी R₀ गुणिले A चे घनमूळ आहे, जिथे R₀ ≈ 1.2 fm, आणि जी घनफळाला A शी समानुपाती बनवते आणि घनता प्रत्येक केंद्रकासाठी सुमारे 2.3 × 10¹⁷ kg/m³."
+          ],
+          "solution": "वस्तुमान क्षती म्हणजे केंद्रकाचे वस्तुमान त्याच्या न्यूक्लिऑनांच्या बेरजेहून जितके कमी पडते ते प्रमाण, आणि बंधन ऊर्जा म्हणजे तीच क्षती E = Δmc² ने बदललेली, जिथे 1 u हे सुमारे 931.5 MeV इतके आहे. हे वस्तुमान क्षती आणि बंधन ऊर्जा चे आहे, केंद्रकीय घनतेची अचलता चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Mass defect and binding energy EXCEPT —",
+      "choices": [
+        "Mass defect is the amount by which a nucleus's mass falls short of the sum of its nucleons, and the binding energy is that defect converted by E = Δmc², with 1 u worth about 931.5 MeV.",
+        "The same accounting works for a molecule, but there the binding energy is a few electron-volts against a nucleus's several million, so chemical mass defects are far too small to weigh.",
+        "The mass is not lost but converted: assembling the nucleus released exactly that energy, and putting the same energy back in is what it would cost to take the nucleus apart again.",
+        "The constancy of nuclear density follows from a radius equal to R₀ times the cube root of A, with R₀ ≈ 1.2 fm, which makes volume proportional to A and the density about 2.3 × 10¹⁷ kg/m³ for every nucleus."
+      ],
+      "answerIndex": 3,
+      "solution": "The constancy of nuclear density follows from a radius equal to R₀ times the cube root of A, with R₀ ≈ 1.2 fm, which makes volume proportional to A and the density about 2.3 × 10¹⁷ kg/m³ for every nucleus. That belongs to The constancy of nuclear density, not Mass defect and binding energy — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "द्रव्यमान क्षति और बंधन ऊर्जा के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "द्रव्यमान क्षति वह मात्रा है जितनी नाभिक का द्रव्यमान अपने न्यूक्लिऑनों के योग से कम पड़ता है, और बंधन ऊर्जा वही क्षति E = Δmc² से बदली हुई है, जिसमें 1 u लगभग 931.5 MeV के बराबर है।",
+            "वही हिसाब अणु के लिए भी चलता है, पर वहाँ बंधन ऊर्जा कुछ इलेक्ट्रॉन-वोल्ट है जबकि नाभिक की कई लाख, अतः रासायनिक द्रव्यमान क्षतियाँ तौलने के लिए कहीं बहुत छोटी हैं।",
+            "द्रव्यमान खोया नहीं बल्कि बदला गया है: नाभिक जोड़ने पर ठीक उतनी ऊर्जा निकली थी, और उसी ऊर्जा को वापस डालना वही क़ीमत है जो नाभिक को फिर से तोड़ने में लगेगी।",
+            "नाभिकीय घनत्व की अचरता ऐसी त्रिज्या से निकलती है जो R₀ गुणा A का घनमूल है, जिसमें R₀ ≈ 1.2 fm, और जो आयतन को A का समानुपाती बनाती है और घनत्व हर नाभिक के लिए लगभग 2.3 × 10¹⁷ kg/m³."
+          ],
+          "solution": "नाभिकीय घनत्व की अचरता ऐसी त्रिज्या से निकलती है जो R₀ गुणा A का घनमूल है, जिसमें R₀ ≈ 1.2 fm, और जो आयतन को A का समानुपाती बनाती है और घनत्व हर नाभिक के लिए लगभग 2.3 × 10¹⁷ kg/m³. यह नाभिकीय घनत्व की अचरता की बात है, द्रव्यमान क्षति और बंधन ऊर्जा की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "वस्तुमान क्षती आणि बंधन ऊर्जा विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "वस्तुमान क्षती म्हणजे केंद्रकाचे वस्तुमान त्याच्या न्यूक्लिऑनांच्या बेरजेहून जितके कमी पडते ते प्रमाण, आणि बंधन ऊर्जा म्हणजे तीच क्षती E = Δmc² ने बदललेली, जिथे 1 u हे सुमारे 931.5 MeV इतके आहे.",
+            "तोच हिशेब रेणूसाठीही चालतो, पण तिथे बंधन ऊर्जा काही इलेक्ट्रॉन-व्होल्ट आहे तर केंद्रकाची कित्येक लाख, म्हणून रासायनिक वस्तुमान क्षती तोलण्यासाठी कितीतरी लहान आहेत.",
+            "वस्तुमान गमावले नसून बदलले आहे: केंद्रक जोडताना नेमकी तितकी ऊर्जा निघाली होती, आणि तीच ऊर्जा परत घालणे हीच ती किंमत जी केंद्रक पुन्हा तोडायला लागेल.",
+            "केंद्रकीय घनतेची अचलता अशा त्रिज्येतून निघते जी R₀ गुणिले A चे घनमूळ आहे, जिथे R₀ ≈ 1.2 fm, आणि जी घनफळाला A शी समानुपाती बनवते आणि घनता प्रत्येक केंद्रकासाठी सुमारे 2.3 × 10¹⁷ kg/m³."
+          ],
+          "solution": "केंद्रकीय घनतेची अचलता अशा त्रिज्येतून निघते जी R₀ गुणिले A चे घनमूळ आहे, जिथे R₀ ≈ 1.2 fm, आणि जी घनफळाला A शी समानुपाती बनवते आणि घनता प्रत्येक केंद्रकासाठी सुमारे 2.3 × 10¹⁷ kg/m³. हे केंद्रकीय घनतेची अचलता चे आहे, वस्तुमान क्षती आणि बंधन ऊर्जा चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The binding energy per nucleon curve EXCEPT —",
+      "choices": [
+        "Iron sits at the bottom of the energy valley, which is why it is the ash of stellar burning: a star can fuse its way up to iron and no further, and what happens next is a collapse.",
+        "The binding energy per nucleon curve peaks near A = 56 at about 8.8 MeV, so nuclei on either side become more tightly bound by moving towards the peak, releasing energy as they do.",
+        "Mass defect is the amount by which a nucleus's mass falls short of the sum of its nucleons, and the binding energy is that defect converted by E = Δmc², with 1 u worth about 931.5 MeV.",
+        "The flatness of the middle is itself informative: it means a nucleon is bound mainly to its immediate neighbours, since a force reaching every other nucleon would make the binding rise with A instead of levelling off."
+      ],
+      "answerIndex": 2,
+      "solution": "Mass defect is the amount by which a nucleus's mass falls short of the sum of its nucleons, and the binding energy is that defect converted by E = Δmc², with 1 u worth about 931.5 MeV. That belongs to Mass defect and binding energy, not The binding energy per nucleon curve — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "लोहा ऊर्जा की घाटी के तल पर बैठा है, इसीलिए वह तारकीय जलन की राख है: तारा संलयन से लोहे तक चढ़ सकता है और उससे आगे नहीं, और उसके बाद जो होता है वह ढहना है।",
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र A = 56 के पास लगभग 8.8 MeV पर शिखर पर है, अतः दोनों ओर के नाभिक शिखर की ओर बढ़कर अधिक कसकर बँधते हैं, और ऐसा करते हुए ऊर्जा छोड़ते हैं।",
+            "द्रव्यमान क्षति वह मात्रा है जितनी नाभिक का द्रव्यमान अपने न्यूक्लिऑनों के योग से कम पड़ता है, और बंधन ऊर्जा वही क्षति E = Δmc² से बदली हुई है, जिसमें 1 u लगभग 931.5 MeV के बराबर है।",
+            "बीच का सपाटपन स्वयं ज्ञानप्रद है: उसका अर्थ है कि न्यूक्लिऑन मुख्यतः अपने तात्कालिक पड़ोसियों से बँधा है, क्योंकि हर दूसरे न्यूक्लिऑन तक पहुँचता बल बंधन को समतल होने के बजाय A के साथ बढ़ाता।"
+          ],
+          "solution": "द्रव्यमान क्षति वह मात्रा है जितनी नाभिक का द्रव्यमान अपने न्यूक्लिऑनों के योग से कम पड़ता है, और बंधन ऊर्जा वही क्षति E = Δmc² से बदली हुई है, जिसमें 1 u लगभग 931.5 MeV के बराबर है। यह द्रव्यमान क्षति और बंधन ऊर्जा की बात है, प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "लोखंड ऊर्जेच्या दरीच्या तळाशी बसले आहे, म्हणूनच ते ताऱ्यांच्या जळणाची राख आहे: तारा संमीलनाने लोखंडापर्यंत चढू शकतो आणि त्यापुढे नाही, आणि त्यानंतर जे घडते ते कोसळणे आहे.",
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र A = 56 जवळ सुमारे 8.8 MeV वर शिखरावर आहे, म्हणून दोन्ही बाजूंची केंद्रके शिखराकडे सरकून अधिक घट्ट बांधली जातात, आणि तसे करताना ऊर्जा सोडतात.",
+            "वस्तुमान क्षती म्हणजे केंद्रकाचे वस्तुमान त्याच्या न्यूक्लिऑनांच्या बेरजेहून जितके कमी पडते ते प्रमाण, आणि बंधन ऊर्जा म्हणजे तीच क्षती E = Δmc² ने बदललेली, जिथे 1 u हे सुमारे 931.5 MeV इतके आहे.",
+            "मधला सपाटपणा स्वतःच ज्ञानप्रद आहे: त्याचा अर्थ न्यूक्लिऑन मुख्यतः आपल्या लगतच्या शेजाऱ्यांशी बांधलेला आहे, कारण प्रत्येक दुसऱ्या न्यूक्लिऑनपर्यंत पोहोचणारे बल बंधनाला सपाट होण्याऐवजी A सोबत वाढवेल."
+          ],
+          "solution": "वस्तुमान क्षती म्हणजे केंद्रकाचे वस्तुमान त्याच्या न्यूक्लिऑनांच्या बेरजेहून जितके कमी पडते ते प्रमाण, आणि बंधन ऊर्जा म्हणजे तीच क्षती E = Δmc² ने बदललेली, जिथे 1 u हे सुमारे 931.5 MeV इतके आहे. हे वस्तुमान क्षती आणि बंधन ऊर्जा चे आहे, प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of Alpha decay EXCEPT —",
+      "choices": [
+        "The alpha is emitted rather than a single proton because helium-4 is exceptionally tightly bound, so the books balance in its favour and no other fragment is worth ejecting.",
+        "Alpha decay is the emission of a helium-4 nucleus, reducing the mass number by 4 and the atomic number by 2, and it occurs almost exclusively among the heaviest nuclei.",
+        "The law of radioactive decay is N = N₀e^(−λt), from which the half-life T = 0.693/λ follows, so the surviving fraction after n half-lives is (1/2)ⁿ.",
+        "It is the least penetrating of the three radiations — a sheet of paper stops it — and for that very reason the most dangerous if the source is swallowed, since all its energy is deposited in a short track inside tissue."
+      ],
+      "answerIndex": 2,
+      "solution": "The law of radioactive decay is N = N₀e^(−λt), from which the half-life T = 0.693/λ follows, so the surviving fraction after n half-lives is (1/2)ⁿ. That belongs to The law of radioactive decay, not Alpha decay — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "अल्फ़ा क्षय के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "अकेले प्रोटॉन के बजाय अल्फ़ा इसलिए निकलता है कि हीलियम-4 असाधारण रूप से कसकर बँधा है, अतः बहीखाता उसके पक्ष में बैठता है और कोई दूसरा टुकड़ा निकालने लायक़ नहीं।",
+            "अल्फ़ा क्षय हीलियम-4 नाभिक का उत्सर्जन है, जो द्रव्यमान संख्या 4 और परमाणु संख्या 2 घटाता है, और वह लगभग विशेष रूप से सबसे भारी नाभिकों में होता है।",
+            "रेडियोऐक्टिव क्षय का नियम N = N₀e^(−λt) है, जिससे अर्धायु T = 0.693/λ निकलती है, अतः n अर्धायुओं के बाद बचा अंश (1/2)ⁿ है।",
+            "तीनों विकिरणों में यह सबसे कम भेदक है — काग़ज़ की एक शीट उसे रोक देती है — और ठीक इसी कारण स्रोत निगल लिया जाए तो सबसे ख़तरनाक, क्योंकि उसकी सारी ऊर्जा ऊतक के भीतर छोटे पथ में जमा हो जाती है।"
+          ],
+          "solution": "रेडियोऐक्टिव क्षय का नियम N = N₀e^(−λt) है, जिससे अर्धायु T = 0.693/λ निकलती है, अतः n अर्धायुओं के बाद बचा अंश (1/2)ⁿ है। यह रेडियोऐक्टिव क्षय का नियम की बात है, अल्फ़ा क्षय की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "अल्फा क्षय विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "एकट्या प्रोटॉनऐवजी अल्फा यासाठी निघतो की हेलियम-4 विलक्षण घट्ट बांधलेले आहे, म्हणून जमाखर्च त्याच्या बाजूने जुळतो आणि दुसरा कोणताही तुकडा बाहेर काढण्याजोगा नाही.",
+            "अल्फा क्षय म्हणजे हेलियम-4 केंद्रकाचे उत्सर्जन, जे वस्तुमान संख्या 4 आणि अणुक्रमांक 2 ने घटवते, आणि तो जवळपास केवळ सर्वांत जड केंद्रकांतच घडतो.",
+            "किरणोत्सर्गी क्षयाचा नियम N = N₀e^(−λt) आहे, ज्यातून अर्धायुष्य T = 0.693/λ निघते, म्हणून n अर्धायुष्यांनंतर उरलेला अंश (1/2)ⁿ आहे.",
+            "तिन्ही प्रारणांत हा सर्वांत कमी भेदक आहे — कागदाचा एक कागद त्याला थांबवतो — आणि नेमक्या याच कारणाने स्रोत गिळला गेला तर सर्वांत धोकादायक, कारण त्याची सारी ऊर्जा ऊतीच्या आत लहान मार्गात जमा होते."
+          ],
+          "solution": "किरणोत्सर्गी क्षयाचा नियम N = N₀e^(−λt) आहे, ज्यातून अर्धायुष्य T = 0.693/λ निघते, म्हणून n अर्धायुष्यांनंतर उरलेला अंश (1/2)ⁿ आहे. हे किरणोत्सर्गी क्षयाचा नियम चे आहे, अल्फा क्षय चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Splitting a uranium nucleus releases energy, and so does joining two hydrogen nuclei. A student objects that these are opposite processes and cannot both give energy out. Resolve this from one graph.",
+      "choices": [
+        "The binding energy per nucleon is not a straight line but a curve with a PEAK near iron at about 8.8 MeV. Uranium sits to the right of the peak at about 7.6 MeV, so splitting it produces fragments nearer the peak, each nucleon more tightly bound than before, and the surplus comes out. Hydrogen sits far to the left, so joining nuclei also moves towards the peak and also releases. The two processes are not opposites in the relevant sense — both run DOWNHILL in energy towards iron, from opposite sides of the same valley",
+        "Only fission truly releases energy; fusion appears to because the reacting nuclei are moving fast, and the energy released is really their kinetic energy",
+        "Both release energy because mass is always destroyed in a nuclear reaction, whichever direction the reaction runs",
+        "The student is right and one of the two must be mistaken; in fact fusion consumes energy, which is why no fusion reactor has ever produced net power"
+      ],
+      "answerIndex": 0,
+      "solution": "The objection assumes that 'splitting' and 'joining' are opposite moves on the same scale, so that if one is downhill the other must be uphill. That would be true if binding energy per nucleon rose or fell monotonically with mass number. It does not. It rises steeply from hydrogen, reaches a maximum of about 8.8 MeV per nucleon around iron and nickel (A ≈ 56), and then declines slowly to about 7.6 MeV at uranium. The relevant picture is a VALLEY — or, drawn the usual way with binding energy plotted upward, a hill with iron at the top and both light and heavy nuclei on the slopes below. Read fission off the curve. Uranium-235 has A = 235 and about 7.6 MeV per nucleon. Split it into two fragments near A ≈ 118, where the curve reads about 8.5 MeV per nucleon. Every one of the 235 nucleons is now bound roughly 0.9 MeV more tightly than before, so the total energy released is about 235 × 0.9 ≈ 200 MeV. That single number is the whole of nuclear power: it is some fifty million times the few electron-volts a chemical reaction gives per atom, which is why a fuel rod lasts years where coal lasts hours. Now read fusion. Four hydrogen nuclei have about 1 MeV per nucleon between them; helium-4 has 7.1 MeV per nucleon. Fusing them gains about 6 MeV per nucleon — even more per nucleon than fission, though less per event because only four nucleons are involved rather than 235. This is what powers the Sun, and it is why fusion is worth pursuing despite being harder to arrange. So both processes move nuclei TOWARDS iron, and both therefore release. Nothing goes uphill in either case, and the student's intuition fails only because it assumed a monotonic curve. Three consequences follow from the same graph and are worth carrying. First, the peak explains why iron is the ash of stellar burning: a star fuses lighter elements in sequence and gains energy each time, until it reaches iron and there is nothing further to gain — the core stops producing energy, pressure fails, and the star collapses. Second, elements heavier than iron cannot be made by ordinary fusion at all, and are built instead in the violence of a supernova or a neutron-star merger, which is a real answer to where the gold in a ring came from. Third, the flatness of the curve's middle section — binding energy per nucleon nearly constant from A ≈ 30 to A ≈ 170 — tells you that the nuclear force is SHORT-RANGED: if each nucleon attracted every other, the binding per nucleon would keep rising with A instead of levelling off. A graph read carefully has answered a question about the reach of a force. (The second option invents a source for fusion energy that would not scale with the reactants' identity; the third asserts that mass is always destroyed, which would make every reaction exothermic including ones that are not; the fourth confuses the engineering difficulty of confinement with the sign of the energy balance.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "यूरेनियम नाभिक को तोड़ने से ऊर्जा निकलती है, और दो हाइड्रोजन नाभिकों को जोड़ने से भी। विद्यार्थी आपत्ति करता है कि ये उलटी प्रक्रियाएँ हैं और दोनों ऊर्जा नहीं दे सकतीं। इसे एक ही ग्राफ़ से सुलझाओ।",
+          "choices": [
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा सरल रेखा नहीं बल्कि ऐसा वक्र है जिसका शिखर लोहे के पास लगभग 8.8 MeV पर है। यूरेनियम शिखर के दाईं ओर लगभग 7.6 MeV पर बैठा है, अतः उसे तोड़ने से शिखर के अधिक निकट टुकड़े बनते हैं, हर न्यूक्लिऑन पहले से अधिक कसकर बँधा, और अधिशेष बाहर आता है। हाइड्रोजन बहुत बाईं ओर बैठा है, अतः नाभिक जोड़ना भी शिखर की ओर बढ़ता है और वह भी ऊर्जा देता है। प्रासंगिक अर्थ में दोनों प्रक्रियाएँ उलटी नहीं हैं — दोनों उसी घाटी के उलटे किनारों से लोहे की ओर ऊर्जा में ढलान से नीचे जाती हैं",
+            "वस्तुतः केवल विखंडन ऊर्जा देता है; संलयन देता हुआ इसलिए लगता है कि अभिक्रिया करते नाभिक तेज़ चल रहे हैं, और निकली ऊर्जा वस्तुतः उनकी गतिज ऊर्जा है",
+            "दोनों ऊर्जा देते हैं क्योंकि नाभिकीय अभिक्रिया में द्रव्यमान सदा नष्ट होता है, अभिक्रिया चाहे किसी भी दिशा में चले",
+            "विद्यार्थी सही है और दोनों में से एक ग़लत होगा; वस्तुतः संलयन ऊर्जा खपाता है, इसीलिए किसी संलयन रिएक्टर ने कभी नेट शक्ति नहीं दी"
+          ],
+          "solution": "आपत्ति यह मान लेती है कि 'तोड़ना' और 'जोड़ना' एक ही पैमाने पर उलटी चालें हैं, अतः यदि एक ढलान से नीचे है तो दूसरी चढ़ाई पर होनी चाहिए। यह तब सच होता जब प्रति न्यूक्लिऑन बंधन ऊर्जा द्रव्यमान संख्या के साथ एकदिश चढ़ती या गिरती। वह नहीं चलती। वह हाइड्रोजन से तेज़ी से चढ़ती है, लोहे और निकल के आसपास (A ≈ 56) लगभग 8.8 MeV प्रति न्यूक्लिऑन का अधिकतम छूती है, और फिर यूरेनियम पर धीरे-धीरे लगभग 7.6 MeV तक गिरती है। प्रासंगिक चित्र एक घाटी है — या सामान्य ढंग से बंधन ऊर्जा ऊपर की ओर खींची जाए तो ऐसी पहाड़ी जिसकी चोटी पर लोहा है और ढलानों पर हल्के तथा भारी दोनों नाभिक। वक्र से विखंडन पढ़ो। यूरेनियम-235 का A = 235 है और लगभग 7.6 MeV प्रति न्यूक्लिऑन। उसे A ≈ 118 के पास दो टुकड़ों में तोड़ो, जहाँ वक्र लगभग 8.5 MeV प्रति न्यूक्लिऑन पढ़ता है। अब 235 में से हर न्यूक्लिऑन पहले से मोटे तौर पर 0.9 MeV अधिक कसकर बँधा है, अतः कुल निकली ऊर्जा लगभग 235 × 0.9 ≈ 200 MeV है। वही एक संख्या पूरी नाभिकीय शक्ति है: वह उन कुछ इलेक्ट्रॉन-वोल्ट से लगभग पाँच करोड़ गुना है जो रासायनिक अभिक्रिया प्रति परमाणु देती है, इसीलिए ईंधन छड़ वर्षों चलती है जहाँ कोयला घंटों। अब संलयन पढ़ो। चार हाइड्रोजन नाभिकों के पास आपस में लगभग 1 MeV प्रति न्यूक्लिऑन है; हीलियम-4 के पास 7.1 MeV प्रति न्यूक्लिऑन। उन्हें जोड़ने पर प्रति न्यूक्लिऑन लगभग 6 MeV मिलते हैं — विखंडन से भी अधिक प्रति न्यूक्लिऑन, यद्यपि प्रति घटना कम क्योंकि 235 के बजाय केवल चार न्यूक्लिऑन शामिल हैं। यही सूर्य को चलाता है, और इसीलिए संलयन जुटाना कठिन होते हुए भी पीछा करने योग्य है। अतः दोनों प्रक्रियाएँ नाभिकों को लोहे की ओर ले जाती हैं, और इसलिए दोनों ऊर्जा देती हैं। किसी भी स्थिति में कुछ भी चढ़ाई पर नहीं जाता, और विद्यार्थी का अंतर्ज्ञान केवल इसलिए विफल हुआ कि उसने एकदिश वक्र मान लिया। उसी ग्राफ़ से तीन परिणाम निकलते हैं और साथ ले जाने योग्य हैं। पहला, शिखर समझाता है कि लोहा तारकीय जलन की राख क्यों है: तारा क्रम से हल्के तत्व जोड़ता है और हर बार ऊर्जा पाता है, जब तक लोहे तक न पहुँच जाए और आगे पाने को कुछ न बचे — क्रोड ऊर्जा देना बंद कर देती है, दाब टूट जाता है, और तारा ढह जाता है। दूसरा, लोहे से भारी तत्व साधारण संलयन से बन ही नहीं सकते, और वे अधिनवतारे या न्यूट्रॉन-तारों के विलय की हिंसा में बनते हैं, जो इस प्रश्न का असली उत्तर है कि अंगूठी का सोना कहाँ से आया। तीसरा, वक्र के बीच के भाग का सपाटपन — A ≈ 30 से A ≈ 170 तक प्रति न्यूक्लिऑन बंधन ऊर्जा लगभग अचर — बताता है कि नाभिकीय बल कम दूरी का है: यदि हर न्यूक्लिऑन हर दूसरे को खींचता, तो प्रति न्यूक्लिऑन बंधन समतल होने के बजाय A के साथ बढ़ता रहता। ध्यान से पढ़े गए ग्राफ़ ने किसी बल की पहुँच के बारे में प्रश्न का उत्तर दे दिया है। (दूसरा विकल्प संलयन ऊर्जा का ऐसा स्रोत गढ़ता है जो अभिकारकों की पहचान के साथ नहीं चलता; तीसरा दावा करता है कि द्रव्यमान सदा नष्ट होता है, जो हर अभिक्रिया को ऊष्माक्षेपी बना देता, उन्हें भी जो नहीं हैं; चौथा परिरोधन की अभियांत्रिकी कठिनाई को ऊर्जा-संतुलन के चिह्न से गड्डमड्ड कर देता है।)"
+        },
+        "mr": {
+          "stem": "युरेनियम केंद्रक तोडल्याने ऊर्जा निघते, आणि दोन हायड्रोजन केंद्रके जोडल्यानेही. विद्यार्थी आक्षेप घेतो की या उलट प्रक्रिया आहेत आणि दोन्ही ऊर्जा देऊ शकत नाहीत. हे एकाच आलेखातून सोडवा.",
+          "choices": [
+            "प्रति न्यूक्लिऑन बंधन ऊर्जा सरळ रेषा नसून असा वक्र आहे ज्याचे शिखर लोखंडाजवळ सुमारे 8.8 MeV वर आहे. युरेनियम शिखराच्या उजवीकडे सुमारे 7.6 MeV वर बसले आहे, म्हणून ते तोडल्याने शिखराच्या अधिक जवळचे तुकडे बनतात, प्रत्येक न्यूक्लिऑन पूर्वीहून अधिक घट्ट बांधलेला, आणि जादा बाहेर येते. हायड्रोजन खूप डावीकडे बसले आहे, म्हणून केंद्रके जोडणेही शिखराकडे सरकते आणि तेही ऊर्जा देते. संबंधित अर्थाने दोन्ही प्रक्रिया उलट नाहीत — दोन्ही त्याच दरीच्या उलट कडांपासून लोखंडाकडे ऊर्जेत उतारावरून खाली जातात",
+            "प्रत्यक्षात केवळ विखंडन ऊर्जा देते; संमीलन देत असल्यासारखे यामुळे वाटते की अभिक्रिया करणारी केंद्रके वेगाने जात आहेत, आणि निघालेली ऊर्जा प्रत्यक्षात त्यांची गतिज ऊर्जा आहे",
+            "दोन्ही ऊर्जा देतात कारण केंद्रकीय अभिक्रियेत वस्तुमान नेहमी नष्ट होते, अभिक्रिया कोणत्याही दिशेने चालो",
+            "विद्यार्थी बरोबर आहे आणि दोहोंपैकी एक चूक असले पाहिजे; प्रत्यक्षात संमीलन ऊर्जा खर्चते, म्हणूनच कोणत्याही संमीलन अणुभट्टीने कधीच निव्वळ शक्ती दिलेली नाही"
+          ],
+          "solution": "आक्षेप असे गृहीत धरतो की 'तोडणे' आणि 'जोडणे' या एकाच मापावरील उलट चाली आहेत, म्हणून एक उतारावर असेल तर दुसरी चढावर असली पाहिजे. हे तेव्हा खरे ठरले असते जेव्हा प्रति न्यूक्लिऑन बंधन ऊर्जा वस्तुमान संख्येसोबत एकदिश चढली वा घसरली असती. ती तशी चालत नाही. ती हायड्रोजनपासून झपाट्याने चढते, लोखंड आणि निकेलच्या आसपास (A ≈ 56) सुमारे 8.8 MeV प्रति न्यूक्लिऑनची कमाल गाठते, आणि मग युरेनियमवर हळूहळू सुमारे 7.6 MeV पर्यंत घसरते. संबंधित चित्र म्हणजे एक दरी — वा नेहमीच्या पद्धतीने बंधन ऊर्जा वर काढल्यास अशी टेकडी जिच्या शिखरावर लोखंड आहे आणि उतारांवर हलकी तसेच जड दोन्ही केंद्रके. वक्रावरून विखंडन वाचा. युरेनियम-235 चा A = 235 आहे आणि सुमारे 7.6 MeV प्रति न्यूक्लिऑन. ते A ≈ 118 जवळ दोन तुकड्यांत तोडा, जिथे वक्र सुमारे 8.5 MeV प्रति न्यूक्लिऑन वाचतो. आता 235 पैकी प्रत्येक न्यूक्लिऑन पूर्वीहून ढोबळमानाने 0.9 MeV अधिक घट्ट बांधलेला आहे, म्हणून एकूण निघालेली ऊर्जा सुमारे 235 × 0.9 ≈ 200 MeV आहे. तीच एक संख्या म्हणजे अख्खी केंद्रकीय शक्ती: ती रासायनिक अभिक्रिया प्रति अणू देत असलेल्या काही इलेक्ट्रॉन-व्होल्टच्या सुमारे पाच कोटी पट आहे, म्हणूनच इंधन कांडी वर्षे चालते जिथे कोळसा तास. आता संमीलन वाचा. चार हायड्रोजन केंद्रकांकडे आपापसात सुमारे 1 MeV प्रति न्यूक्लिऑन आहे; हेलियम-4 कडे 7.1 MeV प्रति न्यूक्लिऑन. ती जोडल्यास प्रति न्यूक्लिऑन सुमारे 6 MeV मिळतात — विखंडनाहूनही अधिक प्रति न्यूक्लिऑन, जरी प्रति घटना कमी कारण 235 ऐवजी केवळ चार न्यूक्लिऑन सामील आहेत. हेच सूर्याला चालवते, आणि म्हणूनच संमीलन जुळवणे कठीण असूनही पाठपुरावा करण्याजोगे आहे. म्हणून दोन्ही प्रक्रिया केंद्रकांना लोखंडाकडे नेतात, आणि म्हणून दोन्ही ऊर्जा देतात. कोणत्याही स्थितीत काहीही चढावर जात नाही, आणि विद्यार्थ्याची अंतःप्रेरणा केवळ यामुळे अपयशी ठरली की तिने एकदिश वक्र गृहीत धरला. त्याच आलेखातून तीन परिणाम निघतात आणि सोबत न्यायचे आहेत. पहिला, शिखर समजावते की लोखंड ताऱ्यांच्या जळणाची राख का आहे: तारा क्रमाने हलकी मूलद्रव्ये जोडतो आणि प्रत्येक वेळी ऊर्जा मिळवतो, जोवर लोखंडापर्यंत पोहोचत नाही आणि पुढे मिळवायला काही उरत नाही — गाभा ऊर्जा देणे थांबवतो, दाब कोसळतो, आणि तारा कोसळतो. दुसरा, लोखंडाहून जड मूलद्रव्ये साध्या संमीलनाने बनूच शकत नाहीत, आणि ती महानवताऱ्याच्या वा न्यूट्रॉन-ताऱ्यांच्या विलयाच्या हिंसेत बनतात, जे अंगठीतले सोने कुठून आले या प्रश्नाचे खरे उत्तर आहे. तिसरा, वक्राच्या मधल्या भागाचा सपाटपणा — A ≈ 30 पासून A ≈ 170 पर्यंत प्रति न्यूक्लिऑन बंधन ऊर्जा जवळपास अचल — सांगतो की केंद्रकीय बल कमी पल्ल्याचे आहे: जर प्रत्येक न्यूक्लिऑन प्रत्येक दुसऱ्याला ओढत असता, तर प्रति न्यूक्लिऑन बंधन सपाट होण्याऐवजी A सोबत वाढत राहिले असते. काळजीपूर्वक वाचलेल्या आलेखाने एखाद्या बलाच्या पल्ल्याबद्दलच्या प्रश्नाचे उत्तर दिले आहे. (दुसरा पर्याय संमीलन ऊर्जेचा असा स्रोत घडवतो जो अभिक्रियकांच्या ओळखीसोबत चालत नाही; तिसरा दावा करतो की वस्तुमान नेहमी नष्ट होते, जे प्रत्येक अभिक्रियेला उष्माक्षेपी बनवेल, त्यांनाही ज्या नाहीत; चौथा परिरोधनाची अभियांत्रिकी अडचण आणि ऊर्जा-संतुलनाचे चिन्ह यांची गल्लत करतो.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A student reasons that a sample with a half-life of 10 years is completely gone after 20 years, since two half-lives use up the whole of it. A second student says a nucleus that has already survived 100 years must be 'due' to decay soon. Assess both.",
+      "choices": [
+        "Both are wrong, and for related reasons. Half-lives do not add up to a whole: each one halves what is LEFT, so after two of them a quarter survives, after three an eighth, and the amount approaches zero without ever reaching it. And decay is memoryless — λ is the probability per second for any surviving nucleus, independent of its age — so a nucleus that has lasted a century is exactly as likely to decay in the next second as one made a moment ago. The second student is applying to nuclei an intuition drawn from wearing out, and nuclei do not wear out",
+        "The first student is right and the second wrong: two half-lives do exhaust the sample, but decay is indeed independent of age",
+        "The second student is right: the longer a nucleus survives the more likely it is to decay, which is why old samples are more radioactive than fresh ones",
+        "Both are right in practice, since after two half-lives the remaining activity is too small to measure and the surviving nuclei are known to be unstable"
+      ],
+      "answerIndex": 0,
+      "solution": "Two different misreadings of the same law, and both are worth taking apart because they recur outside physics. THE FIRST ERROR: TREATING HALF-LIVES AS ADDITIVE. The name invites it — if one half-life uses up half, surely two use up all of it. But read the definition again: a half-life is the time in which half of WHAT IS PRESENT decays. Start with 1000 nuclei. After one half-life, 500 remain. The next half-life acts on those 500 and leaves 250, not zero. After three, 125; after ten, about one; and the number never reaches zero exactly, because each step removes a fraction rather than an amount. The survival is N = N₀(1/2)ⁿ after n half-lives, which is exponential decay, and an exponential approaches zero asymptotically. The practical form of this matters in waste management: a substance with a thirty-year half-life still has a thousandth of its original activity after three centuries, which is small but not nothing, and 'ten half-lives' is the usual rule of thumb for when a source can be treated as spent. THE SECOND ERROR: EXPECTING NUCLEI TO AGE. This one is subtler and the intuition behind it is normally reliable. Ordinary things wear out: a light bulb that has burned for a thousand hours is likelier to fail tonight than a new one, because filaments thin and fatigue accumulates. So it feels natural that a nucleus which has 'used up' most of a half-life should be nearing its end. But the decay law contains no such term. The probability of decay in the next second is λ, a constant, and the equation dN/dt = −λN has no dependence on how long any particular nucleus has existed. This is what 'memoryless' means, and it is a genuine physical claim rather than a mathematical convenience: nothing inside the nucleus changes with time, so there is no internal clock counting down. A carbon-14 nucleus made this morning and one made five thousand years ago are, at this instant, physically identical and equally likely to go. What the half-life describes is the behaviour of a POPULATION, not the biography of a member. Out of a large sample, a definite fraction goes in each interval — but which nuclei go is not determined by anything about them, and the sample thins without any individual ageing. The distinction between a statement about a population and a statement about an individual is exactly the one the second student has lost, and it is worth naming because it is the same error as reading a life-expectancy table as a personal countdown. There is a strong experimental point here too, which makes the law more than a model. If nuclei aged, the half-life would depend on the sample's history — a source stored for decades would decay faster than a freshly made one — and it does not. Nor is the half-life changed by heating a source to thousands of degrees, cooling it towards absolute zero, subjecting it to enormous pressure, or binding the atom into different chemical compounds. That insensitivity is precisely what makes radiometric dating possible: the clock cannot be reset by anything that happens to the rock. (The second option keeps the additive error; the third reverses the memorylessness into an ageing effect that measurement excludes; the fourth substitutes a detection limit for a physical claim, which would make the answer depend on the instrument.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "एक विद्यार्थी तर्क देता है कि 10 वर्ष अर्धायु वाला नमूना 20 वर्ष बाद पूरी तरह ख़त्म हो जाता है, क्योंकि दो अर्धायुएँ उसका पूरा हिस्सा खपा देती हैं। दूसरा विद्यार्थी कहता है कि जो नाभिक 100 वर्ष पहले ही बच चुका है उसका जल्द क्षय होना 'बनता' है। दोनों का आकलन करो।",
+          "choices": [
+            "दोनों ग़लत हैं, और जुड़े हुए कारणों से। अर्धायुएँ जुड़कर पूरा नहीं बनतीं: हर एक जो बचा है उसे आधा करती है, अतः दो के बाद चौथाई बचता है, तीन के बाद आठवाँ भाग, और मात्रा शून्य के पास जाती है पर उस तक कभी नहीं पहुँचती। और क्षय स्मृतिहीन है — λ किसी भी बचे नाभिक के लिए प्रति सेकंड संभावना है, उसकी आयु से स्वतंत्र — अतः जो नाभिक सदी भर टिका है उसका अगले सेकंड में क्षय होना ठीक उतना ही संभव है जितना अभी-अभी बने का। दूसरा विद्यार्थी नाभिकों पर घिस जाने से लिया अंतर्ज्ञान लगा रहा है, और नाभिक घिसते नहीं",
+            "पहला विद्यार्थी सही है और दूसरा ग़लत: दो अर्धायुएँ नमूना सचमुच ख़त्म कर देती हैं, पर क्षय आयु से सचमुच स्वतंत्र है",
+            "दूसरा विद्यार्थी सही है: नाभिक जितना अधिक टिकता है उसका क्षय उतना ही अधिक संभव है, इसीलिए पुराने नमूने ताज़ा नमूनों से अधिक रेडियोऐक्टिव होते हैं",
+            "व्यवहार में दोनों सही हैं, क्योंकि दो अर्धायुओं के बाद बची सक्रियता नापने के लिए बहुत छोटी है और बचे नाभिक अस्थिर माने ही जाते हैं"
+          ],
+          "solution": "एक ही नियम के दो भिन्न ग़लत पाठ, और दोनों को खोलना चाहिए क्योंकि वे भौतिकी के बाहर भी लौट-लौटकर आते हैं। पहली भूल: अर्धायुओं को योज्य मान लेना। नाम ही लुभाता है — यदि एक अर्धायु आधा खपाती है, तो दो निश्चय ही पूरा खपाएँगी। पर परिभाषा फिर पढ़ो: अर्धायु वह समय है जिसमें जो मौजूद है उसका आधा क्षय होता है। 1000 नाभिकों से शुरू करो। एक अर्धायु बाद 500 बचते हैं। अगली अर्धायु उन्हीं 500 पर लगती है और 250 छोड़ती है, शून्य नहीं। तीन के बाद 125; दस के बाद लगभग एक; और संख्या ठीक शून्य तक कभी नहीं पहुँचती, क्योंकि हर क़दम मात्रा के बजाय एक अंश हटाता है। n अर्धायुओं के बाद बचाव N = N₀(1/2)ⁿ है, जो चरघातांकी क्षय है, और चरघातांक शून्य के पास स्पर्शरेखीय रूप से जाता है। इसका व्यावहारिक रूप कचरा-प्रबंधन में मायने रखता है: तीस वर्ष अर्धायु वाले पदार्थ की तीन सदियों बाद भी अपनी मूल सक्रियता का हज़ारवाँ भाग बचा रहता है, जो छोटा है पर शून्य नहीं, और 'दस अर्धायु' वह सामान्य अटकल-नियम है जिसके बाद स्रोत को चुका हुआ माना जा सकता है। दूसरी भूल: नाभिकों से बूढ़े होने की अपेक्षा। यह अधिक सूक्ष्म है और उसके पीछे का अंतर्ज्ञान प्रायः भरोसेमंद होता है। साधारण चीज़ें घिसती हैं: हज़ार घंटे जल चुका बल्ब नए की तुलना में आज रात फुँकने के अधिक क़रीब है, क्योंकि तंतु पतले होते हैं और थकान जमा होती है। अतः यह स्वाभाविक लगता है कि जिस नाभिक ने अपनी अर्धायु का अधिकांश 'ख़र्च' कर दिया वह अंत के निकट होगा। पर क्षय नियम में ऐसा कोई पद है ही नहीं। अगले सेकंड में क्षय की संभावना λ है, एक अचर, और समीकरण dN/dt = −λN में इस बात की कोई निर्भरता नहीं कि कोई विशेष नाभिक कितनी देर से मौजूद है। 'स्मृतिहीन' का यही अर्थ है, और यह गणितीय सुविधा नहीं बल्कि असली भौतिक दावा है: नाभिक के भीतर समय के साथ कुछ नहीं बदलता, अतः उलटी गिनती करती कोई आंतरिक घड़ी है ही नहीं। आज सुबह बना कार्बन-14 नाभिक और पाँच हज़ार वर्ष पहले बना नाभिक, इस क्षण, भौतिक रूप से समरूप हैं और बराबर संभावित। अर्धायु जो वर्णित करती है वह आबादी का आचरण है, किसी सदस्य की जीवनी नहीं। बड़े नमूने में से हर अंतराल में एक निश्चित अंश जाता है — पर कौन-से नाभिक जाएँगे यह उनके बारे में किसी बात से तय नहीं होता, और नमूना बिना किसी व्यक्ति के बूढ़े हुए पतला होता जाता है। आबादी के बारे में कथन और व्यक्ति के बारे में कथन का भेद ठीक वही है जो दूसरा विद्यार्थी खो बैठा है, और उसे नाम देना चाहिए क्योंकि वह वही भूल है जो जीवन-प्रत्याशा की तालिका को व्यक्तिगत उलटी गिनती पढ़ने में होती है। यहाँ एक प्रबल प्रायोगिक बात भी है, जो नियम को मॉडल से अधिक बनाती है। यदि नाभिक बूढ़े होते, तो अर्धायु नमूने के इतिहास पर निर्भर करती — दशकों से रखा स्रोत ताज़ा बने से तेज़ी से क्षय होता — और वह नहीं करती। न ही अर्धायु स्रोत को हज़ारों अंश तक गर्म करने, परम शून्य की ओर ठंडा करने, विशाल दाब में रखने, या परमाणु को भिन्न रासायनिक यौगिकों में बाँधने से बदलती है। वही असंवेदनशीलता रेडियोमितीय तिथि-निर्धारण को संभव बनाती है: चट्टान के साथ जो कुछ भी हो, घड़ी फिर से शून्य नहीं की जा सकती। (दूसरा विकल्प योज्य वाली भूल बनाए रखता है; तीसरा स्मृतिहीनता को उलटकर ऐसा बुढ़ापा बना देता है जिसे माप ख़ारिज करता है; चौथा भौतिक दावे की जगह संसूचन सीमा रख देता है, जिससे उत्तर यंत्र पर निर्भर हो जाता।)"
+        },
+        "mr": {
+          "stem": "एक विद्यार्थी युक्तिवाद करतो की 10 वर्षे अर्धायुष्य असलेला नमुना 20 वर्षांनंतर पूर्णपणे संपतो, कारण दोन अर्धायुष्ये त्याचा अख्खा भाग खर्चतात. दुसरा विद्यार्थी म्हणतो की जे केंद्रक 100 वर्षे आधीच टिकले आहे त्याचा लवकर क्षय होणे 'बाकी' आहे. दोघांचे मूल्यमापन करा.",
+          "choices": [
+            "दोघेही चूक आहेत, आणि जोडलेल्या कारणांनी. अर्धायुष्ये जुळून पूर्ण होत नाहीत: प्रत्येक जे उरले आहे ते निम्मे करते, म्हणून दोहोंनंतर चतुर्थांश उरतो, तिघांनंतर आठवा भाग, आणि प्रमाण शून्याजवळ जाते पण त्यापर्यंत कधीच पोहोचत नाही. आणि क्षय स्मृतिविरहित आहे — λ ही कोणत्याही टिकलेल्या केंद्रकासाठीची दर सेकंदाची शक्यता आहे, त्याच्या वयापासून स्वतंत्र — म्हणून जे केंद्रक शतकभर टिकले आहे त्याचा पुढच्या सेकंदात क्षय होणे नेमके तितकेच संभवनीय आहे जितके आत्ताच बनलेल्याचे. दुसरा विद्यार्थी केंद्रकांवर झिजण्यातून घेतलेली अंतःप्रेरणा लावत आहे, आणि केंद्रके झिजत नाहीत",
+            "पहिला विद्यार्थी बरोबर आहे आणि दुसरा चूक: दोन अर्धायुष्ये नमुना खरोखर संपवतात, पण क्षय वयापासून खरोखर स्वतंत्र आहे",
+            "दुसरा विद्यार्थी बरोबर आहे: केंद्रक जितके अधिक टिकते तितका त्याचा क्षय अधिक संभवनीय, म्हणूनच जुने नमुने ताज्या नमुन्यांहून अधिक किरणोत्सर्गी असतात",
+            "व्यवहारात दोघेही बरोबर आहेत, कारण दोन अर्धायुष्यांनंतर उरलेली क्रियाशीलता मोजण्याइतकी लहान आहे आणि टिकलेली केंद्रके अस्थिर मानलीच जातात"
+          ],
+          "solution": "एकाच नियमाची दोन वेगळी चुकीची वाचने, आणि दोन्ही उलगडण्याजोगी आहेत कारण ती भौतिकीबाहेरही पुन्हा पुन्हा येतात. पहिली चूक: अर्धायुष्ये योगात्मक मानणे. नावच मोह घालते — जर एक अर्धायुष्य निम्मे खर्चते, तर दोन नक्कीच अख्खे खर्चतील. पण व्याख्या पुन्हा वाचा: अर्धायुष्य म्हणजे तो काळ ज्यात जे उपस्थित आहे त्याचा निम्मा क्षय होतो. 1000 केंद्रकांनी सुरुवात करा. एका अर्धायुष्यानंतर 500 उरतात. पुढचे अर्धायुष्य त्याच 500 वर लागते आणि 250 सोडते, शून्य नाही. तिघांनंतर 125; दहांनंतर सुमारे एक; आणि संख्या नेमक्या शून्यापर्यंत कधीच पोहोचत नाही, कारण प्रत्येक पाऊल प्रमाणाऐवजी एक अंश काढते. n अर्धायुष्यांनंतर टिकाव N = N₀(1/2)ⁿ आहे, जो घातांकी क्षय आहे, आणि घातांक शून्याजवळ स्पर्शरेषीयपणे जातो. याचे व्यावहारिक रूप कचरा-व्यवस्थापनात महत्त्वाचे आहे: तीस वर्षे अर्धायुष्य असलेल्या पदार्थाकडे तीन शतकांनंतरही आपल्या मूळ क्रियाशीलतेचा हजारावा भाग उरलेला असतो, जो लहान आहे पण शून्य नाही, आणि 'दहा अर्धायुष्ये' हा तो सामान्य ढोबळ नियम ज्यानंतर स्रोत संपलेला मानता येतो. दुसरी चूक: केंद्रकांकडून वयस्क होण्याची अपेक्षा. ही अधिक सूक्ष्म आहे आणि तिच्यामागची अंतःप्रेरणा सहसा विश्वासार्ह असते. साधारण गोष्टी झिजतात: हजार तास जळलेला बल्ब नव्याहून आज रात्री फुटण्याच्या अधिक जवळ आहे, कारण तंतू पातळ होतात आणि थकवा साठतो. म्हणून हे स्वाभाविक वाटते की ज्या केंद्रकाने आपल्या अर्धायुष्याचा बहुतांश 'खर्च' केला ते शेवटाजवळ असेल. पण क्षय नियमात असे कोणतेही पद आहेच नाही. पुढच्या सेकंदात क्षयाची शक्यता λ आहे, एक अचल, आणि समीकरण dN/dt = −λN मध्ये कोणतेही विशिष्ट केंद्रक किती वेळ अस्तित्वात आहे याचे कोणतेही अवलंबित्व नाही. 'स्मृतिविरहित' चा हाच अर्थ, आणि हा गणिती सोय नसून खरा भौतिक दावा आहे: केंद्रकाच्या आत काळासोबत काहीही बदलत नाही, म्हणून उलटी गणती करणारे कोणतेही अंतर्गत घड्याळ नाहीच. आज सकाळी बनलेले कार्बन-14 केंद्रक आणि पाच हजार वर्षांपूर्वी बनलेले, या क्षणी, भौतिकदृष्ट्या सारखी आहेत आणि समान संभवनीय. अर्धायुष्य जे वर्णन करते ते समुदायाचे वर्तन आहे, कोणत्याही सदस्याचे चरित्र नाही. मोठ्या नमुन्यातून प्रत्येक अंतरालात ठराविक अंश जातो — पण कोणती केंद्रके जातील हे त्यांच्याबद्दलच्या कशानेही ठरत नाही, आणि नमुना कोणत्याही व्यक्तीच्या वयस्क होण्याविना पातळ होत जातो. समुदायाबद्दलचे विधान आणि व्यक्तीबद्दलचे विधान यांतला भेद नेमका तोच जो दुसऱ्या विद्यार्थ्याने गमावला आहे, आणि त्याला नाव द्यायला हवे कारण तीच चूक आयुर्मान-कोष्टकाला वैयक्तिक उलटी गणती वाचण्यात होते. इथे एक भक्कम प्रायोगिक मुद्दाही आहे, जो नियमाला प्रारूपाहून अधिक बनवतो. जर केंद्रके वयस्क झाली असती, तर अर्धायुष्य नमुन्याच्या इतिहासावर अवलंबून राहिले असते — दशके साठवलेला स्रोत ताज्या बनवलेल्याहून वेगाने क्षय पावला असता — आणि ते तसे होत नाही. तसेच अर्धायुष्य स्रोताला हजारो अंशांपर्यंत तापवून, निरपेक्ष शून्याकडे थंड करून, प्रचंड दाबात ठेवून, वा अणूला वेगवेगळ्या रासायनिक संयुगांत बांधून बदलत नाही. तीच असंवेदनशीलता किरणोत्सर्गी कालनिर्धारण शक्य करते: खडकाबाबत काहीही घडो, घड्याळ पुन्हा शून्यावर नेता येत नाही. (दुसरा पर्याय योगात्मकतेची चूक टिकवतो; तिसरा स्मृतिविरहितता उलटवून असे वयस्क होणे बनवतो जे मापन वगळते; चौथा भौतिक दाव्याच्या जागी संवेदन मर्यादा ठेवतो, ज्याने उत्तर उपकरणावर अवलंबून राहिले असते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A radioactive sample has a half-life of 5 days. After 15 days the fraction remaining is 1/n. What is n?",
+      "choices": [
+        "15",
+        "6",
+        "8",
+        "3"
+      ],
+      "answerIndex": 2,
+      "solution": "Fifteen days is three half-lives, and each one halves what is left, so the survivor fraction is (1/2)³ = 1/(2 × 2 × 2) = 1/8 and n = 8. The halvings multiply rather than add: three half-lives do not remove three halves, they remove seven eighths. (3 counts the half-lives; 6 multiplies rather than exponentiates.)",
+      "checkExpr": "2*2*2",
+      "translations": {
+        "hi": {
+          "stem": "एक रेडियोऐक्टिव नमूने की अर्धायु 5 दिन है। 15 दिन बाद बचा अंश 1/n है। n क्या है?",
+          "choices": [
+            "15",
+            "6",
+            "8",
+            "3"
+          ],
+          "solution": "पंद्रह दिन तीन अर्धायुएँ हैं, और हर एक बचे हुए को आधा करती है, अतः बचा अंश (1/2)³ = 1/(2 × 2 × 2) = 1/8 है और n = 8. आधे करने गुणा होते हैं, जुड़ते नहीं: तीन अर्धायुएँ तीन आधे नहीं हटातीं, वे सात-आठवाँ भाग हटाती हैं। (3 अर्धायुएँ गिन लेता है; 6 घात लगाने के बजाय गुणा कर देता है।)"
+        },
+        "mr": {
+          "stem": "एका किरणोत्सर्गी नमुन्याचे अर्धायुष्य 5 दिवस आहे. 15 दिवसांनंतर उरलेला अंश 1/n आहे. n किती?",
+          "choices": [
+            "15",
+            "6",
+            "8",
+            "3"
+          ],
+          "solution": "पंधरा दिवस म्हणजे तीन अर्धायुष्ये, आणि प्रत्येक उरलेल्याला निम्मे करते, म्हणून उरलेला अंश (1/2)³ = 1/(2 × 2 × 2) = 1/8 आहे आणि n = 8. निम्मे करणे गुणले जाते, जुळत नाही: तीन अर्धायुष्ये तीन निम्मे काढत नाहीत, ती सात-अष्टमांश काढतात. (3 अर्धायुष्ये मोजते; 6 घात लावण्याऐवजी गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The nuclear radius is R = 1.2 A^(1/3) fm. For a nucleus of mass number 27, what is R in fm?",
+      "choices": [
+        "1.2",
+        "3.6",
+        "32.4",
+        "10.8"
+      ],
+      "answerIndex": 1,
+      "solution": "The cube root of 27 is 3, so R = 1.2 × 3 = 3.6 fm. The cube root is the whole content of the formula: volume rises in step with the number of nucleons, so the density is the same for every nucleus and a nucleon takes up the same room in aluminium as in uranium. (32.4 multiplies by A instead of its cube root.)",
+      "checkExpr": "1.2*3",
+      "translations": {
+        "hi": {
+          "stem": "नाभिकीय त्रिज्या R = 1.2 A^(1/3) fm है। द्रव्यमान संख्या 27 के नाभिक के लिए R, fm में, क्या है?",
+          "choices": [
+            "1.2",
+            "3.6",
+            "32.4",
+            "10.8"
+          ],
+          "solution": "27 का घनमूल 3 है, अतः R = 1.2 × 3 = 3.6 fm. घनमूल ही सूत्र का सारा सार है: आयतन न्यूक्लिऑनों की संख्या के साथ बढ़ता है, अतः हर नाभिक का घनत्व एक है और न्यूक्लिऑन ऐलुमिनियम में उतनी ही जगह घेरता है जितनी यूरेनियम में। (32.4 घनमूल के बजाय A से गुणा कर देता है।)"
+        },
+        "mr": {
+          "stem": "केंद्रकीय त्रिज्या R = 1.2 A^(1/3) fm आहे. वस्तुमान संख्या 27 च्या केंद्रकासाठी R, fm मध्ये, किती?",
+          "choices": [
+            "1.2",
+            "3.6",
+            "32.4",
+            "10.8"
+          ],
+          "solution": "27 चे घनमूळ 3 आहे, म्हणून R = 1.2 × 3 = 3.6 fm. घनमूळ हाच सूत्राचा अख्खा आशय: घनफळ न्यूक्लिऑनांच्या संख्येसोबत वाढते, म्हणून प्रत्येक केंद्रकाची घनता एकच आणि न्यूक्लिऑन ॲल्युमिनियममध्ये तितकीच जागा व्यापतो जितकी युरेनियममध्ये. (32.4 घनमुळाऐवजी A ने गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A uranium nucleus of atomic number 92 emits an alpha particle. What is the atomic number of the daughter nucleus?",
+      "choices": [
+        "94",
+        "234",
+        "88",
+        "90"
+      ],
+      "answerIndex": 3,
+      "solution": "An alpha particle is a helium nucleus with two protons, so the atomic number falls by 2: 92 − 2 = 90, which is thorium. The mass number falls by 4 at the same time, but that is a separate count — confusing the two is what produces 234 here, which is the daughter's mass number and not its atomic number. (88 subtracts 4 from the atomic number.)",
+      "checkExpr": "92-2",
+      "translations": {
+        "hi": {
+          "stem": "परमाणु संख्या 92 का यूरेनियम नाभिक एक अल्फ़ा कण उत्सर्जित करता है। संतति नाभिक की परमाणु संख्या क्या है?",
+          "choices": [
+            "94",
+            "234",
+            "88",
+            "90"
+          ],
+          "solution": "अल्फ़ा कण दो प्रोटॉन वाला हीलियम नाभिक है, अतः परमाणु संख्या 2 घटती है: 92 − 2 = 90, जो थोरियम है। उसी समय द्रव्यमान संख्या 4 घटती है, पर वह अलग गिनती है — दोनों को गड्डमड्ड करना ही यहाँ 234 देता है, जो संतति की द्रव्यमान संख्या है, परमाणु संख्या नहीं। (88 परमाणु संख्या में से 4 घटा देता है।)"
+        },
+        "mr": {
+          "stem": "अणुक्रमांक 92 चे युरेनियम केंद्रक एक अल्फा कण उत्सर्जित करते. कन्या केंद्रकाचा अणुक्रमांक किती?",
+          "choices": [
+            "94",
+            "234",
+            "88",
+            "90"
+          ],
+          "solution": "अल्फा कण म्हणजे दोन प्रोटॉन असलेले हेलियम केंद्रक, म्हणून अणुक्रमांक 2 ने घटतो: 92 − 2 = 90, जे थोरियम आहे. त्याच वेळी वस्तुमान संख्या 4 ने घटते, पण ती वेगळी मोजणी आहे — दोन्हींची गल्लत केल्यानेच इथे 234 येते, जी कन्येची वस्तुमान संख्या आहे, अणुक्रमांक नव्हे. (88 अणुक्रमांकातून 4 वजा करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A nucleus of atomic number 15 undergoes beta-minus decay. What is the atomic number of the daughter?",
+      "choices": [
+        "14",
+        "16",
+        "17",
+        "13"
+      ],
+      "answerIndex": 1,
+      "solution": "In beta-minus decay a neutron becomes a proton, so the atomic number RISES by one: 15 + 1 = 16. The mass number is unchanged, since a neutron has simply been replaced by a proton and the count of nucleons is the same. The direction catches people out — an electron leaves, so it feels as though charge should fall, but the electron that leaves was made by the neutron turning positive. (14 lowers the number as if a positive particle had left.)",
+      "checkExpr": "15+1",
+      "translations": {
+        "hi": {
+          "stem": "परमाणु संख्या 15 का नाभिक बीटा-ऋण क्षय करता है। संतति की परमाणु संख्या क्या है?",
+          "choices": [
+            "14",
+            "16",
+            "17",
+            "13"
+          ],
+          "solution": "बीटा-ऋण क्षय में न्यूट्रॉन प्रोटॉन बन जाता है, अतः परमाणु संख्या एक बढ़ती है: 15 + 1 = 16. द्रव्यमान संख्या अपरिवर्तित है, क्योंकि न्यूट्रॉन की जगह बस प्रोटॉन आ गया और न्यूक्लिऑनों की गिनती वही है। दिशा लोगों को चकमा देती है — इलेक्ट्रॉन निकलता है, अतः लगता है आवेश घटना चाहिए, पर जो इलेक्ट्रॉन निकला वह न्यूट्रॉन के धन होने से बना था। (14 संख्या ऐसे घटा देता है मानो कोई धन कण निकला हो।)"
+        },
+        "mr": {
+          "stem": "अणुक्रमांक 15 चे केंद्रक बीटा-ऋण क्षय करते. कन्येचा अणुक्रमांक किती?",
+          "choices": [
+            "14",
+            "16",
+            "17",
+            "13"
+          ],
+          "solution": "बीटा-ऋण क्षयात न्यूट्रॉन प्रोटॉन बनतो, म्हणून अणुक्रमांक एकने वाढतो: 15 + 1 = 16. वस्तुमान संख्या अपरिवर्तित आहे, कारण न्यूट्रॉनच्या जागी फक्त प्रोटॉन आला आणि न्यूक्लिऑनांची मोजणी तीच आहे. दिशा लोकांना फसवते — इलेक्ट्रॉन निघतो, म्हणून वाटते प्रभार घटावा, पण जो इलेक्ट्रॉन निघाला तो न्यूट्रॉन धन झाल्याने बनला होता. (14 संख्या अशी घटवते जणू एखादा धन कण निघाला असावा.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A sample of 800 g of a radioactive substance has a half-life of 2 hours. How much, in g, remains after 6 hours?",
+      "choices": [
+        "133",
+        "100",
+        "400",
+        "200"
+      ],
+      "answerIndex": 1,
+      "solution": "Six hours is three half-lives, so the mass falls to 800/2³ = 800/8 = 100 g. Track it step by step and the pattern is clear: 800 → 400 → 200 → 100. Notice that the amount removed shrinks each time — 400 g in the first two hours, only 100 g in the third — which is exactly what an exponential does and why the tail is so long. (133 divides by 6 as though the decay were linear in time.)",
+      "checkExpr": "800/8",
+      "translations": {
+        "hi": {
+          "stem": "किसी रेडियोऐक्टिव पदार्थ के 800 g नमूने की अर्धायु 2 घंटे है। 6 घंटे बाद कितना, g में, बचता है?",
+          "choices": [
+            "133",
+            "100",
+            "400",
+            "200"
+          ],
+          "solution": "छह घंटे तीन अर्धायुएँ हैं, अतः द्रव्यमान घटकर 800/2³ = 800/8 = 100 g रह जाता है। क़दम-दर-क़दम देखो तो ढर्रा साफ़ है: 800 → 400 → 200 → 100. ध्यान दो कि हटाई गई मात्रा हर बार सिकुड़ती है — पहले दो घंटों में 400 g, तीसरे में केवल 100 g — और चरघातांक ठीक यही करता है और इसीलिए पूँछ इतनी लंबी है। (133 6 से भाग दे देता है मानो क्षय समय में रैखिक हो।)"
+        },
+        "mr": {
+          "stem": "एका किरणोत्सर्गी पदार्थाच्या 800 g नमुन्याचे अर्धायुष्य 2 तास आहे. 6 तासांनंतर किती, g मध्ये, उरते?",
+          "choices": [
+            "133",
+            "100",
+            "400",
+            "200"
+          ],
+          "solution": "सहा तास म्हणजे तीन अर्धायुष्ये, म्हणून वस्तुमान घटून 800/2³ = 800/8 = 100 g उरते. पावलापावलाने पाहा आणि आकृतिबंध स्पष्ट आहे: 800 → 400 → 200 → 100. लक्षात घ्या की काढलेले प्रमाण प्रत्येक वेळी आकसते — पहिल्या दोन तासांत 400 g, तिसऱ्यात केवळ 100 g — आणि घातांक नेमके हेच करतो आणि म्हणूनच शेपूट इतकी लांब आहे. (133 हे 6 ने भागते जणू क्षय काळात रेषीय असावा.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A nucleus has a mass defect of 0.1 u. What is its binding energy, in MeV? Take 1 u = 931 MeV.",
+      "choices": [
+        "0.1",
+        "9.31",
+        "93.1",
+        "931"
+      ],
+      "answerIndex": 2,
+      "solution": "The binding energy is the mass defect converted by E = Δmc², which in these units is simply Δm × 931: 0.1 × 931 = 93.1 MeV. The conversion factor is doing the work of c², and quoting masses in u lets the whole calculation be one multiplication. Compare with a chemical bond at a few eV and the ratio is about ten million — the whole reason nuclear fuel is measured in grams and coal in tonnes. (9.31 slips a decimal place; 931 forgets the defect.)",
+      "checkExpr": "0.1*931",
+      "translations": {
+        "hi": {
+          "stem": "किसी नाभिक की द्रव्यमान क्षति 0.1 u है। उसकी बंधन ऊर्जा, MeV में, क्या है? 1 u = 931 MeV लो।",
+          "choices": [
+            "0.1",
+            "9.31",
+            "93.1",
+            "931"
+          ],
+          "solution": "बंधन ऊर्जा वह द्रव्यमान क्षति है जो E = Δmc² से बदली गई, जो इन इकाइयों में बस Δm × 931 है: 0.1 × 931 = 93.1 MeV. रूपांतरण गुणक c² का काम कर रहा है, और द्रव्यमान u में बताना पूरी गणना को एक गुणा बना देता है। कुछ eV के रासायनिक बंध से तुलना करो और अनुपात लगभग एक करोड़ है — यही पूरा कारण है कि नाभिकीय ईंधन ग्राम में नापा जाता है और कोयला टन में। (9.31 में दशमलव एक स्थान खिसक जाता है; 931 क्षति भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "एका केंद्रकाची वस्तुमान क्षती 0.1 u आहे. त्याची बंधन ऊर्जा, MeV मध्ये, किती? 1 u = 931 MeV घ्या.",
+          "choices": [
+            "0.1",
+            "9.31",
+            "93.1",
+            "931"
+          ],
+          "solution": "बंधन ऊर्जा म्हणजे वस्तुमान क्षती E = Δmc² ने बदललेली, जी या एककांत फक्त Δm × 931 आहे: 0.1 × 931 = 93.1 MeV. रूपांतर गुणक c² चे काम करत आहे, आणि वस्तुमान u मध्ये सांगणे अख्खी गणना एका गुणाकारात बदलते. काही eV च्या रासायनिक बंधाशी तुलना करा आणि गुणोत्तर सुमारे एक कोटी आहे — हेच अख्खे कारण की केंद्रकीय इंधन ग्रॅममध्ये मोजले जाते आणि कोळसा टनांत. (9.31 मध्ये दशांश एक स्थान सरकतो; 931 क्षती विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A nucleus of mass number 56 has a total binding energy of 448 MeV. What is its binding energy per nucleon, in MeV?",
+      "choices": [
+        "56",
+        "4",
+        "8",
+        "448"
+      ],
+      "answerIndex": 2,
+      "solution": "Binding energy per nucleon is the total divided by the number of nucleons: 448/56 = 8 MeV. It is this quantity, not the total, that decides stability — uranium has a far larger TOTAL binding energy than iron and is nevertheless the less stable, because its 235 nucleons are each held less tightly. Dividing by A is what makes nuclei of different sizes comparable at all. (448 quotes the total and 56 the nucleon count.)",
+      "checkExpr": "448/56",
+      "translations": {
+        "hi": {
+          "stem": "द्रव्यमान संख्या 56 के नाभिक की कुल बंधन ऊर्जा 448 MeV है। उसकी प्रति न्यूक्लिऑन बंधन ऊर्जा, MeV में, क्या है?",
+          "choices": [
+            "56",
+            "4",
+            "8",
+            "448"
+          ],
+          "solution": "प्रति न्यूक्लिऑन बंधन ऊर्जा कुल बटा न्यूक्लिऑनों की संख्या है: 448/56 = 8 MeV. स्थायित्व यही राशि तय करती है, कुल नहीं — यूरेनियम की कुल बंधन ऊर्जा लोहे से कहीं बड़ी है और फिर भी वह कम स्थायी है, क्योंकि उसके 235 न्यूक्लिऑनों में से हर एक कम कसकर पकड़ा है। A से भाग देना ही भिन्न आकारों के नाभिकों को तुलनीय बनाता है। (448 कुल बता देता है और 56 न्यूक्लिऑनों की गिनती।)"
+        },
+        "mr": {
+          "stem": "वस्तुमान संख्या 56 च्या केंद्रकाची एकूण बंधन ऊर्जा 448 MeV आहे. त्याची प्रति न्यूक्लिऑन बंधन ऊर्जा, MeV मध्ये, किती?",
+          "choices": [
+            "56",
+            "4",
+            "8",
+            "448"
+          ],
+          "solution": "प्रति न्यूक्लिऑन बंधन ऊर्जा म्हणजे एकूण भागिले न्यूक्लिऑनांची संख्या: 448/56 = 8 MeV. स्थैर्य हीच राशी ठरवते, एकूण नव्हे — युरेनियमची एकूण बंधन ऊर्जा लोखंडाहून कितीतरी मोठी आहे आणि तरीही ते कमी स्थिर आहे, कारण त्याच्या 235 न्यूक्लिऑनांपैकी प्रत्येक कमी घट्ट धरलेला आहे. A ने भागणेच वेगवेगळ्या आकारांच्या केंद्रकांना तुलनीय बनवते. (448 एकूण सांगते आणि 56 न्यूक्लिऑनांची मोजणी.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "The activity of a source falls from 8000 counts per minute to 1000 counts per minute in 30 minutes. What is its half-life, in minutes?",
+      "choices": [
+        "3",
+        "15",
+        "7.5",
+        "10"
+      ],
+      "answerIndex": 3,
+      "solution": "Going from 8000 to 1000 is a fall by a factor of 8, which is 2³, so three half-lives have passed in 30 minutes and each is 30/3 = 10 minutes. Working in factors of two rather than in raw numbers is the quickest route: count how many halvings the drop represents, then divide the elapsed time by that count. (3 quotes the number of half-lives instead of their length.)",
+      "checkExpr": "30/3",
+      "translations": {
+        "hi": {
+          "stem": "किसी स्रोत की सक्रियता 30 मिनट में 8000 गणना प्रति मिनट से घटकर 1000 गणना प्रति मिनट हो जाती है। उसकी अर्धायु, मिनट में, क्या है?",
+          "choices": [
+            "3",
+            "15",
+            "7.5",
+            "10"
+          ],
+          "solution": "8000 से 1000 तक जाना 8 के गुणक की गिरावट है, जो 2³ है, अतः 30 मिनट में तीन अर्धायुएँ बीती हैं और हर एक 30/3 = 10 मिनट है। कच्ची संख्याओं के बजाय दो के गुणकों में काम करना सबसे तेज़ रास्ता है: गिनो कि गिरावट कितने आधे करने दर्शाती है, फिर बीता समय उस गिनती से भाग दो। (3 अर्धायुओं की लंबाई के बजाय उनकी संख्या बता देता है।)"
+        },
+        "mr": {
+          "stem": "एका स्रोताची क्रियाशीलता 30 मिनिटांत 8000 मोजण्या प्रति मिनिट वरून घटून 1000 मोजण्या प्रति मिनिट होते. त्याचे अर्धायुष्य, मिनिटांत, किती?",
+          "choices": [
+            "3",
+            "15",
+            "7.5",
+            "10"
+          ],
+          "solution": "8000 वरून 1000 पर्यंत जाणे ही 8 च्या पटीची घसरण आहे, जी 2³ आहे, म्हणून 30 मिनिटांत तीन अर्धायुष्ये गेली आहेत आणि प्रत्येक 30/3 = 10 मिनिटे आहे. कच्च्या संख्यांऐवजी दोनच्या पटींत काम करणे सर्वांत जलद मार्ग: मोजा की घसरण किती निम्मे करणे दर्शवते, मग गेलेला काळ त्या मोजणीने भागा. (3 अर्धायुष्यांच्या लांबीऐवजी त्यांची संख्या सांगते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Each fission of a uranium-235 nucleus releases about 200 MeV. How many fissions per second are needed to deliver 1 W, in units of 10¹⁰? Take 1 MeV = 1.6 × 10⁻¹³ J.",
+      "choices": [
+        "0.32",
+        "1.6",
+        "3.125",
+        "31.25"
+      ],
+      "answerIndex": 2,
+      "solution": "One fission gives 200 × 1.6 × 10⁻¹³ = 3.2 × 10⁻¹¹ J, so a watt needs 1/(3.2 × 10⁻¹¹) = 3.125 × 10¹⁰ fissions per second, that is 100/32 = 3.125 in the units asked. Put the number in context: a 1000 MW station needs about 3 × 10¹⁹ fissions a second, which works out at a few kilograms of uranium a day against some ten thousand tonnes of coal for the same output. The whole of that ratio is the 200 MeV against a chemical bond's few eV. (31.25 misplaces the exponent by one.)",
+      "checkExpr": "100/32",
+      "translations": {
+        "hi": {
+          "stem": "यूरेनियम-235 नाभिक का हर विखंडन लगभग 200 MeV देता है। 1 W देने के लिए प्रति सेकंड कितने विखंडन, 10¹⁰ की इकाइयों में, चाहिए? 1 MeV = 1.6 × 10⁻¹³ J लो।",
+          "choices": [
+            "0.32",
+            "1.6",
+            "3.125",
+            "31.25"
+          ],
+          "solution": "एक विखंडन 200 × 1.6 × 10⁻¹³ = 3.2 × 10⁻¹¹ J देता है, अतः एक वाट को 1/(3.2 × 10⁻¹¹) = 3.125 × 10¹⁰ विखंडन प्रति सेकंड चाहिए, अर्थात् पूछी गई इकाइयों में 100/32 = 3.125. संख्या को संदर्भ में रखो: 1000 MW के बिजलीघर को प्रति सेकंड लगभग 3 × 10¹⁹ विखंडन चाहिए, जो उसी उत्पादन के लिए लगभग दस हज़ार टन कोयले के मुक़ाबले दिन में कुछ किलोग्राम यूरेनियम बैठता है। उस पूरे अनुपात का सार 200 MeV बनाम रासायनिक बंध के कुछ eV है। (31.25 घातांक एक से चूक जाता है।)"
+        },
+        "mr": {
+          "stem": "युरेनियम-235 केंद्रकाचे प्रत्येक विखंडन सुमारे 200 MeV देते. 1 W देण्यासाठी दर सेकंदाला किती विखंडने, 10¹⁰ च्या एककांत, लागतील? 1 MeV = 1.6 × 10⁻¹³ J घ्या.",
+          "choices": [
+            "0.32",
+            "1.6",
+            "3.125",
+            "31.25"
+          ],
+          "solution": "एक विखंडन 200 × 1.6 × 10⁻¹³ = 3.2 × 10⁻¹¹ J देते, म्हणून एका वॅटला 1/(3.2 × 10⁻¹¹) = 3.125 × 10¹⁰ विखंडने प्रति सेकंद लागतील, म्हणजे विचारलेल्या एककांत 100/32 = 3.125. संख्या संदर्भात ठेवा: 1000 MW च्या वीजकेंद्राला दर सेकंदाला सुमारे 3 × 10¹⁹ विखंडने लागतात, जे त्याच उत्पादनासाठी सुमारे दहा हजार टन कोळशाच्या तुलनेत दिवसाला काही किलोग्रॅम युरेनियम भरते. त्या अख्ख्या गुणोत्तराचा गाभा म्हणजे 200 MeV विरुद्ध रासायनिक बंधाचे काही eV. (31.25 घातांक एकाने चुकवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A nucleus of mass number 240 has a binding energy of 7.6 MeV per nucleon and splits into two fragments each of 8.5 MeV per nucleon. How much energy, in MeV, is released?",
+      "choices": [
+        "2040",
+        "108",
+        "216",
+        "0.9"
+      ],
+      "answerIndex": 2,
+      "solution": "Each of the 240 nucleons ends up bound 8.5 − 7.6 = 0.9 MeV more tightly than it began, and the energy released is that gain summed over all of them: 240 × 0.9 = 216 MeV. Two habits are being tested. First, work with binding energy PER NUCLEON and multiply by A at the end rather than juggling totals. Second, notice the direction: the products are more tightly bound, meaning they sit LOWER in energy, and the surplus is what comes out. Nothing was created — the fragments together weigh very slightly less than the parent, and 216 MeV is that missing mass. The figure is close to the 200 MeV actually measured for uranium fission, which is a fair check that the curve has been read correctly. (0.9 quotes the gain per nucleon; 2040 multiplies by 8.5 instead of the difference.)",
+      "checkExpr": "240*0.9",
+      "translations": {
+        "hi": {
+          "stem": "द्रव्यमान संख्या 240 के नाभिक की बंधन ऊर्जा 7.6 MeV प्रति न्यूक्लिऑन है और वह दो ऐसे टुकड़ों में टूटता है जिनमें से हर एक की 8.5 MeV प्रति न्यूक्लिऑन है। कितनी ऊर्जा, MeV में, निकलती है?",
+          "choices": [
+            "2040",
+            "108",
+            "216",
+            "0.9"
+          ],
+          "solution": "240 में से हर न्यूक्लिऑन अंत में शुरुआत से 8.5 − 7.6 = 0.9 MeV अधिक कसकर बँधा है, और निकली ऊर्जा वही लाभ सब पर जोड़ा हुआ है: 240 × 0.9 = 216 MeV. दो आदतें जाँची जा रही हैं। पहली, प्रति न्यूक्लिऑन बंधन ऊर्जा से काम करो और अंत में A से गुणा करो, कुल संख्याओं की उछल-कूद के बजाय। दूसरी, दिशा पर ध्यान दो: उत्पाद अधिक कसकर बँधे हैं, अर्थात् वे ऊर्जा में नीचे बैठते हैं, और अधिशेष ही बाहर आता है। कुछ बना नहीं — टुकड़े मिलकर जनक से बहुत थोड़े हल्के हैं, और 216 MeV वही लुप्त द्रव्यमान है। यह आँकड़ा यूरेनियम विखंडन के लिए वस्तुतः नापे गए 200 MeV के निकट है, जो अच्छी जाँच है कि वक्र ठीक पढ़ा गया। (0.9 प्रति न्यूक्लिऑन लाभ बता देता है; 2040 अंतर के बजाय 8.5 से गुणा कर देता है।)"
+        },
+        "mr": {
+          "stem": "वस्तुमान संख्या 240 च्या केंद्रकाची बंधन ऊर्जा 7.6 MeV प्रति न्यूक्लिऑन आहे आणि ते अशा दोन तुकड्यांत तुटते ज्यांपैकी प्रत्येकाची 8.5 MeV प्रति न्यूक्लिऑन आहे. किती ऊर्जा, MeV मध्ये, निघते?",
+          "choices": [
+            "2040",
+            "108",
+            "216",
+            "0.9"
+          ],
+          "solution": "240 पैकी प्रत्येक न्यूक्लिऑन शेवटी सुरुवातीहून 8.5 − 7.6 = 0.9 MeV अधिक घट्ट बांधलेला आहे, आणि निघालेली ऊर्जा तोच लाभ सर्वांवर बेरीज केलेला आहे: 240 × 0.9 = 216 MeV. दोन सवयी तपासल्या जात आहेत. पहिली, प्रति न्यूक्लिऑन बंधन ऊर्जेने काम करा आणि शेवटी A ने गुणा, एकूण संख्यांची उलाढाल करण्याऐवजी. दुसरी, दिशेकडे लक्ष द्या: उत्पादने अधिक घट्ट बांधलेली आहेत, म्हणजे ती ऊर्जेत खाली बसतात, आणि जादाच बाहेर येते. काहीही निर्माण झाले नाही — तुकडे मिळून जनकाहून अगदी किंचित हलके आहेत, आणि 216 MeV हेच ते हरवलेले वस्तुमान. हा आकडा युरेनियम विखंडनासाठी प्रत्यक्षात मोजलेल्या 200 MeV च्या जवळ आहे, जी वक्र नीट वाचला गेल्याची चांगली तपासणी. (0.9 प्रति न्यूक्लिऑन लाभ सांगते; 2040 फरकाऐवजी 8.5 ने गुणते.)"
+        }
+      }
+    }
+  ]
+}

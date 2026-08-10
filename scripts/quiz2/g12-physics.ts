@@ -4214,6 +4214,703 @@ export const G12_PHYSICS: Chapter[] = [
     ],
   },
   /*C9*/
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 13 — Nuclei                                                     */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "physics-12-nuclei",
+    subject: "PHYSICS",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 13 — Nuclei",
+      hi: "अध्याय 13 — नाभिक",
+      mr: "प्रकरण 13 — केंद्रक",
+    },
+    name: {
+      en: "Nuclei",
+      hi: "नाभिक",
+      mr: "केंद्रक",
+    },
+    summary: {
+      en: "A radius that grows only as the cube root of the number of particles, so every nucleus has the same density and a teaspoon of the stuff would weigh as much as a mountain; a mass that comes out LESS than the sum of the parts, the missing amount being the energy that holds them together; a curve of that energy per particle which rises to a peak near iron and falls away on both sides, so that splitting a heavy nucleus and joining two light ones both move downhill and both release; three ways an unstable nucleus can change, two of which alter what element it is; and a decay law in which the chance of any one nucleus going in the next second never changes, however long it has already waited.",
+      hi: "ऐसी त्रिज्या जो कणों की संख्या के केवल घनमूल के अनुसार बढ़ती है, अतः हर नाभिक का घनत्व एक ही है और उस पदार्थ की एक चम्मच का भार पहाड़ जितना होगा; ऐसा द्रव्यमान जो भागों के योग से कम निकलता है, और लुप्त मात्रा वही ऊर्जा है जो उन्हें साथ बाँधे रखती है; प्रति कण उस ऊर्जा का वह वक्र जो लोहे के पास शिखर तक चढ़ता है और दोनों ओर गिरता है, अतः भारी नाभिक को तोड़ना और दो हल्कों को जोड़ना, दोनों ढलान से नीचे जाते हैं और दोनों ऊर्जा देते हैं; तीन तरीक़े जिनसे अस्थिर नाभिक बदल सकता है, जिनमें से दो बदल देते हैं कि वह कौन-सा तत्व है; और वह क्षय नियम जिसमें किसी भी एक नाभिक के अगले सेकंड में जाने की संभावना कभी नहीं बदलती, चाहे वह पहले कितनी ही देर प्रतीक्षा कर चुका हो।",
+      mr: "अशी त्रिज्या जी कणांच्या संख्येच्या केवळ घनमुळानुसार वाढते, म्हणून प्रत्येक केंद्रकाची घनता एकच आहे आणि त्या पदार्थाच्या एका चमच्याचे वजन डोंगराइतके असेल; असे वस्तुमान जे भागांच्या बेरजेहून कमी निघते, आणि हरवलेले प्रमाण हीच ती ऊर्जा जी त्यांना एकत्र बांधून ठेवते; प्रति कण त्या ऊर्जेचा तो वक्र जो लोखंडाजवळ शिखरापर्यंत चढतो आणि दोन्ही बाजूंनी घसरतो, म्हणून जड केंद्रक तोडणे आणि दोन हलकी जोडणे, दोन्ही उतारावरून खाली जातात आणि दोन्ही ऊर्जा देतात; तीन मार्ग ज्यांनी अस्थिर केंद्रक बदलू शकते, ज्यांपैकी दोन ते कोणते मूलद्रव्य आहे हे बदलतात; आणि तो क्षय नियम ज्यात कोणत्याही एका केंद्रकाच्या पुढच्या सेकंदात जाण्याची शक्यता कधीच बदलत नाही, ते आधी कितीही वेळ थांबलेले असो.",
+    },
+    position: 13,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "nuclear-density",
+        name: {
+          en: "The constancy of nuclear density",
+          hi: "नाभिकीय घनत्व की अचरता",
+          mr: "केंद्रकीय घनतेची अचलता",
+        },
+        kind: "property of the nucleus",
+        prompt: {
+          en: "The radius goes as the cube root of the mass number, so volume rises in step with the number of particles and the ratio of mass to volume comes out the same for uranium as for helium. Which property is this?",
+          hi: "त्रिज्या द्रव्यमान संख्या के घनमूल के अनुसार चलती है, अतः आयतन कणों की संख्या के साथ बढ़ता है और द्रव्यमान बटा आयतन यूरेनियम के लिए वही निकलता है जो हीलियम के लिए। यह कौन-सा गुणधर्म है?",
+          mr: "त्रिज्या वस्तुमान संख्येच्या घनमुळानुसार चालते, म्हणून घनफळ कणांच्या संख्येसोबत वाढते आणि वस्तुमान भागिले घनफळ युरेनियमसाठी तेच निघते जे हेलियमसाठी. हा कोणता गुणधर्म?",
+        },
+        statement: {
+          en: "The constancy of nuclear density follows from a radius equal to R₀ times the cube root of A, with R₀ ≈ 1.2 fm, which makes volume proportional to A and the density about 2.3 × 10¹⁷ kg/m³ for every nucleus.",
+          hi: "नाभिकीय घनत्व की अचरता ऐसी त्रिज्या से निकलती है जो R₀ गुणा A का घनमूल है, जिसमें R₀ ≈ 1.2 fm, और जो आयतन को A का समानुपाती बनाती है और घनत्व हर नाभिक के लिए लगभग 2.3 × 10¹⁷ kg/m³.",
+          mr: "केंद्रकीय घनतेची अचलता अशा त्रिज्येतून निघते जी R₀ गुणिले A चे घनमूळ आहे, जिथे R₀ ≈ 1.2 fm, आणि जी घनफळाला A शी समानुपाती बनवते आणि घनता प्रत्येक केंद्रकासाठी सुमारे 2.3 × 10¹⁷ kg/m³.",
+        },
+        detail: {
+          en: "It says nucleons are packed like marbles in a bag rather than spread out like electrons: each takes up its own fixed volume and the next one has to go beside it, not through it.",
+          hi: "यह कहता है कि न्यूक्लिऑन इलेक्ट्रॉनों की तरह फैले नहीं बल्कि थैले में कंचों की तरह ठसे हैं: हर एक अपना नियत आयतन घेरता है और अगले को उसके बग़ल में जाना पड़ता है, उसमें से होकर नहीं।",
+          mr: "हे सांगते की न्यूक्लिऑन इलेक्ट्रॉनांप्रमाणे पसरलेले नसून पिशवीत गोट्यांप्रमाणे ठासलेले आहेत: प्रत्येक आपले ठराविक घनफळ व्यापतो आणि पुढच्याला त्याच्या बाजूला जावे लागते, त्यातून नव्हे.",
+        },
+        extra: {
+          en: "The figure is about 10¹⁴ times the density of water, which is why a neutron star — essentially one enormous nucleus — packs the mass of the Sun into a sphere the size of a city.",
+          hi: "यह आँकड़ा पानी के घनत्व का लगभग 10¹⁴ गुना है, इसीलिए न्यूट्रॉन तारा — जो वस्तुतः एक विशाल नाभिक है — सूर्य का द्रव्यमान शहर के आकार के गोले में ठूँस देता है।",
+          mr: "हा आकडा पाण्याच्या घनतेच्या सुमारे 10¹⁴ पट आहे, म्हणूनच न्यूट्रॉन तारा — जो प्रत्यक्षात एक प्रचंड केंद्रक आहे — सूर्याचे वस्तुमान शहराच्या आकाराच्या गोलात कोंबतो.",
+        },
+        pair: {
+          left: {
+            en: "A teaspoon of it would outweigh a mountain",
+            hi: "उसकी एक चम्मच पहाड़ से भारी होगी",
+            mr: "त्याचा एक चमचा डोंगराहून जड असेल",
+          },
+          right: {
+            en: "the constancy of nuclear density",
+            hi: "नाभिकीय घनत्व की अचरता",
+            mr: "केंद्रकीय घनतेची अचलता",
+          },
+        },
+      },
+      {
+        id: "mass-defect",
+        name: {
+          en: "Mass defect and binding energy",
+          hi: "द्रव्यमान क्षति और बंधन ऊर्जा",
+          mr: "वस्तुमान क्षती आणि बंधन ऊर्जा",
+        },
+        kind: "property of the nucleus",
+        prompt: {
+          en: "Weigh a helium nucleus and then weigh its two protons and two neutrons separately, and the separate parts come to MORE. Which pair of ideas accounts for the difference?",
+          hi: "हीलियम के नाभिक को तौलो और फिर उसके दो प्रोटॉन तथा दो न्यूट्रॉन अलग-अलग तौलो, और अलग भाग अधिक निकलते हैं। यह अंतर किन दो विचारों से समझाया जाता है?",
+          mr: "हेलियमचे केंद्रक तोला आणि मग त्याचे दोन प्रोटॉन आणि दोन न्यूट्रॉन वेगवेगळे तोला, आणि वेगळे भाग अधिक भरतात. हा फरक कोणत्या दोन कल्पनांनी समजावला जातो?",
+        },
+        statement: {
+          en: "Mass defect is the amount by which a nucleus's mass falls short of the sum of its nucleons, and the binding energy is that defect converted by E = Δmc², with 1 u worth about 931.5 MeV.",
+          hi: "द्रव्यमान क्षति वह मात्रा है जितनी नाभिक का द्रव्यमान अपने न्यूक्लिऑनों के योग से कम पड़ता है, और बंधन ऊर्जा वही क्षति E = Δmc² से बदली हुई है, जिसमें 1 u लगभग 931.5 MeV के बराबर है।",
+          mr: "वस्तुमान क्षती म्हणजे केंद्रकाचे वस्तुमान त्याच्या न्यूक्लिऑनांच्या बेरजेहून जितके कमी पडते ते प्रमाण, आणि बंधन ऊर्जा म्हणजे तीच क्षती E = Δmc² ने बदललेली, जिथे 1 u हे सुमारे 931.5 MeV इतके आहे.",
+        },
+        detail: {
+          en: "The mass is not lost but converted: assembling the nucleus released exactly that energy, and putting the same energy back in is what it would cost to take the nucleus apart again.",
+          hi: "द्रव्यमान खोया नहीं बल्कि बदला गया है: नाभिक जोड़ने पर ठीक उतनी ऊर्जा निकली थी, और उसी ऊर्जा को वापस डालना वही क़ीमत है जो नाभिक को फिर से तोड़ने में लगेगी।",
+          mr: "वस्तुमान गमावले नसून बदलले आहे: केंद्रक जोडताना नेमकी तितकी ऊर्जा निघाली होती, आणि तीच ऊर्जा परत घालणे हीच ती किंमत जी केंद्रक पुन्हा तोडायला लागेल.",
+        },
+        extra: {
+          en: "The same accounting works for a molecule, but there the binding energy is a few electron-volts against a nucleus's several million, so chemical mass defects are far too small to weigh.",
+          hi: "वही हिसाब अणु के लिए भी चलता है, पर वहाँ बंधन ऊर्जा कुछ इलेक्ट्रॉन-वोल्ट है जबकि नाभिक की कई लाख, अतः रासायनिक द्रव्यमान क्षतियाँ तौलने के लिए कहीं बहुत छोटी हैं।",
+          mr: "तोच हिशेब रेणूसाठीही चालतो, पण तिथे बंधन ऊर्जा काही इलेक्ट्रॉन-व्होल्ट आहे तर केंद्रकाची कित्येक लाख, म्हणून रासायनिक वस्तुमान क्षती तोलण्यासाठी कितीतरी लहान आहेत.",
+        },
+        pair: {
+          left: {
+            en: "The parts weigh more than the whole",
+            hi: "भाग पूरे से भारी हैं",
+            mr: "भाग पूर्णाहून जड आहेत",
+          },
+          right: {
+            en: "mass defect and binding energy",
+            hi: "द्रव्यमान क्षति और बंधन ऊर्जा",
+            mr: "वस्तुमान क्षती आणि बंधन ऊर्जा",
+          },
+        },
+      },
+      {
+        id: "binding-energy-curve",
+        name: {
+          en: "The binding energy per nucleon curve",
+          hi: "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र",
+          mr: "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र",
+        },
+        kind: "property of the nucleus",
+        prompt: {
+          en: "A graph rising steeply from hydrogen, flattening around 8.8 MeV near iron, and sagging gently towards uranium — the single picture from which both fission and fusion follow. What is it?",
+          hi: "ऐसा ग्राफ़ जो हाइड्रोजन से तेज़ी से चढ़ता है, लोहे के पास लगभग 8.8 MeV पर सपाट होता है, और यूरेनियम की ओर हल्के से झुक जाता है — वही एक चित्र जिससे विखंडन और संलयन दोनों निकलते हैं। यह क्या है?",
+          mr: "असा आलेख जो हायड्रोजनपासून झपाट्याने चढतो, लोखंडाजवळ सुमारे 8.8 MeV वर सपाट होतो, आणि युरेनियमकडे हलकेच झुकतो — तेच एक चित्र ज्यातून विखंडन आणि संमीलन दोन्ही निघतात. हे काय आहे?",
+        },
+        statement: {
+          en: "The binding energy per nucleon curve peaks near A = 56 at about 8.8 MeV, so nuclei on either side become more tightly bound by moving towards the peak, releasing energy as they do.",
+          hi: "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र A = 56 के पास लगभग 8.8 MeV पर शिखर पर है, अतः दोनों ओर के नाभिक शिखर की ओर बढ़कर अधिक कसकर बँधते हैं, और ऐसा करते हुए ऊर्जा छोड़ते हैं।",
+          mr: "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र A = 56 जवळ सुमारे 8.8 MeV वर शिखरावर आहे, म्हणून दोन्ही बाजूंची केंद्रके शिखराकडे सरकून अधिक घट्ट बांधली जातात, आणि तसे करताना ऊर्जा सोडतात.",
+        },
+        detail: {
+          en: "The flatness of the middle is itself informative: it means a nucleon is bound mainly to its immediate neighbours, since a force reaching every other nucleon would make the binding rise with A instead of levelling off.",
+          hi: "बीच का सपाटपन स्वयं ज्ञानप्रद है: उसका अर्थ है कि न्यूक्लिऑन मुख्यतः अपने तात्कालिक पड़ोसियों से बँधा है, क्योंकि हर दूसरे न्यूक्लिऑन तक पहुँचता बल बंधन को समतल होने के बजाय A के साथ बढ़ाता।",
+          mr: "मधला सपाटपणा स्वतःच ज्ञानप्रद आहे: त्याचा अर्थ न्यूक्लिऑन मुख्यतः आपल्या लगतच्या शेजाऱ्यांशी बांधलेला आहे, कारण प्रत्येक दुसऱ्या न्यूक्लिऑनपर्यंत पोहोचणारे बल बंधनाला सपाट होण्याऐवजी A सोबत वाढवेल.",
+        },
+        extra: {
+          en: "Iron sits at the bottom of the energy valley, which is why it is the ash of stellar burning: a star can fuse its way up to iron and no further, and what happens next is a collapse.",
+          hi: "लोहा ऊर्जा की घाटी के तल पर बैठा है, इसीलिए वह तारकीय जलन की राख है: तारा संलयन से लोहे तक चढ़ सकता है और उससे आगे नहीं, और उसके बाद जो होता है वह ढहना है।",
+          mr: "लोखंड ऊर्जेच्या दरीच्या तळाशी बसले आहे, म्हणूनच ते ताऱ्यांच्या जळणाची राख आहे: तारा संमीलनाने लोखंडापर्यंत चढू शकतो आणि त्यापुढे नाही, आणि त्यानंतर जे घडते ते कोसळणे आहे.",
+        },
+        pair: {
+          left: {
+            en: "Both fission and fusion run downhill towards iron",
+            hi: "विखंडन और संलयन दोनों लोहे की ओर ढलान से नीचे",
+            mr: "विखंडन आणि संमीलन दोन्ही लोखंडाकडे उतारावरून खाली",
+          },
+          right: {
+            en: "the binding energy per nucleon curve",
+            hi: "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र",
+            mr: "प्रति न्यूक्लिऑन बंधन ऊर्जा वक्र",
+          },
+        },
+      },
+      {
+        id: "alpha-decay",
+        name: {
+          en: "Alpha decay",
+          hi: "अल्फ़ा क्षय",
+          mr: "अल्फा क्षय",
+        },
+        kind: "radioactive process or law",
+        prompt: {
+          en: "A heavy nucleus throws out a tightly bound bundle of two protons and two neutrons, dropping four in mass number and two in atomic number and landing two places back in the periodic table. Which decay is this?",
+          hi: "भारी नाभिक दो प्रोटॉन और दो न्यूट्रॉन का कसकर बँधा गट्ठर बाहर फेंकता है, द्रव्यमान संख्या में चार और परमाणु संख्या में दो गिरता है और आवर्त सारणी में दो जगह पीछे जा बैठता है। यह कौन-सा क्षय है?",
+          mr: "जड केंद्रक दोन प्रोटॉन आणि दोन न्यूट्रॉनचे घट्ट बांधलेले गाठोडे बाहेर फेकते, वस्तुमान संख्येत चार आणि अणुक्रमांकात दोन घसरते आणि आवर्त सारणीत दोन जागा मागे जाऊन बसते. हा कोणता क्षय?",
+        },
+        statement: {
+          en: "Alpha decay is the emission of a helium-4 nucleus, reducing the mass number by 4 and the atomic number by 2, and it occurs almost exclusively among the heaviest nuclei.",
+          hi: "अल्फ़ा क्षय हीलियम-4 नाभिक का उत्सर्जन है, जो द्रव्यमान संख्या 4 और परमाणु संख्या 2 घटाता है, और वह लगभग विशेष रूप से सबसे भारी नाभिकों में होता है।",
+          mr: "अल्फा क्षय म्हणजे हेलियम-4 केंद्रकाचे उत्सर्जन, जे वस्तुमान संख्या 4 आणि अणुक्रमांक 2 ने घटवते, आणि तो जवळपास केवळ सर्वांत जड केंद्रकांतच घडतो.",
+        },
+        detail: {
+          en: "The alpha is emitted rather than a single proton because helium-4 is exceptionally tightly bound, so the books balance in its favour and no other fragment is worth ejecting.",
+          hi: "अकेले प्रोटॉन के बजाय अल्फ़ा इसलिए निकलता है कि हीलियम-4 असाधारण रूप से कसकर बँधा है, अतः बहीखाता उसके पक्ष में बैठता है और कोई दूसरा टुकड़ा निकालने लायक़ नहीं।",
+          mr: "एकट्या प्रोटॉनऐवजी अल्फा यासाठी निघतो की हेलियम-4 विलक्षण घट्ट बांधलेले आहे, म्हणून जमाखर्च त्याच्या बाजूने जुळतो आणि दुसरा कोणताही तुकडा बाहेर काढण्याजोगा नाही.",
+        },
+        extra: {
+          en: "It is the least penetrating of the three radiations — a sheet of paper stops it — and for that very reason the most dangerous if the source is swallowed, since all its energy is deposited in a short track inside tissue.",
+          hi: "तीनों विकिरणों में यह सबसे कम भेदक है — काग़ज़ की एक शीट उसे रोक देती है — और ठीक इसी कारण स्रोत निगल लिया जाए तो सबसे ख़तरनाक, क्योंकि उसकी सारी ऊर्जा ऊतक के भीतर छोटे पथ में जमा हो जाती है।",
+          mr: "तिन्ही प्रारणांत हा सर्वांत कमी भेदक आहे — कागदाचा एक कागद त्याला थांबवतो — आणि नेमक्या याच कारणाने स्रोत गिळला गेला तर सर्वांत धोकादायक, कारण त्याची सारी ऊर्जा ऊतीच्या आत लहान मार्गात जमा होते.",
+        },
+        pair: {
+          left: {
+            en: "Stopped by paper, and worst of all if swallowed",
+            hi: "काग़ज़ से रुकता है, और निगला जाए तो सबसे बुरा",
+            mr: "कागदाने थांबतो, आणि गिळला तर सर्वांत वाईट",
+          },
+          right: {
+            en: "alpha decay",
+            hi: "अल्फ़ा क्षय",
+            mr: "अल्फा क्षय",
+          },
+        },
+      },
+      {
+        id: "beta-decay",
+        name: {
+          en: "Beta decay",
+          hi: "बीटा क्षय",
+          mr: "बीटा क्षय",
+        },
+        kind: "radioactive process or law",
+        prompt: {
+          en: "A neutron inside the nucleus turns into a proton, and an electron that was never there before is created and ejected, so the mass number does not change but the element does. Which decay is this?",
+          hi: "नाभिक के भीतर न्यूट्रॉन प्रोटॉन में बदल जाता है, और ऐसा इलेक्ट्रॉन जो पहले वहाँ था ही नहीं, बनकर बाहर फेंका जाता है, अतः द्रव्यमान संख्या नहीं बदलती पर तत्व बदल जाता है। यह कौन-सा क्षय है?",
+          mr: "केंद्रकाच्या आत न्यूट्रॉन प्रोटॉनमध्ये बदलतो, आणि असा इलेक्ट्रॉन जो आधी तिथे नव्हताच, तयार होऊन बाहेर फेकला जातो, म्हणून वस्तुमान संख्या बदलत नाही पण मूलद्रव्य बदलते. हा कोणता क्षय?",
+        },
+        statement: {
+          en: "Beta-minus decay converts a neutron into a proton with the emission of an electron and an antineutrino, leaving the mass number unchanged and raising the atomic number by one.",
+          hi: "बीटा-ऋण क्षय न्यूट्रॉन को प्रोटॉन में बदलता है और साथ ही इलेक्ट्रॉन तथा प्रतिन्यूट्रीनो उत्सर्जित करता है, जिससे द्रव्यमान संख्या अपरिवर्तित रहती है और परमाणु संख्या एक बढ़ जाती है।",
+          mr: "बीटा-ऋण क्षय न्यूट्रॉनचे प्रोटॉनमध्ये रूपांतर करतो आणि सोबत इलेक्ट्रॉन तसेच प्रतिन्यूट्रिनो उत्सर्जित करतो, ज्यामुळे वस्तुमान संख्या अपरिवर्तित राहते आणि अणुक्रमांक एकने वाढतो.",
+        },
+        detail: {
+          en: "The electron is not a nuclear constituent waiting to leave; it is created at the moment of decay, in the same way a photon is created when an atom drops a level.",
+          hi: "इलेक्ट्रॉन नाभिक का ऐसा घटक नहीं जो निकलने की प्रतीक्षा कर रहा हो; वह क्षय के क्षण बनता है, ठीक वैसे जैसे परमाणु के एक स्तर गिरने पर फ़ोटॉन बनता है।",
+          mr: "इलेक्ट्रॉन हा केंद्रकाचा असा घटक नाही जो निघण्याची वाट पाहत असेल; तो क्षयाच्या क्षणी तयार होतो, अगदी तसाच जसा अणू एक पातळी खाली येताना फोटॉन तयार होतो.",
+        },
+        extra: {
+          en: "The emitted electrons come out with a continuous range of energies rather than one fixed value, and it was that spread — apparently a violation of energy conservation — that forced the neutrino to be proposed.",
+          hi: "निकले इलेक्ट्रॉन एक नियत मान के बजाय ऊर्जाओं की सतत परास में आते हैं, और वही फैलाव — जो देखने में ऊर्जा संरक्षण का उल्लंघन था — न्यूट्रीनो को प्रस्तावित करने पर बाध्य कर गया।",
+          mr: "बाहेर पडणारे इलेक्ट्रॉन एका ठराविक मूल्याऐवजी ऊर्जांच्या सलग पल्ल्यात येतात, आणि तेच पसरणे — जे दिसायला ऊर्जा संधारणाचे उल्लंघन होते — न्यूट्रिनो सुचवायला भाग पाडून गेले.",
+        },
+        pair: {
+          left: {
+            en: "An electron created, not released",
+            hi: "इलेक्ट्रॉन बनाया गया, छोड़ा नहीं गया",
+            mr: "इलेक्ट्रॉन तयार झाला, सोडला नाही",
+          },
+          right: {
+            en: "beta decay",
+            hi: "बीटा क्षय",
+            mr: "बीटा क्षय",
+          },
+        },
+      },
+      {
+        id: "exponential-decay-law",
+        name: {
+          en: "The law of radioactive decay",
+          hi: "रेडियोऐक्टिव क्षय का नियम",
+          mr: "किरणोत्सर्गी क्षयाचा नियम",
+        },
+        kind: "radioactive process or law",
+        prompt: {
+          en: "The number decaying per second is proportional to the number still present, so equal fractions go in equal times and the same interval always halves what is left. Which law is this?",
+          hi: "प्रति सेकंड क्षय होने वाली संख्या अब भी मौजूद संख्या की समानुपाती है, अतः बराबर समयों में बराबर अंश जाते हैं और वही अंतराल सदा बचे हुए को आधा कर देता है। यह कौन-सा नियम है?",
+          mr: "दर सेकंदाला क्षय होणारी संख्या अजून उपस्थित असलेल्या संख्येशी समानुपाती आहे, म्हणून समान काळांत समान अंश जातात आणि तोच अंतराल नेहमी उरलेल्याला निम्मे करतो. हा कोणता नियम?",
+        },
+        statement: {
+          en: "The law of radioactive decay is N = N₀e^(−λt), from which the half-life T = 0.693/λ follows, so the surviving fraction after n half-lives is (1/2)ⁿ.",
+          hi: "रेडियोऐक्टिव क्षय का नियम N = N₀e^(−λt) है, जिससे अर्धायु T = 0.693/λ निकलती है, अतः n अर्धायुओं के बाद बचा अंश (1/2)ⁿ है।",
+          mr: "किरणोत्सर्गी क्षयाचा नियम N = N₀e^(−λt) आहे, ज्यातून अर्धायुष्य T = 0.693/λ निघते, म्हणून n अर्धायुष्यांनंतर उरलेला अंश (1/2)ⁿ आहे.",
+        },
+        detail: {
+          en: "The decay constant λ is the probability per second that any one nucleus goes, and it does not depend on how long that nucleus has already existed — an old nucleus is no likelier to decay than a new one.",
+          hi: "क्षय नियतांक λ किसी भी एक नाभिक के प्रति सेकंड जाने की संभावना है, और वह इस पर निर्भर नहीं कि वह नाभिक पहले से कितनी देर से मौजूद है — पुराना नाभिक नए से अधिक संभावित नहीं।",
+          mr: "क्षय स्थिरांक λ म्हणजे कोणत्याही एका केंद्रकाच्या दर सेकंदाला जाण्याची शक्यता, आणि ती ते केंद्रक आधीपासून किती वेळ अस्तित्वात आहे यावर अवलंबून नाही — जुने केंद्रक नव्याहून अधिक संभवनीय नाही.",
+        },
+        extra: {
+          en: "Nothing outside the nucleus changes it either: heating, freezing, chemical combination and enormous pressures leave the half-life alone, which is what makes radioactive dating trustworthy.",
+          hi: "नाभिक के बाहर की कोई चीज़ भी उसे नहीं बदलती: गरम करना, जमाना, रासायनिक संयोजन और विशाल दाब, सब अर्धायु को वैसा ही छोड़ देते हैं, और यही रेडियोऐक्टिव तिथि-निर्धारण को भरोसेमंद बनाता है।",
+          mr: "केंद्रकाबाहेरची कोणतीही गोष्टही ते बदलत नाही: तापवणे, गोठवणे, रासायनिक संयोग आणि प्रचंड दाब, सर्व अर्धायुष्य तसेच ठेवतात, आणि हेच किरणोत्सर्गी कालनिर्धारणाला विश्वासार्ह बनवते.",
+        },
+        pair: {
+          left: {
+            en: "A nucleus with no memory of how long it has waited",
+            hi: "ऐसा नाभिक जिसे याद ही नहीं कि वह कितनी देर से प्रतीक्षा कर रहा है",
+            mr: "असे केंद्रक ज्याला ते किती वेळ थांबले आहे याची आठवणच नाही",
+          },
+          right: {
+            en: "the law of radioactive decay",
+            hi: "रेडियोऐक्टिव क्षय का नियम",
+            mr: "किरणोत्सर्गी क्षयाचा नियम",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Splitting a uranium nucleus releases energy, and so does joining two hydrogen nuclei. A student objects that these are opposite processes and cannot both give energy out. Resolve this from one graph.",
+          hi: "यूरेनियम नाभिक को तोड़ने से ऊर्जा निकलती है, और दो हाइड्रोजन नाभिकों को जोड़ने से भी। विद्यार्थी आपत्ति करता है कि ये उलटी प्रक्रियाएँ हैं और दोनों ऊर्जा नहीं दे सकतीं। इसे एक ही ग्राफ़ से सुलझाओ।",
+          mr: "युरेनियम केंद्रक तोडल्याने ऊर्जा निघते, आणि दोन हायड्रोजन केंद्रके जोडल्यानेही. विद्यार्थी आक्षेप घेतो की या उलट प्रक्रिया आहेत आणि दोन्ही ऊर्जा देऊ शकत नाहीत. हे एकाच आलेखातून सोडवा.",
+        },
+        choices: [
+          {
+            en: "The binding energy per nucleon is not a straight line but a curve with a PEAK near iron at about 8.8 MeV. Uranium sits to the right of the peak at about 7.6 MeV, so splitting it produces fragments nearer the peak, each nucleon more tightly bound than before, and the surplus comes out. Hydrogen sits far to the left, so joining nuclei also moves towards the peak and also releases. The two processes are not opposites in the relevant sense — both run DOWNHILL in energy towards iron, from opposite sides of the same valley",
+            hi: "प्रति न्यूक्लिऑन बंधन ऊर्जा सरल रेखा नहीं बल्कि ऐसा वक्र है जिसका शिखर लोहे के पास लगभग 8.8 MeV पर है। यूरेनियम शिखर के दाईं ओर लगभग 7.6 MeV पर बैठा है, अतः उसे तोड़ने से शिखर के अधिक निकट टुकड़े बनते हैं, हर न्यूक्लिऑन पहले से अधिक कसकर बँधा, और अधिशेष बाहर आता है। हाइड्रोजन बहुत बाईं ओर बैठा है, अतः नाभिक जोड़ना भी शिखर की ओर बढ़ता है और वह भी ऊर्जा देता है। प्रासंगिक अर्थ में दोनों प्रक्रियाएँ उलटी नहीं हैं — दोनों उसी घाटी के उलटे किनारों से लोहे की ओर ऊर्जा में ढलान से नीचे जाती हैं",
+            mr: "प्रति न्यूक्लिऑन बंधन ऊर्जा सरळ रेषा नसून असा वक्र आहे ज्याचे शिखर लोखंडाजवळ सुमारे 8.8 MeV वर आहे. युरेनियम शिखराच्या उजवीकडे सुमारे 7.6 MeV वर बसले आहे, म्हणून ते तोडल्याने शिखराच्या अधिक जवळचे तुकडे बनतात, प्रत्येक न्यूक्लिऑन पूर्वीहून अधिक घट्ट बांधलेला, आणि जादा बाहेर येते. हायड्रोजन खूप डावीकडे बसले आहे, म्हणून केंद्रके जोडणेही शिखराकडे सरकते आणि तेही ऊर्जा देते. संबंधित अर्थाने दोन्ही प्रक्रिया उलट नाहीत — दोन्ही त्याच दरीच्या उलट कडांपासून लोखंडाकडे ऊर्जेत उतारावरून खाली जातात",
+          },
+          {
+            en: "Only fission truly releases energy; fusion appears to because the reacting nuclei are moving fast, and the energy released is really their kinetic energy",
+            hi: "वस्तुतः केवल विखंडन ऊर्जा देता है; संलयन देता हुआ इसलिए लगता है कि अभिक्रिया करते नाभिक तेज़ चल रहे हैं, और निकली ऊर्जा वस्तुतः उनकी गतिज ऊर्जा है",
+            mr: "प्रत्यक्षात केवळ विखंडन ऊर्जा देते; संमीलन देत असल्यासारखे यामुळे वाटते की अभिक्रिया करणारी केंद्रके वेगाने जात आहेत, आणि निघालेली ऊर्जा प्रत्यक्षात त्यांची गतिज ऊर्जा आहे",
+          },
+          {
+            en: "Both release energy because mass is always destroyed in a nuclear reaction, whichever direction the reaction runs",
+            hi: "दोनों ऊर्जा देते हैं क्योंकि नाभिकीय अभिक्रिया में द्रव्यमान सदा नष्ट होता है, अभिक्रिया चाहे किसी भी दिशा में चले",
+            mr: "दोन्ही ऊर्जा देतात कारण केंद्रकीय अभिक्रियेत वस्तुमान नेहमी नष्ट होते, अभिक्रिया कोणत्याही दिशेने चालो",
+          },
+          {
+            en: "The student is right and one of the two must be mistaken; in fact fusion consumes energy, which is why no fusion reactor has ever produced net power",
+            hi: "विद्यार्थी सही है और दोनों में से एक ग़लत होगा; वस्तुतः संलयन ऊर्जा खपाता है, इसीलिए किसी संलयन रिएक्टर ने कभी नेट शक्ति नहीं दी",
+            mr: "विद्यार्थी बरोबर आहे आणि दोहोंपैकी एक चूक असले पाहिजे; प्रत्यक्षात संमीलन ऊर्जा खर्चते, म्हणूनच कोणत्याही संमीलन अणुभट्टीने कधीच निव्वळ शक्ती दिलेली नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The objection assumes that 'splitting' and 'joining' are opposite moves on the same scale, so that if one is downhill the other must be uphill. That would be true if binding energy per nucleon rose or fell monotonically with mass number. It does not. It rises steeply from hydrogen, reaches a maximum of about 8.8 MeV per nucleon around iron and nickel (A ≈ 56), and then declines slowly to about 7.6 MeV at uranium. The relevant picture is a VALLEY — or, drawn the usual way with binding energy plotted upward, a hill with iron at the top and both light and heavy nuclei on the slopes below. Read fission off the curve. Uranium-235 has A = 235 and about 7.6 MeV per nucleon. Split it into two fragments near A ≈ 118, where the curve reads about 8.5 MeV per nucleon. Every one of the 235 nucleons is now bound roughly 0.9 MeV more tightly than before, so the total energy released is about 235 × 0.9 ≈ 200 MeV. That single number is the whole of nuclear power: it is some fifty million times the few electron-volts a chemical reaction gives per atom, which is why a fuel rod lasts years where coal lasts hours. Now read fusion. Four hydrogen nuclei have about 1 MeV per nucleon between them; helium-4 has 7.1 MeV per nucleon. Fusing them gains about 6 MeV per nucleon — even more per nucleon than fission, though less per event because only four nucleons are involved rather than 235. This is what powers the Sun, and it is why fusion is worth pursuing despite being harder to arrange. So both processes move nuclei TOWARDS iron, and both therefore release. Nothing goes uphill in either case, and the student's intuition fails only because it assumed a monotonic curve. Three consequences follow from the same graph and are worth carrying. First, the peak explains why iron is the ash of stellar burning: a star fuses lighter elements in sequence and gains energy each time, until it reaches iron and there is nothing further to gain — the core stops producing energy, pressure fails, and the star collapses. Second, elements heavier than iron cannot be made by ordinary fusion at all, and are built instead in the violence of a supernova or a neutron-star merger, which is a real answer to where the gold in a ring came from. Third, the flatness of the curve's middle section — binding energy per nucleon nearly constant from A ≈ 30 to A ≈ 170 — tells you that the nuclear force is SHORT-RANGED: if each nucleon attracted every other, the binding per nucleon would keep rising with A instead of levelling off. A graph read carefully has answered a question about the reach of a force. (The second option invents a source for fusion energy that would not scale with the reactants' identity; the third asserts that mass is always destroyed, which would make every reaction exothermic including ones that are not; the fourth confuses the engineering difficulty of confinement with the sign of the energy balance.)",
+          hi: "आपत्ति यह मान लेती है कि 'तोड़ना' और 'जोड़ना' एक ही पैमाने पर उलटी चालें हैं, अतः यदि एक ढलान से नीचे है तो दूसरी चढ़ाई पर होनी चाहिए। यह तब सच होता जब प्रति न्यूक्लिऑन बंधन ऊर्जा द्रव्यमान संख्या के साथ एकदिश चढ़ती या गिरती। वह नहीं चलती। वह हाइड्रोजन से तेज़ी से चढ़ती है, लोहे और निकल के आसपास (A ≈ 56) लगभग 8.8 MeV प्रति न्यूक्लिऑन का अधिकतम छूती है, और फिर यूरेनियम पर धीरे-धीरे लगभग 7.6 MeV तक गिरती है। प्रासंगिक चित्र एक घाटी है — या सामान्य ढंग से बंधन ऊर्जा ऊपर की ओर खींची जाए तो ऐसी पहाड़ी जिसकी चोटी पर लोहा है और ढलानों पर हल्के तथा भारी दोनों नाभिक। वक्र से विखंडन पढ़ो। यूरेनियम-235 का A = 235 है और लगभग 7.6 MeV प्रति न्यूक्लिऑन। उसे A ≈ 118 के पास दो टुकड़ों में तोड़ो, जहाँ वक्र लगभग 8.5 MeV प्रति न्यूक्लिऑन पढ़ता है। अब 235 में से हर न्यूक्लिऑन पहले से मोटे तौर पर 0.9 MeV अधिक कसकर बँधा है, अतः कुल निकली ऊर्जा लगभग 235 × 0.9 ≈ 200 MeV है। वही एक संख्या पूरी नाभिकीय शक्ति है: वह उन कुछ इलेक्ट्रॉन-वोल्ट से लगभग पाँच करोड़ गुना है जो रासायनिक अभिक्रिया प्रति परमाणु देती है, इसीलिए ईंधन छड़ वर्षों चलती है जहाँ कोयला घंटों। अब संलयन पढ़ो। चार हाइड्रोजन नाभिकों के पास आपस में लगभग 1 MeV प्रति न्यूक्लिऑन है; हीलियम-4 के पास 7.1 MeV प्रति न्यूक्लिऑन। उन्हें जोड़ने पर प्रति न्यूक्लिऑन लगभग 6 MeV मिलते हैं — विखंडन से भी अधिक प्रति न्यूक्लिऑन, यद्यपि प्रति घटना कम क्योंकि 235 के बजाय केवल चार न्यूक्लिऑन शामिल हैं। यही सूर्य को चलाता है, और इसीलिए संलयन जुटाना कठिन होते हुए भी पीछा करने योग्य है। अतः दोनों प्रक्रियाएँ नाभिकों को लोहे की ओर ले जाती हैं, और इसलिए दोनों ऊर्जा देती हैं। किसी भी स्थिति में कुछ भी चढ़ाई पर नहीं जाता, और विद्यार्थी का अंतर्ज्ञान केवल इसलिए विफल हुआ कि उसने एकदिश वक्र मान लिया। उसी ग्राफ़ से तीन परिणाम निकलते हैं और साथ ले जाने योग्य हैं। पहला, शिखर समझाता है कि लोहा तारकीय जलन की राख क्यों है: तारा क्रम से हल्के तत्व जोड़ता है और हर बार ऊर्जा पाता है, जब तक लोहे तक न पहुँच जाए और आगे पाने को कुछ न बचे — क्रोड ऊर्जा देना बंद कर देती है, दाब टूट जाता है, और तारा ढह जाता है। दूसरा, लोहे से भारी तत्व साधारण संलयन से बन ही नहीं सकते, और वे अधिनवतारे या न्यूट्रॉन-तारों के विलय की हिंसा में बनते हैं, जो इस प्रश्न का असली उत्तर है कि अंगूठी का सोना कहाँ से आया। तीसरा, वक्र के बीच के भाग का सपाटपन — A ≈ 30 से A ≈ 170 तक प्रति न्यूक्लिऑन बंधन ऊर्जा लगभग अचर — बताता है कि नाभिकीय बल कम दूरी का है: यदि हर न्यूक्लिऑन हर दूसरे को खींचता, तो प्रति न्यूक्लिऑन बंधन समतल होने के बजाय A के साथ बढ़ता रहता। ध्यान से पढ़े गए ग्राफ़ ने किसी बल की पहुँच के बारे में प्रश्न का उत्तर दे दिया है। (दूसरा विकल्प संलयन ऊर्जा का ऐसा स्रोत गढ़ता है जो अभिकारकों की पहचान के साथ नहीं चलता; तीसरा दावा करता है कि द्रव्यमान सदा नष्ट होता है, जो हर अभिक्रिया को ऊष्माक्षेपी बना देता, उन्हें भी जो नहीं हैं; चौथा परिरोधन की अभियांत्रिकी कठिनाई को ऊर्जा-संतुलन के चिह्न से गड्डमड्ड कर देता है।)",
+          mr: "आक्षेप असे गृहीत धरतो की 'तोडणे' आणि 'जोडणे' या एकाच मापावरील उलट चाली आहेत, म्हणून एक उतारावर असेल तर दुसरी चढावर असली पाहिजे. हे तेव्हा खरे ठरले असते जेव्हा प्रति न्यूक्लिऑन बंधन ऊर्जा वस्तुमान संख्येसोबत एकदिश चढली वा घसरली असती. ती तशी चालत नाही. ती हायड्रोजनपासून झपाट्याने चढते, लोखंड आणि निकेलच्या आसपास (A ≈ 56) सुमारे 8.8 MeV प्रति न्यूक्लिऑनची कमाल गाठते, आणि मग युरेनियमवर हळूहळू सुमारे 7.6 MeV पर्यंत घसरते. संबंधित चित्र म्हणजे एक दरी — वा नेहमीच्या पद्धतीने बंधन ऊर्जा वर काढल्यास अशी टेकडी जिच्या शिखरावर लोखंड आहे आणि उतारांवर हलकी तसेच जड दोन्ही केंद्रके. वक्रावरून विखंडन वाचा. युरेनियम-235 चा A = 235 आहे आणि सुमारे 7.6 MeV प्रति न्यूक्लिऑन. ते A ≈ 118 जवळ दोन तुकड्यांत तोडा, जिथे वक्र सुमारे 8.5 MeV प्रति न्यूक्लिऑन वाचतो. आता 235 पैकी प्रत्येक न्यूक्लिऑन पूर्वीहून ढोबळमानाने 0.9 MeV अधिक घट्ट बांधलेला आहे, म्हणून एकूण निघालेली ऊर्जा सुमारे 235 × 0.9 ≈ 200 MeV आहे. तीच एक संख्या म्हणजे अख्खी केंद्रकीय शक्ती: ती रासायनिक अभिक्रिया प्रति अणू देत असलेल्या काही इलेक्ट्रॉन-व्होल्टच्या सुमारे पाच कोटी पट आहे, म्हणूनच इंधन कांडी वर्षे चालते जिथे कोळसा तास. आता संमीलन वाचा. चार हायड्रोजन केंद्रकांकडे आपापसात सुमारे 1 MeV प्रति न्यूक्लिऑन आहे; हेलियम-4 कडे 7.1 MeV प्रति न्यूक्लिऑन. ती जोडल्यास प्रति न्यूक्लिऑन सुमारे 6 MeV मिळतात — विखंडनाहूनही अधिक प्रति न्यूक्लिऑन, जरी प्रति घटना कमी कारण 235 ऐवजी केवळ चार न्यूक्लिऑन सामील आहेत. हेच सूर्याला चालवते, आणि म्हणूनच संमीलन जुळवणे कठीण असूनही पाठपुरावा करण्याजोगे आहे. म्हणून दोन्ही प्रक्रिया केंद्रकांना लोखंडाकडे नेतात, आणि म्हणून दोन्ही ऊर्जा देतात. कोणत्याही स्थितीत काहीही चढावर जात नाही, आणि विद्यार्थ्याची अंतःप्रेरणा केवळ यामुळे अपयशी ठरली की तिने एकदिश वक्र गृहीत धरला. त्याच आलेखातून तीन परिणाम निघतात आणि सोबत न्यायचे आहेत. पहिला, शिखर समजावते की लोखंड ताऱ्यांच्या जळणाची राख का आहे: तारा क्रमाने हलकी मूलद्रव्ये जोडतो आणि प्रत्येक वेळी ऊर्जा मिळवतो, जोवर लोखंडापर्यंत पोहोचत नाही आणि पुढे मिळवायला काही उरत नाही — गाभा ऊर्जा देणे थांबवतो, दाब कोसळतो, आणि तारा कोसळतो. दुसरा, लोखंडाहून जड मूलद्रव्ये साध्या संमीलनाने बनूच शकत नाहीत, आणि ती महानवताऱ्याच्या वा न्यूट्रॉन-ताऱ्यांच्या विलयाच्या हिंसेत बनतात, जे अंगठीतले सोने कुठून आले या प्रश्नाचे खरे उत्तर आहे. तिसरा, वक्राच्या मधल्या भागाचा सपाटपणा — A ≈ 30 पासून A ≈ 170 पर्यंत प्रति न्यूक्लिऑन बंधन ऊर्जा जवळपास अचल — सांगतो की केंद्रकीय बल कमी पल्ल्याचे आहे: जर प्रत्येक न्यूक्लिऑन प्रत्येक दुसऱ्याला ओढत असता, तर प्रति न्यूक्लिऑन बंधन सपाट होण्याऐवजी A सोबत वाढत राहिले असते. काळजीपूर्वक वाचलेल्या आलेखाने एखाद्या बलाच्या पल्ल्याबद्दलच्या प्रश्नाचे उत्तर दिले आहे. (दुसरा पर्याय संमीलन ऊर्जेचा असा स्रोत घडवतो जो अभिक्रियकांच्या ओळखीसोबत चालत नाही; तिसरा दावा करतो की वस्तुमान नेहमी नष्ट होते, जे प्रत्येक अभिक्रियेला उष्माक्षेपी बनवेल, त्यांनाही ज्या नाहीत; चौथा परिरोधनाची अभियांत्रिकी अडचण आणि ऊर्जा-संतुलनाचे चिन्ह यांची गल्लत करतो.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A student reasons that a sample with a half-life of 10 years is completely gone after 20 years, since two half-lives use up the whole of it. A second student says a nucleus that has already survived 100 years must be 'due' to decay soon. Assess both.",
+          hi: "एक विद्यार्थी तर्क देता है कि 10 वर्ष अर्धायु वाला नमूना 20 वर्ष बाद पूरी तरह ख़त्म हो जाता है, क्योंकि दो अर्धायुएँ उसका पूरा हिस्सा खपा देती हैं। दूसरा विद्यार्थी कहता है कि जो नाभिक 100 वर्ष पहले ही बच चुका है उसका जल्द क्षय होना 'बनता' है। दोनों का आकलन करो।",
+          mr: "एक विद्यार्थी युक्तिवाद करतो की 10 वर्षे अर्धायुष्य असलेला नमुना 20 वर्षांनंतर पूर्णपणे संपतो, कारण दोन अर्धायुष्ये त्याचा अख्खा भाग खर्चतात. दुसरा विद्यार्थी म्हणतो की जे केंद्रक 100 वर्षे आधीच टिकले आहे त्याचा लवकर क्षय होणे 'बाकी' आहे. दोघांचे मूल्यमापन करा.",
+        },
+        choices: [
+          {
+            en: "Both are wrong, and for related reasons. Half-lives do not add up to a whole: each one halves what is LEFT, so after two of them a quarter survives, after three an eighth, and the amount approaches zero without ever reaching it. And decay is memoryless — λ is the probability per second for any surviving nucleus, independent of its age — so a nucleus that has lasted a century is exactly as likely to decay in the next second as one made a moment ago. The second student is applying to nuclei an intuition drawn from wearing out, and nuclei do not wear out",
+            hi: "दोनों ग़लत हैं, और जुड़े हुए कारणों से। अर्धायुएँ जुड़कर पूरा नहीं बनतीं: हर एक जो बचा है उसे आधा करती है, अतः दो के बाद चौथाई बचता है, तीन के बाद आठवाँ भाग, और मात्रा शून्य के पास जाती है पर उस तक कभी नहीं पहुँचती। और क्षय स्मृतिहीन है — λ किसी भी बचे नाभिक के लिए प्रति सेकंड संभावना है, उसकी आयु से स्वतंत्र — अतः जो नाभिक सदी भर टिका है उसका अगले सेकंड में क्षय होना ठीक उतना ही संभव है जितना अभी-अभी बने का। दूसरा विद्यार्थी नाभिकों पर घिस जाने से लिया अंतर्ज्ञान लगा रहा है, और नाभिक घिसते नहीं",
+            mr: "दोघेही चूक आहेत, आणि जोडलेल्या कारणांनी. अर्धायुष्ये जुळून पूर्ण होत नाहीत: प्रत्येक जे उरले आहे ते निम्मे करते, म्हणून दोहोंनंतर चतुर्थांश उरतो, तिघांनंतर आठवा भाग, आणि प्रमाण शून्याजवळ जाते पण त्यापर्यंत कधीच पोहोचत नाही. आणि क्षय स्मृतिविरहित आहे — λ ही कोणत्याही टिकलेल्या केंद्रकासाठीची दर सेकंदाची शक्यता आहे, त्याच्या वयापासून स्वतंत्र — म्हणून जे केंद्रक शतकभर टिकले आहे त्याचा पुढच्या सेकंदात क्षय होणे नेमके तितकेच संभवनीय आहे जितके आत्ताच बनलेल्याचे. दुसरा विद्यार्थी केंद्रकांवर झिजण्यातून घेतलेली अंतःप्रेरणा लावत आहे, आणि केंद्रके झिजत नाहीत",
+          },
+          {
+            en: "The first student is right and the second wrong: two half-lives do exhaust the sample, but decay is indeed independent of age",
+            hi: "पहला विद्यार्थी सही है और दूसरा ग़लत: दो अर्धायुएँ नमूना सचमुच ख़त्म कर देती हैं, पर क्षय आयु से सचमुच स्वतंत्र है",
+            mr: "पहिला विद्यार्थी बरोबर आहे आणि दुसरा चूक: दोन अर्धायुष्ये नमुना खरोखर संपवतात, पण क्षय वयापासून खरोखर स्वतंत्र आहे",
+          },
+          {
+            en: "The second student is right: the longer a nucleus survives the more likely it is to decay, which is why old samples are more radioactive than fresh ones",
+            hi: "दूसरा विद्यार्थी सही है: नाभिक जितना अधिक टिकता है उसका क्षय उतना ही अधिक संभव है, इसीलिए पुराने नमूने ताज़ा नमूनों से अधिक रेडियोऐक्टिव होते हैं",
+            mr: "दुसरा विद्यार्थी बरोबर आहे: केंद्रक जितके अधिक टिकते तितका त्याचा क्षय अधिक संभवनीय, म्हणूनच जुने नमुने ताज्या नमुन्यांहून अधिक किरणोत्सर्गी असतात",
+          },
+          {
+            en: "Both are right in practice, since after two half-lives the remaining activity is too small to measure and the surviving nuclei are known to be unstable",
+            hi: "व्यवहार में दोनों सही हैं, क्योंकि दो अर्धायुओं के बाद बची सक्रियता नापने के लिए बहुत छोटी है और बचे नाभिक अस्थिर माने ही जाते हैं",
+            mr: "व्यवहारात दोघेही बरोबर आहेत, कारण दोन अर्धायुष्यांनंतर उरलेली क्रियाशीलता मोजण्याइतकी लहान आहे आणि टिकलेली केंद्रके अस्थिर मानलीच जातात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Two different misreadings of the same law, and both are worth taking apart because they recur outside physics. THE FIRST ERROR: TREATING HALF-LIVES AS ADDITIVE. The name invites it — if one half-life uses up half, surely two use up all of it. But read the definition again: a half-life is the time in which half of WHAT IS PRESENT decays. Start with 1000 nuclei. After one half-life, 500 remain. The next half-life acts on those 500 and leaves 250, not zero. After three, 125; after ten, about one; and the number never reaches zero exactly, because each step removes a fraction rather than an amount. The survival is N = N₀(1/2)ⁿ after n half-lives, which is exponential decay, and an exponential approaches zero asymptotically. The practical form of this matters in waste management: a substance with a thirty-year half-life still has a thousandth of its original activity after three centuries, which is small but not nothing, and 'ten half-lives' is the usual rule of thumb for when a source can be treated as spent. THE SECOND ERROR: EXPECTING NUCLEI TO AGE. This one is subtler and the intuition behind it is normally reliable. Ordinary things wear out: a light bulb that has burned for a thousand hours is likelier to fail tonight than a new one, because filaments thin and fatigue accumulates. So it feels natural that a nucleus which has 'used up' most of a half-life should be nearing its end. But the decay law contains no such term. The probability of decay in the next second is λ, a constant, and the equation dN/dt = −λN has no dependence on how long any particular nucleus has existed. This is what 'memoryless' means, and it is a genuine physical claim rather than a mathematical convenience: nothing inside the nucleus changes with time, so there is no internal clock counting down. A carbon-14 nucleus made this morning and one made five thousand years ago are, at this instant, physically identical and equally likely to go. What the half-life describes is the behaviour of a POPULATION, not the biography of a member. Out of a large sample, a definite fraction goes in each interval — but which nuclei go is not determined by anything about them, and the sample thins without any individual ageing. The distinction between a statement about a population and a statement about an individual is exactly the one the second student has lost, and it is worth naming because it is the same error as reading a life-expectancy table as a personal countdown. There is a strong experimental point here too, which makes the law more than a model. If nuclei aged, the half-life would depend on the sample's history — a source stored for decades would decay faster than a freshly made one — and it does not. Nor is the half-life changed by heating a source to thousands of degrees, cooling it towards absolute zero, subjecting it to enormous pressure, or binding the atom into different chemical compounds. That insensitivity is precisely what makes radiometric dating possible: the clock cannot be reset by anything that happens to the rock. (The second option keeps the additive error; the third reverses the memorylessness into an ageing effect that measurement excludes; the fourth substitutes a detection limit for a physical claim, which would make the answer depend on the instrument.)",
+          hi: "एक ही नियम के दो भिन्न ग़लत पाठ, और दोनों को खोलना चाहिए क्योंकि वे भौतिकी के बाहर भी लौट-लौटकर आते हैं। पहली भूल: अर्धायुओं को योज्य मान लेना। नाम ही लुभाता है — यदि एक अर्धायु आधा खपाती है, तो दो निश्चय ही पूरा खपाएँगी। पर परिभाषा फिर पढ़ो: अर्धायु वह समय है जिसमें जो मौजूद है उसका आधा क्षय होता है। 1000 नाभिकों से शुरू करो। एक अर्धायु बाद 500 बचते हैं। अगली अर्धायु उन्हीं 500 पर लगती है और 250 छोड़ती है, शून्य नहीं। तीन के बाद 125; दस के बाद लगभग एक; और संख्या ठीक शून्य तक कभी नहीं पहुँचती, क्योंकि हर क़दम मात्रा के बजाय एक अंश हटाता है। n अर्धायुओं के बाद बचाव N = N₀(1/2)ⁿ है, जो चरघातांकी क्षय है, और चरघातांक शून्य के पास स्पर्शरेखीय रूप से जाता है। इसका व्यावहारिक रूप कचरा-प्रबंधन में मायने रखता है: तीस वर्ष अर्धायु वाले पदार्थ की तीन सदियों बाद भी अपनी मूल सक्रियता का हज़ारवाँ भाग बचा रहता है, जो छोटा है पर शून्य नहीं, और 'दस अर्धायु' वह सामान्य अटकल-नियम है जिसके बाद स्रोत को चुका हुआ माना जा सकता है। दूसरी भूल: नाभिकों से बूढ़े होने की अपेक्षा। यह अधिक सूक्ष्म है और उसके पीछे का अंतर्ज्ञान प्रायः भरोसेमंद होता है। साधारण चीज़ें घिसती हैं: हज़ार घंटे जल चुका बल्ब नए की तुलना में आज रात फुँकने के अधिक क़रीब है, क्योंकि तंतु पतले होते हैं और थकान जमा होती है। अतः यह स्वाभाविक लगता है कि जिस नाभिक ने अपनी अर्धायु का अधिकांश 'ख़र्च' कर दिया वह अंत के निकट होगा। पर क्षय नियम में ऐसा कोई पद है ही नहीं। अगले सेकंड में क्षय की संभावना λ है, एक अचर, और समीकरण dN/dt = −λN में इस बात की कोई निर्भरता नहीं कि कोई विशेष नाभिक कितनी देर से मौजूद है। 'स्मृतिहीन' का यही अर्थ है, और यह गणितीय सुविधा नहीं बल्कि असली भौतिक दावा है: नाभिक के भीतर समय के साथ कुछ नहीं बदलता, अतः उलटी गिनती करती कोई आंतरिक घड़ी है ही नहीं। आज सुबह बना कार्बन-14 नाभिक और पाँच हज़ार वर्ष पहले बना नाभिक, इस क्षण, भौतिक रूप से समरूप हैं और बराबर संभावित। अर्धायु जो वर्णित करती है वह आबादी का आचरण है, किसी सदस्य की जीवनी नहीं। बड़े नमूने में से हर अंतराल में एक निश्चित अंश जाता है — पर कौन-से नाभिक जाएँगे यह उनके बारे में किसी बात से तय नहीं होता, और नमूना बिना किसी व्यक्ति के बूढ़े हुए पतला होता जाता है। आबादी के बारे में कथन और व्यक्ति के बारे में कथन का भेद ठीक वही है जो दूसरा विद्यार्थी खो बैठा है, और उसे नाम देना चाहिए क्योंकि वह वही भूल है जो जीवन-प्रत्याशा की तालिका को व्यक्तिगत उलटी गिनती पढ़ने में होती है। यहाँ एक प्रबल प्रायोगिक बात भी है, जो नियम को मॉडल से अधिक बनाती है। यदि नाभिक बूढ़े होते, तो अर्धायु नमूने के इतिहास पर निर्भर करती — दशकों से रखा स्रोत ताज़ा बने से तेज़ी से क्षय होता — और वह नहीं करती। न ही अर्धायु स्रोत को हज़ारों अंश तक गर्म करने, परम शून्य की ओर ठंडा करने, विशाल दाब में रखने, या परमाणु को भिन्न रासायनिक यौगिकों में बाँधने से बदलती है। वही असंवेदनशीलता रेडियोमितीय तिथि-निर्धारण को संभव बनाती है: चट्टान के साथ जो कुछ भी हो, घड़ी फिर से शून्य नहीं की जा सकती। (दूसरा विकल्प योज्य वाली भूल बनाए रखता है; तीसरा स्मृतिहीनता को उलटकर ऐसा बुढ़ापा बना देता है जिसे माप ख़ारिज करता है; चौथा भौतिक दावे की जगह संसूचन सीमा रख देता है, जिससे उत्तर यंत्र पर निर्भर हो जाता।)",
+          mr: "एकाच नियमाची दोन वेगळी चुकीची वाचने, आणि दोन्ही उलगडण्याजोगी आहेत कारण ती भौतिकीबाहेरही पुन्हा पुन्हा येतात. पहिली चूक: अर्धायुष्ये योगात्मक मानणे. नावच मोह घालते — जर एक अर्धायुष्य निम्मे खर्चते, तर दोन नक्कीच अख्खे खर्चतील. पण व्याख्या पुन्हा वाचा: अर्धायुष्य म्हणजे तो काळ ज्यात जे उपस्थित आहे त्याचा निम्मा क्षय होतो. 1000 केंद्रकांनी सुरुवात करा. एका अर्धायुष्यानंतर 500 उरतात. पुढचे अर्धायुष्य त्याच 500 वर लागते आणि 250 सोडते, शून्य नाही. तिघांनंतर 125; दहांनंतर सुमारे एक; आणि संख्या नेमक्या शून्यापर्यंत कधीच पोहोचत नाही, कारण प्रत्येक पाऊल प्रमाणाऐवजी एक अंश काढते. n अर्धायुष्यांनंतर टिकाव N = N₀(1/2)ⁿ आहे, जो घातांकी क्षय आहे, आणि घातांक शून्याजवळ स्पर्शरेषीयपणे जातो. याचे व्यावहारिक रूप कचरा-व्यवस्थापनात महत्त्वाचे आहे: तीस वर्षे अर्धायुष्य असलेल्या पदार्थाकडे तीन शतकांनंतरही आपल्या मूळ क्रियाशीलतेचा हजारावा भाग उरलेला असतो, जो लहान आहे पण शून्य नाही, आणि 'दहा अर्धायुष्ये' हा तो सामान्य ढोबळ नियम ज्यानंतर स्रोत संपलेला मानता येतो. दुसरी चूक: केंद्रकांकडून वयस्क होण्याची अपेक्षा. ही अधिक सूक्ष्म आहे आणि तिच्यामागची अंतःप्रेरणा सहसा विश्वासार्ह असते. साधारण गोष्टी झिजतात: हजार तास जळलेला बल्ब नव्याहून आज रात्री फुटण्याच्या अधिक जवळ आहे, कारण तंतू पातळ होतात आणि थकवा साठतो. म्हणून हे स्वाभाविक वाटते की ज्या केंद्रकाने आपल्या अर्धायुष्याचा बहुतांश 'खर्च' केला ते शेवटाजवळ असेल. पण क्षय नियमात असे कोणतेही पद आहेच नाही. पुढच्या सेकंदात क्षयाची शक्यता λ आहे, एक अचल, आणि समीकरण dN/dt = −λN मध्ये कोणतेही विशिष्ट केंद्रक किती वेळ अस्तित्वात आहे याचे कोणतेही अवलंबित्व नाही. 'स्मृतिविरहित' चा हाच अर्थ, आणि हा गणिती सोय नसून खरा भौतिक दावा आहे: केंद्रकाच्या आत काळासोबत काहीही बदलत नाही, म्हणून उलटी गणती करणारे कोणतेही अंतर्गत घड्याळ नाहीच. आज सकाळी बनलेले कार्बन-14 केंद्रक आणि पाच हजार वर्षांपूर्वी बनलेले, या क्षणी, भौतिकदृष्ट्या सारखी आहेत आणि समान संभवनीय. अर्धायुष्य जे वर्णन करते ते समुदायाचे वर्तन आहे, कोणत्याही सदस्याचे चरित्र नाही. मोठ्या नमुन्यातून प्रत्येक अंतरालात ठराविक अंश जातो — पण कोणती केंद्रके जातील हे त्यांच्याबद्दलच्या कशानेही ठरत नाही, आणि नमुना कोणत्याही व्यक्तीच्या वयस्क होण्याविना पातळ होत जातो. समुदायाबद्दलचे विधान आणि व्यक्तीबद्दलचे विधान यांतला भेद नेमका तोच जो दुसऱ्या विद्यार्थ्याने गमावला आहे, आणि त्याला नाव द्यायला हवे कारण तीच चूक आयुर्मान-कोष्टकाला वैयक्तिक उलटी गणती वाचण्यात होते. इथे एक भक्कम प्रायोगिक मुद्दाही आहे, जो नियमाला प्रारूपाहून अधिक बनवतो. जर केंद्रके वयस्क झाली असती, तर अर्धायुष्य नमुन्याच्या इतिहासावर अवलंबून राहिले असते — दशके साठवलेला स्रोत ताज्या बनवलेल्याहून वेगाने क्षय पावला असता — आणि ते तसे होत नाही. तसेच अर्धायुष्य स्रोताला हजारो अंशांपर्यंत तापवून, निरपेक्ष शून्याकडे थंड करून, प्रचंड दाबात ठेवून, वा अणूला वेगवेगळ्या रासायनिक संयुगांत बांधून बदलत नाही. तीच असंवेदनशीलता किरणोत्सर्गी कालनिर्धारण शक्य करते: खडकाबाबत काहीही घडो, घड्याळ पुन्हा शून्यावर नेता येत नाही. (दुसरा पर्याय योगात्मकतेची चूक टिकवतो; तिसरा स्मृतिविरहितता उलटवून असे वयस्क होणे बनवतो जे मापन वगळते; चौथा भौतिक दाव्याच्या जागी संवेदन मर्यादा ठेवतो, ज्याने उत्तर उपकरणावर अवलंबून राहिले असते.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 14 — Semiconductor Electronics                                  */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "physics-12-semiconductor-electronics",
+    subject: "PHYSICS",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 14 — Semiconductor Electronics",
+      hi: "अध्याय 14 — अर्धचालक इलेक्ट्रॉनिकी",
+      mr: "प्रकरण 14 — अर्धवाहक इलेक्ट्रॉनिकी",
+    },
+    name: {
+      en: "Semiconductor Electronics",
+      hi: "अर्धचालक इलेक्ट्रॉनिकी",
+      mr: "अर्धवाहक इलेक्ट्रॉनिकी",
+    },
+    summary: {
+      en: "A crystal that conducts badly at room temperature and better as it warms, which is the opposite of what a metal does and gives away that its carriers have to be created rather than merely hurried along; an absence in a bond that moves as a positive particle would and is counted as one; one foreign atom in a million changing the conductivity by a factor of a million, without the crystal acquiring any net charge at all; a boundary between two such doped regions across which electrons and holes leave a swept-clean layer and a built-in barrier behind them; and the fact that the barrier is easy to push against from one side and impossible from the other, which is the whole of rectification and the beginning of every circuit that follows.",
+      hi: "ऐसा क्रिस्टल जो कमरे के ताप पर बुरा चालक है और गर्म होने पर बेहतर, जो धातु के ठीक उलटा है और बता देता है कि उसके वाहकों को केवल दौड़ाना नहीं, बनाना पड़ता है; बंध में ऐसी अनुपस्थिति जो धन कण की तरह चलती है और वैसी ही गिनी जाती है; दस लाख में एक बाहरी परमाणु जो चालकता को दस लाख गुना बदल देता है, और क्रिस्टल पर कोई नेट आवेश आता ही नहीं; ऐसे दो डोपित भागों के बीच की सीमा जिसके आर-पार इलेक्ट्रॉन और होल एक साफ़ बुहारी हुई परत तथा अंतर्निर्मित रोध पीछे छोड़ जाते हैं; और यह तथ्य कि उस रोध को एक ओर से धकेलना आसान और दूसरी ओर से असंभव है, और यही पूरा दिष्टकरण है तथा उसके बाद के हर परिपथ की शुरुआत।",
+      mr: "असा स्फटिक जो खोलीच्या तापमानावर वाईट वाहक आहे आणि तापताना अधिक चांगला, जो धातूच्या नेमका उलट आहे आणि सांगून टाकतो की त्याचे वाहक केवळ पळवावे लागत नाहीत, बनवावे लागतात; बंधातील अशी अनुपस्थिती जी धन कणासारखी हलते आणि तशीच मोजली जाते; दहा लाखांत एक परका अणू जो वाहकता दहा लाख पटींनी बदलतो, आणि स्फटिकावर कोणताही निव्वळ प्रभार येतच नाही; अशा दोन डोपित भागांमधली सीमा जिच्या आरपार इलेक्ट्रॉन आणि होल एक स्वच्छ झाडलेला थर तसेच अंतर्निर्मित अडसर मागे सोडून जातात; आणि हे सत्य की त्या अडसराला एका बाजूने ढकलणे सोपे आणि दुसऱ्या बाजूने अशक्य आहे, आणि हेच अख्खे दिष्टीकरण आणि त्यानंतरच्या प्रत्येक परिपथाची सुरुवात.",
+    },
+    position: 14,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "intrinsic-semiconductor",
+        name: {
+          en: "The intrinsic semiconductor",
+          hi: "नैज अर्धचालक",
+          mr: "नैसर्गिक अर्धवाहक",
+        },
+        kind: "class of material",
+        prompt: {
+          en: "A pure crystal in which every electron shaken loose by heat leaves behind an equally mobile vacancy, so the two kinds of carrier are always present in exactly equal numbers. Which material is this?",
+          hi: "ऐसा शुद्ध क्रिस्टल जिसमें ऊष्मा से छूटा हर इलेक्ट्रॉन अपने पीछे उतनी ही गतिशील रिक्ति छोड़ जाता है, अतः दोनों तरह के वाहक सदा ठीक बराबर संख्या में मौजूद रहते हैं। यह कौन-सा पदार्थ है?",
+          mr: "असा शुद्ध स्फटिक ज्यात उष्णतेने सुटलेला प्रत्येक इलेक्ट्रॉन आपल्यामागे तितकीच गतिशील रिक्तता सोडतो, म्हणून दोन्ही प्रकारचे वाहक नेहमी नेमक्या समान संख्येत उपस्थित असतात. हा कोणता पदार्थ?",
+        },
+        statement: {
+          en: "An intrinsic semiconductor is a pure crystal in which n_e = n_h = n_i, its carriers arising only from thermally broken bonds, so its conductivity rises steeply with temperature.",
+          hi: "नैज अर्धचालक वह शुद्ध क्रिस्टल है जिसमें n_e = n_h = n_i, और जिसके वाहक केवल ऊष्मा से टूटे बंधों से आते हैं, अतः उसकी चालकता ताप के साथ तेज़ी से बढ़ती है।",
+          mr: "नैसर्गिक अर्धवाहक म्हणजे तो शुद्ध स्फटिक ज्यात n_e = n_h = n_i, आणि ज्याचे वाहक केवळ उष्णतेने तुटलेल्या बंधांतून येतात, म्हणून त्याची वाहकता तापमानासोबत झपाट्याने वाढते.",
+        },
+        detail: {
+          en: "Its resistance FALLS as it is heated, the opposite of a metal's, because heat creates new carriers faster than it hinders the existing ones — in a metal the carrier count is fixed and only the hindrance grows.",
+          hi: "गर्म करने पर उसका प्रतिरोध घटता है, धातु के ठीक उलटा, क्योंकि ऊष्मा मौजूद वाहकों को बाधा पहुँचाने से तेज़ी से नए वाहक बनाती है — धातु में वाहकों की गिनती नियत है और केवल बाधा बढ़ती है।",
+          mr: "तापवल्यावर त्याचा रोध घटतो, धातूच्या नेमका उलट, कारण उष्णता असलेल्या वाहकांना अडथळा आणण्याहून वेगाने नवे वाहक बनवते — धातूत वाहकांची मोजणी स्थिर आहे आणि केवळ अडथळा वाढतो.",
+        },
+        extra: {
+          en: "At absolute zero it would be a perfect insulator, with every bond intact and no carrier at all, which shows that the whole of its conductivity is thermally paid for.",
+          hi: "परम शून्य पर वह पूर्ण विद्युतरोधी होता, हर बंध सलामत और कोई वाहक नहीं, जो दिखाता है कि उसकी पूरी चालकता ऊष्मा से चुकाई गई है।",
+          mr: "निरपेक्ष शून्यावर तो पूर्ण विद्युतरोधक असता, प्रत्येक बंध शाबूत आणि एकही वाहक नाही, जे दाखवते की त्याची अख्खी वाहकता उष्णतेने भरलेली आहे.",
+        },
+        pair: {
+          left: {
+            en: "Warms up and conducts better, unlike any metal",
+            hi: "गर्म होकर बेहतर चालन करता है, किसी भी धातु के उलट",
+            mr: "तापून अधिक चांगले वहन करतो, कोणत्याही धातूच्या उलट",
+          },
+          right: {
+            en: "the intrinsic semiconductor",
+            hi: "नैज अर्धचालक",
+            mr: "नैसर्गिक अर्धवाहक",
+          },
+        },
+      },
+      {
+        id: "n-type-semiconductor",
+        name: {
+          en: "The n-type semiconductor",
+          hi: "n-प्रकार अर्धचालक",
+          mr: "n-प्रकार अर्धवाहक",
+        },
+        kind: "class of material",
+        prompt: {
+          en: "Silicon doped with an element having one more valence electron than it needs for bonding, so the spare electron is loosely held and easily freed, and electrons far outnumber holes. Which material is this?",
+          hi: "ऐसे तत्व से डोपित सिलिकॉन जिसके पास बंध बनाने के लिए ज़रूरत से एक संयोजी इलेक्ट्रॉन अधिक है, अतः वह फ़ालतू इलेक्ट्रॉन ढीला बँधा और आसानी से मुक्त होने वाला है, और इलेक्ट्रॉन होलों से कहीं अधिक हैं। यह कौन-सा पदार्थ है?",
+          mr: "अशा मूलद्रव्याने डोप केलेले सिलिकॉन ज्याच्याकडे बंध बनवण्यास लागणाऱ्याहून एक संयुजी इलेक्ट्रॉन अधिक आहे, म्हणून तो जादा इलेक्ट्रॉन सैल बांधलेला आणि सहज मुक्त होणारा आहे, आणि इलेक्ट्रॉन होलांहून कितीतरी अधिक आहेत. हा कोणता पदार्थ?",
+        },
+        statement: {
+          en: "An n-type semiconductor is made by doping with a pentavalent donor such as phosphorus or arsenic, so electrons are the majority carriers and holes the minority.",
+          hi: "n-प्रकार अर्धचालक फ़ॉस्फ़ोरस या आर्सेनिक जैसे पंचसंयोजी दाता से डोप करके बनता है, अतः इलेक्ट्रॉन बहुसंख्यक वाहक और होल अल्पसंख्यक होते हैं।",
+          mr: "n-प्रकार अर्धवाहक फॉस्फरस वा आर्सेनिकसारख्या पंचसंयुजी दात्याने डोप करून बनतो, म्हणून इलेक्ट्रॉन बहुसंख्य वाहक आणि होल अल्पसंख्य असतात.",
+        },
+        detail: {
+          en: "The crystal remains electrically NEUTRAL: each donor atom brings one extra electron and one extra proton, so the material is not negatively charged and 'n' names the sign of the carriers, not of the block.",
+          hi: "क्रिस्टल विद्युत् दृष्टि से उदासीन रहता है: हर दाता परमाणु एक अतिरिक्त इलेक्ट्रॉन और एक अतिरिक्त प्रोटॉन लाता है, अतः पदार्थ ऋण आवेशित नहीं है और 'n' वाहकों के चिह्न का नाम है, टुकड़े के चिह्न का नहीं।",
+          mr: "स्फटिक विद्युतदृष्ट्या उदासीन राहतो: प्रत्येक दाता अणू एक जादा इलेक्ट्रॉन आणि एक जादा प्रोटॉन आणतो, म्हणून पदार्थ ऋण प्रभारित नाही आणि 'n' हे वाहकांच्या चिन्हाचे नाव आहे, तुकड्याच्या चिन्हाचे नव्हे.",
+        },
+        extra: {
+          en: "The product n_e n_h stays equal to n_i² whatever the doping, so raising the electrons by a millionfold drives the holes DOWN by the same factor — the minority carriers are crushed, not merely outnumbered.",
+          hi: "गुणनफल n_e n_h डोपिंग चाहे जो हो n_i² के बराबर रहता है, अतः इलेक्ट्रॉनों को दस लाख गुना बढ़ाने से होल उसी गुणक से नीचे चले जाते हैं — अल्पसंख्यक वाहक केवल संख्या में पीछे नहीं, कुचले जाते हैं।",
+          mr: "गुणाकार n_e n_h डोपिंग कोणतेही असो n_i² इतका राहतो, म्हणून इलेक्ट्रॉन दहा लाख पटींनी वाढवल्याने होल त्याच पटीने खाली जातात — अल्पसंख्य वाहक केवळ संख्येने मागे नाहीत, चिरडले जातात.",
+        },
+        pair: {
+          left: {
+            en: "Named for its carriers, and carrying no charge itself",
+            hi: "अपने वाहकों के नाम पर, और स्वयं कोई आवेश नहीं रखता",
+            mr: "आपल्या वाहकांच्या नावाने, आणि स्वतः कोणताही प्रभार न बाळगणारा",
+          },
+          right: {
+            en: "the n-type semiconductor",
+            hi: "n-प्रकार अर्धचालक",
+            mr: "n-प्रकार अर्धवाहक",
+          },
+        },
+      },
+      {
+        id: "p-type-semiconductor",
+        name: {
+          en: "The p-type semiconductor",
+          hi: "p-प्रकार अर्धचालक",
+          mr: "p-प्रकार अर्धवाहक",
+        },
+        kind: "class of material",
+        prompt: {
+          en: "Silicon doped with an element one valence electron short, so every impurity atom leaves a bond incomplete and the resulting vacancies, which move through the crystal, are the majority carriers. Which material is this?",
+          hi: "ऐसे तत्व से डोपित सिलिकॉन जिसमें एक संयोजी इलेक्ट्रॉन कम है, अतः हर अशुद्धि परमाणु एक बंध अधूरा छोड़ता है और उससे बनी रिक्तियाँ, जो क्रिस्टल में चलती हैं, बहुसंख्यक वाहक हैं। यह कौन-सा पदार्थ है?",
+          mr: "अशा मूलद्रव्याने डोप केलेले सिलिकॉन ज्यात एक संयुजी इलेक्ट्रॉन कमी आहे, म्हणून प्रत्येक अशुद्धी अणू एक बंध अपूर्ण सोडतो आणि त्यातून बनलेल्या रिक्तता, ज्या स्फटिकातून हलतात, बहुसंख्य वाहक आहेत. हा कोणता पदार्थ?",
+        },
+        statement: {
+          en: "A p-type semiconductor is made by doping with a trivalent acceptor such as boron or indium, so holes are the majority carriers and electrons the minority.",
+          hi: "p-प्रकार अर्धचालक बोरॉन या इंडियम जैसे त्रिसंयोजी ग्राही से डोप करके बनता है, अतः होल बहुसंख्यक वाहक और इलेक्ट्रॉन अल्पसंख्यक होते हैं।",
+          mr: "p-प्रकार अर्धवाहक बोरॉन वा इंडियमसारख्या त्रिसंयुजी ग्राहीने डोप करून बनतो, म्हणून होल बहुसंख्य वाहक आणि इलेक्ट्रॉन अल्पसंख्य असतात.",
+        },
+        detail: {
+          en: "A hole is not a particle but a bookkeeping device: what actually moves is a succession of electrons hopping one step each, and the vacancy that travels the other way is counted as a single positive carrier because it behaves exactly like one.",
+          hi: "होल कण नहीं बल्कि हिसाब की युक्ति है: वस्तुतः जो चलता है वह एक-एक क़दम फुदकते इलेक्ट्रॉनों की शृंखला है, और दूसरी ओर चलती रिक्ति एक अकेले धन वाहक की तरह गिनी जाती है क्योंकि वह ठीक वैसी ही बरतती है।",
+          mr: "होल हा कण नसून हिशेबाची युक्ती आहे: प्रत्यक्षात जे हलते ती एकेक पाऊल उड्या मारणाऱ्या इलेक्ट्रॉनांची मालिका आहे, आणि दुसऱ्या दिशेने जाणारी रिक्तता एकाच धन वाहकाप्रमाणे मोजली जाते कारण ती नेमकी तशीच वागते.",
+        },
+        extra: {
+          en: "This crystal too stays neutral, and the analogy that makes it plain is a full car park where one empty space lets cars shuffle: the space appears to move backwards, but no space was ever added to the park.",
+          hi: "यह क्रिस्टल भी उदासीन रहता है, और इसे साफ़ करने वाली उपमा है भरा हुआ पार्किंग जहाँ एक ख़ाली जगह गाड़ियों को खिसकने देती है: जगह पीछे की ओर चलती दिखती है, पर पार्किंग में कोई जगह कभी जोड़ी नहीं गई।",
+          mr: "हा स्फटिकही उदासीन राहतो, आणि हे स्पष्ट करणारी उपमा म्हणजे भरलेले वाहनतळ जिथे एक रिकामी जागा गाड्यांना सरकू देते: जागा मागे सरकताना दिसते, पण वाहनतळात कोणतीही जागा कधी जोडली गेली नाही.",
+        },
+        pair: {
+          left: {
+            en: "A car park where the empty space appears to travel",
+            hi: "ऐसा पार्किंग जहाँ ख़ाली जगह चलती दिखती है",
+            mr: "असे वाहनतळ जिथे रिकामी जागा चालताना दिसते",
+          },
+          right: {
+            en: "the p-type semiconductor",
+            hi: "p-प्रकार अर्धचालक",
+            mr: "p-प्रकार अर्धवाहक",
+          },
+        },
+      },
+      {
+        id: "pn-junction",
+        name: {
+          en: "The p-n junction and its depletion region",
+          hi: "p-n संधि और उसका ह्रासी क्षेत्र",
+          mr: "p-n संधी आणि तिचा क्षयित प्रदेश",
+        },
+        kind: "device or junction behaviour",
+        prompt: {
+          en: "Where the two doped regions meet, electrons cross one way and holes the other, cancelling each other and leaving behind a thin layer with no free carriers and a built-in voltage across it. What is being described?",
+          hi: "जहाँ दोनों डोपित भाग मिलते हैं, इलेक्ट्रॉन एक ओर और होल दूसरी ओर पार करते हैं, एक-दूसरे को काट देते हैं और पीछे बिना मुक्त वाहक की पतली परत तथा उसके आर-पार अंतर्निर्मित वोल्टता छोड़ जाते हैं। किसका वर्णन हो रहा है?",
+          mr: "जिथे दोन्ही डोपित भाग भेटतात, इलेक्ट्रॉन एका दिशेने आणि होल दुसऱ्या दिशेने ओलांडतात, एकमेकांना कापतात आणि मागे मुक्त वाहकाविना पातळ थर तसेच त्याच्या आरपार अंतर्निर्मित व्होल्टेज सोडतात. कशाचे वर्णन होत आहे?",
+        },
+        statement: {
+          en: "The p-n junction develops a depletion region emptied of free carriers, and the exposed fixed ions on either side set up a barrier potential of about 0.3 V in germanium and 0.7 V in silicon.",
+          hi: "p-n संधि पर मुक्त वाहकों से ख़ाली ह्रासी क्षेत्र बनता है, और दोनों ओर उघड़े नियत आयन जर्मेनियम में लगभग 0.3 V और सिलिकॉन में 0.7 V का रोधिका विभव खड़ा कर देते हैं।",
+          mr: "p-n संधीवर मुक्त वाहकांनी रिकामा झालेला क्षयित प्रदेश तयार होतो, आणि दोन्ही बाजूंचे उघडे स्थिर आयन जर्मेनियममध्ये सुमारे 0.3 V आणि सिलिकॉनमध्ये 0.7 V चा अडसर विभव उभा करतात.",
+        },
+        detail: {
+          en: "The barrier builds itself and then stops the very diffusion that built it, which is why the junction settles into equilibrium instead of emptying both sides completely.",
+          hi: "रोधिका स्वयं बनती है और फिर उसी विसरण को रोक देती है जिसने उसे बनाया, इसीलिए संधि दोनों ओर पूरी तरह ख़ाली होने के बजाय संतुलन में जम जाती है।",
+          mr: "अडसर स्वतःच तयार होतो आणि मग त्याच विसरणाला थांबवतो ज्याने त्याला बनवले, म्हणूनच संधी दोन्ही बाजू पूर्णपणे रिकाम्या होण्याऐवजी समतोलात स्थिरावते.",
+        },
+        extra: {
+          en: "The barrier voltage cannot be measured with a voltmeter across the junction, because connecting the leads creates two more junctions whose barriers cancel it exactly — a nice reminder that not everything real is directly readable.",
+          hi: "रोधिका वोल्टता को संधि के आर-पार वोल्टमापी से नापा नहीं जा सकता, क्योंकि तार जोड़ने से दो और संधियाँ बन जाती हैं जिनकी रोधिकाएँ उसे ठीक-ठीक काट देती हैं — यह अच्छी याद दिलाती है कि हर असली चीज़ सीधे पढ़ी नहीं जा सकती।",
+          mr: "अडसर व्होल्टेज संधीच्या आरपार व्होल्टमापकाने मोजता येत नाही, कारण तारा जोडल्याने आणखी दोन संधी तयार होतात ज्यांचे अडसर तो नेमका कापतात — ही चांगली आठवण की प्रत्येक खरी गोष्ट थेट वाचता येत नाही.",
+        },
+        pair: {
+          left: {
+            en: "A wall that builds itself and then stops its own builders",
+            hi: "ऐसी दीवार जो स्वयं बनती है और फिर अपने ही बनाने वालों को रोक देती है",
+            mr: "अशी भिंत जी स्वतः बांधली जाते आणि मग स्वतःच्याच बांधणाऱ्यांना थांबवते",
+          },
+          right: {
+            en: "the p-n junction and its depletion region",
+            hi: "p-n संधि और उसका ह्रासी क्षेत्र",
+            mr: "p-n संधी आणि तिचा क्षयित प्रदेश",
+          },
+        },
+      },
+      {
+        id: "junction-diode-rectifier",
+        name: {
+          en: "The junction diode as a rectifier",
+          hi: "दिष्टकारी के रूप में संधि डायोड",
+          mr: "दिष्टकारी म्हणून संधी डायोड",
+        },
+        kind: "device or junction behaviour",
+        prompt: {
+          en: "Connected one way it passes current freely once a few tenths of a volt are exceeded; connected the other way it passes almost nothing until it breaks down. Which use of a junction is this?",
+          hi: "एक ओर जोड़ो तो कुछ दसवें भाग वोल्ट पार होते ही वह धारा स्वतंत्र जाने देता है; दूसरी ओर जोड़ो तो भंजन तक लगभग कुछ भी नहीं जाने देता। यह संधि का कौन-सा उपयोग है?",
+          mr: "एका बाजूने जोडल्यास काही दशांश व्होल्ट ओलांडताच तो धारा मुक्तपणे जाऊ देतो; दुसऱ्या बाजूने जोडल्यास भंजन होईपर्यंत जवळपास काहीही जाऊ देत नाही. हा संधीचा कोणता उपयोग?",
+        },
+        statement: {
+          en: "The junction diode as a rectifier exploits its one-way conduction: forward bias narrows the depletion layer and lowers the barrier, reverse bias widens it, so alternating current is converted to a one-directional output.",
+          hi: "दिष्टकारी के रूप में संधि डायोड उसके एकदिश चालन का लाभ उठाता है: अग्र अभिनति ह्रासी परत को सँकरा करती और रोधिका घटाती है, पश्च अभिनति उसे चौड़ा करती है, अतः प्रत्यावर्ती धारा एकदिश निर्गत में बदल जाती है।",
+          mr: "दिष्टकारी म्हणून संधी डायोड त्याच्या एकदिश वहनाचा फायदा घेतो: अग्र अभिनती क्षयित थर अरुंद करते आणि अडसर घटवते, पश्च अभिनती तो रुंद करते, म्हणून प्रत्यावर्ती धारा एकदिश निर्गतात बदलते.",
+        },
+        detail: {
+          en: "A half-wave rectifier throws away one half of every cycle, while a full-wave arrangement flips it instead, so the output ripple is at twice the supply frequency and is far easier to smooth.",
+          hi: "अर्ध-तरंग दिष्टकारी हर चक्र का आधा भाग फेंक देता है, जबकि पूर्ण-तरंग व्यवस्था उसे उलट देती है, अतः निर्गत की लहर आपूर्ति आवृत्ति की दुगुनी होती है और उसे चिकना करना कहीं आसान है।",
+          mr: "अर्ध-लहरी दिष्टकारी प्रत्येक चक्राचा अर्धा भाग फेकून देतो, तर पूर्ण-लहरी मांडणी तो उलटवते, म्हणून निर्गताची लाट पुरवठा वारंवारतेच्या दुप्पट असते आणि ती गुळगुळीत करणे कितीतरी सोपे.",
+        },
+        extra: {
+          en: "The forward drop is not zero and does not scale: about 0.7 V is lost in a silicon diode whether the supply is 5 V or 500 V, which matters enormously in a low-voltage circuit and hardly at all in a high-voltage one.",
+          hi: "अग्र पतन शून्य नहीं है और वह अनुपात में नहीं बदलता: सिलिकॉन डायोड में लगभग 0.7 V खो जाते हैं, चाहे आपूर्ति 5 V हो या 500 V, और यह कम वोल्टता के परिपथ में बहुत मायने रखता है तथा ऊँची वोल्टता के परिपथ में लगभग कुछ भी नहीं।",
+          mr: "अग्र घसरण शून्य नाही आणि ती प्रमाणात बदलत नाही: सिलिकॉन डायोडमध्ये सुमारे 0.7 V गमावले जातात, पुरवठा 5 V असो वा 500 V, आणि हे कमी व्होल्टेजच्या परिपथात खूप महत्त्वाचे आणि उंच व्होल्टेजच्या परिपथात जवळपास काहीच नाही.",
+        },
+        pair: {
+          left: {
+            en: "A valve for charge, with a fixed toll to enter",
+            hi: "आवेश का वाल्व, घुसने के नियत महसूल के साथ",
+            mr: "प्रभाराचा झडप, आत येण्याच्या ठराविक कराह्यासह",
+          },
+          right: {
+            en: "the junction diode as a rectifier",
+            hi: "दिष्टकारी के रूप में संधि डायोड",
+            mr: "दिष्टकारी म्हणून संधी डायोड",
+          },
+        },
+      },
+      {
+        id: "light-emitting-diode",
+        name: {
+          en: "The light-emitting diode",
+          hi: "प्रकाश उत्सर्जक डायोड",
+          mr: "प्रकाश उत्सर्जक डायोड",
+        },
+        kind: "device or junction behaviour",
+        prompt: {
+          en: "A heavily doped junction in forward bias where each electron falling into a hole gives up the gap energy as a single photon, so the colour is decided by the material and not by any temperature. What is it?",
+          hi: "अग्र अभिनति में भारी डोपित ऐसी संधि जहाँ होल में गिरता हर इलेक्ट्रॉन अंतराल ऊर्जा को एक अकेले फ़ोटॉन के रूप में छोड़ता है, अतः रंग पदार्थ से तय होता है, किसी ताप से नहीं। यह क्या है?",
+          mr: "अग्र अभिनतीत जड डोप केलेली अशी संधी जिथे होलमध्ये पडणारा प्रत्येक इलेक्ट्रॉन फट ऊर्जा एकाच फोटॉनच्या रूपात सोडतो, म्हणून रंग पदार्थाने ठरतो, कोणत्याही तापमानाने नाही. हे काय आहे?",
+        },
+        statement: {
+          en: "A light-emitting diode is a forward-biased junction in which electron–hole recombination releases photons of energy close to the band gap, so the emitted wavelength is fixed by the semiconductor chosen.",
+          hi: "प्रकाश उत्सर्जक डायोड अग्र अभिनत संधि है जिसमें इलेक्ट्रॉन–होल पुनर्योजन बैंड अंतराल के निकट ऊर्जा के फ़ोटॉन छोड़ता है, अतः उत्सर्जित तरंगदैर्ध्य चुने गए अर्धचालक से तय होती है।",
+          mr: "प्रकाश उत्सर्जक डायोड म्हणजे अग्र अभिनत संधी जिच्यात इलेक्ट्रॉन–होल पुनर्योजन बँड फटीजवळच्या ऊर्जेचे फोटॉन सोडते, म्हणून उत्सर्जित तरंगलांबी निवडलेल्या अर्धवाहकाने ठरते.",
+        },
+        detail: {
+          en: "It is efficient because almost every electron's energy goes into one photon of the wanted colour, whereas a filament lamp must heat a wire to a temperature at which most of what it radiates is invisible infrared.",
+          hi: "यह इसलिए दक्ष है कि लगभग हर इलेक्ट्रॉन की ऊर्जा चाहे गए रंग के एक फ़ोटॉन में जाती है, जबकि तंतु लैंप को तार ऐसे ताप तक गर्म करना पड़ता है जिस पर उसका विकिरित अधिकांश अदृश्य अवरक्त होता है।",
+          mr: "हा यामुळे कार्यक्षम आहे की जवळपास प्रत्येक इलेक्ट्रॉनची ऊर्जा हव्या असलेल्या रंगाच्या एका फोटॉनात जाते, तर तंतू दिव्याला तार अशा तापमानापर्यंत तापवावी लागते ज्यावर त्याचे प्रारित बहुतांश अदृश्य अवरक्त असते.",
+        },
+        extra: {
+          en: "Silicon cannot be used for one, whatever its gap, because its band structure makes an emitted photon a rare accident — which is why compounds such as gallium arsenide had to be developed for the purpose.",
+          hi: "सिलिकॉन इसके लिए काम नहीं आ सकता, उसका अंतराल चाहे जो हो, क्योंकि उसकी बैंड संरचना उत्सर्जित फ़ोटॉन को दुर्लभ संयोग बना देती है — इसीलिए इस काम के लिए गैलियम आर्सेनाइड जैसे यौगिक विकसित करने पड़े।",
+          mr: "सिलिकॉन यासाठी कामी येऊ शकत नाही, त्याची फट कोणतीही असो, कारण त्याची बँड रचना उत्सर्जित फोटॉनला दुर्मीळ योगायोग बनवते — म्हणूनच या कामासाठी गॅलियम आर्सेनाइडसारखी संयुगे विकसित करावी लागली.",
+        },
+        pair: {
+          left: {
+            en: "Its colour is chosen at the foundry, not set by heat",
+            hi: "उसका रंग कारख़ाने में चुना जाता है, ऊष्मा से तय नहीं होता",
+            mr: "त्याचा रंग कारखान्यात निवडला जातो, उष्णतेने ठरत नाही",
+          },
+          right: {
+            en: "the light-emitting diode",
+            hi: "प्रकाश उत्सर्जक डायोड",
+            mr: "प्रकाश उत्सर्जक डायोड",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Heating a copper wire raises its resistance; heating a silicon crystal lowers it, and dramatically. Adding one boron atom per million silicon atoms raises the conductivity by a factor of about a million, yet the crystal remains electrically neutral. Explain all three facts.",
+          hi: "ताँबे के तार को गर्म करने पर उसका प्रतिरोध बढ़ता है; सिलिकॉन क्रिस्टल को गर्म करने पर घटता है, और नाटकीय ढंग से। दस लाख सिलिकॉन परमाणुओं पर एक बोरॉन परमाणु जोड़ने से चालकता लगभग दस लाख गुना बढ़ जाती है, फिर भी क्रिस्टल विद्युत् दृष्टि से उदासीन रहता है। तीनों तथ्य समझाओ।",
+          mr: "तांब्याची तार तापवल्यास तिचा रोध वाढतो; सिलिकॉन स्फटिक तापवल्यास घटतो, आणि नाट्यमयरीत्या. दहा लाख सिलिकॉन अणूंवर एक बोरॉन अणू जोडल्याने वाहकता सुमारे दहा लाख पटींनी वाढते, तरीही स्फटिक विद्युतदृष्ट्या उदासीन राहतो. तिन्ही तथ्ये समजावा.",
+        },
+        choices: [
+          {
+            en: "Conductivity is carrier count times mobility. In a metal the count is fixed by the atoms themselves, so heating only makes the lattice vibrate more, lowering mobility and raising resistance. In silicon almost every bond is intact at room temperature, so carriers must be CREATED by breaking bonds, and heating creates them exponentially faster than it lowers mobility — resistance falls. Doping supplies carriers without heat: a boron atom leaves one bond short and contributes a hole, and one impurity per million already swamps the sparse intrinsic carriers by orders of magnitude. Neutrality is untouched because each boron atom brings its own electrons and protons in equal number — it donates a hole, not a charge",
+            hi: "चालकता वाहकों की गिनती गुणा गतिशीलता है। धातु में गिनती स्वयं परमाणुओं से नियत है, अतः गर्म करने से केवल जालक अधिक कंपता है, गतिशीलता घटती है और प्रतिरोध बढ़ता है। सिलिकॉन में कमरे के ताप पर लगभग हर बंध सलामत है, अतः वाहकों को बंध तोड़कर बनाना पड़ता है, और ऊष्मा उन्हें गतिशीलता घटाने से चरघातांकी रूप से तेज़ी से बनाती है — प्रतिरोध घटता है। डोपिंग बिना ऊष्मा के वाहक देती है: बोरॉन परमाणु एक बंध कम छोड़ता है और एक होल देता है, और दस लाख में एक अशुद्धि पहले ही विरल नैज वाहकों को कोटियों से डुबो देती है। उदासीनता अछूती रहती है क्योंकि हर बोरॉन परमाणु अपने इलेक्ट्रॉन और प्रोटॉन बराबर संख्या में लाता है — वह होल देता है, आवेश नहीं",
+            mr: "वाहकता म्हणजे वाहकांची मोजणी गुणिले गतिशीलता. धातूत मोजणी स्वतः अणूंनी ठरलेली आहे, म्हणून तापवल्याने केवळ जाळी अधिक कंप पावते, गतिशीलता घटते आणि रोध वाढतो. सिलिकॉनमध्ये खोलीच्या तापमानावर जवळपास प्रत्येक बंध शाबूत आहे, म्हणून वाहक बंध तोडून बनवावे लागतात, आणि उष्णता ते गतिशीलता घटवण्याहून घातांकीरीत्या वेगाने बनवते — रोध घटतो. डोपिंग उष्णतेविना वाहक देते: बोरॉन अणू एक बंध कमी सोडतो आणि एक होल देतो, आणि दहा लाखांत एक अशुद्धी आधीच विरळ नैसर्गिक वाहकांना कोटींनी बुडवते. उदासीनता अस्पर्श राहते कारण प्रत्येक बोरॉन अणू आपले इलेक्ट्रॉन आणि प्रोटॉन समान संख्येत आणतो — तो होल देतो, प्रभार नाही",
+          },
+          {
+            en: "Silicon's resistance falls with temperature because the crystal expands and the carriers have further to travel between collisions, and a p-type crystal is positively charged because holes are positive",
+            hi: "सिलिकॉन का प्रतिरोध ताप के साथ घटता है क्योंकि क्रिस्टल फैलता है और वाहकों को टक्करों के बीच अधिक दूर चलना पड़ता है, और p-प्रकार क्रिस्टल धन आवेशित है क्योंकि होल धन हैं",
+            mr: "सिलिकॉनचा रोध तापमानासोबत घटतो कारण स्फटिक प्रसरण पावतो आणि वाहकांना टकरांमध्ये अधिक दूर जावे लागते, आणि p-प्रकार स्फटिक धन प्रभारित आहे कारण होल धन आहेत",
+          },
+          {
+            en: "Both materials behave the same way in principle; silicon only appears different because its resistance is measured over a wider temperature range",
+            hi: "दोनों पदार्थ सैद्धांतिक रूप से एक ही तरह बरतते हैं; सिलिकॉन केवल इसलिए भिन्न लगता है कि उसका प्रतिरोध अधिक चौड़ी ताप परास पर नापा जाता है",
+            mr: "दोन्ही पदार्थ तत्त्वतः एकाच प्रकारे वागतात; सिलिकॉन केवळ यामुळे वेगळे वाटते की त्याचा रोध अधिक रुंद तापमान पल्ल्यावर मोजला जातो",
+          },
+          {
+            en: "Doping raises conductivity because the boron atoms themselves conduct well, so the impurity provides a metallic path through the crystal",
+            hi: "डोपिंग चालकता इसलिए बढ़ाती है कि बोरॉन परमाणु स्वयं अच्छे चालक हैं, अतः अशुद्धि क्रिस्टल में से धात्विक रास्ता दे देती है",
+            mr: "डोपिंग वाहकता यासाठी वाढवते की बोरॉन अणू स्वतः चांगले वाहक आहेत, म्हणून अशुद्धी स्फटिकातून धातवीय मार्ग देते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "All three follow from one equation, σ = nqμ: conductivity is the number of carriers times their charge times how easily they move. Ask, for each case, which factor is changing. THE METAL. Copper has roughly one free electron per atom, and that number is set by the chemistry, not by the temperature. Heating cannot make more; every electron that was going to be free already is. What heating does is make the lattice ions vibrate harder, so an electron travels a shorter distance before its next collision. The mobility μ falls, n is unchanged, and σ falls — resistance rises with temperature, as every metal does. THE SEMICONDUCTOR. Silicon at room temperature has almost every bond intact. Its intrinsic carrier concentration is about 10¹⁶ per cubic metre against copper's 10²⁹ — thirteen orders of magnitude fewer. Each of those carriers exists only because thermal energy happened to break a bond, and the number able to do so goes as e^(−E_g/2kT), which climbs very steeply with temperature. Heating silicon therefore does two opposite things: it reduces μ, exactly as in copper, and it raises n exponentially. The exponential wins by a wide margin, so σ rises and resistance falls. The sign of the temperature coefficient is thus a direct readout of whether a material's carriers are given or made. THE DOPING. Here neither heat nor mobility is doing the work; the carrier count is being changed by chemistry. Silicon has about 5 × 10²⁸ atoms per cubic metre, so doping at one part per million puts 5 × 10²² boron atoms in each cubic metre. Each boron has three valence electrons where four are needed, so each leaves one bond incomplete — a hole — and essentially all of them are ionised at room temperature. Compare 5 × 10²² holes with the 10¹⁶ intrinsic carriers: the doped material has about a million times more carriers than the pure one, and σ rises by the same factor. A part per million of impurity changing a material property by a factor of a million is why semiconductor manufacture demands purity of a different order from ordinary chemistry — the wanted impurity must be added deliberately, so every unwanted one must first be removed. THE NEUTRALITY, which is the part most often got wrong. A boron atom is neutral: five protons, five electrons. Putting it into the lattice adds both, in equal numbers. What it does not bring is a fourth valence electron, so one bond around it is short — but a missing BOND is not a missing charge, because the electron that would have completed it was never there to begin with. The crystal has exactly as many protons as electrons before and after doping. 'p-type' names the sign of the mobile carriers, and nothing else; a block of p-type silicon on a bench will not attract a scrap of paper. The same holds for n-type: a phosphorus atom brings fifteen protons and fifteen electrons, donating a mobile electron while keeping the books level. Notice, finally, what happens to the minority carriers, because it is a stronger statement than 'outnumbered'. The relation n_e n_h = n_i² survives doping. Raise the holes a millionfold and the electrons must fall a millionfold to keep the product fixed. Minority carriers are not merely a small fraction; they have been actively crushed, and that asymmetry is what makes a p-n junction conduct one way and not the other. (The second option offers a thermal-expansion mechanism far too weak to matter and then charges up a neutral crystal; the third denies a difference that is measurable in any school laboratory; the fourth treats a dispersed impurity at one part per million as a conducting path, which no percolation argument would support.)",
+          hi: "तीनों एक ही समीकरण σ = nqμ से निकलते हैं: चालकता वाहकों की संख्या गुणा उनका आवेश गुणा वे कितनी आसानी से चलते हैं। हर स्थिति के लिए पूछो कि कौन-सा गुणक बदल रहा है। धातु। ताँबे में मोटे तौर पर प्रति परमाणु एक मुक्त इलेक्ट्रॉन है, और वह संख्या रसायन से तय है, ताप से नहीं। गर्म करने से और नहीं बन सकते; जो इलेक्ट्रॉन मुक्त होने वाला था वह पहले ही है। गर्म करना जो करता है वह जालक के आयनों को अधिक ज़ोर से कँपाना है, अतः इलेक्ट्रॉन अगली टक्कर से पहले कम दूरी तय करता है। गतिशीलता μ घटती है, n अपरिवर्तित रहता है, और σ घटता है — प्रतिरोध ताप के साथ बढ़ता है, जैसा हर धातु में होता है। अर्धचालक। कमरे के ताप पर सिलिकॉन में लगभग हर बंध सलामत है। उसकी नैज वाहक सांद्रता ताँबे के 10²⁹ के मुक़ाबले लगभग 10¹⁶ प्रति घन मीटर है — तेरह कोटि कम। उन वाहकों में से हर एक केवल इसलिए है कि ऊष्मीय ऊर्जा ने संयोग से एक बंध तोड़ दिया, और ऐसा कर सकने वालों की संख्या e^(−E_g/2kT) के अनुसार चलती है, जो ताप के साथ बहुत तेज़ी से चढ़ती है। अतः सिलिकॉन को गर्म करना दो उलटी चीज़ें करता है: वह μ घटाता है, ठीक जैसे ताँबे में, और n को चरघातांकी रूप से बढ़ाता है। चरघातांक बड़े अंतर से जीतता है, अतः σ बढ़ता है और प्रतिरोध घटता है। इस प्रकार ताप गुणांक का चिह्न सीधे बता देता है कि पदार्थ के वाहक दिए गए हैं या बनाए गए। डोपिंग। यहाँ न ऊष्मा काम कर रही है न गतिशीलता; वाहकों की गिनती रसायन से बदली जा रही है। सिलिकॉन में लगभग 5 × 10²⁸ परमाणु प्रति घन मीटर हैं, अतः दस लाख में एक भाग की डोपिंग हर घन मीटर में 5 × 10²² बोरॉन परमाणु रखती है। हर बोरॉन के पास तीन संयोजी इलेक्ट्रॉन हैं जहाँ चार चाहिए, अतः हर एक एक बंध अधूरा छोड़ता है — एक होल — और कमरे के ताप पर वे वस्तुतः सब आयनित हैं। 5 × 10²² होलों की 10¹⁶ नैज वाहकों से तुलना करो: डोपित पदार्थ में शुद्ध से लगभग दस लाख गुना अधिक वाहक हैं, और σ उसी गुणक से बढ़ता है। दस लाख में एक भाग अशुद्धि का किसी पदार्थ-गुण को दस लाख गुना बदल देना ही कारण है कि अर्धचालक निर्माण साधारण रसायन से भिन्न कोटि की शुद्धता माँगता है — चाही गई अशुद्धि जान-बूझकर जोड़नी है, अतः हर अनचाही को पहले हटाना ही होगा। उदासीनता, जो सबसे अधिक ग़लत समझा जाने वाला हिस्सा है। बोरॉन परमाणु उदासीन है: पाँच प्रोटॉन, पाँच इलेक्ट्रॉन। उसे जालक में रखना दोनों को बराबर संख्या में जोड़ता है। वह जो नहीं लाता वह चौथा संयोजी इलेक्ट्रॉन है, अतः उसके गिर्द एक बंध कम है — पर लुप्त बंध लुप्त आवेश नहीं, क्योंकि जो इलेक्ट्रॉन उसे पूरा करता वह शुरू से वहाँ था ही नहीं। डोपिंग से पहले और बाद, क्रिस्टल में इलेक्ट्रॉनों जितने ही प्रोटॉन हैं। 'p-प्रकार' गतिशील वाहकों के चिह्न का नाम है, और कुछ नहीं; मेज़ पर रखा p-प्रकार सिलिकॉन का टुकड़ा काग़ज़ का टुकड़ा नहीं खींचेगा। यही n-प्रकार के लिए भी सच है: फ़ॉस्फ़ोरस परमाणु पंद्रह प्रोटॉन और पंद्रह इलेक्ट्रॉन लाता है, गतिशील इलेक्ट्रॉन देता है और बहीखाता बराबर रखता है। अंत में ध्यान दो कि अल्पसंख्यक वाहकों का क्या होता है, क्योंकि वह 'संख्या में पीछे' से प्रबल कथन है। संबंध n_e n_h = n_i² डोपिंग के बाद भी बचा रहता है। होलों को दस लाख गुना बढ़ाओ और इलेक्ट्रॉनों को दस लाख गुना गिरना ही पड़ेगा ताकि गुणनफल नियत रहे। अल्पसंख्यक वाहक केवल छोटा अंश नहीं; वे सक्रिय रूप से कुचल दिए गए हैं, और वही असममिति p-n संधि को एक ओर चलाती है और दूसरी ओर नहीं। (दूसरा विकल्प ऐसी ऊष्मीय प्रसार क्रियाविधि देता है जो मायने रखने के लिए कहीं बहुत कमज़ोर है और फिर उदासीन क्रिस्टल को आवेशित कर देता है; तीसरा ऐसे भेद से इनकार करता है जो किसी भी विद्यालयी प्रयोगशाला में नापा जा सकता है; चौथा दस लाख में एक भाग की बिखरी अशुद्धि को चालक रास्ता मान लेता है, जिसे कोई परिस्रवण तर्क समर्थन नहीं देगा।)",
+          mr: "तिन्ही एकाच समीकरणातून निघतात, σ = nqμ: वाहकता म्हणजे वाहकांची संख्या गुणिले त्यांचा प्रभार गुणिले ते किती सहज हलतात. प्रत्येक स्थितीसाठी विचारा की कोणता गुणक बदलत आहे. धातू. तांब्यात ढोबळमानाने प्रति अणू एक मुक्त इलेक्ट्रॉन आहे, आणि ती संख्या रसायनाने ठरलेली आहे, तापमानाने नाही. तापवल्याने आणखी बनू शकत नाहीत; जो इलेक्ट्रॉन मुक्त होणार होता तो आधीच आहे. तापवणे जे करते ते जाळीच्या आयनांना अधिक जोराने कंपवणे, म्हणून इलेक्ट्रॉन पुढच्या टकरीआधी कमी अंतर कापतो. गतिशीलता μ घटते, n अपरिवर्तित राहतो, आणि σ घटतो — रोध तापमानासोबत वाढतो, जसे प्रत्येक धातूत होते. अर्धवाहक. खोलीच्या तापमानावर सिलिकॉनमध्ये जवळपास प्रत्येक बंध शाबूत आहे. त्याची नैसर्गिक वाहक संहती तांब्याच्या 10²⁹ च्या तुलनेत सुमारे 10¹⁶ प्रति घनमीटर आहे — तेरा कोटी कमी. त्या वाहकांपैकी प्रत्येक केवळ यामुळे आहे की औष्णिक ऊर्जेने योगायोगाने एक बंध तोडला, आणि तसे करू शकणाऱ्यांची संख्या e^(−E_g/2kT) नुसार चालते, जी तापमानासोबत फार झपाट्याने चढते. म्हणून सिलिकॉन तापवणे दोन उलट गोष्टी करते: ते μ घटवते, अगदी तांब्यासारखे, आणि n घातांकीरीत्या वाढवते. घातांक मोठ्या फरकाने जिंकतो, म्हणून σ वाढतो आणि रोध घटतो. अशा प्रकारे तापमान गुणकाचे चिन्ह थेट सांगते की पदार्थाचे वाहक दिलेले आहेत की बनवलेले. डोपिंग. इथे ना उष्णता काम करत आहे ना गतिशीलता; वाहकांची मोजणी रसायनाने बदलली जात आहे. सिलिकॉनमध्ये सुमारे 5 × 10²⁸ अणू प्रति घनमीटर आहेत, म्हणून दहा लाखांत एक भागाची डोपिंग प्रत्येक घनमीटरमध्ये 5 × 10²² बोरॉन अणू ठेवते. प्रत्येक बोरॉनकडे तीन संयुजी इलेक्ट्रॉन आहेत जिथे चार लागतात, म्हणून प्रत्येक एक बंध अपूर्ण सोडतो — एक होल — आणि खोलीच्या तापमानावर ते प्रत्यक्षात सर्व आयनित आहेत. 5 × 10²² होलांची 10¹⁶ नैसर्गिक वाहकांशी तुलना करा: डोपित पदार्थात शुद्धाहून सुमारे दहा लाख पट अधिक वाहक आहेत, आणि σ त्याच पटीने वाढतो. दहा लाखांत एक भाग अशुद्धीने पदार्थ-गुणधर्म दहा लाख पटींनी बदलणे हेच कारण की अर्धवाहक निर्मिती साध्या रसायनाहून वेगळ्या कोटीची शुद्धता मागते — हवी असलेली अशुद्धी जाणीवपूर्वक जोडायची आहे, म्हणून प्रत्येक नकोशी आधी काढावीच लागेल. उदासीनता, जी सर्वांत जास्त चुकीची समजली जाणारी बाब आहे. बोरॉन अणू उदासीन आहे: पाच प्रोटॉन, पाच इलेक्ट्रॉन. त्याला जाळीत ठेवणे दोन्ही समान संख्येत जोडते. तो जे आणत नाही तो चौथा संयुजी इलेक्ट्रॉन आहे, म्हणून त्याच्याभोवती एक बंध कमी आहे — पण हरवलेला बंध म्हणजे हरवलेला प्रभार नाही, कारण जो इलेक्ट्रॉन तो पूर्ण करेल तो सुरुवातीपासून तिथे नव्हताच. डोपिंगच्या आधी आणि नंतर, स्फटिकात इलेक्ट्रॉनांइतकेच प्रोटॉन आहेत. 'p-प्रकार' हे गतिशील वाहकांच्या चिन्हाचे नाव आहे, आणि दुसरे काही नाही; टेबलावर ठेवलेला p-प्रकार सिलिकॉनचा तुकडा कागदाचा कपटा ओढणार नाही. हेच n-प्रकारासाठीही खरे: फॉस्फरस अणू पंधरा प्रोटॉन आणि पंधरा इलेक्ट्रॉन आणतो, गतिशील इलेक्ट्रॉन देतो आणि जमाखर्च समान ठेवतो. शेवटी लक्षात घ्या की अल्पसंख्य वाहकांचे काय होते, कारण ते 'संख्येने मागे' हून भक्कम विधान आहे. संबंध n_e n_h = n_i² डोपिंगनंतरही टिकतो. होल दहा लाख पटींनी वाढवा आणि इलेक्ट्रॉनांना दहा लाख पटींनी घसरावेच लागेल जेणेकरून गुणाकार स्थिर राहील. अल्पसंख्य वाहक केवळ लहान अंश नाहीत; ते सक्रियपणे चिरडले गेले आहेत, आणि तीच असममिती p-n संधीला एका दिशेने चालवते आणि दुसऱ्या दिशेने नाही. (दुसरा पर्याय अशी औष्णिक प्रसरण यंत्रणा देतो जी महत्त्वाची ठरण्यास कितीतरी क्षीण आहे आणि मग उदासीन स्फटिक प्रभारित करतो; तिसरा असा भेद नाकारतो जो कोणत्याही शालेय प्रयोगशाळेत मोजता येतो; चौथा दहा लाखांत एक भागाच्या विखुरलेल्या अशुद्धीला वाहक मार्ग मानतो, ज्याला कोणताही परिस्रवण युक्तिवाद पाठिंबा देणार नाही.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A p-n junction conducts freely one way and hardly at all the other. A student says this must be because the p-side is positively charged and the n-side negatively, so current is attracted one way. Explain what actually makes a diode one-way.",
+          hi: "p-n संधि एक ओर स्वतंत्र चालन करती है और दूसरी ओर लगभग नहीं। विद्यार्थी कहता है कि इसका कारण यही होगा कि p-ओर धन आवेशित है और n-ओर ऋण, अतः धारा एक ओर खिंचती है। समझाओ कि डायोड को एकदिश वस्तुतः क्या बनाता है।",
+          mr: "p-n संधी एका दिशेने मुक्तपणे वहन करते आणि दुसऱ्या दिशेने जवळपास नाही. विद्यार्थी म्हणतो की याचे कारण हेच असावे की p-बाजू धन प्रभारित आहे आणि n-बाजू ऋण, म्हणून धारा एका दिशेने ओढली जाते. डायोडला एकदिश प्रत्यक्षात काय बनवते ते समजावा.",
+        },
+        choices: [
+          {
+            en: "Both regions are electrically neutral before contact, so there is no attraction to appeal to. What happens is DIFFUSION: electrons wander from the n-side into the p-side and holes the other way, recombining near the boundary and leaving a depletion layer containing only the fixed ionised dopant atoms — negative on the p-side, positive on the n-side. Those fixed charges build a barrier that opposes further diffusion, and equilibrium is reached. Forward bias pushes majority carriers towards the junction, narrowing the layer and lowering the barrier, so current flows. Reverse bias pulls them away, widening the layer, and only the tiny minority-carrier current gets across",
+            hi: "संपर्क से पहले दोनों भाग विद्युत् दृष्टि से उदासीन हैं, अतः जिस आकर्षण की दुहाई दी जाए वह है ही नहीं। जो होता है वह विसरण है: इलेक्ट्रॉन n-ओर से p-ओर भटकते हैं और होल दूसरी ओर, सीमा के पास पुनर्योजित होते हैं और ऐसी ह्रासी परत छोड़ जाते हैं जिसमें केवल नियत आयनित डोपेंट परमाणु हैं — p-ओर ऋण, n-ओर धन। वे नियत आवेश ऐसी रोधिका बनाते हैं जो आगे के विसरण का विरोध करती है, और संतुलन आ जाता है। अग्र अभिनति बहुसंख्यक वाहकों को संधि की ओर धकेलती है, परत सँकरी करती और रोधिका घटाती है, अतः धारा बहती है। पश्च अभिनति उन्हें दूर खींचती है, परत चौड़ी करती है, और केवल नन्ही अल्पसंख्यक वाहक धारा पार जा पाती है",
+            mr: "संपर्काआधी दोन्ही भाग विद्युतदृष्ट्या उदासीन आहेत, म्हणून ज्या आकर्षणाचा आधार घ्यावा ते आहेच नाही. जे घडते ते विसरण आहे: इलेक्ट्रॉन n-बाजूकडून p-बाजूकडे भटकतात आणि होल दुसऱ्या दिशेने, सीमेजवळ पुनर्योजित होतात आणि असा क्षयित थर सोडतात ज्यात केवळ स्थिर आयनित डोपंट अणू आहेत — p-बाजूला ऋण, n-बाजूला धन. ते स्थिर प्रभार असा अडसर बांधतात जो पुढच्या विसरणाला विरोध करतो, आणि समतोल येतो. अग्र अभिनती बहुसंख्य वाहकांना संधीकडे ढकलते, थर अरुंद करते आणि अडसर घटवते, म्हणून धारा वाहते. पश्च अभिनती त्यांना दूर ओढते, थर रुंद करते, आणि केवळ चिमुकली अल्पसंख्य वाहक धारा पलीकडे जाऊ शकते",
+          },
+          {
+            en: "The student is right: doping leaves the p-side positive and the n-side negative, and the diode's one-way behaviour follows directly from that permanent charge separation",
+            hi: "विद्यार्थी सही है: डोपिंग p-ओर को धन और n-ओर को ऋण छोड़ देती है, और डायोड का एकदिश आचरण उसी स्थायी आवेश पृथक्करण से सीधे निकलता है",
+            mr: "विद्यार्थी बरोबर आहे: डोपिंग p-बाजू धन आणि n-बाजू ऋण सोडते, आणि डायोडचे एकदिश वर्तन त्याच कायम प्रभार विभाजनातून थेट निघते",
+          },
+          {
+            en: "The junction conducts one way because holes can move only in one direction through a crystal, while electrons can move in both",
+            hi: "संधि एक ओर चालन इसलिए करती है कि होल क्रिस्टल में केवल एक दिशा में चल सकते हैं, जबकि इलेक्ट्रॉन दोनों में",
+            mr: "संधी एका दिशेने वहन यासाठी करते की होल स्फटिकात केवळ एका दिशेने हलू शकतात, तर इलेक्ट्रॉन दोन्हींत",
+          },
+          {
+            en: "The asymmetry comes from the metal contacts soldered to the two ends, and a junction with identical contacts would conduct equally in both directions",
+            hi: "असममिति दोनों सिरों पर टाँके गए धातु संपर्कों से आती है, और समरूप संपर्कों वाली संधि दोनों दिशाओं में बराबर चालन करती",
+            mr: "असममिती दोन्ही टोकांना जोडलेल्या धातू संपर्कांतून येते, आणि सारखे संपर्क असलेली संधी दोन्ही दिशांनी समान वहन करेल",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The student's picture would be a good one if the two sides really did carry net charges, and the first thing to establish is that they do not. A phosphorus atom placed in silicon brings fifteen protons and fifteen electrons; a boron atom brings five of each. Doping adds equal amounts of positive and negative charge, so both blocks are neutral before they are joined and there is no electrostatic attraction between them to be exploited. What actually happens begins with a concentration difference, not a charge difference. The n-side is dense with mobile electrons; the p-side is nearly empty of them. Particles diffuse from where they are plentiful to where they are scarce — the same reason a drop of ink spreads through water — so electrons drift across into the p-region and holes drift the other way. Near the boundary they meet and recombine, and a narrow layer is left with no mobile carriers in it at all: the DEPLETION REGION. Now the charge appears, and it is worth being precise about its origin. A donor atom that has lost its spare electron is a fixed positive ion, bolted into the lattice; an acceptor that has gained one is a fixed negative ion. Inside the depletion layer the mobile carriers have gone but these ions remain, so the layer carries negative charge on the p-side and positive charge on the n-side. This is charge produced BY the diffusion, not a pre-existing charge that caused it — and the two blocks taken together are still neutral overall. That charge sets up an electric field pointing from the n-side to the p-side, and the field opposes exactly the motion that created it: it pushes electrons back towards the n-side and holes back towards the p-side. Diffusion slows as the field grows, and the junction settles at equilibrium when the field's push balances diffusion's tendency to spread. The potential difference across the layer, the barrier potential, is about 0.7 V for silicon and 0.3 V for germanium. Now bias it. FORWARD bias connects the positive terminal to the p-side, pushing holes towards the junction and electrons towards it from the other side. Majority carriers flood into the depletion region, it narrows, the barrier falls, and once the applied voltage exceeds the barrier the carriers cross in enormous numbers. Current rises steeply — roughly exponentially — with voltage. REVERSE bias does the opposite: it pulls majority carriers away from the junction on both sides, the depletion layer widens, and the barrier is raised rather than lowered. Almost no majority carrier can cross. What does cross is a very small current of MINORITY carriers — the few electrons on the p-side and holes on the n-side — for which the field is downhill rather than uphill. That reverse saturation current is of the order of microamperes or less, essentially independent of voltage, and strongly dependent on temperature, since minority carriers are thermally generated. Two consequences are worth carrying. First, the asymmetry is intrinsic to the junction and not to the contacts: making both end contacts identical changes nothing, because the one-way behaviour lives at the boundary between the two doped regions. Second, the barrier's existence explains the diode's forward voltage drop, which is not a resistance and does not scale with the supply — about 0.7 V is lost in a silicon diode whether it is fed 5 V or 500 V, because the toll is a barrier to be climbed and not a proportion to be paid. (The second option asserts a charge separation that measurement excludes; the third invents a directional restriction on hole motion that does not exist; the fourth relocates the asymmetry to the contacts, which is testable and false.)",
+          hi: "विद्यार्थी का चित्र अच्छा होता यदि दोनों ओर सचमुच नेट आवेश होते, और पहली बात यही ठहरानी है कि नहीं हैं। सिलिकॉन में रखा फ़ॉस्फ़ोरस परमाणु पंद्रह प्रोटॉन और पंद्रह इलेक्ट्रॉन लाता है; बोरॉन परमाणु पाँच-पाँच। डोपिंग धन और ऋण आवेश बराबर मात्रा में जोड़ती है, अतः जुड़ने से पहले दोनों टुकड़े उदासीन हैं और उनके बीच कोई स्थिरवैद्युत आकर्षण है ही नहीं जिसका लाभ उठाया जाए। जो वस्तुतः होता है वह सांद्रता के अंतर से शुरू होता है, आवेश के अंतर से नहीं। n-ओर गतिशील इलेक्ट्रॉनों से ठसी है; p-ओर उनसे लगभग ख़ाली। कण वहाँ से जहाँ वे भरपूर हैं वहाँ विसरित होते हैं जहाँ विरल हैं — उसी कारण से जिससे स्याही की बूँद पानी में फैलती है — अतः इलेक्ट्रॉन p-भाग में बहते हैं और होल दूसरी ओर। सीमा के पास वे मिलकर पुनर्योजित होते हैं, और ऐसी सँकरी परत बचती है जिसमें कोई गतिशील वाहक है ही नहीं: ह्रासी क्षेत्र। अब आवेश प्रकट होता है, और उसके उद्गम के बारे में ठीक-ठीक होना चाहिए। जिस दाता परमाणु ने अपना फ़ालतू इलेक्ट्रॉन खो दिया वह नियत धन आयन है, जालक में जड़ा हुआ; जिस ग्राही ने एक पाया वह नियत ऋण आयन है। ह्रासी परत के भीतर गतिशील वाहक जा चुके हैं पर ये आयन बचे हैं, अतः परत p-ओर ऋण आवेश और n-ओर धन आवेश रखती है। यह विसरण से बना आवेश है, पहले से मौजूद ऐसा आवेश नहीं जिसने विसरण कराया हो — और दोनों टुकड़े मिलाकर अब भी कुल मिलाकर उदासीन हैं। वह आवेश n-ओर से p-ओर इशारा करता विद्युत क्षेत्र खड़ा करता है, और क्षेत्र ठीक उसी गति का विरोध करता है जिसने उसे बनाया: वह इलेक्ट्रॉनों को n-ओर और होलों को p-ओर वापस धकेलता है। क्षेत्र बढ़ने पर विसरण धीमा पड़ता है, और संधि तब संतुलन में जमती है जब क्षेत्र का धक्का विसरण की फैलने की प्रवृत्ति को संतुलित कर दे। परत के आर-पार विभवांतर, रोधिका विभव, सिलिकॉन के लिए लगभग 0.7 V और जर्मेनियम के लिए 0.3 V है। अब उसे अभिनत करो। अग्र अभिनति धन सिरा p-ओर से जोड़ती है, होलों को संधि की ओर और दूसरी ओर से इलेक्ट्रॉनों को उसकी ओर धकेलती है। बहुसंख्यक वाहक ह्रासी क्षेत्र में उमड़ते हैं, वह सँकरा होता है, रोधिका गिरती है, और लगाई गई वोल्टता रोधिका से आगे बढ़ते ही वाहक विशाल संख्या में पार करते हैं। धारा वोल्टता के साथ तेज़ी से — मोटे तौर पर चरघातांकी रूप से — बढ़ती है। पश्च अभिनति उलटा करती है: वह दोनों ओर बहुसंख्यक वाहकों को संधि से दूर खींचती है, ह्रासी परत चौड़ी होती है, और रोधिका घटने के बजाय बढ़ जाती है। लगभग कोई बहुसंख्यक वाहक पार नहीं कर सकता। जो पार करती है वह अल्पसंख्यक वाहकों की बहुत छोटी धारा है — p-ओर के कुछ इलेक्ट्रॉन और n-ओर के होल — जिनके लिए क्षेत्र चढ़ाई नहीं, ढलान है। वह पश्च संतृप्ति धारा माइक्रोऐम्पियर या उससे कम की कोटि की है, वोल्टता से वस्तुतः स्वतंत्र, और ताप पर प्रबल रूप से निर्भर, क्योंकि अल्पसंख्यक वाहक ऊष्मा से बनते हैं। दो परिणाम साथ ले जाने योग्य हैं। पहला, असममिति संधि की अपनी है, संपर्कों की नहीं: दोनों सिरों के संपर्क समरूप बनाने से कुछ नहीं बदलता, क्योंकि एकदिश आचरण दोनों डोपित भागों की सीमा पर रहता है। दूसरा, रोधिका का होना डायोड का अग्र वोल्टता पतन समझाता है, जो प्रतिरोध नहीं है और आपूर्ति के अनुपात में नहीं बदलता — सिलिकॉन डायोड में लगभग 0.7 V खोए जाते हैं चाहे उसे 5 V दिए जाएँ या 500 V, क्योंकि महसूल चढ़ने की दीवार है, चुकाने का अनुपात नहीं। (दूसरा विकल्प ऐसा आवेश पृथक्करण ठहराता है जिसे माप ख़ारिज करता है; तीसरा होल की गति पर ऐसी दिशा-पाबंदी गढ़ता है जो है ही नहीं; चौथा असममिति को संपर्कों पर ले जाता है, जो जाँचा जा सकता है और झूठ है।)",
+          mr: "विद्यार्थ्याचे चित्र चांगले ठरले असते जर दोन्ही बाजूंना खरोखर निव्वळ प्रभार असते, आणि पहिली गोष्ट हीच ठरवायची की ते नाहीत. सिलिकॉनमध्ये ठेवलेला फॉस्फरस अणू पंधरा प्रोटॉन आणि पंधरा इलेक्ट्रॉन आणतो; बोरॉन अणू पाच-पाच. डोपिंग धन आणि ऋण प्रभार समान प्रमाणात जोडते, म्हणून जोडण्याआधी दोन्ही तुकडे उदासीन आहेत आणि त्यांच्यात कोणतेही स्थिरविद्युत आकर्षण नाहीच ज्याचा फायदा घ्यावा. जे प्रत्यक्षात घडते ते संहतीच्या फरकाने सुरू होते, प्रभाराच्या फरकाने नाही. n-बाजू गतिशील इलेक्ट्रॉनांनी दाटलेली आहे; p-बाजू त्यांनी जवळपास रिकामी. कण जिथे भरपूर आहेत तिथून जिथे विरळ आहेत तिकडे विसरतात — त्याच कारणाने ज्याने शाईचा थेंब पाण्यात पसरतो — म्हणून इलेक्ट्रॉन p-भागात वाहतात आणि होल दुसऱ्या दिशेने. सीमेजवळ ते भेटून पुनर्योजित होतात, आणि अशी अरुंद थर उरते जिच्यात एकही गतिशील वाहक नाहीच: क्षयित प्रदेश. आता प्रभार प्रकट होतो, आणि त्याच्या उगमाबद्दल नेमके असायला हवे. ज्या दाता अणूने आपला जादा इलेक्ट्रॉन गमावला तो स्थिर धन आयन आहे, जाळीत जखडलेला; ज्या ग्राहीने एक मिळवला तो स्थिर ऋण आयन आहे. क्षयित थराच्या आत गतिशील वाहक गेले आहेत पण हे आयन उरले आहेत, म्हणून थर p-बाजूला ऋण प्रभार आणि n-बाजूला धन प्रभार बाळगतो. हा विसरणाने बनलेला प्रभार आहे, आधीपासून असलेला असा प्रभार नाही ज्याने विसरण घडवले — आणि दोन्ही तुकडे मिळून अजूनही एकूण उदासीन आहेत. तो प्रभार n-बाजूकडून p-बाजूकडे दाखवणारे विद्युत क्षेत्र उभे करतो, आणि क्षेत्र नेमक्या त्याच गतीला विरोध करते जिने त्याला बनवले: ते इलेक्ट्रॉनांना n-बाजूकडे आणि होलांना p-बाजूकडे परत ढकलते. क्षेत्र वाढताना विसरण मंदावते, आणि संधी तेव्हा समतोलात स्थिरावते जेव्हा क्षेत्राचा धक्का विसरणाच्या पसरण्याच्या प्रवृत्तीला तोलतो. थराच्या आरपार विभवांतर, अडसर विभव, सिलिकॉनसाठी सुमारे 0.7 V आणि जर्मेनियमसाठी 0.3 V आहे. आता त्याला अभिनत करा. अग्र अभिनती धन टोक p-बाजूला जोडते, होलांना संधीकडे आणि दुसऱ्या बाजूकडून इलेक्ट्रॉनांना तिच्याकडे ढकलते. बहुसंख्य वाहक क्षयित प्रदेशात लोटतात, तो अरुंद होतो, अडसर घसरतो, आणि लावलेला व्होल्टेज अडसराहून पुढे जाताच वाहक प्रचंड संख्येने ओलांडतात. धारा व्होल्टेजसोबत झपाट्याने — ढोबळमानाने घातांकीरीत्या — वाढते. पश्च अभिनती उलट करते: ती दोन्ही बाजूंचे बहुसंख्य वाहक संधीपासून दूर ओढते, क्षयित थर रुंद होतो, आणि अडसर घटण्याऐवजी वाढतो. जवळपास कोणताही बहुसंख्य वाहक ओलांडू शकत नाही. जी ओलांडते ती अल्पसंख्य वाहकांची अतिशय लहान धारा आहे — p-बाजूचे काही इलेक्ट्रॉन आणि n-बाजूचे होल — ज्यांच्यासाठी क्षेत्र चढ नसून उतार आहे. ती पश्च संपृक्तता धारा मायक्रोअँपिअर वा त्याहून कमी कोटीची आहे, व्होल्टेजपासून प्रत्यक्षात स्वतंत्र, आणि तापमानावर तीव्रपणे अवलंबून, कारण अल्पसंख्य वाहक उष्णतेने बनतात. दोन परिणाम सोबत न्यायचे आहेत. पहिला, असममिती संधीची स्वतःची आहे, संपर्कांची नाही: दोन्ही टोकांचे संपर्क सारखे केल्याने काहीही बदलत नाही, कारण एकदिश वर्तन दोन डोपित भागांच्या सीमेवर राहते. दुसरा, अडसराचे असणे डायोडची अग्र व्होल्टेज घसरण समजावते, जी रोध नाही आणि पुरवठ्याच्या प्रमाणात बदलत नाही — सिलिकॉन डायोडमध्ये सुमारे 0.7 V गमावले जातात मग त्याला 5 V द्या वा 500 V, कारण कर ही चढायची भिंत आहे, भरायचे प्रमाण नाही. (दुसरा पर्याय असे प्रभार विभाजन ठरवतो जे मापन वगळते; तिसरा होलच्या गतीवर अशी दिशा-बंदी घडवतो जी अस्तित्वातच नाही; चौथा असममिती संपर्कांवर नेतो, जे तपासता येते आणि खोटे आहे.)",
+        },
+      },
+    ],
+  },
+  /*C13*/
 ];
 
 export const G12_PHYSICS_NUMERIC: Record<string, NumQ[]> = {
@@ -6171,6 +6868,330 @@ export const G12_PHYSICS_NUMERIC: Record<string, NumQ[]> = {
         en: "The count is 4 × 10⁷/8000 = 40000000/8000 = 5000 particles. The arithmetic is easy; the interesting part is what the fraction means. One in eight thousand sounds like a rare event, and it is — which is exactly why the atom must be mostly empty. But it is also far too COMMON for a spread-out charge: on the Thomson model the chance of a deflection past 90° works out at around 10⁻³⁵⁰⁰, a number so small that not one such event would occur in the age of the universe. So the observation is squeezed between two impossibilities and fixes the nucleus's size quite tightly — big enough to be hit five thousand times in forty million, small enough that the other 39,995,000 pass by untouched. This is a good example of a measurement whose value lies in an ORDER OF MAGNITUDE rather than in a precise figure. (500 and 50000 misplace the exponent by one.)",
         hi: "गिनती 4 × 10⁷/8000 = 40000000/8000 = 5000 कण है। अंकगणित आसान है; दिलचस्प भाग यह है कि वह भिन्न क्या कहती है। आठ हज़ार में एक दुर्लभ घटना लगती है, और वह है भी — ठीक इसीलिए परमाणु अधिकांशतः ख़ाली होना ही चाहिए। पर वह फैले हुए आवेश के लिए कहीं बहुत आम भी है: थॉमसन मॉडल पर 90° से आगे विक्षेप की संभावना लगभग 10⁻³⁵⁰⁰ निकलती है, ऐसी छोटी संख्या कि विश्व की आयु में एक भी ऐसी घटना न हो। अतः प्रेक्षण दो असंभवताओं के बीच दबा है और नाभिक का आकार काफ़ी कसकर तय कर देता है — इतना बड़ा कि चार करोड़ में पाँच हज़ार बार टकराए, इतना छोटा कि बाक़ी 39,995,000 बिना छुए निकल जाएँ। यह ऐसे माप का अच्छा उदाहरण है जिसका मूल्य परिशुद्ध आँकड़े में नहीं बल्कि कोटि में है। (500 और 50000 घातांक एक से चूक जाते हैं।)",
         mr: "मोजणी 4 × 10⁷/8000 = 40000000/8000 = 5000 कण आहे. अंकगणित सोपे आहे; रोचक भाग हा की तो अपूर्णांक काय सांगतो. आठ हजारांत एक ही दुर्मीळ घटना वाटते, आणि ती आहेही — नेमके म्हणूनच अणू बहुतांश रिकामा असलाच पाहिजे. पण ती पसरलेल्या प्रभारासाठी कितीतरी सामान्यही आहे: थॉमसन प्रारूपावर 90° पुढे विचलनाची शक्यता सुमारे 10⁻³⁵⁰⁰ निघते, इतकी लहान संख्या की विश्वाच्या आयुष्यात एकही अशी घटना घडणार नाही. म्हणून निरीक्षण दोन अशक्यतांमध्ये दाबले आहे आणि केंद्रकाचा आकार बऱ्यापैकी घट्ट ठरवते — इतका मोठा की चार कोटींत पाच हजार वेळा आदळावा, इतका लहान की उरलेले 39,995,000 न स्पर्शता निघून जावेत. हे अशा मापाचे चांगले उदाहरण आहे ज्याचे मूल्य नेमक्या आकड्यात नसून कोटीत आहे. (500 आणि 50000 घातांक एकाने चुकवतात.)",
+      },
+    },
+  ],
+  "physics-12-nuclei": [
+    {
+      level: 1,
+      stem: {
+        en: "A radioactive sample has a half-life of 5 days. After 15 days the fraction remaining is 1/n. What is n?",
+        hi: "एक रेडियोऐक्टिव नमूने की अर्धायु 5 दिन है। 15 दिन बाद बचा अंश 1/n है। n क्या है?",
+        mr: "एका किरणोत्सर्गी नमुन्याचे अर्धायुष्य 5 दिवस आहे. 15 दिवसांनंतर उरलेला अंश 1/n आहे. n किती?",
+      },
+      answer: 8,
+      wrong: [3, 6, 15],
+      checkExpr: "2*2*2",
+      solution: {
+        en: "Fifteen days is three half-lives, and each one halves what is left, so the survivor fraction is (1/2)³ = 1/(2 × 2 × 2) = 1/8 and n = 8. The halvings multiply rather than add: three half-lives do not remove three halves, they remove seven eighths. (3 counts the half-lives; 6 multiplies rather than exponentiates.)",
+        hi: "पंद्रह दिन तीन अर्धायुएँ हैं, और हर एक बचे हुए को आधा करती है, अतः बचा अंश (1/2)³ = 1/(2 × 2 × 2) = 1/8 है और n = 8. आधे करने गुणा होते हैं, जुड़ते नहीं: तीन अर्धायुएँ तीन आधे नहीं हटातीं, वे सात-आठवाँ भाग हटाती हैं। (3 अर्धायुएँ गिन लेता है; 6 घात लगाने के बजाय गुणा कर देता है।)",
+        mr: "पंधरा दिवस म्हणजे तीन अर्धायुष्ये, आणि प्रत्येक उरलेल्याला निम्मे करते, म्हणून उरलेला अंश (1/2)³ = 1/(2 × 2 × 2) = 1/8 आहे आणि n = 8. निम्मे करणे गुणले जाते, जुळत नाही: तीन अर्धायुष्ये तीन निम्मे काढत नाहीत, ती सात-अष्टमांश काढतात. (3 अर्धायुष्ये मोजते; 6 घात लावण्याऐवजी गुणते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "The nuclear radius is R = 1.2 A^(1/3) fm. For a nucleus of mass number 27, what is R in fm?",
+        hi: "नाभिकीय त्रिज्या R = 1.2 A^(1/3) fm है। द्रव्यमान संख्या 27 के नाभिक के लिए R, fm में, क्या है?",
+        mr: "केंद्रकीय त्रिज्या R = 1.2 A^(1/3) fm आहे. वस्तुमान संख्या 27 च्या केंद्रकासाठी R, fm मध्ये, किती?",
+      },
+      answer: 3.6,
+      wrong: [1.2, 32.4, 10.8],
+      checkExpr: "1.2*3",
+      solution: {
+        en: "The cube root of 27 is 3, so R = 1.2 × 3 = 3.6 fm. The cube root is the whole content of the formula: volume rises in step with the number of nucleons, so the density is the same for every nucleus and a nucleon takes up the same room in aluminium as in uranium. (32.4 multiplies by A instead of its cube root.)",
+        hi: "27 का घनमूल 3 है, अतः R = 1.2 × 3 = 3.6 fm. घनमूल ही सूत्र का सारा सार है: आयतन न्यूक्लिऑनों की संख्या के साथ बढ़ता है, अतः हर नाभिक का घनत्व एक है और न्यूक्लिऑन ऐलुमिनियम में उतनी ही जगह घेरता है जितनी यूरेनियम में। (32.4 घनमूल के बजाय A से गुणा कर देता है।)",
+        mr: "27 चे घनमूळ 3 आहे, म्हणून R = 1.2 × 3 = 3.6 fm. घनमूळ हाच सूत्राचा अख्खा आशय: घनफळ न्यूक्लिऑनांच्या संख्येसोबत वाढते, म्हणून प्रत्येक केंद्रकाची घनता एकच आणि न्यूक्लिऑन ॲल्युमिनियममध्ये तितकीच जागा व्यापतो जितकी युरेनियममध्ये. (32.4 घनमुळाऐवजी A ने गुणते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A uranium nucleus of atomic number 92 emits an alpha particle. What is the atomic number of the daughter nucleus?",
+        hi: "परमाणु संख्या 92 का यूरेनियम नाभिक एक अल्फ़ा कण उत्सर्जित करता है। संतति नाभिक की परमाणु संख्या क्या है?",
+        mr: "अणुक्रमांक 92 चे युरेनियम केंद्रक एक अल्फा कण उत्सर्जित करते. कन्या केंद्रकाचा अणुक्रमांक किती?",
+      },
+      answer: 90,
+      wrong: [88, 94, 234],
+      checkExpr: "92-2",
+      solution: {
+        en: "An alpha particle is a helium nucleus with two protons, so the atomic number falls by 2: 92 − 2 = 90, which is thorium. The mass number falls by 4 at the same time, but that is a separate count — confusing the two is what produces 234 here, which is the daughter's mass number and not its atomic number. (88 subtracts 4 from the atomic number.)",
+        hi: "अल्फ़ा कण दो प्रोटॉन वाला हीलियम नाभिक है, अतः परमाणु संख्या 2 घटती है: 92 − 2 = 90, जो थोरियम है। उसी समय द्रव्यमान संख्या 4 घटती है, पर वह अलग गिनती है — दोनों को गड्डमड्ड करना ही यहाँ 234 देता है, जो संतति की द्रव्यमान संख्या है, परमाणु संख्या नहीं। (88 परमाणु संख्या में से 4 घटा देता है।)",
+        mr: "अल्फा कण म्हणजे दोन प्रोटॉन असलेले हेलियम केंद्रक, म्हणून अणुक्रमांक 2 ने घटतो: 92 − 2 = 90, जे थोरियम आहे. त्याच वेळी वस्तुमान संख्या 4 ने घटते, पण ती वेगळी मोजणी आहे — दोन्हींची गल्लत केल्यानेच इथे 234 येते, जी कन्येची वस्तुमान संख्या आहे, अणुक्रमांक नव्हे. (88 अणुक्रमांकातून 4 वजा करते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A nucleus of atomic number 15 undergoes beta-minus decay. What is the atomic number of the daughter?",
+        hi: "परमाणु संख्या 15 का नाभिक बीटा-ऋण क्षय करता है। संतति की परमाणु संख्या क्या है?",
+        mr: "अणुक्रमांक 15 चे केंद्रक बीटा-ऋण क्षय करते. कन्येचा अणुक्रमांक किती?",
+      },
+      answer: 16,
+      wrong: [14, 13, 17],
+      checkExpr: "15+1",
+      solution: {
+        en: "In beta-minus decay a neutron becomes a proton, so the atomic number RISES by one: 15 + 1 = 16. The mass number is unchanged, since a neutron has simply been replaced by a proton and the count of nucleons is the same. The direction catches people out — an electron leaves, so it feels as though charge should fall, but the electron that leaves was made by the neutron turning positive. (14 lowers the number as if a positive particle had left.)",
+        hi: "बीटा-ऋण क्षय में न्यूट्रॉन प्रोटॉन बन जाता है, अतः परमाणु संख्या एक बढ़ती है: 15 + 1 = 16. द्रव्यमान संख्या अपरिवर्तित है, क्योंकि न्यूट्रॉन की जगह बस प्रोटॉन आ गया और न्यूक्लिऑनों की गिनती वही है। दिशा लोगों को चकमा देती है — इलेक्ट्रॉन निकलता है, अतः लगता है आवेश घटना चाहिए, पर जो इलेक्ट्रॉन निकला वह न्यूट्रॉन के धन होने से बना था। (14 संख्या ऐसे घटा देता है मानो कोई धन कण निकला हो।)",
+        mr: "बीटा-ऋण क्षयात न्यूट्रॉन प्रोटॉन बनतो, म्हणून अणुक्रमांक एकने वाढतो: 15 + 1 = 16. वस्तुमान संख्या अपरिवर्तित आहे, कारण न्यूट्रॉनच्या जागी फक्त प्रोटॉन आला आणि न्यूक्लिऑनांची मोजणी तीच आहे. दिशा लोकांना फसवते — इलेक्ट्रॉन निघतो, म्हणून वाटते प्रभार घटावा, पण जो इलेक्ट्रॉन निघाला तो न्यूट्रॉन धन झाल्याने बनला होता. (14 संख्या अशी घटवते जणू एखादा धन कण निघाला असावा.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A sample of 800 g of a radioactive substance has a half-life of 2 hours. How much, in g, remains after 6 hours?",
+        hi: "किसी रेडियोऐक्टिव पदार्थ के 800 g नमूने की अर्धायु 2 घंटे है। 6 घंटे बाद कितना, g में, बचता है?",
+        mr: "एका किरणोत्सर्गी पदार्थाच्या 800 g नमुन्याचे अर्धायुष्य 2 तास आहे. 6 तासांनंतर किती, g मध्ये, उरते?",
+      },
+      answer: 100,
+      wrong: [400, 200, 133],
+      checkExpr: "800/8",
+      solution: {
+        en: "Six hours is three half-lives, so the mass falls to 800/2³ = 800/8 = 100 g. Track it step by step and the pattern is clear: 800 → 400 → 200 → 100. Notice that the amount removed shrinks each time — 400 g in the first two hours, only 100 g in the third — which is exactly what an exponential does and why the tail is so long. (133 divides by 6 as though the decay were linear in time.)",
+        hi: "छह घंटे तीन अर्धायुएँ हैं, अतः द्रव्यमान घटकर 800/2³ = 800/8 = 100 g रह जाता है। क़दम-दर-क़दम देखो तो ढर्रा साफ़ है: 800 → 400 → 200 → 100. ध्यान दो कि हटाई गई मात्रा हर बार सिकुड़ती है — पहले दो घंटों में 400 g, तीसरे में केवल 100 g — और चरघातांक ठीक यही करता है और इसीलिए पूँछ इतनी लंबी है। (133 6 से भाग दे देता है मानो क्षय समय में रैखिक हो।)",
+        mr: "सहा तास म्हणजे तीन अर्धायुष्ये, म्हणून वस्तुमान घटून 800/2³ = 800/8 = 100 g उरते. पावलापावलाने पाहा आणि आकृतिबंध स्पष्ट आहे: 800 → 400 → 200 → 100. लक्षात घ्या की काढलेले प्रमाण प्रत्येक वेळी आकसते — पहिल्या दोन तासांत 400 g, तिसऱ्यात केवळ 100 g — आणि घातांक नेमके हेच करतो आणि म्हणूनच शेपूट इतकी लांब आहे. (133 हे 6 ने भागते जणू क्षय काळात रेषीय असावा.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A nucleus has a mass defect of 0.1 u. What is its binding energy, in MeV? Take 1 u = 931 MeV.",
+        hi: "किसी नाभिक की द्रव्यमान क्षति 0.1 u है। उसकी बंधन ऊर्जा, MeV में, क्या है? 1 u = 931 MeV लो।",
+        mr: "एका केंद्रकाची वस्तुमान क्षती 0.1 u आहे. त्याची बंधन ऊर्जा, MeV मध्ये, किती? 1 u = 931 MeV घ्या.",
+      },
+      answer: 93.1,
+      wrong: [9.31, 931, 0.1],
+      checkExpr: "0.1*931",
+      solution: {
+        en: "The binding energy is the mass defect converted by E = Δmc², which in these units is simply Δm × 931: 0.1 × 931 = 93.1 MeV. The conversion factor is doing the work of c², and quoting masses in u lets the whole calculation be one multiplication. Compare with a chemical bond at a few eV and the ratio is about ten million — the whole reason nuclear fuel is measured in grams and coal in tonnes. (9.31 slips a decimal place; 931 forgets the defect.)",
+        hi: "बंधन ऊर्जा वह द्रव्यमान क्षति है जो E = Δmc² से बदली गई, जो इन इकाइयों में बस Δm × 931 है: 0.1 × 931 = 93.1 MeV. रूपांतरण गुणक c² का काम कर रहा है, और द्रव्यमान u में बताना पूरी गणना को एक गुणा बना देता है। कुछ eV के रासायनिक बंध से तुलना करो और अनुपात लगभग एक करोड़ है — यही पूरा कारण है कि नाभिकीय ईंधन ग्राम में नापा जाता है और कोयला टन में। (9.31 में दशमलव एक स्थान खिसक जाता है; 931 क्षति भूल जाता है।)",
+        mr: "बंधन ऊर्जा म्हणजे वस्तुमान क्षती E = Δmc² ने बदललेली, जी या एककांत फक्त Δm × 931 आहे: 0.1 × 931 = 93.1 MeV. रूपांतर गुणक c² चे काम करत आहे, आणि वस्तुमान u मध्ये सांगणे अख्खी गणना एका गुणाकारात बदलते. काही eV च्या रासायनिक बंधाशी तुलना करा आणि गुणोत्तर सुमारे एक कोटी आहे — हेच अख्खे कारण की केंद्रकीय इंधन ग्रॅममध्ये मोजले जाते आणि कोळसा टनांत. (9.31 मध्ये दशांश एक स्थान सरकतो; 931 क्षती विसरते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A nucleus of mass number 56 has a total binding energy of 448 MeV. What is its binding energy per nucleon, in MeV?",
+        hi: "द्रव्यमान संख्या 56 के नाभिक की कुल बंधन ऊर्जा 448 MeV है। उसकी प्रति न्यूक्लिऑन बंधन ऊर्जा, MeV में, क्या है?",
+        mr: "वस्तुमान संख्या 56 च्या केंद्रकाची एकूण बंधन ऊर्जा 448 MeV आहे. त्याची प्रति न्यूक्लिऑन बंधन ऊर्जा, MeV मध्ये, किती?",
+      },
+      answer: 8,
+      wrong: [56, 448, 4],
+      checkExpr: "448/56",
+      solution: {
+        en: "Binding energy per nucleon is the total divided by the number of nucleons: 448/56 = 8 MeV. It is this quantity, not the total, that decides stability — uranium has a far larger TOTAL binding energy than iron and is nevertheless the less stable, because its 235 nucleons are each held less tightly. Dividing by A is what makes nuclei of different sizes comparable at all. (448 quotes the total and 56 the nucleon count.)",
+        hi: "प्रति न्यूक्लिऑन बंधन ऊर्जा कुल बटा न्यूक्लिऑनों की संख्या है: 448/56 = 8 MeV. स्थायित्व यही राशि तय करती है, कुल नहीं — यूरेनियम की कुल बंधन ऊर्जा लोहे से कहीं बड़ी है और फिर भी वह कम स्थायी है, क्योंकि उसके 235 न्यूक्लिऑनों में से हर एक कम कसकर पकड़ा है। A से भाग देना ही भिन्न आकारों के नाभिकों को तुलनीय बनाता है। (448 कुल बता देता है और 56 न्यूक्लिऑनों की गिनती।)",
+        mr: "प्रति न्यूक्लिऑन बंधन ऊर्जा म्हणजे एकूण भागिले न्यूक्लिऑनांची संख्या: 448/56 = 8 MeV. स्थैर्य हीच राशी ठरवते, एकूण नव्हे — युरेनियमची एकूण बंधन ऊर्जा लोखंडाहून कितीतरी मोठी आहे आणि तरीही ते कमी स्थिर आहे, कारण त्याच्या 235 न्यूक्लिऑनांपैकी प्रत्येक कमी घट्ट धरलेला आहे. A ने भागणेच वेगवेगळ्या आकारांच्या केंद्रकांना तुलनीय बनवते. (448 एकूण सांगते आणि 56 न्यूक्लिऑनांची मोजणी.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "The activity of a source falls from 8000 counts per minute to 1000 counts per minute in 30 minutes. What is its half-life, in minutes?",
+        hi: "किसी स्रोत की सक्रियता 30 मिनट में 8000 गणना प्रति मिनट से घटकर 1000 गणना प्रति मिनट हो जाती है। उसकी अर्धायु, मिनट में, क्या है?",
+        mr: "एका स्रोताची क्रियाशीलता 30 मिनिटांत 8000 मोजण्या प्रति मिनिट वरून घटून 1000 मोजण्या प्रति मिनिट होते. त्याचे अर्धायुष्य, मिनिटांत, किती?",
+      },
+      answer: 10,
+      wrong: [3, 15, 7.5],
+      checkExpr: "30/3",
+      solution: {
+        en: "Going from 8000 to 1000 is a fall by a factor of 8, which is 2³, so three half-lives have passed in 30 minutes and each is 30/3 = 10 minutes. Working in factors of two rather than in raw numbers is the quickest route: count how many halvings the drop represents, then divide the elapsed time by that count. (3 quotes the number of half-lives instead of their length.)",
+        hi: "8000 से 1000 तक जाना 8 के गुणक की गिरावट है, जो 2³ है, अतः 30 मिनट में तीन अर्धायुएँ बीती हैं और हर एक 30/3 = 10 मिनट है। कच्ची संख्याओं के बजाय दो के गुणकों में काम करना सबसे तेज़ रास्ता है: गिनो कि गिरावट कितने आधे करने दर्शाती है, फिर बीता समय उस गिनती से भाग दो। (3 अर्धायुओं की लंबाई के बजाय उनकी संख्या बता देता है।)",
+        mr: "8000 वरून 1000 पर्यंत जाणे ही 8 च्या पटीची घसरण आहे, जी 2³ आहे, म्हणून 30 मिनिटांत तीन अर्धायुष्ये गेली आहेत आणि प्रत्येक 30/3 = 10 मिनिटे आहे. कच्च्या संख्यांऐवजी दोनच्या पटींत काम करणे सर्वांत जलद मार्ग: मोजा की घसरण किती निम्मे करणे दर्शवते, मग गेलेला काळ त्या मोजणीने भागा. (3 अर्धायुष्यांच्या लांबीऐवजी त्यांची संख्या सांगते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "Each fission of a uranium-235 nucleus releases about 200 MeV. How many fissions per second are needed to deliver 1 W, in units of 10¹⁰? Take 1 MeV = 1.6 × 10⁻¹³ J.",
+        hi: "यूरेनियम-235 नाभिक का हर विखंडन लगभग 200 MeV देता है। 1 W देने के लिए प्रति सेकंड कितने विखंडन, 10¹⁰ की इकाइयों में, चाहिए? 1 MeV = 1.6 × 10⁻¹³ J लो।",
+        mr: "युरेनियम-235 केंद्रकाचे प्रत्येक विखंडन सुमारे 200 MeV देते. 1 W देण्यासाठी दर सेकंदाला किती विखंडने, 10¹⁰ च्या एककांत, लागतील? 1 MeV = 1.6 × 10⁻¹³ J घ्या.",
+      },
+      answer: 3.125,
+      wrong: [0.32, 31.25, 1.6],
+      checkExpr: "100/32",
+      solution: {
+        en: "One fission gives 200 × 1.6 × 10⁻¹³ = 3.2 × 10⁻¹¹ J, so a watt needs 1/(3.2 × 10⁻¹¹) = 3.125 × 10¹⁰ fissions per second, that is 100/32 = 3.125 in the units asked. Put the number in context: a 1000 MW station needs about 3 × 10¹⁹ fissions a second, which works out at a few kilograms of uranium a day against some ten thousand tonnes of coal for the same output. The whole of that ratio is the 200 MeV against a chemical bond's few eV. (31.25 misplaces the exponent by one.)",
+        hi: "एक विखंडन 200 × 1.6 × 10⁻¹³ = 3.2 × 10⁻¹¹ J देता है, अतः एक वाट को 1/(3.2 × 10⁻¹¹) = 3.125 × 10¹⁰ विखंडन प्रति सेकंड चाहिए, अर्थात् पूछी गई इकाइयों में 100/32 = 3.125. संख्या को संदर्भ में रखो: 1000 MW के बिजलीघर को प्रति सेकंड लगभग 3 × 10¹⁹ विखंडन चाहिए, जो उसी उत्पादन के लिए लगभग दस हज़ार टन कोयले के मुक़ाबले दिन में कुछ किलोग्राम यूरेनियम बैठता है। उस पूरे अनुपात का सार 200 MeV बनाम रासायनिक बंध के कुछ eV है। (31.25 घातांक एक से चूक जाता है।)",
+        mr: "एक विखंडन 200 × 1.6 × 10⁻¹³ = 3.2 × 10⁻¹¹ J देते, म्हणून एका वॅटला 1/(3.2 × 10⁻¹¹) = 3.125 × 10¹⁰ विखंडने प्रति सेकंद लागतील, म्हणजे विचारलेल्या एककांत 100/32 = 3.125. संख्या संदर्भात ठेवा: 1000 MW च्या वीजकेंद्राला दर सेकंदाला सुमारे 3 × 10¹⁹ विखंडने लागतात, जे त्याच उत्पादनासाठी सुमारे दहा हजार टन कोळशाच्या तुलनेत दिवसाला काही किलोग्रॅम युरेनियम भरते. त्या अख्ख्या गुणोत्तराचा गाभा म्हणजे 200 MeV विरुद्ध रासायनिक बंधाचे काही eV. (31.25 घातांक एकाने चुकवते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "A nucleus of mass number 240 has a binding energy of 7.6 MeV per nucleon and splits into two fragments each of 8.5 MeV per nucleon. How much energy, in MeV, is released?",
+        hi: "द्रव्यमान संख्या 240 के नाभिक की बंधन ऊर्जा 7.6 MeV प्रति न्यूक्लिऑन है और वह दो ऐसे टुकड़ों में टूटता है जिनमें से हर एक की 8.5 MeV प्रति न्यूक्लिऑन है। कितनी ऊर्जा, MeV में, निकलती है?",
+        mr: "वस्तुमान संख्या 240 च्या केंद्रकाची बंधन ऊर्जा 7.6 MeV प्रति न्यूक्लिऑन आहे आणि ते अशा दोन तुकड्यांत तुटते ज्यांपैकी प्रत्येकाची 8.5 MeV प्रति न्यूक्लिऑन आहे. किती ऊर्जा, MeV मध्ये, निघते?",
+      },
+      answer: 216,
+      wrong: [0.9, 2040, 108],
+      checkExpr: "240*0.9",
+      solution: {
+        en: "Each of the 240 nucleons ends up bound 8.5 − 7.6 = 0.9 MeV more tightly than it began, and the energy released is that gain summed over all of them: 240 × 0.9 = 216 MeV. Two habits are being tested. First, work with binding energy PER NUCLEON and multiply by A at the end rather than juggling totals. Second, notice the direction: the products are more tightly bound, meaning they sit LOWER in energy, and the surplus is what comes out. Nothing was created — the fragments together weigh very slightly less than the parent, and 216 MeV is that missing mass. The figure is close to the 200 MeV actually measured for uranium fission, which is a fair check that the curve has been read correctly. (0.9 quotes the gain per nucleon; 2040 multiplies by 8.5 instead of the difference.)",
+        hi: "240 में से हर न्यूक्लिऑन अंत में शुरुआत से 8.5 − 7.6 = 0.9 MeV अधिक कसकर बँधा है, और निकली ऊर्जा वही लाभ सब पर जोड़ा हुआ है: 240 × 0.9 = 216 MeV. दो आदतें जाँची जा रही हैं। पहली, प्रति न्यूक्लिऑन बंधन ऊर्जा से काम करो और अंत में A से गुणा करो, कुल संख्याओं की उछल-कूद के बजाय। दूसरी, दिशा पर ध्यान दो: उत्पाद अधिक कसकर बँधे हैं, अर्थात् वे ऊर्जा में नीचे बैठते हैं, और अधिशेष ही बाहर आता है। कुछ बना नहीं — टुकड़े मिलकर जनक से बहुत थोड़े हल्के हैं, और 216 MeV वही लुप्त द्रव्यमान है। यह आँकड़ा यूरेनियम विखंडन के लिए वस्तुतः नापे गए 200 MeV के निकट है, जो अच्छी जाँच है कि वक्र ठीक पढ़ा गया। (0.9 प्रति न्यूक्लिऑन लाभ बता देता है; 2040 अंतर के बजाय 8.5 से गुणा कर देता है।)",
+        mr: "240 पैकी प्रत्येक न्यूक्लिऑन शेवटी सुरुवातीहून 8.5 − 7.6 = 0.9 MeV अधिक घट्ट बांधलेला आहे, आणि निघालेली ऊर्जा तोच लाभ सर्वांवर बेरीज केलेला आहे: 240 × 0.9 = 216 MeV. दोन सवयी तपासल्या जात आहेत. पहिली, प्रति न्यूक्लिऑन बंधन ऊर्जेने काम करा आणि शेवटी A ने गुणा, एकूण संख्यांची उलाढाल करण्याऐवजी. दुसरी, दिशेकडे लक्ष द्या: उत्पादने अधिक घट्ट बांधलेली आहेत, म्हणजे ती ऊर्जेत खाली बसतात, आणि जादाच बाहेर येते. काहीही निर्माण झाले नाही — तुकडे मिळून जनकाहून अगदी किंचित हलके आहेत, आणि 216 MeV हेच ते हरवलेले वस्तुमान. हा आकडा युरेनियम विखंडनासाठी प्रत्यक्षात मोजलेल्या 200 MeV च्या जवळ आहे, जी वक्र नीट वाचला गेल्याची चांगली तपासणी. (0.9 प्रति न्यूक्लिऑन लाभ सांगते; 2040 फरकाऐवजी 8.5 ने गुणते.)",
+      },
+    },
+  ],
+  "physics-12-semiconductor-electronics": [
+    {
+      level: 1,
+      stem: {
+        en: "In an intrinsic semiconductor the electron and hole concentrations are equal. If n_i = 3 × 10¹⁶ per m³, what is the hole concentration in units of 10¹⁶ per m³?",
+        hi: "नैज अर्धचालक में इलेक्ट्रॉन और होल सांद्रताएँ बराबर हैं। यदि n_i = 3 × 10¹⁶ प्रति m³, तो होल सांद्रता 10¹⁶ प्रति m³ की इकाइयों में क्या है?",
+        mr: "नैसर्गिक अर्धवाहकात इलेक्ट्रॉन आणि होल संहती समान आहेत. जर n_i = 3 × 10¹⁶ प्रति m³, तर होल संहती 10¹⁶ प्रति m³ च्या एककांत किती?",
+      },
+      answer: 3,
+      wrong: [6, 1.5, 9],
+      checkExpr: "6/2",
+      solution: {
+        en: "In a pure crystal every carrier is created in a pair, so n_e = n_h = n_i = 3, that is 6/2 in these units. The equality is a direct consequence of the mechanism: breaking one bond frees one electron and leaves exactly one hole, so the two populations cannot drift apart. Doping is precisely what breaks that equality. (6 doubles, as if the two populations added to n_i.)",
+        hi: "शुद्ध क्रिस्टल में हर वाहक युग्म में बनता है, अतः n_e = n_h = n_i = 3, अर्थात् इन इकाइयों में 6/2. यह बराबरी क्रियाविधि का सीधा परिणाम है: एक बंध तोड़ने से एक इलेक्ट्रॉन मुक्त होता है और ठीक एक होल बचता है, अतः दोनों आबादियाँ अलग नहीं हो सकतीं। डोपिंग ठीक वही है जो उस बराबरी को तोड़ती है। (6 दुगुना कर देता है, मानो दोनों आबादियाँ जुड़कर n_i बनाती हों।)",
+        mr: "शुद्ध स्फटिकात प्रत्येक वाहक जोडीत तयार होतो, म्हणून n_e = n_h = n_i = 3, म्हणजे या एककांत 6/2. ही समानता यंत्रणेचा थेट परिणाम आहे: एक बंध तोडल्याने एक इलेक्ट्रॉन मुक्त होतो आणि नेमका एक होल उरतो, म्हणून दोन्ही लोकसंख्या वेगळ्या होऊ शकत नाहीत. डोपिंग नेमके तेच जे ती समानता मोडते. (6 दुप्पट करते, जणू दोन्ही लोकसंख्या जुळून n_i बनवत असाव्यात.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "A semiconductor has a band gap of 1.24 eV. What is the longest wavelength, in nm, that can lift an electron across it? Take hc = 1240 eV nm.",
+        hi: "किसी अर्धचालक का बैंड अंतराल 1.24 eV है। इलेक्ट्रॉन को उसके पार उठा सकने वाली सबसे लंबी तरंगदैर्ध्य, nm में, क्या है? hc = 1240 eV nm लो।",
+        mr: "एका अर्धवाहकाची बँड फट 1.24 eV आहे. इलेक्ट्रॉनला तिच्या पलीकडे उचलू शकणारी सर्वांत लांब तरंगलांबी, nm मध्ये, किती? hc = 1240 eV nm घ्या.",
+      },
+      answer: 1000,
+      wrong: [100, 1.24, 10000],
+      checkExpr: "1240/1.24",
+      solution: {
+        en: "λ = hc/E_g = 1240/1.24 = 1000 nm. Longer wavelengths carry less energy per photon and cannot bridge the gap however bright the beam — the same threshold argument as in the photoelectric effect, with the band gap playing the part of the work function. A gap of this size sits in the near infrared, which is why such a material makes a good detector for heat radiation but is transparent to it as well. (100 misplaces the exponent by one.)",
+        hi: "λ = hc/E_g = 1240/1.24 = 1000 nm. लंबी तरंगदैर्ध्य प्रति फ़ोटॉन कम ऊर्जा ढोती हैं और पुंज कितना भी चमकीला हो अंतराल नहीं पाट सकतीं — वही देहली वाला तर्क जो प्रकाश-विद्युत प्रभाव में था, जिसमें बैंड अंतराल कार्यफलन की भूमिका निभा रहा है। इस आकार का अंतराल निकट अवरक्त में बैठता है, इसीलिए ऐसा पदार्थ ऊष्मा विकिरण का अच्छा संसूचक बनता है और उसके प्रति पारदर्शी भी है। (100 घातांक एक से चूक जाता है।)",
+        mr: "λ = hc/E_g = 1240/1.24 = 1000 nm. लांब तरंगलांबी प्रति फोटॉन कमी ऊर्जा वाहतात आणि शलाका कितीही तेजस्वी असो फट भरू शकत नाहीत — तोच उंबरठ्याचा युक्तिवाद जो प्रकाश-विद्युत परिणामात होता, ज्यात बँड फट कार्यफलनाची भूमिका बजावत आहे. या आकाराची फट निकट अवरक्तात बसते, म्हणूनच असा पदार्थ उष्णता प्रारणाचा चांगला संवेदक बनतो आणि त्याला पारदर्शकही आहे. (100 घातांक एकाने चुकवते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "In a doped semiconductor n_e n_h = n_i². If n_i = 2 × 10¹⁶ per m³ and n_e = 8 × 10¹⁶ per m³, what is n_h in units of 10¹⁶ per m³?",
+        hi: "डोपित अर्धचालक में n_e n_h = n_i². यदि n_i = 2 × 10¹⁶ प्रति m³ और n_e = 8 × 10¹⁶ प्रति m³, तो n_h, 10¹⁶ प्रति m³ की इकाइयों में क्या है?",
+        mr: "डोपित अर्धवाहकात n_e n_h = n_i². जर n_i = 2 × 10¹⁶ प्रति m³ आणि n_e = 8 × 10¹⁶ प्रति m³, तर n_h, 10¹⁶ प्रति m³ च्या एककांत किती?",
+      },
+      answer: 0.5,
+      wrong: [2, 4, 16],
+      checkExpr: "4/8",
+      solution: {
+        en: "n_h = n_i²/n_e = 4/8 = 0.5 in these units. Note what has happened: raising the electrons from 2 to 8 has pushed the holes DOWN from 2 to 0.5, keeping the product fixed. Doping does not simply add majority carriers; it suppresses the minority ones by the same factor, and that suppression is what makes a doped region behave so decisively as one type. (2 leaves the holes unchanged at n_i.)",
+        hi: "n_h = n_i²/n_e = 4/8 = 0.5 इन इकाइयों में। ध्यान दो कि क्या हुआ: इलेक्ट्रॉनों को 2 से 8 तक बढ़ाने ने होलों को 2 से 0.5 तक नीचे धकेल दिया, और गुणनफल नियत रखा। डोपिंग केवल बहुसंख्यक वाहक जोड़ती नहीं; वह अल्पसंख्यकों को उसी गुणक से दबा देती है, और वही दमन डोपित भाग को इतने निर्णायक ढंग से एक ही प्रकार का बनाता है। (2 होलों को n_i पर अपरिवर्तित छोड़ देता है।)",
+        mr: "n_h = n_i²/n_e = 4/8 = 0.5 या एककांत. काय घडले ते लक्षात घ्या: इलेक्ट्रॉन 2 वरून 8 पर्यंत वाढवल्याने होल 2 वरून 0.5 पर्यंत खाली ढकलले गेले, आणि गुणाकार स्थिर राहिला. डोपिंग केवळ बहुसंख्य वाहक जोडत नाही; ते अल्पसंख्यांना त्याच पटीने दाबते, आणि तेच दमन डोपित भागाला इतक्या निर्णायकपणे एकाच प्रकाराचा बनवते. (2 होल n_i वर अपरिवर्तित सोडते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A full-wave rectifier is fed from a 50 Hz supply. What is the frequency, in Hz, of the ripple in its output?",
+        hi: "एक पूर्ण-तरंग दिष्टकारी को 50 Hz आपूर्ति दी जाती है। उसके निर्गत में लहर की आवृत्ति, Hz में, क्या है?",
+        mr: "एका पूर्ण-लहरी दिष्टकारीला 50 Hz पुरवठा दिला जातो. त्याच्या निर्गतातील लाटेची वारंवारता, Hz मध्ये, किती?",
+      },
+      answer: 100,
+      wrong: [25, 50, 200],
+      checkExpr: "50*2",
+      solution: {
+        en: "A full-wave rectifier flips the negative half of every cycle up rather than discarding it, so two humps appear per input cycle and the ripple is at 50 × 2 = 100 Hz. A half-wave rectifier would give one hump per cycle and a ripple at 50 Hz. The doubling matters practically: a higher ripple frequency is easier to smooth, so a full-wave design needs a smaller filter capacitor for the same steadiness. (50 gives the half-wave answer.)",
+        hi: "पूर्ण-तरंग दिष्टकारी हर चक्र के ऋण आधे को फेंकने के बजाय ऊपर पलट देता है, अतः प्रति निवेश चक्र दो कूबड़ बनते हैं और लहर 50 × 2 = 100 Hz पर है। अर्ध-तरंग दिष्टकारी प्रति चक्र एक कूबड़ और 50 Hz पर लहर देता। दुगुना होना व्यावहारिक रूप से मायने रखता है: ऊँची लहर आवृत्ति चिकना करना आसान है, अतः उसी स्थिरता के लिए पूर्ण-तरंग रचना को छोटा फ़िल्टर संधारित्र चाहिए। (50 अर्ध-तरंग वाला उत्तर देता है।)",
+        mr: "पूर्ण-लहरी दिष्टकारी प्रत्येक चक्राचा ऋण अर्धा भाग फेकून देण्याऐवजी वर पलटवतो, म्हणून प्रति निवेश चक्र दोन कुबड बनतात आणि लाट 50 × 2 = 100 Hz वर आहे. अर्ध-लहरी दिष्टकारी प्रति चक्र एक कुबड आणि 50 Hz वर लाट देईल. दुप्पट होणे व्यावहारिकदृष्ट्या महत्त्वाचे: उंच लाट वारंवारता गुळगुळीत करणे सोपे, म्हणून त्याच स्थिरतेसाठी पूर्ण-लहरी रचनेला लहान गाळणी धारित्र लागते. (50 अर्ध-लहरी उत्तर देते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A silicon diode with a forward drop of 0.7 V is in series with a 430 Ω resistor across a 5 V supply. What current, in mA, flows?",
+        hi: "0.7 V अग्र पतन वाला सिलिकॉन डायोड 430 Ω प्रतिरोधक के श्रेणी में 5 V आपूर्ति के आर-पार है। कितनी धारा, mA में, बहती है?",
+        mr: "0.7 V अग्र घसरण असलेला सिलिकॉन डायोड 430 Ω रोधकाच्या श्रेणीत 5 V पुरवठ्याच्या आरपार आहे. किती धारा, mA मध्ये, वाहते?",
+      },
+      answer: 10,
+      wrong: [11.6, 1.6, 7],
+      checkExpr: "(5-0.7)/430*1000",
+      solution: {
+        en: "The diode takes its 0.7 V first, leaving 5 − 0.7 = 4.3 V across the resistor, so I = 4.3/430 = 0.01 A = 10 mA. The order matters: the drop is subtracted before Ohm's law is applied, because a diode is not a resistance and does not share the voltage in proportion. (11.6 ignores the diode's drop entirely.)",
+        hi: "डायोड पहले अपने 0.7 V लेता है, प्रतिरोधक के आर-पार 5 − 0.7 = 4.3 V छोड़ता है, अतः I = 4.3/430 = 0.01 A = 10 mA. क्रम मायने रखता है: ओम का नियम लगाने से पहले पतन घटाया जाता है, क्योंकि डायोड प्रतिरोध नहीं है और वोल्टता को अनुपात में नहीं बाँटता। (11.6 डायोड का पतन बिलकुल अनदेखा कर देता है।)",
+        mr: "डायोड आधी आपले 0.7 V घेतो, रोधकाच्या आरपार 5 − 0.7 = 4.3 V सोडतो, म्हणून I = 4.3/430 = 0.01 A = 10 mA. क्रम महत्त्वाचा आहे: ओहमचा नियम लावण्याआधी घसरण वजा केली जाते, कारण डायोड हा रोध नाही आणि व्होल्टेज प्रमाणात वाटत नाही. (11.6 डायोडची घसरण पूर्णपणे दुर्लक्षिते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A Zener diode holds 6 V across itself. It is fed from a 10 V supply through a 200 Ω series resistor. What current, in mA, flows through the resistor?",
+        hi: "एक ज़ेनर डायोड अपने आर-पार 6 V बनाए रखता है। उसे 200 Ω श्रेणी प्रतिरोधक से होकर 10 V आपूर्ति दी जाती है। प्रतिरोधक में से कितनी धारा, mA में, बहती है?",
+        mr: "एक झेनर डायोड स्वतःच्या आरपार 6 V टिकवतो. त्याला 200 Ω श्रेणी रोधकातून 10 V पुरवठा दिला जातो. रोधकातून किती धारा, mA मध्ये, वाहते?",
+      },
+      answer: 20,
+      wrong: [50, 30, 80],
+      checkExpr: "(10-6)/200*1000",
+      solution: {
+        en: "The resistor carries the difference between the supply and the regulated voltage: (10 − 6)/200 = 0.02 A = 20 mA. The Zener's job is to hold its own voltage steady while the series resistor absorbs whatever is left over, so if the supply wanders up to 12 V the resistor simply passes more current and the output stays at 6 V. That is the whole idea of regulation — one component fixes a value and another swallows the variation. (50 divides the whole supply voltage by the resistance.)",
+        hi: "प्रतिरोधक आपूर्ति और नियंत्रित वोल्टता का अंतर ढोता है: (10 − 6)/200 = 0.02 A = 20 mA. ज़ेनर का काम अपनी वोल्टता स्थिर रखना है जबकि श्रेणी प्रतिरोधक जो बचे उसे सोख ले, अतः आपूर्ति भटककर 12 V तक जाए तो प्रतिरोधक बस अधिक धारा जाने देता है और निर्गत 6 V पर बना रहता है। नियमन का पूरा विचार यही है — एक पुर्ज़ा मान तय करता है और दूसरा उतार-चढ़ाव निगल लेता है। (50 पूरी आपूर्ति वोल्टता को प्रतिरोध से भाग दे देता है।)",
+        mr: "रोधक पुरवठा आणि नियंत्रित व्होल्टेज यांचा फरक वाहतो: (10 − 6)/200 = 0.02 A = 20 mA. झेनरचे काम आपला व्होल्टेज स्थिर ठेवणे तर श्रेणी रोधकाने जे उरेल ते शोषणे, म्हणून पुरवठा भरकटून 12 V पर्यंत गेला तर रोधक फक्त अधिक धारा जाऊ देतो आणि निर्गत 6 V वर टिकतो. नियमनाची अख्खी कल्पना हीच — एक घटक मूल्य ठरवतो आणि दुसरा चढउतार गिळतो. (50 अख्खा पुरवठा व्होल्टेज रोधाने भागते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "For an intrinsic semiconductor the conductivity is σ = e n (μ_e + μ_h). If μ_e = 0.14 and μ_h = 0.05 m²/(V s), what is μ_e + μ_h?",
+        hi: "नैज अर्धचालक के लिए चालकता σ = e n (μ_e + μ_h) है। यदि μ_e = 0.14 और μ_h = 0.05 m²/(V s), तो μ_e + μ_h क्या है?",
+        mr: "नैसर्गिक अर्धवाहकासाठी वाहकता σ = e n (μ_e + μ_h) आहे. जर μ_e = 0.14 आणि μ_h = 0.05 m²/(V s), तर μ_e + μ_h किती?",
+      },
+      answer: 0.19,
+      wrong: [0.09, 0.7, 0.007],
+      checkExpr: "0.14+0.05",
+      solution: {
+        en: "The two mobilities add because electrons and holes drift in opposite directions but carry opposite charges, so their contributions to the current point the SAME way: 0.14 + 0.05 = 0.19 m²/(V s). Note that the electron's mobility is about three times the hole's, which is why n-channel devices switch faster than p-channel ones and why most fast logic is built around electron conduction. (0.09 subtracts the two.)",
+        hi: "दोनों गतिशीलताएँ जुड़ती हैं क्योंकि इलेक्ट्रॉन और होल उलटी दिशाओं में बहते हैं पर उलटे आवेश ढोते हैं, अतः धारा में उनके अंश एक ही ओर इशारा करते हैं: 0.14 + 0.05 = 0.19 m²/(V s). ध्यान दो कि इलेक्ट्रॉन की गतिशीलता होल की लगभग तीन गुनी है, इसीलिए n-चैनल युक्तियाँ p-चैनल से तेज़ स्विच करती हैं और इसीलिए अधिकांश तेज़ तर्क-परिपथ इलेक्ट्रॉन चालन के गिर्द बने हैं। (0.09 दोनों को घटा देता है।)",
+        mr: "दोन्ही गतिशीलता जुळतात कारण इलेक्ट्रॉन आणि होल उलट दिशांनी वाहतात पण उलट प्रभार वाहतात, म्हणून धारेतले त्यांचे वाटे एकाच दिशेने दाखवतात: 0.14 + 0.05 = 0.19 m²/(V s). लक्षात घ्या की इलेक्ट्रॉनची गतिशीलता होलच्या सुमारे तिप्पट आहे, म्हणूनच n-वाहिनी साधने p-वाहिनीहून जलद स्विच करतात आणि म्हणूनच बहुतांश जलद तर्क-परिपथ इलेक्ट्रॉन वहनाभोवती बांधलेले आहेत. (0.09 दोन्ही वजा करते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A light-emitting diode emits at 620 nm. What is its band gap, in eV? Take hc = 1240 eV nm.",
+        hi: "एक प्रकाश उत्सर्जक डायोड 620 nm पर उत्सर्जित करता है। उसका बैंड अंतराल, eV में, क्या है? hc = 1240 eV nm लो।",
+        mr: "एक प्रकाश उत्सर्जक डायोड 620 nm वर उत्सर्जित करतो. त्याची बँड फट, eV मध्ये, किती? hc = 1240 eV nm घ्या.",
+      },
+      answer: 2,
+      wrong: [0.5, 4, 620],
+      checkExpr: "1240/620",
+      solution: {
+        en: "Each recombining electron gives up the gap energy as one photon, so E_g = hc/λ = 1240/620 = 2 eV — orange-red light. The colour is therefore chosen at the foundry by picking the semiconductor, not by heating anything, which is why an LED runs cool and why blue LEDs needed a whole new material rather than a hotter filament. (0.5 inverts the ratio.)",
+        hi: "पुनर्योजित होता हर इलेक्ट्रॉन अंतराल ऊर्जा को एक फ़ोटॉन के रूप में छोड़ता है, अतः E_g = hc/λ = 1240/620 = 2 eV — नारंगी-लाल प्रकाश। अतः रंग कारख़ाने में अर्धचालक चुनकर तय होता है, कुछ गर्म करके नहीं, इसीलिए LED ठंडा चलता है और इसीलिए नीली LED को अधिक गर्म तंतु नहीं बल्कि बिलकुल नया पदार्थ चाहिए था। (0.5 अनुपात उलट देता है।)",
+        mr: "पुनर्योजित होणारा प्रत्येक इलेक्ट्रॉन फट ऊर्जा एका फोटॉनच्या रूपात सोडतो, म्हणून E_g = hc/λ = 1240/620 = 2 eV — नारिंगी-लाल प्रकाश. म्हणून रंग कारखान्यात अर्धवाहक निवडून ठरतो, काही तापवून नाही, म्हणूनच LED थंड चालतो आणि म्हणूनच निळ्या LED ला अधिक तप्त तंतू नव्हे तर पूर्णपणे नवा पदार्थ लागला. (0.5 गुणोत्तर उलटवते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "A germanium diode with a barrier of 0.3 V is forward biased from a 1.5 V supply through a 100 Ω resistor. What current, in mA, flows?",
+        hi: "0.3 V रोधिका वाला जर्मेनियम डायोड 100 Ω प्रतिरोधक से होकर 1.5 V आपूर्ति से अग्र अभिनत किया जाता है। कितनी धारा, mA में, बहती है?",
+        mr: "0.3 V अडसर असलेला जर्मेनियम डायोड 100 Ω रोधकातून 1.5 V पुरवठ्याने अग्र अभिनत केला जातो. किती धारा, mA मध्ये, वाहते?",
+      },
+      answer: 12,
+      wrong: [15, 3, 1.2],
+      checkExpr: "(1.5-0.3)/100*1000",
+      solution: {
+        en: "I = (1.5 − 0.3)/100 = 1.2/100 = 0.012 A = 12 mA. Compare this with the silicon case: germanium's lower barrier leaves more voltage for the resistor, which is a real advantage in low-voltage circuits and the reason germanium diodes are still used in signal detection. Their disadvantage is a much larger reverse current, since the smaller gap lets thermal generation produce minority carriers far more readily. (15 ignores the barrier altogether.)",
+        hi: "I = (1.5 − 0.3)/100 = 1.2/100 = 0.012 A = 12 mA. इसकी सिलिकॉन वाली स्थिति से तुलना करो: जर्मेनियम की छोटी रोधिका प्रतिरोधक के लिए अधिक वोल्टता छोड़ती है, जो कम वोल्टता के परिपथों में असली लाभ है और यही कारण है कि संकेत संसूचन में जर्मेनियम डायोड अब भी काम आते हैं। उनका नुक़सान कहीं बड़ी पश्च धारा है, क्योंकि छोटा अंतराल ऊष्मीय जनन को अल्पसंख्यक वाहक कहीं आसानी से बनाने देता है। (15 रोधिका बिलकुल अनदेखी कर देता है।)",
+        mr: "I = (1.5 − 0.3)/100 = 1.2/100 = 0.012 A = 12 mA. याची सिलिकॉनच्या स्थितीशी तुलना करा: जर्मेनियमचा लहान अडसर रोधकासाठी अधिक व्होल्टेज सोडतो, जो कमी व्होल्टेजच्या परिपथांत खरा फायदा आहे आणि हेच कारण की संकेत संवेदनात जर्मेनियम डायोड अजूनही वापरले जातात. त्यांचा तोटा म्हणजे कितीतरी मोठी पश्च धारा, कारण लहान फट औष्णिक निर्मितीला अल्पसंख्य वाहक कितीतरी सहज बनवू देते. (15 अडसर पूर्णपणे दुर्लक्षिते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "Silicon with n_i = 2 × 10¹⁶ per m³ is doped until n_e = 2 × 10²² per m³. Using n_e n_h = n_i², what is n_h in units of 10¹⁰ per m³?",
+        hi: "n_i = 2 × 10¹⁶ प्रति m³ वाला सिलिकॉन तब तक डोप किया जाता है जब तक n_e = 2 × 10²² प्रति m³ न हो जाए। n_e n_h = n_i² से, n_h, 10¹⁰ प्रति m³ की इकाइयों में क्या है?",
+        mr: "n_i = 2 × 10¹⁶ प्रति m³ असलेले सिलिकॉन तोवर डोप केले जाते जोवर n_e = 2 × 10²² प्रति m³ होत नाही. n_e n_h = n_i² वापरून, n_h, 10¹⁰ प्रति m³ च्या एककांत किती?",
+      },
+      answer: 2,
+      wrong: [4, 1, 8],
+      checkExpr: "4/2",
+      solution: {
+        en: "n_i² = 4 × 10³², so n_h = (4 × 10³²)/(2 × 10²²) = 2 × 10¹⁰ per m³, that is 4/2 = 2 in the units asked. Now look at what the doping has done. The electrons rose from 2 × 10¹⁶ to 2 × 10²² — a factor of a million — and the holes fell from 2 × 10¹⁶ to 2 × 10¹⁰, by exactly the same factor. The two populations, equal in the pure crystal, now differ by twelve orders of magnitude. Two consequences follow. First, the conductivity is entirely an electron affair; the holes contribute a millionth of a millionth and can be ignored in any current calculation. Second, and less obviously, the minority carriers cannot be ignored everywhere — the reverse current of a p-n junction is carried by exactly these crushed populations, which is why it is measured in microamperes and why it rises steeply with temperature, since heat regenerates them. The mass-action law is doing a lot of work for so simple a statement: it says that raising one carrier type necessarily suppresses the other, because recombination speeds up as soon as either becomes plentiful. (4 gives n_i² without dividing; 1 halves rather than dividing by the doping.)",
+        hi: "n_i² = 4 × 10³², अतः n_h = (4 × 10³²)/(2 × 10²²) = 2 × 10¹⁰ प्रति m³, अर्थात् पूछी गई इकाइयों में 4/2 = 2. अब देखो कि डोपिंग ने क्या किया। इलेक्ट्रॉन 2 × 10¹⁶ से 2 × 10²² तक चढ़े — दस लाख का गुणक — और होल 2 × 10¹⁶ से 2 × 10¹⁰ तक गिरे, ठीक उसी गुणक से। शुद्ध क्रिस्टल में बराबर दोनों आबादियाँ अब बारह कोटियों से भिन्न हैं। दो परिणाम निकलते हैं। पहला, चालकता पूरी तरह इलेक्ट्रॉनों का मामला है; होल दस लाख के दस लाखवें भाग जितना जोड़ते हैं और किसी भी धारा गणना में उन्हें छोड़ा जा सकता है। दूसरा, और कम स्पष्ट, अल्पसंख्यक वाहकों को हर जगह छोड़ा नहीं जा सकता — p-n संधि की पश्च धारा ठीक इन्हीं कुचली आबादियों से ढोई जाती है, इसीलिए वह माइक्रोऐम्पियर में नापी जाती है और इसीलिए ताप के साथ तेज़ी से बढ़ती है, क्योंकि ऊष्मा उन्हें फिर से बनाती है। इतने सरल कथन के लिए द्रव्यमान-क्रिया नियम बहुत काम कर रहा है: वह कहता है कि एक वाहक-प्रकार बढ़ाना दूसरे को अनिवार्यतः दबा देता है, क्योंकि कोई भी भरपूर होते ही पुनर्योजन तेज़ हो जाता है। (4 बिना भाग दिए n_i² दे देता है; 1 डोपिंग से भाग देने के बजाय आधा कर देता है।)",
+        mr: "n_i² = 4 × 10³², म्हणून n_h = (4 × 10³²)/(2 × 10²²) = 2 × 10¹⁰ प्रति m³, म्हणजे विचारलेल्या एककांत 4/2 = 2. आता डोपिंगने काय केले ते पाहा. इलेक्ट्रॉन 2 × 10¹⁶ वरून 2 × 10²² पर्यंत चढले — दहा लाखाचा गुणक — आणि होल 2 × 10¹⁶ वरून 2 × 10¹⁰ पर्यंत घसरले, नेमक्या त्याच पटीने. शुद्ध स्फटिकात समान असलेल्या दोन्ही लोकसंख्या आता बारा कोटींनी वेगळ्या आहेत. दोन परिणाम निघतात. पहिला, वाहकता पूर्णपणे इलेक्ट्रॉनांची बाब आहे; होल दहा लाखाच्या दहा लाखाव्या भागाइतके जोडतात आणि कोणत्याही धारा गणनेत त्यांना सोडता येते. दुसरा, आणि कमी स्पष्ट, अल्पसंख्य वाहकांना सर्वत्र सोडता येत नाही — p-n संधीची पश्च धारा नेमक्या याच चिरडलेल्या लोकसंख्यांनी वाहली जाते, म्हणूनच ती मायक्रोअँपिअरमध्ये मोजली जाते आणि म्हणूनच तापमानासोबत झपाट्याने वाढते, कारण उष्णता त्यांना पुन्हा बनवते. इतक्या साध्या विधानासाठी वस्तुमान-क्रिया नियम बरेच काम करत आहे: तो सांगतो की एक वाहक-प्रकार वाढवणे दुसऱ्याला अपरिहार्यपणे दाबते, कारण कोणताही भरपूर होताच पुनर्योजन वेगवान होते. (4 भागाकाराविना n_i² देते; 1 डोपिंगने भागण्याऐवजी निम्मे करते.)",
       },
     },
   ],

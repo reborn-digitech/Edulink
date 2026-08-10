@@ -2514,8 +2514,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 348
-  chapters / 6,142 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 350
+  chapters / 6,198 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2783,8 +2783,27 @@ navigation" means the actual list rather than one somebody maintained by hand.
   electrostatics fact named "The principle of superposition" shared its name
   with Class 11 Waves and was avoiding a duplicate-stem error only by luck of
   the seeded shuffle; it is now "Superposition of electrostatic forces", which
-  is the more precise name anyway. Suite re-pointed and green: 87 files, 1485
-  tests.
+  is the more precise name anyway. **Class 12 Physics then closed at fourteen
+  chapters** — 391 questions, the last two being Nuclei and Semiconductor
+  Electronics. Both turn on reading a graph or a formula for what it actually
+  claims. Fission and fusion both release because the binding-energy-per-nucleon
+  curve is not monotonic but a hill with iron at the top, so uranium splitting
+  and hydrogen joining are not opposite moves — both run downhill from opposite
+  slopes, and 235 nucleons each gaining 0.9 MeV is where the 200 MeV comes from.
+  Two half-lives do not exhaust a sample, because each halves what is LEFT; and
+  a nucleus that has waited a century is exactly as likely to go in the next
+  second as one made this morning, because the decay law contains no age term at
+  all — an intuition drawn from things wearing out, applied to something that
+  does not wear out. The last chapter's spine is σ = nqμ: heating a metal lowers
+  μ with n fixed, heating silicon raises n exponentially, and doping raises n by
+  chemistry alone — one boron atom per million changing the conductivity a
+  millionfold while the crystal stays exactly neutral, because a missing BOND is
+  not a missing charge. The mass-action law n_e n_h = n_i² then does the rest:
+  raise the majority carriers a millionfold and the minority ones are crushed by
+  the same factor, and that asymmetry is what a diode is. **One more `numberIn`
+  false positive** — the radius formula written `A^(1/3)` parses as 0.333 —
+  fixed by writing "the cube root of A" in prose, warnings back to 34. Suite
+  re-pointed and green: 87 files, 1485 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)

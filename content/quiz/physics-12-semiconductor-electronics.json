@@ -1,0 +1,1003 @@
+{
+  "subject": "PHYSICS",
+  "classLevel": 12,
+  "chapter": "Chapter 14 — Semiconductor Electronics",
+  "name": "Semiconductor Electronics",
+  "slug": "physics-12-semiconductor-electronics",
+  "summary": "A crystal that conducts badly at room temperature and better as it warms, which is the opposite of what a metal does and gives away that its carriers have to be created rather than merely hurried along; an absence in a bond that moves as a positive particle would and is counted as one; one foreign atom in a million changing the conductivity by a factor of a million, without the crystal acquiring any net charge at all; a boundary between two such doped regions across which electrons and holes leave a swept-clean layer and a built-in barrier behind them; and the fact that the barrier is easy to push against from one side and impossible from the other, which is the whole of rectification and the beginning of every circuit that follows.",
+  "position": 14,
+  "source": "EduLink original, written against NCERT Physics Part I (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "translations": {
+    "hi": {
+      "name": "अर्धचालक इलेक्ट्रॉनिकी",
+      "summary": "ऐसा क्रिस्टल जो कमरे के ताप पर बुरा चालक है और गर्म होने पर बेहतर, जो धातु के ठीक उलटा है और बता देता है कि उसके वाहकों को केवल दौड़ाना नहीं, बनाना पड़ता है; बंध में ऐसी अनुपस्थिति जो धन कण की तरह चलती है और वैसी ही गिनी जाती है; दस लाख में एक बाहरी परमाणु जो चालकता को दस लाख गुना बदल देता है, और क्रिस्टल पर कोई नेट आवेश आता ही नहीं; ऐसे दो डोपित भागों के बीच की सीमा जिसके आर-पार इलेक्ट्रॉन और होल एक साफ़ बुहारी हुई परत तथा अंतर्निर्मित रोध पीछे छोड़ जाते हैं; और यह तथ्य कि उस रोध को एक ओर से धकेलना आसान और दूसरी ओर से असंभव है, और यही पूरा दिष्टकरण है तथा उसके बाद के हर परिपथ की शुरुआत।"
+    },
+    "mr": {
+      "name": "अर्धवाहक इलेक्ट्रॉनिकी",
+      "summary": "असा स्फटिक जो खोलीच्या तापमानावर वाईट वाहक आहे आणि तापताना अधिक चांगला, जो धातूच्या नेमका उलट आहे आणि सांगून टाकतो की त्याचे वाहक केवळ पळवावे लागत नाहीत, बनवावे लागतात; बंधातील अशी अनुपस्थिती जी धन कणासारखी हलते आणि तशीच मोजली जाते; दहा लाखांत एक परका अणू जो वाहकता दहा लाख पटींनी बदलतो, आणि स्फटिकावर कोणताही निव्वळ प्रभार येतच नाही; अशा दोन डोपित भागांमधली सीमा जिच्या आरपार इलेक्ट्रॉन आणि होल एक स्वच्छ झाडलेला थर तसेच अंतर्निर्मित अडसर मागे सोडून जातात; आणि हे सत्य की त्या अडसराला एका बाजूने ढकलणे सोपे आणि दुसऱ्या बाजूने अशक्य आहे, आणि हेच अख्खे दिष्टीकरण आणि त्यानंतरच्या प्रत्येक परिपथाची सुरुवात."
+    }
+  },
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A pure crystal in which every electron shaken loose by heat leaves behind an equally mobile vacancy, so the two kinds of carrier are always present in exactly equal numbers. Which material is this?",
+      "choices": [
+        "The p-type semiconductor",
+        "The light-emitting diode",
+        "The intrinsic semiconductor",
+        "The n-type semiconductor"
+      ],
+      "answerIndex": 2,
+      "solution": "An intrinsic semiconductor is a pure crystal in which n_e = n_h = n_i, its carriers arising only from thermally broken bonds, so its conductivity rises steeply with temperature. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ऐसा शुद्ध क्रिस्टल जिसमें ऊष्मा से छूटा हर इलेक्ट्रॉन अपने पीछे उतनी ही गतिशील रिक्ति छोड़ जाता है, अतः दोनों तरह के वाहक सदा ठीक बराबर संख्या में मौजूद रहते हैं। यह कौन-सा पदार्थ है?",
+          "choices": [
+            "p-प्रकार अर्धचालक",
+            "प्रकाश उत्सर्जक डायोड",
+            "नैज अर्धचालक",
+            "n-प्रकार अर्धचालक"
+          ],
+          "solution": "नैज अर्धचालक वह शुद्ध क्रिस्टल है जिसमें n_e = n_h = n_i, और जिसके वाहक केवल ऊष्मा से टूटे बंधों से आते हैं, अतः उसकी चालकता ताप के साथ तेज़ी से बढ़ती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "असा शुद्ध स्फटिक ज्यात उष्णतेने सुटलेला प्रत्येक इलेक्ट्रॉन आपल्यामागे तितकीच गतिशील रिक्तता सोडतो, म्हणून दोन्ही प्रकारचे वाहक नेहमी नेमक्या समान संख्येत उपस्थित असतात. हा कोणता पदार्थ?",
+          "choices": [
+            "p-प्रकार अर्धवाहक",
+            "प्रकाश उत्सर्जक डायोड",
+            "नैसर्गिक अर्धवाहक",
+            "n-प्रकार अर्धवाहक"
+          ],
+          "solution": "नैसर्गिक अर्धवाहक म्हणजे तो शुद्ध स्फटिक ज्यात n_e = n_h = n_i, आणि ज्याचे वाहक केवळ उष्णतेने तुटलेल्या बंधांतून येतात, म्हणून त्याची वाहकता तापमानासोबत झपाट्याने वाढते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The n-type semiconductor is correct?",
+      "choices": [
+        "A p-type semiconductor is made by doping with a trivalent acceptor such as boron or indium, so holes are the majority carriers and electrons the minority.",
+        "The p-n junction develops a depletion region emptied of free carriers, and the exposed fixed ions on either side set up a barrier potential of about 0.3 V in germanium and 0.7 V in silicon.",
+        "An intrinsic semiconductor is a pure crystal in which n_e = n_h = n_i, its carriers arising only from thermally broken bonds, so its conductivity rises steeply with temperature.",
+        "An n-type semiconductor is made by doping with a pentavalent donor such as phosphorus or arsenic, so electrons are the majority carriers and holes the minority."
+      ],
+      "answerIndex": 3,
+      "solution": "An n-type semiconductor is made by doping with a pentavalent donor such as phosphorus or arsenic, so electrons are the majority carriers and holes the minority. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "n-प्रकार अर्धचालक के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "p-प्रकार अर्धचालक बोरॉन या इंडियम जैसे त्रिसंयोजी ग्राही से डोप करके बनता है, अतः होल बहुसंख्यक वाहक और इलेक्ट्रॉन अल्पसंख्यक होते हैं।",
+            "p-n संधि पर मुक्त वाहकों से ख़ाली ह्रासी क्षेत्र बनता है, और दोनों ओर उघड़े नियत आयन जर्मेनियम में लगभग 0.3 V और सिलिकॉन में 0.7 V का रोधिका विभव खड़ा कर देते हैं।",
+            "नैज अर्धचालक वह शुद्ध क्रिस्टल है जिसमें n_e = n_h = n_i, और जिसके वाहक केवल ऊष्मा से टूटे बंधों से आते हैं, अतः उसकी चालकता ताप के साथ तेज़ी से बढ़ती है।",
+            "n-प्रकार अर्धचालक फ़ॉस्फ़ोरस या आर्सेनिक जैसे पंचसंयोजी दाता से डोप करके बनता है, अतः इलेक्ट्रॉन बहुसंख्यक वाहक और होल अल्पसंख्यक होते हैं।"
+          ],
+          "solution": "n-प्रकार अर्धचालक फ़ॉस्फ़ोरस या आर्सेनिक जैसे पंचसंयोजी दाता से डोप करके बनता है, अतः इलेक्ट्रॉन बहुसंख्यक वाहक और होल अल्पसंख्यक होते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "n-प्रकार अर्धवाहक विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "p-प्रकार अर्धवाहक बोरॉन वा इंडियमसारख्या त्रिसंयुजी ग्राहीने डोप करून बनतो, म्हणून होल बहुसंख्य वाहक आणि इलेक्ट्रॉन अल्पसंख्य असतात.",
+            "p-n संधीवर मुक्त वाहकांनी रिकामा झालेला क्षयित प्रदेश तयार होतो, आणि दोन्ही बाजूंचे उघडे स्थिर आयन जर्मेनियममध्ये सुमारे 0.3 V आणि सिलिकॉनमध्ये 0.7 V चा अडसर विभव उभा करतात.",
+            "नैसर्गिक अर्धवाहक म्हणजे तो शुद्ध स्फटिक ज्यात n_e = n_h = n_i, आणि ज्याचे वाहक केवळ उष्णतेने तुटलेल्या बंधांतून येतात, म्हणून त्याची वाहकता तापमानासोबत झपाट्याने वाढते.",
+            "n-प्रकार अर्धवाहक फॉस्फरस वा आर्सेनिकसारख्या पंचसंयुजी दात्याने डोप करून बनतो, म्हणून इलेक्ट्रॉन बहुसंख्य वाहक आणि होल अल्पसंख्य असतात."
+          ],
+          "solution": "n-प्रकार अर्धवाहक फॉस्फरस वा आर्सेनिकसारख्या पंचसंयुजी दात्याने डोप करून बनतो, म्हणून इलेक्ट्रॉन बहुसंख्य वाहक आणि होल अल्पसंख्य असतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"A hole is not a particle but a bookkeeping device: what actually moves is a succession of electrons hopping one step each, and the vacancy that travels the other way is counted as a single positive carrier because it behaves exactly like one.\" — which of these is this about?",
+      "choices": [
+        "The p-type semiconductor",
+        "The intrinsic semiconductor",
+        "The n-type semiconductor",
+        "The light-emitting diode"
+      ],
+      "answerIndex": 0,
+      "solution": "A p-type semiconductor is made by doping with a trivalent acceptor such as boron or indium, so holes are the majority carriers and electrons the minority. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"होल कण नहीं बल्कि हिसाब की युक्ति है: वस्तुतः जो चलता है वह एक-एक क़दम फुदकते इलेक्ट्रॉनों की शृंखला है, और दूसरी ओर चलती रिक्ति एक अकेले धन वाहक की तरह गिनी जाती है क्योंकि वह ठीक वैसी ही बरतती है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "p-प्रकार अर्धचालक",
+            "नैज अर्धचालक",
+            "n-प्रकार अर्धचालक",
+            "प्रकाश उत्सर्जक डायोड"
+          ],
+          "solution": "p-प्रकार अर्धचालक बोरॉन या इंडियम जैसे त्रिसंयोजी ग्राही से डोप करके बनता है, अतः होल बहुसंख्यक वाहक और इलेक्ट्रॉन अल्पसंख्यक होते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"होल हा कण नसून हिशेबाची युक्ती आहे: प्रत्यक्षात जे हलते ती एकेक पाऊल उड्या मारणाऱ्या इलेक्ट्रॉनांची मालिका आहे, आणि दुसऱ्या दिशेने जाणारी रिक्तता एकाच धन वाहकाप्रमाणे मोजली जाते कारण ती नेमकी तशीच वागते.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "p-प्रकार अर्धवाहक",
+            "नैसर्गिक अर्धवाहक",
+            "n-प्रकार अर्धवाहक",
+            "प्रकाश उत्सर्जक डायोड"
+          ],
+          "solution": "p-प्रकार अर्धवाहक बोरॉन वा इंडियमसारख्या त्रिसंयुजी ग्राहीने डोप करून बनतो, म्हणून होल बहुसंख्य वाहक आणि इलेक्ट्रॉन अल्पसंख्य असतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Where the two doped regions meet, electrons cross one way and holes the other, cancelling each other and leaving behind a thin layer with no free carriers and a built-in voltage across it. What is being described?",
+      "choices": [
+        "The intrinsic semiconductor",
+        "The p-n junction and its depletion region",
+        "The junction diode as a rectifier",
+        "The light-emitting diode"
+      ],
+      "answerIndex": 1,
+      "solution": "The p-n junction develops a depletion region emptied of free carriers, and the exposed fixed ions on either side set up a barrier potential of about 0.3 V in germanium and 0.7 V in silicon. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "जहाँ दोनों डोपित भाग मिलते हैं, इलेक्ट्रॉन एक ओर और होल दूसरी ओर पार करते हैं, एक-दूसरे को काट देते हैं और पीछे बिना मुक्त वाहक की पतली परत तथा उसके आर-पार अंतर्निर्मित वोल्टता छोड़ जाते हैं। किसका वर्णन हो रहा है?",
+          "choices": [
+            "नैज अर्धचालक",
+            "p-n संधि और उसका ह्रासी क्षेत्र",
+            "दिष्टकारी के रूप में संधि डायोड",
+            "प्रकाश उत्सर्जक डायोड"
+          ],
+          "solution": "p-n संधि पर मुक्त वाहकों से ख़ाली ह्रासी क्षेत्र बनता है, और दोनों ओर उघड़े नियत आयन जर्मेनियम में लगभग 0.3 V और सिलिकॉन में 0.7 V का रोधिका विभव खड़ा कर देते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "जिथे दोन्ही डोपित भाग भेटतात, इलेक्ट्रॉन एका दिशेने आणि होल दुसऱ्या दिशेने ओलांडतात, एकमेकांना कापतात आणि मागे मुक्त वाहकाविना पातळ थर तसेच त्याच्या आरपार अंतर्निर्मित व्होल्टेज सोडतात. कशाचे वर्णन होत आहे?",
+          "choices": [
+            "नैसर्गिक अर्धवाहक",
+            "p-n संधी आणि तिचा क्षयित प्रदेश",
+            "दिष्टकारी म्हणून संधी डायोड",
+            "प्रकाश उत्सर्जक डायोड"
+          ],
+          "solution": "p-n संधीवर मुक्त वाहकांनी रिकामा झालेला क्षयित प्रदेश तयार होतो, आणि दोन्ही बाजूंचे उघडे स्थिर आयन जर्मेनियममध्ये सुमारे 0.3 V आणि सिलिकॉनमध्ये 0.7 V चा अडसर विभव उभा करतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Which of these statements about The junction diode as a rectifier is correct?",
+      "choices": [
+        "A light-emitting diode is a forward-biased junction in which electron–hole recombination releases photons of energy close to the band gap, so the emitted wavelength is fixed by the semiconductor chosen.",
+        "The junction diode as a rectifier exploits its one-way conduction: forward bias narrows the depletion layer and lowers the barrier, reverse bias widens it, so alternating current is converted to a one-directional output.",
+        "The p-n junction develops a depletion region emptied of free carriers, and the exposed fixed ions on either side set up a barrier potential of about 0.3 V in germanium and 0.7 V in silicon.",
+        "A p-type semiconductor is made by doping with a trivalent acceptor such as boron or indium, so holes are the majority carriers and electrons the minority."
+      ],
+      "answerIndex": 1,
+      "solution": "The junction diode as a rectifier exploits its one-way conduction: forward bias narrows the depletion layer and lowers the barrier, reverse bias widens it, so alternating current is converted to a one-directional output. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "दिष्टकारी के रूप में संधि डायोड के बारे में इनमें से कौन-सा कथन सही है?",
+          "choices": [
+            "प्रकाश उत्सर्जक डायोड अग्र अभिनत संधि है जिसमें इलेक्ट्रॉन–होल पुनर्योजन बैंड अंतराल के निकट ऊर्जा के फ़ोटॉन छोड़ता है, अतः उत्सर्जित तरंगदैर्ध्य चुने गए अर्धचालक से तय होती है।",
+            "दिष्टकारी के रूप में संधि डायोड उसके एकदिश चालन का लाभ उठाता है: अग्र अभिनति ह्रासी परत को सँकरा करती और रोधिका घटाती है, पश्च अभिनति उसे चौड़ा करती है, अतः प्रत्यावर्ती धारा एकदिश निर्गत में बदल जाती है।",
+            "p-n संधि पर मुक्त वाहकों से ख़ाली ह्रासी क्षेत्र बनता है, और दोनों ओर उघड़े नियत आयन जर्मेनियम में लगभग 0.3 V और सिलिकॉन में 0.7 V का रोधिका विभव खड़ा कर देते हैं।",
+            "p-प्रकार अर्धचालक बोरॉन या इंडियम जैसे त्रिसंयोजी ग्राही से डोप करके बनता है, अतः होल बहुसंख्यक वाहक और इलेक्ट्रॉन अल्पसंख्यक होते हैं।"
+          ],
+          "solution": "दिष्टकारी के रूप में संधि डायोड उसके एकदिश चालन का लाभ उठाता है: अग्र अभिनति ह्रासी परत को सँकरा करती और रोधिका घटाती है, पश्च अभिनति उसे चौड़ा करती है, अतः प्रत्यावर्ती धारा एकदिश निर्गत में बदल जाती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "दिष्टकारी म्हणून संधी डायोड विषयी यांपैकी कोणते विधान बरोबर आहे?",
+          "choices": [
+            "प्रकाश उत्सर्जक डायोड म्हणजे अग्र अभिनत संधी जिच्यात इलेक्ट्रॉन–होल पुनर्योजन बँड फटीजवळच्या ऊर्जेचे फोटॉन सोडते, म्हणून उत्सर्जित तरंगलांबी निवडलेल्या अर्धवाहकाने ठरते.",
+            "दिष्टकारी म्हणून संधी डायोड त्याच्या एकदिश वहनाचा फायदा घेतो: अग्र अभिनती क्षयित थर अरुंद करते आणि अडसर घटवते, पश्च अभिनती तो रुंद करते, म्हणून प्रत्यावर्ती धारा एकदिश निर्गतात बदलते.",
+            "p-n संधीवर मुक्त वाहकांनी रिकामा झालेला क्षयित प्रदेश तयार होतो, आणि दोन्ही बाजूंचे उघडे स्थिर आयन जर्मेनियममध्ये सुमारे 0.3 V आणि सिलिकॉनमध्ये 0.7 V चा अडसर विभव उभा करतात.",
+            "p-प्रकार अर्धवाहक बोरॉन वा इंडियमसारख्या त्रिसंयुजी ग्राहीने डोप करून बनतो, म्हणून होल बहुसंख्य वाहक आणि इलेक्ट्रॉन अल्पसंख्य असतात."
+          ],
+          "solution": "दिष्टकारी म्हणून संधी डायोड त्याच्या एकदिश वहनाचा फायदा घेतो: अग्र अभिनती क्षयित थर अरुंद करते आणि अडसर घटवते, पश्च अभिनती तो रुंद करते, म्हणून प्रत्यावर्ती धारा एकदिश निर्गतात बदलते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "\"It is efficient because almost every electron's energy goes into one photon of the wanted colour, whereas a filament lamp must heat a wire to a temperature at which most of what it radiates is invisible infrared.\" — which of these is this about?",
+      "choices": [
+        "The p-n junction and its depletion region",
+        "The light-emitting diode",
+        "The intrinsic semiconductor",
+        "The junction diode as a rectifier"
+      ],
+      "answerIndex": 1,
+      "solution": "A light-emitting diode is a forward-biased junction in which electron–hole recombination releases photons of energy close to the band gap, so the emitted wavelength is fixed by the semiconductor chosen. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"यह इसलिए दक्ष है कि लगभग हर इलेक्ट्रॉन की ऊर्जा चाहे गए रंग के एक फ़ोटॉन में जाती है, जबकि तंतु लैंप को तार ऐसे ताप तक गर्म करना पड़ता है जिस पर उसका विकिरित अधिकांश अदृश्य अवरक्त होता है।\" — यह इनमें से किसके बारे में है?",
+          "choices": [
+            "p-n संधि और उसका ह्रासी क्षेत्र",
+            "प्रकाश उत्सर्जक डायोड",
+            "नैज अर्धचालक",
+            "दिष्टकारी के रूप में संधि डायोड"
+          ],
+          "solution": "प्रकाश उत्सर्जक डायोड अग्र अभिनत संधि है जिसमें इलेक्ट्रॉन–होल पुनर्योजन बैंड अंतराल के निकट ऊर्जा के फ़ोटॉन छोड़ता है, अतः उत्सर्जित तरंगदैर्ध्य चुने गए अर्धचालक से तय होती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"हा यामुळे कार्यक्षम आहे की जवळपास प्रत्येक इलेक्ट्रॉनची ऊर्जा हव्या असलेल्या रंगाच्या एका फोटॉनात जाते, तर तंतू दिव्याला तार अशा तापमानापर्यंत तापवावी लागते ज्यावर त्याचे प्रारित बहुतांश अदृश्य अवरक्त असते.\" — हे यांपैकी कोणाविषयी आहे?",
+          "choices": [
+            "p-n संधी आणि तिचा क्षयित प्रदेश",
+            "प्रकाश उत्सर्जक डायोड",
+            "नैसर्गिक अर्धवाहक",
+            "दिष्टकारी म्हणून संधी डायोड"
+          ],
+          "solution": "प्रकाश उत्सर्जक डायोड म्हणजे अग्र अभिनत संधी जिच्यात इलेक्ट्रॉन–होल पुनर्योजन बँड फटीजवळच्या ऊर्जेचे फोटॉन सोडते, म्हणून उत्सर्जित तरंगलांबी निवडलेल्या अर्धवाहकाने ठरते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Warms up and conducts better, unlike any metal\" goes correctly with which of these?",
+      "choices": [
+        "the n-type semiconductor",
+        "the intrinsic semiconductor",
+        "the p-n junction and its depletion region",
+        "the junction diode as a rectifier"
+      ],
+      "answerIndex": 1,
+      "solution": "An intrinsic semiconductor is a pure crystal in which n_e = n_h = n_i, its carriers arising only from thermally broken bonds, so its conductivity rises steeply with temperature. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"गर्म होकर बेहतर चालन करता है, किसी भी धातु के उलट\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "n-प्रकार अर्धचालक",
+            "नैज अर्धचालक",
+            "p-n संधि और उसका ह्रासी क्षेत्र",
+            "दिष्टकारी के रूप में संधि डायोड"
+          ],
+          "solution": "नैज अर्धचालक वह शुद्ध क्रिस्टल है जिसमें n_e = n_h = n_i, और जिसके वाहक केवल ऊष्मा से टूटे बंधों से आते हैं, अतः उसकी चालकता ताप के साथ तेज़ी से बढ़ती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"तापून अधिक चांगले वहन करतो, कोणत्याही धातूच्या उलट\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "n-प्रकार अर्धवाहक",
+            "नैसर्गिक अर्धवाहक",
+            "p-n संधी आणि तिचा क्षयित प्रदेश",
+            "दिष्टकारी म्हणून संधी डायोड"
+          ],
+          "solution": "नैसर्गिक अर्धवाहक म्हणजे तो शुद्ध स्फटिक ज्यात n_e = n_h = n_i, आणि ज्याचे वाहक केवळ उष्णतेने तुटलेल्या बंधांतून येतात, म्हणून त्याची वाहकता तापमानासोबत झपाट्याने वाढते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Named for its carriers, and carrying no charge itself\" goes correctly with which of these?",
+      "choices": [
+        "the p-type semiconductor",
+        "the junction diode as a rectifier",
+        "the n-type semiconductor",
+        "the p-n junction and its depletion region"
+      ],
+      "answerIndex": 2,
+      "solution": "An n-type semiconductor is made by doping with a pentavalent donor such as phosphorus or arsenic, so electrons are the majority carriers and holes the minority. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"अपने वाहकों के नाम पर, और स्वयं कोई आवेश नहीं रखता\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "p-प्रकार अर्धचालक",
+            "दिष्टकारी के रूप में संधि डायोड",
+            "n-प्रकार अर्धचालक",
+            "p-n संधि और उसका ह्रासी क्षेत्र"
+          ],
+          "solution": "n-प्रकार अर्धचालक फ़ॉस्फ़ोरस या आर्सेनिक जैसे पंचसंयोजी दाता से डोप करके बनता है, अतः इलेक्ट्रॉन बहुसंख्यक वाहक और होल अल्पसंख्यक होते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"आपल्या वाहकांच्या नावाने, आणि स्वतः कोणताही प्रभार न बाळगणारा\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "p-प्रकार अर्धवाहक",
+            "दिष्टकारी म्हणून संधी डायोड",
+            "n-प्रकार अर्धवाहक",
+            "p-n संधी आणि तिचा क्षयित प्रदेश"
+          ],
+          "solution": "n-प्रकार अर्धवाहक फॉस्फरस वा आर्सेनिकसारख्या पंचसंयुजी दात्याने डोप करून बनतो, म्हणून इलेक्ट्रॉन बहुसंख्य वाहक आणि होल अल्पसंख्य असतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A car park where the empty space appears to travel\" goes correctly with which of these?",
+      "choices": [
+        "the intrinsic semiconductor",
+        "the p-type semiconductor",
+        "the junction diode as a rectifier",
+        "the p-n junction and its depletion region"
+      ],
+      "answerIndex": 1,
+      "solution": "A p-type semiconductor is made by doping with a trivalent acceptor such as boron or indium, so holes are the majority carriers and electrons the minority. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ऐसा पार्किंग जहाँ ख़ाली जगह चलती दिखती है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "नैज अर्धचालक",
+            "p-प्रकार अर्धचालक",
+            "दिष्टकारी के रूप में संधि डायोड",
+            "p-n संधि और उसका ह्रासी क्षेत्र"
+          ],
+          "solution": "p-प्रकार अर्धचालक बोरॉन या इंडियम जैसे त्रिसंयोजी ग्राही से डोप करके बनता है, अतः होल बहुसंख्यक वाहक और इलेक्ट्रॉन अल्पसंख्यक होते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"असे वाहनतळ जिथे रिकामी जागा चालताना दिसते\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "नैसर्गिक अर्धवाहक",
+            "p-प्रकार अर्धवाहक",
+            "दिष्टकारी म्हणून संधी डायोड",
+            "p-n संधी आणि तिचा क्षयित प्रदेश"
+          ],
+          "solution": "p-प्रकार अर्धवाहक बोरॉन वा इंडियमसारख्या त्रिसंयुजी ग्राहीने डोप करून बनतो, म्हणून होल बहुसंख्य वाहक आणि इलेक्ट्रॉन अल्पसंख्य असतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A wall that builds itself and then stops its own builders\" goes correctly with which of these?",
+      "choices": [
+        "the n-type semiconductor",
+        "the intrinsic semiconductor",
+        "the light-emitting diode",
+        "the p-n junction and its depletion region"
+      ],
+      "answerIndex": 3,
+      "solution": "The p-n junction develops a depletion region emptied of free carriers, and the exposed fixed ions on either side set up a barrier potential of about 0.3 V in germanium and 0.7 V in silicon. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"ऐसी दीवार जो स्वयं बनती है और फिर अपने ही बनाने वालों को रोक देती है\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "n-प्रकार अर्धचालक",
+            "नैज अर्धचालक",
+            "प्रकाश उत्सर्जक डायोड",
+            "p-n संधि और उसका ह्रासी क्षेत्र"
+          ],
+          "solution": "p-n संधि पर मुक्त वाहकों से ख़ाली ह्रासी क्षेत्र बनता है, और दोनों ओर उघड़े नियत आयन जर्मेनियम में लगभग 0.3 V और सिलिकॉन में 0.7 V का रोधिका विभव खड़ा कर देते हैं। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"अशी भिंत जी स्वतः बांधली जाते आणि मग स्वतःच्याच बांधणाऱ्यांना थांबवते\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "n-प्रकार अर्धवाहक",
+            "नैसर्गिक अर्धवाहक",
+            "प्रकाश उत्सर्जक डायोड",
+            "p-n संधी आणि तिचा क्षयित प्रदेश"
+          ],
+          "solution": "p-n संधीवर मुक्त वाहकांनी रिकामा झालेला क्षयित प्रदेश तयार होतो, आणि दोन्ही बाजूंचे उघडे स्थिर आयन जर्मेनियममध्ये सुमारे 0.3 V आणि सिलिकॉनमध्ये 0.7 V चा अडसर विभव उभा करतात. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"A valve for charge, with a fixed toll to enter\" goes correctly with which of these?",
+      "choices": [
+        "the junction diode as a rectifier",
+        "the p-type semiconductor",
+        "the n-type semiconductor",
+        "the intrinsic semiconductor"
+      ],
+      "answerIndex": 0,
+      "solution": "The junction diode as a rectifier exploits its one-way conduction: forward bias narrows the depletion layer and lowers the barrier, reverse bias widens it, so alternating current is converted to a one-directional output. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"आवेश का वाल्व, घुसने के नियत महसूल के साथ\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "दिष्टकारी के रूप में संधि डायोड",
+            "p-प्रकार अर्धचालक",
+            "n-प्रकार अर्धचालक",
+            "नैज अर्धचालक"
+          ],
+          "solution": "दिष्टकारी के रूप में संधि डायोड उसके एकदिश चालन का लाभ उठाता है: अग्र अभिनति ह्रासी परत को सँकरा करती और रोधिका घटाती है, पश्च अभिनति उसे चौड़ा करती है, अतः प्रत्यावर्ती धारा एकदिश निर्गत में बदल जाती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"प्रभाराचा झडप, आत येण्याच्या ठराविक कराह्यासह\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "दिष्टकारी म्हणून संधी डायोड",
+            "p-प्रकार अर्धवाहक",
+            "n-प्रकार अर्धवाहक",
+            "नैसर्गिक अर्धवाहक"
+          ],
+          "solution": "दिष्टकारी म्हणून संधी डायोड त्याच्या एकदिश वहनाचा फायदा घेतो: अग्र अभिनती क्षयित थर अरुंद करते आणि अडसर घटवते, पश्च अभिनती तो रुंद करते, म्हणून प्रत्यावर्ती धारा एकदिश निर्गतात बदलते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "\"Its colour is chosen at the foundry, not set by heat\" goes correctly with which of these?",
+      "choices": [
+        "the p-n junction and its depletion region",
+        "the p-type semiconductor",
+        "the light-emitting diode",
+        "the n-type semiconductor"
+      ],
+      "answerIndex": 2,
+      "solution": "A light-emitting diode is a forward-biased junction in which electron–hole recombination releases photons of energy close to the band gap, so the emitted wavelength is fixed by the semiconductor chosen. That is the fact this question turns on.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "\"उसका रंग कारख़ाने में चुना जाता है, ऊष्मा से तय नहीं होता\" का सही मेल इनमें से किससे है?",
+          "choices": [
+            "p-n संधि और उसका ह्रासी क्षेत्र",
+            "p-प्रकार अर्धचालक",
+            "प्रकाश उत्सर्जक डायोड",
+            "n-प्रकार अर्धचालक"
+          ],
+          "solution": "प्रकाश उत्सर्जक डायोड अग्र अभिनत संधि है जिसमें इलेक्ट्रॉन–होल पुनर्योजन बैंड अंतराल के निकट ऊर्जा के फ़ोटॉन छोड़ता है, अतः उत्सर्जित तरंगदैर्ध्य चुने गए अर्धचालक से तय होती है। यही तथ्य इस प्रश्न की कुंजी है।"
+        },
+        "mr": {
+          "stem": "\"त्याचा रंग कारखान्यात निवडला जातो, उष्णतेने ठरत नाही\" ची योग्य जोडी यांपैकी कोणाशी आहे?",
+          "choices": [
+            "p-n संधी आणि तिचा क्षयित प्रदेश",
+            "p-प्रकार अर्धवाहक",
+            "प्रकाश उत्सर्जक डायोड",
+            "n-प्रकार अर्धवाहक"
+          ],
+          "solution": "प्रकाश उत्सर्जक डायोड म्हणजे अग्र अभिनत संधी जिच्यात इलेक्ट्रॉन–होल पुनर्योजन बँड फटीजवळच्या ऊर्जेचे फोटॉन सोडते, म्हणून उत्सर्जित तरंगलांबी निवडलेल्या अर्धवाहकाने ठरते. हेच तथ्य या प्रश्नाची गुरुकिल्ली आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The intrinsic semiconductor EXCEPT —",
+      "choices": [
+        "At absolute zero it would be a perfect insulator, with every bond intact and no carrier at all, which shows that the whole of its conductivity is thermally paid for.",
+        "Its resistance FALLS as it is heated, the opposite of a metal's, because heat creates new carriers faster than it hinders the existing ones — in a metal the carrier count is fixed and only the hindrance grows.",
+        "An n-type semiconductor is made by doping with a pentavalent donor such as phosphorus or arsenic, so electrons are the majority carriers and holes the minority.",
+        "An intrinsic semiconductor is a pure crystal in which n_e = n_h = n_i, its carriers arising only from thermally broken bonds, so its conductivity rises steeply with temperature."
+      ],
+      "answerIndex": 2,
+      "solution": "An n-type semiconductor is made by doping with a pentavalent donor such as phosphorus or arsenic, so electrons are the majority carriers and holes the minority. That belongs to The n-type semiconductor, not The intrinsic semiconductor — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "नैज अर्धचालक के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "परम शून्य पर वह पूर्ण विद्युतरोधी होता, हर बंध सलामत और कोई वाहक नहीं, जो दिखाता है कि उसकी पूरी चालकता ऊष्मा से चुकाई गई है।",
+            "गर्म करने पर उसका प्रतिरोध घटता है, धातु के ठीक उलटा, क्योंकि ऊष्मा मौजूद वाहकों को बाधा पहुँचाने से तेज़ी से नए वाहक बनाती है — धातु में वाहकों की गिनती नियत है और केवल बाधा बढ़ती है।",
+            "n-प्रकार अर्धचालक फ़ॉस्फ़ोरस या आर्सेनिक जैसे पंचसंयोजी दाता से डोप करके बनता है, अतः इलेक्ट्रॉन बहुसंख्यक वाहक और होल अल्पसंख्यक होते हैं।",
+            "नैज अर्धचालक वह शुद्ध क्रिस्टल है जिसमें n_e = n_h = n_i, और जिसके वाहक केवल ऊष्मा से टूटे बंधों से आते हैं, अतः उसकी चालकता ताप के साथ तेज़ी से बढ़ती है।"
+          ],
+          "solution": "n-प्रकार अर्धचालक फ़ॉस्फ़ोरस या आर्सेनिक जैसे पंचसंयोजी दाता से डोप करके बनता है, अतः इलेक्ट्रॉन बहुसंख्यक वाहक और होल अल्पसंख्यक होते हैं। यह n-प्रकार अर्धचालक की बात है, नैज अर्धचालक की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "नैसर्गिक अर्धवाहक विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "निरपेक्ष शून्यावर तो पूर्ण विद्युतरोधक असता, प्रत्येक बंध शाबूत आणि एकही वाहक नाही, जे दाखवते की त्याची अख्खी वाहकता उष्णतेने भरलेली आहे.",
+            "तापवल्यावर त्याचा रोध घटतो, धातूच्या नेमका उलट, कारण उष्णता असलेल्या वाहकांना अडथळा आणण्याहून वेगाने नवे वाहक बनवते — धातूत वाहकांची मोजणी स्थिर आहे आणि केवळ अडथळा वाढतो.",
+            "n-प्रकार अर्धवाहक फॉस्फरस वा आर्सेनिकसारख्या पंचसंयुजी दात्याने डोप करून बनतो, म्हणून इलेक्ट्रॉन बहुसंख्य वाहक आणि होल अल्पसंख्य असतात.",
+            "नैसर्गिक अर्धवाहक म्हणजे तो शुद्ध स्फटिक ज्यात n_e = n_h = n_i, आणि ज्याचे वाहक केवळ उष्णतेने तुटलेल्या बंधांतून येतात, म्हणून त्याची वाहकता तापमानासोबत झपाट्याने वाढते."
+          ],
+          "solution": "n-प्रकार अर्धवाहक फॉस्फरस वा आर्सेनिकसारख्या पंचसंयुजी दात्याने डोप करून बनतो, म्हणून इलेक्ट्रॉन बहुसंख्य वाहक आणि होल अल्पसंख्य असतात. हे n-प्रकार अर्धवाहक चे आहे, नैसर्गिक अर्धवाहक चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The n-type semiconductor EXCEPT —",
+      "choices": [
+        "A p-type semiconductor is made by doping with a trivalent acceptor such as boron or indium, so holes are the majority carriers and electrons the minority.",
+        "The product n_e n_h stays equal to n_i² whatever the doping, so raising the electrons by a millionfold drives the holes DOWN by the same factor — the minority carriers are crushed, not merely outnumbered.",
+        "An n-type semiconductor is made by doping with a pentavalent donor such as phosphorus or arsenic, so electrons are the majority carriers and holes the minority.",
+        "The crystal remains electrically NEUTRAL: each donor atom brings one extra electron and one extra proton, so the material is not negatively charged and 'n' names the sign of the carriers, not of the block."
+      ],
+      "answerIndex": 0,
+      "solution": "A p-type semiconductor is made by doping with a trivalent acceptor such as boron or indium, so holes are the majority carriers and electrons the minority. That belongs to The p-type semiconductor, not The n-type semiconductor — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "n-प्रकार अर्धचालक के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "p-प्रकार अर्धचालक बोरॉन या इंडियम जैसे त्रिसंयोजी ग्राही से डोप करके बनता है, अतः होल बहुसंख्यक वाहक और इलेक्ट्रॉन अल्पसंख्यक होते हैं।",
+            "गुणनफल n_e n_h डोपिंग चाहे जो हो n_i² के बराबर रहता है, अतः इलेक्ट्रॉनों को दस लाख गुना बढ़ाने से होल उसी गुणक से नीचे चले जाते हैं — अल्पसंख्यक वाहक केवल संख्या में पीछे नहीं, कुचले जाते हैं।",
+            "n-प्रकार अर्धचालक फ़ॉस्फ़ोरस या आर्सेनिक जैसे पंचसंयोजी दाता से डोप करके बनता है, अतः इलेक्ट्रॉन बहुसंख्यक वाहक और होल अल्पसंख्यक होते हैं।",
+            "क्रिस्टल विद्युत् दृष्टि से उदासीन रहता है: हर दाता परमाणु एक अतिरिक्त इलेक्ट्रॉन और एक अतिरिक्त प्रोटॉन लाता है, अतः पदार्थ ऋण आवेशित नहीं है और 'n' वाहकों के चिह्न का नाम है, टुकड़े के चिह्न का नहीं।"
+          ],
+          "solution": "p-प्रकार अर्धचालक बोरॉन या इंडियम जैसे त्रिसंयोजी ग्राही से डोप करके बनता है, अतः होल बहुसंख्यक वाहक और इलेक्ट्रॉन अल्पसंख्यक होते हैं। यह p-प्रकार अर्धचालक की बात है, n-प्रकार अर्धचालक की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "n-प्रकार अर्धवाहक विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "p-प्रकार अर्धवाहक बोरॉन वा इंडियमसारख्या त्रिसंयुजी ग्राहीने डोप करून बनतो, म्हणून होल बहुसंख्य वाहक आणि इलेक्ट्रॉन अल्पसंख्य असतात.",
+            "गुणाकार n_e n_h डोपिंग कोणतेही असो n_i² इतका राहतो, म्हणून इलेक्ट्रॉन दहा लाख पटींनी वाढवल्याने होल त्याच पटीने खाली जातात — अल्पसंख्य वाहक केवळ संख्येने मागे नाहीत, चिरडले जातात.",
+            "n-प्रकार अर्धवाहक फॉस्फरस वा आर्सेनिकसारख्या पंचसंयुजी दात्याने डोप करून बनतो, म्हणून इलेक्ट्रॉन बहुसंख्य वाहक आणि होल अल्पसंख्य असतात.",
+            "स्फटिक विद्युतदृष्ट्या उदासीन राहतो: प्रत्येक दाता अणू एक जादा इलेक्ट्रॉन आणि एक जादा प्रोटॉन आणतो, म्हणून पदार्थ ऋण प्रभारित नाही आणि 'n' हे वाहकांच्या चिन्हाचे नाव आहे, तुकड्याच्या चिन्हाचे नव्हे."
+          ],
+          "solution": "p-प्रकार अर्धवाहक बोरॉन वा इंडियमसारख्या त्रिसंयुजी ग्राहीने डोप करून बनतो, म्हणून होल बहुसंख्य वाहक आणि इलेक्ट्रॉन अल्पसंख्य असतात. हे p-प्रकार अर्धवाहक चे आहे, n-प्रकार अर्धवाहक चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The p-type semiconductor EXCEPT —",
+      "choices": [
+        "A p-type semiconductor is made by doping with a trivalent acceptor such as boron or indium, so holes are the majority carriers and electrons the minority.",
+        "This crystal too stays neutral, and the analogy that makes it plain is a full car park where one empty space lets cars shuffle: the space appears to move backwards, but no space was ever added to the park.",
+        "An n-type semiconductor is made by doping with a pentavalent donor such as phosphorus or arsenic, so electrons are the majority carriers and holes the minority.",
+        "A hole is not a particle but a bookkeeping device: what actually moves is a succession of electrons hopping one step each, and the vacancy that travels the other way is counted as a single positive carrier because it behaves exactly like one."
+      ],
+      "answerIndex": 2,
+      "solution": "An n-type semiconductor is made by doping with a pentavalent donor such as phosphorus or arsenic, so electrons are the majority carriers and holes the minority. That belongs to The n-type semiconductor, not The p-type semiconductor — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "p-प्रकार अर्धचालक के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "p-प्रकार अर्धचालक बोरॉन या इंडियम जैसे त्रिसंयोजी ग्राही से डोप करके बनता है, अतः होल बहुसंख्यक वाहक और इलेक्ट्रॉन अल्पसंख्यक होते हैं।",
+            "यह क्रिस्टल भी उदासीन रहता है, और इसे साफ़ करने वाली उपमा है भरा हुआ पार्किंग जहाँ एक ख़ाली जगह गाड़ियों को खिसकने देती है: जगह पीछे की ओर चलती दिखती है, पर पार्किंग में कोई जगह कभी जोड़ी नहीं गई।",
+            "n-प्रकार अर्धचालक फ़ॉस्फ़ोरस या आर्सेनिक जैसे पंचसंयोजी दाता से डोप करके बनता है, अतः इलेक्ट्रॉन बहुसंख्यक वाहक और होल अल्पसंख्यक होते हैं।",
+            "होल कण नहीं बल्कि हिसाब की युक्ति है: वस्तुतः जो चलता है वह एक-एक क़दम फुदकते इलेक्ट्रॉनों की शृंखला है, और दूसरी ओर चलती रिक्ति एक अकेले धन वाहक की तरह गिनी जाती है क्योंकि वह ठीक वैसी ही बरतती है।"
+          ],
+          "solution": "n-प्रकार अर्धचालक फ़ॉस्फ़ोरस या आर्सेनिक जैसे पंचसंयोजी दाता से डोप करके बनता है, अतः इलेक्ट्रॉन बहुसंख्यक वाहक और होल अल्पसंख्यक होते हैं। यह n-प्रकार अर्धचालक की बात है, p-प्रकार अर्धचालक की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "p-प्रकार अर्धवाहक विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "p-प्रकार अर्धवाहक बोरॉन वा इंडियमसारख्या त्रिसंयुजी ग्राहीने डोप करून बनतो, म्हणून होल बहुसंख्य वाहक आणि इलेक्ट्रॉन अल्पसंख्य असतात.",
+            "हा स्फटिकही उदासीन राहतो, आणि हे स्पष्ट करणारी उपमा म्हणजे भरलेले वाहनतळ जिथे एक रिकामी जागा गाड्यांना सरकू देते: जागा मागे सरकताना दिसते, पण वाहनतळात कोणतीही जागा कधी जोडली गेली नाही.",
+            "n-प्रकार अर्धवाहक फॉस्फरस वा आर्सेनिकसारख्या पंचसंयुजी दात्याने डोप करून बनतो, म्हणून इलेक्ट्रॉन बहुसंख्य वाहक आणि होल अल्पसंख्य असतात.",
+            "होल हा कण नसून हिशेबाची युक्ती आहे: प्रत्यक्षात जे हलते ती एकेक पाऊल उड्या मारणाऱ्या इलेक्ट्रॉनांची मालिका आहे, आणि दुसऱ्या दिशेने जाणारी रिक्तता एकाच धन वाहकाप्रमाणे मोजली जाते कारण ती नेमकी तशीच वागते."
+          ],
+          "solution": "n-प्रकार अर्धवाहक फॉस्फरस वा आर्सेनिकसारख्या पंचसंयुजी दात्याने डोप करून बनतो, म्हणून इलेक्ट्रॉन बहुसंख्य वाहक आणि होल अल्पसंख्य असतात. हे n-प्रकार अर्धवाहक चे आहे, p-प्रकार अर्धवाहक चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "All of the following are true of The p-n junction and its depletion region EXCEPT —",
+      "choices": [
+        "A light-emitting diode is a forward-biased junction in which electron–hole recombination releases photons of energy close to the band gap, so the emitted wavelength is fixed by the semiconductor chosen.",
+        "The barrier voltage cannot be measured with a voltmeter across the junction, because connecting the leads creates two more junctions whose barriers cancel it exactly — a nice reminder that not everything real is directly readable.",
+        "The barrier builds itself and then stops the very diffusion that built it, which is why the junction settles into equilibrium instead of emptying both sides completely.",
+        "The p-n junction develops a depletion region emptied of free carriers, and the exposed fixed ions on either side set up a barrier potential of about 0.3 V in germanium and 0.7 V in silicon."
+      ],
+      "answerIndex": 0,
+      "solution": "A light-emitting diode is a forward-biased junction in which electron–hole recombination releases photons of energy close to the band gap, so the emitted wavelength is fixed by the semiconductor chosen. That belongs to The light-emitting diode, not The p-n junction and its depletion region — the other three are all true here.",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "p-n संधि और उसका ह्रासी क्षेत्र के बारे में निम्नलिखित सभी सही हैं, सिवाय —",
+          "choices": [
+            "प्रकाश उत्सर्जक डायोड अग्र अभिनत संधि है जिसमें इलेक्ट्रॉन–होल पुनर्योजन बैंड अंतराल के निकट ऊर्जा के फ़ोटॉन छोड़ता है, अतः उत्सर्जित तरंगदैर्ध्य चुने गए अर्धचालक से तय होती है।",
+            "रोधिका वोल्टता को संधि के आर-पार वोल्टमापी से नापा नहीं जा सकता, क्योंकि तार जोड़ने से दो और संधियाँ बन जाती हैं जिनकी रोधिकाएँ उसे ठीक-ठीक काट देती हैं — यह अच्छी याद दिलाती है कि हर असली चीज़ सीधे पढ़ी नहीं जा सकती।",
+            "रोधिका स्वयं बनती है और फिर उसी विसरण को रोक देती है जिसने उसे बनाया, इसीलिए संधि दोनों ओर पूरी तरह ख़ाली होने के बजाय संतुलन में जम जाती है।",
+            "p-n संधि पर मुक्त वाहकों से ख़ाली ह्रासी क्षेत्र बनता है, और दोनों ओर उघड़े नियत आयन जर्मेनियम में लगभग 0.3 V और सिलिकॉन में 0.7 V का रोधिका विभव खड़ा कर देते हैं।"
+          ],
+          "solution": "प्रकाश उत्सर्जक डायोड अग्र अभिनत संधि है जिसमें इलेक्ट्रॉन–होल पुनर्योजन बैंड अंतराल के निकट ऊर्जा के फ़ोटॉन छोड़ता है, अतः उत्सर्जित तरंगदैर्ध्य चुने गए अर्धचालक से तय होती है। यह प्रकाश उत्सर्जक डायोड की बात है, p-n संधि और उसका ह्रासी क्षेत्र की नहीं — बाक़ी तीनों यहाँ सही हैं।"
+        },
+        "mr": {
+          "stem": "p-n संधी आणि तिचा क्षयित प्रदेश विषयी पुढील सर्व बरोबर आहे, अपवाद —",
+          "choices": [
+            "प्रकाश उत्सर्जक डायोड म्हणजे अग्र अभिनत संधी जिच्यात इलेक्ट्रॉन–होल पुनर्योजन बँड फटीजवळच्या ऊर्जेचे फोटॉन सोडते, म्हणून उत्सर्जित तरंगलांबी निवडलेल्या अर्धवाहकाने ठरते.",
+            "अडसर व्होल्टेज संधीच्या आरपार व्होल्टमापकाने मोजता येत नाही, कारण तारा जोडल्याने आणखी दोन संधी तयार होतात ज्यांचे अडसर तो नेमका कापतात — ही चांगली आठवण की प्रत्येक खरी गोष्ट थेट वाचता येत नाही.",
+            "अडसर स्वतःच तयार होतो आणि मग त्याच विसरणाला थांबवतो ज्याने त्याला बनवले, म्हणूनच संधी दोन्ही बाजू पूर्णपणे रिकाम्या होण्याऐवजी समतोलात स्थिरावते.",
+            "p-n संधीवर मुक्त वाहकांनी रिकामा झालेला क्षयित प्रदेश तयार होतो, आणि दोन्ही बाजूंचे उघडे स्थिर आयन जर्मेनियममध्ये सुमारे 0.3 V आणि सिलिकॉनमध्ये 0.7 V चा अडसर विभव उभा करतात."
+          ],
+          "solution": "प्रकाश उत्सर्जक डायोड म्हणजे अग्र अभिनत संधी जिच्यात इलेक्ट्रॉन–होल पुनर्योजन बँड फटीजवळच्या ऊर्जेचे फोटॉन सोडते, म्हणून उत्सर्जित तरंगलांबी निवडलेल्या अर्धवाहकाने ठरते. हे प्रकाश उत्सर्जक डायोड चे आहे, p-n संधी आणि तिचा क्षयित प्रदेश चे नाही — बाकी तिन्ही इथे बरोबर आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Heating a copper wire raises its resistance; heating a silicon crystal lowers it, and dramatically. Adding one boron atom per million silicon atoms raises the conductivity by a factor of about a million, yet the crystal remains electrically neutral. Explain all three facts.",
+      "choices": [
+        "Conductivity is carrier count times mobility. In a metal the count is fixed by the atoms themselves, so heating only makes the lattice vibrate more, lowering mobility and raising resistance. In silicon almost every bond is intact at room temperature, so carriers must be CREATED by breaking bonds, and heating creates them exponentially faster than it lowers mobility — resistance falls. Doping supplies carriers without heat: a boron atom leaves one bond short and contributes a hole, and one impurity per million already swamps the sparse intrinsic carriers by orders of magnitude. Neutrality is untouched because each boron atom brings its own electrons and protons in equal number — it donates a hole, not a charge",
+        "Silicon's resistance falls with temperature because the crystal expands and the carriers have further to travel between collisions, and a p-type crystal is positively charged because holes are positive",
+        "Both materials behave the same way in principle; silicon only appears different because its resistance is measured over a wider temperature range",
+        "Doping raises conductivity because the boron atoms themselves conduct well, so the impurity provides a metallic path through the crystal"
+      ],
+      "answerIndex": 0,
+      "solution": "All three follow from one equation, σ = nqμ: conductivity is the number of carriers times their charge times how easily they move. Ask, for each case, which factor is changing. THE METAL. Copper has roughly one free electron per atom, and that number is set by the chemistry, not by the temperature. Heating cannot make more; every electron that was going to be free already is. What heating does is make the lattice ions vibrate harder, so an electron travels a shorter distance before its next collision. The mobility μ falls, n is unchanged, and σ falls — resistance rises with temperature, as every metal does. THE SEMICONDUCTOR. Silicon at room temperature has almost every bond intact. Its intrinsic carrier concentration is about 10¹⁶ per cubic metre against copper's 10²⁹ — thirteen orders of magnitude fewer. Each of those carriers exists only because thermal energy happened to break a bond, and the number able to do so goes as e^(−E_g/2kT), which climbs very steeply with temperature. Heating silicon therefore does two opposite things: it reduces μ, exactly as in copper, and it raises n exponentially. The exponential wins by a wide margin, so σ rises and resistance falls. The sign of the temperature coefficient is thus a direct readout of whether a material's carriers are given or made. THE DOPING. Here neither heat nor mobility is doing the work; the carrier count is being changed by chemistry. Silicon has about 5 × 10²⁸ atoms per cubic metre, so doping at one part per million puts 5 × 10²² boron atoms in each cubic metre. Each boron has three valence electrons where four are needed, so each leaves one bond incomplete — a hole — and essentially all of them are ionised at room temperature. Compare 5 × 10²² holes with the 10¹⁶ intrinsic carriers: the doped material has about a million times more carriers than the pure one, and σ rises by the same factor. A part per million of impurity changing a material property by a factor of a million is why semiconductor manufacture demands purity of a different order from ordinary chemistry — the wanted impurity must be added deliberately, so every unwanted one must first be removed. THE NEUTRALITY, which is the part most often got wrong. A boron atom is neutral: five protons, five electrons. Putting it into the lattice adds both, in equal numbers. What it does not bring is a fourth valence electron, so one bond around it is short — but a missing BOND is not a missing charge, because the electron that would have completed it was never there to begin with. The crystal has exactly as many protons as electrons before and after doping. 'p-type' names the sign of the mobile carriers, and nothing else; a block of p-type silicon on a bench will not attract a scrap of paper. The same holds for n-type: a phosphorus atom brings fifteen protons and fifteen electrons, donating a mobile electron while keeping the books level. Notice, finally, what happens to the minority carriers, because it is a stronger statement than 'outnumbered'. The relation n_e n_h = n_i² survives doping. Raise the holes a millionfold and the electrons must fall a millionfold to keep the product fixed. Minority carriers are not merely a small fraction; they have been actively crushed, and that asymmetry is what makes a p-n junction conduct one way and not the other. (The second option offers a thermal-expansion mechanism far too weak to matter and then charges up a neutral crystal; the third denies a difference that is measurable in any school laboratory; the fourth treats a dispersed impurity at one part per million as a conducting path, which no percolation argument would support.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "ताँबे के तार को गर्म करने पर उसका प्रतिरोध बढ़ता है; सिलिकॉन क्रिस्टल को गर्म करने पर घटता है, और नाटकीय ढंग से। दस लाख सिलिकॉन परमाणुओं पर एक बोरॉन परमाणु जोड़ने से चालकता लगभग दस लाख गुना बढ़ जाती है, फिर भी क्रिस्टल विद्युत् दृष्टि से उदासीन रहता है। तीनों तथ्य समझाओ।",
+          "choices": [
+            "चालकता वाहकों की गिनती गुणा गतिशीलता है। धातु में गिनती स्वयं परमाणुओं से नियत है, अतः गर्म करने से केवल जालक अधिक कंपता है, गतिशीलता घटती है और प्रतिरोध बढ़ता है। सिलिकॉन में कमरे के ताप पर लगभग हर बंध सलामत है, अतः वाहकों को बंध तोड़कर बनाना पड़ता है, और ऊष्मा उन्हें गतिशीलता घटाने से चरघातांकी रूप से तेज़ी से बनाती है — प्रतिरोध घटता है। डोपिंग बिना ऊष्मा के वाहक देती है: बोरॉन परमाणु एक बंध कम छोड़ता है और एक होल देता है, और दस लाख में एक अशुद्धि पहले ही विरल नैज वाहकों को कोटियों से डुबो देती है। उदासीनता अछूती रहती है क्योंकि हर बोरॉन परमाणु अपने इलेक्ट्रॉन और प्रोटॉन बराबर संख्या में लाता है — वह होल देता है, आवेश नहीं",
+            "सिलिकॉन का प्रतिरोध ताप के साथ घटता है क्योंकि क्रिस्टल फैलता है और वाहकों को टक्करों के बीच अधिक दूर चलना पड़ता है, और p-प्रकार क्रिस्टल धन आवेशित है क्योंकि होल धन हैं",
+            "दोनों पदार्थ सैद्धांतिक रूप से एक ही तरह बरतते हैं; सिलिकॉन केवल इसलिए भिन्न लगता है कि उसका प्रतिरोध अधिक चौड़ी ताप परास पर नापा जाता है",
+            "डोपिंग चालकता इसलिए बढ़ाती है कि बोरॉन परमाणु स्वयं अच्छे चालक हैं, अतः अशुद्धि क्रिस्टल में से धात्विक रास्ता दे देती है"
+          ],
+          "solution": "तीनों एक ही समीकरण σ = nqμ से निकलते हैं: चालकता वाहकों की संख्या गुणा उनका आवेश गुणा वे कितनी आसानी से चलते हैं। हर स्थिति के लिए पूछो कि कौन-सा गुणक बदल रहा है। धातु। ताँबे में मोटे तौर पर प्रति परमाणु एक मुक्त इलेक्ट्रॉन है, और वह संख्या रसायन से तय है, ताप से नहीं। गर्म करने से और नहीं बन सकते; जो इलेक्ट्रॉन मुक्त होने वाला था वह पहले ही है। गर्म करना जो करता है वह जालक के आयनों को अधिक ज़ोर से कँपाना है, अतः इलेक्ट्रॉन अगली टक्कर से पहले कम दूरी तय करता है। गतिशीलता μ घटती है, n अपरिवर्तित रहता है, और σ घटता है — प्रतिरोध ताप के साथ बढ़ता है, जैसा हर धातु में होता है। अर्धचालक। कमरे के ताप पर सिलिकॉन में लगभग हर बंध सलामत है। उसकी नैज वाहक सांद्रता ताँबे के 10²⁹ के मुक़ाबले लगभग 10¹⁶ प्रति घन मीटर है — तेरह कोटि कम। उन वाहकों में से हर एक केवल इसलिए है कि ऊष्मीय ऊर्जा ने संयोग से एक बंध तोड़ दिया, और ऐसा कर सकने वालों की संख्या e^(−E_g/2kT) के अनुसार चलती है, जो ताप के साथ बहुत तेज़ी से चढ़ती है। अतः सिलिकॉन को गर्म करना दो उलटी चीज़ें करता है: वह μ घटाता है, ठीक जैसे ताँबे में, और n को चरघातांकी रूप से बढ़ाता है। चरघातांक बड़े अंतर से जीतता है, अतः σ बढ़ता है और प्रतिरोध घटता है। इस प्रकार ताप गुणांक का चिह्न सीधे बता देता है कि पदार्थ के वाहक दिए गए हैं या बनाए गए। डोपिंग। यहाँ न ऊष्मा काम कर रही है न गतिशीलता; वाहकों की गिनती रसायन से बदली जा रही है। सिलिकॉन में लगभग 5 × 10²⁸ परमाणु प्रति घन मीटर हैं, अतः दस लाख में एक भाग की डोपिंग हर घन मीटर में 5 × 10²² बोरॉन परमाणु रखती है। हर बोरॉन के पास तीन संयोजी इलेक्ट्रॉन हैं जहाँ चार चाहिए, अतः हर एक एक बंध अधूरा छोड़ता है — एक होल — और कमरे के ताप पर वे वस्तुतः सब आयनित हैं। 5 × 10²² होलों की 10¹⁶ नैज वाहकों से तुलना करो: डोपित पदार्थ में शुद्ध से लगभग दस लाख गुना अधिक वाहक हैं, और σ उसी गुणक से बढ़ता है। दस लाख में एक भाग अशुद्धि का किसी पदार्थ-गुण को दस लाख गुना बदल देना ही कारण है कि अर्धचालक निर्माण साधारण रसायन से भिन्न कोटि की शुद्धता माँगता है — चाही गई अशुद्धि जान-बूझकर जोड़नी है, अतः हर अनचाही को पहले हटाना ही होगा। उदासीनता, जो सबसे अधिक ग़लत समझा जाने वाला हिस्सा है। बोरॉन परमाणु उदासीन है: पाँच प्रोटॉन, पाँच इलेक्ट्रॉन। उसे जालक में रखना दोनों को बराबर संख्या में जोड़ता है। वह जो नहीं लाता वह चौथा संयोजी इलेक्ट्रॉन है, अतः उसके गिर्द एक बंध कम है — पर लुप्त बंध लुप्त आवेश नहीं, क्योंकि जो इलेक्ट्रॉन उसे पूरा करता वह शुरू से वहाँ था ही नहीं। डोपिंग से पहले और बाद, क्रिस्टल में इलेक्ट्रॉनों जितने ही प्रोटॉन हैं। 'p-प्रकार' गतिशील वाहकों के चिह्न का नाम है, और कुछ नहीं; मेज़ पर रखा p-प्रकार सिलिकॉन का टुकड़ा काग़ज़ का टुकड़ा नहीं खींचेगा। यही n-प्रकार के लिए भी सच है: फ़ॉस्फ़ोरस परमाणु पंद्रह प्रोटॉन और पंद्रह इलेक्ट्रॉन लाता है, गतिशील इलेक्ट्रॉन देता है और बहीखाता बराबर रखता है। अंत में ध्यान दो कि अल्पसंख्यक वाहकों का क्या होता है, क्योंकि वह 'संख्या में पीछे' से प्रबल कथन है। संबंध n_e n_h = n_i² डोपिंग के बाद भी बचा रहता है। होलों को दस लाख गुना बढ़ाओ और इलेक्ट्रॉनों को दस लाख गुना गिरना ही पड़ेगा ताकि गुणनफल नियत रहे। अल्पसंख्यक वाहक केवल छोटा अंश नहीं; वे सक्रिय रूप से कुचल दिए गए हैं, और वही असममिति p-n संधि को एक ओर चलाती है और दूसरी ओर नहीं। (दूसरा विकल्प ऐसी ऊष्मीय प्रसार क्रियाविधि देता है जो मायने रखने के लिए कहीं बहुत कमज़ोर है और फिर उदासीन क्रिस्टल को आवेशित कर देता है; तीसरा ऐसे भेद से इनकार करता है जो किसी भी विद्यालयी प्रयोगशाला में नापा जा सकता है; चौथा दस लाख में एक भाग की बिखरी अशुद्धि को चालक रास्ता मान लेता है, जिसे कोई परिस्रवण तर्क समर्थन नहीं देगा।)"
+        },
+        "mr": {
+          "stem": "तांब्याची तार तापवल्यास तिचा रोध वाढतो; सिलिकॉन स्फटिक तापवल्यास घटतो, आणि नाट्यमयरीत्या. दहा लाख सिलिकॉन अणूंवर एक बोरॉन अणू जोडल्याने वाहकता सुमारे दहा लाख पटींनी वाढते, तरीही स्फटिक विद्युतदृष्ट्या उदासीन राहतो. तिन्ही तथ्ये समजावा.",
+          "choices": [
+            "वाहकता म्हणजे वाहकांची मोजणी गुणिले गतिशीलता. धातूत मोजणी स्वतः अणूंनी ठरलेली आहे, म्हणून तापवल्याने केवळ जाळी अधिक कंप पावते, गतिशीलता घटते आणि रोध वाढतो. सिलिकॉनमध्ये खोलीच्या तापमानावर जवळपास प्रत्येक बंध शाबूत आहे, म्हणून वाहक बंध तोडून बनवावे लागतात, आणि उष्णता ते गतिशीलता घटवण्याहून घातांकीरीत्या वेगाने बनवते — रोध घटतो. डोपिंग उष्णतेविना वाहक देते: बोरॉन अणू एक बंध कमी सोडतो आणि एक होल देतो, आणि दहा लाखांत एक अशुद्धी आधीच विरळ नैसर्गिक वाहकांना कोटींनी बुडवते. उदासीनता अस्पर्श राहते कारण प्रत्येक बोरॉन अणू आपले इलेक्ट्रॉन आणि प्रोटॉन समान संख्येत आणतो — तो होल देतो, प्रभार नाही",
+            "सिलिकॉनचा रोध तापमानासोबत घटतो कारण स्फटिक प्रसरण पावतो आणि वाहकांना टकरांमध्ये अधिक दूर जावे लागते, आणि p-प्रकार स्फटिक धन प्रभारित आहे कारण होल धन आहेत",
+            "दोन्ही पदार्थ तत्त्वतः एकाच प्रकारे वागतात; सिलिकॉन केवळ यामुळे वेगळे वाटते की त्याचा रोध अधिक रुंद तापमान पल्ल्यावर मोजला जातो",
+            "डोपिंग वाहकता यासाठी वाढवते की बोरॉन अणू स्वतः चांगले वाहक आहेत, म्हणून अशुद्धी स्फटिकातून धातवीय मार्ग देते"
+          ],
+          "solution": "तिन्ही एकाच समीकरणातून निघतात, σ = nqμ: वाहकता म्हणजे वाहकांची संख्या गुणिले त्यांचा प्रभार गुणिले ते किती सहज हलतात. प्रत्येक स्थितीसाठी विचारा की कोणता गुणक बदलत आहे. धातू. तांब्यात ढोबळमानाने प्रति अणू एक मुक्त इलेक्ट्रॉन आहे, आणि ती संख्या रसायनाने ठरलेली आहे, तापमानाने नाही. तापवल्याने आणखी बनू शकत नाहीत; जो इलेक्ट्रॉन मुक्त होणार होता तो आधीच आहे. तापवणे जे करते ते जाळीच्या आयनांना अधिक जोराने कंपवणे, म्हणून इलेक्ट्रॉन पुढच्या टकरीआधी कमी अंतर कापतो. गतिशीलता μ घटते, n अपरिवर्तित राहतो, आणि σ घटतो — रोध तापमानासोबत वाढतो, जसे प्रत्येक धातूत होते. अर्धवाहक. खोलीच्या तापमानावर सिलिकॉनमध्ये जवळपास प्रत्येक बंध शाबूत आहे. त्याची नैसर्गिक वाहक संहती तांब्याच्या 10²⁹ च्या तुलनेत सुमारे 10¹⁶ प्रति घनमीटर आहे — तेरा कोटी कमी. त्या वाहकांपैकी प्रत्येक केवळ यामुळे आहे की औष्णिक ऊर्जेने योगायोगाने एक बंध तोडला, आणि तसे करू शकणाऱ्यांची संख्या e^(−E_g/2kT) नुसार चालते, जी तापमानासोबत फार झपाट्याने चढते. म्हणून सिलिकॉन तापवणे दोन उलट गोष्टी करते: ते μ घटवते, अगदी तांब्यासारखे, आणि n घातांकीरीत्या वाढवते. घातांक मोठ्या फरकाने जिंकतो, म्हणून σ वाढतो आणि रोध घटतो. अशा प्रकारे तापमान गुणकाचे चिन्ह थेट सांगते की पदार्थाचे वाहक दिलेले आहेत की बनवलेले. डोपिंग. इथे ना उष्णता काम करत आहे ना गतिशीलता; वाहकांची मोजणी रसायनाने बदलली जात आहे. सिलिकॉनमध्ये सुमारे 5 × 10²⁸ अणू प्रति घनमीटर आहेत, म्हणून दहा लाखांत एक भागाची डोपिंग प्रत्येक घनमीटरमध्ये 5 × 10²² बोरॉन अणू ठेवते. प्रत्येक बोरॉनकडे तीन संयुजी इलेक्ट्रॉन आहेत जिथे चार लागतात, म्हणून प्रत्येक एक बंध अपूर्ण सोडतो — एक होल — आणि खोलीच्या तापमानावर ते प्रत्यक्षात सर्व आयनित आहेत. 5 × 10²² होलांची 10¹⁶ नैसर्गिक वाहकांशी तुलना करा: डोपित पदार्थात शुद्धाहून सुमारे दहा लाख पट अधिक वाहक आहेत, आणि σ त्याच पटीने वाढतो. दहा लाखांत एक भाग अशुद्धीने पदार्थ-गुणधर्म दहा लाख पटींनी बदलणे हेच कारण की अर्धवाहक निर्मिती साध्या रसायनाहून वेगळ्या कोटीची शुद्धता मागते — हवी असलेली अशुद्धी जाणीवपूर्वक जोडायची आहे, म्हणून प्रत्येक नकोशी आधी काढावीच लागेल. उदासीनता, जी सर्वांत जास्त चुकीची समजली जाणारी बाब आहे. बोरॉन अणू उदासीन आहे: पाच प्रोटॉन, पाच इलेक्ट्रॉन. त्याला जाळीत ठेवणे दोन्ही समान संख्येत जोडते. तो जे आणत नाही तो चौथा संयुजी इलेक्ट्रॉन आहे, म्हणून त्याच्याभोवती एक बंध कमी आहे — पण हरवलेला बंध म्हणजे हरवलेला प्रभार नाही, कारण जो इलेक्ट्रॉन तो पूर्ण करेल तो सुरुवातीपासून तिथे नव्हताच. डोपिंगच्या आधी आणि नंतर, स्फटिकात इलेक्ट्रॉनांइतकेच प्रोटॉन आहेत. 'p-प्रकार' हे गतिशील वाहकांच्या चिन्हाचे नाव आहे, आणि दुसरे काही नाही; टेबलावर ठेवलेला p-प्रकार सिलिकॉनचा तुकडा कागदाचा कपटा ओढणार नाही. हेच n-प्रकारासाठीही खरे: फॉस्फरस अणू पंधरा प्रोटॉन आणि पंधरा इलेक्ट्रॉन आणतो, गतिशील इलेक्ट्रॉन देतो आणि जमाखर्च समान ठेवतो. शेवटी लक्षात घ्या की अल्पसंख्य वाहकांचे काय होते, कारण ते 'संख्येने मागे' हून भक्कम विधान आहे. संबंध n_e n_h = n_i² डोपिंगनंतरही टिकतो. होल दहा लाख पटींनी वाढवा आणि इलेक्ट्रॉनांना दहा लाख पटींनी घसरावेच लागेल जेणेकरून गुणाकार स्थिर राहील. अल्पसंख्य वाहक केवळ लहान अंश नाहीत; ते सक्रियपणे चिरडले गेले आहेत, आणि तीच असममिती p-n संधीला एका दिशेने चालवते आणि दुसऱ्या दिशेने नाही. (दुसरा पर्याय अशी औष्णिक प्रसरण यंत्रणा देतो जी महत्त्वाची ठरण्यास कितीतरी क्षीण आहे आणि मग उदासीन स्फटिक प्रभारित करतो; तिसरा असा भेद नाकारतो जो कोणत्याही शालेय प्रयोगशाळेत मोजता येतो; चौथा दहा लाखांत एक भागाच्या विखुरलेल्या अशुद्धीला वाहक मार्ग मानतो, ज्याला कोणताही परिस्रवण युक्तिवाद पाठिंबा देणार नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A p-n junction conducts freely one way and hardly at all the other. A student says this must be because the p-side is positively charged and the n-side negatively, so current is attracted one way. Explain what actually makes a diode one-way.",
+      "choices": [
+        "Both regions are electrically neutral before contact, so there is no attraction to appeal to. What happens is DIFFUSION: electrons wander from the n-side into the p-side and holes the other way, recombining near the boundary and leaving a depletion layer containing only the fixed ionised dopant atoms — negative on the p-side, positive on the n-side. Those fixed charges build a barrier that opposes further diffusion, and equilibrium is reached. Forward bias pushes majority carriers towards the junction, narrowing the layer and lowering the barrier, so current flows. Reverse bias pulls them away, widening the layer, and only the tiny minority-carrier current gets across",
+        "The student is right: doping leaves the p-side positive and the n-side negative, and the diode's one-way behaviour follows directly from that permanent charge separation",
+        "The junction conducts one way because holes can move only in one direction through a crystal, while electrons can move in both",
+        "The asymmetry comes from the metal contacts soldered to the two ends, and a junction with identical contacts would conduct equally in both directions"
+      ],
+      "answerIndex": 0,
+      "solution": "The student's picture would be a good one if the two sides really did carry net charges, and the first thing to establish is that they do not. A phosphorus atom placed in silicon brings fifteen protons and fifteen electrons; a boron atom brings five of each. Doping adds equal amounts of positive and negative charge, so both blocks are neutral before they are joined and there is no electrostatic attraction between them to be exploited. What actually happens begins with a concentration difference, not a charge difference. The n-side is dense with mobile electrons; the p-side is nearly empty of them. Particles diffuse from where they are plentiful to where they are scarce — the same reason a drop of ink spreads through water — so electrons drift across into the p-region and holes drift the other way. Near the boundary they meet and recombine, and a narrow layer is left with no mobile carriers in it at all: the DEPLETION REGION. Now the charge appears, and it is worth being precise about its origin. A donor atom that has lost its spare electron is a fixed positive ion, bolted into the lattice; an acceptor that has gained one is a fixed negative ion. Inside the depletion layer the mobile carriers have gone but these ions remain, so the layer carries negative charge on the p-side and positive charge on the n-side. This is charge produced BY the diffusion, not a pre-existing charge that caused it — and the two blocks taken together are still neutral overall. That charge sets up an electric field pointing from the n-side to the p-side, and the field opposes exactly the motion that created it: it pushes electrons back towards the n-side and holes back towards the p-side. Diffusion slows as the field grows, and the junction settles at equilibrium when the field's push balances diffusion's tendency to spread. The potential difference across the layer, the barrier potential, is about 0.7 V for silicon and 0.3 V for germanium. Now bias it. FORWARD bias connects the positive terminal to the p-side, pushing holes towards the junction and electrons towards it from the other side. Majority carriers flood into the depletion region, it narrows, the barrier falls, and once the applied voltage exceeds the barrier the carriers cross in enormous numbers. Current rises steeply — roughly exponentially — with voltage. REVERSE bias does the opposite: it pulls majority carriers away from the junction on both sides, the depletion layer widens, and the barrier is raised rather than lowered. Almost no majority carrier can cross. What does cross is a very small current of MINORITY carriers — the few electrons on the p-side and holes on the n-side — for which the field is downhill rather than uphill. That reverse saturation current is of the order of microamperes or less, essentially independent of voltage, and strongly dependent on temperature, since minority carriers are thermally generated. Two consequences are worth carrying. First, the asymmetry is intrinsic to the junction and not to the contacts: making both end contacts identical changes nothing, because the one-way behaviour lives at the boundary between the two doped regions. Second, the barrier's existence explains the diode's forward voltage drop, which is not a resistance and does not scale with the supply — about 0.7 V is lost in a silicon diode whether it is fed 5 V or 500 V, because the toll is a barrier to be climbed and not a proportion to be paid. (The second option asserts a charge separation that measurement excludes; the third invents a directional restriction on hole motion that does not exist; the fourth relocates the asymmetry to the contacts, which is testable and false.)",
+      "checkExpr": null,
+      "translations": {
+        "hi": {
+          "stem": "p-n संधि एक ओर स्वतंत्र चालन करती है और दूसरी ओर लगभग नहीं। विद्यार्थी कहता है कि इसका कारण यही होगा कि p-ओर धन आवेशित है और n-ओर ऋण, अतः धारा एक ओर खिंचती है। समझाओ कि डायोड को एकदिश वस्तुतः क्या बनाता है।",
+          "choices": [
+            "संपर्क से पहले दोनों भाग विद्युत् दृष्टि से उदासीन हैं, अतः जिस आकर्षण की दुहाई दी जाए वह है ही नहीं। जो होता है वह विसरण है: इलेक्ट्रॉन n-ओर से p-ओर भटकते हैं और होल दूसरी ओर, सीमा के पास पुनर्योजित होते हैं और ऐसी ह्रासी परत छोड़ जाते हैं जिसमें केवल नियत आयनित डोपेंट परमाणु हैं — p-ओर ऋण, n-ओर धन। वे नियत आवेश ऐसी रोधिका बनाते हैं जो आगे के विसरण का विरोध करती है, और संतुलन आ जाता है। अग्र अभिनति बहुसंख्यक वाहकों को संधि की ओर धकेलती है, परत सँकरी करती और रोधिका घटाती है, अतः धारा बहती है। पश्च अभिनति उन्हें दूर खींचती है, परत चौड़ी करती है, और केवल नन्ही अल्पसंख्यक वाहक धारा पार जा पाती है",
+            "विद्यार्थी सही है: डोपिंग p-ओर को धन और n-ओर को ऋण छोड़ देती है, और डायोड का एकदिश आचरण उसी स्थायी आवेश पृथक्करण से सीधे निकलता है",
+            "संधि एक ओर चालन इसलिए करती है कि होल क्रिस्टल में केवल एक दिशा में चल सकते हैं, जबकि इलेक्ट्रॉन दोनों में",
+            "असममिति दोनों सिरों पर टाँके गए धातु संपर्कों से आती है, और समरूप संपर्कों वाली संधि दोनों दिशाओं में बराबर चालन करती"
+          ],
+          "solution": "विद्यार्थी का चित्र अच्छा होता यदि दोनों ओर सचमुच नेट आवेश होते, और पहली बात यही ठहरानी है कि नहीं हैं। सिलिकॉन में रखा फ़ॉस्फ़ोरस परमाणु पंद्रह प्रोटॉन और पंद्रह इलेक्ट्रॉन लाता है; बोरॉन परमाणु पाँच-पाँच। डोपिंग धन और ऋण आवेश बराबर मात्रा में जोड़ती है, अतः जुड़ने से पहले दोनों टुकड़े उदासीन हैं और उनके बीच कोई स्थिरवैद्युत आकर्षण है ही नहीं जिसका लाभ उठाया जाए। जो वस्तुतः होता है वह सांद्रता के अंतर से शुरू होता है, आवेश के अंतर से नहीं। n-ओर गतिशील इलेक्ट्रॉनों से ठसी है; p-ओर उनसे लगभग ख़ाली। कण वहाँ से जहाँ वे भरपूर हैं वहाँ विसरित होते हैं जहाँ विरल हैं — उसी कारण से जिससे स्याही की बूँद पानी में फैलती है — अतः इलेक्ट्रॉन p-भाग में बहते हैं और होल दूसरी ओर। सीमा के पास वे मिलकर पुनर्योजित होते हैं, और ऐसी सँकरी परत बचती है जिसमें कोई गतिशील वाहक है ही नहीं: ह्रासी क्षेत्र। अब आवेश प्रकट होता है, और उसके उद्गम के बारे में ठीक-ठीक होना चाहिए। जिस दाता परमाणु ने अपना फ़ालतू इलेक्ट्रॉन खो दिया वह नियत धन आयन है, जालक में जड़ा हुआ; जिस ग्राही ने एक पाया वह नियत ऋण आयन है। ह्रासी परत के भीतर गतिशील वाहक जा चुके हैं पर ये आयन बचे हैं, अतः परत p-ओर ऋण आवेश और n-ओर धन आवेश रखती है। यह विसरण से बना आवेश है, पहले से मौजूद ऐसा आवेश नहीं जिसने विसरण कराया हो — और दोनों टुकड़े मिलाकर अब भी कुल मिलाकर उदासीन हैं। वह आवेश n-ओर से p-ओर इशारा करता विद्युत क्षेत्र खड़ा करता है, और क्षेत्र ठीक उसी गति का विरोध करता है जिसने उसे बनाया: वह इलेक्ट्रॉनों को n-ओर और होलों को p-ओर वापस धकेलता है। क्षेत्र बढ़ने पर विसरण धीमा पड़ता है, और संधि तब संतुलन में जमती है जब क्षेत्र का धक्का विसरण की फैलने की प्रवृत्ति को संतुलित कर दे। परत के आर-पार विभवांतर, रोधिका विभव, सिलिकॉन के लिए लगभग 0.7 V और जर्मेनियम के लिए 0.3 V है। अब उसे अभिनत करो। अग्र अभिनति धन सिरा p-ओर से जोड़ती है, होलों को संधि की ओर और दूसरी ओर से इलेक्ट्रॉनों को उसकी ओर धकेलती है। बहुसंख्यक वाहक ह्रासी क्षेत्र में उमड़ते हैं, वह सँकरा होता है, रोधिका गिरती है, और लगाई गई वोल्टता रोधिका से आगे बढ़ते ही वाहक विशाल संख्या में पार करते हैं। धारा वोल्टता के साथ तेज़ी से — मोटे तौर पर चरघातांकी रूप से — बढ़ती है। पश्च अभिनति उलटा करती है: वह दोनों ओर बहुसंख्यक वाहकों को संधि से दूर खींचती है, ह्रासी परत चौड़ी होती है, और रोधिका घटने के बजाय बढ़ जाती है। लगभग कोई बहुसंख्यक वाहक पार नहीं कर सकता। जो पार करती है वह अल्पसंख्यक वाहकों की बहुत छोटी धारा है — p-ओर के कुछ इलेक्ट्रॉन और n-ओर के होल — जिनके लिए क्षेत्र चढ़ाई नहीं, ढलान है। वह पश्च संतृप्ति धारा माइक्रोऐम्पियर या उससे कम की कोटि की है, वोल्टता से वस्तुतः स्वतंत्र, और ताप पर प्रबल रूप से निर्भर, क्योंकि अल्पसंख्यक वाहक ऊष्मा से बनते हैं। दो परिणाम साथ ले जाने योग्य हैं। पहला, असममिति संधि की अपनी है, संपर्कों की नहीं: दोनों सिरों के संपर्क समरूप बनाने से कुछ नहीं बदलता, क्योंकि एकदिश आचरण दोनों डोपित भागों की सीमा पर रहता है। दूसरा, रोधिका का होना डायोड का अग्र वोल्टता पतन समझाता है, जो प्रतिरोध नहीं है और आपूर्ति के अनुपात में नहीं बदलता — सिलिकॉन डायोड में लगभग 0.7 V खोए जाते हैं चाहे उसे 5 V दिए जाएँ या 500 V, क्योंकि महसूल चढ़ने की दीवार है, चुकाने का अनुपात नहीं। (दूसरा विकल्प ऐसा आवेश पृथक्करण ठहराता है जिसे माप ख़ारिज करता है; तीसरा होल की गति पर ऐसी दिशा-पाबंदी गढ़ता है जो है ही नहीं; चौथा असममिति को संपर्कों पर ले जाता है, जो जाँचा जा सकता है और झूठ है।)"
+        },
+        "mr": {
+          "stem": "p-n संधी एका दिशेने मुक्तपणे वहन करते आणि दुसऱ्या दिशेने जवळपास नाही. विद्यार्थी म्हणतो की याचे कारण हेच असावे की p-बाजू धन प्रभारित आहे आणि n-बाजू ऋण, म्हणून धारा एका दिशेने ओढली जाते. डायोडला एकदिश प्रत्यक्षात काय बनवते ते समजावा.",
+          "choices": [
+            "संपर्काआधी दोन्ही भाग विद्युतदृष्ट्या उदासीन आहेत, म्हणून ज्या आकर्षणाचा आधार घ्यावा ते आहेच नाही. जे घडते ते विसरण आहे: इलेक्ट्रॉन n-बाजूकडून p-बाजूकडे भटकतात आणि होल दुसऱ्या दिशेने, सीमेजवळ पुनर्योजित होतात आणि असा क्षयित थर सोडतात ज्यात केवळ स्थिर आयनित डोपंट अणू आहेत — p-बाजूला ऋण, n-बाजूला धन. ते स्थिर प्रभार असा अडसर बांधतात जो पुढच्या विसरणाला विरोध करतो, आणि समतोल येतो. अग्र अभिनती बहुसंख्य वाहकांना संधीकडे ढकलते, थर अरुंद करते आणि अडसर घटवते, म्हणून धारा वाहते. पश्च अभिनती त्यांना दूर ओढते, थर रुंद करते, आणि केवळ चिमुकली अल्पसंख्य वाहक धारा पलीकडे जाऊ शकते",
+            "विद्यार्थी बरोबर आहे: डोपिंग p-बाजू धन आणि n-बाजू ऋण सोडते, आणि डायोडचे एकदिश वर्तन त्याच कायम प्रभार विभाजनातून थेट निघते",
+            "संधी एका दिशेने वहन यासाठी करते की होल स्फटिकात केवळ एका दिशेने हलू शकतात, तर इलेक्ट्रॉन दोन्हींत",
+            "असममिती दोन्ही टोकांना जोडलेल्या धातू संपर्कांतून येते, आणि सारखे संपर्क असलेली संधी दोन्ही दिशांनी समान वहन करेल"
+          ],
+          "solution": "विद्यार्थ्याचे चित्र चांगले ठरले असते जर दोन्ही बाजूंना खरोखर निव्वळ प्रभार असते, आणि पहिली गोष्ट हीच ठरवायची की ते नाहीत. सिलिकॉनमध्ये ठेवलेला फॉस्फरस अणू पंधरा प्रोटॉन आणि पंधरा इलेक्ट्रॉन आणतो; बोरॉन अणू पाच-पाच. डोपिंग धन आणि ऋण प्रभार समान प्रमाणात जोडते, म्हणून जोडण्याआधी दोन्ही तुकडे उदासीन आहेत आणि त्यांच्यात कोणतेही स्थिरविद्युत आकर्षण नाहीच ज्याचा फायदा घ्यावा. जे प्रत्यक्षात घडते ते संहतीच्या फरकाने सुरू होते, प्रभाराच्या फरकाने नाही. n-बाजू गतिशील इलेक्ट्रॉनांनी दाटलेली आहे; p-बाजू त्यांनी जवळपास रिकामी. कण जिथे भरपूर आहेत तिथून जिथे विरळ आहेत तिकडे विसरतात — त्याच कारणाने ज्याने शाईचा थेंब पाण्यात पसरतो — म्हणून इलेक्ट्रॉन p-भागात वाहतात आणि होल दुसऱ्या दिशेने. सीमेजवळ ते भेटून पुनर्योजित होतात, आणि अशी अरुंद थर उरते जिच्यात एकही गतिशील वाहक नाहीच: क्षयित प्रदेश. आता प्रभार प्रकट होतो, आणि त्याच्या उगमाबद्दल नेमके असायला हवे. ज्या दाता अणूने आपला जादा इलेक्ट्रॉन गमावला तो स्थिर धन आयन आहे, जाळीत जखडलेला; ज्या ग्राहीने एक मिळवला तो स्थिर ऋण आयन आहे. क्षयित थराच्या आत गतिशील वाहक गेले आहेत पण हे आयन उरले आहेत, म्हणून थर p-बाजूला ऋण प्रभार आणि n-बाजूला धन प्रभार बाळगतो. हा विसरणाने बनलेला प्रभार आहे, आधीपासून असलेला असा प्रभार नाही ज्याने विसरण घडवले — आणि दोन्ही तुकडे मिळून अजूनही एकूण उदासीन आहेत. तो प्रभार n-बाजूकडून p-बाजूकडे दाखवणारे विद्युत क्षेत्र उभे करतो, आणि क्षेत्र नेमक्या त्याच गतीला विरोध करते जिने त्याला बनवले: ते इलेक्ट्रॉनांना n-बाजूकडे आणि होलांना p-बाजूकडे परत ढकलते. क्षेत्र वाढताना विसरण मंदावते, आणि संधी तेव्हा समतोलात स्थिरावते जेव्हा क्षेत्राचा धक्का विसरणाच्या पसरण्याच्या प्रवृत्तीला तोलतो. थराच्या आरपार विभवांतर, अडसर विभव, सिलिकॉनसाठी सुमारे 0.7 V आणि जर्मेनियमसाठी 0.3 V आहे. आता त्याला अभिनत करा. अग्र अभिनती धन टोक p-बाजूला जोडते, होलांना संधीकडे आणि दुसऱ्या बाजूकडून इलेक्ट्रॉनांना तिच्याकडे ढकलते. बहुसंख्य वाहक क्षयित प्रदेशात लोटतात, तो अरुंद होतो, अडसर घसरतो, आणि लावलेला व्होल्टेज अडसराहून पुढे जाताच वाहक प्रचंड संख्येने ओलांडतात. धारा व्होल्टेजसोबत झपाट्याने — ढोबळमानाने घातांकीरीत्या — वाढते. पश्च अभिनती उलट करते: ती दोन्ही बाजूंचे बहुसंख्य वाहक संधीपासून दूर ओढते, क्षयित थर रुंद होतो, आणि अडसर घटण्याऐवजी वाढतो. जवळपास कोणताही बहुसंख्य वाहक ओलांडू शकत नाही. जी ओलांडते ती अल्पसंख्य वाहकांची अतिशय लहान धारा आहे — p-बाजूचे काही इलेक्ट्रॉन आणि n-बाजूचे होल — ज्यांच्यासाठी क्षेत्र चढ नसून उतार आहे. ती पश्च संपृक्तता धारा मायक्रोअँपिअर वा त्याहून कमी कोटीची आहे, व्होल्टेजपासून प्रत्यक्षात स्वतंत्र, आणि तापमानावर तीव्रपणे अवलंबून, कारण अल्पसंख्य वाहक उष्णतेने बनतात. दोन परिणाम सोबत न्यायचे आहेत. पहिला, असममिती संधीची स्वतःची आहे, संपर्कांची नाही: दोन्ही टोकांचे संपर्क सारखे केल्याने काहीही बदलत नाही, कारण एकदिश वर्तन दोन डोपित भागांच्या सीमेवर राहते. दुसरा, अडसराचे असणे डायोडची अग्र व्होल्टेज घसरण समजावते, जी रोध नाही आणि पुरवठ्याच्या प्रमाणात बदलत नाही — सिलिकॉन डायोडमध्ये सुमारे 0.7 V गमावले जातात मग त्याला 5 V द्या वा 500 V, कारण कर ही चढायची भिंत आहे, भरायचे प्रमाण नाही. (दुसरा पर्याय असे प्रभार विभाजन ठरवतो जे मापन वगळते; तिसरा होलच्या गतीवर अशी दिशा-बंदी घडवतो जी अस्तित्वातच नाही; चौथा असममिती संपर्कांवर नेतो, जे तपासता येते आणि खोटे आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "In an intrinsic semiconductor the electron and hole concentrations are equal. If n_i = 3 × 10¹⁶ per m³, what is the hole concentration in units of 10¹⁶ per m³?",
+      "choices": [
+        "3",
+        "1.5",
+        "9",
+        "6"
+      ],
+      "answerIndex": 0,
+      "solution": "In a pure crystal every carrier is created in a pair, so n_e = n_h = n_i = 3, that is 6/2 in these units. The equality is a direct consequence of the mechanism: breaking one bond frees one electron and leaves exactly one hole, so the two populations cannot drift apart. Doping is precisely what breaks that equality. (6 doubles, as if the two populations added to n_i.)",
+      "checkExpr": "6/2",
+      "translations": {
+        "hi": {
+          "stem": "नैज अर्धचालक में इलेक्ट्रॉन और होल सांद्रताएँ बराबर हैं। यदि n_i = 3 × 10¹⁶ प्रति m³, तो होल सांद्रता 10¹⁶ प्रति m³ की इकाइयों में क्या है?",
+          "choices": [
+            "3",
+            "1.5",
+            "9",
+            "6"
+          ],
+          "solution": "शुद्ध क्रिस्टल में हर वाहक युग्म में बनता है, अतः n_e = n_h = n_i = 3, अर्थात् इन इकाइयों में 6/2. यह बराबरी क्रियाविधि का सीधा परिणाम है: एक बंध तोड़ने से एक इलेक्ट्रॉन मुक्त होता है और ठीक एक होल बचता है, अतः दोनों आबादियाँ अलग नहीं हो सकतीं। डोपिंग ठीक वही है जो उस बराबरी को तोड़ती है। (6 दुगुना कर देता है, मानो दोनों आबादियाँ जुड़कर n_i बनाती हों।)"
+        },
+        "mr": {
+          "stem": "नैसर्गिक अर्धवाहकात इलेक्ट्रॉन आणि होल संहती समान आहेत. जर n_i = 3 × 10¹⁶ प्रति m³, तर होल संहती 10¹⁶ प्रति m³ च्या एककांत किती?",
+          "choices": [
+            "3",
+            "1.5",
+            "9",
+            "6"
+          ],
+          "solution": "शुद्ध स्फटिकात प्रत्येक वाहक जोडीत तयार होतो, म्हणून n_e = n_h = n_i = 3, म्हणजे या एककांत 6/2. ही समानता यंत्रणेचा थेट परिणाम आहे: एक बंध तोडल्याने एक इलेक्ट्रॉन मुक्त होतो आणि नेमका एक होल उरतो, म्हणून दोन्ही लोकसंख्या वेगळ्या होऊ शकत नाहीत. डोपिंग नेमके तेच जे ती समानता मोडते. (6 दुप्पट करते, जणू दोन्ही लोकसंख्या जुळून n_i बनवत असाव्यात.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A semiconductor has a band gap of 1.24 eV. What is the longest wavelength, in nm, that can lift an electron across it? Take hc = 1240 eV nm.",
+      "choices": [
+        "100",
+        "10000",
+        "1000",
+        "1.24"
+      ],
+      "answerIndex": 2,
+      "solution": "λ = hc/E_g = 1240/1.24 = 1000 nm. Longer wavelengths carry less energy per photon and cannot bridge the gap however bright the beam — the same threshold argument as in the photoelectric effect, with the band gap playing the part of the work function. A gap of this size sits in the near infrared, which is why such a material makes a good detector for heat radiation but is transparent to it as well. (100 misplaces the exponent by one.)",
+      "checkExpr": "1240/1.24",
+      "translations": {
+        "hi": {
+          "stem": "किसी अर्धचालक का बैंड अंतराल 1.24 eV है। इलेक्ट्रॉन को उसके पार उठा सकने वाली सबसे लंबी तरंगदैर्ध्य, nm में, क्या है? hc = 1240 eV nm लो।",
+          "choices": [
+            "100",
+            "10000",
+            "1000",
+            "1.24"
+          ],
+          "solution": "λ = hc/E_g = 1240/1.24 = 1000 nm. लंबी तरंगदैर्ध्य प्रति फ़ोटॉन कम ऊर्जा ढोती हैं और पुंज कितना भी चमकीला हो अंतराल नहीं पाट सकतीं — वही देहली वाला तर्क जो प्रकाश-विद्युत प्रभाव में था, जिसमें बैंड अंतराल कार्यफलन की भूमिका निभा रहा है। इस आकार का अंतराल निकट अवरक्त में बैठता है, इसीलिए ऐसा पदार्थ ऊष्मा विकिरण का अच्छा संसूचक बनता है और उसके प्रति पारदर्शी भी है। (100 घातांक एक से चूक जाता है।)"
+        },
+        "mr": {
+          "stem": "एका अर्धवाहकाची बँड फट 1.24 eV आहे. इलेक्ट्रॉनला तिच्या पलीकडे उचलू शकणारी सर्वांत लांब तरंगलांबी, nm मध्ये, किती? hc = 1240 eV nm घ्या.",
+          "choices": [
+            "100",
+            "10000",
+            "1000",
+            "1.24"
+          ],
+          "solution": "λ = hc/E_g = 1240/1.24 = 1000 nm. लांब तरंगलांबी प्रति फोटॉन कमी ऊर्जा वाहतात आणि शलाका कितीही तेजस्वी असो फट भरू शकत नाहीत — तोच उंबरठ्याचा युक्तिवाद जो प्रकाश-विद्युत परिणामात होता, ज्यात बँड फट कार्यफलनाची भूमिका बजावत आहे. या आकाराची फट निकट अवरक्तात बसते, म्हणूनच असा पदार्थ उष्णता प्रारणाचा चांगला संवेदक बनतो आणि त्याला पारदर्शकही आहे. (100 घातांक एकाने चुकवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "In a doped semiconductor n_e n_h = n_i². If n_i = 2 × 10¹⁶ per m³ and n_e = 8 × 10¹⁶ per m³, what is n_h in units of 10¹⁶ per m³?",
+      "choices": [
+        "4",
+        "0.5",
+        "16",
+        "2"
+      ],
+      "answerIndex": 1,
+      "solution": "n_h = n_i²/n_e = 4/8 = 0.5 in these units. Note what has happened: raising the electrons from 2 to 8 has pushed the holes DOWN from 2 to 0.5, keeping the product fixed. Doping does not simply add majority carriers; it suppresses the minority ones by the same factor, and that suppression is what makes a doped region behave so decisively as one type. (2 leaves the holes unchanged at n_i.)",
+      "checkExpr": "4/8",
+      "translations": {
+        "hi": {
+          "stem": "डोपित अर्धचालक में n_e n_h = n_i². यदि n_i = 2 × 10¹⁶ प्रति m³ और n_e = 8 × 10¹⁶ प्रति m³, तो n_h, 10¹⁶ प्रति m³ की इकाइयों में क्या है?",
+          "choices": [
+            "4",
+            "0.5",
+            "16",
+            "2"
+          ],
+          "solution": "n_h = n_i²/n_e = 4/8 = 0.5 इन इकाइयों में। ध्यान दो कि क्या हुआ: इलेक्ट्रॉनों को 2 से 8 तक बढ़ाने ने होलों को 2 से 0.5 तक नीचे धकेल दिया, और गुणनफल नियत रखा। डोपिंग केवल बहुसंख्यक वाहक जोड़ती नहीं; वह अल्पसंख्यकों को उसी गुणक से दबा देती है, और वही दमन डोपित भाग को इतने निर्णायक ढंग से एक ही प्रकार का बनाता है। (2 होलों को n_i पर अपरिवर्तित छोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "डोपित अर्धवाहकात n_e n_h = n_i². जर n_i = 2 × 10¹⁶ प्रति m³ आणि n_e = 8 × 10¹⁶ प्रति m³, तर n_h, 10¹⁶ प्रति m³ च्या एककांत किती?",
+          "choices": [
+            "4",
+            "0.5",
+            "16",
+            "2"
+          ],
+          "solution": "n_h = n_i²/n_e = 4/8 = 0.5 या एककांत. काय घडले ते लक्षात घ्या: इलेक्ट्रॉन 2 वरून 8 पर्यंत वाढवल्याने होल 2 वरून 0.5 पर्यंत खाली ढकलले गेले, आणि गुणाकार स्थिर राहिला. डोपिंग केवळ बहुसंख्य वाहक जोडत नाही; ते अल्पसंख्यांना त्याच पटीने दाबते, आणि तेच दमन डोपित भागाला इतक्या निर्णायकपणे एकाच प्रकाराचा बनवते. (2 होल n_i वर अपरिवर्तित सोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A full-wave rectifier is fed from a 50 Hz supply. What is the frequency, in Hz, of the ripple in its output?",
+      "choices": [
+        "200",
+        "100",
+        "25",
+        "50"
+      ],
+      "answerIndex": 1,
+      "solution": "A full-wave rectifier flips the negative half of every cycle up rather than discarding it, so two humps appear per input cycle and the ripple is at 50 × 2 = 100 Hz. A half-wave rectifier would give one hump per cycle and a ripple at 50 Hz. The doubling matters practically: a higher ripple frequency is easier to smooth, so a full-wave design needs a smaller filter capacitor for the same steadiness. (50 gives the half-wave answer.)",
+      "checkExpr": "50*2",
+      "translations": {
+        "hi": {
+          "stem": "एक पूर्ण-तरंग दिष्टकारी को 50 Hz आपूर्ति दी जाती है। उसके निर्गत में लहर की आवृत्ति, Hz में, क्या है?",
+          "choices": [
+            "200",
+            "100",
+            "25",
+            "50"
+          ],
+          "solution": "पूर्ण-तरंग दिष्टकारी हर चक्र के ऋण आधे को फेंकने के बजाय ऊपर पलट देता है, अतः प्रति निवेश चक्र दो कूबड़ बनते हैं और लहर 50 × 2 = 100 Hz पर है। अर्ध-तरंग दिष्टकारी प्रति चक्र एक कूबड़ और 50 Hz पर लहर देता। दुगुना होना व्यावहारिक रूप से मायने रखता है: ऊँची लहर आवृत्ति चिकना करना आसान है, अतः उसी स्थिरता के लिए पूर्ण-तरंग रचना को छोटा फ़िल्टर संधारित्र चाहिए। (50 अर्ध-तरंग वाला उत्तर देता है।)"
+        },
+        "mr": {
+          "stem": "एका पूर्ण-लहरी दिष्टकारीला 50 Hz पुरवठा दिला जातो. त्याच्या निर्गतातील लाटेची वारंवारता, Hz मध्ये, किती?",
+          "choices": [
+            "200",
+            "100",
+            "25",
+            "50"
+          ],
+          "solution": "पूर्ण-लहरी दिष्टकारी प्रत्येक चक्राचा ऋण अर्धा भाग फेकून देण्याऐवजी वर पलटवतो, म्हणून प्रति निवेश चक्र दोन कुबड बनतात आणि लाट 50 × 2 = 100 Hz वर आहे. अर्ध-लहरी दिष्टकारी प्रति चक्र एक कुबड आणि 50 Hz वर लाट देईल. दुप्पट होणे व्यावहारिकदृष्ट्या महत्त्वाचे: उंच लाट वारंवारता गुळगुळीत करणे सोपे, म्हणून त्याच स्थिरतेसाठी पूर्ण-लहरी रचनेला लहान गाळणी धारित्र लागते. (50 अर्ध-लहरी उत्तर देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A silicon diode with a forward drop of 0.7 V is in series with a 430 Ω resistor across a 5 V supply. What current, in mA, flows?",
+      "choices": [
+        "1.6",
+        "7",
+        "10",
+        "11.6"
+      ],
+      "answerIndex": 2,
+      "solution": "The diode takes its 0.7 V first, leaving 5 − 0.7 = 4.3 V across the resistor, so I = 4.3/430 = 0.01 A = 10 mA. The order matters: the drop is subtracted before Ohm's law is applied, because a diode is not a resistance and does not share the voltage in proportion. (11.6 ignores the diode's drop entirely.)",
+      "checkExpr": "(5-0.7)/430*1000",
+      "translations": {
+        "hi": {
+          "stem": "0.7 V अग्र पतन वाला सिलिकॉन डायोड 430 Ω प्रतिरोधक के श्रेणी में 5 V आपूर्ति के आर-पार है। कितनी धारा, mA में, बहती है?",
+          "choices": [
+            "1.6",
+            "7",
+            "10",
+            "11.6"
+          ],
+          "solution": "डायोड पहले अपने 0.7 V लेता है, प्रतिरोधक के आर-पार 5 − 0.7 = 4.3 V छोड़ता है, अतः I = 4.3/430 = 0.01 A = 10 mA. क्रम मायने रखता है: ओम का नियम लगाने से पहले पतन घटाया जाता है, क्योंकि डायोड प्रतिरोध नहीं है और वोल्टता को अनुपात में नहीं बाँटता। (11.6 डायोड का पतन बिलकुल अनदेखा कर देता है।)"
+        },
+        "mr": {
+          "stem": "0.7 V अग्र घसरण असलेला सिलिकॉन डायोड 430 Ω रोधकाच्या श्रेणीत 5 V पुरवठ्याच्या आरपार आहे. किती धारा, mA मध्ये, वाहते?",
+          "choices": [
+            "1.6",
+            "7",
+            "10",
+            "11.6"
+          ],
+          "solution": "डायोड आधी आपले 0.7 V घेतो, रोधकाच्या आरपार 5 − 0.7 = 4.3 V सोडतो, म्हणून I = 4.3/430 = 0.01 A = 10 mA. क्रम महत्त्वाचा आहे: ओहमचा नियम लावण्याआधी घसरण वजा केली जाते, कारण डायोड हा रोध नाही आणि व्होल्टेज प्रमाणात वाटत नाही. (11.6 डायोडची घसरण पूर्णपणे दुर्लक्षिते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A Zener diode holds 6 V across itself. It is fed from a 10 V supply through a 200 Ω series resistor. What current, in mA, flows through the resistor?",
+      "choices": [
+        "30",
+        "50",
+        "80",
+        "20"
+      ],
+      "answerIndex": 3,
+      "solution": "The resistor carries the difference between the supply and the regulated voltage: (10 − 6)/200 = 0.02 A = 20 mA. The Zener's job is to hold its own voltage steady while the series resistor absorbs whatever is left over, so if the supply wanders up to 12 V the resistor simply passes more current and the output stays at 6 V. That is the whole idea of regulation — one component fixes a value and another swallows the variation. (50 divides the whole supply voltage by the resistance.)",
+      "checkExpr": "(10-6)/200*1000",
+      "translations": {
+        "hi": {
+          "stem": "एक ज़ेनर डायोड अपने आर-पार 6 V बनाए रखता है। उसे 200 Ω श्रेणी प्रतिरोधक से होकर 10 V आपूर्ति दी जाती है। प्रतिरोधक में से कितनी धारा, mA में, बहती है?",
+          "choices": [
+            "30",
+            "50",
+            "80",
+            "20"
+          ],
+          "solution": "प्रतिरोधक आपूर्ति और नियंत्रित वोल्टता का अंतर ढोता है: (10 − 6)/200 = 0.02 A = 20 mA. ज़ेनर का काम अपनी वोल्टता स्थिर रखना है जबकि श्रेणी प्रतिरोधक जो बचे उसे सोख ले, अतः आपूर्ति भटककर 12 V तक जाए तो प्रतिरोधक बस अधिक धारा जाने देता है और निर्गत 6 V पर बना रहता है। नियमन का पूरा विचार यही है — एक पुर्ज़ा मान तय करता है और दूसरा उतार-चढ़ाव निगल लेता है। (50 पूरी आपूर्ति वोल्टता को प्रतिरोध से भाग दे देता है।)"
+        },
+        "mr": {
+          "stem": "एक झेनर डायोड स्वतःच्या आरपार 6 V टिकवतो. त्याला 200 Ω श्रेणी रोधकातून 10 V पुरवठा दिला जातो. रोधकातून किती धारा, mA मध्ये, वाहते?",
+          "choices": [
+            "30",
+            "50",
+            "80",
+            "20"
+          ],
+          "solution": "रोधक पुरवठा आणि नियंत्रित व्होल्टेज यांचा फरक वाहतो: (10 − 6)/200 = 0.02 A = 20 mA. झेनरचे काम आपला व्होल्टेज स्थिर ठेवणे तर श्रेणी रोधकाने जे उरेल ते शोषणे, म्हणून पुरवठा भरकटून 12 V पर्यंत गेला तर रोधक फक्त अधिक धारा जाऊ देतो आणि निर्गत 6 V वर टिकतो. नियमनाची अख्खी कल्पना हीच — एक घटक मूल्य ठरवतो आणि दुसरा चढउतार गिळतो. (50 अख्खा पुरवठा व्होल्टेज रोधाने भागते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "For an intrinsic semiconductor the conductivity is σ = e n (μ_e + μ_h). If μ_e = 0.14 and μ_h = 0.05 m²/(V s), what is μ_e + μ_h?",
+      "choices": [
+        "0.007",
+        "0.09",
+        "0.7",
+        "0.19"
+      ],
+      "answerIndex": 3,
+      "solution": "The two mobilities add because electrons and holes drift in opposite directions but carry opposite charges, so their contributions to the current point the SAME way: 0.14 + 0.05 = 0.19 m²/(V s). Note that the electron's mobility is about three times the hole's, which is why n-channel devices switch faster than p-channel ones and why most fast logic is built around electron conduction. (0.09 subtracts the two.)",
+      "checkExpr": "0.14+0.05",
+      "translations": {
+        "hi": {
+          "stem": "नैज अर्धचालक के लिए चालकता σ = e n (μ_e + μ_h) है। यदि μ_e = 0.14 और μ_h = 0.05 m²/(V s), तो μ_e + μ_h क्या है?",
+          "choices": [
+            "0.007",
+            "0.09",
+            "0.7",
+            "0.19"
+          ],
+          "solution": "दोनों गतिशीलताएँ जुड़ती हैं क्योंकि इलेक्ट्रॉन और होल उलटी दिशाओं में बहते हैं पर उलटे आवेश ढोते हैं, अतः धारा में उनके अंश एक ही ओर इशारा करते हैं: 0.14 + 0.05 = 0.19 m²/(V s). ध्यान दो कि इलेक्ट्रॉन की गतिशीलता होल की लगभग तीन गुनी है, इसीलिए n-चैनल युक्तियाँ p-चैनल से तेज़ स्विच करती हैं और इसीलिए अधिकांश तेज़ तर्क-परिपथ इलेक्ट्रॉन चालन के गिर्द बने हैं। (0.09 दोनों को घटा देता है।)"
+        },
+        "mr": {
+          "stem": "नैसर्गिक अर्धवाहकासाठी वाहकता σ = e n (μ_e + μ_h) आहे. जर μ_e = 0.14 आणि μ_h = 0.05 m²/(V s), तर μ_e + μ_h किती?",
+          "choices": [
+            "0.007",
+            "0.09",
+            "0.7",
+            "0.19"
+          ],
+          "solution": "दोन्ही गतिशीलता जुळतात कारण इलेक्ट्रॉन आणि होल उलट दिशांनी वाहतात पण उलट प्रभार वाहतात, म्हणून धारेतले त्यांचे वाटे एकाच दिशेने दाखवतात: 0.14 + 0.05 = 0.19 m²/(V s). लक्षात घ्या की इलेक्ट्रॉनची गतिशीलता होलच्या सुमारे तिप्पट आहे, म्हणूनच n-वाहिनी साधने p-वाहिनीहून जलद स्विच करतात आणि म्हणूनच बहुतांश जलद तर्क-परिपथ इलेक्ट्रॉन वहनाभोवती बांधलेले आहेत. (0.09 दोन्ही वजा करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A light-emitting diode emits at 620 nm. What is its band gap, in eV? Take hc = 1240 eV nm.",
+      "choices": [
+        "620",
+        "2",
+        "0.5",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "Each recombining electron gives up the gap energy as one photon, so E_g = hc/λ = 1240/620 = 2 eV — orange-red light. The colour is therefore chosen at the foundry by picking the semiconductor, not by heating anything, which is why an LED runs cool and why blue LEDs needed a whole new material rather than a hotter filament. (0.5 inverts the ratio.)",
+      "checkExpr": "1240/620",
+      "translations": {
+        "hi": {
+          "stem": "एक प्रकाश उत्सर्जक डायोड 620 nm पर उत्सर्जित करता है। उसका बैंड अंतराल, eV में, क्या है? hc = 1240 eV nm लो।",
+          "choices": [
+            "620",
+            "2",
+            "0.5",
+            "4"
+          ],
+          "solution": "पुनर्योजित होता हर इलेक्ट्रॉन अंतराल ऊर्जा को एक फ़ोटॉन के रूप में छोड़ता है, अतः E_g = hc/λ = 1240/620 = 2 eV — नारंगी-लाल प्रकाश। अतः रंग कारख़ाने में अर्धचालक चुनकर तय होता है, कुछ गर्म करके नहीं, इसीलिए LED ठंडा चलता है और इसीलिए नीली LED को अधिक गर्म तंतु नहीं बल्कि बिलकुल नया पदार्थ चाहिए था। (0.5 अनुपात उलट देता है।)"
+        },
+        "mr": {
+          "stem": "एक प्रकाश उत्सर्जक डायोड 620 nm वर उत्सर्जित करतो. त्याची बँड फट, eV मध्ये, किती? hc = 1240 eV nm घ्या.",
+          "choices": [
+            "620",
+            "2",
+            "0.5",
+            "4"
+          ],
+          "solution": "पुनर्योजित होणारा प्रत्येक इलेक्ट्रॉन फट ऊर्जा एका फोटॉनच्या रूपात सोडतो, म्हणून E_g = hc/λ = 1240/620 = 2 eV — नारिंगी-लाल प्रकाश. म्हणून रंग कारखान्यात अर्धवाहक निवडून ठरतो, काही तापवून नाही, म्हणूनच LED थंड चालतो आणि म्हणूनच निळ्या LED ला अधिक तप्त तंतू नव्हे तर पूर्णपणे नवा पदार्थ लागला. (0.5 गुणोत्तर उलटवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A germanium diode with a barrier of 0.3 V is forward biased from a 1.5 V supply through a 100 Ω resistor. What current, in mA, flows?",
+      "choices": [
+        "12",
+        "15",
+        "1.2",
+        "3"
+      ],
+      "answerIndex": 0,
+      "solution": "I = (1.5 − 0.3)/100 = 1.2/100 = 0.012 A = 12 mA. Compare this with the silicon case: germanium's lower barrier leaves more voltage for the resistor, which is a real advantage in low-voltage circuits and the reason germanium diodes are still used in signal detection. Their disadvantage is a much larger reverse current, since the smaller gap lets thermal generation produce minority carriers far more readily. (15 ignores the barrier altogether.)",
+      "checkExpr": "(1.5-0.3)/100*1000",
+      "translations": {
+        "hi": {
+          "stem": "0.3 V रोधिका वाला जर्मेनियम डायोड 100 Ω प्रतिरोधक से होकर 1.5 V आपूर्ति से अग्र अभिनत किया जाता है। कितनी धारा, mA में, बहती है?",
+          "choices": [
+            "12",
+            "15",
+            "1.2",
+            "3"
+          ],
+          "solution": "I = (1.5 − 0.3)/100 = 1.2/100 = 0.012 A = 12 mA. इसकी सिलिकॉन वाली स्थिति से तुलना करो: जर्मेनियम की छोटी रोधिका प्रतिरोधक के लिए अधिक वोल्टता छोड़ती है, जो कम वोल्टता के परिपथों में असली लाभ है और यही कारण है कि संकेत संसूचन में जर्मेनियम डायोड अब भी काम आते हैं। उनका नुक़सान कहीं बड़ी पश्च धारा है, क्योंकि छोटा अंतराल ऊष्मीय जनन को अल्पसंख्यक वाहक कहीं आसानी से बनाने देता है। (15 रोधिका बिलकुल अनदेखी कर देता है।)"
+        },
+        "mr": {
+          "stem": "0.3 V अडसर असलेला जर्मेनियम डायोड 100 Ω रोधकातून 1.5 V पुरवठ्याने अग्र अभिनत केला जातो. किती धारा, mA मध्ये, वाहते?",
+          "choices": [
+            "12",
+            "15",
+            "1.2",
+            "3"
+          ],
+          "solution": "I = (1.5 − 0.3)/100 = 1.2/100 = 0.012 A = 12 mA. याची सिलिकॉनच्या स्थितीशी तुलना करा: जर्मेनियमचा लहान अडसर रोधकासाठी अधिक व्होल्टेज सोडतो, जो कमी व्होल्टेजच्या परिपथांत खरा फायदा आहे आणि हेच कारण की संकेत संवेदनात जर्मेनियम डायोड अजूनही वापरले जातात. त्यांचा तोटा म्हणजे कितीतरी मोठी पश्च धारा, कारण लहान फट औष्णिक निर्मितीला अल्पसंख्य वाहक कितीतरी सहज बनवू देते. (15 अडसर पूर्णपणे दुर्लक्षिते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Silicon with n_i = 2 × 10¹⁶ per m³ is doped until n_e = 2 × 10²² per m³. Using n_e n_h = n_i², what is n_h in units of 10¹⁰ per m³?",
+      "choices": [
+        "2",
+        "4",
+        "8",
+        "1"
+      ],
+      "answerIndex": 0,
+      "solution": "n_i² = 4 × 10³², so n_h = (4 × 10³²)/(2 × 10²²) = 2 × 10¹⁰ per m³, that is 4/2 = 2 in the units asked. Now look at what the doping has done. The electrons rose from 2 × 10¹⁶ to 2 × 10²² — a factor of a million — and the holes fell from 2 × 10¹⁶ to 2 × 10¹⁰, by exactly the same factor. The two populations, equal in the pure crystal, now differ by twelve orders of magnitude. Two consequences follow. First, the conductivity is entirely an electron affair; the holes contribute a millionth of a millionth and can be ignored in any current calculation. Second, and less obviously, the minority carriers cannot be ignored everywhere — the reverse current of a p-n junction is carried by exactly these crushed populations, which is why it is measured in microamperes and why it rises steeply with temperature, since heat regenerates them. The mass-action law is doing a lot of work for so simple a statement: it says that raising one carrier type necessarily suppresses the other, because recombination speeds up as soon as either becomes plentiful. (4 gives n_i² without dividing; 1 halves rather than dividing by the doping.)",
+      "checkExpr": "4/2",
+      "translations": {
+        "hi": {
+          "stem": "n_i = 2 × 10¹⁶ प्रति m³ वाला सिलिकॉन तब तक डोप किया जाता है जब तक n_e = 2 × 10²² प्रति m³ न हो जाए। n_e n_h = n_i² से, n_h, 10¹⁰ प्रति m³ की इकाइयों में क्या है?",
+          "choices": [
+            "2",
+            "4",
+            "8",
+            "1"
+          ],
+          "solution": "n_i² = 4 × 10³², अतः n_h = (4 × 10³²)/(2 × 10²²) = 2 × 10¹⁰ प्रति m³, अर्थात् पूछी गई इकाइयों में 4/2 = 2. अब देखो कि डोपिंग ने क्या किया। इलेक्ट्रॉन 2 × 10¹⁶ से 2 × 10²² तक चढ़े — दस लाख का गुणक — और होल 2 × 10¹⁶ से 2 × 10¹⁰ तक गिरे, ठीक उसी गुणक से। शुद्ध क्रिस्टल में बराबर दोनों आबादियाँ अब बारह कोटियों से भिन्न हैं। दो परिणाम निकलते हैं। पहला, चालकता पूरी तरह इलेक्ट्रॉनों का मामला है; होल दस लाख के दस लाखवें भाग जितना जोड़ते हैं और किसी भी धारा गणना में उन्हें छोड़ा जा सकता है। दूसरा, और कम स्पष्ट, अल्पसंख्यक वाहकों को हर जगह छोड़ा नहीं जा सकता — p-n संधि की पश्च धारा ठीक इन्हीं कुचली आबादियों से ढोई जाती है, इसीलिए वह माइक्रोऐम्पियर में नापी जाती है और इसीलिए ताप के साथ तेज़ी से बढ़ती है, क्योंकि ऊष्मा उन्हें फिर से बनाती है। इतने सरल कथन के लिए द्रव्यमान-क्रिया नियम बहुत काम कर रहा है: वह कहता है कि एक वाहक-प्रकार बढ़ाना दूसरे को अनिवार्यतः दबा देता है, क्योंकि कोई भी भरपूर होते ही पुनर्योजन तेज़ हो जाता है। (4 बिना भाग दिए n_i² दे देता है; 1 डोपिंग से भाग देने के बजाय आधा कर देता है।)"
+        },
+        "mr": {
+          "stem": "n_i = 2 × 10¹⁶ प्रति m³ असलेले सिलिकॉन तोवर डोप केले जाते जोवर n_e = 2 × 10²² प्रति m³ होत नाही. n_e n_h = n_i² वापरून, n_h, 10¹⁰ प्रति m³ च्या एककांत किती?",
+          "choices": [
+            "2",
+            "4",
+            "8",
+            "1"
+          ],
+          "solution": "n_i² = 4 × 10³², म्हणून n_h = (4 × 10³²)/(2 × 10²²) = 2 × 10¹⁰ प्रति m³, म्हणजे विचारलेल्या एककांत 4/2 = 2. आता डोपिंगने काय केले ते पाहा. इलेक्ट्रॉन 2 × 10¹⁶ वरून 2 × 10²² पर्यंत चढले — दहा लाखाचा गुणक — आणि होल 2 × 10¹⁶ वरून 2 × 10¹⁰ पर्यंत घसरले, नेमक्या त्याच पटीने. शुद्ध स्फटिकात समान असलेल्या दोन्ही लोकसंख्या आता बारा कोटींनी वेगळ्या आहेत. दोन परिणाम निघतात. पहिला, वाहकता पूर्णपणे इलेक्ट्रॉनांची बाब आहे; होल दहा लाखाच्या दहा लाखाव्या भागाइतके जोडतात आणि कोणत्याही धारा गणनेत त्यांना सोडता येते. दुसरा, आणि कमी स्पष्ट, अल्पसंख्य वाहकांना सर्वत्र सोडता येत नाही — p-n संधीची पश्च धारा नेमक्या याच चिरडलेल्या लोकसंख्यांनी वाहली जाते, म्हणूनच ती मायक्रोअँपिअरमध्ये मोजली जाते आणि म्हणूनच तापमानासोबत झपाट्याने वाढते, कारण उष्णता त्यांना पुन्हा बनवते. इतक्या साध्या विधानासाठी वस्तुमान-क्रिया नियम बरेच काम करत आहे: तो सांगतो की एक वाहक-प्रकार वाढवणे दुसऱ्याला अपरिहार्यपणे दाबते, कारण कोणताही भरपूर होताच पुनर्योजन वेगवान होते. (4 भागाकाराविना n_i² देते; 1 डोपिंगने भागण्याऐवजी निम्मे करते.)"
+        }
+      }
+    }
+  ]
+}
