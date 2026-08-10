@@ -2819,6 +2819,703 @@ export const G12_CHEMISTRY: Chapter[] = [
     ],
   },
   /*C7*/
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 9 — Amines                                                      */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "chemistry-12-amines",
+    subject: "CHEMISTRY",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 9 — Amines",
+      hi: "अध्याय 9 — ऐमीन",
+      mr: "प्रकरण 9 — अमाइन",
+    },
+    name: {
+      en: "Amines",
+      hi: "ऐमीन",
+      mr: "अमाइन",
+    },
+    summary: {
+      en: "A nitrogen with a lone pair it is willing to lend, which is the whole of the chapter: it makes the compound a base, it makes it a nucleophile, and both of those are the same property answering to two different names; an order of basic strength that reverses depending on whether the measurement is made in water or in the gas phase, so that a number long quoted as a property of the molecules turns out to be partly a property of the solvent around them; the same lone pair pulled into a ring and thereby unavailable, which is why an aromatic amine is a far weaker base than an aliphatic one and why it activates that ring so strongly that bromine needs no catalyst; a reaction with nitrous acid that gives a stable salt from one kind of amine and a bubbling mess from the other, which is why the diazonium route exists at all; and a set of preparations distinguished not by what they make but by whether the chain gains a carbon, keeps its count, or loses one.",
+      hi: "ऐसा नाइट्रोजन जिसके पास ऐसा एकाकी युग्म है जिसे वह उधार देने को तैयार है, और यही पूरा अध्याय है: वह यौगिक को क्षार बनाता है, नाभिकरागी बनाता है, और ये दोनों एक ही गुण के दो नाम हैं; क्षारीय प्रबलता का ऐसा क्रम जो इस पर उलट जाता है कि माप पानी में लिया गया या गैस प्रावस्था में, अतः जो संख्या लंबे समय से अणुओं का गुण बताई जाती रही वह आंशिक रूप से उनके गिर्द के विलायक का गुण निकलती है; वही एकाकी युग्म वलय में खिंचकर अनुपलब्ध, इसीलिए ऐरोमैटिक ऐमीन ऐलिफ़ैटिक से कहीं दुर्बल क्षार है और इसीलिए वह उस वलय को इतना सक्रिय करता है कि ब्रोमीन को उत्प्रेरक नहीं चाहिए; नाइट्रस अम्ल से ऐसी अभिक्रिया जो एक क़िस्म के ऐमीन से स्थायी लवण और दूसरी से बुलबुलों का झमेला देती है, और इसीलिए डाइऐज़ोनियम रास्ता है ही; और ऐसी विरचनाएँ जो इससे नहीं पहचानी जातीं कि वे क्या बनाती हैं बल्कि इससे कि शृंखला एक कार्बन पाती है, अपनी गिनती बनाए रखती है, या एक खोती है।",
+      mr: "असा नायट्रोजन ज्याच्याकडे अशी एकाकी जोडी आहे जी तो उसने द्यायला तयार आहे, आणि हेच अख्खे प्रकरण आहे: तो संयुगाला क्षार बनवतो, नाभिकरागी बनवतो, आणि ही दोन्ही एकाच गुणधर्माची दोन नावे आहेत; क्षारीय तीव्रतेचा असा क्रम जो यावर उलटतो की माप पाण्यात घेतले की वायुप्रावस्थेत, म्हणून जी संख्या दीर्घकाळ रेणूंचा गुणधर्म म्हणून सांगितली गेली ती अंशतः त्यांच्याभोवतीच्या विद्रावकाची गुणधर्म निघते; तीच एकाकी जोडी वलयात ओढली जाऊन अनुपलब्ध, म्हणूनच सुगंधी अमाइन अ‍ॅलिफॅटिकहून कितीतरी दुर्बल क्षार आहे आणि म्हणूनच तो त्या वलयाला इतके सक्रिय करतो की ब्रोमीनला उत्प्रेरक लागत नाही; नायट्रस आम्लाशी अशी अभिक्रिया जी एका प्रकारच्या अमाइनकडून स्थिर क्षार आणि दुसऱ्याकडून बुडबुड्यांचा गोंधळ देते, आणि म्हणूनच डायझोनियम मार्ग अस्तित्वात आहे; आणि अशा निर्मिती ज्या त्या काय बनवतात यावरून नव्हे तर साखळी एक कार्बन मिळवते, आपली मोजणी टिकवते, की एक गमावते यावरून ओळखल्या जातात.",
+    },
+    position: 9,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "basicity-of-amines",
+        name: {
+          en: "The basicity of amines",
+          hi: "ऐमीनों की क्षारकता",
+          mr: "अमाइनांची क्षारकता",
+        },
+        kind: "property and its cause",
+        prompt: {
+          en: "A property that comes entirely from one pair of electrons the nitrogen is not using for bonding, and which is why these compounds turn litmus blue and form salts with acids. What is it?",
+          hi: "ऐसा गुण जो पूरी तरह उस एक इलेक्ट्रॉन युग्म से आता है जिसे नाइट्रोजन आबंधन में काम नहीं ले रहा, और इसीलिए ये यौगिक लिटमस नीला कर देते हैं और अम्लों से लवण बनाते हैं। यह क्या है?",
+          mr: "असा गुणधर्म जो पूर्णपणे त्या एका इलेक्ट्रॉन जोडीतून येतो जी नायट्रोजन बंधनासाठी वापरत नाही, आणि म्हणूनच ही संयुगे लिटमस निळा करतात आणि आम्लांशी क्षार बनवतात. हा काय आहे?",
+        },
+        statement: {
+          en: "The basicity of amines is the willingness of the nitrogen's lone pair to accept a proton, and anything that makes that pair more available makes the amine a stronger base.",
+          hi: "ऐमीनों की क्षारकता नाइट्रोजन के एकाकी युग्म की प्रोटॉन लेने की तत्परता है, और जो भी उस युग्म को अधिक उपलब्ध बनाता है वह ऐमीन को प्रबल क्षार बना देता है।",
+          mr: "अमाइनांची क्षारकता म्हणजे नायट्रोजनच्या एकाकी जोडीची प्रोटॉन घेण्याची तयारी, आणि जे काही ती जोडी अधिक उपलब्ध करते ते अमाइनला तीव्र क्षार बनवते.",
+        },
+        detail: {
+          en: "The same lone pair also makes the amine a nucleophile, so its basicity and its reactivity towards a carbonyl or a haloalkane are two names for one property.",
+          hi: "वही एकाकी युग्म ऐमीन को नाभिकरागी भी बनाता है, अतः उसकी क्षारकता और कार्बोनिल या हैलोऐल्केन के प्रति उसकी क्रियाशीलता एक ही गुण के दो नाम हैं।",
+          mr: "तीच एकाकी जोडी अमाइनला नाभिकरागीही बनवते, म्हणून त्याची क्षारकता आणि कार्बोनिल वा हॅलोअल्केनबाबतची त्याची क्रियाशीलता ही एकाच गुणधर्माची दोन नावे आहेत.",
+        },
+        extra: {
+          en: "Alkyl groups push electron density towards the nitrogen and strengthen the base, which is why all the aliphatic amines are stronger bases than ammonia itself.",
+          hi: "ऐल्किल समूह नाइट्रोजन की ओर इलेक्ट्रॉन घनत्व धकेलते हैं और क्षार को प्रबल करते हैं, इसीलिए सारे ऐलिफ़ैटिक ऐमीन स्वयं अमोनिया से प्रबल क्षार हैं।",
+          mr: "अल्किल गट नायट्रोजनकडे इलेक्ट्रॉन घनता ढकलतात आणि क्षार तीव्र करतात, म्हणूनच सर्व अ‍ॅलिफॅटिक अमाइन स्वतः अमोनियाहून तीव्र क्षार आहेत.",
+        },
+        pair: {
+          left: {
+            en: "One unused pair of electrons doing two jobs",
+            hi: "एक अप्रयुक्त इलेक्ट्रॉन युग्म दो काम करता हुआ",
+            mr: "एक न वापरलेली इलेक्ट्रॉन जोडी दोन कामे करत",
+          },
+          right: {
+            en: "the basicity of amines",
+            hi: "ऐमीनों की क्षारकता",
+            mr: "अमाइनांची क्षारकता",
+          },
+        },
+      },
+      {
+        id: "weakness-of-aromatic-amines",
+        name: {
+          en: "The weakness of aromatic amines as bases",
+          hi: "क्षार के रूप में ऐरोमैटिक ऐमीनों की दुर्बलता",
+          mr: "क्षार म्हणून सुगंधी अमाइनांची दुर्बलता",
+        },
+        kind: "property and its cause",
+        prompt: {
+          en: "The same nitrogen with the same lone pair, moved from a chain onto a benzene ring, and the compound becomes about a million times the weaker base. Which fact is this?",
+          hi: "वही नाइट्रोजन उसी एकाकी युग्म के साथ, शृंखला से बेंज़ीन वलय पर हटाया, और यौगिक क़रीब दस लाख गुना दुर्बल क्षार हो जाता है। यह कौन-सा तथ्य है?",
+          mr: "तोच नायट्रोजन त्याच एकाकी जोडीसह, साखळीवरून बेंझिन वलयावर हलवला, आणि संयुग सुमारे दहा लाख पट दुर्बल क्षार होते. हे कोणते सत्य?",
+        },
+        statement: {
+          en: "The weakness of aromatic amines as bases follows from the lone pair being delocalised into the ring, so it is not fully available to accept a proton.",
+          hi: "क्षार के रूप में ऐरोमैटिक ऐमीनों की दुर्बलता इससे निकलती है कि एकाकी युग्म वलय में विस्थानीकृत है, अतः वह प्रोटॉन लेने के लिए पूरी तरह उपलब्ध नहीं।",
+          mr: "क्षार म्हणून सुगंधी अमाइनांची दुर्बलता यातून निघते की एकाकी जोडी वलयात विस्थानित आहे, म्हणून ती प्रोटॉन घेण्यास पूर्णपणे उपलब्ध नाही.",
+        },
+        detail: {
+          en: "Protonating it would cost the ring the delocalisation it had gained, so the ion is higher in energy than an ordinary ammonium ion and forms less readily.",
+          hi: "उसे प्रोटॉनित करने पर वलय को वह विस्थानीकरण गँवाना पड़ेगा जो उसने पाया था, अतः वह आयन साधारण अमोनियम आयन से उच्च ऊर्जा का है और कम आसानी से बनता है।",
+          mr: "तिचे प्रोटॉनीकरण केल्यास वलयाला ते विस्थानीकरण गमवावे लागेल जे त्याने मिळवले होते, म्हणून तो आयन साध्या अमोनियम आयनाहून उच्च ऊर्जेचा आहे आणि कमी सहज बनतो.",
+        },
+        extra: {
+          en: "The very same donation that costs it its basicity makes it a powerful activator of the ring, so aniline gives a tribromo product with bromine water instantly and with no catalyst.",
+          hi: "वही दान जो उसकी क्षारकता की क़ीमत लेता है उसे वलय का प्रबल सक्रियक बना देता है, अतः ऐनिलीन ब्रोमीन जल के साथ तुरंत और बिना उत्प्रेरक ट्राइब्रोमो उत्पाद देता है।",
+          mr: "तेच दान जे त्याच्या क्षारकतेची किंमत घेते ते त्याला वलयाचा प्रभावी सक्रियक बनवते, म्हणून अ‍ॅनिलीन ब्रोमीन जलासोबत लगेच आणि उत्प्रेरकाविना ट्रायब्रोमो उत्पादन देते.",
+        },
+        pair: {
+          left: {
+            en: "What it loses as a base it gains as an activator",
+            hi: "जो वह क्षार के रूप में खोता है वही सक्रियक के रूप में पाता है",
+            mr: "जे तो क्षार म्हणून गमावतो तेच सक्रियक म्हणून मिळवतो",
+          },
+          right: {
+            en: "the weakness of aromatic amines as bases",
+            hi: "क्षार के रूप में ऐरोमैटिक ऐमीनों की दुर्बलता",
+            mr: "क्षार म्हणून सुगंधी अमाइनांची दुर्बलता",
+          },
+        },
+      },
+      {
+        id: "solvation-and-basic-strength",
+        name: {
+          en: "Solvation and the order of basic strength",
+          hi: "विलायकन और क्षारीय प्रबलता का क्रम",
+          mr: "विद्रावण आणि क्षारीय तीव्रतेचा क्रम",
+        },
+        kind: "property and its cause",
+        prompt: {
+          en: "In the gas phase the order runs tertiary above secondary above primary, and in water it does not, and the compounds have not changed at all. What accounts for the reversal?",
+          hi: "गैस प्रावस्था में क्रम तृतीयक, फिर द्वितीयक, फिर प्राथमिक चलता है, और पानी में नहीं, और यौगिक बिलकुल नहीं बदले। इस उलटाव का कारण क्या है?",
+          mr: "वायुप्रावस्थेत क्रम तृतीयक, मग द्वितीयक, मग प्राथमिक चालतो, आणि पाण्यात नाही, आणि संयुगे मुळीच बदललेली नाहीत. या उलटण्याचे कारण काय?",
+        },
+        statement: {
+          en: "Solvation changes the order of basic strength because the protonated amine is stabilised by hydrogen bonds to water, and each alkyl group added removes one hydrogen that could have formed such a bond.",
+          hi: "विलायकन क्षारीय प्रबलता का क्रम बदल देता है क्योंकि प्रोटॉनित ऐमीन पानी से हाइड्रोजन बंधों द्वारा स्थायी होता है, और हर जुड़ा ऐल्किल समूह एक ऐसा हाइड्रोजन हटा देता है जो ऐसा बंध बना सकता था।",
+          mr: "विद्रावण क्षारीय तीव्रतेचा क्रम बदलतो कारण प्रोटॉनित अमाइन पाण्याशी हायड्रोजन बंधांनी स्थिर होते, आणि जोडलेला प्रत्येक अल्किल गट असा एक हायड्रोजन काढून टाकतो जो असा बंध बनवू शकला असता.",
+        },
+        detail: {
+          en: "Two effects therefore pull against each other in water: alkyl groups make the lone pair more available, and they also make the resulting cation harder to solvate.",
+          hi: "अतः पानी में दो प्रभाव आपस में उलटी ओर खींचते हैं: ऐल्किल समूह एकाकी युग्म को अधिक उपलब्ध बनाते हैं, और वही बने धनायन को विलायकित करना कठिन भी बना देते हैं।",
+          mr: "म्हणून पाण्यात दोन परिणाम परस्पर उलट ओढतात: अल्किल गट एकाकी जोडी अधिक उपलब्ध करतात, आणि तेच बनलेल्या धनायनाचे विद्रावण कठीणही करतात.",
+        },
+        extra: {
+          en: "The result is a compromise order in which the secondary amine usually comes out strongest, and the moral is that a measured basicity belongs to the solution and not to the molecule alone.",
+          hi: "परिणाम ऐसा समझौता क्रम है जिसमें प्रायः द्वितीयक ऐमीन सबसे प्रबल निकलता है, और सीख यह कि नापी गई क्षारकता विलयन की है, अकेले अणु की नहीं।",
+          mr: "निकाल असा तडजोडीचा क्रम आहे ज्यात बहुधा द्वितीयक अमाइन सर्वांत तीव्र निघतो, आणि बोध हा की मोजलेली क्षारकता द्रावणाची आहे, एकट्या रेणूची नाही.",
+        },
+        pair: {
+          left: {
+            en: "The same compounds, ranked differently in air and in water",
+            hi: "वही यौगिक, हवा में और पानी में अलग-अलग क्रम में",
+            mr: "तीच संयुगे, हवेत आणि पाण्यात वेगळ्या क्रमाने",
+          },
+          right: {
+            en: "solvation and the order of basic strength",
+            hi: "विलायकन और क्षारीय प्रबलता का क्रम",
+            mr: "विद्रावण आणि क्षारीय तीव्रतेचा क्रम",
+          },
+        },
+      },
+      {
+        id: "diazotisation",
+        name: {
+          en: "Diazotisation",
+          hi: "डाइऐज़ोटीकरण",
+          mr: "डायझोटीकरण",
+        },
+        kind: "reaction and what it makes possible",
+        prompt: {
+          en: "Treat one particular amine with nitrous acid at 273 K and a salt is obtained that survives long enough to be used; do the same to its aliphatic cousin and nitrogen simply bubbles away. Which reaction is this?",
+          hi: "किसी ख़ास ऐमीन को 273 K पर नाइट्रस अम्ल से उपचारित करो और ऐसा लवण मिलता है जो काम में आने भर टिकता है; उसके ऐलिफ़ैटिक चचेरे भाई के साथ वही करो और नाइट्रोजन बस बुलबुले बनकर उड़ जाता है। यह कौन-सी अभिक्रिया है?",
+          mr: "एखाद्या विशिष्ट अमाइनवर 273 K वर नायट्रस आम्लाने उपचार करा आणि असा क्षार मिळतो जो वापरण्यापुरता टिकतो; त्याच्या अ‍ॅलिफॅटिक चुलतभावासोबत तेच करा आणि नायट्रोजन फक्त बुडबुडे बनून उडतो. ही कोणती अभिक्रिया?",
+        },
+        statement: {
+          en: "Diazotisation converts a primary aromatic amine into a diazonium salt, which is stable at low temperature because the positive charge is delocalised into the ring.",
+          hi: "डाइऐज़ोटीकरण प्राथमिक ऐरोमैटिक ऐमीन को डाइऐज़ोनियम लवण में बदलता है, जो कम ताप पर स्थायी है क्योंकि धन आवेश वलय में विस्थानीकृत है।",
+          mr: "डायझोटीकरण प्राथमिक सुगंधी अमाइनचे डायझोनियम क्षारात रूपांतर करते, जो कमी तापमानावर स्थिर आहे कारण धन प्रभार वलयात विस्थानित आहे.",
+        },
+        detail: {
+          en: "The aliphatic diazonium ion has no such delocalisation, decomposes at once, and gives a mixture of products that is of no preparative use.",
+          hi: "ऐलिफ़ैटिक डाइऐज़ोनियम आयन में ऐसा कोई विस्थानीकरण नहीं, वह तुरंत विघटित हो जाता है, और उत्पादों का ऐसा मिश्रण देता है जो विरचना के काम का नहीं।",
+          mr: "अ‍ॅलिफॅटिक डायझोनियम आयनात असे कोणतेही विस्थानीकरण नाही, तो लगेच विघटित होतो, आणि उत्पादनांचे असे मिश्रण देतो जे निर्मितीच्या कामाचे नाही.",
+        },
+        extra: {
+          en: "That stability is what makes the group so useful: it can be replaced by chlorine, bromine, cyanide, hydroxyl, iodine or hydrogen, which puts substituents on a ring that no direct route would place there.",
+          hi: "वही स्थायित्व उस समूह को इतना काम का बनाता है: उसे क्लोरीन, ब्रोमीन, सायनाइड, हाइड्रॉक्सिल, आयोडीन या हाइड्रोजन से बदला जा सकता है, जो वलय पर ऐसे प्रतिस्थापी लगा देता है जिन्हें कोई सीधा रास्ता वहाँ न रखता।",
+          mr: "तेच स्थैर्य त्या गटाला इतके उपयुक्त बनवते: त्याला क्लोरीन, ब्रोमीन, सायनाइड, हायड्रॉक्सिल, आयोडीन वा हायड्रोजनने बदलता येते, जे वलयावर असे प्रतिस्थापी लावते जे कोणताही थेट मार्ग तिथे ठेवणार नाही.",
+        },
+        pair: {
+          left: {
+            en: "A salt worth keeping, or nitrogen straight out of the flask",
+            hi: "रखने लायक़ लवण, या फ्लास्क से सीधा उड़ता नाइट्रोजन",
+            mr: "ठेवण्याजोगा क्षार, वा फ्लास्कमधून थेट उडणारा नायट्रोजन",
+          },
+          right: {
+            en: "diazotisation",
+            hi: "डाइऐज़ोटीकरण",
+            mr: "डायझोटीकरण",
+          },
+        },
+      },
+      {
+        id: "carbylamine-and-hinsberg",
+        name: {
+          en: "The tests that tell primary, secondary and tertiary amines apart",
+          hi: "प्राथमिक, द्वितीयक और तृतीयक ऐमीनों को अलग बताने वाले परीक्षण",
+          mr: "प्राथमिक, द्वितीयक आणि तृतीयक अमाइन वेगळे सांगणाऱ्या चाचण्या",
+        },
+        kind: "reaction and what it makes possible",
+        prompt: {
+          en: "One reagent gives an unbearable smell with one class only; another gives a solid soluble in alkali with one class, a solid insoluble in alkali with a second, and nothing with the third. Which set of tests is this?",
+          hi: "एक अभिकर्मक केवल एक वर्ग के साथ असहनीय गंध देता है; दूसरा एक वर्ग के साथ क्षार में विलेय ठोस, दूसरे के साथ क्षार में अविलेय ठोस, और तीसरे के साथ कुछ नहीं देता। यह कौन-से परीक्षणों का समुच्चय है?",
+          mr: "एक अभिकर्मक केवळ एका वर्गासोबत असह्य वास देतो; दुसरा एका वर्गासोबत क्षारात विद्राव्य घन, दुसऱ्यासोबत क्षारात अविद्राव्य घन, आणि तिसऱ्यासोबत काहीच देत नाही. हा कोणत्या चाचण्यांचा संच?",
+        },
+        statement: {
+          en: "The tests that tell primary, secondary and tertiary amines apart work by counting how many hydrogens remain on the nitrogen, which is what distinguishes the three classes.",
+          hi: "प्राथमिक, द्वितीयक और तृतीयक ऐमीनों को अलग बताने वाले परीक्षण इस गिनती से चलते हैं कि नाइट्रोजन पर कितने हाइड्रोजन बचे हैं, और यही तीनों वर्गों का भेद है।",
+          mr: "प्राथमिक, द्वितीयक आणि तृतीयक अमाइन वेगळे सांगणाऱ्या चाचण्या या मोजणीने चालतात की नायट्रोजनवर किती हायड्रोजन उरले आहेत, आणि हाच तिन्ही वर्गांचा भेद आहे.",
+        },
+        detail: {
+          en: "The carbylamine reaction needs two hydrogens on the nitrogen and so is positive for primary amines alone, giving an isocyanide whose smell is unmistakable.",
+          hi: "कार्बिलऐमीन अभिक्रिया को नाइट्रोजन पर दो हाइड्रोजन चाहिए और इसलिए वह केवल प्राथमिक ऐमीनों के लिए धनात्मक है, और ऐसा आइसोसायनाइड देती है जिसकी गंध भुलाई नहीं जा सकती।",
+          mr: "कार्बिलअमाइन अभिक्रियेला नायट्रोजनवर दोन हायड्रोजन लागतात आणि म्हणून ती केवळ प्राथमिक अमाइनांसाठी धन आहे, आणि असे आयसोसायनाइड देते ज्याचा वास विसरता येत नाही.",
+        },
+        extra: {
+          en: "Hinsberg's reagent separates all three at once: the primary product has an acidic hydrogen left and dissolves in alkali, the secondary product has none and does not, and the tertiary amine has no hydrogen to react with at all.",
+          hi: "हिन्सबर्ग अभिकर्मक तीनों को एक साथ अलग कर देता है: प्राथमिक उत्पाद में अम्लीय हाइड्रोजन बचा रहता है और वह क्षार में घुल जाता है, द्वितीयक उत्पाद में कोई नहीं और वह नहीं घुलता, और तृतीयक ऐमीन के पास अभिक्रिया करने को कोई हाइड्रोजन ही नहीं।",
+          mr: "हिन्सबर्ग अभिकर्मक तिन्ही एकाच वेळी वेगळे करतो: प्राथमिक उत्पादनात आम्लधर्मी हायड्रोजन उरतो आणि ते क्षारात विरघळते, द्वितीयक उत्पादनात एकही नाही आणि ते विरघळत नाही, आणि तृतीयक अमाइनकडे अभिक्रिया करायला हायड्रोजनच नाही.",
+        },
+        pair: {
+          left: {
+            en: "Three answers from one reagent, by counting hydrogens",
+            hi: "एक अभिकर्मक से तीन उत्तर, हाइड्रोजन गिनकर",
+            mr: "एका अभिकर्मकातून तीन उत्तरे, हायड्रोजन मोजून",
+          },
+          right: {
+            en: "the tests that tell primary, secondary and tertiary amines apart",
+            hi: "प्राथमिक, द्वितीयक और तृतीयक ऐमीनों को अलग बताने वाले परीक्षण",
+            mr: "प्राथमिक, द्वितीयक आणि तृतीयक अमाइन वेगळे सांगणाऱ्या चाचण्या",
+          },
+        },
+      },
+      {
+        id: "preparations-and-the-carbon-count",
+        name: {
+          en: "Preparations classified by the carbon count",
+          hi: "कार्बन गिनती से वर्गीकृत विरचनाएँ",
+          mr: "कार्बन मोजणीने वर्गीकृत निर्मिती",
+        },
+        kind: "reaction and what it makes possible",
+        prompt: {
+          en: "Three routes to the same functional group: one leaves the chain the length it was, one makes it a carbon longer, and one makes it a carbon shorter. What is being classified?",
+          hi: "उसी क्रियात्मक समूह तक तीन रास्ते: एक शृंखला को उतनी ही लंबी छोड़ता है, एक उसे एक कार्बन लंबी बनाता है, और एक उसे एक कार्बन छोटी। किसका वर्गीकरण हो रहा है?",
+          mr: "त्याच क्रियात्मक गटाकडे तीन मार्ग: एक साखळी तितकीच लांब सोडतो, एक तिला एक कार्बन लांब करतो, आणि एक तिला एक कार्बन लहान. कशाचे वर्गीकरण होत आहे?",
+        },
+        statement: {
+          en: "Preparations classified by the carbon count divide into those that keep the chain unchanged, those that lengthen it by one carbon, and those that shorten it by one.",
+          hi: "कार्बन गिनती से वर्गीकृत विरचनाएँ उनमें बँटती हैं जो शृंखला को अपरिवर्तित रखती हैं, जो उसे एक कार्बन लंबा करती हैं, और जो उसे एक छोटा करती हैं।",
+          mr: "कार्बन मोजणीने वर्गीकृत निर्मिती त्यांच्यात वाटल्या जातात ज्या साखळी अपरिवर्तित ठेवतात, ज्या तिला एक कार्बन लांब करतात, आणि ज्या तिला एक लहान करतात.",
+        },
+        detail: {
+          en: "Reduction of a nitro compound or of an amide keeps the count; reduction of a nitrile adds a carbon, since the cyanide brought one with it.",
+          hi: "किसी नाइट्रो यौगिक या ऐमाइड का अपचयन गिनती बनाए रखता है; नाइट्राइल का अपचयन एक कार्बन जोड़ देता है, क्योंकि सायनाइड अपने साथ एक लाया था।",
+          mr: "एखाद्या नायट्रो संयुगाचे वा अमाइडचे अपचयन मोजणी टिकवते; नायट्राइलचे अपचयन एक कार्बन जोडते, कारण सायनाइडने आपल्यासोबत एक आणला होता.",
+        },
+        extra: {
+          en: "The Hofmann bromamide reaction is the one that loses a carbon, which is why it is chosen when an amine one shorter than the available acid is wanted.",
+          hi: "हॉफ़मान ब्रोमैमाइड अभिक्रिया वही है जो एक कार्बन खोती है, इसीलिए जब उपलब्ध अम्ल से एक छोटा ऐमीन चाहिए तब वही चुनी जाती है।",
+          mr: "हॉफमान ब्रोमॅमाइड अभिक्रिया तीच आहे जी एक कार्बन गमावते, म्हणूनच जेव्हा उपलब्ध आम्लाहून एक लहान अमाइन हवे तेव्हा तीच निवडली जाते.",
+        },
+        pair: {
+          left: {
+            en: "Choose the route by what happens to the chain length",
+            hi: "रास्ता इससे चुनो कि शृंखला की लंबाई का क्या होता है",
+            mr: "मार्ग यावरून निवडा की साखळीच्या लांबीचे काय होते",
+          },
+          right: {
+            en: "preparations classified by the carbon count",
+            hi: "कार्बन गिनती से वर्गीकृत विरचनाएँ",
+            mr: "कार्बन मोजणीने वर्गीकृत निर्मिती",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "In the gas phase the basic strength of the methylamines runs tertiary > secondary > primary > ammonia. In water it runs secondary > primary ≈ tertiary > ammonia. The molecules are the same in both. Explain.",
+          hi: "गैस प्रावस्था में मेथिलऐमीनों की क्षारीय प्रबलता तृतीयक > द्वितीयक > प्राथमिक > अमोनिया चलती है। पानी में वह द्वितीयक > प्राथमिक ≈ तृतीयक > अमोनिया चलती है। अणु दोनों में वही हैं। समझाओ।",
+          mr: "वायुप्रावस्थेत मिथिलअमाइनांची क्षारीय तीव्रता तृतीयक > द्वितीयक > प्राथमिक > अमोनिया चालते. पाण्यात ती द्वितीयक > प्राथमिक ≈ तृतीयक > अमोनिया चालते. रेणू दोन्हींत तेच आहेत. समजावा.",
+        },
+        choices: [
+          {
+            en: "In the gas phase only the molecule matters, and alkyl groups donate electron density to the nitrogen, so each one added makes the lone pair more available and the base stronger — a clean, single-cause order. In water a second factor appears: the protonated amine is stabilised by hydrogen bonds from water to the hydrogens on its nitrogen, and every alkyl group replaces one of those hydrogens. So alkyl groups now help in one way and hurt in another, and the observed order is the compromise between the two, with the secondary amine best placed. The lesson is that a measured basicity is a property of the amine in its solvent, not of the amine alone",
+            hi: "गैस प्रावस्था में केवल अणु मायने रखता है, और ऐल्किल समूह नाइट्रोजन को इलेक्ट्रॉन घनत्व देते हैं, अतः हर जुड़ा समूह एकाकी युग्म को अधिक उपलब्ध और क्षार को प्रबल बनाता है — साफ़, एक-कारण वाला क्रम। पानी में दूसरा कारक प्रकट होता है: प्रोटॉनित ऐमीन पानी से उसके नाइट्रोजन के हाइड्रोजनों तक बने हाइड्रोजन बंधों से स्थायी होता है, और हर ऐल्किल समूह उनमें से एक हाइड्रोजन की जगह ले लेता है। अतः ऐल्किल समूह अब एक तरह से मदद करते हैं और दूसरी तरह से नुक़सान, और देखा गया क्रम दोनों के बीच का समझौता है, जिसमें द्वितीयक ऐमीन सबसे अच्छी जगह पर है। सीख यह कि नापी गई क्षारकता अपने विलायक में ऐमीन का गुण है, अकेले ऐमीन का नहीं",
+            mr: "वायुप्रावस्थेत केवळ रेणू महत्त्वाचा असतो, आणि अल्किल गट नायट्रोजनला इलेक्ट्रॉन घनता देतात, म्हणून जोडलेला प्रत्येक गट एकाकी जोडी अधिक उपलब्ध आणि क्षार तीव्र करतो — स्वच्छ, एक-कारणाचा क्रम. पाण्यात दुसरा घटक प्रकट होतो: प्रोटॉनित अमाइन पाण्यापासून त्याच्या नायट्रोजनवरच्या हायड्रोजनांपर्यंत बनलेल्या हायड्रोजन बंधांनी स्थिर होते, आणि प्रत्येक अल्किल गट त्यांपैकी एका हायड्रोजनची जागा घेतो. म्हणून अल्किल गट आता एका प्रकारे मदत करतात आणि दुसऱ्या प्रकारे नुकसान, आणि निरीक्षिलेला क्रम दोहोंतील तडजोड आहे, ज्यात द्वितीयक अमाइन सर्वांत चांगल्या जागी आहे. बोध हा की मोजलेली क्षारकता आपल्या विद्रावकातील अमाइनचा गुणधर्म आहे, एकट्या अमाइनचा नाही",
+          },
+          {
+            en: "The amines react with water and are converted into different compounds, so the two experiments are not measuring the same substances at all",
+            hi: "ऐमीन पानी से अभिक्रिया कर भिन्न यौगिकों में बदल जाते हैं, अतः दोनों प्रयोग एक ही पदार्थ नाप ही नहीं रहे",
+            mr: "अमाइन पाण्याशी अभिक्रिया करून वेगळ्या संयुगांत बदलतात, म्हणून दोन्ही प्रयोग एकाच पदार्थाचे मापच करत नाहीत",
+          },
+          {
+            en: "The gas-phase order is the artificial one and the aqueous order is the true basicity, because basicity is defined only in water and gas-phase measurements have no chemical meaning",
+            hi: "गैस-प्रावस्था वाला क्रम बनावटी है और जलीय क्रम ही सच्ची क्षारकता है, क्योंकि क्षारकता केवल पानी में परिभाषित है और गैस-प्रावस्था के माप का कोई रासायनिक अर्थ नहीं",
+            mr: "वायुप्रावस्थेतील क्रम कृत्रिम आहे आणि जलीय क्रमच खरी क्षारकता आहे, कारण क्षारकता केवळ पाण्यात व्याख्यायित आहे आणि वायुप्रावस्थेच्या मापाला कोणताही रासायनिक अर्थ नाही",
+          },
+          {
+            en: "The reversal is entirely steric: in water the bulky tertiary amine cannot reach a proton, and in the gas phase there is more room for it to move",
+            hi: "उलटाव पूरी तरह त्रिविम है: पानी में भारी तृतीयक ऐमीन प्रोटॉन तक पहुँच नहीं पाता, और गैस प्रावस्था में उसे हिलने की अधिक जगह है",
+            mr: "उलटणे पूर्णपणे त्रिमित आहे: पाण्यात अवजड तृतीयक अमाइन प्रोटॉनपर्यंत पोहोचू शकत नाही, आणि वायुप्रावस्थेत त्याला हलायला अधिक जागा आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Two experiments on the same four compounds give two different rankings, so something outside the compounds must be involved. Identifying what, and why it acts unevenly across the series, is the whole exercise. THE GAS PHASE FIRST, BECAUSE IT IS SIMPLER. With nothing else present, the strength of a base is just the willingness of the nitrogen's lone pair to take a proton. Alkyl groups are weakly electron-donating: each one pushes a little electron density towards the nitrogen and makes that pair more available. Three methyls do more than two, two more than one, one more than none. The order tertiary > secondary > primary > ammonia is therefore exactly what the electronic argument predicts, with no competing effect, and it confirms that the argument is sound as far as it goes. WHAT WATER ADDS. A base in water does not simply accept a proton; the cation it becomes must then be accommodated by the solvent. And the ammonium ion formed is stabilised substantially by hydrogen bonds running from its N–H hydrogens to the lone pairs of surrounding water molecules. Now count those hydrogens. Protonated ammonia, NH₄⁺, has four. The primary amine's cation, RNH₃⁺, has three. The secondary, R₂NH₂⁺, has two. The tertiary, R₃NH⁺, has only one. So every alkyl group added — the very thing that helps electronically — removes one opportunity for the solvent to stabilise the product. THE TWO EFFECTS IN OPPOSITION. Going from primary to secondary to tertiary, the electronic effect keeps pushing the basicity up and the solvation effect keeps pulling it down. Neither wins outright, and the observed order is where they balance: the secondary amine, with two alkyl groups and still two hydrogens, sits at the best compromise and comes out strongest. The tertiary amine has the most electronic help and the least solvation, and falls back to roughly where the primary sits. (There is a steric contribution too — three methyls crowd the approaching proton and the surrounding water — but it works in the same direction as the solvation argument rather than replacing it.) THE POINT WORTH KEEPING. A pKb value quoted in a table is a property of the amine IN WATER. Change the solvent and the ranking can change, because part of what is being measured never belonged to the molecule at all. Whenever a trend reverses between two conditions, look for the factor that is present in one and absent in the other, rather than assuming one measurement must be wrong. (The second option invents a chemical change that does not happen; the third dismisses gas-phase data, which is precisely the cleaner measurement here; the fourth offers a steric account alone, which cannot explain why ammonia — the least crowded of all — is the weakest base in both phases.)",
+          hi: "उन्हीं चार यौगिकों पर दो प्रयोग दो भिन्न क्रम देते हैं, अतः यौगिकों के बाहर का कुछ शामिल होना ही चाहिए। वह क्या है और श्रेणी भर में असमान रूप से क्यों काम करता है, यही पूरा अभ्यास है। पहले गैस प्रावस्था, क्योंकि वह सरल है। जब और कुछ मौजूद न हो, क्षार की प्रबलता बस नाइट्रोजन के एकाकी युग्म की प्रोटॉन लेने की तत्परता है। ऐल्किल समूह दुर्बल इलेक्ट्रॉन-दाता हैं: हर एक नाइट्रोजन की ओर थोड़ा इलेक्ट्रॉन घनत्व धकेलता है और उस युग्म को अधिक उपलब्ध बनाता है। तीन मेथिल दो से अधिक करते हैं, दो एक से, एक शून्य से। अतः तृतीयक > द्वितीयक > प्राथमिक > अमोनिया का क्रम ठीक वही है जो इलेक्ट्रॉनी तर्क भविष्यवाणी करता है, बिना किसी प्रतिस्पर्धी प्रभाव के, और यह पुष्टि करता है कि तर्क जहाँ तक जाता है वहाँ तक ठीक है। पानी क्या जोड़ता है। पानी में क्षार बस प्रोटॉन नहीं लेता; वह जो धनायन बनता है उसे फिर विलायक को समायोजित करना पड़ता है। और बना अमोनियम आयन उसके N–H हाइड्रोजनों से गिर्द के जल अणुओं के एकाकी युग्मों तक चलते हाइड्रोजन बंधों से काफ़ी स्थायी होता है। अब उन हाइड्रोजनों को गिनो। प्रोटॉनित अमोनिया, NH₄⁺, के पास चार हैं। प्राथमिक ऐमीन के धनायन, RNH₃⁺, के पास तीन। द्वितीयक, R₂NH₂⁺, के पास दो। तृतीयक, R₃NH⁺, के पास केवल एक। अतः हर जुड़ा ऐल्किल समूह — ठीक वही जो इलेक्ट्रॉनी रूप से मदद करता है — विलायक के लिए उत्पाद को स्थायी करने का एक अवसर हटा देता है। दोनों प्रभाव आमने-सामने। प्राथमिक से द्वितीयक से तृतीयक जाते हुए इलेक्ट्रॉनी प्रभाव क्षारकता को ऊपर धकेलता रहता है और विलायकन प्रभाव उसे नीचे खींचता रहता है। कोई एकमुश्त नहीं जीतता, और देखा गया क्रम वहीं है जहाँ वे संतुलित होते हैं: द्वितीयक ऐमीन, दो ऐल्किल समूहों और फिर भी दो हाइड्रोजनों के साथ, सबसे अच्छे समझौते पर बैठा है और सबसे प्रबल निकलता है। तृतीयक ऐमीन के पास सबसे अधिक इलेक्ट्रॉनी मदद और सबसे कम विलायकन है, और वह मोटे तौर पर वहीं लौट आता है जहाँ प्राथमिक बैठा है। (त्रिविम योगदान भी है — तीन मेथिल आते प्रोटॉन और गिर्द के पानी में भीड़ करते हैं — पर वह विलायकन तर्क की जगह लेने के बजाय उसी दिशा में काम करता है।) रखने लायक़ बात। तालिका में दिया pKb मान पानी में ऐमीन का गुण है। विलायक बदलो और क्रम बदल सकता है, क्योंकि जो नापा जा रहा है उसका एक हिस्सा अणु का कभी था ही नहीं। जब भी कोई प्रवृत्ति दो परिस्थितियों के बीच उलटे, उस कारक को ढूँढ़ो जो एक में मौजूद है और दूसरे में नहीं, बजाय यह मान लेने के कि कोई एक माप ग़लत होगा। (दूसरा विकल्प ऐसा रासायनिक परिवर्तन गढ़ता है जो होता ही नहीं; तीसरा गैस-प्रावस्था के आँकड़े को झटक देता है, जबकि यहाँ वही साफ़-सुथरा माप है; चौथा अकेला त्रिविम विवरण देता है, जो यह नहीं समझा सकता कि अमोनिया — सबमें सबसे कम भीड़ वाला — दोनों प्रावस्थाओं में सबसे दुर्बल क्षार क्यों है।)",
+          mr: "त्याच चार संयुगांवरचे दोन प्रयोग दोन वेगळे क्रम देतात, म्हणून संयुगांबाहेरचे काहीतरी सामील असलेच पाहिजे. ते काय आहे आणि श्रेणीभर असमानपणे का काम करते, हाच अख्खा अभ्यास आहे. आधी वायुप्रावस्था, कारण ती सोपी आहे. जेव्हा दुसरे काही उपस्थित नसते, तेव्हा क्षाराची तीव्रता फक्त नायट्रोजनच्या एकाकी जोडीची प्रोटॉन घेण्याची तयारी असते. अल्किल गट दुर्बल इलेक्ट्रॉन-दाता आहेत: प्रत्येक नायट्रोजनकडे थोडी इलेक्ट्रॉन घनता ढकलतो आणि ती जोडी अधिक उपलब्ध करतो. तीन मिथिल दोनांहून अधिक करतात, दोन एकाहून, एक शून्याहून. म्हणून तृतीयक > द्वितीयक > प्राथमिक > अमोनिया हा क्रम नेमका तोच आहे जो इलेक्ट्रॉनी युक्तिवाद भाकीत करतो, कोणत्याही स्पर्धी परिणामाविना, आणि तो खात्री देतो की युक्तिवाद जिथवर जातो तिथवर बरोबर आहे. पाणी काय जोडते. पाण्यात क्षार फक्त प्रोटॉन घेत नाही; तो जो धनायन बनतो त्याला मग विद्रावकाने सामावून घ्यावे लागते. आणि बनलेला अमोनियम आयन त्याच्या N–H हायड्रोजनांपासून भोवतीच्या जलरेणूंच्या एकाकी जोड्यांपर्यंत चालणाऱ्या हायड्रोजन बंधांनी बराच स्थिर होतो. आता ते हायड्रोजन मोजा. प्रोटॉनित अमोनिया, NH₄⁺, कडे चार आहेत. प्राथमिक अमाइनच्या धनायनाकडे, RNH₃⁺, तीन. द्वितीयक, R₂NH₂⁺, कडे दोन. तृतीयक, R₃NH⁺, कडे केवळ एक. म्हणून जोडलेला प्रत्येक अल्किल गट — नेमका तोच जो इलेक्ट्रॉनीदृष्ट्या मदत करतो — विद्रावकाला उत्पादन स्थिर करण्याची एक संधी काढून टाकतो. दोन परिणाम समोरासमोर. प्राथमिकपासून द्वितीयक ते तृतीयकपर्यंत जाताना इलेक्ट्रॉनी परिणाम क्षारकता वर ढकलत राहतो आणि विद्रावण परिणाम तिला खाली ओढत राहतो. कोणीही एकहाती जिंकत नाही, आणि निरीक्षिलेला क्रम तिथेच आहे जिथे ते संतुलित होतात: द्वितीयक अमाइन, दोन अल्किल गट आणि तरीही दोन हायड्रोजनांसह, सर्वांत चांगल्या तडजोडीवर बसला आहे आणि सर्वांत तीव्र निघतो. तृतीयक अमाइनकडे सर्वाधिक इलेक्ट्रॉनी मदत आणि सर्वांत कमी विद्रावण आहे, आणि तो ढोबळपणे तिथेच परततो जिथे प्राथमिक बसला आहे. (त्रिमित योगदानही आहे — तीन मिथिल येणाऱ्या प्रोटॉन आणि भोवतीच्या पाण्यात गर्दी करतात — पण ते विद्रावण युक्तिवादाची जागा घेण्याऐवजी त्याच दिशेने काम करते.) ठेवण्याजोगा मुद्दा. तक्त्यात दिलेले pKb मूल्य पाण्यातील अमाइनचा गुणधर्म आहे. विद्रावक बदला आणि क्रम बदलू शकतो, कारण जे मोजले जात आहे त्याचा एक भाग रेणूचा कधी होताच नाही. जेव्हाही एखादी प्रवृत्ती दोन परिस्थितींमध्ये उलटते, तेव्हा तो घटक शोधा जो एकात उपस्थित आहे आणि दुसऱ्यात नाही, कोणतेतरी एक माप चुकीचे असेल असे गृहीत धरण्याऐवजी. (दुसरा पर्याय असा रासायनिक बदल घडवतो जो होतच नाही; तिसरा वायुप्रावस्थेचा आकडा झटकतो, तर इथे तेच अधिक स्वच्छ माप आहे; चौथा एकटे त्रिमित विवरण देतो, जे हे समजावू शकत नाही की अमोनिया — सर्वांत कमी गर्दीचा — दोन्ही प्रावस्थांत सर्वांत दुर्बल क्षार का आहे.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Aniline is about a million times weaker a base than cyclohexylamine, yet it is so reactive towards bromine water that it gives a tribromo product instantly without a catalyst. It also fails to undergo Friedel–Crafts alkylation. Explain all three facts with one cause.",
+          hi: "ऐनिलीन साइक्लोहेक्सिलऐमीन से क़रीब दस लाख गुना दुर्बल क्षार है, फिर भी वह ब्रोमीन जल के प्रति इतना क्रियाशील है कि बिना उत्प्रेरक तुरंत ट्राइब्रोमो उत्पाद दे देता है। वह फ़्रीडेल-क्राफ़्ट्स ऐल्किलन भी नहीं करता। तीनों तथ्यों को एक ही कारण से समझाओ।",
+          mr: "अ‍ॅनिलीन सायक्लोहेक्झिलअमाइनहून सुमारे दहा लाख पट दुर्बल क्षार आहे, तरीही तो ब्रोमीन जलाबाबत इतका क्रियाशील आहे की उत्प्रेरकाविना लगेच ट्रायब्रोमो उत्पादन देतो. तो फ्रीडेल-क्राफ्ट्स अल्किलनही करत नाही. तिन्ही सत्ये एकाच कारणाने समजावा.",
+        },
+        choices: [
+          {
+            en: "One cause: the nitrogen's lone pair is delocalised into the ring. That makes it less available to a proton, so aniline is a weak base. It simultaneously raises the electron density at the ortho and para carbons, so the ring is strongly activated and bromine attacks all three positions at once without a catalyst. And Friedel–Crafts fails because the Lewis acid catalyst is itself an electrophile: it bonds to the lone pair, converting the amine into a positively charged group that deactivates the ring completely. The remedy in practice is to acetylate the nitrogen first, moderating the donation, and hydrolyse the amide afterwards",
+            hi: "एक ही कारण: नाइट्रोजन का एकाकी युग्म वलय में विस्थानीकृत है। इससे वह प्रोटॉन के लिए कम उपलब्ध होता है, अतः ऐनिलीन दुर्बल क्षार है। साथ ही वह ऑर्थो और पैरा कार्बनों पर इलेक्ट्रॉन घनत्व बढ़ा देता है, अतः वलय प्रबल रूप से सक्रिय है और ब्रोमीन बिना उत्प्रेरक तीनों स्थानों पर एक साथ हमला करता है। और फ़्रीडेल-क्राफ़्ट्स इसलिए विफल है कि लूइस अम्ल उत्प्रेरक स्वयं इलेक्ट्रॉनरागी है: वह एकाकी युग्म से बँध जाता है, और ऐमीन को धनावेशित समूह में बदल देता है जो वलय को पूरी तरह निष्क्रिय कर देता है। व्यवहार में उपाय यह कि नाइट्रोजन को पहले ऐसिटिलित कर दान को नियंत्रित किया जाए, और बाद में ऐमाइड का जल-अपघटन कर लिया जाए",
+            mr: "एकच कारण: नायट्रोजनची एकाकी जोडी वलयात विस्थानित आहे. त्याने ती प्रोटॉनसाठी कमी उपलब्ध होते, म्हणून अ‍ॅनिलीन दुर्बल क्षार आहे. त्याचबरोबर ती ऑर्थो आणि पॅरा कार्बनांवर इलेक्ट्रॉन घनता वाढवते, म्हणून वलय तीव्रपणे सक्रिय आहे आणि ब्रोमीन उत्प्रेरकाविना तिन्ही जागी एकाच वेळी हल्ला करते. आणि फ्रीडेल-क्राफ्ट्स यासाठी अपयशी ठरते की लुईस आम्ल उत्प्रेरक स्वतः इलेक्ट्रॉनरागी आहे: तो एकाकी जोडीशी बांधला जातो, आणि अमाइनचे धनप्रभारित गटात रूपांतर करतो जो वलय पूर्णपणे निष्क्रिय करतो. व्यवहारात उपाय हा की नायट्रोजन आधी अ‍ॅसिटिलित करून दान नियंत्रित करावे, आणि नंतर अमाइडचे जलअपघटन करावे",
+          },
+          {
+            en: "Aniline is a weak base because the benzene ring is bulky and blocks the proton, and it brominates readily because bromine is small enough to get past that same ring",
+            hi: "ऐनिलीन इसलिए दुर्बल क्षार है कि बेंज़ीन वलय भारी है और प्रोटॉन को रोकता है, और वह इसलिए आसानी से ब्रोमीनित होता है कि ब्रोमीन उसी वलय के पार जाने भर छोटा है",
+            mr: "अ‍ॅनिलीन यासाठी दुर्बल क्षार आहे की बेंझिन वलय अवजड आहे आणि प्रोटॉन अडवते, आणि तो यासाठी सहज ब्रोमिनित होतो की ब्रोमीन त्याच वलयापलीकडे जाण्याइतके लहान आहे",
+          },
+          {
+            en: "The nitrogen in aniline has no lone pair at all, having used it to bond to the ring, which is why it is not basic; the bromination is a reaction of the ring alone and unrelated to the nitrogen",
+            hi: "ऐनिलीन के नाइट्रोजन के पास कोई एकाकी युग्म है ही नहीं, उसने उसे वलय से बंध बनाने में काम में ले लिया, इसीलिए वह क्षारीय नहीं; ब्रोमीनन अकेले वलय की अभिक्रिया है और नाइट्रोजन से असंबंधित",
+            mr: "अ‍ॅनिलीनच्या नायट्रोजनकडे एकाकी जोडी नाहीच, त्याने ती वलयाशी बंध बनवायला वापरली, म्हणून तो क्षारधर्मी नाही; ब्रोमिनीकरण एकट्या वलयाची अभिक्रिया आहे आणि नायट्रोजनशी असंबंधित",
+          },
+          {
+            en: "All three follow from aniline's low solubility in water: it cannot accept a proton because it is not properly dissolved, and it brominates fast because the reaction happens at the surface",
+            hi: "तीनों ऐनिलीन की पानी में कम विलेयता से निकलते हैं: वह प्रोटॉन इसलिए नहीं ले सकता कि ठीक से घुला ही नहीं, और वह इसलिए तेज़ी से ब्रोमीनित होता है कि अभिक्रिया सतह पर होती है",
+            mr: "तिन्ही अ‍ॅनिलीनच्या पाण्यातील कमी विद्राव्यतेतून निघतात: तो प्रोटॉन यासाठी घेऊ शकत नाही की तो नीट विरघळलेलाच नाही, आणि तो यासाठी जलद ब्रोमिनित होतो की अभिक्रिया पृष्ठभागावर घडते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Three observations that look unconnected — a weak base, a hyper-reactive ring, and a reaction that simply refuses to run — and the satisfying thing is that one structural fact accounts for all three, in different directions. THE FACT. In aniline the nitrogen's lone pair occupies an orbital that can overlap with the ring's π system. Draw the resonance structures: the pair is drawn into the ring, a positive charge develops on the nitrogen, and negative charge appears at the two ortho carbons and the para carbon. That delocalisation is real and measurable — the C–N bond in aniline is shorter than in an aliphatic amine, exactly as partial double-bond character requires. CONSEQUENCE ONE: A WEAK BASE. Basicity is the availability of that lone pair. If it is spending part of its time spread over the ring, it is less available, so aniline is a poorer proton acceptor. There is a second, sharper way to put the same argument, in terms of the ion: protonating the nitrogen forces the pair back onto it and destroys the delocalisation, so the anilinium ion loses stabilisation that the neutral molecule had. Cyclohexylamine, with the same nitrogen on a saturated ring, has no such delocalisation to lose, and is about 10⁶ times the stronger base. CONSEQUENCE TWO: A HYPER-REACTIVE RING. The electron density the nitrogen gives up has gone somewhere — onto the ortho and para carbons. An electrophile is attracted to electron density, so those positions are strongly activated. Benzene needs a Lewis acid catalyst to brominate at all and gives a monosubstituted product; aniline reacts with plain bromine water at room temperature and substitutes all three activated positions at once, precipitating 2,4,6-tribromoaniline. The same donation that ruined its basicity has made it one of the most reactive aromatic substrates in the chapter. CONSEQUENCE THREE: A REACTION THAT WILL NOT RUN. Friedel–Crafts alkylation needs a Lewis acid such as AlCl₃. But a Lewis acid is an electron-pair ACCEPTOR, and aniline offers the most attractive pair in the flask — its nitrogen's. The catalyst bonds there instead of doing its job, and the resulting group carries a full positive charge, which withdraws electron density powerfully and deactivates the ring completely. So the very feature that made bromination so easy makes this reaction impossible. THE PRACTICAL REMEDY, WHICH IS ALSO A GOOD IDEA. Acetylate the nitrogen first. The amide's carbonyl competes for the lone pair, so the donation into the ring is moderated: the ring stays activated enough to react but no longer so activated that substitution runs away, and the nitrogen is no longer basic enough to capture the catalyst. Afterwards the amide is hydrolysed back to the amine. This is how monosubstituted anilines are actually made — a protecting group used not to prevent a reaction but to turn its dial down. (The second option is steric where the effect is electronic, and cannot explain the Friedel–Crafts failure; the third denies the lone pair, which the compound's measurable basicity and its whole chemistry contradict; the fourth confuses a physical property with a thermodynamic one, and aniline's basicity is measured in solution regardless.)",
+          hi: "तीन प्रेक्षण जो असंबद्ध लगते हैं — दुर्बल क्षार, अति-क्रियाशील वलय, और ऐसी अभिक्रिया जो चलने से साफ़ इनकार करती है — और संतोष की बात यह कि एक ही संरचनात्मक तथ्य तीनों को समझा देता है, भिन्न दिशाओं में। वह तथ्य। ऐनिलीन में नाइट्रोजन का एकाकी युग्म ऐसे कक्षक में है जो वलय के π तंत्र से अतिव्यापन कर सकता है। अनुनाद संरचनाएँ खींचो: युग्म वलय में खिंच जाता है, नाइट्रोजन पर धन आवेश उभरता है, और ऋण आवेश दोनों ऑर्थो कार्बनों तथा पैरा कार्बन पर प्रकट होता है। वह विस्थानीकरण असली और नापने योग्य है — ऐनिलीन में C–N बंध ऐलिफ़ैटिक ऐमीन से छोटा है, ठीक जैसा आंशिक द्विबंध लक्षण माँगता है। पहला परिणाम: दुर्बल क्षार। क्षारकता उसी एकाकी युग्म की उपलब्धता है। यदि वह अपना कुछ समय वलय पर फैले हुए बिताता है, तो वह कम उपलब्ध है, अतः ऐनिलीन घटिया प्रोटॉन-ग्राही है। वही तर्क आयन के रूप में और तीखे ढंग से कहा जा सकता है: नाइट्रोजन को प्रोटॉनित करना युग्म को उस पर वापस धकेल देता है और विस्थानीकरण नष्ट कर देता है, अतः ऐनिलीनियम आयन वह स्थिरीकरण खो देता है जो उदासीन अणु के पास था। साइक्लोहेक्सिलऐमीन, जिसमें वही नाइट्रोजन संतृप्त वलय पर है, के पास खोने को ऐसा कोई विस्थानीकरण नहीं, और वह क़रीब 10⁶ गुना प्रबल क्षार है। दूसरा परिणाम: अति-क्रियाशील वलय। नाइट्रोजन ने जो इलेक्ट्रॉन घनत्व छोड़ा वह कहीं गया है — ऑर्थो और पैरा कार्बनों पर। इलेक्ट्रॉनरागी इलेक्ट्रॉन घनत्व की ओर आकर्षित होता है, अतः वे स्थान प्रबल रूप से सक्रिय हैं। बेंज़ीन को ब्रोमीनित होने के लिए ही लूइस अम्ल उत्प्रेरक चाहिए और वह एक-प्रतिस्थापित उत्पाद देता है; ऐनिलीन कमरे के ताप पर सादे ब्रोमीन जल से अभिक्रिया करता है और तीनों सक्रिय स्थानों पर एक साथ प्रतिस्थापन कर 2,4,6-ट्राइब्रोमोऐनिलीन अवक्षेपित कर देता है। वही दान जिसने उसकी क्षारकता चौपट की, उसे अध्याय के सबसे क्रियाशील ऐरोमैटिक क्रियाधारों में से एक बना गया। तीसरा परिणाम: वह अभिक्रिया जो चलेगी नहीं। फ़्रीडेल-क्राफ़्ट्स ऐल्किलन को AlCl₃ जैसा लूइस अम्ल चाहिए। पर लूइस अम्ल इलेक्ट्रॉन-युग्म ग्राही है, और ऐनिलीन फ्लास्क का सबसे आकर्षक युग्म देता है — अपने नाइट्रोजन का। उत्प्रेरक अपना काम करने के बजाय वहीं बँध जाता है, और बना समूह पूरा धन आवेश ढोता है, जो इलेक्ट्रॉन घनत्व प्रबलता से खींचता है और वलय को पूरी तरह निष्क्रिय कर देता है। अतः वही लक्षण जिसने ब्रोमीनन इतना आसान किया, इस अभिक्रिया को असंभव बना देता है। व्यावहारिक उपाय, जो एक अच्छा विचार भी है। नाइट्रोजन को पहले ऐसिटिलित कर दो। ऐमाइड का कार्बोनिल एकाकी युग्म के लिए होड़ करता है, अतः वलय में दान नियंत्रित हो जाता है: वलय अभिक्रिया भर सक्रिय रहता है पर इतना सक्रिय नहीं कि प्रतिस्थापन क़ाबू से बाहर जाए, और नाइट्रोजन इतना क्षारीय नहीं रहता कि उत्प्रेरक पकड़ ले। बाद में ऐमाइड का जल-अपघटन कर ऐमीन वापस पा लिया जाता है। एक-प्रतिस्थापित ऐनिलीन वस्तुतः इसी तरह बनाए जाते हैं — ऐसा रक्षी समूह जो अभिक्रिया रोकने के लिए नहीं बल्कि उसका डायल नीचे करने के लिए काम में लिया जाता है। (दूसरा विकल्प वहाँ त्रिविम है जहाँ प्रभाव इलेक्ट्रॉनी है, और फ़्रीडेल-क्राफ़्ट्स की विफलता नहीं समझा सकता; तीसरा एकाकी युग्म से इनकार करता है, जिसका खंडन यौगिक की नापने योग्य क्षारकता और उसका पूरा रसायन करता है; चौथा भौतिक गुण को ऊष्मागतिक से गड्डमड्ड करता है, और ऐनिलीन की क्षारकता वैसे भी विलयन में नापी जाती है।)",
+          mr: "तीन निरीक्षणे जी असंबद्ध वाटतात — दुर्बल क्षार, अति-क्रियाशील वलय, आणि अशी अभिक्रिया जी चालण्यास स्पष्ट नकार देते — आणि समाधानाची बाब ही की एकच संरचनात्मक सत्य तिन्ही समजावते, वेगळ्या दिशांनी. ते सत्य. अ‍ॅनिलीनमध्ये नायट्रोजनची एकाकी जोडी अशा कक्षकात आहे जी वलयाच्या π प्रणालीशी आच्छादू शकते. अनुनाद रचना काढा: जोडी वलयात ओढली जाते, नायट्रोजनवर धन प्रभार उभरतो, आणि ऋण प्रभार दोन्ही ऑर्थो कार्बनांवर व पॅरा कार्बनवर प्रकट होतो. ते विस्थानीकरण खरे आणि मोजण्याजोगे आहे — अ‍ॅनिलीनमधला C–N बंध अ‍ॅलिफॅटिक अमाइनहून लहान आहे, नेमके जसे अंशतः द्विबंध लक्षण मागते. पहिला परिणाम: दुर्बल क्षार. क्षारकता म्हणजे त्याच एकाकी जोडीची उपलब्धता. जर ती आपला काही वेळ वलयावर पसरून घालवत असेल, तर ती कमी उपलब्ध आहे, म्हणून अ‍ॅनिलीन निकृष्ट प्रोटॉन-ग्राही आहे. तोच युक्तिवाद आयनाच्या रूपात अधिक तीक्ष्णपणे मांडता येतो: नायट्रोजनचे प्रोटॉनीकरण जोडीला त्याच्यावर परत ढकलते आणि विस्थानीकरण नष्ट करते, म्हणून अ‍ॅनिलिनियम आयन ते स्थिरीकरण गमावतो जे उदासीन रेणूकडे होते. सायक्लोहेक्झिलअमाइन, ज्यात तोच नायट्रोजन संतृप्त वलयावर आहे, त्याच्याकडे गमवायला असे कोणतेही विस्थानीकरण नाही, आणि तो सुमारे 10⁶ पट तीव्र क्षार आहे. दुसरा परिणाम: अति-क्रियाशील वलय. नायट्रोजनने जी इलेक्ट्रॉन घनता सोडली ती कुठेतरी गेली आहे — ऑर्थो आणि पॅरा कार्बनांवर. इलेक्ट्रॉनरागी इलेक्ट्रॉन घनतेकडे आकर्षित होतो, म्हणून त्या जागा तीव्रपणे सक्रिय आहेत. बेंझिनला ब्रोमिनित होण्यासाठीच लुईस आम्ल उत्प्रेरक लागतो आणि ते एक-प्रतिस्थापित उत्पादन देते; अ‍ॅनिलीन खोलीच्या तापमानावर साध्या ब्रोमीन जलाशी अभिक्रिया करते आणि तिन्ही सक्रिय जागी एकाच वेळी प्रतिस्थापन करून 2,4,6-ट्रायब्रोमोअ‍ॅनिलीन अवक्षेपित करते. तेच दान ज्याने त्याची क्षारकता बिघडवली, त्याला प्रकरणातल्या सर्वांत क्रियाशील सुगंधी क्रियाधारांपैकी एक बनवून गेले. तिसरा परिणाम: ती अभिक्रिया जी चालणार नाही. फ्रीडेल-क्राफ्ट्स अल्किलनला AlCl₃ सारखे लुईस आम्ल लागते. पण लुईस आम्ल इलेक्ट्रॉन-जोडी ग्राही आहे, आणि अ‍ॅनिलीन फ्लास्कमधली सर्वांत आकर्षक जोडी देते — आपल्या नायट्रोजनची. उत्प्रेरक आपले काम करण्याऐवजी तिथेच बांधला जातो, आणि बनलेला गट पूर्ण धन प्रभार वाहतो, जो इलेक्ट्रॉन घनता तीव्रतेने ओढतो आणि वलय पूर्णपणे निष्क्रिय करतो. म्हणून तेच लक्षण ज्याने ब्रोमिनीकरण इतके सोपे केले, ही अभिक्रिया अशक्य करते. व्यावहारिक उपाय, जो एक चांगली कल्पनाही आहे. नायट्रोजन आधी अ‍ॅसिटिलित करा. अमाइडचे कार्बोनिल एकाकी जोडीसाठी स्पर्धा करते, म्हणून वलयातले दान नियंत्रित होते: वलय अभिक्रियेपुरते सक्रिय राहते पण इतके सक्रिय नाही की प्रतिस्थापन हाताबाहेर जावे, आणि नायट्रोजन इतका क्षारधर्मी उरत नाही की उत्प्रेरक पकडावा. नंतर अमाइडचे जलअपघटन करून अमाइन परत मिळवले जाते. एक-प्रतिस्थापित अ‍ॅनिलीन प्रत्यक्षात याच प्रकारे बनवली जातात — असा रक्षक गट जो अभिक्रिया रोखण्यासाठी नव्हे तर तिचा काटा खाली आणण्यासाठी वापरला जातो. (दुसरा पर्याय तिथे त्रिमित आहे जिथे परिणाम इलेक्ट्रॉनी आहे, आणि फ्रीडेल-क्राफ्ट्सचे अपयश समजावू शकत नाही; तिसरा एकाकी जोडी नाकारतो, ज्याचे खंडन संयुगाची मोजण्याजोगी क्षारकता आणि त्याचे अख्खे रसायन करते; चौथा भौतिक गुणधर्माची उष्मागतिकाशी गल्लत करतो, आणि अ‍ॅनिलीनची क्षारकता तशीही द्रावणात मोजली जाते.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 10 — Biomolecules                                               */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "chemistry-12-biomolecules",
+    subject: "CHEMISTRY",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 10 — Biomolecules",
+      hi: "अध्याय 10 — जैव अणु",
+      mr: "प्रकरण 10 — जैवरेणू",
+    },
+    name: {
+      en: "Biomolecules",
+      hi: "जैव अणु",
+      mr: "जैवरेणू",
+    },
+    summary: {
+      en: "Ordinary organic chemistry doing the work of living things, and the point throughout is that nothing new is needed: a sugar that reduces Tollens' reagent although the structure drawn for it has no aldehyde group, which is resolved by a ring that opens and closes and is therefore never quite absent; two crystalline forms of one sugar differing at a single carbon, whose solutions each drift towards the same final rotation because both are passing through the open form on the way; a molecule with both an acid group and a basic group that neutralises itself and therefore behaves like a salt, melting far above what its size suggests and refusing to dissolve in ether; a chain whose sequence is one thing and whose shape is another, and whose shape is what does the work, so that heating destroys the function while leaving every bond of the sequence intact; a catalyst that is a protein and works on one substrate only; and a polymer that stores instructions in the order of four units, copied by a rule that makes each strand a template for the other.",
+      hi: "साधारण कार्बनिक रसायन जीवों का काम करता हुआ, और आद्योपांत मर्म यह कि कुछ नया चाहिए ही नहीं: ऐसी शर्करा जो टॉलेन अभिकर्मक को अपचयित करती है यद्यपि उसके लिए खींची गई संरचना में कोई ऐल्डिहाइड समूह नहीं, और यह ऐसे वलय से सुलझता है जो खुलता और बंद होता है और इसलिए कभी पूरी तरह अनुपस्थित नहीं; एक शर्करा के दो क्रिस्टलीय रूप जो एक ही कार्बन पर भिन्न हैं, और जिनके विलयन एक ही अंतिम घूर्णन की ओर बहते हैं क्योंकि दोनों रास्ते में खुले रूप से गुज़र रहे हैं; ऐसा अणु जिसमें अम्ल समूह भी है और क्षारक समूह भी, जो स्वयं को उदासीन कर लेता है और इसलिए लवण जैसा बरतता है, अपने आकार के सुझाव से कहीं ऊपर पिघलता और ईथर में घुलने से इनकार करता; ऐसी शृंखला जिसका अनुक्रम एक चीज़ है और आकार दूसरी, और काम आकार करता है, अतः गर्म करना क्रिया नष्ट कर देता है जबकि अनुक्रम का हर बंध सलामत रहता है; ऐसा उत्प्रेरक जो प्रोटीन है और केवल एक ही क्रियाधार पर चलता है; और ऐसा बहुलक जो चार इकाइयों के क्रम में निर्देश रखता है, और जिसकी नक़ल ऐसे नियम से होती है जो हर लड़ी को दूसरी का साँचा बना देता है।",
+      mr: "साधे कार्बनी रसायन सजीवांचे काम करत, आणि सर्वत्र गाभा हा की काहीही नवे लागत नाही: अशी शर्करा जी टॉलेन अभिकर्मकाचे अपचयन करते जरी तिच्यासाठी काढलेल्या रचनेत कोणताही अल्डिहाइड गट नाही, आणि हे अशा वलयाने सुटते जे उघडते आणि बंद होते आणि म्हणून कधीच पूर्णपणे अनुपस्थित नसते; एका शर्करेची दोन स्फटिकी रूपे जी एकाच कार्बनवर वेगळी आहेत, आणि ज्यांची द्रावणे एकाच अंतिम भ्रमणाकडे वाहतात कारण दोन्ही वाटेत उघड्या रूपातून जात आहेत; असा रेणू ज्यात आम्ल गटही आहे आणि क्षारक गटही, जो स्वतःला उदासीन करतो आणि म्हणून क्षारासारखा वागतो, आपल्या आकाराच्या सुचनेहून कितीतरी वर वितळत आणि ईथरात विरघळण्यास नकार देत; अशी साखळी जिचा क्रम एक गोष्ट आहे आणि आकार दुसरी, आणि काम आकार करतो, म्हणून तापवणे क्रिया नष्ट करते तर क्रमाचा प्रत्येक बंध शाबूत राहतो; असा उत्प्रेरक जो प्रथिन आहे आणि केवळ एकाच क्रियाधारावर चालतो; आणि असा बहुवारिक जो चार एककांच्या क्रमात सूचना ठेवतो, आणि ज्याची नक्कल अशा नियमाने होते जो प्रत्येक पदराला दुसऱ्याचा साचा बनवतो.",
+    },
+    position: 10,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "ring-and-open-chain-forms",
+        name: {
+          en: "The ring and open-chain forms of a sugar",
+          hi: "शर्करा के वलय और खुली शृंखला रूप",
+          mr: "शर्करेची वलय आणि खुली साखळी रूपे",
+        },
+        kind: "structural puzzle and its resolution",
+        prompt: {
+          en: "A compound whose accepted structure contains no aldehyde group, yet which reduces Tollens' reagent and gives a silver mirror. What resolves the contradiction?",
+          hi: "ऐसा यौगिक जिसकी मान्य संरचना में कोई ऐल्डिहाइड समूह नहीं, फिर भी जो टॉलेन अभिकर्मक को अपचयित करता है और चाँदी का दर्पण देता है। इस विरोध को क्या सुलझाता है?",
+          mr: "असे संयुग ज्याच्या मान्य रचनेत कोणताही अल्डिहाइड गट नाही, तरीही जे टॉलेन अभिकर्मकाचे अपचयन करते आणि चांदीचा आरसा देते. हा विरोध काय सोडवतो?",
+        },
+        statement: {
+          en: "The ring and open-chain forms of a sugar exist in equilibrium in solution, so a trace of the open aldehyde form is always present and is consumed and replaced as fast as it reacts.",
+          hi: "शर्करा के वलय और खुली शृंखला रूप विलयन में साम्य में रहते हैं, अतः खुले ऐल्डिहाइड रूप का अंश हमेशा मौजूद रहता है और जितनी तेज़ी से वह अभिक्रिया करता है उतनी ही तेज़ी से ख़र्च होकर फिर से बनता है।",
+          mr: "शर्करेची वलय आणि खुली साखळी रूपे द्रावणात समतोलात राहतात, म्हणून उघड्या अल्डिहाइड रूपाचा अंश नेहमी उपस्थित असतो आणि जितक्या वेगाने तो अभिक्रिया करतो तितक्याच वेगाने खर्च होऊन पुन्हा बनतो.",
+        },
+        detail: {
+          en: "The open form is a tiny fraction of the total at any moment, but the equilibrium keeps replenishing it, so the reaction goes to completion rather than stopping when that fraction is used up.",
+          hi: "खुला रूप किसी भी क्षण कुल का बहुत छोटा अंश है, पर साम्य उसे भरता रहता है, अतः वह अंश ख़त्म होने पर अभिक्रिया रुकने के बजाय पूरी तक चलती है।",
+          mr: "उघडे रूप कोणत्याही क्षणी एकूणाचा फार लहान अंश आहे, पण समतोल त्याला भरत राहतो, म्हणून तो अंश संपल्यावर अभिक्रिया थांबण्याऐवजी पूर्णत्वापर्यंत चालते.",
+        },
+        extra: {
+          en: "The ring closes when the hydroxyl group on the fifth carbon attacks the aldehyde carbon, which is the same nucleophilic addition to a carbonyl met in the previous chapter, happening within one molecule.",
+          hi: "वलय तब बंद होता है जब पाँचवें कार्बन का हाइड्रॉक्सिल समूह ऐल्डिहाइड कार्बन पर हमला करता है, और यह वही कार्बोनिल पर नाभिकरागी योग है जो पिछले अध्याय में मिला, बस एक ही अणु के भीतर होता हुआ।",
+          mr: "वलय तेव्हा बंद होते जेव्हा पाचव्या कार्बनचा हायड्रॉक्सिल गट अल्डिहाइड कार्बनवर हल्ला करतो, आणि हाच तो कार्बोनिलवरील नाभिकरागी योग आहे जो मागच्या प्रकरणात भेटला, फक्त एकाच रेणूच्या आत घडत.",
+        },
+        pair: {
+          left: {
+            en: "A group that is absent from the drawing and present in the flask",
+            hi: "ऐसा समूह जो चित्र में अनुपस्थित और फ्लास्क में उपस्थित है",
+            mr: "असा गट जो चित्रात अनुपस्थित आणि फ्लास्कमध्ये उपस्थित आहे",
+          },
+          right: {
+            en: "the ring and open-chain forms of a sugar",
+            hi: "शर्करा के वलय और खुली शृंखला रूप",
+            mr: "शर्करेची वलय आणि खुली साखळी रूपे",
+          },
+        },
+      },
+      {
+        id: "mutarotation",
+        name: {
+          en: "Mutarotation",
+          hi: "उत्परिवर्तन घूर्णन",
+          mr: "म्युटारोटेशन",
+        },
+        kind: "structural puzzle and its resolution",
+        prompt: {
+          en: "Two crystalline forms of one sugar rotate polarised light by +111° and +19°, and each solution drifts over an hour to the same +52.5°. What is this called?",
+          hi: "एक शर्करा के दो क्रिस्टलीय रूप ध्रुवित प्रकाश को +111° और +19° घुमाते हैं, और हर विलयन एक घंटे में बहकर उसी +52.5° पर पहुँच जाता है। इसे क्या कहते हैं?",
+          mr: "एका शर्करेची दोन स्फटिकी रूपे ध्रुवित प्रकाश +111° आणि +19° फिरवतात, आणि प्रत्येक द्रावण तासाभरात वाहत त्याच +52.5° वर पोहोचते. याला काय म्हणतात?",
+        },
+        statement: {
+          en: "Mutarotation is the change in optical rotation of a freshly dissolved sugar until the two ring forms reach equilibrium, each passing through the open-chain form to become the other.",
+          hi: "उत्परिवर्तन घूर्णन ताज़ा घुली शर्करा के प्रकाशिक घूर्णन का तब तक बदलना है जब तक दोनों वलय रूप साम्य पर न पहुँच जाएँ, और हर एक दूसरा बनने के लिए खुली शृंखला रूप से गुज़रता है।",
+          mr: "म्युटारोटेशन म्हणजे ताज्या विरघळलेल्या शर्करेच्या प्रकाशीय भ्रमणाचे तोवर बदलणे जोवर दोन्ही वलय रूपे समतोलावर पोहोचत नाहीत, आणि प्रत्येक दुसरे बनण्यासाठी खुल्या साखळी रूपातून जाते.",
+        },
+        detail: {
+          en: "The two forms differ only at the carbon that closed the ring, and their equilibrium mixture is what gives the intermediate final value.",
+          hi: "दोनों रूप केवल उसी कार्बन पर भिन्न हैं जिसने वलय बंद किया, और उनका साम्य मिश्रण ही बीच का अंतिम मान देता है।",
+          mr: "दोन्ही रूपे केवळ त्याच कार्बनवर वेगळी आहेत ज्याने वलय बंद केले, आणि त्यांचे समतोल मिश्रणच मधले अंतिम मूल्य देते.",
+        },
+        extra: {
+          en: "The final value is the same from either starting form, which is the evidence that both are reaching one equilibrium rather than each settling somewhere of its own.",
+          hi: "अंतिम मान दोनों में से किसी भी आरंभिक रूप से वही आता है, और यही प्रमाण है कि दोनों एक ही साम्य तक पहुँच रहे हैं, न कि हर एक अपनी-अपनी जगह जम रहा है।",
+          mr: "अंतिम मूल्य दोन्हींपैकी कोणत्याही प्रारंभिक रूपातून तेच येते, आणि हाच पुरावा आहे की दोन्ही एकाच समतोलापर्यंत पोहोचत आहेत, प्रत्येक आपापल्या जागी स्थिरावत नाही.",
+        },
+        pair: {
+          left: {
+            en: "Two different starting angles, one final angle",
+            hi: "दो भिन्न आरंभिक कोण, एक अंतिम कोण",
+            mr: "दोन वेगळे प्रारंभिक कोन, एक अंतिम कोन",
+          },
+          right: {
+            en: "mutarotation",
+            hi: "उत्परिवर्तन घूर्णन",
+            mr: "म्युटारोटेशन",
+          },
+        },
+      },
+      {
+        id: "zwitterion",
+        name: {
+          en: "The zwitterion of an amino acid",
+          hi: "ऐमीनो अम्ल का ज़्विटर आयन",
+          mr: "अमिनो आम्लाचा झ्विटर आयन",
+        },
+        kind: "structural puzzle and its resolution",
+        prompt: {
+          en: "A small organic molecule that melts above 500 K, dissolves in water and not in ether, and does not behave like the acid or the amine its formula contains. What explains all of that?",
+          hi: "ऐसा छोटा कार्बनिक अणु जो 500 K से ऊपर पिघलता है, पानी में घुलता है और ईथर में नहीं, और उस अम्ल या ऐमीन जैसा नहीं बरतता जो उसके सूत्र में है। यह सब क्या समझाता है?",
+          mr: "असा लहान कार्बनी रेणू जो 500 K च्या वर वितळतो, पाण्यात विरघळतो आणि ईथरात नाही, आणि त्याच्या सूत्रात असलेल्या आम्ल वा अमाइनसारखा वागत नाही. हे सर्व काय समजावते?",
+        },
+        statement: {
+          en: "The zwitterion of an amino acid is formed when its own acid group gives its proton to its own basic group, leaving a species with a positive and a negative charge and no net charge at all.",
+          hi: "ऐमीनो अम्ल का ज़्विटर आयन तब बनता है जब उसका अपना अम्ल समूह अपना प्रोटॉन अपने ही क्षारक समूह को दे देता है, और ऐसी स्पीशीज़ बचती है जिसमें एक धन और एक ऋण आवेश है और कुल आवेश शून्य।",
+          mr: "अमिनो आम्लाचा झ्विटर आयन तेव्हा बनतो जेव्हा त्याचा स्वतःचा आम्ल गट आपला प्रोटॉन आपल्याच क्षारक गटाला देतो, आणि अशी जाती उरते जिच्यात एक धन आणि एक ऋण प्रभार आहे आणि एकूण प्रभार शून्य.",
+        },
+        detail: {
+          en: "Because the molecule is charged at both ends, it is held in the solid by ionic attraction, which is why it melts so high and dissolves in water rather than in an organic solvent.",
+          hi: "चूँकि अणु दोनों सिरों पर आवेशित है, वह ठोस में आयनिक आकर्षण से बँधा रहता है, इसीलिए वह इतने ऊँचे पर पिघलता है और कार्बनिक विलायक के बजाय पानी में घुलता है।",
+          mr: "रेणू दोन्ही टोकांना प्रभारित असल्याने तो घनरूपात आयनिक आकर्षणाने बांधलेला राहतो, म्हणूनच तो इतक्या वर वितळतो आणि कार्बनी विद्रावकाऐवजी पाण्यात विरघळतो.",
+        },
+        extra: {
+          en: "The pH at which the two charges exactly balance is the isoelectric point, and at that pH the molecule does not move in an electric field, which is how proteins are separated in a laboratory.",
+          hi: "जिस pH पर दोनों आवेश ठीक संतुलित होते हैं वह समविभव बिंदु है, और उस pH पर अणु विद्युत क्षेत्र में हिलता नहीं, और प्रयोगशाला में प्रोटीन इसी तरह अलग किए जाते हैं।",
+          mr: "ज्या pH वर दोन्ही प्रभार नेमके संतुलित होतात तो समविद्युत बिंदू आहे, आणि त्या pH वर रेणू विद्युत क्षेत्रात हलत नाही, आणि प्रयोगशाळेत प्रथिने याच प्रकारे वेगळी केली जातात.",
+        },
+        pair: {
+          left: {
+            en: "A molecule that has neutralised itself",
+            hi: "ऐसा अणु जिसने स्वयं को उदासीन कर लिया है",
+            mr: "असा रेणू ज्याने स्वतःला उदासीन केले आहे",
+          },
+          right: {
+            en: "the zwitterion of an amino acid",
+            hi: "ऐमीनो अम्ल का ज़्विटर आयन",
+            mr: "अमिनो आम्लाचा झ्विटर आयन",
+          },
+        },
+      },
+      {
+        id: "levels-of-protein-structure",
+        name: {
+          en: "The levels of protein structure",
+          hi: "प्रोटीन संरचना के स्तर",
+          mr: "प्रथिन रचनेचे स्तर",
+        },
+        kind: "how the molecule is organised",
+        prompt: {
+          en: "An order of units that is fixed by covalent bonds, and a folded shape held by much weaker ones, with the second doing the actual work. What distinction is this?",
+          hi: "इकाइयों का ऐसा क्रम जो सहसंयोजक बंधों से तय है, और कहीं दुर्बल बंधों से थमा मुड़ा हुआ आकार, और असली काम दूसरा करता है। यह कौन-सा भेद है?",
+          mr: "एककांचा असा क्रम जो सहसंयुज बंधांनी ठरलेला आहे, आणि कितीतरी दुर्बल बंधांनी धरलेला घडीचा आकार, आणि खरे काम दुसरा करतो. हा कोणता भेद?",
+        },
+        statement: {
+          en: "The levels of protein structure separate the sequence of amino acids, held by peptide bonds, from the folded shape, held by hydrogen bonds and other weak interactions.",
+          hi: "प्रोटीन संरचना के स्तर ऐमीनो अम्लों के उस अनुक्रम को, जो पेप्टाइड बंधों से थमा है, उस मुड़े आकार से अलग करते हैं जो हाइड्रोजन बंधों और अन्य दुर्बल अन्योन्यक्रियाओं से थमा है।",
+          mr: "प्रथिन रचनेचे स्तर अमिनो आम्लांचा तो क्रम, जो पेप्टाइड बंधांनी धरलेला आहे, त्या घडीच्या आकारापासून वेगळा करतात जो हायड्रोजन बंध आणि इतर दुर्बल परस्परक्रियांनी धरलेला आहे.",
+        },
+        detail: {
+          en: "Heating or a change of pH breaks the weak interactions and destroys the shape while leaving every peptide bond intact, which is denaturation.",
+          hi: "गर्म करना या pH बदलना दुर्बल अन्योन्यक्रियाएँ तोड़कर आकार नष्ट कर देता है जबकि हर पेप्टाइड बंध सलामत रहता है, और यही विकृतीकरण है।",
+          mr: "तापवणे वा pH बदलणे दुर्बल परस्परक्रिया तोडून आकार नष्ट करते तर प्रत्येक पेप्टाइड बंध शाबूत राहतो, आणि हेच विकृतीकरण आहे.",
+        },
+        extra: {
+          en: "That the function goes while the sequence stays is the direct evidence that the shape, and not the sequence by itself, is what the protein works with.",
+          hi: "क्रिया का चला जाना और अनुक्रम का बना रहना ही सीधा प्रमाण है कि प्रोटीन आकार से काम करता है, अकेले अनुक्रम से नहीं।",
+          mr: "क्रिया जाणे आणि क्रम टिकणे हाच थेट पुरावा आहे की प्रथिन आकाराने काम करते, एकट्या क्रमाने नाही.",
+        },
+        pair: {
+          left: {
+            en: "Every bond of the sequence survives and the function is gone",
+            hi: "अनुक्रम का हर बंध बचा रहता है और क्रिया चली जाती है",
+            mr: "क्रमाचा प्रत्येक बंध टिकतो आणि क्रिया जाते",
+          },
+          right: {
+            en: "the levels of protein structure",
+            hi: "प्रोटीन संरचना के स्तर",
+            mr: "प्रथिन रचनेचे स्तर",
+          },
+        },
+      },
+      {
+        id: "enzyme-specificity",
+        name: {
+          en: "The specificity of an enzyme",
+          hi: "एंज़ाइम की विशिष्टता",
+          mr: "विकराची विशिष्टता",
+        },
+        kind: "how the molecule is organised",
+        prompt: {
+          en: "A catalyst that will speed one reaction by a factor of a million and leave the almost identical neighbouring compound completely alone. Which property is this?",
+          hi: "ऐसा उत्प्रेरक जो एक अभिक्रिया को दस लाख गुना तेज़ कर देगा और लगभग समरूप पड़ोसी यौगिक को बिलकुल अछूता छोड़ देगा। यह कौन-सा गुण है?",
+          mr: "असा उत्प्रेरक जो एक अभिक्रिया दहा लाख पट जलद करेल आणि जवळपास सारख्याच शेजारच्या संयुगाला पूर्णपणे अस्पर्श सोडेल. हा कोणता गुणधर्म?",
+        },
+        statement: {
+          en: "The specificity of an enzyme follows from its active site being a pocket of a particular shape and charge, so only a substrate that fits it is bound and acted upon.",
+          hi: "एंज़ाइम की विशिष्टता इससे निकलती है कि उसका सक्रिय स्थल एक ख़ास आकार और आवेश की गुहा है, अतः केवल वही क्रियाधार बँधता और बदला जाता है जो उसमें बैठता हो।",
+          mr: "विकराची विशिष्टता यातून निघते की त्याचे सक्रिय स्थळ एका विशिष्ट आकाराची आणि प्रभाराची खाच आहे, म्हणून केवळ तोच क्रियाधार बांधला आणि बदलला जातो जो तिच्यात बसतो.",
+        },
+        detail: {
+          en: "An enzyme is a protein, so its active site is a feature of its folded shape, and denaturing it destroys the catalysis for exactly that reason.",
+          hi: "एंज़ाइम प्रोटीन है, अतः उसका सक्रिय स्थल उसके मुड़े आकार का लक्षण है, और उसे विकृत करना ठीक इसी कारण उत्प्रेरण नष्ट कर देता है।",
+          mr: "विकर प्रथिन आहे, म्हणून त्याचे सक्रिय स्थळ त्याच्या घडीच्या आकाराचे लक्षण आहे, आणि त्याचे विकृतीकरण नेमक्या याच कारणाने उत्प्रेरण नष्ट करते.",
+        },
+        extra: {
+          en: "The catalysis itself is ordinary — the enzyme lowers the activation energy and does not shift the equilibrium — so what is remarkable is the selectivity rather than the speeding up.",
+          hi: "उत्प्रेरण स्वयं साधारण है — एंज़ाइम सक्रियण ऊर्जा घटाता है और साम्य नहीं खिसकाता — अतः उल्लेखनीय तेज़ करना नहीं बल्कि चयनात्मकता है।",
+          mr: "उत्प्रेरण स्वतः साधे आहे — विकर सक्रियण ऊर्जा घटवते आणि समतोल हलवत नाही — म्हणून उल्लेखनीय वेगवान करणे नव्हे तर निवडकता आहे.",
+        },
+        pair: {
+          left: {
+            en: "A million-fold for one compound and nothing for its neighbour",
+            hi: "एक यौगिक के लिए दस लाख गुना और उसके पड़ोसी के लिए कुछ नहीं",
+            mr: "एका संयुगासाठी दहा लाख पट आणि त्याच्या शेजाऱ्यासाठी काहीच नाही",
+          },
+          right: {
+            en: "the specificity of an enzyme",
+            hi: "एंज़ाइम की विशिष्टता",
+            mr: "विकराची विशिष्टता",
+          },
+        },
+      },
+      {
+        id: "base-pairing-in-nucleic-acids",
+        name: {
+          en: "Base pairing in nucleic acids",
+          hi: "न्यूक्लिक अम्लों में क्षार युग्मन",
+          mr: "न्यूक्लिइक आम्लांतील क्षार युग्मन",
+        },
+        kind: "how the molecule is organised",
+        prompt: {
+          en: "A rule under which each unit on one strand can face only one particular unit on the other, which makes each strand a complete record of its partner. What is it?",
+          hi: "ऐसा नियम जिसके अंतर्गत एक लड़ी की हर इकाई दूसरी लड़ी की केवल एक ही ख़ास इकाई के आमने-सामने आ सकती है, और इससे हर लड़ी अपनी साथी का पूरा अभिलेख बन जाती है। यह क्या है?",
+          mr: "असा नियम ज्याअंतर्गत एका पदरातील प्रत्येक एकक दुसऱ्या पदरातील केवळ एकाच विशिष्ट एककासमोर येऊ शकते, आणि यामुळे प्रत्येक पदर आपल्या जोडीदाराची पूर्ण नोंद बनतो. हा काय आहे?",
+        },
+        statement: {
+          en: "Base pairing in nucleic acids joins adenine to thymine and guanine to cytosine by hydrogen bonds, so the sequence of one strand determines the sequence of the other completely.",
+          hi: "न्यूक्लिक अम्लों में क्षार युग्मन ऐडेनीन को थाइमीन से और ग्वानीन को साइटोसीन से हाइड्रोजन बंधों द्वारा जोड़ता है, अतः एक लड़ी का अनुक्रम दूसरी का अनुक्रम पूरी तरह तय कर देता है।",
+          mr: "न्यूक्लिइक आम्लांतील क्षार युग्मन अ‍ॅडेनिनला थायमिनशी आणि ग्वानिनला सायटोसिनशी हायड्रोजन बंधांनी जोडते, म्हणून एका पदराचा क्रम दुसऱ्याचा क्रम पूर्णपणे ठरवतो.",
+        },
+        detail: {
+          en: "The pairs are fixed by shape and by the number of hydrogen bonds each can make, and a larger base is always matched with a smaller one so that the width of the double helix stays constant.",
+          hi: "युग्म आकार से और इससे तय हैं कि हर एक कितने हाइड्रोजन बंध बना सकता है, और बड़ा क्षार हमेशा छोटे से जोड़ा जाता है ताकि द्विकुंडली की चौड़ाई एक-सी बनी रहे।",
+          mr: "जोड्या आकाराने आणि यावरून ठरतात की प्रत्येक किती हायड्रोजन बंध बनवू शकते, आणि मोठे क्षार नेहमी लहानाशी जोडले जाते जेणेकरून द्विकुंडलीची रुंदी सारखी राहावी.",
+        },
+        extra: {
+          en: "This is what makes copying possible: separate the strands and each one specifies its own replacement, which is the chemical basis of inheritance.",
+          hi: "इसी से नक़ल संभव होती है: लड़ियाँ अलग करो और हर एक अपनी जगह लेने वाली को स्वयं निर्दिष्ट कर देती है, और यही आनुवंशिकता का रासायनिक आधार है।",
+          mr: "यामुळेच नक्कल शक्य होते: पदर वेगळे करा आणि प्रत्येक आपली जागा घेणाऱ्याला स्वतः निर्दिष्ट करतो, आणि हाच आनुवंशिकतेचा रासायनिक आधार आहे.",
+        },
+        pair: {
+          left: {
+            en: "Each half carries the whole of the other",
+            hi: "हर आधा दूसरे का पूरा ढोता है",
+            mr: "प्रत्येक अर्धा दुसऱ्याचा अख्खा वाहतो",
+          },
+          right: {
+            en: "base pairing in nucleic acids",
+            hi: "न्यूक्लिक अम्लों में क्षार युग्मन",
+            mr: "न्यूक्लिइक आम्लांतील क्षार युग्मन",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Glucose gives a silver mirror with Tollens' reagent, yet its accepted structure is a six-membered ring containing no aldehyde group. Its two crystalline forms rotate light by +111° and +19°, and each solution changes over an hour to +52.5°. Reconcile all of this.",
+          hi: "ग्लूकोस टॉलेन अभिकर्मक के साथ चाँदी का दर्पण देता है, फिर भी उसकी मान्य संरचना छह-सदस्यीय वलय है जिसमें कोई ऐल्डिहाइड समूह नहीं। उसके दो क्रिस्टलीय रूप प्रकाश को +111° और +19° घुमाते हैं, और हर विलयन एक घंटे में बदलकर +52.5° हो जाता है। इस सबका मेल बिठाओ।",
+          mr: "ग्लुकोज टॉलेन अभिकर्मकासोबत चांदीचा आरसा देते, तरीही तिची मान्य रचना सहा-सदस्यी वलय आहे ज्यात कोणताही अल्डिहाइड गट नाही. तिची दोन स्फटिकी रूपे प्रकाश +111° आणि +19° फिरवतात, आणि प्रत्येक द्रावण तासाभरात बदलून +52.5° होते. या सर्वांचा मेळ घाला.",
+        },
+        choices: [
+          {
+            en: "In solution the ring is in equilibrium with a small amount of the open-chain form, which does have an aldehyde group. Tollens' reagent consumes that trace, the equilibrium immediately replaces it, and the reaction runs to completion even though the aldehyde is never more than a fraction of a per cent of what is present. The same open form explains the rotations: the two crystalline solids differ only at the carbon that closed the ring, and each converts into the other by opening and re-closing, so both solutions arrive at the same equilibrium mixture and therefore the same final rotation of +52.5°",
+            hi: "विलयन में वलय खुली शृंखला रूप की थोड़ी मात्रा से साम्य में है, और उसमें ऐल्डिहाइड समूह है। टॉलेन अभिकर्मक उस अंश को ख़र्च कर देता है, साम्य तुरंत उसकी भरपाई करता है, और अभिक्रिया पूरी तक चलती है यद्यपि ऐल्डिहाइड कभी भी मौजूद मात्रा के एक प्रतिशत के अंश से अधिक नहीं होता। वही खुला रूप घूर्णन भी समझाता है: दोनों क्रिस्टलीय ठोस केवल उसी कार्बन पर भिन्न हैं जिसने वलय बंद किया, और हर एक खुलकर फिर बंद होकर दूसरा बन जाता है, अतः दोनों विलयन उसी साम्य मिश्रण पर और इसलिए उसी अंतिम +52.5° घूर्णन पर पहुँचते हैं",
+            mr: "द्रावणात वलय खुल्या साखळी रूपाच्या थोड्या प्रमाणाशी समतोलात आहे, आणि त्यात अल्डिहाइड गट आहे. टॉलेन अभिकर्मक तो अंश खर्च करतो, समतोल लगेच त्याची भरपाई करतो, आणि अभिक्रिया पूर्णत्वापर्यंत चालते जरी अल्डिहाइड कधीही उपस्थित प्रमाणाच्या एक टक्क्याच्या अंशाहून अधिक नसतो. तेच उघडे रूप भ्रमणही समजावते: दोन्ही स्फटिकी घन केवळ त्याच कार्बनवर वेगळे आहेत ज्याने वलय बंद केले, आणि प्रत्येक उघडून पुन्हा बंद होऊन दुसरे बनते, म्हणून दोन्ही द्रावणे त्याच समतोल मिश्रणावर आणि म्हणून त्याच अंतिम +52.5° भ्रमणावर पोहोचतात",
+          },
+          {
+            en: "The ring structure is simply wrong and glucose is an open-chain aldehyde throughout; the two rotations are those of two different impurities that decompose over an hour",
+            hi: "वलय संरचना बस ग़लत है और ग्लूकोस आद्योपांत खुली शृंखला वाला ऐल्डिहाइड है; दोनों घूर्णन दो भिन्न अशुद्धियों के हैं जो एक घंटे में विघटित हो जाती हैं",
+            mr: "वलय रचना फक्त चुकीची आहे आणि ग्लुकोज सर्वत्र खुल्या साखळीचे अल्डिहाइड आहे; दोन्ही भ्रमणे दोन वेगळ्या अशुद्धींची आहेत जी तासाभरात विघटित होतात",
+          },
+          {
+            en: "Tollens' reagent is strong enough to break the ring open itself, and the two crystalline forms are chemically identical, their different rotations being an artefact of crystal size",
+            hi: "टॉलेन अभिकर्मक स्वयं वलय तोड़ने भर प्रबल है, और दोनों क्रिस्टलीय रूप रासायनिक रूप से समरूप हैं, और उनके भिन्न घूर्णन क्रिस्टल के आकार की कृति हैं",
+            mr: "टॉलेन अभिकर्मक स्वतः वलय तोडण्याइतका तीव्र आहे, आणि दोन्ही स्फटिकी रूपे रासायनिकदृष्ट्या सारखीच आहेत, आणि त्यांची वेगळी भ्रमणे स्फटिकाच्या आकाराची कृती आहेत",
+          },
+          {
+            en: "Glucose reduces Tollens' reagent through its hydroxyl groups rather than any aldehyde, and the change in rotation is caused by the sugar slowly dissolving further",
+            hi: "ग्लूकोस टॉलेन अभिकर्मक को किसी ऐल्डिहाइड से नहीं बल्कि अपने हाइड्रॉक्सिल समूहों से अपचयित करता है, और घूर्णन का बदलना शर्करा के धीरे-धीरे और घुलते जाने से होता है",
+            mr: "ग्लुकोज टॉलेन अभिकर्मकाचे अपचयन कोणत्याही अल्डिहाइडने नव्हे तर आपल्या हायड्रॉक्सिल गटांनी करते, आणि भ्रमणातील बदल शर्करा हळूहळू आणखी विरघळत जाण्याने होतो",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "This is a genuine historical difficulty and worth treating as one: the evidence for the ring was good, and so was the evidence for the aldehyde, and for a while chemists had both and no way to hold them together. THE FIRST PROBLEM. Glucose behaves as an aldehyde in some tests — it reduces Tollens' and Fehling's reagents — and refuses to behave as one in others: it gives no colour with Schiff's reagent and will not form the bisulphite addition compound that ordinary aldehydes give. Meanwhile the pentaacetate of glucose does not react with hydroxylamine, which means no free carbonyl group is available in it. The ring structure explains all the negative results, and the silver mirror then looks like a contradiction. THE RESOLUTION. In solution the ring is not permanent. The bond that closed it — from the hydroxyl oxygen on carbon five to the carbonyl carbon — can break and re-form, so the ring form sits in equilibrium with a small proportion of the open-chain aldehyde, well under one per cent at any instant. That is enough. Tollens' reagent consumes the open form; Le Chatelier's principle applies at once and more ring opens to replace it; and the process repeats until all the glucose has been oxidised. So the test is positive not because there is much aldehyde but because there is always some. It is a useful correction to the habit of reading a structural formula as a static picture — what is drawn is the dominant species, not the only one. THE SECOND PROBLEM, AND WHY IT IS THE SAME ANSWER. When the ring closes, carbon one acquires a fourth different group and becomes a new chiral centre, so two ring forms are possible, differing only at that carbon. Both can be crystallised, and they are genuinely different compounds with different melting points and different specific rotations, +111° and +19°. Dissolve either and the rotation drifts to +52.5°. That drift is mutarotation, and it is the direct observable consequence of the ring opening: each form opens to the common open-chain aldehyde and re-closes either way, so both approach the same equilibrium mixture — roughly 36 per cent of one and 64 per cent of the other, whose rotations average to the observed figure. THE STRUCTURE OF THE ARGUMENT IS THE LESSON. One postulate — a ring in equilibrium with a trace of open chain — explains a positive test, several negative ones, the existence of two crystalline forms, and their convergence to a single rotation. A hypothesis that resolves four unrelated observations at once is doing far more work than one invented for each. (The second option throws away the ring, which the negative tests and the pentaacetate result establish; the third invents a reagent action Tollens' does not have and dismisses two isolable compounds as one; the fourth attributes reduction to hydroxyls, which alcohols do not perform, and offers a dissolution rate where the final value is reached from both directions.)",
+          hi: "यह असली ऐतिहासिक कठिनाई है और उसे वैसा ही मानना चाहिए: वलय के पक्ष में प्रमाण अच्छा था, और ऐल्डिहाइड के पक्ष में भी, और कुछ समय तक रसायनज्ञों के पास दोनों थे और उन्हें साथ रखने का कोई तरीक़ा नहीं। पहली समस्या। ग्लूकोस कुछ परीक्षणों में ऐल्डिहाइड जैसा बरतता है — वह टॉलेन और फ़ेहलिंग अभिकर्मकों को अपचयित करता है — और कुछ में वैसा बरतने से इनकार कर देता है: वह शिफ़ अभिकर्मक से कोई रंग नहीं देता और वह बाइसल्फ़ाइट योगज नहीं बनाता जो साधारण ऐल्डिहाइड बनाते हैं। साथ ही ग्लूकोस का पेंटाऐसीटेट हाइड्रॉक्सिलऐमीन से अभिक्रिया नहीं करता, जिसका अर्थ है कि उसमें कोई मुक्त कार्बोनिल समूह उपलब्ध नहीं। वलय संरचना सारे नकारात्मक परिणाम समझा देती है, और तब चाँदी का दर्पण विरोध जैसा दिखता है। समाधान। विलयन में वलय स्थायी नहीं। जिस बंध ने उसे बंद किया — कार्बन पाँच के हाइड्रॉक्सिल ऑक्सीजन से कार्बोनिल कार्बन तक — वह टूट और फिर बन सकता है, अतः वलय रूप खुली शृंखला वाले ऐल्डिहाइड के छोटे अनुपात से साम्य में रहता है, किसी भी क्षण एक प्रतिशत से भी ख़ासा कम। इतना काफ़ी है। टॉलेन अभिकर्मक खुला रूप ख़र्च कर देता है; ला शातेलिए सिद्धांत तुरंत लागू होता है और उसकी जगह और वलय खुल जाता है; और यह क्रम तब तक दोहराता है जब तक सारा ग्लूकोस ऑक्सीकृत न हो जाए। अतः परीक्षण इसलिए धनात्मक नहीं कि ऐल्डिहाइड बहुत है बल्कि इसलिए कि वह हमेशा कुछ न कुछ है। यह संरचना सूत्र को स्थिर चित्र की तरह पढ़ने की आदत का काम का सुधार है — जो खींचा गया है वह प्रमुख स्पीशीज़ है, अकेली नहीं। दूसरी समस्या, और वही उत्तर क्यों। वलय बंद होने पर कार्बन एक को चौथा भिन्न समूह मिल जाता है और वह नया काइरल केंद्र बन जाता है, अतः दो वलय रूप संभव हैं, केवल उसी कार्बन पर भिन्न। दोनों क्रिस्टलित किए जा सकते हैं, और वे वस्तुतः भिन्न यौगिक हैं, भिन्न गलनांक और भिन्न विशिष्ट घूर्णन +111° और +19° के साथ। किसी को भी घोलो और घूर्णन बहकर +52.5° हो जाता है। वह बहाव उत्परिवर्तन घूर्णन है, और वह वलय के खुलने का सीधा प्रेक्षणीय परिणाम है: हर रूप साझे खुले ऐल्डिहाइड तक खुलता है और किसी भी ओर से फिर बंद हो जाता है, अतः दोनों उसी साम्य मिश्रण की ओर बढ़ते हैं — मोटे तौर पर एक का 36 प्रतिशत और दूसरे का 64, और उनके घूर्णनों का औसत देखा गया आँकड़ा देता है। तर्क की बनावट ही सीख है। एक ही अभिधारणा — वलय जो खुली शृंखला के अंश से साम्य में है — एक धनात्मक परीक्षण, कई नकारात्मक, दो क्रिस्टलीय रूपों का होना, और उनका एक ही घूर्णन पर मिल जाना, सब समझा देती है। जो परिकल्पना चार असंबद्ध प्रेक्षण एक साथ सुलझाए वह हर एक के लिए अलग गढ़ी गई परिकल्पना से कहीं अधिक काम कर रही है। (दूसरा विकल्प वलय फेंक देता है, जिसे नकारात्मक परीक्षण और पेंटाऐसीटेट का परिणाम स्थापित करते हैं; तीसरा टॉलेन को ऐसी क्रिया दे देता है जो उसमें है ही नहीं और दो अलग किए जा सकने वाले यौगिकों को एक बता देता है; चौथा अपचयन का श्रेय हाइड्रॉक्सिलों को देता है, जो ऐल्कोहॉल करते ही नहीं, और वहाँ घुलने की दर पेश करता है जहाँ अंतिम मान दोनों दिशाओं से आता है।)",
+          mr: "ही खरी ऐतिहासिक अडचण आहे आणि तिला तशीच मानले पाहिजे: वलयाच्या बाजूने पुरावा चांगला होता, आणि अल्डिहाइडच्या बाजूनेही, आणि काही काळ रसायनशास्त्रज्ञांकडे दोन्ही होते आणि त्यांना एकत्र ठेवण्याचा कोणताही मार्ग नव्हता. पहिली समस्या. ग्लुकोज काही चाचण्यांत अल्डिहाइडसारखे वागते — ते टॉलेन आणि फेहलिंग अभिकर्मकांचे अपचयन करते — आणि काहींत तसे वागण्यास नकार देते: ते शिफ अभिकर्मकाशी कोणताही रंग देत नाही आणि ते बायसल्फाइट योगज बनवत नाही जे साधे अल्डिहाइड बनवतात. त्याचबरोबर ग्लुकोजचे पेंटाअ‍ॅसिटेट हायड्रॉक्सिलअमाइनशी अभिक्रिया करत नाही, ज्याचा अर्थ त्यात कोणताही मुक्त कार्बोनिल गट उपलब्ध नाही. वलय रचना सर्व नकारात्मक निकाल समजावते, आणि मग चांदीचा आरसा विरोधासारखा दिसतो. समाधान. द्रावणात वलय कायमचे नाही. ज्या बंधाने ते बंद केले — कार्बन पाचच्या हायड्रॉक्सिल ऑक्सिजनपासून कार्बोनिल कार्बनपर्यंत — तो तुटू आणि पुन्हा बनू शकतो, म्हणून वलय रूप खुल्या साखळीच्या अल्डिहाइडच्या लहान प्रमाणाशी समतोलात राहते, कोणत्याही क्षणी एक टक्क्याहूनही बरेच कमी. इतके पुरेसे आहे. टॉलेन अभिकर्मक उघडे रूप खर्च करतो; ला शातेलिए तत्त्व लगेच लागू होते आणि त्याच्या जागी आणखी वलय उघडते; आणि हा क्रम तोवर पुनरावृत्त होतो जोवर सर्व ग्लुकोज उपचयित होत नाही. म्हणून चाचणी यासाठी धन नाही की अल्डिहाइड खूप आहे तर यासाठी की तो नेहमी थोडाफार आहे. हे रचनासूत्राला स्थिर चित्रासारखे वाचण्याच्या सवयीची उपयुक्त दुरुस्ती आहे — जे काढले आहे ती प्रमुख जाती आहे, एकमेव नाही. दुसरी समस्या, आणि तेच उत्तर का. वलय बंद होताना कार्बन एकला चौथा वेगळा गट मिळतो आणि तो नवे कायरल केंद्र बनतो, म्हणून दोन वलय रूपे शक्य आहेत, केवळ त्याच कार्बनवर वेगळी. दोन्ही स्फटिकित करता येतात, आणि ती खरोखर वेगळी संयुगे आहेत, वेगळ्या द्रवणांकांसह आणि वेगळ्या विशिष्ट भ्रमणांसह +111° आणि +19°. कोणतेही विरघळवा आणि भ्रमण वाहत +52.5° होते. तो प्रवाह म्युटारोटेशन आहे, आणि तो वलय उघडण्याचा थेट निरीक्षणीय परिणाम आहे: प्रत्येक रूप सामायिक उघड्या अल्डिहाइडपर्यंत उघडते आणि कोणत्याही बाजूने पुन्हा बंद होते, म्हणून दोन्ही त्याच समतोल मिश्रणाकडे जातात — ढोबळपणे एकाचे 36 टक्के आणि दुसऱ्याचे 64, आणि त्यांच्या भ्रमणांची सरासरी निरीक्षिलेला आकडा देते. युक्तिवादाची रचनाच बोध आहे. एकच गृहीतक — वलय जे खुल्या साखळीच्या अंशाशी समतोलात आहे — एक धन चाचणी, कित्येक नकारात्मक, दोन स्फटिकी रूपांचे अस्तित्व, आणि त्यांचे एकाच भ्रमणावर मिळणे, हे सर्व समजावते. जे गृहीतक चार असंबद्ध निरीक्षणे एकाच वेळी सोडवते ते प्रत्येकासाठी वेगळे घडवलेल्या गृहीतकाहून कितीतरी अधिक काम करत आहे. (दुसरा पर्याय वलय फेकून देतो, जे नकारात्मक चाचण्या आणि पेंटाअ‍ॅसिटेटचा निकाल प्रस्थापित करतात; तिसरा टॉलेनला अशी क्रिया देतो जी त्याच्यात नाहीच आणि दोन वेगळी करता येणारी संयुगे एक सांगतो; चौथा अपचयनाचे श्रेय हायड्रॉक्सिलांना देतो, जे अल्कोहोल करतच नाहीत, आणि तिथे विरघळण्याचा दर मांडतो जिथे अंतिम मूल्य दोन्ही दिशांतून येते.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "An enzyme solution loses all its catalytic activity when warmed to 70 °C, but chemical analysis afterwards finds every peptide bond intact and the amino acid sequence unchanged. What has been lost, and what does the observation establish?",
+          hi: "किसी एंज़ाइम विलयन को 70 °C तक गर्म करने पर उसकी सारी उत्प्रेरक सक्रियता चली जाती है, पर बाद का रासायनिक विश्लेषण हर पेप्टाइड बंध सलामत और ऐमीनो अम्ल अनुक्रम अपरिवर्तित पाता है। क्या खोया, और यह प्रेक्षण क्या स्थापित करता है?",
+          mr: "एखादे विकर द्रावण 70 °C पर्यंत तापवल्यावर त्याची सर्व उत्प्रेरक सक्रियता जाते, पण नंतरचे रासायनिक विश्लेषण प्रत्येक पेप्टाइड बंध शाबूत आणि अमिनो आम्ल क्रम अपरिवर्तित सापडते. काय गमावले, आणि हे निरीक्षण काय प्रस्थापित करते?",
+        },
+        choices: [
+          {
+            en: "The folded three-dimensional shape has been lost, not the sequence. The fold is held by hydrogen bonds, ionic attractions and hydrophobic effects, all far weaker than a peptide bond, so moderate heat breaks them while leaving the covalent backbone untouched. Since the catalysis stops when only the shape is destroyed, the shape must be what the enzyme works with — specifically the active site, a pocket whose geometry and charge admit one substrate and exclude others. The sequence still matters, but indirectly: it determines the fold, and it is the fold that does the chemistry",
+            hi: "मुड़ा हुआ त्रिविम आकार खोया है, अनुक्रम नहीं। मोड़ हाइड्रोजन बंधों, आयनिक आकर्षणों और जलविरागी प्रभावों से थमा है, जो सब पेप्टाइड बंध से कहीं दुर्बल हैं, अतः मध्यम ऊष्मा उन्हें तोड़ देती है और सहसंयोजक रीढ़ को अछूता छोड़ देती है। चूँकि केवल आकार नष्ट होने पर उत्प्रेरण रुक जाता है, आकार ही वह होना चाहिए जिससे एंज़ाइम काम करता है — विशेष रूप से सक्रिय स्थल, ऐसी गुहा जिसकी ज्यामिति और आवेश एक क्रियाधार को भीतर लेते और बाक़ी को बाहर रखते हैं। अनुक्रम अब भी मायने रखता है, पर परोक्ष रूप से: वह मोड़ तय करता है, और रसायन मोड़ करता है",
+            mr: "घडीचा त्रिमित आकार गमावला आहे, क्रम नव्हे. घडी हायड्रोजन बंध, आयनिक आकर्षणे आणि जलविरोधी परिणामांनी धरलेली आहे, जी सर्व पेप्टाइड बंधाहून कितीतरी दुर्बल आहेत, म्हणून मध्यम उष्णता त्यांना तोडते आणि सहसंयुज कणा अस्पर्श सोडते. केवळ आकार नष्ट झाल्यावर उत्प्रेरण थांबत असल्याने, आकारच तो असला पाहिजे ज्याने विकर काम करते — विशेषतः सक्रिय स्थळ, अशी खाच जिची भूमिती आणि प्रभार एका क्रियाधाराला आत घेतात आणि बाकीच्यांना बाहेर ठेवतात. क्रम अजूनही महत्त्वाचा आहे, पण अप्रत्यक्षपणे: तो घडी ठरवतो, आणि रसायन घडी करते",
+          },
+          {
+            en: "The enzyme has been chemically destroyed and its amino acids consumed, which is why it no longer works; the analysis is detecting the fragments rather than the intact molecule",
+            hi: "एंज़ाइम रासायनिक रूप से नष्ट हो गया और उसके ऐमीनो अम्ल ख़र्च हो गए, इसीलिए वह अब काम नहीं करता; विश्लेषण अखंड अणु के बजाय टुकड़े पकड़ रहा है",
+            mr: "विकर रासायनिकदृष्ट्या नष्ट झाले आणि त्याची अमिनो आम्ले खर्च झाली, म्हणूनच ते आता चालत नाही; विश्लेषण अखंड रेणूऐवजी तुकडे पकडत आहे",
+          },
+          {
+            en: "Nothing structural has been lost; the enzyme has simply been slowed by the temperature and will recover its activity at once on cooling, as all catalysts do",
+            hi: "संरचनात्मक कुछ नहीं खोया; एंज़ाइम बस ताप से धीमा पड़ गया है और ठंडा होते ही तुरंत अपनी सक्रियता वापस पा लेगा, जैसा सारे उत्प्रेरक करते हैं",
+            mr: "संरचनात्मक काहीही गमावलेले नाही; विकर फक्त तापमानाने मंदावले आहे आणि थंड होताच लगेच आपली सक्रियता परत मिळवेल, जसे सर्व उत्प्रेरक करतात",
+          },
+          {
+            en: "The observation establishes that the amino acid sequence is irrelevant to an enzyme's function, since it survives unchanged while the function is destroyed",
+            hi: "प्रेक्षण स्थापित करता है कि ऐमीनो अम्ल अनुक्रम एंज़ाइम की क्रिया के लिए अप्रासंगिक है, चूँकि वह अपरिवर्तित बचा रहता है जबकि क्रिया नष्ट हो जाती है",
+            mr: "निरीक्षण प्रस्थापित करते की अमिनो आम्ल क्रम विकराच्या क्रियेसाठी असंबद्ध आहे, कारण तो अपरिवर्तित टिकतो तर क्रिया नष्ट होते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "This is a controlled experiment in the strict sense: one thing has been changed and one thing has been kept the same, and what follows can therefore be attributed. WHAT SURVIVED AND WHAT DID NOT. The peptide bonds are amide linkages, strong covalent bonds requiring hundreds of kilojoules per mole to break; nothing in a warm water bath comes near that, and the analysis confirms it. What holds the chain in its folded shape is quite different: hydrogen bonds between backbone C=O and N–H groups, ionic attractions between charged side chains, disulphide bridges, and the hydrophobic effect that buries non-polar side chains away from water. These are worth a few to a few tens of kilojoules per mole, and thermal motion at 70 °C is enough to disrupt them. So the primary structure survives and the secondary and tertiary structures do not. That is denaturation, and boiling an egg is the everyday demonstration — the white turns solid and opaque without any bond of the sequence breaking. WHAT THE OBSERVATION ESTABLISHES. Activity disappeared when, and only when, the fold was destroyed. The sequence is a constant across the two states, so it cannot be what changed the outcome. Therefore the catalytic power resides in the three-dimensional structure. This is not a small conclusion; it is the reason biochemistry is a structural science rather than a list of formulae. WHY SHAPE SHOULD MATTER SO MUCH. An enzyme's active site is a pocket formed where residues that may be far apart along the chain are brought close together by the folding. Its geometry and its pattern of charges admit one substrate and turn others away, which is why a single enzyme can accelerate one reaction a millionfold and ignore a compound differing by one methyl group. Unfold the chain and those residues are scattered along an unstructured string; the pocket does not exist, and neither does the specificity. Note also what the enzyme does NOT do. It lowers the activation energy and thereby speeds the reaction up, but it cannot shift the equilibrium — lowering a summit shortens both climbs equally, and K = k_f/k_r is unchanged. What is extraordinary about enzymes is their selectivity, not the mere fact of catalysis. THE RELATIONSHIP BETWEEN THE LEVELS. It would be wrong to conclude that the sequence does not matter. Anfinsen's experiments showed that a denatured protein can, under the right conditions, refold spontaneously into its working shape — so the information specifying the fold was in the sequence all along. The sequence is the instruction; the fold is the machine; and the machine, not the instruction, does the work. (The second option contradicts the stated analysis; the third confuses denaturation with a reversible rate effect, and in fact most denaturation of this kind does not reverse on cooling; the fourth draws exactly the wrong inference from a constant, since a variable that does not change cannot be shown irrelevant by an experiment in which it does not change.)",
+          hi: "यह सख़्त अर्थ में नियंत्रित प्रयोग है: एक चीज़ बदली गई है और एक वही रखी गई है, अतः जो निकलता है उसका श्रेय दिया जा सकता है। क्या बचा और क्या नहीं। पेप्टाइड बंध ऐमाइड कड़ियाँ हैं, प्रबल सहसंयोजक बंध जिन्हें तोड़ने को प्रति मोल सैकड़ों किलोजूल चाहिए; गर्म जल स्नान में कुछ भी उसके पास नहीं आता, और विश्लेषण इसकी पुष्टि करता है। शृंखला को उसके मुड़े आकार में जो थामता है वह काफ़ी अलग है: रीढ़ के C=O और N–H समूहों के बीच हाइड्रोजन बंध, आवेशित पार्श्व शृंखलाओं के बीच आयनिक आकर्षण, डाइसल्फ़ाइड सेतु, और वह जलविरागी प्रभाव जो अध्रुवी पार्श्व शृंखलाओं को पानी से दूर दबा देता है। ये कुछ से कुछ दर्जन किलोजूल प्रति मोल के हैं, और 70 °C पर तापीय गति उन्हें भंग करने भर है। अतः प्राथमिक संरचना बचती है और द्वितीयक तथा तृतीयक नहीं। यही विकृतीकरण है, और अंडा उबालना उसका रोज़मर्रा का प्रदर्शन — सफ़ेदी ठोस और अपारदर्शी हो जाती है और अनुक्रम का कोई बंध नहीं टूटता। प्रेक्षण क्या स्थापित करता है। सक्रियता तब और केवल तब ग़ायब हुई जब मोड़ नष्ट हुआ। अनुक्रम दोनों अवस्थाओं में अचर है, अतः वह वह नहीं हो सकता जिसने परिणाम बदला। इसलिए उत्प्रेरक शक्ति त्रिविम संरचना में बसती है। यह छोटा निष्कर्ष नहीं; यही कारण है कि जैवरसायन सूत्रों की सूची न होकर संरचनात्मक विज्ञान है। आकार इतना क्यों मायने रखे। एंज़ाइम का सक्रिय स्थल ऐसी गुहा है जो वहाँ बनती है जहाँ शृंखला पर दूर-दूर पड़े अवशेष मुड़ाई से पास आ जाते हैं। उसकी ज्यामिति और आवेशों का प्रतिरूप एक क्रियाधार को भीतर लेते और बाक़ी को लौटा देते हैं, इसीलिए एक ही एंज़ाइम एक अभिक्रिया को दस लाख गुना तेज़ कर सकता है और एक मेथिल समूह से भिन्न यौगिक को अनदेखा कर सकता है। शृंखला खोल दो और वे अवशेष बेतरतीब डोर पर बिखर जाते हैं; गुहा रहती ही नहीं, और न विशिष्टता। यह भी ध्यान दो कि एंज़ाइम क्या नहीं करता। वह सक्रियण ऊर्जा घटाकर अभिक्रिया तेज़ करता है, पर साम्य नहीं खिसका सकता — शिखर नीचा करना दोनों चढ़ाइयाँ बराबर छोटी करता है, और K = k_f/k_r अपरिवर्तित रहता है। एंज़ाइमों की असाधारण बात उनकी चयनात्मकता है, उत्प्रेरण का महज़ होना नहीं। स्तरों का आपसी रिश्ता। यह निष्कर्ष ग़लत होगा कि अनुक्रम मायने नहीं रखता। ऐन्फ़िन्सन के प्रयोगों ने दिखाया कि विकृत प्रोटीन उपयुक्त परिस्थितियों में स्वतः वापस अपने कामकाजी आकार में मुड़ सकता है — अतः मोड़ को निर्दिष्ट करने वाली सूचना आद्योपांत अनुक्रम में ही थी। अनुक्रम निर्देश है; मोड़ मशीन है; और काम मशीन करती है, निर्देश नहीं। (दूसरा विकल्प कहे गए विश्लेषण का खंडन करता है; तीसरा विकृतीकरण को उत्क्रमणीय वेग प्रभाव से गड्डमड्ड करता है, और वस्तुतः इस क़िस्म का अधिकांश विकृतीकरण ठंडा करने पर उलटता नहीं; चौथा एक अचर से ठीक उलटा अनुमान खींचता है, क्योंकि जो चर बदलता ही नहीं उसे ऐसे प्रयोग से अप्रासंगिक नहीं दिखाया जा सकता जिसमें वह बदलता ही नहीं।)",
+          mr: "हा काटेकोर अर्थाने नियंत्रित प्रयोग आहे: एक गोष्ट बदलली आहे आणि एक तीच ठेवली आहे, म्हणून जे निघते त्याचे श्रेय देता येते. काय टिकले आणि काय नाही. पेप्टाइड बंध अमाइड दुवे आहेत, तीव्र सहसंयुज बंध ज्यांना तोडायला प्रति मोल शेकडो किलोज्यूल लागतात; तप्त जलस्नानात काहीही त्याच्याजवळ येत नाही, आणि विश्लेषण त्याची खात्री देते. साखळीला तिच्या घडीच्या आकारात जे धरते ते बरेच वेगळे आहे: कण्याच्या C=O आणि N–H गटांमधले हायड्रोजन बंध, प्रभारित पार्श्वसाखळ्यांमधली आयनिक आकर्षणे, डायसल्फाइड पूल, आणि तो जलविरोधी परिणाम जो अध्रुवीय पार्श्वसाखळ्यांना पाण्यापासून दूर दडपतो. ही काही ते काही डझन किलोज्यूल प्रति मोलची आहेत, आणि 70 °C वरची औष्णिक गती त्यांना भंग करण्याइतकी आहे. म्हणून प्राथमिक रचना टिकते आणि द्वितीयक व तृतीयक नाहीत. हेच विकृतीकरण आहे, आणि अंडे उकळणे हे त्याचे रोजचे प्रात्यक्षिक — पांढरा भाग घन आणि अपारदर्शक होतो आणि क्रमाचा कोणताही बंध तुटत नाही. निरीक्षण काय प्रस्थापित करते. सक्रियता तेव्हा आणि केवळ तेव्हा नाहीशी झाली जेव्हा घडी नष्ट झाली. क्रम दोन्ही अवस्थांत अचल आहे, म्हणून तो ते असू शकत नाही ज्याने निकाल बदलला. म्हणून उत्प्रेरक शक्ती त्रिमित रचनेत वसते. हा लहान निष्कर्ष नाही; हेच कारण आहे की जैवरसायन सूत्रांची यादी नसून संरचनात्मक विज्ञान आहे. आकार इतका का महत्त्वाचा असावा. विकराचे सक्रिय स्थळ अशी खाच आहे जी तिथे बनते जिथे साखळीवर दूरदूर पडलेले अवशेष घडीने जवळ येतात. तिची भूमिती आणि प्रभारांचा नमुना एका क्रियाधाराला आत घेतात आणि बाकीच्यांना परतवतात, म्हणूनच एकच विकर एक अभिक्रिया दहा लाख पट जलद करू शकते आणि एका मिथिल गटाने वेगळ्या संयुगाकडे दुर्लक्ष करू शकते. साखळी उलगडा आणि ते अवशेष विस्कळीत दोरीवर विखुरतात; खाच उरतच नाही, आणि विशिष्टताही नाही. हेही लक्षात घ्या की विकर काय करत नाही. ते सक्रियण ऊर्जा घटवून अभिक्रिया जलद करते, पण समतोल हलवू शकत नाही — शिखर खाली करणे दोन्ही चढाया समान लहान करते, आणि K = k_f/k_r अपरिवर्तित राहतो. विकरांची असाधारण बाब त्यांची निवडकता आहे, उत्प्रेरण घडणे इतकेच नव्हे. स्तरांचे परस्पर नाते. हा निष्कर्ष चुकीचा ठरेल की क्रम महत्त्वाचा नाही. अ‍ॅन्फिन्सनच्या प्रयोगांनी दाखवले की विकृत प्रथिन योग्य परिस्थितीत स्वतःहून परत आपल्या कार्यरत आकारात घडी घालू शकते — म्हणून घडी निर्दिष्ट करणारी माहिती सर्वकाळ क्रमातच होती. क्रम ही सूचना आहे; घडी हे यंत्र आहे; आणि काम यंत्र करते, सूचना नाही. (दुसरा पर्याय सांगितलेल्या विश्लेषणाचे खंडन करतो; तिसरा विकृतीकरणाची उत्क्रमणीय वेग परिणामाशी गल्लत करतो, आणि प्रत्यक्षात या प्रकारचे बहुतांश विकृतीकरण थंड केल्यावर उलटत नाही; चौथा एका अचलातून नेमके उलट अनुमान काढतो, कारण जो चल बदलतच नाही त्याला अशा प्रयोगाने असंबद्ध दाखवता येत नाही ज्यात तो बदलतच नाही.)",
+        },
+      },
+    ],
+  },
+  /*C9*/
 ];
 
 export const G12_CHEMISTRY_NUMERIC: Record<string, NumQ[]> = {
@@ -4119,6 +4816,330 @@ export const G12_CHEMISTRY_NUMERIC: Record<string, NumQ[]> = {
         en: "Three, one for each hydrogen of the methyl group: 1 × 3 = 3, giving CHI₃, which separates as a yellow solid with a characteristic smell. The mechanism is a good demonstration of how one structural feature produces a specific test. The methyl group next to the carbonyl carries three α-hydrogens, each acidic for the same reason — the anion left when one is removed can place its charge on the carbonyl oxygen. Base removes them one at a time and iodine replaces each, and every substitution makes the next easier, because the iodines already present withdraw electron density and stabilise the next anion. Once all three are in place, the CI₃ group is a good enough leaving group for hydroxide to attack the carbonyl and split the molecule, giving iodoform and a carboxylate. The test is therefore positive for methyl ketones and for ethanal, and also for alcohols that oxidise to those under the conditions — but never for a ketone whose carbonyl has no methyl beside it, however many α-hydrogens it has elsewhere. A test that seems to be about a colour is really about counting hydrogens in one position. (1 counts a single substitution.)",
         hi: "तीन, मेथिल समूह के हर हाइड्रोजन के लिए एक: 1 × 3 = 3, जो CHI₃ देता है, जो विशिष्ट गंध वाले पीले ठोस के रूप में अलग हो जाता है। क्रियाविधि इसका अच्छा प्रदर्शन है कि एक संरचनात्मक लक्षण कैसे विशिष्ट परीक्षण पैदा करता है। कार्बोनिल के बग़ल का मेथिल समूह तीन α-हाइड्रोजन ढोता है, हर एक उसी कारण से अम्लीय — किसी एक के हटने पर बचा ऋणायन अपना आवेश कार्बोनिल ऑक्सीजन पर रख सकता है। क्षार उन्हें एक-एक कर हटाता है और आयोडीन हर एक की जगह लेता है, और हर प्रतिस्थापन अगले को आसान बनाता है, क्योंकि पहले से लगे आयोडीन इलेक्ट्रॉन घनत्व खींचते हैं और अगले ऋणायन को स्थायी करते हैं। तीनों के लग जाने पर CI₃ समूह इतना अच्छा प्रस्थायी समूह है कि हाइड्रॉक्साइड कार्बोनिल पर हमला कर अणु को तोड़ दे, और आयोडोफ़ॉर्म तथा कार्बोक्सिलेट दे। अतः परीक्षण मेथिल कीटोनों और एथेनल के लिए धनात्मक है, और उन ऐल्कोहॉलों के लिए भी जो उन्हीं परिस्थितियों में उन तक ऑक्सीकृत हो जाएँ — पर ऐसे कीटोन के लिए कभी नहीं जिसके कार्बोनिल के बग़ल कोई मेथिल न हो, चाहे उसके पास और कहीं कितने भी α-हाइड्रोजन हों। जो परीक्षण रंग के बारे में लगता है, वह असल में एक स्थान पर हाइड्रोजन गिनने के बारे में है। (1 एक ही प्रतिस्थापन गिनता है।)",
         mr: "तीन, मिथिल गटाच्या प्रत्येक हायड्रोजनसाठी एक: 1 × 3 = 3, जे CHI₃ देते, जे वैशिष्ट्यपूर्ण वासाच्या पिवळ्या घनरूपात वेगळे होते. यंत्रणा हे चांगले दाखवते की एक संरचनात्मक लक्षण विशिष्ट चाचणी कशी निर्माण करते. कार्बोनिलशेजारचा मिथिल गट तीन α-हायड्रोजन वाहतो, प्रत्येक त्याच कारणाने आम्लधर्मी — एक काढल्यावर उरलेला ऋणायन आपला प्रभार कार्बोनिल ऑक्सिजनवर ठेवू शकतो. क्षार त्यांना एकेक करून काढतो आणि आयोडीन प्रत्येकाची जागा घेते, आणि प्रत्येक प्रतिस्थापन पुढचे सोपे करते, कारण आधीच लागलेली आयोडीने इलेक्ट्रॉन घनता ओढतात आणि पुढचा ऋणायन स्थिर करतात. तिन्ही लागल्यावर CI₃ गट इतका चांगला निघणारा गट आहे की हायड्रॉक्साइडने कार्बोनिलवर हल्ला करून रेणू फोडावा, आणि आयोडोफॉर्म व कार्बोक्झिलेट द्यावे. म्हणून चाचणी मिथिल कीटोनांसाठी आणि इथेनलसाठी धन आहे, आणि त्या अल्कोहोलांसाठीही जी त्याच परिस्थितीत त्यांच्यापर्यंत उपचयित होतात — पण अशा कीटोनसाठी कधीच नाही ज्याच्या कार्बोनिलशेजारी मिथिल नाही, त्याच्याकडे इतरत्र कितीही α-हायड्रोजन असोत. जी चाचणी रंगाबद्दल वाटते, ती प्रत्यक्षात एका जागी हायड्रोजन मोजण्याबद्दल आहे. (1 एकच प्रतिस्थापन मोजते.)",
+      },
+    },
+  ],
+  "chemistry-12-amines": [
+    {
+      level: 1,
+      stem: {
+        en: "How many hydrogen atoms remain on the nitrogen of a secondary amine?",
+        hi: "किसी द्वितीयक ऐमीन के नाइट्रोजन पर कितने हाइड्रोजन परमाणु बचते हैं?",
+        mr: "एखाद्या द्वितीयक अमाइनच्या नायट्रोजनवर किती हायड्रोजन अणू उरतात?",
+      },
+      answer: 1,
+      wrong: [2, 0, 3],
+      checkExpr: "3-2",
+      solution: {
+        en: "Nitrogen has three bonds, two of them to carbon in a secondary amine: 3 − 2 = 1 hydrogen left. Counting these hydrogens is what the classification means, and it is also what every test in the chapter detects — the carbylamine reaction needs two of them and so is positive for primary amines alone. (2 gives the primary amine's count.)",
+        hi: "नाइट्रोजन के तीन बंध हैं, द्वितीयक ऐमीन में उनमें से दो कार्बन तक: 3 − 2 = 1 हाइड्रोजन बचा। इन हाइड्रोजनों की गिनती ही वर्गीकरण का अर्थ है, और अध्याय का हर परीक्षण भी यही पकड़ता है — कार्बिलऐमीन अभिक्रिया को इनमें से दो चाहिए और इसलिए वह केवल प्राथमिक ऐमीनों के लिए धनात्मक है। (2 प्राथमिक ऐमीन की गिनती देता है।)",
+        mr: "नायट्रोजनला तीन बंध आहेत, द्वितीयक अमाइनात त्यांपैकी दोन कार्बनकडे: 3 − 2 = 1 हायड्रोजन उरला. या हायड्रोजनांची मोजणी हाच वर्गीकरणाचा अर्थ आहे, आणि प्रकरणातली प्रत्येक चाचणीही हेच पकडते — कार्बिलअमाइन अभिक्रियेला यांपैकी दोन लागतात आणि म्हणून ती केवळ प्राथमिक अमाइनांसाठी धन आहे. (2 प्राथमिक अमाइनची मोजणी देते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "How many structural isomers of C₃H₉N are amines?",
+        hi: "C₃H₉N के कितने संरचनात्मक समावयव ऐमीन हैं?",
+        mr: "C₃H₉N चे किती संरचनात्मक समघटक अमाइन आहेत?",
+      },
+      answer: 4,
+      wrong: [2, 3, 6],
+      checkExpr: "2*2",
+      solution: {
+        en: "2 × 2 = 4: two primary (propan-1-amine and propan-2-amine), one secondary (N-methylethanamine) and one tertiary (trimethylamine). The set spans all three classes from one formula, which is why it is the standard example for the Hinsberg test — the three classes give three different outcomes with one reagent. (2 counts only the primary ones.)",
+        hi: "2 × 2 = 4: दो प्राथमिक (प्रोपेन-1-ऐमीन और प्रोपेन-2-ऐमीन), एक द्वितीयक (N-मेथिलएथेनऐमीन) और एक तृतीयक (ट्राइमेथिलऐमीन)। यह समुच्चय एक ही सूत्र से तीनों वर्गों तक फैला है, इसीलिए वह हिन्सबर्ग परीक्षण का मानक उदाहरण है — तीनों वर्ग एक ही अभिकर्मक से तीन भिन्न परिणाम देते हैं। (2 केवल प्राथमिक गिनता है।)",
+        mr: "2 × 2 = 4: दोन प्राथमिक (प्रोपेन-1-अमाइन आणि प्रोपेन-2-अमाइन), एक द्वितीयक (N-मिथिलइथेनअमाइन) आणि एक तृतीयक (ट्रायमिथिलअमाइन). हा संच एकाच सूत्रापासून तिन्ही वर्गांपर्यंत पसरला आहे, म्हणूनच तो हिन्सबर्ग चाचणीचे प्रमाणित उदाहरण आहे — तिन्ही वर्ग एकाच अभिकर्मकाकडून तीन वेगळे निकाल देतात. (2 केवळ प्राथमिक मोजते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Cyclohexylamine has a pKb of about 3 and aniline about 9. By what factor is cyclohexylamine the stronger base? Give the power of ten.",
+        hi: "साइक्लोहेक्सिलऐमीन का pKb लगभग 3 है और ऐनिलीन का लगभग 9. साइक्लोहेक्सिलऐमीन कितने गुणक से प्रबल क्षार है? दस की घात बताओ।",
+        mr: "सायक्लोहेक्झिलअमाइनचा pKb सुमारे 3 आहे आणि अ‍ॅनिलीनचा सुमारे 9. सायक्लोहेक्झिलअमाइन किती पटीने तीव्र क्षार आहे? दहाची घात सांगा.",
+      },
+      answer: 6,
+      wrong: [12, 3, 27],
+      checkExpr: "9-3",
+      solution: {
+        en: "9 − 3 = 6, so the aliphatic amine is 10⁶ times the stronger base. The nitrogen and its lone pair are the same in both; what differs is that in aniline the pair is delocalised into the ring and therefore less available to a proton. Put the other way, protonating aniline destroys that delocalisation, so the cation is higher in energy and forms less readily. (12 adds the two values.)",
+        hi: "9 − 3 = 6, अतः ऐलिफ़ैटिक ऐमीन 10⁶ गुना प्रबल क्षार है। नाइट्रोजन और उसका एकाकी युग्म दोनों में वही हैं; अंतर यह कि ऐनिलीन में वह युग्म वलय में विस्थानीकृत है और इसलिए प्रोटॉन के लिए कम उपलब्ध। उलटकर कहो तो ऐनिलीन को प्रोटॉनित करना वह विस्थानीकरण नष्ट कर देता है, अतः धनायन उच्च ऊर्जा का है और कम आसानी से बनता है। (12 दोनों मान जोड़ देता है।)",
+        mr: "9 − 3 = 6, म्हणून अ‍ॅलिफॅटिक अमाइन 10⁶ पट तीव्र क्षार आहे. नायट्रोजन आणि त्याची एकाकी जोडी दोन्हींत तीच आहे; फरक हा की अ‍ॅनिलीनमध्ये ती जोडी वलयात विस्थानित आहे आणि म्हणून प्रोटॉनसाठी कमी उपलब्ध. उलट सांगायचे तर अ‍ॅनिलीनचे प्रोटॉनीकरण ते विस्थानीकरण नष्ट करते, म्हणून धनायन उच्च ऊर्जेचा आहे आणि कमी सहज बनतो. (12 दोन्ही मूल्ये जोडते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "How many bromine atoms are substituted onto the ring when aniline reacts with excess bromine water?",
+        hi: "अधिक मात्रा में ब्रोमीन जल से ऐनिलीन की अभिक्रिया पर वलय पर कितने ब्रोमीन परमाणु प्रतिस्थापित होते हैं?",
+        mr: "जास्त प्रमाणात ब्रोमीन जलाशी अ‍ॅनिलीनची अभिक्रिया होताना वलयावर किती ब्रोमीन अणू प्रतिस्थापित होतात?",
+      },
+      answer: 3,
+      wrong: [1, 2, 6],
+      checkExpr: "2+1",
+      solution: {
+        en: "Both ortho positions and the para position: 2 + 1 = 3, giving a white precipitate of 2,4,6-tribromoaniline with no catalyst at all. Benzene under the same conditions does nothing without a Lewis acid and then substitutes only once. The difference is the nitrogen donating its lone pair into the ring — the same donation that costs aniline its basicity buys it this reactivity. (1 gives the benzene-like answer.)",
+        hi: "दोनों ऑर्थो स्थान और पैरा स्थान: 2 + 1 = 3, और बिना किसी उत्प्रेरक के 2,4,6-ट्राइब्रोमोऐनिलीन का सफ़ेद अवक्षेप। उन्हीं परिस्थितियों में बेंज़ीन लूइस अम्ल के बिना कुछ नहीं करता और फिर केवल एक बार प्रतिस्थापित होता है। अंतर नाइट्रोजन का अपना एकाकी युग्म वलय में देना है — वही दान जो ऐनिलीन से उसकी क्षारकता की क़ीमत लेता है उसे यह क्रियाशीलता ख़रीद देता है। (1 बेंज़ीन जैसा उत्तर देता है।)",
+        mr: "दोन्ही ऑर्थो जागा आणि पॅरा जागा: 2 + 1 = 3, आणि कोणत्याही उत्प्रेरकाविना 2,4,6-ट्रायब्रोमोअ‍ॅनिलीनचा पांढरा अवक्षेप. त्याच परिस्थितीत बेंझिन लुईस आम्लाविना काहीही करत नाही आणि मग केवळ एकदा प्रतिस्थापित होते. फरक नायट्रोजनने आपली एकाकी जोडी वलयात देणे हा आहे — तेच दान जे अ‍ॅनिलीनकडून त्याच्या क्षारकतेची किंमत घेते ते त्याला ही क्रियाशीलता विकत देते. (1 बेंझिनसारखे उत्तर देते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "How many hydrogen atoms are attached to the nitrogen in a protonated tertiary amine, R₃NH⁺?",
+        hi: "प्रोटॉनित तृतीयक ऐमीन, R₃NH⁺, में नाइट्रोजन से कितने हाइड्रोजन परमाणु जुड़े हैं?",
+        mr: "प्रोटॉनित तृतीयक अमाइन, R₃NH⁺, मध्ये नायट्रोजनशी किती हायड्रोजन अणू जोडलेले आहेत?",
+      },
+      answer: 1,
+      wrong: [4, 3, 0],
+      checkExpr: "4-3",
+      solution: {
+        en: "The nitrogen now has four bonds, three of them to alkyl groups: 4 − 3 = 1 hydrogen. That number is what decides how well water can stabilise the cation, since each N–H can donate a hydrogen bond. Protonated ammonia has four such hydrogens, the primary amine's cation three, the secondary's two, and this one only one — which is why adding alkyl groups helps the amine electronically and hurts it in solution, and why the order of basic strength in water is a compromise rather than a clean trend. (4 gives the ammonium ion's count.)",
+        hi: "अब नाइट्रोजन के चार बंध हैं, उनमें से तीन ऐल्किल समूहों तक: 4 − 3 = 1 हाइड्रोजन। वही संख्या तय करती है कि पानी धनायन को कितना अच्छा स्थायी कर सकता है, क्योंकि हर N–H एक हाइड्रोजन बंध दे सकता है। प्रोटॉनित अमोनिया के पास ऐसे चार हाइड्रोजन हैं, प्राथमिक ऐमीन के धनायन के पास तीन, द्वितीयक के पास दो, और इसके पास केवल एक — इसीलिए ऐल्किल समूह जोड़ना ऐमीन की इलेक्ट्रॉनी मदद करता है और विलयन में नुक़सान, और इसीलिए पानी में क्षारीय प्रबलता का क्रम साफ़ प्रवृत्ति न होकर समझौता है। (4 अमोनियम आयन की गिनती देता है।)",
+        mr: "आता नायट्रोजनला चार बंध आहेत, त्यांपैकी तीन अल्किल गटांकडे: 4 − 3 = 1 हायड्रोजन. तीच संख्या ठरवते की पाणी धनायनाला किती चांगले स्थिर करू शकते, कारण प्रत्येक N–H एक हायड्रोजन बंध देऊ शकतो. प्रोटॉनित अमोनियाकडे असे चार हायड्रोजन आहेत, प्राथमिक अमाइनच्या धनायनाकडे तीन, द्वितीयकाकडे दोन, आणि याच्याकडे केवळ एक — म्हणूनच अल्किल गट जोडणे अमाइनला इलेक्ट्रॉनी मदत करते आणि द्रावणात नुकसान, आणि म्हणूनच पाण्यात क्षारीय तीव्रतेचा क्रम स्वच्छ प्रवृत्ती नसून तडजोड आहे. (4 अमोनियम आयनची मोजणी देते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "Reduction of a nitrile to a primary amine is used to lengthen a chain. If the starting halide has 3 carbons, how many does the amine have?",
+        hi: "शृंखला लंबी करने के लिए नाइट्राइल का प्राथमिक ऐमीन तक अपचयन काम में लिया जाता है। यदि आरंभिक हैलाइड में 3 कार्बन हैं, तो ऐमीन में कितने हैं?",
+        mr: "साखळी लांब करण्यासाठी नायट्राइलचे प्राथमिक अमाइनपर्यंत अपचयन वापरले जाते. जर प्रारंभिक हॅलाइडात 3 कार्बन असतील, तर अमाइनात किती?",
+      },
+      answer: 4,
+      wrong: [3, 2, 6],
+      checkExpr: "3+1",
+      solution: {
+        en: "The cyanide ion brings a carbon of its own, so 3 + 1 = 4. Classifying the preparations by what happens to the carbon count is more useful than memorising them separately: reduction of a nitro compound or an amide keeps the count, the nitrile route adds one, and the Hofmann bromamide reaction loses one. Knowing which is which is how the right route is chosen for a target. (3 assumes the count is unchanged, which is the nitro route.)",
+        hi: "सायनाइड आयन अपना एक कार्बन साथ लाता है, अतः 3 + 1 = 4. विरचनाओं को इससे वर्गीकृत करना कि कार्बन गिनती का क्या होता है, उन्हें अलग-अलग रटने से अधिक काम का है: नाइट्रो यौगिक या ऐमाइड का अपचयन गिनती बनाए रखता है, नाइट्राइल का रास्ता एक जोड़ता है, और हॉफ़मान ब्रोमैमाइड अभिक्रिया एक खोती है। कौन-सा कौन है यह जानना ही लक्ष्य के लिए सही रास्ता चुनने का तरीक़ा है। (3 मान लेता है कि गिनती अपरिवर्तित है, जो नाइट्रो वाला रास्ता है।)",
+        mr: "सायनाइड आयन आपला एक कार्बन सोबत आणतो, म्हणून 3 + 1 = 4. निर्मितींना कार्बन मोजणीचे काय होते यावरून वर्गीकृत करणे त्यांना वेगवेगळे पाठ करण्याहून अधिक उपयुक्त आहे: नायट्रो संयुगाचे वा अमाइडचे अपचयन मोजणी टिकवते, नायट्राइल मार्ग एक जोडतो, आणि हॉफमान ब्रोमॅमाइड अभिक्रिया एक गमावते. कोणता कोणता हे जाणणे हाच लक्ष्यासाठी योग्य मार्ग निवडण्याचा उपाय आहे. (3 गृहीत धरते की मोजणी अपरिवर्तित आहे, जो नायट्रो मार्ग आहे.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "The Hofmann bromamide reaction converts an amide to an amine. If the amide has 5 carbons, how many does the amine have?",
+        hi: "हॉफ़मान ब्रोमैमाइड अभिक्रिया ऐमाइड को ऐमीन में बदलती है। यदि ऐमाइड में 5 कार्बन हैं, तो ऐमीन में कितने हैं?",
+        mr: "हॉफमान ब्रोमॅमाइड अभिक्रिया अमाइडचे अमाइनात रूपांतर करते. जर अमाइडात 5 कार्बन असतील, तर अमाइनात किती?",
+      },
+      answer: 4,
+      wrong: [5, 6, 3],
+      checkExpr: "5-1",
+      solution: {
+        en: "5 − 1 = 4, because the carbonyl carbon leaves as carbonate: the nitrogen migrates from the carbonyl carbon to the carbon next to it, and that lost carbon is the point of the reaction rather than a side effect. It is chosen precisely when the amine wanted is one carbon shorter than the acid available. Compare the nitrile route, which lengthens by one, and simple reduction of an amide with lithium aluminium hydride, which keeps the count — three routes to the same functional group, told apart by what happens to the chain. (5 assumes the count is kept.)",
+        hi: "5 − 1 = 4, क्योंकि कार्बोनिल कार्बन कार्बोनेट बनकर निकल जाता है: नाइट्रोजन कार्बोनिल कार्बन से उसके बग़ल वाले कार्बन पर चला जाता है, और वह खोया कार्बन अभिक्रिया का मर्म है, कोई दुष्प्रभाव नहीं। वह ठीक तब चुनी जाती है जब चाहिए गया ऐमीन उपलब्ध अम्ल से एक कार्बन छोटा हो। नाइट्राइल वाले रास्ते से तुलना करो, जो एक लंबा करता है, और लिथियम ऐलुमिनियम हाइड्राइड से ऐमाइड के सादे अपचयन से, जो गिनती बनाए रखता है — उसी क्रियात्मक समूह तक तीन रास्ते, इससे पहचाने गए कि शृंखला का क्या होता है। (5 मान लेता है कि गिनती बनी रहती है।)",
+        mr: "5 − 1 = 4, कारण कार्बोनिल कार्बन कार्बोनेट बनून निघतो: नायट्रोजन कार्बोनिल कार्बनवरून त्याच्या शेजारच्या कार्बनवर जातो, आणि तो गमावलेला कार्बन अभिक्रियेचा गाभा आहे, कोणताही दुष्परिणाम नाही. ती नेमकी तेव्हा निवडली जाते जेव्हा हवे असलेले अमाइन उपलब्ध आम्लाहून एक कार्बन लहान असते. नायट्राइल मार्गाशी तुलना करा, जो एक लांब करतो, आणि लिथियम अ‍ॅल्युमिनियम हायड्राइडने अमाइडच्या साध्या अपचयनाशी, जे मोजणी टिकवते — त्याच क्रियात्मक गटाकडे तीन मार्ग, साखळीचे काय होते यावरून ओळखलेले. (5 गृहीत धरते की मोजणी टिकते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "Diazotisation of aniline is carried out at 273 K. What is that temperature in degrees Celsius?",
+        hi: "ऐनिलीन का डाइऐज़ोटीकरण 273 K पर किया जाता है। वह ताप सेल्सियस अंश में क्या है?",
+        mr: "अ‍ॅनिलीनचे डायझोटीकरण 273 K वर केले जाते. ते तापमान सेल्सियस अंशांत किती?",
+      },
+      answer: 0,
+      wrong: [273, 546, 100],
+      checkExpr: "273-273",
+      solution: {
+        en: "273 − 273 = 0 °C, an ice bath. The temperature is not incidental. The diazonium salt is stable enough to work with only because the positive charge is delocalised into the benzene ring, and even so it decomposes above about 278 K, releasing nitrogen. An aliphatic diazonium ion has no ring to delocalise into and cannot be kept at any temperature — it falls apart as it forms, which is why the whole synthetic route belongs to aromatic chemistry and not to aliphatic. (273 forgets to convert.)",
+        hi: "273 − 273 = 0 °C, यानी बर्फ़ का स्नान। ताप आकस्मिक नहीं है। डाइऐज़ोनियम लवण काम करने भर स्थायी केवल इसलिए है कि धन आवेश बेंज़ीन वलय में विस्थानीकृत है, और फिर भी वह लगभग 278 K से ऊपर विघटित होकर नाइट्रोजन छोड़ देता है। ऐलिफ़ैटिक डाइऐज़ोनियम आयन के पास विस्थानीकृत होने को कोई वलय नहीं और वह किसी भी ताप पर नहीं रखा जा सकता — वह बनते ही बिखर जाता है, इसीलिए पूरा संश्लेषी रास्ता ऐरोमैटिक रसायन का है, ऐलिफ़ैटिक का नहीं। (273 बदलना ही भूल जाता है।)",
+        mr: "273 − 273 = 0 °C, म्हणजे बर्फाचे स्नान. तापमान आनुषंगिक नाही. डायझोनियम क्षार काम करण्यापुरता स्थिर केवळ यासाठी आहे की धन प्रभार बेंझिन वलयात विस्थानित आहे, आणि तरीही तो सुमारे 278 K च्या वर विघटित होऊन नायट्रोजन सोडतो. अ‍ॅलिफॅटिक डायझोनियम आयनाकडे विस्थानित होण्यास कोणतेही वलय नाही आणि तो कोणत्याही तापमानावर ठेवता येत नाही — तो बनताच विखुरतो, म्हणूनच अख्खा संश्लेषी मार्ग सुगंधी रसायनाचा आहे, अ‍ॅलिफॅटिकचा नाही. (273 रूपांतर करायलाच विसरते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "How many moles of nitrogen gas are released when 2 moles of a primary aliphatic amine react completely with nitrous acid?",
+        hi: "प्राथमिक ऐलिफ़ैटिक ऐमीन के 2 मोल नाइट्रस अम्ल से पूरी तरह अभिक्रिया करने पर नाइट्रोजन गैस के कितने मोल निकलते हैं?",
+        mr: "प्राथमिक अ‍ॅलिफॅटिक अमाइनचे 2 मोल नायट्रस आम्लाशी पूर्णपणे अभिक्रिया करताना नायट्रोजन वायूचे किती मोल निघतात?",
+      },
+      answer: 2,
+      wrong: [1, 4, 0],
+      checkExpr: "2*1",
+      solution: {
+        en: "One molecule of N₂ from each amine molecule: 2 × 1 = 2 mol. Note where the two nitrogen atoms come from — one is the amine's own and one comes from the nitrous acid, which is why the gas is evolved rather than retained. The contrast with the aromatic case is the whole point of the reaction. A primary aromatic amine at 273 K gives a diazonium salt that survives, because the positive charge is delocalised into the ring; the aliphatic diazonium ion has no such stabilisation, decomposes immediately, and the nitrogen simply bubbles off leaving a mixture of alcohols and alkenes of no preparative value. Quantitative evolution of nitrogen is therefore a test for a primary aliphatic amine, and the same reagent on an aromatic one is the first step of a synthesis instead. (1 counts one N₂ for every two amine molecules.)",
+        hi: "हर ऐमीन अणु से N₂ का एक अणु: 2 × 1 = 2 mol. ध्यान दो कि दोनों नाइट्रोजन परमाणु कहाँ से आते हैं — एक ऐमीन का अपना और एक नाइट्रस अम्ल से, इसीलिए गैस निकल जाती है, रुकती नहीं। ऐरोमैटिक स्थिति से अंतर ही इस अभिक्रिया का पूरा मर्म है। 273 K पर प्राथमिक ऐरोमैटिक ऐमीन ऐसा डाइऐज़ोनियम लवण देता है जो टिकता है, क्योंकि धन आवेश वलय में विस्थानीकृत है; ऐलिफ़ैटिक डाइऐज़ोनियम आयन के पास ऐसा कोई स्थिरीकरण नहीं, वह तुरंत विघटित हो जाता है, और नाइट्रोजन बस बुलबुले बनकर उड़ जाता है और पीछे ऐल्कोहॉलों तथा ऐल्कीनों का ऐसा मिश्रण छोड़ जाता है जो विरचना के काम का नहीं। अतः नाइट्रोजन का मात्रात्मक निकलना प्राथमिक ऐलिफ़ैटिक ऐमीन का परीक्षण है, और वही अभिकर्मक ऐरोमैटिक पर संश्लेषण का पहला चरण है। (1 हर दो ऐमीन अणुओं पर एक N₂ गिनता है।)",
+        mr: "प्रत्येक अमाइन रेणूकडून N₂ चा एक रेणू: 2 × 1 = 2 mol. लक्षात घ्या की दोन्ही नायट्रोजन अणू कुठून येतात — एक अमाइनचा स्वतःचा आणि एक नायट्रस आम्लाकडून, म्हणूनच वायू निघून जातो, थांबत नाही. सुगंधी स्थितीशी फरक हाच या अभिक्रियेचा अख्खा गाभा आहे. 273 K वर प्राथमिक सुगंधी अमाइन असा डायझोनियम क्षार देते जो टिकतो, कारण धन प्रभार वलयात विस्थानित आहे; अ‍ॅलिफॅटिक डायझोनियम आयनाकडे असे कोणतेही स्थिरीकरण नाही, तो लगेच विघटित होतो, आणि नायट्रोजन फक्त बुडबुडे बनून उडतो व मागे अल्कोहोल आणि अल्कीनांचे असे मिश्रण सोडतो जे निर्मितीच्या कामाचे नाही. म्हणून नायट्रोजनचे प्रमाणात्मक निघणे ही प्राथमिक अ‍ॅलिफॅटिक अमाइनची चाचणी आहे, आणि तोच अभिकर्मक सुगंधीवर संश्लेषणाची पहिली पायरी आहे. (1 प्रत्येक दोन अमाइन रेणूंवर एक N₂ मोजते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "In a Hinsberg test, how many of the three classes of amine give a product that dissolves in aqueous alkali?",
+        hi: "हिन्सबर्ग परीक्षण में ऐमीन के तीनों वर्गों में से कितने ऐसा उत्पाद देते हैं जो जलीय क्षार में घुल जाता है?",
+        mr: "हिन्सबर्ग चाचणीत अमाइनच्या तिन्ही वर्गांपैकी किती असे उत्पादन देतात जे जलीय क्षारात विरघळते?",
+      },
+      answer: 1,
+      wrong: [2, 3, 0],
+      checkExpr: "3-2",
+      solution: {
+        en: "Only one: 3 − 2 = 1. Following the reason through is what makes this a test rather than a fact to memorise. Benzenesulphonyl chloride reacts with any nitrogen that still carries a hydrogen. A primary amine has two, so one is replaced and one remains — and that surviving N–H sits next to a strongly electron-withdrawing sulphonyl group, which delocalises the charge left when it is removed and makes it acidic. So the product dissolves in alkali as its sodium salt. A secondary amine has only one hydrogen; it is used up in forming the bond, no acidic hydrogen is left, and the product is a solid insoluble in alkali. A tertiary amine has no hydrogen on the nitrogen at all and does not react, so it stays as an unchanged liquid. Three classes, three visibly different outcomes, one reagent — and the whole thing is a consequence of counting hydrogens on nitrogen. Note the connection to the previous chapter: the acidity of that surviving hydrogen has the same cause as the acidity of an α-hydrogen, namely somewhere for the resulting negative charge to go. (2 supposes both the primary and secondary products dissolve, which would leave the test unable to separate them.)",
+        hi: "केवल एक: 3 − 2 = 1. कारण का पीछा करना ही इसे परीक्षण बनाता है, रटने लायक़ तथ्य नहीं। बेंज़ीनसल्फ़ोनिल क्लोराइड किसी भी ऐसे नाइट्रोजन से अभिक्रिया करता है जिस पर अब भी हाइड्रोजन है। प्राथमिक ऐमीन के पास दो हैं, अतः एक की जगह ली जाती है और एक बचता है — और वह बचा N–H प्रबल इलेक्ट्रॉन-खींचक सल्फ़ोनिल समूह के बग़ल बैठा है, जो उसके हटने पर बचे आवेश को विस्थानीकृत कर उसे अम्लीय बना देता है। अतः उत्पाद अपने सोडियम लवण के रूप में क्षार में घुल जाता है। द्वितीयक ऐमीन के पास केवल एक हाइड्रोजन है; वह बंध बनाने में ख़र्च हो जाता है, कोई अम्लीय हाइड्रोजन नहीं बचता, और उत्पाद क्षार में अविलेय ठोस है। तृतीयक ऐमीन के नाइट्रोजन पर कोई हाइड्रोजन है ही नहीं और वह अभिक्रिया नहीं करता, अतः वह अपरिवर्तित द्रव बना रहता है। तीन वर्ग, तीन दृश्यतः भिन्न परिणाम, एक अभिकर्मक — और पूरा मामला नाइट्रोजन पर हाइड्रोजन गिनने का परिणाम है। पिछले अध्याय से जोड़ ध्यान दो: उस बचे हाइड्रोजन की अम्लता का कारण वही है जो α-हाइड्रोजन की अम्लता का, यानी बने ऋण आवेश के लिए जाने की जगह। (2 मान लेता है कि प्राथमिक और द्वितीयक दोनों उत्पाद घुल जाते हैं, जिससे परीक्षण उन्हें अलग ही न कर पाता।)",
+        mr: "केवळ एक: 3 − 2 = 1. कारणाचा मागोवा घेणे हेच याला चाचणी बनवते, पाठ करण्याजोगे सत्य नव्हे. बेंझिनसल्फोनिल क्लोराइड अशा कोणत्याही नायट्रोजनशी अभिक्रिया करते ज्यावर अजून हायड्रोजन आहे. प्राथमिक अमाइनकडे दोन आहेत, म्हणून एकाची जागा घेतली जाते आणि एक उरतो — आणि तो उरलेला N–H तीव्र इलेक्ट्रॉन-ओढक सल्फोनिल गटाशेजारी बसला आहे, जो तो काढल्यावर उरलेला प्रभार विस्थानित करून त्याला आम्लधर्मी बनवतो. म्हणून उत्पादन आपल्या सोडियम क्षाराच्या रूपात क्षारात विरघळते. द्वितीयक अमाइनकडे केवळ एक हायड्रोजन आहे; तो बंध बनवण्यात खर्च होतो, कोणताही आम्लधर्मी हायड्रोजन उरत नाही, आणि उत्पादन क्षारात अविद्राव्य घन आहे. तृतीयक अमाइनच्या नायट्रोजनवर कोणताही हायड्रोजन नाहीच आणि तो अभिक्रिया करत नाही, म्हणून तो अपरिवर्तित द्रव राहतो. तीन वर्ग, तीन दृश्यतः वेगळे निकाल, एक अभिकर्मक — आणि अख्खे प्रकरण नायट्रोजनवरचे हायड्रोजन मोजण्याचा परिणाम आहे. मागच्या प्रकरणाशी जोड लक्षात घ्या: त्या उरलेल्या हायड्रोजनच्या आम्लतेचे कारण तेच आहे जे α-हायड्रोजनच्या आम्लतेचे, म्हणजे बनलेल्या ऋण प्रभाराला जाण्याची जागा. (2 गृहीत धरते की प्राथमिक आणि द्वितीयक दोन्ही उत्पादने विरघळतात, ज्याने चाचणी त्यांना वेगळेच करू शकणार नाही.)",
+      },
+    },
+  ],
+  "chemistry-12-biomolecules": [
+    {
+      level: 1,
+      stem: {
+        en: "How many carbon atoms does one molecule of glucose contain?",
+        hi: "ग्लूकोस के एक अणु में कितने कार्बन परमाणु हैं?",
+        mr: "ग्लुकोजच्या एका रेणूत किती कार्बन अणू आहेत?",
+      },
+      answer: 6,
+      wrong: [12, 5, 3],
+      checkExpr: "3*2",
+      solution: {
+        en: "3 × 2 = 6, which is why glucose is called a hexose. Its formula is C₆H₁₂O₆, and sucrose — a molecule of glucose joined to a molecule of fructose with the loss of water — has twelve. (12 gives the disaccharide's count.)",
+        hi: "3 × 2 = 6, इसीलिए ग्लूकोस को हेक्सोस कहते हैं। उसका सूत्र C₆H₁₂O₆ है, और सुक्रोस — ग्लूकोस का अणु फ़्रक्टोस के अणु से पानी की हानि के साथ जुड़ा — में बारह हैं। (12 द्विशर्करा की गिनती देता है।)",
+        mr: "3 × 2 = 6, म्हणूनच ग्लुकोजला हेक्झोज म्हणतात. त्याचे सूत्र C₆H₁₂O₆ आहे, आणि सुक्रोज — ग्लुकोजचा रेणू फ्रुक्टोजच्या रेणूशी पाण्याच्या हानीसह जोडलेला — मध्ये बारा आहेत. (12 द्विशर्करेची मोजणी देते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "How many amino acids are described as essential for adult humans, meaning the body cannot synthesise them?",
+        hi: "वयस्क मनुष्यों के लिए कितने ऐमीनो अम्ल अनिवार्य कहे जाते हैं, यानी शरीर उन्हें बना नहीं सकता?",
+        mr: "प्रौढ माणसांसाठी किती अमिनो आम्ले अत्यावश्यक म्हटली जातात, म्हणजे शरीर ती बनवू शकत नाही?",
+      },
+      answer: 9,
+      wrong: [20, 11, 4],
+      checkExpr: "20-11",
+      solution: {
+        en: "Twenty amino acids occur in proteins and the body can make eleven of them, so 20 − 11 = 9 must come from food. The distinction is nutritional rather than chemical — all twenty have the same amino and carboxyl groups and behave the same way in the laboratory, and 'essential' means only that no biochemical pathway exists to build them. (20 counts every amino acid rather than the ones that must be eaten.)",
+        hi: "प्रोटीनों में बीस ऐमीनो अम्ल आते हैं और शरीर उनमें से ग्यारह बना सकता है, अतः 20 − 11 = 9 भोजन से आने ही चाहिए। यह भेद पोषण का है, रासायनिक नहीं — बीसों में वही ऐमीनो और कार्बोक्सिल समूह हैं और प्रयोगशाला में वे एक जैसा बरतते हैं, और 'अनिवार्य' का अर्थ केवल इतना कि उन्हें बनाने का कोई जैवरासायनिक पथ नहीं है। (20 खाने ही पड़ने वालों के बजाय हर ऐमीनो अम्ल गिन लेता है।)",
+        mr: "प्रथिनांत वीस अमिनो आम्ले येतात आणि शरीर त्यांपैकी अकरा बनवू शकते, म्हणून 20 − 11 = 9 अन्नातूनच यायला हवीत. हा भेद पोषणाचा आहे, रासायनिक नव्हे — विसांतही तेच अमिनो आणि कार्बोक्झिल गट आहेत आणि प्रयोगशाळेत ती सारखीच वागतात, आणि 'अत्यावश्यक' चा अर्थ केवळ इतका की ती बनवण्याचा कोणताही जैवरासायनिक मार्ग नाही. (20 खावीच लागणाऱ्यांऐवजी प्रत्येक अमिनो आम्ल मोजते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "How many amino acid units are joined in a tripeptide?",
+        hi: "किसी ट्राइपेप्टाइड में कितनी ऐमीनो अम्ल इकाइयाँ जुड़ी हैं?",
+        mr: "एखाद्या ट्रायपेप्टाइडात किती अमिनो आम्ल एकके जोडलेली आहेत?",
+      },
+      answer: 3,
+      wrong: [2, 4, 6],
+      checkExpr: "2+1",
+      solution: {
+        en: "2 + 1 = 3 units, joined by two peptide bonds. Counting the bonds rather than the units is the step that trips people: n units are held together by n − 1 links, since the bonds are between them. Each bond is an amide formed by the carboxyl group of one residue and the amino group of the next, with water lost. (2 counts the bonds instead of the units.)",
+        hi: "2 + 1 = 3 इकाइयाँ, दो पेप्टाइड बंधों से जुड़ी। इकाइयों के बजाय बंध गिनना ही वह क़दम है जहाँ लोग फिसलते हैं: n इकाइयाँ n − 1 कड़ियों से जुड़ी रहती हैं, क्योंकि बंध उनके बीच होते हैं। हर बंध एक ऐमाइड है जो एक अवशेष के कार्बोक्सिल समूह और अगले के ऐमीनो समूह से बनता है, और पानी निकल जाता है। (2 इकाइयों के बजाय बंध गिनता है।)",
+        mr: "2 + 1 = 3 एकके, दोन पेप्टाइड बंधांनी जोडलेली. एककांऐवजी बंध मोजणे हीच ती पायरी जिथे लोक घसरतात: n एकके n − 1 दुव्यांनी जोडलेली राहतात, कारण बंध त्यांच्यामध्ये असतात. प्रत्येक बंध एक अमाइड आहे जो एका अवशेषाच्या कार्बोक्झिल गटातून आणि पुढच्याच्या अमिनो गटातून बनतो, आणि पाणी निघते. (2 एककांऐवजी बंध मोजते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "How many hydrogen bonds hold an adenine–thymine pair together?",
+        hi: "ऐडेनीन–थाइमीन युग्म को कितने हाइड्रोजन बंध साथ थामते हैं?",
+        mr: "अ‍ॅडेनिन–थायमिन जोडीला किती हायड्रोजन बंध एकत्र धरतात?",
+      },
+      answer: 2,
+      wrong: [3, 1, 4],
+      checkExpr: "3-1",
+      solution: {
+        en: "3 − 1 = 2, one fewer than the three that hold guanine to cytosine. The numbers are not arbitrary: each base can donate or accept hydrogen bonds only at particular atoms, and only these pairings put a donor opposite an acceptor at every position. That is why A always faces T and G always faces C, and why the sequence of one strand fixes the other completely. (3 gives the guanine–cytosine count.)",
+        hi: "3 − 1 = 2, उन तीन से एक कम जो ग्वानीन को साइटोसीन से थामते हैं। संख्याएँ मनमानी नहीं: हर क्षार केवल कुछ ख़ास परमाणुओं पर हाइड्रोजन बंध दे या ले सकता है, और केवल यही युग्मन हर स्थान पर दाता के आमने-सामने ग्राही रखते हैं। इसीलिए A हमेशा T के सामने और G हमेशा C के सामने आता है, और इसीलिए एक लड़ी का अनुक्रम दूसरी को पूरी तरह तय कर देता है। (3 ग्वानीन–साइटोसीन की गिनती देता है।)",
+        mr: "3 − 1 = 2, त्या तिघांहून एक कमी जे ग्वानिनला सायटोसिनशी धरतात. संख्या मनमानी नाहीत: प्रत्येक क्षार केवळ काही विशिष्ट अणूंवर हायड्रोजन बंध देऊ वा घेऊ शकते, आणि केवळ हीच युग्मने प्रत्येक जागी दात्यासमोर ग्राही ठेवतात. म्हणूनच A नेहमी T समोर आणि G नेहमी C समोर येते, आणि म्हणूनच एका पदराचा क्रम दुसरा पूर्णपणे ठरवतो. (3 ग्वानिन–सायटोसिनची मोजणी देते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "One strand of DNA has 30 adenine bases. How many thymine bases does the complementary strand have?",
+        hi: "DNA की एक लड़ी में 30 ऐडेनीन क्षार हैं। पूरक लड़ी में कितने थाइमीन क्षार हैं?",
+        mr: "DNA च्या एका पदरात 30 अ‍ॅडेनिन क्षार आहेत. पूरक पदरात किती थायमिन क्षार आहेत?",
+      },
+      answer: 30,
+      wrong: [15, 60, 0],
+      checkExpr: "30*1",
+      solution: {
+        en: "30 × 1 = 30, because every adenine on one strand faces exactly one thymine on the other. That one-to-one correspondence is the chemical basis of copying: separate the two strands and each one specifies its partner completely, so a single molecule becomes two identical ones. It is also the reason Chargaff found equal amounts of A and T in every organism he examined, years before the structure explaining it was proposed. (15 halves the count.)",
+        hi: "30 × 1 = 30, क्योंकि एक लड़ी का हर ऐडेनीन दूसरी के ठीक एक थाइमीन के सामने आता है। वही एक-से-एक संगति नक़ल का रासायनिक आधार है: दोनों लड़ियाँ अलग करो और हर एक अपनी साथी को पूरी तरह निर्दिष्ट कर देती है, अतः एक अणु से दो समरूप बन जाते हैं। यही कारण भी है कि शार्गाफ़ ने जाँचे गए हर जीव में A और T बराबर मात्रा में पाए, उस संरचना के प्रस्तावित होने से वर्षों पहले जो इसे समझाती है। (15 गिनती आधी कर देता है।)",
+        mr: "30 × 1 = 30, कारण एका पदरातले प्रत्येक अ‍ॅडेनिन दुसऱ्यातल्या नेमक्या एका थायमिनसमोर येते. तीच एक-ला-एक संगती नक्कल करण्याचा रासायनिक आधार आहे: दोन्ही पदर वेगळे करा आणि प्रत्येक आपल्या जोडीदाराला पूर्णपणे निर्दिष्ट करतो, म्हणून एका रेणूचे दोन सारखे बनतात. हेच कारणही आहे की शारगाफला तपासलेल्या प्रत्येक जीवात A आणि T समान प्रमाणात सापडले, ते समजावणारी रचना मांडली जाण्याच्या कित्येक वर्षे आधी. (15 मोजणी निम्मी करते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "How many water molecules are lost when two glucose molecules join to form maltose?",
+        hi: "दो ग्लूकोस अणुओं के जुड़कर माल्टोस बनने पर कितने जल अणु निकलते हैं?",
+        mr: "दोन ग्लुकोज रेणू जोडून माल्टोज बनताना किती जलरेणू निघतात?",
+      },
+      answer: 1,
+      wrong: [2, 0, 12],
+      checkExpr: "2-1",
+      solution: {
+        en: "2 − 1 = 1 water molecule, since the two units are joined by a single glycosidic link. So maltose is C₁₂H₂₂O₁₁ and not C₁₂H₂₄O₁₂ — the missing H₂O is the whole difference. The same arithmetic runs through the chapter: a peptide bond loses one water, and a polymer of n units loses n − 1, which is why the formula of a starch or a protein can never be got by simply multiplying its monomer's. (2 counts one water per unit rather than one per bond.)",
+        hi: "2 − 1 = 1 जल अणु, चूँकि दोनों इकाइयाँ एक ही ग्लाइकोसाइडी कड़ी से जुड़ी हैं। अतः माल्टोस C₁₂H₂₂O₁₁ है, C₁₂H₂₄O₁₂ नहीं — ग़ायब H₂O ही पूरा अंतर है। वही गणित पूरे अध्याय में चलता है: पेप्टाइड बंध एक पानी खोता है, और n इकाइयों का बहुलक n − 1, इसीलिए स्टार्च या प्रोटीन का सूत्र उसके एकलक को बस गुणा करके कभी नहीं मिलता। (2 प्रति बंध के बजाय प्रति इकाई एक पानी गिनता है।)",
+        mr: "2 − 1 = 1 जलरेणू, कारण दोन्ही एकके एकाच ग्लायकोसिडिक दुव्याने जोडलेली आहेत. म्हणून माल्टोज C₁₂H₂₂O₁₁ आहे, C₁₂H₂₄O₁₂ नाही — गायब H₂O हाच अख्खा फरक आहे. तेच गणित अख्ख्या प्रकरणात चालते: पेप्टाइड बंध एक पाणी गमावतो, आणि n एककांचा बहुवारिक n − 1, म्हणूनच स्टार्च वा प्रथिनाचे सूत्र त्याच्या एकवारिकाला फक्त गुणून कधीच मिळत नाही. (2 प्रति बंधऐवजी प्रति एकक एक पाणी मोजते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A polypeptide is made of 50 amino acid residues. How many peptide bonds does it contain?",
+        hi: "किसी पॉलिपेप्टाइड में 50 ऐमीनो अम्ल अवशेष हैं। उसमें कितने पेप्टाइड बंध हैं?",
+        mr: "एखाद्या पॉलिपेप्टाइडात 50 अमिनो आम्ल अवशेष आहेत. त्यात किती पेप्टाइड बंध आहेत?",
+      },
+      answer: 49,
+      wrong: [50, 51, 25],
+      checkExpr: "50-1",
+      solution: {
+        en: "50 − 1 = 49, because the bonds sit between the residues and the chain has two free ends. It is the same counting as fence posts and rails. The number matters for the chapter's central point: those 49 covalent bonds are the primary structure and survive gentle heating, while the far weaker hydrogen bonds holding the chain in its folded shape do not — which is why an enzyme can lose all its activity with its whole sequence intact. (50 counts one bond per residue and forgets the free ends.)",
+        hi: "50 − 1 = 49, क्योंकि बंध अवशेषों के बीच बैठते हैं और शृंखला के दो सिरे मुक्त हैं। यह वही गिनती है जो बाड़ के खंभों और डंडों की होती है। संख्या अध्याय के केंद्रीय मर्म के लिए मायने रखती है: वे 49 सहसंयोजक बंध प्राथमिक संरचना हैं और हल्की गर्मी में बचे रहते हैं, जबकि शृंखला को उसके मुड़े आकार में थामते कहीं दुर्बल हाइड्रोजन बंध नहीं — इसीलिए एंज़ाइम अपना पूरा अनुक्रम सलामत रखते हुए सारी सक्रियता खो सकता है। (50 प्रति अवशेष एक बंध गिनता है और मुक्त सिरे भूल जाता है।)",
+        mr: "50 − 1 = 49, कारण बंध अवशेषांमध्ये बसतात आणि साखळीची दोन टोके मुक्त आहेत. ही तीच मोजणी आहे जी कुंपणाच्या खांबांची आणि दांड्यांची असते. संख्या प्रकरणाच्या मध्यवर्ती गाभ्यासाठी महत्त्वाची आहे: ते 49 सहसंयुज बंध प्राथमिक रचना आहेत आणि सौम्य तापवण्यात टिकतात, तर साखळीला तिच्या घडीच्या आकारात धरणारे कितीतरी दुर्बल हायड्रोजन बंध नाहीत — म्हणूनच विकर आपला अख्खा क्रम शाबूत ठेवून सर्व सक्रियता गमावू शकते. (50 प्रति अवशेष एक बंध मोजते आणि मुक्त टोके विसरते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "The two crystalline forms of glucose rotate polarised light by +111° and +19°. What is the difference between them, in degrees?",
+        hi: "ग्लूकोस के दोनों क्रिस्टलीय रूप ध्रुवित प्रकाश को +111° और +19° घुमाते हैं। उनके बीच अंतर, अंशों में, क्या है?",
+        mr: "ग्लुकोजची दोन स्फटिकी रूपे ध्रुवित प्रकाश +111° आणि +19° फिरवतात. त्यांच्यातील फरक, अंशांत, किती?",
+      },
+      answer: 92,
+      wrong: [130, 52.5, 65],
+      checkExpr: "111-19",
+      solution: {
+        en: "111 − 19 = 92°, and the striking thing is that two compounds differing at a single carbon differ this much in a measurable property. They are separately crystallisable solids with different melting points, so they are genuinely two compounds and not one. Yet dissolve either and the rotation drifts to +52.5° — the same value from both — because each opens to the common open-chain form and re-closes either way until an equilibrium mixture is reached. (130 adds the two rotations.)",
+        hi: "111 − 19 = 92°, और चौंकाने वाली बात यह कि केवल एक कार्बन पर भिन्न दो यौगिक किसी नापने योग्य गुण में इतना भिन्न हैं। वे अलग-अलग क्रिस्टलित किए जा सकने वाले ठोस हैं, भिन्न गलनांकों के साथ, अतः वे वस्तुतः दो यौगिक हैं, एक नहीं। फिर भी किसी को भी घोलो और घूर्णन बहकर +52.5° हो जाता है — दोनों से वही मान — क्योंकि हर एक साझे खुले रूप तक खुलता है और किसी भी ओर से फिर बंद होता है जब तक साम्य मिश्रण न बन जाए। (130 दोनों घूर्णन जोड़ देता है।)",
+        mr: "111 − 19 = 92°, आणि चकित करणारी बाब ही की केवळ एका कार्बनवर वेगळी असलेली दोन संयुगे एखाद्या मोजण्याजोग्या गुणधर्मात इतकी वेगळी आहेत. ती वेगवेगळी स्फटिकित करता येणारी घने आहेत, वेगळ्या द्रवणांकांसह, म्हणून ती खरोखर दोन संयुगे आहेत, एक नाही. तरीही कोणतेही विरघळवा आणि भ्रमण वाहत +52.5° होते — दोघांकडूनही तेच मूल्य — कारण प्रत्येक सामायिक उघड्या रूपापर्यंत उघडते आणि कोणत्याही बाजूने पुन्हा बंद होते जोवर समतोल मिश्रण बनत नाही. (130 दोन्ही भ्रमणे जोडते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "A DNA sample is found to contain 20 per cent adenine. What percentage is guanine?",
+        hi: "किसी DNA नमूने में 20 प्रतिशत ऐडेनीन पाया जाता है। ग्वानीन कितने प्रतिशत है?",
+        mr: "एका DNA नमुन्यात 20 टक्के अ‍ॅडेनिन आढळते. ग्वानिन किती टक्के आहे?",
+      },
+      answer: 30,
+      wrong: [20, 40, 15],
+      checkExpr: "60/2",
+      solution: {
+        en: "Adenine pairs with thymine, so thymine is also 20 per cent and the two together are 40. That leaves 60 per cent to be shared equally between guanine and cytosine, since they pair with each other: 60/2 = 30 per cent guanine. The chain of reasoning runs entirely from the pairing rule, and it is worth noticing that this is Chargaff's finding — the amounts of A and T are always equal, and so are those of G and C — which was an unexplained regularity in the data for years before the double helix showed why it had to be so. A rule that predicts a number is doing more than describing one. (20 assumes all four bases are present in equal proportion, which no organism requires.)",
+        hi: "ऐडेनीन थाइमीन से युग्मित होता है, अतः थाइमीन भी 20 प्रतिशत है और दोनों मिलकर 40. बचे 60 प्रतिशत ग्वानीन और साइटोसीन में बराबर बँटेंगे, क्योंकि वे आपस में युग्मित होते हैं: 60/2 = 30 प्रतिशत ग्वानीन। तर्क की पूरी शृंखला युग्मन नियम से चलती है, और ध्यान देने लायक़ है कि यह शार्गाफ़ का निष्कर्ष है — A और T की मात्राएँ हमेशा बराबर होती हैं, और वैसे ही G और C की — जो आँकड़ों में वर्षों तक अस्पष्ट नियमितता रही, इससे पहले कि द्विकुंडली दिखाती कि ऐसा होना ही क्यों था। जो नियम कोई संख्या बता दे वह उसे केवल वर्णित करने से अधिक कर रहा है। (20 मान लेता है कि चारों क्षार बराबर अनुपात में हैं, जिसकी किसी जीव को ज़रूरत नहीं।)",
+        mr: "अ‍ॅडेनिन थायमिनशी युग्मित होते, म्हणून थायमिनही 20 टक्के आहे आणि दोन्ही मिळून 40. उरलेले 60 टक्के ग्वानिन आणि सायटोसिनमध्ये समान वाटले जातील, कारण ती परस्पर युग्मित होतात: 60/2 = 30 टक्के ग्वानिन. युक्तिवादाची अख्खी साखळी युग्मन नियमातून चालते, आणि लक्षात घेण्याजोगे आहे की हा शारगाफचा निष्कर्ष आहे — A आणि T ची प्रमाणे नेहमी समान असतात, आणि तशीच G आणि C ची — जी आकड्यांत कित्येक वर्षे अस्पष्ट नियमितता राहिली, द्विकुंडलीने असे का असावेच लागते हे दाखवण्याआधी. जो नियम एखादी संख्या सांगतो तो तिचे केवळ वर्णन करण्याहून अधिक करत आहे. (20 गृहीत धरते की चारही क्षार समान प्रमाणात आहेत, जे कोणत्याही जीवाला आवश्यक नाही.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "The equilibrium mixture of the two ring forms of glucose is found to be 64 per cent of the form rotating light by +19°. What percentage is the form rotating it by +111°?",
+        hi: "ग्लूकोस के दोनों वलय रूपों का साम्य मिश्रण उस रूप का 64 प्रतिशत पाया जाता है जो प्रकाश को +19° घुमाता है। जो रूप उसे +111° घुमाता है वह कितने प्रतिशत है?",
+        mr: "ग्लुकोजच्या दोन वलय रूपांचे समतोल मिश्रण त्या रूपाचे 64 टक्के आढळते जे प्रकाश +19° फिरवते. जे रूप तो +111° फिरवते ते किती टक्के आहे?",
+      },
+      answer: 36,
+      wrong: [64, 50, 26],
+      checkExpr: "100-64",
+      solution: {
+        en: "100 − 64 = 36 per cent. The subtraction is trivial and where the 64 came from is not: nobody separated the mixture. A weighted average of the two rotations was set equal to the measured equilibrium value of +52.5°, and solving for the proportion gave the composition — so a structural fact about an unseparated mixture was obtained from one reading of a polarimeter. That the calculation is legitimate depends on something worth stating: rotations add in proportion to how much of each species is present, which is true because each molecule contributes independently to turning the plane of polarisation. Note the answer is not 50 per cent. The two forms differ only at the carbon that closed the ring, yet one is distinctly more stable than the other, because in it the hydroxyl group on that carbon sits in the roomier equatorial position rather than the crowded axial one. A number obtained from a polarimeter has ended up reporting on the preferred geometry of a ring. (64 gives the proportion of the other form.)",
+        hi: "100 − 64 = 36 प्रतिशत। घटाना मामूली है और 64 कहाँ से आया यह नहीं: मिश्रण किसी ने अलग नहीं किया। दोनों घूर्णनों के भारित औसत को नापे गए साम्य मान +52.5° के बराबर रखा गया, और अनुपात के लिए हल करने पर संघटना मिली — अतः बिना अलग किए मिश्रण के बारे में संरचनात्मक तथ्य ध्रुवणमापी की एक ही पठनी से मिल गया। गणना का वैध होना इस पर टिका है जिसे कहना चाहिए: घूर्णन इस अनुपात में जुड़ते हैं कि हर स्पीशीज़ कितनी मौजूद है, और यह इसलिए सही है कि हर अणु ध्रुवण तल घुमाने में स्वतंत्र रूप से योगदान देता है। ध्यान दो कि उत्तर 50 प्रतिशत नहीं है। दोनों रूप केवल उसी कार्बन पर भिन्न हैं जिसने वलय बंद किया, फिर भी एक दूसरे से स्पष्टतः अधिक स्थायी है, क्योंकि उसमें उस कार्बन का हाइड्रॉक्सिल समूह भीड़ भरी अक्षीय स्थिति के बजाय अधिक खुली विषुवतीय स्थिति में बैठता है। ध्रुवणमापी से मिली संख्या अंततः वलय की पसंदीदा ज्यामिति की ख़बर दे रही है। (64 दूसरे रूप का अनुपात देता है।)",
+        mr: "100 − 64 = 36 टक्के. वजाबाकी क्षुल्लक आहे आणि 64 कुठून आले हे नाही: मिश्रण कोणीही वेगळे केले नाही. दोन्ही भ्रमणांची भारित सरासरी मोजलेल्या समतोल मूल्य +52.5° च्या बरोबर ठेवली गेली, आणि प्रमाणासाठी सोडवल्यावर संघटना मिळाली — म्हणून वेगळे न केलेल्या मिश्रणाबद्दलचे संरचनात्मक सत्य ध्रुवणमापीच्या एकाच वाचनातून मिळाले. गणना वैध असणे यावर टिकते जे सांगण्याजोगे आहे: भ्रमणे या प्रमाणात जमतात की प्रत्येक जाती किती उपस्थित आहे, आणि हे यासाठी बरोबर आहे की प्रत्येक रेणू ध्रुवण प्रतल फिरवण्यात स्वतंत्रपणे योगदान देतो. लक्षात घ्या की उत्तर 50 टक्के नाही. दोन्ही रूपे केवळ त्याच कार्बनवर वेगळी आहेत ज्याने वलय बंद केले, तरीही एक दुसऱ्याहून स्पष्टपणे अधिक स्थिर आहे, कारण त्यात त्या कार्बनचा हायड्रॉक्सिल गट गर्दीच्या अक्षीय जागेऐवजी अधिक मोकळ्या विषुववृत्तीय जागी बसतो. ध्रुवणमापीतून मिळालेली संख्या अखेरीस वलयाच्या पसंतीच्या भूमितीची बातमी देत आहे. (64 दुसऱ्या रूपाचे प्रमाण देते.)",
       },
     },
   ],

@@ -2514,8 +2514,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 358
-  chapters / 6,422 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 360
+  chapters / 6,478 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2914,6 +2914,38 @@ navigation" means the actual list rather than one somebody maintained by hand.
   was drafted with a `seq` field, which the engine reserves for chronology
   in history chapters, not step lists — rewritten as a `pair`. Verify
   clean, warnings steady at 34, suite green: 87 files, 1485 tests.
+
+  **Class 12 Chemistry then closed at ten chapters** — the last two, 56
+  questions: Amines and Biomolecules. The amines chapter turns on one lone
+  pair doing every job in it — basicity and nucleophilicity being two names
+  for the same property — and the L5 is the observation that the basic
+  order of the methylamines REVERSES between the gas phase and water. In the
+  gas phase only the molecule matters and alkyl groups make the pair more
+  available, so the order is clean; in water a second factor appears,
+  because the cation is stabilised by hydrogen bonds from its own N–H
+  hydrogens and every alkyl group added removes one of them. Two effects in
+  opposition, and the secondary amine sits at the compromise. The moral is
+  that a tabulated pKb belongs to the amine *in water*, not to the amine.
+  The L6 gets three unrelated-looking facts about aniline — a millionfold
+  weaker base, a ring so activated that bromine needs no catalyst, and a
+  Friedel–Crafts that will not run at all — out of one cause, and ends on
+  the acetylation trick, a protecting group used to turn a reaction's dial
+  down rather than to prevent it. Biomolecules is ordinary organic
+  chemistry doing biology's work, and the L5 is the genuine historical
+  difficulty: glucose gives a silver mirror while its accepted structure
+  has no aldehyde, and also fails Schiff's test and the bisulphite test.
+  One postulate — a ring in equilibrium with a trace of open chain, the
+  trace continually replenished as it is consumed — settles the positive
+  test, the negative ones, the existence of two crystallisable forms, and
+  their convergence to one rotation. The L6 is a controlled experiment: an
+  enzyme heated to 70 °C loses all activity with every peptide bond intact,
+  which localises the catalysis in the FOLD rather than the sequence,
+  because the fold is held by bonds an order of magnitude weaker than the
+  backbone's. One authoring fix caught before shipping: a numeric question
+  solved a weighted average whose `checkExpr` landed on 36.41 rather than
+  36 — restated so the arithmetic is exact and the polarimeter argument
+  moved into the solution where it belongs. Verify clean, warnings steady
+  at 34, suite green: 87 files, 1485 tests. **Class 12 Chemistry: 10/10.**
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)
