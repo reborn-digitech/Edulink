@@ -2514,8 +2514,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 318
-  chapters / 5,518 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 322
+  chapters / 5,611 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2643,15 +2643,29 @@ navigation" means the actual list rather than one somebody maintained by hand.
   makes hyperventilating before a dive lethal — why a trekker flown to Ladakh
   gets worse as she breathes harder, why both heart sounds are valves and not
   muscle, and why an Rh-negative mother's first child is safe and her second is
-  not. **Nine of the fifteen carry numerics and six do not**, which is the
-  honest shape of the subject: ploidy in Plant Kingdom, surface-area-to-volume
-  in Cell, polymer arithmetic in Biomolecules, chromosome bookkeeping in Cell
-  Cycle, Calvin-cycle stoichiometry, the two-versus-thirty-eight ATP ledger,
-  growth rates, lung volumes and cardiac output are all real counting a pupil
-  must be able to defend — and taxonomy, anatomy and the regulators have none
-  that is not invented. Growth and Development gets a deliberately shorter
-  numeric set for the same reason. Class 11 has four Biology chapters and all
-  of Maths left, and Class 12 after them.
+  not. **Class 11 Biology is now complete at nineteen chapters** — 441
+  questions, the last four closing the control systems: Excretory Products and
+  their Elimination, Locomotion and Movement, Neural Control and Coordination,
+  and Chemical Coordination and Integration. They ask why a kidney throws out a
+  hundred and eighty litres a day in order to keep a hundred and seventy-eight
+  and a half of them back, why sugar in the urine is evidence about the blood
+  rather than about the kidney, why a body stiffens after death instead of
+  going slack — and what that proves about which step of a muscle's cycle needs
+  the energy — why the biceps works at a six-fold mechanical disadvantage and
+  is right to, why a nerve signal arrives at your foot as loud as it left your
+  spine and therefore has to code intensity as frequency, why a dentist's
+  injection takes pain before touch and returns them in the reverse order, why
+  a thyroid tablet taken for three years shrinks the gland that would have made
+  it, and why insulin must be injected while cortisone can be swallowed.
+  **Nine of the nineteen carry numerics and ten do not**, which is the honest
+  shape of the subject: ploidy, surface-area-to-volume, polymer arithmetic,
+  chromosome bookkeeping, Calvin-cycle stoichiometry, the two-versus-thirty-
+  eight ATP ledger, growth rates, lung volumes, cardiac output, glomerular
+  filtration, sarcomere band widths and membrane voltages are all real counting
+  a pupil must be able to defend — and taxonomy, anatomy, the plant regulators
+  and the whole endocrine chapter have none that is not invented. Chapter 19's
+  absence from `G11_BIOLOGY_NUMERIC` is written up in the file as a claim
+  rather than a gap. Class 11 has all of Maths left, and Class 12 after it.
   Suite re-pointed and green: 87 files, 1485 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**

@@ -5283,6 +5283,1401 @@ export const G11_BIOLOGY: Chapter[] = [
       },
     ],
   },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 16 — Excretory Products and their Elimination                   */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "biology-11-excretory-products-and-their-elimination",
+    subject: "BIOLOGY",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 16 — Excretory Products and their Elimination",
+      hi: "अध्याय 16 — उत्सर्जी उत्पाद एवं उनका निष्कासन",
+      mr: "प्रकरण 16 — उत्सर्जी पदार्थ आणि त्यांचे निष्कासन",
+    },
+    name: {
+      en: "Throwing Everything Out and Taking Most of It Back",
+      hi: "सब कुछ बाहर फेंकना और अधिकांश वापस ले लेना",
+      mr: "सारे बाहेर फेकणे आणि बहुतांश परत घेणे",
+    },
+    summary: {
+      en: "The kidney does not decide what to remove; it removes everything small enough to pass a sieve and then spends the rest of the tubule taking back what it wanted, which sounds wasteful until you notice that a filter which selects nothing can never be fooled. Which waste an animal makes at all is settled not by chemistry but by how much water it can spare, and the concentration of what finally leaves depends on a loop that deliberately makes the tissue around it salty.",
+      hi: "वृक्क यह तय नहीं करता कि क्या हटाना है; वह हर उस चीज़ को हटा देता है जो छलनी से गुज़रने लायक़ छोटी हो और फिर बाक़ी नलिका उसे वापस लेने में बिताता है जो उसे चाहिए था, जो तब तक फ़िज़ूल लगता है जब तक तुम यह न देख लो कि जो छलनी कुछ चुनती ही नहीं उसे कभी छला नहीं जा सकता। कोई प्राणी कौन-सा अपशिष्ट बनाएगा यह रसायन नहीं बल्कि यह तय करता है कि वह कितना जल छोड़ सकता है, और अंततः जो निकलता है उसकी सांद्रता उस पाश पर निर्भर है जो अपने चारों ओर के ऊतक को जानबूझकर खारा बना देता है।",
+      mr: "मूत्रपिंड काय काढायचे हे ठरवत नाही; ते चाळणीतून जाण्याइतकी लहान प्रत्येक गोष्ट काढून टाकते आणि मग उरलेली नलिका त्याला हवे होते ते परत घेण्यात घालवते, जे तोवर फुकट वाटते जोवर तुम्ही हे पाहत नाही की जी चाळणी काहीच निवडत नाही तिला कधी फसवता येत नाही. एखादा प्राणी कोणता टाकाऊ पदार्थ बनवेल हे रसायन नव्हे तर तो किती पाणी सोडू शकतो हे ठरवते, आणि अखेर जे बाहेर पडते त्याची संहती त्या फासावर अवलंबून जो आपल्याभोवतीची ऊती मुद्दाम खारट करतो.",
+    },
+    position: 16,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "the-waste-chosen-by-water-you-can-spare",
+        name: {
+          en: "The waste chosen by how much water you can spare",
+          hi: "वह अपशिष्ट जो इससे चुना जाता है कि तुम कितना जल छोड़ सकते हो",
+          mr: "तुम्ही किती पाणी सोडू शकता यावरून निवडलेला तो टाकाऊ पदार्थ",
+        },
+        kind: "classification",
+        prompt: {
+          en: "A tadpole gives out one compound and the frog it becomes gives out another; a bird sealed inside an egg gives out a third, because the first two would poison it or drown it in its own shell. What is being chosen here?",
+          hi: "टैडपोल एक यौगिक निकालता है और वह जिस मेंढक में बदलता है वह दूसरा; अंडे के भीतर बंद पक्षी तीसरा निकालता है, क्योंकि पहले दो उसे विष देते या उसके अपने खोल में डुबो देते। यहाँ चुना क्या जा रहा है?",
+          mr: "बेडूकमासा एक संयुग बाहेर टाकतो आणि तो ज्या बेडकात बदलतो तो दुसरे; अंड्यात बंद पक्षी तिसरे टाकतो, कारण पहिली दोन त्याला विष देतील वा त्याच्याच कवचात बुडवतील. इथे निवडले काय जाते आहे?",
+        },
+        statement: {
+          en: "The nitrogenous waste an animal excretes is determined by its water supply: ammonia where water is unlimited, urea where it is moderate, uric acid where almost none can be spared.",
+          hi: "प्राणी कौन-सा नाइट्रोजनी अपशिष्ट उत्सर्जित करेगा यह उसकी जल-आपूर्ति तय करती है: जहाँ जल असीम हो वहाँ अमोनिया, जहाँ मध्यम हो वहाँ यूरिया, और जहाँ लगभग कुछ भी न छोड़ा जा सके वहाँ यूरिक अम्ल।",
+          mr: "प्राणी कोणता नायट्रोजनी टाकाऊ पदार्थ उत्सर्जित करेल हे त्याचा पाणीपुरवठा ठरवतो: जिथे पाणी अमर्याद तिथे अमोनिया, जिथे मध्यम तिथे युरिया, आणि जिथे जवळपास काहीच सोडता येत नाही तिथे युरिक आम्ल.",
+        },
+        detail: {
+          en: "The three differ in toxicity and in the water needed to flush them, and the order is exactly reversed: the cheapest to make is the most dangerous to keep.",
+          hi: "तीनों विषाक्तता में और उन्हें बहाने को चाहिए जल में भिन्न हैं, और क्रम ठीक उलटा है: जो बनाने में सबसे सस्ता है वही रखने में सबसे ख़तरनाक है।",
+          mr: "तिन्ही विषारीपणात आणि त्यांना वाहून नेण्यास लागणाऱ्या पाण्यात वेगळी आहेत, आणि क्रम नेमका उलटा आहे: जे बनवायला सर्वांत स्वस्त तेच ठेवायला सर्वांत धोकादायक.",
+        },
+        extra: {
+          en: "Because the choice follows the habitat rather than the family tree, unrelated animals living in the same conditions converge on the same waste, and one animal can switch as it changes habitat.",
+          hi: "चूँकि चुनाव वंश-वृक्ष का नहीं, आवास का अनुसरण करता है, एक ही परिस्थिति में रहते असंबंधित प्राणी एक ही अपशिष्ट पर आ मिलते हैं, और एक ही प्राणी आवास बदलने पर बदल भी सकता है।",
+          mr: "निवड वंशवृक्षाचे नव्हे तर अधिवासाचे अनुसरण करत असल्याने, एकाच परिस्थितीत राहणारे असंबंधित प्राणी एकाच टाकाऊ पदार्थावर येऊन जुळतात, आणि एकच प्राणी अधिवास बदलताच बदलूही शकतो.",
+        },
+        pair: {
+          left: {
+            en: "The cheapest to make is the most dangerous to keep",
+            hi: "जो बनाने में सबसे सस्ता है वही रखने में सबसे ख़तरनाक",
+            mr: "बनवायला सर्वांत स्वस्त तेच ठेवायला सर्वांत धोकादायक",
+          },
+          right: {
+            en: "the waste chosen by how much water you can spare",
+            hi: "वह अपशिष्ट जो इससे चुना जाता है कि तुम कितना जल छोड़ सकते हो",
+            mr: "तुम्ही किती पाणी सोडू शकता यावरून निवडलेला तो टाकाऊ पदार्थ",
+          },
+        },
+      },
+      {
+        id: "the-sieve-that-selects-nothing",
+        name: {
+          en: "The sieve that selects nothing at all",
+          hi: "वह छलनी जो कुछ भी नहीं चुनती",
+          mr: "काहीच न निवडणारी ती चाळणी",
+        },
+        kind: "stage",
+        prompt: {
+          en: "Blood is squeezed against a membrane hard enough that water, salts, glucose, amino acids and wastes all go through together, and only cells and large proteins are held back — no decision is made about any of them. Which step is this?",
+          hi: "रक्त को झिल्ली से इतने ज़ोर से दबाया जाता है कि जल, लवण, ग्लूकोस, अमीनो अम्ल और अपशिष्ट सब साथ निकल जाएँ, और केवल कोशिकाएँ तथा बड़े प्रोटीन रोक लिए जाएँ — उनमें से किसी के बारे में कोई निर्णय नहीं लिया जाता। यह कौन-सा चरण है?",
+          mr: "रक्त पटलावर इतक्या जोराने दाबले जाते की पाणी, क्षार, ग्लुकोज, अमिनो आम्ले आणि टाकाऊ पदार्थ सारे एकत्र निघून जावेत, आणि केवळ पेशी व मोठी प्रथिने अडवली जावीत — त्यांपैकी कोणाबद्दलही कोणताही निर्णय घेतला जात नाही. ही कोणती पायरी?",
+        },
+        statement: {
+          en: "Glomerular filtration is a purely physical process driven by blood pressure, and it separates by molecular size alone, so the filtrate leaving the capsule has the same composition as plasma minus its proteins.",
+          hi: "केशिकागुच्छीय निस्यंदन विशुद्ध भौतिक प्रक्रिया है जो रक्तचाप से चलती है, और वह केवल अणु के आकार से छाँटती है, अतः संपुट से निकलते निस्यंद की संरचना प्रोटीन हटाकर प्लाज़्मा जैसी ही होती है।",
+          mr: "केशिकागुच्छ गाळण ही निव्वळ भौतिक प्रक्रिया आहे जी रक्तदाबाने चालते, आणि ती केवळ रेणूच्या आकारावरून वेगळे करते, म्हणून संपुटातून निघणाऱ्या गाळण्याची रचना प्रथिने वगळता प्लाझ्मासारखीच असते.",
+        },
+        detail: {
+          en: "The pressure needed is provided by an arteriole leaving the tuft that is narrower than the one entering it, which is an unusual arrangement found almost nowhere else in the body.",
+          hi: "जो दाब चाहिए वह गुच्छ से निकलती उस धमनिका से मिलता है जो उसमें घुसती धमनिका से सँकरी है, और यह असामान्य व्यवस्था शरीर में और लगभग कहीं नहीं मिलती।",
+          mr: "जो दाब लागतो तो गुच्छातून निघणाऱ्या त्या रोहिणिकेकडून मिळतो जी आत शिरणाऱ्या रोहिणिकेहून अरुंद आहे, आणि ही असामान्य व्यवस्था शरीरात इतरत्र जवळपास कुठेही आढळत नाही.",
+        },
+        extra: {
+          en: "About a hundred and eighty litres are filtered in a day, which is more than forty times the entire volume of blood in the body.",
+          hi: "एक दिन में लगभग एक सौ अस्सी लीटर छाना जाता है, जो शरीर के पूरे रक्त आयतन से चालीस गुना से भी अधिक है।",
+          mr: "एका दिवसात सुमारे एकशे ऐंशी लिटर गाळले जाते, जे शरीरातल्या अख्ख्या रक्त-आकारमानाहून चाळीसपटींहून अधिक आहे.",
+        },
+        pair: {
+          left: {
+            en: "The vessel leaving is narrower than the one entering",
+            hi: "निकलती वाहिनी घुसती वाहिनी से सँकरी है",
+            mr: "निघणारी वाहिनी शिरणाऱ्या वाहिनीहून अरुंद",
+          },
+          right: {
+            en: "the sieve that selects nothing at all",
+            hi: "वह छलनी जो कुछ भी नहीं चुनती",
+            mr: "काहीच न निवडणारी ती चाळणी",
+          },
+        },
+      },
+      {
+        id: "the-stretch-that-undoes-the-filtering",
+        name: {
+          en: "The stretch that undoes most of the filtering",
+          hi: "वह हिस्सा जो अधिकांश छनाई पलट देता है",
+          mr: "बहुतांश गाळण उलटवणारा तो टप्पा",
+        },
+        kind: "stage",
+        prompt: {
+          en: "Nearly four-fifths of what has just been thrown out is picked up again here, including every last molecule of one sugar, and the cells doing it are packed with mitochondria and carry a brush of microvilli on the side facing the fluid. Which stretch is this?",
+          hi: "अभी-अभी जो फेंका गया उसका लगभग चार-पाँचवाँ भाग यहीं फिर उठा लिया जाता है, जिसमें एक शर्करा का आख़िरी अणु तक शामिल है, और यह काम करती कोशिकाएँ सूत्रकणिकाओं से ठसी हैं और द्रव की ओर वाले फलक पर सूक्ष्मांकुरों का ब्रश ढोती हैं। यह कौन-सा हिस्सा है?",
+          mr: "आत्ताच जे फेकले गेले त्याचा सुमारे चारपंचमांश भाग इथेच पुन्हा उचलला जातो, ज्यात एका शर्करेचा शेवटचा रेणूही समाविष्ट, आणि हे काम करणाऱ्या पेशी तंतुकणिकांनी ठासलेल्या असून द्रवाकडच्या पृष्ठावर सूक्ष्मांकुरांचा ब्रश वाहतात. हा कोणता टप्पा?",
+        },
+        statement: {
+          en: "The proximal convoluted tubule reabsorbs about four-fifths of the filtrate, taking back all of the glucose and amino acids, most of the sodium and water, and the bicarbonate the body needs to hold its acidity steady.",
+          hi: "समीपस्थ कुंडलित नलिका निस्यंद का लगभग चार-पाँचवाँ भाग पुनरवशोषित करती है, सारा ग्लूकोस और अमीनो अम्ल, अधिकांश सोडियम और जल, और वह बाइकार्बोनेट वापस लेती है जो शरीर को अपनी अम्लता स्थिर रखने को चाहिए।",
+          mr: "समीपस्थ वळणदार नलिका गाळण्याचा सुमारे चारपंचमांश भाग पुनःशोषून घेते, सारा ग्लुकोज आणि अमिनो आम्ले, बहुतांश सोडियम आणि पाणी, आणि शरीराला आपली आम्लता स्थिर ठेवण्यास लागणारे बायकार्बोनेट परत घेते.",
+        },
+        detail: {
+          en: "Its carriers have a ceiling: below a certain concentration everything is recovered, and above it the surplus simply runs on down the tubule and appears in the urine.",
+          hi: "उसके वाहकों की एक छत है: किसी सांद्रता से नीचे सब कुछ वापस मिल जाता है, और उससे ऊपर अतिरिक्त बस नलिका में आगे बहकर मूत्र में प्रकट हो जाता है।",
+          mr: "तिच्या वाहकांना एक छत आहे: एका संहतीखाली सारे परत मिळते, आणि तिच्यावर अतिरिक्त फक्त नलिकेत पुढे वाहून मूत्रात प्रकटते.",
+        },
+        extra: {
+          en: "The design looks wasteful only until you notice its advantage: a filter that removes everything cannot be defeated by a poison it has never met before.",
+          hi: "यह बनावट तभी तक फ़िज़ूल लगती है जब तक उसका लाभ न दिखे: जो छलनी सब कुछ हटा देती है उसे ऐसा विष नहीं हरा सकता जिससे उसका पहले कभी सामना ही न हुआ हो।",
+          mr: "ही रचना तोवरच फुकट वाटते जोवर तिचा फायदा दिसत नाही: जी चाळणी सारे काढून टाकते तिला असे विष हरवू शकत नाही ज्याच्याशी तिचा आधी कधी सामनाच झाला नाही.",
+        },
+        pair: {
+          left: {
+            en: "A filter that removes everything cannot be fooled by a new poison",
+            hi: "जो छलनी सब हटा देती है उसे नया विष छल नहीं सकता",
+            mr: "सारे काढून टाकणाऱ्या चाळणीला नवे विष फसवू शकत नाही",
+          },
+          right: {
+            en: "the stretch that undoes most of the filtering",
+            hi: "वह हिस्सा जो अधिकांश छनाई पलट देता है",
+            mr: "बहुतांश गाळण उलटवणारा तो टप्पा",
+          },
+        },
+      },
+      {
+        id: "the-loop-that-makes-the-tissue-salty",
+        name: {
+          en: "The loop that makes the tissue around it salty",
+          hi: "वह पाश जो अपने चारों ओर के ऊतक को खारा बना देता है",
+          mr: "आपल्याभोवतीची ऊती खारट करणारा तो फास",
+        },
+        kind: "stage",
+        prompt: {
+          en: "It dips down into the deeper tissue and comes back up, and its two arms have opposite properties on purpose — one lets water out and holds salt in, the other does exactly the reverse. What is the arrangement for?",
+          hi: "वह गहरे ऊतक में नीचे उतरता है और फिर ऊपर लौटता है, और उसकी दोनों भुजाओं के गुण जानबूझकर उलटे हैं — एक जल निकलने देती है और लवण रोकती है, दूसरी ठीक उलटा करती है। यह व्यवस्था किसलिए है?",
+          mr: "तो खोल ऊतीत खाली उतरतो आणि पुन्हा वर परततो, आणि त्याच्या दोन बाहूंचे गुणधर्म मुद्दाम उलटे आहेत — एक पाणी बाहेर जाऊ देतो आणि क्षार अडवतो, दुसरा नेमके उलटे करतो. ही व्यवस्था कशासाठी?",
+        },
+        statement: {
+          en: "The loop of Henle sets up a counter-current gradient that makes the medulla progressively saltier towards its tip, and that gradient is what lets water be drawn out of the collecting duct later.",
+          hi: "हेनले का पाश एक प्रति-धारा प्रवणता बनाता है जो मध्यांश को उसके सिरे की ओर उत्तरोत्तर खारा करती जाती है, और वही प्रवणता बाद में संग्रह नलिका से जल खींच पाने देती है।",
+          mr: "हेन्लेचा फास एक प्रति-प्रवाह प्रवणता उभी करतो जी मध्यांशाला त्याच्या टोकाकडे उत्तरोत्तर खारट करत जाते, आणि तीच प्रवणता नंतर संग्राहक नलिकेतून पाणी ओढू देते.",
+        },
+        detail: {
+          en: "The gradient is a store of concentrating power built in advance, so the amount of water finally recovered can be varied hour by hour without rebuilding anything.",
+          hi: "यह प्रवणता पहले से बनाया गया सांद्रण-शक्ति का भंडार है, अतः अंततः कितना जल वापस लिया जाए यह हर घंटे बदला जा सकता है बिना कुछ फिर से बनाए।",
+          mr: "ही प्रवणता आधीच बांधलेला संहतीकरण-शक्तीचा साठा आहे, म्हणून अखेर किती पाणी परत घ्यायचे हे प्रत्येक तासाला बदलता येते काहीही पुन्हा न बांधता.",
+        },
+        extra: {
+          en: "How concentrated an animal's urine can be follows directly from how long this loop is, which is why a desert rat's kidney has an unusually deep medulla and a beaver's does not.",
+          hi: "किसी प्राणी का मूत्र कितना सांद्र हो सकता है यह सीधे इससे निकलता है कि यह पाश कितना लंबा है, इसीलिए मरुस्थली चूहे के वृक्क का मध्यांश असामान्य रूप से गहरा है और ऊदबिलाव का नहीं।",
+          mr: "एखाद्या प्राण्याचे मूत्र किती संहत होऊ शकते हे थेट या फासाच्या लांबीवरून निघते, म्हणूनच वाळवंटी उंदराच्या मूत्रपिंडाचा मध्यांश असामान्यपणे खोल आहे आणि बीव्हरचा नाही.",
+        },
+        pair: {
+          left: {
+            en: "A desert rat's kidney has an unusually deep medulla",
+            hi: "मरुस्थली चूहे के वृक्क का मध्यांश असामान्य रूप से गहरा है",
+            mr: "वाळवंटी उंदराच्या मूत्रपिंडाचा मध्यांश असामान्यपणे खोल",
+          },
+          right: {
+            en: "the loop that makes the tissue around it salty",
+            hi: "वह पाश जो अपने चारों ओर के ऊतक को खारा बना देता है",
+            mr: "आपल्याभोवतीची ऊती खारट करणारा तो फास",
+          },
+        },
+      },
+      {
+        id: "the-signal-that-decides-how-much-water-returns",
+        name: {
+          en: "The signal that decides how much water comes back",
+          hi: "वह संकेत जो तय करता है कि कितना जल वापस आएगा",
+          mr: "किती पाणी परत येईल हे ठरवणारा तो संकेत",
+        },
+        kind: "control",
+        prompt: {
+          en: "Go a day without drinking and the last stretch of the tubule becomes leaky to water, so most of what is left is recovered; drink two litres in an hour and the same stretch seals up again. What controls it?",
+          hi: "एक दिन बिना पिए बिताओ और नलिका का अंतिम हिस्सा जल के लिए छिद्रिल हो जाता है, अतः जो बचा है उसका अधिकांश वापस मिल जाता है; एक घंटे में दो लीटर पी लो और वही हिस्सा फिर बंद हो जाता है। उसे नियंत्रित कौन करता है?",
+          mr: "एक दिवस न पिता घालवा आणि नलिकेचा शेवटचा भाग पाण्यासाठी गळका होतो, म्हणून उरलेल्याचा बहुतांश परत मिळतो; एका तासात दोन लिटर प्या आणि तोच भाग पुन्हा बंद होतो. त्याचे नियंत्रण कोण करते?",
+        },
+        statement: {
+          en: "Antidiuretic hormone from the pituitary makes the collecting duct permeable to water, so a body short of water recovers more of it and produces a small volume of concentrated urine.",
+          hi: "पीयूष ग्रंथि का प्रतिमूत्रल हॉर्मोन संग्रह नलिका को जल के लिए पारगम्य बना देता है, अतः जल की कमी वाला शरीर उसका अधिक हिस्सा वापस लेता है और थोड़ी मात्रा में सांद्र मूत्र बनाता है।",
+          mr: "पीयूष ग्रंथीचे प्रतिमूत्रल संप्रेरक संग्राहक नलिका पाण्यासाठी पारगम्य करते, म्हणून पाण्याची कमतरता असलेले शरीर त्याचा अधिक भाग परत घेते आणि थोड्या प्रमाणात संहत मूत्र बनवते.",
+        },
+        detail: {
+          en: "The kidney also has a lever of its own: when the pressure reaching it falls, a patch of cells beside the glomerulus releases an enzyme that begins a chain ending in raised blood pressure and retained salt.",
+          hi: "वृक्क के पास अपना एक लीवर भी है: उस तक पहुँचता दाब गिरे तो केशिकागुच्छ के पास बैठी कोशिकाओं की एक टुकड़ी ऐसा एंज़ाइम छोड़ती है जो एक शृंखला शुरू करता है जिसका अंत बढ़े हुए रक्तचाप और रोके गए लवण में होता है।",
+          mr: "मूत्रपिंडाकडे स्वतःची एक तरफही आहे: त्याच्यापर्यंत पोहोचणारा दाब घसरला की केशिकागुच्छाशेजारच्या पेशींचा एक तुकडा असे विकर सोडतो जे एक साखळी सुरू करते जिचा शेवट वाढलेल्या रक्तदाबात आणि अडवलेल्या क्षारात होतो.",
+        },
+        extra: {
+          en: "Alcohol suppresses that hormone, which is why drinking it makes a person pass more water than they took in and end up thirstier than before.",
+          hi: "एल्कोहॉल उस हॉर्मोन को दबा देता है, इसीलिए उसे पीने पर व्यक्ति जितना लेता है उससे अधिक जल निकाल देता है और पहले से अधिक प्यासा रह जाता है।",
+          mr: "अल्कोहोल ते संप्रेरक दाबते, म्हणूनच ते प्यायल्यावर व्यक्ती जितके घेते त्याहून अधिक पाणी बाहेर टाकते आणि आधीहून अधिक तहानलेली उरते.",
+        },
+        pair: {
+          left: {
+            en: "A drink that leaves you thirstier than before",
+            hi: "वह पेय जो तुम्हें पहले से अधिक प्यासा छोड़ जाए",
+            mr: "आधीहून अधिक तहानलेले सोडणारे ते पेय",
+          },
+          right: {
+            en: "the signal that decides how much water comes back",
+            hi: "वह संकेत जो तय करता है कि कितना जल वापस आएगा",
+            mr: "किती पाणी परत येईल हे ठरवणारा तो संकेत",
+          },
+        },
+      },
+      {
+        id: "the-organs-that-excrete-without-being-kidneys",
+        name: {
+          en: "The organs that excrete without being kidneys",
+          hi: "वे अंग जो वृक्क हुए बिना उत्सर्जन करते हैं",
+          mr: "मूत्रपिंड नसतानाही उत्सर्जन करणारे ते अवयव",
+        },
+        kind: "contrast",
+        prompt: {
+          en: "One of them throws out more waste by weight than the kidney does and nobody counts it as excretory; another makes the very compound the kidney is famous for removing; a third loses salt and water all day and is thought of as a covering. Which set is this?",
+          hi: "उनमें से एक भार के हिसाब से वृक्क से अधिक अपशिष्ट निकालता है और कोई उसे उत्सर्जी नहीं गिनता; दूसरा वही यौगिक बनाता है जिसे हटाने के लिए वृक्क प्रसिद्ध है; तीसरा दिन भर लवण और जल खोता है और उसे आवरण समझा जाता है। यह कौन-सा समुच्चय है?",
+          mr: "त्यांपैकी एक वजनाने मूत्रपिंडाहून अधिक टाकाऊ बाहेर टाकतो आणि कोणीही त्याला उत्सर्जी मोजत नाही; दुसरा तेच संयुग बनवतो जे काढण्यासाठी मूत्रपिंड प्रसिद्ध आहे; तिसरा दिवसभर क्षार आणि पाणी गमावतो आणि त्याला आवरण समजले जाते. हा कोणता संच?",
+        },
+        statement: {
+          en: "The lungs, the liver and the skin all remove waste as well: the lungs give out carbon dioxide, the liver makes urea and disposes of old pigment in the bile, and the skin loses salts and nitrogen in sweat.",
+          hi: "फेफड़े, यकृत और त्वचा भी अपशिष्ट हटाते हैं: फेफड़े कार्बन डाइऑक्साइड निकालते हैं, यकृत यूरिया बनाता है और पुराना वर्णक पित्त में निपटाता है, और त्वचा पसीने में लवण तथा नाइट्रोजन खोती है।",
+          mr: "फुप्फुसे, यकृत आणि त्वचाही टाकाऊ पदार्थ काढतात: फुप्फुसे कार्बन डायऑक्साइड बाहेर टाकतात, यकृत युरिया बनवते आणि जुने रंगद्रव्य पित्तात विल्हेवाट लावते, आणि त्वचा घामातून क्षार व नायट्रोजन गमावते.",
+        },
+        detail: {
+          en: "The liver's role is the one most often missed: the kidney does not manufacture urea at all, it only removes what the liver has already made from ammonia.",
+          hi: "यकृत की भूमिका सबसे अधिक छूटती है: वृक्क यूरिया बनाता ही नहीं, वह केवल उसे हटाता है जिसे यकृत पहले ही अमोनिया से बना चुका है।",
+          mr: "यकृताची भूमिका सर्वांत जास्त वेळा निसटते: मूत्रपिंड युरिया बनवतच नाही, ते केवळ यकृताने आधीच अमोनियापासून बनवलेले काढून टाकते.",
+        },
+        extra: {
+          en: "Sweating is a poor way to excrete and a good way to cool, which is why its rate follows the temperature rather than the amount of waste waiting to leave.",
+          hi: "पसीना उत्सर्जन का बुरा तरीक़ा है और ठंडा होने का अच्छा, इसीलिए उसकी दर निकलने को खड़े अपशिष्ट की मात्रा नहीं, तापमान का अनुसरण करती है।",
+          mr: "घाम हा उत्सर्जनाचा वाईट मार्ग आणि थंड होण्याचा चांगला, म्हणूनच त्याचा दर बाहेर पडायला वाट पाहणाऱ्या टाकाऊ पदार्थाच्या प्रमाणाचे नव्हे, तापमानाचे अनुसरण करतो.",
+        },
+        pair: {
+          left: {
+            en: "Its rate follows the temperature, not the waste waiting to leave",
+            hi: "उसकी दर अपशिष्ट की नहीं, तापमान का अनुसरण करती है",
+            mr: "त्याचा दर टाकाऊ पदार्थाचे नव्हे, तापमानाचे अनुसरण करतो",
+          },
+          right: {
+            en: "the organs that excrete without being kidneys",
+            hi: "वे अंग जो वृक्क हुए बिना उत्सर्जन करते हैं",
+            mr: "मूत्रपिंड नसतानाही उत्सर्जन करणारे ते अवयव",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A student objects that the kidney is absurdly designed. It filters about a hundred and eighty litres a day — forty times the blood in the body — throwing out glucose, amino acids, salts and water indiscriminately, and then spends almost all its energy dragging ninety-nine per cent of that back in. Any sensible organ, he says, would simply extract the wastes and leave the rest alone. What is the objection missing?",
+          hi: "विद्यार्थी आपत्ति करता है कि वृक्क की बनावट हास्यास्पद है। वह दिन में लगभग एक सौ अस्सी लीटर छानता है — शरीर के रक्त से चालीस गुना — ग्लूकोस, अमीनो अम्ल, लवण और जल बिना भेद के फेंक देता है, और फिर अपनी लगभग सारी ऊर्जा उसका निन्यानबे प्रतिशत वापस घसीटने में ख़र्च करता है। वह कहता है कि कोई समझदार अंग बस अपशिष्ट निकाल लेता और बाक़ी को छोड़ देता। आपत्ति में छूट क्या रहा है?",
+          mr: "विद्यार्थी आक्षेप घेतो की मूत्रपिंडाची रचना हास्यास्पद आहे. ते दिवसाला सुमारे एकशे ऐंशी लिटर गाळते — शरीरातल्या रक्ताहून चाळीसपट — ग्लुकोज, अमिनो आम्ले, क्षार आणि पाणी भेदाभेद न करता फेकून देते, आणि मग आपली जवळपास सारी ऊर्जा त्याचा नव्याण्णव टक्के परत ओढण्यात खर्च करते. तो म्हणतो की कोणताही समजूतदार अवयव फक्त टाकाऊ पदार्थ काढून घेतला असता आणि बाकीचे सोडून दिले असते. आक्षेपात सुटते काय आहे?",
+        },
+        choices: [
+          {
+            en: "A filter that removes everything can never be defeated by a substance it was not built to recognise. Extracting named wastes would need a specific carrier for each one, and the body would then be helpless against any novel drug, plant toxin or metabolite for which no carrier had evolved. Filtering by size alone and reclaiming what is wanted turns the problem the other way round: the kidney needs recognition machinery only for the short list of things worth keeping — glucose, amino acids, sodium, bicarbonate — and anything unrecognised is discarded by default. The enormous filtration rate is what makes it fast, and the fine control of the last stretch is what lets the same organ produce a small dark urine in a desert and a large pale one after two litres of water",
+            hi: "जो छलनी सब कुछ हटा देती है उसे ऐसा पदार्थ कभी नहीं हरा सकता जिसे पहचानने के लिए वह बनी ही नहीं थी। नामित अपशिष्ट निकालने के लिए हर एक का अपना वाहक चाहिए होता, और तब शरीर किसी भी नई औषधि, वनस्पति-विष या उपापचयज के सामने असहाय होता जिसके लिए कोई वाहक विकसित न हुआ हो। केवल आकार से छानना और जो चाहिए उसे वापस लेना समस्या को उलट देता है: वृक्क को पहचानने की मशीनरी केवल रखने लायक़ चीज़ों की छोटी सूची के लिए चाहिए — ग्लूकोस, अमीनो अम्ल, सोडियम, बाइकार्बोनेट — और जो न पहचाना जाए वह स्वतः फेंक दिया जाता है। विशाल निस्यंदन दर ही उसे तेज़ बनाती है, और अंतिम हिस्से का बारीक नियंत्रण ही उसी अंग को मरुस्थल में थोड़ा गाढ़ा मूत्र और दो लीटर पानी के बाद अधिक और फीका मूत्र बनाने देता है",
+            mr: "जी चाळणी सारे काढून टाकते तिला असा पदार्थ कधीच हरवू शकत नाही ज्याला ओळखण्यासाठी ती बांधलीच नव्हती. नामनिर्देशित टाकाऊ पदार्थ काढण्यासाठी प्रत्येकाला स्वतःचे वाहक लागले असते, आणि मग शरीर कोणत्याही नव्या औषधासमोर, वनस्पती-विषासमोर वा चयापचयजासमोर असहाय झाले असते ज्यासाठी कोणतेच वाहक उत्क्रांत झाले नाही. केवळ आकाराने गाळणे आणि जे हवे ते परत घेणे अडचण उलटवते: मूत्रपिंडाला ओळखण्याची यंत्रणा केवळ ठेवण्याजोग्या गोष्टींच्या छोट्या यादीसाठी लागते — ग्लुकोज, अमिनो आम्ले, सोडियम, बायकार्बोनेट — आणि जे ओळखले जात नाही ते आपोआप फेकले जाते. प्रचंड गाळण-दरच त्याला वेगवान करतो, आणि शेवटच्या टप्प्याचे बारीक नियंत्रणच त्याच अवयवाला वाळवंटात थोडे गडद मूत्र आणि दोन लिटर पाण्यानंतर अधिक व फिकट मूत्र बनवू देते",
+          },
+          {
+            en: "The high filtration rate exists only because the kidney needs to keep itself washed clean, and the reabsorption is simply a way of returning the water used for that washing",
+            hi: "ऊँची निस्यंदन दर केवल इसलिए है कि वृक्क को स्वयं को धुला रखना है, और पुनरवशोषण बस उस धुलाई में काम आया जल लौटाने का तरीक़ा है",
+            mr: "उच्च गाळण-दर केवळ यासाठी की मूत्रपिंडाला स्वतःला धुतलेले ठेवायचे आहे, आणि पुनःशोषण म्हणजे फक्त त्या धुण्यात वापरलेले पाणी परत करण्याची पद्धत",
+          },
+          {
+            en: "The kidney does select at the glomerulus, holding back glucose and amino acids from the start, and the reabsorption stage only recovers water, so the objection is based on a false premise about the filtrate",
+            hi: "वृक्क केशिकागुच्छ पर चुनाव करता ही है, शुरू से ही ग्लूकोस और अमीनो अम्ल रोक लेता है, और पुनरवशोषण चरण केवल जल वापस लेता है, अतः आपत्ति निस्यंद के बारे में झूठे परिसर पर टिकी है",
+            mr: "मूत्रपिंड केशिकागुच्छावर निवड करतेच, सुरुवातीपासूनच ग्लुकोज आणि अमिनो आम्ले अडवते, आणि पुनःशोषण टप्पा केवळ पाणी परत घेतो, म्हणून आक्षेप गाळण्याबद्दलच्या खोट्या गृहीतकावर उभा आहे",
+          },
+          {
+            en: "Reabsorption costs almost no energy because everything moves back down its own gradient, so the arrangement is wasteful in appearance only and there is no design question to answer",
+            hi: "पुनरवशोषण में लगभग कोई ऊर्जा नहीं लगती क्योंकि सब कुछ अपनी ही प्रवणता पर वापस बहता है, अतः व्यवस्था केवल दिखने में फ़िज़ूल है और बनावट का कोई प्रश्न बचता ही नहीं",
+            mr: "पुनःशोषणात जवळपास कोणतीही ऊर्जा लागत नाही कारण सारे आपल्याच प्रवणतेवर परत वाहते, म्हणून व्यवस्था केवळ दिसण्यापुरती फुकट आहे आणि रचनेचा प्रश्नच उरत नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The objection is a good one and it deserves the full answer rather than a dismissal, because the design really does look perverse until you ask what the alternative would have to cope with. THE NUMBERS FIRST, so nobody argues about them. The glomeruli filter about 125 mL a minute, which is 180 litres a day. Urine output is about 1.5 litres. So roughly 178.5 litres are reabsorbed, and the tubules use a large share of the body's resting energy budget doing it — the kidneys are around half a per cent of body weight and take something like a tenth of the oxygen. That is exactly as extravagant as the student says. THE ALTERNATIVE HE PROPOSES. A secretory kidney would need a transporter that recognises each waste and pumps it out of the blood. Some organisms do work partly this way. But every transporter has to be specified by a gene, and a gene can only exist for a molecule the lineage has already met. Consider what the blood actually contains today: the breakdown products of medicines, food additives, plant alkaloids from a new crop, industrial compounds nobody encountered a century ago. No carrier has evolved for any of them. A purely selective kidney would leave all of them circulating. WHY FILTERING EVERYTHING SOLVES THIS. Discard by default, keep by exception. The membrane sorts by size, which is a property every small molecule has whether the body has met it before or not, so a novel compound is removed on its first pass without anything having to recognise it. The recognition machinery is then needed only for the short and ancient list of things worth keeping — glucose, amino acids, sodium, bicarbonate, most of the water — which has hardly changed in hundreds of millions of years and can be encoded once. This is why the kidney is the organ that clears most drugs, and why doctors adjust doses when it is failing. THE SECOND ADVANTAGE is control, and it is what the student's design could not deliver at all. Because the whole plasma volume passes through many times a day, the body can adjust the composition of blood quickly and in fine steps simply by changing how much of the filtrate it takes back. Antidiuretic hormone alters water recovery in the collecting duct; aldosterone alters sodium; the loop's salt gradient stands ready so the change can be made without rebuilding anything. That is how the same organ produces a small volume of dark urine in a desert and a large volume of pale urine after two litres of water, within the hour. A selective extractor could remove wastes but would have no comparable handle on water, salt or acidity. The general lesson is worth keeping past this chapter: when a biological arrangement looks wasteful, ask what failure mode it is buying insurance against. Here the premium is energy and the policy covers every poison the species has not yet met. (The second answer invents a self-washing function the kidney does not have; the third is factually wrong about the filtrate, which does contain glucose and amino acids; and the fourth denies the energy cost, which is measurable and large — active transport against a gradient is exactly what the proximal tubule's mitochondria are for.)",
+          hi: "आपत्ति अच्छी है और उसे झिड़कने के बजाय पूरा उत्तर मिलना चाहिए, क्योंकि बनावट सचमुच उलटी लगती है जब तक तुम यह न पूछो कि विकल्प को झेलना क्या पड़ता। पहले संख्याएँ, ताकि उन पर कोई बहस न हो। केशिकागुच्छ लगभग 125 mL प्रति मिनट छानते हैं, जो दिन में 180 लीटर है। मूत्र लगभग 1.5 लीटर निकलता है। अतः मोटे तौर पर 178.5 लीटर पुनरवशोषित होता है, और नलिकाएँ यह करने में शरीर के विश्राम-ऊर्जा बजट का बड़ा हिस्सा ख़र्च करती हैं — वृक्क शरीर भार का लगभग आधा प्रतिशत हैं और ऑक्सीजन का लगभग दसवाँ हिस्सा लेते हैं। यह ठीक उतना ही फ़िज़ूलख़र्च है जितना विद्यार्थी कहता है। वह जो विकल्प सुझाता है। स्रावी वृक्क को ऐसा वाहक चाहिए होता जो हर अपशिष्ट को पहचाने और उसे रक्त से बाहर पंप करे। कुछ जीव आंशिक रूप से ऐसे ही काम करते हैं। पर हर वाहक को किसी जीन से बताया जाना पड़ता है, और जीन केवल उस अणु के लिए हो सकता है जिससे वंशक्रम पहले मिल चुका हो। आज रक्त में वस्तुतः क्या है सोचो: औषधियों के अपघटन उत्पाद, खाद्य योजक, किसी नई फ़सल के वनस्पति क्षाराभ, ऐसे औद्योगिक यौगिक जिनसे सदी भर पहले कोई मिला ही नहीं था। उनमें से किसी के लिए कोई वाहक विकसित नहीं हुआ। विशुद्ध चयनात्मक वृक्क उन सबको घूमता छोड़ देता। सब कुछ छानना इसे कैसे हल करता है। स्वतः फेंको, अपवाद से रखो। झिल्ली आकार से छाँटती है, और आकार वह गुण है जो हर छोटे अणु में है, चाहे शरीर उससे पहले मिला हो या नहीं, अतः नया यौगिक पहले ही चक्कर में हट जाता है बिना किसी के उसे पहचाने। तब पहचानने की मशीनरी केवल रखने लायक़ चीज़ों की छोटी और प्राचीन सूची के लिए चाहिए — ग्लूकोस, अमीनो अम्ल, सोडियम, बाइकार्बोनेट, अधिकांश जल — जो करोड़ों वर्षों में मुश्किल से बदली है और एक बार कूटबद्ध की जा सकती है। इसीलिए वृक्क वही अंग है जो अधिकांश औषधियाँ निकालता है, और इसीलिए उसके विफल होने पर चिकित्सक मात्रा बदल देते हैं। दूसरा लाभ नियंत्रण है, और विद्यार्थी की बनावट वह दे ही नहीं सकती थी। चूँकि पूरा प्लाज़्मा आयतन दिन में कई बार गुज़रता है, शरीर रक्त की संरचना जल्दी और बारीक चरणों में बदल सकता है, केवल यह बदलकर कि निस्यंद का कितना हिस्सा वापस लेना है। प्रतिमूत्रल हॉर्मोन संग्रह नलिका में जल-वसूली बदलता है; एल्डोस्टीरोन सोडियम बदलता है; पाश की लवण-प्रवणता तैयार खड़ी है ताकि बदलाव बिना कुछ फिर से बनाए हो सके। इसी से वही अंग मरुस्थल में थोड़ी मात्रा में गाढ़ा मूत्र और दो लीटर पानी के बाद बड़ी मात्रा में फीका मूत्र बनाता है, उसी घंटे में। चयनात्मक निष्कर्षक अपशिष्ट तो हटा लेता पर जल, लवण या अम्लता पर उसकी वैसी कोई पकड़ न होती। सामान्य सीख इस अध्याय से आगे भी रखने योग्य है: जब कोई जैविक व्यवस्था फ़िज़ूल लगे, पूछो कि वह किस विफलता के विरुद्ध बीमा ख़रीद रही है। यहाँ प्रीमियम ऊर्जा है और पॉलिसी हर उस विष को ढाँपती है जिससे जाति अभी मिली ही नहीं। (दूसरा उत्तर स्वयं-धुलाई का ऐसा काम गढ़ता है जो वृक्क का है ही नहीं; तीसरा निस्यंद के बारे में तथ्यतः ग़लत है, जिसमें ग्लूकोस और अमीनो अम्ल होते ही हैं; और चौथा ऊर्जा-लागत से इनकार करता है, जो मापी जा सकती है और बड़ी है — प्रवणता के विरुद्ध सक्रिय परिवहन ही समीपस्थ नलिका की सूत्रकणिकाओं का प्रयोजन है।)",
+          mr: "आक्षेप चांगला आहे आणि त्याला झिडकारण्याऐवजी पूर्ण उत्तर मिळायला हवे, कारण रचना खरोखर उलटी वाटते जोवर तुम्ही हे विचारत नाही की पर्यायाला सहन काय करावे लागले असते. आधी आकडे, म्हणजे त्यांवर वाद नको. केशिकागुच्छ सुमारे 125 mL प्रति मिनिट गाळतात, जे दिवसाला 180 लिटर. मूत्र सुमारे 1.5 लिटर निघते. म्हणून ढोबळमानाने 178.5 लिटर पुनःशोषले जाते, आणि नलिका हे करण्यात शरीराच्या विश्रांती-ऊर्जा अंदाजपत्रकाचा मोठा भाग खर्चतात — मूत्रपिंडे शरीरवजनाच्या सुमारे अर्धा टक्का आहेत आणि प्राणवायूचा सुमारे दशांश घेतात. हे नेमके तितकेच उधळपट्टीचे आहे जितके विद्यार्थी म्हणतो. तो जो पर्याय सुचवतो. स्रावी मूत्रपिंडाला असे वाहक लागले असते जे प्रत्येक टाकाऊ पदार्थ ओळखेल आणि तो रक्तातून बाहेर पंप करेल. काही जीव अंशतः असेच काम करतात. पण प्रत्येक वाहक एखाद्या जनुकाने सांगावे लागते, आणि जनुक केवळ त्याच रेणूसाठी असू शकते ज्याच्याशी वंशावळ आधीच भेटली आहे. आज रक्तात प्रत्यक्षात काय आहे याचा विचार करा: औषधांची विघटन-उत्पादने, अन्न-मिश्रके, एखाद्या नव्या पिकातली वनस्पती-क्षाराभे, अशी औद्योगिक संयुगे ज्यांच्याशी शतकभरापूर्वी कोणी भेटलेच नव्हते. त्यांपैकी कोणासाठीही वाहक उत्क्रांत झालेले नाही. निव्वळ निवडक मूत्रपिंडाने त्या सर्वांना फिरत ठेवले असते. सारे गाळणे हे कसे सोडवते. आपोआप फेका, अपवादाने ठेवा. पटल आकाराने वेगळे करते, आणि आकार हा तो गुणधर्म जो प्रत्येक लहान रेणूत असतो, शरीर त्याला आधी भेटले असो वा नसो, म्हणून नवे संयुग पहिल्याच फेऱ्यात काढले जाते कोणी त्याला ओळखल्याविनाच. मग ओळखण्याची यंत्रणा केवळ ठेवण्याजोग्या गोष्टींच्या छोट्या आणि प्राचीन यादीसाठी लागते — ग्लुकोज, अमिनो आम्ले, सोडियम, बायकार्बोनेट, बहुतांश पाणी — जी कोट्यवधी वर्षांत जेमतेम बदलली आहे आणि एकदाच संकेतबद्ध करता येते. म्हणूनच मूत्रपिंड हाच तो अवयव जो बहुतांश औषधे बाहेर काढतो, आणि म्हणूनच ते निकामी होताच वैद्य मात्रा बदलतात. दुसरा फायदा म्हणजे नियंत्रण, आणि विद्यार्थ्याची रचना ते देऊच शकली नसती. अख्खे प्लाझ्मा आकारमान दिवसातून अनेकदा जात असल्याने, शरीर रक्ताची रचना झटपट आणि बारीक पायऱ्यांत बदलू शकते, केवळ गाळण्याचा किती भाग परत घ्यायचा हे बदलून. प्रतिमूत्रल संप्रेरक संग्राहक नलिकेतली पाणी-वसुली बदलते; अल्डोस्टेरॉन सोडियम बदलते; फासाची क्षार-प्रवणता तयार उभी असते जेणेकरून बदल काहीही पुन्हा न बांधता व्हावा. यातूनच तोच अवयव वाळवंटात थोड्या प्रमाणात गडद मूत्र आणि दोन लिटर पाण्यानंतर मोठ्या प्रमाणात फिकट मूत्र बनवतो, त्याच तासात. निवडक निष्कर्षकाने टाकाऊ पदार्थ काढले असते पण पाणी, क्षार वा आम्लतेवर त्याची तशी पकड नसती. सामान्य धडा या प्रकरणापुढेही ठेवण्याजोगा: जेव्हा एखादी जैविक व्यवस्था फुकट वाटेल, तेव्हा विचारा की ती कोणत्या अपयशाविरुद्ध विमा घेते आहे. इथे हप्ता म्हणजे ऊर्जा आणि पॉलिसी प्रत्येक त्या विषाला झाकते ज्याला ती जात अजून भेटलीच नाही. (दुसरे उत्तर स्वतःला धुण्याचे असे काम रचते जे मूत्रपिंडाचे नाहीच; तिसरे गाळण्याबद्दल तथ्यतः चुकीचे आहे, ज्यात ग्लुकोज आणि अमिनो आम्ले असतातच; आणि चौथे ऊर्जा-किंमत नाकारते, जी मोजता येते आणि मोठी आहे — प्रवणतेविरुद्ध सक्रिय वहन हाच समीपस्थ नलिकेच्या तंतुकणिकांचा हेतू आहे.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A man with untreated diabetes is passing large volumes of urine, is constantly thirsty however much he drinks, and is losing weight. A laboratory finds glucose in his urine. A student says the kidney must have been damaged, since a healthy kidney never lets glucose escape. Trace the actual chain from a raised blood sugar to a full bladder, and say whether the kidney is at fault.",
+          hi: "अनुपचारित मधुमेह वाला व्यक्ति बड़ी मात्रा में मूत्र निकाल रहा है, कितना भी पिए लगातार प्यासा है, और भार खो रहा है। प्रयोगशाला उसके मूत्र में ग्लूकोस पाती है। विद्यार्थी कहता है कि वृक्क अवश्य क्षतिग्रस्त हुआ होगा, क्योंकि स्वस्थ वृक्क ग्लूकोस को कभी नहीं निकलने देता। बढ़ी हुई रक्त शर्करा से भरे मूत्राशय तक की असली शृंखला बताओ, और कहो कि दोष वृक्क का है या नहीं।",
+          mr: "उपचार न झालेल्या मधुमेह असलेला माणूस मोठ्या प्रमाणात मूत्र बाहेर टाकतो आहे, कितीही प्याला तरी सतत तहानलेला आहे, आणि वजन गमावतो आहे. प्रयोगशाळेला त्याच्या मूत्रात ग्लुकोज सापडते. विद्यार्थी म्हणतो की मूत्रपिंड नक्कीच खराब झाले असेल, कारण निरोगी मूत्रपिंड ग्लुकोज कधीच निसटू देत नाही. वाढलेल्या रक्तशर्करेपासून भरलेल्या मूत्राशयापर्यंतची खरी साखळी सांगा, आणि मूत्रपिंडाचा दोष आहे का ते सांगा.",
+        },
+        choices: [
+          {
+            en: "The kidney is working exactly as designed and is being overwhelmed rather than damaged. Glucose is filtered freely at the glomerulus in everybody; it never appears in urine only because the proximal tubule reabsorbs all of it. But those carriers have a ceiling, and once blood glucose rises past about 180 mg per 100 mL the filtered load exceeds what they can move, so the surplus runs on down the tubule. Glucose left in the tubular fluid holds water there by osmosis and prevents its reabsorption, which is why the urine volume rises — an osmotic diuresis. The water lost is water taken from the body, so the blood becomes concentrated, the thirst centre responds, and he drinks and passes it again. The weight loss is separate: without insulin the tissues cannot take up glucose and burn fat and protein instead",
+            hi: "वृक्क ठीक अपनी बनावट के अनुसार काम कर रहा है और क्षतिग्रस्त नहीं, अभिभूत हो रहा है। ग्लूकोस हर किसी में केशिकागुच्छ पर खुलकर छाना जाता है; वह मूत्र में केवल इसलिए नहीं दिखता कि समीपस्थ नलिका उसे पूरा पुनरवशोषित कर लेती है। पर उन वाहकों की एक छत है, और रक्त शर्करा लगभग 180 mg प्रति 100 mL से ऊपर चढ़ते ही छाना गया भार उतना हो जाता है जितना वे हिला नहीं सकते, अतः अतिरिक्त नलिका में आगे बह जाता है। नलिका-द्रव में बचा ग्लूकोस परासरण से जल वहीं रोक लेता है और उसका पुनरवशोषण नहीं होने देता, इसीलिए मूत्र का आयतन बढ़ता है — यही परासरणी मूत्रलता है। जो जल खोया वह शरीर से लिया गया जल है, अतः रक्त सांद्र हो जाता है, प्यास-केंद्र अनुक्रिया करता है, और वह पीता है और फिर निकाल देता है। भार का घटना अलग बात है: इंसुलिन बिना ऊतक ग्लूकोस ले नहीं पाते और उसकी जगह वसा तथा प्रोटीन जलाते हैं",
+            mr: "मूत्रपिंड नेमके आपल्या रचनेप्रमाणे काम करते आहे आणि खराब झालेले नाही, भारावलेले आहे. ग्लुकोज प्रत्येकात केशिकागुच्छावर मोकळेपणी गाळले जाते; ते मूत्रात केवळ यासाठी दिसत नाही की समीपस्थ नलिका ते पूर्ण पुनःशोषून घेते. पण त्या वाहकांना छत आहे, आणि रक्तशर्करा सुमारे 180 mg प्रति 100 mL वर चढताच गाळलेला भार ते हलवू शकतील त्याहून अधिक होतो, म्हणून अतिरिक्त नलिकेत पुढे वाहते. नलिका-द्रवात उरलेले ग्लुकोज परासरणाने पाणी तिथेच धरून ठेवते आणि त्याचे पुनःशोषण होऊ देत नाही, म्हणूनच मूत्राचे आकारमान वाढते — हीच परासरणी मूत्रलता. जे पाणी गमावले ते शरीरातून घेतलेले पाणी, म्हणून रक्त संहत होते, तहान-केंद्र प्रतिसाद देते, आणि तो पितो व पुन्हा बाहेर टाकतो. वजन घटणे ही वेगळी गोष्ट: इन्शुलिनविना ऊती ग्लुकोज घेऊ शकत नाहीत आणि त्याऐवजी मेद व प्रथिने जाळतात",
+          },
+          {
+            en: "The kidney is indeed damaged: high blood sugar destroys the filtration membrane, which then leaks glucose directly into the filtrate, and the large urine volume is simply the leak itself",
+            hi: "वृक्क सचमुच क्षतिग्रस्त है: ऊँची रक्त शर्करा निस्यंदन झिल्ली को नष्ट कर देती है, जो फिर ग्लूकोस सीधे निस्यंद में रिसा देती है, और मूत्र का बड़ा आयतन बस वही रिसाव है",
+            mr: "मूत्रपिंड खरोखर खराब झाले आहे: उच्च रक्तशर्करा गाळण-पटल नष्ट करते, जे मग ग्लुकोज थेट गाळण्यात झिरपवते, आणि मूत्राचे मोठे आकारमान म्हणजे तीच गळती",
+          },
+          {
+            en: "The thirst comes first: for reasons unconnected with the kidney the patient drinks excessively, the extra water dilutes his blood, and the kidney is simply removing the surplus, with the glucose carried out passively along with it",
+            hi: "प्यास पहले आती है: वृक्क से असंबद्ध कारणों से रोगी अत्यधिक पीता है, अतिरिक्त जल उसका रक्त तनु कर देता है, और वृक्क बस अतिरिक्त हटा रहा है, और ग्लूकोस उसके साथ निष्क्रिय रूप से बह जाता है",
+            mr: "तहान आधी येते: मूत्रपिंडाशी असंबंधित कारणांनी रुग्ण अतिरेकी पितो, अतिरिक्त पाणी त्याचे रक्त विरळ करते, आणि मूत्रपिंड फक्त अतिरिक्त काढते आहे, आणि ग्लुकोज त्याच्यासोबत निष्क्रियपणे वाहून जाते",
+          },
+          {
+            en: "Glucose is normally too large to be filtered at all, and it appears in the urine only because it is actively secreted into the tubule when the blood level is high, which is the body deliberately discarding the excess",
+            hi: "ग्लूकोस सामान्यतः छाने जाने के लिए बहुत बड़ा है, और वह मूत्र में केवल इसलिए दिखता है कि रक्त स्तर ऊँचा होने पर उसे सक्रिय रूप से नलिका में स्रवित किया जाता है, और यह शरीर का जानबूझकर अतिरिक्त फेंकना है",
+            mr: "ग्लुकोज सामान्यतः गाळले जाण्यासाठी फार मोठे आहे, आणि ते मूत्रात केवळ यासाठी दिसते की रक्तपातळी उच्च झाल्यावर ते सक्रियपणे नलिकेत स्रवले जाते, आणि हे शरीराने मुद्दाम अतिरिक्त फेकणे आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The student's premise sounds right and contains a hidden error: a healthy kidney does not keep glucose out of the filtrate, it takes glucose back after filtering it. Once that is corrected the whole chain follows without any damage being needed. STEP ONE — filtration. Glucose is a small molecule and the glomerular membrane sorts only by size, so every molecule of glucose in the plasma enters the filtrate, in a healthy person as much as a diabetic one. Roughly 180 litres of filtrate a day carries a great deal of sugar into the tubule. STEP TWO — recovery, and its ceiling. The proximal tubule carries glucose back across the wall using a carrier that moves it together with sodium. Carriers are proteins present in finite numbers, so they have a maximum rate — the transport maximum. Below it, recovery is complete and no glucose reaches the urine at all. Above it, the surplus simply is not picked up. The corresponding blood concentration, around 180 mg per 100 mL, is called the renal threshold, and a healthy person's blood glucose never approaches it. An untreated diabetic's does, several times a day. Note carefully what this means: glucose in the urine is evidence about the BLOOD, not about the kidney. STEP THREE — why the volume rises. This is the part worth understanding rather than memorising. Glucose left in the tubular fluid is osmotically active: it holds water in the tubule and opposes the reabsorption that would normally occur along the rest of the nephron. Water that should have gone back into the blood goes on down to the bladder instead. That is an osmotic diuresis, and it is the same physics a doctor uses deliberately when giving mannitol to draw fluid out of a swollen brain. STEP FOUR — the thirst. The water leaving in the urine is water taken from the body, so plasma becomes concentrated. Osmoreceptors in the hypothalamus detect the rise, thirst is triggered, and antidiuretic hormone is released — but ADH cannot win against an osmotic load in the tubule, so he drinks and passes it again. The thirst is a consequence of the water loss, not its cause; getting that direction right is the whole point of the question. STEP FIVE — the weight loss, which belongs to a different mechanism. Without effective insulin, muscle and fat cannot take up the circulating glucose, so the tissues are starving in the middle of plenty and burn fat and protein instead. Sugar is being lost in the urine as well, taking its energy with it. Hence a patient who is eating, drinking and losing weight at the same time. So the answer to the direct question: the kidney is behaving impeccably and is being presented with a load no kidney was built for. It is worth adding that sustained diabetes eventually DOES damage the kidney — the glomerular capillaries are among its main casualties — but that is a slow complication of years, not the mechanism of the symptoms here. (The second answer confuses a late complication with the immediate cause; the third reverses cause and effect between thirst and water loss; and the fourth is wrong about both filtration, since glucose is freely filtered, and secretion, which does not occur for glucose.)",
+          hi: "विद्यार्थी का परिसर सही लगता है और उसमें छिपी भूल है: स्वस्थ वृक्क ग्लूकोस को निस्यंद से बाहर नहीं रखता, वह उसे छानने के बाद वापस ले लेता है। यह सुधरते ही पूरी शृंखला बिना किसी क्षति की ज़रूरत के चली आती है। पहला चरण — छनाई। ग्लूकोस छोटा अणु है और केशिकागुच्छीय झिल्ली केवल आकार से छाँटती है, अतः प्लाज़्मा का हर ग्लूकोस अणु निस्यंद में घुसता है, स्वस्थ व्यक्ति में भी उतना ही जितना मधुमेही में। दिन के लगभग 180 लीटर निस्यंद के साथ बहुत सारी शर्करा नलिका में जाती है। दूसरा चरण — वसूली, और उसकी छत। समीपस्थ नलिका ग्लूकोस को भित्ति के पार उस वाहक से वापस लाती है जो उसे सोडियम के साथ ले जाता है। वाहक सीमित संख्या में मौजूद प्रोटीन हैं, अतः उनकी एक अधिकतम दर है — परिवहन अधिकतम। उससे नीचे वसूली पूरी होती है और ग्लूकोस मूत्र तक पहुँचता ही नहीं। उससे ऊपर अतिरिक्त बस उठाया ही नहीं जाता। उससे मेल खाती रक्त सांद्रता, लगभग 180 mg प्रति 100 mL, वृक्कीय देहली कहलाती है, और स्वस्थ व्यक्ति की रक्त शर्करा उसके पास कभी नहीं पहुँचती। अनुपचारित मधुमेही की दिन में कई बार पहुँचती है। ध्यान से देखो इसका अर्थ: मूत्र में ग्लूकोस रक्त के बारे में प्रमाण है, वृक्क के बारे में नहीं। तीसरा चरण — आयतन क्यों बढ़ता है। यही हिस्सा रटने के बजाय समझने योग्य है। नलिका-द्रव में बचा ग्लूकोस परासरणी रूप से सक्रिय है: वह जल को नलिका में रोके रखता है और उस पुनरवशोषण का विरोध करता है जो सामान्यतः बाक़ी वृक्काणु में होता। जो जल रक्त में लौटना चाहिए था वह इसके बजाय मूत्राशय तक चला जाता है। यही परासरणी मूत्रलता है, और यही भौतिकी चिकित्सक जानबूझकर काम में लेता है जब सूजे मस्तिष्क से द्रव खींचने को मैनिटॉल देता है। चौथा चरण — प्यास। मूत्र में जाता जल शरीर से लिया गया जल है, अतः प्लाज़्मा सांद्र हो जाता है। हाइपोथैलेमस के परासरण-ग्राही वह बढ़त भाँप लेते हैं, प्यास छिड़ती है, और प्रतिमूत्रल हॉर्मोन छूटता है — पर नलिका के परासरणी भार के सामने ADH जीत नहीं सकता, अतः वह पीता है और फिर निकाल देता है। प्यास जल-हानि का परिणाम है, उसका कारण नहीं; यही दिशा ठीक पकड़ना पूरे प्रश्न का प्रयोजन है। पाँचवाँ चरण — भार का घटना, जो दूसरे तंत्र का है। प्रभावी इंसुलिन बिना पेशी और वसा घूमता ग्लूकोस ले नहीं सकतीं, अतः ऊतक भरे-पूरे के बीच भूखे हैं और उसकी जगह वसा तथा प्रोटीन जलाते हैं। शर्करा मूत्र में भी खो रही है, अपनी ऊर्जा साथ ले जाती हुई। इसीलिए ऐसा रोगी जो खा रहा है, पी रहा है और साथ ही भार खो रहा है। अतः सीधे प्रश्न का उत्तर: वृक्क निर्दोष व्यवहार कर रहा है और उसके सामने ऐसा भार रखा गया है जिसके लिए कोई वृक्क बना ही नहीं था। यह जोड़ना उचित है कि टिकाऊ मधुमेह अंततः वृक्क को क्षति पहुँचाता ही है — केशिकागुच्छ की केशिकाएँ उसकी मुख्य शिकार हैं — पर वह वर्षों की धीमी जटिलता है, यहाँ के लक्षणों का तंत्र नहीं। (दूसरा उत्तर पिछड़ी जटिलता को तात्कालिक कारण समझ बैठता है; तीसरा प्यास और जल-हानि के बीच कारण-कार्य उलट देता है; और चौथा छनाई के बारे में भी ग़लत है, क्योंकि ग्लूकोस खुलकर छाना जाता है, और स्राव के बारे में भी, जो ग्लूकोस के लिए होता ही नहीं।)",
+          mr: "विद्यार्थ्याचे गृहीतक बरोबर वाटते आणि त्यात लपलेली चूक आहे: निरोगी मूत्रपिंड ग्लुकोजला गाळण्याबाहेर ठेवत नाही, ते गाळल्यानंतर परत घेते. हे दुरुस्त होताच अख्खी साखळी कोणत्याही इजेची गरज न पडता येते. पहिली पायरी — गाळण. ग्लुकोज हा लहान रेणू आणि केशिकागुच्छ पटल केवळ आकाराने वेगळे करते, म्हणून प्लाझ्मातला प्रत्येक ग्लुकोज रेणू गाळण्यात शिरतो, निरोगी व्यक्तीतही मधुमेह्याइतकाच. दिवसाच्या सुमारे 180 लिटर गाळण्यासोबत भरपूर शर्करा नलिकेत जाते. दुसरी पायरी — वसुली, आणि तिचे छत. समीपस्थ नलिका ग्लुकोज भिंतीपलीकडे त्या वाहकाने परत आणते जे त्याला सोडियमसोबत नेते. वाहक ही मर्यादित संख्येत असलेली प्रथिने आहेत, म्हणून त्यांना कमाल दर आहे — वहन कमाल. त्याखाली वसुली पूर्ण होते आणि ग्लुकोज मूत्रापर्यंत पोहोचतच नाही. त्यावर अतिरिक्त फक्त उचललेच जात नाही. त्याच्याशी जुळणारी रक्तसंहती, सुमारे 180 mg प्रति 100 mL, वृक्कीय उंबरठा म्हणतात, आणि निरोगी व्यक्तीची रक्तशर्करा तिच्याजवळ कधीच पोहोचत नाही. उपचार न झालेल्या मधुमेह्याची दिवसातून अनेकदा पोहोचते. नीट पाहा याचा अर्थ: मूत्रातले ग्लुकोज हा रक्ताबद्दलचा पुरावा आहे, मूत्रपिंडाबद्दलचा नव्हे. तिसरी पायरी — आकारमान का वाढते. हाच भाग पाठ करण्याऐवजी समजण्याजोगा. नलिका-द्रवात उरलेले ग्लुकोज परासरणीदृष्ट्या सक्रिय आहे: ते पाणी नलिकेत धरून ठेवते आणि उरलेल्या वृक्काणूत सामान्यतः होणाऱ्या पुनःशोषणाला विरोध करते. जे पाणी रक्तात परतायला हवे होते ते त्याऐवजी मूत्राशयापर्यंत जाते. हीच परासरणी मूत्रलता, आणि तेच भौतिकशास्त्र वैद्य मुद्दाम वापरतो जेव्हा सुजलेल्या मेंदूतून द्रव ओढण्यास मॅनिटॉल देतो. चौथी पायरी — तहान. मूत्रात जाणारे पाणी हे शरीरातून घेतलेले पाणी, म्हणून प्लाझ्मा संहत होते. हायपोथॅलमसमधले परासरण-ग्राही ती वाढ टिपतात, तहान चेतवली जाते, आणि प्रतिमूत्रल संप्रेरक सुटते — पण नलिकेतल्या परासरणी भारापुढे ADH जिंकू शकत नाही, म्हणून तो पितो आणि पुन्हा बाहेर टाकतो. तहान हा पाणी-हानीचा परिणाम आहे, तिचे कारण नव्हे; तीच दिशा नीट पकडणे हा अख्ख्या प्रश्नाचा हेतू. पाचवी पायरी — वजन घटणे, जे वेगळ्या यंत्रणेचे. प्रभावी इन्शुलिनविना स्नायू आणि मेद फिरणारे ग्लुकोज घेऊ शकत नाहीत, म्हणून ऊती भरल्या घरात उपाशी आहेत आणि त्याऐवजी मेद व प्रथिने जाळतात. शर्करा मूत्रातूनही हरवते आहे, आपली ऊर्जा सोबत नेत. म्हणूनच असा रुग्ण जो खातो आहे, पितो आहे आणि तरीही वजन गमावतो आहे. म्हणून थेट प्रश्नाचे उत्तर: मूत्रपिंड निर्दोष वागते आहे आणि त्याच्यापुढे असा भार ठेवला आहे ज्यासाठी कोणतेच मूत्रपिंड बांधलेच नव्हते. हे जोडणे योग्य की दीर्घकाळचा मधुमेह अखेर मूत्रपिंडाला इजा करतोच — केशिकागुच्छाच्या केशवाहिन्या त्याच्या मुख्य बळींपैकी — पण ती वर्षांची संथ गुंतागुंत आहे, इथल्या लक्षणांची यंत्रणा नव्हे. (दुसरे उत्तर उशिराच्या गुंतागुंतीला तात्कालिक कारण समजते; तिसरे तहान आणि पाणी-हानी यांच्यातले कारण-कार्य उलटवते; आणि चौथे गाळणीबद्दलही चुकीचे, कारण ग्लुकोज मोकळेपणी गाळले जाते, आणि स्रावाबद्दलही, जो ग्लुकोजसाठी होतच नाही.)",
+        },
+      },
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 17 — Locomotion and Movement                                    */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "biology-11-locomotion-and-movement",
+    subject: "BIOLOGY",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 17 — Locomotion and Movement",
+      hi: "अध्याय 17 — गमन एवं संचलन",
+      mr: "प्रकरण 17 — गमन आणि हालचाल",
+    },
+    name: {
+      en: "Pulling, and Never Pushing",
+      hi: "खींचना, और कभी न धकेलना",
+      mr: "ओढणे, आणि कधीच न ढकलणे",
+    },
+    summary: {
+      en: "A muscle has exactly one move available to it — it can shorten — and every posture, gesture and stride in an animal's repertoire has to be built out of that single verb, which is why muscles come in pairs and why a skeleton is a set of levers rather than a frame. Inside the fibre nothing gets shorter either: two sets of filaments slide past one another, a calcium ion uncovers the place where they grip, and the energy is spent letting go rather than holding on.",
+      hi: "पेशी के पास ठीक एक ही चाल है — वह छोटी हो सकती है — और किसी प्राणी की मुद्रा, संकेत और चाल का पूरा भंडार उसी एक क्रिया से गढ़ना पड़ता है, इसीलिए पेशियाँ जोड़ों में आती हैं और इसीलिए कंकाल ढाँचा नहीं, उत्तोलकों का समुच्चय है। तंतु के भीतर भी कुछ छोटा नहीं होता: तंतुकों के दो समुच्चय एक-दूसरे के पास से सरकते हैं, कैल्शियम का एक आयन वह स्थान खोलता है जहाँ वे पकड़ते हैं, और ऊर्जा पकड़े रहने में नहीं, छोड़ने में ख़र्च होती है।",
+      mr: "स्नायूकडे नेमकी एकच चाल आहे — तो आखडू शकतो — आणि एखाद्या प्राण्याच्या पवित्र्यांचा, खुणांचा आणि चालीचा अख्खा साठा त्याच एका क्रियापदातून घडवावा लागतो, म्हणूनच स्नायू जोडीने येतात आणि म्हणूनच सांगाडा ही चौकट नव्हे तर तरफांचा संच आहे. तंतूच्या आतही काही आखडत नाही: तंतुकांचे दोन संच एकमेकांशेजारून सरकतात, कॅल्शियमचा एक आयन ते जिथे पकडतात ती जागा उघडतो, आणि ऊर्जा धरून ठेवण्यात नव्हे, सोडण्यात खर्च होते.",
+    },
+    position: 17,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "movement-that-takes-you-somewhere",
+        name: {
+          en: "Movement that takes you somewhere, and movement that does not",
+          hi: "वह हलचल जो तुम्हें कहीं ले जाए, और वह जो नहीं",
+          mr: "तुम्हाला कुठेतरी नेणारी हालचाल, आणि न नेणारी",
+        },
+        kind: "definition",
+        prompt: {
+          en: "The lining of your windpipe sweeps mucus upward all day, a white blood cell flows out through a capillary wall, and your jaw chews — three unmistakable movements, and not one of them changes where the body is. What distinction does this force?",
+          hi: "तुम्हारी श्वासनली की परत दिन भर श्लेष्म ऊपर की ओर बुहारती है, श्वेत रक्त कोशिका केशिका भित्ति से बाहर बहती है, और तुम्हारा जबड़ा चबाता है — तीन निर्विवाद हलचलें, और उनमें से एक भी यह नहीं बदलती कि शरीर कहाँ है। यह कौन-सा भेद ज़रूरी बनाता है?",
+          mr: "तुमच्या श्वासनलिकेचे अस्तर दिवसभर श्लेष्मा वर झाडते, श्वेतपेशी केशवाहिनीच्या भिंतीतून बाहेर वाहते, आणि तुमचा जबडा चावतो — तीन निर्विवाद हालचाली, आणि त्यांपैकी एकही शरीर कुठे आहे हे बदलत नाही. हा कोणता फरक अटळ करतो?",
+        },
+        statement: {
+          en: "All locomotion is movement but not all movement is locomotion, because locomotion is specifically a change in the position of the whole body from one place to another.",
+          hi: "हर गमन हलचल है पर हर हलचल गमन नहीं, क्योंकि गमन विशेष रूप से पूरे शरीर का एक स्थान से दूसरे स्थान पर जाना है।",
+          mr: "प्रत्येक गमन ही हालचाल आहे पण प्रत्येक हालचाल गमन नाही, कारण गमन म्हणजे विशेषत्वाने अख्ख्या शरीराचे एका जागेवरून दुसऱ्या जागी जाणे.",
+        },
+        detail: {
+          en: "Animals achieve it in three ways — by flowing, by beating hair-like projections, and by muscle pulling on something stiff — and the third is what a skeleton exists to serve.",
+          hi: "प्राणी उसे तीन तरीक़ों से साधते हैं — बहकर, बाल जैसे उभारों को हिलाकर, और किसी कड़ी चीज़ पर पेशी खींचकर — और तीसरे के लिए ही कंकाल होता है।",
+          mr: "प्राणी ते तीन प्रकारे साधतात — वाहून, केसासारखी उभारे हलवून, आणि एखाद्या कठीण गोष्टीवर स्नायू ओढून — आणि तिसऱ्यासाठीच सांगाडा असतो.",
+        },
+        extra: {
+          en: "The purpose is never movement for its own sake: an animal moves to find food, escape a predator, reach a mate or leave a place that has become unlivable.",
+          hi: "प्रयोजन कभी हलचल स्वयं नहीं होता: प्राणी भोजन ढूँढ़ने, परभक्षी से बचने, साथी तक पहुँचने या ऐसी जगह छोड़ने के लिए चलता है जो रहने लायक़ नहीं बची।",
+          mr: "हेतू कधीच हालचाल स्वतःसाठी नसतो: प्राणी अन्न शोधण्यासाठी, भक्षकापासून सुटण्यासाठी, जोडीदारापर्यंत पोहोचण्यासाठी वा राहण्यायोग्य न उरलेली जागा सोडण्यासाठी हलतो.",
+        },
+        pair: {
+          left: {
+            en: "A white blood cell leaves a capillary without the body going anywhere",
+            hi: "श्वेत रक्त कोशिका केशिका छोड़ती है और शरीर कहीं नहीं जाता",
+            mr: "श्वेतपेशी केशवाहिनी सोडते आणि शरीर कुठेच जात नाही",
+          },
+          right: {
+            en: "movement that takes you somewhere, and movement that does not",
+            hi: "वह हलचल जो तुम्हें कहीं ले जाए, और वह जो नहीं",
+            mr: "तुम्हाला कुठेतरी नेणारी हालचाल, आणि न नेणारी",
+          },
+        },
+      },
+      {
+        id: "the-stripe-that-never-changes-length",
+        name: {
+          en: "The stripe that never changes its length",
+          hi: "वह धारी जिसकी लंबाई कभी नहीं बदलती",
+          mr: "जिची लांबी कधीच बदलत नाही ती पट्टी",
+        },
+        kind: "mechanism",
+        prompt: {
+          en: "Watch a contracting fibre under a microscope and one dark band stays exactly as wide as it was, while the pale band beside it and the pale zone in its own middle both narrow. What does that observation prove about how shortening happens?",
+          hi: "सूक्ष्मदर्शी के नीचे सिकुड़ते तंतु को देखो और एक गहरी पट्टी ठीक उतनी ही चौड़ी रहती है जितनी थी, जबकि उसके बगल की हल्की पट्टी और उसी के बीच का हल्का क्षेत्र दोनों सँकरे हो जाते हैं। यह प्रेक्षण सिकुड़ने के तरीक़े के बारे में क्या सिद्ध करता है?",
+          mr: "सूक्ष्मदर्शकाखाली आकुंचन पावणारा तंतू पाहा आणि एक गडद पट्टा नेमका तितकाच रुंद राहतो जितका होता, तर त्याशेजारचा फिकट पट्टा आणि त्याच्याच मध्यातला फिकट भाग दोन्ही अरुंद होतात. हे निरीक्षण आकुंचन कसे घडते याबद्दल काय सिद्ध करते?",
+        },
+        statement: {
+          en: "Muscle shortens by the sliding filament mechanism: the thin filaments are pulled inward past the thick ones, so no filament changes length and only the distance between the ends changes.",
+          hi: "पेशी सर्पी तंतुक तंत्र से छोटी होती है: पतले तंतुक मोटे तंतुकों के पास से भीतर खींचे जाते हैं, अतः कोई तंतुक अपनी लंबाई नहीं बदलता और केवल सिरों के बीच की दूरी बदलती है।",
+          mr: "स्नायू सरकत्या तंतुक यंत्रणेने आखडतो: पातळ तंतुक जाड तंतुकांशेजारून आत ओढले जातात, म्हणून कोणताही तंतुक आपली लांबी बदलत नाही आणि केवळ टोकांमधले अंतर बदलते.",
+        },
+        detail: {
+          en: "The dark band's constant width is the whole evidence: it is made of thick filaments, and if shortening involved anything folding or coiling that band would have to narrow too.",
+          hi: "गहरी पट्टी की अपरिवर्तित चौड़ाई ही पूरा प्रमाण है: वह मोटे तंतुकों से बनी है, और यदि सिकुड़ने में कुछ मुड़ता या कुंडलित होता तो उस पट्टी को भी सँकरा होना पड़ता।",
+          mr: "गडद पट्ट्याची अपरिवर्तित रुंदी हाच अख्खा पुरावा: तो जाड तंतुकांचा बनलेला आहे, आणि आकुंचनात काही दुमडत वा वेटोळे घालत असते तर तो पट्टाही अरुंद व्हावा लागला असता.",
+        },
+        extra: {
+          en: "The unit that does all this is the length between two Z lines, and a single fibre is thousands of them end to end, so tiny individual movements add up to a visible pull.",
+          hi: "यह सब करने वाली इकाई दो Z रेखाओं के बीच की लंबाई है, और एक तंतु ऐसी हज़ारों इकाइयों की क़तार है, अतः नन्ही-नन्ही हलचलें जुड़कर दिखने वाला खिंचाव बन जाती हैं।",
+          mr: "हे सारे करणारे एकक म्हणजे दोन Z रेषांमधली लांबी, आणि एक तंतू अशा हजारो एककांची रांग आहे, म्हणून चिमुकल्या हालचाली जुळून दिसणारी ओढ बनतात.",
+        },
+        pair: {
+          left: {
+            en: "Thousands of tiny units in a row add up to a visible pull",
+            hi: "क़तार में हज़ारों नन्ही इकाइयाँ जुड़कर दिखने वाला खिंचाव बनाती हैं",
+            mr: "रांगेतली हजारो चिमुकली एकके जुळून दिसणारी ओढ बनतात",
+          },
+          right: {
+            en: "the stripe that never changes its length",
+            hi: "वह धारी जिसकी लंबाई कभी नहीं बदलती",
+            mr: "जिची लांबी कधीच बदलत नाही ती पट्टी",
+          },
+        },
+      },
+      {
+        id: "the-switch-a-calcium-ion-throws",
+        name: {
+          en: "The switch that a single ion throws",
+          hi: "वह स्विच जिसे एक अकेला आयन दबाता है",
+          mr: "एकच आयन दाबतो तो कळ",
+        },
+        kind: "mechanism",
+        prompt: {
+          en: "The two sets of filaments lie beside each other all day without gripping, because the place where one would hold the other is covered over. What uncovers it, and where does it come from?",
+          hi: "तंतुकों के दोनों समुच्चय दिन भर बिना पकड़े एक-दूसरे के बगल पड़े रहते हैं, क्योंकि जहाँ एक दूसरे को पकड़ता वह जगह ढकी हुई है। उसे खोलता कौन है, और वह आता कहाँ से है?",
+          mr: "तंतुकांचे दोन्ही संच दिवसभर न पकडता एकमेकांशेजारी पडून राहतात, कारण जिथे एक दुसऱ्याला धरेल ती जागा झाकलेली आहे. ती उघडते कोण, आणि ते येते कुठून?",
+        },
+        statement: {
+          en: "Calcium released from the sarcoplasmic reticulum binds troponin, which shifts tropomyosin off the binding sites on the thin filament and lets the cross-bridges attach.",
+          hi: "पेशीद्रव्यी जालिका से छूटा कैल्शियम ट्रोपोनिन से बँधता है, जो ट्रोपोमायोसिन को पतले तंतुक की बंधन-स्थलियों से हटा देता है और अनुप्रस्थ सेतुओं को जुड़ने देता है।",
+          mr: "स्नायुद्रव्यी जालिकेतून सुटलेले कॅल्शियम ट्रोपोनिनला बांधते, जे ट्रोपोमायोसिनला पातळ तंतुकावरील बंधन-स्थळांवरून हटवते आणि आडव्या पुलांना जुळू देते.",
+        },
+        detail: {
+          en: "The signal arrives as an electrical impulse that travels down infoldings of the membrane into the depth of the fibre, so the release happens everywhere at once rather than spreading in from the surface.",
+          hi: "संकेत विद्युत आवेग बनकर आता है जो झिल्ली की भीतरी तहों से होकर तंतु की गहराई तक जाता है, अतः निर्मुक्ति हर जगह एक साथ होती है, सतह से भीतर फैलते हुए नहीं।",
+          mr: "संकेत विद्युत आवेग बनून येतो जो पटलाच्या आतल्या घड्यांतून तंतूच्या खोलीपर्यंत जातो, म्हणून मुक्ती सर्वत्र एकाच वेळी घडते, पृष्ठभागापासून आत पसरत नव्हे.",
+        },
+        extra: {
+          en: "Relaxation is not passive either: the calcium has to be pumped back into store against its gradient, which costs ATP just as contraction does.",
+          hi: "शिथिलन भी निष्क्रिय नहीं: कैल्शियम को उसकी प्रवणता के विरुद्ध भंडार में वापस पंप करना पड़ता है, जिसमें उतना ही ATP लगता है जितना संकुचन में।",
+          mr: "शिथिलनही निष्क्रिय नाही: कॅल्शियम त्याच्या प्रवणतेविरुद्ध साठ्यात परत पंप करावे लागते, ज्यात आकुंचनाइतकेच ATP लागते.",
+        },
+        pair: {
+          left: {
+            en: "Relaxing costs ATP just as contracting does",
+            hi: "शिथिल होने में भी उतना ही ATP लगता है जितना सिकुड़ने में",
+            mr: "शिथिल होण्यातही आकुंचनाइतकेच ATP लागते",
+          },
+          right: {
+            en: "the switch that a single ion throws",
+            hi: "वह स्विच जिसे एक अकेला आयन दबाता है",
+            mr: "एकच आयन दाबतो तो कळ",
+          },
+        },
+      },
+      {
+        id: "the-pair-that-must-pull-in-turns",
+        name: {
+          en: "The pair that has to pull in turns",
+          hi: "वह जोड़ी जिसे बारी-बारी खींचना पड़ता है",
+          mr: "आळीपाळीने ओढावे लागणारी ती जोडी",
+        },
+        kind: "arrangement",
+        prompt: {
+          en: "A muscle has one verb available to it and no other; it cannot lengthen itself, cannot push, and cannot put a bone back where it came from. What arrangement solves that?",
+          hi: "पेशी के पास एक ही क्रिया है और दूसरी कोई नहीं; वह स्वयं को लंबा नहीं कर सकती, धकेल नहीं सकती, और किसी हड्डी को वापस वहीं नहीं रख सकती जहाँ से वह आई। इसे कौन-सी व्यवस्था हल करती है?",
+          mr: "स्नायूकडे एकच क्रियापद आहे आणि दुसरे कोणतेच नाही; तो स्वतःला लांब करू शकत नाही, ढकलू शकत नाही, आणि एखादे हाड जिथून आले तिथे परत ठेवू शकत नाही. हे कोणती व्यवस्था सोडवते?",
+        },
+        statement: {
+          en: "Skeletal muscles work in antagonistic pairs across a joint, because a muscle can only pull, so one member must contract to reverse what the other did.",
+          hi: "कंकाल पेशियाँ किसी संधि के आर-पार विरोधी जोड़ियों में काम करती हैं, क्योंकि पेशी केवल खींच सकती है, अतः एक सदस्य को सिकुड़कर वह पलटना पड़ता है जो दूसरे ने किया।",
+          mr: "सांगाडा-स्नायू एखाद्या सांध्यापलीकडे विरोधी जोड्यांत काम करतात, कारण स्नायू केवळ ओढू शकतो, म्हणून एका सदस्याला आकुंचन पावून दुसऱ्याने केलेले उलटवावे लागते.",
+        },
+        detail: {
+          en: "The two are wired so that one relaxes as the other contracts, and a failure of that coordination is what a cramp or a spasm is.",
+          hi: "दोनों ऐसे जुड़े हैं कि एक सिकुड़े तो दूसरा ढीला पड़े, और उस समन्वय की विफलता ही ऐंठन या मरोड़ है।",
+          mr: "दोन्ही अशी जोडलेली की एक आकुंचन पावताच दुसरा सैल पडावा, आणि त्या समन्वयाचे अपयश म्हणजेच पेटका वा आचका.",
+        },
+        extra: {
+          en: "The same logic explains why a muscle crosses a joint at all: it must be attached on both sides of the hinge, or contracting it would move nothing.",
+          hi: "यही तर्क समझाता है कि पेशी संधि के आर-पार जाती ही क्यों है: उसे कब्ज़े के दोनों ओर जुड़ा होना पड़ता है, वरना उसका सिकुड़ना कुछ हिलाता ही नहीं।",
+          mr: "हाच तर्क समजावतो की स्नायू सांध्यापलीकडे जातोच का: त्याला बिजागरीच्या दोन्ही बाजूंना जोडलेले असावे लागते, नाहीतर त्याचे आकुंचन काहीच हलवणार नाही.",
+        },
+        pair: {
+          left: {
+            en: "Attach it on one side only and contracting moves nothing",
+            hi: "उसे केवल एक ओर जोड़ो और सिकुड़ना कुछ नहीं हिलाता",
+            mr: "त्याला केवळ एका बाजूला जोडा आणि आकुंचन काहीच हलवत नाही",
+          },
+          right: {
+            en: "the pair that has to pull in turns",
+            hi: "वह जोड़ी जिसे बारी-बारी खींचना पड़ता है",
+            mr: "आळीपाळीने ओढावे लागणारी ती जोडी",
+          },
+        },
+      },
+      {
+        id: "the-joint-chosen-by-what-it-must-not-do",
+        name: {
+          en: "The joint chosen by what it must not do",
+          hi: "वह संधि जो इससे चुनी जाती है कि उसे क्या नहीं करना",
+          mr: "काय करू नये यावरून निवडलेला तो सांधा",
+        },
+        kind: "classification",
+        prompt: {
+          en: "Your shoulder can circle, your elbow can only fold, and the plates of your skull cannot move at all — and the third is not a failure but the specification. What is being classified here?",
+          hi: "तुम्हारा कंधा घूम सकता है, तुम्हारी कोहनी केवल मुड़ सकती है, और तुम्हारी खोपड़ी की पट्टियाँ बिलकुल नहीं हिल सकतीं — और तीसरी विफलता नहीं, वही माँग है। यहाँ वर्गीकृत क्या हो रहा है?",
+          mr: "तुमचा खांदा गोल फिरू शकतो, तुमची कोपर केवळ दुमडू शकते, आणि तुमच्या कवटीच्या पट्ट्या अजिबात हलू शकत नाहीत — आणि तिसरे अपयश नव्हे, तीच मागणी आहे. इथे वर्गीकरण कशाचे होते आहे?",
+        },
+        statement: {
+          en: "Joints are classified by how much movement they permit, and the amount permitted is dictated by the job: a ball and socket for freedom, a hinge for a single plane, and a fibrous joint for none at all.",
+          hi: "संधियाँ इससे वर्गीकृत होती हैं कि वे कितनी हलचल देती हैं, और कितनी दी जाए यह काम तय करता है: स्वतंत्रता के लिए कंदुक-खल्लिका, एक ही तल के लिए कब्ज़ा, और बिलकुल कोई नहीं के लिए तंतुमय संधि।",
+          mr: "सांधे किती हालचाल देतात यावरून वर्गीकृत होतात, आणि किती द्यायची हे काम ठरवते: स्वातंत्र्यासाठी उखळी सांधा, एकाच पातळीसाठी बिजागरी, आणि अजिबात नाहीसाठी तंतुमय सांधा.",
+        },
+        detail: {
+          en: "Freedom is always bought with stability, which is why the shoulder is the joint that dislocates most easily and the skull's joints never do.",
+          hi: "स्वतंत्रता सदा स्थिरता के बदले मिलती है, इसीलिए कंधा वह संधि है जो सबसे आसानी से उतरती है और खोपड़ी की संधियाँ कभी नहीं।",
+          mr: "स्वातंत्र्य नेहमी स्थैर्याच्या बदल्यात मिळते, म्हणूनच खांदा हा सर्वांत सहज निखळणारा सांधा आहे आणि कवटीचे सांधे कधीच नाहीत.",
+        },
+        extra: {
+          en: "A movable joint carries a fluid-filled cavity and a smooth cap on each bone end, and it is the wearing away of that cap rather than the bone itself that stiffens an old knee.",
+          hi: "गतिशील संधि में द्रव से भरी गुहा और हर हड्डी के सिरे पर चिकनी टोपी होती है, और बूढ़े घुटने को कड़ा हड्डी नहीं, उसी टोपी का घिसना करता है।",
+          mr: "हलणाऱ्या सांध्यात द्रवाने भरलेली पोकळी आणि प्रत्येक हाडाच्या टोकावर गुळगुळीत टोपी असते, आणि म्हातारा गुडघा ताठ करते ते हाड नव्हे, त्याच टोपीचे झिजणे.",
+        },
+        pair: {
+          left: {
+            en: "The freest joint is the one that dislocates most easily",
+            hi: "सबसे स्वतंत्र संधि ही सबसे आसानी से उतरती है",
+            mr: "सर्वांत मुक्त सांधाच सर्वांत सहज निखळतो",
+          },
+          right: {
+            en: "the joint chosen by what it must not do",
+            hi: "वह संधि जो इससे चुनी जाती है कि उसे क्या नहीं करना",
+            mr: "काय करू नये यावरून निवडलेला तो सांधा",
+          },
+        },
+      },
+      {
+        id: "why-a-dead-body-stiffens",
+        name: {
+          en: "Why a body stiffens after death",
+          hi: "मृत्यु के बाद शरीर कड़ा क्यों हो जाता है",
+          mr: "मृत्यूनंतर शरीर ताठ का होते",
+        },
+        kind: "evidence",
+        prompt: {
+          en: "Everything has stopped — no signal, no oxygen, no fuel — and yet the muscles do not go slack; they lock, and stay locked for hours before slowly letting go. What does that tell you about which step needed the energy?",
+          hi: "सब कुछ रुक चुका है — न संकेत, न ऑक्सीजन, न ईंधन — फिर भी पेशियाँ ढीली नहीं पड़तीं; वे जकड़ जाती हैं, और घंटों जकड़ी रहकर फिर धीरे-धीरे छोड़ती हैं। यह तुम्हें बताता क्या है कि ऊर्जा किस चरण को चाहिए थी?",
+          mr: "सारे थांबले आहे — ना संकेत, ना प्राणवायू, ना इंधन — तरीही स्नायू सैल पडत नाहीत; ते आवळले जातात, आणि तासन्तास आवळलेले राहून मग हळूहळू सोडतात. हे तुम्हाला काय सांगते की ऊर्जा कोणत्या पायरीला लागत होती?",
+        },
+        statement: {
+          en: "Rigor mortis shows that ATP is needed to BREAK the cross-bridge rather than to form it: without ATP the heads stay attached, and the muscle cannot release its grip.",
+          hi: "मृत्यु-कठोरता दिखाती है कि ATP अनुप्रस्थ सेतु को बनाने के लिए नहीं, तोड़ने के लिए चाहिए: ATP बिना शीर्ष जुड़े रह जाते हैं, और पेशी अपनी पकड़ छोड़ ही नहीं पाती।",
+          mr: "मृत्यू-कठिणता दाखवते की ATP आडवा पूल बांधण्यासाठी नव्हे, तोडण्यासाठी लागते: ATP विना शीर्षे जुळलेली राहतात, आणि स्नायू आपली पकड सोडूच शकत नाही.",
+        },
+        detail: {
+          en: "It is a piece of evidence rather than a curiosity, because it settles a question the sliding filament model cannot answer by inspection alone.",
+          hi: "यह कौतुक नहीं, प्रमाण का टुकड़ा है, क्योंकि यह वह प्रश्न तय कर देता है जिसका उत्तर सर्पी तंतुक मॉडल केवल देखकर नहीं दे सकता।",
+          mr: "हे कुतूहल नव्हे, पुराव्याचा तुकडा आहे, कारण ते तो प्रश्न ठरवते ज्याचे उत्तर सरकत्या तंतुक प्रतिरूपाला केवळ पाहून देता येत नाही.",
+        },
+        extra: {
+          en: "The stiffness passes off after a day or so, not because the ATP returns but because the proteins themselves begin to break down.",
+          hi: "कड़ापन एक दिन के आसपास बाद उतर जाता है, इसलिए नहीं कि ATP लौट आता है बल्कि इसलिए कि प्रोटीन स्वयं टूटने लगते हैं।",
+          mr: "ताठरपणा एका दिवसाच्या आसपास उतरतो, ATP परत येते म्हणून नव्हे तर प्रथिने स्वतःच तुटू लागतात म्हणून.",
+        },
+        pair: {
+          left: {
+            en: "The stiffness passes because the proteins break down, not because energy returns",
+            hi: "कड़ापन इसलिए उतरता है कि प्रोटीन टूटते हैं, ऊर्जा लौटती है इसलिए नहीं",
+            mr: "ताठरपणा प्रथिने तुटतात म्हणून उतरतो, ऊर्जा परतते म्हणून नव्हे",
+          },
+          right: {
+            en: "why a body stiffens after death",
+            hi: "मृत्यु के बाद शरीर कड़ा क्यों हो जाता है",
+            mr: "मृत्यूनंतर शरीर ताठ का होते",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A student reasons that since contraction requires ATP, a muscle with no ATP left must be a relaxed muscle. But a body some hours after death is rigid, not floppy — every muscle locked, and staying locked until decay sets in. The student's logic is sound and his premise is wrong. Which premise, and what does the observation actually establish?",
+          hi: "विद्यार्थी तर्क करता है कि चूँकि संकुचन को ATP चाहिए, अतः जिस पेशी में ATP न बचे वह शिथिल पेशी होगी। पर मृत्यु के कुछ घंटे बाद शरीर कड़ा होता है, लुंज-पुंज नहीं — हर पेशी जकड़ी हुई, और सड़न शुरू होने तक जकड़ी रहती। विद्यार्थी का तर्क ठीक है और उसका परिसर ग़लत। कौन-सा परिसर, और प्रेक्षण वस्तुतः स्थापित क्या करता है?",
+          mr: "विद्यार्थी तर्क करतो की आकुंचनाला ATP लागते म्हणून ज्या स्नायूत ATP उरले नाही तो शिथिल स्नायू असेल. पण मृत्यूच्या काही तासांनी शरीर ताठ असते, लोंबकळणारे नाही — प्रत्येक स्नायू आवळलेला, आणि कुजण्यास सुरुवात होईपर्यंत आवळलेलाच. विद्यार्थ्याचा तर्क बरोबर आहे आणि त्याचे गृहीतक चुकीचे. कोणते गृहीतक, आणि निरीक्षण प्रत्यक्षात काय प्रस्थापित करते?",
+        },
+        choices: [
+          {
+            en: "The false premise is that ATP is spent on gripping. It is spent on LETTING GO. A myosin head attaches to actin by itself once the site is uncovered, and the power stroke follows without further cost; what needs a fresh ATP is detaching the head so the cycle can repeat or the muscle can relax. After death the supply stops, calcium leaks out of its store and uncovers every binding site, the heads attach — and then nothing can pull them off. Relaxation therefore has two separate ATP costs, one for detaching the heads and one for pumping the calcium back into store, and a living muscle is being held loose at a price rather than resting for free",
+            hi: "झूठा परिसर यह है कि ATP पकड़ने पर ख़र्च होता है। वह छोड़ने पर ख़र्च होता है। स्थल खुलते ही मायोसिन शीर्ष स्वयं ऐक्टिन से जुड़ जाता है, और शक्ति-आघात बिना और लागत के चला आता है; नया ATP जिसे चाहिए वह है शीर्ष को अलग करना ताकि चक्र दोहराया जा सके या पेशी शिथिल हो सके। मृत्यु के बाद आपूर्ति रुक जाती है, कैल्शियम अपने भंडार से रिसकर हर बंधन-स्थली खोल देता है, शीर्ष जुड़ जाते हैं — और फिर उन्हें कोई हटा नहीं सकता। अतः शिथिलन की दो अलग ATP लागतें हैं, एक शीर्षों को अलग करने की और एक कैल्शियम को भंडार में वापस पंप करने की, और जीवित पेशी मुफ़्त में विश्राम नहीं कर रही, वह क़ीमत चुकाकर ढीली रखी जा रही है",
+            mr: "खोटे गृहीतक हे की ATP पकडण्यावर खर्च होते. ते सोडण्यावर खर्च होते. स्थळ उघडताच मायोसिन शीर्ष स्वतःच अ‍ॅक्टिनला जुळते, आणि शक्ती-आघात आणखी किंमतीविना येतो; नवे ATP ज्याला लागते ते म्हणजे शीर्ष वेगळे करणे जेणेकरून चक्र पुन्हा होईल वा स्नायू शिथिल होईल. मृत्यूनंतर पुरवठा थांबतो, कॅल्शियम आपल्या साठ्यातून झिरपून प्रत्येक बंधन-स्थळ उघडते, शीर्षे जुळतात — आणि मग त्यांना कोणीही काढू शकत नाही. म्हणून शिथिलनाच्या दोन वेगळ्या ATP किंमती आहेत, एक शीर्षे वेगळी करण्याची आणि एक कॅल्शियम साठ्यात परत पंप करण्याची, आणि जिवंत स्नायू फुकट विश्रांती घेत नाही, तो किंमत भरून सैल ठेवला जातो",
+          },
+          {
+            en: "The stiffness is not muscular at all: it is the joints seizing as their fluid dries out after circulation stops, and the muscles themselves are perfectly relaxed underneath",
+            hi: "कड़ापन पेशीय है ही नहीं: परिसंचरण रुकने के बाद संधियों का द्रव सूखने से वे जकड़ जाती हैं, और पेशियाँ नीचे भलीभाँति शिथिल हैं",
+            mr: "ताठरपणा स्नायूंचा नाहीच: अभिसरण थांबल्यावर सांध्यांचा द्रव आटल्याने ते आवळतात, आणि स्नायू खाली उत्तम शिथिल आहेत",
+          },
+          {
+            en: "Both premises are right and the rigidity comes from a last surge of ATP made by fermentation after death, which drives one final contraction that is never reversed",
+            hi: "दोनों परिसर सही हैं और कड़ापन मृत्यु के बाद किण्वन से बने ATP की आख़िरी लहर से आता है, जो एक अंतिम संकुचन चलाती है जो कभी पलटा नहीं जाता",
+            mr: "दोन्ही गृहीतके बरोबर आहेत आणि ताठरपणा मृत्यूनंतर किण्वनाने बनलेल्या ATP च्या शेवटच्या लाटेतून येतो, जी एक अंतिम आकुंचन चालवते जे कधीच उलटवले जात नाही",
+          },
+          {
+            en: "The cross-bridges need ATP to attach, exactly as the student says, and rigor happens because calcium cannot be pumped back, so the tropomyosin stays off the binding sites and the filaments jam without ever gripping",
+            hi: "अनुप्रस्थ सेतुओं को जुड़ने के लिए ATP चाहिए, ठीक जैसा विद्यार्थी कहता है, और कठोरता इसलिए होती है कि कैल्शियम वापस पंप नहीं हो पाता, अतः ट्रोपोमायोसिन बंधन-स्थलियों से हटा रह जाता है और तंतुक बिना पकड़े ही अटक जाते हैं",
+            mr: "आडव्या पुलांना जुळण्यासाठी ATP लागते, नेमके विद्यार्थी म्हणतो तसे, आणि कठिणता यासाठी की कॅल्शियम परत पंप होऊ शकत नाही, म्हणून ट्रोपोमायोसिन बंधन-स्थळांवरून हटलेले राहते आणि तंतुक न पकडताच अडकतात",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "This is one of the cleanest examples in physiology of a natural experiment settling a question that a diagram cannot. Take the cross-bridge cycle a step at a time and watch where ATP actually enters. STEP ONE, attachment. With calcium present and tropomyosin shifted aside, a myosin head binds actin spontaneously. Binding is favourable and needs nothing supplied. STEP TWO, the power stroke. The head pivots and drags the thin filament inward. The energy for this was already stored in the head — it was charged earlier by splitting ATP, and it is now spending that charge, not fresh fuel. STEP THREE, detachment. This is the step that requires a NEW molecule of ATP to bind the head. Without it, the head simply stays where it is. STEP FOUR, recharging. The bound ATP is split, the head cocks back, and it is ready to attach again. Now apply death. Circulation stops, oxygen stops, ATP production stops within minutes. Two things then happen. The membranes of the sarcoplasmic reticulum lose their integrity and calcium leaks out into the fibre, uncovering every binding site in the body at once. And there is no ATP to detach anything. So every head that can attach does attach, and none can let go. The result is the whole musculature locked in contraction — rigor mortis — and it persists for a day or so until the proteins themselves begin to break down. Read the conclusion carefully, because it inverts what most people assume: a relaxed living muscle is not a muscle at rest, it is a muscle actively being kept unattached at a continuous cost. There are two separate ATP bills for relaxation — one to detach the heads and one to pump calcium back into store against its gradient — and both must be paid every moment. Being loose is expensive; being rigid is what happens when you stop paying. The practical extensions are worth a line each. Forensic scientists use the timing of rigor to estimate time of death, and know to correct for temperature and for whether the person was exerting themselves, since a body whose muscles had already used up their ATP stiffens sooner. A butcher hangs meat to let rigor pass before it is sold, because meat cut and cooked in rigor is tough. And a cramp is a smaller version of the same failure — a local shortage in an overworked muscle that leaves it unable to release. (The second answer relocates the stiffness to the joints, which is contradicted by the fact that isolated muscle stiffens too; the third invents a post-mortem ATP surge, and in any case extra ATP would relax the muscle rather than lock it; and the fourth reverses the role of ATP and then contradicts itself, since tropomyosin shifted off the sites is the condition for gripping, not for failing to grip.)",
+          hi: "यह शरीरक्रिया के उन सबसे साफ़ उदाहरणों में है जहाँ एक प्राकृतिक प्रयोग वह प्रश्न तय कर देता है जो कोई चित्र नहीं कर सकता। अनुप्रस्थ सेतु चक्र को एक-एक चरण लो और देखो कि ATP वस्तुतः घुसता कहाँ है। पहला चरण, जुड़ाव। कैल्शियम मौजूद और ट्रोपोमायोसिन हटा हो तो मायोसिन शीर्ष ऐक्टिन से स्वतः बँध जाता है। बंधन अनुकूल है और उसे कुछ दिया जाना नहीं पड़ता। दूसरा चरण, शक्ति-आघात। शीर्ष घूमकर पतले तंतुक को भीतर घसीटता है। इसकी ऊर्जा शीर्ष में पहले से जमा थी — उसे पहले ATP तोड़कर आवेशित किया गया था, और अब वह उसी आवेश को ख़र्च कर रहा है, नया ईंधन नहीं। तीसरा चरण, अलगाव। यही वह चरण है जिसे शीर्ष से बँधने को ATP का नया अणु चाहिए। उसके बिना शीर्ष बस वहीं का वहीं रह जाता है। चौथा चरण, फिर से आवेशन। बँधा ATP तोड़ा जाता है, शीर्ष पीछे खिंच जाता है, और फिर जुड़ने को तैयार है। अब मृत्यु लगाओ। परिसंचरण रुकता है, ऑक्सीजन रुकती है, ATP का बनना मिनटों में रुक जाता है। तब दो बातें होती हैं। पेशीद्रव्यी जालिका की झिल्लियाँ अपनी अखंडता खो देती हैं और कैल्शियम रिसकर तंतु में आ जाता है, और शरीर की हर बंधन-स्थली एक साथ खुल जाती है। और अलग करने को कोई ATP नहीं। अतः जो शीर्ष जुड़ सकता है वह जुड़ जाता है, और कोई छोड़ नहीं सकता। परिणाम पूरी पेशी-व्यवस्था का संकुचन में जकड़ जाना है — मृत्यु-कठोरता — और वह एक दिन के आसपास तक बनी रहती है जब तक प्रोटीन स्वयं टूटने न लगें। निष्कर्ष ध्यान से पढ़ो, क्योंकि वह अधिकांश लोगों की मान्यता उलट देता है: शिथिल जीवित पेशी विश्राम करती पेशी नहीं, वह ऐसी पेशी है जिसे लगातार क़ीमत चुकाकर सक्रिय रूप से अ-जुड़ा रखा जा रहा है। शिथिलन के दो अलग ATP बिल हैं — एक शीर्षों को अलग करने का और एक कैल्शियम को प्रवणता के विरुद्ध भंडार में वापस पंप करने का — और दोनों हर क्षण चुकाने पड़ते हैं। ढीला रहना महँगा है; कड़ा हो जाना वही है जो चुकाना बंद करने पर होता है। व्यावहारिक विस्तार एक-एक पंक्ति के योग्य हैं। न्यायालयिक वैज्ञानिक मृत्यु का समय आँकने को कठोरता के समय का उपयोग करते हैं, और जानते हैं कि तापमान के लिए और इसके लिए सुधार करना है कि व्यक्ति परिश्रम कर रहा था या नहीं, क्योंकि जिस शरीर की पेशियाँ अपना ATP पहले ही चुका चुकी थीं वह जल्दी कड़ा होता है। क़साई माँस को टाँगकर कठोरता उतरने देता है और तब बेचता है, क्योंकि कठोरता में काटा और पकाया माँस कड़ा रहता है। और ऐंठन उसी विफलता का छोटा रूप है — अति-परिश्रम की गई पेशी में स्थानीय कमी जो उसे छोड़ने में असमर्थ छोड़ देती है। (दूसरा उत्तर कड़ेपन को संधियों पर सरका देता है, जिसका खंडन इस तथ्य से होता है कि अलग की गई पेशी भी कड़ी होती है; तीसरा मृत्यु-पश्चात ATP की लहर गढ़ता है, और वैसे भी अतिरिक्त ATP पेशी को जकड़ने के बजाय शिथिल करता; और चौथा ATP की भूमिका उलटकर फिर स्वयं का खंडन करता है, क्योंकि स्थलियों से हटा ट्रोपोमायोसिन पकड़ने की शर्त है, न पकड़ पाने की नहीं।)",
+          mr: "हे शरीरक्रियेतल्या त्या सर्वांत स्वच्छ उदाहरणांपैकी एक जिथे एक नैसर्गिक प्रयोग तो प्रश्न ठरवतो जो कोणतेही चित्र ठरवू शकत नाही. आडव्या पुलाचे चक्र एकेक पायरी घ्या आणि पाहा की ATP प्रत्यक्षात शिरते कुठे. पहिली पायरी, जुळणी. कॅल्शियम हजर आणि ट्रोपोमायोसिन बाजूला सरकलेले असल्यास मायोसिन शीर्ष अ‍ॅक्टिनला आपोआप बांधले जाते. बंधन अनुकूल आहे आणि त्याला काही पुरवावे लागत नाही. दुसरी पायरी, शक्ती-आघात. शीर्ष वळून पातळ तंतुक आत ओढते. याची ऊर्जा शीर्षात आधीच साठली होती — त्याला आधी ATP तोडून भारित केले होते, आणि आता तो तोच भार खर्चतो आहे, नवे इंधन नव्हे. तिसरी पायरी, वेगळे होणे. हीच ती पायरी जिला शीर्षाशी बांधण्यासाठी ATP चा नवा रेणू लागतो. त्याविना शीर्ष फक्त जिथल्या तिथे राहते. चौथी पायरी, पुन्हा भारण. बांधलेले ATP तोडले जाते, शीर्ष मागे ओढले जाते, आणि पुन्हा जुळायला तयार. आता मृत्यू लावा. अभिसरण थांबते, प्राणवायू थांबतो, ATP बनणे मिनिटांत थांबते. मग दोन गोष्टी घडतात. स्नायुद्रव्यी जालिकेची पटले आपली अखंडता गमावतात आणि कॅल्शियम झिरपून तंतूत येते, आणि शरीरातले प्रत्येक बंधन-स्थळ एकाच वेळी उघडते. आणि वेगळे करायला कोणतेही ATP नाही. म्हणून जे शीर्ष जुळू शकते ते जुळते, आणि कोणीही सोडू शकत नाही. परिणाम म्हणजे अख्खी स्नायुव्यवस्था आकुंचनात आवळणे — मृत्यू-कठिणता — आणि ती एका दिवसाच्या आसपास टिकते जोवर प्रथिने स्वतःच तुटू लागत नाहीत. निष्कर्ष नीट वाचा, कारण तो बहुतेकांच्या गृहीतकाला उलटवतो: शिथिल जिवंत स्नायू म्हणजे विश्रांती घेणारा स्नायू नव्हे, तो असा स्नायू आहे ज्याला सतत किंमत भरून सक्रियपणे न-जुळलेला ठेवला जातो. शिथिलनाची दोन वेगळी ATP बिले आहेत — एक शीर्षे वेगळी करण्याचे आणि एक कॅल्शियम प्रवणतेविरुद्ध साठ्यात परत पंप करण्याचे — आणि दोन्ही प्रत्येक क्षणी भरावी लागतात. सैल राहणे महाग आहे; ताठ होणे हेच घडते जेव्हा तुम्ही भरणे थांबवता. व्यावहारिक विस्तार प्रत्येकी एका ओळीच्या लायकीचे. न्यायवैद्यक शास्त्रज्ञ मृत्यूची वेळ अंदाजण्यास कठिणतेच्या वेळेचा वापर करतात, आणि जाणतात की तापमानासाठी आणि व्यक्ती श्रम करत होती का यासाठी दुरुस्ती करावी लागते, कारण ज्या शरीराच्या स्नायूंनी आपले ATP आधीच संपवले होते ते लवकर ताठ होते. खाटीक मांस टांगून कठिणता उतरू देतो आणि मग विकतो, कारण कठिणतेत कापलेले आणि शिजवलेले मांस चिवट राहते. आणि पेटका हे त्याच अपयशाचे लहान रूप — अतिश्रम झालेल्या स्नायूतली स्थानिक कमतरता जी त्याला सोडण्यास असमर्थ ठेवते. (दुसरे उत्तर ताठरपणा सांध्यांवर सरकवते, ज्याचे खंडन या वस्तुस्थितीने होते की वेगळा केलेला स्नायूही ताठ होतो; तिसरे मृत्यूनंतरची ATP लाट रचते, आणि तसेही अधिकचे ATP स्नायूला आवळण्याऐवजी शिथिल केले असते; आणि चौथे ATP ची भूमिका उलटवून मग स्वतःचेच खंडन करते, कारण स्थळांवरून हटलेले ट्रोपोमायोसिन ही पकडण्याची अट आहे, न पकडता येण्याची नव्हे.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The biceps attaches to the forearm only about 5 cm from the elbow, while a weight held in the hand sits some 30 cm away. To hold 4 kg the muscle must therefore generate a force equivalent to about 24 kg — six times the load. A student calls this a design flaw and says the tendon should obviously have been attached further along the forearm. What is he failing to see?",
+          hi: "द्विशिर पेशी अग्रबाहु से कोहनी से केवल लगभग 5 cm दूर जुड़ती है, जबकि हाथ में पकड़ा भार लगभग 30 cm दूर बैठता है। अतः 4 kg थामने के लिए पेशी को लगभग 24 kg के बराबर बल बनाना पड़ता है — भार से छह गुना। विद्यार्थी इसे बनावट की भूल कहता है और कहता है कि कंडरा स्पष्टतः अग्रबाहु पर और आगे जुड़ी होनी चाहिए थी। वह देख क्या नहीं पा रहा?",
+          mr: "द्विशिर स्नायू अग्रबाहूला कोपरापासून केवळ सुमारे 5 cm अंतरावर जोडला जातो, तर हातात धरलेले वजन सुमारे 30 cm दूर बसते. म्हणून 4 kg धरण्यासाठी स्नायूला सुमारे 24 kg इतके बल निर्माण करावे लागते — भाराच्या सहापट. विद्यार्थी याला रचनेतली चूक म्हणतो आणि म्हणतो की कंडरा स्पष्टपणे अग्रबाहूवर आणखी पुढे जोडलेली असायला हवी होती. त्याला दिसत काय नाही?",
+        },
+        choices: [
+          {
+            en: "The arrangement trades force for speed and range, and that is the bargain the body wanted. Because the insertion is close to the joint, a small contraction of the muscle swings the hand through a large arc: shortening 1 cm at the tendon moves the hand about 6 cm, and moves it six times faster. Moving the attachment outward would reduce the force needed but would equally reduce how far and how fast the hand could travel for the same contraction — and a muscle can only shorten by a limited fraction of its length, so range is genuinely scarce. Animals that need force rather than speed are built the other way: a mole's forelimb has its insertion far out along the bone, and it digs powerfully and slowly",
+            hi: "यह व्यवस्था बल को गति और परास से बदल देती है, और शरीर को यही सौदा चाहिए था। चूँकि निवेशन संधि के पास है, पेशी का थोड़ा-सा संकुचन हाथ को बड़े चाप में घुमा देता है: कंडरा पर 1 cm छोटा होना हाथ को लगभग 6 cm हिलाता है, और छह गुना तेज़ हिलाता है। जुड़ाव को बाहर सरकाने से चाहिए बल घट जाता पर उतना ही घट जाता कि उसी संकुचन में हाथ कितनी दूर और कितनी तेज़ जा सकता है — और पेशी अपनी लंबाई के सीमित अंश जितनी ही छोटी हो सकती है, अतः परास सचमुच दुर्लभ है। जिन प्राणियों को गति नहीं बल चाहिए वे उलटे बने हैं: छछूँदर के अग्रपाद का निवेशन हड्डी पर कहीं बाहर है, और वह ताक़त से और धीरे खोदता है",
+            mr: "ही व्यवस्था बलाची अदलाबदल वेग आणि पल्ल्याशी करते, आणि शरीराला हाच सौदा हवा होता. निवेशन सांध्याजवळ असल्याने, स्नायूचे थोडेसे आकुंचन हाताला मोठ्या कमानीत फिरवते: कंडरेवर 1 cm आखडणे हाताला सुमारे 6 cm हलवते, आणि सहापट वेगाने हलवते. जोड बाहेर सरकवल्याने लागणारे बल घटले असते पण तितकेच घटले असते की त्याच आकुंचनात हात किती दूर आणि किती वेगाने जाऊ शकतो — आणि स्नायू आपल्या लांबीच्या मर्यादित अंशाइतकाच आखडू शकतो, म्हणून पल्ला खरोखर दुर्मिळ आहे. ज्या प्राण्यांना वेग नव्हे बल हवे ते उलटे बांधलेले आहेत: घुशीच्या पुढच्या पायाचे निवेशन हाडावर कितीतरी बाहेर आहे, आणि ती ताकदीने आणि सावकाश खणते",
+          },
+          {
+            en: "There is no trade-off to see: the six-fold figure is an arithmetic error, because the weight of the forearm cancels the disadvantage and the muscle in fact generates almost exactly the 4 kg being lifted",
+            hi: "देखने को कोई अदला-बदली है ही नहीं: छह गुने का आँकड़ा अंकगणितीय भूल है, क्योंकि अग्रबाहु का भार उस हानि को काट देता है और पेशी वस्तुतः लगभग ठीक वही 4 kg बनाती है जो उठाया जा रहा है",
+            mr: "पाहण्यासारखी कोणतीही अदलाबदल नाहीच: सहापटीचा आकडा अंकगणिती चूक आहे, कारण अग्रबाहूचे वजन ती हानी छेदते आणि स्नायू प्रत्यक्षात जवळपास नेमके तेच 4 kg निर्माण करतो जे उचलले जाते",
+          },
+          {
+            en: "The near attachment exists to protect the bone: a tendon pulling further out would snap the forearm, so the arrangement is about strength of materials rather than about force or speed",
+            hi: "पास का जुड़ाव हड्डी की रक्षा के लिए है: और बाहर खींचती कंडरा अग्रबाहु तोड़ देती, अतः व्यवस्था बल या गति की नहीं, पदार्थों की मज़बूती की बात है",
+            mr: "जवळचा जोड हाडाच्या रक्षणासाठी आहे: अधिक बाहेर ओढणारी कंडरा अग्रबाहू मोडली असती, म्हणून व्यवस्था बल वा वेगाची नव्हे, पदार्थांच्या बळकटीची बाब आहे",
+          },
+          {
+            en: "The muscle does not actually generate 24 kg of force; the joint's fluid cushion absorbs the difference, so the biceps only ever has to match the load it is holding",
+            hi: "पेशी वस्तुतः 24 kg बल बनाती ही नहीं; संधि का द्रव गद्दा अंतर सोख लेता है, अतः द्विशिर पेशी को कभी उस भार से अधिक नहीं करना पड़ता जो वह थामे है",
+            mr: "स्नायू प्रत्यक्षात 24 kg बल निर्माण करतच नाही; सांध्याची द्रव उशी फरक शोषते, म्हणून द्विशिर स्नायूला कधीही तो धरत असलेल्या भाराहून अधिक करावे लागत नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The arithmetic in the question is right and the conclusion drawn from it is wrong, which is the most useful kind of mistake to work through. Start by confirming the numbers. Taking moments about the elbow, force × distance must balance on both sides: F × 5 = 4 × 30, so F = 4 × 30/5 = 24 kg-equivalent. The biceps really is working at a six-fold mechanical disadvantage, and this is a third-class lever — effort between the fulcrum and the load — which is the commonest arrangement in the vertebrate body. WHAT THE DISADVANTAGE BUYS. Turn the lever around and look at movement instead of force. The same 5-to-30 ratio that multiplies the required force by six also multiplies the distance moved by six, and the speed with it. Shorten the biceps by 1 cm and the hand travels about 6 cm. Shorten it at 10 cm a second and the hand moves at 60 cm a second. Now note why this matters more than it first appears: a muscle can only shorten by roughly a third of its own length. Contraction distance is a hard physical limit set by the sarcomeres, and it cannot be increased by wanting it. Force, by contrast, can be increased by building a thicker muscle — more filaments in parallel — which costs food and weight but is otherwise available. So evolution is spending the cheap resource to buy the scarce one. Moving the insertion outward as the student suggests would reduce the force needed, but would shorten the hand's reach and slow it in exactly the same proportion, and no amount of extra muscle could buy that range back. THE COMPARATIVE EVIDENCE settles it, because animals that need the opposite bargain are built the opposite way. A mole or a badger, which digs, has forelimb muscles inserting far out along the bone: powerful, short-ranged, slow. A horse or a deer, which runs, has insertions crowded close to the joint and long thin limb bones: fast, long-ranged, weak in absolute force. The same skeleton, the same muscles, the ratio tuned to the job. Look at your own hand and you can read which bargain was struck — a human arm is built for reach and speed, which is why we throw well and cannot dig with our hands. The general principle is worth keeping: a lever cannot create work, only redistribute it between force and distance, so when a biological structure looks mechanically inefficient, check what it is efficient AT. (The second answer denies arithmetic that is straightforwardly correct; the third invents a bone-strength constraint that would not explain the comparative evidence, since a mole's forearm does not snap; and the fourth misunderstands what synovial fluid does, which is to reduce friction, not to absorb load.)",
+          hi: "प्रश्न का गणित ठीक है और उससे निकाला निष्कर्ष ग़लत, और यही सबसे उपयोगी क़िस्म की भूल है जिसे सुलझाना चाहिए। पहले संख्याएँ पक्की करो। कोहनी के परितः आघूर्ण लेते हुए, बल × दूरी दोनों ओर बराबर होनी चाहिए: F × 5 = 4 × 30, अतः F = 4 × 30/5 = 24 kg के तुल्य। द्विशिर पेशी सचमुच छह गुनी यांत्रिक हानि पर काम कर रही है, और यह तृतीय श्रेणी का उत्तोलक है — आलंब और भार के बीच प्रयास — जो कशेरुकी शरीर की सबसे आम व्यवस्था है। यह हानि ख़रीदती क्या है। उत्तोलक को पलटो और बल के बजाय गति देखो। वही 5 और 30 का अनुपात जो आवश्यक बल छह गुना करता है, चली गई दूरी भी छह गुनी करता है, और उसके साथ गति भी। द्विशिर पेशी को 1 cm छोटा करो और हाथ लगभग 6 cm चलता है। उसे 10 cm प्रति सेकंड की दर से छोटा करो और हाथ 60 cm प्रति सेकंड चलता है। अब देखो यह पहली नज़र से अधिक क्यों मायने रखता है: पेशी अपनी ही लंबाई के मोटे तौर पर तिहाई जितनी ही छोटी हो सकती है। संकुचन-दूरी पेशीखंडों से तय कठोर भौतिक सीमा है, और चाहने भर से नहीं बढ़ाई जा सकती। इसके उलट बल मोटी पेशी बनाकर बढ़ाया जा सकता है — समांतर में अधिक तंतुक — जिसमें भोजन और भार लगता है पर वह वैसे उपलब्ध है। अतः विकास सस्ता संसाधन ख़र्च करके दुर्लभ ख़रीद रहा है। जैसा विद्यार्थी सुझाता है वैसे निवेशन बाहर सरकाने से चाहिए बल घटता, पर हाथ की पहुँच उतने ही अनुपात में छोटी और धीमी हो जाती, और कितनी भी अतिरिक्त पेशी वह परास वापस नहीं ख़रीद सकती। तुलनात्मक प्रमाण इसे तय कर देता है, क्योंकि जिन प्राणियों को उलटा सौदा चाहिए वे उलटे बने हैं। छछूँदर या बिज्जू, जो खोदते हैं, उनकी अग्रपाद पेशियाँ हड्डी पर कहीं बाहर जुड़ती हैं: ताक़तवर, छोटी पहुँच वाली, धीमी। घोड़ा या हिरन, जो दौड़ते हैं, उनके निवेशन संधि के पास ठसे हैं और अंग-हड्डियाँ लंबी-पतली: तेज़, लंबी पहुँच वाली, निरपेक्ष बल में कमज़ोर। वही कंकाल, वही पेशियाँ, अनुपात काम के अनुसार सधा हुआ। अपने ही हाथ को देखो और तुम पढ़ सकते हो कि कौन-सा सौदा हुआ — मनुष्य की बाँह पहुँच और गति के लिए बनी है, इसीलिए हम अच्छा फेंकते हैं और हाथों से खोद नहीं सकते। सामान्य सिद्धांत रखने योग्य है: उत्तोलक कार्य बना नहीं सकता, केवल बल और दूरी के बीच बाँट सकता है, अतः जब कोई जैविक रचना यांत्रिक रूप से अकुशल लगे, जाँचो कि वह किस बात में कुशल है। (दूसरा उत्तर सीधे-सीधे सही गणित से इनकार करता है; तीसरा हड्डी की मज़बूती की ऐसी बाध्यता गढ़ता है जो तुलनात्मक प्रमाण नहीं समझाती, क्योंकि छछूँदर की अग्रबाहु टूटती नहीं; और चौथा संधि-द्रव का काम ग़लत समझता है, जो घर्षण घटाना है, भार सोखना नहीं।)",
+          mr: "प्रश्नातले गणित बरोबर आहे आणि त्यातून काढलेला निष्कर्ष चुकीचा, आणि हीच सोडवण्याजोगी सर्वांत उपयुक्त प्रकारची चूक. आधी आकडे पक्के करा. कोपराभोवती परिबल घेता, बल × अंतर दोन्ही बाजूंना समान असावे: F × 5 = 4 × 30, म्हणून F = 4 × 30/5 = 24 kg इतके. द्विशिर स्नायू खरोखर सहापट यांत्रिक तोट्यावर काम करतो आहे, आणि ही तृतीय श्रेणीची तरफ आहे — टेकू आणि भार यांच्यात प्रयत्न — जी पृष्ठवंशी शरीरातली सर्वांत सामान्य व्यवस्था. हा तोटा विकत काय घेतो. तरफ उलटवा आणि बलाऐवजी हालचाल पाहा. तेच 5 आणि 30 चे गुणोत्तर जे लागणारे बल सहापट करते, ते चाललेले अंतरही सहापट करते, आणि त्यासोबत वेगही. द्विशिर स्नायू 1 cm आखडवा आणि हात सुमारे 6 cm चालतो. त्याला 10 cm प्रति सेकंद या दराने आखडवा आणि हात 60 cm प्रति सेकंद चालतो. आता पाहा हे पहिल्या नजरेहून अधिक का महत्त्वाचे: स्नायू आपल्याच लांबीच्या ढोबळमानाने तृतीयांशाइतकाच आखडू शकतो. आकुंचन-अंतर ही स्नायुखंडांनी ठरवलेली कठोर भौतिक मर्यादा आहे, आणि इच्छेने वाढवता येत नाही. याउलट बल जाड स्नायू बांधून वाढवता येते — समांतरात अधिक तंतुक — ज्यात अन्न आणि वजन लागते पण ते एरवी उपलब्ध आहे. म्हणून उत्क्रांती स्वस्त संसाधन खर्चून दुर्मिळ विकत घेते आहे. विद्यार्थी सुचवतो तसे निवेशन बाहेर सरकवल्याने लागणारे बल घटले असते, पण हाताचा आवाका तितक्याच प्रमाणात आखूड आणि मंद झाला असता, आणि कितीही अधिकचा स्नायू तो पल्ला परत विकत घेऊ शकत नाही. तुलनात्मक पुरावा हे ठरवतो, कारण ज्या प्राण्यांना उलटा सौदा हवा ते उलटे बांधलेले आहेत. घूस वा घोरपड, जे खणतात, त्यांचे पुढच्या पायाचे स्नायू हाडावर कितीतरी बाहेर जुळतात: ताकदवान, आखूड आवाक्याचे, संथ. घोडा वा हरीण, जे धावतात, त्यांची निवेशने सांध्याजवळ दाटलेली आणि अवयव-हाडे लांब-बारीक: वेगवान, लांब आवाक्याची, निरपेक्ष बलात दुर्बळ. तोच सांगाडा, तेच स्नायू, गुणोत्तर कामानुसार जुळवलेले. स्वतःच्या हाताकडे पाहा आणि तुम्ही वाचू शकता की कोणता सौदा झाला — माणसाचा दंड आवाका आणि वेगासाठी बांधलेला आहे, म्हणूनच आपण चांगले फेकतो आणि हातांनी खणू शकत नाही. सामान्य तत्त्व ठेवण्याजोगे: तरफ काम निर्माण करू शकत नाही, केवळ बल आणि अंतर यांत वाटू शकते, म्हणून जेव्हा एखादी जैविक रचना यांत्रिकदृष्ट्या अकार्यक्षम वाटेल, तेव्हा तपासा की ती कशात कार्यक्षम आहे. (दुसरे उत्तर सरळसरळ बरोबर असलेले गणित नाकारते; तिसरे हाडाच्या बळकटीची अशी अट रचते जी तुलनात्मक पुरावा समजावत नाही, कारण घुशीचा अग्रबाहू मोडत नाही; आणि चौथे सांधे-द्रवाचे काम चुकीचे समजते, जे घर्षण कमी करणे आहे, भार शोषणे नव्हे.)",
+        },
+      },
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 18 — Neural Control and Coordination                            */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "biology-11-neural-control-and-coordination",
+    subject: "BIOLOGY",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 18 — Neural Control and Coordination",
+      hi: "अध्याय 18 — तंत्रिकीय नियंत्रण एवं समन्वय",
+      mr: "प्रकरण 18 — चेतासंस्थेचे नियंत्रण आणि समन्वय",
+    },
+    name: {
+      en: "A Message That Refuses to Get Quieter",
+      hi: "वह संदेश जो धीमा पड़ने से इनकार करता है",
+      mr: "मंद होण्यास नकार देणारा तो संदेश",
+    },
+    summary: {
+      en: "A nerve does not carry a signal the way a wire carries a current; it regenerates the same event over and over along its whole length, which is why a message arrives at your toe as loud as it left your spine. That design has consequences a pupil can work out: the signal cannot be made bigger, so strength has to be written as frequency; it cannot be sent backwards, because a gap in the middle only has senders on one side; and it can be made faster only by insulating the wire and letting the event skip.",
+      hi: "तंत्रिका संकेत को वैसे नहीं ढोती जैसे तार धारा ढोता है; वह अपनी पूरी लंबाई में उसी घटना को बार-बार दोहराती है, इसीलिए संदेश तुम्हारे पैर के अँगूठे तक उतना ही ऊँचा पहुँचता है जितना रीढ़ से चला था। उस बनावट के परिणाम विद्यार्थी स्वयं निकाल सकता है: संकेत बड़ा नहीं किया जा सकता, अतः तीव्रता को आवृत्ति के रूप में लिखना पड़ता है; उसे पीछे नहीं भेजा जा सकता, क्योंकि बीच की दरार के एक ही किनारे भेजने वाले हैं; और उसे तेज़ केवल तार को ढककर और घटना को छलाँग लगवाकर किया जा सकता है।",
+      mr: "चेता संकेत तार विद्युतप्रवाह वाहते तसा वाहत नाही; ती आपल्या अख्ख्या लांबीत तीच घटना पुन्हा पुन्हा घडवते, म्हणूनच संदेश तुमच्या पायाच्या अंगठ्यापर्यंत तितकाच मोठा पोहोचतो जितका पाठीच्या कण्यातून निघाला होता. त्या रचनेचे परिणाम विद्यार्थी स्वतः काढू शकतो: संकेत मोठा करता येत नाही, म्हणून तीव्रता वारंवारतेच्या रूपात लिहावी लागते; तो मागे पाठवता येत नाही, कारण मधल्या फटीच्या एकाच काठावर पाठवणारे आहेत; आणि तो वेगवान केवळ तार आच्छादून आणि घटनेला उडी मारायला लावूनच करता येतो.",
+    },
+    position: 18,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "the-charge-a-resting-cell-pays-to-keep",
+        name: {
+          en: "The charge a resting cell pays to keep",
+          hi: "वह आवेश जिसे विश्राम करती कोशिका क़ीमत देकर बनाए रखती है",
+          mr: "विश्रांती घेणारी पेशी किंमत भरून टिकवते तो भार",
+        },
+        kind: "mechanism",
+        prompt: {
+          en: "Nothing is happening, no message is passing, and the cell is nevertheless spending energy every second to hold the inside of itself negative with respect to the outside. What is it maintaining, and why does doing nothing cost anything?",
+          hi: "कुछ नहीं हो रहा, कोई संदेश नहीं जा रहा, और फिर भी कोशिका हर सेकंड ऊर्जा ख़र्च करके अपने भीतर को बाहर की तुलना में ऋणात्मक बनाए रखती है। वह क्या बनाए रखे है, और कुछ न करने में क़ीमत क्यों लगती है?",
+          mr: "काहीच घडत नाही, कोणताही संदेश जात नाही, आणि तरीही पेशी दर सेकंदाला ऊर्जा खर्चून आपला आतला भाग बाहेरच्या तुलनेत ऋण ठेवते. ती काय टिकवते आहे, आणि काहीच न करण्यात किंमत का लागते?",
+        },
+        statement: {
+          en: "The resting potential is a standing voltage of about minus seventy millivolts across the membrane, held there by a pump that throws three sodium ions out for every two potassium ions it brings in.",
+          hi: "विश्राम विभव झिल्ली के आर-पार लगभग ऋण सत्तर मिलीवोल्ट का खड़ा वोल्टेज है, जिसे वह पंप बनाए रखता है जो हर दो पोटैशियम आयन भीतर लाने पर तीन सोडियम आयन बाहर फेंकता है।",
+          mr: "विश्रांती विभव म्हणजे पटलापलीकडे सुमारे उणे सत्तर मिलिव्होल्टचा उभा दाब, जो तो पंप टिकवतो जो प्रत्येक दोन पोटॅशियम आयन आत आणण्यामागे तीन सोडियम आयन बाहेर फेकतो.",
+        },
+        detail: {
+          en: "The unequal exchange is what makes the pump electrogenic: more positive charge leaves than enters, so the pumping itself contributes to the negativity as well as maintaining the gradients.",
+          hi: "असमान अदला-बदली ही पंप को विद्युत्जनक बनाती है: भीतर आने से अधिक धनावेश बाहर जाता है, अतः पंप-क्रिया प्रवणताएँ बनाए रखने के साथ-साथ ऋणात्मकता में योगदान भी देती है।",
+          mr: "असमान अदलाबदलच पंपाला विद्युत्जनक बनवते: आत येण्याहून अधिक धनभार बाहेर जातो, म्हणून पंपक्रिया प्रवणता टिकवण्यासोबतच ऋणतेतही भर घालते.",
+        },
+        extra: {
+          en: "The gradient is a stored charge waiting to be spent, which is why an impulse can be fired in a fraction of a millisecond without anything having to be manufactured first.",
+          hi: "यह प्रवणता ख़र्च होने की प्रतीक्षा करता जमा आवेश है, इसीलिए आवेग मिलीसेकंड के अंश में छोड़ा जा सकता है बिना पहले कुछ बनाए।",
+          mr: "ही प्रवणता खर्च होण्याची वाट पाहणारा साठलेला भार आहे, म्हणूनच आवेग मिलिसेकंदाच्या अंशात सोडता येतो आधी काहीही न बनवता.",
+        },
+        pair: {
+          left: {
+            en: "A charge stored in advance so firing needs no manufacture",
+            hi: "पहले से जमा आवेश ताकि छोड़ने में कुछ बनाना न पड़े",
+            mr: "आधीच साठवलेला भार जेणेकरून सोडताना काही बनवावे लागू नये",
+          },
+          right: {
+            en: "the charge a resting cell pays to keep",
+            hi: "वह आवेश जिसे विश्राम करती कोशिका क़ीमत देकर बनाए रखती है",
+            mr: "विश्रांती घेणारी पेशी किंमत भरून टिकवते तो भार",
+          },
+        },
+      },
+      {
+        id: "the-signal-that-is-all-or-nothing",
+        name: {
+          en: "The signal that is all or nothing",
+          hi: "वह संकेत जो या तो पूरा है या है ही नहीं",
+          mr: "एकतर पूर्ण किंवा नाहीच असा तो संकेत",
+        },
+        kind: "mechanism",
+        prompt: {
+          en: "A gentle touch and a hard pinch travel along the same fibre as events of exactly the same size; nothing about the individual event says which it was. So how does the difference get through?",
+          hi: "हल्का स्पर्श और ज़ोर की चिकोटी उसी तंतु पर ठीक एक ही आकार की घटनाएँ बनकर चलते हैं; अकेली घटना में कुछ भी नहीं बताता कि वह कौन-सी थी। तो अंतर पहुँचता कैसे है?",
+          mr: "हलका स्पर्श आणि जोरात चिमटा त्याच तंतूवरून नेमक्या एकाच आकाराच्या घटना बनून जातात; एकट्या घटनेत काहीही सांगत नाही की ती कोणती होती. मग फरक पोहोचतो कसा?",
+        },
+        statement: {
+          en: "An action potential obeys the all-or-none law: below the threshold nothing fires, and at or above it the impulse is always the same size, so intensity is coded as the frequency of impulses rather than their strength.",
+          hi: "क्रिया विभव सर्व-या-शून्य नियम मानता है: देहली से नीचे कुछ नहीं छूटता, और उस पर या ऊपर आवेग सदा एक ही आकार का होता है, अतः तीव्रता आवेगों की प्रबलता नहीं, उनकी आवृत्ति के रूप में कूटबद्ध होती है।",
+          mr: "क्रिया विभव सर्व-किंवा-शून्य नियम पाळतो: उंबरठ्याखाली काहीच सुटत नाही, आणि त्यावर वा वर आवेग नेहमी एकाच आकाराचा असतो, म्हणून तीव्रता आवेगांच्या प्रबळतेने नव्हे, त्यांच्या वारंवारतेने संकेतबद्ध होते.",
+        },
+        detail: {
+          en: "The event is a rapid reversal — sodium rushing in until the inside becomes positive, then potassium leaving to restore the negativity — and it is regenerated afresh at every point along the fibre.",
+          hi: "घटना एक तेज़ पलटाव है — सोडियम भीतर दौड़ता है जब तक भीतर धनात्मक न हो जाए, फिर पोटैशियम निकलकर ऋणात्मकता लौटाता है — और वह तंतु के हर बिंदु पर नए सिरे से दोहराई जाती है।",
+          mr: "घटना ही झटपट उलटापालट आहे — सोडियम आत धावतो जोवर आतला भाग धन होत नाही, मग पोटॅशियम निघून ऋणता परत आणतो — आणि ती तंतूच्या प्रत्येक बिंदूवर नव्याने घडवली जाते.",
+        },
+        extra: {
+          en: "Because it is rebuilt rather than passed on, it cannot fade with distance, and a message reaches a toe as strong as it left the spinal cord.",
+          hi: "चूँकि वह आगे बढ़ाई नहीं, दोबारा बनाई जाती है, वह दूरी के साथ मंद नहीं पड़ सकती, और संदेश पैर के अँगूठे तक उतना ही प्रबल पहुँचता है जितना मेरुरज्जु से चला था।",
+          mr: "ती पुढे दिली जात नाही तर पुन्हा बांधली जाते म्हणून ती अंतरासोबत मंदावू शकत नाही, आणि संदेश पायाच्या अंगठ्यापर्यंत तितकाच प्रबळ पोहोचतो जितका मेरुरज्जूतून निघाला होता.",
+        },
+        pair: {
+          left: {
+            en: "It cannot fade with distance because it is rebuilt at every point",
+            hi: "वह दूरी से मंद नहीं पड़ सकती क्योंकि हर बिंदु पर दोबारा बनती है",
+            mr: "ती अंतराने मंदावू शकत नाही कारण प्रत्येक बिंदूवर पुन्हा बांधली जाते",
+          },
+          right: {
+            en: "the signal that is all or nothing",
+            hi: "वह संकेत जो या तो पूरा है या है ही नहीं",
+            mr: "एकतर पूर्ण किंवा नाहीच असा तो संकेत",
+          },
+        },
+      },
+      {
+        id: "the-gap-that-makes-the-signal-one-way",
+        name: {
+          en: "The gap that makes the signal one-way",
+          hi: "वह दरार जो संकेत को एकतरफ़ा बना देती है",
+          mr: "संकेताला एकेरी करणारी ती फट",
+        },
+        kind: "mechanism",
+        prompt: {
+          en: "Two cells almost touch but do not, and the electrical event has to be turned into a chemical one and back again to cross the space between them — a slower and clumsier arrangement than simply joining the wires. What is gained?",
+          hi: "दो कोशिकाएँ लगभग छूती हैं पर छूती नहीं, और उनके बीच का स्थान पार करने के लिए विद्युत घटना को रासायनिक बनाकर फिर लौटाना पड़ता है — तारों को सीधे जोड़ देने से धीमी और भद्दी व्यवस्था। इससे मिलता क्या है?",
+          mr: "दोन पेशी जवळपास स्पर्शतात पण स्पर्शत नाहीत, आणि त्यांच्यातली जागा ओलांडण्यासाठी विद्युत घटनेचे रासायनिकात रूपांतर करून पुन्हा परत आणावे लागते — तारा सरळ जोडण्याहून मंद आणि ओबडधोबड व्यवस्था. यातून मिळते काय?",
+        },
+        statement: {
+          en: "At a synapse the impulse triggers release of a transmitter from vesicles on one side, which crosses the cleft and binds receptors on the other, and since only one side has vesicles the signal can travel in one direction only.",
+          hi: "युग्मानुबंधन पर आवेग एक ओर की आशयों से संवाहक की निर्मुक्ति कराता है, जो दरार पार करके दूसरी ओर के ग्राहियों से बँधता है, और चूँकि आशय केवल एक ही ओर हैं, संकेत केवल एक ही दिशा में जा सकता है।",
+          mr: "युग्मानुबंधावर आवेग एका बाजूच्या पुटिकांतून संवाहकाची मुक्ती घडवतो, जो फट ओलांडून दुसऱ्या बाजूच्या ग्राहींना बांधतो, आणि पुटिका केवळ एकाच बाजूला असल्याने संकेत केवळ एकाच दिशेने जाऊ शकतो.",
+        },
+        detail: {
+          en: "The gap is also where a decision can be made: some transmitters make the next cell more likely to fire and others less, so a cell receiving from many sources adds up what it is told before responding.",
+          hi: "दरार वही जगह भी है जहाँ निर्णय हो सकता है: कुछ संवाहक अगली कोशिका के छूटने की संभावना बढ़ाते हैं और कुछ घटाते हैं, अतः कई स्रोतों से पाती कोशिका उत्तर देने से पहले सब जोड़ लेती है।",
+          mr: "फट हीच ती जागा जिथे निर्णय होऊ शकतो: काही संवाहक पुढच्या पेशीच्या सुटण्याची शक्यता वाढवतात आणि काही घटवतात, म्हणून अनेक स्रोतांकडून घेणारी पेशी उत्तर देण्याआधी सारे बेरीज करते.",
+        },
+        extra: {
+          en: "It is also where most drugs and poisons act, because a chemical step can be blocked, mimicked or prolonged in ways that a bare electrical junction could not be.",
+          hi: "अधिकांश औषधियाँ और विष भी यहीं काम करते हैं, क्योंकि रासायनिक चरण को ऐसे रोका, नक़ल किया या लंबा किया जा सकता है जैसे किसी नंगी विद्युत संधि के साथ नहीं किया जा सकता।",
+          mr: "बहुतांश औषधे आणि विषेही इथेच काम करतात, कारण रासायनिक पायरी अशी अडवता, नक्कल करता वा लांबवता येते जशी उघड्या विद्युत जोडाबाबत करता आली नसती.",
+        },
+        pair: {
+          left: {
+            en: "Most drugs and poisons act here rather than along the fibre",
+            hi: "अधिकांश औषधियाँ और विष तंतु पर नहीं, यहीं काम करते हैं",
+            mr: "बहुतांश औषधे आणि विषे तंतूवर नव्हे, इथेच काम करतात",
+          },
+          right: {
+            en: "the gap that makes the signal one-way",
+            hi: "वह दरार जो संकेत को एकतरफ़ा बना देती है",
+            mr: "संकेताला एकेरी करणारी ती फट",
+          },
+        },
+      },
+      {
+        id: "why-a-sheath-makes-it-faster",
+        name: {
+          en: "Why wrapping a fibre in fat makes it faster",
+          hi: "तंतु को वसा में लपेटने से वह तेज़ क्यों हो जाता है",
+          mr: "तंतू मेदात गुंडाळल्याने तो वेगवान का होतो",
+        },
+        kind: "mechanism",
+        prompt: {
+          en: "The insulation is broken by bare gaps at regular intervals, and that is not a flaw in the covering — the covering is useless without them. What does the arrangement do?",
+          hi: "आवरण नियमित अंतरालों पर नंगी दरारों से टूटा है, और वह आवरण की ख़ामी नहीं — उनके बिना आवरण बेकार है। यह व्यवस्था करती क्या है?",
+          mr: "आच्छादन नियमित अंतरांवर उघड्या फटींनी तुटलेले आहे, आणि ती आच्छादनाची त्रुटी नव्हे — त्यांच्याविना आच्छादन निरुपयोगी. ही व्यवस्था करते काय?",
+        },
+        statement: {
+          en: "A myelin sheath forces the impulse to be regenerated only at the bare nodes between its segments, so the signal leaps from node to node instead of being rebuilt at every point.",
+          hi: "मायलिन आच्छद आवेग को केवल अपने खंडों के बीच की नंगी गाँठों पर ही दोबारा बनने देता है, अतः संकेत हर बिंदु पर बनने के बजाय गाँठ से गाँठ छलाँग लगाता है।",
+          mr: "मायलिन आच्छाद आवेगाला केवळ आपल्या खंडांमधल्या उघड्या गाठींवरच पुन्हा घडू देते, म्हणून संकेत प्रत्येक बिंदूवर बांधला जाण्याऐवजी गाठीवरून गाठीवर उडी मारतो.",
+        },
+        detail: {
+          en: "The gain is large: a myelinated fibre can carry an impulse tens of times faster than an unmyelinated one of the same thickness, and it uses less energy doing so.",
+          hi: "लाभ बड़ा है: मायलिनयुक्त तंतु उतनी ही मोटाई वाले मायलिनरहित तंतु से दसियों गुना तेज़ आवेग ले जा सकता है, और ऐसा करने में कम ऊर्जा ख़र्च करता है।",
+          mr: "फायदा मोठा: मायलिनयुक्त तंतू तितक्याच जाडीच्या मायलिनविरहित तंतूहून दहापट-वीसपट वेगाने आवेग नेऊ शकतो, आणि तसे करताना कमी ऊर्जा खर्चतो.",
+        },
+        extra: {
+          en: "The other way to gain speed is sheer width, which is why a squid that never evolved myelin escapes on a single giant fibre as thick as a pencil lead.",
+          hi: "गति पाने का दूसरा तरीक़ा निरी चौड़ाई है, इसीलिए जिस स्क्विड में मायलिन कभी विकसित नहीं हुआ वह पेंसिल की सीक जितने मोटे एक ही विशाल तंतु से भागता है।",
+          mr: "वेग मिळवण्याचा दुसरा मार्ग म्हणजे निव्वळ रुंदी, म्हणूनच ज्या स्क्विडमध्ये मायलिन कधी उत्क्रांत झालेच नाही तो पेन्सिलच्या शिशाइतक्या जाड एकाच अवाढव्य तंतूने पळतो.",
+        },
+        pair: {
+          left: {
+            en: "A squid escapes on one fibre as thick as a pencil lead",
+            hi: "स्क्विड पेंसिल की सीक जितने मोटे एक तंतु से भागता है",
+            mr: "स्क्विड पेन्सिलच्या शिशाइतक्या जाड एका तंतूने पळतो",
+          },
+          right: {
+            en: "why wrapping a fibre in fat makes it faster",
+            hi: "तंतु को वसा में लपेटने से वह तेज़ क्यों हो जाता है",
+            mr: "तंतू मेदात गुंडाळल्याने तो वेगवान का होतो",
+          },
+        },
+      },
+      {
+        id: "the-decision-taken-before-the-brain-hears",
+        name: {
+          en: "The decision taken before the brain hears about it",
+          hi: "वह निर्णय जो मस्तिष्क के सुनने से पहले हो जाता है",
+          mr: "मेंदूला कळण्याआधीच घेतला जाणारा तो निर्णय",
+        },
+        kind: "pathway",
+        prompt: {
+          en: "Your hand has already left the hot pan by the time you feel the heat, and the feeling arrives afterwards as news of something that has been done. Which pathway did that?",
+          hi: "जब तक तुम्हें गरमी महसूस होती है तब तक तुम्हारा हाथ गरम कड़ाही से हट चुका होता है, और अनुभूति बाद में ऐसे आती है मानो हो चुकी बात की ख़बर हो। यह कौन-सा पथ था?",
+          mr: "तुम्हाला उष्णता जाणवेपर्यंत तुमचा हात गरम तव्यावरून निघालेला असतो, आणि जाणीव नंतर घडून गेलेल्या गोष्टीची बातमी म्हणून येते. हा कोणता मार्ग होता?",
+        },
+        statement: {
+          en: "A reflex arc runs from receptor to sensory neuron to the spinal cord and straight back out to the muscle, so the response is issued by the cord and the brain is informed in parallel rather than consulted.",
+          hi: "प्रतिवर्ती चाप ग्राही से संवेदी तंत्रिका होकर मेरुरज्जु तक और वहीं से सीधे पेशी तक जाता है, अतः अनुक्रिया रज्जु जारी करती है और मस्तिष्क से पूछा नहीं जाता, उसे साथ-साथ बताया जाता है।",
+          mr: "प्रतिक्षिप्त कमान ग्राहीपासून संवेदी चेतापेशीमार्गे मेरुरज्जूपर्यंत आणि तिथूनच थेट स्नायूपर्यंत जाते, म्हणून प्रतिसाद रज्जू देतो आणि मेंदूला विचारले जात नाही, त्याला सोबतच कळवले जाते.",
+        },
+        detail: {
+          en: "The saving is the whole point: leaving the brain out of the loop removes the long journey up and back and the synapses on the way, which is the difference between a blister and no blister.",
+          hi: "बचत ही पूरा प्रयोजन है: मस्तिष्क को बीच से हटाने पर ऊपर जाकर लौटने की लंबी यात्रा और राह के युग्मानुबंधन कट जाते हैं, और यही अंतर है छाला पड़ने और न पड़ने में।",
+          mr: "बचत हाच अख्खा हेतू: मेंदूला मधून वगळल्याने वर जाऊन परतण्याचा लांब प्रवास आणि वाटेतले युग्मानुबंध वजा होतात, आणि हाच फरक फोड येण्यात आणि न येण्यात.",
+        },
+        extra: {
+          en: "It is also why a doctor can test the spinal cord by tapping a knee: the response is produced below the level of the brain and its absence localises the damage.",
+          hi: "इसीलिए चिकित्सक घुटने पर ठोककर मेरुरज्जु की जाँच कर सकता है: अनुक्रिया मस्तिष्क के स्तर से नीचे बनती है और उसका न होना क्षति की जगह बता देता है।",
+          mr: "म्हणूनच वैद्य गुडघ्यावर ठोकून मेरुरज्जूची तपासणी करू शकतो: प्रतिसाद मेंदूच्या पातळीखाली बनतो आणि तो नसणे इजेची जागा सांगते.",
+        },
+        pair: {
+          left: {
+            en: "A tap on the knee tests the cord rather than the brain",
+            hi: "घुटने पर ठोक मस्तिष्क की नहीं, रज्जु की जाँच करती है",
+            mr: "गुडघ्यावरचा ठोका मेंदूची नव्हे, रज्जूची तपासणी करतो",
+          },
+          right: {
+            en: "the decision taken before the brain hears about it",
+            hi: "वह निर्णय जो मस्तिष्क के सुनने से पहले हो जाता है",
+            mr: "मेंदूला कळण्याआधीच घेतला जाणारा तो निर्णय",
+          },
+        },
+      },
+      {
+        id: "the-two-halves-of-the-involuntary-system",
+        name: {
+          en: "The two halves that argue about every organ",
+          hi: "वे दो हिस्से जो हर अंग पर बहस करते हैं",
+          mr: "प्रत्येक अवयवावर वाद घालणारे ते दोन भाग",
+        },
+        kind: "classification",
+        prompt: {
+          en: "One set of nerves speeds the heart, opens the airways, widens the pupils and stops digestion; the other does the exact opposite to every one of those, and both are running all the time. What division is this?",
+          hi: "तंत्रिकाओं का एक समुच्चय हृदय तेज़ करता है, वायुमार्ग खोलता है, पुतलियाँ चौड़ी करता है और पाचन रोक देता है; दूसरा उन सबका ठीक उलटा करता है, और दोनों हर समय चल रहे हैं। यह कौन-सा विभाजन है?",
+          mr: "चेतांचा एक संच हृदय वेगवान करतो, वायुमार्ग उघडतो, बाहुल्या रुंदावतो आणि पचन थांबवतो; दुसरा त्या सर्वांचे नेमके उलटे करतो, आणि दोन्ही सतत चालू आहेत. ही कोणती विभागणी?",
+        },
+        statement: {
+          en: "The autonomic nervous system has a sympathetic division that prepares the body for exertion and a parasympathetic one that restores it afterwards, and most organs receive both.",
+          hi: "स्वायत्त तंत्रिका तंत्र में एक अनुकंपी विभाग है जो शरीर को परिश्रम के लिए तैयार करता है और एक परानुकंपी जो बाद में उसे लौटाता है, और अधिकांश अंगों को दोनों मिलते हैं।",
+          mr: "स्वायत्त चेतासंस्थेत एक अनुकंपी विभाग आहे जो शरीराला श्रमासाठी तयार करतो आणि एक परानुकंपी जो नंतर त्याला परत आणतो, आणि बहुतांश अवयवांना दोन्ही मिळतात.",
+        },
+        detail: {
+          en: "Because both act on the same organ at once, the state of that organ is a balance rather than a switch, and it can be adjusted in fine steps by shifting the balance either way.",
+          hi: "चूँकि दोनों एक ही अंग पर एक साथ काम करते हैं, उस अंग की अवस्था स्विच नहीं, संतुलन है, और संतुलन इधर-उधर सरकाकर उसे बारीक चरणों में बदला जा सकता है।",
+          mr: "दोन्ही एकाच अवयवावर एकाच वेळी काम करत असल्याने, त्या अवयवाची अवस्था कळ नव्हे, समतोल आहे, आणि समतोल इकडे-तिकडे सरकवून तो बारीक पायऱ्यांत बदलता येतो.",
+        },
+        extra: {
+          en: "The whole system runs without awareness or consent, which is why you cannot decide to stop digesting, and why fright empties the stomach's blood supply into the legs before you have thought anything.",
+          hi: "पूरा तंत्र जागरूकता या सहमति बिना चलता है, इसीलिए तुम पाचन रोकने का निर्णय नहीं ले सकते, और इसीलिए डर तुम्हारे कुछ सोचने से पहले ही पेट की रक्त-आपूर्ति टाँगों में उँडेल देता है।",
+          mr: "अख्खी संस्था जाणीव वा संमतीविना चालते, म्हणूनच तुम्ही पचन थांबवण्याचा निर्णय घेऊ शकत नाही, आणि म्हणूनच भीती तुम्ही काही विचार करण्याआधीच पोटाचा रक्तपुरवठा पायांत ओतते.",
+        },
+        pair: {
+          left: {
+            en: "Fright moves blood to the legs before you have thought anything",
+            hi: "डर तुम्हारे कुछ सोचने से पहले रक्त टाँगों में भेज देता है",
+            mr: "भीती तुम्ही काही विचार करण्याआधी रक्त पायांत पाठवते",
+          },
+          right: {
+            en: "the two halves that argue about every organ",
+            hi: "वे दो हिस्से जो हर अंग पर बहस करते हैं",
+            mr: "प्रत्येक अवयवावर वाद घालणारे ते दोन भाग",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A student reasons that since a nerve fibre is long and thin like a wire, a signal must arrive at the foot weaker than it left the spine, and that a very hard pinch must therefore send a bigger impulse than a light touch so that something survives the journey. Measurements show that impulses in a given fibre are all exactly the same size, and that the one arriving at the foot is as large as the one that set out. Explain both results.",
+          hi: "विद्यार्थी तर्क करता है कि चूँकि तंत्रिका तंतु तार जैसा लंबा और पतला है, संकेत पैर तक रीढ़ से चले संकेत से कमज़ोर पहुँचता होगा, और अतः ज़ोर की चिकोटी हल्के स्पर्श से बड़ा आवेग भेजती होगी ताकि यात्रा में कुछ बचे। माप दिखाती है कि किसी तंतु के सारे आवेग ठीक एक ही आकार के हैं, और पैर तक पहुँचा आवेग उतना ही बड़ा है जितना चला था। दोनों परिणाम समझाओ।",
+          mr: "विद्यार्थी तर्क करतो की चेतातंतू तारेसारखा लांब आणि बारीक असल्याने संकेत पायापर्यंत पाठीच्या कण्यातून निघालेल्या संकेताहून दुर्बळ पोहोचत असेल, आणि म्हणून जोरात चिमटा हलक्या स्पर्शाहून मोठा आवेग पाठवत असेल जेणेकरून प्रवासात काहीतरी उरावे. मोजमापे दाखवतात की एखाद्या तंतूतले सारे आवेग नेमके एकाच आकाराचे आहेत, आणि पायापर्यंत पोहोचलेला आवेग निघालेल्याइतकाच मोठा आहे. दोन्ही निकाल समजावा.",
+        },
+        choices: [
+          {
+            en: "A nerve does not conduct a signal along itself, it regenerates the same event at every point, so the impulse arriving is not the one that set out but the latest copy of it — and a copy cannot be weaker than the original. The energy comes from the ion gradients stored locally all along the fibre, not from the stimulus. That makes the impulse a fixed size everywhere, which is the all-or-none law, and leaves the nervous system no way to encode strength as amplitude. It encodes it as FREQUENCY instead: a light touch fires a few impulses a second, a hard pinch fires many, and the brain reads the rate. A second channel is which fibres are firing, since a stronger stimulus also recruits higher-threshold ones",
+            hi: "तंत्रिका संकेत को अपने भीतर से ढोती नहीं, वह हर बिंदु पर वही घटना दोबारा बनाती है, अतः जो आवेग पहुँचता है वह चला हुआ आवेग नहीं बल्कि उसकी ताज़ा प्रतिलिपि है — और प्रतिलिपि मूल से कमज़ोर नहीं हो सकती। ऊर्जा उद्दीपन से नहीं, तंतु भर स्थानीय रूप से जमा आयन प्रवणताओं से आती है। इससे आवेग हर जगह नियत आकार का हो जाता है, जो सर्व-या-शून्य नियम है, और तंत्रिका तंत्र के पास प्रबलता को आयाम के रूप में कूटबद्ध करने का कोई रास्ता नहीं बचता। वह उसे आवृत्ति के रूप में कूटबद्ध करता है: हल्का स्पर्श प्रति सेकंड कुछ आवेग छोड़ता है, ज़ोर की चिकोटी बहुत, और मस्तिष्क दर पढ़ता है। दूसरा माध्यम यह है कि कौन-से तंतु छूट रहे हैं, क्योंकि प्रबल उद्दीपन ऊँची देहली वाले तंतु भी जगा लेता है",
+            mr: "चेता संकेत आपल्यातून वाहत नाही, ती प्रत्येक बिंदूवर तीच घटना पुन्हा घडवते, म्हणून जो आवेग पोहोचतो तो निघालेला आवेग नव्हे तर त्याची ताजी प्रत आहे — आणि प्रत मूळाहून दुर्बळ असू शकत नाही. ऊर्जा उद्दीपनातून नव्हे, तंतूभर स्थानिकरीत्या साठलेल्या आयन प्रवणतांतून येते. यामुळे आवेग सर्वत्र ठरावीक आकाराचा होतो, जो सर्व-किंवा-शून्य नियम, आणि चेतासंस्थेकडे प्रबळता आयामाच्या रूपात संकेतबद्ध करण्याचा कोणताही मार्ग उरत नाही. ती ती वारंवारतेच्या रूपात संकेतबद्ध करते: हलका स्पर्श प्रति सेकंद काही आवेग सोडतो, जोरात चिमटा पुष्कळ, आणि मेंदू दर वाचतो. दुसरे माध्यम म्हणजे कोणते तंतू सुटत आहेत, कारण प्रबळ उद्दीपन उच्च उंबरठ्याचे तंतूही जागवते",
+          },
+          {
+            en: "The signal does weaken along the way, exactly as the student expects, and the body compensates by making the original impulse very large so that what survives is still above threshold at the far end",
+            hi: "संकेत राह में कमज़ोर पड़ता ही है, ठीक जैसा विद्यार्थी अपेक्षा करता है, और शरीर मूल आवेग को बहुत बड़ा बनाकर भरपाई करता है ताकि जो बचे वह दूर के सिरे पर भी देहली से ऊपर रहे",
+            mr: "संकेत वाटेत दुर्बळ होतोच, नेमके विद्यार्थी अपेक्षितो तसे, आणि शरीर मूळ आवेग खूप मोठा बनवून भरपाई करते जेणेकरून जे उरेल ते दूरच्या टोकालाही उंबरठ्यावर राहावे",
+          },
+          {
+            en: "Impulses are indeed all the same size, and strength is therefore not transmitted at all — the brain infers how hard the pinch was from which part of the body reported it, not from anything in the signal",
+            hi: "आवेग सचमुच सब एक ही आकार के हैं, और अतः प्रबलता संचारित होती ही नहीं — मस्तिष्क अनुमान लगाता है कि चिकोटी कितनी ज़ोर की थी इससे कि शरीर के किस हिस्से ने बताया, संकेत में किसी चीज़ से नहीं",
+            mr: "आवेग खरोखर सारे एकाच आकाराचे आहेत, आणि म्हणून प्रबळता संक्रमित होतच नाही — मेंदू चिमटा किती जोरात होता याचा अंदाज शरीराच्या कोणत्या भागाने सांगितले यावरून लावतो, संकेतातल्या कशावरूनही नव्हे",
+          },
+          {
+            en: "The impulse keeps its size because the myelin sheath prevents any leakage, and in an unmyelinated fibre it would fade with distance exactly as the student predicts",
+            hi: "आवेग अपना आकार इसलिए बनाए रखता है कि मायलिन आच्छद कोई रिसाव नहीं होने देता, और मायलिनरहित तंतु में वह दूरी के साथ ठीक वैसे मंद पड़ता जैसा विद्यार्थी कहता है",
+            mr: "आवेग आपला आकार यासाठी टिकवतो की मायलिन आच्छाद कोणतीही गळती होऊ देत नाही, आणि मायलिनविरहित तंतूत तो अंतरासोबत नेमका विद्यार्थी सांगतो तसा मंदावला असता",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The student's mistake is an excellent one because it comes from a good analogy applied one step too far. A wire really does lose signal with distance, and a nerve really does look like a wire. The difference is in what is travelling. A WIRE PASSES THE SAME ENERGY ALONG. The current that arrives is the current that was put in, minus what resistance took. Distance costs you signal, and the only remedies are more power at the start or amplifiers in the middle. A NERVE DOES NOT DO THIS. What travels is not energy but an event that keeps re-occurring. At any point on the fibre, the local depolarisation opens voltage-gated sodium channels a little further along; sodium rushes in there, driven by the gradient stored at that spot; that patch depolarises and opens the next set of channels. Each patch pays for its own impulse out of its own stored gradient. So the impulse arriving at your foot is not a weakened version of the one that left your spine — it is the ten-thousandth fresh copy, made locally, with the original long since finished. A copy cannot be fainter than what it copied. That is why conduction is described as non-decremental, and it is the design decision that makes a two-metre nerve possible at all. NOW THE CONSEQUENCE THE STUDENT DIDN'T EXPECT. If every impulse is rebuilt to the same specification, every impulse in a given fibre is the same size. That is the all-or-none law: below threshold nothing happens, at or above it you get the full event, and a stimulus twice as strong does not produce a bigger one. The nervous system has therefore thrown away amplitude as a way of carrying information, and must code intensity some other way. IT USES FREQUENCY. A light touch might fire ten impulses a second and a hard pinch two hundred, and the brain reads the rate. This is worth testing against experience: it explains why a sensation can be graded smoothly even though its carrier is digital, and why very intense stimuli feel saturated — there is a ceiling set by the refractory period, the brief interval after each impulse during which the channels cannot reopen. A second code runs alongside: a stronger stimulus also recruits additional fibres with higher thresholds, so the brain learns intensity from HOW MANY fibres are reporting as well as how fast. The refractory period does one more job worth noticing. Since the patch just behind the advancing impulse is temporarily unable to fire, the event cannot travel backwards, and a signal that begins at one end of an axon can only run to the other. Directionality here is a consequence of chemistry rather than of any valve. (The second answer keeps the passive-conduction model and merely scales it up, which would still fail over two metres; the third correctly notes the fixed size but then denies that intensity is transmitted, which the frequency code refutes; and the fourth credits myelin with the constancy — myelin changes the SPEED, and an unmyelinated fibre conducts just as faithfully, only slower.)",
+          hi: "विद्यार्थी की भूल उत्कृष्ट है क्योंकि वह एक अच्छी उपमा को एक क़दम आगे तक ले जाने से आई है। तार सचमुच दूरी के साथ संकेत खोता है, और तंत्रिका सचमुच तार जैसी दिखती है। अंतर इसमें है कि यात्रा कौन कर रहा है। तार वही ऊर्जा आगे बढ़ाता है। जो धारा पहुँचती है वही है जो डाली गई थी, घटाकर जो प्रतिरोध ने ले लिया। दूरी संकेत की क़ीमत माँगती है, और उपाय केवल दो हैं — शुरू में अधिक शक्ति या बीच में प्रवर्धक। तंत्रिका ऐसा नहीं करती। जो यात्रा करता है वह ऊर्जा नहीं, बल्कि एक ऐसी घटना है जो बार-बार दोहराई जाती है। तंतु के किसी भी बिंदु पर, स्थानीय विध्रुवण थोड़ा आगे के वोल्टेज-द्वारित सोडियम चैनल खोल देता है; वहाँ सोडियम भीतर दौड़ता है, उसी जगह जमा प्रवणता से चलकर; वह टुकड़ा विध्रुवित होकर अगले चैनल खोल देता है। हर टुकड़ा अपने आवेग की क़ीमत अपनी ही जमा प्रवणता से चुकाता है। अतः तुम्हारे पैर तक पहुँचा आवेग रीढ़ से चले आवेग का कमज़ोर रूप नहीं — वह दस-हज़ारवीं ताज़ा प्रतिलिपि है, स्थानीय रूप से बनी, और मूल कब का समाप्त हो चुका। प्रतिलिपि जिसकी नक़ल की उससे धुँधली नहीं हो सकती। इसीलिए चालन को अ-ह्रासी कहा जाता है, और यही बनावटी निर्णय दो मीटर की तंत्रिका को संभव बनाता है। अब वह परिणाम जिसकी विद्यार्थी को अपेक्षा नहीं थी। यदि हर आवेग उसी विनिर्देश पर दोबारा बनता है, तो किसी तंतु का हर आवेग एक ही आकार का है। यही सर्व-या-शून्य नियम है: देहली से नीचे कुछ नहीं होता, उस पर या ऊपर पूरी घटना मिलती है, और दुगुना प्रबल उद्दीपन बड़ी घटना नहीं बनाता। अतः तंत्रिका तंत्र ने सूचना ढोने के तरीक़े के रूप में आयाम फेंक दिया है, और उसे तीव्रता किसी और तरह कूटबद्ध करनी पड़ती है। वह आवृत्ति काम में लेता है। हल्का स्पर्श शायद प्रति सेकंड दस आवेग छोड़े और ज़ोर की चिकोटी दो सौ, और मस्तिष्क दर पढ़ता है। इसे अनुभव के सामने जाँचना उपयोगी है: यह समझाता है कि संवेदना सहज रूप से श्रेणीबद्ध क्यों लगती है जबकि उसका वाहक अंकीय है, और अत्यंत तीव्र उद्दीपन संतृप्त क्यों लगते हैं — एक छत है जो अपवर्तक काल से तय होती है, हर आवेग के बाद का वह छोटा अंतराल जिसमें चैनल फिर नहीं खुल सकते। साथ-साथ दूसरा कूट भी चलता है: प्रबल उद्दीपन ऊँची देहली वाले अतिरिक्त तंतु भी जगा लेता है, अतः मस्तिष्क तीव्रता यह देखकर भी जानता है कि कितने तंतु बता रहे हैं, केवल कितनी तेज़ी से नहीं। अपवर्तक काल एक और काम करता है जो देखने योग्य है। चूँकि बढ़ते आवेग के ठीक पीछे का टुकड़ा कुछ समय के लिए छूट नहीं सकता, घटना पीछे की ओर नहीं जा सकती, और अक्षतंतु के एक सिरे से शुरू संकेत केवल दूसरे तक ही दौड़ सकता है। यहाँ दिशा किसी कपाट का नहीं, रसायन का परिणाम है। (दूसरा उत्तर निष्क्रिय चालन का मॉडल बनाए रखकर उसे बस बड़ा कर देता है, जो दो मीटर पर फिर भी विफल होता; तीसरा नियत आकार ठीक बताता है पर फिर तीव्रता के संचरण से इनकार करता है, जिसका खंडन आवृत्ति-कूट करता है; और चौथा नियतता का श्रेय मायलिन को देता है — मायलिन गति बदलता है, और मायलिनरहित तंतु भी उतनी ही निष्ठा से चालन करता है, बस धीमे।)",
+          mr: "विद्यार्थ्याची चूक उत्कृष्ट आहे कारण ती एका चांगल्या उपमेला एक पाऊल पुढे नेल्यातून आली आहे. तार खरोखर अंतरासोबत संकेत गमावते, आणि चेता खरोखर तारेसारखी दिसते. फरक हा की प्रवास कोण करते आहे. तार तीच ऊर्जा पुढे नेते. जो प्रवाह पोहोचतो तोच जो घातला होता, वजा जे रोधाने घेतले. अंतर संकेताची किंमत मागते, आणि उपाय केवळ दोन — सुरुवातीला अधिक शक्ती वा मध्ये वर्धक. चेता असे करत नाही. जे प्रवास करते ते ऊर्जा नव्हे, तर अशी घटना जी पुन्हा पुन्हा घडते. तंतूच्या कोणत्याही बिंदूवर, स्थानिक विध्रुवण थोडे पुढचे व्होल्टेज-द्वारित सोडियम मार्ग उघडते; तिथे सोडियम आत धावतो, त्याच जागी साठलेल्या प्रवणतेने चालून; तो तुकडा विध्रुवित होऊन पुढचे मार्ग उघडतो. प्रत्येक तुकडा आपल्या आवेगाची किंमत आपल्याच साठलेल्या प्रवणतेतून भरतो. म्हणून तुमच्या पायापर्यंत पोहोचलेला आवेग पाठीच्या कण्यातून निघालेल्या आवेगाचे दुर्बळ रूप नव्हे — ती दहा-हजारावी ताजी प्रत आहे, स्थानिकरीत्या बनलेली, आणि मूळ कधीच संपले आहे. प्रत जिची नक्कल केली तिच्याहून पुसट असू शकत नाही. म्हणूनच वहनाला अ-ऱ्हासी म्हणतात, आणि हाच रचनात्मक निर्णय दोन मीटरची चेता शक्य करतो. आता तो परिणाम ज्याची विद्यार्थ्याला अपेक्षा नव्हती. प्रत्येक आवेग त्याच तपशिलावर पुन्हा बनत असेल, तर एखाद्या तंतूतला प्रत्येक आवेग एकाच आकाराचा आहे. हाच सर्व-किंवा-शून्य नियम: उंबरठ्याखाली काहीच घडत नाही, त्यावर वा वर पूर्ण घटना मिळते, आणि दुप्पट प्रबळ उद्दीपन मोठी घटना बनवत नाही. म्हणून चेतासंस्थेने माहिती वाहण्याचा मार्ग म्हणून आयाम फेकून दिला आहे, आणि तिला तीव्रता दुसऱ्या कशातरी प्रकारे संकेतबद्ध करावी लागते. ती वारंवारता वापरते. हलका स्पर्श कदाचित प्रति सेकंद दहा आवेग सोडेल आणि जोरात चिमटा दोनशे, आणि मेंदू दर वाचतो. हे अनुभवासमोर तपासणे उपयोगी: हे समजावते की संवेदना सहजपणे श्रेणीबद्ध का वाटते जरी तिचे वाहक अंकीय असले, आणि अत्यंत तीव्र उद्दीपने संतृप्त का वाटतात — एक छत आहे जी अपवर्तन कालाने ठरते, प्रत्येक आवेगानंतरचा तो छोटा अवधी ज्यात मार्ग पुन्हा उघडू शकत नाहीत. सोबतच दुसरा संकेतही चालतो: प्रबळ उद्दीपन उच्च उंबरठ्याचे अधिकचे तंतूही जागवते, म्हणून मेंदू तीव्रता किती तंतू सांगत आहेत यावरूनही जाणतो, केवळ किती वेगाने यावरून नव्हे. अपवर्तन काल आणखी एक काम करते जे पाहण्याजोगे. पुढे सरकणाऱ्या आवेगाच्या मागचा तुकडा काही काळ सुटू शकत नसल्याने, घटना मागे जाऊ शकत नाही, आणि अक्षतंतूच्या एका टोकापासून सुरू झालेला संकेत केवळ दुसऱ्यापर्यंतच धावू शकतो. इथे दिशा ही कोणत्या झडपेचा नव्हे, रसायनाचा परिणाम आहे. (दुसरे उत्तर निष्क्रिय वहनाचे प्रतिरूप टिकवून त्याला फक्त मोठे करते, जे दोन मीटरवर तरीही अपयशी ठरले असते; तिसरे ठरावीक आकार बरोबर सांगते पण मग तीव्रतेचे संक्रमण नाकारते, ज्याचे खंडन वारंवारता-संकेत करतो; आणि चौथे स्थिरतेचे श्रेय मायलिनला देते — मायलिन वेग बदलते, आणि मायलिनविरहित तंतूही तितक्याच निष्ठेने वहन करतो, फक्त सावकाश.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A dentist injects a local anaesthetic that blocks voltage-gated sodium channels. The patient's pain goes first, then the sensation of temperature, and the feeling of pressure and touch survives longest — she can still feel the dentist's hand on her jaw while feeling nothing of the drill. Separately, a patient whose myelin is being destroyed by disease reports numbness and weakness that come and go over months. What single property of nerve fibres accounts for both patterns?",
+          hi: "दंत चिकित्सक ऐसा स्थानीय निश्चेतक इंजेक्ट करता है जो वोल्टेज-द्वारित सोडियम चैनल रोक देता है। रोगी की पीड़ा पहले जाती है, फिर तापमान की संवेदना, और दाब तथा स्पर्श की अनुभूति सबसे देर तक बची रहती है — वह जबड़े पर चिकित्सक का हाथ अब भी महसूस कर सकती है जबकि ड्रिल का कुछ नहीं। अलग से, जिस रोगी का मायलिन रोग से नष्ट हो रहा है वह ऐसी सुन्नता और दुर्बलता बताता है जो महीनों में आती-जाती रहती है। तंत्रिका तंतुओं का कौन-सा एक गुण दोनों ढर्रे समझाता है?",
+          mr: "दंतवैद्य असे स्थानिक भूल देणारे औषध टोचतो जे व्होल्टेज-द्वारित सोडियम मार्ग अडवते. रुग्णाची वेदना आधी जाते, मग तापमानाची संवेदना, आणि दाब व स्पर्शाची जाणीव सर्वांत उशिरापर्यंत टिकते — तिला जबड्यावर वैद्याचा हात अजूनही जाणवतो तर ड्रिलचे काहीच नाही. वेगळ्याने, ज्या रुग्णाचे मायलिन रोगाने नष्ट होते आहे तो अशी बधिरता आणि दुर्बलता सांगतो जी महिन्यांत येते-जाते. चेतातंतूंचा कोणता एक गुणधर्म दोन्ही साचे समजावतो?",
+        },
+        choices: [
+          {
+            en: "Fibre diameter and myelination, which set both conduction speed and vulnerability. Pain and temperature travel on thin, thinly myelinated or bare fibres; touch and pressure on thick, heavily myelinated ones. A drug diffusing in from outside reaches and silences the thin fibres first, because they present less membrane to be blocked over a shorter distance between nodes, so pain goes before touch. The same ranking explains the second case in reverse: stripping myelin does not cut the fibre, it slows and destabilises conduction, so signals arrive late, out of order or intermittently rather than never — hence symptoms that fluctuate. The fibre is the same in both stories; what differs is that one silences small fibres selectively and the other degrades fast ones",
+            hi: "तंतु का व्यास और मायलिनन, जो चालन की गति और भेद्यता दोनों तय करते हैं। पीड़ा और तापमान पतले, कम मायलिन वाले या नंगे तंतुओं पर चलते हैं; स्पर्श और दाब मोटे, भारी मायलिन वाले तंतुओं पर। बाहर से भीतर विसरित होती औषधि पहले पतले तंतुओं तक पहुँचकर उन्हें चुप कराती है, क्योंकि वे गाँठों के बीच कम दूरी में रोकने को कम झिल्ली प्रस्तुत करते हैं, अतः पीड़ा स्पर्श से पहले जाती है। वही क्रम दूसरे मामले को उलटा समझाता है: मायलिन उतारना तंतु काटता नहीं, वह चालन को धीमा और अस्थिर करता है, अतः संकेत देर से, क्रम से बाहर या रुक-रुककर पहुँचते हैं, कभी न पहुँचने के बजाय — इसीलिए लक्षण घटते-बढ़ते हैं। दोनों कहानियों में तंतु वही है; अंतर यह कि एक छोटे तंतुओं को चुनकर चुप कराता है और दूसरा तेज़ तंतुओं को बिगाड़ता है",
+            mr: "तंतूचा व्यास आणि मायलिनन, जे वहनाचा वेग आणि भेद्यता दोन्ही ठरवतात. वेदना आणि तापमान बारीक, कमी मायलिन असलेल्या वा उघड्या तंतूंवरून जातात; स्पर्श आणि दाब जाड, भरपूर मायलिन असलेल्या तंतूंवरून. बाहेरून आत विसरणारे औषध आधी बारीक तंतूंपर्यंत पोहोचून त्यांना गप्प करते, कारण ते गाठींमधल्या कमी अंतरात अडवण्यासाठी कमी पटल पुढे करतात, म्हणून वेदना स्पर्शाआधी जाते. तोच क्रम दुसरे प्रकरण उलटे समजावतो: मायलिन काढणे तंतू कापत नाही, ते वहन मंद आणि अस्थिर करते, म्हणून संकेत उशिरा, क्रमाबाहेर वा तुटकपणे पोहोचतात, कधीच न पोहोचण्याऐवजी — म्हणूनच लक्षणे कमी-अधिक होतात. दोन्ही कथांत तंतू तोच आहे; फरक हा की एक लहान तंतूंना निवडून गप्प करते आणि दुसरे वेगवान तंतू बिघडवते",
+          },
+          {
+            en: "Pain receptors are simply nearer the surface than touch receptors, so the injected drug reaches them first, and the myelin case is unrelated — those symptoms fluctuate because the disease itself comes and goes",
+            hi: "पीड़ा-ग्राही बस स्पर्श-ग्राहियों से सतह के अधिक पास हैं, अतः इंजेक्ट की गई औषधि उन तक पहले पहुँचती है, और मायलिन वाला मामला असंबद्ध है — वे लक्षण इसलिए घटते-बढ़ते हैं कि रोग स्वयं आता-जाता रहता है",
+            mr: "वेदना-ग्राही फक्त स्पर्श-ग्राहींहून पृष्ठभागाच्या अधिक जवळ आहेत, म्हणून टोचलेले औषध त्यांच्यापर्यंत आधी पोहोचते, आणि मायलिनचे प्रकरण असंबंधित आहे — ती लक्षणे यासाठी कमी-अधिक होतात की रोग स्वतःच येतो-जातो",
+          },
+          {
+            en: "Pain impulses are smaller than touch impulses, so a partial block stops them while larger touch impulses still get through, and losing myelin lowers every impulse below threshold in the same way",
+            hi: "पीड़ा के आवेग स्पर्श के आवेगों से छोटे हैं, अतः आंशिक अवरोध उन्हें रोक देता है जबकि बड़े स्पर्श-आवेग फिर भी निकल जाते हैं, और मायलिन खोना हर आवेग को उसी तरह देहली से नीचे गिरा देता है",
+            mr: "वेदनेचे आवेग स्पर्शाच्या आवेगांहून लहान आहेत, म्हणून अर्धवट अडथळा त्यांना थांबवतो तर मोठे स्पर्श-आवेग तरीही निसटतात, आणि मायलिन गमावणे प्रत्येक आवेग त्याच पद्धतीने उंबरठ्याखाली आणते",
+          },
+          {
+            en: "The anaesthetic blocks synapses rather than fibres, and pain has more synapses on its route than touch does, while demyelination affects only the synapses in the brain and never the peripheral nerves",
+            hi: "निश्चेतक तंतुओं को नहीं, युग्मानुबंधनों को रोकता है, और पीड़ा के रास्ते में स्पर्श से अधिक युग्मानुबंधन हैं, जबकि मायलिन-हानि केवल मस्तिष्क के युग्मानुबंधनों को प्रभावित करती है और परिधीय तंत्रिकाओं को कभी नहीं",
+            mr: "भूल देणारे औषध तंतूंना नव्हे, युग्मानुबंधांना अडवते, आणि वेदनेच्या मार्गात स्पर्शाहून अधिक युग्मानुबंध आहेत, तर मायलिन-हानी केवळ मेंदूतल्या युग्मानुबंधांवर परिणाम करते आणि परिघीय चेतांवर कधीच नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Both stories turn on the same fact: nerve fibres are not interchangeable, and the differences between them are precisely diameter and how heavily they are myelinated. THE RANKING. Touch and pressure travel on the thickest, most heavily myelinated fibres, conducting at up to a hundred metres a second. Temperature travels on thinner ones. Pain travels on the thinnest of all — some thinly myelinated, some entirely bare — conducting at a metre or two a second. This ranking is not arbitrary. The signals that must arrive fastest are those the body will act on immediately, and pain, oddly, is not one of them; withdrawing from a hot pan is done by a reflex before the pain is felt at all, which is why the burn hurts a moment after your hand has already moved. THE ANAESTHETIC. The drug is injected outside the nerve and must diffuse inward. To silence a fibre, enough channels must be blocked over a stretch long enough that the impulse cannot jump the blocked region. A thin fibre with short internodal distances presents a small target and is silenced by a low concentration; a thick, heavily myelinated fibre has long jumps between nodes and needs more of the drug over a longer stretch. So the block arrives in order of fibre size: pain first, then temperature, then touch and pressure, and motor function last of all. Recovery runs in exactly the reverse order, which is a good check on the explanation and something a dental patient can observe for themselves. It is also why the dentist can work while the patient still feels the pressure of the hand — a reassurance worth giving, since patients often fear that feeling anything means the injection failed. THE DEMYELINATION. Here the fibre is intact and its insulation is being lost. Conduction does not stop; it degrades. Where saltatory conduction jumped from node to node, the impulse must now crawl along bare membrane, so it is slowed, and where the damage is severe it may fail intermittently. That produces exactly what the patient describes: symptoms that appear and recede, worse when the body is warm because raising temperature further destabilises marginal conduction. Note the contrast with a cut nerve, which produces a fixed and permanent deficit. Fluctuation is the signature of a conduction problem rather than a connection problem. The general point is worth carrying out of the chapter: a nerve is not one thing. When a clinical picture spares some sensations and not others, the question to ask is which fibres carry what, and how each kind fails. (The second answer relocates the explanation to receptor depth, which cannot explain why recovery reverses the order; the third invents differently sized impulses, contradicting the all-or-none law; and the fourth misplaces the anaesthetic's action at synapses, when local anaesthetics act on axonal sodium channels, and wrongly confines demyelination to the brain.)",
+          hi: "दोनों कहानियाँ एक ही तथ्य पर टिकी हैं: तंत्रिका तंतु आपस में बदले नहीं जा सकते, और उनके बीच का अंतर ठीक-ठीक व्यास और मायलिन की मात्रा है। क्रम। स्पर्श और दाब सबसे मोटे, सबसे भारी मायलिन वाले तंतुओं पर चलते हैं, और सौ मीटर प्रति सेकंड तक चालन करते हैं। तापमान पतले तंतुओं पर चलता है। पीड़ा सबसे पतले तंतुओं पर — कुछ हल्के मायलिन वाले, कुछ बिलकुल नंगे — और एक-दो मीटर प्रति सेकंड पर चालन करती है। यह क्रम मनमाना नहीं है। जिन संकेतों को सबसे तेज़ पहुँचना चाहिए वे वे हैं जिन पर शरीर तुरंत काम करेगा, और पीड़ा, विचित्र रूप से, उनमें नहीं है; गरम कड़ाही से हाथ हटाना प्रतिवर्त से हो जाता है इससे पहले कि पीड़ा महसूस ही हो, इसीलिए जलन हाथ हट जाने के एक क्षण बाद दुखती है। निश्चेतक। औषधि तंत्रिका के बाहर इंजेक्ट होती है और भीतर विसरित होकर आती है। किसी तंतु को चुप कराने के लिए इतने चैनल इतनी लंबाई पर रोकने पड़ते हैं कि आवेग रुके हुए क्षेत्र को छलाँग न सके। छोटी अंतर-गाँठ दूरी वाला पतला तंतु छोटा निशाना प्रस्तुत करता है और कम सांद्रता से चुप हो जाता है; मोटे, भारी मायलिन वाले तंतु की गाँठों के बीच लंबी छलाँगें हैं और उसे लंबी दूरी पर अधिक औषधि चाहिए। अतः अवरोध तंतु के आकार के क्रम में आता है: पहले पीड़ा, फिर तापमान, फिर स्पर्श और दाब, और सबसे अंत में गति। पुनःप्राप्ति ठीक उलटे क्रम में चलती है, जो व्याख्या की अच्छी जाँच है और जिसे दंत रोगी स्वयं देख सकता है। इसीलिए चिकित्सक काम कर पाता है जबकि रोगी हाथ का दाब अब भी महसूस करती है — यह आश्वासन देने योग्य है, क्योंकि रोगी प्रायः डरते हैं कि कुछ भी महसूस होने का अर्थ है इंजेक्शन विफल रहा। मायलिन-हानि। यहाँ तंतु अक्षत है और उसका आवरण खो रहा है। चालन रुकता नहीं; वह बिगड़ता है। जहाँ चालन गाँठ से गाँठ छलाँग लगाता था वहाँ आवेग को अब नंगी झिल्ली पर रेंगना पड़ता है, अतः वह धीमा हो जाता है, और जहाँ क्षति गहरी हो वहाँ रुक-रुककर विफल भी हो सकता है। इससे ठीक वही बनता है जो रोगी बताता है: लक्षण जो उभरते और उतरते हैं, और शरीर गरम होने पर बदतर क्योंकि तापमान बढ़ना सीमांत चालन को और अस्थिर करता है। कटी तंत्रिका से विरोध ध्यान देने योग्य है, जो निश्चित और स्थायी कमी बनाती है। घटना-बढ़ना चालन की समस्या की छाप है, जुड़ाव की समस्या की नहीं। सामान्य बात अध्याय से आगे ले जाने योग्य है: तंत्रिका एक चीज़ नहीं है। जब कोई नैदानिक चित्र कुछ संवेदनाएँ छोड़ दे और कुछ नहीं, तो पूछने का प्रश्न यह है कि कौन-से तंतु क्या ढोते हैं, और हर क़िस्म विफल कैसे होती है। (दूसरा उत्तर व्याख्या को ग्राही की गहराई पर सरका देता है, जो यह नहीं समझा सकता कि पुनःप्राप्ति क्रम क्यों उलट देती है; तीसरा भिन्न आकार के आवेग गढ़ता है, जो सर्व-या-शून्य नियम का खंडन करता है; और चौथा निश्चेतक की क्रिया युग्मानुबंधनों पर रख देता है, जबकि स्थानीय निश्चेतक अक्षतंतु के सोडियम चैनलों पर काम करते हैं, और मायलिन-हानि को ग़लत ढंग से मस्तिष्क तक सीमित कर देता है।)",
+          mr: "दोन्ही कथा एकाच तथ्यावर उभ्या आहेत: चेतातंतू परस्पर बदलण्याजोगे नाहीत, आणि त्यांच्यातला फरक नेमका व्यास आणि मायलिनचे प्रमाण आहे. क्रम. स्पर्श आणि दाब सर्वांत जाड, सर्वांत भरपूर मायलिन असलेल्या तंतूंवरून जातात, आणि शंभर मीटर प्रति सेकंदापर्यंत वहन करतात. तापमान बारीक तंतूंवरून जाते. वेदना सर्वांत बारीक तंतूंवरून — काही थोडे मायलिन असलेले, काही अगदी उघडे — आणि एक-दोन मीटर प्रति सेकंदाने वहन करते. हा क्रम मनमानी नाही. ज्या संकेतांना सर्वांत वेगाने पोहोचायचे ते तेच ज्यांवर शरीर लगेच कृती करेल, आणि वेदना, विचित्रपणे, त्यांत नाही; गरम तव्यावरून हात काढणे प्रतिक्षिप्तपणे घडते वेदना जाणवण्याआधीच, म्हणूनच भाजणे हात निघाल्यानंतर क्षणभराने दुखते. भूल देणारे औषध. औषध चेतेबाहेर टोचले जाते आणि आत विसरून येते. एखादा तंतू गप्प करण्यासाठी इतके मार्ग इतक्या लांबीवर अडवावे लागतात की आवेग अडलेला भाग उडी मारून ओलांडू शकणार नाही. आखूड आंतर-गाठ अंतर असलेला बारीक तंतू लहान लक्ष्य पुढे करतो आणि कमी संहतीने गप्प होतो; जाड, भरपूर मायलिन असलेल्या तंतूच्या गाठींमध्ये लांब उड्या आहेत आणि त्याला लांब पल्ल्यावर अधिक औषध लागते. म्हणून अडथळा तंतूच्या आकाराच्या क्रमाने येतो: आधी वेदना, मग तापमान, मग स्पर्श आणि दाब, आणि सर्वांत शेवटी हालचाल. सावरणे नेमक्या उलट क्रमाने चालते, जी स्पष्टीकरणाची चांगली तपासणी आहे आणि जी दंत रुग्ण स्वतः पाहू शकतो. म्हणूनच वैद्य काम करू शकतो तर रुग्णाला हाताचा दाब अजूनही जाणवतो — हे आश्वासन देण्याजोगे, कारण रुग्ण बहुधा घाबरतात की काहीही जाणवणे म्हणजे इंजेक्शन फसले. मायलिन-हानी. इथे तंतू अक्षत आहे आणि त्याचे आच्छादन हरवते आहे. वहन थांबत नाही; ते बिघडते. जिथे वहन गाठीवरून गाठीवर उडी मारत होते तिथे आवेगाला आता उघड्या पटलावरून रांगावे लागते, म्हणून तो मंदावतो, आणि जिथे इजा गंभीर तिथे तो तुटकपणे अपयशीही होऊ शकतो. यातून नेमके तेच बनते जे रुग्ण सांगतो: लक्षणे जी उमटतात आणि ओसरतात, आणि शरीर उबदार असताना अधिक वाईट कारण तापमान वाढणे सीमांत वहन अधिक अस्थिर करते. कापलेल्या चेतेशी विरोध लक्षात घेण्याजोगा, जी ठरावीक आणि कायमची उणीव बनवते. कमी-अधिक होणे ही वहनाच्या अडचणीची खूण आहे, जोडणीच्या अडचणीची नव्हे. सामान्य मुद्दा प्रकरणापुढे नेण्याजोगा: चेता ही एक गोष्ट नाही. जेव्हा एखादे नैदानिक चित्र काही संवेदना सोडते आणि काही नाही, तेव्हा विचारण्याचा प्रश्न हा की कोणते तंतू काय वाहतात, आणि प्रत्येक प्रकार कसा अपयशी होतो. (दुसरे उत्तर स्पष्टीकरण ग्राहीच्या खोलीवर सरकवते, जे सावरणे क्रम का उलटवते हे समजावू शकत नाही; तिसरे वेगवेगळ्या आकाराचे आवेग रचते, जे सर्व-किंवा-शून्य नियमाचे खंडन करते; आणि चौथे भूल देणाऱ्या औषधाची क्रिया युग्मानुबंधांवर ठेवते, तर स्थानिक भूल देणारी औषधे अक्षतंतूच्या सोडियम मार्गांवर काम करतात, आणि मायलिन-हानी चुकीच्या पद्धतीने मेंदूपुरती मर्यादित करते.)",
+        },
+      },
+    ],
+  },
+
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 19 — Chemical Coordination and Integration                      */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "biology-11-chemical-coordination-and-integration",
+    subject: "BIOLOGY",
+    classLevel: 11,
+    chapter: {
+      en: "Chapter 19 — Chemical Coordination and Integration",
+      hi: "अध्याय 19 — रासायनिक समन्वय तथा एकीकरण",
+      mr: "प्रकरण 19 — रासायनिक समन्वय आणि एकात्मीकरण",
+    },
+    name: {
+      en: "Shouting at Everybody and Being Heard by One",
+      hi: "सबसे चिल्लाना और एक को सुनाई देना",
+      mr: "सर्वांवर ओरडणे आणि एकालाच ऐकू जाणे",
+    },
+    summary: {
+      en: "A hormone has no address on it: it is poured into the blood, reaches every cell in the body within a minute, and is ignored by all but the few that carry a receptor for it — so the specificity is in the listener rather than in the message. What follows from that is most of the chapter: a gland can be told to shrink by the very hormone it makes, a pair of hormones can hold one number steady by pulling against each other, and whether a signal acts in seconds or over days depends on nothing more exotic than whether it can get through a membrane.",
+      hi: "हॉर्मोन पर कोई पता नहीं लिखा होता: वह रक्त में उँडेला जाता है, एक मिनट में शरीर की हर कोशिका तक पहुँच जाता है, और उन थोड़ी-सी कोशिकाओं को छोड़कर सब उसकी अनदेखी कर देती हैं जिनमें उसका ग्राही है — अतः विशिष्टता संदेश में नहीं, सुनने वाले में है। इससे जो निकलता है वही अध्याय का अधिकांश है: ग्रंथि को सिकुड़ने का आदेश उसी हॉर्मोन से मिल सकता है जो वह बनाती है, हॉर्मोनों की एक जोड़ी एक-दूसरे के विरुद्ध खींचकर एक संख्या स्थिर रख सकती है, और संकेत सेकंडों में काम करेगा या दिनों में यह इससे अधिक अनोखी किसी बात पर निर्भर नहीं कि वह झिल्ली पार कर सकता है या नहीं।",
+      mr: "संप्रेरकावर कोणताही पत्ता लिहिलेला नसतो: ते रक्तात ओतले जाते, एका मिनिटात शरीरातल्या प्रत्येक पेशीपर्यंत पोहोचते, आणि ज्यांच्यात त्याचा ग्राही आहे त्या थोड्याशा पेशी सोडून सर्वजण त्याकडे दुर्लक्ष करतात — म्हणून विशिष्टता संदेशात नव्हे, ऐकणाऱ्यात आहे. यातून जे निघते तेच प्रकरणाचा बहुतांश भाग: ग्रंथीला आखडण्याचा आदेश ती जे संप्रेरक बनवते त्याच्याकडूनच मिळू शकतो, संप्रेरकांची एक जोडी एकमेकांविरुद्ध ओढून एक आकडा स्थिर ठेवू शकते, आणि संकेत सेकंदांत काम करेल की दिवसांत हे याहून अधिक वेगळ्या कशावर अवलंबून नाही की तो पटल ओलांडू शकतो का.",
+    },
+    position: 19,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "the-message-read-in-one-place-only",
+        name: {
+          en: "The message that goes everywhere and is read in one place",
+          hi: "वह संदेश जो हर जगह जाता है और पढ़ा एक ही जगह जाता है",
+          mr: "सर्वत्र जाणारा आणि एकाच जागी वाचला जाणारा तो संदेश",
+        },
+        kind: "definition",
+        prompt: {
+          en: "It is tipped into the bloodstream with no address on it, reaches every cell in the body within a minute, and is ignored by all of them but a few thousand. Where does the specificity live?",
+          hi: "उसे बिना कोई पता लिखे रक्तधारा में उँडेला जाता है, वह एक मिनट में शरीर की हर कोशिका तक पहुँचता है, और कुछ हज़ार को छोड़कर सब उसकी अनदेखी कर देती हैं। विशिष्टता रहती कहाँ है?",
+          mr: "त्याला कोणताही पत्ता न लिहिता रक्तप्रवाहात ओतले जाते, तो एका मिनिटात शरीरातल्या प्रत्येक पेशीपर्यंत पोहोचतो, आणि काही हजार वगळता सर्वजण त्याकडे दुर्लक्ष करतात. विशिष्टता राहते कुठे?",
+        },
+        statement: {
+          en: "A hormone is a chemical messenger poured into the blood without any address, and only cells carrying a matching receptor respond, so the specificity lies entirely in the target rather than in the message.",
+          hi: "हॉर्मोन बिना किसी पते के रक्त में उँडेला गया रासायनिक संदेशवाहक है, और केवल वही कोशिकाएँ उत्तर देती हैं जिनमें मेल खाता ग्राही है, अतः विशिष्टता पूरी तरह लक्ष्य में है, संदेश में नहीं।",
+          mr: "संप्रेरक म्हणजे कोणत्याही पत्त्याविना रक्तात ओतलेला रासायनिक संदेशवाहक, आणि केवळ ज्या पेशींत जुळणारा ग्राही आहे त्याच उत्तर देतात, म्हणून विशिष्टता पूर्णपणे लक्ष्यात आहे, संदेशात नव्हे.",
+        },
+        detail: {
+          en: "The concentrations involved are extraordinarily small, so a gland need make only micrograms a day to change the behaviour of an organ weighing kilograms.",
+          hi: "इसमें शामिल सांद्रताएँ असाधारण रूप से कम हैं, अतः किलोग्राम भार के अंग का व्यवहार बदलने को ग्रंथि को दिन में केवल माइक्रोग्राम बनाने पड़ते हैं।",
+          mr: "यात गुंतलेल्या संहती विलक्षण कमी असतात, म्हणून किलोग्रॅम वजनाच्या अवयवाचे वर्तन बदलण्यास ग्रंथीला दिवसाला केवळ मायक्रोग्रॅम बनवावे लागतात.",
+        },
+        extra: {
+          en: "The same molecule can do different things in different tissues, because what happens next is decided by the receptor and the machinery behind it, not by the hormone.",
+          hi: "वही अणु भिन्न ऊतकों में भिन्न काम कर सकता है, क्योंकि आगे क्या हो यह हॉर्मोन नहीं, ग्राही और उसके पीछे की मशीनरी तय करती है।",
+          mr: "तोच रेणू वेगवेगळ्या ऊतींत वेगवेगळी कामे करू शकतो, कारण पुढे काय घडावे हे संप्रेरक नव्हे, ग्राही आणि त्याच्यामागची यंत्रणा ठरवते.",
+        },
+        pair: {
+          left: {
+            en: "The same molecule does different things in different tissues",
+            hi: "वही अणु भिन्न ऊतकों में भिन्न काम करता है",
+            mr: "तोच रेणू वेगवेगळ्या ऊतींत वेगवेगळी कामे करतो",
+          },
+          right: {
+            en: "the message that goes everywhere and is read in one place",
+            hi: "वह संदेश जो हर जगह जाता है और पढ़ा एक ही जगह जाता है",
+            mr: "सर्वत्र जाणारा आणि एकाच जागी वाचला जाणारा तो संदेश",
+          },
+        },
+      },
+      {
+        id: "the-gland-told-what-to-do-from-above",
+        name: {
+          en: "The gland that is told what to do by the tissue above it",
+          hi: "वह ग्रंथि जिसे ऊपर का ऊतक बताता है कि क्या करना है",
+          mr: "वरची ऊती जिला काय करायचे ते सांगते ती ग्रंथी",
+        },
+        kind: "control",
+        prompt: {
+          en: "It was called the master gland for a century, and then it turned out to be taking instructions through a short private set of blood vessels from a piece of brain the size of an almond. Which relationship is this?",
+          hi: "एक सदी तक उसे प्रमुख ग्रंथि कहा गया, और फिर पता चला कि वह बादाम के आकार के मस्तिष्क-टुकड़े से रक्त वाहिनियों के एक छोटे निजी जाल के ज़रिए आदेश ले रही थी। यह कौन-सा संबंध है?",
+          mr: "शतकभर तिला प्रमुख ग्रंथी म्हटले गेले, आणि मग कळले की ती बदामाएवढ्या मेंदूच्या तुकड्याकडून रक्तवाहिन्यांच्या एका छोट्या खासगी जाळ्यातून आदेश घेते आहे. हा कोणता संबंध?",
+        },
+        statement: {
+          en: "The hypothalamus controls the pituitary by sending releasing and inhibiting hormones down a short private portal circulation, which is how the nervous system gives the endocrine system its orders.",
+          hi: "हाइपोथैलेमस पीयूष ग्रंथि को एक छोटे निजी निवाहिका परिसंचरण से निर्मोचक और संदमक हॉर्मोन भेजकर नियंत्रित करता है, और इसी तरह तंत्रिका तंत्र अंतःस्रावी तंत्र को अपने आदेश देता है।",
+          mr: "हायपोथॅलमस पीयूष ग्रंथीला एका छोट्या खासगी निवाहिका अभिसरणातून निर्मोचक आणि संदमक संप्रेरके पाठवून नियंत्रित करतो, आणि याच पद्धतीने चेतासंस्था अंतःस्रावी संस्थेला आपले आदेश देते.",
+        },
+        detail: {
+          en: "The arrangement is the junction of the two great control systems, one working in milliseconds and the other over hours, and it is what lets a thought change a hormone level.",
+          hi: "यह व्यवस्था दो महान नियंत्रण तंत्रों की संधि है, एक मिलीसेकंडों में काम करता और दूसरा घंटों में, और इसी से कोई विचार हॉर्मोन का स्तर बदल पाता है।",
+          mr: "ही व्यवस्था दोन महान नियंत्रण संस्थांचा जोड आहे, एक मिलिसेकंदांत काम करणारी आणि दुसरी तासांत, आणि यामुळेच एखादा विचार संप्रेरकाची पातळी बदलू शकतो.",
+        },
+        extra: {
+          en: "The rear part of the pituitary makes nothing at all: it stores and releases two hormones manufactured in the hypothalamus and carried down inside nerve fibres.",
+          hi: "पीयूष ग्रंथि का पिछला भाग कुछ बनाता ही नहीं: वह हाइपोथैलेमस में बने और तंत्रिका तंतुओं के भीतर नीचे लाए गए दो हॉर्मोन जमा करके छोड़ता है।",
+          mr: "पीयूष ग्रंथीचा मागचा भाग काहीच बनवत नाही: तो हायपोथॅलमसमध्ये बनलेली आणि चेतातंतूंतून खाली आणलेली दोन संप्रेरके साठवून सोडतो.",
+        },
+        pair: {
+          left: {
+            en: "Its rear part manufactures nothing and only stores what arrives",
+            hi: "उसका पिछला भाग कुछ नहीं बनाता, केवल आया हुआ जमा करता है",
+            mr: "त्याचा मागचा भाग काहीच बनवत नाही, केवळ आलेले साठवतो",
+          },
+          right: {
+            en: "the gland that is told what to do by the tissue above it",
+            hi: "वह ग्रंथि जिसे ऊपर का ऊतक बताता है कि क्या करना है",
+            mr: "वरची ऊती जिला काय करायचे ते सांगते ती ग्रंथी",
+          },
+        },
+      },
+      {
+        id: "the-loop-that-switches-off-its-own-cause",
+        name: {
+          en: "The loop that switches off its own cause",
+          hi: "वह पाश जो अपने ही कारण को बंद कर देता है",
+          mr: "स्वतःच्याच कारणाला बंद करणारा तो फास",
+        },
+        kind: "control",
+        prompt: {
+          en: "The product of the chain travels back to the two places that ordered it and tells them to stop ordering, so the level holds steady without anybody having to decide what it should be. What is this?",
+          hi: "शृंखला का उत्पाद उन्हीं दो जगहों पर लौटता है जिन्होंने उसे मँगाया था और उन्हें मँगाना बंद करने को कहता है, अतः स्तर स्थिर रहता है बिना किसी के यह तय किए कि वह कितना होना चाहिए। यह क्या है?",
+          mr: "साखळीचे उत्पादन ज्या दोन जागांनी ते मागवले होते तिथेच परतते आणि त्यांना मागवणे थांबवायला सांगते, म्हणून पातळी स्थिर राहते कोणी ती किती असावी हे न ठरवताच. हे काय?",
+        },
+        statement: {
+          en: "Negative feedback is the arrangement in which the final hormone inhibits the two glands that stimulated its production, so the level of that hormone regulates itself.",
+          hi: "ऋणात्मक पुनर्भरण वह व्यवस्था है जिसमें अंतिम हॉर्मोन उन्हीं दो ग्रंथियों को दबा देता है जिन्होंने उसका बनना उकसाया था, अतः उस हॉर्मोन का स्तर स्वयं को नियंत्रित करता है।",
+          mr: "ऋण पुनर्भरण ही अशी व्यवस्था जिच्यात अंतिम संप्रेरक ज्या दोन ग्रंथींनी त्याची निर्मिती चेतवली त्यांनाच दाबते, म्हणून त्या संप्रेरकाची पातळी स्वतःचे नियमन करते.",
+        },
+        detail: {
+          en: "The set point emerges from the loop rather than being stored anywhere: no cell knows the target number, and the level settles where inhibition balances stimulation.",
+          hi: "निर्धारित बिंदु कहीं जमा नहीं होता, पाश से ही उभरता है: किसी कोशिका को लक्ष्य संख्या पता नहीं, और स्तर वहाँ जाकर बैठता है जहाँ दमन उत्तेजन को संतुलित कर दे।",
+          mr: "निर्धारित बिंदू कुठेही साठवलेला नसतो, फासातूनच उमटतो: कोणत्याही पेशीला लक्ष्य आकडा माहीत नाही, आणि पातळी तिथे स्थिरावते जिथे दमन उत्तेजनाला समतोल करते.",
+        },
+        extra: {
+          en: "The same logic explains an unwanted result: supply the final hormone from outside for long enough and the glands above it, left with nothing to do, shrink.",
+          hi: "यही तर्क एक अनचाहा परिणाम भी समझाता है: अंतिम हॉर्मोन बाहर से पर्याप्त समय तक दो और उससे ऊपर की ग्रंथियाँ, जिनके पास करने को कुछ नहीं बचता, सिकुड़ जाती हैं।",
+          mr: "हाच तर्क एक नकोसा परिणामही समजावतो: अंतिम संप्रेरक बाहेरून पुरेसा काळ द्या आणि त्याच्यावरच्या ग्रंथी, ज्यांच्याकडे करायला काही उरत नाही, आकसतात.",
+        },
+        pair: {
+          left: {
+            en: "Supply it from outside and the glands above it shrink",
+            hi: "उसे बाहर से दो और ऊपर की ग्रंथियाँ सिकुड़ जाती हैं",
+            mr: "तो बाहेरून द्या आणि वरच्या ग्रंथी आकसतात",
+          },
+          right: {
+            en: "the loop that switches off its own cause",
+            hi: "वह पाश जो अपने ही कारण को बंद कर देता है",
+            mr: "स्वतःच्याच कारणाला बंद करणारा तो फास",
+          },
+        },
+      },
+      {
+        id: "two-hormones-that-argue-about-one-number",
+        name: {
+          en: "Two hormones that argue about one number",
+          hi: "वे दो हॉर्मोन जो एक ही संख्या पर बहस करते हैं",
+          mr: "एकाच आकड्यावर वाद घालणारी ती दोन संप्रेरके",
+        },
+        kind: "control",
+        prompt: {
+          en: "You eat a large meal and then fast for a day, and the level of one substance in your blood barely moves through either — because two opposed signals from the same organ are pulling it in opposite directions all the while. What pair is this?",
+          hi: "तुम भरपेट खाते हो और फिर दिन भर उपवास करते हो, और दोनों में तुम्हारे रक्त के एक पदार्थ का स्तर मुश्किल से हिलता है — क्योंकि उसी अंग से आते दो विरोधी संकेत उसे पूरे समय उलटी दिशाओं में खींचते रहते हैं। यह कौन-सी जोड़ी है?",
+          mr: "तुम्ही भरपेट जेवता आणि मग दिवसभर उपवास करता, आणि दोन्हींत तुमच्या रक्तातल्या एका पदार्थाची पातळी जेमतेम हलते — कारण त्याच अवयवाकडून येणारे दोन विरोधी संकेत तिला अख्खा वेळ उलट्या दिशांना ओढत असतात. ही कोणती जोडी?",
+        },
+        statement: {
+          en: "Insulin and glucagon are an antagonistic pair from the pancreas: insulin lowers blood glucose by driving it into cells and into storage, and glucagon raises it by releasing the store again.",
+          hi: "इंसुलिन और ग्लूकैगॉन अग्न्याशय की विरोधी जोड़ी हैं: इंसुलिन ग्लूकोस को कोशिकाओं में और भंडार में ठेलकर रक्त शर्करा घटाता है, और ग्लूकैगॉन भंडार फिर छुड़ाकर उसे बढ़ाता है।",
+          mr: "इन्शुलिन आणि ग्लुकागॉन ही स्वादुपिंडाची विरोधी जोडी: इन्शुलिन ग्लुकोज पेशींत आणि साठ्यात ढकलून रक्तशर्करा घटवते, आणि ग्लुकागॉन साठा पुन्हा सोडवून ती वाढवते.",
+        },
+        detail: {
+          en: "A pair pulling in opposite directions can hold a value steadier than a single signal could, because a correction is available in both directions instead of only one.",
+          hi: "उलटी दिशाओं में खींचती जोड़ी किसी मान को अकेले संकेत से अधिक स्थिर रख सकती है, क्योंकि सुधार केवल एक नहीं, दोनों दिशाओं में उपलब्ध रहता है।",
+          mr: "उलट दिशांना ओढणारी जोडी एखादे मूल्य एकट्या संकेताहून अधिक स्थिर ठेवू शकते, कारण दुरुस्ती केवळ एकाच नव्हे, दोन्ही दिशांना उपलब्ध असते.",
+        },
+        extra: {
+          en: "The pancreas is two organs in one tissue: most of it pours digestive enzymes into a duct, and scattered islands within it release these hormones into the blood instead.",
+          hi: "अग्न्याशय एक ही ऊतक में दो अंग है: उसका अधिकांश पाचक एंज़ाइम एक वाहिनी में उँडेलता है, और उसी में बिखरे द्वीप इसके बजाय ये हॉर्मोन रक्त में छोड़ते हैं।",
+          mr: "स्वादुपिंड एकाच ऊतीत दोन अवयव आहे: त्याचा बहुतांश भाग पाचक विकरे एका नलिकेत ओततो, आणि त्यातच विखुरलेली बेटे त्याऐवजी ही संप्रेरके रक्तात सोडतात.",
+        },
+        pair: {
+          left: {
+            en: "One tissue pouring enzymes into a duct and hormones into the blood",
+            hi: "एक ही ऊतक वाहिनी में एंज़ाइम और रक्त में हॉर्मोन उँडेलता",
+            mr: "एकच ऊती नलिकेत विकरे आणि रक्तात संप्रेरके ओतणारी",
+          },
+          right: {
+            en: "two hormones that argue about one number",
+            hi: "वे दो हॉर्मोन जो एक ही संख्या पर बहस करते हैं",
+            mr: "एकाच आकड्यावर वाद घालणारी ती दोन संप्रेरके",
+          },
+        },
+      },
+      {
+        id: "the-gland-with-two-different-ancestries",
+        name: {
+          en: "The gland with two different ancestries",
+          hi: "वह ग्रंथि जिसके दो भिन्न वंश हैं",
+          mr: "दोन वेगळे वंश असलेली ती ग्रंथी",
+        },
+        kind: "classification",
+        prompt: {
+          en: "Its outer part answers a pituitary hormone over hours and its inner part answers a nerve in under a second, and the two developed from entirely different embryonic tissues that merely ended up in the same capsule. Which gland is this?",
+          hi: "उसका बाहरी भाग पीयूष हॉर्मोन का उत्तर घंटों में देता है और भीतरी भाग किसी तंत्रिका का उत्तर सेकंड से कम में, और दोनों बिलकुल भिन्न भ्रूणीय ऊतकों से विकसित हुए जो बस एक ही संपुट में आ बैठे। यह कौन-सी ग्रंथि है?",
+          mr: "तिचा बाहेरचा भाग पीयूष संप्रेरकाला तासांत उत्तर देतो आणि आतला भाग एखाद्या चेतेला सेकंदाहून कमी वेळात, आणि दोन्ही अगदी वेगळ्या भ्रूणीय ऊतींतून विकसित झाले जे फक्त एकाच संपुटात येऊन बसले. ही कोणती ग्रंथी?",
+        },
+        statement: {
+          en: "The adrenal gland has a cortex that secretes steroid hormones under pituitary control and a medulla that is really modified nervous tissue releasing adrenaline directly on a nerve signal.",
+          hi: "अधिवृक्क ग्रंथि में एक वल्कुट है जो पीयूष के नियंत्रण में स्टीरॉयड हॉर्मोन स्रवित करता है और एक मध्यांश जो वस्तुतः रूपांतरित तंत्रिका ऊतक है और तंत्रिका संकेत पर सीधे एड्रिनैलिन छोड़ता है।",
+          mr: "अधिवृक्क ग्रंथीत एक बाह्यक आहे जो पीयूषच्या नियंत्रणाखाली स्टेरॉइड संप्रेरके स्रवतो आणि एक मध्यांश जो प्रत्यक्षात रूपांतरित चेताऊती असून चेता संकेतावर थेट अ‍ॅड्रिनॅलिन सोडतो.",
+        },
+        detail: {
+          en: "The two halves therefore work on entirely different timescales, which is why fright is instant and the response to a week of hardship is not.",
+          hi: "अतः दोनों आधे बिलकुल भिन्न कालमानों पर काम करते हैं, इसीलिए डर तात्कालिक है और सप्ताह भर की कठिनाई की अनुक्रिया नहीं।",
+          mr: "म्हणून दोन्ही अर्धे भाग अगदी वेगळ्या कालमानांवर काम करतात, म्हणूनच भीती तात्काळ आहे आणि आठवडाभराच्या हालअपेष्टेचा प्रतिसाद नाही.",
+        },
+        extra: {
+          en: "The medulla is the one endocrine tissue that behaves like a nerve ending with no muscle to talk to, releasing its transmitter into the blood instead of across a gap.",
+          hi: "मध्यांश वह इकलौता अंतःस्रावी ऊतक है जो ऐसे तंत्रिका-सिरे की तरह बरतता है जिसके पास कहने को कोई पेशी नहीं, और अपना संवाहक दरार के पार नहीं, रक्त में छोड़ देता है।",
+          mr: "मध्यांश ही ती एकमेव अंतःस्रावी ऊती जी अशा चेता-टोकासारखी वागते ज्याच्याजवळ सांगायला कोणता स्नायू नाही, आणि आपला संवाहक फटीपलीकडे नव्हे, रक्तात सोडते.",
+        },
+        pair: {
+          left: {
+            en: "A nerve ending with no muscle to talk to",
+            hi: "ऐसा तंत्रिका-सिरा जिसके पास कहने को कोई पेशी नहीं",
+            mr: "सांगायला कोणता स्नायू नसलेले चेता-टोक",
+          },
+          right: {
+            en: "the gland with two different ancestries",
+            hi: "वह ग्रंथि जिसके दो भिन्न वंश हैं",
+            mr: "दोन वेगळे वंश असलेली ती ग्रंथी",
+          },
+        },
+      },
+      {
+        id: "the-signal-that-does-not-stop-at-the-door",
+        name: {
+          en: "The signal that does not stop at the door",
+          hi: "वह संकेत जो दरवाज़े पर नहीं रुकता",
+          mr: "दारावर न थांबणारा तो संकेत",
+        },
+        kind: "contrast",
+        prompt: {
+          en: "One kind of messenger has to shout through the wall and be answered by relays inside; the other walks straight through the wall and goes to the filing cabinet itself. What distinction is this?",
+          hi: "एक क़िस्म के संदेशवाहक को भित्ति के पार चिल्लाना पड़ता है और भीतर के प्रसारक उसका उत्तर देते हैं; दूसरा सीधे भित्ति पार करके स्वयं फ़ाइलों की अलमारी तक चला जाता है। यह कौन-सा भेद है?",
+          mr: "एका प्रकारच्या संदेशवाहकाला भिंतीपलीकडे ओरडावे लागते आणि आतले प्रसारक त्याला उत्तर देतात; दुसरा सरळ भिंत ओलांडून स्वतःच फायलींच्या कपाटापर्यंत जातो. हा कोणता फरक?",
+        },
+        statement: {
+          en: "Peptide hormones cannot cross the membrane and bind receptors on the surface that trigger a second messenger inside, while steroid hormones pass straight through and act on the genes in the nucleus.",
+          hi: "पेप्टाइड हॉर्मोन झिल्ली पार नहीं कर सकते और सतह के ग्राहियों से बँधते हैं जो भीतर एक द्वितीयक संदेशवाहक छेड़ देते हैं, जबकि स्टीरॉयड हॉर्मोन सीधे पार निकलकर केंद्रक के जीनों पर काम करते हैं।",
+          mr: "पेप्टाइड संप्रेरके पटल ओलांडू शकत नाहीत आणि पृष्ठभागावरील ग्राहींना बांधतात जे आत एक दुय्यम संदेशवाहक चेतवतात, तर स्टेरॉइड संप्रेरके सरळ पलीकडे जाऊन केंद्रकातल्या जनुकांवर काम करतात.",
+        },
+        detail: {
+          en: "The difference in route produces a difference in timing: a surface signal acts within seconds and fades within minutes, while a gene-level signal takes hours to appear and days to wear off.",
+          hi: "रास्ते का अंतर समय का अंतर बना देता है: सतही संकेत सेकंडों में काम करता है और मिनटों में मिट जाता है, जबकि जीन-स्तरीय संकेत उभरने में घंटे और उतरने में दिन लेता है।",
+          mr: "मार्गातला फरक वेळेचा फरक बनवतो: पृष्ठभागावरचा संकेत सेकंदांत काम करतो आणि मिनिटांत विरतो, तर जनुक-पातळीवरचा संकेत उमटायला तास आणि उतरायला दिवस घेतो.",
+        },
+        extra: {
+          en: "It also decides how a medicine can be given: a protein hormone swallowed would be digested like any meal, while a steroid survives the stomach and can be taken as a tablet.",
+          hi: "यह भी तय करता है कि औषधि कैसे दी जा सकती है: निगला गया प्रोटीन हॉर्मोन किसी भी भोजन की तरह पच जाता, जबकि स्टीरॉयड आमाशय झेल लेता है और गोली के रूप में लिया जा सकता है।",
+          mr: "हेच ठरवते की औषध कसे देता येईल: गिळलेले प्रथिन संप्रेरक कोणत्याही अन्नासारखे पचले असते, तर स्टेरॉइड जठर सहन करते आणि गोळीच्या रूपात घेता येते.",
+        },
+        pair: {
+          left: {
+            en: "One can be swallowed as a tablet and the other must be injected",
+            hi: "एक गोली के रूप में निगला जा सकता है और दूसरा इंजेक्ट करना पड़ता है",
+            mr: "एक गोळीच्या रूपात गिळता येते आणि दुसरे टोचावेच लागते",
+          },
+          right: {
+            en: "the signal that does not stop at the door",
+            hi: "वह संकेत जो दरवाज़े पर नहीं रुकता",
+            mr: "दारावर न थांबणारा तो संकेत",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A patient has taken a thyroid hormone tablet every morning for three years. A scan now shows that her own thyroid has shrunk. She stops the tablets abruptly, expecting her gland to resume, and instead becomes severely unwell over the following weeks. A student says the medicine must have damaged the gland. What actually happened, and why does stopping suddenly make it worse rather than better?",
+          hi: "एक रोगी तीन वर्ष से हर सुबह थायरॉयड हॉर्मोन की गोली ले रही है। अब स्कैन दिखाता है कि उसकी अपनी थायरॉयड सिकुड़ गई है। वह गोलियाँ अचानक बंद कर देती है, यह अपेक्षा करते हुए कि उसकी ग्रंथि फिर चालू हो जाएगी, और उसके बजाय अगले हफ़्तों में गंभीर रूप से अस्वस्थ हो जाती है। विद्यार्थी कहता है कि औषधि ने ग्रंथि को क्षति पहुँचाई होगी। वस्तुतः हुआ क्या, और अचानक बंद करना बेहतर के बजाय बदतर क्यों करता है?",
+          mr: "एक रुग्ण तीन वर्षांपासून दररोज सकाळी थायरॉइड संप्रेरकाची गोळी घेते आहे. आता स्कॅन दाखवते की तिची स्वतःची थायरॉइड आकसली आहे. ती गोळ्या अचानक थांबवते, आपली ग्रंथी पुन्हा सुरू होईल अशी अपेक्षा ठेवून, आणि त्याऐवजी पुढच्या आठवड्यांत गंभीरपणे आजारी पडते. विद्यार्थी म्हणतो की औषधाने ग्रंथीला इजा केली असावी. प्रत्यक्षात काय घडले, आणि अचानक थांबवणे बरे होण्याऐवजी वाईट का करते?",
+        },
+        choices: [
+          {
+            en: "Nothing was damaged; the gland was switched off by the loop it belongs to. Thyroid hormone inhibits both the hypothalamus and the pituitary, so a tablet arriving every morning is read as the gland having already done its work. The pituitary stops sending its stimulating hormone, the thyroid has nothing to respond to, and a tissue that is not being stimulated atrophies — the shrinkage is disuse, not injury. Stopping abruptly makes things worse because the suppression takes weeks to lift while the tablet's contribution disappears at once, leaving her with neither source. The remedy is to taper, letting the pituitary wake up before the supply is withdrawn",
+            hi: "कुछ क्षतिग्रस्त नहीं हुआ; ग्रंथि को उसी पाश ने बंद किया जिसकी वह सदस्य है। थायरॉयड हॉर्मोन हाइपोथैलेमस और पीयूष दोनों को दबाता है, अतः हर सुबह आती गोली को यह पढ़ा जाता है कि ग्रंथि अपना काम कर ही चुकी है। पीयूष अपना उत्तेजक हॉर्मोन भेजना बंद कर देता है, थायरॉयड के पास उत्तर देने को कुछ नहीं बचता, और जिस ऊतक को उत्तेजित न किया जाए वह क्षीण हो जाता है — सिकुड़ना अप्रयोग है, चोट नहीं। अचानक बंद करना इसलिए बिगाड़ता है कि दमन उतरने में हफ़्ते लगते हैं जबकि गोली का योगदान एक ही झटके में मिट जाता है, और उसके पास कोई भी स्रोत नहीं बचता। उपाय है धीरे-धीरे घटाना, ताकि आपूर्ति हटने से पहले पीयूष जाग जाए",
+            mr: "काहीही खराब झाले नाही; ग्रंथी ज्या फासाची ती सदस्य आहे त्यानेच बंद केली. थायरॉइड संप्रेरक हायपोथॅलमस आणि पीयूष दोन्ही दाबते, म्हणून दररोज सकाळी येणारी गोळी अशी वाचली जाते की ग्रंथीने आपले काम केलेच आहे. पीयूष आपले उत्तेजक संप्रेरक पाठवणे थांबवते, थायरॉइडकडे उत्तर द्यायला काहीच उरत नाही, आणि जी ऊती उत्तेजित होत नाही ती क्षीण होते — आकसणे हे अप्रयोग आहे, इजा नव्हे. अचानक थांबवणे यासाठी बिघडवते की दमन उतरायला आठवडे लागतात तर गोळीचे योगदान एकाच झटक्यात नाहीसे होते, आणि तिच्याजवळ कोणताही स्रोत उरत नाही. उपाय म्हणजे हळूहळू घटवणे, जेणेकरून पुरवठा काढण्याआधी पीयूष जागे व्हावे",
+          },
+          {
+            en: "The tablet chemically corroded the gland over three years, and the illness on stopping is the damage becoming apparent once the replacement is no longer masking it",
+            hi: "गोली ने तीन वर्षों में ग्रंथि को रासायनिक रूप से गला दिया, और बंद करने पर बीमारी वही क्षति है जो प्रतिस्थापन के हटते ही दिखने लगती है",
+            mr: "गोळीने तीन वर्षांत ग्रंथी रासायनिकरीत्या झिजवली, आणि थांबवल्यावरचा आजार म्हणजे तीच इजा जी बदली हटताच दिसू लागते",
+          },
+          {
+            en: "The gland shrank because it was overworked and exhausted itself trying to keep up with the extra hormone, and stopping is bad because it now has to work even harder from an exhausted state",
+            hi: "ग्रंथि इसलिए सिकुड़ी कि वह अतिरिक्त हॉर्मोन के साथ चलने की कोशिश में अति-परिश्रम करके थक गई, और बंद करना इसलिए बुरा है कि अब उसे थकी अवस्था से और अधिक मेहनत करनी पड़ेगी",
+            mr: "ग्रंथी यासाठी आकसली की ती अधिकच्या संप्रेरकाशी जुळवून घेण्याच्या प्रयत्नात अतिश्रमाने थकली, आणि थांबवणे यासाठी वाईट की आता तिला थकलेल्या अवस्थेतून आणखी मेहनत करावी लागेल",
+          },
+          {
+            en: "Feedback runs the other way for the thyroid: high hormone stimulates the pituitary further, so the tablets drove the gland to exhaustion, and stopping removes the stimulus it had come to depend on",
+            hi: "थायरॉयड के लिए पुनर्भरण उलटा चलता है: ऊँचा हॉर्मोन पीयूष को और उत्तेजित करता है, अतः गोलियों ने ग्रंथि को थकान तक ठेला, और बंद करना वह उद्दीपन हटा देता है जिस पर वह निर्भर हो चुकी थी",
+            mr: "थायरॉइडसाठी पुनर्भरण उलटे चालते: उच्च संप्रेरक पीयूषला अधिक उत्तेजित करते, म्हणून गोळ्यांनी ग्रंथीला थकव्यापर्यंत ढकलले, आणि थांबवणे ते उद्दीपन काढून टाकते ज्यावर ती अवलंबून झाली होती",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The student's explanation is the intuitive one and it has the mechanism exactly backwards. Nothing corroded the gland; the gland was told to stop, by the same control loop that normally runs it. THE LOOP. Thyroid function is a three-storey arrangement. The hypothalamus releases a hormone that tells the pituitary to release a second one, and that second hormone tells the thyroid to make its own. The finished thyroid hormone then travels back and inhibits BOTH storeys above it. This is negative feedback, and it has a property worth stating plainly: no cell in the chain knows what the right blood level is. The level simply settles where inhibition from below balances stimulation from above. WHAT A DAILY TABLET DOES. The loop cannot tell where the hormone came from. A tablet dissolving in the gut delivers exactly the molecule the thyroid would have made, so the hypothalamus and pituitary read a well-supplied blood and reduce their output accordingly. The pituitary's stimulating hormone falls towards nothing. The thyroid, receiving no instruction, makes nothing — and a gland that is not being stimulated does not merely idle. Endocrine tissue depends on its trophic signal for maintenance, so over months it atrophies. The shrinkage is disuse, and it is reversible, which is the practical difference between this answer and the student's. WHY STOPPING SUDDENLY IS DANGEROUS. Two supplies have to hand over and their timescales do not match. Withdrawing the tablet removes today's hormone today. Waking the suppressed axis takes weeks: the pituitary must resume secretion, the thyroid must regrow its capacity, and only then does its output rise. In the gap the patient has neither the tablet nor a working gland, and hypothyroidism sets in. The remedy follows directly from the mechanism — reduce the dose in steps, so the loop lifts its suppression while a supply is still arriving. THE SAME LOGIC GENERALISES, which is the reason this question is worth doing rather than memorising. A patient on long-term steroid tablets suppresses the adrenal cortex in exactly the same way, and stopping abruptly can be fatal rather than merely unpleasant, which is why steroid courses are tapered and why patients carry a card. The general shape: whenever you supply the end product of a feedback loop from outside, the loop reads it as success and shuts down the machinery that would have made it. (The second answer invents a corrosive action no thyroid hormone has; the third gets the direction wrong, since the gland was doing LESS work, not more; and the fourth reverses the sign of the feedback, which would make the system unstable and could not produce a shrunken gland at all.)",
+          hi: "विद्यार्थी की व्याख्या सहज लगती है और उसने तंत्र ठीक उलटा पकड़ा है। ग्रंथि को किसी ने गलाया नहीं; ग्रंथि को रुकने को कहा गया, और वह भी उसी नियंत्रण-पाश ने जो सामान्यतः उसे चलाता है। पाश। थायरॉयड का कार्य तीन-मंज़िला व्यवस्था है। हाइपोथैलेमस ऐसा हॉर्मोन छोड़ता है जो पीयूष को दूसरा छोड़ने को कहता है, और वह दूसरा हॉर्मोन थायरॉयड को अपना बनाने को कहता है। फिर तैयार थायरॉयड हॉर्मोन लौटकर अपने ऊपर की दोनों मंज़िलों को दबा देता है। यही ऋणात्मक पुनर्भरण है, और उसका एक गुण साफ़ कहने योग्य है: शृंखला की किसी कोशिका को पता नहीं कि सही रक्त-स्तर कितना है। स्तर बस वहाँ बैठ जाता है जहाँ नीचे से आता दमन ऊपर से आते उत्तेजन को संतुलित कर दे। दैनिक गोली करती क्या है। पाश यह नहीं बता सकता कि हॉर्मोन आया कहाँ से। आँत में घुलती गोली ठीक वही अणु देती है जो थायरॉयड बनाता, अतः हाइपोथैलेमस और पीयूष भलीभाँति सिंचित रक्त पढ़ते हैं और उसी अनुसार अपना उत्पादन घटा देते हैं। पीयूष का उत्तेजक हॉर्मोन शून्य की ओर गिरता है। थायरॉयड, जिसे कोई निर्देश नहीं मिलता, कुछ नहीं बनाता — और जिस ग्रंथि को उत्तेजित न किया जाए वह केवल निठल्ली नहीं बैठती। अंतःस्रावी ऊतक अपने पोषी संकेत पर बने रहने के लिए निर्भर है, अतः महीनों में वह क्षीण हो जाती है। सिकुड़ना अप्रयोग है, और वह उत्क्रमणीय है, और यही इस उत्तर तथा विद्यार्थी के उत्तर के बीच का व्यावहारिक अंतर है। अचानक बंद करना ख़तरनाक क्यों है। दो आपूर्तियों को हस्तांतरण करना है और उनके कालमान मेल नहीं खाते। गोली हटाना आज का हॉर्मोन आज ही हटा देता है। दबे हुए अक्ष को जगाने में हफ़्ते लगते हैं: पीयूष को स्राव फिर शुरू करना है, थायरॉयड को अपनी क्षमता फिर उगानी है, और तभी उसका उत्पादन चढ़ता है। उस अंतराल में रोगी के पास न गोली है न काम करती ग्रंथि, और अल्पथायरॉयदिता उभर आती है। उपाय सीधे तंत्र से निकलता है — मात्रा चरणों में घटाओ, ताकि आपूर्ति आती रहते हुए पाश अपना दमन उठा ले। यही तर्क सामान्य है, और इसीलिए यह प्रश्न रटने के बजाय करने योग्य है। लंबे समय तक स्टीरॉयड गोलियाँ लेता रोगी अधिवृक्क वल्कुट को ठीक इसी तरह दबा देता है, और वहाँ अचानक बंद करना केवल अप्रिय नहीं, प्राणघातक हो सकता है, इसीलिए स्टीरॉयड की मात्रा धीरे-धीरे घटाई जाती है और रोगी एक कार्ड रखते हैं। सामान्य आकार: जब भी तुम किसी पुनर्भरण पाश का अंतिम उत्पाद बाहर से दो, पाश उसे सफलता पढ़ता है और उसे बनाने वाली मशीनरी बंद कर देता है। (दूसरा उत्तर ऐसी क्षरणकारी क्रिया गढ़ता है जो किसी थायरॉयड हॉर्मोन में नहीं; तीसरा दिशा ग़लत पकड़ता है, क्योंकि ग्रंथि कम काम कर रही थी, अधिक नहीं; और चौथा पुनर्भरण का चिह्न उलट देता है, जो तंत्र को अस्थिर कर देता और सिकुड़ी ग्रंथि बना ही नहीं सकता था।)",
+          mr: "विद्यार्थ्याचे स्पष्टीकरण सहज वाटते आणि त्याने यंत्रणा नेमकी उलटी पकडली आहे. ग्रंथी कोणी झिजवली नाही; ग्रंथीला थांबायला सांगितले गेले, आणि तेही त्याच नियंत्रण-फासाने जो सामान्यतः तिला चालवतो. फास. थायरॉइडचे कार्य ही तीनमजली व्यवस्था. हायपोथॅलमस असे संप्रेरक सोडतो जे पीयूषला दुसरे सोडायला सांगते, आणि ते दुसरे संप्रेरक थायरॉइडला स्वतःचे बनवायला सांगते. मग तयार थायरॉइड संप्रेरक परतून आपल्यावरचे दोन्ही मजले दाबते. हेच ऋण पुनर्भरण, आणि त्याचा एक गुणधर्म स्पष्ट सांगण्याजोगा: साखळीतल्या कोणत्याही पेशीला माहीत नाही की बरोबर रक्तपातळी किती. पातळी फक्त तिथे स्थिरावते जिथे खालून येणारे दमन वरून येणाऱ्या उत्तेजनाला समतोल करते. दैनंदिन गोळी करते काय. फास हे सांगू शकत नाही की संप्रेरक आले कुठून. आतड्यात विरघळणारी गोळी नेमका तोच रेणू देते जो थायरॉइडने बनवला असता, म्हणून हायपोथॅलमस आणि पीयूष उत्तम पुरवठा असलेले रक्त वाचतात आणि त्यानुसार आपले उत्पादन घटवतात. पीयूषचे उत्तेजक संप्रेरक शून्याकडे उतरते. थायरॉइड, जिला कोणताही निर्देश मिळत नाही, काहीच बनवत नाही — आणि जी ग्रंथी उत्तेजित होत नाही ती केवळ रिकामी बसत नाही. अंतःस्रावी ऊती टिकून राहण्यासाठी आपल्या पोषी संकेतावर अवलंबून असते, म्हणून महिन्यांत ती क्षीण होते. आकसणे हे अप्रयोग आहे, आणि ते उलटवता येण्याजोगे आहे, आणि हाच या उत्तरातला आणि विद्यार्थ्याच्या उत्तरातला व्यावहारिक फरक. अचानक थांबवणे धोकादायक का. दोन पुरवठ्यांची अदलाबदल व्हायची आहे आणि त्यांचे कालमान जुळत नाहीत. गोळी काढणे आजचे संप्रेरक आजच काढते. दबलेला अक्ष जागवायला आठवडे लागतात: पीयूषला स्राव पुन्हा सुरू करायचा आहे, थायरॉइडला आपली क्षमता पुन्हा वाढवायची आहे, आणि तेव्हाच तिचे उत्पादन चढते. त्या अंतरात रुग्णाजवळ ना गोळी असते ना काम करणारी ग्रंथी, आणि अल्पथायरॉइडता उमटते. उपाय थेट यंत्रणेतून निघतो — मात्रा टप्प्याटप्प्याने घटवा, जेणेकरून पुरवठा येत असतानाच फासाने आपले दमन उचलावे. हाच तर्क सामान्य आहे, आणि म्हणूनच हा प्रश्न पाठ करण्याऐवजी करण्याजोगा. दीर्घकाळ स्टेरॉइड गोळ्या घेणारा रुग्ण अधिवृक्क बाह्यक नेमके याच पद्धतीने दाबतो, आणि तिथे अचानक थांबवणे केवळ अप्रिय नव्हे, प्राणघातक ठरू शकते, म्हणूनच स्टेरॉइडची मात्रा हळूहळू घटवली जाते आणि रुग्ण एक कार्ड बाळगतात. सामान्य आकार: जेव्हा जेव्हा तुम्ही एखाद्या पुनर्भरण फासाचे अंतिम उत्पादन बाहेरून द्याल, फास ते यश म्हणून वाचतो आणि ते बनवणारी यंत्रणा बंद करतो. (दुसरे उत्तर अशी झिजवणारी क्रिया रचते जी कोणत्याही थायरॉइड संप्रेरकात नाही; तिसरे दिशा चुकीची पकडते, कारण ग्रंथी कमी काम करत होती, अधिक नव्हे; आणि चौथे पुनर्भरणाचे चिन्ह उलटवते, जे यंत्रणा अस्थिर केले असते आणि आकसलेली ग्रंथी बनवूच शकले नसते.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A diabetic patient must inject insulin and cannot take it as a tablet, however convenient that would be. A patient on cortisone for an inflamed joint swallows it as a tablet without difficulty. Both are hormones, both are made by glands, both circulate in blood. A student concludes that insulin must simply be a more fragile molecule. What is the real distinction, and what else does it predict?",
+          hi: "मधुमेह के रोगी को इंसुलिन इंजेक्ट करना पड़ता है और वह उसे गोली के रूप में नहीं ले सकता, चाहे वह कितना ही सुविधाजनक होता। सूजी हुई संधि के लिए कॉर्टिसोन लेता रोगी उसे बिना कठिनाई गोली के रूप में निगल लेता है। दोनों हॉर्मोन हैं, दोनों ग्रंथियाँ बनाती हैं, दोनों रक्त में घूमते हैं। विद्यार्थी निष्कर्ष निकालता है कि इंसुलिन बस अधिक नाज़ुक अणु होगा। असली भेद क्या है, और वह और क्या-क्या बताता है?",
+          mr: "मधुमेही रुग्णाला इन्शुलिन टोचावे लागते आणि तो ते गोळीच्या रूपात घेऊ शकत नाही, ते कितीही सोयीचे असले तरी. सुजलेल्या सांध्यासाठी कॉर्टिसोन घेणारा रुग्ण ते अडचणीविना गोळीच्या रूपात गिळतो. दोन्ही संप्रेरके आहेत, दोन्ही ग्रंथी बनवतात, दोन्ही रक्तात फिरतात. विद्यार्थी निष्कर्ष काढतो की इन्शुलिन फक्त अधिक नाजूक रेणू असेल. खरा फरक काय, आणि तो आणखी काय काय सांगतो?",
+        },
+        choices: [
+          {
+            en: "Insulin is a peptide and cortisone a steroid, and the whole difference follows from that. A peptide is a chain of amino acids, so the gut digests it exactly as it digests any protein in a meal and nothing usable reaches the blood — hence the injection. A steroid is lipid-soluble, survives the stomach and is absorbed intact. The same property predicts everything else about the two. The peptide cannot cross a cell membrane, so it binds a receptor on the surface and works through a second messenger — fast to act, quickly reversed. The steroid crosses the membrane, binds a receptor inside and acts on the genes — slow to appear, slow to wear off, and hard to stop once started. It even predicts transport: a steroid needs a carrier protein to travel in watery plasma, while a peptide dissolves freely",
+            hi: "इंसुलिन पेप्टाइड है और कॉर्टिसोन स्टीरॉयड, और पूरा अंतर उसी से निकलता है। पेप्टाइड अमीनो अम्लों की शृंखला है, अतः आँत उसे ठीक वैसे पचा देती है जैसे भोजन के किसी भी प्रोटीन को, और रक्त तक काम का कुछ नहीं पहुँचता — इसीलिए इंजेक्शन। स्टीरॉयड वसा-विलेय है, आमाशय झेल लेता है और अक्षत अवशोषित हो जाता है। वही गुण दोनों के बारे में बाक़ी सब बता देता है। पेप्टाइड कोशिका झिल्ली पार नहीं कर सकता, अतः वह सतह के ग्राही से बँधकर द्वितीयक संदेशवाहक से काम करता है — तेज़ शुरू, तेज़ ख़त्म। स्टीरॉयड झिल्ली पार करता है, भीतर के ग्राही से बँधता है और जीनों पर काम करता है — धीरे उभरता, धीरे उतरता, और एक बार शुरू होने पर रोकना कठिन। वह परिवहन भी बता देता है: स्टीरॉयड को जलीय प्लाज़्मा में चलने के लिए वाहक प्रोटीन चाहिए, जबकि पेप्टाइड मुक्त रूप से घुल जाता है",
+            mr: "इन्शुलिन हे पेप्टाइड आणि कॉर्टिसोन स्टेरॉइड, आणि अख्खा फरक त्यातूनच निघतो. पेप्टाइड ही अमिनो आम्लांची साखळी आहे, म्हणून आतडे तिला नेमके तसेच पचवते जसे जेवणातल्या कोणत्याही प्रथिनाला, आणि रक्तापर्यंत उपयोगाचे काहीच पोहोचत नाही — म्हणूनच इंजेक्शन. स्टेरॉइड मेद-विद्राव्य आहे, जठर सहन करते आणि अक्षत शोषले जाते. तोच गुणधर्म दोघांबद्दलचे बाकी सारे सांगतो. पेप्टाइड पेशीपटल ओलांडू शकत नाही, म्हणून ते पृष्ठभागावरील ग्राहीला बांधून दुय्यम संदेशवाहकामार्फत काम करते — झटपट सुरू, झटपट संपणारे. स्टेरॉइड पटल ओलांडते, आतल्या ग्राहीला बांधते आणि जनुकांवर काम करते — सावकाश उमटणारे, सावकाश उतरणारे, आणि एकदा सुरू झाल्यावर थांबवणे कठीण. ते वहनही सांगते: स्टेरॉइडला जलमय प्लाझ्मात प्रवास करण्यास वाहक प्रथिन लागते, तर पेप्टाइड मोकळेपणी विरघळते",
+          },
+          {
+            en: "Insulin is destroyed by stomach acid and cortisone is not, so the difference is purely one of acid stability, and a tablet with an acid-resistant coating would let insulin be swallowed like any other medicine",
+            hi: "इंसुलिन आमाशय के अम्ल से नष्ट होता है और कॉर्टिसोन नहीं, अतः अंतर केवल अम्ल-स्थिरता का है, और अम्ल-रोधी परत वाली गोली इंसुलिन को किसी भी दूसरी औषधि की तरह निगलने देती",
+            mr: "इन्शुलिन जठरातल्या आम्लाने नष्ट होते आणि कॉर्टिसोन नाही, म्हणून फरक केवळ आम्ल-स्थैर्याचा आहे, आणि आम्लरोधक आवरण असलेली गोळी इन्शुलिन इतर कोणत्याही औषधासारखे गिळू दिली असती",
+          },
+          {
+            en: "Insulin acts on the genes and cortisone on the cell surface, so insulin must reach the nucleus quickly and injection is the only route fast enough to get it there in time",
+            hi: "इंसुलिन जीनों पर काम करता है और कॉर्टिसोन कोशिका की सतह पर, अतः इंसुलिन को केंद्रक तक जल्दी पहुँचना है और इंजेक्शन ही इतना तेज़ रास्ता है कि वह समय पर पहुँच जाए",
+            mr: "इन्शुलिन जनुकांवर काम करते आणि कॉर्टिसोन पेशीच्या पृष्ठभागावर, म्हणून इन्शुलिनला केंद्रकापर्यंत लवकर पोहोचायचे आहे आणि इंजेक्शन हाच इतका वेगवान मार्ग की ते वेळेत पोहोचावे",
+          },
+          {
+            en: "The difference is dose: insulin is needed in far larger quantities than cortisone, and no tablet could carry enough of it, which is why it has to be concentrated into an injection",
+            hi: "अंतर मात्रा का है: इंसुलिन कॉर्टिसोन से कहीं अधिक मात्रा में चाहिए, और कोई गोली उतना ढो नहीं सकती, इसीलिए उसे इंजेक्शन में सांद्र करना पड़ता है",
+            mr: "फरक मात्रेचा आहे: इन्शुलिन कॉर्टिसोनहून कितीतरी अधिक प्रमाणात लागते, आणि कोणतीही गोळी तितके वाहू शकत नाही, म्हणूनच ते इंजेक्शनमध्ये संहत करावे लागते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The student is reaching for fragility, which is vague, when a single structural fact explains everything: insulin is a PEPTIDE and cortisone is a STEROID, and almost every practical difference between hormones follows from which of those two a molecule is. THE SWALLOWING TEST. A peptide is a chain of amino acids — chemically it is a small protein, and your gut has no way to distinguish it from the protein in a meal. Pepsin and trypsin cut it up, the fragments are absorbed as amino acids, and nothing with any hormone activity reaches the blood. That is why insulin must be injected, and why a century of trying to make an oral form has been so difficult. A steroid is built on a lipid-soluble ring skeleton, is untouched by protein-digesting enzymes, and diffuses across the gut lining intact. Hence a cortisone tablet. THE SAME PROPERTY PREDICTS THE MECHANISM, which is why this is worth learning as a principle rather than two facts. A peptide cannot cross a lipid membrane, so its receptor must sit on the OUTSIDE of the target cell. Binding activates an enzyme in the membrane, a second messenger is generated inside, and that messenger switches on enzymes already present. Nothing has to be manufactured, so the effect appears within seconds — and it stops as soon as the messenger is broken down. A steroid crosses the membrane easily, binds a receptor in the cytoplasm or nucleus, and the complex acts directly on DNA to switch genes on. New protein must now be transcribed and translated, so the effect takes hours to appear and days to wear off. AND IT PREDICTS MORE, which is the test of a good principle. Transport: a steroid is poorly soluble in watery plasma and travels bound to a carrier protein, while a peptide dissolves freely. Half-life: peptides are cleared in minutes and steroids persist far longer, which is why insulin must be dosed repeatedly and a steroid course can be daily. Storage: a peptide is made in advance and held in vesicles ready for release, while a steroid is made on demand from cholesterol, because a lipid cannot be stored behind a membrane it would simply cross. Withdrawal: a steroid taken for weeks suppresses the axis above it and must be tapered, while a missed insulin dose has its effect and passes. One honest qualification. There is a third family — the amine hormones derived from single amino acids — which does not sit neatly on either side: adrenaline behaves like a peptide with surface receptors, while thyroid hormone, unusually, is lipid-soluble enough to enter the cell and act on genes like a steroid. That is exactly why thyroid hormone can be given as a tablet and adrenaline cannot. The exception confirms the rule it appears to break, because the rule was never about the family name but about whether the molecule can cross a membrane. (The second answer identifies acid as the obstacle when the real problem is enzymatic digestion, which a coating alone does not solve; the third reverses the two mechanisms; and the fourth invents a dose argument that is false — insulin is given in tiny quantities.)",
+          hi: "विद्यार्थी नाज़ुकपन की ओर हाथ बढ़ा रहा है, जो अस्पष्ट है, जबकि एक ही संरचनात्मक तथ्य सब समझा देता है: इंसुलिन पेप्टाइड है और कॉर्टिसोन स्टीरॉयड, और हॉर्मोनों के बीच लगभग हर व्यावहारिक अंतर इसी से निकलता है कि अणु उन दोनों में से कौन-सा है। निगलने की कसौटी। पेप्टाइड अमीनो अम्लों की शृंखला है — रासायनिक रूप से वह छोटा प्रोटीन है, और तुम्हारी आँत के पास उसे भोजन के प्रोटीन से अलग बताने का कोई तरीक़ा नहीं। पेप्सिन और ट्रिप्सिन उसे काट देते हैं, टुकड़े अमीनो अम्ल बनकर अवशोषित हो जाते हैं, और कोई हॉर्मोन-क्रिया वाला अणु रक्त तक नहीं पहुँचता। इसीलिए इंसुलिन इंजेक्ट करना पड़ता है, और इसीलिए एक सदी से मुख से लेने योग्य रूप बनाना इतना कठिन रहा है। स्टीरॉयड वसा-विलेय वलय-कंकाल पर बना है, प्रोटीन पचाने वाले एंज़ाइम उसे छूते नहीं, और वह आँत की परत से अक्षत विसरित हो जाता है। इसीलिए कॉर्टिसोन की गोली। वही गुण तंत्र भी बता देता है, और इसीलिए इसे दो तथ्यों के बजाय एक सिद्धांत के रूप में सीखना चाहिए। पेप्टाइड वसा-झिल्ली पार नहीं कर सकता, अतः उसका ग्राही लक्ष्य कोशिका के बाहर होना ही चाहिए। बंधन झिल्ली के किसी एंज़ाइम को सक्रिय करता है, भीतर द्वितीयक संदेशवाहक बनता है, और वह संदेशवाहक पहले से मौजूद एंज़ाइम चालू कर देता है। कुछ बनाना नहीं पड़ता, अतः प्रभाव सेकंडों में उभरता है — और संदेशवाहक टूटते ही रुक जाता है। स्टीरॉयड झिल्ली आसानी से पार करता है, कोशिकाद्रव्य या केंद्रक के ग्राही से बँधता है, और वह संकुल सीधे DNA पर काम करके जीन चालू करता है। अब नया प्रोटीन अनुलेखित और अनुवादित होना है, अतः प्रभाव उभरने में घंटे और उतरने में दिन लेता है। और वह और भी बताता है, जो अच्छे सिद्धांत की कसौटी है। परिवहन: स्टीरॉयड जलीय प्लाज़्मा में कम घुलता है और वाहक प्रोटीन से बँधकर चलता है, जबकि पेप्टाइड मुक्त रूप से घुलता है। अर्ध-आयु: पेप्टाइड मिनटों में हट जाते हैं और स्टीरॉयड कहीं देर टिकते हैं, इसीलिए इंसुलिन बार-बार देना पड़ता है और स्टीरॉयड का क्रम दैनिक हो सकता है। भंडारण: पेप्टाइड पहले से बनाकर आशयों में छूटने को तैयार रखा जाता है, जबकि स्टीरॉयड माँग पर कोलेस्टेरॉल से बनता है, क्योंकि वसा को ऐसी झिल्ली के पीछे जमा नहीं किया जा सकता जिसे वह वैसे भी पार कर जाएगी। विरति: हफ़्तों लिया स्टीरॉयड अपने ऊपर के अक्ष को दबा देता है और उसे धीरे-धीरे घटाना पड़ता है, जबकि इंसुलिन की एक छूटी मात्रा अपना असर करके बीत जाती है। एक ईमानदार शर्त। एक तीसरा परिवार भी है — अकेले अमीनो अम्लों से बने ऐमीन हॉर्मोन — जो किसी एक ओर साफ़ नहीं बैठता: एड्रिनैलिन सतही ग्राहियों वाले पेप्टाइड जैसा बरतता है, जबकि थायरॉयड हॉर्मोन, असामान्य रूप से, इतना वसा-विलेय है कि कोशिका में घुसकर स्टीरॉयड की तरह जीनों पर काम करे। ठीक इसीलिए थायरॉयड हॉर्मोन गोली के रूप में दिया जा सकता है और एड्रिनैलिन नहीं। अपवाद उसी नियम की पुष्टि करता है जिसे वह तोड़ता दिखता है, क्योंकि नियम कभी परिवार के नाम का था ही नहीं, वह इसका था कि अणु झिल्ली पार कर सकता है या नहीं। (दूसरा उत्तर बाधा अम्ल को बताता है जबकि असली समस्या एंज़ाइमी पाचन है, जिसे अकेली परत हल नहीं करती; तीसरा दोनों तंत्र उलट देता है; और चौथा मात्रा का ऐसा तर्क गढ़ता है जो असत्य है — इंसुलिन नन्ही मात्राओं में दिया जाता है।)",
+          mr: "विद्यार्थी नाजूकपणाकडे हात पुढे करतो आहे, जे अस्पष्ट आहे, तर एकच संरचनात्मक तथ्य सारे समजावते: इन्शुलिन हे पेप्टाइड आणि कॉर्टिसोन स्टेरॉइड, आणि संप्रेरकांमधला जवळपास प्रत्येक व्यावहारिक फरक यातूनच निघतो की रेणू त्या दोघांपैकी कोणता आहे. गिळण्याची कसोटी. पेप्टाइड ही अमिनो आम्लांची साखळी — रासायनिकदृष्ट्या ते लहान प्रथिन आहे, आणि तुमच्या आतड्याकडे त्याला जेवणातल्या प्रथिनापासून वेगळे ओळखण्याचा मार्ग नाही. पेप्सिन आणि ट्रिप्सिन ते कापतात, तुकडे अमिनो आम्ले बनून शोषले जातात, आणि कोणतीही संप्रेरक-क्रिया असलेला रेणू रक्तापर्यंत पोहोचत नाही. म्हणूनच इन्शुलिन टोचावे लागते, आणि म्हणूनच शतकभर तोंडावाटे घेण्याजोगे रूप बनवणे इतके कठीण राहिले आहे. स्टेरॉइड मेद-विद्राव्य वलय-सांगाड्यावर बांधलेले आहे, प्रथिन पचवणारी विकरे त्याला स्पर्शत नाहीत, आणि ते आतड्याच्या अस्तरातून अक्षत विसरते. म्हणूनच कॉर्टिसोनची गोळी. तोच गुणधर्म यंत्रणाही सांगतो, आणि म्हणूनच हे दोन तथ्यांऐवजी एक तत्त्व म्हणून शिकण्याजोगे. पेप्टाइड मेद-पटल ओलांडू शकत नाही, म्हणून त्याचा ग्राही लक्ष्य पेशीच्या बाहेरच असावा लागतो. बंधन पटलातले एखादे विकर सक्रिय करते, आत दुय्यम संदेशवाहक बनतो, आणि तो संदेशवाहक आधीपासून असलेली विकरे चालू करतो. काही बनवावे लागत नाही, म्हणून परिणाम सेकंदांत उमटतो — आणि संदेशवाहक तुटताच थांबतो. स्टेरॉइड पटल सहज ओलांडते, पेशीद्रव्यातल्या वा केंद्रकातल्या ग्राहीला बांधते, आणि तो संकुल थेट DNA वर काम करून जनुके चालू करतो. आता नवे प्रथिन अनुलेखित आणि अनुवादित व्हायचे आहे, म्हणून परिणाम उमटायला तास आणि उतरायला दिवस घेतो. आणि ते आणखीही सांगते, जी चांगल्या तत्त्वाची कसोटी. वहन: स्टेरॉइड जलमय प्लाझ्मात कमी विरघळते आणि वाहक प्रथिनाला बांधून प्रवास करते, तर पेप्टाइड मोकळेपणी विरघळते. अर्धायुष्य: पेप्टाइडे मिनिटांत निघून जातात आणि स्टेरॉइडे कितीतरी अधिक टिकतात, म्हणूनच इन्शुलिन वारंवार द्यावे लागते आणि स्टेरॉइडचा क्रम दैनंदिन असू शकतो. साठवण: पेप्टाइड आधीच बनवून पुटिकांत सोडायला तयार ठेवले जाते, तर स्टेरॉइड मागणीनुसार कोलेस्टेरॉलपासून बनते, कारण मेद अशा पटलामागे साठवता येत नाही जे ते तसेही ओलांडून जाईल. विरती: आठवडे घेतलेले स्टेरॉइड आपल्यावरचा अक्ष दाबते आणि ते हळूहळू घटवावे लागते, तर इन्शुलिनची एक चुकलेली मात्रा आपला परिणाम करून निघून जाते. एक प्रामाणिक अट. एक तिसरे कुटुंबही आहे — एकट्या अमिनो आम्लांपासून बनलेली अमाइन संप्रेरके — जे कोणत्याही एका बाजूला स्वच्छ बसत नाही: अ‍ॅड्रिनॅलिन पृष्ठभागावरील ग्राही असलेल्या पेप्टाइडसारखे वागते, तर थायरॉइड संप्रेरक, असामान्यपणे, इतके मेद-विद्राव्य आहे की पेशीत शिरून स्टेरॉइडसारखे जनुकांवर काम करावे. नेमके म्हणूनच थायरॉइड संप्रेरक गोळीच्या रूपात देता येते आणि अ‍ॅड्रिनॅलिन नाही. अपवाद तोच नियम पक्का करतो जो तो मोडताना दिसतो, कारण नियम कधीच कुटुंबाच्या नावाचा नव्हता, तो याचा होता की रेणू पटल ओलांडू शकतो का. (दुसरे उत्तर अडथळा आम्ल सांगते तर खरी अडचण विकरी पचन आहे, जी एकटे आवरण सोडवत नाही; तिसरे दोन्ही यंत्रणा उलटवते; आणि चौथे मात्रेचा असा युक्तिवाद रचते जो असत्य आहे — इन्शुलिन चिमुकल्या मात्रांत दिले जाते.)",
+        },
+      },
+    ],
+  },
 ];
 
 export const G11_BIOLOGY_NUMERIC: Record<string, NumQ[]> = {
@@ -6624,5 +8019,393 @@ export const G11_BIOLOGY_NUMERIC: Record<string, NumQ[]> = {
       },
     },
   ],
-  /*NB*/
+  /**
+   * The kidney is the most quantitative organ in the syllabus, and the numbers
+   * are the argument: 180 litres in and 1.5 out is the whole case for a filter
+   * that selects nothing, and the glucose threshold is a sum a pupil can do
+   * before it is a disease they can name.
+   */
+  "biology-11-excretory-products-and-their-elimination": [
+    {
+      level: 1,
+      stem: {
+        en: "The glomeruli filter 125 mL of plasma every minute. How many mL are filtered in a day?",
+        hi: "केशिकागुच्छ हर मिनट 125 mL प्लाज़्मा छानते हैं। एक दिन में कितने mL छाने जाते हैं?",
+        mr: "केशिकागुच्छ दर मिनिटाला 125 mL प्लाझ्मा गाळतात. एका दिवसात किती mL गाळले जातात?",
+      },
+      answer: 180000,
+      wrong: [7500, 3000, 18000],
+      checkExpr: "125*60*24",
+      solution: {
+        en: "125 × 60 × 24 = 180000 mL, or 180 litres. Set that beside the five litres of blood a person carries and the scale becomes the point: the entire plasma volume is filtered some forty to sixty times a day. Nothing about the kidney makes sense until this number is believed. (7500 stops at one hour.)",
+        hi: "125 × 60 × 24 = 180000 mL, यानी 180 लीटर। इसे किसी व्यक्ति के पाँच लीटर रक्त के साथ रखो और पैमाना ही मुद्दा बन जाता है: पूरा प्लाज़्मा आयतन दिन में लगभग चालीस से साठ बार छाना जाता है। इस संख्या पर विश्वास हुए बिना वृक्क की कोई बात समझ नहीं आती। (7500 एक घंटे पर रुक जाता है।)",
+        mr: "125 × 60 × 24 = 180000 mL, म्हणजे 180 लिटर. हे एखाद्या व्यक्तीच्या पाच लिटर रक्ताशेजारी ठेवा आणि प्रमाणच मुद्दा बनते: अख्खे प्लाझ्मा आकारमान दिवसातून सुमारे चाळीस ते साठ वेळा गाळले जाते. या आकड्यावर विश्वास बसल्याशिवाय मूत्रपिंडाचे काहीच समजत नाही. (7500 एका तासावर थांबते.)",
+      },
+      fmt: unit("mL"),
+    },
+    {
+      level: 1,
+      stem: {
+        en: "Of the 125 mL filtered each minute, 124 mL is reabsorbed. How much urine is formed each minute?",
+        hi: "हर मिनट छाने गए 125 mL में से 124 mL पुनरवशोषित हो जाता है। हर मिनट कितना मूत्र बनता है?",
+        mr: "दर मिनिटाला गाळलेल्या 125 mL पैकी 124 mL पुनःशोषले जाते. दर मिनिटाला किती मूत्र बनते?",
+      },
+      answer: 1,
+      wrong: [124, 125, 249],
+      checkExpr: "125-124",
+      solution: {
+        en: "125 − 124 = 1 mL a minute, which comes to about 1.5 litres a day once the rate varies with drinking. Ninety-nine per cent of the work of the kidney is taking things back, and only the last one per cent leaves — which is exactly why the organ is expensive to run. (124 answers the reabsorbed share.)",
+        hi: "125 − 124 = 1 mL प्रति मिनट, जो पीने के साथ दर बदलने पर दिन में लगभग 1.5 लीटर बनता है। वृक्क के काम का निन्यानबे प्रतिशत वापस लेना है, और केवल अंतिम एक प्रतिशत बाहर जाता है — ठीक इसीलिए यह अंग चलाना महँगा है। (124 पुनरवशोषित हिस्सा बता देता है।)",
+        mr: "125 − 124 = 1 mL प्रति मिनिट, जे पिण्यानुसार दर बदलल्यावर दिवसाला सुमारे 1.5 लिटर होते. मूत्रपिंडाच्या कामाचा नव्याण्णव टक्के भाग म्हणजे परत घेणे, आणि केवळ शेवटचा एक टक्का बाहेर जातो — नेमके म्हणूनच हा अवयव चालवणे महाग आहे. (124 पुनःशोषित वाटा सांगते.)",
+      },
+      fmt: unit("mL"),
+    },
+    {
+      level: 2,
+      stem: {
+        en: "180 litres are filtered in a day and 1.5 litres leave as urine. How many litres are reabsorbed?",
+        hi: "दिन में 180 लीटर छाना जाता है और 1.5 लीटर मूत्र बनकर निकलता है। कितने लीटर पुनरवशोषित होते हैं?",
+        mr: "दिवसात 180 लिटर गाळले जाते आणि 1.5 लिटर मूत्र बनून बाहेर पडते. किती लिटर पुनःशोषले जातात?",
+      },
+      answer: 178.5,
+      wrong: [181.5, 178, 1.5],
+      checkExpr: "180-1.5",
+      solution: {
+        en: "180 − 1.5 = 178.5 litres. Two things are worth noticing. The recovered volume is a hundred and twenty times the amount that leaves, and it is recovered against a gradient by carriers that cost ATP — which is why the kidneys, at about half a per cent of body weight, take a tenth of the body's resting oxygen. (181.5 adds instead of subtracting.)",
+        hi: "180 − 1.5 = 178.5 लीटर। दो बातें ध्यान देने योग्य हैं। वापस लिया गया आयतन निकलने वाले से एक सौ बीस गुना है, और वह प्रवणता के विरुद्ध ऐसे वाहकों से वापस लिया जाता है जो ATP माँगते हैं — इसीलिए वृक्क, जो शरीर भार का लगभग आधा प्रतिशत हैं, शरीर की विश्राम-ऑक्सीजन का दसवाँ हिस्सा लेते हैं। (181.5 घटाने के बजाय जोड़ देता है।)",
+        mr: "180 − 1.5 = 178.5 लिटर. दोन गोष्टी लक्षात घेण्याजोग्या. परत घेतलेले आकारमान बाहेर पडणाऱ्याहून एकशे वीसपट आहे, आणि ते प्रवणतेविरुद्ध अशा वाहकांनी परत घेतले जाते जे ATP मागतात — म्हणूनच मूत्रपिंडे, जी शरीरवजनाच्या सुमारे अर्धा टक्का आहेत, शरीराच्या विश्रांती-प्राणवायूचा दशांश घेतात. (181.5 वजा करण्याऐवजी जोडते.)",
+      },
+      fmt: unit("L"),
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Blood reaches the kidneys at 1200 mL a minute, and 55 per cent of blood is plasma. What is the renal plasma flow?",
+        hi: "रक्त वृक्कों तक 1200 mL प्रति मिनट पहुँचता है, और रक्त का 55 प्रतिशत प्लाज़्मा है। वृक्कीय प्लाज़्मा प्रवाह कितना?",
+        mr: "रक्त मूत्रपिंडांपर्यंत 1200 mL प्रति मिनिट पोहोचते, आणि रक्ताचा 55 टक्के भाग प्लाझ्मा आहे. वृक्कीय प्लाझ्मा प्रवाह किती?",
+      },
+      answer: 660,
+      wrong: [540, 600, 2400],
+      checkExpr: "1200*0.55",
+      solution: {
+        en: "1200 × 0.55 = 660 mL a minute. The distinction matters because only plasma can be filtered — the cells stay in the vessel — so it is this figure, not the blood flow, that sets what the glomeruli have to work with. Note also how much of the body's output the kidneys claim: about a fifth of the heart's five litres a minute goes to two organs the size of a fist. (540 quotes the formed elements instead.)",
+        hi: "1200 × 0.55 = 660 mL प्रति मिनट। भेद इसलिए मायने रखता है कि छाना केवल प्लाज़्मा जा सकता है — कोशिकाएँ वाहिनी में ही रहती हैं — अतः केशिकागुच्छों के पास काम करने को क्या है यह रक्त-प्रवाह नहीं, यही आँकड़ा तय करता है। यह भी देखो कि वृक्क शरीर के निर्गम का कितना हिस्सा माँगते हैं: हृदय के पाँच लीटर प्रति मिनट का लगभग पाँचवाँ भाग मुट्ठी भर के दो अंगों को जाता है। (540 इसके बदले गठित तत्व बता देता है।)",
+        mr: "1200 × 0.55 = 660 mL प्रति मिनिट. फरक यासाठी महत्त्वाचा की गाळले केवळ प्लाझ्माच जाऊ शकते — पेशी वाहिनीतच राहतात — म्हणून केशिकागुच्छांकडे काम करायला काय आहे हे रक्तप्रवाह नव्हे, हाच आकडा ठरवतो. हेही पाहा की मूत्रपिंडे शरीराच्या निर्गमाचा किती भाग मागतात: हृदयाच्या पाच लिटर प्रति मिनिटाचा सुमारे पाचवा भाग मुठीएवढ्या दोन अवयवांना जातो. (540 त्याऐवजी घटित घटक सांगते.)",
+      },
+      fmt: unit("mL"),
+    },
+    {
+      level: 3,
+      stem: {
+        en: "The proximal tubule reabsorbs 80 per cent of the 180 litres filtered in a day. How many litres does it take back?",
+        hi: "समीपस्थ नलिका दिन में छाने गए 180 लीटर का 80 प्रतिशत पुनरवशोषित करती है। वह कितने लीटर वापस लेती है?",
+        mr: "समीपस्थ नलिका दिवसात गाळलेल्या 180 लिटरचा 80 टक्के भाग पुनःशोषून घेते. ती किती लिटर परत घेते?",
+      },
+      answer: 144,
+      wrong: [36, 90, 160],
+      checkExpr: "180*0.8",
+      solution: {
+        en: "180 × 0.8 = 144 litres, leaving 36 litres to travel on. The proximal tubule's share is reabsorption in bulk and at a fixed proportion — it is not regulated moment to moment. The fine control happens much later, in the distal tubule and collecting duct, where hormones decide how much of the remaining 36 litres to recover. Bulk work first, adjustment last. (36 answers what is left rather than what is taken back.)",
+        hi: "180 × 0.8 = 144 लीटर, और 36 लीटर आगे चलने को बचते हैं। समीपस्थ नलिका का हिस्सा थोक पुनरवशोषण है और नियत अनुपात में — वह क्षण-क्षण नियंत्रित नहीं होता। बारीक नियंत्रण कहीं बाद में होता है, दूरस्थ नलिका और संग्रह नलिका में, जहाँ हॉर्मोन तय करते हैं कि बचे 36 लीटर में से कितना वापस लेना है। पहले थोक काम, अंत में समायोजन। (36 वापस लिए गए के बजाय बचे हुए का उत्तर देता है।)",
+        mr: "180 × 0.8 = 144 लिटर, आणि 36 लिटर पुढे जायला उरतात. समीपस्थ नलिकेचा वाटा म्हणजे घाऊक पुनःशोषण आणि ठरावीक प्रमाणात — ते क्षणोक्षणी नियंत्रित होत नाही. बारीक नियंत्रण कितीतरी नंतर घडते, दूरस्थ नलिका आणि संग्राहक नलिकेत, जिथे संप्रेरके ठरवतात की उरलेल्या 36 लिटरपैकी किती परत घ्यायचे. आधी घाऊक काम, शेवटी जुळवणी. (36 परत घेतलेल्याऐवजी उरलेल्याचे उत्तर देते.)",
+      },
+      fmt: unit("L"),
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A day's urine measures 1.5 litres and contains 30 g of urea. What is the concentration of urea in grams per litre?",
+        hi: "एक दिन का मूत्र 1.5 लीटर है और उसमें 30 g यूरिया है। यूरिया की सांद्रता ग्राम प्रति लीटर में कितनी?",
+        mr: "एका दिवसाचे मूत्र 1.5 लिटर आहे आणि त्यात 30 g युरिया आहे. युरियाची संहती ग्रॅम प्रति लिटरमध्ये किती?",
+      },
+      answer: 20,
+      wrong: [45, 2, 15],
+      checkExpr: "30/1.5",
+      solution: {
+        en: "30/1.5 = 20 g per litre. Compare that with blood, which carries urea at roughly a fifth of a gram per litre: the kidney has concentrated it about a hundredfold. It could not have done that by filtering alone, since the filtrate starts at the same concentration as plasma — the concentration is entirely the work of removing water afterwards. (45 multiplies instead of dividing.)",
+        hi: "30/1.5 = 20 g प्रति लीटर। इसे रक्त से तुलना करो, जो यूरिया मोटे तौर पर पाँचवाँ ग्राम प्रति लीटर ढोता है: वृक्क ने उसे लगभग सौ गुना सांद्र कर दिया है। वह केवल छानकर ऐसा नहीं कर सकता था, क्योंकि निस्यंद प्लाज़्मा जितनी ही सांद्रता से शुरू होता है — सांद्रण पूरी तरह बाद में जल हटाने का काम है। (45 भाग देने के बजाय गुणा कर देता है।)",
+        mr: "30/1.5 = 20 g प्रति लिटर. याची रक्ताशी तुलना करा, जे युरिया ढोबळमानाने पाचवा ग्रॅम प्रति लिटर वाहते: मूत्रपिंडाने ते सुमारे शंभरपट संहत केले आहे. ते केवळ गाळून तसे करू शकले नसते, कारण गाळणे प्लाझ्माइतक्याच संहतीने सुरू होते — संहतीकरण हे पूर्णपणे नंतर पाणी काढण्याचे काम आहे. (45 भागण्याऐवजी गुणते.)",
+      },
+      fmt: unit("g/L"),
+    },
+    {
+      level: 4,
+      stem: {
+        en: "Plasma glucose is 300 mg per 100 mL and the glomeruli filter 125 mL a minute. How many mg of glucose are filtered each minute?",
+        hi: "प्लाज़्मा ग्लूकोस 300 mg प्रति 100 mL है और केशिकागुच्छ 125 mL प्रति मिनट छानते हैं। हर मिनट कितने mg ग्लूकोस छाना जाता है?",
+        mr: "प्लाझ्मा ग्लुकोज 300 mg प्रति 100 mL आहे आणि केशिकागुच्छ 125 mL प्रति मिनिट गाळतात. दर मिनिटाला किती mg ग्लुकोज गाळले जाते?",
+      },
+      answer: 375,
+      wrong: [300, 125, 3750],
+      checkExpr: "300*125/100",
+      solution: {
+        en: "The concentration is per 100 mL, so 300 × 125/100 = 375 mg a minute. This quantity has a name — the filtered load — and it is the product of concentration and filtration rate, never one alone. Note what it means that glucose is filtered at all: a healthy kidney does not keep glucose out of the filtrate, it throws all of it out and then takes all of it back. (300 quotes the concentration without scaling it to the volume filtered.)",
+        hi: "सांद्रता प्रति 100 mL है, अतः 300 × 125/100 = 375 mg प्रति मिनट। इस राशि का नाम है — छाना गया भार — और वह सांद्रता तथा निस्यंदन दर का गुणनफल है, कभी अकेली एक का नहीं। ध्यान दो कि ग्लूकोस का छाना जाना ही क्या कहता है: स्वस्थ वृक्क ग्लूकोस को निस्यंद से बाहर नहीं रखता, वह उसे पूरा फेंक देता है और फिर पूरा वापस ले लेता है। (300 सांद्रता बता देता है और उसे छाने गए आयतन पर चढ़ाता नहीं।)",
+        mr: "संहती प्रति 100 mL आहे, म्हणून 300 × 125/100 = 375 mg प्रति मिनिट. या राशीला नाव आहे — गाळलेला भार — आणि तो संहती आणि गाळण-दराचा गुणाकार आहे, कधीही एकट्या एकाचा नव्हे. लक्षात घ्या की ग्लुकोज गाळले जाणेच काय सांगते: निरोगी मूत्रपिंड ग्लुकोजला गाळण्याबाहेर ठेवत नाही, ते सारे फेकून देते आणि मग सारे परत घेते. (300 संहती सांगते आणि तिला गाळलेल्या आकारमानावर चढवत नाही.)",
+      },
+      fmt: unit("mg"),
+    },
+    {
+      level: 5,
+      stem: {
+        en: "Glucose is filtered at 375 mg a minute, and the tubule's carriers can reabsorb at most 320 mg a minute. How much glucose appears in the urine each minute?",
+        hi: "ग्लूकोस 375 mg प्रति मिनट छाना जाता है, और नलिका के वाहक अधिकतम 320 mg प्रति मिनट पुनरवशोषित कर सकते हैं। हर मिनट कितना ग्लूकोस मूत्र में आता है?",
+        mr: "ग्लुकोज 375 mg प्रति मिनिट गाळले जाते, आणि नलिकेचे वाहक कमाल 320 mg प्रति मिनिट पुनःशोषू शकतात. दर मिनिटाला किती ग्लुकोज मूत्रात येते?",
+      },
+      answer: 55,
+      wrong: [375, 320, 695],
+      checkExpr: "375-320",
+      solution: {
+        en: "375 − 320 = 55 mg a minute. The ceiling has a name — the transport maximum — and it exists because carriers are proteins present in finite numbers, so beyond a certain rate there is simply nobody left to do the carrying. Below the ceiling nothing escapes and the urine is sugar-free; above it, every extra milligram runs straight through. The blood concentration at which the ceiling is first reached is the renal threshold, around 180 mg per 100 mL. Two conclusions follow. Sugar in the urine is evidence about the BLOOD, not about the kidney — the tubule is working perfectly and has been handed more than it was built for. And the glucose left behind holds water with it by osmosis, which is why the volume of urine rises too. (375 forgets that most of it was recovered.)",
+        hi: "375 − 320 = 55 mg प्रति मिनट। छत का नाम है — परिवहन अधिकतम — और वह इसलिए है कि वाहक सीमित संख्या में मौजूद प्रोटीन हैं, अतः किसी दर के आगे ढोने वाला बचता ही नहीं। छत से नीचे कुछ नहीं निकलता और मूत्र शर्करा-रहित रहता है; उससे ऊपर हर अतिरिक्त मिलीग्राम सीधे निकल जाता है। जिस रक्त सांद्रता पर छत पहली बार छूती है वह वृक्कीय देहली है, लगभग 180 mg प्रति 100 mL. दो निष्कर्ष निकलते हैं। मूत्र में शर्करा रक्त के बारे में प्रमाण है, वृक्क के बारे में नहीं — नलिका भलीभाँति काम कर रही है और उसे उससे अधिक सौंपा गया है जितने के लिए वह बनी थी। और पीछे बचा ग्लूकोस परासरण से जल भी साथ रोक लेता है, इसीलिए मूत्र का आयतन भी बढ़ता है। (375 भूल जाता है कि अधिकांश वापस ले लिया गया था।)",
+        mr: "375 − 320 = 55 mg प्रति मिनिट. छताला नाव आहे — वहन कमाल — आणि ते यासाठी की वाहक ही मर्यादित संख्येत असलेली प्रथिने आहेत, म्हणून एका दरापलीकडे वाहायला कोणी उरतच नाही. छताखाली काहीच निसटत नाही आणि मूत्र शर्करारहित राहते; त्यावर प्रत्येक अधिकचा मिलिग्रॅम सरळ निघून जातो. ज्या रक्तसंहतीवर छत प्रथम गाठले जाते ती वृक्कीय उंबरठा, सुमारे 180 mg प्रति 100 mL. दोन निष्कर्ष निघतात. मूत्रातली शर्करा हा रक्ताबद्दलचा पुरावा आहे, मूत्रपिंडाबद्दलचा नव्हे — नलिका उत्तम काम करते आहे आणि तिला ती ज्यासाठी बांधली त्याहून अधिक सोपवले आहे. आणि मागे उरलेले ग्लुकोज परासरणाने पाणीही सोबत धरून ठेवते, म्हणूनच मूत्राचे आकारमानही वाढते. (375 विसरते की बहुतांश परत घेतले गेले होते.)",
+      },
+      fmt: unit("mg"),
+    },
+    {
+      level: 6,
+      stem: {
+        en: "In a day a person drinks 2000 mL, gains 300 mL from respiration, and loses 500 mL in sweat, 400 mL from the lungs and 100 mL in faeces. What urine volume keeps the water balance exact?",
+        hi: "एक दिन में कोई व्यक्ति 2000 mL पीता है, श्वसन से 300 mL पाता है, और पसीने में 500 mL, फेफड़ों से 400 mL तथा मल में 100 mL खोता है। जल संतुलन ठीक-ठीक बनाए रखने के लिए मूत्र का आयतन कितना हो?",
+        mr: "एका दिवसात एक व्यक्ती 2000 mL पिते, श्वसनातून 300 mL मिळवते, आणि घामातून 500 mL, फुप्फुसांतून 400 mL तसेच विष्ठेतून 100 mL गमावते. पाण्याचा समतोल नेमका राखण्यासाठी मूत्राचे आकारमान किती असावे?",
+      },
+      answer: 1300,
+      wrong: [1000, 1600, 2300],
+      checkExpr: "2000+300-500-400-100",
+      solution: {
+        en: "Everything in minus everything out by the other routes: 2000 + 300 − 500 − 400 − 100 = 1300 mL. The number itself is ordinary; what it shows is that urine volume is the BALANCING term, not an independent quantity. Every other item on this list is set by something that has nothing to do with water regulation — sweat by temperature, breath by ventilation, metabolic water by how much food was oxidised — and the kidney is left to make the sum come out right. That is why the same person passes half a litre on a hot day of hard work and two and a half litres on a cool day of drinking tea, without either being abnormal. It also explains why the 300 mL from respiration matters more than it looks: a kangaroo rat in a desert lives on metabolic water alone and drinks nothing at all, balancing the equation by making its urine almost as concentrated as the salt gradient in its medulla will allow. (1000 forgets the water made by respiration.)",
+        hi: "जो भीतर आया उसमें से जो दूसरे रास्तों से गया वह घटाओ: 2000 + 300 − 500 − 400 − 100 = 1300 mL. संख्या स्वयं साधारण है; वह जो दिखाती है वह यह कि मूत्र का आयतन संतुलन करने वाला पद है, स्वतंत्र राशि नहीं। इस सूची की हर दूसरी मद ऐसी किसी चीज़ से तय होती है जिसका जल-नियमन से कोई लेना-देना नहीं — पसीना तापमान से, साँस संवातन से, उपापचयी जल इससे कि कितना भोजन ऑक्सीकृत हुआ — और वृक्क के ज़िम्मे बचता है जोड़ को ठीक बैठाना। इसीलिए वही व्यक्ति कड़ी मेहनत के गरम दिन आधा लीटर निकालता है और चाय पीते ठंडे दिन ढाई लीटर, और दोनों में से कोई असामान्य नहीं। यह भी समझाता है कि श्वसन के 300 mL दिखने से अधिक क्यों मायने रखते हैं: मरुस्थल का कंगारू चूहा केवल उपापचयी जल पर जीता है और कुछ पीता ही नहीं, और समीकरण यों बैठाता है कि अपना मूत्र लगभग उतना सांद्र बना ले जितना उसके मध्यांश की लवण-प्रवणता होने दे। (1000 श्वसन से बना जल भूल जाता है।)",
+        mr: "जे आत आले त्यातून जे इतर मार्गांनी गेले ते वजा करा: 2000 + 300 − 500 − 400 − 100 = 1300 mL. आकडा स्वतः साधारण आहे; तो जे दाखवतो ते हे की मूत्राचे आकारमान हे संतुलन साधणारे पद आहे, स्वतंत्र राशी नव्हे. या यादीतली प्रत्येक दुसरी नोंद अशा कशाने ठरते जिचा पाणी-नियमनाशी काही संबंध नाही — घाम तापमानाने, श्वास वायुवीजनाने, चयापचयी पाणी किती अन्न ऑक्सिडीकृत झाले याने — आणि मूत्रपिंडाच्या वाट्याला उरते बेरीज बरोबर बसवणे. म्हणूनच तीच व्यक्ती कष्टाच्या उष्ण दिवशी अर्धा लिटर बाहेर टाकते आणि चहा पिणाऱ्या थंड दिवशी अडीच लिटर, आणि दोन्हींपैकी काहीच असामान्य नाही. हेही समजावते की श्वसनाचे 300 mL दिसण्याहून अधिक का महत्त्वाचे: वाळवंटातला कांगारू उंदीर केवळ चयापचयी पाण्यावर जगतो आणि काहीच पीत नाही, आणि समीकरण असे बसवतो की आपले मूत्र त्याच्या मध्यांशाची क्षार-प्रवणता जितके होऊ देईल जवळपास तितके संहत बनवते. (1000 श्वसनातून बनलेले पाणी विसरते.)",
+      },
+      fmt: unit("mL"),
+    },
+  ],
+  /**
+   * Two things in this chapter are genuinely computable and the rest is not.
+   * Band widths follow from the sliding filament model by subtraction, and a
+   * lever is arithmetic a pupil can check with a ruler. Joint types and muscle
+   * names are vocabulary, and no sum has been invented for them — which is why
+   * this set is six rather than nine.
+   */
+  "biology-11-locomotion-and-movement": [
+    {
+      level: 1,
+      stem: {
+        en: "A sarcomere is 2400 nm long at rest and shortens by 600 nm. What is its new length?",
+        hi: "कोई पेशीखंड विश्राम में 2400 nm लंबा है और 600 nm छोटा हो जाता है। उसकी नई लंबाई कितनी?",
+        mr: "एक स्नायुखंड विश्रांतीत 2400 nm लांब आहे आणि 600 nm आखडतो. त्याची नवी लांबी किती?",
+      },
+      answer: 1800,
+      wrong: [3000, 600, 1200],
+      checkExpr: "2400-600",
+      solution: {
+        en: "2400 − 600 = 1800 nm. The unit being measured is the length between two Z lines, and it is the only thing in the fibre that gets shorter — the filaments inside it keep their own lengths throughout, which is the whole content of the sliding filament model. (3000 adds instead of subtracting.)",
+        hi: "2400 − 600 = 1800 nm. जो इकाई मापी जा रही है वह दो Z रेखाओं के बीच की लंबाई है, और तंतु में केवल वही छोटी होती है — उसके भीतर के तंतुक पूरे समय अपनी लंबाई बनाए रखते हैं, और सर्पी तंतुक मॉडल की पूरी बात यही है। (3000 घटाने के बजाय जोड़ देता है।)",
+        mr: "2400 − 600 = 1800 nm. जे एकक मोजले जाते ते दोन Z रेषांमधली लांबी, आणि तंतूत केवळ तीच आखडते — तिच्या आतले तंतुक अख्खा वेळ आपली लांबी टिकवतात, आणि सरकत्या तंतुक प्रतिरूपाचा अख्खा आशय हाच आहे. (3000 वजा करण्याऐवजी जोडते.)",
+      },
+      fmt: unit("nm"),
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A resting sarcomere is 2400 nm long and its A band is 1600 nm. The remainder is shared equally between the two half I bands. How wide is each?",
+        hi: "विश्राम में पेशीखंड 2400 nm लंबा है और उसकी A पट्टी 1600 nm. शेष दोनों अर्ध I पट्टियों में बराबर बँटा है। हर एक कितनी चौड़ी है?",
+        mr: "विश्रांतीतला स्नायुखंड 2400 nm लांब आहे आणि त्याचा A पट्टा 1600 nm. उरलेले दोन्ही अर्ध्या I पट्ट्यांत समान वाटलेले आहे. प्रत्येक किती रुंद?",
+      },
+      answer: 400,
+      wrong: [800, 1600, 200],
+      checkExpr: "(2400-1600)/2",
+      solution: {
+        en: "(2400 − 1600)/2 = 400 nm each. The halving matters: a sarcomere has one A band in the middle and a half I band at each end, so the pale material is split between two ends and must be divided by two before it can be quoted. (800 gives the total pale length and forgets there are two ends.)",
+        hi: "(2400 − 1600)/2 = 400 nm प्रत्येक। आधा करना मायने रखता है: पेशीखंड में बीच में एक A पट्टी और हर सिरे पर आधी I पट्टी होती है, अतः हल्का पदार्थ दो सिरों में बँटा है और बताने से पहले उसे दो से भाग देना पड़ता है। (800 कुल हल्की लंबाई देता है और भूल जाता है कि सिरे दो हैं।)",
+        mr: "(2400 − 1600)/2 = 400 nm प्रत्येकी. निम्मे करणे महत्त्वाचे: स्नायुखंडात मध्ये एक A पट्टा आणि प्रत्येक टोकाला अर्धा I पट्टा असतो, म्हणून फिकट पदार्थ दोन टोकांत वाटलेला आहे आणि सांगण्याआधी त्याला दोनने भागावे लागते. (800 एकूण फिकट लांबी देते आणि टोके दोन आहेत हे विसरते.)",
+      },
+      fmt: unit("nm"),
+    },
+    {
+      level: 2,
+      stem: {
+        en: "The same sarcomere contracts to 1800 nm and its A band is still 1600 nm. How wide is each half I band now?",
+        hi: "वही पेशीखंड सिकुड़कर 1800 nm का हो जाता है और उसकी A पट्टी अब भी 1600 nm है। अब हर अर्ध I पट्टी कितनी चौड़ी है?",
+        mr: "तोच स्नायुखंड आकुंचन पावून 1800 nm चा होतो आणि त्याचा A पट्टा अजूनही 1600 nm आहे. आता प्रत्येक अर्धा I पट्टा किती रुंद?",
+      },
+      answer: 100,
+      wrong: [200, 400, 1800],
+      checkExpr: "(1800-1600)/2",
+      solution: {
+        en: "(1800 − 1600)/2 = 100 nm, down from 400. Read the two answers together and you have the experiment: the sarcomere shortened, the I band shrank to a quarter of its width, and the A band did not move at all. If contraction involved filaments folding or coiling, the A band would have had to narrow too. It did not, so the thick filaments kept their length and the thin ones slid inward past them. (400 quotes the resting value.)",
+        hi: "(1800 − 1600)/2 = 100 nm, जो 400 से गिरा है। दोनों उत्तर साथ पढ़ो और प्रयोग तुम्हारे सामने है: पेशीखंड छोटा हुआ, I पट्टी अपनी चौड़ाई के चौथाई पर सिमट गई, और A पट्टी हिली ही नहीं। यदि संकुचन में तंतुक मुड़ते या कुंडलित होते तो A पट्टी को भी सँकरा होना पड़ता। वह नहीं हुई, अतः मोटे तंतुकों ने अपनी लंबाई बनाए रखी और पतले उनके पास से भीतर सरक गए। (400 विश्राम का मान बता देता है।)",
+        mr: "(1800 − 1600)/2 = 100 nm, जे 400 वरून उतरले आहे. दोन्ही उत्तरे एकत्र वाचा आणि प्रयोग तुमच्यासमोर आहे: स्नायुखंड आखडला, I पट्टा आपल्या रुंदीच्या चतुर्थांशावर आला, आणि A पट्टा हललाच नाही. आकुंचनात तंतुक दुमडत वा वेटोळे घालत असते तर A पट्टाही अरुंद व्हावा लागला असता. तो झाला नाही, म्हणून जाड तंतुकांनी आपली लांबी टिकवली आणि पातळ त्यांच्याशेजारून आत सरकले. (400 विश्रांतीचे मूल्य सांगते.)",
+      },
+      fmt: unit("nm"),
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A myofibril 24000 nm long is made of sarcomeres 2400 nm each, laid end to end. How many sarcomeres is that?",
+        hi: "24000 nm लंबा कोई पेशीतंतुक 2400 nm के पेशीखंडों से बना है जो सिरे से सिरे जुड़े हैं। वे कितने पेशीखंड हुए?",
+        mr: "24000 nm लांब एक स्नायुतंतुक 2400 nm च्या स्नायुखंडांचा बनलेला आहे जे टोकाला टोक जोडलेले आहेत. ते किती स्नायुखंड झाले?",
+      },
+      answer: 10,
+      wrong: [100, 12, 5],
+      checkExpr: "24000/2400",
+      solution: {
+        en: "24000/2400 = 10 sarcomeres. This is the arrangement that makes muscle work at all. A single sarcomere shortens by a few hundred nanometres, which would move nothing anybody could see; a real muscle fibre is tens of thousands of them in a line, and the tiny shortenings add along the whole length. Filaments in SERIES add distance; filaments in PARALLEL add force — which is why a long thin muscle is fast and a short thick one is strong. (100 misplaces a zero in the division.)",
+        hi: "24000/2400 = 10 पेशीखंड। यही व्यवस्था पेशी को काम करने लायक़ बनाती है। अकेला पेशीखंड कुछ सौ नैनोमीटर छोटा होता है, जो किसी को दिखने लायक़ कुछ नहीं हिलाता; असली पेशी तंतु ऐसे दसियों हज़ार की क़तार है, और नन्ही-नन्ही छोटाइयाँ पूरी लंबाई में जुड़ती जाती हैं। शृंखला में तंतुक दूरी जोड़ते हैं; समांतर में तंतुक बल जोड़ते हैं — इसीलिए लंबी पतली पेशी तेज़ है और छोटी मोटी ताक़तवर। (100 भाग में एक शून्य ग़लत जगह रख देता है।)",
+        mr: "24000/2400 = 10 स्नायुखंड. हीच व्यवस्था स्नायूला काम करण्याजोगा बनवते. एकटा स्नायुखंड काहीशे नॅनोमीटर आखडतो, जे कोणालाही दिसण्याजोगे काहीच हलवत नाही; खरा स्नायुतंतू अशा दहा-वीस हजारांची रांग आहे, आणि चिमुकली आखडणी अख्ख्या लांबीत जुळत जातात. मालिकेतले तंतुक अंतर जोडतात; समांतरातले तंतुक बल जोडतात — म्हणूनच लांब बारीक स्नायू वेगवान आहे आणि आखूड जाड ताकदवान. (100 भागाकारात एक शून्य चुकीच्या जागी ठेवते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "Ten sarcomeres lie end to end and each shortens by 600 nm. By how much does the whole row shorten?",
+        hi: "दस पेशीखंड सिरे से सिरे पड़े हैं और हर एक 600 nm छोटा होता है। पूरी क़तार कितनी छोटी होती है?",
+        mr: "दहा स्नायुखंड टोकाला टोक पडलेले आहेत आणि प्रत्येक 600 nm आखडतो. अख्खी रांग किती आखडते?",
+      },
+      answer: 6000,
+      wrong: [600, 2400, 60],
+      checkExpr: "10*600",
+      solution: {
+        en: "10 × 600 = 6000 nm. Note the fraction: a row 24000 nm long has shortened by 6000, which is a quarter of its length, and that is about the limit of what a real muscle manages. It is a fixed proportion rather than a fixed distance, which is why a long muscle can move a bone further than a short one however strong the short one is — and why the reach of a limb is set by muscle LENGTH while its power is set by muscle THICKNESS. (600 gives one sarcomere's contribution and forgets the row.)",
+        hi: "10 × 600 = 6000 nm. अंश पर ध्यान दो: 24000 nm लंबी क़तार 6000 छोटी हुई है, जो उसकी लंबाई का चौथाई है, और असली पेशी लगभग इतना ही कर पाती है। यह नियत दूरी नहीं, नियत अनुपात है, इसीलिए लंबी पेशी हड्डी को छोटी पेशी से अधिक दूर हिला सकती है चाहे छोटी कितनी भी ताक़तवर हो — और इसीलिए अंग की पहुँच पेशी की लंबाई से तय होती है और उसकी ताक़त पेशी की मोटाई से। (600 एक पेशीखंड का योगदान देता है और क़तार भूल जाता है।)",
+        mr: "10 × 600 = 6000 nm. अंशाकडे लक्ष द्या: 24000 nm लांब रांग 6000 आखडली आहे, जे तिच्या लांबीचा चतुर्थांश आहे, आणि खरा स्नायू जवळपास इतकेच साधतो. हे ठरावीक अंतर नव्हे, ठरावीक प्रमाण आहे, म्हणूनच लांब स्नायू हाड आखूड स्नायूहून अधिक दूर हलवू शकतो आखूड कितीही ताकदवान असला तरी — आणि म्हणूनच अवयवाचा आवाका स्नायूच्या लांबीने ठरतो आणि त्याची ताकद स्नायूच्या जाडीने. (600 एका स्नायुखंडाचे योगदान देते आणि रांग विसरते.)",
+      },
+      fmt: unit("nm"),
+    },
+    {
+      level: 6,
+      stem: {
+        en: "The biceps tendon inserts 5 cm from the elbow and a 4 kg weight is held 30 cm from it. What force, in kg-equivalent, must the muscle exert to hold the forearm level?",
+        hi: "द्विशिर कंडरा कोहनी से 5 cm दूर जुड़ती है और 4 kg भार उससे 30 cm दूर थामा गया है। अग्रबाहु को सीधा थामने के लिए पेशी को kg के तुल्य कितना बल लगाना पड़ेगा?",
+        mr: "द्विशिर कंडरा कोपरापासून 5 cm अंतरावर जोडली जाते आणि 4 kg वजन तिच्यापासून 30 cm दूर धरले आहे. अग्रबाहू सरळ धरण्यासाठी स्नायूला kg इतके किती बल लावावे लागेल?",
+      },
+      answer: 24,
+      wrong: [4, 6, 120],
+      checkExpr: "4*30/5",
+      solution: {
+        en: "Balance the moments about the elbow: force × 5 = 4 × 30, so force = 4 × 30/5 = 24. The muscle works at a six-fold mechanical disadvantage, and a pupil's first reaction is that this must be bad design. It is not — it is a trade, and the lever gives back exactly what it takes. The same 5-to-30 ratio that multiplies the force by six also multiplies the DISTANCE the hand travels by six, and its SPEED with it: shorten the muscle 1 cm and the hand sweeps 6 cm, six times as fast. That is worth paying for, because a muscle can only shorten by about a third of its own length — range is physically capped and cannot be bought — while force can always be increased by growing a thicker muscle. Evolution is spending the cheap resource on the scarce one. The comparison proves it: a mole, which needs force rather than speed, has its forelimb muscles inserting far out along the bone and digs powerfully and slowly, while a deer has them crowded close to the joint and runs. Same skeleton, opposite bargain. (6 gives the ratio of the two distances rather than the force.)",
+        hi: "कोहनी के परितः आघूर्ण संतुलित करो: बल × 5 = 4 × 30, अतः बल = 4 × 30/5 = 24. पेशी छह गुनी यांत्रिक हानि पर काम करती है, और विद्यार्थी की पहली प्रतिक्रिया यह होती है कि यह बुरी बनावट होगी। नहीं है — यह सौदा है, और उत्तोलक ठीक उतना लौटाता है जितना लेता है। वही 5 और 30 का अनुपात जो बल छह गुना करता है, हाथ की चली दूरी भी छह गुनी करता है, और उसके साथ गति भी: पेशी 1 cm छोटी करो और हाथ 6 cm बुहार जाता है, छह गुनी तेज़ी से। यह चुकाने योग्य है, क्योंकि पेशी अपनी ही लंबाई के लगभग तिहाई जितनी ही छोटी हो सकती है — परास भौतिक रूप से बँधा है और ख़रीदा नहीं जा सकता — जबकि बल मोटी पेशी उगाकर सदा बढ़ाया जा सकता है। विकास सस्ता संसाधन दुर्लभ पर ख़र्च कर रहा है। तुलना इसे सिद्ध करती है: छछूँदर, जिसे गति नहीं बल चाहिए, उसकी अग्रपाद पेशियाँ हड्डी पर कहीं बाहर जुड़ती हैं और वह ताक़त से धीरे खोदता है, जबकि हिरन की संधि के पास ठसी हैं और वह दौड़ता है। वही कंकाल, उलटा सौदा। (6 बल के बजाय दोनों दूरियों का अनुपात दे देता है।)",
+        mr: "कोपराभोवती परिबल संतुलित करा: बल × 5 = 4 × 30, म्हणून बल = 4 × 30/5 = 24. स्नायू सहापट यांत्रिक तोट्यावर काम करतो, आणि विद्यार्थ्याची पहिली प्रतिक्रिया अशी की ही वाईट रचना असावी. नाही — हा सौदा आहे, आणि तरफ नेमके तितकेच परत देते जितके घेते. तेच 5 आणि 30 चे गुणोत्तर जे बल सहापट करते, ते हाताने चाललेले अंतरही सहापट करते, आणि त्यासोबत वेगही: स्नायू 1 cm आखडवा आणि हात 6 cm झाडतो, सहापट वेगाने. हे भरण्याजोगे आहे, कारण स्नायू आपल्याच लांबीच्या सुमारे तृतीयांशाइतकाच आखडू शकतो — पल्ला भौतिकदृष्ट्या बांधलेला आहे आणि विकत घेता येत नाही — तर बल जाड स्नायू वाढवून नेहमी वाढवता येते. उत्क्रांती स्वस्त संसाधन दुर्मिळावर खर्चते आहे. तुलना हे सिद्ध करते: घूस, जिला वेग नव्हे बल हवे, तिच्या पुढच्या पायाचे स्नायू हाडावर कितीतरी बाहेर जुळतात आणि ती ताकदीने सावकाश खणते, तर हरणाचे सांध्याजवळ दाटलेले असतात आणि ते धावते. तोच सांगाडा, उलटा सौदा. (6 बलाऐवजी दोन अंतरांचे गुणोत्तर देते.)",
+      },
+      fmt: unit("kg"),
+    },
+  ],
+  /**
+   * Membrane voltages, pump ratios and conduction times are measured
+   * quantities that a pupil can be asked to defend. The names of the brain's
+   * regions are not, and no sum has been invented for them — so this set is
+   * six, and it stops where the arithmetic stops.
+   */
+  "biology-11-neural-control-and-coordination": [
+    {
+      level: 1,
+      stem: {
+        en: "A neuron rests at −70 mV and peaks at +30 mV during an impulse. By how many millivolts does the membrane potential change?",
+        hi: "कोई तंत्रिका कोशिका −70 mV पर विश्राम करती है और आवेग के दौरान +30 mV के शिखर पर पहुँचती है। झिल्ली विभव कितने मिलीवोल्ट बदलता है?",
+        mr: "एक चेतापेशी −70 mV वर विश्रांती घेते आणि आवेगादरम्यान +30 mV च्या शिखरावर पोहोचते. पटल विभव किती मिलिव्होल्टने बदलतो?",
+      },
+      answer: 100,
+      wrong: [40, 70, 30],
+      checkExpr: "30-(-70)",
+      solution: {
+        en: "30 − (−70) = 100 mV. Subtracting a negative is where this goes wrong, and the physical picture keeps you honest: the inside has to climb all the way from seventy below zero to thirty above it, so the journey is the sum of the two distances. (40 subtracts the magnitudes and loses the sign.)",
+        hi: "30 − (−70) = 100 mV. ऋण घटाना ही वह जगह है जहाँ भूल होती है, और भौतिक चित्र तुम्हें ईमानदार रखता है: भीतर को शून्य से सत्तर नीचे से चढ़कर तीस ऊपर तक जाना है, अतः यात्रा दोनों दूरियों का योग है। (40 परिमाण घटाकर चिह्न खो देता है।)",
+        mr: "30 − (−70) = 100 mV. ऋण वजा करणे हीच ती जागा जिथे चूक होते, आणि भौतिक चित्र तुम्हाला प्रामाणिक ठेवते: आतल्या भागाला शून्याहून सत्तर खालून चढून तीस वर जायचे आहे, म्हणून प्रवास दोन्ही अंतरांची बेरीज आहे. (40 परिमाणे वजा करून चिन्ह गमावते.)",
+      },
+      fmt: unit("mV"),
+    },
+    {
+      level: 2,
+      stem: {
+        en: "The sodium-potassium pump throws out 3 sodium ions for every 2 potassium ions it brings in. In 30 cycles, how many sodium ions leave the cell?",
+        hi: "सोडियम-पोटैशियम पंप हर 2 पोटैशियम आयन भीतर लाने पर 3 सोडियम आयन बाहर फेंकता है। 30 चक्रों में कितने सोडियम आयन कोशिका छोड़ते हैं?",
+        mr: "सोडियम-पोटॅशियम पंप प्रत्येक 2 पोटॅशियम आयन आत आणण्यामागे 3 सोडियम आयन बाहेर फेकतो. 30 चक्रांत किती सोडियम आयन पेशी सोडतात?",
+      },
+      answer: 90,
+      wrong: [60, 30, 150],
+      checkExpr: "30*3",
+      solution: {
+        en: "30 × 3 = 90 sodium ions out, against 60 potassium ions in. Hold on to the imbalance rather than the two numbers: the pump is not a fair exchange, and that is deliberate. (60 answers for potassium.)",
+        hi: "30 × 3 = 90 सोडियम आयन बाहर, और 60 पोटैशियम आयन भीतर। दो संख्याओं से अधिक असंतुलन पकड़ो: पंप न्यायपूर्ण अदला-बदली नहीं है, और यह जानबूझकर है। (60 पोटैशियम का उत्तर देता है।)",
+        mr: "30 × 3 = 90 सोडियम आयन बाहेर, आणि 60 पोटॅशियम आयन आत. दोन आकड्यांहून असमतोल धरून ठेवा: पंप ही न्याय्य अदलाबदल नाही, आणि हे मुद्दाम आहे. (60 पोटॅशियमचे उत्तर देते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "The same pump moves 3 positive charges out and 2 in per cycle. What is the net number of positive charges removed from the cell in 30 cycles?",
+        hi: "वही पंप प्रति चक्र 3 धनावेश बाहर और 2 भीतर ले जाता है। 30 चक्रों में कोशिका से शुद्ध कितने धनावेश हटते हैं?",
+        mr: "तोच पंप प्रति चक्र 3 धनभार बाहेर आणि 2 आत नेतो. 30 चक्रांत पेशीतून निव्वळ किती धनभार निघतात?",
+      },
+      answer: 30,
+      wrong: [5, 60, 150],
+      checkExpr: "30*(3-2)",
+      solution: {
+        en: "One net charge leaves each cycle, so 30 × (3 − 2) = 30. This is why the pump is called electrogenic: it does not merely maintain the concentration gradients, it actively contributes to the negativity inside by exporting more positive charge than it imports. Only a small part of the resting potential comes from this — most of it is the potassium gradient — but the pump is what keeps that gradient there to be used. (60 counts the potassium ions rather than the net charge.)",
+        hi: "हर चक्र में एक शुद्ध आवेश निकलता है, अतः 30 × (3 − 2) = 30. इसीलिए पंप को विद्युत्जनक कहते हैं: वह केवल सांद्रता प्रवणताएँ बनाए नहीं रखता, वह भीतर की ऋणात्मकता में सक्रिय योगदान भी देता है, क्योंकि जितना धनावेश लाता है उससे अधिक बाहर भेजता है। विश्राम विभव का केवल थोड़ा हिस्सा इससे आता है — अधिकांश पोटैशियम प्रवणता है — पर वह प्रवणता काम में आने को बनी रहे यह पंप ही करता है। (60 शुद्ध आवेश के बजाय पोटैशियम आयन गिन लेता है।)",
+        mr: "प्रत्येक चक्रात एक निव्वळ भार निघतो, म्हणून 30 × (3 − 2) = 30. म्हणूनच पंपाला विद्युत्जनक म्हणतात: तो केवळ संहती प्रवणता टिकवत नाही, तो आतल्या ऋणतेत सक्रिय भरही घालतो, कारण जितका धनभार आणतो त्याहून अधिक बाहेर पाठवतो. विश्रांती विभवाचा केवळ थोडा भाग यातून येतो — बहुतांश पोटॅशियम प्रवणता आहे — पण ती प्रवणता वापरण्यासाठी टिकून राहावी हे पंपच करतो. (60 निव्वळ भाराऐवजी पोटॅशियम आयन मोजते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A myelinated fibre conducts at 120 metres a second. How long, in seconds, does an impulse take to travel 1.2 metres from the spinal cord to the foot?",
+        hi: "कोई मायलिनयुक्त तंतु 120 मीटर प्रति सेकंड चालन करता है। मेरुरज्जु से पैर तक 1.2 मीटर जाने में आवेग को कितने सेकंड लगते हैं?",
+        mr: "एक मायलिनयुक्त तंतू 120 मीटर प्रति सेकंद वहन करतो. मेरुरज्जूपासून पायापर्यंत 1.2 मीटर जाण्यास आवेगाला किती सेकंद लागतात?",
+      },
+      answer: 0.01,
+      wrong: [100, 0.1, 144],
+      checkExpr: "1.2/120",
+      solution: {
+        en: "1.2/120 = 0.01 s, a hundredth of a second. Worth pausing on what that means: your brain's picture of where your foot is arrives already a hundredth of a second out of date, and every fast sport is played inside that lag. It is also why a nerve cannot afford to conduct slowly — an unmyelinated fibre at 2 metres a second would take 0.6 s over the same distance, which is more than half a second of ignorance about your own leg. (100 inverts the division and gives a speed rather than a time.)",
+        hi: "1.2/120 = 0.01 s, सेकंड का सौवाँ भाग। इसका अर्थ ठहरकर देखने योग्य है: तुम्हारा पैर कहाँ है इसका मस्तिष्क का चित्र पहले ही सेकंड के सौवें भाग जितना पुराना पहुँचता है, और हर तेज़ खेल उसी विलंब के भीतर खेला जाता है। इसीलिए तंत्रिका धीमा चालन कर ही नहीं सकती — 2 मीटर प्रति सेकंड वाला मायलिनरहित तंतु उसी दूरी पर 0.6 s लेता, जो अपनी ही टाँग के बारे में आधे सेकंड से अधिक की अनभिज्ञता है। (100 भाग उलट देता है और समय के बजाय चाल दे देता है।)",
+        mr: "1.2/120 = 0.01 s, सेकंदाचा शंभरावा भाग. याचा अर्थ थांबून पाहण्याजोगा: तुमचा पाय कुठे आहे याचे मेंदूचे चित्र आधीच सेकंदाच्या शंभराव्या भागाइतके जुने पोहोचते, आणि प्रत्येक वेगवान खेळ त्याच विलंबाच्या आत खेळला जातो. म्हणूनच चेता सावकाश वहन करूच शकत नाही — 2 मीटर प्रति सेकंदाचा मायलिनविरहित तंतू त्याच अंतरावर 0.6 s घेतला असता, जे स्वतःच्याच पायाबद्दल अर्ध्या सेकंदाहून अधिक अज्ञान. (100 भागाकार उलटवते आणि वेळेऐवजी वेग देते.)",
+      },
+      fmt: unit("s"),
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A myelinated fibre conducts at 100 metres a second and an unmyelinated one of similar thickness at 2 metres a second. How many times faster is the myelinated fibre?",
+        hi: "कोई मायलिनयुक्त तंतु 100 मीटर प्रति सेकंड चालन करता है और उतनी ही मोटाई का मायलिनरहित तंतु 2 मीटर प्रति सेकंड। मायलिनयुक्त तंतु कितने गुना तेज़ है?",
+        mr: "एक मायलिनयुक्त तंतू 100 मीटर प्रति सेकंद वहन करतो आणि तितक्याच जाडीचा मायलिनविरहित तंतू 2 मीटर प्रति सेकंद. मायलिनयुक्त तंतू किती पट वेगवान?",
+      },
+      answer: 50,
+      wrong: [98, 102, 200],
+      checkExpr: "100/2",
+      solution: {
+        en: "100/2 = 50 times. The word to hold on to is TIMES rather than more: 98 is the difference and 50 is the ratio, and only the ratio says anything about the mechanism. The mechanism is that the impulse is no longer regenerated at every point but only at the bare nodes, so it leaps the insulated stretches — and leaping is both faster and cheaper, since far fewer ions have to be pumped back afterwards. That is why a mammal can pack a fast nervous system into a thin nerve, while a squid, which never evolved myelin, had to make one fibre as thick as a pencil lead to escape quickly. (98 gives the difference in speed instead of the ratio.)",
+        hi: "100/2 = 50 गुना। पकड़ने का शब्द गुना है, अधिक नहीं: 98 अंतर है और 50 अनुपात, और तंत्र के बारे में केवल अनुपात कुछ कहता है। तंत्र यह है कि आवेग अब हर बिंदु पर नहीं बल्कि केवल नंगी गाँठों पर दोबारा बनता है, अतः वह ढके हुए हिस्सों को छलाँग जाता है — और छलाँगना तेज़ भी है और सस्ता भी, क्योंकि बाद में कहीं कम आयन वापस पंप करने पड़ते हैं। इसीलिए स्तनी तेज़ तंत्रिका तंत्र को पतली तंत्रिका में ठूँस सकता है, जबकि स्क्विड को, जिसमें मायलिन कभी विकसित नहीं हुआ, तेज़ भागने को एक तंतु पेंसिल की सीक जितना मोटा बनाना पड़ा। (98 अनुपात के बजाय चाल का अंतर दे देता है।)",
+        mr: "100/2 = 50 पट. धरून ठेवण्याचा शब्द पट आहे, अधिक नव्हे: 98 हा फरक आणि 50 हे गुणोत्तर, आणि यंत्रणेबद्दल केवळ गुणोत्तरच काही सांगते. यंत्रणा अशी की आवेग आता प्रत्येक बिंदूवर नव्हे तर केवळ उघड्या गाठींवर पुन्हा घडतो, म्हणून तो आच्छादित भाग उडी मारून ओलांडतो — आणि उडी मारणे वेगवानही आहे आणि स्वस्तही, कारण नंतर कितीतरी कमी आयन परत पंप करावे लागतात. म्हणूनच सस्तन प्राणी वेगवान चेतासंस्था बारीक चेतेत कोंबू शकतो, तर स्क्विडला, ज्याच्यात मायलिन कधीच उत्क्रांत झाले नाही, झटपट पळण्यासाठी एक तंतू पेन्सिलच्या शिशाइतका जाड बनवावा लागला. (98 गुणोत्तराऐवजी वेगातला फरक देते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "In a knee-jerk reflex the sensory path is 0.5 m and the motor path 0.5 m, both conducting at 100 metres a second, and the single synapse in the cord adds a delay of 0.002 s. What is the total time from tap to twitch?",
+        hi: "घुटना-झटका प्रतिवर्त में संवेदी पथ 0.5 m और प्रेरक पथ 0.5 m है, दोनों 100 मीटर प्रति सेकंड चालन करते हैं, और रज्जु का इकलौता युग्मानुबंधन 0.002 s का विलंब जोड़ता है। ठोक से झटके तक कुल कितना समय?",
+        mr: "गुडघा-झटका प्रतिक्षिप्त क्रियेत संवेदी मार्ग 0.5 m आणि प्रेरक मार्ग 0.5 m आहे, दोन्ही 100 मीटर प्रति सेकंद वहन करतात, आणि रज्जूतला एकमेव युग्मानुबंध 0.002 s चा विलंब जोडतो. ठोक्यापासून झटक्यापर्यंत एकूण किती वेळ?",
+      },
+      answer: 0.012,
+      wrong: [0.01, 0.002, 0.02],
+      checkExpr: "0.5/100+0.5/100+0.002",
+      solution: {
+        en: "Each 0.5 m leg takes 0.5/100 = 0.005 s, so 0.005 + 0.005 + 0.002 = 0.012 s — about a hundredth of a second. Two things are worth reading out of that figure. First, the synapse is a sixth of the total time despite occupying almost no distance, because a chemical step is intrinsically slower than conduction along a fibre. That is why reflexes are built with as few synapses as possible, and why the fastest of them are monosynaptic — one sensory neuron straight onto one motor neuron, with nothing in between to consult. Second, imagine routing this through the brain instead. The signal would travel up the cord and back, adding well over a metre, and would cross several more synapses on the way; the response would arrive several times later. For a hand on a hot pan, that difference is a blister. The design principle generalises: where speed matters more than judgement, the decision is delegated downward and the brain is informed rather than asked. (0.01 gives the conduction time and forgets the synaptic delay entirely.)",
+        hi: "0.5 m का हर चरण 0.5/100 = 0.005 s लेता है, अतः 0.005 + 0.005 + 0.002 = 0.012 s — लगभग सेकंड का सौवाँ भाग। उस आँकड़े से दो बातें पढ़ने योग्य हैं। पहली, युग्मानुबंधन कुल समय का छठा हिस्सा है जबकि उसकी दूरी लगभग शून्य है, क्योंकि रासायनिक चरण तंतु पर चालन से स्वभावतः धीमा है। इसीलिए प्रतिवर्त जितने कम युग्मानुबंधनों से हो सके उतने कम से बनाए जाते हैं, और सबसे तेज़ वाले एकयुग्मानुबंधी होते हैं — एक संवेदी तंत्रिका सीधे एक प्रेरक तंत्रिका पर, और बीच में पूछने को कुछ नहीं। दूसरी, कल्पना करो कि इसे मस्तिष्क से होकर भेजा जाए। संकेत रज्जु में ऊपर जाकर लौटता, एक मीटर से अधिक जुड़ता, और राह में कई और युग्मानुबंधन पार करता; अनुक्रिया कई गुना देर से पहुँचती। गरम कड़ाही पर रखे हाथ के लिए वह अंतर एक छाला है। बनावट का सिद्धांत सामान्य है: जहाँ निर्णय से अधिक गति मायने रखे, वहाँ निर्णय नीचे सौंप दिया जाता है और मस्तिष्क से पूछा नहीं, उसे बताया जाता है। (0.01 चालन का समय देता है और युग्मानुबंधी विलंब पूरी तरह भूल जाता है।)",
+        mr: "0.5 m चा प्रत्येक टप्पा 0.5/100 = 0.005 s घेतो, म्हणून 0.005 + 0.005 + 0.002 = 0.012 s — सुमारे सेकंदाचा शंभरावा भाग. त्या आकड्यातून दोन गोष्टी वाचण्याजोग्या. पहिली, युग्मानुबंध एकूण वेळेचा सहावा भाग आहे जरी त्याचे अंतर जवळपास शून्य असले, कारण रासायनिक पायरी तंतूवरील वहनाहून स्वभावतः मंद आहे. म्हणूनच प्रतिक्षिप्त क्रिया जितक्या कमी युग्मानुबंधांनी शक्य तितक्या कमीने बांधल्या जातात, आणि सर्वांत वेगवान त्या एकयुग्मानुबंधी असतात — एक संवेदी चेतापेशी थेट एका प्रेरक चेतापेशीवर, आणि मध्ये विचारायला कोणी नाही. दुसरी, कल्पना करा की हे मेंदूमार्गे पाठवले जाईल. संकेत रज्जूत वर जाऊन परतला असता, एक मीटरहून अधिक जोडला असता, आणि वाटेत आणखी कैक युग्मानुबंध ओलांडले असते; प्रतिसाद कैकपट उशिरा पोहोचला असता. गरम तव्यावरच्या हातासाठी तो फरक म्हणजे एक फोड. रचनेचे तत्त्व सामान्य आहे: जिथे निर्णयाहून वेग महत्त्वाचा, तिथे निर्णय खाली सोपवला जातो आणि मेंदूला विचारले जात नाही, त्याला सांगितले जाते. (0.01 वहनाचा वेळ देते आणि युग्मानुबंधी विलंब पूर्ण विसरते.)",
+      },
+      fmt: unit("s"),
+    },
+  ],
+  /**
+   * Chapter 19 has no entry, and that is the claim this file was designed to
+   * be able to make. Chemical Coordination is about ratios of signal to
+   * response, about which tissue is listening and about how long an effect
+   * takes to appear — none of which is arithmetic. A dose sum or a hormone
+   * concentration invented here would be a fiction of this file rather than a
+   * fact of the subject, and inventing one to fill the row would undo the
+   * point of leaving Anatomy, Structural Organisation, The Living World,
+   * Biological Classification, Animal Kingdom and Morphology empty too.
+   * Nine of the nineteen chapters count; ten do not.
+   */
 };
