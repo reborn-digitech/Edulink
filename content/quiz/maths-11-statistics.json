@@ -1,0 +1,513 @@
+{
+  "slug": "maths-11-statistics",
+  "subject": "MATHS",
+  "classLevel": 11,
+  "chapter": "Chapter 13 — Statistics",
+  "name": "Statistics",
+  "summary": "Two sets of marks can share a mean and describe completely different classes, so this chapter measures the SPREAD instead: deviations squared so that they cannot cancel, a variance that ignores a shift and obeys a stretch, and a coefficient that lets a spread in rupees be compared with a spread in kilograms.",
+  "position": 13,
+  "translations": {
+    "hi": {
+      "name": "सांख्यिकी",
+      "summary": "अंकों के दो समुच्चय एक ही माध्य साझा करके भी बिलकुल भिन्न कक्षाओं का वर्णन कर सकते हैं, अतः यह अध्याय इसके बजाय फैलाव मापता है: विचलन जिनका वर्ग किया जाता है ताकि वे कट न जाएँ, ऐसा प्रसरण जो खिसकाव की अनदेखी करता है और खिंचाव मानता है, और ऐसा गुणांक जो रुपयों के फैलाव की तुलना किलोग्राम के फैलाव से करने देता है।"
+    },
+    "mr": {
+      "name": "सांख्यिकी",
+      "summary": "गुणांचे दोन संच एकच माध्य वाटून घेऊनही अगदी वेगळ्या वर्गांचे वर्णन करू शकतात, म्हणून हे प्रकरण त्याऐवजी विखुरलेपण मोजते: विचलने ज्यांचा वर्ग केला जातो जेणेकरून ती छेदू नयेत, असे विचरण जे सरकाव दुर्लक्षते आणि ताण मानते, आणि असा सहगुणक जो रुपयांतल्या विखुरलेपणाची तुलना किलोग्रॅममधल्या विखुरलेपणाशी करू देतो."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the range of the data 3, 7, 12, 5, 20?",
+      "choices": [
+        "17",
+        "20",
+        "12",
+        "23"
+      ],
+      "answerIndex": 0,
+      "solution": "The range is the largest value minus the smallest: 20 − 3 = 17. It is the crudest measure of spread there is, because it uses only two of the five numbers and would not notice if everything in between were rearranged — which is exactly why the chapter goes on to build better ones. (20 quotes the largest value rather than the difference.)",
+      "checkExpr": "20-3",
+      "translations": {
+        "hi": {
+          "stem": "आँकड़ों 3, 7, 12, 5, 20 का परिसर क्या है?",
+          "choices": [
+            "17",
+            "20",
+            "12",
+            "23"
+          ],
+          "solution": "परिसर सबसे बड़े मान में से सबसे छोटा घटाकर मिलता है: 20 − 3 = 17. यह फैलाव की सबसे कच्ची माप है, क्योंकि वह पाँच में से केवल दो संख्याएँ काम में लेती है और बीच का सब कुछ फिर से जमा दिया जाए तो उसे पता ही नहीं चलेगा — ठीक इसीलिए अध्याय आगे बेहतर मापें बनाता है। (20 अंतर के बजाय सबसे बड़ा मान बता देता है।)"
+        },
+        "mr": {
+          "stem": "माहिती 3, 7, 12, 5, 20 चा पल्ला किती?",
+          "choices": [
+            "17",
+            "20",
+            "12",
+            "23"
+          ],
+          "solution": "पल्ला म्हणजे सर्वांत मोठे मूल्य वजा सर्वांत लहान: 20 − 3 = 17. हे विखुरलेपणाचे सर्वांत ओबडधोबड माप, कारण ते पाचांपैकी केवळ दोन संख्या वापरते आणि मधले सारे पुन्हा मांडले तरी त्याला कळणारच नाही — नेमके म्हणूनच प्रकरण पुढे अधिक चांगली मापे बांधते. (20 फरकाऐवजी सर्वांत मोठे मूल्य सांगते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the mean of 2, 4, 6, 8 and 10?",
+      "choices": [
+        "30",
+        "5",
+        "8",
+        "6"
+      ],
+      "answerIndex": 3,
+      "solution": "Add and divide by how many there are: 30/5 = 6. Because these values are evenly spaced, the mean is also the middle one, which is a useful check whenever the data form a regular ladder. (30 gives the total and forgets to divide.)",
+      "checkExpr": "(2+4+6+8+10)/5",
+      "translations": {
+        "hi": {
+          "stem": "2, 4, 6, 8 और 10 का माध्य क्या है?",
+          "choices": [
+            "30",
+            "5",
+            "8",
+            "6"
+          ],
+          "solution": "जोड़ो और कितनी हैं उससे भाग दो: 30/5 = 6. चूँकि ये मान बराबर दूरी पर हैं, माध्य बीच वाला भी है, और जब भी आँकड़े नियमित सीढ़ी बनाएँ तब यह उपयोगी जाँच है। (30 कुल देता है और भाग देना भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "2, 4, 6, 8 आणि 10 चा माध्य किती?",
+          "choices": [
+            "30",
+            "5",
+            "8",
+            "6"
+          ],
+          "solution": "जोडा आणि किती आहेत त्याने भागा: 30/5 = 6. ही मूल्ये समान अंतरावर असल्याने, माध्य हा मधलाही आहे, आणि माहिती नियमित शिडी बनवते तेव्हा ही उपयुक्त तपासणी. (30 एकूण देते आणि भागणे विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The variance of a set of observations is 25. What is the standard deviation?",
+      "choices": [
+        "5",
+        "25",
+        "625",
+        "12.5"
+      ],
+      "answerIndex": 0,
+      "solution": "The standard deviation is the square root of the variance: √25 = 5. The root is not decoration — squaring the deviations changed their units, so a variance of marks is in marks squared, and only the root brings the answer back to the units of the original data. (625 squares the variance instead of rooting it.)",
+      "checkExpr": "25/5",
+      "translations": {
+        "hi": {
+          "stem": "प्रेक्षणों के किसी समुच्चय का प्रसरण 25 है। मानक विचलन क्या है?",
+          "choices": [
+            "5",
+            "25",
+            "625",
+            "12.5"
+          ],
+          "solution": "मानक विचलन प्रसरण का वर्गमूल है: √25 = 5. मूल सजावट नहीं — विचलनों का वर्ग करने से उनके मात्रक बदल गए, अतः अंकों का प्रसरण अंक-वर्ग में होता है, और केवल मूल ही उत्तर को मूल आँकड़ों के मात्रकों में लौटाता है। (625 प्रसरण का मूल लेने के बजाय उसका वर्ग कर देता है।)"
+        },
+        "mr": {
+          "stem": "निरीक्षणांच्या एका संचाचे विचरण 25 आहे. प्रमाण विचलन किती?",
+          "choices": [
+            "5",
+            "25",
+            "625",
+            "12.5"
+          ],
+          "solution": "प्रमाण विचलन म्हणजे विचरणाचे वर्गमूळ: √25 = 5. मूळ ही सजावट नाही — विचलनांचा वर्ग केल्याने त्यांची एकके बदलली, म्हणून गुणांचे विचरण गुण-वर्गात असते, आणि केवळ मूळच उत्तराला मूळ माहितीच्या एककांत परत आणते. (625 विचरणाचे मूळ घेण्याऐवजी त्याचा वर्ग करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the mean deviation about the mean for the data 2, 4, 6, 8?",
+      "choices": [
+        "5",
+        "8",
+        "2",
+        "4"
+      ],
+      "answerIndex": 2,
+      "solution": "The mean is 5, so the deviations are −3, −1, 1 and 3. Taken without their signs they are 3, 1, 1 and 3, adding to 8, and 8/4 = 2. Dropping the signs is compulsory rather than convenient: the signed deviations from a mean always add to exactly zero, so without that step every data set in the world would have a mean deviation of nothing at all. (5 quotes the mean of the data instead of the mean deviation.)",
+      "checkExpr": "(3+1+1+3)/4",
+      "translations": {
+        "hi": {
+          "stem": "आँकड़ों 2, 4, 6, 8 का माध्य से माध्य विचलन क्या है?",
+          "choices": [
+            "5",
+            "8",
+            "2",
+            "4"
+          ],
+          "solution": "माध्य 5 है, अतः विचलन −3, −1, 1 और 3 हैं। चिह्नों के बिना वे 3, 1, 1 और 3 हैं, जो जुड़कर 8 बनते हैं, और 8/4 = 2. चिह्न गिराना सुविधा नहीं, अनिवार्यता है: माध्य से चिह्नित विचलन सदा ठीक शून्य बनते हैं, अतः उस चरण के बिना दुनिया के हर आँकड़ा-समुच्चय का माध्य विचलन शून्य ही होता। (5 माध्य विचलन के बजाय आँकड़ों का माध्य बता देता है।)"
+        },
+        "mr": {
+          "stem": "माहिती 2, 4, 6, 8 चे माध्यापासूनचे माध्य विचलन किती?",
+          "choices": [
+            "5",
+            "8",
+            "2",
+            "4"
+          ],
+          "solution": "माध्य 5 आहे, म्हणून विचलने −3, −1, 1 आणि 3 आहेत. चिन्हांविना ती 3, 1, 1 आणि 3 आहेत, जी जुळून 8 बनतात, आणि 8/4 = 2. चिन्हे गाळणे ही सोय नव्हे, सक्ती आहे: माध्यापासूनची चिन्हांकित विचलने नेहमी नेमकी शून्य बनतात, म्हणून त्या पायरीविना जगातल्या प्रत्येक माहिती-संचाचे माध्य विचलन शून्यच झाले असते. (5 माध्य विचलनाऐवजी माहितीचा माध्य सांगते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The standard deviation of a set of observations is 4. What is the variance?",
+      "choices": [
+        "4",
+        "2",
+        "16",
+        "8"
+      ],
+      "answerIndex": 2,
+      "solution": "The variance is the square of the standard deviation: 4² = 16. Compare this with the previous pair of questions and the relationship is one step in either direction — square to go from deviation to variance, take the root to come back. (2 takes the square root, going the wrong way.)",
+      "checkExpr": "4*4",
+      "translations": {
+        "hi": {
+          "stem": "प्रेक्षणों के किसी समुच्चय का मानक विचलन 4 है। प्रसरण क्या है?",
+          "choices": [
+            "4",
+            "2",
+            "16",
+            "8"
+          ],
+          "solution": "प्रसरण मानक विचलन का वर्ग है: 4² = 16. इसकी पिछले प्रश्नों से तुलना करो और संबंध किसी भी दिशा में एक ही क़दम है — विचलन से प्रसरण तक जाने को वर्ग, लौटने को मूल। (2 वर्गमूल ले लेता है, ग़लत दिशा में जाकर।)"
+        },
+        "mr": {
+          "stem": "निरीक्षणांच्या एका संचाचे प्रमाण विचलन 4 आहे. विचरण किती?",
+          "choices": [
+            "4",
+            "2",
+            "16",
+            "8"
+          ],
+          "solution": "विचरण म्हणजे प्रमाण विचलनाचा वर्ग: 4² = 16. याची मागच्या प्रश्नांशी तुलना करा आणि संबंध कोणत्याही दिशेने एकच पाऊल आहे — विचलनापासून विचरणापर्यंत जाण्यास वर्ग, परतण्यास मूळ. (2 वर्गमूळ घेते, चुकीच्या दिशेने जाऊन.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The mean of 5 observations is 20. What is their total?",
+      "choices": [
+        "4",
+        "100",
+        "20",
+        "25"
+      ],
+      "answerIndex": 1,
+      "solution": "Mean equals total divided by count, so total equals mean times count: 5 × 20 = 100. Running the definition backwards like this is what makes the harder questions later in the chapter possible — a mean is a promise about a total, and recovering that total is nearly always the first step. (4 divides the count by the mean.)",
+      "checkExpr": "5*20",
+      "translations": {
+        "hi": {
+          "stem": "5 प्रेक्षणों का माध्य 20 है। उनका कुल योग क्या है?",
+          "choices": [
+            "4",
+            "100",
+            "20",
+            "25"
+          ],
+          "solution": "माध्य बराबर कुल बटा गिनती, अतः कुल बराबर माध्य गुणा गिनती: 5 × 20 = 100. परिभाषा को यों उलटा चलाना ही अध्याय के आगे के कठिन प्रश्नों को संभव बनाता है — माध्य कुल के बारे में एक वादा है, और उस कुल को वापस निकालना लगभग सदा पहला चरण होता है। (4 गिनती को माध्य से भाग दे देता है।)"
+        },
+        "mr": {
+          "stem": "5 निरीक्षणांचा माध्य 20 आहे. त्यांची एकूण बेरीज किती?",
+          "choices": [
+            "4",
+            "100",
+            "20",
+            "25"
+          ],
+          "solution": "माध्य बरोबर एकूण भागिले मोजणी, म्हणून एकूण बरोबर माध्य गुणिले मोजणी: 5 × 20 = 100. व्याख्या अशी उलटी चालवणेच प्रकरणातले पुढचे कठीण प्रश्न शक्य करते — माध्य हे एकूणाबद्दलचे वचन आहे, आणि ते एकूण परत काढणे जवळपास नेहमीच पहिली पायरी. (4 मोजणीला माध्याने भागते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the variance of the data 1, 3, 5, 7?",
+      "choices": [
+        "2.5",
+        "5",
+        "20",
+        "4"
+      ],
+      "answerIndex": 1,
+      "solution": "The mean is 4, so the deviations are −3, −1, 1 and 3. Square them to get 9, 1, 1 and 9, add to 20, and divide by 4: the variance is 5. Squaring rather than dropping signs is what makes this a variance and not a mean deviation, and it has a consequence — squaring gives extra weight to the values furthest from the mean, so one wild reading moves the variance far more than it moves the mean deviation. (20 gives the sum of the squares and forgets to divide.)",
+      "checkExpr": "(9+1+1+9)/4",
+      "translations": {
+        "hi": {
+          "stem": "आँकड़ों 1, 3, 5, 7 का प्रसरण क्या है?",
+          "choices": [
+            "2.5",
+            "5",
+            "20",
+            "4"
+          ],
+          "solution": "माध्य 4 है, अतः विचलन −3, −1, 1 और 3 हैं। उनका वर्ग करके 9, 1, 1 और 9 पाओ, जोड़कर 20, और 4 से भाग दो: प्रसरण 5. चिह्न गिराने के बजाय वर्ग करना ही इसे प्रसरण बनाता है, माध्य विचलन नहीं, और उसका एक परिणाम है — वर्ग करना माध्य से सबसे दूर के मानों को अतिरिक्त भार देता है, अतः एक बेतुका पाठ प्रसरण को माध्य विचलन से कहीं अधिक हिला देता है। (20 वर्गों का योग देता है और भाग देना भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "माहिती 1, 3, 5, 7 चे विचरण किती?",
+          "choices": [
+            "2.5",
+            "5",
+            "20",
+            "4"
+          ],
+          "solution": "माध्य 4 आहे, म्हणून विचलने −3, −1, 1 आणि 3 आहेत. त्यांचा वर्ग करून 9, 1, 1 आणि 9 मिळवा, जोडून 20, आणि 4 ने भागा: विचरण 5. चिन्हे गाळण्याऐवजी वर्ग करणेच याला विचरण बनवते, माध्य विचलन नव्हे, आणि त्याचा एक परिणाम आहे — वर्ग करणे माध्यापासून सर्वांत दूरच्या मूल्यांना अधिकचा भार देते, म्हणून एक विचित्र नोंद विचरणाला माध्य विचलनाहून कितीतरी अधिक हलवते. (20 वर्गांची बेरीज देते आणि भागणे विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the variance of the data 2, 4, 6, 8, 10?",
+      "choices": [
+        "8",
+        "4",
+        "6",
+        "40"
+      ],
+      "answerIndex": 0,
+      "solution": "The mean is 6, so the squared deviations are 16, 4, 0, 4 and 16, adding to 40, and 40/5 = 8. Compare with the previous question: that data set was spaced 2 apart and had variance 5; this one is also spaced 2 apart but has one more value at each end, so the spread is wider and the variance larger. The variance really is measuring what it claims to. (6 quotes the mean instead of the variance.)",
+      "checkExpr": "(16+4+0+4+16)/5",
+      "translations": {
+        "hi": {
+          "stem": "आँकड़ों 2, 4, 6, 8, 10 का प्रसरण क्या है?",
+          "choices": [
+            "8",
+            "4",
+            "6",
+            "40"
+          ],
+          "solution": "माध्य 6 है, अतः वर्ग किए विचलन 16, 4, 0, 4 और 16 हैं, जो जुड़कर 40, और 40/5 = 8. पिछले प्रश्न से तुलना करो: वह समुच्चय भी 2 की दूरी पर था और उसका प्रसरण 5 था; यह भी 2 की दूरी पर है पर हर सिरे पर एक मान अधिक है, अतः फैलाव चौड़ा और प्रसरण बड़ा। प्रसरण सचमुच वही माप रहा है जिसका वह दावा करता है। (6 प्रसरण के बजाय माध्य बता देता है।)"
+        },
+        "mr": {
+          "stem": "माहिती 2, 4, 6, 8, 10 चे विचरण किती?",
+          "choices": [
+            "8",
+            "4",
+            "6",
+            "40"
+          ],
+          "solution": "माध्य 6 आहे, म्हणून वर्ग केलेली विचलने 16, 4, 0, 4 आणि 16 आहेत, जी जुळून 40, आणि 40/5 = 8. मागच्या प्रश्नाशी तुलना करा: तो संचही 2 अंतरावर होता आणि त्याचे विचरण 5 होते; हाही 2 अंतरावर आहे पण प्रत्येक टोकाला एक मूल्य अधिक आहे, म्हणून विखुरलेपण रुंद आणि विचरण मोठे. विचरण खरोखर तेच मोजते आहे ज्याचा तो दावा करतो. (6 विचरणाऐवजी माध्य सांगते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A data set has mean 25 and standard deviation 5. What is its coefficient of variation, as a percentage?",
+      "choices": [
+        "500",
+        "25",
+        "20",
+        "5"
+      ],
+      "answerIndex": 2,
+      "solution": "The coefficient of variation is the standard deviation as a percentage of the mean: 5/25 × 100 = 20 per cent. Its purpose is comparison across different quantities. A spread of 5 kg among adult weights is small; a spread of 5 kg among newborn weights would be enormous — and only dividing by the mean lets the two be judged on the same scale. Because the units cancel in the division, the result is a pure number and a spread in rupees can be set beside a spread in kilograms. (5 quotes the standard deviation without scaling it to the mean.)",
+      "checkExpr": "5/25*100",
+      "translations": {
+        "hi": {
+          "stem": "किसी आँकड़ा-समुच्चय का माध्य 25 और मानक विचलन 5 है। उसका विचरण गुणांक प्रतिशत में क्या है?",
+          "choices": [
+            "500",
+            "25",
+            "20",
+            "5"
+          ],
+          "solution": "विचरण गुणांक मानक विचलन को माध्य के प्रतिशत के रूप में बताता है: 5/25 × 100 = 20 प्रतिशत। उसका प्रयोजन भिन्न राशियों के बीच तुलना है। वयस्कों के भार में 5 kg का फैलाव छोटा है; नवजातों के भार में 5 kg का फैलाव विशाल होता — और केवल माध्य से भाग देना ही दोनों को एक ही पैमाने पर आँकने देता है। चूँकि भाग में मात्रक कट जाते हैं, परिणाम विशुद्ध संख्या है और रुपयों का फैलाव किलोग्राम के फैलाव के साथ रखा जा सकता है। (5 मानक विचलन बता देता है, उसे माध्य पर मापे बिना।)"
+        },
+        "mr": {
+          "stem": "एका माहिती-संचाचा माध्य 25 आणि प्रमाण विचलन 5 आहे. त्याचा विचरण सहगुणक टक्केवारीत किती?",
+          "choices": [
+            "500",
+            "25",
+            "20",
+            "5"
+          ],
+          "solution": "विचरण सहगुणक प्रमाण विचलनाला माध्याच्या टक्केवारीत सांगतो: 5/25 × 100 = 20 टक्के. त्याचा हेतू वेगवेगळ्या राशींमधली तुलना. प्रौढांच्या वजनांत 5 kg चे विखुरलेपण लहान आहे; नवजातांच्या वजनांत 5 kg चे विखुरलेपण अवाढव्य झाले असते — आणि केवळ माध्याने भागणेच दोघांना एकाच मापावर तपासू देते. भागाकारात एकके छेदत असल्याने, निकाल ही निव्वळ संख्या आहे आणि रुपयांतले विखुरलेपण किलोग्रॅममधल्या विखुरलेपणाशेजारी ठेवता येते. (5 प्रमाण विचलन सांगते, त्याला माध्यावर न मोजता.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A data set has variance 9. Every observation is increased by 5. What is the new variance?",
+      "choices": [
+        "45",
+        "9",
+        "14",
+        "34"
+      ],
+      "answerIndex": 1,
+      "solution": "The variance is unchanged at 9. Adding 5 to every value shifts the mean up by 5 as well, so every deviation from the mean stays exactly as it was — and the variance is built entirely from those deviations. Picture the data as marks on a ruler: sliding the whole ruler along does not change the gaps between the marks. This is why a variance is a measure of SPREAD and carries no information about where the data sit. (14 adds 5 to the variance, treating a shift as though it widened the data.)",
+      "checkExpr": "9+0",
+      "translations": {
+        "hi": {
+          "stem": "किसी आँकड़ा-समुच्चय का प्रसरण 9 है। हर प्रेक्षण में 5 जोड़ दिया जाता है। नया प्रसरण क्या है?",
+          "choices": [
+            "45",
+            "9",
+            "14",
+            "34"
+          ],
+          "solution": "प्रसरण अपरिवर्तित 9 रहता है। हर मान में 5 जोड़ने से माध्य भी 5 ऊपर खिसक जाता है, अतः माध्य से हर विचलन ठीक वैसा ही रहता है — और प्रसरण पूरी तरह उन्हीं विचलनों से बना है। आँकड़ों को पैमाने के निशानों की तरह देखो: पूरे पैमाने को सरका देने से निशानों के बीच के अंतराल नहीं बदलते। इसीलिए प्रसरण फैलाव की माप है और यह कोई सूचना नहीं ढोता कि आँकड़े कहाँ बैठे हैं। (14 प्रसरण में 5 जोड़ देता है, खिसकाव को ऐसे मानकर मानो उसने आँकड़े चौड़े किए हों।)"
+        },
+        "mr": {
+          "stem": "एका माहिती-संचाचे विचरण 9 आहे. प्रत्येक निरीक्षणात 5 जोडले जाते. नवे विचरण किती?",
+          "choices": [
+            "45",
+            "9",
+            "14",
+            "34"
+          ],
+          "solution": "विचरण अपरिवर्तित 9 राहते. प्रत्येक मूल्यात 5 जोडल्याने माध्यही 5 वर सरकतो, म्हणून माध्यापासूनचे प्रत्येक विचलन नेमके तसेच राहते — आणि विचरण पूर्णपणे त्याच विचलनांतून बनलेले आहे. माहितीला पट्टीवरच्या खुणांसारखे पाहा: अख्खी पट्टी सरकवल्याने खुणांमधली अंतरे बदलत नाहीत. म्हणूनच विचरण हे विखुरलेपणाचे माप आहे आणि ते माहिती कुठे बसली आहे याबद्दल कोणतीही माहिती वाहत नाही. (14 विचरणात 5 जोडते, सरकावाला त्याने माहिती रुंदावली असे मानून.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A data set has standard deviation 4. Every observation is multiplied by 3. What is the new standard deviation?",
+      "choices": [
+        "7",
+        "4",
+        "12",
+        "36"
+      ],
+      "answerIndex": 2,
+      "solution": "Multiplying every value by 3 multiplies the mean by 3 and every deviation by 3, so the standard deviation becomes 4 × 3 = 12. Set this against the previous question and the pair is the whole lesson: adding leaves the spread alone, multiplying stretches it in proportion. The variance behaves differently again — it is multiplied by 3², or 9, becoming 144, because it is built from squared deviations. Note the practical consequence: converting a set of measurements from metres to centimetres multiplies the standard deviation by 100 and the variance by ten thousand. (36 multiplies the variance by 9 and reports that as the standard deviation.)",
+      "checkExpr": "4*3",
+      "translations": {
+        "hi": {
+          "stem": "किसी आँकड़ा-समुच्चय का मानक विचलन 4 है। हर प्रेक्षण को 3 से गुणा कर दिया जाता है। नया मानक विचलन क्या है?",
+          "choices": [
+            "7",
+            "4",
+            "12",
+            "36"
+          ],
+          "solution": "हर मान को 3 से गुणा करने पर माध्य 3 से और हर विचलन भी 3 से गुणा होता है, अतः मानक विचलन 4 × 3 = 12 बन जाता है। इसे पिछले प्रश्न के सामने रखो और जोड़ी ही पूरा पाठ है: जोड़ना फैलाव को छोड़ देता है, गुणा करना उसे अनुपात में खींच देता है। प्रसरण फिर से भिन्न व्यवहार करता है — वह 3² यानी 9 से गुणा होकर 144 बनता है, क्योंकि वह वर्ग किए विचलनों से बना है। व्यावहारिक परिणाम ध्यान दो: मापों के किसी समुच्चय को मीटर से सेंटीमीटर में बदलना मानक विचलन को 100 से और प्रसरण को दस हज़ार से गुणा कर देता है। (36 प्रसरण को 9 से गुणा करके उसे मानक विचलन बता देता है।)"
+        },
+        "mr": {
+          "stem": "एका माहिती-संचाचे प्रमाण विचलन 4 आहे. प्रत्येक निरीक्षण 3 ने गुणले जाते. नवे प्रमाण विचलन किती?",
+          "choices": [
+            "7",
+            "4",
+            "12",
+            "36"
+          ],
+          "solution": "प्रत्येक मूल्य 3 ने गुणल्याने माध्य 3 ने आणि प्रत्येक विचलनही 3 ने गुणले जाते, म्हणून प्रमाण विचलन 4 × 3 = 12 बनते. हे मागच्या प्रश्नासमोर ठेवा आणि जोडीच अख्खा धडा: जोडणे विखुरलेपण सोडते, गुणणे ते प्रमाणात ताणते. विचरण पुन्हा वेगळे वागते — ते 3² म्हणजे 9 ने गुणले जाऊन 144 बनते, कारण ते वर्ग केलेल्या विचलनांतून बनले आहे. व्यावहारिक परिणाम लक्षात घ्या: मोजमापांचा संच मीटरवरून सेंटीमीटरमध्ये बदलणे प्रमाण विचलन 100 ने आणि विचरण दहा हजाराने गुणते. (36 विचरण 9 ने गुणून ते प्रमाण विचलन सांगते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The mean of 10 observations is 15. Later one observation, which was 20, is found to have been recorded as 30. What is the corrected mean?",
+      "choices": [
+        "15",
+        "13",
+        "14",
+        "16"
+      ],
+      "answerIndex": 2,
+      "solution": "Work through the total rather than the mean. The recorded total is 10 × 15 = 150. Remove the wrong entry and put back the right one: 150 − 30 + 20 = 140, and 140/10 = 14. The direction is worth checking against common sense — the recorded value was too high, so the true mean must be lower than 15, and any answer above 15 is wrong before the arithmetic is examined. Note also that the count stays at 10; nothing was added or removed, only replaced. (16 corrects in the wrong direction, adding the error instead of subtracting it.)",
+      "checkExpr": "(150-30+20)/10",
+      "translations": {
+        "hi": {
+          "stem": "10 प्रेक्षणों का माध्य 15 है। बाद में पाया जाता है कि एक प्रेक्षण, जो 20 था, 30 दर्ज कर लिया गया था। सही किया गया माध्य क्या है?",
+          "choices": [
+            "15",
+            "13",
+            "14",
+            "16"
+          ],
+          "solution": "माध्य के बजाय कुल से चलो। दर्ज कुल 10 × 15 = 150 है। ग़लत प्रविष्टि हटाओ और सही वापस रखो: 150 − 30 + 20 = 140, और 140/10 = 14. दिशा को समझ के सामने जाँचना उचित है — दर्ज मान बहुत ऊँचा था, अतः सच्चा माध्य 15 से नीचा होना ही चाहिए, और 15 से ऊपर का कोई भी उत्तर गणित देखे बिना ही ग़लत है। यह भी ध्यान दो कि गिनती 10 ही रहती है; कुछ जोड़ा या हटाया नहीं गया, केवल बदला गया। (16 ग़लत दिशा में सुधार करता है, त्रुटि घटाने के बजाय जोड़कर।)"
+        },
+        "mr": {
+          "stem": "10 निरीक्षणांचा माध्य 15 आहे. नंतर आढळते की एक निरीक्षण, जे 20 होते, ते 30 नोंदवले गेले होते. दुरुस्त केलेला माध्य किती?",
+          "choices": [
+            "15",
+            "13",
+            "14",
+            "16"
+          ],
+          "solution": "माध्याऐवजी एकूणातून चला. नोंदवलेली बेरीज 10 × 15 = 150 आहे. चुकीची नोंद काढा आणि बरोबरची परत ठेवा: 150 − 30 + 20 = 140, आणि 140/10 = 14. दिशा समजेसमोर तपासणे योग्य — नोंदवलेले मूल्य फार उच्च होते, म्हणून खरा माध्य 15 हून खाली असावाच लागतो, आणि 15 हून वरचे कोणतेही उत्तर गणित पाहण्याआधीच चुकीचे. हेही लक्षात घ्या की मोजणी 10 च राहते; काही जोडले वा काढले गेले नाही, केवळ बदलले गेले. (16 चुकीच्या दिशेने दुरुस्ती करते, चूक वजा करण्याऐवजी जोडून.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "For 5 observations the sum of the squares is 200 and the mean is 6. What is the variance?",
+      "choices": [
+        "8",
+        "36",
+        "40",
+        "4"
+      ],
+      "answerIndex": 3,
+      "solution": "Use the shortcut form: variance equals the mean of the squares minus the square of the mean, so 200/5 − 6² = 40 − 36 = 4. This version exists because it needs only two running totals — the sum of the values and the sum of their squares — and never requires the individual deviations, so a calculator or a spreadsheet can compute a variance in one pass without storing the data at all. Note that it also guarantees something: since a variance can never be negative, the mean of the squares is always at least the square of the mean, which is a genuine inequality in its own right. (40 gives the mean of the squares and forgets to subtract the square of the mean.)",
+      "checkExpr": "200/5-6*6",
+      "translations": {
+        "hi": {
+          "stem": "5 प्रेक्षणों के लिए वर्गों का योग 200 है और माध्य 6. प्रसरण क्या है?",
+          "choices": [
+            "8",
+            "36",
+            "40",
+            "4"
+          ],
+          "solution": "शॉर्टकट रूप लो: प्रसरण बराबर वर्गों का माध्य घटा माध्य का वर्ग, अतः 200/5 − 6² = 40 − 36 = 4. यह रूप इसलिए है कि उसे केवल दो चलते जोड़ चाहिए — मानों का योग और उनके वर्गों का योग — और अलग-अलग विचलन कभी नहीं चाहिए, अतः परिकलक या स्प्रेडशीट एक ही चक्कर में प्रसरण निकाल सकता है बिना आँकड़े जमा किए। ध्यान दो कि वह कुछ पक्का भी करता है: चूँकि प्रसरण कभी ऋणात्मक नहीं हो सकता, वर्गों का माध्य सदा माध्य के वर्ग से कम से कम उतना ही होता है, जो अपने आप में एक असली असमिका है। (40 वर्गों का माध्य देता है और माध्य का वर्ग घटाना भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "5 निरीक्षणांसाठी वर्गांची बेरीज 200 आहे आणि माध्य 6. विचरण किती?",
+          "choices": [
+            "8",
+            "36",
+            "40",
+            "4"
+          ],
+          "solution": "शॉर्टकट रूप घ्या: विचरण बरोबर वर्गांचा माध्य वजा माध्याचा वर्ग, म्हणून 200/5 − 6² = 40 − 36 = 4. हे रूप यासाठी आहे की त्याला केवळ दोन चालत्या बेरजा लागतात — मूल्यांची बेरीज आणि त्यांच्या वर्गांची बेरीज — आणि वेगवेगळी विचलने कधीच लागत नाहीत, म्हणून गणकयंत्र वा स्प्रेडशीट एकाच फेऱ्यात विचरण काढू शकते माहिती न साठवता. लक्षात घ्या की ते काहीतरी पक्केही करते: विचरण कधीच ऋण असू शकत नसल्याने, वर्गांचा माध्य नेहमी माध्याच्या वर्गाइतका तरी असतो, जी स्वतःच एक खरी असमानता आहे. (40 वर्गांचा माध्य देते आणि माध्याचा वर्ग वजा करणे विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "One group of 30 students has mean marks 50 and another group of 20 has mean marks 60. What is the mean of all 50 students together?",
+      "choices": [
+        "54",
+        "55",
+        "52",
+        "110"
+      ],
+      "answerIndex": 0,
+      "solution": "Recover each total and add: 30 × 50 = 1500 and 20 × 60 = 1200, giving 2700 over 50 students, so the combined mean is 54. The trap is to average the two means and get 55, which would only be right if the groups were the same size. Here the larger group pulls the answer towards its own mean, and the result of 54 sits closer to 50 than to 60 exactly as it should — a weighted average always leans towards the heavier weight. This is the same reasoning that makes a batting average over two seasons depend on how many innings were played in each, not just on the two averages. (55 takes the plain average of the two means, ignoring the group sizes.)",
+      "checkExpr": "(30*50+20*60)/50",
+      "translations": {
+        "hi": {
+          "stem": "30 विद्यार्थियों के एक समूह के औसत अंक 50 हैं और 20 के दूसरे समूह के 60. मिलाकर सभी 50 विद्यार्थियों का माध्य क्या है?",
+          "choices": [
+            "54",
+            "55",
+            "52",
+            "110"
+          ],
+          "solution": "हर कुल वापस निकालो और जोड़ो: 30 × 50 = 1500 और 20 × 60 = 1200, जिससे 50 विद्यार्थियों पर 2700, अतः मिला-जुला माध्य 54. जाल है दोनों माध्यों का औसत लेकर 55 पा लेना, जो तभी ठीक होता जब समूह बराबर आकार के होते। यहाँ बड़ा समूह उत्तर को अपने माध्य की ओर खींचता है, और 54 का परिणाम ठीक वैसे 50 के पास बैठता है, 60 के नहीं, जैसा उसे बैठना चाहिए — भारित औसत सदा भारी पलड़े की ओर झुकता है। यही तर्क दो सत्रों की बल्लेबाज़ी औसत को इस पर निर्भर बनाता है कि हर सत्र में कितनी पारियाँ खेली गईं, केवल दो औसतों पर नहीं। (55 दोनों माध्यों का सादा औसत ले लेता है, समूहों के आकार की अनदेखी करके।)"
+        },
+        "mr": {
+          "stem": "30 विद्यार्थ्यांच्या एका गटाचे सरासरी गुण 50 आहेत आणि 20 च्या दुसऱ्या गटाचे 60. मिळून सर्व 50 विद्यार्थ्यांचा माध्य किती?",
+          "choices": [
+            "54",
+            "55",
+            "52",
+            "110"
+          ],
+          "solution": "प्रत्येक बेरीज परत काढा आणि जोडा: 30 × 50 = 1500 आणि 20 × 60 = 1200, ज्यातून 50 विद्यार्थ्यांवर 2700, म्हणून एकत्रित माध्य 54. सापळा म्हणजे दोन्ही माध्यांची सरासरी घेऊन 55 मिळवणे, जे गट समान आकाराचे असते तरच बरोबर झाले असते. इथे मोठा गट उत्तराला आपल्या माध्याकडे ओढतो, आणि 54 चा निकाल नेमका तसाच 50 च्या जवळ बसतो, 60 च्या नव्हे, जसा त्याने बसावा — भारित सरासरी नेहमी जड पारड्याकडे झुकते. हाच तर्क दोन हंगामांची फलंदाजी सरासरी प्रत्येक हंगामात किती डाव खेळले यावर अवलंबून करतो, केवळ दोन सरासरींवर नव्हे. (55 दोन्ही माध्यांची साधी सरासरी घेते, गटांचे आकार दुर्लक्षून.)"
+        }
+      }
+    }
+  ]
+}

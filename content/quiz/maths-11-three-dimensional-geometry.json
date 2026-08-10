@@ -1,0 +1,513 @@
+{
+  "slug": "maths-11-three-dimensional-geometry",
+  "subject": "MATHS",
+  "classLevel": 11,
+  "chapter": "Chapter 11 — Introduction to Three Dimensional Geometry",
+  "name": "Three Dimensional Geometry",
+  "summary": "The plane given a third axis, and almost nothing else changing: distance is still Pythagoras with one more square added, a midpoint is still an average taken coordinate by coordinate, and the four quadrants become eight octants — the arithmetic of the flat page carried into a room without a single new idea.",
+  "position": 11,
+  "translations": {
+    "hi": {
+      "name": "त्रिविमीय ज्यामिति",
+      "summary": "तल को तीसरा अक्ष मिला, और उसके सिवा लगभग कुछ नहीं बदला: दूरी अब भी पाइथागोरस है, बस एक वर्ग और जुड़ गया, मध्यबिंदु अब भी निर्देशांक-दर-निर्देशांक लिया गया औसत है, और चार चतुर्थांश आठ अष्टांश बन जाते हैं — चपटे पन्ने का अंकगणित एक भी नए विचार बिना कमरे में उठा लाया गया।"
+    },
+    "mr": {
+      "name": "त्रिमितीय भूमिती",
+      "summary": "प्रतलाला तिसरा अक्ष मिळाला, आणि त्याखेरीज जवळपास काहीच बदलले नाही: अंतर अजूनही पायथागोरस आहे, फक्त एक वर्ग जोडला गेला, मध्यबिंदू अजूनही निर्देशांक-दर-निर्देशांक घेतलेली सरासरी आहे, आणि चार चतुर्थांश आठ अष्टांश बनतात — सपाट पानाचे अंकगणित एकही नवी कल्पना न घेता खोलीत उचलून आणलेले."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the distance of the point (3, 4, 12) from the origin?",
+      "choices": [
+        "169",
+        "19",
+        "12",
+        "13"
+      ],
+      "answerIndex": 3,
+      "solution": "Square each coordinate, add, and take the root: √(9 + 16 + 144) = √169 = 13. It is Pythagoras with one extra term — the flat formula did not have to be replaced, only extended, and a fourth axis would add a fourth square in exactly the same way. (19 adds the coordinates instead of their squares.)",
+      "checkExpr": "(9+16+144)/13",
+      "translations": {
+        "hi": {
+          "stem": "बिंदु (3, 4, 12) की मूलबिंदु से दूरी क्या है?",
+          "choices": [
+            "169",
+            "19",
+            "12",
+            "13"
+          ],
+          "solution": "हर निर्देशांक का वर्ग करो, जोड़ो, और मूल लो: √(9 + 16 + 144) = √169 = 13. यह एक अतिरिक्त पद वाला पाइथागोरस है — चपटा सूत्र बदलना नहीं पड़ा, केवल बढ़ाना पड़ा, और चौथा अक्ष ठीक इसी तरह चौथा वर्ग जोड़ देता। (19 वर्गों के बजाय निर्देशांक जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "बिंदू (3, 4, 12) चे आरंभबिंदूपासूनचे अंतर किती?",
+          "choices": [
+            "169",
+            "19",
+            "12",
+            "13"
+          ],
+          "solution": "प्रत्येक निर्देशांकाचा वर्ग करा, जोडा, आणि मूळ घ्या: √(9 + 16 + 144) = √169 = 13. हा एक अधिकच्या पदासह पायथागोरस — सपाट सूत्र बदलावे लागले नाही, केवळ वाढवावे लागले, आणि चौथा अक्ष नेमक्या याच पद्धतीने चौथा वर्ग जोडला असता. (19 वर्गांऐवजी निर्देशांक जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Into how many octants do the three coordinate planes divide space?",
+      "choices": [
+        "8",
+        "4",
+        "3",
+        "6"
+      ],
+      "answerIndex": 0,
+      "solution": "Each coordinate can be positive or negative independently of the others, so there are 2 × 2 × 2 = 8 sign combinations and therefore 8 regions. In two dimensions the same argument gives 2 × 2 = 4 quadrants, which is why the count doubles with each new axis. (4 quotes the number of quadrants in the plane.)",
+      "checkExpr": "2*2*2",
+      "translations": {
+        "hi": {
+          "stem": "तीनों निर्देशांक तल आकाश को कितने अष्टांशों में बाँटते हैं?",
+          "choices": [
+            "8",
+            "4",
+            "3",
+            "6"
+          ],
+          "solution": "हर निर्देशांक दूसरों से स्वतंत्र रूप से धनात्मक या ऋणात्मक हो सकता है, अतः 2 × 2 × 2 = 8 चिह्न-संयोजन और इसलिए 8 प्रदेश। दो विमाओं में वही तर्क 2 × 2 = 4 चतुर्थांश देता है, इसीलिए हर नए अक्ष के साथ गिनती दोगुनी हो जाती है। (4 तल के चतुर्थांशों की संख्या बता देता है।)"
+        },
+        "mr": {
+          "stem": "तिन्ही निर्देशांक प्रतले अवकाशाला किती अष्टांशांत विभागतात?",
+          "choices": [
+            "8",
+            "4",
+            "3",
+            "6"
+          ],
+          "solution": "प्रत्येक निर्देशांक इतरांपासून स्वतंत्रपणे धन वा ऋण असू शकतो, म्हणून 2 × 2 × 2 = 8 चिन्ह-संयोजने आणि म्हणून 8 प्रदेश. दोन मितींत तोच युक्तिवाद 2 × 2 = 4 चतुर्थांश देतो, म्हणूनच प्रत्येक नव्या अक्षासोबत मोजणी दुप्पट होते. (4 प्रतलातल्या चतुर्थांशांची संख्या सांगते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "For the point (4, −3, 12), what is the sum of the squares of its coordinates?",
+      "choices": [
+        "144",
+        "13",
+        "19",
+        "169"
+      ],
+      "answerIndex": 3,
+      "solution": "16 + 9 + 144 = 169. The negative sign disappears under the square, which is exactly why distances built this way are never negative. Note that 169 is the square of the distance from the origin, so the point lies 13 units away — the sum of squares is always one step short of the distance itself. (13 gives the distance rather than the sum of the squares.)",
+      "checkExpr": "16+9+144",
+      "translations": {
+        "hi": {
+          "stem": "बिंदु (4, −3, 12) के लिए उसके निर्देशांकों के वर्गों का योग क्या है?",
+          "choices": [
+            "144",
+            "13",
+            "19",
+            "169"
+          ],
+          "solution": "16 + 9 + 144 = 169. ऋण चिह्न वर्ग के नीचे ग़ायब हो जाता है, और ठीक इसीलिए यों बनी दूरियाँ कभी ऋणात्मक नहीं होतीं। ध्यान दो कि 169 मूलबिंदु से दूरी का वर्ग है, अतः बिंदु 13 इकाई दूर है — वर्गों का योग सदा दूरी से एक क़दम पीछे रहता है। (13 वर्गों के योग के बजाय दूरी दे देता है।)"
+        },
+        "mr": {
+          "stem": "बिंदू (4, −3, 12) साठी त्याच्या निर्देशांकांच्या वर्गांची बेरीज किती?",
+          "choices": [
+            "144",
+            "13",
+            "19",
+            "169"
+          ],
+          "solution": "16 + 9 + 144 = 169. ऋण चिन्ह वर्गाखाली नाहीसे होते, आणि नेमके म्हणूनच अशी बनलेली अंतरे कधीच ऋण नसतात. लक्षात घ्या की 169 हा आरंभबिंदूपासूनच्या अंतराचा वर्ग आहे, म्हणून बिंदू 13 एकके दूर आहे — वर्गांची बेरीज नेहमी अंतराहून एक पाऊल मागे असते. (13 वर्गांच्या बेरजेऐवजी अंतर देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the distance between the points (1, 2, 3) and (4, 6, 3)?",
+      "choices": [
+        "3",
+        "5",
+        "25",
+        "7"
+      ],
+      "answerIndex": 1,
+      "solution": "The differences are 3, 4 and 0, so the distance is √(9 + 16 + 0) = √25 = 5. The zero is worth noticing: both points sit at the same height, so they lie in a horizontal plane and the third dimension contributes nothing at all. This is the ordinary two-dimensional case turning up inside the three-dimensional formula. (25 gives the square of the distance.)",
+      "checkExpr": "(9+16)/5",
+      "translations": {
+        "hi": {
+          "stem": "बिंदुओं (1, 2, 3) और (4, 6, 3) के बीच की दूरी क्या है?",
+          "choices": [
+            "3",
+            "5",
+            "25",
+            "7"
+          ],
+          "solution": "अंतर 3, 4 और 0 हैं, अतः दूरी √(9 + 16 + 0) = √25 = 5. शून्य ध्यान देने योग्य है: दोनों बिंदु एक ही ऊँचाई पर बैठे हैं, अतः वे एक क्षैतिज तल में हैं और तीसरी विमा कुछ भी योगदान नहीं देती। यह साधारण द्विविमीय मामला ही त्रिविमीय सूत्र के भीतर उभर आया है। (25 दूरी का वर्ग दे देता है।)"
+        },
+        "mr": {
+          "stem": "बिंदू (1, 2, 3) आणि (4, 6, 3) यांच्यातील अंतर किती?",
+          "choices": [
+            "3",
+            "5",
+            "25",
+            "7"
+          ],
+          "solution": "फरक 3, 4 आणि 0 आहेत, म्हणून अंतर √(9 + 16 + 0) = √25 = 5. शून्य लक्षात घेण्याजोगे: दोन्ही बिंदू एकाच उंचीवर बसले आहेत, म्हणून ते एका आडव्या प्रतलात आहेत आणि तिसरी मिती काहीच योगदान देत नाही. हे साधे द्विमितीय प्रकरणच त्रिमितीय सूत्राच्या आत उमटले आहे. (25 अंतराचा वर्ग देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the SUM of the coordinates of the midpoint of the segment joining (2, 4, 6) and (8, 10, 12)?",
+      "choices": [
+        "30",
+        "12",
+        "21",
+        "42"
+      ],
+      "answerIndex": 2,
+      "solution": "Average each coordinate on its own: (2 + 8)/2 = 5, (4 + 10)/2 = 7, (6 + 12)/2 = 9, so the midpoint is (5, 7, 9) and the sum is 21. Nothing about the method changed when the third axis appeared — the coordinates never interfere with one another, which is the whole convenience of using axes at right angles. (42 adds all six coordinates without halving.)",
+      "checkExpr": "(2+8)/2+(4+10)/2+(6+12)/2",
+      "translations": {
+        "hi": {
+          "stem": "(2, 4, 6) और (8, 10, 12) को मिलाते खंड के मध्यबिंदु के निर्देशांकों का योग क्या है?",
+          "choices": [
+            "30",
+            "12",
+            "21",
+            "42"
+          ],
+          "solution": "हर निर्देशांक का अलग औसत लो: (2 + 8)/2 = 5, (4 + 10)/2 = 7, (6 + 12)/2 = 9, अतः मध्यबिंदु (5, 7, 9) और योग 21. तीसरा अक्ष आने पर विधि में कुछ नहीं बदला — निर्देशांक कभी एक-दूसरे में दख़ल नहीं देते, और समकोण पर अक्ष लेने की पूरी सुविधा यही है। (42 छहों निर्देशांक जोड़ देता है बिना आधा किए।)"
+        },
+        "mr": {
+          "stem": "(2, 4, 6) आणि (8, 10, 12) यांना जोडणाऱ्या खंडाच्या मध्यबिंदूच्या निर्देशांकांची बेरीज किती?",
+          "choices": [
+            "30",
+            "12",
+            "21",
+            "42"
+          ],
+          "solution": "प्रत्येक निर्देशांकाची स्वतंत्र सरासरी घ्या: (2 + 8)/2 = 5, (4 + 10)/2 = 7, (6 + 12)/2 = 9, म्हणून मध्यबिंदू (5, 7, 9) आणि बेरीज 21. तिसरा अक्ष आल्यावर पद्धतीत काहीच बदलले नाही — निर्देशांक कधीही एकमेकांत ढवळाढवळ करत नाहीत, आणि काटकोनात अक्ष घेण्याची अख्खी सोय हीच. (42 सहाही निर्देशांक जोडते निम्मे न करता.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the distance of the point (1, 2, 2) from the origin?",
+      "choices": [
+        "3",
+        "5",
+        "7",
+        "9"
+      ],
+      "answerIndex": 0,
+      "solution": "√(1 + 4 + 4) = √9 = 3. Triples like (1, 2, 2), (2, 3, 6) and (3, 4, 12) whose squares add to a perfect square are the three-dimensional cousins of Pythagorean triples, and questions are usually built around them so the root comes out whole. Spotting one saves you reaching for a calculator. (5 adds the coordinates rather than their squares.)",
+      "checkExpr": "(1+4+4)/3",
+      "translations": {
+        "hi": {
+          "stem": "बिंदु (1, 2, 2) की मूलबिंदु से दूरी क्या है?",
+          "choices": [
+            "3",
+            "5",
+            "7",
+            "9"
+          ],
+          "solution": "√(1 + 4 + 4) = √9 = 3. (1, 2, 2), (2, 3, 6) और (3, 4, 12) जैसे त्रिक जिनके वर्ग जुड़कर पूर्ण वर्ग बनते हैं, पाइथागोरसी त्रिकों के त्रिविमीय चचेरे भाई हैं, और प्रश्न प्रायः उन्हीं के इर्द-गिर्द बनाए जाते हैं ताकि मूल पूरा निकले। एक पहचान लेना तुम्हें परिकलक की ओर हाथ बढ़ाने से बचा देता है। (5 वर्गों के बजाय निर्देशांक जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "बिंदू (1, 2, 2) चे आरंभबिंदूपासूनचे अंतर किती?",
+          "choices": [
+            "3",
+            "5",
+            "7",
+            "9"
+          ],
+          "solution": "√(1 + 4 + 4) = √9 = 3. (1, 2, 2), (2, 3, 6) आणि (3, 4, 12) सारखी त्रिके ज्यांचे वर्ग जुळून पूर्ण वर्ग बनतात, ती पायथागोरसी त्रिकांची त्रिमितीय भावंडे आहेत, आणि प्रश्न बहुधा त्यांच्याभोवतीच बांधले जातात जेणेकरून मूळ पूर्ण निघावे. एक ओळखणे तुम्हाला गणकयंत्राकडे हात वळवण्यापासून वाचवते. (5 वर्गांऐवजी निर्देशांक जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the distance between the points (1, 2, 3) and (5, 6, 10)?",
+      "choices": [
+        "9",
+        "81",
+        "15",
+        "7"
+      ],
+      "answerIndex": 0,
+      "solution": "The differences are 4, 4 and 7, so the distance is √(16 + 16 + 49) = √81 = 9. Take the differences before squaring, never the coordinates themselves — squaring first and subtracting afterwards is the standard wrong turn and would give a different, meaningless number. (15 adds the three differences instead of using Pythagoras.)",
+      "checkExpr": "(16+16+49)/9",
+      "translations": {
+        "hi": {
+          "stem": "बिंदुओं (1, 2, 3) और (5, 6, 10) के बीच की दूरी क्या है?",
+          "choices": [
+            "9",
+            "81",
+            "15",
+            "7"
+          ],
+          "solution": "अंतर 4, 4 और 7 हैं, अतः दूरी √(16 + 16 + 49) = √81 = 9. वर्ग करने से पहले अंतर लो, निर्देशांक स्वयं कभी नहीं — पहले वर्ग करके बाद में घटाना मानक ग़लत मोड़ है और वह भिन्न, अर्थहीन संख्या देता। (15 पाइथागोरस लगाने के बजाय तीनों अंतर जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "बिंदू (1, 2, 3) आणि (5, 6, 10) यांच्यातील अंतर किती?",
+          "choices": [
+            "9",
+            "81",
+            "15",
+            "7"
+          ],
+          "solution": "फरक 4, 4 आणि 7 आहेत, म्हणून अंतर √(16 + 16 + 49) = √81 = 9. वर्ग करण्याआधी फरक घ्या, निर्देशांक स्वतः कधीच नाही — आधी वर्ग करून नंतर वजा करणे हे प्रमाण चुकीचे वळण आणि ते वेगळी, निरर्थक संख्या दिली असती. (15 पायथागोरस लावण्याऐवजी तिन्ही फरक जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the z-coordinate of the midpoint of the segment joining (1, 2, 3) and (5, 6, 11)?",
+      "choices": [
+        "7",
+        "14",
+        "6",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "The z-coordinate of the midpoint is the average of the two z-values: (3 + 11)/2 = 7. The other coordinates are irrelevant to this one — a useful thing to notice, because it means you never have to compute the whole midpoint when only one component is asked for. (14 adds the two z-values without halving.)",
+      "checkExpr": "(3+11)/2",
+      "translations": {
+        "hi": {
+          "stem": "(1, 2, 3) और (5, 6, 11) को मिलाते खंड के मध्यबिंदु का z-निर्देशांक क्या है?",
+          "choices": [
+            "7",
+            "14",
+            "6",
+            "4"
+          ],
+          "solution": "मध्यबिंदु का z-निर्देशांक दोनों z-मानों का औसत है: (3 + 11)/2 = 7. बाक़ी निर्देशांक इससे असंबद्ध हैं — ध्यान देने योग्य बात, क्योंकि इसका अर्थ है कि जब केवल एक घटक माँगा जाए तो पूरा मध्यबिंदु निकालना कभी नहीं पड़ता। (14 दोनों z-मान जोड़ देता है बिना आधा किए।)"
+        },
+        "mr": {
+          "stem": "(1, 2, 3) आणि (5, 6, 11) यांना जोडणाऱ्या खंडाच्या मध्यबिंदूचा z-निर्देशांक किती?",
+          "choices": [
+            "7",
+            "14",
+            "6",
+            "4"
+          ],
+          "solution": "मध्यबिंदूचा z-निर्देशांक म्हणजे दोन्ही z-मूल्यांची सरासरी: (3 + 11)/2 = 7. उरलेले निर्देशांक याच्याशी असंबंधित — लक्षात घेण्याजोगी गोष्ट, कारण याचा अर्थ केवळ एक घटक विचारला असता अख्खा मध्यबिंदू काढावा लागत नाही. (14 दोन्ही z-मूल्ये जोडते निम्मे न करता.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A point divides the segment joining A(1, 2, 3) and B(6, 7, 8) internally in the ratio 2 : 3. What is its x-coordinate?",
+      "choices": [
+        "2.6",
+        "4",
+        "3",
+        "7"
+      ],
+      "answerIndex": 2,
+      "solution": "The section formula weights each endpoint with the OPPOSITE part of the ratio: (2 × 6 + 3 × 1)/(2 + 3) = 15/5 = 3. The crossing over is the whole difficulty — the 2 belongs to B and the 3 to A, because a point nearer A is dominated by A's coordinate. A quick check confirms it: 3 is closer to 1 than to 6, exactly as a 2 : 3 division should be. (4 pairs each number with its own endpoint instead of crossing them.)",
+      "checkExpr": "(2*6+3*1)/5",
+      "translations": {
+        "hi": {
+          "stem": "कोई बिंदु A(1, 2, 3) और B(6, 7, 8) को मिलाते खंड को 2 : 3 के अनुपात में अंतःविभाजित करता है। उसका x-निर्देशांक क्या है?",
+          "choices": [
+            "2.6",
+            "4",
+            "3",
+            "7"
+          ],
+          "solution": "विभाजन सूत्र हर सिरे को अनुपात के उलटे भाग से भार देता है: (2 × 6 + 3 × 1)/(2 + 3) = 15/5 = 3. यही आड़ा-तिरछा जोड़ पूरी कठिनाई है — 2 B का है और 3 A का, क्योंकि A के पास वाले बिंदु पर A का निर्देशांक हावी रहता है। तेज़ जाँच पुष्टि करती है: 3, 6 से नहीं 1 से पास है, ठीक जैसा 2 : 3 विभाजन होना चाहिए। (4 हर संख्या को उसके अपने सिरे से जोड़ देता है, आड़ा करने के बजाय।)"
+        },
+        "mr": {
+          "stem": "एक बिंदू A(1, 2, 3) आणि B(6, 7, 8) यांना जोडणाऱ्या खंडाचे 2 : 3 या प्रमाणात अंतर्विभाजन करतो. त्याचा x-निर्देशांक किती?",
+          "choices": [
+            "2.6",
+            "4",
+            "3",
+            "7"
+          ],
+          "solution": "विभाजन सूत्र प्रत्येक टोकाला प्रमाणाच्या उलट भागाने भार देते: (2 × 6 + 3 × 1)/(2 + 3) = 15/5 = 3. हीच आडवी जोडणी अख्खी अडचण — 2 हा B चा आणि 3 हा A चा, कारण A जवळच्या बिंदूवर A चा निर्देशांक वरचढ राहतो. झटपट तपासणी खात्री देते: 3 हा 6 हून नव्हे 1 च्या जवळ आहे, नेमके 2 : 3 विभाजन असावे तसे. (4 प्रत्येक संख्या तिच्याच टोकाशी जोडते, आडवे करण्याऐवजी.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "For the point (2, 3, −5), what is the sum of its distances from the three coordinate planes?",
+      "choices": [
+        "30",
+        "6",
+        "0",
+        "10"
+      ],
+      "answerIndex": 3,
+      "solution": "The distance from a coordinate plane is the size of the coordinate perpendicular to it, taken without its sign: 3 from the yz-plane, 2 from the xz-plane and 5 from the xy-plane, giving 2 + 3 + 5 = 10. The negative z means the point sits below the xy-plane, but a distance cannot record which side — dropping the minus sign is required, not optional. (0 adds the coordinates with their signs, letting the −5 cancel the others.)",
+      "checkExpr": "2+3+5",
+      "translations": {
+        "hi": {
+          "stem": "बिंदु (2, 3, −5) के लिए तीनों निर्देशांक तलों से उसकी दूरियों का योग क्या है?",
+          "choices": [
+            "30",
+            "6",
+            "0",
+            "10"
+          ],
+          "solution": "किसी निर्देशांक तल से दूरी उस पर लंब निर्देशांक का आकार है, चिह्न के बिना: yz-तल से 3, xz-तल से 2 और xy-तल से 5, जिससे 2 + 3 + 5 = 10. ऋणात्मक z का अर्थ है कि बिंदु xy-तल के नीचे बैठा है, पर दूरी यह दर्ज नहीं कर सकती कि किस ओर — ऋण चिह्न गिराना आवश्यक है, वैकल्पिक नहीं। (0 निर्देशांकों को उनके चिह्नों सहित जोड़ देता है, और −5 बाक़ी को काट देता है।)"
+        },
+        "mr": {
+          "stem": "बिंदू (2, 3, −5) साठी तिन्ही निर्देशांक प्रतलांपासूनच्या त्याच्या अंतरांची बेरीज किती?",
+          "choices": [
+            "30",
+            "6",
+            "0",
+            "10"
+          ],
+          "solution": "कोणत्याही निर्देशांक प्रतलापासूनचे अंतर म्हणजे त्याला लंब असलेल्या निर्देशांकाचा आकार, चिन्हाविना: yz-प्रतलापासून 3, xz-प्रतलापासून 2 आणि xy-प्रतलापासून 5, ज्यातून 2 + 3 + 5 = 10. ऋण z म्हणजे बिंदू xy-प्रतलाखाली बसला आहे, पण अंतर कोणत्या बाजूला हे नोंदवू शकत नाही — ऋण चिन्ह गाळणे आवश्यक आहे, ऐच्छिक नव्हे. (0 निर्देशांक त्यांच्या चिन्हांसह जोडते, आणि −5 बाकीचे छेदते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Find the point on the y-axis that is equidistant from A(3, 1, 2) and B(5, 5, 2). What is its y-coordinate?",
+      "choices": [
+        "4",
+        "5",
+        "3",
+        "8"
+      ],
+      "answerIndex": 1,
+      "solution": "A point on the y-axis has the form (0, y, 0). Equating the squared distances avoids the roots entirely: 9 + (y − 1)² + 4 = 25 + (y − 5)² + 4. Expanding gives 14 − 2y = 54 − 10y, so 8y = 40 and y = 5, making the point (0, 5, 0). Two habits do the work here. Write down what a point on the named axis must look like before anything else — two of its coordinates are already zero. And square both distances rather than comparing the roots, since the squares are equal exactly when the distances are. (4 gives the average of the two y-values, which happens not to be the answer because the other coordinates differ too.)",
+      "checkExpr": "(54-14)/8",
+      "translations": {
+        "hi": {
+          "stem": "y-अक्ष पर वह बिंदु ढूँढ़ो जो A(3, 1, 2) और B(5, 5, 2) से समान दूरी पर है। उसका y-निर्देशांक क्या है?",
+          "choices": [
+            "4",
+            "5",
+            "3",
+            "8"
+          ],
+          "solution": "y-अक्ष पर बिंदु का रूप (0, y, 0) है। वर्ग की गई दूरियाँ बराबर करने से मूल पूरी तरह टल जाते हैं: 9 + (y − 1)² + 4 = 25 + (y − 5)² + 4. खोलने पर 14 − 2y = 54 − 10y, अतः 8y = 40 और y = 5, और बिंदु (0, 5, 0) बनता है। यहाँ दो आदतें काम करती हैं। किसी और चीज़ से पहले लिखो कि नामित अक्ष पर बिंदु कैसा दिखना चाहिए — उसके दो निर्देशांक पहले से शून्य हैं। और मूलों की तुलना करने के बजाय दोनों दूरियों का वर्ग करो, क्योंकि वर्ग ठीक तभी बराबर हैं जब दूरियाँ हों। (4 दोनों y-मानों का औसत देता है, जो संयोग से उत्तर नहीं है क्योंकि बाक़ी निर्देशांक भी भिन्न हैं।)"
+        },
+        "mr": {
+          "stem": "y-अक्षावरचा तो बिंदू शोधा जो A(3, 1, 2) आणि B(5, 5, 2) पासून समान अंतरावर आहे. त्याचा y-निर्देशांक किती?",
+          "choices": [
+            "4",
+            "5",
+            "3",
+            "8"
+          ],
+          "solution": "y-अक्षावरील बिंदूचे रूप (0, y, 0) असते. वर्ग केलेली अंतरे समान करणे मुळे पूर्णपणे टाळते: 9 + (y − 1)² + 4 = 25 + (y − 5)² + 4. उलगडल्यावर 14 − 2y = 54 − 10y, म्हणून 8y = 40 आणि y = 5, आणि बिंदू (0, 5, 0) बनतो. इथे दोन सवयी काम करतात. इतर कशाहीआधी लिहा की नामनिर्देशित अक्षावरचा बिंदू कसा दिसला पाहिजे — त्याचे दोन निर्देशांक आधीच शून्य आहेत. आणि मुळांची तुलना करण्याऐवजी दोन्ही अंतरांचा वर्ग करा, कारण वर्ग नेमके तेव्हाच समान जेव्हा अंतरे समान. (4 दोन्ही y-मूल्यांची सरासरी देते, जी योगायोगाने उत्तर नाही कारण उरलेले निर्देशांकही वेगळे आहेत.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A triangle has vertices (1, 2, 3), (4, 5, 6) and (7, 8, 9). What is the SUM of the coordinates of its centroid?",
+      "choices": [
+        "45",
+        "12",
+        "5",
+        "15"
+      ],
+      "answerIndex": 3,
+      "solution": "The centroid averages the three vertices coordinate by coordinate: x = 12/3 = 4, y = 15/3 = 5, z = 18/3 = 6, so the centroid is (4, 5, 6) and the sum is 15. Notice that the centroid here is one of the vertices — which happens because these three points are collinear, evenly spaced along a line, so the middle one is already the average. A triangle with these vertices would in fact be degenerate. (45 adds all nine coordinates without dividing by 3.)",
+      "checkExpr": "(1+4+7)/3+(2+5+8)/3+(3+6+9)/3",
+      "translations": {
+        "hi": {
+          "stem": "किसी त्रिभुज के शीर्ष (1, 2, 3), (4, 5, 6) और (7, 8, 9) हैं। उसके केंद्रक के निर्देशांकों का योग क्या है?",
+          "choices": [
+            "45",
+            "12",
+            "5",
+            "15"
+          ],
+          "solution": "केंद्रक तीनों शीर्षों का निर्देशांक-दर-निर्देशांक औसत लेता है: x = 12/3 = 4, y = 15/3 = 5, z = 18/3 = 6, अतः केंद्रक (4, 5, 6) और योग 15. ध्यान दो कि यहाँ केंद्रक स्वयं एक शीर्ष है — ऐसा इसलिए कि ये तीनों बिंदु संरेख हैं, एक रेखा पर बराबर दूरी पर, अतः बीच वाला पहले से औसत है। इन शीर्षों वाला त्रिभुज वस्तुतः अपभ्रष्ट होगा। (45 नौों निर्देशांक जोड़ देता है बिना 3 से भाग दिए।)"
+        },
+        "mr": {
+          "stem": "एका त्रिकोणाचे शिरोबिंदू (1, 2, 3), (4, 5, 6) आणि (7, 8, 9) आहेत. त्याच्या मध्यकेंद्राच्या निर्देशांकांची बेरीज किती?",
+          "choices": [
+            "45",
+            "12",
+            "5",
+            "15"
+          ],
+          "solution": "मध्यकेंद्र तिन्ही शिरोबिंदूंची निर्देशांक-दर-निर्देशांक सरासरी घेते: x = 12/3 = 4, y = 15/3 = 5, z = 18/3 = 6, म्हणून मध्यकेंद्र (4, 5, 6) आणि बेरीज 15. लक्षात घ्या की इथे मध्यकेंद्र स्वतःच एक शिरोबिंदू आहे — असे यासाठी की हे तिन्ही बिंदू एकरेषीय आहेत, एका रेषेवर समान अंतरावर, म्हणून मधला आधीच सरासरी आहे. या शिरोबिंदूंचा त्रिकोण प्रत्यक्षात अपभ्रष्ट असेल. (45 नऊही निर्देशांक जोडते 3 ने न भागता.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "For the points A(1, 2, 3) and B(3, 4, 5), what is the value of AB² ?",
+      "choices": [
+        "48",
+        "24",
+        "6",
+        "12"
+      ],
+      "answerIndex": 3,
+      "solution": "The differences are 2, 2 and 2, so AB² = 4 + 4 + 4 = 12. This number is worth keeping because of what it proves about a third point. Take C(5, 6, 7): BC² is also 12, while AC² = 16 + 16 + 16 = 48. Since √48 = 2√12, the longest distance equals the sum of the other two exactly — AC = AB + BC — and three points can only satisfy that if they lie on one straight line. Squared distances are the usual tool for collinearity in space, because they avoid roots until the very last comparison. (48 gives AC² rather than AB².)",
+      "checkExpr": "4+4+4",
+      "translations": {
+        "hi": {
+          "stem": "बिंदुओं A(1, 2, 3) और B(3, 4, 5) के लिए AB² का मान क्या है?",
+          "choices": [
+            "48",
+            "24",
+            "6",
+            "12"
+          ],
+          "solution": "अंतर 2, 2 और 2 हैं, अतः AB² = 4 + 4 + 4 = 12. यह संख्या इसलिए रखने योग्य है कि वह किसी तीसरे बिंदु के बारे में क्या सिद्ध करती है। C(5, 6, 7) लो: BC² भी 12 है, जबकि AC² = 16 + 16 + 16 = 48. चूँकि √48 = 2√12, सबसे लंबी दूरी ठीक बाक़ी दोनों के योग के बराबर है — AC = AB + BC — और तीन बिंदु यह तभी पूरा कर सकते हैं जब वे एक ही सरल रेखा पर हों। आकाश में संरेखता के लिए वर्ग की गई दूरियाँ ही सामान्य औज़ार हैं, क्योंकि वे अंतिम तुलना तक मूलों से बचा लेती हैं। (48 AB² के बजाय AC² दे देता है।)"
+        },
+        "mr": {
+          "stem": "बिंदू A(1, 2, 3) आणि B(3, 4, 5) साठी AB² चे मूल्य किती?",
+          "choices": [
+            "48",
+            "24",
+            "6",
+            "12"
+          ],
+          "solution": "फरक 2, 2 आणि 2 आहेत, म्हणून AB² = 4 + 4 + 4 = 12. हा आकडा यासाठी ठेवण्याजोगा की तो तिसऱ्या बिंदूबद्दल काय सिद्ध करतो. C(5, 6, 7) घ्या: BC² सुद्धा 12 आहे, तर AC² = 16 + 16 + 16 = 48. √48 = 2√12 असल्याने, सर्वांत लांब अंतर नेमके उरलेल्या दोघांच्या बेरजेइतके आहे — AC = AB + BC — आणि तीन बिंदू हे तेव्हाच पूर्ण करू शकतात जेव्हा ते एकाच सरळ रेषेवर असतील. अवकाशात एकरेषीयतेसाठी वर्ग केलेली अंतरे हेच नेहमीचे हत्यार, कारण ती शेवटच्या तुलनेपर्यंत मुळे टाळतात. (48 AB² ऐवजी AC² देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A room is 12 m long, 9 m wide and 8 m high. How long is the diagonal from one bottom corner to the opposite top corner?",
+      "choices": [
+        "17 m",
+        "29 m",
+        "15 m",
+        "289 m"
+      ],
+      "answerIndex": 0,
+      "solution": "Put one corner at the origin and the opposite one is at (12, 9, 8), so the diagonal is √(144 + 81 + 64) = √289 = 17 m. It is worth seeing why the three-dimensional formula works, because the answer can be built in two ordinary steps. The diagonal of the floor is √(144 + 81) = 15 m, and that floor diagonal together with the 8 m height forms a right-angled triangle standing upright inside the room: √(225 + 64) = 17. So the space diagonal is Pythagoras applied twice, and the compact formula is just those two steps written as one. (15 stops at the floor diagonal and never goes up.)",
+      "checkExpr": "(144+81+64)/17",
+      "translations": {
+        "hi": {
+          "stem": "कोई कमरा 12 m लंबा, 9 m चौड़ा और 8 m ऊँचा है। एक निचले कोने से सामने के ऊपरी कोने तक का विकर्ण कितना लंबा है?",
+          "choices": [
+            "17 m",
+            "29 m",
+            "15 m",
+            "289 m"
+          ],
+          "solution": "एक कोना मूलबिंदु पर रखो और सामने वाला (12, 9, 8) पर है, अतः विकर्ण √(144 + 81 + 64) = √289 = 17 m. त्रिविमीय सूत्र क्यों चलता है यह देखने योग्य है, क्योंकि उत्तर दो साधारण चरणों में बनाया जा सकता है। फ़र्श का विकर्ण √(144 + 81) = 15 m है, और वह फ़र्श-विकर्ण 8 m की ऊँचाई के साथ मिलकर कमरे के भीतर खड़ा समकोण त्रिभुज बनाता है: √(225 + 64) = 17. अतः आकाशीय विकर्ण दो बार लगाया गया पाइथागोरस है, और सघन सूत्र उन्हीं दो चरणों को एक में लिखना है। (15 फ़र्श के विकर्ण पर रुक जाता है और ऊपर जाता ही नहीं।)"
+        },
+        "mr": {
+          "stem": "एक खोली 12 m लांब, 9 m रुंद आणि 8 m उंच आहे. एका खालच्या कोपऱ्यापासून समोरच्या वरच्या कोपऱ्यापर्यंतचा कर्ण किती लांब आहे?",
+          "choices": [
+            "17 m",
+            "29 m",
+            "15 m",
+            "289 m"
+          ],
+          "solution": "एक कोपरा आरंभबिंदूवर ठेवा आणि समोरचा (12, 9, 8) वर आहे, म्हणून कर्ण √(144 + 81 + 64) = √289 = 17 m. त्रिमितीय सूत्र का चालते हे पाहण्याजोगे, कारण उत्तर दोन साध्या पायऱ्यांत बांधता येते. जमिनीचा कर्ण √(144 + 81) = 15 m आहे, आणि तो जमीन-कर्ण 8 m उंचीसह मिळून खोलीच्या आत उभा काटकोन त्रिकोण बनवतो: √(225 + 64) = 17. म्हणून अवकाश-कर्ण म्हणजे दोनदा लावलेला पायथागोरस, आणि संक्षिप्त सूत्र म्हणजे त्याच दोन पायऱ्या एकात लिहिणे. (15 जमिनीच्या कर्णावर थांबते आणि वर जातच नाही.)"
+        }
+      }
+    }
+  ]
+}

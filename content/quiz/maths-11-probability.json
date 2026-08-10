@@ -1,0 +1,513 @@
+{
+  "slug": "maths-11-probability",
+  "subject": "MATHS",
+  "classLevel": 11,
+  "chapter": "Chapter 14 — Probability",
+  "name": "Probability",
+  "summary": "Chance rebuilt on sets: the sample space is a set, an event is a subset of it, and the addition rule turns out to be the union formula wearing a new name — with the complement standing ready for every question where counting what you want is harder than counting what you do not.",
+  "position": 14,
+  "translations": {
+    "hi": {
+      "name": "प्रायिकता",
+      "summary": "संयोग को समुच्चयों पर फिर से खड़ा किया गया: प्रतिदर्श समष्टि एक समुच्चय है, घटना उसका उपसमुच्चय, और योग-नियम वही सम्मिलन सूत्र निकलता है जो नया नाम पहने है — और पूरक हर उस प्रश्न के लिए तैयार खड़ा है जहाँ जो चाहिए उसे गिनना उससे कठिन है जो नहीं चाहिए।"
+    },
+    "mr": {
+      "name": "संभाव्यता",
+      "summary": "योग संचांवर पुन्हा उभा केला गेला: नमुना अवकाश हा एक संच आहे, घटना हा त्याचा उपसंच, आणि बेरीज-नियम तेच संयोग सूत्र निघते जे नवे नाव घालून आहे — आणि पूरक प्रत्येक अशा प्रश्नासाठी तयार उभा आहे जिथे जे हवे ते मोजणे जे नको ते मोजण्याहून कठीण असते."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Two coins are tossed together. How many outcomes are there in the sample space?",
+      "choices": [
+        "8",
+        "3",
+        "2",
+        "4"
+      ],
+      "answerIndex": 3,
+      "solution": "Each coin has 2 faces and the two coins are independent, so there are 2 × 2 = 4 outcomes: HH, HT, TH and TT. Note that HT and TH are counted separately even though both show one head — treating them as a single outcome is the mistake that makes 3, and it would wrongly suggest that one head is as likely as two. (3 counts by the number of heads rather than by outcome.)",
+      "checkExpr": "2*2",
+      "translations": {
+        "hi": {
+          "stem": "दो सिक्के एक साथ उछाले जाते हैं। प्रतिदर्श समष्टि में कितने परिणाम हैं?",
+          "choices": [
+            "8",
+            "3",
+            "2",
+            "4"
+          ],
+          "solution": "हर सिक्के के 2 फलक हैं और दोनों सिक्के स्वतंत्र हैं, अतः 2 × 2 = 4 परिणाम: HH, HT, TH और TT. ध्यान दो कि HT और TH अलग-अलग गिने जाते हैं भले ही दोनों एक चित दिखाते हों — उन्हें एक ही परिणाम मानना वही भूल है जो 3 बनाती है, और वह ग़लत ढंग से सुझाती कि एक चित उतना ही संभव है जितना दो। (3 परिणाम से नहीं, चितों की संख्या से गिनता है।)"
+        },
+        "mr": {
+          "stem": "दोन नाणी एकत्र उडवली जातात. नमुना अवकाशात किती परिणाम आहेत?",
+          "choices": [
+            "8",
+            "3",
+            "2",
+            "4"
+          ],
+          "solution": "प्रत्येक नाण्याला 2 बाजू आहेत आणि दोन्ही नाणी स्वतंत्र आहेत, म्हणून 2 × 2 = 4 परिणाम: HH, HT, TH आणि TT. लक्षात घ्या की HT आणि TH वेगवेगळे मोजले जातात जरी दोन्ही एक छापा दाखवत असले तरी — त्यांना एकच परिणाम मानणे हीच ती चूक जी 3 बनवते, आणि ती चुकीच्या पद्धतीने सुचवेल की एक छापा दोनइतकाच संभवनीय आहे. (3 परिणामाने नव्हे, छाप्यांच्या संख्येने मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Two dice are thrown together. How many outcomes are there in the sample space?",
+      "choices": [
+        "12",
+        "30",
+        "36",
+        "6"
+      ],
+      "answerIndex": 2,
+      "solution": "Each die can show any of 6 faces independently of the other, so 6 × 6 = 36 outcomes. The sample space is the set of ORDERED pairs, so (2, 5) and (5, 2) are two different outcomes even though the dice are identical to look at — which is why sums such as 7 turn out to be more likely than 2. (12 adds the two counts instead of multiplying them.)",
+      "checkExpr": "6*6",
+      "translations": {
+        "hi": {
+          "stem": "दो पासे एक साथ फेंके जाते हैं। प्रतिदर्श समष्टि में कितने परिणाम हैं?",
+          "choices": [
+            "12",
+            "30",
+            "36",
+            "6"
+          ],
+          "solution": "हर पासा दूसरे से स्वतंत्र रूप से 6 में से कोई भी फलक दिखा सकता है, अतः 6 × 6 = 36 परिणाम। प्रतिदर्श समष्टि क्रमित युग्मों का समुच्चय है, अतः (2, 5) और (5, 2) दो भिन्न परिणाम हैं भले ही पासे देखने में एक जैसे हों — इसीलिए 7 जैसे योग 2 से अधिक संभव निकलते हैं। (12 दोनों गिनतियाँ गुणा करने के बजाय जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "दोन फासे एकत्र टाकले जातात. नमुना अवकाशात किती परिणाम आहेत?",
+          "choices": [
+            "12",
+            "30",
+            "36",
+            "6"
+          ],
+          "solution": "प्रत्येक फासा दुसऱ्यापासून स्वतंत्रपणे 6 पैकी कोणतीही बाजू दाखवू शकतो, म्हणून 6 × 6 = 36 परिणाम. नमुना अवकाश हा क्रमित जोड्यांचा संच आहे, म्हणून (2, 5) आणि (5, 2) हे दोन वेगळे परिणाम आहेत जरी फासे दिसायला सारखे असले तरी — म्हणूनच 7 सारख्या बेरजा 2 हून अधिक संभवनीय निघतात. (12 दोन्ही मोजण्या गुणण्याऐवजी जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A fair coin is tossed once. What is the probability of getting a head, as a percentage?",
+      "choices": [
+        "25",
+        "1",
+        "50",
+        "100"
+      ],
+      "answerIndex": 2,
+      "solution": "One favourable outcome out of two equally likely ones: 1/2 × 100 = 50 per cent. The phrase equally likely is doing real work — the whole formula of favourable over total is valid only when every outcome in the sample space has the same chance, which is exactly what fair means. (100 treats a certainty as the answer.)",
+      "checkExpr": "1/2*100",
+      "translations": {
+        "hi": {
+          "stem": "एक निष्पक्ष सिक्का एक बार उछाला जाता है। चित आने की प्रायिकता प्रतिशत में क्या है?",
+          "choices": [
+            "25",
+            "1",
+            "50",
+            "100"
+          ],
+          "solution": "दो समसंभावी परिणामों में से एक अनुकूल: 1/2 × 100 = 50 प्रतिशत। समसंभावी वाक्यांश असली काम कर रहा है — अनुकूल बटा कुल का पूरा सूत्र तभी वैध है जब प्रतिदर्श समष्टि के हर परिणाम की संभावना एक जैसी हो, और निष्पक्ष का ठीक यही अर्थ है। (100 निश्चितता को उत्तर मान लेता है।)"
+        },
+        "mr": {
+          "stem": "एक निष्पक्ष नाणे एकदा उडवले जाते. छापा येण्याची संभाव्यता टक्केवारीत किती?",
+          "choices": [
+            "25",
+            "1",
+            "50",
+            "100"
+          ],
+          "solution": "दोन समसंभाव्य परिणामांपैकी एक अनुकूल: 1/2 × 100 = 50 टक्के. समसंभाव्य हा वाक्यांश खरे काम करतो — अनुकूल भागिले एकूण हे अख्खे सूत्र तेव्हाच वैध जेव्हा नमुना अवकाशातल्या प्रत्येक परिणामाची शक्यता सारखी असेल, आणि निष्पक्षचा नेमका हाच अर्थ. (100 निश्चिततेला उत्तर मानते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Two dice are thrown. How many outcomes give a sum of 7?",
+      "choices": [
+        "6",
+        "3",
+        "7",
+        "5"
+      ],
+      "answerIndex": 0,
+      "solution": "List them by the first die: 1 with 6, then 2 with 5, then 3 with 4, then 4 with 3, then 5 with 2, then 6 with 1 — a count of 6 outcomes. A sum of 7 has more ways than any other, which is why it is the most likely total on two dice; a sum of 2 or 12 can happen in only one way each. Listing in order of the first die is what stops you missing a pair or counting one twice. (3 lists only the pairs and forgets that each can occur in either order.)",
+      "checkExpr": "36/6",
+      "translations": {
+        "hi": {
+          "stem": "दो पासे फेंके जाते हैं। कितने परिणाम योग 7 देते हैं?",
+          "choices": [
+            "6",
+            "3",
+            "7",
+            "5"
+          ],
+          "solution": "पहले पासे के क्रम में गिनाओ: 1 के साथ 6, फिर 2 के साथ 5, फिर 3 के साथ 4, फिर 4 के साथ 3, फिर 5 के साथ 2, फिर 6 के साथ 1 — कुल 6 परिणाम। योग 7 के तरीक़े किसी भी दूसरे से अधिक हैं, इसीलिए दो पासों पर वही सबसे संभव कुल है; योग 2 या 12 केवल एक-एक तरीक़े से हो सकता है। पहले पासे के क्रम में गिनाना ही तुम्हें कोई युग्म चूकने या दो बार गिनने से रोकता है। (3 केवल युग्म गिनाता है और भूल जाता है कि हर एक दोनों क्रमों में हो सकता है।)"
+        },
+        "mr": {
+          "stem": "दोन फासे टाकले जातात. किती परिणाम बेरीज 7 देतात?",
+          "choices": [
+            "6",
+            "3",
+            "7",
+            "5"
+          ],
+          "solution": "पहिल्या फाशाच्या क्रमाने यादी करा: 1 सोबत 6, मग 2 सोबत 5, मग 3 सोबत 4, मग 4 सोबत 3, मग 5 सोबत 2, मग 6 सोबत 1 — एकूण 6 परिणाम. बेरीज 7 चे मार्ग इतर कोणत्याहीहून अधिक आहेत, म्हणूनच दोन फाशांवर तीच सर्वांत संभवनीय बेरीज; बेरीज 2 वा 12 केवळ एकेका मार्गाने घडू शकते. पहिल्या फाशाच्या क्रमाने यादी करणेच तुम्हाला एखादी जोडी चुकवण्यापासून वा दोनदा मोजण्यापासून रोखते. (3 केवळ जोड्या मोजते आणि प्रत्येक दोन्ही क्रमांत घडू शकते हे विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A die is thrown once. How many outcomes show a prime number?",
+      "choices": [
+        "2",
+        "6",
+        "4",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "The primes among 1 to 6 are 2, 3 and 5 — three of them. The two easy slips are counting 1 as prime, which it is not by definition, and forgetting 2, which is prime despite being even. Getting the event right is usually harder than the arithmetic that follows it. (4 counts 1 as a prime as well.)",
+      "checkExpr": "6/2",
+      "translations": {
+        "hi": {
+          "stem": "एक पासा एक बार फेंका जाता है। कितने परिणाम अभाज्य संख्या दिखाते हैं?",
+          "choices": [
+            "2",
+            "6",
+            "4",
+            "3"
+          ],
+          "solution": "1 से 6 में अभाज्य 2, 3 और 5 हैं — तीन। दो आसान चूकें हैं 1 को अभाज्य गिन लेना, जो वह परिभाषा से नहीं है, और 2 को भूल जाना, जो सम होते हुए भी अभाज्य है। घटना को ठीक पकड़ना प्रायः उसके बाद के गणित से कठिन होता है। (4 1 को भी अभाज्य गिन लेता है।)"
+        },
+        "mr": {
+          "stem": "एक फासा एकदा टाकला जातो. किती परिणाम अवयवी संख्या दाखवतात?",
+          "choices": [
+            "2",
+            "6",
+            "4",
+            "3"
+          ],
+          "solution": "1 ते 6 मधली अवयवी 2, 3 आणि 5 — तीन. दोन सोप्या चुका म्हणजे 1 ला अवयवी मोजणे, जी ती व्याख्येने नाही, आणि 2 विसरणे, जी सम असूनही अवयवी आहे. घटना नीट पकडणे बहुधा त्यानंतरच्या गणिताहून कठीण असते. (4 1 लाही अवयवी मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A and B are mutually exclusive events with P(A) = 0.3 and P(B) = 0.4. What is P(A or B)?",
+      "choices": [
+        "1",
+        "0.1",
+        "0.12",
+        "0.7"
+      ],
+      "answerIndex": 3,
+      "solution": "Mutually exclusive means the two events cannot both happen, so there is no overlap to subtract and the probabilities simply add: 0.3 + 0.4 = 0.7. This is the union formula from the chapter on sets with the intersection equal to zero — the addition rule is not a new idea, only a familiar one applied to a sample space. (0.12 multiplies the two, which is the rule for INDEPENDENT events happening together, a different situation entirely.)",
+      "checkExpr": "0.3+0.4",
+      "translations": {
+        "hi": {
+          "stem": "A और B परस्पर अपवर्जी घटनाएँ हैं जिनमें P(A) = 0.3 और P(B) = 0.4. P(A या B) क्या है?",
+          "choices": [
+            "1",
+            "0.1",
+            "0.12",
+            "0.7"
+          ],
+          "solution": "परस्पर अपवर्जी का अर्थ है दोनों घटनाएँ एक साथ हो ही नहीं सकतीं, अतः घटाने को कोई अतिव्यापन नहीं और प्रायिकताएँ बस जुड़ जाती हैं: 0.3 + 0.4 = 0.7. यह समुच्चय अध्याय का सम्मिलन सूत्र ही है जिसमें प्रतिच्छेदन शून्य है — योग-नियम कोई नया विचार नहीं, केवल परिचित विचार प्रतिदर्श समष्टि पर लगाया हुआ। (0.12 दोनों को गुणा कर देता है, जो स्वतंत्र घटनाओं के एक साथ होने का नियम है, बिलकुल अलग स्थिति।)"
+        },
+        "mr": {
+          "stem": "A आणि B या परस्पर वर्जक घटना असून P(A) = 0.3 आणि P(B) = 0.4. P(A किंवा B) किती?",
+          "choices": [
+            "1",
+            "0.1",
+            "0.12",
+            "0.7"
+          ],
+          "solution": "परस्पर वर्जक म्हणजे दोन्ही घटना एकाच वेळी घडूच शकत नाहीत, म्हणून वजा करायला आच्छादन नाही आणि संभाव्यता फक्त जुळतात: 0.3 + 0.4 = 0.7. हे संच प्रकरणातले संयोग सूत्रच आहे ज्यात छेद शून्य आहे — बेरीज-नियम ही नवी कल्पना नव्हे, केवळ परिचित कल्पना नमुना अवकाशावर लावलेली. (0.12 दोन्ही गुणते, जो स्वतंत्र घटना एकत्र घडण्याचा नियम आहे, अगदी वेगळी स्थिती.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "If P(A) = 0.6, what is the probability that A does NOT happen?",
+      "choices": [
+        "0.4",
+        "1.6",
+        "0.6",
+        "0.36"
+      ],
+      "answerIndex": 0,
+      "solution": "Either A happens or it does not, and those two possibilities cover the whole sample space with no overlap, so their probabilities must add to 1: P(not A) = 1 − 0.6 = 0.4. The complement is the most useful tool in the chapter, because counting the ways something can FAIL is often far easier than counting the ways it can happen. (0.36 squares the probability, which answers a different question about two independent trials.)",
+      "checkExpr": "1-0.6",
+      "translations": {
+        "hi": {
+          "stem": "यदि P(A) = 0.6, तो A के न होने की प्रायिकता क्या है?",
+          "choices": [
+            "0.4",
+            "1.6",
+            "0.6",
+            "0.36"
+          ],
+          "solution": "या तो A होती है या नहीं होती, और वे दोनों संभावनाएँ बिना अतिव्यापन पूरी प्रतिदर्श समष्टि ढाँप देती हैं, अतः उनकी प्रायिकताएँ जुड़कर 1 बननी ही चाहिए: P(A नहीं) = 1 − 0.6 = 0.4. पूरक इस अध्याय का सबसे उपयोगी औज़ार है, क्योंकि किसी चीज़ के विफल होने के तरीक़े गिनना प्रायः उसके होने के तरीक़े गिनने से कहीं आसान है। (0.36 प्रायिकता का वर्ग कर देता है, जो दो स्वतंत्र परीक्षणों के बारे में दूसरे प्रश्न का उत्तर है।)"
+        },
+        "mr": {
+          "stem": "जर P(A) = 0.6, तर A न घडण्याची संभाव्यता किती?",
+          "choices": [
+            "0.4",
+            "1.6",
+            "0.6",
+            "0.36"
+          ],
+          "solution": "एकतर A घडते किंवा घडत नाही, आणि त्या दोन शक्यता आच्छादनाविना अख्खा नमुना अवकाश झाकतात, म्हणून त्यांच्या संभाव्यता जुळून 1 बनल्याच पाहिजेत: P(A नाही) = 1 − 0.6 = 0.4. पूरक हे या प्रकरणातले सर्वांत उपयुक्त हत्यार, कारण एखादी गोष्ट अपयशी होण्याचे मार्ग मोजणे बहुधा ती घडण्याचे मार्ग मोजण्याहून कितीतरी सोपे. (0.36 संभाव्यतेचा वर्ग करते, जे दोन स्वतंत्र चाचण्यांबद्दलच्या वेगळ्या प्रश्नाचे उत्तर.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "P(A) = 0.6, P(B) = 0.5 and P(A and B) = 0.2. What is P(A or B)?",
+      "choices": [
+        "1.1",
+        "0.9",
+        "0.7",
+        "0.3"
+      ],
+      "answerIndex": 1,
+      "solution": "Add and take back the overlap: 0.6 + 0.5 − 0.2 = 0.9. Without the subtraction the answer would be 1.1, and a probability above 1 is impossible — which is a free check on every question of this kind. Note that these two events are NOT mutually exclusive, since P(A and B) is not zero; the previous question was the special case where that intersection vanishes. (1.1 forgets to subtract the overlap and produces an impossible value.)",
+      "checkExpr": "0.6+0.5-0.2",
+      "translations": {
+        "hi": {
+          "stem": "P(A) = 0.6, P(B) = 0.5 और P(A और B) = 0.2. P(A या B) क्या है?",
+          "choices": [
+            "1.1",
+            "0.9",
+            "0.7",
+            "0.3"
+          ],
+          "solution": "जोड़ो और अतिव्यापन वापस लो: 0.6 + 0.5 − 0.2 = 0.9. घटाव बिना उत्तर 1.1 होता, और 1 से ऊपर की प्रायिकता असंभव है — जो इस तरह के हर प्रश्न पर मुफ़्त जाँच है। ध्यान दो कि ये दोनों घटनाएँ परस्पर अपवर्जी नहीं हैं, क्योंकि P(A और B) शून्य नहीं; पिछला प्रश्न वही विशेष स्थिति थी जहाँ वह प्रतिच्छेदन लुप्त हो जाता है। (1.1 अतिव्यापन घटाना भूल जाता है और असंभव मान बना देता है।)"
+        },
+        "mr": {
+          "stem": "P(A) = 0.6, P(B) = 0.5 आणि P(A आणि B) = 0.2. P(A किंवा B) किती?",
+          "choices": [
+            "1.1",
+            "0.9",
+            "0.7",
+            "0.3"
+          ],
+          "solution": "जोडा आणि आच्छादन परत घ्या: 0.6 + 0.5 − 0.2 = 0.9. वजाबाकीविना उत्तर 1.1 झाले असते, आणि 1 हून वरची संभाव्यता अशक्य आहे — जी या प्रकारच्या प्रत्येक प्रश्नावर फुकट तपासणी. लक्षात घ्या की या दोन्ही घटना परस्पर वर्जक नाहीत, कारण P(A आणि B) शून्य नाही; मागचा प्रश्न तीच खास स्थिती होती जिथे तो छेद नाहीसा होतो. (1.1 आच्छादन वजा करणे विसरते आणि अशक्य मूल्य बनवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A bag holds 4 red and 2 blue balls. Two are drawn together. In how many ways can both be red?",
+      "choices": [
+        "6",
+        "8",
+        "12",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "Choosing 2 of the 4 red balls is ⁴C₂ = (4 × 3)/2 = 6. The words DRAWN TOGETHER matter: the two balls come out at the same moment, so there is no first or second and the count is a combination rather than a permutation. (12 counts ordered draws, which would be right if one ball were taken and then another.)",
+      "checkExpr": "4*3/2",
+      "translations": {
+        "hi": {
+          "stem": "किसी थैले में 4 लाल और 2 नीली गेंदें हैं। दो एक साथ निकाली जाती हैं। दोनों लाल होने के कितने तरीक़े हैं?",
+          "choices": [
+            "6",
+            "8",
+            "12",
+            "4"
+          ],
+          "solution": "4 लाल गेंदों में से 2 चुनना ⁴C₂ = (4 × 3)/2 = 6. एक साथ निकाली शब्द मायने रखते हैं: दोनों गेंदें एक ही क्षण बाहर आती हैं, अतः पहली या दूसरी कोई नहीं और गिनती क्रमचय नहीं, संचय है। (12 क्रमित निकासी गिनता है, जो तब ठीक होता जब एक गेंद लेकर फिर दूसरी ली जाती।)"
+        },
+        "mr": {
+          "stem": "एका पिशवीत 4 लाल आणि 2 निळे चेंडू आहेत. दोन एकत्र काढले जातात. दोन्ही लाल असण्याचे किती मार्ग आहेत?",
+          "choices": [
+            "6",
+            "8",
+            "12",
+            "4"
+          ],
+          "solution": "4 लाल चेंडूंपैकी 2 निवडणे म्हणजे ⁴C₂ = (4 × 3)/2 = 6. एकत्र काढले हे शब्द महत्त्वाचे: दोन्ही चेंडू एकाच क्षणी बाहेर येतात, म्हणून पहिला वा दुसरा कोणी नाही आणि मोजणी क्रमचय नव्हे, संचय आहे. (12 क्रमित काढण्या मोजते, जे एक चेंडू घेऊन मग दुसरा घेतला असता तर बरोबर झाले असते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "From the same bag of 6 balls, in how many ways can any 2 balls be drawn together?",
+      "choices": [
+        "30",
+        "15",
+        "36",
+        "12"
+      ],
+      "answerIndex": 1,
+      "solution": "⁶C₂ = (6 × 5)/2 = 15. This is the size of the sample space for the next question, and building it separately is the right habit — a probability is a fraction, and the two halves of that fraction are counted by the same method applied to different sets. (30 counts ordered pairs and never divides by 2.)",
+      "checkExpr": "6*5/2",
+      "translations": {
+        "hi": {
+          "stem": "उसी 6 गेंदों के थैले से कोई भी 2 गेंदें एक साथ कितने तरीक़ों से निकाली जा सकती हैं?",
+          "choices": [
+            "30",
+            "15",
+            "36",
+            "12"
+          ],
+          "solution": "⁶C₂ = (6 × 5)/2 = 15. यह अगले प्रश्न की प्रतिदर्श समष्टि का आकार है, और उसे अलग से बनाना सही आदत है — प्रायिकता एक भिन्न है, और उस भिन्न के दोनों हिस्से भिन्न समुच्चयों पर लगाई गई उसी विधि से गिने जाते हैं। (30 क्रमित युग्म गिनता है और 2 से भाग देता ही नहीं।)"
+        },
+        "mr": {
+          "stem": "त्याच 6 चेंडूंच्या पिशवीतून कोणतेही 2 चेंडू एकत्र किती प्रकारे काढता येतील?",
+          "choices": [
+            "30",
+            "15",
+            "36",
+            "12"
+          ],
+          "solution": "⁶C₂ = (6 × 5)/2 = 15. हा पुढच्या प्रश्नाच्या नमुना अवकाशाचा आकार, आणि तो वेगळा बांधणे ही योग्य सवय — संभाव्यता हा एक अपूर्णांक आहे, आणि त्या अपूर्णांकाचे दोन्ही भाग वेगवेगळ्या संचांवर लावलेल्या त्याच पद्धतीने मोजले जातात. (30 क्रमित जोड्या मोजते आणि 2 ने भागतच नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A bag holds 4 red and 2 blue balls, and two are drawn together. What is the probability that both are red?",
+      "choices": [
+        "0.4",
+        "0.6",
+        "0.25",
+        "0.5"
+      ],
+      "answerIndex": 0,
+      "solution": "Favourable outcomes over total outcomes: 6/15 = 0.4. Both counts had to be combinations for the fraction to be honest — mixing a combination on top with a permutation below is the error that quietly halves or doubles an answer. Note that 0.4 is less than the 4/6 chance of a single red ball, which makes sense: after one red is taken there is one fewer red left, so the second draw is harder than the first. (0.6 gives the chance that a single ball drawn is red.)",
+      "checkExpr": "6/15",
+      "translations": {
+        "hi": {
+          "stem": "किसी थैले में 4 लाल और 2 नीली गेंदें हैं, और दो एक साथ निकाली जाती हैं। दोनों के लाल होने की प्रायिकता क्या है?",
+          "choices": [
+            "0.4",
+            "0.6",
+            "0.25",
+            "0.5"
+          ],
+          "solution": "अनुकूल परिणाम बटा कुल परिणाम: 6/15 = 0.4. भिन्न के ईमानदार होने के लिए दोनों गिनतियों का संचय होना ज़रूरी था — ऊपर संचय और नीचे क्रमचय मिला देना वही भूल है जो चुपचाप उत्तर आधा या दुगुना कर देती है। ध्यान दो कि 0.4 अकेली लाल गेंद की 4/6 संभावना से कम है, जो समझ में आता है: एक लाल निकल जाने पर एक लाल कम बचती है, अतः दूसरी निकासी पहली से कठिन है। (0.6 अकेली निकाली गेंद के लाल होने की संभावना देता है।)"
+        },
+        "mr": {
+          "stem": "एका पिशवीत 4 लाल आणि 2 निळे चेंडू आहेत, आणि दोन एकत्र काढले जातात. दोन्ही लाल असण्याची संभाव्यता किती?",
+          "choices": [
+            "0.4",
+            "0.6",
+            "0.25",
+            "0.5"
+          ],
+          "solution": "अनुकूल परिणाम भागिले एकूण परिणाम: 6/15 = 0.4. अपूर्णांक प्रामाणिक असण्यासाठी दोन्ही मोजण्या संचय असणे आवश्यक होते — वर संचय आणि खाली क्रमचय मिसळणे हीच ती चूक जी गुपचूप उत्तर निम्मे वा दुप्पट करते. लक्षात घ्या की 0.4 हे एकाच लाल चेंडूच्या 4/6 शक्यतेहून कमी आहे, जे समजण्याजोगे: एक लाल निघाल्यावर एक लाल कमी उरतो, म्हणून दुसरी काढणी पहिलीहून कठीण. (0.6 एकच काढलेला चेंडू लाल असण्याची शक्यता देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "One card is drawn from a pack of 52. How many cards are either a king or a heart?",
+      "choices": [
+        "16",
+        "17",
+        "13",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "There are 4 kings and 13 hearts, but the king of hearts is in both lists and would be counted twice, so the answer is 4 + 13 − 1 = 16. This is the addition rule doing exactly what the union formula did for sets, and the single card in the overlap is the whole reason the answer is not 17. Whenever two categories in a question can both apply to one object, look for that object before adding. (17 adds the two counts and double-counts the king of hearts.)",
+      "checkExpr": "4+13-1",
+      "translations": {
+        "hi": {
+          "stem": "52 पत्तों की गड्डी से एक पत्ता निकाला जाता है। कितने पत्ते या तो बादशाह हैं या पान?",
+          "choices": [
+            "16",
+            "17",
+            "13",
+            "4"
+          ],
+          "solution": "4 बादशाह और 13 पान हैं, पर पान का बादशाह दोनों सूचियों में है और दो बार गिना जाता, अतः उत्तर 4 + 13 − 1 = 16. यह योग-नियम ठीक वही कर रहा है जो सम्मिलन सूत्र समुच्चयों के लिए करता था, और अतिव्यापन का वह अकेला पत्ता ही पूरा कारण है कि उत्तर 17 नहीं। जब भी प्रश्न की दो श्रेणियाँ किसी एक वस्तु पर एक साथ लागू हो सकें, जोड़ने से पहले उस वस्तु को ढूँढ़ो। (17 दोनों गिनतियाँ जोड़ देता है और पान के बादशाह को दो बार गिन लेता है।)"
+        },
+        "mr": {
+          "stem": "52 पत्त्यांच्या जुडग्यातून एक पत्ता काढला जातो. किती पत्ते एकतर राजा आहेत किंवा बदाम?",
+          "choices": [
+            "16",
+            "17",
+            "13",
+            "4"
+          ],
+          "solution": "4 राजे आणि 13 बदाम आहेत, पण बदामाचा राजा दोन्ही यादींत आहे आणि दोनदा मोजला गेला असता, म्हणून उत्तर 4 + 13 − 1 = 16. हा बेरीज-नियम नेमके तेच करतो आहे जे संयोग सूत्र संचांसाठी करत होते, आणि आच्छादनातला तो एकच पत्ता हेच अख्खे कारण की उत्तर 17 नाही. जेव्हा जेव्हा प्रश्नातल्या दोन श्रेणी एकाच वस्तूवर एकाच वेळी लागू होऊ शकतील, तेव्हा जोडण्याआधी ती वस्तू शोधा. (17 दोन्ही मोजण्या जोडते आणि बदामाचा राजा दोनदा मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Three fair coins are tossed together. What is the probability of getting exactly two heads?",
+      "choices": [
+        "0.25",
+        "0.5",
+        "0.125",
+        "0.375"
+      ],
+      "answerIndex": 3,
+      "solution": "The sample space has 2 × 2 × 2 = 8 outcomes. Exactly two heads happens in three of them — HHT, HTH and THH — so the probability is 3/8 = 0.375. Choosing WHICH two coins show heads is ³C₂ = 3, which is why the binomial coefficients appear here at all; the same reasoning gives 1, 3, 3, 1 for zero, one, two and three heads, adding to the full 8. The commonest wrong route is to reason that two heads out of three is a fraction of two-thirds, which confuses the count of heads with the count of outcomes. (0.125 gives the chance of one specific outcome such as HHT.)",
+      "checkExpr": "3/8",
+      "translations": {
+        "hi": {
+          "stem": "तीन निष्पक्ष सिक्के एक साथ उछाले जाते हैं। ठीक दो चित आने की प्रायिकता क्या है?",
+          "choices": [
+            "0.25",
+            "0.5",
+            "0.125",
+            "0.375"
+          ],
+          "solution": "प्रतिदर्श समष्टि में 2 × 2 × 2 = 8 परिणाम हैं। ठीक दो चित उनमें से तीन में होते हैं — HHT, HTH और THH — अतः प्रायिकता 3/8 = 0.375. कौन-से दो सिक्के चित दिखाएँ यह चुनना ³C₂ = 3 है, और इसीलिए द्विपद गुणांक यहाँ प्रकट होते हैं; वही तर्क शून्य, एक, दो और तीन चित के लिए 1, 3, 3, 1 देता है, जो जुड़कर पूरे 8 बनते हैं। सबसे आम ग़लत रास्ता यह तर्क है कि तीन में से दो चित दो-तिहाई का अंश है, जो चितों की गिनती को परिणामों की गिनती से गड्डमड्ड कर देता है। (0.125 HHT जैसे किसी एक विशिष्ट परिणाम की संभावना देता है।)"
+        },
+        "mr": {
+          "stem": "तीन निष्पक्ष नाणी एकत्र उडवली जातात. नेमके दोन छापे येण्याची संभाव्यता किती?",
+          "choices": [
+            "0.25",
+            "0.5",
+            "0.125",
+            "0.375"
+          ],
+          "solution": "नमुना अवकाशात 2 × 2 × 2 = 8 परिणाम आहेत. नेमके दोन छापे त्यांपैकी तिघांत घडतात — HHT, HTH आणि THH — म्हणून संभाव्यता 3/8 = 0.375. कोणती दोन नाणी छापा दाखवतील हे निवडणे म्हणजे ³C₂ = 3, आणि म्हणूनच द्विपद सहगुणक इथे प्रकटतात; तोच तर्क शून्य, एक, दोन आणि तीन छाप्यांसाठी 1, 3, 3, 1 देतो, जे जुळून पूर्ण 8 बनतात. सर्वांत सामान्य चुकीचा मार्ग म्हणजे तिघांपैकी दोन छापे हा दोनतृतीयांशाचा अंश असा तर्क, जो छाप्यांची मोजणी परिणामांच्या मोजणीशी गोंधळतो. (0.125 HHT सारख्या एका विशिष्ट परिणामाची शक्यता देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A fair coin is tossed twice. What is the probability of getting at least one head?",
+      "choices": [
+        "0.5",
+        "0.75",
+        "1",
+        "0.25"
+      ],
+      "answerIndex": 1,
+      "solution": "At least one head means one head or two, and counting both cases works — but the complement is quicker and far safer. The only way to fail is to get no heads at all, which is the single outcome TT out of four, with probability 1/4. So the answer is 1 − 1/4 = 0.75. The advantage grows enormously with the number of tosses: for ten coins, at least one head has 1023 favourable outcomes to enumerate, while no heads has exactly one, so the complement turns a page of work into a single subtraction. Whenever a question says AT LEAST, ask what the opposite is before counting anything. (0.5 counts only the case of exactly one head.)",
+      "checkExpr": "1-1/4",
+      "translations": {
+        "hi": {
+          "stem": "एक निष्पक्ष सिक्का दो बार उछाला जाता है। कम से कम एक चित आने की प्रायिकता क्या है?",
+          "choices": [
+            "0.5",
+            "0.75",
+            "1",
+            "0.25"
+          ],
+          "solution": "कम से कम एक चित का अर्थ है एक चित या दो, और दोनों मामले गिनना चलता है — पर पूरक तेज़ और कहीं अधिक सुरक्षित है। विफल होने का इकलौता तरीक़ा है एक भी चित न आना, जो चार में से अकेला परिणाम TT है, जिसकी प्रायिकता 1/4. अतः उत्तर 1 − 1/4 = 0.75. उछालों की संख्या के साथ लाभ बहुत बढ़ता है: दस सिक्कों के लिए कम से कम एक चित के 1023 अनुकूल परिणाम गिनने पड़ते, जबकि कोई चित नहीं का ठीक एक, अतः पूरक पन्ने भर के काम को एक घटाव बना देता है। जब भी प्रश्न कम से कम कहे, कुछ भी गिनने से पहले पूछो कि उलटा क्या है। (0.5 केवल ठीक एक चित का मामला गिनता है।)"
+        },
+        "mr": {
+          "stem": "एक निष्पक्ष नाणे दोनदा उडवले जाते. किमान एक छापा येण्याची संभाव्यता किती?",
+          "choices": [
+            "0.5",
+            "0.75",
+            "1",
+            "0.25"
+          ],
+          "solution": "किमान एक छापा म्हणजे एक छापा किंवा दोन, आणि दोन्ही प्रकरणे मोजणे चालते — पण पूरक वेगवान आणि कितीतरी सुरक्षित. अपयशी होण्याचा एकमेव मार्ग म्हणजे एकही छापा न येणे, जो चारांपैकी एकटा परिणाम TT आहे, ज्याची संभाव्यता 1/4. म्हणून उत्तर 1 − 1/4 = 0.75. उडवण्यांच्या संख्येसोबत फायदा प्रचंड वाढतो: दहा नाण्यांसाठी किमान एक छाप्याचे 1023 अनुकूल परिणाम मोजावे लागले असते, तर एकही छापा नाहीचा नेमका एक, म्हणून पूरक पानभर कामाला एका वजाबाकीत बदलतो. जेव्हा जेव्हा प्रश्न किमान म्हणतो, तेव्हा काहीही मोजण्याआधी विचारा की उलटे काय आहे. (0.5 केवळ नेमक्या एका छाप्याचे प्रकरण मोजते.)"
+        }
+      }
+    }
+  ]
+}

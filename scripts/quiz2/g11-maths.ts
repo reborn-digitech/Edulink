@@ -3091,6 +3091,1227 @@ function conicSections11(): TopicFileOut {
   );
 }
 
+/* ------------------------------------------------------------------------- */
+/* Chapter 11 — Three Dimensional Geometry (one axis more)                   */
+/* ------------------------------------------------------------------------- */
+function threeDGeometry11(): TopicFileOut {
+  const rand = rng("maths-11-three-dimensional-geometry");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the distance of the point (3, 4, 12) from the origin?",
+          hi: "बिंदु (3, 4, 12) की मूलबिंदु से दूरी क्या है?",
+          mr: "बिंदू (3, 4, 12) चे आरंभबिंदूपासूनचे अंतर किती?",
+        },
+        answer: 13,
+        wrong: [19, 169, 12],
+        checkExpr: "(9+16+144)/13",
+        solution: {
+          en: "Square each coordinate, add, and take the root: √(9 + 16 + 144) = √169 = 13. It is Pythagoras with one extra term — the flat formula did not have to be replaced, only extended, and a fourth axis would add a fourth square in exactly the same way. (19 adds the coordinates instead of their squares.)",
+          hi: "हर निर्देशांक का वर्ग करो, जोड़ो, और मूल लो: √(9 + 16 + 144) = √169 = 13. यह एक अतिरिक्त पद वाला पाइथागोरस है — चपटा सूत्र बदलना नहीं पड़ा, केवल बढ़ाना पड़ा, और चौथा अक्ष ठीक इसी तरह चौथा वर्ग जोड़ देता। (19 वर्गों के बजाय निर्देशांक जोड़ देता है।)",
+          mr: "प्रत्येक निर्देशांकाचा वर्ग करा, जोडा, आणि मूळ घ्या: √(9 + 16 + 144) = √169 = 13. हा एक अधिकच्या पदासह पायथागोरस — सपाट सूत्र बदलावे लागले नाही, केवळ वाढवावे लागले, आणि चौथा अक्ष नेमक्या याच पद्धतीने चौथा वर्ग जोडला असता. (19 वर्गांऐवजी निर्देशांक जोडते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Into how many octants do the three coordinate planes divide space?",
+          hi: "तीनों निर्देशांक तल आकाश को कितने अष्टांशों में बाँटते हैं?",
+          mr: "तिन्ही निर्देशांक प्रतले अवकाशाला किती अष्टांशांत विभागतात?",
+        },
+        answer: 8,
+        wrong: [4, 6, 3],
+        checkExpr: "2*2*2",
+        solution: {
+          en: "Each coordinate can be positive or negative independently of the others, so there are 2 × 2 × 2 = 8 sign combinations and therefore 8 regions. In two dimensions the same argument gives 2 × 2 = 4 quadrants, which is why the count doubles with each new axis. (4 quotes the number of quadrants in the plane.)",
+          hi: "हर निर्देशांक दूसरों से स्वतंत्र रूप से धनात्मक या ऋणात्मक हो सकता है, अतः 2 × 2 × 2 = 8 चिह्न-संयोजन और इसलिए 8 प्रदेश। दो विमाओं में वही तर्क 2 × 2 = 4 चतुर्थांश देता है, इसीलिए हर नए अक्ष के साथ गिनती दोगुनी हो जाती है। (4 तल के चतुर्थांशों की संख्या बता देता है।)",
+          mr: "प्रत्येक निर्देशांक इतरांपासून स्वतंत्रपणे धन वा ऋण असू शकतो, म्हणून 2 × 2 × 2 = 8 चिन्ह-संयोजने आणि म्हणून 8 प्रदेश. दोन मितींत तोच युक्तिवाद 2 × 2 = 4 चतुर्थांश देतो, म्हणूनच प्रत्येक नव्या अक्षासोबत मोजणी दुप्पट होते. (4 प्रतलातल्या चतुर्थांशांची संख्या सांगते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "For the point (4, −3, 12), what is the sum of the squares of its coordinates?",
+          hi: "बिंदु (4, −3, 12) के लिए उसके निर्देशांकों के वर्गों का योग क्या है?",
+          mr: "बिंदू (4, −3, 12) साठी त्याच्या निर्देशांकांच्या वर्गांची बेरीज किती?",
+        },
+        answer: 169,
+        wrong: [13, 19, 144],
+        checkExpr: "16+9+144",
+        solution: {
+          en: "16 + 9 + 144 = 169. The negative sign disappears under the square, which is exactly why distances built this way are never negative. Note that 169 is the square of the distance from the origin, so the point lies 13 units away — the sum of squares is always one step short of the distance itself. (13 gives the distance rather than the sum of the squares.)",
+          hi: "16 + 9 + 144 = 169. ऋण चिह्न वर्ग के नीचे ग़ायब हो जाता है, और ठीक इसीलिए यों बनी दूरियाँ कभी ऋणात्मक नहीं होतीं। ध्यान दो कि 169 मूलबिंदु से दूरी का वर्ग है, अतः बिंदु 13 इकाई दूर है — वर्गों का योग सदा दूरी से एक क़दम पीछे रहता है। (13 वर्गों के योग के बजाय दूरी दे देता है।)",
+          mr: "16 + 9 + 144 = 169. ऋण चिन्ह वर्गाखाली नाहीसे होते, आणि नेमके म्हणूनच अशी बनलेली अंतरे कधीच ऋण नसतात. लक्षात घ्या की 169 हा आरंभबिंदूपासूनच्या अंतराचा वर्ग आहे, म्हणून बिंदू 13 एकके दूर आहे — वर्गांची बेरीज नेहमी अंतराहून एक पाऊल मागे असते. (13 वर्गांच्या बेरजेऐवजी अंतर देते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the distance between the points (1, 2, 3) and (4, 6, 3)?",
+          hi: "बिंदुओं (1, 2, 3) और (4, 6, 3) के बीच की दूरी क्या है?",
+          mr: "बिंदू (1, 2, 3) आणि (4, 6, 3) यांच्यातील अंतर किती?",
+        },
+        answer: 5,
+        wrong: [25, 7, 3],
+        checkExpr: "(9+16)/5",
+        solution: {
+          en: "The differences are 3, 4 and 0, so the distance is √(9 + 16 + 0) = √25 = 5. The zero is worth noticing: both points sit at the same height, so they lie in a horizontal plane and the third dimension contributes nothing at all. This is the ordinary two-dimensional case turning up inside the three-dimensional formula. (25 gives the square of the distance.)",
+          hi: "अंतर 3, 4 और 0 हैं, अतः दूरी √(9 + 16 + 0) = √25 = 5. शून्य ध्यान देने योग्य है: दोनों बिंदु एक ही ऊँचाई पर बैठे हैं, अतः वे एक क्षैतिज तल में हैं और तीसरी विमा कुछ भी योगदान नहीं देती। यह साधारण द्विविमीय मामला ही त्रिविमीय सूत्र के भीतर उभर आया है। (25 दूरी का वर्ग दे देता है।)",
+          mr: "फरक 3, 4 आणि 0 आहेत, म्हणून अंतर √(9 + 16 + 0) = √25 = 5. शून्य लक्षात घेण्याजोगे: दोन्ही बिंदू एकाच उंचीवर बसले आहेत, म्हणून ते एका आडव्या प्रतलात आहेत आणि तिसरी मिती काहीच योगदान देत नाही. हे साधे द्विमितीय प्रकरणच त्रिमितीय सूत्राच्या आत उमटले आहे. (25 अंतराचा वर्ग देते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the SUM of the coordinates of the midpoint of the segment joining (2, 4, 6) and (8, 10, 12)?",
+          hi: "(2, 4, 6) और (8, 10, 12) को मिलाते खंड के मध्यबिंदु के निर्देशांकों का योग क्या है?",
+          mr: "(2, 4, 6) आणि (8, 10, 12) यांना जोडणाऱ्या खंडाच्या मध्यबिंदूच्या निर्देशांकांची बेरीज किती?",
+        },
+        answer: 21,
+        wrong: [42, 12, 30],
+        checkExpr: "(2+8)/2+(4+10)/2+(6+12)/2",
+        solution: {
+          en: "Average each coordinate on its own: (2 + 8)/2 = 5, (4 + 10)/2 = 7, (6 + 12)/2 = 9, so the midpoint is (5, 7, 9) and the sum is 21. Nothing about the method changed when the third axis appeared — the coordinates never interfere with one another, which is the whole convenience of using axes at right angles. (42 adds all six coordinates without halving.)",
+          hi: "हर निर्देशांक का अलग औसत लो: (2 + 8)/2 = 5, (4 + 10)/2 = 7, (6 + 12)/2 = 9, अतः मध्यबिंदु (5, 7, 9) और योग 21. तीसरा अक्ष आने पर विधि में कुछ नहीं बदला — निर्देशांक कभी एक-दूसरे में दख़ल नहीं देते, और समकोण पर अक्ष लेने की पूरी सुविधा यही है। (42 छहों निर्देशांक जोड़ देता है बिना आधा किए।)",
+          mr: "प्रत्येक निर्देशांकाची स्वतंत्र सरासरी घ्या: (2 + 8)/2 = 5, (4 + 10)/2 = 7, (6 + 12)/2 = 9, म्हणून मध्यबिंदू (5, 7, 9) आणि बेरीज 21. तिसरा अक्ष आल्यावर पद्धतीत काहीच बदलले नाही — निर्देशांक कधीही एकमेकांत ढवळाढवळ करत नाहीत, आणि काटकोनात अक्ष घेण्याची अख्खी सोय हीच. (42 सहाही निर्देशांक जोडते निम्मे न करता.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the distance of the point (1, 2, 2) from the origin?",
+          hi: "बिंदु (1, 2, 2) की मूलबिंदु से दूरी क्या है?",
+          mr: "बिंदू (1, 2, 2) चे आरंभबिंदूपासूनचे अंतर किती?",
+        },
+        answer: 3,
+        wrong: [5, 9, 7],
+        checkExpr: "(1+4+4)/3",
+        solution: {
+          en: "√(1 + 4 + 4) = √9 = 3. Triples like (1, 2, 2), (2, 3, 6) and (3, 4, 12) whose squares add to a perfect square are the three-dimensional cousins of Pythagorean triples, and questions are usually built around them so the root comes out whole. Spotting one saves you reaching for a calculator. (5 adds the coordinates rather than their squares.)",
+          hi: "√(1 + 4 + 4) = √9 = 3. (1, 2, 2), (2, 3, 6) और (3, 4, 12) जैसे त्रिक जिनके वर्ग जुड़कर पूर्ण वर्ग बनते हैं, पाइथागोरसी त्रिकों के त्रिविमीय चचेरे भाई हैं, और प्रश्न प्रायः उन्हीं के इर्द-गिर्द बनाए जाते हैं ताकि मूल पूरा निकले। एक पहचान लेना तुम्हें परिकलक की ओर हाथ बढ़ाने से बचा देता है। (5 वर्गों के बजाय निर्देशांक जोड़ देता है।)",
+          mr: "√(1 + 4 + 4) = √9 = 3. (1, 2, 2), (2, 3, 6) आणि (3, 4, 12) सारखी त्रिके ज्यांचे वर्ग जुळून पूर्ण वर्ग बनतात, ती पायथागोरसी त्रिकांची त्रिमितीय भावंडे आहेत, आणि प्रश्न बहुधा त्यांच्याभोवतीच बांधले जातात जेणेकरून मूळ पूर्ण निघावे. एक ओळखणे तुम्हाला गणकयंत्राकडे हात वळवण्यापासून वाचवते. (5 वर्गांऐवजी निर्देशांक जोडते.)",
+        },
+      },
+      rand,
+    ),
+  );
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is the distance between the points (1, 2, 3) and (5, 6, 10)?",
+          hi: "बिंदुओं (1, 2, 3) और (5, 6, 10) के बीच की दूरी क्या है?",
+          mr: "बिंदू (1, 2, 3) आणि (5, 6, 10) यांच्यातील अंतर किती?",
+        },
+        answer: 9,
+        wrong: [15, 81, 7],
+        checkExpr: "(16+16+49)/9",
+        solution: {
+          en: "The differences are 4, 4 and 7, so the distance is √(16 + 16 + 49) = √81 = 9. Take the differences before squaring, never the coordinates themselves — squaring first and subtracting afterwards is the standard wrong turn and would give a different, meaningless number. (15 adds the three differences instead of using Pythagoras.)",
+          hi: "अंतर 4, 4 और 7 हैं, अतः दूरी √(16 + 16 + 49) = √81 = 9. वर्ग करने से पहले अंतर लो, निर्देशांक स्वयं कभी नहीं — पहले वर्ग करके बाद में घटाना मानक ग़लत मोड़ है और वह भिन्न, अर्थहीन संख्या देता। (15 पाइथागोरस लगाने के बजाय तीनों अंतर जोड़ देता है।)",
+          mr: "फरक 4, 4 आणि 7 आहेत, म्हणून अंतर √(16 + 16 + 49) = √81 = 9. वर्ग करण्याआधी फरक घ्या, निर्देशांक स्वतः कधीच नाही — आधी वर्ग करून नंतर वजा करणे हे प्रमाण चुकीचे वळण आणि ते वेगळी, निरर्थक संख्या दिली असती. (15 पायथागोरस लावण्याऐवजी तिन्ही फरक जोडते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is the z-coordinate of the midpoint of the segment joining (1, 2, 3) and (5, 6, 11)?",
+          hi: "(1, 2, 3) और (5, 6, 11) को मिलाते खंड के मध्यबिंदु का z-निर्देशांक क्या है?",
+          mr: "(1, 2, 3) आणि (5, 6, 11) यांना जोडणाऱ्या खंडाच्या मध्यबिंदूचा z-निर्देशांक किती?",
+        },
+        answer: 7,
+        wrong: [4, 14, 6],
+        checkExpr: "(3+11)/2",
+        solution: {
+          en: "The z-coordinate of the midpoint is the average of the two z-values: (3 + 11)/2 = 7. The other coordinates are irrelevant to this one — a useful thing to notice, because it means you never have to compute the whole midpoint when only one component is asked for. (14 adds the two z-values without halving.)",
+          hi: "मध्यबिंदु का z-निर्देशांक दोनों z-मानों का औसत है: (3 + 11)/2 = 7. बाक़ी निर्देशांक इससे असंबद्ध हैं — ध्यान देने योग्य बात, क्योंकि इसका अर्थ है कि जब केवल एक घटक माँगा जाए तो पूरा मध्यबिंदु निकालना कभी नहीं पड़ता। (14 दोनों z-मान जोड़ देता है बिना आधा किए।)",
+          mr: "मध्यबिंदूचा z-निर्देशांक म्हणजे दोन्ही z-मूल्यांची सरासरी: (3 + 11)/2 = 7. उरलेले निर्देशांक याच्याशी असंबंधित — लक्षात घेण्याजोगी गोष्ट, कारण याचा अर्थ केवळ एक घटक विचारला असता अख्खा मध्यबिंदू काढावा लागत नाही. (14 दोन्ही z-मूल्ये जोडते निम्मे न करता.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A point divides the segment joining A(1, 2, 3) and B(6, 7, 8) internally in the ratio 2 : 3. What is its x-coordinate?",
+          hi: "कोई बिंदु A(1, 2, 3) और B(6, 7, 8) को मिलाते खंड को 2 : 3 के अनुपात में अंतःविभाजित करता है। उसका x-निर्देशांक क्या है?",
+          mr: "एक बिंदू A(1, 2, 3) आणि B(6, 7, 8) यांना जोडणाऱ्या खंडाचे 2 : 3 या प्रमाणात अंतर्विभाजन करतो. त्याचा x-निर्देशांक किती?",
+        },
+        answer: 3,
+        wrong: [4, 2.6, 7],
+        checkExpr: "(2*6+3*1)/5",
+        solution: {
+          en: "The section formula weights each endpoint with the OPPOSITE part of the ratio: (2 × 6 + 3 × 1)/(2 + 3) = 15/5 = 3. The crossing over is the whole difficulty — the 2 belongs to B and the 3 to A, because a point nearer A is dominated by A's coordinate. A quick check confirms it: 3 is closer to 1 than to 6, exactly as a 2 : 3 division should be. (4 pairs each number with its own endpoint instead of crossing them.)",
+          hi: "विभाजन सूत्र हर सिरे को अनुपात के उलटे भाग से भार देता है: (2 × 6 + 3 × 1)/(2 + 3) = 15/5 = 3. यही आड़ा-तिरछा जोड़ पूरी कठिनाई है — 2 B का है और 3 A का, क्योंकि A के पास वाले बिंदु पर A का निर्देशांक हावी रहता है। तेज़ जाँच पुष्टि करती है: 3, 6 से नहीं 1 से पास है, ठीक जैसा 2 : 3 विभाजन होना चाहिए। (4 हर संख्या को उसके अपने सिरे से जोड़ देता है, आड़ा करने के बजाय।)",
+          mr: "विभाजन सूत्र प्रत्येक टोकाला प्रमाणाच्या उलट भागाने भार देते: (2 × 6 + 3 × 1)/(2 + 3) = 15/5 = 3. हीच आडवी जोडणी अख्खी अडचण — 2 हा B चा आणि 3 हा A चा, कारण A जवळच्या बिंदूवर A चा निर्देशांक वरचढ राहतो. झटपट तपासणी खात्री देते: 3 हा 6 हून नव्हे 1 च्या जवळ आहे, नेमके 2 : 3 विभाजन असावे तसे. (4 प्रत्येक संख्या तिच्याच टोकाशी जोडते, आडवे करण्याऐवजी.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "For the point (2, 3, −5), what is the sum of its distances from the three coordinate planes?",
+          hi: "बिंदु (2, 3, −5) के लिए तीनों निर्देशांक तलों से उसकी दूरियों का योग क्या है?",
+          mr: "बिंदू (2, 3, −5) साठी तिन्ही निर्देशांक प्रतलांपासूनच्या त्याच्या अंतरांची बेरीज किती?",
+        },
+        answer: 10,
+        wrong: [0, 6, 30],
+        checkExpr: "2+3+5",
+        solution: {
+          en: "The distance from a coordinate plane is the size of the coordinate perpendicular to it, taken without its sign: 3 from the yz-plane, 2 from the xz-plane and 5 from the xy-plane, giving 2 + 3 + 5 = 10. The negative z means the point sits below the xy-plane, but a distance cannot record which side — dropping the minus sign is required, not optional. (0 adds the coordinates with their signs, letting the −5 cancel the others.)",
+          hi: "किसी निर्देशांक तल से दूरी उस पर लंब निर्देशांक का आकार है, चिह्न के बिना: yz-तल से 3, xz-तल से 2 और xy-तल से 5, जिससे 2 + 3 + 5 = 10. ऋणात्मक z का अर्थ है कि बिंदु xy-तल के नीचे बैठा है, पर दूरी यह दर्ज नहीं कर सकती कि किस ओर — ऋण चिह्न गिराना आवश्यक है, वैकल्पिक नहीं। (0 निर्देशांकों को उनके चिह्नों सहित जोड़ देता है, और −5 बाक़ी को काट देता है।)",
+          mr: "कोणत्याही निर्देशांक प्रतलापासूनचे अंतर म्हणजे त्याला लंब असलेल्या निर्देशांकाचा आकार, चिन्हाविना: yz-प्रतलापासून 3, xz-प्रतलापासून 2 आणि xy-प्रतलापासून 5, ज्यातून 2 + 3 + 5 = 10. ऋण z म्हणजे बिंदू xy-प्रतलाखाली बसला आहे, पण अंतर कोणत्या बाजूला हे नोंदवू शकत नाही — ऋण चिन्ह गाळणे आवश्यक आहे, ऐच्छिक नव्हे. (0 निर्देशांक त्यांच्या चिन्हांसह जोडते, आणि −5 बाकीचे छेदते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Find the point on the y-axis that is equidistant from A(3, 1, 2) and B(5, 5, 2). What is its y-coordinate?",
+          hi: "y-अक्ष पर वह बिंदु ढूँढ़ो जो A(3, 1, 2) और B(5, 5, 2) से समान दूरी पर है। उसका y-निर्देशांक क्या है?",
+          mr: "y-अक्षावरचा तो बिंदू शोधा जो A(3, 1, 2) आणि B(5, 5, 2) पासून समान अंतरावर आहे. त्याचा y-निर्देशांक किती?",
+        },
+        answer: 5,
+        wrong: [3, 4, 8],
+        checkExpr: "(54-14)/8",
+        solution: {
+          en: "A point on the y-axis has the form (0, y, 0). Equating the squared distances avoids the roots entirely: 9 + (y − 1)² + 4 = 25 + (y − 5)² + 4. Expanding gives 14 − 2y = 54 − 10y, so 8y = 40 and y = 5, making the point (0, 5, 0). Two habits do the work here. Write down what a point on the named axis must look like before anything else — two of its coordinates are already zero. And square both distances rather than comparing the roots, since the squares are equal exactly when the distances are. (4 gives the average of the two y-values, which happens not to be the answer because the other coordinates differ too.)",
+          hi: "y-अक्ष पर बिंदु का रूप (0, y, 0) है। वर्ग की गई दूरियाँ बराबर करने से मूल पूरी तरह टल जाते हैं: 9 + (y − 1)² + 4 = 25 + (y − 5)² + 4. खोलने पर 14 − 2y = 54 − 10y, अतः 8y = 40 और y = 5, और बिंदु (0, 5, 0) बनता है। यहाँ दो आदतें काम करती हैं। किसी और चीज़ से पहले लिखो कि नामित अक्ष पर बिंदु कैसा दिखना चाहिए — उसके दो निर्देशांक पहले से शून्य हैं। और मूलों की तुलना करने के बजाय दोनों दूरियों का वर्ग करो, क्योंकि वर्ग ठीक तभी बराबर हैं जब दूरियाँ हों। (4 दोनों y-मानों का औसत देता है, जो संयोग से उत्तर नहीं है क्योंकि बाक़ी निर्देशांक भी भिन्न हैं।)",
+          mr: "y-अक्षावरील बिंदूचे रूप (0, y, 0) असते. वर्ग केलेली अंतरे समान करणे मुळे पूर्णपणे टाळते: 9 + (y − 1)² + 4 = 25 + (y − 5)² + 4. उलगडल्यावर 14 − 2y = 54 − 10y, म्हणून 8y = 40 आणि y = 5, आणि बिंदू (0, 5, 0) बनतो. इथे दोन सवयी काम करतात. इतर कशाहीआधी लिहा की नामनिर्देशित अक्षावरचा बिंदू कसा दिसला पाहिजे — त्याचे दोन निर्देशांक आधीच शून्य आहेत. आणि मुळांची तुलना करण्याऐवजी दोन्ही अंतरांचा वर्ग करा, कारण वर्ग नेमके तेव्हाच समान जेव्हा अंतरे समान. (4 दोन्ही y-मूल्यांची सरासरी देते, जी योगायोगाने उत्तर नाही कारण उरलेले निर्देशांकही वेगळे आहेत.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A triangle has vertices (1, 2, 3), (4, 5, 6) and (7, 8, 9). What is the SUM of the coordinates of its centroid?",
+          hi: "किसी त्रिभुज के शीर्ष (1, 2, 3), (4, 5, 6) और (7, 8, 9) हैं। उसके केंद्रक के निर्देशांकों का योग क्या है?",
+          mr: "एका त्रिकोणाचे शिरोबिंदू (1, 2, 3), (4, 5, 6) आणि (7, 8, 9) आहेत. त्याच्या मध्यकेंद्राच्या निर्देशांकांची बेरीज किती?",
+        },
+        answer: 15,
+        wrong: [45, 5, 12],
+        checkExpr: "(1+4+7)/3+(2+5+8)/3+(3+6+9)/3",
+        solution: {
+          en: "The centroid averages the three vertices coordinate by coordinate: x = 12/3 = 4, y = 15/3 = 5, z = 18/3 = 6, so the centroid is (4, 5, 6) and the sum is 15. Notice that the centroid here is one of the vertices — which happens because these three points are collinear, evenly spaced along a line, so the middle one is already the average. A triangle with these vertices would in fact be degenerate. (45 adds all nine coordinates without dividing by 3.)",
+          hi: "केंद्रक तीनों शीर्षों का निर्देशांक-दर-निर्देशांक औसत लेता है: x = 12/3 = 4, y = 15/3 = 5, z = 18/3 = 6, अतः केंद्रक (4, 5, 6) और योग 15. ध्यान दो कि यहाँ केंद्रक स्वयं एक शीर्ष है — ऐसा इसलिए कि ये तीनों बिंदु संरेख हैं, एक रेखा पर बराबर दूरी पर, अतः बीच वाला पहले से औसत है। इन शीर्षों वाला त्रिभुज वस्तुतः अपभ्रष्ट होगा। (45 नौों निर्देशांक जोड़ देता है बिना 3 से भाग दिए।)",
+          mr: "मध्यकेंद्र तिन्ही शिरोबिंदूंची निर्देशांक-दर-निर्देशांक सरासरी घेते: x = 12/3 = 4, y = 15/3 = 5, z = 18/3 = 6, म्हणून मध्यकेंद्र (4, 5, 6) आणि बेरीज 15. लक्षात घ्या की इथे मध्यकेंद्र स्वतःच एक शिरोबिंदू आहे — असे यासाठी की हे तिन्ही बिंदू एकरेषीय आहेत, एका रेषेवर समान अंतरावर, म्हणून मधला आधीच सरासरी आहे. या शिरोबिंदूंचा त्रिकोण प्रत्यक्षात अपभ्रष्ट असेल. (45 नऊही निर्देशांक जोडते 3 ने न भागता.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "For the points A(1, 2, 3) and B(3, 4, 5), what is the value of AB² ?",
+          hi: "बिंदुओं A(1, 2, 3) और B(3, 4, 5) के लिए AB² का मान क्या है?",
+          mr: "बिंदू A(1, 2, 3) आणि B(3, 4, 5) साठी AB² चे मूल्य किती?",
+        },
+        answer: 12,
+        wrong: [48, 24, 6],
+        checkExpr: "4+4+4",
+        solution: {
+          en: "The differences are 2, 2 and 2, so AB² = 4 + 4 + 4 = 12. This number is worth keeping because of what it proves about a third point. Take C(5, 6, 7): BC² is also 12, while AC² = 16 + 16 + 16 = 48. Since √48 = 2√12, the longest distance equals the sum of the other two exactly — AC = AB + BC — and three points can only satisfy that if they lie on one straight line. Squared distances are the usual tool for collinearity in space, because they avoid roots until the very last comparison. (48 gives AC² rather than AB².)",
+          hi: "अंतर 2, 2 और 2 हैं, अतः AB² = 4 + 4 + 4 = 12. यह संख्या इसलिए रखने योग्य है कि वह किसी तीसरे बिंदु के बारे में क्या सिद्ध करती है। C(5, 6, 7) लो: BC² भी 12 है, जबकि AC² = 16 + 16 + 16 = 48. चूँकि √48 = 2√12, सबसे लंबी दूरी ठीक बाक़ी दोनों के योग के बराबर है — AC = AB + BC — और तीन बिंदु यह तभी पूरा कर सकते हैं जब वे एक ही सरल रेखा पर हों। आकाश में संरेखता के लिए वर्ग की गई दूरियाँ ही सामान्य औज़ार हैं, क्योंकि वे अंतिम तुलना तक मूलों से बचा लेती हैं। (48 AB² के बजाय AC² दे देता है।)",
+          mr: "फरक 2, 2 आणि 2 आहेत, म्हणून AB² = 4 + 4 + 4 = 12. हा आकडा यासाठी ठेवण्याजोगा की तो तिसऱ्या बिंदूबद्दल काय सिद्ध करतो. C(5, 6, 7) घ्या: BC² सुद्धा 12 आहे, तर AC² = 16 + 16 + 16 = 48. √48 = 2√12 असल्याने, सर्वांत लांब अंतर नेमके उरलेल्या दोघांच्या बेरजेइतके आहे — AC = AB + BC — आणि तीन बिंदू हे तेव्हाच पूर्ण करू शकतात जेव्हा ते एकाच सरळ रेषेवर असतील. अवकाशात एकरेषीयतेसाठी वर्ग केलेली अंतरे हेच नेहमीचे हत्यार, कारण ती शेवटच्या तुलनेपर्यंत मुळे टाळतात. (48 AB² ऐवजी AC² देते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A room is 12 m long, 9 m wide and 8 m high. How long is the diagonal from one bottom corner to the opposite top corner?",
+          hi: "कोई कमरा 12 m लंबा, 9 m चौड़ा और 8 m ऊँचा है। एक निचले कोने से सामने के ऊपरी कोने तक का विकर्ण कितना लंबा है?",
+          mr: "एक खोली 12 m लांब, 9 m रुंद आणि 8 m उंच आहे. एका खालच्या कोपऱ्यापासून समोरच्या वरच्या कोपऱ्यापर्यंतचा कर्ण किती लांब आहे?",
+        },
+        answer: 17,
+        wrong: [29, 289, 15],
+        checkExpr: "(144+81+64)/17",
+        solution: {
+          en: "Put one corner at the origin and the opposite one is at (12, 9, 8), so the diagonal is √(144 + 81 + 64) = √289 = 17 m. It is worth seeing why the three-dimensional formula works, because the answer can be built in two ordinary steps. The diagonal of the floor is √(144 + 81) = 15 m, and that floor diagonal together with the 8 m height forms a right-angled triangle standing upright inside the room: √(225 + 64) = 17. So the space diagonal is Pythagoras applied twice, and the compact formula is just those two steps written as one. (15 stops at the floor diagonal and never goes up.)",
+          hi: "एक कोना मूलबिंदु पर रखो और सामने वाला (12, 9, 8) पर है, अतः विकर्ण √(144 + 81 + 64) = √289 = 17 m. त्रिविमीय सूत्र क्यों चलता है यह देखने योग्य है, क्योंकि उत्तर दो साधारण चरणों में बनाया जा सकता है। फ़र्श का विकर्ण √(144 + 81) = 15 m है, और वह फ़र्श-विकर्ण 8 m की ऊँचाई के साथ मिलकर कमरे के भीतर खड़ा समकोण त्रिभुज बनाता है: √(225 + 64) = 17. अतः आकाशीय विकर्ण दो बार लगाया गया पाइथागोरस है, और सघन सूत्र उन्हीं दो चरणों को एक में लिखना है। (15 फ़र्श के विकर्ण पर रुक जाता है और ऊपर जाता ही नहीं।)",
+          mr: "एक कोपरा आरंभबिंदूवर ठेवा आणि समोरचा (12, 9, 8) वर आहे, म्हणून कर्ण √(144 + 81 + 64) = √289 = 17 m. त्रिमितीय सूत्र का चालते हे पाहण्याजोगे, कारण उत्तर दोन साध्या पायऱ्यांत बांधता येते. जमिनीचा कर्ण √(144 + 81) = 15 m आहे, आणि तो जमीन-कर्ण 8 m उंचीसह मिळून खोलीच्या आत उभा काटकोन त्रिकोण बनवतो: √(225 + 64) = 17. म्हणून अवकाश-कर्ण म्हणजे दोनदा लावलेला पायथागोरस, आणि संक्षिप्त सूत्र म्हणजे त्याच दोन पायऱ्या एकात लिहिणे. (15 जमिनीच्या कर्णावर थांबते आणि वर जातच नाही.)",
+        },
+        fmt: unit("m"),
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-11-three-dimensional-geometry",
+      subject: "MATHS",
+      classLevel: 11,
+      chapter: "Chapter 11 — Introduction to Three Dimensional Geometry",
+      name: "Three Dimensional Geometry",
+      summary:
+        "The plane given a third axis, and almost nothing else changing: distance is still Pythagoras with one more square added, a midpoint is still an average taken coordinate by coordinate, and the four quadrants become eight octants — the arithmetic of the flat page carried into a room without a single new idea.",
+      position: 11,
+      translations: {
+        hi: {
+          name: "त्रिविमीय ज्यामिति",
+          summary:
+            "तल को तीसरा अक्ष मिला, और उसके सिवा लगभग कुछ नहीं बदला: दूरी अब भी पाइथागोरस है, बस एक वर्ग और जुड़ गया, मध्यबिंदु अब भी निर्देशांक-दर-निर्देशांक लिया गया औसत है, और चार चतुर्थांश आठ अष्टांश बन जाते हैं — चपटे पन्ने का अंकगणित एक भी नए विचार बिना कमरे में उठा लाया गया।",
+        },
+        mr: {
+          name: "त्रिमितीय भूमिती",
+          summary:
+            "प्रतलाला तिसरा अक्ष मिळाला, आणि त्याखेरीज जवळपास काहीच बदलले नाही: अंतर अजूनही पायथागोरस आहे, फक्त एक वर्ग जोडला गेला, मध्यबिंदू अजूनही निर्देशांक-दर-निर्देशांक घेतलेली सरासरी आहे, आणि चार चतुर्थांश आठ अष्टांश बनतात — सपाट पानाचे अंकगणित एकही नवी कल्पना न घेता खोलीत उचलून आणलेले.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 12 — Limits and Derivatives (approaching without arriving)        */
+/* ------------------------------------------------------------------------- */
+function limitsDerivatives11(): TopicFileOut {
+  const rand = rng("maths-11-limits-and-derivatives");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the limit of 3x + 1 as x approaches 2?",
+          hi: "जब x, 2 की ओर जाता है तो 3x + 1 की सीमा क्या है?",
+          mr: "x हा 2 कडे जातो तेव्हा 3x + 1 ची सीमा किती?",
+        },
+        answer: 7,
+        wrong: [4, 6, 3],
+        checkExpr: "3*2+1",
+        solution: {
+          en: "For an expression with no break in it, the limit is simply the value: 3 × 2 + 1 = 7. Substitution works here because the function is continuous at 2 — the whole subject of limits only becomes interesting when substitution FAILS, which is what the later questions are about. (4 substitutes into 3 + 1 and loses the x.)",
+          hi: "जिस व्यंजक में कोई टूट न हो, उसकी सीमा बस उसका मान है: 3 × 2 + 1 = 7. यहाँ प्रतिस्थापन इसलिए चलता है कि फलन 2 पर संतत है — सीमाओं का पूरा विषय तभी रोचक होता है जब प्रतिस्थापन विफल हो, और आगे के प्रश्न उसी के हैं। (4 3 + 1 में रखकर x खो देता है।)",
+          mr: "ज्या पदावलीत खंड नाही, तिची सीमा म्हणजे फक्त तिचे मूल्य: 3 × 2 + 1 = 7. इथे प्रतिस्थापन यासाठी चालते की फलन 2 वर संतत आहे — सीमांचा अख्खा विषय तेव्हाच रोचक होतो जेव्हा प्रतिस्थापन अपयशी ठरते, आणि पुढचे प्रश्न त्याचेच आहेत. (4 3 + 1 मध्ये ठेवून x गमावते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the value of the derivative of x³ at x = 3?",
+          hi: "x = 3 पर x³ के अवकलज का मान क्या है?",
+          mr: "x = 3 वर x³ च्या अवकलजाचे मूल्य किती?",
+        },
+        answer: 27,
+        wrong: [9, 6, 81],
+        checkExpr: "3*3*3",
+        solution: {
+          en: "Differentiating xⁿ gives nxⁿ⁻¹, so the derivative of x³ is 3x², and at x = 3 that is 3 × 9 = 27. Bring the power down in front and reduce it by one — those two moves are the whole rule. (9 substitutes into x² and forgets to multiply by the 3 that came down.)",
+          hi: "xⁿ का अवकलन nxⁿ⁻¹ देता है, अतः x³ का अवकलज 3x² है, और x = 3 पर वह 3 × 9 = 27. घात को आगे नीचे लाओ और उसे एक घटाओ — यही दो चालें पूरा नियम हैं। (9 x² में रखकर नीचे आए 3 से गुणा करना भूल जाता है।)",
+          mr: "xⁿ चे अवकलन nxⁿ⁻¹ देते, म्हणून x³ चा अवकलज 3x² आहे, आणि x = 3 वर तो 3 × 9 = 27. घात पुढे खाली आणा आणि तिला एकने कमी करा — याच दोन खेळी अख्खा नियम. (9 x² मध्ये ठेवून खाली आलेल्या 3 ने गुणणे विसरते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the derivative of the constant function f(x) = 7?",
+          hi: "अचर फलन f(x) = 7 का अवकलज क्या है?",
+          mr: "स्थिर फलन f(x) = 7 चा अवकलज किती?",
+        },
+        answer: 0,
+        wrong: [7, 1, 14],
+        checkExpr: "7-7",
+        solution: {
+          en: "A derivative measures the rate at which the output changes, and a constant function never changes at all, so the answer is 0. Its graph is a horizontal line and the slope of a horizontal line is zero — the algebra and the picture agree exactly. (7 quotes the value of the function rather than its rate of change.)",
+          hi: "अवकलज मापता है कि निर्गम किस दर से बदलता है, और अचर फलन कभी बदलता ही नहीं, अतः उत्तर 0 है। उसका आलेख क्षैतिज रेखा है और क्षैतिज रेखा की ढाल शून्य है — बीजगणित और चित्र ठीक-ठीक सहमत हैं। (7 परिवर्तन की दर के बजाय फलन का मान बता देता है।)",
+          mr: "अवकलज मोजतो की निर्गम कोणत्या दराने बदलतो, आणि स्थिर फलन कधी बदलतच नाही, म्हणून उत्तर 0. त्याचा आलेख आडवी रेषा आहे आणि आडव्या रेषेची उतारी शून्य आहे — बीजगणित आणि चित्र नेमके सहमत आहेत. (7 बदलाच्या दराऐवजी फलनाचे मूल्य सांगते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the limit of (x² − 9)/(x − 3) as x approaches 3?",
+          hi: "जब x, 3 की ओर जाता है तो (x² − 9)/(x − 3) की सीमा क्या है?",
+          mr: "x हा 3 कडे जातो तेव्हा (x² − 9)/(x − 3) ची सीमा किती?",
+        },
+        answer: 6,
+        wrong: [0, 9, 3],
+        checkExpr: "3+3",
+        solution: {
+          en: "Substituting 3 gives 0/0, which is not a number and settles nothing. Factorise instead: (x − 3)(x + 3)/(x − 3) = x + 3 for every x except 3 itself, and as x approaches 3 that heads towards 6. The cancellation is legitimate precisely because a limit never asks about the value AT the point, only about the values near it. (0 reads 0/0 as zero.)",
+          hi: "3 रखने पर 0/0 मिलता है, जो कोई संख्या नहीं और कुछ तय नहीं करता। इसके बजाय गुणनखंड करो: (x − 3)(x + 3)/(x − 3) = x + 3, 3 को छोड़कर हर x के लिए, और x के 3 की ओर जाते ही वह 6 की ओर बढ़ता है। कटाई ठीक इसलिए वैध है कि सीमा कभी बिंदु पर मान नहीं पूछती, केवल उसके पास के मान पूछती है। (0 0/0 को शून्य पढ़ लेता है।)",
+          mr: "3 ठेवल्यावर 0/0 मिळते, जी संख्या नाही आणि काहीच ठरवत नाही. त्याऐवजी अवयव पाडा: (x − 3)(x + 3)/(x − 3) = x + 3, 3 वगळता प्रत्येक x साठी, आणि x हा 3 कडे जाताच ते 6 कडे सरकते. छेदन नेमके यासाठी वैध की सीमा कधीच बिंदूवरचे मूल्य विचारत नाही, केवळ त्याच्या जवळची मूल्ये विचारते. (0 0/0 ला शून्य वाचते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the value of the derivative of 5x² + 3x at x = 1?",
+          hi: "x = 1 पर 5x² + 3x के अवकलज का मान क्या है?",
+          mr: "x = 1 वर 5x² + 3x च्या अवकलजाचे मूल्य किती?",
+        },
+        answer: 13,
+        wrong: [8, 5, 3],
+        checkExpr: "10*1+3",
+        solution: {
+          en: "Differentiate term by term: 5x² gives 10x and 3x gives 3, so the derivative is 10x + 3, which at x = 1 is 13. Differentiation splits across a sum, so a long polynomial is never harder than its individual terms — only longer. (8 substitutes into the original expression instead of the derivative.)",
+          hi: "पद-दर-पद अवकलन करो: 5x² देता है 10x और 3x देता है 3, अतः अवकलज 10x + 3 है, जो x = 1 पर 13. अवकलन योग पर बँट जाता है, अतः लंबा बहुपद अपने अलग-अलग पदों से कभी कठिन नहीं, केवल लंबा होता है। (8 अवकलज के बजाय मूल व्यंजक में रख देता है।)",
+          mr: "पद-दर-पद अवकलन करा: 5x² देते 10x आणि 3x देते 3, म्हणून अवकलज 10x + 3, जो x = 1 वर 13. अवकलन बेरजेवर विभागते, म्हणून लांब बहुपदी आपल्या वेगवेगळ्या पदांहून कधीच कठीण नाही, केवळ लांब असते. (8 अवकलजाऐवजी मूळ पदावलीत ठेवते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the limit of (sin x)/x as x approaches 0, with x in radians?",
+          hi: "जब x, 0 की ओर जाता है तो (sin x)/x की सीमा क्या है, जहाँ x रेडियन में है?",
+          mr: "x हा 0 कडे जातो तेव्हा (sin x)/x ची सीमा किती, जिथे x रेडियनमध्ये आहे?",
+        },
+        answer: 1,
+        wrong: [0, 2, 0.5],
+        checkExpr: "2-1",
+        solution: {
+          en: "Substitution again gives 0/0, but the value is 1 — for a small angle the sine and the angle itself are almost identical, and the smaller the angle the closer they get. Try it: at 0.1 radians the sine is 0.0998, and at 0.01 it is 0.0099998. The result holds only in radians, which is the real reason radians are the unit of choice in calculus. (0 reads 0/0 as zero once more.)",
+          hi: "प्रतिस्थापन फिर 0/0 देता है, पर मान 1 है — छोटे कोण के लिए ज्या और कोण स्वयं लगभग एक ही हैं, और कोण जितना छोटा वे उतने ही पास। आज़माओ: 0.1 रेडियन पर ज्या 0.0998 है, और 0.01 पर 0.0099998. परिणाम केवल रेडियन में चलता है, और कलन में रेडियन को ही मात्रक चुनने का असली कारण यही है। (0 फिर 0/0 को शून्य पढ़ लेता है।)",
+          mr: "प्रतिस्थापन पुन्हा 0/0 देते, पण मूल्य 1 आहे — लहान कोनासाठी ज्या आणि कोन स्वतः जवळपास एकच आहेत, आणि कोन जितका लहान ते तितके जवळ. आजमावा: 0.1 रेडियनवर ज्या 0.0998 आहे, आणि 0.01 वर 0.0099998. निकाल केवळ रेडियनमध्ये चालतो, आणि कलनात रेडियनलाच एकक निवडण्याचे खरे कारण हेच. (0 पुन्हा 0/0 ला शून्य वाचते.)",
+        },
+      },
+      rand,
+    ),
+  );
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is the value of the derivative of x² + 3x + 2 at x = 3?",
+          hi: "x = 3 पर x² + 3x + 2 के अवकलज का मान क्या है?",
+          mr: "x = 3 वर x² + 3x + 2 च्या अवकलजाचे मूल्य किती?",
+        },
+        answer: 9,
+        wrong: [6, 11, 15],
+        checkExpr: "2*3+3",
+        solution: {
+          en: "The derivative is 2x + 3, and at x = 3 that is 9. The constant 2 has vanished, and that is worth pausing on: shifting a whole curve up or down does not change how steep it is anywhere, so every constant differentiates away. Two curves differing only by a constant have identical derivatives everywhere. (15 substitutes 3 into the original expression instead of the derivative.)",
+          hi: "अवकलज 2x + 3 है, और x = 3 पर वह 9. अचर 2 ग़ायब हो गया, और उस पर ठहरने योग्य है: पूरी वक्र को ऊपर या नीचे खिसकाने से वह कहीं भी अधिक या कम तीव्र नहीं होती, अतः हर अचर अवकलन में मिट जाता है। केवल अचर से भिन्न दो वक्रों के अवकलज हर जगह एक जैसे होते हैं। (15 अवकलज के बजाय मूल व्यंजक में 3 रख देता है।)",
+          mr: "अवकलज 2x + 3 आहे, आणि x = 3 वर तो 9. स्थिरांक 2 नाहीसा झाला, आणि त्यावर थांबण्याजोगे: अख्खी वक्र वर वा खाली सरकवल्याने ती कुठेही अधिक वा कमी तीव्र होत नाही, म्हणून प्रत्येक स्थिरांक अवकलनात मिटतो. केवळ स्थिरांकाने वेगळ्या असलेल्या दोन वक्रांचे अवकलज सर्वत्र सारखे असतात. (15 अवकलजाऐवजी मूळ पदावलीत 3 ठेवते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is the limit of (x³ − 8)/(x − 2) as x approaches 2?",
+          hi: "जब x, 2 की ओर जाता है तो (x³ − 8)/(x − 2) की सीमा क्या है?",
+          mr: "x हा 2 कडे जातो तेव्हा (x³ − 8)/(x − 2) ची सीमा किती?",
+        },
+        answer: 12,
+        wrong: [8, 6, 4],
+        checkExpr: "3*2*2",
+        solution: {
+          en: "Factorising the difference of cubes gives (x − 2)(x² + 2x + 4)/(x − 2) = x² + 2x + 4, which at x = 2 is 4 + 4 + 4 = 12. There is a shortcut worth learning: the limit of (xⁿ − aⁿ)/(x − a) as x approaches a is always n·aⁿ⁻¹, which here is 3 × 2² = 12 with no factorising at all. Notice that this is also the derivative of x³ at x = 2 — the standard limit IS the definition of a derivative in disguise. (8 substitutes 2 into x³ and stops.)",
+          hi: "घनों के अंतर का गुणनखंड करने पर (x − 2)(x² + 2x + 4)/(x − 2) = x² + 2x + 4, जो x = 2 पर 4 + 4 + 4 = 12. एक शॉर्टकट सीखने योग्य है: x के a की ओर जाने पर (xⁿ − aⁿ)/(x − a) की सीमा सदा n·aⁿ⁻¹ है, जो यहाँ बिना गुणनखंड किए 3 × 2² = 12. ध्यान दो कि यह x = 2 पर x³ का अवकलज भी है — मानक सीमा भेस बदले अवकलज की परिभाषा ही है। (8 x³ में 2 रखकर रुक जाता है।)",
+          mr: "घनांच्या फरकाचे अवयव पाडल्यावर (x − 2)(x² + 2x + 4)/(x − 2) = x² + 2x + 4, जे x = 2 वर 4 + 4 + 4 = 12. एक शॉर्टकट शिकण्याजोगा: x हा a कडे जाताना (xⁿ − aⁿ)/(x − a) ची सीमा नेहमी n·aⁿ⁻¹ आहे, जी इथे अवयव न पाडता 3 × 2² = 12. लक्षात घ्या की हा x = 2 वरचा x³ चा अवकलजही आहे — प्रमाण सीमा ही वेष बदललेली अवकलजाची व्याख्याच आहे. (8 x³ मध्ये 2 ठेवून थांबते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "If f(x) = (2x + 1)(x + 3), what is f′(1)?",
+          hi: "यदि f(x) = (2x + 1)(x + 3), तो f′(1) क्या है?",
+          mr: "जर f(x) = (2x + 1)(x + 3), तर f′(1) किती?",
+        },
+        answer: 11,
+        wrong: [7, 4, 3],
+        checkExpr: "4*1+7",
+        solution: {
+          en: "By the product rule, f′ = 2(x + 3) + (2x + 1)(1) = 4x + 7, so f′(1) = 11. Expanding first is just as good here: f(x) = 2x² + 7x + 3 differentiates to 4x + 7, the same answer by a different road. That agreement is the check worth making, because the commonest error is to differentiate each bracket and multiply the results — which would give 2 × 1 = 2 and is simply not what the product rule says. (4 multiplies the two derivatives together.)",
+          hi: "गुणनफल नियम से f′ = 2(x + 3) + (2x + 1)(1) = 4x + 7, अतः f′(1) = 11. यहाँ पहले खोल देना भी उतना ही अच्छा है: f(x) = 2x² + 7x + 3 का अवकलन 4x + 7 देता है, वही उत्तर दूसरे रास्ते से। वह सहमति ही करने योग्य जाँच है, क्योंकि सबसे आम भूल है हर कोष्ठक का अवकलन करके परिणाम गुणा कर देना — जो 2 × 1 = 2 देता और गुणनफल नियम वह कहता ही नहीं। (4 दोनों अवकलज आपस में गुणा कर देता है।)",
+          mr: "गुणाकार नियमाने f′ = 2(x + 3) + (2x + 1)(1) = 4x + 7, म्हणून f′(1) = 11. इथे आधी उलगडणेही तितकेच चांगले: f(x) = 2x² + 7x + 3 चे अवकलन 4x + 7 देते, तेच उत्तर दुसऱ्या मार्गाने. ती सहमतीच करण्याजोगी तपासणी, कारण सर्वांत सामान्य चूक म्हणजे प्रत्येक कंसाचे अवकलन करून निकाल गुणणे — जे 2 × 1 = 2 दिले असते आणि गुणाकार नियम ते सांगतच नाही. (4 दोन्ही अवकलज एकमेकांशी गुणते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "If f(x) = x²/(x + 1), what is f′(1)?",
+          hi: "यदि f(x) = x²/(x + 1), तो f′(1) क्या है?",
+          mr: "जर f(x) = x²/(x + 1), तर f′(1) किती?",
+        },
+        answer: 0.75,
+        wrong: [0.5, 1.5, 2],
+        checkExpr: "(2*1*(1+1)-1*1)/((1+1)*(1+1))",
+        solution: {
+          en: "The quotient rule gives f′ = [2x(x + 1) − x²]/(x + 1)². At x = 1 the top is 2 × 2 − 1 = 3 and the bottom is 4, so f′(1) = 3/4 = 0.75. The order on top matters — it is derivative of the numerator times the denominator MINUS the numerator times the derivative of the denominator, and reversing those two flips the sign of the whole answer. Unlike a product, a quotient cannot be rewritten to avoid the rule here, since x²/(x + 1) does not simplify. (2 divides the two derivatives, 2x by 1, which is not a rule at all.)",
+          hi: "भागफल नियम देता है f′ = [2x(x + 1) − x²]/(x + 1)². x = 1 पर ऊपर 2 × 2 − 1 = 3 और नीचे 4, अतः f′(1) = 3/4 = 0.75. ऊपर का क्रम मायने रखता है — वह अंश का अवकलज गुणा हर, घटा अंश गुणा हर का अवकलज है, और दोनों उलटने पर पूरा उत्तर चिह्न बदल लेता है। गुणनफल के विपरीत, यहाँ भागफल को नियम से बचने के लिए फिर से नहीं लिखा जा सकता, क्योंकि x²/(x + 1) सरल होता ही नहीं। (2 दोनों अवकलज भाग दे देता है, 2x बटा 1, जो कोई नियम है ही नहीं।)",
+          mr: "भागाकार नियम देतो f′ = [2x(x + 1) − x²]/(x + 1)². x = 1 वर वर 2 × 2 − 1 = 3 आणि खाली 4, म्हणून f′(1) = 3/4 = 0.75. वरचा क्रम महत्त्वाचा — तो अंशाचा अवकलज गुणिले छेद, वजा अंश गुणिले छेदाचा अवकलज, आणि दोन्ही उलटवल्यास अख्खे उत्तर चिन्ह बदलते. गुणाकाराच्या उलट, इथे भागाकार नियम टाळण्यासाठी पुन्हा लिहिता येत नाही, कारण x²/(x + 1) सोपे होतच नाही. (2 दोन्ही अवकलज भागते, 2x भागिले 1, जो नियमच नाही.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "What is the limit of (√(1 + x) − 1)/x as x approaches 0?",
+          hi: "जब x, 0 की ओर जाता है तो (√(1 + x) − 1)/x की सीमा क्या है?",
+          mr: "x हा 0 कडे जातो तेव्हा (√(1 + x) − 1)/x ची सीमा किती?",
+        },
+        answer: 0.5,
+        wrong: [0, 1, 2],
+        checkExpr: "1/2",
+        solution: {
+          en: "Substituting gives 0/0 again, and factorising will not help because of the root. Multiply top and bottom by the conjugate √(1 + x) + 1 instead: the numerator becomes (1 + x) − 1 = x, which cancels the x below, leaving 1/(√(1 + x) + 1). Now substitution is safe and gives 1/2 = 0.5. Rationalising is the standard move whenever a root sits inside a 0/0 limit, and it works for the same reason the difference of two squares does. A useful check: 0.5 is also the derivative of √(1 + x) at x = 0, which is what this limit was measuring all along. (1 assumes the root and the 1 cancel directly.)",
+          hi: "प्रतिस्थापन फिर 0/0 देता है, और मूल के कारण गुणनखंड करना काम नहीं आएगा। इसके बजाय ऊपर-नीचे संयुग्मी √(1 + x) + 1 से गुणा करो: अंश बनता है (1 + x) − 1 = x, जो नीचे का x काट देता है, और 1/(√(1 + x) + 1) बचता है। अब प्रतिस्थापन सुरक्षित है और 1/2 = 0.5 देता है। जब भी कोई मूल 0/0 सीमा के भीतर बैठा हो तब परिमेयकरण मानक चाल है, और वह उसी कारण चलती है जिससे दो वर्गों का अंतर। एक उपयोगी जाँच: 0.5 x = 0 पर √(1 + x) का अवकलज भी है, और यह सीमा शुरू से वही माप रही थी। (1 मान लेता है कि मूल और 1 सीधे कट जाते हैं।)",
+          mr: "प्रतिस्थापन पुन्हा 0/0 देते, आणि मुळामुळे अवयव पाडणे उपयोगी पडणार नाही. त्याऐवजी वर-खाली संयुग्मी √(1 + x) + 1 ने गुणा: अंश बनतो (1 + x) − 1 = x, जो खालचा x छेदतो, आणि 1/(√(1 + x) + 1) उरते. आता प्रतिस्थापन सुरक्षित आहे आणि 1/2 = 0.5 देते. जेव्हा जेव्हा एखादे मूळ 0/0 सीमेच्या आत बसलेले असते तेव्हा परिमेयीकरण ही प्रमाण खेळी, आणि ती त्याच कारणाने चालते ज्याने दोन वर्गांचा फरक. एक उपयुक्त तपासणी: 0.5 हा x = 0 वरचा √(1 + x) चा अवकलजही आहे, आणि ही सीमा सुरुवातीपासून तेच मोजत होती. (1 गृहीत धरते की मूळ आणि 1 थेट छेदतात.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "For f(x) = x³ − 12x, at which POSITIVE value of x is f′(x) = 0?",
+          hi: "f(x) = x³ − 12x के लिए x के किस धनात्मक मान पर f′(x) = 0 है?",
+          mr: "f(x) = x³ − 12x साठी x च्या कोणत्या धन मूल्यावर f′(x) = 0 आहे?",
+        },
+        answer: 2,
+        wrong: [4, 12, 6],
+        checkExpr: "12/6",
+        solution: {
+          en: "Differentiate: f′(x) = 3x² − 12. Setting it to zero gives 3x² = 12, so x² = 4 and x = ±2, of which the positive value is 2. What the answer means is worth stating: at x = 2 the curve is momentarily flat, which is where a turning point sits — a maximum, a minimum or a point of inflection. Solving f′ = 0 is how every optimisation problem begins, from the largest box that can be cut from a sheet to the cheapest tin that holds a litre. (4 gives x², stopping one step before taking the root.)",
+          hi: "अवकलन करो: f′(x) = 3x² − 12. उसे शून्य रखने पर 3x² = 12, अतः x² = 4 और x = ±2, जिनमें धनात्मक मान 2 है। उत्तर का अर्थ कहने योग्य है: x = 2 पर वक्र क्षण भर के लिए चपटी है, और वहीं कोई मोड़-बिंदु बैठता है — उच्चिष्ठ, निम्निष्ठ या नति-परिवर्तन बिंदु। f′ = 0 हल करना ही हर उच्चतमीकरण समस्या की शुरुआत है, उस सबसे बड़े डिब्बे से लेकर जो किसी चादर से काटा जा सके, उस सबसे सस्ते टिन तक जो एक लीटर रखे। (4 x² देता है, मूल लेने से एक क़दम पहले रुककर।)",
+          mr: "अवकलन करा: f′(x) = 3x² − 12. ते शून्य ठेवल्यावर 3x² = 12, म्हणून x² = 4 आणि x = ±2, ज्यांतले धन मूल्य 2. उत्तराचा अर्थ सांगण्याजोगा: x = 2 वर वक्र क्षणभर सपाट आहे, आणि तिथेच एखादा वळण-बिंदू बसतो — कमाल, किमान वा नती-बदल बिंदू. f′ = 0 सोडवणे हीच प्रत्येक इष्टतमीकरण समस्येची सुरुवात, एखाद्या पत्र्यातून कापता येणाऱ्या सर्वांत मोठ्या पेटीपासून ते एक लिटर धरणाऱ्या सर्वांत स्वस्त डब्यापर्यंत. (4 x² देते, मूळ घेण्याच्या एक पाऊल आधी थांबून.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "What is the limit of (x⁴ − 16)/(x − 2) as x approaches 2?",
+          hi: "जब x, 2 की ओर जाता है तो (x⁴ − 16)/(x − 2) की सीमा क्या है?",
+          mr: "x हा 2 कडे जातो तेव्हा (x⁴ − 16)/(x − 2) ची सीमा किती?",
+        },
+        answer: 32,
+        wrong: [16, 8, 24],
+        checkExpr: "4*2*2*2",
+        solution: {
+          en: "Use the standard limit: (xⁿ − aⁿ)/(x − a) tends to n·aⁿ⁻¹, so here it is 4 × 2³ = 32. Factorising by hand gives the same thing the long way — x⁴ − 16 = (x − 2)(x³ + 2x² + 4x + 8), and substituting 2 into that cubic gives 8 + 8 + 8 + 8 = 32. The two routes agreeing is the check. It is worth seeing what the result really is: this limit is precisely the derivative of x⁴ evaluated at 2, which is why the standard limit and the power rule are the same statement written twice. (16 substitutes 2 into x⁴ and never divides.)",
+          hi: "मानक सीमा लो: (xⁿ − aⁿ)/(x − a) n·aⁿ⁻¹ की ओर जाती है, अतः यहाँ वह 4 × 2³ = 32. हाथ से गुणनखंड करने पर लंबे रास्ते से वही मिलता है — x⁴ − 16 = (x − 2)(x³ + 2x² + 4x + 8), और उस त्रिघात में 2 रखने पर 8 + 8 + 8 + 8 = 32. दोनों रास्तों का सहमत होना ही जाँच है। परिणाम वस्तुतः क्या है यह देखने योग्य है: यह सीमा ठीक 2 पर आँका गया x⁴ का अवकलज है, इसीलिए मानक सीमा और घात नियम एक ही कथन दो बार लिखा हुआ हैं। (16 x⁴ में 2 रखकर भाग देता ही नहीं।)",
+          mr: "प्रमाण सीमा घ्या: (xⁿ − aⁿ)/(x − a) ही n·aⁿ⁻¹ कडे जाते, म्हणून इथे ती 4 × 2³ = 32. हाताने अवयव पाडल्यावर लांब मार्गाने तेच मिळते — x⁴ − 16 = (x − 2)(x³ + 2x² + 4x + 8), आणि त्या त्रिघातात 2 ठेवल्यावर 8 + 8 + 8 + 8 = 32. दोन्ही मार्ग सहमत असणे हीच तपासणी. निकाल प्रत्यक्षात काय आहे हे पाहण्याजोगे: ही सीमा नेमका 2 वर मोजलेला x⁴ चा अवकलज आहे, म्हणूनच प्रमाण सीमा आणि घात नियम हे एकच विधान दोनदा लिहिलेले आहे. (16 x⁴ मध्ये 2 ठेवते आणि भागतच नाही.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A particle moves so that its distance is s = 2t² + 5t metres after t seconds. What is its velocity, in metres per second, at t = 3?",
+          hi: "कोई कण ऐसे चलता है कि t सेकंड बाद उसकी दूरी s = 2t² + 5t मीटर है। t = 3 पर उसका वेग मीटर प्रति सेकंड में क्या है?",
+          mr: "एक कण असा चालतो की t सेकंदांनी त्याचे अंतर s = 2t² + 5t मीटर आहे. t = 3 वर त्याचा वेग मीटर प्रति सेकंदात किती?",
+        },
+        answer: 17,
+        wrong: [12, 33, 11],
+        checkExpr: "4*3+5",
+        solution: {
+          en: "Velocity is the derivative of distance with respect to time: ds/dt = 4t + 5, which at t = 3 gives 17 m/s. This is the whole reason derivatives were invented, so it is worth separating two ideas that are easy to confuse. The AVERAGE velocity over the first 3 seconds is total distance over total time: s(3) = 33, so 33/3 = 11 m/s. The INSTANTANEOUS velocity at the moment t = 3 is 17 m/s, and it is larger because the particle has been speeding up throughout. Only a limit can give the second number — dividing distance by time always produces an average over an interval, and shrinking the interval to nothing is exactly what a derivative does. (11 gives the average velocity over the first three seconds instead of the velocity at that instant.)",
+          hi: "वेग समय के सापेक्ष दूरी का अवकलज है: ds/dt = 4t + 5, जो t = 3 पर 17 m/s देता है। अवकलज गढ़े ही इसीलिए गए थे, अतः दो विचारों को अलग करना उचित है जिन्हें गड्डमड्ड करना आसान है। पहले 3 सेकंड का औसत वेग कुल दूरी बटा कुल समय है: s(3) = 33, अतः 33/3 = 11 m/s. t = 3 के क्षण पर तात्क्षणिक वेग 17 m/s है, और वह बड़ा है क्योंकि कण पूरे समय तेज़ होता रहा है। दूसरी संख्या केवल सीमा दे सकती है — दूरी को समय से भाग देना सदा किसी अंतराल का औसत बनाता है, और अंतराल को शून्य तक सिकोड़ना ही वह है जो अवकलज करता है। (11 उस क्षण के वेग के बजाय पहले तीन सेकंड का औसत वेग देता है।)",
+          mr: "वेग म्हणजे काळाच्या सापेक्ष अंतराचा अवकलज: ds/dt = 4t + 5, जो t = 3 वर 17 m/s देतो. अवकलज घडवलेच यासाठी होते, म्हणून गोंधळायला सोप्या दोन कल्पना वेगळ्या करणे योग्य. पहिल्या 3 सेकंदांचा सरासरी वेग म्हणजे एकूण अंतर भागिले एकूण काळ: s(3) = 33, म्हणून 33/3 = 11 m/s. t = 3 या क्षणीचा तात्कालिक वेग 17 m/s आहे, आणि तो मोठा आहे कारण कण अख्खा वेळ वेगवान होत गेला आहे. दुसरी संख्या केवळ सीमाच देऊ शकते — अंतराला काळाने भागणे नेहमी एखाद्या अंतरावरची सरासरी बनवते, आणि अंतर शून्यापर्यंत आकसवणे हेच अवकलज करतो. (11 त्या क्षणीच्या वेगाऐवजी पहिल्या तीन सेकंदांचा सरासरी वेग देते.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-11-limits-and-derivatives",
+      subject: "MATHS",
+      classLevel: 11,
+      chapter: "Chapter 12 — Limits and Derivatives",
+      name: "Limits and Derivatives",
+      summary:
+        "Asking what a function is heading towards rather than what it equals — which is the only way to give a meaning to zero divided by zero, and therefore the only way to measure a rate at a single instant rather than over an interval.",
+      position: 12,
+      translations: {
+        hi: {
+          name: "सीमा और अवकलज",
+          summary:
+            "यह पूछना कि फलन किस ओर जा रहा है, यह नहीं कि वह बराबर क्या है — और शून्य बटा शून्य को अर्थ देने का यही इकलौता रास्ता है, अतः किसी अंतराल पर नहीं बल्कि एक ही क्षण पर दर मापने का भी यही इकलौता रास्ता।",
+        },
+        mr: {
+          name: "सीमा आणि अवकलज",
+          summary:
+            "फलन कोणत्या दिशेने जाते आहे हे विचारणे, ते बरोबर काय आहे हे नव्हे — आणि शून्य भागिले शून्य याला अर्थ देण्याचा हाच एकमेव मार्ग, म्हणून एखाद्या अंतरावर नव्हे तर एकाच क्षणी दर मोजण्याचाही हाच एकमेव मार्ग.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 13 — Statistics (how spread out, not where the middle is)         */
+/* ------------------------------------------------------------------------- */
+function statistics11(): TopicFileOut {
+  const rand = rng("maths-11-statistics");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the range of the data 3, 7, 12, 5, 20?",
+          hi: "आँकड़ों 3, 7, 12, 5, 20 का परिसर क्या है?",
+          mr: "माहिती 3, 7, 12, 5, 20 चा पल्ला किती?",
+        },
+        answer: 17,
+        wrong: [20, 23, 12],
+        checkExpr: "20-3",
+        solution: {
+          en: "The range is the largest value minus the smallest: 20 − 3 = 17. It is the crudest measure of spread there is, because it uses only two of the five numbers and would not notice if everything in between were rearranged — which is exactly why the chapter goes on to build better ones. (20 quotes the largest value rather than the difference.)",
+          hi: "परिसर सबसे बड़े मान में से सबसे छोटा घटाकर मिलता है: 20 − 3 = 17. यह फैलाव की सबसे कच्ची माप है, क्योंकि वह पाँच में से केवल दो संख्याएँ काम में लेती है और बीच का सब कुछ फिर से जमा दिया जाए तो उसे पता ही नहीं चलेगा — ठीक इसीलिए अध्याय आगे बेहतर मापें बनाता है। (20 अंतर के बजाय सबसे बड़ा मान बता देता है।)",
+          mr: "पल्ला म्हणजे सर्वांत मोठे मूल्य वजा सर्वांत लहान: 20 − 3 = 17. हे विखुरलेपणाचे सर्वांत ओबडधोबड माप, कारण ते पाचांपैकी केवळ दोन संख्या वापरते आणि मधले सारे पुन्हा मांडले तरी त्याला कळणारच नाही — नेमके म्हणूनच प्रकरण पुढे अधिक चांगली मापे बांधते. (20 फरकाऐवजी सर्वांत मोठे मूल्य सांगते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the mean of 2, 4, 6, 8 and 10?",
+          hi: "2, 4, 6, 8 और 10 का माध्य क्या है?",
+          mr: "2, 4, 6, 8 आणि 10 चा माध्य किती?",
+        },
+        answer: 6,
+        wrong: [5, 30, 8],
+        checkExpr: "(2+4+6+8+10)/5",
+        solution: {
+          en: "Add and divide by how many there are: 30/5 = 6. Because these values are evenly spaced, the mean is also the middle one, which is a useful check whenever the data form a regular ladder. (30 gives the total and forgets to divide.)",
+          hi: "जोड़ो और कितनी हैं उससे भाग दो: 30/5 = 6. चूँकि ये मान बराबर दूरी पर हैं, माध्य बीच वाला भी है, और जब भी आँकड़े नियमित सीढ़ी बनाएँ तब यह उपयोगी जाँच है। (30 कुल देता है और भाग देना भूल जाता है।)",
+          mr: "जोडा आणि किती आहेत त्याने भागा: 30/5 = 6. ही मूल्ये समान अंतरावर असल्याने, माध्य हा मधलाही आहे, आणि माहिती नियमित शिडी बनवते तेव्हा ही उपयुक्त तपासणी. (30 एकूण देते आणि भागणे विसरते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The variance of a set of observations is 25. What is the standard deviation?",
+          hi: "प्रेक्षणों के किसी समुच्चय का प्रसरण 25 है। मानक विचलन क्या है?",
+          mr: "निरीक्षणांच्या एका संचाचे विचरण 25 आहे. प्रमाण विचलन किती?",
+        },
+        answer: 5,
+        wrong: [25, 12.5, 625],
+        checkExpr: "25/5",
+        solution: {
+          en: "The standard deviation is the square root of the variance: √25 = 5. The root is not decoration — squaring the deviations changed their units, so a variance of marks is in marks squared, and only the root brings the answer back to the units of the original data. (625 squares the variance instead of rooting it.)",
+          hi: "मानक विचलन प्रसरण का वर्गमूल है: √25 = 5. मूल सजावट नहीं — विचलनों का वर्ग करने से उनके मात्रक बदल गए, अतः अंकों का प्रसरण अंक-वर्ग में होता है, और केवल मूल ही उत्तर को मूल आँकड़ों के मात्रकों में लौटाता है। (625 प्रसरण का मूल लेने के बजाय उसका वर्ग कर देता है।)",
+          mr: "प्रमाण विचलन म्हणजे विचरणाचे वर्गमूळ: √25 = 5. मूळ ही सजावट नाही — विचलनांचा वर्ग केल्याने त्यांची एकके बदलली, म्हणून गुणांचे विचरण गुण-वर्गात असते, आणि केवळ मूळच उत्तराला मूळ माहितीच्या एककांत परत आणते. (625 विचरणाचे मूळ घेण्याऐवजी त्याचा वर्ग करते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the mean deviation about the mean for the data 2, 4, 6, 8?",
+          hi: "आँकड़ों 2, 4, 6, 8 का माध्य से माध्य विचलन क्या है?",
+          mr: "माहिती 2, 4, 6, 8 चे माध्यापासूनचे माध्य विचलन किती?",
+        },
+        answer: 2,
+        wrong: [4, 8, 5],
+        checkExpr: "(3+1+1+3)/4",
+        solution: {
+          en: "The mean is 5, so the deviations are −3, −1, 1 and 3. Taken without their signs they are 3, 1, 1 and 3, adding to 8, and 8/4 = 2. Dropping the signs is compulsory rather than convenient: the signed deviations from a mean always add to exactly zero, so without that step every data set in the world would have a mean deviation of nothing at all. (5 quotes the mean of the data instead of the mean deviation.)",
+          hi: "माध्य 5 है, अतः विचलन −3, −1, 1 और 3 हैं। चिह्नों के बिना वे 3, 1, 1 और 3 हैं, जो जुड़कर 8 बनते हैं, और 8/4 = 2. चिह्न गिराना सुविधा नहीं, अनिवार्यता है: माध्य से चिह्नित विचलन सदा ठीक शून्य बनते हैं, अतः उस चरण के बिना दुनिया के हर आँकड़ा-समुच्चय का माध्य विचलन शून्य ही होता। (5 माध्य विचलन के बजाय आँकड़ों का माध्य बता देता है।)",
+          mr: "माध्य 5 आहे, म्हणून विचलने −3, −1, 1 आणि 3 आहेत. चिन्हांविना ती 3, 1, 1 आणि 3 आहेत, जी जुळून 8 बनतात, आणि 8/4 = 2. चिन्हे गाळणे ही सोय नव्हे, सक्ती आहे: माध्यापासूनची चिन्हांकित विचलने नेहमी नेमकी शून्य बनतात, म्हणून त्या पायरीविना जगातल्या प्रत्येक माहिती-संचाचे माध्य विचलन शून्यच झाले असते. (5 माध्य विचलनाऐवजी माहितीचा माध्य सांगते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "The standard deviation of a set of observations is 4. What is the variance?",
+          hi: "प्रेक्षणों के किसी समुच्चय का मानक विचलन 4 है। प्रसरण क्या है?",
+          mr: "निरीक्षणांच्या एका संचाचे प्रमाण विचलन 4 आहे. विचरण किती?",
+        },
+        answer: 16,
+        wrong: [2, 8, 4],
+        checkExpr: "4*4",
+        solution: {
+          en: "The variance is the square of the standard deviation: 4² = 16. Compare this with the previous pair of questions and the relationship is one step in either direction — square to go from deviation to variance, take the root to come back. (2 takes the square root, going the wrong way.)",
+          hi: "प्रसरण मानक विचलन का वर्ग है: 4² = 16. इसकी पिछले प्रश्नों से तुलना करो और संबंध किसी भी दिशा में एक ही क़दम है — विचलन से प्रसरण तक जाने को वर्ग, लौटने को मूल। (2 वर्गमूल ले लेता है, ग़लत दिशा में जाकर।)",
+          mr: "विचरण म्हणजे प्रमाण विचलनाचा वर्ग: 4² = 16. याची मागच्या प्रश्नांशी तुलना करा आणि संबंध कोणत्याही दिशेने एकच पाऊल आहे — विचलनापासून विचरणापर्यंत जाण्यास वर्ग, परतण्यास मूळ. (2 वर्गमूळ घेते, चुकीच्या दिशेने जाऊन.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "The mean of 5 observations is 20. What is their total?",
+          hi: "5 प्रेक्षणों का माध्य 20 है। उनका कुल योग क्या है?",
+          mr: "5 निरीक्षणांचा माध्य 20 आहे. त्यांची एकूण बेरीज किती?",
+        },
+        answer: 100,
+        wrong: [4, 25, 20],
+        checkExpr: "5*20",
+        solution: {
+          en: "Mean equals total divided by count, so total equals mean times count: 5 × 20 = 100. Running the definition backwards like this is what makes the harder questions later in the chapter possible — a mean is a promise about a total, and recovering that total is nearly always the first step. (4 divides the count by the mean.)",
+          hi: "माध्य बराबर कुल बटा गिनती, अतः कुल बराबर माध्य गुणा गिनती: 5 × 20 = 100. परिभाषा को यों उलटा चलाना ही अध्याय के आगे के कठिन प्रश्नों को संभव बनाता है — माध्य कुल के बारे में एक वादा है, और उस कुल को वापस निकालना लगभग सदा पहला चरण होता है। (4 गिनती को माध्य से भाग दे देता है।)",
+          mr: "माध्य बरोबर एकूण भागिले मोजणी, म्हणून एकूण बरोबर माध्य गुणिले मोजणी: 5 × 20 = 100. व्याख्या अशी उलटी चालवणेच प्रकरणातले पुढचे कठीण प्रश्न शक्य करते — माध्य हे एकूणाबद्दलचे वचन आहे, आणि ते एकूण परत काढणे जवळपास नेहमीच पहिली पायरी. (4 मोजणीला माध्याने भागते.)",
+        },
+      },
+      rand,
+    ),
+  );
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is the variance of the data 1, 3, 5, 7?",
+          hi: "आँकड़ों 1, 3, 5, 7 का प्रसरण क्या है?",
+          mr: "माहिती 1, 3, 5, 7 चे विचरण किती?",
+        },
+        answer: 5,
+        wrong: [4, 20, 2.5],
+        checkExpr: "(9+1+1+9)/4",
+        solution: {
+          en: "The mean is 4, so the deviations are −3, −1, 1 and 3. Square them to get 9, 1, 1 and 9, add to 20, and divide by 4: the variance is 5. Squaring rather than dropping signs is what makes this a variance and not a mean deviation, and it has a consequence — squaring gives extra weight to the values furthest from the mean, so one wild reading moves the variance far more than it moves the mean deviation. (20 gives the sum of the squares and forgets to divide.)",
+          hi: "माध्य 4 है, अतः विचलन −3, −1, 1 और 3 हैं। उनका वर्ग करके 9, 1, 1 और 9 पाओ, जोड़कर 20, और 4 से भाग दो: प्रसरण 5. चिह्न गिराने के बजाय वर्ग करना ही इसे प्रसरण बनाता है, माध्य विचलन नहीं, और उसका एक परिणाम है — वर्ग करना माध्य से सबसे दूर के मानों को अतिरिक्त भार देता है, अतः एक बेतुका पाठ प्रसरण को माध्य विचलन से कहीं अधिक हिला देता है। (20 वर्गों का योग देता है और भाग देना भूल जाता है।)",
+          mr: "माध्य 4 आहे, म्हणून विचलने −3, −1, 1 आणि 3 आहेत. त्यांचा वर्ग करून 9, 1, 1 आणि 9 मिळवा, जोडून 20, आणि 4 ने भागा: विचरण 5. चिन्हे गाळण्याऐवजी वर्ग करणेच याला विचरण बनवते, माध्य विचलन नव्हे, आणि त्याचा एक परिणाम आहे — वर्ग करणे माध्यापासून सर्वांत दूरच्या मूल्यांना अधिकचा भार देते, म्हणून एक विचित्र नोंद विचरणाला माध्य विचलनाहून कितीतरी अधिक हलवते. (20 वर्गांची बेरीज देते आणि भागणे विसरते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is the variance of the data 2, 4, 6, 8, 10?",
+          hi: "आँकड़ों 2, 4, 6, 8, 10 का प्रसरण क्या है?",
+          mr: "माहिती 2, 4, 6, 8, 10 चे विचरण किती?",
+        },
+        answer: 8,
+        wrong: [40, 6, 4],
+        checkExpr: "(16+4+0+4+16)/5",
+        solution: {
+          en: "The mean is 6, so the squared deviations are 16, 4, 0, 4 and 16, adding to 40, and 40/5 = 8. Compare with the previous question: that data set was spaced 2 apart and had variance 5; this one is also spaced 2 apart but has one more value at each end, so the spread is wider and the variance larger. The variance really is measuring what it claims to. (6 quotes the mean instead of the variance.)",
+          hi: "माध्य 6 है, अतः वर्ग किए विचलन 16, 4, 0, 4 और 16 हैं, जो जुड़कर 40, और 40/5 = 8. पिछले प्रश्न से तुलना करो: वह समुच्चय भी 2 की दूरी पर था और उसका प्रसरण 5 था; यह भी 2 की दूरी पर है पर हर सिरे पर एक मान अधिक है, अतः फैलाव चौड़ा और प्रसरण बड़ा। प्रसरण सचमुच वही माप रहा है जिसका वह दावा करता है। (6 प्रसरण के बजाय माध्य बता देता है।)",
+          mr: "माध्य 6 आहे, म्हणून वर्ग केलेली विचलने 16, 4, 0, 4 आणि 16 आहेत, जी जुळून 40, आणि 40/5 = 8. मागच्या प्रश्नाशी तुलना करा: तो संचही 2 अंतरावर होता आणि त्याचे विचरण 5 होते; हाही 2 अंतरावर आहे पण प्रत्येक टोकाला एक मूल्य अधिक आहे, म्हणून विखुरलेपण रुंद आणि विचरण मोठे. विचरण खरोखर तेच मोजते आहे ज्याचा तो दावा करतो. (6 विचरणाऐवजी माध्य सांगते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A data set has mean 25 and standard deviation 5. What is its coefficient of variation, as a percentage?",
+          hi: "किसी आँकड़ा-समुच्चय का माध्य 25 और मानक विचलन 5 है। उसका विचरण गुणांक प्रतिशत में क्या है?",
+          mr: "एका माहिती-संचाचा माध्य 25 आणि प्रमाण विचलन 5 आहे. त्याचा विचरण सहगुणक टक्केवारीत किती?",
+        },
+        answer: 20,
+        wrong: [5, 500, 25],
+        checkExpr: "5/25*100",
+        solution: {
+          en: "The coefficient of variation is the standard deviation as a percentage of the mean: 5/25 × 100 = 20 per cent. Its purpose is comparison across different quantities. A spread of 5 kg among adult weights is small; a spread of 5 kg among newborn weights would be enormous — and only dividing by the mean lets the two be judged on the same scale. Because the units cancel in the division, the result is a pure number and a spread in rupees can be set beside a spread in kilograms. (5 quotes the standard deviation without scaling it to the mean.)",
+          hi: "विचरण गुणांक मानक विचलन को माध्य के प्रतिशत के रूप में बताता है: 5/25 × 100 = 20 प्रतिशत। उसका प्रयोजन भिन्न राशियों के बीच तुलना है। वयस्कों के भार में 5 kg का फैलाव छोटा है; नवजातों के भार में 5 kg का फैलाव विशाल होता — और केवल माध्य से भाग देना ही दोनों को एक ही पैमाने पर आँकने देता है। चूँकि भाग में मात्रक कट जाते हैं, परिणाम विशुद्ध संख्या है और रुपयों का फैलाव किलोग्राम के फैलाव के साथ रखा जा सकता है। (5 मानक विचलन बता देता है, उसे माध्य पर मापे बिना।)",
+          mr: "विचरण सहगुणक प्रमाण विचलनाला माध्याच्या टक्केवारीत सांगतो: 5/25 × 100 = 20 टक्के. त्याचा हेतू वेगवेगळ्या राशींमधली तुलना. प्रौढांच्या वजनांत 5 kg चे विखुरलेपण लहान आहे; नवजातांच्या वजनांत 5 kg चे विखुरलेपण अवाढव्य झाले असते — आणि केवळ माध्याने भागणेच दोघांना एकाच मापावर तपासू देते. भागाकारात एकके छेदत असल्याने, निकाल ही निव्वळ संख्या आहे आणि रुपयांतले विखुरलेपण किलोग्रॅममधल्या विखुरलेपणाशेजारी ठेवता येते. (5 प्रमाण विचलन सांगते, त्याला माध्यावर न मोजता.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A data set has variance 9. Every observation is increased by 5. What is the new variance?",
+          hi: "किसी आँकड़ा-समुच्चय का प्रसरण 9 है। हर प्रेक्षण में 5 जोड़ दिया जाता है। नया प्रसरण क्या है?",
+          mr: "एका माहिती-संचाचे विचरण 9 आहे. प्रत्येक निरीक्षणात 5 जोडले जाते. नवे विचरण किती?",
+        },
+        answer: 9,
+        wrong: [14, 45, 34],
+        checkExpr: "9+0",
+        solution: {
+          en: "The variance is unchanged at 9. Adding 5 to every value shifts the mean up by 5 as well, so every deviation from the mean stays exactly as it was — and the variance is built entirely from those deviations. Picture the data as marks on a ruler: sliding the whole ruler along does not change the gaps between the marks. This is why a variance is a measure of SPREAD and carries no information about where the data sit. (14 adds 5 to the variance, treating a shift as though it widened the data.)",
+          hi: "प्रसरण अपरिवर्तित 9 रहता है। हर मान में 5 जोड़ने से माध्य भी 5 ऊपर खिसक जाता है, अतः माध्य से हर विचलन ठीक वैसा ही रहता है — और प्रसरण पूरी तरह उन्हीं विचलनों से बना है। आँकड़ों को पैमाने के निशानों की तरह देखो: पूरे पैमाने को सरका देने से निशानों के बीच के अंतराल नहीं बदलते। इसीलिए प्रसरण फैलाव की माप है और यह कोई सूचना नहीं ढोता कि आँकड़े कहाँ बैठे हैं। (14 प्रसरण में 5 जोड़ देता है, खिसकाव को ऐसे मानकर मानो उसने आँकड़े चौड़े किए हों।)",
+          mr: "विचरण अपरिवर्तित 9 राहते. प्रत्येक मूल्यात 5 जोडल्याने माध्यही 5 वर सरकतो, म्हणून माध्यापासूनचे प्रत्येक विचलन नेमके तसेच राहते — आणि विचरण पूर्णपणे त्याच विचलनांतून बनलेले आहे. माहितीला पट्टीवरच्या खुणांसारखे पाहा: अख्खी पट्टी सरकवल्याने खुणांमधली अंतरे बदलत नाहीत. म्हणूनच विचरण हे विखुरलेपणाचे माप आहे आणि ते माहिती कुठे बसली आहे याबद्दल कोणतीही माहिती वाहत नाही. (14 विचरणात 5 जोडते, सरकावाला त्याने माहिती रुंदावली असे मानून.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A data set has standard deviation 4. Every observation is multiplied by 3. What is the new standard deviation?",
+          hi: "किसी आँकड़ा-समुच्चय का मानक विचलन 4 है। हर प्रेक्षण को 3 से गुणा कर दिया जाता है। नया मानक विचलन क्या है?",
+          mr: "एका माहिती-संचाचे प्रमाण विचलन 4 आहे. प्रत्येक निरीक्षण 3 ने गुणले जाते. नवे प्रमाण विचलन किती?",
+        },
+        answer: 12,
+        wrong: [4, 36, 7],
+        checkExpr: "4*3",
+        solution: {
+          en: "Multiplying every value by 3 multiplies the mean by 3 and every deviation by 3, so the standard deviation becomes 4 × 3 = 12. Set this against the previous question and the pair is the whole lesson: adding leaves the spread alone, multiplying stretches it in proportion. The variance behaves differently again — it is multiplied by 3², or 9, becoming 144, because it is built from squared deviations. Note the practical consequence: converting a set of measurements from metres to centimetres multiplies the standard deviation by 100 and the variance by ten thousand. (36 multiplies the variance by 9 and reports that as the standard deviation.)",
+          hi: "हर मान को 3 से गुणा करने पर माध्य 3 से और हर विचलन भी 3 से गुणा होता है, अतः मानक विचलन 4 × 3 = 12 बन जाता है। इसे पिछले प्रश्न के सामने रखो और जोड़ी ही पूरा पाठ है: जोड़ना फैलाव को छोड़ देता है, गुणा करना उसे अनुपात में खींच देता है। प्रसरण फिर से भिन्न व्यवहार करता है — वह 3² यानी 9 से गुणा होकर 144 बनता है, क्योंकि वह वर्ग किए विचलनों से बना है। व्यावहारिक परिणाम ध्यान दो: मापों के किसी समुच्चय को मीटर से सेंटीमीटर में बदलना मानक विचलन को 100 से और प्रसरण को दस हज़ार से गुणा कर देता है। (36 प्रसरण को 9 से गुणा करके उसे मानक विचलन बता देता है।)",
+          mr: "प्रत्येक मूल्य 3 ने गुणल्याने माध्य 3 ने आणि प्रत्येक विचलनही 3 ने गुणले जाते, म्हणून प्रमाण विचलन 4 × 3 = 12 बनते. हे मागच्या प्रश्नासमोर ठेवा आणि जोडीच अख्खा धडा: जोडणे विखुरलेपण सोडते, गुणणे ते प्रमाणात ताणते. विचरण पुन्हा वेगळे वागते — ते 3² म्हणजे 9 ने गुणले जाऊन 144 बनते, कारण ते वर्ग केलेल्या विचलनांतून बनले आहे. व्यावहारिक परिणाम लक्षात घ्या: मोजमापांचा संच मीटरवरून सेंटीमीटरमध्ये बदलणे प्रमाण विचलन 100 ने आणि विचरण दहा हजाराने गुणते. (36 विचरण 9 ने गुणून ते प्रमाण विचलन सांगते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "The mean of 10 observations is 15. Later one observation, which was 20, is found to have been recorded as 30. What is the corrected mean?",
+          hi: "10 प्रेक्षणों का माध्य 15 है। बाद में पाया जाता है कि एक प्रेक्षण, जो 20 था, 30 दर्ज कर लिया गया था। सही किया गया माध्य क्या है?",
+          mr: "10 निरीक्षणांचा माध्य 15 आहे. नंतर आढळते की एक निरीक्षण, जे 20 होते, ते 30 नोंदवले गेले होते. दुरुस्त केलेला माध्य किती?",
+        },
+        answer: 14,
+        wrong: [16, 15, 13],
+        checkExpr: "(150-30+20)/10",
+        solution: {
+          en: "Work through the total rather than the mean. The recorded total is 10 × 15 = 150. Remove the wrong entry and put back the right one: 150 − 30 + 20 = 140, and 140/10 = 14. The direction is worth checking against common sense — the recorded value was too high, so the true mean must be lower than 15, and any answer above 15 is wrong before the arithmetic is examined. Note also that the count stays at 10; nothing was added or removed, only replaced. (16 corrects in the wrong direction, adding the error instead of subtracting it.)",
+          hi: "माध्य के बजाय कुल से चलो। दर्ज कुल 10 × 15 = 150 है। ग़लत प्रविष्टि हटाओ और सही वापस रखो: 150 − 30 + 20 = 140, और 140/10 = 14. दिशा को समझ के सामने जाँचना उचित है — दर्ज मान बहुत ऊँचा था, अतः सच्चा माध्य 15 से नीचा होना ही चाहिए, और 15 से ऊपर का कोई भी उत्तर गणित देखे बिना ही ग़लत है। यह भी ध्यान दो कि गिनती 10 ही रहती है; कुछ जोड़ा या हटाया नहीं गया, केवल बदला गया। (16 ग़लत दिशा में सुधार करता है, त्रुटि घटाने के बजाय जोड़कर।)",
+          mr: "माध्याऐवजी एकूणातून चला. नोंदवलेली बेरीज 10 × 15 = 150 आहे. चुकीची नोंद काढा आणि बरोबरची परत ठेवा: 150 − 30 + 20 = 140, आणि 140/10 = 14. दिशा समजेसमोर तपासणे योग्य — नोंदवलेले मूल्य फार उच्च होते, म्हणून खरा माध्य 15 हून खाली असावाच लागतो, आणि 15 हून वरचे कोणतेही उत्तर गणित पाहण्याआधीच चुकीचे. हेही लक्षात घ्या की मोजणी 10 च राहते; काही जोडले वा काढले गेले नाही, केवळ बदलले गेले. (16 चुकीच्या दिशेने दुरुस्ती करते, चूक वजा करण्याऐवजी जोडून.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "For 5 observations the sum of the squares is 200 and the mean is 6. What is the variance?",
+          hi: "5 प्रेक्षणों के लिए वर्गों का योग 200 है और माध्य 6. प्रसरण क्या है?",
+          mr: "5 निरीक्षणांसाठी वर्गांची बेरीज 200 आहे आणि माध्य 6. विचरण किती?",
+        },
+        answer: 4,
+        wrong: [40, 36, 8],
+        checkExpr: "200/5-6*6",
+        solution: {
+          en: "Use the shortcut form: variance equals the mean of the squares minus the square of the mean, so 200/5 − 6² = 40 − 36 = 4. This version exists because it needs only two running totals — the sum of the values and the sum of their squares — and never requires the individual deviations, so a calculator or a spreadsheet can compute a variance in one pass without storing the data at all. Note that it also guarantees something: since a variance can never be negative, the mean of the squares is always at least the square of the mean, which is a genuine inequality in its own right. (40 gives the mean of the squares and forgets to subtract the square of the mean.)",
+          hi: "शॉर्टकट रूप लो: प्रसरण बराबर वर्गों का माध्य घटा माध्य का वर्ग, अतः 200/5 − 6² = 40 − 36 = 4. यह रूप इसलिए है कि उसे केवल दो चलते जोड़ चाहिए — मानों का योग और उनके वर्गों का योग — और अलग-अलग विचलन कभी नहीं चाहिए, अतः परिकलक या स्प्रेडशीट एक ही चक्कर में प्रसरण निकाल सकता है बिना आँकड़े जमा किए। ध्यान दो कि वह कुछ पक्का भी करता है: चूँकि प्रसरण कभी ऋणात्मक नहीं हो सकता, वर्गों का माध्य सदा माध्य के वर्ग से कम से कम उतना ही होता है, जो अपने आप में एक असली असमिका है। (40 वर्गों का माध्य देता है और माध्य का वर्ग घटाना भूल जाता है।)",
+          mr: "शॉर्टकट रूप घ्या: विचरण बरोबर वर्गांचा माध्य वजा माध्याचा वर्ग, म्हणून 200/5 − 6² = 40 − 36 = 4. हे रूप यासाठी आहे की त्याला केवळ दोन चालत्या बेरजा लागतात — मूल्यांची बेरीज आणि त्यांच्या वर्गांची बेरीज — आणि वेगवेगळी विचलने कधीच लागत नाहीत, म्हणून गणकयंत्र वा स्प्रेडशीट एकाच फेऱ्यात विचरण काढू शकते माहिती न साठवता. लक्षात घ्या की ते काहीतरी पक्केही करते: विचरण कधीच ऋण असू शकत नसल्याने, वर्गांचा माध्य नेहमी माध्याच्या वर्गाइतका तरी असतो, जी स्वतःच एक खरी असमानता आहे. (40 वर्गांचा माध्य देते आणि माध्याचा वर्ग वजा करणे विसरते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "One group of 30 students has mean marks 50 and another group of 20 has mean marks 60. What is the mean of all 50 students together?",
+          hi: "30 विद्यार्थियों के एक समूह के औसत अंक 50 हैं और 20 के दूसरे समूह के 60. मिलाकर सभी 50 विद्यार्थियों का माध्य क्या है?",
+          mr: "30 विद्यार्थ्यांच्या एका गटाचे सरासरी गुण 50 आहेत आणि 20 च्या दुसऱ्या गटाचे 60. मिळून सर्व 50 विद्यार्थ्यांचा माध्य किती?",
+        },
+        answer: 54,
+        wrong: [55, 110, 52],
+        checkExpr: "(30*50+20*60)/50",
+        solution: {
+          en: "Recover each total and add: 30 × 50 = 1500 and 20 × 60 = 1200, giving 2700 over 50 students, so the combined mean is 54. The trap is to average the two means and get 55, which would only be right if the groups were the same size. Here the larger group pulls the answer towards its own mean, and the result of 54 sits closer to 50 than to 60 exactly as it should — a weighted average always leans towards the heavier weight. This is the same reasoning that makes a batting average over two seasons depend on how many innings were played in each, not just on the two averages. (55 takes the plain average of the two means, ignoring the group sizes.)",
+          hi: "हर कुल वापस निकालो और जोड़ो: 30 × 50 = 1500 और 20 × 60 = 1200, जिससे 50 विद्यार्थियों पर 2700, अतः मिला-जुला माध्य 54. जाल है दोनों माध्यों का औसत लेकर 55 पा लेना, जो तभी ठीक होता जब समूह बराबर आकार के होते। यहाँ बड़ा समूह उत्तर को अपने माध्य की ओर खींचता है, और 54 का परिणाम ठीक वैसे 50 के पास बैठता है, 60 के नहीं, जैसा उसे बैठना चाहिए — भारित औसत सदा भारी पलड़े की ओर झुकता है। यही तर्क दो सत्रों की बल्लेबाज़ी औसत को इस पर निर्भर बनाता है कि हर सत्र में कितनी पारियाँ खेली गईं, केवल दो औसतों पर नहीं। (55 दोनों माध्यों का सादा औसत ले लेता है, समूहों के आकार की अनदेखी करके।)",
+          mr: "प्रत्येक बेरीज परत काढा आणि जोडा: 30 × 50 = 1500 आणि 20 × 60 = 1200, ज्यातून 50 विद्यार्थ्यांवर 2700, म्हणून एकत्रित माध्य 54. सापळा म्हणजे दोन्ही माध्यांची सरासरी घेऊन 55 मिळवणे, जे गट समान आकाराचे असते तरच बरोबर झाले असते. इथे मोठा गट उत्तराला आपल्या माध्याकडे ओढतो, आणि 54 चा निकाल नेमका तसाच 50 च्या जवळ बसतो, 60 च्या नव्हे, जसा त्याने बसावा — भारित सरासरी नेहमी जड पारड्याकडे झुकते. हाच तर्क दोन हंगामांची फलंदाजी सरासरी प्रत्येक हंगामात किती डाव खेळले यावर अवलंबून करतो, केवळ दोन सरासरींवर नव्हे. (55 दोन्ही माध्यांची साधी सरासरी घेते, गटांचे आकार दुर्लक्षून.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-11-statistics",
+      subject: "MATHS",
+      classLevel: 11,
+      chapter: "Chapter 13 — Statistics",
+      name: "Statistics",
+      summary:
+        "Two sets of marks can share a mean and describe completely different classes, so this chapter measures the SPREAD instead: deviations squared so that they cannot cancel, a variance that ignores a shift and obeys a stretch, and a coefficient that lets a spread in rupees be compared with a spread in kilograms.",
+      position: 13,
+      translations: {
+        hi: {
+          name: "सांख्यिकी",
+          summary:
+            "अंकों के दो समुच्चय एक ही माध्य साझा करके भी बिलकुल भिन्न कक्षाओं का वर्णन कर सकते हैं, अतः यह अध्याय इसके बजाय फैलाव मापता है: विचलन जिनका वर्ग किया जाता है ताकि वे कट न जाएँ, ऐसा प्रसरण जो खिसकाव की अनदेखी करता है और खिंचाव मानता है, और ऐसा गुणांक जो रुपयों के फैलाव की तुलना किलोग्राम के फैलाव से करने देता है।",
+        },
+        mr: {
+          name: "सांख्यिकी",
+          summary:
+            "गुणांचे दोन संच एकच माध्य वाटून घेऊनही अगदी वेगळ्या वर्गांचे वर्णन करू शकतात, म्हणून हे प्रकरण त्याऐवजी विखुरलेपण मोजते: विचलने ज्यांचा वर्ग केला जातो जेणेकरून ती छेदू नयेत, असे विचरण जे सरकाव दुर्लक्षते आणि ताण मानते, आणि असा सहगुणक जो रुपयांतल्या विखुरलेपणाची तुलना किलोग्रॅममधल्या विखुरलेपणाशी करू देतो.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 14 — Probability (counting what might happen)                     */
+/* ------------------------------------------------------------------------- */
+function probability11(): TopicFileOut {
+  const rand = rng("maths-11-probability");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Two coins are tossed together. How many outcomes are there in the sample space?",
+          hi: "दो सिक्के एक साथ उछाले जाते हैं। प्रतिदर्श समष्टि में कितने परिणाम हैं?",
+          mr: "दोन नाणी एकत्र उडवली जातात. नमुना अवकाशात किती परिणाम आहेत?",
+        },
+        answer: 4,
+        wrong: [2, 3, 8],
+        checkExpr: "2*2",
+        solution: {
+          en: "Each coin has 2 faces and the two coins are independent, so there are 2 × 2 = 4 outcomes: HH, HT, TH and TT. Note that HT and TH are counted separately even though both show one head — treating them as a single outcome is the mistake that makes 3, and it would wrongly suggest that one head is as likely as two. (3 counts by the number of heads rather than by outcome.)",
+          hi: "हर सिक्के के 2 फलक हैं और दोनों सिक्के स्वतंत्र हैं, अतः 2 × 2 = 4 परिणाम: HH, HT, TH और TT. ध्यान दो कि HT और TH अलग-अलग गिने जाते हैं भले ही दोनों एक चित दिखाते हों — उन्हें एक ही परिणाम मानना वही भूल है जो 3 बनाती है, और वह ग़लत ढंग से सुझाती कि एक चित उतना ही संभव है जितना दो। (3 परिणाम से नहीं, चितों की संख्या से गिनता है।)",
+          mr: "प्रत्येक नाण्याला 2 बाजू आहेत आणि दोन्ही नाणी स्वतंत्र आहेत, म्हणून 2 × 2 = 4 परिणाम: HH, HT, TH आणि TT. लक्षात घ्या की HT आणि TH वेगवेगळे मोजले जातात जरी दोन्ही एक छापा दाखवत असले तरी — त्यांना एकच परिणाम मानणे हीच ती चूक जी 3 बनवते, आणि ती चुकीच्या पद्धतीने सुचवेल की एक छापा दोनइतकाच संभवनीय आहे. (3 परिणामाने नव्हे, छाप्यांच्या संख्येने मोजते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Two dice are thrown together. How many outcomes are there in the sample space?",
+          hi: "दो पासे एक साथ फेंके जाते हैं। प्रतिदर्श समष्टि में कितने परिणाम हैं?",
+          mr: "दोन फासे एकत्र टाकले जातात. नमुना अवकाशात किती परिणाम आहेत?",
+        },
+        answer: 36,
+        wrong: [12, 6, 30],
+        checkExpr: "6*6",
+        solution: {
+          en: "Each die can show any of 6 faces independently of the other, so 6 × 6 = 36 outcomes. The sample space is the set of ORDERED pairs, so (2, 5) and (5, 2) are two different outcomes even though the dice are identical to look at — which is why sums such as 7 turn out to be more likely than 2. (12 adds the two counts instead of multiplying them.)",
+          hi: "हर पासा दूसरे से स्वतंत्र रूप से 6 में से कोई भी फलक दिखा सकता है, अतः 6 × 6 = 36 परिणाम। प्रतिदर्श समष्टि क्रमित युग्मों का समुच्चय है, अतः (2, 5) और (5, 2) दो भिन्न परिणाम हैं भले ही पासे देखने में एक जैसे हों — इसीलिए 7 जैसे योग 2 से अधिक संभव निकलते हैं। (12 दोनों गिनतियाँ गुणा करने के बजाय जोड़ देता है।)",
+          mr: "प्रत्येक फासा दुसऱ्यापासून स्वतंत्रपणे 6 पैकी कोणतीही बाजू दाखवू शकतो, म्हणून 6 × 6 = 36 परिणाम. नमुना अवकाश हा क्रमित जोड्यांचा संच आहे, म्हणून (2, 5) आणि (5, 2) हे दोन वेगळे परिणाम आहेत जरी फासे दिसायला सारखे असले तरी — म्हणूनच 7 सारख्या बेरजा 2 हून अधिक संभवनीय निघतात. (12 दोन्ही मोजण्या गुणण्याऐवजी जोडते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A fair coin is tossed once. What is the probability of getting a head, as a percentage?",
+          hi: "एक निष्पक्ष सिक्का एक बार उछाला जाता है। चित आने की प्रायिकता प्रतिशत में क्या है?",
+          mr: "एक निष्पक्ष नाणे एकदा उडवले जाते. छापा येण्याची संभाव्यता टक्केवारीत किती?",
+        },
+        answer: 50,
+        wrong: [100, 25, 1],
+        checkExpr: "1/2*100",
+        solution: {
+          en: "One favourable outcome out of two equally likely ones: 1/2 × 100 = 50 per cent. The phrase equally likely is doing real work — the whole formula of favourable over total is valid only when every outcome in the sample space has the same chance, which is exactly what fair means. (100 treats a certainty as the answer.)",
+          hi: "दो समसंभावी परिणामों में से एक अनुकूल: 1/2 × 100 = 50 प्रतिशत। समसंभावी वाक्यांश असली काम कर रहा है — अनुकूल बटा कुल का पूरा सूत्र तभी वैध है जब प्रतिदर्श समष्टि के हर परिणाम की संभावना एक जैसी हो, और निष्पक्ष का ठीक यही अर्थ है। (100 निश्चितता को उत्तर मान लेता है।)",
+          mr: "दोन समसंभाव्य परिणामांपैकी एक अनुकूल: 1/2 × 100 = 50 टक्के. समसंभाव्य हा वाक्यांश खरे काम करतो — अनुकूल भागिले एकूण हे अख्खे सूत्र तेव्हाच वैध जेव्हा नमुना अवकाशातल्या प्रत्येक परिणामाची शक्यता सारखी असेल, आणि निष्पक्षचा नेमका हाच अर्थ. (100 निश्चिततेला उत्तर मानते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Two dice are thrown. How many outcomes give a sum of 7?",
+          hi: "दो पासे फेंके जाते हैं। कितने परिणाम योग 7 देते हैं?",
+          mr: "दोन फासे टाकले जातात. किती परिणाम बेरीज 7 देतात?",
+        },
+        answer: 6,
+        wrong: [7, 5, 3],
+        checkExpr: "36/6",
+        solution: {
+          en: "List them by the first die: 1 with 6, then 2 with 5, then 3 with 4, then 4 with 3, then 5 with 2, then 6 with 1 — a count of 6 outcomes. A sum of 7 has more ways than any other, which is why it is the most likely total on two dice; a sum of 2 or 12 can happen in only one way each. Listing in order of the first die is what stops you missing a pair or counting one twice. (3 lists only the pairs and forgets that each can occur in either order.)",
+          hi: "पहले पासे के क्रम में गिनाओ: 1 के साथ 6, फिर 2 के साथ 5, फिर 3 के साथ 4, फिर 4 के साथ 3, फिर 5 के साथ 2, फिर 6 के साथ 1 — कुल 6 परिणाम। योग 7 के तरीक़े किसी भी दूसरे से अधिक हैं, इसीलिए दो पासों पर वही सबसे संभव कुल है; योग 2 या 12 केवल एक-एक तरीक़े से हो सकता है। पहले पासे के क्रम में गिनाना ही तुम्हें कोई युग्म चूकने या दो बार गिनने से रोकता है। (3 केवल युग्म गिनाता है और भूल जाता है कि हर एक दोनों क्रमों में हो सकता है।)",
+          mr: "पहिल्या फाशाच्या क्रमाने यादी करा: 1 सोबत 6, मग 2 सोबत 5, मग 3 सोबत 4, मग 4 सोबत 3, मग 5 सोबत 2, मग 6 सोबत 1 — एकूण 6 परिणाम. बेरीज 7 चे मार्ग इतर कोणत्याहीहून अधिक आहेत, म्हणूनच दोन फाशांवर तीच सर्वांत संभवनीय बेरीज; बेरीज 2 वा 12 केवळ एकेका मार्गाने घडू शकते. पहिल्या फाशाच्या क्रमाने यादी करणेच तुम्हाला एखादी जोडी चुकवण्यापासून वा दोनदा मोजण्यापासून रोखते. (3 केवळ जोड्या मोजते आणि प्रत्येक दोन्ही क्रमांत घडू शकते हे विसरते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A die is thrown once. How many outcomes show a prime number?",
+          hi: "एक पासा एक बार फेंका जाता है। कितने परिणाम अभाज्य संख्या दिखाते हैं?",
+          mr: "एक फासा एकदा टाकला जातो. किती परिणाम अवयवी संख्या दाखवतात?",
+        },
+        answer: 3,
+        wrong: [2, 4, 6],
+        checkExpr: "6/2",
+        solution: {
+          en: "The primes among 1 to 6 are 2, 3 and 5 — three of them. The two easy slips are counting 1 as prime, which it is not by definition, and forgetting 2, which is prime despite being even. Getting the event right is usually harder than the arithmetic that follows it. (4 counts 1 as a prime as well.)",
+          hi: "1 से 6 में अभाज्य 2, 3 और 5 हैं — तीन। दो आसान चूकें हैं 1 को अभाज्य गिन लेना, जो वह परिभाषा से नहीं है, और 2 को भूल जाना, जो सम होते हुए भी अभाज्य है। घटना को ठीक पकड़ना प्रायः उसके बाद के गणित से कठिन होता है। (4 1 को भी अभाज्य गिन लेता है।)",
+          mr: "1 ते 6 मधली अवयवी 2, 3 आणि 5 — तीन. दोन सोप्या चुका म्हणजे 1 ला अवयवी मोजणे, जी ती व्याख्येने नाही, आणि 2 विसरणे, जी सम असूनही अवयवी आहे. घटना नीट पकडणे बहुधा त्यानंतरच्या गणिताहून कठीण असते. (4 1 लाही अवयवी मोजते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A and B are mutually exclusive events with P(A) = 0.3 and P(B) = 0.4. What is P(A or B)?",
+          hi: "A और B परस्पर अपवर्जी घटनाएँ हैं जिनमें P(A) = 0.3 और P(B) = 0.4. P(A या B) क्या है?",
+          mr: "A आणि B या परस्पर वर्जक घटना असून P(A) = 0.3 आणि P(B) = 0.4. P(A किंवा B) किती?",
+        },
+        answer: 0.7,
+        wrong: [0.12, 0.1, 1],
+        checkExpr: "0.3+0.4",
+        solution: {
+          en: "Mutually exclusive means the two events cannot both happen, so there is no overlap to subtract and the probabilities simply add: 0.3 + 0.4 = 0.7. This is the union formula from the chapter on sets with the intersection equal to zero — the addition rule is not a new idea, only a familiar one applied to a sample space. (0.12 multiplies the two, which is the rule for INDEPENDENT events happening together, a different situation entirely.)",
+          hi: "परस्पर अपवर्जी का अर्थ है दोनों घटनाएँ एक साथ हो ही नहीं सकतीं, अतः घटाने को कोई अतिव्यापन नहीं और प्रायिकताएँ बस जुड़ जाती हैं: 0.3 + 0.4 = 0.7. यह समुच्चय अध्याय का सम्मिलन सूत्र ही है जिसमें प्रतिच्छेदन शून्य है — योग-नियम कोई नया विचार नहीं, केवल परिचित विचार प्रतिदर्श समष्टि पर लगाया हुआ। (0.12 दोनों को गुणा कर देता है, जो स्वतंत्र घटनाओं के एक साथ होने का नियम है, बिलकुल अलग स्थिति।)",
+          mr: "परस्पर वर्जक म्हणजे दोन्ही घटना एकाच वेळी घडूच शकत नाहीत, म्हणून वजा करायला आच्छादन नाही आणि संभाव्यता फक्त जुळतात: 0.3 + 0.4 = 0.7. हे संच प्रकरणातले संयोग सूत्रच आहे ज्यात छेद शून्य आहे — बेरीज-नियम ही नवी कल्पना नव्हे, केवळ परिचित कल्पना नमुना अवकाशावर लावलेली. (0.12 दोन्ही गुणते, जो स्वतंत्र घटना एकत्र घडण्याचा नियम आहे, अगदी वेगळी स्थिती.)",
+        },
+      },
+      rand,
+    ),
+  );
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "If P(A) = 0.6, what is the probability that A does NOT happen?",
+          hi: "यदि P(A) = 0.6, तो A के न होने की प्रायिकता क्या है?",
+          mr: "जर P(A) = 0.6, तर A न घडण्याची संभाव्यता किती?",
+        },
+        answer: 0.4,
+        wrong: [0.6, 1.6, 0.36],
+        checkExpr: "1-0.6",
+        solution: {
+          en: "Either A happens or it does not, and those two possibilities cover the whole sample space with no overlap, so their probabilities must add to 1: P(not A) = 1 − 0.6 = 0.4. The complement is the most useful tool in the chapter, because counting the ways something can FAIL is often far easier than counting the ways it can happen. (0.36 squares the probability, which answers a different question about two independent trials.)",
+          hi: "या तो A होती है या नहीं होती, और वे दोनों संभावनाएँ बिना अतिव्यापन पूरी प्रतिदर्श समष्टि ढाँप देती हैं, अतः उनकी प्रायिकताएँ जुड़कर 1 बननी ही चाहिए: P(A नहीं) = 1 − 0.6 = 0.4. पूरक इस अध्याय का सबसे उपयोगी औज़ार है, क्योंकि किसी चीज़ के विफल होने के तरीक़े गिनना प्रायः उसके होने के तरीक़े गिनने से कहीं आसान है। (0.36 प्रायिकता का वर्ग कर देता है, जो दो स्वतंत्र परीक्षणों के बारे में दूसरे प्रश्न का उत्तर है।)",
+          mr: "एकतर A घडते किंवा घडत नाही, आणि त्या दोन शक्यता आच्छादनाविना अख्खा नमुना अवकाश झाकतात, म्हणून त्यांच्या संभाव्यता जुळून 1 बनल्याच पाहिजेत: P(A नाही) = 1 − 0.6 = 0.4. पूरक हे या प्रकरणातले सर्वांत उपयुक्त हत्यार, कारण एखादी गोष्ट अपयशी होण्याचे मार्ग मोजणे बहुधा ती घडण्याचे मार्ग मोजण्याहून कितीतरी सोपे. (0.36 संभाव्यतेचा वर्ग करते, जे दोन स्वतंत्र चाचण्यांबद्दलच्या वेगळ्या प्रश्नाचे उत्तर.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "P(A) = 0.6, P(B) = 0.5 and P(A and B) = 0.2. What is P(A or B)?",
+          hi: "P(A) = 0.6, P(B) = 0.5 और P(A और B) = 0.2. P(A या B) क्या है?",
+          mr: "P(A) = 0.6, P(B) = 0.5 आणि P(A आणि B) = 0.2. P(A किंवा B) किती?",
+        },
+        answer: 0.9,
+        wrong: [1.1, 0.3, 0.7],
+        checkExpr: "0.6+0.5-0.2",
+        solution: {
+          en: "Add and take back the overlap: 0.6 + 0.5 − 0.2 = 0.9. Without the subtraction the answer would be 1.1, and a probability above 1 is impossible — which is a free check on every question of this kind. Note that these two events are NOT mutually exclusive, since P(A and B) is not zero; the previous question was the special case where that intersection vanishes. (1.1 forgets to subtract the overlap and produces an impossible value.)",
+          hi: "जोड़ो और अतिव्यापन वापस लो: 0.6 + 0.5 − 0.2 = 0.9. घटाव बिना उत्तर 1.1 होता, और 1 से ऊपर की प्रायिकता असंभव है — जो इस तरह के हर प्रश्न पर मुफ़्त जाँच है। ध्यान दो कि ये दोनों घटनाएँ परस्पर अपवर्जी नहीं हैं, क्योंकि P(A और B) शून्य नहीं; पिछला प्रश्न वही विशेष स्थिति थी जहाँ वह प्रतिच्छेदन लुप्त हो जाता है। (1.1 अतिव्यापन घटाना भूल जाता है और असंभव मान बना देता है।)",
+          mr: "जोडा आणि आच्छादन परत घ्या: 0.6 + 0.5 − 0.2 = 0.9. वजाबाकीविना उत्तर 1.1 झाले असते, आणि 1 हून वरची संभाव्यता अशक्य आहे — जी या प्रकारच्या प्रत्येक प्रश्नावर फुकट तपासणी. लक्षात घ्या की या दोन्ही घटना परस्पर वर्जक नाहीत, कारण P(A आणि B) शून्य नाही; मागचा प्रश्न तीच खास स्थिती होती जिथे तो छेद नाहीसा होतो. (1.1 आच्छादन वजा करणे विसरते आणि अशक्य मूल्य बनवते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A bag holds 4 red and 2 blue balls. Two are drawn together. In how many ways can both be red?",
+          hi: "किसी थैले में 4 लाल और 2 नीली गेंदें हैं। दो एक साथ निकाली जाती हैं। दोनों लाल होने के कितने तरीक़े हैं?",
+          mr: "एका पिशवीत 4 लाल आणि 2 निळे चेंडू आहेत. दोन एकत्र काढले जातात. दोन्ही लाल असण्याचे किती मार्ग आहेत?",
+        },
+        answer: 6,
+        wrong: [12, 8, 4],
+        checkExpr: "4*3/2",
+        solution: {
+          en: "Choosing 2 of the 4 red balls is ⁴C₂ = (4 × 3)/2 = 6. The words DRAWN TOGETHER matter: the two balls come out at the same moment, so there is no first or second and the count is a combination rather than a permutation. (12 counts ordered draws, which would be right if one ball were taken and then another.)",
+          hi: "4 लाल गेंदों में से 2 चुनना ⁴C₂ = (4 × 3)/2 = 6. एक साथ निकाली शब्द मायने रखते हैं: दोनों गेंदें एक ही क्षण बाहर आती हैं, अतः पहली या दूसरी कोई नहीं और गिनती क्रमचय नहीं, संचय है। (12 क्रमित निकासी गिनता है, जो तब ठीक होता जब एक गेंद लेकर फिर दूसरी ली जाती।)",
+          mr: "4 लाल चेंडूंपैकी 2 निवडणे म्हणजे ⁴C₂ = (4 × 3)/2 = 6. एकत्र काढले हे शब्द महत्त्वाचे: दोन्ही चेंडू एकाच क्षणी बाहेर येतात, म्हणून पहिला वा दुसरा कोणी नाही आणि मोजणी क्रमचय नव्हे, संचय आहे. (12 क्रमित काढण्या मोजते, जे एक चेंडू घेऊन मग दुसरा घेतला असता तर बरोबर झाले असते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "From the same bag of 6 balls, in how many ways can any 2 balls be drawn together?",
+          hi: "उसी 6 गेंदों के थैले से कोई भी 2 गेंदें एक साथ कितने तरीक़ों से निकाली जा सकती हैं?",
+          mr: "त्याच 6 चेंडूंच्या पिशवीतून कोणतेही 2 चेंडू एकत्र किती प्रकारे काढता येतील?",
+        },
+        answer: 15,
+        wrong: [30, 12, 36],
+        checkExpr: "6*5/2",
+        solution: {
+          en: "⁶C₂ = (6 × 5)/2 = 15. This is the size of the sample space for the next question, and building it separately is the right habit — a probability is a fraction, and the two halves of that fraction are counted by the same method applied to different sets. (30 counts ordered pairs and never divides by 2.)",
+          hi: "⁶C₂ = (6 × 5)/2 = 15. यह अगले प्रश्न की प्रतिदर्श समष्टि का आकार है, और उसे अलग से बनाना सही आदत है — प्रायिकता एक भिन्न है, और उस भिन्न के दोनों हिस्से भिन्न समुच्चयों पर लगाई गई उसी विधि से गिने जाते हैं। (30 क्रमित युग्म गिनता है और 2 से भाग देता ही नहीं।)",
+          mr: "⁶C₂ = (6 × 5)/2 = 15. हा पुढच्या प्रश्नाच्या नमुना अवकाशाचा आकार, आणि तो वेगळा बांधणे ही योग्य सवय — संभाव्यता हा एक अपूर्णांक आहे, आणि त्या अपूर्णांकाचे दोन्ही भाग वेगवेगळ्या संचांवर लावलेल्या त्याच पद्धतीने मोजले जातात. (30 क्रमित जोड्या मोजते आणि 2 ने भागतच नाही.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A bag holds 4 red and 2 blue balls, and two are drawn together. What is the probability that both are red?",
+          hi: "किसी थैले में 4 लाल और 2 नीली गेंदें हैं, और दो एक साथ निकाली जाती हैं। दोनों के लाल होने की प्रायिकता क्या है?",
+          mr: "एका पिशवीत 4 लाल आणि 2 निळे चेंडू आहेत, आणि दोन एकत्र काढले जातात. दोन्ही लाल असण्याची संभाव्यता किती?",
+        },
+        answer: 0.4,
+        wrong: [0.5, 0.6, 0.25],
+        checkExpr: "6/15",
+        solution: {
+          en: "Favourable outcomes over total outcomes: 6/15 = 0.4. Both counts had to be combinations for the fraction to be honest — mixing a combination on top with a permutation below is the error that quietly halves or doubles an answer. Note that 0.4 is less than the 4/6 chance of a single red ball, which makes sense: after one red is taken there is one fewer red left, so the second draw is harder than the first. (0.6 gives the chance that a single ball drawn is red.)",
+          hi: "अनुकूल परिणाम बटा कुल परिणाम: 6/15 = 0.4. भिन्न के ईमानदार होने के लिए दोनों गिनतियों का संचय होना ज़रूरी था — ऊपर संचय और नीचे क्रमचय मिला देना वही भूल है जो चुपचाप उत्तर आधा या दुगुना कर देती है। ध्यान दो कि 0.4 अकेली लाल गेंद की 4/6 संभावना से कम है, जो समझ में आता है: एक लाल निकल जाने पर एक लाल कम बचती है, अतः दूसरी निकासी पहली से कठिन है। (0.6 अकेली निकाली गेंद के लाल होने की संभावना देता है।)",
+          mr: "अनुकूल परिणाम भागिले एकूण परिणाम: 6/15 = 0.4. अपूर्णांक प्रामाणिक असण्यासाठी दोन्ही मोजण्या संचय असणे आवश्यक होते — वर संचय आणि खाली क्रमचय मिसळणे हीच ती चूक जी गुपचूप उत्तर निम्मे वा दुप्पट करते. लक्षात घ्या की 0.4 हे एकाच लाल चेंडूच्या 4/6 शक्यतेहून कमी आहे, जे समजण्याजोगे: एक लाल निघाल्यावर एक लाल कमी उरतो, म्हणून दुसरी काढणी पहिलीहून कठीण. (0.6 एकच काढलेला चेंडू लाल असण्याची शक्यता देते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "One card is drawn from a pack of 52. How many cards are either a king or a heart?",
+          hi: "52 पत्तों की गड्डी से एक पत्ता निकाला जाता है। कितने पत्ते या तो बादशाह हैं या पान?",
+          mr: "52 पत्त्यांच्या जुडग्यातून एक पत्ता काढला जातो. किती पत्ते एकतर राजा आहेत किंवा बदाम?",
+        },
+        answer: 16,
+        wrong: [17, 13, 4],
+        checkExpr: "4+13-1",
+        solution: {
+          en: "There are 4 kings and 13 hearts, but the king of hearts is in both lists and would be counted twice, so the answer is 4 + 13 − 1 = 16. This is the addition rule doing exactly what the union formula did for sets, and the single card in the overlap is the whole reason the answer is not 17. Whenever two categories in a question can both apply to one object, look for that object before adding. (17 adds the two counts and double-counts the king of hearts.)",
+          hi: "4 बादशाह और 13 पान हैं, पर पान का बादशाह दोनों सूचियों में है और दो बार गिना जाता, अतः उत्तर 4 + 13 − 1 = 16. यह योग-नियम ठीक वही कर रहा है जो सम्मिलन सूत्र समुच्चयों के लिए करता था, और अतिव्यापन का वह अकेला पत्ता ही पूरा कारण है कि उत्तर 17 नहीं। जब भी प्रश्न की दो श्रेणियाँ किसी एक वस्तु पर एक साथ लागू हो सकें, जोड़ने से पहले उस वस्तु को ढूँढ़ो। (17 दोनों गिनतियाँ जोड़ देता है और पान के बादशाह को दो बार गिन लेता है।)",
+          mr: "4 राजे आणि 13 बदाम आहेत, पण बदामाचा राजा दोन्ही यादींत आहे आणि दोनदा मोजला गेला असता, म्हणून उत्तर 4 + 13 − 1 = 16. हा बेरीज-नियम नेमके तेच करतो आहे जे संयोग सूत्र संचांसाठी करत होते, आणि आच्छादनातला तो एकच पत्ता हेच अख्खे कारण की उत्तर 17 नाही. जेव्हा जेव्हा प्रश्नातल्या दोन श्रेणी एकाच वस्तूवर एकाच वेळी लागू होऊ शकतील, तेव्हा जोडण्याआधी ती वस्तू शोधा. (17 दोन्ही मोजण्या जोडते आणि बदामाचा राजा दोनदा मोजते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Three fair coins are tossed together. What is the probability of getting exactly two heads?",
+          hi: "तीन निष्पक्ष सिक्के एक साथ उछाले जाते हैं। ठीक दो चित आने की प्रायिकता क्या है?",
+          mr: "तीन निष्पक्ष नाणी एकत्र उडवली जातात. नेमके दोन छापे येण्याची संभाव्यता किती?",
+        },
+        answer: 0.375,
+        wrong: [0.5, 0.25, 0.125],
+        checkExpr: "3/8",
+        solution: {
+          en: "The sample space has 2 × 2 × 2 = 8 outcomes. Exactly two heads happens in three of them — HHT, HTH and THH — so the probability is 3/8 = 0.375. Choosing WHICH two coins show heads is ³C₂ = 3, which is why the binomial coefficients appear here at all; the same reasoning gives 1, 3, 3, 1 for zero, one, two and three heads, adding to the full 8. The commonest wrong route is to reason that two heads out of three is a fraction of two-thirds, which confuses the count of heads with the count of outcomes. (0.125 gives the chance of one specific outcome such as HHT.)",
+          hi: "प्रतिदर्श समष्टि में 2 × 2 × 2 = 8 परिणाम हैं। ठीक दो चित उनमें से तीन में होते हैं — HHT, HTH और THH — अतः प्रायिकता 3/8 = 0.375. कौन-से दो सिक्के चित दिखाएँ यह चुनना ³C₂ = 3 है, और इसीलिए द्विपद गुणांक यहाँ प्रकट होते हैं; वही तर्क शून्य, एक, दो और तीन चित के लिए 1, 3, 3, 1 देता है, जो जुड़कर पूरे 8 बनते हैं। सबसे आम ग़लत रास्ता यह तर्क है कि तीन में से दो चित दो-तिहाई का अंश है, जो चितों की गिनती को परिणामों की गिनती से गड्डमड्ड कर देता है। (0.125 HHT जैसे किसी एक विशिष्ट परिणाम की संभावना देता है।)",
+          mr: "नमुना अवकाशात 2 × 2 × 2 = 8 परिणाम आहेत. नेमके दोन छापे त्यांपैकी तिघांत घडतात — HHT, HTH आणि THH — म्हणून संभाव्यता 3/8 = 0.375. कोणती दोन नाणी छापा दाखवतील हे निवडणे म्हणजे ³C₂ = 3, आणि म्हणूनच द्विपद सहगुणक इथे प्रकटतात; तोच तर्क शून्य, एक, दोन आणि तीन छाप्यांसाठी 1, 3, 3, 1 देतो, जे जुळून पूर्ण 8 बनतात. सर्वांत सामान्य चुकीचा मार्ग म्हणजे तिघांपैकी दोन छापे हा दोनतृतीयांशाचा अंश असा तर्क, जो छाप्यांची मोजणी परिणामांच्या मोजणीशी गोंधळतो. (0.125 HHT सारख्या एका विशिष्ट परिणामाची शक्यता देते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A fair coin is tossed twice. What is the probability of getting at least one head?",
+          hi: "एक निष्पक्ष सिक्का दो बार उछाला जाता है। कम से कम एक चित आने की प्रायिकता क्या है?",
+          mr: "एक निष्पक्ष नाणे दोनदा उडवले जाते. किमान एक छापा येण्याची संभाव्यता किती?",
+        },
+        answer: 0.75,
+        wrong: [0.5, 0.25, 1],
+        checkExpr: "1-1/4",
+        solution: {
+          en: "At least one head means one head or two, and counting both cases works — but the complement is quicker and far safer. The only way to fail is to get no heads at all, which is the single outcome TT out of four, with probability 1/4. So the answer is 1 − 1/4 = 0.75. The advantage grows enormously with the number of tosses: for ten coins, at least one head has 1023 favourable outcomes to enumerate, while no heads has exactly one, so the complement turns a page of work into a single subtraction. Whenever a question says AT LEAST, ask what the opposite is before counting anything. (0.5 counts only the case of exactly one head.)",
+          hi: "कम से कम एक चित का अर्थ है एक चित या दो, और दोनों मामले गिनना चलता है — पर पूरक तेज़ और कहीं अधिक सुरक्षित है। विफल होने का इकलौता तरीक़ा है एक भी चित न आना, जो चार में से अकेला परिणाम TT है, जिसकी प्रायिकता 1/4. अतः उत्तर 1 − 1/4 = 0.75. उछालों की संख्या के साथ लाभ बहुत बढ़ता है: दस सिक्कों के लिए कम से कम एक चित के 1023 अनुकूल परिणाम गिनने पड़ते, जबकि कोई चित नहीं का ठीक एक, अतः पूरक पन्ने भर के काम को एक घटाव बना देता है। जब भी प्रश्न कम से कम कहे, कुछ भी गिनने से पहले पूछो कि उलटा क्या है। (0.5 केवल ठीक एक चित का मामला गिनता है।)",
+          mr: "किमान एक छापा म्हणजे एक छापा किंवा दोन, आणि दोन्ही प्रकरणे मोजणे चालते — पण पूरक वेगवान आणि कितीतरी सुरक्षित. अपयशी होण्याचा एकमेव मार्ग म्हणजे एकही छापा न येणे, जो चारांपैकी एकटा परिणाम TT आहे, ज्याची संभाव्यता 1/4. म्हणून उत्तर 1 − 1/4 = 0.75. उडवण्यांच्या संख्येसोबत फायदा प्रचंड वाढतो: दहा नाण्यांसाठी किमान एक छाप्याचे 1023 अनुकूल परिणाम मोजावे लागले असते, तर एकही छापा नाहीचा नेमका एक, म्हणून पूरक पानभर कामाला एका वजाबाकीत बदलतो. जेव्हा जेव्हा प्रश्न किमान म्हणतो, तेव्हा काहीही मोजण्याआधी विचारा की उलटे काय आहे. (0.5 केवळ नेमक्या एका छाप्याचे प्रकरण मोजते.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-11-probability",
+      subject: "MATHS",
+      classLevel: 11,
+      chapter: "Chapter 14 — Probability",
+      name: "Probability",
+      summary:
+        "Chance rebuilt on sets: the sample space is a set, an event is a subset of it, and the addition rule turns out to be the union formula wearing a new name — with the complement standing ready for every question where counting what you want is harder than counting what you do not.",
+      position: 14,
+      translations: {
+        hi: {
+          name: "प्रायिकता",
+          summary:
+            "संयोग को समुच्चयों पर फिर से खड़ा किया गया: प्रतिदर्श समष्टि एक समुच्चय है, घटना उसका उपसमुच्चय, और योग-नियम वही सम्मिलन सूत्र निकलता है जो नया नाम पहने है — और पूरक हर उस प्रश्न के लिए तैयार खड़ा है जहाँ जो चाहिए उसे गिनना उससे कठिन है जो नहीं चाहिए।",
+        },
+        mr: {
+          name: "संभाव्यता",
+          summary:
+            "योग संचांवर पुन्हा उभा केला गेला: नमुना अवकाश हा एक संच आहे, घटना हा त्याचा उपसंच, आणि बेरीज-नियम तेच संयोग सूत्र निघते जे नवे नाव घालून आहे — आणि पूरक प्रत्येक अशा प्रश्नासाठी तयार उभा आहे जिथे जे हवे ते मोजणे जे नको ते मोजण्याहून कठीण असते.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
 export const G11_MATHS: TopicFileOut[] = [
   sets11(),
   relationsFunctions11(),
@@ -3102,4 +4323,8 @@ export const G11_MATHS: TopicFileOut[] = [
   sequences11(),
   straightLines11(),
   conicSections11(),
+  threeDGeometry11(),
+  limitsDerivatives11(),
+  statistics11(),
+  probability11(),
 ];

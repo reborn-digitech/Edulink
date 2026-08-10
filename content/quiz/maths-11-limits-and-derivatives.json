@@ -1,0 +1,513 @@
+{
+  "slug": "maths-11-limits-and-derivatives",
+  "subject": "MATHS",
+  "classLevel": 11,
+  "chapter": "Chapter 12 — Limits and Derivatives",
+  "name": "Limits and Derivatives",
+  "summary": "Asking what a function is heading towards rather than what it equals — which is the only way to give a meaning to zero divided by zero, and therefore the only way to measure a rate at a single instant rather than over an interval.",
+  "position": 12,
+  "translations": {
+    "hi": {
+      "name": "सीमा और अवकलज",
+      "summary": "यह पूछना कि फलन किस ओर जा रहा है, यह नहीं कि वह बराबर क्या है — और शून्य बटा शून्य को अर्थ देने का यही इकलौता रास्ता है, अतः किसी अंतराल पर नहीं बल्कि एक ही क्षण पर दर मापने का भी यही इकलौता रास्ता।"
+    },
+    "mr": {
+      "name": "सीमा आणि अवकलज",
+      "summary": "फलन कोणत्या दिशेने जाते आहे हे विचारणे, ते बरोबर काय आहे हे नव्हे — आणि शून्य भागिले शून्य याला अर्थ देण्याचा हाच एकमेव मार्ग, म्हणून एखाद्या अंतरावर नव्हे तर एकाच क्षणी दर मोजण्याचाही हाच एकमेव मार्ग."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 11)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the limit of 3x + 1 as x approaches 2?",
+      "choices": [
+        "4",
+        "3",
+        "6",
+        "7"
+      ],
+      "answerIndex": 3,
+      "solution": "For an expression with no break in it, the limit is simply the value: 3 × 2 + 1 = 7. Substitution works here because the function is continuous at 2 — the whole subject of limits only becomes interesting when substitution FAILS, which is what the later questions are about. (4 substitutes into 3 + 1 and loses the x.)",
+      "checkExpr": "3*2+1",
+      "translations": {
+        "hi": {
+          "stem": "जब x, 2 की ओर जाता है तो 3x + 1 की सीमा क्या है?",
+          "choices": [
+            "4",
+            "3",
+            "6",
+            "7"
+          ],
+          "solution": "जिस व्यंजक में कोई टूट न हो, उसकी सीमा बस उसका मान है: 3 × 2 + 1 = 7. यहाँ प्रतिस्थापन इसलिए चलता है कि फलन 2 पर संतत है — सीमाओं का पूरा विषय तभी रोचक होता है जब प्रतिस्थापन विफल हो, और आगे के प्रश्न उसी के हैं। (4 3 + 1 में रखकर x खो देता है।)"
+        },
+        "mr": {
+          "stem": "x हा 2 कडे जातो तेव्हा 3x + 1 ची सीमा किती?",
+          "choices": [
+            "4",
+            "3",
+            "6",
+            "7"
+          ],
+          "solution": "ज्या पदावलीत खंड नाही, तिची सीमा म्हणजे फक्त तिचे मूल्य: 3 × 2 + 1 = 7. इथे प्रतिस्थापन यासाठी चालते की फलन 2 वर संतत आहे — सीमांचा अख्खा विषय तेव्हाच रोचक होतो जेव्हा प्रतिस्थापन अपयशी ठरते, आणि पुढचे प्रश्न त्याचेच आहेत. (4 3 + 1 मध्ये ठेवून x गमावते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the value of the derivative of x³ at x = 3?",
+      "choices": [
+        "9",
+        "6",
+        "81",
+        "27"
+      ],
+      "answerIndex": 3,
+      "solution": "Differentiating xⁿ gives nxⁿ⁻¹, so the derivative of x³ is 3x², and at x = 3 that is 3 × 9 = 27. Bring the power down in front and reduce it by one — those two moves are the whole rule. (9 substitutes into x² and forgets to multiply by the 3 that came down.)",
+      "checkExpr": "3*3*3",
+      "translations": {
+        "hi": {
+          "stem": "x = 3 पर x³ के अवकलज का मान क्या है?",
+          "choices": [
+            "9",
+            "6",
+            "81",
+            "27"
+          ],
+          "solution": "xⁿ का अवकलन nxⁿ⁻¹ देता है, अतः x³ का अवकलज 3x² है, और x = 3 पर वह 3 × 9 = 27. घात को आगे नीचे लाओ और उसे एक घटाओ — यही दो चालें पूरा नियम हैं। (9 x² में रखकर नीचे आए 3 से गुणा करना भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "x = 3 वर x³ च्या अवकलजाचे मूल्य किती?",
+          "choices": [
+            "9",
+            "6",
+            "81",
+            "27"
+          ],
+          "solution": "xⁿ चे अवकलन nxⁿ⁻¹ देते, म्हणून x³ चा अवकलज 3x² आहे, आणि x = 3 वर तो 3 × 9 = 27. घात पुढे खाली आणा आणि तिला एकने कमी करा — याच दोन खेळी अख्खा नियम. (9 x² मध्ये ठेवून खाली आलेल्या 3 ने गुणणे विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the derivative of the constant function f(x) = 7?",
+      "choices": [
+        "0",
+        "1",
+        "7",
+        "14"
+      ],
+      "answerIndex": 0,
+      "solution": "A derivative measures the rate at which the output changes, and a constant function never changes at all, so the answer is 0. Its graph is a horizontal line and the slope of a horizontal line is zero — the algebra and the picture agree exactly. (7 quotes the value of the function rather than its rate of change.)",
+      "checkExpr": "7-7",
+      "translations": {
+        "hi": {
+          "stem": "अचर फलन f(x) = 7 का अवकलज क्या है?",
+          "choices": [
+            "0",
+            "1",
+            "7",
+            "14"
+          ],
+          "solution": "अवकलज मापता है कि निर्गम किस दर से बदलता है, और अचर फलन कभी बदलता ही नहीं, अतः उत्तर 0 है। उसका आलेख क्षैतिज रेखा है और क्षैतिज रेखा की ढाल शून्य है — बीजगणित और चित्र ठीक-ठीक सहमत हैं। (7 परिवर्तन की दर के बजाय फलन का मान बता देता है।)"
+        },
+        "mr": {
+          "stem": "स्थिर फलन f(x) = 7 चा अवकलज किती?",
+          "choices": [
+            "0",
+            "1",
+            "7",
+            "14"
+          ],
+          "solution": "अवकलज मोजतो की निर्गम कोणत्या दराने बदलतो, आणि स्थिर फलन कधी बदलतच नाही, म्हणून उत्तर 0. त्याचा आलेख आडवी रेषा आहे आणि आडव्या रेषेची उतारी शून्य आहे — बीजगणित आणि चित्र नेमके सहमत आहेत. (7 बदलाच्या दराऐवजी फलनाचे मूल्य सांगते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the limit of (x² − 9)/(x − 3) as x approaches 3?",
+      "choices": [
+        "3",
+        "0",
+        "9",
+        "6"
+      ],
+      "answerIndex": 3,
+      "solution": "Substituting 3 gives 0/0, which is not a number and settles nothing. Factorise instead: (x − 3)(x + 3)/(x − 3) = x + 3 for every x except 3 itself, and as x approaches 3 that heads towards 6. The cancellation is legitimate precisely because a limit never asks about the value AT the point, only about the values near it. (0 reads 0/0 as zero.)",
+      "checkExpr": "3+3",
+      "translations": {
+        "hi": {
+          "stem": "जब x, 3 की ओर जाता है तो (x² − 9)/(x − 3) की सीमा क्या है?",
+          "choices": [
+            "3",
+            "0",
+            "9",
+            "6"
+          ],
+          "solution": "3 रखने पर 0/0 मिलता है, जो कोई संख्या नहीं और कुछ तय नहीं करता। इसके बजाय गुणनखंड करो: (x − 3)(x + 3)/(x − 3) = x + 3, 3 को छोड़कर हर x के लिए, और x के 3 की ओर जाते ही वह 6 की ओर बढ़ता है। कटाई ठीक इसलिए वैध है कि सीमा कभी बिंदु पर मान नहीं पूछती, केवल उसके पास के मान पूछती है। (0 0/0 को शून्य पढ़ लेता है।)"
+        },
+        "mr": {
+          "stem": "x हा 3 कडे जातो तेव्हा (x² − 9)/(x − 3) ची सीमा किती?",
+          "choices": [
+            "3",
+            "0",
+            "9",
+            "6"
+          ],
+          "solution": "3 ठेवल्यावर 0/0 मिळते, जी संख्या नाही आणि काहीच ठरवत नाही. त्याऐवजी अवयव पाडा: (x − 3)(x + 3)/(x − 3) = x + 3, 3 वगळता प्रत्येक x साठी, आणि x हा 3 कडे जाताच ते 6 कडे सरकते. छेदन नेमके यासाठी वैध की सीमा कधीच बिंदूवरचे मूल्य विचारत नाही, केवळ त्याच्या जवळची मूल्ये विचारते. (0 0/0 ला शून्य वाचते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the value of the derivative of 5x² + 3x at x = 1?",
+      "choices": [
+        "13",
+        "5",
+        "8",
+        "3"
+      ],
+      "answerIndex": 0,
+      "solution": "Differentiate term by term: 5x² gives 10x and 3x gives 3, so the derivative is 10x + 3, which at x = 1 is 13. Differentiation splits across a sum, so a long polynomial is never harder than its individual terms — only longer. (8 substitutes into the original expression instead of the derivative.)",
+      "checkExpr": "10*1+3",
+      "translations": {
+        "hi": {
+          "stem": "x = 1 पर 5x² + 3x के अवकलज का मान क्या है?",
+          "choices": [
+            "13",
+            "5",
+            "8",
+            "3"
+          ],
+          "solution": "पद-दर-पद अवकलन करो: 5x² देता है 10x और 3x देता है 3, अतः अवकलज 10x + 3 है, जो x = 1 पर 13. अवकलन योग पर बँट जाता है, अतः लंबा बहुपद अपने अलग-अलग पदों से कभी कठिन नहीं, केवल लंबा होता है। (8 अवकलज के बजाय मूल व्यंजक में रख देता है।)"
+        },
+        "mr": {
+          "stem": "x = 1 वर 5x² + 3x च्या अवकलजाचे मूल्य किती?",
+          "choices": [
+            "13",
+            "5",
+            "8",
+            "3"
+          ],
+          "solution": "पद-दर-पद अवकलन करा: 5x² देते 10x आणि 3x देते 3, म्हणून अवकलज 10x + 3, जो x = 1 वर 13. अवकलन बेरजेवर विभागते, म्हणून लांब बहुपदी आपल्या वेगवेगळ्या पदांहून कधीच कठीण नाही, केवळ लांब असते. (8 अवकलजाऐवजी मूळ पदावलीत ठेवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the limit of (sin x)/x as x approaches 0, with x in radians?",
+      "choices": [
+        "1",
+        "0",
+        "2",
+        "0.5"
+      ],
+      "answerIndex": 0,
+      "solution": "Substitution again gives 0/0, but the value is 1 — for a small angle the sine and the angle itself are almost identical, and the smaller the angle the closer they get. Try it: at 0.1 radians the sine is 0.0998, and at 0.01 it is 0.0099998. The result holds only in radians, which is the real reason radians are the unit of choice in calculus. (0 reads 0/0 as zero once more.)",
+      "checkExpr": "2-1",
+      "translations": {
+        "hi": {
+          "stem": "जब x, 0 की ओर जाता है तो (sin x)/x की सीमा क्या है, जहाँ x रेडियन में है?",
+          "choices": [
+            "1",
+            "0",
+            "2",
+            "0.5"
+          ],
+          "solution": "प्रतिस्थापन फिर 0/0 देता है, पर मान 1 है — छोटे कोण के लिए ज्या और कोण स्वयं लगभग एक ही हैं, और कोण जितना छोटा वे उतने ही पास। आज़माओ: 0.1 रेडियन पर ज्या 0.0998 है, और 0.01 पर 0.0099998. परिणाम केवल रेडियन में चलता है, और कलन में रेडियन को ही मात्रक चुनने का असली कारण यही है। (0 फिर 0/0 को शून्य पढ़ लेता है।)"
+        },
+        "mr": {
+          "stem": "x हा 0 कडे जातो तेव्हा (sin x)/x ची सीमा किती, जिथे x रेडियनमध्ये आहे?",
+          "choices": [
+            "1",
+            "0",
+            "2",
+            "0.5"
+          ],
+          "solution": "प्रतिस्थापन पुन्हा 0/0 देते, पण मूल्य 1 आहे — लहान कोनासाठी ज्या आणि कोन स्वतः जवळपास एकच आहेत, आणि कोन जितका लहान ते तितके जवळ. आजमावा: 0.1 रेडियनवर ज्या 0.0998 आहे, आणि 0.01 वर 0.0099998. निकाल केवळ रेडियनमध्ये चालतो, आणि कलनात रेडियनलाच एकक निवडण्याचे खरे कारण हेच. (0 पुन्हा 0/0 ला शून्य वाचते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the value of the derivative of x² + 3x + 2 at x = 3?",
+      "choices": [
+        "6",
+        "15",
+        "9",
+        "11"
+      ],
+      "answerIndex": 2,
+      "solution": "The derivative is 2x + 3, and at x = 3 that is 9. The constant 2 has vanished, and that is worth pausing on: shifting a whole curve up or down does not change how steep it is anywhere, so every constant differentiates away. Two curves differing only by a constant have identical derivatives everywhere. (15 substitutes 3 into the original expression instead of the derivative.)",
+      "checkExpr": "2*3+3",
+      "translations": {
+        "hi": {
+          "stem": "x = 3 पर x² + 3x + 2 के अवकलज का मान क्या है?",
+          "choices": [
+            "6",
+            "15",
+            "9",
+            "11"
+          ],
+          "solution": "अवकलज 2x + 3 है, और x = 3 पर वह 9. अचर 2 ग़ायब हो गया, और उस पर ठहरने योग्य है: पूरी वक्र को ऊपर या नीचे खिसकाने से वह कहीं भी अधिक या कम तीव्र नहीं होती, अतः हर अचर अवकलन में मिट जाता है। केवल अचर से भिन्न दो वक्रों के अवकलज हर जगह एक जैसे होते हैं। (15 अवकलज के बजाय मूल व्यंजक में 3 रख देता है।)"
+        },
+        "mr": {
+          "stem": "x = 3 वर x² + 3x + 2 च्या अवकलजाचे मूल्य किती?",
+          "choices": [
+            "6",
+            "15",
+            "9",
+            "11"
+          ],
+          "solution": "अवकलज 2x + 3 आहे, आणि x = 3 वर तो 9. स्थिरांक 2 नाहीसा झाला, आणि त्यावर थांबण्याजोगे: अख्खी वक्र वर वा खाली सरकवल्याने ती कुठेही अधिक वा कमी तीव्र होत नाही, म्हणून प्रत्येक स्थिरांक अवकलनात मिटतो. केवळ स्थिरांकाने वेगळ्या असलेल्या दोन वक्रांचे अवकलज सर्वत्र सारखे असतात. (15 अवकलजाऐवजी मूळ पदावलीत 3 ठेवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the limit of (x³ − 8)/(x − 2) as x approaches 2?",
+      "choices": [
+        "12",
+        "6",
+        "8",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "Factorising the difference of cubes gives (x − 2)(x² + 2x + 4)/(x − 2) = x² + 2x + 4, which at x = 2 is 4 + 4 + 4 = 12. There is a shortcut worth learning: the limit of (xⁿ − aⁿ)/(x − a) as x approaches a is always n·aⁿ⁻¹, which here is 3 × 2² = 12 with no factorising at all. Notice that this is also the derivative of x³ at x = 2 — the standard limit IS the definition of a derivative in disguise. (8 substitutes 2 into x³ and stops.)",
+      "checkExpr": "3*2*2",
+      "translations": {
+        "hi": {
+          "stem": "जब x, 2 की ओर जाता है तो (x³ − 8)/(x − 2) की सीमा क्या है?",
+          "choices": [
+            "12",
+            "6",
+            "8",
+            "4"
+          ],
+          "solution": "घनों के अंतर का गुणनखंड करने पर (x − 2)(x² + 2x + 4)/(x − 2) = x² + 2x + 4, जो x = 2 पर 4 + 4 + 4 = 12. एक शॉर्टकट सीखने योग्य है: x के a की ओर जाने पर (xⁿ − aⁿ)/(x − a) की सीमा सदा n·aⁿ⁻¹ है, जो यहाँ बिना गुणनखंड किए 3 × 2² = 12. ध्यान दो कि यह x = 2 पर x³ का अवकलज भी है — मानक सीमा भेस बदले अवकलज की परिभाषा ही है। (8 x³ में 2 रखकर रुक जाता है।)"
+        },
+        "mr": {
+          "stem": "x हा 2 कडे जातो तेव्हा (x³ − 8)/(x − 2) ची सीमा किती?",
+          "choices": [
+            "12",
+            "6",
+            "8",
+            "4"
+          ],
+          "solution": "घनांच्या फरकाचे अवयव पाडल्यावर (x − 2)(x² + 2x + 4)/(x − 2) = x² + 2x + 4, जे x = 2 वर 4 + 4 + 4 = 12. एक शॉर्टकट शिकण्याजोगा: x हा a कडे जाताना (xⁿ − aⁿ)/(x − a) ची सीमा नेहमी n·aⁿ⁻¹ आहे, जी इथे अवयव न पाडता 3 × 2² = 12. लक्षात घ्या की हा x = 2 वरचा x³ चा अवकलजही आहे — प्रमाण सीमा ही वेष बदललेली अवकलजाची व्याख्याच आहे. (8 x³ मध्ये 2 ठेवून थांबते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "If f(x) = (2x + 1)(x + 3), what is f′(1)?",
+      "choices": [
+        "3",
+        "4",
+        "7",
+        "11"
+      ],
+      "answerIndex": 3,
+      "solution": "By the product rule, f′ = 2(x + 3) + (2x + 1)(1) = 4x + 7, so f′(1) = 11. Expanding first is just as good here: f(x) = 2x² + 7x + 3 differentiates to 4x + 7, the same answer by a different road. That agreement is the check worth making, because the commonest error is to differentiate each bracket and multiply the results — which would give 2 × 1 = 2 and is simply not what the product rule says. (4 multiplies the two derivatives together.)",
+      "checkExpr": "4*1+7",
+      "translations": {
+        "hi": {
+          "stem": "यदि f(x) = (2x + 1)(x + 3), तो f′(1) क्या है?",
+          "choices": [
+            "3",
+            "4",
+            "7",
+            "11"
+          ],
+          "solution": "गुणनफल नियम से f′ = 2(x + 3) + (2x + 1)(1) = 4x + 7, अतः f′(1) = 11. यहाँ पहले खोल देना भी उतना ही अच्छा है: f(x) = 2x² + 7x + 3 का अवकलन 4x + 7 देता है, वही उत्तर दूसरे रास्ते से। वह सहमति ही करने योग्य जाँच है, क्योंकि सबसे आम भूल है हर कोष्ठक का अवकलन करके परिणाम गुणा कर देना — जो 2 × 1 = 2 देता और गुणनफल नियम वह कहता ही नहीं। (4 दोनों अवकलज आपस में गुणा कर देता है।)"
+        },
+        "mr": {
+          "stem": "जर f(x) = (2x + 1)(x + 3), तर f′(1) किती?",
+          "choices": [
+            "3",
+            "4",
+            "7",
+            "11"
+          ],
+          "solution": "गुणाकार नियमाने f′ = 2(x + 3) + (2x + 1)(1) = 4x + 7, म्हणून f′(1) = 11. इथे आधी उलगडणेही तितकेच चांगले: f(x) = 2x² + 7x + 3 चे अवकलन 4x + 7 देते, तेच उत्तर दुसऱ्या मार्गाने. ती सहमतीच करण्याजोगी तपासणी, कारण सर्वांत सामान्य चूक म्हणजे प्रत्येक कंसाचे अवकलन करून निकाल गुणणे — जे 2 × 1 = 2 दिले असते आणि गुणाकार नियम ते सांगतच नाही. (4 दोन्ही अवकलज एकमेकांशी गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "If f(x) = x²/(x + 1), what is f′(1)?",
+      "choices": [
+        "0.75",
+        "2",
+        "0.5",
+        "1.5"
+      ],
+      "answerIndex": 0,
+      "solution": "The quotient rule gives f′ = [2x(x + 1) − x²]/(x + 1)². At x = 1 the top is 2 × 2 − 1 = 3 and the bottom is 4, so f′(1) = 3/4 = 0.75. The order on top matters — it is derivative of the numerator times the denominator MINUS the numerator times the derivative of the denominator, and reversing those two flips the sign of the whole answer. Unlike a product, a quotient cannot be rewritten to avoid the rule here, since x²/(x + 1) does not simplify. (2 divides the two derivatives, 2x by 1, which is not a rule at all.)",
+      "checkExpr": "(2*1*(1+1)-1*1)/((1+1)*(1+1))",
+      "translations": {
+        "hi": {
+          "stem": "यदि f(x) = x²/(x + 1), तो f′(1) क्या है?",
+          "choices": [
+            "0.75",
+            "2",
+            "0.5",
+            "1.5"
+          ],
+          "solution": "भागफल नियम देता है f′ = [2x(x + 1) − x²]/(x + 1)². x = 1 पर ऊपर 2 × 2 − 1 = 3 और नीचे 4, अतः f′(1) = 3/4 = 0.75. ऊपर का क्रम मायने रखता है — वह अंश का अवकलज गुणा हर, घटा अंश गुणा हर का अवकलज है, और दोनों उलटने पर पूरा उत्तर चिह्न बदल लेता है। गुणनफल के विपरीत, यहाँ भागफल को नियम से बचने के लिए फिर से नहीं लिखा जा सकता, क्योंकि x²/(x + 1) सरल होता ही नहीं। (2 दोनों अवकलज भाग दे देता है, 2x बटा 1, जो कोई नियम है ही नहीं।)"
+        },
+        "mr": {
+          "stem": "जर f(x) = x²/(x + 1), तर f′(1) किती?",
+          "choices": [
+            "0.75",
+            "2",
+            "0.5",
+            "1.5"
+          ],
+          "solution": "भागाकार नियम देतो f′ = [2x(x + 1) − x²]/(x + 1)². x = 1 वर वर 2 × 2 − 1 = 3 आणि खाली 4, म्हणून f′(1) = 3/4 = 0.75. वरचा क्रम महत्त्वाचा — तो अंशाचा अवकलज गुणिले छेद, वजा अंश गुणिले छेदाचा अवकलज, आणि दोन्ही उलटवल्यास अख्खे उत्तर चिन्ह बदलते. गुणाकाराच्या उलट, इथे भागाकार नियम टाळण्यासाठी पुन्हा लिहिता येत नाही, कारण x²/(x + 1) सोपे होतच नाही. (2 दोन्ही अवकलज भागते, 2x भागिले 1, जो नियमच नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "What is the limit of (√(1 + x) − 1)/x as x approaches 0?",
+      "choices": [
+        "1",
+        "2",
+        "0",
+        "0.5"
+      ],
+      "answerIndex": 3,
+      "solution": "Substituting gives 0/0 again, and factorising will not help because of the root. Multiply top and bottom by the conjugate √(1 + x) + 1 instead: the numerator becomes (1 + x) − 1 = x, which cancels the x below, leaving 1/(√(1 + x) + 1). Now substitution is safe and gives 1/2 = 0.5. Rationalising is the standard move whenever a root sits inside a 0/0 limit, and it works for the same reason the difference of two squares does. A useful check: 0.5 is also the derivative of √(1 + x) at x = 0, which is what this limit was measuring all along. (1 assumes the root and the 1 cancel directly.)",
+      "checkExpr": "1/2",
+      "translations": {
+        "hi": {
+          "stem": "जब x, 0 की ओर जाता है तो (√(1 + x) − 1)/x की सीमा क्या है?",
+          "choices": [
+            "1",
+            "2",
+            "0",
+            "0.5"
+          ],
+          "solution": "प्रतिस्थापन फिर 0/0 देता है, और मूल के कारण गुणनखंड करना काम नहीं आएगा। इसके बजाय ऊपर-नीचे संयुग्मी √(1 + x) + 1 से गुणा करो: अंश बनता है (1 + x) − 1 = x, जो नीचे का x काट देता है, और 1/(√(1 + x) + 1) बचता है। अब प्रतिस्थापन सुरक्षित है और 1/2 = 0.5 देता है। जब भी कोई मूल 0/0 सीमा के भीतर बैठा हो तब परिमेयकरण मानक चाल है, और वह उसी कारण चलती है जिससे दो वर्गों का अंतर। एक उपयोगी जाँच: 0.5 x = 0 पर √(1 + x) का अवकलज भी है, और यह सीमा शुरू से वही माप रही थी। (1 मान लेता है कि मूल और 1 सीधे कट जाते हैं।)"
+        },
+        "mr": {
+          "stem": "x हा 0 कडे जातो तेव्हा (√(1 + x) − 1)/x ची सीमा किती?",
+          "choices": [
+            "1",
+            "2",
+            "0",
+            "0.5"
+          ],
+          "solution": "प्रतिस्थापन पुन्हा 0/0 देते, आणि मुळामुळे अवयव पाडणे उपयोगी पडणार नाही. त्याऐवजी वर-खाली संयुग्मी √(1 + x) + 1 ने गुणा: अंश बनतो (1 + x) − 1 = x, जो खालचा x छेदतो, आणि 1/(√(1 + x) + 1) उरते. आता प्रतिस्थापन सुरक्षित आहे आणि 1/2 = 0.5 देते. जेव्हा जेव्हा एखादे मूळ 0/0 सीमेच्या आत बसलेले असते तेव्हा परिमेयीकरण ही प्रमाण खेळी, आणि ती त्याच कारणाने चालते ज्याने दोन वर्गांचा फरक. एक उपयुक्त तपासणी: 0.5 हा x = 0 वरचा √(1 + x) चा अवकलजही आहे, आणि ही सीमा सुरुवातीपासून तेच मोजत होती. (1 गृहीत धरते की मूळ आणि 1 थेट छेदतात.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "For f(x) = x³ − 12x, at which POSITIVE value of x is f′(x) = 0?",
+      "choices": [
+        "2",
+        "12",
+        "6",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "Differentiate: f′(x) = 3x² − 12. Setting it to zero gives 3x² = 12, so x² = 4 and x = ±2, of which the positive value is 2. What the answer means is worth stating: at x = 2 the curve is momentarily flat, which is where a turning point sits — a maximum, a minimum or a point of inflection. Solving f′ = 0 is how every optimisation problem begins, from the largest box that can be cut from a sheet to the cheapest tin that holds a litre. (4 gives x², stopping one step before taking the root.)",
+      "checkExpr": "12/6",
+      "translations": {
+        "hi": {
+          "stem": "f(x) = x³ − 12x के लिए x के किस धनात्मक मान पर f′(x) = 0 है?",
+          "choices": [
+            "2",
+            "12",
+            "6",
+            "4"
+          ],
+          "solution": "अवकलन करो: f′(x) = 3x² − 12. उसे शून्य रखने पर 3x² = 12, अतः x² = 4 और x = ±2, जिनमें धनात्मक मान 2 है। उत्तर का अर्थ कहने योग्य है: x = 2 पर वक्र क्षण भर के लिए चपटी है, और वहीं कोई मोड़-बिंदु बैठता है — उच्चिष्ठ, निम्निष्ठ या नति-परिवर्तन बिंदु। f′ = 0 हल करना ही हर उच्चतमीकरण समस्या की शुरुआत है, उस सबसे बड़े डिब्बे से लेकर जो किसी चादर से काटा जा सके, उस सबसे सस्ते टिन तक जो एक लीटर रखे। (4 x² देता है, मूल लेने से एक क़दम पहले रुककर।)"
+        },
+        "mr": {
+          "stem": "f(x) = x³ − 12x साठी x च्या कोणत्या धन मूल्यावर f′(x) = 0 आहे?",
+          "choices": [
+            "2",
+            "12",
+            "6",
+            "4"
+          ],
+          "solution": "अवकलन करा: f′(x) = 3x² − 12. ते शून्य ठेवल्यावर 3x² = 12, म्हणून x² = 4 आणि x = ±2, ज्यांतले धन मूल्य 2. उत्तराचा अर्थ सांगण्याजोगा: x = 2 वर वक्र क्षणभर सपाट आहे, आणि तिथेच एखादा वळण-बिंदू बसतो — कमाल, किमान वा नती-बदल बिंदू. f′ = 0 सोडवणे हीच प्रत्येक इष्टतमीकरण समस्येची सुरुवात, एखाद्या पत्र्यातून कापता येणाऱ्या सर्वांत मोठ्या पेटीपासून ते एक लिटर धरणाऱ्या सर्वांत स्वस्त डब्यापर्यंत. (4 x² देते, मूळ घेण्याच्या एक पाऊल आधी थांबून.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "What is the limit of (x⁴ − 16)/(x − 2) as x approaches 2?",
+      "choices": [
+        "8",
+        "24",
+        "16",
+        "32"
+      ],
+      "answerIndex": 3,
+      "solution": "Use the standard limit: (xⁿ − aⁿ)/(x − a) tends to n·aⁿ⁻¹, so here it is 4 × 2³ = 32. Factorising by hand gives the same thing the long way — x⁴ − 16 = (x − 2)(x³ + 2x² + 4x + 8), and substituting 2 into that cubic gives 8 + 8 + 8 + 8 = 32. The two routes agreeing is the check. It is worth seeing what the result really is: this limit is precisely the derivative of x⁴ evaluated at 2, which is why the standard limit and the power rule are the same statement written twice. (16 substitutes 2 into x⁴ and never divides.)",
+      "checkExpr": "4*2*2*2",
+      "translations": {
+        "hi": {
+          "stem": "जब x, 2 की ओर जाता है तो (x⁴ − 16)/(x − 2) की सीमा क्या है?",
+          "choices": [
+            "8",
+            "24",
+            "16",
+            "32"
+          ],
+          "solution": "मानक सीमा लो: (xⁿ − aⁿ)/(x − a) n·aⁿ⁻¹ की ओर जाती है, अतः यहाँ वह 4 × 2³ = 32. हाथ से गुणनखंड करने पर लंबे रास्ते से वही मिलता है — x⁴ − 16 = (x − 2)(x³ + 2x² + 4x + 8), और उस त्रिघात में 2 रखने पर 8 + 8 + 8 + 8 = 32. दोनों रास्तों का सहमत होना ही जाँच है। परिणाम वस्तुतः क्या है यह देखने योग्य है: यह सीमा ठीक 2 पर आँका गया x⁴ का अवकलज है, इसीलिए मानक सीमा और घात नियम एक ही कथन दो बार लिखा हुआ हैं। (16 x⁴ में 2 रखकर भाग देता ही नहीं।)"
+        },
+        "mr": {
+          "stem": "x हा 2 कडे जातो तेव्हा (x⁴ − 16)/(x − 2) ची सीमा किती?",
+          "choices": [
+            "8",
+            "24",
+            "16",
+            "32"
+          ],
+          "solution": "प्रमाण सीमा घ्या: (xⁿ − aⁿ)/(x − a) ही n·aⁿ⁻¹ कडे जाते, म्हणून इथे ती 4 × 2³ = 32. हाताने अवयव पाडल्यावर लांब मार्गाने तेच मिळते — x⁴ − 16 = (x − 2)(x³ + 2x² + 4x + 8), आणि त्या त्रिघातात 2 ठेवल्यावर 8 + 8 + 8 + 8 = 32. दोन्ही मार्ग सहमत असणे हीच तपासणी. निकाल प्रत्यक्षात काय आहे हे पाहण्याजोगे: ही सीमा नेमका 2 वर मोजलेला x⁴ चा अवकलज आहे, म्हणूनच प्रमाण सीमा आणि घात नियम हे एकच विधान दोनदा लिहिलेले आहे. (16 x⁴ मध्ये 2 ठेवते आणि भागतच नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A particle moves so that its distance is s = 2t² + 5t metres after t seconds. What is its velocity, in metres per second, at t = 3?",
+      "choices": [
+        "12",
+        "33",
+        "17",
+        "11"
+      ],
+      "answerIndex": 2,
+      "solution": "Velocity is the derivative of distance with respect to time: ds/dt = 4t + 5, which at t = 3 gives 17 m/s. This is the whole reason derivatives were invented, so it is worth separating two ideas that are easy to confuse. The AVERAGE velocity over the first 3 seconds is total distance over total time: s(3) = 33, so 33/3 = 11 m/s. The INSTANTANEOUS velocity at the moment t = 3 is 17 m/s, and it is larger because the particle has been speeding up throughout. Only a limit can give the second number — dividing distance by time always produces an average over an interval, and shrinking the interval to nothing is exactly what a derivative does. (11 gives the average velocity over the first three seconds instead of the velocity at that instant.)",
+      "checkExpr": "4*3+5",
+      "translations": {
+        "hi": {
+          "stem": "कोई कण ऐसे चलता है कि t सेकंड बाद उसकी दूरी s = 2t² + 5t मीटर है। t = 3 पर उसका वेग मीटर प्रति सेकंड में क्या है?",
+          "choices": [
+            "12",
+            "33",
+            "17",
+            "11"
+          ],
+          "solution": "वेग समय के सापेक्ष दूरी का अवकलज है: ds/dt = 4t + 5, जो t = 3 पर 17 m/s देता है। अवकलज गढ़े ही इसीलिए गए थे, अतः दो विचारों को अलग करना उचित है जिन्हें गड्डमड्ड करना आसान है। पहले 3 सेकंड का औसत वेग कुल दूरी बटा कुल समय है: s(3) = 33, अतः 33/3 = 11 m/s. t = 3 के क्षण पर तात्क्षणिक वेग 17 m/s है, और वह बड़ा है क्योंकि कण पूरे समय तेज़ होता रहा है। दूसरी संख्या केवल सीमा दे सकती है — दूरी को समय से भाग देना सदा किसी अंतराल का औसत बनाता है, और अंतराल को शून्य तक सिकोड़ना ही वह है जो अवकलज करता है। (11 उस क्षण के वेग के बजाय पहले तीन सेकंड का औसत वेग देता है।)"
+        },
+        "mr": {
+          "stem": "एक कण असा चालतो की t सेकंदांनी त्याचे अंतर s = 2t² + 5t मीटर आहे. t = 3 वर त्याचा वेग मीटर प्रति सेकंदात किती?",
+          "choices": [
+            "12",
+            "33",
+            "17",
+            "11"
+          ],
+          "solution": "वेग म्हणजे काळाच्या सापेक्ष अंतराचा अवकलज: ds/dt = 4t + 5, जो t = 3 वर 17 m/s देतो. अवकलज घडवलेच यासाठी होते, म्हणून गोंधळायला सोप्या दोन कल्पना वेगळ्या करणे योग्य. पहिल्या 3 सेकंदांचा सरासरी वेग म्हणजे एकूण अंतर भागिले एकूण काळ: s(3) = 33, म्हणून 33/3 = 11 m/s. t = 3 या क्षणीचा तात्कालिक वेग 17 m/s आहे, आणि तो मोठा आहे कारण कण अख्खा वेळ वेगवान होत गेला आहे. दुसरी संख्या केवळ सीमाच देऊ शकते — अंतराला काळाने भागणे नेहमी एखाद्या अंतरावरची सरासरी बनवते, आणि अंतर शून्यापर्यंत आकसवणे हेच अवकलज करतो. (11 त्या क्षणीच्या वेगाऐवजी पहिल्या तीन सेकंदांचा सरासरी वेग देते.)"
+        }
+      }
+    }
+  ]
+}

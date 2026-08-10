@@ -2514,8 +2514,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 332
-  chapters / 5,751 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 336
+  chapters / 5,807 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2695,7 +2695,19 @@ navigation" means the actual list rather than one somebody maintained by hand.
   the binomial coefficient without the 2 inside the bracket squared with it,
   the 5th term quoted where the sum of five was wanted, a perpendicular slope
   inverted but not negated, and the intercepts added instead of Pythagorased.
-  Four chapters of Class 11 Maths remain, and Class 12 after them.
+  **Class 11 Maths then closed at fourteen chapters** — 196 questions, the last
+  four being Three Dimensional Geometry, Limits and Derivatives, Statistics and
+  Probability. The through-line is how little has to be rebuilt: 3D distance is
+  Pythagoras with one more square and a midpoint is still an average taken
+  coordinate by coordinate; probability's addition rule is the union formula
+  from Chapter 1 wearing a new name; and the standard limit of (xⁿ − aⁿ)/(x − a)
+  turns out to BE the power rule, written twice. Statistics leaves the mean
+  behind for the spread, with a pair of questions that exist only to be read
+  together — adding 5 to every observation leaves the variance untouched, while
+  multiplying by 3 triples the standard deviation and multiplies the variance by
+  nine. Distractors are the real errors: 0/0 read as zero, the average velocity
+  quoted where the instantaneous was asked, two means averaged without weighting
+  for group size, and 1.1 offered as a probability. Class 12 is what remains.
   Suite re-pointed and green: 87 files, 1485 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**
