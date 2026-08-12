@@ -52,6 +52,7 @@ import { G11_CHEMISTRY, G11_CHEMISTRY_NUMERIC } from "./g11-chemistry";
 import { G11_BIOLOGY, G11_BIOLOGY_NUMERIC } from "./g11-biology";
 import { G12_PHYSICS, G12_PHYSICS_NUMERIC } from "./g12-physics";
 import { G12_CHEMISTRY, G12_CHEMISTRY_NUMERIC } from "./g12-chemistry";
+import { G12_BIOLOGY, G12_BIOLOGY_NUMERIC } from "./g12-biology";
 import { withNumeric } from "./numeric";
 
 const DIR = join(process.cwd(), "content", "quiz");
@@ -99,6 +100,7 @@ function main() {
     // is what licenses the formula the numerical half then uses.
     ...G12_PHYSICS.map(generateChapter).map((t) => withNumeric(t, G12_PHYSICS_NUMERIC[t.slug] ?? [])),
     ...G12_CHEMISTRY.map(generateChapter).map((t) => withNumeric(t, G12_CHEMISTRY_NUMERIC[t.slug] ?? [])),
+    ...G12_BIOLOGY.map(generateChapter).map((t) => withNumeric(t, G12_BIOLOGY_NUMERIC[t.slug] ?? [])),
     ...G3_MATHS,
     ...G4_MATHS,
     ...G5_MATHS,

@@ -2514,8 +2514,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 360
-  chapters / 6,478 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 363
+  chapters / 6,532 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2946,6 +2946,46 @@ navigation" means the actual list rather than one somebody maintained by hand.
   36 — restated so the arithmetic is exact and the polarimeter argument
   moved into the solution where it belongs. Verify clean, warnings steady
   at 34, suite green: 87 files, 1485 tests. **Class 12 Chemistry: 10/10.**
+
+  **Class 12 Biology opened** in `g12-biology.ts` — three chapters, 54
+  questions: Sexual Reproduction in Flowering Plants, Human Reproduction,
+  and Reproductive Health. Biology carries no numerics by the Class 11 rule
+  (an empty `G12_BIOLOGY_NUMERIC` entry is a claim — this chapter is not
+  measured by calculation — rather than an omission), so three chapters is
+  the same weight as two elsewhere. What shifts at this level is that Class
+  11 asked what things ARE and Class 12 asks why a mechanism is built the
+  way it is; a student who can name the parts has learned the vocabulary
+  rather than the subject. The flowering-plant L5 explains double
+  fertilisation by putting a gymnosperm beside it as the control: the
+  gymnosperm builds its nutritive tissue in advance and loses it whenever
+  fertilisation fails, while the angiosperm's endosperm is a *product* of
+  fertilisation, so the larder is stocked only once there is a mouth to
+  feed. The L6 asks why a bisexual flower goes to such trouble to avoid its
+  own pollen, ranks the three devices by thoroughness (timing and geometry
+  can be defeated by accident; self-incompatibility inspects the genotype
+  after the pollen has landed and germinated), and then explains why
+  cleistogamy — the opposite strategy — persists, with species that make
+  both kinds of flower as the evidence that it is a trade-off and not a
+  defect. The human-reproduction L5 derives the whole asymmetry between
+  spermatogenesis and oogenesis from one economic principle: a cheap gamete
+  is made in quantity and symmetrically, an expensive one concentrates
+  everything into a single cell and defers its final division until
+  fertilisation makes the cost worth paying. The L6 is the feedback loop
+  that changes SIGN — oestrogen suppresses the pituitary at low levels and
+  drives it into a surge above a sustained threshold — and the point is
+  that the threshold is what makes ovulation triggered by follicular
+  maturity rather than by a clock. Reproductive Health's L5 replaces a
+  list of a dozen contraceptive names with the chain a pregnancy requires
+  and asks which link each method breaks, which makes three separate facts
+  fall out at once (why only barriers block infection; why reliability
+  tracks how much the method depends on repeated correct use; and why
+  medical termination is not contraception at all). The L6 works through
+  amniocentesis as the standard shape of a dual-use problem: the law
+  restricts the *disclosure of sex* and not the test, because that is the
+  single step at which the harmful application diverges from the
+  diagnostic one — and it notes that regulating clinics addresses supply
+  while the demand comes from outside medicine. Verify clean, warnings
+  steady at 34, suite green: 87 files, 1485 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)
