@@ -2514,8 +2514,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 363
-  chapters / 6,532 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 365
+  chapters / 6,588 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -2986,6 +2986,37 @@ navigation" means the actual list rather than one somebody maintained by hand.
   diagnostic one — and it notes that regulating clinics addresses supply
   while the demand comes from outside medicine. Verify clean, warnings
   steady at 34, suite green: 87 files, 1485 tests.
+
+  **Two more Biology chapters** — 56 questions: Principles of Inheritance
+  and Variation, and Molecular Basis of Inheritance. These are the first
+  Biology chapters where the counting is real rather than invented, so
+  they carry numerics: Punnett ratios, gamete kinds as 2ⁿ, autosome counts,
+  Chargaff arithmetic, codon combinatorics, and the strand bookkeeping of
+  semiconservative replication. The inheritance L5 asks how Mendel got the
+  rules right decades before anyone knew what a gene was made of, and the
+  answer is method rather than genius: he turned inheritance into a
+  counting problem (19,959 F₂ plants in one experiment), chose an organism
+  whose true-breeding lines could be verified before the experiment began,
+  and simplified before combining. He was also lucky — seven characters
+  each with clean dominance and none linked tightly enough to spoil the
+  9:3:3:1 — and saying so is not a criticism, since good design is what
+  put him where luck could help. The reason the rules survived is that they
+  were pitched at the right level of abstraction: nothing in the argument
+  depended on what the factors were made of, so chromosomes and DNA
+  supplied a mechanism rather than a correction. The L6 gets three
+  observations about haemophilia out of one fact (the gene is on the X,
+  and males have one copy), and the payoff is that the explanation
+  **forbids** something — father-to-son transmission — which makes it
+  testable from a family tree alone. The molecular L5 is Meselson–Stahl
+  worked as a design problem: three schemes, three predicted band
+  patterns, and the point that one generation was *not* enough because
+  semiconservative and dispersive both predict a single intermediate band
+  after round one. The L6 derives the codon length from arithmetic (4¹, 4²
+  and 4³ against twenty amino acids plus a stop) and then argues that the
+  forty-one spare codons are a buffer rather than waste — silent third
+  positions, chemically similar neighbours, and wobble — the same reason a
+  checksum is added to an account number. Verify clean, warnings steady at
+  34, suite green: 87 files, 1485 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)

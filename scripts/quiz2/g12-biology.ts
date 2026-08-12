@@ -1076,8 +1076,1029 @@ export const G12_BIOLOGY: Chapter[] = [
     ],
   },
   /*C1*/
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 4 — Principles of Inheritance and Variation                     */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "biology-12-principles-of-inheritance-and-variation",
+    subject: "BIOLOGY",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 4 — Principles of Inheritance and Variation",
+      hi: "अध्याय 4 — वंशागति तथा विविधता के सिद्धांत",
+      mr: "प्रकरण 4 — आनुवंशिकता आणि विविधतेची तत्त्वे",
+    },
+    name: {
+      en: "Principles of Inheritance and Variation",
+      hi: "वंशागति तथा विविधता के सिद्धांत",
+      mr: "आनुवंशिकता आणि विविधतेची तत्त्वे",
+    },
+    summary: {
+      en: "A set of rules worked out by counting plants, decades before anyone knew what a gene was made of or where it sat, and the reason they held is that the counting was done on a large enough sample and on characters that happened to behave simply; a rule about factors separating that turns out to be a description of what chromosomes do in the first meiotic division, so that a conclusion drawn from garden peas was later confirmed by looking down a microscope at a grasshopper; a second rule about characters being inherited independently, which is true only when the two lie on different chromosomes and is broken in a way that becomes a method for mapping where genes are; a pattern in which neither parent's version disappears and the offspring is intermediate, which does not refute the rules but shows that dominance was never a property of a factor but of how a factor is read; a single gene affecting many characters at once and many genes affecting one character together, which is why most inherited variation is a gradient rather than two boxes; and a pair of chromosomes that differ between the sexes, which makes some conditions appear far more often in one sex than the other for a reason that is purely a matter of counting copies.",
+      hi: "नियमों का ऐसा समुच्चय जो पादप गिनकर निकाला गया, यह जानने से दशकों पहले कि जीन किस चीज़ का बना है या कहाँ बैठता है, और वे इसलिए टिके कि गिनती काफ़ी बड़े नमूने पर और ऐसे लक्षणों पर हुई जो संयोग से सरल बरताव करते थे; कारकों के अलग होने का ऐसा नियम जो पहले अर्धसूत्री विभाजन में गुणसूत्र जो करते हैं उसी का वर्णन निकलता है, अतः बग़ीचे के मटरों से निकाला निष्कर्ष बाद में सूक्ष्मदर्शी से टिड्डे को देखकर पुष्ट हुआ; लक्षणों के स्वतंत्र रूप से वंशागत होने का दूसरा नियम, जो केवल तब सही है जब दोनों भिन्न गुणसूत्रों पर हों और जो ऐसे टूटता है कि टूटना ही जीन कहाँ हैं यह मानचित्रित करने की विधि बन जाता है; ऐसा प्रतिरूप जिसमें किसी भी जनक का रूप ग़ायब नहीं होता और संतति बीच की होती है, जो नियमों का खंडन नहीं करता बल्कि दिखाता है कि प्रभाविता कभी कारक का गुण थी ही नहीं बल्कि इसका कि कारक को पढ़ा कैसे जाता है; एक ही जीन का एक साथ कई लक्षणों को प्रभावित करना और कई जीनों का मिलकर एक लक्षण को, इसीलिए अधिकांश वंशागत विविधता दो ख़ानों के बजाय एक ढाल है; और गुणसूत्रों की ऐसी जोड़ी जो लिंगों में भिन्न है, जिससे कुछ स्थितियाँ एक लिंग में दूसरे से कहीं अधिक बार दिखती हैं, और कारण विशुद्ध रूप से प्रतियाँ गिनने का है।",
+      mr: "नियमांचा असा संच जो वनस्पती मोजून काढला गेला, जनुक कशाचे बनले आहे वा कुठे बसते हे कळण्याच्या कित्येक दशके आधी, आणि ते यासाठी टिकले की मोजणी पुरेशा मोठ्या नमुन्यावर आणि अशा लक्षणांवर झाली जी योगायोगाने सोपे वर्तन करत होती; घटक वेगळे होण्याचा असा नियम जो पहिल्या अर्धसूत्री विभाजनात गुणसूत्रे जे करतात त्याचेच वर्णन निघतो, म्हणून बागेतल्या वाटाण्यांतून काढलेला निष्कर्ष नंतर सूक्ष्मदर्शकातून नाकतोड्याकडे पाहून पक्का झाला; लक्षणे स्वतंत्रपणे आनुवंशिक होण्याचा दुसरा नियम, जो केवळ तेव्हा खरा आहे जेव्हा दोन्ही वेगळ्या गुणसूत्रांवर असतील आणि जो असा मोडतो की मोडणेच जनुके कुठे आहेत हे नकाशित करण्याची पद्धत बनते; असा नमुना ज्यात कोणत्याही जनकाचे रूप नाहीसे होत नाही आणि संतती मधली असते, जो नियमांचे खंडन करत नाही तर दाखवतो की प्रभाविता कधी घटकाचा गुणधर्म नव्हतीच तर घटक कसा वाचला जातो याची होती; एकाच जनुकाने एकाच वेळी कित्येक लक्षणांवर परिणाम करणे आणि कित्येक जनुकांनी मिळून एका लक्षणावर, म्हणूनच बहुतांश आनुवंशिक विविधता दोन खोक्यांऐवजी एक उतार आहे; आणि गुणसूत्रांची अशी जोडी जी लिंगांत वेगळी आहे, ज्याने काही स्थिती एका लिंगात दुसऱ्याहून कितीतरी अधिक वेळा दिसतात, आणि कारण निव्वळ प्रती मोजण्याचे आहे.",
+    },
+    position: 4,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "the-law-of-segregation",
+        name: {
+          en: "The law of segregation",
+          hi: "पृथक्करण का नियम",
+          mr: "पृथक्करणाचा नियम",
+        },
+        kind: "rule and the evidence for it",
+        prompt: {
+          en: "A rule stating that the two factors an individual carries for a character come apart during gamete formation, so that each gamete receives one and only one of them. Which law is this?",
+          hi: "ऐसा नियम जो कहता है कि किसी लक्षण के लिए व्यक्ति जो दो कारक ढोता है वे युग्मक बनते समय अलग हो जाते हैं, अतः हर युग्मक को उनमें से एक और केवल एक मिलता है। यह कौन-सा नियम है?",
+          mr: "असा नियम जो सांगतो की एखाद्या लक्षणासाठी व्यक्ती जे दोन घटक वाहते ते युग्मक बनताना वेगळे होतात, म्हणून प्रत्येक युग्मकाला त्यांपैकी एक आणि केवळ एकच मिळतो. हा कोणता नियम?",
+        },
+        statement: {
+          en: "The law of segregation says the two alleles of a gene separate during gamete formation, so a gamete carries one of them and the pair is restored at fertilisation.",
+          hi: "पृथक्करण का नियम कहता है कि किसी जीन के दोनों एलील युग्मक बनते समय अलग हो जाते हैं, अतः युग्मक उनमें से एक ढोता है और निषेचन पर जोड़ा बहाल हो जाता है।",
+          mr: "पृथक्करणाचा नियम सांगतो की एखाद्या जनुकाची दोन्ही अ‍ॅलिले युग्मक बनताना वेगळी होतात, म्हणून युग्मक त्यांपैकी एक वाहतो आणि फलनावर जोडी पुनर्स्थापित होते.",
+        },
+        detail: {
+          en: "The evidence was a ratio: a cross between two heterozygotes gave three plants of one appearance to one of the other, and the recessive form reappeared unchanged after being absent for a whole generation.",
+          hi: "प्रमाण एक अनुपात था: दो विषमयुग्मजियों के संकरण ने एक रूप के तीन पादप और दूसरे का एक दिया, और अप्रभावी रूप पूरी एक पीढ़ी अनुपस्थित रहने के बाद अपरिवर्तित लौट आया।",
+          mr: "पुरावा एक गुणोत्तर होता: दोन विषमयुग्मजींच्या संकरणाने एका रूपाच्या तीन वनस्पती आणि दुसऱ्याची एक दिली, आणि अप्रभावी रूप अख्खी एक पिढी अनुपस्थित राहून अपरिवर्तित परतले.",
+        },
+        extra: {
+          en: "That reappearance is what ruled out blending: a factor that had been diluted could not have come back at full strength, so the factors must stay separate and intact.",
+          hi: "वही लौटना मिश्रण को ख़ारिज करता है: जो कारक पतला हो चुका हो वह पूरी ताक़त से वापस नहीं आ सकता था, अतः कारकों को अलग और सलामत रहना ही चाहिए।",
+          mr: "तेच परतणे मिश्रण नाकारते: जो घटक विरळ झाला असेल तो पूर्ण ताकदीने परत येऊ शकला नसता, म्हणून घटकांना वेगळे आणि शाबूत राहावेच लागते.",
+        },
+        pair: {
+          left: {
+            en: "A form that vanishes for a generation and returns undiluted",
+            hi: "ऐसा रूप जो एक पीढ़ी लुप्त रहकर बिना पतला हुए लौटता है",
+            mr: "असे रूप जे एक पिढी लोप पावून विरळ न होता परतते",
+          },
+          right: {
+            en: "the law of segregation",
+            hi: "पृथक्करण का नियम",
+            mr: "पृथक्करणाचा नियम",
+          },
+        },
+      },
+      {
+        id: "the-law-of-independent-assortment",
+        name: {
+          en: "The law of independent assortment",
+          hi: "स्वतंत्र अपव्यूहन का नियम",
+          mr: "स्वतंत्र अपव्यूहनाचा नियम",
+        },
+        kind: "rule and the evidence for it",
+        prompt: {
+          en: "A rule stating that the factors for one character are dealt out to the gametes without regard to the factors for another, which holds only under a condition its author could not have known about. Which law is this?",
+          hi: "ऐसा नियम जो कहता है कि एक लक्षण के कारक युग्मकों में बाँटे जाते समय दूसरे लक्षण के कारकों की परवाह नहीं करते, और जो केवल ऐसी शर्त पर टिकता है जिसे उसका प्रतिपादक जान ही नहीं सकता था। यह कौन-सा नियम है?",
+          mr: "असा नियम जो सांगतो की एका लक्षणाचे घटक युग्मकांत वाटले जाताना दुसऱ्या लक्षणाच्या घटकांची पर्वा करत नाहीत, आणि जो केवळ अशा अटीवर टिकतो जी त्याचा मांडणारा जाणूच शकत नव्हता. हा कोणता नियम?",
+        },
+        statement: {
+          en: "The law of independent assortment says the alleles of one gene sort into gametes independently of those of another, and it holds when the two genes lie on different chromosomes.",
+          hi: "स्वतंत्र अपव्यूहन का नियम कहता है कि एक जीन के एलील युग्मकों में दूसरे जीन के एलीलों से स्वतंत्र रूप से छँटते हैं, और वह तब टिकता है जब दोनों जीन भिन्न गुणसूत्रों पर हों।",
+          mr: "स्वतंत्र अपव्यूहनाचा नियम सांगतो की एका जनुकाची अ‍ॅलिले युग्मकांत दुसऱ्या जनुकाच्या अ‍ॅलिलांपासून स्वतंत्रपणे विभागली जातात, आणि तो तेव्हा टिकतो जेव्हा दोन्ही जनुके वेगळ्या गुणसूत्रांवर असतील.",
+        },
+        detail: {
+          en: "The evidence was a nine to three to three to one ratio from a dihybrid cross, which is exactly the two three-to-one ratios multiplied together as independent events should be.",
+          hi: "प्रमाण द्विसंकर संकरण से मिला नौ, तीन, तीन, एक का अनुपात था, जो ठीक दोनों तीन-से-एक अनुपातों का गुणनफल है, जैसा स्वतंत्र घटनाओं का होना चाहिए।",
+          mr: "पुरावा द्विसंकर संकरणातून मिळालेले नऊ, तीन, तीन, एक हे गुणोत्तर होते, जे नेमके दोन्ही तीन-ला-एक गुणोत्तरांचा गुणाकार आहे, जसे स्वतंत्र घटनांचे असावे.",
+        },
+        extra: {
+          en: "Genes on the same chromosome tend to travel together and break the rule, and the frequency with which they are separated turned out to measure how far apart they lie.",
+          hi: "एक ही गुणसूत्र पर के जीन साथ चलने की प्रवृत्ति रखते हैं और नियम तोड़ते हैं, और जिस बारंबारता से वे अलग होते हैं वह उनके बीच की दूरी नापती निकली।",
+          mr: "एकाच गुणसूत्रावरची जनुके सोबत जाण्याची प्रवृत्ती ठेवतात आणि नियम मोडतात, आणि ज्या वारंवारतेने ती वेगळी होतात ती त्यांच्यातले अंतर मोजते असे निघाले.",
+        },
+        pair: {
+          left: {
+            en: "The exception to the rule became the way to map a chromosome",
+            hi: "नियम का अपवाद ही गुणसूत्र मानचित्रित करने का तरीक़ा बन गया",
+            mr: "नियमाचा अपवादच गुणसूत्र नकाशित करण्याचा मार्ग बनला",
+          },
+          right: {
+            en: "the law of independent assortment",
+            hi: "स्वतंत्र अपव्यूहन का नियम",
+            mr: "स्वतंत्र अपव्यूहनाचा नियम",
+          },
+        },
+      },
+      {
+        id: "the-chromosomal-theory-of-inheritance",
+        name: {
+          en: "The chromosomal theory of inheritance",
+          hi: "वंशागति का गुणसूत्र सिद्धांत",
+          mr: "आनुवंशिकतेचा गुणसूत्र सिद्धांत",
+        },
+        kind: "rule and the evidence for it",
+        prompt: {
+          en: "A proposal that the abstract factors inferred from counting plants are carried on the visible bodies that pair up and separate under a microscope. Which idea is this?",
+          hi: "यह प्रस्ताव कि पादप गिनकर निकाले गए अमूर्त कारक उन्हीं दृश्य पिंडों पर ढोए जाते हैं जो सूक्ष्मदर्शी के नीचे जोड़े बनाते और अलग होते हैं। यह कौन-सा विचार है?",
+          mr: "हा प्रस्ताव की वनस्पती मोजून काढलेले अमूर्त घटक त्याच दृश्य पिंडांवर वाहिले जातात जे सूक्ष्मदर्शकाखाली जोड्या बनवतात आणि वेगळे होतात. ही कोणती कल्पना?",
+        },
+        statement: {
+          en: "The chromosomal theory of inheritance holds that genes are carried on chromosomes, because chromosomes pair and separate in meiosis exactly as the inferred factors were said to do.",
+          hi: "वंशागति का गुणसूत्र सिद्धांत मानता है कि जीन गुणसूत्रों पर ढोए जाते हैं, क्योंकि गुणसूत्र अर्धसूत्री विभाजन में ठीक वैसे ही जोड़े बनाते और अलग होते हैं जैसा निकाले गए कारकों के बारे में कहा गया था।",
+          mr: "आनुवंशिकतेचा गुणसूत्र सिद्धांत मानतो की जनुके गुणसूत्रांवर वाहिली जातात, कारण गुणसूत्रे अर्धसूत्री विभाजनात नेमकी तशीच जोड्या बनवतात आणि वेगळी होतात जसे काढलेल्या घटकांबद्दल सांगितले गेले होते.",
+        },
+        detail: {
+          en: "The match is exact in every respect that matters: factors come in pairs and so do chromosomes, one of each pair goes to each gamete, and different pairs behave independently of one another.",
+          hi: "मेल हर उस बात में हूबहू है जो मायने रखती है: कारक जोड़ों में आते हैं और गुणसूत्र भी, हर जोड़े में से एक हर युग्मक को जाता है, और भिन्न जोड़े एक-दूसरे से स्वतंत्र बरतते हैं।",
+          mr: "जुळणी प्रत्येक महत्त्वाच्या बाबतीत जशीच्या तशी आहे: घटक जोड्यांत येतात आणि गुणसूत्रेही, प्रत्येक जोडीतले एक प्रत्येक युग्मकाला जाते, आणि वेगळ्या जोड्या परस्परांपासून स्वतंत्र वागतात.",
+        },
+        extra: {
+          en: "It was settled by a fly with white eyes: the character was inherited along with sex, which is only possible if the gene sits on the chromosome that differs between the sexes.",
+          hi: "इसे सफ़ेद आँखों वाली एक मक्खी ने तय किया: वह लक्षण लिंग के साथ-साथ वंशागत हुआ, जो केवल तभी संभव है जब जीन उसी गुणसूत्र पर बैठा हो जो लिंगों में भिन्न है।",
+          mr: "हे पांढऱ्या डोळ्यांच्या एका माशीने ठरवले: ते लक्षण लिंगासोबत आनुवंशिक झाले, जे केवळ तेव्हाच शक्य आहे जेव्हा जनुक त्याच गुणसूत्रावर बसले असेल जे लिंगांत वेगळे आहे.",
+        },
+        pair: {
+          left: {
+            en: "An inference from counting, confirmed under a lens",
+            hi: "गिनती से निकाला अनुमान, लेंस के नीचे पुष्ट",
+            mr: "मोजणीतून काढलेले अनुमान, भिंगाखाली पक्के",
+          },
+          right: {
+            en: "the chromosomal theory of inheritance",
+            hi: "वंशागति का गुणसूत्र सिद्धांत",
+            mr: "आनुवंशिकतेचा गुणसूत्र सिद्धांत",
+          },
+        },
+      },
+      {
+        id: "incomplete-dominance-and-codominance",
+        name: {
+          en: "Incomplete dominance and codominance",
+          hi: "अपूर्ण प्रभाविता और सहप्रभाविता",
+          mr: "अपूर्ण प्रभाविता आणि सहप्रभाविता",
+        },
+        kind: "pattern that looks like an exception",
+        prompt: {
+          en: "One cross in which the offspring is intermediate between its parents, and another in which both parental versions appear in full, side by side. What are these two patterns called?",
+          hi: "ऐसा एक संकरण जिसमें संतति अपने जनकों के बीच की होती है, और दूसरा जिसमें दोनों जनकीय रूप पूरे-पूरे, अगल-बग़ल प्रकट होते हैं। इन दोनों प्रतिरूपों को क्या कहते हैं?",
+          mr: "असे एक संकरण ज्यात संतती आपल्या जनकांच्या मधली असते, आणि दुसरे ज्यात दोन्ही जनकीय रूपे पूर्णपणे, शेजारीशेजारी प्रकट होतात. या दोन नमुन्यांना काय म्हणतात?",
+        },
+        statement: {
+          en: "Incomplete dominance and codominance are the patterns in which the heterozygote is intermediate, or shows both alleles fully, instead of resembling one parent.",
+          hi: "अपूर्ण प्रभाविता और सहप्रभाविता वे प्रतिरूप हैं जिनमें विषमयुग्मजी बीच का होता है, या दोनों एलील पूरे दिखाता है, किसी एक जनक जैसा होने के बजाय।",
+          mr: "अपूर्ण प्रभाविता आणि सहप्रभाविता हे ते नमुने आहेत ज्यांत विषमयुग्मजी मधला असतो, वा दोन्ही अ‍ॅलिले पूर्ण दाखवतो, कोणत्याही एका जनकासारखा असण्याऐवजी.",
+        },
+        detail: {
+          en: "Neither pattern breaks the law of segregation, because the underlying ratio of genotypes is still one to two to one — only the reading of the middle class has changed.",
+          hi: "कोई भी प्रतिरूप पृथक्करण के नियम को नहीं तोड़ता, क्योंकि नीचे का जीनप्ररूप अनुपात अब भी एक, दो, एक है — केवल बीच के वर्ग का पढ़ा जाना बदला है।",
+          mr: "कोणताही नमुना पृथक्करणाच्या नियमाला मोडत नाही, कारण खालचे जनुकप्ररूप गुणोत्तर अजूनही एक, दोन, एक आहे — केवळ मधल्या वर्गाचे वाचन बदलले आहे.",
+        },
+        extra: {
+          en: "The lesson is that dominance is not a property of an allele but of the relation between an allele and the character being scored, and the same allele can look dominant for one character and not for another.",
+          hi: "सीख यह कि प्रभाविता किसी एलील का गुण नहीं बल्कि एलील और जिस लक्षण को आँका जा रहा है उसके बीच के रिश्ते का गुण है, और वही एलील एक लक्षण के लिए प्रभावी दिख सकता है और दूसरे के लिए नहीं।",
+          mr: "बोध हा की प्रभाविता कोणत्याही अ‍ॅलिलचा गुणधर्म नसून अ‍ॅलिल आणि जे लक्षण मोजले जात आहे त्यांच्यातील नात्याचा गुणधर्म आहे, आणि तेच अ‍ॅलिल एका लक्षणासाठी प्रभावी दिसू शकते आणि दुसऱ्यासाठी नाही.",
+        },
+        pair: {
+          left: {
+            en: "The ratio underneath is unchanged; only the reading differs",
+            hi: "नीचे का अनुपात अपरिवर्तित है; केवल पढ़ना भिन्न है",
+            mr: "खालचे गुणोत्तर अपरिवर्तित आहे; केवळ वाचन वेगळे आहे",
+          },
+          right: {
+            en: "incomplete dominance and codominance",
+            hi: "अपूर्ण प्रभाविता और सहप्रभाविता",
+            mr: "अपूर्ण प्रभाविता आणि सहप्रभाविता",
+          },
+        },
+      },
+      {
+        id: "pleiotropy-and-polygenic-inheritance",
+        name: {
+          en: "Pleiotropy and polygenic inheritance",
+          hi: "बहुप्रभाविता और बहुजीनी वंशागति",
+          mr: "बहुप्रभाविता आणि बहुजनुकी आनुवंशिकता",
+        },
+        kind: "pattern that looks like an exception",
+        prompt: {
+          en: "One gene changing several unrelated-looking characters at once, and several genes each adding a little to one character. What are these two called?",
+          hi: "एक जीन जो एक साथ कई असंबद्ध दिखते लक्षण बदल देता है, और कई जीन जिनमें से हर एक किसी एक लक्षण में थोड़ा-थोड़ा जोड़ता है। इन दोनों को क्या कहते हैं?",
+          mr: "एक जनुक जे एकाच वेळी कित्येक असंबद्ध दिसणारी लक्षणे बदलते, आणि कित्येक जनुके ज्यांपैकी प्रत्येक एका लक्षणात थोडे थोडे जोडते. या दोघांना काय म्हणतात?",
+        },
+        statement: {
+          en: "Pleiotropy and polygenic inheritance are one gene affecting many characters and many genes each contributing to one character.",
+          hi: "बहुप्रभाविता और बहुजीनी वंशागति क्रमशः एक जीन का कई लक्षणों को प्रभावित करना और कई जीनों में से हर एक का किसी एक लक्षण में योगदान देना है।",
+          mr: "बहुप्रभाविता आणि बहुजनुकी आनुवंशिकता म्हणजे अनुक्रमे एका जनुकाने कित्येक लक्षणांवर परिणाम करणे आणि कित्येक जनुकांपैकी प्रत्येकाने एका लक्षणात योगदान देणे.",
+        },
+        detail: {
+          en: "Pleiotropy usually comes from one product being used in several places, so a single defect shows up wherever that product was needed.",
+          hi: "बहुप्रभाविता प्रायः एक ही उत्पाद के कई जगह काम में आने से आती है, अतः एक ही दोष वहाँ-वहाँ दिखता है जहाँ वह उत्पाद चाहिए था।",
+          mr: "बहुप्रभाविता बहुधा एकाच उत्पादनाच्या कित्येक ठिकाणी वापरले जाण्यातून येते, म्हणून एकच दोष तिथेतिथे दिसतो जिथे ते उत्पादन लागत होते.",
+        },
+        extra: {
+          en: "Polygenic characters give a continuous range rather than distinct classes, which is why height and skin colour do not sort into two boxes the way a pea's shape does.",
+          hi: "बहुजीनी लक्षण अलग वर्गों के बजाय एक सतत परास देते हैं, इसीलिए ऊँचाई और त्वचा का रंग वैसे दो ख़ानों में नहीं छँटते जैसे मटर का आकार छँटता है।",
+          mr: "बहुजनुकी लक्षणे वेगळ्या वर्गांऐवजी एक सलग व्याप्ती देतात, म्हणूनच उंची आणि त्वचेचा रंग तसे दोन खोक्यांत विभागले जात नाहीत जसे वाटाण्याचा आकार विभागला जातो.",
+        },
+        pair: {
+          left: {
+            en: "A gradient in the population instead of two clean classes",
+            hi: "आबादी में दो साफ़ वर्गों के बजाय एक ढाल",
+            mr: "लोकसंख्येत दोन स्वच्छ वर्गांऐवजी एक उतार",
+          },
+          right: {
+            en: "pleiotropy and polygenic inheritance",
+            hi: "बहुप्रभाविता और बहुजीनी वंशागति",
+            mr: "बहुप्रभाविता आणि बहुजनुकी आनुवंशिकता",
+          },
+        },
+      },
+      {
+        id: "sex-linked-inheritance",
+        name: {
+          en: "Sex-linked inheritance",
+          hi: "लिंग सहलग्न वंशागति",
+          mr: "लिंग सहलग्न आनुवंशिकता",
+        },
+        kind: "pattern that looks like an exception",
+        prompt: {
+          en: "A pattern in which a condition appears far more often in one sex, is passed from a mother who does not have it to half her sons, and never passes from a father to a son at all. What is it?",
+          hi: "ऐसा प्रतिरूप जिसमें कोई स्थिति एक लिंग में कहीं अधिक बार दिखती है, ऐसी माँ से जिसे वह नहीं है उसके आधे बेटों तक जाती है, और पिता से बेटे तक कभी नहीं जाती। यह क्या है?",
+          mr: "असा नमुना ज्यात एखादी स्थिती एका लिंगात कितीतरी अधिक वेळा दिसते, अशा आईकडून जिला ती नाही तिच्या निम्म्या मुलांपर्यंत जाते, आणि वडिलांकडून मुलापर्यंत कधीच जात नाही. हा काय आहे?",
+        },
+        statement: {
+          en: "Sex-linked inheritance is the transmission of a gene carried on a sex chromosome, and for a gene on the X chromosome a male has only one copy and so shows a recessive allele that a female would mask.",
+          hi: "लिंग सहलग्न वंशागति किसी लिंग गुणसूत्र पर ढोए जीन का संचरण है, और X गुणसूत्र पर के जीन के लिए नर के पास केवल एक प्रति है और इसलिए वह ऐसा अप्रभावी एलील दिखा देता है जिसे मादा ढक लेती।",
+          mr: "लिंग सहलग्न आनुवंशिकता म्हणजे लिंग गुणसूत्रावर वाहिलेल्या जनुकाचे संक्रमण, आणि X गुणसूत्रावरच्या जनुकासाठी नराकडे केवळ एक प्रत आहे आणि म्हणून तो असे अप्रभावी अ‍ॅलिल दाखवतो जे मादी झाकेल.",
+        },
+        detail: {
+          en: "The whole asymmetry is a matter of counting copies: with only one copy there is no second allele available to mask anything, so a recessive is expressed whenever it is present.",
+          hi: "पूरी विषमता प्रतियाँ गिनने का मामला है: केवल एक प्रति के साथ ढकने को कोई दूसरा एलील उपलब्ध ही नहीं, अतः अप्रभावी जब भी मौजूद हो अभिव्यक्त हो जाता है।",
+          mr: "अख्खी विषमता प्रती मोजण्याची बाब आहे: केवळ एका प्रतीसह झाकायला दुसरे अ‍ॅलिल उपलब्धच नाही, म्हणून अप्रभावी जेव्हाही उपस्थित असेल तेव्हा व्यक्त होते.",
+        },
+        extra: {
+          en: "The father-to-son gap is the giveaway in a pedigree: a father passes his Y to a son and his X to a daughter, so an X-linked condition cannot travel down the male line.",
+          hi: "वंशवृक्ष में पिता-से-बेटा वाला अंतराल ही भेद खोल देता है: पिता अपना Y बेटे को और अपना X बेटी को देता है, अतः X-सहलग्न स्थिति पुरुष वंशरेखा में नीचे नहीं जा सकती।",
+          mr: "वंशवृक्षात वडील-ते-मुलगा हे अंतरच रहस्य उघडते: वडील आपले Y मुलाला आणि आपले X मुलीला देतात, म्हणून X-सहलग्न स्थिती पुरुष वंशरेषेत खाली जाऊ शकत नाही.",
+        },
+        pair: {
+          left: {
+            en: "Never father to son, and that alone identifies it",
+            hi: "पिता से बेटे तक कभी नहीं, और यही अकेला उसे पहचान देता है",
+            mr: "वडिलांकडून मुलाकडे कधीच नाही, आणि हेच एकटे तिला ओळख देते",
+          },
+          right: {
+            en: "sex-linked inheritance",
+            hi: "लिंग सहलग्न वंशागति",
+            mr: "लिंग सहलग्न आनुवंशिकता",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Mendel worked out the rules of inheritance decades before anyone knew what a gene was made of, where it sat, or that chromosomes carried anything. Explain how that was possible, and what he did that his predecessors had not.",
+          hi: "मेंडेल ने वंशागति के नियम उन दशकों पहले निकाल लिए जब कोई नहीं जानता था कि जीन किस चीज़ का बना है, कहाँ बैठता है, या कि गुणसूत्र कुछ ढोते भी हैं। बताओ कि यह कैसे संभव हुआ, और उसने ऐसा क्या किया जो उससे पहले वालों ने नहीं किया था।",
+          mr: "मेंडेलने आनुवंशिकतेचे नियम त्या दशकांआधी काढले जेव्हा जनुक कशाचे बनले आहे, कुठे बसते, वा गुणसूत्रे काही वाहतात हे कोणालाच माहीत नव्हते. हे कसे शक्य झाले, आणि त्याने असे काय केले जे त्याच्या आधीच्यांनी केले नव्हते ते सांगा.",
+        },
+        choices: [
+          {
+            en: "He treated inheritance as a counting problem rather than a descriptive one. He chose a plant that could be self-pollinated and cross-pollinated at will, started from true-breeding lines so that the starting material was known, followed one character at a time before combining them, and counted thousands of offspring so that ratios emerged from the noise. He was also fortunate in his characters: each was controlled by a single gene with clean dominance, and the seven he studied were not linked in a way that would have obscured independent assortment. The result was a set of rules about abstract factors whose physical nature was irrelevant to the argument, which is why they survived unchanged when chromosomes and DNA were later discovered",
+            hi: "उसने वंशागति को वर्णन की नहीं बल्कि गिनती की समस्या माना। उसने ऐसा पादप चुना जिसका मनचाहा स्व-परागण और पर-परागण हो सके, शुद्ध वंशक्रमों से शुरू किया ताकि आरंभिक सामग्री ज्ञात हो, लक्षणों को जोड़ने से पहले एक-एक करके पीछा किया, और हज़ारों संततियाँ गिनीं ताकि शोर में से अनुपात उभर आएँ। वह अपने लक्षणों में भाग्यशाली भी था: हर एक साफ़ प्रभाविता वाले अकेले जीन से नियंत्रित था, और उसने जिन सातों का अध्ययन किया वे ऐसे सहलग्न नहीं थे कि स्वतंत्र अपव्यूहन धुँधला पड़ जाता। परिणाम अमूर्त कारकों के बारे में नियमों का ऐसा समुच्चय था जिसके तर्क के लिए उनकी भौतिक प्रकृति अप्रासंगिक थी, इसीलिए बाद में गुणसूत्र और DNA मिलने पर भी वे अपरिवर्तित बचे",
+            mr: "त्याने आनुवंशिकतेला वर्णनाची नव्हे तर मोजणीची समस्या मानले. त्याने अशी वनस्पती निवडली जिचे मनाजोगे स्व-परागण आणि पर-परागण होऊ शकेल, शुद्ध वंशांपासून सुरुवात केली जेणेकरून प्रारंभिक सामग्री ज्ञात असावी, लक्षणे एकत्र करण्याआधी एकेक करून पाठलाग केला, आणि हजारो संतती मोजल्या जेणेकरून गोंगाटातून गुणोत्तरे उमटावीत. तो आपल्या लक्षणांतही भाग्यवान होता: प्रत्येक स्वच्छ प्रभाविता असलेल्या एकाच जनुकाने नियंत्रित होते, आणि त्याने ज्या सातांचा अभ्यास केला ती अशी सहलग्न नव्हती की स्वतंत्र अपव्यूहन धूसर व्हावे. निकाल अमूर्त घटकांबद्दलच्या नियमांचा असा संच होता ज्याच्या युक्तिवादासाठी त्यांचे भौतिक स्वरूप असंबद्ध होते, म्हणूनच नंतर गुणसूत्रे आणि DNA सापडल्यावरही ते अपरिवर्तित टिकले",
+          },
+          {
+            en: "He had access to early microscopes that showed him the chromosomes separating, and inferred the rules from watching that directly rather than from any counting",
+            hi: "उसके पास ऐसे आरंभिक सूक्ष्मदर्शी थे जिन्होंने उसे गुणसूत्र अलग होते दिखाए, और उसने किसी गिनती से नहीं बल्कि उसे सीधे देखकर नियम निकाले",
+            mr: "त्याच्याकडे असे प्रारंभिक सूक्ष्मदर्शक होते ज्यांनी त्याला गुणसूत्रे वेगळी होताना दाखवली, आणि त्याने कोणत्याही मोजणीतून नव्हे तर ते थेट पाहून नियम काढले",
+          },
+          {
+            en: "He worked on a single character in a single generation, which is why his conclusions were simple enough to be correct without any knowledge of cells",
+            hi: "उसने एक ही पीढ़ी में एक ही लक्षण पर काम किया, इसीलिए उसके निष्कर्ष कोशिकाओं के किसी ज्ञान के बिना ठीक होने भर सरल थे",
+            mr: "त्याने एकाच पिढीत एकाच लक्षणावर काम केले, म्हणूनच त्याचे निष्कर्ष पेशींच्या कोणत्याही ज्ञानाविना बरोबर असण्याइतके सोपे होते",
+          },
+          {
+            en: "His rules were in fact wrong until chromosomes were discovered, at which point they had to be substantially rewritten to match what was seen under the microscope",
+            hi: "गुणसूत्रों की खोज तक उसके नियम वस्तुतः ग़लत थे, और तब सूक्ष्मदर्शी के नीचे जो दिखा उससे मेल खाने को उन्हें काफ़ी हद तक फिर से लिखना पड़ा",
+            mr: "गुणसूत्रांच्या शोधापर्यंत त्याचे नियम प्रत्यक्षात चुकीचे होते, आणि तेव्हा सूक्ष्मदर्शकाखाली जे दिसले त्याच्याशी जुळण्यास ते बऱ्याच प्रमाणात पुन्हा लिहावे लागले",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The question is really about method, and it is worth taking seriously, because 'he was clever' explains nothing. Others before him had crossed plants and looked at the results for a century. What he did differently is recoverable from the design of the experiments. HE MADE IT A COUNTING PROBLEM. Earlier workers described what offspring looked like. Mendel counted them — 19,959 plants in the F₂ of one experiment alone. That matters because the rules he was after are statements about proportions, and a proportion cannot be seen in a handful of plants. Three-to-one is invisible in eight offspring and unmistakable in eight hundred. THE CHOICE OF ORGANISM WAS PART OF THE ARGUMENT. Peas self-pollinate naturally, so true-breeding lines could be established and verified before the experiment began, which means he knew what he was starting with — something his predecessors usually did not. The flower structure also allows deliberate cross-pollination with the anthers removed, so he controlled which cross happened. And peas grow fast in quantity, which is what made the large numbers affordable. HE SIMPLIFIED BEFORE COMBINING. He followed one character at a time — seed shape alone, then flower colour alone — until each was understood, and only then crossed plants differing in two characters at once. That ordering is what let him see that the dihybrid ratio was the product of two monohybrid ratios rather than a new phenomenon needing its own explanation. HE WAS ALSO LUCKY, AND SAYING SO IS NOT A CRITICISM. Each of his seven characters happened to be governed by a single gene with complete dominance; had he chosen flower colour in snapdragons he would have found intermediates and might have concluded something quite different. And although peas have only seven chromosome pairs, the genes he studied were either on different chromosomes or far enough apart to assort nearly independently — with a different set he would have found linkage and no clean nine-three-three-one. Good design put him in a position where luck could help. WHY THE RULES SURVIVED. This is the part worth carrying away. His conclusions were about ABSTRACT FACTORS: things that come in pairs, separate in gamete formation, and stay intact rather than blending. Nothing in the argument depended on what those factors were made of or where they were. So when Sutton and Boveri noticed that chromosomes behave in exactly that way, and when DNA was later identified as the material, neither discovery required the rules to change — they supplied the mechanism underneath rules that were already correct. A conclusion drawn at the right level of abstraction is not overturned by discoveries at a lower level; it is explained by them. (The second option invents microscopy he did not use and inverts his actual method; the third understates the work — he followed characters through several generations, and a single generation could not have shown segregation at all; the fourth reverses the history, since the chromosomal theory confirmed the rules rather than replacing them.)",
+          hi: "प्रश्न असल में विधि के बारे में है, और उसे गंभीरता से लेना चाहिए, क्योंकि 'वह चतुर था' कुछ नहीं समझाता। उससे पहले भी लोग सौ साल से पादपों का संकरण कर परिणाम देख रहे थे। उसने अलग क्या किया यह प्रयोगों की बनावट से निकाला जा सकता है। उसने इसे गिनती की समस्या बनाया। पहले के काम करने वाले वर्णन करते थे कि संतति कैसी दिखी। मेंडेल ने उन्हें गिना — अकेले एक प्रयोग की F₂ में 19,959 पादप। यह इसलिए मायने रखता है कि वह जिन नियमों के पीछे था वे अनुपातों के बारे में कथन हैं, और मुट्ठी भर पादपों में अनुपात दिख ही नहीं सकता। तीन-से-एक आठ संततियों में अदृश्य है और आठ सौ में अचूक। जीव का चुनाव तर्क का हिस्सा था। मटर स्वाभाविक रूप से स्व-परागित होते हैं, अतः प्रयोग शुरू होने से पहले शुद्ध वंशक्रम स्थापित और सत्यापित किए जा सकते थे, यानी वह जानता था कि वह किससे शुरू कर रहा है — जो उससे पहले वाले प्रायः नहीं जानते थे। पुष्प की संरचना परागकोश हटाकर जानबूझकर पर-परागण भी होने देती है, अतः कौन-सा संकरण होगा यह उसके नियंत्रण में था। और मटर तेज़ी से बड़ी मात्रा में उगते हैं, जिससे बड़ी संख्याएँ वहन योग्य हुईं। उसने जोड़ने से पहले सरल किया। उसने एक बार में एक लक्षण का पीछा किया — केवल बीज का आकार, फिर केवल पुष्प का रंग — जब तक हर एक समझ में न आ जाए, और तभी दो लक्षणों में भिन्न पादपों का एक साथ संकरण किया। उसी क्रम ने उसे देखने दिया कि द्विसंकर अनुपात दो एकसंकर अनुपातों का गुणनफल है, न कि कोई नई परिघटना जिसे अपनी अलग व्याख्या चाहिए। वह भाग्यशाली भी था, और यह कहना आलोचना नहीं है। उसके सातों लक्षण संयोग से पूर्ण प्रभाविता वाले अकेले जीन से शासित थे; यदि उसने स्नैपड्रैगन में पुष्प का रंग चुना होता तो उसे बीच के रूप मिलते और वह कुछ और ही निष्कर्ष निकालता। और यद्यपि मटर में केवल सात गुणसूत्र जोड़े हैं, उसने जिन जीनों का अध्ययन किया वे या तो भिन्न गुणसूत्रों पर थे या इतनी दूर कि लगभग स्वतंत्र छँटें — किसी और समुच्चय से उसे सहलग्नता मिलती और कोई साफ़ नौ-तीन-तीन-एक नहीं। अच्छी बनावट ने उसे उस जगह पहुँचाया जहाँ भाग्य मदद कर सके। नियम क्यों टिके। यही हिस्सा साथ ले जाने लायक़ है। उसके निष्कर्ष अमूर्त कारकों के बारे में थे: ऐसी चीज़ें जो जोड़ों में आती हैं, युग्मक बनते समय अलग होती हैं, और मिलने के बजाय सलामत रहती हैं। तर्क में कुछ भी इस पर निर्भर नहीं था कि वे कारक किस चीज़ के बने हैं या कहाँ हैं। अतः जब सटन और बोवेरी ने देखा कि गुणसूत्र ठीक वैसे ही बरतते हैं, और जब बाद में DNA को वह सामग्री पहचाना गया, तो किसी भी खोज को नियम बदलने की ज़रूरत नहीं पड़ी — उन्होंने उन नियमों के नीचे की क्रियाविधि दी जो पहले से ही ठीक थे। सही स्तर के अमूर्तन पर निकाला निष्कर्ष निचले स्तर की खोजों से उलटता नहीं; वे उसे समझाती हैं। (दूसरा विकल्प ऐसी सूक्ष्मदर्शिकी गढ़ता है जो उसने काम में ली ही नहीं और उसकी असली विधि उलट देता है; तीसरा काम को कम आँकता है — उसने लक्षणों का कई पीढ़ियों तक पीछा किया, और एक ही पीढ़ी पृथक्करण दिखा ही नहीं सकती थी; चौथा इतिहास उलट देता है, चूँकि गुणसूत्र सिद्धांत ने नियमों की जगह लेने के बजाय उनकी पुष्टि की।)",
+          mr: "प्रश्न खरे तर पद्धतीबद्दल आहे, आणि तो गांभीर्याने घेण्याजोगा आहे, कारण 'तो हुशार होता' काहीही समजावत नाही. त्याच्याआधीही लोक शंभर वर्षे वनस्पतींचे संकरण करून निकाल पाहत होते. त्याने वेगळे काय केले हे प्रयोगांच्या रचनेतून काढता येते. त्याने याला मोजणीची समस्या बनवले. आधीचे काम करणारे संतती कशी दिसली याचे वर्णन करत. मेंडेलने त्यांना मोजले — एकाच प्रयोगाच्या F₂ मध्ये 19,959 वनस्पती. हे यासाठी महत्त्वाचे की तो ज्या नियमांच्या मागे होता ती प्रमाणांबद्दलची विधाने आहेत, आणि मूठभर वनस्पतींत प्रमाण दिसूच शकत नाही. तीन-ला-एक आठ संततींत अदृश्य आहे आणि आठशेत अचूक. जीवाची निवड युक्तिवादाचा भाग होती. वाटाणे नैसर्गिकरीत्या स्व-परागित होतात, म्हणून प्रयोग सुरू होण्याआधी शुद्ध वंश प्रस्थापित आणि पडताळता येत होते, म्हणजे तो कशापासून सुरू करत आहे हे त्याला माहीत होते — जे त्याच्याआधीच्यांना बहुधा माहीत नव्हते. फुलाची रचना परागकोश काढून जाणीवपूर्वक पर-परागणही होऊ देते, म्हणून कोणते संकरण घडेल हे त्याच्या नियंत्रणात होते. आणि वाटाणे झपाट्याने मोठ्या प्रमाणात उगवतात, ज्याने मोठ्या संख्या परवडणाऱ्या झाल्या. त्याने जोडण्याआधी सोपे केले. त्याने एका वेळी एका लक्षणाचा पाठलाग केला — केवळ बियाचा आकार, मग केवळ फुलाचा रंग — जोवर प्रत्येक समजत नाही, आणि तेव्हाच दोन लक्षणांत वेगळ्या वनस्पतींचे एकाच वेळी संकरण केले. त्याच क्रमाने त्याला पाहू दिले की द्विसंकर गुणोत्तर हे दोन एकसंकर गुणोत्तरांचा गुणाकार आहे, कोणतीही नवी घटना नव्हे जिला स्वतःचे वेगळे स्पष्टीकरण लागेल. तो भाग्यवानही होता, आणि हे म्हणणे टीका नाही. त्याची सातही लक्षणे योगायोगाने पूर्ण प्रभाविता असलेल्या एकाच जनुकाने शासित होती; जर त्याने स्नॅपड्रॅगनमध्ये फुलाचा रंग निवडला असता तर त्याला मधली रूपे मिळाली असती आणि त्याने काहीतरी वेगळाच निष्कर्ष काढला असता. आणि जरी वाटाण्यात केवळ सात गुणसूत्र जोड्या असल्या तरी त्याने ज्या जनुकांचा अभ्यास केला ती एकतर वेगळ्या गुणसूत्रांवर होती वा इतकी दूर की जवळपास स्वतंत्रपणे विभागावीत — दुसऱ्या संचाने त्याला सहलग्नता मिळाली असती आणि कोणतेही स्वच्छ नऊ-तीन-तीन-एक नाही. चांगल्या रचनेने त्याला त्या जागी नेले जिथे नशीब मदत करू शकेल. नियम का टिकले. हाच भाग सोबत न्यायचा आहे. त्याचे निष्कर्ष अमूर्त घटकांबद्दल होते: अशा गोष्टी ज्या जोड्यांत येतात, युग्मक बनताना वेगळ्या होतात, आणि मिसळण्याऐवजी शाबूत राहतात. युक्तिवादात काहीही यावर अवलंबून नव्हते की ते घटक कशाचे बनले आहेत वा कुठे आहेत. म्हणून जेव्हा सटन आणि बोवेरींनी पाहिले की गुणसूत्रे नेमकी तशीच वागतात, आणि जेव्हा नंतर DNA ला ती सामग्री ओळखले गेले, तेव्हा कोणत्याही शोधाला नियम बदलण्याची गरज पडली नाही — त्यांनी आधीच बरोबर असलेल्या नियमांखालची यंत्रणा दिली. योग्य अमूर्ततेच्या पातळीवर काढलेला निष्कर्ष खालच्या पातळीच्या शोधांनी उलटत नाही; ते त्याला समजावतात. (दुसरा पर्याय अशी सूक्ष्मदर्शिकी घडवतो जी त्याने वापरलीच नाही आणि त्याची खरी पद्धत उलटवतो; तिसरा कामाला कमी लेखतो — त्याने लक्षणांचा कित्येक पिढ्यांपर्यंत पाठलाग केला, आणि एकच पिढी पृथक्करण दाखवूच शकली नसती; चौथा इतिहास उलटवतो, कारण गुणसूत्र सिद्धांताने नियमांची जागा घेण्याऐवजी त्यांची खात्री दिली.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Haemophilia and red-green colour blindness appear far more often in males than in females, are typically passed from an unaffected mother to half her sons, and are never passed from a father to his son. Explain all three observations from a single fact, and say what a pedigree showing father-to-son transmission would tell you.",
+          hi: "हीमोफ़ीलिया और लाल-हरा वर्णांधता पुरुषों में स्त्रियों से कहीं अधिक बार दिखते हैं, प्रायः ऐसी माँ से जिसे वह नहीं है उसके आधे बेटों तक जाते हैं, और पिता से बेटे तक कभी नहीं जाते। तीनों प्रेक्षणों को एक ही तथ्य से समझाओ, और बताओ कि पिता-से-बेटे संचरण दिखाता वंशवृक्ष तुम्हें क्या बता देगा।",
+          mr: "हिमोफिलिया आणि तांबडा-हिरवा वर्णांधत्व पुरुषांत स्त्रियांहून कितीतरी अधिक वेळा दिसतात, बहुधा अशा आईकडून जिला ते नाही तिच्या निम्म्या मुलांपर्यंत जातात, आणि वडिलांकडून मुलापर्यंत कधीच जात नाहीत. तिन्ही निरीक्षणे एकाच सत्यातून समजावा, आणि वडील-ते-मुलगा संक्रमण दाखवणारा वंशवृक्ष तुम्हाला काय सांगेल ते सांगा.",
+        },
+        choices: [
+          {
+            en: "The single fact is that the gene sits on the X chromosome, and a male has one X where a female has two. A female with one faulty allele has a normal one on her other X to mask it, so she is an unaffected carrier; a male has no second copy, so a recessive allele on his only X is expressed whenever it is present — hence the excess in males. A carrier mother passes one or other of her X chromosomes at random, so half her sons receive the faulty one and are affected. And a father gives his son a Y, never an X, so the condition cannot pass down the male line at all. A pedigree showing father-to-son transmission would therefore rule out X-linkage immediately, and point to an autosomal gene or one on the Y",
+            hi: "वह अकेला तथ्य यह है कि जीन X गुणसूत्र पर बैठा है, और नर के पास एक X है जहाँ मादा के पास दो। जिस मादा के पास एक दोषपूर्ण एलील है उसके दूसरे X पर उसे ढकने को सामान्य एलील है, अतः वह अप्रभावित वाहक है; नर के पास दूसरी प्रति है ही नहीं, अतः उसके अकेले X पर का अप्रभावी एलील जब भी मौजूद हो अभिव्यक्त हो जाता है — इसीलिए पुरुषों में अधिकता। वाहक माँ अपने दोनों X में से कोई एक बेतरतीब देती है, अतः उसके आधे बेटों को दोषपूर्ण वाला मिलता है और वे प्रभावित होते हैं। और पिता अपने बेटे को Y देता है, X कभी नहीं, अतः यह स्थिति पुरुष वंशरेखा में नीचे जा ही नहीं सकती। अतः पिता-से-बेटे संचरण दिखाता वंशवृक्ष X-सहलग्नता को तुरंत ख़ारिज कर देगा, और अलिंगसूत्री जीन या Y पर के जीन की ओर इशारा करेगा",
+            mr: "ते एकच सत्य हे की जनुक X गुणसूत्रावर बसले आहे, आणि नराकडे एक X आहे जिथे मादीकडे दोन. ज्या मादीकडे एक सदोष अ‍ॅलिल आहे तिच्या दुसऱ्या X वर ते झाकायला सामान्य अ‍ॅलिल आहे, म्हणून ती अप्रभावित वाहक आहे; नराकडे दुसरी प्रत आहेच नाही, म्हणून त्याच्या एकट्या X वरचे अप्रभावी अ‍ॅलिल जेव्हाही उपस्थित असेल तेव्हा व्यक्त होते — म्हणूनच पुरुषांत अधिक्य. वाहक आई आपल्या दोन X पैकी कोणतेही एक यादृच्छिक देते, म्हणून तिच्या निम्म्या मुलांना सदोष मिळते आणि ते प्रभावित होतात. आणि वडील आपल्या मुलाला Y देतात, X कधीच नाही, म्हणून ही स्थिती पुरुष वंशरेषेत खाली जाऊच शकत नाही. म्हणून वडील-ते-मुलगा संक्रमण दाखवणारा वंशवृक्ष X-सहलग्नता लगेच नाकारेल, आणि अलिंगसूत्री जनुक वा Y वरच्या जनुकाकडे बोट दाखवेल",
+          },
+          {
+            en: "The condition is more common in males because male cells are more susceptible to mutation, and the father-to-son gap reflects the shorter time a Y chromosome spends replicating",
+            hi: "यह स्थिति पुरुषों में इसलिए अधिक आम है कि पुरुष कोशिकाएँ उत्परिवर्तन के प्रति अधिक संवेदी हैं, और पिता-से-बेटे का अंतराल Y गुणसूत्र के प्रतिकृति में कम समय बिताने को दर्शाता है",
+            mr: "ही स्थिती पुरुषांत यासाठी अधिक सामान्य आहे की पुरुष पेशी उत्परिवर्तनाबाबत अधिक संवेदनशील आहेत, आणि वडील-ते-मुलगा अंतर Y गुणसूत्र प्रतिकृतीत कमी वेळ घालवते हे दर्शवते",
+          },
+          {
+            en: "The gene is on the Y chromosome, which is why only males are affected and why the mother is the one who transmits it",
+            hi: "जीन Y गुणसूत्र पर है, इसीलिए केवल पुरुष प्रभावित होते हैं और इसीलिए संचरण माँ करती है",
+            mr: "जनुक Y गुणसूत्रावर आहे, म्हणूनच केवळ पुरुष प्रभावित होतात आणि म्हणूनच संक्रमण आई करते",
+          },
+          {
+            en: "Females are protected because the condition requires male hormones to be expressed, so a female carrying two faulty alleles would still show no symptoms",
+            hi: "स्त्रियाँ इसलिए बची रहती हैं कि इस स्थिति को अभिव्यक्त होने के लिए पुरुष हार्मोन चाहिए, अतः दो दोषपूर्ण एलील ढोती स्त्री में भी कोई लक्षण नहीं दिखेगा",
+            mr: "स्त्रिया यासाठी वाचतात की या स्थितीला व्यक्त होण्यास पुरुष संप्रेरके लागतात, म्हणून दोन सदोष अ‍ॅलिले वाहणाऱ्या स्त्रीतही कोणतीही लक्षणे दिसणार नाहीत",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Three observations, and the satisfying thing is that one structural fact produces all three without any extra assumptions. The fact: the gene lies on the X chromosome, and the sexes differ in how many X chromosomes they have — a female has two, a male one X and one Y. THE EXCESS IN MALES IS A MATTER OF COUNTING COPIES. Take a recessive allele on the X. A female carrying one copy has a functional allele on her other X, which supplies the missing product, so she is unaffected — a carrier. For her to be affected she would need the faulty allele on both X chromosomes, which requires a carrier or affected mother AND an affected father, a much rarer coincidence. A male has only one X. There is no second copy to mask anything, so the allele is expressed whenever he inherits it. The terminology is worth being precise about: he is hemizygous, neither homozygous nor heterozygous, because the question of a pair does not arise. If the allele has a frequency of q in the population, the proportion of affected males is q and of affected females q² — for a rare allele, an enormous difference. HALF THE SONS OF A CARRIER, BECAUSE MEIOSIS IS FAIR. A carrier mother has one normal X and one carrying the faulty allele. Segregation sends one or the other into each egg with equal probability. A son gets his single X from his mother, so half her sons inherit the faulty allele and, having nothing to mask it, are affected. Half her daughters inherit it too, but they receive a normal X from their father and so become carriers in their turn — the condition travels through females and appears in males, generation after generation. NO FATHER-TO-SON TRANSMISSION, WHICH IS THE DECISIVE SIGN. A son is a son precisely because he received his father's Y. Whatever is on the father's X goes to his daughters — all of them, in fact, so an affected man's daughters are all carriers. There is simply no route by which an X-linked gene can pass from a father to a son. WHAT THE HYPOTHETICAL PEDIGREE WOULD TELL YOU. This is the useful part, because it shows the reasoning working as a test rather than as a story. If a pedigree showed an affected father with an affected son, and the mother was not a carrier, X-linkage is excluded outright — not made less likely, excluded, because the transmission route does not exist. The remaining possibilities are an autosomal gene (dominant, if it appears in every generation) or a Y-linked one, which would be distinguishable because a Y-linked condition passes to ALL sons and no daughters. THE GENERAL POINT. A good explanation does not just accommodate the observations; it forbids something. Here it forbids one specific transmission, and that prohibition is what makes the hypothesis testable from a family tree alone, with no molecular work at all. (The second option invents a susceptibility difference and misdescribes Y replication; the third places the gene on the Y, which contradicts a mother transmitting it; the fourth would predict no affected females ever, which is false — such women are rare but real.)",
+          hi: "तीन प्रेक्षण, और संतोष की बात यह कि एक ही संरचनात्मक तथ्य बिना किसी अतिरिक्त धारणा के तीनों पैदा कर देता है। वह तथ्य: जीन X गुणसूत्र पर है, और लिंग इसमें भिन्न हैं कि उनके पास कितने X गुणसूत्र हैं — मादा के पास दो, नर के पास एक X और एक Y. पुरुषों में अधिकता प्रतियाँ गिनने का मामला है। X पर एक अप्रभावी एलील लो। जिस मादा के पास एक प्रति है उसके दूसरे X पर क्रियाशील एलील है, जो अनुपस्थित उत्पाद दे देता है, अतः वह अप्रभावित है — वाहक। उसके प्रभावित होने के लिए दोषपूर्ण एलील दोनों X गुणसूत्रों पर चाहिए, जिसके लिए वाहक या प्रभावित माँ और प्रभावित पिता दोनों चाहिए, जो कहीं दुर्लभ संयोग है। नर के पास केवल एक X है। ढकने को कोई दूसरी प्रति नहीं, अतः एलील जब भी उसे विरासत में मिले अभिव्यक्त हो जाता है। शब्दावली में सटीक होना चाहिए: वह अर्धयुग्मजी है, न समयुग्मजी न विषमयुग्मजी, क्योंकि जोड़े का प्रश्न ही नहीं उठता। यदि आबादी में एलील की बारंबारता q हो, तो प्रभावित पुरुषों का अनुपात q है और प्रभावित स्त्रियों का q² — दुर्लभ एलील के लिए विशाल अंतर। वाहक के आधे बेटे, क्योंकि अर्धसूत्री विभाजन निष्पक्ष है। वाहक माँ के पास एक सामान्य X और एक दोषपूर्ण एलील वाला। पृथक्करण बराबर संभावना से हर अंड में कोई एक भेजता है। बेटे को अपना अकेला X माँ से मिलता है, अतः उसके आधे बेटों को दोषपूर्ण एलील मिलता है और ढकने को कुछ न होने से वे प्रभावित होते हैं। उसकी आधी बेटियों को भी वह मिलता है, पर उन्हें पिता से सामान्य X मिलता है और वे अपनी बारी में वाहक बन जाती हैं — स्थिति स्त्रियों से होकर चलती है और पुरुषों में प्रकट होती है, पीढ़ी दर पीढ़ी। पिता से बेटे तक संचरण नहीं, और यही निर्णायक चिह्न है। बेटा बेटा ठीक इसलिए है कि उसे पिता का Y मिला। पिता के X पर जो कुछ है वह उसकी बेटियों को जाता है — वस्तुतः सबको, अतः प्रभावित पुरुष की सारी बेटियाँ वाहक होती हैं। ऐसा कोई रास्ता है ही नहीं जिससे X-सहलग्न जीन पिता से बेटे तक जा सके। वह काल्पनिक वंशवृक्ष क्या बता देगा। यही काम का हिस्सा है, क्योंकि यह तर्क को कहानी नहीं बल्कि परीक्षण की तरह चलते दिखाता है। यदि कोई वंशवृक्ष प्रभावित पिता के साथ प्रभावित बेटा दिखाए, और माँ वाहक न हो, तो X-सहलग्नता एकदम ख़ारिज है — कम संभावित नहीं, ख़ारिज, क्योंकि संचरण का रास्ता मौजूद ही नहीं। बची संभावनाएँ अलिंगसूत्री जीन (प्रभावी, यदि वह हर पीढ़ी में दिखे) या Y-सहलग्न हैं, और वह अलग पहचाना जा सकता क्योंकि Y-सहलग्न स्थिति सारे बेटों को जाती है और किसी बेटी को नहीं। सामान्य बात। अच्छी व्याख्या केवल प्रेक्षणों को समा नहीं लेती; वह कुछ वर्जित करती है। यहाँ वह एक विशिष्ट संचरण वर्जित करती है, और वही निषेध परिकल्पना को अकेले वंशवृक्ष से परीक्षण योग्य बनाता है, बिना किसी आणविक काम के। (दूसरा विकल्प संवेदिता का अंतर गढ़ता है और Y प्रतिकृति का ग़लत वर्णन करता है; तीसरा जीन को Y पर रख देता है, जो माँ के संचरण का खंडन करता है; चौथा भविष्यवाणी करता कि कोई प्रभावित स्त्री कभी होगी ही नहीं, जो ग़लत है — ऐसी स्त्रियाँ दुर्लभ हैं पर असली।)",
+          mr: "तीन निरीक्षणे, आणि समाधानाची बाब ही की एकच संरचनात्मक सत्य कोणत्याही अतिरिक्त गृहीतकाविना तिन्ही निर्माण करते. ते सत्य: जनुक X गुणसूत्रावर आहे, आणि लिंगे यात वेगळी आहेत की त्यांच्याकडे किती X गुणसूत्रे आहेत — मादीकडे दोन, नराकडे एक X आणि एक Y. पुरुषांतले अधिक्य प्रती मोजण्याची बाब आहे. X वरचे एक अप्रभावी अ‍ॅलिल घ्या. ज्या मादीकडे एक प्रत आहे तिच्या दुसऱ्या X वर क्रियाशील अ‍ॅलिल आहे, जे अनुपस्थित उत्पादन देते, म्हणून ती अप्रभावित आहे — वाहक. तिच्या प्रभावित होण्यासाठी सदोष अ‍ॅलिल दोन्ही X गुणसूत्रांवर लागेल, ज्यासाठी वाहक वा प्रभावित आई आणि प्रभावित वडील दोन्ही लागतील, जो कितीतरी दुर्मीळ योगायोग आहे. नराकडे केवळ एक X आहे. झाकायला कोणतीही दुसरी प्रत नाही, म्हणून अ‍ॅलिल जेव्हाही त्याला वारशाने मिळेल तेव्हा व्यक्त होते. शब्दावलीत नेमके असावे: तो अर्धयुग्मजी आहे, समयुग्मजीही नाही आणि विषमयुग्मजीही नाही, कारण जोडीचा प्रश्नच उद्भवत नाही. जर लोकसंख्येत अ‍ॅलिलची वारंवारता q असेल, तर प्रभावित पुरुषांचे प्रमाण q आहे आणि प्रभावित स्त्रियांचे q² — दुर्मीळ अ‍ॅलिलसाठी प्रचंड फरक. वाहकाची निम्मी मुले, कारण अर्धसूत्री विभाजन निःपक्ष आहे. वाहक आईकडे एक सामान्य X आणि एक सदोष अ‍ॅलिल असलेले. पृथक्करण समान शक्यतेने प्रत्येक अंडात कोणतेही एक पाठवते. मुलाला आपले एकटे X आईकडून मिळते, म्हणून तिच्या निम्म्या मुलांना सदोष अ‍ॅलिल मिळते आणि झाकायला काही नसल्याने ते प्रभावित होतात. तिच्या निम्म्या मुलींनाही ते मिळते, पण त्यांना वडिलांकडून सामान्य X मिळते आणि त्या आपल्या पाळीत वाहक बनतात — स्थिती स्त्रियांतून चालते आणि पुरुषांत प्रकट होते, पिढ्यानपिढ्या. वडिलांकडून मुलाकडे संक्रमण नाही, आणि हेच निर्णायक चिन्ह आहे. मुलगा मुलगा नेमका यासाठी आहे की त्याला वडिलांचे Y मिळाले. वडिलांच्या X वर जे काही आहे ते त्यांच्या मुलींना जाते — प्रत्यक्षात सर्वांना, म्हणून प्रभावित पुरुषाच्या सर्व मुली वाहक असतात. असा कोणताही मार्ग नाहीच ज्याने X-सहलग्न जनुक वडिलांकडून मुलाकडे जाऊ शकेल. तो काल्पनिक वंशवृक्ष काय सांगेल. हाच उपयुक्त भाग आहे, कारण हे युक्तिवादाला कथा नव्हे तर चाचणी म्हणून चालताना दाखवते. जर एखादा वंशवृक्ष प्रभावित वडिलांसोबत प्रभावित मुलगा दाखवेल, आणि आई वाहक नसेल, तर X-सहलग्नता एकदम नाकारली जाते — कमी शक्य नाही, नाकारली, कारण संक्रमणाचा मार्ग अस्तित्वातच नाही. उरलेल्या शक्यता अलिंगसूत्री जनुक (प्रभावी, जर ते प्रत्येक पिढीत दिसेल) वा Y-सहलग्न आहेत, आणि ते वेगळे ओळखता येईल कारण Y-सहलग्न स्थिती सर्व मुलांना जाते आणि कोणत्याही मुलीला नाही. सर्वसाधारण मुद्दा. चांगले स्पष्टीकरण केवळ निरीक्षणे सामावून घेत नाही; ते काहीतरी वर्ज्य करते. इथे ते एक विशिष्ट संक्रमण वर्ज्य करते, आणि तोच निषेध गृहीतकाला एकट्या वंशवृक्षावरून तपासण्याजोगे बनवतो, कोणत्याही रेणवीय कामाविना. (दुसरा पर्याय संवेदनशीलतेचा फरक घडवतो आणि Y प्रतिकृतीचे चुकीचे वर्णन करतो; तिसरा जनुक Y वर ठेवतो, जे आईच्या संक्रमणाचे खंडन करते; चौथा भाकीत करेल की कोणतीही प्रभावित स्त्री कधी असणारच नाही, जे चूक आहे — अशा स्त्रिया दुर्मीळ आहेत पण खऱ्या.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 5 — Molecular Basis of Inheritance                              */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "biology-12-molecular-basis-of-inheritance",
+    subject: "BIOLOGY",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 5 — Molecular Basis of Inheritance",
+      hi: "अध्याय 5 — वंशागति का आणविक आधार",
+      mr: "प्रकरण 5 — आनुवंशिकतेचा रेणवीय आधार",
+    },
+    name: {
+      en: "Molecular Basis of Inheritance",
+      hi: "वंशागति का आणविक आधार",
+      mr: "आनुवंशिकतेचा रेणवीय आधार",
+    },
+    summary: {
+      en: "The chapter that supplies the material underneath the rules, and almost every step of it was settled by an experiment designed to distinguish two possibilities rather than to look and see: a transforming substance identified by destroying each candidate in turn and finding which destruction stopped the transformation; a virus labelled in two different atoms so that whichever entered the cell could be told apart from whichever stayed outside; a structure whose pairing rule was already sitting in somebody else's table of base ratios, unexplained, for years before it explained itself; a replication whose three imaginable schemes predicted three different band patterns in a centrifuge tube, of which exactly one was seen; a code read three letters at a time whose redundancy is not sloppiness but a buffer, since the third letter of most triplets can change without changing anything; and a control circuit in which a gene is switched on by the arrival of the very substance its product exists to digest, so that the cell is not paying for an enzyme it has nothing to use it on.",
+      hi: "यह वह अध्याय है जो नियमों के नीचे की सामग्री देता है, और उसका लगभग हर क़दम ऐसे प्रयोग से तय हुआ जो देखने-भर के लिए नहीं बल्कि दो संभावनाओं में भेद करने को रचा गया था: ऐसा रूपांतरक पदार्थ जो हर उम्मीदवार को बारी-बारी नष्ट करके और यह पाकर पहचाना गया कि किसका नष्ट होना रूपांतरण रोकता है; दो भिन्न परमाणुओं में चिह्नित ऐसा विषाणु कि जो कोशिका में घुसा उसे जो बाहर रहा उससे अलग बताया जा सके; ऐसी संरचना जिसका युग्मन नियम वर्षों से किसी और की क्षार अनुपातों की तालिका में बिना व्याख्या बैठा था इससे पहले कि वह स्वयं को समझाए; ऐसी प्रतिकृति जिसकी तीन कल्पनीय योजनाएँ अपकेंद्रित्र नली में तीन भिन्न पट्टी प्रतिरूपों की भविष्यवाणी करती थीं और जिनमें से ठीक एक ही दिखा; तीन अक्षर एक साथ पढ़ा जाता ऐसा कूट जिसका आधिक्य ढिलाई नहीं बल्कि बचाव है, चूँकि अधिकांश त्रिक का तीसरा अक्षर बिना कुछ बदले बदल सकता है; और ऐसा नियंत्रण परिपथ जिसमें कोई जीन उसी पदार्थ के आने से चालू होता है जिसे पचाने के लिए उसका उत्पाद है, ताकि कोशिका ऐसे एंज़ाइम की क़ीमत न चुकाए जिसे लगाने को उसके पास कुछ है ही नहीं।",
+      mr: "हे ते प्रकरण आहे जे नियमांखालची सामग्री पुरवते, आणि त्याची जवळपास प्रत्येक पायरी अशा प्रयोगाने ठरली जो केवळ पाहण्यासाठी नव्हे तर दोन शक्यतांत भेद करण्यासाठी रचला होता: असा रूपांतरक पदार्थ जो प्रत्येक उमेदवार आळीपाळीने नष्ट करून आणि कोणाचे नष्ट होणे रूपांतरण थांबवते हे शोधून ओळखला गेला; दोन वेगळ्या अणूंत चिन्हांकित असा विषाणू की जो पेशीत शिरला त्याला जो बाहेर राहिला त्याहून वेगळे सांगता यावे; अशी रचना जिचा युग्मन नियम वर्षानुवर्षे दुसऱ्याच कोणाच्या क्षार गुणोत्तरांच्या तक्त्यात स्पष्टीकरणाविना बसला होता तो स्वतःला समजावण्याआधी; अशी प्रतिकृती जिच्या तीन कल्पनीय योजना अपकेंद्रित्र नळीत तीन वेगळ्या पट्टी नमुन्यांचे भाकीत करत होत्या आणि ज्यांपैकी नेमका एकच दिसला; तीन अक्षरे एकावेळी वाचला जाणारा असा संकेत ज्याचे आधिक्य ढिलाई नसून बचाव आहे, कारण बहुतांश त्रिकांचे तिसरे अक्षर काहीही न बदलता बदलू शकते; आणि असे नियंत्रण परिपथ ज्यात एखादे जनुक त्याच पदार्थाच्या येण्याने चालू होते ज्याला पचवण्यासाठी त्याचे उत्पादन आहे, जेणेकरून पेशी अशा विकराची किंमत मोजू नये ज्याला लावायला तिच्याकडे काहीच नाही.",
+    },
+    position: 5,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "the-experiments-that-identified-the-genetic-material",
+        name: {
+          en: "The experiments that identified the genetic material",
+          hi: "वे प्रयोग जिन्होंने आनुवंशिक पदार्थ पहचाना",
+          mr: "ज्या प्रयोगांनी आनुवंशिक पदार्थ ओळखला ते",
+        },
+        kind: "experiment and what it decided",
+        prompt: {
+          en: "A series in which each candidate substance was destroyed in turn to see which destruction abolished the effect, and then a virus was labelled in two different atoms to see which one went inside. What is being described?",
+          hi: "ऐसी शृंखला जिसमें हर उम्मीदवार पदार्थ को बारी-बारी नष्ट किया गया यह देखने को कि किसका नष्ट होना प्रभाव मिटा देता है, और फिर एक विषाणु को दो भिन्न परमाणुओं में चिह्नित किया गया यह देखने को कि भीतर कौन गया। यहाँ किसका वर्णन है?",
+          mr: "अशी मालिका ज्यात प्रत्येक उमेदवार पदार्थ आळीपाळीने नष्ट केला गेला हे पाहायला की कोणाचे नष्ट होणे परिणाम मिटवते, आणि मग एक विषाणू दोन वेगळ्या अणूंत चिन्हांकित केला गेला हे पाहायला की आत कोण गेला. इथे कशाचे वर्णन आहे?",
+        },
+        statement: {
+          en: "The experiments that identified the genetic material worked by elimination: destroying protein or RNA left transformation intact, destroying DNA abolished it, and a labelled virus showed that DNA and not protein entered the host cell.",
+          hi: "जिन प्रयोगों ने आनुवंशिक पदार्थ पहचाना वे निराकरण से चले: प्रोटीन या RNA नष्ट करने पर रूपांतरण बना रहा, DNA नष्ट करने पर वह मिट गया, और चिह्नित विषाणु ने दिखाया कि परपोषी कोशिका में प्रोटीन नहीं बल्कि DNA घुसा।",
+          mr: "ज्या प्रयोगांनी आनुवंशिक पदार्थ ओळखला ते निराकरणाने चालले: प्रथिन वा RNA नष्ट केल्यावर रूपांतरण टिकले, DNA नष्ट केल्यावर ते मिटले, आणि चिन्हांकित विषाणूने दाखवले की यजमान पेशीत प्रथिन नव्हे तर DNA शिरला.",
+        },
+        detail: {
+          en: "The labelling worked because phosphorus occurs in DNA and not in protein, while sulphur occurs in protein and not in DNA, so one atom marks each molecule uniquely.",
+          hi: "चिह्नन इसलिए चला कि फ़ॉस्फ़ोरस DNA में है और प्रोटीन में नहीं, जबकि सल्फ़र प्रोटीन में है और DNA में नहीं, अतः एक-एक परमाणु हर अणु को अनन्य रूप से चिह्नित करता है।",
+          mr: "चिन्हांकन यासाठी चालले की फॉस्फरस DNA मध्ये आहे आणि प्रथिनात नाही, तर सल्फर प्रथिनात आहे आणि DNA मध्ये नाही, म्हणून एकेक अणू प्रत्येक रेणूला अनन्यपणे चिन्हांकित करतो.",
+        },
+        extra: {
+          en: "The point of both designs was to make the two hypotheses predict different results, which is what turns an observation into evidence.",
+          hi: "दोनों रचनाओं का मर्म यह था कि दोनों परिकल्पनाएँ भिन्न परिणामों की भविष्यवाणी करें, और यही किसी प्रेक्षण को प्रमाण बनाता है।",
+          mr: "दोन्ही रचनांचा गाभा हा होता की दोन्ही गृहीतकांनी वेगळ्या निकालांचे भाकीत करावे, आणि हेच एखाद्या निरीक्षणाला पुरावा बनवते.",
+        },
+        pair: {
+          left: {
+            en: "Destroy each candidate and see which destruction matters",
+            hi: "हर उम्मीदवार को नष्ट करो और देखो किसका नष्ट होना मायने रखता है",
+            mr: "प्रत्येक उमेदवार नष्ट करा आणि पाहा कोणाचे नष्ट होणे महत्त्वाचे",
+          },
+          right: {
+            en: "the experiments that identified the genetic material",
+            hi: "वे प्रयोग जिन्होंने आनुवंशिक पदार्थ पहचाना",
+            mr: "ज्या प्रयोगांनी आनुवंशिक पदार्थ ओळखला ते",
+          },
+        },
+      },
+      {
+        id: "semiconservative-replication",
+        name: {
+          en: "Semiconservative replication",
+          hi: "अर्धसंरक्षी प्रतिकृति",
+          mr: "अर्धसंरक्षी प्रतिकृती",
+        },
+        kind: "experiment and what it decided",
+        prompt: {
+          en: "A scheme in which each new molecule keeps one old strand and builds one new one, chosen over two rivals because it alone predicted the band pattern that a centrifuge actually showed. Which one is it?",
+          hi: "ऐसी योजना जिसमें हर नया अणु एक पुरानी लड़ी रखता है और एक नई बनाता है, जो दो प्रतिद्वंद्वियों पर इसलिए चुनी गई कि अकेली उसी ने उस पट्टी प्रतिरूप की भविष्यवाणी की जो अपकेंद्रित्र ने सचमुच दिखाया। यह कौन-सी है?",
+          mr: "अशी योजना ज्यात प्रत्येक नवा रेणू एक जुना पदर ठेवतो आणि एक नवा बनवतो, जी दोन प्रतिस्पर्ध्यांवर यासाठी निवडली गेली की एकट्या तिनेच त्या पट्टी नमुन्याचे भाकीत केले जो अपकेंद्रित्राने खरोखर दाखवला. ही कोणती?",
+        },
+        statement: {
+          en: "Semiconservative replication is the scheme in which each daughter molecule consists of one parental strand and one newly made strand.",
+          hi: "अर्धसंरक्षी प्रतिकृति वह योजना है जिसमें हर पुत्री अणु एक जनकीय लड़ी और एक नई बनी लड़ी से मिलकर बनता है।",
+          mr: "अर्धसंरक्षी प्रतिकृती ही ती योजना आहे ज्यात प्रत्येक कन्या रेणू एक जनकीय पदर आणि एक नव्याने बनलेला पदर यांनी बनतो.",
+        },
+        detail: {
+          en: "The alternatives were that both strands are new and the old molecule is kept whole, or that old and new material is scattered through both strands, and each predicted a distinguishable outcome after one and two rounds of division.",
+          hi: "विकल्प ये थे कि दोनों लड़ियाँ नई हों और पुराना अणु समूचा बचा रहे, या पुरानी और नई सामग्री दोनों लड़ियों में बिखरी हो, और हर एक ने एक और दो विभाजनों के बाद अलग पहचाने जाने योग्य परिणाम की भविष्यवाणी की।",
+          mr: "पर्याय हे होते की दोन्ही पदर नवे असावेत आणि जुना रेणू अख्खा टिकावा, वा जुनी आणि नवी सामग्री दोन्ही पदरांत विखुरलेली असावी, आणि प्रत्येकाने एक व दोन विभाजनांनंतर वेगळे ओळखता येण्याजोग्या निकालाचे भाकीत केले.",
+        },
+        extra: {
+          en: "The design worked by growing cells in a heavy nitrogen isotope and then shifting them to the light one, so that generation could be read off from density.",
+          hi: "रचना इस तरह चली कि कोशिकाएँ भारी नाइट्रोजन समस्थानिक में उगाई गईं और फिर हल्के वाले में डाल दी गईं, ताकि पीढ़ी घनत्व से पढ़ी जा सके।",
+          mr: "रचना अशी चालली की पेशी जड नायट्रोजन समस्थानिकात वाढवल्या गेल्या आणि मग हलक्यात हलवल्या गेल्या, जेणेकरून पिढी घनतेवरून वाचता यावी.",
+        },
+        pair: {
+          left: {
+            en: "Three schemes, three predicted patterns, one observed",
+            hi: "तीन योजनाएँ, तीन भविष्यवाणित प्रतिरूप, एक देखा गया",
+            mr: "तीन योजना, तीन भाकीत नमुने, एक निरीक्षिलेला",
+          },
+          right: {
+            en: "semiconservative replication",
+            hi: "अर्धसंरक्षी प्रतिकृति",
+            mr: "अर्धसंरक्षी प्रतिकृती",
+          },
+        },
+      },
+      {
+        id: "the-lac-operon",
+        name: {
+          en: "The lac operon",
+          hi: "लैक ऑपेरॉन",
+          mr: "लॅक ऑपेरॉन",
+        },
+        kind: "experiment and what it decided",
+        prompt: {
+          en: "A cluster of genes kept switched off by a bound protein, and switched on when the sugar they are needed for arrives and pulls that protein away. What is this arrangement?",
+          hi: "जीनों का ऐसा गुच्छा जो एक बँधे प्रोटीन से बंद रखा जाता है, और तब चालू होता है जब वह शर्करा आ जाए जिसके लिए वे चाहिए और वह उस प्रोटीन को खींच ले जाए। यह व्यवस्था क्या है?",
+          mr: "जनुकांचा असा गुच्छ जो एका बांधलेल्या प्रथिनाने बंद ठेवला जातो, आणि तेव्हा चालू होतो जेव्हा ती शर्करा येते जिच्यासाठी ती लागतात आणि ती त्या प्रथिनाला ओढून नेते. ही व्यवस्था काय आहे?",
+        },
+        statement: {
+          en: "The lac operon is a set of genes transcribed together and held off by a repressor protein, which is released when lactose is present so the enzymes are made only when there is something to digest.",
+          hi: "लैक ऑपेरॉन ऐसे जीनों का समुच्चय है जो साथ अनुलेखित होते हैं और एक दमनकारी प्रोटीन से रोके रखे जाते हैं, जो लैक्टोस के मौजूद होने पर छूट जाता है, अतः एंज़ाइम तभी बनते हैं जब पचाने को कुछ हो।",
+          mr: "लॅक ऑपेरॉन हा अशा जनुकांचा संच आहे जी एकत्र अनुलेखित होतात आणि एका दमनकारी प्रथिनाने अडवली जातात, जे लॅक्टोज उपस्थित असल्यावर सुटते, म्हणून विकरे तेव्हाच बनतात जेव्हा पचवायला काही असते.",
+        },
+        detail: {
+          en: "The signal is the substrate itself, which is the neatest possible arrangement: the thing that makes the enzyme necessary is also the thing that switches its gene on.",
+          hi: "संकेत स्वयं क्रियाधार है, और यही सबसे सुघड़ संभव व्यवस्था है: जो चीज़ एंज़ाइम को ज़रूरी बनाती है वही उसका जीन चालू भी करती है।",
+          mr: "संकेत स्वतः क्रियाधार आहे, आणि हीच सर्वांत नेटकी शक्य व्यवस्था आहे: जी गोष्ट विकराला आवश्यक करते तीच त्याचे जनुक चालूही करते.",
+        },
+        extra: {
+          en: "The economy is real: making an unused enzyme costs energy and materials, and a bacterium that wastes them is outgrown by one that does not.",
+          hi: "किफ़ायत असली है: अनुपयोगी एंज़ाइम बनाने में ऊर्जा और सामग्री लगती है, और जो जीवाणु उन्हें गँवाता है वह उससे पिछड़ जाता है जो नहीं गँवाता।",
+          mr: "काटकसर खरी आहे: न वापरले जाणारे विकर बनवण्यात ऊर्जा आणि सामग्री लागते, आणि जो जिवाणू ती वाया घालवतो तो न घालवणाऱ्याहून मागे पडतो.",
+        },
+        pair: {
+          left: {
+            en: "The substrate is its own switch",
+            hi: "क्रियाधार स्वयं अपना स्विच है",
+            mr: "क्रियाधार स्वतःच आपला स्विच आहे",
+          },
+          right: {
+            en: "the lac operon",
+            hi: "लैक ऑपेरॉन",
+            mr: "लॅक ऑपेरॉन",
+          },
+        },
+      },
+      {
+        id: "the-double-helix",
+        name: {
+          en: "The double helix",
+          hi: "द्विकुंडली",
+          mr: "द्विकुंडली",
+        },
+        kind: "structure and what it explains",
+        prompt: {
+          en: "A structure of two strands running in opposite directions with the bases turned inward, whose pairing rule was sitting unexplained in somebody else's table of ratios for years. What is it?",
+          hi: "उलटी दिशाओं में चलती दो लड़ियों की ऐसी संरचना जिसमें क्षार भीतर की ओर मुड़े हैं, और जिसका युग्मन नियम वर्षों तक किसी और की अनुपातों की तालिका में बिना व्याख्या बैठा रहा। यह क्या है?",
+          mr: "उलट दिशांनी चालणाऱ्या दोन पदरांची अशी रचना ज्यात क्षार आतल्या बाजूला वळलेले आहेत, आणि जिचा युग्मन नियम वर्षानुवर्षे दुसऱ्याच कोणाच्या गुणोत्तरांच्या तक्त्यात स्पष्टीकरणाविना बसून राहिला. ही काय आहे?",
+        },
+        statement: {
+          en: "The double helix is two antiparallel strands wound about a common axis, with the sugar–phosphate backbones outside and the paired bases inside.",
+          hi: "द्विकुंडली एक साझी अक्ष के गिर्द लिपटी दो प्रतिसमांतर लड़ियाँ हैं, जिनमें शर्करा–फ़ॉस्फ़ेट रीढ़ बाहर और युग्मित क्षार भीतर हैं।",
+          mr: "द्विकुंडली म्हणजे एका सामायिक अक्षाभोवती गुंडाळलेले दोन प्रतिसमांतर पदर, ज्यांत शर्करा–फॉस्फेट कणे बाहेर आणि युग्मित क्षार आत आहेत.",
+        },
+        detail: {
+          en: "The pairing is fixed by hydrogen bonding and by size, a larger base always facing a smaller one, which keeps the width of the helix the same all along its length.",
+          hi: "युग्मन हाइड्रोजन आबंधन और आकार से तय है, बड़ा क्षार हमेशा छोटे के सामने, जिससे कुंडली की चौड़ाई पूरी लंबाई भर एक-सी बनी रहती है।",
+          mr: "युग्मन हायड्रोजन बंधन आणि आकाराने ठरते, मोठे क्षार नेहमी लहानासमोर, ज्याने कुंडलीची रुंदी अख्ख्या लांबीभर सारखी राहते.",
+        },
+        extra: {
+          en: "Chargaff had measured equal amounts of the two members of each pair in every organism examined, a regularity that had no explanation until the structure supplied one.",
+          hi: "शार्गाफ़ ने जाँचे गए हर जीव में हर जोड़े के दोनों सदस्यों की बराबर मात्रा नापी थी, और यह नियमितता तब तक बिना व्याख्या थी जब तक संरचना ने एक न दे दी।",
+          mr: "शारगाफने तपासलेल्या प्रत्येक जीवात प्रत्येक जोडीच्या दोन्ही सदस्यांचे समान प्रमाण मोजले होते, आणि ही नियमितता तोवर स्पष्टीकरणाविना होती जोवर रचनेने एक दिले नाही.",
+        },
+        pair: {
+          left: {
+            en: "A regularity in a table waiting years for its explanation",
+            hi: "तालिका में बैठी नियमितता जो वर्षों अपनी व्याख्या की प्रतीक्षा करती रही",
+            mr: "तक्त्यात बसलेली नियमितता जी वर्षानुवर्षे आपल्या स्पष्टीकरणाची वाट पाहत राहिली",
+          },
+          right: {
+            en: "the double helix",
+            hi: "द्विकुंडली",
+            mr: "द्विकुंडली",
+          },
+        },
+      },
+      {
+        id: "the-genetic-code",
+        name: {
+          en: "The genetic code",
+          hi: "आनुवंशिक कूट",
+          mr: "आनुवंशिक संकेत",
+        },
+        kind: "structure and what it explains",
+        prompt: {
+          en: "A reading in threes, in which several different triplets specify the same amino acid and the surplus falls almost entirely on the last of the three letters. What is this?",
+          hi: "तीन-तीन में पढ़ा जाना, जिसमें कई भिन्न त्रिक वही ऐमीनो अम्ल निर्दिष्ट करते हैं और अतिरेक लगभग पूरा तीनों में से अंतिम अक्षर पर पड़ता है। यह क्या है?",
+          mr: "तीन-तीनमध्ये वाचणे, ज्यात कित्येक वेगळी त्रिके तेच अमिनो आम्ल निर्दिष्ट करतात आणि अतिरिक्तता जवळपास अख्खी तिघांतल्या शेवटच्या अक्षरावर पडते. हे काय आहे?",
+        },
+        statement: {
+          en: "The genetic code is read in non-overlapping triplets, and it is degenerate: most amino acids are specified by more than one codon, usually differing only in the third base.",
+          hi: "आनुवंशिक कूट अनतिव्यापी त्रिकों में पढ़ा जाता है, और वह अपह्रासित है: अधिकांश ऐमीनो अम्ल एक से अधिक कोडॉन से निर्दिष्ट होते हैं, जो प्रायः केवल तीसरे क्षार में भिन्न हैं।",
+          mr: "आनुवंशिक संकेत अनतिव्यापी त्रिकांत वाचला जातो, आणि तो अपह्रासित आहे: बहुतांश अमिनो आम्ले एकाहून अधिक कोडॉनने निर्दिष्ट होतात, जी बहुधा केवळ तिसऱ्या क्षारात वेगळी आहेत.",
+        },
+        detail: {
+          en: "Three had to be the length because two letters from four options give sixteen combinations, which is not enough for twenty amino acids, while three give sixty-four.",
+          hi: "लंबाई तीन ही होनी थी क्योंकि चार विकल्पों में से दो अक्षर सोलह संयोजन देते हैं, जो बीस ऐमीनो अम्लों के लिए काफ़ी नहीं, जबकि तीन चौंसठ देते हैं।",
+          mr: "लांबी तीनच असावी लागली कारण चार पर्यायांतून दोन अक्षरे सोळा संयोजने देतात, जी वीस अमिनो आम्लांसाठी पुरेशी नाहीत, तर तीन चौसष्ट देतात.",
+        },
+        extra: {
+          en: "The surplus is not waste: a change in the third base of most codons leaves the amino acid unchanged, so a good many mutations have no effect at all.",
+          hi: "अतिरेक अपव्यय नहीं है: अधिकांश कोडॉन के तीसरे क्षार में बदलाव ऐमीनो अम्ल को अपरिवर्तित छोड़ देता है, अतः बहुत से उत्परिवर्तनों का कोई प्रभाव ही नहीं होता।",
+          mr: "अतिरिक्तता अपव्यय नाही: बहुतांश कोडॉनच्या तिसऱ्या क्षारातील बदल अमिनो आम्ल अपरिवर्तित सोडतो, म्हणून बऱ्याच उत्परिवर्तनांचा कोणताही परिणामच होत नाही.",
+        },
+        pair: {
+          left: {
+            en: "Redundancy that works as a buffer against mutation",
+            hi: "ऐसा आधिक्य जो उत्परिवर्तन के विरुद्ध बचाव का काम करता है",
+            mr: "असे आधिक्य जे उत्परिवर्तनाविरुद्ध बचावाचे काम करते",
+          },
+          right: {
+            en: "the genetic code",
+            hi: "आनुवंशिक कूट",
+            mr: "आनुवंशिक संकेत",
+          },
+        },
+      },
+      {
+        id: "transcription-and-translation",
+        name: {
+          en: "Transcription and translation",
+          hi: "अनुलेखन और अनुवाद",
+          mr: "अनुलेखन आणि भाषांतर",
+        },
+        kind: "structure and what it explains",
+        prompt: {
+          en: "A copy made in a related language and carried out of the store, and then a reading of that copy into a quite different kind of molecule. Which pair of processes is this?",
+          hi: "एक ऐसी नक़ल जो संबंधित भाषा में बनती है और भंडार से बाहर ले जाई जाती है, और फिर उस नक़ल का बिलकुल भिन्न क़िस्म के अणु में पढ़ा जाना। यह कौन-सी प्रक्रियाओं की जोड़ी है?",
+          mr: "अशी एक नक्कल जी संबंधित भाषेत बनते आणि साठ्यातून बाहेर नेली जाते, आणि मग त्या नकलेचे अगदी वेगळ्या प्रकारच्या रेणूत वाचन. ही कोणत्या प्रक्रियांची जोडी?",
+        },
+        statement: {
+          en: "Transcription and translation are the copying of one DNA strand into RNA and the reading of that RNA into a chain of amino acids at the ribosome.",
+          hi: "अनुलेखन और अनुवाद क्रमशः एक DNA लड़ी का RNA में नक़ल होना और उस RNA का राइबोसोम पर ऐमीनो अम्लों की शृंखला में पढ़ा जाना है।",
+          mr: "अनुलेखन आणि भाषांतर म्हणजे अनुक्रमे एका DNA पदराची RNA मध्ये नक्कल होणे आणि त्या RNA चे रायबोसोमवर अमिनो आम्लांच्या साखळीत वाचन होणे.",
+        },
+        detail: {
+          en: "The transfer RNA is what makes the code physical: one end recognises a triplet on the message and the other carries the amino acid that triplet stands for.",
+          hi: "स्थानांतरण RNA ही कूट को भौतिक बनाता है: उसका एक सिरा संदेश पर के त्रिक को पहचानता है और दूसरा वह ऐमीनो अम्ल ढोता है जिसके लिए वह त्रिक खड़ा है।",
+          mr: "स्थानांतरण RNA च संकेताला भौतिक बनवते: त्याचे एक टोक संदेशावरचे त्रिक ओळखते आणि दुसरे ते अमिनो आम्ल वाहते ज्यासाठी ते त्रिक उभे आहे.",
+        },
+        extra: {
+          en: "In a eukaryote the first copy is edited before use, with stretches cut out and the rest joined up, so the gene and its product are not the same length.",
+          hi: "सुकेंद्रकी में पहली नक़ल काम में आने से पहले संपादित होती है, कुछ हिस्से काटकर निकाल दिए जाते हैं और बाक़ी जोड़ दिए जाते हैं, अतः जीन और उसका उत्पाद बराबर लंबे नहीं होते।",
+          mr: "सुकेंद्रकीत पहिली नक्कल वापरण्याआधी संपादित होते, काही भाग कापून काढले जातात आणि बाकीचे जोडले जातात, म्हणून जनुक आणि त्याचे उत्पादन सारख्या लांबीचे नसतात.",
+        },
+        pair: {
+          left: {
+            en: "One molecule with a triplet at one end and its meaning at the other",
+            hi: "ऐसा अणु जिसके एक सिरे पर त्रिक है और दूसरे पर उसका अर्थ",
+            mr: "असा रेणू ज्याच्या एका टोकाला त्रिक आहे आणि दुसऱ्याला त्याचा अर्थ",
+          },
+          right: {
+            en: "transcription and translation",
+            hi: "अनुलेखन और अनुवाद",
+            mr: "अनुलेखन आणि भाषांतर",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Three schemes for replication were imaginable: both strands new with the parent kept whole, one old and one new strand in each daughter, or old and new material scattered through both strands. Explain how one experiment distinguished them, and why that design was decisive.",
+          hi: "प्रतिकृति की तीन योजनाएँ कल्पनीय थीं: दोनों लड़ियाँ नई और जनक समूचा बचा, हर पुत्री में एक पुरानी और एक नई लड़ी, या पुरानी और नई सामग्री दोनों लड़ियों में बिखरी। बताओ कि एक ही प्रयोग ने उनमें भेद कैसे किया, और वह रचना निर्णायक क्यों थी।",
+          mr: "प्रतिकृतीच्या तीन योजना कल्पनीय होत्या: दोन्ही पदर नवे आणि जनक अख्खा टिकलेला, प्रत्येक कन्येत एक जुना आणि एक नवा पदर, वा जुनी आणि नवी सामग्री दोन्ही पदरांत विखुरलेली. एकाच प्रयोगाने त्यांच्यात भेद कसा केला, आणि ती रचना निर्णायक का होती ते सांगा.",
+        },
+        choices: [
+          {
+            en: "Bacteria were grown for many generations in a heavy nitrogen isotope so that all their DNA was dense, then transferred to ordinary nitrogen, and samples were centrifuged after each division. After one round every molecule was of intermediate density — a single band. That alone killed the first scheme, which predicted two bands, one heavy and one light. After a second round there were two bands, one intermediate and one light, in equal amounts. That killed the third scheme, which predicted a single band getting steadily lighter with no intermediate persisting. Only the semiconservative scheme predicted both results, and the design is decisive because the three hypotheses predicted different observable patterns before the experiment was run",
+            hi: "जीवाणु कई पीढ़ियों तक भारी नाइट्रोजन समस्थानिक में उगाए गए ताकि उनका सारा DNA घना हो, फिर साधारण नाइट्रोजन में डाले गए, और हर विभाजन के बाद नमूने अपकेंद्रित किए गए। एक दौर के बाद हर अणु मध्यवर्ती घनत्व का था — एक अकेली पट्टी। वह अकेला पहली योजना को मार देता है, जो दो पट्टियों की भविष्यवाणी करती थी, एक भारी और एक हल्की। दूसरे दौर के बाद दो पट्टियाँ थीं, एक मध्यवर्ती और एक हल्की, बराबर मात्रा में। इसने तीसरी योजना को मारा, जो एक ही पट्टी के लगातार हल्के होते जाने की भविष्यवाणी करती थी और जिसमें कोई मध्यवर्ती टिकती नहीं। केवल अर्धसंरक्षी योजना ने दोनों परिणामों की भविष्यवाणी की, और रचना इसलिए निर्णायक है कि तीनों परिकल्पनाओं ने प्रयोग चलने से पहले ही भिन्न प्रेक्षणीय प्रतिरूपों की भविष्यवाणी की थी",
+            mr: "जिवाणू कित्येक पिढ्या जड नायट्रोजन समस्थानिकात वाढवले गेले जेणेकरून त्यांचा सर्व DNA दाट असावा, मग साध्या नायट्रोजनात हलवले गेले, आणि प्रत्येक विभाजनानंतर नमुने अपकेंद्रित केले गेले. एका फेरीनंतर प्रत्येक रेणू मध्यवर्ती घनतेचा होता — एकच पट्टी. ते एकटेच पहिली योजना मारते, जी दोन पट्ट्यांचे भाकीत करत होती, एक जड आणि एक हलकी. दुसऱ्या फेरीनंतर दोन पट्ट्या होत्या, एक मध्यवर्ती आणि एक हलकी, समान प्रमाणात. याने तिसरी योजना मारली, जी एकाच पट्टीच्या सतत हलके होत जाण्याचे भाकीत करत होती आणि जिच्यात कोणतीही मध्यवर्ती टिकत नाही. केवळ अर्धसंरक्षी योजनेने दोन्ही निकालांचे भाकीत केले, आणि रचना यासाठी निर्णायक आहे की तिन्ही गृहीतकांनी प्रयोग चालण्याआधीच वेगळ्या निरीक्षणीय नमुन्यांचे भाकीत केले होते",
+          },
+          {
+            en: "The strands were separated and examined under an electron microscope, which showed directly that one of each pair was old, so no inference from density was required",
+            hi: "लड़ियाँ अलग कर इलेक्ट्रॉन सूक्ष्मदर्शी में देखी गईं, जिसने सीधे दिखा दिया कि हर जोड़े में से एक पुरानी है, अतः घनत्व से किसी अनुमान की ज़रूरत ही नहीं पड़ी",
+            mr: "पदर वेगळे करून इलेक्ट्रॉन सूक्ष्मदर्शकात पाहिले गेले, ज्याने थेट दाखवले की प्रत्येक जोडीतला एक जुना आहे, म्हणून घनतेवरून कोणत्याही अनुमानाची गरजच पडली नाही",
+          },
+          {
+            en: "Only one generation was examined, and since a single intermediate band is consistent with all three schemes, the experiment established the answer by weight of opinion rather than by evidence",
+            hi: "केवल एक पीढ़ी जाँची गई, और चूँकि अकेली मध्यवर्ती पट्टी तीनों योजनाओं से संगत है, प्रयोग ने उत्तर प्रमाण से नहीं बल्कि राय के भार से तय किया",
+            mr: "केवळ एक पिढी तपासली गेली, आणि एकटी मध्यवर्ती पट्टी तिन्ही योजनांशी सुसंगत असल्याने, प्रयोगाने उत्तर पुराव्याने नव्हे तर मताच्या वजनाने ठरवले",
+          },
+          {
+            en: "The heavy isotope was radioactive and killed the cells that used it, so the surviving cells were those replicating conservatively, which is how the scheme was identified",
+            hi: "भारी समस्थानिक रेडियोऐक्टिव था और उसे काम में लेती कोशिकाओं को मार देता था, अतः बची कोशिकाएँ वही थीं जो संरक्षी ढंग से प्रतिकृति कर रही थीं, और इसी से योजना पहचानी गई",
+            mr: "जड समस्थानिक किरणोत्सर्गी होता आणि तो वापरणाऱ्या पेशी मारत होता, म्हणून वाचलेल्या पेशी त्याच होत्या ज्या संरक्षी पद्धतीने प्रतिकृती करत होत्या, आणि यानेच योजना ओळखली गेली",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "This is one of the cleanest experiments in biology, and what makes it clean is that the three hypotheses were made to predict three different observable outcomes BEFORE anything was measured. Work out those predictions first and the result reads itself. THE TRICK THAT MAKES DNA VISIBLE BY AGE. Nitrogen occurs in the bases, so DNA made in a medium of the heavy isotope ¹⁵N is denser than DNA made with ordinary ¹⁴N. Density is not a chemical difference — the DNA behaves identically — but it can be separated in a caesium chloride gradient, where molecules settle at the depth matching their own density and form visible bands. So a band's position reports on when the material in it was made. THE SETUP. Grow E. coli for many generations in ¹⁵N until all its DNA is heavy. Transfer to ¹⁴N, so every new strand from now on is light. Sample after one division, and after a second. THE THREE PREDICTIONS, WHICH IS WHERE THE WORK IS. Conservative: the parent molecule stays intact and an entirely new one is made, so after one round there should be two bands — heavy parent, light daughter. Semiconservative: each daughter has one heavy old strand and one light new one, so after one round every molecule is hybrid and there should be a single band of intermediate density. Dispersive: old and new material is interspersed along both strands, so after one round every molecule is also intermediate — a single band, indistinguishable from the semiconservative prediction at this stage. AFTER ONE ROUND. A single intermediate band was seen. That eliminates conservative replication outright — it had predicted two bands and there was one. It does not yet separate the other two, and this is why a second generation was essential. AFTER TWO ROUNDS. Semiconservative predicts that each hybrid molecule separates, its heavy strand pairing with a new light one to give a hybrid, its light strand giving an all-light molecule: two bands, half intermediate and half light. Dispersive predicts that the old material is now spread twice as thin through every molecule, so all molecules remain identical and the single band simply shifts a little lighter — never splitting. Two bands in equal amounts were seen. Dispersive is eliminated. WHY THE DESIGN IS DECISIVE RATHER THAN MERELY SUGGESTIVE. Each hypothesis was committed to a specific, different, observable outcome in advance, and each observation eliminated one. Nothing had to be argued about which explanation felt more natural. Notice too that one generation was not enough — the experiment had to run to the point where the surviving hypotheses diverged, which is a general lesson about designing tests. (The second option describes a technique that could not resolve strand age; the third misstates the experiment, which ran to several generations, and misdescribes how evidence works; the fourth invents lethal radioactivity — ¹⁵N is a stable isotope and the cells grew normally.)",
+          hi: "यह जीवविज्ञान के सबसे साफ़ प्रयोगों में से एक है, और उसे साफ़ यह बनाता है कि कुछ भी नापने से पहले ही तीनों परिकल्पनाओं से तीन भिन्न प्रेक्षणीय परिणामों की भविष्यवाणी करवा ली गई। पहले वे भविष्यवाणियाँ निकाल लो और परिणाम ख़ुद को पढ़ा देता है। वह तरकीब जो DNA को उसकी उम्र से दिखा देती है। नाइट्रोजन क्षारों में है, अतः भारी समस्थानिक ¹⁵N के माध्यम में बना DNA साधारण ¹⁴N से बने DNA से घना है। घनत्व रासायनिक अंतर नहीं — DNA समरूप बरतता है — पर उसे सीज़ियम क्लोराइड प्रवणता में अलग किया जा सकता है, जहाँ अणु अपने घनत्व से मेल खाती गहराई पर बैठ जाते हैं और दृश्य पट्टियाँ बनाते हैं। अतः पट्टी की जगह बता देती है कि उसमें की सामग्री कब बनी। जमावट। E. coli को कई पीढ़ियों तक ¹⁵N में उगाओ जब तक उसका सारा DNA भारी न हो जाए। ¹⁴N में डालो, ताकि अब से हर नई लड़ी हल्की हो। एक विभाजन के बाद और दूसरे के बाद नमूने लो। तीन भविष्यवाणियाँ, और काम यहीं है। संरक्षी: जनक अणु सलामत रहता है और बिलकुल नया बनता है, अतः एक दौर के बाद दो पट्टियाँ होनी चाहिए — भारी जनक, हल्की पुत्री। अर्धसंरक्षी: हर पुत्री के पास एक भारी पुरानी लड़ी और एक हल्की नई, अतः एक दौर के बाद हर अणु संकर है और मध्यवर्ती घनत्व की एक अकेली पट्टी होनी चाहिए। विक्षेपी: पुरानी और नई सामग्री दोनों लड़ियों में बीच-बीच बिखरी, अतः एक दौर के बाद हर अणु भी मध्यवर्ती है — एक अकेली पट्टी, जो इस चरण पर अर्धसंरक्षी भविष्यवाणी से अलग नहीं पहचानी जा सकती। एक दौर के बाद। एक अकेली मध्यवर्ती पट्टी दिखी। यह संरक्षी प्रतिकृति को एकदम ख़ारिज कर देती है — उसने दो पट्टियों की भविष्यवाणी की थी और एक थी। यह अभी बाक़ी दोनों में भेद नहीं करती, और इसीलिए दूसरी पीढ़ी अनिवार्य थी। दो दौर के बाद। अर्धसंरक्षी भविष्यवाणी करती है कि हर संकर अणु अलग होता है, उसकी भारी लड़ी नई हल्की से जुड़कर संकर देती है, उसकी हल्की लड़ी पूरी हल्का अणु देती है: दो पट्टियाँ, आधी मध्यवर्ती और आधी हल्की। विक्षेपी भविष्यवाणी करती है कि पुरानी सामग्री अब हर अणु में दुगुनी पतली फैली है, अतः सारे अणु समरूप रहते हैं और अकेली पट्टी बस थोड़ी और हल्की खिसक जाती है — कभी फटती नहीं। बराबर मात्रा में दो पट्टियाँ दिखीं। विक्षेपी ख़ारिज। रचना महज़ संकेतक न होकर निर्णायक क्यों है। हर परिकल्पना पहले से एक विशिष्ट, भिन्न, प्रेक्षणीय परिणाम पर प्रतिबद्ध थी, और हर प्रेक्षण ने एक को हटाया। इस पर बहस करने की ज़रूरत ही नहीं पड़ी कि कौन-सी व्याख्या अधिक स्वाभाविक लगती है। यह भी ध्यान दो कि एक पीढ़ी काफ़ी नहीं थी — प्रयोग को उस बिंदु तक चलना पड़ा जहाँ बची परिकल्पनाएँ अलग होती हैं, और यह परीक्षण रचने के बारे में सामान्य सीख है। (दूसरा विकल्प ऐसी तकनीक का वर्णन करता है जो लड़ी की उम्र सुलझा नहीं सकती थी; तीसरा प्रयोग को ग़लत बताता है, जो कई पीढ़ियों तक चला, और प्रमाण के काम करने का ग़लत वर्णन करता है; चौथा प्राणघातक रेडियोऐक्टिवता गढ़ता है — ¹⁵N स्थायी समस्थानिक है और कोशिकाएँ सामान्य रूप से बढ़ीं।)",
+          mr: "हा जीवशास्त्रातल्या सर्वांत स्वच्छ प्रयोगांपैकी एक आहे, आणि त्याला स्वच्छ हे बनवते की काहीही मोजण्याआधीच तिन्ही गृहीतकांकडून तीन वेगळ्या निरीक्षणीय निकालांचे भाकीत करवून घेतले गेले. आधी ती भाकिते काढा आणि निकाल स्वतःला वाचून दाखवतो. ती युक्ती जी DNA ला त्याच्या वयावरून दाखवते. नायट्रोजन क्षारांत आहे, म्हणून जड समस्थानिक ¹⁵N च्या माध्यमात बनलेला DNA साध्या ¹⁴N ने बनलेल्या DNA हून दाट आहे. घनता हा रासायनिक फरक नाही — DNA सारखाच वागतो — पण त्याला सीझियम क्लोराइड प्रवणतेत वेगळे करता येते, जिथे रेणू आपल्या घनतेशी जुळणाऱ्या खोलीवर बसतात आणि दृश्य पट्ट्या बनवतात. म्हणून पट्टीची जागा सांगते की तिच्यातली सामग्री कधी बनली. मांडणी. E. coli ला कित्येक पिढ्या ¹⁵N मध्ये वाढवा जोवर त्याचा सर्व DNA जड होत नाही. ¹⁴N मध्ये हलवा, जेणेकरून आतापासून प्रत्येक नवा पदर हलका असावा. एका विभाजनानंतर आणि दुसऱ्यानंतर नमुने घ्या. तीन भाकिते, आणि काम इथेच आहे. संरक्षी: जनक रेणू शाबूत राहतो आणि पूर्णपणे नवा बनतो, म्हणून एका फेरीनंतर दोन पट्ट्या असाव्यात — जड जनक, हलकी कन्या. अर्धसंरक्षी: प्रत्येक कन्येकडे एक जड जुना पदर आणि एक हलका नवा, म्हणून एका फेरीनंतर प्रत्येक रेणू संकर आहे आणि मध्यवर्ती घनतेची एकच पट्टी असावी. विक्षेपी: जुनी आणि नवी सामग्री दोन्ही पदरांत मधूनमधून विखुरलेली, म्हणून एका फेरीनंतर प्रत्येक रेणूही मध्यवर्ती आहे — एकच पट्टी, जी या टप्प्यावर अर्धसंरक्षी भाकितापासून वेगळी ओळखता येत नाही. एका फेरीनंतर. एकच मध्यवर्ती पट्टी दिसली. ती संरक्षी प्रतिकृती एकदम नाकारते — तिने दोन पट्ट्यांचे भाकीत केले होते आणि एक होती. ती अजून बाकीच्या दोघांत भेद करत नाही, आणि म्हणूनच दुसरी पिढी अनिवार्य होती. दोन फेऱ्यांनंतर. अर्धसंरक्षी भाकीत करते की प्रत्येक संकर रेणू वेगळा होतो, त्याचा जड पदर नव्या हलक्याशी जोडून संकर देतो, त्याचा हलका पदर अख्खा हलका रेणू देतो: दोन पट्ट्या, निम्म्या मध्यवर्ती आणि निम्म्या हलक्या. विक्षेपी भाकीत करते की जुनी सामग्री आता प्रत्येक रेणूत दुप्पट विरळ पसरली आहे, म्हणून सर्व रेणू सारखेच राहतात आणि एकच पट्टी फक्त थोडी अधिक हलकी सरकते — कधीही फुटत नाही. समान प्रमाणात दोन पट्ट्या दिसल्या. विक्षेपी नाकारली. रचना केवळ सूचक न राहता निर्णायक का आहे. प्रत्येक गृहीतक आधीच एका विशिष्ट, वेगळ्या, निरीक्षणीय निकालावर वचनबद्ध होते, आणि प्रत्येक निरीक्षणाने एक हटवले. कोणते स्पष्टीकरण अधिक नैसर्गिक वाटते यावर वाद घालण्याची गरजच पडली नाही. हेही लक्षात घ्या की एक पिढी पुरेशी नव्हती — प्रयोगाला त्या बिंदूपर्यंत चालावे लागले जिथे उरलेली गृहीतके वेगळी होतात, आणि हा चाचणी रचण्याबद्दलचा सर्वसाधारण बोध आहे. (दुसरा पर्याय अशा तंत्राचे वर्णन करतो जे पदराचे वय सोडवू शकले नसते; तिसरा प्रयोगाबद्दल चुकीचे सांगतो, जो कित्येक पिढ्या चालला, आणि पुरावा कसा काम करतो याचे चुकीचे वर्णन करतो; चौथा प्राणघातक किरणोत्सर्ग घडवतो — ¹⁵N स्थिर समस्थानिक आहे आणि पेशी सामान्यपणे वाढल्या.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "There are four bases and twenty amino acids, yet the code uses triplets and most amino acids have more than one codon, the alternatives usually differing in the third base. Explain why the length is three, and why the surplus is not simply waste.",
+          hi: "चार क्षार और बीस ऐमीनो अम्ल हैं, फिर भी कूट त्रिक काम में लेता है और अधिकांश ऐमीनो अम्लों के एक से अधिक कोडॉन हैं, और विकल्प प्रायः तीसरे क्षार में भिन्न होते हैं। बताओ कि लंबाई तीन क्यों है, और अतिरेक महज़ अपव्यय क्यों नहीं।",
+          mr: "चार क्षार आणि वीस अमिनो आम्ले आहेत, तरीही संकेत त्रिके वापरतो आणि बहुतांश अमिनो आम्लांना एकाहून अधिक कोडॉन आहेत, आणि पर्याय बहुधा तिसऱ्या क्षारात वेगळे असतात. लांबी तीन का आहे, आणि अतिरिक्तता केवळ अपव्यय का नाही ते सांगा.",
+        },
+        choices: [
+          {
+            en: "Three is the shortest length that works: singlets give four meanings and doublets sixteen, neither enough for twenty amino acids plus a stop signal, while triplets give sixty-four. The surplus of forty-four is then distributed so that synonymous codons usually differ only at the third position, and this is a buffer rather than an accident. A mutation in the third base of most codons changes nothing about the protein — a silent mutation — so a large fraction of random base changes are harmless. The pattern also limits the damage of the changes that do register, since chemically similar amino acids tend to have similar codons, and it tolerates small errors in tRNA pairing at that same third position",
+            hi: "तीन सबसे छोटी लंबाई है जो चलती है: एकल चार अर्थ देते हैं और युगल सोलह, और कोई भी बीस ऐमीनो अम्लों तथा एक रुकने के संकेत के लिए काफ़ी नहीं, जबकि त्रिक चौंसठ देते हैं। फिर चौवालीस का अतिरेक ऐसे बाँटा गया है कि समानार्थी कोडॉन प्रायः केवल तीसरे स्थान पर भिन्न हों, और यह दुर्घटना नहीं बल्कि बचाव है। अधिकांश कोडॉन के तीसरे क्षार में उत्परिवर्तन प्रोटीन के बारे में कुछ नहीं बदलता — मौन उत्परिवर्तन — अतः बेतरतीब क्षार बदलावों का बड़ा हिस्सा हानिरहित है। यह प्रतिरूप उन बदलावों का नुक़सान भी सीमित करता है जो दर्ज होते हैं, चूँकि रासायनिक रूप से समान ऐमीनो अम्लों के कोडॉन समान होने की प्रवृत्ति रखते हैं, और वह उसी तीसरे स्थान पर tRNA युग्मन की छोटी ग़लतियाँ सह लेता है",
+            mr: "तीन ही सर्वांत लहान लांबी आहे जी चालते: एकके चार अर्थ देतात आणि जोड्या सोळा, आणि कोणतीही वीस अमिनो आम्ले व एक थांबण्याचे संकेत यांसाठी पुरेशी नाही, तर त्रिके चौसष्ट देतात. मग चव्वेचाळीसची अतिरिक्तता अशी वाटली आहे की समानार्थी कोडॉन बहुधा केवळ तिसऱ्या जागी वेगळे असावेत, आणि हा अपघात नसून बचाव आहे. बहुतांश कोडॉनच्या तिसऱ्या क्षारातील उत्परिवर्तन प्रथिनाबद्दल काहीही बदलत नाही — मूक उत्परिवर्तन — म्हणून यादृच्छिक क्षार बदलांचा मोठा हिस्सा निरुपद्रवी आहे. हा नमुना जे बदल नोंदले जातात त्यांचे नुकसानही मर्यादित करतो, कारण रासायनिकदृष्ट्या सारख्या अमिनो आम्लांचे कोडॉन सारखे असण्याची प्रवृत्ती असते, आणि तो त्याच तिसऱ्या जागी tRNA युग्मनाच्या लहान चुका सहन करतो",
+          },
+          {
+            en: "Three is used because amino acids have three chemically distinct regions and each base specifies one of them, so the correspondence is physical rather than a matter of counting",
+            hi: "तीन इसलिए काम में लिए जाते हैं कि ऐमीनो अम्लों के तीन रासायनिक रूप से भिन्न क्षेत्र होते हैं और हर क्षार उनमें से एक को निर्दिष्ट करता है, अतः यह संगति गिनती का नहीं बल्कि भौतिक मामला है",
+            mr: "तीन यासाठी वापरले जातात की अमिनो आम्लांना तीन रासायनिकदृष्ट्या वेगळे प्रदेश असतात आणि प्रत्येक क्षार त्यांपैकी एक निर्दिष्ट करतो, म्हणून ही संगती मोजणीची नव्हे तर भौतिक बाब आहे",
+          },
+          {
+            en: "The extra codons are relics that no longer code for anything, and cells expend energy skipping over them during translation",
+            hi: "अतिरिक्त कोडॉन ऐसे अवशेष हैं जो अब किसी चीज़ के लिए कूट नहीं करते, और कोशिकाएँ अनुवाद के दौरान उन्हें लाँघने में ऊर्जा ख़र्च करती हैं",
+            mr: "अतिरिक्त कोडॉन असे अवशेष आहेत जे आता कशासाठीही संकेत करत नाहीत, आणि पेशी भाषांतरादरम्यान त्यांना ओलांडण्यात ऊर्जा खर्च करतात",
+          },
+          {
+            en: "The surplus exists so that each organism can use its own private set of codons, which is why the code differs substantially from one species to another",
+            hi: "अतिरेक इसलिए है कि हर जीव अपना निजी कोडॉन समुच्चय काम में ले सके, इसीलिए कूट एक जाति से दूसरी में काफ़ी भिन्न है",
+            mr: "अतिरिक्तता यासाठी आहे की प्रत्येक जीव आपला खासगी कोडॉन संच वापरू शकेल, म्हणूनच संकेत एका जातीपासून दुसरीत बराच वेगळा आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Two questions, and both are answered by arithmetic followed by a look at what the arithmetic leaves over. WHY THREE. The code must map sequences of four bases onto twenty amino acids plus an instruction to stop. Count the possibilities at each length. One base gives 4 meanings — far too few. Two bases give 4² = 16 — still short of twenty-one, and short by enough that no amount of cleverness rescues it. Three bases give 4³ = 64, comfortably more than needed. So three is not merely sufficient; it is the SHORTEST sufficient length, which matters because a longer codon would mean more DNA to store, copy and read for the same protein. Note that this argument was made before the code was cracked, and the experiments then confirmed it. WHAT HAPPENS TO THE SURPLUS. Sixty-four codons for twenty-one meanings leaves forty-three to spare. They are not left unused — that would be the wasteful option, and would also mean two thirds of all random mutations produce a nonsense codon and a truncated protein. Instead every codon has a meaning, and most amino acids have several. Leucine, serine and arginine have six each; only methionine and tryptophan have one. WHY THE PATTERN OF THE REDUNDANCY IS THE INTERESTING PART. The synonyms are not scattered at random. For most amino acids, the alternatives share the first two bases and differ only in the third — the four codons beginning GG all specify glycine, whatever the third letter. Three consequences follow. First, a mutation at the third position of such a codon is silent: the protein is unchanged, so the mutation has no effect on the phenotype at all. Since a third of all base positions are third positions, this makes a substantial fraction of random substitutions harmless. Second, the code is arranged so that codons differing in one base often specify chemically similar amino acids, so even a mutation that does change the protein tends to make a conservative substitution rather than a drastic one. Third, it permits wobble: the pairing between the third base of the codon and the corresponding base of the tRNA anticodon is less strict than the other two, which is why fewer than sixty-four tRNAs are needed and why a small pairing error there is usually harmless. THE UNIFYING IDEA, WHICH IS WORTH GENERALISING. Redundancy in a code is what makes it robust to errors — the same reason a checksum is added to a bank account number or an error-correcting code to a data transmission. A system with no spare capacity fails at the first mistake. So the 'surplus' here is not slack in the design; it is the design absorbing the mutations that a replicating molecule is bound to accumulate. One more fact worth having: the code is very nearly universal, the same in bacteria and in humans, which is itself strong evidence that all life descends from a common ancestor in which it was already fixed. (The second option invents a structural correspondence that does not exist; the third contradicts the fact that all sixty-four codons have assigned meanings; the fourth contradicts the near-universality of the code, which is one of its most striking properties.)",
+          hi: "दो प्रश्न, और दोनों का उत्तर पहले गणित से और फिर यह देखने से मिलता है कि गणित क्या बचा जाता है। तीन क्यों। कूट को चार क्षारों के अनुक्रमों को बीस ऐमीनो अम्लों और एक रुकने के निर्देश पर मानचित्रित करना है। हर लंबाई पर संभावनाएँ गिनो। एक क्षार 4 अर्थ देता है — कहीं बहुत कम। दो क्षार 4² = 16 देते हैं — इक्कीस से अब भी कम, और इतने कम कि कोई चतुराई उसे नहीं बचाती। तीन क्षार 4³ = 64 देते हैं, ज़रूरत से आराम से अधिक। अतः तीन केवल पर्याप्त नहीं; वह सबसे छोटी पर्याप्त लंबाई है, और यह इसलिए मायने रखता है कि लंबा कोडॉन होने पर उसी प्रोटीन के लिए अधिक DNA संचित, नक़ल और पढ़ा जाना पड़ता। ध्यान दो कि यह तर्क कूट के खुलने से पहले दिया गया था, और फिर प्रयोगों ने उसकी पुष्टि की। अतिरेक का क्या होता है। इक्कीस अर्थों के लिए चौंसठ कोडॉन तैंतालीस बचा देते हैं। उन्हें अप्रयुक्त नहीं छोड़ा गया — वही अपव्ययी विकल्प होता, और उसका अर्थ यह भी होता कि सारे बेतरतीब उत्परिवर्तनों का दो-तिहाई निरर्थक कोडॉन और कटा-फटा प्रोटीन दे। इसके बजाय हर कोडॉन का अर्थ है, और अधिकांश ऐमीनो अम्लों के कई हैं। ल्यूसीन, सेरीन और आर्जिनीन के छह-छह; केवल मेथियोनीन और ट्रिप्टोफ़ैन के एक-एक। आधिक्य का प्रतिरूप ही रोचक हिस्सा क्यों है। समानार्थी बेतरतीब बिखरे नहीं हैं। अधिकांश ऐमीनो अम्लों के लिए विकल्प पहले दो क्षार साझा करते हैं और केवल तीसरे में भिन्न होते हैं — GG से शुरू होते चारों कोडॉन ग्लाइसीन ही निर्दिष्ट करते हैं, तीसरा अक्षर चाहे जो हो। तीन परिणाम निकलते हैं। पहला, ऐसे कोडॉन के तीसरे स्थान पर उत्परिवर्तन मौन है: प्रोटीन अपरिवर्तित है, अतः उत्परिवर्तन का लक्षणप्ररूप पर कोई प्रभाव ही नहीं। चूँकि सारे क्षार स्थानों का एक-तिहाई तीसरा स्थान है, इससे बेतरतीब प्रतिस्थापनों का काफ़ी हिस्सा हानिरहित हो जाता है। दूसरा, कूट ऐसे जमा है कि एक क्षार में भिन्न कोडॉन प्रायः रासायनिक रूप से समान ऐमीनो अम्ल निर्दिष्ट करते हैं, अतः जो उत्परिवर्तन प्रोटीन बदलता भी है वह प्रायः कठोर के बजाय संयत प्रतिस्थापन करता है। तीसरा, वह डगमगाहट की छूट देता है: कोडॉन के तीसरे क्षार और tRNA प्रतिकोडॉन के तदनुरूप क्षार के बीच युग्मन बाक़ी दोनों से कम सख़्त है, इसीलिए चौंसठ से कम tRNA चाहिए और इसीलिए वहाँ छोटी युग्मन ग़लती प्रायः हानिरहित है। एकीकृत विचार, जिसे सामान्यीकृत करना चाहिए। किसी कूट का आधिक्य ही उसे ग़लतियों के प्रति दृढ़ बनाता है — उसी कारण से जिससे बैंक खाता संख्या में जाँच अंक जोड़ा जाता है या डेटा संचरण में त्रुटि-सुधारक कूट। जिस तंत्र में कोई अतिरिक्त क्षमता नहीं वह पहली ग़लती पर ही विफल हो जाता है। अतः यहाँ का 'अतिरेक' रचना की ढील नहीं; वह रचना का उन उत्परिवर्तनों को सोख लेना है जो प्रतिकृति करते अणु में जमा होने ही हैं। एक और तथ्य रखने लायक़: कूट लगभग पूरी तरह सार्वभौम है, जीवाणुओं और मनुष्यों में वही, और यह स्वयं प्रबल प्रमाण है कि सारा जीवन ऐसे साझे पूर्वज से उतरा है जिसमें वह पहले ही तय हो चुका था। (दूसरा विकल्प ऐसी संरचनात्मक संगति गढ़ता है जो है ही नहीं; तीसरा इस तथ्य का खंडन करता है कि चौंसठों कोडॉन के अर्थ नियत हैं; चौथा कूट की लगभग-सार्वभौमिकता का खंडन करता है, जो उसके सबसे उल्लेखनीय गुणों में से एक है।)",
+          mr: "दोन प्रश्न, आणि दोघांचे उत्तर आधी गणिताने आणि मग गणित काय शिल्लक ठेवते हे पाहून मिळते. तीन का. संकेताला चार क्षारांच्या क्रमांना वीस अमिनो आम्ले आणि एक थांबण्याची सूचना यांवर नकाशित करायचे आहे. प्रत्येक लांबीवर शक्यता मोजा. एक क्षार 4 अर्थ देतो — कितीतरी कमी. दोन क्षार 4² = 16 देतात — एकविसाहून अजूनही कमी, आणि इतके कमी की कोणतीही हुशारी त्याला वाचवत नाही. तीन क्षार 4³ = 64 देतात, गरजेहून आरामात अधिक. म्हणून तीन केवळ पुरेसे नाही; ती सर्वांत लहान पुरेशी लांबी आहे, आणि हे यासाठी महत्त्वाचे की लांब कोडॉन असल्यास त्याच प्रथिनासाठी अधिक DNA साठवावा, नक्कल करावा आणि वाचावा लागेल. लक्षात घ्या की हा युक्तिवाद संकेत उलगडण्याआधी मांडला गेला होता, आणि मग प्रयोगांनी त्याची खात्री दिली. अतिरिक्ततेचे काय होते. एकवीस अर्थांसाठी चौसष्ट कोडॉन त्रेचाळीस शिल्लक ठेवतात. त्यांना न वापरता सोडले गेले नाही — तोच उधळपट्टीचा पर्याय ठरला असता, आणि त्याचा अर्थ हाही झाला असता की सर्व यादृच्छिक उत्परिवर्तनांचा दोन-तृतीयांश निरर्थक कोडॉन आणि तुटके प्रथिन देईल. त्याऐवजी प्रत्येक कोडॉनला अर्थ आहे, आणि बहुतांश अमिनो आम्लांना कित्येक. ल्युसिन, सेरिन आणि आर्जिनिनला सहा-सहा; केवळ मिथिओनिन आणि ट्रिप्टोफॅनला एकेक. आधिक्याचा नमुनाच रोचक भाग का आहे. समानार्थी यादृच्छिक विखुरलेले नाहीत. बहुतांश अमिनो आम्लांसाठी पर्याय पहिली दोन क्षारे समाईक ठेवतात आणि केवळ तिसऱ्यात वेगळे असतात — GG ने सुरू होणारे चारही कोडॉन ग्लायसिनच निर्दिष्ट करतात, तिसरे अक्षर काहीही असो. तीन परिणाम निघतात. पहिला, अशा कोडॉनच्या तिसऱ्या जागी उत्परिवर्तन मूक आहे: प्रथिन अपरिवर्तित आहे, म्हणून उत्परिवर्तनाचा लक्षणप्ररूपावर कोणताही परिणामच नाही. सर्व क्षार जागांचा एक-तृतीयांश तिसरी जागा असल्याने, यामुळे यादृच्छिक प्रतिस्थापनांचा बराच हिस्सा निरुपद्रवी होतो. दुसरा, संकेत असा मांडला आहे की एका क्षारात वेगळे कोडॉन बहुधा रासायनिकदृष्ट्या सारखी अमिनो आम्ले निर्दिष्ट करतात, म्हणून जे उत्परिवर्तन प्रथिन बदलतेही ते बहुधा तीव्रऐवजी संयत प्रतिस्थापन करते. तिसरा, तो डगमगण्याची मुभा देतो: कोडॉनच्या तिसऱ्या क्षार आणि tRNA प्रतिकोडॉनच्या त्याअनुषंगिक क्षारातील युग्मन बाकी दोघांहून कमी कडक आहे, म्हणूनच चौसष्टहून कमी tRNA लागतात आणि म्हणूनच तिथे लहान युग्मन चूक बहुधा निरुपद्रवी असते. एकत्रित कल्पना, जिचे सामान्यीकरण करण्याजोगे आहे. एखाद्या संकेताचे आधिक्यच त्याला चुकांबाबत खंबीर बनवते — त्याच कारणाने ज्याने बँक खाते क्रमांकात तपासणी अंक जोडला जातो वा माहिती संक्रमणात त्रुटी-सुधारक संकेत. ज्या यंत्रणेत कोणतीही अतिरिक्त क्षमता नाही ती पहिल्याच चुकीवर अपयशी ठरते. म्हणून इथली 'अतिरिक्तता' रचनेतली ढील नाही; ती रचनेने त्या उत्परिवर्तनांना शोषून घेणे आहे जी प्रतिकृती करणाऱ्या रेणूत जमणारच आहेत. आणखी एक ठेवण्याजोगे सत्य: संकेत जवळपास पूर्णपणे वैश्विक आहे, जिवाणूंत आणि माणसांत तोच, आणि हा स्वतः भक्कम पुरावा आहे की सर्व जीवन अशा सामायिक पूर्वजापासून उतरले आहे ज्यात तो आधीच ठरलेला होता. (दुसरा पर्याय अशी संरचनात्मक संगती घडवतो जी अस्तित्वातच नाही; तिसरा या सत्याचे खंडन करतो की चौसष्टही कोडॉनना अर्थ नेमून दिलेले आहेत; चौथा संकेताच्या जवळपास-वैश्विकतेचे खंडन करतो, जो त्याच्या सर्वांत लक्षणीय गुणधर्मांपैकी एक आहे.)",
+        },
+      },
+    ],
+  },
+  /*C4*/
 ];
 
 export const G12_BIOLOGY_NUMERIC: Record<string, NumQ[]> = {
   /*N1*/
+  "biology-12-principles-of-inheritance-and-variation": [
+    {
+      level: 1,
+      stem: {
+        en: "Two heterozygous tall pea plants are crossed. Out of every four offspring, how many are expected to be short?",
+        hi: "दो विषमयुग्मजी लंबे मटर पादपों का संकरण किया जाता है। हर चार संततियों में से कितनी बौनी होने की अपेक्षा है?",
+        mr: "दोन विषमयुग्मजी उंच वाटाणा वनस्पतींचे संकरण केले जाते. प्रत्येक चार संततींपैकी किती खुज्या असण्याची अपेक्षा आहे?",
+      },
+      answer: 1,
+      wrong: [3, 2, 0],
+      checkExpr: "4-3",
+      solution: {
+        en: "Three of the four are tall and one is short: 4 − 3 = 1. The short plant is the one that received the recessive allele from both parents, and its reappearance is the whole point of the cross — a character that vanished entirely in the previous generation comes back undiluted, which is what ruled out the idea that inherited factors blend. (3 counts the tall ones.)",
+        hi: "चारों में से तीन लंबे और एक बौना है: 4 − 3 = 1. बौना पादप वही है जिसे दोनों जनकों से अप्रभावी एलील मिला, और उसका लौटना ही संकरण का पूरा मर्म है — जो लक्षण पिछली पीढ़ी में बिलकुल लुप्त हो गया था वह बिना पतला हुए लौट आता है, और इसी ने इस विचार को ख़ारिज किया कि वंशागत कारक मिल जाते हैं। (3 लंबे वाले गिनता है।)",
+        mr: "चौघांपैकी तीन उंच आणि एक खुजी आहे: 4 − 3 = 1. खुजी वनस्पती तीच आहे जिला दोन्ही जनकांकडून अप्रभावी अ‍ॅलिल मिळाले, आणि तिचे परतणे हाच संकरणाचा अख्खा गाभा आहे — जे लक्षण मागच्या पिढीत पूर्णपणे लोप पावले होते ते विरळ न होता परतते, आणि यानेच ही कल्पना नाकारली की आनुवंशिक घटक मिसळतात. (3 उंच मोजते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "How many different kinds of gamete can a plant heterozygous for one gene produce with respect to that gene?",
+        hi: "किसी एक जीन के लिए विषमयुग्मजी पादप उस जीन के संदर्भ में कितनी भिन्न क़िस्म के युग्मक बना सकता है?",
+        mr: "एखाद्या जनुकासाठी विषमयुग्मजी वनस्पती त्या जनुकाच्या संदर्भात किती वेगळ्या प्रकारचे युग्मक बनवू शकते?",
+      },
+      answer: 2,
+      wrong: [1, 4, 3],
+      checkExpr: "1+1",
+      solution: {
+        en: "1 + 1 = 2 kinds, one carrying each allele, in equal numbers. This is the law of segregation stated in terms of gametes rather than offspring, and it is what the whole ratio rests on: if the two alleles did not separate cleanly and equally, no three-to-one would appear. (1 assumes both gametes carry the same thing, which would be true only of a homozygote.)",
+        hi: "1 + 1 = 2 क़िस्में, हर एक एलील ढोती हुई, बराबर संख्या में। यह पृथक्करण का नियम है, संतति के बजाय युग्मकों की भाषा में कहा गया, और पूरा अनुपात इसी पर टिका है: यदि दोनों एलील साफ़ और बराबर अलग न होते तो कोई तीन-से-एक प्रकट ही न होता। (1 मान लेता है कि दोनों युग्मक वही चीज़ ढोते हैं, जो केवल समयुग्मजी के लिए सही होता।)",
+        mr: "1 + 1 = 2 प्रकार, प्रत्येक एक अ‍ॅलिल वाहणारा, समान संख्येत. हा पृथक्करणाचा नियम आहे, संततीऐवजी युग्मकांच्या भाषेत सांगितलेला, आणि अख्खे गुणोत्तर याच्यावरच टिकले आहे: जर दोन्ही अ‍ॅलिले स्वच्छ आणि समान वेगळी झाली नसती तर कोणतेही तीन-ला-एक प्रकटच झाले नसते. (1 गृहीत धरते की दोन्ही युग्मक तीच गोष्ट वाहतात, जे केवळ समयुग्मजीसाठी बरोबर असते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "How many different kinds of gamete can a plant heterozygous for two independently assorting genes produce?",
+        hi: "दो स्वतंत्र रूप से छँटते जीनों के लिए विषमयुग्मजी पादप कितनी भिन्न क़िस्म के युग्मक बना सकता है?",
+        mr: "दोन स्वतंत्रपणे विभागल्या जाणाऱ्या जनुकांसाठी विषमयुग्मजी वनस्पती किती वेगळ्या प्रकारचे युग्मक बनवू शकते?",
+      },
+      answer: 4,
+      wrong: [2, 8, 16],
+      checkExpr: "2*2",
+      solution: {
+        en: "Each gene contributes two choices and the choices are independent, so 2 × 2 = 4 kinds in equal numbers. The multiplication is the whole content of the second law: if the genes were not independent the four kinds would not be equally frequent. In general n heterozygous genes give 2ⁿ kinds of gamete, which is why a small number of genes generates an enormous number of possible offspring. (8 uses three genes.)",
+        hi: "हर जीन दो विकल्प देता है और विकल्प स्वतंत्र हैं, अतः 2 × 2 = 4 क़िस्में बराबर संख्या में। गुणा ही दूसरे नियम का पूरा सार है: यदि जीन स्वतंत्र न होते तो चारों क़िस्में बराबर बारंबारता की न होतीं। सामान्यतः n विषमयुग्मजी जीन 2ⁿ क़िस्म के युग्मक देते हैं, इसीलिए थोड़े से जीन विशाल संख्या में संभव संततियाँ पैदा कर देते हैं। (8 तीन जीन काम में लेता है।)",
+        mr: "प्रत्येक जनुक दोन पर्याय देते आणि पर्याय स्वतंत्र आहेत, म्हणून 2 × 2 = 4 प्रकार समान संख्येत. गुणाकारच दुसऱ्या नियमाचा अख्खा सार आहे: जर जनुके स्वतंत्र नसती तर चारही प्रकार समान वारंवारतेचे नसते. सर्वसाधारणपणे n विषमयुग्मजी जनुके 2ⁿ प्रकारचे युग्मक देतात, म्हणूनच थोडी जनुके प्रचंड संख्येने शक्य संतती निर्माण करतात. (8 तीन जनुके वापरते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "In a dihybrid cross between two double heterozygotes, how many offspring out of sixteen show both recessive characters?",
+        hi: "दो द्विविषमयुग्मजियों के बीच द्विसंकर संकरण में सोलह संततियों में से कितनी दोनों अप्रभावी लक्षण दिखाती हैं?",
+        mr: "दोन द्विविषमयुग्मजींमधल्या द्विसंकर संकरणात सोळा संततींपैकी किती दोन्ही अप्रभावी लक्षणे दाखवतात?",
+      },
+      answer: 1,
+      wrong: [9, 3, 4],
+      checkExpr: "16-15",
+      solution: {
+        en: "16 − 15 = 1, the rarest class in the nine to three to three to one ratio. It is worth seeing where that ratio comes from rather than memorising it: each character on its own gives three to one, and if the two are independent the combined proportions are the products — three-quarters times three-quarters gives nine sixteenths, and one-quarter times one-quarter gives one sixteenth. A dihybrid ratio is two monohybrid ratios multiplied, which is what independence means. (9 gives the commonest class instead.)",
+        hi: "16 − 15 = 1, नौ, तीन, तीन, एक के अनुपात का सबसे दुर्लभ वर्ग। उस अनुपात को रटने के बजाय यह देखना काम का है कि वह आता कहाँ से है: हर लक्षण अकेला तीन-से-एक देता है, और यदि दोनों स्वतंत्र हों तो संयुक्त अनुपात उनके गुणनफल हैं — तीन-चौथाई गुणा तीन-चौथाई नौ-सोलहवाँ देता है, और एक-चौथाई गुणा एक-चौथाई एक-सोलहवाँ। द्विसंकर अनुपात दो एकसंकर अनुपातों का गुणनफल है, और स्वतंत्रता का यही अर्थ है। (9 इसके बजाय सबसे आम वर्ग देता है।)",
+        mr: "16 − 15 = 1, नऊ, तीन, तीन, एक या गुणोत्तरातील सर्वांत दुर्मीळ वर्ग. ते गुणोत्तर पाठ करण्याऐवजी ते कुठून येते हे पाहणे उपयुक्त आहे: प्रत्येक लक्षण एकटे तीन-ला-एक देते, आणि जर दोन्ही स्वतंत्र असतील तर संयुक्त प्रमाणे त्यांचे गुणाकार आहेत — तीन-चतुर्थांश गुणिले तीन-चतुर्थांश नऊ-सोळांश देते, आणि एक-चतुर्थांश गुणिले एक-चतुर्थांश एक-सोळांश. द्विसंकर गुणोत्तर हे दोन एकसंकर गुणोत्तरांचा गुणाकार आहे, आणि स्वातंत्र्याचा हाच अर्थ आहे. (9 त्याऐवजी सर्वांत सामान्य वर्ग देते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A woman is a carrier for an X-linked recessive condition and her husband is unaffected. Out of every four children, how many sons are expected to be affected?",
+        hi: "कोई स्त्री किसी X-सहलग्न अप्रभावी स्थिति की वाहक है और उसका पति अप्रभावित है। हर चार बच्चों में से कितने बेटों के प्रभावित होने की अपेक्षा है?",
+        mr: "एक स्त्री एखाद्या X-सहलग्न अप्रभावी स्थितीची वाहक आहे आणि तिचा पती अप्रभावित आहे. प्रत्येक चार मुलांपैकी किती मुलगे प्रभावित असण्याची अपेक्षा आहे?",
+      },
+      answer: 1,
+      wrong: [2, 4, 0],
+      checkExpr: "4-3",
+      solution: {
+        en: "4 − 3 = 1. Of four children about two are sons, and each son has an even chance of receiving the faulty X from his mother, so one in four children is an affected son. Follow the daughters too, because the pattern is the informative part: about two are daughters, each with an even chance of being a carrier, and none can be affected since her father contributes a normal X. So the condition appears in males and travels through females — and it cannot pass from a father to a son at all, which is the sign that identifies X-linkage in a pedigree. (2 counts all the sons rather than the affected ones.)",
+        hi: "4 − 3 = 1. चार बच्चों में से क़रीब दो बेटे हैं, और हर बेटे के माँ से दोषपूर्ण X पाने की बराबर संभावना है, अतः चार बच्चों में से एक प्रभावित बेटा है। बेटियों का भी पीछा करो, क्योंकि प्रतिरूप ही ज्ञानप्रद हिस्सा है: क़रीब दो बेटियाँ हैं, हर एक के वाहक होने की बराबर संभावना, और कोई प्रभावित नहीं हो सकती चूँकि उसका पिता सामान्य X देता है। अतः स्थिति पुरुषों में प्रकट होती है और स्त्रियों से होकर चलती है — और वह पिता से बेटे तक जा ही नहीं सकती, और वंशवृक्ष में X-सहलग्नता को यही चिह्न पहचानता है। (2 प्रभावितों के बजाय सारे बेटे गिनता है।)",
+        mr: "4 − 3 = 1. चार मुलांपैकी सुमारे दोन मुलगे आहेत, आणि प्रत्येक मुलाला आईकडून सदोष X मिळण्याची समान शक्यता आहे, म्हणून चार मुलांपैकी एक प्रभावित मुलगा आहे. मुलींचाही मागोवा घ्या, कारण नमुनाच माहितीपूर्ण भाग आहे: सुमारे दोन मुली आहेत, प्रत्येकीला वाहक असण्याची समान शक्यता, आणि कोणीही प्रभावित असू शकत नाही कारण तिचे वडील सामान्य X देतात. म्हणून स्थिती पुरुषांत प्रकट होते आणि स्त्रियांतून चालते — आणि ती वडिलांकडून मुलाकडे जाऊच शकत नाही, आणि वंशवृक्षात X-सहलग्नता हेच चिन्ह ओळखते. (2 प्रभावितांऐवजी सर्व मुलगे मोजते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "How many autosomes does a normal human somatic cell contain?",
+        hi: "किसी सामान्य मानव कायिक कोशिका में कितने अलिंगसूत्र होते हैं?",
+        mr: "एका सामान्य मानवी कायिक पेशीत किती अलिंगसूत्रे असतात?",
+      },
+      answer: 44,
+      wrong: [46, 22, 23],
+      checkExpr: "46-2",
+      solution: {
+        en: "46 − 2 = 44, because two of the forty-six chromosomes are the sex chromosomes. The distinction matters for reading a pedigree rather than for counting: a gene on one of the forty-four is present in two copies in everyone, so its inheritance looks the same in both sexes, while a gene on the X is present twice in a female and once in a male, which is the whole source of the sex-linked pattern. (46 counts every chromosome.)",
+        hi: "46 − 2 = 44, क्योंकि छियालीस में से दो गुणसूत्र लिंग गुणसूत्र हैं। यह भेद गिनने के लिए नहीं बल्कि वंशवृक्ष पढ़ने के लिए मायने रखता है: चौवालीस में से किसी एक पर का जीन हर किसी में दो प्रतियों में है, अतः उसकी वंशागति दोनों लिंगों में एक जैसी दिखती है, जबकि X पर का जीन मादा में दो बार और नर में एक बार है, और लिंग सहलग्न प्रतिरूप का पूरा स्रोत यही है। (46 हर गुणसूत्र गिनता है।)",
+        mr: "46 − 2 = 44, कारण छत्तेचाळिसांपैकी दोन गुणसूत्रे लिंग गुणसूत्रे आहेत. हा भेद मोजण्यासाठी नव्हे तर वंशवृक्ष वाचण्यासाठी महत्त्वाचा आहे: चव्वेचाळिसांपैकी एकावरचे जनुक प्रत्येकात दोन प्रतींत आहे, म्हणून त्याची आनुवंशिकता दोन्ही लिंगांत सारखी दिसते, तर X वरचे जनुक मादीत दोनदा आणि नरात एकदा आहे, आणि लिंग सहलग्न नमुन्याचा अख्खा स्रोत हाच आहे. (46 प्रत्येक गुणसूत्र मोजते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A test cross between a heterozygote and a homozygous recessive gives how many offspring showing the recessive character, out of every four?",
+        hi: "किसी विषमयुग्मजी और समयुग्मजी अप्रभावी के बीच परीक्षण संकरण हर चार में से कितनी अप्रभावी लक्षण दिखाती संततियाँ देता है?",
+        mr: "एका विषमयुग्मजी आणि समयुग्मजी अप्रभावीमधले चाचणी संकरण प्रत्येक चारांपैकी किती अप्रभावी लक्षण दाखवणाऱ्या संतती देते?",
+      },
+      answer: 2,
+      wrong: [1, 3, 4],
+      checkExpr: "4/2",
+      solution: {
+        en: "4/2 = 2, a one-to-one ratio. That is what makes the test cross useful: a plant showing the dominant character could be either homozygous or heterozygous, and its own appearance cannot tell you which. Cross it to a homozygous recessive and the two possibilities give visibly different results — a homozygote gives all dominant offspring, a heterozygote gives half and half. So an unobservable genotype has been read off from a countable ratio, which is the same move Mendel made throughout. (1 gives the self-cross ratio instead.)",
+        hi: "4/2 = 2, यानी एक-से-एक अनुपात। परीक्षण संकरण को काम का यही बनाता है: प्रभावी लक्षण दिखाता पादप समयुग्मजी भी हो सकता है और विषमयुग्मजी भी, और उसकी अपनी शक्ल यह नहीं बता सकती कि कौन-सा। उसका समयुग्मजी अप्रभावी से संकरण करो और दोनों संभावनाएँ दृश्यतः भिन्न परिणाम देती हैं — समयुग्मजी सारी प्रभावी संततियाँ देता है, विषमयुग्मजी आधी-आधी। अतः एक अप्रेक्षणीय जीनप्ररूप गिनने योग्य अनुपात से पढ़ लिया गया, और मेंडेल ने आद्योपांत यही चाल चली। (1 इसके बजाय स्व-संकरण का अनुपात देता है।)",
+        mr: "4/2 = 2, म्हणजे एक-ला-एक गुणोत्तर. चाचणी संकरणाला उपयुक्त हेच बनवते: प्रभावी लक्षण दाखवणारी वनस्पती समयुग्मजीही असू शकते आणि विषमयुग्मजीही, आणि तिचे स्वतःचे रूप कोणते ते सांगू शकत नाही. तिचे समयुग्मजी अप्रभावीशी संकरण करा आणि दोन्ही शक्यता दृश्यतः वेगळे निकाल देतात — समयुग्मजी सर्व प्रभावी संतती देते, विषमयुग्मजी निम्मी-निम्मी. म्हणून एक अनिरीक्षणीय जनुकप्ररूप मोजण्याजोग्या गुणोत्तरावरून वाचला गेला, आणि मेंडेलने सर्वत्र हीच चाल केली. (1 त्याऐवजी स्व-संकरणाचे गुणोत्तर देते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "How many different genotypes are possible in the offspring of a cross between two heterozygotes for a single gene?",
+        hi: "किसी एक जीन के लिए दो विषमयुग्मजियों के संकरण की संतति में कितने भिन्न जीनप्ररूप संभव हैं?",
+        mr: "एखाद्या जनुकासाठी दोन विषमयुग्मजींच्या संकरणाच्या संततीत किती वेगळे जनुकप्ररूप शक्य आहेत?",
+      },
+      answer: 3,
+      wrong: [2, 4, 1],
+      checkExpr: "4-1",
+      solution: {
+        en: "4 − 1 = 3 genotypes in the ratio one homozygous dominant, two heterozygous, one homozygous recessive — the four gamete combinations collapse to three because the two heterozygous ones are the same genotype. That the genotypes are three while the appearances are two is the useful point, and it is why incomplete dominance is not an exception to Mendel's laws: when the heterozygote looks intermediate rather than like the dominant parent, the visible ratio becomes one to two to one, but the genotypes underneath have not changed at all. Only the reading has. (2 counts the visible classes.)",
+        hi: "4 − 1 = 3 जीनप्ररूप, अनुपात में एक समयुग्मजी प्रभावी, दो विषमयुग्मजी, एक समयुग्मजी अप्रभावी — चार युग्मक संयोजन तीन पर सिमट जाते हैं क्योंकि दोनों विषमयुग्मजी वही जीनप्ररूप हैं। जीनप्ररूप तीन और शक्लें दो होना ही काम की बात है, और इसीलिए अपूर्ण प्रभाविता मेंडेल के नियमों का अपवाद नहीं: जब विषमयुग्मजी प्रभावी जनक जैसा न होकर बीच का दिखता है, तो दृश्य अनुपात एक, दो, एक हो जाता है, पर नीचे के जीनप्ररूप बिलकुल नहीं बदले। केवल पढ़ना बदला है। (2 दृश्य वर्ग गिनता है।)",
+        mr: "4 − 1 = 3 जनुकप्ररूप, गुणोत्तरात एक समयुग्मजी प्रभावी, दोन विषमयुग्मजी, एक समयुग्मजी अप्रभावी — चार युग्मक संयोजने तिनांवर आक्रसतात कारण दोन्ही विषमयुग्मजी तोच जनुकप्ररूप आहेत. जनुकप्ररूप तीन आणि रूपे दोन असणे हाच उपयुक्त मुद्दा आहे, आणि म्हणूनच अपूर्ण प्रभाविता मेंडेलच्या नियमांचा अपवाद नाही: जेव्हा विषमयुग्मजी प्रभावी जनकासारखा न दिसता मधला दिसतो, तेव्हा दृश्य गुणोत्तर एक, दोन, एक होते, पण खालचे जनुकप्ररूप मुळीच बदललेले नाहीत. केवळ वाचन बदलले आहे. (2 दृश्य वर्ग मोजते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "In a dihybrid cross, the F₂ shows 9 : 3 : 3 : 1. How many of the sixteen show at least one dominant character?",
+        hi: "किसी द्विसंकर संकरण में F₂ में 9 : 3 : 3 : 1 दिखता है। सोलह में से कितनी संततियाँ कम से कम एक प्रभावी लक्षण दिखाती हैं?",
+        mr: "एका द्विसंकर संकरणात F₂ मध्ये 9 : 3 : 3 : 1 दिसते. सोळांपैकी किती संतती किमान एक प्रभावी लक्षण दाखवतात?",
+      },
+      answer: 15,
+      wrong: [9, 12, 16],
+      checkExpr: "9+6",
+      solution: {
+        en: "Nine show both dominant characters and six show one of the two, so 9 + 6 = 15, and only the single double-recessive plant shows neither. The arithmetic is easy; noticing what it means is the point. Rare classes carry the information. That single plant in sixteen is the only one whose genotype can be read directly from its appearance, and it is also the class most easily lost in a small experiment — with sixteen plants you might get none by chance, which is exactly why Mendel counted thousands. A ratio that needs a rare class to be distinguished from another ratio needs a large sample to be trusted. (9 counts only the double dominants.)",
+        hi: "नौ दोनों प्रभावी लक्षण दिखाती हैं और छह उन दोनों में से एक, अतः 9 + 6 = 15, और केवल अकेला द्विअप्रभावी पादप कोई नहीं दिखाता। गणित आसान है; मर्म यह देखना है कि उसका अर्थ क्या है। सूचना दुर्लभ वर्ग ढोते हैं। सोलह में वह अकेला पादप ही ऐसा है जिसका जीनप्ररूप उसकी शक्ल से सीधे पढ़ा जा सकता है, और वही वर्ग छोटे प्रयोग में सबसे आसानी से खो भी जाता है — सोलह पादपों में संयोगवश एक भी न मिले, और ठीक इसीलिए मेंडेल ने हज़ारों गिने। जिस अनुपात को दूसरे अनुपात से अलग बताने के लिए कोई दुर्लभ वर्ग चाहिए उस पर भरोसा करने को बड़ा नमूना चाहिए। (9 केवल द्विप्रभावी गिनता है।)",
+        mr: "नऊ दोन्ही प्रभावी लक्षणे दाखवतात आणि सहा त्या दोघांपैकी एक, म्हणून 9 + 6 = 15, आणि केवळ एकटी द्विअप्रभावी वनस्पती एकही दाखवत नाही. गणित सोपे आहे; गाभा त्याचा अर्थ काय हे पाहणे. माहिती दुर्मीळ वर्ग वाहतात. सोळांतली ती एकटी वनस्पतीच अशी आहे जिचा जनुकप्ररूप तिच्या रूपावरून थेट वाचता येतो, आणि तोच वर्ग लहान प्रयोगात सर्वांत सहज हरवतोही — सोळा वनस्पतींत योगायोगाने एकही मिळणार नाही, आणि नेमके म्हणूनच मेंडेलने हजारो मोजल्या. ज्या गुणोत्तराला दुसऱ्या गुणोत्तरापासून वेगळे सांगण्यास एखादा दुर्मीळ वर्ग लागतो त्यावर भरवसा ठेवायला मोठा नमुना लागतो. (9 केवळ द्विप्रभावी मोजते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "Two genes lie on the same chromosome and recombinants make up 12 per cent of the offspring of a test cross. What is the distance between them in map units?",
+        hi: "दो जीन एक ही गुणसूत्र पर हैं और परीक्षण संकरण की संतति में पुनर्संयोजी 12 प्रतिशत हैं। उनके बीच की दूरी मानचित्र इकाइयों में कितनी है?",
+        mr: "दोन जनुके एकाच गुणसूत्रावर आहेत आणि चाचणी संकरणाच्या संततीत पुनर्संयोजी 12 टक्के आहेत. त्यांच्यातले अंतर नकाशा एककांत किती?",
+      },
+      answer: 12,
+      wrong: [24, 6, 88],
+      checkExpr: "6*2",
+      solution: {
+        en: "6 × 2 = 12 map units, because one map unit is defined as one per cent recombination. The definition looks circular until you see what it is doing. Two genes on the same chromosome tend to be inherited together, so independent assortment fails and the test-cross ratio is not one to one to one to one. The departure is not a nuisance: crossing over between the two genes separates them, and the chance of a crossover falling between them rises with the distance separating them. So the recombinant frequency measures a physical distance — and a genuinely broken rule has been converted into a measuring instrument. Two limits are worth knowing. The relationship stops being linear over long distances, because a second crossover restores the original combination and the recombinants are undercounted; and above about fifty per cent the genes assort as though unlinked, so genes at opposite ends of one chromosome are indistinguishable from genes on different chromosomes by this test alone. (24 doubles the percentage.)",
+        hi: "6 × 2 = 12 मानचित्र इकाइयाँ, क्योंकि एक मानचित्र इकाई की परिभाषा एक प्रतिशत पुनर्संयोजन है। परिभाषा तब तक चक्रीय लगती है जब तक यह न दिखे कि वह कर क्या रही है। एक ही गुणसूत्र पर के दो जीन साथ वंशागत होने की प्रवृत्ति रखते हैं, अतः स्वतंत्र अपव्यूहन विफल हो जाता है और परीक्षण संकरण का अनुपात एक, एक, एक, एक नहीं रहता। यह विचलन उपद्रव नहीं: दोनों जीनों के बीच का विनिमय उन्हें अलग करता है, और उनके बीच विनिमय पड़ने की संभावना उन्हें अलग करती दूरी के साथ बढ़ती है। अतः पुनर्संयोजी बारंबारता एक भौतिक दूरी नापती है — और एक वस्तुतः टूटा नियम मापक यंत्र में बदल दिया गया है। दो सीमाएँ जानने लायक़ हैं। संबंध लंबी दूरियों पर रैखिक नहीं रहता, क्योंकि दूसरा विनिमय मूल संयोजन बहाल कर देता है और पुनर्संयोजी कम गिने जाते हैं; और लगभग पचास प्रतिशत से ऊपर जीन ऐसे छँटते हैं मानो असहलग्न हों, अतः एक ही गुणसूत्र के विपरीत सिरों के जीन अकेले इस परीक्षण से भिन्न गुणसूत्रों के जीनों से अलग नहीं पहचाने जा सकते। (24 प्रतिशत को दुगुना कर देता है।)",
+        mr: "6 × 2 = 12 नकाशा एकके, कारण एका नकाशा एककाची व्याख्या एक टक्का पुनर्संयोजन आहे. व्याख्या तोवर वर्तुळाकार वाटते जोवर ती काय करत आहे हे दिसत नाही. एकाच गुणसूत्रावरची दोन जनुके सोबत आनुवंशिक होण्याची प्रवृत्ती ठेवतात, म्हणून स्वतंत्र अपव्यूहन अपयशी ठरते आणि चाचणी संकरणाचे गुणोत्तर एक, एक, एक, एक राहत नाही. हे विचलन उपद्रव नाही: दोन्ही जनुकांमधली अदलाबदल त्यांना वेगळे करते, आणि त्यांच्यामध्ये अदलाबदल पडण्याची शक्यता त्यांना वेगळे करणाऱ्या अंतरासोबत वाढते. म्हणून पुनर्संयोजी वारंवारता एक भौतिक अंतर मोजते — आणि एक खरोखर मोडलेला नियम मापक यंत्रात बदलला गेला आहे. दोन मर्यादा जाणण्याजोग्या आहेत. नाते लांब अंतरांवर रेषीय राहत नाही, कारण दुसरी अदलाबदल मूळ संयोजन पुनर्स्थापित करते आणि पुनर्संयोजी कमी मोजले जातात; आणि सुमारे पन्नास टक्क्यांच्या वर जनुके अशी विभागली जातात जणू असहलग्न असावीत, म्हणून एकाच गुणसूत्राच्या विरुद्ध टोकांची जनुके एकट्या या चाचणीने वेगळ्या गुणसूत्रांच्या जनुकांपासून वेगळी ओळखता येत नाहीत. (24 टक्केवारी दुप्पट करते.)",
+      },
+    },
+  ],
+  "biology-12-molecular-basis-of-inheritance": [
+    {
+      level: 1,
+      stem: {
+        en: "How many kinds of nitrogenous base are found in DNA?",
+        hi: "DNA में कितनी क़िस्म के नाइट्रोजनी क्षार मिलते हैं?",
+        mr: "DNA मध्ये किती प्रकारची नायट्रोजनी क्षारे आढळतात?",
+      },
+      answer: 4,
+      wrong: [2, 5, 20],
+      checkExpr: "2*2",
+      solution: {
+        en: "2 × 2 = 4: two purines, adenine and guanine, and two pyrimidines, thymine and cytosine. RNA has four as well, but uracil takes the place of thymine, so a molecule can be identified as one or the other by which of those two it carries. (2 counts the two classes rather than the four bases.)",
+        hi: "2 × 2 = 4: दो प्यूरीन, ऐडेनीन और ग्वानीन, तथा दो पिरिमिडीन, थाइमीन और साइटोसीन। RNA में भी चार हैं, पर थाइमीन की जगह यूरैसिल ले लेता है, अतः कोई अणु इनमें से कौन-सा ढोता है इससे उसे एक या दूसरा पहचाना जा सकता है। (2 चार क्षारों के बजाय दो वर्ग गिनता है।)",
+        mr: "2 × 2 = 4: दोन प्युरीन, अ‍ॅडेनिन आणि ग्वानिन, आणि दोन पिरिमिडीन, थायमिन आणि सायटोसिन. RNA मध्येही चार आहेत, पण थायमिनची जागा युरॅसिल घेते, म्हणून एखादा रेणू यांपैकी कोणते वाहतो यावरून त्याला एक वा दुसरा ओळखता येतो. (2 चार क्षारांऐवजी दोन वर्ग मोजते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "How many bases make up one codon?",
+        hi: "एक कोडॉन कितने क्षारों से बनता है?",
+        mr: "एक कोडॉन किती क्षारांनी बनतो?",
+      },
+      answer: 3,
+      wrong: [2, 4, 1],
+      checkExpr: "1*3",
+      solution: {
+        en: "1 × 3 = 3. The length is not arbitrary: two bases would give only sixteen combinations, which cannot specify twenty amino acids and a stop signal, while three give sixty-four. Three is the shortest length that suffices, and a longer codon would mean more DNA to store and copy for the same protein. (2 gives the length that was ruled out by counting.)",
+        hi: "1 × 3 = 3. लंबाई मनमानी नहीं: दो क्षार केवल सोलह संयोजन देते, जो बीस ऐमीनो अम्ल और एक रुकने का संकेत निर्दिष्ट नहीं कर सकते, जबकि तीन चौंसठ देते हैं। तीन सबसे छोटी पर्याप्त लंबाई है, और लंबे कोडॉन का अर्थ उसी प्रोटीन के लिए अधिक DNA संचित और नक़ल करना होता। (2 वह लंबाई देता है जिसे गिनती ने ख़ारिज किया।)",
+        mr: "1 × 3 = 3. लांबी मनमानी नाही: दोन क्षारे केवळ सोळा संयोजने देतील, जी वीस अमिनो आम्ले आणि एक थांबण्याचे संकेत निर्दिष्ट करू शकत नाहीत, तर तीन चौसष्ट देतात. तीन ही सर्वांत लहान पुरेशी लांबी आहे, आणि लांब कोडॉनचा अर्थ त्याच प्रथिनासाठी अधिक DNA साठवणे आणि नक्कल करणे असेल. (2 ती लांबी देते जी मोजणीने नाकारली.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "How many different codons are possible with four bases read three at a time?",
+        hi: "चार क्षारों को तीन-तीन करके पढ़ने पर कितने भिन्न कोडॉन संभव हैं?",
+        mr: "चार क्षारे तीन-तीन करून वाचल्यास किती वेगळे कोडॉन शक्य आहेत?",
+      },
+      answer: 64,
+      wrong: [12, 16, 20],
+      checkExpr: "4*16",
+      solution: {
+        en: "Four choices at each of three positions: 4 × 16 = 64, that is 4³. Compare the alternatives to see why three won. One base gives 4 meanings and two give 16, neither enough for twenty amino acids plus a stop instruction, and this arithmetic was worked out before the code itself was cracked. The forty-three spare codons are not left unused — every one has a meaning, which is why most amino acids have several codons and a good many mutations turn out to be silent. (12 multiplies rather than raising to a power.)",
+        hi: "तीनों स्थानों में से हर एक पर चार विकल्प: 4 × 16 = 64, यानी 4³. यह देखने को कि तीन क्यों जीते, विकल्पों से तुलना करो। एक क्षार 4 अर्थ देता है और दो 16, और कोई भी बीस ऐमीनो अम्लों तथा एक रुकने के निर्देश के लिए काफ़ी नहीं, और यह गणित कूट के खुलने से पहले ही निकाल लिया गया था। तैंतालीस बचे कोडॉन अप्रयुक्त नहीं छोड़े गए — हर एक का अर्थ है, इसीलिए अधिकांश ऐमीनो अम्लों के कई कोडॉन हैं और बहुत से उत्परिवर्तन मौन निकलते हैं। (12 घात लगाने के बजाय गुणा कर देता है।)",
+        mr: "तिन्ही जागांपैकी प्रत्येकावर चार पर्याय: 4 × 16 = 64, म्हणजे 4³. तीन का जिंकले हे पाहायला पर्यायांशी तुलना करा. एक क्षार 4 अर्थ देतो आणि दोन 16, आणि कोणतेही वीस अमिनो आम्ले व एक थांबण्याची सूचना यांसाठी पुरेसे नाही, आणि हे गणित संकेत उलगडण्याआधीच काढले गेले होते. त्रेचाळीस उरलेले कोडॉन न वापरता सोडलेले नाहीत — प्रत्येकाला अर्थ आहे, म्हणूनच बहुतांश अमिनो आम्लांना कित्येक कोडॉन आहेत आणि बरीच उत्परिवर्तने मूक निघतात. (12 घात घेण्याऐवजी गुणाकार करते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A DNA sample contains 22 per cent cytosine. What percentage is adenine?",
+        hi: "किसी DNA नमूने में 22 प्रतिशत साइटोसीन है। ऐडेनीन कितने प्रतिशत है?",
+        mr: "एका DNA नमुन्यात 22 टक्के सायटोसिन आहे. अ‍ॅडेनिन किती टक्के आहे?",
+      },
+      answer: 28,
+      wrong: [22, 78, 56],
+      checkExpr: "56/2",
+      solution: {
+        en: "Cytosine pairs with guanine, so guanine is also 22 per cent and the pair together is 44. That leaves 56 per cent shared equally between adenine and thymine: 56/2 = 28 per cent adenine. Every step comes from the pairing rule, and it is worth noticing that Chargaff measured these equalities years before anyone could explain them — a regularity sitting unexplained in a table until the double helix showed it had to be so. (22 assumes all four bases are equally abundant, which no organism requires.)",
+        hi: "साइटोसीन ग्वानीन से युग्मित होता है, अतः ग्वानीन भी 22 प्रतिशत है और जोड़ा मिलकर 44. बचे 56 प्रतिशत ऐडेनीन और थाइमीन में बराबर बँटते हैं: 56/2 = 28 प्रतिशत ऐडेनीन। हर क़दम युग्मन नियम से आता है, और ध्यान देने लायक़ है कि शार्गाफ़ ने ये बराबरियाँ किसी के समझा पाने से वर्षों पहले नापी थीं — तालिका में बिना व्याख्या बैठी नियमितता, जब तक द्विकुंडली ने न दिखाया कि ऐसा होना ही था। (22 मान लेता है कि चारों क्षार बराबर प्रचुर हैं, जिसकी किसी जीव को ज़रूरत नहीं।)",
+        mr: "सायटोसिन ग्वानिनशी युग्मित होते, म्हणून ग्वानिनही 22 टक्के आहे आणि जोडी मिळून 44. उरलेले 56 टक्के अ‍ॅडेनिन आणि थायमिनमध्ये समान वाटले जातात: 56/2 = 28 टक्के अ‍ॅडेनिन. प्रत्येक पायरी युग्मन नियमातून येते, आणि लक्षात घेण्याजोगे आहे की शारगाफने ही समानता कोणी समजावू शकण्याच्या कित्येक वर्षे आधी मोजली होती — तक्त्यात स्पष्टीकरणाविना बसलेली नियमितता, जोवर द्विकुंडलीने दाखवले नाही की असे असावेच लागते. (22 गृहीत धरते की चारही क्षारे समान विपुल आहेत, जे कोणत्याही जीवाला आवश्यक नाही.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A messenger RNA has 90 bases in its coding region. How many amino acids does it specify?",
+        hi: "किसी संदेशवाहक RNA के कूटलेखन क्षेत्र में 90 क्षार हैं। वह कितने ऐमीनो अम्ल निर्दिष्ट करता है?",
+        mr: "एका संदेशवाहक RNA च्या संकेतन प्रदेशात 90 क्षारे आहेत. तो किती अमिनो आम्ले निर्दिष्ट करतो?",
+      },
+      answer: 30,
+      wrong: [270, 45, 90],
+      checkExpr: "90/3",
+      solution: {
+        en: "90/3 = 30, since the message is read in non-overlapping triplets. The 'non-overlapping' is doing work in that sentence: if codons overlapped, a sequence of ninety bases would specify far more than thirty amino acids, and a single base change would alter three of them at once. Experiments with induced mutations showed that a single substitution changes one amino acid, which is how the code was established to be non-overlapping. (270 multiplies instead of dividing.)",
+        hi: "90/3 = 30, चूँकि संदेश अनतिव्यापी त्रिकों में पढ़ा जाता है। उस वाक्य में 'अनतिव्यापी' काम कर रहा है: यदि कोडॉन अतिव्यापी होते, तो नब्बे क्षारों का अनुक्रम तीस से कहीं अधिक ऐमीनो अम्ल निर्दिष्ट करता, और एक ही क्षार का बदलाव एक साथ तीन को बदल देता। प्रेरित उत्परिवर्तनों के प्रयोगों ने दिखाया कि एक प्रतिस्थापन एक ऐमीनो अम्ल बदलता है, और इसी से कूट अनतिव्यापी सिद्ध हुआ। (270 भाग देने के बजाय गुणा कर देता है।)",
+        mr: "90/3 = 30, कारण संदेश अनतिव्यापी त्रिकांत वाचला जातो. त्या वाक्यात 'अनतिव्यापी' काम करत आहे: जर कोडॉन अतिव्यापी असते, तर नव्वद क्षारांचा क्रम तिसांहून कितीतरी अधिक अमिनो आम्ले निर्दिष्ट करेल, आणि एकाच क्षाराचा बदल एकाच वेळी तीन बदलेल. प्रेरित उत्परिवर्तनांच्या प्रयोगांनी दाखवले की एक प्रतिस्थापन एक अमिनो आम्ल बदलते, आणि यानेच संकेत अनतिव्यापी सिद्ध झाला. (270 भागण्याऐवजी गुणाकार करते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A DNA molecule replicates semiconservatively. Out of the four strands present after one round of replication, how many are newly made?",
+        hi: "कोई DNA अणु अर्धसंरक्षी ढंग से प्रतिकृति करता है। प्रतिकृति के एक दौर के बाद मौजूद चार लड़ियों में से कितनी नई बनी हैं?",
+        mr: "एखादा DNA रेणू अर्धसंरक्षी पद्धतीने प्रतिकृती करतो. प्रतिकृतीच्या एका फेरीनंतर उपस्थित चार पदरांपैकी किती नव्याने बनलेले आहेत?",
+      },
+      answer: 2,
+      wrong: [4, 1, 3],
+      checkExpr: "4-2",
+      solution: {
+        en: "4 − 2 = 2 new strands, because the two original strands are both retained, one in each daughter molecule. This is exactly what the density experiment tested. Conservative replication would have kept the parent molecule whole and made two entirely new strands together, giving one heavy molecule and one light one; semiconservative gives two molecules of intermediate density. A single band of intermediate density after one round is what was seen, and it eliminated the conservative scheme on the spot. (4 assumes both strands of each daughter are new.)",
+        hi: "4 − 2 = 2 नई लड़ियाँ, क्योंकि दोनों मूल लड़ियाँ बची रहती हैं, हर पुत्री अणु में एक। घनत्व प्रयोग ने ठीक यही परखा। संरक्षी प्रतिकृति जनक अणु को समूचा रखती और दोनों बिलकुल नई लड़ियाँ साथ बनाती, जिससे एक भारी और एक हल्का अणु मिलता; अर्धसंरक्षी मध्यवर्ती घनत्व के दो अणु देती है। एक दौर के बाद मध्यवर्ती घनत्व की एक अकेली पट्टी ही दिखी, और उसने संरक्षी योजना को वहीं ख़ारिज कर दिया। (4 मान लेता है कि हर पुत्री की दोनों लड़ियाँ नई हैं।)",
+        mr: "4 − 2 = 2 नवे पदर, कारण दोन्ही मूळ पदर टिकतात, प्रत्येक कन्या रेणूत एक. घनता प्रयोगाने नेमके हेच तपासले. संरक्षी प्रतिकृती जनक रेणू अख्खा ठेवेल आणि दोन्ही पूर्णपणे नवे पदर एकत्र बनवेल, ज्याने एक जड आणि एक हलका रेणू मिळेल; अर्धसंरक्षी मध्यवर्ती घनतेचे दोन रेणू देते. एका फेरीनंतर मध्यवर्ती घनतेची एकच पट्टी दिसली, आणि तिने संरक्षी योजना तिथेच नाकारली. (4 गृहीत धरते की प्रत्येक कन्येचे दोन्ही पदर नवे आहेत.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "Starting from one DNA molecule, how many molecules are present after three rounds of replication?",
+        hi: "एक DNA अणु से शुरू करके प्रतिकृति के तीन दौर के बाद कितने अणु मौजूद हैं?",
+        mr: "एका DNA रेणूपासून सुरुवात करून प्रतिकृतीच्या तीन फेऱ्यांनंतर किती रेणू उपस्थित आहेत?",
+      },
+      answer: 8,
+      wrong: [6, 4, 3],
+      checkExpr: "2*4",
+      solution: {
+        en: "Each round doubles the number: 2 × 4 = 8, that is 2³. Now ask how many of those eight still contain an original strand. Only two do, because there were only two original strands to begin with and each one has stayed intact in some molecule. So the proportion carrying original material falls as 2/2ⁿ while the total rises as 2ⁿ, which is exactly the pattern the density experiment tracked from one generation to the next. (6 adds two per round instead of doubling.)",
+        hi: "हर दौर संख्या दुगुनी करता है: 2 × 4 = 8, यानी 2³. अब पूछो कि उन आठ में से कितनों में अब भी मूल लड़ी है। केवल दो में, क्योंकि शुरू में मूल लड़ियाँ केवल दो ही थीं और हर एक किसी न किसी अणु में सलामत रही है। अतः मूल सामग्री ढोते अणुओं का अनुपात 2/2ⁿ की तरह गिरता है जबकि कुल 2ⁿ की तरह बढ़ता है, और घनत्व प्रयोग ने एक पीढ़ी से अगली तक ठीक यही प्रतिरूप पकड़ा। (6 दुगुना करने के बजाय हर दौर दो जोड़ देता है।)",
+        mr: "प्रत्येक फेरी संख्या दुप्पट करते: 2 × 4 = 8, म्हणजे 2³. आता विचारा की त्या आठांपैकी कितींत अजून मूळ पदर आहे. केवळ दोहोंत, कारण सुरुवातीला मूळ पदर केवळ दोनच होते आणि प्रत्येक कोणत्या ना कोणत्या रेणूत शाबूत राहिला आहे. म्हणून मूळ सामग्री वाहणाऱ्या रेणूंचे प्रमाण 2/2ⁿ प्रमाणे घसरते तर एकूण 2ⁿ प्रमाणे वाढते, आणि घनता प्रयोगाने एका पिढीपासून पुढच्यापर्यंत नेमका हाच नमुना पकडला. (6 दुप्पट करण्याऐवजी प्रत्येक फेरीत दोन जोडते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "How many hydrogen bonds hold a guanine–cytosine pair together?",
+        hi: "ग्वानीन–साइटोसीन युग्म को कितने हाइड्रोजन बंध साथ थामते हैं?",
+        mr: "ग्वानिन–सायटोसिन जोडीला किती हायड्रोजन बंध एकत्र धरतात?",
+      },
+      answer: 3,
+      wrong: [2, 1, 6],
+      checkExpr: "2+1",
+      solution: {
+        en: "2 + 1 = 3, one more than the two holding adenine to thymine. The difference has a measurable consequence: a region rich in G–C pairs takes more energy to pull apart, so DNA with a high proportion of them melts at a higher temperature, and organisms living in hot springs tend to have G-C-rich genomes. The pairing itself is fixed by where each base can donate or accept a hydrogen bond, and by size — a larger purine always facing a smaller pyrimidine, which is what keeps the helix a constant width. (2 gives the adenine–thymine count.)",
+        hi: "2 + 1 = 3, ऐडेनीन को थाइमीन से थामते दो से एक अधिक। इस अंतर का नापने योग्य परिणाम है: G–C युग्मों से समृद्ध क्षेत्र को खींचकर अलग करने में अधिक ऊर्जा लगती है, अतः जिस DNA में उनका अनुपात अधिक है वह ऊँचे ताप पर पिघलता है, और गर्म झरनों में रहते जीवों के जीनोम G-C समृद्ध होते हैं। युग्मन स्वयं इससे तय है कि हर क्षार कहाँ हाइड्रोजन बंध दे या ले सकता है, और आकार से — बड़ा प्यूरीन हमेशा छोटे पिरिमिडीन के सामने, और यही कुंडली की चौड़ाई एक-सी रखता है। (2 ऐडेनीन–थाइमीन की गिनती देता है।)",
+        mr: "2 + 1 = 3, अ‍ॅडेनिनला थायमिनशी धरणाऱ्या दोघांहून एक अधिक. या फरकाचा मोजण्याजोगा परिणाम आहे: G–C जोड्यांनी समृद्ध प्रदेश ओढून वेगळा करण्यास अधिक ऊर्जा लागते, म्हणून ज्या DNA मध्ये त्यांचे प्रमाण अधिक आहे तो उच्च तापमानावर वितळतो, आणि गरम झऱ्यांत राहणाऱ्या जीवांचे जीनोम G-C समृद्ध असतात. युग्मन स्वतः यावरून ठरते की प्रत्येक क्षार कुठे हायड्रोजन बंध देऊ वा घेऊ शकते, आणि आकारावरून — मोठे प्युरीन नेहमी लहान पिरिमिडीनसमोर, आणि हेच कुंडलीची रुंदी सारखी ठेवते. (2 अ‍ॅडेनिन–थायमिनची मोजणी देते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "Starting from cells whose DNA is entirely heavy, how many of the sixteen molecules present after four rounds of replication in light medium still contain a heavy strand?",
+        hi: "ऐसी कोशिकाओं से शुरू करके जिनका DNA पूरी तरह भारी है, हल्के माध्यम में प्रतिकृति के चार दौर के बाद मौजूद सोलह अणुओं में से कितनों में अब भी भारी लड़ी है?",
+        mr: "ज्यांचा DNA पूर्णपणे जड आहे अशा पेशींपासून सुरुवात करून, हलक्या माध्यमात प्रतिकृतीच्या चार फेऱ्यांनंतर उपस्थित सोळा रेणूंपैकी कितींत अजून जड पदर आहे?",
+      },
+      answer: 2,
+      wrong: [8, 4, 16],
+      checkExpr: "4-2",
+      solution: {
+        en: "4 − 2 = 2. The reasoning is worth doing carefully because the answer surprises people. The original molecule had exactly two heavy strands, and semiconservative replication never destroys a strand — it only pairs each one with a new partner. So after any number of rounds there are still exactly two heavy strands in existence, sitting in two molecules, however large the population has grown. After four rounds there are 2⁴ = 16 molecules, of which 2 are hybrid and 14 are entirely light. That falling proportion is precisely what the density experiment watched: the intermediate band never disappears but grows fainter relative to the light band with every generation, which is a signature no other scheme produces. Conservative replication would keep one wholly heavy molecule for ever; dispersive would leave no distinct band at all. (8 halves the total instead of counting the surviving strands.)",
+        hi: "4 − 2 = 2. तर्क ध्यान से करना चाहिए क्योंकि उत्तर लोगों को चौंकाता है। मूल अणु में ठीक दो भारी लड़ियाँ थीं, और अर्धसंरक्षी प्रतिकृति कभी कोई लड़ी नष्ट नहीं करती — वह केवल हर एक को नए साथी से जोड़ती है। अतः कितने भी दौर के बाद ठीक दो भारी लड़ियाँ अब भी मौजूद हैं, दो अणुओं में बैठी, आबादी चाहे कितनी भी बढ़ जाए। चार दौर के बाद 2⁴ = 16 अणु हैं, जिनमें 2 संकर और 14 पूरी तरह हल्के हैं। यही गिरता अनुपात घनत्व प्रयोग ने देखा: मध्यवर्ती पट्टी कभी ग़ायब नहीं होती पर हर पीढ़ी के साथ हल्की पट्टी के मुक़ाबले मंद पड़ती जाती है, और यह ऐसा हस्ताक्षर है जो कोई दूसरी योजना नहीं देती। संरक्षी प्रतिकृति एक पूरी तरह भारी अणु हमेशा के लिए रखती; विक्षेपी कोई अलग पट्टी छोड़ती ही नहीं। (8 बची लड़ियाँ गिनने के बजाय कुल को आधा कर देता है।)",
+        mr: "4 − 2 = 2. युक्तिवाद काळजीपूर्वक करण्याजोगा आहे कारण उत्तर लोकांना चकित करते. मूळ रेणूत नेमके दोन जड पदर होते, आणि अर्धसंरक्षी प्रतिकृती कधीही कोणताही पदर नष्ट करत नाही — ती केवळ प्रत्येकाला नव्या जोडीदाराशी जोडते. म्हणून कितीही फेऱ्यांनंतर नेमके दोन जड पदर अजूनही अस्तित्वात आहेत, दोन रेणूंत बसलेले, लोकसंख्या कितीही वाढो. चार फेऱ्यांनंतर 2⁴ = 16 रेणू आहेत, ज्यांपैकी 2 संकर आणि 14 पूर्णपणे हलके आहेत. हेच घसरणारे प्रमाण घनता प्रयोगाने पाहिले: मध्यवर्ती पट्टी कधीही नाहीशी होत नाही पण प्रत्येक पिढीसोबत हलक्या पट्टीच्या तुलनेत मंद होत जाते, आणि ही अशी सही आहे जी कोणतीही दुसरी योजना देत नाही. संरक्षी प्रतिकृती एक पूर्णपणे जड रेणू कायमचा ठेवेल; विक्षेपी कोणतीही वेगळी पट्टी सोडणारच नाही. (8 उरलेले पदर मोजण्याऐवजी एकूण निम्मे करते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "Of the 64 codons, 3 are stop signals and the rest specify 20 amino acids. How many codons are left over once each amino acid has been given one?",
+        hi: "64 कोडॉन में से 3 रुकने के संकेत हैं और बाक़ी 20 ऐमीनो अम्ल निर्दिष्ट करते हैं। हर ऐमीनो अम्ल को एक-एक दे देने के बाद कितने कोडॉन बचते हैं?",
+        mr: "64 कोडॉनांपैकी 3 थांबण्याची संकेते आहेत आणि बाकीचे 20 अमिनो आम्ले निर्दिष्ट करतात. प्रत्येक अमिनो आम्लाला एकेक दिल्यानंतर किती कोडॉन उरतात?",
+      },
+      answer: 41,
+      wrong: [44, 61, 20],
+      checkExpr: "61-20",
+      solution: {
+        en: "61 codons specify amino acids, and giving one to each of the twenty leaves 61 − 20 = 41 spare. What happens to those forty-one is the substance of the chapter. They are not discarded — every codon has a meaning — so most amino acids end up with several, leucine, serine and arginine with six each, while methionine and tryptophan keep just one. And the synonyms are not scattered at random: they usually share their first two bases and differ only in the third, so GGA, GGC, GGG and GGU all specify glycine. Three consequences follow. A change in the third base of such a codon is silent, which makes a large share of random substitutions harmless. The code is also arranged so that codons differing by one base often specify chemically similar amino acids, so a mutation that does show tends to be a mild substitution rather than a drastic one. And the looser pairing permitted at that third position means fewer than sixty-four tRNAs are needed. Redundancy in a code is what makes it tolerant of error, exactly as a checksum is — the surplus is not slack in the design but the design absorbing the mutations a replicating molecule is bound to accumulate. (44 forgets to remove the three stop codons before subtracting.)",
+        hi: "61 कोडॉन ऐमीनो अम्ल निर्दिष्ट करते हैं, और बीसों में से हर एक को एक दे देने पर 61 − 20 = 41 बचते हैं। उन इकतालीस का क्या होता है यही अध्याय का सार है। वे फेंके नहीं जाते — हर कोडॉन का अर्थ है — अतः अधिकांश ऐमीनो अम्लों के पास कई हो जाते हैं, ल्यूसीन, सेरीन और आर्जिनीन के छह-छह, जबकि मेथियोनीन और ट्रिप्टोफ़ैन के पास केवल एक रहता है। और समानार्थी बेतरतीब बिखरे नहीं हैं: वे प्रायः अपने पहले दो क्षार साझा करते हैं और केवल तीसरे में भिन्न होते हैं, अतः GGA, GGC, GGG और GGU सब ग्लाइसीन निर्दिष्ट करते हैं। तीन परिणाम निकलते हैं। ऐसे कोडॉन के तीसरे क्षार में बदलाव मौन है, जिससे बेतरतीब प्रतिस्थापनों का बड़ा हिस्सा हानिरहित हो जाता है। कूट ऐसे भी जमा है कि एक क्षार में भिन्न कोडॉन प्रायः रासायनिक रूप से समान ऐमीनो अम्ल निर्दिष्ट करते हैं, अतः जो उत्परिवर्तन दिखता भी है वह प्रायः कठोर नहीं बल्कि हल्का प्रतिस्थापन होता है। और उसी तीसरे स्थान पर छूट वाले युग्मन का अर्थ है कि चौंसठ से कम tRNA चाहिए। किसी कूट का आधिक्य ही उसे ग़लती सहनशील बनाता है, ठीक जैसे जाँच अंक — अतिरेक रचना की ढील नहीं बल्कि रचना का उन उत्परिवर्तनों को सोख लेना है जो प्रतिकृति करते अणु में जमा होने ही हैं। (44 घटाने से पहले तीन रुकने वाले कोडॉन हटाना भूल जाता है।)",
+        mr: "61 कोडॉन अमिनो आम्ले निर्दिष्ट करतात, आणि विसांपैकी प्रत्येकाला एक दिल्यावर 61 − 20 = 41 उरतात. त्या एकेचाळिसांचे काय होते हाच प्रकरणाचा सार आहे. ते फेकले जात नाहीत — प्रत्येक कोडॉनला अर्थ आहे — म्हणून बहुतांश अमिनो आम्लांकडे कित्येक येतात, ल्युसिन, सेरिन आणि आर्जिनिनकडे सहा-सहा, तर मिथिओनिन आणि ट्रिप्टोफॅनकडे केवळ एक राहतो. आणि समानार्थी यादृच्छिक विखुरलेले नाहीत: ते बहुधा आपली पहिली दोन क्षारे समाईक ठेवतात आणि केवळ तिसऱ्यात वेगळे असतात, म्हणून GGA, GGC, GGG आणि GGU सर्व ग्लायसिन निर्दिष्ट करतात. तीन परिणाम निघतात. अशा कोडॉनच्या तिसऱ्या क्षारातील बदल मूक आहे, ज्याने यादृच्छिक प्रतिस्थापनांचा मोठा हिस्सा निरुपद्रवी होतो. संकेत असाही मांडला आहे की एका क्षारात वेगळे कोडॉन बहुधा रासायनिकदृष्ट्या सारखी अमिनो आम्ले निर्दिष्ट करतात, म्हणून जे उत्परिवर्तन दिसतेही ते बहुधा तीव्र नव्हे तर सौम्य प्रतिस्थापन असते. आणि त्याच तिसऱ्या जागी परवानगी असलेल्या सैल युग्मनाचा अर्थ चौसष्टहून कमी tRNA लागतात. एखाद्या संकेताचे आधिक्यच त्याला चूकसहिष्णू बनवते, नेमके जसे तपासणी अंक — अतिरिक्तता रचनेतली ढील नसून रचनेने त्या उत्परिवर्तनांना शोषून घेणे आहे जी प्रतिकृती करणाऱ्या रेणूत जमणारच आहेत. (44 वजा करण्याआधी तीन थांबण्याचे कोडॉन काढायला विसरते.)",
+      },
+    },
+  ],
 };
