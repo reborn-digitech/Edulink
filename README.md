@@ -2514,8 +2514,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 368
-  chapters / 6,652 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 371
+  chapters / 6,716 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -3049,6 +3049,34 @@ navigation" means the actual list rather than one somebody maintained by hand.
   activating conditions exist in the species of concern, rather than
   feeding escalating doses and looking for an effect. Verify clean,
   warnings steady at 34, suite green: 87 files, 1485 tests.
+
+  **Three more Biology chapters** — 64 questions: the two Biotechnology
+  chapters and Organisms and Populations, which takes the numerics. The
+  Principles L5 is a protocol taught the useful way — not as an order to
+  memorise but as four steps each with a stated failure mode, ending on the
+  one most easily forgotten: omit the promoter and everything *appears* to
+  have worked (plasmid replicates, colonies grow, gene sequences correctly)
+  and no protein is made at all. The L6 is PCR held up not by any
+  conceptual difficulty but by one physical fact — the 95 °C step that
+  makes the next round possible destroys the enzyme that will carry it out
+  — and solved by an organism nobody had studied for the purpose. The
+  Applications L5 asks what recombinant insulin actually fixed and shows
+  the obvious answer (supply) is the smaller half: three amino acids out of
+  fifty-one is nothing chemically and everything immunologically, and no
+  amount of purification can fix a difference that is in the molecule. The
+  L6 explains how a molecule of RNA acts as a pesticide — the plant
+  supplies not a toxin but instructions the parasite's own silencing
+  machinery executes against itself — and draws the consequence that
+  selectivity is a property of the *sequence chosen*, to be established
+  rather than assumed. Organisms and Populations' L5 refuses to rank
+  regulating against conforming, working instead through what each buys and
+  the currency each pays in, with the surface-to-volume argument explaining
+  why very small endotherms are absent from polar regions. The L6 takes an
+  apparent counterexample to competitive exclusion — warblers coexisting in
+  one spruce — and shows that checking it against the principle's actual
+  condition turns it into confirmation, then adds character displacement as
+  the testable follow-on. Verify clean, warnings steady at 34, suite green:
+  87 files, 1485 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)

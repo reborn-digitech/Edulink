@@ -2818,6 +2818,1051 @@ export const G12_BIOLOGY: Chapter[] = [
     ],
   },
   /*C6*/
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 9 — Biotechnology: Principles and Processes                     */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "biology-12-biotechnology-principles-and-processes",
+    subject: "BIOLOGY",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 9 — Biotechnology: Principles and Processes",
+      hi: "अध्याय 9 — जैव प्रौद्योगिकी: सिद्धांत तथा प्रक्रम",
+      mr: "प्रकरण 9 — जैवतंत्रज्ञान: तत्त्वे आणि प्रक्रिया",
+    },
+    name: {
+      en: "Biotechnology: Principles and Processes",
+      hi: "जैव प्रौद्योगिकी: सिद्धांत तथा प्रक्रम",
+      mr: "जैवतंत्रज्ञान: तत्त्वे आणि प्रक्रिया",
+    },
+    summary: {
+      en: "A set of tools that exist because bacteria had already invented them for their own defence, and the whole discipline is a matter of noticing what an existing enzyme does and pointing it at a new problem: a cutter that recognises a short sequence reading the same in both directions and cuts it off-centre, so the two ends left behind are sticky and will pair with any other fragment cut by the same enzyme, whatever organism it came from; a joining enzyme that seals the nick and does not care whose DNA it is sealing; a small circular carrier that a bacterium will take in and copy along with its own, fitted with a marker so that the rare cell which took it can be told from the millions that did not; a way of separating fragments by dragging them through a gel where the small ones travel furthest, which turns a length into a distance one can see; a reaction that doubles a chosen stretch of DNA every cycle and therefore makes a single molecule visible within an afternoon; and a vessel whose real problem is not the biology at all but keeping several thousand litres stirred, fed and at one temperature.",
+      hi: "औज़ारों का ऐसा समुच्चय जो इसलिए है कि जीवाणु उन्हें अपने बचाव के लिए पहले ही ईजाद कर चुके थे, और पूरा विषय यह देखने का मामला है कि कोई मौजूद एंज़ाइम करता क्या है और उसे किसी नई समस्या पर ताना जाए: ऐसा कटर जो दोनों दिशाओं में एक-सा पढ़ा जाता छोटा अनुक्रम पहचानता है और उसे केंद्र से हटकर काटता है, अतः पीछे छूटे दोनों सिरे चिपचिपे हैं और उसी एंज़ाइम से कटे किसी भी दूसरे खंड से जुड़ जाएँगे, वह चाहे किसी भी जीव से आया हो; ऐसा जोड़ने वाला एंज़ाइम जो खाँचा सील कर देता है और इसकी परवाह नहीं करता कि वह किसका DNA सील कर रहा है; ऐसा छोटा वृत्ताकार वाहक जिसे जीवाणु भीतर ले लेगा और अपने साथ उसकी भी नक़ल करेगा, और जिस पर ऐसा चिह्नक लगा है कि जिस दुर्लभ कोशिका ने उसे लिया वह उन लाखों से अलग बताई जा सके जिन्होंने नहीं लिया; खंडों को जेल में से खींचकर अलग करने का ऐसा तरीक़ा जहाँ छोटे सबसे दूर जाते हैं, जो लंबाई को ऐसी दूरी में बदल देता है जिसे देखा जा सके; ऐसी अभिक्रिया जो DNA के चुने हिस्से को हर चक्र में दुगुना करती है और इसलिए एक ही अणु को दोपहर भर में दृश्य बना देती है; और ऐसा पात्र जिसकी असली समस्या जीवविज्ञान है ही नहीं बल्कि कई हज़ार लीटर को हिलता, खिलाया हुआ और एक ही ताप पर रखना है।",
+      mr: "साधनांचा असा संच जो यासाठी आहे की जिवाणूंनी ती आपल्या बचावासाठी आधीच शोधली होती, आणि अख्खे क्षेत्र हे पाहण्याची बाब आहे की एखादे अस्तित्वात असलेले विकर काय करते आणि ते एखाद्या नव्या समस्येवर रोखावे: असा कापणारा जो दोन्ही दिशांनी सारखा वाचला जाणारा लहान क्रम ओळखतो आणि त्याला मध्यापासून सरकून कापतो, म्हणून मागे उरलेली दोन्ही टोके चिकट आहेत आणि त्याच विकराने कापलेल्या कोणत्याही दुसऱ्या तुकड्याशी जोडली जातील, तो कोणत्याही जीवाकडून आलेला असो; असे जोडणारे विकर जे खाच बंद करते आणि याची पर्वा करत नाही की ते कोणाचा DNA बंद करत आहे; असा लहान वर्तुळाकार वाहक जो जिवाणू आत घेईल आणि आपल्यासोबत त्याचीही नक्कल करेल, आणि ज्यावर अशी खूण लावली आहे की ज्या दुर्मीळ पेशीने तो घेतला ती त्या लाखोंहून वेगळी सांगता यावी ज्यांनी घेतला नाही; तुकडे जेलमधून ओढून वेगळे करण्याचा असा मार्ग जिथे लहान सर्वांत दूर जातात, जो लांबीचे अशा अंतरात रूपांतर करतो जे पाहता येईल; अशी अभिक्रिया जी DNA चा निवडलेला भाग प्रत्येक चक्रात दुप्पट करते आणि म्हणून एकाच रेणूला दुपारभरात दृश्य बनवते; आणि असे पात्र ज्याची खरी समस्या जीवशास्त्र आहेच नाही तर कित्येक हजार लिटर ढवळलेले, खाऊ घातलेले आणि एकाच तापमानावर ठेवणे आहे.",
+    },
+    position: 9,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "restriction-enzymes-and-sticky-ends",
+        name: {
+          en: "Restriction enzymes and sticky ends",
+          hi: "प्रतिबंधन एंज़ाइम और चिपचिपे सिरे",
+          mr: "प्रतिबंधन विकरे आणि चिकट टोके",
+        },
+        kind: "tool and where it came from",
+        prompt: {
+          en: "An enzyme that recognises a short sequence reading the same on both strands and cuts it off-centre, leaving overhangs that will pair with any fragment cut the same way. What is it?",
+          hi: "ऐसा एंज़ाइम जो दोनों लड़ियों पर एक-सा पढ़ा जाता छोटा अनुक्रम पहचानता है और उसे केंद्र से हटकर काटता है, और ऐसे लटकते सिरे छोड़ता है जो उसी तरह कटे किसी भी खंड से जुड़ जाएँगे। यह क्या है?",
+          mr: "असे विकर जे दोन्ही पदरांवर सारखा वाचला जाणारा लहान क्रम ओळखते आणि त्याला मध्यापासून सरकून कापते, आणि अशी लोंबती टोके सोडते जी त्याच प्रकारे कापलेल्या कोणत्याही तुकड्याशी जोडली जातील. हे काय आहे?",
+        },
+        statement: {
+          en: "A restriction enzyme cuts DNA at a specific palindromic sequence, and cutting the two strands at staggered points leaves short single-stranded overhangs called sticky ends.",
+          hi: "प्रतिबंधन एंज़ाइम DNA को किसी विशिष्ट पैलिंड्रोमी अनुक्रम पर काटता है, और दोनों लड़ियों को अलग-अलग बिंदुओं पर काटने से छोटे एकल-लड़ी लटकते सिरे बचते हैं जिन्हें चिपचिपे सिरे कहते हैं।",
+          mr: "प्रतिबंधन विकर DNA ला एखाद्या विशिष्ट पॅलिंड्रोमी क्रमावर कापते, आणि दोन्ही पदर वेगवेगळ्या बिंदूंवर कापल्याने लहान एकपदरी लोंबती टोके उरतात ज्यांना चिकट टोके म्हणतात.",
+        },
+        detail: {
+          en: "The sequence being a palindrome is what allows one enzyme to cut both strands in the same way, since the same recognition site is present reading either direction.",
+          hi: "अनुक्रम का पैलिंड्रोम होना ही एक एंज़ाइम को दोनों लड़ियाँ एक ही तरह काटने देता है, चूँकि वही पहचान स्थल किसी भी दिशा में पढ़ने पर मौजूद है।",
+          mr: "क्रम पॅलिंड्रोम असणेच एका विकराला दोन्ही पदर एकाच प्रकारे कापू देते, कारण तेच ओळख स्थळ कोणत्याही दिशेने वाचल्यास उपस्थित आहे.",
+        },
+        extra: {
+          en: "Bacteria make these enzymes to destroy the DNA of invading viruses, and protect their own by chemically marking the same sites, so the tool was a defence long before it was a technique.",
+          hi: "जीवाणु ये एंज़ाइम आक्रमणकारी विषाणुओं का DNA नष्ट करने को बनाते हैं, और उन्हीं स्थलों को रासायनिक रूप से चिह्नित कर अपना DNA बचाते हैं, अतः यह औज़ार तकनीक बनने से बहुत पहले एक बचाव था।",
+          mr: "जिवाणू ही विकरे आक्रमक विषाणूंचा DNA नष्ट करायला बनवतात, आणि त्याच स्थळांना रासायनिकरीत्या चिन्हांकित करून आपला DNA वाचवतात, म्हणून हे साधन तंत्र बनण्याच्या कितीतरी आधी एक बचाव होते.",
+        },
+        pair: {
+          left: {
+            en: "A defence borrowed and pointed at a new problem",
+            hi: "उधार लिया गया बचाव, नई समस्या पर ताना हुआ",
+            mr: "उसना घेतलेला बचाव, नव्या समस्येवर रोखलेला",
+          },
+          right: {
+            en: "restriction enzymes and sticky ends",
+            hi: "प्रतिबंधन एंज़ाइम और चिपचिपे सिरे",
+            mr: "प्रतिबंधन विकरे आणि चिकट टोके",
+          },
+        },
+      },
+      {
+        id: "the-vector-and-its-marker",
+        name: {
+          en: "The vector and its marker",
+          hi: "वाहक और उसका चिह्नक",
+          mr: "वाहक आणि त्याची खूण",
+        },
+        kind: "tool and where it came from",
+        prompt: {
+          en: "A small circle of DNA a bacterium will take in and copy alongside its own, carrying a gene whose only purpose is to let you find the rare cell that accepted it. What is it?",
+          hi: "DNA का ऐसा छोटा वृत्त जिसे जीवाणु भीतर ले लेगा और अपने साथ उसकी नक़ल करेगा, और जो ऐसा जीन ढोता है जिसका एकमात्र काम तुम्हें वह दुर्लभ कोशिका ढूँढ़ने देना है जिसने उसे स्वीकार किया। यह क्या है?",
+          mr: "DNA चे असे लहान वर्तुळ जे जिवाणू आत घेईल आणि आपल्यासोबत त्याची नक्कल करेल, आणि जे असे जनुक वाहते ज्याचे एकमेव काम तुम्हाला ती दुर्मीळ पेशी शोधू देणे आहे जिने तो स्वीकारला. हे काय आहे?",
+        },
+        statement: {
+          en: "A vector is a plasmid or virus that carries foreign DNA into a host cell and is replicated there, and it carries a selectable marker so that transformed cells can be identified.",
+          hi: "वाहक ऐसा प्लाज़्मिड या विषाणु है जो पराया DNA परपोषी कोशिका में ले जाता है और वहाँ उसकी प्रतिकृति होती है, और वह ऐसा चयनयोग्य चिह्नक ढोता है जिससे रूपांतरित कोशिकाएँ पहचानी जा सकें।",
+          mr: "वाहक हा असा प्लाझ्मिड वा विषाणू आहे जो परका DNA यजमान पेशीत नेतो आणि तिथे त्याची प्रतिकृती होते, आणि तो अशी निवडयोग्य खूण वाहतो जिच्याने रूपांतरित पेशी ओळखता याव्यात.",
+        },
+        detail: {
+          en: "The marker is usually resistance to an antibiotic, so plating the cells on a medium containing that antibiotic kills everything except the ones that took the vector up.",
+          hi: "चिह्नक प्रायः किसी प्रतिजैविक के प्रति प्रतिरोध होता है, अतः कोशिकाओं को उस प्रतिजैविक वाले माध्यम पर फैलाना उन सबको मार देता है सिवाय उनके जिन्होंने वाहक लिया।",
+          mr: "खूण बहुधा एखाद्या प्रतिजैविकाबाबतचा प्रतिकार असते, म्हणून पेशी त्या प्रतिजैविकयुक्त माध्यमावर पसरवणे त्या सर्वांना मारते खेरीज ज्यांनी वाहक घेतला त्यांच्या.",
+        },
+        extra: {
+          en: "The selection is necessary because transformation is very inefficient — only a small fraction of cells take up the vector at all, and without a marker they could not be found.",
+          hi: "चयन ज़रूरी है क्योंकि रूपांतरण बहुत अकुशल है — कोशिकाओं का बहुत छोटा अंश ही वाहक लेता है, और चिह्नक के बिना वे मिल ही नहीं सकतीं।",
+          mr: "निवड आवश्यक आहे कारण रूपांतरण फार अकार्यक्षम आहे — पेशींचा फार लहान अंशच वाहक घेतो, आणि खुणेविना त्या सापडूच शकणार नाहीत.",
+        },
+        pair: {
+          left: {
+            en: "A gene carried only so the rare success can be found",
+            hi: "ऐसा जीन जो केवल इसलिए ढोया गया कि दुर्लभ सफलता मिल सके",
+            mr: "असे जनुक जे केवळ यासाठी वाहिले की दुर्मीळ यश सापडावे",
+          },
+          right: {
+            en: "the vector and its marker",
+            hi: "वाहक और उसका चिह्नक",
+            mr: "वाहक आणि त्याची खूण",
+          },
+        },
+      },
+      {
+        id: "gel-electrophoresis",
+        name: {
+          en: "Gel electrophoresis",
+          hi: "जेल वैद्युत संचलन",
+          mr: "जेल विद्युत संचलन",
+        },
+        kind: "tool and where it came from",
+        prompt: {
+          en: "A method in which fragments are dragged through a mesh by an electric field and the small ones travel furthest, so a length becomes a distance you can measure with a ruler. What is it?",
+          hi: "ऐसी विधि जिसमें खंडों को विद्युत क्षेत्र से जाली में से खींचा जाता है और छोटे सबसे दूर जाते हैं, अतः लंबाई ऐसी दूरी बन जाती है जिसे रूलर से नापा जा सके। यह क्या है?",
+          mr: "अशी पद्धत ज्यात तुकडे विद्युत क्षेत्राने जाळ्यातून ओढले जातात आणि लहान सर्वांत दूर जातात, म्हणून लांबी असे अंतर बनते जे मोजपट्टीने मोजता येईल. ही काय आहे?",
+        },
+        statement: {
+          en: "Gel electrophoresis separates DNA fragments by size, because DNA is negatively charged and moves towards the anode while the gel resists larger fragments more.",
+          hi: "जेल वैद्युत संचलन DNA खंडों को आकार से अलग करता है, क्योंकि DNA ऋणावेशित है और ऐनोड की ओर बढ़ता है जबकि जेल बड़े खंडों का अधिक प्रतिरोध करता है।",
+          mr: "जेल विद्युत संचलन DNA तुकडे आकारानुसार वेगळे करते, कारण DNA ऋणप्रभारित आहे आणि अ‍ॅनोडकडे सरकतो तर जेल मोठ्या तुकड्यांना अधिक विरोध करते.",
+        },
+        detail: {
+          en: "The charge comes from the phosphate groups in the backbone, and because there is one per nucleotide the charge per unit length is the same for every fragment, so only size separates them.",
+          hi: "आवेश रीढ़ के फ़ॉस्फ़ेट समूहों से आता है, और चूँकि प्रति न्यूक्लियोटाइड एक है, प्रति इकाई लंबाई आवेश हर खंड के लिए वही है, अतः उन्हें केवल आकार अलग करता है।",
+          mr: "प्रभार कण्यातल्या फॉस्फेट गटांतून येतो, आणि प्रति न्यूक्लिओटाइड एक असल्याने प्रति एकक लांबी प्रभार प्रत्येक तुकड्यासाठी तोच आहे, म्हणून त्यांना केवळ आकार वेगळे करतो.",
+        },
+        extra: {
+          en: "The fragments are made visible with a dye that fits between the base pairs and glows under ultraviolet light, so a band is seen where identical fragments have collected.",
+          hi: "खंडों को ऐसे रंजक से दृश्य बनाया जाता है जो क्षार युग्मों के बीच बैठता है और पराबैंगनी प्रकाश में चमकता है, अतः जहाँ समरूप खंड जमा हुए हैं वहाँ पट्टी दिखती है।",
+          mr: "तुकडे अशा रंजकाने दृश्य बनवले जातात जो क्षार जोड्यांमध्ये बसतो आणि अतिनील प्रकाशात चमकतो, म्हणून जिथे सारखे तुकडे जमले आहेत तिथे पट्टी दिसते.",
+        },
+        pair: {
+          left: {
+            en: "A length turned into a distance you can see",
+            hi: "लंबाई को ऐसी दूरी में बदल दिया गया जो दिखती है",
+            mr: "लांबीचे अशा अंतरात रूपांतर जे दिसते",
+          },
+          right: {
+            en: "gel electrophoresis",
+            hi: "जेल वैद्युत संचलन",
+            mr: "जेल विद्युत संचलन",
+          },
+        },
+      },
+      {
+        id: "the-polymerase-chain-reaction",
+        name: {
+          en: "The polymerase chain reaction",
+          hi: "बहुलकीकरण शृंखला अभिक्रिया",
+          mr: "बहुवारिकीकरण साखळी अभिक्रिया",
+        },
+        kind: "process and what it makes possible",
+        prompt: {
+          en: "A cycle of heating and cooling repeated thirty times, doubling a chosen stretch each time, so that one molecule becomes hundreds of millions in an afternoon. What is it?",
+          hi: "गर्म और ठंडा करने का ऐसा चक्र जो तीस बार दोहराया जाता है, हर बार चुने हिस्से को दुगुना करते हुए, अतः एक अणु एक दोपहर में करोड़ों बन जाता है। यह क्या है?",
+          mr: "तापवणे आणि थंड करण्याचे असे चक्र जे तीस वेळा पुनरावृत्त होते, प्रत्येक वेळी निवडलेला भाग दुप्पट करत, म्हणून एक रेणू एका दुपारीत कोट्यवधी बनतो. ही काय आहे?",
+        },
+        statement: {
+          en: "The polymerase chain reaction amplifies a chosen region of DNA by repeated cycles of separating the strands, binding short primers and extending them with a polymerase.",
+          hi: "बहुलकीकरण शृंखला अभिक्रिया DNA के चुने क्षेत्र को बार-बार लड़ियाँ अलग करने, छोटे प्राइमर बाँधने और उन्हें पॉलिमरेज़ से बढ़ाने के चक्रों द्वारा प्रवर्धित करती है।",
+          mr: "बहुवारिकीकरण साखळी अभिक्रिया DNA चा निवडलेला प्रदेश वारंवार पदर वेगळे करणे, लहान प्राइमर बांधणे आणि त्यांना पॉलिमरेजने वाढवणे या चक्रांनी प्रवर्धित करते.",
+        },
+        detail: {
+          en: "The primers are what make it specific: only the stretch lying between the two chosen primers is copied, so a single region can be amplified out of a whole genome.",
+          hi: "प्राइमर ही उसे विशिष्ट बनाते हैं: केवल दोनों चुने प्राइमरों के बीच पड़ा हिस्सा ही नक़ल होता है, अतः पूरे जीनोम में से एक ही क्षेत्र प्रवर्धित किया जा सकता है।",
+          mr: "प्राइमरच तिला विशिष्ट बनवतात: केवळ दोन्ही निवडलेल्या प्राइमरांमधला भागच नक्कल होतो, म्हणून अख्ख्या जीनोममधून एकच प्रदेश प्रवर्धित करता येतो.",
+        },
+        extra: {
+          en: "It became practical only when a polymerase was taken from a bacterium living in a hot spring, because an ordinary enzyme is destroyed by the heating step of every cycle.",
+          hi: "यह तभी व्यावहारिक हुई जब गर्म झरने में रहते जीवाणु से पॉलिमरेज़ लिया गया, क्योंकि साधारण एंज़ाइम हर चक्र के गर्म करने वाले चरण से नष्ट हो जाता है।",
+          mr: "ही तेव्हाच व्यावहारिक झाली जेव्हा गरम झऱ्यात राहणाऱ्या जिवाणूकडून पॉलिमरेज घेतले गेले, कारण साधे विकर प्रत्येक चक्राच्या तापवण्याच्या पायरीने नष्ट होते.",
+        },
+        pair: {
+          left: {
+            en: "The method waited for an enzyme that survives boiling",
+            hi: "विधि ऐसे एंज़ाइम की प्रतीक्षा करती रही जो उबलना सह ले",
+            mr: "पद्धत अशा विकराची वाट पाहत राहिली जे उकळणे सहन करेल",
+          },
+          right: {
+            en: "the polymerase chain reaction",
+            hi: "बहुलकीकरण शृंखला अभिक्रिया",
+            mr: "बहुवारिकीकरण साखळी अभिक्रिया",
+          },
+        },
+      },
+      {
+        id: "making-a-recombinant-molecule",
+        name: {
+          en: "Making a recombinant molecule",
+          hi: "पुनर्योगज अणु बनाना",
+          mr: "पुनर्योगज रेणू बनवणे",
+        },
+        kind: "process and what it makes possible",
+        prompt: {
+          en: "Cut two different DNAs with the same enzyme so their ends match, mix them, and seal the joins — and the result contains sequences from two organisms that never met. What is this?",
+          hi: "दो भिन्न DNA को एक ही एंज़ाइम से काटो ताकि उनके सिरे मिलें, उन्हें मिलाओ, और जोड़ सील कर दो — और परिणाम में ऐसे दो जीवों के अनुक्रम हैं जो कभी मिले ही नहीं। यह क्या है?",
+          mr: "दोन वेगळे DNA एकाच विकराने कापा जेणेकरून त्यांची टोके जुळावीत, ते मिसळा, आणि जोड बंद करा — आणि निकालात अशा दोन जीवांचे क्रम आहेत जे कधी भेटलेच नाहीत. हे काय आहे?",
+        },
+        statement: {
+          en: "Making a recombinant molecule means cutting the gene of interest and the vector with the same restriction enzyme so their sticky ends are complementary, then sealing them together with DNA ligase.",
+          hi: "पुनर्योगज अणु बनाने का अर्थ है रुचि के जीन और वाहक को एक ही प्रतिबंधन एंज़ाइम से काटना ताकि उनके चिपचिपे सिरे पूरक हों, फिर उन्हें DNA लाइगेज़ से जोड़कर सील करना।",
+          mr: "पुनर्योगज रेणू बनवणे म्हणजे रुचीचे जनुक आणि वाहक एकाच प्रतिबंधन विकराने कापणे जेणेकरून त्यांची चिकट टोके पूरक असावीत, मग त्यांना DNA लायगेजने जोडून बंद करणे.",
+        },
+        detail: {
+          en: "The ligase does not check whose DNA it is joining, and that indifference is what makes the whole technique possible.",
+          hi: "लाइगेज़ यह नहीं जाँचता कि वह किसका DNA जोड़ रहा है, और वही उदासीनता पूरी तकनीक को संभव बनाती है।",
+          mr: "लायगेज हे तपासत नाही की तो कोणाचा DNA जोडत आहे, आणि तीच उदासीनता अख्खे तंत्र शक्य करते.",
+        },
+        extra: {
+          en: "The joining works because DNA is the same molecule in every organism, so a bacterial cell can read a human gene once it is placed under a promoter the bacterium recognises.",
+          hi: "जोड़ इसलिए चलता है कि DNA हर जीव में वही अणु है, अतः जीवाणु कोशिका मानव जीन पढ़ सकती है जब उसे ऐसे प्रवर्तक के नीचे रख दिया जाए जिसे जीवाणु पहचानता हो।",
+          mr: "जोड यासाठी चालतो की DNA प्रत्येक जीवात तोच रेणू आहे, म्हणून जिवाणू पेशी मानवी जनुक वाचू शकते जेव्हा त्याला अशा प्रवर्तकाखाली ठेवले जाईल जो जिवाणू ओळखतो.",
+        },
+        pair: {
+          left: {
+            en: "The enzyme's indifference is what makes it work",
+            hi: "एंज़ाइम की उदासीनता ही उसे चलाती है",
+            mr: "विकराची उदासीनताच त्याला चालवते",
+          },
+          right: {
+            en: "making a recombinant molecule",
+            hi: "पुनर्योगज अणु बनाना",
+            mr: "पुनर्योगज रेणू बनवणे",
+          },
+        },
+      },
+      {
+        id: "the-bioreactor-problem",
+        name: {
+          en: "The bioreactor problem",
+          hi: "जैव संदाय की समस्या",
+          mr: "जैवसंदायाची समस्या",
+        },
+        kind: "process and what it makes possible",
+        prompt: {
+          en: "A stage at which the biology is already solved and the difficulty is entirely one of keeping several thousand litres stirred, aerated, fed and at one temperature. What is it?",
+          hi: "ऐसा चरण जहाँ जीवविज्ञान पहले ही सुलझ चुका है और कठिनाई पूरी तरह कई हज़ार लीटर को हिलता, हवायुक्त, खिलाया हुआ और एक ही ताप पर रखने की है। यह क्या है?",
+          mr: "असा टप्पा जिथे जीवशास्त्र आधीच सुटले आहे आणि अडचण पूर्णपणे कित्येक हजार लिटर ढवळलेले, हवायुक्त, खाऊ घातलेले आणि एकाच तापमानावर ठेवण्याची आहे. हा काय आहे?",
+        },
+        statement: {
+          en: "The bioreactor problem is scaling a reaction that works in a flask up to thousands of litres, where mixing, aeration, temperature and sterility become the limiting difficulties.",
+          hi: "जैव संदाय की समस्या ऐसी अभिक्रिया को, जो फ़्लास्क में चलती है, हज़ारों लीटर तक बढ़ाने की है, जहाँ मिश्रण, वायुसंचार, ताप और बंध्यता ही सीमित करती कठिनाइयाँ बन जाती हैं।",
+          mr: "जैवसंदायाची समस्या म्हणजे फ्लास्कमध्ये चालणारी अभिक्रिया हजारो लिटरपर्यंत वाढवणे, जिथे मिश्रण, वायुसंचार, तापमान आणि निर्जंतुकता याच मर्यादा घालणाऱ्या अडचणी बनतात.",
+        },
+        detail: {
+          en: "Oxygen is usually the constraint, because it dissolves poorly in water and a dense culture consumes it faster than it can diffuse in from the surface.",
+          hi: "बाधा प्रायः ऑक्सीजन है, क्योंकि वह पानी में ख़राब घुलती है और घना संवर्धन उसे सतह से विसरित होकर आने की तुलना में तेज़ी से ख़र्च कर देता है।",
+          mr: "अडथळा बहुधा ऑक्सिजन आहे, कारण तो पाण्यात वाईटरीत्या विरघळतो आणि दाट संवर्धन तो पृष्ठभागावरून विसरून येण्याहून जलद खर्च करते.",
+        },
+        extra: {
+          en: "A single contaminating organism can outgrow the culture and ruin a whole batch, which is why sterility rather than yield is often what decides whether a process is viable.",
+          hi: "एक ही दूषक जीव संवर्धन से आगे बढ़कर पूरा बैच बिगाड़ सकता है, इसीलिए प्रायः उपज नहीं बल्कि बंध्यता तय करती है कि कोई प्रक्रम व्यवहार्य है या नहीं।",
+          mr: "एकच दूषक जीव संवर्धनाहून पुढे वाढून अख्खी तुकडी बिघडवू शकतो, म्हणूनच बहुधा उत्पन्न नव्हे तर निर्जंतुकता ठरवते की एखादी प्रक्रिया व्यवहार्य आहे का.",
+        },
+        pair: {
+          left: {
+            en: "The biology is finished and the engineering has just begun",
+            hi: "जीवविज्ञान ख़त्म हो चुका और अभियांत्रिकी अभी शुरू हुई है",
+            mr: "जीवशास्त्र संपले आहे आणि अभियांत्रिकी नुकतीच सुरू झाली आहे",
+          },
+          right: {
+            en: "the bioreactor problem",
+            hi: "जैव संदाय की समस्या",
+            mr: "जैवसंदायाची समस्या",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A gene from a human cell is to be inserted into a bacterial plasmid so that the bacterium makes the human protein. Set out the steps in order, and say at each point what would go wrong if that step were omitted.",
+          hi: "किसी मानव कोशिका का जीन जीवाणु प्लाज़्मिड में डालना है ताकि जीवाणु वह मानव प्रोटीन बनाए। चरण क्रम से रखो, और हर बिंदु पर बताओ कि यदि वह चरण छोड़ दिया जाए तो क्या बिगड़ेगा।",
+          mr: "एखाद्या मानवी पेशीचे जनुक जिवाणू प्लाझ्मिडमध्ये घालायचे आहे जेणेकरून जिवाणूने ते मानवी प्रथिन बनवावे. पायऱ्या क्रमाने मांडा, आणि प्रत्येक बिंदूवर ती पायरी वगळल्यास काय बिघडेल ते सांगा.",
+        },
+        choices: [
+          {
+            en: "Cut both the gene and the plasmid with the SAME restriction enzyme, so their sticky ends are complementary — a different enzyme would leave ends that cannot pair. Mix them and seal with ligase; without ligase the fragments would anneal weakly and fall apart, since base pairing alone does not join the backbone. Transform the bacterium and then select on antibiotic, because only a small fraction of cells take the plasmid up and without the marker the successes could not be found among the failures. Finally the gene must sit under a promoter the bacterium recognises, or it will be copied faithfully and never transcribed at all",
+            hi: "जीन और प्लाज़्मिड दोनों को उसी प्रतिबंधन एंज़ाइम से काटो, ताकि उनके चिपचिपे सिरे पूरक हों — भिन्न एंज़ाइम ऐसे सिरे छोड़ता जो जुड़ ही न सकते। उन्हें मिलाओ और लाइगेज़ से सील करो; लाइगेज़ के बिना खंड दुर्बल रूप से जुड़कर बिखर जाते, चूँकि अकेला क्षार युग्मन रीढ़ को नहीं जोड़ता। जीवाणु का रूपांतरण करो और फिर प्रतिजैविक पर चयन करो, क्योंकि कोशिकाओं का बहुत छोटा अंश ही प्लाज़्मिड लेता है और चिह्नक के बिना सफलताएँ विफलताओं के बीच मिल ही नहीं सकतीं। अंत में जीन को ऐसे प्रवर्तक के नीचे बैठना है जिसे जीवाणु पहचानता हो, वरना उसकी नक़ल हूबहू होती रहेगी और अनुलेखन कभी नहीं होगा",
+            mr: "जनुक आणि प्लाझ्मिड दोन्ही त्याच प्रतिबंधन विकराने कापा, जेणेकरून त्यांची चिकट टोके पूरक असावीत — वेगळे विकर अशी टोके सोडेल जी जोडली जाऊच शकणार नाहीत. ती मिसळा आणि लायगेजने बंद करा; लायगेजविना तुकडे दुर्बलपणे जोडून विखुरतील, कारण एकटे क्षार युग्मन कण्याला जोडत नाही. जिवाणूचे रूपांतरण करा आणि मग प्रतिजैविकावर निवड करा, कारण पेशींचा फार लहान अंशच प्लाझ्मिड घेतो आणि खुणेविना यशे अपयशांमध्ये सापडूच शकणार नाहीत. शेवटी जनुकाला अशा प्रवर्तकाखाली बसावे लागते जो जिवाणू ओळखतो, अन्यथा त्याची नक्कल जशीच्या तशी होत राहील आणि अनुलेखन कधीच होणार नाही",
+          },
+          {
+            en: "Cut the gene and the plasmid with two different enzymes chosen for their efficiency, since using the same enzyme twice would cut the plasmid into too many pieces to be useful",
+            hi: "जीन और प्लाज़्मिड को दक्षता के आधार पर चुने दो भिन्न एंज़ाइमों से काटो, चूँकि एक ही एंज़ाइम दो बार काम में लेने से प्लाज़्मिड इतने टुकड़ों में कट जाता कि काम का न रहे",
+            mr: "जनुक आणि प्लाझ्मिड कार्यक्षमतेवरून निवडलेल्या दोन वेगळ्या विकरांनी कापा, कारण तेच विकर दोनदा वापरल्यास प्लाझ्मिड इतक्या तुकड्यांत कापला जाईल की तो निरुपयोगी ठरेल",
+          },
+          {
+            en: "Insert the gene directly into the bacterium without a vector, since a bacterium takes up free DNA readily and a plasmid only complicates the procedure",
+            hi: "जीन को बिना वाहक के सीधे जीवाणु में डालो, चूँकि जीवाणु मुक्त DNA आसानी से ले लेता है और प्लाज़्मिड बस प्रक्रिया को उलझा देता है",
+            mr: "जनुक वाहकाविना थेट जिवाणूत घाला, कारण जिवाणू मुक्त DNA सहज घेतो आणि प्लाझ्मिड फक्त प्रक्रिया गुंतागुंतीची करतो",
+          },
+          {
+            en: "No promoter is needed, because a bacterium transcribes any DNA present in its cytoplasm regardless of the signals attached to it",
+            hi: "किसी प्रवर्तक की ज़रूरत नहीं, क्योंकि जीवाणु अपने कोशिकाद्रव्य में मौजूद किसी भी DNA का अनुलेखन कर देता है, उससे जुड़े संकेतों की परवाह किए बिना",
+            mr: "कोणत्याही प्रवर्तकाची गरज नाही, कारण जिवाणू आपल्या पेशीद्रव्यात उपस्थित कोणत्याही DNA चे अनुलेखन करतो, त्याला जोडलेल्या संकेतांची पर्वा न करता",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The value of a procedure like this is that every step is there for a reason, and the way to check that you understand it is to ask what fails if the step is skipped. Go through them in order. STEP ONE — CUT BOTH WITH THE SAME ENZYME. A restriction enzyme cuts its recognition sequence at staggered positions, leaving a short single-stranded overhang. Because the recognition site is a palindrome, both ends of every cut are the same overhang, and — crucially — every fragment cut by that enzyme has the same overhang, whatever organism it came from. So a human gene cut with EcoRI will pair with a plasmid cut with EcoRI. Omit this and use two different enzymes, and the overhangs do not match; the fragments simply will not anneal. STEP TWO — SEAL WITH LIGASE. Base pairing between complementary overhangs holds the two pieces together, but only by a few hydrogen bonds, and the sugar–phosphate backbones are still broken at four points. DNA ligase forms those covalent bonds. Skip it and the construct comes apart at the first handling or the first round of replication. STEP THREE — TRANSFORM AND SELECT. The plasmid is introduced by making the bacterial membrane transiently permeable, usually with calcium ions and a brief heat shock. The efficiency is low — perhaps one cell in ten thousand takes it up — which is why the vector carries an antibiotic-resistance gene. Plate the culture on medium containing the antibiotic and every untransformed cell dies. Without a marker, the transformed cells are chemically indistinguishable from the rest and the experiment ends there, not because it failed but because you cannot find the ones that worked. STEP FOUR — GIVE IT A PROMOTER THE HOST CAN READ. This is the step most easily forgotten, and its failure mode is the most instructive. A gene is not a self-executing instruction; it is transcribed only if RNA polymerase binds a promoter upstream of it, and bacterial polymerase does not recognise human promoters. Omit this and everything appears to have worked — the plasmid replicates, the colonies grow, the gene is present and can be sequenced — and no protein is made at all. A CAVEAT WORTH KNOWING. Even with all four steps, a human gene taken straight from the genome usually fails in a bacterium, because it contains introns and bacteria cannot splice them out. The standard solution is to work from the mature messenger RNA and copy it back into DNA with reverse transcriptase, giving a version with the introns already removed. THE HABIT. When you learn a protocol, do not memorise the order; ask what each step is preventing. A step whose failure mode you can state is a step you understand. (The second option inverts the requirement for a common enzyme; the third discards the vector, losing both replication and selection; the fourth denies the need for a promoter, which is exactly the silent failure to watch for.)",
+          hi: "ऐसी प्रक्रिया का मूल्य यह है कि हर चरण किसी कारण से है, और यह जाँचने का तरीक़ा कि तुम उसे समझते हो या नहीं, यह पूछना है कि चरण छोड़ने पर क्या विफल होता है। उन्हें क्रम से देखो। पहला चरण — दोनों को एक ही एंज़ाइम से काटो। प्रतिबंधन एंज़ाइम अपने पहचान अनुक्रम को अलग-अलग स्थानों पर काटता है, और छोटा एकल-लड़ी लटकता सिरा छोड़ता है। चूँकि पहचान स्थल पैलिंड्रोम है, हर कट के दोनों सिरे वही लटकता सिरा हैं, और — निर्णायक रूप से — उस एंज़ाइम से कटे हर खंड का वही लटकता सिरा है, वह चाहे किसी भी जीव से आया हो। अतः EcoRI से कटा मानव जीन EcoRI से कटे प्लाज़्मिड से जुड़ेगा। इसे छोड़कर दो भिन्न एंज़ाइम काम में लो, और लटकते सिरे मेल नहीं खाते; खंड जुड़ेंगे ही नहीं। दूसरा चरण — लाइगेज़ से सील करो। पूरक लटकते सिरों के बीच क्षार युग्मन दोनों टुकड़ों को साथ थामता है, पर केवल कुछ हाइड्रोजन बंधों से, और शर्करा–फ़ॉस्फ़ेट रीढ़ अब भी चार बिंदुओं पर टूटी है। DNA लाइगेज़ वे सहसंयोजक बंध बनाता है। इसे छोड़ो और रचना पहली बार सँभालने पर या प्रतिकृति के पहले ही दौर में बिखर जाती है। तीसरा चरण — रूपांतरण और चयन। प्लाज़्मिड जीवाणु झिल्ली को क्षणिक रूप से पारगम्य बनाकर डाला जाता है, प्रायः कैल्सियम आयनों और एक छोटे ताप आघात से। दक्षता कम है — शायद दस हज़ार में एक कोशिका उसे लेती है — इसीलिए वाहक प्रतिजैविक-प्रतिरोध जीन ढोता है। संवर्धन को प्रतिजैविक वाले माध्यम पर फैलाओ और हर अरूपांतरित कोशिका मर जाती है। चिह्नक के बिना रूपांतरित कोशिकाएँ बाक़ी से रासायनिक रूप से अभेद्य हैं और प्रयोग वहीं ख़त्म हो जाता है, इसलिए नहीं कि वह विफल हुआ बल्कि इसलिए कि जो चलीं उन्हें तुम ढूँढ़ ही नहीं सकते। चौथा चरण — ऐसा प्रवर्तक दो जिसे परपोषी पढ़ सके। यही चरण सबसे आसानी से भूला जाता है, और उसकी विफलता की शैली सबसे ज्ञानप्रद है। जीन कोई स्वतः चलता निर्देश नहीं; उसका अनुलेखन तभी होता है जब RNA पॉलिमरेज़ उसके ऊपर की ओर किसी प्रवर्तक से बँधे, और जीवाणु पॉलिमरेज़ मानव प्रवर्तक नहीं पहचानता। इसे छोड़ो और सब कुछ चला हुआ दिखता है — प्लाज़्मिड प्रतिकृति करता है, कॉलोनियाँ बढ़ती हैं, जीन मौजूद है और उसका अनुक्रमण किया जा सकता है — और कोई प्रोटीन बनता ही नहीं। जानने लायक़ एक चेतावनी। चारों चरणों के साथ भी, जीनोम से सीधा लिया मानव जीन जीवाणु में प्रायः विफल होता है, क्योंकि उसमें इंट्रॉन हैं और जीवाणु उन्हें काटकर निकाल नहीं सकते। मानक हल यह कि परिपक्व संदेशवाहक RNA से काम किया जाए और उसे प्रतिलोम ट्रांसक्रिप्टेज़ से वापस DNA में नक़ल किया जाए, जिससे ऐसा रूप मिलता है जिसमें इंट्रॉन पहले ही हट चुके हैं। आदत। जब कोई प्रोटोकॉल सीखो, क्रम मत रटो; पूछो कि हर चरण किसे रोक रहा है। जिस चरण की विफलता की शैली तुम बता सको वह चरण तुम समझते हो। (दूसरा विकल्प साझे एंज़ाइम की आवश्यकता उलट देता है; तीसरा वाहक फेंक देता है, जिससे प्रतिकृति और चयन दोनों जाते हैं; चौथा प्रवर्तक की ज़रूरत से इनकार करता है, जो ठीक वही मौन विफलता है जिससे सावधान रहना है।)",
+          mr: "अशा प्रक्रियेचे मूल्य हे की प्रत्येक पायरी कोणत्यातरी कारणाने आहे, आणि तुम्हाला ती समजली आहे का हे तपासण्याचा मार्ग म्हणजे पायरी वगळल्यास काय अपयशी ठरते हे विचारणे. त्या क्रमाने पाहा. पहिली पायरी — दोन्ही त्याच विकराने कापा. प्रतिबंधन विकर आपला ओळख क्रम वेगवेगळ्या जागी कापते, आणि लहान एकपदरी लोंबते टोक सोडते. ओळख स्थळ पॅलिंड्रोम असल्याने, प्रत्येक कापाची दोन्ही टोके तेच लोंबते टोक आहेत, आणि — निर्णायकरीत्या — त्या विकराने कापलेल्या प्रत्येक तुकड्याचे तेच लोंबते टोक आहे, तो कोणत्याही जीवाकडून आलेला असो. म्हणून EcoRI ने कापलेले मानवी जनुक EcoRI ने कापलेल्या प्लाझ्मिडशी जोडले जाईल. हे वगळून दोन वेगळी विकरे वापरा, आणि लोंबती टोके जुळत नाहीत; तुकडे जोडले जाणारच नाहीत. दुसरी पायरी — लायगेजने बंद करा. पूरक लोंबत्या टोकांमधले क्षार युग्मन दोन्ही तुकडे एकत्र धरते, पण केवळ काही हायड्रोजन बंधांनी, आणि शर्करा–फॉस्फेट कणे अजूनही चार बिंदूंवर तुटलेले आहेत. DNA लायगेज ते सहसंयुज बंध बनवते. हे वगळा आणि रचना पहिल्यांदा हाताळताच वा प्रतिकृतीच्या पहिल्याच फेरीत विखुरते. तिसरी पायरी — रूपांतरण आणि निवड. प्लाझ्मिड जिवाणू पटलाला क्षणिक पारगम्य बनवून घातला जातो, बहुधा कॅल्शियम आयन आणि एका लहान उष्णता आघाताने. कार्यक्षमता कमी आहे — कदाचित दहा हजारांत एक पेशी तो घेते — म्हणूनच वाहक प्रतिजैविक-प्रतिकार जनुक वाहतो. संवर्धन प्रतिजैविकयुक्त माध्यमावर पसरवा आणि प्रत्येक अरूपांतरित पेशी मरते. खुणेविना रूपांतरित पेशी बाकीच्यांहून रासायनिकदृष्ट्या अभेद्य आहेत आणि प्रयोग तिथेच संपतो, यासाठी नाही की तो अपयशी ठरला तर यासाठी की ज्या चालल्या त्या तुम्हाला सापडूच शकत नाहीत. चौथी पायरी — असा प्रवर्तक द्या जो यजमान वाचू शकेल. हीच पायरी सर्वांत सहज विसरली जाते, आणि तिच्या अपयशाची पद्धत सर्वांत ज्ञानप्रद आहे. जनुक हे कोणतीही स्वतः चालणारी सूचना नाही; त्याचे अनुलेखन तेव्हाच होते जेव्हा RNA पॉलिमरेज त्याच्या वरच्या बाजूला एखाद्या प्रवर्तकाशी बांधले जाईल, आणि जिवाणू पॉलिमरेज मानवी प्रवर्तक ओळखत नाही. हे वगळा आणि सर्व काही चाललेले दिसते — प्लाझ्मिड प्रतिकृती करतो, वसाहती वाढतात, जनुक उपस्थित आहे आणि त्याचे क्रमनिर्धारण करता येते — आणि कोणतेही प्रथिन बनतच नाही. जाणण्याजोगा एक इशारा. चारही पायऱ्यांसहही, जीनोममधून थेट घेतलेले मानवी जनुक जिवाणूत बहुधा अपयशी ठरते, कारण त्यात इंट्रॉन आहेत आणि जिवाणू ते कापून काढू शकत नाहीत. प्रमाणित उत्तर हे की परिपक्व संदेशवाहक RNA पासून काम करावे आणि त्याला प्रतिलोम ट्रान्सक्रिप्टेजने परत DNA मध्ये नक्कल करावे, ज्याने असे रूप मिळते ज्यात इंट्रॉन आधीच काढलेले आहेत. सवय. जेव्हा एखादे कार्यपद्धती शिकाल, क्रम पाठ करू नका; विचारा की प्रत्येक पायरी कशाला अडवत आहे. ज्या पायरीच्या अपयशाची पद्धत तुम्ही सांगू शकाल ती पायरी तुम्हाला समजली आहे. (दुसरा पर्याय समाईक विकराची गरज उलटवतो; तिसरा वाहक फेकून देतो, ज्याने प्रतिकृती आणि निवड दोन्ही जातात; चौथा प्रवर्तकाची गरज नाकारतो, जे नेमके तेच मूक अपयश आहे ज्याबद्दल सावध राहायचे.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "PCR can amplify a single DNA molecule to hundreds of millions of copies in a few hours, and it became practical only after a polymerase was taken from a bacterium living in a hot spring. Explain what that organism supplied and why the reaction could not work without it.",
+          hi: "PCR किसी एक DNA अणु को कुछ घंटों में करोड़ों प्रतियों तक प्रवर्धित कर सकती है, और वह तभी व्यावहारिक हुई जब गर्म झरने में रहते जीवाणु से पॉलिमरेज़ लिया गया। बताओ कि उस जीव ने क्या दिया और उसके बिना अभिक्रिया क्यों नहीं चल सकती थी।",
+          mr: "PCR एखाद्या एका DNA रेणूला काही तासांत कोट्यवधी प्रतींपर्यंत प्रवर्धित करू शकते, आणि ती तेव्हाच व्यावहारिक झाली जेव्हा गरम झऱ्यात राहणाऱ्या जिवाणूकडून पॉलिमरेज घेतले गेले. त्या जीवाने काय दिले आणि त्याविना अभिक्रिया का चालू शकली नसती ते सांगा.",
+        },
+        choices: [
+          {
+            en: "Each cycle begins by heating to about 95 °C to separate the two strands, and an ordinary polymerase is a protein that denatures at that temperature — its fold, and therefore its active site, is destroyed. Before the thermostable enzyme, fresh polymerase had to be added by hand after every cycle, which made thirty cycles impracticable. Taq polymerase comes from a bacterium living near boiling water, so its fold survives the denaturation step and one addition lasts the whole run. That is what allowed the reaction to be automated in a machine that simply cycles the temperature, and the amplification is exponential — 2ⁿ after n cycles — which is why a single molecule becomes hundreds of millions within an afternoon",
+            hi: "हर चक्र क़रीब 95 °C तक गर्म कर दोनों लड़ियाँ अलग करने से शुरू होता है, और साधारण पॉलिमरेज़ ऐसा प्रोटीन है जो उस ताप पर विकृत हो जाता है — उसका मोड़, और इसलिए उसका सक्रिय स्थल, नष्ट हो जाता है। ताप-स्थायी एंज़ाइम से पहले हर चक्र के बाद हाथ से ताज़ा पॉलिमरेज़ डालना पड़ता था, जिससे तीस चक्र अव्यावहारिक थे। Taq पॉलिमरेज़ उबलते पानी के पास रहते जीवाणु से आता है, अतः उसका मोड़ विकृतीकरण चरण सह लेता है और एक बार डालना पूरे रन भर चलता है। इसी ने अभिक्रिया को ऐसी मशीन में स्वचालित होने दिया जो बस ताप का चक्र चलाती है, और प्रवर्धन चरघातांकी है — n चक्रों के बाद 2ⁿ — इसीलिए एक अणु एक दोपहर में करोड़ों बन जाता है",
+            mr: "प्रत्येक चक्र सुमारे 95 °C पर्यंत तापवून दोन्ही पदर वेगळे करण्याने सुरू होते, आणि साधे पॉलिमरेज हे असे प्रथिन आहे जे त्या तापमानावर विकृत होते — त्याची घडी, आणि म्हणून त्याचे सक्रिय स्थळ, नष्ट होते. उष्णता-स्थिर विकराआधी प्रत्येक चक्रानंतर हाताने ताजे पॉलिमरेज घालावे लागत होते, ज्याने तीस चक्रे अव्यावहारिक होती. Taq पॉलिमरेज उकळत्या पाण्याजवळ राहणाऱ्या जिवाणूकडून येते, म्हणून त्याची घडी विकृतीकरण पायरी सहन करते आणि एकदा घातलेले अख्ख्या फेरीभर चालते. यानेच अभिक्रियेला अशा यंत्रात स्वयंचलित होऊ दिले जे फक्त तापमानाचे चक्र चालवते, आणि प्रवर्धन घातांकी आहे — n चक्रांनंतर 2ⁿ — म्हणूनच एक रेणू एका दुपारीत कोट्यवधी बनतो",
+          },
+          {
+            en: "The hot-spring bacterium supplied the primers rather than the polymerase, since ordinary primers dissolve at high temperature and cannot bind the template",
+            hi: "गर्म झरने के जीवाणु ने पॉलिमरेज़ नहीं बल्कि प्राइमर दिए, चूँकि साधारण प्राइमर ऊँचे ताप पर घुल जाते हैं और टेम्पलेट से बँध नहीं सकते",
+            mr: "गरम झऱ्याच्या जिवाणूने पॉलिमरेज नव्हे तर प्राइमर पुरवले, कारण साधे प्राइमर उच्च तापमानावर विरघळतात आणि साचाशी बांधले जाऊ शकत नाहीत",
+          },
+          {
+            en: "The advantage is that the thermostable enzyme works much faster than an ordinary one, so the same number of cycles takes less time; heat itself does no harm to a polymerase",
+            hi: "लाभ यह है कि ताप-स्थायी एंज़ाइम साधारण से कहीं तेज़ चलता है, अतः उतने ही चक्रों में कम समय लगता है; ऊष्मा स्वयं पॉलिमरेज़ का कोई नुक़सान नहीं करती",
+            mr: "फायदा हा की उष्णता-स्थिर विकर साध्याहून कितीतरी जलद चालते, म्हणून तितक्याच चक्रांना कमी वेळ लागतो; उष्णता स्वतः पॉलिमरेजचे कोणतेही नुकसान करत नाही",
+          },
+          {
+            en: "The strands are separated by an enzyme rather than by heat, and the hot-spring organism supplied that separating enzyme, which is why no heating step is required at all",
+            hi: "लड़ियाँ ऊष्मा से नहीं बल्कि किसी एंज़ाइम से अलग की जाती हैं, और गर्म झरने के जीव ने वही अलग करने वाला एंज़ाइम दिया, इसीलिए किसी गर्म करने वाले चरण की ज़रूरत ही नहीं",
+            mr: "पदर उष्णतेने नव्हे तर एखाद्या विकराने वेगळे केले जातात, आणि गरम झऱ्याच्या जीवाने तेच वेगळे करणारे विकर पुरवले, म्हणूनच कोणत्याही तापवण्याच्या पायरीची गरजच नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "This is a case where a technique was held up not by any conceptual difficulty but by a single practical obstacle, and where the solution came from an organism nobody had studied for that purpose. WHAT ONE CYCLE CONSISTS OF. Three steps, each at its own temperature. Denaturation: heat to about 95 °C, which breaks the hydrogen bonds between the strands and separates the double helix into two templates. Annealing: cool to around 55 °C, allowing short synthetic primers to base-pair with their complementary sequences at either end of the target region. Extension: warm to about 72 °C, at which DNA polymerase extends each primer along its template. Then repeat. WHY THAT FIRST STEP IS THE PROBLEM. A polymerase is a protein, and a protein works by virtue of its folded shape. Heating to 95 °C denatures it — the weak interactions holding the fold are broken and the active site no longer exists. The very step that makes the next round possible destroys the enzyme that will carry it out. Before 1988 this was handled by opening the tube after each denaturation and pipetting in fresh enzyme, thirty times, by hand. The reaction worked; it was simply too laborious and expensive to be a routine method. WHAT THERMUS AQUATICUS SUPPLIED. This bacterium lives in hot springs at temperatures near boiling, and its proteins are folded in ways that hold together at those temperatures. Its DNA polymerase — Taq — survives repeated exposure to 95 °C with enough activity remaining to do its job. Add it once at the start and it lasts the whole run. That single substitution turned PCR from a demonstration into an instrument: a machine that does nothing but cycle a heating block through three temperatures can now run the reaction unattended. WHY THE NUMBERS ARE SO LARGE. Each cycle doubles the target region, so n cycles give 2ⁿ copies. Thirty cycles is 2³⁰, a little over a billion. Growth of that kind is why a trace of DNA — a hair, a fragment of ancient bone, a few cells from a swab — can be amplified until there is enough to sequence or to see on a gel. And the primers are what make it selective: only the stretch between them is amplified, so one region can be picked out of an entire genome. THE POINT WORTH GENERALISING. Two of them, in fact. First, a technique is often limited by one specific physical constraint rather than by understanding, and identifying which constraint is the productive question. Second, organisms adapted to extreme conditions are a standing source of molecules that tolerate conditions our own biochemistry cannot — which is why extremophiles are searched deliberately for enzymes now, rather than being a curiosity. (The second option relocates the contribution to the primers, which are short synthetic oligonucleotides and are not affected in that way; the third denies that heat denatures proteins, which is the whole difficulty; the fourth replaces the heating step with an enzyme the reaction does not use.)",
+          hi: "यह ऐसा मामला है जहाँ कोई तकनीक किसी वैचारिक कठिनाई से नहीं बल्कि एक ही व्यावहारिक अड़चन से रुकी हुई थी, और जहाँ हल ऐसे जीव से आया जिसका उस काम के लिए किसी ने अध्ययन ही नहीं किया था। एक चक्र किन चीज़ों से बनता है। तीन चरण, हर एक अपने ताप पर। विकृतीकरण: क़रीब 95 °C तक गर्म, जो लड़ियों के बीच हाइड्रोजन बंध तोड़कर द्विकुंडली को दो टेम्पलेटों में अलग कर देता है। तापानुशीतन: क़रीब 55 °C तक ठंडा, जिससे छोटे संश्लेषित प्राइमर लक्ष्य क्षेत्र के दोनों सिरों पर अपने पूरक अनुक्रमों से क्षार युग्मन कर सकें। विस्तारण: क़रीब 72 °C तक गर्म, जिस पर DNA पॉलिमरेज़ हर प्राइमर को उसके टेम्पलेट के अनुदिश बढ़ाता है। फिर दोहराओ। वह पहला चरण ही समस्या क्यों है। पॉलिमरेज़ प्रोटीन है, और प्रोटीन अपने मुड़े आकार के बल पर चलता है। 95 °C तक गर्म करना उसे विकृत कर देता है — मोड़ को थामती दुर्बल अन्योन्यक्रियाएँ टूट जाती हैं और सक्रिय स्थल रहता ही नहीं। ठीक वही चरण जो अगला दौर संभव बनाता है, उस एंज़ाइम को नष्ट कर देता है जो उसे चलाएगा। 1988 से पहले इसे हर विकृतीकरण के बाद नली खोलकर और ताज़ा एंज़ाइम पिपेट से डालकर सँभाला जाता था, तीस बार, हाथ से। अभिक्रिया चलती थी; वह बस इतनी श्रमसाध्य और महँगी थी कि रोज़मर्रा की विधि न बन सके। थर्मस एक्वेटिकस ने क्या दिया। यह जीवाणु उबलने के पास के तापों पर गर्म झरनों में रहता है, और उसके प्रोटीन ऐसे मुड़े हैं कि उन तापों पर जुड़े रहें। उसका DNA पॉलिमरेज़ — Taq — 95 °C के बार-बार सामने आने के बाद भी इतनी सक्रियता बचाए रखता है कि अपना काम कर सके। उसे शुरू में एक बार डालो और वह पूरे रन भर चलता है। उस एक अदला-बदली ने PCR को प्रदर्शन से यंत्र बना दिया: ऐसी मशीन जो तापन गुटके को तीन तापों के चक्र में घुमाने के सिवा कुछ नहीं करती, अब अभिक्रिया को बिना निगरानी चला सकती है। संख्याएँ इतनी बड़ी क्यों हैं। हर चक्र लक्ष्य क्षेत्र को दुगुना करता है, अतः n चक्र 2ⁿ प्रतियाँ देते हैं। तीस चक्र 2³⁰ हैं, एक अरब से कुछ ऊपर। इस क़िस्म की वृद्धि ही कारण है कि DNA का अंश — एक बाल, प्राचीन हड्डी का टुकड़ा, स्वैब से कुछ कोशिकाएँ — तब तक प्रवर्धित किया जा सके जब तक अनुक्रमण करने या जेल पर देखने भर न हो जाए। और प्राइमर ही उसे चयनात्मक बनाते हैं: केवल उनके बीच का हिस्सा प्रवर्धित होता है, अतः पूरे जीनोम में से एक क्षेत्र चुना जा सकता है। सामान्यीकरण लायक़ बात। वस्तुतः दो। पहली, कोई तकनीक प्रायः समझ से नहीं बल्कि एक विशिष्ट भौतिक बाधा से सीमित होती है, और कौन-सी बाधा है यह पहचानना ही उपजाऊ प्रश्न है। दूसरी, चरम परिस्थितियों के अनुकूल जीव ऐसे अणुओं का स्थायी स्रोत हैं जो वे परिस्थितियाँ सह लेते हैं जो हमारी अपनी जैवरसायन नहीं सह सकती — इसीलिए अब चरमप्रेमी जीवों को एंज़ाइमों के लिए जान-बूझकर खोजा जाता है, कौतूहल के रूप में नहीं। (दूसरा विकल्प योगदान को प्राइमरों में खिसका देता है, जो छोटे संश्लेषित ऑलिगोन्यूक्लियोटाइड हैं और उस तरह प्रभावित नहीं होते; तीसरा इससे इनकार करता है कि ऊष्मा प्रोटीन को विकृत करती है, जो पूरी कठिनाई है; चौथा गर्म करने वाले चरण की जगह ऐसा एंज़ाइम रख देता है जिसे अभिक्रिया काम में लाती ही नहीं।)",
+          mr: "हे असे प्रकरण आहे जिथे एखादे तंत्र कोणत्याही वैचारिक अडचणीने नव्हे तर एकाच व्यावहारिक अडथळ्याने अडकले होते, आणि जिथे उत्तर अशा जीवाकडून आले ज्याचा त्या कामासाठी कोणी अभ्यासच केला नव्हता. एक चक्र कशाचे बनते. तीन पायऱ्या, प्रत्येक आपल्या तापमानावर. विकृतीकरण: सुमारे 95 °C पर्यंत तापवणे, जे पदरांमधले हायड्रोजन बंध तोडून द्विकुंडलीला दोन साच्यांत वेगळे करते. तापानुशीतन: सुमारे 55 °C पर्यंत थंड करणे, ज्याने लहान संश्लेषित प्राइमर लक्ष्य प्रदेशाच्या दोन्ही टोकांना आपल्या पूरक क्रमांशी क्षार युग्मन करू शकतील. विस्तारण: सुमारे 72 °C पर्यंत तापवणे, ज्यावर DNA पॉलिमरेज प्रत्येक प्राइमरला त्याच्या साच्याच्या दिशेने वाढवते. मग पुन्हा. तीच पहिली पायरी समस्या का आहे. पॉलिमरेज हे प्रथिन आहे, आणि प्रथिन आपल्या घडीच्या आकाराच्या बळावर चालते. 95 °C पर्यंत तापवणे त्याला विकृत करते — घडी धरणाऱ्या दुर्बल परस्परक्रिया तुटतात आणि सक्रिय स्थळ उरतच नाही. नेमकी तीच पायरी जी पुढची फेरी शक्य करते, ती त्या विकराला नष्ट करते जे ते चालवेल. 1988 च्या आधी हे प्रत्येक विकृतीकरणानंतर नळी उघडून आणि ताजे विकर पिपेटने घालून सांभाळले जात होते, तीस वेळा, हाताने. अभिक्रिया चालत होती; ती फक्त इतकी श्रमसाध्य आणि महाग होती की नेहमीची पद्धत बनू शकली नाही. थर्मस अ‍ॅक्वेटिकसने काय दिले. हा जिवाणू उकळण्याजवळच्या तापमानांवर गरम झऱ्यांत राहतो, आणि त्याची प्रथिने अशी घडलेली आहेत की त्या तापमानांवर जुळून राहावीत. त्याचे DNA पॉलिमरेज — Taq — 95 °C ला वारंवार सामोरे जाऊनही इतकी सक्रियता टिकवते की आपले काम करावे. ते सुरुवातीला एकदा घाला आणि ते अख्ख्या फेरीभर चालते. त्या एका अदलाबदलीने PCR ला प्रात्यक्षिकातून यंत्र बनवले: जे यंत्र तापन ठोकळ्याला तीन तापमानांच्या चक्रात फिरवण्याखेरीज काहीही करत नाही, ते आता अभिक्रिया देखरेखीविना चालवू शकते. संख्या इतक्या मोठ्या का आहेत. प्रत्येक चक्र लक्ष्य प्रदेश दुप्पट करते, म्हणून n चक्रे 2ⁿ प्रती देतात. तीस चक्रे 2³⁰ आहेत, एक अब्जाहून थोडे वर. या प्रकारची वाढच कारण आहे की DNA चा अंश — एक केस, प्राचीन हाडाचा तुकडा, स्वॅबमधल्या काही पेशी — तोवर प्रवर्धित करता यावा जोवर क्रमनिर्धारण करण्याइतका वा जेलवर दिसण्याइतका होत नाही. आणि प्राइमरच त्याला निवडक बनवतात: केवळ त्यांच्यामधला भाग प्रवर्धित होतो, म्हणून अख्ख्या जीनोममधून एक प्रदेश निवडता येतो. सामान्यीकरणाजोगा मुद्दा. प्रत्यक्षात दोन. पहिला, एखादे तंत्र बहुधा समजुतीने नव्हे तर एका विशिष्ट भौतिक बंधनाने मर्यादित होते, आणि कोणते बंधन आहे हे ओळखणे हाच सुपीक प्रश्न आहे. दुसरा, टोकाच्या परिस्थितींशी जुळवून घेतलेले जीव अशा रेणूंचे कायम स्रोत आहेत जे त्या परिस्थिती सहन करतात ज्या आपले स्वतःचे जैवरसायन सहन करू शकत नाही — म्हणूनच आता टोकप्रेमी जीव विकरांसाठी जाणीवपूर्वक शोधले जातात, कुतूहल म्हणून नव्हे. (दुसरा पर्याय योगदान प्राइमरांत सरकवतो, जे लहान संश्लेषित ऑलिगोन्यूक्लिओटाइड आहेत आणि तशा प्रकारे प्रभावित होत नाहीत; तिसरा हे नाकारतो की उष्णता प्रथिने विकृत करते, जी अख्खी अडचण आहे; चौथा तापवण्याच्या पायरीच्या जागी असे विकर ठेवतो जे अभिक्रिया वापरतच नाही.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 10 — Biotechnology and its Applications                         */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "biology-12-biotechnology-and-its-applications",
+    subject: "BIOLOGY",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 10 — Biotechnology and its Applications",
+      hi: "अध्याय 10 — जैव प्रौद्योगिकी एवं उसके अनुप्रयोग",
+      mr: "प्रकरण 10 — जैवतंत्रज्ञान आणि त्याचे उपयोजन",
+    },
+    name: {
+      en: "Biotechnology and its Applications",
+      hi: "जैव प्रौद्योगिकी एवं उसके अनुप्रयोग",
+      mr: "जैवतंत्रज्ञान आणि त्याचे उपयोजन",
+    },
+    summary: {
+      en: "What the tools of the previous chapter were for, and the interesting thing is how often the gain is not a new capability but a removal of a hidden cost: a hormone that used to be extracted from the pancreases of slaughtered animals and now comes from bacteria, which matters less because the supply is larger than because the protein is the human one and no longer provokes a response against itself; a plant that carries the gene for its own insecticide, so the toxin is present only where an insect is eating and never sprayed over a field; a plant protected against a worm by being made to produce a piece of RNA that silences one of the worm's own genes, which is a defence aimed at a sequence rather than at a chemistry; a diagnosis made from a few molecules of a virus long before there are enough to cause symptoms, which changes what a test is for; a therapy that supplies a working gene to a child who lacks one, and whose limitation is that the cells receiving it do not live for ever; and a set of disputes about who may own a sequence that somebody else's ancestors have been using for centuries.",
+      hi: "पिछले अध्याय के औज़ार किस लिए थे, और रोचक बात यह है कि लाभ कितनी बार कोई नई क्षमता नहीं बल्कि किसी छिपी क़ीमत का हटना होता है: ऐसा हार्मोन जो पहले वध किए गए पशुओं के अग्न्याशयों से निकाला जाता था और अब जीवाणुओं से आता है, और यह इसलिए कम मायने रखता है कि आपूर्ति बड़ी है और इसलिए अधिक कि प्रोटीन मानव वाला है और अब अपने ही विरुद्ध अनुक्रिया नहीं भड़काता; ऐसा पादप जो अपने कीटनाशी का जीन ढोता है, अतः विष केवल वहीं मौजूद है जहाँ कोई कीट खा रहा है और खेत भर कभी छिड़का नहीं जाता; ऐसा पादप जो किसी कृमि से इस तरह बचाया गया कि उसे RNA का ऐसा टुकड़ा बनवाया जाए जो कृमि के ही किसी जीन को चुप करा दे, और यह रसायन पर नहीं बल्कि अनुक्रम पर ताना गया बचाव है; ऐसा निदान जो किसी विषाणु के कुछ ही अणुओं से हो जाता है, लक्षण पैदा करने भर होने से बहुत पहले, और जो बदल देता है कि परीक्षण किस लिए है; ऐसी चिकित्सा जो उस बच्चे को काम करता जीन देती है जिसके पास वह नहीं, और जिसकी सीमा यह है कि उसे पाने वाली कोशिकाएँ हमेशा नहीं जीतीं; और इस बारे में विवादों का समुच्चय कि किसी ऐसे अनुक्रम का स्वामी कौन हो सकता है जिसे किसी और के पूर्वज सदियों से काम में ला रहे हैं।",
+      mr: "मागच्या प्रकरणाची साधने कशासाठी होती, आणि रोचक बाब ही की फायदा कितीदा नवी क्षमता नसून एखाद्या लपलेल्या किमतीचे निघून जाणे असतो: असे संप्रेरक जे पूर्वी कापलेल्या जनावरांच्या स्वादुपिंडांतून काढले जात होते आणि आता जिवाणूंकडून येते, आणि हे यासाठी कमी महत्त्वाचे की पुरवठा मोठा आहे आणि यासाठी अधिक की प्रथिन मानवीच आहे आणि आता स्वतःविरुद्ध प्रतिसाद चेतवत नाही; अशी वनस्पती जी आपल्या कीटकनाशकाचे जनुक वाहते, म्हणून विष केवळ तिथेच उपस्थित आहे जिथे एखादा कीटक खात आहे आणि शेतभर कधीच फवारले जात नाही; अशी वनस्पती जी एखाद्या कृमीपासून अशा प्रकारे वाचवली गेली की तिला RNA चा असा तुकडा बनवायला लावावा जो कृमीच्याच एका जनुकाला गप्प करेल, आणि हा रसायनावर नव्हे तर क्रमावर रोखलेला बचाव आहे; असे निदान जे एखाद्या विषाणूच्या काही रेणूंतून होते, लक्षणे निर्माण करण्याइतके होण्याच्या कितीतरी आधी, आणि जे बदलते की चाचणी कशासाठी आहे; असा उपचार जो त्या मुलाला काम करणारे जनुक देतो ज्याच्याकडे ते नाही, आणि ज्याची मर्यादा ही की ते मिळवणाऱ्या पेशी कायम जगत नाहीत; आणि याबद्दल वादांचा संच की एखाद्या अशा क्रमाचा मालक कोण असू शकतो जो दुसऱ्या कोणाचे पूर्वज शतकानुशतके वापरत आहेत.",
+    },
+    position: 10,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "recombinant-insulin",
+        name: {
+          en: "Recombinant insulin",
+          hi: "पुनर्योगज इंसुलिन",
+          mr: "पुनर्योगज इन्शुलिन",
+        },
+        kind: "application and what it actually fixed",
+        prompt: {
+          en: "A hormone once extracted from the pancreases of slaughtered animals, now made by bacteria, and better chiefly because it is the human version rather than because there is more of it. What is it?",
+          hi: "ऐसा हार्मोन जो कभी वध किए गए पशुओं के अग्न्याशयों से निकाला जाता था, अब जीवाणु बनाते हैं, और जो मुख्यतः इसलिए बेहतर है कि वह मानव वाला रूप है, इसलिए नहीं कि वह अधिक मात्रा में है। यह क्या है?",
+          mr: "असे संप्रेरक जे कधी कापलेल्या जनावरांच्या स्वादुपिंडांतून काढले जात होते, आता जिवाणू बनवतात, आणि जे मुख्यतः यासाठी चांगले की ते मानवी रूप आहे, यासाठी नाही की ते अधिक प्रमाणात आहे. हे काय आहे?",
+        },
+        statement: {
+          en: "Recombinant insulin is human insulin made by bacteria carrying the human gene, which removed both the shortage of supply and the immune reactions caused by animal insulin.",
+          hi: "पुनर्योगज इंसुलिन वह मानव इंसुलिन है जो मानव जीन ढोते जीवाणु बनाते हैं, और जिसने आपूर्ति की कमी और पशु इंसुलिन से होती प्रतिरक्षा प्रतिक्रियाएँ दोनों हटा दीं।",
+          mr: "पुनर्योगज इन्शुलिन हे मानवी जनुक वाहणाऱ्या जिवाणूंनी बनवलेले मानवी इन्शुलिन आहे, ज्याने पुरवठ्याची कमतरता आणि जनावरांच्या इन्शुलिनमुळे होणाऱ्या प्रतिकार प्रतिक्रिया दोन्ही काढल्या.",
+        },
+        detail: {
+          en: "Animal insulin differs from the human protein by a few amino acids, which is enough for some patients to raise antibodies against it and gradually lose the response.",
+          hi: "पशु इंसुलिन मानव प्रोटीन से कुछ ऐमीनो अम्लों में भिन्न है, और कुछ रोगियों में उसके विरुद्ध प्रतिरक्षी उठाने तथा धीरे-धीरे अनुक्रिया खोने के लिए इतना काफ़ी है।",
+          mr: "जनावरांचे इन्शुलिन मानवी प्रथिनाहून काही अमिनो आम्लांत वेगळे आहे, आणि काही रुग्णांत त्याविरुद्ध प्रतिपिंडे उभारण्यास व हळूहळू प्रतिसाद गमावण्यास इतके पुरेसे आहे.",
+        },
+        extra: {
+          en: "The two chains of the hormone were made separately in bacteria and then joined, because the folded precursor a human cell makes is not something a bacterium can process.",
+          hi: "हार्मोन की दोनों शृंखलाएँ जीवाणुओं में अलग-अलग बनाकर फिर जोड़ी गईं, क्योंकि मानव कोशिका जो मुड़ा पूर्ववर्ती बनाती है उसे जीवाणु संसाधित नहीं कर सकता।",
+          mr: "संप्रेरकाच्या दोन्ही साखळ्या जिवाणूंत वेगवेगळ्या बनवून मग जोडल्या गेल्या, कारण मानवी पेशी जो घडीचा पूर्वगामी बनवते तो जिवाणू संस्करण करू शकत नाही.",
+        },
+        pair: {
+          left: {
+            en: "The gain was the right molecule, not merely more of it",
+            hi: "लाभ सही अणु था, केवल उसकी अधिक मात्रा नहीं",
+            mr: "फायदा योग्य रेणू होता, केवळ त्याचे अधिक प्रमाण नव्हे",
+          },
+          right: {
+            en: "recombinant insulin",
+            hi: "पुनर्योगज इंसुलिन",
+            mr: "पुनर्योगज इन्शुलिन",
+          },
+        },
+      },
+      {
+        id: "bt-crops",
+        name: {
+          en: "Bt crops",
+          hi: "Bt फ़सलें",
+          mr: "Bt पिके",
+        },
+        kind: "application and what it actually fixed",
+        prompt: {
+          en: "A plant carrying a bacterial gene so that it makes its own insecticide, which means the toxin is present only where something is eating the plant. What is this?",
+          hi: "ऐसा पादप जो जीवाणु का जीन ढोता है ताकि वह अपना कीटनाशी स्वयं बनाए, जिसका अर्थ है कि विष केवल वहीं मौजूद है जहाँ कुछ पादप को खा रहा हो। यह क्या है?",
+          mr: "अशी वनस्पती जी जिवाणूचे जनुक वाहते जेणेकरून तिने आपले कीटकनाशक स्वतः बनवावे, ज्याचा अर्थ विष केवळ तिथेच उपस्थित आहे जिथे काहीतरी वनस्पती खात आहे. हे काय आहे?",
+        },
+        statement: {
+          en: "Bt crops carry a gene from Bacillus thuringiensis so the plant produces the crystal toxin in its own tissues, killing the insects that feed on it.",
+          hi: "Bt फ़सलें बैसिलस थुरिन्जिएंसिस का जीन ढोती हैं ताकि पादप अपने ही ऊतकों में क्रिस्टल विष बनाए, और उस पर खाते कीटों को मार दे।",
+          mr: "Bt पिके बॅसिलस थुरिन्जिएन्सिसचे जनुक वाहतात जेणेकरून वनस्पतीने आपल्याच ऊतकांत स्फटिक विष बनवावे, आणि तिच्यावर खाणाऱ्या कीटकांना मारावे.",
+        },
+        detail: {
+          en: "The advantage over spraying is that the toxin reaches only insects that eat the crop, so insects that merely fly past are unaffected and no chemical is carried by rain into a river.",
+          hi: "छिड़काव पर लाभ यह है कि विष केवल उन कीटों तक पहुँचता है जो फ़सल खाते हैं, अतः जो केवल उड़ते हुए गुज़रते हैं वे अप्रभावित रहते हैं और कोई रसायन बारिश से बहकर नदी तक नहीं जाता।",
+          mr: "फवारणीवरचा फायदा हा की विष केवळ त्या कीटकांपर्यंत पोहोचते जे पीक खातात, म्हणून जे केवळ उडून जातात ते अप्रभावित राहतात आणि कोणतेही रसायन पावसाने वाहून नदीत जात नाही.",
+        },
+        extra: {
+          en: "Insects can evolve altered receptors, so unmodified plants are grown alongside as a refuge in which susceptible insects survive and dilute the resistant ones.",
+          hi: "कीट बदले हुए ग्राही विकसित कर सकते हैं, अतः साथ में अपरिवर्तित पादप शरणस्थली के रूप में उगाए जाते हैं जिनमें संवेदी कीट बचे रहें और प्रतिरोधियों को पतला करें।",
+          mr: "कीटक बदललेली ग्राही विकसित करू शकतात, म्हणून सोबत अपरिवर्तित वनस्पती आश्रयस्थान म्हणून वाढवल्या जातात ज्यांत संवेदनशील कीटक टिकावेत आणि प्रतिकारकांना विरळ करावेत.",
+        },
+        pair: {
+          left: {
+            en: "The insecticide is where the insect is and nowhere else",
+            hi: "कीटनाशी वहीं है जहाँ कीट है और कहीं नहीं",
+            mr: "कीटकनाशक तिथेच आहे जिथे कीटक आहे आणि इतरत्र कुठेही नाही",
+          },
+          right: {
+            en: "Bt crops",
+            hi: "Bt फ़सलें",
+            mr: "Bt पिके",
+          },
+        },
+      },
+      {
+        id: "rna-interference",
+        name: {
+          en: "RNA interference",
+          hi: "RNA व्यतिकरण",
+          mr: "RNA व्यतिकरण",
+        },
+        kind: "application and what it actually fixed",
+        prompt: {
+          en: "A defence in which a plant is made to produce a double-stranded RNA matching a sequence in a parasite, so the parasite's own messenger is destroyed. What is this called?",
+          hi: "ऐसा बचाव जिसमें पादप से ऐसा द्विलड़ी RNA बनवाया जाता है जो किसी परजीवी के किसी अनुक्रम से मेल खाता हो, अतः परजीवी का अपना संदेशवाहक नष्ट हो जाता है। इसे क्या कहते हैं?",
+          mr: "असा बचाव ज्यात वनस्पतीकडून असा द्विपदरी RNA बनवला जातो जो एखाद्या परजीवीच्या एखाद्या क्रमाशी जुळेल, म्हणून परजीवीचा स्वतःचा संदेशवाहक नष्ट होतो. याला काय म्हणतात?",
+        },
+        statement: {
+          en: "RNA interference silences a gene by introducing a double-stranded RNA complementary to its messenger, which the cell then cuts up before it can be translated.",
+          hi: "RNA व्यतिकरण किसी जीन को उसके संदेशवाहक के पूरक द्विलड़ी RNA डालकर चुप करा देता है, जिसे फिर कोशिका अनुवाद होने से पहले ही काट देती है।",
+          mr: "RNA व्यतिकरण एखाद्या जनुकाला त्याच्या संदेशवाहकाच्या पूरक द्विपदरी RNA घालून गप्प करते, ज्याला मग पेशी भाषांतर होण्याआधीच कापून टाकते.",
+        },
+        detail: {
+          en: "The mechanism already exists in cells as a defence against viruses, which often produce double-stranded RNA that a healthy cell does not.",
+          hi: "यह क्रियाविधि कोशिकाओं में विषाणुओं के विरुद्ध बचाव के रूप में पहले से मौजूद है, जो प्रायः ऐसा द्विलड़ी RNA बनाते हैं जो स्वस्थ कोशिका नहीं बनाती।",
+          mr: "ही यंत्रणा पेशींत विषाणूंविरुद्धचा बचाव म्हणून आधीच अस्तित्वात आहे, जे बहुधा असा द्विपदरी RNA बनवतात जो निरोगी पेशी बनवत नाही.",
+        },
+        extra: {
+          en: "The selectivity comes from the sequence, so a plant can be protected against one particular nematode without affecting anything whose genes read differently.",
+          hi: "चयनात्मकता अनुक्रम से आती है, अतः किसी पादप को एक ख़ास सूत्रकृमि से बचाया जा सकता है और जिसके जीन भिन्न पढ़े जाते हैं उस पर कोई असर नहीं पड़ता।",
+          mr: "निवडकता क्रमातून येते, म्हणून एखादी वनस्पती एका विशिष्ट सूत्रकृमीपासून वाचवता येते आणि ज्याची जनुके वेगळी वाचली जातात त्यावर कोणताही परिणाम होत नाही.",
+        },
+        pair: {
+          left: {
+            en: "A defence aimed at a sequence rather than at a chemistry",
+            hi: "रसायन पर नहीं बल्कि अनुक्रम पर ताना गया बचाव",
+            mr: "रसायनावर नव्हे तर क्रमावर रोखलेला बचाव",
+          },
+          right: {
+            en: "RNA interference",
+            hi: "RNA व्यतिकरण",
+            mr: "RNA व्यतिकरण",
+          },
+        },
+      },
+      {
+        id: "molecular-diagnosis",
+        name: {
+          en: "Molecular diagnosis",
+          hi: "आणविक निदान",
+          mr: "रेणवीय निदान",
+        },
+        kind: "application and what it costs",
+        prompt: {
+          en: "A test that finds a pathogen from a handful of molecules, long before there are enough of them to produce a symptom or an antibody. What is this?",
+          hi: "ऐसा परीक्षण जो किसी रोगजनक को मुट्ठी भर अणुओं से पकड़ लेता है, उनके इतने होने से बहुत पहले कि कोई लक्षण या प्रतिरक्षी बने। यह क्या है?",
+          mr: "अशी चाचणी जी एखाद्या रोगजनकाला मूठभर रेणूंतून पकडते, ते इतके होण्याच्या कितीतरी आधी की एखादे लक्षण वा प्रतिपिंड बनावे. ही काय आहे?",
+        },
+        statement: {
+          en: "Molecular diagnosis detects a pathogen's own nucleic acid, usually after amplifying it, rather than waiting for symptoms or for the body's antibody response.",
+          hi: "आणविक निदान रोगजनक के अपने न्यूक्लिक अम्ल को पकड़ता है, प्रायः उसे प्रवर्धित करने के बाद, न कि लक्षणों या शरीर की प्रतिरक्षी अनुक्रिया की प्रतीक्षा करता है।",
+          mr: "रेणवीय निदान रोगजनकाचे स्वतःचे न्यूक्लिइक आम्ल पकडते, बहुधा ते प्रवर्धित केल्यानंतर, लक्षणांची वा शरीराच्या प्रतिपिंड प्रतिसादाची वाट पाहत नाही.",
+        },
+        detail: {
+          en: "An antibody test necessarily lags, because it detects the response rather than the cause and the response takes days or weeks to appear.",
+          hi: "प्रतिरक्षी परीक्षण अनिवार्य रूप से पीछे रहता है, क्योंकि वह कारण नहीं बल्कि अनुक्रिया पकड़ता है और अनुक्रिया को प्रकट होने में दिन या हफ़्ते लगते हैं।",
+          mr: "प्रतिपिंड चाचणी अपरिहार्यपणे मागे राहते, कारण ती कारण नव्हे तर प्रतिसाद पकडते आणि प्रतिसादाला प्रकट व्हायला दिवस वा आठवडे लागतात.",
+        },
+        extra: {
+          en: "The sensitivity is also the difficulty: a test that can find a handful of molecules will find a handful of contaminating ones, so a false positive is a real risk.",
+          hi: "संवेदिता ही कठिनाई भी है: जो परीक्षण मुट्ठी भर अणु पकड़ सकता है वह मुट्ठी भर दूषक अणु भी पकड़ लेगा, अतः मिथ्या धनात्मक असली जोखिम है।",
+          mr: "संवेदनशीलताच अडचणही आहे: जी चाचणी मूठभर रेणू पकडू शकते ती मूठभर दूषक रेणूही पकडेल, म्हणून खोटे धन हा खरा धोका आहे.",
+        },
+        pair: {
+          left: {
+            en: "It finds the cause instead of waiting for the response",
+            hi: "वह अनुक्रिया की प्रतीक्षा करने के बजाय कारण पकड़ लेता है",
+            mr: "ती प्रतिसादाची वाट पाहण्याऐवजी कारण पकडते",
+          },
+          right: {
+            en: "molecular diagnosis",
+            hi: "आणविक निदान",
+            mr: "रेणवीय निदान",
+          },
+        },
+      },
+      {
+        id: "gene-therapy-and-its-limit",
+        name: {
+          en: "Gene therapy and its limit",
+          hi: "जीन चिकित्सा और उसकी सीमा",
+          mr: "जनुक उपचार आणि त्याची मर्यादा",
+        },
+        kind: "application and what it costs",
+        prompt: {
+          en: "A treatment that supplies a working copy of a missing gene, and which has to be repeated because the cells that received it eventually die and are replaced by cells that did not. What is it?",
+          hi: "ऐसा उपचार जो किसी अनुपस्थित जीन की काम करती प्रति देता है, और जिसे दोहराना पड़ता है क्योंकि जिन कोशिकाओं ने उसे पाया वे अंततः मर जाती हैं और उनकी जगह ऐसी कोशिकाएँ ले लेती हैं जिन्होंने नहीं पाया। यह क्या है?",
+          mr: "असा उपचार जो एखाद्या अनुपस्थित जनुकाची काम करणारी प्रत देतो, आणि ज्याला पुनरावृत्त करावे लागते कारण ज्या पेशींनी तो मिळवला त्या अखेरीस मरतात आणि त्यांची जागा ज्यांनी मिळवला नाही अशा पेशी घेतात. हा काय आहे?",
+        },
+        statement: {
+          en: "Gene therapy introduces a functional gene into a patient's cells to compensate for a defective one, and its effect lasts only as long as the cells carrying it.",
+          hi: "जीन चिकित्सा किसी रोगी की कोशिकाओं में क्रियाशील जीन डालकर दोषपूर्ण जीन की भरपाई करती है, और उसका प्रभाव उतना ही चलता है जितना उसे ढोती कोशिकाएँ।",
+          mr: "जनुक उपचार रुग्णाच्या पेशींत क्रियाशील जनुक घालून सदोष जनुकाची भरपाई करतो, आणि त्याचा परिणाम तितकाच चालतो जितक्या त्याला वाहणाऱ्या पेशी.",
+        },
+        detail: {
+          en: "The first successful case treated a child whose immune system failed for want of one enzyme, and the corrected cells had to be reinfused periodically.",
+          hi: "पहला सफल मामला ऐसे बच्चे का था जिसका प्रतिरक्षा तंत्र एक ही एंज़ाइम के अभाव में विफल था, और सुधारी गई कोशिकाएँ समय-समय पर फिर चढ़ानी पड़ती थीं।",
+          mr: "पहिले यशस्वी प्रकरण अशा मुलाचे होते ज्याची प्रतिकार यंत्रणा एकाच विकराच्या अभावाने अपयशी होती, आणि सुधारलेल्या पेशी वेळोवेळी पुन्हा चढवाव्या लागत होत्या.",
+        },
+        extra: {
+          en: "A permanent cure would require correcting the cells that give rise to all the others, which is a much harder target and raises questions the treatment of a single tissue does not.",
+          hi: "स्थायी उपचार को उन कोशिकाओं को सुधारना पड़ेगा जिनसे बाक़ी सब उठती हैं, जो कहीं कठिन लक्ष्य है और ऐसे प्रश्न उठाता है जो किसी एक ऊतक के उपचार से नहीं उठते।",
+          mr: "कायमच्या उपचाराला त्या पेशी सुधाराव्या लागतील ज्यांतून बाकी सर्व उद्भवतात, जे कितीतरी कठीण लक्ष्य आहे आणि असे प्रश्न उभे करते जे एखाद्या ऊतकाच्या उपचाराने उभे राहत नाहीत.",
+        },
+        pair: {
+          left: {
+            en: "The correction lives exactly as long as the cell does",
+            hi: "सुधार ठीक उतना जीता है जितना कोशिका",
+            mr: "सुधारणा नेमकी तितकीच जगते जितकी पेशी",
+          },
+          right: {
+            en: "gene therapy and its limit",
+            hi: "जीन चिकित्सा और उसकी सीमा",
+            mr: "जनुक उपचार आणि त्याची मर्यादा",
+          },
+        },
+      },
+      {
+        id: "biopiracy-and-ownership",
+        name: {
+          en: "Biopiracy and who owns a sequence",
+          hi: "जैव चोरी और अनुक्रम का स्वामी कौन",
+          mr: "जैवचोरी आणि क्रमाचा मालक कोण",
+        },
+        kind: "application and what it costs",
+        prompt: {
+          en: "A dispute in which a patent is granted on a use of a plant that a community has been putting to that use for centuries without writing it down. What is this called?",
+          hi: "ऐसा विवाद जिसमें किसी पादप के ऐसे उपयोग पर पेटेंट दिया जाता है जिस उपयोग में कोई समुदाय उसे सदियों से बिना लिखे ला रहा है। इसे क्या कहते हैं?",
+          mr: "असा वाद ज्यात एखाद्या वनस्पतीच्या अशा वापरावर पेटंट दिले जाते ज्या वापरात एखादा समाज तिला शतकानुशतके न लिहिता आणत आहे. याला काय म्हणतात?",
+        },
+        statement: {
+          en: "Biopiracy is the use of biological material or traditional knowledge from a community without permission or benefit-sharing, often followed by a patent claim over it.",
+          hi: "जैव चोरी किसी समुदाय की जैविक सामग्री या पारंपरिक ज्ञान को बिना अनुमति या लाभ-साझेदारी के काम में लाना है, और प्रायः उस पर पेटेंट का दावा उसके बाद आता है।",
+          mr: "जैवचोरी म्हणजे एखाद्या समाजाची जैविक सामग्री वा पारंपरिक ज्ञान परवानगीविना वा लाभ-वाटपाविना वापरणे, आणि बहुधा त्यावर पेटंटचा दावा त्यानंतर येतो.",
+        },
+        detail: {
+          en: "The legal difficulty is that a patent requires novelty, and knowledge held orally in a community may not count as prior art unless somebody has recorded it.",
+          hi: "क़ानूनी कठिनाई यह है कि पेटेंट को नवीनता चाहिए, और किसी समुदाय में मौखिक रूप से रखा ज्ञान तब तक पूर्व कला नहीं गिना जा सकता जब तक कोई उसे दर्ज न कर दे।",
+          mr: "कायदेशीर अडचण ही की पेटंटला नावीन्य लागते, आणि एखाद्या समाजात मौखिक रूपात असलेले ज्ञान तोवर पूर्वकला मानले जाऊ शकत नाही जोवर कोणी ते नोंदवत नाही.",
+        },
+        extra: {
+          en: "The Indian response has included compiling a digital library of traditional knowledge, so that a patent office anywhere can find the prior art and refuse the claim.",
+          hi: "भारतीय प्रतिक्रिया में पारंपरिक ज्ञान का डिजिटल पुस्तकालय संकलित करना शामिल है, ताकि कहीं का भी पेटेंट कार्यालय पूर्व कला ढूँढ़कर दावा ख़ारिज कर सके।",
+          mr: "भारतीय प्रतिसादात पारंपरिक ज्ञानाचे डिजिटल ग्रंथालय संकलित करणे समाविष्ट आहे, जेणेकरून कुठलेही पेटंट कार्यालय पूर्वकला शोधून दावा नाकारू शकेल.",
+        },
+        pair: {
+          left: {
+            en: "Novelty is claimed over something centuries old but unwritten",
+            hi: "सदियों पुरानी पर अलिखित चीज़ पर नवीनता का दावा",
+            mr: "शतकानुशतके जुन्या पण अलिखित गोष्टीवर नावीन्याचा दावा",
+          },
+          right: {
+            en: "biopiracy and who owns a sequence",
+            hi: "जैव चोरी और अनुक्रम का स्वामी कौन",
+            mr: "जैवचोरी आणि क्रमाचा मालक कोण",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Before 1982, insulin was extracted from the pancreases of slaughtered cattle and pigs. Recombinant human insulin replaced it. Say what problem the change actually solved, and why the obvious answer is only part of it.",
+          hi: "1982 से पहले इंसुलिन वध किए गए मवेशियों और सूअरों के अग्न्याशयों से निकाला जाता था। पुनर्योगज मानव इंसुलिन ने उसकी जगह ली। बताओ कि इस बदलाव ने वस्तुतः कौन-सी समस्या हल की, और स्पष्ट उत्तर उसका केवल एक हिस्सा क्यों है।",
+          mr: "1982 च्या आधी इन्शुलिन कापलेल्या गुरांच्या आणि डुकरांच्या स्वादुपिंडांतून काढले जात होते. पुनर्योगज मानवी इन्शुलिनने त्याची जागा घेतली. या बदलाने प्रत्यक्षात कोणती समस्या सोडवली, आणि स्पष्ट उत्तर त्याचा केवळ एक भाग का आहे ते सांगा.",
+        },
+        choices: [
+          {
+            en: "The obvious gain is supply — a bacterial culture is not limited by how many animals are slaughtered, and demand was outrunning the source. But the more important gain is that the protein is now the human sequence exactly. Animal insulin differs by a few amino acids, which is enough for the immune system to recognise it as foreign; some patients developed antibodies, needed rising doses and suffered reactions at the injection site. Recombinant insulin removes that entirely, and it also removes the risk of transmitting an animal pathogen. Note that the technique had to solve a further problem: a bacterium cannot process the folded precursor a human cell makes, so the two chains were produced separately and joined afterwards",
+            hi: "स्पष्ट लाभ आपूर्ति है — जीवाणु संवर्धन इससे सीमित नहीं कि कितने पशु वध किए गए, और माँग स्रोत से आगे निकल रही थी। पर अधिक महत्त्वपूर्ण लाभ यह है कि प्रोटीन अब हूबहू मानव अनुक्रम है। पशु इंसुलिन कुछ ऐमीनो अम्लों में भिन्न है, जो प्रतिरक्षा तंत्र के उसे पराया पहचानने भर है; कुछ रोगियों में प्रतिरक्षी बने, उन्हें बढ़ती मात्राएँ चाहिए हुईं और इंजेक्शन की जगह पर प्रतिक्रियाएँ हुईं। पुनर्योगज इंसुलिन उसे पूरी तरह हटा देता है, और वह किसी पशु रोगजनक के संचरण का जोखिम भी हटा देता है। ध्यान दो कि तकनीक को एक और समस्या हल करनी पड़ी: जीवाणु उस मुड़े पूर्ववर्ती को संसाधित नहीं कर सकता जो मानव कोशिका बनाती है, अतः दोनों शृंखलाएँ अलग बनाकर बाद में जोड़ी गईं",
+            mr: "स्पष्ट फायदा पुरवठा आहे — जिवाणू संवर्धन किती जनावरे कापली गेली याने मर्यादित नाही, आणि मागणी स्रोताहून पुढे जात होती. पण अधिक महत्त्वाचा फायदा हा की प्रथिन आता जसाच्या तसा मानवी क्रम आहे. जनावरांचे इन्शुलिन काही अमिनो आम्लांत वेगळे आहे, जे प्रतिकार यंत्रणेने त्याला परके ओळखण्याइतके आहे; काही रुग्णांत प्रतिपिंडे बनली, त्यांना वाढत्या मात्रा लागल्या आणि इंजेक्शनच्या जागी प्रतिक्रिया झाल्या. पुनर्योगज इन्शुलिन ते पूर्णपणे काढते, आणि ते एखाद्या जनावरी रोगजनकाच्या संक्रमणाचा धोकाही काढते. लक्षात घ्या की तंत्राला आणखी एक समस्या सोडवावी लागली: जिवाणू तो घडीचा पूर्वगामी संस्करण करू शकत नाही जो मानवी पेशी बनवते, म्हणून दोन्ही साखळ्या वेगळ्या बनवून नंतर जोडल्या गेल्या",
+          },
+          {
+            en: "The change solved nothing medically and was made only because bacterial production is cheaper, animal insulin having been chemically identical to the human protein all along",
+            hi: "इस बदलाव ने चिकित्सकीय रूप से कुछ हल नहीं किया और केवल इसलिए किया गया कि जीवाणु उत्पादन सस्ता है, चूँकि पशु इंसुलिन आद्योपांत मानव प्रोटीन के रासायनिक रूप से समरूप था",
+            mr: "या बदलाने वैद्यकीयदृष्ट्या काहीही सोडवले नाही आणि केवळ यासाठी केला गेला की जिवाणू उत्पादन स्वस्त आहे, कारण जनावरांचे इन्शुलिन सर्वकाळ मानवी प्रथिनाशी रासायनिकदृष्ट्या सारखेच होते",
+          },
+          {
+            en: "The problem solved was that animal insulin had to be injected while the recombinant version can be swallowed, since a bacterial protein resists digestion",
+            hi: "जो समस्या हल हुई वह यह कि पशु इंसुलिन को इंजेक्शन से देना पड़ता था जबकि पुनर्योगज रूप निगला जा सकता है, चूँकि जीवाणु प्रोटीन पाचन का प्रतिरोध करता है",
+            mr: "जी समस्या सुटली ती ही की जनावरांचे इन्शुलिन इंजेक्शनने द्यावे लागत होते तर पुनर्योगज रूप गिळता येते, कारण जिवाणू प्रथिन पचनाला विरोध करते",
+          },
+          {
+            en: "The recombinant hormone works by a different mechanism from the animal one, acting on the liver rather than on the uptake of glucose by cells",
+            hi: "पुनर्योगज हार्मोन पशु वाले से भिन्न क्रियाविधि से चलता है, कोशिकाओं द्वारा ग्लूकोस लेने पर नहीं बल्कि यकृत पर काम करता हुआ",
+            mr: "पुनर्योगज संप्रेरक जनावरांच्याहून वेगळ्या यंत्रणेने चालते, पेशींनी ग्लुकोज घेण्यावर नव्हे तर यकृतावर काम करत",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The question is worth answering carefully because the obvious answer is true but incomplete, and the incomplete part is where the interest lies. THE OBVIOUS ANSWER: SUPPLY. Insulin from animal pancreases is limited by the number of animals slaughtered — roughly a tonne of pancreas for a few grams of hormone. As diagnosis improved and more people were treated, demand grew faster than the supply could. A bacterial culture has no such ceiling: the same organism grows in a fermenter to whatever volume is wanted. That is a real gain, and it is what most accounts stop at. THE MORE IMPORTANT ANSWER: IDENTITY. Bovine insulin differs from human insulin at three amino acid positions, porcine at one. Three residues out of fifty-one is a very small difference chemically, and it is entirely sufficient immunologically. The immune system recognises shapes, not percentages, and a changed residue on the surface of a protein can be an antigen. Some patients treated with animal insulin developed antibodies against it, which bound the hormone and reduced its effect, so doses had to be raised over time; others had inflammation at injection sites, and a few had more serious reactions. Recombinant human insulin has exactly the human sequence and none of this arises. Notice that this benefit could not have been obtained by purifying the animal product better. A contaminant can be removed; a difference in the molecule itself cannot. Recombinant production is the only route to a protein that is the human protein. A THIRD GAIN, WORTH MENTIONING. Material extracted from animal tissue carries whatever the animal carried. Hormones prepared from animal sources have transmitted disease before — the clearest case being growth hormone from human cadaver pituitaries, which transmitted a prion disease before recombinant hormone replaced it. A bacterial culture cannot carry a mammalian pathogen. THE TECHNICAL OBSTACLE THAT HAD TO BE SOLVED. A human cell makes insulin as a single chain, folds it, forms the disulphide bridges and then cuts out a middle section, leaving two chains held together. A bacterium has none of that processing machinery. So the practical solution was to synthesise the two chains as separate products in separate cultures and join them chemically afterwards. This is a useful reminder that inserting a human gene into a bacterium gives you a human polypeptide, not necessarily a working human protein — the modifications a eukaryotic cell performs after translation are frequently the reason a bacterial system fails, which is why some proteins are made in yeast or mammalian culture instead. (The second option denies a difference that is well documented; the third invents oral availability — insulin is a protein and would be digested whatever its origin; the fourth invents a mechanism difference, when the whole point is that the molecule is identical to the natural one.)",
+          hi: "प्रश्न का ध्यान से उत्तर देना चाहिए क्योंकि स्पष्ट उत्तर सच है पर अधूरा, और अधूरा हिस्सा ही रुचि की जगह है। स्पष्ट उत्तर: आपूर्ति। पशु अग्न्याशयों से मिला इंसुलिन वध किए गए पशुओं की संख्या से सीमित है — कुछ ग्राम हार्मोन के लिए मोटे तौर पर एक टन अग्न्याशय। जैसे-जैसे निदान बेहतर हुआ और अधिक लोगों का उपचार हुआ, माँग आपूर्ति से तेज़ी से बढ़ी। जीवाणु संवर्धन की ऐसी कोई छत नहीं: वही जीव किण्वक में जितनी चाहो उतनी मात्रा तक बढ़ता है। यह असली लाभ है, और अधिकांश विवरण यहीं रुक जाते हैं। अधिक महत्त्वपूर्ण उत्तर: समरूपता। गोजातीय इंसुलिन मानव इंसुलिन से तीन ऐमीनो अम्ल स्थानों पर भिन्न है, सूअर वाला एक पर। इक्यावन में से तीन अवशेष रासायनिक रूप से बहुत छोटा अंतर है, और प्रतिरक्षात्मक रूप से पूरी तरह पर्याप्त। प्रतिरक्षा तंत्र आकृतियाँ पहचानता है, प्रतिशत नहीं, और किसी प्रोटीन की सतह पर बदला हुआ अवशेष प्रतिजन हो सकता है। पशु इंसुलिन से उपचारित कुछ रोगियों में उसके विरुद्ध प्रतिरक्षी बने, जो हार्मोन से बँधकर उसका प्रभाव घटाते थे, अतः समय के साथ मात्राएँ बढ़ानी पड़ीं; औरों को इंजेक्शन की जगहों पर शोथ हुआ, और कुछ को अधिक गंभीर प्रतिक्रियाएँ। पुनर्योगज मानव इंसुलिन का अनुक्रम हूबहू मानव है और इनमें से कुछ नहीं उठता। ध्यान दो कि यह लाभ पशु उत्पाद को बेहतर शुद्ध करके नहीं पाया जा सकता था। दूषक हटाया जा सकता है; अणु में ही मौजूद अंतर नहीं। ऐसे प्रोटीन तक जो मानव प्रोटीन ही हो, पुनर्योगज उत्पादन ही एकमात्र रास्ता है। तीसरा लाभ, कहने लायक़। पशु ऊतक से निकाली सामग्री वह सब ढोती है जो पशु ढोता था। पशु स्रोतों से तैयार हार्मोन पहले रोग संचारित कर चुके हैं — सबसे साफ़ मामला मानव शव पीयूष ग्रंथियों से मिला वृद्धि हार्मोन है, जिसने पुनर्योगज हार्मोन के आने से पहले प्रायॉन रोग फैलाया। जीवाणु संवर्धन स्तनपायी रोगजनक ढो ही नहीं सकता। जो तकनीकी अड़चन हल करनी पड़ी। मानव कोशिका इंसुलिन को एक ही शृंखला के रूप में बनाती है, उसे मोड़ती है, डाइसल्फ़ाइड सेतु बनाती है और फिर बीच का हिस्सा काटकर निकाल देती है, जिससे दो शृंखलाएँ साथ बँधी रह जाती हैं। जीवाणु के पास वह संसाधन मशीनरी है ही नहीं। अतः व्यावहारिक हल यह हुआ कि दोनों शृंखलाएँ अलग संवर्धनों में अलग उत्पादों के रूप में संश्लेषित की जाएँ और बाद में रासायनिक रूप से जोड़ी जाएँ। यह काम की याद दिलाता है कि जीवाणु में मानव जीन डालना तुम्हें मानव पॉलिपेप्टाइड देता है, ज़रूरी नहीं कि काम करता मानव प्रोटीन — सुकेंद्रकी कोशिका अनुवाद के बाद जो रूपांतरण करती है वे अक्सर कारण होते हैं कि जीवाणु तंत्र विफल हो जाए, इसीलिए कुछ प्रोटीन इसके बजाय यीस्ट या स्तनपायी संवर्धन में बनाए जाते हैं। (दूसरा विकल्प ऐसे अंतर से इनकार करता है जो भलीभाँति प्रलेखित है; तीसरा मुखीय उपलब्धता गढ़ता है — इंसुलिन प्रोटीन है और उसका उद्गम चाहे जो हो वह पच जाएगा; चौथा क्रियाविधि का अंतर गढ़ता है, जबकि पूरा मर्म यही है कि अणु प्राकृतिक वाले से समरूप है।)",
+          mr: "प्रश्नाचे काळजीपूर्वक उत्तर देण्याजोगे आहे कारण स्पष्ट उत्तर खरे आहे पण अपुरे, आणि अपुरा भागच रसाची जागा आहे. स्पष्ट उत्तर: पुरवठा. जनावरांच्या स्वादुपिंडांतून मिळालेले इन्शुलिन कापलेल्या जनावरांच्या संख्येने मर्यादित आहे — काही ग्रॅम संप्रेरकासाठी ढोबळपणे एक टन स्वादुपिंड. जसजसे निदान सुधारले आणि अधिक लोकांवर उपचार झाले, तसतशी मागणी पुरवठ्याहून जलद वाढली. जिवाणू संवर्धनाला अशी कोणतीही मर्यादा नाही: तोच जीव किण्वकात हवी तितकी मात्रा वाढतो. हा खरा फायदा आहे, आणि बहुतांश वर्णने इथेच थांबतात. अधिक महत्त्वाचे उत्तर: सारखेपणा. गोवंशीय इन्शुलिन मानवी इन्शुलिनहून तीन अमिनो आम्ल जागांवर वेगळे आहे, डुकराचे एकावर. एकावन्नांपैकी तीन अवशेष रासायनिकदृष्ट्या फार लहान फरक आहे, आणि प्रतिकारदृष्ट्या पूर्णपणे पुरेसा. प्रतिकार यंत्रणा आकार ओळखते, टक्केवारी नाही, आणि एखाद्या प्रथिनाच्या पृष्ठभागावरचा बदललेला अवशेष प्रतिजन असू शकतो. जनावरांच्या इन्शुलिनने उपचारित काही रुग्णांत त्याविरुद्ध प्रतिपिंडे बनली, जी संप्रेरकाशी बांधून त्याचा परिणाम घटवत होती, म्हणून काळासोबत मात्रा वाढवाव्या लागल्या; इतरांना इंजेक्शनच्या जागी सूज आली, आणि काहींना अधिक गंभीर प्रतिक्रिया. पुनर्योगज मानवी इन्शुलिनचा क्रम जसाच्या तसा मानवी आहे आणि यांतले काहीही उद्भवत नाही. लक्षात घ्या की हा फायदा जनावरी उत्पादन अधिक चांगले शुद्ध करून मिळवता आला नसता. दूषक काढता येते; रेणूतच असलेला फरक नाही. जे प्रथिन मानवी प्रथिनच असेल त्यापर्यंत पुनर्योगज उत्पादन हाच एकमेव मार्ग आहे. तिसरा फायदा, सांगण्याजोगा. जनावरी ऊतकातून काढलेली सामग्री ते सर्व वाहते जे जनावर वाहत होते. जनावरी स्रोतांतून तयार केलेली संप्रेरके आधी रोग संक्रमित करून गेली आहेत — सर्वांत स्वच्छ प्रकरण मानवी शव पियुषिका ग्रंथींतून मिळालेले वाढ संप्रेरक आहे, ज्याने पुनर्योगज संप्रेरक येण्याआधी प्रिऑन रोग पसरवला. जिवाणू संवर्धन सस्तन प्राणी रोगजनक वाहूच शकत नाही. जो तांत्रिक अडथळा सोडवावा लागला. मानवी पेशी इन्शुलिन एकाच साखळीच्या रूपात बनवते, त्याला घडी घालते, डायसल्फाइड पूल बनवते आणि मग मधला भाग कापून काढते, ज्याने दोन साखळ्या एकत्र बांधलेल्या उरतात. जिवाणूकडे ती संस्करण यंत्रसामग्री आहेच नाही. म्हणून व्यावहारिक उत्तर हे झाले की दोन्ही साखळ्या वेगळ्या संवर्धनांत वेगळी उत्पादने म्हणून संश्लेषित कराव्या आणि नंतर रासायनिकरीत्या जोडाव्या. ही उपयुक्त आठवण आहे की जिवाणूत मानवी जनुक घालणे तुम्हाला मानवी पॉलिपेप्टाइड देते, काम करणारे मानवी प्रथिन असेलच असे नाही — सुकेंद्रकी पेशी भाषांतरानंतर जे रूपांतरण करते ते वारंवार कारण असते की जिवाणू यंत्रणा अपयशी ठरावी, म्हणूनच काही प्रथिने त्याऐवजी यीस्ट वा सस्तन प्राणी संवर्धनात बनवली जातात. (दुसरा पर्याय अशा फरकाचे खंडन करतो जो उत्तम नोंदलेला आहे; तिसरा तोंडी उपलब्धता घडवतो — इन्शुलिन प्रथिन आहे आणि त्याचा उगम काहीही असो ते पचेल; चौथा यंत्रणेचा फरक घडवतो, तर अख्खा गाभा हाच आहे की रेणू नैसर्गिकाशी सारखाच आहे.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A plant can be protected from a nematode by making it produce a double-stranded RNA matching one of the nematode's genes. Explain how a molecule of RNA can act as a pesticide, and what the mechanism implies about how selective such a treatment can be.",
+          hi: "किसी पादप को सूत्रकृमि से इस तरह बचाया जा सकता है कि उससे ऐसा द्विलड़ी RNA बनवाया जाए जो सूत्रकृमि के किसी जीन से मेल खाता हो। बताओ कि RNA का कोई अणु कीटनाशी की तरह कैसे काम कर सकता है, और यह क्रियाविधि इस बारे में क्या कहती है कि ऐसा उपचार कितना चयनात्मक हो सकता है।",
+          mr: "एखाद्या वनस्पतीला सूत्रकृमीपासून अशा प्रकारे वाचवता येते की तिच्याकडून असा द्विपदरी RNA बनवावा जो सूत्रकृमीच्या एखाद्या जनुकाशी जुळेल. RNA चा एखादा रेणू कीटकनाशकासारखा कसा काम करू शकतो, आणि ही यंत्रणा असा उपचार किती निवडक असू शकतो याबद्दल काय सांगते ते सांगा.",
+        },
+        choices: [
+          {
+            en: "Cells already carry machinery that destroys double-stranded RNA, because that is a signature of viral infection and does not otherwise occur. The nematode feeds on the plant, takes up the double-stranded RNA, and its own machinery cuts the RNA into short pieces and uses them as a guide to find and destroy every messenger RNA with a matching sequence. The gene is silenced, no protein is made, and if the gene is essential the parasite dies. The selectivity is therefore sequence-based rather than chemical: only an organism whose genes contain that sequence is affected, so the treatment can in principle spare closely related species — which also means the sequence must be chosen with care, since a sequence shared with a beneficial organism would silence it too",
+            hi: "कोशिकाओं में द्विलड़ी RNA को नष्ट करती मशीनरी पहले से है, क्योंकि वह विषाणु संक्रमण का चिह्न है और अन्यथा होता नहीं। सूत्रकृमि पादप पर खाता है, द्विलड़ी RNA ले लेता है, और उसकी अपनी मशीनरी उस RNA को छोटे टुकड़ों में काटकर उन्हें ऐसा मार्गदर्शक बना लेती है जिससे मेल खाते अनुक्रम वाला हर संदेशवाहक RNA ढूँढ़कर नष्ट किया जाए। जीन चुप हो जाता है, कोई प्रोटीन नहीं बनता, और यदि जीन अनिवार्य हो तो परजीवी मर जाता है। अतः चयनात्मकता रासायनिक नहीं बल्कि अनुक्रम-आधारित है: केवल वही जीव प्रभावित होता है जिसके जीनों में वह अनुक्रम है, अतः उपचार सिद्धांततः निकट संबंधी जातियों को बचा सकता है — और इसका अर्थ यह भी है कि अनुक्रम सावधानी से चुनना पड़ेगा, चूँकि किसी लाभकारी जीव के साथ साझा अनुक्रम उसे भी चुप करा देगा",
+            mr: "पेशींत द्विपदरी RNA नष्ट करणारी यंत्रसामग्री आधीच आहे, कारण ती विषाणू संसर्गाची खूण आहे आणि अन्यथा घडत नाही. सूत्रकृमी वनस्पतीवर खातो, द्विपदरी RNA घेतो, आणि त्याची स्वतःची यंत्रसामग्री तो RNA लहान तुकड्यांत कापून त्यांना असा मार्गदर्शक बनवते ज्याने जुळणारा क्रम असलेला प्रत्येक संदेशवाहक RNA शोधून नष्ट करावा. जनुक गप्प होते, कोणतेही प्रथिन बनत नाही, आणि जर जनुक अत्यावश्यक असेल तर परजीवी मरतो. म्हणून निवडकता रासायनिक नव्हे तर क्रम-आधारित आहे: केवळ तोच जीव प्रभावित होतो ज्याच्या जनुकांत तो क्रम आहे, म्हणून उपचार तत्त्वतः जवळच्या नातेवाईक जातींना वाचवू शकतो — आणि याचा अर्थ हाही की क्रम काळजीपूर्वक निवडावा लागेल, कारण एखाद्या लाभदायक जीवाशी समाईक क्रम त्यालाही गप्प करेल",
+          },
+          {
+            en: "The RNA acts as a poison in the ordinary chemical sense, damaging the nematode's gut lining on contact, and its selectivity depends on the dose reaching the parasite",
+            hi: "यह RNA साधारण रासायनिक अर्थ में विष की तरह काम करता है, संपर्क में आते ही सूत्रकृमि की आँत की परत को नुक़सान पहुँचाता है, और उसकी चयनात्मकता परजीवी तक पहुँचती मात्रा पर निर्भर है",
+            mr: "हा RNA साध्या रासायनिक अर्थाने विषासारखा काम करतो, संपर्कात येताच सूत्रकृमीच्या आतड्याच्या अस्तराला नुकसान पोहोचवतो, आणि त्याची निवडकता परजीवीपर्यंत पोहोचणाऱ्या मात्रेवर अवलंबून आहे",
+          },
+          {
+            en: "The double-stranded RNA inserts itself into the nematode's chromosomes and permanently deletes the gene, so the effect is inherited by all its descendants",
+            hi: "द्विलड़ी RNA स्वयं को सूत्रकृमि के गुणसूत्रों में डाल देता है और जीन को स्थायी रूप से मिटा देता है, अतः प्रभाव उसकी सारी संततियों को वंशागत होता है",
+            mr: "द्विपदरी RNA स्वतःला सूत्रकृमीच्या गुणसूत्रांत घालतो आणि जनुक कायमचे पुसतो, म्हणून परिणाम त्याच्या सर्व संततींना आनुवंशिक होतो",
+          },
+          {
+            en: "The mechanism works only in plants and cannot operate in an animal, so the RNA has to kill the nematode by blocking its digestion of plant tissue rather than by silencing anything",
+            hi: "यह क्रियाविधि केवल पादपों में चलती है और किसी प्राणी में काम नहीं कर सकती, अतः RNA को सूत्रकृमि को किसी चीज़ को चुप कराकर नहीं बल्कि पादप ऊतक के उसके पाचन को रोककर मारना पड़ता है",
+            mr: "ही यंत्रणा केवळ वनस्पतींत चालते आणि कोणत्याही प्राण्यात काम करू शकत नाही, म्हणून RNA ला सूत्रकृमीला काहीतरी गप्प करून नव्हे तर वनस्पती ऊतकाच्या त्याच्या पचनाला अडवून मारावे लागते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The claim in the question sounds implausible at first — RNA is not a poison in any ordinary sense — and the resolution is that the plant is not supplying a toxin but a set of instructions that the parasite's own machinery carries out against itself. WHY CELLS ATTACK DOUBLE-STRANDED RNA AT ALL. A normal cell makes messenger RNA in single strands. Long double-stranded RNA occurs mainly during infection by RNA viruses, which produce it while replicating. So a cell that treats double-stranded RNA as an alarm signal is doing something sensible, and the machinery for this is ancient and present in plants, fungi and animals alike. WHAT THE MACHINERY DOES. An enzyme cuts the double-stranded RNA into short fragments of about twenty-one nucleotides. One strand of each fragment is loaded into a protein complex, which then uses it as a search template: any messenger RNA in the cell whose sequence is complementary to that fragment is bound and cleaved. The gene has not been altered, but its product is destroyed before it can be translated, so the gene is effectively silenced. HOW THIS BECOMES A PESTICIDE. Engineer the plant to transcribe a stretch of DNA in both directions, so it produces a double-stranded RNA whose sequence matches a gene the nematode needs. The nematode feeds on the plant and takes the RNA in with its meal. Its own silencing machinery then does the rest — it chops up the imported RNA and uses the fragments to hunt down its own messenger. If the gene chosen is essential, the parasite cannot survive, and the plant is protected. Nothing toxic has been made at all. WHAT THE MECHANISM IMPLIES ABOUT SELECTIVITY, WHICH IS THE REAL QUESTION. Since the targeting is by base pairing, only an organism carrying that sequence in its genome can be affected. This is a completely different basis for selectivity from a chemical pesticide, which acts on whatever biochemistry resembles the target closely enough. In principle the specificity can be extraordinarily fine — fine enough to distinguish one species from a close relative, if a sequence is chosen where they differ. But the same logic sets the obligation: the sequence must be checked against the genomes of pollinators, soil organisms, the crop itself and the people who will eat it, because any organism sharing that sequence would have the corresponding gene silenced too. Selectivity is not a property of the technique; it is a property of the sequence chosen, and it has to be established rather than assumed. A WIDER NOTE. The same mechanism is the basis of a growing class of human medicines, in which a small interfering RNA is delivered to silence a gene that is being expressed harmfully. The delivery is the hard part in that setting, exactly as it is not in this one — a nematode obligingly eats the RNA. (The second option treats the RNA as a conventional toxin, which cannot explain sequence specificity; the third confuses gene silencing with genome editing — the chromosome is untouched and the effect is not inherited in that way; the fourth denies that animals possess the machinery, when the nematode's own machinery is what does the work.)",
+          hi: "प्रश्न का दावा पहली नज़र में असंभव लगता है — RNA किसी साधारण अर्थ में विष नहीं — और समाधान यह है कि पादप कोई विष नहीं बल्कि निर्देशों का ऐसा समुच्चय दे रहा है जिन्हें परजीवी की अपनी मशीनरी उसी के विरुद्ध चलाती है। कोशिकाएँ द्विलड़ी RNA पर हमला करती ही क्यों हैं। सामान्य कोशिका संदेशवाहक RNA एकल लड़ियों में बनाती है। लंबा द्विलड़ी RNA मुख्यतः RNA विषाणुओं के संक्रमण के दौरान होता है, जो प्रतिकृति करते समय उसे बनाते हैं। अतः जो कोशिका द्विलड़ी RNA को चेतावनी संकेत मानती है वह समझदारी कर रही है, और इसकी मशीनरी प्राचीन है और पादपों, कवकों तथा प्राणियों सबमें मौजूद है। मशीनरी करती क्या है। एक एंज़ाइम द्विलड़ी RNA को क़रीब इक्कीस न्यूक्लियोटाइड के छोटे खंडों में काट देता है। हर खंड की एक लड़ी किसी प्रोटीन संकुल में भर दी जाती है, जो फिर उसे खोज-टेम्पलेट की तरह काम में लेता है: कोशिका का कोई भी संदेशवाहक RNA जिसका अनुक्रम उस खंड का पूरक हो, बाँधकर काट दिया जाता है। जीन बदला नहीं गया, पर उसका उत्पाद अनुवाद होने से पहले ही नष्ट हो जाता है, अतः जीन प्रभावी रूप से चुप है। यह कीटनाशी कैसे बनता है। पादप को ऐसा बनाओ कि वह DNA के किसी हिस्से का दोनों दिशाओं में अनुलेखन करे, ताकि वह ऐसा द्विलड़ी RNA बनाए जिसका अनुक्रम सूत्रकृमि को चाहिए किसी जीन से मेल खाता हो। सूत्रकृमि पादप पर खाता है और अपने भोजन के साथ वह RNA ले लेता है। फिर उसकी अपनी चुप कराने वाली मशीनरी बाक़ी कर देती है — वह आयातित RNA को काटती है और खंडों से अपने ही संदेशवाहक का शिकार करती है। यदि चुना गया जीन अनिवार्य हो, तो परजीवी बच नहीं सकता, और पादप बच जाता है। कोई विषैली चीज़ बनाई ही नहीं गई। यह क्रियाविधि चयनात्मकता के बारे में क्या कहती है, और असली प्रश्न यही है। चूँकि लक्ष्यन क्षार युग्मन से है, केवल वही जीव प्रभावित हो सकता है जो अपने जीनोम में वह अनुक्रम ढोता हो। यह रासायनिक कीटनाशी से बिलकुल भिन्न आधार है, जो उस हर जैवरसायन पर काम करता है जो लक्ष्य से काफ़ी मिलता-जुलता हो। सिद्धांततः विशिष्टता असाधारण रूप से बारीक हो सकती है — इतनी बारीक कि किसी जाति को निकट संबंधी से अलग कर सके, यदि ऐसा अनुक्रम चुना जाए जहाँ वे भिन्न हों। पर वही तर्क बाध्यता भी रखता है: अनुक्रम को परागणकर्ताओं, मिट्टी के जीवों, स्वयं फ़सल और उसे खाने वाले लोगों के जीनोमों के विरुद्ध जाँचना पड़ेगा, क्योंकि उस अनुक्रम को साझा करते किसी भी जीव का तदनुरूप जीन भी चुप हो जाएगा। चयनात्मकता तकनीक का गुण नहीं; वह चुने गए अनुक्रम का गुण है, और उसे मान लेने के बजाय स्थापित करना पड़ता है। एक व्यापक टिप्पणी। वही क्रियाविधि मानव औषधियों के बढ़ते वर्ग का आधार है, जिनमें कोई छोटा व्यतिकारी RNA पहुँचाकर ऐसा जीन चुप कराया जाता है जिसकी अभिव्यक्ति हानिकारक हो रही है। उस परिवेश में पहुँचाना ही कठिन हिस्सा है, ठीक जैसा यहाँ नहीं है — सूत्रकृमि RNA को शिष्टता से खा लेता है। (दूसरा विकल्प RNA को परंपरागत विष मानता है, जो अनुक्रम विशिष्टता नहीं समझा सकता; तीसरा जीन चुप कराने को जीनोम संपादन से गड्डमड्ड करता है — गुणसूत्र अछूता है और प्रभाव उस तरह वंशागत नहीं होता; चौथा इससे इनकार करता है कि प्राणियों के पास वह मशीनरी है, जबकि काम सूत्रकृमि की अपनी मशीनरी ही करती है।)",
+          mr: "प्रश्नातील दावा पहिल्या नजरेत अशक्य वाटतो — RNA कोणत्याही साध्या अर्थाने विष नाही — आणि समाधान हे की वनस्पती कोणतेही विष नव्हे तर सूचनांचा असा संच देत आहे ज्या परजीवीची स्वतःची यंत्रसामग्री त्याच्याच विरुद्ध चालवते. पेशी द्विपदरी RNA वर हल्ला करतातच का. सामान्य पेशी संदेशवाहक RNA एकपदरी बनवते. लांब द्विपदरी RNA मुख्यतः RNA विषाणूंच्या संसर्गादरम्यान घडतो, जे प्रतिकृती करताना तो बनवतात. म्हणून जी पेशी द्विपदरी RNA ला इशाऱ्याचे संकेत मानते ती शहाणपण करत आहे, आणि याची यंत्रसामग्री प्राचीन आहे आणि वनस्पती, बुरशी व प्राणी सर्वांत उपस्थित आहे. यंत्रसामग्री काय करते. एक विकर द्विपदरी RNA ला सुमारे एकवीस न्यूक्लिओटाइडांच्या लहान तुकड्यांत कापते. प्रत्येक तुकड्याचा एक पदर एखाद्या प्रथिन संकुलात भरला जातो, जो मग त्याला शोध-साचा म्हणून वापरतो: पेशीतला कोणताही संदेशवाहक RNA ज्याचा क्रम त्या तुकड्याचा पूरक असेल, बांधून कापला जातो. जनुक बदललेले नाही, पण त्याचे उत्पादन भाषांतर होण्याआधीच नष्ट होते, म्हणून जनुक प्रभावीपणे गप्प आहे. हे कीटकनाशक कसे बनते. वनस्पतीला असे बनवा की तिने DNA च्या एखाद्या भागाचे दोन्ही दिशांनी अनुलेखन करावे, जेणेकरून तिने असा द्विपदरी RNA बनवावा ज्याचा क्रम सूत्रकृमीला लागणाऱ्या एखाद्या जनुकाशी जुळेल. सूत्रकृमी वनस्पतीवर खातो आणि आपल्या अन्नासोबत तो RNA घेतो. मग त्याची स्वतःची गप्प करणारी यंत्रसामग्री बाकीचे करते — ती आयात केलेला RNA कापते आणि तुकड्यांनी आपल्याच संदेशवाहकाची शिकार करते. जर निवडलेले जनुक अत्यावश्यक असेल, तर परजीवी टिकू शकत नाही, आणि वनस्पती वाचते. कोणतीही विषारी गोष्ट बनवलीच गेली नाही. ही यंत्रणा निवडकतेबद्दल काय सांगते, आणि खरा प्रश्न हाच आहे. लक्ष्यीकरण क्षार युग्मनाने असल्याने, केवळ तोच जीव प्रभावित होऊ शकतो जो आपल्या जीनोममध्ये तो क्रम वाहतो. हा रासायनिक कीटकनाशकाहून पूर्णपणे वेगळा आधार आहे, जे त्या प्रत्येक जैवरसायनावर काम करते जे लक्ष्याशी बऱ्यापैकी साम्य ठेवते. तत्त्वतः विशिष्टता असाधारणपणे बारीक असू शकते — इतकी बारीक की एखाद्या जातीला जवळच्या नातेवाईकापासून वेगळे करावे, जर असा क्रम निवडला जिथे त्या वेगळ्या असतील. पण तोच तर्क बंधनही ठेवतो: क्रम परागणकर्ते, मातीतले जीव, स्वतः पीक आणि ते खाणारे लोक यांच्या जीनोमांविरुद्ध तपासावा लागेल, कारण तो क्रम समाईक ठेवणाऱ्या कोणत्याही जीवाचे त्याअनुषंगिक जनुकही गप्प होईल. निवडकता तंत्राचा गुणधर्म नाही; ती निवडलेल्या क्रमाचा गुणधर्म आहे, आणि ती गृहीत धरण्याऐवजी प्रस्थापित करावी लागते. एक व्यापक टिप्पणी. तीच यंत्रणा मानवी औषधांच्या वाढत्या वर्गाचा आधार आहे, ज्यांत एखादा लहान व्यतिकारी RNA पोहोचवून असे जनुक गप्प केले जाते ज्याची अभिव्यक्ती हानिकारक होत आहे. त्या परिसरात पोहोचवणे हाच कठीण भाग आहे, नेमके जसे इथे नाही — सूत्रकृमी RNA सौजन्याने खाऊन घेतो. (दुसरा पर्याय RNA ला पारंपरिक विष मानतो, जे क्रम विशिष्टता समजावू शकत नाही; तिसरा जनुक गप्प करण्याची जीनोम संपादनाशी गल्लत करतो — गुणसूत्र अस्पर्श आहे आणि परिणाम तसा आनुवंशिक होत नाही; चौथा हे नाकारतो की प्राण्यांकडे ती यंत्रसामग्री आहे, तर काम सूत्रकृमीची स्वतःची यंत्रसामग्रीच करते.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 11 — Organisms and Populations                                  */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "biology-12-organisms-and-populations",
+    subject: "BIOLOGY",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 11 — Organisms and Populations",
+      hi: "अध्याय 11 — जीव और समष्टियाँ",
+      mr: "प्रकरण 11 — जीव आणि समष्टी",
+    },
+    name: {
+      en: "Organisms and Populations",
+      hi: "जीव और समष्टियाँ",
+      mr: "जीव आणि समष्टी",
+    },
+    summary: {
+      en: "The level at which biology stops being about an individual and starts being about a number that changes, and most of the chapter is an argument that the number is more informative than any individual could be: two organisms facing the same cold, one holding its body at a fixed temperature and paying for it and the other letting its temperature follow the air and paying in a different currency, so that neither strategy is better and each is a bargain struck against a particular set of costs; a curve that rises without limit if nothing pushes back and an S-shaped one that flattens where the environment stops supplying, which differ not in their growth but in whether the growth is allowed to feed on itself; a carrying capacity that is a property of the place and not of the species; a pair of species that cannot both persist on exactly one resource, and the several ways real species avoid that outcome by not overlapping quite completely; and a set of relationships classified not by who eats whom but by the sign of the effect on each partner, which puts a bee and a flower in the same box as a fig and its wasp and leaves a cuckoo in another.",
+      hi: "वह स्तर जहाँ जीवविज्ञान किसी व्यक्ति के बारे में होना छोड़कर ऐसी संख्या के बारे में होने लगता है जो बदलती है, और अध्याय का अधिकांश यह तर्क है कि वह संख्या किसी भी व्यक्ति से अधिक ज्ञानप्रद है: वही ठंड झेलते दो जीव, एक अपने शरीर को नियत ताप पर थामे और उसकी क़ीमत चुकाता, दूसरा अपने ताप को हवा के पीछे चलने देता और भिन्न मुद्रा में क़ीमत चुकाता, अतः कोई भी रणनीति बेहतर नहीं और हर एक क़ीमतों के किसी ख़ास समुच्चय के विरुद्ध किया गया सौदा है; ऐसा वक्र जो कुछ न धकेलने पर बिना सीमा बढ़ता है और ऐसा S-आकार का जो वहाँ चपटा हो जाता है जहाँ परिवेश देना बंद कर देता है, और ये अपनी वृद्धि में नहीं बल्कि इसमें भिन्न हैं कि वृद्धि को अपने ही ऊपर पलने दिया जाता है या नहीं; ऐसी वहन क्षमता जो जगह का गुण है, जाति का नहीं; ऐसी जातियों की जोड़ी जो ठीक एक ही संसाधन पर दोनों टिक नहीं सकतीं, और वे कई तरीक़े जिनसे असली जातियाँ पूरी तरह न ओवरलैप करके उस परिणाम से बचती हैं; और संबंधों का ऐसा समुच्चय जो इससे वर्गीकृत नहीं कि कौन किसे खाता है बल्कि हर साथी पर प्रभाव के चिह्न से, जो मधुमक्खी और फूल को अंजीर और उसकी ततैया के साथ एक ही ख़ाने में रखता है और कोयल को दूसरे में छोड़ देता है।",
+      mr: "ती पातळी जिथे जीवशास्त्र एखाद्या व्यक्तीबद्दल असणे थांबवून अशा संख्येबद्दल असू लागते जी बदलते, आणि प्रकरणाचा बहुतांश हा युक्तिवाद आहे की ती संख्या कोणत्याही व्यक्तीहून अधिक माहितीपूर्ण आहे: तीच थंडी भोगणारे दोन जीव, एक आपले शरीर ठराविक तापमानावर धरून त्याची किंमत मोजत, दुसरा आपले तापमान हवेच्या मागे चालू देत आणि वेगळ्या चलनात किंमत मोजत, म्हणून कोणतीही रणनीती चांगली नाही आणि प्रत्येक किमतींच्या एका विशिष्ट संचाविरुद्ध केलेला सौदा आहे; असे वक्र जे काहीही ढकलत नसल्यास मर्यादेविना वाढते आणि असे S-आकाराचे जे तिथे सपाट होते जिथे परिसर पुरवणे थांबवतो, आणि ही आपल्या वाढीत नव्हे तर वाढीला स्वतःवरच पोसू दिले जाते का यात वेगळी आहेत; अशी वहन क्षमता जी जागेचा गुणधर्म आहे, जातीचा नाही; अशा जातींची जोडी ज्या नेमक्या एकाच संसाधनावर दोन्ही टिकू शकत नाहीत, आणि ते कित्येक मार्ग ज्यांनी खऱ्या जाती पूर्णपणे न व्यापून त्या निकालापासून वाचतात; आणि नात्यांचा असा संच जो कोण कोणाला खातो यावरून नव्हे तर प्रत्येक जोडीदारावरील परिणामाच्या चिन्हावरून वर्गीकृत होतो, जो मधमाशी आणि फूल यांना अंजीर आणि त्याच्या गांधीलमाशीसोबत एकाच खोक्यात ठेवतो आणि कोकिळेला दुसऱ्यात सोडतो.",
+    },
+    position: 11,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "regulate-conform-or-avoid",
+        name: {
+          en: "Regulate, conform or avoid",
+          hi: "नियमन, अनुरूपण या परिहार",
+          mr: "नियमन, अनुरूपण वा टाळणे",
+        },
+        kind: "strategy and what it costs",
+        prompt: {
+          en: "Three ways of dealing with a stressful environment: hold the internal condition constant, let it track the outside, or leave until it improves. What is this classification?",
+          hi: "किसी प्रतिकूल परिवेश से निपटने के तीन रास्ते: भीतरी स्थिति को अचर रखो, उसे बाहर के पीछे चलने दो, या सुधरने तक चले जाओ। यह कौन-सा वर्गीकरण है?",
+          mr: "एखाद्या प्रतिकूल परिसराशी निपटण्याचे तीन मार्ग: आतली स्थिती अचल ठेवा, तिला बाहेरच्या मागे चालू द्या, वा सुधारेपर्यंत निघून जा. हे कोणते वर्गीकरण?",
+        },
+        statement: {
+          en: "Regulate, conform or avoid are the three strategies open to an organism facing a stressful environment, and each carries a cost that the others do not.",
+          hi: "नियमन, अनुरूपण या परिहार वे तीन रणनीतियाँ हैं जो प्रतिकूल परिवेश झेलते जीव के लिए खुली हैं, और हर एक की ऐसी क़ीमत है जो बाक़ी की नहीं।",
+          mr: "नियमन, अनुरूपण वा टाळणे या त्या तीन रणनीती आहेत ज्या प्रतिकूल परिसर भोगणाऱ्या जीवासाठी खुल्या आहेत, आणि प्रत्येकीची अशी किंमत आहे जी बाकीच्यांची नाही.",
+        },
+        detail: {
+          en: "Regulating costs energy continuously, which is why a small mammal in the cold must eat almost constantly and why very small endotherms are rare in polar regions.",
+          hi: "नियमन में लगातार ऊर्जा लगती है, इसीलिए ठंड में छोटे स्तनपायी को लगभग निरंतर खाना पड़ता है और इसीलिए ध्रुवीय क्षेत्रों में बहुत छोटे तापनियंत्रित जीव दुर्लभ हैं।",
+          mr: "नियमनात सतत ऊर्जा लागते, म्हणूनच थंडीत लहान सस्तन प्राण्याला जवळपास सतत खावे लागते आणि म्हणूनच ध्रुवीय प्रदेशांत फार लहान तापनियंत्रित जीव दुर्मीळ आहेत.",
+        },
+        extra: {
+          en: "Conforming costs nothing in energy but surrenders control, so the animal's own chemistry slows when the surroundings cool and it cannot act when it most needs to.",
+          hi: "अनुरूपण में ऊर्जा की कोई क़ीमत नहीं पर नियंत्रण छूट जाता है, अतः गिर्द ठंडा होने पर प्राणी का अपना रसायन धीमा पड़ जाता है और जब उसे सबसे अधिक ज़रूरत हो तब वह काम नहीं कर सकता।",
+          mr: "अनुरूपणात ऊर्जेची कोणतीही किंमत नाही पण नियंत्रण सुटते, म्हणून भोवताल थंड झाल्यावर प्राण्याचे स्वतःचे रसायन मंदावते आणि जेव्हा त्याला सर्वाधिक गरज असते तेव्हा तो काम करू शकत नाही.",
+        },
+        pair: {
+          left: {
+            en: "Three answers to one problem, each with a different bill",
+            hi: "एक समस्या के तीन उत्तर, हर एक का बिल अलग",
+            mr: "एका समस्येची तीन उत्तरे, प्रत्येकाचे बिल वेगळे",
+          },
+          right: {
+            en: "regulate, conform or avoid",
+            hi: "नियमन, अनुरूपण या परिहार",
+            mr: "नियमन, अनुरूपण वा टाळणे",
+          },
+        },
+      },
+      {
+        id: "exponential-against-logistic-growth",
+        name: {
+          en: "Exponential against logistic growth",
+          hi: "चरघातांकी बनाम संभार वृद्धि",
+          mr: "घातांकी विरुद्ध संभार वाढ",
+        },
+        kind: "strategy and what it costs",
+        prompt: {
+          en: "One curve that climbs faster the higher it gets and never stops, and another that starts the same way and flattens as the environment stops supplying. What is this pair?",
+          hi: "एक वक्र जो जितना ऊपर जाता है उतना तेज़ चढ़ता है और कभी रुकता नहीं, और दूसरा जो वैसे ही शुरू होता है और परिवेश के देना बंद करते ही चपटा हो जाता है। यह कौन-सी जोड़ी है?",
+          mr: "एक वक्र जे जितके वर जाते तितके जलद चढते आणि कधीच थांबत नाही, आणि दुसरे जे तसेच सुरू होते आणि परिसराने पुरवणे थांबवताच सपाट होते. ही कोणती जोडी?",
+        },
+        statement: {
+          en: "Exponential growth occurs when resources are unlimited and each addition to the population adds to the rate, while logistic growth slows as the population approaches what the environment can support.",
+          hi: "चरघातांकी वृद्धि तब होती है जब संसाधन असीमित हों और आबादी में हर जुड़ाव वेग बढ़ा दे, जबकि संभार वृद्धि तब धीमी पड़ती है जब आबादी उस तक पहुँचती है जितना परिवेश सँभाल सकता है।",
+          mr: "घातांकी वाढ तेव्हा होते जेव्हा संसाधने अमर्याद असतील आणि लोकसंख्येतील प्रत्येक भर वेग वाढवेल, तर संभार वाढ तेव्हा मंदावते जेव्हा लोकसंख्या परिसर जितके सांभाळू शकतो तिथवर पोहोचते.",
+        },
+        detail: {
+          en: "The difference is not in how fast they grow but in whether the growth feeds on itself without limit, and no real population can grow exponentially for long.",
+          hi: "अंतर इसमें नहीं कि वे कितनी तेज़ बढ़ती हैं बल्कि इसमें कि वृद्धि बिना सीमा अपने ही ऊपर पलती है या नहीं, और कोई असली आबादी लंबे समय तक चरघातांकी नहीं बढ़ सकती।",
+          mr: "फरक त्या किती जलद वाढतात यात नसून वाढ मर्यादेविना स्वतःवरच पोसते का यात आहे, आणि कोणतीही खरी लोकसंख्या दीर्घकाळ घातांकी वाढू शकत नाही.",
+        },
+        extra: {
+          en: "The logistic curve is the more realistic because every environment eventually runs short of something, and the level at which it flattens is set by that resource.",
+          hi: "संभार वक्र अधिक यथार्थ है क्योंकि हर परिवेश में अंततः किसी न किसी चीज़ की कमी पड़ती है, और वह जिस स्तर पर चपटा होता है उसे वही संसाधन तय करता है।",
+          mr: "संभार वक्र अधिक वास्तववादी आहे कारण प्रत्येक परिसरात अखेरीस कशाची ना कशाची कमतरता पडते, आणि तो ज्या पातळीवर सपाट होतो ती तेच संसाधन ठरवते.",
+        },
+        pair: {
+          left: {
+            en: "One curve is allowed to feed on itself and the other is not",
+            hi: "एक वक्र को अपने ही ऊपर पलने दिया जाता है और दूसरे को नहीं",
+            mr: "एका वक्राला स्वतःवरच पोसू दिले जाते आणि दुसऱ्याला नाही",
+          },
+          right: {
+            en: "exponential against logistic growth",
+            hi: "चरघातांकी बनाम संभार वृद्धि",
+            mr: "घातांकी विरुद्ध संभार वाढ",
+          },
+        },
+      },
+      {
+        id: "carrying-capacity",
+        name: {
+          en: "Carrying capacity",
+          hi: "वहन क्षमता",
+          mr: "वहन क्षमता",
+        },
+        kind: "strategy and what it costs",
+        prompt: {
+          en: "A ceiling that belongs to the place rather than to the species, and that can be raised or lowered by changing what the place supplies. What is it?",
+          hi: "ऐसी छत जो जाति की नहीं बल्कि जगह की है, और जिसे यह बदलकर ऊँचा या नीचा किया जा सकता है कि जगह क्या देती है। यह क्या है?",
+          mr: "अशी मर्यादा जी जातीची नव्हे तर जागेची आहे, आणि जी जागा काय पुरवते ते बदलून वर वा खाली करता येते. ही काय आहे?",
+        },
+        statement: {
+          en: "Carrying capacity is the population size a particular environment can sustain indefinitely, and it is set by whichever resource runs short first.",
+          hi: "वहन क्षमता वह आबादी आकार है जिसे कोई ख़ास परिवेश अनिश्चित काल तक सँभाल सकता है, और उसे वही संसाधन तय करता है जिसकी कमी सबसे पहले पड़े।",
+          mr: "वहन क्षमता म्हणजे तो लोकसंख्या आकार जो एखादा विशिष्ट परिसर अनिश्चित काळ सांभाळू शकतो, आणि तो तेच संसाधन ठरवते ज्याची कमतरता सर्वप्रथम पडेल.",
+        },
+        detail: {
+          en: "It is not a fixed number for a species, because the same species has a different capacity in every place and in every season.",
+          hi: "यह किसी जाति के लिए नियत संख्या नहीं, क्योंकि वही जाति हर जगह और हर मौसम में भिन्न क्षमता रखती है।",
+          mr: "ही एखाद्या जातीसाठी ठराविक संख्या नाही, कारण तीच जात प्रत्येक जागी आणि प्रत्येक ऋतूत वेगळी क्षमता ठेवते.",
+        },
+        extra: {
+          en: "A population may overshoot it briefly and then crash, because the damage done while above it lowers what the environment can supply afterwards.",
+          hi: "कोई आबादी उसे थोड़े समय के लिए पार कर फिर ढह सकती है, क्योंकि उससे ऊपर रहते हुए किया गया नुक़सान घटा देता है कि परिवेश आगे क्या दे सकेगा।",
+          mr: "एखादी लोकसंख्या तिला थोड्या काळासाठी ओलांडून मग कोसळू शकते, कारण तिच्यावर असताना केलेले नुकसान परिसर पुढे काय पुरवू शकेल ते घटवते.",
+        },
+        pair: {
+          left: {
+            en: "A ceiling owned by the place, not by the species",
+            hi: "ऐसी छत जिसकी मालिक जगह है, जाति नहीं",
+            mr: "अशी मर्यादा जिची मालक जागा आहे, जात नाही",
+          },
+          right: {
+            en: "carrying capacity",
+            hi: "वहन क्षमता",
+            mr: "वहन क्षमता",
+          },
+        },
+      },
+      {
+        id: "competitive-exclusion",
+        name: {
+          en: "Competitive exclusion",
+          hi: "स्पर्धी अपवर्जन",
+          mr: "स्पर्धी अपवर्जन",
+        },
+        kind: "interaction and how it is classified",
+        prompt: {
+          en: "A principle stating that two species living on exactly the same resource cannot both persist, and whose interest lies in the fact that so many similar species evidently do. What is it?",
+          hi: "ऐसा सिद्धांत जो कहता है कि ठीक एक ही संसाधन पर जीती दो जातियाँ दोनों टिक नहीं सकतीं, और जिसकी रुचि इस तथ्य में है कि इतनी समान जातियाँ ज़ाहिरा तौर पर टिकती हैं। यह क्या है?",
+          mr: "असे तत्त्व जे सांगते की नेमक्या एकाच संसाधनावर जगणाऱ्या दोन जाती दोन्ही टिकू शकत नाहीत, आणि ज्याचा रस या सत्यात आहे की इतक्या सारख्या जाती स्पष्टपणे टिकतात. हे काय आहे?",
+        },
+        statement: {
+          en: "Competitive exclusion says that two species with identical resource requirements cannot coexist indefinitely, because the better competitor eliminates the other.",
+          hi: "स्पर्धी अपवर्जन कहता है कि समरूप संसाधन आवश्यकताओं वाली दो जातियाँ अनिश्चित काल तक साथ नहीं रह सकतीं, क्योंकि बेहतर स्पर्धी दूसरी को हटा देता है।",
+          mr: "स्पर्धी अपवर्जन सांगते की सारख्या संसाधन गरजा असलेल्या दोन जाती अनिश्चित काळ एकत्र राहू शकत नाहीत, कारण अधिक चांगला स्पर्धक दुसरीला हटवतो.",
+        },
+        detail: {
+          en: "The word 'identical' is doing the work: real species almost always differ somewhere, in what they eat, when they feed or where they forage.",
+          hi: "काम 'समरूप' शब्द कर रहा है: असली जातियाँ लगभग हमेशा कहीं न कहीं भिन्न होती हैं, इसमें कि वे क्या खाती हैं, कब खाती हैं या कहाँ चरती हैं।",
+          mr: "काम 'सारख्या' हा शब्द करत आहे: खऱ्या जाती जवळपास नेहमी कुठेतरी वेगळ्या असतात, त्या काय खातात, कधी खातात वा कुठे चरतात यात.",
+        },
+        extra: {
+          en: "The observed outcome is usually a division of the resource rather than an exclusion, which is why several warbler species can feed in one tree by using different parts of it.",
+          hi: "देखा गया परिणाम प्रायः अपवर्जन नहीं बल्कि संसाधन का बँटवारा होता है, इसीलिए कई फुदकी जातियाँ एक ही पेड़ के भिन्न हिस्सों का उपयोग कर उसी पर खा सकती हैं।",
+          mr: "निरीक्षिलेला निकाल बहुधा अपवर्जन नसून संसाधनाची वाटणी असतो, म्हणूनच कित्येक वटवट्या जाती एकाच झाडाचे वेगळे भाग वापरून त्यावरच खाऊ शकतात.",
+        },
+        pair: {
+          left: {
+            en: "The principle is confirmed by how species avoid it",
+            hi: "सिद्धांत की पुष्टि इससे होती है कि जातियाँ उससे कैसे बचती हैं",
+            mr: "तत्त्वाची खात्री जाती त्यापासून कशा वाचतात यातून होते",
+          },
+          right: {
+            en: "competitive exclusion",
+            hi: "स्पर्धी अपवर्जन",
+            mr: "स्पर्धी अपवर्जन",
+          },
+        },
+      },
+      {
+        id: "classifying-interactions-by-sign",
+        name: {
+          en: "Classifying interactions by sign",
+          hi: "अन्योन्यक्रियाओं का चिह्न से वर्गीकरण",
+          mr: "परस्परक्रियांचे चिन्हाने वर्गीकरण",
+        },
+        kind: "interaction and how it is classified",
+        prompt: {
+          en: "A scheme that ignores what the two organisms are doing and records only whether each is helped, harmed or unaffected, so that a bee and a flower fall into the same box as a fig and its wasp. What is it?",
+          hi: "ऐसी योजना जो इसकी अनदेखी करती है कि दोनों जीव कर क्या रहे हैं और केवल यह दर्ज करती है कि हर एक को मदद मिली, नुक़सान हुआ या कुछ नहीं, अतः मधुमक्खी और फूल उसी ख़ाने में पड़ते हैं जिसमें अंजीर और उसकी ततैया। यह क्या है?",
+          mr: "अशी योजना जी दोन जीव काय करत आहेत याकडे दुर्लक्ष करते आणि केवळ हे नोंदवते की प्रत्येकाला मदत मिळाली, नुकसान झाले की काहीच नाही, म्हणून मधमाशी आणि फूल त्याच खोक्यात पडतात ज्यात अंजीर आणि त्याची गांधीलमाशी. ही काय आहे?",
+        },
+        statement: {
+          en: "Classifying interactions by sign records the effect on each partner as positive, negative or neutral, giving mutualism, competition, predation, parasitism, commensalism and amensalism.",
+          hi: "अन्योन्यक्रियाओं का चिह्न से वर्गीकरण हर साथी पर प्रभाव को धनात्मक, ऋणात्मक या उदासीन दर्ज करता है, जिससे सहोपकारिता, स्पर्धा, परभक्षण, परजीविता, सहभोजिता और असहभोजिता मिलती हैं।",
+          mr: "परस्परक्रियांचे चिन्हाने वर्गीकरण प्रत्येक जोडीदारावरील परिणाम धन, ऋण वा उदासीन नोंदवते, ज्याने सहोपकारिता, स्पर्धा, भक्षण, परजीविता, सहभोजिता आणि असहभोजिता मिळतात.",
+        },
+        detail: {
+          en: "The scheme is deliberately blind to mechanism, which is what lets it put a pollinator and a gut bacterium in the same category despite having nothing else in common.",
+          hi: "यह योजना जान-बूझकर क्रियाविधि के प्रति अंधी है, और यही उसे परागणकर्ता और आँत के जीवाणु को एक ही श्रेणी में रखने देती है यद्यपि उनमें और कुछ भी साझा नहीं।",
+          mr: "ही योजना जाणीवपूर्वक यंत्रणेबाबत आंधळी आहे, आणि हेच तिला परागणकर्ता आणि आतड्याचा जिवाणू एकाच वर्गात ठेवू देते जरी त्यांच्यात इतर काहीही समाईक नाही.",
+        },
+        extra: {
+          en: "The signs are not fixed for a pair of species, because a relationship that benefits both under one set of conditions can turn parasitic under another.",
+          hi: "चिह्न किसी जाति युग्म के लिए नियत नहीं, क्योंकि जो संबंध एक परिस्थिति में दोनों को लाभ देता है वह दूसरी में परजीवी हो सकता है।",
+          mr: "चिन्हे एखाद्या जाती जोडीसाठी ठराविक नाहीत, कारण जे नाते एका परिस्थितीत दोघांना फायदा देते ते दुसऱ्यात परजीवी होऊ शकते.",
+        },
+        pair: {
+          left: {
+            en: "Record the sign and ignore the story",
+            hi: "चिह्न दर्ज करो और कहानी की अनदेखी करो",
+            mr: "चिन्ह नोंदवा आणि कथा दुर्लक्षा",
+          },
+          right: {
+            en: "classifying interactions by sign",
+            hi: "अन्योन्यक्रियाओं का चिह्न से वर्गीकरण",
+            mr: "परस्परक्रियांचे चिन्हाने वर्गीकरण",
+          },
+        },
+      },
+      {
+        id: "adaptations-to-extremes",
+        name: {
+          en: "Adaptations to extremes",
+          hi: "चरम स्थितियों के अनुकूलन",
+          mr: "टोकाच्या स्थितींशी अनुकूलन",
+        },
+        kind: "interaction and how it is classified",
+        prompt: {
+          en: "A set of features that only make sense once you know what the organism is short of — a shape that reduces surface, a habit of not moving by day, a seed that waits for years. What are these?",
+          hi: "ऐसे लक्षणों का समुच्चय जो तभी तुक बनाते हैं जब पता हो कि जीव के पास किसकी कमी है — ऐसा आकार जो सतह घटाए, दिन में न हिलने की आदत, ऐसा बीज जो वर्षों प्रतीक्षा करे। ये क्या हैं?",
+          mr: "अशा लक्षणांचा संच जी तेव्हाच अर्थपूर्ण ठरतात जेव्हा जीवाकडे कशाची कमतरता आहे हे माहीत असेल — असा आकार जो पृष्ठभाग घटवेल, दिवसा न हलण्याची सवय, असे बी जे वर्षे वाट पाहील. ही काय आहेत?",
+        },
+        statement: {
+          en: "Adaptations to extremes are features whose value can only be read against the constraint they answer, whether that is heat, cold, drought or the absence of oxygen.",
+          hi: "चरम स्थितियों के अनुकूलन वे लक्षण हैं जिनका मूल्य केवल उसी बाधा के सामने पढ़ा जा सकता है जिसका वे उत्तर हैं, चाहे वह ऊष्मा हो, ठंड, सूखा या ऑक्सीजन का अभाव।",
+          mr: "टोकाच्या स्थितींशी अनुकूलन ही अशी लक्षणे आहेत ज्यांचे मूल्य केवळ त्याच बंधनासमोर वाचता येते ज्याचे ती उत्तर आहेत, ते उष्णता असो, थंडी, दुष्काळ वा ऑक्सिजनचा अभाव.",
+        },
+        detail: {
+          en: "A compact body with short extremities loses less heat because it has less surface for its volume, which is why the same species tends to be stockier in colder parts of its range.",
+          hi: "छोटे सिरों वाला ठस शरीर कम ऊष्मा खोता है क्योंकि उसके आयतन के अनुपात में सतह कम है, इसीलिए वही जाति अपने परास के ठंडे हिस्सों में अधिक गठीली होती है।",
+          mr: "लहान टोके असलेले घट्ट शरीर कमी उष्णता गमावते कारण त्याच्या घनफळाच्या प्रमाणात पृष्ठभाग कमी आहे, म्हणूनच तीच जात आपल्या व्याप्तीच्या थंड भागांत अधिक भरदार असते.",
+        },
+        extra: {
+          en: "The commonest adaptation is not physiological but behavioural — moving, burrowing or waiting — because behaviour is cheap and can be reversed when conditions change.",
+          hi: "सबसे आम अनुकूलन शारीरिक नहीं बल्कि व्यवहारगत है — हट जाना, बिल खोदना या प्रतीक्षा करना — क्योंकि व्यवहार सस्ता है और परिस्थिति बदलने पर उलटा जा सकता है।",
+          mr: "सर्वांत सामान्य अनुकूलन शारीरिक नसून वर्तनात्मक आहे — हलणे, बीळ खणणे वा वाट पाहणे — कारण वर्तन स्वस्त आहे आणि परिस्थिती बदलल्यावर उलटवता येते.",
+        },
+        pair: {
+          left: {
+            en: "The feature is unreadable until you know the shortage",
+            hi: "जब तक कमी का पता न हो लक्षण पढ़ा नहीं जा सकता",
+            mr: "कमतरता कळेपर्यंत लक्षण वाचता येत नाही",
+          },
+          right: {
+            en: "adaptations to extremes",
+            hi: "चरम स्थितियों के अनुकूलन",
+            mr: "टोकाच्या स्थितींशी अनुकूलन",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A bird in the Himalayan winter holds its body at 40 °C while the air is at −10 °C; a fish in the same stream lets its temperature match the water. Neither is described as better adapted. Explain why, and what each is paying.",
+          hi: "हिमालयी सर्दी में कोई पक्षी अपना शरीर 40 °C पर थामे रहता है जबकि हवा −10 °C पर है; उसी धारा की कोई मछली अपने ताप को पानी से मिला देती है। किसी को भी बेहतर अनुकूलित नहीं कहा जाता। बताओ क्यों, और हर एक क्या क़ीमत चुका रहा है।",
+          mr: "हिमालयी हिवाळ्यात एखादा पक्षी आपले शरीर 40 °C वर धरतो तर हवा −10 °C वर आहे; त्याच प्रवाहातील एखादा मासा आपले तापमान पाण्याशी जुळवतो. कोणालाही अधिक चांगले अनुकूलित म्हटले जात नाही. का, आणि प्रत्येक काय किंमत मोजत आहे ते सांगा.",
+        },
+        choices: [
+          {
+            en: "Each strategy buys something and pays for it in a different currency. Regulating keeps every enzyme at its optimum and lets the bird stay active in any weather, but the heat must be generated continuously, so it needs a high and reliable food intake and a large fraction of what it eats goes to staying warm. Conforming costs no energy at all, so the fish survives on far less food, but its own reactions slow as the water cools and it cannot be active when it is cold. Neither is better in the abstract: which one pays depends on how reliable the food supply is and how much the animal loses by being inactive, and small size makes regulating disproportionately expensive because surface area rises relative to volume",
+            hi: "हर रणनीति कुछ ख़रीदती है और उसकी क़ीमत भिन्न मुद्रा में चुकाती है। नियमन हर एंज़ाइम को उसके इष्टतम पर रखता है और पक्षी को किसी भी मौसम में सक्रिय रहने देता है, पर ऊष्मा लगातार बनानी पड़ती है, अतः उसे ऊँचा और भरोसेमंद भोजन चाहिए और जो वह खाता है उसका बड़ा हिस्सा गर्म रहने में जाता है। अनुरूपण में ऊर्जा की कोई क़ीमत नहीं, अतः मछली कहीं कम भोजन पर बचती है, पर पानी ठंडा होने पर उसकी अपनी अभिक्रियाएँ धीमी पड़ जाती हैं और ठंड में वह सक्रिय नहीं हो सकती। अमूर्त रूप से कोई बेहतर नहीं: कौन-सी फ़ायदे में है यह इस पर निर्भर है कि भोजन की आपूर्ति कितनी भरोसेमंद है और निष्क्रिय रहकर प्राणी कितना गँवाता है, और छोटा आकार नियमन को अनुपात से अधिक महँगा बना देता है क्योंकि आयतन के मुक़ाबले सतह क्षेत्रफल बढ़ जाता है",
+            mr: "प्रत्येक रणनीती काहीतरी विकत घेते आणि तिची किंमत वेगळ्या चलनात मोजते. नियमन प्रत्येक विकराला त्याच्या इष्टतमावर ठेवते आणि पक्ष्याला कोणत्याही हवामानात सक्रिय राहू देते, पण उष्णता सतत बनवावी लागते, म्हणून त्याला उच्च आणि भरवशाचे अन्न लागते आणि तो जे खातो त्याचा मोठा भाग उबदार राहण्यात जातो. अनुरूपणात ऊर्जेची कोणतीही किंमत नाही, म्हणून मासा कितीतरी कमी अन्नावर टिकतो, पण पाणी थंड झाल्यावर त्याच्या स्वतःच्या अभिक्रिया मंदावतात आणि थंडीत तो सक्रिय होऊ शकत नाही. अमूर्तपणे कोणतीही चांगली नाही: कोणती फायद्यात आहे हे यावर अवलंबून की अन्नाचा पुरवठा किती भरवशाचा आहे आणि निष्क्रिय राहून प्राणी किती गमावतो, आणि लहान आकार नियमनाला प्रमाणाहून अधिक महाग बनवतो कारण घनफळाच्या तुलनेत पृष्ठभाग वाढतो",
+          },
+          {
+            en: "The bird is better adapted in every respect, and the fish conforms only because it has not yet evolved the ability to regulate, which all lineages tend towards over time",
+            hi: "पक्षी हर दृष्टि से बेहतर अनुकूलित है, और मछली केवल इसलिए अनुरूपण करती है कि उसने अभी नियमन की क्षमता विकसित नहीं की, जिसकी ओर सारी वंशरेखाएँ समय के साथ बढ़ती हैं",
+            mr: "पक्षी प्रत्येक दृष्टीने अधिक चांगला अनुकूलित आहे, आणि मासा केवळ यासाठी अनुरूपण करतो की त्याने अजून नियमनाची क्षमता विकसित केलेली नाही, जिच्याकडे सर्व वंशरेषा काळासोबत जातात",
+          },
+          {
+            en: "The fish is better adapted, because conforming is the more advanced strategy and regulating is a primitive condition retained only by birds and mammals",
+            hi: "मछली बेहतर अनुकूलित है, क्योंकि अनुरूपण अधिक उन्नत रणनीति है और नियमन आदिम स्थिति है जिसे केवल पक्षी और स्तनपायी बचाए हुए हैं",
+            mr: "मासा अधिक चांगला अनुकूलित आहे, कारण अनुरूपण अधिक प्रगत रणनीती आहे आणि नियमन ही आदिम स्थिती आहे जी केवळ पक्षी आणि सस्तन प्राण्यांनी टिकवली आहे",
+          },
+          {
+            en: "There is no real difference: both animals maintain a constant internal temperature, and the fish achieves it by living in water, which does not change temperature at all",
+            hi: "कोई असली अंतर नहीं है: दोनों प्राणी नियत भीतरी ताप बनाए रखते हैं, और मछली उसे पानी में रहकर पाती है, जिसका ताप बदलता ही नहीं",
+            mr: "कोणताही खरा फरक नाही: दोन्ही प्राणी अचल आतले तापमान टिकवतात, आणि मासा ते पाण्यात राहून मिळवतो, ज्याचे तापमान बदलतच नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The instinct to rank strategies is what the question is testing, and resisting it is the whole point of the chapter. Ask instead what each one buys and what it costs. WHAT REGULATING BUYS. Every enzyme has a temperature at which it works best, and rates roughly double for each ten-degree rise. An animal holding its internal temperature constant keeps its whole biochemistry at that optimum regardless of the weather. It can hunt on a cold morning, escape a predator at night, and remain alert in a season when a conforming animal is torpid. That independence from the environment is a genuine capability and not a small one. WHAT IT COSTS. Heat is generated by metabolism and lost across the body surface, so maintaining a forty-degree gradient means burning fuel continuously, all day and all night, whether or not the animal has eaten. A small bird in a Himalayan winter may need to spend most of its waking hours feeding simply to stay warm. If the food supply fails for a day, the animal cannot switch the requirement off — regulation is not optional once you depend on it. WHAT CONFORMING BUYS. The fish spends nothing on temperature at all. Its metabolic rate at 4 °C may be a small fraction of what a similarly sized bird requires, so it can survive on far less food and through long periods when little is available. In an environment where food is scarce or unpredictable, this is not a deficiency but the reason the strategy persists. WHAT CONFORMING COSTS. Control. As the water cools, the fish's own reactions slow, it swims more sluggishly, digests more slowly and reacts less quickly — precisely when a predator that regulates is at full capacity. The animal has traded away the ability to choose when it is active. WHY SIZE COMES INTO IT. Heat is lost across a surface and generated throughout a volume, and surface area rises as the square of length while volume rises as the cube. A small animal therefore has far more surface per unit of volume and loses heat much faster in proportion. This is why there are no very small endothermic animals in polar regions, and why the smallest mammals and birds have astonishingly high metabolic rates — a shrew must eat close to its own body weight daily. It also explains a general trend: within a species, individuals in colder parts of the range tend to be larger and have shorter extremities. THE POINT TO CARRY AWAY. 'Better adapted' is not a property an organism can have on its own; it is a relation between an organism and a particular set of conditions. Ask what the environment supplies and what it demands, and the strategy that wins there follows. The same question asked in a different place gets a different answer, which is why both strategies still exist. (The second and third options both rank the strategies, and each invents a direction to evolution that the persistence of both refutes; the fourth denies that water temperature varies, which any stream in winter contradicts.)",
+          hi: "रणनीतियों को क्रम देने की प्रवृत्ति ही वह है जिसे प्रश्न परख रहा है, और उसका विरोध करना ही अध्याय का पूरा मर्म है। इसके बजाय पूछो कि हर एक क्या ख़रीदती है और क्या क़ीमत चुकाती है। नियमन क्या ख़रीदता है। हर एंज़ाइम का एक ताप है जिस पर वह सबसे अच्छा चलता है, और हर दस अंश की बढ़त पर वेग मोटे तौर पर दुगुने हो जाते हैं। जो प्राणी अपना भीतरी ताप अचर रखता है वह मौसम की परवाह किए बिना अपने पूरे जैवरसायन को उसी इष्टतम पर रखता है। वह ठंडी सुबह शिकार कर सकता है, रात में परभक्षी से बच सकता है, और ऐसे मौसम में सतर्क रह सकता है जब अनुरूपण करता प्राणी सुस्त पड़ा हो। परिवेश से वह स्वतंत्रता असली क्षमता है और छोटी नहीं। उसकी क़ीमत क्या है। ऊष्मा उपापचय से बनती है और शरीर की सतह से खोती है, अतः चालीस अंश की प्रवणता बनाए रखने का अर्थ है लगातार ईंधन जलाना, दिन-रात, चाहे प्राणी ने खाया हो या नहीं। हिमालयी सर्दी में छोटे पक्षी को केवल गर्म रहने के लिए अपने जागने के अधिकांश घंटे खाने में बिताने पड़ सकते हैं। यदि एक दिन भोजन की आपूर्ति विफल हो जाए, तो प्राणी उस आवश्यकता को बंद नहीं कर सकता — एक बार उस पर निर्भर हो जाने के बाद नियमन वैकल्पिक नहीं रहता। अनुरूपण क्या ख़रीदता है। मछली ताप पर कुछ भी ख़र्च नहीं करती। 4 °C पर उसकी उपापचयी दर उतने ही आकार के पक्षी की ज़रूरत का छोटा अंश हो सकती है, अतः वह कहीं कम भोजन पर और ऐसे लंबे कालों में बच सकती है जब बहुत कम उपलब्ध हो। जिस परिवेश में भोजन दुर्लभ या अप्रत्याशित है, वहाँ यह कमी नहीं बल्कि वह कारण है कि रणनीति टिकी हुई है। अनुरूपण की क़ीमत क्या है। नियंत्रण। पानी ठंडा होने पर मछली की अपनी अभिक्रियाएँ धीमी पड़ जाती हैं, वह सुस्ती से तैरती है, धीमे पचाती है और कम तेज़ी से प्रतिक्रिया करती है — ठीक तब जब नियमन करता परभक्षी पूरी क्षमता पर हो। प्राणी ने यह चुनने की क्षमता सौंप दी है कि वह कब सक्रिय हो। आकार इसमें कैसे आता है। ऊष्मा किसी सतह से खोती है और पूरे आयतन में बनती है, और सतह क्षेत्रफल लंबाई के वर्ग से बढ़ता है जबकि आयतन घन से। अतः छोटे प्राणी के पास प्रति इकाई आयतन कहीं अधिक सतह है और वह अनुपात में कहीं तेज़ी से ऊष्मा खोता है। इसीलिए ध्रुवीय क्षेत्रों में बहुत छोटे तापनियंत्रित प्राणी नहीं हैं, और इसीलिए सबसे छोटे स्तनपायियों और पक्षियों की उपापचयी दरें चौंकाने वाली ऊँची हैं — छछूंदर को रोज़ अपने शरीर के भार के आसपास खाना पड़ता है। यह एक सामान्य प्रवृत्ति भी समझाता है: किसी जाति के भीतर, परास के ठंडे हिस्सों के व्यक्ति बड़े होते हैं और उनके सिरे छोटे। साथ ले जाने लायक़ बात। 'बेहतर अनुकूलित' ऐसा गुण नहीं जो कोई जीव अपने आप रख सके; वह जीव और परिस्थितियों के किसी ख़ास समुच्चय के बीच का संबंध है। पूछो कि परिवेश क्या देता है और क्या माँगता है, और वहाँ जो रणनीति जीतती है वह निकल आती है। वही प्रश्न किसी दूसरी जगह पूछने पर भिन्न उत्तर देता है, इसीलिए दोनों रणनीतियाँ अब भी हैं। (दूसरा और तीसरा विकल्प दोनों रणनीतियों को क्रम देते हैं, और हर एक विकास को ऐसी दिशा दे देता है जिसका खंडन दोनों का टिका रहना करता है; चौथा इससे इनकार करता है कि पानी का ताप बदलता है, जिसका खंडन सर्दी की कोई भी धारा कर देती है।)",
+          mr: "रणनीतींना क्रम देण्याची प्रवृत्तीच ती आहे जिची प्रश्न परीक्षा घेत आहे, आणि तिला विरोध करणे हाच प्रकरणाचा अख्खा गाभा आहे. त्याऐवजी विचारा की प्रत्येक काय विकत घेते आणि काय किंमत मोजते. नियमन काय विकत घेते. प्रत्येक विकराचे एक तापमान आहे ज्यावर ते सर्वांत चांगले चालते, आणि प्रत्येक दहा अंशांच्या वाढीवर वेग ढोबळपणे दुप्पट होतात. जो प्राणी आपले आतले तापमान अचल ठेवतो तो हवामानाची पर्वा न करता आपले अख्खे जैवरसायन त्याच इष्टतमावर ठेवतो. तो थंड सकाळी शिकार करू शकतो, रात्री भक्षकापासून वाचू शकतो, आणि अशा ऋतूत सावध राहू शकतो जेव्हा अनुरूपण करणारा प्राणी सुस्त पडलेला असेल. परिसरापासूनचे ते स्वातंत्र्य खरी क्षमता आहे आणि लहान नाही. तिची किंमत काय आहे. उष्णता चयापचयातून बनते आणि शरीराच्या पृष्ठभागातून हरवते, म्हणून चाळीस अंशांची प्रवणता टिकवण्याचा अर्थ सतत इंधन जाळणे, दिवसरात्र, प्राण्याने खाल्ले असो वा नसो. हिमालयी हिवाळ्यात लहान पक्ष्याला केवळ उबदार राहण्यासाठी आपले जागण्याचे बहुतांश तास खाण्यात घालवावे लागू शकतात. जर एक दिवस अन्नाचा पुरवठा अपयशी ठरला, तर प्राणी ती गरज बंद करू शकत नाही — एकदा तिच्यावर अवलंबून झाल्यावर नियमन ऐच्छिक राहत नाही. अनुरूपण काय विकत घेते. मासा तापमानावर काहीही खर्च करत नाही. 4 °C वर त्याचा चयापचय दर तितक्याच आकाराच्या पक्ष्याच्या गरजेचा लहान अंश असू शकतो, म्हणून तो कितीतरी कमी अन्नावर आणि अशा दीर्घ काळांत टिकू शकतो जेव्हा फार कमी उपलब्ध असेल. ज्या परिसरात अन्न दुर्मीळ वा अनपेक्षित आहे, तिथे ही कमतरता नसून तेच कारण आहे की रणनीती टिकून आहे. अनुरूपणाची किंमत काय आहे. नियंत्रण. पाणी थंड झाल्यावर माशाच्या स्वतःच्या अभिक्रिया मंदावतात, तो सुस्तपणे पोहतो, सावकाश पचवतो आणि कमी वेगाने प्रतिसाद देतो — नेमके तेव्हा जेव्हा नियमन करणारा भक्षक पूर्ण क्षमतेवर असेल. प्राण्याने तो कधी सक्रिय व्हावा हे निवडण्याची क्षमता सोपवली आहे. आकार यात कसा येतो. उष्णता एखाद्या पृष्ठभागातून हरवते आणि अख्ख्या घनफळात बनते, आणि पृष्ठभाग लांबीच्या वर्गाने वाढतो तर घनफळ घनाने. म्हणून लहान प्राण्याकडे प्रति एकक घनफळ कितीतरी अधिक पृष्ठभाग आहे आणि तो प्रमाणात कितीतरी जलद उष्णता गमावतो. म्हणूनच ध्रुवीय प्रदेशांत फार लहान तापनियंत्रित प्राणी नाहीत, आणि म्हणूनच सर्वांत लहान सस्तन प्राणी आणि पक्ष्यांचे चयापचय दर चकित करणारे उच्च आहेत — चिचुंदरीला रोज आपल्या शरीराच्या वजनाच्या आसपास खावे लागते. हे एक सर्वसाधारण प्रवृत्तीही समजावते: एखाद्या जातीत, व्याप्तीच्या थंड भागांतल्या व्यक्ती मोठ्या असतात आणि त्यांची टोके लहान. सोबत न्यायचा मुद्दा. 'अधिक चांगले अनुकूलित' हा असा गुणधर्म नाही जो एखादा जीव स्वतःहून ठेवू शकेल; ते जीव आणि परिस्थितींच्या एका विशिष्ट संचामधले नाते आहे. विचारा की परिसर काय पुरवतो आणि काय मागतो, आणि तिथे जी रणनीती जिंकते ती निघून येते. तोच प्रश्न दुसऱ्या जागी विचारल्यास वेगळे उत्तर देतो, म्हणूनच दोन्ही रणनीती अजूनही आहेत. (दुसरा आणि तिसरा पर्याय दोन्ही रणनीतींना क्रम देतात, आणि प्रत्येक उत्क्रांतीला अशी दिशा देतो जिचे खंडन दोघांचे टिकून राहणे करते; चौथा हे नाकारतो की पाण्याचे तापमान बदलते, ज्याचे खंडन हिवाळ्यातला कोणताही प्रवाह करतो.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Competitive exclusion says two species using exactly the same resource cannot coexist, yet several warbler species feed in the same spruce trees and many similar species coexist everywhere. Explain whether the principle is refuted, and what the observations actually show.",
+          hi: "स्पर्धी अपवर्जन कहता है कि ठीक एक ही संसाधन काम में लाती दो जातियाँ साथ नहीं रह सकतीं, फिर भी कई फुदकी जातियाँ एक ही स्प्रूस पेड़ों पर खाती हैं और बहुत सी समान जातियाँ हर जगह साथ रहती हैं। बताओ कि सिद्धांत का खंडन हुआ या नहीं, और प्रेक्षण वस्तुतः क्या दिखाते हैं।",
+          mr: "स्पर्धी अपवर्जन सांगते की नेमके तेच संसाधन वापरणाऱ्या दोन जाती एकत्र राहू शकत नाहीत, तरीही कित्येक वटवट्या जाती त्याच स्प्रूस झाडांवर खातात आणि बऱ्याच सारख्या जाती सर्वत्र एकत्र राहतात. तत्त्वाचे खंडन झाले का, आणि निरीक्षणे प्रत्यक्षात काय दाखवतात ते सांगा.",
+        },
+        choices: [
+          {
+            en: "The principle is not refuted, because its condition is that the resource use be identical, and close examination shows that coexisting species almost never overlap completely. The warblers feed in the same trees but at different heights and on different parts of the branches, so each is exploiting a slightly different resource. That is resource partitioning, and it is what the principle predicts should be found wherever similar species persist together. The observation is therefore evidence FOR the principle rather than against it: competition has not eliminated one species but has pushed the two apart, and the differences we see between them may themselves be a consequence of that history",
+            hi: "सिद्धांत का खंडन नहीं हुआ, क्योंकि उसकी शर्त यह है कि संसाधन का उपयोग समरूप हो, और नज़दीक से देखने पर पता चलता है कि साथ रहती जातियाँ लगभग कभी पूरी तरह ओवरलैप नहीं करतीं। फुदकियाँ उन्हीं पेड़ों पर खाती हैं पर भिन्न ऊँचाइयों पर और शाखाओं के भिन्न हिस्सों पर, अतः हर एक थोड़े भिन्न संसाधन का दोहन कर रही है। यही संसाधन विभाजन है, और सिद्धांत भविष्यवाणी करता है कि जहाँ भी समान जातियाँ साथ टिकी हों वहाँ यही मिलना चाहिए। अतः प्रेक्षण सिद्धांत के विरुद्ध नहीं बल्कि उसके पक्ष में प्रमाण है: स्पर्धा ने किसी जाति को हटाया नहीं बल्कि दोनों को अलग धकेल दिया है, और उनके बीच जो अंतर हम देखते हैं वे स्वयं उसी इतिहास का परिणाम हो सकते हैं",
+            mr: "तत्त्वाचे खंडन झालेले नाही, कारण त्याची अट ही की संसाधनाचा वापर सारखा असावा, आणि जवळून पाहिल्यावर कळते की एकत्र राहणाऱ्या जाती जवळपास कधीच पूर्णपणे व्यापत नाहीत. वटवट्या त्याच झाडांवर खातात पण वेगळ्या उंचीवर आणि फांद्यांच्या वेगळ्या भागांवर, म्हणून प्रत्येक थोड्या वेगळ्या संसाधनाचा उपयोग करत आहे. हेच संसाधन विभाजन आहे, आणि तत्त्व भाकीत करते की जिथे जिथे सारख्या जाती एकत्र टिकल्या असतील तिथे हेच सापडावे. म्हणून निरीक्षण तत्त्वाविरुद्ध नव्हे तर त्याच्या बाजूने पुरावा आहे: स्पर्धेने कोणतीही जात हटवली नाही तर दोघींना वेगळे ढकलले आहे, आणि त्यांच्यात जे फरक आपण पाहतो ते स्वतःच त्याच इतिहासाचा परिणाम असू शकतात",
+          },
+          {
+            en: "The principle is refuted by these observations and has been abandoned, since coexistence of similar species is the normal case and exclusion is never observed",
+            hi: "इन प्रेक्षणों से सिद्धांत का खंडन हो चुका है और उसे छोड़ दिया गया है, चूँकि समान जातियों का साथ रहना सामान्य स्थिति है और अपवर्जन कभी देखा ही नहीं जाता",
+            mr: "या निरीक्षणांनी तत्त्वाचे खंडन झाले आहे आणि ते सोडून दिले आहे, कारण सारख्या जातींचे एकत्र राहणे ही सामान्य स्थिती आहे आणि अपवर्जन कधी दिसतच नाही",
+          },
+          {
+            en: "The principle holds only in laboratory cultures and has no application in nature, where the environment is too variable for competition to have any effect at all",
+            hi: "सिद्धांत केवल प्रयोगशाला संवर्धनों में टिकता है और प्रकृति में उसका कोई अनुप्रयोग नहीं, जहाँ परिवेश इतना परिवर्तनशील है कि स्पर्धा का कोई प्रभाव ही न पड़े",
+            mr: "तत्त्व केवळ प्रयोगशाळा संवर्धनांत टिकते आणि निसर्गात त्याचे कोणतेही उपयोजन नाही, जिथे परिसर इतका बदलता आहे की स्पर्धेचा कोणताही परिणामच होऊ नये",
+          },
+          {
+            en: "The warblers coexist because they are all the same species with different feeding habits, so no competition between species is involved",
+            hi: "फुदकियाँ इसलिए साथ रहती हैं कि वे सब भिन्न आहार आदतों वाली एक ही जाति हैं, अतः जातियों के बीच कोई स्पर्धा शामिल ही नहीं",
+            mr: "वटवट्या यासाठी एकत्र राहतात की त्या सर्व वेगळ्या आहार सवयी असलेल्या एकाच जातीच्या आहेत, म्हणून जातींमधली कोणतीही स्पर्धा सामीलच नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "This is a good example of an apparent counterexample that turns out, on inspection, to be a confirmation — and the moral is about how carefully a principle's conditions need to be read. WHAT THE PRINCIPLE ACTUALLY CLAIMS. Gause's formulation is that two species competing for exactly the same limiting resource cannot coexist indefinitely: the one with even a slight advantage will, given enough generations, drive the other to zero. The mathematics is straightforward, and Gause demonstrated it with two Paramecium species in culture, where the resource genuinely was identical because he supplied it. THE APPARENT PROBLEM. Nature is full of similar species living together. MacArthur's warblers are the classic case: five species of the same genus, feeding on insects in the same spruce forests of New England, apparently on the same resource. If the principle were right, four of them should have disappeared. WHAT CLOSE OBSERVATION SHOWED. MacArthur did not argue about the principle; he watched the birds and recorded where each one spent its time. The species turned out to forage in different zones of the tree — one near the top, one in the outer branches of the mid-canopy, one on the inner branches, one lower down — and to differ in their movement patterns and in the timing of nesting. They are not using the same resource. They are using overlapping but distinguishable resources, which is what the principle allows. THE INFERENCE IS THEREFORE THE OPPOSITE OF A REFUTATION. The principle predicts that wherever similar species do coexist, some difference in resource use will be found. That prediction is testable and it is what MacArthur's data confirmed. Note the direction of the argument: an apparent counterexample was checked against the condition the principle actually states, and the condition was found not to hold. That is how a principle is applied, not how it is overturned. A SUBTLER POINT WORTH ADDING. The differences may themselves be a consequence of competition rather than an accident that permitted coexistence. If two species overlapped substantially in the past, individuals that specialised slightly would have escaped the worst of the competition and left more offspring, so selection would drive the two apart. This is character displacement, and it predicts something checkable: two species should differ more where they occur together than where each occurs alone. Where that has been tested — Darwin's finches on islands with and without a competitor — the prediction holds. WHAT WOULD ACTUALLY REFUTE THE PRINCIPLE. Two species shown, by careful measurement rather than casual observation, to use identical resources in identical proportions in the same place, and persisting for many generations. That has not been found, and the search for it is what generated the partitioning studies. A principle that survives its counterexamples by making them into evidence is doing real work. (The second option abandons a principle whose conditions were never tested; the third confines it to the laboratory, when the field studies are its best support; the fourth denies that the warblers are separate species, which they are.)",
+          hi: "यह ऐसे प्रत्यक्ष प्रतिउदाहरण का अच्छा उदाहरण है जो जाँचने पर पुष्टि निकलता है — और सीख इस बारे में है कि किसी सिद्धांत की शर्तें कितने ध्यान से पढ़नी चाहिए। सिद्धांत वस्तुतः दावा क्या करता है। गॉज़ का सूत्रीकरण यह है कि ठीक उसी सीमित संसाधन के लिए स्पर्धा करती दो जातियाँ अनिश्चित काल तक साथ नहीं रह सकतीं: जिसके पास ज़रा-सा भी लाभ हो वह, पर्याप्त पीढ़ियाँ मिलने पर, दूसरी को शून्य तक ले जाएगी। गणित सीधा है, और गॉज़ ने उसे संवर्धन में दो पैरामीशियम जातियों से दिखाया, जहाँ संसाधन वस्तुतः समरूप था क्योंकि वह उसे देता था। प्रत्यक्ष समस्या। प्रकृति साथ रहती समान जातियों से भरी है। मैकआर्थर की फुदकियाँ उत्कृष्ट उदाहरण हैं: एक ही वंश की पाँच जातियाँ, न्यू इंग्लैंड के उन्हीं स्प्रूस वनों में कीटों पर खातीं, ज़ाहिरा तौर पर उसी संसाधन पर। यदि सिद्धांत ठीक होता, तो उनमें से चार लुप्त हो चुकी होतीं। नज़दीक से देखने पर क्या दिखा। मैकआर्थर ने सिद्धांत पर बहस नहीं की; उसने पक्षियों को देखा और दर्ज किया कि हर एक अपना समय कहाँ बिताता है। जातियाँ पेड़ के भिन्न क्षेत्रों में चरती निकलीं — एक चोटी के पास, एक मध्य वितान की बाहरी शाखाओं में, एक भीतरी शाखाओं पर, एक नीचे की ओर — और अपनी गति के प्रतिरूपों तथा घोंसला बनाने के समय में भिन्न। वे एक ही संसाधन काम में नहीं ला रहीं। वे ओवरलैप करते पर अलग पहचाने जाने योग्य संसाधन काम में ला रही हैं, और सिद्धांत यही अनुमति देता है। अतः अनुमान खंडन का उलटा है। सिद्धांत भविष्यवाणी करता है कि जहाँ भी समान जातियाँ साथ रहती हों वहाँ संसाधन उपयोग में कोई न कोई अंतर मिलेगा। वह भविष्यवाणी परीक्षण योग्य है और मैकआर्थर के आँकड़ों ने उसकी पुष्टि की। तर्क की दिशा पर ध्यान दो: एक प्रत्यक्ष प्रतिउदाहरण को उस शर्त के विरुद्ध जाँचा गया जो सिद्धांत वस्तुतः कहता है, और शर्त पूरी होती नहीं पाई गई। सिद्धांत ऐसे लागू किया जाता है, ऐसे उलटा नहीं जाता। जोड़ने लायक़ एक सूक्ष्म बात। अंतर स्वयं स्पर्धा का परिणाम हो सकते हैं, न कि कोई दुर्घटना जिसने साथ रहना संभव किया। यदि दोनों जातियाँ अतीत में काफ़ी ओवरलैप करती थीं, तो जो व्यक्ति ज़रा-सा विशेषीकृत हुए वे स्पर्धा के सबसे बुरे हिस्से से बच गए होंगे और अधिक संतति छोड़ी होगी, अतः चयन दोनों को अलग धकेलता। यही लक्षण विस्थापन है, और वह कुछ जाँचने योग्य भविष्यवाणी करता है: दो जातियों को वहाँ अधिक भिन्न होना चाहिए जहाँ वे साथ मिलती हैं, बनिस्बत वहाँ के जहाँ हर एक अकेली है। जहाँ इसे परखा गया — स्पर्धी वाले और बिना स्पर्धी वाले द्वीपों पर डार्विन की फिंच — वहाँ भविष्यवाणी टिकी। सिद्धांत का खंडन वस्तुतः क्या करेगा। ऐसी दो जातियाँ जिन्हें, सरसरी प्रेक्षण नहीं बल्कि सावधान माप से, एक ही जगह समरूप अनुपातों में समरूप संसाधन काम में लाते दिखाया जाए, और जो कई पीढ़ियों तक टिकी रहें। वह मिला नहीं है, और उसकी खोज ने ही विभाजन के अध्ययन पैदा किए। जो सिद्धांत अपने प्रतिउदाहरणों को प्रमाण बनाकर उनसे बच निकलता है वह असली काम कर रहा है। (दूसरा विकल्प ऐसा सिद्धांत छोड़ देता है जिसकी शर्तें कभी परखी ही नहीं गईं; तीसरा उसे प्रयोगशाला तक सीमित कर देता है, जबकि क्षेत्र अध्ययन ही उसका सबसे अच्छा समर्थन हैं; चौथा इससे इनकार करता है कि फुदकियाँ अलग जातियाँ हैं, जो वे हैं।)",
+          mr: "हे अशा प्रत्यक्ष प्रतिउदाहरणाचे चांगले उदाहरण आहे जे तपासल्यावर खात्री निघते — आणि बोध याबद्दल आहे की एखाद्या तत्त्वाच्या अटी किती काळजीपूर्वक वाचाव्या लागतात. तत्त्व प्रत्यक्षात काय दावा करते. गॉजचे सूत्रीकरण हे की नेमक्या त्याच मर्यादित संसाधनासाठी स्पर्धा करणाऱ्या दोन जाती अनिश्चित काळ एकत्र राहू शकत नाहीत: ज्याच्याकडे किंचितही फायदा असेल ती, पुरेशा पिढ्या मिळाल्यास, दुसरीला शून्यापर्यंत नेईल. गणित सरळ आहे, आणि गॉजने ते संवर्धनात दोन पॅरामेशियम जातींनी दाखवले, जिथे संसाधन खरोखर सारखे होते कारण तो ते पुरवत होता. प्रत्यक्ष समस्या. निसर्ग एकत्र राहणाऱ्या सारख्या जातींनी भरलेला आहे. मॅकआर्थरच्या वटवट्या हे उत्कृष्ट उदाहरण आहे: एकाच वंशाच्या पाच जाती, न्यू इंग्लंडच्या त्याच स्प्रूस जंगलांत कीटकांवर खात, स्पष्टपणे त्याच संसाधनावर. जर तत्त्व बरोबर असते, तर त्यांपैकी चार लोप पावल्या असत्या. जवळून पाहिल्यावर काय दिसले. मॅकआर्थरने तत्त्वावर वाद घातला नाही; त्याने पक्ष्यांना पाहिले आणि नोंदवले की प्रत्येक आपला वेळ कुठे घालवतो. जाती झाडाच्या वेगळ्या प्रदेशांत चरत निघाल्या — एक शेंड्याजवळ, एक मध्य छताच्या बाहेरच्या फांद्यांत, एक आतल्या फांद्यांवर, एक खालच्या बाजूला — आणि आपल्या हालचालींच्या नमुन्यांत व घरटी बांधण्याच्या वेळेत वेगळ्या. त्या तेच संसाधन वापरत नाहीत. त्या व्यापणारी पण वेगळी ओळखता येणारी संसाधने वापरत आहेत, आणि तत्त्व हीच परवानगी देते. म्हणून अनुमान खंडनाच्या उलट आहे. तत्त्व भाकीत करते की जिथे जिथे सारख्या जाती एकत्र राहत असतील तिथे संसाधन वापरात कोणता ना कोणता फरक सापडेल. ते भाकीत चाचणीयोग्य आहे आणि मॅकआर्थरच्या आकड्यांनी त्याची खात्री दिली. युक्तिवादाच्या दिशेकडे लक्ष द्या: एक प्रत्यक्ष प्रतिउदाहरण त्या अटीविरुद्ध तपासले गेले जी तत्त्व प्रत्यक्षात सांगते, आणि अट पूर्ण होत नाही असे आढळले. तत्त्व असे लागू केले जाते, असे उलटवले जात नाही. जोडण्याजोगा एक सूक्ष्म मुद्दा. फरक स्वतःच स्पर्धेचा परिणाम असू शकतात, एखादा अपघात नव्हे ज्याने एकत्र राहणे शक्य केले. जर दोन्ही जाती भूतकाळात बऱ्यापैकी व्यापत होत्या, तर ज्या व्यक्ती किंचित विशेषीकृत झाल्या त्या स्पर्धेच्या सर्वांत वाईट भागापासून वाचल्या असतील आणि अधिक संतती सोडली असेल, म्हणून निवड दोघींना वेगळे ढकलेल. हेच लक्षण विस्थापन आहे, आणि ते काहीतरी तपासण्याजोगे भाकीत करते: दोन जाती तिथे अधिक वेगळ्या असाव्यात जिथे त्या एकत्र आढळतात, त्या तुलनेत जिथे प्रत्येक एकटी आहे. जिथे हे तपासले गेले — स्पर्धक असलेल्या आणि नसलेल्या बेटांवरचे डार्विनचे फिंच — तिथे भाकीत टिकले. तत्त्वाचे खंडन प्रत्यक्षात काय करेल. अशा दोन जाती ज्यांना, वरवरच्या निरीक्षणाने नव्हे तर काळजीपूर्वक मापाने, एकाच जागी सारख्या प्रमाणांत सारखी संसाधने वापरताना दाखवले जावे, आणि ज्या कित्येक पिढ्या टिकून राहाव्यात. ते सापडलेले नाही, आणि त्याच्या शोधानेच विभाजनाचे अभ्यास निर्माण केले. जे तत्त्व आपल्या प्रतिउदाहरणांना पुरावा बनवून त्यांतून सुटते ते खरे काम करत आहे. (दुसरा पर्याय असे तत्त्व सोडतो ज्याच्या अटी कधी तपासल्याच गेल्या नाहीत; तिसरा त्याला प्रयोगशाळेपुरते मर्यादित करतो, तर क्षेत्र अभ्यासच त्याचा सर्वांत चांगला आधार आहेत; चौथा हे नाकारतो की वटवट्या वेगळ्या जाती आहेत, ज्या त्या आहेत.)",
+        },
+      },
+    ],
+  },
+  /*C9*/
 ];
 
 export const G12_BIOLOGY_NUMERIC: Record<string, NumQ[]> = {
@@ -3305,6 +4350,168 @@ export const G12_BIOLOGY_NUMERIC: Record<string, NumQ[]> = {
         en: "90 − 10 = 80 percentage points. The subtraction is trivial and what the number licenses is not. A change this large in a single generation cannot be caused by mutation, whose rates are of the order of one in a hundred thousand per gene per generation and which could not shift a frequency by more than a fraction of a per cent in that time. It cannot be drift either, in a population of any size, since drift is undirected and would as readily go the other way. Migration would require a large influx of dark moths from somewhere, which is a claim about a source that can be checked. That leaves selection, and the peppered moth case supplies the confirming detail: the frequency rose where soot darkened the tree trunks and pale moths became conspicuous to birds, and it fell again within decades of clean-air legislation. A cause that tracks its supposed agent both up and down is doing more than correlating with it. Notice also what did not happen — the dark allele was present and rare all along, so nothing new had to arise; selection only altered which existing variant was common. (100 adds the two figures.)",
         hi: "90 − 10 = 80 प्रतिशत बिंदु। घटाना मामूली है और वह संख्या जिसकी इजाज़त देती है वह नहीं। एक ही पीढ़ी में इतना बड़ा बदलाव उत्परिवर्तन से नहीं हो सकता, जिसकी दरें प्रति जीन प्रति पीढ़ी एक लाख में एक की कोटि की हैं और जो उस समय में किसी बारंबारता को एक प्रतिशत के अंश से अधिक खिसका ही नहीं सकता। वह विचलन भी नहीं हो सकता, किसी भी आकार की आबादी में, चूँकि विचलन दिशाहीन है और उतनी ही आसानी से उलटी ओर जाता। प्रवास के लिए कहीं से काले पतंगों की बड़ी आमद चाहिए होती, और वह किसी स्रोत के बारे में ऐसा दावा है जिसे जाँचा जा सकता है। बचता है चयन, और चितकबरे पतंगे का मामला पुष्टि करता ब्योरा देता है: बारंबारता वहाँ बढ़ी जहाँ कालिख ने पेड़ों के तने काले किए और पीले पतंगे पक्षियों को नुमायाँ हो गए, और स्वच्छ-वायु क़ानून के कुछ दशकों में वह फिर गिर गई। जो कारण अपने कथित कारक के साथ ऊपर भी और नीचे भी चलता है वह उससे केवल सहसंबंधित होने से अधिक कर रहा है। यह भी ध्यान दो कि क्या नहीं हुआ — काला एलील आद्योपांत मौजूद और दुर्लभ था, अतः कुछ नया उठने की ज़रूरत ही नहीं पड़ी; चयन ने केवल यह बदला कि मौजूद रूपों में से कौन-सा आम है। (100 दोनों आँकड़े जोड़ देता है।)",
         mr: "90 − 10 = 80 टक्के बिंदू. वजाबाकी क्षुल्लक आहे आणि ती संख्या ज्याची परवानगी देते ते नाही. एकाच पिढीत इतका मोठा बदल उत्परिवर्तनाने होऊ शकत नाही, ज्याचे दर प्रति जनुक प्रति पिढी लाखात एकच्या कोटीचे आहेत आणि जे त्या काळात कोणतीही वारंवारता एक टक्क्याच्या अंशाहून अधिक सरकवूच शकत नाही. ते विचलनही असू शकत नाही, कोणत्याही आकाराच्या लोकसंख्येत, कारण विचलन दिशाहीन आहे आणि तितक्याच सहजतेने उलट बाजूला गेले असते. स्थलांतरासाठी कुठूनतरी काळ्या पतंगांची मोठी आवक लागली असती, आणि तो एखाद्या स्रोताबद्दलचा असा दावा आहे जो तपासता येतो. उरते निवड, आणि ठिपकेदार पतंगाचे प्रकरण खात्री देणारा तपशील पुरवते: वारंवारता तिथे वाढली जिथे काजळीने झाडांची खोडे काळी केली आणि फिकट पतंग पक्ष्यांना ठळक झाले, आणि स्वच्छ-हवा कायद्याच्या काही दशकांत ती पुन्हा घसरली. जे कारण आपल्या कथित घटकासोबत वरही आणि खालीही चालते ते त्याच्याशी केवळ सहसंबंधित असण्याहून अधिक करत आहे. हेही लक्षात घ्या की काय घडले नाही — काळे अ‍ॅलिल सर्वकाळ उपस्थित आणि दुर्मीळ होते, म्हणून काहीही नवे उद्भवण्याची गरजच पडली नाही; निवडीने केवळ हे बदलले की उपस्थित रूपांपैकी कोणते सामान्य आहे. (100 दोन्ही आकडे जोडते.)",
+      },
+    },
+  ],
+  "biology-12-organisms-and-populations": [
+    {
+      level: 1,
+      stem: {
+        en: "A population of 200 gains 30 births and loses 10 deaths in a year, with no migration. What is its size at the end of the year?",
+        hi: "200 की किसी आबादी में एक वर्ष में 30 जन्म जुड़ते हैं और 10 मृत्यु घटती हैं, और कोई प्रवास नहीं। वर्ष के अंत में उसका आकार क्या है?",
+        mr: "200 च्या एका लोकसंख्येत एका वर्षात 30 जन्म जमतात आणि 10 मृत्यू घटतात, आणि कोणतेही स्थलांतर नाही. वर्षाच्या शेवटी तिचा आकार किती?",
+      },
+      answer: 220,
+      wrong: [240, 180, 230],
+      checkExpr: "200+20",
+      solution: {
+        en: "The net gain is 30 − 10 = 20, so 200 + 20 = 220. Four terms decide any population size — births and immigration add, deaths and emigration subtract — and setting them out as a single balance is the whole of population arithmetic. (240 counts the births and forgets the deaths.)",
+        hi: "शुद्ध लाभ 30 − 10 = 20 है, अतः 200 + 20 = 220. किसी भी आबादी का आकार चार पद तय करते हैं — जन्म और आप्रवास जोड़ते हैं, मृत्यु और उत्प्रवास घटाते हैं — और उन्हें एक ही संतुलन के रूप में रखना ही आबादी की पूरी गणित है। (240 जन्म गिनता है और मृत्यु भूल जाता है।)",
+        mr: "निव्वळ लाभ 30 − 10 = 20 आहे, म्हणून 200 + 20 = 220. कोणत्याही लोकसंख्येचा आकार चार पदे ठरवतात — जन्म आणि आगमन जोडतात, मृत्यू आणि निर्गमन वजा करतात — आणि त्यांना एकाच समतोलाच्या रूपात मांडणे हेच लोकसंख्येचे अख्खे गणित आहे. (240 जन्म मोजते आणि मृत्यू विसरते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "A population of 500 individuals occupies 100 square metres. What is its density per square metre?",
+        hi: "500 व्यक्तियों की कोई आबादी 100 वर्ग मीटर घेरती है। प्रति वर्ग मीटर उसका घनत्व क्या है?",
+        mr: "500 व्यक्तींची एक लोकसंख्या 100 चौरस मीटर व्यापते. प्रति चौरस मीटर तिची घनता किती?",
+      },
+      answer: 5,
+      wrong: [50000, 0.2, 400],
+      checkExpr: "500/100",
+      solution: {
+        en: "500/100 = 5 per square metre. Density rather than total number is what most ecological questions turn on, because competition, disease transmission and the chance of finding a mate all depend on how close individuals are rather than on how many there are altogether. (0.2 inverts the division.)",
+        hi: "500/100 = 5 प्रति वर्ग मीटर। अधिकांश पारिस्थितिक प्रश्न कुल संख्या नहीं बल्कि घनत्व पर टिकते हैं, क्योंकि स्पर्धा, रोग संचरण और साथी मिलने की संभावना सब इस पर निर्भर हैं कि व्यक्ति कितने पास हैं, न कि इस पर कि कुल कितने हैं। (0.2 भाग को उलट देता है।)",
+        mr: "500/100 = 5 प्रति चौरस मीटर. बहुतांश पारिस्थितिक प्रश्न एकूण संख्येवर नव्हे तर घनतेवर टिकतात, कारण स्पर्धा, रोग संक्रमण आणि जोडीदार मिळण्याची शक्यता सर्व यावर अवलंबून आहेत की व्यक्ती किती जवळ आहेत, एकूण किती आहेत यावर नाही. (0.2 भागाकार उलटवते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A population growing exponentially doubles every year. Starting from 40, what is its size after 3 years?",
+        hi: "चरघातांकी रूप से बढ़ती कोई आबादी हर वर्ष दुगुनी हो जाती है। 40 से शुरू करके 3 वर्ष बाद उसका आकार क्या है?",
+        mr: "घातांकी वाढणारी एक लोकसंख्या दरवर्षी दुप्पट होते. 40 पासून सुरुवात करून 3 वर्षांनी तिचा आकार किती?",
+      },
+      answer: 320,
+      wrong: [120, 240, 160],
+      checkExpr: "40*8",
+      solution: {
+        en: "Three doublings multiply by 2³ = 8, so 40 × 8 = 320. Notice that the increase in the third year alone is 160 — larger than the entire starting population — which is what exponential growth means: the amount added grows because the thing adding it has grown. (120 adds 40 each year instead of doubling.)",
+        hi: "तीन बार दुगुना होना 2³ = 8 से गुणा करता है, अतः 40 × 8 = 320. ध्यान दो कि अकेले तीसरे वर्ष की बढ़त 160 है — पूरी आरंभिक आबादी से बड़ी — और चरघातांकी वृद्धि का यही अर्थ है: जुड़ती मात्रा इसलिए बढ़ती है कि जोड़ने वाली चीज़ बढ़ गई है। (120 दुगुना करने के बजाय हर वर्ष 40 जोड़ देता है।)",
+        mr: "तीनदा दुप्पट होणे 2³ = 8 ने गुणते, म्हणून 40 × 8 = 320. लक्षात घ्या की एकट्या तिसऱ्या वर्षाची वाढ 160 आहे — अख्ख्या प्रारंभिक लोकसंख्येहून मोठी — आणि घातांकी वाढीचा हाच अर्थ आहे: जमणारे प्रमाण यासाठी वाढते की जमवणारी गोष्ट वाढली आहे. (120 दुप्पट करण्याऐवजी दरवर्षी 40 जोडते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A habitat has a carrying capacity of 800 and currently holds 300 individuals. How many more can it support?",
+        hi: "किसी आवास की वहन क्षमता 800 है और उसमें इस समय 300 व्यक्ति हैं। वह कितने और सँभाल सकता है?",
+        mr: "एका अधिवासाची वहन क्षमता 800 आहे आणि त्यात सध्या 300 व्यक्ती आहेत. तो आणखी किती सांभाळू शकतो?",
+      },
+      answer: 500,
+      wrong: [1100, 800, 300],
+      checkExpr: "800-300",
+      solution: {
+        en: "800 − 300 = 500. The gap between the two numbers is what drives logistic growth: the population grows fastest when it is far below capacity and slows as the gap closes, so the curve flattens rather than stopping abruptly. Note that carrying capacity belongs to the habitat, not the species — the same animals in a richer place would have a different figure. (1100 adds the two.)",
+        hi: "800 − 300 = 500. दोनों संख्याओं का अंतर ही संभार वृद्धि चलाता है: आबादी तब सबसे तेज़ बढ़ती है जब वह क्षमता से बहुत नीचे हो और अंतर घटते ही धीमी पड़ जाती है, अतः वक्र अचानक रुकने के बजाय चपटा होता है। ध्यान दो कि वहन क्षमता आवास की है, जाति की नहीं — वही प्राणी किसी समृद्ध जगह में भिन्न आँकड़ा रखते। (1100 दोनों जोड़ देता है।)",
+        mr: "800 − 300 = 500. दोन्ही संख्यांतले अंतरच संभार वाढ चालवते: लोकसंख्या तेव्हा सर्वांत जलद वाढते जेव्हा ती क्षमतेहून खूप खाली असेल आणि अंतर घटताच मंदावते, म्हणून वक्र अचानक थांबण्याऐवजी सपाट होते. लक्षात घ्या की वहन क्षमता अधिवासाची आहे, जातीची नाही — तेच प्राणी अधिक समृद्ध जागी वेगळा आकडा ठेवतील. (1100 दोन्ही जोडते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A population has a birth rate of 0.08 per individual per year and a death rate of 0.03. What is its intrinsic rate of increase?",
+        hi: "किसी आबादी की जन्म दर 0.08 प्रति व्यक्ति प्रति वर्ष है और मृत्यु दर 0.03. उसकी नैसर्गिक वृद्धि दर क्या है?",
+        mr: "एका लोकसंख्येचा जन्मदर 0.08 प्रति व्यक्ती प्रति वर्ष आहे आणि मृत्युदर 0.03. तिचा नैसर्गिक वाढदर किती?",
+      },
+      answer: 0.05,
+      wrong: [0.11, 0.0024, 2.67],
+      checkExpr: "0.08-0.03",
+      solution: {
+        en: "0.08 − 0.03 = 0.05 per individual per year. This single number, usually written r, decides everything about how the population moves: positive and it grows, negative and it declines, zero and it stays put. Being a per-individual rate is what makes it comparable between a population of ten and one of ten thousand, which a raw count of births never is. (0.11 adds the two rates.)",
+        hi: "0.08 − 0.03 = 0.05 प्रति व्यक्ति प्रति वर्ष। यही अकेली संख्या, जिसे प्रायः r लिखते हैं, तय करती है कि आबादी कैसे चलेगी: धनात्मक हो तो बढ़ती है, ऋणात्मक हो तो घटती है, शून्य हो तो वहीं रहती है। प्रति-व्यक्ति दर होना ही उसे दस की आबादी और दस हज़ार की आबादी के बीच तुलनीय बनाता है, जो जन्मों की कच्ची गिनती कभी नहीं होती। (0.11 दोनों दरें जोड़ देता है।)",
+        mr: "0.08 − 0.03 = 0.05 प्रति व्यक्ती प्रति वर्ष. हीच एकटी संख्या, जिला बहुधा r लिहितात, ठरवते की लोकसंख्या कशी चालेल: धन असेल तर वाढते, ऋण असेल तर घटते, शून्य असेल तर तिथेच राहते. प्रति-व्यक्ती दर असणेच तिला दहाच्या लोकसंख्येत आणि दहा हजारांच्या लोकसंख्येत तुलनीय बनवते, जे जन्मांची कच्ची मोजणी कधीच नसते. (0.11 दोन्ही दर जोडते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "In a population of 250, twenty individuals die in a year. What is the death rate per individual?",
+        hi: "250 की किसी आबादी में एक वर्ष में बीस व्यक्ति मरते हैं। प्रति व्यक्ति मृत्यु दर क्या है?",
+        mr: "250 च्या एका लोकसंख्येत एका वर्षात वीस व्यक्ती मरतात. प्रति व्यक्ती मृत्युदर किती?",
+      },
+      answer: 0.08,
+      wrong: [20, 12.5, 0.8],
+      checkExpr: "20/250",
+      solution: {
+        en: "20/250 = 0.08 per individual per year. Dividing by the population is the step that makes the figure mean something: twenty deaths in a population of 250 and twenty in a population of 20,000 are entirely different situations, and only the rate distinguishes them. (20 quotes the count without converting it to a rate.)",
+        hi: "20/250 = 0.08 प्रति व्यक्ति प्रति वर्ष। आबादी से भाग देना ही वह क़दम है जो आँकड़े को अर्थ देता है: 250 की आबादी में बीस मृत्यु और 20,000 की आबादी में बीस बिलकुल भिन्न स्थितियाँ हैं, और केवल दर उन्हें अलग करती है। (20 गिनती को दर में बदले बिना बता देता है।)",
+        mr: "20/250 = 0.08 प्रति व्यक्ती प्रति वर्ष. लोकसंख्येने भागणे हीच ती पायरी जी आकड्याला अर्थ देते: 250 च्या लोकसंख्येत वीस मृत्यू आणि 20,000 च्या लोकसंख्येत वीस या पूर्णपणे वेगळ्या स्थिती आहेत, आणि केवळ दरच त्यांना वेगळे करतो. (20 मोजणी दरात न बदलता सांगते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A logistic curve grows fastest at half the carrying capacity. If K = 900, at what population size is growth fastest?",
+        hi: "संभार वक्र वहन क्षमता के आधे पर सबसे तेज़ बढ़ता है। यदि K = 900 हो, तो किस आबादी आकार पर वृद्धि सबसे तेज़ है?",
+        mr: "संभार वक्र वहन क्षमतेच्या निम्म्यावर सर्वांत जलद वाढते. जर K = 900 असेल, तर कोणत्या लोकसंख्या आकारावर वाढ सर्वांत जलद आहे?",
+      },
+      answer: 450,
+      wrong: [900, 225, 1800],
+      checkExpr: "900/2",
+      solution: {
+        en: "900/2 = 450. The reason is worth seeing rather than memorising. Growth depends on two things multiplied together: how many individuals there are to reproduce, and how much room is left. Near zero there are plenty of resources but almost nobody to breed; near K there are plenty of breeders but no room. The product of the two is largest in the middle, which is why the S-shaped curve is steepest at its midpoint and why a harvested population is most productive when kept at about half its capacity rather than at its maximum. (900 gives the capacity itself.)",
+        hi: "900/2 = 450. कारण रटने के बजाय देखना चाहिए। वृद्धि दो चीज़ों के गुणनफल पर निर्भर है: जनन करने को कितने व्यक्ति हैं, और कितनी जगह बची है। शून्य के पास संसाधन भरपूर हैं पर प्रजनन को लगभग कोई नहीं; K के पास प्रजनक भरपूर हैं पर जगह नहीं। दोनों का गुणनफल बीच में सबसे बड़ा है, इसीलिए S-आकार का वक्र अपने मध्यबिंदु पर सबसे तीखा है और इसीलिए दोहन की जाती आबादी अपनी अधिकतम पर नहीं बल्कि क्षमता के लगभग आधे पर रखी जाए तो सबसे उत्पादक होती है। (900 स्वयं क्षमता दे देता है।)",
+        mr: "900/2 = 450. कारण पाठ करण्याऐवजी पाहण्याजोगे आहे. वाढ दोन गोष्टींच्या गुणाकारावर अवलंबून आहे: प्रजनन करायला किती व्यक्ती आहेत, आणि किती जागा उरली आहे. शून्याजवळ संसाधने भरपूर आहेत पण प्रजननाला जवळपास कोणीही नाही; K जवळ प्रजनक भरपूर आहेत पण जागा नाही. दोघांचा गुणाकार मध्यभागी सर्वांत मोठा आहे, म्हणूनच S-आकाराचे वक्र आपल्या मध्यबिंदूवर सर्वांत तीव्र आहे आणि म्हणूनच काढणी केली जाणारी लोकसंख्या आपल्या कमाल नव्हे तर क्षमतेच्या सुमारे निम्म्यावर ठेवली तर सर्वांत उत्पादक असते. (900 स्वतः क्षमता देते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A bacterial population doubles every 20 minutes. How many doublings occur in 2 hours?",
+        hi: "कोई जीवाणु आबादी हर 20 मिनट में दुगुनी हो जाती है। 2 घंटे में कितनी बार दुगुना होना होता है?",
+        mr: "एक जिवाणू लोकसंख्या दर 20 मिनिटांनी दुप्पट होते. 2 तासांत किती वेळा दुप्पट होणे घडते?",
+      },
+      answer: 6,
+      wrong: [40, 3, 120],
+      checkExpr: "120/20",
+      solution: {
+        en: "Two hours is 120 minutes, so 120/20 = 6 doublings, giving a 2⁶ = 64-fold increase. The figure is worth pausing on: a single bacterium dividing at this rate would in two days produce a mass greater than the Earth's, which no bacterium has ever done. That gap between what exponential growth predicts and what actually happens is the whole reason the logistic model exists — something always stops it, and identifying what does is the useful question. (40 divides the wrong way round.)",
+        hi: "दो घंटे 120 मिनट हैं, अतः 120/20 = 6 बार दुगुना होना, जो 2⁶ = 64 गुना बढ़त देता है। इस आँकड़े पर रुकना चाहिए: इस दर से विभाजित होता एक अकेला जीवाणु दो दिनों में पृथ्वी से अधिक द्रव्यमान पैदा कर देता, जो किसी जीवाणु ने कभी नहीं किया। चरघातांकी वृद्धि जो भविष्यवाणी करती है और जो वस्तुतः होता है, उनके बीच का वही अंतर संभार मॉडल के होने का पूरा कारण है — कुछ न कुछ उसे हमेशा रोकता है, और वह क्या है यह पहचानना ही काम का प्रश्न है। (40 उलटी ओर भाग दे देता है।)",
+        mr: "दोन तास 120 मिनिटे आहेत, म्हणून 120/20 = 6 वेळा दुप्पट होणे, जे 2⁶ = 64 पट वाढ देते. या आकड्यावर थांबण्याजोगे आहे: या दराने विभाजित होणारा एकच जिवाणू दोन दिवसांत पृथ्वीहून अधिक वस्तुमान निर्माण करेल, जे कोणत्याही जिवाणूने कधीही केलेले नाही. घातांकी वाढ जे भाकीत करते आणि जे प्रत्यक्षात घडते, त्यांच्यातले तेच अंतर संभार प्रतिमान असण्याचे अख्खे कारण आहे — काहीतरी नेहमी तिला थांबवते, आणि ते काय आहे हे ओळखणे हाच उपयुक्त प्रश्न आहे. (40 उलट्या बाजूने भागते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "A population of 1000 has a birth rate of 0.12 and a death rate of 0.04 per individual per year. How many individuals does it add in one year?",
+        hi: "1000 की किसी आबादी की जन्म दर 0.12 और मृत्यु दर 0.04 प्रति व्यक्ति प्रति वर्ष है। वह एक वर्ष में कितने व्यक्ति जोड़ती है?",
+        mr: "1000 च्या एका लोकसंख्येचा जन्मदर 0.12 आणि मृत्युदर 0.04 प्रति व्यक्ती प्रति वर्ष आहे. ती एका वर्षात किती व्यक्ती जोडते?",
+      },
+      answer: 80,
+      wrong: [160, 120, 40],
+      checkExpr: "1000*0.08",
+      solution: {
+        en: "The net rate is 0.12 − 0.04 = 0.08, so 1000 × 0.08 = 80 individuals added. The distinction between the rate and the number added is the point. The rate stays at 0.08 as long as conditions are unchanged, but the number added rises every year because it is calculated on a larger population — 80 this year, 86 next, and so on. That is exactly what makes exponential growth accelerate, and why a constant per-individual rate produces a curve that is anything but a straight line. (160 uses the birth rate without subtracting deaths.)",
+        hi: "शुद्ध दर 0.12 − 0.04 = 0.08 है, अतः 1000 × 0.08 = 80 व्यक्ति जुड़े। मर्म दर और जुड़ी संख्या के बीच का भेद है। जब तक परिस्थितियाँ अपरिवर्तित हैं दर 0.08 पर बनी रहती है, पर जुड़ी संख्या हर वर्ष बढ़ती है क्योंकि उसकी गणना बड़ी आबादी पर होती है — इस वर्ष 80, अगले 86, और आगे भी। ठीक यही चरघातांकी वृद्धि को त्वरित करता है, और इसीलिए अचर प्रति-व्यक्ति दर ऐसा वक्र देती है जो सीधी रेखा के सिवा कुछ भी है। (160 मृत्यु घटाए बिना जन्म दर काम में लेता है।)",
+        mr: "निव्वळ दर 0.12 − 0.04 = 0.08 आहे, म्हणून 1000 × 0.08 = 80 व्यक्ती जोडल्या. गाभा दर आणि जोडलेली संख्या यांतील भेद आहे. जोवर परिस्थिती अपरिवर्तित आहे तोवर दर 0.08 वर राहतो, पण जोडलेली संख्या दरवर्षी वाढते कारण तिची गणना मोठ्या लोकसंख्येवर होते — या वर्षी 80, पुढच्या 86, आणि पुढेही. नेमके हेच घातांकी वाढीला गती देते, आणि म्हणूनच अचल प्रति-व्यक्ती दर असे वक्र देतो जे सरळ रेषेखेरीज काहीही आहे. (160 मृत्यू वजा न करता जन्मदर वापरते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "A population is at 600 in a habitat whose carrying capacity is 1000. What fraction of the capacity remains unused, expressed as a percentage?",
+        hi: "किसी आवास में जिसकी वहन क्षमता 1000 है आबादी 600 पर है। क्षमता का कितना अंश अप्रयुक्त बचा है, प्रतिशत में?",
+        mr: "एका अधिवासात जिची वहन क्षमता 1000 आहे लोकसंख्या 600 वर आहे. क्षमतेचा किती अंश न वापरलेला उरला आहे, टक्क्यांत?",
+      },
+      answer: 40,
+      wrong: [60, 400, 1600],
+      checkExpr: "100-60",
+      solution: {
+        en: "The population occupies 60 per cent of capacity, so 100 − 60 = 40 per cent remains. This unused fraction is not a bookkeeping figure — it is the term (K − N)/K that appears in the logistic equation and acts as a brake on growth. Read what it does at the two ends. When the population is tiny the fraction is close to one, the brake is off, and growth is nearly exponential. As N approaches K the fraction approaches zero, the brake closes and growth stops, which is what makes the curve flatten rather than continuing upward and crashing. The elegance is that a single multiplying factor converts the exponential equation into the logistic one, so the two models are not rivals but the same model with and without a limit. (60 gives the fraction occupied rather than the fraction remaining.)",
+        hi: "आबादी क्षमता का 60 प्रतिशत घेरती है, अतः 100 − 60 = 40 प्रतिशत बचता है। यह अप्रयुक्त अंश हिसाब-किताब का आँकड़ा नहीं — वह (K − N)/K पद है जो संभार समीकरण में आता है और वृद्धि पर ब्रेक की तरह काम करता है। पढ़ो कि वह दोनों सिरों पर क्या करता है। जब आबादी बहुत छोटी हो तो अंश एक के पास है, ब्रेक हटा है, और वृद्धि लगभग चरघातांकी। जैसे-जैसे N, K के पास जाता है अंश शून्य के पास जाता है, ब्रेक कस जाता है और वृद्धि रुक जाती है, और यही वक्र को ऊपर चलते रहकर ढहने के बजाय चपटा करता है। सुघड़पन यह कि एक ही गुणक चरघातांकी समीकरण को संभार में बदल देता है, अतः दोनों मॉडल प्रतिद्वंद्वी नहीं बल्कि सीमा के साथ और बिना वही मॉडल हैं। (60 बचा अंश नहीं बल्कि घेरा गया अंश देता है।)",
+        mr: "लोकसंख्या क्षमतेचा 60 टक्के व्यापते, म्हणून 100 − 60 = 40 टक्के उरतो. हा न वापरलेला अंश हिशेबाचा आकडा नाही — तो (K − N)/K हे पद आहे जे संभार समीकरणात येते आणि वाढीवर ब्रेकसारखे काम करते. तो दोन्ही टोकांना काय करतो ते वाचा. जेव्हा लोकसंख्या फार लहान असेल तेव्हा अंश एकाजवळ आहे, ब्रेक सुटला आहे, आणि वाढ जवळपास घातांकी. जसजसा N, K जवळ जातो तसतसा अंश शून्याजवळ जातो, ब्रेक आवळला जातो आणि वाढ थांबते, आणि हेच वक्राला वर चालत राहून कोसळण्याऐवजी सपाट करते. नेटकेपणा हा की एकच गुणक घातांकी समीकरणाचे संभारात रूपांतर करतो, म्हणून दोन्ही प्रतिमाने प्रतिस्पर्धी नसून मर्यादेसह आणि मर्यादेविना तेच प्रतिमान आहेत. (60 उरलेला अंश नव्हे तर व्यापलेला अंश देते.)",
       },
     },
   ],
