@@ -1773,6 +1773,1051 @@ export const G12_BIOLOGY: Chapter[] = [
     ],
   },
   /*C4*/
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 6 — Evolution                                                   */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "biology-12-evolution",
+    subject: "BIOLOGY",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 6 — Evolution",
+      hi: "अध्याय 6 — विकास",
+      mr: "प्रकरण 6 — उत्क्रांती",
+    },
+    name: {
+      en: "Evolution",
+      hi: "विकास",
+      mr: "उत्क्रांती",
+    },
+    summary: {
+      en: "A mechanism that requires almost nothing to be assumed — that offspring vary, that some of the variation is heritable, and that more are born than can survive — and from those three observations produces everything else as a consequence rather than a further assumption; a distinction between two kinds of resemblance, one meaning shared ancestry and the other meaning only that two lineages met the same problem, which is the difference between a bat's wing and a bird's compared with a bat's wing and a butterfly's; a population whose allele frequencies stay put for ever unless something acts on them, which is useful precisely because nothing in nature satisfies its conditions, so any departure from it is a measurement of what is happening; three different shapes selection can take depending on which part of a range is being removed, of which one splits a population and the other two do not; a moth whose commonest colour changed within fifty years and then changed back when the soot stopped, which is the rare case of the whole process being watched rather than inferred; and a fossil record read not as a gallery of ancestors but as a series of dated constraints on when a feature must already have existed.",
+      hi: "ऐसी क्रियाविधि जिसे लगभग कुछ भी मान लेने की ज़रूरत नहीं — कि संतति में विविधता होती है, कि उस विविधता का कुछ हिस्सा वंशागत है, और कि जितने बच सकते हैं उससे अधिक जन्म लेते हैं — और इन तीन प्रेक्षणों से बाक़ी सब को आगे की धारणा नहीं बल्कि परिणाम के रूप में निकालती है; दो क़िस्म की समानता में भेद, एक का अर्थ साझा पूर्वज और दूसरे का केवल इतना कि दो वंशरेखाओं ने वही समस्या झेली, और यही चमगादड़ के पंख तथा पक्षी के पंख की तुलना बनाम चमगादड़ के पंख और तितली के पंख की तुलना का अंतर है; ऐसी आबादी जिसकी एलील बारंबारताएँ तब तक हमेशा वहीं रहती हैं जब तक उन पर कुछ काम न करे, और यह ठीक इसलिए काम की है कि प्रकृति में कुछ भी उसकी शर्तें पूरी नहीं करता, अतः उससे कोई भी विचलन इस बात का माप है कि हो क्या रहा है; चयन तीन भिन्न आकार ले सकता है इस पर कि परास का कौन-सा हिस्सा हटाया जा रहा है, और उनमें से एक आबादी को चीर देता है और बाक़ी दो नहीं; ऐसा पतंगा जिसका सबसे आम रंग पचास वर्षों में बदल गया और कालिख रुकते ही वापस बदल गया, और यह वह दुर्लभ मामला है जहाँ पूरी प्रक्रिया अनुमानित नहीं बल्कि देखी गई; और जीवाश्म अभिलेख जो पूर्वजों की दीर्घा के रूप में नहीं बल्कि इस बारे में तिथिबद्ध बंधनों की शृंखला के रूप में पढ़ा जाता है कि कोई लक्षण कब तक मौजूद हो ही चुका होना चाहिए।",
+      mr: "अशी यंत्रणा जिला जवळपास काहीही गृहीत धरण्याची गरज नाही — की संततीत विविधता असते, की त्या विविधतेचा काही भाग आनुवंशिक आहे, आणि की जितके टिकू शकतात त्याहून अधिक जन्म घेतात — आणि या तीन निरीक्षणांतून बाकी सर्व पुढचे गृहीतक नव्हे तर परिणाम म्हणून काढते; दोन प्रकारच्या साम्यातील भेद, एकाचा अर्थ सामायिक पूर्वज आणि दुसऱ्याचा केवळ इतका की दोन वंशरेषांनी तीच समस्या भोगली, आणि हाच वटवाघळाचा पंख व पक्ष्याचा पंख यांची तुलना विरुद्ध वटवाघळाचा पंख व फुलपाखराचा पंख यांच्या तुलनेचा फरक आहे; अशी लोकसंख्या जिच्या अ‍ॅलिल वारंवारता त्यांच्यावर काही काम करेपर्यंत कायम तिथेच राहतात, आणि ही नेमकी यासाठी उपयुक्त आहे की निसर्गात काहीही तिच्या अटी पूर्ण करत नाही, म्हणून तिच्यापासूनचे कोणतेही विचलन काय घडत आहे याचे माप आहे; निवड तीन वेगळे आकार घेऊ शकते व्याप्तीचा कोणता भाग काढला जात आहे यावर, आणि त्यांपैकी एक लोकसंख्या फाडते आणि बाकी दोन नाहीत; असा पतंग ज्याचा सर्वांत सामान्य रंग पन्नास वर्षांत बदलला आणि काजळी थांबताच परत बदलला, आणि हे ते दुर्मीळ प्रकरण आहे जिथे अख्खी प्रक्रिया अनुमानित नव्हे तर पाहिली गेली; आणि जीवाश्म नोंद जी पूर्वजांची दालन म्हणून नव्हे तर एखादे लक्षण कधीपर्यंत अस्तित्वात आलेच असले पाहिजे याविषयीच्या तारखांकित बंधनांची मालिका म्हणून वाचली जाते.",
+    },
+    position: 6,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "natural-selection",
+        name: {
+          en: "Natural selection",
+          hi: "प्राकृतिक चयन",
+          mr: "नैसर्गिक निवड",
+        },
+        kind: "mechanism and what it needs",
+        prompt: {
+          en: "A process that follows as a conclusion from three observations — that offspring differ, that some of the difference is heritable, and that more are born than can survive. What is it?",
+          hi: "ऐसी प्रक्रिया जो तीन प्रेक्षणों से निष्कर्ष के रूप में निकलती है — कि संतति भिन्न होती है, कि उस भिन्नता का कुछ हिस्सा वंशागत है, और कि जितने बच सकते हैं उससे अधिक जन्म लेते हैं। यह क्या है?",
+          mr: "अशी प्रक्रिया जी तीन निरीक्षणांतून निष्कर्ष म्हणून निघते — की संतती वेगळी असते, की त्या वेगळेपणाचा काही भाग आनुवंशिक आहे, आणि की जितके टिकू शकतात त्याहून अधिक जन्म घेतात. ही काय आहे?",
+        },
+        statement: {
+          en: "Natural selection is the differential survival and reproduction of individuals carrying heritable variations that fit them better to their conditions.",
+          hi: "प्राकृतिक चयन ऐसे व्यक्तियों के विभेदी उत्तरजीवन और जनन है जो ऐसी वंशागत विविधताएँ ढोते हैं जो उन्हें अपनी परिस्थितियों के लिए बेहतर बिठाती हैं।",
+          mr: "नैसर्गिक निवड म्हणजे अशा व्यक्तींचे विभेदी तगणे आणि प्रजनन जे अशा आनुवंशिक विविधता वाहतात ज्या त्यांना आपल्या परिस्थितीसाठी अधिक चांगले बसवतात.",
+        },
+        detail: {
+          en: "Nothing in the argument requires a purpose or a direction: the variation arises without reference to what is needed, and only the sorting afterwards is non-random.",
+          hi: "तर्क में कहीं भी किसी उद्देश्य या दिशा की ज़रूरत नहीं: विविधता इस बात की परवाह किए बिना उठती है कि क्या चाहिए, और केवल बाद की छँटाई ग़ैर-बेतरतीब होती है।",
+          mr: "युक्तिवादात कुठेही कोणत्याही हेतूची वा दिशेची गरज नाही: विविधता काय हवे याची पर्वा न करता उद्भवते, आणि केवळ नंतरची विभागणी अ-यादृच्छिक असते.",
+        },
+        extra: {
+          en: "The unit that changes is the population and not the individual, because an individual's alleles are fixed at conception and only the proportions in a population can shift.",
+          hi: "जो इकाई बदलती है वह आबादी है, व्यक्ति नहीं, क्योंकि किसी व्यक्ति के एलील गर्भाधान पर तय हो जाते हैं और केवल आबादी में उनके अनुपात खिसक सकते हैं।",
+          mr: "जे एकक बदलते ते लोकसंख्या आहे, व्यक्ती नव्हे, कारण एखाद्या व्यक्तीची अ‍ॅलिले गर्भधारणेवर ठरतात आणि केवळ लोकसंख्येतील त्यांची प्रमाणे सरकू शकतात.",
+        },
+        pair: {
+          left: {
+            en: "Three observations and a conclusion, with nothing added",
+            hi: "तीन प्रेक्षण और एक निष्कर्ष, बिना कुछ जोड़े",
+            mr: "तीन निरीक्षणे आणि एक निष्कर्ष, काहीही न जोडता",
+          },
+          right: {
+            en: "natural selection",
+            hi: "प्राकृतिक चयन",
+            mr: "नैसर्गिक निवड",
+          },
+        },
+      },
+      {
+        id: "the-hardy-weinberg-principle",
+        name: {
+          en: "The Hardy–Weinberg principle",
+          hi: "हार्डी-वाइनबर्ग सिद्धांत",
+          mr: "हार्डी-वाइनबर्ग तत्त्व",
+        },
+        kind: "mechanism and what it needs",
+        prompt: {
+          en: "A statement that allele frequencies in a population never change, whose usefulness lies entirely in the fact that no real population satisfies the conditions it assumes. What is it?",
+          hi: "ऐसा कथन कि किसी आबादी में एलील बारंबारताएँ कभी नहीं बदलतीं, और जिसकी उपयोगिता पूरी तरह इस तथ्य में है कि कोई असली आबादी उसकी मानी हुई शर्तें पूरी नहीं करती। यह क्या है?",
+          mr: "असे विधान की एखाद्या लोकसंख्येत अ‍ॅलिल वारंवारता कधीच बदलत नाहीत, आणि ज्याची उपयुक्तता पूर्णपणे या सत्यात आहे की कोणतीही खरी लोकसंख्या तिच्या गृहीत अटी पूर्ण करत नाही. हे काय आहे?",
+        },
+        statement: {
+          en: "The Hardy–Weinberg principle says that allele and genotype frequencies stay constant across generations in a large, randomly mating population with no selection, mutation or migration.",
+          hi: "हार्डी-वाइनबर्ग सिद्धांत कहता है कि बड़ी, बेतरतीब समागम करती आबादी में, जहाँ न चयन हो न उत्परिवर्तन न प्रवास, एलील और जीनप्ररूप बारंबारताएँ पीढ़ी दर पीढ़ी अचर रहती हैं।",
+          mr: "हार्डी-वाइनबर्ग तत्त्व सांगते की मोठ्या, यादृच्छिक मीलन करणाऱ्या लोकसंख्येत, जिथे निवड नाही, उत्परिवर्तन नाही आणि स्थलांतर नाही, अ‍ॅलिल आणि जनुकप्ररूप वारंवारता पिढ्यानपिढ्या अचल राहतात.",
+        },
+        detail: {
+          en: "It is a null hypothesis rather than a description: it says what would happen if nothing were happening, so that any departure has to be caused by something identifiable.",
+          hi: "यह वर्णन नहीं बल्कि निराकरणीय परिकल्पना है: वह बताती है कि यदि कुछ भी न हो रहा होता तो क्या होता, ताकि कोई भी विचलन किसी पहचानने योग्य चीज़ से ही आए।",
+          mr: "हे वर्णन नसून निरास गृहीतक आहे: ते सांगते की काहीही घडत नसते तर काय झाले असते, जेणेकरून कोणतेही विचलन एखाद्या ओळखता येण्याजोग्या गोष्टीनेच यावे.",
+        },
+        extra: {
+          en: "The five conditions it assumes are exactly the five ways evolution happens, so listing them is the same as listing the causes of evolutionary change.",
+          hi: "वह जिन पाँच शर्तों को मानता है वे ठीक वही पाँच रास्ते हैं जिनसे विकास होता है, अतः उन्हें गिनाना विकासात्मक परिवर्तन के कारण गिनाने जैसा ही है।",
+          mr: "ते ज्या पाच अटी गृहीत धरते त्या नेमके तेच पाच मार्ग आहेत ज्यांनी उत्क्रांती घडते, म्हणून त्या मोजणे हे उत्क्रांतीय बदलाची कारणे मोजण्यासारखेच आहे.",
+        },
+        pair: {
+          left: {
+            en: "A rule useful because nothing in nature obeys it",
+            hi: "ऐसा नियम जो इसलिए काम का है कि प्रकृति में उसे कोई नहीं मानता",
+            mr: "असा नियम जो यासाठी उपयुक्त आहे की निसर्गात त्याला कोणीही पाळत नाही",
+          },
+          right: {
+            en: "the Hardy–Weinberg principle",
+            hi: "हार्डी-वाइनबर्ग सिद्धांत",
+            mr: "हार्डी-वाइनबर्ग तत्त्व",
+          },
+        },
+      },
+      {
+        id: "the-three-modes-of-selection",
+        name: {
+          en: "The three modes of selection",
+          hi: "चयन के तीन प्रकार",
+          mr: "निवडीचे तीन प्रकार",
+        },
+        kind: "mechanism and what it needs",
+        prompt: {
+          en: "A classification by which part of a range is removed — both extremes, one extreme, or the middle — of which only the last splits a population into two. What is it?",
+          hi: "ऐसा वर्गीकरण कि परास का कौन-सा हिस्सा हटाया जाता है — दोनों सिरे, एक सिरा, या बीच — और जिनमें से केवल अंतिम आबादी को दो में चीरता है। यह क्या है?",
+          mr: "असे वर्गीकरण की व्याप्तीचा कोणता भाग काढला जातो — दोन्ही टोके, एक टोक, वा मध्य — आणि ज्यांपैकी केवळ शेवटचे लोकसंख्येला दोहोंत फाडते. हे काय आहे?",
+        },
+        statement: {
+          en: "The three modes of selection are stabilising, which removes both extremes, directional, which removes one, and disruptive, which removes the middle and can split a population.",
+          hi: "चयन के तीन प्रकार हैं स्थिरकारी, जो दोनों सिरे हटाता है, दिशात्मक, जो एक हटाता है, और विदारक, जो बीच हटाता है और आबादी को चीर सकता है।",
+          mr: "निवडीचे तीन प्रकार आहेत स्थिरकारी, जी दोन्ही टोके काढते, दिशात्मक, जी एक काढते, आणि विदारक, जी मध्य काढते आणि लोकसंख्या फाडू शकते.",
+        },
+        detail: {
+          en: "Stabilising selection is the commonest and the least visible, because it keeps a population where it already is and so produces no change to notice.",
+          hi: "स्थिरकारी चयन सबसे आम और सबसे कम दिखने वाला है, क्योंकि वह आबादी को वहीं रखता है जहाँ वह पहले से है और इसलिए ध्यान खींचने वाला कोई बदलाव नहीं देता।",
+          mr: "स्थिरकारी निवड सर्वांत सामान्य आणि सर्वांत कमी दिसणारी आहे, कारण ती लोकसंख्येला तिथेच ठेवते जिथे ती आधीच आहे आणि म्हणून लक्ष वेधणारा कोणताही बदल देत नाही.",
+        },
+        extra: {
+          en: "Only disruptive selection can begin to separate one population into two, which is why it matters far more than its rarity would suggest.",
+          hi: "केवल विदारक चयन ही एक आबादी को दो में अलग करना शुरू कर सकता है, इसीलिए वह अपनी दुर्लभता के सुझाव से कहीं अधिक मायने रखता है।",
+          mr: "केवळ विदारक निवडच एका लोकसंख्येला दोहोंत वेगळे करू लागू शकते, म्हणूनच ती आपल्या दुर्मीळतेच्या सुचनेहून कितीतरी अधिक महत्त्वाची आहे.",
+        },
+        pair: {
+          left: {
+            en: "Remove the middle and one population becomes two",
+            hi: "बीच हटाओ और एक आबादी दो हो जाती है",
+            mr: "मध्य काढा आणि एक लोकसंख्या दोन होते",
+          },
+          right: {
+            en: "the three modes of selection",
+            hi: "चयन के तीन प्रकार",
+            mr: "निवडीचे तीन प्रकार",
+          },
+        },
+      },
+      {
+        id: "homology-against-analogy",
+        name: {
+          en: "Homology against analogy",
+          hi: "समजातता बनाम समवृत्तिता",
+          mr: "समजातता विरुद्ध समवृत्तिता",
+        },
+        kind: "evidence and how it is read",
+        prompt: {
+          en: "Two kinds of resemblance, one implying a shared ancestor and the other implying only that two lineages met the same problem — a bat's wing next to a bird's, and a bat's wing next to a butterfly's. What is this distinction?",
+          hi: "दो क़िस्म की समानता, एक साझे पूर्वज का संकेत देती और दूसरी केवल इतना कि दो वंशरेखाओं ने वही समस्या झेली — चमगादड़ का पंख पक्षी के पंख के बग़ल, और चमगादड़ का पंख तितली के पंख के बग़ल। यह कौन-सा भेद है?",
+          mr: "दोन प्रकारचे साम्य, एक सामायिक पूर्वजाचे सूचक आणि दुसरे केवळ इतकेच की दोन वंशरेषांनी तीच समस्या भोगली — वटवाघळाचा पंख पक्ष्याच्या पंखाशेजारी, आणि वटवाघळाचा पंख फुलपाखराच्या पंखाशेजारी. हा कोणता भेद?",
+        },
+        statement: {
+          en: "Homology against analogy is the distinction between structures with the same underlying plan inherited from a common ancestor and structures serving the same function but built quite differently.",
+          hi: "समजातता बनाम समवृत्तिता उन संरचनाओं के बीच का भेद है जिनका मूल ढाँचा साझे पूर्वज से विरासत में मिला वही है, और उन संरचनाओं के बीच जो वही काम करती हैं पर बिलकुल भिन्न ढंग से बनी हैं।",
+          mr: "समजातता विरुद्ध समवृत्तिता हा त्या रचनांमधला भेद आहे ज्यांचा मूळ आराखडा सामायिक पूर्वजाकडून वारशाने मिळालेला तोच आहे, आणि त्या रचनांमधला जे तेच काम करतात पण पूर्णपणे वेगळ्या प्रकारे बनल्या आहेत.",
+        },
+        detail: {
+          en: "The test is the internal plan rather than the appearance: a bat's wing, a whale's flipper and a human arm contain the same bones in the same order, which is not something a shared function would require.",
+          hi: "परीक्षा भीतरी ढाँचा है, शक्ल नहीं: चमगादड़ के पंख, व्हेल के फ़्लिपर और मानव भुजा में वही हड्डियाँ उसी क्रम में हैं, और साझा काम इसकी माँग नहीं करता।",
+          mr: "कसोटी आतला आराखडा आहे, रूप नाही: वटवाघळाचा पंख, देवमाशाचा फ्लिपर आणि मानवी बाहू यांत तीच हाडे त्याच क्रमाने आहेत, आणि सामायिक कामाला याची गरज नाही.",
+        },
+        extra: {
+          en: "Analogous structures are the more informative in one respect: they show that similar conditions repeatedly produce similar solutions in unrelated lineages, which is convergent evolution.",
+          hi: "एक दृष्टि से समवृत्ति संरचनाएँ अधिक ज्ञानप्रद हैं: वे दिखाती हैं कि समान परिस्थितियाँ असंबद्ध वंशरेखाओं में बार-बार समान हल पैदा करती हैं, और यही अभिसारी विकास है।",
+          mr: "एका दृष्टीने समवृत्ती रचना अधिक माहितीपूर्ण आहेत: त्या दाखवतात की सारख्या परिस्थिती असंबद्ध वंशरेषांत वारंवार सारखी उत्तरे निर्माण करतात, आणि हीच अभिसारी उत्क्रांती आहे.",
+        },
+        pair: {
+          left: {
+            en: "Same bones in a different job, or a same job from different bones",
+            hi: "भिन्न काम में वही हड्डियाँ, या भिन्न हड्डियों से वही काम",
+            mr: "वेगळ्या कामात तीच हाडे, वा वेगळ्या हाडांतून तेच काम",
+          },
+          right: {
+            en: "homology against analogy",
+            hi: "समजातता बनाम समवृत्तिता",
+            mr: "समजातता विरुद्ध समवृत्तिता",
+          },
+        },
+      },
+      {
+        id: "industrial-melanism",
+        name: {
+          en: "Industrial melanism",
+          hi: "औद्योगिक मेलेनिज़्म",
+          mr: "औद्योगिक मेलॅनिझम",
+        },
+        kind: "evidence and how it is read",
+        prompt: {
+          en: "A moth whose commonest form changed from pale to dark within fifty years of the soot arriving, and changed back within decades of the air being cleaned. What is this case called?",
+          hi: "ऐसा पतंगा जिसका सबसे आम रूप कालिख आने के पचास वर्षों के भीतर पीले से काला हो गया, और हवा साफ़ होने के कुछ दशकों में वापस बदल गया। इस मामले को क्या कहते हैं?",
+          mr: "असा पतंग ज्याचे सर्वांत सामान्य रूप काजळी आल्याच्या पन्नास वर्षांत फिकटावरून काळे झाले, आणि हवा स्वच्छ झाल्याच्या काही दशकांत परत बदलले. या प्रकरणाला काय म्हणतात?",
+        },
+        statement: {
+          en: "Industrial melanism is the rise of the dark form of the peppered moth in soot-blackened areas and its decline again after air quality improved.",
+          hi: "औद्योगिक मेलेनिज़्म कालिख से काले पड़े इलाक़ों में चितकबरे पतंगे के काले रूप का बढ़ना और वायु गुणवत्ता सुधरने के बाद उसका फिर घटना है।",
+          mr: "औद्योगिक मेलॅनिझम म्हणजे काजळीने काळ्या पडलेल्या भागांत ठिपकेदार पतंगाच्या काळ्या रूपाचे वाढणे आणि हवेची गुणवत्ता सुधारल्यावर त्याचे पुन्हा घटणे.",
+        },
+        detail: {
+          en: "The dark allele was present all along and rare, so nothing new had to appear — selection only changed which of the existing variants was commoner.",
+          hi: "काला एलील आद्योपांत मौजूद और दुर्लभ था, अतः कुछ नया प्रकट होने की ज़रूरत ही नहीं पड़ी — चयन ने केवल यह बदला कि मौजूद रूपों में से कौन-सा अधिक आम है।",
+          mr: "काळे अ‍ॅलिल सर्वकाळ उपस्थित आणि दुर्मीळ होते, म्हणून काहीही नवे प्रकट होण्याची गरजच पडली नाही — निवडीने केवळ हे बदलले की उपस्थित रूपांपैकी कोणते अधिक सामान्य आहे.",
+        },
+        extra: {
+          en: "The reversal is what makes the case strong: the frequency followed the environment down as well as up, which is what a causal relationship should do and a coincidence need not.",
+          hi: "मामले को प्रबल उसका पलटना बनाता है: बारंबारता परिवेश के साथ ऊपर ही नहीं नीचे भी गई, और कारण-संबंध को यही करना चाहिए जबकि संयोग को ज़रूरी नहीं।",
+          mr: "प्रकरणाला भक्कम त्याचे उलटणे बनवते: वारंवारता परिसरासोबत वर तर गेलीच पण खालीही गेली, आणि कार्यकारण संबंधाने हेच करावे तर योगायोगाला आवश्यक नाही.",
+        },
+        pair: {
+          left: {
+            en: "The frequency followed the soot down as well as up",
+            hi: "बारंबारता कालिख के साथ ऊपर भी गई और नीचे भी",
+            mr: "वारंवारता काजळीसोबत वरही गेली आणि खालीही",
+          },
+          right: {
+            en: "industrial melanism",
+            hi: "औद्योगिक मेलेनिज़्म",
+            mr: "औद्योगिक मेलॅनिझम",
+          },
+        },
+      },
+      {
+        id: "reading-the-fossil-record",
+        name: {
+          en: "Reading the fossil record",
+          hi: "जीवाश्म अभिलेख को पढ़ना",
+          mr: "जीवाश्म नोंद वाचणे",
+        },
+        kind: "evidence and how it is read",
+        prompt: {
+          en: "A record that is not a gallery of ancestors but a set of dated statements about when a feature must already have existed, and which is silent about most of what lived. What is being described?",
+          hi: "ऐसा अभिलेख जो पूर्वजों की दीर्घा नहीं बल्कि इस बारे में तिथिबद्ध कथनों का समुच्चय है कि कोई लक्षण कब तक मौजूद हो ही चुका होना चाहिए, और जो जो कुछ जिया उसके अधिकांश पर चुप है। यहाँ किसका वर्णन है?",
+          mr: "अशी नोंद जी पूर्वजांची दालन नसून एखादे लक्षण कधीपर्यंत अस्तित्वात आलेच असले पाहिजे याविषयीच्या तारखांकित विधानांचा संच आहे, आणि जी जे काही जगले त्याच्या बहुतांशावर मूक आहे. इथे कशाचे वर्णन आहे?",
+        },
+        statement: {
+          en: "Reading the fossil record means treating each fossil as evidence that a feature existed by a certain date, while accepting that fossilisation is rare and heavily biased towards hard parts.",
+          hi: "जीवाश्म अभिलेख को पढ़ने का अर्थ है हर जीवाश्म को इस प्रमाण के रूप में लेना कि कोई लक्षण किसी तिथि तक मौजूद था, और साथ ही यह मान लेना कि जीवाश्मीकरण दुर्लभ है और कठोर भागों की ओर बहुत झुका हुआ।",
+          mr: "जीवाश्म नोंद वाचणे म्हणजे प्रत्येक जीवाश्माला एखादे लक्षण एका ठराविक तारखेपर्यंत अस्तित्वात होते याचा पुरावा मानणे, आणि सोबतच हे मान्य करणे की जीवाश्मीकरण दुर्मीळ आहे आणि कठीण भागांकडे बराच झुकलेला.",
+        },
+        detail: {
+          en: "A gap in the record is therefore not evidence of absence, because a soft-bodied organism in an acidic soil leaves nothing whatever behind.",
+          hi: "अतः अभिलेख में कोई अंतराल अनुपस्थिति का प्रमाण नहीं, क्योंकि अम्लीय मिट्टी में कोमल शरीर वाला जीव पीछे कुछ भी नहीं छोड़ता।",
+          mr: "म्हणून नोंदीतले कोणतेही अंतर अनुपस्थितीचा पुरावा नाही, कारण आम्लधर्मी मातीत मऊ शरीराचा जीव मागे काहीही सोडत नाही.",
+        },
+        extra: {
+          en: "The strongest inferences come from fossils combining features of two groups, because they show that the combination was possible and date it, which no living organism can do.",
+          hi: "सबसे प्रबल अनुमान उन जीवाश्मों से आते हैं जिनमें दो समूहों के लक्षण मिले हों, क्योंकि वे दिखाते हैं कि वह संयोजन संभव था और उसकी तिथि देते हैं, जो कोई जीवित जीव नहीं कर सकता।",
+          mr: "सर्वांत भक्कम अनुमाने त्या जीवाश्मांतून येतात ज्यांत दोन गटांची लक्षणे मिळालेली असतील, कारण ते दाखवतात की ते संयोजन शक्य होते आणि त्याची तारीख देतात, जे कोणताही जिवंत जीव करू शकत नाही.",
+        },
+        pair: {
+          left: {
+            en: "A gap in the record is not evidence of absence",
+            hi: "अभिलेख में अंतराल अनुपस्थिति का प्रमाण नहीं",
+            mr: "नोंदीतले अंतर अनुपस्थितीचा पुरावा नाही",
+          },
+          right: {
+            en: "reading the fossil record",
+            hi: "जीवाश्म अभिलेख को पढ़ना",
+            mr: "जीवाश्म नोंद वाचणे",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "The Hardy–Weinberg principle states that allele frequencies do not change from one generation to the next. Since every natural population evolves, explain why a principle that is never satisfied is nevertheless the foundation of population genetics.",
+          hi: "हार्डी-वाइनबर्ग सिद्धांत कहता है कि एलील बारंबारताएँ एक पीढ़ी से अगली में नहीं बदलतीं। चूँकि हर प्राकृतिक आबादी विकसित होती है, बताओ कि जो सिद्धांत कभी पूरा नहीं होता वह फिर भी समष्टि आनुवंशिकी की नींव क्यों है।",
+          mr: "हार्डी-वाइनबर्ग तत्त्व सांगते की अ‍ॅलिल वारंवारता एका पिढीपासून पुढच्यात बदलत नाहीत. प्रत्येक नैसर्गिक लोकसंख्या उत्क्रांत होत असल्याने, जे तत्त्व कधीच पूर्ण होत नाही ते तरीही समष्टी आनुवंशिकीचा पाया का आहे ते सांगा.",
+        },
+        choices: [
+          {
+            en: "Because it is a null hypothesis, not a description. It states what would happen if nothing were acting on a population, so any measured departure from its predicted frequencies has to be caused by something, and the five conditions it assumes — no selection, no mutation, no migration, no genetic drift, and random mating — are precisely the five ways a population can evolve. Finding that observed genotype frequencies differ from the predicted p², 2pq and q² is therefore not a refutation of the principle but a measurement: it says evolution is occurring and narrows down which of the five processes is responsible",
+            hi: "क्योंकि यह निराकरणीय परिकल्पना है, वर्णन नहीं। वह बताती है कि यदि किसी आबादी पर कुछ भी काम न कर रहा होता तो क्या होता, अतः उसकी भविष्यवाणित बारंबारताओं से नापा गया कोई भी विचलन किसी न किसी चीज़ से ही आना चाहिए, और वह जिन पाँच शर्तों को मानती है — न चयन, न उत्परिवर्तन, न प्रवास, न आनुवंशिक विचलन, और बेतरतीब समागम — वे ठीक वही पाँच रास्ते हैं जिनसे कोई आबादी विकसित हो सकती है। अतः यह पाना कि देखी गई जीनप्ररूप बारंबारताएँ भविष्यवाणित p², 2pq और q² से भिन्न हैं, सिद्धांत का खंडन नहीं बल्कि एक माप है: वह कहता है कि विकास हो रहा है और यह संकीर्ण करता है कि पाँचों में से कौन-सी प्रक्रिया ज़िम्मेदार है",
+            mr: "कारण हे निरास गृहीतक आहे, वर्णन नव्हे. ते सांगते की एखाद्या लोकसंख्येवर काहीही काम करत नसते तर काय झाले असते, म्हणून त्याच्या भाकीत वारंवारतांपासूनचे कोणतेही मोजलेले विचलन कशाने ना कशाने आलेच पाहिजे, आणि ते ज्या पाच अटी गृहीत धरते — निवड नाही, उत्परिवर्तन नाही, स्थलांतर नाही, आनुवंशिक विचलन नाही, आणि यादृच्छिक मीलन — त्या नेमके तेच पाच मार्ग आहेत ज्यांनी एखादी लोकसंख्या उत्क्रांत होऊ शकते. म्हणून निरीक्षिलेल्या जनुकप्ररूप वारंवारता भाकीत p², 2pq आणि q² हून वेगळ्या आहेत असे आढळणे हे तत्त्वाचे खंडन नसून एक माप आहे: ते सांगते की उत्क्रांती घडत आहे आणि पाचांपैकी कोणती प्रक्रिया जबाबदार आहे हे संकुचित करते",
+          },
+          {
+            en: "Because it holds accurately for small populations, which are the ones most often studied, and only fails for very large ones where sampling effects dominate",
+            hi: "क्योंकि वह छोटी आबादियों के लिए ठीक-ठीक टिकता है, जिनका अध्ययन सबसे अधिक होता है, और केवल बहुत बड़ी आबादियों के लिए विफल होता है जहाँ प्रतिचयन प्रभाव हावी हैं",
+            mr: "कारण ते लहान लोकसंख्यांसाठी अचूक टिकते, ज्यांचा अभ्यास सर्वाधिक होतो, आणि केवळ फार मोठ्या लोकसंख्यांसाठी अपयशी ठरते जिथे नमुना परिणाम वरचढ आहेत",
+          },
+          {
+            en: "Because it describes what actually happens in undisturbed natural populations, and evolution only occurs when humans interfere with them",
+            hi: "क्योंकि वह वर्णन करता है कि अबाधित प्राकृतिक आबादियों में वस्तुतः क्या होता है, और विकास केवल तभी होता है जब मनुष्य उनमें दख़ल दें",
+            mr: "कारण ते वर्णन करते की अबाधित नैसर्गिक लोकसंख्यांत प्रत्यक्षात काय घडते, आणि उत्क्रांती केवळ तेव्हाच घडते जेव्हा माणसे त्यांत ढवळाढवळ करतात",
+          },
+          {
+            en: "Because it is a mathematical identity that cannot be tested, so it is retained as a convention rather than for any use it has",
+            hi: "क्योंकि वह ऐसी गणितीय सर्वसमिका है जिसे परखा ही नहीं जा सकता, अतः उसे किसी उपयोग के लिए नहीं बल्कि परिपाटी के रूप में रखा गया है",
+            mr: "कारण ते असे गणिती एकात्म आहे ज्याची चाचणीच घेता येत नाही, म्हणून ते कोणत्याही उपयोगासाठी नव्हे तर संकेत म्हणून ठेवले आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The objection in the question is a good one and deserves a real answer rather than a dismissal. If no population satisfies the conditions, in what sense is the principle true, and why is it taught at all? WHAT THE PRINCIPLE SAYS. If a gene has two alleles at frequencies p and q, with p + q = 1, then after one generation of random mating the genotypes occur at p², 2pq and q², and those frequencies stay put for ever — PROVIDED the population is large, mating is random, and there is no selection, no mutation and no migration. The algebra is straightforward; what matters is the proviso. WHY THE PROVISO IS THE POINT. Notice that the five conditions are not a random list of technicalities. Selection changes allele frequencies. So does mutation, by creating new alleles. So does migration, by importing them. So does drift, by sampling error in a small population. And non-random mating changes genotype frequencies even when allele frequencies stay fixed. Together they exhaust the ways a population can change genetically. So the principle is really saying: in the absence of every cause of evolution, no evolution occurs. Stated that way it is almost a tautology — and that is exactly what makes it useful. HOW A NULL HYPOTHESIS EARNS ITS KEEP. Science makes progress by comparing what is observed with what would be expected if nothing interesting were happening. A control group in an experiment does the same work. The Hardy–Weinberg equilibrium is the control for a population: calculate the frequencies expected under it, measure what is actually there, and the DIFFERENCE is the quantity of interest. Without the null there is no baseline, and 'the frequencies are 0.36, 0.48 and 0.16' means nothing at all. WHAT THE DEPARTURES TELL YOU. Different causes leave different signatures, which is why the analysis can go further than 'something is happening'. A deficit of heterozygotes relative to 2pq suggests inbreeding or population structure. A steady directional change across generations suggests selection. An excess of heterozygotes may indicate that the heterozygote has an advantage — which is how the persistence of the sickle-cell allele in malarial regions was recognised, since selection against it in homozygotes should have removed it long ago and had not. Erratic changes in a small isolated population suggest drift. So a single principle that is never satisfied becomes an instrument for identifying which evolutionary process is at work. THE HABIT WORTH TAKING AWAY. An idealisation is not a false description; it is a reference against which real cases are measured. A frictionless surface, an ideal gas and a Hardy–Weinberg population are the same kind of object, and in each case the interesting science is in the size and direction of the departure. (The second option reverses the population-size condition — drift matters most in SMALL populations; the third confines evolution to human interference, which the peppered moth and antibiotic resistance both contradict; the fourth calls it untestable, when testing observed against expected frequencies is precisely what it is for.)",
+          hi: "प्रश्न में उठी आपत्ति अच्छी है और उसे झटकने के बजाय असली उत्तर मिलना चाहिए। यदि कोई आबादी शर्तें पूरी नहीं करती, तो सिद्धांत किस अर्थ में सच है, और उसे पढ़ाया ही क्यों जाता है? सिद्धांत कहता क्या है। यदि किसी जीन के दो एलील p और q बारंबारताओं पर हों, जहाँ p + q = 1, तो बेतरतीब समागम की एक पीढ़ी के बाद जीनप्ररूप p², 2pq और q² पर आते हैं, और वे बारंबारताएँ हमेशा वहीं रहती हैं — बशर्ते आबादी बड़ी हो, समागम बेतरतीब हो, और न चयन हो, न उत्परिवर्तन, न प्रवास। बीजगणित सीधा है; जो मायने रखता है वह शर्त है। शर्त ही मर्म क्यों है। ध्यान दो कि पाँचों शर्तें तकनीकी बातों की बेतरतीब सूची नहीं हैं। चयन एलील बारंबारताएँ बदलता है। उत्परिवर्तन भी, नए एलील बनाकर। प्रवास भी, उन्हें आयात करके। विचलन भी, छोटी आबादी में प्रतिचयन त्रुटि से। और ग़ैर-बेतरतीब समागम जीनप्ररूप बारंबारताएँ तब भी बदल देता है जब एलील बारंबारताएँ जमी रहें। ये मिलकर उन सब रास्तों को समेट लेते हैं जिनसे कोई आबादी आनुवंशिक रूप से बदल सकती है। अतः सिद्धांत असल में कह रहा है: विकास के हर कारण की अनुपस्थिति में कोई विकास नहीं होता। ऐसे कहने पर वह लगभग पुनरुक्ति है — और ठीक यही उसे काम का बनाता है। निराकरणीय परिकल्पना अपनी क़ीमत कैसे चुकाती है। विज्ञान इस तुलना से आगे बढ़ता है कि जो देखा गया वह उससे कैसा भिन्न है जिसकी अपेक्षा तब होती जब कुछ रोचक न हो रहा होता। प्रयोग में नियंत्रण समूह वही काम करता है। हार्डी-वाइनबर्ग साम्य आबादी का नियंत्रण है: उसके तहत अपेक्षित बारंबारताएँ निकालो, जो वस्तुतः है उसे नापो, और अंतर ही वह राशि है जिसमें रुचि है। निराकरण के बिना कोई आधाररेखा नहीं, और 'बारंबारताएँ 0.36, 0.48 और 0.16 हैं' का कोई अर्थ ही नहीं। विचलन क्या बताते हैं। भिन्न कारण भिन्न हस्ताक्षर छोड़ते हैं, इसीलिए विश्लेषण 'कुछ हो रहा है' से आगे जा सकता है। 2pq के मुक़ाबले विषमयुग्मजियों की कमी अंतःप्रजनन या आबादी की संरचना का सुझाव देती है। पीढ़ियों भर लगातार दिशात्मक बदलाव चयन का। विषमयुग्मजियों की अधिकता संकेत दे सकती है कि विषमयुग्मजी को लाभ है — और मलेरियाग्रस्त इलाक़ों में सिकल-सेल एलील का टिका रहना इसी तरह पहचाना गया, चूँकि समयुग्मजियों में उसके विरुद्ध चयन को उसे बहुत पहले हटा देना चाहिए था और नहीं हटाया। छोटी अलग-थलग आबादी में अनियमित बदलाव विचलन का। अतः जो सिद्धांत कभी पूरा नहीं होता वही यह पहचानने का यंत्र बन जाता है कि कौन-सी विकासात्मक प्रक्रिया काम कर रही है। साथ ले जाने लायक़ आदत। आदर्शीकरण झूठा वर्णन नहीं; वह वह सन्दर्भ है जिसके सामने असली मामले नापे जाते हैं। घर्षणरहित सतह, आदर्श गैस और हार्डी-वाइनबर्ग आबादी एक ही क़िस्म की वस्तुएँ हैं, और हर मामले में रोचक विज्ञान विचलन के आकार और दिशा में है। (दूसरा विकल्प आबादी के आकार की शर्त उलट देता है — विचलन छोटी आबादियों में सबसे अधिक मायने रखता है; तीसरा विकास को मानवीय दख़ल तक सीमित कर देता है, जिसका खंडन चितकबरा पतंगा और प्रतिजैविक प्रतिरोध दोनों करते हैं; चौथा उसे अपरीक्षणीय कहता है, जबकि देखी गई और अपेक्षित बारंबारताओं की जाँच ही उसका काम है।)",
+          mr: "प्रश्नातील आक्षेप चांगला आहे आणि त्याला झटकण्याऐवजी खरे उत्तर मिळाले पाहिजे. जर कोणतीही लोकसंख्या अटी पूर्ण करत नसेल, तर तत्त्व कोणत्या अर्थाने खरे आहे, आणि ते शिकवले जातेच का? तत्त्व काय सांगते. जर एखाद्या जनुकाची दोन अ‍ॅलिले p आणि q वारंवारतांवर असतील, जिथे p + q = 1, तर यादृच्छिक मीलनाच्या एका पिढीनंतर जनुकप्ररूप p², 2pq आणि q² वर येतात, आणि त्या वारंवारता कायम तिथेच राहतात — जर लोकसंख्या मोठी असेल, मीलन यादृच्छिक असेल, आणि निवड नसेल, उत्परिवर्तन नसेल, स्थलांतर नसेल. बीजगणित सरळ आहे; जे महत्त्वाचे ते अट आहे. अटच गाभा का आहे. लक्षात घ्या की पाचही अटी तांत्रिक बाबींची यादृच्छिक यादी नाहीत. निवड अ‍ॅलिल वारंवारता बदलते. उत्परिवर्तनही, नवी अ‍ॅलिले बनवून. स्थलांतरही, ती आयात करून. विचलनही, लहान लोकसंख्येत नमुना त्रुटीने. आणि अ-यादृच्छिक मीलन जनुकप्ररूप वारंवारता तेव्हाही बदलते जेव्हा अ‍ॅलिल वारंवारता स्थिर राहतात. ही मिळून त्या सर्व मार्गांना सामावतात ज्यांनी एखादी लोकसंख्या आनुवंशिकदृष्ट्या बदलू शकते. म्हणून तत्त्व खरे तर सांगत आहे: उत्क्रांतीच्या प्रत्येक कारणाच्या अनुपस्थितीत कोणतीही उत्क्रांती होत नाही. असे सांगितल्यास ते जवळपास पुनरुक्ती आहे — आणि नेमके हेच त्याला उपयुक्त बनवते. निरास गृहीतक आपली किंमत कशी वसूल करते. विज्ञान या तुलनेतून पुढे जाते की जे निरीक्षिले ते त्याहून कसे वेगळे आहे ज्याची अपेक्षा तेव्हा असती जेव्हा काहीही रोचक घडत नसते. प्रयोगातील नियंत्रण गट तेच काम करतो. हार्डी-वाइनबर्ग समतोल हे लोकसंख्येचे नियंत्रण आहे: त्याखाली अपेक्षित वारंवारता काढा, जे प्रत्यक्षात आहे ते मोजा, आणि फरकच ती राशी आहे जिच्यात रस आहे. निरासाविना कोणतीही आधाररेषा नाही, आणि 'वारंवारता 0.36, 0.48 आणि 0.16 आहेत' याचा कोणताही अर्थच नाही. विचलने काय सांगतात. वेगळी कारणे वेगळ्या सह्या सोडतात, म्हणूनच विश्लेषण 'काहीतरी घडत आहे' च्या पुढे जाऊ शकते. 2pq च्या तुलनेत विषमयुग्मजींची कमतरता अंतःप्रजनन वा लोकसंख्येची रचना सुचवते. पिढ्यांभर सतत दिशात्मक बदल निवड सुचवतो. विषमयुग्मजींचे अधिक्य सूचित करू शकते की विषमयुग्मजीला फायदा आहे — आणि मलेरियाग्रस्त भागांत सिकल-सेल अ‍ॅलिलचे टिकून राहणे याच प्रकारे ओळखले गेले, कारण समयुग्मजींत त्याविरुद्धच्या निवडीने ते कधीच काढून टाकायला हवे होते आणि टाकले नाही. लहान एकाकी लोकसंख्येतले अनियमित बदल विचलन सुचवतात. म्हणून जे तत्त्व कधीच पूर्ण होत नाही तेच कोणती उत्क्रांतीय प्रक्रिया काम करत आहे हे ओळखण्याचे यंत्र बनते. सोबत न्यायची सवय. आदर्शीकरण खोटे वर्णन नाही; तो तो संदर्भ आहे ज्यासमोर खरी प्रकरणे मोजली जातात. घर्षणविरहित पृष्ठभाग, आदर्श वायू आणि हार्डी-वाइनबर्ग लोकसंख्या एकाच प्रकारच्या वस्तू आहेत, आणि प्रत्येक प्रकरणी रोचक विज्ञान विचलनाच्या आकारात आणि दिशेत आहे. (दुसरा पर्याय लोकसंख्येच्या आकाराची अट उलटवतो — विचलन लहान लोकसंख्यांत सर्वाधिक महत्त्वाचे आहे; तिसरा उत्क्रांतीला मानवी ढवळाढवळीपुरते मर्यादित करतो, ज्याचे खंडन ठिपकेदार पतंग आणि प्रतिजैविक प्रतिकार दोन्ही करतात; चौथा त्याला अचाचणीय म्हणतो, तर निरीक्षिलेल्या आणि अपेक्षित वारंवारतांची तपासणी हेच त्याचे काम आहे.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "A bat's wing and a bird's wing both fly; a bat's wing and a whale's flipper do quite different jobs. Yet biologists group the first pair differently from the second. Explain the criterion being used and why it, rather than function, is the one that carries information about ancestry.",
+          hi: "चमगादड़ का पंख और पक्षी का पंख दोनों उड़ते हैं; चमगादड़ का पंख और व्हेल का फ़्लिपर बिलकुल भिन्न काम करते हैं। फिर भी जीवविज्ञानी पहली जोड़ी को दूसरी से भिन्न ढंग से समूहित करते हैं। बताओ कि काम में लाई जा रही कसौटी क्या है और वही, न कि प्रकार्य, पूर्वजता के बारे में सूचना क्यों ढोती है।",
+          mr: "वटवाघळाचा पंख आणि पक्ष्याचा पंख दोन्ही उडतात; वटवाघळाचा पंख आणि देवमाशाचा फ्लिपर अगदी वेगळी कामे करतात. तरीही जीवशास्त्रज्ञ पहिली जोडी दुसरीहून वेगळ्या प्रकारे गटबद्ध करतात. वापरली जाणारी कसोटी काय आहे आणि तीच, कार्य नव्हे, पूर्वजतेबद्दलची माहिती का वाहते ते सांगा.",
+        },
+        choices: [
+          {
+            en: "The criterion is the underlying structural plan, not what the structure does. A bat's wing, a whale's flipper and a human arm all contain one upper bone, two forearm bones, a set of wrist bones and five digits, in that arrangement — a pattern no shared function requires and which is most simply explained by inheritance from a common ancestor that had it. A bird's wing flies but is built on a different arrangement, and an insect's wing has no bones at all, so shared flight tells you only that similar problems get similar solutions. Function is the wrong criterion because selection acts on function, and unrelated lineages under similar pressures converge on it; the underlying plan is not what selection is optimising, so it persists as a record of descent",
+            hi: "कसौटी नीचे का संरचनात्मक ढाँचा है, संरचना करती क्या है यह नहीं। चमगादड़ के पंख, व्हेल के फ़्लिपर और मानव भुजा सबमें एक ऊपरी हड्डी, दो अग्रबाहु हड्डियाँ, कलाई की हड्डियों का समुच्चय और पाँच अंगुलियाँ हैं, उसी व्यवस्था में — ऐसा प्रतिरूप जिसकी माँग कोई साझा काम नहीं करता और जिसकी सबसे सरल व्याख्या ऐसे साझे पूर्वज से विरासत है जिसके पास वह था। पक्षी का पंख उड़ता है पर भिन्न व्यवस्था पर बना है, और कीट के पंख में हड्डियाँ हैं ही नहीं, अतः साझी उड़ान केवल इतना बताती है कि समान समस्याओं के समान हल निकलते हैं। प्रकार्य ग़लत कसौटी है क्योंकि चयन प्रकार्य पर काम करता है, और समान दबावों में असंबद्ध वंशरेखाएँ उस पर अभिसरित हो जाती हैं; नीचे का ढाँचा वह नहीं जिसे चयन अनुकूलित कर रहा है, अतः वह वंशक्रम के अभिलेख के रूप में बना रहता है",
+            mr: "कसोटी खालचा संरचनात्मक आराखडा आहे, रचना काय करते हे नाही. वटवाघळाचा पंख, देवमाशाचा फ्लिपर आणि मानवी बाहू सर्वांत एक वरचे हाड, दोन अग्रबाहू हाडे, मनगटाच्या हाडांचा संच आणि पाच बोटे आहेत, त्याच मांडणीत — असा नमुना ज्याची मागणी कोणतेही सामायिक काम करत नाही आणि ज्याचे सर्वांत सोपे स्पष्टीकरण अशा सामायिक पूर्वजाकडून वारसा आहे ज्याच्याकडे तो होता. पक्ष्याचा पंख उडतो पण वेगळ्या मांडणीवर बनला आहे, आणि कीटकाच्या पंखात हाडे आहेतच नाहीत, म्हणून सामायिक उड्डाण केवळ इतके सांगते की सारख्या समस्यांची सारखी उत्तरे निघतात. कार्य ही चुकीची कसोटी आहे कारण निवड कार्यावर काम करते, आणि सारख्या दाबांखाली असंबद्ध वंशरेषा त्यावर अभिसरित होतात; खालचा आराखडा तो नाही जो निवड अनुकूलित करत आहे, म्हणून तो वंशाच्या नोंदीच्या रूपात टिकतो",
+          },
+          {
+            en: "The criterion is size and shape: structures of similar proportions are grouped together, which is why a bat's wing and a bird's wing fall into different groups despite both being wings",
+            hi: "कसौटी आकार और शक्ल है: समान अनुपातों की संरचनाएँ साथ समूहित होती हैं, इसीलिए चमगादड़ का पंख और पक्षी का पंख दोनों पंख होते हुए भी भिन्न समूहों में पड़ते हैं",
+            mr: "कसोटी आकार आणि रूप आहे: सारख्या प्रमाणांच्या रचना एकत्र गटबद्ध होतात, म्हणूनच वटवाघळाचा पंख आणि पक्ष्याचा पंख दोन्ही पंख असूनही वेगळ्या गटांत पडतात",
+          },
+          {
+            en: "The criterion is embryonic origin only, and adult structure is disregarded entirely, since two structures arising from the same tissue must be related no matter how they develop afterwards",
+            hi: "कसौटी केवल भ्रूणीय उद्गम है, और वयस्क संरचना पूरी तरह अनदेखी की जाती है, चूँकि एक ही ऊतक से उठी दो संरचनाएँ संबंधित होनी ही चाहिए चाहे बाद में वे कैसे भी विकसित हों",
+            mr: "कसोटी केवळ भ्रूणीय उगम आहे, आणि प्रौढ रचना पूर्णपणे दुर्लक्षिली जाते, कारण एकाच ऊतकातून उद्भवलेल्या दोन रचना संबंधित असल्याच पाहिजेत त्या नंतर कशाही विकसित होवोत",
+          },
+          {
+            en: "Function is in fact the correct criterion, and the grouping described in the question is a historical error that modern biology has abandoned",
+            hi: "वस्तुतः प्रकार्य ही सही कसौटी है, और प्रश्न में वर्णित समूहन एक ऐतिहासिक भूल है जिसे आधुनिक जीवविज्ञान छोड़ चुका है",
+            mr: "प्रत्यक्षात कार्यच योग्य कसोटी आहे, आणि प्रश्नात वर्णिलेले गटबंधन ही एक ऐतिहासिक चूक आहे जी आधुनिक जीवशास्त्राने सोडली आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The question is really about what counts as evidence, and the answer turns on a distinction that is easy to state and easy to get backwards. THE OBSERVATION TO BE EXPLAINED. Open up a bat's wing, a whale's flipper, a horse's foreleg and a human arm. In every one you find the same bones in the same sequence: a single humerus, then radius and ulna, then a cluster of carpals, then metacarpals and five digits. The proportions differ enormously — the bat's digits are enormously elongated, the horse's reduced to one — but the plan is identical. This is the pentadactyl limb, and it is a homology. WHY THAT PATTERN IS INFORMATIVE. Ask what would explain it. If each limb had been shaped only by its job, there is no reason for a swimming flipper and a flying wing and a walking leg to share a bone count. Swimming does not require five digits; a solid paddle would serve better, and some marine reptiles evolved exactly that. The shared plan is therefore not explained by function. It IS explained, simply, by inheritance: an ancestor had that arrangement, and every descendant lineage modified what it inherited rather than starting again. Selection can lengthen a bone, fuse two, or reduce one to a splint, but it cannot re-plan a limb from scratch, because every intermediate stage has to be a working limb in a living animal. THE CONTRASTING CASE. Now compare a bat's wing with an insect's. Both fly, and the aerodynamic demands are similar, so both are thin, light and broad. But the bat's is a modified forelimb with bones, and the insect's is an outgrowth of the body wall with no bones at all. Shared function, unrelated construction — an analogy. Such structures are evidence of convergent evolution: similar conditions repeatedly produce similar solutions in lineages that never shared the relevant ancestor. The eye of an octopus and the eye of a vertebrate are the classic case, similar enough to be mistaken for relatives and wired inside out relative to each other, which gives the game away. WHY FUNCTION IS THE WRONG CRITERION, PUT SHARPLY. Selection acts on what a structure DOES. That means function is precisely the property that unrelated lineages will converge on when their conditions are alike, so shared function is weak evidence of relatedness. The underlying architecture is not what selection is optimising — it is the raw material selection is stuck with — so it changes more slowly and retains the record of descent. In general, a character that is NOT under strong selection is often the more reliable indicator of ancestry, which is why molecular phylogenetics leans on sequences whose variation is nearly neutral. THE SAME LOGIC ELSEWHERE. Vestigial organs are the limiting case of a homology: the human appendix and coccyx, or the pelvic bones of a whale, are structures whose plan is inherited while their function is gone. They make no sense as design and perfect sense as history. (The second option offers a criterion that would group a bat's wing with a bird's, the opposite of what is asked; the third discards adult structure, when the two lines of evidence are used together; the fourth denies a distinction that is central to modern systematics.)",
+          hi: "प्रश्न असल में इस बारे में है कि प्रमाण किसे गिना जाए, और उत्तर ऐसे भेद पर टिका है जिसे कहना आसान है और उलटा समझ लेना भी। जिस प्रेक्षण की व्याख्या करनी है। चमगादड़ का पंख, व्हेल का फ़्लिपर, घोड़े का अगला पैर और मानव भुजा खोलकर देखो। हर एक में वही हड्डियाँ उसी क्रम में मिलती हैं: एक अकेली ह्यूमरस, फिर रेडियस और अल्ना, फिर कार्पल का गुच्छा, फिर मेटाकार्पल और पाँच अंगुलियाँ। अनुपात बेहद भिन्न हैं — चमगादड़ की अंगुलियाँ बहुत लंबी, घोड़े की घटकर एक — पर ढाँचा समरूप है। यह पंचांगुल पाद है, और यह समजातता है। वह प्रतिरूप ज्ञानप्रद क्यों है। पूछो कि उसकी व्याख्या क्या करेगी। यदि हर पाद को केवल उसके काम ने आकार दिया होता, तो तैरते फ़्लिपर, उड़ते पंख और चलते पैर के हड्डियों की गिनती साझा करने का कोई कारण नहीं। तैरने को पाँच अंगुलियाँ नहीं चाहिए; ठोस चप्पू बेहतर काम देता, और कुछ समुद्री सरीसृपों ने ठीक वही विकसित किया। अतः साझे ढाँचे की व्याख्या प्रकार्य नहीं करता। उसकी व्याख्या सीधी-सी विरासत करती है: किसी पूर्वज के पास वह व्यवस्था थी, और हर वंशज वंशरेखा ने जो विरासत में मिला उसी में फेरबदल किया, नए सिरे से शुरू नहीं किया। चयन किसी हड्डी को लंबा कर सकता है, दो को जोड़ सकता है, या एक को खपच्ची तक घटा सकता है, पर वह पाद को शून्य से दोबारा नहीं रच सकता, क्योंकि हर बीच की अवस्था किसी जीवित प्राणी में काम करता पाद होनी ही चाहिए। तुलना का दूसरा मामला। अब चमगादड़ के पंख की तुलना कीट के पंख से करो। दोनों उड़ते हैं, और वायुगतिकी की माँगें समान हैं, अतः दोनों पतले, हल्के और चौड़े हैं। पर चमगादड़ का हड्डियों वाला रूपांतरित अग्रपाद है, और कीट का शरीर भित्ति का ऐसा बहिर्वर्ध जिसमें हड्डी है ही नहीं। साझा प्रकार्य, असंबद्ध बनावट — समवृत्तिता। ऐसी संरचनाएँ अभिसारी विकास का प्रमाण हैं: समान परिस्थितियाँ ऐसी वंशरेखाओं में बार-बार समान हल पैदा करती हैं जिन्होंने कभी प्रासंगिक पूर्वज साझा नहीं किया। ऑक्टोपस की आँख और कशेरुकी की आँख इसका उत्कृष्ट उदाहरण हैं, इतनी समान कि रिश्तेदार समझ लिए जाएँ और एक-दूसरे के मुक़ाबले उलटी जुड़ी हुई, जो भेद खोल देता है। प्रकार्य ग़लत कसौटी क्यों है, तीखे ढंग से कहा जाए तो। चयन इस पर काम करता है कि संरचना करती क्या है। इसका अर्थ है कि प्रकार्य ठीक वही गुण है जिस पर असंबद्ध वंशरेखाएँ अपनी परिस्थितियाँ समान होने पर अभिसरित होंगी, अतः साझा प्रकार्य संबंध का दुर्बल प्रमाण है। नीचे की वास्तुकला वह नहीं जिसे चयन अनुकूलित कर रहा है — वह कच्चा माल है जिससे चयन बँधा है — अतः वह धीरे बदलती है और वंशक्रम का अभिलेख बचाए रखती है। सामान्यतः जो लक्षण प्रबल चयन के अधीन नहीं वही प्रायः पूर्वजता का अधिक भरोसेमंद संकेतक है, इसीलिए आणविक जातिवृत्त उन अनुक्रमों का सहारा लेता है जिनकी विविधता लगभग उदासीन है। वही तर्क कहीं और। अवशेषी अंग समजातता का सीमांत मामला हैं: मानव अपेंडिक्स और अनुत्रिक, या व्हेल की श्रोणि हड्डियाँ, ऐसी संरचनाएँ हैं जिनका ढाँचा विरासत में है जबकि उनका प्रकार्य जा चुका है। डिज़ाइन के रूप में उनका कोई तुक नहीं और इतिहास के रूप में पूरा तुक है। (दूसरा विकल्प ऐसी कसौटी देता है जो चमगादड़ के पंख को पक्षी के पंख के साथ समूहित कर देती, जो पूछे गए का उलटा है; तीसरा वयस्क संरचना फेंक देता है, जबकि प्रमाण की दोनों लकीरें साथ काम में ली जाती हैं; चौथा ऐसे भेद से इनकार करता है जो आधुनिक वर्गिकी का केंद्र है।)",
+          mr: "प्रश्न खरे तर पुरावा कशाला मानायचे याबद्दल आहे, आणि उत्तर अशा भेदावर टिकते जो सांगायला सोपा आहे आणि उलटा समजून घ्यायलाही. ज्या निरीक्षणाचे स्पष्टीकरण द्यायचे. वटवाघळाचा पंख, देवमाशाचा फ्लिपर, घोड्याचा पुढचा पाय आणि मानवी बाहू उघडून पाहा. प्रत्येकात तीच हाडे त्याच क्रमाने सापडतात: एकच ह्युमरस, मग रेडियस आणि अल्ना, मग कार्पलचा गुच्छ, मग मेटाकार्पल आणि पाच बोटे. प्रमाणे प्रचंड वेगळी आहेत — वटवाघळाची बोटे खूप लांब, घोड्याची घटून एक — पण आराखडा सारखाच आहे. हा पंचांगुल पाद आहे, आणि ही समजातता आहे. तो नमुना माहितीपूर्ण का आहे. विचारा की त्याचे स्पष्टीकरण काय देईल. जर प्रत्येक पादाला केवळ त्याच्या कामाने आकार दिला असता, तर पोहणारा फ्लिपर, उडणारा पंख आणि चालणारा पाय यांनी हाडांची मोजणी समाईक ठेवण्याचे कोणतेही कारण नाही. पोहायला पाच बोटे लागत नाहीत; घन वल्हे अधिक चांगले काम देईल, आणि काही सागरी सरपटणाऱ्यांनी नेमके तेच विकसित केले. म्हणून सामायिक आराखड्याचे स्पष्टीकरण कार्य देत नाही. त्याचे स्पष्टीकरण सरळ वारसा देतो: एखाद्या पूर्वजाकडे ती मांडणी होती, आणि प्रत्येक वंशज वंशरेषेने जे वारशाने मिळाले त्यातच फेरबदल केला, नव्याने सुरुवात केली नाही. निवड एखादे हाड लांब करू शकते, दोन जोडू शकते, वा एक कमी करून काडी करू शकते, पण ती पाद शून्यातून पुन्हा रचू शकत नाही, कारण प्रत्येक मधली अवस्था एखाद्या जिवंत प्राण्यात काम करणारा पाद असलीच पाहिजे. तुलनेचे दुसरे प्रकरण. आता वटवाघळाच्या पंखाची तुलना कीटकाच्या पंखाशी करा. दोन्ही उडतात, आणि वायुगतिकीच्या मागण्या सारख्या आहेत, म्हणून दोन्ही पातळ, हलके आणि रुंद आहेत. पण वटवाघळाचा हाडे असलेला रूपांतरित अग्रपाद आहे, आणि कीटकाचा शरीरभित्तीचा असा बहिर्वर्ध ज्यात हाड आहेच नाही. सामायिक कार्य, असंबद्ध बांधणी — समवृत्तिता. अशा रचना अभिसारी उत्क्रांतीचा पुरावा आहेत: सारख्या परिस्थिती अशा वंशरेषांत वारंवार सारखी उत्तरे निर्माण करतात ज्यांनी कधीही संबंधित पूर्वज समाईक ठेवला नाही. ऑक्टोपसचा डोळा आणि पृष्ठवंशीयाचा डोळा हे याचे उत्कृष्ट उदाहरण आहे, इतके सारखे की नातेवाईक समजले जावेत आणि परस्परांच्या तुलनेत उलटे जोडलेले, जे रहस्य उघडते. कार्य चुकीची कसोटी का आहे, तीक्ष्णपणे सांगायचे तर. निवड रचना काय करते यावर काम करते. याचा अर्थ कार्य हा नेमका तोच गुणधर्म आहे ज्यावर असंबद्ध वंशरेषा आपली परिस्थिती सारखी असल्यास अभिसरित होतील, म्हणून सामायिक कार्य नात्याचा दुर्बल पुरावा आहे. खालची वास्तू ती नाही जी निवड अनुकूलित करत आहे — ती कच्चा माल आहे ज्याने निवड बांधलेली आहे — म्हणून ती सावकाश बदलते आणि वंशाची नोंद टिकवते. सर्वसाधारणपणे जे लक्षण तीव्र निवडीखाली नाही तेच बहुधा पूर्वजतेचे अधिक विश्वासार्ह निर्देशक आहे, म्हणूनच रेणवीय जातिवृत्त त्या क्रमांचा आधार घेते ज्यांची विविधता जवळपास उदासीन आहे. तोच तर्क इतरत्र. अवशेषी अवयव हे समजाततेचे सीमांत प्रकरण आहेत: मानवी अपेंडिक्स आणि माकडहाड, वा देवमाशाची श्रोणी हाडे, अशा रचना आहेत ज्यांचा आराखडा वारशात आहे तर त्यांचे कार्य गेले आहे. रचना म्हणून त्यांना कोणताही अर्थ नाही आणि इतिहास म्हणून पूर्ण अर्थ आहे. (दुसरा पर्याय अशी कसोटी देतो जी वटवाघळाचा पंख पक्ष्याच्या पंखासोबत गटबद्ध करेल, जे विचारल्याच्या उलट आहे; तिसरा प्रौढ रचना फेकून देतो, तर पुराव्याच्या दोन्ही रेषा एकत्र वापरल्या जातात; चौथा अशा भेदाचे खंडन करतो जो आधुनिक वर्गीकरणशास्त्राचा केंद्रबिंदू आहे.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 7 — Human Health and Disease                                    */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "biology-12-human-health-and-disease",
+    subject: "BIOLOGY",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 7 — Human Health and Disease",
+      hi: "अध्याय 7 — मानव स्वास्थ्य तथा रोग",
+      mr: "प्रकरण 7 — मानवी आरोग्य आणि रोग",
+    },
+    name: {
+      en: "Human Health and Disease",
+      hi: "मानव स्वास्थ्य तथा रोग",
+      mr: "मानवी आरोग्य आणि रोग",
+    },
+    summary: {
+      en: "A defence built in two layers, the first fast and identical against everything and the second slow, specific and remembered, and almost every fact in the chapter is a consequence of that division: a vaccine works because the second layer remembers, so a harmless rehearsal produces a response that is faster and larger when the real thing arrives; a passive transfer of ready-made antibodies protects at once and is gone in weeks, because nothing has been taught and no memory has been laid down; a virus that is dangerous out of all proportion to what it destroys, because the cell it destroys is the one that instructs the rest of the defence; an allergy which is not a failure of the system but the same machinery firing at something harmless, and an autoimmune disease which is that machinery failing to recognise the body it belongs to; a tumour distinguished from a growth not by what its cells are but by whether they stop and whether they stay; and a class of drugs whose danger is that the effect wanted and the dependence produced come from the same action on the same receptor.",
+      hi: "दो परतों में बना बचाव, पहली तेज़ और हर चीज़ के विरुद्ध एक जैसी और दूसरी धीमी, विशिष्ट और याद रखी जाती, और अध्याय का लगभग हर तथ्य उसी विभाजन का परिणाम है: टीका इसलिए चलता है कि दूसरी परत याद रखती है, अतः एक हानिरहित पूर्वाभ्यास ऐसी अनुक्रिया देता है जो असली चीज़ के आने पर तेज़ और बड़ी होती है; तैयार प्रतिरक्षियों का निष्क्रिय स्थानांतरण तुरंत बचाता है और हफ़्तों में चला जाता है, क्योंकि कुछ सिखाया ही नहीं गया और कोई स्मृति नहीं बनी; ऐसा विषाणु जो जितना नष्ट करता है उसके अनुपात से कहीं अधिक ख़तरनाक है, क्योंकि जिस कोशिका को वह नष्ट करता है वही बाक़ी बचाव को निर्देश देती है; ऐसी एलर्जी जो तंत्र की विफलता नहीं बल्कि वही मशीनरी किसी हानिरहित चीज़ पर चल पड़ना है, और ऐसा स्वप्रतिरक्षी रोग जो उसी मशीनरी का उस शरीर को न पहचान पाना है जिसका वह हिस्सा है; ऐसा अर्बुद जो वृद्धि से इससे नहीं पहचाना जाता कि उसकी कोशिकाएँ क्या हैं बल्कि इससे कि वे रुकती हैं या नहीं और अपनी जगह टिकती हैं या नहीं; और औषधियों का ऐसा वर्ग जिसका ख़तरा यह है कि जो प्रभाव चाहिए और जो निर्भरता पैदा होती है वे दोनों उसी ग्राही पर उसी क्रिया से आते हैं।",
+      mr: "दोन थरांत बांधलेला बचाव, पहिला जलद आणि प्रत्येक गोष्टीविरुद्ध सारखाच आणि दुसरा सावकाश, विशिष्ट आणि लक्षात ठेवला जाणारा, आणि प्रकरणातले जवळपास प्रत्येक सत्य त्याच विभागणीचा परिणाम आहे: लस यासाठी चालते की दुसरा थर लक्षात ठेवतो, म्हणून एक निरुपद्रवी तालीम असा प्रतिसाद देते जो खरी गोष्ट आल्यावर जलद आणि मोठा असतो; तयार प्रतिपिंडांचे निष्क्रिय स्थानांतर लगेच वाचवते आणि आठवड्यांत निघून जाते, कारण काहीही शिकवले गेले नाही आणि कोणतीही स्मृती बनली नाही; असा विषाणू जो जितके नष्ट करतो त्याच्या प्रमाणाहून कितीतरी अधिक धोकादायक आहे, कारण जी पेशी तो नष्ट करतो तीच बाकीच्या बचावाला सूचना देते; अशी अ‍ॅलर्जी जी यंत्रणेचे अपयश नसून तीच यंत्रसामग्री एखाद्या निरुपद्रवी गोष्टीवर चालू होणे आहे, आणि असा स्वप्रतिकार रोग जो त्याच यंत्रसामग्रीचे ज्या शरीराचा तो भाग आहे ते न ओळखणे आहे; अशी गाठ जी वाढीपासून तिच्या पेशी काय आहेत यावरून नव्हे तर त्या थांबतात का आणि आपल्या जागी टिकतात का यावरून ओळखली जाते; आणि औषधांचा असा वर्ग ज्याचा धोका हा की जो परिणाम हवा आणि जे अवलंबित्व निर्माण होते ते दोन्ही त्याच ग्राहीवरच्या त्याच क्रियेतून येतात.",
+    },
+    position: 7,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "the-two-layers-of-immunity",
+        name: {
+          en: "The two layers of immunity",
+          hi: "प्रतिरक्षा की दो परतें",
+          mr: "प्रतिकारशक्तीचे दोन थर",
+        },
+        kind: "defence and how it works",
+        prompt: {
+          en: "A defence in which the first response is immediate and the same against everything, while the second takes days, is tailored to one intruder, and is remembered afterwards. What is this division?",
+          hi: "ऐसा बचाव जिसमें पहली अनुक्रिया तत्काल और हर चीज़ के विरुद्ध एक जैसी है, जबकि दूसरी दिनों लेती है, एक ही घुसपैठिए के लिए बनी होती है, और बाद में याद रखी जाती है। यह कौन-सा विभाजन है?",
+          mr: "असा बचाव ज्यात पहिला प्रतिसाद तात्काळ आणि प्रत्येक गोष्टीविरुद्ध सारखाच आहे, तर दुसरा दिवस घेतो, एकाच घुसखोरासाठी बनवलेला असतो, आणि नंतर लक्षात ठेवला जातो. ही कोणती विभागणी?",
+        },
+        statement: {
+          en: "The two layers of immunity are the innate defences, which act at once and identically against any intruder, and the acquired response, which is specific to one antigen and leaves a memory behind.",
+          hi: "प्रतिरक्षा की दो परतें हैं सहज बचाव, जो किसी भी घुसपैठिए के विरुद्ध तुरंत और एक जैसे काम करते हैं, और उपार्जित अनुक्रिया, जो एक ही प्रतिजन के लिए विशिष्ट है और पीछे स्मृति छोड़ जाती है।",
+          mr: "प्रतिकारशक्तीचे दोन थर म्हणजे सहज बचाव, जे कोणत्याही घुसखोराविरुद्ध लगेच आणि सारखेच काम करतात, आणि उपार्जित प्रतिसाद, जो एकाच प्रतिजनासाठी विशिष्ट आहे आणि मागे स्मृती सोडतो.",
+        },
+        detail: {
+          en: "The innate layer includes skin and mucus as physical barriers, stomach acid and tears as chemical ones, and cells that engulf anything they meet without asking what it is.",
+          hi: "सहज परत में भौतिक अवरोध के रूप में त्वचा और श्लेष्मा, रासायनिक के रूप में आमाशय का अम्ल और आँसू, और ऐसी कोशिकाएँ शामिल हैं जो जो भी मिले उसे बिना पूछे निगल लेती हैं कि वह क्या है।",
+          mr: "सहज थरात भौतिक अडसर म्हणून त्वचा आणि श्लेष्मा, रासायनिक म्हणून जठराचे आम्ल आणि अश्रू, आणि अशा पेशी सामील आहेत ज्या जे भेटेल ते ते काय आहे हे न विचारता गिळतात.",
+        },
+        extra: {
+          en: "The division explains why a first infection makes you ill and a second by the same organism often does not: the acquired layer was too slow the first time and is ready the second.",
+          hi: "यह विभाजन समझा देता है कि पहला संक्रमण बीमार क्यों करता है और उसी जीव से दूसरा प्रायः नहीं: उपार्जित परत पहली बार बहुत धीमी थी और दूसरी बार तैयार है।",
+          mr: "ही विभागणी समजावते की पहिला संसर्ग आजारी का करतो आणि त्याच जीवाकडून दुसरा बहुधा का करत नाही: उपार्जित थर पहिल्यांदा फार सावकाश होता आणि दुसऱ्यांदा तयार आहे.",
+        },
+        pair: {
+          left: {
+            en: "One layer asks nothing, the other asks and remembers",
+            hi: "एक परत कुछ नहीं पूछती, दूसरी पूछती है और याद रखती है",
+            mr: "एक थर काहीही विचारत नाही, दुसरा विचारतो आणि लक्षात ठेवतो",
+          },
+          right: {
+            en: "the two layers of immunity",
+            hi: "प्रतिरक्षा की दो परतें",
+            mr: "प्रतिकारशक्तीचे दोन थर",
+          },
+        },
+      },
+      {
+        id: "active-against-passive-immunity",
+        name: {
+          en: "Active against passive immunity",
+          hi: "सक्रिय बनाम निष्क्रिय प्रतिरक्षा",
+          mr: "सक्रिय विरुद्ध निष्क्रिय प्रतिकारशक्ती",
+        },
+        kind: "defence and how it works",
+        prompt: {
+          en: "One kind of protection takes weeks to appear and lasts for years; the other works within hours and is gone within weeks. What distinguishes them?",
+          hi: "एक क़िस्म की सुरक्षा प्रकट होने में हफ़्ते लेती है और वर्षों टिकती है; दूसरी घंटों में काम करती है और हफ़्तों में चली जाती है। इनमें भेद क्या है?",
+          mr: "एका प्रकारचे संरक्षण प्रकट व्हायला आठवडे घेते आणि वर्षे टिकते; दुसरे तासांत काम करते आणि आठवड्यांत निघून जाते. यांच्यात भेद काय?",
+        },
+        statement: {
+          en: "Active against passive immunity is the difference between a body making its own antibodies after meeting an antigen and receiving ready-made antibodies from outside.",
+          hi: "सक्रिय बनाम निष्क्रिय प्रतिरक्षा का भेद यह है कि शरीर किसी प्रतिजन से मिलने के बाद अपनी प्रतिरक्षी स्वयं बनाता है या बाहर से बनी-बनाई प्रतिरक्षी पाता है।",
+          mr: "सक्रिय विरुद्ध निष्क्रिय प्रतिकारशक्तीचा भेद हा की शरीर एखाद्या प्रतिजनाला भेटल्यावर आपली प्रतिपिंडे स्वतः बनवते की बाहेरून तयार प्रतिपिंडे मिळवते.",
+        },
+        detail: {
+          en: "Only the active kind leaves memory cells behind, which is why only it protects in the long run and why a vaccine is worth giving before exposure rather than after.",
+          hi: "केवल सक्रिय क़िस्म पीछे स्मृति कोशिकाएँ छोड़ती है, इसीलिए केवल वही लंबे समय बचाती है और इसीलिए टीका सामना होने के बाद नहीं बल्कि पहले देना काम का है।",
+          mr: "केवळ सक्रिय प्रकार मागे स्मृती पेशी सोडतो, म्हणूनच केवळ तोच दीर्घकाळ वाचवतो आणि म्हणूनच लस सामना झाल्यानंतर नव्हे तर आधी देणे उपयुक्त आहे.",
+        },
+        extra: {
+          en: "The passive kind is what an antivenom is, and what an infant receives across the placenta and in the first milk, and its brevity is the price of its speed.",
+          hi: "निष्क्रिय क़िस्म ही प्रतिविष है, और वही शिशु को अपरा के पार तथा पहले दूध में मिलती है, और उसका छोटा टिकाव उसकी तेज़ी की क़ीमत है।",
+          mr: "निष्क्रिय प्रकारच प्रतिविष आहे, आणि तेच अर्भकाला वारेपलीकडून आणि पहिल्या दुधात मिळते, आणि त्याचे अल्प टिकणे ही त्याच्या वेगाची किंमत आहे.",
+        },
+        pair: {
+          left: {
+            en: "Speed bought at the price of memory",
+            hi: "स्मृति की क़ीमत पर ख़रीदी गई तेज़ी",
+            mr: "स्मृतीच्या किमतीवर विकत घेतलेला वेग",
+          },
+          right: {
+            en: "active against passive immunity",
+            hi: "सक्रिय बनाम निष्क्रिय प्रतिरक्षा",
+            mr: "सक्रिय विरुद्ध निष्क्रिय प्रतिकारशक्ती",
+          },
+        },
+      },
+      {
+        id: "why-hiv-is-dangerous",
+        name: {
+          en: "Why HIV is dangerous",
+          hi: "HIV ख़तरनाक क्यों है",
+          mr: "HIV धोकादायक का आहे",
+        },
+        kind: "defence and how it works",
+        prompt: {
+          en: "A virus whose harm is out of all proportion to the number of cells it destroys, because the cell it targets is the one that instructs the rest of the defence. Which case is this?",
+          hi: "ऐसा विषाणु जिसका नुक़सान उसकी नष्ट की गई कोशिकाओं की संख्या के अनुपात से कहीं परे है, क्योंकि जिस कोशिका को वह निशाना बनाता है वही बाक़ी बचाव को निर्देश देती है। यह कौन-सा मामला है?",
+          mr: "असा विषाणू ज्याचे नुकसान त्याने नष्ट केलेल्या पेशींच्या संख्येच्या प्रमाणाहून कितीतरी पलीकडे आहे, कारण जी पेशी तो लक्ष्य करतो तीच बाकीच्या बचावाला सूचना देते. हे कोणते प्रकरण?",
+        },
+        statement: {
+          en: "HIV is dangerous because it infects and destroys helper T cells, which coordinate the acquired response, so the failure is not of one defence but of the system that directs them all.",
+          hi: "HIV इसलिए ख़तरनाक है कि वह सहायक T कोशिकाओं को संक्रमित कर नष्ट करता है, जो उपार्जित अनुक्रिया का समन्वय करती हैं, अतः विफलता किसी एक बचाव की नहीं बल्कि उस तंत्र की है जो उन सबको निर्देशित करता है।",
+          mr: "HIV यासाठी धोकादायक आहे की तो सहाय्यक T पेशींना संसर्ग करून नष्ट करतो, ज्या उपार्जित प्रतिसादाचे समन्वय करतात, म्हणून अपयश कोणत्या एका बचावाचे नसून त्या यंत्रणेचे आहे जी त्या सर्वांना निर्देशित करते.",
+        },
+        detail: {
+          en: "The illnesses that follow are caused by organisms a healthy body deals with routinely, which is why they are called opportunistic rather than virulent.",
+          hi: "जो बीमारियाँ बाद में आती हैं वे उन जीवों से होती हैं जिनसे स्वस्थ शरीर रोज़ निपट लेता है, इसीलिए उन्हें उग्र नहीं बल्कि अवसरवादी कहा जाता है।",
+          mr: "ज्या आजारपणे नंतर येतात ती त्या जीवांमुळे होतात ज्यांच्याशी निरोगी शरीर रोज निपटते, म्हणूनच त्यांना तीव्र नव्हे तर संधिसाधू म्हटले जाते.",
+        },
+        extra: {
+          en: "The long symptomless interval is what makes it spread, because a person is infectious for years before there is anything to notice.",
+          hi: "लंबा लक्षणरहित अंतराल ही उसे फैलाता है, क्योंकि व्यक्ति ध्यान खींचने लायक़ कुछ होने से वर्षों पहले से संक्रामक होता है।",
+          mr: "दीर्घ लक्षणविरहित अंतरच त्याला पसरवते, कारण व्यक्ती लक्ष वेधण्याजोगे काही होण्याच्या कित्येक वर्षे आधीपासून संसर्गजन्य असते.",
+        },
+        pair: {
+          left: {
+            en: "Attack the instructions and every defence fails at once",
+            hi: "निर्देशों पर हमला करो और हर बचाव एक साथ विफल हो जाता है",
+            mr: "सूचनांवर हल्ला करा आणि प्रत्येक बचाव एकाच वेळी अपयशी ठरतो",
+          },
+          right: {
+            en: "why HIV is dangerous",
+            hi: "HIV ख़तरनाक क्यों है",
+            mr: "HIV धोकादायक का आहे",
+          },
+        },
+      },
+      {
+        id: "allergy-and-autoimmunity",
+        name: {
+          en: "Allergy and autoimmunity",
+          hi: "एलर्जी और स्वप्रतिरक्षा",
+          mr: "अ‍ॅलर्जी आणि स्वप्रतिकार",
+        },
+        kind: "when the defence goes wrong",
+        prompt: {
+          en: "One condition in which the defence attacks something harmless, and another in which it attacks the body it belongs to. What is this pair called?",
+          hi: "एक स्थिति जिसमें बचाव किसी हानिरहित चीज़ पर हमला करता है, और दूसरी जिसमें वह उसी शरीर पर हमला करता है जिसका वह हिस्सा है। इस जोड़ी को क्या कहते हैं?",
+          mr: "एक स्थिती ज्यात बचाव एखाद्या निरुपद्रवी गोष्टीवर हल्ला करतो, आणि दुसरी ज्यात तो त्याच शरीरावर हल्ला करतो ज्याचा तो भाग आहे. या जोडीला काय म्हणतात?",
+        },
+        statement: {
+          en: "Allergy and autoimmunity are the two ways the immune response misfires, the first against a harmless substance from outside and the second against the body's own tissue.",
+          hi: "एलर्जी और स्वप्रतिरक्षा प्रतिरक्षा अनुक्रिया के ग़लत चलने के दो रास्ते हैं, पहला बाहर से आए किसी हानिरहित पदार्थ के विरुद्ध और दूसरा शरीर के अपने ऊतक के विरुद्ध।",
+          mr: "अ‍ॅलर्जी आणि स्वप्रतिकार हे प्रतिकार प्रतिसाद चुकीचा चालण्याचे दोन मार्ग आहेत, पहिला बाहेरून आलेल्या एखाद्या निरुपद्रवी पदार्थाविरुद्ध आणि दुसरा शरीराच्या स्वतःच्या ऊतकाविरुद्ध.",
+        },
+        detail: {
+          en: "Neither is a weakness of the system: the machinery is working exactly as designed and only the target is wrong, which is why the symptoms are those of a vigorous defence.",
+          hi: "कोई भी तंत्र की कमज़ोरी नहीं: मशीनरी ठीक वैसे ही चल रही है जैसा बनाया गया था और केवल लक्ष्य ग़लत है, इसीलिए लक्षण किसी ज़ोरदार बचाव के ही होते हैं।",
+          mr: "कोणतीही यंत्रणेची दुर्बलता नाही: यंत्रसामग्री नेमकी तशीच चालत आहे जशी बनवली गेली आणि केवळ लक्ष्य चुकीचे आहे, म्हणूनच लक्षणे एखाद्या जोरदार बचावाचीच असतात.",
+        },
+        extra: {
+          en: "The body normally avoids attacking itself by destroying, during development, the cells that would recognise its own tissue, and an autoimmune disease is a failure of that early editing.",
+          hi: "शरीर सामान्यतः विकास के दौरान उन कोशिकाओं को नष्ट करके ख़ुद पर हमला करने से बचता है जो उसके अपने ऊतक को पहचानतीं, और स्वप्रतिरक्षी रोग उसी आरंभिक संपादन की विफलता है।",
+          mr: "शरीर सामान्यतः विकासादरम्यान त्या पेशी नष्ट करून स्वतःवर हल्ला करणे टाळते ज्या त्याचे स्वतःचे ऊतक ओळखतील, आणि स्वप्रतिकार रोग हे त्याच सुरुवातीच्या संपादनाचे अपयश आहे.",
+        },
+        pair: {
+          left: {
+            en: "The machinery is working; only the target is wrong",
+            hi: "मशीनरी चल रही है; केवल लक्ष्य ग़लत है",
+            mr: "यंत्रसामग्री चालत आहे; केवळ लक्ष्य चुकीचे आहे",
+          },
+          right: {
+            en: "allergy and autoimmunity",
+            hi: "एलर्जी और स्वप्रतिरक्षा",
+            mr: "अ‍ॅलर्जी आणि स्वप्रतिकार",
+          },
+        },
+      },
+      {
+        id: "what-makes-a-tumour-malignant",
+        name: {
+          en: "What makes a tumour malignant",
+          hi: "अर्बुद को दुर्दम क्या बनाता है",
+          mr: "गाठीला दुर्दम काय बनवते",
+        },
+        kind: "when the defence goes wrong",
+        prompt: {
+          en: "A distinction that does not depend on how fast a growth grows or how large it is, but on whether its cells stop at a boundary and whether they stay where they started. What is it?",
+          hi: "ऐसा भेद जो इस पर निर्भर नहीं कि वृद्धि कितनी तेज़ या कितनी बड़ी है, बल्कि इस पर कि उसकी कोशिकाएँ किसी सीमा पर रुकती हैं या नहीं और वहीं टिकती हैं या नहीं जहाँ से शुरू हुईं। यह क्या है?",
+          mr: "असा भेद जो वाढ किती जलद वा किती मोठी आहे यावर अवलंबून नाही, तर तिच्या पेशी एखाद्या सीमेवर थांबतात का आणि जिथून सुरू झाल्या तिथेच टिकतात का यावर. हा काय आहे?",
+        },
+        statement: {
+          en: "What makes a tumour malignant is that its cells ignore the signals that stop division and invade surrounding tissue, and can travel to found new growths elsewhere.",
+          hi: "अर्बुद को दुर्दम यह बनाता है कि उसकी कोशिकाएँ विभाजन रोकने वाले संकेतों की अनदेखी कर गिर्द के ऊतक में घुस जाती हैं, और कहीं और नई वृद्धियाँ बसाने के लिए यात्रा कर सकती हैं।",
+          mr: "गाठीला दुर्दम हे बनवते की तिच्या पेशी विभाजन थांबवणाऱ्या संकेतांकडे दुर्लक्ष करून भोवतीच्या ऊतकात शिरतात, आणि इतरत्र नव्या वाढी वसवायला प्रवास करू शकतात.",
+        },
+        detail: {
+          en: "A benign growth may be large and still harmless in principle, because its cells respect the boundary of the tissue they are in and do not spread.",
+          hi: "सुदम वृद्धि बड़ी होकर भी सिद्धांततः हानिरहित हो सकती है, क्योंकि उसकी कोशिकाएँ जिस ऊतक में हैं उसकी सीमा का आदर करती हैं और फैलती नहीं।",
+          mr: "सुदम वाढ मोठी असूनही तत्त्वतः निरुपद्रवी असू शकते, कारण तिच्या पेशी ज्या ऊतकात आहेत त्याच्या सीमेचा मान राखतात आणि पसरत नाहीत.",
+        },
+        extra: {
+          en: "The spread is what makes the disease hard to treat, because surgery can remove a growth that is in one place and cannot remove one that is in many.",
+          hi: "फैलाव ही रोग का उपचार कठिन बनाता है, क्योंकि शल्यक्रिया ऐसी वृद्धि हटा सकती है जो एक जगह है और ऐसी नहीं हटा सकती जो कई जगह है।",
+          mr: "पसरणेच रोगाचा उपचार कठीण करते, कारण शस्त्रक्रिया अशी वाढ काढू शकते जी एका जागी आहे आणि अशी काढू शकत नाही जी कित्येक जागी आहे.",
+        },
+        pair: {
+          left: {
+            en: "The question is not the size but whether it stays",
+            hi: "प्रश्न आकार का नहीं बल्कि इसका है कि वह टिकती है या नहीं",
+            mr: "प्रश्न आकाराचा नसून ती टिकते का याचा आहे",
+          },
+          right: {
+            en: "what makes a tumour malignant",
+            hi: "अर्बुद को दुर्दम क्या बनाता है",
+            mr: "गाठीला दुर्दम काय बनवते",
+          },
+        },
+      },
+      {
+        id: "dependence-and-the-receptor",
+        name: {
+          en: "Dependence and the receptor",
+          hi: "निर्भरता और ग्राही",
+          mr: "अवलंबित्व आणि ग्राही",
+        },
+        kind: "when the defence goes wrong",
+        prompt: {
+          en: "A class of substances in which the effect sought and the dependence produced arise from the same action at the same site, so that the two cannot be separated by using less. What is being described?",
+          hi: "पदार्थों का ऐसा वर्ग जिसमें जो प्रभाव चाहा जाता है और जो निर्भरता पैदा होती है वे उसी स्थल पर उसी क्रिया से उठते हैं, अतः कम काम में लेकर दोनों को अलग नहीं किया जा सकता। यहाँ किसका वर्णन है?",
+          mr: "पदार्थांचा असा वर्ग ज्यात जो परिणाम हवा असतो आणि जे अवलंबित्व निर्माण होते ते त्याच स्थळी त्याच क्रियेतून उद्भवतात, म्हणून कमी वापरून दोघांना वेगळे करता येत नाही. इथे कशाचे वर्णन आहे?",
+        },
+        statement: {
+          en: "Dependence and the receptor go together because a drug that produces its effect by binding a receptor also causes the body to adjust that receptor, so more is needed for the same result.",
+          hi: "निर्भरता और ग्राही साथ चलते हैं क्योंकि जो औषधि किसी ग्राही से बँधकर अपना प्रभाव देती है वह शरीर को उस ग्राही में समायोजन भी करवाती है, अतः वही परिणाम पाने को अधिक चाहिए होता है।",
+          mr: "अवलंबित्व आणि ग्राही सोबत चालतात कारण जे औषध एखाद्या ग्राहीशी बांधून आपला परिणाम देते ते शरीराला त्या ग्राहीत जुळवणूकही करायला लावते, म्हणून तोच निकाल मिळवायला अधिक लागते.",
+        },
+        detail: {
+          en: "The adjustment is what tolerance is, and withdrawal is the same adjustment left exposed when the substance is removed and the receptors are still altered.",
+          hi: "वही समायोजन सहनशीलता है, और विनिवर्तन वही समायोजन है जो पदार्थ हटा लेने पर उघड़ा रह जाता है जबकि ग्राही अब भी बदले हुए हैं।",
+          mr: "तीच जुळवणूक सहनशीलता आहे, आणि विनिवर्तन तीच जुळवणूक आहे जी पदार्थ काढल्यावर उघडी राहते तर ग्राही अजूनही बदललेले आहेत.",
+        },
+        extra: {
+          en: "This is why the same molecules are indispensable in medicine and dangerous outside it, and why the difference lies in the dose and the supervision rather than in the substance.",
+          hi: "इसीलिए वही अणु चिकित्सा में अपरिहार्य और उसके बाहर ख़तरनाक हैं, और इसीलिए अंतर पदार्थ में नहीं बल्कि मात्रा और निगरानी में है।",
+          mr: "म्हणूनच तेच रेणू वैद्यकात अपरिहार्य आणि त्याबाहेर धोकादायक आहेत, आणि म्हणूनच फरक पदार्थात नसून मात्रा आणि देखरेखीत आहे.",
+        },
+        pair: {
+          left: {
+            en: "The wanted effect and the dependence share one mechanism",
+            hi: "चाहा गया प्रभाव और निर्भरता एक ही क्रियाविधि साझा करते हैं",
+            mr: "हवा असलेला परिणाम आणि अवलंबित्व एकच यंत्रणा समाईक ठेवतात",
+          },
+          right: {
+            en: "dependence and the receptor",
+            hi: "निर्भरता और ग्राही",
+            mr: "अवलंबित्व आणि ग्राही",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "A vaccine contains a killed or weakened organism that cannot cause the disease, yet it protects against the real thing for years. An antivenom protects within minutes but is useless a month later. Explain both from one distinction.",
+          hi: "किसी टीके में मारा हुआ या दुर्बल किया गया जीव होता है जो रोग पैदा नहीं कर सकता, फिर भी वह असली चीज़ से वर्षों बचाता है। प्रतिविष मिनटों में बचाता है पर एक महीने बाद बेकार है। दोनों को एक ही भेद से समझाओ।",
+          mr: "एखाद्या लशीत मारलेला वा दुर्बल केलेला जीव असतो जो रोग निर्माण करू शकत नाही, तरीही ती खऱ्या गोष्टीपासून वर्षे वाचवते. प्रतिविष मिनिटांत वाचवते पण महिन्याभराने निरुपयोगी आहे. दोन्ही एकाच भेदातून समजावा.",
+        },
+        choices: [
+          {
+            en: "The distinction is whether the body makes the antibodies itself. A vaccine supplies an antigen without the disease, so the acquired response runs its full course — lymphocytes that recognise that antigen are selected and multiplied, antibodies are produced, and crucially memory cells are left behind. On a later encounter the response is faster and much larger, which is why protection lasts. An antivenom supplies finished antibodies made in another animal. They neutralise the toxin immediately, which is the point when minutes matter, but the body has learned nothing and made no memory cells, so once those borrowed molecules are broken down the protection ends",
+            hi: "भेद यह है कि प्रतिरक्षी शरीर स्वयं बनाता है या नहीं। टीका रोग के बिना प्रतिजन देता है, अतः उपार्जित अनुक्रिया अपना पूरा रास्ता चलती है — उस प्रतिजन को पहचानती लसीकाणु चुनी और बढ़ाई जाती हैं, प्रतिरक्षी बनते हैं, और निर्णायक रूप से स्मृति कोशिकाएँ पीछे छूट जाती हैं। बाद के सामने में अनुक्रिया तेज़ और कहीं बड़ी होती है, इसीलिए सुरक्षा टिकती है। प्रतिविष दूसरे प्राणी में बनी बनी-बनाई प्रतिरक्षी देता है। वे विष को तुरंत उदासीन कर देती हैं, और जहाँ मिनट मायने रखते हैं वहाँ मर्म यही है, पर शरीर ने कुछ सीखा नहीं और कोई स्मृति कोशिका नहीं बनाई, अतः वे उधार के अणु टूट जाने पर सुरक्षा ख़त्म",
+            mr: "भेद हा की प्रतिपिंडे शरीर स्वतः बनवते का. लस रोगाविना प्रतिजन पुरवते, म्हणून उपार्जित प्रतिसाद आपला पूर्ण मार्ग चालतो — तो प्रतिजन ओळखणाऱ्या लसीकापेशी निवडल्या आणि वाढवल्या जातात, प्रतिपिंडे बनतात, आणि निर्णायकरीत्या स्मृती पेशी मागे उरतात. नंतरच्या सामन्यात प्रतिसाद जलद आणि कितीतरी मोठा असतो, म्हणूनच संरक्षण टिकते. प्रतिविष दुसऱ्या प्राण्यात बनलेली तयार प्रतिपिंडे पुरवते. ती विष लगेच उदासीन करतात, आणि जिथे मिनिटे महत्त्वाची तिथे गाभा हाच आहे, पण शरीराने काहीही शिकले नाही आणि कोणतीही स्मृती पेशी बनवली नाही, म्हणून ती उधारीची रेणू तुटल्यावर संरक्षण संपते",
+          },
+          {
+            en: "A vaccine works because the weakened organism survives in the body permanently and keeps producing antigen, while an antivenom contains no organism and so cannot persist",
+            hi: "टीका इसलिए चलता है कि दुर्बल किया गया जीव शरीर में स्थायी रूप से बचा रहता है और प्रतिजन बनाता रहता है, जबकि प्रतिविष में कोई जीव नहीं और इसलिए वह टिक नहीं सकता",
+            mr: "लस यासाठी चालते की दुर्बल केलेला जीव शरीरात कायमचा टिकतो आणि प्रतिजन बनवत राहतो, तर प्रतिविषात कोणताही जीव नाही आणि म्हणून ते टिकू शकत नाही",
+          },
+          {
+            en: "The difference is one of dose only: a vaccine contains far more antibody than an antivenom, and protection lasts in proportion to how much was given",
+            hi: "अंतर केवल मात्रा का है: टीके में प्रतिविष से कहीं अधिक प्रतिरक्षी होती है, और सुरक्षा उसी अनुपात में टिकती है जितनी दी गई",
+            mr: "फरक केवळ मात्रेचा आहे: लशीत प्रतिविषाहून कितीतरी अधिक प्रतिपिंड असते, आणि संरक्षण जितके दिले त्या प्रमाणात टिकते",
+          },
+          {
+            en: "A vaccine acts on the innate layer and an antivenom on the acquired layer, and the innate layer is the one capable of memory",
+            hi: "टीका सहज परत पर काम करता है और प्रतिविष उपार्जित परत पर, और स्मृति रखने में सक्षम सहज परत है",
+            mr: "लस सहज थरावर काम करते आणि प्रतिविष उपार्जित थरावर, आणि स्मृती ठेवण्यास सक्षम सहज थर आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "Two observations that look unrelated — a harmless preparation giving years of protection, and a powerful one giving weeks — and one distinction accounts for both. Ask in each case WHO MADE THE ANTIBODIES. THE VACCINE. What is injected is an antigen: a killed organism, a weakened one, or nowadays often just a surface protein or the instructions to make one. It cannot cause the disease, and that is the whole design. But the immune system does not distinguish a threat from a rehearsal — it responds to the antigen's shape. So the full acquired response runs. Lymphocytes whose receptors happen to fit that antigen are selected and multiply; some become plasma cells that secrete antibody; and some become memory cells, which are long-lived and remain in circulation after the antibody has decayed. That last step is the point of the exercise. On a real infection years later, the memory cells recognise the antigen at once, so the response begins in a day or two rather than a week or more, and reaches a much higher antibody level. The infection is stopped before it can establish itself. Note that the protection is not the antibody made at the time of vaccination — that is long gone — but the capacity to make it quickly. THE ANTIVENOM. A snakebite does not allow a week. The venom is acting now, and an acquired response, however good, would arrive after the damage. So the strategy is different: antibodies raised in another animal against that venom are injected ready-made, and they bind and neutralise the toxin within minutes. Nothing has been taught. The recipient's lymphocytes were never presented with the antigen in a form that triggers a response, no clonal selection occurred, and no memory cells exist. The borrowed antibodies are proteins with a half-life of a few weeks; as they are broken down the protection disappears with them, and a second bite a month later needs a second dose. WHY THE TWO CANNOT BE SWAPPED. Passive immunity is fast and temporary; active immunity is slow and lasting. Each is right for a different problem, and the choice follows from how much time there is. A vaccine given after a snakebite would be useless; an antivenom given as a routine precaution would be pointless. Post-exposure rabies treatment is the instructive middle case: both are given at once, the immunoglobulin to cover the interval and the vaccine to take over when the borrowed antibodies fade. NATURE USES THE PASSIVE ROUTE TOO. An infant is born with maternal antibodies transferred across the placenta, and receives more in colostrum. This protects during the months when its own system is still inexperienced, and it fades on exactly the schedule the mechanism predicts — which is why the childhood vaccination timetable begins when it does. (The second option requires a live persistent infection, which killed vaccines disprove; the third confuses antigen with antibody and quantity with mechanism; the fourth swaps the two layers and misattributes memory to the innate one.)",
+          hi: "दो प्रेक्षण जो असंबद्ध लगते हैं — एक हानिरहित तैयारी वर्षों की सुरक्षा देती, और एक ताक़तवर तैयारी हफ़्तों की — और एक ही भेद दोनों का हिसाब दे देता है। हर मामले में पूछो कि प्रतिरक्षी बनाईं किसने। टीका। जो लगाया जाता है वह प्रतिजन है: मारा हुआ जीव, दुर्बल किया गया जीव, या आजकल प्रायः केवल कोई सतही प्रोटीन या उसे बनाने के निर्देश। वह रोग पैदा नहीं कर सकता, और पूरी रचना का मर्म यही है। पर प्रतिरक्षा तंत्र ख़तरे और पूर्वाभ्यास में भेद नहीं करता — वह प्रतिजन की शक्ल पर अनुक्रिया करता है। अतः पूरी उपार्जित अनुक्रिया चलती है। जिन लसीकाणुओं के ग्राही संयोगवश उस प्रतिजन पर बैठते हैं वे चुने जाते हैं और बढ़ते हैं; कुछ प्लाज़्मा कोशिकाएँ बन जाती हैं जो प्रतिरक्षी स्रावित करती हैं; और कुछ स्मृति कोशिकाएँ बनती हैं, जो दीर्घजीवी हैं और प्रतिरक्षी के क्षय हो जाने के बाद भी संचरण में बनी रहती हैं। वह अंतिम चरण ही पूरे अभ्यास का मर्म है। वर्षों बाद असली संक्रमण पर स्मृति कोशिकाएँ प्रतिजन को तुरंत पहचान लेती हैं, अतः अनुक्रिया हफ़्ते भर से अधिक के बजाय एक-दो दिन में शुरू होती है, और कहीं ऊँचे प्रतिरक्षी स्तर तक पहुँचती है। संक्रमण जमने से पहले ही रोक दिया जाता है। ध्यान दो कि सुरक्षा वह प्रतिरक्षी नहीं जो टीकाकरण के समय बनी थी — वह कब की जा चुकी — बल्कि उसे जल्दी बना लेने की क्षमता है। प्रतिविष। साँप का काटा हफ़्ता नहीं देता। विष अभी काम कर रहा है, और उपार्जित अनुक्रिया, चाहे कितनी अच्छी हो, नुक़सान के बाद पहुँचेगी। अतः रणनीति भिन्न है: उस विष के विरुद्ध दूसरे प्राणी में उठाई गई प्रतिरक्षी बनी-बनाई लगाई जाती हैं, और वे मिनटों में विष से बँधकर उसे उदासीन कर देती हैं। कुछ सिखाया नहीं गया। प्राप्तकर्ता के लसीकाणुओं के सामने प्रतिजन ऐसे रूप में रखा ही नहीं गया जो अनुक्रिया छेड़े, कोई क्लोनी चयन नहीं हुआ, और कोई स्मृति कोशिका है ही नहीं। उधार की प्रतिरक्षी कुछ हफ़्तों की अर्धायु वाले प्रोटीन हैं; जैसे-जैसे वे टूटती हैं सुरक्षा उनके साथ ग़ायब होती जाती है, और महीने भर बाद दूसरे काटे को दूसरी खुराक चाहिए। दोनों की अदला-बदली क्यों नहीं हो सकती। निष्क्रिय प्रतिरक्षा तेज़ और अस्थायी है; सक्रिय प्रतिरक्षा धीमी और टिकाऊ। हर एक भिन्न समस्या के लिए सही है, और चुनाव इससे निकलता है कि समय कितना है। साँप के काटे के बाद दिया टीका बेकार होगा; रोज़मर्रा की एहतियात के तौर पर दिया प्रतिविष निरर्थक। रेबीज़ का सामने-के-बाद वाला उपचार ज्ञानप्रद बीच का मामला है: दोनों एक साथ दिए जाते हैं, अंतराल ढकने को इम्यूनोग्लोबुलिन और उधार की प्रतिरक्षी के मंद पड़ने पर सँभालने को टीका। प्रकृति भी निष्क्रिय रास्ता काम में लेती है। शिशु अपरा के पार स्थानांतरित मातृ प्रतिरक्षियों के साथ जन्म लेता है, और खीस में और पाता है। यह उन महीनों में बचाता है जब उसका अपना तंत्र अभी अनुभवहीन है, और वह ठीक उसी समयक्रम पर मंद पड़ता है जिसकी क्रियाविधि भविष्यवाणी करती है — इसीलिए बचपन की टीकाकरण समय-सारणी वहीं से शुरू होती है जहाँ से होती है। (दूसरा विकल्प जीवित बने रहते संक्रमण की माँग करता है, जिसका खंडन मारे हुए टीके करते हैं; तीसरा प्रतिजन को प्रतिरक्षी से और मात्रा को क्रियाविधि से गड्डमड्ड करता है; चौथा दोनों परतें बदल देता है और स्मृति का श्रेय सहज परत को दे देता है।)",
+          mr: "दोन निरीक्षणे जी असंबद्ध वाटतात — एक निरुपद्रवी तयारी वर्षांचे संरक्षण देते, आणि एक शक्तिशाली तयारी आठवड्यांचे — आणि एकच भेद दोघांचा हिशेब देतो. प्रत्येक प्रकरणी विचारा की प्रतिपिंडे बनवली कोणी. लस. जे टोचले जाते ते प्रतिजन आहे: मारलेला जीव, दुर्बल केलेला जीव, वा हल्ली बहुधा केवळ एखादे पृष्ठभागाचे प्रथिन वा ते बनवण्याच्या सूचना. तो रोग निर्माण करू शकत नाही, आणि अख्ख्या रचनेचा गाभा हाच आहे. पण प्रतिकार यंत्रणा धोका आणि तालीम यांत भेद करत नाही — ती प्रतिजनाच्या रूपावर प्रतिसाद देते. म्हणून अख्खा उपार्जित प्रतिसाद चालतो. ज्या लसीकापेशींचे ग्राही योगायोगाने त्या प्रतिजनावर बसतात त्या निवडल्या जातात आणि वाढतात; काही प्लाझ्मा पेशी बनतात ज्या प्रतिपिंड स्रवतात; आणि काही स्मृती पेशी बनतात, ज्या दीर्घजीवी आहेत आणि प्रतिपिंड क्षय पावल्यावरही अभिसरणात राहतात. ती शेवटची पायरीच अख्ख्या सरावाचा गाभा आहे. वर्षांनंतरच्या खऱ्या संसर्गावर स्मृती पेशी प्रतिजन लगेच ओळखतात, म्हणून प्रतिसाद आठवडाभराहून अधिकऐवजी एकदोन दिवसांत सुरू होतो, आणि कितीतरी उच्च प्रतिपिंड पातळीपर्यंत पोहोचतो. संसर्ग जमण्याआधीच थांबवला जातो. लक्षात घ्या की संरक्षण ते प्रतिपिंड नाही जे लसीकरणाच्या वेळी बनले होते — ते कधीच गेले — तर ते लवकर बनवण्याची क्षमता आहे. प्रतिविष. सापाचा दंश आठवडा देत नाही. विष आत्ता काम करत आहे, आणि उपार्जित प्रतिसाद, कितीही चांगला असो, नुकसानानंतर पोहोचेल. म्हणून रणनीती वेगळी आहे: त्या विषाविरुद्ध दुसऱ्या प्राण्यात उभारलेली प्रतिपिंडे तयार टोचली जातात, आणि ती मिनिटांत विषाशी बांधून ते उदासीन करतात. काहीही शिकवले गेले नाही. घेणाऱ्याच्या लसीकापेशींसमोर प्रतिजन अशा रूपात ठेवलेच गेले नाही जे प्रतिसाद चेतवेल, कोणतीही क्लोनी निवड झाली नाही, आणि कोणतीही स्मृती पेशी अस्तित्वातच नाही. उधारीची प्रतिपिंडे काही आठवड्यांचे अर्धायुष्य असलेली प्रथिने आहेत; जशी ती तुटतात तसे संरक्षण त्यांच्यासोबत नाहीसे होते, आणि महिन्याभराने दुसऱ्या दंशाला दुसरी मात्रा लागते. दोघांची अदलाबदल का होऊ शकत नाही. निष्क्रिय प्रतिकारशक्ती जलद आणि तात्पुरती आहे; सक्रिय प्रतिकारशक्ती सावकाश आणि टिकाऊ. प्रत्येक वेगळ्या समस्येसाठी योग्य आहे, आणि निवड किती वेळ आहे यातून निघते. सापाच्या दंशानंतर दिलेली लस निरुपयोगी ठरेल; नेहमीच्या खबरदारीदाखल दिलेले प्रतिविष निरर्थक. रेबीजचा सामन्यानंतरचा उपचार हे ज्ञानप्रद मधले प्रकरण आहे: दोन्ही एकाच वेळी दिली जातात, अंतर झाकायला इम्युनोग्लोब्युलिन आणि उधारीची प्रतिपिंडे मंदावल्यावर सांभाळायला लस. निसर्गही निष्क्रिय मार्ग वापरतो. अर्भक वारेपलीकडून स्थानांतरित मातृ प्रतिपिंडांसह जन्म घेते, आणि चिकात आणखी मिळवते. हे त्या महिन्यांत वाचवते जेव्हा त्याची स्वतःची यंत्रणा अजून अननुभवी आहे, आणि ते नेमक्या त्याच वेळापत्रकावर मंदावते ज्याचे यंत्रणा भाकीत करते — म्हणूनच बालपणीचे लसीकरण वेळापत्रक जिथून सुरू होते तिथून होते. (दुसरा पर्याय जिवंत टिकून राहणाऱ्या संसर्गाची मागणी करतो, ज्याचे खंडन मारलेल्या लशी करतात; तिसरा प्रतिजनाची प्रतिपिंडाशी आणि प्रमाणाची यंत्रणेशी गल्लत करतो; चौथा दोन्ही थर बदलतो आणि स्मृतीचे श्रेय सहज थराला देतो.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "HIV destroys a small fraction of the body's cells, and infected people die of pneumonia, tuberculosis or fungal infections that a healthy person handles routinely. Explain why the harm is so out of proportion to the destruction, and why the disease spreads so effectively.",
+          hi: "HIV शरीर की कोशिकाओं का एक छोटा अंश नष्ट करता है, और संक्रमित लोग निमोनिया, तपेदिक या कवक संक्रमणों से मरते हैं जिनसे स्वस्थ व्यक्ति रोज़ निपट लेता है। बताओ कि नुक़सान नष्ट की गई मात्रा के अनुपात से इतना परे क्यों है, और यह रोग इतने प्रभावी ढंग से क्यों फैलता है।",
+          mr: "HIV शरीराच्या पेशींचा एक लहान अंश नष्ट करतो, आणि संसर्गित लोक न्यूमोनिया, क्षय वा बुरशी संसर्गांनी मरतात ज्यांच्याशी निरोगी व्यक्ती रोज निपटते. नुकसान नष्ट केलेल्या प्रमाणाच्या तुलनेत इतके पलीकडे का आहे, आणि हा रोग इतक्या परिणामकारकपणे का पसरतो ते सांगा.",
+        },
+        choices: [
+          {
+            en: "The cells it destroys are helper T cells, which do not fight infection directly but instruct the cells that do — they activate B cells to make antibody and cytotoxic T cells to kill infected cells. Removing them disables the whole acquired response at once, so the body loses its ability to mount a specific defence against anything, and organisms it normally controls become lethal. That is why the illnesses are called opportunistic: they are not unusually virulent, only unusually well placed. The spread follows from a second feature: a long symptomless period during which the person is fully infectious, so transmission happens before there is anything to detect or any reason to seek testing",
+            hi: "वह जिन कोशिकाओं को नष्ट करता है वे सहायक T कोशिकाएँ हैं, जो संक्रमण से सीधे नहीं लड़तीं बल्कि उन कोशिकाओं को निर्देश देती हैं जो लड़ती हैं — वे B कोशिकाओं को प्रतिरक्षी बनाने और कोशिकाविषी T कोशिकाओं को संक्रमित कोशिकाएँ मारने के लिए सक्रिय करती हैं। उन्हें हटा देना पूरी उपार्जित अनुक्रिया को एक साथ अपंग कर देता है, अतः शरीर किसी भी चीज़ के विरुद्ध विशिष्ट बचाव खड़ा करने की क्षमता खो देता है, और जिन जीवों को वह सामान्यतः क़ाबू में रखता है वे प्राणघातक हो जाते हैं। इसीलिए उन बीमारियों को अवसरवादी कहा जाता है: वे असामान्य रूप से उग्र नहीं, केवल असामान्य रूप से अच्छी जगह पर हैं। फैलाव दूसरे लक्षण से निकलता है: लंबा लक्षणरहित काल जिसमें व्यक्ति पूरी तरह संक्रामक है, अतः संचरण तब होता है जब पकड़ने को कुछ है ही नहीं और जाँच कराने का कोई कारण भी नहीं",
+            mr: "तो ज्या पेशी नष्ट करतो त्या सहाय्यक T पेशी आहेत, ज्या संसर्गाशी थेट लढत नाहीत तर ज्या लढतात त्या पेशींना सूचना देतात — त्या B पेशींना प्रतिपिंड बनवायला आणि पेशीविषारी T पेशींना संसर्गित पेशी मारायला सक्रिय करतात. त्यांना काढणे अख्खा उपार्जित प्रतिसाद एकाच वेळी अपंग करते, म्हणून शरीर कशाविरुद्धही विशिष्ट बचाव उभा करण्याची क्षमता गमावते, आणि ज्या जीवांना ते सामान्यतः आवरात ठेवते ते प्राणघातक होतात. म्हणूनच त्या आजारांना संधिसाधू म्हटले जाते: ते असामान्यपणे तीव्र नाहीत, केवळ असामान्यपणे चांगल्या जागी आहेत. प्रसार दुसऱ्या लक्षणातून निघतो: दीर्घ लक्षणविरहित काळ ज्यात व्यक्ती पूर्णपणे संसर्गजन्य आहे, म्हणून संक्रमण तेव्हा घडते जेव्हा पकडायला काहीच नाही आणि तपासणी करून घेण्याचे कोणतेही कारणही नाही",
+          },
+          {
+            en: "The virus is unusually destructive and kills the majority of the body's cells directly, and the opportunistic infections are secondary to that widespread cell loss",
+            hi: "यह विषाणु असामान्य रूप से विनाशकारी है और शरीर की अधिकांश कोशिकाओं को सीधे मार देता है, और अवसरवादी संक्रमण उसी व्यापक कोशिका हानि के गौण परिणाम हैं",
+            mr: "हा विषाणू असामान्यपणे विनाशकारी आहे आणि शरीराच्या बहुतांश पेशी थेट मारतो, आणि संधिसाधू संसर्ग त्याच व्यापक पेशीहानीचे दुय्यम परिणाम आहेत",
+          },
+          {
+            en: "It destroys the innate defences — skin, mucus and stomach acid — leaving no physical barrier, which is why ordinary organisms can enter freely",
+            hi: "वह सहज बचावों — त्वचा, श्लेष्मा और आमाशय अम्ल — को नष्ट कर देता है, जिससे कोई भौतिक अवरोध नहीं बचता, इसीलिए साधारण जीव स्वतंत्र रूप से घुस सकते हैं",
+            mr: "तो सहज बचावांना — त्वचा, श्लेष्मा आणि जठर आम्ल — नष्ट करतो, ज्याने कोणताही भौतिक अडसर उरत नाही, म्हणूनच साधे जीव मुक्तपणे शिरू शकतात",
+          },
+          {
+            en: "The opportunistic organisms are themselves mutated forms that have become far more virulent, and the immune system is intact throughout the illness",
+            hi: "अवसरवादी जीव स्वयं उत्परिवर्तित रूप हैं जो कहीं अधिक उग्र हो चुके हैं, और पूरी बीमारी भर प्रतिरक्षा तंत्र सलामत रहता है",
+            mr: "संधिसाधू जीव स्वतः उत्परिवर्तित रूपे आहेत जी कितीतरी अधिक तीव्र झाली आहेत, आणि अख्ख्या आजारपणात प्रतिकार यंत्रणा शाबूत राहते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The puzzle is a real one. Many viruses destroy far more tissue than HIV does and cause a self-limiting illness. Why should a virus that kills a modest number of white cells be fatal? The answer is that damage in a system depends on WHICH component fails, not only how much. WHAT A HELPER T CELL DOES. It fights nothing itself. Its role is to recognise an antigen presented to it and then issue signals — cytokines — that activate the cells which do the fighting: B cells, to proliferate and secrete antibody against that antigen; cytotoxic T cells, to seek out and kill the body's own cells that have been infected; and macrophages, to increase their killing activity. It is a coordinator, and the acquired immune response depends on it for essentially every specific action it takes. WHY LOSING IT IS CATASTROPHIC. Destroy the helper T cells and the effect is not the loss of one defence among many. Antibody responses to new antigens fail, because B cells are not activated. Cell-mediated killing fails, because cytotoxic T cells are not licensed. The innate layer still works — skin, stomach acid, phagocytes — but the innate layer alone has never been sufficient; it is a holding action while the specific response is prepared, and now the specific response never comes. So a small, well-targeted loss disables the entire system, in the same way that removing a switchboard disables a network without damaging a single telephone. WHY THE INFECTIONS ARE 'OPPORTUNISTIC'. Pneumocystis, Candida, Mycobacterium tuberculosis and cytomegalovirus are widespread and are handled routinely by an intact immune system — many people carry them already, controlled but not eliminated. They have not become more dangerous; the defence holding them down has been removed. The word opportunistic is precise: the opportunity is what changed, not the organism. This is also why the pattern of illness is characteristic and was what first drew attention to the syndrome in the early 1980s, before the virus was identified. WHY IT SPREADS SO WELL, WHICH IS A SEPARATE MECHANISM. A pathogen that kills quickly tends to limit its own transmission — a host who is bedridden or dead meets few people. HIV does the opposite. After infection there may be years, often a decade, during which the person feels well, has no visible signs, and is fully infectious. Transmission therefore happens almost entirely before anyone has reason to suspect anything. From the point of view of spread, a long asymptomatic infectious period is a far more effective strategy than rapid virulence. THE TRANSFERABLE POINT. When something fails badly, ask where in the system the failure occurred rather than how large it was. A failure at a control point propagates through everything downstream, which is why the same principle explains why a small stroke in the brainstem is more dangerous than a larger one elsewhere. (The second option contradicts the actual scale of cell destruction; the third confuses innate barriers with the acquired response, which is what is lost; the fourth relocates the change into the opportunistic organisms and denies the immune deficiency that defines the syndrome.)",
+          hi: "पहेली असली है। बहुत से विषाणु HIV से कहीं अधिक ऊतक नष्ट करते हैं और आत्म-सीमित बीमारी देते हैं। जो विषाणु सफ़ेद कोशिकाओं की मामूली संख्या मारता है वह प्राणघातक क्यों हो? उत्तर यह है कि किसी तंत्र में नुक़सान इस पर निर्भर है कि कौन-सा घटक विफल हुआ, केवल इस पर नहीं कि कितना। सहायक T कोशिका करती क्या है। वह ख़ुद किसी से नहीं लड़ती। उसकी भूमिका है अपने सामने रखे प्रतिजन को पहचानना और फिर ऐसे संकेत — साइटोकाइन — जारी करना जो उन कोशिकाओं को सक्रिय करें जो लड़ती हैं: B कोशिकाओं को, कि वे बढ़ें और उस प्रतिजन के विरुद्ध प्रतिरक्षी स्रावित करें; कोशिकाविषी T कोशिकाओं को, कि वे शरीर की अपनी संक्रमित कोशिकाएँ ढूँढ़कर मारें; और महाभक्षकाणुओं को, कि वे अपनी मारक क्रिया बढ़ाएँ। वह समन्वयक है, और उपार्जित प्रतिरक्षा अनुक्रिया अपनी वस्तुतः हर विशिष्ट कार्रवाई के लिए उसी पर निर्भर है। उसे खोना विनाशकारी क्यों है। सहायक T कोशिकाएँ नष्ट करो और प्रभाव कई बचावों में से एक का खोना नहीं है। नए प्रतिजनों के विरुद्ध प्रतिरक्षी अनुक्रियाएँ विफल हो जाती हैं, क्योंकि B कोशिकाएँ सक्रिय ही नहीं होतीं। कोशिका-माध्यमित मारना विफल हो जाता है, क्योंकि कोशिकाविषी T कोशिकाओं को अनुमति ही नहीं मिलती। सहज परत अब भी चलती है — त्वचा, आमाशय अम्ल, भक्षकाणु — पर अकेली सहज परत कभी पर्याप्त रही ही नहीं; वह तब तक की रोक है जब तक विशिष्ट अनुक्रिया तैयार हो, और अब विशिष्ट अनुक्रिया कभी आती ही नहीं। अतः एक छोटी, सुनिशाना हानि पूरे तंत्र को अपंग कर देती है, उसी तरह जैसे स्विचबोर्ड हटाना बिना एक भी टेलीफ़ोन बिगाड़े पूरे जाल को अपंग कर देता है। संक्रमणों को 'अवसरवादी' क्यों कहते हैं। न्यूमोसिस्टिस, कैंडिडा, माइकोबैक्टीरियम ट्यूबरकुलोसिस और साइटोमेगालोवाइरस व्यापक हैं और सलामत प्रतिरक्षा तंत्र उनसे रोज़ निपट लेता है — बहुत लोग उन्हें पहले से ढो रहे हैं, क़ाबू में पर ख़त्म नहीं। वे अधिक ख़तरनाक नहीं हो गए; उन्हें दबाए रखता बचाव हटा दिया गया है। 'अवसरवादी' शब्द सटीक है: जो बदला वह अवसर है, जीव नहीं। इसीलिए बीमारी का प्रतिरूप विशिष्ट है और 1980 के दशक के आरंभ में विषाणु की पहचान से पहले सबसे पहले उसी ने इस संलक्षण की ओर ध्यान खींचा। वह इतना अच्छा क्यों फैलता है, और यह अलग क्रियाविधि है। जो रोगजनक जल्दी मार देता है वह अपना ही संचरण सीमित कर लेता है — बिस्तर पर पड़ा या मरा हुआ परपोषी कम लोगों से मिलता है। HIV उलटा करता है। संक्रमण के बाद वर्षों, प्रायः एक दशक, ऐसे हो सकते हैं जिनमें व्यक्ति ठीक महसूस करता है, कोई दिखने वाला चिह्न नहीं होता, और वह पूरी तरह संक्रामक होता है। अतः संचरण लगभग पूरा तब होता है जब किसी के पास कुछ भी संदेह करने का कारण नहीं। फैलाव की दृष्टि से लंबा लक्षणरहित संक्रामक काल तीव्र उग्रता से कहीं अधिक प्रभावी रणनीति है। ले जाने योग्य बात। जब कुछ बुरी तरह विफल हो, तो पूछो कि तंत्र में विफलता कहाँ हुई, न कि यह कि वह कितनी बड़ी थी। किसी नियंत्रण बिंदु पर विफलता आगे की हर चीज़ में फैल जाती है, इसीलिए वही सिद्धांत समझाता है कि मस्तिष्क स्तंभ का छोटा आघात कहीं और के बड़े आघात से अधिक ख़तरनाक क्यों है। (दूसरा विकल्प कोशिका नाश के असली पैमाने का खंडन करता है; तीसरा सहज अवरोधों को उपार्जित अनुक्रिया से गड्डमड्ड करता है, जो खोई वही है; चौथा बदलाव को अवसरवादी जीवों में खिसका देता है और उस प्रतिरक्षा कमी से इनकार करता है जो इस संलक्षण को परिभाषित करती है।)",
+          mr: "कोडे खरे आहे. अनेक विषाणू HIV हून कितीतरी अधिक ऊतक नष्ट करतात आणि स्वयं-मर्यादित आजार देतात. जो विषाणू पांढऱ्या पेशींची माफक संख्या मारतो तो प्राणघातक का असावा? उत्तर हे की एखाद्या यंत्रणेतले नुकसान कोणता घटक अपयशी ठरला यावर अवलंबून आहे, केवळ किती यावर नाही. सहाय्यक T पेशी काय करते. ती स्वतः कोणाशीही लढत नाही. तिची भूमिका आहे आपल्यासमोर ठेवलेले प्रतिजन ओळखणे आणि मग अशी संकेते — सायटोकाइन — जारी करणे जी त्या पेशी सक्रिय करतील ज्या लढतात: B पेशींना, की त्यांनी वाढावे आणि त्या प्रतिजनाविरुद्ध प्रतिपिंड स्रवावे; पेशीविषारी T पेशींना, की त्यांनी शरीराच्या स्वतःच्या संसर्गित पेशी शोधून माराव्या; आणि महाभक्षकपेशींना, की त्यांनी आपली मारक क्रिया वाढवावी. ती समन्वयक आहे, आणि उपार्जित प्रतिकार प्रतिसाद आपल्या प्रत्यक्षात प्रत्येक विशिष्ट कृतीसाठी तिच्यावरच अवलंबून आहे. तिला गमावणे विनाशकारी का आहे. सहाय्यक T पेशी नष्ट करा आणि परिणाम कित्येक बचावांपैकी एकाचे गमावणे नाही. नव्या प्रतिजनांविरुद्धचे प्रतिपिंड प्रतिसाद अपयशी ठरतात, कारण B पेशी सक्रियच होत नाहीत. पेशी-मध्यस्थ मारणे अपयशी ठरते, कारण पेशीविषारी T पेशींना परवानगीच मिळत नाही. सहज थर अजूनही चालतो — त्वचा, जठर आम्ल, भक्षकपेशी — पण एकटा सहज थर कधीच पुरेसा राहिला नाही; तो विशिष्ट प्रतिसाद तयार होईपर्यंतची अडवणूक आहे, आणि आता विशिष्ट प्रतिसाद कधी येतच नाही. म्हणून एक लहान, नेमकी हानी अख्खी यंत्रणा अपंग करते, त्याच प्रकारे जसे स्विचबोर्ड काढणे एकही दूरध्वनी न बिघडवता अख्खे जाळे अपंग करते. संसर्गांना 'संधिसाधू' का म्हणतात. न्यूमोसिस्टिस, कँडिडा, मायकोबॅक्टेरियम ट्युबरक्युलोसिस आणि सायटोमेगॅलोव्हायरस व्यापक आहेत आणि शाबूत प्रतिकार यंत्रणा त्यांच्याशी रोज निपटते — बरेच लोक ते आधीच वाहत आहेत, आवरात पण संपवलेले नाहीत. ते अधिक धोकादायक झालेले नाहीत; त्यांना दाबून ठेवणारा बचाव काढला गेला आहे. 'संधिसाधू' हा शब्द नेमका आहे: जे बदलले ती संधी आहे, जीव नाही. म्हणूनच आजाराचा नमुना वैशिष्ट्यपूर्ण आहे आणि 1980 च्या दशकाच्या सुरुवातीला विषाणू ओळखण्याआधी सर्वप्रथम त्यानेच या संलक्षणाकडे लक्ष वेधले. तो इतका चांगला का पसरतो, आणि ही वेगळी यंत्रणा आहे. जो रोगजनक लवकर मारतो तो आपलेच संक्रमण मर्यादित करतो — अंथरुणाला खिळलेला वा मेलेला यजमान कमी लोकांना भेटतो. HIV उलट करतो. संसर्गानंतर वर्षे, बहुधा एक दशक, अशी असू शकतात ज्यात व्यक्तीला बरे वाटते, कोणतेही दिसणारे चिन्ह नसते, आणि ती पूर्णपणे संसर्गजन्य असते. म्हणून संक्रमण जवळपास अख्खे तेव्हा घडते जेव्हा कोणाकडेही काहीही संशय घेण्याचे कारण नाही. प्रसाराच्या दृष्टीने दीर्घ लक्षणविरहित संसर्गजन्य काळ तीव्र उग्रतेहून कितीतरी अधिक परिणामकारक रणनीती आहे. सोबत न्यायचा मुद्दा. जेव्हा काहीतरी वाईटरीत्या अपयशी ठरते, तेव्हा विचारा की यंत्रणेत अपयश कुठे घडले, ते किती मोठे होते हे नाही. एखाद्या नियंत्रण बिंदूवरचे अपयश पुढच्या प्रत्येक गोष्टीत पसरते, म्हणूनच तेच तत्त्व समजावते की मेंदूस्तंभातला लहान आघात इतरत्रच्या मोठ्या आघाताहून अधिक धोकादायक का आहे. (दुसरा पर्याय पेशीनाशाच्या खऱ्या प्रमाणाचे खंडन करतो; तिसरा सहज अडसरांची उपार्जित प्रतिसादाशी गल्लत करतो, जो गमावला तोच आहे; चौथा बदल संधिसाधू जीवांत सरकवतो आणि त्या प्रतिकार कमतरतेचे खंडन करतो जी या संलक्षणाची व्याख्या करते.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 8 — Microbes in Human Welfare                                   */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "biology-12-microbes-in-human-welfare",
+    subject: "BIOLOGY",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 8 — Microbes in Human Welfare",
+      hi: "अध्याय 8 — मानव कल्याण में सूक्ष्मजीव",
+      mr: "प्रकरण 8 — मानवी कल्याणात सूक्ष्मजीव",
+    },
+    name: {
+      en: "Microbes in Human Welfare",
+      hi: "मानव कल्याण में सूक्ष्मजीव",
+      mr: "मानवी कल्याणात सूक्ष्मजीव",
+    },
+    summary: {
+      en: "A chapter in which almost every application turns out to be the same move — find an organism already doing something for its own reasons, and put it where its by-product is what you want: a fungus that makes a compound to keep bacteria away from its food, which becomes the first antibiotic and is discovered because a culture plate was contaminated and the contamination was looked at rather than thrown away; a bacterium that makes a crystal lethal to a caterpillar's gut and harmless in ours, because the toxin needs an alkaline gut to be activated at all, so the specificity is a matter of chemistry rather than of dose; a sewage treatment that is really a managed feeding, where the second stage costs almost nothing because the organisms doing the work grow on what is being removed; a cattle-dung digester whose gas is a metabolic dead end for the organisms producing it and a fuel for us; and a fungus whose product blocks one step of cholesterol synthesis, which is the same logic as an antibiotic pointed at a human enzyme instead of a bacterial one.",
+      hi: "ऐसा अध्याय जिसमें लगभग हर अनुप्रयोग वही चाल निकलता है — ऐसा जीव ढूँढ़ो जो अपने कारणों से पहले से कुछ कर रहा हो, और उसे वहाँ रखो जहाँ उसका उपोत्पाद वही हो जो तुम्हें चाहिए: ऐसा कवक जो अपने भोजन से जीवाणुओं को दूर रखने को कोई यौगिक बनाता है, जो पहला प्रतिजैविक बन जाता है और इसलिए खोजा जाता है कि एक संवर्धन प्लेट दूषित हो गई और दूषण को फेंकने के बजाय देखा गया; ऐसा जीवाणु जो ऐसा क्रिस्टल बनाता है जो इल्ली की आँत के लिए प्राणघातक और हमारी में हानिरहित है, क्योंकि विष को सक्रिय होने के लिए क्षारीय आँत चाहिए ही, अतः विशिष्टता मात्रा का नहीं बल्कि रसायन का मामला है; ऐसा मल-जल उपचार जो असल में प्रबंधित भोजन कराना है, जहाँ दूसरा चरण लगभग मुफ़्त है क्योंकि काम करते जीव उसी पर बढ़ते हैं जो हटाया जा रहा है; ऐसा गोबर पाचक जिसकी गैस उसे बनाते जीवों के लिए उपापचयी अंत है और हमारे लिए ईंधन; और ऐसा कवक जिसका उत्पाद कोलेस्टेरॉल संश्लेषण का एक चरण रोकता है, और यह वही तर्क है जो प्रतिजैविक का है, बस जीवाणु एंज़ाइम के बजाय मानव एंज़ाइम पर ताना हुआ।",
+      mr: "असे प्रकरण ज्यात जवळपास प्रत्येक उपयोजन तीच चाल निघते — असा जीव शोधा जो आपल्या कारणांनी आधीच काहीतरी करत असेल, आणि त्याला तिथे ठेवा जिथे त्याचे उपउत्पादन तेच असेल जे तुम्हाला हवे: अशी बुरशी जी आपल्या अन्नापासून जिवाणू दूर ठेवायला एखादे संयुग बनवते, जे पहिले प्रतिजैविक बनते आणि यासाठी शोधले जाते की एक संवर्धन तबकडी दूषित झाली आणि दूषण फेकण्याऐवजी पाहिले गेले; असा जिवाणू जो असा स्फटिक बनवतो जो अळीच्या आतड्यासाठी प्राणघातक आणि आपल्यात निरुपद्रवी आहे, कारण विषाला सक्रिय होण्यास क्षारधर्मी आतडेच लागते, म्हणून विशिष्टता मात्रेची नव्हे तर रसायनाची बाब आहे; असा मलजल उपचार जो खरे तर व्यवस्थापित भोजन आहे, जिथे दुसरी पायरी जवळपास फुकट आहे कारण काम करणारे जीव त्याच्यावरच वाढतात जे काढले जात आहे; असे शेणपचक ज्याचा वायू ते बनवणाऱ्या जीवांसाठी चयापचयी शेवट आहे आणि आपल्यासाठी इंधन; आणि अशी बुरशी जिचे उत्पादन कोलेस्टेरॉल संश्लेषणाची एक पायरी अडवते, आणि हाच तो तर्क आहे जो प्रतिजैविकाचा आहे, फक्त जिवाणू विकराऐवजी मानवी विकरावर रोखलेला.",
+    },
+    position: 8,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "how-an-antibiotic-was-found",
+        name: {
+          en: "How the first antibiotic was found",
+          hi: "पहला प्रतिजैविक कैसे मिला",
+          mr: "पहिले प्रतिजैविक कसे सापडले",
+        },
+        kind: "organism put to work",
+        prompt: {
+          en: "A contaminated culture plate that was examined rather than discarded, and a clear ring around the mould where the bacteria had failed to grow. What discovery is this?",
+          hi: "ऐसी दूषित संवर्धन प्लेट जिसे फेंकने के बजाय जाँचा गया, और फफूँद के गिर्द ऐसा साफ़ छल्ला जहाँ जीवाणु उग ही नहीं पाए। यह कौन-सी खोज है?",
+          mr: "अशी दूषित संवर्धन तबकडी जी फेकण्याऐवजी तपासली गेली, आणि बुरशीभोवती असे स्वच्छ कडे जिथे जिवाणू उगवूच शकले नाहीत. हा कोणता शोध?",
+        },
+        statement: {
+          en: "The first antibiotic was found when a Penicillium mould contaminating a culture plate was seen to have cleared a zone of bacteria around itself, and the substance responsible was isolated.",
+          hi: "पहला प्रतिजैविक तब मिला जब संवर्धन प्लेट को दूषित करती पेनिसिलियम फफूँद के गिर्द जीवाणुओं का एक क्षेत्र साफ़ हुआ दिखा, और उसके लिए ज़िम्मेदार पदार्थ अलग किया गया।",
+          mr: "पहिले प्रतिजैविक तेव्हा सापडले जेव्हा संवर्धन तबकडी दूषित करणाऱ्या पेनिसिलियम बुरशीभोवती जिवाणूंचे एक क्षेत्र स्वच्छ झालेले दिसले, आणि त्यासाठी जबाबदार पदार्थ वेगळा केला गेला.",
+        },
+        detail: {
+          en: "The mould was not making the compound for anyone's benefit but its own — it competes with bacteria for the same food, and a substance that kills them is worth producing.",
+          hi: "फफूँद वह यौगिक किसी और के भले के लिए नहीं बल्कि अपने लिए बना रही थी — वह उसी भोजन के लिए जीवाणुओं से होड़ करती है, और जो पदार्थ उन्हें मार दे वह बनाने लायक़ है।",
+          mr: "बुरशी ते संयुग कोणा दुसऱ्याच्या भल्यासाठी नव्हे तर स्वतःसाठी बनवत होती — ती त्याच अन्नासाठी जिवाणूंशी स्पर्धा करते, आणि जो पदार्थ त्यांना मारेल तो बनवण्याजोगा आहे.",
+        },
+        extra: {
+          en: "The observation was an accident but the discovery was not: many plates get contaminated, and what mattered was noticing that the contamination was informative.",
+          hi: "प्रेक्षण दुर्घटना थी पर खोज नहीं: बहुत सी प्लेटें दूषित होती हैं, और जो मायने रखा वह यह देखना था कि दूषण ज्ञानप्रद है।",
+          mr: "निरीक्षण अपघात होते पण शोध नव्हता: बऱ्याच तबकड्या दूषित होतात, आणि जे महत्त्वाचे ठरले ते दूषण माहितीपूर्ण आहे हे लक्षात घेणे.",
+        },
+        pair: {
+          left: {
+            en: "The contamination was the result, not the ruined experiment",
+            hi: "दूषण ही परिणाम था, बिगड़ा हुआ प्रयोग नहीं",
+            mr: "दूषणच निकाल होते, बिघडलेला प्रयोग नव्हे",
+          },
+          right: {
+            en: "how the first antibiotic was found",
+            hi: "पहला प्रतिजैविक कैसे मिला",
+            mr: "पहिले प्रतिजैविक कसे सापडले",
+          },
+        },
+      },
+      {
+        id: "the-bt-toxin",
+        name: {
+          en: "The Bt toxin",
+          hi: "Bt विष",
+          mr: "Bt विष",
+        },
+        kind: "organism put to work",
+        prompt: {
+          en: "A crystal protein that is inert as swallowed and becomes lethal only in a gut that is alkaline, which is why it kills a caterpillar and does nothing in a mammal. What is it?",
+          hi: "ऐसा क्रिस्टल प्रोटीन जो निगले जाने पर निष्क्रिय है और केवल ऐसी आँत में प्राणघातक बनता है जो क्षारीय हो, इसीलिए वह इल्ली को मारता है और स्तनपायी में कुछ नहीं करता। यह क्या है?",
+          mr: "असे स्फटिक प्रथिन जे गिळल्यावर निष्क्रिय आहे आणि केवळ अशा आतड्यात प्राणघातक बनते जे क्षारधर्मी असेल, म्हणूनच ते अळीला मारते आणि सस्तन प्राण्यात काहीही करत नाही. हे काय आहे?",
+        },
+        statement: {
+          en: "The Bt toxin is a crystalline protein made by Bacillus thuringiensis which is activated only in an alkaline insect gut, where it perforates the gut lining.",
+          hi: "Bt विष बैसिलस थुरिन्जिएंसिस का बनाया क्रिस्टलीय प्रोटीन है जो केवल क्षारीय कीट आँत में सक्रिय होता है, जहाँ वह आँत की परत में छेद कर देता है।",
+          mr: "Bt विष हे बॅसिलस थुरिन्जिएन्सिसने बनवलेले स्फटिकी प्रथिन आहे जे केवळ क्षारधर्मी कीटक आतड्यात सक्रिय होते, जिथे ते आतड्याच्या अस्तरात छिद्रे पाडते.",
+        },
+        detail: {
+          en: "The selectivity is chemical rather than a matter of dose: a mammalian stomach is acidic, so the protein is never converted into its active form there at all.",
+          hi: "चयनात्मकता मात्रा का नहीं बल्कि रसायन का मामला है: स्तनपायी का आमाशय अम्लीय है, अतः वहाँ वह प्रोटीन अपने सक्रिय रूप में बदलता ही नहीं।",
+          mr: "निवडकता मात्रेची नव्हे तर रसायनाची बाब आहे: सस्तन प्राण्याचे जठर आम्लधर्मी आहे, म्हणून तिथे ते प्रथिन आपल्या सक्रिय रूपात बदलतच नाही.",
+        },
+        extra: {
+          en: "The gene for it has been moved into crop plants, so the plant makes its own insecticide and only insects that eat it are exposed.",
+          hi: "उसका जीन फ़सली पादपों में डाला जा चुका है, अतः पादप अपना कीटनाशी स्वयं बनाता है और केवल उसे खाने वाले कीट ही उसके संपर्क में आते हैं।",
+          mr: "त्याचे जनुक पिकांच्या वनस्पतींत घातले गेले आहे, म्हणून वनस्पती आपले कीटकनाशक स्वतः बनवते आणि केवळ ते खाणारे कीटकच त्याच्या संपर्कात येतात.",
+        },
+        pair: {
+          left: {
+            en: "Harmless until it meets an alkaline gut",
+            hi: "क्षारीय आँत से मिलने तक हानिरहित",
+            mr: "क्षारधर्मी आतड्याला भेटेपर्यंत निरुपद्रवी",
+          },
+          right: {
+            en: "the Bt toxin",
+            hi: "Bt विष",
+            mr: "Bt विष",
+          },
+        },
+      },
+      {
+        id: "statins-and-the-blocked-step",
+        name: {
+          en: "A fungal product that blocks one step",
+          hi: "एक चरण रोकता कवक उत्पाद",
+          mr: "एक पायरी अडवणारे बुरशी उत्पादन",
+        },
+        kind: "organism put to work",
+        prompt: {
+          en: "A compound from a mould that resembles the substrate of one enzyme closely enough to occupy its site, so that a whole synthetic pathway stops at that point. What is being described?",
+          hi: "किसी फफूँद से मिला ऐसा यौगिक जो किसी एंज़ाइम के क्रियाधार से इतना मिलता-जुलता है कि उसकी जगह घेर ले, जिससे पूरा संश्लेषी पथ उसी बिंदु पर रुक जाता है। यहाँ किसका वर्णन है?",
+          mr: "एखाद्या बुरशीतून मिळालेले असे संयुग जे एखाद्या विकराच्या क्रियाधाराशी इतके साम्य ठेवते की त्याची जागा घ्यावी, ज्याने अख्खा संश्लेषी मार्ग त्याच बिंदूवर थांबतो. इथे कशाचे वर्णन आहे?",
+        },
+        statement: {
+          en: "A statin is a fungal product that competitively inhibits the enzyme catalysing a key step in cholesterol synthesis, so the body makes less of it.",
+          hi: "स्टैटिन ऐसा कवक उत्पाद है जो कोलेस्टेरॉल संश्लेषण के किसी मुख्य चरण को उत्प्रेरित करते एंज़ाइम का प्रतिस्पर्धी निषेध करता है, अतः शरीर उसे कम बनाता है।",
+          mr: "स्टॅटिन हे असे बुरशी उत्पादन आहे जे कोलेस्टेरॉल संश्लेषणातील एका मुख्य पायरीचे उत्प्रेरण करणाऱ्या विकराचा स्पर्धात्मक प्रतिबंध करते, म्हणून शरीर ते कमी बनवते.",
+        },
+        detail: {
+          en: "The inhibition is competitive, which means the molecule fits the enzyme's active site and occupies it without being converted, so the substrate cannot get in.",
+          hi: "निषेध प्रतिस्पर्धी है, यानी अणु एंज़ाइम के सक्रिय स्थल में बैठ जाता है और बिना बदले उसे घेरे रहता है, अतः क्रियाधार भीतर नहीं आ पाता।",
+          mr: "प्रतिबंध स्पर्धात्मक आहे, म्हणजे रेणू विकराच्या सक्रिय स्थळात बसतो आणि न बदलता ते व्यापून राहतो, म्हणून क्रियाधार आत येऊ शकत नाही.",
+        },
+        extra: {
+          en: "The logic is exactly that of an antibiotic, with the target moved: an antibiotic blocks an enzyme the bacterium has and we do not, and this blocks one of ours deliberately.",
+          hi: "तर्क ठीक प्रतिजैविक का है, बस लक्ष्य खिसका हुआ: प्रतिजैविक ऐसा एंज़ाइम रोकता है जो जीवाणु के पास है और हमारे पास नहीं, और यह जान-बूझकर हमारे ही किसी एंज़ाइम को रोकता है।",
+          mr: "तर्क नेमका प्रतिजैविकाचा आहे, फक्त लक्ष्य सरकलेले: प्रतिजैविक असे विकर अडवते जे जिवाणूकडे आहे आणि आपल्याकडे नाही, आणि हे जाणीवपूर्वक आपल्याच एका विकराला अडवते.",
+        },
+        pair: {
+          left: {
+            en: "Occupy the site and the pathway stops there",
+            hi: "जगह घेर लो और पथ वहीं रुक जाता है",
+            mr: "जागा व्यापा आणि मार्ग तिथेच थांबतो",
+          },
+          right: {
+            en: "a fungal product that blocks one step",
+            hi: "एक चरण रोकता कवक उत्पाद",
+            mr: "एक पायरी अडवणारे बुरशी उत्पादन",
+          },
+        },
+      },
+      {
+        id: "sewage-treatment-as-managed-feeding",
+        name: {
+          en: "Sewage treatment as managed feeding",
+          hi: "प्रबंधित भोजन के रूप में मल-जल उपचार",
+          mr: "व्यवस्थापित भोजन म्हणून मलजल उपचार",
+        },
+        kind: "process run by microbes",
+        prompt: {
+          en: "A two-stage plant in which the second stage costs almost nothing to run, because the organisms doing the work multiply on exactly the material being removed. What is it?",
+          hi: "ऐसा दो-चरणी संयंत्र जिसका दूसरा चरण चलाने में लगभग कुछ नहीं लगता, क्योंकि काम करते जीव ठीक उसी सामग्री पर बढ़ते हैं जो हटाई जा रही है। यह क्या है?",
+          mr: "असा दोन-पायरीचा प्रकल्प ज्याची दुसरी पायरी चालवायला जवळपास काहीही लागत नाही, कारण काम करणारे जीव नेमक्या त्याच सामग्रीवर वाढतात जी काढली जात आहे. हा काय आहे?",
+        },
+        statement: {
+          en: "Sewage treatment is a managed feeding in which settled solids are removed first and microbes are then allowed to consume the dissolved organic matter that remains.",
+          hi: "मल-जल उपचार प्रबंधित भोजन है जिसमें पहले बैठे ठोस हटाए जाते हैं और फिर सूक्ष्मजीवों को बचे घुले कार्बनिक पदार्थ को खा जाने दिया जाता है।",
+          mr: "मलजल उपचार हे व्यवस्थापित भोजन आहे ज्यात आधी बसलेले घन काढले जातात आणि मग सूक्ष्मजीवांना उरलेले विरघळलेले कार्बनी द्रव्य खाऊ दिले जाते.",
+        },
+        detail: {
+          en: "The measure of success is the drop in biochemical oxygen demand, which is really a measure of how much food is left rather than of any chemical directly.",
+          hi: "सफलता का माप जैवरासायनिक ऑक्सीजन माँग का गिरना है, जो असल में किसी रसायन का सीधा माप नहीं बल्कि इसका माप है कि भोजन कितना बचा।",
+          mr: "यशाचे माप जैवरासायनिक ऑक्सिजन मागणीचे घसरणे आहे, जे खरे तर कोणत्याही रसायनाचे थेट माप नसून अन्न किती उरले याचे माप आहे.",
+        },
+        extra: {
+          en: "The sludge left over is digested again by different microbes in the absence of air, which produces a gas that can be burned to run the plant.",
+          hi: "बचा गाद हवा की अनुपस्थिति में भिन्न सूक्ष्मजीवों द्वारा फिर पचाया जाता है, जिससे ऐसी गैस बनती है जिसे जलाकर संयंत्र चलाया जा सकता है।",
+          mr: "उरलेला गाळ हवेच्या अनुपस्थितीत वेगळ्या सूक्ष्मजीवांकडून पुन्हा पचवला जातो, ज्याने असा वायू बनतो जो जाळून प्रकल्प चालवता येतो.",
+        },
+        pair: {
+          left: {
+            en: "The workers multiply on the very thing being removed",
+            hi: "मज़दूर ठीक उसी चीज़ पर बढ़ते हैं जो हटाई जा रही है",
+            mr: "कामगार नेमक्या त्याच गोष्टीवर वाढतात जी काढली जात आहे",
+          },
+          right: {
+            en: "sewage treatment as managed feeding",
+            hi: "प्रबंधित भोजन के रूप में मल-जल उपचार",
+            mr: "व्यवस्थापित भोजन म्हणून मलजल उपचार",
+          },
+        },
+      },
+      {
+        id: "biogas-and-the-methanogens",
+        name: {
+          en: "Biogas and the methanogens",
+          hi: "जैव गैस और मेथैनोजन",
+          mr: "जैववायू आणि मिथेनोजन",
+        },
+        kind: "process run by microbes",
+        prompt: {
+          en: "A gas that is a metabolic dead end for the organisms producing it, made only where there is no oxygen, and a fuel for the people collecting it. What is being described?",
+          hi: "ऐसी गैस जो उसे बनाते जीवों के लिए उपापचयी अंत है, केवल वहाँ बनती है जहाँ ऑक्सीजन नहीं, और उसे इकट्ठा करते लोगों के लिए ईंधन है। यहाँ किसका वर्णन है?",
+          mr: "असा वायू जो तो बनवणाऱ्या जीवांसाठी चयापचयी शेवट आहे, केवळ तिथे बनतो जिथे ऑक्सिजन नाही, आणि तो गोळा करणाऱ्या लोकांसाठी इंधन आहे. इथे कशाचे वर्णन आहे?",
+        },
+        statement: {
+          en: "Biogas is mostly methane produced by methanogens digesting organic matter without oxygen, and the same organisms live in the rumen of cattle, which is why dung is the usual feedstock.",
+          hi: "जैव गैस अधिकतर मेथैन है जो मेथैनोजन ऑक्सीजन के बिना कार्बनिक पदार्थ पचाकर बनाते हैं, और वही जीव मवेशियों के रूमेन में रहते हैं, इसीलिए गोबर सामान्य कच्चा माल है।",
+          mr: "जैववायू बहुतांश मिथेन आहे जो मिथेनोजन ऑक्सिजनविना कार्बनी द्रव्य पचवून बनवतात, आणि तेच जीव गुरांच्या रुमेनमध्ये राहतात, म्हणूनच शेण नेहमीचा कच्चा माल आहे.",
+        },
+        detail: {
+          en: "The oxygen must be excluded, because these organisms are killed by it and because in its presence other microbes would oxidise the material to carbon dioxide and no methane would be left.",
+          hi: "ऑक्सीजन को बाहर रखना ही पड़ता है, क्योंकि ये जीव उससे मर जाते हैं और क्योंकि उसकी उपस्थिति में दूसरे सूक्ष्मजीव सामग्री को कार्बन डाइऑक्साइड तक ऑक्सीकृत कर देते और कोई मेथैन बचता ही नहीं।",
+          mr: "ऑक्सिजन बाहेर ठेवावाच लागतो, कारण हे जीव त्याने मरतात आणि कारण त्याच्या उपस्थितीत इतर सूक्ष्मजीव सामग्रीचे कार्बन डायऑक्साइडपर्यंत उपचयन करतील आणि कोणताही मिथेन उरणारच नाही.",
+        },
+        extra: {
+          en: "The residue left in the digester is a better fertiliser than the dung that went in, so the arrangement produces two useful outputs from one input.",
+          hi: "पाचक में बचा अवशेष उस गोबर से बेहतर उर्वरक है जो डाला गया था, अतः यह व्यवस्था एक ही निवेश से दो काम के उत्पाद देती है।",
+          mr: "पचकात उरलेला अवशेष जे शेण घातले त्याहून चांगले खत आहे, म्हणून ही व्यवस्था एकाच निविष्ठेतून दोन उपयुक्त उत्पादने देते.",
+        },
+        pair: {
+          left: {
+            en: "Their waste product is our fuel",
+            hi: "उनका अपशिष्ट हमारा ईंधन है",
+            mr: "त्यांचे टाकाऊ उत्पादन आपले इंधन आहे",
+          },
+          right: {
+            en: "biogas and the methanogens",
+            hi: "जैव गैस और मेथैनोजन",
+            mr: "जैववायू आणि मिथेनोजन",
+          },
+        },
+      },
+      {
+        id: "biofertilisers-and-fixation",
+        name: {
+          en: "Biofertilisers and nitrogen fixation",
+          hi: "जैव उर्वरक और नाइट्रोजन स्थिरीकरण",
+          mr: "जैवखते आणि नायट्रोजन स्थिरीकरण",
+        },
+        kind: "process run by microbes",
+        prompt: {
+          en: "An organism placed in the soil not for what it contains but for what it converts — an atmospheric gas no plant can use into a form every plant can. What is this use called?",
+          hi: "मिट्टी में ऐसा जीव रखा जाता है जो उसमें क्या है इसके लिए नहीं बल्कि वह क्या बदलता है इसके लिए — ऐसी वायुमंडलीय गैस को जिसे कोई पादप काम में नहीं ला सकता, ऐसे रूप में जिसे हर पादप ला सकता है। इस उपयोग को क्या कहते हैं?",
+          mr: "मातीत असा जीव ठेवला जातो जो त्यात काय आहे यासाठी नव्हे तर तो काय बदलतो यासाठी — असा वातावरणीय वायू जो कोणतीही वनस्पती वापरू शकत नाही, अशा रूपात जे प्रत्येक वनस्पती वापरू शकते. या वापराला काय म्हणतात?",
+        },
+        statement: {
+          en: "Biofertilisers are organisms added to soil to enrich it, chiefly bacteria that convert atmospheric nitrogen into a usable form and fungi that extend a root's reach for phosphorus.",
+          hi: "जैव उर्वरक वे जीव हैं जो मिट्टी को समृद्ध करने के लिए डाले जाते हैं, मुख्यतः ऐसे जीवाणु जो वायुमंडलीय नाइट्रोजन को काम आने लायक़ रूप में बदलते हैं और ऐसे कवक जो फ़ॉस्फ़ोरस के लिए जड़ की पहुँच बढ़ाते हैं।",
+          mr: "जैवखते म्हणजे मातीला समृद्ध करण्यासाठी घातलेले जीव, मुख्यतः असे जिवाणू जे वातावरणीय नायट्रोजनचे वापरण्याजोग्या रूपात रूपांतर करतात आणि अशी बुरशी जी फॉस्फरससाठी मुळाची पोहोच वाढवते.",
+        },
+        detail: {
+          en: "Nitrogen makes up most of the air and is useless to a plant as it stands, because the triple bond between the two atoms is very hard to break.",
+          hi: "नाइट्रोजन हवा का अधिकांश है और पादप के लिए ज्यों का त्यों बेकार है, क्योंकि दोनों परमाणुओं के बीच का त्रिबंध तोड़ना बहुत कठिन है।",
+          mr: "नायट्रोजन हवेचा बहुतांश आहे आणि वनस्पतीसाठी जसाच्या तसा निरुपयोगी आहे, कारण दोन अणूंमधला त्रिबंध तोडणे फार कठीण आहे.",
+        },
+        extra: {
+          en: "The relationship in a root nodule is a trade: the plant supplies sugars and an oxygen-free environment, and the bacterium supplies nitrogen in a usable form.",
+          hi: "जड़ ग्रंथिका का संबंध एक सौदा है: पादप शर्करा और ऑक्सीजन-मुक्त परिवेश देता है, और जीवाणु काम आने लायक़ रूप में नाइट्रोजन।",
+          mr: "मुळाच्या गाठीतले नाते एक सौदा आहे: वनस्पती शर्करा आणि ऑक्सिजनमुक्त परिसर देते, आणि जिवाणू वापरण्याजोग्या रूपात नायट्रोजन.",
+        },
+        pair: {
+          left: {
+            en: "Added for what it converts, not for what it contains",
+            hi: "उसमें क्या है इसके लिए नहीं, वह क्या बदलता है इसके लिए डाला गया",
+            mr: "त्यात काय आहे यासाठी नव्हे, तो काय बदलतो यासाठी घातलेला",
+          },
+          right: {
+            en: "biofertilisers and nitrogen fixation",
+            hi: "जैव उर्वरक और नाइट्रोजन स्थिरीकरण",
+            mr: "जैवखते आणि नायट्रोजन स्थिरीकरण",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Penicillin kills bacteria but does no harm to the person taking it, while the same is not true of a drug used against a fungal infection or a cancer. Explain the difference, and what it predicts about how hard each kind of drug is to design.",
+          hi: "पेनिसिलिन जीवाणुओं को मारता है पर उसे लेते व्यक्ति को कोई नुक़सान नहीं करता, जबकि किसी कवक संक्रमण या कैंसर के विरुद्ध काम में ली जाती औषधि के बारे में वही सच नहीं। अंतर समझाओ, और यह भी कि वह हर क़िस्म की औषधि की रचना की कठिनाई के बारे में क्या भविष्यवाणी करता है।",
+          mr: "पेनिसिलीन जिवाणूंना मारते पण ते घेणाऱ्या व्यक्तीला कोणतेही नुकसान करत नाही, तर एखाद्या बुरशी संसर्ग वा कर्करोगाविरुद्ध वापरल्या जाणाऱ्या औषधाबद्दल तेच खरे नाही. फरक समजावा, आणि तो प्रत्येक प्रकारचे औषध रचण्याच्या अवघडपणाबद्दल काय भाकीत करतो तेही सांगा.",
+        },
+        choices: [
+          {
+            en: "Penicillin blocks the synthesis of the bacterial cell wall, a structure human cells do not have at all, so there is nothing in us for it to attack. That is selective toxicity, and it is easy to achieve when the target organism has machinery we lack entirely. A fungus is a eukaryote and shares most of its cell biology with us, so a drug against it must exploit a smaller difference — the sterol in its membrane rather than ours — and side effects are correspondingly more common. A cancer cell is our own cell with a few changes, so almost any drug that kills it will also damage healthy dividing tissue, which is why the difficulty rises steadily as the target becomes more like us",
+            hi: "पेनिसिलिन जीवाणु कोशिका भित्ति के संश्लेषण को रोकता है, ऐसी संरचना जो मानव कोशिकाओं में है ही नहीं, अतः हममें उसके हमला करने को कुछ है ही नहीं। यही चयनात्मक विषाक्तता है, और वह तब आसानी से मिलती है जब लक्ष्य जीव के पास ऐसी मशीनरी हो जो हममें बिलकुल नहीं। कवक सुकेंद्रकी है और अपनी अधिकांश कोशिका जीवविज्ञान हमसे साझा करता है, अतः उसके विरुद्ध औषधि को छोटे अंतर का लाभ उठाना पड़ता है — उसकी झिल्ली का स्टेरॉल, हमारा नहीं — और दुष्प्रभाव तदनुरूप अधिक आम हैं। कैंसर कोशिका कुछ बदलावों के साथ हमारी अपनी कोशिका है, अतः जो भी औषधि उसे मारेगी वह स्वस्थ विभाजित होते ऊतक को भी नुक़सान पहुँचाएगी, इसीलिए लक्ष्य जितना हमारे जैसा होता जाता है कठिनाई उतनी ही लगातार बढ़ती जाती है",
+            mr: "पेनिसिलीन जिवाणू पेशीभित्तीचे संश्लेषण अडवते, अशी रचना जी मानवी पेशींत आहेच नाही, म्हणून आपल्यात त्याला हल्ला करायला काहीच नाही. हीच निवडक विषारीता आहे, आणि ती तेव्हा सहज मिळते जेव्हा लक्ष्य जीवाकडे अशी यंत्रसामग्री असेल जी आपल्यात मुळीच नाही. बुरशी सुकेंद्रकी आहे आणि आपले बहुतांश पेशीजीवशास्त्र आपल्याशी समाईक ठेवते, म्हणून तिच्याविरुद्धच्या औषधाला लहान फरकाचा फायदा घ्यावा लागतो — तिच्या पटलातले स्टेरॉल, आपले नाही — आणि दुष्परिणाम त्याअनुषंगाने अधिक सामान्य आहेत. कर्करोग पेशी काही बदलांसह आपलीच पेशी आहे, म्हणून जे कोणतेही औषध तिला मारेल ते निरोगी विभाजित होणाऱ्या ऊतकालाही नुकसान पोहोचवेल, म्हणूनच लक्ष्य जितके आपल्यासारखे होत जाते तितकी अडचण सतत वाढत जाते",
+          },
+          {
+            en: "Penicillin is safe because it is given in a much smaller dose than antifungal or anticancer drugs, so the difference is one of quantity rather than of target",
+            hi: "पेनिसिलिन इसलिए सुरक्षित है कि वह कवकरोधी या कैंसररोधी औषधियों से कहीं छोटी मात्रा में दिया जाता है, अतः अंतर लक्ष्य का नहीं बल्कि मात्रा का है",
+            mr: "पेनिसिलीन यासाठी सुरक्षित आहे की ते बुरशीरोधी वा कर्करोगरोधी औषधांहून कितीतरी लहान मात्रेत दिले जाते, म्हणून फरक लक्ष्याचा नसून प्रमाणाचा आहे",
+          },
+          {
+            en: "Penicillin is safe because it is produced by a living organism and is therefore natural, while antifungal and anticancer drugs are synthetic",
+            hi: "पेनिसिलिन इसलिए सुरक्षित है कि वह किसी जीवित जीव से बनता है और इसलिए प्राकृतिक है, जबकि कवकरोधी और कैंसररोधी औषधियाँ संश्लेषित हैं",
+            mr: "पेनिसिलीन यासाठी सुरक्षित आहे की ते एखाद्या जिवंत जीवाकडून बनते आणि म्हणून नैसर्गिक आहे, तर बुरशीरोधी आणि कर्करोगरोधी औषधे संश्लेषित आहेत",
+          },
+          {
+            en: "The difference is that bacteria are smaller than fungal or cancer cells, and a drug can be made to act only on particles below a certain size",
+            hi: "अंतर यह है कि जीवाणु कवक या कैंसर कोशिकाओं से छोटे हैं, और औषधि को ऐसा बनाया जा सकता है कि वह केवल किसी आकार से छोटे कणों पर ही काम करे",
+            mr: "फरक हा की जिवाणू बुरशी वा कर्करोग पेशींहून लहान आहेत, आणि औषध असे बनवता येते की ते केवळ एखाद्या आकाराहून लहान कणांवरच काम करेल",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The question is really about a single principle — selective toxicity — and the useful thing is that it predicts difficulty in advance rather than merely describing outcomes after the fact. WHAT PENICILLIN ACTUALLY DOES. It inhibits the enzymes that cross-link peptidoglycan, the mesh that forms a bacterial cell wall. Without those cross-links a growing bacterium cannot contain its own internal pressure and bursts. Now ask what penicillin can do to a human cell. Nothing whatever: our cells have no wall and no peptidoglycan, so the enzyme the drug inhibits does not exist in us. There is no dose at which the mechanism could harm us, and that is why penicillin can be given in grams with so little toxicity. THE PRINCIPLE STATED GENERALLY. A drug is safe in proportion to how different the target is from the host. What is wanted is a process the pathogen depends on and the patient does not have — or has in a sufficiently different form that a molecule can tell them apart. THE PREDICTION, AND WHY IT IS BORNE OUT. Rank the targets by how closely related they are to us. Bacteria are prokaryotes: no nucleus, different ribosomes, a cell wall we lack, distinct enzymes for folate synthesis. Many independent targets are available, and antibacterials are correspondingly numerous and well tolerated. Fungi are eukaryotes. They have nuclei, mitochondria and ribosomes much like ours, so most of their machinery is our machinery too. The available differences are few — ergosterol in the membrane where we use cholesterol, and chitin in the wall — and antifungal drugs are correspondingly fewer and more toxic. A cancer cell is not a foreign organism at all; it is one of our own cells with a small number of mutations. There is almost no biochemical difference to exploit, so classical chemotherapy attacks the one property that distinguishes tumour cells statistically — rapid division — and therefore damages every rapidly dividing tissue in the body: bone marrow, gut lining, hair follicles. The side effects are not incidental; they are the mechanism working as designed on the wrong cells. So the ranking of difficulty follows directly from the ranking of similarity, which is what makes this a genuine principle rather than a set of separate facts. A NOTE ON WHERE THE PRINCIPLE POINTS NEXT. Modern targeted cancer drugs are an attempt to find a real difference after all — a mutated protein present only in tumour cells — which is exactly the selective-toxicity strategy applied to a target that seemed to offer no purchase. And a statin, which appears in this chapter alongside penicillin, is the same logic pointed deliberately at one of our own enzymes: safe not because the target is foreign but because blocking that one step is tolerable. (The second option makes it a matter of dose, when the mechanism gives no route to harm at any dose; the third invokes 'natural', which says nothing about safety — many fungal products are lethal; the fourth invents a size-selectivity that no drug possesses.)",
+          hi: "प्रश्न असल में एक ही सिद्धांत के बारे में है — चयनात्मक विषाक्तता — और काम की बात यह है कि वह घटना के बाद परिणाम बताने के बजाय पहले से कठिनाई की भविष्यवाणी करता है। पेनिसिलिन वस्तुतः करता क्या है। वह उन एंज़ाइमों का निषेध करता है जो पेप्टिडोग्लाइकन को आड़ा-तिरछा जोड़ते हैं, वह जाली जो जीवाणु कोशिका भित्ति बनाती है। उन जोड़ों के बिना बढ़ता जीवाणु अपना ही भीतरी दाब नहीं थाम सकता और फट जाता है। अब पूछो कि पेनिसिलिन मानव कोशिका का क्या बिगाड़ सकता है। कुछ भी नहीं: हमारी कोशिकाओं में न भित्ति है न पेप्टिडोग्लाइकन, अतः जिस एंज़ाइम का औषधि निषेध करती है वह हममें है ही नहीं। ऐसी कोई मात्रा नहीं जिस पर यह क्रियाविधि हमें नुक़सान पहुँचा सके, और इसीलिए पेनिसिलिन ग्रामों में इतनी कम विषाक्तता के साथ दिया जा सकता है। सिद्धांत सामान्य रूप में। कोई औषधि उतनी ही सुरक्षित है जितना लक्ष्य परपोषी से भिन्न है। जो चाहिए वह ऐसी प्रक्रिया है जिस पर रोगजनक निर्भर हो और जो रोगी के पास हो ही नहीं — या इतने भिन्न रूप में हो कि कोई अणु दोनों में भेद कर सके। भविष्यवाणी, और वह सही क्यों उतरती है। लक्ष्यों को इससे क्रम दो कि वे हमसे कितने निकट संबंधी हैं। जीवाणु प्रोकेरियोटी हैं: न केंद्रक, भिन्न राइबोसोम, ऐसी कोशिका भित्ति जो हममें नहीं, फ़ोलेट संश्लेषण के लिए अलग एंज़ाइम। बहुत से स्वतंत्र लक्ष्य उपलब्ध हैं, और जीवाणुरोधी तदनुरूप अनेक और अच्छी तरह सहे जाने वाले हैं। कवक सुकेंद्रकी हैं। उनके पास हमारे जैसे ही केंद्रक, सूत्रकणिकाएँ और राइबोसोम हैं, अतः उनकी अधिकांश मशीनरी हमारी भी मशीनरी है। उपलब्ध अंतर कम हैं — झिल्ली में एर्गोस्टेरॉल जहाँ हम कोलेस्टेरॉल काम में लाते हैं, और भित्ति में काइटिन — और कवकरोधी औषधियाँ तदनुरूप कम और अधिक विषाक्त हैं। कैंसर कोशिका पराया जीव है ही नहीं; वह थोड़े से उत्परिवर्तनों के साथ हमारी अपनी कोशिका है। लाभ उठाने को लगभग कोई जैवरासायनिक अंतर नहीं, अतः शास्त्रीय कीमोथेरेपी उस एक गुण पर हमला करती है जो अर्बुद कोशिकाओं को सांख्यिकीय रूप से अलग करता है — तेज़ विभाजन — और इसलिए शरीर के हर तेज़ी से विभाजित होते ऊतक को नुक़सान पहुँचाती है: अस्थि मज्जा, आँत की परत, बालों के कूप। दुष्प्रभाव आकस्मिक नहीं; वे ग़लत कोशिकाओं पर क्रियाविधि का ठीक वैसे ही चलना हैं जैसा उसे बनाया गया था। अतः कठिनाई का क्रम समानता के क्रम से सीधे निकलता है, और यही इसे भिन्न तथ्यों के समुच्चय के बजाय असली सिद्धांत बनाता है। सिद्धांत आगे किधर इशारा करता है। आधुनिक लक्षित कैंसर औषधियाँ आख़िर कोई असली अंतर ढूँढ़ने का प्रयास हैं — केवल अर्बुद कोशिकाओं में मौजूद कोई उत्परिवर्तित प्रोटीन — और यह ठीक वही चयनात्मक-विषाक्तता रणनीति है जो ऐसे लक्ष्य पर लगाई गई जो कोई पकड़ देता नहीं लगता था। और स्टैटिन, जो इस अध्याय में पेनिसिलिन के साथ आता है, वही तर्क है जो जान-बूझकर हमारे ही किसी एंज़ाइम पर ताना गया: सुरक्षित इसलिए नहीं कि लक्ष्य पराया है बल्कि इसलिए कि उस एक चरण को रोकना सहा जा सकता है। (दूसरा विकल्प इसे मात्रा का मामला बना देता है, जबकि क्रियाविधि किसी भी मात्रा पर नुक़सान का रास्ता देती ही नहीं; तीसरा 'प्राकृतिक' की दुहाई देता है, जो सुरक्षा के बारे में कुछ नहीं कहता — बहुत से कवक उत्पाद प्राणघातक हैं; चौथा ऐसी आकार-चयनात्मकता गढ़ता है जो किसी औषधि में नहीं।)",
+          mr: "प्रश्न खरे तर एकाच तत्त्वाबद्दल आहे — निवडक विषारीता — आणि उपयुक्त बाब ही की ते घटनेनंतर निकाल सांगण्याऐवजी आधीच अवघडपणाचे भाकीत करते. पेनिसिलीन प्रत्यक्षात काय करते. ते त्या विकरांचा प्रतिबंध करते जी पेप्टिडोग्लायकनला आडवीतिडवी जोडतात, ती जाळी जी जिवाणू पेशीभित्ती बनवते. त्या जोडांविना वाढणारा जिवाणू आपलाच आतला दाब धरू शकत नाही आणि फुटतो. आता विचारा की पेनिसिलीन मानवी पेशीचे काय बिघडवू शकते. काहीही नाही: आपल्या पेशींत भित्तीही नाही आणि पेप्टिडोग्लायकनही नाही, म्हणून ज्या विकराचा औषध प्रतिबंध करते ते आपल्यात आहेच नाही. अशी कोणतीही मात्रा नाही ज्यावर ही यंत्रणा आपल्याला नुकसान पोहोचवू शकेल, आणि म्हणूनच पेनिसिलीन ग्रॅममध्ये इतक्या कमी विषारीतेसह देता येते. तत्त्व सर्वसाधारण रूपात. कोणतेही औषध तितकेच सुरक्षित आहे जितके लक्ष्य यजमानाहून वेगळे आहे. जे हवे ते अशी प्रक्रिया आहे जिच्यावर रोगजनक अवलंबून असेल आणि जी रुग्णाकडे असणारच नाही — वा इतक्या वेगळ्या रूपात असेल की एखादा रेणू दोघांत भेद करू शकेल. भाकीत, आणि ते खरे का ठरते. लक्ष्यांना ते आपल्याशी किती जवळचे नातेवाईक आहेत यावरून क्रम द्या. जिवाणू प्रोकॅरियोटी आहेत: केंद्रक नाही, वेगळी रायबोसोम, अशी पेशीभित्ती जी आपल्यात नाही, फोलेट संश्लेषणासाठी वेगळी विकरे. बरीच स्वतंत्र लक्ष्ये उपलब्ध आहेत, आणि जिवाणूरोधी त्याअनुषंगाने अनेक आणि चांगली सहन होणारी आहेत. बुरशी सुकेंद्रकी आहेत. त्यांच्याकडे आपल्यासारखीच केंद्रके, तंतुकणिका आणि रायबोसोम आहेत, म्हणून त्यांची बहुतांश यंत्रसामग्री आपलीही यंत्रसामग्री आहे. उपलब्ध फरक कमी आहेत — पटलात एर्गोस्टेरॉल जिथे आपण कोलेस्टेरॉल वापरतो, आणि भित्तीत कायटिन — आणि बुरशीरोधी औषधे त्याअनुषंगाने कमी आणि अधिक विषारी आहेत. कर्करोग पेशी परका जीव आहेच नाही; ती थोड्या उत्परिवर्तनांसह आपलीच पेशी आहे. फायदा घ्यायला जवळपास कोणताही जैवरासायनिक फरक नाही, म्हणून शास्त्रीय केमोथेरपी त्या एका गुणधर्मावर हल्ला करते जो गाठीच्या पेशींना सांख्यिकीयदृष्ट्या वेगळे करतो — जलद विभाजन — आणि म्हणून शरीरातल्या प्रत्येक झपाट्याने विभाजित होणाऱ्या ऊतकाला नुकसान पोहोचवते: अस्थिमज्जा, आतड्याचे अस्तर, केसांचे कूप. दुष्परिणाम आनुषंगिक नाहीत; ते चुकीच्या पेशींवर यंत्रणेचे नेमके तसेच चालणे आहे जसे तिला बनवले गेले. म्हणून अवघडपणाचा क्रम साम्याच्या क्रमातून थेट निघतो, आणि हेच याला वेगळ्या सत्यांच्या संचाऐवजी खरे तत्त्व बनवते. तत्त्व पुढे कुठे बोट दाखवते. आधुनिक लक्ष्यित कर्करोग औषधे अखेर एखादा खरा फरक शोधण्याचा प्रयत्न आहेत — केवळ गाठीच्या पेशींत उपस्थित एखादे उत्परिवर्तित प्रथिन — आणि हीच ती निवडक-विषारीता रणनीती आहे जी अशा लक्ष्यावर लावली गेली जे कोणतीही पकड देत नाही असे वाटत होते. आणि स्टॅटिन, जे या प्रकरणात पेनिसिलीनसोबत येते, तोच तर्क आहे जो जाणीवपूर्वक आपल्याच एका विकरावर रोखलेला: सुरक्षित यासाठी नाही की लक्ष्य परके आहे तर यासाठी की ती एक पायरी अडवणे सहन होते. (दुसरा पर्याय याला मात्रेची बाब बनवतो, तर यंत्रणा कोणत्याही मात्रेवर नुकसानाचा मार्ग देतच नाही; तिसरा 'नैसर्गिक' चा आधार घेतो, जे सुरक्षिततेबद्दल काहीही सांगत नाही — बरीच बुरशी उत्पादने प्राणघातक आहेत; चौथा अशी आकार-निवडकता घडवतो जी कोणत्याही औषधात नाही.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "The Bt toxin kills caterpillars and is harmless to mammals, birds and most other insects, and this is not a matter of using a small enough dose. Explain the basis of the specificity, and what it implies for how such a protein should be assessed for safety.",
+          hi: "Bt विष इल्लियों को मारता है और स्तनपायियों, पक्षियों तथा अधिकांश अन्य कीटों के लिए हानिरहित है, और यह पर्याप्त छोटी मात्रा काम में लेने का मामला नहीं। विशिष्टता का आधार समझाओ, और यह भी कि उसका अर्थ यह है कि ऐसे प्रोटीन की सुरक्षा कैसे आँकी जानी चाहिए।",
+          mr: "Bt विष अळ्यांना मारते आणि सस्तन प्राणी, पक्षी व बहुतांश इतर कीटकांसाठी निरुपद्रवी आहे, आणि ही पुरेशी लहान मात्रा वापरण्याची बाब नाही. विशिष्टतेचा आधार समजावा, आणि त्याचा अर्थ असा की अशा प्रथिनाची सुरक्षितता कशी तपासली जावी तेही सांगा.",
+        },
+        choices: [
+          {
+            en: "The protein is made and swallowed as an inactive crystal, and two conditions must be met before it can act at all. It must be dissolved and cut by proteases in a strongly alkaline gut, which caterpillars have and mammals, whose stomachs are acidic, do not; and the fragment released must then bind a specific receptor on the gut lining, which only certain insect groups possess. Both are yes-or-no requirements rather than matters of degree, so the toxin is not weakly harmful to a mammal — it is not converted into a toxin at all. Safety assessment should therefore ask whether the activating conditions and the receptor exist in the species of concern, rather than simply feeding larger and larger amounts and looking for an effect",
+            hi: "यह प्रोटीन निष्क्रिय क्रिस्टल के रूप में बनता और निगला जाता है, और उसके कुछ भी करने से पहले दो शर्तें पूरी होनी चाहिए। उसे प्रबल क्षारीय आँत में घुलना और प्रोटीएज़ से कटना है, जो इल्लियों के पास है और स्तनपायियों के पास नहीं, जिनका आमाशय अम्लीय है; और फिर छूटे टुकड़े को आँत की परत पर किसी विशिष्ट ग्राही से बँधना है, जो केवल कुछ कीट समूहों के पास है। दोनों मात्रा के मामले नहीं बल्कि हाँ-या-ना की शर्तें हैं, अतः विष स्तनपायी के लिए दुर्बल रूप से हानिकारक नहीं है — वह विष में बदलता ही नहीं। अतः सुरक्षा आकलन को यह पूछना चाहिए कि जिस जाति की चिंता है उसमें सक्रियण की शर्तें और ग्राही हैं या नहीं, न कि बस बड़ी से बड़ी मात्रा खिलाकर किसी प्रभाव की तलाश करनी चाहिए",
+            mr: "हे प्रथिन निष्क्रिय स्फटिकाच्या रूपात बनते आणि गिळले जाते, आणि त्याने काहीही करण्याआधी दोन अटी पूर्ण व्हाव्या लागतात. त्याला तीव्र क्षारधर्मी आतड्यात विरघळावे आणि प्रोटिएजने कापले जावे लागते, जे अळ्यांकडे आहे आणि सस्तन प्राण्यांकडे नाही, ज्यांचे जठर आम्लधर्मी आहे; आणि मग सुटलेल्या तुकड्याला आतड्याच्या अस्तरावरील एका विशिष्ट ग्राहीशी बांधावे लागते, जे केवळ काही कीटक गटांकडे आहे. दोन्ही प्रमाणाच्या बाबी नसून होय-किंवा-नाही अटी आहेत, म्हणून विष सस्तन प्राण्यासाठी दुर्बलपणे हानिकारक नाही — ते विषात बदलतच नाही. म्हणून सुरक्षितता मूल्यमापनाने हे विचारावे की ज्या जातीची चिंता आहे तिच्यात सक्रियणाच्या अटी आणि ग्राही आहेत का, केवळ मोठ्यात मोठी मात्रा खाऊ घालून एखाद्या परिणामाचा शोध घेऊ नये",
+          },
+          {
+            en: "The toxin is harmless to mammals only because the amount reaching them is very small, and a sufficiently large dose would be just as lethal to a mammal as to an insect",
+            hi: "यह विष स्तनपायियों के लिए केवल इसलिए हानिरहित है कि उन तक पहुँचती मात्रा बहुत कम है, और पर्याप्त बड़ी मात्रा स्तनपायी के लिए भी उतनी ही प्राणघातक होती जितनी कीट के लिए",
+            mr: "हे विष सस्तन प्राण्यांसाठी केवळ यासाठी निरुपद्रवी आहे की त्यांच्यापर्यंत पोहोचणारे प्रमाण फार कमी आहे, आणि पुरेशी मोठी मात्रा सस्तन प्राण्यासाठीही तितकीच प्राणघातक असेल जितकी कीटकासाठी",
+          },
+          {
+            en: "The toxin acts only on the insect's nervous system, which mammals possess in a similar form, so the safety margin rests entirely on differences in body size",
+            hi: "यह विष केवल कीट के तंत्रिका तंत्र पर काम करता है, जो स्तनपायियों के पास मिलते-जुलते रूप में है, अतः सुरक्षा का अंतर पूरी तरह शरीर के आकार के अंतर पर टिका है",
+            mr: "हे विष केवळ कीटकाच्या चेतासंस्थेवर काम करते, जी सस्तन प्राण्यांकडे साम्य असलेल्या रूपात आहे, म्हणून सुरक्षिततेची मर्यादा पूर्णपणे शरीराच्या आकारातील फरकावर टिकली आहे",
+          },
+          {
+            en: "It is safe because it is a protein and all proteins are digested harmlessly, so no protein introduced into a crop can pose any risk at all",
+            hi: "वह इसलिए सुरक्षित है कि वह प्रोटीन है और सारे प्रोटीन हानिरहित ढंग से पच जाते हैं, अतः किसी फ़सल में डाला गया कोई प्रोटीन कोई जोखिम खड़ा कर ही नहीं सकता",
+            mr: "ते यासाठी सुरक्षित आहे की ते प्रथिन आहे आणि सर्व प्रथिने निरुपद्रवीरीत्या पचतात, म्हणून एखाद्या पिकात घातलेले कोणतेही प्रथिन कोणताही धोका निर्माण करूच शकत नाही",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The interesting claim in the question is the second half — that this is NOT a dose effect. Most toxicity is a matter of degree: enough of almost anything will harm almost anything. A specificity that does not work that way needs a mechanism, and tracing it is the exercise. THE PROTEIN IS MADE INERT ON PURPOSE. Bacillus thuringiensis produces the toxin as a crystalline protoxin — a large, insoluble, inactive protein. In that form it can do nothing to any organism, including the bacterium that made it, which is why the bacterium survives producing it. Activation requires a sequence of steps, and each step is a filter. FILTER ONE: AN ALKALINE GUT. The crystal dissolves only at high pH. A caterpillar's midgut runs at pH 9 to 11, unusually alkaline for a digestive tract. A mammalian stomach runs at pH 1 to 2. In an acidic environment the crystal does not dissolve and is instead broken down as ordinary dietary protein. Notice that this is not a weak effect that a bigger dose could overcome — eating ten times as much of an undissolved crystal simply produces ten times as much digested protein. FILTER TWO: A SPECIFIC RECEPTOR. Once dissolved, the protoxin must be cleaved by gut proteases to release the active fragment, and that fragment then has to bind a particular receptor protein on the microvilli of the gut epithelium. Only certain insect groups carry a receptor of the right shape, which is why different Cry proteins are effective against different orders — one against lepidopterans, another against coleopterans, another against dipterans. Bound toxin inserts into the membrane and forms pores; the gut lining fails, the contents leak, and the insect stops feeding and dies. Both filters are qualitative. There is no partial version of having the wrong gut pH or lacking the receptor entirely. WHAT THIS IMPLIES FOR SAFETY ASSESSMENT, WHICH IS THE PART WORTH THINKING ABOUT. If the specificity rested on dose, the right test would be a feeding study at escalating amounts, looking for the level at which harm appears. But if it rests on a mechanism with discrete requirements, the informative questions are different: does the species of concern have an alkaline gut, does it possess a receptor that binds this particular Cry protein, and is the protein digested normally when it is not activated? Those questions can be answered directly and give a stronger answer than a dose curve, because they explain WHY there is no effect rather than merely failing to find one. A NECESSARY QUALIFICATION. None of this makes the technology free of concerns; it makes the concerns specific ones. Insects can evolve altered receptors, and resistance to Bt crops has appeared in the field, which is why refuges of non-Bt plants are planted alongside to slow it. And a protein safe in itself may still matter for non-target insects that do carry the receptor. The mechanism tells you which risks are real and which are not, and that is exactly what a mechanism is for. (The second option asserts the dose model the question rules out; the third relocates the target to the nervous system and rests the argument on body size; the fourth generalises wildly — ricin and botulinum toxin are both proteins.)",
+          hi: "प्रश्न में रोचक दावा उसका दूसरा आधा है — कि यह मात्रा का प्रभाव नहीं है। अधिकांश विषाक्तता मात्रा का मामला है: लगभग किसी भी चीज़ का काफ़ी हिस्सा लगभग किसी भी चीज़ को नुक़सान पहुँचा देगा। जो विशिष्टता ऐसे काम नहीं करती उसे क्रियाविधि चाहिए, और उसे खोजना ही अभ्यास है। प्रोटीन जान-बूझकर निष्क्रिय बनाया जाता है। बैसिलस थुरिन्जिएंसिस विष को क्रिस्टलीय पूर्वविष के रूप में बनाता है — बड़ा, अघुलनशील, निष्क्रिय प्रोटीन। उस रूप में वह किसी भी जीव का कुछ नहीं बिगाड़ सकता, उस जीवाणु का भी नहीं जिसने उसे बनाया, इसीलिए जीवाणु उसे बनाते हुए भी बचा रहता है। सक्रियण को चरणों की एक शृंखला चाहिए, और हर चरण एक छन्ना है। छन्ना एक: क्षारीय आँत। क्रिस्टल केवल ऊँचे pH पर घुलता है। इल्ली की मध्यांत्र pH 9 से 11 पर चलती है, पाचन नली के लिए असामान्य रूप से क्षारीय। स्तनपायी का आमाशय pH 1 से 2 पर चलता है। अम्लीय परिवेश में क्रिस्टल घुलता ही नहीं और उसके बजाय साधारण आहारीय प्रोटीन की तरह टूट जाता है। ध्यान दो कि यह कोई दुर्बल प्रभाव नहीं जिसे बड़ी मात्रा पार कर ले — बिना घुले क्रिस्टल का दस गुना खाने से बस दस गुना पचा हुआ प्रोटीन बनता है। छन्ना दो: एक विशिष्ट ग्राही। घुल जाने के बाद पूर्वविष को आँत के प्रोटीएज़ से कटकर सक्रिय टुकड़ा छोड़ना है, और फिर उस टुकड़े को आँत उपकला के सूक्ष्मांकुरों पर किसी ख़ास ग्राही प्रोटीन से बँधना है। केवल कुछ कीट समूहों के पास सही आकार का ग्राही है, इसीलिए भिन्न Cry प्रोटीन भिन्न गणों के विरुद्ध प्रभावी हैं — एक लेपिडोप्टेरा के विरुद्ध, दूसरा कोलियोप्टेरा के, तीसरा डिप्टेरा के। बँधा विष झिल्ली में घुसकर छिद्र बनाता है; आँत की परत विफल हो जाती है, अंतर्वस्तु रिसती है, और कीट खाना बंद कर मर जाता है। दोनों छन्ने गुणात्मक हैं। ग़लत आँत pH होने या ग्राही बिलकुल न होने का कोई आंशिक रूप नहीं होता। सुरक्षा आकलन के लिए इसका अर्थ क्या है, और यही हिस्सा सोचने लायक़ है। यदि विशिष्टता मात्रा पर टिकी होती, तो सही परीक्षण बढ़ती मात्राओं पर आहार अध्ययन होता, यह देखते हुए कि किस स्तर पर नुक़सान प्रकट होता है। पर यदि वह असतत आवश्यकताओं वाली क्रियाविधि पर टिकी है, तो ज्ञानप्रद प्रश्न भिन्न हैं: जिस जाति की चिंता है क्या उसकी आँत क्षारीय है, क्या उसके पास ऐसा ग्राही है जो इसी Cry प्रोटीन से बँधे, और सक्रिय न होने पर क्या प्रोटीन सामान्य रूप से पच जाता है? उन प्रश्नों का उत्तर सीधे दिया जा सकता है और वे मात्रा-वक्र से प्रबल उत्तर देते हैं, क्योंकि वे समझाते हैं कि प्रभाव क्यों नहीं है, न कि केवल उसे ढूँढ़ने में विफल होते हैं। एक ज़रूरी शर्त। इनमें से कुछ भी इस तकनीक को चिंताओं से मुक्त नहीं करता; यह चिंताओं को विशिष्ट बना देता है। कीट बदले हुए ग्राही विकसित कर सकते हैं, और Bt फ़सलों के प्रति प्रतिरोध खेत में प्रकट हो चुका है, इसीलिए उसे धीमा करने को साथ में ग़ैर-Bt पादपों की शरणस्थलियाँ बोई जाती हैं। और जो प्रोटीन स्वयं में सुरक्षित है वह उन ग़ैर-लक्ष्य कीटों के लिए फिर भी मायने रख सकता है जिनके पास वह ग्राही है। क्रियाविधि बता देती है कि कौन-से जोखिम असली हैं और कौन-से नहीं, और क्रियाविधि का काम ठीक यही है। (दूसरा विकल्प वही मात्रा वाला मॉडल ठोकता है जिसे प्रश्न ख़ारिज करता है; तीसरा लक्ष्य को तंत्रिका तंत्र में खिसका देता है और तर्क को शरीर के आकार पर टिका देता है; चौथा बेतहाशा सामान्यीकरण करता है — रिसिन और बोटुलिनम विष दोनों प्रोटीन हैं।)",
+          mr: "प्रश्नातील रोचक दावा त्याचा दुसरा अर्धा आहे — की हा मात्रेचा परिणाम नाही. बहुतांश विषारीता प्रमाणाची बाब आहे: जवळपास कोणत्याही गोष्टीचा पुरेसा भाग जवळपास कोणत्याही गोष्टीला नुकसान पोहोचवेल. जी विशिष्टता तशी काम करत नाही तिला यंत्रणा लागते, आणि तिचा माग काढणे हाच सराव आहे. प्रथिन जाणीवपूर्वक निष्क्रिय बनवले जाते. बॅसिलस थुरिन्जिएन्सिस विष स्फटिकी पूर्वविषाच्या रूपात बनवते — मोठे, अविद्राव्य, निष्क्रिय प्रथिन. त्या रूपात ते कोणत्याही जीवाचे काहीही बिघडवू शकत नाही, ज्या जिवाणूने ते बनवले त्याचेही नाही, म्हणूनच जिवाणू ते बनवत असतानाही टिकतो. सक्रियणाला पायऱ्यांची एक मालिका लागते, आणि प्रत्येक पायरी एक गाळणी आहे. गाळणी एक: क्षारधर्मी आतडे. स्फटिक केवळ उच्च pH वर विरघळतो. अळीचे मध्यांत्र pH 9 ते 11 वर चालते, पचनमार्गासाठी असामान्यपणे क्षारधर्मी. सस्तन प्राण्याचे जठर pH 1 ते 2 वर चालते. आम्लधर्मी परिसरात स्फटिक विरघळतच नाही आणि त्याऐवजी साध्या आहारी प्रथिनासारखा तुटतो. लक्षात घ्या की हा कोणताही दुर्बल परिणाम नाही जो मोठी मात्रा पार करेल — न विरघळलेल्या स्फटिकाचे दहापट खाल्ल्याने फक्त दहापट पचलेले प्रथिन बनते. गाळणी दोन: एक विशिष्ट ग्राही. विरघळल्यानंतर पूर्वविषाला आतड्याच्या प्रोटिएजने कापून सक्रिय तुकडा सोडावा लागतो, आणि मग त्या तुकड्याला आतड्याच्या अधिस्तराच्या सूक्ष्मांकुरांवरील एका खास ग्राही प्रथिनाशी बांधावे लागते. केवळ काही कीटक गटांकडे योग्य आकाराचे ग्राही आहे, म्हणूनच वेगळी Cry प्रथिने वेगळ्या गणांविरुद्ध परिणामकारक आहेत — एक लेपिडोप्टेराविरुद्ध, दुसरे कोलिओप्टेराविरुद्ध, तिसरे डिप्टेराविरुद्ध. बांधलेले विष पटलात शिरून छिद्रे बनवते; आतड्याचे अस्तर अपयशी ठरते, आतले पदार्थ गळतात, आणि कीटक खाणे थांबवून मरतो. दोन्ही गाळण्या गुणात्मक आहेत. चुकीचा आतडे pH असण्याचे वा ग्राही मुळीच नसण्याचे कोणतेही अंशतः रूप नसते. सुरक्षितता मूल्यमापनासाठी याचा अर्थ काय, आणि हाच भाग विचार करण्याजोगा आहे. जर विशिष्टता मात्रेवर टिकली असती, तर योग्य चाचणी वाढत्या प्रमाणांवरचा आहार अभ्यास असती, कोणत्या पातळीवर नुकसान प्रकट होते हे पाहत. पण जर ती सुट्या आवश्यकतांच्या यंत्रणेवर टिकली असेल, तर माहितीपूर्ण प्रश्न वेगळे आहेत: ज्या जातीची चिंता आहे तिचे आतडे क्षारधर्मी आहे का, तिच्याकडे असे ग्राही आहे का जे याच Cry प्रथिनाशी बांधेल, आणि सक्रिय न झाल्यास प्रथिन सामान्यपणे पचते का? त्या प्रश्नांची उत्तरे थेट देता येतात आणि ती मात्रा-वक्रापेक्षा भक्कम उत्तर देतात, कारण ती समजावतात की परिणाम का नाही, केवळ तो शोधण्यात अपयशी ठरत नाहीत. एक आवश्यक अट. यांपैकी काहीही या तंत्रज्ञानाला चिंतांपासून मुक्त करत नाही; ते चिंतांना विशिष्ट बनवते. कीटक बदललेली ग्राही विकसित करू शकतात, आणि Bt पिकांबाबतचा प्रतिकार शेतात प्रकट झाला आहे, म्हणूनच त्याला मंद करण्यास सोबत बिगर-Bt वनस्पतींची आश्रयस्थळे पेरली जातात. आणि जे प्रथिन स्वतःत सुरक्षित आहे ते त्या बिगर-लक्ष्य कीटकांसाठी तरीही महत्त्वाचे ठरू शकते ज्यांच्याकडे ते ग्राही आहे. यंत्रणा सांगते की कोणते धोके खरे आहेत आणि कोणते नाहीत, आणि यंत्रणेचे काम नेमके हेच आहे. (दुसरा पर्याय तोच मात्रेचा नमुना ठोकतो जो प्रश्न नाकारतो; तिसरा लक्ष्य चेतासंस्थेत सरकवतो आणि युक्तिवाद शरीराच्या आकारावर टिकवतो; चौथा बेफाम सामान्यीकरण करतो — रिसिन आणि बोट्युलिनम विष दोन्ही प्रथिने आहेत.)",
+        },
+      },
+    ],
+  },
+  /*C6*/
 ];
 
 export const G12_BIOLOGY_NUMERIC: Record<string, NumQ[]> = {
@@ -2098,6 +3143,168 @@ export const G12_BIOLOGY_NUMERIC: Record<string, NumQ[]> = {
         en: "61 codons specify amino acids, and giving one to each of the twenty leaves 61 − 20 = 41 spare. What happens to those forty-one is the substance of the chapter. They are not discarded — every codon has a meaning — so most amino acids end up with several, leucine, serine and arginine with six each, while methionine and tryptophan keep just one. And the synonyms are not scattered at random: they usually share their first two bases and differ only in the third, so GGA, GGC, GGG and GGU all specify glycine. Three consequences follow. A change in the third base of such a codon is silent, which makes a large share of random substitutions harmless. The code is also arranged so that codons differing by one base often specify chemically similar amino acids, so a mutation that does show tends to be a mild substitution rather than a drastic one. And the looser pairing permitted at that third position means fewer than sixty-four tRNAs are needed. Redundancy in a code is what makes it tolerant of error, exactly as a checksum is — the surplus is not slack in the design but the design absorbing the mutations a replicating molecule is bound to accumulate. (44 forgets to remove the three stop codons before subtracting.)",
         hi: "61 कोडॉन ऐमीनो अम्ल निर्दिष्ट करते हैं, और बीसों में से हर एक को एक दे देने पर 61 − 20 = 41 बचते हैं। उन इकतालीस का क्या होता है यही अध्याय का सार है। वे फेंके नहीं जाते — हर कोडॉन का अर्थ है — अतः अधिकांश ऐमीनो अम्लों के पास कई हो जाते हैं, ल्यूसीन, सेरीन और आर्जिनीन के छह-छह, जबकि मेथियोनीन और ट्रिप्टोफ़ैन के पास केवल एक रहता है। और समानार्थी बेतरतीब बिखरे नहीं हैं: वे प्रायः अपने पहले दो क्षार साझा करते हैं और केवल तीसरे में भिन्न होते हैं, अतः GGA, GGC, GGG और GGU सब ग्लाइसीन निर्दिष्ट करते हैं। तीन परिणाम निकलते हैं। ऐसे कोडॉन के तीसरे क्षार में बदलाव मौन है, जिससे बेतरतीब प्रतिस्थापनों का बड़ा हिस्सा हानिरहित हो जाता है। कूट ऐसे भी जमा है कि एक क्षार में भिन्न कोडॉन प्रायः रासायनिक रूप से समान ऐमीनो अम्ल निर्दिष्ट करते हैं, अतः जो उत्परिवर्तन दिखता भी है वह प्रायः कठोर नहीं बल्कि हल्का प्रतिस्थापन होता है। और उसी तीसरे स्थान पर छूट वाले युग्मन का अर्थ है कि चौंसठ से कम tRNA चाहिए। किसी कूट का आधिक्य ही उसे ग़लती सहनशील बनाता है, ठीक जैसे जाँच अंक — अतिरेक रचना की ढील नहीं बल्कि रचना का उन उत्परिवर्तनों को सोख लेना है जो प्रतिकृति करते अणु में जमा होने ही हैं। (44 घटाने से पहले तीन रुकने वाले कोडॉन हटाना भूल जाता है।)",
         mr: "61 कोडॉन अमिनो आम्ले निर्दिष्ट करतात, आणि विसांपैकी प्रत्येकाला एक दिल्यावर 61 − 20 = 41 उरतात. त्या एकेचाळिसांचे काय होते हाच प्रकरणाचा सार आहे. ते फेकले जात नाहीत — प्रत्येक कोडॉनला अर्थ आहे — म्हणून बहुतांश अमिनो आम्लांकडे कित्येक येतात, ल्युसिन, सेरिन आणि आर्जिनिनकडे सहा-सहा, तर मिथिओनिन आणि ट्रिप्टोफॅनकडे केवळ एक राहतो. आणि समानार्थी यादृच्छिक विखुरलेले नाहीत: ते बहुधा आपली पहिली दोन क्षारे समाईक ठेवतात आणि केवळ तिसऱ्यात वेगळे असतात, म्हणून GGA, GGC, GGG आणि GGU सर्व ग्लायसिन निर्दिष्ट करतात. तीन परिणाम निघतात. अशा कोडॉनच्या तिसऱ्या क्षारातील बदल मूक आहे, ज्याने यादृच्छिक प्रतिस्थापनांचा मोठा हिस्सा निरुपद्रवी होतो. संकेत असाही मांडला आहे की एका क्षारात वेगळे कोडॉन बहुधा रासायनिकदृष्ट्या सारखी अमिनो आम्ले निर्दिष्ट करतात, म्हणून जे उत्परिवर्तन दिसतेही ते बहुधा तीव्र नव्हे तर सौम्य प्रतिस्थापन असते. आणि त्याच तिसऱ्या जागी परवानगी असलेल्या सैल युग्मनाचा अर्थ चौसष्टहून कमी tRNA लागतात. एखाद्या संकेताचे आधिक्यच त्याला चूकसहिष्णू बनवते, नेमके जसे तपासणी अंक — अतिरिक्तता रचनेतली ढील नसून रचनेने त्या उत्परिवर्तनांना शोषून घेणे आहे जी प्रतिकृती करणाऱ्या रेणूत जमणारच आहेत. (44 वजा करण्याआधी तीन थांबण्याचे कोडॉन काढायला विसरते.)",
+      },
+    },
+  ],
+  "biology-12-evolution": [
+    {
+      level: 1,
+      stem: {
+        en: "In a population, the frequency of one allele of a gene with two alleles is 0.7. What is the frequency of the other?",
+        hi: "किसी आबादी में दो एलील वाले जीन के एक एलील की बारंबारता 0.7 है। दूसरे की बारंबारता क्या है?",
+        mr: "एका लोकसंख्येत दोन अ‍ॅलिले असलेल्या जनुकाच्या एका अ‍ॅलिलची वारंवारता 0.7 आहे. दुसऱ्याची वारंवारता किती?",
+      },
+      answer: 0.3,
+      wrong: [0.7, 1.7, 0.49],
+      checkExpr: "1-0.7",
+      solution: {
+        en: "1 − 0.7 = 0.3, because with only two alleles the two frequencies must account for every copy in the population and therefore add to one. That p + q = 1 is not an extra assumption but a definition of what a frequency is, and every step of a Hardy–Weinberg calculation rests on it. (1.7 adds instead of subtracting.)",
+        hi: "1 − 0.7 = 0.3, क्योंकि केवल दो एलील होने पर दोनों बारंबारताओं को आबादी की हर प्रति का हिसाब देना है और इसलिए वे जुड़कर एक होती हैं। p + q = 1 कोई अतिरिक्त धारणा नहीं बल्कि इसकी परिभाषा है कि बारंबारता क्या होती है, और हार्डी-वाइनबर्ग गणना का हर क़दम उसी पर टिका है। (1.7 घटाने के बजाय जोड़ देता है।)",
+        mr: "1 − 0.7 = 0.3, कारण केवळ दोन अ‍ॅलिले असल्यास दोन्ही वारंवारतांना लोकसंख्येतल्या प्रत्येक प्रतीचा हिशेब द्यावा लागतो आणि म्हणून त्या मिळून एक होतात. p + q = 1 हे कोणतेही अतिरिक्त गृहीतक नसून वारंवारता म्हणजे काय याची व्याख्या आहे, आणि हार्डी-वाइनबर्ग गणनेची प्रत्येक पायरी त्यावरच टिकली आहे. (1.7 वजा करण्याऐवजी बेरीज करते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "How many conditions must hold for a population to stay at Hardy–Weinberg equilibrium?",
+        hi: "किसी आबादी के हार्डी-वाइनबर्ग साम्य पर बने रहने के लिए कितनी शर्तें पूरी होनी चाहिए?",
+        mr: "एखादी लोकसंख्या हार्डी-वाइनबर्ग समतोलावर टिकून राहण्यासाठी किती अटी पूर्ण व्हाव्या लागतात?",
+      },
+      answer: 5,
+      wrong: [2, 3, 4],
+      checkExpr: "3+2",
+      solution: {
+        en: "3 + 2 = 5: no selection, no mutation, no migration, no genetic drift, and random mating. The list is worth learning as a list of causes rather than of conditions, because those five are exactly the ways a population can evolve — so stating the equilibrium is the same as stating what has to be absent for nothing to happen. (3 counts only the ones usually named first.)",
+        hi: "3 + 2 = 5: न चयन, न उत्परिवर्तन, न प्रवास, न आनुवंशिक विचलन, और बेतरतीब समागम। इस सूची को शर्तों की नहीं बल्कि कारणों की सूची के रूप में सीखना चाहिए, क्योंकि वे पाँच ठीक वही रास्ते हैं जिनसे कोई आबादी विकसित हो सकती है — अतः साम्य को बताना यह बताने जैसा ही है कि कुछ न होने के लिए क्या-क्या अनुपस्थित होना चाहिए। (3 केवल उन्हें गिनता है जिनका नाम प्रायः पहले लिया जाता है।)",
+        mr: "3 + 2 = 5: निवड नाही, उत्परिवर्तन नाही, स्थलांतर नाही, आनुवंशिक विचलन नाही, आणि यादृच्छिक मीलन. ही यादी अटींची नव्हे तर कारणांची यादी म्हणून शिकण्याजोगी आहे, कारण ती पाच नेमके तेच मार्ग आहेत ज्यांनी एखादी लोकसंख्या उत्क्रांत होऊ शकते — म्हणून समतोल सांगणे हे काहीही न घडण्यासाठी काय काय अनुपस्थित असावे हे सांगण्यासारखेच आहे. (3 केवळ त्यांना मोजते ज्यांचे नाव बहुधा आधी घेतले जाते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "An allele has a frequency of 0.4. What proportion of the population is expected to be homozygous for it?",
+        hi: "किसी एलील की बारंबारता 0.4 है। आबादी का कितना अनुपात उसके लिए समयुग्मजी होने की अपेक्षा है?",
+        mr: "एका अ‍ॅलिलची वारंवारता 0.4 आहे. लोकसंख्येचा किती अंश त्यासाठी समयुग्मजी असण्याची अपेक्षा आहे?",
+      },
+      answer: 0.16,
+      wrong: [0.8, 0.4, 0.48],
+      checkExpr: "0.4*0.4",
+      solution: {
+        en: "A homozygote needs that allele from both parents, and the two are independent, so 0.4 × 0.4 = 0.16. This is where the squares in p² and q² come from — they are not a formula to remember but the probability of the same event happening twice. (0.8 doubles instead of squaring.)",
+        hi: "समयुग्मजी को वह एलील दोनों जनकों से चाहिए, और दोनों स्वतंत्र हैं, अतः 0.4 × 0.4 = 0.16. p² और q² के वर्ग यहीं से आते हैं — वे याद रखने का सूत्र नहीं बल्कि एक ही घटना के दो बार होने की प्रायिकता हैं। (0.8 वर्ग करने के बजाय दुगुना कर देता है।)",
+        mr: "समयुग्मजीला ते अ‍ॅलिल दोन्ही जनकांकडून लागते, आणि दोन्ही स्वतंत्र आहेत, म्हणून 0.4 × 0.4 = 0.16. p² आणि q² मधले वर्ग इथूनच येतात — ते लक्षात ठेवण्याचे सूत्र नसून एकाच घटनेच्या दोनदा घडण्याची संभाव्यता आहेत. (0.8 वर्ग करण्याऐवजी दुप्पट करते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "How many map units apart do genes have to be before they assort as though they were on different chromosomes?",
+        hi: "जीनों को कितनी मानचित्र इकाइयाँ दूर होना चाहिए ताकि वे ऐसे छँटें मानो भिन्न गुणसूत्रों पर हों?",
+        mr: "जनुके किती नकाशा एकके दूर असावी लागतात जेणेकरून ती अशी विभागली जावीत जणू वेगळ्या गुणसूत्रांवर असावीत?",
+      },
+      answer: 50,
+      wrong: [100, 25, 10],
+      checkExpr: "100/2",
+      solution: {
+        en: "100/2 = 50, because a recombinant frequency of fifty per cent is what unlinked genes give. The consequence is a real limitation on the method: two genes at opposite ends of one long chromosome recombine so often that they look unlinked, and no crossing experiment alone can tell them from genes on separate chromosomes. They are shown to be on the same chromosome by linking each to a marker in between. (100 assumes complete recombination, which would mean no parental combinations survived at all.)",
+        hi: "100/2 = 50, क्योंकि पचास प्रतिशत की पुनर्संयोजी बारंबारता वही है जो असहलग्न जीन देते हैं। परिणाम इस विधि की असली सीमा है: एक लंबे गुणसूत्र के विपरीत सिरों के दो जीन इतनी बार पुनर्संयोजित होते हैं कि असहलग्न दिखें, और अकेला कोई संकरण प्रयोग उन्हें अलग गुणसूत्रों के जीनों से अलग नहीं बता सकता। उन्हें एक ही गुणसूत्र पर होना बीच के किसी चिह्नक से हर एक को जोड़कर दिखाया जाता है। (100 पूर्ण पुनर्संयोजन मान लेता है, जिसका अर्थ होता कि कोई भी जनकीय संयोजन बचा ही नहीं।)",
+        mr: "100/2 = 50, कारण पन्नास टक्क्यांची पुनर्संयोजी वारंवारता तीच आहे जी असहलग्न जनुके देतात. परिणाम या पद्धतीची खरी मर्यादा आहे: एका लांब गुणसूत्राच्या विरुद्ध टोकांची दोन जनुके इतक्या वेळा पुनर्संयोजित होतात की ती असहलग्न दिसावीत, आणि एकटा कोणताही संकरण प्रयोग त्यांना वेगळ्या गुणसूत्रांच्या जनुकांपासून वेगळे सांगू शकत नाही. ती एकाच गुणसूत्रावर आहेत हे मधल्या एखाद्या खुणेशी प्रत्येकाला जोडून दाखवले जाते. (100 पूर्ण पुनर्संयोजन गृहीत धरते, ज्याचा अर्थ कोणतेही जनकीय संयोजन उरलेच नाही असा होईल.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "In a Hardy–Weinberg population, p = 0.6 and q = 0.4. What proportion is heterozygous?",
+        hi: "किसी हार्डी-वाइनबर्ग आबादी में p = 0.6 और q = 0.4. कितना अनुपात विषमयुग्मजी है?",
+        mr: "एका हार्डी-वाइनबर्ग लोकसंख्येत p = 0.6 आणि q = 0.4. किती अंश विषमयुग्मजी आहे?",
+      },
+      answer: 0.48,
+      wrong: [0.24, 0.36, 1],
+      checkExpr: "2*0.24",
+      solution: {
+        en: "The heterozygote can be formed two ways — the first allele from the mother and the second from the father, or the reverse — so the probability is doubled: 2 × 0.24 = 0.48. That factor of two is the only part of p² + 2pq + q² that is not simply a probability multiplied by itself, and forgetting it is the commonest error in these calculations. Check the total: 0.36 + 0.48 + 0.16 = 1, as it must be. (0.24 omits the doubling.)",
+        hi: "विषमयुग्मजी दो तरह बन सकता है — पहला एलील माँ से और दूसरा पिता से, या उलटा — अतः प्रायिकता दुगुनी हो जाती है: 2 × 0.24 = 0.48. दो का वह गुणक p² + 2pq + q² का एकमात्र हिस्सा है जो केवल किसी प्रायिकता का ख़ुद से गुणा नहीं है, और उसे भूल जाना इन गणनाओं की सबसे आम भूल है। जोड़ जाँचो: 0.36 + 0.48 + 0.16 = 1, जैसा होना ही चाहिए। (0.24 दुगुना करना छोड़ देता है।)",
+        mr: "विषमयुग्मजी दोन प्रकारे बनू शकतो — पहिले अ‍ॅलिल आईकडून आणि दुसरे वडिलांकडून, वा उलट — म्हणून संभाव्यता दुप्पट होते: 2 × 0.24 = 0.48. दोनचा तो गुणक p² + 2pq + q² चा एकमेव भाग आहे जो केवळ एखाद्या संभाव्यतेचा स्वतःशी गुणाकार नाही, आणि तो विसरणे या गणनांतील सर्वांत सामान्य चूक आहे. बेरीज तपासा: 0.36 + 0.48 + 0.16 = 1, जसे असावेच लागते. (0.24 दुप्पट करणे वगळते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "In a population of 200, forty individuals show a recessive phenotype. What percentage is that?",
+        hi: "200 की आबादी में चालीस व्यक्ति अप्रभावी लक्षणप्ररूप दिखाते हैं। यह कितने प्रतिशत है?",
+        mr: "200 च्या लोकसंख्येत चाळीस व्यक्ती अप्रभावी लक्षणप्ररूप दाखवतात. हे किती टक्के आहे?",
+      },
+      answer: 20,
+      wrong: [40, 5, 4],
+      checkExpr: "40/2",
+      solution: {
+        en: "40/2 = 20 per cent, that is q² = 0.20. The recessive class is the one worth counting because it is the only phenotype whose genotype is certain: everyone showing it must carry two copies. From q² the allele frequency q follows as its square root, and p as 1 − q, so a single visible count reconstructs the whole genetic composition of the population — which is the practical reason the equilibrium is worth stating. (40 quotes the count rather than the percentage.)",
+        hi: "40/2 = 20 प्रतिशत, यानी q² = 0.20. अप्रभावी वर्ग ही गिनने लायक़ है क्योंकि वही एकमात्र लक्षणप्ररूप है जिसका जीनप्ररूप निश्चित है: जो भी उसे दिखाता है उसे दो प्रतियाँ ढोनी ही होंगी। q² से एलील बारंबारता q उसके वर्गमूल के रूप में निकलती है, और p 1 − q के रूप में, अतः एक ही दृश्य गिनती से आबादी की पूरी आनुवंशिक संघटना पुनर्निर्मित हो जाती है — और साम्य को बताने का व्यावहारिक कारण यही है। (40 प्रतिशत के बजाय गिनती बता देता है।)",
+        mr: "40/2 = 20 टक्के, म्हणजे q² = 0.20. अप्रभावी वर्गच मोजण्याजोगा आहे कारण तोच एकमेव लक्षणप्ररूप आहे ज्याचा जनुकप्ररूप निश्चित आहे: जो कोणी तो दाखवतो त्याला दोन प्रती वाहाव्याच लागतील. q² मधून अ‍ॅलिल वारंवारता q तिच्या वर्गमुळाच्या रूपात निघते, आणि p 1 − q च्या रूपात, म्हणून एकाच दृश्य मोजणीतून लोकसंख्येची अख्खी आनुवंशिक संघटना पुनर्रचित होते — आणि समतोल सांगण्याचे व्यावहारिक कारण हेच आहे. (40 टक्केवारीऐवजी मोजणी सांगते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "The frequency of the recessive homozygote is 0.09. What is the frequency of the recessive allele?",
+        hi: "अप्रभावी समयुग्मजी की बारंबारता 0.09 है। अप्रभावी एलील की बारंबारता क्या है?",
+        mr: "अप्रभावी समयुग्मजीची वारंवारता 0.09 आहे. अप्रभावी अ‍ॅलिलची वारंवारता किती?",
+      },
+      answer: 0.3,
+      wrong: [0.09, 0.0081, 0.45],
+      checkExpr: "0.9/3",
+      solution: {
+        en: "q² = 0.09, so q is its square root: 0.9/3 = 0.3. The direction of the inference is the point. Genotypes are what you can count in a field or a clinic; allele frequencies are what population genetics is about but cannot be observed directly. Taking the square root of the recessive class is the standard route from the visible to the underlying quantity, and it works only for the recessive class, because that is the only phenotype whose genotype is unambiguous. (0.09 mistakes the genotype frequency for the allele frequency.)",
+        hi: "q² = 0.09, अतः q उसका वर्गमूल है: 0.9/3 = 0.3. अनुमान की दिशा ही मर्म है। जीनप्ररूप वही हैं जिन्हें खेत या क्लिनिक में गिना जा सकता है; एलील बारंबारताएँ वे हैं जिनके बारे में समष्टि आनुवंशिकी है पर जिन्हें सीधे देखा नहीं जा सकता। अप्रभावी वर्ग का वर्गमूल लेना दृश्य से नीचे की राशि तक जाने का मानक रास्ता है, और वह केवल अप्रभावी वर्ग के लिए चलता है, क्योंकि वही एकमात्र लक्षणप्ररूप है जिसका जीनप्ररूप असंदिग्ध है। (0.09 जीनप्ररूप बारंबारता को एलील बारंबारता समझ लेता है।)",
+        mr: "q² = 0.09, म्हणून q हे तिचे वर्गमूळ आहे: 0.9/3 = 0.3. अनुमानाची दिशाच गाभा आहे. जनुकप्ररूप तेच आहेत जे शेतात वा दवाखान्यात मोजता येतात; अ‍ॅलिल वारंवारता त्या आहेत ज्यांच्याबद्दल समष्टी आनुवंशिकी आहे पण ज्या थेट पाहता येत नाहीत. अप्रभावी वर्गाचे वर्गमूळ घेणे हा दृश्यापासून खालच्या राशीपर्यंत जाण्याचा प्रमाणित मार्ग आहे, आणि तो केवळ अप्रभावी वर्गासाठी चालतो, कारण तोच एकमेव लक्षणप्ररूप आहे ज्याचा जनुकप्ररूप संदिग्ध नाही. (0.09 जनुकप्ररूप वारंवारतेला अ‍ॅलिल वारंवारता समजते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "How many alleles of a given gene does a diploid population of 50 individuals contain in total?",
+        hi: "50 व्यक्तियों की द्विगुणित आबादी में किसी दिए गए जीन के कुल कितने एलील हैं?",
+        mr: "50 व्यक्तींच्या द्विगुणित लोकसंख्येत एखाद्या दिलेल्या जनुकाची एकूण किती अ‍ॅलिले आहेत?",
+      },
+      answer: 100,
+      wrong: [50, 25, 200],
+      checkExpr: "50*2",
+      solution: {
+        en: "Each individual carries two copies, so 50 × 2 = 100 alleles in the gene pool. That number matters for more than bookkeeping: it is the sample size from which the next generation is drawn, and a small pool means large sampling error. In a population this size an allele can drift to fixation or disappear by chance alone, with no selective advantage involved — which is why the Hardy–Weinberg conditions include 'a large population' and why genetic drift is a serious force in small isolated groups and negligible in large ones. (50 counts individuals rather than alleles.)",
+        hi: "हर व्यक्ति दो प्रतियाँ ढोता है, अतः जीन कोश में 50 × 2 = 100 एलील। वह संख्या केवल हिसाब-किताब से अधिक के लिए मायने रखती है: वही वह नमूना आकार है जिससे अगली पीढ़ी खींची जाती है, और छोटे कोश का अर्थ बड़ी प्रतिचयन त्रुटि है। इस आकार की आबादी में कोई एलील बिना किसी चयनी लाभ के केवल संयोग से स्थिरीकरण तक बह सकता है या ग़ायब हो सकता है — इसीलिए हार्डी-वाइनबर्ग की शर्तों में 'बड़ी आबादी' शामिल है और इसीलिए आनुवंशिक विचलन छोटे अलग-थलग समूहों में गंभीर बल है और बड़े समूहों में नगण्य। (50 एलील के बजाय व्यक्ति गिनता है।)",
+        mr: "प्रत्येक व्यक्ती दोन प्रती वाहते, म्हणून जनुक साठ्यात 50 × 2 = 100 अ‍ॅलिले. ती संख्या केवळ हिशेबाहून अधिकासाठी महत्त्वाची आहे: तोच तो नमुना आकार आहे ज्यातून पुढची पिढी काढली जाते, आणि लहान साठ्याचा अर्थ मोठी नमुना त्रुटी. या आकाराच्या लोकसंख्येत एखादे अ‍ॅलिल कोणत्याही निवडक फायद्याविना केवळ योगायोगाने स्थिरीकरणापर्यंत वाहू शकते वा नाहीसे होऊ शकते — म्हणूनच हार्डी-वाइनबर्गच्या अटींत 'मोठी लोकसंख्या' समाविष्ट आहे आणि म्हणूनच आनुवंशिक विचलन लहान एकाकी गटांत गंभीर बल आहे आणि मोठ्यांत नगण्य. (50 अ‍ॅलिलांऐवजी व्यक्ती मोजते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "In a Hardy–Weinberg population q = 0.2. What proportion of the population carries at least one copy of that allele?",
+        hi: "किसी हार्डी-वाइनबर्ग आबादी में q = 0.2. आबादी का कितना अनुपात उस एलील की कम से कम एक प्रति ढोता है?",
+        mr: "एका हार्डी-वाइनबर्ग लोकसंख्येत q = 0.2. लोकसंख्येचा किती अंश त्या अ‍ॅलिलची किमान एक प्रत वाहतो?",
+      },
+      answer: 0.36,
+      wrong: [0.04, 0.32, 0.2],
+      checkExpr: "1-0.64",
+      solution: {
+        en: "The ones carrying no copy are the homozygotes for the other allele, p² = 0.8 × 0.8 = 0.64, so the rest is 1 − 0.64 = 0.36. Working through the complement is quicker than adding 2pq + q², though both give the same answer. The figure is worth pausing on. Only q² = 0.04 — four per cent — actually show the recessive character, but nine times as many carry the allele hidden in heterozygotes. That is why a rare recessive condition cannot be eliminated by preventing affected people from reproducing: almost all copies of the allele are in unaffected carriers, invisible to any such selection. (0.04 counts only those showing the character.)",
+        hi: "जो कोई प्रति नहीं ढोते वे दूसरे एलील के समयुग्मजी हैं, p² = 0.8 × 0.8 = 0.64, अतः बाक़ी 1 − 0.64 = 0.36 है। पूरक से काम करना 2pq + q² जोड़ने से जल्दी है, यद्यपि दोनों वही उत्तर देते हैं। इस आँकड़े पर रुकना चाहिए। केवल q² = 0.04 — चार प्रतिशत — वस्तुतः अप्रभावी लक्षण दिखाते हैं, पर उससे नौ गुने उस एलील को विषमयुग्मजियों में छिपा ढोते हैं। इसीलिए किसी दुर्लभ अप्रभावी स्थिति को प्रभावित लोगों के जनन रोककर मिटाया नहीं जा सकता: एलील की लगभग सारी प्रतियाँ अप्रभावित वाहकों में हैं, ऐसे किसी चयन को अदृश्य। (0.04 केवल उन्हें गिनता है जो लक्षण दिखाते हैं।)",
+        mr: "जे कोणतीही प्रत वाहत नाहीत ते दुसऱ्या अ‍ॅलिलचे समयुग्मजी आहेत, p² = 0.8 × 0.8 = 0.64, म्हणून बाकीचे 1 − 0.64 = 0.36 आहे. पूरकातून काम करणे 2pq + q² जोडण्याहून जलद आहे, जरी दोन्ही तेच उत्तर देतात. या आकड्यावर थांबण्याजोगे आहे. केवळ q² = 0.04 — चार टक्के — प्रत्यक्षात अप्रभावी लक्षण दाखवतात, पण त्याहून नऊपट ते अ‍ॅलिल विषमयुग्मजींत लपवून वाहतात. म्हणूनच एखादी दुर्मीळ अप्रभावी स्थिती प्रभावित लोकांचे प्रजनन थांबवून मिटवता येत नाही: अ‍ॅलिलच्या जवळपास सर्व प्रती अप्रभावित वाहकांत आहेत, अशा कोणत्याही निवडीला अदृश्य. (0.04 केवळ त्यांना मोजते जे लक्षण दाखवतात.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "In one generation the dark form of a moth rises from 10 per cent to 90 per cent of the population. By how many percentage points has it risen?",
+        hi: "एक पीढ़ी में किसी पतंगे का काला रूप आबादी के 10 प्रतिशत से 90 प्रतिशत तक बढ़ जाता है। वह कितने प्रतिशत बिंदुओं से बढ़ा?",
+        mr: "एका पिढीत एका पतंगाचे काळे रूप लोकसंख्येच्या 10 टक्क्यांवरून 90 टक्क्यांपर्यंत वाढते. ते किती टक्के बिंदूंनी वाढले?",
+      },
+      answer: 80,
+      wrong: [100, 9, 8],
+      checkExpr: "90-10",
+      solution: {
+        en: "90 − 10 = 80 percentage points. The subtraction is trivial and what the number licenses is not. A change this large in a single generation cannot be caused by mutation, whose rates are of the order of one in a hundred thousand per gene per generation and which could not shift a frequency by more than a fraction of a per cent in that time. It cannot be drift either, in a population of any size, since drift is undirected and would as readily go the other way. Migration would require a large influx of dark moths from somewhere, which is a claim about a source that can be checked. That leaves selection, and the peppered moth case supplies the confirming detail: the frequency rose where soot darkened the tree trunks and pale moths became conspicuous to birds, and it fell again within decades of clean-air legislation. A cause that tracks its supposed agent both up and down is doing more than correlating with it. Notice also what did not happen — the dark allele was present and rare all along, so nothing new had to arise; selection only altered which existing variant was common. (100 adds the two figures.)",
+        hi: "90 − 10 = 80 प्रतिशत बिंदु। घटाना मामूली है और वह संख्या जिसकी इजाज़त देती है वह नहीं। एक ही पीढ़ी में इतना बड़ा बदलाव उत्परिवर्तन से नहीं हो सकता, जिसकी दरें प्रति जीन प्रति पीढ़ी एक लाख में एक की कोटि की हैं और जो उस समय में किसी बारंबारता को एक प्रतिशत के अंश से अधिक खिसका ही नहीं सकता। वह विचलन भी नहीं हो सकता, किसी भी आकार की आबादी में, चूँकि विचलन दिशाहीन है और उतनी ही आसानी से उलटी ओर जाता। प्रवास के लिए कहीं से काले पतंगों की बड़ी आमद चाहिए होती, और वह किसी स्रोत के बारे में ऐसा दावा है जिसे जाँचा जा सकता है। बचता है चयन, और चितकबरे पतंगे का मामला पुष्टि करता ब्योरा देता है: बारंबारता वहाँ बढ़ी जहाँ कालिख ने पेड़ों के तने काले किए और पीले पतंगे पक्षियों को नुमायाँ हो गए, और स्वच्छ-वायु क़ानून के कुछ दशकों में वह फिर गिर गई। जो कारण अपने कथित कारक के साथ ऊपर भी और नीचे भी चलता है वह उससे केवल सहसंबंधित होने से अधिक कर रहा है। यह भी ध्यान दो कि क्या नहीं हुआ — काला एलील आद्योपांत मौजूद और दुर्लभ था, अतः कुछ नया उठने की ज़रूरत ही नहीं पड़ी; चयन ने केवल यह बदला कि मौजूद रूपों में से कौन-सा आम है। (100 दोनों आँकड़े जोड़ देता है।)",
+        mr: "90 − 10 = 80 टक्के बिंदू. वजाबाकी क्षुल्लक आहे आणि ती संख्या ज्याची परवानगी देते ते नाही. एकाच पिढीत इतका मोठा बदल उत्परिवर्तनाने होऊ शकत नाही, ज्याचे दर प्रति जनुक प्रति पिढी लाखात एकच्या कोटीचे आहेत आणि जे त्या काळात कोणतीही वारंवारता एक टक्क्याच्या अंशाहून अधिक सरकवूच शकत नाही. ते विचलनही असू शकत नाही, कोणत्याही आकाराच्या लोकसंख्येत, कारण विचलन दिशाहीन आहे आणि तितक्याच सहजतेने उलट बाजूला गेले असते. स्थलांतरासाठी कुठूनतरी काळ्या पतंगांची मोठी आवक लागली असती, आणि तो एखाद्या स्रोताबद्दलचा असा दावा आहे जो तपासता येतो. उरते निवड, आणि ठिपकेदार पतंगाचे प्रकरण खात्री देणारा तपशील पुरवते: वारंवारता तिथे वाढली जिथे काजळीने झाडांची खोडे काळी केली आणि फिकट पतंग पक्ष्यांना ठळक झाले, आणि स्वच्छ-हवा कायद्याच्या काही दशकांत ती पुन्हा घसरली. जे कारण आपल्या कथित घटकासोबत वरही आणि खालीही चालते ते त्याच्याशी केवळ सहसंबंधित असण्याहून अधिक करत आहे. हेही लक्षात घ्या की काय घडले नाही — काळे अ‍ॅलिल सर्वकाळ उपस्थित आणि दुर्मीळ होते, म्हणून काहीही नवे उद्भवण्याची गरजच पडली नाही; निवडीने केवळ हे बदलले की उपस्थित रूपांपैकी कोणते सामान्य आहे. (100 दोन्ही आकडे जोडते.)",
       },
     },
   ],

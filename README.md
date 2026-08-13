@@ -2514,8 +2514,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 365
-  chapters / 6,588 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 368
+  chapters / 6,652 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -3017,6 +3017,38 @@ navigation" means the actual list rather than one somebody maintained by hand.
   positions, chemically similar neighbours, and wobble — the same reason a
   checksum is added to an account number. Verify clean, warnings steady at
   34, suite green: 87 files, 1485 tests.
+
+  **Three more Biology chapters** — 64 questions: Evolution, Human Health
+  and Disease, and Microbes in Human Welfare. Only Evolution takes numerics
+  (Hardy–Weinberg is genuine counting); the other two get the empty-entry
+  treatment the Class 11 rule prescribes. The Evolution L5 answers the
+  obvious objection to Hardy–Weinberg — that no population satisfies its
+  conditions — by showing the five conditions are not technicalities but
+  an exhaustive list of the ways a population can evolve, so the principle
+  says "in the absence of every cause of evolution, none occurs", and its
+  usefulness is entirely as a null hypothesis. Different departures leave
+  different signatures, which is how the sickle-cell heterozygote advantage
+  was recognised. The L6 asks why a bat's wing groups with a whale's
+  flipper rather than a bird's wing, and lands on the sharp version: SELECTION
+  ACTS ON FUNCTION, so function is precisely the property unrelated
+  lineages converge on — the underlying plan is not what selection is
+  optimising, which is why it survives as a record of descent (and why
+  molecular phylogenetics leans on near-neutral sequences). Human Health's
+  L5 gets a vaccine's years of protection and an antivenom's few weeks out
+  of one question — who made the antibodies — and the L6 explains why HIV's
+  harm is so out of proportion to its destruction: it takes out the
+  coordinator, so a small targeted loss disables everything downstream,
+  like removing a switchboard without damaging a telephone. Microbes' L5
+  is selective toxicity as a *predictor* rather than a description: rank
+  the target by how like us it is, and the difficulty of drug design falls
+  out in order — bacteria (no cell wall in us), fungi (eukaryotes, few
+  differences), cancer (our own cells, almost none). The L6 takes the Bt
+  toxin's specificity apart into two yes-or-no filters — an alkaline gut to
+  activate the protoxin, then a receptor to bind it — and draws the
+  consequence for how such a protein should be assessed: ask whether the
+  activating conditions exist in the species of concern, rather than
+  feeding escalating doses and looking for an effect. Verify clean,
+  warnings steady at 34, suite green: 87 files, 1485 tests.
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)
