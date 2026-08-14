@@ -1,0 +1,513 @@
+{
+  "slug": "maths-12-application-of-derivatives",
+  "subject": "MATHS",
+  "classLevel": 12,
+  "chapter": "Chapter 6 — Application of Derivatives",
+  "name": "Application of Derivatives",
+  "summary": "What a slope of zero does and does not establish: why solving f'(x) = 0 produces candidates rather than answers, why the second-derivative test goes silent on precisely the case it was invented to settle, why a greatest value can sit at an endpoint where nothing is stationary at all, and why an interval missing its brackets may have no greatest value to find.",
+  "position": 6,
+  "translations": {
+    "hi": {
+      "name": "अवकलजों के अनुप्रयोग",
+      "summary": "शून्य ढाल क्या सिद्ध करती है और क्या नहीं: f'(x) = 0 हल करने से उत्तर नहीं उम्मीदवार क्यों मिलते हैं, द्वितीय-अवकलज परीक्षण ठीक उसी मामले पर मौन क्यों हो जाता है जिसे तय करने को वह गढ़ा गया था, अधिकतम मान ऐसे सिरे पर क्यों बैठ सकता है जहाँ कुछ भी स्थिर नहीं, और कोष्ठक खोने वाले अंतराल में ढूँढ़ने को कोई अधिकतम क्यों न हो।"
+    },
+    "mr": {
+      "name": "अवकलजांचे उपयोजन",
+      "summary": "शून्य उतार काय सिद्ध करतो आणि काय नाही: f'(x) = 0 सोडवल्याने उत्तरे नव्हे तर उमेदवार का मिळतात, द्वितीय-अवकलज चाचणी नेमक्या त्याच प्रसंगावर मौन का होते जो ठरवण्यासाठी ती घडवली गेली, कमाल मूल्य अशा टोकावर का बसू शकते जिथे काहीच स्थिर नाही, आणि कंस हरवलेल्या अंतरालात शोधण्यासारखी कमाल का नसेल."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "The side of a square increases at 3 cm per second. At what rate is the perimeter increasing, in cm per second?",
+      "choices": [
+        "12",
+        "6",
+        "9",
+        "3"
+      ],
+      "answerIndex": 0,
+      "solution": "The perimeter is 4s, so its rate is 4 times the rate of s: 4 × 3 = 12. The whole of related rates is in that one line — differentiate the relationship between the quantities, and the relationship between their rates comes out. Note that this answer does not depend on how big the square currently is, which is a hint that perimeter is linear in the side; area will not be so obliging. (3 gives the side's own rate.)",
+      "checkExpr": "4*3",
+      "translations": {
+        "hi": {
+          "stem": "किसी वर्ग की भुजा 3 सेमी प्रति सेकंड की दर से बढ़ती है। परिमाप किस दर से बढ़ रहा है, सेमी प्रति सेकंड में?",
+          "choices": [
+            "12",
+            "6",
+            "9",
+            "3"
+          ],
+          "solution": "परिमाप 4s है, अतः उसकी दर s की दर की 4 गुना है: 4 × 3 = 12. संबंधित दरों की पूरी बात उसी एक पंक्ति में है — राशियों के बीच के संबंध का अवकलन करो, और उनकी दरों के बीच का संबंध निकल आता है। ध्यान दो कि यह उत्तर इस पर निर्भर नहीं कि वर्ग इस समय कितना बड़ा है, जो संकेत है कि परिमाप भुजा में रैखिक है; क्षेत्रफल इतना मेहरबान नहीं होगा। (3 भुजा की अपनी दर देता है।)"
+        },
+        "mr": {
+          "stem": "एखाद्या चौरसाची बाजू दर सेकंदाला 3 सेमी वाढते. परिमिती किती दराने वाढत आहे, सेमी प्रति सेकंदात?",
+          "choices": [
+            "12",
+            "6",
+            "9",
+            "3"
+          ],
+          "solution": "परिमिती 4s आहे, म्हणून तिचा दर s च्या दराच्या 4 पट आहे: 4 × 3 = 12. संबंधित दरांची अख्खी गोष्ट त्याच एका ओळीत आहे — राशींमधील संबंधाचे अवकलन करा, आणि त्यांच्या दरांमधील संबंध बाहेर येतो. लक्षात घ्या की हे उत्तर चौरस सध्या किती मोठा आहे यावर अवलंबून नाही, जो संकेत आहे की परिमिती बाजूत रैखिक आहे; क्षेत्रफळ इतके मेहेरबान असणार नाही. (3 बाजूचा स्वतःचा दर देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "For f(x) = x² − 4x + 7, at what value of x does f'(x) equal zero?",
+      "choices": [
+        "2",
+        "7",
+        "0",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "f'(x) = 2x − 4, and 2x − 4 = 0 gives x = 4/2 = 2. Such a point is called critical or stationary, and both words are chosen carefully: the function has stopped rising and not yet started falling, so this is where a turning point can be. Can be, not must be — that qualification is the whole business of the next few questions. (4 reads the coefficient without dividing.)",
+      "checkExpr": "4/2",
+      "translations": {
+        "hi": {
+          "stem": "f(x) = x² − 4x + 7 के लिए, x के किस मान पर f'(x) शून्य है?",
+          "choices": [
+            "2",
+            "7",
+            "0",
+            "4"
+          ],
+          "solution": "f'(x) = 2x − 4, और 2x − 4 = 0 से x = 4/2 = 2. ऐसे बिंदु को क्रांतिक या स्थिर कहते हैं, और दोनों शब्द सोच-समझकर चुने गए हैं: फलन बढ़ना बंद कर चुका है और घटना शुरू नहीं किया, अतः यहीं कोई मोड़-बिंदु हो सकता है। हो सकता है, होना ही चाहिए नहीं — यही शर्त अगले कुछ प्रश्नों का पूरा कारोबार है। (4 गुणांक बिना भाग दिए पढ़ लेता है।)"
+        },
+        "mr": {
+          "stem": "f(x) = x² − 4x + 7 साठी, x च्या कोणत्या मूल्यावर f'(x) शून्य आहे?",
+          "choices": [
+            "2",
+            "7",
+            "0",
+            "4"
+          ],
+          "solution": "f'(x) = 2x − 4, आणि 2x − 4 = 0 वरून x = 4/2 = 2. अशा बिंदूला क्रांतिक किंवा स्थिर म्हणतात, आणि दोन्ही शब्द काळजीपूर्वक निवडलेले आहेत: फलनाने वाढणे थांबवले आहे आणि घटणे सुरू केलेले नाही, म्हणून इथेच वळणबिंदू असू शकतो. असू शकतो, असलाच पाहिजे नाही — हीच अट पुढील काही प्रश्नांचा अख्खा व्यवसाय आहे. (4 गुणांक भागाकार न करता वाचते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the slope of the tangent to y = x² at the point (3, 9)?",
+      "choices": [
+        "3",
+        "6",
+        "9",
+        "2"
+      ],
+      "answerIndex": 1,
+      "solution": "dy/dx = 2x, and at x = 3 that is 6. Notice that the y-coordinate played no part: the slope depends on where along the curve you are, which x alone settles, and 9 is the answer of somebody who reached for the nearest available number. The derivative is a function of x, and feeding it anything else is a category mistake worth catching early.",
+      "checkExpr": "2*3",
+      "translations": {
+        "hi": {
+          "stem": "y = x² की स्पर्शरेखा की ढाल बिंदु (3, 9) पर कितनी है?",
+          "choices": [
+            "3",
+            "6",
+            "9",
+            "2"
+          ],
+          "solution": "dy/dx = 2x, और x = 3 पर वह 6 है। ध्यान दो कि y-निर्देशांक का कोई हाथ नहीं था: ढाल इस पर निर्भर है कि तुम वक्र पर कहाँ हो, जिसे अकेला x तय करता है, और 9 उसका उत्तर है जिसने पास पड़ी संख्या उठा ली। अवकलज x का फलन है, और उसमें कुछ और डालना कोटि की भूल है जिसे जल्दी पकड़ना ठीक है।"
+        },
+        "mr": {
+          "stem": "y = x² च्या स्पर्शरेषेचा उतार (3, 9) या बिंदूवर किती?",
+          "choices": [
+            "3",
+            "6",
+            "9",
+            "2"
+          ],
+          "solution": "dy/dx = 2x, आणि x = 3 वर ते 6 आहे. लक्षात घ्या की y-निर्देशांकाचा काहीच हात नव्हता: उतार तुम्ही वक्रावर कुठे आहात यावर अवलंबून आहे, जे एकटा x ठरवतो, आणि 9 हे त्याचे उत्तर आहे ज्याने जवळ पडलेली संख्या उचलली. अवकलज हा x चा फलन आहे, आणि त्यात दुसरे काही घालणे ही कोटीची चूक आहे जी लवकर पकडणे बरे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "f(x) = x³ − 3x² + 4. At how many values of x is f'(x) = 0?",
+      "choices": [
+        "1",
+        "2",
+        "0",
+        "3"
+      ],
+      "answerIndex": 1,
+      "solution": "f'(x) = 3x² − 6x = 3x(x − 2), which vanishes at x = 0 and x = 2 — two points. A cubic's derivative is a quadratic, so it can have at most two roots, and that is the structural reason a cubic can have at most one hill and one valley. Reading the degree of the derivative before solving anything tells you how many candidates to expect, which is a cheap check on your own arithmetic later. (3 answers with the degree of f rather than the count of roots of f'.)",
+      "checkExpr": "3-1",
+      "translations": {
+        "hi": {
+          "stem": "f(x) = x³ − 3x² + 4. x के कितने मानों पर f'(x) = 0 है?",
+          "choices": [
+            "1",
+            "2",
+            "0",
+            "3"
+          ],
+          "solution": "f'(x) = 3x² − 6x = 3x(x − 2), जो x = 0 और x = 2 पर शून्य होता है — दो बिंदु। किसी घन का अवकलज द्विघात है, अतः उसके अधिक से अधिक दो मूल हो सकते हैं, और यही संरचनात्मक कारण है कि किसी घन में अधिक से अधिक एक पहाड़ी और एक घाटी हो सकती है। कुछ भी हल करने से पहले अवकलज की घात पढ़ लेना बताता है कि कितने उम्मीदवारों की आशा रखनी है, जो बाद में अपनी ही गणित पर सस्ती जाँच है। (3 f की घात से उत्तर देता है, f' के मूलों की गिनती से नहीं।)"
+        },
+        "mr": {
+          "stem": "f(x) = x³ − 3x² + 4. x च्या किती मूल्यांवर f'(x) = 0 आहे?",
+          "choices": [
+            "1",
+            "2",
+            "0",
+            "3"
+          ],
+          "solution": "f'(x) = 3x² − 6x = 3x(x − 2), जे x = 0 आणि x = 2 वर शून्य होते — दोन बिंदू. एखाद्या घनाचा अवकलज द्विघाती आहे, म्हणून त्याला जास्तीत जास्त दोन मुळे असू शकतात, आणि हेच संरचनात्मक कारण आहे की एखाद्या घनात जास्तीत जास्त एक टेकडी आणि एक दरी असू शकते. काहीही सोडवण्याआधी अवकलजाची कोटी वाचणे सांगते की किती उमेदवारांची अपेक्षा ठेवावी, जी नंतर स्वतःच्याच गणितावरची स्वस्त तपासणी आहे. (3 f च्या कोटीने उत्तर देते, f' च्या मुळांच्या मोजणीने नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Two positive numbers add to 20. What is their greatest possible product?",
+      "choices": [
+        "20",
+        "99",
+        "100",
+        "96"
+      ],
+      "answerIndex": 2,
+      "solution": "Write the product as x(20 − x) = 20x − x²; its derivative 20 − 2x vanishes at x = 10, giving 10 × 10 = 100. The equal split wins, and it is worth seeing that this is not a coincidence of the number 20: for any fixed sum the product is largest when the parts are equal, which is the arithmetic-mean–geometric-mean inequality arriving by way of calculus. The nearby answer 96 comes from 8 × 12, which shows how flat the maximum is — a fifth of the way off centre costs only four per cent of the product, and that flatness is itself the practical reason optimisation problems tolerate imprecise inputs.",
+      "checkExpr": "10*10",
+      "translations": {
+        "hi": {
+          "stem": "दो धनात्मक संख्याओं का योग 20 है। उनका अधिकतम संभव गुणनफल क्या है?",
+          "choices": [
+            "20",
+            "99",
+            "100",
+            "96"
+          ],
+          "solution": "गुणनफल को x(20 − x) = 20x − x² लिखो; उसका अवकलज 20 − 2x, x = 10 पर शून्य होता है, जिससे 10 × 10 = 100 मिलता है। बराबर बँटवारा जीतता है, और यह देखना ज़रूरी है कि यह संख्या 20 का संयोग नहीं: किसी भी नियत योग के लिए गुणनफल तब सबसे बड़ा होता है जब भाग बराबर हों, जो कलन के रास्ते आती समांतर-माध्य–गुणोत्तर-माध्य असमिका है। पास का उत्तर 96, 8 × 12 से आता है, जो दिखाता है कि अधिकतम कितना चपटा है — केंद्र से पाँचवाँ हिस्सा हटने पर गुणनफल का केवल चार प्रतिशत जाता है, और यही चपटापन वह व्यावहारिक कारण है कि इष्टतमीकरण की समस्याएँ अशुद्ध निवेश सह लेती हैं।"
+        },
+        "mr": {
+          "stem": "दोन धन संख्यांची बेरीज 20 आहे. त्यांचा जास्तीत जास्त संभाव्य गुणाकार किती?",
+          "choices": [
+            "20",
+            "99",
+            "100",
+            "96"
+          ],
+          "solution": "गुणाकार x(20 − x) = 20x − x² असा लिहा; त्याचा अवकलज 20 − 2x हा x = 10 वर शून्य होतो, ज्यातून 10 × 10 = 100 मिळते. समान वाटणी जिंकते, आणि हे पाहणे आवश्यक आहे की हा संख्या 20 चा योगायोग नाही: कोणत्याही निश्चित बेरजेसाठी गुणाकार तेव्हा सर्वांत मोठा असतो जेव्हा भाग समान असतात, जी कलनाच्या मार्गाने येणारी समांतर-मध्य–गुणोत्तर-मध्य असमानता आहे. जवळचे उत्तर 96 हे 8 × 12 मधून येते, जे दाखवते की कमाल किती सपाट आहे — केंद्रापासून पाचवा हिस्सा सरकल्यास गुणाकाराचे केवळ चार टक्के जाते, आणि हाच सपाटपणा ते व्यावहारिक कारण आहे की इष्टतमीकरणाच्या समस्या अचूक नसलेली निविष्टे सहन करतात."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "f(x) = x³ is increasing everywhere, yet f'(0) = 0. At how many points does f have a local maximum or minimum?",
+      "choices": [
+        "2",
+        "1",
+        "3",
+        "0"
+      ],
+      "answerIndex": 3,
+      "solution": "None. The derivative 3x² is zero at the origin but positive on both sides of it, so the curve pauses without turning — it flattens, then carries on climbing. This is the counterexample that keeps the chapter honest: a zero derivative is a NECESSARY condition for an interior maximum or minimum and not a sufficient one, so solving f'(x) = 0 produces candidates and never conclusions. A point like this is called a point of inflection, and the practical consequence is that every critical point must afterwards be classified by some test, because the equation that found it cannot tell you what you found. (1 assumes a stationary point must be a turning point.)",
+      "checkExpr": "1-1",
+      "translations": {
+        "hi": {
+          "stem": "f(x) = x³ हर जगह वर्धमान है, फिर भी f'(0) = 0. f के कितने बिंदुओं पर स्थानीय उच्चिष्ठ या निम्निष्ठ है?",
+          "choices": [
+            "2",
+            "1",
+            "3",
+            "0"
+          ],
+          "solution": "कोई नहीं। अवकलज 3x² मूलबिंदु पर शून्य है पर उसके दोनों ओर धनात्मक, अतः वक्र मुड़े बिना ठहरता है — चपटा होता है, फिर चढ़ता चला जाता है। यही प्रतिउदाहरण अध्याय को ईमानदार रखता है: शून्य अवकलज किसी भीतरी उच्चिष्ठ या निम्निष्ठ के लिए आवश्यक शर्त है, पर्याप्त नहीं, अतः f'(x) = 0 हल करने से उम्मीदवार मिलते हैं, निष्कर्ष कभी नहीं। ऐसे बिंदु को नति-परिवर्तन बिंदु कहते हैं, और व्यावहारिक परिणाम यह है कि हर क्रांतिक बिंदु को बाद में किसी परीक्षण से वर्गीकृत करना ही होगा, क्योंकि जिस समीकरण ने उसे ढूँढ़ा वह बता नहीं सकता कि तुमने क्या ढूँढ़ा। (1 मान लेता है कि स्थिर बिंदु मोड़-बिंदु होना ही चाहिए।)"
+        },
+        "mr": {
+          "stem": "f(x) = x³ सर्वत्र वर्धमान आहे, तरीही f'(0) = 0. f ला किती बिंदूंवर स्थानिक कमाल किंवा किमान आहे?",
+          "choices": [
+            "2",
+            "1",
+            "3",
+            "0"
+          ],
+          "solution": "एकही नाही. अवकलज 3x² आदिबिंदूवर शून्य आहे पण त्याच्या दोन्ही बाजूंना धन, म्हणून वक्र न वळता थांबतो — सपाट होतो, मग चढतच राहतो. हेच प्रतिउदाहरण अध्यायाला प्रामाणिक ठेवते: शून्य अवकलज ही आंतरिक कमाल वा किमानसाठी आवश्यक अट आहे, पुरेशी नाही, म्हणून f'(x) = 0 सोडवल्याने उमेदवार मिळतात, निष्कर्ष कधीच नाही. अशा बिंदूला नति-परिवर्तन बिंदू म्हणतात, आणि व्यावहारिक परिणाम हा की प्रत्येक क्रांतिक बिंदू नंतर कोणत्यातरी चाचणीने वर्गीकृत करावाच लागतो, कारण ज्या समीकरणाने तो शोधला ते सांगू शकत नाही की तुम्ही काय शोधले. (1 गृहीत धरते की स्थिर बिंदू वळणबिंदूच असला पाहिजे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A ladder 5 m long leans on a wall. Its foot slides out at 2 m/s when the foot is 3 m from the wall. At what speed, in m/s, is the top sliding down?",
+      "choices": [
+        "1.5",
+        "2",
+        "3",
+        "0.75"
+      ],
+      "answerIndex": 0,
+      "solution": "With x² + y² = 25, differentiating gives 2x(dx/dt) + 2y(dy/dt) = 0, so dy/dt = −x(dx/dt)/y. At x = 3 the height y is 4, and the speed is 3 × 2 / 4 = 1.5 m/s downward. What is worth noticing is that the answer depends on WHERE the ladder is, unlike the square's perimeter earlier — because the relationship here is not linear. Push the position towards x = 5 and y goes to zero, and the formula sends the top's speed to infinity: as the ladder approaches flat, an ordinary push at the bottom produces an unbounded fall at the top. That is a real prediction of the model and also the point at which the model stops describing a ladder, since no real one behaves that way. Knowing where an idealisation breaks is part of using it. (2 copies the foot's speed, which would only be right if the ladder were at 45°.)",
+      "checkExpr": "3*2/4",
+      "translations": {
+        "hi": {
+          "stem": "5 मी लंबी सीढ़ी दीवार से टिकी है। जब उसका पाँव दीवार से 3 मी दूर है तब पाँव 2 मी/से से बाहर सरकता है। शीर्ष किस चाल से, मी/से में, नीचे सरक रहा है?",
+          "choices": [
+            "1.5",
+            "2",
+            "3",
+            "0.75"
+          ],
+          "solution": "x² + y² = 25 के साथ अवकलन करने पर 2x(dx/dt) + 2y(dy/dt) = 0 मिलता है, अतः dy/dt = −x(dx/dt)/y. x = 3 पर ऊँचाई y है 4, और चाल है 3 × 2 / 4 = 1.5 मी/से नीचे की ओर। ध्यान देने लायक़ यह है कि उत्तर इस पर निर्भर है कि सीढ़ी कहाँ है, पहले वाले वर्ग के परिमाप के विपरीत — क्योंकि यहाँ संबंध रैखिक नहीं। स्थिति को x = 5 की ओर धकेलो और y शून्य हो जाता है, और सूत्र शीर्ष की चाल को अनंत भेज देता है: सीढ़ी के चपटे होने के साथ, नीचे का एक साधारण धक्का ऊपर अपरिबद्ध गिरावट पैदा करता है। यह मॉडल की सच्ची भविष्यवाणी है और वही बिंदु भी जहाँ मॉडल सीढ़ी का वर्णन करना छोड़ देता है, क्योंकि कोई असली सीढ़ी ऐसा नहीं करती। कोई आदर्शीकरण कहाँ टूटता है यह जानना उसे बरतने का हिस्सा है। (2 पाँव की चाल नक़ल कर लेता है, जो केवल तब सही होती जब सीढ़ी 45° पर हो।)"
+        },
+        "mr": {
+          "stem": "5 मी लांब शिडी भिंतीला टेकली आहे. तिचा पाय भिंतीपासून 3 मी असताना पाय 2 मी/से ने बाहेर सरकतो. शिखर किती वेगाने, मी/से मध्ये, खाली सरकत आहे?",
+          "choices": [
+            "1.5",
+            "2",
+            "3",
+            "0.75"
+          ],
+          "solution": "x² + y² = 25 सह अवकलन केल्यास 2x(dx/dt) + 2y(dy/dt) = 0 मिळते, म्हणून dy/dt = −x(dx/dt)/y. x = 3 वर उंची y आहे 4, आणि वेग आहे 3 × 2 / 4 = 1.5 मी/से खालच्या दिशेने. लक्षात घेण्याजोगे हे की उत्तर शिडी कुठे आहे यावर अवलंबून आहे, आधीच्या चौरसाच्या परिमितीच्या उलट — कारण इथे संबंध रैखिक नाही. स्थिती x = 5 कडे ढकला आणि y शून्य होतो, आणि सूत्र शिखराचा वेग अनंताकडे पाठवते: शिडी सपाट होत जाताना, खालचा एक साधा धक्का वर अबद्ध पडझड निर्माण करतो. हे प्रतिरूपाचे खरे भाकीत आहे आणि तोच बिंदूही जिथे प्रतिरूप शिडीचे वर्णन करणे थांबवते, कारण कोणतीही खरी शिडी तसे करत नाही. एखादे आदर्शीकरण कुठे मोडते हे जाणणे ते वापरण्याचाच भाग आहे. (2 पायाचा वेग नक्कल करते, जो केवळ शिडी 45° वर असतानाच बरोबर असता.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "f(x) = 2x³ − 9x² + 12x. At x = 1 the second derivative is negative and at x = 2 it is positive. How many local maxima does f have?",
+      "choices": [
+        "0",
+        "2",
+        "1",
+        "3"
+      ],
+      "answerIndex": 2,
+      "solution": "One, at x = 1. The second-derivative test reads the sign directly: negative means the curve is bending downwards there, so a stationary point is the top of a hill; positive means bending upwards, so x = 2 is the bottom of a valley. Both critical points are turning points here, but they are turning points of opposite kinds, and the test is what separates them without any need to evaluate f on either side. That is the test's whole advantage — one substitution instead of two comparisons. (2 counts both critical points as maxima, which is what happens when the sign is not read.)",
+      "checkExpr": "2-1",
+      "translations": {
+        "hi": {
+          "stem": "f(x) = 2x³ − 9x² + 12x. x = 1 पर द्वितीय अवकलज ऋणात्मक है और x = 2 पर धनात्मक। f के कितने स्थानीय उच्चिष्ठ हैं?",
+          "choices": [
+            "0",
+            "2",
+            "1",
+            "3"
+          ],
+          "solution": "एक, x = 1 पर। द्वितीय-अवकलज परीक्षण चिह्न सीधे पढ़ लेता है: ऋणात्मक का अर्थ है वक्र वहाँ नीचे की ओर मुड़ रहा है, अतः स्थिर बिंदु पहाड़ी की चोटी है; धनात्मक का अर्थ है ऊपर की ओर मुड़ना, अतः x = 2 घाटी का तल है। यहाँ दोनों क्रांतिक बिंदु मोड़-बिंदु हैं, पर वे विपरीत प्रकार के मोड़-बिंदु हैं, और परीक्षण ही उन्हें अलग करता है, बिना किसी ओर f का मान निकाले। यही परीक्षण का पूरा लाभ है — दो तुलनाओं की जगह एक प्रतिस्थापन। (2 दोनों क्रांतिक बिंदुओं को उच्चिष्ठ गिन लेता है, जो चिह्न न पढ़ने पर होता है।)"
+        },
+        "mr": {
+          "stem": "f(x) = 2x³ − 9x² + 12x. x = 1 वर द्वितीय अवकलज ऋण आहे आणि x = 2 वर धन. f ला किती स्थानिक कमाल आहेत?",
+          "choices": [
+            "0",
+            "2",
+            "1",
+            "3"
+          ],
+          "solution": "एक, x = 1 वर. द्वितीय-अवकलज चाचणी चिन्ह थेट वाचते: ऋण म्हणजे वक्र तिथे खालच्या दिशेने वळत आहे, म्हणून स्थिर बिंदू टेकडीचे शिखर आहे; धन म्हणजे वरच्या दिशेने वळणे, म्हणून x = 2 दरीचा तळ आहे. इथे दोन्ही क्रांतिक बिंदू वळणबिंदू आहेत, पण ते विरुद्ध प्रकारचे वळणबिंदू आहेत, आणि चाचणीच त्यांना वेगळे करते, कोणत्याही बाजूला f चे मूल्य न काढता. हाच चाचणीचा अख्खा फायदा आहे — दोन तुलनांऐवजी एक प्रतिस्थापन. (2 दोन्ही क्रांतिक बिंदू कमाल म्हणून मोजते, जे चिन्ह न वाचल्यास होते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "f(x) = x³ on the closed interval [1, 4]. What is the greatest value f attains there?",
+      "choices": [
+        "27",
+        "1",
+        "0",
+        "64"
+      ],
+      "answerIndex": 3,
+      "solution": "4³ = 64, at the right-hand endpoint. Solving f'(x) = 3x² = 0 offers only x = 0, which is not even in the interval, so the method most students reach for first returns nothing at all here — and yet a greatest value plainly exists, because a continuous function on a closed bounded interval always attains one. The lesson is that the candidates for an absolute extremum are the critical points AND the two endpoints, and dropping the endpoints is the commonest way to get these questions wrong. An endpoint maximum has no zero derivative because the function is still climbing when the domain simply stops; the constraint, not the curve, is what ends the rise. (27 evaluates at 3 rather than at the endpoint.)",
+      "checkExpr": "4*4*4",
+      "translations": {
+        "hi": {
+          "stem": "बंद अंतराल [1, 4] पर f(x) = x³. वहाँ f द्वारा प्राप्त अधिकतम मान क्या है?",
+          "choices": [
+            "27",
+            "1",
+            "0",
+            "64"
+          ],
+          "solution": "4³ = 64, दाएँ सिरे पर। f'(x) = 3x² = 0 हल करने से केवल x = 0 मिलता है, जो अंतराल में है ही नहीं, अतः जिस विधि की ओर ज़्यादातर विद्यार्थी पहले बढ़ते हैं वह यहाँ कुछ भी नहीं लौटाती — और फिर भी अधिकतम मान स्पष्ट रूप से मौजूद है, क्योंकि बंद परिबद्ध अंतराल पर संतत फलन सदा एक प्राप्त कर लेता है। सबक़ यह है कि निरपेक्ष चरम के उम्मीदवार क्रांतिक बिंदु और दोनों सिरे हैं, और सिरों को छोड़ देना इन प्रश्नों को ग़लत करने का सबसे आम तरीक़ा है। सिरे के उच्चिष्ठ का अवकलज शून्य नहीं होता क्योंकि फलन तब भी चढ़ रहा होता है जब प्रांत बस ख़त्म हो जाता है; वक्र नहीं, अड़चन ही चढ़ाई को समाप्त करती है। (27, सिरे के बजाय 3 पर मान निकालता है।)"
+        },
+        "mr": {
+          "stem": "बंद अंतराल [1, 4] वर f(x) = x³. तिथे f ने गाठलेले कमाल मूल्य किती?",
+          "choices": [
+            "27",
+            "1",
+            "0",
+            "64"
+          ],
+          "solution": "4³ = 64, उजव्या टोकावर. f'(x) = 3x² = 0 सोडवल्याने केवळ x = 0 मिळतो, जो अंतरालात नाहीच, म्हणून बहुतेक विद्यार्थी आधी ज्या पद्धतीकडे वळतात ती इथे काहीच परत देत नाही — आणि तरीही कमाल मूल्य स्पष्टपणे अस्तित्वात आहे, कारण बंद बद्ध अंतरालावरील संतत फलन नेहमी एक गाठतेच. धडा हा की निरपेक्ष टोकाचे उमेदवार क्रांतिक बिंदू आणि दोन्ही टोके आहेत, आणि टोके सोडून देणे हा या प्रश्नांना चुकवण्याचा सर्वांत सामान्य मार्ग आहे. टोकावरील कमालचा अवकलज शून्य नसतो कारण प्रांत केवळ संपतो तेव्हाही फलन चढतच असते; वक्र नव्हे, बंधनच चढाई संपवते. (27 टोकाऐवजी 3 वर मूल्य काढते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A cylindrical tin of volume 128π cm³ is to use the least metal. For the optimal tin, what is the ratio of height to radius?",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "1"
+      ],
+      "answerIndex": 0,
+      "solution": "Minimising 2πr² + 2πrh subject to πr²h = 128π leads to h = 2r, so the ratio is 2. The number is worth more than the calculation: the least-metal cylinder is exactly as tall as it is wide, a square when seen in profile, and this holds for EVERY volume — the 128π never survives to the answer. That is the mark of a genuine structural result rather than an arithmetic accident, and it is why checking whether the given data actually appears in the conclusion is a useful habit. It also raises a question the mathematics cannot answer: real tins are conspicuously taller than they are wide, so either manufacturers are wasting metal or the objective is wrong. The objective is wrong. Real cans must be stacked, gripped, printed on and shipped, the top and bottom are cut from thicker stock and joined by a seam that costs more than the sheet does, and minimising surface area alone models none of that. A perfectly correct optimisation of the wrong quantity is a common way to be exactly wrong. (1 guesses a cube-like h = r.)",
+      "checkExpr": "4-2",
+      "translations": {
+        "hi": {
+          "stem": "128π घन सेमी आयतन वाला बेलनाकार डिब्बा सबसे कम धातु से बनाना है। इष्टतम डिब्बे के लिए ऊँचाई और त्रिज्या का अनुपात क्या है?",
+          "choices": [
+            "2",
+            "3",
+            "4",
+            "1"
+          ],
+          "solution": "πr²h = 128π की अड़चन के साथ 2πr² + 2πrh न्यूनतम करने पर h = 2r मिलता है, अतः अनुपात 2 है। संख्या गणना से अधिक क़ीमती है: सबसे कम धातु वाला बेलन ठीक उतना ही ऊँचा है जितना चौड़ा, बग़ल से देखने पर वर्ग, और यह हर आयतन के लिए सही है — 128π उत्तर तक बचता ही नहीं। यही असली संरचनात्मक परिणाम की पहचान है, गणितीय संयोग की नहीं, और इसीलिए यह जाँचना कि दिया गया आँकड़ा निष्कर्ष में सचमुच दिखता है या नहीं, उपयोगी आदत है। यह एक ऐसा प्रश्न भी उठाता है जिसका उत्तर गणित नहीं दे सकता: असली डिब्बे साफ़ तौर पर चौड़ाई से अधिक ऊँचे होते हैं, अतः या तो निर्माता धातु बरबाद कर रहे हैं या उद्देश्य ग़लत है। उद्देश्य ग़लत है। असली डिब्बों को चिनना, पकड़ना, उन पर छापना और भेजना पड़ता है, ऊपर-नीचे के ढक्कन मोटी चादर से कटते हैं और ऐसी सीवन से जुड़ते हैं जो चादर से महँगी पड़ती है, और अकेले पृष्ठीय क्षेत्रफल को न्यूनतम करना इनमें से किसी का भी मॉडल नहीं बनाता। ग़लत राशि का बिलकुल सही इष्टतमीकरण ठीक-ठीक ग़लत होने का आम तरीक़ा है। (1 घन जैसा h = r अनुमान लेता है।)"
+        },
+        "mr": {
+          "stem": "128π घन सेमी घनफळाचा दंडगोलाकार डबा सर्वांत कमी धातू वापरणारा हवा. इष्टतम डब्यासाठी उंची आणि त्रिज्येचे गुणोत्तर किती?",
+          "choices": [
+            "2",
+            "3",
+            "4",
+            "1"
+          ],
+          "solution": "πr²h = 128π या बंधनासह 2πr² + 2πrh किमान करताना h = 2r मिळते, म्हणून गुणोत्तर 2 आहे. संख्या गणनेहून अधिक मोलाची आहे: सर्वांत कमी धातूचा दंडगोल नेमका जितका रुंद तितकाच उंच आहे, बाजूने पाहिल्यास चौरस, आणि हे प्रत्येक घनफळासाठी खरे आहे — 128π उत्तरापर्यंत टिकतच नाही. हीच खऱ्या संरचनात्मक निकालाची खूण आहे, गणिती योगायोगाची नव्हे, आणि म्हणूनच दिलेला आकडा निष्कर्षात खरोखर दिसतो का हे तपासणे उपयुक्त सवय आहे. हे असाही प्रश्न उभा करते ज्याचे उत्तर गणित देऊ शकत नाही: खरे डबे स्पष्टपणे रुंदीहून अधिक उंच असतात, म्हणून एकतर उत्पादक धातू वाया घालवत आहेत किंवा उद्दिष्ट चुकीचे आहे. उद्दिष्ट चुकीचे आहे. खरे डबे रचावे, धरावे, त्यांवर छापावे आणि पाठवावे लागतात, वरचे-खालचे झाकण जाड पत्र्यातून कापले जातात आणि पत्र्याहून महाग पडणाऱ्या शिवणीने जोडले जातात, आणि एकट्या पृष्ठफळाला किमान करणे यांपैकी कशाचेही प्रतिरूप बनवत नाही. चुकीच्या राशीचे अगदी बरोबर इष्टतमीकरण हा नेमके चुकीचे असण्याचा सामान्य मार्ग आहे. (1 घनासारखा h = r अंदाज घेते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "f(x) = x⁴ has f'(0) = 0 and f''(0) = 0. Counting the second-derivative test and the first-derivative test, how many of the two decide what happens at x = 0?",
+      "choices": [
+        "3",
+        "1",
+        "2",
+        "0"
+      ],
+      "answerIndex": 1,
+      "solution": "One — the first-derivative test, and only that one. The second-derivative test returns zero and zero carries no sign, so the test is silent: it cannot distinguish this minimum from the inflection of x³, where the second derivative is also zero at the origin. The first-derivative test simply looks at the sign of f' on either side, finds negative to the left and positive to the right, and concludes a minimum without difficulty. Two things follow. First, the second-derivative test is faster but strictly weaker, and the case it fails on is exactly the case it was invented to settle — a flat stationary point — which is a common shape for a shortcut to take. Second, notice that a test returning nothing is not a test returning 'no extremum'; students routinely read the zero as a verdict of inflection, which for x⁴ is simply false. Knowing the difference between a test that says no and a test that says nothing is worth more here than either test. (2 assumes both tests always apply.)",
+      "checkExpr": "2-1",
+      "translations": {
+        "hi": {
+          "stem": "f(x) = x⁴ में f'(0) = 0 और f''(0) = 0. द्वितीय-अवकलज परीक्षण और प्रथम-अवकलज परीक्षण में से, x = 0 पर क्या होता है यह कितने तय कर पाते हैं?",
+          "choices": [
+            "3",
+            "1",
+            "2",
+            "0"
+          ],
+          "solution": "एक — प्रथम-अवकलज परीक्षण, और केवल वही। द्वितीय-अवकलज परीक्षण शून्य लौटाता है और शून्य का कोई चिह्न नहीं होता, अतः परीक्षण मौन है: वह इस निम्निष्ठ को x³ के नति-परिवर्तन से अलग नहीं कर सकता, जहाँ मूलबिंदु पर द्वितीय अवकलज भी शून्य है। प्रथम-अवकलज परीक्षण बस दोनों ओर f' का चिह्न देखता है, बाएँ ऋणात्मक और दाएँ धनात्मक पाता है, और बिना कठिनाई निम्निष्ठ निकाल लेता है। दो बातें निकलती हैं। पहली, द्वितीय-अवकलज परीक्षण तेज़ है पर सख़्ती से कमज़ोर, और जिस मामले में वह विफल होता है वही मामला है जिसे तय करने के लिए उसे गढ़ा गया था — चपटा स्थिर बिंदु — जो किसी शॉर्टकट के लिए आम आकार है। दूसरी, ध्यान दो कि कुछ न लौटाने वाला परीक्षण 'कोई चरम नहीं' लौटाने वाला परीक्षण नहीं है; विद्यार्थी अक्सर उस शून्य को नति-परिवर्तन का फ़ैसला पढ़ लेते हैं, जो x⁴ के लिए सरासर ग़लत है। जो परीक्षण ना कहता है और जो कुछ नहीं कहता, उनका फ़र्क़ जानना यहाँ दोनों परीक्षणों से अधिक क़ीमती है। (2 मान लेता है कि दोनों परीक्षण सदा लागू होते हैं।)"
+        },
+        "mr": {
+          "stem": "f(x) = x⁴ मध्ये f'(0) = 0 आणि f''(0) = 0. द्वितीय-अवकलज चाचणी आणि प्रथम-अवकलज चाचणी यांपैकी, x = 0 वर काय होते हे किती ठरवू शकतात?",
+          "choices": [
+            "3",
+            "1",
+            "2",
+            "0"
+          ],
+          "solution": "एक — प्रथम-अवकलज चाचणी, आणि केवळ तीच. द्वितीय-अवकलज चाचणी शून्य परत करते आणि शून्याला चिन्ह नसते, म्हणून चाचणी मौन आहे: ती या किमानला x³ च्या नति-परिवर्तनापासून वेगळे करू शकत नाही, जिथे आदिबिंदूवर द्वितीय अवकलजही शून्य आहे. प्रथम-अवकलज चाचणी फक्त दोन्ही बाजूंना f' चे चिन्ह पाहते, डावीकडे ऋण आणि उजवीकडे धन आढळते, आणि अडचणीशिवाय किमान ठरवते. दोन गोष्टी निघतात. पहिली, द्वितीय-अवकलज चाचणी वेगवान आहे पण काटेकोरपणे दुर्बल, आणि ज्या प्रसंगात ती अपयशी ठरते तोच प्रसंग आहे जो ठरवण्यासाठी ती घडवली गेली — सपाट स्थिर बिंदू — जो एखाद्या शॉर्टकटसाठी सामान्य आकार आहे. दुसरी, लक्षात घ्या की काहीही परत न करणारी चाचणी ही 'कोणतेही टोक नाही' परत करणारी चाचणी नव्हे; विद्यार्थी नेहमी त्या शून्याला नति-परिवर्तनाचा निकाल वाचतात, जे x⁴ साठी सरळ चुकीचे आहे. जी चाचणी नाही म्हणते आणि जी काहीच म्हणत नाही, त्यांतला फरक जाणणे इथे दोन्ही चाचण्यांहून अधिक मोलाचे आहे. (2 गृहीत धरते की दोन्ही चाचण्या नेहमी लागू होतात.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The approximation √(25.2) ≈ 5 + 0.2/10 uses the tangent line at x = 25. To how many decimal places does it match the true value 5.019960…?",
+      "choices": [
+        "6",
+        "3",
+        "4",
+        "2"
+      ],
+      "answerIndex": 2,
+      "solution": "The estimate is 5.02 and the truth is 5.019960…, so they agree to 4 decimal places — 5.0199 against 5.0200 differs only in the fourth. The accuracy is far better than the crudeness of the method suggests, and the reason is the size of the error term rather than any luck. A tangent-line estimate is a Taylor series cut off after the linear term, so its error is governed by the next term, which carries a factor of the step size SQUARED. Here the step is 0.2, so the square is 0.04, and the second derivative of √x at 25 is about −0.0008 — the product is around forty millionths. This is why linearisation earns its keep in practice: halving the step quarters the error, so the method improves quadratically as one gets closer, and near enough is very near indeed. It is also why the same method is useless far from the point of tangency, since the same square that shrinks fast also grows fast. (2 counts the decimals in the written estimate rather than the places that agree.)",
+      "checkExpr": "5-1",
+      "translations": {
+        "hi": {
+          "stem": "सन्निकटन √(25.2) ≈ 5 + 0.2/10, x = 25 पर स्पर्शरेखा का उपयोग करता है। यह सही मान 5.019960… से कितने दशमलव स्थानों तक मेल खाता है?",
+          "choices": [
+            "6",
+            "3",
+            "4",
+            "2"
+          ],
+          "solution": "अनुमान 5.02 है और सच्चाई 5.019960…, अतः वे 4 दशमलव स्थानों तक सहमत हैं — 5.0199 बनाम 5.0200 केवल चौथे में भिन्न है। शुद्धता विधि के भदेसपन के सुझाव से कहीं बेहतर है, और कारण किसी भाग्य के बजाय त्रुटि-पद का आकार है। स्पर्शरेखा-अनुमान रैखिक पद के बाद काटी गई टेलर श्रेणी है, अतः उसकी त्रुटि अगले पद से शासित होती है, जो क़दम के आकार का वर्ग लिए चलता है। यहाँ क़दम 0.2 है, अतः वर्ग 0.04, और 25 पर √x का द्वितीय अवकलज लगभग −0.0008 — गुणनफल क़रीब चालीस दस-लाखवाँ हिस्सा। इसीलिए रैखिकीकरण व्यवहार में अपनी क़ीमत वसूल करता है: क़दम आधा करने से त्रुटि चौथाई होती है, अतः पास आते-आते विधि वर्ग-गति से सुधरती है, और काफ़ी पास सचमुच बहुत पास होता है। और इसीलिए वही विधि स्पर्श-बिंदु से दूर बेकार है, क्योंकि जो वर्ग तेज़ी से घटता है वही तेज़ी से बढ़ता भी है। (2 सहमत स्थानों के बजाय लिखे अनुमान के दशमलव गिन लेता है।)"
+        },
+        "mr": {
+          "stem": "सन्निकटन √(25.2) ≈ 5 + 0.2/10 हे x = 25 वरील स्पर्शरेषा वापरते. ते खऱ्या मूल्य 5.019960… शी किती दशांश स्थळांपर्यंत जुळते?",
+          "choices": [
+            "6",
+            "3",
+            "4",
+            "2"
+          ],
+          "solution": "अंदाज 5.02 आहे आणि सत्य 5.019960…, म्हणून ते 4 दशांश स्थळांपर्यंत सहमत आहेत — 5.0199 विरुद्ध 5.0200 फक्त चौथ्यात वेगळे आहे. अचूकता पद्धतीच्या ओबडधोबडपणाच्या सूचनेहून कितीतरी चांगली आहे, आणि कारण कोणत्याही नशिबाऐवजी त्रुटी-पदाचा आकार आहे. स्पर्शरेषा-अंदाज हा रैखिक पदानंतर कापलेली टेलर श्रेणी आहे, म्हणून तिची त्रुटी पुढच्या पदाने नियंत्रित होते, जे पावलाच्या आकाराचा वर्ग घेऊन चालते. इथे पाऊल 0.2 आहे, म्हणून वर्ग 0.04, आणि 25 वर √x चा द्वितीय अवकलज सुमारे −0.0008 — गुणाकार जवळपास चाळीस दशलक्षांश. म्हणूनच रैखिकीकरण व्यवहारात आपली किंमत वसूल करते: पाऊल निम्मे केल्याने त्रुटी चतुर्थांश होते, म्हणून जवळ येताना पद्धत वर्ग-गतीने सुधारते, आणि पुरेसे जवळ म्हणजे खरोखरच खूप जवळ. आणि म्हणूनच तीच पद्धत स्पर्श-बिंदूपासून दूर निरुपयोगी आहे, कारण जो वर्ग वेगाने घटतो तोच वेगाने वाढतोही. (2 सहमत स्थळांऐवजी लिहिलेल्या अंदाजातील दशांश मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "f(x) = 1/x on the open interval (0, 1) is continuous and has no critical point. How many of the absolute maximum and absolute minimum does it attain there?",
+      "choices": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "answerIndex": 0,
+      "solution": "Neither. As x approaches 0 the function runs off to infinity, so there is no greatest value; as x approaches 1 the function falls towards 1 but never arrives, because 1 itself is not in the interval, so there is no least value either. The extreme value theorem promises both, and it is not violated here — its hypotheses ask for a CLOSED and BOUNDED interval, and (0, 1) is bounded but not closed. Two brackets are the whole difference between a guarantee and nothing at all. What makes this worth an Olympiad-level question is what it says about how existence theorems should be used. It is tempting to treat 'the maximum' as something one can name and then hunt for, and the hunting method — solve f'(x) = 0, compare candidates — quietly assumes the thing exists. Here the hunt finds nothing, and the honest conclusion is not that the search was clumsy but that there was nothing to find. Checking the hypotheses BEFORE searching is what tells the two situations apart, and on a closed interval the same function is perfectly well behaved: on [0.5, 1] it attains 2 and 1 at the two endpoints, neither of them critical points at all. (2 supposes a continuous function on an interval must attain both.)",
+      "checkExpr": "2-2",
+      "translations": {
+        "hi": {
+          "stem": "खुले अंतराल (0, 1) पर f(x) = 1/x संतत है और उसका कोई क्रांतिक बिंदु नहीं। वह वहाँ निरपेक्ष उच्चिष्ठ और निरपेक्ष निम्निष्ठ में से कितने प्राप्त करता है?",
+          "choices": [
+            "0",
+            "1",
+            "2",
+            "3"
+          ],
+          "solution": "कोई नहीं। x के 0 की ओर बढ़ने पर फलन अनंत की ओर भाग जाता है, अतः कोई अधिकतम मान नहीं; x के 1 की ओर बढ़ने पर फलन 1 की ओर गिरता है पर पहुँचता कभी नहीं, क्योंकि 1 स्वयं अंतराल में नहीं, अतः न्यूनतम मान भी नहीं। चरम मान प्रमेय दोनों का वादा करता है, और यहाँ उसका उल्लंघन नहीं हुआ — उसकी परिकल्पनाएँ बंद और परिबद्ध अंतराल माँगती हैं, और (0, 1) परिबद्ध है पर बंद नहीं। दो कोष्ठक ही गारंटी और कुछ नहीं के बीच का पूरा फ़र्क़ हैं। इसे ओलंपियाड-स्तर का प्रश्न इसलिए बनाता है कि यह अस्तित्व-प्रमेयों के उपयोग के बारे में क्या कहता है। 'अधिकतम' को ऐसी चीज़ मानने का लोभ होता है जिसे नाम देकर ढूँढ़ा जा सके, और ढूँढ़ने की विधि — f'(x) = 0 हल करो, उम्मीदवारों की तुलना करो — चुपचाप मान लेती है कि वह चीज़ है। यहाँ खोज कुछ नहीं पाती, और ईमानदार निष्कर्ष यह नहीं कि खोज भोंडी थी बल्कि यह कि ढूँढ़ने को कुछ था ही नहीं। खोजने से पहले परिकल्पनाएँ जाँचना ही दोनों स्थितियों को अलग बताता है, और बंद अंतराल पर वही फलन बिलकुल सुव्यवहृत है: [0.5, 1] पर वह दोनों सिरों पर 2 और 1 प्राप्त करता है, और उनमें से कोई भी क्रांतिक बिंदु है ही नहीं। (2 मान लेता है कि अंतराल पर संतत फलन को दोनों प्राप्त करने ही चाहिए।)"
+        },
+        "mr": {
+          "stem": "खुल्या अंतराल (0, 1) वर f(x) = 1/x संतत आहे आणि त्याला कोणताही क्रांतिक बिंदू नाही. ते तिथे निरपेक्ष कमाल आणि निरपेक्ष किमान यांपैकी किती गाठते?",
+          "choices": [
+            "0",
+            "1",
+            "2",
+            "3"
+          ],
+          "solution": "एकही नाही. x हा 0 कडे जाताना फलन अनंताकडे पळून जाते, म्हणून कोणतेही कमाल मूल्य नाही; x हा 1 कडे जाताना फलन 1 कडे घसरते पण कधीच पोहोचत नाही, कारण 1 स्वतः अंतरालात नाही, म्हणून किमान मूल्यही नाही. टोकाचे मूल्य प्रमेय दोन्हींचे वचन देते, आणि इथे त्याचे उल्लंघन झालेले नाही — त्याची गृहीतके बंद आणि बद्ध अंतराल मागतात, आणि (0, 1) बद्ध आहे पण बंद नाही. दोन कंसच हमी आणि काहीच नाही यांतला अख्खा फरक आहेत. याला ऑलिंपियाड-स्तराचा प्रश्न यासाठी बनवते की तो अस्तित्व-प्रमेये कशी वापरावीत याबद्दल काय सांगतो. 'कमाल' ला अशी गोष्ट मानण्याचा मोह होतो जिला नाव देऊन शोधता येईल, आणि शोधण्याची पद्धत — f'(x) = 0 सोडवा, उमेदवारांची तुलना करा — गुपचूप गृहीत धरते की ती गोष्ट आहे. इथे शोध काहीच सापडत नाही, आणि प्रामाणिक निष्कर्ष हा नव्हे की शोध ओबडधोबड होता तर हा की शोधण्यासारखे काही होतेच नाही. शोधण्याआधी गृहीतके तपासणेच दोन्ही परिस्थिती वेगळ्या सांगते, आणि बंद अंतरालावर तेच फलन अगदी सुव्यवस्थित आहे: [0.5, 1] वर ते दोन्ही टोकांवर 2 आणि 1 गाठते, आणि त्यांपैकी कोणताही क्रांतिक बिंदू नाहीच. (2 गृहीत धरते की अंतरालावरील संतत फलनाने दोन्ही गाठलेच पाहिजेत.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A rectangle of perimeter 40 is to have the greatest area. Now a second rectangle has fixed area 100 and is to have the least perimeter. How many of the two problems have the SAME rectangle as their answer?",
+      "choices": [
+        "1",
+        "4",
+        "0",
+        "2"
+      ],
+      "answerIndex": 3,
+      "solution": "Both — each answer is the 10 × 10 square, so the count is 2. Check it: perimeter 40 means half-perimeter 20, and the largest area for a fixed sum of sides is the equal split, 10 × 10 = 100; area 100 with sides x and 100/x has perimeter 2x + 200/x, whose derivative 2 − 200/x² vanishes at x = 10, giving perimeter 40. The two problems are exact duals, and the same square answers both. The reason is worth stating because it generalises far beyond rectangles. Each problem optimises one quantity while holding the other fixed, and their solutions must coincide, for a simple reason: if some rectangle of perimeter 40 had area MORE than 100, then shrinking it slightly would give area exactly 100 with perimeter less than 40, contradicting the second problem's answer — and the argument runs equally well in reverse. So a solution to either is forced to solve the other. This is the isoperimetric duality, and the same swap of objective and constraint relates 'most volume for a given surface' to 'least surface for a given volume', which is why the sphere answers both, and why a soap bubble — minimising surface at fixed volume because surface tension charges by area — arrives at the same shape a mathematician reaches from the opposite direction. (1 supposes that reversing which quantity is fixed must change the answer.)",
+      "checkExpr": "1+1",
+      "translations": {
+        "hi": {
+          "stem": "40 परिमाप वाले आयत का क्षेत्रफल अधिकतम करना है। अब दूसरे आयत का क्षेत्रफल 100 नियत है और उसका परिमाप न्यूनतम करना है। दोनों समस्याओं में से कितनों का उत्तर एक ही आयत है?",
+          "choices": [
+            "1",
+            "4",
+            "0",
+            "2"
+          ],
+          "solution": "दोनों — हर उत्तर 10 × 10 का वर्ग है, अतः गिनती 2 है। जाँचो: परिमाप 40 का अर्थ आधा-परिमाप 20, और भुजाओं के नियत योग के लिए सबसे बड़ा क्षेत्रफल बराबर बँटवारे पर है, 10 × 10 = 100; भुजाएँ x और 100/x वाले 100 क्षेत्रफल का परिमाप 2x + 200/x है, जिसका अवकलज 2 − 200/x², x = 10 पर शून्य होता है, और परिमाप 40 देता है। दोनों समस्याएँ ठीक द्वैत हैं, और वही वर्ग दोनों का उत्तर है। कारण कहने लायक़ है क्योंकि वह आयतों से कहीं आगे तक जाता है। हर समस्या एक राशि को इष्टतम करती है और दूसरी को नियत रखती है, और उनके हल एक होने ही चाहिए, सरल कारण से: यदि 40 परिमाप वाले किसी आयत का क्षेत्रफल 100 से अधिक होता, तो उसे थोड़ा सिकोड़ने पर क्षेत्रफल ठीक 100 और परिमाप 40 से कम मिलता, जो दूसरी समस्या के उत्तर का खंडन है — और तर्क उलटी दिशा में भी उतना ही चलता है। अतः किसी एक का हल दूसरे को हल करने पर मजबूर है। यह समपरिमाप द्वैत है, और उद्देश्य तथा अड़चन की वही अदला-बदली 'दिए गए पृष्ठ के लिए सर्वाधिक आयतन' को 'दिए गए आयतन के लिए न्यूनतम पृष्ठ' से जोड़ती है, इसीलिए गोला दोनों का उत्तर है, और इसीलिए साबुन का बुलबुला — नियत आयतन पर पृष्ठ न्यूनतम करता हुआ, क्योंकि पृष्ठ-तनाव क्षेत्रफल से वसूलता है — उसी आकार पर पहुँचता है जिस पर गणितज्ञ उलटी दिशा से पहुँचता है। (1 मान लेता है कि कौन-सी राशि नियत है इसे पलटने से उत्तर बदलना ही चाहिए।)"
+        },
+        "mr": {
+          "stem": "40 परिमिती असलेल्या आयताचे क्षेत्रफळ कमाल करायचे आहे. आता दुसऱ्या आयताचे क्षेत्रफळ 100 निश्चित आहे आणि त्याची परिमिती किमान करायची आहे. दोन्ही समस्यांपैकी कितींचे उत्तर एकच आयत आहे?",
+          "choices": [
+            "1",
+            "4",
+            "0",
+            "2"
+          ],
+          "solution": "दोन्ही — प्रत्येक उत्तर 10 × 10 चा चौरस आहे, म्हणून मोजणी 2 आहे. तपासा: परिमिती 40 म्हणजे अर्धी-परिमिती 20, आणि बाजूंच्या निश्चित बेरजेसाठी सर्वांत मोठे क्षेत्रफळ समान वाटणीवर आहे, 10 × 10 = 100; बाजू x आणि 100/x असलेल्या 100 क्षेत्रफळाची परिमिती 2x + 200/x आहे, जिचा अवकलज 2 − 200/x² हा x = 10 वर शून्य होतो, आणि परिमिती 40 देतो. दोन्ही समस्या नेमक्या द्वैत आहेत, आणि तोच चौरस दोन्हींचे उत्तर आहे. कारण सांगण्याजोगे आहे कारण ते आयतांहून कितीतरी पुढे जाते. प्रत्येक समस्या एक राशी इष्टतम करते आणि दुसरी निश्चित ठेवते, आणि त्यांची उत्तरे एकच असलीच पाहिजेत, साध्या कारणाने: जर 40 परिमिती असलेल्या एखाद्या आयताचे क्षेत्रफळ 100 हून अधिक असते, तर तो थोडा आकुंचित केल्यास क्षेत्रफळ नेमके 100 आणि परिमिती 40 हून कमी मिळाली असती, जे दुसऱ्या समस्येच्या उत्तराचे खंडन आहे — आणि युक्तिवाद उलट दिशेनेही तितकाच चालतो. म्हणून कोणत्याही एकाचे उत्तर दुसरे सोडवण्यास भाग पडते. हे समपरिमिती द्वैत आहे, आणि उद्दिष्ट व बंधन यांची तीच अदलाबदल 'दिलेल्या पृष्ठासाठी सर्वाधिक घनफळ' ला 'दिलेल्या घनफळासाठी किमान पृष्ठ' शी जोडते, म्हणूनच गोल दोन्हींचे उत्तर आहे, आणि म्हणूनच साबणाचा बुडबुडा — निश्चित घनफळावर पृष्ठ किमान करत, कारण पृष्ठताण क्षेत्रफळाने वसूल करतो — त्याच आकारावर पोहोचतो ज्यावर गणितज्ञ उलट दिशेने पोहोचतो. (1 गृहीत धरते की कोणती राशी निश्चित आहे हे उलटवल्याने उत्तर बदललेच पाहिजे.)"
+        }
+      }
+    }
+  ]
+}

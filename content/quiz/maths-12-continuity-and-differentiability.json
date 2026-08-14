@@ -1,0 +1,513 @@
+{
+  "slug": "maths-12-continuity-and-differentiability",
+  "subject": "MATHS",
+  "classLevel": 12,
+  "chapter": "Chapter 5 — Continuity and Differentiability",
+  "name": "Continuity and Differentiability",
+  "summary": "Three separable conditions for a curve to have no break in it and a fourth, stronger demand that it have no corner either: why a hole that can be filled is a different kind of failure from one that cannot, why the implication between the two properties runs one way only, and why a single power of x is enough to separate them.",
+  "position": 5,
+  "translations": {
+    "hi": {
+      "name": "संततता और अवकलनीयता",
+      "summary": "किसी वक्र में टूट न होने की तीन अलग-अलग शर्तें और एक चौथी, कड़ी माँग कि उसमें कोना भी न हो: भरा जा सकने वाला छेद न भरे जा सकने वाले से भिन्न प्रकार की विफलता क्यों है, दोनों गुणों के बीच निहितार्थ केवल एक दिशा में क्यों चलता है, और x की एक घात उन्हें अलग करने के लिए क्यों काफ़ी है।"
+    },
+    "mr": {
+      "name": "संततता आणि अवकलनीयता",
+      "summary": "एखाद्या वक्रात खंड नसण्याच्या तीन वेगवेगळ्या अटी आणि चौथी, कडक मागणी की त्यात कोपराही नसावा: भरता येणारे छिद्र न भरता येणाऱ्याहून वेगळ्या प्रकारचे अपयश का आहे, दोन्ही गुणधर्मांमधील निहितार्थ फक्त एकाच दिशेने का चालतो, आणि x ची एक घात त्यांना वेगळे करण्यास का पुरेशी आहे."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "For f(x) = x² + 1, what value does f(x) approach as x approaches 2?",
+      "choices": [
+        "4",
+        "2",
+        "5",
+        "6"
+      ],
+      "answerIndex": 2,
+      "solution": "2² + 1 = 5. For a polynomial the limit is simply the value: substituting is allowed because polynomials are continuous everywhere, and continuity is precisely the permission to substitute. That is worth stating plainly at the start, because the rest of the chapter is about the functions where the permission is withdrawn. (4 forgets the +1.)",
+      "checkExpr": "2*2+1",
+      "translations": {
+        "hi": {
+          "stem": "f(x) = x² + 1 के लिए, जब x, 2 की ओर बढ़ता है तो f(x) किस मान की ओर बढ़ता है?",
+          "choices": [
+            "4",
+            "2",
+            "5",
+            "6"
+          ],
+          "solution": "2² + 1 = 5. किसी बहुपद के लिए सीमा बस मान ही है: प्रतिस्थापन इसलिए चलता है क्योंकि बहुपद हर जगह संतत हैं, और संततता ठीक-ठीक प्रतिस्थापन की अनुमति ही है। शुरुआत में यह साफ़ कह देना ज़रूरी है, क्योंकि बाक़ी अध्याय उन्हीं फलनों के बारे में है जहाँ यह अनुमति वापस ले ली जाती है। (4 में +1 भूल गया।)"
+        },
+        "mr": {
+          "stem": "f(x) = x² + 1 साठी, x हा 2 कडे जात असताना f(x) कोणत्या मूल्याकडे जातो?",
+          "choices": [
+            "4",
+            "2",
+            "5",
+            "6"
+          ],
+          "solution": "2² + 1 = 5. एखाद्या बहुपदीसाठी सीमा म्हणजे फक्त मूल्यच: प्रतिस्थापन यासाठी चालते कारण बहुपदी सर्वत्र संतत आहेत, आणि संततता म्हणजे नेमकी प्रतिस्थापनाची परवानगीच. सुरुवातीलाच हे स्पष्ट सांगणे आवश्यक आहे, कारण उरलेला अध्याय त्याच फलनांबद्दल आहे जिथे ही परवानगी काढून घेतली जाते. (4 मध्ये +1 विसरले.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the derivative of x⁵ with respect to x, evaluated at x = 1?",
+      "choices": [
+        "4",
+        "5",
+        "20",
+        "1"
+      ],
+      "answerIndex": 1,
+      "solution": "The power rule gives 5x⁴, and at x = 1 that is 5 × 1 = 5. Note what the exponent does: it comes down as a multiplier and drops by one. Both halves of that matter, and 4 is the answer of somebody who did the dropping and forgot the multiplying. (20 differentiates a second time.)",
+      "checkExpr": "5*1",
+      "translations": {
+        "hi": {
+          "stem": "x के सापेक्ष x⁵ का अवकलज x = 1 पर कितना है?",
+          "choices": [
+            "4",
+            "5",
+            "20",
+            "1"
+          ],
+          "solution": "घात नियम से 5x⁴ मिलता है, और x = 1 पर वह 5 × 1 = 5 है। ध्यान दो घातांक करता क्या है: वह गुणक बनकर नीचे आता है और एक घट जाता है। इन दोनों आधों का महत्व है, और 4 उसका उत्तर है जिसने घटाना कर लिया और गुणा करना भूल गया। (20 दूसरी बार अवकलन करता है।)"
+        },
+        "mr": {
+          "stem": "x च्या सापेक्ष x⁵ चा अवकलज x = 1 वर किती?",
+          "choices": [
+            "4",
+            "5",
+            "20",
+            "1"
+          ],
+          "solution": "घात नियमाने 5x⁴ मिळते, आणि x = 1 वर ते 5 × 1 = 5 आहे. घातांक काय करतो ते लक्षात घ्या: तो गुणक बनून खाली येतो आणि एकने घटतो. या दोन्ही अर्ध्यांना महत्त्व आहे, आणि 4 हे त्याचे उत्तर आहे ज्याने घटवणे केले आणि गुणणे विसरले. (20 दुसऱ्यांदा अवकलन करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many conditions must hold at a point for a function to be continuous there?",
+      "choices": [
+        "3",
+        "4",
+        "2",
+        "1"
+      ],
+      "answerIndex": 0,
+      "solution": "Three, and naming them separately is the point: the function must be defined there, the limit must exist there, and the two must be equal. Most students carry only the third, which is why a function with a hole in it — where the limit exists perfectly well and the function simply has no value — catches them out. The conditions are separable, and every discontinuity in this chapter is a case of exactly one of them failing. (1 keeps only the equality.)",
+      "checkExpr": "1+1+1",
+      "translations": {
+        "hi": {
+          "stem": "किसी बिंदु पर फलन के संतत होने के लिए कितनी शर्तें पूरी होनी चाहिए?",
+          "choices": [
+            "3",
+            "4",
+            "2",
+            "1"
+          ],
+          "solution": "तीन, और उन्हें अलग-अलग नाम देना ही बात है: फलन वहाँ परिभाषित हो, सीमा वहाँ अस्तित्व में हो, और दोनों बराबर हों। ज़्यादातर विद्यार्थी केवल तीसरी याद रखते हैं, इसीलिए छेद वाला फलन — जहाँ सीमा बिलकुल मौजूद है और फलन का बस कोई मान ही नहीं — उन्हें पकड़ लेता है। शर्तें अलग-अलग हैं, और इस अध्याय की हर असंततता ठीक इनमें से एक के विफल होने का मामला है। (1 केवल समानता रखता है।)"
+        },
+        "mr": {
+          "stem": "एखाद्या बिंदूवर फलन संतत असण्यासाठी किती अटी पूर्ण व्हाव्या लागतात?",
+          "choices": [
+            "3",
+            "4",
+            "2",
+            "1"
+          ],
+          "solution": "तीन, आणि त्यांना वेगवेगळी नावे देणे हाच मुद्दा आहे: फलन तिथे परिभाषित असावे, सीमा तिथे अस्तित्वात असावी, आणि दोन्ही समान असावेत. बहुतेक विद्यार्थी फक्त तिसरीच लक्षात ठेवतात, म्हणूनच छिद्र असलेले फलन — जिथे सीमा अगदी उत्तम अस्तित्वात आहे आणि फलनाला केवळ मूल्यच नाही — त्यांना पकडते. अटी वेगळ्या करता येतात, आणि या अध्यायातील प्रत्येक असंतता नेमकी यांपैकी एक अपयशी ठरण्याची घटना आहे. (1 फक्त समानता ठेवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "f(x) = (x² − 9)/(x − 3) is undefined at x = 3. What value would make it continuous there?",
+      "choices": [
+        "0",
+        "3",
+        "6",
+        "9"
+      ],
+      "answerIndex": 2,
+      "solution": "Factor the top: (x − 3)(x + 3)/(x − 3) = x + 3 for every x except 3 itself, and x + 3 at 3 is 6. The hole is removable, and that word is doing real work — the limit was there all along and only the value was missing, so supplying it repairs the function completely. Contrast this with 1/x at zero, where no value whatsoever would help because the limit itself does not exist. Removable and non-removable is the first useful division of discontinuities. (0 comes from putting 3 into the original denominator and stopping there.)",
+      "checkExpr": "3+3",
+      "translations": {
+        "hi": {
+          "stem": "f(x) = (x² − 9)/(x − 3), x = 3 पर अपरिभाषित है। वहाँ कौन-सा मान इसे संतत बना देगा?",
+          "choices": [
+            "0",
+            "3",
+            "6",
+            "9"
+          ],
+          "solution": "ऊपर के गुणनखंड करो: (x − 3)(x + 3)/(x − 3) = x + 3, हर x के लिए सिवाय स्वयं 3 के, और 3 पर x + 3 है 6. छेद हटाने योग्य है, और यह शब्द असली काम कर रहा है — सीमा हमेशा से वहीं थी और केवल मान ग़ायब था, अतः उसे दे देने से फलन पूरी तरह ठीक हो जाता है। इसकी तुलना शून्य पर 1/x से करो, जहाँ कोई भी मान मदद नहीं करेगा क्योंकि सीमा स्वयं अस्तित्व में नहीं। हटाने योग्य और न हटने योग्य असंतततताओं का पहला उपयोगी विभाजन है। (0 मूल हर में 3 रखकर वहीं रुक जाने से आता है।)"
+        },
+        "mr": {
+          "stem": "f(x) = (x² − 9)/(x − 3) हे x = 3 वर अपरिभाषित आहे. तिथे कोणते मूल्य त्याला संतत करेल?",
+          "choices": [
+            "0",
+            "3",
+            "6",
+            "9"
+          ],
+          "solution": "वरचे अवयव पाडा: (x − 3)(x + 3)/(x − 3) = x + 3, स्वतः 3 वगळता प्रत्येक x साठी, आणि 3 वर x + 3 म्हणजे 6. छिद्र काढून टाकण्याजोगे आहे, आणि हा शब्द खरे काम करत आहे — सीमा नेहमीच तिथे होती आणि केवळ मूल्यच गहाळ होते, म्हणून ते पुरवल्याने फलन पूर्णपणे दुरुस्त होते. याची तुलना शून्यावरील 1/x शी करा, जिथे कोणतेही मूल्य मदत करणार नाही कारण सीमाच अस्तित्वात नाही. काढण्याजोग्या आणि न काढण्याजोग्या हा असंततांचा पहिला उपयुक्त विभाग आहे. (0 मूळ छेदात 3 ठेवून तिथेच थांबल्याने येते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Using the product rule, what is the derivative of x² · x³ at x = 1?",
+      "choices": [
+        "6",
+        "5",
+        "3",
+        "2"
+      ],
+      "answerIndex": 1,
+      "solution": "The product rule gives 2x · x³ + x² · 3x², which at x = 1 is 2 + 3 = 5. Now check it the lazy way: x² · x³ is x⁵, whose derivative is 5x⁴, which is 5 at x = 1. The two agree, and that agreement is the point of the question — a rule that did not reproduce the answer you can get by simplifying first would be a wrong rule. Notice also what the product rule is NOT: 6 is the answer of somebody who multiplied the two derivatives, 2x × 3x², which would give 6x³ and is the single commonest error in the chapter.",
+      "checkExpr": "2*1+3*1",
+      "translations": {
+        "hi": {
+          "stem": "गुणनफल नियम से x² · x³ का अवकलज x = 1 पर कितना है?",
+          "choices": [
+            "6",
+            "5",
+            "3",
+            "2"
+          ],
+          "solution": "गुणनफल नियम से 2x · x³ + x² · 3x² मिलता है, जो x = 1 पर 2 + 3 = 5 है। अब आलसी तरीक़े से जाँचो: x² · x³ है x⁵, जिसका अवकलज 5x⁴ है, जो x = 1 पर 5 है। दोनों सहमत हैं, और यही सहमति प्रश्न का मुद्दा है — जो नियम पहले सरल करके मिलने वाले उत्तर को दोहरा न सके वह ग़लत नियम होगा। यह भी ध्यान दो कि गुणनफल नियम क्या नहीं है: 6 उसका उत्तर है जिसने दोनों अवकलजों को गुणा कर दिया, 2x × 3x², जो 6x³ देता और अध्याय की सबसे आम अकेली ग़लती है।"
+        },
+        "mr": {
+          "stem": "गुणाकार नियम वापरून x² · x³ चा अवकलज x = 1 वर किती?",
+          "choices": [
+            "6",
+            "5",
+            "3",
+            "2"
+          ],
+          "solution": "गुणाकार नियमाने 2x · x³ + x² · 3x² मिळते, जे x = 1 वर 2 + 3 = 5 आहे. आता आळशी मार्गाने तपासा: x² · x³ म्हणजे x⁵, ज्याचा अवकलज 5x⁴ आहे, जो x = 1 वर 5 आहे. दोन्ही सहमत आहेत, आणि हीच सहमती प्रश्नाचा मुद्दा आहे — जो नियम आधी सोपे करून मिळणारे उत्तर पुन्हा देऊ शकत नाही तो चुकीचा नियम असेल. हेही लक्षात घ्या की गुणाकार नियम काय नाही: 6 हे त्याचे उत्तर आहे ज्याने दोन्ही अवकलजांचा गुणाकार केला, 2x × 3x², जे 6x³ देईल आणि अध्यायातील सर्वांत सामान्य एकटी चूक आहे."
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "f(x) = |x| is continuous everywhere. At how many points is it NOT differentiable?",
+      "choices": [
+        "3",
+        "1",
+        "2",
+        "0"
+      ],
+      "answerIndex": 1,
+      "solution": "One — the origin, and only the origin. Everywhere else the graph is a straight line with a perfectly good slope of −1 or +1. At zero those two slopes meet and disagree, so the left-hand and right-hand difference quotients approach different numbers and no single derivative exists. This one point is the standing counterexample of the chapter: it shows that continuity does not imply differentiability, because here the function is continuous at exactly the place where it fails to be differentiable. The implication runs one way only. (0 assumes continuity is enough.)",
+      "checkExpr": "2-1",
+      "translations": {
+        "hi": {
+          "stem": "f(x) = |x| हर जगह संतत है। यह कितने बिंदुओं पर अवकलनीय नहीं है?",
+          "choices": [
+            "3",
+            "1",
+            "2",
+            "0"
+          ],
+          "solution": "एक — मूलबिंदु, और केवल मूलबिंदु। बाक़ी हर जगह आलेख एक सरल रेखा है जिसकी ढाल पूरी तरह ठीक −1 या +1 है। शून्य पर वे दोनों ढालें मिलती हैं और असहमत होती हैं, अतः बाएँ और दाएँ के अंतर-भागफल अलग-अलग संख्याओं की ओर बढ़ते हैं और कोई एक अवकलज अस्तित्व में नहीं आता। यही एक बिंदु अध्याय का स्थायी प्रतिउदाहरण है: यह दिखाता है कि संततता अवकलनीयता का अर्थ नहीं देती, क्योंकि यहाँ फलन ठीक उसी जगह संतत है जहाँ वह अवकलनीय होने में विफल है। निहितार्थ केवल एक ही दिशा में चलता है। (0 मान लेता है कि संततता काफ़ी है।)"
+        },
+        "mr": {
+          "stem": "f(x) = |x| सर्वत्र संतत आहे. ते किती बिंदूंवर अवकलनीय नाही?",
+          "choices": [
+            "3",
+            "1",
+            "2",
+            "0"
+          ],
+          "solution": "एक — आदिबिंदू, आणि फक्त आदिबिंदूच. इतरत्र सर्वत्र आलेख एक सरळ रेषा आहे जिचा उतार पूर्णपणे व्यवस्थित −1 किंवा +1 आहे. शून्यावर ते दोन उतार भेटतात आणि असहमत होतात, म्हणून डावा आणि उजवा फरक-भागाकार वेगवेगळ्या संख्यांकडे जातात आणि कोणताही एक अवकलज अस्तित्वात येत नाही. हाच एक बिंदू अध्यायाचे कायमचे प्रतिउदाहरण आहे: तो दाखवतो की संततता अवकलनीयतेचा अर्थ देत नाही, कारण इथे फलन नेमके त्याच ठिकाणी संतत आहे जिथे ते अवकलनीय होण्यात अपयशी ठरते. निहितार्थ फक्त एकाच दिशेने चालतो. (0 गृहीत धरते की संततता पुरेशी आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "f(x) = kx for x ≤ 2 and f(x) = 3x − 2 for x > 2. What value of k makes f continuous at x = 2?",
+      "choices": [
+        "1",
+        "4",
+        "3",
+        "2"
+      ],
+      "answerIndex": 3,
+      "solution": "The two pieces must meet. From the right the limit is 3(2) − 2 = 4; from the left the value is k(2) = 2k; setting 2k = 4 gives k = 2. What makes this question worth doing is the method rather than the answer: a piecewise function is continuous at a join exactly when the two formulas AGREE there, so the condition is an equation, and an equation can be solved for whatever is unknown. That turns continuity from a property one checks into a constraint one imposes, which is how these questions are always set. (3 reads the coefficient off the second piece.)",
+      "checkExpr": "(3*2-2)/2",
+      "translations": {
+        "hi": {
+          "stem": "x ≤ 2 के लिए f(x) = kx और x > 2 के लिए f(x) = 3x − 2. k का कौन-सा मान f को x = 2 पर संतत बनाता है?",
+          "choices": [
+            "1",
+            "4",
+            "3",
+            "2"
+          ],
+          "solution": "दोनों टुकड़ों को मिलना चाहिए। दाएँ से सीमा है 3(2) − 2 = 4; बाएँ से मान है k(2) = 2k; 2k = 4 रखने पर k = 2. इस प्रश्न को करने लायक़ उत्तर नहीं, विधि बनाती है: कोई खंडश: फलन जोड़ पर ठीक तभी संतत है जब दोनों सूत्र वहाँ सहमत हों, अतः शर्त एक समीकरण है, और समीकरण को जो भी अज्ञात हो उसके लिए हल किया जा सकता है। इससे संततता जाँची जाने वाली विशेषता से लगाई जाने वाली अड़चन बन जाती है, और ये प्रश्न सदा ऐसे ही पूछे जाते हैं। (3 दूसरे टुकड़े से गुणांक पढ़ लेता है।)"
+        },
+        "mr": {
+          "stem": "x ≤ 2 साठी f(x) = kx आणि x > 2 साठी f(x) = 3x − 2. k चे कोणते मूल्य f ला x = 2 वर संतत करते?",
+          "choices": [
+            "1",
+            "4",
+            "3",
+            "2"
+          ],
+          "solution": "दोन्ही तुकडे भेटले पाहिजेत. उजवीकडून सीमा आहे 3(2) − 2 = 4; डावीकडून मूल्य आहे k(2) = 2k; 2k = 4 ठेवल्यास k = 2. हा प्रश्न करण्याजोगा उत्तराने नव्हे तर पद्धतीने होतो: एखादे खंडशः फलन जोडावर नेमके तेव्हाच संतत असते जेव्हा दोन्ही सूत्रे तिथे सहमत असतात, म्हणून अट एक समीकरण आहे, आणि समीकरण जे काही अज्ञात असेल त्यासाठी सोडवता येते. यामुळे संततता तपासायच्या गुणधर्मापासून लादायच्या बंधनात बदलते, आणि हे प्रश्न नेहमी असेच विचारले जातात. (3 दुसऱ्या तुकड्यातून गुणांक वाचते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Using the chain rule, what is the derivative of (2x + 1)³ at x = 0?",
+      "choices": [
+        "3",
+        "6",
+        "2",
+        "12"
+      ],
+      "answerIndex": 1,
+      "solution": "Outer derivative times inner derivative: 3(2x + 1)² × 2, which at x = 0 is 3 × 1 × 2 = 6. The factor of 2 is the whole content of the chain rule and the whole of what gets forgotten — 3 is the answer of somebody who differentiated the outside and stopped, as if the inside were simply x. A useful way to feel why the 2 is there: the inner function runs twice as fast as x does, so the outer function is fed its input at double speed, and rates multiply. (12 differentiates twice.)",
+      "checkExpr": "3*1*2",
+      "translations": {
+        "hi": {
+          "stem": "शृंखला नियम से (2x + 1)³ का अवकलज x = 0 पर कितना है?",
+          "choices": [
+            "3",
+            "6",
+            "2",
+            "12"
+          ],
+          "solution": "बाहरी अवकलज गुणा भीतरी अवकलज: 3(2x + 1)² × 2, जो x = 0 पर 3 × 1 × 2 = 6 है। 2 का गुणक शृंखला नियम की पूरी सामग्री है और पूरी तरह वही है जो भुला दिया जाता है — 3 उसका उत्तर है जिसने बाहर का अवकलन किया और रुक गया, मानो भीतर बस x हो। 2 क्यों है यह महसूस करने का एक उपयोगी तरीक़ा: भीतरी फलन x से दुगनी तेज़ चलता है, अतः बाहरी फलन को उसका निवेश दुगनी गति से दिया जाता है, और दरें गुणा होती हैं। (12 दो बार अवकलन करता है।)"
+        },
+        "mr": {
+          "stem": "साखळी नियम वापरून (2x + 1)³ चा अवकलज x = 0 वर किती?",
+          "choices": [
+            "3",
+            "6",
+            "2",
+            "12"
+          ],
+          "solution": "बाह्य अवकलज गुणिले आंतरिक अवकलज: 3(2x + 1)² × 2, जे x = 0 वर 3 × 1 × 2 = 6 आहे. 2 चा गुणक साखळी नियमाचा अख्खा आशय आहे आणि नेमके तेच विसरले जाते — 3 हे त्याचे उत्तर आहे ज्याने बाहेरचे अवकलन केले आणि थांबले, जणू आत केवळ x असावा. 2 का आहे हे जाणवण्याचा उपयुक्त मार्ग: आंतरिक फलन x पेक्षा दुप्पट वेगाने चालते, म्हणून बाह्य फलनाला त्याचे निविष्ट दुप्पट वेगाने दिले जाते, आणि दर गुणले जातात. (12 दोनदा अवकलन करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "f(x) = x³ − 3x. Rolle's theorem guarantees a point with zero derivative between the roots x = 0 and x = √3. How many such points does the whole interval [−√3, √3] contain?",
+      "choices": [
+        "3",
+        "0",
+        "1",
+        "2"
+      ],
+      "answerIndex": 3,
+      "solution": "f'(x) = 3x² − 3 = 0 gives x = ±1, so there are 2 of them, one in each half. The point of asking it this way is to separate what Rolle's theorem PROMISES from what is actually there. The theorem is an existence statement: given equal values at two endpoints it guarantees at least one interior point with zero derivative, and it says nothing whatever about how many. Here the honest count is two, and a theorem that promised exactly one would have been false. Existence theorems are cheap to satisfy and easy to over-read, and this chapter is full of them. (1 answers what the theorem promises rather than what the function does.)",
+      "checkExpr": "3-1",
+      "translations": {
+        "hi": {
+          "stem": "f(x) = x³ − 3x. रोल प्रमेय मूलों x = 0 और x = √3 के बीच शून्य अवकलज वाले एक बिंदु की गारंटी देता है। पूरे अंतराल [−√3, √3] में ऐसे कितने बिंदु हैं?",
+          "choices": [
+            "3",
+            "0",
+            "1",
+            "2"
+          ],
+          "solution": "f'(x) = 3x² − 3 = 0 से x = ±1 मिलता है, अतः वे 2 हैं, हर आधे में एक। इस तरह पूछने का मक़सद यह अलग करना है कि रोल प्रमेय क्या वादा करता है और असल में है क्या। प्रमेय अस्तित्व का कथन है: दो सिरों पर बराबर मान मिलने पर वह शून्य अवकलज वाले कम से कम एक भीतरी बिंदु की गारंटी देता है, और कितने हैं इस बारे में कुछ नहीं कहता। यहाँ ईमानदार गिनती दो है, और ठीक एक का वादा करने वाला प्रमेय ग़लत होता। अस्तित्व-प्रमेय पूरा करना सस्ता है और उन्हें ज़्यादा पढ़ लेना आसान, और यह अध्याय उनसे भरा है। (1 उत्तर देता है कि प्रमेय क्या वादा करता है, न कि फलन क्या करता है।)"
+        },
+        "mr": {
+          "stem": "f(x) = x³ − 3x. रोलचे प्रमेय मुळे x = 0 आणि x = √3 यांदरम्यान शून्य अवकलज असलेल्या एका बिंदूची हमी देते. संपूर्ण अंतराल [−√3, √3] मध्ये असे किती बिंदू आहेत?",
+          "choices": [
+            "3",
+            "0",
+            "1",
+            "2"
+          ],
+          "solution": "f'(x) = 3x² − 3 = 0 वरून x = ±1 मिळते, म्हणून ते 2 आहेत, प्रत्येक अर्ध्यात एक. अशा प्रकारे विचारण्याचा हेतू हे वेगळे करणे आहे की रोलचे प्रमेय काय वचन देते आणि प्रत्यक्षात काय आहे. प्रमेय अस्तित्वाचे विधान आहे: दोन टोकांवर समान मूल्ये मिळाल्यास ते शून्य अवकलज असलेल्या किमान एका आंतरिक बिंदूची हमी देते, आणि किती आहेत याबद्दल काहीही सांगत नाही. इथे प्रामाणिक मोजणी दोन आहे, आणि नेमक्या एकाचे वचन देणारे प्रमेय चुकीचे ठरले असते. अस्तित्व-प्रमेये पूर्ण करणे स्वस्त आहे आणि ती जास्त वाचणे सोपे, आणि हा अध्याय त्यांनी भरलेला आहे. (1 प्रमेय काय वचन देते ते उत्तर देते, फलन काय करते ते नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "If y = eˣ, the derivative equals the function itself. How many times must y be differentiated before the result differs from y?",
+      "choices": [
+        "1",
+        "4",
+        "0",
+        "2"
+      ],
+      "answerIndex": 2,
+      "solution": "Zero, because it never differs — no number of differentiations changes eˣ, so there is no such count and the honest answer is that the process never gets there. That is a fixed point of the differentiation operator, and it is why e is the base worth defining. Any other exponential aˣ differentiates to aˣ ln a, picking up a constant factor each time; e is precisely the base for which that factor is 1. The number e is not chosen for elegance, then, but for this: it is the unique base at which growth rate and size coincide. (1 answers as though the first derivative were something new.)",
+      "checkExpr": "1-1",
+      "translations": {
+        "hi": {
+          "stem": "यदि y = eˣ, तो अवकलज स्वयं फलन के बराबर है। परिणाम y से भिन्न होने से पहले y का कितनी बार अवकलन करना होगा?",
+          "choices": [
+            "1",
+            "4",
+            "0",
+            "2"
+          ],
+          "solution": "शून्य, क्योंकि वह कभी भिन्न होता ही नहीं — कितनी भी बार अवकलन करने से eˣ नहीं बदलता, अतः ऐसी कोई गिनती नहीं और ईमानदार उत्तर यह है कि प्रक्रिया वहाँ पहुँचती ही नहीं। यह अवकलन संकारक का स्थिर बिंदु है, और इसीलिए e परिभाषित करने लायक़ आधार है। कोई भी दूसरा चरघातांकी aˣ अवकलित होकर aˣ ln a बनता है, हर बार एक अचर गुणक उठा लेता है; e ठीक वही आधार है जिसके लिए वह गुणक 1 है। अतः संख्या e सुंदरता के लिए नहीं चुनी गई, बल्कि इसीलिए: यह वह अकेला आधार है जिस पर वृद्धि-दर और आकार एक हो जाते हैं। (1 ऐसे उत्तर देता है मानो पहला अवकलज कुछ नया हो।)"
+        },
+        "mr": {
+          "stem": "जर y = eˣ, तर अवकलज स्वतः फलनाइतकाच आहे. निकाल y हून वेगळा होण्याआधी y चे किती वेळा अवकलन करावे लागेल?",
+          "choices": [
+            "1",
+            "4",
+            "0",
+            "2"
+          ],
+          "solution": "शून्य, कारण तो कधीच वेगळा होत नाही — कितीही वेळा अवकलन केल्याने eˣ बदलत नाही, म्हणून अशी कोणतीही मोजणी नाही आणि प्रामाणिक उत्तर हे आहे की प्रक्रिया तिथवर पोहोचतच नाही. हा अवकलन संकारकाचा स्थिर बिंदू आहे, आणि म्हणूनच e हा परिभाषित करण्याजोगा आधार आहे. इतर कोणतेही घातांकी aˣ अवकलित होऊन aˣ ln a बनते, दरवेळी एक अचल गुणक उचलते; e नेमका तोच आधार आहे ज्यासाठी तो गुणक 1 आहे. म्हणून संख्या e सौंदर्यासाठी निवडलेली नाही, तर यासाठी: तो एकमेव आधार आहे ज्यावर वाढीचा दर आणि आकार एकरूप होतात. (1 असे उत्तर देते जणू पहिला अवकलज काहीतरी नवीन असावा.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "f(x) = x² sin(1/x) for x ≠ 0 and f(0) = 0. Counting continuity and differentiability at x = 0 as two separate properties, how many of them does f have there?",
+      "choices": [
+        "3",
+        "0",
+        "2",
+        "1"
+      ],
+      "answerIndex": 2,
+      "solution": "Both, which is the surprise. The sine oscillates infinitely often as x approaches zero and never settles, so one expects trouble; but it is bounded between −1 and 1, and x² crushes anything bounded down to zero. So the limit is 0 = f(0) and the function is continuous. For differentiability, the difference quotient is x² sin(1/x)/x = x sin(1/x), and x crushes the bounded factor again, so the derivative at zero exists and equals 0. Two things are worth taking from this. First, an infinitely wild oscillation is not by itself a barrier — what matters is whether something is shrinking faster than the wildness grows, and squeezing a bounded factor is the standard way to show that. Second, note how close the margin is: with x¹ instead of x² the function is still continuous but the difference quotient becomes sin(1/x), which has no limit, and differentiability fails. One power of x separates the two properties, which is as concrete a demonstration as one could want that they are genuinely different conditions. (1 assumes the oscillation must break one of them.)",
+      "checkExpr": "1+1",
+      "translations": {
+        "hi": {
+          "stem": "x ≠ 0 के लिए f(x) = x² sin(1/x) और f(0) = 0. x = 0 पर संततता और अवकलनीयता को दो अलग गुण मानते हुए, f के पास वहाँ इनमें से कितने हैं?",
+          "choices": [
+            "3",
+            "0",
+            "2",
+            "1"
+          ],
+          "solution": "दोनों, और यही अचरज है। x के शून्य की ओर बढ़ने पर ज्या अनंत बार दोलन करती है और कभी थमती नहीं, अतः दिक़्क़त की आशंका होती है; पर वह −1 और 1 के बीच परिबद्ध है, और x² किसी भी परिबद्ध चीज़ को कुचलकर शून्य कर देता है। अतः सीमा 0 = f(0) है और फलन संतत है। अवकलनीयता के लिए अंतर-भागफल है x² sin(1/x)/x = x sin(1/x), और x फिर परिबद्ध गुणक को कुचल देता है, अतः शून्य पर अवकलज मौजूद है और 0 के बराबर है। इससे दो बातें लेने लायक़ हैं। पहली, अनंत उन्मत्त दोलन अपने आप में बाधा नहीं है — मायने यह रखता है कि क्या कुछ उस उन्मत्तता से तेज़ी से सिकुड़ रहा है, और परिबद्ध गुणक को दबाना यह दिखाने का मानक तरीक़ा है। दूसरी, ध्यान दो कि हाशिया कितना पतला है: x² की जगह x¹ हो तो फलन तब भी संतत है पर अंतर-भागफल sin(1/x) बन जाता है, जिसकी कोई सीमा नहीं, और अवकलनीयता विफल हो जाती है। x की एक घात दोनों गुणों को अलग करती है, जो इस बात का उतना ही ठोस प्रदर्शन है जितना कोई चाहे कि वे सचमुच अलग शर्तें हैं। (1 मान लेता है कि दोलन को इनमें से एक तोड़ना ही होगा।)"
+        },
+        "mr": {
+          "stem": "x ≠ 0 साठी f(x) = x² sin(1/x) आणि f(0) = 0. x = 0 वर संततता आणि अवकलनीयता हे दोन वेगळे गुणधर्म मानल्यास, f कडे तिथे यांपैकी किती आहेत?",
+          "choices": [
+            "3",
+            "0",
+            "2",
+            "1"
+          ],
+          "solution": "दोन्ही, आणि हेच आश्चर्य आहे. x शून्याकडे जाताना ज्या अनंत वेळा दोलन करते आणि कधीच स्थिरावत नाही, म्हणून अडचणीची शंका येते; पण ती −1 आणि 1 दरम्यान बद्ध आहे, आणि x² कोणत्याही बद्ध गोष्टीला चिरडून शून्य करते. म्हणून सीमा 0 = f(0) आहे आणि फलन संतत आहे. अवकलनीयतेसाठी फरक-भागाकार आहे x² sin(1/x)/x = x sin(1/x), आणि x पुन्हा बद्ध गुणकाला चिरडते, म्हणून शून्यावर अवकलज अस्तित्वात आहे आणि 0 इतका आहे. यातून दोन गोष्टी घेण्याजोग्या आहेत. पहिली, अनंत उन्मत्त दोलन स्वतःच अडथळा नाही — महत्त्वाचे हे की काहीतरी त्या उन्मत्तपणाहून वेगाने आकुंचन पावत आहे का, आणि बद्ध गुणकाला दाबणे हा ते दाखवण्याचा प्रमाण मार्ग आहे. दुसरी, समास किती अरुंद आहे ते लक्षात घ्या: x² ऐवजी x¹ असल्यास फलन तरीही संतत आहे पण फरक-भागाकार sin(1/x) बनतो, ज्याला सीमा नाही, आणि अवकलनीयता अपयशी ठरते. x ची एक घात दोन्ही गुणधर्म वेगळे करते, जे ते खरोखर वेगळ्या अटी आहेत याचे कोणालाही हवे तितके ठोस प्रात्यक्षिक आहे. (1 गृहीत धरते की दोलनाने यांपैकी एक मोडलेच पाहिजे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The greatest-integer function ⌊x⌋ is discontinuous at every integer. How many points of discontinuity does it have in the interval [0, 5]?",
+      "choices": [
+        "6",
+        "4",
+        "5",
+        "3"
+      ],
+      "answerIndex": 2,
+      "solution": "The integers in [0, 5] number six, but 0 is not a point of discontinuity of the function restricted to this interval: there is nothing to its left inside the interval, the right-hand limit is 0, and that matches the value. So the count is 5 — the integers 1, 2, 3, 4 and 5. This is the whole lesson of the question, and it is not a quibble: continuity at an endpoint is ONE-SIDED, because a limit can only be taken through points where the function is defined. The same function on the whole real line would be discontinuous at 0 too, so the answer changes with the domain even though the formula does not. Domain is part of a function, and questions like this are the reason to say so. (6 counts the integers and forgets that an endpoint is judged from one side only.)",
+      "checkExpr": "6-1",
+      "translations": {
+        "hi": {
+          "stem": "महत्तम पूर्णांक फलन ⌊x⌋ हर पूर्णांक पर असंतत है। अंतराल [0, 5] में इसके कितने असंततता-बिंदु हैं?",
+          "choices": [
+            "6",
+            "4",
+            "5",
+            "3"
+          ],
+          "solution": "[0, 5] के पूर्णांक छह हैं, पर 0 इस अंतराल तक सीमित फलन का असंततता-बिंदु नहीं है: अंतराल के भीतर उसके बाएँ कुछ है ही नहीं, दायाँ सीमांत 0 है, और वह मान से मेल खाता है। अतः गिनती 5 है — पूर्णांक 1, 2, 3, 4 और 5. यही प्रश्न का पूरा सबक़ है, और यह मीनमेख नहीं: सिरे पर संततता एकपक्षीय होती है, क्योंकि सीमा केवल उन बिंदुओं से होकर ली जा सकती है जहाँ फलन परिभाषित है। वही फलन पूरी वास्तविक रेखा पर 0 पर भी असंतत होता, अतः सूत्र न बदलने पर भी उत्तर प्रांत के साथ बदल जाता है। प्रांत फलन का हिस्सा है, और ऐसे प्रश्न ही यह कहने का कारण हैं। (6 पूर्णांक गिन लेता है और भूल जाता है कि सिरे को केवल एक ओर से आँका जाता है।)"
+        },
+        "mr": {
+          "stem": "महत्तम पूर्णांक फलन ⌊x⌋ प्रत्येक पूर्णांकावर असंतत आहे. अंतराल [0, 5] मध्ये त्याचे किती असंतता-बिंदू आहेत?",
+          "choices": [
+            "6",
+            "4",
+            "5",
+            "3"
+          ],
+          "solution": "[0, 5] मधील पूर्णांक सहा आहेत, पण 0 हा या अंतरालापुरत्या मर्यादित फलनाचा असंतता-बिंदू नाही: अंतरालाच्या आत त्याच्या डावीकडे काहीच नाही, उजवी सीमा 0 आहे, आणि ती मूल्याशी जुळते. म्हणून मोजणी 5 आहे — पूर्णांक 1, 2, 3, 4 आणि 5. हाच प्रश्नाचा अख्खा धडा आहे, आणि ही कुरबुर नाही: टोकावरील संततता एकबाजूची असते, कारण सीमा केवळ त्याच बिंदूंमधून घेता येते जिथे फलन परिभाषित आहे. तेच फलन संपूर्ण वास्तव रेषेवर 0 वरही असंतत असते, म्हणून सूत्र न बदलताही उत्तर प्रांतासोबत बदलते. प्रांत फलनाचा भाग आहे, आणि असे प्रश्नच हे सांगण्याचे कारण आहेत. (6 पूर्णांक मोजते आणि विसरते की टोक फक्त एका बाजूने तपासले जाते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A function is continuous on [0, 1] but differentiable at no point of it. Of the two implications 'differentiable ⇒ continuous' and 'continuous ⇒ differentiable', how many does such a function disprove?",
+      "choices": [
+        "3",
+        "0",
+        "2",
+        "1"
+      ],
+      "answerIndex": 3,
+      "solution": "One — the second, and only the second. The first implication is a theorem and no example can touch it: differentiability at a point requires the difference quotient to converge, and that forces the numerator to zero, which is continuity. What such a function kills is the converse, and it kills it far more thoroughly than |x| does. |x| shows the converse fails at one point out of infinitely many, which leaves open the comfortable reading that non-differentiability is a rare defect at isolated corners. Weierstrass's function, built from an infinite sum of ever-faster, ever-smaller cosine waves, is continuous everywhere and has a corner at every single point — no interval of it, however short, contains a place where a tangent line exists. The historical value of the example is exactly this: for most of the eighteenth century mathematicians treated continuity and differentiability as practically interchangeable, drew their intuitions from curves one can sketch, and the sketchable curves were misleading them. And the deeper point, established later, is that this behaviour is not the exception but the rule — in a precise measure-theoretic sense, ALMOST EVERY continuous function is nowhere differentiable, and the smooth curves of a textbook are the vanishingly rare special cases. The picture in one's head was not merely incomplete; it was inverted. (2 supposes a strong enough counterexample overturns both directions, which no example can do to a proved theorem.)",
+      "checkExpr": "2-1",
+      "translations": {
+        "hi": {
+          "stem": "कोई फलन [0, 1] पर संतत है पर उसके किसी भी बिंदु पर अवकलनीय नहीं। दो निहितार्थों 'अवकलनीय ⇒ संतत' और 'संतत ⇒ अवकलनीय' में से ऐसा फलन कितनों को ग़लत सिद्ध करता है?",
+          "choices": [
+            "3",
+            "0",
+            "2",
+            "1"
+          ],
+          "solution": "एक — दूसरा, और केवल दूसरा। पहला निहितार्थ प्रमेय है और कोई उदाहरण उसे छू नहीं सकता: किसी बिंदु पर अवकलनीयता के लिए अंतर-भागफल का अभिसरण चाहिए, और वह अंश को शून्य होने पर मजबूर करता है, जो संततता है। ऐसा फलन जिसे मारता है वह विलोम है, और वह उसे |x| से कहीं अधिक पूरी तरह मारता है। |x| दिखाता है कि विलोम अनंत में से एक बिंदु पर विफल होता है, जिससे यह आरामदेह पाठ खुला रह जाता है कि अनवकलनीयता अलग-थलग कोनों पर एक दुर्लभ दोष है। वाइयरश्ट्रास का फलन, उत्तरोत्तर तेज़ और छोटी कोज्या तरंगों के अनंत योग से बना, हर जगह संतत है और हर एक बिंदु पर उसका कोना है — उसका कोई अंतराल, चाहे कितना छोटा, ऐसी जगह नहीं रखता जहाँ स्पर्शरेखा हो। उदाहरण का ऐतिहासिक मूल्य ठीक यही है: अठारहवीं सदी के अधिकांश समय गणितज्ञ संततता और अवकलनीयता को व्यावहारिक रूप से अदल-बदल मानते रहे, अपनी अंतर्दृष्टि उन वक्रों से लेते रहे जिन्हें खींचा जा सकता है, और खींचे जा सकने वाले वक्र उन्हें भरमा रहे थे। और गहरी बात, जो बाद में स्थापित हुई, यह है कि यह व्यवहार अपवाद नहीं नियम है — एक ठीक-ठीक माप-सैद्धांतिक अर्थ में लगभग हर संतत फलन कहीं भी अवकलनीय नहीं, और पाठ्यपुस्तक के चिकने वक्र लुप्तप्राय दुर्लभ विशेष मामले हैं। दिमाग़ की तस्वीर महज़ अधूरी नहीं थी; वह उलटी थी। (2 मान लेता है कि पर्याप्त सशक्त प्रतिउदाहरण दोनों दिशाएँ पलट देता है, जो कोई उदाहरण किसी सिद्ध प्रमेय के साथ नहीं कर सकता।)"
+        },
+        "mr": {
+          "stem": "एखादे फलन [0, 1] वर संतत आहे पण त्याच्या कोणत्याही बिंदूवर अवकलनीय नाही. 'अवकलनीय ⇒ संतत' आणि 'संतत ⇒ अवकलनीय' या दोन निहितार्थांपैकी असे फलन किती खोटे ठरवते?",
+          "choices": [
+            "3",
+            "0",
+            "2",
+            "1"
+          ],
+          "solution": "एक — दुसरा, आणि फक्त दुसराच. पहिला निहितार्थ प्रमेय आहे आणि कोणतेही उदाहरण त्याला स्पर्श करू शकत नाही: एखाद्या बिंदूवरील अवकलनीयतेसाठी फरक-भागाकाराचे अभिसरण लागते, आणि ते अंशाला शून्य होण्यास भाग पाडते, जी संततता आहे. असे फलन ज्याला मारते तो व्यत्यास आहे, आणि ते त्याला |x| हून कितीतरी अधिक पूर्णपणे मारते. |x| दाखवते की व्यत्यास अनंतांपैकी एका बिंदूवर अपयशी ठरतो, ज्यामुळे हे सोयीस्कर वाचन खुले राहते की अनवकलनीयता वेगळ्या कोपऱ्यांवरील दुर्मीळ दोष आहे. वायरश्ट्रासचे फलन, उत्तरोत्तर वेगवान आणि लहान कोज्या लहरींच्या अनंत बेरजेतून बनलेले, सर्वत्र संतत आहे आणि प्रत्येक एका बिंदूवर त्याला कोपरा आहे — त्याचे कोणतेही अंतराल, कितीही लहान असो, स्पर्शरेषा असलेली जागा बाळगत नाही. उदाहरणाचे ऐतिहासिक मूल्य नेमके हेच आहे: अठराव्या शतकातील बहुतांश काळ गणितज्ञ संततता आणि अवकलनीयता व्यवहारात अदलाबदल करण्याजोग्या मानत राहिले, आपली अंतर्दृष्टी काढता येणाऱ्या वक्रांतून घेत राहिले, आणि काढता येणारे वक्र त्यांना फसवत होते. आणि नंतर सिद्ध झालेला अधिक खोल मुद्दा हा की हे वर्तन अपवाद नसून नियम आहे — एका नेमक्या माप-सैद्धांतिक अर्थाने जवळजवळ प्रत्येक संतत फलन कुठेही अवकलनीय नाही, आणि पाठ्यपुस्तकातील गुळगुळीत वक्र हे लुप्तप्राय दुर्मीळ विशेष प्रसंग आहेत. डोक्यातले चित्र केवळ अपूर्ण नव्हते; ते उलटे होते. (2 गृहीत धरते की पुरेसे सशक्त प्रतिउदाहरण दोन्ही दिशा उलटवते, जे कोणतेही उदाहरण सिद्ध प्रमेयाशी करू शकत नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "For f(x) = x³ on [−1, 1], the mean value theorem's conclusion holds at c where 3c² = 1. Now consider g(x) = |x| on the same interval, where no such c exists. How many of the theorem's three hypotheses does g fail?",
+      "choices": [
+        "1",
+        "3",
+        "0",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "One. The mean value theorem asks for three things: continuity on the closed interval, differentiability on the open interval, and — this is the third, and it is a hypothesis about the interval rather than about the function — that the interval be a genuine one with a < b. g is continuous on [−1, 1] and the interval is fine; what it fails is differentiability on the open interval, because of the corner at 0. Exactly one hypothesis breaks, and the conclusion collapses completely: g(1) = g(−1) = 1, so the required slope is 0, and yet g' is −1 to the left of the origin and +1 to its right and never 0 anywhere. There is a habit worth building here, and it is the reason for asking the question this way round rather than asking what the theorem says. When a theorem's conclusion visibly fails, the useful move is not to doubt the theorem but to go back and find WHICH hypothesis was not met — and the answer is almost always exactly one, sitting at a single point. A theorem is not a general truth with exceptions; it is a contract, and a broken contract has a specific breach. Locating that breach teaches more than the statement does, because it shows what each condition was there to buy: continuity buys the endpoints, differentiability buys the interior, and here the interior is where the price was not paid. (3 supposes that a failed conclusion means every hypothesis failed.)",
+      "checkExpr": "3-2",
+      "translations": {
+        "hi": {
+          "stem": "[−1, 1] पर f(x) = x³ के लिए माध्यमान प्रमेय का निष्कर्ष उस c पर लागू होता है जहाँ 3c² = 1. अब उसी अंतराल पर g(x) = |x| लो, जहाँ ऐसा कोई c नहीं है। g प्रमेय की तीन परिकल्पनाओं में से कितनी में विफल होता है?",
+          "choices": [
+            "1",
+            "3",
+            "0",
+            "2"
+          ],
+          "solution": "एक। माध्यमान प्रमेय तीन चीज़ें माँगता है: बंद अंतराल पर संततता, खुले अंतराल पर अवकलनीयता, और — यह तीसरी है, और यह फलन के बजाय अंतराल के बारे में परिकल्पना है — कि अंतराल a < b वाला असली अंतराल हो। g, [−1, 1] पर संतत है और अंतराल ठीक है; वह विफल होता है खुले अंतराल पर अवकलनीयता में, 0 के कोने के कारण। ठीक एक परिकल्पना टूटती है, और निष्कर्ष पूरी तरह ढह जाता है: g(1) = g(−1) = 1, अतः अपेक्षित ढाल 0 है, फिर भी g' मूलबिंदु के बाएँ −1 और दाएँ +1 है और कहीं भी 0 नहीं। यहाँ बनाने लायक़ एक आदत है, और इसी वजह से प्रश्न प्रमेय क्या कहता है के बजाय इस ओर से पूछा गया है। जब किसी प्रमेय का निष्कर्ष खुलकर विफल हो, तो उपयोगी क़दम प्रमेय पर संदेह करना नहीं बल्कि लौटकर यह ढूँढ़ना है कि कौन-सी परिकल्पना पूरी नहीं हुई — और उत्तर लगभग हमेशा ठीक एक होता है, किसी एक बिंदु पर बैठा। प्रमेय अपवादों वाला सामान्य सत्य नहीं; वह अनुबंध है, और टूटे अनुबंध का एक विशिष्ट उल्लंघन होता है। उस उल्लंघन को ढूँढ़ना कथन से अधिक सिखाता है, क्योंकि वह दिखाता है कि हर शर्त किसलिए वहाँ थी: संततता सिरे ख़रीदती है, अवकलनीयता भीतर ख़रीदती है, और यहाँ भीतर ही वह जगह है जहाँ क़ीमत नहीं चुकाई गई। (3 मान लेता है कि विफल निष्कर्ष का अर्थ है हर परिकल्पना विफल हुई।)"
+        },
+        "mr": {
+          "stem": "[−1, 1] वर f(x) = x³ साठी मध्यमान प्रमेयाचा निष्कर्ष त्या c वर लागू होतो जिथे 3c² = 1. आता त्याच अंतरालावर g(x) = |x| घ्या, जिथे असा कोणताही c नाही. g प्रमेयाच्या तीन गृहीतकांपैकी किती अपयशी ठरते?",
+          "choices": [
+            "1",
+            "3",
+            "0",
+            "2"
+          ],
+          "solution": "एक. मध्यमान प्रमेय तीन गोष्टी मागते: बंद अंतरालावर संततता, खुल्या अंतरालावर अवकलनीयता, आणि — ही तिसरी आहे, आणि हे फलनाऐवजी अंतरालाबद्दलचे गृहीतक आहे — की अंतराल a < b असलेले खरे अंतराल असावे. g हे [−1, 1] वर संतत आहे आणि अंतराल ठीक आहे; ते अपयशी ठरते खुल्या अंतरालावरील अवकलनीयतेत, 0 वरील कोपऱ्यामुळे. नेमके एक गृहीतक मोडते, आणि निष्कर्ष पूर्णपणे कोसळतो: g(1) = g(−1) = 1, म्हणून अपेक्षित उतार 0 आहे, तरीही g' आदिबिंदूच्या डावीकडे −1 आणि उजवीकडे +1 आहे आणि कुठेही 0 नाही. इथे बनवण्याजोगी एक सवय आहे, आणि याच कारणाने प्रश्न प्रमेय काय सांगते याऐवजी या बाजूने विचारला आहे. जेव्हा एखाद्या प्रमेयाचा निष्कर्ष उघडपणे अपयशी ठरतो, तेव्हा उपयुक्त पाऊल प्रमेयावर शंका घेणे नव्हे तर मागे जाऊन कोणते गृहीतक पूर्ण झाले नाही हे शोधणे आहे — आणि उत्तर जवळजवळ नेहमी नेमके एकच असते, एका बिंदूवर बसलेले. प्रमेय हे अपवादांसह असलेले सर्वसाधारण सत्य नाही; तो करार आहे, आणि मोडलेल्या कराराचा एक विशिष्ट भंग असतो. तो भंग शोधणे विधानाहून अधिक शिकवते, कारण ते दाखवते की प्रत्येक अट कशासाठी तिथे होती: संततता टोके विकत घेते, अवकलनीयता आतील भाग विकत घेते, आणि इथे आतील भागच ती जागा आहे जिथे किंमत भरली गेली नाही. (3 गृहीत धरते की अपयशी निष्कर्षाचा अर्थ प्रत्येक गृहीतक अपयशी ठरले.)"
+        }
+      }
+    }
+  ]
+}

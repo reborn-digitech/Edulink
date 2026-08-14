@@ -1,0 +1,513 @@
+{
+  "slug": "maths-12-integrals",
+  "subject": "MATHS",
+  "classLevel": 12,
+  "chapter": "Chapter 7 — Integrals",
+  "name": "Integrals",
+  "summary": "An inverse of differentiation that loses exactly one thing and recovers it at both limits: why the constant is unavoidable in one kind of integral and invisible in the other, why a running total is itself a function whose derivative is where it started, why an area under a hyperbola turns products into sums, and why one perfectly ordinary curve has no antiderivative that can be written down at all.",
+  "position": 7,
+  "translations": {
+    "hi": {
+      "name": "समाकल",
+      "summary": "अवकलन का ऐसा प्रतिलोम जो ठीक एक चीज़ खोता है और दोनों सीमाओं पर उसे वापस पा लेता है: अचर एक प्रकार के समाकल में अनिवार्य और दूसरे में अदृश्य क्यों है, चलता योग स्वयं ऐसा फलन क्यों है जिसका अवकलज वहीं है जहाँ से वह चला था, अतिपरवलय के नीचे का क्षेत्रफल गुणनफलों को योगों में क्यों बदलता है, और एक बिलकुल साधारण वक्र का ऐसा कोई प्रतिअवकलज क्यों नहीं जिसे लिखा जा सके।"
+    },
+    "mr": {
+      "name": "समाकले",
+      "summary": "अवकलनाचा असा व्यस्त जो नेमकी एक गोष्ट गमावतो आणि दोन्ही सीमांवर ती परत मिळवतो: अचल एका प्रकारच्या समाकलात अटळ आणि दुसऱ्यात अदृश्य का आहे, चालती बेरीज स्वतः असे फलन का आहे ज्याचा अवकलज जिथून ती निघाली तिथेच आहे, अतिवर्तुळखंडाखालील क्षेत्रफळ गुणाकारांना बेरजांत का बदलते, आणि एका अगदी साधारण वक्राचा असा कोणताही प्रतिअवकलज का नाही जो लिहिता येईल."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "In ∫ xⁿ dx = x^(n+1)/(n+1) + C, what is the new exponent when n = 4?",
+      "choices": [
+        "3",
+        "4",
+        "5",
+        "20"
+      ],
+      "answerIndex": 2,
+      "solution": "4 + 1 = 5. Integration raises the exponent where differentiation lowered it, which is the first sign that the two operations undo each other. Note the direction carefully, because 3 is the answer of somebody running the power rule the differentiating way — the two rules look almost identical on the page and differ only in whether you add one or subtract one.",
+      "checkExpr": "4+1",
+      "translations": {
+        "hi": {
+          "stem": "∫ xⁿ dx = x^(n+1)/(n+1) + C में, n = 4 पर नया घातांक क्या है?",
+          "choices": [
+            "3",
+            "4",
+            "5",
+            "20"
+          ],
+          "solution": "4 + 1 = 5. समाकलन घातांक बढ़ाता है जहाँ अवकलन उसे घटाता था, और यही पहला संकेत है कि दोनों संक्रियाएँ एक-दूसरे को उलटती हैं। दिशा ध्यान से देखो, क्योंकि 3 उसका उत्तर है जो घात नियम को अवकलन की दिशा में चला रहा है — दोनों नियम काग़ज़ पर लगभग एक जैसे दिखते हैं और केवल इसमें भिन्न हैं कि तुम एक जोड़ते हो या घटाते हो।"
+        },
+        "mr": {
+          "stem": "∫ xⁿ dx = x^(n+1)/(n+1) + C मध्ये, n = 4 वर नवा घातांक किती?",
+          "choices": [
+            "3",
+            "4",
+            "5",
+            "20"
+          ],
+          "solution": "4 + 1 = 5. समाकलन घातांक वाढवते जिथे अवकलन तो घटवत होते, आणि हाच पहिला संकेत आहे की दोन्ही क्रिया एकमेकांना उलटवतात. दिशा काळजीपूर्वक पाहा, कारण 3 हे त्याचे उत्तर आहे जो घात नियम अवकलनाच्या दिशेने चालवत आहे — दोन्ही नियम कागदावर जवळजवळ सारखेच दिसतात आणि फक्त तुम्ही एक जोडता की वजा करता यात वेगळे आहेत."
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the value of the definite integral of 2x from 0 to 3?",
+      "choices": [
+        "6",
+        "3",
+        "9",
+        "18"
+      ],
+      "answerIndex": 2,
+      "solution": "An antiderivative of 2x is x², and 3² − 0² = 9. Check it geometrically: the region is a triangle with base 3 and height 6, whose area is 9. The two agree, and that agreement is not a coincidence — it is the fundamental theorem, which is the reason an area can be computed by evaluating an antiderivative twice instead of by adding up infinitely many strips. (6 gives the height of the triangle.)",
+      "checkExpr": "3*3-0",
+      "translations": {
+        "hi": {
+          "stem": "0 से 3 तक 2x के निश्चित समाकल का मान क्या है?",
+          "choices": [
+            "6",
+            "3",
+            "9",
+            "18"
+          ],
+          "solution": "2x का प्रतिअवकलज x² है, और 3² − 0² = 9. ज्यामितीय रूप से जाँचो: क्षेत्र आधार 3 और ऊँचाई 6 वाला त्रिभुज है, जिसका क्षेत्रफल 9 है। दोनों सहमत हैं, और यह सहमति संयोग नहीं — यह मूल प्रमेय है, जो कारण है कि क्षेत्रफल अनंत पट्टियाँ जोड़ने के बजाय प्रतिअवकलज का दो बार मान निकालकर गणित किया जा सकता है। (6 त्रिभुज की ऊँचाई देता है।)"
+        },
+        "mr": {
+          "stem": "0 ते 3 पर्यंत 2x च्या निश्चित समाकलाचे मूल्य किती?",
+          "choices": [
+            "6",
+            "3",
+            "9",
+            "18"
+          ],
+          "solution": "2x चा प्रतिअवकलज x² आहे, आणि 3² − 0² = 9. भूमितीय रीत्या तपासा: प्रदेश आधार 3 आणि उंची 6 असलेला त्रिकोण आहे, ज्याचे क्षेत्रफळ 9 आहे. दोन्ही सहमत आहेत, आणि ही सहमती योगायोग नाही — हे मूलभूत प्रमेय आहे, जे कारण आहे की क्षेत्रफळ अनंत पट्ट्या जोडण्याऐवजी प्रतिअवकलजाचे दोनदा मूल्य काढून काढता येते. (6 त्रिकोणाची उंची देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Two functions differ by a constant. How many different values can the definite integral of their common derivative between two fixed limits take?",
+      "choices": [
+        "2",
+        "1",
+        "3",
+        "0"
+      ],
+      "answerIndex": 1,
+      "solution": "One. The constant appears at both limits and cancels in the subtraction, so it makes no difference to a definite integral at all. This is the reason C can be dropped without a second thought when limits are present, and it explains the shape of the whole chapter: the constant is real and unavoidable in an indefinite integral, and completely invisible in a definite one. (2 assumes two different antiderivatives must give two different answers.)",
+      "checkExpr": "2-1",
+      "translations": {
+        "hi": {
+          "stem": "दो फलन एक अचर से भिन्न हैं। दो नियत सीमाओं के बीच उनके साझा अवकलज का निश्चित समाकल कितने भिन्न मान ले सकता है?",
+          "choices": [
+            "2",
+            "1",
+            "3",
+            "0"
+          ],
+          "solution": "एक। अचर दोनों सीमाओं पर आता है और घटाव में कट जाता है, अतः निश्चित समाकल पर उसका कोई फ़र्क़ पड़ता ही नहीं। यही कारण है कि सीमाएँ मौजूद होने पर C को बिना दूसरी सोच के छोड़ा जा सकता है, और इससे पूरे अध्याय का आकार समझ आता है: अनिश्चित समाकल में अचर असली और अनिवार्य है, और निश्चित में पूरी तरह अदृश्य। (2 मान लेता है कि दो अलग प्रतिअवकलज दो अलग उत्तर देंगे।)"
+        },
+        "mr": {
+          "stem": "दोन फलने एका अचलाने वेगळी आहेत. दोन निश्चित सीमांदरम्यान त्यांच्या समान अवकलजाचे निश्चित समाकल किती वेगवेगळी मूल्ये घेऊ शकते?",
+          "choices": [
+            "2",
+            "1",
+            "3",
+            "0"
+          ],
+          "solution": "एक. अचल दोन्ही सीमांवर येतो आणि वजाबाकीत रद्द होतो, म्हणून निश्चित समाकलावर त्याचा काहीच फरक पडत नाही. हेच कारण आहे की सीमा उपस्थित असताना C ला दुसऱ्या विचाराशिवाय सोडता येते, आणि यातून अख्ख्या अध्यायाचा आकार समजतो: अनिश्चित समाकलात अचल खरा आणि अटळ आहे, आणि निश्चितात पूर्णपणे अदृश्य. (2 गृहीत धरते की दोन वेगळे प्रतिअवकलज दोन वेगळी उत्तरे देतील.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the definite integral of x² from 0 to 3?",
+      "choices": [
+        "18",
+        "3",
+        "27",
+        "9"
+      ],
+      "answerIndex": 3,
+      "solution": "The antiderivative is x³/3, so the value is 27/3 − 0 = 9. Worth noticing: the region sits inside a 3-by-9 rectangle of area 27, and the curve claims exactly a third of it. That fraction is not special to 3 — for any upper limit the parabola takes one-third of its bounding rectangle, which is the geometric content of the exponent rule and something Archimedes established for this very curve two thousand years before anyone wrote an integral sign. (27 forgets to divide by the new exponent.)",
+      "checkExpr": "27/3",
+      "translations": {
+        "hi": {
+          "stem": "0 से 3 तक x² का निश्चित समाकल क्या है?",
+          "choices": [
+            "18",
+            "3",
+            "27",
+            "9"
+          ],
+          "solution": "प्रतिअवकलज x³/3 है, अतः मान 27/3 − 0 = 9 है। ध्यान देने लायक़: क्षेत्र 27 क्षेत्रफल वाले 3-गुणा-9 आयत के भीतर बैठता है, और वक्र उसका ठीक तिहाई हिस्सा लेता है। वह भिन्न 3 के लिए ख़ास नहीं — किसी भी ऊपरी सीमा के लिए परवलय अपने घेरने वाले आयत का एक-तिहाई लेता है, जो घातांक नियम की ज्यामितीय सामग्री है और जिसे आर्किमिडीज़ ने इसी वक्र के लिए किसी के समाकल-चिह्न लिखने से दो हज़ार साल पहले स्थापित कर दिया था। (27 नए घातांक से भाग देना भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "0 ते 3 पर्यंत x² चे निश्चित समाकल किती?",
+          "choices": [
+            "18",
+            "3",
+            "27",
+            "9"
+          ],
+          "solution": "प्रतिअवकलज x³/3 आहे, म्हणून मूल्य 27/3 − 0 = 9 आहे. लक्षात घेण्याजोगे: प्रदेश 27 क्षेत्रफळाच्या 3-गुणिले-9 आयताच्या आत बसतो, आणि वक्र त्याचा नेमका तृतीयांश घेतो. तो अपूर्णांक 3 साठी खास नाही — कोणत्याही वरच्या सीमेसाठी वर्तुळखंड आपल्या वेढणाऱ्या आयताचा एक-तृतीयांश घेतो, जो घातांक नियमाचा भूमितीय आशय आहे आणि जो आर्किमिडीजने याच वक्रासाठी कोणी समाकल-चिन्ह लिहिण्याच्या दोन हजार वर्षे आधी प्रस्थापित केला होता. (27 नव्या घातांकाने भागणे विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Using the substitution u = x² + 1, what is the definite integral of 2x/(x² + 1) from 0 to 2, expressed as ln of which number?",
+      "choices": [
+        "2",
+        "4",
+        "5",
+        "1"
+      ],
+      "answerIndex": 2,
+      "solution": "With u = x² + 1 the differential du is 2x dx, which is exactly the numerator, so the integral becomes ∫ du/u = ln u. The limits travel with the substitution: x from 0 to 2 sends u from 1 to 5, and ln 5 − ln 1 = ln 5. Changing the limits rather than substituting back is the more reliable habit, because it removes the step everyone forgets. (4 uses x² alone and leaves the +1 behind.)",
+      "checkExpr": "2*2+1",
+      "translations": {
+        "hi": {
+          "stem": "प्रतिस्थापन u = x² + 1 से, 0 से 2 तक 2x/(x² + 1) का निश्चित समाकल किस संख्या के ln के रूप में है?",
+          "choices": [
+            "2",
+            "4",
+            "5",
+            "1"
+          ],
+          "solution": "u = x² + 1 के साथ अवकल du है 2x dx, जो ठीक अंश है, अतः समाकल ∫ du/u = ln u बन जाता है। सीमाएँ प्रतिस्थापन के साथ यात्रा करती हैं: x का 0 से 2 होना u को 1 से 5 भेजता है, और ln 5 − ln 1 = ln 5. वापस प्रतिस्थापित करने के बजाय सीमाएँ बदल देना अधिक भरोसेमंद आदत है, क्योंकि वह उस क़दम को हटा देती है जिसे हर कोई भूलता है। (4 अकेला x² लेता है और +1 पीछे छोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "प्रतिस्थापन u = x² + 1 वापरून, 0 ते 2 पर्यंत 2x/(x² + 1) चे निश्चित समाकल कोणत्या संख्येच्या ln स्वरूपात आहे?",
+          "choices": [
+            "2",
+            "4",
+            "5",
+            "1"
+          ],
+          "solution": "u = x² + 1 सह अवकल du हा 2x dx आहे, जो नेमका अंश आहे, म्हणून समाकल ∫ du/u = ln u बनते. सीमा प्रतिस्थापनासोबत प्रवास करतात: x चे 0 ते 2 होणे u ला 1 ते 5 पाठवते, आणि ln 5 − ln 1 = ln 5. परत प्रतिस्थापित करण्याऐवजी सीमा बदलणे अधिक विश्वासार्ह सवय आहे, कारण ती प्रत्येकजण विसरणारे पाऊल काढून टाकते. (4 एकटा x² घेते आणि +1 मागे सोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the definite integral of sin x from 0 to π?",
+      "choices": [
+        "4",
+        "2",
+        "1",
+        "0"
+      ],
+      "answerIndex": 1,
+      "solution": "The antiderivative is −cos x, so the value is −cos π + cos 0 = 1 + 1 = 2. The answer is worth remembering for its plainness: a whole arch of a sine wave, a shape with π and transcendence written all over it, encloses an area of exactly 2. Extend the limits to 2π and the answer becomes 0, because the second arch lies below the axis and the integral counts it negatively — which is the first hint that a definite integral is not the same thing as an area. (0 answers the two-arch question by mistake.)",
+      "checkExpr": "1+1",
+      "translations": {
+        "hi": {
+          "stem": "0 से π तक sin x का निश्चित समाकल क्या है?",
+          "choices": [
+            "4",
+            "2",
+            "1",
+            "0"
+          ],
+          "solution": "प्रतिअवकलज −cos x है, अतः मान −cos π + cos 0 = 1 + 1 = 2 है। उत्तर अपनी सादगी के लिए याद रखने लायक़ है: ज्या-तरंग का पूरा मेहराब, जिस आकृति पर π और अनतिक्रम्यता लिखी है, ठीक 2 क्षेत्रफल घेरता है। सीमाएँ 2π तक बढ़ाओ और उत्तर 0 हो जाता है, क्योंकि दूसरा मेहराब अक्ष के नीचे है और समाकल उसे ऋणात्मक गिनता है — यही पहला संकेत है कि निश्चित समाकल और क्षेत्रफल एक चीज़ नहीं। (0 ग़लती से दो-मेहराब वाले प्रश्न का उत्तर देता है।)"
+        },
+        "mr": {
+          "stem": "0 ते π पर्यंत sin x चे निश्चित समाकल किती?",
+          "choices": [
+            "4",
+            "2",
+            "1",
+            "0"
+          ],
+          "solution": "प्रतिअवकलज −cos x आहे, म्हणून मूल्य −cos π + cos 0 = 1 + 1 = 2 आहे. उत्तर आपल्या साधेपणासाठी लक्षात ठेवण्याजोगे आहे: ज्या-लहरीची अख्खी कमान, ज्या आकृतीवर π आणि अपार्यता लिहिली आहे, नेमके 2 क्षेत्रफळ वेढते. सीमा 2π पर्यंत वाढवा आणि उत्तर 0 होते, कारण दुसरी कमान अक्षाखाली आहे आणि समाकल तिला ऋण मोजते — हाच पहिला संकेत आहे की निश्चित समाकल आणि क्षेत्रफळ एक गोष्ट नाही. (0 चुकून दोन-कमानीच्या प्रश्नाचे उत्तर देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Using integration by parts, what is the definite integral of x eˣ from 0 to 1, expressed as which number times e minus 1?",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "0"
+      ],
+      "answerIndex": 0,
+      "solution": "Taking u = x and dv = eˣ dx gives x eˣ − ∫ eˣ dx = x eˣ − eˣ, which between 0 and 1 is (e − e) − (0 − 1) = 1. So the value is 1 × e − 1 in the sense asked, since e − e leaves nothing and the whole answer comes from the lower limit. The choice of which factor to call u is where these succeed or fail: picking u = x means differentiating it to 1 and the remaining integral becomes trivial, whereas picking u = eˣ leaves an integral harder than the one you started with. Parts does not simplify by itself — it trades one integral for another, and the skill is entirely in making the trade favourable. (2 double-counts the boundary term.)",
+      "checkExpr": "2-1",
+      "translations": {
+        "hi": {
+          "stem": "खंडश: समाकलन से, 0 से 1 तक x eˣ का निश्चित समाकल कितने गुना e घटा 1 है?",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "0"
+          ],
+          "solution": "u = x और dv = eˣ dx लेने पर x eˣ − ∫ eˣ dx = x eˣ − eˣ मिलता है, जो 0 और 1 के बीच (e − e) − (0 − 1) = 1 है। अतः पूछे गए अर्थ में मान 1 × e − 1 है, क्योंकि e − e कुछ नहीं छोड़ता और पूरा उत्तर निचली सीमा से आता है। किस गुणक को u कहें यह चुनाव ही वह जगह है जहाँ ये सफल या विफल होते हैं: u = x चुनने का अर्थ है उसे अवकलित करके 1 करना और बचा समाकल तुच्छ हो जाना, जबकि u = eˣ चुनने पर जिससे शुरू किया उससे कठिन समाकल बचता है। खंडश: समाकलन अपने आप सरल नहीं करता — वह एक समाकल के बदले दूसरा देता है, और पूरा कौशल उस सौदे को अनुकूल बनाने में है। (2 सीमा-पद को दो बार गिन लेता है।)"
+        },
+        "mr": {
+          "stem": "खंडशः समाकलन वापरून, 0 ते 1 पर्यंत x eˣ चे निश्चित समाकल किती पट e वजा 1 आहे?",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "0"
+          ],
+          "solution": "u = x आणि dv = eˣ dx घेतल्यास x eˣ − ∫ eˣ dx = x eˣ − eˣ मिळते, जे 0 आणि 1 दरम्यान (e − e) − (0 − 1) = 1 आहे. म्हणून विचारलेल्या अर्थाने मूल्य 1 × e − 1 आहे, कारण e − e काहीच सोडत नाही आणि अख्खे उत्तर खालच्या सीमेतून येते. कोणत्या गुणकाला u म्हणावे ही निवडच ती जागा आहे जिथे हे यशस्वी वा अपयशी होतात: u = x निवडणे म्हणजे त्याचे अवकलन करून 1 करणे आणि उरलेले समाकल क्षुल्लक होणे, तर u = eˣ निवडल्यास ज्याने सुरुवात केली त्याहून कठीण समाकल उरते. खंडशः समाकलन स्वतःहून सोपे करत नाही — ते एका समाकलाच्या बदल्यात दुसरे देते, आणि अख्खे कौशल तो सौदा अनुकूल करण्यात आहे. (2 सीमा-पद दोनदा मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The definite integral of x³ from −2 to 2 equals which number?",
+      "choices": [
+        "4",
+        "16",
+        "8",
+        "0"
+      ],
+      "answerIndex": 3,
+      "solution": "Zero, and the antiderivative confirms it: x⁴/4 evaluated at 2 and at −2 gives 4 − 4 = 0. But the symmetry argument is faster and more useful. x³ is odd, meaning f(−x) = −f(x), so every contribution on the right is matched by an equal and opposite one on the left, and a symmetric interval cancels them all. Spotting oddness before integrating turns this question into no work at all, and the same check saves real effort on integrals that have no elementary antiderivative to fall back on. Note what it does NOT say: the area enclosed is 8, four above the axis and four below. Zero is the integral, not the area. (8 gives the area, which is a different question.)",
+      "checkExpr": "4-4",
+      "translations": {
+        "hi": {
+          "stem": "−2 से 2 तक x³ का निश्चित समाकल किस संख्या के बराबर है?",
+          "choices": [
+            "4",
+            "16",
+            "8",
+            "0"
+          ],
+          "solution": "शून्य, और प्रतिअवकलज इसकी पुष्टि करता है: x⁴/4 का मान 2 और −2 पर 4 − 4 = 0 देता है। पर सममिति का तर्क तेज़ और अधिक उपयोगी है। x³ विषम है, यानी f(−x) = −f(x), अतः दाईं ओर के हर योगदान का बाईं ओर बराबर और विपरीत जोड़ा है, और सममित अंतराल उन सबको काट देता है। समाकलन से पहले विषमता पकड़ लेना इस प्रश्न को शून्य काम में बदल देता है, और वही जाँच ऐसे समाकलों पर असली मेहनत बचाती है जिनके पास लौटने को कोई प्रारंभिक प्रतिअवकलज नहीं। ध्यान दो कि यह क्या नहीं कहता: घिरा क्षेत्रफल 8 है, चार अक्ष के ऊपर और चार नीचे। शून्य समाकल है, क्षेत्रफल नहीं। (8 क्षेत्रफल देता है, जो अलग प्रश्न है।)"
+        },
+        "mr": {
+          "stem": "−2 ते 2 पर्यंत x³ चे निश्चित समाकल कोणत्या संख्येइतके आहे?",
+          "choices": [
+            "4",
+            "16",
+            "8",
+            "0"
+          ],
+          "solution": "शून्य, आणि प्रतिअवकलज याची पुष्टी करतो: x⁴/4 चे मूल्य 2 आणि −2 वर 4 − 4 = 0 देते. पण सममितीचा युक्तिवाद वेगवान आणि अधिक उपयुक्त आहे. x³ विषम आहे, म्हणजे f(−x) = −f(x), म्हणून उजवीकडील प्रत्येक योगदानाला डावीकडे समान आणि विरुद्ध जोडीदार आहे, आणि सममित अंतराल त्या सर्वांना रद्द करते. समाकलनाआधी विषमता ओळखणे या प्रश्नाला शून्य कामात बदलते, आणि तीच तपासणी अशा समाकलांवर खरे कष्ट वाचवते ज्यांना परतण्यासाठी कोणताही प्राथमिक प्रतिअवकलज नाही. लक्षात घ्या की ते काय सांगत नाही: वेढलेले क्षेत्रफळ 8 आहे, चार अक्षाच्या वर आणि चार खाली. शून्य हे समाकल आहे, क्षेत्रफळ नव्हे. (8 क्षेत्रफळ देते, जो वेगळा प्रश्न आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "The definite integral of cos x from 0 to 2π is 0, and the integral of the same function from 0 to π/2 is 1. How many times does the running integral return to 0 as the upper limit sweeps from 0 to 2π?",
+      "choices": [
+        "3",
+        "2",
+        "4",
+        "1"
+      ],
+      "answerIndex": 1,
+      "solution": "Twice — at π and at 2π. The running integral is sin x, which starts at 0, climbs to 1 at π/2, comes back to 0 at π, drops to −1 at 3π/2, and returns to 0 at 2π; the start does not count as a return. What makes this question worth asking is the shift of view it forces. A definite integral with fixed limits is a number, but let the upper limit vary and it becomes a FUNCTION of that limit — and this function's derivative is the original integrand, which is the first fundamental theorem read from the other side. Every question about where the accumulated total peaks or vanishes is then a question about the antiderivative's graph, and here that graph is simply the sine curve one already knows. (1 counts only the endpoint.)",
+      "checkExpr": "3-1",
+      "translations": {
+        "hi": {
+          "stem": "0 से 2π तक cos x का निश्चित समाकल 0 है, और उसी फलन का 0 से π/2 तक समाकल 1 है। ऊपरी सीमा के 0 से 2π तक बहने पर चलता समाकल कितनी बार 0 पर लौटता है?",
+          "choices": [
+            "3",
+            "2",
+            "4",
+            "1"
+          ],
+          "solution": "दो बार — π पर और 2π पर। चलता समाकल sin x है, जो 0 से शुरू होता है, π/2 पर 1 तक चढ़ता है, π पर 0 पर लौटता है, 3π/2 पर −1 तक गिरता है, और 2π पर 0 पर लौट आता है; शुरुआत लौटना नहीं गिनी जाती। इस प्रश्न को पूछने लायक़ वह दृष्टि-परिवर्तन बनाता है जो यह थोपता है। नियत सीमाओं वाला निश्चित समाकल एक संख्या है, पर ऊपरी सीमा को बदलने दो और वह उस सीमा का फलन बन जाता है — और इस फलन का अवकलज मूल समाकल्य है, जो प्रथम मूल प्रमेय को दूसरी ओर से पढ़ना है। तब संचित योग कहाँ शिखर छूता है या लुप्त होता है, हर ऐसा प्रश्न प्रतिअवकलज के आलेख का प्रश्न है, और यहाँ वह आलेख बस वही ज्या-वक्र है जिसे तुम पहले से जानते हो। (1 केवल अंतिम बिंदु गिनता है।)"
+        },
+        "mr": {
+          "stem": "0 ते 2π पर्यंत cos x चे निश्चित समाकल 0 आहे, आणि त्याच फलनाचे 0 ते π/2 पर्यंत समाकल 1 आहे. वरची सीमा 0 ते 2π पर्यंत सरकताना चालते समाकल किती वेळा 0 वर परत येते?",
+          "choices": [
+            "3",
+            "2",
+            "4",
+            "1"
+          ],
+          "solution": "दोनदा — π वर आणि 2π वर. चालते समाकल sin x आहे, जे 0 पासून सुरू होते, π/2 वर 1 पर्यंत चढते, π वर 0 वर परत येते, 3π/2 वर −1 पर्यंत घसरते, आणि 2π वर 0 वर परत येते; सुरुवात परतणे म्हणून मोजली जात नाही. हा प्रश्न विचारण्याजोगा तो दृष्टी-बदल बनवतो जो हा लादतो. निश्चित सीमा असलेले निश्चित समाकल एक संख्या आहे, पण वरची सीमा बदलू द्या आणि ते त्या सीमेचे फलन बनते — आणि या फलनाचा अवकलज मूळ समाकल्य आहे, जे प्रथम मूलभूत प्रमेय दुसऱ्या बाजूने वाचणे आहे. मग संचित बेरीज कुठे शिखर गाठते वा लोपते, असा प्रत्येक प्रश्न प्रतिअवकलजाच्या आलेखाचा प्रश्न आहे, आणि इथे तो आलेख म्हणजे तुम्हाला आधीच माहीत असलेला ज्या-वक्रच आहे. (1 फक्त अंतिम बिंदू मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "The integral of 1/x from 1 to a equals 1 when a = e. Using the property that this integral turns products into sums, what does the integral from 1 to e² equal?",
+      "choices": [
+        "4",
+        "2",
+        "3",
+        "1"
+      ],
+      "answerIndex": 1,
+      "solution": "2, because the integral from 1 to e² splits at e into the integral from 1 to e plus the integral from e to e², and the second piece equals the first by a scaling argument: substituting x = et maps the interval [e, e²] onto [1, e] and leaves 1/x dx unchanged, since the e cancels between numerator and denominator. So the two pieces are 1 each and the total is 2. That invariance is the entire reason the logarithm exists as a function: 1/x is the one power of x whose integral is unchanged by rescaling, so the area from 1 to a depends on the RATIO a rather than any absolute size, and a quantity that turns multiplication into addition is what a logarithm is. Note that this argument defines ln without ever mentioning exponentials — historically the logarithm was found this way round, as the area under a hyperbola, and only later recognised as the inverse of eˣ. (1 stops after the first half.)",
+      "checkExpr": "1+1",
+      "translations": {
+        "hi": {
+          "stem": "1 से a तक 1/x का समाकल a = e पर 1 के बराबर है। इस गुण से कि यह समाकल गुणनफलों को योगों में बदलता है, 1 से e² तक का समाकल किसके बराबर है?",
+          "choices": [
+            "4",
+            "2",
+            "3",
+            "1"
+          ],
+          "solution": "2, क्योंकि 1 से e² तक का समाकल e पर बँटकर 1 से e और e से e² के समाकलों का योग बनता है, और दूसरा टुकड़ा पहले के बराबर है, एक स्केलिंग तर्क से: x = et प्रतिस्थापित करने पर अंतराल [e, e²] का प्रतिबिंब [1, e] बनता है और 1/x dx अपरिवर्तित रहता है, क्योंकि e अंश और हर के बीच कट जाता है। अतः दोनों टुकड़े 1-1 हैं और कुल 2. वही अपरिवर्तनीयता पूरा कारण है कि लघुगणक एक फलन के रूप में मौजूद है: 1/x, x की वह अकेली घात है जिसका समाकल पुनःस्केलन से नहीं बदलता, अतः 1 से a तक का क्षेत्रफल किसी निरपेक्ष आकार के बजाय अनुपात a पर निर्भर है, और गुणा को जोड़ में बदलने वाली राशि ही लघुगणक है। ध्यान दो कि यह तर्क चरघातांकी का उल्लेख किए बिना ln परिभाषित कर देता है — ऐतिहासिक रूप से लघुगणक इसी ओर से मिला था, अतिपरवलय के नीचे के क्षेत्रफल के रूप में, और बाद में ही eˣ का प्रतिलोम पहचाना गया। (1 पहले आधे के बाद रुक जाता है।)"
+        },
+        "mr": {
+          "stem": "1 ते a पर्यंत 1/x चे समाकल a = e वर 1 इतके आहे. या गुणधर्माने की हे समाकल गुणाकारांना बेरजांत बदलते, 1 ते e² पर्यंतचे समाकल कशाइतके आहे?",
+          "choices": [
+            "4",
+            "2",
+            "3",
+            "1"
+          ],
+          "solution": "2, कारण 1 ते e² पर्यंतचे समाकल e वर विभागून 1 ते e आणि e ते e² यांच्या समाकलांची बेरीज बनते, आणि दुसरा तुकडा पहिल्याइतका आहे, एका प्रमाणीकरण युक्तिवादाने: x = et प्रतिस्थापित केल्यास अंतराल [e, e²] चे प्रतिबिंब [1, e] बनते आणि 1/x dx अपरिवर्तित राहते, कारण e अंश आणि छेद यांदरम्यान रद्द होतो. म्हणून दोन्ही तुकडे 1-1 आहेत आणि एकूण 2. तीच अपरिवर्तनीयता हे अख्खे कारण आहे की लघुगणक एक फलन म्हणून अस्तित्वात आहे: 1/x ही x ची एकमेव घात आहे जिचे समाकल पुनःप्रमाणीकरणाने बदलत नाही, म्हणून 1 ते a पर्यंतचे क्षेत्रफळ कोणत्याही निरपेक्ष आकाराऐवजी गुणोत्तर a वर अवलंबून आहे, आणि गुणाकाराला बेरजेत बदलणारी राशी म्हणजेच लघुगणक. लक्षात घ्या की हा युक्तिवाद घातांकीचा उल्लेख न करता ln परिभाषित करतो — ऐतिहासिक दृष्ट्या लघुगणक याच बाजूने सापडला होता, अतिवर्तुळखंडाखालील क्षेत्रफळ म्हणून, आणि नंतरच eˣ चा व्यस्त म्हणून ओळखला गेला. (1 पहिल्या अर्ध्यानंतर थांबते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The definite integral of 1/x² from −1 to 1 formally evaluates to −2 by the antiderivative −1/x, yet the function is positive everywhere it is defined. How many of the fundamental theorem's hypotheses does this calculation violate?",
+      "choices": [
+        "0",
+        "1",
+        "3",
+        "2"
+      ],
+      "answerIndex": 1,
+      "solution": "One. The theorem requires the integrand to be continuous on the closed interval of integration, and 1/x² is undefined at 0, which sits squarely inside [−1, 1]. That single failure is enough to make the whole computation meaningless, and the answer it produces is not merely inaccurate but impossible: a positive function cannot enclose a negative area. Two lessons come out of this, and the second is the important one. The first is the obvious warning to check continuity before applying the theorem. The second is subtler: the absurd sign is what makes the error DETECTABLE. Had the false answer come out positive — as it does for some similar integrals — nothing on the page would have looked wrong, and the mistake would have passed. A wrong method that produces plausible output is far more dangerous than one that produces nonsense, and the habit worth building is checking a result against something known independently of the method that produced it. Here the independent fact is a sign, which costs nothing to check. (0 accepts the formal manipulation because every symbol was moved correctly.)",
+      "checkExpr": "2-1",
+      "translations": {
+        "hi": {
+          "stem": "−1 से 1 तक 1/x² का निश्चित समाकल प्रतिअवकलज −1/x से औपचारिक रूप से −2 निकलता है, फिर भी फलन जहाँ भी परिभाषित है वहाँ धनात्मक है। यह गणना मूल प्रमेय की कितनी परिकल्पनाओं का उल्लंघन करती है?",
+          "choices": [
+            "0",
+            "1",
+            "3",
+            "2"
+          ],
+          "solution": "एक। प्रमेय माँगता है कि समाकल्य समाकलन के बंद अंतराल पर संतत हो, और 1/x², 0 पर अपरिभाषित है, जो [−1, 1] के ठीक भीतर बैठा है। वह अकेली विफलता पूरी गणना को निरर्थक करने के लिए काफ़ी है, और वह जो उत्तर देती है वह महज़ अशुद्ध नहीं बल्कि असंभव है: धनात्मक फलन ऋणात्मक क्षेत्रफल नहीं घेर सकता। इससे दो सबक़ निकलते हैं, और दूसरा ही महत्वपूर्ण है। पहला स्पष्ट चेतावनी है कि प्रमेय लगाने से पहले संततता जाँचो। दूसरा सूक्ष्म है: बेतुका चिह्न ही त्रुटि को पकड़ने योग्य बनाता है। यदि झूठा उत्तर धनात्मक निकला होता — जैसा कुछ मिलते-जुलते समाकलों में होता है — तो काग़ज़ पर कुछ भी ग़लत न दिखता, और भूल निकल जाती। जो ग़लत विधि विश्वसनीय परिणाम देती है वह बकवास देने वाली से कहीं अधिक ख़तरनाक है, और बनाने लायक़ आदत यह है कि परिणाम को उस विधि से स्वतंत्र किसी ज्ञात चीज़ के विरुद्ध जाँचो जिसने उसे पैदा किया। यहाँ स्वतंत्र तथ्य एक चिह्न है, जिसे जाँचने में कुछ नहीं लगता। (0 औपचारिक हेरफेर स्वीकार कर लेता है क्योंकि हर चिह्न ठीक से हिलाया गया था।)"
+        },
+        "mr": {
+          "stem": "−1 ते 1 पर्यंत 1/x² चे निश्चित समाकल प्रतिअवकलज −1/x ने औपचारिकपणे −2 निघते, तरीही फलन जिथे परिभाषित आहे तिथे धन आहे. ही गणना मूलभूत प्रमेयाच्या किती गृहीतकांचे उल्लंघन करते?",
+          "choices": [
+            "0",
+            "1",
+            "3",
+            "2"
+          ],
+          "solution": "एक. प्रमेय मागते की समाकल्य समाकलनाच्या बंद अंतरालावर संतत असावा, आणि 1/x² हे 0 वर अपरिभाषित आहे, जो [−1, 1] च्या नेमक्या आत बसला आहे. ते एकटे अपयश अख्खी गणना निरर्थक करण्यास पुरेसे आहे, आणि ती जे उत्तर देते ते केवळ चुकीचे नव्हे तर अशक्य आहे: धन फलन ऋण क्षेत्रफळ वेढू शकत नाही. यातून दोन धडे निघतात, आणि दुसराच महत्त्वाचा आहे. पहिला स्पष्ट इशारा आहे की प्रमेय लावण्याआधी संततता तपासा. दुसरा सूक्ष्म आहे: विसंगत चिन्हच त्रुटीला पकडण्याजोगे बनवते. जर खोटे उत्तर धन निघाले असते — जसे काही सारख्या समाकलांत होते — तर कागदावर काहीच चुकीचे दिसले नसते, आणि चूक निसटली असती. जी चुकीची पद्धत विश्वसनीय निकाल देते ती मूर्खपणा देणाऱ्याहून कितीतरी अधिक धोकादायक आहे, आणि बनवण्याजोगी सवय ही की निकालाला त्याला निर्माण करणाऱ्या पद्धतीपासून स्वतंत्र अशा ज्ञात गोष्टीविरुद्ध तपासा. इथे स्वतंत्र तथ्य एक चिन्ह आहे, जे तपासायला काहीच लागत नाही. (0 औपचारिक हाताळणी स्वीकारते कारण प्रत्येक चिन्ह बरोबर हलवले गेले होते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Of the four functions eˣ, sin x, 1/x and e^(−x²), how many have an antiderivative expressible in elementary functions?",
+      "choices": [
+        "4",
+        "1",
+        "3",
+        "2"
+      ],
+      "answerIndex": 2,
+      "solution": "Three — the first three give eˣ, −cos x and ln|x|, and e^(−x²) does not. That last one is not a gap in anyone's technique. Liouville proved in the 1830s that no finite combination of powers, roots, exponentials, logarithms and trigonometric functions differentiates to e^(−x²), so the search is not merely hard, it is provably hopeless. This is worth dwelling on because of the asymmetry it exposes between the two operations of the calculus. Differentiation is an algorithm: every elementary function has an elementary derivative, and the rules compose mechanically, so a machine can do it and a student can always finish. Integration has no such guarantee — the elementary functions are simply not closed under it, and the ones that escape are not exotic. e^(−x²) is the normal distribution, the single most-used curve in all of statistics, and every probability table ever printed exists precisely because its integral cannot be written down and has to be computed numerically instead. The tables are not a convenience; they are a consequence of a theorem. (4 assumes that a function elementary enough to write must have an antiderivative one can write.)",
+      "checkExpr": "4-1",
+      "translations": {
+        "hi": {
+          "stem": "चार फलनों eˣ, sin x, 1/x और e^(−x²) में से कितनों का प्रतिअवकलज प्रारंभिक फलनों में व्यक्त किया जा सकता है?",
+          "choices": [
+            "4",
+            "1",
+            "3",
+            "2"
+          ],
+          "solution": "तीन — पहले तीन eˣ, −cos x और ln|x| देते हैं, और e^(−x²) नहीं देता। वह आख़िरी किसी की तकनीक की कमी नहीं है। लियूविल ने 1830 के दशक में सिद्ध किया कि घातों, मूलों, चरघातांकियों, लघुगणकों और त्रिकोणमितीय फलनों का कोई परिमित संयोजन अवकलित होकर e^(−x²) नहीं बनता, अतः खोज महज़ कठिन नहीं, प्रमाणित रूप से निष्फल है। इस पर ठहरना ज़रूरी है क्योंकि यह कलन की दो संक्रियाओं के बीच की असममिति उजागर करता है। अवकलन एक कलनविधि है: हर प्रारंभिक फलन का प्रारंभिक अवकलज है, और नियम यंत्रवत जुड़ते हैं, अतः मशीन कर सकती है और विद्यार्थी सदा पूरा कर सकता है। समाकलन में ऐसी कोई गारंटी नहीं — प्रारंभिक फलन उसके अंतर्गत बस बंद नहीं हैं, और जो बच निकलते हैं वे विचित्र नहीं हैं। e^(−x²) प्रसामान्य बंटन है, समस्त सांख्यिकी का सबसे अधिक बरता जाने वाला अकेला वक्र, और अब तक छपी हर प्रायिकता सारणी ठीक इसीलिए मौजूद है कि उसका समाकल लिखा नहीं जा सकता और उसे संख्यात्मक रूप से गणित करना पड़ता है। सारणियाँ सुविधा नहीं; वे एक प्रमेय का परिणाम हैं। (4 मान लेता है कि लिखने लायक़ प्रारंभिक फलन का प्रतिअवकलज भी लिखा जा सकेगा।)"
+        },
+        "mr": {
+          "stem": "eˣ, sin x, 1/x आणि e^(−x²) या चार फलनांपैकी कितींचा प्रतिअवकलज प्राथमिक फलनांत व्यक्त करता येतो?",
+          "choices": [
+            "4",
+            "1",
+            "3",
+            "2"
+          ],
+          "solution": "तीन — पहिली तीन eˣ, −cos x आणि ln|x| देतात, आणि e^(−x²) देत नाही. ते शेवटचे कोणाच्या तंत्रातील उणीव नाही. लिउव्हिलने 1830 च्या दशकात सिद्ध केले की घात, मुळे, घातांकी, लघुगणक आणि त्रिकोणमितीय फलनांचे कोणतेही सांत संयोजन अवकलित होऊन e^(−x²) बनत नाही, म्हणून शोध केवळ कठीण नव्हे, सिद्धपणे निष्फळ आहे. यावर थांबणे आवश्यक आहे कारण हे कलनाच्या दोन क्रियांमधील असममिती उघड करते. अवकलन ही कलनविधी आहे: प्रत्येक प्राथमिक फलनाचा प्राथमिक अवकलज आहे, आणि नियम यांत्रिकपणे जोडले जातात, म्हणून यंत्र करू शकते आणि विद्यार्थी नेहमी पूर्ण करू शकतो. समाकलनात अशी कोणतीही हमी नाही — प्राथमिक फलने त्याखाली केवळ बंद नाहीत, आणि जी निसटतात ती विचित्र नाहीत. e^(−x²) हे प्रसामान्य वितरण आहे, अख्ख्या संख्याशास्त्रातील सर्वाधिक वापरला जाणारा एकटा वक्र, आणि आजवर छापलेली प्रत्येक संभाव्यता सारणी नेमके यासाठीच अस्तित्वात आहे की तिचे समाकल लिहिता येत नाही आणि ते संख्यात्मक रीत्या काढावे लागते. सारण्या सोय नाहीत; त्या एका प्रमेयाचा परिणाम आहेत. (4 गृहीत धरते की लिहिण्याजोग्या प्राथमिक फलनाचा प्रतिअवकलजही लिहिता येईल.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Dirichlet's function is 1 at every rational and 0 at every irrational. Counting the Riemann integral and the Lebesgue integral, in how many of the two senses is it integrable on [0, 1]?",
+      "choices": [
+        "1",
+        "3",
+        "0",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "One — Lebesgue, not Riemann. The Riemann construction slices the DOMAIN into intervals and asks what the function does on each, but every interval however short contains both rationals and irrationals, so the upper sums are all 1 and the lower sums all 0 and they never meet. The Lebesgue construction slices the RANGE instead and asks how much domain is sent to each value, which turns the problem into a question of measure: the rationals are countable and therefore have measure zero, the irrationals have measure one, and the integral is 1 × 0 + 0 × 1 = 0. Two things are worth taking from this. The first is that the failure was never about the function being strange — the function is completely specified and takes only two values — but about the METHOD asking the wrong question of it. Slicing the domain assumes nearby inputs give nearby outputs, which is exactly what this function refuses. The second is a caution about what integrability means. It is not a property of a function alone; it is a property of a function together with a theory of integration, and the same object can be integrable in one and not in another. Riemann's theory is not wrong, it is narrower, and the twentieth century's reason for building Lebesgue's was that limits of Riemann-integrable functions kept escaping the class — a set closed under the operations one actually performs is worth more than an intuitive definition. (0 assumes that failing the integral one has been taught means failing to be integrable.)",
+      "checkExpr": "2-1",
+      "translations": {
+        "hi": {
+          "stem": "डिरिख़्ले का फलन हर परिमेय पर 1 और हर अपरिमेय पर 0 है। रीमान समाकल और लेब्ज़ेग समाकल गिनते हुए, [0, 1] पर वह दोनों में से कितने अर्थों में समाकलनीय है?",
+          "choices": [
+            "1",
+            "3",
+            "0",
+            "2"
+          ],
+          "solution": "एक — लेब्ज़ेग, रीमान नहीं। रीमान की रचना प्रांत को अंतरालों में काटती है और पूछती है कि हर एक पर फलन क्या करता है, पर हर अंतराल चाहे कितना छोटा हो, परिमेय और अपरिमेय दोनों रखता है, अतः ऊपरी योग सब 1 और निचले योग सब 0 हैं और वे कभी मिलते नहीं। लेब्ज़ेग की रचना इसके बजाय परिसर को काटती है और पूछती है कि हर मान पर कितना प्रांत भेजा जाता है, जो समस्या को माप के प्रश्न में बदल देती है: परिमेय गणनीय हैं और इसलिए उनका माप शून्य है, अपरिमेय का माप एक है, और समाकल है 1 × 0 + 0 × 1 = 0. इससे दो बातें लेने लायक़ हैं। पहली, विफलता कभी फलन के विचित्र होने के बारे में थी ही नहीं — फलन पूरी तरह निर्दिष्ट है और केवल दो मान लेता है — बल्कि विधि के उससे ग़लत प्रश्न पूछने के बारे में। प्रांत काटना मान लेता है कि पास के निवेश पास के निर्गम देते हैं, और यही वह फलन इनकार करता है। दूसरी, समाकलनीयता के अर्थ पर एक चेतावनी। वह अकेले फलन का गुण नहीं; वह फलन और समाकलन के किसी सिद्धांत का साझा गुण है, और वही वस्तु एक में समाकलनीय हो सकती है और दूसरे में नहीं। रीमान का सिद्धांत ग़लत नहीं, संकरा है, और बीसवीं सदी के पास लेब्ज़ेग का सिद्धांत बनाने का कारण यह था कि रीमान-समाकलनीय फलनों की सीमाएँ उस वर्ग से बाहर भागती रहती थीं — जिन संक्रियाओं को तुम सचमुच करते हो उनके अंतर्गत बंद समुच्चय किसी सहज परिभाषा से अधिक क़ीमती है। (0 मान लेता है कि जो समाकल पढ़ाया गया है उसमें विफल होना समाकलनीय न होना है।)"
+        },
+        "mr": {
+          "stem": "डिरिक्लेचे फलन प्रत्येक परिमेयावर 1 आणि प्रत्येक अपरिमेयावर 0 आहे. रीमान समाकल आणि लेबेग समाकल मोजता, [0, 1] वर ते दोहोंपैकी किती अर्थांनी समाकलनीय आहे?",
+          "choices": [
+            "1",
+            "3",
+            "0",
+            "2"
+          ],
+          "solution": "एक — लेबेग, रीमान नव्हे. रीमानची रचना प्रांताला अंतरालांत कापते आणि विचारते की प्रत्येकावर फलन काय करते, पण प्रत्येक अंतराल कितीही लहान असो, परिमेय आणि अपरिमेय दोन्ही बाळगते, म्हणून वरच्या बेरजा सर्व 1 आणि खालच्या सर्व 0 आहेत आणि त्या कधीच भेटत नाहीत. लेबेगची रचना त्याऐवजी परिसर कापते आणि विचारते की प्रत्येक मूल्याकडे किती प्रांत पाठवला जातो, जे समस्येला मापाच्या प्रश्नात बदलते: परिमेय गणनीय आहेत आणि म्हणून त्यांचे माप शून्य आहे, अपरिमेयांचे माप एक आहे, आणि समाकल आहे 1 × 0 + 0 × 1 = 0. यातून दोन गोष्टी घेण्याजोग्या आहेत. पहिली, अपयश कधीच फलन विचित्र असण्याबद्दल नव्हतेच — फलन पूर्णपणे निर्दिष्ट आहे आणि केवळ दोन मूल्ये घेते — तर पद्धतीने त्याला चुकीचा प्रश्न विचारण्याबद्दल होते. प्रांत कापणे गृहीत धरते की जवळची निविष्टे जवळची निर्गते देतात, आणि नेमके तेच हे फलन नाकारते. दुसरी, समाकलनीयतेच्या अर्थाबद्दलचा इशारा. तो एकट्या फलनाचा गुणधर्म नाही; तो फलन आणि समाकलनाच्या एखाद्या सिद्धांताचा संयुक्त गुणधर्म आहे, आणि तीच वस्तू एकात समाकलनीय असू शकते आणि दुसऱ्यात नाही. रीमानचा सिद्धांत चुकीचा नाही, अरुंद आहे, आणि विसाव्या शतकाकडे लेबेगचा बांधण्याचे कारण हे होते की रीमान-समाकलनीय फलनांच्या सीमा त्या वर्गातून पळत राहत होत्या — तुम्ही प्रत्यक्षात ज्या क्रिया करता त्यांखाली बंद असलेला संच कोणत्याही सहज व्याख्येहून अधिक मोलाचा आहे. (0 गृहीत धरते की शिकवलेल्या समाकलात अपयशी ठरणे म्हणजे समाकलनीय नसणे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "∫₀^∞ (sin x)/x dx converges to π/2, but ∫₀^∞ |sin x|/x dx diverges. Of the two integrals, how many converge absolutely?",
+      "choices": [
+        "0",
+        "3",
+        "2",
+        "1"
+      ],
+      "answerIndex": 0,
+      "solution": "Neither, which is the trap. Absolute convergence means the integral of the ABSOLUTE VALUE converges, and the question tells you outright that it does not — so the first integral converges only conditionally, and the second does not converge at all and therefore cannot converge absolutely either. The count is 0. The mechanism is worth seeing. Over each successive arch of the sine the contribution is roughly 2/(nπ) in size and alternating in sign. The alternating series converges, because consecutive terms very nearly cancel; the series of magnitudes is essentially the harmonic series, which diverges, because 1/n shrinks but never fast enough. So the whole convergence rests on cancellation rather than on smallness, and that is a structurally different and far more fragile thing. The fragility is not academic: for an absolutely convergent integral the order of summation is irrelevant, whereas a conditionally convergent one can be made to approach ANY value whatever by rearranging the pieces, which is Riemann's rearrangement theorem in its integral guise. So π/2 is not simply 'the' value of the first integral; it is the value obtained by accumulating the arches in their natural left-to-right order, and that qualification, which is silent and invisible in every absolutely convergent case, is here carrying the entire answer. (1 reads 'converges' and 'converges absolutely' as the same claim.)",
+      "checkExpr": "1-1",
+      "translations": {
+        "hi": {
+          "stem": "∫₀^∞ (sin x)/x dx, π/2 पर अभिसरित होता है, पर ∫₀^∞ |sin x|/x dx अपसरित होता है। दोनों समाकलों में से कितने निरपेक्ष रूप से अभिसरित होते हैं?",
+          "choices": [
+            "0",
+            "3",
+            "2",
+            "1"
+          ],
+          "solution": "कोई नहीं, और यही जाल है। निरपेक्ष अभिसरण का अर्थ है कि निरपेक्ष मान का समाकल अभिसरित हो, और प्रश्न सीधे बता देता है कि वह नहीं होता — अतः पहला समाकल केवल सशर्त अभिसरित है, और दूसरा अभिसरित होता ही नहीं और इसलिए निरपेक्ष रूप से भी नहीं हो सकता। गिनती 0 है। क्रियाविधि देखने लायक़ है। ज्या के हर क्रमिक मेहराब पर योगदान का आकार मोटे तौर पर 2/(nπ) है और चिह्न बदलता रहता है। एकांतर श्रेणी अभिसरित होती है, क्योंकि क्रमागत पद लगभग पूरी तरह कट जाते हैं; परिमाणों की श्रेणी मूलतः हरात्मक श्रेणी है, जो अपसरित होती है, क्योंकि 1/n सिकुड़ता तो है पर कभी काफ़ी तेज़ी से नहीं। अतः पूरा अभिसरण छोटेपन पर नहीं, कटने पर टिका है, और यह संरचनात्मक रूप से भिन्न और कहीं अधिक नाज़ुक चीज़ है। नाज़ुकपन अकादमिक नहीं: निरपेक्ष अभिसारी समाकल के लिए जोड़ने का क्रम अप्रासंगिक है, जबकि सशर्त अभिसारी को टुकड़े फिर से क्रमबद्ध करके किसी भी मान के पास पहुँचाया जा सकता है, जो समाकल रूप में रीमान का पुनर्व्यवस्था प्रमेय है। अतः π/2 पहले समाकल का बस 'वह' मान नहीं है; वह मेहराबों को उनके स्वाभाविक बाएँ-से-दाएँ क्रम में संचित करने से मिला मान है, और वह शर्त, जो हर निरपेक्ष अभिसारी मामले में मौन और अदृश्य रहती है, यहाँ पूरा उत्तर ढो रही है। (1 'अभिसरित' और 'निरपेक्ष रूप से अभिसरित' को एक ही दावा पढ़ लेता है।)"
+        },
+        "mr": {
+          "stem": "∫₀^∞ (sin x)/x dx हे π/2 वर अभिसरित होते, पण ∫₀^∞ |sin x|/x dx अपसरित होते. दोन्ही समाकलांपैकी किती निरपेक्षपणे अभिसरित होतात?",
+          "choices": [
+            "0",
+            "3",
+            "2",
+            "1"
+          ],
+          "solution": "एकही नाही, आणि हाच सापळा आहे. निरपेक्ष अभिसरण म्हणजे निरपेक्ष मूल्याचे समाकल अभिसरित होणे, आणि प्रश्न थेट सांगतो की ते होत नाही — म्हणून पहिले समाकल केवळ सशर्त अभिसरित आहे, आणि दुसरे अभिसरित होतच नाही आणि म्हणून निरपेक्षपणेही होऊ शकत नाही. मोजणी 0 आहे. कार्यपद्धती पाहण्याजोगी आहे. ज्येच्या प्रत्येक क्रमिक कमानीवर योगदानाचा आकार ढोबळमानाने 2/(nπ) आहे आणि चिन्ह बदलत राहते. एकांतर श्रेणी अभिसरित होते, कारण क्रमागत पदे जवळजवळ पूर्णपणे रद्द होतात; परिमाणांची श्रेणी मूलतः हरात्मक श्रेणी आहे, जी अपसरित होते, कारण 1/n आकुंचन पावते खरे पण कधीच पुरेशा वेगाने नाही. म्हणून अख्खे अभिसरण लहानपणावर नव्हे, रद्द होण्यावर टिकले आहे, आणि ही संरचनात्मक दृष्ट्या वेगळी आणि कितीतरी अधिक नाजूक गोष्ट आहे. नाजूकपणा शैक्षणिक नाही: निरपेक्ष अभिसारी समाकलासाठी बेरजेचा क्रम अप्रस्तुत आहे, तर सशर्त अभिसारीला तुकडे पुन्हा क्रमबद्ध करून कोणत्याही मूल्याजवळ नेता येते, जे समाकल रूपातील रीमानचे पुनर्रचना प्रमेय आहे. म्हणून π/2 हे पहिल्या समाकलाचे केवळ 'ते' मूल्य नाही; ते कमानी त्यांच्या नैसर्गिक डावीकडून-उजवीकडे क्रमाने संचित करून मिळालेले मूल्य आहे, आणि ती अट, जी प्रत्येक निरपेक्ष अभिसारी प्रसंगात मौन आणि अदृश्य राहते, इथे अख्खे उत्तर वाहत आहे. (1 'अभिसरित' आणि 'निरपेक्षपणे अभिसरित' यांना एकच दावा वाचते.)"
+        }
+      }
+    }
+  ]
+}

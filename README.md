@@ -2514,8 +2514,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 377
-  chapters / 6,828 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 381
+  chapters / 6,884 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -3132,6 +3132,46 @@ navigation" means the actual list rather than one somebody maintained by hand.
   mappings should not be repeating a Class-11 evaluation in the first
   place. Verify clean, warnings back to 34, suite green: 87 files, 1485
   tests.
+
+  **Class 12 Maths, chapters 5–8** — Continuity and Differentiability,
+  Application of Derivatives, Integrals, Application of Integrals. Four
+  chapters, 56 questions, taking the family to 8/13 and the bank to 381
+  chapters / 6,884 questions. The batch is held together by one idea: each
+  of these chapters is built around a condition that students carry as
+  though it were sufficient when it is only necessary, and the questions
+  are set at the places where that gap shows. Continuity is *three*
+  separable conditions and not one, so a hole where the limit exists
+  perfectly well and only the value is missing is a different kind of
+  failure from 1/x at zero, and only the first can be repaired; the
+  implication between continuity and differentiability runs one way only,
+  and x² sin(1/x) against x sin(1/x) shows that a single power of x is
+  enough to separate the two properties. Application of Derivatives turns
+  on f'(x) = 0 producing candidates rather than answers — x³ pauses at the
+  origin without turning, the second-derivative test goes silent on
+  precisely the flat stationary point it was invented to settle, and the
+  greatest value of x³ on [1, 4] sits at an endpoint where nothing is
+  stationary at all. Integrals separates the constant that is unavoidable
+  in an indefinite integral from the same constant being invisible in a
+  definite one, shows the running total is itself a function whose
+  derivative is where it started, and closes on Liouville: e^(−x²) has no
+  elementary antiderivative, which is not a gap in anyone's technique but a
+  theorem — and the reason every printed probability table exists.
+  Application of Integrals is the chapter where an integral and an area
+  stop being the same thing, with the counting rule stated plainly because
+  it is the one people get wrong: n interior crossings make n + 1 pieces,
+  not n, and getting it wrong loses a whole piece of area silently. Two L6s
+  worth naming: Torricelli's trumpet, where the usual paradox dissolves
+  once one notices that a volume of paint and a coat of paint of fixed
+  thickness are not the same measurement; and the crescent region, where
+  *both* slicing directions fail to give a single integral, which is the
+  cue that "upper minus lower" was a convenience assuming something about
+  the region rather than a definition of area. Clean on the first pass —
+  verify reported no warnings and no duplicate stems, typecheck and lint
+  clean, suite green: 87 files, 1489 tests. **Class 12 Maths: 8/13** —
+  Continuity, Application of Derivatives, Integrals and Application of
+  Integrals done; Differential Equations, Vector Algebra, Three Dimensional
+  Geometry, Linear Programming and Probability remain, and they close the
+  grades 4–12 rollout.
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)
