@@ -721,6 +721,25 @@ async function buildOperator(ctx: Ctx) {
   return user;
 }
 
+/**
+ * A content-team account carrying the app-admin flag and NOTHING else.
+ *
+ * Deliberately separate from the operator above, which holds both flags. The
+ * two are different jobs and the app has to be walkable as each: an operator
+ * runs the platform, while an app admin only curates the shared question bank
+ * and posts platform-wide competitions. Testing curation while signed in as a
+ * superuser proves nothing, because a superuser can reach those screens for a
+ * different reason — so the flag is granted here on its own, and the account
+ * is the one to use for asking whether the content team can actually work.
+ */
+async function buildContentTeam(ctx: Ctx) {
+  const user = await upsertUser(ctx, `zz.appadmin@${DOMAIN}`, "ZZ Content Curator");
+  if (!user.isAppAdmin) {
+    return db.user.update({ where: { id: user.id }, data: { isAppAdmin: true } });
+  }
+  return user;
+}
+
 /* -------------------------------------------------------------------------- */
 
 async function main() {
@@ -736,6 +755,7 @@ async function main() {
   const southbank = await buildSouthbank(ctx);
   const experts = await buildExperts(ctx);
   const operator = await buildOperator(ctx);
+  const contentTeam = await buildContentTeam(ctx);
 
   const studentCount = await db.membership.count({
     where: { schoolId: northgate.school.id, role: "STUDENT" },
@@ -784,6 +804,11 @@ ${experts.map((e) => `     ${e}`).join("\n")}
   ── Operator ─────────────────────────────────────────────────────────
      ${operator.email}   superuser: ${operator.isSuperuser ? "GRANTED" : "not granted"}
      Opens /root. Revoke with:  npm run superuser -- ${operator.email} --revoke
+
+  ── Content team (app admin, NOT a superuser) ────────────────────────
+     ${contentTeam.email}   app admin: ${contentTeam.isAppAdmin ? "GRANTED" : "not granted"}
+     Curates the shared bank; cannot reach /root. Revoke with:
+     npm run appadmin -- ${contentTeam.email} --revoke
 
   ── Unclaimed pupils (for walking the parent-claim flow) ─────────────
      Claiming needs the code AND the child's birthdate.
