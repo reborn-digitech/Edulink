@@ -3863,6 +3863,703 @@ export const G12_BIOLOGY: Chapter[] = [
     ],
   },
   /*C9*/
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 12 — Ecosystem                                                  */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "biology-12-ecosystem",
+    subject: "BIOLOGY",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 12 — Ecosystem",
+      hi: "अध्याय 12 — पारितंत्र",
+      mr: "प्रकरण 12 — परिसंस्था",
+    },
+    name: {
+      en: "Ecosystem",
+      hi: "पारितंत्र",
+      mr: "परिसंस्था",
+    },
+    summary: {
+      en: "A level of description at which the individuals stop mattering and two quantities are followed instead — energy, which enters once and leaves for ever, and matter, which is used again and again — and almost every fact in the chapter falls out of that one asymmetry: a food chain that cannot be more than a few links long because roughly nine tenths of what a level holds is spent on staying alive and never reaches the next, so a fourth carnivore has nothing left to eat; a pyramid of numbers that can stand upside down when one tree feeds thousands of insects, and a pyramid of energy that cannot, because it records the one quantity that only ever runs downhill; a decomposer that is not the end of the chain but the reason there is a chain at all, since without it the nutrients would sit locked in the dead and the living would starve amid plenty; a phosphorus cycle with no gaseous phase, so it moves at the pace of rock rather than of air; and a sequence of communities replacing one another on bare ground, each making the place less suitable for itself and more suitable for its successor.",
+      hi: "वर्णन का ऐसा स्तर जिस पर व्यक्ति मायने रखना छोड़ देते हैं और उनके बजाय दो राशियों का पीछा किया जाता है — ऊर्जा, जो एक बार भीतर आती है और हमेशा के लिए चली जाती है, और द्रव्य, जो बार-बार काम में आता है — और अध्याय का लगभग हर तथ्य उसी एक विषमता से निकलता है: ऐसी आहार शृंखला जो कुछ ही कड़ियों से लंबी नहीं हो सकती क्योंकि किसी स्तर के पास जो है उसका मोटे तौर पर नौ-दसवाँ जीवित रहने में ख़र्च होता है और अगले तक पहुँचता ही नहीं, अतः चौथे मांसाहारी के पास खाने को कुछ नहीं बचता; संख्याओं का ऐसा पिरामिड जो उलटा खड़ा हो सकता है जब एक पेड़ हज़ारों कीटों को खिलाता हो, और ऊर्जा का ऐसा पिरामिड जो नहीं हो सकता, क्योंकि वह उस एक राशि को दर्ज करता है जो सदा ढलान से नीचे ही बहती है; ऐसा अपघटक जो शृंखला का अंत नहीं बल्कि शृंखला के होने का कारण है, चूँकि उसके बिना पोषक तत्व मरे हुओं में बंद पड़े रहते और जीवित प्रचुरता के बीच भूखे मरते; ऐसा फ़ॉस्फ़ोरस चक्र जिसमें कोई गैसीय प्रावस्था नहीं, अतः वह हवा की नहीं बल्कि चट्टान की चाल से चलता है; और नंगी ज़मीन पर एक-दूसरे की जगह लेते समुदायों का ऐसा क्रम जिसमें हर एक उस जगह को अपने लिए कम और अपने उत्तराधिकारी के लिए अधिक उपयुक्त बना देता है।",
+      mr: "वर्णनाची अशी पातळी जिच्यावर व्यक्ती महत्त्वाच्या राहत नाहीत आणि त्यांच्याऐवजी दोन राशींचा मागोवा घेतला जातो — ऊर्जा, जी एकदा आत येते आणि कायमची निघून जाते, आणि द्रव्य, जे पुन्हा पुन्हा वापरले जाते — आणि प्रकरणातले जवळपास प्रत्येक सत्य त्याच एका विषमतेतून निघते: अशी अन्नसाखळी जी काही दुव्यांहून लांब असू शकत नाही कारण एखाद्या पातळीकडे जे आहे त्याचा ढोबळपणे नऊ-दशांश जिवंत राहण्यात खर्च होतो आणि पुढच्यापर्यंत पोहोचतच नाही, म्हणून चौथ्या मांसाहारीकडे खायला काहीच उरत नाही; संख्यांचा असा मनोरा जो उलटा उभा राहू शकतो जेव्हा एक झाड हजारो कीटकांना खाऊ घालते, आणि ऊर्जेचा असा मनोरा जो होऊ शकत नाही, कारण तो त्या एका राशीची नोंद करतो जी सदा उतारानेच खाली वाहते; असा विघटक जो साखळीचा शेवट नसून साखळी असण्याचे कारण आहे, कारण त्याविना पोषक द्रव्ये मेलेल्यांत बंद पडून राहतील आणि जिवंत विपुलतेमध्ये उपाशी मरतील; असे फॉस्फरस चक्र ज्यात कोणतीही वायुरूप अवस्था नाही, म्हणून ते हवेच्या नव्हे तर खडकाच्या गतीने चालते; आणि उघड्या जमिनीवर एकमेकांची जागा घेणाऱ्या समुदायांचा असा क्रम ज्यात प्रत्येक ती जागा स्वतःसाठी कमी आणि आपल्या वारसासाठी अधिक योग्य बनवतो.",
+    },
+    position: 12,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "energy-flows-and-matter-cycles",
+        name: {
+          en: "Energy flows and matter cycles",
+          hi: "ऊर्जा बहती है और द्रव्य चक्र करता है",
+          mr: "ऊर्जा वाहते आणि द्रव्य चक्र करते",
+        },
+        kind: "principle and what follows from it",
+        prompt: {
+          en: "An asymmetry in which one quantity enters an ecosystem once and leaves for ever, while the other is used again and again by generation after generation. What is it?",
+          hi: "ऐसी विषमता जिसमें एक राशि पारितंत्र में एक बार आती है और हमेशा के लिए चली जाती है, जबकि दूसरी पीढ़ी दर पीढ़ी बार-बार काम में आती रहती है। यह क्या है?",
+          mr: "अशी विषमता ज्यात एक राशी परिसंस्थेत एकदा येते आणि कायमची निघून जाते, तर दुसरी पिढ्यानपिढ्या पुन्हा पुन्हा वापरली जाते. ही काय आहे?",
+        },
+        statement: {
+          en: "Energy flows through an ecosystem in one direction and is lost as heat at every step, while matter cycles between the living and the non-living indefinitely.",
+          hi: "ऊर्जा पारितंत्र में एक ही दिशा में बहती है और हर चरण पर ऊष्मा के रूप में खो जाती है, जबकि द्रव्य जीवित और अजीवित के बीच अनिश्चित काल तक चक्र करता है।",
+          mr: "ऊर्जा परिसंस्थेत एकाच दिशेने वाहते आणि प्रत्येक पायरीवर उष्णतेच्या रूपात हरवते, तर द्रव्य सजीव आणि निर्जीव यांच्यात अनिश्चित काळ चक्र करते.",
+        },
+        detail: {
+          en: "The difference is a consequence of thermodynamics: energy cannot be recycled because every transfer degrades some of it into heat that no organism can use.",
+          hi: "यह अंतर ऊष्मागतिकी का परिणाम है: ऊर्जा का पुनर्चक्रण नहीं हो सकता क्योंकि हर स्थानांतरण उसका कुछ हिस्सा ऐसी ऊष्मा में गिरा देता है जिसे कोई जीव काम में नहीं ला सकता।",
+          mr: "हा फरक उष्मागतिकीचा परिणाम आहे: ऊर्जेचे पुनर्चक्रण होऊ शकत नाही कारण प्रत्येक स्थानांतर तिचा काही भाग अशा उष्णतेत उतरवते जी कोणताही जीव वापरू शकत नाही.",
+        },
+        extra: {
+          en: "It is why an ecosystem needs a continuous supply of sunlight but does not need a continuous supply of carbon or nitrogen, which it already has.",
+          hi: "इसीलिए किसी पारितंत्र को सूर्यप्रकाश की लगातार आपूर्ति चाहिए पर कार्बन या नाइट्रोजन की नहीं, जो उसके पास पहले से है।",
+          mr: "म्हणूनच एखाद्या परिसंस्थेला सूर्यप्रकाशाचा सतत पुरवठा लागतो पण कार्बन वा नायट्रोजनचा नाही, जे तिच्याकडे आधीच आहे.",
+        },
+        pair: {
+          left: {
+            en: "One is spent for ever and the other is borrowed",
+            hi: "एक हमेशा के लिए ख़र्च होती है और दूसरा उधार लिया जाता है",
+            mr: "एक कायमची खर्च होते आणि दुसरे उसने घेतले जाते",
+          },
+          right: {
+            en: "energy flows and matter cycles",
+            hi: "ऊर्जा बहती है और द्रव्य चक्र करता है",
+            mr: "ऊर्जा वाहते आणि द्रव्य चक्र करते",
+          },
+        },
+      },
+      {
+        id: "why-food-chains-are-short",
+        name: {
+          en: "Why food chains are short",
+          hi: "आहार शृंखलाएँ छोटी क्यों हैं",
+          mr: "अन्नसाखळ्या लहान का आहेत",
+        },
+        kind: "principle and what follows from it",
+        prompt: {
+          en: "A limit of three or four links, imposed not by any rule about who can eat whom but by how little of what one level holds is left for the next. What explains it?",
+          hi: "तीन या चार कड़ियों की सीमा, जो इस नियम से नहीं थोपी गई कि कौन किसे खा सकता है बल्कि इससे कि किसी स्तर के पास जो है उसका कितना कम अगले के लिए बचता है। इसे क्या समझाता है?",
+          mr: "तीन वा चार दुव्यांची मर्यादा, जी कोण कोणाला खाऊ शकतो या नियमाने लादलेली नाही तर एखाद्या पातळीकडे जे आहे त्याचा किती कमी पुढच्यासाठी उरतो यातून. हिला काय समजावते?",
+        },
+        statement: {
+          en: "Food chains are short because only about a tenth of the energy at one trophic level is passed to the next, so after a few steps there is not enough to support another level.",
+          hi: "आहार शृंखलाएँ इसलिए छोटी हैं कि किसी पोषी स्तर की ऊर्जा का केवल लगभग दसवाँ हिस्सा अगले तक पहुँचता है, अतः कुछ ही चरणों के बाद एक और स्तर सँभालने भर नहीं बचता।",
+          mr: "अन्नसाखळ्या यासाठी लहान आहेत की एखाद्या पोषी पातळीच्या ऊर्जेचा केवळ सुमारे दशांश पुढच्यापर्यंत पोहोचतो, म्हणून काही पायऱ्यांनंतर आणखी एक पातळी सांभाळण्याइतके उरत नाही.",
+        },
+        detail: {
+          en: "The nine tenths is not wasted but spent — on respiration, on movement, on staying warm — and on parts of the prey that the predator does not eat or cannot digest.",
+          hi: "वह नौ-दसवाँ बर्बाद नहीं होता बल्कि ख़र्च होता है — श्वसन पर, गति पर, गर्म रहने पर — और शिकार के उन हिस्सों पर जो परभक्षी खाता नहीं या पचा नहीं सकता।",
+          mr: "तो नऊ-दशांश वाया जात नाही तर खर्च होतो — श्वसनावर, हालचालीवर, उबदार राहण्यावर — आणि शिकारीच्या त्या भागांवर जे भक्षक खात नाही वा पचवू शकत नाही.",
+        },
+        extra: {
+          en: "It is also the argument for eating lower down a chain, since a given area of land supports far more people on grain than on the animals fed with it.",
+          hi: "यही शृंखला में नीचे की ओर खाने का तर्क भी है, चूँकि ज़मीन का कोई क्षेत्र अनाज पर उससे कहीं अधिक लोगों को सँभालता है जितने उस अनाज से पले जानवरों पर।",
+          mr: "हाच साखळीत खालच्या बाजूला खाण्याचा युक्तिवादही आहे, कारण जमिनीचे एखादे क्षेत्र धान्यावर त्याहून कितीतरी अधिक लोकांना सांभाळते जितके त्या धान्यावर पोसलेल्या जनावरांवर.",
+        },
+        pair: {
+          left: {
+            en: "The fourth carnivore has nothing left to eat",
+            hi: "चौथे मांसाहारी के पास खाने को कुछ नहीं बचता",
+            mr: "चौथ्या मांसाहारीकडे खायला काहीच उरत नाही",
+          },
+          right: {
+            en: "why food chains are short",
+            hi: "आहार शृंखलाएँ छोटी क्यों हैं",
+            mr: "अन्नसाखळ्या लहान का आहेत",
+          },
+        },
+      },
+      {
+        id: "which-pyramid-can-invert",
+        name: {
+          en: "Which pyramid can stand upside down",
+          hi: "कौन-सा पिरामिड उलटा खड़ा हो सकता है",
+          mr: "कोणता मनोरा उलटा उभा राहू शकतो",
+        },
+        kind: "principle and what follows from it",
+        prompt: {
+          en: "Three ways of drawing the same community, of which two can come out inverted and the third never can. What is the distinction?",
+          hi: "उसी समुदाय को खींचने के तीन तरीक़े, जिनमें से दो उलटे निकल सकते हैं और तीसरा कभी नहीं। भेद क्या है?",
+          mr: "त्याच समुदायाचे चित्रण करण्याचे तीन मार्ग, ज्यांपैकी दोन उलटे निघू शकतात आणि तिसरा कधीच नाही. भेद काय आहे?",
+        },
+        statement: {
+          en: "Pyramids of number and of biomass can be inverted, but a pyramid of energy never can, because energy is always lost at each transfer and cannot accumulate upwards.",
+          hi: "संख्या और जैवभार के पिरामिड उलटे हो सकते हैं, पर ऊर्जा का पिरामिड कभी नहीं, क्योंकि ऊर्जा हर स्थानांतरण पर हमेशा खोती है और ऊपर की ओर जमा नहीं हो सकती।",
+          mr: "संख्या आणि जैवभाराचे मनोरे उलटे होऊ शकतात, पण ऊर्जेचा मनोरा कधीच नाही, कारण ऊर्जा प्रत्येक स्थानांतरावर नेहमी हरवते आणि वरच्या दिशेने जमू शकत नाही.",
+        },
+        detail: {
+          en: "A single large tree supporting thousands of insects inverts the pyramid of numbers, because a number counts organisms and says nothing about their size.",
+          hi: "हज़ारों कीटों को सँभालता एक ही बड़ा पेड़ संख्याओं का पिरामिड उलट देता है, क्योंकि संख्या जीवों को गिनती है और उनके आकार के बारे में कुछ नहीं कहती।",
+          mr: "हजारो कीटकांना सांभाळणारे एकच मोठे झाड संख्यांचा मनोरा उलटवते, कारण संख्या जीव मोजते आणि त्यांच्या आकाराबद्दल काहीही सांगत नाही.",
+        },
+        extra: {
+          en: "A pond inverts the pyramid of biomass because the tiny producers are eaten as fast as they grow, so at any instant their standing mass is small although their production is large.",
+          hi: "तालाब जैवभार का पिरामिड इसलिए उलट देता है कि नन्हे उत्पादक जितनी तेज़ी से बढ़ते हैं उतनी ही तेज़ी से खा लिए जाते हैं, अतः किसी भी क्षण उनका खड़ा द्रव्यमान छोटा है यद्यपि उनका उत्पादन बड़ा।",
+          mr: "तळे जैवभाराचा मनोरा यासाठी उलटवते की चिमुकले उत्पादक जितक्या वेगाने वाढतात तितक्याच वेगाने खाल्ले जातात, म्हणून कोणत्याही क्षणी त्यांचे उभे वस्तुमान लहान आहे जरी त्यांचे उत्पादन मोठे असले तरी.",
+        },
+        pair: {
+          left: {
+            en: "A standing stock can mislead where a flow cannot",
+            hi: "खड़ा भंडार भरमा सकता है जहाँ प्रवाह नहीं",
+            mr: "उभा साठा फसवू शकतो जिथे प्रवाह नाही",
+          },
+          right: {
+            en: "which pyramid can stand upside down",
+            hi: "कौन-सा पिरामिड उलटा खड़ा हो सकता है",
+            mr: "कोणता मनोरा उलटा उभा राहू शकतो",
+          },
+        },
+      },
+      {
+        id: "the-decomposers",
+        name: {
+          en: "The decomposers",
+          hi: "अपघटक",
+          mr: "विघटक",
+        },
+        kind: "process and what it returns",
+        prompt: {
+          en: "Organisms usually drawn at the end of a diagram, which are really the reason the diagram is a loop rather than a line. What are they?",
+          hi: "ऐसे जीव जो प्रायः किसी आरेख के अंत में खींचे जाते हैं, और जो असल में उस आरेख के रेखा नहीं बल्कि लूप होने का कारण हैं। ये क्या हैं?",
+          mr: "असे जीव जे बहुधा एखाद्या आकृतीच्या शेवटी काढले जातात, आणि जे खरे तर त्या आकृतीच्या रेषा नव्हे तर लूप असण्याचे कारण आहेत. हे काय आहेत?",
+        },
+        statement: {
+          en: "Decomposers break down dead organic matter and return its nutrients to the soil and water in forms that producers can take up again.",
+          hi: "अपघटक मृत कार्बनिक पदार्थ को तोड़ते हैं और उसके पोषक तत्व मिट्टी तथा पानी में ऐसे रूपों में लौटा देते हैं जिन्हें उत्पादक फिर से ले सकें।",
+          mr: "विघटक मृत कार्बनी द्रव्य तोडतात आणि त्याची पोषक द्रव्ये माती आणि पाण्यात अशा रूपांत परत करतात जी उत्पादक पुन्हा घेऊ शकतील.",
+        },
+        detail: {
+          en: "Without them the nutrients would remain locked in dead bodies, and a forest would eventually starve while standing on centuries of accumulated litter.",
+          hi: "उनके बिना पोषक तत्व मृत शरीरों में बंद पड़े रहते, और कोई वन सदियों के जमा कूड़े पर खड़ा-खड़ा अंततः भूखा मर जाता।",
+          mr: "त्यांच्याविना पोषक द्रव्ये मृत शरीरांत बंद पडून राहतील, आणि एखादे जंगल शतकांच्या जमलेल्या पाचोळ्यावर उभे राहूनही अखेरीस उपाशी मरेल.",
+        },
+        extra: {
+          en: "Decomposition is slower where it is cold or waterlogged, which is why peat and coal exist at all — they are places where the loop was interrupted.",
+          hi: "जहाँ ठंडा या जलभराव हो वहाँ अपघटन धीमा है, इसीलिए पीट और कोयला हैं ही — वे ऐसी जगहें हैं जहाँ लूप टूट गया था।",
+          mr: "जिथे थंड वा पाणथळ असेल तिथे विघटन सावकाश आहे, म्हणूनच पीट आणि कोळसा अस्तित्वात आहेत — त्या अशा जागा आहेत जिथे लूप तुटला होता.",
+        },
+        pair: {
+          left: {
+            en: "Without them the living starve amid plenty",
+            hi: "उनके बिना जीवित प्रचुरता के बीच भूखे मरते हैं",
+            mr: "त्यांच्याविना जिवंत विपुलतेमध्ये उपाशी मरतात",
+          },
+          right: {
+            en: "the decomposers",
+            hi: "अपघटक",
+            mr: "विघटक",
+          },
+        },
+      },
+      {
+        id: "the-phosphorus-cycle",
+        name: {
+          en: "The phosphorus cycle",
+          hi: "फ़ॉस्फ़ोरस चक्र",
+          mr: "फॉस्फरस चक्र",
+        },
+        kind: "process and what it returns",
+        prompt: {
+          en: "A nutrient cycle with no atmospheric reservoir, so that the element moves at the pace of weathering rock rather than of moving air. Which cycle is this?",
+          hi: "ऐसा पोषक चक्र जिसका कोई वायुमंडलीय भंडार नहीं, अतः वह तत्व हिलती हवा की नहीं बल्कि अपक्षयित होती चट्टान की चाल से चलता है। यह कौन-सा चक्र है?",
+          mr: "असे पोषक चक्र ज्याचा कोणताही वातावरणीय साठा नाही, म्हणून ते मूलद्रव्य हलणाऱ्या हवेच्या नव्हे तर विदीर्ण होणाऱ्या खडकाच्या गतीने चालते. हे कोणते चक्र?",
+        },
+        statement: {
+          en: "The phosphorus cycle is sedimentary rather than gaseous, with rock as its main reservoir, so phosphorus enters ecosystems only as slowly as rock weathers.",
+          hi: "फ़ॉस्फ़ोरस चक्र गैसीय नहीं बल्कि अवसादी है, जिसका मुख्य भंडार चट्टान है, अतः फ़ॉस्फ़ोरस पारितंत्रों में उतनी ही धीमी गति से आता है जितनी धीमी गति से चट्टान अपक्षयित होती है।",
+          mr: "फॉस्फरस चक्र वायुरूप नसून गाळाचे आहे, ज्याचा मुख्य साठा खडक आहे, म्हणून फॉस्फरस परिसंस्थांत तितक्याच सावकाश येतो जितका सावकाश खडक विदीर्ण होतो.",
+        },
+        detail: {
+          en: "Carbon and nitrogen both have large atmospheric pools that mix worldwide in months, which is why a shortage of either is rarely local for long.",
+          hi: "कार्बन और नाइट्रोजन दोनों के बड़े वायुमंडलीय कोश हैं जो महीनों में दुनिया भर मिल जाते हैं, इसीलिए इनमें से किसी की कमी लंबे समय तक स्थानीय नहीं रहती।",
+          mr: "कार्बन आणि नायट्रोजन दोघांचे मोठे वातावरणीय साठे आहेत जे महिन्यांत जगभर मिसळतात, म्हणूनच यांपैकी कोणाचीही कमतरता दीर्घकाळ स्थानिक राहत नाही.",
+        },
+        extra: {
+          en: "That is why phosphorus is so often the limiting nutrient in a lake, and why adding it in fertiliser runoff produces algal blooms so readily.",
+          hi: "इसीलिए किसी झील में सीमित करने वाला पोषक तत्व प्रायः फ़ॉस्फ़ोरस ही होता है, और इसीलिए उर्वरक के बहाव में उसका जुड़ना इतनी आसानी से शैवाल प्रस्फुटन पैदा करता है।",
+          mr: "म्हणूनच एखाद्या तळ्यात मर्यादा घालणारे पोषक द्रव्य बहुधा फॉस्फरसच असते, आणि म्हणूनच खताच्या वाहत्या पाण्यात त्याचे जमणे इतक्या सहज शैवाल बहर निर्माण करते.",
+        },
+        pair: {
+          left: {
+            en: "It moves at the pace of rock, not of air",
+            hi: "वह हवा की नहीं, चट्टान की चाल से चलता है",
+            mr: "ते हवेच्या नव्हे, खडकाच्या गतीने चालते",
+          },
+          right: {
+            en: "the phosphorus cycle",
+            hi: "फ़ॉस्फ़ोरस चक्र",
+            mr: "फॉस्फरस चक्र",
+          },
+        },
+      },
+      {
+        id: "ecological-succession",
+        name: {
+          en: "Ecological succession",
+          hi: "पारिस्थितिक अनुक्रमण",
+          mr: "पारिस्थितिक अनुक्रमण",
+        },
+        kind: "process and what it returns",
+        prompt: {
+          en: "A sequence in which each community changes the place enough to make it less suitable for itself and more suitable for the one that replaces it. What is this?",
+          hi: "ऐसा क्रम जिसमें हर समुदाय उस जगह को इतना बदल देता है कि वह अपने लिए कम और अपनी जगह लेने वाले के लिए अधिक उपयुक्त हो जाए। यह क्या है?",
+          mr: "असा क्रम ज्यात प्रत्येक समुदाय ती जागा इतकी बदलतो की ती स्वतःसाठी कमी आणि आपली जागा घेणाऱ्यासाठी अधिक योग्य व्हावी. हे काय आहे?",
+        },
+        statement: {
+          en: "Ecological succession is the orderly replacement of one community by another over time, ending in a climax community that persists as long as conditions hold.",
+          hi: "पारिस्थितिक अनुक्रमण समय के साथ एक समुदाय का दूसरे से क्रमबद्ध प्रतिस्थापन है, जो ऐसे चरम समुदाय पर ख़त्म होता है जो परिस्थितियाँ बनी रहने तक टिका रहता है।",
+          mr: "पारिस्थितिक अनुक्रमण म्हणजे काळासोबत एका समुदायाचे दुसऱ्याने क्रमबद्ध प्रतिस्थापन, जे अशा कळस समुदायावर संपते जो परिस्थिती टिकेपर्यंत राहतो.",
+        },
+        detail: {
+          en: "The first colonists on bare rock build soil where there was none, and in doing so make the place habitable by plants that will shade them out.",
+          hi: "नंगी चट्टान पर पहले बसने वाले वहाँ मिट्टी बनाते हैं जहाँ कोई नहीं थी, और ऐसा करके उस जगह को ऐसे पादपों के रहने लायक़ बना देते हैं जो उन्हीं को छाया में ढक देंगे।",
+          mr: "उघड्या खडकावर पहिले वसणारे तिथे माती बनवतात जिथे कोणतीही नव्हती, आणि असे करून ती जागा अशा वनस्पतींना राहण्यायोग्य बनवतात ज्या त्यांनाच सावलीत झाकतील.",
+        },
+        extra: {
+          en: "Succession starting on a cleared field is much faster than on bare rock, because the soil is already there and the hardest part has been done.",
+          hi: "साफ़ किए गए खेत पर शुरू होता अनुक्रमण नंगी चट्टान वाले से कहीं तेज़ है, क्योंकि मिट्टी पहले से है और सबसे कठिन हिस्सा हो चुका।",
+          mr: "साफ केलेल्या शेतावर सुरू होणारे अनुक्रमण उघड्या खडकावरच्याहून कितीतरी जलद आहे, कारण माती आधीच आहे आणि सर्वांत कठीण भाग होऊन गेला आहे.",
+        },
+        pair: {
+          left: {
+            en: "Each community prepares the ground for its own replacement",
+            hi: "हर समुदाय अपनी ही जगह लेने वाले के लिए ज़मीन तैयार करता है",
+            mr: "प्रत्येक समुदाय आपलीच जागा घेणाऱ्यासाठी जमीन तयार करतो",
+          },
+          right: {
+            en: "ecological succession",
+            hi: "पारिस्थितिक अनुक्रमण",
+            mr: "पारिस्थितिक अनुक्रमण",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Food chains in nature rarely have more than four links, while a food web may contain hundreds of species. Explain the limit, and why it is a limit on chain length rather than on the number of species.",
+          hi: "प्रकृति में आहार शृंखलाओं में शायद ही कभी चार से अधिक कड़ियाँ होती हैं, जबकि किसी आहार जाल में सैकड़ों जातियाँ हो सकती हैं। इस सीमा को समझाओ, और यह भी कि वह जातियों की संख्या पर नहीं बल्कि शृंखला की लंबाई पर सीमा क्यों है।",
+          mr: "निसर्गात अन्नसाखळ्यांत क्वचितच चारांहून अधिक दुवे असतात, तर एखाद्या अन्नजाळ्यात शेकडो जाती असू शकतात. ही मर्यादा समजावा, आणि ती जातींच्या संख्येवर नव्हे तर साखळीच्या लांबीवर मर्यादा का आहे तेही सांगा.",
+        },
+        choices: [
+          {
+            en: "Only about ten per cent of the energy at one level reaches the next, because most of what an organism assimilates is spent on respiration and lost as heat, and much of its prey is never eaten or cannot be digested. Starting from 10,000 units at the producers, the fourth consumer level would have about ten — too little to support a viable population of anything. The limit falls on chain LENGTH because the loss compounds along a chain, whereas a food web can be wide at every level: any number of species can share the energy available at a given level, since breadth costs nothing while depth costs a factor of ten each time",
+            hi: "किसी स्तर की ऊर्जा का केवल लगभग दस प्रतिशत अगले तक पहुँचता है, क्योंकि जीव जो आत्मसात करता है उसका अधिकांश श्वसन पर ख़र्च होकर ऊष्मा के रूप में खो जाता है, और उसके शिकार का बहुत हिस्सा कभी खाया ही नहीं जाता या पचाया नहीं जा सकता। उत्पादकों पर 10,000 इकाइयों से शुरू करें तो चौथे उपभोक्ता स्तर के पास लगभग दस होंगी — किसी की भी व्यवहार्य आबादी सँभालने के लिए बहुत कम। सीमा शृंखला की लंबाई पर पड़ती है क्योंकि हानि शृंखला के अनुदिश चक्रवृद्धि होती है, जबकि आहार जाल हर स्तर पर चौड़ा हो सकता है: किसी दिए स्तर पर उपलब्ध ऊर्जा को कितनी भी जातियाँ बाँट सकती हैं, चूँकि चौड़ाई कुछ नहीं लेती जबकि गहराई हर बार दस का गुणक लेती है",
+            mr: "एखाद्या पातळीच्या ऊर्जेचा केवळ सुमारे दहा टक्के पुढच्यापर्यंत पोहोचतो, कारण जीव जे आत्मसात करतो त्याचा बहुतांश श्वसनावर खर्च होऊन उष्णतेच्या रूपात हरवतो, आणि त्याच्या शिकारीचा बराच भाग कधी खाल्लाच जात नाही वा पचवता येत नाही. उत्पादकांवर 10,000 एककांपासून सुरू केल्यास चौथ्या उपभोक्ता पातळीकडे सुमारे दहा असतील — कोणाचीही व्यवहार्य लोकसंख्या सांभाळण्यास फार कमी. मर्यादा साखळीच्या लांबीवर पडते कारण हानी साखळीच्या दिशेने चक्रवाढ होते, तर अन्नजाळे प्रत्येक पातळीवर रुंद असू शकते: दिलेल्या पातळीवर उपलब्ध ऊर्जा कितीही जाती वाटून घेऊ शकतात, कारण रुंदीला काहीही लागत नाही तर खोलीला प्रत्येक वेळी दहाचा गुणक लागतो",
+          },
+          {
+            en: "The limit exists because a predator cannot physically catch anything more than four levels removed from a plant, so the constraint is one of body size and hunting ability",
+            hi: "सीमा इसलिए है कि कोई परभक्षी किसी पादप से चार स्तर से अधिक दूर की चीज़ को भौतिक रूप से पकड़ ही नहीं सकता, अतः बाधा शरीर के आकार और शिकार क्षमता की है",
+            mr: "मर्यादा यासाठी आहे की कोणताही भक्षक एखाद्या वनस्पतीहून चार पातळ्यांहून अधिक दूरची गोष्ट भौतिकरीत्या पकडूच शकत नाही, म्हणून बंधन शरीराच्या आकाराचे आणि शिकार क्षमतेचे आहे",
+          },
+          {
+            en: "Energy is conserved at every transfer, so the limit comes not from energy but from the number of species available to occupy each level",
+            hi: "हर स्थानांतरण पर ऊर्जा संरक्षित रहती है, अतः सीमा ऊर्जा से नहीं बल्कि हर स्तर घेरने को उपलब्ध जातियों की संख्या से आती है",
+            mr: "प्रत्येक स्थानांतरावर ऊर्जा संरक्षित राहते, म्हणून मर्यादा ऊर्जेतून नव्हे तर प्रत्येक पातळी व्यापायला उपलब्ध जातींच्या संख्येतून येते",
+          },
+          {
+            en: "There is no such limit: chains of ten or twelve links are common, and the four-link figure applies only to aquatic ecosystems where energy transfer is unusually inefficient",
+            hi: "ऐसी कोई सीमा है ही नहीं: दस या बारह कड़ियों की शृंखलाएँ आम हैं, और चार कड़ियों वाला आँकड़ा केवल जलीय पारितंत्रों पर लागू है जहाँ ऊर्जा स्थानांतरण असामान्य रूप से अकुशल है",
+            mr: "अशी कोणतीही मर्यादा नाहीच: दहा वा बारा दुव्यांच्या साखळ्या सामान्य आहेत, आणि चार दुव्यांचा आकडा केवळ जलीय परिसंस्थांना लागू आहे जिथे ऊर्जा स्थानांतर असामान्यपणे अकार्यक्षम आहे",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The question has two parts and the second is the interesting one, because it asks why the constraint bites in one direction and not the other. WHERE THE ENERGY GOES. Take a herbivore eating plants. Some of what it takes in passes through undigested and leaves as faeces — that energy never entered its body at all and is available to decomposers instead. Of what it does assimilate, the great majority is respired: burnt to power movement, maintenance, ion pumping and, in a bird or mammal, the constant generation of heat. Only what is left over is built into new tissue, and only that tissue is available to whatever eats it. Across many ecosystems the fraction passed on averages roughly a tenth, though it varies — higher in aquatic systems where producers are small and soft, lower where a herbivore must digest wood or cellulose, and lower again for endotherms, which spend a great deal simply staying warm. THE ARITHMETIC THAT SETS THE LIMIT. Suppose producers capture 10,000 units. Herbivores get about 1,000, first carnivores about 100, second carnivores about 10. A fourth consumer level would have around one unit — not a small population but no population at all, since a predator must find enough prey to cover the cost of hunting for it. The limit is therefore not a rule imposed from outside; it is what remains when a factor of ten is applied a few times. WHY LENGTH AND NOT BREADTH, WHICH IS THE POINT OF THE QUESTION. Notice what the tenfold loss applies to. It applies each time energy is transferred UPWARD to another level. It does not apply to sharing energy WITHIN a level. Fifty species of insect feeding on plants divide the same herbivore budget between them; there is no extra loss for having fifty rather than five, because no additional transfer has occurred. So an ecosystem can be arbitrarily wide and only a few levels deep. That is exactly what a food web looks like — hundreds of species, most of them within three or four trophic positions, connected sideways in a tangle rather than stacked upward in a tower. TWO CONSEQUENCES WORTH DRAWING. First, top predators are always rare and always vulnerable, because they depend on the thinnest slice of the budget and on the entire structure beneath them remaining intact. Second, the same arithmetic is the argument about diet: a hectare of land feeds far more people if the grain is eaten directly than if it is fed to animals first, because that extra step costs the same factor of ten. THE HABIT. When something is limited, ask which quantity is being consumed and where. Here the answer distinguishes a dimension along which loss compounds from one along which it does not, and that distinction explains the shape of every food web. (The second option offers a mechanical constraint that would not explain why the limit is so consistent across very different body sizes; the third asserts that energy is conserved in a way that ignores its degradation to heat; the fourth denies a well-established general pattern.)",
+          hi: "प्रश्न के दो हिस्से हैं और दूसरा रोचक है, क्योंकि वह पूछता है कि बाधा एक दिशा में क्यों काटती है और दूसरी में नहीं। ऊर्जा जाती कहाँ है। पादप खाते किसी शाकाहारी को लो। जो वह भीतर लेता है उसका कुछ बिना पचे निकलकर मल के रूप में चला जाता है — वह ऊर्जा उसके शरीर में गई ही नहीं और उसके बजाय अपघटकों को उपलब्ध है। जो वह आत्मसात करता है उसका बड़ा हिस्सा श्वसित होता है: गति, अनुरक्षण, आयन पंपन को शक्ति देने में जलता है और पक्षी या स्तनपायी में ऊष्मा के लगातार उत्पादन में। जो बचता है केवल वही नए ऊतक में बनता है, और केवल वही ऊतक उसे उपलब्ध है जो उसे खाए। बहुत से पारितंत्रों में आगे जाता अंश औसतन मोटे तौर पर दसवाँ है, यद्यपि वह बदलता है — जलीय तंत्रों में ऊँचा जहाँ उत्पादक छोटे और कोमल हैं, वहाँ नीचा जहाँ शाकाहारी को लकड़ी या सेलुलोस पचाना पड़े, और तापनियंत्रित जीवों के लिए और नीचा, जो केवल गर्म रहने में बहुत ख़र्च करते हैं। वह गणित जो सीमा तय करता है। मान लो उत्पादक 10,000 इकाइयाँ पकड़ते हैं। शाकाहारियों को लगभग 1,000 मिलती हैं, पहले मांसाहारियों को लगभग 100, दूसरे मांसाहारियों को लगभग 10. चौथे उपभोक्ता स्तर के पास लगभग एक इकाई होगी — कोई छोटी आबादी नहीं बल्कि कोई आबादी ही नहीं, चूँकि परभक्षी को उसका शिकार करने की लागत पूरी करने भर शिकार मिलना चाहिए। अतः सीमा बाहर से थोपा गया नियम नहीं; वह वही है जो दस का गुणक कुछ बार लगाने पर बचता है। लंबाई क्यों और चौड़ाई क्यों नहीं, और यही प्रश्न का मर्म है। ध्यान दो कि दस गुना हानि किस पर लागू होती है। वह हर बार तब लागू होती है जब ऊर्जा ऊपर की ओर किसी दूसरे स्तर तक स्थानांतरित हो। वह किसी स्तर के भीतर ऊर्जा बाँटने पर लागू नहीं होती। पादपों पर खाती कीटों की पचास जातियाँ वही शाकाहारी बजट आपस में बाँट लेती हैं; पाँच के बजाय पचास होने की कोई अतिरिक्त हानि नहीं, क्योंकि कोई अतिरिक्त स्थानांतरण हुआ ही नहीं। अतः कोई पारितंत्र मनचाहा चौड़ा और केवल कुछ ही स्तर गहरा हो सकता है। आहार जाल ठीक वैसा ही दिखता है — सैकड़ों जातियाँ, जिनमें से अधिकांश तीन या चार पोषी स्थानों के भीतर, मीनार की तरह ऊपर चढ़ी नहीं बल्कि उलझन में बग़ल-बग़ल जुड़ी हुईं। खींचने लायक़ दो परिणाम। पहला, शीर्ष परभक्षी हमेशा दुर्लभ और हमेशा संवेदनशील हैं, क्योंकि वे बजट के सबसे पतले टुकड़े पर और अपने नीचे की पूरी संरचना के सलामत बने रहने पर निर्भर हैं। दूसरा, वही गणित आहार के बारे में तर्क है: ज़मीन का एक हेक्टेयर कहीं अधिक लोगों को खिलाता है यदि अनाज सीधे खाया जाए बनिस्बत इसके कि उसे पहले जानवरों को खिलाया जाए, क्योंकि वह अतिरिक्त चरण दस का वही गुणक लेता है। आदत। जब कोई चीज़ सीमित हो, तो पूछो कि कौन-सी राशि ख़र्च हो रही है और कहाँ। यहाँ उत्तर उस विमा को, जिसके अनुदिश हानि चक्रवृद्धि होती है, उस विमा से अलग करता है जिसके अनुदिश नहीं, और वही भेद हर आहार जाल का आकार समझा देता है। (दूसरा विकल्प ऐसी यांत्रिक बाधा देता है जो यह नहीं समझा सकती कि सीमा बहुत भिन्न शरीर आकारों में इतनी संगत क्यों है; तीसरा दावा करता है कि ऊर्जा ऐसे संरक्षित है कि उसका ऊष्मा में गिरना अनदेखा हो जाए; चौथा भलीभाँति स्थापित सामान्य प्रतिरूप से इनकार करता है।)",
+          mr: "प्रश्नाचे दोन भाग आहेत आणि दुसरा रोचक आहे, कारण तो विचारतो की बंधन एका दिशेने का कापते आणि दुसऱ्या दिशेने नाही. ऊर्जा जाते कुठे. वनस्पती खाणारा एखादा शाकाहारी घ्या. तो जे आत घेतो त्यातले काही न पचता निघून विष्ठेच्या रूपात जाते — ती ऊर्जा त्याच्या शरीरात गेलीच नाही आणि त्याऐवजी विघटकांना उपलब्ध आहे. जे तो आत्मसात करतो त्याचा मोठा भाग श्वसित होतो: हालचाल, देखभाल, आयन पंपिंगला शक्ती देण्यात जळतो आणि पक्षी वा सस्तन प्राण्यात उष्णतेच्या सतत निर्मितीत. जे उरते तेच नव्या ऊतकात बनते, आणि तेच ऊतक त्याला उपलब्ध आहे जो ते खाईल. बऱ्याच परिसंस्थांत पुढे जाणारा अंश सरासरी ढोबळपणे दशांश आहे, जरी तो बदलतो — जलीय प्रणालींत उच्च जिथे उत्पादक लहान आणि मऊ आहेत, तिथे कमी जिथे शाकाहारीला लाकूड वा सेल्युलोज पचवावे लागते, आणि तापनियंत्रित जीवांसाठी आणखी कमी, जे केवळ उबदार राहण्यात खूप खर्च करतात. जे गणित मर्यादा ठरवते. समजा उत्पादक 10,000 एकके पकडतात. शाकाहारींना सुमारे 1,000 मिळतात, पहिल्या मांसाहारींना सुमारे 100, दुसऱ्या मांसाहारींना सुमारे 10. चौथ्या उपभोक्ता पातळीकडे सुमारे एक एकक असेल — कोणतीही लहान लोकसंख्या नव्हे तर कोणतीही लोकसंख्याच नाही, कारण भक्षकाला त्याची शिकार करण्याचा खर्च भरून काढण्याइतकी शिकार मिळाली पाहिजे. म्हणून मर्यादा बाहेरून लादलेला नियम नाही; ती तीच आहे जी दहाचा गुणक काही वेळा लावल्यावर उरते. लांबी का आणि रुंदी का नाही, आणि हाच प्रश्नाचा गाभा आहे. लक्षात घ्या की दहापट हानी कशाला लागू होते. ती प्रत्येक वेळी तेव्हा लागू होते जेव्हा ऊर्जा वरच्या दिशेने दुसऱ्या पातळीपर्यंत स्थानांतरित होते. ती एखाद्या पातळीच्या आत ऊर्जा वाटण्यावर लागू होत नाही. वनस्पतींवर खाणाऱ्या कीटकांच्या पन्नास जाती तेच शाकाहारी अंदाजपत्रक आपसात वाटून घेतात; पाचांऐवजी पन्नास असण्याची कोणतीही अतिरिक्त हानी नाही, कारण कोणतेही अतिरिक्त स्थानांतर घडलेच नाही. म्हणून एखादी परिसंस्था मनाजोगती रुंद आणि केवळ काहीच पातळ्या खोल असू शकते. अन्नजाळे नेमके तसेच दिसते — शेकडो जाती, ज्यांपैकी बहुतांश तीन वा चार पोषी जागांच्या आत, मनोऱ्यासारख्या वर चढलेल्या नव्हे तर गुंत्यात शेजारीशेजारी जोडलेल्या. काढण्याजोगे दोन परिणाम. पहिला, शिखर भक्षक नेहमी दुर्मीळ आणि नेहमी असुरक्षित आहेत, कारण ते अंदाजपत्रकाच्या सर्वांत पातळ तुकड्यावर आणि आपल्याखालची अख्खी रचना शाबूत राहण्यावर अवलंबून आहेत. दुसरा, तेच गणित आहाराबद्दलचा युक्तिवाद आहे: जमिनीचा एक हेक्टर कितीतरी अधिक लोकांना खाऊ घालतो जर धान्य थेट खाल्ले तर, त्या तुलनेत की ते आधी जनावरांना खाऊ घातले जावे, कारण ती अतिरिक्त पायरी दहाचा तोच गुणक घेते. सवय. जेव्हा एखादी गोष्ट मर्यादित असेल, तेव्हा विचारा की कोणती राशी खर्च होत आहे आणि कुठे. इथे उत्तर त्या मितीला, जिच्या दिशेने हानी चक्रवाढ होते, त्या मितीहून वेगळे करते जिच्या दिशेने नाही, आणि तोच भेद प्रत्येक अन्नजाळ्याचा आकार समजावतो. (दुसरा पर्याय असे यांत्रिक बंधन देतो जे हे समजावू शकत नाही की मर्यादा फार वेगळ्या शरीर आकारांत इतकी सुसंगत का आहे; तिसरा दावा करतो की ऊर्जा अशी संरक्षित आहे की तिचे उष्णतेत उतरणे दुर्लक्षित व्हावे; चौथा उत्तम प्रस्थापित सर्वसाधारण नमुना नाकारतो.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "In a pond, the total mass of the phytoplankton at any moment is less than the mass of the fish that eat them, so the pyramid of biomass is inverted. Explain how this is possible without violating the rule that energy decreases up a food chain.",
+          hi: "किसी तालाब में पादपप्लवकों का कुल द्रव्यमान किसी भी क्षण उन्हें खाती मछलियों के द्रव्यमान से कम होता है, अतः जैवभार का पिरामिड उलटा है। बताओ कि यह उस नियम को तोड़े बिना कैसे संभव है कि आहार शृंखला में ऊपर जाते हुए ऊर्जा घटती है।",
+          mr: "एका तळ्यात वनस्पतीप्लवकांचे एकूण वस्तुमान कोणत्याही क्षणी त्यांना खाणाऱ्या माशांच्या वस्तुमानाहून कमी असते, म्हणून जैवभाराचा मनोरा उलटा आहे. हा नियम न मोडता हे कसे शक्य आहे ते सांगा की अन्नसाखळीत वर जाताना ऊर्जा घटते.",
+        },
+        choices: [
+          {
+            en: "A pyramid of biomass records the standing stock at one instant, not the amount produced over time. The phytoplankton divide within hours and are eaten almost as fast as they grow, so a small mass turns over many times a year and delivers a very large annual production; the fish grow slowly and accumulate, so their small production sits in a large standing mass. Measure the flow rather than the stock — a pyramid of energy, which is production per unit time — and the pond is upright like everything else. The rule is not violated because it governs energy transferred, and biomass at an instant is a different quantity",
+            hi: "जैवभार का पिरामिड किसी एक क्षण का खड़ा भंडार दर्ज करता है, समय भर बनी मात्रा नहीं। पादपप्लवक घंटों में विभाजित होते हैं और जितनी तेज़ी से बढ़ते हैं लगभग उतनी ही तेज़ी से खा लिए जाते हैं, अतः छोटा द्रव्यमान वर्ष में कई बार पलटता है और बहुत बड़ा वार्षिक उत्पादन देता है; मछलियाँ धीरे बढ़ती हैं और जमा होती हैं, अतः उनका छोटा उत्पादन बड़े खड़े द्रव्यमान में बैठा रहता है। भंडार के बजाय प्रवाह नापो — ऊर्जा का पिरामिड, जो प्रति इकाई समय उत्पादन है — और तालाब बाक़ी सबकी तरह सीधा खड़ा है। नियम टूटता नहीं क्योंकि वह स्थानांतरित ऊर्जा पर शासन करता है, और किसी क्षण का जैवभार भिन्न राशि है",
+            mr: "जैवभाराचा मनोरा एका क्षणाचा उभा साठा नोंदवतो, काळभर बनलेले प्रमाण नाही. वनस्पतीप्लवक तासांत विभाजित होतात आणि जितक्या वेगाने वाढतात जवळपास तितक्याच वेगाने खाल्ले जातात, म्हणून लहान वस्तुमान वर्षात कित्येक वेळा पलटते आणि फार मोठे वार्षिक उत्पादन देते; मासे सावकाश वाढतात आणि जमा होतात, म्हणून त्यांचे लहान उत्पादन मोठ्या उभ्या वस्तुमानात बसून राहते. साठ्याऐवजी प्रवाह मोजा — ऊर्जेचा मनोरा, जो प्रति एकक काळ उत्पादन आहे — आणि तळे बाकी सर्वांसारखे सरळ उभे आहे. नियम मोडत नाही कारण तो स्थानांतरित ऊर्जेवर राज्य करतो, आणि एखाद्या क्षणीचा जैवभार वेगळी राशी आहे",
+          },
+          {
+            en: "The fish obtain most of their energy from sources outside the pond, so the phytoplankton do not have to support them and the pyramid is not really a pyramid at all",
+            hi: "मछलियाँ अपनी अधिकांश ऊर्जा तालाब के बाहर के स्रोतों से पाती हैं, अतः पादपप्लवकों को उन्हें सँभालना नहीं पड़ता और वह पिरामिड वस्तुतः पिरामिड है ही नहीं",
+            mr: "मासे आपली बहुतांश ऊर्जा तळ्याबाहेरच्या स्रोतांतून मिळवतात, म्हणून वनस्पतीप्लवकांना त्यांना सांभाळावे लागत नाही आणि तो मनोरा प्रत्यक्षात मनोराच नाही",
+          },
+          {
+            en: "The rule is genuinely violated in aquatic ecosystems, where energy can increase up a food chain because water supplies additional energy to the consumers",
+            hi: "जलीय पारितंत्रों में यह नियम वस्तुतः टूटता है, जहाँ आहार शृंखला में ऊपर जाते हुए ऊर्जा बढ़ सकती है क्योंकि पानी उपभोक्ताओं को अतिरिक्त ऊर्जा देता है",
+            mr: "जलीय परिसंस्थांत हा नियम खरोखर मोडतो, जिथे अन्नसाखळीत वर जाताना ऊर्जा वाढू शकते कारण पाणी उपभोक्त्यांना अतिरिक्त ऊर्जा देते",
+          },
+          {
+            en: "Phytoplankton are not really producers, so they do not belong at the base of the pyramid, and once they are placed correctly the inversion disappears",
+            hi: "पादपप्लवक वस्तुतः उत्पादक हैं ही नहीं, अतः वे पिरामिड के आधार पर नहीं आते, और उन्हें ठीक जगह रखते ही उलटाव ग़ायब हो जाता है",
+            mr: "वनस्पतीप्लवक प्रत्यक्षात उत्पादक आहेतच नाहीत, म्हणून ते मनोऱ्याच्या पायथ्याशी येत नाहीत, आणि त्यांना योग्य जागी ठेवताच उलटणे नाहीसे होते",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The apparent paradox is worth taking seriously, because resolving it requires noticing that two different quantities have been confused, and the distinction between them is one of the most useful in ecology. THE TWO QUANTITIES. A standing stock is how much of something is present at one instant — the mass of phytoplankton in the pond this morning. A production rate is how much is made per unit time — the mass of phytoplankton the pond generates over a year. They are related but they are not the same, and one can be small while the other is enormous, provided the material turns over fast. THE PHYTOPLANKTON. These are single cells that can divide in a day or less, and they are grazed almost as fast as they grow. So at any instant the population is small: what has been produced has already been eaten. Over a year, though, the same small standing mass may be replaced hundreds of times, and the total production is very large indeed. Turnover time — the standing stock divided by the production rate — may be a day or two. THE FISH. A fish grows slowly and lives for years, so what it produces accumulates in its own body rather than being consumed at once. Its turnover time is months or years. A modest annual production therefore sits inside a large standing mass. WHY THE PYRAMID INVERTS AND WHY NOTHING IS VIOLATED. Draw the biomass at one instant and you are comparing a fast-turnover level with a slow-turnover one, which tells you nothing about how much energy passed between them. The comparison is unfair, in the same way that comparing a shop's stock on the shelf with a warehouse's would say nothing about which sells more. Draw instead the energy fixed per square metre per year, and the pond behaves like every other ecosystem: producers far exceed herbivores, which far exceed carnivores. The tenfold rule was always a statement about energy transferred over time, and a snapshot of mass simply does not measure that. WHY THIS MATTERS BEYOND THE EXAMPLE. A standing stock is easy to measure and a flow is hard, so the tempting quantity is often the misleading one. The same confusion appears elsewhere: the small amount of nitrate in a river at any moment says nothing about how much passes down it in a year, and the number of people in a hospital ward at noon says nothing about how many are treated. Whenever a quantity that turns over fast is compared with one that turns over slowly, ask whether the measurement is a stock or a flow, and be sure which one the question requires. (The second option imports an outside energy source that the pond does not have; the third claims a violation of a thermodynamic constraint, which no ecosystem manages; the fourth denies that phytoplankton photosynthesise, when they perform a large share of the world's primary production.)",
+          hi: "प्रत्यक्ष विरोधाभास को गंभीरता से लेना चाहिए, क्योंकि उसे सुलझाने के लिए यह देखना पड़ता है कि दो भिन्न राशियाँ गड्डमड्ड हुई हैं, और उनके बीच का भेद पारिस्थितिकी के सबसे काम के भेदों में से एक है। दो राशियाँ। खड़ा भंडार यह है कि किसी क्षण किसी चीज़ की कितनी मात्रा मौजूद है — आज सुबह तालाब में पादपप्लवकों का द्रव्यमान। उत्पादन दर यह है कि प्रति इकाई समय कितना बनता है — वर्ष भर में तालाब जितना पादपप्लवक द्रव्यमान पैदा करता है। वे संबंधित हैं पर एक नहीं, और एक छोटा हो सकता है जबकि दूसरा विशाल, बशर्ते सामग्री तेज़ी से पलटती हो। पादपप्लवक। ये एकल कोशिकाएँ हैं जो एक दिन या उससे कम में विभाजित हो सकती हैं, और जितनी तेज़ी से बढ़ती हैं लगभग उतनी ही तेज़ी से चरी जाती हैं। अतः किसी भी क्षण आबादी छोटी है: जो बना वह पहले ही खा लिया गया। पर एक वर्ष में वही छोटा खड़ा द्रव्यमान सैकड़ों बार बदल सकता है, और कुल उत्पादन वस्तुतः बहुत बड़ा है। पलटने का समय — खड़ा भंडार भाग उत्पादन दर — एक या दो दिन हो सकता है। मछलियाँ। मछली धीरे बढ़ती है और वर्षों जीती है, अतः वह जो बनाती है वह तुरंत खा लिए जाने के बजाय उसके अपने शरीर में जमा होता है। उसका पलटने का समय महीने या वर्ष है। अतः माफ़िक़ वार्षिक उत्पादन बड़े खड़े द्रव्यमान के भीतर बैठा रहता है। पिरामिड उलटता क्यों है और कुछ टूटता क्यों नहीं। किसी एक क्षण का जैवभार खींचो और तुम तेज़-पलटाव वाले स्तर की तुलना धीमे-पलटाव वाले से कर रहे हो, जो कुछ नहीं बताता कि उनके बीच कितनी ऊर्जा गई। तुलना अनुचित है, उसी तरह जैसे किसी दुकान के तख़्ते पर रखे माल की तुलना किसी गोदाम से यह नहीं बताती कि कौन अधिक बेचता है। इसके बजाय प्रति वर्ग मीटर प्रति वर्ष स्थिर की गई ऊर्जा खींचो, और तालाब हर दूसरे पारितंत्र जैसा बरतता है: उत्पादक शाकाहारियों से कहीं अधिक, जो मांसाहारियों से कहीं अधिक। दस गुना नियम हमेशा समय भर स्थानांतरित ऊर्जा के बारे में कथन था, और द्रव्यमान का कोई स्नैपशॉट उसे नापता ही नहीं। यह उदाहरण से आगे क्यों मायने रखता है। खड़ा भंडार नापना आसान है और प्रवाह कठिन, अतः लुभाने वाली राशि प्रायः भरमाने वाली होती है। वही उलझन कहीं और भी दिखती है: किसी क्षण किसी नदी में नाइट्रेट की छोटी मात्रा यह नहीं बताती कि वर्ष भर में उससे कितना बहकर जाता है, और दोपहर में किसी अस्पताल वार्ड में लोगों की संख्या यह नहीं बताती कि कितनों का उपचार होता है। जब भी तेज़ी से पलटती राशि की तुलना धीरे पलटती राशि से हो, तो पूछो कि माप भंडार है या प्रवाह, और पक्का करो कि प्रश्न को कौन-सा चाहिए। (दूसरा विकल्प ऐसा बाहरी ऊर्जा स्रोत आयात करता है जो तालाब के पास नहीं; तीसरा ऐसी ऊष्मागतिक बाधा के टूटने का दावा करता है जो किसी पारितंत्र से नहीं होता; चौथा इससे इनकार करता है कि पादपप्लवक प्रकाश संश्लेषण करते हैं, जबकि वे दुनिया के प्राथमिक उत्पादन का बड़ा हिस्सा करते हैं।)",
+          mr: "प्रत्यक्ष विरोधाभास गांभीर्याने घेण्याजोगा आहे, कारण तो सोडवण्यास हे लक्षात घ्यावे लागते की दोन वेगळ्या राशींची गल्लत झाली आहे, आणि त्यांच्यातील भेद पारिस्थितिकीतल्या सर्वांत उपयुक्त भेदांपैकी एक आहे. दोन राशी. उभा साठा म्हणजे एखाद्या क्षणी एखाद्या गोष्टीचे किती प्रमाण उपस्थित आहे — आज सकाळी तळ्यातल्या वनस्पतीप्लवकांचे वस्तुमान. उत्पादन दर म्हणजे प्रति एकक काळ किती बनते — वर्षभरात तळे जितके वनस्पतीप्लवक वस्तुमान निर्माण करते. ती संबंधित आहेत पण एक नाहीत, आणि एक लहान असू शकते तर दुसरे प्रचंड, जर सामग्री वेगाने पलटत असेल तर. वनस्पतीप्लवक. ही एकपेशी आहेत जी एका दिवसात वा त्याहून कमी वेळात विभाजित होऊ शकतात, आणि जितक्या वेगाने वाढतात जवळपास तितक्याच वेगाने चरली जातात. म्हणून कोणत्याही क्षणी लोकसंख्या लहान आहे: जे बनले ते आधीच खाल्ले गेले. पण एका वर्षात तेच लहान उभे वस्तुमान शेकडो वेळा बदलू शकते, आणि एकूण उत्पादन खरोखर फार मोठे आहे. पलटण्याचा काळ — उभा साठा भागिले उत्पादन दर — एक वा दोन दिवस असू शकतो. मासे. मासा सावकाश वाढतो आणि वर्षे जगतो, म्हणून तो जे बनवतो ते लगेच खाल्ले जाण्याऐवजी त्याच्या स्वतःच्या शरीरात जमते. त्याचा पलटण्याचा काळ महिने वा वर्षे आहे. म्हणून माफक वार्षिक उत्पादन मोठ्या उभ्या वस्तुमानाच्या आत बसून राहते. मनोरा का उलटतो आणि काहीही का मोडत नाही. एका क्षणाचा जैवभार काढा आणि तुम्ही जलद-पलटाव पातळीची तुलना सावकाश-पलटाव पातळीशी करत आहात, जे त्यांच्यात किती ऊर्जा गेली याबद्दल काहीही सांगत नाही. तुलना अन्यायकारक आहे, त्याच प्रकारे जसे एखाद्या दुकानाच्या फळीवरच्या मालाची तुलना एखाद्या गोदामाशी करणे कोण अधिक विकतो हे सांगणार नाही. त्याऐवजी प्रति चौरस मीटर प्रति वर्ष स्थिर केलेली ऊर्जा काढा, आणि तळे प्रत्येक इतर परिसंस्थेसारखे वागते: उत्पादक शाकाहारींहून कितीतरी अधिक, जे मांसाहारींहून कितीतरी अधिक. दहापट नियम नेहमी काळभर स्थानांतरित ऊर्जेबद्दलचे विधान होते, आणि वस्तुमानाचा कोणताही क्षणचित्र ते मोजतच नाही. हे उदाहरणापलीकडे का महत्त्वाचे आहे. उभा साठा मोजणे सोपे आहे आणि प्रवाह कठीण, म्हणून मोहवणारी राशी बहुधा दिशाभूल करणारी असते. तीच गल्लत इतरत्रही दिसते: एखाद्या क्षणी एखाद्या नदीत नायट्रेटचे लहान प्रमाण हे सांगत नाही की वर्षभरात तिच्यातून किती वाहून जाते, आणि दुपारी एखाद्या रुग्णालय कक्षातल्या लोकांची संख्या हे सांगत नाही की कितींवर उपचार होतात. जेव्हाही वेगाने पलटणाऱ्या राशीची तुलना सावकाश पलटणाऱ्या राशीशी होईल, तेव्हा विचारा की माप साठा आहे की प्रवाह, आणि खात्री करा की प्रश्नाला कोणता लागतो. (दुसरा पर्याय असा बाहेरचा ऊर्जा स्रोत आयात करतो जो तळ्याकडे नाही; तिसरा अशा उष्मागतिक बंधनाच्या मोडण्याचा दावा करतो जे कोणत्याही परिसंस्थेकडून होत नाही; चौथा हे नाकारतो की वनस्पतीप्लवक प्रकाशसंश्लेषण करतात, तर ते जगाच्या प्राथमिक उत्पादनाचा मोठा भाग करतात.)",
+        },
+      },
+    ],
+  },
+  /* ----------------------------------------------------------------------- */
+  /* Chapter 13 — Biodiversity and Conservation                              */
+  /* ----------------------------------------------------------------------- */
+  {
+    slug: "biology-12-biodiversity-and-conservation",
+    subject: "BIOLOGY",
+    classLevel: 12,
+    chapter: {
+      en: "Chapter 13 — Biodiversity and Conservation",
+      hi: "अध्याय 13 — जैव विविधता एवं संरक्षण",
+      mr: "प्रकरण 13 — जैवविविधता आणि संवर्धन",
+    },
+    name: {
+      en: "Biodiversity and Conservation",
+      hi: "जैव विविधता एवं संरक्षण",
+      mr: "जैवविविधता आणि संवर्धन",
+    },
+    summary: {
+      en: "A chapter that has to answer a question the others do not — why any of it matters — and the honest answer turns out to have three parts that need keeping apart: what a species is worth for what it provides, what it is worth as an option nobody has yet needed, and what it is worth in a way that has nothing to do with us; a relationship between the area of a habitat and the number of species it holds, which is regular enough to be plotted as a straight line on the right axes and therefore lets a loss of forest be converted into a number of extinctions; four causes of loss of which the first is much the largest and the last is the one that arrives with the best intentions; a distinction between saving a thing where it lives and saving it somewhere else, which is not a choice between two methods so much as between saving a species and saving the relationships it is part of; and a set of protected areas whose difficulty is that a boundary drawn on a map is not a boundary an animal recognises, so that a reserve too small or too isolated fails for reasons that have nothing to do with how well it is guarded.",
+      hi: "ऐसा अध्याय जिसे वह प्रश्न सुलझाना है जो बाक़ी को नहीं — कि इसमें से कुछ भी मायने क्यों रखे — और ईमानदार उत्तर के तीन हिस्से निकलते हैं जिन्हें अलग रखना ज़रूरी है: कोई जाति जो देती है उसके लिए कितनी क़ीमती है, ऐसे विकल्प के रूप में कितनी क़ीमती है जिसकी अभी किसी को ज़रूरत नहीं पड़ी, और ऐसे तरीक़े से कितनी क़ीमती है जिसका हमसे कोई लेना-देना ही नहीं; किसी आवास के क्षेत्रफल और उसमें रहती जातियों की संख्या के बीच ऐसा संबंध जो इतना नियमित है कि सही अक्षों पर सीधी रेखा के रूप में खींचा जा सके और इसलिए वन की हानि को विलुप्तियों की संख्या में बदलने देता है; हानि के चार कारण जिनमें पहला कहीं सबसे बड़ा है और आख़िरी वह है जो सबसे नेक इरादों के साथ आता है; किसी चीज़ को वहीं बचाने और उसे कहीं और बचाने के बीच ऐसा भेद जो दो विधियों के बीच चुनाव उतना नहीं जितना किसी जाति को बचाने और उन संबंधों को बचाने के बीच जिनका वह हिस्सा है; और संरक्षित क्षेत्रों का ऐसा समुच्चय जिसकी कठिनाई यह है कि नक़्शे पर खींची सीमा वह सीमा नहीं जिसे कोई प्राणी पहचानता हो, अतः बहुत छोटा या बहुत अलग-थलग अभयारण्य ऐसे कारणों से विफल होता है जिनका इससे कोई लेना-देना नहीं कि उसकी रखवाली कितनी अच्छी है।",
+      mr: "असे प्रकरण ज्याला तो प्रश्न सोडवायचा आहे जो बाकीच्यांना नाही — की यातले काहीही महत्त्वाचे का असावे — आणि प्रामाणिक उत्तराचे तीन भाग निघतात जे वेगळे ठेवणे आवश्यक आहे: एखादी जात जे देते त्यासाठी किती मौल्यवान आहे, अशा पर्यायाच्या रूपात किती मौल्यवान आहे जिची अजून कोणाला गरज पडली नाही, आणि अशा प्रकारे किती मौल्यवान आहे ज्याचा आपल्याशी काहीही संबंध नाही; एखाद्या अधिवासाचे क्षेत्रफळ आणि त्यात राहणाऱ्या जातींची संख्या यांच्यातील असे नाते जे इतके नियमित आहे की योग्य अक्षांवर सरळ रेषा म्हणून काढता यावे आणि म्हणून जंगलाच्या हानीचे विलुप्तींच्या संख्येत रूपांतर करू देते; हानीची चार कारणे ज्यांत पहिले कितीतरी सर्वांत मोठे आहे आणि शेवटचे ते आहे जे सर्वांत चांगल्या हेतूंसह येते; एखादी गोष्ट तिथेच वाचवणे आणि तिला इतरत्र वाचवणे यांतील असा भेद जो दोन पद्धतींतील निवड तितका नाही जितका एखादी जात वाचवणे आणि ती ज्यांचा भाग आहे ती नाती वाचवणे यांतील; आणि संरक्षित क्षेत्रांचा असा संच ज्याची अडचण ही की नकाशावर काढलेली सीमा ती सीमा नाही जी एखादा प्राणी ओळखतो, म्हणून फार लहान वा फार एकाकी अभयारण्य अशा कारणांनी अपयशी ठरते ज्यांचा त्याची राखण किती चांगली आहे याच्याशी काहीही संबंध नाही.",
+    },
+    position: 13,
+    source: SOURCE,
+    licence: LICENCE,
+    facts: [
+      {
+        id: "three-kinds-of-value",
+        name: {
+          en: "Three kinds of value",
+          hi: "तीन तरह के मूल्य",
+          mr: "तीन प्रकारची मूल्ये",
+        },
+        kind: "argument and how it is made",
+        prompt: {
+          en: "Three different reasons for preserving a species — what it supplies now, what it might supply later, and what it is worth independently of us. What is this distinction?",
+          hi: "किसी जाति को बचाने के तीन भिन्न कारण — वह अभी क्या देती है, बाद में क्या दे सकती है, और हमसे स्वतंत्र रूप से उसकी क्या क़ीमत है। यह कौन-सा भेद है?",
+          mr: "एखादी जात वाचवण्याची तीन वेगळी कारणे — ती आत्ता काय पुरवते, नंतर काय पुरवू शकेल, आणि आपल्यापासून स्वतंत्रपणे तिचे काय मूल्य आहे. हा कोणता भेद?",
+        },
+        statement: {
+          en: "Three kinds of value are usually distinguished: narrowly utilitarian, which is what a species supplies now; broadly utilitarian, which includes services and future uses; and ethical, which does not depend on any use at all.",
+          hi: "प्रायः तीन तरह के मूल्य अलग किए जाते हैं: संकीर्ण उपयोगितावादी, यानी कोई जाति अभी क्या देती है; व्यापक उपयोगितावादी, जिसमें सेवाएँ और भावी उपयोग शामिल हैं; और नैतिक, जो किसी उपयोग पर निर्भर ही नहीं।",
+          mr: "बहुधा तीन प्रकारची मूल्ये वेगळी केली जातात: संकुचित उपयुक्ततावादी, म्हणजे एखादी जात आत्ता काय पुरवते; व्यापक उपयुक्ततावादी, ज्यात सेवा आणि भावी वापर समाविष्ट आहेत; आणि नैतिक, जे कोणत्याही वापरावर अवलंबूनच नाही.",
+        },
+        detail: {
+          en: "The three are worth keeping apart because they can conflict: a species with no current use may have great option value, and an argument that rests only on present usefulness cannot protect it.",
+          hi: "इन तीनों को अलग रखना काम का है क्योंकि वे टकरा सकते हैं: जिस जाति का अभी कोई उपयोग नहीं उसका विकल्प मूल्य बहुत बड़ा हो सकता है, और जो तर्क केवल वर्तमान उपयोगिता पर टिका हो वह उसे बचा नहीं सकता।",
+          mr: "या तिघांना वेगळे ठेवणे उपयुक्त आहे कारण ती परस्परविरोधी असू शकतात: ज्या जातीचा आत्ता कोणताही वापर नाही तिचे पर्याय मूल्य फार मोठे असू शकते, आणि जो युक्तिवाद केवळ सध्याच्या उपयुक्ततेवर टिकला असेल तो तिला वाचवू शकत नाही.",
+        },
+        extra: {
+          en: "The broadly utilitarian case is the strongest in practice, because pollination, water purification and climate regulation are services no one is asked to pay for and everyone depends on.",
+          hi: "व्यवहार में व्यापक उपयोगितावादी पक्ष सबसे प्रबल है, क्योंकि परागण, जल शोधन और जलवायु नियमन ऐसी सेवाएँ हैं जिनका दाम किसी से नहीं माँगा जाता और जिन पर सब निर्भर हैं।",
+          mr: "व्यवहारात व्यापक उपयुक्ततावादी बाजू सर्वांत भक्कम आहे, कारण परागण, जलशुद्धीकरण आणि हवामान नियमन अशा सेवा आहेत ज्यांची किंमत कोणाकडून मागितली जात नाही आणि ज्यांवर सर्व अवलंबून आहेत.",
+        },
+        pair: {
+          left: {
+            en: "An argument from present use cannot protect an unused species",
+            hi: "वर्तमान उपयोग का तर्क अप्रयुक्त जाति को नहीं बचा सकता",
+            mr: "सध्याच्या वापराचा युक्तिवाद न वापरलेली जात वाचवू शकत नाही",
+          },
+          right: {
+            en: "three kinds of value",
+            hi: "तीन तरह के मूल्य",
+            mr: "तीन प्रकारची मूल्ये",
+          },
+        },
+      },
+      {
+        id: "the-species-area-relationship",
+        name: {
+          en: "The species–area relationship",
+          hi: "जाति-क्षेत्र संबंध",
+          mr: "जाती-क्षेत्र नाते",
+        },
+        kind: "argument and how it is made",
+        prompt: {
+          en: "A regularity between the size of a region and the number of species in it, which becomes a straight line when both are plotted on logarithmic axes. What is it?",
+          hi: "किसी क्षेत्र के आकार और उसमें जातियों की संख्या के बीच ऐसी नियमितता जो दोनों को लघुगणकीय अक्षों पर खींचने पर सीधी रेखा बन जाती है। यह क्या है?",
+          mr: "एखाद्या प्रदेशाचा आकार आणि त्यातील जातींची संख्या यांच्यातील अशी नियमितता जी दोन्ही लघुगणकीय अक्षांवर काढल्यावर सरळ रेषा बनते. हे काय आहे?",
+        },
+        statement: {
+          en: "The species–area relationship states that the number of species rises with the area sampled, following a power law that plots as a straight line on log–log axes.",
+          hi: "जाति-क्षेत्र संबंध कहता है कि जातियों की संख्या नमूने में लिए गए क्षेत्रफल के साथ बढ़ती है, और वह ऐसे घात नियम का पालन करती है जो लघु-लघु अक्षों पर सीधी रेखा बनकर खिंचता है।",
+          mr: "जाती-क्षेत्र नाते सांगते की जातींची संख्या नमुन्यात घेतलेल्या क्षेत्रफळासोबत वाढते, आणि ती अशा घात नियमाचे पालन करते जो लघु-लघु अक्षांवर सरळ रेषा बनून काढला जातो.",
+        },
+        detail: {
+          en: "The slope is remarkably consistent across very different groups and continents, which is what makes it usable as a general rule rather than a description of one place.",
+          hi: "ढाल बहुत भिन्न समूहों और महाद्वीपों में उल्लेखनीय रूप से संगत है, और यही उसे किसी एक जगह के वर्णन के बजाय सामान्य नियम के रूप में काम आने लायक़ बनाता है।",
+          mr: "उतार फार वेगळ्या गटांत आणि खंडांत लक्षणीयरीत्या सुसंगत आहे, आणि हेच त्याला एखाद्या जागेच्या वर्णनाऐवजी सर्वसाधारण नियम म्हणून वापरण्याजोगे बनवते.",
+        },
+        extra: {
+          en: "It is what converts a loss of habitat into a predicted number of extinctions, which is how estimates of species loss from deforestation are made at all.",
+          hi: "यही आवास की हानि को विलुप्तियों की भविष्यवाणित संख्या में बदलता है, और वनोन्मूलन से जातियों की हानि के आकलन इसी तरह किए जाते हैं।",
+          mr: "हेच अधिवासाच्या हानीचे विलुप्तींच्या भाकीत संख्येत रूपांतर करते, आणि जंगलतोडीमुळे जातींच्या हानीचे अंदाज याच प्रकारे केले जातात.",
+        },
+        pair: {
+          left: {
+            en: "A regularity that turns lost hectares into lost species",
+            hi: "ऐसी नियमितता जो खोए हेक्टेयरों को खोई जातियों में बदल देती है",
+            mr: "अशी नियमितता जी हरवलेल्या हेक्टरांचे हरवलेल्या जातींत रूपांतर करते",
+          },
+          right: {
+            en: "the species–area relationship",
+            hi: "जाति-क्षेत्र संबंध",
+            mr: "जाती-क्षेत्र नाते",
+          },
+        },
+      },
+      {
+        id: "why-the-tropics-hold-more",
+        name: {
+          en: "Why the tropics hold more species",
+          hi: "उष्णकटिबंध में अधिक जातियाँ क्यों हैं",
+          mr: "उष्णकटिबंधात अधिक जाती का आहेत",
+        },
+        kind: "argument and how it is made",
+        prompt: {
+          en: "A pattern in which diversity falls steadily from the equator to the poles, explained by uninterrupted time, constant conditions and more energy arriving. What is it?",
+          hi: "ऐसा प्रतिरूप जिसमें विविधता भूमध्य रेखा से ध्रुवों तक लगातार गिरती है, और जिसे अबाधित समय, अचर परिस्थितियों और अधिक ऊर्जा के आने से समझाया जाता है। यह क्या है?",
+          mr: "असा नमुना ज्यात विविधता विषुववृत्तापासून ध्रुवांपर्यंत सतत घसरते, आणि ज्याला अखंड काळ, अचल परिस्थिती आणि अधिक ऊर्जा येणे यांनी समजावले जाते. हा काय आहे?",
+        },
+        statement: {
+          en: "Species diversity is greatest in the tropics because those regions have been undisturbed by glaciation for far longer, have less seasonal variation, and receive more solar energy.",
+          hi: "जाति विविधता उष्णकटिबंध में सबसे अधिक है क्योंकि वे क्षेत्र हिमनदन से कहीं लंबे समय तक अबाधित रहे हैं, उनमें मौसमी उतार-चढ़ाव कम है, और उन्हें अधिक सौर ऊर्जा मिलती है।",
+          mr: "जाती विविधता उष्णकटिबंधात सर्वाधिक आहे कारण ते प्रदेश हिमनदीकरणापासून कितीतरी दीर्घकाळ अबाधित राहिले आहेत, त्यांत ऋतुमानाचे चढउतार कमी आहेत, आणि त्यांना अधिक सौर ऊर्जा मिळते.",
+        },
+        detail: {
+          en: "Uninterrupted time matters because speciation is slow, and a region repeatedly scoured by ice has had its clock reset while the tropics have not.",
+          hi: "अबाधित समय इसलिए मायने रखता है कि जातिउद्भवन धीमा है, और जिस क्षेत्र को बर्फ़ ने बार-बार खुरचा उसकी घड़ी दोबारा शून्य हुई है जबकि उष्णकटिबंध की नहीं।",
+          mr: "अखंड काळ यासाठी महत्त्वाचा की जातिउद्भव सावकाश आहे, आणि ज्या प्रदेशाला बर्फाने वारंवार खरवडले त्याचे घड्याळ पुन्हा शून्य झाले आहे तर उष्णकटिबंधाचे नाही.",
+        },
+        extra: {
+          en: "Constant conditions allow narrower specialisation, so more species can divide the same resources without any of them being excluded.",
+          hi: "अचर परिस्थितियाँ अधिक संकीर्ण विशेषीकरण की छूट देती हैं, अतः उन्हीं संसाधनों को अधिक जातियाँ बाँट सकती हैं और किसी को भी बाहर नहीं होना पड़ता।",
+          mr: "अचल परिस्थिती अधिक संकुचित विशेषीकरणाची मुभा देतात, म्हणून तीच संसाधने अधिक जाती वाटून घेऊ शकतात आणि कोणालाही बाहेर पडावे लागत नाही.",
+        },
+        pair: {
+          left: {
+            en: "Ice reset the clock everywhere except near the equator",
+            hi: "भूमध्य रेखा के पास को छोड़ हर जगह बर्फ़ ने घड़ी शून्य कर दी",
+            mr: "विषुववृत्ताजवळचे सोडून सर्वत्र बर्फाने घड्याळ शून्य केले",
+          },
+          right: {
+            en: "why the tropics hold more species",
+            hi: "उष्णकटिबंध में अधिक जातियाँ क्यों हैं",
+            mr: "उष्णकटिबंधात अधिक जाती का आहेत",
+          },
+        },
+      },
+      {
+        id: "the-four-causes-of-loss",
+        name: {
+          en: "The four causes of loss",
+          hi: "हानि के चार कारण",
+          mr: "हानीची चार कारणे",
+        },
+        kind: "threat and what answers it",
+        prompt: {
+          en: "Four drivers of extinction, of which the first is much the largest and the last is the one introduced deliberately and usually with good intentions. What are they?",
+          hi: "विलुप्ति के चार चालक, जिनमें पहला कहीं सबसे बड़ा है और आख़िरी वह है जिसे जान-बूझकर और प्रायः नेक इरादों के साथ लाया जाता है। ये क्या हैं?",
+          mr: "विलुप्तीचे चार चालक, ज्यांत पहिला कितीतरी सर्वांत मोठा आहे आणि शेवटचा तो आहे जो जाणीवपूर्वक आणि बहुधा चांगल्या हेतूंसह आणला जातो. ही काय आहेत?",
+        },
+        statement: {
+          en: "The four causes of biodiversity loss are habitat loss and fragmentation, over-exploitation, invasive species, and co-extinctions.",
+          hi: "जैव विविधता की हानि के चार कारण हैं आवास की हानि और विखंडन, अति-दोहन, आक्रामक जातियाँ, और सह-विलुप्तियाँ।",
+          mr: "जैवविविधता हानीची चार कारणे आहेत अधिवासाची हानी आणि विखंडन, अति-शोषण, आक्रमक जाती, आणि सह-विलुप्ती.",
+        },
+        detail: {
+          en: "Fragmentation is counted with habitat loss because a habitat cut into pieces may hold the same total area and still fail to support the species that needed a large range.",
+          hi: "विखंडन को आवास की हानि के साथ गिना जाता है क्योंकि टुकड़ों में कटा आवास कुल वही क्षेत्रफल रख सकता है और फिर भी उन जातियों को नहीं सँभाल पाता जिन्हें बड़ा परास चाहिए था।",
+          mr: "विखंडन अधिवासाच्या हानीसोबत मोजले जाते कारण तुकड्यांत कापलेला अधिवास एकूण तेच क्षेत्रफळ ठेवू शकतो आणि तरीही त्या जातींना सांभाळू शकत नाही ज्यांना मोठी व्याप्ती लागत होती.",
+        },
+        extra: {
+          en: "A co-extinction is the one that follows automatically: when a host goes, its obligate parasites and specialised pollinators go with it, whether or not anyone noticed them.",
+          hi: "सह-विलुप्ति वही है जो अपने आप हो जाती है: जब कोई परपोषी जाता है, तो उसके अनिवार्य परजीवी और विशेषीकृत परागणकर्ता उसके साथ चले जाते हैं, चाहे उन्हें किसी ने देखा हो या नहीं।",
+          mr: "सह-विलुप्ती तीच आहे जी आपोआप घडते: जेव्हा एखादा यजमान जातो, तेव्हा त्याचे अनिवार्य परजीवी आणि विशेषीकृत परागणकर्ते त्याच्यासोबत जातात, त्यांना कोणी पाहिले असो वा नसो.",
+        },
+        pair: {
+          left: {
+            en: "The last arrives on purpose and often with good intentions",
+            hi: "आख़िरी जान-बूझकर और प्रायः नेक इरादों के साथ आता है",
+            mr: "शेवटचा जाणीवपूर्वक आणि बहुधा चांगल्या हेतूंसह येतो",
+          },
+          right: {
+            en: "the four causes of loss",
+            hi: "हानि के चार कारण",
+            mr: "हानीची चार कारणे",
+          },
+        },
+      },
+      {
+        id: "in-situ-against-ex-situ",
+        name: {
+          en: "Saving it where it lives, or somewhere else",
+          hi: "उसे वहीं बचाना जहाँ वह रहती है, या कहीं और",
+          mr: "तिला जिथे राहते तिथेच वाचवणे, वा इतरत्र",
+        },
+        kind: "threat and what answers it",
+        prompt: {
+          en: "A choice between protecting a species in its own habitat and moving it to a zoo, a seed bank or a laboratory — which is not really a choice between two methods. What is the distinction?",
+          hi: "किसी जाति को उसके अपने आवास में बचाने और उसे चिड़ियाघर, बीज बैंक या प्रयोगशाला में ले जाने के बीच का चुनाव — जो असल में दो विधियों के बीच का चुनाव है ही नहीं। भेद क्या है?",
+          mr: "एखादी जात तिच्या स्वतःच्या अधिवासात वाचवणे आणि तिला प्राणिसंग्रहालय, बीजपेढी वा प्रयोगशाळेत नेणे यांतील निवड — जी प्रत्यक्षात दोन पद्धतींतील निवड आहेच नाही. भेद काय आहे?",
+        },
+        statement: {
+          en: "In-situ conservation protects a species within its natural habitat while ex-situ conservation maintains it outside, and only the first preserves the relationships the species is part of.",
+          hi: "स्व-स्थाने संरक्षण किसी जाति को उसके प्राकृतिक आवास के भीतर बचाता है जबकि बाह्य-स्थाने संरक्षण उसे बाहर बनाए रखता है, और केवल पहला उन संबंधों को बचाता है जिनका वह जाति हिस्सा है।",
+          mr: "स्वस्थानी संवर्धन एखाद्या जातीला तिच्या नैसर्गिक अधिवासात वाचवते तर बाह्यस्थानी संवर्धन तिला बाहेर टिकवते, आणि केवळ पहिले ती नाती जपते ज्यांचा ती जात भाग आहे.",
+        },
+        detail: {
+          en: "Protecting a habitat saves every species in it at once, including the great many that have never been described and could not be individually targeted.",
+          hi: "किसी आवास को बचाना उसमें की हर जाति को एक साथ बचा लेता है, उन बहुत सी जातियों समेत जिनका कभी वर्णन ही नहीं हुआ और जिन्हें अलग-अलग निशाना बनाया ही नहीं जा सकता था।",
+          mr: "एखादा अधिवास वाचवणे त्यातील प्रत्येक जात एकाच वेळी वाचवते, त्या बऱ्याच जातींसह ज्यांचे कधी वर्णनच झाले नाही आणि ज्यांना वेगवेगळे लक्ष्य करता आलेच नसते.",
+        },
+        extra: {
+          en: "The second is a last resort and a useful insurance, but a seed in a bank or an animal in a zoo is out of the selective pressures that shaped it and out of the web it belonged to.",
+          hi: "दूसरा अंतिम उपाय और काम का बीमा है, पर बैंक में रखा बीज या चिड़ियाघर में रखा प्राणी उन चयनी दबावों से बाहर है जिन्होंने उसे गढ़ा और उस जाल से बाहर जिसका वह हिस्सा था।",
+          mr: "दुसरा अखेरचा उपाय आणि उपयुक्त विमा आहे, पण पेढीतले बी वा प्राणिसंग्रहालयातला प्राणी त्या निवडक दाबांबाहेर आहे ज्यांनी त्याला घडवले आणि त्या जाळ्याबाहेर ज्याचा तो भाग होता.",
+        },
+        pair: {
+          left: {
+            en: "One saves the species, the other saves what it is part of",
+            hi: "एक जाति को बचाता है, दूसरा उसे जिसका वह हिस्सा है",
+            mr: "एक जात वाचवते, दुसरे ती ज्याचा भाग आहे ते वाचवते",
+          },
+          right: {
+            en: "saving it where it lives, or somewhere else",
+            hi: "उसे वहीं बचाना जहाँ वह रहती है, या कहीं और",
+            mr: "तिला जिथे राहते तिथेच वाचवणे, वा इतरत्र",
+          },
+        },
+      },
+      {
+        id: "hotspots-and-the-problem-of-boundaries",
+        name: {
+          en: "Hotspots and the problem of boundaries",
+          hi: "तप्त स्थल और सीमाओं की समस्या",
+          mr: "तप्त स्थळे आणि सीमांची समस्या",
+        },
+        kind: "threat and what answers it",
+        prompt: {
+          en: "A strategy of concentrating protection where diversity is highest and threat greatest, and whose practical difficulty is that a line on a map is not a line an animal recognises. What is this?",
+          hi: "ऐसी रणनीति जो सुरक्षा को वहाँ केंद्रित करती है जहाँ विविधता सबसे अधिक और ख़तरा सबसे बड़ा हो, और जिसकी व्यावहारिक कठिनाई यह है कि नक़्शे पर की रेखा वह रेखा नहीं जिसे कोई प्राणी पहचानता हो। यह क्या है?",
+          mr: "अशी रणनीती जी संरक्षण तिथे केंद्रित करते जिथे विविधता सर्वाधिक आणि धोका सर्वांत मोठा असेल, आणि जिची व्यावहारिक अडचण ही की नकाशावरची रेषा ती रेषा नाही जी एखादा प्राणी ओळखतो. ही काय आहे?",
+        },
+        statement: {
+          en: "Biodiversity hotspots are regions with exceptionally high numbers of endemic species and exceptional levels of threat, chosen so that limited resources protect the most that can be protected.",
+          hi: "जैव विविधता तप्त स्थल वे क्षेत्र हैं जिनमें स्थानिक जातियों की संख्या असाधारण रूप से अधिक और ख़तरे का स्तर असाधारण है, और जिन्हें इसलिए चुना जाता है कि सीमित संसाधन जितना बचाया जा सके उतना बचाएँ।",
+          mr: "जैवविविधता तप्त स्थळे ते प्रदेश आहेत ज्यांत स्थानिक जातींची संख्या असाधारणपणे अधिक आणि धोक्याची पातळी असाधारण आहे, आणि जी यासाठी निवडली जातात की मर्यादित संसाधनांनी जितके वाचवता येईल तितके वाचवावे.",
+        },
+        detail: {
+          en: "Endemism is what makes a hotspot worth the priority, because a species found nowhere else is lost from the world when it is lost from that one place.",
+          hi: "स्थानिकता ही किसी तप्त स्थल को प्राथमिकता के लायक़ बनाती है, क्योंकि जो जाति और कहीं नहीं मिलती वह उस एक जगह से जाते ही दुनिया से चली जाती है।",
+          mr: "स्थानिकताच एखाद्या तप्त स्थळाला प्राधान्याला पात्र बनवते, कारण जी जात इतरत्र कुठेही आढळत नाही ती त्या एका जागेतून जाताच जगातून जाते.",
+        },
+        extra: {
+          en: "A reserve too small or too isolated fails whatever the guarding, because a population cut off from others loses variation and a large animal simply walks out of a small one.",
+          hi: "बहुत छोटा या बहुत अलग-थलग अभयारण्य रखवाली चाहे जैसी हो विफल होता है, क्योंकि दूसरों से कटी आबादी विविधता खो देती है और बड़ा प्राणी छोटे अभयारण्य से बस बाहर निकल जाता है।",
+          mr: "फार लहान वा फार एकाकी अभयारण्य राखण कशीही असो अपयशी ठरते, कारण इतरांपासून तुटलेली लोकसंख्या विविधता गमावते आणि मोठा प्राणी लहान अभयारण्यातून फक्त बाहेर निघून जातो.",
+        },
+        pair: {
+          left: {
+            en: "A line on a map is not a line an animal recognises",
+            hi: "नक़्शे पर की रेखा वह रेखा नहीं जिसे प्राणी पहचानता हो",
+            mr: "नकाशावरची रेषा ती रेषा नाही जी प्राणी ओळखतो",
+          },
+          right: {
+            en: "hotspots and the problem of boundaries",
+            hi: "तप्त स्थल और सीमाओं की समस्या",
+            mr: "तप्त स्थळे आणि सीमांची समस्या",
+          },
+        },
+      },
+    ],
+    hard: [
+      {
+        level: 5,
+        stem: {
+          en: "Habitat loss is described as the single largest cause of extinction, ahead of hunting, invasive species and pollution. Explain why, and why fragmenting a habitat can destroy species even when the total area protected is unchanged.",
+          hi: "आवास की हानि को विलुप्ति का अकेला सबसे बड़ा कारण बताया जाता है, शिकार, आक्रामक जातियों और प्रदूषण से आगे। बताओ क्यों, और यह भी कि किसी आवास का विखंडन जातियों को तब भी क्यों नष्ट कर सकता है जब बचाया गया कुल क्षेत्रफल अपरिवर्तित हो।",
+          mr: "अधिवासाची हानी विलुप्तीचे एकटे सर्वांत मोठे कारण म्हणून सांगितली जाते, शिकार, आक्रमक जाती आणि प्रदूषणाच्या पुढे. का, आणि एखाद्या अधिवासाचे विखंडन जाती तेव्हाही का नष्ट करू शकते जेव्हा वाचवलेले एकूण क्षेत्रफळ अपरिवर्तित असेल ते सांगा.",
+        },
+        choices: [
+          {
+            en: "Habitat loss removes every species in the area at once, including the great majority that have never been described, whereas hunting or an invasive species affects particular targets. Fragmentation matters separately because area is not the only thing that counts: a large animal needs a contiguous range and simply cannot live in several small pieces, a small isolated population loses variation and is vulnerable to a single bad year, edge conditions penetrate a small fragment throughout while leaving the interior of a large block untouched, and individuals cannot move between patches to recolonise or to breed. Four small reserves are therefore not equivalent to one large one of the same total area",
+            hi: "आवास की हानि उस क्षेत्र की हर जाति को एक साथ हटा देती है, उन बहुत सी जातियों समेत जिनका कभी वर्णन ही नहीं हुआ, जबकि शिकार या कोई आक्रामक जाति ख़ास लक्ष्यों को प्रभावित करती है। विखंडन अलग से मायने रखता है क्योंकि केवल क्षेत्रफल ही नहीं गिना जाता: बड़े प्राणी को सटा हुआ परास चाहिए और वह कई छोटे टुकड़ों में रह ही नहीं सकता, छोटी अलग-थलग आबादी विविधता खो देती है और एक ही बुरे वर्ष से संवेदनशील है, किनारे की परिस्थितियाँ छोटे टुकड़े में आर-पार घुस जाती हैं जबकि बड़े खंड का भीतरी हिस्सा अछूता रहता है, और व्यक्ति फिर बसने या प्रजनन को टुकड़ों के बीच जा नहीं सकते। अतः चार छोटे अभयारण्य उसी कुल क्षेत्रफल के एक बड़े अभयारण्य के बराबर नहीं हैं",
+            mr: "अधिवासाची हानी त्या क्षेत्रातील प्रत्येक जात एकाच वेळी काढते, त्या बऱ्याच जातींसह ज्यांचे कधी वर्णनच झाले नाही, तर शिकार वा एखादी आक्रमक जात विशिष्ट लक्ष्यांवर परिणाम करते. विखंडन वेगळे महत्त्वाचे आहे कारण केवळ क्षेत्रफळच मोजले जात नाही: मोठ्या प्राण्याला सलग व्याप्ती लागते आणि तो कित्येक लहान तुकड्यांत राहूच शकत नाही, लहान एकाकी लोकसंख्या विविधता गमावते आणि एकाच वाईट वर्षाने असुरक्षित आहे, कडेची परिस्थिती लहान तुकड्यात आरपार शिरते तर मोठ्या भागाचा आतला भाग अस्पर्श राहतो, आणि व्यक्ती पुन्हा वसायला वा प्रजननाला तुकड्यांमध्ये जाऊ शकत नाहीत. म्हणून चार लहान अभयारण्ये त्याच एकूण क्षेत्रफळाच्या एका मोठ्या अभयारण्याबरोबर नाहीत",
+          },
+          {
+            en: "Habitat loss is the largest cause only because it is the easiest to measure, and fragmentation has no biological effect provided the total protected area is maintained",
+            hi: "आवास की हानि केवल इसलिए सबसे बड़ा कारण है कि उसे नापना सबसे आसान है, और विखंडन का कोई जैविक प्रभाव नहीं बशर्ते कुल संरक्षित क्षेत्रफल बना रहे",
+            mr: "अधिवासाची हानी केवळ यासाठी सर्वांत मोठे कारण आहे की तिचे मोजमाप सर्वांत सोपे आहे, आणि विखंडनाचा कोणताही जैविक परिणाम नाही जर एकूण संरक्षित क्षेत्रफळ टिकवले तर",
+          },
+          {
+            en: "Fragmentation is beneficial, since separating a population into isolated pieces prevents disease from spreading and increases the number of distinct species over time",
+            hi: "विखंडन लाभकारी है, चूँकि किसी आबादी को अलग-थलग टुकड़ों में बाँटना रोग को फैलने से रोकता है और समय के साथ अलग जातियों की संख्या बढ़ा देता है",
+            mr: "विखंडन फायदेशीर आहे, कारण एखाद्या लोकसंख्येला एकाकी तुकड्यांत वाटणे रोगाला पसरण्यापासून रोखते आणि काळासोबत वेगळ्या जातींची संख्या वाढवते",
+          },
+          {
+            en: "Habitat loss matters mainly because it removes plants, and animals are unaffected as long as they can move to a neighbouring region",
+            hi: "आवास की हानि मुख्यतः इसलिए मायने रखती है कि वह पादपों को हटा देती है, और प्राणी तब तक अप्रभावित हैं जब तक वे किसी पड़ोसी क्षेत्र में जा सकें",
+            mr: "अधिवासाची हानी मुख्यतः यासाठी महत्त्वाची आहे की ती वनस्पती काढते, आणि प्राणी तोवर अप्रभावित आहेत जोवर ते एखाद्या शेजारच्या प्रदेशात जाऊ शकतील",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The question has two halves and the second is where the real content is, because it asks about a loss that does not show up in a total. WHY HABITAT LOSS OUTWEIGHS THE OTHERS. Compare the mechanisms. Hunting removes particular species that people want, and it can be devastating for those species, but it is selective. An invasive predator affects the prey and competitors it happens to overlap with. Pollution acts strongly on some groups and weakly on others. Habitat loss is different in kind: clearing a forest removes every organism living there simultaneously — plants, insects, fungi, soil organisms, the lot. Most of those have never been described, and many never will be, so the loss is not even countable. The tropical rainforests are the clearest case: they cover a small fraction of the land surface and hold a very large share of terrestrial species, and they are being cleared faster than any other biome. WHY FRAGMENTATION DESTROYS SPECIES AT CONSTANT AREA, WHICH IS THE INTERESTING PART. Suppose a thousand hectares of forest are reduced to ten patches of a hundred hectares each with fields between. The area on the map is a tenth of the original, but even if it were the same the outcome would differ from one continuous block, for four separable reasons. First, RANGE. A tiger or an elephant needs a territory larger than any single patch; no number of small fragments adds up to one adequate range, because the animal cannot cross the gaps. Second, POPULATION SIZE. Each patch now holds a small isolated population, and small populations lose genetic variation through drift, suffer inbreeding, and can be wiped out by one fire, one disease or one bad season with nothing nearby to recolonise from. Third, EDGE EFFECTS. The margin of a fragment is hotter, drier, windier and more exposed to invaders than its interior. A large block has an interior; a small fragment is all edge, so its conditions are no longer forest conditions anywhere within it. Fourth, MOVEMENT. Individuals can no longer disperse between patches to breed or to recolonise one where the species has died out, so what were once parts of one population become several unconnected ones. THE PRACTICAL CONSEQUENCE. This is why conservation planning worries about corridors, minimum reserve size and shape as well as total area, and why a single large reserve is usually preferred to several small ones of the same extent. A protected area figure quoted without those qualifications says less than it appears to. THE GENERAL LESSON. When a resource is divided, ask whether the thing that depends on it needs the total or needs it in one piece. Ten separate one-hour intervals are not an eight-hour night's sleep, and ten patches of forest are not a forest. (The second option denies a well-documented effect; the third inverts it, and speciation on that timescale is irrelevant to a conservation problem measured in decades; the fourth assumes animals can simply relocate, which is precisely what fragmentation prevents.)",
+          hi: "प्रश्न के दो हिस्से हैं और असली सार दूसरे में है, क्योंकि वह ऐसी हानि के बारे में पूछता है जो किसी कुल जोड़ में दिखती ही नहीं। आवास की हानि बाक़ी से भारी क्यों है। क्रियाविधियों की तुलना करो। शिकार उन ख़ास जातियों को हटाता है जो लोग चाहते हैं, और उन जातियों के लिए वह विनाशकारी हो सकता है, पर वह चयनात्मक है। कोई आक्रामक परभक्षी उन शिकारों और स्पर्धियों को प्रभावित करता है जिनसे उसका संयोगवश ओवरलैप हो। प्रदूषण कुछ समूहों पर प्रबल और औरों पर दुर्बल असर डालता है। आवास की हानि क़िस्म से ही भिन्न है: किसी वन को साफ़ करना वहाँ रहते हर जीव को एक साथ हटा देता है — पादप, कीट, कवक, मिट्टी के जीव, सब। उनमें से अधिकांश का कभी वर्णन ही नहीं हुआ, और बहुतों का कभी होगा भी नहीं, अतः वह हानि गिनी भी नहीं जा सकती। उष्णकटिबंधीय वर्षावन सबसे साफ़ मामला हैं: वे भूसतह के छोटे अंश को ढकते हैं और स्थलीय जातियों का बहुत बड़ा हिस्सा रखते हैं, और उन्हें किसी भी दूसरे बायोम से तेज़ी से साफ़ किया जा रहा है। अचर क्षेत्रफल पर भी विखंडन जातियाँ क्यों नष्ट करता है, और यही रोचक हिस्सा है। मान लो एक हज़ार हेक्टेयर वन घटकर सौ-सौ हेक्टेयर के दस टुकड़े रह जाते हैं और बीच में खेत हैं। नक़्शे पर क्षेत्रफल मूल का दसवाँ है, पर यदि वह वही होता तब भी परिणाम एक सतत खंड से भिन्न होता, चार अलग किए जा सकने वाले कारणों से। पहला, परास। बाघ या हाथी को किसी भी अकेले टुकड़े से बड़ा क्षेत्र चाहिए; कितने भी छोटे टुकड़े जुड़कर एक पर्याप्त परास नहीं बनते, क्योंकि प्राणी उन खाइयों को पार नहीं कर सकता। दूसरा, आबादी का आकार। हर टुकड़े में अब छोटी अलग-थलग आबादी है, और छोटी आबादियाँ विचलन से आनुवंशिक विविधता खोती हैं, अंतःप्रजनन झेलती हैं, और एक ही आग, एक ही रोग या एक ही बुरे मौसम से मिट सकती हैं और आसपास फिर बसाने को कुछ नहीं। तीसरा, किनारे के प्रभाव। किसी टुकड़े का किनारा उसके भीतर से अधिक गर्म, सूखा, हवादार और आक्रमणकारियों के लिए खुला है। बड़े खंड का भीतरी हिस्सा होता है; छोटा टुकड़ा पूरा किनारा है, अतः उसके भीतर कहीं भी उसकी परिस्थितियाँ अब वन की परिस्थितियाँ नहीं। चौथा, आवागमन। व्यक्ति अब प्रजनन को या ऐसे टुकड़े में फिर बसने को जहाँ जाति मर चुकी हो, टुकड़ों के बीच फैल नहीं सकते, अतः जो कभी एक आबादी के हिस्से थे वे कई असंबद्ध आबादियाँ बन जाते हैं। व्यावहारिक परिणाम। इसीलिए संरक्षण नियोजन कुल क्षेत्रफल के साथ-साथ गलियारों, न्यूनतम अभयारण्य आकार और आकृति की चिंता करता है, और इसीलिए उतने ही विस्तार के कई छोटे अभयारण्यों से प्रायः एक बड़ा अभयारण्य बेहतर माना जाता है। उन शर्तों के बिना बताया गया संरक्षित क्षेत्र का आँकड़ा दिखने से कम कहता है। सामान्य सीख। जब कोई संसाधन बाँटा जाए, तो पूछो कि उस पर निर्भर चीज़ को कुल चाहिए या एक ही टुकड़े में चाहिए। दस अलग-अलग एक-एक घंटे के अंतराल आठ घंटे की रात की नींद नहीं हैं, और वन के दस टुकड़े वन नहीं हैं। (दूसरा विकल्प भलीभाँति प्रलेखित प्रभाव से इनकार करता है; तीसरा उसे उलट देता है, और उस समय पैमाने पर जातिउद्भवन दशकों में नापी जाती संरक्षण समस्या के लिए अप्रासंगिक है; चौथा मान लेता है कि प्राणी बस कहीं और जा सकते हैं, जिसे ठीक विखंडन रोकता है।)",
+          mr: "प्रश्नाचे दोन भाग आहेत आणि खरा सार दुसऱ्यात आहे, कारण तो अशा हानीबद्दल विचारतो जी कोणत्याही एकूण बेरजेत दिसतच नाही. अधिवासाची हानी बाकीच्यांहून जड का आहे. यंत्रणांची तुलना करा. शिकार त्या विशिष्ट जाती काढते ज्या लोकांना हव्या असतात, आणि त्या जातींसाठी ती विनाशकारी असू शकते, पण ती निवडक आहे. एखादा आक्रमक भक्षक त्या शिकारी आणि स्पर्धकांवर परिणाम करतो ज्यांच्याशी त्याचे योगायोगाने व्यापन होते. प्रदूषण काही गटांवर तीव्र आणि इतरांवर दुर्बल परिणाम करते. अधिवासाची हानी प्रकारानेच वेगळी आहे: एखादे जंगल साफ करणे तिथे राहणारा प्रत्येक जीव एकाच वेळी काढते — वनस्पती, कीटक, बुरशी, मातीतले जीव, सर्व. त्यांपैकी बहुतांशाचे कधी वर्णनच झाले नाही, आणि बऱ्याचांचे कधी होणारही नाही, म्हणून ती हानी मोजताही येत नाही. उष्णकटिबंधीय वर्षावने सर्वांत स्वच्छ प्रकरण आहेत: ती भूपृष्ठाचा लहान अंश झाकतात आणि भूचर जातींचा फार मोठा हिस्सा ठेवतात, आणि ती इतर कोणत्याही बायोमहून वेगाने साफ केली जात आहेत. अचल क्षेत्रफळावरही विखंडन जाती का नष्ट करते, आणि हाच रोचक भाग आहे. समजा एक हजार हेक्टर जंगल घटून शंभर-शंभर हेक्टरचे दहा तुकडे उरतात आणि मध्ये शेते आहेत. नकाशावर क्षेत्रफळ मूळचा दशांश आहे, पण ते तेच असते तरीही निकाल एका सलग भागाहून वेगळा असता, चार वेगळे करता येणाऱ्या कारणांनी. पहिले, व्याप्ती. वाघ वा हत्तीला कोणत्याही एकट्या तुकड्याहून मोठे क्षेत्र लागते; कितीही लहान तुकडे मिळून एक पुरेशी व्याप्ती बनत नाही, कारण प्राणी त्या खाचा ओलांडू शकत नाही. दुसरे, लोकसंख्येचा आकार. प्रत्येक तुकड्यात आता लहान एकाकी लोकसंख्या आहे, आणि लहान लोकसंख्या विचलनाने आनुवंशिक विविधता गमावतात, अंतःप्रजनन भोगतात, आणि एकाच आगीने, एकाच रोगाने वा एकाच वाईट ऋतूने पुसल्या जाऊ शकतात आणि जवळपास पुन्हा वसवायला काहीही नाही. तिसरे, कडेचे परिणाम. एखाद्या तुकड्याची कड त्याच्या आतल्या भागाहून अधिक गरम, कोरडी, वाऱ्याची आणि आक्रमकांना उघडी आहे. मोठ्या भागाचा आतला भाग असतो; लहान तुकडा अख्खा कड आहे, म्हणून त्याच्या आत कुठेही त्याची परिस्थिती आता जंगलाची परिस्थिती नाही. चौथे, हालचाल. व्यक्ती आता प्रजननाला वा अशा तुकड्यात पुन्हा वसायला जिथे जात मेली आहे, तुकड्यांमध्ये पसरू शकत नाहीत, म्हणून जे कधी एका लोकसंख्येचे भाग होते ते कित्येक असंबद्ध लोकसंख्या बनतात. व्यावहारिक परिणाम. म्हणूनच संवर्धन नियोजन एकूण क्षेत्रफळासोबत मार्गिका, किमान अभयारण्य आकार आणि आकृतीचीही चिंता करते, आणि म्हणूनच तितक्याच विस्ताराच्या कित्येक लहान अभयारण्यांहून बहुधा एक मोठे अभयारण्य पसंत केले जाते. त्या अटींविना सांगितलेला संरक्षित क्षेत्राचा आकडा दिसण्याहून कमी सांगतो. सर्वसाधारण बोध. जेव्हा एखादे संसाधन वाटले जाईल, तेव्हा विचारा की त्यावर अवलंबून असलेल्या गोष्टीला एकूण लागते की एकाच तुकड्यात लागते. दहा वेगवेगळे एक-एक तासाचे अंतराल आठ तासांच्या रात्रीची झोप नाहीत, आणि जंगलाचे दहा तुकडे जंगल नाहीत. (दुसरा पर्याय उत्तम नोंदलेला परिणाम नाकारतो; तिसरा तो उलटवतो, आणि त्या कालमापावर जातिउद्भव दशकांत मोजल्या जाणाऱ्या संवर्धन समस्येसाठी असंबद्ध आहे; चौथा गृहीत धरतो की प्राणी फक्त इतरत्र जाऊ शकतात, ज्याला नेमके विखंडन रोखते.)",
+        },
+      },
+      {
+        level: 6,
+        stem: {
+          en: "Estimates that a given rate of deforestation will cause a given number of extinctions are not counts of dead species. Explain what such an estimate is actually derived from, and what its limitations are.",
+          hi: "ये आकलन कि वनोन्मूलन की कोई दी गई दर विलुप्तियों की कोई दी गई संख्या पैदा करेगी, मरी हुई जातियों की गिनतियाँ नहीं हैं। बताओ कि ऐसा आकलन वस्तुतः किससे निकाला जाता है, और उसकी सीमाएँ क्या हैं।",
+          mr: "हे अंदाज की जंगलतोडीचा एखादा दिलेला दर विलुप्तींची एखादी दिलेली संख्या निर्माण करेल, मेलेल्या जातींच्या मोजण्या नाहीत. असा अंदाज प्रत्यक्षात कशातून काढला जातो, आणि त्याच्या मर्यादा काय आहेत ते सांगा.",
+        },
+        choices: [
+          {
+            en: "It comes from the species–area relationship. The number of species found rises with area as a power law, S = CA^z, which is a straight line on log–log axes with a slope z that is remarkably consistent across taxa and continents. Knowing the slope, a proportional loss of area can be converted into a proportional loss of species without anyone counting the casualties. The limitations follow from what the relation does and does not say: it gives an equilibrium number rather than a timescale, so extinctions may be owed but not yet paid; it assumes the area lost is a random sample of habitat when in practice the fertile lowlands go first; and it says nothing about which species are lost, so it cannot distinguish a common one from an endemic found nowhere else",
+            hi: "वह जाति-क्षेत्र संबंध से आता है। मिलती जातियों की संख्या क्षेत्रफल के साथ घात नियम S = CA^z के अनुसार बढ़ती है, जो लघु-लघु अक्षों पर सीधी रेखा है और जिसकी ढाल z वर्गकों तथा महाद्वीपों में उल्लेखनीय रूप से संगत है। ढाल जानकर क्षेत्रफल की आनुपातिक हानि को जातियों की आनुपातिक हानि में बदला जा सकता है, बिना किसी के हताहतों को गिने। सीमाएँ इससे निकलती हैं कि वह संबंध क्या कहता है और क्या नहीं: वह समयमान नहीं बल्कि साम्य संख्या देता है, अतः विलुप्तियाँ बकाया हो सकती हैं पर अभी चुकाई नहीं गईं; वह मान लेता है कि खोया क्षेत्रफल आवास का बेतरतीब नमूना है जबकि व्यवहार में उपजाऊ तराई पहले जाती है; और वह इस बारे में कुछ नहीं कहता कि कौन-सी जातियाँ खोईं, अतः वह किसी आम जाति को ऐसी स्थानिक जाति से अलग नहीं बता सकता जो और कहीं नहीं मिलती",
+            mr: "तो जाती-क्षेत्र नात्यातून येतो. आढळणाऱ्या जातींची संख्या क्षेत्रफळासोबत घात नियम S = CA^z नुसार वाढते, जो लघु-लघु अक्षांवर सरळ रेषा आहे आणि ज्याचा उतार z वर्गक आणि खंडांत लक्षणीयरीत्या सुसंगत आहे. उतार जाणून क्षेत्रफळाच्या प्रमाणशीर हानीचे जातींच्या प्रमाणशीर हानीत रूपांतर करता येते, कोणीही बळी मोजल्याविना. मर्यादा यातून निघतात की ते नाते काय सांगते आणि काय नाही: ते कालमान नव्हे तर समतोल संख्या देते, म्हणून विलुप्ती देणे बाकी असू शकते पण अजून दिलेली नाही; ते गृहीत धरते की हरवलेले क्षेत्रफळ अधिवासाचा यादृच्छिक नमुना आहे तर व्यवहारात सुपीक सखल भाग आधी जातो; आणि ते याबद्दल काहीही सांगत नाही की कोणत्या जाती हरवल्या, म्हणून ते एखाद्या सामान्य जातीला अशा स्थानिक जातीहून वेगळे सांगू शकत नाही जी इतरत्र कुठेही आढळत नाही",
+          },
+          {
+            en: "It comes from counting the species present before clearance and again afterwards, which is why such estimates are available only for regions that have been surveyed twice",
+            hi: "वह सफ़ाई से पहले और फिर बाद में मौजूद जातियों को गिनने से आता है, इसीलिए ऐसे आकलन केवल उन क्षेत्रों के लिए उपलब्ध हैं जिनका दो बार सर्वेक्षण हुआ हो",
+            mr: "तो साफसफाईआधी आणि मग नंतर उपस्थित जाती मोजण्यातून येतो, म्हणूनच असे अंदाज केवळ त्या प्रदेशांसाठी उपलब्ध आहेत ज्यांचे दोनदा सर्वेक्षण झाले आहे",
+          },
+          {
+            en: "It is derived from the average lifespan of a species in the fossil record, and the rate of habitat loss plays no part in the calculation",
+            hi: "वह जीवाश्म अभिलेख में किसी जाति के औसत जीवनकाल से निकाला जाता है, और गणना में आवास हानि की दर की कोई भूमिका नहीं",
+            mr: "तो जीवाश्म नोंदीतील एखाद्या जातीच्या सरासरी आयुर्मानातून काढला जातो, आणि गणनेत अधिवास हानीच्या दराची कोणतीही भूमिका नाही",
+          },
+          {
+            en: "Such estimates are pure guesswork with no quantitative basis, which is why no two published figures ever agree",
+            hi: "ऐसे आकलन बिना किसी मात्रात्मक आधार के विशुद्ध अटकल हैं, इसीलिए दो प्रकाशित आँकड़े कभी नहीं मिलते",
+            mr: "असे अंदाज कोणत्याही परिमाणात्मक आधाराविना निव्वळ अटकळ आहेत, म्हणूनच दोन प्रकाशित आकडे कधीही जुळत नाहीत",
+          },
+        ],
+        answerIndex: 0,
+        solution: {
+          en: "The question is really about how a quantitative claim in ecology gets made when the thing being counted cannot be observed, and it is worth taking apart because the same shape of argument appears wherever a number is inferred rather than measured. THE EMPIRICAL RELATION IT RESTS ON. Sample a small plot and list the species; sample a larger one and there are more; keep going and the count keeps rising but with diminishing returns. Plotted on ordinary axes the relation is a curve, but plotted with the logarithm of species against the logarithm of area it becomes a straight line, meaning S = CA^z. The slope z is the informative quantity, and its consistency is what makes the relation useful: across birds, plants, freshwater fish and bats, across continents and islands, it usually falls between about 0.1 and 0.2 for a region within a continent and higher, around 0.6 to 0.9, for separate islands. HOW A NUMBER IS DERIVED. Because the relation is a power law, ratios are what matter. If a region loses ninety per cent of its forest, the remaining area is a tenth, and the surviving species fraction is 0.1^z. With z around 0.15 this predicts roughly seventy per cent surviving and thirty per cent eventually lost. Nobody has counted anything; a measured slope and a measured area loss have produced a predicted extinction fraction. That is a legitimate inference, and it is the only method available for organisms that have never been catalogued. WHAT THE METHOD CANNOT DO, WHICH IS THE SECOND HALF OF THE QUESTION. Three limitations follow directly from the derivation. First, the relation describes an EQUILIBRIUM number of species for an area, not the time taken to reach it. After fragmentation, populations decline gradually and some persist for decades before disappearing — the extinction debt. So the predicted losses are owed rather than already realised, and a survey shortly after clearance will find more species than the model predicts, which is not a refutation. Second, the relation assumes the area lost is a random sample of the habitat. It is not: agriculture takes the flat, fertile, well-watered land first, and the fragments left are the steep and infertile ones. If species are unevenly distributed — and they are — the real loss may exceed the prediction. Third, and most importantly, the model counts species without identifying them. It cannot distinguish the loss of a widespread species that survives elsewhere from the loss of an endemic found in that valley and nowhere on Earth. For conservation, that difference is everything, which is exactly why hotspot analysis exists alongside area-based estimates. THE HABIT WORTH KEEPING. When a figure is quoted for something nobody could have counted, ask what relation it was derived from and what that relation assumes. A model with stated limitations is far more useful than a number with none, and knowing where an estimate is weak tells you what additional evidence would be worth collecting. (The second option describes a method that would restrict estimates to a handful of well-surveyed places and could never cover undescribed species; the third removes habitat loss from a calculation that is entirely about it; the fourth dismisses a quantitative method whose basis is a well-replicated empirical relation.)",
+          hi: "प्रश्न असल में इस बारे में है कि पारिस्थितिकी में कोई मात्रात्मक दावा तब कैसे किया जाता है जब जिसे गिना जा रहा है उसे देखा ही नहीं जा सकता, और उसे खोलना काम का है क्योंकि तर्क का वही आकार वहाँ-वहाँ दिखता है जहाँ कोई संख्या नापी नहीं बल्कि निकाली जाती है। जिस अनुभवजन्य संबंध पर वह टिका है। किसी छोटे प्लॉट का नमूना लो और जातियाँ सूचीबद्ध करो; किसी बड़े का लो और अधिक हैं; चलते रहो और गिनती बढ़ती रहती है पर घटते प्रतिफल के साथ। साधारण अक्षों पर खींचने पर संबंध वक्र है, पर जातियों के लघुगणक को क्षेत्रफल के लघुगणक के सामने खींचने पर वह सीधी रेखा बन जाता है, यानी S = CA^z. ढाल z ही ज्ञानप्रद राशि है, और उसकी संगति ही संबंध को काम का बनाती है: पक्षियों, पादपों, मीठे पानी की मछलियों और चमगादड़ों में, महाद्वीपों और द्वीपों में, वह किसी महाद्वीप के भीतर के क्षेत्र के लिए प्रायः लगभग 0.1 और 0.2 के बीच पड़ती है और अलग द्वीपों के लिए ऊँची, क़रीब 0.6 से 0.9. संख्या कैसे निकाली जाती है। चूँकि संबंध घात नियम है, अनुपात ही मायने रखते हैं। यदि किसी क्षेत्र का नब्बे प्रतिशत वन चला जाए, तो बचा क्षेत्रफल दसवाँ है, और बची जातियों का अंश 0.1^z है। z के लगभग 0.15 होने पर यह मोटे तौर पर सत्तर प्रतिशत का बचना और तीस प्रतिशत का अंततः खोना भविष्यवाणित करता है। किसी ने कुछ गिना नहीं; एक नापी गई ढाल और एक नापी गई क्षेत्रफल हानि ने भविष्यवाणित विलुप्ति अंश पैदा किया है। यह वैध अनुमान है, और उन जीवों के लिए यही एकमात्र उपलब्ध विधि है जिनकी कभी सूची ही नहीं बनी। यह विधि क्या नहीं कर सकती, और प्रश्न का दूसरा आधा यही है। तीन सीमाएँ निष्पादन से सीधे निकलती हैं। पहली, संबंध किसी क्षेत्रफल के लिए जातियों की साम्य संख्या बताता है, उस तक पहुँचने में लगा समय नहीं। विखंडन के बाद आबादियाँ धीरे-धीरे घटती हैं और कुछ ग़ायब होने से पहले दशकों टिकती हैं — विलुप्ति ऋण। अतः भविष्यवाणित हानियाँ बकाया हैं, पहले ही चुकाई हुई नहीं, और सफ़ाई के थोड़े बाद का सर्वेक्षण मॉडल की भविष्यवाणी से अधिक जातियाँ पाएगा, जो खंडन नहीं है। दूसरी, संबंध मान लेता है कि खोया क्षेत्रफल आवास का बेतरतीब नमूना है। वह नहीं है: कृषि पहले समतल, उपजाऊ, अच्छी सिंचाई वाली ज़मीन लेती है, और बचे टुकड़े ढलान वाले और बंजर होते हैं। यदि जातियाँ असमान रूप से बँटी हों — और वे हैं — तो असली हानि भविष्यवाणी से अधिक हो सकती है। तीसरी, और सबसे महत्त्वपूर्ण, मॉडल जातियों को पहचाने बिना गिनता है। वह किसी ऐसी व्यापक जाति की हानि को, जो और कहीं बची रहती है, ऐसी स्थानिक जाति की हानि से अलग नहीं बता सकता जो उसी घाटी में और पृथ्वी पर कहीं नहीं मिलती। संरक्षण के लिए वह अंतर ही सब कुछ है, और ठीक इसीलिए क्षेत्रफल-आधारित आकलनों के साथ-साथ तप्त स्थल विश्लेषण भी है। रखने लायक़ आदत। जब किसी ऐसी चीज़ के लिए आँकड़ा बताया जाए जिसे कोई गिन ही नहीं सकता था, तो पूछो कि वह किस संबंध से निकाला गया और वह संबंध क्या मान लेता है। कही गई सीमाओं वाला मॉडल बिना सीमाओं वाली संख्या से कहीं अधिक काम का है, और यह जानना कि आकलन कहाँ कमज़ोर है बता देता है कि और कौन-सा प्रमाण जुटाना काम का होगा। (दूसरा विकल्प ऐसी विधि का वर्णन करता है जो आकलनों को मुट्ठी भर अच्छी तरह सर्वेक्षित जगहों तक सीमित कर देती और अवर्णित जातियों को कभी ढक ही नहीं सकती; तीसरा उस गणना से आवास हानि हटा देता है जो पूरी तरह उसी के बारे में है; चौथा ऐसी मात्रात्मक विधि को झटक देता है जिसका आधार भलीभाँति दोहराया गया अनुभवजन्य संबंध है।)",
+          mr: "प्रश्न खरे तर याबद्दल आहे की पारिस्थितिकीत एखादा परिमाणात्मक दावा तेव्हा कसा केला जातो जेव्हा जे मोजले जात आहे ते पाहताच येत नाही, आणि तो उलगडणे उपयुक्त आहे कारण युक्तिवादाचा तोच आकार तिथेतिथे दिसतो जिथे एखादी संख्या मोजली नव्हे तर काढली जाते. ज्या अनुभवजन्य नात्यावर तो टिकला आहे. एखाद्या लहान भूखंडाचा नमुना घ्या आणि जाती सूचीबद्ध करा; एखाद्या मोठ्याचा घ्या आणि अधिक आहेत; चालत राहा आणि मोजणी वाढत राहते पण घटत्या परताव्यासह. साध्या अक्षांवर काढल्यावर नाते वक्र आहे, पण जातींचा लघुगणक क्षेत्रफळाच्या लघुगणकासमोर काढल्यावर ते सरळ रेषा बनते, म्हणजे S = CA^z. उतार z हीच माहितीपूर्ण राशी आहे, आणि तिची सुसंगतीच नात्याला उपयुक्त बनवते: पक्षी, वनस्पती, गोड्या पाण्यातले मासे आणि वटवाघळांत, खंडांत आणि बेटांत, तो एखाद्या खंडाच्या आतल्या प्रदेशासाठी बहुधा सुमारे 0.1 आणि 0.2 दरम्यान पडतो आणि वेगळ्या बेटांसाठी उच्च, सुमारे 0.6 ते 0.9. संख्या कशी काढली जाते. नाते घात नियम असल्याने, गुणोत्तरेच महत्त्वाची आहेत. जर एखाद्या प्रदेशाचे नव्वद टक्के जंगल गेले, तर उरलेले क्षेत्रफळ दशांश आहे, आणि टिकलेल्या जातींचा अंश 0.1^z आहे. z सुमारे 0.15 असल्यास हे ढोबळपणे सत्तर टक्के टिकणे आणि तीस टक्के अखेरीस हरवणे भाकीत करते. कोणीही काहीही मोजले नाही; एक मोजलेला उतार आणि एक मोजलेली क्षेत्रफळ हानी यांनी भाकीत विलुप्ती अंश निर्माण केला आहे. हे वैध अनुमान आहे, आणि ज्या जीवांची कधी सूचीच बनली नाही त्यांच्यासाठी हीच एकमेव उपलब्ध पद्धत आहे. ही पद्धत काय करू शकत नाही, आणि प्रश्नाचा दुसरा अर्धा हाच आहे. तीन मर्यादा निष्पादनातून थेट निघतात. पहिली, नाते एखाद्या क्षेत्रफळासाठी जातींची समतोल संख्या सांगते, तिथवर पोहोचायला लागलेला काळ नाही. विखंडनानंतर लोकसंख्या हळूहळू घटतात आणि काही नाहीशा होण्याआधी दशके टिकतात — विलुप्ती कर्ज. म्हणून भाकीत हानी देणे बाकी आहे, आधीच दिलेली नाही, आणि साफसफाईनंतर लगेचचे सर्वेक्षण प्रतिमानाच्या भाकितापेक्षा अधिक जाती सापडेल, जे खंडन नाही. दुसरी, नाते गृहीत धरते की हरवलेले क्षेत्रफळ अधिवासाचा यादृच्छिक नमुना आहे. ते नाही: शेती आधी सपाट, सुपीक, चांगले पाणी असलेली जमीन घेते, आणि उरलेले तुकडे उतारावरचे आणि नापीक असतात. जर जाती असमानपणे वाटलेल्या असतील — आणि त्या आहेत — तर खरी हानी भाकितापेक्षा अधिक असू शकते. तिसरी, आणि सर्वांत महत्त्वाची, प्रतिमान जाती ओळखल्याविना मोजते. ते एखाद्या व्यापक जातीच्या हानीला, जी इतरत्र टिकते, अशा स्थानिक जातीच्या हानीहून वेगळे सांगू शकत नाही जी त्याच दरीत आणि पृथ्वीवर कुठेही आढळत नाही. संवर्धनासाठी तो फरकच सर्वकाही आहे, आणि नेमके म्हणूनच क्षेत्रफळ-आधारित अंदाजांसोबत तप्त स्थळ विश्लेषणही आहे. ठेवण्याजोगी सवय. जेव्हा अशा गोष्टीसाठी आकडा सांगितला जाईल जिला कोणी मोजूच शकले नसते, तेव्हा विचारा की तो कोणत्या नात्यातून काढला गेला आणि ते नाते काय गृहीत धरते. सांगितलेल्या मर्यादा असलेले प्रतिमान मर्यादा नसलेल्या संख्येहून कितीतरी अधिक उपयुक्त आहे, आणि अंदाज कुठे दुर्बल आहे हे जाणणे सांगते की आणखी कोणता पुरावा गोळा करणे उपयुक्त ठरेल. (दुसरा पर्याय अशा पद्धतीचे वर्णन करतो जी अंदाजांना मूठभर चांगले सर्वेक्षित जागांपुरते मर्यादित करेल आणि अवर्णित जातींना कधीच झाकू शकणार नाही; तिसरा त्या गणनेतून अधिवास हानी काढतो जी पूर्णपणे तिच्याबद्दलच आहे; चौथा अशी परिमाणात्मक पद्धत झटकतो जिचा आधार उत्तम पुनरावृत्त अनुभवजन्य नाते आहे.)",
+        },
+      },
+    ],
+  },
+  /*C12*/
 ];
 
 export const G12_BIOLOGY_NUMERIC: Record<string, NumQ[]> = {
@@ -4512,6 +5209,330 @@ export const G12_BIOLOGY_NUMERIC: Record<string, NumQ[]> = {
         en: "The population occupies 60 per cent of capacity, so 100 − 60 = 40 per cent remains. This unused fraction is not a bookkeeping figure — it is the term (K − N)/K that appears in the logistic equation and acts as a brake on growth. Read what it does at the two ends. When the population is tiny the fraction is close to one, the brake is off, and growth is nearly exponential. As N approaches K the fraction approaches zero, the brake closes and growth stops, which is what makes the curve flatten rather than continuing upward and crashing. The elegance is that a single multiplying factor converts the exponential equation into the logistic one, so the two models are not rivals but the same model with and without a limit. (60 gives the fraction occupied rather than the fraction remaining.)",
         hi: "आबादी क्षमता का 60 प्रतिशत घेरती है, अतः 100 − 60 = 40 प्रतिशत बचता है। यह अप्रयुक्त अंश हिसाब-किताब का आँकड़ा नहीं — वह (K − N)/K पद है जो संभार समीकरण में आता है और वृद्धि पर ब्रेक की तरह काम करता है। पढ़ो कि वह दोनों सिरों पर क्या करता है। जब आबादी बहुत छोटी हो तो अंश एक के पास है, ब्रेक हटा है, और वृद्धि लगभग चरघातांकी। जैसे-जैसे N, K के पास जाता है अंश शून्य के पास जाता है, ब्रेक कस जाता है और वृद्धि रुक जाती है, और यही वक्र को ऊपर चलते रहकर ढहने के बजाय चपटा करता है। सुघड़पन यह कि एक ही गुणक चरघातांकी समीकरण को संभार में बदल देता है, अतः दोनों मॉडल प्रतिद्वंद्वी नहीं बल्कि सीमा के साथ और बिना वही मॉडल हैं। (60 बचा अंश नहीं बल्कि घेरा गया अंश देता है।)",
         mr: "लोकसंख्या क्षमतेचा 60 टक्के व्यापते, म्हणून 100 − 60 = 40 टक्के उरतो. हा न वापरलेला अंश हिशेबाचा आकडा नाही — तो (K − N)/K हे पद आहे जे संभार समीकरणात येते आणि वाढीवर ब्रेकसारखे काम करते. तो दोन्ही टोकांना काय करतो ते वाचा. जेव्हा लोकसंख्या फार लहान असेल तेव्हा अंश एकाजवळ आहे, ब्रेक सुटला आहे, आणि वाढ जवळपास घातांकी. जसजसा N, K जवळ जातो तसतसा अंश शून्याजवळ जातो, ब्रेक आवळला जातो आणि वाढ थांबते, आणि हेच वक्राला वर चालत राहून कोसळण्याऐवजी सपाट करते. नेटकेपणा हा की एकच गुणक घातांकी समीकरणाचे संभारात रूपांतर करतो, म्हणून दोन्ही प्रतिमाने प्रतिस्पर्धी नसून मर्यादेसह आणि मर्यादेविना तेच प्रतिमान आहेत. (60 उरलेला अंश नव्हे तर व्यापलेला अंश देते.)",
+      },
+    },
+  ],
+  "biology-12-ecosystem": [
+    {
+      level: 1,
+      stem: {
+        en: "Producers in a field capture 10,000 units of energy. Applying the ten per cent law, how many units reach the herbivores?",
+        hi: "किसी खेत में उत्पादक ऊर्जा की 10,000 इकाइयाँ पकड़ते हैं। दस प्रतिशत नियम लगाने पर शाकाहारियों तक कितनी इकाइयाँ पहुँचती हैं?",
+        mr: "एका शेतात उत्पादक ऊर्जेची 10,000 एकके पकडतात. दहा टक्के नियम लावल्यास शाकाहारींपर्यंत किती एकके पोहोचतात?",
+      },
+      answer: 1000,
+      wrong: [100, 9000, 10000],
+      checkExpr: "10000/10",
+      solution: {
+        en: "10000/10 = 1000 units. The other nine thousand are not destroyed but spent — on respiration, on movement, on keeping warm — and on the parts of the plant that were never eaten or could not be digested. That is why the loss is unavoidable rather than a matter of inefficiency to be improved on. (9000 gives the amount lost rather than the amount passed on.)",
+        hi: "10000/10 = 1000 इकाइयाँ। बाक़ी नौ हज़ार नष्ट नहीं होतीं बल्कि ख़र्च होती हैं — श्वसन पर, गति पर, गर्म रहने पर — और पादप के उन हिस्सों पर जो कभी खाए ही नहीं गए या पचाए नहीं जा सके। इसीलिए यह हानि अपरिहार्य है, कोई ऐसी अकुशलता नहीं जिसे सुधारा जा सके। (9000 आगे गई मात्रा नहीं बल्कि खोई मात्रा देता है।)",
+        mr: "10000/10 = 1000 एकके. बाकीची नऊ हजार नष्ट होत नाहीत तर खर्च होतात — श्वसनावर, हालचालीवर, उबदार राहण्यावर — आणि वनस्पतीच्या त्या भागांवर जे कधी खाल्लेच गेले नाहीत वा पचवता आले नाहीत. म्हणूनच ही हानी अपरिहार्य आहे, कोणतीही अशी अकार्यक्षमता नाही जी सुधारता येईल. (9000 पुढे गेलेले प्रमाण नव्हे तर हरवलेले प्रमाण देते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "In the chain grass → grasshopper → frog → snake, how many trophic levels are there?",
+        hi: "घास → टिड्डा → मेंढक → साँप की शृंखला में कितने पोषी स्तर हैं?",
+        mr: "गवत → नाकतोडा → बेडूक → साप या साखळीत किती पोषी पातळ्या आहेत?",
+      },
+      answer: 4,
+      wrong: [3, 5, 2],
+      checkExpr: "3+1",
+      solution: {
+        en: "3 + 1 = 4: the producer and three consumers. Counting the producer as a level is the step that is easy to skip, and it matters because the ten per cent law applies at every transfer between levels — with four levels there are three transfers, so the snake receives a thousandth of what the grass captured. (3 counts only the animals.)",
+        hi: "3 + 1 = 4: उत्पादक और तीन उपभोक्ता। उत्पादक को एक स्तर गिनना ही वह क़दम है जिसे छोड़ना आसान है, और वह मायने रखता है क्योंकि दस प्रतिशत नियम स्तरों के बीच हर स्थानांतरण पर लागू है — चार स्तरों पर तीन स्थानांतरण हैं, अतः साँप को घास की पकड़ी ऊर्जा का हज़ारवाँ हिस्सा मिलता है। (3 केवल प्राणी गिनता है।)",
+        mr: "3 + 1 = 4: उत्पादक आणि तीन उपभोक्ते. उत्पादकाला एक पातळी मोजणे हीच ती पायरी जी वगळणे सोपे आहे, आणि ती महत्त्वाची आहे कारण दहा टक्के नियम पातळ्यांमधल्या प्रत्येक स्थानांतरावर लागू आहे — चार पातळ्यांवर तीन स्थानांतरे आहेत, म्हणून सापाला गवताने पकडलेल्या ऊर्जेचा हजारावा भाग मिळतो. (3 केवळ प्राणी मोजते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "Energy at the producer level is 20,000 units. How many units reach the second consumer level under the ten per cent law?",
+        hi: "उत्पादक स्तर पर ऊर्जा 20,000 इकाइयाँ है। दस प्रतिशत नियम के तहत दूसरे उपभोक्ता स्तर तक कितनी इकाइयाँ पहुँचती हैं?",
+        mr: "उत्पादक पातळीवर ऊर्जा 20,000 एकके आहे. दहा टक्के नियमानुसार दुसऱ्या उपभोक्ता पातळीपर्यंत किती एकके पोहोचतात?",
+      },
+      answer: 200,
+      wrong: [2000, 20, 2],
+      checkExpr: "20000/100",
+      solution: {
+        en: "Two transfers, so divide by ten twice: 20000/100 = 200 units. Notice how quickly this falls. A third consumer would get 20 and a fourth just 2 — from a starting figure of twenty thousand. The rapid collapse is exactly why food chains stop after three or four links, and it is arithmetic rather than any rule about who can eat whom. (2000 applies the loss only once.)",
+        hi: "दो स्थानांतरण, अतः दस से दो बार भाग दो: 20000/100 = 200 इकाइयाँ। ध्यान दो कि यह कितनी तेज़ी से गिरता है। तीसरे उपभोक्ता को 20 और चौथे को केवल 2 मिलतीं — बीस हज़ार के आरंभिक आँकड़े से। यह तेज़ ढहना ही कारण है कि आहार शृंखलाएँ तीन या चार कड़ियों के बाद रुक जाती हैं, और यह गणित है, कौन किसे खा सकता है इसका कोई नियम नहीं। (2000 हानि केवल एक बार लगाता है।)",
+        mr: "दोन स्थानांतरे, म्हणून दहाने दोनदा भागा: 20000/100 = 200 एकके. लक्षात घ्या की हे किती वेगाने घसरते. तिसऱ्या उपभोक्त्याला 20 आणि चौथ्याला केवळ 2 मिळतील — वीस हजारांच्या प्रारंभिक आकड्यातून. हे जलद कोसळणेच कारण आहे की अन्नसाखळ्या तीन वा चार दुव्यांनंतर थांबतात, आणि हे गणित आहे, कोण कोणाला खाऊ शकतो याचा कोणताही नियम नाही. (2000 हानी केवळ एकदा लावते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A forest fixes 5000 units of energy and the plants respire away 2000. What is the net primary productivity?",
+        hi: "कोई वन ऊर्जा की 5000 इकाइयाँ स्थिर करता है और पादप 2000 श्वसित कर देते हैं। शुद्ध प्राथमिक उत्पादकता क्या है?",
+        mr: "एक जंगल ऊर्जेची 5000 एकके स्थिर करते आणि वनस्पती 2000 श्वसित करतात. निव्वळ प्राथमिक उत्पादकता किती?",
+      },
+      answer: 3000,
+      wrong: [7000, 2000, 5000],
+      checkExpr: "5000-2000",
+      solution: {
+        en: "5000 − 2000 = 3000 units. Gross primary productivity is everything the plants fix; net is what is left after their own respiration, and only the net is available to anything that eats them. The distinction matters for a forest in particular, because a mature forest may fix a great deal and have very little net productivity, since so much of its mass is non-photosynthetic wood that has to be maintained. (7000 adds the respiration instead of subtracting it.)",
+        hi: "5000 − 2000 = 3000 इकाइयाँ। सकल प्राथमिक उत्पादकता वह सब है जो पादप स्थिर करते हैं; शुद्ध वह है जो उनके अपने श्वसन के बाद बचता है, और जो उन्हें खाता है उसे केवल शुद्ध ही उपलब्ध है। यह भेद विशेषकर किसी वन के लिए मायने रखता है, क्योंकि परिपक्व वन बहुत कुछ स्थिर कर सकता है और उसकी शुद्ध उत्पादकता बहुत कम हो सकती है, चूँकि उसके द्रव्यमान का इतना बड़ा हिस्सा अप्रकाशसंश्लेषी लकड़ी है जिसे बनाए रखना पड़ता है। (7000 श्वसन घटाने के बजाय जोड़ देता है।)",
+        mr: "5000 − 2000 = 3000 एकके. स्थूल प्राथमिक उत्पादकता म्हणजे वनस्पती जे सर्व स्थिर करतात; निव्वळ म्हणजे त्यांच्या स्वतःच्या श्वसनानंतर जे उरते, आणि जो त्यांना खातो त्याला केवळ निव्वळच उपलब्ध आहे. हा भेद विशेषतः एखाद्या जंगलासाठी महत्त्वाचा आहे, कारण परिपक्व जंगल बरेच काही स्थिर करू शकते आणि त्याची निव्वळ उत्पादकता फार कमी असू शकते, कारण त्याच्या वस्तुमानाचा इतका मोठा भाग अप्रकाशसंश्लेषी लाकूड आहे जे टिकवावे लागते. (7000 श्वसन वजा करण्याऐवजी जोडते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "If 10,000 units enter the producers, how many units are available at the third consumer level?",
+        hi: "यदि उत्पादकों में 10,000 इकाइयाँ आती हैं, तो तीसरे उपभोक्ता स्तर पर कितनी इकाइयाँ उपलब्ध हैं?",
+        mr: "जर उत्पादकांत 10,000 एकके येतात, तर तिसऱ्या उपभोक्ता पातळीवर किती एकके उपलब्ध आहेत?",
+      },
+      answer: 10,
+      wrong: [100, 1, 1000],
+      checkExpr: "10000/1000",
+      solution: {
+        en: "Three transfers, so divide by a thousand: 10000/1000 = 10 units. Ten units out of ten thousand is a thousandth of what the sun supplied, and a population of predators cannot live on it — a hunter must catch enough to cover the cost of hunting. That is where the food chain stops. Note also that a top predator is therefore always rare, and always the first to be lost when anything below it is disturbed. (100 stops one transfer short.)",
+        hi: "तीन स्थानांतरण, अतः हज़ार से भाग दो: 10000/1000 = 10 इकाइयाँ। दस हज़ार में से दस इकाइयाँ सूर्य ने जो दिया उसका हज़ारवाँ हिस्सा हैं, और उस पर परभक्षियों की कोई आबादी जी नहीं सकती — शिकारी को शिकार करने की लागत पूरी करने भर पकड़ना ही पड़ता है। आहार शृंखला वहीं रुकती है। यह भी ध्यान दो कि अतः शीर्ष परभक्षी हमेशा दुर्लभ है, और उसके नीचे कुछ भी बिगड़ने पर सबसे पहले वही खोता है। (100 एक स्थानांतरण पहले रुक जाता है।)",
+        mr: "तीन स्थानांतरे, म्हणून हजाराने भागा: 10000/1000 = 10 एकके. दहा हजारांतली दहा एकके सूर्याने जे दिले त्याचा हजारावा भाग आहेत, आणि त्यावर भक्षकांची कोणतीही लोकसंख्या जगू शकत नाही — शिकाऱ्याला शिकारीचा खर्च भरून काढण्याइतके पकडावेच लागते. अन्नसाखळी तिथेच थांबते. हेही लक्षात घ्या की म्हणून शिखर भक्षक नेहमी दुर्मीळ आहे, आणि त्याच्या खाली काहीही बिघडल्यावर सर्वप्रथम तोच हरवतो. (100 एक स्थानांतर आधी थांबते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A pyramid of energy has 8000 units at the producer level and 800 at the herbivore level. What percentage was transferred?",
+        hi: "किसी ऊर्जा पिरामिड में उत्पादक स्तर पर 8000 इकाइयाँ और शाकाहारी स्तर पर 800 हैं। कितने प्रतिशत का स्थानांतरण हुआ?",
+        mr: "एका ऊर्जा मनोऱ्यात उत्पादक पातळीवर 8000 एकके आणि शाकाहारी पातळीवर 800 आहेत. किती टक्के स्थानांतर झाले?",
+      },
+      answer: 10,
+      wrong: [80, 800, 8],
+      checkExpr: "800/80",
+      solution: {
+        en: "800 as a percentage of 8000 is 800/80 = 10 per cent. The ten per cent figure is an average rather than a law of nature: it runs higher in aquatic systems where the producers are small, soft and almost entirely edible, and lower on land where a herbivore must deal with bark, lignin and cellulose, and lower again for a warm-blooded consumer spending much of its intake on staying warm. (80 confuses the ratio with the percentage.)",
+        hi: "8000 के प्रतिशत के रूप में 800 है 800/80 = 10 प्रतिशत। दस प्रतिशत का आँकड़ा प्रकृति का नियम नहीं बल्कि औसत है: वह जलीय तंत्रों में ऊँचा चलता है जहाँ उत्पादक छोटे, कोमल और लगभग पूरी तरह खाने योग्य हैं, और ज़मीन पर नीचा जहाँ शाकाहारी को छाल, लिग्निन और सेलुलोस से निपटना पड़ता है, और गर्म ख़ून वाले उपभोक्ता के लिए और नीचा जो अपने ग्रहण का बहुत हिस्सा गर्म रहने में ख़र्च करता है। (80 अनुपात को प्रतिशत से गड्डमड्ड करता है।)",
+        mr: "8000 च्या टक्केवारीच्या रूपात 800 म्हणजे 800/80 = 10 टक्के. दहा टक्क्यांचा आकडा निसर्गाचा नियम नसून सरासरी आहे: तो जलीय प्रणालींत उच्च चालतो जिथे उत्पादक लहान, मऊ आणि जवळपास पूर्णपणे खाण्याजोगे आहेत, आणि जमिनीवर कमी जिथे शाकाहारीला साल, लिग्निन आणि सेल्युलोजशी निपटावे लागते, आणि उष्ण रक्ताच्या उपभोक्त्यासाठी आणखी कमी जो आपल्या ग्रहणाचा बराच भाग उबदार राहण्यात खर्च करतो. (80 गुणोत्तराची टक्केवारीशी गल्लत करते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "How many energy transfers occur in a food chain with five trophic levels?",
+        hi: "पाँच पोषी स्तरों वाली आहार शृंखला में कितने ऊर्जा स्थानांतरण होते हैं?",
+        mr: "पाच पोषी पातळ्या असलेल्या अन्नसाखळीत किती ऊर्जा स्थानांतरे घडतात?",
+      },
+      answer: 4,
+      wrong: [5, 6, 3],
+      checkExpr: "5-1",
+      solution: {
+        en: "5 − 1 = 4, because the transfers happen between levels and there are always one fewer gaps than posts. That is the same counting as fence posts and rails, and it decides the arithmetic: with four transfers the top level receives a ten-thousandth of what the producers fixed. Getting this off by one is what makes a chain look feasible when it is not. (5 counts levels rather than the gaps between them.)",
+        hi: "5 − 1 = 4, क्योंकि स्थानांतरण स्तरों के बीच होते हैं और खाइयाँ खंभों से हमेशा एक कम होती हैं। यह वही गिनती है जो बाड़ के खंभों और डंडों की होती है, और वह गणित तय करती है: चार स्थानांतरणों पर शीर्ष स्तर को उत्पादकों की स्थिर की गई ऊर्जा का दस-हज़ारवाँ हिस्सा मिलता है। इसमें एक की चूक ही किसी शृंखला को संभव दिखा देती है जबकि वह नहीं है। (5 खाइयों के बजाय स्तर गिनता है।)",
+        mr: "5 − 1 = 4, कारण स्थानांतरे पातळ्यांमध्ये घडतात आणि खाचा खांबांहून नेहमी एक कमी असतात. ही तीच मोजणी आहे जी कुंपणाच्या खांबांची आणि दांड्यांची असते, आणि ती गणित ठरवते: चार स्थानांतरांवर शिखर पातळीला उत्पादकांनी स्थिर केलेल्या ऊर्जेचा दहा-हजारावा भाग मिळतो. यात एकाची चूक होणेच एखादी साखळी शक्य दाखवते तर ती नाही. (5 खाचांऐवजी पातळ्या मोजते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "Standing crop of phytoplankton in a pond is 4 g/m² and their annual production is 200 g/m². How many times does the standing crop turn over in a year?",
+        hi: "किसी तालाब में पादपप्लवकों की खड़ी फ़सल 4 g/m² है और उनका वार्षिक उत्पादन 200 g/m². खड़ी फ़सल वर्ष में कितनी बार पलटती है?",
+        mr: "एका तळ्यात वनस्पतीप्लवकांचे उभे पीक 4 g/m² आहे आणि त्यांचे वार्षिक उत्पादन 200 g/m². उभे पीक वर्षात किती वेळा पलटते?",
+      },
+      answer: 50,
+      wrong: [800, 196, 25],
+      checkExpr: "200/4",
+      solution: {
+        en: "200/4 = 50 times a year, roughly once a week. This single figure resolves the inverted pyramid of biomass. A standing crop of 4 g/m² supports a much larger mass of fish because it is replaced fifty times over, while the fish turn over perhaps once in several years. A snapshot of mass compares a fast-turnover level with a slow one and so tells you nothing about the energy that passed between them; only the production figures do. (800 multiplies instead of dividing.)",
+        hi: "200/4 = वर्ष में 50 बार, मोटे तौर पर हफ़्ते में एक बार। यही अकेला आँकड़ा जैवभार के उलटे पिरामिड को सुलझा देता है। 4 g/m² की खड़ी फ़सल मछलियों के कहीं बड़े द्रव्यमान को इसलिए सँभालती है कि वह पचास बार बदल जाती है, जबकि मछलियाँ शायद कई वर्षों में एक बार पलटती हैं। द्रव्यमान का स्नैपशॉट तेज़-पलटाव वाले स्तर की तुलना धीमे वाले से करता है और इसलिए उनके बीच गई ऊर्जा के बारे में कुछ नहीं बताता; वह केवल उत्पादन के आँकड़े बताते हैं। (800 भाग देने के बजाय गुणा कर देता है।)",
+        mr: "200/4 = वर्षात 50 वेळा, ढोबळपणे आठवड्यातून एकदा. हाच एकटा आकडा जैवभाराचा उलटा मनोरा सोडवतो. 4 g/m² चे उभे पीक माशांच्या कितीतरी मोठ्या वस्तुमानाला यासाठी सांभाळते की ते पन्नास वेळा बदलते, तर मासे कदाचित कित्येक वर्षांत एकदा पलटतात. वस्तुमानाचे क्षणचित्र जलद-पलटाव पातळीची तुलना सावकाशशी करते आणि म्हणून त्यांच्यात गेलेल्या ऊर्जेबद्दल काहीही सांगत नाही; ते केवळ उत्पादनाचे आकडे सांगतात. (800 भागण्याऐवजी गुणाकार करते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "A hectare of grain feeds people directly, or feeds cattle which then feed people. If the transfer to cattle is ten per cent efficient, how many times more people can the grain feed directly?",
+        hi: "एक हेक्टेयर अनाज लोगों को सीधे खिलाता है, या मवेशियों को खिलाता है जो फिर लोगों को खिलाते हैं। यदि मवेशियों तक स्थानांतरण दस प्रतिशत कुशल हो, तो वह अनाज सीधे कितने गुना अधिक लोगों को खिला सकता है?",
+        mr: "एक हेक्टर धान्य लोकांना थेट खाऊ घालते, वा गुरांना खाऊ घालते जी मग लोकांना खाऊ घालतात. जर गुरांपर्यंतचे स्थानांतर दहा टक्के कार्यक्षम असेल, तर ते धान्य थेट किती पट अधिक लोकांना खाऊ घालू शकते?",
+      },
+      answer: 10,
+      wrong: [100, 2, 90],
+      checkExpr: "100/10",
+      solution: {
+        en: "100/10 = 10 times as many. The extra trophic step costs a factor of ten, so the same land supports ten times more people when the grain is eaten directly than when it is converted into meat first. The arithmetic is straightforward and its consequences are not: it is the reason land use and diet are connected at all, and the reason a growing population's food demand depends on what is eaten as well as on how many are eating. Note the argument does not apply to land that can support grazing but not crops — much of the world's grassland grows no grain, and there the animal is not competing with a direct food supply. (2 supposes only a halving.)",
+        hi: "100/10 = दस गुना अधिक। अतिरिक्त पोषी चरण दस का गुणक लेता है, अतः वही ज़मीन दस गुना अधिक लोगों को सँभालती है जब अनाज सीधे खाया जाए बनिस्बत इसके कि उसे पहले माँस में बदला जाए। गणित सीधा है और उसके परिणाम नहीं: यही कारण है कि भूमि उपयोग और आहार आपस में जुड़े हैं, और यही कि बढ़ती आबादी की भोजन माँग इस पर भी निर्भर है कि क्या खाया जाता है, न कि केवल इस पर कि कितने खा रहे हैं। ध्यान दो कि यह तर्क उस ज़मीन पर लागू नहीं जो चराई सँभाल सकती है पर फ़सल नहीं — दुनिया के अधिकांश घास मैदानों में अनाज उगता ही नहीं, और वहाँ जानवर किसी सीधी भोजन आपूर्ति से होड़ नहीं कर रहा। (2 केवल आधा होना मान लेता है।)",
+        mr: "100/10 = दहा पट अधिक. अतिरिक्त पोषी पायरी दहाचा गुणक घेते, म्हणून तीच जमीन दहा पट अधिक लोकांना सांभाळते जेव्हा धान्य थेट खाल्ले जाईल त्या तुलनेत की ते आधी मांसात बदलले जावे. गणित सरळ आहे आणि त्याचे परिणाम नाहीत: हेच कारण आहे की जमीन वापर आणि आहार परस्पर जोडलेले आहेत, आणि हेच की वाढत्या लोकसंख्येची अन्नाची मागणी यावरही अवलंबून आहे की काय खाल्ले जाते, केवळ किती खात आहेत यावर नाही. लक्षात घ्या की हा युक्तिवाद त्या जमिनीवर लागू नाही जी चराई सांभाळू शकते पण पीक नाही — जगातल्या बहुतांश गवताळ प्रदेशांत धान्य उगवतच नाही, आणि तिथे जनावर कोणत्याही थेट अन्नपुरवठ्याशी स्पर्धा करत नाही. (2 केवळ निम्मे होणे गृहीत धरते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "In a decomposition study, 60 per cent of the litter mass remains after one year. What percentage has been decomposed?",
+        hi: "किसी अपघटन अध्ययन में एक वर्ष बाद कूड़े का 60 प्रतिशत द्रव्यमान बचा रहता है। कितना प्रतिशत अपघटित हुआ?",
+        mr: "एका विघटन अभ्यासात एका वर्षानंतर पाचोळ्याचे 60 टक्के वस्तुमान उरते. किती टक्के विघटित झाले?",
+      },
+      answer: 40,
+      wrong: [60, 140, 20],
+      checkExpr: "100-60",
+      solution: {
+        en: "100 − 60 = 40 per cent decomposed. The rate is the informative quantity, and what controls it is worth stating because it explains where the world's carbon is stored. Decomposition needs warmth, moisture, oxygen and material that microbes can attack. A tropical forest floor has all four, and litter there may be gone within months — which is why tropical soils are often thin and poor, with almost all the nutrients held in the living vegetation rather than the ground. A cold bog has warmth and oxygen missing, so material accumulates faster than it is broken down, which is how peat forms; carry that further and it becomes coal. So the great fossil carbon deposits are simply places where the decomposition loop was interrupted, and burning them now is completing a step that was suspended for three hundred million years. (60 quotes the fraction remaining rather than the fraction lost.)",
+        hi: "100 − 60 = 40 प्रतिशत अपघटित हुआ। दर ही ज्ञानप्रद राशि है, और उसे क्या नियंत्रित करता है यह कहना काम का है क्योंकि वह समझा देता है कि दुनिया का कार्बन कहाँ जमा है। अपघटन को गर्मी, नमी, ऑक्सीजन और ऐसी सामग्री चाहिए जिस पर सूक्ष्मजीव हमला कर सकें। उष्णकटिबंधीय वन की ज़मीन पर चारों हैं, और वहाँ कूड़ा महीनों में ग़ायब हो सकता है — इसीलिए उष्णकटिबंधीय मिट्टियाँ प्रायः पतली और ग़रीब हैं, और लगभग सारे पोषक तत्व ज़मीन के बजाय जीवित वनस्पति में थमे हैं। ठंडे दलदल में गर्मी और ऑक्सीजन ग़ायब हैं, अतः सामग्री टूटने से तेज़ी से जमा होती है, और पीट इसी तरह बनता है; उसे और आगे ले जाओ तो वह कोयला बन जाता है। अतः जीवाश्म कार्बन के बड़े निक्षेप बस वे जगहें हैं जहाँ अपघटन का लूप टूट गया था, और उन्हें अब जलाना उस चरण को पूरा करना है जो तीस करोड़ वर्षों से रुका हुआ था। (60 खोया अंश नहीं बल्कि बचा अंश बता देता है।)",
+        mr: "100 − 60 = 40 टक्के विघटित झाले. दरच माहितीपूर्ण राशी आहे, आणि त्याला काय नियंत्रित करते हे सांगणे उपयुक्त आहे कारण ते समजावते की जगाचा कार्बन कुठे साठला आहे. विघटनाला ऊब, ओलावा, ऑक्सिजन आणि अशी सामग्री लागते जिच्यावर सूक्ष्मजीव हल्ला करू शकतील. उष्णकटिबंधीय जंगलाच्या जमिनीवर चारही आहेत, आणि तिथे पाचोळा महिन्यांत नाहीसा होऊ शकतो — म्हणूनच उष्णकटिबंधीय माती बहुधा पातळ आणि गरीब आहेत, आणि जवळपास सर्व पोषक द्रव्ये जमिनीऐवजी जिवंत वनस्पतीत धरलेली आहेत. थंड दलदलीत ऊब आणि ऑक्सिजन गायब आहेत, म्हणून सामग्री तुटण्याहून वेगाने जमते, आणि पीट याच प्रकारे बनते; ते आणखी पुढे न्या तर ते कोळसा बनते. म्हणून जीवाश्म कार्बनचे मोठे निक्षेप फक्त त्या जागा आहेत जिथे विघटनाचा लूप तुटला होता, आणि त्यांना आता जाळणे ती पायरी पूर्ण करणे आहे जी तीस कोटी वर्षे थांबली होती. (60 हरवलेला अंश नव्हे तर उरलेला अंश सांगते.)",
+      },
+    },
+  ],
+  "biology-12-biodiversity-and-conservation": [
+    {
+      level: 1,
+      stem: {
+        en: "Of the world's described species, roughly how many out of every ten are animals rather than plants, fungi or microbes?",
+        hi: "दुनिया की वर्णित जातियों में से मोटे तौर पर हर दस में से कितनी पादप, कवक या सूक्ष्मजीव न होकर प्राणी हैं?",
+        mr: "जगाच्या वर्णिलेल्या जातींपैकी ढोबळपणे प्रत्येक दहांतील किती वनस्पती, बुरशी वा सूक्ष्मजीव नसून प्राणी आहेत?",
+      },
+      answer: 7,
+      wrong: [3, 5, 9],
+      checkExpr: "10-3",
+      solution: {
+        en: "10 − 3 = 7 in ten, since animals make up roughly seventy per cent of described species and insects alone account for more than half of everything named. The figure is about what has been DESCRIBED, not what exists — the true total is unknown and most estimates put it several times higher, with the undescribed majority made up of small organisms in places that are hard to sample. (3 gives the non-animal share.)",
+        hi: "दस में से 10 − 3 = 7, चूँकि वर्णित जातियों का मोटे तौर पर सत्तर प्रतिशत प्राणी हैं और अकेले कीट नामित हर चीज़ के आधे से अधिक हैं। यह आँकड़ा इस बारे में है कि क्या वर्णित हुआ, यह नहीं कि क्या है — असली कुल अज्ञात है और अधिकांश आकलन उसे कई गुना ऊँचा रखते हैं, और अवर्णित बहुसंख्या ऐसी जगहों के छोटे जीवों से बनी है जिनका नमूना लेना कठिन है। (3 प्राणी-भिन्न हिस्सा देता है।)",
+        mr: "दहांपैकी 10 − 3 = 7, कारण वर्णिलेल्या जातींचा ढोबळपणे सत्तर टक्के प्राणी आहेत आणि एकटे कीटक नाव दिलेल्या प्रत्येक गोष्टीच्या निम्म्याहून अधिक आहेत. हा आकडा काय वर्णिले गेले याबद्दल आहे, काय अस्तित्वात आहे याबद्दल नाही — खरा एकूण अज्ञात आहे आणि बहुतांश अंदाज तो कित्येक पट उच्च ठेवतात, आणि अवर्णित बहुसंख्या अशा जागांतल्या लहान जीवांनी बनली आहे जिथले नमुने घेणे कठीण आहे. (3 प्राणी-रहित हिस्सा देते.)",
+      },
+    },
+    {
+      level: 1,
+      stem: {
+        en: "How many causes of biodiversity loss are grouped together as the 'evil quartet'?",
+        hi: "'दुष्ट चौकड़ी' के रूप में जैव विविधता हानि के कितने कारण एक साथ रखे जाते हैं?",
+        mr: "'दुष्ट चौकडी' म्हणून जैवविविधता हानीची किती कारणे एकत्र ठेवली जातात?",
+      },
+      answer: 4,
+      wrong: [2, 3, 5],
+      checkExpr: "2*2",
+      solution: {
+        en: "2 × 2 = 4: habitat loss and fragmentation, over-exploitation, invasive species, and co-extinctions. Grouping them is more than a mnemonic, because they are not independent — habitat loss makes a population small enough for over-exploitation to finish it, and a fragmented landscape is what lets an invasive species in along the new edges. (2 counts only the two most often discussed.)",
+        hi: "2 × 2 = 4: आवास की हानि और विखंडन, अति-दोहन, आक्रामक जातियाँ, और सह-विलुप्तियाँ। उन्हें एक साथ रखना केवल याद रखने की तरकीब से अधिक है, क्योंकि वे स्वतंत्र नहीं — आवास की हानि किसी आबादी को इतना छोटा कर देती है कि अति-दोहन उसे ख़त्म कर सके, और विखंडित भूदृश्य ही नए किनारों के साथ किसी आक्रामक जाति को भीतर आने देता है। (2 केवल उन दो को गिनता है जिनकी सबसे अधिक चर्चा होती है।)",
+        mr: "2 × 2 = 4: अधिवासाची हानी आणि विखंडन, अति-शोषण, आक्रमक जाती, आणि सह-विलुप्ती. त्यांना एकत्र ठेवणे केवळ स्मरणयुक्तीहून अधिक आहे, कारण ती स्वतंत्र नाहीत — अधिवासाची हानी एखादी लोकसंख्या इतकी लहान करते की अति-शोषणाने तिला संपवावे, आणि विखंडित भूदृश्यच नव्या कडांसोबत एखाद्या आक्रमक जातीला आत येऊ देते. (2 केवळ त्या दोघांना मोजते ज्यांची सर्वाधिक चर्चा होते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "A region has 90 per cent of its original forest cleared. What percentage of the original area remains?",
+        hi: "किसी क्षेत्र का 90 प्रतिशत मूल वन साफ़ कर दिया गया है। मूल क्षेत्रफल का कितना प्रतिशत बचा है?",
+        mr: "एका प्रदेशाचे 90 टक्के मूळ जंगल साफ केले गेले आहे. मूळ क्षेत्रफळाचा किती टक्के उरला आहे?",
+      },
+      answer: 10,
+      wrong: [90, 100, 9],
+      checkExpr: "100-90",
+      solution: {
+        en: "100 − 90 = 10 per cent. That remaining fraction is what goes into the species–area relationship, which converts an area ratio into a species ratio and is the only way a number of extinctions can be estimated for organisms nobody has catalogued. Note the estimate that comes out is an eventual figure, not an immediate one: populations in the remaining fragments decline gradually, so extinctions are owed before they are paid. (90 gives the fraction cleared.)",
+        hi: "100 − 90 = 10 प्रतिशत। वही बचा अंश जाति-क्षेत्र संबंध में जाता है, जो क्षेत्रफल के अनुपात को जातियों के अनुपात में बदल देता है और उन जीवों के लिए विलुप्तियों की संख्या आँकने का एकमात्र तरीक़ा है जिनकी किसी ने सूची ही नहीं बनाई। ध्यान दो कि जो आकलन निकलता है वह अंततः का आँकड़ा है, तत्काल का नहीं: बचे टुकड़ों की आबादियाँ धीरे-धीरे घटती हैं, अतः विलुप्तियाँ चुकाई जाने से पहले बकाया होती हैं। (90 साफ़ किया गया अंश देता है।)",
+        mr: "100 − 90 = 10 टक्के. तोच उरलेला अंश जाती-क्षेत्र नात्यात जातो, जे क्षेत्रफळाच्या गुणोत्तराचे जातींच्या गुणोत्तरात रूपांतर करते आणि ज्या जीवांची कोणी सूचीच बनवली नाही त्यांच्यासाठी विलुप्तींची संख्या मोजण्याचा एकमेव मार्ग आहे. लक्षात घ्या की जो अंदाज निघतो तो अखेरचा आकडा आहे, तात्काळचा नाही: उरलेल्या तुकड्यांतल्या लोकसंख्या हळूहळू घटतात, म्हणून विलुप्ती दिल्या जाण्याआधी बाकी असतात. (90 साफ केलेला अंश देते.)",
+      },
+    },
+    {
+      level: 2,
+      stem: {
+        en: "India occupies about 2.4 per cent of the world's land area. What percentage of the land area is that not?",
+        hi: "भारत दुनिया के भूक्षेत्र का लगभग 2.4 प्रतिशत घेरता है। भूक्षेत्र का कितना प्रतिशत वह नहीं है?",
+        mr: "भारत जगाच्या भूक्षेत्राचा सुमारे 2.4 टक्के व्यापतो. भूक्षेत्राचा किती टक्के तो नाही?",
+      },
+      answer: 97.6,
+      wrong: [102.4, 2.4, 76],
+      checkExpr: "100-2.4",
+      solution: {
+        en: "100 − 2.4 = 97.6 per cent. The subtraction is trivial and the comparison it sets up is not: India holds roughly eight per cent of the world's recorded species on that 2.4 per cent of its land, which is more than three times the share its area would suggest. That mismatch is what makes it a megadiverse country, and it is a consequence of position and terrain — tropical latitude, a very long coastline, and a range of altitudes from sea level to the Himalaya, each supporting a different set of species. (102.4 adds instead of subtracting.)",
+        hi: "100 − 2.4 = 97.6 प्रतिशत। घटाना मामूली है और वह जो तुलना खड़ी करता है वह नहीं: भारत अपनी उस 2.4 प्रतिशत ज़मीन पर दुनिया की दर्ज जातियों का मोटे तौर पर आठ प्रतिशत रखता है, जो उसके क्षेत्रफल के सुझाए हिस्से से तीन गुना से अधिक है। वही बेमेल उसे महाविविध देश बनाता है, और वह स्थिति तथा भूभाग का परिणाम है — उष्णकटिबंधीय अक्षांश, बहुत लंबी तटरेखा, और समुद्र तल से हिमालय तक ऊँचाइयों का परास, जिनमें से हर एक जातियों का भिन्न समुच्चय सँभालता है। (102.4 घटाने के बजाय जोड़ देता है।)",
+        mr: "100 − 2.4 = 97.6 टक्के. वजाबाकी क्षुल्लक आहे आणि ती जी तुलना उभी करते ती नाही: भारत आपल्या त्या 2.4 टक्के जमिनीवर जगाच्या नोंदलेल्या जातींचा ढोबळपणे आठ टक्के ठेवतो, जो त्याच्या क्षेत्रफळाने सुचवलेल्या हिश्श्याहून तिप्पटीहून अधिक आहे. तीच विसंगती त्याला महाविविध देश बनवते, आणि तो स्थान आणि भूभागाचा परिणाम आहे — उष्णकटिबंधीय अक्षांश, फार लांब किनारपट्टी, आणि समुद्रसपाटीपासून हिमालयापर्यंत उंचीची व्याप्ती, ज्यांपैकी प्रत्येक जातींचा वेगळा संच सांभाळते. (102.4 वजा करण्याऐवजी बेरीज करते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A survey of 100 plots finds a species in 25 of them. In what percentage of plots is it absent?",
+        hi: "100 प्लॉटों के सर्वेक्षण में कोई जाति उनमें से 25 में मिलती है। कितने प्रतिशत प्लॉटों में वह अनुपस्थित है?",
+        mr: "100 भूखंडांच्या सर्वेक्षणात एखादी जात त्यांपैकी 25 मध्ये सापडते. किती टक्के भूखंडांत ती अनुपस्थित आहे?",
+      },
+      answer: 75,
+      wrong: [25, 125, 4],
+      checkExpr: "100-25",
+      solution: {
+        en: "100 − 25 = 75 per cent. A figure like this is the raw material of a species–area curve: sample more plots and the cumulative species count rises, quickly at first and then more slowly as each new plot mostly repeats what has already been found. Where a species turns up in only a quarter of plots, doubling the survey area will still be adding new records, which is a practical sign that the region has not yet been adequately sampled. (25 gives the presence figure.)",
+        hi: "100 − 25 = 75 प्रतिशत। ऐसा आँकड़ा जाति-क्षेत्र वक्र का कच्चा माल है: और प्लॉटों का नमूना लो और संचयी जाति गिनती बढ़ती है, पहले तेज़ी से और फिर धीमे क्योंकि हर नया प्लॉट अधिकतर वही दोहराता है जो पहले ही मिल चुका। जहाँ कोई जाति प्लॉटों के केवल एक-चौथाई में निकले, वहाँ सर्वेक्षण क्षेत्र दुगुना करने पर भी नए अभिलेख जुड़ते रहेंगे, जो व्यावहारिक संकेत है कि उस क्षेत्र का अभी पर्याप्त नमूना नहीं लिया गया। (25 उपस्थिति का आँकड़ा देता है।)",
+        mr: "100 − 25 = 75 टक्के. असा आकडा जाती-क्षेत्र वक्राचा कच्चा माल आहे: आणखी भूखंडांचे नमुने घ्या आणि संचयी जाती मोजणी वाढते, आधी वेगाने आणि मग सावकाश कारण प्रत्येक नवा भूखंड बहुतांशी तेच पुनरावृत्त करतो जे आधीच सापडले आहे. जिथे एखादी जात भूखंडांच्या केवळ एक-चतुर्थांशात निघेल, तिथे सर्वेक्षण क्षेत्र दुप्पट केल्यावरही नव्या नोंदी जमत राहतील, जे व्यावहारिक चिन्ह आहे की त्या प्रदेशाचे अजून पुरेसे नमुने घेतले गेलेले नाहीत. (25 उपस्थितीचा आकडा देते.)",
+      },
+    },
+    {
+      level: 3,
+      stem: {
+        en: "A protected area of 1200 square kilometres is divided into 4 equal fragments. How large is each fragment?",
+        hi: "1200 वर्ग किलोमीटर का कोई संरक्षित क्षेत्र 4 बराबर टुकड़ों में बँट जाता है। हर टुकड़ा कितना बड़ा है?",
+        mr: "1200 चौरस किलोमीटरचे एक संरक्षित क्षेत्र 4 समान तुकड्यांत विभागले जाते. प्रत्येक तुकडा किती मोठा आहे?",
+      },
+      answer: 300,
+      wrong: [4800, 1200, 600],
+      checkExpr: "1200/4",
+      solution: {
+        en: "1200/4 = 300 square kilometres each. The total is unchanged, which is exactly why the arithmetic is misleading on its own. A tiger's territory may exceed 300 square kilometres, so an animal that could live in the whole cannot live in any of the parts; each fragment now holds a small isolated population vulnerable to a single bad year; and the edge — hotter, drier, open to invaders — penetrates a small fragment throughout while a large block keeps an interior. Four small reserves are not one large reserve. (4800 multiplies instead of dividing.)",
+        hi: "1200/4 = हर एक 300 वर्ग किलोमीटर। कुल अपरिवर्तित है, और ठीक इसीलिए यह गणित अकेला भरमाने वाला है। बाघ का क्षेत्र 300 वर्ग किलोमीटर से अधिक हो सकता है, अतः जो प्राणी पूरे में रह सकता था वह किसी भी हिस्से में नहीं रह सकता; हर टुकड़े में अब छोटी अलग-थलग आबादी है जो एक ही बुरे वर्ष से संवेदनशील है; और किनारा — अधिक गर्म, सूखा, आक्रमणकारियों को खुला — छोटे टुकड़े में आर-पार घुस जाता है जबकि बड़ा खंड भीतरी हिस्सा बचाए रखता है। चार छोटे अभयारण्य एक बड़ा अभयारण्य नहीं हैं। (4800 भाग देने के बजाय गुणा कर देता है।)",
+        mr: "1200/4 = प्रत्येकी 300 चौरस किलोमीटर. एकूण अपरिवर्तित आहे, आणि नेमके म्हणूनच हे गणित एकटे दिशाभूल करणारे आहे. वाघाचे क्षेत्र 300 चौरस किलोमीटरहून अधिक असू शकते, म्हणून जो प्राणी अख्ख्यात राहू शकत होता तो कोणत्याही भागात राहू शकत नाही; प्रत्येक तुकड्यात आता लहान एकाकी लोकसंख्या आहे जी एकाच वाईट वर्षाने असुरक्षित आहे; आणि कड — अधिक गरम, कोरडी, आक्रमकांना उघडी — लहान तुकड्यात आरपार शिरते तर मोठा भाग आतला भाग टिकवतो. चार लहान अभयारण्ये एक मोठे अभयारण्य नाहीत. (4800 भागण्याऐवजी गुणाकार करते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "A hotspot has lost 70 per cent of its original vegetation. What fraction of the original remains, as a percentage?",
+        hi: "किसी तप्त स्थल ने अपनी मूल वनस्पति का 70 प्रतिशत खो दिया है। मूल का कितना अंश बचा है, प्रतिशत में?",
+        mr: "एका तप्त स्थळाने आपल्या मूळ वनस्पतीचे 70 टक्के गमावले आहे. मूळचा किती अंश उरला आहे, टक्क्यांत?",
+      },
+      answer: 30,
+      wrong: [70, 130, 3],
+      checkExpr: "100-70",
+      solution: {
+        en: "100 − 70 = 30 per cent. Heavy loss is not incidental to a hotspot — it is part of the definition. A region qualifies only if it has an exceptional number of endemic species AND has already lost a large share of its original habitat, because the criterion is designed to direct limited money where the most is at stake per hectare protected. Endemism is what makes it urgent: a species found nowhere else disappears from the world when it disappears from that one place, so no reserve elsewhere can compensate. (70 gives the fraction lost.)",
+        hi: "100 − 70 = 30 प्रतिशत। भारी हानि किसी तप्त स्थल के लिए आकस्मिक नहीं — वह परिभाषा का हिस्सा है। कोई क्षेत्र तभी पात्र है जब उसमें स्थानिक जातियों की असाधारण संख्या हो और वह अपने मूल आवास का बड़ा हिस्सा पहले ही खो चुका हो, क्योंकि यह कसौटी सीमित पैसा वहाँ भेजने को बनी है जहाँ प्रति संरक्षित हेक्टेयर सबसे अधिक दाँव पर हो। स्थानिकता ही उसे अत्यावश्यक बनाती है: जो जाति और कहीं नहीं मिलती वह उस एक जगह से ग़ायब होते ही दुनिया से ग़ायब हो जाती है, अतः कहीं और का कोई अभयारण्य उसकी भरपाई नहीं कर सकता। (70 खोया अंश देता है।)",
+        mr: "100 − 70 = 30 टक्के. मोठी हानी एखाद्या तप्त स्थळासाठी आनुषंगिक नाही — ती व्याख्येचा भाग आहे. एखादा प्रदेश तेव्हाच पात्र आहे जेव्हा त्यात स्थानिक जातींची असाधारण संख्या असेल आणि त्याने आपल्या मूळ अधिवासाचा मोठा हिस्सा आधीच गमावला असेल, कारण ही कसोटी मर्यादित पैसा तिथे पाठवायला बनली आहे जिथे प्रति संरक्षित हेक्टर सर्वाधिक पणाला लागले असेल. स्थानिकताच तिला निकडीची बनवते: जी जात इतरत्र कुठेही आढळत नाही ती त्या एका जागेतून नाहीशी होताच जगातून नाहीशी होते, म्हणून इतरत्रचे कोणतेही अभयारण्य तिची भरपाई करू शकत नाही. (70 हरवलेला अंश देते.)",
+      },
+    },
+    {
+      level: 4,
+      stem: {
+        en: "About 8 per cent of the world's recorded species occur in India. What percentage occurs elsewhere?",
+        hi: "दुनिया की दर्ज जातियों का लगभग 8 प्रतिशत भारत में मिलता है। कितना प्रतिशत कहीं और मिलता है?",
+        mr: "जगाच्या नोंदलेल्या जातींचा सुमारे 8 टक्के भारतात आढळतो. किती टक्के इतरत्र आढळतो?",
+      },
+      answer: 92,
+      wrong: [108, 8, 80],
+      checkExpr: "100-8",
+      solution: {
+        en: "100 − 8 = 92 per cent. Set the eight per cent against the 2.4 per cent of land area from the earlier question and the point of the comparison appears: India carries more than three times the species share its size would predict. That is not an accident of counting but a consequence of geography — the country spans tropical and temperate zones, coastline and desert, and altitudes from sea level to above 8000 metres, and diversity accumulates wherever conditions vary. It also carries two of the world's recognised hotspots, in the Western Ghats and the Eastern Himalaya. (108 adds instead of subtracting.)",
+        hi: "100 − 8 = 92 प्रतिशत। आठ प्रतिशत को पिछले प्रश्न के 2.4 प्रतिशत भूक्षेत्र के सामने रखो और तुलना का मर्म प्रकट होता है: भारत अपने आकार की भविष्यवाणी से तीन गुना से अधिक जाति हिस्सा ढोता है। यह गिनती की दुर्घटना नहीं बल्कि भूगोल का परिणाम है — देश उष्णकटिबंधीय और शीतोष्ण दोनों क्षेत्रों, तटरेखा और मरुस्थल, तथा समुद्र तल से 8000 मीटर से ऊपर तक की ऊँचाइयों तक फैला है, और जहाँ भी परिस्थितियाँ बदलती हैं वहाँ विविधता जमा होती है। वह दुनिया के मान्य तप्त स्थलों में से दो भी ढोता है, पश्चिमी घाट और पूर्वी हिमालय में। (108 घटाने के बजाय जोड़ देता है।)",
+        mr: "100 − 8 = 92 टक्के. आठ टक्के मागच्या प्रश्नातील 2.4 टक्के भूक्षेत्रासमोर ठेवा आणि तुलनेचा गाभा प्रकट होतो: भारत आपल्या आकाराच्या भाकितापेक्षा तिप्पटीहून अधिक जाती हिस्सा वाहतो. हा मोजणीचा अपघात नसून भूगोलाचा परिणाम आहे — देश उष्णकटिबंधीय आणि समशीतोष्ण दोन्ही क्षेत्रे, किनारपट्टी आणि वाळवंट, आणि समुद्रसपाटीपासून 8000 मीटरहून वरपर्यंतच्या उंचींपर्यंत पसरला आहे, आणि जिथे जिथे परिस्थिती बदलते तिथे विविधता जमते. तो जगाच्या मान्यताप्राप्त तप्त स्थळांपैकी दोनही वाहतो, पश्चिम घाट आणि पूर्व हिमालयात. (108 वजा करण्याऐवजी बेरीज करते.)",
+      },
+    },
+    {
+      level: 5,
+      stem: {
+        en: "A reserve is required to be at least 500 square kilometres, and a proposed area is 4 fragments of 90 each. How many square kilometres short is the total?",
+        hi: "किसी अभयारण्य के लिए कम से कम 500 वर्ग किलोमीटर चाहिए, और प्रस्तावित क्षेत्र 90-90 के 4 टुकड़े हैं। कुल कितने वर्ग किलोमीटर कम है?",
+        mr: "एखाद्या अभयारण्यासाठी किमान 500 चौरस किलोमीटर लागतात, आणि प्रस्तावित क्षेत्र 90-90 चे 4 तुकडे आहेत. एकूण किती चौरस किलोमीटर कमी आहे?",
+      },
+      answer: 140,
+      wrong: [410, 360, 90],
+      checkExpr: "500-360",
+      solution: {
+        en: "The fragments total 4 × 90 = 360, so 500 − 360 = 140 square kilometres short. But the arithmetic understates the problem, and seeing why is the point. Even if the total reached 500, four separate pieces would not do the work of one, for four reasons that have nothing to do with area: an animal needing a large contiguous range cannot use any single piece; each fragment holds a small population liable to be lost to one fire or one disease; edge conditions penetrate a small fragment throughout, so none of it is interior habitat; and individuals cannot move between pieces to breed or to recolonise. A proposal that meets an area target by adding up fragments has met the number and not the requirement. (410 subtracts only one fragment.)",
+        hi: "टुकड़े मिलकर 4 × 90 = 360 हैं, अतः 500 − 360 = 140 वर्ग किलोमीटर कम। पर यह गणित समस्या को कम करके बताता है, और क्यों, यह देखना ही मर्म है। यदि कुल 500 तक पहुँच भी जाता, तो चार अलग टुकड़े एक का काम नहीं करते, ऐसे चार कारणों से जिनका क्षेत्रफल से कोई लेना-देना नहीं: जिस प्राणी को बड़ा सटा हुआ परास चाहिए वह किसी भी अकेले टुकड़े को काम में नहीं ला सकता; हर टुकड़े में छोटी आबादी है जो एक ही आग या एक ही रोग से खो सकती है; किनारे की परिस्थितियाँ छोटे टुकड़े में आर-पार घुस जाती हैं, अतः उसका कोई हिस्सा भीतरी आवास नहीं; और व्यक्ति प्रजनन को या फिर बसने को टुकड़ों के बीच जा नहीं सकते। जो प्रस्ताव टुकड़े जोड़कर क्षेत्रफल का लक्ष्य पूरा करता है उसने संख्या पूरी की है, आवश्यकता नहीं। (410 केवल एक टुकड़ा घटाता है।)",
+        mr: "तुकडे मिळून 4 × 90 = 360 आहेत, म्हणून 500 − 360 = 140 चौरस किलोमीटर कमी. पण हे गणित समस्या कमी करून सांगते, आणि का, हे पाहणे हाच गाभा आहे. जरी एकूण 500 पर्यंत पोहोचले असते, तरी चार वेगळे तुकडे एकाचे काम करत नाहीत, अशा चार कारणांनी ज्यांचा क्षेत्रफळाशी काहीही संबंध नाही: ज्या प्राण्याला मोठी सलग व्याप्ती लागते तो कोणताही एकटा तुकडा वापरू शकत नाही; प्रत्येक तुकड्यात लहान लोकसंख्या आहे जी एकाच आगीने वा एकाच रोगाने हरवू शकते; कडेची परिस्थिती लहान तुकड्यात आरपार शिरते, म्हणून त्याचा कोणताही भाग आतला अधिवास नाही; आणि व्यक्ती प्रजननाला वा पुन्हा वसायला तुकड्यांमध्ये जाऊ शकत नाहीत. जो प्रस्ताव तुकडे जोडून क्षेत्रफळाचे लक्ष्य पूर्ण करतो त्याने संख्या पूर्ण केली आहे, आवश्यकता नाही. (410 केवळ एक तुकडा वजा करते.)",
+      },
+    },
+    {
+      level: 6,
+      stem: {
+        en: "Under the species–area relationship with an exponent of 0.5, a region reduced to one quarter of its area retains what fraction of its species, as a percentage?",
+        hi: "0.5 घातांक वाले जाति-क्षेत्र संबंध के तहत, अपने क्षेत्रफल के एक-चौथाई तक घटा कोई क्षेत्र अपनी जातियों का कितना अंश बचाए रखता है, प्रतिशत में?",
+        mr: "0.5 घातांक असलेल्या जाती-क्षेत्र नात्याअंतर्गत, आपल्या क्षेत्रफळाच्या एक-चतुर्थांशापर्यंत घटलेला एखादा प्रदेश आपल्या जातींचा किती अंश टिकवतो, टक्क्यांत?",
+      },
+      answer: 50,
+      wrong: [25, 75, 100],
+      checkExpr: "100/2",
+      solution: {
+        en: "With S proportional to A^0.5, reducing the area to a quarter multiplies the species count by the square root of a quarter, which is a half: 100/2 = 50 per cent. Losing three quarters of the habitat costs half the species, which is the whole reason the relationship is worth having — it converts a measurable quantity, area, into an unmeasurable one, extinctions, for organisms nobody has catalogued. Three cautions come with it, and they matter as much as the figure. The prediction is an eventual equilibrium, not an immediate count: populations in the remnant decline over decades, so the extinctions are owed before they are seen — the extinction debt. The model assumes the area lost is a random sample, whereas clearance takes the flat and fertile land first. And it counts species without naming them, so it cannot distinguish a widespread species that survives elsewhere from an endemic that does not. A number without those qualifications says less than it appears to. (25 uses the area fraction directly and forgets the exponent.)",
+        hi: "S के A^0.5 के समानुपाती होने पर, क्षेत्रफल को एक-चौथाई करने से जाति गिनती एक-चौथाई के वर्गमूल से गुणा हो जाती है, जो आधा है: 100/2 = 50 प्रतिशत। आवास का तीन-चौथाई खोना जातियों का आधा हिस्सा लेता है, और यही पूरा कारण है कि यह संबंध रखने लायक़ है — वह एक नापने योग्य राशि, क्षेत्रफल, को उन जीवों के लिए एक न नापी जा सकने वाली राशि, विलुप्तियों, में बदल देता है जिनकी किसी ने सूची नहीं बनाई। उसके साथ तीन चेतावनियाँ आती हैं, और वे आँकड़े जितनी ही मायने रखती हैं। भविष्यवाणी अंततः का साम्य है, तत्काल की गिनती नहीं: बचे हिस्से की आबादियाँ दशकों में घटती हैं, अतः विलुप्तियाँ दिखने से पहले बकाया होती हैं — विलुप्ति ऋण। मॉडल मान लेता है कि खोया क्षेत्रफल बेतरतीब नमूना है, जबकि सफ़ाई पहले समतल और उपजाऊ ज़मीन लेती है। और वह जातियों को नाम दिए बिना गिनता है, अतः वह किसी ऐसी व्यापक जाति को जो और कहीं बची रहती है, ऐसी स्थानिक जाति से अलग नहीं बता सकता जो नहीं बचती। उन शर्तों के बिना कोई संख्या दिखने से कम कहती है। (25 क्षेत्रफल का अंश सीधे काम में लेता है और घातांक भूल जाता है।)",
+        mr: "S हे A^0.5 च्या समानुपाती असल्याने, क्षेत्रफळ एक-चतुर्थांश केल्याने जाती मोजणी एक-चतुर्थांशाच्या वर्गमुळाने गुणली जाते, जे निम्मे आहे: 100/2 = 50 टक्के. अधिवासाचा तीन-चतुर्थांश गमावणे जातींचा निम्मा हिस्सा घेते, आणि हेच अख्खे कारण आहे की हे नाते ठेवण्याजोगे आहे — ते एक मोजण्याजोगी राशी, क्षेत्रफळ, ज्या जीवांची कोणी सूची बनवली नाही त्यांच्यासाठी एका न मोजता येणाऱ्या राशीत, विलुप्तींत, बदलते. त्यासोबत तीन इशारे येतात, आणि ते आकड्याइतकेच महत्त्वाचे आहेत. भाकीत अखेरचा समतोल आहे, तात्काळ मोजणी नाही: उरलेल्या भागातल्या लोकसंख्या दशकांत घटतात, म्हणून विलुप्ती दिसण्याआधी बाकी असतात — विलुप्ती कर्ज. प्रतिमान गृहीत धरते की हरवलेले क्षेत्रफळ यादृच्छिक नमुना आहे, तर साफसफाई आधी सपाट आणि सुपीक जमीन घेते. आणि ते जातींना नाव न देता मोजते, म्हणून ते इतरत्र टिकणाऱ्या व्यापक जातीला न टिकणाऱ्या स्थानिक जातीहून वेगळे सांगू शकत नाही. त्या अटींविना कोणतीही संख्या दिसण्याहून कमी सांगते. (25 क्षेत्रफळाचा अंश थेट वापरते आणि घातांक विसरते.)",
       },
     },
   ],

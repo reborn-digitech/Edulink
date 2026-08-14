@@ -2514,8 +2514,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 371
-  chapters / 6,716 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 373
+  chapters / 6,772 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -3077,6 +3077,33 @@ navigation" means the actual list rather than one somebody maintained by hand.
   condition turns it into confirmation, then adds character displacement as
   the testable follow-on. Verify clean, warnings steady at 34, suite green:
   87 files, 1485 tests.
+
+  **Class 12 Biology then closed at thirteen chapters** — the last two, 56
+  questions: Ecosystem and Biodiversity and Conservation, both with
+  numerics. The Ecosystem L5 derives the three-or-four-link limit from
+  arithmetic rather than from any rule about who eats whom, and then makes
+  the point the question is really after: the tenfold loss applies to
+  transfers UPWARD and not to sharing WITHIN a level, so an ecosystem can be
+  arbitrarily wide and only a few levels deep — which is exactly the shape
+  of a real food web. The L6 resolves the inverted pyramid of biomass by
+  separating a standing stock from a flow: phytoplankton turn over some
+  fifty times a year and fish once in several, so a snapshot of mass
+  compares a fast-turnover level with a slow one and says nothing about the
+  energy that passed between them. Biodiversity's L5 explains why
+  fragmenting a habitat destroys species even at constant total area, with
+  four separable mechanisms (range, population size, edge effects,
+  movement) — four small reserves are not one large one. The L6 takes an
+  extinction estimate apart to show it is *derived* rather than counted:
+  the species–area power law converts a measurable area loss into an
+  unmeasurable species loss, and its three limitations follow from the
+  derivation — an equilibrium rather than a timescale (the extinction
+  debt), an assumption of random sampling that clearance violates by taking
+  the fertile lowlands first, and a count that cannot distinguish a
+  widespread species from an endemic. One authoring slip caught before
+  insert: eighteen `wrong` arrays had been typed with a closing brace
+  instead of a bracket; fixed by regex before the file was touched. Verify
+  clean, warnings steady at 34, suite green: 87 files, 1485 tests.
+  **Class 12 Biology: 13/13.**
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)
