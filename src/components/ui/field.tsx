@@ -293,15 +293,18 @@ export function DateField({
 
   // A controlled value changed underneath us — a form reset, or a parent
   // clearing the field. Do not stamp on what somebody is mid-way through typing.
+  //
+  // Adjusted during render, keyed on the PROP's own change rather than on
+  // every render: that is what keeps this from fighting the user keystroke by
+  // keystroke, since typing moves `typed` and leaves `iso` exactly where it was.
   const iso = controlled ? ((value as string) ?? "") : undefined;
-  useEffect(() => {
-    if (iso === undefined) return;
-    if (displayDateToIso(typed) === (iso || null)) return;
-    setTyped(isoToDisplayDate(iso));
-    // `typed` is deliberately absent: this syncs FROM the prop, and including it
-    // would fight the user keystroke by keystroke.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [iso]);
+  const [lastIso, setLastIso] = useState(iso);
+  if (iso !== lastIso) {
+    setLastIso(iso);
+    if (iso !== undefined && displayDateToIso(typed) !== (iso || null)) {
+      setTyped(isoToDisplayDate(iso));
+    }
+  }
 
   const asIso = displayDateToIso(typed);
   const incomplete = typed.trim().length > 0 && asIso === null;

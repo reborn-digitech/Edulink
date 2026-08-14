@@ -17,16 +17,23 @@ const config = [
     rules: {
       // House style throughout: `!` after a check the compiler cannot see.
       "@typescript-eslint/no-non-null-assertion": "off",
-      // React-compiler-era strictness, downgraded deliberately rather than
-      // silenced. `purity` flags Date.now() during render — correct advice
-      // for client components, but every instance here is a SERVER component
-      // rendering once per request, where "now" is exactly what is meant.
-      // `set-state-in-effect` flags the init-from-browser pattern (install
-      // prompt, stored theme, media queries) that client components here use
-      // on purpose. Warnings keep both visible on new code without failing
-      // the build over working patterns; revisit if the React Compiler lands.
-      "react-hooks/purity": "warn",
-      "react-hooks/set-state-in-effect": "warn",
+      // React-compiler-era strictness, kept at full strength.
+      //
+      // Both of these were "warn" while the codebase still had instances, on
+      // the reasoning that the instances were correct as written. Working
+      // through them showed that was true of exactly one — the register
+      // wizard restoring a sessionStorage draft, which carries its own
+      // eslint-disable and the paragraph explaining it. The rest had real
+      // fixes: `Date.now()` in a server component reads better as a named
+      // `isPast`/`isFuture`, connectivity and the user agent belong in
+      // `useSyncExternalStore` rather than mirrored into state by a mount
+      // effect, and syncing from a prop belongs in render, not an effect.
+      //
+      // So they are errors now. A blanket downgrade hides the next real one
+      // behind the ones already argued about; a disable comment at the single
+      // site that needs it does not.
+      "react-hooks/purity": "error",
+      "react-hooks/set-state-in-effect": "error",
     },
   },
 ];

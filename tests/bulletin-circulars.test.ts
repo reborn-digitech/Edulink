@@ -27,7 +27,6 @@ let pupil: ActiveContext;
 let teacher: ActiveContext;
 let parent: ActiveContext;
 let parentUserId: string;
-let pupilMembershipId: string;
 
 function ctxFor(
   userId: string,
@@ -85,7 +84,6 @@ beforeAll(async () => {
   const pupilMembership = await db.membership.create({
     data: { userId: pupilUser.id, schoolId, role: "STUDENT", status: "ACTIVE" },
   });
-  pupilMembershipId = pupilMembership.id;
   const teacherMembership = await db.membership.create({
     data: { userId: teacherUser.id, schoolId, role: "TEACHER", status: "ACTIVE" },
   });

@@ -10,6 +10,7 @@ import { EmptyState } from "@/components/ui/states";
 import { Button } from "@/components/ui/button";
 import { getT } from "@/lib/i18n/server";
 import { getSession } from "@/lib/session";
+import { isFuture } from "@/lib/dates";
 import { ROLE_META, type Role } from "@/lib/constants";
 import type { Translate } from "@/lib/i18n/dictionary";
 
@@ -51,7 +52,7 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
   // One message for every failure mode. Distinguishing "no such invite" from
   // "already used" would let someone probe for valid tokens.
   const usable =
-    invite && invite.status === "PENDING" && invite.expiresAt.getTime() > Date.now();
+    invite && invite.status === "PENDING" && isFuture(invite.expiresAt);
 
   if (!usable) {
     return (

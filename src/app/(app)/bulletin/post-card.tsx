@@ -202,6 +202,16 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
             >
               {pictures.map((item) => (
                 <li key={item.fileId}>
+                  {/*
+                    A plain <img>, deliberately. /api/files/:id checks the
+                    viewer's session and their relationship to the post before
+                    it hands over a byte, and next/image's optimiser fetches on
+                    the server with no session at all — so the optimised variant
+                    would take the route's 404 refusal, or, worse if it were
+                    ever let through, cache one child's photograph somewhere
+                    that check no longer runs.
+                  */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`/api/files/${item.fileId}`}
                     alt={item.alt}

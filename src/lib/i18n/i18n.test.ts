@@ -288,7 +288,8 @@ describe("t", () => {
   });
 
   it("falls back when the key is missing outright, not merely blank", () => {
-    const { nav, ...withoutNav } = DICTIONARIES.hi;
+    const withoutNav: Record<string, unknown> = { ...DICTIONARIES.hi };
+    delete withoutNav.nav;
     expect(resolve(withoutNav as Dictionary, "nav.practice")).toBe("Practice");
   });
 

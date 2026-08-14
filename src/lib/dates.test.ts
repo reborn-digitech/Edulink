@@ -6,8 +6,11 @@ import {
   dateKeyRange,
   displayDateToIso,
   isDateKey,
+  isFuture,
+  isPast,
   isTeachingDay,
   isWeekend,
+  isWithin,
   isoToDisplayDate,
   parseDateOnly,
   zonedStartOfDay,
@@ -312,5 +315,39 @@ describe("⚠ day-first dates", () => {
     expect(isoToDisplayDate(null)).toBe("");
     expect(isoToDisplayDate(undefined)).toBe("");
     expect(isoToDisplayDate("not-a-date")).toBe("");
+  });
+});
+
+describe("isPast / isFuture / isWithin", () => {
+  // Every case pins `now` explicitly. These read the clock by default, and a
+  // test that let them do so would pass today and fail on a slow machine at
+  // midnight — the exact bug the fixed instant is here to rule out.
+  const now = new Date("2026-08-13T12:00:00Z");
+
+  it("splits gone-by from still-ahead at the instant itself", () => {
+    expect(isPast(new Date("2026-08-13T11:59:59Z"), now)).toBe(true);
+    expect(isFuture(new Date("2026-08-13T12:00:01Z"), now)).toBe(true);
+  });
+
+  it("⚠ calls the exact instant NEITHER past nor future", () => {
+    // An invite expiring exactly now is not yet expired, and a lesson starting
+    // exactly now is no longer cancellable. Both fall out of strict
+    // comparisons, and both would be wrong if either used >= or <=.
+    const dead_on = new Date("2026-08-13T12:00:00Z");
+    expect(isPast(dead_on, now)).toBe(false);
+    expect(isFuture(dead_on, now)).toBe(false);
+  });
+
+  it("counts anything closer than the window as within it", () => {
+    const twoDays = 2 * 86_400_000;
+    expect(isWithin(new Date("2026-08-14T12:00:00Z"), twoDays, now)).toBe(true);
+    expect(isWithin(new Date("2026-08-16T12:00:00Z"), twoDays, now)).toBe(false);
+  });
+
+  it("⚠ counts the already-overdue as within, because it is the urgent case", () => {
+    // "Due soon" badges are the only caller. An assignment that was due last
+    // week is more urgent than one due tomorrow, not less — so the past side
+    // of the window is deliberately open.
+    expect(isWithin(new Date("2026-08-06T12:00:00Z"), 2 * 86_400_000, now)).toBe(true);
   });
 });

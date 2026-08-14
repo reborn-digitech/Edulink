@@ -63,12 +63,6 @@ let admin: ActiveContext;
 let otherSchoolAdmin: ActiveContext;
 let strangerParent: ActiveContext; // a parent with no child in that class
 
-let assignmentId: string;
-let draftAssignmentId: string;
-let submissionId: string;
-let postId: string;
-let pendingPostId: string;
-let otherSchoolAssignmentId: string;
 let ownerClassId: string;
 
 beforeAll(async () => {
@@ -179,9 +173,8 @@ beforeAll(async () => {
       attachments: attach(ASSIGN_FILE),
     },
   });
-  assignmentId = published.id;
 
-  const draft = await db.assignment.create({
+  await db.assignment.create({
     data: {
       schoolId: riverside.id,
       classId,
@@ -191,9 +184,8 @@ beforeAll(async () => {
       attachments: attach(DRAFT_FILE),
     },
   });
-  draftAssignmentId = draft.id;
 
-  const submission = await db.submission.create({
+  await db.submission.create({
     data: {
       schoolId: riverside.id,
       assignmentId: published.id,
@@ -203,9 +195,8 @@ beforeAll(async () => {
       attachments: attach(SUB_FILE),
     },
   });
-  submissionId = submission.id;
 
-  const approvedPost = await db.post.create({
+  await db.post.create({
     data: {
       schoolId: riverside.id,
       classId,
@@ -218,9 +209,8 @@ beforeAll(async () => {
       media: media(POST_FILE),
     },
   });
-  postId = approvedPost.id;
 
-  const pendingPost = await db.post.create({
+  await db.post.create({
     data: {
       schoolId: riverside.id,
       classId,
@@ -232,13 +222,12 @@ beforeAll(async () => {
       media: media(PENDING_POST_FILE),
     },
   });
-  pendingPostId = pendingPost.id;
 
   const oakClass = await db.class.findFirstOrThrow({ where: { schoolId: oakfield.id } });
   const oakTeacher = await db.membership.findFirstOrThrow({
     where: { schoolId: oakfield.id, role: "TEACHER" },
   });
-  const otherSchoolAssignment = await db.assignment.create({
+  await db.assignment.create({
     data: {
       schoolId: oakfield.id,
       classId: oakClass.id,
@@ -248,7 +237,6 @@ beforeAll(async () => {
       attachments: attach(OTHER_SCHOOL_FILE),
     },
   });
-  otherSchoolAssignmentId = otherSchoolAssignment.id;
 });
 
 afterAll(async () => {

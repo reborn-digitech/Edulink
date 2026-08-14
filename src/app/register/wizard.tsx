@@ -84,12 +84,21 @@ export function RegisterWizard() {
   const [done, setDone] = useState<{ code: string } | null>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
-  /* ---- draft persistence ---- */
+  /* ---- draft persistence ----------------------------------------------------
+   *
+   * A mount effect on purpose, and the one case in this file where setting
+   * state from an effect is right rather than tolerated. sessionStorage does
+   * not exist on the server, so the first HTML has to be the empty form or
+   * hydration would mismatch; and unlike connectivity or the user agent there
+   * is nothing here to subscribe to, because the restored draft is then EDITED
+   * — it is a starting point, not a live external value.
+   */
   useEffect(() => {
     try {
       const saved = sessionStorage.getItem(DRAFT_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setDraft({ ...EMPTY, ...parsed });
         // Come back to the STEP they were on, not step 1 — a refresh
         // mid-wizard used to keep every answer and still lose their place.

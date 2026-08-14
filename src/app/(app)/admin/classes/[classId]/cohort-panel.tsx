@@ -66,12 +66,24 @@ export function CohortPanel({
     setLoading(false);
   }
 
+  // Loading once when the picker opens; typing is debounced separately below.
+  // The fetch runs inside the async closure rather than as a bare `load()` call
+  // so nothing sets state before the first await, and `cancelled` drops a slow
+  // first page that only arrives after the picker has been closed again.
   useEffect(() => {
     if (!open) return;
-    void load("");
-    // Loading once when the picker opens; typing is debounced separately below.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open]);
+    let cancelled = false;
+    void (async () => {
+      setLoading(true);
+      const result = await searchCandidates(classId, "");
+      if (cancelled) return;
+      setCandidates(result.candidates as Candidate[]);
+      setLoading(false);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [open, classId]);
 
   function onType(value: string) {
     setQuery(value);

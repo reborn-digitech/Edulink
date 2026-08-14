@@ -227,6 +227,36 @@ export function relativeTime(target: Date, now: Date = new Date()): string {
   return rtf.format(Math.round(diffMs / 1000), "second");
 }
 
+/* ---- has it happened yet? -------------------------------------------------
+ *
+ * Three one-liners that exist to be IMPORTED rather than inlined. Every caller
+ * is a server component deciding whether to render an expiry notice or a
+ * cancel button, and `Date.now()` written inline there is flagged as impure —
+ * correct advice for a client component that may re-render at any moment, and
+ * beside the point for a server component that renders once per request, where
+ * "now" is precisely what is meant. Naming the comparison says which of the two
+ * is going on, and reads better than a getTime() subtraction either way.
+ */
+
+/** Already gone by: an expired invite, a finished lesson. */
+export function isPast(instant: Date, now: Date = new Date()): boolean {
+  return instant.getTime() < now.getTime();
+}
+
+/** Still ahead: a booking that may yet be cancelled, an invite still good. */
+export function isFuture(instant: Date, now: Date = new Date()): boolean {
+  return instant.getTime() > now.getTime();
+}
+
+/**
+ * Closer than `ms` away — and DELIBERATELY true for anything already past,
+ * because the callers are "due soon" badges, and an overdue assignment is the
+ * most urgent case rather than an excluded one.
+ */
+export function isWithin(instant: Date, ms: number, now: Date = new Date()): boolean {
+  return instant.getTime() - now.getTime() < ms;
+}
+
 /** Age in whole years, used for the consent age gate. */
 export function ageInYears(birthdate: Date, now: Date = new Date()): number {
   let age = now.getUTCFullYear() - birthdate.getUTCFullYear();

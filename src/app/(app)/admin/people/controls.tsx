@@ -42,7 +42,14 @@ export function DirectoryControls({
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Keep in step when the URL changes from elsewhere (back button, Clear).
-  useEffect(() => setText(query), [query]);
+  // Adjusted DURING render rather than in an effect: React re-runs this
+  // component before touching the DOM, so the box never paints the stale text
+  // for a frame the way an effect would have it.
+  const [lastQuery, setLastQuery] = useState(query);
+  if (query !== lastQuery) {
+    setLastQuery(query);
+    setText(query);
+  }
 
   function navigate(
     next: Partial<{ q: string; role: string; classId: string; sort: string; status: string }>,

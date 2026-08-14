@@ -75,7 +75,6 @@ let expertProfileId: string;
 let otherExpertProfileId: string;
 let unpublishedProfileId: string;
 let studentMembershipId: string;
-let riversideId: string;
 let createdThreadIds: string[] = [];
 
 async function makeExpert(email: string, published: boolean) {
@@ -99,7 +98,6 @@ beforeAll(async () => {
     where: { name: "Riverside Primary School" },
   });
   const oakfield = await db.school.findFirstOrThrow({ where: { name: "Oakfield Academy" } });
-  riversideId = riverside.id;
 
   const priya = await db.user.findUniqueOrThrow({ where: { email: "priya@riverside.school" } });
   const tom = await db.user.findUniqueOrThrow({ where: { email: "tom@riverside.school" } });

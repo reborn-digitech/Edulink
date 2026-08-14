@@ -41,7 +41,6 @@ const PARENT_EMAIL = "record.parent@zzrecord.test";
 let oldSchoolId: string;
 let newSchoolId: string;
 let oldClassId: string;
-let newClassId: string;
 let admin: ActiveContext;
 
 let pupilUserId: string;
@@ -100,13 +99,11 @@ beforeAll(async () => {
       update: {},
     })
   ).id;
-  newClassId = (
-    await db.class.upsert({
-      where: { joinCode: "ZZZ-REC-NEW" },
-      create: { schoolId: newSchoolId, name: "ZZ Rec New", gradeLevel: "6", joinCode: "ZZZ-REC-NEW" },
-      update: {},
-    })
-  ).id;
+  await db.class.upsert({
+    where: { joinCode: "ZZZ-REC-NEW" },
+    create: { schoolId: newSchoolId, name: "ZZ Rec New", gradeLevel: "6", joinCode: "ZZZ-REC-NEW" },
+    update: {},
+  });
 
   const adminUser = await db.user.upsert({
     where: { email: ADMIN_EMAIL },

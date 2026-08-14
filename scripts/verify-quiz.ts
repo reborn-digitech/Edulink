@@ -80,7 +80,6 @@ const errors: string[] = [];
 const warnings: string[] = [];
 let checkedByMachine = 0;
 let reviewedByHuman = 0;
-let answerNotRestated = 0;
 let numericButUnchecked = 0;
 const unchecked: string[] = [];
 const translationCounts: Record<string, number> = {};
@@ -97,7 +96,77 @@ function fail(where: string, message: string) {
    The arithmetic evaluator and option-number reader live in quiz-arith.ts,
    SHARED with the generator — one evaluation, so the generator's proof and
    this verifier's proof can never drift apart.
+
+   What follows is NOT shared: two readers used only by the heuristics below.
+   They exist to keep those warnings honest, and a heuristic that is wrong in
+   the verifier is a nuisance, whereas a heuristic that is wrong in the
+   generator would be a lie about a proof.
    -------------------------------------------------------------------------- */
+
+/**
+ * The number an option states, WHEN THE OPTION IS A NUMERIC ANSWER.
+ *
+ * `numberIn` pulls the first numeric token out of anything, which is right for
+ * the arithmetic check — there `checkExpr` has already declared the intent. It
+ * is wrong for the heuristics: "'The tanker delivered water on only 4 of the
+ * last 30 days'" is a sentence, and "2 → 1 → 3" is an ordering, and neither has
+ * an answer whose value a solution could be expected to restate. Both used to
+ * be warned about, and both warnings were noise.
+ *
+ * A numeric answer is the number and, at most, a short unit or label around it
+ * — "224 litres", "x = 7", "−3". So: strip the number, and what is left must
+ * carry no OTHER digit and must be short. Prose fails on both counts.
+ */
+function numericAnswer(option: string): number | null {
+  const value = numberIn(option);
+  if (value === null) return null;
+  const normalised = option.replace(/[−–—]/g, "-").replace(/,/g, "");
+  const remainder = normalised.replace(/-?\d+(?:\.\d+)?(?:\/\d+(?:\.\d+)?)?/, "");
+  if (/\d/.test(remainder)) return null;
+  if (remainder.trim().length > 24) return null;
+  return value;
+}
+
+/** 0–12 written out, plus the ordinals and once/twice/thrice prose reaches for. */
+const NUMBER_WORDS: Record<number, string[]> = {
+  0: ["zero", "none"],
+  1: ["one", "once", "first"],
+  2: ["two", "twice", "second"],
+  3: ["three", "thrice", "third"],
+  4: ["four", "fourth"],
+  5: ["five", "fifth"],
+  6: ["six", "sixth"],
+  7: ["seven", "seventh"],
+  8: ["eight", "eighth"],
+  9: ["nine", "ninth"],
+  10: ["ten", "tenth"],
+  11: ["eleven", "eleventh"],
+  12: ["twelve", "twelfth"],
+};
+
+/**
+ * Does the solution state the answer in words rather than digits?
+ *
+ * "How many lines of symmetry does the letter A have?" is answered 1 and
+ * solved "One — the vertical line down its middle". The working lands exactly
+ * where the answer says; only the spelling differs. Thirty solutions in this
+ * bank read that way, and thirty false alarms is how a warning stops being
+ * read at all.
+ *
+ * CAPPED AT TWELVE, and that ceiling is the point rather than a convenience.
+ * Prose spells out small counts and prints large ones, so above twelve a digit
+ * is a fair thing to demand — which leaves the check's teeth exactly where the
+ * bug it was written for lived: an answer marked 90 and worked through to 94.
+ * Below twelve it does lose a little bite, since a solution may say "one" of
+ * something else entirely; that is the price of the thirty, and it is worth
+ * paying, because a warning nobody reads catches nothing at all.
+ */
+function statedInWords(answer: number, solutionText: string): boolean {
+  if (!Number.isInteger(answer)) return false;
+  const words = NUMBER_WORDS[answer];
+  if (!words) return false;
+  return words.some((word) => new RegExp(`\\b${word}\\b`, "i").test(solutionText));
+}
 
 function verifyTopic(file: string, topic: TopicFile) {
   const where = file;
@@ -227,7 +296,7 @@ function verifyTopic(file: string, topic: TopicFile) {
      * at all.
      */
     const answerText = question.choices[question.answerIndex]!;
-    const answerNumber = numberIn(answerText);
+    const answerNumber = numericAnswer(answerText);
 
     if (answerNumber !== null) {
       // A solution that never states its own answer is the shape of the bug
@@ -239,14 +308,14 @@ function verifyTopic(file: string, topic: TopicFile) {
       // digit is a decimal point and is not. Getting this wrong made the check
       // fire on every answer that happened to finish a sentence, which is most
       // of them — a warning that cries wolf is a warning nobody reads.
-      const restated = new RegExp(
-        `(^|[^0-9.])${token.replace(".", "\\.")}(\\.(?![0-9])|[^0-9.]|$)`,
-      ).test(solutionText);
+      const restated =
+        new RegExp(`(^|[^0-9.])${token.replace(".", "\\.")}(\\.(?![0-9])|[^0-9.]|$)`).test(
+          solutionText,
+        ) || statedInWords(answerNumber, solutionText);
       if (!restated) {
         warnings.push(
           `${at}: the marked answer is ${token}, but the solution never states that number — check the working lands where the answer says`,
         );
-        answerNotRestated++;
       }
 
       // Numeric, and nothing evaluates it. These are exactly the questions that

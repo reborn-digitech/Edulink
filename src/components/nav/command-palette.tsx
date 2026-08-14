@@ -101,7 +101,13 @@ export function CommandPalette({
     );
   }, [entries, query]);
 
-  useEffect(() => setCursor(0), [query]);
+  // Back to the top whenever the search changes — adjusted during render, so
+  // the highlight never sits on a row the new results no longer contain.
+  const [lastQuery, setLastQuery] = useState(query);
+  if (query !== lastQuery) {
+    setLastQuery(query);
+    setCursor(0);
+  }
 
   useEffect(() => {
     if (!open) return;

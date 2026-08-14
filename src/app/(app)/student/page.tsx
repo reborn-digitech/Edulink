@@ -8,7 +8,7 @@ import {
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { getAttendanceSummary, computeStreak } from "@/lib/attendance";
-import { addDaysToKey, formatDateKey, relativeTime, todayKey } from "@/lib/dates";
+import { addDaysToKey, formatDateKey, isWithin, relativeTime, todayKey } from "@/lib/dates";
 import { formatMilli } from "@/lib/validation";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
@@ -157,9 +157,7 @@ export default async function StudentHome({
           ) : (
             <ul className="space-y-2">
               {upcoming.map((assignment) => {
-                const dueSoon =
-                  assignment.dueAt &&
-                  assignment.dueAt.getTime() - Date.now() < 2 * 86_400_000;
+                const dueSoon = assignment.dueAt && isWithin(assignment.dueAt, 2 * 86_400_000);
                 return (
                   <li
                     key={assignment.id}

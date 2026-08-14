@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { ArrowRightIcon, CheckCircleIcon, HandHeartIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { DateField, SelectField, TextField } from "@/components/ui/field";
-import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { claimChild } from "@/app/join/actions";
 import { GUARDIAN_RELATIONS } from "@/lib/constants";
@@ -32,7 +31,6 @@ export function ClaimChildForm({
 }) {
   const t = useT();
   const router = useRouter();
-  const { toast } = useToast();
   const [pending, startTransition] = useTransition();
 
   const [studentCode, setStudentCode] = useState("");

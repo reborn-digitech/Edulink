@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { BookingThread } from "./thread";
 import { CancelButton } from "./cancel-button";
 import { getT } from "@/lib/i18n/server";
-import { formatUtcMoment } from "@/lib/dates";
+import { formatUtcMoment, isFuture } from "@/lib/dates";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -68,7 +68,7 @@ export default async function BookingPage({
         session be quietly marked as never having taken place. A past booking
         simply stops offering the control.
       */}
-      {booking.status !== "CANCELLED" && booking.startsAt.getTime() > Date.now() && (
+      {booking.status !== "CANCELLED" && isFuture(booking.startsAt) && (
         <CancelButton bookingId={booking.id} />
       )}
 

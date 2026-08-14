@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import { notFound } from "next/navigation";
 import { requireRole, AccessError } from "@/lib/tenancy";
-import { db } from "@/lib/db";
 import { assessmentsFor, assertMayWriteCards, cardsForClass } from "@/lib/report-cards";
 import { Builder } from "./builder";
 import { getT } from "@/lib/i18n/server";

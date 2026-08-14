@@ -3197,8 +3197,6 @@ function waysToMultiplyAndDivide(): TopicFileOut {
   const rand = rng("maths-5-ways-to-multiply-and-divide");
   const qs: OutQuestion[] = [];
 
-  const litres = (n: number) => ({ en: `${n} litres`, hi: `${n} लीटर`, mr: `${n} लिटर` });
-
   qs.push(
     numQ(
       {

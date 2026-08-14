@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { flushQueue, onQueueEvent } from "@/lib/offline-queue";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
@@ -15,10 +15,30 @@ import { useT } from "@/lib/i18n";
  *
  * Renders nothing except the connectivity banner.
  */
+
+/* ---- connectivity as a subscription, not a mirror --------------------------
+ *
+ * `navigator.onLine` is external state that the browser already publishes
+ * events for, so it is read through `useSyncExternalStore` rather than copied
+ * into a useState by a mount effect. The server snapshot is `true` — an
+ * offline banner is not a thing to render into HTML nobody could have fetched
+ * while offline — and React swaps in the real value on hydration.
+ */
+function subscribeToConnectivity(onChange: () => void): () => void {
+  window.addEventListener("online", onChange);
+  window.addEventListener("offline", onChange);
+  return () => {
+    window.removeEventListener("online", onChange);
+    window.removeEventListener("offline", onChange);
+  };
+}
+const readConnectivity = () => navigator.onLine;
+const assumeOnline = () => true;
+
 export function AppRuntime() {
   const t = useT();
   const { toast } = useToast();
-  const [online, setOnline] = useState(true);
+  const online = useSyncExternalStore(subscribeToConnectivity, readConnectivity, assumeOnline);
   const [updateReady, setUpdateReady] = useState(false);
   const wasOffline = useRef(false);
 
@@ -54,13 +74,16 @@ export function AppRuntime() {
     };
   }, []);
 
-  /* ---- connectivity ---- */
+  /* ---- what a reconnection COSTS: flushing the outbox, and saying so -------
+   *
+   * The banner itself is handled by the subscription above. This effect exists
+   * for the side of reconnecting that is not a render: emptying the offline
+   * queue and telling the user what went out, or what still has not.
+   */
   useEffect(() => {
-    setOnline(navigator.onLine);
     wasOffline.current = !navigator.onLine;
 
     const goOnline = async () => {
-      setOnline(true);
       if (!wasOffline.current) return;
       wasOffline.current = false;
 
@@ -82,7 +105,6 @@ export function AppRuntime() {
     };
 
     const goOffline = () => {
-      setOnline(false);
       wasOffline.current = true;
     };
 
@@ -97,7 +119,7 @@ export function AppRuntime() {
       window.removeEventListener("online", goOnline);
       window.removeEventListener("offline", goOffline);
     };
-  }, [toast]);
+  }, [toast, t]);
 
   /* ---- outbox rejections need to be seen, not swallowed ---- */
   useEffect(
@@ -113,7 +135,7 @@ export function AppRuntime() {
           });
         }
       }),
-    [toast],
+    [toast, t],
   );
 
   /* ---- install prompt capture ---- */

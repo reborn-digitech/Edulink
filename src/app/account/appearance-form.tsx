@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
+import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { FloppyDiskIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
@@ -73,7 +73,13 @@ export function AppearanceForm({
   }
 
   // Keep in step if the server row changes under us (e.g. another tab saved).
-  useEffect(() => setDraft(prefs), [prefs]);
+  // Compared by identity, which is what the effect this replaced did too: a
+  // fresh server render hands down a new object, an unchanged one does not.
+  const [lastPrefs, setLastPrefs] = useState(prefs);
+  if (prefs !== lastPrefs) {
+    setLastPrefs(prefs);
+    setDraft(prefs);
+  }
 
   function update(patch: Partial<UserPrefs>) {
     const next = { ...draft, ...patch };

@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { InviteRowActions } from "./row-actions";
-import { relativeTime } from "@/lib/dates";
+import { isPast, relativeTime } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { ROLE_META, type Role } from "@/lib/constants";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
@@ -105,7 +105,7 @@ export default async function InvitesPage({
       ) : (
         <ul className="space-y-2">
           {invites.map((invite) => {
-            const expired = invite.expiresAt.getTime() < Date.now();
+            const expired = isPast(invite.expiresAt);
             return (
               <li key={invite.id}>
                 <Card>

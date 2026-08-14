@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { DeviceMobileIcon, ShareNetworkIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { useT } from "@/lib/i18n";
@@ -18,11 +18,26 @@ type BeforeInstallPromptEvent = Event & {
  * demand. iOS never fires that event at all, so Safari users get the manual
  * Add to Home Screen instructions instead of a button that would do nothing.
  */
+/* ---- which browser this is, read once and never again ----------------------
+ *
+ * The user agent cannot change under a running page, so `subscribe` has
+ * nothing to listen to and returns a no-op unsubscribe. That is not a misuse
+ * of `useSyncExternalStore`: what is wanted here is the third argument, a
+ * SERVER snapshot of `false`, which is how a browser-only fact gets read
+ * without the hydration mismatch that a lazy useState initialiser would cause
+ * and without the mount effect that would set state for a render.
+ */
+const subscribeToNothing = () => () => {};
+const readIsIosSafari = () =>
+  /iphone|ipad|ipod/i.test(navigator.userAgent) &&
+  /^((?!chrome|android|crios|fxios).)*safari/i.test(navigator.userAgent);
+const notOnTheServer = () => false;
+
 export function InstallButton({ className }: { className?: string }) {
   const t = useT();
   const [installable, setInstallable] = useState(false);
   const [standalone, setStandalone] = useState(false);
-  const [iosHint, setIosHint] = useState(false);
+  const iosHint = useSyncExternalStore(subscribeToNothing, readIsIosSafari, notOnTheServer);
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
@@ -36,10 +51,6 @@ export function InstallButton({ className }: { className?: string }) {
       );
     };
     check();
-
-    const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent);
-    const isSafari = /^((?!chrome|android|crios|fxios).)*safari/i.test(navigator.userAgent);
-    setIosHint(isIos && isSafari);
 
     window.addEventListener("edulink:installable", check);
     window.addEventListener("appinstalled", check);

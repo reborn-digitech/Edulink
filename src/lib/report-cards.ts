@@ -204,7 +204,7 @@ export async function generateCards(
   classId: string,
   input: GenerateInput,
 ): Promise<GenerateResult> {
-  const klass = await assertMayWriteCards(ctx, classId);
+  await assertMayWriteCards(ctx, classId);
 
   const title = input.title.trim().slice(0, 120);
   if (title.length < 2) return { ok: false, errorKey: "reportCards.giveName" };
