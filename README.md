@@ -2514,8 +2514,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 373
-  chapters / 6,772 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 377
+  chapters / 6,828 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -3104,6 +3104,34 @@ navigation" means the actual list rather than one somebody maintained by hand.
   instead of a bracket; fixed by regex before the file was touched. Verify
   clean, warnings steady at 34, suite green: 87 files, 1485 tests.
   **Class 12 Biology: 13/13.**
+
+  **Class 12 Maths opened** in `g12-maths.ts` — the last family in the bank.
+  Four chapters, 56 questions: Relations and Functions, Inverse
+  Trigonometric Functions, Matrices, Determinants. The shape is the one
+  every maths chapter uses — fourteen questions, levels 1,1,1,2,2,2,3,3,4,
+  4,5,5,6,6, every answer proven by a `checkExpr`. What is new at this level
+  is that most chapters are about OPERATIONS ON WHOLE OBJECTS rather than on
+  numbers, so the quantity computed is increasingly a fact about a
+  structure: the order of a product is fixed before any entry is worked
+  out, and a determinant is one number that decides whether a whole system
+  has a solution. Threads worth naming: the counting chapter shows each
+  condition cutting the EXPONENT rather than the total (all relations 2⁹,
+  symmetric 2⁶, reflexive-and-symmetric 2³) and then explains why
+  transitivity cannot be counted that way at all — it constrains triples,
+  not pairs, which is exactly why equivalence relations have to be reached
+  through partitions instead. The inverse-trig L6 shows an addition formula
+  with a condition attached handing over a wrong answer silently when
+  ab > 1. Matrices ends on why squaring a matrix is nothing like squaring
+  its entries (entrywise squaring exists — the Hadamard product — but it
+  does not compose transformations). Determinants closes on A × adj A =
+  |A| I as the single identity the inverse formula is only a rearrangement
+  of. One duplicate caught by the verifier: an f(x) = 2x + 3 evaluation
+  collided with the same stem in Class 11. Rather than rename it, it was
+  replaced with a genuinely Class-12 question — how many functions from a
+  3-set to a 3-set are *not* one-one — since a chapter about classifying
+  mappings should not be repeating a Class-11 evaluation in the first
+  place. Verify clean, warnings back to 34, suite green: 87 files, 1485
+  tests.
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)

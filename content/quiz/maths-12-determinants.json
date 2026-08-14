@@ -1,0 +1,513 @@
+{
+  "slug": "maths-12-determinants",
+  "subject": "MATHS",
+  "classLevel": 12,
+  "chapter": "Chapter 4 — Determinants",
+  "name": "Determinants",
+  "summary": "One number extracted from a square array that decides whether the whole thing can be undone: why scaling a matrix raises the determinant to the power of its size rather than merely multiplying it, why two proportional rows force the value to zero, and why A × adj A = |A| I is the single identity the formula for an inverse is only a rearrangement of.",
+  "position": 4,
+  "translations": {
+    "hi": {
+      "name": "सारणिक",
+      "summary": "किसी वर्ग सरणी से निकाली गई एक संख्या जो तय करती है कि पूरी चीज़ उलटी जा सकती है या नहीं: आव्यूह को स्केल करना सारणिक को उसके आकार की घात तक क्यों उठाता है, केवल गुणा क्यों नहीं करता, दो समानुपाती पंक्तियाँ मान को शून्य होने पर क्यों मजबूर करती हैं, और A × adj A = |A| I वह अकेली सर्वसमिका क्यों है जिसकी प्रतिलोम का सूत्र महज़ पुनर्व्यवस्था है।"
+    },
+    "mr": {
+      "name": "निर्धारक",
+      "summary": "एखाद्या वर्ग सारणीतून काढलेली एक संख्या जी ठरवते की अख्खी गोष्ट उलटवता येईल का: मॅट्रिक्स प्रमाणित करणे निर्धारकाला त्याच्या आकाराच्या घातापर्यंत का नेते, केवळ गुणत का नाही, दोन समानुपाती ओळी मूल्याला शून्य होण्यास का भाग पाडतात, आणि A × adj A = |A| I ही ती एकटी एकात्मता का आहे जिची प्रतिलोमाचे सूत्र केवळ पुनर्रचना आहे."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the determinant of [[3, 1], [2, 4]]?",
+      "choices": [
+        "12",
+        "10",
+        "2",
+        "14"
+      ],
+      "answerIndex": 1,
+      "solution": "For a 2 × 2 matrix the determinant is the product of the main diagonal minus the product of the other: 3 × 4 − 1 × 2 = 10. The subtraction is the whole of it, and adding instead gives 14 — which is the commonest wrong answer here and the reason the minus sign is worth saying out loud rather than assuming. (14 adds the two products.)",
+      "checkExpr": "3*4-1*2",
+      "translations": {
+        "hi": {
+          "stem": "[[3, 1], [2, 4]] का सारणिक क्या है?",
+          "choices": [
+            "12",
+            "10",
+            "2",
+            "14"
+          ],
+          "solution": "किसी 2 × 2 आव्यूह के लिए सारणिक मुख्य विकर्ण का गुणनफल घटा दूसरे का गुणनफल है: 3 × 4 − 1 × 2 = 10. घटाना ही पूरी बात है, और उसके बजाय जोड़ने पर 14 मिलता है — जो यहाँ का सबसे आम ग़लत उत्तर है और यही कारण है कि ऋण चिह्न को मान लेने के बजाय कह देना चाहिए। (14 दोनों गुणनफल जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "[[3, 1], [2, 4]] चा निर्धारक किती?",
+          "choices": [
+            "12",
+            "10",
+            "2",
+            "14"
+          ],
+          "solution": "एखाद्या 2 × 2 मॅट्रिक्ससाठी निर्धारक म्हणजे मुख्य विकर्णाचा गुणाकार वजा दुसऱ्याचा गुणाकार: 3 × 4 − 1 × 2 = 10. वजाबाकीच अख्खी गोष्ट आहे, आणि त्याऐवजी बेरीज केल्यास 14 मिळते — जे इथले सर्वांत सामान्य चुकीचे उत्तर आहे आणि हेच कारण की ऋण चिन्ह गृहीत धरण्याऐवजी सांगावे. (14 दोन्ही गुणाकार जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the determinant of the 3 × 3 identity matrix?",
+      "choices": [
+        "9",
+        "0",
+        "3",
+        "1"
+      ],
+      "answerIndex": 3,
+      "solution": "1 × 1 = 1. The identity is diagonal with every diagonal entry equal to 1, and the determinant of a diagonal matrix is the product of those entries. The value matters: a determinant of 1 means the transformation preserves area or volume exactly, which is what one would expect of a matrix that changes nothing at all. (3 counts the diagonal entries instead of multiplying them.)",
+      "checkExpr": "1*1",
+      "translations": {
+        "hi": {
+          "stem": "3 × 3 तत्समक आव्यूह का सारणिक क्या है?",
+          "choices": [
+            "9",
+            "0",
+            "3",
+            "1"
+          ],
+          "solution": "1 × 1 = 1. तत्समक विकर्ण है और उसकी हर विकर्ण प्रविष्टि 1 है, और किसी विकर्ण आव्यूह का सारणिक उन प्रविष्टियों का गुणनफल है। मान मायने रखता है: 1 का सारणिक बताता है कि रूपांतरण क्षेत्रफल या आयतन को ठीक-ठीक बचाए रखता है, और ऐसे आव्यूह से यही अपेक्षा होगी जो कुछ बदलता ही नहीं। (3 विकर्ण प्रविष्टियों का गुणा करने के बजाय उन्हें गिन लेता है।)"
+        },
+        "mr": {
+          "stem": "3 × 3 तत्समक मॅट्रिक्सचा निर्धारक किती?",
+          "choices": [
+            "9",
+            "0",
+            "3",
+            "1"
+          ],
+          "solution": "1 × 1 = 1. तत्समक विकर्ण आहे आणि त्याची प्रत्येक विकर्ण नोंद 1 आहे, आणि एखाद्या विकर्ण मॅट्रिक्सचा निर्धारक त्या नोंदींचा गुणाकार आहे. मूल्य महत्त्वाचे आहे: 1 चा निर्धारक सांगतो की रूपांतरण क्षेत्रफळ वा घनफळ अचूक टिकवते, आणि अशा मॅट्रिक्सकडून हीच अपेक्षा असेल जो काहीही बदलतच नाही. (3 विकर्ण नोंदींचा गुणाकार करण्याऐवजी त्या मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the determinant of [[5, 0], [0, 3]]?",
+      "choices": [
+        "8",
+        "15",
+        "0",
+        "2"
+      ],
+      "answerIndex": 1,
+      "solution": "5 × 3 − 0 × 0 = 15. With a diagonal matrix the second product is zero and only the diagonal contributes, so the determinant is simply the product of the diagonal entries. There is a geometric reading: this matrix stretches by 5 in one direction and 3 in the other, and a unit square becomes a rectangle of area 15. (8 adds the diagonal entries.)",
+      "checkExpr": "5*3",
+      "translations": {
+        "hi": {
+          "stem": "[[5, 0], [0, 3]] का सारणिक क्या है?",
+          "choices": [
+            "8",
+            "15",
+            "0",
+            "2"
+          ],
+          "solution": "5 × 3 − 0 × 0 = 15. विकर्ण आव्यूह में दूसरा गुणनफल शून्य होता है और केवल विकर्ण योगदान देता है, अतः सारणिक बस विकर्ण प्रविष्टियों का गुणनफल है। एक ज्यामितीय पाठ भी है: यह आव्यूह एक दिशा में 5 और दूसरी में 3 से खींचता है, और इकाई वर्ग 15 क्षेत्रफल का आयत बन जाता है। (8 विकर्ण प्रविष्टियाँ जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "[[5, 0], [0, 3]] चा निर्धारक किती?",
+          "choices": [
+            "8",
+            "15",
+            "0",
+            "2"
+          ],
+          "solution": "5 × 3 − 0 × 0 = 15. विकर्ण मॅट्रिक्समध्ये दुसरा गुणाकार शून्य असतो आणि केवळ विकर्ण योगदान देतो, म्हणून निर्धारक फक्त विकर्ण नोंदींचा गुणाकार आहे. एक भौमितिक वाचनही आहे: हा मॅट्रिक्स एका दिशेने 5 आणि दुसरीत 3 ने ताणतो, आणि एकक चौरस 15 क्षेत्रफळाचा आयत बनतो. (8 विकर्ण नोंदी जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A 2 × 2 matrix has determinant 4. One of its rows is multiplied by 3. What is the new determinant?",
+      "choices": [
+        "4",
+        "7",
+        "12",
+        "36"
+      ],
+      "answerIndex": 2,
+      "solution": "4 × 3 = 12. Multiplying a single row by a scalar multiplies the whole determinant by that scalar, because every term in the expansion contains exactly one entry from that row. Note carefully that this is one row, not the whole matrix — multiplying every row by 3 would multiply the determinant by 3 twice over, giving 36. (36 scales both rows instead of one.)",
+      "checkExpr": "4*3",
+      "translations": {
+        "hi": {
+          "stem": "किसी 2 × 2 आव्यूह का सारणिक 4 है। उसकी एक पंक्ति को 3 से गुणा किया जाता है। नया सारणिक क्या है?",
+          "choices": [
+            "4",
+            "7",
+            "12",
+            "36"
+          ],
+          "solution": "4 × 3 = 12. किसी एक पंक्ति को अदिश से गुणा करना पूरे सारणिक को उसी अदिश से गुणा कर देता है, क्योंकि प्रसार के हर पद में उस पंक्ति की ठीक एक प्रविष्टि होती है। ध्यान से देखो कि यह एक पंक्ति है, पूरा आव्यूह नहीं — हर पंक्ति को 3 से गुणा करने पर सारणिक 3 से दो बार गुणा होता और 36 मिलता। (36 एक के बजाय दोनों पंक्तियाँ स्केल कर देता है।)"
+        },
+        "mr": {
+          "stem": "एका 2 × 2 मॅट्रिक्सचा निर्धारक 4 आहे. त्याची एक ओळ 3 ने गुणली जाते. नवा निर्धारक किती?",
+          "choices": [
+            "4",
+            "7",
+            "12",
+            "36"
+          ],
+          "solution": "4 × 3 = 12. एखादी एक ओळ अदिशाने गुणणे अख्ख्या निर्धारकाला त्याच अदिशाने गुणते, कारण विस्ताराच्या प्रत्येक पदात त्या ओळीची नेमकी एक नोंद असते. काळजीपूर्वक पाहा की ही एक ओळ आहे, अख्खा मॅट्रिक्स नाही — प्रत्येक ओळ 3 ने गुणल्यास निर्धारक 3 ने दोनदा गुणला जाईल आणि 36 मिळेल. (36 एकाऐवजी दोन्ही ओळी प्रमाणित करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the determinant of a matrix in which two rows are identical?",
+      "choices": [
+        "2",
+        "1",
+        "0",
+        "-1"
+      ],
+      "answerIndex": 2,
+      "solution": "7 − 7 = 0. Swapping two rows changes the sign of a determinant; but if the two rows are identical the swap changes nothing at all, so the determinant equals its own negative and must therefore be zero. The geometric reading is just as short: two identical rows means the vectors are not independent, so they span no area at all. (1 gives the identity's value, which has no identical rows.)",
+      "checkExpr": "7-7",
+      "translations": {
+        "hi": {
+          "stem": "ऐसे आव्यूह का सारणिक क्या है जिसकी दो पंक्तियाँ समरूप हैं?",
+          "choices": [
+            "2",
+            "1",
+            "0",
+            "-1"
+          ],
+          "solution": "7 − 7 = 0. दो पंक्तियाँ बदलने से सारणिक का चिह्न बदल जाता है; पर यदि दोनों पंक्तियाँ समरूप हों तो बदलने से कुछ भी नहीं बदलता, अतः सारणिक अपने ही ऋण के बराबर है और इसलिए शून्य होना ही चाहिए। ज्यामितीय पाठ उतना ही छोटा है: दो समरूप पंक्तियों का अर्थ है सदिश स्वतंत्र नहीं, अतः वे कोई क्षेत्रफल घेरते ही नहीं। (1 तत्समक का मान देता है, जिसमें कोई समरूप पंक्तियाँ नहीं।)"
+        },
+        "mr": {
+          "stem": "अशा मॅट्रिक्सचा निर्धारक किती ज्याच्या दोन ओळी सारख्या आहेत?",
+          "choices": [
+            "2",
+            "1",
+            "0",
+            "-1"
+          ],
+          "solution": "7 − 7 = 0. दोन ओळी बदलल्याने निर्धारकाचे चिन्ह बदलते; पण जर दोन्ही ओळी सारख्या असतील तर बदलण्याने काहीही बदलत नाही, म्हणून निर्धारक स्वतःच्याच ऋणाबरोबर आहे आणि म्हणून शून्य असलाच पाहिजे. भौमितिक वाचन तितकेच लहान आहे: दोन सारख्या ओळींचा अर्थ सदिश स्वतंत्र नाहीत, म्हणून ते कोणतेही क्षेत्रफळ व्यापतच नाहीत. (1 तत्समकाचे मूल्य देते, ज्यात कोणत्याही सारख्या ओळी नाहीत.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the determinant of [[2, 3], [4, 6]]?",
+      "choices": [
+        "12",
+        "24",
+        "0",
+        "6"
+      ],
+      "answerIndex": 2,
+      "solution": "2 × 6 − 3 × 4 = 12 − 12 = 0. The reason is visible before any arithmetic: the second row is exactly twice the first, so the rows are proportional and therefore not independent. A determinant of zero means the matrix has no inverse and the corresponding system of equations has either no solution or infinitely many — never exactly one. Spotting a proportional row saves the calculation entirely. (24 adds the products rather than subtracting.)",
+      "checkExpr": "2*6-3*4",
+      "translations": {
+        "hi": {
+          "stem": "[[2, 3], [4, 6]] का सारणिक क्या है?",
+          "choices": [
+            "12",
+            "24",
+            "0",
+            "6"
+          ],
+          "solution": "2 × 6 − 3 × 4 = 12 − 12 = 0. कारण किसी भी गणित से पहले दिख जाता है: दूसरी पंक्ति ठीक पहली की दुगुनी है, अतः पंक्तियाँ समानुपाती हैं और इसलिए स्वतंत्र नहीं। शून्य सारणिक का अर्थ है कि आव्यूह का कोई प्रतिलोम नहीं और तदनुरूप समीकरण निकाय का या तो कोई हल नहीं या अनंत — कभी ठीक एक नहीं। समानुपाती पंक्ति पहचान लेना पूरी गणना बचा देता है। (24 घटाने के बजाय गुणनफल जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "[[2, 3], [4, 6]] चा निर्धारक किती?",
+          "choices": [
+            "12",
+            "24",
+            "0",
+            "6"
+          ],
+          "solution": "2 × 6 − 3 × 4 = 12 − 12 = 0. कारण कोणत्याही गणितापूर्वी दिसते: दुसरी ओळ नेमकी पहिलीच्या दुप्पट आहे, म्हणून ओळी समानुपाती आहेत आणि म्हणून स्वतंत्र नाहीत. शून्य निर्धारकाचा अर्थ मॅट्रिक्सला कोणताही प्रतिलोम नाही आणि त्याअनुषंगिक समीकरण संचाला एकतर कोणतेही उत्तर नाही वा अनंत — कधीही नेमके एक नाही. समानुपाती ओळ ओळखणे अख्खी गणना वाचवते. (24 वजा करण्याऐवजी गुणाकार जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the area, in square units, of the triangle with vertices (0, 0), (4, 0) and (0, 6)?",
+      "choices": [
+        "6",
+        "24",
+        "12",
+        "10"
+      ],
+      "answerIndex": 2,
+      "solution": "4 × 6 / 2 = 12. The determinant formula for the area of a triangle reduces here to half the base times the height, because two sides lie along the axes. The determinant version is worth knowing because it works for any three points, and because a determinant of zero says the three points are collinear — the triangle has collapsed to a line. That single test for collinearity is what makes the formula more than a shortcut. (24 forgets to halve the product.)",
+      "checkExpr": "4*6/2",
+      "translations": {
+        "hi": {
+          "stem": "शीर्षों (0, 0), (4, 0) और (0, 6) वाले त्रिभुज का क्षेत्रफल, वर्ग इकाइयों में, क्या है?",
+          "choices": [
+            "6",
+            "24",
+            "12",
+            "10"
+          ],
+          "solution": "4 × 6 / 2 = 12. त्रिभुज के क्षेत्रफल का सारणिक सूत्र यहाँ आधा आधार गुणा ऊँचाई पर सिमट जाता है, क्योंकि दो भुजाएँ अक्षों के अनुदिश हैं। सारणिक वाला रूप जानने लायक़ है क्योंकि वह किन्हीं भी तीन बिंदुओं के लिए चलता है, और क्योंकि शून्य सारणिक कहता है कि तीनों बिंदु संरेख हैं — त्रिभुज ढहकर रेखा हो गया। संरेखता की वही अकेली जाँच सूत्र को शॉर्टकट से अधिक बनाती है। (24 गुणनफल को आधा करना भूल जाता है।)"
+        },
+        "mr": {
+          "stem": "शिरोबिंदू (0, 0), (4, 0) आणि (0, 6) असलेल्या त्रिकोणाचे क्षेत्रफळ, चौरस एककांत, किती?",
+          "choices": [
+            "6",
+            "24",
+            "12",
+            "10"
+          ],
+          "solution": "4 × 6 / 2 = 12. त्रिकोणाच्या क्षेत्रफळाचे निर्धारक सूत्र इथे अर्धा पाया गुणिले उंची इथवर आक्रसते, कारण दोन भुजा अक्षांच्या दिशेने आहेत. निर्धारक आवृत्ती जाणण्याजोगी आहे कारण ती कोणत्याही तीन बिंदूंसाठी चालते, आणि कारण शून्य निर्धारक सांगतो की तिन्ही बिंदू सरेख आहेत — त्रिकोण कोसळून रेषा झाला. सरेखतेची तीच एकटी चाचणी सूत्राला शॉर्टकटहून अधिक बनवते. (24 गुणाकार निम्मा करायला विसरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A is a 2 × 2 matrix with |A| = 5. What is |2A|?",
+      "choices": [
+        "20",
+        "10",
+        "40",
+        "5"
+      ],
+      "answerIndex": 0,
+      "solution": "Multiplying the whole matrix by 2 multiplies each of its 2 rows by 2, so the determinant is multiplied by 2 twice: 5 × 4 = 20. The general rule is |kA| = kⁿ|A| for an n × n matrix, and the exponent is the size of the matrix rather than anything about k. Answering 10 by scaling the determinant once is the standard error, and it comes from treating the determinant as if it were linear in the matrix, which it is not. (10 multiplies the determinant by 2 only once.)",
+      "checkExpr": "5*4",
+      "translations": {
+        "hi": {
+          "stem": "A एक 2 × 2 आव्यूह है जिसका |A| = 5 है। |2A| क्या है?",
+          "choices": [
+            "20",
+            "10",
+            "40",
+            "5"
+          ],
+          "solution": "पूरे आव्यूह को 2 से गुणा करना उसकी 2 पंक्तियों में से हर एक को 2 से गुणा करता है, अतः सारणिक 2 से दो बार गुणा होता है: 5 × 4 = 20. सामान्य नियम n × n आव्यूह के लिए |kA| = kⁿ|A| है, और घातांक आव्यूह का आकार है, k के बारे में कुछ नहीं। सारणिक को एक बार स्केल कर 10 उत्तर देना मानक ग़लती है, और वह सारणिक को आव्यूह में रैखिक मानने से आती है, जो वह नहीं है। (10 सारणिक को 2 से केवल एक बार गुणा करता है।)"
+        },
+        "mr": {
+          "stem": "A हा 2 × 2 मॅट्रिक्स आहे ज्याचा |A| = 5 आहे. |2A| किती?",
+          "choices": [
+            "20",
+            "10",
+            "40",
+            "5"
+          ],
+          "solution": "अख्खा मॅट्रिक्स 2 ने गुणणे त्याच्या 2 ओळींपैकी प्रत्येकीला 2 ने गुणते, म्हणून निर्धारक 2 ने दोनदा गुणला जातो: 5 × 4 = 20. सर्वसाधारण नियम n × n मॅट्रिक्ससाठी |kA| = kⁿ|A| आहे, आणि घातांक मॅट्रिक्सचा आकार आहे, k बद्दल काहीही नाही. निर्धारक एकदा प्रमाणित करून 10 उत्तर देणे ही प्रमाणित चूक आहे, आणि ती निर्धारकाला मॅट्रिक्समध्ये रेषीय मानण्यातून येते, जो तो नाही. (10 निर्धारकाला 2 ने केवळ एकदा गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A is a 3 × 3 matrix with |A| = 3. What is |adj A|?",
+      "choices": [
+        "9",
+        "3",
+        "27",
+        "1"
+      ],
+      "answerIndex": 0,
+      "solution": "For an n × n matrix, |adj A| = |A|ⁿ⁻¹, so here it is 3² = 3 × 3 = 9. The rule follows from A × adj A = |A| I: taking determinants of both sides gives |A| × |adj A| = |A|ⁿ, and dividing by |A| leaves the result. Deriving it from that identity is much safer than memorising an exponent, because the identity itself is the one worth carrying. (27 uses the exponent n instead of n − 1.)",
+      "checkExpr": "3*3",
+      "translations": {
+        "hi": {
+          "stem": "A एक 3 × 3 आव्यूह है जिसका |A| = 3 है। |adj A| क्या है?",
+          "choices": [
+            "9",
+            "3",
+            "27",
+            "1"
+          ],
+          "solution": "किसी n × n आव्यूह के लिए |adj A| = |A|ⁿ⁻¹, अतः यहाँ वह 3² = 3 × 3 = 9 है। नियम A × adj A = |A| I से निकलता है: दोनों ओर का सारणिक लेने पर |A| × |adj A| = |A|ⁿ मिलता है, और |A| से भाग देने पर परिणाम बचता है। उस सर्वसमिका से निकालना किसी घातांक को रटने से कहीं सुरक्षित है, क्योंकि साथ रखने लायक़ स्वयं वही सर्वसमिका है। (27 n − 1 के बजाय घातांक n काम में लेता है।)"
+        },
+        "mr": {
+          "stem": "A हा 3 × 3 मॅट्रिक्स आहे ज्याचा |A| = 3 आहे. |adj A| किती?",
+          "choices": [
+            "9",
+            "3",
+            "27",
+            "1"
+          ],
+          "solution": "एखाद्या n × n मॅट्रिक्ससाठी |adj A| = |A|ⁿ⁻¹, म्हणून इथे तो 3² = 3 × 3 = 9 आहे. नियम A × adj A = |A| I मधून निघतो: दोन्ही बाजूंचा निर्धारक घेतल्यास |A| × |adj A| = |A|ⁿ मिळते, आणि |A| ने भागल्यास निकाल उरतो. त्या एकात्मतेतून काढणे एखादा घातांक पाठ करण्याहून कितीतरी सुरक्षित आहे, कारण सोबत ठेवण्याजोगी स्वतः तीच एकात्मता आहे. (27 n − 1 ऐवजी घातांक n वापरते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A is a square matrix with |A| = 4. What is |A⁻¹|?",
+      "choices": [
+        "0.25",
+        "-4",
+        "4",
+        "16"
+      ],
+      "answerIndex": 0,
+      "solution": "1/4 = 0.25. Since A × A⁻¹ = I and the determinant of a product is the product of the determinants, |A| × |A⁻¹| = |I| = 1, so |A⁻¹| = 1/|A|. Notice a consequence: if |A| were zero the equation would demand that zero times something equals one, which is impossible — so a matrix with determinant zero has no inverse at all. That is why the determinant is the test for invertibility rather than merely a number associated with the matrix. (4 gives the determinant of A rather than of its inverse.)",
+      "checkExpr": "1/4",
+      "translations": {
+        "hi": {
+          "stem": "A एक वर्ग आव्यूह है जिसका |A| = 4 है। |A⁻¹| क्या है?",
+          "choices": [
+            "0.25",
+            "-4",
+            "4",
+            "16"
+          ],
+          "solution": "1/4 = 0.25. चूँकि A × A⁻¹ = I और किसी गुणनफल का सारणिक सारणिकों का गुणनफल है, |A| × |A⁻¹| = |I| = 1, अतः |A⁻¹| = 1/|A|. एक परिणाम पर ध्यान दो: यदि |A| शून्य होता तो समीकरण माँगता कि शून्य गुणा कुछ एक के बराबर हो, जो असंभव है — अतः शून्य सारणिक वाले आव्यूह का कोई प्रतिलोम है ही नहीं। इसीलिए सारणिक आव्यूह से जुड़ी महज़ एक संख्या न होकर व्युत्क्रमणीयता की जाँच है। (4 प्रतिलोम के बजाय A का सारणिक देता है।)"
+        },
+        "mr": {
+          "stem": "A हा वर्ग मॅट्रिक्स आहे ज्याचा |A| = 4 आहे. |A⁻¹| किती?",
+          "choices": [
+            "0.25",
+            "-4",
+            "4",
+            "16"
+          ],
+          "solution": "1/4 = 0.25. A × A⁻¹ = I असल्याने आणि एखाद्या गुणाकाराचा निर्धारक निर्धारकांचा गुणाकार असल्याने, |A| × |A⁻¹| = |I| = 1, म्हणून |A⁻¹| = 1/|A|. एका परिणामाकडे लक्ष द्या: जर |A| शून्य असता तर समीकरण मागेल की शून्य गुणिले काहीतरी एकबरोबर असावे, जे अशक्य आहे — म्हणून शून्य निर्धारक असलेल्या मॅट्रिक्सला कोणताही प्रतिलोम आहेच नाही. म्हणूनच निर्धारक मॅट्रिक्सशी जोडलेली केवळ एक संख्या नसून व्यस्तनीयतेची चाचणी आहे. (4 प्रतिलोमाऐवजी A चा निर्धारक देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A is a 3 × 3 matrix with |A| = 2. What is |2A|?",
+      "choices": [
+        "6",
+        "8",
+        "16",
+        "4"
+      ],
+      "answerIndex": 2,
+      "solution": "Each of the 3 rows is multiplied by 2, so the determinant picks up a factor of 2³ = 8: 2 × 8 = 16. Compare the earlier 2 × 2 case, where the same scaling gave a factor of 4 — the exponent tracks the size of the matrix, not the scalar. There is a geometric reading that makes it memorable: doubling every coordinate of a solid doubles each of its three dimensions and so multiplies its volume by eight, and a determinant is exactly a volume scale factor. (4 doubles the determinant once.)",
+      "checkExpr": "2*8",
+      "translations": {
+        "hi": {
+          "stem": "A एक 3 × 3 आव्यूह है जिसका |A| = 2 है। |2A| क्या है?",
+          "choices": [
+            "6",
+            "8",
+            "16",
+            "4"
+          ],
+          "solution": "तीनों पंक्तियों में से हर एक 2 से गुणा होती है, अतः सारणिक 2³ = 8 का गुणक उठा लेता है: 2 × 8 = 16. पहले वाले 2 × 2 मामले से तुलना करो, जहाँ उसी स्केलिंग ने 4 का गुणक दिया — घातांक आव्यूह का आकार पकड़ता है, अदिश नहीं। एक ज्यामितीय पाठ इसे यादगार बना देता है: किसी ठोस के हर निर्देशांक को दुगुना करना उसकी तीनों विमाएँ दुगुनी कर देता है और इसलिए उसका आयतन आठ गुना, और सारणिक ठीक आयतन का स्केल गुणक है। (4 सारणिक को एक बार दुगुना कर देता है।)"
+        },
+        "mr": {
+          "stem": "A हा 3 × 3 मॅट्रिक्स आहे ज्याचा |A| = 2 आहे. |2A| किती?",
+          "choices": [
+            "6",
+            "8",
+            "16",
+            "4"
+          ],
+          "solution": "तिन्ही ओळींपैकी प्रत्येक 2 ने गुणली जाते, म्हणून निर्धारक 2³ = 8 चा गुणक उचलतो: 2 × 8 = 16. आधीच्या 2 × 2 प्रकरणाशी तुलना करा, जिथे त्याच प्रमाणीकरणाने 4 चा गुणक दिला — घातांक मॅट्रिक्सचा आकार पकडतो, अदिश नाही. एक भौमितिक वाचन याला संस्मरणीय बनवते: एखाद्या घनाच्या प्रत्येक निर्देशांकाला दुप्पट करणे त्याच्या तिन्ही मिती दुप्पट करते आणि म्हणून त्याचे घनफळ आठपट, आणि निर्धारक नेमका घनफळाचा प्रमाण गुणक आहे. (4 निर्धारक एकदा दुप्पट करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A is a 3 × 3 matrix with |A| = 5. What is |3A|?",
+      "choices": [
+        "45",
+        "125",
+        "135",
+        "15"
+      ],
+      "answerIndex": 2,
+      "solution": "The scalar is cubed because there are 3 rows: 5 × 3³ = 5 × 27 = 135. Getting the two numbers into the right places is the whole exercise — 125 comes from cubing the determinant instead of the scalar, and 15 from scaling only once. The rule |kA| = kⁿ|A| has the scalar raised to the size and the determinant left alone, and a wrong answer here is nearly always the two swapped. (125 cubes the determinant instead of the scalar.)",
+      "checkExpr": "5*27",
+      "translations": {
+        "hi": {
+          "stem": "A एक 3 × 3 आव्यूह है जिसका |A| = 5 है। |3A| क्या है?",
+          "choices": [
+            "45",
+            "125",
+            "135",
+            "15"
+          ],
+          "solution": "अदिश का घन इसलिए लिया जाता है कि 3 पंक्तियाँ हैं: 5 × 3³ = 5 × 27 = 135. दोनों संख्याओं को सही जगह पहुँचाना ही पूरा अभ्यास है — 125 अदिश के बजाय सारणिक का घन करने से आता है, और 15 केवल एक बार स्केल करने से। नियम |kA| = kⁿ|A| में अदिश आकार तक उठाया जाता है और सारणिक अछूता छूटता है, और यहाँ का ग़लत उत्तर लगभग हमेशा दोनों की अदला-बदली है। (125 अदिश के बजाय सारणिक का घन कर देता है।)"
+        },
+        "mr": {
+          "stem": "A हा 3 × 3 मॅट्रिक्स आहे ज्याचा |A| = 5 आहे. |3A| किती?",
+          "choices": [
+            "45",
+            "125",
+            "135",
+            "15"
+          ],
+          "solution": "अदिशाचा घन यासाठी घेतला जातो की 3 ओळी आहेत: 5 × 3³ = 5 × 27 = 135. दोन्ही संख्या योग्य जागी पोहोचवणे हाच अख्खा सराव आहे — 125 अदिशाऐवजी निर्धारकाचा घन करण्यातून येते, आणि 15 केवळ एकदा प्रमाणित करण्यातून. नियम |kA| = kⁿ|A| मध्ये अदिश आकारापर्यंत नेला जातो आणि निर्धारक अस्पर्श उरतो, आणि इथले चुकीचे उत्तर जवळपास नेहमी दोघांची अदलाबदल आहे. (125 अदिशाऐवजी निर्धारकाचा घन करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A is a 3 × 3 matrix with |A| = 2. What is the determinant of A × adj A?",
+      "choices": [
+        "16",
+        "8",
+        "4",
+        "2"
+      ],
+      "answerIndex": 1,
+      "solution": "There are two routes and they should agree, which is itself the check. Directly: A × adj A = |A| I = 2I, a diagonal matrix with three 2s down the diagonal, and its determinant is 2 × 2 × 2 = 8. By the multiplication rule: |A| × |adj A| = 2 × 2² = 8. Both give the same answer because |kI| = kⁿ for an n × n matrix, and the exponent is again the size. Note that A × adj A = |A| I is the identity the whole apparatus rests on: dividing both sides by |A| gives A × (adj A / |A|) = I, which is the definition of the inverse and the reason A⁻¹ = adj A / |A|. The formula for the inverse is not a separate fact to memorise; it is this identity rearranged. (2 quotes |A| itself rather than the determinant of the product.)",
+      "checkExpr": "2*2*2",
+      "translations": {
+        "hi": {
+          "stem": "A एक 3 × 3 आव्यूह है जिसका |A| = 2 है। A × adj A का सारणिक क्या है?",
+          "choices": [
+            "16",
+            "8",
+            "4",
+            "2"
+          ],
+          "solution": "दो रास्ते हैं और उन्हें मिलना चाहिए, और वही स्वयं जाँच है। सीधे: A × adj A = |A| I = 2I, विकर्ण पर तीन 2 वाला विकर्ण आव्यूह, और उसका सारणिक 2 × 2 × 2 = 8 है। गुणन नियम से: |A| × |adj A| = 2 × 2² = 8. दोनों वही उत्तर देते हैं क्योंकि n × n आव्यूह के लिए |kI| = kⁿ, और घातांक फिर आकार है। ध्यान दो कि A × adj A = |A| I वही सर्वसमिका है जिस पर पूरा तंत्र टिका है: दोनों ओर |A| से भाग देने पर A × (adj A / |A|) = I मिलता है, जो प्रतिलोम की परिभाषा है और यही कारण कि A⁻¹ = adj A / |A|. प्रतिलोम का सूत्र रटने का अलग तथ्य नहीं; वह यही सर्वसमिका पुनर्व्यवस्थित की हुई है। (2 गुणनफल के सारणिक के बजाय स्वयं |A| बता देता है।)"
+        },
+        "mr": {
+          "stem": "A हा 3 × 3 मॅट्रिक्स आहे ज्याचा |A| = 2 आहे. A × adj A चा निर्धारक किती?",
+          "choices": [
+            "16",
+            "8",
+            "4",
+            "2"
+          ],
+          "solution": "दोन मार्ग आहेत आणि त्यांनी जुळावे, आणि तीच स्वतः तपासणी आहे. थेट: A × adj A = |A| I = 2I, विकर्णावर तीन 2 असलेला विकर्ण मॅट्रिक्स, आणि त्याचा निर्धारक 2 × 2 × 2 = 8 आहे. गुणाकार नियमाने: |A| × |adj A| = 2 × 2² = 8. दोन्ही तेच उत्तर देतात कारण n × n मॅट्रिक्ससाठी |kI| = kⁿ, आणि घातांक पुन्हा आकार आहे. लक्षात घ्या की A × adj A = |A| I हीच ती एकात्मता आहे जिच्यावर अख्खी यंत्रणा टिकली आहे: दोन्ही बाजू |A| ने भागल्यास A × (adj A / |A|) = I मिळते, जी प्रतिलोमाची व्याख्या आहे आणि हेच कारण की A⁻¹ = adj A / |A|. प्रतिलोमाचे सूत्र पाठ करण्याचे वेगळे सत्य नाही; ते हीच एकात्मता पुनर्रचित केलेली आहे. (2 गुणाकाराच्या निर्धारकाऐवजी स्वतः |A| सांगते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A is a 3 × 3 matrix with |A| = 2. What is |adj(adj A)|?",
+      "choices": [
+        "16",
+        "8",
+        "4",
+        "64"
+      ],
+      "answerIndex": 0,
+      "solution": "Apply the adjugate rule twice rather than reaching for a formula. First, |adj A| = |A|ⁿ⁻¹ = 2² = 4. Now adj A is itself a 3 × 3 matrix with determinant 4, so applying the same rule to it gives |adj(adj A)| = 4² = 16, which is 2 × 8. The general result is |A|^((n−1)²), and here (n − 1)² = 4, so 2⁴ = 16 — the same answer, reached by a route that has to be remembered rather than derived. Two habits are worth taking from this. First, when a rule can be applied twice, applying it twice is safer than looking up a compound formula, because each step is one you can already check. Second, notice how fast the exponent grows: at n = 4 the exponent is 9, so the adjugate of the adjugate of a modest matrix has an enormous determinant. Growth like that is a signal that the operation is doing something more drastic than its name suggests. (4 stops after applying the rule once.)",
+      "checkExpr": "2*8",
+      "translations": {
+        "hi": {
+          "stem": "A एक 3 × 3 आव्यूह है जिसका |A| = 2 है। |adj(adj A)| क्या है?",
+          "choices": [
+            "16",
+            "8",
+            "4",
+            "64"
+          ],
+          "solution": "किसी सूत्र तक पहुँचने के बजाय सहखंडज नियम दो बार लगाओ। पहले, |adj A| = |A|ⁿ⁻¹ = 2² = 4. अब adj A स्वयं 4 सारणिक वाला 3 × 3 आव्यूह है, अतः उस पर वही नियम लगाने से |adj(adj A)| = 4² = 16 मिलता है, जो 2 × 8 है। सामान्य परिणाम |A|^((n−1)²) है, और यहाँ (n − 1)² = 4, अतः 2⁴ = 16 — वही उत्तर, ऐसे रास्ते से पहुँचा जिसे निकालने के बजाय याद रखना पड़ता है। इससे दो आदतें लेने लायक़ हैं। पहली, जब कोई नियम दो बार लगाया जा सकता हो, तो उसे दो बार लगाना किसी संयुक्त सूत्र को ढूँढ़ने से सुरक्षित है, क्योंकि हर क़दम वही है जिसे तुम पहले से जाँच सकते हो। दूसरी, ध्यान दो कि घातांक कितनी तेज़ी से बढ़ता है: n = 4 पर घातांक 9 है, अतः किसी मामूली आव्यूह के सहखंडज के सहखंडज का सारणिक विशाल होता है। ऐसी वृद्धि संकेत है कि वह संक्रिया अपने नाम के सुझाव से कहीं अधिक कठोर कुछ कर रही है। (4 नियम एक बार लगाकर रुक जाता है।)"
+        },
+        "mr": {
+          "stem": "A हा 3 × 3 मॅट्रिक्स आहे ज्याचा |A| = 2 आहे. |adj(adj A)| किती?",
+          "choices": [
+            "16",
+            "8",
+            "4",
+            "64"
+          ],
+          "solution": "एखाद्या सूत्रापर्यंत पोहोचण्याऐवजी सहखंडज नियम दोनदा लावा. आधी, |adj A| = |A|ⁿ⁻¹ = 2² = 4. आता adj A स्वतः 4 निर्धारक असलेला 3 × 3 मॅट्रिक्स आहे, म्हणून त्यावर तोच नियम लावल्यास |adj(adj A)| = 4² = 16 मिळते, जे 2 × 8 आहे. सर्वसाधारण निकाल |A|^((n−1)²) आहे, आणि इथे (n − 1)² = 4, म्हणून 2⁴ = 16 — तेच उत्तर, अशा मार्गाने पोहोचलेले ज्याला काढण्याऐवजी लक्षात ठेवावे लागते. यातून दोन सवयी घेण्याजोग्या आहेत. पहिली, जेव्हा एखादा नियम दोनदा लावता येईल, तेव्हा तो दोनदा लावणे एखादे संयुक्त सूत्र शोधण्याहून सुरक्षित आहे, कारण प्रत्येक पायरी तीच आहे जी तुम्ही आधीच तपासू शकता. दुसरी, लक्षात घ्या की घातांक किती वेगाने वाढतो: n = 4 वर घातांक 9 आहे, म्हणून एखाद्या माफक मॅट्रिक्सच्या सहखंडजाच्या सहखंडजाचा निर्धारक प्रचंड असतो. अशी वाढ हे संकेत आहे की ती क्रिया आपल्या नावाच्या सुचनेहून कितीतरी अधिक तीव्र काहीतरी करत आहे. (4 नियम एकदा लावून थांबते.)"
+        }
+      }
+    }
+  ]
+}

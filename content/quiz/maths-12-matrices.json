@@ -1,0 +1,513 @@
+{
+  "slug": "maths-12-matrices",
+  "subject": "MATHS",
+  "classLevel": 12,
+  "chapter": "Chapter 3 — Matrices",
+  "name": "Matrices",
+  "summary": "A rectangular array handled as one object: why the order of a product is decided before any entry is worked out, why squaring a matrix is nothing like squaring its entries, and why symmetry does not remove positions but pairs them so that two become a single decision.",
+  "position": 3,
+  "translations": {
+    "hi": {
+      "name": "आव्यूह",
+      "summary": "किसी आयताकार सरणी को एक ही वस्तु की तरह सँभालना: किसी गुणनफल की कोटि कोई प्रविष्टि निकाले जाने से पहले ही क्यों तय हो जाती है, आव्यूह का वर्ग करना उसकी प्रविष्टियों का वर्ग करने जैसा बिलकुल क्यों नहीं, और सममिति स्थान हटाने के बजाय उन्हें क्यों जोड़ देती है ताकि दो एक ही निर्णय बन जाएँ।"
+    },
+    "mr": {
+      "name": "मॅट्रिक्स",
+      "summary": "एखादी आयताकार सारणी एकच वस्तू म्हणून हाताळणे: एखाद्या गुणाकाराची कोटी कोणतीही नोंद काढण्याआधीच का ठरते, मॅट्रिक्सचा वर्ग करणे त्याच्या नोंदींचा वर्ग करण्यासारखे मुळीच का नाही, आणि सममिती जागा काढण्याऐवजी त्यांना का जोडते जेणेकरून दोन एकच निर्णय बनाव्यात."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "How many elements does a matrix of order 3 × 4 contain?",
+      "choices": [
+        "7",
+        "34",
+        "12",
+        "9"
+      ],
+      "answerIndex": 2,
+      "solution": "3 rows of 4 entries each: 3 × 4 = 12. The convention is rows first and columns second, and keeping that order straight matters far beyond counting — the order of a product depends on it, and reading 3 × 4 as four rows of three would give a different shape for everything downstream. (7 adds the two numbers instead of multiplying them.)",
+      "checkExpr": "3*4",
+      "translations": {
+        "hi": {
+          "stem": "3 × 4 कोटि के किसी आव्यूह में कितने अवयव हैं?",
+          "choices": [
+            "7",
+            "34",
+            "12",
+            "9"
+          ],
+          "solution": "4-4 प्रविष्टियों की 3 पंक्तियाँ: 3 × 4 = 12. परिपाटी पहले पंक्तियाँ और फिर स्तंभ है, और उस क्रम को सीधा रखना गिनती से कहीं आगे मायने रखता है — किसी गुणनफल की कोटि उसी पर निर्भर है, और 3 × 4 को तीन-तीन की चार पंक्तियाँ पढ़ने पर आगे की हर चीज़ के लिए भिन्न आकार मिलता। (7 गुणा करने के बजाय दोनों संख्याएँ जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "3 × 4 कोटीच्या एका मॅट्रिक्समध्ये किती घटक आहेत?",
+          "choices": [
+            "7",
+            "34",
+            "12",
+            "9"
+          ],
+          "solution": "4-4 नोंदींच्या 3 ओळी: 3 × 4 = 12. संकेत आधी ओळी आणि मग स्तंभ आहे, आणि तो क्रम सरळ ठेवणे मोजणीहून कितीतरी पुढे महत्त्वाचा आहे — एखाद्या गुणाकाराची कोटी त्यावरच अवलंबून आहे, आणि 3 × 4 ला तीन-तीनच्या चार ओळी वाचल्यास पुढच्या प्रत्येक गोष्टीसाठी वेगळा आकार मिळेल. (7 गुणण्याऐवजी दोन्ही संख्या जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A 2 × 3 matrix is multiplied by a 3 × 5 matrix. How many elements does the product have?",
+      "choices": [
+        "30",
+        "10",
+        "15",
+        "6"
+      ],
+      "answerIndex": 1,
+      "solution": "The product takes the rows of the first and the columns of the second, so its order is 2 × 5 and it has 2 × 5 = 10 elements. The inner numbers, both 3, must match for the product to exist at all, and then they vanish from the answer — they say how long each sum is, not how many sums there are. (15 multiplies the wrong pair, using the inner dimensions.)",
+      "checkExpr": "2*5",
+      "translations": {
+        "hi": {
+          "stem": "किसी 2 × 3 आव्यूह को 3 × 5 आव्यूह से गुणा किया जाता है। गुणनफल में कितने अवयव हैं?",
+          "choices": [
+            "30",
+            "10",
+            "15",
+            "6"
+          ],
+          "solution": "गुणनफल पहले की पंक्तियाँ और दूसरे के स्तंभ लेता है, अतः उसकी कोटि 2 × 5 है और उसमें 2 × 5 = 10 अवयव हैं। भीतरी संख्याएँ, दोनों 3, गुणनफल के होने के लिए मेल खानी ही चाहिए, और फिर वे उत्तर से ग़ायब हो जाती हैं — वे बताती हैं कि हर योग कितना लंबा है, यह नहीं कि कितने योग हैं। (15 भीतरी विमाएँ काम में लेकर ग़लत जोड़ी का गुणा करता है।)"
+        },
+        "mr": {
+          "stem": "एका 2 × 3 मॅट्रिक्सला 3 × 5 मॅट्रिक्सने गुणले जाते. गुणाकारात किती घटक आहेत?",
+          "choices": [
+            "30",
+            "10",
+            "15",
+            "6"
+          ],
+          "solution": "गुणाकार पहिल्याच्या ओळी आणि दुसऱ्याचे स्तंभ घेतो, म्हणून त्याची कोटी 2 × 5 आहे आणि त्यात 2 × 5 = 10 घटक आहेत. आतल्या संख्या, दोन्ही 3, गुणाकार अस्तित्वात असण्यासाठी जुळल्याच पाहिजेत, आणि मग त्या उत्तरातून नाहीशा होतात — त्या सांगतात की प्रत्येक बेरीज किती लांब आहे, किती बेरजा आहेत हे नाही. (15 आतल्या मिती वापरून चुकीच्या जोडीचा गुणाकार करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "For the matrix [[1, 2], [3, 4]], what is the element a₂₁?",
+      "choices": [
+        "4",
+        "1",
+        "3",
+        "2"
+      ],
+      "answerIndex": 2,
+      "solution": "1 + 2 = 3. The subscript reads row first, column second, so a₂₁ is the entry in row 2, column 1, which is 3. Reading it the other way round gives a₁₂ = 2, and since a matrix is generally not symmetric those two are different numbers — which is precisely why the convention has to be fixed rather than guessed. (2 reads the subscripts in the reverse order.)",
+      "checkExpr": "1+2",
+      "translations": {
+        "hi": {
+          "stem": "आव्यूह [[1, 2], [3, 4]] के लिए अवयव a₂₁ क्या है?",
+          "choices": [
+            "4",
+            "1",
+            "3",
+            "2"
+          ],
+          "solution": "1 + 2 = 3. अधोलेख पहले पंक्ति, फिर स्तंभ पढ़ता है, अतः a₂₁ पंक्ति 2, स्तंभ 1 की प्रविष्टि है, जो 3 है। उलटा पढ़ने पर a₁₂ = 2 मिलता है, और चूँकि आव्यूह सामान्यतः सममित नहीं होता, वे दोनों भिन्न संख्याएँ हैं — और ठीक इसीलिए परिपाटी तय करनी पड़ती है, अनुमान से नहीं चलती। (2 अधोलेखों को उलटे क्रम में पढ़ता है।)"
+        },
+        "mr": {
+          "stem": "मॅट्रिक्स [[1, 2], [3, 4]] साठी घटक a₂₁ किती?",
+          "choices": [
+            "4",
+            "1",
+            "3",
+            "2"
+          ],
+          "solution": "1 + 2 = 3. अधोलेख आधी ओळ, मग स्तंभ वाचतो, म्हणून a₂₁ ही ओळ 2, स्तंभ 1 ची नोंद आहे, जी 3 आहे. उलटे वाचल्यास a₁₂ = 2 मिळते, आणि मॅट्रिक्स सामान्यतः सममित नसल्याने त्या दोन्ही वेगळ्या संख्या आहेत — आणि नेमके म्हणूनच संकेत ठरवावा लागतो, अंदाजाने चालत नाही. (2 अधोलेख उलट्या क्रमाने वाचते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "How many different 2 × 2 matrices can be formed whose entries are each either 0 or 1?",
+      "choices": [
+        "32",
+        "16",
+        "4",
+        "8"
+      ],
+      "answerIndex": 1,
+      "solution": "Four positions, two choices each, all independent: 2⁴ = 2 × 8 = 16. The exponent counts the positions and the base counts the options at each, which is the same counting as subsets and as functions — the same structure keeps appearing whenever a fixed number of independent decisions has to be made. (4 counts the positions rather than the arrangements.)",
+      "checkExpr": "2*8",
+      "translations": {
+        "hi": {
+          "stem": "कितने भिन्न 2 × 2 आव्यूह बनाए जा सकते हैं जिनकी हर प्रविष्टि या तो 0 हो या 1?",
+          "choices": [
+            "32",
+            "16",
+            "4",
+            "8"
+          ],
+          "solution": "चार स्थान, हर एक पर दो विकल्प, सब स्वतंत्र: 2⁴ = 2 × 8 = 16. घातांक स्थान गिनता है और आधार हर स्थान पर विकल्प, और यह वही गिनती है जो उपसमुच्चयों और फलनों की है — जब भी नियत संख्या में स्वतंत्र निर्णय लेने हों वही संरचना बार-बार प्रकट होती है। (4 व्यवस्थाओं के बजाय स्थान गिनता है।)"
+        },
+        "mr": {
+          "stem": "किती वेगळे 2 × 2 मॅट्रिक्स बनवता येतील ज्यांची प्रत्येक नोंद एकतर 0 असेल किंवा 1?",
+          "choices": [
+            "32",
+            "16",
+            "4",
+            "8"
+          ],
+          "solution": "चार जागा, प्रत्येकावर दोन पर्याय, सर्व स्वतंत्र: 2⁴ = 2 × 8 = 16. घातांक जागा मोजतो आणि आधार प्रत्येक जागी पर्याय, आणि ही तीच मोजणी आहे जी उपसंचांची आणि फलनांची आहे — जेव्हाही ठराविक संख्येने स्वतंत्र निर्णय घ्यायचे असतील तीच रचना वारंवार प्रकट होते. (4 मांडणींऐवजी जागा मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "What is the trace of the matrix [[2, 5], [7, 4]]?",
+      "choices": [
+        "9",
+        "18",
+        "6",
+        "12"
+      ],
+      "answerIndex": 2,
+      "solution": "The trace is the sum of the diagonal entries: 2 + 4 = 6. The off-diagonal entries 5 and 7 play no part, which is what makes the trace worth having — it survives many operations that change everything else about a matrix, and a quantity that stays put while the object is transformed is usually telling you something structural. (18 sums all four entries.)",
+      "checkExpr": "2+4",
+      "translations": {
+        "hi": {
+          "stem": "आव्यूह [[2, 5], [7, 4]] का ट्रेस क्या है?",
+          "choices": [
+            "9",
+            "18",
+            "6",
+            "12"
+          ],
+          "solution": "ट्रेस विकर्ण प्रविष्टियों का योग है: 2 + 4 = 6. विकर्णेतर प्रविष्टियाँ 5 और 7 कोई भूमिका नहीं निभातीं, और यही ट्रेस को रखने लायक़ बनाता है — वह बहुत सी ऐसी संक्रियाओं में बचा रहता है जो आव्यूह की बाक़ी हर बात बदल देती हैं, और जो राशि वस्तु के रूपांतरित होते हुए भी जमी रहे वह प्रायः कुछ संरचनात्मक बता रही होती है। (18 चारों प्रविष्टियाँ जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "मॅट्रिक्स [[2, 5], [7, 4]] चा ट्रेस किती?",
+          "choices": [
+            "9",
+            "18",
+            "6",
+            "12"
+          ],
+          "solution": "ट्रेस म्हणजे विकर्ण नोंदींची बेरीज: 2 + 4 = 6. विकर्णेतर नोंदी 5 आणि 7 कोणतीही भूमिका बजावत नाहीत, आणि हेच ट्रेसला ठेवण्याजोगे बनवते — तो बऱ्याच अशा क्रियांत टिकतो ज्या मॅट्रिक्सची बाकी प्रत्येक गोष्ट बदलतात, आणि जी राशी वस्तू रूपांतरित होत असतानाही स्थिर राहते ती बहुधा काहीतरी संरचनात्मक सांगत असते. (18 चारही नोंदी जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A matrix has 12 elements. How many different orders are possible for it?",
+      "choices": [
+        "3",
+        "12",
+        "4",
+        "6"
+      ],
+      "answerIndex": 3,
+      "solution": "Each order corresponds to a factor pair of 12, and since order matters (3 × 4 is a different shape from 4 × 3) the count is the number of divisors: 1, 2, 3, 4, 6, 12 — that is 3 × 2 = 6. Turning a question about matrices into a question about divisors is the whole of the work here. (12 counts the elements rather than the orders.)",
+      "checkExpr": "3*2",
+      "translations": {
+        "hi": {
+          "stem": "किसी आव्यूह में 12 अवयव हैं। उसके लिए कितनी भिन्न कोटियाँ संभव हैं?",
+          "choices": [
+            "3",
+            "12",
+            "4",
+            "6"
+          ],
+          "solution": "हर कोटि 12 के किसी गुणनखंड युग्म से मेल खाती है, और चूँकि क्रम मायने रखता है (3 × 4 का आकार 4 × 3 से भिन्न है) गिनती भाजकों की संख्या है: 1, 2, 3, 4, 6, 12 — यानी 3 × 2 = 6. आव्यूहों के प्रश्न को भाजकों के प्रश्न में बदलना ही यहाँ का पूरा काम है। (12 कोटियों के बजाय अवयव गिनता है।)"
+        },
+        "mr": {
+          "stem": "एका मॅट्रिक्समध्ये 12 घटक आहेत. त्याच्यासाठी किती वेगळ्या कोटी शक्य आहेत?",
+          "choices": [
+            "3",
+            "12",
+            "4",
+            "6"
+          ],
+          "solution": "प्रत्येक कोटी 12 च्या एखाद्या अवयव जोडीशी जुळते, आणि क्रम महत्त्वाचा असल्याने (3 × 4 चा आकार 4 × 3 हून वेगळा आहे) मोजणी भाजकांची संख्या आहे: 1, 2, 3, 4, 6, 12 — म्हणजे 3 × 2 = 6. मॅट्रिक्सच्या प्रश्नाचे भाजकांच्या प्रश्नात रूपांतर करणे हेच इथले अख्खे काम आहे. (12 कोटींऐवजी घटक मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "For A = [[1, 2], [3, 4]], what is the element in row 1, column 2 of A + Aᵀ?",
+      "choices": [
+        "2",
+        "5",
+        "4",
+        "6"
+      ],
+      "answerIndex": 1,
+      "solution": "The transpose swaps rows with columns, so the (1,2) entry of Aᵀ is the (2,1) entry of A, which is 3. Adding gives 2 + 3 = 5. Notice that the (2,1) entry of the sum is 3 + 2 = 5 as well, so A + Aᵀ is symmetric — and that holds for any square A, which is why this construction is the standard way of producing a symmetric matrix from an arbitrary one. (4 doubles the original entry, forgetting that the transpose brings a different number.)",
+      "checkExpr": "2+3",
+      "translations": {
+        "hi": {
+          "stem": "A = [[1, 2], [3, 4]] के लिए A + Aᵀ की पंक्ति 1, स्तंभ 2 का अवयव क्या है?",
+          "choices": [
+            "2",
+            "5",
+            "4",
+            "6"
+          ],
+          "solution": "परिवर्त पंक्तियों को स्तंभों से बदल देता है, अतः Aᵀ की (1,2) प्रविष्टि A की (2,1) प्रविष्टि है, जो 3 है। जोड़ने पर 2 + 3 = 5. ध्यान दो कि योग की (2,1) प्रविष्टि भी 3 + 2 = 5 है, अतः A + Aᵀ सममित है — और यह किसी भी वर्ग A के लिए टिकता है, इसीलिए यह रचना किसी मनमाने आव्यूह से सममित आव्यूह बनाने का मानक तरीक़ा है। (4 मूल प्रविष्टि दुगुनी कर देता है, यह भूलकर कि परिवर्त भिन्न संख्या लाता है।)"
+        },
+        "mr": {
+          "stem": "A = [[1, 2], [3, 4]] साठी A + Aᵀ च्या ओळ 1, स्तंभ 2 चा घटक किती?",
+          "choices": [
+            "2",
+            "5",
+            "4",
+            "6"
+          ],
+          "solution": "परिवर्त ओळींना स्तंभांशी बदलतो, म्हणून Aᵀ ची (1,2) नोंद ही A ची (2,1) नोंद आहे, जी 3 आहे. जोडल्यावर 2 + 3 = 5. लक्षात घ्या की बेरजेची (2,1) नोंदही 3 + 2 = 5 आहे, म्हणून A + Aᵀ सममित आहे — आणि हे कोणत्याही वर्ग A साठी टिकते, म्हणूनच ही रचना कोणत्याही मनमानी मॅट्रिक्सपासून सममित मॅट्रिक्स बनवण्याचा प्रमाणित मार्ग आहे. (4 मूळ नोंद दुप्पट करते, हे विसरून की परिवर्त वेगळी संख्या आणतो.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the value of every diagonal element of a skew-symmetric matrix?",
+      "choices": [
+        "0",
+        "2",
+        "1",
+        "-1"
+      ],
+      "answerIndex": 0,
+      "solution": "5 − 5 = 0, and the argument is short enough to give in full. Skew-symmetric means Aᵀ = −A, so every entry satisfies aⱼᵢ = −aᵢⱼ. On the diagonal i and j are the same, so aᵢᵢ = −aᵢᵢ, which forces 2aᵢᵢ = 0 and hence aᵢᵢ = 0. Nothing was assumed except the definition, which is what makes this a proof rather than an observation. (1 gives the identity matrix's diagonal.)",
+      "checkExpr": "5-5",
+      "translations": {
+        "hi": {
+          "stem": "किसी विषम सममित आव्यूह के हर विकर्ण अवयव का मान क्या है?",
+          "choices": [
+            "0",
+            "2",
+            "1",
+            "-1"
+          ],
+          "solution": "5 − 5 = 0, और तर्क इतना छोटा है कि पूरा दिया जा सके। विषम सममित का अर्थ है Aᵀ = −A, अतः हर प्रविष्टि aⱼᵢ = −aᵢⱼ को पूरा करती है। विकर्ण पर i और j वही हैं, अतः aᵢᵢ = −aᵢᵢ, जो 2aᵢᵢ = 0 और इसलिए aᵢᵢ = 0 मजबूर कर देता है। परिभाषा के सिवा कुछ माना नहीं गया, और यही इसे प्रेक्षण नहीं बल्कि उपपत्ति बनाता है। (1 तत्समक आव्यूह का विकर्ण देता है।)"
+        },
+        "mr": {
+          "stem": "एखाद्या विषम सममित मॅट्रिक्सच्या प्रत्येक विकर्ण घटकाचे मूल्य किती?",
+          "choices": [
+            "0",
+            "2",
+            "1",
+            "-1"
+          ],
+          "solution": "5 − 5 = 0, आणि युक्तिवाद इतका लहान आहे की पूर्ण देता येईल. विषम सममित म्हणजे Aᵀ = −A, म्हणून प्रत्येक नोंद aⱼᵢ = −aᵢⱼ पूर्ण करते. विकर्णावर i आणि j तेच आहेत, म्हणून aᵢᵢ = −aᵢᵢ, जे 2aᵢᵢ = 0 आणि म्हणून aᵢᵢ = 0 भाग पाडते. व्याख्येखेरीज काहीही गृहीत धरले गेले नाही, आणि हेच याला निरीक्षण नव्हे तर सिद्धता बनवते. (1 तत्समक मॅट्रिक्सचा विकर्ण देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "How many entries of a 3 × 3 symmetric matrix can be chosen independently?",
+      "choices": [
+        "5",
+        "9",
+        "3",
+        "6"
+      ],
+      "answerIndex": 3,
+      "solution": "The three diagonal entries are free, and of the six off-diagonal entries only three are free because each fixes its mirror image: 3 + 3 = 6. The same counting appeared in the relations chapter for symmetric relations, and it is the same idea — symmetry does not remove positions, it pairs them up so that two positions become one decision. (9 counts every entry as if it were free.)",
+      "checkExpr": "3+3",
+      "translations": {
+        "hi": {
+          "stem": "किसी 3 × 3 सममित आव्यूह की कितनी प्रविष्टियाँ स्वतंत्र रूप से चुनी जा सकती हैं?",
+          "choices": [
+            "5",
+            "9",
+            "3",
+            "6"
+          ],
+          "solution": "तीन विकर्ण प्रविष्टियाँ स्वतंत्र हैं, और छह विकर्णेतर प्रविष्टियों में से केवल तीन स्वतंत्र हैं क्योंकि हर एक अपना दर्पण प्रतिबिंब तय कर देती है: 3 + 3 = 6. वही गिनती संबंध अध्याय में सममित संबंधों के लिए आई थी, और विचार वही है — सममिति स्थान हटाती नहीं, वह उन्हें जोड़ देती है ताकि दो स्थान एक निर्णय बन जाएँ। (9 हर प्रविष्टि को मानो स्वतंत्र गिन लेता है।)"
+        },
+        "mr": {
+          "stem": "एखाद्या 3 × 3 सममित मॅट्रिक्सच्या किती नोंदी स्वतंत्रपणे निवडता येतील?",
+          "choices": [
+            "5",
+            "9",
+            "3",
+            "6"
+          ],
+          "solution": "तीन विकर्ण नोंदी मुक्त आहेत, आणि सहा विकर्णेतर नोंदींपैकी केवळ तीन मुक्त आहेत कारण प्रत्येक आपले आरसा प्रतिबिंब ठरवते: 3 + 3 = 6. तीच मोजणी संबंध प्रकरणात सममित संबंधांसाठी आली होती, आणि कल्पना तीच आहे — सममिती जागा काढत नाही, ती त्यांना जोडते जेणेकरून दोन जागा एक निर्णय बनाव्यात. (9 प्रत्येक नोंद जणू मुक्त मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "How many entries of a 3 × 3 skew-symmetric matrix can be chosen independently?",
+      "choices": [
+        "9",
+        "0",
+        "6",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "6 − 3 = 3. Start from the symmetric count of 6 and remove the three diagonal entries, which are not free at all here — skew-symmetry forces every one of them to be zero. The three off-diagonal couples remain, each a single decision. It is worth noticing that the symmetric and skew-symmetric counts, 6 and 3, add to 9, the number of entries in the whole matrix. That is not a coincidence: every square matrix splits uniquely into a symmetric part and a skew-symmetric part, and the two pieces between them account for exactly the freedom the original had. (6 gives the symmetric count without removing the forced diagonal.)",
+      "checkExpr": "6-3",
+      "translations": {
+        "hi": {
+          "stem": "किसी 3 × 3 विषम सममित आव्यूह की कितनी प्रविष्टियाँ स्वतंत्र रूप से चुनी जा सकती हैं?",
+          "choices": [
+            "9",
+            "0",
+            "6",
+            "3"
+          ],
+          "solution": "6 − 3 = 3. सममित की गिनती 6 से शुरू करो और तीन विकर्ण प्रविष्टियाँ हटा दो, जो यहाँ स्वतंत्र हैं ही नहीं — विषम सममिति उनमें से हर एक को शून्य होने पर मजबूर कर देती है। तीन विकर्णेतर जोड़े बचते हैं, हर एक एक निर्णय। ध्यान देने लायक़ है कि सममित और विषम सममित गिनतियाँ, 6 और 3, जुड़कर 9 होती हैं, जो पूरे आव्यूह की प्रविष्टियों की संख्या है। यह संयोग नहीं: हर वर्ग आव्यूह अनन्य रूप से एक सममित और एक विषम सममित भाग में बँट जाता है, और दोनों टुकड़े मिलकर ठीक उतनी स्वतंत्रता का हिसाब देते हैं जितनी मूल के पास थी। (6 मजबूर विकर्ण हटाए बिना सममित गिनती देता है।)"
+        },
+        "mr": {
+          "stem": "एखाद्या 3 × 3 विषम सममित मॅट्रिक्सच्या किती नोंदी स्वतंत्रपणे निवडता येतील?",
+          "choices": [
+            "9",
+            "0",
+            "6",
+            "3"
+          ],
+          "solution": "6 − 3 = 3. सममितची मोजणी 6 पासून सुरू करा आणि तीन विकर्ण नोंदी काढा, ज्या इथे मुक्त आहेतच नाही — विषम सममिती त्यांच्यापैकी प्रत्येकाला शून्य होण्यास भाग पाडते. तीन विकर्णेतर जोडपी उरतात, प्रत्येक एक निर्णय. लक्षात घेण्याजोगे आहे की सममित आणि विषम सममित मोजण्या, 6 आणि 3, मिळून 9 होतात, जी अख्ख्या मॅट्रिक्सच्या नोंदींची संख्या आहे. हा योगायोग नाही: प्रत्येक वर्ग मॅट्रिक्स अनन्यपणे एका सममित आणि एका विषम सममित भागात विभागतो, आणि दोन्ही तुकडे मिळून नेमक्या तितक्या स्वातंत्र्याचा हिशेब देतात जितके मूळकडे होते. (6 भाग पाडलेला विकर्ण न काढता सममित मोजणी देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A is a 4 × 7 matrix. How many elements does Aᵀ have?",
+      "choices": [
+        "49",
+        "28",
+        "16",
+        "11"
+      ],
+      "answerIndex": 1,
+      "solution": "The transpose is 7 × 4, so it has 7 × 4 = 28 elements — the same as A, since transposing rearranges entries without creating or destroying any. The order changes and the count does not, which is worth stating explicitly because it is the simplest example of an operation that alters the shape of an object while leaving a quantity invariant. (11 adds the dimensions instead of multiplying them.)",
+      "checkExpr": "4*7",
+      "translations": {
+        "hi": {
+          "stem": "A एक 4 × 7 आव्यूह है। Aᵀ में कितने अवयव हैं?",
+          "choices": [
+            "49",
+            "28",
+            "16",
+            "11"
+          ],
+          "solution": "परिवर्त 7 × 4 है, अतः उसमें 7 × 4 = 28 अवयव हैं — A जितने ही, चूँकि परिवर्तन प्रविष्टियों को पुनर्व्यवस्थित करता है, न कोई बनाता है न नष्ट। कोटि बदलती है और गिनती नहीं, और इसे स्पष्ट कहना काम का है क्योंकि यह ऐसी संक्रिया का सबसे सरल उदाहरण है जो किसी वस्तु का आकार बदलती है और कोई राशि अपरिवर्तनीय छोड़ देती है। (11 गुणा करने के बजाय विमाएँ जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "A हा 4 × 7 मॅट्रिक्स आहे. Aᵀ मध्ये किती घटक आहेत?",
+          "choices": [
+            "49",
+            "28",
+            "16",
+            "11"
+          ],
+          "solution": "परिवर्त 7 × 4 आहे, म्हणून त्यात 7 × 4 = 28 घटक आहेत — A इतकेच, कारण परिवर्तन नोंदी पुनर्रचित करते, कोणतीही बनवत नाही वा नष्ट करत नाही. कोटी बदलते आणि मोजणी नाही, आणि हे स्पष्ट सांगणे उपयुक्त आहे कारण हे अशा क्रियेचे सर्वांत सोपे उदाहरण आहे जी एखाद्या वस्तूचा आकार बदलते आणि एखादी राशी अपरिवर्तनीय सोडते. (11 गुणण्याऐवजी मिती जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A 1 × 3 matrix is multiplied by a 3 × 1 matrix. How many elements does the product have?",
+      "choices": [
+        "6",
+        "3",
+        "1",
+        "9"
+      ],
+      "answerIndex": 2,
+      "solution": "The outer dimensions give the order 1 × 1, so 3 − 2 = 1 element. Reverse the two matrices and the product is 3 × 1 times 1 × 3, an order of 3 × 3 with nine elements. The same two matrices, multiplied in the other order, give results of completely different sizes — which is the sharpest possible demonstration that matrix multiplication is not commutative. It is not that AB and BA differ in value; they may not even be the same shape. (9 gives the product taken in the other order.)",
+      "checkExpr": "3-2",
+      "translations": {
+        "hi": {
+          "stem": "किसी 1 × 3 आव्यूह को 3 × 1 आव्यूह से गुणा किया जाता है। गुणनफल में कितने अवयव हैं?",
+          "choices": [
+            "6",
+            "3",
+            "1",
+            "9"
+          ],
+          "solution": "बाहरी विमाएँ 1 × 1 कोटि देती हैं, अतः 3 − 2 = 1 अवयव। दोनों आव्यूह उलट दो और गुणनफल 3 × 1 गुणा 1 × 3 है, यानी नौ अवयवों वाली 3 × 3 कोटि। वही दो आव्यूह, उलटे क्रम में गुणा किए जाने पर, बिलकुल भिन्न आकारों के परिणाम देते हैं — और यह सबसे तीखा संभव प्रदर्शन है कि आव्यूह गुणन क्रमविनिमेय नहीं। बात यह नहीं कि AB और BA मान में भिन्न हैं; वे एक ही आकार के भी नहीं हो सकते। (9 उलटे क्रम में लिया गुणनफल देता है।)"
+        },
+        "mr": {
+          "stem": "एका 1 × 3 मॅट्रिक्सला 3 × 1 मॅट्रिक्सने गुणले जाते. गुणाकारात किती घटक आहेत?",
+          "choices": [
+            "6",
+            "3",
+            "1",
+            "9"
+          ],
+          "solution": "बाहेरच्या मिती 1 × 1 कोटी देतात, म्हणून 3 − 2 = 1 घटक. दोन्ही मॅट्रिक्स उलटा आणि गुणाकार 3 × 1 गुणिले 1 × 3 आहे, म्हणजे नऊ घटकांची 3 × 3 कोटी. तेच दोन मॅट्रिक्स, उलट क्रमाने गुणल्यावर, पूर्णपणे वेगळ्या आकारांचे निकाल देतात — आणि हे सर्वांत तीक्ष्ण शक्य प्रात्यक्षिक आहे की मॅट्रिक्स गुणाकार क्रमविनिमेय नाही. गोष्ट ही नाही की AB आणि BA मूल्यात वेगळी आहेत; ती एकाच आकाराचीही असू शकत नाहीत. (9 उलट क्रमाने घेतलेला गुणाकार देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A is a 3 × 3 matrix in which every entry equals 2. What is the entry in row 1, column 1 of A²?",
+      "choices": [
+        "12",
+        "36",
+        "6",
+        "4"
+      ],
+      "answerIndex": 0,
+      "solution": "The (1,1) entry of a product is the row 1 of the first matrix dotted with column 1 of the second: 2×2 + 2×2 + 2×2 = 2 × 2 × 3 = 12. The tempting answer is 4, on the assumption that squaring a matrix squares its entries. It does not, and the reason is worth being explicit about: matrix multiplication is defined so that it composes the linear transformations the matrices represent, and composition requires summing over an intermediate index. Squaring entrywise would be a different operation altogether — it exists and is called the Hadamard product — but it does not compose transformations and so does not obey the algebra that makes matrices useful. Note also what the 3 is doing: it is the shared inner dimension, so the same matrix pattern in 4 × 4 would give 16. The size of the matrix enters the answer, which is another thing entrywise squaring would never do. (4 squares the entry instead of forming the sum.)",
+      "checkExpr": "2*2*3",
+      "translations": {
+        "hi": {
+          "stem": "A एक 3 × 3 आव्यूह है जिसकी हर प्रविष्टि 2 के बराबर है। A² की पंक्ति 1, स्तंभ 1 की प्रविष्टि क्या है?",
+          "choices": [
+            "12",
+            "36",
+            "6",
+            "4"
+          ],
+          "solution": "किसी गुणनफल की (1,1) प्रविष्टि पहले आव्यूह की पंक्ति 1 का दूसरे के स्तंभ 1 से बिंदु गुणन है: 2×2 + 2×2 + 2×2 = 2 × 2 × 3 = 12. लुभाने वाला उत्तर 4 है, इस धारणा पर कि आव्यूह का वर्ग करना उसकी प्रविष्टियों का वर्ग कर देता है। वह नहीं करता, और कारण स्पष्ट कहने लायक़ है: आव्यूह गुणन ऐसे परिभाषित है कि वह उन रैखिक रूपांतरणों का संयोजन करे जिन्हें आव्यूह निरूपित करते हैं, और संयोजन को किसी मध्यवर्ती सूचकांक पर योग चाहिए। प्रविष्टिवार वर्ग करना बिलकुल भिन्न संक्रिया होती — वह है और उसे हैडमार्ड गुणनफल कहते हैं — पर वह रूपांतरणों का संयोजन नहीं करती और इसलिए उस बीजगणित का पालन नहीं करती जो आव्यूहों को काम का बनाता है। यह भी ध्यान दो कि 3 क्या कर रहा है: वह साझी भीतरी विमा है, अतः 4 × 4 में वही आव्यूह प्रतिरूप 16 देता। आव्यूह का आकार उत्तर में आ जाता है, और यह भी ऐसी चीज़ है जो प्रविष्टिवार वर्ग करना कभी नहीं करता। (4 योग बनाने के बजाय प्रविष्टि का वर्ग कर देता है।)"
+        },
+        "mr": {
+          "stem": "A हा 3 × 3 मॅट्रिक्स आहे ज्याची प्रत्येक नोंद 2 बरोबर आहे. A² च्या ओळ 1, स्तंभ 1 ची नोंद किती?",
+          "choices": [
+            "12",
+            "36",
+            "6",
+            "4"
+          ],
+          "solution": "एखाद्या गुणाकाराची (1,1) नोंद म्हणजे पहिल्या मॅट्रिक्सची ओळ 1 दुसऱ्याच्या स्तंभ 1 शी बिंदुगुणित: 2×2 + 2×2 + 2×2 = 2 × 2 × 3 = 12. मोहवणारे उत्तर 4 आहे, या धारणेवर की मॅट्रिक्सचा वर्ग करणे त्याच्या नोंदींचा वर्ग करते. ते करत नाही, आणि कारण स्पष्ट सांगण्याजोगे आहे: मॅट्रिक्स गुणाकार असा परिभाषित आहे की तो त्या रेषीय रूपांतरणांचे संयोजन करावे जी मॅट्रिक्स निरूपित करतात, आणि संयोजनाला एखाद्या मधल्या निर्देशांकावर बेरीज लागते. नोंदवार वर्ग करणे पूर्णपणे वेगळी क्रिया असेल — ती आहे आणि तिला हॅडमार्ड गुणाकार म्हणतात — पण ती रूपांतरणांचे संयोजन करत नाही आणि म्हणून त्या बीजगणिताचे पालन करत नाही जे मॅट्रिक्सना उपयुक्त बनवते. हेही लक्षात घ्या की 3 काय करत आहे: ती समाईक आतली मिती आहे, म्हणून 4 × 4 मध्ये तोच मॅट्रिक्स नमुना 16 देईल. मॅट्रिक्सचा आकार उत्तरात येतो, आणि हीही अशी गोष्ट आहे जी नोंदवार वर्ग करणे कधीच करत नाही. (4 बेरीज बनवण्याऐवजी नोंदीचा वर्ग करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "For A = [[1, 2], [3, 4]] and the identity matrix I of order 2, what is the entry in row 2, column 2 of A × I?",
+      "choices": [
+        "8",
+        "4",
+        "0",
+        "1"
+      ],
+      "answerIndex": 1,
+      "solution": "Row 2 of A is (3, 4) and column 2 of I is (0, 1), so the entry is 3 × 0 + 4 × 1 = 4 — the same as in A. Working one entry through shows what the identity does mechanically: each column of I selects exactly one entry from the row and discards the rest, so the product reproduces A unchanged. That is what it means for I to be an identity, and it is the matrix analogue of multiplying a number by 1. Two things are worth adding. First, unlike almost everything else in this chapter, A × I and I × A both equal A, so the identity commutes with every matrix of the right order — it is one of the very few that does. Second, the identity is what makes an inverse definable at all: A⁻¹ is defined as the matrix with A × A⁻¹ = I, so without a fixed object to be the target of that equation there would be nothing for an inverse to mean. (1 reads the entry from I rather than from the product.)",
+      "checkExpr": "3*0+4*1",
+      "translations": {
+        "hi": {
+          "stem": "A = [[1, 2], [3, 4]] और कोटि 2 के तत्समक आव्यूह I के लिए, A × I की पंक्ति 2, स्तंभ 2 की प्रविष्टि क्या है?",
+          "choices": [
+            "8",
+            "4",
+            "0",
+            "1"
+          ],
+          "solution": "A की पंक्ति 2 है (3, 4) और I का स्तंभ 2 है (0, 1), अतः प्रविष्टि 3 × 0 + 4 × 1 = 4 है — A जैसी ही। एक प्रविष्टि को हल करके देखना दिखा देता है कि तत्समक यांत्रिक रूप से करता क्या है: I का हर स्तंभ पंक्ति में से ठीक एक प्रविष्टि चुनता है और बाक़ी फेंक देता है, अतः गुणनफल A को अपरिवर्तित दोहरा देता है। I का तत्समक होना यही है, और यह किसी संख्या को 1 से गुणा करने का आव्यूह रूप है। दो बातें जोड़ने लायक़ हैं। पहली, इस अध्याय की लगभग हर दूसरी चीज़ के विपरीत, A × I और I × A दोनों A के बराबर हैं, अतः तत्समक सही कोटि के हर आव्यूह से क्रमविनिमेय है — और ऐसा करने वालों में वह गिने-चुनों में से एक है। दूसरी, तत्समक ही प्रतिलोम को परिभाषित करने योग्य बनाता है: A⁻¹ की परिभाषा वह आव्यूह है जिसके लिए A × A⁻¹ = I, अतः उस समीकरण का लक्ष्य बनने को कोई नियत वस्तु न हो तो प्रतिलोम का कोई अर्थ ही न होता। (1 गुणनफल के बजाय I से प्रविष्टि पढ़ लेता है।)"
+        },
+        "mr": {
+          "stem": "A = [[1, 2], [3, 4]] आणि कोटी 2 च्या तत्समक मॅट्रिक्स I साठी, A × I च्या ओळ 2, स्तंभ 2 ची नोंद किती?",
+          "choices": [
+            "8",
+            "4",
+            "0",
+            "1"
+          ],
+          "solution": "A ची ओळ 2 आहे (3, 4) आणि I चा स्तंभ 2 आहे (0, 1), म्हणून नोंद 3 × 0 + 4 × 1 = 4 आहे — A सारखीच. एक नोंद सोडवून पाहणे दाखवते की तत्समक यांत्रिकरीत्या काय करतो: I चा प्रत्येक स्तंभ ओळीतून नेमकी एक नोंद निवडतो आणि बाकीच्या फेकतो, म्हणून गुणाकार A ला अपरिवर्तित पुनरावृत्त करतो. I चे तत्समक असणे हेच आहे, आणि हे एखाद्या संख्येला 1 ने गुणण्याचे मॅट्रिक्स रूप आहे. दोन गोष्टी जोडण्याजोग्या आहेत. पहिली, या प्रकरणातल्या जवळपास प्रत्येक इतर गोष्टीच्या उलट, A × I आणि I × A दोन्ही A बरोबर आहेत, म्हणून तत्समक योग्य कोटीच्या प्रत्येक मॅट्रिक्सशी क्रमविनिमेय आहे — आणि असे करणाऱ्यांत तो मोजक्यांपैकी एक आहे. दुसरी, तत्समकच प्रतिलोमाला परिभाषित करण्याजोगे बनवतो: A⁻¹ ची व्याख्या तो मॅट्रिक्स आहे ज्यासाठी A × A⁻¹ = I, म्हणून त्या समीकरणाचे लक्ष्य बनायला कोणतीही ठराविक वस्तू नसती तर प्रतिलोमाला कोणताही अर्थच नसता. (1 गुणाकाराऐवजी I मधून नोंद वाचते.)"
+        }
+      }
+    }
+  ]
+}

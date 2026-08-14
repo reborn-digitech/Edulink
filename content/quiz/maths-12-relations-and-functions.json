@@ -1,0 +1,513 @@
+{
+  "slug": "maths-12-relations-and-functions",
+  "subject": "MATHS",
+  "classLevel": 12,
+  "chapter": "Chapter 1 — Relations and Functions",
+  "name": "Relations and Functions",
+  "summary": "A mapping classified rather than evaluated: what reflexive, symmetric and transitive each cost when you count how many relations survive them, why an equivalence relation is the same object as a partition, and how composing two functions in the other order gives a different function altogether.",
+  "position": 1,
+  "translations": {
+    "hi": {
+      "name": "संबंध एवं फलन",
+      "summary": "किसी प्रतिचित्रण का मूल्यांकन नहीं बल्कि वर्गीकरण: जब गिनो कि कितने संबंध बचते हैं तो स्वतुल्य, सममित और संक्रामक हर एक की क़ीमत क्या है, तुल्यता संबंध विभाजन जैसी ही वस्तु क्यों है, और दो फलनों को उलटे क्रम में जोड़ने पर बिलकुल भिन्न फलन कैसे मिलता है।"
+    },
+    "mr": {
+      "name": "संबंध आणि फलने",
+      "summary": "एखाद्या प्रतिचित्रणाचे मूल्यमापन नव्हे तर वर्गीकरण: किती संबंध टिकतात हे मोजल्यावर स्वतुल्य, सममित आणि संक्रामक प्रत्येकाची किंमत काय आहे, तुल्यता संबंध विभाजनासारखीच वस्तू का आहे, आणि दोन फलने उलट क्रमाने जोडल्यावर पूर्णपणे वेगळे फलन कसे मिळते."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A set A has 3 elements. How many ordered pairs are there in A × A?",
+      "choices": [
+        "27",
+        "3",
+        "9",
+        "6"
+      ],
+      "answerIndex": 2,
+      "solution": "Each pair needs a first element and a second, and each can be any of the 3, so 3 × 3 = 9 pairs. This count matters because a relation on A is any subset of A × A — so every question about how many relations there are starts from this number. (6 doubles the elements instead of multiplying the choices.)",
+      "checkExpr": "3*3",
+      "translations": {
+        "hi": {
+          "stem": "किसी समुच्चय A में 3 अवयव हैं। A × A में कितने क्रमित युग्म हैं?",
+          "choices": [
+            "27",
+            "3",
+            "9",
+            "6"
+          ],
+          "solution": "हर युग्म को एक पहला अवयव और एक दूसरा चाहिए, और हर एक तीनों में से कोई भी हो सकता है, अतः 3 × 3 = 9 युग्म। यह गिनती इसलिए मायने रखती है कि A पर कोई संबंध A × A का कोई भी उपसमुच्चय है — अतः कितने संबंध हैं, इस बारे में हर प्रश्न इसी संख्या से शुरू होता है। (6 विकल्पों का गुणा करने के बजाय अवयव दुगुने कर देता है।)"
+        },
+        "mr": {
+          "stem": "एका संच A मध्ये 3 घटक आहेत. A × A मध्ये किती क्रमित जोड्या आहेत?",
+          "choices": [
+            "27",
+            "3",
+            "9",
+            "6"
+          ],
+          "solution": "प्रत्येक जोडीला एक पहिला घटक आणि एक दुसरा लागतो, आणि प्रत्येक तिघांपैकी कोणताही असू शकतो, म्हणून 3 × 3 = 9 जोड्या. ही मोजणी यासाठी महत्त्वाची की A वरचा कोणताही संबंध हा A × A चा कोणताही उपसंच आहे — म्हणून किती संबंध आहेत याविषयीचा प्रत्येक प्रश्न याच संख्येपासून सुरू होतो. (6 पर्यायांचा गुणाकार करण्याऐवजी घटक दुप्पट करते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "A relation on a set of 4 elements is reflexive. How many pairs must it contain at a minimum?",
+      "choices": [
+        "1",
+        "16",
+        "4",
+        "8"
+      ],
+      "answerIndex": 2,
+      "solution": "Reflexive means every element is related to itself, so all four pairs (a, a) must be present: 4 × 1 = 4. Nothing else is required — a relation containing exactly those four and nothing more is reflexive, and it happens to be symmetric and transitive as well. (16 counts every pair in the product set.)",
+      "checkExpr": "4*1",
+      "translations": {
+        "hi": {
+          "stem": "4 अवयवों के किसी समुच्चय पर कोई संबंध स्वतुल्य है। उसमें कम से कम कितने युग्म होने ही चाहिए?",
+          "choices": [
+            "1",
+            "16",
+            "4",
+            "8"
+          ],
+          "solution": "स्वतुल्य का अर्थ है हर अवयव स्वयं से संबंधित है, अतः चारों युग्म (a, a) मौजूद होने ही चाहिए: 4 × 1 = 4. और कुछ ज़रूरी नहीं — जिस संबंध में ठीक वही चार हों और कुछ नहीं वह स्वतुल्य है, और संयोगवश सममित तथा संक्रामक भी। (16 गुणन समुच्चय का हर युग्म गिन लेता है।)"
+        },
+        "mr": {
+          "stem": "4 घटकांच्या एका संचावरचा एक संबंध स्वतुल्य आहे. त्यात किमान किती जोड्या असल्याच पाहिजेत?",
+          "choices": [
+            "1",
+            "16",
+            "4",
+            "8"
+          ],
+          "solution": "स्वतुल्य म्हणजे प्रत्येक घटक स्वतःशी संबंधित आहे, म्हणून चारही जोड्या (a, a) उपस्थित असल्याच पाहिजेत: 4 × 1 = 4. आणखी काहीही आवश्यक नाही — ज्या संबंधात नेमक्या त्याच चार असतील आणि आणखी काही नाही तो स्वतुल्य आहे, आणि योगायोगाने सममित व संक्रामकही. (16 गुणन संचातली प्रत्येक जोडी मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Set A has 2 elements and set B has 3. How many functions are there from A to B?",
+      "choices": [
+        "8",
+        "6",
+        "9",
+        "5"
+      ],
+      "answerIndex": 2,
+      "solution": "A function must send each element of A somewhere in B, and the two choices are independent: 3 × 3 = 9. Note the order — it is 3² and not 2³, because the exponent counts the elements of the domain, each of which needs a decision. Getting that the wrong way round is the commonest slip in this chapter. (8 computes 2³ by taking the sets in the wrong order.)",
+      "checkExpr": "3*3",
+      "translations": {
+        "hi": {
+          "stem": "समुच्चय A में 2 अवयव हैं और समुच्चय B में 3. A से B तक कितने फलन हैं?",
+          "choices": [
+            "8",
+            "6",
+            "9",
+            "5"
+          ],
+          "solution": "फलन को A के हर अवयव को B में कहीं भेजना ही पड़ता है, और दोनों चुनाव स्वतंत्र हैं: 3 × 3 = 9. क्रम पर ध्यान दो — यह 3² है, 2³ नहीं, क्योंकि घातांक प्रांत के अवयव गिनता है, जिनमें से हर एक को एक निर्णय चाहिए। इसे उलटा कर लेना इस अध्याय की सबसे आम चूक है। (8 समुच्चयों को ग़लत क्रम में लेकर 2³ निकाल देता है।)"
+        },
+        "mr": {
+          "stem": "संच A मध्ये 2 घटक आहेत आणि संच B मध्ये 3. A पासून B पर्यंत किती फलने आहेत?",
+          "choices": [
+            "8",
+            "6",
+            "9",
+            "5"
+          ],
+          "solution": "फलनाला A च्या प्रत्येक घटकाला B मध्ये कुठेतरी पाठवावेच लागते, आणि दोन्ही निवडी स्वतंत्र आहेत: 3 × 3 = 9. क्रमाकडे लक्ष द्या — हे 3² आहे, 2³ नाही, कारण घातांक प्रांताचे घटक मोजतो, ज्यांपैकी प्रत्येकाला एक निर्णय लागतो. हे उलटे करणे या प्रकरणातली सर्वांत सामान्य चूक आहे. (8 संच चुकीच्या क्रमाने घेऊन 2³ काढते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "How many relations are there altogether on a set of 3 elements?",
+      "choices": [
+        "27",
+        "64",
+        "512",
+        "9"
+      ],
+      "answerIndex": 2,
+      "solution": "A relation is any subset of A × A, which has 9 pairs, and each pair is either included or not: 2⁹ = 8 × 64 = 512. The reasoning is the subset count applied to a set of pairs rather than a set of elements, which is why the answer is so much larger than anything in the question. (9 quotes the number of pairs rather than the number of subsets of them.)",
+      "checkExpr": "8*64",
+      "translations": {
+        "hi": {
+          "stem": "3 अवयवों के किसी समुच्चय पर कुल कितने संबंध हैं?",
+          "choices": [
+            "27",
+            "64",
+            "512",
+            "9"
+          ],
+          "solution": "संबंध A × A का कोई भी उपसमुच्चय है, जिसमें 9 युग्म हैं, और हर युग्म या तो शामिल है या नहीं: 2⁹ = 8 × 64 = 512. तर्क वही उपसमुच्चय गिनती है, बस अवयवों के समुच्चय के बजाय युग्मों के समुच्चय पर लगाई गई, इसीलिए उत्तर प्रश्न की किसी भी चीज़ से इतना बड़ा है। (9 उनके उपसमुच्चयों की संख्या के बजाय युग्मों की संख्या बता देता है।)"
+        },
+        "mr": {
+          "stem": "3 घटकांच्या एका संचावर एकूण किती संबंध आहेत?",
+          "choices": [
+            "27",
+            "64",
+            "512",
+            "9"
+          ],
+          "solution": "संबंध हा A × A चा कोणताही उपसंच आहे, ज्यात 9 जोड्या आहेत, आणि प्रत्येक जोडी एकतर समाविष्ट आहे किंवा नाही: 2⁹ = 8 × 64 = 512. युक्तिवाद तीच उपसंच मोजणी आहे, फक्त घटकांच्या संचाऐवजी जोड्यांच्या संचावर लावलेली, म्हणूनच उत्तर प्रश्नातल्या कोणत्याही गोष्टीहून इतके मोठे आहे. (9 त्यांच्या उपसंचांच्या संख्येऐवजी जोड्यांची संख्या सांगते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "How many one-one functions are there from a set of 3 elements to a set of 5 elements?",
+      "choices": [
+        "120",
+        "60",
+        "125",
+        "15"
+      ],
+      "answerIndex": 1,
+      "solution": "The first element has 5 possible images, the second has 4 left, the third has 3: 5 × 4 × 3 = 60. One-one is exactly the condition that removes an option at each step, which is why the count is a falling product rather than a power. Compare the 5³ = 125 functions with no such restriction, and the difference is what being one-one costs. (125 counts all functions rather than the injective ones.)",
+      "checkExpr": "5*4*3",
+      "translations": {
+        "hi": {
+          "stem": "3 अवयवों के समुच्चय से 5 अवयवों के समुच्चय तक कितने एकैकी फलन हैं?",
+          "choices": [
+            "120",
+            "60",
+            "125",
+            "15"
+          ],
+          "solution": "पहले अवयव के 5 संभव प्रतिबिंब हैं, दूसरे के 4 बचे, तीसरे के 3: 5 × 4 × 3 = 60. एकैकी ठीक वही शर्त है जो हर क़दम पर एक विकल्प हटा देती है, इसीलिए गिनती घात नहीं बल्कि घटता गुणनफल है। बिना इस प्रतिबंध वाले 5³ = 125 फलनों से तुलना करो, और अंतर ही वह है जो एकैकी होने की क़ीमत है। (125 अंतःक्षेपी के बजाय सारे फलन गिनता है।)"
+        },
+        "mr": {
+          "stem": "3 घटकांच्या संचापासून 5 घटकांच्या संचापर्यंत किती एकैकी फलने आहेत?",
+          "choices": [
+            "120",
+            "60",
+            "125",
+            "15"
+          ],
+          "solution": "पहिल्या घटकाला 5 शक्य प्रतिबिंबे आहेत, दुसऱ्याला 4 उरली, तिसऱ्याला 3: 5 × 4 × 3 = 60. एकैकी नेमकी तीच अट आहे जी प्रत्येक पायरीवर एक पर्याय काढते, म्हणूनच मोजणी घात नसून घटता गुणाकार आहे. या निर्बंधाविना असलेल्या 5³ = 125 फलनांशी तुलना करा, आणि फरकच ती किंमत आहे जी एकैकी असण्याची आहे. (125 अंतःक्षेपीऐवजी सर्व फलने मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "How many functions from a set of 3 elements to a set of 3 elements are NOT one-one?",
+      "choices": [
+        "3",
+        "27",
+        "6",
+        "21"
+      ],
+      "answerIndex": 3,
+      "solution": "There are 3³ = 27 functions in all and 3 × 2 × 1 = 6 of them are one-one, so 27 − 6 = 21 are not. Counting the ones that satisfy a condition and subtracting is the standard move whenever the condition is harder to describe directly than to violate — here \"not one-one\" means two elements share an image, which could happen in several ways, while \"one-one\" is a single clean product. (6 counts the one-one functions instead of the rest.)",
+      "checkExpr": "27-6",
+      "translations": {
+        "hi": {
+          "stem": "3 अवयवों के समुच्चय से 3 अवयवों के समुच्चय तक कितने फलन एकैकी नहीं हैं?",
+          "choices": [
+            "3",
+            "27",
+            "6",
+            "21"
+          ],
+          "solution": "कुल 3³ = 27 फलन हैं और उनमें से 3 × 2 × 1 = 6 एकैकी हैं, अतः 27 − 6 = 21 नहीं हैं। जो शर्त पूरी करते हैं उन्हें गिनकर घटाना तब मानक चाल है जब शर्त को सीधे बताने से तोड़ना आसान हो — यहाँ \"एकैकी नहीं\" का अर्थ है दो अवयव एक ही प्रतिबिंब साझा करते हैं, जो कई तरह से हो सकता है, जबकि \"एकैकी\" एक ही साफ़ गुणनफल है। (6 बाक़ी के बजाय एकैकी फलन गिन लेता है।)"
+        },
+        "mr": {
+          "stem": "3 घटकांच्या संचापासून 3 घटकांच्या संचापर्यंत किती फलने एकैकी नाहीत?",
+          "choices": [
+            "3",
+            "27",
+            "6",
+            "21"
+          ],
+          "solution": "एकूण 3³ = 27 फलने आहेत आणि त्यांपैकी 3 × 2 × 1 = 6 एकैकी आहेत, म्हणून 27 − 6 = 21 नाहीत. जी अट पूर्ण करतात त्यांना मोजून वजा करणे तेव्हा प्रमाणित चाल आहे जेव्हा अट थेट सांगण्याहून मोडणे सोपे असेल — इथे \"एकैकी नाही\" चा अर्थ दोन घटक एकच प्रतिबिंब समाईक ठेवतात, जे कित्येक प्रकारे घडू शकते, तर \"एकैकी\" एकच स्वच्छ गुणाकार आहे. (6 बाकीच्यांऐवजी एकैकी फलने मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "How many equivalence relations are there on a set of 3 elements?",
+      "choices": [
+        "3",
+        "512",
+        "5",
+        "8"
+      ],
+      "answerIndex": 2,
+      "solution": "2 + 3 = 5. The route to it is worth having: an equivalence relation on a set corresponds exactly to a way of partitioning that set into disjoint blocks, so counting the relations means counting the partitions. For three elements they are: all three together; all three apart; and three ways of pairing two and leaving one out. That correspondence turns an awkward question about pairs into an easy question about grouping. (512 counts all relations, of which almost none are equivalences.)",
+      "checkExpr": "2+3",
+      "translations": {
+        "hi": {
+          "stem": "3 अवयवों के किसी समुच्चय पर कितने तुल्यता संबंध हैं?",
+          "choices": [
+            "3",
+            "512",
+            "5",
+            "8"
+          ],
+          "solution": "2 + 3 = 5. वहाँ तक का रास्ता रखने लायक़ है: किसी समुच्चय पर तुल्यता संबंध ठीक उसी समुच्चय को असंयुक्त खंडों में विभाजित करने के किसी तरीक़े से मेल खाता है, अतः संबंध गिनना विभाजन गिनना है। तीन अवयवों के लिए वे हैं: तीनों साथ; तीनों अलग; और दो को जोड़कर एक को बाहर छोड़ने के तीन तरीक़े। वह संगति युग्मों के बारे में एक भद्दे प्रश्न को समूहन के बारे में आसान प्रश्न बना देती है। (512 सारे संबंध गिनता है, जिनमें से लगभग कोई तुल्यता नहीं।)"
+        },
+        "mr": {
+          "stem": "3 घटकांच्या एका संचावर किती तुल्यता संबंध आहेत?",
+          "choices": [
+            "3",
+            "512",
+            "5",
+            "8"
+          ],
+          "solution": "2 + 3 = 5. तिथवरचा मार्ग ठेवण्याजोगा आहे: एखाद्या संचावरचा तुल्यता संबंध नेमका त्याच संचाला विभक्त गटांत विभागण्याच्या एखाद्या मार्गाशी जुळतो, म्हणून संबंध मोजणे म्हणजे विभाजने मोजणे. तीन घटकांसाठी ती आहेत: तिन्ही एकत्र; तिन्ही वेगळे; आणि दोघांना जोडून एकाला बाहेर सोडण्याचे तीन मार्ग. ती संगती जोड्यांबद्दलच्या एका अवघड प्रश्नाचे गटबंधनाबद्दलच्या सोप्या प्रश्नात रूपांतर करते. (512 सर्व संबंध मोजते, ज्यांपैकी जवळपास एकही तुल्यता नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "If f(x) = x² and g(x) = x + 1, what is (f ∘ g)(2)?",
+      "choices": [
+        "9",
+        "6",
+        "4",
+        "5"
+      ],
+      "answerIndex": 0,
+      "solution": "The inner function runs first: g(2) = 3, then f(3) = 3 × 3 = 9. Reading the composition right to left is the only difficulty, and doing it left to right gives f(2) = 4 then g(4) = 5, which is (g ∘ f)(2) — a different function entirely. That composition is not commutative is exactly what this pair of answers demonstrates. (5 evaluates the composition in the wrong order.)",
+      "checkExpr": "3*3",
+      "translations": {
+        "hi": {
+          "stem": "यदि f(x) = x² और g(x) = x + 1 हो, तो (f ∘ g)(2) क्या है?",
+          "choices": [
+            "9",
+            "6",
+            "4",
+            "5"
+          ],
+          "solution": "भीतरी फलन पहले चलता है: g(2) = 3, फिर f(3) = 3 × 3 = 9. संयोजन को दाएँ से बाएँ पढ़ना ही एकमात्र कठिनाई है, और बाएँ से दाएँ करने पर f(2) = 4 फिर g(4) = 5 मिलता है, जो (g ∘ f)(2) है — बिलकुल भिन्न फलन। संयोजन क्रमविनिमेय नहीं है, यही ये दोनों उत्तर दिखा देते हैं। (5 संयोजन को ग़लत क्रम में निकालता है।)"
+        },
+        "mr": {
+          "stem": "जर f(x) = x² आणि g(x) = x + 1 असेल, तर (f ∘ g)(2) किती?",
+          "choices": [
+            "9",
+            "6",
+            "4",
+            "5"
+          ],
+          "solution": "आतले फलन आधी चालते: g(2) = 3, मग f(3) = 3 × 3 = 9. संयोजन उजवीकडून डावीकडे वाचणे हीच एकमेव अडचण आहे, आणि डावीकडून उजवीकडे केल्यास f(2) = 4 मग g(4) = 5 मिळते, जे (g ∘ f)(2) आहे — पूर्णपणे वेगळे फलन. संयोजन क्रमविनिमेय नाही, हेच ही दोन्ही उत्तरे दाखवतात. (5 संयोजन चुकीच्या क्रमाने काढते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "How many onto functions are there from a set of 3 elements to a set of 2 elements?",
+      "choices": [
+        "8",
+        "2",
+        "6",
+        "9"
+      ],
+      "answerIndex": 2,
+      "solution": "There are 2³ = 8 functions altogether. Of these, exactly two fail to be onto: the one sending everything to the first image and the one sending everything to the second. So 8 − 2 = 6. Counting what fails and subtracting is much easier here than counting the successes directly, and it is the standard move whenever a condition is easier to violate than to satisfy. (8 counts all functions without removing the two constant ones.)",
+      "checkExpr": "8-2",
+      "translations": {
+        "hi": {
+          "stem": "3 अवयवों के समुच्चय से 2 अवयवों के समुच्चय तक कितने आच्छादक फलन हैं?",
+          "choices": [
+            "8",
+            "2",
+            "6",
+            "9"
+          ],
+          "solution": "कुल 2³ = 8 फलन हैं। इनमें से ठीक दो आच्छादक नहीं: एक जो सब कुछ पहले प्रतिबिंब को भेजता है और एक जो सब कुछ दूसरे को। अतः 8 − 2 = 6. यहाँ जो विफल होता है उसे गिनकर घटाना सीधे सफलताएँ गिनने से कहीं आसान है, और जब भी कोई शर्त पूरी करने से तोड़ना आसान हो तब यही मानक चाल है। (8 दोनों अचर फलन हटाए बिना सारे फलन गिनता है।)"
+        },
+        "mr": {
+          "stem": "3 घटकांच्या संचापासून 2 घटकांच्या संचापर्यंत किती आच्छादक फलने आहेत?",
+          "choices": [
+            "8",
+            "2",
+            "6",
+            "9"
+          ],
+          "solution": "एकूण 2³ = 8 फलने आहेत. यांपैकी नेमकी दोन आच्छादक नाहीत: एक जे सर्व काही पहिल्या प्रतिबिंबाला पाठवते आणि एक जे सर्व काही दुसऱ्याला. म्हणून 8 − 2 = 6. इथे जे अपयशी ठरते ते मोजून वजा करणे थेट यशे मोजण्याहून कितीतरी सोपे आहे, आणि जेव्हाही एखादी अट पूर्ण करण्याहून मोडणे सोपे असेल तेव्हा हीच प्रमाणित चाल आहे. (8 दोन्ही अचल फलने काढल्याविना सर्व फलने मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "If f(x) = 3x − 5, what is f⁻¹(7)?",
+      "choices": [
+        "2",
+        "0.25",
+        "4",
+        "16"
+      ],
+      "answerIndex": 2,
+      "solution": "Asking for f⁻¹(7) is asking which input gives 7, so solve 3x − 5 = 7: x = (7 + 5)/3 = 4. Check it forwards — 3 × 4 − 5 = 7 — and the answer is proven rather than trusted. Note that f⁻¹ here means the inverse function and not the reciprocal; 1/f(7) would be 1/16, which is why that option is offered. (16 evaluates f(7) instead of inverting it.)",
+      "checkExpr": "(7+5)/3",
+      "translations": {
+        "hi": {
+          "stem": "यदि f(x) = 3x − 5 हो, तो f⁻¹(7) क्या है?",
+          "choices": [
+            "2",
+            "0.25",
+            "4",
+            "16"
+          ],
+          "solution": "f⁻¹(7) पूछना यह पूछना है कि कौन-सा निवेश 7 देता है, अतः 3x − 5 = 7 हल करो: x = (7 + 5)/3 = 4. आगे की ओर जाँचो — 3 × 4 − 5 = 7 — और उत्तर भरोसे पर नहीं बल्कि सिद्ध होकर मिलता है। ध्यान दो कि यहाँ f⁻¹ का अर्थ प्रतिलोम फलन है, व्युत्क्रम नहीं; 1/f(7) होता 1/16, इसीलिए वह विकल्प दिया गया है। (16 प्रतिलोम निकालने के बजाय f(7) निकाल देता है।)"
+        },
+        "mr": {
+          "stem": "जर f(x) = 3x − 5 असेल, तर f⁻¹(7) किती?",
+          "choices": [
+            "2",
+            "0.25",
+            "4",
+            "16"
+          ],
+          "solution": "f⁻¹(7) विचारणे म्हणजे कोणते निविष्ट 7 देते हे विचारणे, म्हणून 3x − 5 = 7 सोडवा: x = (7 + 5)/3 = 4. पुढच्या दिशेने तपासा — 3 × 4 − 5 = 7 — आणि उत्तर भरवशावर नव्हे तर सिद्ध होऊन मिळते. लक्षात घ्या की इथे f⁻¹ चा अर्थ प्रतिलोम फलन आहे, व्यस्त नाही; 1/f(7) असते 1/16, म्हणूनच तो पर्याय दिला आहे. (16 प्रतिलोम काढण्याऐवजी f(7) काढते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "How many bijections are there from a set of 4 elements to itself?",
+      "choices": [
+        "16",
+        "24",
+        "256",
+        "12"
+      ],
+      "answerIndex": 1,
+      "solution": "4 × 3 × 2 × 1 = 24. A bijection from a finite set to itself is exactly a rearrangement of its elements, so the count is 4 factorial. Note that on a finite set of the same size, one-one and onto imply each other — if no two elements share an image and there are as many images as elements, every image must be used. That equivalence fails for infinite sets, which is one of the ways infinity behaves unlike anything in this chapter. (256 counts all functions, most of which repeat an image.)",
+      "checkExpr": "4*3*2*1",
+      "translations": {
+        "hi": {
+          "stem": "4 अवयवों के किसी समुच्चय से स्वयं उसी तक कितने एकैकी आच्छादक फलन हैं?",
+          "choices": [
+            "16",
+            "24",
+            "256",
+            "12"
+          ],
+          "solution": "4 × 3 × 2 × 1 = 24. किसी परिमित समुच्चय से स्वयं उसी तक एकैकी आच्छादक फलन ठीक उसके अवयवों की पुनर्व्यवस्था है, अतः गिनती 4 का क्रमगुणित है। ध्यान दो कि समान आकार के परिमित समुच्चय पर एकैकी और आच्छादक एक-दूसरे को निहित करते हैं — यदि कोई दो अवयव प्रतिबिंब साझा न करें और प्रतिबिंब अवयवों जितने ही हों, तो हर प्रतिबिंब काम में आना ही चाहिए। वह तुल्यता अनंत समुच्चयों के लिए विफल हो जाती है, और यह उन तरीक़ों में से एक है जिनसे अनंत इस अध्याय की किसी भी चीज़ जैसा नहीं बरतता। (256 सारे फलन गिनता है, जिनमें से अधिकांश कोई प्रतिबिंब दोहराते हैं।)"
+        },
+        "mr": {
+          "stem": "4 घटकांच्या एका संचापासून स्वतः त्याच्यापर्यंत किती एकैकी आच्छादक फलने आहेत?",
+          "choices": [
+            "16",
+            "24",
+            "256",
+            "12"
+          ],
+          "solution": "4 × 3 × 2 × 1 = 24. एखाद्या सांत संचापासून स्वतः त्याच्यापर्यंत एकैकी आच्छादक फलन म्हणजे नेमकी त्याच्या घटकांची पुनर्रचना, म्हणून मोजणी 4 चा क्रमगुणित आहे. लक्षात घ्या की समान आकाराच्या सांत संचावर एकैकी आणि आच्छादक परस्परांना अनुस्यूत करतात — जर कोणतेही दोन घटक प्रतिबिंब समाईक ठेवत नसतील आणि प्रतिबिंबे घटकांइतकीच असतील, तर प्रत्येक प्रतिबिंब वापरले जावेच लागते. ती तुल्यता अनंत संचांसाठी अपयशी ठरते, आणि हा त्या मार्गांपैकी एक आहे ज्यांनी अनंत या प्रकरणातल्या कोणत्याही गोष्टीसारखे वागत नाही. (256 सर्व फलने मोजते, ज्यांपैकी बहुतांश एखादे प्रतिबिंब पुनरावृत्त करतात.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "How many symmetric relations are there on a set of 3 elements?",
+      "choices": [
+        "32",
+        "64",
+        "8",
+        "512"
+      ],
+      "answerIndex": 1,
+      "solution": "Symmetry means (a, b) is present exactly when (b, a) is, so the two pairs of an off-diagonal couple are not decided separately — they are one decision. There are 3 diagonal pairs, each free, and 3 off-diagonal couples, each one decision: 2⁶ = 8 × 8 = 64. The move worth learning is that a constraint does not merely remove options; here it merges them, so the exponent falls from 9 to 6 rather than the total being scaled down. (512 counts all relations, ignoring the constraint.)",
+      "checkExpr": "8*8",
+      "translations": {
+        "hi": {
+          "stem": "3 अवयवों के किसी समुच्चय पर कितने सममित संबंध हैं?",
+          "choices": [
+            "32",
+            "64",
+            "8",
+            "512"
+          ],
+          "solution": "सममिति का अर्थ है (a, b) ठीक तब मौजूद है जब (b, a) हो, अतः किसी विकर्णेतर जोड़े के दोनों युग्म अलग-अलग तय नहीं होते — वे एक ही निर्णय हैं। 3 विकर्ण युग्म हैं, हर एक स्वतंत्र, और 3 विकर्णेतर जोड़े, हर एक एक निर्णय: 2⁶ = 8 × 8 = 64. सीखने लायक़ चाल यह कि कोई प्रतिबंध केवल विकल्प हटाता नहीं; यहाँ वह उन्हें मिला देता है, अतः घातांक 9 से 6 पर गिरता है, कुल का पैमाना घटने के बजाय। (512 प्रतिबंध की अनदेखी कर सारे संबंध गिनता है।)"
+        },
+        "mr": {
+          "stem": "3 घटकांच्या एका संचावर किती सममित संबंध आहेत?",
+          "choices": [
+            "32",
+            "64",
+            "8",
+            "512"
+          ],
+          "solution": "सममिती म्हणजे (a, b) नेमके तेव्हा उपस्थित आहे जेव्हा (b, a) असेल, म्हणून एखाद्या विकर्णेतर जोडप्याच्या दोन्ही जोड्या वेगवेगळ्या ठरत नाहीत — त्या एकच निर्णय आहेत. 3 विकर्ण जोड्या आहेत, प्रत्येक मुक्त, आणि 3 विकर्णेतर जोडपी, प्रत्येक एक निर्णय: 2⁶ = 8 × 8 = 64. शिकण्याजोगी चाल ही की एखादे बंधन केवळ पर्याय काढत नाही; इथे ते त्यांना एकत्र करते, म्हणून घातांक 9 वरून 6 वर घसरतो, एकूणाचे प्रमाण घटण्याऐवजी. (512 बंधनाकडे दुर्लक्ष करून सर्व संबंध मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "How many relations on a set of 3 elements are both reflexive and symmetric?",
+      "choices": [
+        "512",
+        "8",
+        "64",
+        "5"
+      ],
+      "answerIndex": 1,
+      "solution": "Take the two conditions in turn and see what each one costs. Reflexivity fixes the three diagonal pairs: they must all be present, so there is no decision left there at all. Symmetry ties each off-diagonal pair to its mirror, so the three couples give three decisions rather than six. Nothing is free except those three couples: 2³ = 2 × 2 × 2 = 8. It is worth comparing the whole family. All relations: 2⁹ = 512. Symmetric alone: 2⁶ = 64. Reflexive and symmetric: 2³ = 8. Each condition cuts the exponent rather than the total, because each one removes or merges decisions rather than filtering finished objects. And notice the equivalence relations — 5 — are fewer still, since transitivity is not a condition on individual pairs at all but on triples, which is exactly why it cannot be counted by the same method and has to be handled through partitions instead. (64 imposes symmetry but forgets that reflexivity has already used up the diagonal.)",
+      "checkExpr": "2*2*2",
+      "translations": {
+        "hi": {
+          "stem": "3 अवयवों के किसी समुच्चय पर कितने संबंध स्वतुल्य और सममित दोनों हैं?",
+          "choices": [
+            "512",
+            "8",
+            "64",
+            "5"
+          ],
+          "solution": "दोनों शर्तें बारी-बारी लो और देखो कि हर एक की क़ीमत क्या है। स्वतुल्यता तीनों विकर्ण युग्म तय कर देती है: वे सब मौजूद होने ही चाहिए, अतः वहाँ कोई निर्णय बचता ही नहीं। सममिति हर विकर्णेतर युग्म को उसके दर्पण से बाँध देती है, अतः तीन जोड़े छह के बजाय तीन निर्णय देते हैं। उन तीन जोड़ों के सिवा कुछ स्वतंत्र नहीं: 2³ = 2 × 2 × 2 = 8. पूरे कुल की तुलना करना काम का है। सारे संबंध: 2⁹ = 512. केवल सममित: 2⁶ = 64. स्वतुल्य और सममित: 2³ = 8. हर शर्त कुल के बजाय घातांक काटती है, क्योंकि हर एक बने-बनाए वस्तुओं को छानने के बजाय निर्णय हटाती या मिलाती है। और ध्यान दो कि तुल्यता संबंध — 5 — और भी कम हैं, चूँकि संक्रामकता अलग-अलग युग्मों पर शर्त है ही नहीं बल्कि त्रिकों पर, और ठीक इसीलिए उसे इसी विधि से गिना नहीं जा सकता और उसे विभाजनों के रास्ते सँभालना पड़ता है। (64 सममिति लगाता है पर भूल जाता है कि स्वतुल्यता विकर्ण पहले ही ख़र्च कर चुकी है।)"
+        },
+        "mr": {
+          "stem": "3 घटकांच्या एका संचावर किती संबंध स्वतुल्य आणि सममित दोन्ही आहेत?",
+          "choices": [
+            "512",
+            "8",
+            "64",
+            "5"
+          ],
+          "solution": "दोन्ही अटी आळीपाळीने घ्या आणि प्रत्येकीची किंमत काय आहे ते पाहा. स्वतुल्यता तिन्ही विकर्ण जोड्या ठरवते: त्या सर्व उपस्थित असल्याच पाहिजेत, म्हणून तिथे कोणताही निर्णय उरतच नाही. सममिती प्रत्येक विकर्णेतर जोडीला तिच्या आरशाशी बांधते, म्हणून तीन जोडपी सहाऐवजी तीन निर्णय देतात. त्या तीन जोडप्यांखेरीज काहीही मुक्त नाही: 2³ = 2 × 2 × 2 = 8. अख्ख्या कुळाची तुलना करणे उपयुक्त आहे. सर्व संबंध: 2⁹ = 512. केवळ सममित: 2⁶ = 64. स्वतुल्य आणि सममित: 2³ = 8. प्रत्येक अट एकूणाऐवजी घातांक कापते, कारण प्रत्येक तयार वस्तू गाळण्याऐवजी निर्णय काढते वा एकत्र करते. आणि लक्षात घ्या की तुल्यता संबंध — 5 — आणखी कमी आहेत, कारण संक्रामकता वेगवेगळ्या जोड्यांवरची अट आहेच नाही तर त्रिकांवरची, आणि नेमके म्हणूनच तिला याच पद्धतीने मोजता येत नाही आणि तिला विभाजनांच्या मार्गाने हाताळावे लागते. (64 सममिती लावते पण विसरते की स्वतुल्यतेने विकर्ण आधीच खर्च केला आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "How many equivalence relations are there on a set of 4 elements?",
+      "choices": [
+        "5",
+        "16",
+        "15",
+        "24"
+      ],
+      "answerIndex": 2,
+      "solution": "Count the partitions of a four-element set, since each corresponds to exactly one equivalence relation. Take them by shape. All four in one block: 1 way. Three together and one apart: 4 ways, one for each element left out. Two and two: 3 ways, since choosing the partner of the first element determines the rest. Two together and two apart: 6 ways, one for each pair. All four separate: 1 way. That is 1 + 4 + 3 + 6 + 1 = 5 + 10 = 15. Two things are worth taking from this. First, the correspondence between equivalence relations and partitions is what makes the count tractable at all — attempting it directly by checking which of the 2¹⁶ relations on four elements are reflexive, symmetric and transitive would be hopeless. Second, organising the count by SHAPE rather than by element is what prevents double-counting: each partition is described once, by its block sizes, and the ways of achieving that shape are counted separately. The sequence of these counts — 1, 2, 5, 15, 52 — are the Bell numbers, and they grow faster than any polynomial. (24 gives 4 factorial, which counts rearrangements rather than groupings.)",
+      "checkExpr": "5+10",
+      "translations": {
+        "hi": {
+          "stem": "4 अवयवों के किसी समुच्चय पर कितने तुल्यता संबंध हैं?",
+          "choices": [
+            "5",
+            "16",
+            "15",
+            "24"
+          ],
+          "solution": "चार अवयवों के समुच्चय के विभाजन गिनो, चूँकि हर एक ठीक एक तुल्यता संबंध से मेल खाता है। उन्हें आकार से लो। चारों एक खंड में: 1 तरीक़ा। तीन साथ और एक अलग: 4 तरीक़े, हर बाहर छूटे अवयव के लिए एक। दो और दो: 3 तरीक़े, चूँकि पहले अवयव का साथी चुनना बाक़ी तय कर देता है। दो साथ और दो अलग: 6 तरीक़े, हर युग्म के लिए एक। चारों अलग: 1 तरीक़ा। यह हुआ 1 + 4 + 3 + 6 + 1 = 5 + 10 = 15. इससे दो चीज़ें ले जाने लायक़ हैं। पहली, तुल्यता संबंधों और विभाजनों की वह संगति ही गिनती को साध्य बनाती है — चार अवयवों पर 2¹⁶ संबंधों में से कौन स्वतुल्य, सममित और संक्रामक हैं यह जाँचकर सीधे कोशिश करना निराशाजनक होता। दूसरी, गिनती को अवयव से नहीं बल्कि आकार से जमाना ही दोहरी गिनती रोकता है: हर विभाजन एक ही बार वर्णित होता है, अपने खंड आकारों से, और उस आकार को पाने के तरीक़े अलग गिने जाते हैं। इन गिनतियों का अनुक्रम — 1, 2, 5, 15, 52 — बेल संख्याएँ हैं, और वे किसी भी बहुपद से तेज़ बढ़ती हैं। (24 4 का क्रमगुणित देता है, जो समूहन नहीं बल्कि पुनर्व्यवस्थाएँ गिनता है।)"
+        },
+        "mr": {
+          "stem": "4 घटकांच्या एका संचावर किती तुल्यता संबंध आहेत?",
+          "choices": [
+            "5",
+            "16",
+            "15",
+            "24"
+          ],
+          "solution": "चार घटकांच्या संचाची विभाजने मोजा, कारण प्रत्येक नेमक्या एका तुल्यता संबंधाशी जुळते. त्यांना आकाराने घ्या. चारही एका गटात: 1 मार्ग. तीन एकत्र आणि एक वेगळा: 4 मार्ग, प्रत्येक बाहेर उरलेल्या घटकासाठी एक. दोन आणि दोन: 3 मार्ग, कारण पहिल्या घटकाचा जोडीदार निवडणे बाकीचे ठरवते. दोन एकत्र आणि दोन वेगळे: 6 मार्ग, प्रत्येक जोडीसाठी एक. चारही वेगळे: 1 मार्ग. हे झाले 1 + 4 + 3 + 6 + 1 = 5 + 10 = 15. यातून दोन गोष्टी न्यायच्या आहेत. पहिली, तुल्यता संबंध आणि विभाजनांची तीच संगती मोजणीला साध्य बनवते — चार घटकांवरच्या 2¹⁶ संबंधांपैकी कोणते स्वतुल्य, सममित आणि संक्रामक आहेत हे तपासून थेट प्रयत्न करणे निराशाजनक ठरले असते. दुसरी, मोजणी घटकाने नव्हे तर आकाराने मांडणेच दुहेरी मोजणी रोखते: प्रत्येक विभाजन एकदाच वर्णिले जाते, आपल्या गट आकारांनी, आणि तो आकार मिळवण्याचे मार्ग वेगळे मोजले जातात. या मोजण्यांचा क्रम — 1, 2, 5, 15, 52 — बेल संख्या आहेत, आणि त्या कोणत्याही बहुपदीहून वेगाने वाढतात. (24 4 चा क्रमगुणित देते, जो गटबंधन नव्हे तर पुनर्रचना मोजते.)"
+        }
+      }
+    }
+  ]
+}

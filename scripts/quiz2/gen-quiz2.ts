@@ -53,6 +53,7 @@ import { G11_BIOLOGY, G11_BIOLOGY_NUMERIC } from "./g11-biology";
 import { G12_PHYSICS, G12_PHYSICS_NUMERIC } from "./g12-physics";
 import { G12_CHEMISTRY, G12_CHEMISTRY_NUMERIC } from "./g12-chemistry";
 import { G12_BIOLOGY, G12_BIOLOGY_NUMERIC } from "./g12-biology";
+import { G12_MATHS } from "./g12-maths";
 import { withNumeric } from "./numeric";
 
 const DIR = join(process.cwd(), "content", "quiz");
@@ -113,6 +114,7 @@ function main() {
     // Class 11 family with no conceptual half to bolt problems onto, because a
     // set, a relation and a discriminant are already the things being counted.
     ...G11_MATHS,
+    ...G12_MATHS,
   ];
   let total = 0;
   for (const out of topics) {
