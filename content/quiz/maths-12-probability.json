@@ -1,0 +1,513 @@
+{
+  "slug": "maths-12-probability",
+  "subject": "MATHS",
+  "classLevel": 12,
+  "chapter": "Chapter 13 — Probability",
+  "name": "Probability",
+  "summary": "What a piece of information does to a chance, and how easily the wrong information is used: why mutually exclusive events with real probability are the most dependent events there are, why 'at least one is a girl' and 'the elder is a girl' shrink the sample space differently, why checking every pair is not the same as checking every subset, and why a 99% accurate test can leave someone 99% likely to be healthy.",
+  "position": 13,
+  "translations": {
+    "hi": {
+      "name": "प्रायिकता",
+      "summary": "कोई जानकारी किसी संभावना के साथ क्या करती है, और ग़लत जानकारी कितनी आसानी से बरती जाती है: असली प्रायिकता वाली परस्पर अपवर्जी घटनाएँ सबसे अधिक परतंत्र क्यों हैं, 'कम से कम एक लड़की है' और 'बड़ी लड़की है' प्रतिदर्श समष्टि को अलग-अलग क्यों सिकोड़ते हैं, हर जोड़ा जाँचना हर उपसमुच्चय जाँचने जैसा क्यों नहीं, और 99% सटीक जाँच के बाद भी किसी के स्वस्थ होने की संभावना 99% क्यों रह सकती है।"
+    },
+    "mr": {
+      "name": "संभाव्यता",
+      "summary": "एखादी माहिती एखाद्या शक्यतेचे काय करते, आणि चुकीची माहिती किती सहज वापरली जाते: खरी संभाव्यता असलेल्या परस्पर अपवर्जक घटना सर्वाधिक परावलंबी का आहेत, 'किमान एक मुलगी आहे' आणि 'मोठी मुलगी आहे' नमुना अवकाश वेगवेगळ्या प्रकारे का आकुंचित करतात, प्रत्येक जोडी तपासणे प्रत्येक उपसंच तपासण्यासारखे का नाही, आणि 99% अचूक चाचणीनंतरही कोणी निरोगी असण्याची शक्यता 99% का राहू शकते."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "A fair die is rolled. Out of 6 outcomes, how many are even?",
+      "choices": [
+        "4",
+        "2",
+        "6",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "2, 4 and 6 — three of them, so the probability of an even roll is 3/6 = 1/2. Counting favourable outcomes out of equally likely ones is the whole of elementary probability, and everything later in the chapter is about what happens when the outcomes are NOT equally likely or when information arrives that changes the count. (2 counts the digits 2 and 4 and forgets 6 is even.)",
+      "checkExpr": "6/2",
+      "translations": {
+        "hi": {
+          "stem": "एक न्यायसंगत पासा फेंका जाता है। 6 परिणामों में से कितने सम हैं?",
+          "choices": [
+            "4",
+            "2",
+            "6",
+            "3"
+          ],
+          "solution": "2, 4 और 6 — उनमें तीन, अतः सम आने की प्रायिकता 3/6 = 1/2 है। समसंभाव्य परिणामों में से अनुकूल परिणाम गिनना प्रारंभिक प्रायिकता की पूरी बात है, और अध्याय में आगे सब कुछ इस बारे में है कि क्या होता है जब परिणाम समसंभाव्य न हों या जब ऐसी जानकारी आ जाए जो गिनती बदल दे। (2, अंक 2 और 4 गिन लेता है और भूल जाता है कि 6 सम है।)"
+        },
+        "mr": {
+          "stem": "एक न्याय्य फासा टाकला जातो. 6 निकालांपैकी किती सम आहेत?",
+          "choices": [
+            "4",
+            "2",
+            "6",
+            "3"
+          ],
+          "solution": "2, 4 आणि 6 — त्यांतील तीन, म्हणून सम येण्याची संभाव्यता 3/6 = 1/2 आहे. समसंभाव्य निकालांतून अनुकूल निकाल मोजणे ही प्राथमिक संभाव्यतेची अख्खी गोष्ट आहे, आणि अध्यायात पुढे सर्वकाही याबद्दल आहे की काय होते जेव्हा निकाल समसंभाव्य नसतील किंवा जेव्हा मोजणी बदलणारी माहिती येईल. (2 अंक 2 आणि 4 मोजते आणि विसरते की 6 सम आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "Two fair coins are tossed. How many outcomes are in the sample space?",
+      "choices": [
+        "8",
+        "2",
+        "4",
+        "3"
+      ],
+      "answerIndex": 2,
+      "solution": "Four: HH, HT, TH and TT. Note that HT and TH are DIFFERENT outcomes even though both give one head — the coins are distinguishable even when they look alike, and treating 'one head' as a single outcome is what produces the wrong answer 3. That error has a distinguished history: it is what d'Alembert got wrong in the eighteenth century, and it is still the commonest mistake in the chapter. (3 counts the possible numbers of heads rather than the outcomes.)",
+      "checkExpr": "2*2",
+      "translations": {
+        "hi": {
+          "stem": "दो न्यायसंगत सिक्के उछाले जाते हैं। प्रतिदर्श समष्टि में कितने परिणाम हैं?",
+          "choices": [
+            "8",
+            "2",
+            "4",
+            "3"
+          ],
+          "solution": "चार: HH, HT, TH और TT. ध्यान दो कि HT और TH अलग परिणाम हैं, भले दोनों एक चित देते हों — सिक्के एक जैसे दिखने पर भी अलग पहचाने जा सकते हैं, और 'एक चित' को अकेला परिणाम मानना ही ग़लत उत्तर 3 पैदा करता है। उस भूल का प्रतिष्ठित इतिहास है: अठारहवीं सदी में द'अलंबेयर से यही ग़लती हुई थी, और वह आज भी अध्याय की सबसे आम भूल है। (3 परिणामों के बजाय चितों की संभव संख्याएँ गिन लेता है।)"
+        },
+        "mr": {
+          "stem": "दोन न्याय्य नाणी उडवली जातात. नमुना अवकाशात किती निकाल आहेत?",
+          "choices": [
+            "8",
+            "2",
+            "4",
+            "3"
+          ],
+          "solution": "चार: HH, HT, TH आणि TT. लक्षात घ्या की HT आणि TH हे वेगळे निकाल आहेत, जरी दोन्ही एक छापा देत असले तरी — नाणी सारखी दिसली तरी वेगळी ओळखता येतात, आणि 'एक छापा' ला एकच निकाल मानणेच चुकीचे उत्तर 3 निर्माण करते. त्या चुकीला प्रतिष्ठित इतिहास आहे: अठराव्या शतकात द'अलंबेरची हीच चूक झाली होती, आणि ती आजही अध्यायातील सर्वांत सामान्य चूक आहे. (3 निकालांऐवजी छाप्यांच्या शक्य संख्या मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "An event is certain. Its probability is what number?",
+      "choices": [
+        "1",
+        "2",
+        "100",
+        "0"
+      ],
+      "answerIndex": 0,
+      "solution": "1. Probability runs from 0 to 1, with 0 for impossible and 1 for certain, and every number in between is a degree of belief or a long-run frequency depending on which interpretation one takes. The 100 on offer is a percentage, which is the same information wearing different clothes; mixing the two scales in one calculation is a reliable way to produce an answer a hundred times too big. (100 gives the percentage.)",
+      "checkExpr": "2-1",
+      "translations": {
+        "hi": {
+          "stem": "कोई घटना निश्चित है। उसकी प्रायिकता कौन-सी संख्या है?",
+          "choices": [
+            "1",
+            "2",
+            "100",
+            "0"
+          ],
+          "solution": "1. प्रायिकता 0 से 1 तक चलती है, 0 असंभव के लिए और 1 निश्चित के लिए, और बीच की हर संख्या विश्वास की मात्रा है या दीर्घकालिक बारंबारता, इस पर निर्भर कि कौन-सी व्याख्या ली जाए। पेश किया गया 100 प्रतिशत है, जो वही जानकारी है अलग कपड़ों में; एक ही गणना में दोनों पैमाने मिला देना सौ गुना बड़ा उत्तर पैदा करने का भरोसेमंद तरीक़ा है। (100 प्रतिशत देता है।)"
+        },
+        "mr": {
+          "stem": "एखादी घटना निश्चित आहे. तिची संभाव्यता कोणती संख्या आहे?",
+          "choices": [
+            "1",
+            "2",
+            "100",
+            "0"
+          ],
+          "solution": "1. संभाव्यता 0 ते 1 पर्यंत चालते, 0 अशक्यासाठी आणि 1 निश्चितासाठी, आणि मधली प्रत्येक संख्या विश्वासाची मात्रा आहे वा दीर्घकालीन वारंवारता, कोणते अर्थनिर्वचन घेतले यावर अवलंबून. दिलेला 100 हा टक्केवारी आहे, जी तीच माहिती वेगळ्या कपड्यांत आहे; एकाच गणनेत दोन्ही मापे मिसळणे हा शंभरपट मोठे उत्तर तयार करण्याचा विश्वासार्ह मार्ग आहे. (100 टक्केवारी देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A die shows an even number. Given that, out of how many outcomes is a 6 now being chosen?",
+      "choices": [
+        "1",
+        "6",
+        "2",
+        "3"
+      ],
+      "answerIndex": 3,
+      "solution": "Three — the condition has thrown away 1, 3 and 5, so the sample space is now {2, 4, 6} and P(6 | even) = 1/3 rather than 1/6. That is the whole mechanism of conditional probability: information does not change the die, it SHRINKS the sample space, and the probability rises because the same single favourable outcome is now competing against fewer rivals. Seeing conditioning as a reduction of the space rather than as a formula makes most of the later questions answerable by counting. (6 keeps the original space and ignores the condition.)",
+      "checkExpr": "6/2",
+      "translations": {
+        "hi": {
+          "stem": "पासे पर सम संख्या आई। यह देखते हुए, अब 6 कितने परिणामों में से चुना जा रहा है?",
+          "choices": [
+            "1",
+            "6",
+            "2",
+            "3"
+          ],
+          "solution": "तीन — शर्त ने 1, 3 और 5 फेंक दिए, अतः प्रतिदर्श समष्टि अब {2, 4, 6} है और P(6 | सम) = 1/3 है, 1/6 नहीं। यही सशर्त प्रायिकता की पूरी क्रियाविधि है: जानकारी पासे को नहीं बदलती, वह प्रतिदर्श समष्टि को सिकोड़ देती है, और प्रायिकता इसलिए बढ़ती है क्योंकि वही एक अनुकूल परिणाम अब कम प्रतिद्वंद्वियों से भिड़ रहा है। सशर्तन को सूत्र के बजाय समष्टि के संकुचन की तरह देखना आगे के अधिकांश प्रश्नों को गिनती से उत्तर देने लायक़ बना देता है। (6 मूल समष्टि रखता है और शर्त अनदेखी करता है।)"
+        },
+        "mr": {
+          "stem": "फाशावर सम संख्या आली. हे पाहता, आता 6 किती निकालांतून निवडला जात आहे?",
+          "choices": [
+            "1",
+            "6",
+            "2",
+            "3"
+          ],
+          "solution": "तीन — अटीने 1, 3 आणि 5 फेकून दिले, म्हणून नमुना अवकाश आता {2, 4, 6} आहे आणि P(6 | सम) = 1/3 आहे, 1/6 नव्हे. हीच सशर्त संभाव्यतेची अख्खी कार्यपद्धती आहे: माहिती फाशाला बदलत नाही, ती नमुना अवकाश आकुंचित करते, आणि संभाव्यता यासाठी वाढते कारण तोच एक अनुकूल निकाल आता कमी प्रतिस्पर्ध्यांशी भिडत आहे. सशर्तीकरणाला सूत्राऐवजी अवकाशाचे आकुंचन म्हणून पाहणे पुढील बहुतांश प्रश्न मोजणीने उत्तरण्याजोगे बनवते. (6 मूळ अवकाश ठेवते आणि अट दुर्लक्षते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Two independent events have probabilities 1/2 and 1/3. What is the denominator of the probability that both occur?",
+      "choices": [
+        "6",
+        "2",
+        "3",
+        "5"
+      ],
+      "answerIndex": 0,
+      "solution": "Independence means the probabilities multiply: (1/2)(1/3) = 1/6, so the denominator is 6. Note that 5 is the answer of somebody who added the fractions, which would be the rule for MUTUALLY EXCLUSIVE events and not for independent ones — the two words sound similar and describe opposite situations, which the next question takes up directly. (5 adds the denominators.)",
+      "checkExpr": "2*3",
+      "translations": {
+        "hi": {
+          "stem": "दो स्वतंत्र घटनाओं की प्रायिकताएँ 1/2 और 1/3 हैं। दोनों के घटने की प्रायिकता का हर क्या है?",
+          "choices": [
+            "6",
+            "2",
+            "3",
+            "5"
+          ],
+          "solution": "स्वतंत्रता का अर्थ है प्रायिकताएँ गुणा होती हैं: (1/2)(1/3) = 1/6, अतः हर 6 है। ध्यान दो कि 5 उसका उत्तर है जिसने भिन्न जोड़ दीं, जो परस्पर अपवर्जी घटनाओं का नियम होता, स्वतंत्र घटनाओं का नहीं — दोनों शब्द एक जैसे सुनाई देते हैं और विपरीत स्थितियाँ बताते हैं, जिसे अगला प्रश्न सीधे उठाता है। (5 हर जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "दोन स्वतंत्र घटनांच्या संभाव्यता 1/2 आणि 1/3 आहेत. दोन्ही घडण्याच्या संभाव्यतेचा छेद किती?",
+          "choices": [
+            "6",
+            "2",
+            "3",
+            "5"
+          ],
+          "solution": "स्वातंत्र्याचा अर्थ संभाव्यता गुणल्या जातात: (1/2)(1/3) = 1/6, म्हणून छेद 6 आहे. लक्षात घ्या की 5 हे त्याचे उत्तर आहे ज्याने अपूर्णांक जोडले, जो परस्पर अपवर्जक घटनांचा नियम असता, स्वतंत्र घटनांचा नव्हे — दोन्ही शब्द सारखे ऐकू येतात आणि विरुद्ध परिस्थिती सांगतात, जे पुढचा प्रश्न थेट उचलतो. (5 छेद जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Two events with non-zero probability are mutually exclusive. How many of them can be independent of the other?",
+      "choices": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "answerIndex": 0,
+      "solution": "Neither — mutually exclusive events with non-zero probability are necessarily DEPENDENT, which is the opposite of what the similar-sounding names suggest. The argument is short. If A and B cannot both happen, then P(A and B) = 0. If they were independent, P(A and B) would equal P(A)P(B), which is a product of two non-zero numbers and therefore non-zero. The two statements contradict each other, so independence is impossible. The intuition behind the algebra is worth stating: learning that A happened tells you B definitely did NOT, and that is a very large amount of information — the most, in fact, that one event can give about another. Independence means learning nothing; exclusivity means learning everything. They are not merely different, they are at opposite ends of the same scale. (1 supposes the relation might hold one way and not the other, but independence is symmetric.)",
+      "checkExpr": "1-1",
+      "translations": {
+        "hi": {
+          "stem": "अशून्य प्रायिकता वाली दो घटनाएँ परस्पर अपवर्जी हैं। उनमें से कितनी दूसरी से स्वतंत्र हो सकती हैं?",
+          "choices": [
+            "0",
+            "1",
+            "2",
+            "3"
+          ],
+          "solution": "कोई नहीं — अशून्य प्रायिकता वाली परस्पर अपवर्जी घटनाएँ अनिवार्यतः परतंत्र हैं, जो उन एक-से सुनाई देते नामों के सुझाव के उलट है। तर्क छोटा है। यदि A और B दोनों नहीं हो सकते, तो P(A और B) = 0. यदि वे स्वतंत्र होतीं, तो P(A और B) बराबर होता P(A)P(B) के, जो दो अशून्य संख्याओं का गुणनफल है और इसलिए अशून्य। दोनों कथन एक-दूसरे का खंडन करते हैं, अतः स्वतंत्रता असंभव है। बीजगणित के पीछे का अंतर्ज्ञान कहने लायक़ है: यह जानना कि A हुआ, तुम्हें बता देता है कि B निश्चित रूप से नहीं हुआ, और वह बहुत बड़ी मात्रा में जानकारी है — असल में सबसे ज़्यादा, जितनी एक घटना दूसरी के बारे में दे सकती है। स्वतंत्रता का अर्थ है कुछ न जानना; अपवर्जिता का अर्थ है सब जान जाना। वे महज़ भिन्न नहीं, वे एक ही पैमाने के विपरीत सिरों पर हैं। (1 मान लेता है कि संबंध एक ओर हो सकता है और दूसरी ओर नहीं, पर स्वतंत्रता सममित है।)"
+        },
+        "mr": {
+          "stem": "अशून्य संभाव्यता असलेल्या दोन घटना परस्पर अपवर्जक आहेत. त्यांपैकी किती दुसरीपासून स्वतंत्र असू शकतात?",
+          "choices": [
+            "0",
+            "1",
+            "2",
+            "3"
+          ],
+          "solution": "एकही नाही — अशून्य संभाव्यता असलेल्या परस्पर अपवर्जक घटना अपरिहार्यपणे परावलंबी आहेत, जे त्या सारख्या ऐकू येणाऱ्या नावांच्या सूचनेच्या उलट आहे. युक्तिवाद छोटा आहे. जर A आणि B दोन्ही घडू शकत नसतील, तर P(A आणि B) = 0. जर त्या स्वतंत्र असत्या, तर P(A आणि B) हे P(A)P(B) इतके असते, जो दोन अशून्य संख्यांचा गुणाकार आहे आणि म्हणून अशून्य. दोन्ही विधाने एकमेकांचे खंडन करतात, म्हणून स्वातंत्र्य अशक्य आहे. बीजगणिताच्या मागची अंतर्दृष्टी सांगण्याजोगी आहे: A घडले हे जाणणे तुम्हाला सांगते की B निश्चितपणे घडले नाही, आणि ती फार मोठ्या प्रमाणातील माहिती आहे — प्रत्यक्षात सर्वाधिक, जितकी एक घटना दुसरीबद्दल देऊ शकते. स्वातंत्र्य म्हणजे काहीच न कळणे; अपवर्जकता म्हणजे सर्व कळणे. त्या केवळ वेगळ्या नाहीत, त्या एकाच मापाच्या विरुद्ध टोकांवर आहेत. (1 गृहीत धरते की संबंध एका बाजूने असू शकतो आणि दुसऱ्या बाजूने नाही, पण स्वातंत्र्य सममित आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A bag has 3 red and 2 blue balls. Two are drawn without replacement. Out of how many balls is the second drawn?",
+      "choices": [
+        "3",
+        "2",
+        "4",
+        "5"
+      ],
+      "answerIndex": 2,
+      "solution": "Four, since one ball has already gone. 'Without replacement' is the phrase that makes the two draws dependent: the second draw's probabilities depend on what the first produced, so the sample space has changed between them. With replacement the count would stay 5 and the draws would be independent. This one phrase is the difference between multiplying unchanged probabilities and having to condition, and it is worth reading for deliberately in every word problem, because it is usually the only place the dependence is announced. (5 keeps the original count.)",
+      "checkExpr": "5-1",
+      "translations": {
+        "hi": {
+          "stem": "किसी थैले में 3 लाल और 2 नीली गेंदें हैं। बिना लौटाए दो निकाली जाती हैं। दूसरी कितनी गेंदों में से निकाली जाती है?",
+          "choices": [
+            "3",
+            "2",
+            "4",
+            "5"
+          ],
+          "solution": "चार, क्योंकि एक गेंद पहले ही जा चुकी। 'बिना लौटाए' वही वाक्यांश है जो दोनों निकालों को परतंत्र बनाता है: दूसरे निकाल की प्रायिकताएँ इस पर निर्भर हैं कि पहले ने क्या दिया, अतः उनके बीच प्रतिदर्श समष्टि बदल गई है। लौटाने के साथ गिनती 5 ही रहती और निकाल स्वतंत्र होते। यह एक वाक्यांश अपरिवर्तित प्रायिकताएँ गुणा करने और सशर्तन करने के बीच का फ़र्क़ है, और हर शब्द-समस्या में उसे जान-बूझकर ढूँढ़ना ठीक है, क्योंकि आम तौर पर वही अकेली जगह है जहाँ परतंत्रता की घोषणा होती है। (5 मूल गिनती रखता है।)"
+        },
+        "mr": {
+          "stem": "एका पिशवीत 3 लाल आणि 2 निळे चेंडू आहेत. परत न ठेवता दोन काढले जातात. दुसरा किती चेंडूंतून काढला जातो?",
+          "choices": [
+            "3",
+            "2",
+            "4",
+            "5"
+          ],
+          "solution": "चार, कारण एक चेंडू आधीच गेला आहे. 'परत न ठेवता' हाच तो वाक्यांश आहे जो दोन्ही काढण्यांना परावलंबी बनवतो: दुसऱ्या काढण्याच्या संभाव्यता पहिल्याने काय दिले यावर अवलंबून आहेत, म्हणून त्यांच्यादरम्यान नमुना अवकाश बदलला आहे. परत ठेवल्यास मोजणी 5 च राहिली असती आणि काढणी स्वतंत्र असती. हा एक वाक्यांश अपरिवर्तित संभाव्यता गुणणे आणि सशर्तीकरण करावे लागणे यांतील फरक आहे, आणि प्रत्येक शब्द-समस्येत तो मुद्दाम शोधणे बरे, कारण सर्वसाधारणपणे तीच एकमेव जागा आहे जिथे परावलंबित्वाची घोषणा होते. (5 मूळ मोजणी ठेवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A coin is tossed 5 times. In how many of the 32 outcomes are all tosses heads?",
+      "choices": [
+        "1",
+        "2",
+        "32",
+        "5"
+      ],
+      "answerIndex": 0,
+      "solution": "One — HHHHH, and only that. So the probability is 1/32, which is the same as (1/2)⁵ as independence would give. Worth noticing: this single outcome is exactly as likely as any other single outcome, including HTHTH, which feels far more ordinary. What makes 'all heads' feel special is not its own probability but that it belongs to a description satisfied by only one arrangement, while 'some mixture' is satisfied by thirty. Confusing the probability of an OUTCOME with the probability of a DESCRIPTION is behind most misjudged coincidences, in this chapter and outside it. (5 counts the tosses.)",
+      "checkExpr": "2-1",
+      "translations": {
+        "hi": {
+          "stem": "एक सिक्का 5 बार उछाला जाता है। 32 परिणामों में से कितनों में सभी उछाल चित हैं?",
+          "choices": [
+            "1",
+            "2",
+            "32",
+            "5"
+          ],
+          "solution": "एक — HHHHH, और बस वही। अतः प्रायिकता 1/32 है, जो वही है जो स्वतंत्रता से (1/2)⁵ देती। ध्यान देने लायक़: यह अकेला परिणाम किसी भी दूसरे अकेले परिणाम जितना ही संभावित है, HTHTH सहित, जो कहीं अधिक साधारण लगता है। 'सब चित' को ख़ास उसकी अपनी प्रायिकता नहीं बनाती बल्कि यह कि वह ऐसे वर्णन से जुड़ा है जिसे केवल एक विन्यास पूरा करता है, जबकि 'कोई मिश्रण' को तीस पूरा करते हैं। किसी परिणाम की प्रायिकता को किसी वर्णन की प्रायिकता से गड्डमड्ड करना अधिकांश ग़लत आँके गए संयोगों के पीछे है, इस अध्याय में और उसके बाहर भी। (5 उछाल गिन लेता है।)"
+        },
+        "mr": {
+          "stem": "एक नाणे 5 वेळा उडवले जाते. 32 निकालांपैकी कितींत सर्व उडवण्या छापा आहेत?",
+          "choices": [
+            "1",
+            "2",
+            "32",
+            "5"
+          ],
+          "solution": "एक — HHHHH, आणि फक्त तोच. म्हणून संभाव्यता 1/32 आहे, जी स्वातंत्र्याने (1/2)⁵ देईल तीच आहे. लक्षात घेण्याजोगे: हा एकटा निकाल इतर कोणत्याही एकट्या निकालाइतकाच संभाव्य आहे, HTHTH सह, जो कितीतरी अधिक सामान्य वाटतो. 'सर्व छापे' ला खास त्याची स्वतःची संभाव्यता बनवत नाही तर हे की तो अशा वर्णनाशी जोडलेला आहे जे केवळ एक मांडणी पूर्ण करते, तर 'काहीतरी मिश्रण' तीस पूर्ण करतात. एखाद्या निकालाची संभाव्यता एखाद्या वर्णनाच्या संभाव्यतेशी गोंधळवणे हे बहुतांश चुकीच्या मोजलेल्या योगायोगांमागे आहे, या अध्यायात आणि त्याबाहेरही. (5 उडवण्या मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "In 10,000 people, 100 have a disease. A test is 99% accurate both ways. How many healthy people test positive?",
+      "choices": [
+        "99",
+        "9900",
+        "1",
+        "100"
+      ],
+      "answerIndex": 0,
+      "solution": "9,900 people are healthy and 1% of them test positive falsely: 9,900 × 0.01 = 99. Set that beside the true positives: of the 100 who are ill, 99 test positive. So 198 people test positive in total and only 99 of them are actually ill — a positive result means a 50% chance of disease, not 99%. This is base-rate neglect, and the reason the intuition fails is that the test's accuracy is applied to a much larger pool of healthy people than sick ones, so a small error rate on a big group matches a large success rate on a small one. The arithmetic is easiest to trust when done in whole people rather than percentages, which is why the question is posed with a population. (1 applies the 1% to the 100 ill people instead of the 9,900 healthy ones.)",
+      "checkExpr": "9900*0.01",
+      "translations": {
+        "hi": {
+          "stem": "10,000 लोगों में 100 को कोई रोग है। कोई जाँच दोनों ओर से 99% सटीक है। कितने स्वस्थ लोगों की जाँच धनात्मक आती है?",
+          "choices": [
+            "99",
+            "9900",
+            "1",
+            "100"
+          ],
+          "solution": "9,900 लोग स्वस्थ हैं और उनमें से 1% की जाँच झूठी धनात्मक आती है: 9,900 × 0.01 = 99. उसे सच्ची धनात्मकों के साथ रखो: जो 100 बीमार हैं उनमें से 99 की जाँच धनात्मक आती है। अतः कुल 198 लोगों की जाँच धनात्मक आती है और उनमें से केवल 99 सचमुच बीमार हैं — धनात्मक परिणाम का अर्थ है रोग की 50% संभावना, 99% नहीं। यह आधार-दर की उपेक्षा है, और अंतर्ज्ञान इसलिए विफल होता है क्योंकि जाँच की सटीकता बीमारों की तुलना में कहीं बड़े स्वस्थ लोगों के समूह पर लगती है, अतः बड़े समूह पर छोटी त्रुटि-दर छोटे समूह पर बड़ी सफलता-दर के बराबर आ जाती है। गणित पर भरोसा तब सबसे आसान है जब वह प्रतिशत के बजाय पूरे लोगों में किया जाए, इसीलिए प्रश्न जनसंख्या के साथ पूछा गया है। (1, 1% को 9,900 स्वस्थों के बजाय 100 बीमारों पर लगा देता है।)"
+        },
+        "mr": {
+          "stem": "10,000 लोकांत 100 जणांना एक रोग आहे. एक चाचणी दोन्ही बाजूंनी 99% अचूक आहे. किती निरोगी लोकांची चाचणी धन येते?",
+          "choices": [
+            "99",
+            "9900",
+            "1",
+            "100"
+          ],
+          "solution": "9,900 लोक निरोगी आहेत आणि त्यांपैकी 1% ची चाचणी खोटी धन येते: 9,900 × 0.01 = 99. ते खऱ्या धनांसोबत ठेवा: जे 100 आजारी आहेत त्यांपैकी 99 ची चाचणी धन येते. म्हणून एकूण 198 लोकांची चाचणी धन येते आणि त्यांपैकी केवळ 99 खरोखर आजारी आहेत — धन निकालाचा अर्थ रोगाची 50% शक्यता, 99% नव्हे. ही आधार-दराची उपेक्षा आहे, आणि अंतर्दृष्टी यासाठी अपयशी होते कारण चाचणीची अचूकता आजाऱ्यांहून कितीतरी मोठ्या निरोगी लोकांच्या गटावर लागते, म्हणून मोठ्या गटावरील लहान त्रुटी-दर लहान गटावरील मोठ्या यश-दराइतकी येते. गणितावर विश्वास तेव्हा सर्वांत सोपा आहे जेव्हा ते टक्केवारीऐवजी पूर्ण माणसांत केले जाईल, म्हणूनच प्रश्न लोकसंख्येसह विचारला आहे. (1 हे 1% ला 9,900 निरोग्यांऐवजी 100 आजाऱ्यांवर लावते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A family has two children, at least one a girl. Of the outcomes GG, GB, BG and BB, how many remain possible?",
+      "choices": [
+        "3",
+        "1",
+        "4",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "Three — only BB is ruled out. So the probability that both are girls is 1/3, not 1/2, and this is one of the most reliably counter-intuitive results in elementary probability. The reason the intuitive 1/2 is wrong is that 'at least one is a girl' does not identify WHICH child is the girl, so it eliminates one outcome rather than fixing one child's sex. Compare the different condition 'the elder is a girl': that eliminates two outcomes, BG and BB, leaving GG and GB, and the answer really is 1/2. The two conditions sound almost identical in English and shrink the sample space by different amounts, which is the whole lesson. Conditional probability is sensitive to exactly what was learned, and a slightly different piece of information about the same family gives a genuinely different answer. (2 assumes the condition fixes one child and leaves the other free.)",
+      "checkExpr": "4-1",
+      "translations": {
+        "hi": {
+          "stem": "किसी परिवार में दो बच्चे हैं, कम से कम एक लड़की। परिणामों GG, GB, BG और BB में से कितने संभव बचते हैं?",
+          "choices": [
+            "3",
+            "1",
+            "4",
+            "2"
+          ],
+          "solution": "तीन — केवल BB बाहर होता है। अतः दोनों के लड़की होने की प्रायिकता 1/3 है, 1/2 नहीं, और यह प्रारंभिक प्रायिकता के सबसे भरोसेमंद ढंग से अंतर्ज्ञान-विरोधी परिणामों में से एक है। सहज 1/2 इसलिए ग़लत है कि 'कम से कम एक लड़की है' यह नहीं बताता कि कौन-सा बच्चा लड़की है, अतः वह किसी एक बच्चे का लिंग तय करने के बजाय एक परिणाम हटाता है। भिन्न शर्त 'बड़ी लड़की है' से तुलना करो: वह दो परिणाम हटाती है, BG और BB, GG और GB छोड़ते हुए, और उत्तर सचमुच 1/2 है। दोनों शर्तें अंग्रेज़ी में लगभग एक जैसी सुनाई देती हैं और प्रतिदर्श समष्टि को अलग-अलग मात्रा में सिकोड़ती हैं, और यही पूरा सबक़ है। सशर्त प्रायिकता ठीक इस पर संवेदनशील है कि क्या जाना गया, और उसी परिवार के बारे में थोड़ी भिन्न जानकारी सचमुच भिन्न उत्तर देती है। (2 मान लेता है कि शर्त एक बच्चा तय कर देती है और दूसरा मुक्त छोड़ती है।)"
+        },
+        "mr": {
+          "stem": "एका कुटुंबात दोन मुले आहेत, किमान एक मुलगी. निकाल GG, GB, BG आणि BB यांपैकी किती शक्य उरतात?",
+          "choices": [
+            "3",
+            "1",
+            "4",
+            "2"
+          ],
+          "solution": "तीन — केवळ BB वगळला जातो. म्हणून दोन्ही मुली असण्याची संभाव्यता 1/3 आहे, 1/2 नव्हे, आणि हा प्राथमिक संभाव्यतेतील सर्वांत विश्वासार्हपणे अंतर्दृष्टी-विरोधी निकालांपैकी एक आहे. सहज 1/2 यासाठी चुकीचे आहे की 'किमान एक मुलगी आहे' हे सांगत नाही की कोणते मूल मुलगी आहे, म्हणून ते एका मुलाचे लिंग निश्चित करण्याऐवजी एक निकाल काढून टाकते. वेगळ्या अटीशी तुलना करा 'मोठी मुलगी आहे': ती दोन निकाल काढते, BG आणि BB, GG आणि GB सोडत, आणि उत्तर खरोखर 1/2 आहे. दोन्ही अटी इंग्रजीत जवळजवळ सारख्याच ऐकू येतात आणि नमुना अवकाश वेगवेगळ्या प्रमाणात आकुंचित करतात, आणि हाच अख्खा धडा आहे. सशर्त संभाव्यता नेमके काय कळले यावर संवेदनशील आहे, आणि त्याच कुटुंबाबद्दलची थोडी वेगळी माहिती खरोखर वेगळे उत्तर देते. (2 गृहीत धरते की अट एक मूल निश्चित करते आणि दुसरे मोकळे सोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "Toss two fair coins. Let A be 'first is heads', B 'second is heads', C 'the two match'. How many of the three pairs among A, B, C are independent?",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "0"
+      ],
+      "answerIndex": 2,
+      "solution": "All three. Each event has probability 1/2, and each pair intersects in exactly one of the four outcomes, giving 1/4 = (1/2)(1/2) every time. So A, B and C are PAIRWISE independent. Now look at all three together: A and B both happening forces HH, which certainly matches, so P(C | A and B) = 1, not 1/2. The three events are not mutually independent, and the count of independent pairs is 3 while the triple fails. That gap is the point of the example, and it is the standard counterexample showing that mutual independence is strictly stronger than pairwise independence — checking every pair is not enough, and one must check every subset. The practical consequence is real rather than pedantic. Statistical procedures that assume independence usually need the mutual kind, while the evidence one can gather easily is pairwise: correlations are computed two variables at a time. So a set of measurements can look independent in every scatterplot and still contain a joint dependence that no pair reveals, and this is precisely how models built from pairwise correlations underestimate the chance of everything failing at once. (2 supposes that one pair must fail if the triple does.)",
+      "checkExpr": "1+2",
+      "translations": {
+        "hi": {
+          "stem": "दो न्यायसंगत सिक्के उछालो। A हो 'पहला चित', B 'दूसरा चित', C 'दोनों एक जैसे'. A, B, C में से तीन जोड़ों में कितनी स्वतंत्र हैं?",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "0"
+          ],
+          "solution": "तीनों। हर घटना की प्रायिकता 1/2 है, और हर जोड़ा चार परिणामों में से ठीक एक में मिलता है, जिससे हर बार 1/4 = (1/2)(1/2) मिलता है। अतः A, B और C जोड़ीदार स्वतंत्र हैं। अब तीनों को एक साथ देखो: A और B दोनों का होना HH पर मजबूर करता है, जो निश्चित रूप से मेल खाता है, अतः P(C | A और B) = 1 है, 1/2 नहीं। तीनों घटनाएँ परस्पर स्वतंत्र नहीं हैं, और स्वतंत्र जोड़ों की गिनती 3 है जबकि त्रिक विफल है। वही अंतर उदाहरण का मुद्दा है, और यह मानक प्रतिउदाहरण है जो दिखाता है कि परस्पर स्वतंत्रता जोड़ीदार स्वतंत्रता से सख़्ती से मज़बूत है — हर जोड़ा जाँचना काफ़ी नहीं, हर उपसमुच्चय जाँचना होगा। व्यावहारिक परिणाम विद्वता-प्रदर्शन नहीं बल्कि असली है। स्वतंत्रता मान लेने वाली सांख्यिकीय प्रक्रियाओं को आम तौर पर परस्पर वाली चाहिए, जबकि जो साक्ष्य आसानी से जुटाया जा सकता है वह जोड़ीदार है: सहसंबंध एक बार में दो चरों पर निकाले जाते हैं। अतः मापों का कोई समुच्चय हर प्रकीर्ण-आलेख में स्वतंत्र दिख सकता है और फिर भी ऐसी संयुक्त परतंत्रता रख सकता है जिसे कोई जोड़ा उजागर नहीं करता, और ठीक इसी तरह जोड़ीदार सहसंबंधों से बने मॉडल सब कुछ एक साथ विफल होने की संभावना को कम आँकते हैं। (2 मान लेता है कि त्रिक विफल हो तो कोई जोड़ा भी विफल होना चाहिए।)"
+        },
+        "mr": {
+          "stem": "दोन न्याय्य नाणी उडवा. A म्हणजे 'पहिला छापा', B 'दुसरा छापा', C 'दोन्ही सारखे'. A, B, C यांतील तीन जोड्यांपैकी किती स्वतंत्र आहेत?",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "0"
+          ],
+          "solution": "तिन्ही. प्रत्येक घटनेची संभाव्यता 1/2 आहे, आणि प्रत्येक जोडी चार निकालांपैकी नेमक्या एकात भेटते, ज्यातून दरवेळी 1/4 = (1/2)(1/2) मिळते. म्हणून A, B आणि C जोडीदार स्वतंत्र आहेत. आता तिन्ही एकत्र पाहा: A आणि B दोन्ही घडणे HH वर भाग पाडते, जे निश्चितपणे जुळते, म्हणून P(C | A आणि B) = 1 आहे, 1/2 नव्हे. तिन्ही घटना परस्पर स्वतंत्र नाहीत, आणि स्वतंत्र जोड्यांची मोजणी 3 आहे तर त्रिक अपयशी आहे. तीच दरी उदाहरणाचा मुद्दा आहे, आणि हे प्रमाण प्रतिउदाहरण आहे जे दाखवते की परस्पर स्वातंत्र्य जोडीदार स्वातंत्र्याहून काटेकोरपणे बळकट आहे — प्रत्येक जोडी तपासणे पुरेसे नाही, प्रत्येक उपसंच तपासावा लागेल. व्यावहारिक परिणाम पांडित्यप्रदर्शन नसून खरा आहे. स्वातंत्र्य गृहीत धरणाऱ्या संख्याशास्त्रीय प्रक्रियांना सर्वसाधारणपणे परस्पर प्रकार लागतो, तर जो पुरावा सहज गोळा करता येतो तो जोडीदार आहे: सहसंबंध एका वेळी दोन चलांवर काढले जातात. म्हणून मापांचा एखादा संच प्रत्येक विखार-आलेखात स्वतंत्र दिसू शकतो आणि तरीही असे संयुक्त परावलंबित्व बाळगू शकतो जे कोणतीही जोडी उघड करत नाही, आणि नेमक्या याच रीतीने जोडीदार सहसंबंधांतून बांधलेली प्रतिरूपे सर्वकाही एकाच वेळी अपयशी होण्याची शक्यता कमी लेखतात. (2 गृहीत धरते की त्रिक अपयशी झाल्यास एखादी जोडीही अपयशी असावी.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A random variable takes value 0 with probability 0.9 and 100 with probability 0.1. What is its mean?",
+      "choices": [
+        "50",
+        "0",
+        "100",
+        "10"
+      ],
+      "answerIndex": 3,
+      "solution": "0.9 × 0 + 0.1 × 100 = 10. Note what the answer is not: 10 is a value this variable NEVER takes, since its only outcomes are 0 and 100. That is worth sitting with, because 'mean' invites the reading 'typical', and here nothing is typical of 10 at all. The expectation is a weighted balance point, not a representative case, and for a lopsided distribution the two come apart completely. The practical form of this is everywhere. An insurance policy has an expected payout that no individual policy ever pays; an average of 2.4 children describes no family. Reporting a mean without a spread hides exactly the information that matters here — the variance of this variable is 900, so its standard deviation is 30, three times the mean itself, which is the number that would tell a reader the mean is not describing a typical outcome. (50 averages the two values without weighting them by their probabilities.)",
+      "checkExpr": "0.9*0+0.1*100",
+      "translations": {
+        "hi": {
+          "stem": "कोई यादृच्छिक चर 0.9 प्रायिकता से मान 0 और 0.1 प्रायिकता से 100 लेता है। उसका माध्य क्या है?",
+          "choices": [
+            "50",
+            "0",
+            "100",
+            "10"
+          ],
+          "solution": "0.9 × 0 + 0.1 × 100 = 10. ध्यान दो कि उत्तर क्या नहीं है: 10 ऐसा मान है जो यह चर कभी लेता ही नहीं, क्योंकि उसके परिणाम केवल 0 और 100 हैं। इस पर ठहरना ज़रूरी है, क्योंकि 'माध्य' 'विशिष्ट' पढ़ने का न्योता देता है, और यहाँ 10 का कुछ भी विशिष्ट नहीं। प्रत्याशा भारित संतुलन-बिंदु है, प्रतिनिधि मामला नहीं, और एकतरफ़ा बंटन के लिए दोनों पूरी तरह अलग हो जाते हैं। इसका व्यावहारिक रूप हर जगह है। किसी बीमा पॉलिसी का प्रत्याशित भुगतान वह है जो कोई एक पॉलिसी कभी नहीं चुकाती; औसतन 2.4 बच्चे किसी परिवार का वर्णन नहीं करते। फैलाव के बिना माध्य बताना ठीक वही जानकारी छिपाता है जो यहाँ मायने रखती है — इस चर का प्रसरण 900 है, अतः उसका मानक विचलन 30 है, माध्य से तीन गुना, और यही वह संख्या है जो पाठक को बताती कि माध्य किसी विशिष्ट परिणाम का वर्णन नहीं कर रहा। (50 दोनों मानों का औसत लेता है, उन्हें उनकी प्रायिकताओं से भारित किए बिना।)"
+        },
+        "mr": {
+          "stem": "एक यादृच्छिक चल 0.9 संभाव्यतेने मूल्य 0 आणि 0.1 संभाव्यतेने 100 घेतो. त्याचा मध्य किती?",
+          "choices": [
+            "50",
+            "0",
+            "100",
+            "10"
+          ],
+          "solution": "0.9 × 0 + 0.1 × 100 = 10. लक्षात घ्या की उत्तर काय नाही: 10 हे असे मूल्य आहे जे हा चल कधीच घेत नाही, कारण त्याचे निकाल केवळ 0 आणि 100 आहेत. यावर थांबणे आवश्यक आहे, कारण 'मध्य' हा 'ठराविक' असे वाचण्याचे निमंत्रण देतो, आणि इथे 10 चे काहीच ठराविक नाही. अपेक्षा हा भारित संतुलन-बिंदू आहे, प्रातिनिधिक प्रसंग नव्हे, आणि एकतर्फी वितरणासाठी दोन्ही पूर्णपणे वेगळे होतात. याचे व्यावहारिक रूप सर्वत्र आहे. एखाद्या विमा पॉलिसीचा अपेक्षित परतावा असा आहे जो कोणतीही एक पॉलिसी कधीच देत नाही; सरासरी 2.4 मुले कोणत्याही कुटुंबाचे वर्णन करत नाहीत. पसाऱ्याविना मध्य सांगणे नेमकी तीच माहिती लपवते जी इथे महत्त्वाची आहे — या चलाचे प्रसरण 900 आहे, म्हणून त्याचे प्रमाण विचलन 30 आहे, मध्याच्या तिप्पट, आणि हीच ती संख्या आहे जी वाचकाला सांगेल की मध्य कोणत्याही ठराविक निकालाचे वर्णन करत नाही. (50 दोन्ही मूल्यांची सरासरी घेते, त्यांना त्यांच्या संभाव्यतांनी भारित न करता.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A rare disease affects 1 in 10,000. A 99%-accurate test comes back positive. Rounded to the nearest whole per cent, what is the chance the person actually has it?",
+      "choices": [
+        "99",
+        "1",
+        "50",
+        "10"
+      ],
+      "answerIndex": 1,
+      "solution": "About 1 per cent. Take a million people: 100 have the disease and 99 of them test positive; 999,900 are healthy and 1% of those — 9,999 — test positive falsely. So 10,098 positives, of whom 99 are ill: 99/10,098 ≈ 0.98%, which rounds to 1. The test is 99% accurate and a positive result still leaves the person 99% likely to be healthy, which sounds like a contradiction and is not. The confusion is between two different conditional probabilities: P(positive | ill) is 0.99, and P(ill | positive) is 0.0098. These are not the same quantity, and Bayes' theorem is precisely the machinery for converting one into the other — the conversion factor being the base rate, which is what the intuition silently ignores. Two consequences are worth stating. First, this inversion error has a name outside mathematics: in a courtroom it is the prosecutor's fallacy, where the probability of the evidence given innocence is presented as the probability of innocence given the evidence, and people have been convicted on it. Second, the practical response is not to distrust tests but to understand what screening does. Testing a whole population for a rare condition generates false positives that swamp the true ones, which is why medicine screens targeted groups where the base rate is higher, and why a positive screen is followed by a second, different test rather than by a diagnosis. The second test works not because it is more accurate but because after the first result the base rate is no longer 1 in 10,000 — it is about 1 in 100, and the same arithmetic then lands somewhere quite different. (99 reports the test's accuracy as though it were the answer, which is the error the question is built around.)",
+      "checkExpr": "2-1",
+      "translations": {
+        "hi": {
+          "stem": "कोई दुर्लभ रोग 10,000 में 1 को होता है। 99% सटीक जाँच धनात्मक आती है। निकटतम पूर्ण प्रतिशत तक, व्यक्ति को सचमुच रोग होने की संभावना क्या है?",
+          "choices": [
+            "99",
+            "1",
+            "50",
+            "10"
+          ],
+          "solution": "क़रीब 1 प्रतिशत। दस लाख लोग लो: 100 को रोग है और उनमें से 99 की जाँच धनात्मक आती है; 999,900 स्वस्थ हैं और उनमें से 1% — 9,999 — की जाँच झूठी धनात्मक आती है। अतः 10,098 धनात्मक, जिनमें 99 बीमार हैं: 99/10,098 ≈ 0.98%, जो 1 पर पूर्णांकित होता है। जाँच 99% सटीक है और धनात्मक परिणाम के बाद भी व्यक्ति के स्वस्थ होने की संभावना 99% है, जो विरोधाभास लगता है और है नहीं। भ्रम दो भिन्न सशर्त प्रायिकताओं के बीच है: P(धनात्मक | बीमार) 0.99 है, और P(बीमार | धनात्मक) 0.0098. ये एक राशि नहीं हैं, और बेज़ प्रमेय ठीक वही यंत्र है जो एक को दूसरे में बदलता है — रूपांतरण-गुणक है आधार-दर, जिसे अंतर्ज्ञान चुपचाप अनदेखा करता है। दो परिणाम कहने लायक़ हैं। पहला, इस उलटाव की भूल का गणित के बाहर एक नाम है: अदालत में वह अभियोजक का तर्कदोष है, जहाँ निर्दोषता मानकर साक्ष्य की प्रायिकता को साक्ष्य मानकर निर्दोषता की प्रायिकता की तरह पेश किया जाता है, और इस पर लोगों को दोषी ठहराया गया है। दूसरा, व्यावहारिक जवाब जाँचों पर अविश्वास करना नहीं बल्कि यह समझना है कि जन-जाँच करती क्या है। किसी दुर्लभ स्थिति के लिए पूरी जनसंख्या की जाँच ऐसे झूठे धनात्मक पैदा करती है जो सच्चों को डुबो देते हैं, इसीलिए चिकित्सा उन लक्षित समूहों की जाँच करती है जहाँ आधार-दर ऊँची है, और इसीलिए धनात्मक जन-जाँच के बाद निदान नहीं बल्कि दूसरी, भिन्न जाँच आती है। दूसरी जाँच इसलिए नहीं चलती कि वह अधिक सटीक है बल्कि इसलिए कि पहले परिणाम के बाद आधार-दर अब 10,000 में 1 नहीं — वह क़रीब 100 में 1 है, और वही गणित तब कहीं और जाकर उतरता है। (99 जाँच की सटीकता को ऐसे बताता है मानो वही उत्तर हो, और प्रश्न उसी भूल के इर्द-गिर्द बना है।)"
+        },
+        "mr": {
+          "stem": "एक दुर्मीळ रोग 10,000 मध्ये 1 ला होतो. 99% अचूक चाचणी धन येते. जवळच्या पूर्ण टक्क्यापर्यंत, व्यक्तीला खरोखर रोग असण्याची शक्यता किती?",
+          "choices": [
+            "99",
+            "1",
+            "50",
+            "10"
+          ],
+          "solution": "सुमारे 1 टक्का. दहा लाख लोक घ्या: 100 जणांना रोग आहे आणि त्यांपैकी 99 ची चाचणी धन येते; 999,900 निरोगी आहेत आणि त्यांपैकी 1% — 9,999 — ची चाचणी खोटी धन येते. म्हणून 10,098 धन, ज्यांत 99 आजारी आहेत: 99/10,098 ≈ 0.98%, जे 1 वर पूर्णांकित होते. चाचणी 99% अचूक आहे आणि धन निकालानंतरही व्यक्ती निरोगी असण्याची शक्यता 99% आहे, जे विरोधाभास वाटते आणि नाही. गोंधळ दोन वेगळ्या सशर्त संभाव्यतांमध्ये आहे: P(धन | आजारी) 0.99 आहे, आणि P(आजारी | धन) 0.0098. या एक राशी नाहीत, आणि बेजचे प्रमेय नेमके तेच यंत्र आहे जे एकाला दुसऱ्यात बदलते — रूपांतरण-गुणक आहे आधार-दर, ज्याला अंतर्दृष्टी गुपचूप दुर्लक्षते. दोन परिणाम सांगण्याजोगे आहेत. पहिला, या उलटवण्याच्या चुकीला गणिताबाहेर एक नाव आहे: न्यायालयात तो अभियोक्त्याचा तर्कदोष आहे, जिथे निर्दोषत्व गृहीत धरून पुराव्याची संभाव्यता ही पुरावा गृहीत धरून निर्दोषत्वाची संभाव्यता म्हणून मांडली जाते, आणि यावर लोकांना दोषी ठरवले गेले आहे. दुसरा, व्यावहारिक प्रतिसाद चाचण्यांवर अविश्वास ठेवणे नव्हे तर जन-तपासणी काय करते हे समजून घेणे. एखाद्या दुर्मीळ स्थितीसाठी अख्ख्या लोकसंख्येची चाचणी असे खोटे धन तयार करते जे खऱ्यांना बुडवतात, म्हणूनच वैद्यक त्या लक्ष्यित गटांची तपासणी करते जिथे आधार-दर जास्त आहे, आणि म्हणूनच धन जन-तपासणीनंतर निदान नव्हे तर दुसरी, वेगळी चाचणी येते. दुसरी चाचणी यासाठी चालत नाही की ती अधिक अचूक आहे तर यासाठी की पहिल्या निकालानंतर आधार-दर आता 10,000 मध्ये 1 नाही — तो सुमारे 100 मध्ये 1 आहे, आणि तेच गणित मग कुठेतरी वेगळे जाऊन उतरते. (99 चाचणीची अचूकता अशी सांगते जणू तेच उत्तर असावे, आणि प्रश्न त्याच चुकीभोवती बांधलेला आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A treatment helps 70% of men and 70% of women, while a rival helps 80% of each. Pooling all patients, the rival can appear worse overall. Of the two group results and the pooled result, how many can point the same way as each other while the third disagrees?",
+      "choices": [
+        "0",
+        "3",
+        "2",
+        "1"
+      ],
+      "answerIndex": 2,
+      "solution": "Two — the two group results agree with each other and the pooled result contradicts both. This is Simpson's paradox, and the numbers really do work. Suppose the rival is given mostly to a group that does badly anyway: 80 of 100 men helped by the rival but only 10 women out of 900 given it are counted, against the first treatment given to 900 men and 100 women. The group rates favour the rival everywhere, and the pooled totals favour the first treatment, because the two treatments were given to differently-composed populations and the pooling silently compares men mostly against women. Nothing is wrong with any of the three numbers. What is wrong is the assumption that a pooled rate answers the same question the group rates answer. The group comparison asks 'given a patient of known sex, which treatment is better', and the pooled comparison asks 'given a patient drawn from these particular treatment groups, which did better' — and the second question's answer depends on how the groups were assembled, which is not a fact about the treatments at all. Three things follow. First, the reversal is not a rare curiosity: it appears in university admissions data, in mortality statistics and in batting averages, and it is one of the main reasons observational studies mislead. Second, the resolution is never statistical but causal — one must know WHY the groups differ in composition before deciding which table to believe, and that knowledge does not come from the numbers. Third, the practical safeguard is randomisation, which works precisely because it makes the treatment groups similar in every respect including the ones nobody thought to measure, so that pooling and stratifying can no longer disagree. (3 supposes all three results can be made to disagree with one another, but two of them are group rates that here agree by construction.)",
+      "checkExpr": "3-1",
+      "translations": {
+        "hi": {
+          "stem": "कोई उपचार 70% पुरुषों और 70% स्त्रियों की मदद करता है, जबकि प्रतिद्वंद्वी हर एक के 80% की। सभी रोगियों को मिला देने पर प्रतिद्वंद्वी कुल मिलाकर बदतर दिख सकता है। दोनों समूह-परिणामों और मिले हुए परिणाम में से कितने एक ही ओर इशारा कर सकते हैं जबकि तीसरा असहमत हो?",
+          "choices": [
+            "0",
+            "3",
+            "2",
+            "1"
+          ],
+          "solution": "दो — दोनों समूह-परिणाम आपस में सहमत हैं और मिला हुआ परिणाम दोनों का खंडन करता है। यह सिम्पसन का विरोधाभास है, और संख्याएँ सचमुच काम करती हैं। मान लो प्रतिद्वंद्वी ज़्यादातर उस समूह को दिया गया जिसका हाल वैसे भी बुरा है: प्रतिद्वंद्वी से 100 में 80 पुरुष मदद पाते हैं पर उसे दी गई 900 में केवल 10 स्त्रियाँ गिनी जाती हैं, बनाम पहला उपचार जो 900 पुरुषों और 100 स्त्रियों को दिया गया। समूह-दरें हर जगह प्रतिद्वंद्वी के पक्ष में हैं, और मिले हुए कुल पहले उपचार के पक्ष में, क्योंकि दोनों उपचार भिन्न बनावट वाली जनसंख्याओं को दिए गए और मिलाना चुपचाप ज़्यादातर पुरुषों की तुलना स्त्रियों से कर देता है। तीनों संख्याओं में कुछ भी ग़लत नहीं। ग़लत यह मान्यता है कि मिली हुई दर वही प्रश्न उत्तरित करती है जो समूह-दरें करती हैं। समूह-तुलना पूछती है 'ज्ञात लिंग के रोगी के लिए कौन-सा उपचार बेहतर है', और मिली हुई तुलना पूछती है 'इन ख़ास उपचार-समूहों से खींचे गए रोगी के लिए किसने बेहतर किया' — और दूसरे प्रश्न का उत्तर इस पर निर्भर है कि समूह कैसे जुटाए गए, जो उपचारों का तथ्य है ही नहीं। तीन बातें निकलती हैं। पहली, यह पलटाव दुर्लभ जिज्ञासा नहीं: वह विश्वविद्यालय प्रवेश के आँकड़ों में, मृत्यु-दर की सांख्यिकी में और बल्लेबाज़ी औसतों में दिखता है, और प्रेक्षणात्मक अध्ययनों के भरमाने के मुख्य कारणों में से एक है। दूसरी, समाधान कभी सांख्यिकीय नहीं बल्कि कारणात्मक होता है — यह जानना ही होगा कि समूहों की बनावट क्यों भिन्न है, तब तय हो कि किस सारणी पर भरोसा करें, और वह ज्ञान संख्याओं से नहीं आता। तीसरी, व्यावहारिक सुरक्षा यादृच्छिकीकरण है, जो ठीक इसलिए चलता है कि वह उपचार-समूहों को हर पहलू में एक-सा बना देता है, उन पहलुओं में भी जिन्हें मापने की किसी ने सोची ही नहीं, ताकि मिलाना और स्तरित करना फिर असहमत न हो सकें। (3 मान लेता है कि तीनों परिणामों को आपस में असहमत किया जा सकता है, पर उनमें से दो समूह-दरें हैं जो यहाँ रचना से ही सहमत हैं।)"
+        },
+        "mr": {
+          "stem": "एक उपचार 70% पुरुषांना आणि 70% स्त्रियांना मदत करतो, तर प्रतिस्पर्धी प्रत्येकाच्या 80% ला. सर्व रुग्ण एकत्र केल्यास प्रतिस्पर्धी एकूणात वाईट दिसू शकतो. दोन गट-निकाल आणि एकत्रित निकाल यांपैकी किती एकाच दिशेला निर्देश करू शकतात तर तिसरा असहमत असेल?",
+          "choices": [
+            "0",
+            "3",
+            "2",
+            "1"
+          ],
+          "solution": "दोन — दोन गट-निकाल आपसात सहमत आहेत आणि एकत्रित निकाल दोघांचेही खंडन करतो. हा सिम्पसनचा विरोधाभास आहे, आणि संख्या खरोखर काम करतात. समजा प्रतिस्पर्धी बहुतांश त्या गटाला दिला गेला ज्याची अवस्था तशीही वाईट आहे: प्रतिस्पर्ध्याकडून 100 पैकी 80 पुरुष मदत मिळवतात पण त्याला दिलेल्या 900 पैकी केवळ 10 स्त्रिया मोजल्या जातात, विरुद्ध पहिला उपचार जो 900 पुरुष आणि 100 स्त्रियांना दिला गेला. गट-दर सर्वत्र प्रतिस्पर्ध्याच्या बाजूने आहेत, आणि एकत्रित एकूण पहिल्या उपचाराच्या बाजूने, कारण दोन्ही उपचार वेगळ्या रचनेच्या लोकसंख्यांना दिले गेले आणि एकत्र करणे गुपचूप बहुतांश पुरुषांची तुलना स्त्रियांशी करते. तिन्ही संख्यांत काहीच चूक नाही. चूक हे गृहीतक आहे की एकत्रित दर तोच प्रश्न उत्तरतो जो गट-दर उत्तरतात. गट-तुलना विचारते 'ज्ञात लिंगाच्या रुग्णासाठी कोणता उपचार चांगला आहे', आणि एकत्रित तुलना विचारते 'या विशिष्ट उपचार-गटांतून काढलेल्या रुग्णासाठी कोणी चांगले केले' — आणि दुसऱ्या प्रश्नाचे उत्तर गट कसे जमवले यावर अवलंबून आहे, जे उपचारांबद्दलचे तथ्य नाहीच. तीन गोष्टी निघतात. पहिली, हे उलटणे दुर्मीळ उत्सुकता नाही: ते विद्यापीठ प्रवेशाच्या आकडेवारीत, मृत्यू-दराच्या संख्याशास्त्रात आणि फलंदाजीच्या सरासरींत दिसते, आणि निरीक्षणात्मक अभ्यास फसवण्याच्या मुख्य कारणांपैकी एक आहे. दुसरी, निराकरण कधीच संख्याशास्त्रीय नसून कारणात्मक असते — गटांची रचना का वेगळी आहे हे जाणावेच लागते, मग ठरवावे की कोणत्या तक्त्यावर विश्वास ठेवावा, आणि ते ज्ञान संख्यांतून येत नाही. तिसरी, व्यावहारिक सुरक्षा म्हणजे यादृच्छिकीकरण, जे नेमके यासाठी चालते की ते उपचार-गट प्रत्येक बाबतीत सारखे करते, त्या बाबींतही ज्या मोजण्याचा कोणी विचारच केला नाही, जेणेकरून एकत्र करणे आणि स्तरित करणे पुन्हा असहमत होऊ शकणार नाहीत. (3 गृहीत धरते की तिन्ही निकाल आपसात असहमत करता येतील, पण त्यांपैकी दोन गट-दर आहेत जे इथे रचनेनेच सहमत आहेत.)"
+        }
+      }
+    }
+  ]
+}

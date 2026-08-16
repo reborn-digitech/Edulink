@@ -1,0 +1,513 @@
+{
+  "slug": "maths-12-linear-programming",
+  "subject": "MATHS",
+  "classLevel": 12,
+  "chapter": "Chapter 12 — Linear Programming",
+  "name": "Linear Programming",
+  "summary": "Why an infinite search can be finished by testing finitely many corners, and what that guarantee is bought with: why linearity and convexity are both load-bearing and fail in different ways, why an unbounded region makes the method return a confident wrong answer, why the number of corners makes the honest method unusable at real scale, and why requiring whole numbers changes the problem into a different and far harder one.",
+  "position": 12,
+  "translations": {
+    "hi": {
+      "name": "रैखिक प्रोग्रामन",
+      "summary": "अनंत खोज परिमित कोनों की जाँच से क्यों पूरी हो जाती है, और वह गारंटी किस क़ीमत पर ख़रीदी गई: रैखिकता और उत्तलता दोनों भार क्यों उठा रही हैं और भिन्न ढंग से विफल क्यों होती हैं, अपरिबद्ध क्षेत्र विधि से आत्मविश्वास भरा ग़लत उत्तर क्यों दिलवाता है, कोनों की संख्या असली पैमाने पर ईमानदार विधि को अनुपयोगी क्यों बना देती है, और पूर्ण संख्याओं की माँग समस्या को भिन्न और कहीं कठिन क्यों बना देती है।"
+    },
+    "mr": {
+      "name": "रैखिक प्रोग्रामिंग",
+      "summary": "अनंत शोध सांत कोपरे तपासून का पूर्ण होतो, आणि ती हमी कोणत्या किमतीवर विकत घेतली: रैखिकता आणि बहिर्वक्रता दोन्ही भार का उचलत आहेत आणि वेगळ्या प्रकारे का अपयशी होतात, अबद्ध प्रदेश पद्धतीकडून आत्मविश्वासाने भरलेले चुकीचे उत्तर का देववतो, कोपऱ्यांची संख्या खऱ्या प्रमाणावर प्रामाणिक पद्धत निरुपयोगी का करते, आणि पूर्ण संख्यांची मागणी समस्येला वेगळी आणि कितीतरी कठीण का बनवते."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "Maximise Z = 3x + 2y at the corner point (4, 1). What is Z there?",
+      "choices": [
+        "14",
+        "5",
+        "12",
+        "7"
+      ],
+      "answerIndex": 0,
+      "solution": "3(4) + 2(1) = 12 + 2 = 14. Evaluating the objective at a point is the whole arithmetic of this chapter; everything else is deciding WHICH points to evaluate it at. (5 adds the coordinates and ignores the coefficients.)",
+      "checkExpr": "3*4+2*1",
+      "translations": {
+        "hi": {
+          "stem": "कोने के बिंदु (4, 1) पर Z = 3x + 2y का मान क्या है?",
+          "choices": [
+            "14",
+            "5",
+            "12",
+            "7"
+          ],
+          "solution": "3(4) + 2(1) = 12 + 2 = 14. किसी बिंदु पर उद्देश्य-फलन का मान निकालना इस अध्याय का पूरा गणित है; बाक़ी सब यह तय करना है कि उसे किन बिंदुओं पर निकालें। (5 निर्देशांक जोड़ देता है और गुणांक अनदेखे करता है।)"
+        },
+        "mr": {
+          "stem": "कोपऱ्याच्या बिंदू (4, 1) वर Z = 3x + 2y चे मूल्य किती?",
+          "choices": [
+            "14",
+            "5",
+            "12",
+            "7"
+          ],
+          "solution": "3(4) + 2(1) = 12 + 2 = 14. एखाद्या बिंदूवर उद्दिष्ट-फलनाचे मूल्य काढणे हे या अध्यायाचे अख्खे गणित आहे; बाकी सर्व हे ठरवणे आहे की ते कोणत्या बिंदूंवर काढावे. (5 निर्देशांक जोडते आणि गुणांक दुर्लक्षते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "The constraints x ≥ 0, y ≥ 0, x + y ≤ 4 make a triangle. How many corner points does it have?",
+      "choices": [
+        "3",
+        "6",
+        "4",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "Three — (0, 0), (4, 0) and (0, 4). Each corner is where two of the boundary lines cross, and three constraints in general position give three crossings inside the region. Counting the corners before doing any evaluation tells you how much work the problem is, which is a useful thing to know before starting. (4 counts the constraints, forgetting that one of the three pairwise crossings can lie outside.)",
+      "checkExpr": "4-1",
+      "translations": {
+        "hi": {
+          "stem": "अड़चनें x ≥ 0, y ≥ 0, x + y ≤ 4 एक त्रिभुज बनाती हैं। उसके कितने कोने-बिंदु हैं?",
+          "choices": [
+            "3",
+            "6",
+            "4",
+            "2"
+          ],
+          "solution": "तीन — (0, 0), (4, 0) और (0, 4). हर कोना वहाँ है जहाँ दो सीमा-रेखाएँ कटती हैं, और सामान्य स्थिति में तीन अड़चनें क्षेत्र के भीतर तीन कटान देती हैं। कोई मान निकालने से पहले कोने गिन लेना बताता है कि समस्या में कितना काम है, और शुरू करने से पहले यह जानना उपयोगी है। (4 अड़चनें गिन लेता है, यह भूलकर कि तीनों जोड़ीदार कटानों में से एक बाहर पड़ सकती है।)"
+        },
+        "mr": {
+          "stem": "बंधने x ≥ 0, y ≥ 0, x + y ≤ 4 एक त्रिकोण बनवतात. त्याचे किती कोपरा-बिंदू आहेत?",
+          "choices": [
+            "3",
+            "6",
+            "4",
+            "2"
+          ],
+          "solution": "तीन — (0, 0), (4, 0) आणि (0, 4). प्रत्येक कोपरा तिथे आहे जिथे दोन सीमा-रेषा छेदतात, आणि सर्वसाधारण स्थितीत तीन बंधने प्रदेशाच्या आत तीन छेद देतात. कोणतेही मूल्य काढण्याआधी कोपरे मोजणे सांगते की समस्येत किती काम आहे, आणि सुरू करण्याआधी हे जाणणे उपयुक्त आहे. (4 बंधने मोजते, हे विसरून की तिन्ही जोडीदार छेदांपैकी एक बाहेर पडू शकतो.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "In a linear programming problem, the objective function has what highest power of the variables?",
+      "choices": [
+        "1",
+        "0",
+        "2",
+        "3"
+      ],
+      "answerIndex": 0,
+      "solution": "1 — that is what 'linear' means, and it is the assumption everything else in the chapter rests on. No squares, no products of variables, no reciprocals. It is a strong restriction and it buys something remarkable in return: the guarantee that the optimum sits at a corner, which is what makes the method finite. Lose linearity and lose the guarantee. (2 assumes 'programming' implies something quadratic.)",
+      "checkExpr": "2-1",
+      "translations": {
+        "hi": {
+          "stem": "किसी रैखिक प्रोग्रामन समस्या में उद्देश्य-फलन में चरों की उच्चतम घात क्या होती है?",
+          "choices": [
+            "1",
+            "0",
+            "2",
+            "3"
+          ],
+          "solution": "1 — 'रैखिक' का यही अर्थ है, और यही वह मान्यता है जिस पर अध्याय की बाक़ी हर चीज़ टिकी है। न वर्ग, न चरों के गुणनफल, न व्युत्क्रम। यह कड़ी पाबंदी है और बदले में कुछ उल्लेखनीय ख़रीदती है: यह गारंटी कि इष्टतम किसी कोने पर बैठता है, जो विधि को परिमित बनाता है। रैखिकता खोओ और गारंटी खो दो। (2 मान लेता है कि 'प्रोग्रामन' किसी द्विघात चीज़ का संकेत है।)"
+        },
+        "mr": {
+          "stem": "एखाद्या रैखिक प्रोग्रामिंग समस्येत उद्दिष्ट-फलनात चलांची सर्वोच्च घात किती असते?",
+          "choices": [
+            "1",
+            "0",
+            "2",
+            "3"
+          ],
+          "solution": "1 — 'रैखिक' चा हाच अर्थ आहे, आणि हेच ते गृहीतक आहे ज्यावर अध्यायातील उरलेली प्रत्येक गोष्ट टिकली आहे. ना वर्ग, ना चलांचे गुणाकार, ना व्यस्त. हे कडक बंधन आहे आणि बदल्यात काहीतरी उल्लेखनीय विकत घेते: ही हमी की इष्टतम एखाद्या कोपऱ्यावर बसतो, जे पद्धत सांत बनवते. रैखिकता गमवा आणि हमी गमवा. (2 गृहीत धरते की 'प्रोग्रामिंग' म्हणजे काहीतरी द्विघाती.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Z = x + y is evaluated at (0, 0), (4, 0) and (0, 4). What is its maximum among these?",
+      "choices": [
+        "4",
+        "0",
+        "8",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "The values are 0, 4 and 4, so the maximum is 4 — attained at TWO different corners. That tie is worth noticing rather than passing over: when the objective's slope matches the slope of a boundary edge, every point along that whole edge gives the same value, so the optimum is not a single point but a segment. The corner-point method still finds the right VALUE, which is what was asked, but a problem answered with 'the optimum is at (4, 0)' would be reporting one of infinitely many optimal points as though it were the only one. (8 adds the two corner values.)",
+      "checkExpr": "4+0",
+      "translations": {
+        "hi": {
+          "stem": "Z = x + y का मान (0, 0), (4, 0) और (0, 4) पर निकाला जाता है। इनमें उसका अधिकतम क्या है?",
+          "choices": [
+            "4",
+            "0",
+            "8",
+            "2"
+          ],
+          "solution": "मान हैं 0, 4 और 4, अतः अधिकतम 4 है — दो अलग कोनों पर प्राप्त। उस बराबरी को टाल देने के बजाय देख लेना ज़रूरी है: जब उद्देश्य की ढाल किसी सीमा-किनारे की ढाल से मेल खाती है, तो उस पूरे किनारे का हर बिंदु वही मान देता है, अतः इष्टतम एक बिंदु नहीं बल्कि एक खंड है। कोने-बिंदु विधि तब भी सही मान ढूँढ़ लेती है, जो पूछा गया था, पर 'इष्टतम (4, 0) पर है' कहकर दिया गया उत्तर अनंत इष्टतम बिंदुओं में से एक को ऐसे बता रहा होगा मानो वही अकेला हो। (8 दोनों कोनों के मान जोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "Z = x + y चे मूल्य (0, 0), (4, 0) आणि (0, 4) वर काढले जाते. यांत त्याची कमाल किती?",
+          "choices": [
+            "4",
+            "0",
+            "8",
+            "2"
+          ],
+          "solution": "मूल्ये आहेत 0, 4 आणि 4, म्हणून कमाल 4 आहे — दोन वेगळ्या कोपऱ्यांवर गाठलेली. ती बरोबरी टाळण्याऐवजी पाहणे आवश्यक आहे: जेव्हा उद्दिष्टाचा उतार एखाद्या सीमा-कडेच्या उताराशी जुळतो, तेव्हा त्या अख्ख्या कडेचा प्रत्येक बिंदू तेच मूल्य देतो, म्हणून इष्टतम एक बिंदू नसून एक खंड आहे. कोपरा-बिंदू पद्धत तरीही बरोबर मूल्य शोधते, जे विचारले होते, पण 'इष्टतम (4, 0) वर आहे' असे उत्तर अनंत इष्टतम बिंदूंपैकी एकाला असे सांगत असेल जणू तोच एकमेव असावा. (8 दोन्ही कोपऱ्यांची मूल्ये जोडते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "How many corner points does the feasible region x ≥ 0, y ≥ 0, x ≤ 3, y ≤ 2 have?",
+      "choices": [
+        "6",
+        "3",
+        "4",
+        "2"
+      ],
+      "answerIndex": 2,
+      "solution": "Four — it is a rectangle with corners (0, 0), (3, 0), (3, 2) and (0, 2). Note that four constraints gave four corners here while three constraints gave three earlier; the pattern holds when the region is bounded and no constraint is redundant. A constraint that never touches the boundary of the final region adds no corner and could have been left out, which is worth checking for, because such constraints are common in problems written from a word description. (3 counts a triangle, which is the shape the previous question had.)",
+      "checkExpr": "2*2",
+      "translations": {
+        "hi": {
+          "stem": "सुसंगत क्षेत्र x ≥ 0, y ≥ 0, x ≤ 3, y ≤ 2 के कितने कोने-बिंदु हैं?",
+          "choices": [
+            "6",
+            "3",
+            "4",
+            "2"
+          ],
+          "solution": "चार — यह आयत है जिसके कोने (0, 0), (3, 0), (3, 2) और (0, 2) हैं। ध्यान दो कि यहाँ चार अड़चनों ने चार कोने दिए जबकि पहले तीन अड़चनों ने तीन; यह पैटर्न तब चलता है जब क्षेत्र परिबद्ध हो और कोई अड़चन अतिरेक न हो। जो अड़चन अंतिम क्षेत्र की सीमा को कभी छूती ही नहीं वह कोई कोना नहीं जोड़ती और उसे छोड़ा जा सकता था, और यह जाँचने लायक़ है, क्योंकि शब्द-वर्णन से लिखी समस्याओं में ऐसी अड़चनें आम हैं। (3 त्रिभुज गिन लेता है, जो पिछले प्रश्न की आकृति थी।)"
+        },
+        "mr": {
+          "stem": "सुसंगत प्रदेश x ≥ 0, y ≥ 0, x ≤ 3, y ≤ 2 चे किती कोपरा-बिंदू आहेत?",
+          "choices": [
+            "6",
+            "3",
+            "4",
+            "2"
+          ],
+          "solution": "चार — हा आयत आहे ज्याचे कोपरे (0, 0), (3, 0), (3, 2) आणि (0, 2) आहेत. लक्षात घ्या की इथे चार बंधनांनी चार कोपरे दिले तर आधी तीन बंधनांनी तीन; हा साचा तेव्हा चालतो जेव्हा प्रदेश बद्ध असेल आणि कोणतेही बंधन अतिरेकी नसेल. जे बंधन अंतिम प्रदेशाच्या सीमेला कधी स्पर्शच करत नाही ते कोणताही कोपरा जोडत नाही आणि ते वगळता आले असते, आणि हे तपासण्याजोगे आहे, कारण शब्द-वर्णनातून लिहिलेल्या समस्यांत अशी बंधने सामान्य आहेत. (3 त्रिकोण मोजते, जी मागील प्रश्नाची आकृती होती.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A feasible region is empty. How many optimal solutions does the problem have?",
+      "choices": [
+        "2",
+        "0",
+        "3",
+        "1"
+      ],
+      "answerIndex": 1,
+      "solution": "None. If no point satisfies all the constraints at once, there is nothing to optimise over and the problem is called infeasible. This is one of two ways a linear programme can fail to have an answer, and the two are worth keeping apart from the start: infeasible means the constraints contradict each other, while unbounded means they permit the objective to grow without limit. Both return no optimum, but for opposite reasons — too many restrictions against too few. (1 assumes every problem has an answer.)",
+      "checkExpr": "1-1",
+      "translations": {
+        "hi": {
+          "stem": "कोई सुसंगत क्षेत्र रिक्त है। समस्या के कितने इष्टतम हल हैं?",
+          "choices": [
+            "2",
+            "0",
+            "3",
+            "1"
+          ],
+          "solution": "कोई नहीं। यदि कोई बिंदु एक साथ सभी अड़चनें पूरी नहीं करता, तो इष्टतम करने को कुछ है ही नहीं और समस्या को असुसंगत कहते हैं। यह उन दो तरीक़ों में से एक है जिनसे किसी रैखिक कार्यक्रम का उत्तर नहीं होता, और दोनों को शुरू से अलग रखना ज़रूरी है: असुसंगत का अर्थ है अड़चनें एक-दूसरे का खंडन करती हैं, जबकि अपरिबद्ध का अर्थ है वे उद्देश्य को बिना सीमा बढ़ने देती हैं। दोनों कोई इष्टतम नहीं लौटाते, पर विपरीत कारणों से — बहुत अधिक पाबंदियाँ बनाम बहुत कम। (1 मान लेता है कि हर समस्या का उत्तर होता है।)"
+        },
+        "mr": {
+          "stem": "एखादा सुसंगत प्रदेश रिकामा आहे. समस्येची किती इष्टतम उत्तरे आहेत?",
+          "choices": [
+            "2",
+            "0",
+            "3",
+            "1"
+          ],
+          "solution": "एकही नाही. जर कोणताही बिंदू एकाच वेळी सर्व बंधने पूर्ण करत नसेल, तर इष्टतम करण्यास काहीच नाही आणि समस्येला असुसंगत म्हणतात. हा त्या दोन मार्गांपैकी एक आहे ज्यांनी एखाद्या रैखिक कार्यक्रमाला उत्तर नसते, आणि दोन्ही सुरुवातीपासून वेगळे ठेवणे आवश्यक आहे: असुसंगत म्हणजे बंधने एकमेकांचे खंडन करतात, तर अबद्ध म्हणजे ती उद्दिष्टाला मर्यादेशिवाय वाढू देतात. दोन्ही कोणतेही इष्टतम परत करत नाहीत, पण विरुद्ध कारणांनी — फार जास्त निर्बंध विरुद्ध फार कमी. (1 गृहीत धरते की प्रत्येक समस्येला उत्तर असते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "Maximise Z = 5x + 3y over the corners (0, 0), (4, 0), (2, 3) and (0, 5). What is the maximum?",
+      "choices": [
+        "20",
+        "19",
+        "15",
+        "25"
+      ],
+      "answerIndex": 0,
+      "solution": "The values are 0, 20, 19 and 15, so the maximum is 20 at (4, 0). Two things are worth taking from the numbers. First, the winner is a corner where one variable is zero, which is common and often surprises people expecting a balanced answer — linear objectives reward pushing hard in one direction rather than compromising. Second, 19 at (2, 3) is very close, and in a real problem that closeness matters: it means the optimum is not robust, and a small change in the coefficients could move it to a different corner entirely. Reporting only the winner throws away that information. (19 picks the interior-looking corner, which is the natural guess and here the runner-up.)",
+      "checkExpr": "5*4+3*0",
+      "translations": {
+        "hi": {
+          "stem": "कोनों (0, 0), (4, 0), (2, 3) और (0, 5) पर Z = 5x + 3y अधिकतम करो। अधिकतम क्या है?",
+          "choices": [
+            "20",
+            "19",
+            "15",
+            "25"
+          ],
+          "solution": "मान हैं 0, 20, 19 और 15, अतः अधिकतम 20 है, (4, 0) पर। संख्याओं से दो बातें लेने लायक़ हैं। पहली, विजेता वह कोना है जहाँ एक चर शून्य है, जो आम है और अक्सर उन्हें चौंकाता है जो संतुलित उत्तर की अपेक्षा करते हैं — रैखिक उद्देश्य समझौते के बजाय एक दिशा में ज़ोर से धकेलने का इनाम देते हैं। दूसरी, (2, 3) पर 19 बहुत पास है, और असली समस्या में वह नज़दीकी मायने रखती है: उसका अर्थ है इष्टतम मज़बूत नहीं, और गुणांकों में छोटा-सा बदलाव उसे पूरी तरह किसी दूसरे कोने पर ले जा सकता है। केवल विजेता बताना उस जानकारी को फेंक देता है। (19 भीतर-सा दिखने वाला कोना चुन लेता है, जो स्वाभाविक अनुमान है और यहाँ उपविजेता।)"
+        },
+        "mr": {
+          "stem": "कोपरे (0, 0), (4, 0), (2, 3) आणि (0, 5) यांवर Z = 5x + 3y कमाल करा. कमाल किती?",
+          "choices": [
+            "20",
+            "19",
+            "15",
+            "25"
+          ],
+          "solution": "मूल्ये आहेत 0, 20, 19 आणि 15, म्हणून कमाल 20 आहे, (4, 0) वर. संख्यांतून दोन गोष्टी घेण्याजोग्या आहेत. पहिली, विजेता तो कोपरा आहे जिथे एक चल शून्य आहे, जे सामान्य आहे आणि बऱ्याचदा संतुलित उत्तराची अपेक्षा करणाऱ्यांना चकित करते — रैखिक उद्दिष्टे तडजोडीऐवजी एका दिशेने जोरात ढकलण्याचे बक्षीस देतात. दुसरी, (2, 3) वरील 19 फार जवळ आहे, आणि खऱ्या समस्येत ती जवळीक महत्त्वाची आहे: तिचा अर्थ इष्टतम भक्कम नाही, आणि गुणांकांतील छोटासा बदल त्याला पूर्णपणे दुसऱ्या कोपऱ्यावर नेऊ शकतो. केवळ विजेता सांगणे ती माहिती फेकून देते. (19 आतल्यासारखा दिसणारा कोपरा निवडते, जो नैसर्गिक अंदाज आहे आणि इथे उपविजेता.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A feasible region is unbounded above and Z = x + y is to be maximised. How many maximum values does Z have?",
+      "choices": [
+        "2",
+        "0",
+        "4",
+        "1"
+      ],
+      "answerIndex": 1,
+      "solution": "None. If the region runs off to infinity in a direction where x + y keeps growing, no point is the largest — for any candidate there is always a feasible point further out with a bigger value. The corner-point method would happily return the largest of the corner values, and it would be WRONG, which makes this the most dangerous failure in the chapter: the procedure produces an answer that looks like every other answer. The safeguard is a separate check, done before trusting the corner comparison — see whether the region is bounded, and if it is not, test whether the open half-plane Z > (best corner value) has any feasible point in it. Note also that the same unbounded region might have a perfectly good MINIMUM; unboundedness in one direction says nothing about the other. (1 trusts the corner-point method without checking that its hypothesis holds.)",
+      "checkExpr": "2-2",
+      "translations": {
+        "hi": {
+          "stem": "कोई सुसंगत क्षेत्र ऊपर की ओर अपरिबद्ध है और Z = x + y अधिकतम करना है। Z के कितने अधिकतम मान हैं?",
+          "choices": [
+            "2",
+            "0",
+            "4",
+            "1"
+          ],
+          "solution": "कोई नहीं। यदि क्षेत्र ऐसी दिशा में अनंत तक भागता है जहाँ x + y बढ़ता रहता है, तो कोई बिंदु सबसे बड़ा नहीं — किसी भी उम्मीदवार के लिए सदा और आगे कोई सुसंगत बिंदु होगा जिसका मान बड़ा है। कोने-बिंदु विधि ख़ुशी-ख़ुशी कोनों के मानों में सबसे बड़ा लौटा देगी, और वह ग़लत होगा, जो इसे अध्याय की सबसे ख़तरनाक विफलता बनाता है: प्रक्रिया ऐसा उत्तर पैदा करती है जो हर दूसरे उत्तर जैसा दिखता है। सुरक्षा एक अलग जाँच है, जो कोनों की तुलना पर भरोसा करने से पहले की जाए — देखो कि क्षेत्र परिबद्ध है या नहीं, और यदि नहीं, तो जाँचो कि खुले अर्धसमतल Z > (सर्वोत्तम कोने का मान) में कोई सुसंगत बिंदु है या नहीं। यह भी ध्यान दो कि उसी अपरिबद्ध क्षेत्र का बिलकुल ठीक न्यूनतम हो सकता है; एक दिशा में अपरिबद्धता दूसरी के बारे में कुछ नहीं कहती। (1 यह जाँचे बिना कोने-बिंदु विधि पर भरोसा कर लेता है कि उसकी परिकल्पना लागू है या नहीं।)"
+        },
+        "mr": {
+          "stem": "एखादा सुसंगत प्रदेश वरच्या दिशेने अबद्ध आहे आणि Z = x + y कमाल करायचे आहे. Z ची किती कमाल मूल्ये आहेत?",
+          "choices": [
+            "2",
+            "0",
+            "4",
+            "1"
+          ],
+          "solution": "एकही नाही. जर प्रदेश अशा दिशेने अनंतापर्यंत पळत असेल जिथे x + y वाढतच राहते, तर कोणताही बिंदू सर्वांत मोठा नाही — कोणत्याही उमेदवारासाठी नेहमी आणखी पुढे एखादा सुसंगत बिंदू असेल ज्याचे मूल्य मोठे आहे. कोपरा-बिंदू पद्धत आनंदाने कोपऱ्यांच्या मूल्यांतील सर्वांत मोठे परत करेल, आणि ते चुकीचे असेल, जे याला अध्यायातील सर्वांत धोकादायक अपयश बनवते: प्रक्रिया असे उत्तर तयार करते जे इतर प्रत्येक उत्तरासारखे दिसते. सुरक्षा ही एक वेगळी तपासणी आहे, जी कोपऱ्यांच्या तुलनेवर विश्वास ठेवण्याआधी करावी — पाहा की प्रदेश बद्ध आहे का, आणि नसल्यास तपासा की खुल्या अर्धप्रतल Z > (सर्वोत्तम कोपऱ्याचे मूल्य) मध्ये कोणताही सुसंगत बिंदू आहे का. हेही लक्षात घ्या की त्याच अबद्ध प्रदेशाची अगदी व्यवस्थित किमान असू शकते; एका दिशेतील अबद्धता दुसरीबद्दल काहीच सांगत नाही. (1 त्याचे गृहीतक लागू आहे का हे न तपासता कोपरा-बिंदू पद्धतीवर विश्वास ठेवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A feasible region is a convex polygon with 6 corners. To find the maximum of a linear objective, how many points must be tested?",
+      "choices": [
+        "3",
+        "12",
+        "6",
+        "1"
+      ],
+      "answerIndex": 2,
+      "solution": "Six — the corners, and nothing else. The corner-point theorem is what makes this possible, and its content is that an infinite search has been reduced to a finite one. Why it is true is worth seeing rather than accepting. A linear objective's level sets are parallel straight lines, and maximising means sliding that family as far as it will go while still touching the region. The last contact is at a corner, or along a whole edge if the slopes happen to match — but an edge has corners at both ends, so a corner always achieves the maximum even when it is not the only point that does. What rules out an interior point is that from any interior point one can step in the direction the objective increases and stay inside, so no interior point can be best. That last argument uses linearity twice and convexity once, and if either fails so does the theorem. (12 counts the edges as well, which the theorem never asks for.)",
+      "checkExpr": "3*2",
+      "translations": {
+        "hi": {
+          "stem": "कोई सुसंगत क्षेत्र 6 कोनों वाला उत्तल बहुभुज है। किसी रैखिक उद्देश्य का अधिकतम ढूँढ़ने के लिए कितने बिंदुओं की जाँच करनी होगी?",
+          "choices": [
+            "3",
+            "12",
+            "6",
+            "1"
+          ],
+          "solution": "छह — कोने, और कुछ नहीं। कोने-बिंदु प्रमेय ही इसे संभव बनाता है, और उसकी सामग्री यह है कि अनंत खोज परिमित खोज में घटा दी गई है। वह सच क्यों है यह मान लेने के बजाय देख लेना ज़रूरी है। किसी रैखिक उद्देश्य के स्तर-समुच्चय समांतर सरल रेखाएँ हैं, और अधिकतम करने का अर्थ है उस कुल को जहाँ तक जा सके सरकाना, क्षेत्र को छूते हुए। आख़िरी संपर्क किसी कोने पर होता है, या पूरे किनारे के अनुदिश यदि ढालें संयोग से मेल खा जाएँ — पर किनारे के दोनों सिरों पर कोने हैं, अतः कोई कोना सदा अधिकतम प्राप्त करता है, तब भी जब वह ऐसा करने वाला अकेला बिंदु न हो। भीतरी बिंदु को जो नकारता है वह यह है कि किसी भी भीतरी बिंदु से उस दिशा में क़दम रखा जा सकता है जहाँ उद्देश्य बढ़ता है और भीतर ही रहा जा सकता है, अतः कोई भीतरी बिंदु सर्वोत्तम नहीं हो सकता। वह आख़िरी तर्क रैखिकता दो बार और उत्तलता एक बार बरतता है, और इनमें से कोई विफल हो तो प्रमेय भी। (12 किनारे भी गिन लेता है, जो प्रमेय कभी नहीं माँगता।)"
+        },
+        "mr": {
+          "stem": "एखादा सुसंगत प्रदेश 6 कोपरे असलेला बहिर्वक्र बहुभुज आहे. एखाद्या रैखिक उद्दिष्टाची कमाल शोधण्यास किती बिंदू तपासावे लागतील?",
+          "choices": [
+            "3",
+            "12",
+            "6",
+            "1"
+          ],
+          "solution": "सहा — कोपरे, आणि दुसरे काहीच नाही. कोपरा-बिंदू प्रमेयच हे शक्य करते, आणि त्याचा आशय हा की अनंत शोध सांत शोधात घटवला गेला आहे. ते खरे का आहे हे स्वीकारण्याऐवजी पाहणे आवश्यक आहे. एखाद्या रैखिक उद्दिष्टाचे स्तर-संच समांतर सरळ रेषा आहेत, आणि कमाल करणे म्हणजे ते कुळ जिथवर जाईल तिथवर सरकवणे, प्रदेशाला स्पर्श करत. शेवटचा संपर्क एखाद्या कोपऱ्यावर होतो, किंवा अख्ख्या कडेच्या बाजूने जर उतार योगायोगाने जुळले — पण कडेच्या दोन्ही टोकांवर कोपरे आहेत, म्हणून एखादा कोपरा नेहमी कमाल गाठतो, तेव्हाही जेव्हा तो तसे करणारा एकमेव बिंदू नसतो. आंतरिक बिंदूला जे नाकारते ते हे की कोणत्याही आंतरिक बिंदूपासून उद्दिष्ट वाढणाऱ्या दिशेने पाऊल टाकता येते आणि आतच राहता येते, म्हणून कोणताही आंतरिक बिंदू सर्वोत्तम असू शकत नाही. तो शेवटचा युक्तिवाद रैखिकता दोनदा आणि बहिर्वक्रता एकदा वापरतो, आणि यांपैकी काही अपयशी ठरल्यास प्रमेयही. (12 कडाही मोजते, जे प्रमेय कधीच मागत नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A factory makes chairs at profit 4 and tables at profit 6, with 24 hours of labour available; a chair takes 2 hours, a table 4. Ignoring all other limits, what is the greatest profit?",
+      "choices": [
+        "42",
+        "24",
+        "48",
+        "36"
+      ],
+      "answerIndex": 2,
+      "solution": "Chairs return 4 profit per 2 hours, so 2 per hour; tables return 6 per 4 hours, so 1.5 per hour. Chairs are strictly better per hour, so all 24 hours go to chairs: 12 chairs at profit 4 gives 48. Note that no diagram was needed. With a single constraint the problem collapses to comparing profit-per-unit-of-scarce-resource, and the winner takes everything. That ratio is the shadow price idea in embryo, and it explains why real linear programmes so often produce lopsided answers: unless two activities have exactly equal returns on the binding resource, one of them is strictly better and the optimum sits at an extreme. The word 'ignoring all other limits' is carrying weight here — add a market that will only absorb 8 chairs and the answer changes completely, which is why the interesting part of these problems is always which constraints were left out. (36 makes 6 tables, the higher per-item profit, which is the trap.)",
+      "checkExpr": "4*12",
+      "translations": {
+        "hi": {
+          "stem": "कोई कारख़ाना 4 लाभ पर कुर्सियाँ और 6 लाभ पर मेज़ें बनाता है, 24 घंटे श्रम उपलब्ध है; कुर्सी में 2 घंटे, मेज़ में 4. बाक़ी सब सीमाएँ अनदेखी करते हुए, अधिकतम लाभ क्या है?",
+          "choices": [
+            "42",
+            "24",
+            "48",
+            "36"
+          ],
+          "solution": "कुर्सियाँ 2 घंटे में 4 लाभ देती हैं, यानी 2 प्रति घंटा; मेज़ें 4 घंटे में 6, यानी 1.5 प्रति घंटा। कुर्सियाँ प्रति घंटा सख़्ती से बेहतर हैं, अतः पूरे 24 घंटे कुर्सियों को: 4 लाभ पर 12 कुर्सियाँ देती हैं 48. ध्यान दो कि किसी आरेख की ज़रूरत नहीं पड़ी। एक अकेली अड़चन के साथ समस्या दुर्लभ संसाधन की प्रति इकाई लाभ की तुलना में ढह जाती है, और विजेता सब कुछ ले जाता है। वह अनुपात छाया-मूल्य के विचार का भ्रूण है, और वह समझाता है कि असली रैखिक कार्यक्रम इतनी बार एकतरफ़ा उत्तर क्यों देते हैं: जब तक दो गतिविधियों का बाध्यकारी संसाधन पर ठीक बराबर प्रतिफल न हो, उनमें से एक सख़्ती से बेहतर है और इष्टतम किसी छोर पर बैठता है। 'बाक़ी सब सीमाएँ अनदेखी करते हुए' यहाँ भार उठा रहा है — ऐसा बाज़ार जोड़ो जो केवल 8 कुर्सियाँ खपाएगा और उत्तर पूरी तरह बदल जाता है, इसीलिए इन समस्याओं का दिलचस्प हिस्सा सदा यह है कि कौन-सी अड़चनें छोड़ी गईं। (36, 6 मेज़ें बनाता है, प्रति-वस्तु ऊँचा लाभ, जो जाल है।)"
+        },
+        "mr": {
+          "stem": "एक कारखाना 4 नफ्यावर खुर्च्या आणि 6 नफ्यावर टेबले बनवतो, 24 तास श्रम उपलब्ध आहे; खुर्चीला 2 तास, टेबलाला 4. इतर सर्व मर्यादा दुर्लक्षून, कमाल नफा किती?",
+          "choices": [
+            "42",
+            "24",
+            "48",
+            "36"
+          ],
+          "solution": "खुर्च्या 2 तासांत 4 नफा देतात, म्हणजे 2 प्रति तास; टेबले 4 तासांत 6, म्हणजे 1.5 प्रति तास. खुर्च्या प्रति तास काटेकोरपणे चांगल्या आहेत, म्हणून अख्खे 24 तास खुर्च्यांना: 4 नफ्यावर 12 खुर्च्या देतात 48. लक्षात घ्या की कोणत्याही आकृतीची गरज पडली नाही. एकाच बंधनासह समस्या दुर्मीळ संसाधनाच्या प्रति एकक नफ्याच्या तुलनेत कोसळते, आणि विजेता सर्वकाही घेतो. ते गुणोत्तर छाया-किमतीच्या कल्पनेचा गर्भ आहे, आणि ते स्पष्ट करते की खरे रैखिक कार्यक्रम इतक्या वेळा एकतर्फी उत्तरे का देतात: जोवर दोन क्रियांचा बंधनकारक संसाधनावर नेमका समान परतावा नसेल, तोवर त्यांपैकी एक काटेकोरपणे चांगली आहे आणि इष्टतम एखाद्या टोकावर बसतो. 'इतर सर्व मर्यादा दुर्लक्षून' हे इथे भार उचलत आहे — अशी बाजारपेठ जोडा जी केवळ 8 खुर्च्या खपवेल आणि उत्तर पूर्णपणे बदलते, म्हणूनच या समस्यांचा रोचक भाग नेहमी हा असतो की कोणती बंधने वगळली गेली. (36 हे 6 टेबले बनवते, प्रति-वस्तू जास्त नफा, जो सापळा आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The corner-point theorem holds for linear objectives on convex regions. Of the two hypotheses 'objective is linear' and 'region is convex', how many can be dropped and leave the theorem true?",
+      "choices": [
+        "2",
+        "0",
+        "3",
+        "1"
+      ],
+      "answerIndex": 1,
+      "solution": "Neither can be dropped, and it is instructive that each fails in a different way. Drop linearity: maximise x² + y² over the square with corners (0,0), (1,0), (1,1), (0,1) and the corner-point method still happens to work, but maximise −(x − 0.5)² − (y − 0.5)² over the same square and the maximum is at the CENTRE, an interior point no corner search would ever visit. Non-linear objectives can peak anywhere. Drop convexity: take an L-shaped region and a linear objective, and the corners still contain the maximum — because the argument that an interior point can always be improved used only linearity. But convexity was doing other work: without it the feasible set can be disconnected, so a local search that climbs to a corner can settle in the wrong component entirely, and the corner-point theorem's guarantee that testing all corners suffices survives only if one really does test ALL of them, which for a non-convex region can be a much larger and less obvious list. So the count is 0. The general lesson is about how to read a theorem's hypotheses: they are not decoration, and the way to understand what each buys is to remove it and see precisely which step of the proof stops working. Here linearity buys 'no interior maximum' and convexity buys 'the corners are few and the region is one piece', and losing either loses a different guarantee. (1 assumes one hypothesis must be redundant because the other seems to do most of the work.)",
+      "checkExpr": "2-2",
+      "translations": {
+        "hi": {
+          "stem": "कोने-बिंदु प्रमेय उत्तल क्षेत्रों पर रैखिक उद्देश्यों के लिए लागू है। दो परिकल्पनाओं 'उद्देश्य रैखिक है' और 'क्षेत्र उत्तल है' में से कितनी छोड़ी जा सकती हैं और प्रमेय फिर भी सच रहे?",
+          "choices": [
+            "2",
+            "0",
+            "3",
+            "1"
+          ],
+          "solution": "कोई नहीं छोड़ी जा सकती, और शिक्षाप्रद यह है कि हर एक भिन्न ढंग से विफल होती है। रैखिकता छोड़ो: कोनों (0,0), (1,0), (1,1), (0,1) वाले वर्ग पर x² + y² अधिकतम करो और कोने-बिंदु विधि संयोग से तब भी चलती है, पर उसी वर्ग पर −(x − 0.5)² − (y − 0.5)² अधिकतम करो और अधिकतम केंद्र पर है, ऐसा भीतरी बिंदु जिस पर कोई कोना-खोज कभी नहीं जाती। अरैखिक उद्देश्य कहीं भी शिखर छू सकते हैं। उत्तलता छोड़ो: L-आकार का क्षेत्र और रैखिक उद्देश्य लो, और कोनों में अधिकतम तब भी है — क्योंकि यह तर्क कि भीतरी बिंदु को सदा सुधारा जा सकता है केवल रैखिकता बरतता था। पर उत्तलता और काम कर रही थी: उसके बिना सुसंगत समुच्चय असंबद्ध हो सकता है, अतः किसी कोने तक चढ़ती स्थानीय खोज पूरी तरह ग़लत घटक में जा बैठ सकती है, और यह गारंटी कि सब कोने जाँचना काफ़ी है केवल तभी बचती है जब सचमुच सब जाँचे जाएँ, जो अनुत्तल क्षेत्र के लिए कहीं बड़ी और कम स्पष्ट सूची हो सकती है। अतः गिनती 0 है। सामान्य सबक़ यह है कि किसी प्रमेय की परिकल्पनाएँ कैसे पढ़ी जाएँ: वे सजावट नहीं, और हर एक क्या ख़रीदती है यह समझने का तरीक़ा उसे हटाकर देखना है कि उपपत्ति का कौन-सा क़दम ठीक-ठीक चलना बंद कर देता है। यहाँ रैखिकता 'कोई भीतरी अधिकतम नहीं' ख़रीदती है और उत्तलता 'कोने थोड़े हैं और क्षेत्र एक टुकड़ा है', और किसी एक को खोने पर भिन्न गारंटी खोती है। (1 मान लेता है कि एक परिकल्पना अतिरेक होगी क्योंकि दूसरी अधिकांश काम करती दिखती है।)"
+        },
+        "mr": {
+          "stem": "कोपरा-बिंदू प्रमेय बहिर्वक्र प्रदेशांवरील रैखिक उद्दिष्टांसाठी लागू आहे. 'उद्दिष्ट रैखिक आहे' आणि 'प्रदेश बहिर्वक्र आहे' या दोन गृहीतकांपैकी किती वगळता येतील आणि प्रमेय तरीही खरे राहील?",
+          "choices": [
+            "2",
+            "0",
+            "3",
+            "1"
+          ],
+          "solution": "एकही वगळता येत नाही, आणि बोधप्रद हे की प्रत्येक वेगळ्या प्रकारे अपयशी होते. रैखिकता वगळा: कोपरे (0,0), (1,0), (1,1), (0,1) असलेल्या चौरसावर x² + y² कमाल करा आणि कोपरा-बिंदू पद्धत योगायोगाने तरीही चालते, पण त्याच चौरसावर −(x − 0.5)² − (y − 0.5)² कमाल करा आणि कमाल केंद्रावर आहे, असा आंतरिक बिंदू ज्यावर कोणताही कोपरा-शोध कधीच जात नाही. अरैखिक उद्दिष्टे कुठेही शिखर गाठू शकतात. बहिर्वक्रता वगळा: L-आकाराचा प्रदेश आणि रैखिक उद्दिष्ट घ्या, आणि कोपऱ्यांत कमाल तरीही आहे — कारण आंतरिक बिंदू नेहमी सुधारता येतो हा युक्तिवाद केवळ रैखिकता वापरत होता. पण बहिर्वक्रता दुसरे काम करत होती: तिच्याशिवाय सुसंगत संच असंबद्ध असू शकतो, म्हणून एखाद्या कोपऱ्यापर्यंत चढणारा स्थानिक शोध पूर्णपणे चुकीच्या घटकात स्थिरावू शकतो, आणि सर्व कोपरे तपासणे पुरेसे आहे ही हमी केवळ तेव्हाच टिकते जेव्हा खरोखर सर्व तपासले जातील, जी अबहिर्वक्र प्रदेशासाठी कितीतरी मोठी आणि कमी स्पष्ट यादी असू शकते. म्हणून मोजणी 0 आहे. सर्वसाधारण धडा हा की एखाद्या प्रमेयाची गृहीतके कशी वाचावीत: ती सजावट नाहीत, आणि प्रत्येक काय विकत घेते हे समजण्याचा मार्ग ते काढून पाहणे आहे की सिद्धतेचे कोणते पाऊल नेमके चालणे थांबवते. इथे रैखिकता 'कोणतीही आंतरिक कमाल नाही' विकत घेते आणि बहिर्वक्रता 'कोपरे थोडे आहेत आणि प्रदेश एक तुकडा आहे', आणि कोणतेही एक गमावल्यास वेगळी हमी हरवते. (1 गृहीत धरते की एक गृहीतक अतिरेकी असेल कारण दुसरे बहुतांश काम करताना दिसते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "A linear programme has 3 variables and 5 constraints. Corner points come from solving 3 constraints at a time. At most how many such combinations are there?",
+      "choices": [
+        "15",
+        "10",
+        "125",
+        "8"
+      ],
+      "answerIndex": 1,
+      "solution": "Choosing 3 from 5 gives 10 combinations. Not all of them yield a feasible corner — some triples of planes fail to meet in a single point, and some meet at points that violate the other two constraints — so 10 is an upper bound rather than a count. What makes this worth an advanced question is what the number does as the problem grows. Choosing n from m grows combinatorially: 10 variables and 20 constraints give 184,756 candidate corners, and a realistic industrial problem with hundreds of variables has more corners than there are atoms in the observable universe. So the corner-point method, which is a complete and correct algorithm, is completely unusable at scale — and that gap between correct and usable is one of the most important distinctions in applied mathematics. The resolution is the simplex method, which does not enumerate corners but WALKS between neighbouring ones, always in a direction that improves the objective, and so visits a tiny fraction of them. It is worth noticing what made that possible: convexity guarantees there are no local maxima to get stuck in, so improving locally is safe and a greedy walk cannot be trapped. The theorem that made enumeration valid is the same theorem that makes enumeration unnecessary. (15 computes 5 × 3, treating the choice as a product.)",
+      "checkExpr": "10*1",
+      "translations": {
+        "hi": {
+          "stem": "किसी रैखिक कार्यक्रम में 3 चर और 5 अड़चनें हैं। कोने-बिंदु एक बार में 3 अड़चनें हल करने से आते हैं। ऐसे अधिक से अधिक कितने संयोजन हैं?",
+          "choices": [
+            "15",
+            "10",
+            "125",
+            "8"
+          ],
+          "solution": "5 में से 3 चुनने पर 10 संयोजन बनते हैं। उनमें से सब सुसंगत कोना नहीं देते — समतलों के कुछ त्रिक एक बिंदु पर मिलने में विफल रहते हैं, और कुछ ऐसे बिंदुओं पर मिलते हैं जो बाक़ी दो अड़चनों का उल्लंघन करते हैं — अतः 10 गिनती नहीं बल्कि ऊपरी सीमा है। इसे उन्नत प्रश्न वह बनाता है जो यह संख्या समस्या के बड़े होने पर करती है। m में से n चुनना संयोजनात्मक रूप से बढ़ता है: 10 चर और 20 अड़चनें 184,756 उम्मीदवार कोने देती हैं, और सैकड़ों चरों वाली यथार्थ औद्योगिक समस्या में प्रेक्षणीय ब्रह्मांड के परमाणुओं से अधिक कोने होते हैं। अतः कोने-बिंदु विधि, जो पूर्ण और सही कलनविधि है, बड़े पैमाने पर पूरी तरह अनुपयोगी है — और सही तथा उपयोगी के बीच की वह खाई अनुप्रयुक्त गणित के सबसे महत्वपूर्ण भेदों में से एक है। समाधान सिंप्लेक्स विधि है, जो कोने गिनती नहीं बल्कि पड़ोसी कोनों के बीच चलती है, सदा उस दिशा में जो उद्देश्य सुधारे, और इसलिए उनके बहुत छोटे अंश पर ही जाती है। ध्यान देने लायक़ यह है कि उसे किसने संभव बनाया: उत्तलता गारंटी देती है कि फँसने को कोई स्थानीय अधिकतम नहीं, अतः स्थानीय रूप से सुधारना सुरक्षित है और लोभी चाल फँस नहीं सकती। जिस प्रमेय ने गणना को वैध बनाया वही प्रमेय गणना को अनावश्यक बना देता है। (15, 5 × 3 गणित करता है, चुनाव को गुणनफल मानते हुए।)"
+        },
+        "mr": {
+          "stem": "एका रैखिक कार्यक्रमात 3 चल आणि 5 बंधने आहेत. कोपरा-बिंदू एका वेळी 3 बंधने सोडवण्यातून येतात. असे जास्तीत जास्त किती संयोग आहेत?",
+          "choices": [
+            "15",
+            "10",
+            "125",
+            "8"
+          ],
+          "solution": "5 पैकी 3 निवडल्यास 10 संयोग बनतात. त्यांपैकी सर्व सुसंगत कोपरा देत नाहीत — प्रतलांची काही त्रिके एका बिंदूवर भेटण्यात अपयशी ठरतात, आणि काही अशा बिंदूंवर भेटतात जे उरलेल्या दोन बंधनांचे उल्लंघन करतात — म्हणून 10 ही मोजणी नसून वरची सीमा आहे. याला प्रगत प्रश्न ते बनवते जे ही संख्या समस्या मोठी होताना करते. m पैकी n निवडणे संयोगात्मकरीत्या वाढते: 10 चल आणि 20 बंधने 184,756 उमेदवार कोपरे देतात, आणि शेकडो चल असलेल्या वास्तववादी औद्योगिक समस्येत निरीक्षणीय विश्वातील अणूंहून अधिक कोपरे असतात. म्हणून कोपरा-बिंदू पद्धत, जी पूर्ण आणि बरोबर कलनविधी आहे, मोठ्या प्रमाणावर पूर्णपणे निरुपयोगी आहे — आणि बरोबर आणि वापरण्याजोगे यांतील ती दरी उपयोजित गणितातील सर्वांत महत्त्वाच्या भेदांपैकी एक आहे. निराकरण म्हणजे सिंप्लेक्स पद्धत, जी कोपरे मोजत नाही तर शेजारच्या कोपऱ्यांदरम्यान चालते, नेहमी उद्दिष्ट सुधारणाऱ्या दिशेने, आणि म्हणून त्यांच्या अगदी लहान अंशावरच जाते. लक्षात घेण्याजोगे हे की ते कशाने शक्य केले: बहिर्वक्रता हमी देते की अडकण्यासाठी कोणतीही स्थानिक कमाल नाही, म्हणून स्थानिकरीत्या सुधारणे सुरक्षित आहे आणि लोभी चाल अडकू शकत नाही. ज्या प्रमेयाने मोजणी वैध केली तेच प्रमेय मोजणी अनावश्यक करते. (15 हे 5 × 3 काढते, निवडीला गुणाकार मानत.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A factory's optimal plan calls for 7.5 machines. Rounding to 8 exceeds the budget and rounding to 7 is feasible but not optimal among whole numbers. Of the linear programme's optimum and the true integer optimum, how many are found by rounding?",
+      "choices": [
+        "2",
+        "0",
+        "1",
+        "3"
+      ],
+      "answerIndex": 1,
+      "solution": "Neither. The linear programme's optimum is 7.5 itself and rounding destroys it rather than finding it; the integer optimum is stated not to be 7, and 8 is infeasible, so it lies somewhere rounding never looks — at a different combination of the OTHER variables entirely. The count is 0. This is the honest limit of the whole chapter and it is worth stating plainly, because the standard classroom problems quietly avoid it by choosing numbers that come out whole. Adding the requirement that variables be integers changes the problem's character completely. The feasible set stops being a convex polygon and becomes a scatter of isolated lattice points; the corner-point theorem no longer applies, because the optimum need not be at a corner of anything; and the simplex method's guarantee, which rested on being able to move continuously in an improving direction, is gone, since one cannot move a little bit. Integer linear programming is in fact NP-hard, while ordinary linear programming is solvable in polynomial time — the two problems look almost identical on the page and sit on opposite sides of the sharpest known divide in computational complexity. Two things follow that are worth carrying well beyond this syllabus. First, the rounding instinct is not merely inaccurate but structurally wrong: the continuous optimum's location carries no reliable information about where the discrete one is, and it can be arbitrarily far away. Second, a constraint that sounds like a technicality — 'you cannot buy half a machine' — can be the single most expensive thing in the model. Which requirements are cheap and which are catastrophic is not visible from how they are phrased. (1 supposes the linear optimum at least is recovered by rounding, when rounding moves away from it.)",
+      "checkExpr": "1-1",
+      "translations": {
+        "hi": {
+          "stem": "किसी कारख़ाने की इष्टतम योजना 7.5 मशीनें माँगती है। 8 पर पूर्णांकित करने से बजट पार हो जाता है और 7 पर करने से सुसंगत तो है पर पूर्ण संख्याओं में इष्टतम नहीं। रैखिक कार्यक्रम के इष्टतम और सच्चे पूर्णांक इष्टतम में से कितने पूर्णांकन से मिलते हैं?",
+          "choices": [
+            "2",
+            "0",
+            "1",
+            "3"
+          ],
+          "solution": "कोई नहीं। रैखिक कार्यक्रम का इष्टतम स्वयं 7.5 है और पूर्णांकन उसे ढूँढ़ने के बजाय नष्ट कर देता है; पूर्णांक इष्टतम के बारे में कहा गया है कि वह 7 नहीं, और 8 असुसंगत है, अतः वह वहाँ है जहाँ पूर्णांकन कभी देखता ही नहीं — पूरी तरह दूसरे चरों के किसी भिन्न संयोजन पर। गिनती 0 है। यह पूरे अध्याय की ईमानदार सीमा है और उसे साफ़ कह देना ज़रूरी है, क्योंकि मानक कक्षा-समस्याएँ ऐसी संख्याएँ चुनकर चुपचाप इससे बच जाती हैं जो पूरी निकलती हैं। चरों के पूर्णांक होने की माँग जोड़ना समस्या का चरित्र पूरी तरह बदल देता है। सुसंगत समुच्चय उत्तल बहुभुज होना छोड़कर अलग-थलग जालक-बिंदुओं का बिखराव बन जाता है; कोने-बिंदु प्रमेय अब लागू नहीं, क्योंकि इष्टतम को किसी भी चीज़ के कोने पर होना ज़रूरी नहीं; और सिंप्लेक्स विधि की गारंटी, जो सुधार की दिशा में संतत हिल सकने पर टिकी थी, चली गई, क्योंकि थोड़ा-सा हिला नहीं जा सकता। पूर्णांक रैखिक प्रोग्रामन असल में NP-कठिन है, जबकि साधारण रैखिक प्रोग्रामन बहुपद समय में हल हो जाता है — दोनों समस्याएँ काग़ज़ पर लगभग एक जैसी दिखती हैं और अभिकलनात्मक जटिलता की सबसे तीखी ज्ञात विभाजक रेखा के विपरीत पक्षों पर बैठती हैं। इस पाठ्यक्रम से कहीं आगे ले जाने लायक़ दो बातें निकलती हैं। पहली, पूर्णांकन की सहज-वृत्ति महज़ अशुद्ध नहीं बल्कि संरचनात्मक रूप से ग़लत है: संतत इष्टतम की जगह इस बारे में कोई भरोसेमंद जानकारी नहीं ढोती कि विविक्त वाला कहाँ है, और वह मनचाहे दूर हो सकता है। दूसरी, जो अड़चन तकनीकी बारीक़ी लगती है — 'तुम आधी मशीन नहीं ख़रीद सकते' — वह मॉडल की सबसे महँगी अकेली चीज़ हो सकती है। कौन-सी माँगें सस्ती हैं और कौन-सी विनाशकारी, यह उनके कहे जाने के ढंग से नहीं दिखता। (1 मान लेता है कि कम से कम रैखिक इष्टतम पूर्णांकन से वापस मिल जाता है, जबकि पूर्णांकन उससे दूर ले जाता है।)"
+        },
+        "mr": {
+          "stem": "एका कारखान्याची इष्टतम योजना 7.5 यंत्रे मागते. 8 वर पूर्णांकित केल्यास अंदाजपत्रक ओलांडते आणि 7 वर केल्यास सुसंगत आहे पण पूर्ण संख्यांत इष्टतम नाही. रैखिक कार्यक्रमाची इष्टतम आणि खरी पूर्णांक इष्टतम यांपैकी किती पूर्णांकनाने सापडतात?",
+          "choices": [
+            "2",
+            "0",
+            "1",
+            "3"
+          ],
+          "solution": "एकही नाही. रैखिक कार्यक्रमाची इष्टतम स्वतः 7.5 आहे आणि पूर्णांकन ती शोधण्याऐवजी नष्ट करते; पूर्णांक इष्टतमबद्दल सांगितले आहे की ती 7 नाही, आणि 8 असुसंगत आहे, म्हणून ती तिथे आहे जिथे पूर्णांकन कधीच पाहत नाही — पूर्णपणे इतर चलांच्या वेगळ्या संयोगावर. मोजणी 0 आहे. ही अख्ख्या अध्यायाची प्रामाणिक मर्यादा आहे आणि ती स्पष्ट सांगणे आवश्यक आहे, कारण प्रमाण वर्ग-समस्या पूर्ण निघणाऱ्या संख्या निवडून गुपचूप हिच्यापासून वाचतात. चल पूर्णांक असावेत ही मागणी जोडणे समस्येचे चरित्र पूर्णपणे बदलते. सुसंगत संच बहिर्वक्र बहुभुज असणे थांबवून वेगळ्या जालक-बिंदूंचा विखार बनतो; कोपरा-बिंदू प्रमेय आता लागू नाही, कारण इष्टतम कशाच्याही कोपऱ्यावर असणे आवश्यक नाही; आणि सिंप्लेक्स पद्धतीची हमी, जी सुधारणाऱ्या दिशेने संततपणे हलू शकण्यावर टिकली होती, गेली, कारण थोडेसे हलता येत नाही. पूर्णांक रैखिक प्रोग्रामिंग प्रत्यक्षात NP-कठीण आहे, तर साधे रैखिक प्रोग्रामिंग बहुपदी काळात सुटते — दोन्ही समस्या कागदावर जवळजवळ सारख्याच दिसतात आणि अभिकलनात्मक गुंतागुंतीच्या सर्वांत तीक्ष्ण ज्ञात विभाजक रेषेच्या विरुद्ध बाजूंना बसतात. या अभ्यासक्रमापुढे कितीतरी न्यायला हव्या अशा दोन गोष्टी निघतात. पहिली, पूर्णांकनाची सहजप्रवृत्ती केवळ चुकीची नसून संरचनात्मक दृष्ट्या चुकीची आहे: संतत इष्टतमची जागा विविक्त कुठे आहे याबद्दल कोणतीही विश्वासार्ह माहिती वाहत नाही, आणि ती हवी तितकी दूर असू शकते. दुसरी, जे बंधन तांत्रिक बारकावा वाटते — 'तुम्ही अर्धे यंत्र विकत घेऊ शकत नाही' — ते प्रतिरूपातील सर्वांत महाग एकटी गोष्ट असू शकते. कोणत्या मागण्या स्वस्त आहेत आणि कोणत्या विनाशकारी, हे त्या कशा मांडल्या यावरून दिसत नाही. (1 गृहीत धरते की किमान रैखिक इष्टतम पूर्णांकनाने परत मिळते, तर पूर्णांकन तिच्यापासून दूर नेते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "A maximisation problem has an unbounded feasible region and no maximum. Of its maximum and its minimum, how many are guaranteed not to exist?",
+      "choices": [
+        "1",
+        "3",
+        "2",
+        "0"
+      ],
+      "answerIndex": 0,
+      "solution": "One — only the maximum. That the region is unbounded says the feasible set extends forever in some direction, and that the maximum fails to exist says the objective increases without limit along one of those directions. Neither statement constrains the other end. The region x ≥ 0, y ≥ 0 with objective x + y has no maximum and a perfectly good minimum of 0 at the origin, so unboundedness in a region is entirely compatible with the objective being bounded below. The count is therefore 1, and the general principle is that boundedness of the FEASIBLE SET and boundedness of the OBJECTIVE ON that set are different properties, related but not equivalent. A bounded region forces both to exist; an unbounded region forces neither, and each must be checked separately in the direction being asked about. There is a further subtlety worth naming, because it is the one that catches people who have understood everything so far. An unbounded region does not even guarantee that the maximum fails — take the same quarter-plane with objective −x − y, which is bounded above by 0 and attains it, so the region runs to infinity in directions where the objective is running away downwards and the maximum exists comfortably. So the correct statement has three parts, not one: the maximum exists if the region is bounded, OR if the objective decreases along every unbounded direction of the region; and it fails only when some unbounded direction increases it. Checking 'is the region bounded' is a cheap sufficient test, and treating it as necessary as well is the error. Reading a sufficient condition as though it were a characterisation is among the most common ways of being confidently wrong in mathematics, and this chapter offers a particularly clean example of it. (2 assumes that an unbounded region breaks both ends at once.)",
+      "checkExpr": "2-1",
+      "translations": {
+        "hi": {
+          "stem": "किसी अधिकतमीकरण समस्या का सुसंगत क्षेत्र अपरिबद्ध है और कोई अधिकतम नहीं। उसके अधिकतम और न्यूनतम में से कितनों का अस्तित्व न होना निश्चित है?",
+          "choices": [
+            "1",
+            "3",
+            "2",
+            "0"
+          ],
+          "solution": "एक — केवल अधिकतम। क्षेत्र का अपरिबद्ध होना कहता है कि सुसंगत समुच्चय किसी दिशा में सदा को फैला है, और अधिकतम का न होना कहता है कि उन्हीं दिशाओं में से किसी एक के अनुदिश उद्देश्य बिना सीमा बढ़ता है। कोई भी कथन दूसरे सिरे को नहीं बाँधता। क्षेत्र x ≥ 0, y ≥ 0 और उद्देश्य x + y का कोई अधिकतम नहीं और मूलबिंदु पर बिलकुल ठीक 0 का न्यूनतम है, अतः क्षेत्र की अपरिबद्धता उद्देश्य के नीचे से परिबद्ध होने के पूरी तरह अनुकूल है। अतः गिनती 1 है, और सामान्य सिद्धांत यह है कि सुसंगत समुच्चय की परिबद्धता और उस समुच्चय पर उद्देश्य की परिबद्धता भिन्न गुण हैं, संबंधित पर समतुल्य नहीं। परिबद्ध क्षेत्र दोनों को होने पर मजबूर करता है; अपरिबद्ध क्षेत्र किसी को नहीं, और जिस दिशा के बारे में पूछा गया है उसमें हर एक अलग से जाँचना होगा। एक और बारीक़ी नाम देने लायक़ है, क्योंकि वही उन्हें पकड़ती है जो अब तक सब समझ चुके हैं। अपरिबद्ध क्षेत्र यह गारंटी तक नहीं देता कि अधिकतम विफल होगा — वही चतुर्थांश-समतल उद्देश्य −x − y के साथ लो, जो ऊपर से 0 से परिबद्ध है और उसे प्राप्त भी करता है, अतः क्षेत्र उन दिशाओं में अनंत तक भागता है जहाँ उद्देश्य नीचे की ओर भाग रहा है और अधिकतम आराम से मौजूद है। अतः सही कथन के तीन हिस्से हैं, एक नहीं: अधिकतम है यदि क्षेत्र परिबद्ध हो, या यदि उद्देश्य क्षेत्र की हर अपरिबद्ध दिशा के अनुदिश घटता हो; और वह केवल तब विफल है जब कोई अपरिबद्ध दिशा उसे बढ़ाए। 'क्या क्षेत्र परिबद्ध है' जाँचना सस्ता पर्याप्त परीक्षण है, और उसे आवश्यक भी मान लेना ही भूल है। किसी पर्याप्त शर्त को ऐसे पढ़ना मानो वह अभिलक्षण हो, गणित में आत्मविश्वास से ग़लत होने के सबसे आम तरीक़ों में है, और यह अध्याय उसका ख़ासा साफ़ उदाहरण देता है। (2 मान लेता है कि अपरिबद्ध क्षेत्र दोनों सिरे एक साथ तोड़ देता है।)"
+        },
+        "mr": {
+          "stem": "एखाद्या कमालीकरण समस्येचा सुसंगत प्रदेश अबद्ध आहे आणि कोणतीही कमाल नाही. तिच्या कमाल आणि किमान यांपैकी कितींचे अस्तित्व नसणे निश्चित आहे?",
+          "choices": [
+            "1",
+            "3",
+            "2",
+            "0"
+          ],
+          "solution": "एक — केवळ कमाल. प्रदेश अबद्ध असणे सांगते की सुसंगत संच एखाद्या दिशेने कायमचा पसरला आहे, आणि कमाल नसणे सांगते की त्याच दिशांपैकी एकीच्या बाजूने उद्दिष्ट मर्यादेशिवाय वाढते. कोणतेही विधान दुसऱ्या टोकाला बांधत नाही. प्रदेश x ≥ 0, y ≥ 0 आणि उद्दिष्ट x + y यांना कोणतीही कमाल नाही आणि आदिबिंदूवर अगदी व्यवस्थित 0 ची किमान आहे, म्हणून प्रदेशाची अबद्धता उद्दिष्ट खालून बद्ध असण्याशी पूर्णपणे सुसंगत आहे. म्हणून मोजणी 1 आहे, आणि सर्वसाधारण तत्त्व हे की सुसंगत संचाची बद्धता आणि त्या संचावर उद्दिष्टाची बद्धता हे वेगळे गुणधर्म आहेत, संबंधित पण समतुल्य नाहीत. बद्ध प्रदेश दोन्ही असण्यास भाग पाडतो; अबद्ध प्रदेश कोणालाच नाही, आणि ज्या दिशेबद्दल विचारले आहे तिच्यात प्रत्येक वेगळे तपासावे लागेल. आणखी एक सूक्ष्मता नाव देण्याजोगी आहे, कारण तीच त्यांना पकडते ज्यांनी आतापर्यंत सर्व समजून घेतले आहे. अबद्ध प्रदेश ही हमीसुद्धा देत नाही की कमाल अपयशी ठरेल — तेच चतुर्थांश-प्रतल उद्दिष्ट −x − y सोबत घ्या, जे वरून 0 ने बद्ध आहे आणि ते गाठतेही, म्हणून प्रदेश त्या दिशांत अनंतापर्यंत पळतो जिथे उद्दिष्ट खालच्या दिशेने पळत आहे आणि कमाल आरामात अस्तित्वात आहे. म्हणून बरोबर विधानाचे तीन भाग आहेत, एक नव्हे: कमाल आहे जर प्रदेश बद्ध असेल, किंवा जर उद्दिष्ट प्रदेशाच्या प्रत्येक अबद्ध दिशेच्या बाजूने घटत असेल; आणि ती केवळ तेव्हा अपयशी आहे जेव्हा एखादी अबद्ध दिशा तिला वाढवेल. 'प्रदेश बद्ध आहे का' तपासणे ही स्वस्त पुरेशी चाचणी आहे, आणि तिला आवश्यकही मानणे हीच चूक आहे. एखादी पुरेशी अट अशी वाचणे जणू ती वैशिष्ट्यनिर्धारण असावी, हे गणितात आत्मविश्वासाने चुकीचे असण्याच्या सर्वांत सामान्य मार्गांपैकी आहे, आणि हा अध्याय त्याचे विशेष स्वच्छ उदाहरण देतो. (2 गृहीत धरते की अबद्ध प्रदेश दोन्ही टोके एकाच वेळी मोडतो.)"
+        }
+      }
+    }
+  ]
+}

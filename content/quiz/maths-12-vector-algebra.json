@@ -1,0 +1,513 @@
+{
+  "slug": "maths-12-vector-algebra",
+  "subject": "MATHS",
+  "classLevel": 12,
+  "chapter": "Chapter 10 — Vector Algebra",
+  "name": "Vector Algebra",
+  "summary": "Two products built from the same pair of arrows that detect opposite things: why one vanishes on perpendicular vectors and the other on parallel ones, why the second refuses both the commutativity and the associativity that all earlier multiplication had, why its direction is a convention rather than a fact, and why it exists in only two dimensions above one while the first exists in all of them.",
+  "position": 10,
+  "translations": {
+    "hi": {
+      "name": "सदिश बीजगणित",
+      "summary": "एक ही तीरों की जोड़ी से बने दो गुणनफल जो विपरीत चीज़ें भाँपते हैं: एक लंबवत सदिशों पर और दूसरा समांतर सदिशों पर क्यों लुप्त होता है, दूसरा वह क्रमविनिमेयता और साहचर्य दोनों क्यों नकारता है जो पहले के हर गुणा में थे, उसकी दिशा तथ्य के बजाय परिपाटी क्यों है, और वह एक से ऊपर केवल दो विमाओं में क्यों है जबकि पहला उन सब में।"
+    },
+    "mr": {
+      "name": "सदिश बीजगणित",
+      "summary": "एकाच बाणांच्या जोडीतून बनलेले दोन गुणाकार जे विरुद्ध गोष्टी ओळखतात: एक लंब सदिशांवर आणि दुसरा समांतर सदिशांवर का लोप पावतो, दुसरा ती क्रमविनिमेयता आणि साहचर्य दोन्ही का नाकारतो जी आधीच्या प्रत्येक गुणाकारात होती, त्याची दिशा तथ्याऐवजी संकेतरीत का आहे, आणि तो एकाहून वर केवळ दोन मितींत का आहे तर पहिला त्या सर्वांत."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the magnitude of the vector 3i + 4j?",
+      "choices": [
+        "5",
+        "25",
+        "7",
+        "12"
+      ],
+      "answerIndex": 0,
+      "solution": "√(3² + 4²) = √25 = 5. Magnitude is Pythagoras applied to the components, and 7 is the answer of somebody who added them — which would be the distance walked along the axes rather than the straight-line length. The whole reason for using vectors is that the straight line and the walk are different things. (25 stops before taking the root.)",
+      "checkExpr": "25^0.5",
+      "translations": {
+        "hi": {
+          "stem": "सदिश 3i + 4j का परिमाण क्या है?",
+          "choices": [
+            "5",
+            "25",
+            "7",
+            "12"
+          ],
+          "solution": "√(3² + 4²) = √25 = 5. परिमाण घटकों पर लगाया गया पाइथागोरस है, और 7 उसका उत्तर है जिसने उन्हें जोड़ दिया — जो अक्षों के साथ चली गई दूरी होती, सरल-रेखीय लंबाई नहीं। सदिश बरतने का पूरा कारण ही यह है कि सरल रेखा और चाल अलग चीज़ें हैं। (25 मूल लेने से पहले रुक जाता है।)"
+        },
+        "mr": {
+          "stem": "सदिश 3i + 4j चे परिमाण किती?",
+          "choices": [
+            "5",
+            "25",
+            "7",
+            "12"
+          ],
+          "solution": "√(3² + 4²) = √25 = 5. परिमाण म्हणजे घटकांवर लावलेला पायथागोरस, आणि 7 हे त्याचे उत्तर आहे ज्याने ते जोडले — जे अक्षांसोबत चाललेले अंतर असते, सरळ-रेषीय लांबी नव्हे. सदिश वापरण्याचे अख्खे कारणच हे आहे की सरळ रेषा आणि चाल वेगळ्या गोष्टी आहेत. (25 मूळ घेण्याआधी थांबते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "What is the dot product of i + 2j and 3i + 4j?",
+      "choices": [
+        "11",
+        "7",
+        "3",
+        "10"
+      ],
+      "answerIndex": 0,
+      "solution": "1 × 3 + 2 × 4 = 3 + 8 = 11. Multiply matching components and add. Note that the result is a plain number with no direction attached, which is why it is called the scalar product — two vectors have gone in and something of a different kind has come out. (7 multiplies the first components and adds the second, mixing the two operations.)",
+      "checkExpr": "1*3+2*4",
+      "translations": {
+        "hi": {
+          "stem": "i + 2j और 3i + 4j का अदिश गुणनफल क्या है?",
+          "choices": [
+            "11",
+            "7",
+            "3",
+            "10"
+          ],
+          "solution": "1 × 3 + 2 × 4 = 3 + 8 = 11. मेल खाते घटक गुणा करो और जोड़ो। ध्यान दो कि परिणाम बिना किसी दिशा वाली सादी संख्या है, इसीलिए उसे अदिश गुणनफल कहते हैं — दो सदिश भीतर गए और भिन्न क़िस्म की चीज़ बाहर आई। (7 पहले घटकों को गुणा करता है और दूसरों को जोड़ देता है, दोनों संक्रियाएँ मिला देते हुए।)"
+        },
+        "mr": {
+          "stem": "i + 2j आणि 3i + 4j यांचा अदिश गुणाकार किती?",
+          "choices": [
+            "11",
+            "7",
+            "3",
+            "10"
+          ],
+          "solution": "1 × 3 + 2 × 4 = 3 + 8 = 11. जुळणारे घटक गुणा आणि जोडा. लक्षात घ्या की निकाल कोणतीही दिशा नसलेली साधी संख्या आहे, म्हणूनच त्याला अदिश गुणाकार म्हणतात — दोन सदिश आत गेले आणि वेगळ्या प्रकारची गोष्ट बाहेर आली. (7 पहिले घटक गुणते आणि दुसरे जोडते, दोन्ही क्रिया मिसळत.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many components does a vector in three-dimensional space have?",
+      "choices": [
+        "3",
+        "1",
+        "2",
+        "6"
+      ],
+      "answerIndex": 0,
+      "solution": "Three — one along each of i, j and k. The count of components is the dimension of the space and nothing to do with the vector's own length, which is a single number however many components produced it. Keeping those two apart is the first step: 3i + 4j has three characters, two components and magnitude 5. (6 counts the symbols rather than the directions.)",
+      "checkExpr": "1+2",
+      "translations": {
+        "hi": {
+          "stem": "त्रिविमीय समष्टि में किसी सदिश के कितने घटक होते हैं?",
+          "choices": [
+            "3",
+            "1",
+            "2",
+            "6"
+          ],
+          "solution": "तीन — i, j और k हर एक के साथ एक। घटकों की गिनती समष्टि की विमा है और सदिश की अपनी लंबाई से उसका कोई लेना-देना नहीं, जो चाहे कितने भी घटकों से बनी हो एक अकेली संख्या है। इन दोनों को अलग रखना पहला क़दम है: 3i + 4j में तीन चिह्न हैं, दो घटक और परिमाण 5. (6 दिशाओं के बजाय संकेत गिन लेता है।)"
+        },
+        "mr": {
+          "stem": "त्रिमितीय अवकाशातील एका सदिशाचे किती घटक असतात?",
+          "choices": [
+            "3",
+            "1",
+            "2",
+            "6"
+          ],
+          "solution": "तीन — i, j आणि k प्रत्येकासोबत एक. घटकांची मोजणी ही अवकाशाची मिती आहे आणि सदिशाच्या स्वतःच्या लांबीशी तिचा काहीच संबंध नाही, जी कितीही घटकांतून बनलेली असो एकच संख्या आहे. या दोघांना वेगळे ठेवणे हे पहिले पाऊल आहे: 3i + 4j मध्ये तीन चिन्हे आहेत, दोन घटक आणि परिमाण 5. (6 दिशांऐवजी चिन्हे मोजते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Two vectors are perpendicular. What is their dot product?",
+      "choices": [
+        "90",
+        "2",
+        "0",
+        "1"
+      ],
+      "answerIndex": 2,
+      "solution": "Zero, because a·b = |a||b| cos θ and cos 90° = 0. This is the dot product's real job: it is a detector of perpendicularity, and it answers the question with a single number rather than with any construction. The 90 on offer is the angle, not the product, and reaching for it is the standard confusion between what was asked about and what was asked for. (90 gives the angle in degrees.)",
+      "checkExpr": "1-1",
+      "translations": {
+        "hi": {
+          "stem": "दो सदिश लंबवत हैं। उनका अदिश गुणनफल क्या है?",
+          "choices": [
+            "90",
+            "2",
+            "0",
+            "1"
+          ],
+          "solution": "शून्य, क्योंकि a·b = |a||b| cos θ और cos 90° = 0. यही अदिश गुणनफल का असली काम है: वह लंबवतता का संसूचक है, और प्रश्न का उत्तर किसी रचना से नहीं बल्कि एक अकेली संख्या से देता है। पेश किया गया 90 कोण है, गुणनफल नहीं, और उसकी ओर बढ़ना उस मानक भ्रम का हिस्सा है कि किस बारे में पूछा गया और क्या पूछा गया। (90 डिग्री में कोण देता है।)"
+        },
+        "mr": {
+          "stem": "दोन सदिश लंब आहेत. त्यांचा अदिश गुणाकार किती?",
+          "choices": [
+            "90",
+            "2",
+            "0",
+            "1"
+          ],
+          "solution": "शून्य, कारण a·b = |a||b| cos θ आणि cos 90° = 0. हेच अदिश गुणाकाराचे खरे काम आहे: तो लंबतेचा संसूचक आहे, आणि प्रश्नाचे उत्तर कोणत्याही रचनेने नव्हे तर एका एकट्या संख्येने देतो. दिलेला 90 हा कोन आहे, गुणाकार नव्हे, आणि त्याकडे वळणे हा कशाबद्दल विचारले आणि काय विचारले या प्रमाण गोंधळाचा भाग आहे. (90 अंशांत कोन देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "The cross product of two parallel vectors has what magnitude?",
+      "choices": [
+        "0",
+        "1",
+        "2",
+        "180"
+      ],
+      "answerIndex": 0,
+      "solution": "Zero, since |a × b| = |a||b| sin θ and sin 0° = 0. Put beside the previous question this is the pattern worth holding: BOTH products vanish, and they vanish in opposite circumstances. The dot product is zero when the vectors are perpendicular; the cross product is zero when they are parallel. So a vanishing product tells you something definite, but which thing depends entirely on which product you computed, and mixing them up inverts the conclusion. (180 gives an angle again.)",
+      "checkExpr": "2-2",
+      "translations": {
+        "hi": {
+          "stem": "दो समांतर सदिशों के सदिश गुणनफल का परिमाण क्या है?",
+          "choices": [
+            "0",
+            "1",
+            "2",
+            "180"
+          ],
+          "solution": "शून्य, क्योंकि |a × b| = |a||b| sin θ और sin 0° = 0. पिछले प्रश्न के साथ रखकर यही वह पैटर्न है जो पकड़ने लायक़ है: दोनों गुणनफल लुप्त होते हैं, और वे विपरीत परिस्थितियों में लुप्त होते हैं। अदिश गुणनफल तब शून्य है जब सदिश लंबवत हों; सदिश गुणनफल तब शून्य है जब वे समांतर हों। अतः लुप्त होता गुणनफल कुछ निश्चित बताता है, पर कौन-सी बात यह पूरी तरह इस पर निर्भर है कि तुमने कौन-सा गुणनफल निकाला, और उन्हें मिला देने से निष्कर्ष उलट जाता है। (180 फिर कोण देता है।)"
+        },
+        "mr": {
+          "stem": "दोन समांतर सदिशांच्या सदिश गुणाकाराचे परिमाण किती?",
+          "choices": [
+            "0",
+            "1",
+            "2",
+            "180"
+          ],
+          "solution": "शून्य, कारण |a × b| = |a||b| sin θ आणि sin 0° = 0. मागील प्रश्नासोबत ठेवल्यास हाच तो साचा आहे जो धरण्याजोगा आहे: दोन्ही गुणाकार लोप पावतात, आणि ते विरुद्ध परिस्थितीत लोप पावतात. अदिश गुणाकार तेव्हा शून्य आहे जेव्हा सदिश लंब असतील; सदिश गुणाकार तेव्हा शून्य आहे जेव्हा ते समांतर असतील. म्हणून लोप पावणारा गुणाकार काहीतरी निश्चित सांगतो, पण कोणती गोष्ट हे पूर्णपणे तुम्ही कोणता गुणाकार काढला यावर अवलंबून आहे, आणि ते मिसळल्याने निष्कर्ष उलटतो. (180 पुन्हा कोन देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "A unit vector has what magnitude?",
+      "choices": [
+        "1",
+        "2",
+        "0",
+        "3"
+      ],
+      "answerIndex": 0,
+      "solution": "1, by definition — that is what the word 'unit' is doing. Dividing any non-zero vector by its own magnitude produces one, which is how a direction gets separated from a length. That separation is worth naming: a vector carries two pieces of information, and the unit vector is the half of it that survives when the size is thrown away. (0 confuses the unit vector with the zero vector, which is the one vector that has no direction at all.)",
+      "checkExpr": "2-1",
+      "translations": {
+        "hi": {
+          "stem": "एकक सदिश का परिमाण क्या है?",
+          "choices": [
+            "1",
+            "2",
+            "0",
+            "3"
+          ],
+          "solution": "1, परिभाषा से — 'एकक' शब्द यही कर रहा है। किसी भी अशून्य सदिश को उसके अपने परिमाण से भाग देने पर एक बनता है, और इसी तरह दिशा लंबाई से अलग होती है। उस अलगाव को नाम देना ज़रूरी है: सदिश दो जानकारियाँ ढोता है, और एकक सदिश उसका वह आधा है जो आकार फेंक देने पर बचता है। (0 एकक सदिश को शून्य सदिश से गड्डमड्ड करता है, जो वह अकेला सदिश है जिसकी कोई दिशा ही नहीं।)"
+        },
+        "mr": {
+          "stem": "एकक सदिशाचे परिमाण किती?",
+          "choices": [
+            "1",
+            "2",
+            "0",
+            "3"
+          ],
+          "solution": "1, व्याख्येनुसार — 'एकक' हा शब्द हेच करत आहे. कोणत्याही अशून्य सदिशाला त्याच्या स्वतःच्या परिमाणाने भागल्यास एक बनतो, आणि याच रीतीने दिशा लांबीपासून वेगळी होते. त्या वेगळेपणाला नाव देणे आवश्यक आहे: सदिश दोन माहिती वाहतो, आणि एकक सदिश हा त्याचा तो अर्धा भाग आहे जो आकार फेकून दिल्यावर उरतो. (0 एकक सदिशाला शून्य सदिशाशी गोंधळवते, जो तो एकमेव सदिश आहे ज्याला दिशाच नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "What is the magnitude of the cross product of i and j?",
+      "choices": [
+        "0",
+        "3",
+        "2",
+        "1"
+      ],
+      "answerIndex": 3,
+      "solution": "1 — the product is k, which is a unit vector. The magnitude 1 × 1 × sin 90° = 1 is also the area of the square the two vectors span, and that is the geometric meaning worth carrying: the length of a cross product is the AREA of the parallelogram built on the two vectors. So a cross product encodes an area in its size and an orientation in its direction, which is a lot of information for one object and the reason it exists. (0 confuses this with the parallel case.)",
+      "checkExpr": "1*1",
+      "translations": {
+        "hi": {
+          "stem": "i और j के सदिश गुणनफल का परिमाण क्या है?",
+          "choices": [
+            "0",
+            "3",
+            "2",
+            "1"
+          ],
+          "solution": "1 — गुणनफल k है, जो एकक सदिश है। परिमाण 1 × 1 × sin 90° = 1 उस वर्ग का क्षेत्रफल भी है जिसे दोनों सदिश फैलाते हैं, और यही ज्यामितीय अर्थ साथ ले जाने लायक़ है: सदिश गुणनफल की लंबाई दोनों सदिशों पर बने समांतर चतुर्भुज का क्षेत्रफल है। अतः सदिश गुणनफल अपने आकार में क्षेत्रफल और अपनी दिशा में अभिविन्यास संजोता है, जो एक वस्तु के लिए काफ़ी जानकारी है और उसके होने का कारण। (0 इसे समांतर वाले मामले से गड्डमड्ड करता है।)"
+        },
+        "mr": {
+          "stem": "i आणि j यांच्या सदिश गुणाकाराचे परिमाण किती?",
+          "choices": [
+            "0",
+            "3",
+            "2",
+            "1"
+          ],
+          "solution": "1 — गुणाकार k आहे, जो एकक सदिश आहे. परिमाण 1 × 1 × sin 90° = 1 हे त्या चौरसाचे क्षेत्रफळही आहे जो दोन्ही सदिश पसरवतात, आणि हाच भूमितीय अर्थ सोबत न्यायला हवा: सदिश गुणाकाराची लांबी म्हणजे दोन्ही सदिशांवर बांधलेल्या समांतरभुज चौकोनाचे क्षेत्रफळ. म्हणून सदिश गुणाकार आपल्या आकारात क्षेत्रफळ आणि आपल्या दिशेत अभिमुखता साठवतो, जी एका वस्तूसाठी पुष्कळ माहिती आहे आणि त्याच्या असण्याचे कारण. (0 याला समांतर प्रसंगाशी गोंधळवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "The projection of a on b is (a·b)/|b|. For a = 3i + 4j and b = i, what is it?",
+      "choices": [
+        "4",
+        "7",
+        "3",
+        "5"
+      ],
+      "answerIndex": 2,
+      "solution": "a·b = 3 and |b| = 1, so the projection is 3 — which is exactly a's i-component, as it must be, since projecting onto i is asking how far along i the vector reaches. The check is worth doing because it shows what the dot product is really measuring: how much of one vector lies along another. Perpendicularity giving zero then stops being a formula and becomes obvious — none of a perpendicular vector lies along you. (5 gives the magnitude of a, which is its full length rather than its shadow.)",
+      "checkExpr": "3/1",
+      "translations": {
+        "hi": {
+          "stem": "b पर a का प्रक्षेप (a·b)/|b| है। a = 3i + 4j और b = i के लिए वह क्या है?",
+          "choices": [
+            "4",
+            "7",
+            "3",
+            "5"
+          ],
+          "solution": "a·b = 3 और |b| = 1, अतः प्रक्षेप 3 है — जो ठीक a का i-घटक है, और होना ही चाहिए, क्योंकि i पर प्रक्षेपण यही पूछना है कि सदिश i के साथ कितनी दूर पहुँचता है। यह जाँच करने लायक़ है क्योंकि वह दिखाती है कि अदिश गुणनफल असल में क्या माप रहा है: एक सदिश का कितना हिस्सा दूसरे के साथ पड़ा है। तब लंबवतता का शून्य देना सूत्र नहीं रह जाता, स्पष्ट हो जाता है — लंबवत सदिश का कोई हिस्सा तुम्हारे साथ पड़ा ही नहीं। (5, a का परिमाण देता है, जो उसकी छाया नहीं बल्कि पूरी लंबाई है।)"
+        },
+        "mr": {
+          "stem": "b वर a चा प्रक्षेप (a·b)/|b| आहे. a = 3i + 4j आणि b = i साठी तो किती?",
+          "choices": [
+            "4",
+            "7",
+            "3",
+            "5"
+          ],
+          "solution": "a·b = 3 आणि |b| = 1, म्हणून प्रक्षेप 3 आहे — जो नेमका a चा i-घटक आहे, आणि असावाच लागतो, कारण i वर प्रक्षेपण म्हणजे सदिश i सोबत किती दूर पोहोचतो हेच विचारणे. ही तपासणी करण्याजोगी आहे कारण ती दाखवते की अदिश गुणाकार प्रत्यक्षात काय मोजत आहे: एका सदिशाचा किती भाग दुसऱ्यासोबत पडला आहे. मग लंबतेने शून्य देणे हे सूत्र राहत नाही, स्पष्ट होते — लंब सदिशाचा कोणताही भाग तुमच्यासोबत पडलेलाच नाही. (5 हे a चे परिमाण देते, जी त्याची सावली नसून पूर्ण लांबी आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "For vectors a and b, how many of a × b and b × a have the same direction?",
+      "choices": [
+        "3",
+        "0",
+        "1",
+        "2"
+      ],
+      "answerIndex": 1,
+      "solution": "Neither shares the other's direction — they point exactly opposite ways, so the count of matching directions is 0. The cross product is anticommutative: a × b = −(b × a). This is a genuine break from the arithmetic students arrive with, where order never mattered for multiplication, and it is not an inconvenience but the point. The direction has to encode which vector came first, because a plane has two sides and something must decide which one the product points out of. The right-hand rule is the convention that decides it, and 'convention' is the honest word — the physics is unchanged by choosing the other hand, provided one chooses consistently everywhere. (2 assumes multiplication commutes, which it does for the dot product and not for this one.)",
+      "checkExpr": "2-2",
+      "translations": {
+        "hi": {
+          "stem": "सदिश a और b के लिए, a × b और b × a में से कितनों की दिशा एक ही है?",
+          "choices": [
+            "3",
+            "0",
+            "1",
+            "2"
+          ],
+          "solution": "कोई भी दूसरे की दिशा साझा नहीं करता — वे ठीक विपरीत दिशाओं में इंगित करते हैं, अतः मेल खाती दिशाओं की गिनती 0 है। सदिश गुणनफल प्रति-क्रमविनिमेय है: a × b = −(b × a). यह उस गणित से असली टूट है जिसके साथ विद्यार्थी आते हैं, जहाँ गुणा के लिए क्रम कभी मायने नहीं रखता था, और यह असुविधा नहीं बल्कि मुद्दा है। दिशा को यह संजोना ही है कि कौन-सा सदिश पहले आया, क्योंकि समतल के दो पहलू हैं और किसी को तय करना होगा कि गुणनफल किस ओर से निकलता है। दक्षिण-हस्त नियम वह परिपाटी है जो इसे तय करती है, और 'परिपाटी' ईमानदार शब्द है — दूसरा हाथ चुनने से भौतिकी नहीं बदलती, बशर्ते हर जगह एक-सा चुना जाए। (2 मान लेता है कि गुणा क्रमविनिमेय है, जो अदिश गुणनफल के लिए है और इसके लिए नहीं।)"
+        },
+        "mr": {
+          "stem": "सदिश a आणि b साठी, a × b आणि b × a यांपैकी कितींची दिशा एकच आहे?",
+          "choices": [
+            "3",
+            "0",
+            "1",
+            "2"
+          ],
+          "solution": "एकही दुसऱ्याची दिशा सामायिक करत नाही — ते नेमक्या विरुद्ध दिशांना निर्देश करतात, म्हणून जुळणाऱ्या दिशांची मोजणी 0 आहे. सदिश गुणाकार प्रति-क्रमविनिमेय आहे: a × b = −(b × a). हा त्या गणितापासूनचा खरा भंग आहे ज्यासोबत विद्यार्थी येतात, जिथे गुणाकारासाठी क्रम कधीच महत्त्वाचा नव्हता, आणि ही गैरसोय नसून मुद्दा आहे. दिशेला हे साठवावेच लागते की कोणता सदिश आधी आला, कारण प्रतलाला दोन बाजू आहेत आणि कोणालातरी ठरवावे लागते की गुणाकार कोणत्या बाजूने बाहेर पडतो. उजव्या-हाताचा नियम ती संकेतरीत आहे जी हे ठरवते, आणि 'संकेतरीत' हा प्रामाणिक शब्द आहे — दुसरा हात निवडल्याने भौतिकशास्त्र बदलत नाही, जोवर सर्वत्र एकसारखे निवडले जाते. (2 गृहीत धरते की गुणाकार क्रमविनिमेय आहे, जो अदिश गुणाकारासाठी आहे आणि यासाठी नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Three vectors have a scalar triple product of 0. How many independent directions do they span?",
+      "choices": [
+        "1",
+        "3",
+        "0",
+        "2"
+      ],
+      "answerIndex": 3,
+      "solution": "At most 2. The scalar triple product a·(b × c) is the VOLUME of the parallelepiped the three vectors build, so a value of zero means that solid is flat — the three vectors lie in a common plane, and a plane has two independent directions. The word for this is coplanar, and the test is a single number rather than any construction, which is what makes it useful. Note how the two products are working together here: the cross product produces a vector perpendicular to b and c, and dotting a with it asks how far a escapes their plane. Zero means a does not escape at all. Reading a compound expression by asking what each operation contributes is a more reliable habit than memorising the compound as a formula. (3 answers with the number of vectors rather than the dimensions they span.)",
+      "checkExpr": "3-1",
+      "translations": {
+        "hi": {
+          "stem": "तीन सदिशों का अदिश त्रिक गुणनफल 0 है। वे कितनी स्वतंत्र दिशाएँ फैलाते हैं?",
+          "choices": [
+            "1",
+            "3",
+            "0",
+            "2"
+          ],
+          "solution": "अधिक से अधिक 2. अदिश त्रिक गुणनफल a·(b × c) उस समांतर षट्फलक का आयतन है जिसे तीनों सदिश बनाते हैं, अतः शून्य मान का अर्थ है वह ठोस चपटा है — तीनों सदिश एक साझा समतल में हैं, और समतल में दो स्वतंत्र दिशाएँ होती हैं। इसका शब्द समतलीय है, और परीक्षण किसी रचना के बजाय एक अकेली संख्या है, यही उसे उपयोगी बनाता है। ध्यान दो कि यहाँ दोनों गुणनफल कैसे साथ काम कर रहे हैं: सदिश गुणनफल b और c के लंबवत सदिश बनाता है, और उससे a का अदिश गुणनफल पूछता है कि a उनके समतल से कितनी दूर निकलता है। शून्य का अर्थ है a निकलता ही नहीं। किसी संयुक्त व्यंजक को यह पूछकर पढ़ना कि हर संक्रिया क्या योगदान देती है, संयुक्त को सूत्र की तरह रटने से अधिक भरोसेमंद आदत है। (3 सदिशों की संख्या से उत्तर देता है, उनके फैलाए विमाओं से नहीं।)"
+        },
+        "mr": {
+          "stem": "तीन सदिशांचा अदिश त्रिक गुणाकार 0 आहे. ते किती स्वतंत्र दिशा पसरवतात?",
+          "choices": [
+            "1",
+            "3",
+            "0",
+            "2"
+          ],
+          "solution": "जास्तीत जास्त 2. अदिश त्रिक गुणाकार a·(b × c) हा त्या समांतरषट्फलकाचे घनफळ आहे जो तिन्ही सदिश बांधतात, म्हणून शून्य मूल्याचा अर्थ तो घन सपाट आहे — तिन्ही सदिश एका सामायिक प्रतलात आहेत, आणि प्रतलात दोन स्वतंत्र दिशा असतात. याचा शब्द समप्रतलीय आहे, आणि चाचणी कोणत्याही रचनेऐवजी एकच संख्या आहे, हेच तिला उपयुक्त बनवते. लक्षात घ्या की इथे दोन्ही गुणाकार कसे एकत्र काम करत आहेत: सदिश गुणाकार b आणि c ला लंब असा सदिश बनवतो, आणि त्याच्याशी a चा अदिश गुणाकार विचारतो की a त्यांच्या प्रतलातून किती दूर निसटतो. शून्य म्हणजे a निसटतच नाही. एखादे संयुक्त पदावली प्रत्येक क्रिया काय योगदान देते हे विचारून वाचणे, संयुक्ताला सूत्रासारखे पाठ करण्याहून अधिक विश्वासार्ह सवय आहे. (3 सदिशांच्या संख्येने उत्तर देते, त्यांनी पसरवलेल्या मितींनी नाही.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "For a = i, b = i and c = j, compare (a × b) × c with a × (b × c). How many of these two expressions are non-zero?",
+      "choices": [
+        "1",
+        "3",
+        "0",
+        "2"
+      ],
+      "answerIndex": 0,
+      "solution": "One. Work them out. a × b is i × i = 0, so the first expression is 0 × j = 0. For the second, b × c is i × j = k, and a × k is i × k = −j, which is not zero. So the two bracketings give different answers, and the cross product is NOT associative. This is a sharper break than the anticommutativity of the previous question, because anticommutativity at least follows a rule — swap and negate — whereas the failure of associativity means the brackets are load-bearing and cannot be dropped. Nothing in ordinary algebra prepares one for this: addition and multiplication of numbers, composition of functions and multiplication of matrices are all associative, so it is easy to write a × b × c without noticing that the expression is meaningless. Two further remarks. First, there is a replacement — the vector triple product expansion a × (b × c) = b(a·c) − c(a·b) — and it is worth reading as an admission: the answer must be expressed by moving the brackets explicitly, because there is no bracket-free form. Second, the deeper reason is that a bilinear product of vectors returning a vector exists in only a very few dimensions at all, three among them, and the three-dimensional one buys its existence at the price of associativity. It is not a defect in the definition; it is what was available. (2 assumes both bracketings must give the same non-zero answer.)",
+      "checkExpr": "2-1",
+      "translations": {
+        "hi": {
+          "stem": "a = i, b = i और c = j के लिए, (a × b) × c की तुलना a × (b × c) से करो। इन दोनों व्यंजकों में से कितने अशून्य हैं?",
+          "choices": [
+            "1",
+            "3",
+            "0",
+            "2"
+          ],
+          "solution": "एक। उन्हें निकालो। a × b है i × i = 0, अतः पहला व्यंजक 0 × j = 0 है। दूसरे के लिए, b × c है i × j = k, और a × k है i × k = −j, जो शून्य नहीं। अतः दोनों कोष्ठकीकरण भिन्न उत्तर देते हैं, और सदिश गुणनफल साहचर्य नहीं है। यह पिछले प्रश्न की प्रति-क्रमविनिमेयता से तीखी टूट है, क्योंकि प्रति-क्रमविनिमेयता कम से कम एक नियम मानती है — बदलो और ऋण करो — जबकि साहचर्य की विफलता का अर्थ है कि कोष्ठक भार उठा रहे हैं और उन्हें गिराया नहीं जा सकता। साधारण बीजगणित में कुछ भी इसके लिए तैयार नहीं करता: संख्याओं का जोड़ और गुणा, फलनों का संयोजन और आव्यूहों का गुणा सब साहचर्य हैं, अतः a × b × c लिख देना आसान है बिना यह देखे कि व्यंजक निरर्थक है। दो और टिप्पणियाँ। पहली, एक विकल्प है — सदिश त्रिक गुणनफल का प्रसार a × (b × c) = b(a·c) − c(a·b) — और उसे स्वीकारोक्ति की तरह पढ़ना ठीक है: उत्तर को कोष्ठक स्पष्ट रूप से हिलाकर ही व्यक्त करना होगा, क्योंकि कोष्ठक-रहित रूप है ही नहीं। दूसरी, गहरा कारण यह है कि सदिश लौटाने वाला सदिशों का द्विरैखिक गुणनफल बहुत ही थोड़ी विमाओं में अस्तित्व में है, तीन उनमें से एक, और त्रिविमीय वाला अपना अस्तित्व साहचर्य की क़ीमत पर ख़रीदता है। यह परिभाषा का दोष नहीं; यही उपलब्ध था। (2 मान लेता है कि दोनों कोष्ठकीकरण एक ही अशून्य उत्तर देंगे।)"
+        },
+        "mr": {
+          "stem": "a = i, b = i आणि c = j साठी, (a × b) × c ची तुलना a × (b × c) शी करा. या दोन पदावलींपैकी किती अशून्य आहेत?",
+          "choices": [
+            "1",
+            "3",
+            "0",
+            "2"
+          ],
+          "solution": "एक. ते काढा. a × b म्हणजे i × i = 0, म्हणून पहिली पदावली 0 × j = 0 आहे. दुसरीसाठी, b × c म्हणजे i × j = k, आणि a × k म्हणजे i × k = −j, जो शून्य नाही. म्हणून दोन्ही कंसीकरणे वेगळी उत्तरे देतात, आणि सदिश गुणाकार साहचर्य नाही. हा मागील प्रश्नाच्या प्रति-क्रमविनिमेयतेहून तीक्ष्ण भंग आहे, कारण प्रति-क्रमविनिमेयता किमान एक नियम पाळते — अदलाबदल करा आणि ऋण करा — तर साहचर्याच्या अपयशाचा अर्थ हा की कंस भार उचलत आहेत आणि ते टाकता येत नाहीत. साध्या बीजगणितात काहीही यासाठी तयार करत नाही: संख्यांची बेरीज आणि गुणाकार, फलनांचे संयोजन आणि मॅट्रिक्सचा गुणाकार सर्व साहचर्य आहेत, म्हणून a × b × c लिहून टाकणे सोपे आहे, पदावली निरर्थक आहे हे न पाहता. आणखी दोन टिप्पण्या. पहिली, एक पर्याय आहे — सदिश त्रिक गुणाकाराचा विस्तार a × (b × c) = b(a·c) − c(a·b) — आणि तो कबुलीजबाबासारखा वाचणे बरे: उत्तर कंस स्पष्टपणे हलवूनच व्यक्त करावे लागते, कारण कंस-विरहित रूप नाहीच. दुसरी, अधिक खोल कारण हे की सदिश परत करणारा सदिशांचा द्विरैखिक गुणाकार अगदी थोड्याच मितींत अस्तित्वात आहे, तीन त्यांतील एक, आणि त्रिमितीय तो आपले अस्तित्व साहचर्याच्या किमतीवर विकत घेतो. हा व्याख्येतील दोष नाही; हेच उपलब्ध होते. (2 गृहीत धरते की दोन्ही कंसीकरणे एकच अशून्य उत्तर देतील.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "For any vectors a and b, |a·b| ≤ |a||b|. For a = 3i and b = 4i, by how much does |a||b| exceed |a·b|?",
+      "choices": [
+        "1",
+        "0",
+        "7",
+        "12"
+      ],
+      "answerIndex": 1,
+      "solution": "By nothing — both sides are 12, so the excess is 0. This is the Cauchy–Schwarz inequality, and the case worth studying is precisely the one where it becomes an equality. Since a·b = |a||b| cos θ, the two sides differ by the factor cos θ, so they coincide exactly when cos θ = ±1, which means the vectors are PARALLEL. That is the general statement: equality holds if and only if one vector is a scalar multiple of the other, and here b is 4/3 of a. Two things make this worth an advanced question. First, an inequality's equality case is usually where its content lies — the inequality alone says the dot product cannot be too large, but the equality case says exactly what 'too large' means and when the bound is attained, and optimisation problems are almost always solved by finding that case. Second, the inequality holds far beyond arrows in space: it is true in any inner product space, so the same statement bounds integrals of products of functions, and covariances of random variables, and in that last setting it is precisely the statement that a correlation coefficient cannot exceed 1 in absolute value. One inequality, three subjects, and the equality case in each says the same thing — that one quantity is a fixed multiple of the other. (12 gives the common value of both sides rather than the difference between them.)",
+      "checkExpr": "12-12",
+      "translations": {
+        "hi": {
+          "stem": "किन्हीं सदिशों a और b के लिए, |a·b| ≤ |a||b|. a = 3i और b = 4i के लिए, |a||b|, |a·b| से कितना अधिक है?",
+          "choices": [
+            "1",
+            "0",
+            "7",
+            "12"
+          ],
+          "solution": "कुछ भी नहीं — दोनों पक्ष 12 हैं, अतः अधिकता 0 है। यह कोशी–श्वार्ट्ज़ असमिका है, और अध्ययन लायक़ मामला ठीक वही है जहाँ वह समता बन जाती है। चूँकि a·b = |a||b| cos θ, दोनों पक्ष cos θ के गुणक से भिन्न हैं, अतः वे ठीक तभी एक होते हैं जब cos θ = ±1, यानी सदिश समांतर हों। सामान्य कथन यही है: समता तभी और केवल तभी है जब एक सदिश दूसरे का अदिश गुणज हो, और यहाँ b, a का 4/3 है। दो बातें इसे उन्नत प्रश्न बनाती हैं। पहली, किसी असमिका का समता-मामला आम तौर पर वहीं है जहाँ उसकी सामग्री है — अकेली असमिका कहती है कि अदिश गुणनफल बहुत बड़ा नहीं हो सकता, पर समता-मामला ठीक-ठीक बताता है कि 'बहुत बड़ा' का अर्थ क्या है और सीमा कब छुई जाती है, और इष्टतमीकरण की समस्याएँ लगभग हमेशा उसी मामले को ढूँढ़कर हल होती हैं। दूसरी, असमिका समष्टि के तीरों से कहीं आगे लागू है: वह किसी भी अंतःगुणन समष्टि में सच है, अतः वही कथन फलनों के गुणनफलों के समाकलों को, और यादृच्छिक चरों के सहप्रसरणों को बाँधता है, और उस अंतिम परिवेश में वह ठीक यह कथन है कि सहसंबंध गुणांक निरपेक्ष मान में 1 से आगे नहीं जा सकता। एक असमिका, तीन विषय, और हर एक में समता-मामला वही बात कहता है — कि एक राशि दूसरी की नियत गुणज है। (12 उनके बीच के अंतर के बजाय दोनों पक्षों का साझा मान देता है।)"
+        },
+        "mr": {
+          "stem": "कोणत्याही सदिश a आणि b साठी, |a·b| ≤ |a||b|. a = 3i आणि b = 4i साठी, |a||b| हा |a·b| हून किती अधिक आहे?",
+          "choices": [
+            "1",
+            "0",
+            "7",
+            "12"
+          ],
+          "solution": "काहीच नाही — दोन्ही बाजू 12 आहेत, म्हणून अधिक्य 0 आहे. ही कोशी–श्वार्ट्झ असमानता आहे, आणि अभ्यासण्याजोगा प्रसंग नेमका तोच आहे जिथे ती समानता बनते. कारण a·b = |a||b| cos θ, दोन्ही बाजू cos θ या गुणकाने वेगळ्या आहेत, म्हणून त्या नेमक्या तेव्हाच एकरूप होतात जेव्हा cos θ = ±1, म्हणजे सदिश समांतर असतील. सर्वसाधारण विधान हेच आहे: समानता तेव्हाच आणि केवळ तेव्हाच आहे जेव्हा एक सदिश दुसऱ्याचा अदिश गुणज असेल, आणि इथे b हा a चा 4/3 आहे. दोन गोष्टी याला प्रगत प्रश्न बनवतात. पहिली, एखाद्या असमानतेचा समानता-प्रसंग सर्वसाधारणपणे तिथेच असतो जिथे तिचा आशय आहे — एकटी असमानता सांगते की अदिश गुणाकार फार मोठा असू शकत नाही, पण समानता-प्रसंग नेमके सांगतो की 'फार मोठा' म्हणजे काय आणि सीमा कधी गाठली जाते, आणि इष्टतमीकरणाच्या समस्या जवळजवळ नेहमी तोच प्रसंग शोधून सुटतात. दुसरी, असमानता अवकाशातील बाणांहून कितीतरी पुढे लागू आहे: ती कोणत्याही अंतर्गुणन अवकाशात खरी आहे, म्हणून तेच विधान फलनांच्या गुणाकारांच्या समाकलांना, आणि यादृच्छिक चलांच्या सहप्रसरणांना बांधते, आणि त्या शेवटच्या संदर्भात ते नेमके हे विधान आहे की सहसंबंध गुणांक निरपेक्ष मूल्यात 1 हून पुढे जाऊ शकत नाही. एक असमानता, तीन विषय, आणि प्रत्येकात समानता-प्रसंग तेच सांगतो — की एक राशी दुसरीची निश्चित गुणज आहे. (12 त्यांमधील फरकाऐवजी दोन्ही बाजूंचे सामायिक मूल्य देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "The cross product needs a rule for which side of a plane the result points to. Reflecting the whole configuration in a mirror reverses that side without changing either input vector's mirror image consistently. Of |a|, a·b and a × b, how many are unchanged in sign by such a reflection?",
+      "choices": [
+        "3",
+        "0",
+        "1",
+        "2"
+      ],
+      "answerIndex": 3,
+      "solution": "Two — the magnitude and the dot product. A length cannot change sign at all, and the dot product is built from products of matching components, each of which picks up two sign flips that cancel. The cross product is the exception: its components are built from MISMATCHED pairs, so the flips do not cancel, and the mirror image of a × b is minus what one would get by crossing the mirror images. Quantities behaving this way are called pseudovectors or axial vectors, and the distinction is not a curiosity of notation. Angular momentum, torque and the magnetic field are all defined by cross products and are all pseudovectors, and the practical consequence is that their direction is not a fact about the world but a fact about the handedness convention one adopted — swap to a left-handed rule and every one of them reverses while every physical prediction stays identical, because they always appear in the final answer in pairs or in further cross products, and the two convention-dependent signs cancel. There is a real lesson in that about reading formulas. A quantity that flips when the convention flips cannot by itself be measurable; whatever is measurable must be built from it in a way that is convention-blind. So the honest question to ask of the direction of a magnetic field is not which way it really points but what it is contracted with before anything observable is computed — and the answer is always something that restores the balance. (3 assumes that reflecting a configuration cannot change any derived quantity's sign, which is true of everything here except the one object built from a handedness rule.)",
+      "checkExpr": "3-1",
+      "translations": {
+        "hi": {
+          "stem": "सदिश गुणनफल को यह नियम चाहिए कि परिणाम समतल के किस ओर इंगित करे। पूरी व्यवस्था को दर्पण में परावर्तित करने पर वह ओर पलट जाती है, बिना किसी निवेश सदिश के दर्पण-प्रतिबिंब को संगत रूप से बदले। |a|, a·b और a × b में से कितने ऐसे परावर्तन से चिह्न में अपरिवर्तित रहते हैं?",
+          "choices": [
+            "3",
+            "0",
+            "1",
+            "2"
+          ],
+          "solution": "दो — परिमाण और अदिश गुणनफल। लंबाई का चिह्न बदल ही नहीं सकता, और अदिश गुणनफल मेल खाते घटकों के गुणनफलों से बना है, जिनमें से हर एक दो चिह्न-पलट उठाता है जो कट जाते हैं। सदिश गुणनफल अपवाद है: उसके घटक बेमेल जोड़ों से बने हैं, अतः पलट कटते नहीं, और a × b का दर्पण-प्रतिबिंब उससे ऋणात्मक है जो दर्पण-प्रतिबिंबों का गुणनफल लेने पर मिलता। ऐसा बरतने वाली राशियों को छद्म-सदिश या अक्षीय सदिश कहते हैं, और यह भेद संकेतन की जिज्ञासा नहीं। कोणीय संवेग, बल-आघूर्ण और चुंबकीय क्षेत्र सब सदिश गुणनफलों से परिभाषित हैं और सब छद्म-सदिश हैं, और व्यावहारिक परिणाम यह है कि उनकी दिशा संसार का तथ्य नहीं बल्कि अपनाई गई हस्तता-परिपाटी का तथ्य है — वाम-हस्त नियम पर जाओ और उनमें से हर एक पलट जाता है जबकि हर भौतिक भविष्यवाणी वैसी ही रहती है, क्योंकि वे अंतिम उत्तर में सदा जोड़ों में या आगे के सदिश गुणनफलों में आते हैं, और दोनों परिपाटी-निर्भर चिह्न कट जाते हैं। सूत्र पढ़ने के बारे में उसमें असली सबक़ है। जो राशि परिपाटी पलटने पर पलट जाए वह अपने आप मापनीय नहीं हो सकती; जो मापनीय है उसे उससे ऐसे बनाया गया होगा जो परिपाटी-अंधा हो। अतः चुंबकीय क्षेत्र की दिशा से पूछने लायक़ ईमानदार प्रश्न यह नहीं कि वह सचमुच किधर इंगित करती है बल्कि यह कि कुछ प्रेक्षणीय गणित होने से पहले उसे किससे संकुचित किया जाता है — और उत्तर सदा वह चीज़ है जो संतुलन बहाल कर देती है। (3 मान लेता है कि किसी व्यवस्था को परावर्तित करने से किसी व्युत्पन्न राशि का चिह्न नहीं बदल सकता, जो यहाँ हर चीज़ के लिए सच है सिवाय उस अकेली वस्तु के जो हस्तता-नियम से बनी है।)"
+        },
+        "mr": {
+          "stem": "सदिश गुणाकाराला हा नियम लागतो की निकाल प्रतलाच्या कोणत्या बाजूला निर्देश करावा. अख्खी मांडणी आरशात परावर्तित केल्यास ती बाजू उलटते, कोणत्याही निविष्ट सदिशाचे आरसा-प्रतिबिंब सुसंगतपणे न बदलता. |a|, a·b आणि a × b यांपैकी किती अशा परावर्तनाने चिन्हात अपरिवर्तित राहतात?",
+          "choices": [
+            "3",
+            "0",
+            "1",
+            "2"
+          ],
+          "solution": "दोन — परिमाण आणि अदिश गुणाकार. लांबीचे चिन्ह बदलूच शकत नाही, आणि अदिश गुणाकार जुळणाऱ्या घटकांच्या गुणाकारांतून बनला आहे, ज्यांपैकी प्रत्येक दोन चिन्ह-उलटी उचलतो जी रद्द होतात. सदिश गुणाकार अपवाद आहे: त्याचे घटक न जुळणाऱ्या जोड्यांतून बनले आहेत, म्हणून उलटी रद्द होत नाहीत, आणि a × b चे आरसा-प्रतिबिंब त्याहून ऋण आहे जे आरसा-प्रतिबिंबांचा गुणाकार घेतल्यास मिळाले असते. अशा वागणाऱ्या राशींना छद्म-सदिश किंवा अक्षीय सदिश म्हणतात, आणि हा भेद चिन्हांकनाची उत्सुकता नाही. कोनीय संवेग, बलआघूर्ण आणि चुंबकीय क्षेत्र सर्व सदिश गुणाकारांनी परिभाषित आहेत आणि सर्व छद्म-सदिश आहेत, आणि व्यावहारिक परिणाम हा की त्यांची दिशा जगाबद्दलचे तथ्य नसून स्वीकारलेल्या हस्तता-संकेतरीतीबद्दलचे तथ्य आहे — डाव्या-हाताच्या नियमावर जा आणि त्यांपैकी प्रत्येक उलटतो तर प्रत्येक भौतिक भाकीत तसेच राहते, कारण ते अंतिम उत्तरात नेहमी जोड्यांत वा पुढील सदिश गुणाकारांत येतात, आणि दोन्ही संकेतरीत-अवलंबी चिन्हे रद्द होतात. सूत्रे वाचण्याबद्दल त्यात खरा धडा आहे. जी राशी संकेतरीत उलटल्यावर उलटते ती स्वतःहून मापनीय असू शकत नाही; जे मापनीय आहे ते तिच्यातून अशा प्रकारे बांधलेले असावे जो संकेतरीत-आंधळा असेल. म्हणून चुंबकीय क्षेत्राच्या दिशेला विचारण्याजोगा प्रामाणिक प्रश्न हा नाही की ती खरोखर कोणीकडे निर्देश करते तर हा की काही निरीक्षणीय काढले जाण्याआधी तिला कशाशी संकुचित केले जाते — आणि उत्तर नेहमी ती गोष्ट आहे जी संतुलन पुन्हा प्रस्थापित करते. (3 गृहीत धरते की एखादी मांडणी परावर्तित केल्याने कोणत्याही व्युत्पन्न राशीचे चिन्ह बदलू शकत नाही, जे इथे प्रत्येक गोष्टीसाठी खरे आहे त्या एकट्या वस्तूखेरीज जी हस्तता-नियमातून बनली आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Of the two products, the dot product generalises to every dimension while the cross product as defined here does not. In how many dimensions above one does a cross product of two vectors returning a vector of the same kind exist?",
+      "choices": [
+        "1",
+        "4",
+        "2",
+        "3"
+      ],
+      "answerIndex": 2,
+      "solution": "Two — dimension 3 and dimension 7, and nothing else. That is a startling fact and it is worth taking seriously rather than as trivia, because the natural expectation is that a construction this useful should exist everywhere, and the natural explanation for its absence — that nobody has found the right formula yet — is wrong. The requirements are modest: the product should be bilinear, perpendicular to both inputs, and have magnitude equal to the area of the parallelogram spanned. Those conditions turn out to force a division algebra structure on the space one dimension up, and division algebras over the reals exist in dimensions 1, 2, 4 and 8 only — the reals, the complex numbers, the quaternions and the octonions — which leaves cross products in dimensions 0, 1, 3 and 7, of which only 3 and 7 are non-trivial. So the answer is 2. Three lessons come out of this. The first is that our three-dimensional cross product is a coincidence of the dimension we happen to inhabit, not a general feature of geometry, and every formula in physics that uses one is therefore quietly three-dimensional in a way that dot-product formulas are not. The second is that the seven-dimensional version, though it exists, loses even more structure — it satisfies no Jacobi identity, so it is not even a Lie algebra — which shows that 'exists' and 'is useful' are separate questions. The third is methodological and the most transferable: when something fails to generalise, the informative move is to ask what structure it was secretly using. Here the answer was a division algebra hiding one dimension up, and finding it explains not only the failure but the exact list of exceptions. A negative result that produces a complete list is worth more than a positive result about one case. (1 supposes three dimensions are the unique home of the construction, which is the expected answer and is one short.)",
+      "checkExpr": "1+1",
+      "translations": {
+        "hi": {
+          "stem": "दोनों गुणनफलों में से, अदिश गुणनफल हर विमा तक सामान्यीकृत होता है जबकि यहाँ परिभाषित सदिश गुणनफल नहीं। एक से ऊपर कितनी विमाओं में दो सदिशों का ऐसा सदिश गुणनफल है जो उसी क़िस्म का सदिश लौटाता हो?",
+          "choices": [
+            "1",
+            "4",
+            "2",
+            "3"
+          ],
+          "solution": "दो — विमा 3 और विमा 7, और कुछ नहीं। यह चौंकाने वाला तथ्य है और उसे सामान्य ज्ञान के बजाय गंभीरता से लेना ज़रूरी है, क्योंकि स्वाभाविक अपेक्षा यह है कि इतनी उपयोगी रचना हर जगह होनी चाहिए, और उसकी अनुपस्थिति की स्वाभाविक व्याख्या — कि अभी किसी को सही सूत्र नहीं मिला — ग़लत है। माँगें मामूली हैं: गुणनफल द्विरैखिक हो, दोनों निवेशों के लंबवत हो, और उसका परिमाण फैलाए गए समांतर चतुर्भुज के क्षेत्रफल के बराबर हो। वे शर्तें एक विमा ऊपर की समष्टि पर भाग-बीजगणित की संरचना थोप देती हैं, और वास्तविकों पर भाग-बीजगणित केवल विमाओं 1, 2, 4 और 8 में हैं — वास्तविक, सम्मिश्र, चतुष्टय और अष्टक — जिससे सदिश गुणनफल विमाओं 0, 1, 3 और 7 में बचते हैं, जिनमें से केवल 3 और 7 अतुच्छ हैं। अतः उत्तर 2 है। इससे तीन सबक़ निकलते हैं। पहला, हमारा त्रिविमीय सदिश गुणनफल उस विमा का संयोग है जिसमें हम संयोग से रहते हैं, ज्यामिति का सामान्य लक्षण नहीं, और इसलिए भौतिकी का हर सूत्र जो उसे बरतता है चुपचाप त्रिविमीय है, उस तरह से जैसे अदिश-गुणनफल के सूत्र नहीं हैं। दूसरा, सात-विमीय संस्करण, हालाँकि मौजूद है, और भी अधिक संरचना खोता है — वह कोई याकोबी सर्वसमिका नहीं मानता, अतः वह ली बीजगणित तक नहीं — जो दिखाता है कि 'मौजूद है' और 'उपयोगी है' अलग प्रश्न हैं। तीसरा पद्धतिगत है और सबसे अधिक हस्तांतरणीय: जब कुछ सामान्यीकृत होने में विफल हो, तो जानकारी देने वाला क़दम यह पूछना है कि वह चुपके से किस संरचना का उपयोग कर रहा था। यहाँ उत्तर एक विमा ऊपर छिपा भाग-बीजगणित था, और उसे ढूँढ़ना न केवल विफलता बल्कि अपवादों की ठीक सूची भी समझा देता है। पूरी सूची देने वाला ऋणात्मक परिणाम एक मामले के बारे में धनात्मक परिणाम से अधिक क़ीमती है। (1 मान लेता है कि तीन विमाएँ ही रचना का अकेला घर हैं, जो अपेक्षित उत्तर है और एक कम है।)"
+        },
+        "mr": {
+          "stem": "दोन गुणाकारांपैकी, अदिश गुणाकार प्रत्येक मितीत सर्वसाधारण होतो तर इथे परिभाषित सदिश गुणाकार होत नाही. एकाहून वर किती मितींत दोन सदिशांचा असा सदिश गुणाकार अस्तित्वात आहे जो त्याच प्रकारचा सदिश परत करतो?",
+          "choices": [
+            "1",
+            "4",
+            "2",
+            "3"
+          ],
+          "solution": "दोन — मिती 3 आणि मिती 7, आणि दुसरे काहीच नाही. हे चकित करणारे तथ्य आहे आणि त्याला सामान्यज्ञानाऐवजी गांभीर्याने घेणे आवश्यक आहे, कारण नैसर्गिक अपेक्षा ही की इतकी उपयुक्त रचना सर्वत्र असावी, आणि तिच्या अनुपस्थितीचे नैसर्गिक स्पष्टीकरण — की अजून कोणाला योग्य सूत्र सापडलेले नाही — चुकीचे आहे. मागण्या माफक आहेत: गुणाकार द्विरैखिक असावा, दोन्ही निविष्टांना लंब असावा, आणि त्याचे परिमाण पसरवलेल्या समांतरभुज चौकोनाच्या क्षेत्रफळाइतके असावे. त्या अटी एक मिती वरच्या अवकाशावर भाग-बीजगणिताची रचना लादतात, आणि वास्तवांवर भाग-बीजगणिते केवळ मिती 1, 2, 4 आणि 8 मध्ये आहेत — वास्तव, संमिश्र, चतुष्क आणि अष्टक — ज्यामुळे सदिश गुणाकार मिती 0, 1, 3 आणि 7 मध्ये उरतात, ज्यांपैकी केवळ 3 आणि 7 अतुच्छ आहेत. म्हणून उत्तर 2 आहे. यातून तीन धडे निघतात. पहिला, आपला त्रिमितीय सदिश गुणाकार हा आपण योगायोगाने वसत असलेल्या मितीचा योगायोग आहे, भूमितीचे सर्वसाधारण वैशिष्ट्य नव्हे, आणि म्हणून भौतिकशास्त्राचे प्रत्येक सूत्र जे तो वापरते ते गुपचूप त्रिमितीय आहे, ज्या रीतीने अदिश-गुणाकाराची सूत्रे नाहीत. दुसरा, सात-मितीय आवृत्ती, जरी अस्तित्वात असली तरी, आणखी अधिक रचना गमावते — ती कोणतीही याकोबी एकात्मता पाळत नाही, म्हणून ती ली बीजगणितसुद्धा नाही — जे दाखवते की 'अस्तित्वात आहे' आणि 'उपयुक्त आहे' हे वेगळे प्रश्न आहेत. तिसरा पद्धतीविषयक आहे आणि सर्वाधिक हस्तांतरणीय: जेव्हा काही सर्वसाधारण होण्यात अपयशी ठरते, तेव्हा माहिती देणारे पाऊल हे विचारणे आहे की ते गुपचूप कोणती रचना वापरत होते. इथे उत्तर एक मिती वर लपलेले भाग-बीजगणित होते, आणि ते शोधणे केवळ अपयशच नव्हे तर अपवादांची नेमकी यादीही स्पष्ट करते. संपूर्ण यादी देणारा ऋण निकाल एका प्रसंगाबद्दलच्या धन निकालाहून अधिक मोलाचा आहे. (1 गृहीत धरते की तीन मिती हेच रचनेचे एकमेव घर आहे, जे अपेक्षित उत्तर आहे आणि एकने कमी आहे.)"
+        }
+      }
+    }
+  ]
+}

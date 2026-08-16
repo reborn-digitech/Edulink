@@ -1,0 +1,513 @@
+{
+  "slug": "maths-12-differential-equations",
+  "subject": "MATHS",
+  "classLevel": 12,
+  "chapter": "Chapter 9 — Differential Equations",
+  "name": "Differential Equations",
+  "summary": "An equation whose unknown is a whole curve rather than a number: why the count of arbitrary constants must match the order, why degree is undefined rather than zero when a derivative sits inside a sine, why an initial condition usually picks one solution and occasionally picks infinitely many, why a perfectly well-behaved equation can lose its solution at a finite x, and why only the linear ones let two solutions be added.",
+  "position": 9,
+  "translations": {
+    "hi": {
+      "name": "अवकल समीकरण",
+      "summary": "ऐसा समीकरण जिसका अज्ञात कोई संख्या नहीं बल्कि पूरा वक्र है: स्वेच्छ अचरों की गिनती कोटि से क्यों मिलनी चाहिए, अवकलज के ज्या के भीतर बैठने पर घात शून्य क्यों नहीं बल्कि अपरिभाषित होती है, प्रारंभिक शर्त आम तौर पर एक हल क्यों चुनती है और कभी-कभी अनंत, बिलकुल सुव्यवहृत समीकरण अपना हल किसी परिमित x पर क्यों खो सकता है, और केवल रैखिक समीकरण ही दो हलों को जोड़ने क्यों देते हैं।"
+    },
+    "mr": {
+      "name": "अवकल समीकरणे",
+      "summary": "असे समीकरण ज्याचा अज्ञात संख्या नसून अख्खा वक्र आहे: स्वैर अचलांची मोजणी कोटीशी का जुळावी लागते, अवकलज ज्येच्या आत बसल्यास कोटी शून्य नव्हे तर अपरिभाषित का असते, प्रारंभिक अट सर्वसाधारणपणे एक उत्तर का निवडते आणि कधीकधी अनंत, अगदी सुव्यवस्थित समीकरण आपले उत्तर एखाद्या सांत x वर का गमावू शकते, आणि केवळ रैखिक समीकरणेच दोन उत्तरे जोडू का देतात."
+    }
+  },
+  "source": "EduLink original, written against NCERT Mathematics (Class 12)",
+  "licence": "CC-BY-SA-4.0",
+  "questions": [
+    {
+      "difficulty": 1,
+      "stem": "What is the order of the equation d²y/dx² + 3 dy/dx + y = 0?",
+      "choices": [
+        "3",
+        "0",
+        "1",
+        "2"
+      ],
+      "answerIndex": 3,
+      "solution": "The order is the order of the HIGHEST derivative present, which here is the second, so the answer is 2. The 3 sitting in front of dy/dx is a coefficient and has nothing to do with it — order counts differentiations, not numbers. (3 reads the coefficient instead.)",
+      "checkExpr": "1+1",
+      "translations": {
+        "hi": {
+          "stem": "समीकरण d²y/dx² + 3 dy/dx + y = 0 की कोटि क्या है?",
+          "choices": [
+            "3",
+            "0",
+            "1",
+            "2"
+          ],
+          "solution": "कोटि उपस्थित उच्चतम अवकलज की कोटि है, जो यहाँ द्वितीय है, अतः उत्तर 2 है। dy/dx के आगे बैठा 3 गुणांक है और उससे उसका कोई लेना-देना नहीं — कोटि अवकलन गिनती है, संख्याएँ नहीं। (3 गुणांक पढ़ लेता है।)"
+        },
+        "mr": {
+          "stem": "समीकरण d²y/dx² + 3 dy/dx + y = 0 ची कोटी किती?",
+          "choices": [
+            "3",
+            "0",
+            "1",
+            "2"
+          ],
+          "solution": "कोटी ही उपस्थित सर्वोच्च अवकलजाची कोटी आहे, जी इथे द्वितीय आहे, म्हणून उत्तर 2 आहे. dy/dx समोर बसलेला 3 गुणांक आहे आणि त्याचा याच्याशी काहीच संबंध नाही — कोटी अवकलने मोजते, संख्या नव्हे. (3 गुणांक वाचते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "How many arbitrary constants does the general solution of a third-order differential equation contain?",
+      "choices": [
+        "1",
+        "3",
+        "2",
+        "6"
+      ],
+      "answerIndex": 1,
+      "solution": "Three — one for each integration needed to undo three derivatives. The count is not a convention: each time you integrate you lose a constant, so recovering the function from its third derivative loses three, and the general solution is a whole family of curves rather than a single one. It follows that pinning down one member needs exactly three extra conditions, which is why initial-value problems come with as many conditions as the order. (1 gives the constant of a single integration.)",
+      "checkExpr": "1+2",
+      "translations": {
+        "hi": {
+          "stem": "तृतीय कोटि के अवकल समीकरण के व्यापक हल में कितने स्वेच्छ अचर होते हैं?",
+          "choices": [
+            "1",
+            "3",
+            "2",
+            "6"
+          ],
+          "solution": "तीन — तीन अवकलजों को उलटने के लिए ज़रूरी हर समाकलन के लिए एक। यह गिनती परिपाटी नहीं: हर बार समाकलन करने पर एक अचर खो जाता है, अतः किसी फलन को उसके तृतीय अवकलज से वापस पाने में तीन खोते हैं, और व्यापक हल एक वक्र नहीं बल्कि वक्रों का पूरा कुल है। इससे निकलता है कि उस कुल के एक सदस्य को तय करने के लिए ठीक तीन अतिरिक्त शर्तें चाहिए, इसीलिए प्रारंभिक-मान समस्याएँ कोटि जितनी शर्तों के साथ आती हैं। (1 एक अकेले समाकलन का अचर देता है।)"
+        },
+        "mr": {
+          "stem": "तृतीय कोटीच्या अवकल समीकरणाच्या व्यापक उत्तरात किती स्वैर अचल असतात?",
+          "choices": [
+            "1",
+            "3",
+            "2",
+            "6"
+          ],
+          "solution": "तीन — तीन अवकलज उलटवण्यासाठी लागणाऱ्या प्रत्येक समाकलनासाठी एक. ही मोजणी संकेत नाही: प्रत्येक वेळी समाकलन केल्यावर एक अचल हरवतो, म्हणून एखादे फलन त्याच्या तृतीय अवकलजापासून परत मिळवताना तीन हरवतात, आणि व्यापक उत्तर एक वक्र नसून वक्रांचे अख्खे कुळ आहे. यातून निघते की त्या कुळातील एक सदस्य निश्चित करण्यास नेमक्या तीन अतिरिक्त अटी लागतात, म्हणूनच प्रारंभिक-मूल्य समस्या कोटीइतक्या अटींसह येतात. (1 एका एकट्या समाकलनाचा अचल देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 1,
+      "stem": "If dy/dx = 4, what is the slope of every solution curve?",
+      "choices": [
+        "1",
+        "4",
+        "8",
+        "0"
+      ],
+      "answerIndex": 1,
+      "solution": "4, everywhere. The solutions are the lines y = 4x + C, a family of parallel lines differing only in where they cross the axis. This is the smallest possible example of the whole subject's shape: a differential equation describes the slope at every point without naming any particular curve, and the curves that obey it form a family filling the plane. (0 answers as though a constant right-hand side meant a constant y.)",
+      "checkExpr": "2*2",
+      "translations": {
+        "hi": {
+          "stem": "यदि dy/dx = 4, तो हर हल-वक्र की ढाल क्या है?",
+          "choices": [
+            "1",
+            "4",
+            "8",
+            "0"
+          ],
+          "solution": "4, हर जगह। हल हैं रेखाएँ y = 4x + C, समांतर रेखाओं का कुल जो केवल इसमें भिन्न है कि वे अक्ष को कहाँ काटती हैं। यह पूरे विषय के आकार का सबसे छोटा संभव उदाहरण है: अवकल समीकरण हर बिंदु पर ढाल बताता है बिना किसी विशेष वक्र का नाम लिए, और उसका पालन करने वाले वक्र समतल भरता एक कुल बनाते हैं। (0 ऐसे उत्तर देता है मानो अचर दायाँ पक्ष अचर y का अर्थ हो।)"
+        },
+        "mr": {
+          "stem": "जर dy/dx = 4, तर प्रत्येक उत्तर-वक्राचा उतार किती?",
+          "choices": [
+            "1",
+            "4",
+            "8",
+            "0"
+          ],
+          "solution": "4, सर्वत्र. उत्तरे आहेत रेषा y = 4x + C, समांतर रेषांचे कुळ जे केवळ त्या अक्षाला कुठे कापतात यात वेगळे आहे. हे अख्ख्या विषयाच्या आकाराचे सर्वांत लहान शक्य उदाहरण आहे: अवकल समीकरण प्रत्येक बिंदूवर उतार सांगते कोणत्याही विशिष्ट वक्राचे नाव न घेता, आणि त्याचे पालन करणारे वक्र प्रतल भरणारे कुळ बनवतात. (0 असे उत्तर देते जणू अचल उजवी बाजू म्हणजे अचल y असावा.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "Solving dy/dx = 2x with y = 5 when x = 0 gives y = x² + C. What is C?",
+      "choices": [
+        "2",
+        "0",
+        "5",
+        "25"
+      ],
+      "answerIndex": 2,
+      "solution": "At x = 0 the x² term vanishes, so y = C, and the condition y = 5 gives C = 5. The initial condition is what selects one curve out of the infinite family, and this is the whole two-step shape of every problem in the chapter: integrate to get the family, then substitute to pick the member. Skipping the second step leaves an answer with a letter in it, which is a general solution and not the particular one asked for. (0 forgets that C is what the condition determines.)",
+      "checkExpr": "5-0",
+      "translations": {
+        "hi": {
+          "stem": "x = 0 पर y = 5 के साथ dy/dx = 2x हल करने पर y = x² + C मिलता है। C क्या है?",
+          "choices": [
+            "2",
+            "0",
+            "5",
+            "25"
+          ],
+          "solution": "x = 0 पर x² पद लुप्त हो जाता है, अतः y = C, और शर्त y = 5 से C = 5. प्रारंभिक शर्त ही अनंत कुल में से एक वक्र चुनती है, और यही अध्याय की हर समस्या का पूरा दो-क़दमी आकार है: समाकलन करके कुल पाओ, फिर प्रतिस्थापित करके सदस्य चुनो। दूसरा क़दम छोड़ने पर ऐसा उत्तर बचता है जिसमें अक्षर है, जो व्यापक हल है, पूछा गया विशिष्ट नहीं। (0 भूल जाता है कि शर्त C को ही तय करती है।)"
+        },
+        "mr": {
+          "stem": "x = 0 वर y = 5 सह dy/dx = 2x सोडवल्यास y = x² + C मिळते. C किती?",
+          "choices": [
+            "2",
+            "0",
+            "5",
+            "25"
+          ],
+          "solution": "x = 0 वर x² पद लोप पावते, म्हणून y = C, आणि अट y = 5 वरून C = 5. प्रारंभिक अट अनंत कुळातून एक वक्र निवडते, आणि हाच अध्यायातील प्रत्येक समस्येचा अख्खा दोन-पावली आकार आहे: समाकलन करून कुळ मिळवा, मग प्रतिस्थापित करून सदस्य निवडा. दुसरे पाऊल वगळल्यास अक्षर असलेले उत्तर उरते, जे व्यापक उत्तर आहे, विचारलेले विशिष्ट नाही. (0 विसरते की अट C च ठरवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "For the separable equation dy/y = 3 dx, the solution is y = A e^(kx). What is k?",
+      "choices": [
+        "9",
+        "1",
+        "3",
+        "0"
+      ],
+      "answerIndex": 2,
+      "solution": "Integrating both sides gives ln y = 3x + c, so y = A e^(3x) and k = 3. Note what the equation was saying before any solving happened: dy/y is the FRACTIONAL change in y, so the equation states that y grows by a fixed proportion of itself per unit of x — and the exponential is the only function that does. Every population model, every compound-interest calculation and every radioactive decay in the syllabus is this one equation with a different letter for 3. (1 answers with the coefficient of dx as though it were unchanged.)",
+      "checkExpr": "9/3",
+      "translations": {
+        "hi": {
+          "stem": "वियोज्य समीकरण dy/y = 3 dx का हल y = A e^(kx) है। k क्या है?",
+          "choices": [
+            "9",
+            "1",
+            "3",
+            "0"
+          ],
+          "solution": "दोनों पक्षों का समाकलन करने पर ln y = 3x + c मिलता है, अतः y = A e^(3x) और k = 3. ध्यान दो कि हल करने से पहले समीकरण कह क्या रहा था: dy/y, y का भिन्नात्मक परिवर्तन है, अतः समीकरण कहता है कि y, x की प्रति इकाई अपने ही एक नियत अनुपात से बढ़ता है — और ऐसा करने वाला अकेला फलन चरघातांकी है। पाठ्यक्रम का हर जनसंख्या मॉडल, हर चक्रवृद्धि ब्याज की गणना और हर रेडियोधर्मी क्षय यही एक समीकरण है, 3 की जगह अलग अक्षर के साथ। (1 dx के गुणांक से उत्तर देता है मानो वह अपरिवर्तित हो।)"
+        },
+        "mr": {
+          "stem": "वियोज्य समीकरण dy/y = 3 dx चे उत्तर y = A e^(kx) आहे. k किती?",
+          "choices": [
+            "9",
+            "1",
+            "3",
+            "0"
+          ],
+          "solution": "दोन्ही बाजूंचे समाकलन केल्यास ln y = 3x + c मिळते, म्हणून y = A e^(3x) आणि k = 3. लक्षात घ्या की सोडवण्याआधी समीकरण काय सांगत होते: dy/y हा y चा अपूर्णांकीय बदल आहे, म्हणून समीकरण सांगते की y हा x च्या प्रति एककाला स्वतःच्याच एका निश्चित प्रमाणाने वाढतो — आणि तसे करणारे एकमेव फलन घातांकी आहे. अभ्यासक्रमातील प्रत्येक लोकसंख्या प्रतिरूप, प्रत्येक चक्रवाढ व्याजाची गणना आणि प्रत्येक किरणोत्सारी क्षय हेच एक समीकरण आहे, 3 च्या जागी वेगळे अक्षर घेऊन. (1 dx च्या गुणांकाने उत्तर देते जणू तो अपरिवर्तित असावा.)"
+        }
+      }
+    },
+    {
+      "difficulty": 2,
+      "stem": "How many of these are solutions of dy/dx = y: y = eˣ, y = 3eˣ, y = eˣ + 1?",
+      "choices": [
+        "2",
+        "0",
+        "3",
+        "1"
+      ],
+      "answerIndex": 0,
+      "solution": "Two. The first two work — differentiating 3eˣ gives 3eˣ, which is y again. The third fails: its derivative is eˣ but y is eˣ + 1, and those are not equal. This is worth doing because it shows where the arbitrary constant is allowed to sit. For this equation the family is y = A eˣ, with the constant MULTIPLYING; adding a constant instead breaks it. Which position the constant takes is decided by the equation, not by habit, and the reflex of writing '+ C' at the end is exactly what goes wrong here. (3 assumes any modification of a solution is a solution.)",
+      "checkExpr": "3-1",
+      "translations": {
+        "hi": {
+          "stem": "इनमें से कितने dy/dx = y के हल हैं: y = eˣ, y = 3eˣ, y = eˣ + 1?",
+          "choices": [
+            "2",
+            "0",
+            "3",
+            "1"
+          ],
+          "solution": "दो। पहले दो चलते हैं — 3eˣ का अवकलन 3eˣ देता है, जो फिर y ही है। तीसरा विफल है: उसका अवकलज eˣ है पर y है eˣ + 1, और वे बराबर नहीं। यह करने लायक़ है क्योंकि यह दिखाता है कि स्वेच्छ अचर को कहाँ बैठने की अनुमति है। इस समीकरण के लिए कुल y = A eˣ है, जिसमें अचर गुणा कर रहा है; उसके बजाय अचर जोड़ने पर वह टूट जाता है। अचर कौन-सी जगह लेता है यह समीकरण तय करता है, आदत नहीं, और अंत में '+ C' लिख देने की प्रतिवर्ती आदत ही यहाँ ग़लत जाती है। (3 मान लेता है कि हल का कोई भी फेरबदल हल होगा।)"
+        },
+        "mr": {
+          "stem": "यांपैकी किती dy/dx = y ची उत्तरे आहेत: y = eˣ, y = 3eˣ, y = eˣ + 1?",
+          "choices": [
+            "2",
+            "0",
+            "3",
+            "1"
+          ],
+          "solution": "दोन. पहिली दोन चालतात — 3eˣ चे अवकलन 3eˣ देते, जे पुन्हा y च आहे. तिसरे अपयशी आहे: त्याचा अवकलज eˣ आहे पण y आहे eˣ + 1, आणि ते समान नाहीत. हे करण्याजोगे आहे कारण ते दाखवते की स्वैर अचलाला कुठे बसण्याची परवानगी आहे. या समीकरणासाठी कुळ y = A eˣ आहे, ज्यात अचल गुणत आहे; त्याऐवजी अचल जोडल्यास ते मोडते. अचल कोणती जागा घेतो हे समीकरण ठरवते, सवय नव्हे, आणि शेवटी '+ C' लिहून टाकण्याची प्रतिक्षिप्त सवयच इथे चुकते. (3 गृहीत धरते की उत्तराचा कोणताही फेरफार उत्तर असेल.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "For the linear equation dy/dx + 2y = 6, the integrating factor is e^(kx). What is k?",
+      "choices": [
+        "6",
+        "2",
+        "1",
+        "3"
+      ],
+      "answerIndex": 1,
+      "solution": "k = 2, the coefficient of y, so the factor is e^(2x). Why it works is the part worth carrying: multiplying through gives e^(2x) dy/dx + 2e^(2x) y, and that is exactly the derivative of the product e^(2x) y by the product rule. So the integrating factor is not a trick pulled from nowhere — it is whatever function makes the left-hand side collapse into a single derivative, after which both sides can simply be integrated. Recognising the product rule running backwards is the whole method. (6 reads the right-hand side.)",
+      "checkExpr": "6/3",
+      "translations": {
+        "hi": {
+          "stem": "रैखिक समीकरण dy/dx + 2y = 6 के लिए समाकलन गुणक e^(kx) है। k क्या है?",
+          "choices": [
+            "6",
+            "2",
+            "1",
+            "3"
+          ],
+          "solution": "k = 2, y का गुणांक, अतः गुणक e^(2x) है। यह क्यों चलता है वही हिस्सा साथ ले जाने लायक़ है: पूरे में गुणा करने पर e^(2x) dy/dx + 2e^(2x) y मिलता है, और गुणनफल नियम से वह ठीक गुणनफल e^(2x) y का अवकलज है। अतः समाकलन गुणक कहीं से खींची गई चाल नहीं — वह वही फलन है जो बाएँ पक्ष को एक अकेले अवकलज में ढहा देता है, जिसके बाद दोनों पक्षों का बस समाकलन किया जा सकता है। गुणनफल नियम को उलटा चलते पहचानना ही पूरी विधि है। (6 दायाँ पक्ष पढ़ लेता है।)"
+        },
+        "mr": {
+          "stem": "रैखिक समीकरण dy/dx + 2y = 6 साठी समाकलन गुणक e^(kx) आहे. k किती?",
+          "choices": [
+            "6",
+            "2",
+            "1",
+            "3"
+          ],
+          "solution": "k = 2, y चा गुणांक, म्हणून गुणक e^(2x) आहे. हे का चालते तोच भाग सोबत न्यायला हवा: अख्ख्यात गुणल्यास e^(2x) dy/dx + 2e^(2x) y मिळते, आणि गुणाकार नियमाने तो नेमका गुणाकार e^(2x) y चा अवकलज आहे. म्हणून समाकलन गुणक कुठूनतरी ओढलेली युक्ती नाही — तो तेच फलन आहे जे डावी बाजू एका एकट्या अवकलजात कोसळवते, ज्यानंतर दोन्ही बाजूंचे फक्त समाकलन करता येते. गुणाकार नियम उलटा चालताना ओळखणे हीच अख्खी पद्धत आहे. (6 उजवी बाजू वाचते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 3,
+      "stem": "A quantity halves every 5 years. After how many years is one-eighth of it left?",
+      "choices": [
+        "10",
+        "20",
+        "15",
+        "40"
+      ],
+      "answerIndex": 2,
+      "solution": "One-eighth is a half three times over, so 3 × 5 = 15 years. The tempting wrong answer is 40, from reasoning that eight times as small should take eight times as long — but decay is multiplicative, not additive, so the right question is how many HALVINGS make an eighth, and the answer is three because 2³ = 8. This is the practical content of the exponential solution: equal times give equal RATIOS rather than equal differences, which is also why half-life is a meaningful constant while 'the time to lose 10 grams' is not. (40 multiplies the time by the factor instead of counting halvings.)",
+      "checkExpr": "5*3",
+      "translations": {
+        "hi": {
+          "stem": "कोई राशि हर 5 वर्ष में आधी हो जाती है। कितने वर्षों बाद उसका आठवाँ हिस्सा बचता है?",
+          "choices": [
+            "10",
+            "20",
+            "15",
+            "40"
+          ],
+          "solution": "आठवाँ हिस्सा तीन बार आधा होना है, अतः 3 × 5 = 15 वर्ष। लुभावना ग़लत उत्तर 40 है, इस तर्क से कि आठ गुना छोटा होने में आठ गुना समय लगना चाहिए — पर क्षय गुणात्मक है, योगात्मक नहीं, अतः सही प्रश्न यह है कि कितने आधे होने आठवाँ बनाते हैं, और उत्तर तीन है क्योंकि 2³ = 8. यही चरघातांकी हल की व्यावहारिक सामग्री है: बराबर समय बराबर अनुपात देते हैं, बराबर अंतर नहीं, और इसीलिए अर्ध-आयु सार्थक अचर है जबकि '10 ग्राम खोने का समय' नहीं। (40 आधे होने गिनने के बजाय समय को गुणक से गुणा कर देता है।)"
+        },
+        "mr": {
+          "stem": "एखादी राशी दर 5 वर्षांनी निम्मी होते. किती वर्षांनंतर तिचा आठवा हिस्सा उरतो?",
+          "choices": [
+            "10",
+            "20",
+            "15",
+            "40"
+          ],
+          "solution": "आठवा हिस्सा म्हणजे तीनदा निम्मे होणे, म्हणून 3 × 5 = 15 वर्षे. मोहक चुकीचे उत्तर 40 आहे, या युक्तिवादाने की आठपट लहान होण्यास आठपट वेळ लागावा — पण क्षय गुणाकारी आहे, बेरजी नाही, म्हणून योग्य प्रश्न हा की किती निम्मे होणी आठवा हिस्सा बनवतात, आणि उत्तर तीन आहे कारण 2³ = 8. हाच घातांकी उत्तराचा व्यावहारिक आशय आहे: समान वेळ समान गुणोत्तरे देतात, समान फरक नव्हे, आणि म्हणूनच अर्ध-आयुष्य अर्थपूर्ण अचल आहे तर '10 ग्रॅम गमावण्याचा वेळ' नाही. (40 निम्मे होणी मोजण्याऐवजी वेळेला गुणकाने गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "Of the equations (dy/dx)² + y = 0, sin(dy/dx) = x and d²y/dx² + y = 0, for how many is the DEGREE defined?",
+      "choices": [
+        "0",
+        "3",
+        "2",
+        "1"
+      ],
+      "answerIndex": 2,
+      "solution": "Two — the first and the third. Degree is the power of the highest derivative, and it is defined ONLY when the equation is polynomial in the derivatives: the first has degree 2 and the third degree 1. The middle one buries dy/dx inside a sine, which is not a polynomial in it at any power, so the equation simply has no degree — not degree zero, and not degree one, but no degree at all. The distinction is worth insisting on because 'undefined' and 'zero' are constantly confused, and here the difference is between a quantity that does not apply and a quantity that happens to be small. Order, by contrast, survives all three: every one of them is first or second order, because counting differentiations never needs the equation to be polynomial in anything. (3 assumes every equation has a degree because every equation has an order.)",
+      "checkExpr": "3-1",
+      "translations": {
+        "hi": {
+          "stem": "समीकरणों (dy/dx)² + y = 0, sin(dy/dx) = x और d²y/dx² + y = 0 में से कितनों की घात परिभाषित है?",
+          "choices": [
+            "0",
+            "3",
+            "2",
+            "1"
+          ],
+          "solution": "दो — पहला और तीसरा। घात उच्चतम अवकलज की घात है, और वह केवल तभी परिभाषित है जब समीकरण अवकलजों में बहुपदीय हो: पहले की घात 2 है और तीसरे की 1. बीच वाला dy/dx को ज्या के भीतर दबा देता है, जो किसी भी घात पर उसमें बहुपद नहीं, अतः उस समीकरण की कोई घात है ही नहीं — शून्य घात नहीं, एक घात नहीं, बल्कि कोई घात नहीं। इस भेद पर ज़ोर देना ज़रूरी है क्योंकि 'अपरिभाषित' और 'शून्य' लगातार गड्डमड्ड होते हैं, और यहाँ फ़र्क़ उस राशि के बीच है जो लागू ही नहीं होती और उस राशि के बीच जो संयोग से छोटी है। कोटि, इसके विपरीत, तीनों में बची रहती है: उनमें से हर एक प्रथम या द्वितीय कोटि का है, क्योंकि अवकलन गिनने के लिए समीकरण का किसी में बहुपदीय होना कभी ज़रूरी नहीं। (3 मान लेता है कि हर समीकरण की घात है क्योंकि हर समीकरण की कोटि है।)"
+        },
+        "mr": {
+          "stem": "(dy/dx)² + y = 0, sin(dy/dx) = x आणि d²y/dx² + y = 0 या समीकरणांपैकी कितींची कोटी परिभाषित आहे?",
+          "choices": [
+            "0",
+            "3",
+            "2",
+            "1"
+          ],
+          "solution": "दोन — पहिले आणि तिसरे. कोटी ही सर्वोच्च अवकलजाची घात आहे, आणि ती केवळ तेव्हाच परिभाषित आहे जेव्हा समीकरण अवकलजांत बहुपदीय असेल: पहिल्याची कोटी 2 आहे आणि तिसऱ्याची 1. मधले dy/dx ला ज्येच्या आत दडवते, जे कोणत्याही घातीवर त्यात बहुपद नाही, म्हणून त्या समीकरणाला कोटीच नाही — शून्य कोटी नाही, एक कोटी नाही, तर कोटीच नाही. या भेदावर आग्रह धरणे आवश्यक आहे कारण 'अपरिभाषित' आणि 'शून्य' सतत गोंधळले जातात, आणि इथे फरक अशा राशीत आहे जी लागूच होत नाही आणि अशा राशीत जी योगायोगाने लहान आहे. कोटी, याउलट, तिन्हींत टिकते: त्यांपैकी प्रत्येक प्रथम वा द्वितीय कोटीचे आहे, कारण अवकलने मोजण्यासाठी समीकरण कशातही बहुपदीय असणे कधीच आवश्यक नाही. (3 गृहीत धरते की प्रत्येक समीकरणाला कोटी आहे कारण प्रत्येक समीकरणाला क्रम आहे.)"
+        }
+      }
+    },
+    {
+      "difficulty": 4,
+      "stem": "A population obeys dP/dt = 0.02P. Starting at 1000, roughly how many years pass before it reaches 8000, given that it doubles every 35 years?",
+      "choices": [
+        "70",
+        "140",
+        "280",
+        "105"
+      ],
+      "answerIndex": 3,
+      "solution": "8000 is 1000 doubled three times, so 3 × 35 = 105 years. What is worth pressing on is what the model claims beyond this. Run it another 350 years and the population is over eight million from the same thousand; run it a few centuries more and it exceeds the mass of the Earth. The arithmetic is impeccable and the conclusion is nonsense, and the fault is not in the solving but in the equation, which says the growth rate is proportional to the population and NOTHING ELSE — no food, no space, no competition. The standard repair is the logistic equation dP/dt = kP(1 − P/M), which behaves like this one while P is small and flattens as P nears the carrying capacity M. The general habit is the point: an unbounded prediction from a model is not a discovery, it is the model announcing the edge of its own validity. (280 multiplies by the growth ratio 8 instead of counting three doublings.)",
+      "checkExpr": "35*3",
+      "translations": {
+        "hi": {
+          "stem": "कोई जनसंख्या dP/dt = 0.02P मानती है। 1000 से शुरू होकर 8000 तक पहुँचने में मोटे तौर पर कितने वर्ष लगते हैं, यह देखते हुए कि वह हर 35 वर्ष में दुगनी होती है?",
+          "choices": [
+            "70",
+            "140",
+            "280",
+            "105"
+          ],
+          "solution": "8000, 1000 का तीन बार दुगना है, अतः 3 × 35 = 105 वर्ष। दबाव डालने लायक़ यह है कि मॉडल इससे आगे क्या दावा करता है। इसे और 350 वर्ष चलाओ और वही एक हज़ार अस्सी लाख से ऊपर हो जाता है; कुछ सदियाँ और चलाओ और वह पृथ्वी के द्रव्यमान से आगे निकल जाता है। गणित निर्दोष है और निष्कर्ष बकवास, और दोष हल करने में नहीं बल्कि समीकरण में है, जो कहता है कि वृद्धि-दर जनसंख्या के समानुपाती है और और कुछ नहीं — न भोजन, न जगह, न प्रतिस्पर्धा। मानक मरम्मत लॉजिस्टिक समीकरण dP/dt = kP(1 − P/M) है, जो P के छोटे रहने तक इसी की तरह बरतता है और P के धारण-क्षमता M के पास आते ही चपटा हो जाता है। सामान्य आदत ही मुद्दा है: किसी मॉडल की अपरिबद्ध भविष्यवाणी खोज नहीं, वह मॉडल का अपनी ही वैधता की सीमा घोषित करना है। (280 तीन दुगने गिनने के बजाय वृद्धि-अनुपात 8 से गुणा कर देता है।)"
+        },
+        "mr": {
+          "stem": "एक लोकसंख्या dP/dt = 0.02P पाळते. 1000 पासून सुरू होऊन 8000 पर्यंत पोहोचण्यास ढोबळमानाने किती वर्षे लागतात, हे पाहता की ती दर 35 वर्षांनी दुप्पट होते?",
+          "choices": [
+            "70",
+            "140",
+            "280",
+            "105"
+          ],
+          "solution": "8000 म्हणजे 1000 चे तीनदा दुप्पट, म्हणून 3 × 35 = 105 वर्षे. दाब देण्याजोगे हे की प्रतिरूप यापुढे काय दावा करते. ते आणखी 350 वर्षे चालवा आणि तेच एक हजार ऐंशी लाखांहून वर जाते; आणखी काही शतके चालवा आणि ते पृथ्वीच्या वस्तुमानाहून पुढे जाते. गणित निर्दोष आहे आणि निष्कर्ष मूर्खपणा, आणि दोष सोडवण्यात नसून समीकरणात आहे, जे सांगते की वाढीचा दर लोकसंख्येच्या समप्रमाणात आहे आणि दुसरे काहीच नाही — ना अन्न, ना जागा, ना स्पर्धा. प्रमाण दुरुस्ती लॉजिस्टिक समीकरण dP/dt = kP(1 − P/M) आहे, जे P लहान असेपर्यंत याच्यासारखे वागते आणि P धारणक्षमता M जवळ येताच सपाट होते. सर्वसाधारण सवय हाच मुद्दा आहे: एखाद्या प्रतिरूपाचे अबद्ध भाकीत ही शोध नव्हे, ते प्रतिरूपाने स्वतःच्याच वैधतेची सीमा जाहीर करणे आहे. (280 तीन दुप्पट मोजण्याऐवजी वाढ-गुणोत्तर 8 ने गुणते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "dy/dx = y^(2/3) with y(0) = 0 has the solutions y = 0 and y = (x/3)³. How many solutions pass through the origin?",
+      "choices": [
+        "0",
+        "2",
+        "3",
+        "1"
+      ],
+      "answerIndex": 1,
+      "solution": "Two, at least — and in fact infinitely many, since one can sit on y = 0 for any length of time and then depart along a shifted cubic. The question counts the two the stem names, but the failure they demonstrate is the important thing. An initial condition is supposed to pick out ONE curve, and every problem in this chapter has quietly relied on that. Here it does not, and the reason is precise: the existence-and-uniqueness theorem requires the right-hand side to be not merely continuous but Lipschitz in y, and y^(2/3) has an infinite slope at y = 0, so it fails that condition at exactly the point the initial condition names. Two consequences follow. First, uniqueness is a theorem with hypotheses rather than a property of differential equations as such, and the hypotheses are about the equation, not about how carefully one solves it. Second, this is not merely pathological: the same equation describes a leaking tank, and the non-uniqueness is physically honest — from an empty tank, you cannot tell how long it has been empty, so the past is genuinely not determined by the present. A model that forgets its own history is not a broken model; it is a model whose forward direction works and whose backward direction does not. (1 assumes an initial condition always determines a unique solution.)",
+      "checkExpr": "1+1",
+      "translations": {
+        "hi": {
+          "stem": "y(0) = 0 के साथ dy/dx = y^(2/3) के हल y = 0 और y = (x/3)³ हैं। मूलबिंदु से कितने हल गुज़रते हैं?",
+          "choices": [
+            "0",
+            "2",
+            "3",
+            "1"
+          ],
+          "solution": "कम से कम दो — और असल में अनंत, क्योंकि कोई भी y = 0 पर मनचाहे समय तक बैठकर फिर खिसके हुए घन के साथ रवाना हो सकता है। प्रश्न उन दो को गिनता है जिन्हें कथन नाम देता है, पर वे जो विफलता दिखाते हैं वही महत्वपूर्ण है। प्रारंभिक शर्त से अपेक्षा है कि वह एक वक्र चुने, और इस अध्याय की हर समस्या चुपचाप उसी पर टिकी रही है। यहाँ वह नहीं चुनती, और कारण ठीक-ठीक है: अस्तित्व-और-अद्वितीयता प्रमेय माँगता है कि दायाँ पक्ष केवल संतत नहीं बल्कि y में लिप्शित्ज़ हो, और y^(2/3) की y = 0 पर अनंत ढाल है, अतः वह ठीक उसी बिंदु पर उस शर्त में विफल है जिसे प्रारंभिक शर्त नाम देती है। दो परिणाम निकलते हैं। पहला, अद्वितीयता अवकल समीकरणों का गुण नहीं बल्कि परिकल्पनाओं वाला प्रमेय है, और परिकल्पनाएँ समीकरण के बारे में हैं, इस बारे में नहीं कि कोई कितने ध्यान से हल करता है। दूसरा, यह महज़ विकृति नहीं: वही समीकरण रिसती टंकी का वर्णन करता है, और अनद्वितीयता भौतिक रूप से ईमानदार है — ख़ाली टंकी से तुम बता नहीं सकते कि वह कब से ख़ाली है, अतः अतीत सचमुच वर्तमान से तय नहीं होता। अपना इतिहास भूलने वाला मॉडल टूटा मॉडल नहीं; वह ऐसा मॉडल है जिसकी आगे की दिशा चलती है और पीछे की नहीं। (1 मान लेता है कि प्रारंभिक शर्त सदा अद्वितीय हल तय करती है।)"
+        },
+        "mr": {
+          "stem": "y(0) = 0 सह dy/dx = y^(2/3) ची उत्तरे y = 0 आणि y = (x/3)³ आहेत. आदिबिंदूतून किती उत्तरे जातात?",
+          "choices": [
+            "0",
+            "2",
+            "3",
+            "1"
+          ],
+          "solution": "किमान दोन — आणि प्रत्यक्षात अनंत, कारण कोणीही y = 0 वर हवा तितका वेळ बसून मग सरकलेल्या घनासोबत निघू शकतो. प्रश्न विधानाने नाव दिलेली ती दोन मोजतो, पण ती जे अपयश दाखवतात तेच महत्त्वाचे आहे. प्रारंभिक अटीकडून अपेक्षा आहे की तिने एक वक्र निवडावा, आणि या अध्यायातील प्रत्येक समस्या गुपचूप त्यावरच टिकली आहे. इथे ती निवडत नाही, आणि कारण नेमके आहे: अस्तित्व-आणि-अद्वितीयता प्रमेय मागते की उजवी बाजू केवळ संतत नव्हे तर y मध्ये लिप्शित्झ असावी, आणि y^(2/3) चा y = 0 वर अनंत उतार आहे, म्हणून ते नेमक्या त्याच बिंदूवर त्या अटीत अपयशी आहे जिला प्रारंभिक अट नाव देते. दोन परिणाम निघतात. पहिला, अद्वितीयता हा अवकल समीकरणांचा गुणधर्म नसून गृहीतके असलेले प्रमेय आहे, आणि गृहीतके समीकरणाबद्दल आहेत, कोणी किती काळजीपूर्वक सोडवतो याबद्दल नाहीत. दुसरा, हे केवळ विकृती नाही: तेच समीकरण गळणाऱ्या टाकीचे वर्णन करते, आणि अनद्वितीयता भौतिक दृष्ट्या प्रामाणिक आहे — रिकाम्या टाकीवरून तुम्ही सांगू शकत नाही की ती किती काळ रिकामी आहे, म्हणून भूतकाळ खरोखर वर्तमानाने ठरत नाही. स्वतःचा इतिहास विसरणारे प्रतिरूप मोडलेले प्रतिरूप नाही; ते असे प्रतिरूप आहे ज्याची पुढची दिशा चालते आणि मागची नाही. (1 गृहीत धरते की प्रारंभिक अट नेहमी अद्वितीय उत्तर ठरवते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 5,
+      "stem": "The family y = Ax² is described by the differential equation x dy/dx = 2y. How many arbitrary constants does that equation's general solution contain?",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "0"
+      ],
+      "answerIndex": 0,
+      "solution": "One, matching the single A in the family — and that match is the whole content of the question. Forming a differential equation from a family and solving one to get a family are inverse operations, and the count of constants is what has to line up between them. The procedure follows directly: to eliminate n constants you differentiate n times and use the resulting equations to remove them, which is why a family with one parameter yields a first-order equation and a family with two yields a second-order one. Here, differentiating y = Ax² gives dy/dx = 2Ax, and dividing to cancel A leaves x dy/dx = 2y with no A anywhere. Note what the elimination has achieved: the equation describes the family WITHOUT naming the parameter, which is exactly what makes it useful in physics — one writes down the local rule a system obeys, and the constants that the rule cannot determine are precisely the ones an experiment has to supply. (2 supposes that a second-degree curve needs a second-order equation, confusing the degree of x with the order of differentiation.)",
+      "checkExpr": "2-1",
+      "translations": {
+        "hi": {
+          "stem": "कुल y = Ax² का वर्णन अवकल समीकरण x dy/dx = 2y करता है। उस समीकरण के व्यापक हल में कितने स्वेच्छ अचर हैं?",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "0"
+          ],
+          "solution": "एक, कुल के अकेले A से मेल खाता — और वही मेल प्रश्न की पूरी सामग्री है। किसी कुल से अवकल समीकरण बनाना और किसी समीकरण को हल करके कुल पाना प्रतिलोम संक्रियाएँ हैं, और अचरों की गिनती ही वह है जिसे उनके बीच मिलना है। प्रक्रिया सीधे निकलती है: n अचर हटाने के लिए n बार अवकलन करो और मिलने वाले समीकरणों से उन्हें निकाल दो, इसीलिए एक प्राचल वाला कुल प्रथम कोटि का समीकरण देता है और दो प्राचल वाला द्वितीय कोटि का। यहाँ, y = Ax² का अवकलन dy/dx = 2Ax देता है, और A काटने के लिए भाग देने पर x dy/dx = 2y बचता है, जिसमें A कहीं नहीं। ध्यान दो कि उन्मूलन ने क्या हासिल किया: समीकरण कुल का वर्णन प्राचल का नाम लिए बिना करता है, और ठीक यही उसे भौतिकी में उपयोगी बनाता है — कोई वह स्थानीय नियम लिख देता है जिसे तंत्र मानता है, और जिन अचरों को नियम तय नहीं कर सकता वे ठीक वही हैं जो प्रयोग को देने पड़ते हैं। (2 मान लेता है कि द्वितीय घात के वक्र को द्वितीय कोटि का समीकरण चाहिए, x की घात को अवकलन की कोटि से गड्डमड्ड करते हुए।)"
+        },
+        "mr": {
+          "stem": "कुळ y = Ax² चे वर्णन अवकल समीकरण x dy/dx = 2y करते. त्या समीकरणाच्या व्यापक उत्तरात किती स्वैर अचल आहेत?",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "0"
+          ],
+          "solution": "एक, कुळातील एकट्या A शी जुळणारा — आणि तीच जुळणी प्रश्नाचा अख्खा आशय आहे. एखाद्या कुळातून अवकल समीकरण बनवणे आणि एखादे समीकरण सोडवून कुळ मिळवणे या व्यस्त क्रिया आहेत, आणि अचलांची मोजणी हीच त्यांच्यात जुळावी लागते. प्रक्रिया थेट निघते: n अचल काढण्यासाठी n वेळा अवकलन करा आणि मिळणाऱ्या समीकरणांतून ते काढून टाका, म्हणूनच एक प्राचल असलेले कुळ प्रथम कोटीचे समीकरण देते आणि दोन प्राचल असलेले द्वितीय कोटीचे. इथे, y = Ax² चे अवकलन dy/dx = 2Ax देते, आणि A रद्द करण्यासाठी भागल्यास x dy/dx = 2y उरते, ज्यात A कुठेच नाही. लक्षात घ्या की निर्मूलनाने काय साधले: समीकरण कुळाचे वर्णन प्राचलाचे नाव न घेता करते, आणि नेमके तेच त्याला भौतिकशास्त्रात उपयुक्त बनवते — कोणी तो स्थानिक नियम लिहून टाकतो जो प्रणाली पाळते, आणि जे अचल नियम ठरवू शकत नाही ते नेमके तेच आहेत जे प्रयोगाला पुरवावे लागतात. (2 गृहीत धरते की द्वितीय घातीच्या वक्राला द्वितीय कोटीचे समीकरण लागते, x ची घात अवकलनाच्या कोटीशी गोंधळवत.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "dy/dx = 1 + y² with y(0) = 0 has solution y = tan x. The right-hand side is defined and smooth for every real y. On the interval [0, 2], for how many values of x does the solution exist?",
+      "choices": [
+        "1",
+        "3",
+        "2",
+        "0"
+      ],
+      "answerIndex": 3,
+      "solution": "None — not for all of them, which is what the question asks. tan x blows up at π/2 ≈ 1.571, which lies inside [0, 2], so no solution exists on the whole interval and the count of intervals of that description is 0. The situation is worth sitting with, because everything about the equation looks benign. The right-hand side 1 + y² is a polynomial: continuous everywhere, differentiable everywhere, Lipschitz on every bounded region. The existence-and-uniqueness theorem applies in full and promises a unique solution — but only LOCALLY, on some interval around the starting point, and it never says how long that interval is. Here it is π/2 wide and then the solution is simply gone, having run off to infinity in finite x. This is called blow-up in finite time, and the mechanism is a feedback that strengthens itself: the larger y becomes the faster it grows, because the growth rate depends on y², so the escape accelerates and completes in bounded time rather than approaching infinity asymptotically. Two things follow. The first is a correction to a natural but wrong reading of the theorem — 'the solution exists' does not mean 'the solution exists for as long as you like', and the two are routinely conflated because in the tidy examples they coincide. The second is that nothing in the equation's appearance warns of this. One cannot tell by inspection how far a solution will reach; that is a separate question requiring separate work, and equations of exactly this shape describe real runaway processes, from certain chemical reactions to structural collapse, where the finite-time singularity is the physically meaningful prediction and not an artefact. (1 assumes that a well-behaved right-hand side guarantees a solution everywhere.)",
+      "checkExpr": "1-1",
+      "translations": {
+        "hi": {
+          "stem": "y(0) = 0 के साथ dy/dx = 1 + y² का हल y = tan x है। दायाँ पक्ष हर वास्तविक y के लिए परिभाषित और चिकना है। अंतराल [0, 2] पर x के कितने मानों के लिए हल अस्तित्व में है?",
+          "choices": [
+            "1",
+            "3",
+            "2",
+            "0"
+          ],
+          "solution": "कोई नहीं — उन सब के लिए नहीं, और प्रश्न यही पूछता है। tan x, π/2 ≈ 1.571 पर फट जाता है, जो [0, 2] के भीतर है, अतः पूरे अंतराल पर कोई हल नहीं है और उस वर्णन वाले अंतरालों की गिनती 0 है। इस स्थिति के साथ ठहरना ज़रूरी है, क्योंकि समीकरण के बारे में सब कुछ सौम्य दिखता है। दायाँ पक्ष 1 + y² बहुपद है: हर जगह संतत, हर जगह अवकलनीय, हर परिबद्ध क्षेत्र पर लिप्शित्ज़। अस्तित्व-और-अद्वितीयता प्रमेय पूरी तरह लागू होता है और अद्वितीय हल का वादा करता है — पर केवल स्थानीय रूप से, शुरुआती बिंदु के आसपास किसी अंतराल पर, और वह कभी नहीं कहता कि वह अंतराल कितना लंबा है। यहाँ वह π/2 चौड़ा है और फिर हल बस चला गया, परिमित x में अनंत की ओर भाग जाकर। इसे परिमित समय में विस्फोट कहते हैं, और क्रियाविधि है ख़ुद को मज़बूत करती प्रतिपुष्टि: y जितना बड़ा होता जाए उतना तेज़ बढ़ता है, क्योंकि वृद्धि-दर y² पर निर्भर है, अतः पलायन त्वरित होता है और अनंत की ओर स्पर्शोन्मुख पहुँचने के बजाय परिबद्ध समय में पूरा हो जाता है। दो बातें निकलती हैं। पहली, प्रमेय के एक स्वाभाविक पर ग़लत पाठ का सुधार — 'हल अस्तित्व में है' का अर्थ 'हल जितनी देर तुम चाहो उतनी देर अस्तित्व में है' नहीं, और दोनों नियमित रूप से मिला दिए जाते हैं क्योंकि सुथरे उदाहरणों में वे एक हो जाते हैं। दूसरी, समीकरण की शक्ल में कुछ भी इसकी चेतावनी नहीं देता। देखकर नहीं बताया जा सकता कि हल कहाँ तक पहुँचेगा; वह अलग प्रश्न है जिसे अलग काम चाहिए, और ठीक इसी आकार के समीकरण असली अनियंत्रित प्रक्रियाओं का वर्णन करते हैं, कुछ रासायनिक अभिक्रियाओं से लेकर संरचनात्मक ढहान तक, जहाँ परिमित-समय की विचित्रता भौतिक रूप से सार्थक भविष्यवाणी है, कोई कृत्रिम उपज नहीं। (1 मान लेता है कि सुव्यवहृत दायाँ पक्ष हर जगह हल की गारंटी देता है।)"
+        },
+        "mr": {
+          "stem": "y(0) = 0 सह dy/dx = 1 + y² चे उत्तर y = tan x आहे. उजवी बाजू प्रत्येक वास्तव y साठी परिभाषित आणि गुळगुळीत आहे. अंतराल [0, 2] वर x च्या किती मूल्यांसाठी उत्तर अस्तित्वात आहे?",
+          "choices": [
+            "1",
+            "3",
+            "2",
+            "0"
+          ],
+          "solution": "एकही नाही — त्या सर्वांसाठी नाही, आणि प्रश्न हेच विचारतो. tan x हा π/2 ≈ 1.571 वर फुटतो, जो [0, 2] च्या आत आहे, म्हणून अख्ख्या अंतरालावर कोणतेही उत्तर नाही आणि त्या वर्णनाच्या अंतरालांची मोजणी 0 आहे. या परिस्थितीसोबत थांबणे आवश्यक आहे, कारण समीकरणाबद्दल सर्वकाही सौम्य दिसते. उजवी बाजू 1 + y² बहुपदी आहे: सर्वत्र संतत, सर्वत्र अवकलनीय, प्रत्येक बद्ध प्रदेशावर लिप्शित्झ. अस्तित्व-आणि-अद्वितीयता प्रमेय पूर्णपणे लागू होते आणि अद्वितीय उत्तराचे वचन देते — पण केवळ स्थानिकरीत्या, सुरुवातीच्या बिंदूभोवती एखाद्या अंतरालावर, आणि ते कधीच सांगत नाही की ते अंतराल किती लांब आहे. इथे ते π/2 रुंद आहे आणि मग उत्तर फक्त निघून गेले, सांत x मध्ये अनंताकडे पळून जाऊन. याला सांत काळात स्फोट म्हणतात, आणि कार्यपद्धती आहे स्वतःला बळकट करणारी प्रतिपुष्टी: y जितका मोठा होईल तितका वेगाने वाढतो, कारण वाढीचा दर y² वर अवलंबून आहे, म्हणून पलायन त्वरित होते आणि अनंताकडे अनंतस्पर्शी पोहोचण्याऐवजी बद्ध काळात पूर्ण होते. दोन गोष्टी निघतात. पहिली, प्रमेयाच्या एका नैसर्गिक पण चुकीच्या वाचनाची दुरुस्ती — 'उत्तर अस्तित्वात आहे' चा अर्थ 'उत्तर तुम्हाला हवे तितका वेळ अस्तित्वात आहे' नव्हे, आणि दोन्ही नियमितपणे एकत्र केले जातात कारण नीटनेटक्या उदाहरणांत ते एकरूप होतात. दुसरी, समीकरणाच्या रूपात काहीही याचा इशारा देत नाही. पाहून सांगता येत नाही की उत्तर कुठवर पोहोचेल; तो वेगळा प्रश्न आहे ज्याला वेगळे काम लागते, आणि नेमक्या याच आकाराची समीकरणे खऱ्या अनियंत्रित प्रक्रियांचे वर्णन करतात, काही रासायनिक अभिक्रियांपासून संरचनात्मक कोसळण्यापर्यंत, जिथे सांत-काळाची विचित्रता भौतिक दृष्ट्या अर्थपूर्ण भाकीत आहे, कोणतीही कृत्रिम निर्मिती नाही. (1 गृहीत धरते की सुव्यवस्थित उजवी बाजू सर्वत्र उत्तराची हमी देते.)"
+        }
+      }
+    },
+    {
+      "difficulty": 6,
+      "stem": "Of the equations dy/dx = y, dy/dx = y + x and dy/dx = y², how many have the property that the sum of any two solutions is also a solution?",
+      "choices": [
+        "1",
+        "0",
+        "2",
+        "3"
+      ],
+      "answerIndex": 0,
+      "solution": "One — the first, and only the first. Check each. For dy/dx = y, if u and v are solutions then (u + v)' = u' + v' = u + v, so the sum works. For dy/dx = y + x, the sum gives (u + v)' = u + v + 2x, but a solution would need u + v + x, so it fails by exactly the x that got counted twice. For dy/dx = y², the sum gives u² + v² whereas a solution needs (u + v)², and those differ by 2uv. So only the homogeneous linear equation has the property, and each failure fails in its own instructive way. This is the principle of superposition, and it is the reason linear differential equations are the ones physics can actually solve. When it holds, the solution set is a VECTOR SPACE: find enough independent solutions and every other one is a combination of them, which is what makes the whole apparatus of characteristic equations, complementary functions and Fourier series work at all. Notice that the second equation fails only because of the x — its homogeneous part is fine, which is why the standard method splits such an equation into a complementary function plus one particular solution, superposing within the homogeneous part and bolting the rest on separately. The third failure is different in kind and cannot be patched: nonlinearity destroys superposition outright, there is no decomposition to retreat to, and this is the honest reason turbulence, weather and the three-body problem resist solution while circuits and springs do not. The dividing line in the subject is not difficulty of arithmetic but whether solutions may be added. (2 counts the affine equation as linear, which it is in name but not in the sense superposition requires.)",
+      "checkExpr": "2-1",
+      "translations": {
+        "hi": {
+          "stem": "समीकरणों dy/dx = y, dy/dx = y + x और dy/dx = y² में से कितनों में यह गुण है कि किन्हीं दो हलों का योग भी हल है?",
+          "choices": [
+            "1",
+            "0",
+            "2",
+            "3"
+          ],
+          "solution": "एक — पहला, और केवल पहला। हर एक जाँचो। dy/dx = y के लिए, यदि u और v हल हैं तो (u + v)' = u' + v' = u + v, अतः योग चलता है। dy/dx = y + x के लिए, योग देता है (u + v)' = u + v + 2x, पर हल को u + v + x चाहिए, अतः वह ठीक उसी x से विफल है जो दो बार गिन लिया गया। dy/dx = y² के लिए, योग देता है u² + v² जबकि हल को (u + v)² चाहिए, और वे 2uv से भिन्न हैं। अतः केवल समघातीय रैखिक समीकरण में यह गुण है, और हर विफलता अपने ही शिक्षाप्रद ढंग से विफल होती है। यह अध्यारोपण का सिद्धांत है, और यही कारण है कि रैखिक अवकल समीकरण वही हैं जिन्हें भौतिकी सचमुच हल कर पाती है। जब यह लागू हो, हल-समुच्चय एक सदिश समष्टि होता है: पर्याप्त स्वतंत्र हल ढूँढ़ो और हर दूसरा उनका संयोजन है, और यही अभिलाक्षणिक समीकरणों, पूरक फलनों और फ़ूरिये श्रेणी के पूरे तंत्र को चलाता है। ध्यान दो कि दूसरा समीकरण केवल x के कारण विफल होता है — उसका समघातीय भाग ठीक है, इसीलिए मानक विधि ऐसे समीकरण को पूरक फलन और एक विशिष्ट हल में बाँट देती है, समघातीय भाग के भीतर अध्यारोपण करती है और बाक़ी को अलग से जोड़ देती है। तीसरी विफलता क़िस्म में भिन्न है और उसकी मरम्मत नहीं हो सकती: अरैखिकता अध्यारोपण को सीधे नष्ट कर देती है, पीछे हटने को कोई विघटन नहीं, और यही ईमानदार कारण है कि प्रक्षोभ, मौसम और त्रि-पिंड समस्या हल का विरोध करते हैं जबकि परिपथ और स्प्रिंग नहीं। विषय की विभाजक रेखा गणित की कठिनाई नहीं बल्कि यह है कि हलों को जोड़ा जा सकता है या नहीं। (2 सजातीय-नहीं रैखिक समीकरण को रैखिक गिन लेता है, जो वह नाम से है पर उस अर्थ में नहीं जो अध्यारोपण माँगता है।)"
+        },
+        "mr": {
+          "stem": "dy/dx = y, dy/dx = y + x आणि dy/dx = y² या समीकरणांपैकी कितींत हा गुणधर्म आहे की कोणत्याही दोन उत्तरांची बेरीज हेही उत्तर आहे?",
+          "choices": [
+            "1",
+            "0",
+            "2",
+            "3"
+          ],
+          "solution": "एक — पहिले, आणि फक्त पहिलेच. प्रत्येक तपासा. dy/dx = y साठी, जर u आणि v उत्तरे असतील तर (u + v)' = u' + v' = u + v, म्हणून बेरीज चालते. dy/dx = y + x साठी, बेरीज देते (u + v)' = u + v + 2x, पण उत्तराला u + v + x लागेल, म्हणून ते नेमक्या त्याच x ने अपयशी आहे जो दोनदा मोजला गेला. dy/dx = y² साठी, बेरीज देते u² + v² तर उत्तराला (u + v)² लागते, आणि ते 2uv ने वेगळे आहेत. म्हणून केवळ समघाती रैखिक समीकरणात हा गुणधर्म आहे, आणि प्रत्येक अपयश स्वतःच्याच बोधप्रद पद्धतीने अपयशी होते. हे अध्यारोपणाचे तत्त्व आहे, आणि हेच कारण आहे की रैखिक अवकल समीकरणे तीच आहेत जी भौतिकशास्त्र खरोखर सोडवू शकते. जेव्हा हे लागू होते, उत्तर-संच एक सदिश अवकाश असतो: पुरेशी स्वतंत्र उत्तरे शोधा आणि इतर प्रत्येक त्यांचे संयोजन आहे, आणि हेच अभिलाक्षणिक समीकरणे, पूरक फलने आणि फूरिये श्रेणी यांचे अख्खे यंत्र चालवते. लक्षात घ्या की दुसरे समीकरण केवळ x मुळे अपयशी होते — त्याचा समघाती भाग ठीक आहे, म्हणूनच प्रमाण पद्धत असे समीकरण पूरक फलन आणि एक विशिष्ट उत्तर यांत विभागते, समघाती भागाच्या आत अध्यारोपण करते आणि उरलेले वेगळे जोडते. तिसरे अपयश प्रकारात वेगळे आहे आणि त्याची दुरुस्ती होऊ शकत नाही: अरैखिकता अध्यारोपणाला थेट नष्ट करते, मागे हटण्यासाठी कोणतेही विघटन नाही, आणि हेच प्रामाणिक कारण आहे की क्षोभ, हवामान आणि त्रि-पिंड समस्या उत्तराला विरोध करतात तर परिपथ आणि स्प्रिंग नाहीत. विषयातील विभाजक रेषा गणिताची अवघडता नसून उत्तरे जोडता येतात का ही आहे. (2 सजातीय-नसलेल्या रैखिक समीकरणाला रैखिक मोजते, जे ते नावाने आहे पण अध्यारोपण मागत असलेल्या अर्थाने नाही.)"
+        }
+      }
+    }
+  ]
+}

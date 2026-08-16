@@ -2514,8 +2514,8 @@ navigation" means the actual list rather than one somebody maintained by hand.
   computation proven by checkExpr, every chapter climbing L1–L6, no
   question quota, no repetition, three languages by construction. The old
   generator (`gen-quiz-bank.ts`) and its summary scripts left the tree
-  with it; `quiz:generate` now points at quiz2. Current bank: 381
-  chapters / 6,884 questions — **Class 3 complete** (Maths 14/14, EVS
+  with it; `quiz:generate` now points at quiz2. Current bank: 386
+  chapters / 6,954 questions — **Class 3 complete** (Maths 14/14, EVS
   11), **Class 4 complete** (Maths 14/14, EVS 10), **Class 5 complete**
   (Maths 14/14, EVS 10), **Class 6 complete** (Maths 14, Science 9,
   History 8, Geography 5, Civics 5), **Class 7 complete** (Maths 14,
@@ -3172,6 +3172,44 @@ navigation" means the actual list rather than one somebody maintained by hand.
   Integrals done; Differential Equations, Vector Algebra, Three Dimensional
   Geometry, Linear Programming and Probability remain, and they close the
   grades 4–12 rollout.
+
+  **Class 12 Maths, chapters 9–13 — and that closes the grades 4–12
+  rollout.** Differential Equations, Vector Algebra, Three Dimensional
+  Geometry, Linear Programming, Probability: five chapters, 70 questions,
+  taking the bank to 386 chapters / 6,954 questions and Class 12 Maths to
+  13/13. Threads worth naming. Differential Equations makes the count of
+  arbitrary constants match the order and then shows degree is *undefined*
+  rather than zero when a derivative sits inside a sine; its two L6s are a
+  perfectly well-behaved equation whose solution vanishes at a finite x
+  (tan x blowing up inside [0, 2], with a polynomial right-hand side that
+  satisfies every hypothesis of the existence theorem — which promises only
+  a LOCAL solution and never says how long the interval is), and
+  superposition, where only the homogeneous linear equation lets two
+  solutions be added, which is the honest reason turbulence resists
+  solution while circuits do not. Vector Algebra sets the two products
+  against each other — one vanishes on perpendicular vectors, the other on
+  parallel — then takes away first commutativity and then associativity,
+  closing on the fact that a cross product of this kind exists in only two
+  dimensions above one, 3 and 7, because the requirements secretly force a
+  division algebra one dimension up. Three Dimensional Geometry is built
+  around skew lines: not merely a third case but the GENERIC one, since
+  intersecting costs a condition that randomly chosen lines fail, which
+  inverts the intuition brought from the plane. Linear Programming explains
+  why finitely many corners suffice and then charges for the guarantee —
+  linearity and convexity both load-bearing and failing differently, an
+  unbounded region making the method return a confident wrong answer, the
+  corner count growing past the atoms in the universe, and the integer
+  requirement turning a polynomial-time problem NP-hard. Probability closes
+  the family on what information does to a chance: mutually exclusive
+  events with real probability are the *most* dependent events there are,
+  'at least one is a girl' and 'the elder is a girl' shrink the sample space
+  by different amounts, pairwise independence does not give mutual, and a
+  99%-accurate test for a 1-in-10,000 disease leaves a positive patient 99%
+  likely to be healthy — the prosecutor's fallacy, arrived at by counting
+  whole people rather than juggling percentages. Clean on the first pass
+  again: verify reported no warnings and no duplicate stems, typecheck and
+  lint clean, import 386 topics / 13,908 translations, suite green at 87
+  files and 1489 tests. **The grades 4–12 rollout is complete.**
 
   **Then the attention list got worked through — four fixes in one pass.**
   (1) The directory's three always-visible verbs (pause, left, remove)

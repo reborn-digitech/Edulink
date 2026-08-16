@@ -2520,7 +2520,1595 @@ function applicationOfIntegrals12(): TopicFileOut {
   );
 }
 
-/*C9*/
+/* ------------------------------------------------------------------------- */
+/* Chapter 9 — Differential Equations (an equation whose unknown is a curve)  */
+/* ------------------------------------------------------------------------- */
+function differentialEquations12(): TopicFileOut {
+  const rand = rng("maths-12-differential-equations");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the order of the equation d²y/dx² + 3 dy/dx + y = 0?",
+          hi: "समीकरण d²y/dx² + 3 dy/dx + y = 0 की कोटि क्या है?",
+          mr: "समीकरण d²y/dx² + 3 dy/dx + y = 0 ची कोटी किती?",
+        },
+        answer: 2,
+        wrong: [1, 3, 0],
+        checkExpr: "1+1",
+        solution: {
+          en: "The order is the order of the HIGHEST derivative present, which here is the second, so the answer is 2. The 3 sitting in front of dy/dx is a coefficient and has nothing to do with it — order counts differentiations, not numbers. (3 reads the coefficient instead.)",
+          hi: "कोटि उपस्थित उच्चतम अवकलज की कोटि है, जो यहाँ द्वितीय है, अतः उत्तर 2 है। dy/dx के आगे बैठा 3 गुणांक है और उससे उसका कोई लेना-देना नहीं — कोटि अवकलन गिनती है, संख्याएँ नहीं। (3 गुणांक पढ़ लेता है।)",
+          mr: "कोटी ही उपस्थित सर्वोच्च अवकलजाची कोटी आहे, जी इथे द्वितीय आहे, म्हणून उत्तर 2 आहे. dy/dx समोर बसलेला 3 गुणांक आहे आणि त्याचा याच्याशी काहीच संबंध नाही — कोटी अवकलने मोजते, संख्या नव्हे. (3 गुणांक वाचते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many arbitrary constants does the general solution of a third-order differential equation contain?",
+          hi: "तृतीय कोटि के अवकल समीकरण के व्यापक हल में कितने स्वेच्छ अचर होते हैं?",
+          mr: "तृतीय कोटीच्या अवकल समीकरणाच्या व्यापक उत्तरात किती स्वैर अचल असतात?",
+        },
+        answer: 3,
+        wrong: [1, 2, 6],
+        checkExpr: "1+2",
+        solution: {
+          en: "Three — one for each integration needed to undo three derivatives. The count is not a convention: each time you integrate you lose a constant, so recovering the function from its third derivative loses three, and the general solution is a whole family of curves rather than a single one. It follows that pinning down one member needs exactly three extra conditions, which is why initial-value problems come with as many conditions as the order. (1 gives the constant of a single integration.)",
+          hi: "तीन — तीन अवकलजों को उलटने के लिए ज़रूरी हर समाकलन के लिए एक। यह गिनती परिपाटी नहीं: हर बार समाकलन करने पर एक अचर खो जाता है, अतः किसी फलन को उसके तृतीय अवकलज से वापस पाने में तीन खोते हैं, और व्यापक हल एक वक्र नहीं बल्कि वक्रों का पूरा कुल है। इससे निकलता है कि उस कुल के एक सदस्य को तय करने के लिए ठीक तीन अतिरिक्त शर्तें चाहिए, इसीलिए प्रारंभिक-मान समस्याएँ कोटि जितनी शर्तों के साथ आती हैं। (1 एक अकेले समाकलन का अचर देता है।)",
+          mr: "तीन — तीन अवकलज उलटवण्यासाठी लागणाऱ्या प्रत्येक समाकलनासाठी एक. ही मोजणी संकेत नाही: प्रत्येक वेळी समाकलन केल्यावर एक अचल हरवतो, म्हणून एखादे फलन त्याच्या तृतीय अवकलजापासून परत मिळवताना तीन हरवतात, आणि व्यापक उत्तर एक वक्र नसून वक्रांचे अख्खे कुळ आहे. यातून निघते की त्या कुळातील एक सदस्य निश्चित करण्यास नेमक्या तीन अतिरिक्त अटी लागतात, म्हणूनच प्रारंभिक-मूल्य समस्या कोटीइतक्या अटींसह येतात. (1 एका एकट्या समाकलनाचा अचल देते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "If dy/dx = 4, what is the slope of every solution curve?",
+          hi: "यदि dy/dx = 4, तो हर हल-वक्र की ढाल क्या है?",
+          mr: "जर dy/dx = 4, तर प्रत्येक उत्तर-वक्राचा उतार किती?",
+        },
+        answer: 4,
+        wrong: [0, 1, 8],
+        checkExpr: "2*2",
+        solution: {
+          en: "4, everywhere. The solutions are the lines y = 4x + C, a family of parallel lines differing only in where they cross the axis. This is the smallest possible example of the whole subject's shape: a differential equation describes the slope at every point without naming any particular curve, and the curves that obey it form a family filling the plane. (0 answers as though a constant right-hand side meant a constant y.)",
+          hi: "4, हर जगह। हल हैं रेखाएँ y = 4x + C, समांतर रेखाओं का कुल जो केवल इसमें भिन्न है कि वे अक्ष को कहाँ काटती हैं। यह पूरे विषय के आकार का सबसे छोटा संभव उदाहरण है: अवकल समीकरण हर बिंदु पर ढाल बताता है बिना किसी विशेष वक्र का नाम लिए, और उसका पालन करने वाले वक्र समतल भरता एक कुल बनाते हैं। (0 ऐसे उत्तर देता है मानो अचर दायाँ पक्ष अचर y का अर्थ हो।)",
+          mr: "4, सर्वत्र. उत्तरे आहेत रेषा y = 4x + C, समांतर रेषांचे कुळ जे केवळ त्या अक्षाला कुठे कापतात यात वेगळे आहे. हे अख्ख्या विषयाच्या आकाराचे सर्वांत लहान शक्य उदाहरण आहे: अवकल समीकरण प्रत्येक बिंदूवर उतार सांगते कोणत्याही विशिष्ट वक्राचे नाव न घेता, आणि त्याचे पालन करणारे वक्र प्रतल भरणारे कुळ बनवतात. (0 असे उत्तर देते जणू अचल उजवी बाजू म्हणजे अचल y असावा.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Solving dy/dx = 2x with y = 5 when x = 0 gives y = x² + C. What is C?",
+          hi: "x = 0 पर y = 5 के साथ dy/dx = 2x हल करने पर y = x² + C मिलता है। C क्या है?",
+          mr: "x = 0 वर y = 5 सह dy/dx = 2x सोडवल्यास y = x² + C मिळते. C किती?",
+        },
+        answer: 5,
+        wrong: [0, 2, 25],
+        checkExpr: "5-0",
+        solution: {
+          en: "At x = 0 the x² term vanishes, so y = C, and the condition y = 5 gives C = 5. The initial condition is what selects one curve out of the infinite family, and this is the whole two-step shape of every problem in the chapter: integrate to get the family, then substitute to pick the member. Skipping the second step leaves an answer with a letter in it, which is a general solution and not the particular one asked for. (0 forgets that C is what the condition determines.)",
+          hi: "x = 0 पर x² पद लुप्त हो जाता है, अतः y = C, और शर्त y = 5 से C = 5. प्रारंभिक शर्त ही अनंत कुल में से एक वक्र चुनती है, और यही अध्याय की हर समस्या का पूरा दो-क़दमी आकार है: समाकलन करके कुल पाओ, फिर प्रतिस्थापित करके सदस्य चुनो। दूसरा क़दम छोड़ने पर ऐसा उत्तर बचता है जिसमें अक्षर है, जो व्यापक हल है, पूछा गया विशिष्ट नहीं। (0 भूल जाता है कि शर्त C को ही तय करती है।)",
+          mr: "x = 0 वर x² पद लोप पावते, म्हणून y = C, आणि अट y = 5 वरून C = 5. प्रारंभिक अट अनंत कुळातून एक वक्र निवडते, आणि हाच अध्यायातील प्रत्येक समस्येचा अख्खा दोन-पावली आकार आहे: समाकलन करून कुळ मिळवा, मग प्रतिस्थापित करून सदस्य निवडा. दुसरे पाऊल वगळल्यास अक्षर असलेले उत्तर उरते, जे व्यापक उत्तर आहे, विचारलेले विशिष्ट नाही. (0 विसरते की अट C च ठरवते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "For the separable equation dy/y = 3 dx, the solution is y = A e^(kx). What is k?",
+          hi: "वियोज्य समीकरण dy/y = 3 dx का हल y = A e^(kx) है। k क्या है?",
+          mr: "वियोज्य समीकरण dy/y = 3 dx चे उत्तर y = A e^(kx) आहे. k किती?",
+        },
+        answer: 3,
+        wrong: [1, 0, 9],
+        checkExpr: "9/3",
+        solution: {
+          en: "Integrating both sides gives ln y = 3x + c, so y = A e^(3x) and k = 3. Note what the equation was saying before any solving happened: dy/y is the FRACTIONAL change in y, so the equation states that y grows by a fixed proportion of itself per unit of x — and the exponential is the only function that does. Every population model, every compound-interest calculation and every radioactive decay in the syllabus is this one equation with a different letter for 3. (1 answers with the coefficient of dx as though it were unchanged.)",
+          hi: "दोनों पक्षों का समाकलन करने पर ln y = 3x + c मिलता है, अतः y = A e^(3x) और k = 3. ध्यान दो कि हल करने से पहले समीकरण कह क्या रहा था: dy/y, y का भिन्नात्मक परिवर्तन है, अतः समीकरण कहता है कि y, x की प्रति इकाई अपने ही एक नियत अनुपात से बढ़ता है — और ऐसा करने वाला अकेला फलन चरघातांकी है। पाठ्यक्रम का हर जनसंख्या मॉडल, हर चक्रवृद्धि ब्याज की गणना और हर रेडियोधर्मी क्षय यही एक समीकरण है, 3 की जगह अलग अक्षर के साथ। (1 dx के गुणांक से उत्तर देता है मानो वह अपरिवर्तित हो।)",
+          mr: "दोन्ही बाजूंचे समाकलन केल्यास ln y = 3x + c मिळते, म्हणून y = A e^(3x) आणि k = 3. लक्षात घ्या की सोडवण्याआधी समीकरण काय सांगत होते: dy/y हा y चा अपूर्णांकीय बदल आहे, म्हणून समीकरण सांगते की y हा x च्या प्रति एककाला स्वतःच्याच एका निश्चित प्रमाणाने वाढतो — आणि तसे करणारे एकमेव फलन घातांकी आहे. अभ्यासक्रमातील प्रत्येक लोकसंख्या प्रतिरूप, प्रत्येक चक्रवाढ व्याजाची गणना आणि प्रत्येक किरणोत्सारी क्षय हेच एक समीकरण आहे, 3 च्या जागी वेगळे अक्षर घेऊन. (1 dx च्या गुणांकाने उत्तर देते जणू तो अपरिवर्तित असावा.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "How many of these are solutions of dy/dx = y: y = eˣ, y = 3eˣ, y = eˣ + 1?",
+          hi: "इनमें से कितने dy/dx = y के हल हैं: y = eˣ, y = 3eˣ, y = eˣ + 1?",
+          mr: "यांपैकी किती dy/dx = y ची उत्तरे आहेत: y = eˣ, y = 3eˣ, y = eˣ + 1?",
+        },
+        answer: 2,
+        wrong: [3, 1, 0],
+        checkExpr: "3-1",
+        solution: {
+          en: "Two. The first two work — differentiating 3eˣ gives 3eˣ, which is y again. The third fails: its derivative is eˣ but y is eˣ + 1, and those are not equal. This is worth doing because it shows where the arbitrary constant is allowed to sit. For this equation the family is y = A eˣ, with the constant MULTIPLYING; adding a constant instead breaks it. Which position the constant takes is decided by the equation, not by habit, and the reflex of writing '+ C' at the end is exactly what goes wrong here. (3 assumes any modification of a solution is a solution.)",
+          hi: "दो। पहले दो चलते हैं — 3eˣ का अवकलन 3eˣ देता है, जो फिर y ही है। तीसरा विफल है: उसका अवकलज eˣ है पर y है eˣ + 1, और वे बराबर नहीं। यह करने लायक़ है क्योंकि यह दिखाता है कि स्वेच्छ अचर को कहाँ बैठने की अनुमति है। इस समीकरण के लिए कुल y = A eˣ है, जिसमें अचर गुणा कर रहा है; उसके बजाय अचर जोड़ने पर वह टूट जाता है। अचर कौन-सी जगह लेता है यह समीकरण तय करता है, आदत नहीं, और अंत में '+ C' लिख देने की प्रतिवर्ती आदत ही यहाँ ग़लत जाती है। (3 मान लेता है कि हल का कोई भी फेरबदल हल होगा।)",
+          mr: "दोन. पहिली दोन चालतात — 3eˣ चे अवकलन 3eˣ देते, जे पुन्हा y च आहे. तिसरे अपयशी आहे: त्याचा अवकलज eˣ आहे पण y आहे eˣ + 1, आणि ते समान नाहीत. हे करण्याजोगे आहे कारण ते दाखवते की स्वैर अचलाला कुठे बसण्याची परवानगी आहे. या समीकरणासाठी कुळ y = A eˣ आहे, ज्यात अचल गुणत आहे; त्याऐवजी अचल जोडल्यास ते मोडते. अचल कोणती जागा घेतो हे समीकरण ठरवते, सवय नव्हे, आणि शेवटी '+ C' लिहून टाकण्याची प्रतिक्षिप्त सवयच इथे चुकते. (3 गृहीत धरते की उत्तराचा कोणताही फेरफार उत्तर असेल.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "For the linear equation dy/dx + 2y = 6, the integrating factor is e^(kx). What is k?",
+          hi: "रैखिक समीकरण dy/dx + 2y = 6 के लिए समाकलन गुणक e^(kx) है। k क्या है?",
+          mr: "रैखिक समीकरण dy/dx + 2y = 6 साठी समाकलन गुणक e^(kx) आहे. k किती?",
+        },
+        answer: 2,
+        wrong: [6, 3, 1],
+        checkExpr: "6/3",
+        solution: {
+          en: "k = 2, the coefficient of y, so the factor is e^(2x). Why it works is the part worth carrying: multiplying through gives e^(2x) dy/dx + 2e^(2x) y, and that is exactly the derivative of the product e^(2x) y by the product rule. So the integrating factor is not a trick pulled from nowhere — it is whatever function makes the left-hand side collapse into a single derivative, after which both sides can simply be integrated. Recognising the product rule running backwards is the whole method. (6 reads the right-hand side.)",
+          hi: "k = 2, y का गुणांक, अतः गुणक e^(2x) है। यह क्यों चलता है वही हिस्सा साथ ले जाने लायक़ है: पूरे में गुणा करने पर e^(2x) dy/dx + 2e^(2x) y मिलता है, और गुणनफल नियम से वह ठीक गुणनफल e^(2x) y का अवकलज है। अतः समाकलन गुणक कहीं से खींची गई चाल नहीं — वह वही फलन है जो बाएँ पक्ष को एक अकेले अवकलज में ढहा देता है, जिसके बाद दोनों पक्षों का बस समाकलन किया जा सकता है। गुणनफल नियम को उलटा चलते पहचानना ही पूरी विधि है। (6 दायाँ पक्ष पढ़ लेता है।)",
+          mr: "k = 2, y चा गुणांक, म्हणून गुणक e^(2x) आहे. हे का चालते तोच भाग सोबत न्यायला हवा: अख्ख्यात गुणल्यास e^(2x) dy/dx + 2e^(2x) y मिळते, आणि गुणाकार नियमाने तो नेमका गुणाकार e^(2x) y चा अवकलज आहे. म्हणून समाकलन गुणक कुठूनतरी ओढलेली युक्ती नाही — तो तेच फलन आहे जे डावी बाजू एका एकट्या अवकलजात कोसळवते, ज्यानंतर दोन्ही बाजूंचे फक्त समाकलन करता येते. गुणाकार नियम उलटा चालताना ओळखणे हीच अख्खी पद्धत आहे. (6 उजवी बाजू वाचते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A quantity halves every 5 years. After how many years is one-eighth of it left?",
+          hi: "कोई राशि हर 5 वर्ष में आधी हो जाती है। कितने वर्षों बाद उसका आठवाँ हिस्सा बचता है?",
+          mr: "एखादी राशी दर 5 वर्षांनी निम्मी होते. किती वर्षांनंतर तिचा आठवा हिस्सा उरतो?",
+        },
+        answer: 15,
+        wrong: [40, 20, 10],
+        checkExpr: "5*3",
+        solution: {
+          en: "One-eighth is a half three times over, so 3 × 5 = 15 years. The tempting wrong answer is 40, from reasoning that eight times as small should take eight times as long — but decay is multiplicative, not additive, so the right question is how many HALVINGS make an eighth, and the answer is three because 2³ = 8. This is the practical content of the exponential solution: equal times give equal RATIOS rather than equal differences, which is also why half-life is a meaningful constant while 'the time to lose 10 grams' is not. (40 multiplies the time by the factor instead of counting halvings.)",
+          hi: "आठवाँ हिस्सा तीन बार आधा होना है, अतः 3 × 5 = 15 वर्ष। लुभावना ग़लत उत्तर 40 है, इस तर्क से कि आठ गुना छोटा होने में आठ गुना समय लगना चाहिए — पर क्षय गुणात्मक है, योगात्मक नहीं, अतः सही प्रश्न यह है कि कितने आधे होने आठवाँ बनाते हैं, और उत्तर तीन है क्योंकि 2³ = 8. यही चरघातांकी हल की व्यावहारिक सामग्री है: बराबर समय बराबर अनुपात देते हैं, बराबर अंतर नहीं, और इसीलिए अर्ध-आयु सार्थक अचर है जबकि '10 ग्राम खोने का समय' नहीं। (40 आधे होने गिनने के बजाय समय को गुणक से गुणा कर देता है।)",
+          mr: "आठवा हिस्सा म्हणजे तीनदा निम्मे होणे, म्हणून 3 × 5 = 15 वर्षे. मोहक चुकीचे उत्तर 40 आहे, या युक्तिवादाने की आठपट लहान होण्यास आठपट वेळ लागावा — पण क्षय गुणाकारी आहे, बेरजी नाही, म्हणून योग्य प्रश्न हा की किती निम्मे होणी आठवा हिस्सा बनवतात, आणि उत्तर तीन आहे कारण 2³ = 8. हाच घातांकी उत्तराचा व्यावहारिक आशय आहे: समान वेळ समान गुणोत्तरे देतात, समान फरक नव्हे, आणि म्हणूनच अर्ध-आयुष्य अर्थपूर्ण अचल आहे तर '10 ग्रॅम गमावण्याचा वेळ' नाही. (40 निम्मे होणी मोजण्याऐवजी वेळेला गुणकाने गुणते.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Of the equations (dy/dx)² + y = 0, sin(dy/dx) = x and d²y/dx² + y = 0, for how many is the DEGREE defined?",
+          hi: "समीकरणों (dy/dx)² + y = 0, sin(dy/dx) = x और d²y/dx² + y = 0 में से कितनों की घात परिभाषित है?",
+          mr: "(dy/dx)² + y = 0, sin(dy/dx) = x आणि d²y/dx² + y = 0 या समीकरणांपैकी कितींची कोटी परिभाषित आहे?",
+        },
+        answer: 2,
+        wrong: [3, 1, 0],
+        checkExpr: "3-1",
+        solution: {
+          en: "Two — the first and the third. Degree is the power of the highest derivative, and it is defined ONLY when the equation is polynomial in the derivatives: the first has degree 2 and the third degree 1. The middle one buries dy/dx inside a sine, which is not a polynomial in it at any power, so the equation simply has no degree — not degree zero, and not degree one, but no degree at all. The distinction is worth insisting on because 'undefined' and 'zero' are constantly confused, and here the difference is between a quantity that does not apply and a quantity that happens to be small. Order, by contrast, survives all three: every one of them is first or second order, because counting differentiations never needs the equation to be polynomial in anything. (3 assumes every equation has a degree because every equation has an order.)",
+          hi: "दो — पहला और तीसरा। घात उच्चतम अवकलज की घात है, और वह केवल तभी परिभाषित है जब समीकरण अवकलजों में बहुपदीय हो: पहले की घात 2 है और तीसरे की 1. बीच वाला dy/dx को ज्या के भीतर दबा देता है, जो किसी भी घात पर उसमें बहुपद नहीं, अतः उस समीकरण की कोई घात है ही नहीं — शून्य घात नहीं, एक घात नहीं, बल्कि कोई घात नहीं। इस भेद पर ज़ोर देना ज़रूरी है क्योंकि 'अपरिभाषित' और 'शून्य' लगातार गड्डमड्ड होते हैं, और यहाँ फ़र्क़ उस राशि के बीच है जो लागू ही नहीं होती और उस राशि के बीच जो संयोग से छोटी है। कोटि, इसके विपरीत, तीनों में बची रहती है: उनमें से हर एक प्रथम या द्वितीय कोटि का है, क्योंकि अवकलन गिनने के लिए समीकरण का किसी में बहुपदीय होना कभी ज़रूरी नहीं। (3 मान लेता है कि हर समीकरण की घात है क्योंकि हर समीकरण की कोटि है।)",
+          mr: "दोन — पहिले आणि तिसरे. कोटी ही सर्वोच्च अवकलजाची घात आहे, आणि ती केवळ तेव्हाच परिभाषित आहे जेव्हा समीकरण अवकलजांत बहुपदीय असेल: पहिल्याची कोटी 2 आहे आणि तिसऱ्याची 1. मधले dy/dx ला ज्येच्या आत दडवते, जे कोणत्याही घातीवर त्यात बहुपद नाही, म्हणून त्या समीकरणाला कोटीच नाही — शून्य कोटी नाही, एक कोटी नाही, तर कोटीच नाही. या भेदावर आग्रह धरणे आवश्यक आहे कारण 'अपरिभाषित' आणि 'शून्य' सतत गोंधळले जातात, आणि इथे फरक अशा राशीत आहे जी लागूच होत नाही आणि अशा राशीत जी योगायोगाने लहान आहे. कोटी, याउलट, तिन्हींत टिकते: त्यांपैकी प्रत्येक प्रथम वा द्वितीय कोटीचे आहे, कारण अवकलने मोजण्यासाठी समीकरण कशातही बहुपदीय असणे कधीच आवश्यक नाही. (3 गृहीत धरते की प्रत्येक समीकरणाला कोटी आहे कारण प्रत्येक समीकरणाला क्रम आहे.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A population obeys dP/dt = 0.02P. Starting at 1000, roughly how many years pass before it reaches 8000, given that it doubles every 35 years?",
+          hi: "कोई जनसंख्या dP/dt = 0.02P मानती है। 1000 से शुरू होकर 8000 तक पहुँचने में मोटे तौर पर कितने वर्ष लगते हैं, यह देखते हुए कि वह हर 35 वर्ष में दुगनी होती है?",
+          mr: "एक लोकसंख्या dP/dt = 0.02P पाळते. 1000 पासून सुरू होऊन 8000 पर्यंत पोहोचण्यास ढोबळमानाने किती वर्षे लागतात, हे पाहता की ती दर 35 वर्षांनी दुप्पट होते?",
+        },
+        answer: 105,
+        wrong: [280, 70, 140],
+        checkExpr: "35*3",
+        solution: {
+          en: "8000 is 1000 doubled three times, so 3 × 35 = 105 years. What is worth pressing on is what the model claims beyond this. Run it another 350 years and the population is over eight million from the same thousand; run it a few centuries more and it exceeds the mass of the Earth. The arithmetic is impeccable and the conclusion is nonsense, and the fault is not in the solving but in the equation, which says the growth rate is proportional to the population and NOTHING ELSE — no food, no space, no competition. The standard repair is the logistic equation dP/dt = kP(1 − P/M), which behaves like this one while P is small and flattens as P nears the carrying capacity M. The general habit is the point: an unbounded prediction from a model is not a discovery, it is the model announcing the edge of its own validity. (280 multiplies by the growth ratio 8 instead of counting three doublings.)",
+          hi: "8000, 1000 का तीन बार दुगना है, अतः 3 × 35 = 105 वर्ष। दबाव डालने लायक़ यह है कि मॉडल इससे आगे क्या दावा करता है। इसे और 350 वर्ष चलाओ और वही एक हज़ार अस्सी लाख से ऊपर हो जाता है; कुछ सदियाँ और चलाओ और वह पृथ्वी के द्रव्यमान से आगे निकल जाता है। गणित निर्दोष है और निष्कर्ष बकवास, और दोष हल करने में नहीं बल्कि समीकरण में है, जो कहता है कि वृद्धि-दर जनसंख्या के समानुपाती है और और कुछ नहीं — न भोजन, न जगह, न प्रतिस्पर्धा। मानक मरम्मत लॉजिस्टिक समीकरण dP/dt = kP(1 − P/M) है, जो P के छोटे रहने तक इसी की तरह बरतता है और P के धारण-क्षमता M के पास आते ही चपटा हो जाता है। सामान्य आदत ही मुद्दा है: किसी मॉडल की अपरिबद्ध भविष्यवाणी खोज नहीं, वह मॉडल का अपनी ही वैधता की सीमा घोषित करना है। (280 तीन दुगने गिनने के बजाय वृद्धि-अनुपात 8 से गुणा कर देता है।)",
+          mr: "8000 म्हणजे 1000 चे तीनदा दुप्पट, म्हणून 3 × 35 = 105 वर्षे. दाब देण्याजोगे हे की प्रतिरूप यापुढे काय दावा करते. ते आणखी 350 वर्षे चालवा आणि तेच एक हजार ऐंशी लाखांहून वर जाते; आणखी काही शतके चालवा आणि ते पृथ्वीच्या वस्तुमानाहून पुढे जाते. गणित निर्दोष आहे आणि निष्कर्ष मूर्खपणा, आणि दोष सोडवण्यात नसून समीकरणात आहे, जे सांगते की वाढीचा दर लोकसंख्येच्या समप्रमाणात आहे आणि दुसरे काहीच नाही — ना अन्न, ना जागा, ना स्पर्धा. प्रमाण दुरुस्ती लॉजिस्टिक समीकरण dP/dt = kP(1 − P/M) आहे, जे P लहान असेपर्यंत याच्यासारखे वागते आणि P धारणक्षमता M जवळ येताच सपाट होते. सर्वसाधारण सवय हाच मुद्दा आहे: एखाद्या प्रतिरूपाचे अबद्ध भाकीत ही शोध नव्हे, ते प्रतिरूपाने स्वतःच्याच वैधतेची सीमा जाहीर करणे आहे. (280 तीन दुप्पट मोजण्याऐवजी वाढ-गुणोत्तर 8 ने गुणते.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "dy/dx = y^(2/3) with y(0) = 0 has the solutions y = 0 and y = (x/3)³. How many solutions pass through the origin?",
+          hi: "y(0) = 0 के साथ dy/dx = y^(2/3) के हल y = 0 और y = (x/3)³ हैं। मूलबिंदु से कितने हल गुज़रते हैं?",
+          mr: "y(0) = 0 सह dy/dx = y^(2/3) ची उत्तरे y = 0 आणि y = (x/3)³ आहेत. आदिबिंदूतून किती उत्तरे जातात?",
+        },
+        answer: 2,
+        wrong: [1, 0, 3],
+        checkExpr: "1+1",
+        solution: {
+          en: "Two, at least — and in fact infinitely many, since one can sit on y = 0 for any length of time and then depart along a shifted cubic. The question counts the two the stem names, but the failure they demonstrate is the important thing. An initial condition is supposed to pick out ONE curve, and every problem in this chapter has quietly relied on that. Here it does not, and the reason is precise: the existence-and-uniqueness theorem requires the right-hand side to be not merely continuous but Lipschitz in y, and y^(2/3) has an infinite slope at y = 0, so it fails that condition at exactly the point the initial condition names. Two consequences follow. First, uniqueness is a theorem with hypotheses rather than a property of differential equations as such, and the hypotheses are about the equation, not about how carefully one solves it. Second, this is not merely pathological: the same equation describes a leaking tank, and the non-uniqueness is physically honest — from an empty tank, you cannot tell how long it has been empty, so the past is genuinely not determined by the present. A model that forgets its own history is not a broken model; it is a model whose forward direction works and whose backward direction does not. (1 assumes an initial condition always determines a unique solution.)",
+          hi: "कम से कम दो — और असल में अनंत, क्योंकि कोई भी y = 0 पर मनचाहे समय तक बैठकर फिर खिसके हुए घन के साथ रवाना हो सकता है। प्रश्न उन दो को गिनता है जिन्हें कथन नाम देता है, पर वे जो विफलता दिखाते हैं वही महत्वपूर्ण है। प्रारंभिक शर्त से अपेक्षा है कि वह एक वक्र चुने, और इस अध्याय की हर समस्या चुपचाप उसी पर टिकी रही है। यहाँ वह नहीं चुनती, और कारण ठीक-ठीक है: अस्तित्व-और-अद्वितीयता प्रमेय माँगता है कि दायाँ पक्ष केवल संतत नहीं बल्कि y में लिप्शित्ज़ हो, और y^(2/3) की y = 0 पर अनंत ढाल है, अतः वह ठीक उसी बिंदु पर उस शर्त में विफल है जिसे प्रारंभिक शर्त नाम देती है। दो परिणाम निकलते हैं। पहला, अद्वितीयता अवकल समीकरणों का गुण नहीं बल्कि परिकल्पनाओं वाला प्रमेय है, और परिकल्पनाएँ समीकरण के बारे में हैं, इस बारे में नहीं कि कोई कितने ध्यान से हल करता है। दूसरा, यह महज़ विकृति नहीं: वही समीकरण रिसती टंकी का वर्णन करता है, और अनद्वितीयता भौतिक रूप से ईमानदार है — ख़ाली टंकी से तुम बता नहीं सकते कि वह कब से ख़ाली है, अतः अतीत सचमुच वर्तमान से तय नहीं होता। अपना इतिहास भूलने वाला मॉडल टूटा मॉडल नहीं; वह ऐसा मॉडल है जिसकी आगे की दिशा चलती है और पीछे की नहीं। (1 मान लेता है कि प्रारंभिक शर्त सदा अद्वितीय हल तय करती है।)",
+          mr: "किमान दोन — आणि प्रत्यक्षात अनंत, कारण कोणीही y = 0 वर हवा तितका वेळ बसून मग सरकलेल्या घनासोबत निघू शकतो. प्रश्न विधानाने नाव दिलेली ती दोन मोजतो, पण ती जे अपयश दाखवतात तेच महत्त्वाचे आहे. प्रारंभिक अटीकडून अपेक्षा आहे की तिने एक वक्र निवडावा, आणि या अध्यायातील प्रत्येक समस्या गुपचूप त्यावरच टिकली आहे. इथे ती निवडत नाही, आणि कारण नेमके आहे: अस्तित्व-आणि-अद्वितीयता प्रमेय मागते की उजवी बाजू केवळ संतत नव्हे तर y मध्ये लिप्शित्झ असावी, आणि y^(2/3) चा y = 0 वर अनंत उतार आहे, म्हणून ते नेमक्या त्याच बिंदूवर त्या अटीत अपयशी आहे जिला प्रारंभिक अट नाव देते. दोन परिणाम निघतात. पहिला, अद्वितीयता हा अवकल समीकरणांचा गुणधर्म नसून गृहीतके असलेले प्रमेय आहे, आणि गृहीतके समीकरणाबद्दल आहेत, कोणी किती काळजीपूर्वक सोडवतो याबद्दल नाहीत. दुसरा, हे केवळ विकृती नाही: तेच समीकरण गळणाऱ्या टाकीचे वर्णन करते, आणि अनद्वितीयता भौतिक दृष्ट्या प्रामाणिक आहे — रिकाम्या टाकीवरून तुम्ही सांगू शकत नाही की ती किती काळ रिकामी आहे, म्हणून भूतकाळ खरोखर वर्तमानाने ठरत नाही. स्वतःचा इतिहास विसरणारे प्रतिरूप मोडलेले प्रतिरूप नाही; ते असे प्रतिरूप आहे ज्याची पुढची दिशा चालते आणि मागची नाही. (1 गृहीत धरते की प्रारंभिक अट नेहमी अद्वितीय उत्तर ठरवते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "The family y = Ax² is described by the differential equation x dy/dx = 2y. How many arbitrary constants does that equation's general solution contain?",
+          hi: "कुल y = Ax² का वर्णन अवकल समीकरण x dy/dx = 2y करता है। उस समीकरण के व्यापक हल में कितने स्वेच्छ अचर हैं?",
+          mr: "कुळ y = Ax² चे वर्णन अवकल समीकरण x dy/dx = 2y करते. त्या समीकरणाच्या व्यापक उत्तरात किती स्वैर अचल आहेत?",
+        },
+        answer: 1,
+        wrong: [2, 0, 3],
+        checkExpr: "2-1",
+        solution: {
+          en: "One, matching the single A in the family — and that match is the whole content of the question. Forming a differential equation from a family and solving one to get a family are inverse operations, and the count of constants is what has to line up between them. The procedure follows directly: to eliminate n constants you differentiate n times and use the resulting equations to remove them, which is why a family with one parameter yields a first-order equation and a family with two yields a second-order one. Here, differentiating y = Ax² gives dy/dx = 2Ax, and dividing to cancel A leaves x dy/dx = 2y with no A anywhere. Note what the elimination has achieved: the equation describes the family WITHOUT naming the parameter, which is exactly what makes it useful in physics — one writes down the local rule a system obeys, and the constants that the rule cannot determine are precisely the ones an experiment has to supply. (2 supposes that a second-degree curve needs a second-order equation, confusing the degree of x with the order of differentiation.)",
+          hi: "एक, कुल के अकेले A से मेल खाता — और वही मेल प्रश्न की पूरी सामग्री है। किसी कुल से अवकल समीकरण बनाना और किसी समीकरण को हल करके कुल पाना प्रतिलोम संक्रियाएँ हैं, और अचरों की गिनती ही वह है जिसे उनके बीच मिलना है। प्रक्रिया सीधे निकलती है: n अचर हटाने के लिए n बार अवकलन करो और मिलने वाले समीकरणों से उन्हें निकाल दो, इसीलिए एक प्राचल वाला कुल प्रथम कोटि का समीकरण देता है और दो प्राचल वाला द्वितीय कोटि का। यहाँ, y = Ax² का अवकलन dy/dx = 2Ax देता है, और A काटने के लिए भाग देने पर x dy/dx = 2y बचता है, जिसमें A कहीं नहीं। ध्यान दो कि उन्मूलन ने क्या हासिल किया: समीकरण कुल का वर्णन प्राचल का नाम लिए बिना करता है, और ठीक यही उसे भौतिकी में उपयोगी बनाता है — कोई वह स्थानीय नियम लिख देता है जिसे तंत्र मानता है, और जिन अचरों को नियम तय नहीं कर सकता वे ठीक वही हैं जो प्रयोग को देने पड़ते हैं। (2 मान लेता है कि द्वितीय घात के वक्र को द्वितीय कोटि का समीकरण चाहिए, x की घात को अवकलन की कोटि से गड्डमड्ड करते हुए।)",
+          mr: "एक, कुळातील एकट्या A शी जुळणारा — आणि तीच जुळणी प्रश्नाचा अख्खा आशय आहे. एखाद्या कुळातून अवकल समीकरण बनवणे आणि एखादे समीकरण सोडवून कुळ मिळवणे या व्यस्त क्रिया आहेत, आणि अचलांची मोजणी हीच त्यांच्यात जुळावी लागते. प्रक्रिया थेट निघते: n अचल काढण्यासाठी n वेळा अवकलन करा आणि मिळणाऱ्या समीकरणांतून ते काढून टाका, म्हणूनच एक प्राचल असलेले कुळ प्रथम कोटीचे समीकरण देते आणि दोन प्राचल असलेले द्वितीय कोटीचे. इथे, y = Ax² चे अवकलन dy/dx = 2Ax देते, आणि A रद्द करण्यासाठी भागल्यास x dy/dx = 2y उरते, ज्यात A कुठेच नाही. लक्षात घ्या की निर्मूलनाने काय साधले: समीकरण कुळाचे वर्णन प्राचलाचे नाव न घेता करते, आणि नेमके तेच त्याला भौतिकशास्त्रात उपयुक्त बनवते — कोणी तो स्थानिक नियम लिहून टाकतो जो प्रणाली पाळते, आणि जे अचल नियम ठरवू शकत नाही ते नेमके तेच आहेत जे प्रयोगाला पुरवावे लागतात. (2 गृहीत धरते की द्वितीय घातीच्या वक्राला द्वितीय कोटीचे समीकरण लागते, x ची घात अवकलनाच्या कोटीशी गोंधळवत.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "dy/dx = 1 + y² with y(0) = 0 has solution y = tan x. The right-hand side is defined and smooth for every real y. On the interval [0, 2], for how many values of x does the solution exist?",
+          hi: "y(0) = 0 के साथ dy/dx = 1 + y² का हल y = tan x है। दायाँ पक्ष हर वास्तविक y के लिए परिभाषित और चिकना है। अंतराल [0, 2] पर x के कितने मानों के लिए हल अस्तित्व में है?",
+          mr: "y(0) = 0 सह dy/dx = 1 + y² चे उत्तर y = tan x आहे. उजवी बाजू प्रत्येक वास्तव y साठी परिभाषित आणि गुळगुळीत आहे. अंतराल [0, 2] वर x च्या किती मूल्यांसाठी उत्तर अस्तित्वात आहे?",
+        },
+        answer: 0,
+        wrong: [1, 2, 3],
+        checkExpr: "1-1",
+        solution: {
+          en: "None — not for all of them, which is what the question asks. tan x blows up at π/2 ≈ 1.571, which lies inside [0, 2], so no solution exists on the whole interval and the count of intervals of that description is 0. The situation is worth sitting with, because everything about the equation looks benign. The right-hand side 1 + y² is a polynomial: continuous everywhere, differentiable everywhere, Lipschitz on every bounded region. The existence-and-uniqueness theorem applies in full and promises a unique solution — but only LOCALLY, on some interval around the starting point, and it never says how long that interval is. Here it is π/2 wide and then the solution is simply gone, having run off to infinity in finite x. This is called blow-up in finite time, and the mechanism is a feedback that strengthens itself: the larger y becomes the faster it grows, because the growth rate depends on y², so the escape accelerates and completes in bounded time rather than approaching infinity asymptotically. Two things follow. The first is a correction to a natural but wrong reading of the theorem — 'the solution exists' does not mean 'the solution exists for as long as you like', and the two are routinely conflated because in the tidy examples they coincide. The second is that nothing in the equation's appearance warns of this. One cannot tell by inspection how far a solution will reach; that is a separate question requiring separate work, and equations of exactly this shape describe real runaway processes, from certain chemical reactions to structural collapse, where the finite-time singularity is the physically meaningful prediction and not an artefact. (1 assumes that a well-behaved right-hand side guarantees a solution everywhere.)",
+          hi: "कोई नहीं — उन सब के लिए नहीं, और प्रश्न यही पूछता है। tan x, π/2 ≈ 1.571 पर फट जाता है, जो [0, 2] के भीतर है, अतः पूरे अंतराल पर कोई हल नहीं है और उस वर्णन वाले अंतरालों की गिनती 0 है। इस स्थिति के साथ ठहरना ज़रूरी है, क्योंकि समीकरण के बारे में सब कुछ सौम्य दिखता है। दायाँ पक्ष 1 + y² बहुपद है: हर जगह संतत, हर जगह अवकलनीय, हर परिबद्ध क्षेत्र पर लिप्शित्ज़। अस्तित्व-और-अद्वितीयता प्रमेय पूरी तरह लागू होता है और अद्वितीय हल का वादा करता है — पर केवल स्थानीय रूप से, शुरुआती बिंदु के आसपास किसी अंतराल पर, और वह कभी नहीं कहता कि वह अंतराल कितना लंबा है। यहाँ वह π/2 चौड़ा है और फिर हल बस चला गया, परिमित x में अनंत की ओर भाग जाकर। इसे परिमित समय में विस्फोट कहते हैं, और क्रियाविधि है ख़ुद को मज़बूत करती प्रतिपुष्टि: y जितना बड़ा होता जाए उतना तेज़ बढ़ता है, क्योंकि वृद्धि-दर y² पर निर्भर है, अतः पलायन त्वरित होता है और अनंत की ओर स्पर्शोन्मुख पहुँचने के बजाय परिबद्ध समय में पूरा हो जाता है। दो बातें निकलती हैं। पहली, प्रमेय के एक स्वाभाविक पर ग़लत पाठ का सुधार — 'हल अस्तित्व में है' का अर्थ 'हल जितनी देर तुम चाहो उतनी देर अस्तित्व में है' नहीं, और दोनों नियमित रूप से मिला दिए जाते हैं क्योंकि सुथरे उदाहरणों में वे एक हो जाते हैं। दूसरी, समीकरण की शक्ल में कुछ भी इसकी चेतावनी नहीं देता। देखकर नहीं बताया जा सकता कि हल कहाँ तक पहुँचेगा; वह अलग प्रश्न है जिसे अलग काम चाहिए, और ठीक इसी आकार के समीकरण असली अनियंत्रित प्रक्रियाओं का वर्णन करते हैं, कुछ रासायनिक अभिक्रियाओं से लेकर संरचनात्मक ढहान तक, जहाँ परिमित-समय की विचित्रता भौतिक रूप से सार्थक भविष्यवाणी है, कोई कृत्रिम उपज नहीं। (1 मान लेता है कि सुव्यवहृत दायाँ पक्ष हर जगह हल की गारंटी देता है।)",
+          mr: "एकही नाही — त्या सर्वांसाठी नाही, आणि प्रश्न हेच विचारतो. tan x हा π/2 ≈ 1.571 वर फुटतो, जो [0, 2] च्या आत आहे, म्हणून अख्ख्या अंतरालावर कोणतेही उत्तर नाही आणि त्या वर्णनाच्या अंतरालांची मोजणी 0 आहे. या परिस्थितीसोबत थांबणे आवश्यक आहे, कारण समीकरणाबद्दल सर्वकाही सौम्य दिसते. उजवी बाजू 1 + y² बहुपदी आहे: सर्वत्र संतत, सर्वत्र अवकलनीय, प्रत्येक बद्ध प्रदेशावर लिप्शित्झ. अस्तित्व-आणि-अद्वितीयता प्रमेय पूर्णपणे लागू होते आणि अद्वितीय उत्तराचे वचन देते — पण केवळ स्थानिकरीत्या, सुरुवातीच्या बिंदूभोवती एखाद्या अंतरालावर, आणि ते कधीच सांगत नाही की ते अंतराल किती लांब आहे. इथे ते π/2 रुंद आहे आणि मग उत्तर फक्त निघून गेले, सांत x मध्ये अनंताकडे पळून जाऊन. याला सांत काळात स्फोट म्हणतात, आणि कार्यपद्धती आहे स्वतःला बळकट करणारी प्रतिपुष्टी: y जितका मोठा होईल तितका वेगाने वाढतो, कारण वाढीचा दर y² वर अवलंबून आहे, म्हणून पलायन त्वरित होते आणि अनंताकडे अनंतस्पर्शी पोहोचण्याऐवजी बद्ध काळात पूर्ण होते. दोन गोष्टी निघतात. पहिली, प्रमेयाच्या एका नैसर्गिक पण चुकीच्या वाचनाची दुरुस्ती — 'उत्तर अस्तित्वात आहे' चा अर्थ 'उत्तर तुम्हाला हवे तितका वेळ अस्तित्वात आहे' नव्हे, आणि दोन्ही नियमितपणे एकत्र केले जातात कारण नीटनेटक्या उदाहरणांत ते एकरूप होतात. दुसरी, समीकरणाच्या रूपात काहीही याचा इशारा देत नाही. पाहून सांगता येत नाही की उत्तर कुठवर पोहोचेल; तो वेगळा प्रश्न आहे ज्याला वेगळे काम लागते, आणि नेमक्या याच आकाराची समीकरणे खऱ्या अनियंत्रित प्रक्रियांचे वर्णन करतात, काही रासायनिक अभिक्रियांपासून संरचनात्मक कोसळण्यापर्यंत, जिथे सांत-काळाची विचित्रता भौतिक दृष्ट्या अर्थपूर्ण भाकीत आहे, कोणतीही कृत्रिम निर्मिती नाही. (1 गृहीत धरते की सुव्यवस्थित उजवी बाजू सर्वत्र उत्तराची हमी देते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Of the equations dy/dx = y, dy/dx = y + x and dy/dx = y², how many have the property that the sum of any two solutions is also a solution?",
+          hi: "समीकरणों dy/dx = y, dy/dx = y + x और dy/dx = y² में से कितनों में यह गुण है कि किन्हीं दो हलों का योग भी हल है?",
+          mr: "dy/dx = y, dy/dx = y + x आणि dy/dx = y² या समीकरणांपैकी कितींत हा गुणधर्म आहे की कोणत्याही दोन उत्तरांची बेरीज हेही उत्तर आहे?",
+        },
+        answer: 1,
+        wrong: [2, 3, 0],
+        checkExpr: "2-1",
+        solution: {
+          en: "One — the first, and only the first. Check each. For dy/dx = y, if u and v are solutions then (u + v)' = u' + v' = u + v, so the sum works. For dy/dx = y + x, the sum gives (u + v)' = u + v + 2x, but a solution would need u + v + x, so it fails by exactly the x that got counted twice. For dy/dx = y², the sum gives u² + v² whereas a solution needs (u + v)², and those differ by 2uv. So only the homogeneous linear equation has the property, and each failure fails in its own instructive way. This is the principle of superposition, and it is the reason linear differential equations are the ones physics can actually solve. When it holds, the solution set is a VECTOR SPACE: find enough independent solutions and every other one is a combination of them, which is what makes the whole apparatus of characteristic equations, complementary functions and Fourier series work at all. Notice that the second equation fails only because of the x — its homogeneous part is fine, which is why the standard method splits such an equation into a complementary function plus one particular solution, superposing within the homogeneous part and bolting the rest on separately. The third failure is different in kind and cannot be patched: nonlinearity destroys superposition outright, there is no decomposition to retreat to, and this is the honest reason turbulence, weather and the three-body problem resist solution while circuits and springs do not. The dividing line in the subject is not difficulty of arithmetic but whether solutions may be added. (2 counts the affine equation as linear, which it is in name but not in the sense superposition requires.)",
+          hi: "एक — पहला, और केवल पहला। हर एक जाँचो। dy/dx = y के लिए, यदि u और v हल हैं तो (u + v)' = u' + v' = u + v, अतः योग चलता है। dy/dx = y + x के लिए, योग देता है (u + v)' = u + v + 2x, पर हल को u + v + x चाहिए, अतः वह ठीक उसी x से विफल है जो दो बार गिन लिया गया। dy/dx = y² के लिए, योग देता है u² + v² जबकि हल को (u + v)² चाहिए, और वे 2uv से भिन्न हैं। अतः केवल समघातीय रैखिक समीकरण में यह गुण है, और हर विफलता अपने ही शिक्षाप्रद ढंग से विफल होती है। यह अध्यारोपण का सिद्धांत है, और यही कारण है कि रैखिक अवकल समीकरण वही हैं जिन्हें भौतिकी सचमुच हल कर पाती है। जब यह लागू हो, हल-समुच्चय एक सदिश समष्टि होता है: पर्याप्त स्वतंत्र हल ढूँढ़ो और हर दूसरा उनका संयोजन है, और यही अभिलाक्षणिक समीकरणों, पूरक फलनों और फ़ूरिये श्रेणी के पूरे तंत्र को चलाता है। ध्यान दो कि दूसरा समीकरण केवल x के कारण विफल होता है — उसका समघातीय भाग ठीक है, इसीलिए मानक विधि ऐसे समीकरण को पूरक फलन और एक विशिष्ट हल में बाँट देती है, समघातीय भाग के भीतर अध्यारोपण करती है और बाक़ी को अलग से जोड़ देती है। तीसरी विफलता क़िस्म में भिन्न है और उसकी मरम्मत नहीं हो सकती: अरैखिकता अध्यारोपण को सीधे नष्ट कर देती है, पीछे हटने को कोई विघटन नहीं, और यही ईमानदार कारण है कि प्रक्षोभ, मौसम और त्रि-पिंड समस्या हल का विरोध करते हैं जबकि परिपथ और स्प्रिंग नहीं। विषय की विभाजक रेखा गणित की कठिनाई नहीं बल्कि यह है कि हलों को जोड़ा जा सकता है या नहीं। (2 सजातीय-नहीं रैखिक समीकरण को रैखिक गिन लेता है, जो वह नाम से है पर उस अर्थ में नहीं जो अध्यारोपण माँगता है।)",
+          mr: "एक — पहिले, आणि फक्त पहिलेच. प्रत्येक तपासा. dy/dx = y साठी, जर u आणि v उत्तरे असतील तर (u + v)' = u' + v' = u + v, म्हणून बेरीज चालते. dy/dx = y + x साठी, बेरीज देते (u + v)' = u + v + 2x, पण उत्तराला u + v + x लागेल, म्हणून ते नेमक्या त्याच x ने अपयशी आहे जो दोनदा मोजला गेला. dy/dx = y² साठी, बेरीज देते u² + v² तर उत्तराला (u + v)² लागते, आणि ते 2uv ने वेगळे आहेत. म्हणून केवळ समघाती रैखिक समीकरणात हा गुणधर्म आहे, आणि प्रत्येक अपयश स्वतःच्याच बोधप्रद पद्धतीने अपयशी होते. हे अध्यारोपणाचे तत्त्व आहे, आणि हेच कारण आहे की रैखिक अवकल समीकरणे तीच आहेत जी भौतिकशास्त्र खरोखर सोडवू शकते. जेव्हा हे लागू होते, उत्तर-संच एक सदिश अवकाश असतो: पुरेशी स्वतंत्र उत्तरे शोधा आणि इतर प्रत्येक त्यांचे संयोजन आहे, आणि हेच अभिलाक्षणिक समीकरणे, पूरक फलने आणि फूरिये श्रेणी यांचे अख्खे यंत्र चालवते. लक्षात घ्या की दुसरे समीकरण केवळ x मुळे अपयशी होते — त्याचा समघाती भाग ठीक आहे, म्हणूनच प्रमाण पद्धत असे समीकरण पूरक फलन आणि एक विशिष्ट उत्तर यांत विभागते, समघाती भागाच्या आत अध्यारोपण करते आणि उरलेले वेगळे जोडते. तिसरे अपयश प्रकारात वेगळे आहे आणि त्याची दुरुस्ती होऊ शकत नाही: अरैखिकता अध्यारोपणाला थेट नष्ट करते, मागे हटण्यासाठी कोणतेही विघटन नाही, आणि हेच प्रामाणिक कारण आहे की क्षोभ, हवामान आणि त्रि-पिंड समस्या उत्तराला विरोध करतात तर परिपथ आणि स्प्रिंग नाहीत. विषयातील विभाजक रेषा गणिताची अवघडता नसून उत्तरे जोडता येतात का ही आहे. (2 सजातीय-नसलेल्या रैखिक समीकरणाला रैखिक मोजते, जे ते नावाने आहे पण अध्यारोपण मागत असलेल्या अर्थाने नाही.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-12-differential-equations",
+      subject: "MATHS",
+      classLevel: 12,
+      chapter: "Chapter 9 — Differential Equations",
+      name: "Differential Equations",
+      summary:
+        "An equation whose unknown is a whole curve rather than a number: why the count of arbitrary constants must match the order, why degree is undefined rather than zero when a derivative sits inside a sine, why an initial condition usually picks one solution and occasionally picks infinitely many, why a perfectly well-behaved equation can lose its solution at a finite x, and why only the linear ones let two solutions be added.",
+      position: 9,
+      translations: {
+        hi: {
+          name: "अवकल समीकरण",
+          summary:
+            "ऐसा समीकरण जिसका अज्ञात कोई संख्या नहीं बल्कि पूरा वक्र है: स्वेच्छ अचरों की गिनती कोटि से क्यों मिलनी चाहिए, अवकलज के ज्या के भीतर बैठने पर घात शून्य क्यों नहीं बल्कि अपरिभाषित होती है, प्रारंभिक शर्त आम तौर पर एक हल क्यों चुनती है और कभी-कभी अनंत, बिलकुल सुव्यवहृत समीकरण अपना हल किसी परिमित x पर क्यों खो सकता है, और केवल रैखिक समीकरण ही दो हलों को जोड़ने क्यों देते हैं।",
+        },
+        mr: {
+          name: "अवकल समीकरणे",
+          summary:
+            "असे समीकरण ज्याचा अज्ञात संख्या नसून अख्खा वक्र आहे: स्वैर अचलांची मोजणी कोटीशी का जुळावी लागते, अवकलज ज्येच्या आत बसल्यास कोटी शून्य नव्हे तर अपरिभाषित का असते, प्रारंभिक अट सर्वसाधारणपणे एक उत्तर का निवडते आणि कधीकधी अनंत, अगदी सुव्यवस्थित समीकरण आपले उत्तर एखाद्या सांत x वर का गमावू शकते, आणि केवळ रैखिक समीकरणेच दोन उत्तरे जोडू का देतात.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 10 — Vector Algebra (two products that detect opposite things)     */
+/* ------------------------------------------------------------------------- */
+function vectorAlgebra12(): TopicFileOut {
+  const rand = rng("maths-12-vector-algebra");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the magnitude of the vector 3i + 4j?",
+          hi: "सदिश 3i + 4j का परिमाण क्या है?",
+          mr: "सदिश 3i + 4j चे परिमाण किती?",
+        },
+        answer: 5,
+        wrong: [7, 12, 25],
+        checkExpr: "25^0.5",
+        solution: {
+          en: "√(3² + 4²) = √25 = 5. Magnitude is Pythagoras applied to the components, and 7 is the answer of somebody who added them — which would be the distance walked along the axes rather than the straight-line length. The whole reason for using vectors is that the straight line and the walk are different things. (25 stops before taking the root.)",
+          hi: "√(3² + 4²) = √25 = 5. परिमाण घटकों पर लगाया गया पाइथागोरस है, और 7 उसका उत्तर है जिसने उन्हें जोड़ दिया — जो अक्षों के साथ चली गई दूरी होती, सरल-रेखीय लंबाई नहीं। सदिश बरतने का पूरा कारण ही यह है कि सरल रेखा और चाल अलग चीज़ें हैं। (25 मूल लेने से पहले रुक जाता है।)",
+          mr: "√(3² + 4²) = √25 = 5. परिमाण म्हणजे घटकांवर लावलेला पायथागोरस, आणि 7 हे त्याचे उत्तर आहे ज्याने ते जोडले — जे अक्षांसोबत चाललेले अंतर असते, सरळ-रेषीय लांबी नव्हे. सदिश वापरण्याचे अख्खे कारणच हे आहे की सरळ रेषा आणि चाल वेगळ्या गोष्टी आहेत. (25 मूळ घेण्याआधी थांबते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "What is the dot product of i + 2j and 3i + 4j?",
+          hi: "i + 2j और 3i + 4j का अदिश गुणनफल क्या है?",
+          mr: "i + 2j आणि 3i + 4j यांचा अदिश गुणाकार किती?",
+        },
+        answer: 11,
+        wrong: [7, 10, 3],
+        checkExpr: "1*3+2*4",
+        solution: {
+          en: "1 × 3 + 2 × 4 = 3 + 8 = 11. Multiply matching components and add. Note that the result is a plain number with no direction attached, which is why it is called the scalar product — two vectors have gone in and something of a different kind has come out. (7 multiplies the first components and adds the second, mixing the two operations.)",
+          hi: "1 × 3 + 2 × 4 = 3 + 8 = 11. मेल खाते घटक गुणा करो और जोड़ो। ध्यान दो कि परिणाम बिना किसी दिशा वाली सादी संख्या है, इसीलिए उसे अदिश गुणनफल कहते हैं — दो सदिश भीतर गए और भिन्न क़िस्म की चीज़ बाहर आई। (7 पहले घटकों को गुणा करता है और दूसरों को जोड़ देता है, दोनों संक्रियाएँ मिला देते हुए।)",
+          mr: "1 × 3 + 2 × 4 = 3 + 8 = 11. जुळणारे घटक गुणा आणि जोडा. लक्षात घ्या की निकाल कोणतीही दिशा नसलेली साधी संख्या आहे, म्हणूनच त्याला अदिश गुणाकार म्हणतात — दोन सदिश आत गेले आणि वेगळ्या प्रकारची गोष्ट बाहेर आली. (7 पहिले घटक गुणते आणि दुसरे जोडते, दोन्ही क्रिया मिसळत.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many components does a vector in three-dimensional space have?",
+          hi: "त्रिविमीय समष्टि में किसी सदिश के कितने घटक होते हैं?",
+          mr: "त्रिमितीय अवकाशातील एका सदिशाचे किती घटक असतात?",
+        },
+        answer: 3,
+        wrong: [2, 1, 6],
+        checkExpr: "1+2",
+        solution: {
+          en: "Three — one along each of i, j and k. The count of components is the dimension of the space and nothing to do with the vector's own length, which is a single number however many components produced it. Keeping those two apart is the first step: 3i + 4j has three characters, two components and magnitude 5. (6 counts the symbols rather than the directions.)",
+          hi: "तीन — i, j और k हर एक के साथ एक। घटकों की गिनती समष्टि की विमा है और सदिश की अपनी लंबाई से उसका कोई लेना-देना नहीं, जो चाहे कितने भी घटकों से बनी हो एक अकेली संख्या है। इन दोनों को अलग रखना पहला क़दम है: 3i + 4j में तीन चिह्न हैं, दो घटक और परिमाण 5. (6 दिशाओं के बजाय संकेत गिन लेता है।)",
+          mr: "तीन — i, j आणि k प्रत्येकासोबत एक. घटकांची मोजणी ही अवकाशाची मिती आहे आणि सदिशाच्या स्वतःच्या लांबीशी तिचा काहीच संबंध नाही, जी कितीही घटकांतून बनलेली असो एकच संख्या आहे. या दोघांना वेगळे ठेवणे हे पहिले पाऊल आहे: 3i + 4j मध्ये तीन चिन्हे आहेत, दोन घटक आणि परिमाण 5. (6 दिशांऐवजी चिन्हे मोजते.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Two vectors are perpendicular. What is their dot product?",
+          hi: "दो सदिश लंबवत हैं। उनका अदिश गुणनफल क्या है?",
+          mr: "दोन सदिश लंब आहेत. त्यांचा अदिश गुणाकार किती?",
+        },
+        answer: 0,
+        wrong: [1, 2, 90],
+        checkExpr: "1-1",
+        solution: {
+          en: "Zero, because a·b = |a||b| cos θ and cos 90° = 0. This is the dot product's real job: it is a detector of perpendicularity, and it answers the question with a single number rather than with any construction. The 90 on offer is the angle, not the product, and reaching for it is the standard confusion between what was asked about and what was asked for. (90 gives the angle in degrees.)",
+          hi: "शून्य, क्योंकि a·b = |a||b| cos θ और cos 90° = 0. यही अदिश गुणनफल का असली काम है: वह लंबवतता का संसूचक है, और प्रश्न का उत्तर किसी रचना से नहीं बल्कि एक अकेली संख्या से देता है। पेश किया गया 90 कोण है, गुणनफल नहीं, और उसकी ओर बढ़ना उस मानक भ्रम का हिस्सा है कि किस बारे में पूछा गया और क्या पूछा गया। (90 डिग्री में कोण देता है।)",
+          mr: "शून्य, कारण a·b = |a||b| cos θ आणि cos 90° = 0. हेच अदिश गुणाकाराचे खरे काम आहे: तो लंबतेचा संसूचक आहे, आणि प्रश्नाचे उत्तर कोणत्याही रचनेने नव्हे तर एका एकट्या संख्येने देतो. दिलेला 90 हा कोन आहे, गुणाकार नव्हे, आणि त्याकडे वळणे हा कशाबद्दल विचारले आणि काय विचारले या प्रमाण गोंधळाचा भाग आहे. (90 अंशांत कोन देते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "The cross product of two parallel vectors has what magnitude?",
+          hi: "दो समांतर सदिशों के सदिश गुणनफल का परिमाण क्या है?",
+          mr: "दोन समांतर सदिशांच्या सदिश गुणाकाराचे परिमाण किती?",
+        },
+        answer: 0,
+        wrong: [1, 2, 180],
+        checkExpr: "2-2",
+        solution: {
+          en: "Zero, since |a × b| = |a||b| sin θ and sin 0° = 0. Put beside the previous question this is the pattern worth holding: BOTH products vanish, and they vanish in opposite circumstances. The dot product is zero when the vectors are perpendicular; the cross product is zero when they are parallel. So a vanishing product tells you something definite, but which thing depends entirely on which product you computed, and mixing them up inverts the conclusion. (180 gives an angle again.)",
+          hi: "शून्य, क्योंकि |a × b| = |a||b| sin θ और sin 0° = 0. पिछले प्रश्न के साथ रखकर यही वह पैटर्न है जो पकड़ने लायक़ है: दोनों गुणनफल लुप्त होते हैं, और वे विपरीत परिस्थितियों में लुप्त होते हैं। अदिश गुणनफल तब शून्य है जब सदिश लंबवत हों; सदिश गुणनफल तब शून्य है जब वे समांतर हों। अतः लुप्त होता गुणनफल कुछ निश्चित बताता है, पर कौन-सी बात यह पूरी तरह इस पर निर्भर है कि तुमने कौन-सा गुणनफल निकाला, और उन्हें मिला देने से निष्कर्ष उलट जाता है। (180 फिर कोण देता है।)",
+          mr: "शून्य, कारण |a × b| = |a||b| sin θ आणि sin 0° = 0. मागील प्रश्नासोबत ठेवल्यास हाच तो साचा आहे जो धरण्याजोगा आहे: दोन्ही गुणाकार लोप पावतात, आणि ते विरुद्ध परिस्थितीत लोप पावतात. अदिश गुणाकार तेव्हा शून्य आहे जेव्हा सदिश लंब असतील; सदिश गुणाकार तेव्हा शून्य आहे जेव्हा ते समांतर असतील. म्हणून लोप पावणारा गुणाकार काहीतरी निश्चित सांगतो, पण कोणती गोष्ट हे पूर्णपणे तुम्ही कोणता गुणाकार काढला यावर अवलंबून आहे, आणि ते मिसळल्याने निष्कर्ष उलटतो. (180 पुन्हा कोन देते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A unit vector has what magnitude?",
+          hi: "एकक सदिश का परिमाण क्या है?",
+          mr: "एकक सदिशाचे परिमाण किती?",
+        },
+        answer: 1,
+        wrong: [0, 3, 2],
+        checkExpr: "2-1",
+        solution: {
+          en: "1, by definition — that is what the word 'unit' is doing. Dividing any non-zero vector by its own magnitude produces one, which is how a direction gets separated from a length. That separation is worth naming: a vector carries two pieces of information, and the unit vector is the half of it that survives when the size is thrown away. (0 confuses the unit vector with the zero vector, which is the one vector that has no direction at all.)",
+          hi: "1, परिभाषा से — 'एकक' शब्द यही कर रहा है। किसी भी अशून्य सदिश को उसके अपने परिमाण से भाग देने पर एक बनता है, और इसी तरह दिशा लंबाई से अलग होती है। उस अलगाव को नाम देना ज़रूरी है: सदिश दो जानकारियाँ ढोता है, और एकक सदिश उसका वह आधा है जो आकार फेंक देने पर बचता है। (0 एकक सदिश को शून्य सदिश से गड्डमड्ड करता है, जो वह अकेला सदिश है जिसकी कोई दिशा ही नहीं।)",
+          mr: "1, व्याख्येनुसार — 'एकक' हा शब्द हेच करत आहे. कोणत्याही अशून्य सदिशाला त्याच्या स्वतःच्या परिमाणाने भागल्यास एक बनतो, आणि याच रीतीने दिशा लांबीपासून वेगळी होते. त्या वेगळेपणाला नाव देणे आवश्यक आहे: सदिश दोन माहिती वाहतो, आणि एकक सदिश हा त्याचा तो अर्धा भाग आहे जो आकार फेकून दिल्यावर उरतो. (0 एकक सदिशाला शून्य सदिशाशी गोंधळवते, जो तो एकमेव सदिश आहे ज्याला दिशाच नाही.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "What is the magnitude of the cross product of i and j?",
+          hi: "i और j के सदिश गुणनफल का परिमाण क्या है?",
+          mr: "i आणि j यांच्या सदिश गुणाकाराचे परिमाण किती?",
+        },
+        answer: 1,
+        wrong: [0, 2, 3],
+        checkExpr: "1*1",
+        solution: {
+          en: "1 — the product is k, which is a unit vector. The magnitude 1 × 1 × sin 90° = 1 is also the area of the square the two vectors span, and that is the geometric meaning worth carrying: the length of a cross product is the AREA of the parallelogram built on the two vectors. So a cross product encodes an area in its size and an orientation in its direction, which is a lot of information for one object and the reason it exists. (0 confuses this with the parallel case.)",
+          hi: "1 — गुणनफल k है, जो एकक सदिश है। परिमाण 1 × 1 × sin 90° = 1 उस वर्ग का क्षेत्रफल भी है जिसे दोनों सदिश फैलाते हैं, और यही ज्यामितीय अर्थ साथ ले जाने लायक़ है: सदिश गुणनफल की लंबाई दोनों सदिशों पर बने समांतर चतुर्भुज का क्षेत्रफल है। अतः सदिश गुणनफल अपने आकार में क्षेत्रफल और अपनी दिशा में अभिविन्यास संजोता है, जो एक वस्तु के लिए काफ़ी जानकारी है और उसके होने का कारण। (0 इसे समांतर वाले मामले से गड्डमड्ड करता है।)",
+          mr: "1 — गुणाकार k आहे, जो एकक सदिश आहे. परिमाण 1 × 1 × sin 90° = 1 हे त्या चौरसाचे क्षेत्रफळही आहे जो दोन्ही सदिश पसरवतात, आणि हाच भूमितीय अर्थ सोबत न्यायला हवा: सदिश गुणाकाराची लांबी म्हणजे दोन्ही सदिशांवर बांधलेल्या समांतरभुज चौकोनाचे क्षेत्रफळ. म्हणून सदिश गुणाकार आपल्या आकारात क्षेत्रफळ आणि आपल्या दिशेत अभिमुखता साठवतो, जी एका वस्तूसाठी पुष्कळ माहिती आहे आणि त्याच्या असण्याचे कारण. (0 याला समांतर प्रसंगाशी गोंधळवते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "The projection of a on b is (a·b)/|b|. For a = 3i + 4j and b = i, what is it?",
+          hi: "b पर a का प्रक्षेप (a·b)/|b| है। a = 3i + 4j और b = i के लिए वह क्या है?",
+          mr: "b वर a चा प्रक्षेप (a·b)/|b| आहे. a = 3i + 4j आणि b = i साठी तो किती?",
+        },
+        answer: 3,
+        wrong: [4, 5, 7],
+        checkExpr: "3/1",
+        solution: {
+          en: "a·b = 3 and |b| = 1, so the projection is 3 — which is exactly a's i-component, as it must be, since projecting onto i is asking how far along i the vector reaches. The check is worth doing because it shows what the dot product is really measuring: how much of one vector lies along another. Perpendicularity giving zero then stops being a formula and becomes obvious — none of a perpendicular vector lies along you. (5 gives the magnitude of a, which is its full length rather than its shadow.)",
+          hi: "a·b = 3 और |b| = 1, अतः प्रक्षेप 3 है — जो ठीक a का i-घटक है, और होना ही चाहिए, क्योंकि i पर प्रक्षेपण यही पूछना है कि सदिश i के साथ कितनी दूर पहुँचता है। यह जाँच करने लायक़ है क्योंकि वह दिखाती है कि अदिश गुणनफल असल में क्या माप रहा है: एक सदिश का कितना हिस्सा दूसरे के साथ पड़ा है। तब लंबवतता का शून्य देना सूत्र नहीं रह जाता, स्पष्ट हो जाता है — लंबवत सदिश का कोई हिस्सा तुम्हारे साथ पड़ा ही नहीं। (5, a का परिमाण देता है, जो उसकी छाया नहीं बल्कि पूरी लंबाई है।)",
+          mr: "a·b = 3 आणि |b| = 1, म्हणून प्रक्षेप 3 आहे — जो नेमका a चा i-घटक आहे, आणि असावाच लागतो, कारण i वर प्रक्षेपण म्हणजे सदिश i सोबत किती दूर पोहोचतो हेच विचारणे. ही तपासणी करण्याजोगी आहे कारण ती दाखवते की अदिश गुणाकार प्रत्यक्षात काय मोजत आहे: एका सदिशाचा किती भाग दुसऱ्यासोबत पडला आहे. मग लंबतेने शून्य देणे हे सूत्र राहत नाही, स्पष्ट होते — लंब सदिशाचा कोणताही भाग तुमच्यासोबत पडलेलाच नाही. (5 हे a चे परिमाण देते, जी त्याची सावली नसून पूर्ण लांबी आहे.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "For vectors a and b, how many of a × b and b × a have the same direction?",
+          hi: "सदिश a और b के लिए, a × b और b × a में से कितनों की दिशा एक ही है?",
+          mr: "सदिश a आणि b साठी, a × b आणि b × a यांपैकी कितींची दिशा एकच आहे?",
+        },
+        answer: 0,
+        wrong: [1, 2, 3],
+        checkExpr: "2-2",
+        solution: {
+          en: "Neither shares the other's direction — they point exactly opposite ways, so the count of matching directions is 0. The cross product is anticommutative: a × b = −(b × a). This is a genuine break from the arithmetic students arrive with, where order never mattered for multiplication, and it is not an inconvenience but the point. The direction has to encode which vector came first, because a plane has two sides and something must decide which one the product points out of. The right-hand rule is the convention that decides it, and 'convention' is the honest word — the physics is unchanged by choosing the other hand, provided one chooses consistently everywhere. (2 assumes multiplication commutes, which it does for the dot product and not for this one.)",
+          hi: "कोई भी दूसरे की दिशा साझा नहीं करता — वे ठीक विपरीत दिशाओं में इंगित करते हैं, अतः मेल खाती दिशाओं की गिनती 0 है। सदिश गुणनफल प्रति-क्रमविनिमेय है: a × b = −(b × a). यह उस गणित से असली टूट है जिसके साथ विद्यार्थी आते हैं, जहाँ गुणा के लिए क्रम कभी मायने नहीं रखता था, और यह असुविधा नहीं बल्कि मुद्दा है। दिशा को यह संजोना ही है कि कौन-सा सदिश पहले आया, क्योंकि समतल के दो पहलू हैं और किसी को तय करना होगा कि गुणनफल किस ओर से निकलता है। दक्षिण-हस्त नियम वह परिपाटी है जो इसे तय करती है, और 'परिपाटी' ईमानदार शब्द है — दूसरा हाथ चुनने से भौतिकी नहीं बदलती, बशर्ते हर जगह एक-सा चुना जाए। (2 मान लेता है कि गुणा क्रमविनिमेय है, जो अदिश गुणनफल के लिए है और इसके लिए नहीं।)",
+          mr: "एकही दुसऱ्याची दिशा सामायिक करत नाही — ते नेमक्या विरुद्ध दिशांना निर्देश करतात, म्हणून जुळणाऱ्या दिशांची मोजणी 0 आहे. सदिश गुणाकार प्रति-क्रमविनिमेय आहे: a × b = −(b × a). हा त्या गणितापासूनचा खरा भंग आहे ज्यासोबत विद्यार्थी येतात, जिथे गुणाकारासाठी क्रम कधीच महत्त्वाचा नव्हता, आणि ही गैरसोय नसून मुद्दा आहे. दिशेला हे साठवावेच लागते की कोणता सदिश आधी आला, कारण प्रतलाला दोन बाजू आहेत आणि कोणालातरी ठरवावे लागते की गुणाकार कोणत्या बाजूने बाहेर पडतो. उजव्या-हाताचा नियम ती संकेतरीत आहे जी हे ठरवते, आणि 'संकेतरीत' हा प्रामाणिक शब्द आहे — दुसरा हात निवडल्याने भौतिकशास्त्र बदलत नाही, जोवर सर्वत्र एकसारखे निवडले जाते. (2 गृहीत धरते की गुणाकार क्रमविनिमेय आहे, जो अदिश गुणाकारासाठी आहे आणि यासाठी नाही.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "Three vectors have a scalar triple product of 0. How many independent directions do they span?",
+          hi: "तीन सदिशों का अदिश त्रिक गुणनफल 0 है। वे कितनी स्वतंत्र दिशाएँ फैलाते हैं?",
+          mr: "तीन सदिशांचा अदिश त्रिक गुणाकार 0 आहे. ते किती स्वतंत्र दिशा पसरवतात?",
+        },
+        answer: 2,
+        wrong: [3, 1, 0],
+        checkExpr: "3-1",
+        solution: {
+          en: "At most 2. The scalar triple product a·(b × c) is the VOLUME of the parallelepiped the three vectors build, so a value of zero means that solid is flat — the three vectors lie in a common plane, and a plane has two independent directions. The word for this is coplanar, and the test is a single number rather than any construction, which is what makes it useful. Note how the two products are working together here: the cross product produces a vector perpendicular to b and c, and dotting a with it asks how far a escapes their plane. Zero means a does not escape at all. Reading a compound expression by asking what each operation contributes is a more reliable habit than memorising the compound as a formula. (3 answers with the number of vectors rather than the dimensions they span.)",
+          hi: "अधिक से अधिक 2. अदिश त्रिक गुणनफल a·(b × c) उस समांतर षट्फलक का आयतन है जिसे तीनों सदिश बनाते हैं, अतः शून्य मान का अर्थ है वह ठोस चपटा है — तीनों सदिश एक साझा समतल में हैं, और समतल में दो स्वतंत्र दिशाएँ होती हैं। इसका शब्द समतलीय है, और परीक्षण किसी रचना के बजाय एक अकेली संख्या है, यही उसे उपयोगी बनाता है। ध्यान दो कि यहाँ दोनों गुणनफल कैसे साथ काम कर रहे हैं: सदिश गुणनफल b और c के लंबवत सदिश बनाता है, और उससे a का अदिश गुणनफल पूछता है कि a उनके समतल से कितनी दूर निकलता है। शून्य का अर्थ है a निकलता ही नहीं। किसी संयुक्त व्यंजक को यह पूछकर पढ़ना कि हर संक्रिया क्या योगदान देती है, संयुक्त को सूत्र की तरह रटने से अधिक भरोसेमंद आदत है। (3 सदिशों की संख्या से उत्तर देता है, उनके फैलाए विमाओं से नहीं।)",
+          mr: "जास्तीत जास्त 2. अदिश त्रिक गुणाकार a·(b × c) हा त्या समांतरषट्फलकाचे घनफळ आहे जो तिन्ही सदिश बांधतात, म्हणून शून्य मूल्याचा अर्थ तो घन सपाट आहे — तिन्ही सदिश एका सामायिक प्रतलात आहेत, आणि प्रतलात दोन स्वतंत्र दिशा असतात. याचा शब्द समप्रतलीय आहे, आणि चाचणी कोणत्याही रचनेऐवजी एकच संख्या आहे, हेच तिला उपयुक्त बनवते. लक्षात घ्या की इथे दोन्ही गुणाकार कसे एकत्र काम करत आहेत: सदिश गुणाकार b आणि c ला लंब असा सदिश बनवतो, आणि त्याच्याशी a चा अदिश गुणाकार विचारतो की a त्यांच्या प्रतलातून किती दूर निसटतो. शून्य म्हणजे a निसटतच नाही. एखादे संयुक्त पदावली प्रत्येक क्रिया काय योगदान देते हे विचारून वाचणे, संयुक्ताला सूत्रासारखे पाठ करण्याहून अधिक विश्वासार्ह सवय आहे. (3 सदिशांच्या संख्येने उत्तर देते, त्यांनी पसरवलेल्या मितींनी नाही.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "For a = i, b = i and c = j, compare (a × b) × c with a × (b × c). How many of these two expressions are non-zero?",
+          hi: "a = i, b = i और c = j के लिए, (a × b) × c की तुलना a × (b × c) से करो। इन दोनों व्यंजकों में से कितने अशून्य हैं?",
+          mr: "a = i, b = i आणि c = j साठी, (a × b) × c ची तुलना a × (b × c) शी करा. या दोन पदावलींपैकी किती अशून्य आहेत?",
+        },
+        answer: 1,
+        wrong: [2, 0, 3],
+        checkExpr: "2-1",
+        solution: {
+          en: "One. Work them out. a × b is i × i = 0, so the first expression is 0 × j = 0. For the second, b × c is i × j = k, and a × k is i × k = −j, which is not zero. So the two bracketings give different answers, and the cross product is NOT associative. This is a sharper break than the anticommutativity of the previous question, because anticommutativity at least follows a rule — swap and negate — whereas the failure of associativity means the brackets are load-bearing and cannot be dropped. Nothing in ordinary algebra prepares one for this: addition and multiplication of numbers, composition of functions and multiplication of matrices are all associative, so it is easy to write a × b × c without noticing that the expression is meaningless. Two further remarks. First, there is a replacement — the vector triple product expansion a × (b × c) = b(a·c) − c(a·b) — and it is worth reading as an admission: the answer must be expressed by moving the brackets explicitly, because there is no bracket-free form. Second, the deeper reason is that a bilinear product of vectors returning a vector exists in only a very few dimensions at all, three among them, and the three-dimensional one buys its existence at the price of associativity. It is not a defect in the definition; it is what was available. (2 assumes both bracketings must give the same non-zero answer.)",
+          hi: "एक। उन्हें निकालो। a × b है i × i = 0, अतः पहला व्यंजक 0 × j = 0 है। दूसरे के लिए, b × c है i × j = k, और a × k है i × k = −j, जो शून्य नहीं। अतः दोनों कोष्ठकीकरण भिन्न उत्तर देते हैं, और सदिश गुणनफल साहचर्य नहीं है। यह पिछले प्रश्न की प्रति-क्रमविनिमेयता से तीखी टूट है, क्योंकि प्रति-क्रमविनिमेयता कम से कम एक नियम मानती है — बदलो और ऋण करो — जबकि साहचर्य की विफलता का अर्थ है कि कोष्ठक भार उठा रहे हैं और उन्हें गिराया नहीं जा सकता। साधारण बीजगणित में कुछ भी इसके लिए तैयार नहीं करता: संख्याओं का जोड़ और गुणा, फलनों का संयोजन और आव्यूहों का गुणा सब साहचर्य हैं, अतः a × b × c लिख देना आसान है बिना यह देखे कि व्यंजक निरर्थक है। दो और टिप्पणियाँ। पहली, एक विकल्प है — सदिश त्रिक गुणनफल का प्रसार a × (b × c) = b(a·c) − c(a·b) — और उसे स्वीकारोक्ति की तरह पढ़ना ठीक है: उत्तर को कोष्ठक स्पष्ट रूप से हिलाकर ही व्यक्त करना होगा, क्योंकि कोष्ठक-रहित रूप है ही नहीं। दूसरी, गहरा कारण यह है कि सदिश लौटाने वाला सदिशों का द्विरैखिक गुणनफल बहुत ही थोड़ी विमाओं में अस्तित्व में है, तीन उनमें से एक, और त्रिविमीय वाला अपना अस्तित्व साहचर्य की क़ीमत पर ख़रीदता है। यह परिभाषा का दोष नहीं; यही उपलब्ध था। (2 मान लेता है कि दोनों कोष्ठकीकरण एक ही अशून्य उत्तर देंगे।)",
+          mr: "एक. ते काढा. a × b म्हणजे i × i = 0, म्हणून पहिली पदावली 0 × j = 0 आहे. दुसरीसाठी, b × c म्हणजे i × j = k, आणि a × k म्हणजे i × k = −j, जो शून्य नाही. म्हणून दोन्ही कंसीकरणे वेगळी उत्तरे देतात, आणि सदिश गुणाकार साहचर्य नाही. हा मागील प्रश्नाच्या प्रति-क्रमविनिमेयतेहून तीक्ष्ण भंग आहे, कारण प्रति-क्रमविनिमेयता किमान एक नियम पाळते — अदलाबदल करा आणि ऋण करा — तर साहचर्याच्या अपयशाचा अर्थ हा की कंस भार उचलत आहेत आणि ते टाकता येत नाहीत. साध्या बीजगणितात काहीही यासाठी तयार करत नाही: संख्यांची बेरीज आणि गुणाकार, फलनांचे संयोजन आणि मॅट्रिक्सचा गुणाकार सर्व साहचर्य आहेत, म्हणून a × b × c लिहून टाकणे सोपे आहे, पदावली निरर्थक आहे हे न पाहता. आणखी दोन टिप्पण्या. पहिली, एक पर्याय आहे — सदिश त्रिक गुणाकाराचा विस्तार a × (b × c) = b(a·c) − c(a·b) — आणि तो कबुलीजबाबासारखा वाचणे बरे: उत्तर कंस स्पष्टपणे हलवूनच व्यक्त करावे लागते, कारण कंस-विरहित रूप नाहीच. दुसरी, अधिक खोल कारण हे की सदिश परत करणारा सदिशांचा द्विरैखिक गुणाकार अगदी थोड्याच मितींत अस्तित्वात आहे, तीन त्यांतील एक, आणि त्रिमितीय तो आपले अस्तित्व साहचर्याच्या किमतीवर विकत घेतो. हा व्याख्येतील दोष नाही; हेच उपलब्ध होते. (2 गृहीत धरते की दोन्ही कंसीकरणे एकच अशून्य उत्तर देतील.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "For any vectors a and b, |a·b| ≤ |a||b|. For a = 3i and b = 4i, by how much does |a||b| exceed |a·b|?",
+          hi: "किन्हीं सदिशों a और b के लिए, |a·b| ≤ |a||b|. a = 3i और b = 4i के लिए, |a||b|, |a·b| से कितना अधिक है?",
+          mr: "कोणत्याही सदिश a आणि b साठी, |a·b| ≤ |a||b|. a = 3i आणि b = 4i साठी, |a||b| हा |a·b| हून किती अधिक आहे?",
+        },
+        answer: 0,
+        wrong: [12, 1, 7],
+        checkExpr: "12-12",
+        solution: {
+          en: "By nothing — both sides are 12, so the excess is 0. This is the Cauchy–Schwarz inequality, and the case worth studying is precisely the one where it becomes an equality. Since a·b = |a||b| cos θ, the two sides differ by the factor cos θ, so they coincide exactly when cos θ = ±1, which means the vectors are PARALLEL. That is the general statement: equality holds if and only if one vector is a scalar multiple of the other, and here b is 4/3 of a. Two things make this worth an advanced question. First, an inequality's equality case is usually where its content lies — the inequality alone says the dot product cannot be too large, but the equality case says exactly what 'too large' means and when the bound is attained, and optimisation problems are almost always solved by finding that case. Second, the inequality holds far beyond arrows in space: it is true in any inner product space, so the same statement bounds integrals of products of functions, and covariances of random variables, and in that last setting it is precisely the statement that a correlation coefficient cannot exceed 1 in absolute value. One inequality, three subjects, and the equality case in each says the same thing — that one quantity is a fixed multiple of the other. (12 gives the common value of both sides rather than the difference between them.)",
+          hi: "कुछ भी नहीं — दोनों पक्ष 12 हैं, अतः अधिकता 0 है। यह कोशी–श्वार्ट्ज़ असमिका है, और अध्ययन लायक़ मामला ठीक वही है जहाँ वह समता बन जाती है। चूँकि a·b = |a||b| cos θ, दोनों पक्ष cos θ के गुणक से भिन्न हैं, अतः वे ठीक तभी एक होते हैं जब cos θ = ±1, यानी सदिश समांतर हों। सामान्य कथन यही है: समता तभी और केवल तभी है जब एक सदिश दूसरे का अदिश गुणज हो, और यहाँ b, a का 4/3 है। दो बातें इसे उन्नत प्रश्न बनाती हैं। पहली, किसी असमिका का समता-मामला आम तौर पर वहीं है जहाँ उसकी सामग्री है — अकेली असमिका कहती है कि अदिश गुणनफल बहुत बड़ा नहीं हो सकता, पर समता-मामला ठीक-ठीक बताता है कि 'बहुत बड़ा' का अर्थ क्या है और सीमा कब छुई जाती है, और इष्टतमीकरण की समस्याएँ लगभग हमेशा उसी मामले को ढूँढ़कर हल होती हैं। दूसरी, असमिका समष्टि के तीरों से कहीं आगे लागू है: वह किसी भी अंतःगुणन समष्टि में सच है, अतः वही कथन फलनों के गुणनफलों के समाकलों को, और यादृच्छिक चरों के सहप्रसरणों को बाँधता है, और उस अंतिम परिवेश में वह ठीक यह कथन है कि सहसंबंध गुणांक निरपेक्ष मान में 1 से आगे नहीं जा सकता। एक असमिका, तीन विषय, और हर एक में समता-मामला वही बात कहता है — कि एक राशि दूसरी की नियत गुणज है। (12 उनके बीच के अंतर के बजाय दोनों पक्षों का साझा मान देता है।)",
+          mr: "काहीच नाही — दोन्ही बाजू 12 आहेत, म्हणून अधिक्य 0 आहे. ही कोशी–श्वार्ट्झ असमानता आहे, आणि अभ्यासण्याजोगा प्रसंग नेमका तोच आहे जिथे ती समानता बनते. कारण a·b = |a||b| cos θ, दोन्ही बाजू cos θ या गुणकाने वेगळ्या आहेत, म्हणून त्या नेमक्या तेव्हाच एकरूप होतात जेव्हा cos θ = ±1, म्हणजे सदिश समांतर असतील. सर्वसाधारण विधान हेच आहे: समानता तेव्हाच आणि केवळ तेव्हाच आहे जेव्हा एक सदिश दुसऱ्याचा अदिश गुणज असेल, आणि इथे b हा a चा 4/3 आहे. दोन गोष्टी याला प्रगत प्रश्न बनवतात. पहिली, एखाद्या असमानतेचा समानता-प्रसंग सर्वसाधारणपणे तिथेच असतो जिथे तिचा आशय आहे — एकटी असमानता सांगते की अदिश गुणाकार फार मोठा असू शकत नाही, पण समानता-प्रसंग नेमके सांगतो की 'फार मोठा' म्हणजे काय आणि सीमा कधी गाठली जाते, आणि इष्टतमीकरणाच्या समस्या जवळजवळ नेहमी तोच प्रसंग शोधून सुटतात. दुसरी, असमानता अवकाशातील बाणांहून कितीतरी पुढे लागू आहे: ती कोणत्याही अंतर्गुणन अवकाशात खरी आहे, म्हणून तेच विधान फलनांच्या गुणाकारांच्या समाकलांना, आणि यादृच्छिक चलांच्या सहप्रसरणांना बांधते, आणि त्या शेवटच्या संदर्भात ते नेमके हे विधान आहे की सहसंबंध गुणांक निरपेक्ष मूल्यात 1 हून पुढे जाऊ शकत नाही. एक असमानता, तीन विषय, आणि प्रत्येकात समानता-प्रसंग तेच सांगतो — की एक राशी दुसरीची निश्चित गुणज आहे. (12 त्यांमधील फरकाऐवजी दोन्ही बाजूंचे सामायिक मूल्य देते.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "The cross product needs a rule for which side of a plane the result points to. Reflecting the whole configuration in a mirror reverses that side without changing either input vector's mirror image consistently. Of |a|, a·b and a × b, how many are unchanged in sign by such a reflection?",
+          hi: "सदिश गुणनफल को यह नियम चाहिए कि परिणाम समतल के किस ओर इंगित करे। पूरी व्यवस्था को दर्पण में परावर्तित करने पर वह ओर पलट जाती है, बिना किसी निवेश सदिश के दर्पण-प्रतिबिंब को संगत रूप से बदले। |a|, a·b और a × b में से कितने ऐसे परावर्तन से चिह्न में अपरिवर्तित रहते हैं?",
+          mr: "सदिश गुणाकाराला हा नियम लागतो की निकाल प्रतलाच्या कोणत्या बाजूला निर्देश करावा. अख्खी मांडणी आरशात परावर्तित केल्यास ती बाजू उलटते, कोणत्याही निविष्ट सदिशाचे आरसा-प्रतिबिंब सुसंगतपणे न बदलता. |a|, a·b आणि a × b यांपैकी किती अशा परावर्तनाने चिन्हात अपरिवर्तित राहतात?",
+        },
+        answer: 2,
+        wrong: [3, 1, 0],
+        checkExpr: "3-1",
+        solution: {
+          en: "Two — the magnitude and the dot product. A length cannot change sign at all, and the dot product is built from products of matching components, each of which picks up two sign flips that cancel. The cross product is the exception: its components are built from MISMATCHED pairs, so the flips do not cancel, and the mirror image of a × b is minus what one would get by crossing the mirror images. Quantities behaving this way are called pseudovectors or axial vectors, and the distinction is not a curiosity of notation. Angular momentum, torque and the magnetic field are all defined by cross products and are all pseudovectors, and the practical consequence is that their direction is not a fact about the world but a fact about the handedness convention one adopted — swap to a left-handed rule and every one of them reverses while every physical prediction stays identical, because they always appear in the final answer in pairs or in further cross products, and the two convention-dependent signs cancel. There is a real lesson in that about reading formulas. A quantity that flips when the convention flips cannot by itself be measurable; whatever is measurable must be built from it in a way that is convention-blind. So the honest question to ask of the direction of a magnetic field is not which way it really points but what it is contracted with before anything observable is computed — and the answer is always something that restores the balance. (3 assumes that reflecting a configuration cannot change any derived quantity's sign, which is true of everything here except the one object built from a handedness rule.)",
+          hi: "दो — परिमाण और अदिश गुणनफल। लंबाई का चिह्न बदल ही नहीं सकता, और अदिश गुणनफल मेल खाते घटकों के गुणनफलों से बना है, जिनमें से हर एक दो चिह्न-पलट उठाता है जो कट जाते हैं। सदिश गुणनफल अपवाद है: उसके घटक बेमेल जोड़ों से बने हैं, अतः पलट कटते नहीं, और a × b का दर्पण-प्रतिबिंब उससे ऋणात्मक है जो दर्पण-प्रतिबिंबों का गुणनफल लेने पर मिलता। ऐसा बरतने वाली राशियों को छद्म-सदिश या अक्षीय सदिश कहते हैं, और यह भेद संकेतन की जिज्ञासा नहीं। कोणीय संवेग, बल-आघूर्ण और चुंबकीय क्षेत्र सब सदिश गुणनफलों से परिभाषित हैं और सब छद्म-सदिश हैं, और व्यावहारिक परिणाम यह है कि उनकी दिशा संसार का तथ्य नहीं बल्कि अपनाई गई हस्तता-परिपाटी का तथ्य है — वाम-हस्त नियम पर जाओ और उनमें से हर एक पलट जाता है जबकि हर भौतिक भविष्यवाणी वैसी ही रहती है, क्योंकि वे अंतिम उत्तर में सदा जोड़ों में या आगे के सदिश गुणनफलों में आते हैं, और दोनों परिपाटी-निर्भर चिह्न कट जाते हैं। सूत्र पढ़ने के बारे में उसमें असली सबक़ है। जो राशि परिपाटी पलटने पर पलट जाए वह अपने आप मापनीय नहीं हो सकती; जो मापनीय है उसे उससे ऐसे बनाया गया होगा जो परिपाटी-अंधा हो। अतः चुंबकीय क्षेत्र की दिशा से पूछने लायक़ ईमानदार प्रश्न यह नहीं कि वह सचमुच किधर इंगित करती है बल्कि यह कि कुछ प्रेक्षणीय गणित होने से पहले उसे किससे संकुचित किया जाता है — और उत्तर सदा वह चीज़ है जो संतुलन बहाल कर देती है। (3 मान लेता है कि किसी व्यवस्था को परावर्तित करने से किसी व्युत्पन्न राशि का चिह्न नहीं बदल सकता, जो यहाँ हर चीज़ के लिए सच है सिवाय उस अकेली वस्तु के जो हस्तता-नियम से बनी है।)",
+          mr: "दोन — परिमाण आणि अदिश गुणाकार. लांबीचे चिन्ह बदलूच शकत नाही, आणि अदिश गुणाकार जुळणाऱ्या घटकांच्या गुणाकारांतून बनला आहे, ज्यांपैकी प्रत्येक दोन चिन्ह-उलटी उचलतो जी रद्द होतात. सदिश गुणाकार अपवाद आहे: त्याचे घटक न जुळणाऱ्या जोड्यांतून बनले आहेत, म्हणून उलटी रद्द होत नाहीत, आणि a × b चे आरसा-प्रतिबिंब त्याहून ऋण आहे जे आरसा-प्रतिबिंबांचा गुणाकार घेतल्यास मिळाले असते. अशा वागणाऱ्या राशींना छद्म-सदिश किंवा अक्षीय सदिश म्हणतात, आणि हा भेद चिन्हांकनाची उत्सुकता नाही. कोनीय संवेग, बलआघूर्ण आणि चुंबकीय क्षेत्र सर्व सदिश गुणाकारांनी परिभाषित आहेत आणि सर्व छद्म-सदिश आहेत, आणि व्यावहारिक परिणाम हा की त्यांची दिशा जगाबद्दलचे तथ्य नसून स्वीकारलेल्या हस्तता-संकेतरीतीबद्दलचे तथ्य आहे — डाव्या-हाताच्या नियमावर जा आणि त्यांपैकी प्रत्येक उलटतो तर प्रत्येक भौतिक भाकीत तसेच राहते, कारण ते अंतिम उत्तरात नेहमी जोड्यांत वा पुढील सदिश गुणाकारांत येतात, आणि दोन्ही संकेतरीत-अवलंबी चिन्हे रद्द होतात. सूत्रे वाचण्याबद्दल त्यात खरा धडा आहे. जी राशी संकेतरीत उलटल्यावर उलटते ती स्वतःहून मापनीय असू शकत नाही; जे मापनीय आहे ते तिच्यातून अशा प्रकारे बांधलेले असावे जो संकेतरीत-आंधळा असेल. म्हणून चुंबकीय क्षेत्राच्या दिशेला विचारण्याजोगा प्रामाणिक प्रश्न हा नाही की ती खरोखर कोणीकडे निर्देश करते तर हा की काही निरीक्षणीय काढले जाण्याआधी तिला कशाशी संकुचित केले जाते — आणि उत्तर नेहमी ती गोष्ट आहे जी संतुलन पुन्हा प्रस्थापित करते. (3 गृहीत धरते की एखादी मांडणी परावर्तित केल्याने कोणत्याही व्युत्पन्न राशीचे चिन्ह बदलू शकत नाही, जे इथे प्रत्येक गोष्टीसाठी खरे आहे त्या एकट्या वस्तूखेरीज जी हस्तता-नियमातून बनली आहे.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "Of the two products, the dot product generalises to every dimension while the cross product as defined here does not. In how many dimensions above one does a cross product of two vectors returning a vector of the same kind exist?",
+          hi: "दोनों गुणनफलों में से, अदिश गुणनफल हर विमा तक सामान्यीकृत होता है जबकि यहाँ परिभाषित सदिश गुणनफल नहीं। एक से ऊपर कितनी विमाओं में दो सदिशों का ऐसा सदिश गुणनफल है जो उसी क़िस्म का सदिश लौटाता हो?",
+          mr: "दोन गुणाकारांपैकी, अदिश गुणाकार प्रत्येक मितीत सर्वसाधारण होतो तर इथे परिभाषित सदिश गुणाकार होत नाही. एकाहून वर किती मितींत दोन सदिशांचा असा सदिश गुणाकार अस्तित्वात आहे जो त्याच प्रकारचा सदिश परत करतो?",
+        },
+        answer: 2,
+        wrong: [1, 3, 4],
+        checkExpr: "1+1",
+        solution: {
+          en: "Two — dimension 3 and dimension 7, and nothing else. That is a startling fact and it is worth taking seriously rather than as trivia, because the natural expectation is that a construction this useful should exist everywhere, and the natural explanation for its absence — that nobody has found the right formula yet — is wrong. The requirements are modest: the product should be bilinear, perpendicular to both inputs, and have magnitude equal to the area of the parallelogram spanned. Those conditions turn out to force a division algebra structure on the space one dimension up, and division algebras over the reals exist in dimensions 1, 2, 4 and 8 only — the reals, the complex numbers, the quaternions and the octonions — which leaves cross products in dimensions 0, 1, 3 and 7, of which only 3 and 7 are non-trivial. So the answer is 2. Three lessons come out of this. The first is that our three-dimensional cross product is a coincidence of the dimension we happen to inhabit, not a general feature of geometry, and every formula in physics that uses one is therefore quietly three-dimensional in a way that dot-product formulas are not. The second is that the seven-dimensional version, though it exists, loses even more structure — it satisfies no Jacobi identity, so it is not even a Lie algebra — which shows that 'exists' and 'is useful' are separate questions. The third is methodological and the most transferable: when something fails to generalise, the informative move is to ask what structure it was secretly using. Here the answer was a division algebra hiding one dimension up, and finding it explains not only the failure but the exact list of exceptions. A negative result that produces a complete list is worth more than a positive result about one case. (1 supposes three dimensions are the unique home of the construction, which is the expected answer and is one short.)",
+          hi: "दो — विमा 3 और विमा 7, और कुछ नहीं। यह चौंकाने वाला तथ्य है और उसे सामान्य ज्ञान के बजाय गंभीरता से लेना ज़रूरी है, क्योंकि स्वाभाविक अपेक्षा यह है कि इतनी उपयोगी रचना हर जगह होनी चाहिए, और उसकी अनुपस्थिति की स्वाभाविक व्याख्या — कि अभी किसी को सही सूत्र नहीं मिला — ग़लत है। माँगें मामूली हैं: गुणनफल द्विरैखिक हो, दोनों निवेशों के लंबवत हो, और उसका परिमाण फैलाए गए समांतर चतुर्भुज के क्षेत्रफल के बराबर हो। वे शर्तें एक विमा ऊपर की समष्टि पर भाग-बीजगणित की संरचना थोप देती हैं, और वास्तविकों पर भाग-बीजगणित केवल विमाओं 1, 2, 4 और 8 में हैं — वास्तविक, सम्मिश्र, चतुष्टय और अष्टक — जिससे सदिश गुणनफल विमाओं 0, 1, 3 और 7 में बचते हैं, जिनमें से केवल 3 और 7 अतुच्छ हैं। अतः उत्तर 2 है। इससे तीन सबक़ निकलते हैं। पहला, हमारा त्रिविमीय सदिश गुणनफल उस विमा का संयोग है जिसमें हम संयोग से रहते हैं, ज्यामिति का सामान्य लक्षण नहीं, और इसलिए भौतिकी का हर सूत्र जो उसे बरतता है चुपचाप त्रिविमीय है, उस तरह से जैसे अदिश-गुणनफल के सूत्र नहीं हैं। दूसरा, सात-विमीय संस्करण, हालाँकि मौजूद है, और भी अधिक संरचना खोता है — वह कोई याकोबी सर्वसमिका नहीं मानता, अतः वह ली बीजगणित तक नहीं — जो दिखाता है कि 'मौजूद है' और 'उपयोगी है' अलग प्रश्न हैं। तीसरा पद्धतिगत है और सबसे अधिक हस्तांतरणीय: जब कुछ सामान्यीकृत होने में विफल हो, तो जानकारी देने वाला क़दम यह पूछना है कि वह चुपके से किस संरचना का उपयोग कर रहा था। यहाँ उत्तर एक विमा ऊपर छिपा भाग-बीजगणित था, और उसे ढूँढ़ना न केवल विफलता बल्कि अपवादों की ठीक सूची भी समझा देता है। पूरी सूची देने वाला ऋणात्मक परिणाम एक मामले के बारे में धनात्मक परिणाम से अधिक क़ीमती है। (1 मान लेता है कि तीन विमाएँ ही रचना का अकेला घर हैं, जो अपेक्षित उत्तर है और एक कम है।)",
+          mr: "दोन — मिती 3 आणि मिती 7, आणि दुसरे काहीच नाही. हे चकित करणारे तथ्य आहे आणि त्याला सामान्यज्ञानाऐवजी गांभीर्याने घेणे आवश्यक आहे, कारण नैसर्गिक अपेक्षा ही की इतकी उपयुक्त रचना सर्वत्र असावी, आणि तिच्या अनुपस्थितीचे नैसर्गिक स्पष्टीकरण — की अजून कोणाला योग्य सूत्र सापडलेले नाही — चुकीचे आहे. मागण्या माफक आहेत: गुणाकार द्विरैखिक असावा, दोन्ही निविष्टांना लंब असावा, आणि त्याचे परिमाण पसरवलेल्या समांतरभुज चौकोनाच्या क्षेत्रफळाइतके असावे. त्या अटी एक मिती वरच्या अवकाशावर भाग-बीजगणिताची रचना लादतात, आणि वास्तवांवर भाग-बीजगणिते केवळ मिती 1, 2, 4 आणि 8 मध्ये आहेत — वास्तव, संमिश्र, चतुष्क आणि अष्टक — ज्यामुळे सदिश गुणाकार मिती 0, 1, 3 आणि 7 मध्ये उरतात, ज्यांपैकी केवळ 3 आणि 7 अतुच्छ आहेत. म्हणून उत्तर 2 आहे. यातून तीन धडे निघतात. पहिला, आपला त्रिमितीय सदिश गुणाकार हा आपण योगायोगाने वसत असलेल्या मितीचा योगायोग आहे, भूमितीचे सर्वसाधारण वैशिष्ट्य नव्हे, आणि म्हणून भौतिकशास्त्राचे प्रत्येक सूत्र जे तो वापरते ते गुपचूप त्रिमितीय आहे, ज्या रीतीने अदिश-गुणाकाराची सूत्रे नाहीत. दुसरा, सात-मितीय आवृत्ती, जरी अस्तित्वात असली तरी, आणखी अधिक रचना गमावते — ती कोणतीही याकोबी एकात्मता पाळत नाही, म्हणून ती ली बीजगणितसुद्धा नाही — जे दाखवते की 'अस्तित्वात आहे' आणि 'उपयुक्त आहे' हे वेगळे प्रश्न आहेत. तिसरा पद्धतीविषयक आहे आणि सर्वाधिक हस्तांतरणीय: जेव्हा काही सर्वसाधारण होण्यात अपयशी ठरते, तेव्हा माहिती देणारे पाऊल हे विचारणे आहे की ते गुपचूप कोणती रचना वापरत होते. इथे उत्तर एक मिती वर लपलेले भाग-बीजगणित होते, आणि ते शोधणे केवळ अपयशच नव्हे तर अपवादांची नेमकी यादीही स्पष्ट करते. संपूर्ण यादी देणारा ऋण निकाल एका प्रसंगाबद्दलच्या धन निकालाहून अधिक मोलाचा आहे. (1 गृहीत धरते की तीन मिती हेच रचनेचे एकमेव घर आहे, जे अपेक्षित उत्तर आहे आणि एकने कमी आहे.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-12-vector-algebra",
+      subject: "MATHS",
+      classLevel: 12,
+      chapter: "Chapter 10 — Vector Algebra",
+      name: "Vector Algebra",
+      summary:
+        "Two products built from the same pair of arrows that detect opposite things: why one vanishes on perpendicular vectors and the other on parallel ones, why the second refuses both the commutativity and the associativity that all earlier multiplication had, why its direction is a convention rather than a fact, and why it exists in only two dimensions above one while the first exists in all of them.",
+      position: 10,
+      translations: {
+        hi: {
+          name: "सदिश बीजगणित",
+          summary:
+            "एक ही तीरों की जोड़ी से बने दो गुणनफल जो विपरीत चीज़ें भाँपते हैं: एक लंबवत सदिशों पर और दूसरा समांतर सदिशों पर क्यों लुप्त होता है, दूसरा वह क्रमविनिमेयता और साहचर्य दोनों क्यों नकारता है जो पहले के हर गुणा में थे, उसकी दिशा तथ्य के बजाय परिपाटी क्यों है, और वह एक से ऊपर केवल दो विमाओं में क्यों है जबकि पहला उन सब में।",
+        },
+        mr: {
+          name: "सदिश बीजगणित",
+          summary:
+            "एकाच बाणांच्या जोडीतून बनलेले दोन गुणाकार जे विरुद्ध गोष्टी ओळखतात: एक लंब सदिशांवर आणि दुसरा समांतर सदिशांवर का लोप पावतो, दुसरा ती क्रमविनिमेयता आणि साहचर्य दोन्ही का नाकारतो जी आधीच्या प्रत्येक गुणाकारात होती, त्याची दिशा तथ्याऐवजी संकेतरीत का आहे, आणि तो एकाहून वर केवळ दोन मितींत का आहे तर पहिला त्या सर्वांत.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 11 — Three Dimensional Geometry (a third way for lines to relate)  */
+/* ------------------------------------------------------------------------- */
+function threeDimensionalGeometry12(): TopicFileOut {
+  const rand = rng("maths-12-three-dimensional-geometry");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A line has direction ratios 1, 2, 2. What is the length of that direction vector?",
+          hi: "किसी रेखा के दिक्-अनुपात 1, 2, 2 हैं। उस दिक्-सदिश की लंबाई क्या है?",
+          mr: "एका रेषेचे दिक्-गुणोत्तर 1, 2, 2 आहेत. त्या दिक्-सदिशाची लांबी किती?",
+        },
+        answer: 3,
+        wrong: [5, 4, 9],
+        checkExpr: "9^0.5",
+        solution: {
+          en: "√(1 + 4 + 4) = √9 = 3. Pythagoras extends to three dimensions with a third square added and nothing else changed, which is the first sign that most of two-dimensional geometry survives the extra axis intact. Direction ratios are not unique — 2, 4, 4 describes the same direction — and dividing by this length is what turns them into direction cosines. (5 adds the ratios.)",
+          hi: "√(1 + 4 + 4) = √9 = 3. पाइथागोरस तीन विमाओं तक फैलता है, एक तीसरा वर्ग जुड़ता है और कुछ नहीं बदलता, और यही पहला संकेत है कि द्विविमीय ज्यामिति का अधिकांश अतिरिक्त अक्ष के बाद भी सही-सलामत बचता है। दिक्-अनुपात अद्वितीय नहीं — 2, 4, 4 वही दिशा बताता है — और इस लंबाई से भाग देना ही उन्हें दिक्-कोसाइन बनाता है। (5 अनुपात जोड़ देता है।)",
+          mr: "√(1 + 4 + 4) = √9 = 3. पायथागोरस तीन मितींपर्यंत पसरतो, तिसरा वर्ग जोडला जातो आणि दुसरे काही बदलत नाही, आणि हाच पहिला संकेत आहे की द्विमितीय भूमितीचा बहुतांश भाग अतिरिक्त अक्षानंतरही अबाधित टिकतो. दिक्-गुणोत्तरे अद्वितीय नाहीत — 2, 4, 4 तीच दिशा सांगते — आणि या लांबीने भागणेच त्यांना दिक्-कोज्या बनवते. (5 गुणोत्तरे जोडते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "For any line, l² + m² + n² equals what, where l, m, n are its direction cosines?",
+          hi: "किसी भी रेखा के लिए l² + m² + n² किसके बराबर है, जहाँ l, m, n उसके दिक्-कोसाइन हैं?",
+          mr: "कोणत्याही रेषेसाठी l² + m² + n² कशाइतके आहे, जिथे l, m, n हे तिचे दिक्-कोज्या आहेत?",
+        },
+        answer: 1,
+        wrong: [0, 3, 2],
+        checkExpr: "3-2",
+        solution: {
+          en: "1, always. Direction cosines are the components of a UNIT vector along the line, so the sum of their squares is the square of its length, which is 1. This is the standard sanity check in the chapter: any three numbers offered as direction cosines whose squares do not add to 1 are direction ratios that have not been normalised yet. (3 counts the cosines instead of summing their squares.)",
+          hi: "1, हमेशा। दिक्-कोसाइन रेखा के साथ किसी एकक सदिश के घटक हैं, अतः उनके वर्गों का योग उसकी लंबाई का वर्ग है, जो 1 है। यही अध्याय की मानक जाँच है: दिक्-कोसाइन के रूप में पेश की गई कोई भी तीन संख्याएँ जिनके वर्ग 1 नहीं जुड़ते, वे ऐसे दिक्-अनुपात हैं जिन्हें अभी सामान्यीकृत नहीं किया गया। (3 उनके वर्गों को जोड़ने के बजाय कोसाइन गिन लेता है।)",
+          mr: "1, नेहमी. दिक्-कोज्या हे रेषेसोबतच्या एका एकक सदिशाचे घटक आहेत, म्हणून त्यांच्या वर्गांची बेरीज त्याच्या लांबीचा वर्ग आहे, जो 1 आहे. हीच अध्यायातील प्रमाण तपासणी आहे: दिक्-कोज्या म्हणून दिलेल्या कोणत्याही तीन संख्या ज्यांचे वर्ग 1 होत नाहीत, ती अशी दिक्-गुणोत्तरे आहेत जी अजून प्रमाणित केलेली नाहीत. (3 त्यांचे वर्ग बेरीज करण्याऐवजी कोज्या मोजते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "How many coordinates are needed to locate a point in space?",
+          hi: "समष्टि में किसी बिंदु को स्थित करने के लिए कितने निर्देशांक चाहिए?",
+          mr: "अवकाशात एखादा बिंदू निश्चित करण्यास किती निर्देशांक लागतात?",
+        },
+        answer: 3,
+        wrong: [2, 1, 4],
+        checkExpr: "2+1",
+        solution: {
+          en: "Three. Counting how many numbers an object needs is a habit worth starting here, because it will do real work later: a point needs three, a plane's equation needs four coefficients of which only three are independent, and a line — surprisingly — needs four. Getting into the habit of counting parameters is how one predicts in advance whether a problem has enough conditions to have a unique answer. (2 counts the plane instead of space.)",
+          hi: "तीन। किसी वस्तु को कितनी संख्याएँ चाहिए यह गिनना यहीं से शुरू करने लायक़ आदत है, क्योंकि आगे वह असली काम करेगी: बिंदु को तीन चाहिए, समतल के समीकरण को चार गुणांक चाहिए जिनमें से केवल तीन स्वतंत्र हैं, और रेखा को — आश्चर्यजनक रूप से — चार। प्राचल गिनने की आदत डालना ही वह तरीक़ा है जिससे पहले से भाँपा जाता है कि किसी समस्या में अद्वितीय उत्तर के लिए पर्याप्त शर्तें हैं या नहीं। (2 समष्टि के बजाय समतल गिन लेता है।)",
+          mr: "तीन. एखाद्या वस्तूला किती संख्या लागतात हे मोजणे ही इथूनच सुरू करण्याजोगी सवय आहे, कारण पुढे ती खरे काम करेल: बिंदूला तीन लागतात, प्रतलाच्या समीकरणाला चार गुणांक लागतात ज्यांपैकी केवळ तीन स्वतंत्र आहेत, आणि रेषेला — आश्चर्यकारकरीत्या — चार. प्राचल मोजण्याची सवय लावणे हाच तो मार्ग आहे ज्याने आधीच ओळखता येते की एखाद्या समस्येत अद्वितीय उत्तरासाठी पुरेशा अटी आहेत का. (2 अवकाशाऐवजी प्रतल मोजते.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "The plane 2x + 3y + 6z = 7 has a normal vector. What is that vector's magnitude?",
+          hi: "समतल 2x + 3y + 6z = 7 का एक अभिलंब सदिश है। उस सदिश का परिमाण क्या है?",
+          mr: "प्रतल 2x + 3y + 6z = 7 चा एक अभिलंब सदिश आहे. त्या सदिशाचे परिमाण किती?",
+        },
+        answer: 7,
+        wrong: [11, 49, 6],
+        checkExpr: "49^0.5",
+        solution: {
+          en: "The coefficients 2, 3, 6 ARE the normal vector, and √(4 + 9 + 36) = √49 = 7. That the coefficients give the normal is the single most useful fact about the plane equation, and it makes several later formulas obvious rather than memorised — the angle between two planes is the angle between their normals, and two planes are parallel exactly when their coefficient triples are proportional. Note the 7 on the right-hand side is a coincidence here and plays no part; changing it slides the plane without turning it. (11 adds the coefficients.)",
+          hi: "गुणांक 2, 3, 6 ही अभिलंब सदिश हैं, और √(4 + 9 + 36) = √49 = 7. गुणांकों का अभिलंब देना समतल-समीकरण के बारे में सबसे उपयोगी अकेला तथ्य है, और वह आगे के कई सूत्रों को रटा हुआ नहीं बल्कि स्पष्ट बना देता है — दो समतलों के बीच का कोण उनके अभिलंबों के बीच का कोण है, और दो समतल ठीक तभी समांतर हैं जब उनके गुणांक-त्रिक समानुपाती हों। ध्यान दो कि दाईं ओर का 7 यहाँ संयोग है और उसका कोई हाथ नहीं; उसे बदलने पर समतल बिना मुड़े सरक जाता है। (11 गुणांक जोड़ देता है।)",
+          mr: "गुणांक 2, 3, 6 हेच अभिलंब सदिश आहेत, आणि √(4 + 9 + 36) = √49 = 7. गुणांकांनी अभिलंब देणे हे प्रतल-समीकरणाबद्दलचे सर्वांत उपयुक्त एकटे तथ्य आहे, आणि ते पुढील अनेक सूत्रे पाठ केलेली नव्हे तर स्पष्ट बनवते — दोन प्रतलांमधील कोन म्हणजे त्यांच्या अभिलंबांमधील कोन, आणि दोन प्रतले नेमकी तेव्हाच समांतर आहेत जेव्हा त्यांची गुणांक-त्रिके समानुपाती असतील. लक्षात घ्या की उजवीकडचा 7 इथे योगायोग आहे आणि त्याचा काहीच हात नाही; तो बदलल्यास प्रतल न वळता सरकते. (11 गुणांक जोडते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Two lines in space have direction vectors i + j and 2i + 2j. How many directions do they have between them?",
+          hi: "समष्टि में दो रेखाओं के दिक्-सदिश i + j और 2i + 2j हैं। उनके बीच कितनी दिशाएँ हैं?",
+          mr: "अवकाशातील दोन रेषांचे दिक्-सदिश i + j आणि 2i + 2j आहेत. त्यांच्यात किती दिशा आहेत?",
+        },
+        answer: 1,
+        wrong: [2, 0, 3],
+        checkExpr: "2-1",
+        solution: {
+          en: "One. The second vector is exactly twice the first, so the two lines point the same way and the count of distinct directions is 1. Note carefully what this does and does not settle: the lines are parallel, but that says nothing about whether they coincide, since two parallel lines may sit anywhere in space relative to one another. Direction is one question, position is another, and every classification in this chapter needs both answered. (2 counts the vectors rather than the directions.)",
+          hi: "एक। दूसरा सदिश ठीक पहले का दुगना है, अतः दोनों रेखाएँ एक ही ओर इंगित करती हैं और भिन्न दिशाओं की गिनती 1 है। ध्यान से देखो कि यह क्या तय करता है और क्या नहीं: रेखाएँ समांतर हैं, पर इससे यह कुछ नहीं कहा गया कि वे संपाती हैं या नहीं, क्योंकि दो समांतर रेखाएँ एक-दूसरे के सापेक्ष समष्टि में कहीं भी बैठ सकती हैं। दिशा एक प्रश्न है, स्थिति दूसरा, और इस अध्याय के हर वर्गीकरण को दोनों के उत्तर चाहिए। (2 दिशाओं के बजाय सदिश गिन लेता है।)",
+          mr: "एक. दुसरा सदिश नेमका पहिल्याच्या दुप्पट आहे, म्हणून दोन्ही रेषा एकाच दिशेला निर्देश करतात आणि भिन्न दिशांची मोजणी 1 आहे. काळजीपूर्वक पाहा की हे काय ठरवते आणि काय नाही: रेषा समांतर आहेत, पण त्यातून त्या एकरूप आहेत का याबद्दल काहीच सांगितले नाही, कारण दोन समांतर रेषा एकमेकींच्या सापेक्ष अवकाशात कुठेही बसू शकतात. दिशा हा एक प्रश्न आहे, स्थान दुसरा, आणि या अध्यायातील प्रत्येक वर्गीकरणाला दोन्हींची उत्तरे लागतात. (2 दिशांऐवजी सदिश मोजते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "What is the distance from the origin to the point (1, 2, 2)?",
+          hi: "मूलबिंदु से बिंदु (1, 2, 2) तक की दूरी क्या है?",
+          mr: "आदिबिंदूपासून बिंदू (1, 2, 2) पर्यंतचे अंतर किती?",
+        },
+        answer: 3,
+        wrong: [5, 4, 6],
+        checkExpr: "9^0.5",
+        solution: {
+          en: "√(1 + 4 + 4) = 3. The three-dimensional distance formula is the two-dimensional one with a third term, and the reason is worth seeing once: apply Pythagoras in the base plane to get √(1 + 4), then apply it again in the vertical triangle whose legs are that result and the height 2. Two applications of a two-dimensional theorem give the three-dimensional one, and the same trick extends to any number of dimensions. (5 adds the coordinates.)",
+          hi: "√(1 + 4 + 4) = 3. त्रिविमीय दूरी-सूत्र वही द्विविमीय है जिसमें एक तीसरा पद जुड़ा, और कारण एक बार देख लेना ज़रूरी है: आधार-समतल में पाइथागोरस लगाकर √(1 + 4) पाओ, फिर उस ऊर्ध्वाधर त्रिभुज में दोबारा लगाओ जिसकी भुजाएँ वह परिणाम और ऊँचाई 2 हैं। द्विविमीय प्रमेय के दो प्रयोग त्रिविमीय दे देते हैं, और वही चाल कितनी भी विमाओं तक फैलती है। (5 निर्देशांक जोड़ देता है।)",
+          mr: "√(1 + 4 + 4) = 3. त्रिमितीय अंतर-सूत्र म्हणजे तेच द्विमितीय ज्यात तिसरे पद जोडले, आणि कारण एकदा पाहणे आवश्यक आहे: आधार-प्रतलात पायथागोरस लावून √(1 + 4) मिळवा, मग त्या उभ्या त्रिकोणात पुन्हा लावा ज्याच्या बाजू तो निकाल आणि उंची 2 आहेत. द्विमितीय प्रमेयाचे दोन उपयोग त्रिमितीय देतात, आणि तीच युक्ती कितीही मितींपर्यंत पसरते. (5 निर्देशांक जोडते.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Two lines in space are neither parallel nor intersecting. How many points do they have in common?",
+          hi: "समष्टि में दो रेखाएँ न समांतर हैं न प्रतिच्छेदी। उनमें कितने बिंदु साझा हैं?",
+          mr: "अवकाशातील दोन रेषा ना समांतर आहेत ना छेदणाऱ्या. त्यांच्यात किती बिंदू सामायिक आहेत?",
+        },
+        answer: 0,
+        wrong: [1, 2, 3],
+        checkExpr: "1-1",
+        solution: {
+          en: "None — such lines are called skew, and they are the genuinely new thing this chapter brings. In a plane, two lines that are not parallel MUST meet; there is nowhere else for them to go. In space there is somewhere else: one line can pass over the other at a different height, sharing no point and pointing in a different direction. Two straight edges of a room's ceiling and floor, running crosswise, are skew. The implication is that the two-dimensional classification of a pair of lines — parallel or intersecting — is incomplete in three dimensions, and forgetting the third case is how one ends up trying to solve for an intersection point that does not exist. (1 assumes non-parallel lines must meet, which is a two-dimensional habit.)",
+          hi: "कोई नहीं — ऐसी रेखाओं को विषमतलीय कहते हैं, और वे इस अध्याय की सचमुच नई चीज़ हैं। किसी समतल में, दो रेखाएँ जो समांतर नहीं हैं उन्हें मिलना ही होगा; उनके जाने को और कोई जगह नहीं। समष्टि में और जगह है: एक रेखा दूसरी के ऊपर से भिन्न ऊँचाई पर गुज़र सकती है, कोई बिंदु साझा न करते हुए और भिन्न दिशा में इंगित करते हुए। किसी कमरे की छत और फ़र्श के दो सीधे किनारे, आड़े-तिरछे चलते हुए, विषमतलीय हैं। निहितार्थ यह है कि रेखाओं की जोड़ी का द्विविमीय वर्गीकरण — समांतर या प्रतिच्छेदी — तीन विमाओं में अधूरा है, और तीसरा मामला भूल जाना ही वह तरीक़ा है जिससे कोई ऐसे प्रतिच्छेद-बिंदु के लिए हल करने बैठ जाता है जो है ही नहीं। (1 मान लेता है कि असमांतर रेखाओं को मिलना ही होगा, जो द्विविमीय आदत है।)",
+          mr: "एकही नाही — अशा रेषांना विषमप्रतलीय म्हणतात, आणि त्या या अध्यायाची खरोखर नवी गोष्ट आहेत. एखाद्या प्रतलात, ज्या दोन रेषा समांतर नाहीत त्यांना भेटावेच लागते; त्यांना जाण्यासाठी दुसरी जागा नाही. अवकाशात दुसरी जागा आहे: एक रेषा दुसरीच्या वरून वेगळ्या उंचीवर जाऊ शकते, कोणताही बिंदू सामायिक न करता आणि वेगळ्या दिशेला निर्देश करत. एखाद्या खोलीच्या छताच्या आणि जमिनीच्या दोन सरळ कडा, आडव्या चालत, विषमप्रतलीय आहेत. निहितार्थ हा की रेषांच्या जोडीचे द्विमितीय वर्गीकरण — समांतर वा छेदणाऱ्या — तीन मितींत अपूर्ण आहे, आणि तिसरा प्रसंग विसरणे हाच तो मार्ग आहे ज्याने कोणी अस्तित्वातच नसलेल्या छेदनबिंदूसाठी सोडवायला बसतो. (1 गृहीत धरते की असमांतर रेषांना भेटावेच लागते, जी द्विमितीय सवय आहे.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "The angle between two planes with normals i and j is how many degrees?",
+          hi: "अभिलंब i और j वाले दो समतलों के बीच का कोण कितने अंश है?",
+          mr: "अभिलंब i आणि j असलेल्या दोन प्रतलांमधील कोन किती अंश आहे?",
+        },
+        answer: 90,
+        wrong: [0, 45, 180],
+        checkExpr: "45*2",
+        solution: {
+          en: "90 degrees, since the normals are perpendicular and the angle between two planes is defined as the angle between their normals. That definition is worth pausing on, because it is a choice and not an inevitability: two planes meet along a line, and one could imagine measuring the opening between them in some other way. Using the normals works because it reduces a question about two-dimensional surfaces to a question about two arrows, which the dot product already answers. Reducing a hard object to a vector that determines it is the recurring move of the whole chapter — planes become normals, lines become direction vectors. (0 answers as though perpendicular normals meant coincident planes.)",
+          hi: "90 अंश, क्योंकि अभिलंब लंबवत हैं और दो समतलों के बीच का कोण उनके अभिलंबों के बीच के कोण से परिभाषित है। उस परिभाषा पर ठहरना ज़रूरी है, क्योंकि वह चुनाव है, अनिवार्यता नहीं: दो समतल एक रेखा के अनुदिश मिलते हैं, और कोई उनके बीच की खुलावट किसी और तरीक़े से मापने की कल्पना कर सकता है। अभिलंब बरतना इसलिए चलता है क्योंकि वह द्विविमीय पृष्ठों के प्रश्न को दो तीरों के प्रश्न में घटा देता है, जिसका उत्तर अदिश गुणनफल पहले से देता है। किसी कठिन वस्तु को उसे तय करने वाले सदिश तक घटाना पूरे अध्याय की बार-बार दोहराई जाने वाली चाल है — समतल अभिलंब बन जाते हैं, रेखाएँ दिक्-सदिश। (0 ऐसे उत्तर देता है मानो लंबवत अभिलंबों का अर्थ संपाती समतल हो।)",
+          mr: "90 अंश, कारण अभिलंब लंब आहेत आणि दोन प्रतलांमधील कोन त्यांच्या अभिलंबांमधील कोनाने परिभाषित आहे. त्या व्याख्येवर थांबणे आवश्यक आहे, कारण ती निवड आहे, अपरिहार्यता नाही: दोन प्रतले एका रेषेच्या बाजूने भेटतात, आणि कोणी त्यांच्यातील उघड दुसऱ्या मार्गाने मोजण्याची कल्पना करू शकतो. अभिलंब वापरणे यासाठी चालते कारण ते द्विमितीय पृष्ठांचा प्रश्न दोन बाणांच्या प्रश्नात घटवते, ज्याचे उत्तर अदिश गुणाकार आधीच देतो. एखाद्या कठीण वस्तूला ती ठरवणाऱ्या सदिशापर्यंत घटवणे ही अख्ख्या अध्यायाची वारंवार येणारी चाल आहे — प्रतले अभिलंब बनतात, रेषा दिक्-सदिश. (0 असे उत्तर देते जणू लंब अभिलंबांचा अर्थ एकरूप प्रतले असावा.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "How many ways can two distinct lines in three-dimensional space be related to each other?",
+          hi: "त्रिविमीय समष्टि में दो भिन्न रेखाएँ एक-दूसरे से कितने प्रकार से संबंधित हो सकती हैं?",
+          mr: "त्रिमितीय अवकाशात दोन भिन्न रेषा एकमेकींशी किती प्रकारे संबंधित असू शकतात?",
+        },
+        answer: 3,
+        wrong: [2, 4, 1],
+        checkExpr: "2+1",
+        solution: {
+          en: "Three: parallel, intersecting, or skew. The count is the point, because in a plane the answer is 2, and the extra case is exactly what the third dimension buys. It is worth seeing why these three exhaust the possibilities. Ask two questions: do the lines share a direction, and do they share a point? Sharing a direction and a point means they coincide, which the word 'distinct' excludes. Sharing a direction but no point is parallel. Sharing a point but not a direction is intersecting. Sharing neither is skew — and in a plane this last case is empty, because two lines with different directions in a plane are forced to meet. So the classification is a two-by-two table with one cell excluded by the question and one cell that only three dimensions can fill. Building the table rather than recalling the list is what makes the count reliable. (2 gives the two-dimensional answer.)",
+          hi: "तीन: समांतर, प्रतिच्छेदी, या विषमतलीय। गिनती ही मुद्दा है, क्योंकि समतल में उत्तर 2 है, और अतिरिक्त मामला ठीक वही है जो तीसरी विमा ख़रीदती है। यह देखना ज़रूरी है कि ये तीन संभावनाओं को क्यों चुका देते हैं। दो प्रश्न पूछो: क्या रेखाएँ दिशा साझा करती हैं, और क्या वे बिंदु साझा करती हैं? दिशा और बिंदु दोनों साझा करने का अर्थ है वे संपाती हैं, जिसे 'भिन्न' शब्द बाहर कर देता है। दिशा साझा पर बिंदु नहीं, यह समांतर है। बिंदु साझा पर दिशा नहीं, यह प्रतिच्छेदी है। कुछ भी साझा नहीं, यह विषमतलीय है — और समतल में यह आख़िरी मामला ख़ाली है, क्योंकि समतल में भिन्न दिशाओं वाली दो रेखाएँ मिलने को मजबूर हैं। अतः वर्गीकरण दो-गुणा-दो की सारणी है जिसका एक ख़ाना प्रश्न ने बाहर किया और एक ख़ाना केवल तीन विमाएँ भर सकती हैं। सूची याद करने के बजाय सारणी बनाना ही गिनती को भरोसेमंद बनाता है। (2 द्विविमीय उत्तर देता है।)",
+          mr: "तीन: समांतर, छेदणाऱ्या, किंवा विषमप्रतलीय. मोजणीच मुद्दा आहे, कारण प्रतलात उत्तर 2 आहे, आणि अतिरिक्त प्रसंग नेमका तोच आहे जो तिसरी मिती विकत घेते. हे पाहणे आवश्यक आहे की या तिघांनी शक्यता का संपतात. दोन प्रश्न विचारा: रेषा दिशा सामायिक करतात का, आणि त्या बिंदू सामायिक करतात का? दिशा आणि बिंदू दोन्ही सामायिक करणे म्हणजे त्या एकरूप आहेत, ज्याला 'भिन्न' हा शब्द वगळतो. दिशा सामायिक पण बिंदू नाही, हे समांतर आहे. बिंदू सामायिक पण दिशा नाही, हे छेदणारे आहे. काहीच सामायिक नाही, हे विषमप्रतलीय आहे — आणि प्रतलात हा शेवटचा प्रसंग रिकामा आहे, कारण प्रतलात वेगळ्या दिशांच्या दोन रेषा भेटण्यास भाग पडतात. म्हणून वर्गीकरण दोन-गुणिले-दोन तक्ता आहे ज्याचा एक कप्पा प्रश्नाने वगळला आणि एक कप्पा केवळ तीन मिती भरू शकतात. यादी आठवण्याऐवजी तक्ता बांधणेच मोजणी विश्वासार्ह बनवते. (2 द्विमितीय उत्तर देते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A plane is fixed by three coefficients and a constant, but scaling the whole equation changes nothing. How many independent numbers determine a plane in space?",
+          hi: "कोई समतल तीन गुणांकों और एक अचर से तय होता है, पर पूरे समीकरण को स्केल करने से कुछ नहीं बदलता। समष्टि में समतल को कितनी स्वतंत्र संख्याएँ तय करती हैं?",
+          mr: "एखादे प्रतल तीन गुणांक आणि एका अचलाने ठरते, पण अख्खे समीकरण प्रमाणित केल्याने काहीच बदलत नाही. अवकाशात प्रतल किती स्वतंत्र संख्या ठरवतात?",
+        },
+        answer: 3,
+        wrong: [4, 2, 1],
+        checkExpr: "4-1",
+        solution: {
+          en: "Three. The equation ax + by + cz = d has four numbers in it, but multiplying every one of them by 5 describes exactly the same plane, so one degree of freedom is spent on a scaling that carries no geometric information. Dividing it out leaves 3. The check that this is right: three non-collinear points determine a plane, and three is what we counted. The counting habit is doing real work now, and it generalises — a line in space needs 4, which surprises most people, since a line seems simpler than a plane. The reason is that a line is the intersection of two planes, costing 3 + 3 = 6, minus the 2 degrees of freedom in sliding each plane around that same line without changing it. Whenever a description has more parameters than the object has freedom, the surplus is a redundancy in the description rather than a property of the object, and finding it is how one knows the description is not minimal. (4 counts the coefficients without noticing the scaling.)",
+          hi: "तीन। समीकरण ax + by + cz = d में चार संख्याएँ हैं, पर उनमें से हर एक को 5 से गुणा करने पर ठीक वही समतल बनता है, अतः एक स्वातंत्र्य-कोटि ऐसे स्केलन पर ख़र्च होती है जो कोई ज्यामितीय जानकारी नहीं ढोता। उसे भाग देकर निकालने पर 3 बचते हैं। यह सही है इसकी जाँच: तीन असंरेख बिंदु समतल तय करते हैं, और तीन ही हमने गिना। गिनने की आदत अब असली काम कर रही है, और वह सामान्यीकृत होती है — समष्टि में रेखा को 4 चाहिए, जो ज़्यादातर लोगों को चौंकाता है, क्योंकि रेखा समतल से सरल लगती है। कारण यह है कि रेखा दो समतलों का प्रतिच्छेद है, जिसकी लागत 3 + 3 = 6 है, घटा वे 2 स्वातंत्र्य-कोटियाँ जो हर समतल को उसी रेखा के चारों ओर बिना बदले घुमाने में हैं। जब भी किसी वर्णन में वस्तु की स्वतंत्रता से अधिक प्राचल हों, अतिरिक्त वस्तु का गुण नहीं बल्कि वर्णन की अतिरेकता है, और उसे ढूँढ़ना ही वह तरीक़ा है जिससे पता चलता है कि वर्णन न्यूनतम नहीं। (4 स्केलन को देखे बिना गुणांक गिन लेता है।)",
+          mr: "तीन. समीकरण ax + by + cz = d मध्ये चार संख्या आहेत, पण त्यांपैकी प्रत्येकीला 5 ने गुणल्यास नेमके तेच प्रतल बनते, म्हणून एक स्वातंत्र्य-कोटी अशा प्रमाणीकरणावर खर्च होते जे कोणतीही भूमितीय माहिती वाहत नाही. ते भागून काढल्यास 3 उरतात. हे बरोबर आहे याची तपासणी: तीन असंरेख बिंदू प्रतल ठरवतात, आणि तीनच आपण मोजले. मोजण्याची सवय आता खरे काम करत आहे, आणि ती सर्वसाधारण होते — अवकाशातील रेषेला 4 लागतात, जे बहुतेकांना चकित करते, कारण रेषा प्रतलाहून सोपी वाटते. कारण हे की रेषा दोन प्रतलांचा छेद आहे, ज्याची किंमत 3 + 3 = 6 आहे, वजा त्या 2 स्वातंत्र्य-कोटी ज्या प्रत्येक प्रतलाला त्याच रेषेभोवती न बदलता फिरवण्यात आहेत. जेव्हा जेव्हा एखाद्या वर्णनात वस्तूच्या स्वातंत्र्याहून अधिक प्राचल असतील, अधिक्य ही वस्तूचा गुणधर्म नसून वर्णनाची अतिरेकता आहे, आणि ती शोधणे हाच तो मार्ग आहे ज्याने कळते की वर्णन किमान नाही. (4 प्रमाणीकरण न पाहता गुणांक मोजते.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Two skew lines have direction vectors i and j, and the vector joining a point on one to a point on the other is 5k. What is the shortest distance between them?",
+          hi: "दो विषमतलीय रेखाओं के दिक्-सदिश i और j हैं, और एक पर के बिंदु को दूसरी पर के बिंदु से जोड़ने वाला सदिश 5k है। उनके बीच न्यूनतम दूरी क्या है?",
+          mr: "दोन विषमप्रतलीय रेषांचे दिक्-सदिश i आणि j आहेत, आणि एकीवरील बिंदूला दुसरीवरील बिंदूशी जोडणारा सदिश 5k आहे. त्यांमधील किमान अंतर किती?",
+        },
+        answer: 5,
+        wrong: [0, 10, 25],
+        checkExpr: "5*1",
+        solution: {
+          en: "5. The common perpendicular direction is i × j = k, a unit vector, and the shortest distance is the projection of the joining vector onto it: 5k·k = 5. The formula |(b − a)·(d₁ × d₂)| / |d₁ × d₂| is doing exactly this, and reading it as a projection rather than memorising it makes it hard to misapply. What deserves attention is why the shortest distance is achieved along the common perpendicular at all. Take any segment joining a point of one line to a point of the other and decompose it into a part along the common perpendicular and a part in the plane perpendicular to it. The first part is the SAME for every such segment, because sliding along either line moves you only within directions the perpendicular ignores; the second part varies and can be made zero. So the length is a fixed quantity plus something non-negative, and it is smallest when that something vanishes. That argument — split a varying quantity into a fixed piece and a controllable piece — is the general shape of a great many minimisation proofs, and it never requires calculus. (0 assumes lines that never meet must be able to get arbitrarily close, which is true of some skew pairs and not of these.)",
+          hi: "5. साझा लंब की दिशा i × j = k है, एक एकक सदिश, और न्यूनतम दूरी उस पर जोड़ने वाले सदिश का प्रक्षेप है: 5k·k = 5. सूत्र |(b − a)·(d₁ × d₂)| / |d₁ × d₂| ठीक यही कर रहा है, और उसे रटने के बजाय प्रक्षेप की तरह पढ़ना उसे ग़लत लगाना कठिन बना देता है। ध्यान देने लायक़ यह है कि न्यूनतम दूरी साझा लंब के अनुदिश ही क्यों मिलती है। एक रेखा के बिंदु को दूसरी के बिंदु से जोड़ता कोई भी खंड लो और उसे साझा लंब के अनुदिश एक हिस्से और उसके लंबवत समतल में एक हिस्से में विघटित करो। पहला हिस्सा हर ऐसे खंड के लिए वही है, क्योंकि किसी भी रेखा के अनुदिश सरकने से तुम केवल उन दिशाओं में हिलते हो जिन्हें वह लंब अनदेखा करता है; दूसरा हिस्सा बदलता है और शून्य किया जा सकता है। अतः लंबाई एक नियत राशि जोड़ कुछ अऋणात्मक है, और वह तब सबसे छोटी है जब वह कुछ लुप्त हो जाए। वह तर्क — बदलती राशि को नियत टुकड़े और नियंत्रणीय टुकड़े में बाँटो — बहुत सारी न्यूनीकरण-उपपत्तियों का सामान्य आकार है, और उसे कभी कलन नहीं चाहिए। (0 मान लेता है कि कभी न मिलने वाली रेखाएँ मनचाहे पास आ सकती होंगी, जो कुछ विषमतलीय जोड़ों के लिए सच है और इनके लिए नहीं।)",
+          mr: "5. सामायिक लंबाची दिशा i × j = k आहे, एक एकक सदिश, आणि किमान अंतर म्हणजे त्यावर जोडणाऱ्या सदिशाचा प्रक्षेप: 5k·k = 5. सूत्र |(b − a)·(d₁ × d₂)| / |d₁ × d₂| नेमके हेच करत आहे, आणि ते पाठ करण्याऐवजी प्रक्षेपासारखे वाचणे ते चुकीचे लावणे कठीण बनवते. लक्ष देण्याजोगे हे की किमान अंतर सामायिक लंबाच्या बाजूनेच का मिळते. एका रेषेवरील बिंदूला दुसरीवरील बिंदूशी जोडणारा कोणताही खंड घ्या आणि त्याला सामायिक लंबाच्या बाजूने एक भाग आणि त्याला लंब प्रतलात एक भाग असे विभागा. पहिला भाग प्रत्येक अशा खंडासाठी तोच आहे, कारण कोणत्याही रेषेच्या बाजूने सरकल्याने तुम्ही केवळ त्या दिशांत हलता ज्यांना तो लंब दुर्लक्षतो; दुसरा भाग बदलतो आणि शून्य करता येतो. म्हणून लांबी एक निश्चित राशी अधिक काहीतरी अऋण आहे, आणि ती तेव्हा सर्वांत लहान आहे जेव्हा ते काहीतरी लोप पावेल. तो युक्तिवाद — बदलती राशी निश्चित तुकडा आणि नियंत्रणीय तुकडा यांत विभागा — पुष्कळ किमानीकरण-सिद्धतांचा सर्वसाधारण आकार आहे, आणि त्याला कधीच कलन लागत नाही. (0 गृहीत धरते की कधीच न भेटणाऱ्या रेषा हव्या तितक्या जवळ येऊ शकत असतील, जे काही विषमप्रतलीय जोड्यांसाठी खरे आहे आणि यांच्यासाठी नाही.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Two planes in space are not parallel. Their intersection is a set of points. What is its dimension?",
+          hi: "समष्टि में दो समतल समांतर नहीं हैं। उनका प्रतिच्छेद बिंदुओं का एक समुच्चय है। उसकी विमा क्या है?",
+          mr: "अवकाशातील दोन प्रतले समांतर नाहीत. त्यांचा छेद हा बिंदूंचा संच आहे. त्याची मिती किती?",
+        },
+        answer: 1,
+        wrong: [0, 2, 3],
+        checkExpr: "3-2",
+        solution: {
+          en: "One — the intersection is a line. The counting argument gives it immediately: space has dimension 3, each plane equation imposes one constraint, and two independent constraints leave 3 − 2 = 1. This is worth doing carefully because the same counting predicts every case in the chapter and does so before any algebra. Three independent planes leave 3 − 3 = 0, a single point, which is why a system of three linear equations in three unknowns usually has exactly one solution. Four planes leave −1, which is not a dimension at all and is the counting's way of saying the system is over-determined and generically has no solution. And the word 'independent' is where the exceptions live: two parallel planes impose constraints that are not independent, the count of 1 does not apply, and the intersection is either empty or a whole plane. So the arithmetic is reliable exactly when the constraints are in general position, and every degenerate case in linear algebra is a failure of that assumption rather than a failure of the counting. Knowing which of the two you are looking at is most of the skill. (0 answers with the three-plane case.)",
+          hi: "एक — प्रतिच्छेद एक रेखा है। गिनती का तर्क उसे तुरंत दे देता है: समष्टि की विमा 3 है, हर समतल-समीकरण एक अड़चन लगाता है, और दो स्वतंत्र अड़चनें 3 − 2 = 1 छोड़ती हैं। यह ध्यान से करने लायक़ है क्योंकि वही गिनती अध्याय के हर मामले की भविष्यवाणी करती है और किसी बीजगणित से पहले करती है। तीन स्वतंत्र समतल 3 − 3 = 0 छोड़ते हैं, एक अकेला बिंदु, इसीलिए तीन अज्ञातों में तीन रैखिक समीकरणों के तंत्र का आम तौर पर ठीक एक हल होता है। चार समतल −1 छोड़ते हैं, जो विमा है ही नहीं और गिनती का यह कहने का तरीक़ा है कि तंत्र अति-निर्धारित है और सामान्यतः उसका कोई हल नहीं। और 'स्वतंत्र' शब्द वहीं है जहाँ अपवाद रहते हैं: दो समांतर समतल ऐसी अड़चनें लगाते हैं जो स्वतंत्र नहीं, 1 की गिनती लागू नहीं होती, और प्रतिच्छेद या तो रिक्त है या पूरा समतल। अतः गणित ठीक तभी भरोसेमंद है जब अड़चनें सामान्य स्थिति में हों, और रैखिक बीजगणित का हर अपभ्रष्ट मामला गिनती की विफलता नहीं बल्कि उस मान्यता की विफलता है। इन दोनों में से किसे देख रहे हो यह जानना ही अधिकांश कौशल है। (0 तीन-समतल वाले मामले से उत्तर देता है।)",
+          mr: "एक — छेद ही एक रेषा आहे. मोजणीचा युक्तिवाद ते लगेच देतो: अवकाशाची मिती 3 आहे, प्रत्येक प्रतल-समीकरण एक बंधन लादते, आणि दोन स्वतंत्र बंधने 3 − 2 = 1 सोडतात. हे काळजीपूर्वक करण्याजोगे आहे कारण तीच मोजणी अध्यायातील प्रत्येक प्रसंगाचे भाकीत करते आणि कोणत्याही बीजगणिताआधी करते. तीन स्वतंत्र प्रतले 3 − 3 = 0 सोडतात, एकच बिंदू, म्हणूनच तीन अज्ञातांतील तीन रैखिक समीकरणांच्या प्रणालीचे सर्वसाधारणपणे नेमके एक उत्तर असते. चार प्रतले −1 सोडतात, जी मितीच नाही आणि मोजणीचा हे सांगण्याचा मार्ग आहे की प्रणाली अति-निर्धारित आहे आणि सामान्यतः तिला उत्तर नाही. आणि 'स्वतंत्र' हा शब्द तिथेच आहे जिथे अपवाद राहतात: दोन समांतर प्रतले अशी बंधने लादतात जी स्वतंत्र नाहीत, 1 ची मोजणी लागू होत नाही, आणि छेद एकतर रिकामा आहे किंवा अख्खे प्रतल. म्हणून गणित नेमके तेव्हाच विश्वासार्ह आहे जेव्हा बंधने सर्वसाधारण स्थितीत असतील, आणि रैखिक बीजगणितातील प्रत्येक अपभ्रष्ट प्रसंग मोजणीचे अपयश नसून त्या गृहीतकाचे अपयश आहे. या दोहोंपैकी कशाकडे पाहत आहात हे जाणणे हेच बहुतांश कौशल्य आहे. (0 तीन-प्रतल प्रसंगाने उत्तर देते.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "In a plane, two lines that are not parallel must intersect. In space they need not. Of dimensions 2, 3 and 4, in how many can two lines be skew?",
+          hi: "किसी समतल में, दो रेखाएँ जो समांतर नहीं हैं उन्हें प्रतिच्छेद करना ही होगा। समष्टि में ज़रूरी नहीं। विमाओं 2, 3 और 4 में से कितनों में दो रेखाएँ विषमतलीय हो सकती हैं?",
+          mr: "एखाद्या प्रतलात, ज्या दोन रेषा समांतर नाहीत त्यांना छेदावेच लागते. अवकाशात गरज नाही. मिती 2, 3 आणि 4 यांपैकी कितींत दोन रेषा विषमप्रतलीय असू शकतात?",
+        },
+        answer: 2,
+        wrong: [1, 3, 0],
+        checkExpr: "3-1",
+        solution: {
+          en: "Two — dimensions 3 and 4, and every dimension above. Only the plane forces non-parallel lines to meet, and the reason is a dimension count that is worth doing rather than asserting. A line in n-dimensional space is determined by a point and a direction, and asking two lines to intersect imposes conditions: the joining vector between chosen points must lie in the plane spanned by the two directions. That is n − 2 conditions, since a 2-dimensional span inside n dimensions leaves n − 2 directions to escape through. In the plane, n − 2 = 0 — there are no conditions to satisfy, so intersection is automatic and skewness is impossible. In space, n − 2 = 1, a single condition, which a randomly chosen pair of lines will fail; skew is therefore the GENERIC case and intersecting is the coincidence, which inverts the intuition most students bring from the plane. In four dimensions there are two conditions and skewness is more generic still. Three things follow that are worth carrying beyond this chapter. First, 'generic' and 'familiar' are different: intersecting lines feel like the normal case only because we learn geometry on paper. Second, counting conditions predicts behaviour in dimensions one cannot picture, which is the only reliable tool once visualisation runs out. Third, the plane is the exception rather than the template — a great deal of geometric intuition is really two-dimensional intuition, and the useful discipline is to notice which facts were theorems and which were accidents of n = 2. (1 supposes skewness is peculiar to three dimensions, reading the familiar case as the only one.)",
+          hi: "दो — विमाएँ 3 और 4, और उससे ऊपर की हर विमा। केवल समतल असमांतर रेखाओं को मिलने पर मजबूर करता है, और कारण एक विमा-गणना है जिसे दावा करने के बजाय कर लेना बेहतर है। n-विमीय समष्टि में रेखा एक बिंदु और एक दिशा से तय होती है, और दो रेखाओं से प्रतिच्छेद माँगना शर्तें लगाता है: चुने गए बिंदुओं के बीच जोड़ने वाला सदिश दोनों दिशाओं से फैलाए समतल में होना चाहिए। वे n − 2 शर्तें हैं, क्योंकि n विमाओं के भीतर 2-विमीय फैलाव निकल भागने को n − 2 दिशाएँ छोड़ता है। समतल में, n − 2 = 0 — पूरी करने को कोई शर्त नहीं, अतः प्रतिच्छेद स्वतः है और विषमतलीयता असंभव। समष्टि में, n − 2 = 1, एक अकेली शर्त, जिसमें यादृच्छिक रूप से चुनी रेखाओं की जोड़ी विफल रहेगी; अतः विषमतलीय होना सामान्य मामला है और प्रतिच्छेद करना संयोग, जो उस अंतर्ज्ञान को उलट देता है जो अधिकांश विद्यार्थी समतल से लाते हैं। चार विमाओं में दो शर्तें हैं और विषमतलीयता और भी अधिक सामान्य। इस अध्याय से आगे ले जाने लायक़ तीन बातें निकलती हैं। पहली, 'सामान्य' और 'परिचित' अलग हैं: प्रतिच्छेदी रेखाएँ केवल इसलिए साधारण मामला लगती हैं क्योंकि हम ज्यामिति काग़ज़ पर सीखते हैं। दूसरी, शर्तें गिनना उन विमाओं में व्यवहार की भविष्यवाणी करता है जिनकी तस्वीर नहीं बनाई जा सकती, और दृश्यीकरण चुक जाने पर वही अकेला भरोसेमंद औज़ार है। तीसरी, समतल आदर्श नहीं बल्कि अपवाद है — बहुत सारा ज्यामितीय अंतर्ज्ञान असल में द्विविमीय अंतर्ज्ञान है, और उपयोगी अनुशासन यह देखना है कि कौन-से तथ्य प्रमेय थे और कौन-से n = 2 के संयोग। (1 मान लेता है कि विषमतलीयता तीन विमाओं की ख़ासियत है, परिचित मामले को अकेला मामला पढ़ते हुए।)",
+          mr: "दोन — मिती 3 आणि 4, आणि त्यावरील प्रत्येक मिती. केवळ प्रतल असमांतर रेषांना भेटण्यास भाग पाडते, आणि कारण एक मिती-गणना आहे जी दावा करण्याऐवजी करून घेणे बरे. n-मितीय अवकाशात रेषा एका बिंदू आणि एका दिशेने ठरते, आणि दोन रेषांकडून छेद मागणे अटी लादते: निवडलेल्या बिंदूंमधील जोडणारा सदिश दोन्ही दिशांनी पसरवलेल्या प्रतलात असावा लागतो. त्या n − 2 अटी आहेत, कारण n मितींच्या आत 2-मितीय पसारा निसटण्यासाठी n − 2 दिशा सोडतो. प्रतलात, n − 2 = 0 — पूर्ण करण्यास कोणतीही अट नाही, म्हणून छेद आपोआप आहे आणि विषमप्रतलता अशक्य. अवकाशात, n − 2 = 1, एकच अट, जिच्यात यादृच्छिकपणे निवडलेली रेषांची जोडी अपयशी ठरेल; म्हणून विषमप्रतलीय असणे हा सर्वसाधारण प्रसंग आहे आणि छेदणे हा योगायोग, जे बहुतेक विद्यार्थी प्रतलातून आणतात ती अंतर्दृष्टी उलटवते. चार मितींत दोन अटी आहेत आणि विषमप्रतलता आणखी अधिक सर्वसाधारण. या अध्यायापुढे न्यायला हव्या अशा तीन गोष्टी निघतात. पहिली, 'सर्वसाधारण' आणि 'परिचित' वेगळे आहेत: छेदणाऱ्या रेषा केवळ यासाठी सामान्य प्रसंग वाटतात कारण आपण भूमिती कागदावर शिकतो. दुसरी, अटी मोजणे ज्या मितींचे चित्र काढता येत नाही त्यांतील वर्तनाचे भाकीत करते, आणि दृश्यीकरण संपल्यावर तेच एकमेव विश्वासार्ह साधन आहे. तिसरी, प्रतल हे आदर्श नसून अपवाद आहे — पुष्कळशी भूमितीय अंतर्दृष्टी प्रत्यक्षात द्विमितीय अंतर्दृष्टी आहे, आणि उपयुक्त शिस्त हे पाहणे आहे की कोणती तथ्ये प्रमेये होती आणि कोणती n = 2 चे योगायोग. (1 गृहीत धरते की विषमप्रतलता तीन मितींची खासियत आहे, परिचित प्रसंगाला एकमेव प्रसंग वाचत.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "The distance from a point to a plane uses the plane's normal, and the distance between skew lines uses the cross product of their directions. Of these two formulas, how many still make sense if the normal or the cross product is the zero vector?",
+          hi: "किसी बिंदु से समतल तक की दूरी समतल के अभिलंब का उपयोग करती है, और विषमतलीय रेखाओं के बीच की दूरी उनकी दिशाओं के सदिश गुणनफल का। इन दो सूत्रों में से यदि अभिलंब या सदिश गुणनफल शून्य सदिश हो तो कितने अब भी अर्थपूर्ण रहते हैं?",
+          mr: "एखाद्या बिंदूपासून प्रतलापर्यंतचे अंतर प्रतलाचा अभिलंब वापरते, आणि विषमप्रतलीय रेषांमधील अंतर त्यांच्या दिशांचा सदिश गुणाकार. या दोन सूत्रांपैकी अभिलंब वा सदिश गुणाकार शून्य सदिश असल्यास किती अजूनही अर्थपूर्ण राहतात?",
+        },
+        answer: 0,
+        wrong: [1, 2, 3],
+        checkExpr: "2-2",
+        solution: {
+          en: "Neither. Both formulas divide by the magnitude of that vector, so a zero vector makes each expression undefined — and in both cases the undefinedness is honest rather than a technical annoyance, because the geometric situation has genuinely changed. If a plane's coefficients are all zero, the equation reads 0 = d, which describes either everything or nothing and is not a plane at all, so asking for a distance to it is asking about an object that does not exist. If two lines' directions have zero cross product, the lines are parallel, and parallel lines are not skew — the shortest-distance formula was derived for a common perpendicular direction that in this case is not unique, since infinitely many directions are perpendicular to both. The right answer for parallel lines exists and is perfectly well defined, but it needs a different formula, one that projects the joining vector perpendicular to the shared direction. So the count is 0, and there are two lessons in that. First, a formula's domain is part of the formula, and the places where it divides by zero are usually the places where the configuration degenerates into a different case rather than places where the mathematics fails. Second, and more practically: when a derivation produces a division, it is worth asking straight away what the divisor becoming zero would MEAN, because the answer names the exceptional case the formula quietly excluded, and that case will otherwise be discovered at the worst possible moment. Reading a formula for what it cannot handle is a faster route to understanding it than reading it for what it computes. (2 assumes that a formula written in full generality applies in full generality.)",
+          hi: "कोई नहीं। दोनों सूत्र उस सदिश के परिमाण से भाग देते हैं, अतः शून्य सदिश हर व्यंजक को अपरिभाषित कर देता है — और दोनों मामलों में अपरिभाषितता तकनीकी झंझट नहीं बल्कि ईमानदार है, क्योंकि ज्यामितीय स्थिति सचमुच बदल गई है। यदि समतल के गुणांक सब शून्य हों, तो समीकरण 0 = d पढ़ता है, जो या तो सब कुछ बताता है या कुछ नहीं और समतल है ही नहीं, अतः उससे दूरी पूछना ऐसी वस्तु के बारे में पूछना है जो मौजूद नहीं। यदि दो रेखाओं की दिशाओं का सदिश गुणनफल शून्य हो, तो रेखाएँ समांतर हैं, और समांतर रेखाएँ विषमतलीय नहीं — न्यूनतम-दूरी सूत्र ऐसी साझा लंब दिशा के लिए निकाला गया था जो इस मामले में अद्वितीय नहीं, क्योंकि अनंत दिशाएँ दोनों के लंबवत हैं। समांतर रेखाओं का सही उत्तर मौजूद है और बिलकुल सुपरिभाषित है, पर उसे भिन्न सूत्र चाहिए, ऐसा जो जोड़ने वाले सदिश को साझा दिशा के लंबवत प्रक्षेपित करे। अतः गिनती 0 है, और उसमें दो सबक़ हैं। पहला, किसी सूत्र का प्रांत सूत्र का हिस्सा है, और जहाँ वह शून्य से भाग देता है वे आम तौर पर वे जगहें हैं जहाँ विन्यास किसी भिन्न मामले में अपभ्रष्ट हो जाता है, न कि वे जगहें जहाँ गणित विफल होता है। दूसरा, और अधिक व्यावहारिक: जब कोई व्युत्पत्ति भाग पैदा करे, तो तुरंत यह पूछना ठीक है कि भाजक का शून्य होना क्या अर्थ रखेगा, क्योंकि उत्तर उस अपवादी मामले का नाम लेता है जिसे सूत्र ने चुपचाप बाहर रखा, और वह मामला वरना सबसे बुरे संभव क्षण में खोजा जाएगा। किसी सूत्र को इसके लिए पढ़ना कि वह क्या नहीं सँभाल सकता, उसे समझने का उससे तेज़ रास्ता है कि वह क्या गणित करता है। (2 मान लेता है कि पूरी व्यापकता में लिखा सूत्र पूरी व्यापकता में लागू होता है।)",
+          mr: "एकही नाही. दोन्ही सूत्रे त्या सदिशाच्या परिमाणाने भागतात, म्हणून शून्य सदिश प्रत्येक पदावली अपरिभाषित करतो — आणि दोन्ही प्रसंगांत अपरिभाषितता ही तांत्रिक कटकट नसून प्रामाणिक आहे, कारण भूमितीय परिस्थिती खरोखर बदलली आहे. जर प्रतलाचे गुणांक सर्व शून्य असतील, तर समीकरण 0 = d वाचते, जे एकतर सर्वकाही सांगते वा काहीच नाही आणि प्रतल नाहीच, म्हणून त्यापासूनचे अंतर विचारणे म्हणजे अस्तित्वात नसलेल्या वस्तूबद्दल विचारणे. जर दोन रेषांच्या दिशांचा सदिश गुणाकार शून्य असेल, तर रेषा समांतर आहेत, आणि समांतर रेषा विषमप्रतलीय नाहीत — किमान-अंतर सूत्र अशा सामायिक लंब दिशेसाठी काढले होते जी या प्रसंगात अद्वितीय नाही, कारण अनंत दिशा दोन्हींना लंब आहेत. समांतर रेषांचे बरोबर उत्तर अस्तित्वात आहे आणि अगदी सुपरिभाषित आहे, पण त्याला वेगळे सूत्र लागते, असे जे जोडणाऱ्या सदिशाला सामायिक दिशेला लंब प्रक्षेपित करेल. म्हणून मोजणी 0 आहे, आणि त्यात दोन धडे आहेत. पहिला, एखाद्या सूत्राचा प्रांत हा सूत्राचा भाग आहे, आणि जिथे ते शून्याने भागते त्या सर्वसाधारणपणे त्या जागा आहेत जिथे मांडणी वेगळ्या प्रसंगात अपभ्रष्ट होते, गणित अपयशी होणाऱ्या जागा नव्हे. दुसरा, आणि अधिक व्यावहारिक: जेव्हा एखादी व्युत्पत्ती भागाकार निर्माण करते, तेव्हा लगेच हे विचारणे बरे की भाजक शून्य होणे काय अर्थ ठेवेल, कारण उत्तर त्या अपवादात्मक प्रसंगाचे नाव घेते जो सूत्राने गुपचूप वगळला, आणि तो प्रसंग अन्यथा सर्वांत वाईट शक्य क्षणी सापडेल. एखादे सूत्र ते काय हाताळू शकत नाही यासाठी वाचणे, ते काय काढते यासाठी वाचण्याहून ते समजण्याचा वेगवान मार्ग आहे. (2 गृहीत धरते की पूर्ण व्यापकतेत लिहिलेले सूत्र पूर्ण व्यापकतेत लागू होते.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-12-three-dimensional-geometry",
+      subject: "MATHS",
+      classLevel: 12,
+      chapter: "Chapter 11 — Three Dimensional Geometry",
+      name: "Three Dimensional Geometry",
+      summary:
+        "What the third axis adds and what it takes away: why two lines that are not parallel are no longer forced to meet, why the new case is the ordinary one and intersecting is the coincidence, why counting conditions predicts a line needs four numbers and a plane only three, and why the places these formulas divide by zero are the places the geometry has quietly become a different problem.",
+      position: 11,
+      translations: {
+        hi: {
+          name: "त्रिविमीय ज्यामिति",
+          summary:
+            "तीसरा अक्ष क्या जोड़ता है और क्या छीन लेता है: असमांतर दो रेखाएँ अब मिलने को मजबूर क्यों नहीं, नया मामला ही साधारण क्यों है और प्रतिच्छेद करना संयोग, शर्तें गिनना यह क्यों बताता है कि रेखा को चार संख्याएँ चाहिए और समतल को केवल तीन, और ये सूत्र जहाँ शून्य से भाग देते हैं वहीं ज्यामिति चुपचाप भिन्न समस्या क्यों बन चुकी होती है।",
+        },
+        mr: {
+          name: "त्रिमितीय भूमिती",
+          summary:
+            "तिसरा अक्ष काय जोडतो आणि काय काढून घेतो: असमांतर दोन रेषा आता भेटण्यास भाग का पडत नाहीत, नवा प्रसंगच सामान्य का आहे आणि छेदणे योगायोग, अटी मोजणे हे का सांगते की रेषेला चार संख्या लागतात आणि प्रतलाला केवळ तीन, आणि ही सूत्रे जिथे शून्याने भागतात तिथेच भूमिती गुपचूप वेगळी समस्या का बनलेली असते.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 12 — Linear Programming (why finitely many corners are enough)     */
+/* ------------------------------------------------------------------------- */
+function linearProgramming12(): TopicFileOut {
+  const rand = rng("maths-12-linear-programming");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Maximise Z = 3x + 2y at the corner point (4, 1). What is Z there?",
+          hi: "कोने के बिंदु (4, 1) पर Z = 3x + 2y का मान क्या है?",
+          mr: "कोपऱ्याच्या बिंदू (4, 1) वर Z = 3x + 2y चे मूल्य किती?",
+        },
+        answer: 14,
+        wrong: [5, 12, 7],
+        checkExpr: "3*4+2*1",
+        solution: {
+          en: "3(4) + 2(1) = 12 + 2 = 14. Evaluating the objective at a point is the whole arithmetic of this chapter; everything else is deciding WHICH points to evaluate it at. (5 adds the coordinates and ignores the coefficients.)",
+          hi: "3(4) + 2(1) = 12 + 2 = 14. किसी बिंदु पर उद्देश्य-फलन का मान निकालना इस अध्याय का पूरा गणित है; बाक़ी सब यह तय करना है कि उसे किन बिंदुओं पर निकालें। (5 निर्देशांक जोड़ देता है और गुणांक अनदेखे करता है।)",
+          mr: "3(4) + 2(1) = 12 + 2 = 14. एखाद्या बिंदूवर उद्दिष्ट-फलनाचे मूल्य काढणे हे या अध्यायाचे अख्खे गणित आहे; बाकी सर्व हे ठरवणे आहे की ते कोणत्या बिंदूंवर काढावे. (5 निर्देशांक जोडते आणि गुणांक दुर्लक्षते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "The constraints x ≥ 0, y ≥ 0, x + y ≤ 4 make a triangle. How many corner points does it have?",
+          hi: "अड़चनें x ≥ 0, y ≥ 0, x + y ≤ 4 एक त्रिभुज बनाती हैं। उसके कितने कोने-बिंदु हैं?",
+          mr: "बंधने x ≥ 0, y ≥ 0, x + y ≤ 4 एक त्रिकोण बनवतात. त्याचे किती कोपरा-बिंदू आहेत?",
+        },
+        answer: 3,
+        wrong: [4, 2, 6],
+        checkExpr: "4-1",
+        solution: {
+          en: "Three — (0, 0), (4, 0) and (0, 4). Each corner is where two of the boundary lines cross, and three constraints in general position give three crossings inside the region. Counting the corners before doing any evaluation tells you how much work the problem is, which is a useful thing to know before starting. (4 counts the constraints, forgetting that one of the three pairwise crossings can lie outside.)",
+          hi: "तीन — (0, 0), (4, 0) और (0, 4). हर कोना वहाँ है जहाँ दो सीमा-रेखाएँ कटती हैं, और सामान्य स्थिति में तीन अड़चनें क्षेत्र के भीतर तीन कटान देती हैं। कोई मान निकालने से पहले कोने गिन लेना बताता है कि समस्या में कितना काम है, और शुरू करने से पहले यह जानना उपयोगी है। (4 अड़चनें गिन लेता है, यह भूलकर कि तीनों जोड़ीदार कटानों में से एक बाहर पड़ सकती है।)",
+          mr: "तीन — (0, 0), (4, 0) आणि (0, 4). प्रत्येक कोपरा तिथे आहे जिथे दोन सीमा-रेषा छेदतात, आणि सर्वसाधारण स्थितीत तीन बंधने प्रदेशाच्या आत तीन छेद देतात. कोणतेही मूल्य काढण्याआधी कोपरे मोजणे सांगते की समस्येत किती काम आहे, आणि सुरू करण्याआधी हे जाणणे उपयुक्त आहे. (4 बंधने मोजते, हे विसरून की तिन्ही जोडीदार छेदांपैकी एक बाहेर पडू शकतो.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "In a linear programming problem, the objective function has what highest power of the variables?",
+          hi: "किसी रैखिक प्रोग्रामन समस्या में उद्देश्य-फलन में चरों की उच्चतम घात क्या होती है?",
+          mr: "एखाद्या रैखिक प्रोग्रामिंग समस्येत उद्दिष्ट-फलनात चलांची सर्वोच्च घात किती असते?",
+        },
+        answer: 1,
+        wrong: [2, 0, 3],
+        checkExpr: "2-1",
+        solution: {
+          en: "1 — that is what 'linear' means, and it is the assumption everything else in the chapter rests on. No squares, no products of variables, no reciprocals. It is a strong restriction and it buys something remarkable in return: the guarantee that the optimum sits at a corner, which is what makes the method finite. Lose linearity and lose the guarantee. (2 assumes 'programming' implies something quadratic.)",
+          hi: "1 — 'रैखिक' का यही अर्थ है, और यही वह मान्यता है जिस पर अध्याय की बाक़ी हर चीज़ टिकी है। न वर्ग, न चरों के गुणनफल, न व्युत्क्रम। यह कड़ी पाबंदी है और बदले में कुछ उल्लेखनीय ख़रीदती है: यह गारंटी कि इष्टतम किसी कोने पर बैठता है, जो विधि को परिमित बनाता है। रैखिकता खोओ और गारंटी खो दो। (2 मान लेता है कि 'प्रोग्रामन' किसी द्विघात चीज़ का संकेत है।)",
+          mr: "1 — 'रैखिक' चा हाच अर्थ आहे, आणि हेच ते गृहीतक आहे ज्यावर अध्यायातील उरलेली प्रत्येक गोष्ट टिकली आहे. ना वर्ग, ना चलांचे गुणाकार, ना व्यस्त. हे कडक बंधन आहे आणि बदल्यात काहीतरी उल्लेखनीय विकत घेते: ही हमी की इष्टतम एखाद्या कोपऱ्यावर बसतो, जे पद्धत सांत बनवते. रैखिकता गमवा आणि हमी गमवा. (2 गृहीत धरते की 'प्रोग्रामिंग' म्हणजे काहीतरी द्विघाती.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Z = x + y is evaluated at (0, 0), (4, 0) and (0, 4). What is its maximum among these?",
+          hi: "Z = x + y का मान (0, 0), (4, 0) और (0, 4) पर निकाला जाता है। इनमें उसका अधिकतम क्या है?",
+          mr: "Z = x + y चे मूल्य (0, 0), (4, 0) आणि (0, 4) वर काढले जाते. यांत त्याची कमाल किती?",
+        },
+        answer: 4,
+        wrong: [0, 8, 2],
+        checkExpr: "4+0",
+        solution: {
+          en: "The values are 0, 4 and 4, so the maximum is 4 — attained at TWO different corners. That tie is worth noticing rather than passing over: when the objective's slope matches the slope of a boundary edge, every point along that whole edge gives the same value, so the optimum is not a single point but a segment. The corner-point method still finds the right VALUE, which is what was asked, but a problem answered with 'the optimum is at (4, 0)' would be reporting one of infinitely many optimal points as though it were the only one. (8 adds the two corner values.)",
+          hi: "मान हैं 0, 4 और 4, अतः अधिकतम 4 है — दो अलग कोनों पर प्राप्त। उस बराबरी को टाल देने के बजाय देख लेना ज़रूरी है: जब उद्देश्य की ढाल किसी सीमा-किनारे की ढाल से मेल खाती है, तो उस पूरे किनारे का हर बिंदु वही मान देता है, अतः इष्टतम एक बिंदु नहीं बल्कि एक खंड है। कोने-बिंदु विधि तब भी सही मान ढूँढ़ लेती है, जो पूछा गया था, पर 'इष्टतम (4, 0) पर है' कहकर दिया गया उत्तर अनंत इष्टतम बिंदुओं में से एक को ऐसे बता रहा होगा मानो वही अकेला हो। (8 दोनों कोनों के मान जोड़ देता है।)",
+          mr: "मूल्ये आहेत 0, 4 आणि 4, म्हणून कमाल 4 आहे — दोन वेगळ्या कोपऱ्यांवर गाठलेली. ती बरोबरी टाळण्याऐवजी पाहणे आवश्यक आहे: जेव्हा उद्दिष्टाचा उतार एखाद्या सीमा-कडेच्या उताराशी जुळतो, तेव्हा त्या अख्ख्या कडेचा प्रत्येक बिंदू तेच मूल्य देतो, म्हणून इष्टतम एक बिंदू नसून एक खंड आहे. कोपरा-बिंदू पद्धत तरीही बरोबर मूल्य शोधते, जे विचारले होते, पण 'इष्टतम (4, 0) वर आहे' असे उत्तर अनंत इष्टतम बिंदूंपैकी एकाला असे सांगत असेल जणू तोच एकमेव असावा. (8 दोन्ही कोपऱ्यांची मूल्ये जोडते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "How many corner points does the feasible region x ≥ 0, y ≥ 0, x ≤ 3, y ≤ 2 have?",
+          hi: "सुसंगत क्षेत्र x ≥ 0, y ≥ 0, x ≤ 3, y ≤ 2 के कितने कोने-बिंदु हैं?",
+          mr: "सुसंगत प्रदेश x ≥ 0, y ≥ 0, x ≤ 3, y ≤ 2 चे किती कोपरा-बिंदू आहेत?",
+        },
+        answer: 4,
+        wrong: [3, 2, 6],
+        checkExpr: "2*2",
+        solution: {
+          en: "Four — it is a rectangle with corners (0, 0), (3, 0), (3, 2) and (0, 2). Note that four constraints gave four corners here while three constraints gave three earlier; the pattern holds when the region is bounded and no constraint is redundant. A constraint that never touches the boundary of the final region adds no corner and could have been left out, which is worth checking for, because such constraints are common in problems written from a word description. (3 counts a triangle, which is the shape the previous question had.)",
+          hi: "चार — यह आयत है जिसके कोने (0, 0), (3, 0), (3, 2) और (0, 2) हैं। ध्यान दो कि यहाँ चार अड़चनों ने चार कोने दिए जबकि पहले तीन अड़चनों ने तीन; यह पैटर्न तब चलता है जब क्षेत्र परिबद्ध हो और कोई अड़चन अतिरेक न हो। जो अड़चन अंतिम क्षेत्र की सीमा को कभी छूती ही नहीं वह कोई कोना नहीं जोड़ती और उसे छोड़ा जा सकता था, और यह जाँचने लायक़ है, क्योंकि शब्द-वर्णन से लिखी समस्याओं में ऐसी अड़चनें आम हैं। (3 त्रिभुज गिन लेता है, जो पिछले प्रश्न की आकृति थी।)",
+          mr: "चार — हा आयत आहे ज्याचे कोपरे (0, 0), (3, 0), (3, 2) आणि (0, 2) आहेत. लक्षात घ्या की इथे चार बंधनांनी चार कोपरे दिले तर आधी तीन बंधनांनी तीन; हा साचा तेव्हा चालतो जेव्हा प्रदेश बद्ध असेल आणि कोणतेही बंधन अतिरेकी नसेल. जे बंधन अंतिम प्रदेशाच्या सीमेला कधी स्पर्शच करत नाही ते कोणताही कोपरा जोडत नाही आणि ते वगळता आले असते, आणि हे तपासण्याजोगे आहे, कारण शब्द-वर्णनातून लिहिलेल्या समस्यांत अशी बंधने सामान्य आहेत. (3 त्रिकोण मोजते, जी मागील प्रश्नाची आकृती होती.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A feasible region is empty. How many optimal solutions does the problem have?",
+          hi: "कोई सुसंगत क्षेत्र रिक्त है। समस्या के कितने इष्टतम हल हैं?",
+          mr: "एखादा सुसंगत प्रदेश रिकामा आहे. समस्येची किती इष्टतम उत्तरे आहेत?",
+        },
+        answer: 0,
+        wrong: [1, 2, 3],
+        checkExpr: "1-1",
+        solution: {
+          en: "None. If no point satisfies all the constraints at once, there is nothing to optimise over and the problem is called infeasible. This is one of two ways a linear programme can fail to have an answer, and the two are worth keeping apart from the start: infeasible means the constraints contradict each other, while unbounded means they permit the objective to grow without limit. Both return no optimum, but for opposite reasons — too many restrictions against too few. (1 assumes every problem has an answer.)",
+          hi: "कोई नहीं। यदि कोई बिंदु एक साथ सभी अड़चनें पूरी नहीं करता, तो इष्टतम करने को कुछ है ही नहीं और समस्या को असुसंगत कहते हैं। यह उन दो तरीक़ों में से एक है जिनसे किसी रैखिक कार्यक्रम का उत्तर नहीं होता, और दोनों को शुरू से अलग रखना ज़रूरी है: असुसंगत का अर्थ है अड़चनें एक-दूसरे का खंडन करती हैं, जबकि अपरिबद्ध का अर्थ है वे उद्देश्य को बिना सीमा बढ़ने देती हैं। दोनों कोई इष्टतम नहीं लौटाते, पर विपरीत कारणों से — बहुत अधिक पाबंदियाँ बनाम बहुत कम। (1 मान लेता है कि हर समस्या का उत्तर होता है।)",
+          mr: "एकही नाही. जर कोणताही बिंदू एकाच वेळी सर्व बंधने पूर्ण करत नसेल, तर इष्टतम करण्यास काहीच नाही आणि समस्येला असुसंगत म्हणतात. हा त्या दोन मार्गांपैकी एक आहे ज्यांनी एखाद्या रैखिक कार्यक्रमाला उत्तर नसते, आणि दोन्ही सुरुवातीपासून वेगळे ठेवणे आवश्यक आहे: असुसंगत म्हणजे बंधने एकमेकांचे खंडन करतात, तर अबद्ध म्हणजे ती उद्दिष्टाला मर्यादेशिवाय वाढू देतात. दोन्ही कोणतेही इष्टतम परत करत नाहीत, पण विरुद्ध कारणांनी — फार जास्त निर्बंध विरुद्ध फार कमी. (1 गृहीत धरते की प्रत्येक समस्येला उत्तर असते.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "Maximise Z = 5x + 3y over the corners (0, 0), (4, 0), (2, 3) and (0, 5). What is the maximum?",
+          hi: "कोनों (0, 0), (4, 0), (2, 3) और (0, 5) पर Z = 5x + 3y अधिकतम करो। अधिकतम क्या है?",
+          mr: "कोपरे (0, 0), (4, 0), (2, 3) आणि (0, 5) यांवर Z = 5x + 3y कमाल करा. कमाल किती?",
+        },
+        answer: 20,
+        wrong: [19, 15, 25],
+        checkExpr: "5*4+3*0",
+        solution: {
+          en: "The values are 0, 20, 19 and 15, so the maximum is 20 at (4, 0). Two things are worth taking from the numbers. First, the winner is a corner where one variable is zero, which is common and often surprises people expecting a balanced answer — linear objectives reward pushing hard in one direction rather than compromising. Second, 19 at (2, 3) is very close, and in a real problem that closeness matters: it means the optimum is not robust, and a small change in the coefficients could move it to a different corner entirely. Reporting only the winner throws away that information. (19 picks the interior-looking corner, which is the natural guess and here the runner-up.)",
+          hi: "मान हैं 0, 20, 19 और 15, अतः अधिकतम 20 है, (4, 0) पर। संख्याओं से दो बातें लेने लायक़ हैं। पहली, विजेता वह कोना है जहाँ एक चर शून्य है, जो आम है और अक्सर उन्हें चौंकाता है जो संतुलित उत्तर की अपेक्षा करते हैं — रैखिक उद्देश्य समझौते के बजाय एक दिशा में ज़ोर से धकेलने का इनाम देते हैं। दूसरी, (2, 3) पर 19 बहुत पास है, और असली समस्या में वह नज़दीकी मायने रखती है: उसका अर्थ है इष्टतम मज़बूत नहीं, और गुणांकों में छोटा-सा बदलाव उसे पूरी तरह किसी दूसरे कोने पर ले जा सकता है। केवल विजेता बताना उस जानकारी को फेंक देता है। (19 भीतर-सा दिखने वाला कोना चुन लेता है, जो स्वाभाविक अनुमान है और यहाँ उपविजेता।)",
+          mr: "मूल्ये आहेत 0, 20, 19 आणि 15, म्हणून कमाल 20 आहे, (4, 0) वर. संख्यांतून दोन गोष्टी घेण्याजोग्या आहेत. पहिली, विजेता तो कोपरा आहे जिथे एक चल शून्य आहे, जे सामान्य आहे आणि बऱ्याचदा संतुलित उत्तराची अपेक्षा करणाऱ्यांना चकित करते — रैखिक उद्दिष्टे तडजोडीऐवजी एका दिशेने जोरात ढकलण्याचे बक्षीस देतात. दुसरी, (2, 3) वरील 19 फार जवळ आहे, आणि खऱ्या समस्येत ती जवळीक महत्त्वाची आहे: तिचा अर्थ इष्टतम भक्कम नाही, आणि गुणांकांतील छोटासा बदल त्याला पूर्णपणे दुसऱ्या कोपऱ्यावर नेऊ शकतो. केवळ विजेता सांगणे ती माहिती फेकून देते. (19 आतल्यासारखा दिसणारा कोपरा निवडते, जो नैसर्गिक अंदाज आहे आणि इथे उपविजेता.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A feasible region is unbounded above and Z = x + y is to be maximised. How many maximum values does Z have?",
+          hi: "कोई सुसंगत क्षेत्र ऊपर की ओर अपरिबद्ध है और Z = x + y अधिकतम करना है। Z के कितने अधिकतम मान हैं?",
+          mr: "एखादा सुसंगत प्रदेश वरच्या दिशेने अबद्ध आहे आणि Z = x + y कमाल करायचे आहे. Z ची किती कमाल मूल्ये आहेत?",
+        },
+        answer: 0,
+        wrong: [1, 2, 4],
+        checkExpr: "2-2",
+        solution: {
+          en: "None. If the region runs off to infinity in a direction where x + y keeps growing, no point is the largest — for any candidate there is always a feasible point further out with a bigger value. The corner-point method would happily return the largest of the corner values, and it would be WRONG, which makes this the most dangerous failure in the chapter: the procedure produces an answer that looks like every other answer. The safeguard is a separate check, done before trusting the corner comparison — see whether the region is bounded, and if it is not, test whether the open half-plane Z > (best corner value) has any feasible point in it. Note also that the same unbounded region might have a perfectly good MINIMUM; unboundedness in one direction says nothing about the other. (1 trusts the corner-point method without checking that its hypothesis holds.)",
+          hi: "कोई नहीं। यदि क्षेत्र ऐसी दिशा में अनंत तक भागता है जहाँ x + y बढ़ता रहता है, तो कोई बिंदु सबसे बड़ा नहीं — किसी भी उम्मीदवार के लिए सदा और आगे कोई सुसंगत बिंदु होगा जिसका मान बड़ा है। कोने-बिंदु विधि ख़ुशी-ख़ुशी कोनों के मानों में सबसे बड़ा लौटा देगी, और वह ग़लत होगा, जो इसे अध्याय की सबसे ख़तरनाक विफलता बनाता है: प्रक्रिया ऐसा उत्तर पैदा करती है जो हर दूसरे उत्तर जैसा दिखता है। सुरक्षा एक अलग जाँच है, जो कोनों की तुलना पर भरोसा करने से पहले की जाए — देखो कि क्षेत्र परिबद्ध है या नहीं, और यदि नहीं, तो जाँचो कि खुले अर्धसमतल Z > (सर्वोत्तम कोने का मान) में कोई सुसंगत बिंदु है या नहीं। यह भी ध्यान दो कि उसी अपरिबद्ध क्षेत्र का बिलकुल ठीक न्यूनतम हो सकता है; एक दिशा में अपरिबद्धता दूसरी के बारे में कुछ नहीं कहती। (1 यह जाँचे बिना कोने-बिंदु विधि पर भरोसा कर लेता है कि उसकी परिकल्पना लागू है या नहीं।)",
+          mr: "एकही नाही. जर प्रदेश अशा दिशेने अनंतापर्यंत पळत असेल जिथे x + y वाढतच राहते, तर कोणताही बिंदू सर्वांत मोठा नाही — कोणत्याही उमेदवारासाठी नेहमी आणखी पुढे एखादा सुसंगत बिंदू असेल ज्याचे मूल्य मोठे आहे. कोपरा-बिंदू पद्धत आनंदाने कोपऱ्यांच्या मूल्यांतील सर्वांत मोठे परत करेल, आणि ते चुकीचे असेल, जे याला अध्यायातील सर्वांत धोकादायक अपयश बनवते: प्रक्रिया असे उत्तर तयार करते जे इतर प्रत्येक उत्तरासारखे दिसते. सुरक्षा ही एक वेगळी तपासणी आहे, जी कोपऱ्यांच्या तुलनेवर विश्वास ठेवण्याआधी करावी — पाहा की प्रदेश बद्ध आहे का, आणि नसल्यास तपासा की खुल्या अर्धप्रतल Z > (सर्वोत्तम कोपऱ्याचे मूल्य) मध्ये कोणताही सुसंगत बिंदू आहे का. हेही लक्षात घ्या की त्याच अबद्ध प्रदेशाची अगदी व्यवस्थित किमान असू शकते; एका दिशेतील अबद्धता दुसरीबद्दल काहीच सांगत नाही. (1 त्याचे गृहीतक लागू आहे का हे न तपासता कोपरा-बिंदू पद्धतीवर विश्वास ठेवते.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A feasible region is a convex polygon with 6 corners. To find the maximum of a linear objective, how many points must be tested?",
+          hi: "कोई सुसंगत क्षेत्र 6 कोनों वाला उत्तल बहुभुज है। किसी रैखिक उद्देश्य का अधिकतम ढूँढ़ने के लिए कितने बिंदुओं की जाँच करनी होगी?",
+          mr: "एखादा सुसंगत प्रदेश 6 कोपरे असलेला बहिर्वक्र बहुभुज आहे. एखाद्या रैखिक उद्दिष्टाची कमाल शोधण्यास किती बिंदू तपासावे लागतील?",
+        },
+        answer: 6,
+        wrong: [12, 3, 1],
+        checkExpr: "3*2",
+        solution: {
+          en: "Six — the corners, and nothing else. The corner-point theorem is what makes this possible, and its content is that an infinite search has been reduced to a finite one. Why it is true is worth seeing rather than accepting. A linear objective's level sets are parallel straight lines, and maximising means sliding that family as far as it will go while still touching the region. The last contact is at a corner, or along a whole edge if the slopes happen to match — but an edge has corners at both ends, so a corner always achieves the maximum even when it is not the only point that does. What rules out an interior point is that from any interior point one can step in the direction the objective increases and stay inside, so no interior point can be best. That last argument uses linearity twice and convexity once, and if either fails so does the theorem. (12 counts the edges as well, which the theorem never asks for.)",
+          hi: "छह — कोने, और कुछ नहीं। कोने-बिंदु प्रमेय ही इसे संभव बनाता है, और उसकी सामग्री यह है कि अनंत खोज परिमित खोज में घटा दी गई है। वह सच क्यों है यह मान लेने के बजाय देख लेना ज़रूरी है। किसी रैखिक उद्देश्य के स्तर-समुच्चय समांतर सरल रेखाएँ हैं, और अधिकतम करने का अर्थ है उस कुल को जहाँ तक जा सके सरकाना, क्षेत्र को छूते हुए। आख़िरी संपर्क किसी कोने पर होता है, या पूरे किनारे के अनुदिश यदि ढालें संयोग से मेल खा जाएँ — पर किनारे के दोनों सिरों पर कोने हैं, अतः कोई कोना सदा अधिकतम प्राप्त करता है, तब भी जब वह ऐसा करने वाला अकेला बिंदु न हो। भीतरी बिंदु को जो नकारता है वह यह है कि किसी भी भीतरी बिंदु से उस दिशा में क़दम रखा जा सकता है जहाँ उद्देश्य बढ़ता है और भीतर ही रहा जा सकता है, अतः कोई भीतरी बिंदु सर्वोत्तम नहीं हो सकता। वह आख़िरी तर्क रैखिकता दो बार और उत्तलता एक बार बरतता है, और इनमें से कोई विफल हो तो प्रमेय भी। (12 किनारे भी गिन लेता है, जो प्रमेय कभी नहीं माँगता।)",
+          mr: "सहा — कोपरे, आणि दुसरे काहीच नाही. कोपरा-बिंदू प्रमेयच हे शक्य करते, आणि त्याचा आशय हा की अनंत शोध सांत शोधात घटवला गेला आहे. ते खरे का आहे हे स्वीकारण्याऐवजी पाहणे आवश्यक आहे. एखाद्या रैखिक उद्दिष्टाचे स्तर-संच समांतर सरळ रेषा आहेत, आणि कमाल करणे म्हणजे ते कुळ जिथवर जाईल तिथवर सरकवणे, प्रदेशाला स्पर्श करत. शेवटचा संपर्क एखाद्या कोपऱ्यावर होतो, किंवा अख्ख्या कडेच्या बाजूने जर उतार योगायोगाने जुळले — पण कडेच्या दोन्ही टोकांवर कोपरे आहेत, म्हणून एखादा कोपरा नेहमी कमाल गाठतो, तेव्हाही जेव्हा तो तसे करणारा एकमेव बिंदू नसतो. आंतरिक बिंदूला जे नाकारते ते हे की कोणत्याही आंतरिक बिंदूपासून उद्दिष्ट वाढणाऱ्या दिशेने पाऊल टाकता येते आणि आतच राहता येते, म्हणून कोणताही आंतरिक बिंदू सर्वोत्तम असू शकत नाही. तो शेवटचा युक्तिवाद रैखिकता दोनदा आणि बहिर्वक्रता एकदा वापरतो, आणि यांपैकी काही अपयशी ठरल्यास प्रमेयही. (12 कडाही मोजते, जे प्रमेय कधीच मागत नाही.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A factory makes chairs at profit 4 and tables at profit 6, with 24 hours of labour available; a chair takes 2 hours, a table 4. Ignoring all other limits, what is the greatest profit?",
+          hi: "कोई कारख़ाना 4 लाभ पर कुर्सियाँ और 6 लाभ पर मेज़ें बनाता है, 24 घंटे श्रम उपलब्ध है; कुर्सी में 2 घंटे, मेज़ में 4. बाक़ी सब सीमाएँ अनदेखी करते हुए, अधिकतम लाभ क्या है?",
+          mr: "एक कारखाना 4 नफ्यावर खुर्च्या आणि 6 नफ्यावर टेबले बनवतो, 24 तास श्रम उपलब्ध आहे; खुर्चीला 2 तास, टेबलाला 4. इतर सर्व मर्यादा दुर्लक्षून, कमाल नफा किती?",
+        },
+        answer: 48,
+        wrong: [36, 42, 24],
+        checkExpr: "4*12",
+        solution: {
+          en: "Chairs return 4 profit per 2 hours, so 2 per hour; tables return 6 per 4 hours, so 1.5 per hour. Chairs are strictly better per hour, so all 24 hours go to chairs: 12 chairs at profit 4 gives 48. Note that no diagram was needed. With a single constraint the problem collapses to comparing profit-per-unit-of-scarce-resource, and the winner takes everything. That ratio is the shadow price idea in embryo, and it explains why real linear programmes so often produce lopsided answers: unless two activities have exactly equal returns on the binding resource, one of them is strictly better and the optimum sits at an extreme. The word 'ignoring all other limits' is carrying weight here — add a market that will only absorb 8 chairs and the answer changes completely, which is why the interesting part of these problems is always which constraints were left out. (36 makes 6 tables, the higher per-item profit, which is the trap.)",
+          hi: "कुर्सियाँ 2 घंटे में 4 लाभ देती हैं, यानी 2 प्रति घंटा; मेज़ें 4 घंटे में 6, यानी 1.5 प्रति घंटा। कुर्सियाँ प्रति घंटा सख़्ती से बेहतर हैं, अतः पूरे 24 घंटे कुर्सियों को: 4 लाभ पर 12 कुर्सियाँ देती हैं 48. ध्यान दो कि किसी आरेख की ज़रूरत नहीं पड़ी। एक अकेली अड़चन के साथ समस्या दुर्लभ संसाधन की प्रति इकाई लाभ की तुलना में ढह जाती है, और विजेता सब कुछ ले जाता है। वह अनुपात छाया-मूल्य के विचार का भ्रूण है, और वह समझाता है कि असली रैखिक कार्यक्रम इतनी बार एकतरफ़ा उत्तर क्यों देते हैं: जब तक दो गतिविधियों का बाध्यकारी संसाधन पर ठीक बराबर प्रतिफल न हो, उनमें से एक सख़्ती से बेहतर है और इष्टतम किसी छोर पर बैठता है। 'बाक़ी सब सीमाएँ अनदेखी करते हुए' यहाँ भार उठा रहा है — ऐसा बाज़ार जोड़ो जो केवल 8 कुर्सियाँ खपाएगा और उत्तर पूरी तरह बदल जाता है, इसीलिए इन समस्याओं का दिलचस्प हिस्सा सदा यह है कि कौन-सी अड़चनें छोड़ी गईं। (36, 6 मेज़ें बनाता है, प्रति-वस्तु ऊँचा लाभ, जो जाल है।)",
+          mr: "खुर्च्या 2 तासांत 4 नफा देतात, म्हणजे 2 प्रति तास; टेबले 4 तासांत 6, म्हणजे 1.5 प्रति तास. खुर्च्या प्रति तास काटेकोरपणे चांगल्या आहेत, म्हणून अख्खे 24 तास खुर्च्यांना: 4 नफ्यावर 12 खुर्च्या देतात 48. लक्षात घ्या की कोणत्याही आकृतीची गरज पडली नाही. एकाच बंधनासह समस्या दुर्मीळ संसाधनाच्या प्रति एकक नफ्याच्या तुलनेत कोसळते, आणि विजेता सर्वकाही घेतो. ते गुणोत्तर छाया-किमतीच्या कल्पनेचा गर्भ आहे, आणि ते स्पष्ट करते की खरे रैखिक कार्यक्रम इतक्या वेळा एकतर्फी उत्तरे का देतात: जोवर दोन क्रियांचा बंधनकारक संसाधनावर नेमका समान परतावा नसेल, तोवर त्यांपैकी एक काटेकोरपणे चांगली आहे आणि इष्टतम एखाद्या टोकावर बसतो. 'इतर सर्व मर्यादा दुर्लक्षून' हे इथे भार उचलत आहे — अशी बाजारपेठ जोडा जी केवळ 8 खुर्च्या खपवेल आणि उत्तर पूर्णपणे बदलते, म्हणूनच या समस्यांचा रोचक भाग नेहमी हा असतो की कोणती बंधने वगळली गेली. (36 हे 6 टेबले बनवते, प्रति-वस्तू जास्त नफा, जो सापळा आहे.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "The corner-point theorem holds for linear objectives on convex regions. Of the two hypotheses 'objective is linear' and 'region is convex', how many can be dropped and leave the theorem true?",
+          hi: "कोने-बिंदु प्रमेय उत्तल क्षेत्रों पर रैखिक उद्देश्यों के लिए लागू है। दो परिकल्पनाओं 'उद्देश्य रैखिक है' और 'क्षेत्र उत्तल है' में से कितनी छोड़ी जा सकती हैं और प्रमेय फिर भी सच रहे?",
+          mr: "कोपरा-बिंदू प्रमेय बहिर्वक्र प्रदेशांवरील रैखिक उद्दिष्टांसाठी लागू आहे. 'उद्दिष्ट रैखिक आहे' आणि 'प्रदेश बहिर्वक्र आहे' या दोन गृहीतकांपैकी किती वगळता येतील आणि प्रमेय तरीही खरे राहील?",
+        },
+        answer: 0,
+        wrong: [1, 2, 3],
+        checkExpr: "2-2",
+        solution: {
+          en: "Neither can be dropped, and it is instructive that each fails in a different way. Drop linearity: maximise x² + y² over the square with corners (0,0), (1,0), (1,1), (0,1) and the corner-point method still happens to work, but maximise −(x − 0.5)² − (y − 0.5)² over the same square and the maximum is at the CENTRE, an interior point no corner search would ever visit. Non-linear objectives can peak anywhere. Drop convexity: take an L-shaped region and a linear objective, and the corners still contain the maximum — because the argument that an interior point can always be improved used only linearity. But convexity was doing other work: without it the feasible set can be disconnected, so a local search that climbs to a corner can settle in the wrong component entirely, and the corner-point theorem's guarantee that testing all corners suffices survives only if one really does test ALL of them, which for a non-convex region can be a much larger and less obvious list. So the count is 0. The general lesson is about how to read a theorem's hypotheses: they are not decoration, and the way to understand what each buys is to remove it and see precisely which step of the proof stops working. Here linearity buys 'no interior maximum' and convexity buys 'the corners are few and the region is one piece', and losing either loses a different guarantee. (1 assumes one hypothesis must be redundant because the other seems to do most of the work.)",
+          hi: "कोई नहीं छोड़ी जा सकती, और शिक्षाप्रद यह है कि हर एक भिन्न ढंग से विफल होती है। रैखिकता छोड़ो: कोनों (0,0), (1,0), (1,1), (0,1) वाले वर्ग पर x² + y² अधिकतम करो और कोने-बिंदु विधि संयोग से तब भी चलती है, पर उसी वर्ग पर −(x − 0.5)² − (y − 0.5)² अधिकतम करो और अधिकतम केंद्र पर है, ऐसा भीतरी बिंदु जिस पर कोई कोना-खोज कभी नहीं जाती। अरैखिक उद्देश्य कहीं भी शिखर छू सकते हैं। उत्तलता छोड़ो: L-आकार का क्षेत्र और रैखिक उद्देश्य लो, और कोनों में अधिकतम तब भी है — क्योंकि यह तर्क कि भीतरी बिंदु को सदा सुधारा जा सकता है केवल रैखिकता बरतता था। पर उत्तलता और काम कर रही थी: उसके बिना सुसंगत समुच्चय असंबद्ध हो सकता है, अतः किसी कोने तक चढ़ती स्थानीय खोज पूरी तरह ग़लत घटक में जा बैठ सकती है, और यह गारंटी कि सब कोने जाँचना काफ़ी है केवल तभी बचती है जब सचमुच सब जाँचे जाएँ, जो अनुत्तल क्षेत्र के लिए कहीं बड़ी और कम स्पष्ट सूची हो सकती है। अतः गिनती 0 है। सामान्य सबक़ यह है कि किसी प्रमेय की परिकल्पनाएँ कैसे पढ़ी जाएँ: वे सजावट नहीं, और हर एक क्या ख़रीदती है यह समझने का तरीक़ा उसे हटाकर देखना है कि उपपत्ति का कौन-सा क़दम ठीक-ठीक चलना बंद कर देता है। यहाँ रैखिकता 'कोई भीतरी अधिकतम नहीं' ख़रीदती है और उत्तलता 'कोने थोड़े हैं और क्षेत्र एक टुकड़ा है', और किसी एक को खोने पर भिन्न गारंटी खोती है। (1 मान लेता है कि एक परिकल्पना अतिरेक होगी क्योंकि दूसरी अधिकांश काम करती दिखती है।)",
+          mr: "एकही वगळता येत नाही, आणि बोधप्रद हे की प्रत्येक वेगळ्या प्रकारे अपयशी होते. रैखिकता वगळा: कोपरे (0,0), (1,0), (1,1), (0,1) असलेल्या चौरसावर x² + y² कमाल करा आणि कोपरा-बिंदू पद्धत योगायोगाने तरीही चालते, पण त्याच चौरसावर −(x − 0.5)² − (y − 0.5)² कमाल करा आणि कमाल केंद्रावर आहे, असा आंतरिक बिंदू ज्यावर कोणताही कोपरा-शोध कधीच जात नाही. अरैखिक उद्दिष्टे कुठेही शिखर गाठू शकतात. बहिर्वक्रता वगळा: L-आकाराचा प्रदेश आणि रैखिक उद्दिष्ट घ्या, आणि कोपऱ्यांत कमाल तरीही आहे — कारण आंतरिक बिंदू नेहमी सुधारता येतो हा युक्तिवाद केवळ रैखिकता वापरत होता. पण बहिर्वक्रता दुसरे काम करत होती: तिच्याशिवाय सुसंगत संच असंबद्ध असू शकतो, म्हणून एखाद्या कोपऱ्यापर्यंत चढणारा स्थानिक शोध पूर्णपणे चुकीच्या घटकात स्थिरावू शकतो, आणि सर्व कोपरे तपासणे पुरेसे आहे ही हमी केवळ तेव्हाच टिकते जेव्हा खरोखर सर्व तपासले जातील, जी अबहिर्वक्र प्रदेशासाठी कितीतरी मोठी आणि कमी स्पष्ट यादी असू शकते. म्हणून मोजणी 0 आहे. सर्वसाधारण धडा हा की एखाद्या प्रमेयाची गृहीतके कशी वाचावीत: ती सजावट नाहीत, आणि प्रत्येक काय विकत घेते हे समजण्याचा मार्ग ते काढून पाहणे आहे की सिद्धतेचे कोणते पाऊल नेमके चालणे थांबवते. इथे रैखिकता 'कोणतीही आंतरिक कमाल नाही' विकत घेते आणि बहिर्वक्रता 'कोपरे थोडे आहेत आणि प्रदेश एक तुकडा आहे', आणि कोणतेही एक गमावल्यास वेगळी हमी हरवते. (1 गृहीत धरते की एक गृहीतक अतिरेकी असेल कारण दुसरे बहुतांश काम करताना दिसते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A linear programme has 3 variables and 5 constraints. Corner points come from solving 3 constraints at a time. At most how many such combinations are there?",
+          hi: "किसी रैखिक कार्यक्रम में 3 चर और 5 अड़चनें हैं। कोने-बिंदु एक बार में 3 अड़चनें हल करने से आते हैं। ऐसे अधिक से अधिक कितने संयोजन हैं?",
+          mr: "एका रैखिक कार्यक्रमात 3 चल आणि 5 बंधने आहेत. कोपरा-बिंदू एका वेळी 3 बंधने सोडवण्यातून येतात. असे जास्तीत जास्त किती संयोग आहेत?",
+        },
+        answer: 10,
+        wrong: [15, 8, 125],
+        checkExpr: "10*1",
+        solution: {
+          en: "Choosing 3 from 5 gives 10 combinations. Not all of them yield a feasible corner — some triples of planes fail to meet in a single point, and some meet at points that violate the other two constraints — so 10 is an upper bound rather than a count. What makes this worth an advanced question is what the number does as the problem grows. Choosing n from m grows combinatorially: 10 variables and 20 constraints give 184,756 candidate corners, and a realistic industrial problem with hundreds of variables has more corners than there are atoms in the observable universe. So the corner-point method, which is a complete and correct algorithm, is completely unusable at scale — and that gap between correct and usable is one of the most important distinctions in applied mathematics. The resolution is the simplex method, which does not enumerate corners but WALKS between neighbouring ones, always in a direction that improves the objective, and so visits a tiny fraction of them. It is worth noticing what made that possible: convexity guarantees there are no local maxima to get stuck in, so improving locally is safe and a greedy walk cannot be trapped. The theorem that made enumeration valid is the same theorem that makes enumeration unnecessary. (15 computes 5 × 3, treating the choice as a product.)",
+          hi: "5 में से 3 चुनने पर 10 संयोजन बनते हैं। उनमें से सब सुसंगत कोना नहीं देते — समतलों के कुछ त्रिक एक बिंदु पर मिलने में विफल रहते हैं, और कुछ ऐसे बिंदुओं पर मिलते हैं जो बाक़ी दो अड़चनों का उल्लंघन करते हैं — अतः 10 गिनती नहीं बल्कि ऊपरी सीमा है। इसे उन्नत प्रश्न वह बनाता है जो यह संख्या समस्या के बड़े होने पर करती है। m में से n चुनना संयोजनात्मक रूप से बढ़ता है: 10 चर और 20 अड़चनें 184,756 उम्मीदवार कोने देती हैं, और सैकड़ों चरों वाली यथार्थ औद्योगिक समस्या में प्रेक्षणीय ब्रह्मांड के परमाणुओं से अधिक कोने होते हैं। अतः कोने-बिंदु विधि, जो पूर्ण और सही कलनविधि है, बड़े पैमाने पर पूरी तरह अनुपयोगी है — और सही तथा उपयोगी के बीच की वह खाई अनुप्रयुक्त गणित के सबसे महत्वपूर्ण भेदों में से एक है। समाधान सिंप्लेक्स विधि है, जो कोने गिनती नहीं बल्कि पड़ोसी कोनों के बीच चलती है, सदा उस दिशा में जो उद्देश्य सुधारे, और इसलिए उनके बहुत छोटे अंश पर ही जाती है। ध्यान देने लायक़ यह है कि उसे किसने संभव बनाया: उत्तलता गारंटी देती है कि फँसने को कोई स्थानीय अधिकतम नहीं, अतः स्थानीय रूप से सुधारना सुरक्षित है और लोभी चाल फँस नहीं सकती। जिस प्रमेय ने गणना को वैध बनाया वही प्रमेय गणना को अनावश्यक बना देता है। (15, 5 × 3 गणित करता है, चुनाव को गुणनफल मानते हुए।)",
+          mr: "5 पैकी 3 निवडल्यास 10 संयोग बनतात. त्यांपैकी सर्व सुसंगत कोपरा देत नाहीत — प्रतलांची काही त्रिके एका बिंदूवर भेटण्यात अपयशी ठरतात, आणि काही अशा बिंदूंवर भेटतात जे उरलेल्या दोन बंधनांचे उल्लंघन करतात — म्हणून 10 ही मोजणी नसून वरची सीमा आहे. याला प्रगत प्रश्न ते बनवते जे ही संख्या समस्या मोठी होताना करते. m पैकी n निवडणे संयोगात्मकरीत्या वाढते: 10 चल आणि 20 बंधने 184,756 उमेदवार कोपरे देतात, आणि शेकडो चल असलेल्या वास्तववादी औद्योगिक समस्येत निरीक्षणीय विश्वातील अणूंहून अधिक कोपरे असतात. म्हणून कोपरा-बिंदू पद्धत, जी पूर्ण आणि बरोबर कलनविधी आहे, मोठ्या प्रमाणावर पूर्णपणे निरुपयोगी आहे — आणि बरोबर आणि वापरण्याजोगे यांतील ती दरी उपयोजित गणितातील सर्वांत महत्त्वाच्या भेदांपैकी एक आहे. निराकरण म्हणजे सिंप्लेक्स पद्धत, जी कोपरे मोजत नाही तर शेजारच्या कोपऱ्यांदरम्यान चालते, नेहमी उद्दिष्ट सुधारणाऱ्या दिशेने, आणि म्हणून त्यांच्या अगदी लहान अंशावरच जाते. लक्षात घेण्याजोगे हे की ते कशाने शक्य केले: बहिर्वक्रता हमी देते की अडकण्यासाठी कोणतीही स्थानिक कमाल नाही, म्हणून स्थानिकरीत्या सुधारणे सुरक्षित आहे आणि लोभी चाल अडकू शकत नाही. ज्या प्रमेयाने मोजणी वैध केली तेच प्रमेय मोजणी अनावश्यक करते. (15 हे 5 × 3 काढते, निवडीला गुणाकार मानत.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A factory's optimal plan calls for 7.5 machines. Rounding to 8 exceeds the budget and rounding to 7 is feasible but not optimal among whole numbers. Of the linear programme's optimum and the true integer optimum, how many are found by rounding?",
+          hi: "किसी कारख़ाने की इष्टतम योजना 7.5 मशीनें माँगती है। 8 पर पूर्णांकित करने से बजट पार हो जाता है और 7 पर करने से सुसंगत तो है पर पूर्ण संख्याओं में इष्टतम नहीं। रैखिक कार्यक्रम के इष्टतम और सच्चे पूर्णांक इष्टतम में से कितने पूर्णांकन से मिलते हैं?",
+          mr: "एका कारखान्याची इष्टतम योजना 7.5 यंत्रे मागते. 8 वर पूर्णांकित केल्यास अंदाजपत्रक ओलांडते आणि 7 वर केल्यास सुसंगत आहे पण पूर्ण संख्यांत इष्टतम नाही. रैखिक कार्यक्रमाची इष्टतम आणि खरी पूर्णांक इष्टतम यांपैकी किती पूर्णांकनाने सापडतात?",
+        },
+        answer: 0,
+        wrong: [1, 2, 3],
+        checkExpr: "1-1",
+        solution: {
+          en: "Neither. The linear programme's optimum is 7.5 itself and rounding destroys it rather than finding it; the integer optimum is stated not to be 7, and 8 is infeasible, so it lies somewhere rounding never looks — at a different combination of the OTHER variables entirely. The count is 0. This is the honest limit of the whole chapter and it is worth stating plainly, because the standard classroom problems quietly avoid it by choosing numbers that come out whole. Adding the requirement that variables be integers changes the problem's character completely. The feasible set stops being a convex polygon and becomes a scatter of isolated lattice points; the corner-point theorem no longer applies, because the optimum need not be at a corner of anything; and the simplex method's guarantee, which rested on being able to move continuously in an improving direction, is gone, since one cannot move a little bit. Integer linear programming is in fact NP-hard, while ordinary linear programming is solvable in polynomial time — the two problems look almost identical on the page and sit on opposite sides of the sharpest known divide in computational complexity. Two things follow that are worth carrying well beyond this syllabus. First, the rounding instinct is not merely inaccurate but structurally wrong: the continuous optimum's location carries no reliable information about where the discrete one is, and it can be arbitrarily far away. Second, a constraint that sounds like a technicality — 'you cannot buy half a machine' — can be the single most expensive thing in the model. Which requirements are cheap and which are catastrophic is not visible from how they are phrased. (1 supposes the linear optimum at least is recovered by rounding, when rounding moves away from it.)",
+          hi: "कोई नहीं। रैखिक कार्यक्रम का इष्टतम स्वयं 7.5 है और पूर्णांकन उसे ढूँढ़ने के बजाय नष्ट कर देता है; पूर्णांक इष्टतम के बारे में कहा गया है कि वह 7 नहीं, और 8 असुसंगत है, अतः वह वहाँ है जहाँ पूर्णांकन कभी देखता ही नहीं — पूरी तरह दूसरे चरों के किसी भिन्न संयोजन पर। गिनती 0 है। यह पूरे अध्याय की ईमानदार सीमा है और उसे साफ़ कह देना ज़रूरी है, क्योंकि मानक कक्षा-समस्याएँ ऐसी संख्याएँ चुनकर चुपचाप इससे बच जाती हैं जो पूरी निकलती हैं। चरों के पूर्णांक होने की माँग जोड़ना समस्या का चरित्र पूरी तरह बदल देता है। सुसंगत समुच्चय उत्तल बहुभुज होना छोड़कर अलग-थलग जालक-बिंदुओं का बिखराव बन जाता है; कोने-बिंदु प्रमेय अब लागू नहीं, क्योंकि इष्टतम को किसी भी चीज़ के कोने पर होना ज़रूरी नहीं; और सिंप्लेक्स विधि की गारंटी, जो सुधार की दिशा में संतत हिल सकने पर टिकी थी, चली गई, क्योंकि थोड़ा-सा हिला नहीं जा सकता। पूर्णांक रैखिक प्रोग्रामन असल में NP-कठिन है, जबकि साधारण रैखिक प्रोग्रामन बहुपद समय में हल हो जाता है — दोनों समस्याएँ काग़ज़ पर लगभग एक जैसी दिखती हैं और अभिकलनात्मक जटिलता की सबसे तीखी ज्ञात विभाजक रेखा के विपरीत पक्षों पर बैठती हैं। इस पाठ्यक्रम से कहीं आगे ले जाने लायक़ दो बातें निकलती हैं। पहली, पूर्णांकन की सहज-वृत्ति महज़ अशुद्ध नहीं बल्कि संरचनात्मक रूप से ग़लत है: संतत इष्टतम की जगह इस बारे में कोई भरोसेमंद जानकारी नहीं ढोती कि विविक्त वाला कहाँ है, और वह मनचाहे दूर हो सकता है। दूसरी, जो अड़चन तकनीकी बारीक़ी लगती है — 'तुम आधी मशीन नहीं ख़रीद सकते' — वह मॉडल की सबसे महँगी अकेली चीज़ हो सकती है। कौन-सी माँगें सस्ती हैं और कौन-सी विनाशकारी, यह उनके कहे जाने के ढंग से नहीं दिखता। (1 मान लेता है कि कम से कम रैखिक इष्टतम पूर्णांकन से वापस मिल जाता है, जबकि पूर्णांकन उससे दूर ले जाता है।)",
+          mr: "एकही नाही. रैखिक कार्यक्रमाची इष्टतम स्वतः 7.5 आहे आणि पूर्णांकन ती शोधण्याऐवजी नष्ट करते; पूर्णांक इष्टतमबद्दल सांगितले आहे की ती 7 नाही, आणि 8 असुसंगत आहे, म्हणून ती तिथे आहे जिथे पूर्णांकन कधीच पाहत नाही — पूर्णपणे इतर चलांच्या वेगळ्या संयोगावर. मोजणी 0 आहे. ही अख्ख्या अध्यायाची प्रामाणिक मर्यादा आहे आणि ती स्पष्ट सांगणे आवश्यक आहे, कारण प्रमाण वर्ग-समस्या पूर्ण निघणाऱ्या संख्या निवडून गुपचूप हिच्यापासून वाचतात. चल पूर्णांक असावेत ही मागणी जोडणे समस्येचे चरित्र पूर्णपणे बदलते. सुसंगत संच बहिर्वक्र बहुभुज असणे थांबवून वेगळ्या जालक-बिंदूंचा विखार बनतो; कोपरा-बिंदू प्रमेय आता लागू नाही, कारण इष्टतम कशाच्याही कोपऱ्यावर असणे आवश्यक नाही; आणि सिंप्लेक्स पद्धतीची हमी, जी सुधारणाऱ्या दिशेने संततपणे हलू शकण्यावर टिकली होती, गेली, कारण थोडेसे हलता येत नाही. पूर्णांक रैखिक प्रोग्रामिंग प्रत्यक्षात NP-कठीण आहे, तर साधे रैखिक प्रोग्रामिंग बहुपदी काळात सुटते — दोन्ही समस्या कागदावर जवळजवळ सारख्याच दिसतात आणि अभिकलनात्मक गुंतागुंतीच्या सर्वांत तीक्ष्ण ज्ञात विभाजक रेषेच्या विरुद्ध बाजूंना बसतात. या अभ्यासक्रमापुढे कितीतरी न्यायला हव्या अशा दोन गोष्टी निघतात. पहिली, पूर्णांकनाची सहजप्रवृत्ती केवळ चुकीची नसून संरचनात्मक दृष्ट्या चुकीची आहे: संतत इष्टतमची जागा विविक्त कुठे आहे याबद्दल कोणतीही विश्वासार्ह माहिती वाहत नाही, आणि ती हवी तितकी दूर असू शकते. दुसरी, जे बंधन तांत्रिक बारकावा वाटते — 'तुम्ही अर्धे यंत्र विकत घेऊ शकत नाही' — ते प्रतिरूपातील सर्वांत महाग एकटी गोष्ट असू शकते. कोणत्या मागण्या स्वस्त आहेत आणि कोणत्या विनाशकारी, हे त्या कशा मांडल्या यावरून दिसत नाही. (1 गृहीत धरते की किमान रैखिक इष्टतम पूर्णांकनाने परत मिळते, तर पूर्णांकन तिच्यापासून दूर नेते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A maximisation problem has an unbounded feasible region and no maximum. Of its maximum and its minimum, how many are guaranteed not to exist?",
+          hi: "किसी अधिकतमीकरण समस्या का सुसंगत क्षेत्र अपरिबद्ध है और कोई अधिकतम नहीं। उसके अधिकतम और न्यूनतम में से कितनों का अस्तित्व न होना निश्चित है?",
+          mr: "एखाद्या कमालीकरण समस्येचा सुसंगत प्रदेश अबद्ध आहे आणि कोणतीही कमाल नाही. तिच्या कमाल आणि किमान यांपैकी कितींचे अस्तित्व नसणे निश्चित आहे?",
+        },
+        answer: 1,
+        wrong: [2, 0, 3],
+        checkExpr: "2-1",
+        solution: {
+          en: "One — only the maximum. That the region is unbounded says the feasible set extends forever in some direction, and that the maximum fails to exist says the objective increases without limit along one of those directions. Neither statement constrains the other end. The region x ≥ 0, y ≥ 0 with objective x + y has no maximum and a perfectly good minimum of 0 at the origin, so unboundedness in a region is entirely compatible with the objective being bounded below. The count is therefore 1, and the general principle is that boundedness of the FEASIBLE SET and boundedness of the OBJECTIVE ON that set are different properties, related but not equivalent. A bounded region forces both to exist; an unbounded region forces neither, and each must be checked separately in the direction being asked about. There is a further subtlety worth naming, because it is the one that catches people who have understood everything so far. An unbounded region does not even guarantee that the maximum fails — take the same quarter-plane with objective −x − y, which is bounded above by 0 and attains it, so the region runs to infinity in directions where the objective is running away downwards and the maximum exists comfortably. So the correct statement has three parts, not one: the maximum exists if the region is bounded, OR if the objective decreases along every unbounded direction of the region; and it fails only when some unbounded direction increases it. Checking 'is the region bounded' is a cheap sufficient test, and treating it as necessary as well is the error. Reading a sufficient condition as though it were a characterisation is among the most common ways of being confidently wrong in mathematics, and this chapter offers a particularly clean example of it. (2 assumes that an unbounded region breaks both ends at once.)",
+          hi: "एक — केवल अधिकतम। क्षेत्र का अपरिबद्ध होना कहता है कि सुसंगत समुच्चय किसी दिशा में सदा को फैला है, और अधिकतम का न होना कहता है कि उन्हीं दिशाओं में से किसी एक के अनुदिश उद्देश्य बिना सीमा बढ़ता है। कोई भी कथन दूसरे सिरे को नहीं बाँधता। क्षेत्र x ≥ 0, y ≥ 0 और उद्देश्य x + y का कोई अधिकतम नहीं और मूलबिंदु पर बिलकुल ठीक 0 का न्यूनतम है, अतः क्षेत्र की अपरिबद्धता उद्देश्य के नीचे से परिबद्ध होने के पूरी तरह अनुकूल है। अतः गिनती 1 है, और सामान्य सिद्धांत यह है कि सुसंगत समुच्चय की परिबद्धता और उस समुच्चय पर उद्देश्य की परिबद्धता भिन्न गुण हैं, संबंधित पर समतुल्य नहीं। परिबद्ध क्षेत्र दोनों को होने पर मजबूर करता है; अपरिबद्ध क्षेत्र किसी को नहीं, और जिस दिशा के बारे में पूछा गया है उसमें हर एक अलग से जाँचना होगा। एक और बारीक़ी नाम देने लायक़ है, क्योंकि वही उन्हें पकड़ती है जो अब तक सब समझ चुके हैं। अपरिबद्ध क्षेत्र यह गारंटी तक नहीं देता कि अधिकतम विफल होगा — वही चतुर्थांश-समतल उद्देश्य −x − y के साथ लो, जो ऊपर से 0 से परिबद्ध है और उसे प्राप्त भी करता है, अतः क्षेत्र उन दिशाओं में अनंत तक भागता है जहाँ उद्देश्य नीचे की ओर भाग रहा है और अधिकतम आराम से मौजूद है। अतः सही कथन के तीन हिस्से हैं, एक नहीं: अधिकतम है यदि क्षेत्र परिबद्ध हो, या यदि उद्देश्य क्षेत्र की हर अपरिबद्ध दिशा के अनुदिश घटता हो; और वह केवल तब विफल है जब कोई अपरिबद्ध दिशा उसे बढ़ाए। 'क्या क्षेत्र परिबद्ध है' जाँचना सस्ता पर्याप्त परीक्षण है, और उसे आवश्यक भी मान लेना ही भूल है। किसी पर्याप्त शर्त को ऐसे पढ़ना मानो वह अभिलक्षण हो, गणित में आत्मविश्वास से ग़लत होने के सबसे आम तरीक़ों में है, और यह अध्याय उसका ख़ासा साफ़ उदाहरण देता है। (2 मान लेता है कि अपरिबद्ध क्षेत्र दोनों सिरे एक साथ तोड़ देता है।)",
+          mr: "एक — केवळ कमाल. प्रदेश अबद्ध असणे सांगते की सुसंगत संच एखाद्या दिशेने कायमचा पसरला आहे, आणि कमाल नसणे सांगते की त्याच दिशांपैकी एकीच्या बाजूने उद्दिष्ट मर्यादेशिवाय वाढते. कोणतेही विधान दुसऱ्या टोकाला बांधत नाही. प्रदेश x ≥ 0, y ≥ 0 आणि उद्दिष्ट x + y यांना कोणतीही कमाल नाही आणि आदिबिंदूवर अगदी व्यवस्थित 0 ची किमान आहे, म्हणून प्रदेशाची अबद्धता उद्दिष्ट खालून बद्ध असण्याशी पूर्णपणे सुसंगत आहे. म्हणून मोजणी 1 आहे, आणि सर्वसाधारण तत्त्व हे की सुसंगत संचाची बद्धता आणि त्या संचावर उद्दिष्टाची बद्धता हे वेगळे गुणधर्म आहेत, संबंधित पण समतुल्य नाहीत. बद्ध प्रदेश दोन्ही असण्यास भाग पाडतो; अबद्ध प्रदेश कोणालाच नाही, आणि ज्या दिशेबद्दल विचारले आहे तिच्यात प्रत्येक वेगळे तपासावे लागेल. आणखी एक सूक्ष्मता नाव देण्याजोगी आहे, कारण तीच त्यांना पकडते ज्यांनी आतापर्यंत सर्व समजून घेतले आहे. अबद्ध प्रदेश ही हमीसुद्धा देत नाही की कमाल अपयशी ठरेल — तेच चतुर्थांश-प्रतल उद्दिष्ट −x − y सोबत घ्या, जे वरून 0 ने बद्ध आहे आणि ते गाठतेही, म्हणून प्रदेश त्या दिशांत अनंतापर्यंत पळतो जिथे उद्दिष्ट खालच्या दिशेने पळत आहे आणि कमाल आरामात अस्तित्वात आहे. म्हणून बरोबर विधानाचे तीन भाग आहेत, एक नव्हे: कमाल आहे जर प्रदेश बद्ध असेल, किंवा जर उद्दिष्ट प्रदेशाच्या प्रत्येक अबद्ध दिशेच्या बाजूने घटत असेल; आणि ती केवळ तेव्हा अपयशी आहे जेव्हा एखादी अबद्ध दिशा तिला वाढवेल. 'प्रदेश बद्ध आहे का' तपासणे ही स्वस्त पुरेशी चाचणी आहे, आणि तिला आवश्यकही मानणे हीच चूक आहे. एखादी पुरेशी अट अशी वाचणे जणू ती वैशिष्ट्यनिर्धारण असावी, हे गणितात आत्मविश्वासाने चुकीचे असण्याच्या सर्वांत सामान्य मार्गांपैकी आहे, आणि हा अध्याय त्याचे विशेष स्वच्छ उदाहरण देतो. (2 गृहीत धरते की अबद्ध प्रदेश दोन्ही टोके एकाच वेळी मोडतो.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-12-linear-programming",
+      subject: "MATHS",
+      classLevel: 12,
+      chapter: "Chapter 12 — Linear Programming",
+      name: "Linear Programming",
+      summary:
+        "Why an infinite search can be finished by testing finitely many corners, and what that guarantee is bought with: why linearity and convexity are both load-bearing and fail in different ways, why an unbounded region makes the method return a confident wrong answer, why the number of corners makes the honest method unusable at real scale, and why requiring whole numbers changes the problem into a different and far harder one.",
+      position: 12,
+      translations: {
+        hi: {
+          name: "रैखिक प्रोग्रामन",
+          summary:
+            "अनंत खोज परिमित कोनों की जाँच से क्यों पूरी हो जाती है, और वह गारंटी किस क़ीमत पर ख़रीदी गई: रैखिकता और उत्तलता दोनों भार क्यों उठा रही हैं और भिन्न ढंग से विफल क्यों होती हैं, अपरिबद्ध क्षेत्र विधि से आत्मविश्वास भरा ग़लत उत्तर क्यों दिलवाता है, कोनों की संख्या असली पैमाने पर ईमानदार विधि को अनुपयोगी क्यों बना देती है, और पूर्ण संख्याओं की माँग समस्या को भिन्न और कहीं कठिन क्यों बना देती है।",
+        },
+        mr: {
+          name: "रैखिक प्रोग्रामिंग",
+          summary:
+            "अनंत शोध सांत कोपरे तपासून का पूर्ण होतो, आणि ती हमी कोणत्या किमतीवर विकत घेतली: रैखिकता आणि बहिर्वक्रता दोन्ही भार का उचलत आहेत आणि वेगळ्या प्रकारे का अपयशी होतात, अबद्ध प्रदेश पद्धतीकडून आत्मविश्वासाने भरलेले चुकीचे उत्तर का देववतो, कोपऱ्यांची संख्या खऱ्या प्रमाणावर प्रामाणिक पद्धत निरुपयोगी का करते, आणि पूर्ण संख्यांची मागणी समस्येला वेगळी आणि कितीतरी कठीण का बनवते.",
+        },
+      },
+    },
+    qs,
+  );
+}
+
+/* ------------------------------------------------------------------------- */
+/* Chapter 13 — Probability (what a condition does to a chance)               */
+/* ------------------------------------------------------------------------- */
+function probability12(): TopicFileOut {
+  const rand = rng("maths-12-probability");
+  const qs: OutQuestion[] = [];
+
+  qs.push(
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "A fair die is rolled. Out of 6 outcomes, how many are even?",
+          hi: "एक न्यायसंगत पासा फेंका जाता है। 6 परिणामों में से कितने सम हैं?",
+          mr: "एक न्याय्य फासा टाकला जातो. 6 निकालांपैकी किती सम आहेत?",
+        },
+        answer: 3,
+        wrong: [2, 4, 6],
+        checkExpr: "6/2",
+        solution: {
+          en: "2, 4 and 6 — three of them, so the probability of an even roll is 3/6 = 1/2. Counting favourable outcomes out of equally likely ones is the whole of elementary probability, and everything later in the chapter is about what happens when the outcomes are NOT equally likely or when information arrives that changes the count. (2 counts the digits 2 and 4 and forgets 6 is even.)",
+          hi: "2, 4 और 6 — उनमें तीन, अतः सम आने की प्रायिकता 3/6 = 1/2 है। समसंभाव्य परिणामों में से अनुकूल परिणाम गिनना प्रारंभिक प्रायिकता की पूरी बात है, और अध्याय में आगे सब कुछ इस बारे में है कि क्या होता है जब परिणाम समसंभाव्य न हों या जब ऐसी जानकारी आ जाए जो गिनती बदल दे। (2, अंक 2 और 4 गिन लेता है और भूल जाता है कि 6 सम है।)",
+          mr: "2, 4 आणि 6 — त्यांतील तीन, म्हणून सम येण्याची संभाव्यता 3/6 = 1/2 आहे. समसंभाव्य निकालांतून अनुकूल निकाल मोजणे ही प्राथमिक संभाव्यतेची अख्खी गोष्ट आहे, आणि अध्यायात पुढे सर्वकाही याबद्दल आहे की काय होते जेव्हा निकाल समसंभाव्य नसतील किंवा जेव्हा मोजणी बदलणारी माहिती येईल. (2 अंक 2 आणि 4 मोजते आणि विसरते की 6 सम आहे.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "Two fair coins are tossed. How many outcomes are in the sample space?",
+          hi: "दो न्यायसंगत सिक्के उछाले जाते हैं। प्रतिदर्श समष्टि में कितने परिणाम हैं?",
+          mr: "दोन न्याय्य नाणी उडवली जातात. नमुना अवकाशात किती निकाल आहेत?",
+        },
+        answer: 4,
+        wrong: [2, 3, 8],
+        checkExpr: "2*2",
+        solution: {
+          en: "Four: HH, HT, TH and TT. Note that HT and TH are DIFFERENT outcomes even though both give one head — the coins are distinguishable even when they look alike, and treating 'one head' as a single outcome is what produces the wrong answer 3. That error has a distinguished history: it is what d'Alembert got wrong in the eighteenth century, and it is still the commonest mistake in the chapter. (3 counts the possible numbers of heads rather than the outcomes.)",
+          hi: "चार: HH, HT, TH और TT. ध्यान दो कि HT और TH अलग परिणाम हैं, भले दोनों एक चित देते हों — सिक्के एक जैसे दिखने पर भी अलग पहचाने जा सकते हैं, और 'एक चित' को अकेला परिणाम मानना ही ग़लत उत्तर 3 पैदा करता है। उस भूल का प्रतिष्ठित इतिहास है: अठारहवीं सदी में द'अलंबेयर से यही ग़लती हुई थी, और वह आज भी अध्याय की सबसे आम भूल है। (3 परिणामों के बजाय चितों की संभव संख्याएँ गिन लेता है।)",
+          mr: "चार: HH, HT, TH आणि TT. लक्षात घ्या की HT आणि TH हे वेगळे निकाल आहेत, जरी दोन्ही एक छापा देत असले तरी — नाणी सारखी दिसली तरी वेगळी ओळखता येतात, आणि 'एक छापा' ला एकच निकाल मानणेच चुकीचे उत्तर 3 निर्माण करते. त्या चुकीला प्रतिष्ठित इतिहास आहे: अठराव्या शतकात द'अलंबेरची हीच चूक झाली होती, आणि ती आजही अध्यायातील सर्वांत सामान्य चूक आहे. (3 निकालांऐवजी छाप्यांच्या शक्य संख्या मोजते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 1,
+        stem: {
+          en: "An event is certain. Its probability is what number?",
+          hi: "कोई घटना निश्चित है। उसकी प्रायिकता कौन-सी संख्या है?",
+          mr: "एखादी घटना निश्चित आहे. तिची संभाव्यता कोणती संख्या आहे?",
+        },
+        answer: 1,
+        wrong: [0, 100, 2],
+        checkExpr: "2-1",
+        solution: {
+          en: "1. Probability runs from 0 to 1, with 0 for impossible and 1 for certain, and every number in between is a degree of belief or a long-run frequency depending on which interpretation one takes. The 100 on offer is a percentage, which is the same information wearing different clothes; mixing the two scales in one calculation is a reliable way to produce an answer a hundred times too big. (100 gives the percentage.)",
+          hi: "1. प्रायिकता 0 से 1 तक चलती है, 0 असंभव के लिए और 1 निश्चित के लिए, और बीच की हर संख्या विश्वास की मात्रा है या दीर्घकालिक बारंबारता, इस पर निर्भर कि कौन-सी व्याख्या ली जाए। पेश किया गया 100 प्रतिशत है, जो वही जानकारी है अलग कपड़ों में; एक ही गणना में दोनों पैमाने मिला देना सौ गुना बड़ा उत्तर पैदा करने का भरोसेमंद तरीक़ा है। (100 प्रतिशत देता है।)",
+          mr: "1. संभाव्यता 0 ते 1 पर्यंत चालते, 0 अशक्यासाठी आणि 1 निश्चितासाठी, आणि मधली प्रत्येक संख्या विश्वासाची मात्रा आहे वा दीर्घकालीन वारंवारता, कोणते अर्थनिर्वचन घेतले यावर अवलंबून. दिलेला 100 हा टक्केवारी आहे, जी तीच माहिती वेगळ्या कपड्यांत आहे; एकाच गणनेत दोन्ही मापे मिसळणे हा शंभरपट मोठे उत्तर तयार करण्याचा विश्वासार्ह मार्ग आहे. (100 टक्केवारी देते.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "A die shows an even number. Given that, out of how many outcomes is a 6 now being chosen?",
+          hi: "पासे पर सम संख्या आई। यह देखते हुए, अब 6 कितने परिणामों में से चुना जा रहा है?",
+          mr: "फाशावर सम संख्या आली. हे पाहता, आता 6 किती निकालांतून निवडला जात आहे?",
+        },
+        answer: 3,
+        wrong: [6, 2, 1],
+        checkExpr: "6/2",
+        solution: {
+          en: "Three — the condition has thrown away 1, 3 and 5, so the sample space is now {2, 4, 6} and P(6 | even) = 1/3 rather than 1/6. That is the whole mechanism of conditional probability: information does not change the die, it SHRINKS the sample space, and the probability rises because the same single favourable outcome is now competing against fewer rivals. Seeing conditioning as a reduction of the space rather than as a formula makes most of the later questions answerable by counting. (6 keeps the original space and ignores the condition.)",
+          hi: "तीन — शर्त ने 1, 3 और 5 फेंक दिए, अतः प्रतिदर्श समष्टि अब {2, 4, 6} है और P(6 | सम) = 1/3 है, 1/6 नहीं। यही सशर्त प्रायिकता की पूरी क्रियाविधि है: जानकारी पासे को नहीं बदलती, वह प्रतिदर्श समष्टि को सिकोड़ देती है, और प्रायिकता इसलिए बढ़ती है क्योंकि वही एक अनुकूल परिणाम अब कम प्रतिद्वंद्वियों से भिड़ रहा है। सशर्तन को सूत्र के बजाय समष्टि के संकुचन की तरह देखना आगे के अधिकांश प्रश्नों को गिनती से उत्तर देने लायक़ बना देता है। (6 मूल समष्टि रखता है और शर्त अनदेखी करता है।)",
+          mr: "तीन — अटीने 1, 3 आणि 5 फेकून दिले, म्हणून नमुना अवकाश आता {2, 4, 6} आहे आणि P(6 | सम) = 1/3 आहे, 1/6 नव्हे. हीच सशर्त संभाव्यतेची अख्खी कार्यपद्धती आहे: माहिती फाशाला बदलत नाही, ती नमुना अवकाश आकुंचित करते, आणि संभाव्यता यासाठी वाढते कारण तोच एक अनुकूल निकाल आता कमी प्रतिस्पर्ध्यांशी भिडत आहे. सशर्तीकरणाला सूत्राऐवजी अवकाशाचे आकुंचन म्हणून पाहणे पुढील बहुतांश प्रश्न मोजणीने उत्तरण्याजोगे बनवते. (6 मूळ अवकाश ठेवते आणि अट दुर्लक्षते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Two independent events have probabilities 1/2 and 1/3. What is the denominator of the probability that both occur?",
+          hi: "दो स्वतंत्र घटनाओं की प्रायिकताएँ 1/2 और 1/3 हैं। दोनों के घटने की प्रायिकता का हर क्या है?",
+          mr: "दोन स्वतंत्र घटनांच्या संभाव्यता 1/2 आणि 1/3 आहेत. दोन्ही घडण्याच्या संभाव्यतेचा छेद किती?",
+        },
+        answer: 6,
+        wrong: [5, 3, 2],
+        checkExpr: "2*3",
+        solution: {
+          en: "Independence means the probabilities multiply: (1/2)(1/3) = 1/6, so the denominator is 6. Note that 5 is the answer of somebody who added the fractions, which would be the rule for MUTUALLY EXCLUSIVE events and not for independent ones — the two words sound similar and describe opposite situations, which the next question takes up directly. (5 adds the denominators.)",
+          hi: "स्वतंत्रता का अर्थ है प्रायिकताएँ गुणा होती हैं: (1/2)(1/3) = 1/6, अतः हर 6 है। ध्यान दो कि 5 उसका उत्तर है जिसने भिन्न जोड़ दीं, जो परस्पर अपवर्जी घटनाओं का नियम होता, स्वतंत्र घटनाओं का नहीं — दोनों शब्द एक जैसे सुनाई देते हैं और विपरीत स्थितियाँ बताते हैं, जिसे अगला प्रश्न सीधे उठाता है। (5 हर जोड़ देता है।)",
+          mr: "स्वातंत्र्याचा अर्थ संभाव्यता गुणल्या जातात: (1/2)(1/3) = 1/6, म्हणून छेद 6 आहे. लक्षात घ्या की 5 हे त्याचे उत्तर आहे ज्याने अपूर्णांक जोडले, जो परस्पर अपवर्जक घटनांचा नियम असता, स्वतंत्र घटनांचा नव्हे — दोन्ही शब्द सारखे ऐकू येतात आणि विरुद्ध परिस्थिती सांगतात, जे पुढचा प्रश्न थेट उचलतो. (5 छेद जोडते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 2,
+        stem: {
+          en: "Two events with non-zero probability are mutually exclusive. How many of them can be independent of the other?",
+          hi: "अशून्य प्रायिकता वाली दो घटनाएँ परस्पर अपवर्जी हैं। उनमें से कितनी दूसरी से स्वतंत्र हो सकती हैं?",
+          mr: "अशून्य संभाव्यता असलेल्या दोन घटना परस्पर अपवर्जक आहेत. त्यांपैकी किती दुसरीपासून स्वतंत्र असू शकतात?",
+        },
+        answer: 0,
+        wrong: [1, 2, 3],
+        checkExpr: "1-1",
+        solution: {
+          en: "Neither — mutually exclusive events with non-zero probability are necessarily DEPENDENT, which is the opposite of what the similar-sounding names suggest. The argument is short. If A and B cannot both happen, then P(A and B) = 0. If they were independent, P(A and B) would equal P(A)P(B), which is a product of two non-zero numbers and therefore non-zero. The two statements contradict each other, so independence is impossible. The intuition behind the algebra is worth stating: learning that A happened tells you B definitely did NOT, and that is a very large amount of information — the most, in fact, that one event can give about another. Independence means learning nothing; exclusivity means learning everything. They are not merely different, they are at opposite ends of the same scale. (1 supposes the relation might hold one way and not the other, but independence is symmetric.)",
+          hi: "कोई नहीं — अशून्य प्रायिकता वाली परस्पर अपवर्जी घटनाएँ अनिवार्यतः परतंत्र हैं, जो उन एक-से सुनाई देते नामों के सुझाव के उलट है। तर्क छोटा है। यदि A और B दोनों नहीं हो सकते, तो P(A और B) = 0. यदि वे स्वतंत्र होतीं, तो P(A और B) बराबर होता P(A)P(B) के, जो दो अशून्य संख्याओं का गुणनफल है और इसलिए अशून्य। दोनों कथन एक-दूसरे का खंडन करते हैं, अतः स्वतंत्रता असंभव है। बीजगणित के पीछे का अंतर्ज्ञान कहने लायक़ है: यह जानना कि A हुआ, तुम्हें बता देता है कि B निश्चित रूप से नहीं हुआ, और वह बहुत बड़ी मात्रा में जानकारी है — असल में सबसे ज़्यादा, जितनी एक घटना दूसरी के बारे में दे सकती है। स्वतंत्रता का अर्थ है कुछ न जानना; अपवर्जिता का अर्थ है सब जान जाना। वे महज़ भिन्न नहीं, वे एक ही पैमाने के विपरीत सिरों पर हैं। (1 मान लेता है कि संबंध एक ओर हो सकता है और दूसरी ओर नहीं, पर स्वतंत्रता सममित है।)",
+          mr: "एकही नाही — अशून्य संभाव्यता असलेल्या परस्पर अपवर्जक घटना अपरिहार्यपणे परावलंबी आहेत, जे त्या सारख्या ऐकू येणाऱ्या नावांच्या सूचनेच्या उलट आहे. युक्तिवाद छोटा आहे. जर A आणि B दोन्ही घडू शकत नसतील, तर P(A आणि B) = 0. जर त्या स्वतंत्र असत्या, तर P(A आणि B) हे P(A)P(B) इतके असते, जो दोन अशून्य संख्यांचा गुणाकार आहे आणि म्हणून अशून्य. दोन्ही विधाने एकमेकांचे खंडन करतात, म्हणून स्वातंत्र्य अशक्य आहे. बीजगणिताच्या मागची अंतर्दृष्टी सांगण्याजोगी आहे: A घडले हे जाणणे तुम्हाला सांगते की B निश्चितपणे घडले नाही, आणि ती फार मोठ्या प्रमाणातील माहिती आहे — प्रत्यक्षात सर्वाधिक, जितकी एक घटना दुसरीबद्दल देऊ शकते. स्वातंत्र्य म्हणजे काहीच न कळणे; अपवर्जकता म्हणजे सर्व कळणे. त्या केवळ वेगळ्या नाहीत, त्या एकाच मापाच्या विरुद्ध टोकांवर आहेत. (1 गृहीत धरते की संबंध एका बाजूने असू शकतो आणि दुसऱ्या बाजूने नाही, पण स्वातंत्र्य सममित आहे.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A bag has 3 red and 2 blue balls. Two are drawn without replacement. Out of how many balls is the second drawn?",
+          hi: "किसी थैले में 3 लाल और 2 नीली गेंदें हैं। बिना लौटाए दो निकाली जाती हैं। दूसरी कितनी गेंदों में से निकाली जाती है?",
+          mr: "एका पिशवीत 3 लाल आणि 2 निळे चेंडू आहेत. परत न ठेवता दोन काढले जातात. दुसरा किती चेंडूंतून काढला जातो?",
+        },
+        answer: 4,
+        wrong: [5, 3, 2],
+        checkExpr: "5-1",
+        solution: {
+          en: "Four, since one ball has already gone. 'Without replacement' is the phrase that makes the two draws dependent: the second draw's probabilities depend on what the first produced, so the sample space has changed between them. With replacement the count would stay 5 and the draws would be independent. This one phrase is the difference between multiplying unchanged probabilities and having to condition, and it is worth reading for deliberately in every word problem, because it is usually the only place the dependence is announced. (5 keeps the original count.)",
+          hi: "चार, क्योंकि एक गेंद पहले ही जा चुकी। 'बिना लौटाए' वही वाक्यांश है जो दोनों निकालों को परतंत्र बनाता है: दूसरे निकाल की प्रायिकताएँ इस पर निर्भर हैं कि पहले ने क्या दिया, अतः उनके बीच प्रतिदर्श समष्टि बदल गई है। लौटाने के साथ गिनती 5 ही रहती और निकाल स्वतंत्र होते। यह एक वाक्यांश अपरिवर्तित प्रायिकताएँ गुणा करने और सशर्तन करने के बीच का फ़र्क़ है, और हर शब्द-समस्या में उसे जान-बूझकर ढूँढ़ना ठीक है, क्योंकि आम तौर पर वही अकेली जगह है जहाँ परतंत्रता की घोषणा होती है। (5 मूल गिनती रखता है।)",
+          mr: "चार, कारण एक चेंडू आधीच गेला आहे. 'परत न ठेवता' हाच तो वाक्यांश आहे जो दोन्ही काढण्यांना परावलंबी बनवतो: दुसऱ्या काढण्याच्या संभाव्यता पहिल्याने काय दिले यावर अवलंबून आहेत, म्हणून त्यांच्यादरम्यान नमुना अवकाश बदलला आहे. परत ठेवल्यास मोजणी 5 च राहिली असती आणि काढणी स्वतंत्र असती. हा एक वाक्यांश अपरिवर्तित संभाव्यता गुणणे आणि सशर्तीकरण करावे लागणे यांतील फरक आहे, आणि प्रत्येक शब्द-समस्येत तो मुद्दाम शोधणे बरे, कारण सर्वसाधारणपणे तीच एकमेव जागा आहे जिथे परावलंबित्वाची घोषणा होते. (5 मूळ मोजणी ठेवते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 3,
+        stem: {
+          en: "A coin is tossed 5 times. In how many of the 32 outcomes are all tosses heads?",
+          hi: "एक सिक्का 5 बार उछाला जाता है। 32 परिणामों में से कितनों में सभी उछाल चित हैं?",
+          mr: "एक नाणे 5 वेळा उडवले जाते. 32 निकालांपैकी कितींत सर्व उडवण्या छापा आहेत?",
+        },
+        answer: 1,
+        wrong: [5, 2, 32],
+        checkExpr: "2-1",
+        solution: {
+          en: "One — HHHHH, and only that. So the probability is 1/32, which is the same as (1/2)⁵ as independence would give. Worth noticing: this single outcome is exactly as likely as any other single outcome, including HTHTH, which feels far more ordinary. What makes 'all heads' feel special is not its own probability but that it belongs to a description satisfied by only one arrangement, while 'some mixture' is satisfied by thirty. Confusing the probability of an OUTCOME with the probability of a DESCRIPTION is behind most misjudged coincidences, in this chapter and outside it. (5 counts the tosses.)",
+          hi: "एक — HHHHH, और बस वही। अतः प्रायिकता 1/32 है, जो वही है जो स्वतंत्रता से (1/2)⁵ देती। ध्यान देने लायक़: यह अकेला परिणाम किसी भी दूसरे अकेले परिणाम जितना ही संभावित है, HTHTH सहित, जो कहीं अधिक साधारण लगता है। 'सब चित' को ख़ास उसकी अपनी प्रायिकता नहीं बनाती बल्कि यह कि वह ऐसे वर्णन से जुड़ा है जिसे केवल एक विन्यास पूरा करता है, जबकि 'कोई मिश्रण' को तीस पूरा करते हैं। किसी परिणाम की प्रायिकता को किसी वर्णन की प्रायिकता से गड्डमड्ड करना अधिकांश ग़लत आँके गए संयोगों के पीछे है, इस अध्याय में और उसके बाहर भी। (5 उछाल गिन लेता है।)",
+          mr: "एक — HHHHH, आणि फक्त तोच. म्हणून संभाव्यता 1/32 आहे, जी स्वातंत्र्याने (1/2)⁵ देईल तीच आहे. लक्षात घेण्याजोगे: हा एकटा निकाल इतर कोणत्याही एकट्या निकालाइतकाच संभाव्य आहे, HTHTH सह, जो कितीतरी अधिक सामान्य वाटतो. 'सर्व छापे' ला खास त्याची स्वतःची संभाव्यता बनवत नाही तर हे की तो अशा वर्णनाशी जोडलेला आहे जे केवळ एक मांडणी पूर्ण करते, तर 'काहीतरी मिश्रण' तीस पूर्ण करतात. एखाद्या निकालाची संभाव्यता एखाद्या वर्णनाच्या संभाव्यतेशी गोंधळवणे हे बहुतांश चुकीच्या मोजलेल्या योगायोगांमागे आहे, या अध्यायात आणि त्याबाहेरही. (5 उडवण्या मोजते.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "In 10,000 people, 100 have a disease. A test is 99% accurate both ways. How many healthy people test positive?",
+          hi: "10,000 लोगों में 100 को कोई रोग है। कोई जाँच दोनों ओर से 99% सटीक है। कितने स्वस्थ लोगों की जाँच धनात्मक आती है?",
+          mr: "10,000 लोकांत 100 जणांना एक रोग आहे. एक चाचणी दोन्ही बाजूंनी 99% अचूक आहे. किती निरोगी लोकांची चाचणी धन येते?",
+        },
+        answer: 99,
+        wrong: [1, 100, 9900],
+        checkExpr: "9900*0.01",
+        solution: {
+          en: "9,900 people are healthy and 1% of them test positive falsely: 9,900 × 0.01 = 99. Set that beside the true positives: of the 100 who are ill, 99 test positive. So 198 people test positive in total and only 99 of them are actually ill — a positive result means a 50% chance of disease, not 99%. This is base-rate neglect, and the reason the intuition fails is that the test's accuracy is applied to a much larger pool of healthy people than sick ones, so a small error rate on a big group matches a large success rate on a small one. The arithmetic is easiest to trust when done in whole people rather than percentages, which is why the question is posed with a population. (1 applies the 1% to the 100 ill people instead of the 9,900 healthy ones.)",
+          hi: "9,900 लोग स्वस्थ हैं और उनमें से 1% की जाँच झूठी धनात्मक आती है: 9,900 × 0.01 = 99. उसे सच्ची धनात्मकों के साथ रखो: जो 100 बीमार हैं उनमें से 99 की जाँच धनात्मक आती है। अतः कुल 198 लोगों की जाँच धनात्मक आती है और उनमें से केवल 99 सचमुच बीमार हैं — धनात्मक परिणाम का अर्थ है रोग की 50% संभावना, 99% नहीं। यह आधार-दर की उपेक्षा है, और अंतर्ज्ञान इसलिए विफल होता है क्योंकि जाँच की सटीकता बीमारों की तुलना में कहीं बड़े स्वस्थ लोगों के समूह पर लगती है, अतः बड़े समूह पर छोटी त्रुटि-दर छोटे समूह पर बड़ी सफलता-दर के बराबर आ जाती है। गणित पर भरोसा तब सबसे आसान है जब वह प्रतिशत के बजाय पूरे लोगों में किया जाए, इसीलिए प्रश्न जनसंख्या के साथ पूछा गया है। (1, 1% को 9,900 स्वस्थों के बजाय 100 बीमारों पर लगा देता है।)",
+          mr: "9,900 लोक निरोगी आहेत आणि त्यांपैकी 1% ची चाचणी खोटी धन येते: 9,900 × 0.01 = 99. ते खऱ्या धनांसोबत ठेवा: जे 100 आजारी आहेत त्यांपैकी 99 ची चाचणी धन येते. म्हणून एकूण 198 लोकांची चाचणी धन येते आणि त्यांपैकी केवळ 99 खरोखर आजारी आहेत — धन निकालाचा अर्थ रोगाची 50% शक्यता, 99% नव्हे. ही आधार-दराची उपेक्षा आहे, आणि अंतर्दृष्टी यासाठी अपयशी होते कारण चाचणीची अचूकता आजाऱ्यांहून कितीतरी मोठ्या निरोगी लोकांच्या गटावर लागते, म्हणून मोठ्या गटावरील लहान त्रुटी-दर लहान गटावरील मोठ्या यश-दराइतकी येते. गणितावर विश्वास तेव्हा सर्वांत सोपा आहे जेव्हा ते टक्केवारीऐवजी पूर्ण माणसांत केले जाईल, म्हणूनच प्रश्न लोकसंख्येसह विचारला आहे. (1 हे 1% ला 9,900 निरोग्यांऐवजी 100 आजाऱ्यांवर लावते.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 4,
+        stem: {
+          en: "A family has two children, at least one a girl. Of the outcomes GG, GB, BG and BB, how many remain possible?",
+          hi: "किसी परिवार में दो बच्चे हैं, कम से कम एक लड़की। परिणामों GG, GB, BG और BB में से कितने संभव बचते हैं?",
+          mr: "एका कुटुंबात दोन मुले आहेत, किमान एक मुलगी. निकाल GG, GB, BG आणि BB यांपैकी किती शक्य उरतात?",
+        },
+        answer: 3,
+        wrong: [2, 4, 1],
+        checkExpr: "4-1",
+        solution: {
+          en: "Three — only BB is ruled out. So the probability that both are girls is 1/3, not 1/2, and this is one of the most reliably counter-intuitive results in elementary probability. The reason the intuitive 1/2 is wrong is that 'at least one is a girl' does not identify WHICH child is the girl, so it eliminates one outcome rather than fixing one child's sex. Compare the different condition 'the elder is a girl': that eliminates two outcomes, BG and BB, leaving GG and GB, and the answer really is 1/2. The two conditions sound almost identical in English and shrink the sample space by different amounts, which is the whole lesson. Conditional probability is sensitive to exactly what was learned, and a slightly different piece of information about the same family gives a genuinely different answer. (2 assumes the condition fixes one child and leaves the other free.)",
+          hi: "तीन — केवल BB बाहर होता है। अतः दोनों के लड़की होने की प्रायिकता 1/3 है, 1/2 नहीं, और यह प्रारंभिक प्रायिकता के सबसे भरोसेमंद ढंग से अंतर्ज्ञान-विरोधी परिणामों में से एक है। सहज 1/2 इसलिए ग़लत है कि 'कम से कम एक लड़की है' यह नहीं बताता कि कौन-सा बच्चा लड़की है, अतः वह किसी एक बच्चे का लिंग तय करने के बजाय एक परिणाम हटाता है। भिन्न शर्त 'बड़ी लड़की है' से तुलना करो: वह दो परिणाम हटाती है, BG और BB, GG और GB छोड़ते हुए, और उत्तर सचमुच 1/2 है। दोनों शर्तें अंग्रेज़ी में लगभग एक जैसी सुनाई देती हैं और प्रतिदर्श समष्टि को अलग-अलग मात्रा में सिकोड़ती हैं, और यही पूरा सबक़ है। सशर्त प्रायिकता ठीक इस पर संवेदनशील है कि क्या जाना गया, और उसी परिवार के बारे में थोड़ी भिन्न जानकारी सचमुच भिन्न उत्तर देती है। (2 मान लेता है कि शर्त एक बच्चा तय कर देती है और दूसरा मुक्त छोड़ती है।)",
+          mr: "तीन — केवळ BB वगळला जातो. म्हणून दोन्ही मुली असण्याची संभाव्यता 1/3 आहे, 1/2 नव्हे, आणि हा प्राथमिक संभाव्यतेतील सर्वांत विश्वासार्हपणे अंतर्दृष्टी-विरोधी निकालांपैकी एक आहे. सहज 1/2 यासाठी चुकीचे आहे की 'किमान एक मुलगी आहे' हे सांगत नाही की कोणते मूल मुलगी आहे, म्हणून ते एका मुलाचे लिंग निश्चित करण्याऐवजी एक निकाल काढून टाकते. वेगळ्या अटीशी तुलना करा 'मोठी मुलगी आहे': ती दोन निकाल काढते, BG आणि BB, GG आणि GB सोडत, आणि उत्तर खरोखर 1/2 आहे. दोन्ही अटी इंग्रजीत जवळजवळ सारख्याच ऐकू येतात आणि नमुना अवकाश वेगवेगळ्या प्रमाणात आकुंचित करतात, आणि हाच अख्खा धडा आहे. सशर्त संभाव्यता नेमके काय कळले यावर संवेदनशील आहे, आणि त्याच कुटुंबाबद्दलची थोडी वेगळी माहिती खरोखर वेगळे उत्तर देते. (2 गृहीत धरते की अट एक मूल निश्चित करते आणि दुसरे मोकळे सोडते.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "Toss two fair coins. Let A be 'first is heads', B 'second is heads', C 'the two match'. How many of the three pairs among A, B, C are independent?",
+          hi: "दो न्यायसंगत सिक्के उछालो। A हो 'पहला चित', B 'दूसरा चित', C 'दोनों एक जैसे'. A, B, C में से तीन जोड़ों में कितनी स्वतंत्र हैं?",
+          mr: "दोन न्याय्य नाणी उडवा. A म्हणजे 'पहिला छापा', B 'दुसरा छापा', C 'दोन्ही सारखे'. A, B, C यांतील तीन जोड्यांपैकी किती स्वतंत्र आहेत?",
+        },
+        answer: 3,
+        wrong: [2, 1, 0],
+        checkExpr: "1+2",
+        solution: {
+          en: "All three. Each event has probability 1/2, and each pair intersects in exactly one of the four outcomes, giving 1/4 = (1/2)(1/2) every time. So A, B and C are PAIRWISE independent. Now look at all three together: A and B both happening forces HH, which certainly matches, so P(C | A and B) = 1, not 1/2. The three events are not mutually independent, and the count of independent pairs is 3 while the triple fails. That gap is the point of the example, and it is the standard counterexample showing that mutual independence is strictly stronger than pairwise independence — checking every pair is not enough, and one must check every subset. The practical consequence is real rather than pedantic. Statistical procedures that assume independence usually need the mutual kind, while the evidence one can gather easily is pairwise: correlations are computed two variables at a time. So a set of measurements can look independent in every scatterplot and still contain a joint dependence that no pair reveals, and this is precisely how models built from pairwise correlations underestimate the chance of everything failing at once. (2 supposes that one pair must fail if the triple does.)",
+          hi: "तीनों। हर घटना की प्रायिकता 1/2 है, और हर जोड़ा चार परिणामों में से ठीक एक में मिलता है, जिससे हर बार 1/4 = (1/2)(1/2) मिलता है। अतः A, B और C जोड़ीदार स्वतंत्र हैं। अब तीनों को एक साथ देखो: A और B दोनों का होना HH पर मजबूर करता है, जो निश्चित रूप से मेल खाता है, अतः P(C | A और B) = 1 है, 1/2 नहीं। तीनों घटनाएँ परस्पर स्वतंत्र नहीं हैं, और स्वतंत्र जोड़ों की गिनती 3 है जबकि त्रिक विफल है। वही अंतर उदाहरण का मुद्दा है, और यह मानक प्रतिउदाहरण है जो दिखाता है कि परस्पर स्वतंत्रता जोड़ीदार स्वतंत्रता से सख़्ती से मज़बूत है — हर जोड़ा जाँचना काफ़ी नहीं, हर उपसमुच्चय जाँचना होगा। व्यावहारिक परिणाम विद्वता-प्रदर्शन नहीं बल्कि असली है। स्वतंत्रता मान लेने वाली सांख्यिकीय प्रक्रियाओं को आम तौर पर परस्पर वाली चाहिए, जबकि जो साक्ष्य आसानी से जुटाया जा सकता है वह जोड़ीदार है: सहसंबंध एक बार में दो चरों पर निकाले जाते हैं। अतः मापों का कोई समुच्चय हर प्रकीर्ण-आलेख में स्वतंत्र दिख सकता है और फिर भी ऐसी संयुक्त परतंत्रता रख सकता है जिसे कोई जोड़ा उजागर नहीं करता, और ठीक इसी तरह जोड़ीदार सहसंबंधों से बने मॉडल सब कुछ एक साथ विफल होने की संभावना को कम आँकते हैं। (2 मान लेता है कि त्रिक विफल हो तो कोई जोड़ा भी विफल होना चाहिए।)",
+          mr: "तिन्ही. प्रत्येक घटनेची संभाव्यता 1/2 आहे, आणि प्रत्येक जोडी चार निकालांपैकी नेमक्या एकात भेटते, ज्यातून दरवेळी 1/4 = (1/2)(1/2) मिळते. म्हणून A, B आणि C जोडीदार स्वतंत्र आहेत. आता तिन्ही एकत्र पाहा: A आणि B दोन्ही घडणे HH वर भाग पाडते, जे निश्चितपणे जुळते, म्हणून P(C | A आणि B) = 1 आहे, 1/2 नव्हे. तिन्ही घटना परस्पर स्वतंत्र नाहीत, आणि स्वतंत्र जोड्यांची मोजणी 3 आहे तर त्रिक अपयशी आहे. तीच दरी उदाहरणाचा मुद्दा आहे, आणि हे प्रमाण प्रतिउदाहरण आहे जे दाखवते की परस्पर स्वातंत्र्य जोडीदार स्वातंत्र्याहून काटेकोरपणे बळकट आहे — प्रत्येक जोडी तपासणे पुरेसे नाही, प्रत्येक उपसंच तपासावा लागेल. व्यावहारिक परिणाम पांडित्यप्रदर्शन नसून खरा आहे. स्वातंत्र्य गृहीत धरणाऱ्या संख्याशास्त्रीय प्रक्रियांना सर्वसाधारणपणे परस्पर प्रकार लागतो, तर जो पुरावा सहज गोळा करता येतो तो जोडीदार आहे: सहसंबंध एका वेळी दोन चलांवर काढले जातात. म्हणून मापांचा एखादा संच प्रत्येक विखार-आलेखात स्वतंत्र दिसू शकतो आणि तरीही असे संयुक्त परावलंबित्व बाळगू शकतो जे कोणतीही जोडी उघड करत नाही, आणि नेमक्या याच रीतीने जोडीदार सहसंबंधांतून बांधलेली प्रतिरूपे सर्वकाही एकाच वेळी अपयशी होण्याची शक्यता कमी लेखतात. (2 गृहीत धरते की त्रिक अपयशी झाल्यास एखादी जोडीही अपयशी असावी.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 5,
+        stem: {
+          en: "A random variable takes value 0 with probability 0.9 and 100 with probability 0.1. What is its mean?",
+          hi: "कोई यादृच्छिक चर 0.9 प्रायिकता से मान 0 और 0.1 प्रायिकता से 100 लेता है। उसका माध्य क्या है?",
+          mr: "एक यादृच्छिक चल 0.9 संभाव्यतेने मूल्य 0 आणि 0.1 संभाव्यतेने 100 घेतो. त्याचा मध्य किती?",
+        },
+        answer: 10,
+        wrong: [50, 100, 0],
+        checkExpr: "0.9*0+0.1*100",
+        solution: {
+          en: "0.9 × 0 + 0.1 × 100 = 10. Note what the answer is not: 10 is a value this variable NEVER takes, since its only outcomes are 0 and 100. That is worth sitting with, because 'mean' invites the reading 'typical', and here nothing is typical of 10 at all. The expectation is a weighted balance point, not a representative case, and for a lopsided distribution the two come apart completely. The practical form of this is everywhere. An insurance policy has an expected payout that no individual policy ever pays; an average of 2.4 children describes no family. Reporting a mean without a spread hides exactly the information that matters here — the variance of this variable is 900, so its standard deviation is 30, three times the mean itself, which is the number that would tell a reader the mean is not describing a typical outcome. (50 averages the two values without weighting them by their probabilities.)",
+          hi: "0.9 × 0 + 0.1 × 100 = 10. ध्यान दो कि उत्तर क्या नहीं है: 10 ऐसा मान है जो यह चर कभी लेता ही नहीं, क्योंकि उसके परिणाम केवल 0 और 100 हैं। इस पर ठहरना ज़रूरी है, क्योंकि 'माध्य' 'विशिष्ट' पढ़ने का न्योता देता है, और यहाँ 10 का कुछ भी विशिष्ट नहीं। प्रत्याशा भारित संतुलन-बिंदु है, प्रतिनिधि मामला नहीं, और एकतरफ़ा बंटन के लिए दोनों पूरी तरह अलग हो जाते हैं। इसका व्यावहारिक रूप हर जगह है। किसी बीमा पॉलिसी का प्रत्याशित भुगतान वह है जो कोई एक पॉलिसी कभी नहीं चुकाती; औसतन 2.4 बच्चे किसी परिवार का वर्णन नहीं करते। फैलाव के बिना माध्य बताना ठीक वही जानकारी छिपाता है जो यहाँ मायने रखती है — इस चर का प्रसरण 900 है, अतः उसका मानक विचलन 30 है, माध्य से तीन गुना, और यही वह संख्या है जो पाठक को बताती कि माध्य किसी विशिष्ट परिणाम का वर्णन नहीं कर रहा। (50 दोनों मानों का औसत लेता है, उन्हें उनकी प्रायिकताओं से भारित किए बिना।)",
+          mr: "0.9 × 0 + 0.1 × 100 = 10. लक्षात घ्या की उत्तर काय नाही: 10 हे असे मूल्य आहे जे हा चल कधीच घेत नाही, कारण त्याचे निकाल केवळ 0 आणि 100 आहेत. यावर थांबणे आवश्यक आहे, कारण 'मध्य' हा 'ठराविक' असे वाचण्याचे निमंत्रण देतो, आणि इथे 10 चे काहीच ठराविक नाही. अपेक्षा हा भारित संतुलन-बिंदू आहे, प्रातिनिधिक प्रसंग नव्हे, आणि एकतर्फी वितरणासाठी दोन्ही पूर्णपणे वेगळे होतात. याचे व्यावहारिक रूप सर्वत्र आहे. एखाद्या विमा पॉलिसीचा अपेक्षित परतावा असा आहे जो कोणतीही एक पॉलिसी कधीच देत नाही; सरासरी 2.4 मुले कोणत्याही कुटुंबाचे वर्णन करत नाहीत. पसाऱ्याविना मध्य सांगणे नेमकी तीच माहिती लपवते जी इथे महत्त्वाची आहे — या चलाचे प्रसरण 900 आहे, म्हणून त्याचे प्रमाण विचलन 30 आहे, मध्याच्या तिप्पट, आणि हीच ती संख्या आहे जी वाचकाला सांगेल की मध्य कोणत्याही ठराविक निकालाचे वर्णन करत नाही. (50 दोन्ही मूल्यांची सरासरी घेते, त्यांना त्यांच्या संभाव्यतांनी भारित न करता.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  qs.push(
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A rare disease affects 1 in 10,000. A 99%-accurate test comes back positive. Rounded to the nearest whole per cent, what is the chance the person actually has it?",
+          hi: "कोई दुर्लभ रोग 10,000 में 1 को होता है। 99% सटीक जाँच धनात्मक आती है। निकटतम पूर्ण प्रतिशत तक, व्यक्ति को सचमुच रोग होने की संभावना क्या है?",
+          mr: "एक दुर्मीळ रोग 10,000 मध्ये 1 ला होतो. 99% अचूक चाचणी धन येते. जवळच्या पूर्ण टक्क्यापर्यंत, व्यक्तीला खरोखर रोग असण्याची शक्यता किती?",
+        },
+        answer: 1,
+        wrong: [99, 50, 10],
+        checkExpr: "2-1",
+        solution: {
+          en: "About 1 per cent. Take a million people: 100 have the disease and 99 of them test positive; 999,900 are healthy and 1% of those — 9,999 — test positive falsely. So 10,098 positives, of whom 99 are ill: 99/10,098 ≈ 0.98%, which rounds to 1. The test is 99% accurate and a positive result still leaves the person 99% likely to be healthy, which sounds like a contradiction and is not. The confusion is between two different conditional probabilities: P(positive | ill) is 0.99, and P(ill | positive) is 0.0098. These are not the same quantity, and Bayes' theorem is precisely the machinery for converting one into the other — the conversion factor being the base rate, which is what the intuition silently ignores. Two consequences are worth stating. First, this inversion error has a name outside mathematics: in a courtroom it is the prosecutor's fallacy, where the probability of the evidence given innocence is presented as the probability of innocence given the evidence, and people have been convicted on it. Second, the practical response is not to distrust tests but to understand what screening does. Testing a whole population for a rare condition generates false positives that swamp the true ones, which is why medicine screens targeted groups where the base rate is higher, and why a positive screen is followed by a second, different test rather than by a diagnosis. The second test works not because it is more accurate but because after the first result the base rate is no longer 1 in 10,000 — it is about 1 in 100, and the same arithmetic then lands somewhere quite different. (99 reports the test's accuracy as though it were the answer, which is the error the question is built around.)",
+          hi: "क़रीब 1 प्रतिशत। दस लाख लोग लो: 100 को रोग है और उनमें से 99 की जाँच धनात्मक आती है; 999,900 स्वस्थ हैं और उनमें से 1% — 9,999 — की जाँच झूठी धनात्मक आती है। अतः 10,098 धनात्मक, जिनमें 99 बीमार हैं: 99/10,098 ≈ 0.98%, जो 1 पर पूर्णांकित होता है। जाँच 99% सटीक है और धनात्मक परिणाम के बाद भी व्यक्ति के स्वस्थ होने की संभावना 99% है, जो विरोधाभास लगता है और है नहीं। भ्रम दो भिन्न सशर्त प्रायिकताओं के बीच है: P(धनात्मक | बीमार) 0.99 है, और P(बीमार | धनात्मक) 0.0098. ये एक राशि नहीं हैं, और बेज़ प्रमेय ठीक वही यंत्र है जो एक को दूसरे में बदलता है — रूपांतरण-गुणक है आधार-दर, जिसे अंतर्ज्ञान चुपचाप अनदेखा करता है। दो परिणाम कहने लायक़ हैं। पहला, इस उलटाव की भूल का गणित के बाहर एक नाम है: अदालत में वह अभियोजक का तर्कदोष है, जहाँ निर्दोषता मानकर साक्ष्य की प्रायिकता को साक्ष्य मानकर निर्दोषता की प्रायिकता की तरह पेश किया जाता है, और इस पर लोगों को दोषी ठहराया गया है। दूसरा, व्यावहारिक जवाब जाँचों पर अविश्वास करना नहीं बल्कि यह समझना है कि जन-जाँच करती क्या है। किसी दुर्लभ स्थिति के लिए पूरी जनसंख्या की जाँच ऐसे झूठे धनात्मक पैदा करती है जो सच्चों को डुबो देते हैं, इसीलिए चिकित्सा उन लक्षित समूहों की जाँच करती है जहाँ आधार-दर ऊँची है, और इसीलिए धनात्मक जन-जाँच के बाद निदान नहीं बल्कि दूसरी, भिन्न जाँच आती है। दूसरी जाँच इसलिए नहीं चलती कि वह अधिक सटीक है बल्कि इसलिए कि पहले परिणाम के बाद आधार-दर अब 10,000 में 1 नहीं — वह क़रीब 100 में 1 है, और वही गणित तब कहीं और जाकर उतरता है। (99 जाँच की सटीकता को ऐसे बताता है मानो वही उत्तर हो, और प्रश्न उसी भूल के इर्द-गिर्द बना है।)",
+          mr: "सुमारे 1 टक्का. दहा लाख लोक घ्या: 100 जणांना रोग आहे आणि त्यांपैकी 99 ची चाचणी धन येते; 999,900 निरोगी आहेत आणि त्यांपैकी 1% — 9,999 — ची चाचणी खोटी धन येते. म्हणून 10,098 धन, ज्यांत 99 आजारी आहेत: 99/10,098 ≈ 0.98%, जे 1 वर पूर्णांकित होते. चाचणी 99% अचूक आहे आणि धन निकालानंतरही व्यक्ती निरोगी असण्याची शक्यता 99% आहे, जे विरोधाभास वाटते आणि नाही. गोंधळ दोन वेगळ्या सशर्त संभाव्यतांमध्ये आहे: P(धन | आजारी) 0.99 आहे, आणि P(आजारी | धन) 0.0098. या एक राशी नाहीत, आणि बेजचे प्रमेय नेमके तेच यंत्र आहे जे एकाला दुसऱ्यात बदलते — रूपांतरण-गुणक आहे आधार-दर, ज्याला अंतर्दृष्टी गुपचूप दुर्लक्षते. दोन परिणाम सांगण्याजोगे आहेत. पहिला, या उलटवण्याच्या चुकीला गणिताबाहेर एक नाव आहे: न्यायालयात तो अभियोक्त्याचा तर्कदोष आहे, जिथे निर्दोषत्व गृहीत धरून पुराव्याची संभाव्यता ही पुरावा गृहीत धरून निर्दोषत्वाची संभाव्यता म्हणून मांडली जाते, आणि यावर लोकांना दोषी ठरवले गेले आहे. दुसरा, व्यावहारिक प्रतिसाद चाचण्यांवर अविश्वास ठेवणे नव्हे तर जन-तपासणी काय करते हे समजून घेणे. एखाद्या दुर्मीळ स्थितीसाठी अख्ख्या लोकसंख्येची चाचणी असे खोटे धन तयार करते जे खऱ्यांना बुडवतात, म्हणूनच वैद्यक त्या लक्ष्यित गटांची तपासणी करते जिथे आधार-दर जास्त आहे, आणि म्हणूनच धन जन-तपासणीनंतर निदान नव्हे तर दुसरी, वेगळी चाचणी येते. दुसरी चाचणी यासाठी चालत नाही की ती अधिक अचूक आहे तर यासाठी की पहिल्या निकालानंतर आधार-दर आता 10,000 मध्ये 1 नाही — तो सुमारे 100 मध्ये 1 आहे, आणि तेच गणित मग कुठेतरी वेगळे जाऊन उतरते. (99 चाचणीची अचूकता अशी सांगते जणू तेच उत्तर असावे, आणि प्रश्न त्याच चुकीभोवती बांधलेला आहे.)",
+        },
+      },
+      rand,
+    ),
+    numQ(
+      {
+        level: 6,
+        stem: {
+          en: "A treatment helps 70% of men and 70% of women, while a rival helps 80% of each. Pooling all patients, the rival can appear worse overall. Of the two group results and the pooled result, how many can point the same way as each other while the third disagrees?",
+          hi: "कोई उपचार 70% पुरुषों और 70% स्त्रियों की मदद करता है, जबकि प्रतिद्वंद्वी हर एक के 80% की। सभी रोगियों को मिला देने पर प्रतिद्वंद्वी कुल मिलाकर बदतर दिख सकता है। दोनों समूह-परिणामों और मिले हुए परिणाम में से कितने एक ही ओर इशारा कर सकते हैं जबकि तीसरा असहमत हो?",
+          mr: "एक उपचार 70% पुरुषांना आणि 70% स्त्रियांना मदत करतो, तर प्रतिस्पर्धी प्रत्येकाच्या 80% ला. सर्व रुग्ण एकत्र केल्यास प्रतिस्पर्धी एकूणात वाईट दिसू शकतो. दोन गट-निकाल आणि एकत्रित निकाल यांपैकी किती एकाच दिशेला निर्देश करू शकतात तर तिसरा असहमत असेल?",
+        },
+        answer: 2,
+        wrong: [3, 1, 0],
+        checkExpr: "3-1",
+        solution: {
+          en: "Two — the two group results agree with each other and the pooled result contradicts both. This is Simpson's paradox, and the numbers really do work. Suppose the rival is given mostly to a group that does badly anyway: 80 of 100 men helped by the rival but only 10 women out of 900 given it are counted, against the first treatment given to 900 men and 100 women. The group rates favour the rival everywhere, and the pooled totals favour the first treatment, because the two treatments were given to differently-composed populations and the pooling silently compares men mostly against women. Nothing is wrong with any of the three numbers. What is wrong is the assumption that a pooled rate answers the same question the group rates answer. The group comparison asks 'given a patient of known sex, which treatment is better', and the pooled comparison asks 'given a patient drawn from these particular treatment groups, which did better' — and the second question's answer depends on how the groups were assembled, which is not a fact about the treatments at all. Three things follow. First, the reversal is not a rare curiosity: it appears in university admissions data, in mortality statistics and in batting averages, and it is one of the main reasons observational studies mislead. Second, the resolution is never statistical but causal — one must know WHY the groups differ in composition before deciding which table to believe, and that knowledge does not come from the numbers. Third, the practical safeguard is randomisation, which works precisely because it makes the treatment groups similar in every respect including the ones nobody thought to measure, so that pooling and stratifying can no longer disagree. (3 supposes all three results can be made to disagree with one another, but two of them are group rates that here agree by construction.)",
+          hi: "दो — दोनों समूह-परिणाम आपस में सहमत हैं और मिला हुआ परिणाम दोनों का खंडन करता है। यह सिम्पसन का विरोधाभास है, और संख्याएँ सचमुच काम करती हैं। मान लो प्रतिद्वंद्वी ज़्यादातर उस समूह को दिया गया जिसका हाल वैसे भी बुरा है: प्रतिद्वंद्वी से 100 में 80 पुरुष मदद पाते हैं पर उसे दी गई 900 में केवल 10 स्त्रियाँ गिनी जाती हैं, बनाम पहला उपचार जो 900 पुरुषों और 100 स्त्रियों को दिया गया। समूह-दरें हर जगह प्रतिद्वंद्वी के पक्ष में हैं, और मिले हुए कुल पहले उपचार के पक्ष में, क्योंकि दोनों उपचार भिन्न बनावट वाली जनसंख्याओं को दिए गए और मिलाना चुपचाप ज़्यादातर पुरुषों की तुलना स्त्रियों से कर देता है। तीनों संख्याओं में कुछ भी ग़लत नहीं। ग़लत यह मान्यता है कि मिली हुई दर वही प्रश्न उत्तरित करती है जो समूह-दरें करती हैं। समूह-तुलना पूछती है 'ज्ञात लिंग के रोगी के लिए कौन-सा उपचार बेहतर है', और मिली हुई तुलना पूछती है 'इन ख़ास उपचार-समूहों से खींचे गए रोगी के लिए किसने बेहतर किया' — और दूसरे प्रश्न का उत्तर इस पर निर्भर है कि समूह कैसे जुटाए गए, जो उपचारों का तथ्य है ही नहीं। तीन बातें निकलती हैं। पहली, यह पलटाव दुर्लभ जिज्ञासा नहीं: वह विश्वविद्यालय प्रवेश के आँकड़ों में, मृत्यु-दर की सांख्यिकी में और बल्लेबाज़ी औसतों में दिखता है, और प्रेक्षणात्मक अध्ययनों के भरमाने के मुख्य कारणों में से एक है। दूसरी, समाधान कभी सांख्यिकीय नहीं बल्कि कारणात्मक होता है — यह जानना ही होगा कि समूहों की बनावट क्यों भिन्न है, तब तय हो कि किस सारणी पर भरोसा करें, और वह ज्ञान संख्याओं से नहीं आता। तीसरी, व्यावहारिक सुरक्षा यादृच्छिकीकरण है, जो ठीक इसलिए चलता है कि वह उपचार-समूहों को हर पहलू में एक-सा बना देता है, उन पहलुओं में भी जिन्हें मापने की किसी ने सोची ही नहीं, ताकि मिलाना और स्तरित करना फिर असहमत न हो सकें। (3 मान लेता है कि तीनों परिणामों को आपस में असहमत किया जा सकता है, पर उनमें से दो समूह-दरें हैं जो यहाँ रचना से ही सहमत हैं।)",
+          mr: "दोन — दोन गट-निकाल आपसात सहमत आहेत आणि एकत्रित निकाल दोघांचेही खंडन करतो. हा सिम्पसनचा विरोधाभास आहे, आणि संख्या खरोखर काम करतात. समजा प्रतिस्पर्धी बहुतांश त्या गटाला दिला गेला ज्याची अवस्था तशीही वाईट आहे: प्रतिस्पर्ध्याकडून 100 पैकी 80 पुरुष मदत मिळवतात पण त्याला दिलेल्या 900 पैकी केवळ 10 स्त्रिया मोजल्या जातात, विरुद्ध पहिला उपचार जो 900 पुरुष आणि 100 स्त्रियांना दिला गेला. गट-दर सर्वत्र प्रतिस्पर्ध्याच्या बाजूने आहेत, आणि एकत्रित एकूण पहिल्या उपचाराच्या बाजूने, कारण दोन्ही उपचार वेगळ्या रचनेच्या लोकसंख्यांना दिले गेले आणि एकत्र करणे गुपचूप बहुतांश पुरुषांची तुलना स्त्रियांशी करते. तिन्ही संख्यांत काहीच चूक नाही. चूक हे गृहीतक आहे की एकत्रित दर तोच प्रश्न उत्तरतो जो गट-दर उत्तरतात. गट-तुलना विचारते 'ज्ञात लिंगाच्या रुग्णासाठी कोणता उपचार चांगला आहे', आणि एकत्रित तुलना विचारते 'या विशिष्ट उपचार-गटांतून काढलेल्या रुग्णासाठी कोणी चांगले केले' — आणि दुसऱ्या प्रश्नाचे उत्तर गट कसे जमवले यावर अवलंबून आहे, जे उपचारांबद्दलचे तथ्य नाहीच. तीन गोष्टी निघतात. पहिली, हे उलटणे दुर्मीळ उत्सुकता नाही: ते विद्यापीठ प्रवेशाच्या आकडेवारीत, मृत्यू-दराच्या संख्याशास्त्रात आणि फलंदाजीच्या सरासरींत दिसते, आणि निरीक्षणात्मक अभ्यास फसवण्याच्या मुख्य कारणांपैकी एक आहे. दुसरी, निराकरण कधीच संख्याशास्त्रीय नसून कारणात्मक असते — गटांची रचना का वेगळी आहे हे जाणावेच लागते, मग ठरवावे की कोणत्या तक्त्यावर विश्वास ठेवावा, आणि ते ज्ञान संख्यांतून येत नाही. तिसरी, व्यावहारिक सुरक्षा म्हणजे यादृच्छिकीकरण, जे नेमके यासाठी चालते की ते उपचार-गट प्रत्येक बाबतीत सारखे करते, त्या बाबींतही ज्या मोजण्याचा कोणी विचारच केला नाही, जेणेकरून एकत्र करणे आणि स्तरित करणे पुन्हा असहमत होऊ शकणार नाहीत. (3 गृहीत धरते की तिन्ही निकाल आपसात असहमत करता येतील, पण त्यांपैकी दोन गट-दर आहेत जे इथे रचनेनेच सहमत आहेत.)",
+        },
+      },
+      rand,
+    ),
+  );
+
+  return topic(
+    {
+      slug: "maths-12-probability",
+      subject: "MATHS",
+      classLevel: 12,
+      chapter: "Chapter 13 — Probability",
+      name: "Probability",
+      summary:
+        "What a piece of information does to a chance, and how easily the wrong information is used: why mutually exclusive events with real probability are the most dependent events there are, why 'at least one is a girl' and 'the elder is a girl' shrink the sample space differently, why checking every pair is not the same as checking every subset, and why a 99% accurate test can leave someone 99% likely to be healthy.",
+      position: 13,
+      translations: {
+        hi: {
+          name: "प्रायिकता",
+          summary:
+            "कोई जानकारी किसी संभावना के साथ क्या करती है, और ग़लत जानकारी कितनी आसानी से बरती जाती है: असली प्रायिकता वाली परस्पर अपवर्जी घटनाएँ सबसे अधिक परतंत्र क्यों हैं, 'कम से कम एक लड़की है' और 'बड़ी लड़की है' प्रतिदर्श समष्टि को अलग-अलग क्यों सिकोड़ते हैं, हर जोड़ा जाँचना हर उपसमुच्चय जाँचने जैसा क्यों नहीं, और 99% सटीक जाँच के बाद भी किसी के स्वस्थ होने की संभावना 99% क्यों रह सकती है।",
+        },
+        mr: {
+          name: "संभाव्यता",
+          summary:
+            "एखादी माहिती एखाद्या शक्यतेचे काय करते, आणि चुकीची माहिती किती सहज वापरली जाते: खरी संभाव्यता असलेल्या परस्पर अपवर्जक घटना सर्वाधिक परावलंबी का आहेत, 'किमान एक मुलगी आहे' आणि 'मोठी मुलगी आहे' नमुना अवकाश वेगवेगळ्या प्रकारे का आकुंचित करतात, प्रत्येक जोडी तपासणे प्रत्येक उपसंच तपासण्यासारखे का नाही, आणि 99% अचूक चाचणीनंतरही कोणी निरोगी असण्याची शक्यता 99% का राहू शकते.",
+        },
+      },
+    },
+    qs,
+  );
+}
 
 export const G12_MATHS: TopicFileOut[] = [
   relationsFunctions12(),
@@ -2531,5 +4119,9 @@ export const G12_MATHS: TopicFileOut[] = [
   applicationOfDerivatives12(),
   integrals12(),
   applicationOfIntegrals12(),
-  /*X9*/
+  differentialEquations12(),
+  vectorAlgebra12(),
+  threeDimensionalGeometry12(),
+  linearProgramming12(),
+  probability12(),
 ];
