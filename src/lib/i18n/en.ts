@@ -2700,6 +2700,16 @@ export const en = {
     noClassesBody: "Ask an admin to add you to a class, and your day will appear here.",
     studentsCount: "{count} students",
 
+    lessonsToday: "Lessons today",
+    acrossTheWeek: "Across the week",
+    covering: "Covering",
+    coverTakenOn: "Cover you have taken on",
+    yourLessons: "Your lessons",
+    lessonsInPeriodOrder: "Today's teaching, period by period. The whole week is on your timetable.",
+    noLessonsToday: "No lessons today. The whole week is on your timetable.",
+    closedToday: "School is closed today — {name}.",
+    openTimetable: "Open the timetable",
+
     takeRegister: "Take the register",
     createClass: "Create a class",
     done: "Done",
