@@ -267,9 +267,17 @@ async function resolveContextForUser(
   // in their classroom — the flag is an extra door, not a replacement for one.
   const operator = await db.user.findUnique({
     where: { id: userId },
-    select: { isSuperuser: true },
+    select: { isSuperuser: true, isAppAdmin: true },
   });
   if (operator?.isSuperuser) return { role: null, schoolId: null, redirectTo: "/root" };
+
+  // Curates the bank, teaches nowhere. Same shape as the operator branch and
+  // for the same reason — and it was missing: a content-team appointment with
+  // no school membership signed in to "Almost there — connect it to a school
+  // or a child", which is the one page that has nothing for them. Below the
+  // superuser check because an operator's own appadmin flag is inherited, not
+  // their front door.
+  if (operator?.isAppAdmin) return { role: null, schoolId: null, redirectTo: "/appadmin" };
 
   /**
    * AN ALUMNUS BELONGS TO NOTHING AND IS NOT NEW, which is the distinction this

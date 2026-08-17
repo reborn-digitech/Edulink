@@ -40,13 +40,26 @@ async function mint(email: string, role: string | null, schoolId: string | null,
   return { label, cookie: `edulink_session=${token}`, sessionId: session.id };
 }
 
+/**
+ * RETRIES TRANSPORT FAILURES, NEVER STATUSES. `next dev` recycles keep-alive
+ * sockets while it compiles on demand, so a long sequential sweep sees
+ * "other side closed" mid-run — a fact about the socket, not the route. A GET
+ * is safe to reissue; a 500 is a result and is still reported first time.
+ */
 async function hit(actor: Actor | null, path: string): Promise<{ status: number; body: string; loc: string | null }> {
-  const res = await fetch(BASE + path, {
-    headers: actor ? { cookie: actor.cookie } : {},
-    redirect: "manual",
-  });
-  const body = res.status === 200 ? await res.text() : "";
-  return { status: res.status, body, loc: res.headers.get("location") };
+  for (let attempt = 1; ; attempt++) {
+    try {
+      const res = await fetch(BASE + path, {
+        headers: actor ? { cookie: actor.cookie } : {},
+        redirect: "manual",
+      });
+      const body = res.status === 200 ? await res.text() : "";
+      return { status: res.status, body, loc: res.headers.get("location") };
+    } catch (error) {
+      if (attempt >= 3) throw error;
+      await new Promise((r) => setTimeout(r, 500 * attempt));
+    }
+  }
 }
 
 /**
@@ -1189,72 +1202,51 @@ async function operatorArea() {
     // expert could ever be listed on a real installation.
     await check(actor, "/root/experts", 200, "⚠ …and may list an expert on the marketplace");
     /**
-     * ⚠ THE DOOR RENDERS, AND IS SHUT.
+     * ⚠ THE DOOR IS GONE, AND THE LOOK IS WRITTEN DOWN.
      *
-     * 200 with no grant is the CORRECT answer here — the page shows the
-     * form asking why, not the school. So the status alone proves nothing
-     * and the body is read: it must offer the door and must NOT be
-     * showing the school behind it.
+     * These two checks used to assert the request-a-grant flow — door shown
+     * without a grant, school shown with one — and kept asserting it after
+     * the design changed, which is how they went red against a page that was
+     * behaving exactly as intended. The inside of a school is now ALWAYS
+     * open to the operator; what remains of the door is the visitor book:
+     * rendering the page records the visit through `withSchoolAccess` (at
+     * most one row an hour), and the school reads the same list in its own
+     * Safety Centre.
+     *
+     * So the check changes shape with the design. The page must show the
+     * school — the overview section, which is the half that reads real rows
+     * through the policies — and rendering it must have LEFT A ROW in the
+     * visitor book. Both, because a page that opened without writing the row
+     * is precisely the regression this area now exists to prevent.
      */
+    const before = new Date();
     const inside = await hit(actor, `/root/${staff.schoolId}/inside`);
-    results.push({
-      role: "would-be-operator",
-      path: "/root/[school]/inside",
-      status: inside.status,
-      expected: 200,
-      ok:
-        inside.status === 200 &&
-        // The door — the heading its own `<section aria-labelledby>` points at.
-        inside.body.includes('id="closed-heading"') &&
-        // …and not the banner that only an open grant renders. Two hooks on two
-        // different elements, so this still fails if the page shows both.
-        !inside.body.includes('id="inside-banner"'),
-      note: "⚠ an operator with no grant is shown the door, not the school",
-    });
-
-    /**
-     * ⚠ A LIVE GRANT ACTUALLY OPENS THE SCHOOL.
-     *
-     * The READ half, end to end against the real policies: with a grant in
-     * place the operator sees the school rather than the door.
-     *
-     * IT DOES NOT COVER THE WRITE HALF, and saying so matters because I tried
-     * to make it. The grant below is inserted as the database OWNER, which
-     * bypasses RLS — so this check passes whether or not the application sets
-     * `app.is_superuser` when writing one. It was verified by deliberately
-     * reintroducing the bug: still green. The write path is proved in
-     * `rls:verify` (the policy) and by walking the form in a browser (the
-     * application). A check that passes for two different reasons proves
-     * nothing, and this one is labelled for what it does prove.
-     */
-    const openedGrant = await db.operatorAccess.create({
-      data: {
-        schoolId: staff.schoolId,
-        userId: staff.user.id,
-        reason: "ZZ sweep: checking the door opens at all",
-        expiresAt: new Date(Date.now() + 3_600_000),
-      },
+    const visit = await db.operatorAccess.findFirst({
+      where: { userId: staff.user.id, schoolId: staff.schoolId, startedAt: { gte: before } },
       select: { id: true },
     });
     try {
-      const opened = await hit(actor, `/root/${staff.schoolId}/inside`);
       results.push({
         role: "would-be-operator",
-        path: "/root/[school]/inside (open)",
-        status: opened.status,
+        path: "/root/[school]/inside",
+        status: inside.status,
         expected: 200,
-        ok:
-          opened.status === 200 &&
-          opened.body.includes('id="inside-banner"') &&
-          // The overview too, which is the half that actually reads the school's
-          // rows through the policies rather than just announcing the grant.
-          opened.body.includes('id="numbers-heading"'),
-        note: "⚠ a grant actually opens the school, through the real policies",
+        ok: inside.status === 200 && inside.body.includes('id="numbers-heading"'),
+        note: "⚠ the inside of a school opens to the operator, through the real policies",
+      });
+      results.push({
+        role: "would-be-operator",
+        path: "/root/[school]/inside (visitor book)",
+        status: inside.status,
+        expected: 200,
+        ok: visit !== null,
+        note: "⚠ …and the look itself is recorded where the school can read it",
       });
     } finally {
-      // Deleted as the OWNER. The app role cannot — there is no DELETE policy
-      // on this table for anybody, which is the point of it.
-      await db.operatorAccess.deleteMany({ where: { id: openedGrant.id } });
+      // The check's own visit does not belong in the school's book. Deleted as
+      // the OWNER — the app role has no DELETE policy on this table, which is
+      // the point of it.
+      if (visit) await db.operatorAccess.deleteMany({ where: { id: visit.id } });
     }
   } finally {
     await db.user.update({ where: { id: staff.user.id }, data: { isSuperuser: false } });
@@ -1809,7 +1801,24 @@ async function main() {
    */
   await check(null, "/magic?token=not-a-real-token", 307, "a dead sign-in link goes to the form");
   await check(null, "/magic", 307, "no token at all goes to the form");
-  await check(null, "/dev/mailbox", 404, "must 404 in production");
+  /**
+   * The mailbox is NODE_ENV-gated, so the right answer depends on which server
+   * the sweep was pointed at: it must 404 in production and must OPEN in dev,
+   * where it is the only way to read the links the app "sent". Asserting the
+   * production answer unconditionally kept this line red on every dev run,
+   * which is how a real failure learns to hide behind an expected one. The
+   * sweep tells the servers apart by a fingerprint in any page's own HTML:
+   * `next dev` cache-busts its static chunks with `?v=<timestamp>`, a
+   * production build serves hashed filenames.
+   */
+  const probe = await hit(null, "/login");
+  const devServer = /\/_next\/static\/[^"]*\?v=/.test(probe.body);
+  await check(
+    null,
+    "/dev/mailbox",
+    devServer ? 200 : 404,
+    devServer ? "the dev mailbox opens on a dev server" : "must 404 in production",
+  );
   await check(null, "/admin", 307, "signed-out admin redirects to login");
   await check(null, "/api/push", 401, "unauthenticated push registration");
   // Joining two accounts needs one of them to be signed in ALREADY — that is

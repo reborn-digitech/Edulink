@@ -127,11 +127,14 @@ function numericAnswer(option: string): number | null {
   return value;
 }
 
-/** 0–12 written out, plus the ordinals and once/twice/thrice prose reaches for. */
+/**
+ * 0–12 written out, plus the ordinals, once/twice/thrice, and the pair words —
+ * a "how many of these two" question is honestly answered "Neither" or "Both".
+ */
 const NUMBER_WORDS: Record<number, string[]> = {
-  0: ["zero", "none"],
+  0: ["zero", "none", "neither"],
   1: ["one", "once", "first"],
-  2: ["two", "twice", "second"],
+  2: ["two", "twice", "second", "both"],
   3: ["three", "thrice", "third"],
   4: ["four", "fourth"],
   5: ["five", "fifth"],

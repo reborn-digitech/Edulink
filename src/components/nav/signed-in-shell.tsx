@@ -37,7 +37,12 @@ export async function SignedInShell({
           // "EduLink" is a name, so it is not translated. What sits in this slot
           // for a parent is a description of where they are, so it is.
           .then((s) => s?.name ?? "EduLink")
-      : Promise.resolve(t("shell.yourChildren")),
+      : // No school on the session: a parent's slot describes where they are,
+        // but an EXPERT also has no school and is not looking at their
+        // children — a walkthrough found the expert sidebar headed "Your
+        // children". For everyone school-less who isn't a parent, the app's
+        // own name is the only honest title.
+        Promise.resolve(role === "PARENT" ? t("shell.yourChildren") : "EduLink"),
     db.notification.count({ where: { userId: session.user.id, readAt: null } }),
   ]);
 
