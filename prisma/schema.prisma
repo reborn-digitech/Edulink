@@ -1199,10 +1199,19 @@ model Comment {
   createdAt    DateTime @default(now())
   school       School   @relation(fields: [schoolId], references: [id], onDelete: Cascade)
 
+  /// Set on a reply, null on a top-level comment. ONE LEVEL DEEP by rule:
+  /// `addComment` re-points a reply-to-a-reply at the thread's top comment,
+  /// so this never chains — a school post's discussion is a list of comments
+  /// each with its answers, not a forum tree nobody can moderate at a glance.
+  parentCommentId String?
+  parent          Comment?  @relation("CommentThread", fields: [parentCommentId], references: [id], onDelete: Cascade)
+  replies         Comment[] @relation("CommentThread")
+
   post   Post @relation(fields: [postId], references: [id], onDelete: Cascade)
   author User @relation(fields: [authorUserId], references: [id], onDelete: Cascade)
 
   @@index([postId, createdAt])
+  @@index([parentCommentId])
   @@index([schoolId])
 }
 

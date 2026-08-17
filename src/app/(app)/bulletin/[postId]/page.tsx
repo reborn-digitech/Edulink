@@ -10,6 +10,7 @@ import { relativeTime } from "@/lib/dates";
 import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { CommentBox } from "./comment-box";
+import { ReplyToggle } from "./reply-toggle";
 import { PostMedia } from "../media";
 import { CATEGORY_KEYS } from "../categories";
 import { getT } from "@/lib/i18n/server";
@@ -190,13 +191,30 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
             {t("bulletin.noCommentsYet")}
           </p>
         ) : (
-          <ul className="mt-2 space-y-2">
-            {post.comments.map((entry) => {
+          (() => {
+            /**
+             * The flat, time-ordered list becomes THREADS here rather than in
+             * the query: top-level comments in order, each with its replies in
+             * order underneath. A reply whose parent the viewer cannot see (a
+             * held student comment being answered by staff) still finds its
+             * place, because staff see held comments and nobody else sees such
+             * replies' parents missing — visibility was already filtered.
+             */
+            const replies = new Map<string, typeof post.comments>();
+            for (const entry of post.comments) {
+              if (!entry.parentCommentId) continue;
+              const bucket = replies.get(entry.parentCommentId) ?? [];
+              bucket.push(entry);
+              replies.set(entry.parentCommentId, bucket);
+            }
+            const tops = post.comments.filter((entry) => !entry.parentCommentId);
+            const canReply = post.status === "APPROVED";
+
+            const renderComment = (entry: (typeof post.comments)[number], isReply: boolean) => {
               const held = entry.status === "PENDING";
               const mine = entry.authorUserId === session.user.id;
               return (
-                <li
-                  key={entry.id}
+                <div
                   className={`flex gap-3 rounded-[--radius-md] border p-3 ${
                     held ? "border-warn/40 bg-warn-soft/40" : "border-border bg-surface"
                   }`}
@@ -204,7 +222,7 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
                   <Avatar
                     avatarKey={entry.author.avatarKey}
                     name={entry.author.name}
-                    size="sm"
+                    size={isReply ? "xs" : "sm"}
                   />
                   <div className="min-w-0 flex-1">
                     <p className="text-xs text-fg-muted">
@@ -222,11 +240,37 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
                         {mine ? t("bulletin.checkingBeforeOthers") : t("bulletin.awaitingReview")}
                       </p>
                     )}
+                    {/* Replying to a reply answers the same thread — the lib
+                        re-points it at the top comment either way. */}
+                    {canReply && !held && (
+                      <ReplyToggle
+                        postId={post.id}
+                        parentCommentId={entry.parentCommentId ?? entry.id}
+                        willBeHeld={session.role === "STUDENT"}
+                      />
+                    )}
                   </div>
-                </li>
+                </div>
               );
-            })}
-          </ul>
+            };
+
+            return (
+              <ul className="mt-2 space-y-2">
+                {tops.map((entry) => (
+                  <li key={entry.id}>
+                    {renderComment(entry, false)}
+                    {(replies.get(entry.id) ?? []).length > 0 && (
+                      <ul className="ml-8 mt-1.5 space-y-1.5 border-l-2 border-border pl-3">
+                        {(replies.get(entry.id) ?? []).map((reply) => (
+                          <li key={reply.id}>{renderComment(reply, true)}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            );
+          })()
         )}
 
         {post.status === "APPROVED" && (

@@ -730,6 +730,7 @@ export async function addComment(
   session: ActiveContext,
   postId: string,
   body: string,
+  parentCommentId?: string,
 ): Promise<{ status: "APPROVED" | "PENDING" }> {
   session = await scoped(session, { postId });
   const classIds = await classIdsFor(session);
@@ -739,6 +740,26 @@ export async function addComment(
     select: { id: true, authorUserId: true, schoolId: true, title: true },
   });
   if (!visible) throw new AccessError("access.postNotFound", "NOT_FOUND");
+
+  /**
+   * A reply attaches to a comment ON THIS POST, and threads stay ONE LEVEL
+   * DEEP: replying to a reply re-points at the thread's top comment, the way
+   * every feed people know does it, so a discussion is a list of comments
+   * each with its answers rather than a tree nobody can moderate at a glance.
+   * A removed parent takes its thread with it (the FK cascades), so replying
+   * under one is refused rather than resurrecting it.
+   */
+  let parentId: string | null = null;
+  let parentAuthorUserId: string | null = null;
+  if (parentCommentId) {
+    const parent = await db.comment.findFirst({
+      where: { id: parentCommentId, postId, status: { not: "REMOVED" } },
+      select: { id: true, parentCommentId: true, authorUserId: true },
+    });
+    if (!parent) throw new AccessError("access.postNotFound", "NOT_FOUND");
+    parentId = parent.parentCommentId ?? parent.id;
+    parentAuthorUserId = parent.authorUserId;
+  }
 
   // Same rule as posts: a child's words are reviewed, an adult's are not.
   const status = session.role === "STUDENT" ? "PENDING" : "APPROVED";
@@ -750,18 +771,38 @@ export async function addComment(
       body: body.trim(),
       status,
       schoolId: schoolOf(visible),
+      parentCommentId: parentId,
     },
   });
 
-  if (status === "APPROVED" && visible.authorUserId !== session.user.id) {
-    await notify({
-      userId: visible.authorUserId,
-      schoolId: visible.schoolId,
-      kind: "POST",
-      title: "New comment on your post",
-      body: visible.title,
-      url: `/bulletin/${postId}`,
-    });
+  if (status === "APPROVED") {
+    /**
+     * Who gets told: a reply tells the person being replied to, a comment
+     * tells the post's author — and someone who is both hears it once,
+     * as the more specific of the two.
+     */
+    const told = new Set<string>([session.user.id]);
+    if (parentAuthorUserId && !told.has(parentAuthorUserId)) {
+      told.add(parentAuthorUserId);
+      await notify({
+        userId: parentAuthorUserId,
+        schoolId: visible.schoolId,
+        kind: "POST",
+        title: "New reply to your comment",
+        body: visible.title,
+        url: `/bulletin/${postId}`,
+      });
+    }
+    if (!parentId && !told.has(visible.authorUserId)) {
+      await notify({
+        userId: visible.authorUserId,
+        schoolId: visible.schoolId,
+        kind: "POST",
+        title: "New comment on your post",
+        body: visible.title,
+        url: `/bulletin/${postId}`,
+      });
+    }
   }
 
   return { status };

@@ -59,7 +59,22 @@ export type PostStatus = (typeof POST_STATUSES)[number];
 export const POST_CATEGORIES = ["PEOPLE", "CAMPUS", "EVENTS", "LEARNING", "UPDATES"] as const;
 export type PostCategory = (typeof POST_CATEGORIES)[number];
 
-export const REACTION_KINDS = ["CLAP", "STAR", "IDEA", "HEART"] as const;
+/**
+ * The reaction set — fixed and kid-safe, deliberately: no thumbs-down and
+ * nothing to weaponise. The last three are the school's own vocabulary,
+ * added when the bulletin became social media: CELEBRATE for events and
+ * results, PROUD for the spotlight on somebody's work, THANKS for the
+ * gratitude a school runs on. Additions are welcome here; a dislike is not.
+ */
+export const REACTION_KINDS = [
+  "CLAP",
+  "STAR",
+  "IDEA",
+  "HEART",
+  "CELEBRATE",
+  "PROUD",
+  "THANKS",
+] as const;
 export type ReactionKind = (typeof REACTION_KINDS)[number];
 
 export const INVITE_STATUSES = ["PENDING", "ACCEPTED", "REVOKED", "EXPIRED"] as const;

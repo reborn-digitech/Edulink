@@ -191,6 +191,7 @@ export async function react(input: unknown): Promise<{ ok: boolean; added?: bool
 export async function comment(
   postId: string,
   body: string,
+  parentCommentId?: string,
 ): Promise<{ ok: boolean; held?: boolean; error?: string }> {
   const session = await getSession();
   if (!session) return { ok: false, error: (await getT())("common.logInAgain") };
@@ -198,7 +199,7 @@ export async function comment(
   if (body.length > 4000) return { ok: false, error: (await getT())("bulletin.tooLong") };
 
   try {
-    const result = await addComment(session, postId, body);
+    const result = await addComment(session, postId, body, parentCommentId);
     revalidatePath(`/bulletin/${postId}`);
     revalidatePath("/bulletin");
     return { ok: true, held: result.status === "PENDING" };

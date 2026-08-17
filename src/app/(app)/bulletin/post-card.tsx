@@ -6,13 +6,16 @@ import { useRouter } from "next/navigation";
 import {
   CheckCircleIcon,
   ChatCircleIcon,
+  ConfettiIcon,
   FlagIcon,
   GlobeIcon,
   HandsClappingIcon,
+  HandsPrayingIcon,
   HeartIcon,
   LightbulbIcon,
   PushPinIcon,
   StarIcon,
+  TrophyIcon,
   XCircleIcon,
 } from "@phosphor-icons/react";
 import { Avatar } from "@/components/ui/avatar";
@@ -73,6 +76,11 @@ const REACTION_META: Record<
   STAR: { icon: StarIcon, labelKey: "bulletin.reactStar" },
   IDEA: { icon: LightbulbIcon, labelKey: "bulletin.reactIdea" },
   HEART: { icon: HeartIcon, labelKey: "bulletin.reactHeart" },
+  // The school's own three: results and events, somebody's work in the
+  // spotlight, and the thanks a school community runs on.
+  CELEBRATE: { icon: ConfettiIcon, labelKey: "bulletin.reactCelebrate" },
+  PROUD: { icon: TrophyIcon, labelKey: "bulletin.reactProud" },
+  THANKS: { icon: HandsPrayingIcon, labelKey: "bulletin.reactThanks" },
 };
 
 const REPORT_REASONS = [

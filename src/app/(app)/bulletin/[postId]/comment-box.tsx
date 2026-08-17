@@ -13,10 +13,19 @@ export function CommentBox({
   postId,
   willBeHeld,
   className,
+  parentCommentId,
+  compact = false,
+  onSent,
 }: {
   postId: string;
   willBeHeld: boolean;
   className?: string;
+  /** Set on a reply box — the comment this answers. */
+  parentCommentId?: string;
+  /** Smaller box for the inline reply under a comment. */
+  compact?: boolean;
+  /** Lets a reply box fold itself away once the reply is in. */
+  onSent?: () => void;
 }) {
   const t = useT();
   const router = useRouter();
@@ -24,6 +33,7 @@ export function CommentBox({
   const [pending, startTransition] = useTransition();
   const [body, setBody] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const id = parentCommentId ? `reply-${parentCommentId}` : "comment";
 
   return (
     <form
@@ -36,7 +46,7 @@ export function CommentBox({
         }
         setError(null);
         startTransition(async () => {
-          const result = await comment(postId, body);
+          const result = await comment(postId, body, parentCommentId);
           if (!result.ok) {
             setError(result.error ?? t("bulletin.couldNotSend"));
             return;
@@ -51,24 +61,26 @@ export function CommentBox({
                 }
               : { tone: "ok", title: t("bulletin.posted") },
           );
+          onSent?.();
           router.refresh();
         });
       }}
     >
-      <label htmlFor="comment" className="sr-only">
-        {t("bulletin.writeComment")}
+      <label htmlFor={id} className="sr-only">
+        {parentCommentId ? t("bulletin.writeReply") : t("bulletin.writeComment")}
       </label>
       <textarea
-        id="comment"
+        id={id}
         value={body}
         onChange={(e) => {
           setBody(e.target.value.slice(0, 4000));
           if (error) setError(null);
         }}
-        rows={3}
+        rows={compact ? 2 : 3}
+        autoFocus={compact}
         placeholder={t("bulletin.sayKind")}
         aria-invalid={Boolean(error) || undefined}
-        aria-describedby={error ? "comment-error" : "comment-hint"}
+        aria-describedby={error ? `${id}-error` : `${id}-hint`}
         className={cn(
           "w-full resize-y rounded-[--radius-md] border bg-surface p-3.5 text-[0.9375rem] leading-relaxed outline-none",
           error ? "border-danger ring-2 ring-danger/25" : "border-border focus:border-accent",
@@ -77,11 +89,11 @@ export function CommentBox({
 
       <div className="flex items-center justify-between gap-3">
         {error ? (
-          <p id="comment-error" role="alert" className="text-xs font-medium text-danger">
+          <p id={`${id}-error`} role="alert" className="text-xs font-medium text-danger">
             {error}
           </p>
         ) : (
-          <p id="comment-hint" className="text-xs text-fg-muted">
+          <p id={`${id}-hint`} className="text-xs text-fg-muted">
             {/* Stated before they write, not after it disappears. */}
             {willBeHeld ? t("bulletin.teacherChecksComment") : t("bulletin.everyoneCanRead")}
           </p>
