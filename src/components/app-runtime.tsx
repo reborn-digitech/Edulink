@@ -152,9 +152,22 @@ export function AppRuntime() {
 
   return (
     <>
+      {/*
+        Two elements for one banner, and the split is the accessibility fix.
+        The visual bar has to STAY MOUNTED while online — the slide-out is a
+        transform on an existing element — but a mounted `role="status"` with
+        "Offline" in it is announced by screen readers on every page, online or
+        not; a walkthrough found it on the accessibility tree of every screen.
+        So the live region is its own visually-hidden element, permanently
+        mounted (a live region only announces content INSERTED after it
+        exists) and holding text only while actually offline, and the animated
+        bar below is presentation only.
+      */}
+      <div role="status" aria-live="polite" className="sr-only">
+        {online ? null : t("shell.offline")}
+      </div>
       <div
-        role="status"
-        aria-live="polite"
+        aria-hidden="true"
         className={cn(
           "fixed inset-x-0 top-0 z-[90] flex items-center justify-center gap-2",
           "bg-warn px-4 py-2 pt-[calc(env(safe-area-inset-top,0px)+0.5rem)] text-sm font-semibold text-white",

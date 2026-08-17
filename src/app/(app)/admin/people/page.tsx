@@ -123,6 +123,15 @@ export default async function DirectoryPage({
     db.membership.count({ where: { schoolId: ctx.schoolId, leftAt: { not: null } } }),
   ]);
 
+  /**
+   * Class names sort like a person reads them, not like the database collates
+   * them — "Grade 10" belongs after "Grade 3", and byte order puts it first.
+   * Postgres cannot be asked for this per query, so the list is re-sorted here;
+   * it is a filter dropdown of at most a few dozen rows.
+   */
+  const classCollator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
+  classes.sort((a, b) => classCollator.compare(a.name, b.name));
+
   const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
   const exportHref = `/admin/people/export?${new URLSearchParams({
     ...(query ? { q: query } : {}),

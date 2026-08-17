@@ -59,6 +59,12 @@ export default async function SwitchPage() {
     );
   }
 
+  // One school is named, several are counted. "Parent · 1 schools" is what a
+  // count-only subtitle produced for the ordinary stand-in guardian with six
+  // children at one school — and when there is exactly one school, its name is
+  // strictly more useful than the number anyway.
+  const parentSchoolNames = new Set(children.map((child) => child.schoolName));
+
   return (
     <main id="main" className="mx-auto max-w-md px-4 py-12">
       <Wordmark className="mb-8" />
@@ -93,11 +99,9 @@ export default async function SwitchPage() {
                     : t("switch.childrenCount", { count: children.length })
                 }
                 subtitle={
-                  children.length === 1
+                  parentSchoolNames.size === 1
                     ? t("switch.parentAt", { school: children[0]!.schoolName })
-                    : t("switch.parentSchools", {
-                        count: new Set(children.map((c) => c.schoolName)).size,
-                      })
+                    : t("switch.parentSchools", { count: parentSchoolNames.size })
                 }
                 role="PARENT"
               />

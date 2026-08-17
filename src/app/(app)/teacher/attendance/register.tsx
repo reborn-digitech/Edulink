@@ -373,9 +373,13 @@ function StudentRow({
         <p className="truncate text-sm font-semibold text-fg">{entry.name}</p>
         {entry.note ? (
           <p className="truncate text-xs text-fg-muted">{entry.note}</p>
-        ) : (
+        ) : entry.fullName !== entry.name ? (
+          // The legal name, under the preferred one — a second line only when
+          // it says something the first line does not. Most pupils have no
+          // preferred name set, and printing the same name twice reads as a
+          // rendering mistake rather than information.
           <p className="truncate text-xs text-fg-subtle">{entry.fullName}</p>
-        )}
+        ) : null}
       </div>
 
       {!readOnly && (
