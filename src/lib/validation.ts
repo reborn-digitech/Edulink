@@ -2,6 +2,7 @@ import { z } from "zod";
 import {
   ATTENDANCE_STATUSES,
   GUARDIAN_RELATIONS,
+  POST_CATEGORIES,
   POST_SCOPES,
   REACTION_KINDS,
   SCHOOL_ROLES,
@@ -293,6 +294,9 @@ export const remarkReplySchema = z.object({
 
 export const postSchema = z.object({
   scope: z.enum(POST_SCOPES),
+  // Defaulted rather than required so every form shipped before categories
+  // existed still parses; the composer always sends one explicitly.
+  category: z.enum(POST_CATEGORIES).default("UPDATES"),
   classId: z.string().cuid().optional().or(z.literal("")),
   // Targeting; the lib re-checks that only staff may narrow or require an ack,
   // so a forged student form degrades to an ordinary everyone-post.

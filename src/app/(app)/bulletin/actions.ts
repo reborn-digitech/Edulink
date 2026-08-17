@@ -24,7 +24,7 @@ export type PostState = { ok: boolean; errors: FieldErrors; postId?: string; sta
 const MAX_PICTURES = 10;
 
 /**
- * Compose a post, with up to ten pictures.
+ * Compose a post, with up to ten pieces of media — pictures and videos.
  *
  * The files arrive as FormData and are stored HERE, so the caller never names a
  * fileId. That is deliberate and load-bearing: `files.ts` authorises a stored
@@ -44,6 +44,7 @@ export async function submitPost(formData: FormData): Promise<PostState> {
 
   const fields = {
     scope: String(formData.get("scope") ?? ""),
+    category: String(formData.get("category") ?? "UPDATES"),
     classId: String(formData.get("classId") ?? ""),
     audience: String(formData.get("audience") ?? "ALL"),
     audienceGrade: String(formData.get("audienceGrade") ?? ""),
@@ -85,14 +86,19 @@ export async function submitPost(formData: FormData): Promise<PostState> {
   if (files.length > 0) {
     try {
       const stored = await storeAttachments(files, { max: MAX_PICTURES });
-      const notPictures = stored.filter((item) => !item.mime.startsWith("image/"));
-      if (notPictures.length > 0) {
+      // Pictures and videos are a post's media; a PDF is not — that is what
+      // assignments are for. The check runs on the mime the magic bytes
+      // proved, not the name the browser offered.
+      const notMedia = stored.filter(
+        (item) => !item.mime.startsWith("image/") && !item.mime.startsWith("video/"),
+      );
+      if (notMedia.length > 0) {
         await discard(stored.map((item) => item.fileId));
         return { ok: false, errors: { image: (await getT())("bulletin.allPictures") } };
       }
       media = stored.map((item, index) => ({
         fileId: item.fileId,
-        kind: "image" as const,
+        kind: item.mime.startsWith("video/") ? ("video" as const) : ("image" as const),
         alt: alts[index]!.slice(0, 300),
       }));
     } catch (error) {
@@ -106,6 +112,7 @@ export async function submitPost(formData: FormData): Promise<PostState> {
   try {
     const result = await createPost(session, {
       scope: parsed.data.scope,
+      category: parsed.data.category,
       classId: parsed.data.classId || undefined,
       title: parsed.data.title,
       body: parsed.data.body,

@@ -9,15 +9,17 @@ import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { submitPost } from "../actions";
 import { useT } from "@/lib/i18n";
-import type { Role } from "@/lib/constants";
+import { POST_CATEGORIES, type PostCategory, type Role } from "@/lib/constants";
+import { CATEGORY_KEYS } from "../categories";
 
 /**
- * Mirrors MAX_UPLOAD_BYTES in storage.ts. Duplicated rather than imported
- * because storage.ts is `server-only` and importing it here is a build error,
- * not a type error. The server is the one that enforces this; the copy exists
- * so a child is told before sending five megabytes, not after.
+ * Mirror MAX_UPLOAD_BYTES / MAX_VIDEO_BYTES in storage.ts. Duplicated rather
+ * than imported because storage.ts is `server-only` and importing it here is a
+ * build error, not a type error. The server is the one that enforces these; the
+ * copies exist so a child is told before sending a hundred megabytes, not after.
  */
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
+const MAX_VIDEO_BYTES = 100 * 1024 * 1024;
 
 /** Matches the `.max(10)` on `postSchema.media`, which is what actually enforces it. */
 const MAX_PICTURES = 10;
@@ -43,6 +45,9 @@ export function ComposeForm({
   const [scope, setScope] = useState<"CLASS" | "SCHOOL">(
     classes.length > 0 ? "CLASS" : "SCHOOL",
   );
+  // Deliberately unset until chosen — every post carries one of the five, and
+  // an unnoticed default would put half the school's life under "Updates".
+  const [category, setCategory] = useState<PostCategory | "">("");
   const [classId, setClassId] = useState(classes[0]?.id ?? "");
   const [audience, setAudience] = useState<"ALL" | "PARENTS" | "TEACHERS" | "STUDENTS">("ALL");
   const [audienceGrade, setAudienceGrade] = useState("");
@@ -102,17 +107,26 @@ export function ComposeForm({
       return;
     }
 
-    // Both checks are re-done on the server, which sniffs the actual bytes
+    // All checks are re-done on the server, which sniffs the actual bytes
     // rather than trusting `file.type`. Doing them here too just means a child
-    // is told immediately instead of after a 5 MB upload. (§6)
-    const wrongType = incoming.find((f) => !f.type.startsWith("image/"));
+    // is told immediately instead of after a 100 MB upload. (§6)
+    const wrongType = incoming.find(
+      (f) => !f.type.startsWith("image/") && !f.type.startsWith("video/"),
+    );
     if (wrongType) {
-      setErrors((e) => ({ ...e, image: t("bulletin.notAPicture", { name: wrongType.name }) }));
+      setErrors((e) => ({ ...e, image: t("bulletin.notMedia", { name: wrongType.name }) }));
       return;
     }
-    const tooBig = incoming.find((f) => f.size > MAX_IMAGE_BYTES);
+    const tooBig = incoming.find((f) =>
+      f.type.startsWith("video/") ? f.size > MAX_VIDEO_BYTES : f.size > MAX_IMAGE_BYTES,
+    );
     if (tooBig) {
-      setErrors((e) => ({ ...e, image: t("bulletin.pictureTooBig", { name: tooBig.name }) }));
+      setErrors((e) => ({
+        ...e,
+        image: tooBig.type.startsWith("video/")
+          ? t("bulletin.videoTooBig", { name: tooBig.name })
+          : t("bulletin.pictureTooBig", { name: tooBig.name }),
+      }));
       return;
     }
 
@@ -155,6 +169,7 @@ export function ComposeForm({
     event.preventDefault();
     const next: Record<string, string> = {};
     if (title.trim().length < 2) next.title = t("bulletin.giveTitle");
+    if (!category) next.category = t("bulletin.chooseCategory");
     if (scope === "CLASS" && !classId) next.classId = t("bulletin.chooseClass");
     // A picture nobody can hear is a picture some children cannot read at all.
     // Reported per picture, so it is obvious WHICH one is missing its words.
@@ -171,6 +186,7 @@ export function ComposeForm({
       // the server mints the fileId. The client never names one. (§6)
       const payload = new FormData();
       payload.set("scope", scope);
+      payload.set("category", category);
       payload.set("classId", scope === "CLASS" ? classId : "");
       payload.set("audience", scope === "SCHOOL" ? audience : "ALL");
       payload.set("audienceGrade", scope === "SCHOOL" && audience !== "TEACHERS" ? audienceGrade : "");
@@ -264,6 +280,24 @@ export function ComposeForm({
           </div>
         </fieldset>
       )}
+
+      <SelectField
+        label={t("bulletin.categoryLabel")}
+        required
+        value={category}
+        error={errors.category}
+        onChange={(e) => setCategory(e.target.value as PostCategory | "")}
+        hint={category ? t(CATEGORY_KEYS[category].hint) : t("bulletin.categoryIntro")}
+      >
+        <option value="" disabled>
+          {t("bulletin.chooseCategory")}
+        </option>
+        {POST_CATEGORIES.map((key) => (
+          <option key={key} value={key}>
+            {t(CATEGORY_KEYS[key].name)}
+          </option>
+        ))}
+      </SelectField>
 
       {scope === "CLASS" && classes.length > 0 && (
         <SelectField
@@ -374,12 +408,22 @@ export function ComposeForm({
               >
                 <div className="flex items-start gap-3">
                   {/* Local blob preview — nothing has been uploaded yet. */}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={picture.preview}
-                    alt=""
-                    className="size-20 shrink-0 rounded-[--radius-sm] object-cover"
-                  />
+                  {picture.file.type.startsWith("video/") ? (
+                    <video
+                      src={picture.preview}
+                      muted
+                      playsInline
+                      preload="metadata"
+                      className="size-20 shrink-0 rounded-[--radius-sm] bg-black object-cover"
+                    />
+                  ) : (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={picture.preview}
+                      alt=""
+                      className="size-20 shrink-0 rounded-[--radius-sm] object-cover"
+                    />
+                  )}
                   <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-medium text-fg">{picture.file.name}</p>
                     <p className="text-xs text-fg-muted">
@@ -429,7 +473,7 @@ export function ComposeForm({
               id="post-image"
               type="file"
               multiple
-              accept="image/png,image/jpeg,image/webp,image/gif"
+              accept="image/png,image/jpeg,image/webp,image/gif,video/mp4,video/webm,video/quicktime"
               className="sr-only"
               onChange={(e) => choosePictures(e.target.files)}
             />

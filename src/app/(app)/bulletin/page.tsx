@@ -7,7 +7,8 @@ import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { PostCard } from "./post-card";
-import type { PostStatus } from "@/lib/constants";
+import { FeedFilters } from "./feed-filters";
+import { POST_CATEGORIES, type PostCategory, type PostStatus } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -18,11 +19,23 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function BulletinPage({
   searchParams,
 }: {
-  searchParams: Promise<{ filter?: string; tag?: string; school?: string }>;
+  searchParams: Promise<{
+    filter?: string;
+    tag?: string;
+    school?: string;
+    category?: string;
+    q?: string;
+  }>;
 }) {
   const t = await getT();
   const session = await requireUser();
-  const { filter, tag, school: requestedSchool } = await searchParams;
+  const { filter, tag, school: requestedSchool, category: rawCategory, q: rawQ } = await searchParams;
+
+  // A mangled category is nobody's filter; ignore it rather than 500 or match nothing.
+  const category = POST_CATEGORIES.includes(rawCategory as PostCategory)
+    ? (rawCategory as PostCategory)
+    : undefined;
+  const q = rawQ?.trim() || undefined;
 
   // A guardian's session carries no school by design; their children's
   // schools are the bulletins they may read. One child-school opens directly,
@@ -58,6 +71,8 @@ export default async function BulletinPage({
       status: showPending ? ("PENDING" as PostStatus) : undefined,
       mineOnly: showMine,
       schoolId: activeSchoolId,
+      category,
+      q,
     }),
     pendingCount(session),
     db.school.findUniqueOrThrow({
@@ -138,6 +153,16 @@ export default async function BulletinPage({
         </p>
       )}
 
+      <FeedFilters
+        basePath="/bulletin"
+        category={category}
+        q={q}
+        extra={{
+          ...(filter ? { filter } : {}),
+          ...(requestedSchool ? { school: requestedSchool } : {}),
+        }}
+      />
+
       <nav className="flex gap-1 rounded-[--radius-md] bg-surface-muted p-1" aria-label={t("bulletin.filter")}>
         {tabs.map((t) => {
           const active = (filter ?? "") === t.id;
@@ -160,18 +185,22 @@ export default async function BulletinPage({
         <EmptyState
           icon={<MegaphoneIcon weight="duotone" className="size-8" />}
           title={
-            showPending
-              ? t("bulletin.emptyPendingTitle")
-              : showMine
-                ? t("bulletin.emptyMineTitle")
-                : t("bulletin.emptyTitle")
+            category || q
+              ? t("bulletin.noMatchesTitle")
+              : showPending
+                ? t("bulletin.emptyPendingTitle")
+                : showMine
+                  ? t("bulletin.emptyMineTitle")
+                  : t("bulletin.emptyTitle")
           }
           description={
-            showPending
-              ? t("bulletin.emptyPendingBody")
-              : showMine
-                ? t("bulletin.emptyMineBody")
-                : t("bulletin.emptyBody")
+            category || q
+              ? t("bulletin.noMatchesBody")
+              : showPending
+                ? t("bulletin.emptyPendingBody")
+                : showMine
+                  ? t("bulletin.emptyMineBody")
+                  : t("bulletin.emptyBody")
           }
           action={
             !showPending && session.role !== "PARENT" ? (

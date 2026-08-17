@@ -1128,6 +1128,11 @@ model Post {
   media String @default("[]") // JSON of {fileId,alt,kind}[] — alt is required at write time
   tags  String @default("[]")
 
+  /// One of POST_CATEGORIES: PEOPLE | CAMPUS | EVENTS | LEARNING | UPDATES.
+  /// Defaulted to UPDATES because every post written before categories existed
+  /// was an announcement — which is what UPDATES means.
+  category String @default("UPDATES")
+
   /// Who a SCHOOL post is FOR: everyone, only families, only staff, or only
   /// pupils. A courtesy filter applied at QUERY time, never a secrecy boundary —
   /// RLS still shows the row to the whole school, and the feed simply leaves it

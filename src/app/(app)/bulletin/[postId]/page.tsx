@@ -5,14 +5,16 @@ import { ArrowLeftIcon, ClockIcon } from "@phosphor-icons/react/ssr";
 import { requireUser, AccessError } from "@/lib/tenancy";
 import { getPost, ackReport, type AckGroup } from "@/lib/bulletin";
 import { AckButton } from "./ack-button";
-import { readJsonArray } from "@/lib/json";
+import { readJsonArray, type MediaItem } from "@/lib/json";
 import { relativeTime } from "@/lib/dates";
 import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { CommentBox } from "./comment-box";
+import { PostMedia } from "../media";
+import { CATEGORY_KEYS } from "../categories";
 import { getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
-import { ROLE_META, type Role } from "@/lib/constants";
+import { ROLE_META, type PostCategory, type Role } from "@/lib/constants";
 
 /* Same keys the feed card uses — the deep link must not say less than the
    card the reader clicked. */
@@ -43,6 +45,7 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
   }
 
   const tags = readJsonArray<string>(post.tags);
+  const media = readJsonArray<MediaItem>(post.media);
   const isStaff = session.role === "ADMIN" || session.role === "TEACHER";
 
   // The delivery checklist, for the people who can chase it up.
@@ -103,11 +106,22 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
           {post.title}
         </h1>
 
+        <Link
+          href={`/bulletin?category=${post.category}`}
+          className="mt-1.5 inline-block rounded-full bg-accent-soft px-2.5 py-0.5 text-xs font-semibold text-accent-strong hover:underline"
+        >
+          {t(CATEGORY_KEYS[post.category as PostCategory].name)}
+        </Link>
+
         {post.body && (
           <p className="mt-3 whitespace-pre-wrap text-[0.9375rem] leading-relaxed text-fg">
             {post.body}
           </p>
         )}
+
+        {/* The full post is where the media matters most — the card had it,
+            this page did not, and a video post opened to nothing. */}
+        <PostMedia media={media} />
 
         {tags.length > 0 && (
           <ul className="mt-4 flex flex-wrap gap-1.5">

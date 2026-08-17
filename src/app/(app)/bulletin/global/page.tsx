@@ -8,6 +8,10 @@ import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { GlobalPostControls } from "./controls";
+import { FeedFilters } from "../feed-filters";
+import { PostMedia } from "../media";
+import { CATEGORY_KEYS } from "../categories";
+import { POST_CATEGORIES, type PostCategory } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -24,11 +28,22 @@ export async function generateMetadata(): Promise<Metadata> {
  * which is which. It also keeps the school feed's query untouched — the one
  * that carries pending student posts and rejection reasons.
  */
-export default async function GlobalFeedPage() {
+export default async function GlobalFeedPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string; q?: string }>;
+}) {
   const t = await getT();
   const ctx = await requireRole("ADMIN", "TEACHER", "STUDENT", "PARENT");
   const isAdmin = ctx.role === "ADMIN";
-  const posts = await listGlobalFeed(ctx);
+
+  const { category: rawCategory, q: rawQ } = await searchParams;
+  const category = POST_CATEGORIES.includes(rawCategory as PostCategory)
+    ? (rawCategory as PostCategory)
+    : undefined;
+  const q = rawQ?.trim() || undefined;
+
+  const posts = await listGlobalFeed(ctx, { category, q });
 
   return (
     <div className="space-y-5">
@@ -45,11 +60,13 @@ export default async function GlobalFeedPage() {
         <p className="mt-1 max-w-prose text-sm text-fg-muted">{t("bulletin.globalIntro")}</p>
       </div>
 
+      <FeedFilters basePath="/bulletin/global" category={category} q={q} />
+
       {posts.length === 0 ? (
         <EmptyState
           icon={<GlobeIcon weight="duotone" className="size-8" />}
-          title={t("bulletin.nothingShared")}
-          description={t("bulletin.nothingSharedBody")}
+          title={category || q ? t("bulletin.noMatchesTitle") : t("bulletin.nothingShared")}
+          description={category || q ? t("bulletin.noMatchesBody") : t("bulletin.nothingSharedBody")}
         />
       ) : (
         <ul className="space-y-3">
@@ -82,11 +99,20 @@ export default async function GlobalFeedPage() {
                     <p className="mt-1 text-xs text-fg-muted">{t("bulletin.byAuthor", { name: post.authorName })}</p>
                   </div>
 
+                  <Link
+                    href={`/bulletin/global?category=${post.category}`}
+                    className="inline-block w-fit rounded-full bg-accent-soft px-2.5 py-0.5 text-xs font-semibold text-accent-strong hover:underline"
+                  >
+                    {t(CATEGORY_KEYS[post.category].name)}
+                  </Link>
+
                   {post.body && (
                     <p className="whitespace-pre-wrap text-[0.9375rem] leading-relaxed text-fg-muted">
                       {post.body}
                     </p>
                   )}
+
+                  <PostMedia media={post.media} />
 
                   {post.tags.length > 0 && (
                     <div className="flex flex-wrap gap-1.5">

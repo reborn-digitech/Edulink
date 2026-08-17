@@ -3,7 +3,9 @@ import { db } from "./db";
 import { audit } from "./audit";
 import { AccessError } from "./tenancy";
 import { readJsonArray, type MediaItem } from "./json";
+import { CATEGORY_HASHTAGS, schoolHashtag, searchWhere } from "./bulletin";
 import type { ActiveContext } from "./session";
+import type { PostCategory } from "./constants";
 
 /**
  * The global feed — the one surface where a school reads another school's post.
@@ -44,6 +46,7 @@ import type { ActiveContext } from "./session";
 
 export type GlobalPost = {
   id: string;
+  category: PostCategory;
   title: string;
   body: string;
   media: MediaItem[];
@@ -68,14 +71,19 @@ export type GlobalPost = {
  */
 export async function listGlobalFeed(
   session: ActiveContext,
-  opts: { includeHidden?: boolean } = {},
+  opts: { includeHidden?: boolean; category?: PostCategory; q?: string } = {},
 ): Promise<GlobalPost[]> {
   const schoolId = session.schoolId;
   const isStaff = session.role === "ADMIN" || session.role === "TEACHER";
 
   const [posts, hides] = await Promise.all([
     db.post.findMany({
-      where: { scope: "GLOBAL", status: "APPROVED" },
+      where: {
+        scope: "GLOBAL",
+        status: "APPROVED",
+        ...(opts.category ? { category: opts.category } : {}),
+        ...(opts.q ? { AND: [searchWhere(opts.q)] } : {}),
+      },
       include: {
         author: { select: { name: true, preferredName: true } },
         // Readable only for our OWN school's posts — another school's School row
@@ -99,6 +107,7 @@ export async function listGlobalFeed(
     .filter((post) => showHidden || !hidden.has(post.id))
     .map((post) => ({
       id: post.id,
+      category: post.category as PostCategory,
       title: post.title,
       body: post.body,
       media: readJsonArray<MediaItem>(post.media),
@@ -134,7 +143,15 @@ export async function publishGlobally(session: ActiveContext, postId: string): P
   // an unscoped `update` would report success on zero rows.
   const post = await db.post.findFirst({
     where: { id: postId, schoolId: session.schoolId },
-    select: { id: true, status: true, scope: true, title: true, school: { select: { name: true } } },
+    select: {
+      id: true,
+      status: true,
+      scope: true,
+      title: true,
+      body: true,
+      category: true,
+      school: { select: { name: true } },
+    },
   });
   if (!post) throw new AccessError("access.noSuchPost", "NOT_FOUND");
   if (post.status !== "APPROVED") {
@@ -142,11 +159,26 @@ export async function publishGlobally(session: ActiveContext, postId: string): P
   }
   if (post.scope === "GLOBAL") return; // already there; not an error
 
-  // The name is stamped HERE, at the moment of publishing, because this is the
-  // last point at which the publishing school's own row is readable.
+  /**
+   * A global post signs itself: "#CategoryName #SchoolName" on its own line,
+   * appended at the moment of publishing — the same moment the school name is
+   * stamped, and for the same reason: this is the last point the publishing
+   * school's row is readable. In the BODY rather than synthesised at render so
+   * the search finds it, every reader sees the same thing, and taking the post
+   * back off the feed can remove exactly what publishing added. Idempotent:
+   * a re-publish after an unpublish must not stack signatures.
+   */
+  const signature = [CATEGORY_HASHTAGS[post.category as PostCategory], schoolHashtag(post.school?.name ?? "")]
+    .filter(Boolean)
+    .join(" ");
+  const body =
+    signature && !post.body.includes(signature)
+      ? `${post.body.trimEnd()}\n\n${signature}`.trimStart()
+      : post.body;
+
   await db.post.update({
     where: { id: post.id },
-    data: { scope: "GLOBAL", globalSchoolName: post.school?.name ?? null },
+    data: { scope: "GLOBAL", globalSchoolName: post.school?.name ?? null, body },
   });
 
   await audit({
@@ -167,11 +199,25 @@ export async function unpublishGlobally(session: ActiveContext, postId: string):
 
   const post = await db.post.findFirst({
     where: { id: postId, schoolId: session.schoolId, scope: "GLOBAL" },
-    select: { id: true, title: true },
+    select: { id: true, title: true, body: true, category: true, globalSchoolName: true },
   });
   if (!post) throw new AccessError("access.noSuchPost", "NOT_FOUND");
 
-  await db.post.update({ where: { id: post.id }, data: { scope: "SCHOOL" } });
+  // Publishing signed the body; unpublishing removes exactly that signature —
+  // and only as the trailing line publishing wrote, so a hashtag the author
+  // typed themselves mid-text is left alone.
+  const signature = [
+    CATEGORY_HASHTAGS[post.category as PostCategory],
+    schoolHashtag(post.globalSchoolName ?? ""),
+  ]
+    .filter(Boolean)
+    .join(" ");
+  const body =
+    signature && post.body.endsWith(signature)
+      ? post.body.slice(0, -signature.length).trimEnd()
+      : post.body;
+
+  await db.post.update({ where: { id: post.id }, data: { scope: "SCHOOL", body } });
 
   await audit({
     schoolId: session.schoolId,

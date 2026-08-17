@@ -38,17 +38,51 @@ export async function GET(
     });
   }
 
-  return new Response(new Uint8Array(stored.bytes), {
-    headers: {
-      "Content-Type": stored.mime,
-      ETag: etag,
-      "Cache-Control": cacheControl(access.public),
-      // Never let a stored file be interpreted as something executable.
-      "X-Content-Type-Options": "nosniff",
-      "Content-Disposition": "inline",
-      "Content-Security-Policy": "default-src 'none'; img-src 'self'; sandbox",
-    },
-  });
+  const baseHeaders = {
+    "Content-Type": stored.mime,
+    ETag: etag,
+    "Cache-Control": cacheControl(access.public),
+    // Never let a stored file be interpreted as something executable.
+    "X-Content-Type-Options": "nosniff",
+    "Content-Disposition": "inline",
+    "Content-Security-Policy": "default-src 'none'; img-src 'self'; media-src 'self'; sandbox",
+    // Video elements probe with Range requests; advertising support is what
+    // makes seeking work at all.
+    "Accept-Ranges": "bytes",
+  };
+
+  /**
+   * Range requests, for <video>. A player that cannot seek re-downloads from
+   * zero on every scrub, and Safari refuses to play a source whose server
+   * ignores Range entirely. Single-range only — multipart ranges are a
+   * complexity nobody's <video> sends — and a malformed or unsatisfiable range
+   * gets 416 with the total size, per the RFC, rather than a silent full body.
+   * Authorisation already happened above; a range of a file is the same
+   * disclosure as the file.
+   */
+  const range = request.headers.get("range");
+  if (range) {
+    const match = /^bytes=(\d*)-(\d*)$/.exec(range.trim());
+    const total = stored.bytes.byteLength;
+    const start = match?.[1] ? Number(match[1]) : match?.[2] ? total - Number(match[2]) : NaN;
+    const end = match?.[1] && match?.[2] ? Math.min(Number(match[2]), total - 1) : total - 1;
+    if (!match || Number.isNaN(start) || start < 0 || start > end || start >= total) {
+      return new Response(null, {
+        status: 416,
+        headers: { "Content-Range": `bytes */${total}`, ETag: etag },
+      });
+    }
+    return new Response(new Uint8Array(stored.bytes.subarray(start, end + 1)), {
+      status: 206,
+      headers: {
+        ...baseHeaders,
+        "Content-Range": `bytes ${start}-${end}/${total}`,
+        "Content-Length": String(end - start + 1),
+      },
+    });
+  }
+
+  return new Response(new Uint8Array(stored.bytes), { headers: baseHeaders });
 }
 
 /**

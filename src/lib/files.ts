@@ -215,6 +215,21 @@ export async function authorizeFileRead(
       if (guardianOfClass) return { allowed: true, kind: "post", public: false };
     }
 
+    /**
+     * A GLOBAL post is the one thing every school may read — that is the whole
+     * point of the feed — so its media crosses the school boundary with it.
+     * This check predates media on the global feed (the page never rendered
+     * any until it did), which is how "share with every school" shipped whose
+     * pictures 404ed for every school but the publisher's. Approved and
+     * global only: taking the post back off the feed makes its media
+     * school-private again in the same moment. Any signed-in reader — the
+     * audience the feed itself has; a per-school hide is a courtesy filter on
+     * the feed, never a secrecy boundary, and is not re-checked per byte.
+     */
+    if (post.scope === "GLOBAL" && post.status === "APPROVED") {
+      return { allowed: true, kind: "post", public: false };
+    }
+
     if (schoolId !== postSchoolId) return DENY;
     // A pending or rejected post's media is as private as the post itself.
     if (post.status !== "APPROVED") {

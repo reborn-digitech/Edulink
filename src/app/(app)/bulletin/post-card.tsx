@@ -7,6 +7,7 @@ import {
   CheckCircleIcon,
   ChatCircleIcon,
   FlagIcon,
+  GlobeIcon,
   HandsClappingIcon,
   HeartIcon,
   LightbulbIcon,
@@ -21,13 +22,17 @@ import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { relativeTime } from "@/lib/dates";
 import { acknowledge, pin, react, review, report } from "./actions";
+import { publish as publishGlobal } from "./global/actions";
 import { useT } from "@/lib/i18n";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
-import { REACTION_KINDS, ROLE_META, type ReactionKind, type Role } from "@/lib/constants";
+import { REACTION_KINDS, ROLE_META, type PostCategory, type ReactionKind, type Role } from "@/lib/constants";
+import { CATEGORY_KEYS } from "./categories";
+import { PostMedia } from "./media";
 
 type Post = {
   id: string;
   scope: string;
+  category: PostCategory;
   title: string;
   body: string;
   tags: string[];
@@ -172,6 +177,15 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
           </Link>
         </h2>
 
+        {/* The category, linking to its filtered feed — a chip, not prose,
+            because it is the axis the feed filters on. */}
+        <Link
+          href={`/bulletin?category=${post.category}`}
+          className="mt-1.5 inline-block rounded-full bg-accent-soft px-2.5 py-0.5 text-xs font-semibold text-accent-strong hover:underline"
+        >
+          {t(CATEGORY_KEYS[post.category].name)}
+        </Link>
+
         {post.body && (
           <p className="mt-1.5 whitespace-pre-wrap text-[0.9375rem] leading-relaxed text-fg-muted">
             {post.body}
@@ -183,49 +197,7 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
           who is allowed to see this post before returning a byte, so a pending
           post's picture is as private as the post itself.
         */}
-        {(() => {
-          const pictures = post.media.filter((item) => item.kind === "image");
-          if (pictures.length === 0) return null;
-
-          // One picture gets the full width and keeps its own proportions —
-          // cropping somebody's drawing to a tidy square is not a neutral act.
-          // Several are laid out as a grid and cropped, because a column of
-          // full-height photographs buries the comments and the reactions.
-          const single = pictures.length === 1;
-
-          return (
-            <ul
-              className={cn(
-                "mt-3",
-                single ? "" : "grid gap-1.5 sm:grid-cols-2",
-              )}
-            >
-              {pictures.map((item) => (
-                <li key={item.fileId}>
-                  {/*
-                    A plain <img>, deliberately. /api/files/:id checks the
-                    viewer's session and their relationship to the post before
-                    it hands over a byte, and next/image's optimiser fetches on
-                    the server with no session at all — so the optimised variant
-                    would take the route's 404 refusal, or, worse if it were
-                    ever let through, cache one child's photograph somewhere
-                    that check no longer runs.
-                  */}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`/api/files/${item.fileId}`}
-                    alt={item.alt}
-                    loading="lazy"
-                    className={cn(
-                      "w-full rounded-[--radius-md] border border-border bg-surface-muted",
-                      single ? "max-h-[28rem] object-contain" : "aspect-4/3 object-cover",
-                    )}
-                  />
-                </li>
-              ))}
-            </ul>
-          );
-        })()}
+        <PostMedia media={post.media} />
 
         {post.tags.length > 0 && (
           <ul className="mt-3 flex flex-wrap gap-1.5">
@@ -428,6 +400,42 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
           </Link>
 
           <div className="ml-auto flex items-center gap-1">
+            {/* Promote to the global feed — the write half of the surface the
+                global page's hide/unpublish controls read. Admin-only, and only
+                for an approved school-wide post: the lib refuses anything else,
+                this just doesn't offer the button. Publishing signs the body
+                with #Category #School, so the toast says so. */}
+            {viewerRole === "ADMIN" && post.scope === "SCHOOL" && post.status === "APPROVED" && (
+              <button
+                type="button"
+                title={t("bulletin.shareGlobal")}
+                aria-label={t("bulletin.shareGlobal")}
+                className="tap grid place-items-center rounded-full text-fg-subtle hover:text-fg"
+                onClick={() =>
+                  startTransition(async () => {
+                    const result = await publishGlobal(post.id);
+                    toast(
+                      result.ok
+                        ? { tone: "ok", title: t("bulletin.sharedGlobal"), description: t("bulletin.sharedGlobalBody") }
+                        : { tone: "danger", title: t("bulletin.couldNotDo"), description: result.error },
+                    );
+                    router.refresh();
+                  })
+                }
+              >
+                <GlobeIcon weight="regular" className="size-4" />
+              </button>
+            )}
+            {post.scope === "GLOBAL" && (
+              <Link
+                href="/bulletin/global"
+                title={t("bulletin.onGlobalFeed")}
+                className="inline-flex items-center gap-1 rounded-full bg-accent-soft px-2 py-0.5 text-xs font-semibold text-accent-strong"
+              >
+                <GlobeIcon weight="fill" className="size-3" />
+                {t("bulletin.onGlobalFeed")}
+              </Link>
+            )}
             {viewerRole === "ADMIN" && (
               <button
                 type="button"

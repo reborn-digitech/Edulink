@@ -49,6 +49,16 @@ export type PostScope = (typeof POST_SCOPES)[number];
 export const POST_STATUSES = ["DRAFT", "PENDING", "APPROVED", "REJECTED"] as const;
 export type PostStatus = (typeof POST_STATUSES)[number];
 
+/**
+ * Every social-media post carries exactly one of these. The keys are stable
+ * database values; the display names ("People & Spotlights", …) live in the
+ * dictionaries, and the English hashtag forms in `bulletin.ts`. UPDATES is the
+ * default because it is what every post written before categories existed was:
+ * an announcement.
+ */
+export const POST_CATEGORIES = ["PEOPLE", "CAMPUS", "EVENTS", "LEARNING", "UPDATES"] as const;
+export type PostCategory = (typeof POST_CATEGORIES)[number];
+
 export const REACTION_KINDS = ["CLAP", "STAR", "IDEA", "HEART"] as const;
 export type ReactionKind = (typeof REACTION_KINDS)[number];
 

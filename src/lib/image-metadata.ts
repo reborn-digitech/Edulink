@@ -41,6 +41,12 @@ export function stripImageMetadata(bytes: Buffer, mime: string): Buffer {
       // GIF carries comment and application extensions but no EXIF in practice,
       // and PDF is not an image. Both are returned untouched rather than being
       // rewritten by code that has no test covering them.
+      //
+      // ⚠ VIDEO PASSES THROUGH UNSTRIPPED. A phone MP4 can carry GPS in its
+      // moov/udta atoms — the same privacy problem EXIF poses for photos —
+      // and rewriting MP4 atom structure is real work this function does not
+      // attempt. Known limit, recorded in the README; the fix is an atom-level
+      // strip with tests, not a regex.
       return bytes;
   }
 }

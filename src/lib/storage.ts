@@ -22,22 +22,33 @@ import type { TranslationKey } from "@/lib/i18n/dictionary";
 const ROOT = resolve(process.cwd(), process.env.STORAGE_DIR ?? "./storage");
 
 /** Whitelist. Anything not on this list is refused, rather than blacklisted. */
-const ALLOWED: Record<string, { ext: string; kind: "image" | "file" }> = {
+const ALLOWED: Record<string, { ext: string; kind: "image" | "file" | "video" }> = {
   "image/png": { ext: "png", kind: "image" },
   "image/jpeg": { ext: "jpg", kind: "image" },
   "image/webp": { ext: "webp", kind: "image" },
   "image/gif": { ext: "gif", kind: "image" },
   "application/pdf": { ext: "pdf", kind: "file" },
+  "video/mp4": { ext: "mp4", kind: "video" },
+  "video/webm": { ext: "webm", kind: "video" },
 };
 
 export const MAX_UPLOAD_BYTES = 5 * 1024 * 1024; // 5 MB
+
+/**
+ * Videos get their own ceiling because 5 MB is three seconds of phone footage.
+ * The cap is enforced twice: `storeFile` admits bytes up to the LARGEST cap so
+ * the browser-reported type cannot pick the limit, and then re-checks against
+ * the cap of the kind the magic bytes actually proved — a 90 MB upload wearing
+ * an image name is refused after detection, not stored under the video budget.
+ */
+export const MAX_VIDEO_BYTES = 100 * 1024 * 1024; // 100 MB
 
 export type StoredFile = {
   fileId: string;
   name: string;
   mime: string;
   size: number;
-  kind: "image" | "file";
+  kind: "image" | "file" | "video";
 };
 
 /**
@@ -72,20 +83,33 @@ function sniff(bytes: Uint8Array): string | null {
   if (startsWith(0x52, 0x49, 0x46, 0x46) && bytes[8] === 0x57 && bytes[9] === 0x45) {
     return "image/webp";
   }
+  // MP4-family: a size-prefixed "ftyp" box at offset 4. The brand after it
+  // varies (isom, mp42, avc1, M4V…) and does not need distinguishing — every
+  // brand the box admits is the same container to the <video> element.
+  if (bytes[4] === 0x66 && bytes[5] === 0x74 && bytes[6] === 0x79 && bytes[7] === 0x70) {
+    return "video/mp4";
+  }
+  // WebM/Matroska: the EBML header. Served as webm; a raw .mkv that slips the
+  // same signature still plays or fails harmlessly in the same element.
+  if (startsWith(0x1a, 0x45, 0xdf, 0xa3)) return "video/webm";
   return null;
 }
 
 export async function storeFile(file: File, opts: { maxBytes?: number } = {}): Promise<StoredFile> {
-  const maxBytes = opts.maxBytes ?? MAX_UPLOAD_BYTES;
+  // An explicit caller cap binds everything. Otherwise files are ADMITTED up to
+  // the video ceiling and re-measured against their true kind's cap after the
+  // magic bytes have spoken — the client's claimed type never picks the limit.
+  const defaultCap = opts.maxBytes ?? MAX_UPLOAD_BYTES;
+  const admitCap = opts.maxBytes ?? MAX_VIDEO_BYTES;
 
   if (file.size === 0) throw new UploadError("refusal.fileEmpty");
-  if (file.size > maxBytes) {
-    throw new UploadError("refusal.fileTooLargeLimit", { mb: Math.round(maxBytes / 1024 / 1024) });
+  if (file.size > admitCap) {
+    throw new UploadError("refusal.fileTooLargeLimit", { mb: Math.round(admitCap / 1024 / 1024) });
   }
 
   const buffer = Buffer.from(await file.arrayBuffer());
   // Re-check after reading: `file.size` is also client-reported.
-  if (buffer.byteLength > maxBytes) throw new UploadError("refusal.fileTooLarge");
+  if (buffer.byteLength > admitCap) throw new UploadError("refusal.fileTooLarge");
 
   const detected = sniff(buffer);
   if (!detected || !ALLOWED[detected]) {
@@ -93,6 +117,12 @@ export async function storeFile(file: File, opts: { maxBytes?: number } = {}): P
   }
 
   const spec = ALLOWED[detected]!;
+
+  // The cap of the kind the bytes actually are.
+  const trueCap = spec.kind === "video" ? admitCap : defaultCap;
+  if (buffer.byteLength > trueCap) {
+    throw new UploadError("refusal.fileTooLargeLimit", { mb: Math.round(trueCap / 1024 / 1024) });
+  }
 
   // Strip EXIF and friends BEFORE the bytes ever reach disk. A phone photo
   // carries GPS coordinates, and a child's picture taken at home would

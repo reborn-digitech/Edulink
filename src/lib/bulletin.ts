@@ -7,7 +7,7 @@ import { notify } from "./notify";
 import { audit } from "./audit";
 import { AccessError, assertClassAccess } from "./tenancy";
 import type { ActiveContext } from "./session";
-import type { PostScope, PostStatus, ReactionKind, Role } from "./constants";
+import type { PostCategory, PostScope, PostStatus, ReactionKind, Role } from "./constants";
 
 /**
  * Bulletin board.
@@ -31,6 +31,7 @@ import type { PostScope, PostStatus, ReactionKind, Role } from "./constants";
 export type FeedPost = {
   id: string;
   scope: PostScope;
+  category: PostCategory;
   title: string;
   body: string;
   tags: string[];
@@ -57,6 +58,48 @@ export type FeedPost = {
 
 export const POST_AUDIENCES = ["ALL", "PARENTS", "TEACHERS", "STUDENTS"] as const;
 export type PostAudience = (typeof POST_AUDIENCES)[number];
+
+/**
+ * The English hashtag form of each category — the tag a GLOBAL post carries in
+ * its body. Deliberately NOT translated: a hashtag is an identifier shared by
+ * every school on the server, and one school reading Marathi must land on the
+ * same tag as one reading English, or the tag stops collecting anything.
+ */
+export const CATEGORY_HASHTAGS: Record<PostCategory, string> = {
+  PEOPLE: "#PeopleAndSpotlights",
+  CAMPUS: "#CampusLifeAndExperience",
+  EVENTS: "#EventsAndCommunity",
+  LEARNING: "#LearningAndAcademics",
+  UPDATES: "#UpdatesAndEngagement",
+};
+
+/** "ZZ Northgate School" → "#ZZNorthgateSchool". Empty when nothing survives. */
+export function schoolHashtag(name: string): string {
+  const compact = name
+    .split(/\s+/)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join("")
+    .replace(/[^\p{L}\p{N}]/gu, "");
+  return compact ? `#${compact}` : "";
+}
+
+/**
+ * A text search that matches how people actually look for a post: words from
+ * the title or body, or a #tag with or without its hash. Case-insensitive on
+ * text; the tag match is a substring of the serialised JSON array, the same
+ * trade `listFeed`'s tag filter already documents.
+ */
+export function searchWhere(q: string): Prisma.PostWhereInput {
+  const term = q.trim().replace(/^#/, "");
+  if (!term) return {};
+  return {
+    OR: [
+      { title: { contains: term, mode: "insensitive" } },
+      { body: { contains: term, mode: "insensitive" } },
+      { tags: { contains: term, mode: "insensitive" } },
+    ],
+  };
+}
 
 /* -------------------------------------------------------------------------- */
 /* Reading                                                                     */
@@ -252,7 +295,14 @@ async function classIdsFor(session: ActiveContext): Promise<string[]> {
 
 export async function listFeed(
   session: ActiveContext,
-  opts: { tag?: string; status?: PostStatus; mineOnly?: boolean; schoolId?: string | null } = {},
+  opts: {
+    tag?: string;
+    status?: PostStatus;
+    mineOnly?: boolean;
+    schoolId?: string | null;
+    category?: PostCategory;
+    q?: string;
+  } = {},
 ): Promise<FeedPost[]> {
   session = await scoped(session, { schoolId: opts.schoolId });
   if (!session.schoolId) return [];
@@ -270,6 +320,8 @@ export async function listFeed(
       // serialised array. Adequate for a handful of tags per post; a real tag
       // table is the fix if this ever needs to scale.
       ...(opts.tag ? [{ tags: { contains: `"${opts.tag}"` } }] : []),
+      ...(opts.category ? [{ category: opts.category }] : []),
+      ...(opts.q ? [searchWhere(opts.q)] : []),
     ],
   };
 
@@ -302,6 +354,7 @@ export async function listFeed(
     return {
       id: post.id,
       scope: post.scope as PostScope,
+      category: post.category as PostCategory,
       title: post.title,
       body: post.body,
       tags: readJsonArray<string>(post.tags),
@@ -405,6 +458,7 @@ export async function createPost(
     body: string;
     tags: string[];
     media: MediaItem[];
+    category?: PostCategory;
     audience?: PostAudience;
     audienceGrade?: string;
     requiresAck?: boolean;
@@ -466,6 +520,7 @@ export async function createPost(
       authorUserId: user.id,
       authorMembershipId: membershipId,
       scope: input.scope,
+      category: input.category ?? "UPDATES",
       title: input.title,
       body: input.body,
       tags: writeJson(input.tags),
