@@ -79,7 +79,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <head>
         <ThemeScript />
       </head>
-      <body className="min-h-safe antialiased">
+      {/* suppressHydrationWarning for the BODY ATTRIBUTES only (it does not
+          cascade): browser extensions — Grammarly stamps data-gr-ext-installed
+          and friends — rewrite <body> before React hydrates, and the mismatch
+          is theirs, not ours. Children still warn like they should. */}
+      <body className="min-h-safe antialiased" suppressHydrationWarning>
         <a
           href="#main"
           className="sr-only-focusable fixed left-4 top-4 z-[100] rounded-[--radius-md] bg-accent px-4 py-3 font-semibold text-accent-fg shadow-lg"

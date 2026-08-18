@@ -51,6 +51,10 @@ export type GlobalPost = {
   body: string;
   media: MediaItem[];
   tags: string[];
+  /** Cross-school conversation: counts by kind, and this reader's own taps. */
+  reactions: Record<string, number>;
+  myReactions: string[];
+  commentCount: number;
   createdAt: Date;
   authorName: string;
   /** The school that published it. Never null — provenance is the point. */
@@ -91,6 +95,10 @@ export async function listGlobalFeed(
         // that survives the boundary; this relation is the nicer name when it
         // happens to be readable.
         school: { select: { id: true, name: true } },
+        // The conversation crosses with the post: reaction rows and APPROVED
+        // comment counts are readable here through the widened RLS clauses.
+        reactions: { select: { kind: true, userId: true } },
+        _count: { select: { comments: { where: { status: "APPROVED" } } } },
       },
       orderBy: [{ pinnedAt: "desc" }, { createdAt: "desc" }],
       take: 100,
@@ -105,11 +113,21 @@ export async function listGlobalFeed(
 
   return posts
     .filter((post) => showHidden || !hidden.has(post.id))
-    .map((post) => ({
+    .map((post) => {
+      const reactions: Record<string, number> = {};
+      const myReactions: string[] = [];
+      for (const reaction of post.reactions) {
+        reactions[reaction.kind] = (reactions[reaction.kind] ?? 0) + 1;
+        if (reaction.userId === session.user.id) myReactions.push(reaction.kind);
+      }
+      return {
       id: post.id,
       category: post.category as PostCategory,
       title: post.title,
       body: post.body,
+      reactions,
+      myReactions,
+      commentCount: post._count.comments,
       media: readJsonArray<MediaItem>(post.media),
       tags: readJsonArray<string>(post.tags),
       createdAt: post.createdAt,
@@ -122,7 +140,8 @@ export async function listGlobalFeed(
       schoolId: post.school?.id ?? "",
       ours: post.schoolId === schoolId,
       hiddenHere: hidden.has(post.id),
-    }));
+      };
+    });
 }
 
 /**

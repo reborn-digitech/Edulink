@@ -399,8 +399,39 @@ ALTER TABLE "Comment" FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Comment_tenant_isolation" ON "Comment";
 DROP POLICY IF EXISTS "Comment_readable" ON "Comment";
 CREATE POLICY "Comment_tenant_isolation" ON "Comment"
+  FOR ALL
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- …and one row of this table belonging to ANOTHER school, by the
+  -- predicate below. See GLOBALLY_READABLE in scripts/gen-rls.ts for
+  -- what that predicate opens and why it is safe to open it.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "Comment_readable" ON "Comment"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR (("Comment"."status" = 'APPROVED'
+              OR "Comment"."authorUserId" = current_setting('app.user_id', true))
+          AND EXISTS (
+           SELECT 1 FROM "Post" p
+            WHERE p."id" = "Comment"."postId"
+              AND p."scope" = 'GLOBAL'
+              AND p."status" = 'APPROVED'))
+        );
+
+  -- Cross-school interaction on a GLOBAL post: your own row, on an
+  -- approved global post, and nothing else. See the note in
+  -- scripts/gen-rls.ts above the Comment write policies.
+DROP POLICY IF EXISTS "Comment_global_insert" ON "Comment";
+CREATE POLICY "Comment_global_insert" ON "Comment"
+  FOR INSERT
+  WITH CHECK (current_setting('app.user_id', true) <> ''
+          AND "authorUserId" = current_setting('app.user_id', true)
+          AND EXISTS (
+           SELECT 1 FROM "Post" p
+            WHERE p."id" = "Comment"."postId"
+              AND p."scope" = 'GLOBAL'
+              AND p."status" = 'APPROVED'));
 
 -- Reaction
 ALTER TABLE "Reaction" ENABLE ROW LEVEL SECURITY;
@@ -408,8 +439,47 @@ ALTER TABLE "Reaction" FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Reaction_tenant_isolation" ON "Reaction";
 DROP POLICY IF EXISTS "Reaction_readable" ON "Reaction";
 CREATE POLICY "Reaction_tenant_isolation" ON "Reaction"
+  FOR ALL
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- …and one row of this table belonging to ANOTHER school, by the
+  -- predicate below. See GLOBALLY_READABLE in scripts/gen-rls.ts for
+  -- what that predicate opens and why it is safe to open it.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "Reaction_readable" ON "Reaction"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR (EXISTS (
+           SELECT 1 FROM "Post" p
+            WHERE p."id" = "Reaction"."postId"
+              AND p."scope" = 'GLOBAL'
+              AND p."status" = 'APPROVED'))
+        );
+
+  -- Cross-school interaction on a GLOBAL post: your own row, on an
+  -- approved global post, and nothing else. See the note in
+  -- scripts/gen-rls.ts above the Reaction write policies.
+DROP POLICY IF EXISTS "Reaction_global_insert" ON "Reaction";
+CREATE POLICY "Reaction_global_insert" ON "Reaction"
+  FOR INSERT
+  WITH CHECK (current_setting('app.user_id', true) <> ''
+          AND "userId" = current_setting('app.user_id', true)
+          AND EXISTS (
+           SELECT 1 FROM "Post" p
+            WHERE p."id" = "Reaction"."postId"
+              AND p."scope" = 'GLOBAL'
+              AND p."status" = 'APPROVED'));
+DROP POLICY IF EXISTS "Reaction_global_delete" ON "Reaction";
+CREATE POLICY "Reaction_global_delete" ON "Reaction"
+  FOR DELETE
+  USING (current_setting('app.user_id', true) <> ''
+          AND "userId" = current_setting('app.user_id', true)
+     AND EXISTS (
+           SELECT 1 FROM "Post" p
+            WHERE p."id" = "Reaction"."postId"
+              AND p."scope" = 'GLOBAL'
+              AND p."status" = 'APPROVED'));
 
 -- PostAck
 ALTER TABLE "PostAck" ENABLE ROW LEVEL SECURITY;

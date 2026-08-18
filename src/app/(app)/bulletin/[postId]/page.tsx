@@ -11,6 +11,7 @@ import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { CommentBox } from "./comment-box";
 import { ReplyToggle } from "./reply-toggle";
+import { ReactionRow } from "../reactions";
 import { PostMedia } from "../media";
 import { CATEGORY_KEYS } from "../categories";
 import { getT } from "@/lib/i18n/server";
@@ -48,6 +49,18 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
   const tags = readJsonArray<string>(post.tags);
   const media = readJsonArray<MediaItem>(post.media);
   const isStaff = session.role === "ADMIN" || session.role === "TEACHER";
+
+  const reactionCounts: Record<string, number> = {};
+  const myReactions: string[] = [];
+  for (const reaction of post.reactions) {
+    reactionCounts[reaction.kind] = (reactionCounts[reaction.kind] ?? 0) + 1;
+    if (reaction.userId === session.user.id) myReactions.push(reaction.kind);
+  }
+
+  // A child's comment is held for review inside a school; on a GLOBAL post it
+  // is not — see addComment, which owns this rule. The flag only shapes the
+  // hint text, so it must tell the same truth.
+  const willBeHeld = session.role === "STUDENT" && post.scope !== "GLOBAL";
 
   // The delivery checklist, for the people who can chase it up.
   let ackGroups: AckGroup[] = [];
@@ -124,6 +137,19 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
             this page did not, and a video post opened to nothing. */}
         <PostMedia media={media} />
 
+        {/* The reaction row, on the post itself — it lived only on the feed
+            cards, so anyone who opened a post found nowhere to react. Same
+            seven pills, same action, any signed-in reader of this post. */}
+        {post.status === "APPROVED" && (
+          <div className="mt-4 border-t border-border pt-3">
+            <ReactionRow
+              postId={post.id}
+              reactions={reactionCounts}
+              myReactions={myReactions}
+            />
+          </div>
+        )}
+
         {tags.length > 0 && (
           <ul className="mt-4 flex flex-wrap gap-1.5">
             {tags.map((tag) => (
@@ -139,7 +165,10 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
           </ul>
         )}
 
-        {post.requiresAck && post.status === "APPROVED" && (
+        {/* "Seen and understood" is the school's own instrument — a reader
+            from another school on a global post is not on anyone's checklist
+            and gets no button to press. */}
+        {post.requiresAck && post.status === "APPROVED" && session.schoolId === post.schoolId && (
           <div className="mt-4 rounded-[--radius-md] bg-accent-soft/40 p-3.5">
             <AckButton postId={post.id} acked={post.acks.length > 0} />
           </div>
@@ -246,7 +275,7 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
                       <ReplyToggle
                         postId={post.id}
                         parentCommentId={entry.parentCommentId ?? entry.id}
-                        willBeHeld={session.role === "STUDENT"}
+                        willBeHeld={willBeHeld}
                       />
                     )}
                   </div>
@@ -277,7 +306,7 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
           <CommentBox
             postId={post.id}
             className="mt-4"
-            willBeHeld={session.role === "STUDENT"}
+            willBeHeld={willBeHeld}
           />
         )}
 

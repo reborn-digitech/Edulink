@@ -6,16 +6,9 @@ import { useRouter } from "next/navigation";
 import {
   CheckCircleIcon,
   ChatCircleIcon,
-  ConfettiIcon,
   FlagIcon,
   GlobeIcon,
-  HandsClappingIcon,
-  HandsPrayingIcon,
-  HeartIcon,
-  LightbulbIcon,
   PushPinIcon,
-  StarIcon,
-  TrophyIcon,
   XCircleIcon,
 } from "@phosphor-icons/react";
 import { Avatar } from "@/components/ui/avatar";
@@ -24,13 +17,14 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { relativeTime } from "@/lib/dates";
-import { acknowledge, pin, react, review, report } from "./actions";
+import { acknowledge, pin, review, report } from "./actions";
 import { publish as publishGlobal } from "./global/actions";
 import { useT } from "@/lib/i18n";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
-import { REACTION_KINDS, ROLE_META, type PostCategory, type ReactionKind, type Role } from "@/lib/constants";
+import { ROLE_META, type PostCategory, type ReactionKind, type Role } from "@/lib/constants";
 import { CATEGORY_KEYS } from "./categories";
 import { PostMedia } from "./media";
+import { ReactionRow } from "./reactions";
 
 type Post = {
   id: string;
@@ -66,22 +60,6 @@ const AUDIENCE_LABEL: Record<"PARENTS" | "TEACHERS" | "STUDENTS", TranslationKey
   STUDENTS: "bulletin.forStudents",
 };
 
-/* Keys, not words — the ROLE_META precedent. The label is looked up at render
-   time in the reader's language. */
-const REACTION_META: Record<
-  ReactionKind,
-  { icon: React.ComponentType<{ className?: string; weight?: "fill" | "bold" }>; labelKey: TranslationKey }
-> = {
-  CLAP: { icon: HandsClappingIcon, labelKey: "bulletin.reactClap" },
-  STAR: { icon: StarIcon, labelKey: "bulletin.reactStar" },
-  IDEA: { icon: LightbulbIcon, labelKey: "bulletin.reactIdea" },
-  HEART: { icon: HeartIcon, labelKey: "bulletin.reactHeart" },
-  // The school's own three: results and events, somebody's work in the
-  // spotlight, and the thanks a school community runs on.
-  CELEBRATE: { icon: ConfettiIcon, labelKey: "bulletin.reactCelebrate" },
-  PROUD: { icon: TrophyIcon, labelKey: "bulletin.reactProud" },
-  THANKS: { icon: HandsPrayingIcon, labelKey: "bulletin.reactThanks" },
-};
 
 const REPORT_REASONS = [
   { value: "BULLYING", labelKey: "bulletin.reasonBullying" },
@@ -100,23 +78,11 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
   const [rejecting, setRejecting] = useState(false);
   const [reason, setReason] = useState("");
   const [reporting, setReporting] = useState(false);
-  const [optimistic, setOptimistic] = useState<{ kind: ReactionKind; added: boolean } | null>(null);
   const [ackedNow, setAckedNow] = useState(false);
   const acked = post.acked || ackedNow;
 
   const isPending = post.status === "PENDING";
   const isRejected = post.status === "REJECTED";
-
-  function reactionCount(kind: ReactionKind): number {
-    const base = post.reactions[kind] ?? 0;
-    if (optimistic?.kind !== kind) return base;
-    return base + (optimistic.added ? 1 : -1);
-  }
-
-  function isMine(kind: ReactionKind): boolean {
-    if (optimistic?.kind === kind) return optimistic.added;
-    return post.myReactions.includes(kind);
-  }
 
   return (
     <article
@@ -356,48 +322,13 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
       {/* ---- reactions + actions ---- */}
       {post.status === "APPROVED" && (
         <footer className="flex flex-wrap items-center gap-1.5 border-t border-border px-3 py-2.5">
-          {REACTION_KINDS.map((kind) => {
-            const meta = REACTION_META[kind];
-            const label = t(meta.labelKey);
-            const Icon = meta.icon;
-            const count = reactionCount(kind);
-            const mine = isMine(kind);
-            const ariaLabel = count > 0 ? `${label} (${count})` : label;
-            return (
-              <button
-                key={kind}
-                type="button"
-                aria-label={ariaLabel}
-                aria-pressed={mine}
-                title={label}
-                className={cn(
-                  "inline-flex min-h-10 items-center gap-1.5 rounded-full px-3 text-sm font-semibold",
-                  "transition-[transform,background-color] duration-[--dur-fast] active:scale-90",
-                  mine
-                    ? "bg-accent-soft text-accent-strong"
-                    : "text-fg-muted hover:bg-surface-muted hover:text-fg",
-                )}
-                onClick={() => {
-                  // Optimistic: a tap on a reaction should never feel like a
-                  // form submission.
-                  setOptimistic({ kind, added: !mine });
-                  startTransition(async () => {
-                    const result = await react({ postId: post.id, kind });
-                    if (!result.ok) {
-                      setOptimistic(null);
-                      toast({ tone: "danger", title: t("bulletin.couldNotReact"), description: result.error });
-                      return;
-                    }
-                    router.refresh();
-                    setOptimistic(null);
-                  });
-                }}
-              >
-                <Icon className="size-4" weight={mine ? "fill" : "bold"} />
-                {count > 0 && <span className="tabular-nums">{count}</span>}
-              </button>
-            );
-          })}
+          {/* The shared row — one place owns the pills, their optimistic
+              toggle, and the hover tooltip naming each emoticon. */}
+          <ReactionRow
+            postId={post.id}
+            reactions={post.reactions}
+            myReactions={post.myReactions}
+          />
 
           <Link
             href={`/bulletin/${post.id}`}

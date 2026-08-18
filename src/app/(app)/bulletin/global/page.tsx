@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeftIcon, GlobeIcon, EyeSlashIcon } from "@phosphor-icons/react/ssr";
+import { ArrowLeftIcon, ChatCircleIcon, GlobeIcon, EyeSlashIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { listGlobalFeed } from "@/lib/global-feed";
 import { relativeTime } from "@/lib/dates";
@@ -10,6 +10,7 @@ import { EmptyState } from "@/components/ui/states";
 import { GlobalPostControls } from "./controls";
 import { FeedFilters } from "../feed-filters";
 import { PostMedia } from "../media";
+import { ReactionRow } from "../reactions";
 import { CATEGORY_KEYS } from "../categories";
 import { POST_CATEGORIES, type PostCategory } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
@@ -123,6 +124,29 @@ export default async function GlobalFeedPage({
                       ))}
                     </div>
                   )}
+
+                  {/* The conversation crosses with the post: any signed-in
+                      reader from any school reacts here and comments on the
+                      post page — the widened row policies are what allow
+                      exactly this and nothing more. */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-t border-border pt-2">
+                    <ReactionRow
+                      postId={post.id}
+                      reactions={post.reactions}
+                      myReactions={post.myReactions}
+                    />
+                    <Link
+                      href={`/bulletin/${post.id}`}
+                      className="inline-flex min-h-10 items-center gap-1.5 rounded-full px-3 text-sm font-medium text-fg-muted hover:bg-surface-muted hover:text-fg"
+                    >
+                      <ChatCircleIcon className="size-4" aria-hidden="true" />
+                      {post.commentCount > 0
+                        ? post.commentCount === 1
+                          ? t("bulletin.commentsOne")
+                          : t("bulletin.commentsMany", { count: post.commentCount })
+                        : t("bulletin.comment")}
+                    </Link>
+                  </div>
 
                   {isAdmin && (
                     <GlobalPostControls

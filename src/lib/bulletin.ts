@@ -84,6 +84,16 @@ export function schoolHashtag(name: string): string {
 }
 
 /**
+ * The one post shape every school may read AND join: on the global feed,
+ * approved by its own school. This is the application-side mirror of the RLS
+ * global clauses — `getPost`, `toggleReaction` and `addComment` accept it as
+ * an alternative to school visibility, so a reader from any school can open a
+ * global post, react to it and comment on it. The database enforces the same
+ * boundary independently (see scripts/gen-rls.ts), so neither layer is alone.
+ */
+const GLOBAL_POST_READABLE: Prisma.PostWhereInput = { scope: "GLOBAL", status: "APPROVED" };
+
+/**
  * A text search that matches how people actually look for a post: words from
  * the title or body, or a #tag with or without its hash. Case-insensitive on
  * text; the tag match is a substring of the serialised JSON array, the same
@@ -123,7 +133,22 @@ function visibilityWhere(
     schoolId,
     status: "APPROVED",
     AND: [
-      { OR: [{ scope: "SCHOOL" }, { scope: "CLASS", classId: { in: classIds } }] },
+      /**
+       * GLOBAL is included here ON PURPOSE, and the schoolId pin above is what
+       * makes it safe: this shows a school ITS OWN posts that went global,
+       * never another school's. Without it, promoting a post to the global
+       * feed silently removed it from the school's own feed — taking the
+       * reactions, comments and threads with it, since those live on the
+       * school surfaces. Sharing with every school must not mean losing the
+       * conversation at home.
+       */
+      {
+        OR: [
+          { scope: "SCHOOL" },
+          { scope: "GLOBAL" },
+          { scope: "CLASS", classId: { in: classIds } },
+        ],
+      },
       ...audienceWhere(role, grades),
     ],
   };
@@ -406,7 +431,12 @@ export async function getPost(session: ActiveContext, postId: string) {
   const classIds = await classIdsFor(session);
   const grades = await gradesFor(session);
   const post = await db.post.findFirst({
-    where: { AND: [{ id: postId }, visibilityWhere(session, classIds, grades)] },
+    where: {
+      AND: [
+        { id: postId },
+        { OR: [visibilityWhere(session, classIds, grades), GLOBAL_POST_READABLE] },
+      ],
+    },
     include: {
       author: { select: { id: true, name: true, preferredName: true, avatarKey: true } },
       authorship: { select: { role: true } },
@@ -416,8 +446,11 @@ export async function getPost(session: ActiveContext, postId: string) {
       _count: { select: { acks: true } },
       comments: {
         where:
-          session.role === "ADMIN" || session.role === "TEACHER"
-            ? {}
+          // The review queue is the PUBLISHING school's: its staff see held
+          // comments; staff of any other school reading a global post do not.
+          // RLS enforces the same line, so this filter and the policy agree.
+          (session.role === "ADMIN" || session.role === "TEACHER") && session.schoolId
+            ? { OR: [{ status: "APPROVED" }, { authorUserId: session.user.id }, { schoolId: session.schoolId }] }
             : // Students and parents never see held comments other than their own.
               { OR: [{ status: "APPROVED" }, { authorUserId: session.user.id }] },
         include: { author: { select: { id: true, name: true, preferredName: true, avatarKey: true } } },
@@ -705,7 +738,12 @@ export async function toggleReaction(
   const classIds = await classIdsFor(session);
   const grades = await gradesFor(session);
   const visible = await db.post.findFirst({
-    where: { AND: [{ id: postId, status: "APPROVED" }, visibilityWhere(session, classIds, grades)] },
+    where: {
+      AND: [
+        { id: postId, status: "APPROVED" },
+        { OR: [visibilityWhere(session, classIds, grades), GLOBAL_POST_READABLE] },
+      ],
+    },
     select: { id: true, schoolId: true },
   });
   if (!visible) throw new AccessError("access.postNotFound", "NOT_FOUND");
@@ -736,8 +774,13 @@ export async function addComment(
   const classIds = await classIdsFor(session);
   const grades = await gradesFor(session);
   const visible = await db.post.findFirst({
-    where: { AND: [{ id: postId, status: "APPROVED" }, visibilityWhere(session, classIds, grades)] },
-    select: { id: true, authorUserId: true, schoolId: true, title: true },
+    where: {
+      AND: [
+        { id: postId, status: "APPROVED" },
+        { OR: [visibilityWhere(session, classIds, grades), GLOBAL_POST_READABLE] },
+      ],
+    },
+    select: { id: true, authorUserId: true, schoolId: true, title: true, scope: true },
   });
   if (!visible) throw new AccessError("access.postNotFound", "NOT_FOUND");
 
@@ -761,8 +804,16 @@ export async function addComment(
     parentAuthorUserId = parent.authorUserId;
   }
 
-  // Same rule as posts: a child's words are reviewed, an adult's are not.
-  const status = session.role === "STUDENT" ? "PENDING" : "APPROVED";
+  /**
+   * Same rule as posts inside a school: a child's words are reviewed, an
+   * adult's are not. On a GLOBAL post the hold is off — a product decision,
+   * made deliberately: the global feed is a public square across schools and
+   * a review queue there would put one school's staff in charge of every
+   * school's children. What remains for global comments is what remains for
+   * everything: the one-tap report, which files with the REPORTER's school.
+   */
+  const status =
+    session.role === "STUDENT" && visible.scope !== "GLOBAL" ? "PENDING" : "APPROVED";
 
   await db.comment.create({
     data: {
@@ -780,11 +831,19 @@ export async function addComment(
      * Who gets told: a reply tells the person being replied to, a comment
      * tells the post's author — and someone who is both hears it once,
      * as the more specific of the two.
+     *
+     * BEST-EFFORT ACROSS SCHOOLS: a notification row lives in the recipient's
+     * tenant, and a commenter from another school on a GLOBAL post cannot
+     * write there — the Notification policy is strictly tenant-scoped, and
+     * this module does not widen it for a nicety. The comment itself is the
+     * record; if telling the author fails, the comment must still stand.
      */
+    const tell = (input: Parameters<typeof notify>[0]) =>
+      notify(input).catch(() => undefined);
     const told = new Set<string>([session.user.id]);
     if (parentAuthorUserId && !told.has(parentAuthorUserId)) {
       told.add(parentAuthorUserId);
-      await notify({
+      await tell({
         userId: parentAuthorUserId,
         schoolId: visible.schoolId,
         kind: "POST",
@@ -794,7 +853,7 @@ export async function addComment(
       });
     }
     if (!parentId && !told.has(visible.authorUserId)) {
-      await notify({
+      await tell({
         userId: visible.authorUserId,
         schoolId: visible.schoolId,
         kind: "POST",

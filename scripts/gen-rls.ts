@@ -336,6 +336,32 @@ const OPERATOR_LOG_TABLES = new Set(["OperatorAccess"]);
 const GLOBALLY_READABLE: Record<string, string> = {
   Post: `"scope" = 'GLOBAL' AND "status" = 'APPROVED'`,
   /**
+   * THE CONVERSATION ON A GLOBAL POST CROSSES WITH THE POST. A global feed
+   * where every school can read but only the publisher can clap is a notice
+   * board wearing a feed's clothes, so reactions and comments on an approved
+   * GLOBAL post are readable across schools — anchored on the post's own
+   * global predicate, so the moment a school unpublishes, the conversation
+   * snaps back to school-private with it.
+   *
+   * COMMENTS CARRY ONE MORE CONDITION: a held student comment must not leave
+   * its review queue. Cross-school readers see APPROVED comments and their
+   * OWN in any state (a child must see their own words waiting), and nobody
+   * else's pending. Staff of the publishing school still see the queue
+   * through the ordinary tenant clause — reviewing stays the publisher's job.
+   */
+  Reaction: `EXISTS (
+           SELECT 1 FROM "Post" p
+            WHERE p."id" = "Reaction"."postId"
+              AND p."scope" = 'GLOBAL'
+              AND p."status" = 'APPROVED')`,
+  Comment: `("Comment"."status" = 'APPROVED'
+              OR "Comment"."authorUserId" = current_setting('app.user_id', true))
+          AND EXISTS (
+           SELECT 1 FROM "Post" p
+            WHERE p."id" = "Comment"."postId"
+              AND p."scope" = 'GLOBAL'
+              AND p."status" = 'APPROVED')`,
+  /**
    * A SCHOOL'S standing in a competition whose organiser has switched the
    * leaderboard on. The second row in this map, and the reasoning is the same
    * shape as the first with one addition worth spelling out.
@@ -660,6 +686,50 @@ function generate(): string {
         ...alsoReadable.map((clause) => `         OR ${clause}`),
         `        );`,
       );
+    }
+
+    /**
+     * THE ONE PLACE A ROW IS WRITTEN INTO ANOTHER SCHOOL'S TENANT, and the
+     * write is pinned twice: to the acting user (`app.user_id`, bound on every
+     * scoped query) and to the parent post being GLOBAL and APPROVED. So a
+     * reader from any school may react to a global post and take their own
+     * reaction back — INSERT and DELETE of rows that name THEM — and comment
+     * on it, and can never touch anybody else's row or reach any row whose
+     * post is not on the global feed. Reactions get DELETE because a reaction
+     * is a toggle; comments do not, because a said thing stays said and only
+     * the publishing school's moderation removes it.
+     */
+    if (table === "Reaction" || table === "Comment") {
+      const userColumn = table === "Reaction" ? "userId" : "authorUserId";
+      const globalPost = `EXISTS (
+           SELECT 1 FROM "Post" p
+            WHERE p."id" = "${table}"."postId"
+              AND p."scope" = 'GLOBAL'
+              AND p."status" = 'APPROVED')`;
+      // The setting is '' on a session with no user; guarded explicitly so an
+      // unset identity can never satisfy the equality by accident.
+      const own = `current_setting('app.user_id', true) <> ''
+          AND "${userColumn}" = current_setting('app.user_id', true)`;
+      lines.push(
+        ``,
+        `  -- Cross-school interaction on a GLOBAL post: your own row, on an`,
+        `  -- approved global post, and nothing else. See the note in`,
+        `  -- scripts/gen-rls.ts above the ${table} write policies.`,
+        `DROP POLICY IF EXISTS "${table}_global_insert" ON "${table}";`,
+        `CREATE POLICY "${table}_global_insert" ON "${table}"`,
+        `  FOR INSERT`,
+        `  WITH CHECK (${own}`,
+        `          AND ${globalPost});`,
+      );
+      if (table === "Reaction") {
+        lines.push(
+          `DROP POLICY IF EXISTS "${table}_global_delete" ON "${table}";`,
+          `CREATE POLICY "${table}_global_delete" ON "${table}"`,
+          `  FOR DELETE`,
+          `  USING (${own}`,
+          `     AND ${globalPost});`,
+        );
+      }
     }
 
     lines.push("");
