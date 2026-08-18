@@ -575,6 +575,15 @@ export const en = {
     reactCelebrate: "Celebrate",
     reactProud: "Proud of you",
     reactThanks: "Thank you",
+    /* Notification titles, resolved into the RECIPIENT's language at write
+       time (see notify's titleKey) — the reader of a notification is known
+       when it is written, unlike a page, which is rendered per request. */
+    notifNeedsReview: "A student post needs review",
+    notifPostLive: "Your post is live",
+    notifPostChange: "Your post needs a change",
+    notifNewReply: "New reply to your comment",
+    notifNewComment: "New comment on your post",
+    notifReported: "Something was reported",
     reply: "Reply",
     writeReply: "Write a reply",
     comment: "Comment",
@@ -4430,6 +4439,7 @@ export const en = {
     ogDescription: "One calm place for attendance, assignments, grades and school messages.",
     acceptInvite: "Accept your invitation",
     accessPaused: "Access paused",
+    notFound: "Page not found",
     assignments: "Assignments",
     attendance: "Attendance",
     availability: "Availability",

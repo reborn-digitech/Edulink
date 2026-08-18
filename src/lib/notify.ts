@@ -4,6 +4,8 @@ import { db } from "./db";
 import { readJson, writeJson } from "./json";
 import { DEFAULT_PREFS, type UserPrefs } from "./session";
 import { channel, publish } from "./realtime";
+import { translator, type TranslationKey } from "./i18n/dictionary";
+import { normaliseLocale } from "./i18n/locales";
 import type { NotificationKind } from "./constants";
 
 /**
@@ -23,11 +25,23 @@ function configureVapid(): boolean {
   return true;
 }
 
-export type NotifyInput = {
+/**
+ * A notification's title is either a literal string or a translation key.
+ *
+ * A KEY IS RESOLVED INTO THE RECIPIENT'S OWN LANGUAGE AT WRITE TIME — unlike a
+ * page, whose reader is unknown until the request, a notification's reader is
+ * exactly one known user, so their saved `prefs.locale` can pick the words
+ * before the row is stored. Literal titles remain for the callers not yet
+ * converted; the union makes passing neither (or both) a type error.
+ */
+type NotifyTitle =
+  | { title: string; titleKey?: never; titleVars?: never }
+  | { titleKey: TranslationKey; titleVars?: Record<string, string | number>; title?: never };
+
+export type NotifyInput = NotifyTitle & {
   userId: string;
   schoolId?: string | null;
   kind: NotificationKind;
-  title: string;
   body?: string;
   url?: string;
   meta?: Record<string, unknown>;
@@ -44,6 +58,10 @@ export async function notify(input: NotifyInput): Promise<void> {
 
   const prefs = readJson<UserPrefs>(user.prefs, DEFAULT_PREFS);
 
+  const title = input.titleKey
+    ? translator(normaliseLocale(prefs.locale))(input.titleKey, input.titleVars)
+    : input.title;
+
   // The in-app row is always written. Quiet hours silence the *interruption*,
   // never the record — a parent must still find the message in the morning.
   const row = await db.notification.create({
@@ -51,7 +69,7 @@ export async function notify(input: NotifyInput): Promise<void> {
       userId: input.userId,
       schoolId: input.schoolId ?? null,
       kind: input.kind,
-      title: input.title,
+      title,
       body: input.body ?? "",
       url: input.url ?? null,
       meta: writeJson(input.meta ?? {}),
@@ -64,17 +82,24 @@ export async function notify(input: NotifyInput): Promise<void> {
   if (!input.urgent && inQuietHours(prefs.quietHours)) return;
 
   await sendPush(input.userId, {
-    title: input.title,
+    title,
     body: input.body ?? "",
     url: input.url ?? "/notifications",
     tag: `${input.kind}:${row.id}`,
   });
 }
 
+/**
+ * `Omit` over a union collapses it to the common keys, which would let a
+ * caller pass neither `title` nor `titleKey`; distributing keeps the
+ * either-or contract intact for `notifyGuardians` builders.
+ */
+type DistributiveOmit<T, K extends keyof T> = T extends unknown ? Omit<T, K> : never;
+
 /** Fan a notification out to every active guardian of a student. */
 export async function notifyGuardians(
   studentMembershipId: string,
-  build: (childName: string) => Omit<NotifyInput, "userId">,
+  build: (childName: string) => DistributiveOmit<NotifyInput, "userId">,
 ): Promise<void> {
   const guardians = await db.guardianship.findMany({
     where: { studentMembershipId, status: "ACTIVE" },

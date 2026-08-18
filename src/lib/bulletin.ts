@@ -613,7 +613,7 @@ async function notifyReviewers(
         userId: reviewer.userId,
         schoolId,
         kind: "POST",
-        title: "A student post needs review",
+        titleKey: "bulletin.notifNeedsReview",
         body: title,
         url: `/bulletin?filter=pending`,
       }),
@@ -676,7 +676,7 @@ export async function moderatePost(
     userId: post.authorUserId,
     schoolId,
     kind: "POST",
-    title: decision === "APPROVE" ? "Your post is live" : "Your post needs a change",
+    titleKey: decision === "APPROVE" ? "bulletin.notifPostLive" : "bulletin.notifPostChange",
     body:
       decision === "APPROVE"
         ? post.title
@@ -847,7 +847,7 @@ export async function addComment(
         userId: parentAuthorUserId,
         schoolId: visible.schoolId,
         kind: "POST",
-        title: "New reply to your comment",
+        titleKey: "bulletin.notifNewReply",
         body: visible.title,
         url: `/bulletin/${postId}`,
       });
@@ -857,7 +857,7 @@ export async function addComment(
         userId: visible.authorUserId,
         schoolId: visible.schoolId,
         kind: "POST",
-        title: "New comment on your post",
+        titleKey: "bulletin.notifNewComment",
         body: visible.title,
         url: `/bulletin/${postId}`,
       });
@@ -899,7 +899,7 @@ export async function reportContent(
           userId: admin.userId,
           schoolId: session.schoolId,
           kind: "SYSTEM",
-          title: "Something was reported",
+          titleKey: "bulletin.notifReported",
           body: `A ${input.targetType.toLowerCase()} was reported as ${input.reason.toLowerCase().replace(/_/g, " ")}.`,
           url: "/bulletin?filter=pending",
           urgent: true, // safeguarding: bypasses quiet hours

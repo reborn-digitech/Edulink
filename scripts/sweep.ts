@@ -34,7 +34,10 @@ async function mint(email: string, role: string | null, schoolId: string | null,
       activeSchoolId: schoolId,
       activeRole: role,
       userAgent: "sweep",
-      expiresAt: new Date(Date.now() + 3_600_000),
+      // 24h, not 1h: a cold dev server compiling every route on first hit has
+      // pushed a full run past the hour, at which point every remaining check
+      // "failed" as 307 → /login — the harness outliving its own sessions.
+      expiresAt: new Date(Date.now() + 86_400_000),
     },
   });
   return { label, cookie: `edulink_session=${token}`, sessionId: session.id };
@@ -1731,7 +1734,8 @@ async function main() {
       activeSchoolId: riverside.id,
       activeRole: "STUDENT",
       userAgent: "sweep",
-      expiresAt: new Date(Date.now() + 3_600_000),
+      // 24h for the same reason as mint(): the run must outlast a slow server.
+      expiresAt: new Date(Date.now() + 86_400_000),
     },
   });
   const student: Actor = { label: "student", cookie: `edulink_session=${studentToken}`, sessionId: "" };

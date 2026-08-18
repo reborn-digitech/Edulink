@@ -55,18 +55,28 @@ export function ReactionRow({
   const t = useT();
   const router = useRouter();
   const { toast } = useToast();
-  const [, startTransition] = useTransition();
+  const [isPending, startTransition] = useTransition();
   const [optimistic, setOptimistic] = useState<{ kind: ReactionKind; added: boolean } | null>(null);
+
+  /**
+   * The optimistic state applies only WHILE THE TRANSITION IS IN FLIGHT.
+   * `router.refresh()` runs inside the transition, so `isPending` stays true
+   * until the refreshed server data has actually rendered — at which point the
+   * props are fresh and the override simply stops applying. Clearing the state
+   * eagerly after `refresh()` (the old code) un-applied the override seconds
+   * before the new props arrived, and the pill visibly snapped back.
+   */
+  const active = isPending ? optimistic : null;
 
   const count = (kind: ReactionKind) => {
     const base = reactions[kind] ?? 0;
-    if (optimistic?.kind !== kind) return base;
-    return base + (optimistic.added ? 1 : -1);
+    if (active?.kind !== kind) return base;
+    return base + (active.added ? 1 : -1);
   };
   const mine = (kind: ReactionKind) => {
     const base = myReactions.includes(kind);
-    if (optimistic?.kind !== kind) return base;
-    return optimistic.added;
+    if (active?.kind !== kind) return base;
+    return active.added;
   };
 
   return (
@@ -107,8 +117,9 @@ export function ReactionRow({
                     toast({ tone: "danger", title: t("bulletin.couldNotReact"), description: result.error });
                     return;
                   }
+                  // Inside the transition on purpose: `isPending` holds the
+                  // optimistic override up until this refresh has rendered.
                   router.refresh();
-                  setOptimistic(null);
                 });
               }}
             >

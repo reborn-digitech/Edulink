@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { CompassIcon } from "@phosphor-icons/react/ssr";
 import { Button } from "@/components/ui/button";
 import { getT } from "@/lib/i18n/server";
+
+/* Without this, the tab wore the LANDING PAGE's title — a missing page
+   announcing the product tagline. A 404 names itself like every other page. */
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t("meta.notFound") };
+}
 
 /**
  * The page for a path that leads nowhere — a mistyped URL, an archived thing,
