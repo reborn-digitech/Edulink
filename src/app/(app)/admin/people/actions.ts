@@ -9,6 +9,7 @@ import {
   removeMembership,
   type RemovalBlocker,
 } from "@/lib/membership";
+import { setTeacherSubjects } from "@/lib/reviews";
 import {
   recordDeparture,
   undoDeparture,
@@ -138,3 +139,20 @@ export async function removePerson(membershipId: string): Promise<RemovalActionR
 }
 
 export type RemovalActionResult = Result & { blockers?: RemovalBlocker };
+
+/**
+ * Replace a teacher's subject list — the office's half of what the teacher
+ * chose at signup. Feeds the directory line, the teacher's profile, and the
+ * subject-aware cover suggestions on leave.
+ */
+export async function setSubjects(membershipId: string, subjects: string[]): Promise<Result> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const result = await setTeacherSubjects(ctx, membershipId, subjects);
+    if (!result.ok) return { ok: false, errorKey: result.errorKey };
+    revalidatePath("/admin/people");
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}

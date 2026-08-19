@@ -110,10 +110,14 @@ export default async function PrincipalLeavePage() {
    */
   const suggestionsBy = new Map<
     string,
-    { lessonCount: number; options: { membershipId: string; name: string; hint: string | null }[] }
+    {
+      lessonCount: number;
+      options: { membershipId: string; name: string; hint: string | null }[];
+      groups: import("./decide-card").GroupPick[];
+    }
   >();
   for (const request of pending) {
-    const { lessonCount, candidates } = await coverCandidates(
+    const { lessonCount, candidates, groups } = await coverCandidates(
       ctx,
       request.applicantMembershipId,
       request.fromDateKey,
@@ -130,6 +134,24 @@ export default async function PrincipalLeavePage() {
             : candidate.clashes === 0
               ? t("principalCover.free")
               : t("principalCover.busy", { busy: candidate.clashes, total: lessonCount }),
+      })),
+      /* The (class, subject) slices, hints re-said against each group's own
+         lessons: free for all four Maths periods is a different fact from
+         free for the whole week. */
+      groups: groups.map((group) => ({
+        classId: group.classId,
+        className: group.className,
+        subject: group.subject,
+        lessonCount: group.lessonCount,
+        options: group.candidates.map((candidate) => ({
+          membershipId: candidate.membershipId,
+          name: candidate.name,
+          teachesSubject: candidate.teachesSubject,
+          hint:
+            candidate.clashes === 0
+              ? t("reviews.freeForAll")
+              : t("reviews.clashesN", { count: candidate.clashes }),
+        })),
       })),
     });
   }
@@ -169,6 +191,7 @@ export default async function PrincipalLeavePage() {
                       .filter((person) => person.membershipId !== request.applicantMembershipId)
                       .map((person) => ({ ...person, hint: null }))
                   }
+                  groups={suggestionsBy.get(request.id)?.groups ?? []}
                   classesCovered={dutyCounts.get(request.applicantMembershipId) ?? 0}
                 />
               </li>

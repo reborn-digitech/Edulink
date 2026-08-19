@@ -10,15 +10,16 @@ import { audit } from "@/lib/audit";
 export type ProfileState = { ok: boolean; errors: Record<string, string> };
 
 /**
- * A student editing their own profile.
+ * A student — or, since the teacher profile page reuses this same form — a
+ * teacher editing their own profile.
  *
  * Scoped to the signed-in user, so there is no id to forge. The avatar is
  * validated against the known preset list rather than stored as free text —
  * otherwise `avatarKey` becomes an unsanitised string that renders into the
- * page on every screen the child appears on.
+ * page on every screen the person appears on.
  *
  * The legal `name` is deliberately NOT editable here: it is what the register
- * and the school's records use, so changing it belongs with an adult.
+ * and the school's records use, so changing it belongs with the office.
  */
 export async function saveProfile(input: {
   preferredName: string;
@@ -27,7 +28,7 @@ export async function saveProfile(input: {
 }): Promise<ProfileState> {
   const session = await getSession();
   if (!session) return { ok: false, errors: { _form: (await getT())("common.logInAgain") } };
-  if (session.role !== "STUDENT") {
+  if (session.role !== "STUDENT" && session.role !== "TEACHER") {
     return { ok: false, errors: { _form: (await getT())("student.onlyStudentEdits") } };
   }
 
@@ -64,5 +65,6 @@ export async function saveProfile(input: {
 
   revalidatePath("/student/profile");
   revalidatePath("/student");
+  revalidatePath("/teacher/profile");
   return { ok: true, errors: {} };
 }

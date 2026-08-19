@@ -4,6 +4,7 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import {
   ArrowCounterClockwiseIcon,
+  BooksIcon,
   DotsThreeIcon,
   PauseCircleIcon,
   SignOutIcon,
@@ -14,11 +15,12 @@ import { reinstate, undoLeaving } from "./actions";
 import { PausePanel } from "./row-actions";
 import { LeavingPanel } from "./leaving-actions";
 import { RemovePanel } from "./remove-actions";
+import { SubjectsPanel } from "./subjects-panel";
 import { cn } from "@/lib/cn";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 
-type Panel = "pause" | "left" | "remove" | null;
+type Panel = "pause" | "left" | "remove" | "subjects" | null;
 
 /**
  * One quiet kebab per directory row, holding every verb that used to sit in
@@ -36,12 +38,17 @@ export function DirectoryMenu({
   membershipId,
   name,
   isStudent,
+  isTeacher,
+  subjects,
   suspended,
   hasLeft,
 }: {
   membershipId: string;
   name: string;
   isStudent: boolean;
+  /** Teacher rows also carry the subjects editor. */
+  isTeacher?: boolean;
+  subjects?: string[];
   suspended: boolean;
   hasLeft: boolean;
 }) {
@@ -128,6 +135,15 @@ export function DirectoryMenu({
                   </MenuItem>
                 ))}
 
+              {isTeacher && !hasLeft && (
+                <MenuItem
+                  icon={<BooksIcon className="size-4" />}
+                  onClick={() => show("subjects")}
+                >
+                  {t("reviews.editSubjects")}
+                </MenuItem>
+              )}
+
               {isStudent &&
                 (hasLeft ? (
                   <MenuItem
@@ -171,6 +187,14 @@ export function DirectoryMenu({
       )}
       {panel === "remove" && (
         <RemovePanel membershipId={membershipId} name={name} onClose={() => setPanel(null)} />
+      )}
+      {panel === "subjects" && (
+        <SubjectsPanel
+          membershipId={membershipId}
+          name={name}
+          initial={subjects ?? []}
+          onClose={() => setPanel(null)}
+        />
       )}
     </>
   );

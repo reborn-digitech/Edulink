@@ -88,6 +88,9 @@ model School {
   posts                Post[]
   competitions         Competition[]
   auditLogs            AuditLog[]
+  reviewRounds         ReviewRound[]
+  reviewRoundTeachers  ReviewRoundTeacher[]
+  reviewResponses      ReviewResponse[]
   attendance           AttendanceSession[]
   attendanceCovers     AttendanceCover[]
   timetablePeriods     TimetablePeriod[]
@@ -201,6 +204,7 @@ model User {
   mergedFrom User[] @relation("AccountMerge")
 
   memberships       Membership[]
+  reviewResponses   ReviewResponse[]   @relation("ReviewRespondent")
   sessions          Session[]
   ssoIdentities     SsoIdentity[]
   guardianships     Guardianship[]     @relation("ParentGuardianships")
@@ -268,6 +272,9 @@ model Membership {
   leaveRequests          LeaveRequest[]       @relation("LeaveApplicant")
   leaveNominations       LeaveRequest[]       @relation("LeaveNominee")
   leaveDecisions         LeaveRequest[]       @relation("LeaveDecider")
+  reviewRoundsOpened     ReviewRound[]        @relation("ReviewRoundCreator")
+  reviewedInRounds       ReviewRoundTeacher[] @relation("ReviewedTeacher")
+  reviewResponsesAbout   ReviewResponse[]     @relation("ReviewResponseTeacher")
   submissions            Submission[]
   grades                 Grade[]              @relation("GradeStudent")
   gradesGiven            Grade[]              @relation("GradeGrader")
@@ -1544,6 +1551,84 @@ model PushSubscription {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
+}
+
+/// A round of teacher reviews the ADMIN opens — ratings on a fixed
+/// questionnaire, deliberately not free text: a child asked to "write about
+/// your teacher" is being asked to do something no school should collect at
+/// scale, while "how clearly do they explain, one to five" is answerable,
+/// comparable, and translatable. The questions are code-side keys (see
+/// REVIEW_QUESTIONS) so every reader rates the same thing in their own
+/// language.
+model ReviewRound {
+  id       String @id @default(cuid())
+  schoolId String
+
+  /// Who is asked: STUDENTS | PARENTS | BOTH.
+  audience String
+
+  /// YYYY-MM-DD in the school's timezone, inclusive — the last day answers
+  /// are accepted. Same date-key convention as Holiday and AttendanceCover.
+  closesDateKey String
+
+  status String @default("OPEN") // OPEN | CLOSED
+
+  createdByMembershipId String?
+  createdAt             DateTime @default(now())
+
+  school    School      @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  createdBy Membership? @relation("ReviewRoundCreator", fields: [createdByMembershipId], references: [id], onDelete: SetNull)
+
+  teachers  ReviewRoundTeacher[]
+  responses ReviewResponse[]
+
+  @@index([schoolId, status])
+}
+
+/// Which teachers a round asks about. Explicit rows, not "everyone at open
+/// time" — a teacher who joins mid-round was not part of the question.
+/// Carries `schoolId` like every join table here: the RLS generator keys its
+/// tenant policy on that column, and a row without one would sit outside the
+/// fence entirely.
+model ReviewRoundTeacher {
+  id                  String @id @default(cuid())
+  schoolId            String
+  roundId             String
+  teacherMembershipId String
+
+  school  School      @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  round   ReviewRound @relation(fields: [roundId], references: [id], onDelete: Cascade)
+  teacher Membership  @relation("ReviewedTeacher", fields: [teacherMembershipId], references: [id], onDelete: Cascade)
+
+  @@unique([roundId, teacherMembershipId])
+  @@index([teacherMembershipId])
+}
+
+/// One person's ratings of one teacher in one round.
+///
+/// THE RESPONDENT IS STORED AND NEVER SHOWN. Stored, because "one answer per
+/// person" is unenforceable without it; never shown, because a ten-year-old's
+/// honest 2/5 must not be traceable to them by the person it rates — every
+/// read path aggregates, and the UI promises exactly that before they answer.
+model ReviewResponse {
+  id                  String @id @default(cuid())
+  schoolId            String
+  roundId             String
+  teacherMembershipId String
+  respondentUserId    String
+
+  /// JSON { questionKey: 1..5 } over the fixed REVIEW_QUESTIONS.
+  scores String
+
+  createdAt DateTime @default(now())
+
+  school     School      @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  round      ReviewRound @relation(fields: [roundId], references: [id], onDelete: Cascade)
+  teacher    Membership  @relation("ReviewResponseTeacher", fields: [teacherMembershipId], references: [id], onDelete: Cascade)
+  respondent User        @relation("ReviewRespondent", fields: [respondentUserId], references: [id], onDelete: Cascade)
+
+  @@unique([roundId, teacherMembershipId, respondentUserId])
+  @@index([schoolId, teacherMembershipId])
 }
 
 model AuditLog {

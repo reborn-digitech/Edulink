@@ -77,6 +77,31 @@ export const REACTION_KINDS = [
 ] as const;
 export type ReactionKind = (typeof REACTION_KINDS)[number];
 
+/**
+ * The teacher-review questionnaire — RATINGS ON FIXED QUESTIONS, deliberately
+ * no free text. Fixed, because a question that every respondent answers is the
+ * only kind that aggregates; keys, because every reader must meet it in their
+ * own language; and this list, because these five are answerable by a child
+ * without asking the child to editorialise about an adult.
+ */
+export const REVIEW_QUESTIONS = [
+  "CLARITY", //    explains things clearly
+  "SUPPORT", //    helps when someone is stuck
+  "FAIRNESS", //   fair to everyone
+  "ENGAGEMENT", // makes lessons interesting
+  "RESPECT", //    treats pupils with respect
+] as const;
+export type ReviewQuestion = (typeof REVIEW_QUESTIONS)[number];
+
+export const REVIEW_SCALE_MIN = 1;
+export const REVIEW_SCALE_MAX = 5;
+
+/** Who a review round asks. */
+export const REVIEW_AUDIENCES = ["STUDENTS", "PARENTS", "BOTH"] as const;
+export type ReviewAudience = (typeof REVIEW_AUDIENCES)[number];
+
+export const REVIEW_ROUND_STATUSES = ["OPEN", "CLOSED"] as const;
+
 export const INVITE_STATUSES = ["PENDING", "ACCEPTED", "REVOKED", "EXPIRED"] as const;
 export type InviteStatus = (typeof INVITE_STATUSES)[number];
 

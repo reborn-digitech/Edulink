@@ -10,6 +10,7 @@ import { AVATAR_PRESETS, Avatar, describeAvatar } from "@/components/ui/avatar";
 import { cn } from "@/lib/cn";
 import { saveProfile } from "./actions";
 import { useT } from "@/lib/i18n";
+import type { TranslationKey } from "@/lib/i18n/dictionary";
 
 export function ProfileForm({
   fullName,
@@ -18,6 +19,7 @@ export function ProfileForm({
   avatarKey,
   handle,
   studentCode,
+  bioHintKey,
 }: {
   fullName: string;
   preferredName: string;
@@ -25,6 +27,9 @@ export function ProfileForm({
   avatarKey: string | null;
   handle: string | null;
   studentCode: string | null;
+  /** The teacher profile reuses this form; its bio is read by colleagues,
+   * not classmates, and the hint must say so. */
+  bioHintKey?: TranslationKey;
 }) {
   const t = useT();
   const router = useRouter();
@@ -136,7 +141,7 @@ export function ProfileForm({
         rows={3}
         maxLength={600}
         onChange={(e) => setDraft((d) => ({ ...d, bio: e.target.value }))}
-        hint={t("student.bioHint")}
+        hint={t(bioHintKey ?? "student.bioHint")}
       />
 
       {/* Read-only facts, kept together so they are easy to find and hard to

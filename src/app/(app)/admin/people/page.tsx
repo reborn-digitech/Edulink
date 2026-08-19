@@ -299,6 +299,8 @@ export default async function DirectoryPage({
                           membershipId={member.id}
                           name={displayName}
                           isStudent={role === "STUDENT"}
+                          isTeacher={role === "TEACHER"}
+                          subjects={subjects}
                           suspended={member.status === "SUSPENDED"}
                           hasLeft={member.leftAt !== null}
                         />

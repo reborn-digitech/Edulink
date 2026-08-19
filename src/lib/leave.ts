@@ -173,11 +173,28 @@ export async function applyForLeave(
  * them would allow a decision recorded with no cover behind it, which is the
  * exact failure the feature exists to prevent.
  */
+export type CoverAssignment = {
+  classId: string;
+  subject: string;
+  coverMembershipId: string;
+};
+
 export async function decideLeave(
   ctx: ActiveContext,
   leaveId: string,
   decision: "APPROVED" | "DECLINED",
-  opts: { note?: string; coverMembershipId?: string | null } = {},
+  opts: {
+    note?: string;
+    coverMembershipId?: string | null;
+    /**
+     * Per-(class, subject) substitutes — the combinations. One teacher out may
+     * be three teachers in: the mathematician takes 7A's Maths, a second takes
+     * 9B's, the historian takes History. Falls back to the single
+     * `coverMembershipId` (and then the applicant's nomination) when absent,
+     * which is also what every existing caller and test still exercises.
+     */
+    coverAssignments?: CoverAssignment[];
+  } = {},
 ): Promise<LeaveResult & { coversCreated?: number }> {
   if ((ctx.role !== "PRINCIPAL" && ctx.role !== "ADMIN") || !ctx.schoolId || !ctx.membershipId) {
     throw new AccessError("access.onlyThePrincipalOrAnAdminCan");
@@ -230,7 +247,93 @@ export async function decideLeave(
     // The nomination is advice; this is the decision.
     const coverId = opts.coverMembershipId ?? request.nominatedCoverMembershipId;
 
-    if (coverId) {
+    /* The per-(class, subject) combinations, validated to be this school's own
+     * active staff before any of them grants register duty. A cover row is per
+     * class, so two subjects of one class going to the same person collapse to
+     * one row, and going to two people become two rows — both may mark, which
+     * is the direction AttendanceCover errs in by design. */
+    const assignments = (opts.coverAssignments ?? []).filter(
+      (a) => a.classId && a.coverMembershipId && a.coverMembershipId !== request.teacherMembershipId,
+    );
+
+    if (assignments.length > 0) {
+      const staffIds = [...new Set(assignments.map((a) => a.coverMembershipId))];
+      const staff = await db.membership.findMany({
+        where: {
+          id: { in: staffIds },
+          schoolId: ctx.schoolId,
+          role: { in: ["TEACHER", "PRINCIPAL"] },
+          status: "ACTIVE",
+          leftAt: null,
+        },
+        select: { id: true },
+      });
+      const valid = new Set(staff.map((s) => s.id));
+
+      const pairs = new Set<string>();
+      for (const a of assignments) {
+        if (!valid.has(a.coverMembershipId)) continue;
+        pairs.add(`${a.classId}|${a.coverMembershipId}`);
+      }
+
+      for (const pair of pairs) {
+        const [classId, coveringMembershipId] = pair.split("|") as [string, string];
+        const result = await arrangeCover(
+          ctx,
+          {
+            classId,
+            coveringMembershipId,
+            fromDateKey: request.fromDateKey,
+            toDateKey: request.toDateKey,
+            reason: "Approved leave",
+          },
+          { leaveRequestId: request.id },
+        );
+        if (result.ok) coversCreated++;
+      }
+
+      /* Registers the assignments did not reach: a form class this person
+       * marks but is not timetabled to teach has no (class, subject) group,
+       * and its register still needs a hand. It falls to the single fallback
+       * cover if one was named, else to the most-assigned substitute — the
+       * person already carrying most of this absence. */
+      const registerOnly = await db.classTeacher.findMany({
+        where: {
+          schoolId: ctx.schoolId,
+          teacherMembershipId: request.teacherMembershipId,
+          canTakeAttendance: true,
+          class: { archivedAt: null },
+        },
+        select: { classId: true },
+      });
+      const covered = new Set(assignments.map((a) => a.classId));
+      const uncoveredRegisters = registerOnly.filter((r) => !covered.has(r.classId));
+      if (uncoveredRegisters.length > 0) {
+        const counts = new Map<string, number>();
+        for (const a of assignments) {
+          if (!valid.has(a.coverMembershipId)) continue;
+          counts.set(a.coverMembershipId, (counts.get(a.coverMembershipId) ?? 0) + 1);
+        }
+        const busiest = [...counts.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;
+        const registerCover = coverId && coverId !== request.teacherMembershipId ? coverId : busiest;
+        if (registerCover) {
+          for (const row of uncoveredRegisters) {
+            const result = await arrangeCover(
+              ctx,
+              {
+                classId: row.classId,
+                coveringMembershipId: registerCover,
+                fromDateKey: request.fromDateKey,
+                toDateKey: request.toDateKey,
+                reason: "Approved leave",
+              },
+              { leaveRequestId: request.id },
+            );
+            if (result.ok) coversCreated++;
+          }
+        }
+      }
+    } else if (coverId) {
       /**
        * EVERY CLASS THIS PERSON IS DUE IN, from two different lists.
        *
@@ -576,12 +679,32 @@ export type CoverCandidate = {
   clashes: number;
   /** Their own weekly teaching load, the tiebreak between two free people. */
   load: number;
+  /** Whether their subject list includes the group's subject. Always false on
+   * the ungrouped list, where there is no one subject to match. */
+  teachesSubject: boolean;
+};
+
+/**
+ * One (class, subject) slice of the absent teacher's week. The unit of
+ * replacement: a teacher taking Maths to 7A and English to 9B is two groups,
+ * and each can go to a different substitute — as can two classes of the same
+ * subject. The combinations are the decider's to make; this only ranks them.
+ */
+export type CoverGroup = {
+  classId: string;
+  className: string;
+  subject: string;
+  /** Distinct (weekday, period) lessons of this group inside the window. */
+  lessonCount: number;
+  /** Ranked for THIS group: teaches the subject first, then free-ness, then load. */
+  candidates: CoverCandidate[];
 };
 
 export type CoverSuggestions = {
   /** Distinct (weekday, period) lessons of the applicant's inside the window. */
   lessonCount: number;
   candidates: CoverCandidate[];
+  groups: CoverGroup[];
 };
 
 /**
@@ -612,7 +735,13 @@ export async function coverCandidates(
         teacherMembershipId: applicantMembershipId,
         class: { archivedAt: null },
       },
-      select: { weekday: true, periodId: true },
+      select: {
+        weekday: true,
+        periodId: true,
+        classId: true,
+        subject: true,
+        class: { select: { name: true } },
+      },
     }),
     db.membership.findMany({
       where: {
@@ -622,7 +751,11 @@ export async function coverCandidates(
         leftAt: null,
         id: { not: applicantMembershipId },
       },
-      select: { id: true, user: { select: { name: true, preferredName: true } } },
+      select: {
+        id: true,
+        subjects: true,
+        user: { select: { name: true, preferredName: true } },
+      },
       take: 500,
     }),
     db.timetableSlot.findMany({
@@ -635,11 +768,8 @@ export async function coverCandidates(
     }),
   ]);
 
-  const needed = new Set(
-    applicantSlots
-      .filter((slot) => weekdays.has(slot.weekday))
-      .map((slot) => `${slot.weekday}:${slot.periodId}`),
-  );
+  const inWindow = applicantSlots.filter((slot) => weekdays.has(slot.weekday));
+  const needed = new Set(inWindow.map((slot) => `${slot.weekday}:${slot.periodId}`));
 
   const clashesBy = new Map<string, Set<string>>();
   const loadBy = new Map<string, number>();
@@ -654,14 +784,75 @@ export async function coverCandidates(
     }
   }
 
+  /* What each member of staff says they teach, lower-cased once. The list is
+   * the one chosen at signup and kept by the office — see setTeacherSubjects. */
+  const subjectsBy = new Map<string, Set<string>>();
+  for (const person of staff) {
+    const list = person.subjects ? (JSON.parse(person.subjects) as string[]) : [];
+    subjectsBy.set(person.id, new Set(list.map((s) => s.toLowerCase())));
+  }
+
+  const rank = (a: CoverCandidate, b: CoverCandidate) =>
+    Number(b.teachesSubject) - Number(a.teachesSubject) ||
+    a.clashes - b.clashes ||
+    a.load - b.load ||
+    a.name.localeCompare(b.name);
+
   const candidates = staff
     .map((person) => ({
       membershipId: person.id,
       name: person.user.preferredName ?? person.user.name,
       clashes: clashesBy.get(person.id)?.size ?? 0,
       load: loadBy.get(person.id) ?? 0,
+      teachesSubject: false,
     }))
     .sort((a, b) => a.clashes - b.clashes || a.load - b.load || a.name.localeCompare(b.name));
 
-  return { lessonCount: needed.size, candidates };
+  /* THE GROUPS: the absent teacher's week sliced by (class, subject) — the
+   * unit a replacement is actually chosen for. Each group re-ranks the same
+   * staff room with the subject known: somebody who teaches Maths outranks
+   * somebody merely free, because "the substitute has to teach the subject"
+   * is the rule this feature exists to enforce — while the merely-free stay
+   * listed, because a school with one mathematician still needs a Monday
+   * answered. Clashes here are against the GROUP's own periods only: being
+   * busy during somebody's English lesson is no mark against covering their
+   * Maths. */
+  const groupMap = new Map<string, { classId: string; className: string; subject: string; keys: Set<string> }>();
+  for (const slot of inWindow) {
+    const key = `${slot.classId}|${slot.subject.toLowerCase()}`;
+    const group = groupMap.get(key) ?? {
+      classId: slot.classId,
+      className: slot.class.name,
+      subject: slot.subject,
+      keys: new Set<string>(),
+    };
+    group.keys.add(`${slot.weekday}:${slot.periodId}`);
+    groupMap.set(key, group);
+  }
+
+  const groupClashes = (person: string, keys: Set<string>) => {
+    let n = 0;
+    for (const key of clashesBy.get(person) ?? []) if (keys.has(key)) n++;
+    return n;
+  };
+
+  const groups: CoverGroup[] = [...groupMap.values()]
+    .map((group) => ({
+      classId: group.classId,
+      className: group.className,
+      subject: group.subject,
+      lessonCount: group.keys.size,
+      candidates: staff
+        .map((person) => ({
+          membershipId: person.id,
+          name: person.user.preferredName ?? person.user.name,
+          clashes: groupClashes(person.id, group.keys),
+          load: loadBy.get(person.id) ?? 0,
+          teachesSubject: subjectsBy.get(person.id)?.has(group.subject.toLowerCase()) ?? false,
+        }))
+        .sort(rank),
+    }))
+    .sort((a, b) => a.className.localeCompare(b.className) || a.subject.localeCompare(b.subject));
+
+  return { lessonCount: needed.size, candidates, groups };
 }

@@ -22,14 +22,39 @@ import { useT } from "@/lib/i18n";
  * freely overridable, and the count of classes it will cover is shown before
  * the button is pressed.
  */
+export type GroupOption = {
+  membershipId: string;
+  name: string;
+  hint: string | null;
+  teachesSubject: boolean;
+};
+
+export type GroupPick = {
+  classId: string;
+  className: string;
+  subject: string;
+  lessonCount: number;
+  /** Ranked for this group: teaches the subject first, then free-ness. */
+  options: GroupOption[];
+};
+
 export function DecideCard({
   request,
   staff,
+  groups,
   classesCovered,
 }: {
   request: LeaveRow;
   /** Ranked by the timetable: free people first, each with a why. */
   staff: { membershipId: string; name: string; hint: string | null }[];
+  /**
+   * The applicant's week sliced by (class, subject) — one picker each, so a
+   * teacher of Maths and History can be replaced by a mathematician AND a
+   * historian, and two classes of one subject can go to two people. Empty for
+   * an applicant with no timetabled lessons, where the single picker is the
+   * whole story.
+   */
+  groups: GroupPick[];
   /**
    * How many CLASSES this person is due in — the registers they mark and the
    * lessons they teach, de-duplicated. Exactly the number of cover rows
@@ -44,14 +69,27 @@ export function DecideCard({
   const [cover, setCover] = useState(
     staff.find((s) => s.name === request.nominatedName)?.membershipId ?? "",
   );
+  /** classId|subject → chosen membershipId ("" = follow the single picker). */
+  const [groupCover, setGroupCover] = useState<Record<string, string>>({});
   const [note, setNote] = useState("");
   const [declining, setDeclining] = useState(false);
 
   function answer(decision: "APPROVED" | "DECLINED") {
     startTransition(async () => {
+      const coverAssignments =
+        decision === "APPROVED"
+          ? groups
+              .map((group) => ({
+                classId: group.classId,
+                subject: group.subject,
+                coverMembershipId: groupCover[`${group.classId}|${group.subject}`] || cover || "",
+              }))
+              .filter((a) => a.coverMembershipId)
+          : [];
       const result = await decide(request.id, decision, {
         note,
         coverMembershipId: decision === "APPROVED" ? cover || null : null,
+        coverAssignments: coverAssignments.length > 0 ? coverAssignments : undefined,
       });
       if (!result.ok) {
         toast({ tone: "danger", title: t("principal.notSaved"), description: actionError(t, result) });
@@ -123,6 +161,54 @@ export function DecideCard({
             ))}
           </select>
         </label>
+
+        {/* The combinations: one picker per (class, subject), each defaulting
+            to the single choice above so naming one person still covers
+            everything — and any slice can be handed to somebody else, with
+            the subject-teachers listed first and labelled. */}
+        {groups.length > 0 && (
+          <details className="mt-3">
+            <summary className="cursor-pointer text-xs font-semibold text-fg">
+              {t("reviews.coverBySubject")}
+            </summary>
+            <p className="mt-1 text-xs leading-relaxed text-fg-muted">
+              {t("reviews.coverBySubjectHint")}
+            </p>
+            <ul className="mt-2 space-y-2">
+              {groups.map((group) => {
+                const key = `${group.classId}|${group.subject}`;
+                return (
+                  <li key={key}>
+                    <label className="block">
+                      <span className="block text-xs font-medium text-fg">
+                        {group.className} · {group.subject}{" "}
+                        <span className="font-normal text-fg-muted">
+                          ({t("reviews.lessonsN", { count: group.lessonCount })})
+                        </span>
+                      </span>
+                      <select
+                        value={groupCover[key] ?? ""}
+                        onChange={(e) =>
+                          setGroupCover((prev) => ({ ...prev, [key]: e.target.value }))
+                        }
+                        className="mt-1 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+                      >
+                        <option value="">{t("principal.nobodyYet")}</option>
+                        {group.options.map((person) => (
+                          <option key={person.membershipId} value={person.membershipId}>
+                            {person.name}
+                            {person.teachesSubject ? ` ★ ${t("reviews.teachesSubjectMark")}` : ""}
+                            {person.hint ? ` — ${person.hint}` : ""}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                  </li>
+                );
+              })}
+            </ul>
+          </details>
+        )}
       </div>
 
       {declining && (

@@ -561,6 +561,33 @@ CREATE POLICY "Notification_tenant_isolation" ON "Notification"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- ReviewRound
+ALTER TABLE "ReviewRound" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "ReviewRound" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "ReviewRound_tenant_isolation" ON "ReviewRound";
+DROP POLICY IF EXISTS "ReviewRound_readable" ON "ReviewRound";
+CREATE POLICY "ReviewRound_tenant_isolation" ON "ReviewRound"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- ReviewRoundTeacher
+ALTER TABLE "ReviewRoundTeacher" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "ReviewRoundTeacher" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "ReviewRoundTeacher_tenant_isolation" ON "ReviewRoundTeacher";
+DROP POLICY IF EXISTS "ReviewRoundTeacher_readable" ON "ReviewRoundTeacher";
+CREATE POLICY "ReviewRoundTeacher_tenant_isolation" ON "ReviewRoundTeacher"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- ReviewResponse
+ALTER TABLE "ReviewResponse" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "ReviewResponse" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "ReviewResponse_tenant_isolation" ON "ReviewResponse";
+DROP POLICY IF EXISTS "ReviewResponse_readable" ON "ReviewResponse";
+CREATE POLICY "ReviewResponse_tenant_isolation" ON "ReviewResponse"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- AuditLog
 ALTER TABLE "AuditLog" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "AuditLog" FORCE ROW LEVEL SECURITY;

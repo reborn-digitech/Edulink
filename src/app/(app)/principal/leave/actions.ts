@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { requireApiRole, AccessError } from "@/lib/tenancy";
-import { decideLeave } from "@/lib/leave";
+import { decideLeave, type CoverAssignment } from "@/lib/leave";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
@@ -26,7 +26,11 @@ type Result = {
 export async function decide(
   leaveId: string,
   decision: "APPROVED" | "DECLINED",
-  opts: { note?: string; coverMembershipId?: string | null } = {},
+  opts: {
+    note?: string;
+    coverMembershipId?: string | null;
+    coverAssignments?: CoverAssignment[];
+  } = {},
 ): Promise<Result> {
   try {
     const ctx = await requireApiRole("PRINCIPAL", "ADMIN");

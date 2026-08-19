@@ -53,6 +53,7 @@ export const NAV: Record<Role, NavItem[]> = {
     // in was typing the URL. The route lives under /principal because that is
     // whose queue it usually is; the capability is shared.
     { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", prefix: true },
+    { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", prefix: true },
     { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true },
     { href: "/admin/safety", labelKey: "nav.safety", icon: "shield", prefix: true },
     { href: "/admin/settings", labelKey: "nav.settings", icon: "gear", prefix: true },
@@ -84,6 +85,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/teacher/meetings", labelKey: "nav.meetings", icon: "calendar", prefix: true },
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true },
     { href: "/teacher/leave", labelKey: "nav.leave", icon: "calendar", prefix: true },
+    { href: "/teacher/profile", labelKey: "nav.me", icon: "user", prefix: true },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true },
     { href: "/experts", labelKey: "nav.experts", icon: "briefcase", prefix: true },
     { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true },
@@ -105,6 +107,7 @@ export const NAV: Record<Role, NavItem[]> = {
     // without a link they had to be sent one.
     { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true },
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true },
+    { href: "/reviews", labelKey: "nav.feedback", icon: "star", prefix: true },
     { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true },
     { href: "/student/profile", labelKey: "nav.me", icon: "user", prefix: true },
   ],
@@ -121,6 +124,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", primary: true, prefix: true },
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true },
     { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true },
+    { href: "/reviews", labelKey: "nav.feedback", icon: "star", prefix: true },
     { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true },
     { href: "/parent/settings", labelKey: "nav.settings", icon: "gear", prefix: true },
   ],
