@@ -36,12 +36,15 @@ export function CommandPalette({
   role,
   contextCount,
   isSuperuser = false,
+  hiddenHrefs = [],
 }: {
   open: boolean;
   onClose: () => void;
   role: Role;
   contextCount: number;
   isSuperuser?: boolean;
+  /** Same contract as AppShell: role entries not offered to this person now. */
+  hiddenHrefs?: string[];
 }) {
   const router = useRouter();
   const t = useT();
@@ -63,7 +66,9 @@ export function CommandPalette({
         description: t(a.descriptionKey),
         group: actions,
       })),
-      ...NAV[role].map((n) => ({ href: n.href, label: t(n.labelKey), icon: n.icon, group: goTo })),
+      ...NAV[role]
+        .filter((n) => !hiddenHrefs.includes(n.href))
+        .map((n) => ({ href: n.href, label: t(n.labelKey), icon: n.icon, group: goTo })),
       { href: "/notifications", label: t("shell.notifications"), icon: "bell", group: goTo },
       { href: "/account", label: t("palette.accountEntry"), icon: "gear", group: goTo },
     ];
@@ -88,7 +93,7 @@ export function CommandPalette({
       });
     }
     return list;
-  }, [role, contextCount, isSuperuser, t]);
+  }, [role, contextCount, isSuperuser, hiddenHrefs, t]);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();

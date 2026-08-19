@@ -453,3 +453,146 @@ export async function setTeacherSubjects(
 
   return { ok: true };
 }
+
+/* ------------------------------------------------------------------------- */
+/* The dashboard: every teacher, their standing, and the direction            */
+/* ------------------------------------------------------------------------- */
+
+export type TeacherReviewRow = {
+  membershipId: string;
+  name: string;
+  /** Across every round — the number the school stands behind. */
+  allTime: TeacherReviewAggregate;
+  /** The most recent round this teacher was rated in, if any. */
+  latest: { overall: number; count: number } | null;
+  /** The round before that — the comparison "change of ratings" needs. */
+  previous: { overall: number; count: number } | null;
+  /** latest.overall − previous.overall, rounded to one decimal. Null until
+   * a second rated round exists: one number has no direction. */
+  delta: number | null;
+};
+
+function roundOverall(rows: { scores: string }[]): { overall: number; count: number } | null {
+  if (rows.length === 0) return null;
+  const sums = new Map<ReviewQuestion, { total: number; n: number }>();
+  for (const row of rows) {
+    const scores = readJson<Record<string, number>>(row.scores, {});
+    for (const question of REVIEW_QUESTIONS) {
+      const value = scores[question];
+      if (typeof value !== "number") continue;
+      const entry = sums.get(question) ?? { total: 0, n: 0 };
+      entry.total += value;
+      entry.n += 1;
+      sums.set(question, entry);
+    }
+  }
+  const means = [...sums.values()].map(({ total, n }) => total / n);
+  if (means.length === 0) return null;
+  return {
+    overall: Math.round((means.reduce((a, b) => a + b, 0) / means.length) * 10) / 10,
+    count: rows.length,
+  };
+}
+
+/**
+ * The whole staff room in one read, for the admin's desk AND the principal's
+ * dashboard — one function so the two pages cannot disagree about a number.
+ *
+ * THE DELTA COMPARES ROUNDS, NOT DAYS: a school that asks once a term gets
+ * "since last term" without this code knowing what a term is. Rounds are
+ * ordered by when they were opened, and only rounds somebody actually answered
+ * in count — an ignored round is an absence of data, not a zero.
+ */
+export async function schoolReviewDashboard(ctx: ActiveContext): Promise<TeacherReviewRow[]> {
+  const schoolId = requireAdmin(ctx);
+
+  const [teachers, rounds, responses] = await Promise.all([
+    db.membership.findMany({
+      where: { schoolId, role: "TEACHER", status: "ACTIVE", leftAt: null },
+      select: { id: true, user: { select: { name: true, preferredName: true } } },
+      orderBy: { joinedAt: "asc" },
+    }),
+    db.reviewRound.findMany({
+      where: { schoolId },
+      select: { id: true, createdAt: true },
+      orderBy: { createdAt: "asc" },
+    }),
+    db.reviewResponse.findMany({
+      where: { schoolId },
+      select: { teacherMembershipId: true, roundId: true, scores: true },
+    }),
+  ]);
+
+  const roundOrder = new Map(rounds.map((round, index) => [round.id, index]));
+
+  const byTeacher = new Map<string, Map<string, { scores: string }[]>>();
+  for (const response of responses) {
+    const perRound = byTeacher.get(response.teacherMembershipId) ?? new Map();
+    const bucket = perRound.get(response.roundId) ?? [];
+    bucket.push({ scores: response.scores });
+    perRound.set(response.roundId, bucket);
+    byTeacher.set(response.teacherMembershipId, perRound);
+  }
+
+  const out: TeacherReviewRow[] = [];
+  for (const teacher of teachers) {
+    const perRound = byTeacher.get(teacher.id) ?? new Map<string, { scores: string }[]>();
+    const ratedRounds = [...perRound.entries()]
+      .map(([roundId, rows]) => ({ order: roundOrder.get(roundId) ?? -1, agg: roundOverall(rows) }))
+      .filter((entry) => entry.agg !== null)
+      .sort((a, b) => a.order - b.order);
+
+    const latest = ratedRounds.at(-1)?.agg ?? null;
+    const previous = ratedRounds.at(-2)?.agg ?? null;
+
+    out.push({
+      membershipId: teacher.id,
+      name: teacher.user.preferredName ?? teacher.user.name,
+      allTime: await teacherReviewAggregate(ctx, teacher.id),
+      latest,
+      previous,
+      delta:
+        latest && previous ? Math.round((latest.overall - previous.overall) * 10) / 10 : null,
+    });
+  }
+  return out;
+}
+
+/**
+ * Whether ANY open round is asking this student or parent anything — the one
+ * bit the navigation needs. The Feedback entry exists only while the school
+ * has a question; a permanent menu item pointing at a permanent "nothing to
+ * answer" teaches people to stop looking.
+ */
+export async function anyOpenReviews(ctx: ActiveContext): Promise<boolean> {
+  let schoolIds: string[] = [];
+  if (ctx.role === "STUDENT" && ctx.schoolId) {
+    schoolIds = [ctx.schoolId];
+  } else if (ctx.role === "PARENT") {
+    const children = await db.guardianship.findMany({
+      where: { parentUserId: ctx.user.id, status: "ACTIVE" },
+      select: { studentSchoolId: true },
+      distinct: ["studentSchoolId"],
+    });
+    schoolIds = children.map((child) => child.studentSchoolId);
+  }
+  if (schoolIds.length === 0) return false;
+
+  const [rounds, schools] = await Promise.all([
+    db.reviewRound.findMany({
+      where: { schoolId: { in: schoolIds }, status: "OPEN" },
+      select: { schoolId: true, audience: true, closesDateKey: true },
+    }),
+    db.school.findMany({
+      where: { id: { in: schoolIds } },
+      select: { id: true, timezone: true },
+    }),
+  ]);
+  const zones = new Map(schools.map((school) => [school.id, school.timezone]));
+
+  return rounds.some(
+    (round) =>
+      audienceAdmits(round.audience, ctx.role) &&
+      round.closesDateKey >= todayKey(zones.get(round.schoolId) ?? "UTC"),
+  );
+}

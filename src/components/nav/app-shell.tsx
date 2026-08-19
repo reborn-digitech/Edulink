@@ -43,15 +43,19 @@ export function AppShell({
   user,
   children,
   unreadCount = 0,
+  hiddenHrefs = [],
 }: {
   user: ShellUser;
   children: React.ReactNode;
   unreadCount?: number;
+  /** Nav entries that exist for the role but not for this person right now —
+   * e.g. Feedback, which appears only while a review round is open. */
+  hiddenHrefs?: string[];
 }) {
   const pathname = usePathname();
   const t = useT();
   const [paletteOpen, setPaletteOpen] = useState(false);
-  const items = NAV[user.role];
+  const items = NAV[user.role].filter((item) => !hiddenHrefs.includes(item.href));
   const primaryItems = items.filter((i) => i.primary).slice(0, 5);
   const action = PRIMARY_ACTION[user.role];
 
@@ -228,6 +232,7 @@ export function AppShell({
         role={user.role}
         contextCount={user.contextCount}
         isSuperuser={user.isSuperuser}
+        hiddenHrefs={hiddenHrefs}
       />
     </div>
   );

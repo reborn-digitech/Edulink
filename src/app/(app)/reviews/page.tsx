@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { StarIcon } from "@phosphor-icons/react/ssr";
-import { requireRole } from "@/lib/tenancy";
+import { redirect } from "next/navigation";
+import { requireRole, requireParent, requireUser } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { pendingReviews, type PendingReview } from "@/lib/reviews";
 import { EmptyState } from "@/components/ui/states";
@@ -19,7 +20,16 @@ export async function generateMetadata(): Promise<Metadata> {
  */
 export default async function MyReviewsPage() {
   const t = await getT();
-  const ctx = await requireRole("STUDENT", "PARENT");
+
+  /* A parent's session deliberately carries NO active school — they act
+   * across their children's schools — so requireRole's school demand would
+   * bounce every parent to /switch. The sweep caught exactly that. Students
+   * go through requireRole as usual; parents through the guard shaped for
+   * them, which also sends the childless to /parent/link instead of a dead
+   * end. */
+  const who = await requireUser();
+  if (who.role !== "STUDENT" && who.role !== "PARENT") redirect("/switch");
+  const ctx = who.role === "PARENT" ? await requireParent() : await requireRole("STUDENT");
 
   let waiting: PendingReview[] = [];
   if (ctx.role === "STUDENT" && ctx.schoolId) {

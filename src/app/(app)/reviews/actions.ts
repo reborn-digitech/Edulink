@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { requireApiRole, AccessError } from "@/lib/tenancy";
+import { requireApiUser, AccessError } from "@/lib/tenancy";
 import { submitReview } from "@/lib/reviews";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 
@@ -18,7 +18,9 @@ export async function rate(input: {
   scores: Record<string, number>;
 }): Promise<Result> {
   try {
-    const ctx = await requireApiRole("STUDENT", "PARENT");
+    // Not requireApiRole: its active-school demand would refuse every parent,
+    // whose session has none by design. submitReview re-checks the role.
+    const ctx = await requireApiUser();
     const result = await submitReview(ctx, input);
     if (!result.ok) return { ok: false, errorKey: result.errorKey };
     revalidatePath("/reviews");

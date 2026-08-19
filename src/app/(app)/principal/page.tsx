@@ -4,6 +4,7 @@ import {
   CalendarCheckIcon,
   CaretRightIcon,
   ChalkboardTeacherIcon,
+  StarIcon,
 } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import {
@@ -16,6 +17,8 @@ import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { formatDateKey } from "@/lib/dates";
 import { WindowPicker } from "./window-picker";
+import { schoolReviewDashboard } from "@/lib/reviews";
+import { ReviewDashboard } from "@/components/reviews/review-dashboard";
 import { getT } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -51,6 +54,7 @@ export default async function PrincipalDashboard({
 
   const insights = await classInsights(ctx, window);
   const summary = await schoolSummary(ctx, insights);
+  const reviews = await schoolReviewDashboard(ctx);
   const concerns = insights.filter(
     (k) => k.attendance.percent !== null && k.attendance.percent < ATTENDANCE_CONCERN_PERCENT,
   );
@@ -185,6 +189,30 @@ export default async function PrincipalDashboard({
         </CardBody>
       </Card>
 
+      {/* The teacher-review dashboard, the same one the admin's desk renders —
+          the principal reads the numbers here and manages rounds on
+          /admin/reviews, which their role already opens. Shown only once
+          somebody has been rated: an empty promise is not a dashboard. */}
+      {reviews.some((row) => row.allTime.responseCount > 0) && (
+        <Card>
+          <CardHeader
+            title={t("reviews.title")}
+            icon={<StarIcon weight="duotone" className="size-5" />}
+            action={
+              <Link
+                href="/admin/reviews"
+                className="inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
+              >
+                {t("reviews.manageRounds")}
+                <CaretRightIcon className="size-3.5" aria-hidden="true" />
+              </Link>
+            }
+          />
+          <CardBody>
+            <ReviewDashboard rows={reviews} />
+          </CardBody>
+        </Card>
+      )}
     </div>
   );
 }

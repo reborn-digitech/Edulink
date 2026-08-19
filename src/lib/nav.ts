@@ -68,6 +68,10 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/principal/timetable", labelKey: "nav.timetable", icon: "clock", primary: true, prefix: true },
     { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", primary: true, prefix: true },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", primary: true, prefix: true },
+    // The review desk lives under /admin because that is who usually runs it;
+    // the capability — and now the door — is shared with the principal, whose
+    // dashboard reads the same numbers.
+    { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", prefix: true },
     { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true },
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true },
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true },

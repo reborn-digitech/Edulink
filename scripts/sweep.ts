@@ -1812,11 +1812,15 @@ async function main() {
    * production answer unconditionally kept this line red on every dev run,
    * which is how a real failure learns to hide behind an expected one. The
    * sweep tells the servers apart by a fingerprint in any page's own HTML:
-   * `next dev` cache-busts its static chunks with `?v=<timestamp>`, a
-   * production build serves hashed filenames.
+   * webpack's `next dev` cache-busts its static chunks with `?v=<timestamp>`,
+   * Turbopack's `next dev` ships its HMR client as a chunk that names itself
+   * (`[turbopack]…hmr-client`, URL-encoded in the HTML), and a production
+   * build does neither — it serves hashed filenames only.
    */
   const probe = await hit(null, "/login");
-  const devServer = /\/_next\/static\/[^"]*\?v=/.test(probe.body);
+  const devServer =
+    /\/_next\/static\/[^"]*\?v=/.test(probe.body) ||
+    /%5Bturbopack%5D[^"]*hmr-client/.test(probe.body);
   await check(
     null,
     "/dev/mailbox",
