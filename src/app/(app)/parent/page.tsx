@@ -10,16 +10,17 @@ import {
   TrophyIcon,
 } from "@phosphor-icons/react/ssr";
 import { requireParent, assertGuardianAccess } from "@/lib/tenancy";
+import { examMarksFor } from "@/lib/exams";
+import { ExamMarksCards } from "@/components/exams/exam-marks";
 import { listContexts } from "@/lib/session";
 import { db } from "@/lib/db";
 import { getAttendanceSummary, computeStreak } from "@/lib/attendance";
 import { addDaysToKey, formatDateKey, relativeTime, todayKey } from "@/lib/dates";
-import { formatMilli } from "@/lib/validation";
 import { overallForStudent } from "@/lib/grading";
 import { pendingConsents } from "@/lib/competitions";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
-import { AttendanceBadge, Badge } from "@/components/ui/badge";
+import { AttendanceBadge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { ChildSwitcher } from "./child-switcher";
@@ -75,11 +76,15 @@ export default async function ParentDashboard({
       where: {
         schoolId: student.schoolId,
         publishedAt: { not: null },
-        dueAt: { gte: new Date() },
+        // Same "to do" rule as the Assignments page: not handed in, not
+        // marked, exam sittings excluded, undated last.
+        examSlotId: null,
+        submissions: { none: { studentMembershipId: selectedId, submittedAt: { not: null } } },
+        grades: { none: { studentMembershipId: selectedId } },
         class: { enrollments: { some: { studentMembershipId: selectedId, status: "ACTIVE" } } },
       },
       select: { id: true, title: true, dueAt: true, class: { select: { name: true } } },
-      orderBy: { dueAt: "asc" },
+      orderBy: [{ dueAt: { sort: "asc", nulls: "last" } }],
       take: 4,
     }),
     db.remarkThread.findMany({
@@ -122,6 +127,8 @@ export default async function ParentDashboard({
     weightsByClass,
   );
   const averagePercent = overallResult.percent;
+
+  const examMarks = await examMarksFor(session);
 
   return (
     <div className="space-y-6">
@@ -253,98 +260,9 @@ export default async function ParentDashboard({
         />
       </div>
 
-      {/* ---------------- attendance detail ---------------- */}
-      <Card>
-        <CardHeader
-          icon={<CalendarCheckIcon weight="duotone" className="size-5" />}
-          title={t("parent.recentAttendance")}
-          description={
-            attendance.total === 0
-              ? t("parent.nothingRecordedYet")
-              : `${attendance.counts.PRESENT} present · ${attendance.counts.LATE} late · ${attendance.counts.ABSENT} absent · ${attendance.counts.EXCUSED} excused`
-          }
-        />
-        <CardBody>
-          {attendance.recent.length === 0 ? (
-            <p className="py-4 text-center text-sm text-fg-muted">
-              {t("parent.attendanceEmpty")}
-            </p>
-          ) : (
-            <ul className="divide-y divide-border">
-              {attendance.recent.slice(0, 10).map((day) => (
-                <li key={day.dateKey} className="flex items-center justify-between gap-3 py-2.5">
-                  <span className="min-w-0">
-                    <span className="block text-sm font-medium text-fg">
-                      {formatDateKey(day.dateKey, { weekday: "long", day: "numeric", month: "short" })}
-                    </span>
-                    {day.note && (
-                      <span className="block truncate text-xs text-fg-muted">{day.note}</span>
-                    )}
-                  </span>
-                  <AttendanceBadge status={day.status} />
-                </li>
-              ))}
-            </ul>
-          )}
-        </CardBody>
-      </Card>
-
-      {/* ---------------- grades ---------------- */}
-      <Card>
-        <CardHeader
-          icon={<ChartLineUpIcon weight="duotone" className="size-5" />}
-          title={t("parent.recentGrades")}
-          description={grades.length === 0 ? t("parent.nothingGradedYet") : t("parent.newestFirst")}
-          action={
-            <Button asChild size="sm" variant="secondary">
-              <Link href={`/reports/${selectedId}`}>{t("parent.progressReport")}</Link>
-            </Button>
-          }
-        />
-        <CardBody>
-          {grades.length === 0 ? (
-            <p className="py-4 text-center text-sm text-fg-muted">
-              {t("parent.gradesEmpty")}
-            </p>
-          ) : (
-            <ul className="divide-y divide-border">
-              {grades.map((grade) => {
-                const max = grade.assignment.pointsMilli;
-                const percent =
-                  grade.scoreMilli !== null && max ? Math.round((grade.scoreMilli * 100) / max) : null;
-                return (
-                  <li key={grade.id} className="flex items-center justify-between gap-3 py-2.5">
-                    <span className="min-w-0">
-                      <span className="block truncate text-sm font-medium text-fg">
-                        {grade.assignment.title}
-                      </span>
-                      <span className="block text-xs text-fg-muted">
-                        {grade.assignment.category ?? t("parent.work")} · {relativeTime(grade.gradedAt)}
-                      </span>
-                      {grade.comment && (
-                        <span className="mt-0.5 block truncate text-xs italic text-fg-muted">
-                          &ldquo;{grade.comment}&rdquo;
-                        </span>
-                      )}
-                    </span>
-                    <span className="shrink-0 text-right">
-                      <span className="block font-bold tabular-nums text-fg">
-                        {formatMilli(grade.scoreMilli)}
-                        {max ? <span className="text-fg-muted">/{formatMilli(max)}</span> : null}
-                      </span>
-                      {percent !== null && (
-                        <Badge tone={percent >= 70 ? "ok" : percent >= 50 ? "warn" : "danger"} size="sm">
-                          {percent}%
-                        </Badge>
-                      )}
-                    </span>
-                  </li>
-                );
-              })}
-            </ul>
-          )}
-        </CardBody>
-      </Card>
+      {/* Attendance detail lives on Attendance and marks on Assignments →
+          Marked; the overview keeps what needs a parent NOW — today's status,
+          what is due, messages, and the latest exam marks. */}
 
       {/* ---------------- upcoming ---------------- */}
       <Card>
@@ -420,6 +338,17 @@ export default async function ParentDashboard({
           )}
         </CardBody>
       </Card>
+
+      {examMarks.some((m) => m.series.length > 0) && (
+        <section className="space-y-3">
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-fg-muted">
+            {t("exams.myMarksTitle")}
+          </h2>
+          {examMarks.map((m) => (
+            <ExamMarksCards key={m.studentMembershipId} marks={m} compact showStudent={examMarks.length > 1} />
+          ))}
+        </section>
+      )}
 
       <div className="flex justify-center pb-4">
         <Button asChild variant="secondary" icon={<PlusIcon weight="bold" />}>

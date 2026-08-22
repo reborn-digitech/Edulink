@@ -10,6 +10,7 @@ import { EmptyState } from "@/components/ui/states";
 import { InviteRowActions } from "./row-actions";
 import { isPast, relativeTime } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
+import { TabBar } from "@/components/ui/tabs";
 import { ROLE_META, type Role } from "@/lib/constants";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 
@@ -53,7 +54,7 @@ export default async function InvitesPage({
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("invites.title")}</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("nav.people")}</h1>
           <p className="mt-1 text-sm text-fg-muted">
             {t("invites.waitingCount", { count: countFor("PENDING") })}
           </p>
@@ -62,6 +63,15 @@ export default async function InvitesPage({
           <Link href="/admin/invites/new">{t("invites.invitePeople")}</Link>
         </Button>
       </div>
+
+      <TabBar
+        ariaLabel={t("nav.people")}
+        current="invites"
+        tabs={[
+          { key: "directory", href: "/admin/people", label: t("people.tabDirectory") },
+          { key: "invites", href: "/admin/invites", label: t("people.tabInvites") },
+        ]}
+      />
 
       <nav
         className="flex gap-1 rounded-[--radius-md] bg-surface-muted p-1"

@@ -71,6 +71,7 @@ let riversideId: string;
 let oakfieldId: string;
 let classId: string;
 let assignmentA: string;
+let seriesId: string;
 let assignmentB: string;
 
 let admin: ActiveContext;
@@ -200,13 +201,37 @@ beforeAll(async () => {
     update: { status: "ACTIVE", removedAt: null },
   });
 
+  /**
+   * A REPORT CARD IS BUILT FROM SCHEDULED EXAMS, so the two assessments are
+   * papers on an admin-scheduled series for this class's grade — the sitting
+   * rows carry `examSlotId`. A plain homework assignment is no longer a
+   * candidate, and a test below proves that refusal.
+   */
+  const series = await db.examSeries.create({
+    data: {
+      schoolId: riversideId,
+      name: "ZZ Report-card exams",
+      gradeLevel: "5",
+      kind: "MID_TERM",
+      publishedAt: new Date(),
+    },
+  });
+  seriesId = series.id;
+  const slotA = await db.examSlot.create({
+    data: { schoolId: riversideId, seriesId: series.id, subject: "ZZ Maths", dateKey: "2026-03-02", pointsMilli: 100_000, position: 0 },
+  });
+  const slotB = await db.examSlot.create({
+    data: { schoolId: riversideId, seriesId: series.id, subject: "ZZ Science", dateKey: "2026-03-03", pointsMilli: 100_000, position: 1 },
+  });
   const a = await db.assignment.create({
     data: {
       schoolId: riversideId,
       classId,
       authorMembershipId: l.membershipId,
       title: "ZZ Mid-term test",
+      category: "Exam",
       pointsMilli: 100_000,
+      examSlotId: slotA.id,
       publishedAt: new Date(),
     },
   });
@@ -216,7 +241,9 @@ beforeAll(async () => {
       classId,
       authorMembershipId: l.membershipId,
       title: "ZZ End-of-term exam",
+      category: "Exam",
       pointsMilli: 100_000,
+      examSlotId: slotB.id,
       publishedAt: new Date(),
     },
   });
@@ -247,6 +274,7 @@ afterAll(async () => {
   await db.reportCard.deleteMany({ where: { classId } });
   await db.grade.deleteMany({ where: { assignmentId: { in: [assignmentA, assignmentB] } } });
   await db.assignment.deleteMany({ where: { classId } });
+  await db.examSeries.deleteMany({ where: { id: seriesId } });
   await db.enrollment.deleteMany({ where: { classId } });
   await db.classTeacher.deleteMany({ where: { classId } });
   await db.class.deleteMany({ where: { id: classId } });
@@ -316,6 +344,27 @@ describe("choosing what counts", () => {
       assignmentIds: [elsewhere.id],
     });
     expect(result.ok).toBe(false);
+  });
+
+  it("⚠ refuses a homework assignment — only scheduled exam papers go on a card", async () => {
+    const homework = await db.assignment.create({
+      data: {
+        schoolId: riversideId,
+        classId,
+        authorMembershipId: leadMembershipId,
+        title: "ZZ Homework that must not count",
+        pointsMilli: 10_000,
+        publishedAt: new Date(),
+      },
+    });
+    try {
+      const list = await assessmentsFor(lead, classId);
+      expect(list.some((a) => a.assignmentId === homework.id)).toBe(false);
+      const result = await generateCards(lead, classId, { ...INPUT, assignmentIds: [homework.id] });
+      expect(result.ok).toBe(false);
+    } finally {
+      await db.assignment.delete({ where: { id: homework.id } });
+    }
   });
 
   it("refuses an empty selection and an unnamed report", async () => {

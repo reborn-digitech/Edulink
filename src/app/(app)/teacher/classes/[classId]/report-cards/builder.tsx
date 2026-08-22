@@ -10,6 +10,7 @@ import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { generate, publish, saveRemark, withdraw } from "./actions";
 import { useT } from "@/lib/i18n";
+import { EXAM_KIND_KEY, type ExamKind } from "@/lib/constants";
 
 type Assessment = {
   assignmentId: string;
@@ -17,6 +18,10 @@ type Assessment = {
   category: string | null;
   gradedCount: number;
   classSize: number;
+  seriesId: string;
+  seriesName: string;
+  seriesKind: ExamKind;
+  subject: string;
 };
 
 type CardRow = {
@@ -73,6 +78,24 @@ export function Builder({
     );
   }
 
+  /* THE SCHEDULE IS THE MENU: papers grouped under the exam the admin
+   * scheduled them in, with one switch per exam — a term's card is usually
+   * "the unit test and the mid-term", not eleven individual papers. Papers
+   * stay individually toggleable for the school that wants to leave one off. */
+  const bySeries = new Map<string, { name: string; kind: ExamKind; papers: Assessment[] }>();
+  for (const a of assessments) {
+    const group = bySeries.get(a.seriesId) ?? { name: a.seriesName, kind: a.seriesKind, papers: [] };
+    group.papers.push(a);
+    bySeries.set(a.seriesId, group);
+  }
+  function toggleSeries(seriesId: string) {
+    const ids = bySeries.get(seriesId)?.papers.map((p) => p.assignmentId) ?? [];
+    const allOn = ids.every((id) => picked.includes(id));
+    setPicked((current) =>
+      allOn ? current.filter((id) => !ids.includes(id)) : [...current, ...ids.filter((id) => !current.includes(id))],
+    );
+  }
+
   function build() {
     setError(null);
     startTransition(async () => {
@@ -116,51 +139,86 @@ export function Builder({
             {t("teacher.noPublishedWork")}
           </p>
         ) : (
-          <ul className="mt-3 space-y-1">
-            {assessments.map((assessment) => {
-              const on = picked.includes(assessment.assignmentId);
-              const unmarked = assessment.gradedCount === 0;
+          <div className="mt-3 space-y-3">
+            {[...bySeries.entries()].map(([seriesId, group]) => {
+              const ids = group.papers.map((p) => p.assignmentId);
+              const onCount = ids.filter((id) => picked.includes(id)).length;
+              const allOn = onCount === ids.length;
               return (
-                <li key={assessment.assignmentId}>
+                <div key={seriesId} className="rounded-[--radius-md] border border-border">
                   <button
                     type="button"
-                    aria-pressed={on}
-                    onClick={() => toggle(assessment.assignmentId)}
+                    aria-pressed={allOn}
+                    onClick={() => toggleSeries(seriesId)}
                     className={cn(
-                      "flex w-full items-center gap-3 rounded-[--radius-sm] p-2.5 text-left transition-colors",
-                      on ? "bg-accent-soft text-accent-strong" : "hover:bg-surface-muted",
+                      "flex w-full items-center gap-3 rounded-t-[--radius-md] p-3 text-left transition-colors",
+                      allOn ? "bg-accent-soft text-accent-strong" : "hover:bg-surface-muted",
                     )}
                   >
                     <span
                       aria-hidden="true"
                       className={cn(
                         "grid size-5 shrink-0 place-items-center rounded border text-xs font-bold",
-                        on ? "border-accent bg-accent text-accent-fg" : "border-border",
+                        allOn ? "border-accent bg-accent text-accent-fg" : onCount > 0 ? "border-accent" : "border-border",
                       )}
                     >
-                      {on ? picked.indexOf(assessment.assignmentId) + 1 : ""}
+                      {allOn ? "✓" : onCount > 0 ? "–" : ""}
                     </span>
                     <span className="min-w-0 flex-1">
-                      <span className="block truncate text-sm font-medium">{assessment.title}</span>
+                      <span className="block truncate text-sm font-semibold">{group.name}</span>
                       <span className="block truncate text-xs text-fg-muted">
-                        {assessment.category ? `${assessment.category} · ` : ""}
-                        {assessment.gradedCount} of {assessment.classSize} marked
+                        {t(EXAM_KIND_KEY[group.kind])} · {t("teacher.papersN", { count: ids.length })}
                       </span>
                     </span>
-                    {unmarked && (
-                      <span
-                        className="flex shrink-0 items-center gap-1 text-xs font-medium text-warn"
-                        title={t("teacher.noMarkYet")}
-                      >
-                        <WarningIcon weight="bold" className="size-4" />
-                        unmarked
-                      </span>
-                    )}
                   </button>
-                </li>
+                  <ul className="divide-y divide-border border-t border-border">
+                    {group.papers.map((assessment) => {
+                      const on = picked.includes(assessment.assignmentId);
+                      const unmarked = assessment.gradedCount === 0;
+                      return (
+                        <li key={assessment.assignmentId}>
+                          <button
+                            type="button"
+                            aria-pressed={on}
+                            onClick={() => toggle(assessment.assignmentId)}
+                            className={cn(
+                              "flex w-full items-center gap-3 p-2.5 pl-6 text-left transition-colors",
+                              on ? "bg-accent-soft/60 text-accent-strong" : "hover:bg-surface-muted",
+                            )}
+                          >
+                            <span
+                              aria-hidden="true"
+                              className={cn(
+                                "grid size-4 shrink-0 place-items-center rounded border text-[10px] font-bold",
+                                on ? "border-accent bg-accent text-accent-fg" : "border-border",
+                              )}
+                            >
+                              {on ? "✓" : ""}
+                            </span>
+                            <span className="min-w-0 flex-1">
+                              <span className="block truncate text-sm font-medium">{assessment.subject}</span>
+                              <span className="block truncate text-xs text-fg-muted">
+                                {t("teacher.markedOf", { marked: assessment.gradedCount, total: assessment.classSize })}
+                              </span>
+                            </span>
+                            {unmarked && (
+                              <span
+                                className="flex shrink-0 items-center gap-1 text-xs font-medium text-warn"
+                                title={t("teacher.noMarkYet")}
+                              >
+                                <WarningIcon weight="bold" className="size-4" />
+                                {t("teacher.unmarked")}
+                              </span>
+                            )}
+                          </button>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
               );
             })}
-          </ul>
+          </div>
         )}
       </section>
 

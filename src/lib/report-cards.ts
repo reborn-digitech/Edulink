@@ -5,7 +5,8 @@ import { audit } from "./audit";
 import { notify } from "./notify";
 import { AccessError } from "./tenancy";
 import { getAttendanceSummary } from "./attendance";
-import { overallForStudent, listGradeCategories, type ClassEntry } from "./grading";
+import { ensureSittings } from "./exams";
+import type { ExamKind } from "./constants";
 import { addDaysToKey, todayKey } from "./dates";
 import type { ActiveContext } from "./session";
 
@@ -41,6 +42,12 @@ export type Assessment = {
   category: string | null;
   pointsMilli: number | null;
   dueAt: Date | null;
+  /** The scheduled exam this paper belongs to — every assessment here has one. */
+  seriesId: string;
+  seriesName: string;
+  seriesKind: ExamKind;
+  subject: string;
+  dateKey: string;
   /** How many of the class have a mark — a teacher should not report on an unmarked test. */
   gradedCount: number;
   classSize: number;
@@ -151,9 +158,22 @@ export async function assessmentsFor(
 ): Promise<Assessment[]> {
   await assertMayWriteCards(ctx, classId);
 
+  /* THE SCHEDULE IS THE MENU. A report card is built from the exams the admin
+   * scheduled — unit tests, the mid-term, the final — and from nothing else;
+   * homework and classwork stay on the grades page as the running picture.
+   * Every paper of the class's grade gets its sitting row first, so a subject
+   * nobody has marked yet still appears (as "0 of 30 marked") instead of
+   * silently missing from the card. */
+  await ensureSittings(ctx.schoolId!, classId, ctx.membershipId!);
+
   const [assignments, classSize] = await Promise.all([
     db.assignment.findMany({
-      where: { schoolId: ctx.schoolId!, classId, publishedAt: { not: null } },
+      where: {
+        schoolId: ctx.schoolId!,
+        classId,
+        examSlotId: { not: null },
+        examSlot: { series: { archivedAt: null } },
+      },
       select: {
         id: true,
         title: true,
@@ -161,21 +181,48 @@ export async function assessmentsFor(
         pointsMilli: true,
         dueAt: true,
         _count: { select: { grades: true } },
+        examSlot: {
+          select: {
+            subject: true,
+            dateKey: true,
+            position: true,
+            series: { select: { id: true, name: true, kind: true, createdAt: true } },
+          },
+        },
       },
-      orderBy: [{ dueAt: "asc" }, { createdAt: "asc" }],
     }),
     db.enrollment.count({ where: { classId, status: "ACTIVE" } }),
   ]);
 
-  return assignments.map((a) => ({
-    assignmentId: a.id,
-    title: a.title,
-    category: a.category,
-    pointsMilli: a.pointsMilli,
-    dueAt: a.dueAt,
-    gradedCount: a._count.grades,
-    classSize,
-  }));
+  return assignments
+    .map((a) => ({
+      assignmentId: a.id,
+      title: a.title,
+      category: a.category,
+      pointsMilli: a.pointsMilli,
+      dueAt: a.dueAt,
+      seriesId: a.examSlot!.series.id,
+      seriesName: a.examSlot!.series.name,
+      seriesKind: a.examSlot!.series.kind as ExamKind,
+      subject: a.examSlot!.subject,
+      dateKey: a.examSlot!.dateKey,
+      gradedCount: a._count.grades,
+      classSize,
+      _seriesAt: a.examSlot!.series.createdAt.getTime(),
+      _position: a.examSlot!.position,
+    }))
+    .sort(
+      (a, b) =>
+        a._seriesAt - b._seriesAt ||
+        a.dateKey.localeCompare(b.dateKey) ||
+        a._position - b._position,
+    )
+    .map((row) => {
+      const { _seriesAt, _position, ...rest } = row;
+      void _seriesAt;
+      void _position;
+      return rest;
+    });
 }
 
 /* -------------------------------------------------------------------------- */
@@ -225,11 +272,14 @@ export async function generateCards(
   // Re-queried against THIS class. An assignment id from another class — or
   // another school — is simply not found, so a forged form cannot put somebody
   // else's test on this school's report cards.
+  // …and an EXAM paper. A homework id smuggled into the form is dropped here:
+  // the card is the exam record, and the grades page is where homework lives.
   const assignments = await db.assignment.findMany({
     where: {
       id: { in: input.assignmentIds.slice(0, 100) },
       schoolId: ctx.schoolId!,
       classId,
+      examSlotId: { not: null },
     },
     select: { id: true, title: true, category: true, pointsMilli: true },
   });
@@ -258,7 +308,6 @@ export async function generateCards(
     grades.map((g) => [`${g.assignmentId}:${g.studentMembershipId}`, g.scoreMilli]),
   );
 
-  const weights = new Map([[classId, await listGradeCategories(ctx, classId)]]);
 
   // The practice annexure, fetched once for the whole roll: every chapter each
   // child has touched, with the rung they stand on and the tier badges earned.
@@ -330,16 +379,23 @@ export async function generateCards(
     // test the child has not sat yet is not a mark of nought, and treating it
     // as one is the single most damaging arithmetic mistake a report card can
     // make.
-    const entries: ClassEntry[] = assignments
+    const entries = assignments
       .map((a) => ({
-        classId,
-        category: a.category,
         scoreMilli: gradeBy.get(`${a.id}:${row.studentMembershipId}`) ?? null,
         maxMilli: a.pointsMilli,
       }))
-      .filter((e) => e.scoreMilli !== null);
+      .filter((e): e is { scoreMilli: number; maxMilli: number } => e.scoreMilli !== null && e.maxMilli !== null && e.maxMilli > 0);
 
-    const overall = overallForStudent(entries, weights);
+    /* THE OVERALL IS MARKS OVER MAXIMUM ACROSS THE EXAMS ON THE CARD — not the
+     * category-weighted figure the grades page shows, which blends homework in.
+     * A report card's number must be reproducible by a parent with the card in
+     * one hand and a calculator in the other. */
+    const scored = entries.reduce((a, e) => a + e.scoreMilli, 0);
+    const max = entries.reduce((a, e) => a + e.maxMilli, 0);
+    const overall = {
+      percent: max > 0 ? (scored / max) * 100 : null,
+      method: "exams",
+    };
 
     const data = {
       schoolId: ctx.schoolId!,
@@ -469,7 +525,7 @@ export async function publishCards(
       kind: "GRADE",
       title: "Your report card is ready",
       body: title,
-      url: "/student/grades",
+      url: "/exams?tab=cards",
     });
 
     const guardians = await db.guardianship.findMany({
@@ -484,7 +540,7 @@ export async function publishCards(
         kind: "GRADE",
         title: `${childName}'s report card is ready`,
         body: title,
-        url: "/parent/grades",
+        url: "/exams?tab=cards",
       });
     }
   }

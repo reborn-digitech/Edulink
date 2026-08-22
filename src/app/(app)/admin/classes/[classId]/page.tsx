@@ -184,6 +184,19 @@ export default async function ClassStaffingPage({
       </Card>
 
       <Card>
+        <Link href={`/teacher/exams?classId=${klass.id}`} className="flex items-center gap-3 p-4">
+          <span className="grid size-11 shrink-0 place-items-center rounded-full bg-accent-soft text-accent-strong">
+            <CertificateIcon weight="duotone" className="size-6" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block font-semibold text-fg">{t("exams.enterMarks")}</span>
+            <span className="block text-xs text-fg-muted">{t("exams.enterMarksBlurb")}</span>
+          </span>
+          <CaretRightIcon className="size-4 shrink-0 text-fg-subtle" aria-hidden="true" />
+        </Link>
+      </Card>
+
+      <Card>
         <CardHeader
           icon={<UsersThreeIcon weight="duotone" className="size-5" />}
           title={t("classes.whoIsIn")}

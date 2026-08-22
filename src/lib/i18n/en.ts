@@ -68,7 +68,7 @@ export const en = {
     safety: "Safety",
     settings: "Settings",
     register: "Register",
-    work: "Work",
+    work: "Assignments",
     messages: "Messages",
     myWork: "My work",
     grades: "Grades",
@@ -76,6 +76,13 @@ export const en = {
     me: "Me",
     reviews: "Reviews",
     feedback: "Feedback",
+    people: "People",
+    assignments: "Assignments",
+    more: "More",
+    groupDaily: "Day to day",
+    groupSchool: "School life",
+    groupRunning: "Running things",
+    examsAssignments: "Exams & Assignments",
     attendance: "Attendance",
     bookings: "Bookings",
     availability: "Availability",
@@ -95,6 +102,16 @@ export const en = {
   /* Actions — the FAB and the command palette                               */
   /* ---------------------------------------------------------------------- */
   action: {
+    scheduleExam: "Schedule an exam",
+    scheduleExamHint: "Unit test, mid-term or final — with a date sheet",
+    enterMarks: "Enter exam marks",
+    enterMarksHint: "Marks for a paper your class sat",
+    reportCards: "Report cards",
+    reportCardsHint: "Build a term's cards from the scheduled exams",
+    myExamMarks: "My exam marks",
+    myExamMarksHint: "Every paper, as soon as it is marked",
+    childExamMarks: "Exam marks",
+    childExamMarksHint: "Your child's papers, as soon as they are marked",
     invitePeople: "Invite people",
     invitePeopleHint: "Add teachers or students to your school",
     takeRegister: "Take the register",
@@ -1184,6 +1201,7 @@ export const en = {
   },
 
   reportView: {
+    examsOnly: "Marks over maximum across the exams on this card",
     draftBanner: "Draft — not published. Families cannot see this yet.",
     overall: "Overall",
     noMarksCounted: "No marks counted",
@@ -1660,6 +1678,7 @@ export const en = {
   /* boundary. One key per distinct sentence; the sentence is the value.    */
   /* ---------------------------------------------------------------------- */
   access: {
+    notYourPaperToMark: "You can enter marks only for classes you teach or take the register for",
     onlyAdminsSetExams: "Only an admin can set up exams.",
     giveTheExamAName: "Give the exam series a name.",
     chooseAGradeForTheExam: "Choose which grade this exam is for.",
@@ -2650,11 +2669,14 @@ export const en = {
   /* A teacher's pages — the role staff live in every day                    */
   /* ---------------------------------------------------------------------- */
   teacher: {
+    papersN: "{count} papers",
+    markedOf: "{marked} of {total} marked",
+    unmarked: "unmarked",
     publishExplainer: "Publishing tells every student in the class and their guardians. Save as a draft if you are not ready.",
     leaveExplainer: "Ask to be away. The principal answers, and if it is approved your registers are covered automatically — you do not have to arrange that separately.",
     builderStepOne: "1. What goes on the card",
     builderStepTwo: "2. Generate the drafts",
-    builderPickExplainer: "Choose the tests and assignments this report covers. They appear in the order you pick them.",
+    builderPickExplainer: "Choose which of the scheduled exams this report covers — unit tests, the mid-term, the final. Homework and classwork marks stay on the grades page and never go on a card.",
     coveringUntil: "You are covering this register until {date}.",
     markAllPresent: "Mark all {count} present",
     commentForName: "Comment for {name}",
@@ -2741,7 +2763,7 @@ export const en = {
     classes: "Classes",
     toGrade: "To grade",
     comingUp: "Coming up",
-    workDueIn: "Work due in your classes",
+    workDueIn: "Assignments due in your classes",
     nothingDue: "Nothing due. A good moment to set something.",
     noClassesYet: "No classes assigned yet",
     noClassesBody: "Ask an admin to add you to a class, and your day will appear here.",
@@ -3112,6 +3134,7 @@ export const en = {
     activeThisTerm: "Active this term",
     noClassesYet: "No classes yet",
     takenToday: "{done} of {total} today",
+    peopleSummary: "{teachers} teachers · {students} pupils · {classes} classes",
 
     noTeachersYet: "No teachers yet",
     noTeachersBody:
@@ -3676,6 +3699,49 @@ export const en = {
   },
 
   exams: {
+    tabDateSheet: "Date sheet",
+    tabMarksEntry: "Enter marks",
+    tabMarks: "Marks",
+    tabUpcoming: "Upcoming",
+    tabCards: "Report cards",
+    noCardsTitle: "No report cards yet",
+    noCardsBody: "When the school issues a report card, it appears here.",
+    noClassesForCards: "No classes to build cards for",
+    noClassesForCardsBody: "Report cards are built class by class by the class teacher.",
+    cardsIssuedOne: "1 card issued",
+    cardsIssuedMany: "{count} cards issued",
+    readerTitle: "Exams & Assignments",
+    readerIntro: "Exam marks as they come in, the exams still ahead, and how the homework is going.",
+    upcomingTitle: "Upcoming exams",
+    noUpcomingTitle: "No exams coming up",
+    noUpcomingBody: "When the school announces the next date sheet, it appears here.",
+    assignmentGradesTitle: "Assignment grades",
+    assignmentGradesIntro: "Homework and classwork marks — the running picture. These do not go on the report card.",
+    noAssignmentGrades: "Nothing marked yet.",
+    upcomingAssignmentsTitle: "Upcoming assignments",
+    noUpcomingAssignments: "Nothing due right now.",
+    dueWhen: "Due {when}",
+    kindUnitTest: "Unit test",
+    kindMidTerm: "Mid-term",
+    kindFinal: "Final exam",
+    fieldKind: "Kind of exam",
+    myMarksTitle: "Exam marks",
+    myMarksIntro: "Marks appear here as soon as a teacher saves them. The report card is built from these exams.",
+    noMarksYet: "No marks yet",
+    awaitingMarks: "awaiting marks",
+    markedOf: "{marked} of {total} papers marked · see all",
+    seeAllMarks: "See all exam marks",
+    enterMarks: "Enter exam marks",
+    enterMarksBlurb: "Marks for the papers this class sat, register by register.",
+    marksTodoTitle: "Marks to enter",
+    marksTodoBody: "Papers already sat that are not fully marked yet.",
+    openGrid: "Open the marks grid",
+    adminCardTitle: "Exams & report cards",
+    adminCardNone: "No exams scheduled yet. Schedule unit tests, mid-terms and finals; report cards are built from them.",
+    adminCardBody: "{scheduled} exams scheduled, {published} published · {cards} report cards issued",
+    scheduleExams: "Schedule exams",
+    progressBanner: "These marks track ongoing work. Exam marks and report cards live under Exams.",
+    progressBannerLink: "Open Exams",
     adminTitle: "Exams",
     adminIntro:
       "Set each term's date sheet, publish it to families, and archive the series when the term closes.",
@@ -3856,6 +3922,8 @@ export const en = {
   /* The directory — everyone in the school, and the three ways out of it     */
   /* ---------------------------------------------------------------------- */
   people: {
+    tabDirectory: "Directory",
+    tabInvites: "Invites",
     title: "Directory",
     nobodyYet: "Nobody yet",
     countOfRole: "{count} {role}",
@@ -4516,6 +4584,19 @@ export const en = {
     freeForAll: "free for every lesson",
     lessonsN: "{count} lessons",
     noCover: "No cover",
+  },
+  assignments: {
+    tabTodo: "To do",
+    tabHanded: "Handed in",
+    tabMarked: "Marked",
+    points: "points",
+    nothingHanded: "Nothing waiting for a mark",
+    nothingHandedBody: "Work you hand in sits here until your teacher marks it.",
+    nothingMarked: "Nothing marked yet",
+    nothingMarkedBody: "Marks appear here as your teacher returns work. Exam marks are under Exams.",
+    tabDue: "Due",
+    tabLate: "Late",
+    forChild: "For {name}",
   },
   meta: {
     appDescription:

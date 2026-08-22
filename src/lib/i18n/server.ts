@@ -4,6 +4,7 @@ import { cache } from "react";
 import { getSession } from "../session";
 import { normaliseLocale, LOCALE_COOKIE, type Locale } from "./locales";
 import { translator, type Translate } from "./dictionary";
+import { relativeTime } from "../dates";
 
 /**
  * Which language this request is answered in.
@@ -32,4 +33,13 @@ export const getLocale = cache(async (): Promise<Locale> => {
 /** The `t` for this request. Server components only. */
 export async function getT(): Promise<Translate> {
   return translator(await getLocale());
+}
+
+/**
+ * `relativeTime` bound to this request's language — "in 5 days" becomes
+ * "5 दिन में" on a Hindi screen. Server components only, like `getT`.
+ */
+export async function getRelativeTime(): Promise<(target: Date) => string> {
+  const locale = await getLocale();
+  return (target: Date) => relativeTime(target, new Date(), locale);
 }

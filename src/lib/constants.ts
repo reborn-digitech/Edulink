@@ -102,6 +102,22 @@ export type ReviewAudience = (typeof REVIEW_AUDIENCES)[number];
 
 export const REVIEW_ROUND_STATUSES = ["OPEN", "CLOSED"] as const;
 
+/**
+ * What kind of exam round a series is. THE REPORT CARD IS BUILT FROM THESE —
+ * unit tests, the mid-term, the final — and from nothing else: homework and
+ * classwork marks are for watching progress as the term runs, not for the
+ * document that closes it. Fixed keys so a card says "Mid-term" in the
+ * reader's language rather than whatever the office typed.
+ */
+export const EXAM_KINDS = ["UNIT_TEST", "MID_TERM", "FINAL"] as const;
+export type ExamKind = (typeof EXAM_KINDS)[number];
+
+export const EXAM_KIND_KEY: Record<ExamKind, TranslationKey> = {
+  UNIT_TEST: "exams.kindUnitTest",
+  MID_TERM: "exams.kindMidTerm",
+  FINAL: "exams.kindFinal",
+};
+
 export const INVITE_STATUSES = ["PENDING", "ACCEPTED", "REVOKED", "EXPIRED"] as const;
 export type InviteStatus = (typeof INVITE_STATUSES)[number];
 

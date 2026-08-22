@@ -9,6 +9,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
+import { TabBar } from "@/components/ui/tabs";
 import { saveMarksAction } from "./actions";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -27,7 +28,7 @@ export default async function TeacherExamsPage({
 }: {
   searchParams: Promise<{ classId?: string; slotId?: string; error?: string; saved?: string }>;
 }) {
-  const ctx = await requireRole("TEACHER");
+  const ctx = await requireRole("TEACHER", "ADMIN");
   const t = await getT();
   const { classId: requestedClass, slotId: requestedSlot, error, saved } = await searchParams;
 
@@ -68,9 +69,20 @@ export default async function TeacherExamsPage({
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("exams.marksTitle")}</h1>
+        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("nav.exams")}</h1>
         <p className="mt-1 text-sm text-fg-muted">{t("exams.marksIntro")}</p>
       </div>
+
+      {/* Marks and report cards are two tabs of one Exams — the cards tab is
+          the shared staff view on /exams, which lists this teacher's classes. */}
+      <TabBar
+        ariaLabel={t("nav.exams")}
+        current="marks"
+        tabs={[
+          { key: "marks", href: "/teacher/exams", label: t("exams.tabMarksEntry") },
+          { key: "cards", href: "/exams?tab=cards", label: t("exams.tabCards") },
+        ]}
+      />
 
       {classes.length > 1 && (
         <nav aria-label={t("nav.classes")} className="flex flex-wrap gap-2">
@@ -150,10 +162,15 @@ export default async function TeacherExamsPage({
             description={t("exams.gridHint", { max: grid.maxMarks })}
           />
           <CardBody>
+            {/* The form is KEYED BY THE PAPER. Its boxes are uncontrolled
+                (`defaultValue`), so without the key a click from English to
+                Mathematics kept the same <input> elements — and English's
+                marks — on screen for every pupil. A new key remounts the form
+                with the new paper's own marks. */}
             {grid.pupils.length === 0 ? (
               <p className="text-sm text-fg-muted">{t("exams.emptyRoll")}</p>
             ) : (
-              <form action={saveMarksAction} className="space-y-4">
+              <form key={`${selectedClass.id}:${selectedSlot.id}`} action={saveMarksAction} className="space-y-4">
                 <input type="hidden" name="slotId" value={selectedSlot.id} />
                 <input type="hidden" name="classId" value={selectedClass.id} />
                 <ul className="divide-y divide-border">

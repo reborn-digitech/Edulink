@@ -6,13 +6,14 @@ import {
   FireIcon,
 } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
+import { examMarksFor } from "@/lib/exams";
+import { ExamMarksCards } from "@/components/exams/exam-marks";
 import { db } from "@/lib/db";
 import { getAttendanceSummary, computeStreak } from "@/lib/attendance";
 import { addDaysToKey, formatDateKey, isWithin, relativeTime, todayKey } from "@/lib/dates";
-import { formatMilli } from "@/lib/validation";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
-import { AttendanceBadge, Badge } from "@/components/ui/badge";
+import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { StudentWelcome } from "./welcome";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
@@ -45,32 +46,34 @@ export default async function StudentHome({
   const timezone = membership.school.timezone;
   const today = todayKey(timezone);
 
-  const [attendance, todayRecord, grades, upcoming] = await Promise.all([
+  const [attendance, todayRecord, upcoming] = await Promise.all([
     getAttendanceSummary(ctx.schoolId, ctx.membershipId, addDaysToKey(today, -28), today),
     db.attendanceRecord.findFirst({
       where: { studentMembershipId: ctx.membershipId, session: { dateKey: today } },
       select: { status: true },
     }),
-    db.grade.findMany({
-      where: { studentMembershipId: ctx.membershipId, schoolId: ctx.schoolId },
-      include: { assignment: { select: { title: true, pointsMilli: true } } },
-      orderBy: { gradedAt: "desc" },
-      take: 5,
-    }),
+    // The same rule as the Assignments page's "To do": published homework the
+    // pupil has not handed in — exam sittings excluded, undated ones included
+    // last. Two lists that disagreed about what was due was the confusion
+    // this page used to cause.
     db.assignment.findMany({
       where: {
         schoolId: ctx.schoolId,
         publishedAt: { not: null },
-        dueAt: { gte: new Date() },
+        examSlotId: null,
+        submissions: { none: { studentMembershipId: ctx.membershipId, submittedAt: { not: null } } },
+        grades: { none: { studentMembershipId: ctx.membershipId } },
         class: { enrollments: { some: { studentMembershipId: ctx.membershipId, status: "ACTIVE" } } },
       },
       select: { id: true, title: true, dueAt: true, class: { select: { name: true } } },
-      orderBy: { dueAt: "asc" },
+      orderBy: [{ dueAt: { sort: "asc", nulls: "last" } }],
       take: 5,
     }),
   ]);
 
   const streak = computeStreak(attendance.recent);
+
+  const examMarks = await examMarksFor(ctx);
 
   return (
     <div className="space-y-6">
@@ -181,79 +184,14 @@ export default async function StudentHome({
         </CardBody>
       </Card>
 
-      <Card>
-        <CardHeader
-          icon={<ChartLineUpIcon weight="duotone" className="size-5" />}
-          title={t("student.recentMarks")}
-          description={grades.length === 0 ? t("student.nothingMarkedYet") : t("student.newestFirstShort")}
-        />
-        <CardBody>
-          {grades.length === 0 ? (
-            <p className="py-4 text-center text-sm text-fg-muted">
-              {t("student.markedAppearsHere")}
-            </p>
-          ) : (
-            <ul className="divide-y divide-border">
-              {grades.map((grade) => {
-                const max = grade.assignment.pointsMilli;
-                const percent =
-                  grade.scoreMilli !== null && max
-                    ? Math.round((grade.scoreMilli * 100) / max)
-                    : null;
-                return (
-                  <li key={grade.id} className="flex items-center justify-between gap-3 py-2.5">
-                    <span className="min-w-0">
-                      <span className="block truncate text-sm font-medium text-fg">
-                        {grade.assignment.title}
-                      </span>
-                      {grade.comment && (
-                        <span className="block truncate text-xs italic text-fg-muted">
-                          &ldquo;{grade.comment}&rdquo;
-                        </span>
-                      )}
-                    </span>
-                    <span className="shrink-0 text-right">
-                      <span className="block font-bold tabular-nums text-fg">
-                        {formatMilli(grade.scoreMilli)}
-                        {max ? <span className="text-fg-muted">/{formatMilli(max)}</span> : null}
-                      </span>
-                      {percent !== null && (
-                        <Badge tone={percent >= 70 ? "ok" : "neutral"} size="sm">
-                          {percent}%
-                        </Badge>
-                      )}
-                    </span>
-                  </li>
-                );
-              })}
-            </ul>
-          )}
-        </CardBody>
-      </Card>
-
-      <Card>
-        <CardHeader
-          icon={<CalendarCheckIcon weight="duotone" className="size-5" />}
-          title={t("student.yourAttendance")}
-          description={t("student.lastTwoWeeks")}
-        />
-        <CardBody>
-          {attendance.recent.length === 0 ? (
-            <p className="py-4 text-center text-sm text-fg-muted">{t("student.attendanceEmpty")}</p>
-          ) : (
-            <ul className="divide-y divide-border">
-              {attendance.recent.slice(0, 10).map((day) => (
-                <li key={day.dateKey} className="flex items-center justify-between gap-3 py-2.5">
-                  <span className="text-sm font-medium text-fg">
-                    {formatDateKey(day.dateKey, { weekday: "long", day: "numeric", month: "short" })}
-                  </span>
-                  <AttendanceBadge status={day.status} />
-                </li>
-              ))}
-            </ul>
-          )}
-        </CardBody>
-      </Card>
+      {/* Marks live on Assignments → Marked and attendance detail on the tile
+          above; the home page keeps only what needs the pupil NOW — what is
+          due, and the latest exam marks. */}
+      {/* The latest exam's marks, the moment a teacher saves them — the same
+          card the Exams page shows in full. */}
+      {examMarks.map((m) => (
+        <ExamMarksCards key={m.studentMembershipId} marks={m} compact />
+      ))}
     </div>
   );
 }

@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { CommandIcon, MagnifyingGlassIcon, SignOutIcon } from "@phosphor-icons/react";
-import { NAV, PRIMARY_ACTION, isActive, type NavItem } from "@/lib/nav";
+import { CommandIcon, DotsThreeOutlineIcon, MagnifyingGlassIcon, SignOutIcon } from "@phosphor-icons/react";
+import { NAV, NAV_GROUP_KEY, PRIMARY_ACTION, isActive, type NavGroup, type NavItem } from "@/lib/nav";
 import { NavIcon } from "./icons";
 import { CommandPalette } from "./command-palette";
 import { Avatar } from "@/components/ui/avatar";
@@ -55,8 +55,17 @@ export function AppShell({
   const pathname = usePathname();
   const t = useT();
   const [paletteOpen, setPaletteOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
   const items = NAV[user.role].filter((item) => !hiddenHrefs.includes(item.href));
   const primaryItems = items.filter((i) => i.primary).slice(0, 5);
+  /* The rest, as three short lists. FIVE PRIMARIES carry the day; the rail
+   * and the phone's More sheet read the remainder under group headings so a
+   * parent looking for Meetings is not scanning Competitions to find it. */
+  const GROUPS: NavGroup[] = ["daily", "school", "running"];
+  const secondary = GROUPS.map((group) => ({
+    group,
+    items: items.filter((i) => !i.primary && (i.group ?? "school") === group),
+  })).filter((g) => g.items.length > 0);
   const action = PRIMARY_ACTION[user.role];
 
   useEffect(() => {
@@ -88,8 +97,18 @@ export function AppShell({
         </div>
 
         <nav aria-label={t("shell.mainNav")} className="flex-1 space-y-0.5 overflow-y-auto p-3 scrollbar-thin">
-          {items.map((item) => (
+          {primaryItems.map((item) => (
             <SideLink key={item.href} item={item} active={isActive(pathname, item)} t={t} />
+          ))}
+          {secondary.map(({ group, items: list }) => (
+            <div key={group} className="pt-3">
+              <p className="px-3 pb-1 text-[0.65rem] font-semibold uppercase tracking-wider text-fg-subtle">
+                {t(NAV_GROUP_KEY[group])}
+              </p>
+              {list.map((item) => (
+                <SideLink key={item.href} item={item} active={isActive(pathname, item)} t={t} />
+              ))}
+            </div>
           ))}
         </nav>
 
@@ -137,6 +156,17 @@ export function AppShell({
           <span className="truncate text-sm font-bold text-fg">{user.schoolName}</span>
         </Link>
         <div className="flex items-center gap-1">
+          {secondary.length > 0 && (
+            <button
+              type="button"
+              onClick={() => setMoreOpen(true)}
+              aria-label={t("nav.more")}
+              aria-expanded={moreOpen}
+              className="tap grid place-items-center rounded-full text-fg-muted hover:bg-surface-muted"
+            >
+              <DotsThreeOutlineIcon className="size-5" aria-hidden="true" />
+            </button>
+          )}
           <button
             type="button"
             onClick={() => setPaletteOpen(true)}
@@ -225,6 +255,44 @@ export function AppShell({
           })}
         </ul>
       </nav>
+
+      {/* ---------- mobile "More" sheet ---------- */}
+      {moreOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true" aria-label={t("nav.more")}>
+          <button
+            type="button"
+            aria-label={t("common.cancel")}
+            onClick={() => setMoreOpen(false)}
+            className="absolute inset-0 bg-black/40"
+          />
+          <div className="absolute inset-x-0 bottom-0 max-h-[80vh] overflow-y-auto rounded-t-2xl bg-surface p-4 pb-safe shadow-xl animate-in-up">
+            {secondary.map(({ group, items: list }) => (
+              <div key={group} className="mb-4">
+                <p className="px-2 pb-1 text-[0.65rem] font-semibold uppercase tracking-wider text-fg-subtle">
+                  {t(NAV_GROUP_KEY[group])}
+                </p>
+                <ul className="grid grid-cols-2 gap-1">
+                  {list.map((item) => (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        onClick={() => setMoreOpen(false)}
+                        className={cn(
+                          "flex min-h-11 items-center gap-2.5 rounded-[--radius-md] px-3 text-sm font-medium",
+                          isActive(pathname, item) ? "bg-accent-soft text-accent-strong" : "text-fg hover:bg-surface-muted",
+                        )}
+                      >
+                        <NavIcon name={item.icon} className="size-5" />
+                        {t(item.labelKey)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       <CommandPalette
         open={paletteOpen}

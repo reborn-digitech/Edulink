@@ -417,7 +417,7 @@ export async function createAssignment(
           kind: "ASSIGNMENT",
           title: "New work set",
           body: input.title,
-          url: "/student/work",
+          url: "/student/assignments",
         });
         await notifyGuardians(enrollment.studentMembershipId, () => ({
           kind: "ASSIGNMENT",
@@ -663,14 +663,14 @@ export async function saveGrades(
           kind: "GRADE",
           title: "Your work has been marked",
           body: assignment.title,
-          url: "/student/grades",
+          url: "/student/assignments?tab=marked",
         });
         await notifyGuardians(student.id, (childName) => ({
           kind: "GRADE",
           schoolId: ctx.schoolId,
           title: `${childName}'s work has been marked`,
           body: assignment.title,
-          url: "/parent/grades",
+          url: "/parent/assignments?tab=marked",
         }));
       }),
     );
@@ -713,7 +713,7 @@ export async function publishAssignment(
         kind: "ASSIGNMENT",
         title: "New work set",
         body: assignment.title,
-        url: "/student/work",
+        url: "/student/assignments",
       });
       await notifyGuardians(enrollment.studentMembershipId, () => ({
         kind: "ASSIGNMENT",
@@ -743,7 +743,7 @@ export async function publishAssignment(
 /** A student's own work, upcoming first. */
 export async function getStudentWork(session: ActiveContext) {
   const { schoolId, membershipId } = session;
-  if (!schoolId || !membershipId) return { upcoming: [], past: [] };
+  if (!schoolId || !membershipId) return { upcoming: [], past: [], todo: [], handedIn: [], marked: [] };
 
   const assignments = await db.assignment.findMany({
     where: {
@@ -763,6 +763,7 @@ export async function getStudentWork(session: ActiveContext) {
   const now = Date.now();
   const mapped = assignments.map((assignment) => ({
     id: assignment.id,
+    isExam: assignment.examSlotId !== null,
     title: assignment.title,
     body: assignment.body,
     category: assignment.category,
@@ -784,9 +785,21 @@ export async function getStudentWork(session: ActiveContext) {
     ),
   }));
 
+  /* THREE STATES, ONE RULE, everywhere a pupil's assignments are listed:
+   *   to do      — published, not handed in, not marked; dated ones first,
+   *                undated last (a thing with no date is still owed)
+   *   handed in  — sent, waiting for a mark
+   *   marked     — has a score
+   * Exam sittings are not assignments and are left out: they live on Exams. */
+  const homework = mapped.filter((a) => !a.isExam);
+  const byDue = (a: (typeof mapped)[number], b: (typeof mapped)[number]) =>
+    (a.dueAt?.getTime() ?? Number.MAX_SAFE_INTEGER) - (b.dueAt?.getTime() ?? Number.MAX_SAFE_INTEGER);
   return {
-    upcoming: mapped.filter((a) => a.scoreMilli === null),
-    past: mapped.filter((a) => a.scoreMilli !== null).reverse(),
+    upcoming: homework.filter((a) => a.scoreMilli === null),
+    past: homework.filter((a) => a.scoreMilli !== null).reverse(),
+    todo: homework.filter((a) => a.scoreMilli === null && !a.submittedAt).sort(byDue),
+    handedIn: homework.filter((a) => a.scoreMilli === null && a.submittedAt).sort(byDue),
+    marked: homework.filter((a) => a.scoreMilli !== null).reverse(),
   };
 }
 
@@ -825,6 +838,7 @@ export async function childWork(parentUserId: string, studentMembershipId: strin
   const now = Date.now();
   const rows = assignments.map((assignment) => ({
     id: assignment.id,
+    isExam: assignment.examSlotId !== null,
     title: assignment.title,
     category: assignment.category,
     className: assignment.class.name,
@@ -841,9 +855,16 @@ export async function childWork(parentUserId: string, studentMembershipId: strin
     ),
   }));
 
+  const homework = rows.filter((row) => !row.isExam);
+  const byDue = (a: (typeof rows)[number], b: (typeof rows)[number]) =>
+    (a.dueAt?.getTime() ?? Number.MAX_SAFE_INTEGER) - (b.dueAt?.getTime() ?? Number.MAX_SAFE_INTEGER);
   return {
     childName,
-    upcoming: rows.filter((row) => row.scoreMilli === null),
-    past: rows.filter((row) => row.scoreMilli !== null).reverse(),
+    upcoming: homework.filter((row) => row.scoreMilli === null),
+    past: homework.filter((row) => row.scoreMilli !== null).reverse(),
+    // The same three states the pupil's own page uses — see getStudentWork.
+    todo: homework.filter((row) => row.scoreMilli === null && !row.submittedAt).sort(byDue),
+    handedIn: homework.filter((row) => row.scoreMilli === null && row.submittedAt).sort(byDue),
+    marked: homework.filter((row) => row.scoreMilli !== null).reverse(),
   };
 }

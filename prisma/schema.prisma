@@ -797,6 +797,10 @@ model ExamSeries {
   name       String
   /// Free text matching Class.gradeLevel, like every grade in this schema.
   gradeLevel String
+  /// UNIT_TEST | MID_TERM | FINAL — what kind of round this is. The report
+  /// card is built from these, and a reader should be told which weight of
+  /// paper a mark came from without decoding the name.
+  kind       String @default("UNIT_TEST")
 
   publishedAt DateTime?
   archivedAt  DateTime?

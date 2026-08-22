@@ -8,6 +8,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { getT } from "@/lib/i18n/server";
+import { EXAM_KINDS, EXAM_KIND_KEY, type ExamKind } from "@/lib/constants";
 import {
   createSeriesAction,
   addSlotAction,
@@ -98,6 +99,20 @@ export default async function AdminExamsPage({
                 ))}
               </select>
             </label>
+            <label className="block text-sm">
+              <span className="mb-1 block font-medium text-fg">{t("exams.fieldKind")}</span>
+              <select
+                name="kind"
+                required
+                className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg"
+              >
+                {EXAM_KINDS.map((kind) => (
+                  <option key={kind} value={kind}>
+                    {t(EXAM_KIND_KEY[kind])}
+                  </option>
+                ))}
+              </select>
+            </label>
             <div className="sm:col-span-3">
               <Button type="submit">{t("exams.createSeries")}</Button>
             </div>
@@ -117,7 +132,7 @@ export default async function AdminExamsPage({
           <Card key={s.id}>
             <CardHeader
               icon={<CalendarCheckIcon weight="duotone" className="size-5" />}
-              title={`${s.name} · ${t("practice.classN", { n: s.gradeLevel })}`}
+              title={`${s.name} · ${t(EXAM_KIND_KEY[s.kind as ExamKind])} · ${t("practice.classN", { n: s.gradeLevel })}`}
               description={
                 s.publishedAt ? t("exams.publishedHint") : t("exams.draftHint")
               }

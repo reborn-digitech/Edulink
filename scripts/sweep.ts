@@ -292,7 +292,7 @@ async function transfer(fromSchoolId: string, toSchoolId: string) {
     // The cookie is unchanged and still names that school. What changed is that
     // the school no longer claims them — the revocation is the database's.
     await check(atOldSchool, "/student", 307, "⚠ after leaving, their old school is closed to them");
-    await check(atOldSchool, "/student/grades", 307, "⚠ …including their marks there");
+    await check(atOldSchool, "/student/assignments", 307, "⚠ …including their marks there");
 
     // ---- and their new school can read what the old one certified --------
     const joined = await db.membership.create({
@@ -757,7 +757,7 @@ async function alumniRecord(schoolId: string) {
 
     // …AND NOTHING ELSE. Each of these is a school's working surface and each
     // one independently requires a live membership.
-    for (const path of ["/student", "/student/practice", "/bulletin", "/student/grades"]) {
+    for (const path of ["/student", "/student/practice", "/bulletin", "/student/assignments"]) {
       await check(alumnus, path, 307, "⚠ …and the school's own pages are closed to them");
     }
 
@@ -1583,13 +1583,10 @@ async function reportCards(schoolId: string) {
         schoolId,
         "card-guardian",
       );
-      const { status, body } = await hit(
-        guardianActor,
-        `/parent/grades?child=${pupil.studentMembershipId}`,
-      );
+      const { status, body } = await hit(guardianActor, "/exams?tab=cards");
       results.push({
         role: "card-guardian",
-        path: "/parent/grades",
+        path: "/exams?tab=cards",
         status,
         expected: 200,
         ok: status === 200 && body.includes("ZZ Sweep Draft"),
@@ -1871,7 +1868,7 @@ async function main() {
 
   /* ---- student ---- */
   for (const p of [
-    "/student", "/student/work", "/student/grades", "/student/profile",
+    "/student", "/student/assignments", "/student/assignments?tab=marked", "/exams?tab=cards", "/student/profile",
     "/student/practice", "/student/practice?subject=MATHS", "/mentoring", "/bulletin", "/bulletin/global",
     "/bulletin/new", "/notifications", "/account", "/account/merge", "/record",
     // A pupil is now a participant in their own conversations with a teacher,
@@ -1895,7 +1892,7 @@ async function main() {
 
   /* ---- parent ---- */
   for (const p of [
-    "/parent", "/parent/attendance", "/parent/grades", "/parent/settings", "/remarks",
+    "/parent", "/parent/attendance", "/parent/assignments", "/parent/assignments?tab=marked", "/exams?tab=cards", "/parent/settings", "/remarks",
     "/notifications", "/account", "/account/merge", "/switch", "/record",
     // A guardian can now START a conversation, not only reply to one.
     "/remarks/new",

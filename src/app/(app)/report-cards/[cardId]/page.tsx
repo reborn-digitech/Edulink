@@ -101,9 +101,11 @@ export default async function ReportCardPage({
             hint={
               card.overallPercent === null
                 ? t("reportView.noMarksCounted")
-                : card.gradingMethod === "weighted"
-                  ? t("reportView.weightedBy")
-                  : t("reportView.acrossBelow")
+                : card.gradingMethod === "exams"
+                  ? t("reportView.examsOnly")
+                  : card.gradingMethod === "weighted"
+                    ? t("reportView.weightedBy")
+                    : t("reportView.acrossBelow")
             }
           />
           <Figure

@@ -15,6 +15,8 @@ import type { TranslationKey } from "./i18n/dictionary";
  * error rather than a nav item labelled "nav.pracitce".
  */
 
+export type NavGroup = "daily" | "school" | "running";
+
 export type NavItem = {
   href: string;
   labelKey: TranslationKey;
@@ -24,6 +26,21 @@ export type NavItem = {
   primary?: boolean;
   /** Matches child routes too, e.g. /teacher/classes/abc */
   prefix?: boolean;
+  /** Other paths that count as "here" — a tab that lives on its own route. */
+  also?: string[];
+  /**
+   * Where a non-primary item sits in the rail and the More sheet. FIVE
+   * PRIMARIES PER ROLE, chosen by how often they are opened in a day;
+   * everything else is grouped so the rail reads as three short lists
+   * rather than one long one. Primaries carry no group.
+   */
+  group?: NavGroup;
+};
+
+export const NAV_GROUP_KEY: Record<NavGroup, TranslationKey> = {
+  daily: "nav.groupDaily",
+  school: "nav.groupSchool",
+  running: "nav.groupRunning",
 };
 
 export type QuickAction = {
@@ -36,111 +53,101 @@ export type QuickAction = {
 export const NAV: Record<Role, NavItem[]> = {
   ADMIN: [
     { href: "/admin", labelKey: "nav.overview", icon: "house", primary: true },
-    { href: "/admin/people", labelKey: "nav.directory", icon: "users", primary: true, prefix: true },
+    // Invites are a tab of People: one door for "who is in this school".
+    { href: "/admin/people", labelKey: "nav.people", icon: "users", primary: true, prefix: true, also: ["/admin/invites"] },
     { href: "/admin/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true },
-    { href: "/admin/invites", labelKey: "nav.invites", icon: "envelope", primary: true, prefix: true },
-    { href: "/admin/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true },
-    { href: "/admin/attendance", labelKey: "nav.attendance", icon: "checks", prefix: true },
-    { href: "/admin/exams", labelKey: "nav.exams", icon: "clipboard", prefix: true },
-    { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true },
-    { href: "/experts", labelKey: "nav.experts", icon: "briefcase", prefix: true },
-    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true },
-    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true },
-    { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true },
-    // The leave queue is genuinely an admin's to work. `decideLeave` has always
-    // accepted ADMIN — a school whose principal is the one on leave still has to
-    // be able to approve somebody's — but nothing linked here, so the only way
-    // in was typing the URL. The route lives under /principal because that is
-    // whose queue it usually is; the capability is shared.
-    { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", prefix: true },
-    { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", prefix: true },
-    { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true },
-    { href: "/admin/safety", labelKey: "nav.safety", icon: "shield", prefix: true },
-    { href: "/admin/settings", labelKey: "nav.settings", icon: "gear", prefix: true },
+    { href: "/admin/timetable", labelKey: "nav.timetable", icon: "clock", primary: true, prefix: true },
+    { href: "/admin/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true },
+    { href: "/admin/attendance", labelKey: "nav.attendance", icon: "checks", prefix: true, group: "running" },
+    { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true, group: "running" },
+    // The leave queue is genuinely an admin's to work — a school whose
+    // principal is the one on leave still has to approve somebody's.
+    { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", prefix: true, group: "running" },
+    { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", prefix: true, group: "running" },
+    { href: "/admin/safety", labelKey: "nav.safety", icon: "shield", prefix: true, group: "running" },
+    { href: "/admin/settings", labelKey: "nav.settings", icon: "gear", prefix: true, group: "running" },
+    { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
+    { href: "/experts", labelKey: "nav.experts", icon: "briefcase", prefix: true, group: "school" },
+    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true, group: "school" },
+    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
+    { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
   ],
   // A principal READS and DECIDES. No register, no gradebook, no class setup —
   // those belong to the teacher and the admin respectively, and handing all
   // three to one role is how "principal" quietly becomes "can do anything".
-  // What is here is the school seen whole, and the one decision only they make.
   PRINCIPAL: [
     { href: "/principal", labelKey: "nav.dashboard", icon: "chartLine", primary: true },
     { href: "/principal/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true },
-    { href: "/principal/timetable", labelKey: "nav.timetable", icon: "clock", primary: true, prefix: true },
     { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", primary: true, prefix: true },
-    { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", primary: true, prefix: true },
-    // The review desk lives under /admin because that is who usually runs it;
-    // the capability — and now the door — is shared with the principal, whose
-    // dashboard reads the same numbers.
-    { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", prefix: true },
-    { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true },
-    { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true },
-    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true },
-    { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true },
-    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true },
+    { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", primary: true, prefix: true },
+    { href: "/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true },
+    { href: "/principal/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "running" },
+    { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true, group: "running" },
+    { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
+    { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
+    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
+    { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
+    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
   ],
   TEACHER: [
     { href: "/teacher", labelKey: "nav.today", icon: "house", primary: true },
     { href: "/teacher/attendance", labelKey: "nav.register", icon: "checks", primary: true, prefix: true },
     { href: "/teacher/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true },
-    { href: "/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true },
-    { href: "/teacher/assignments", labelKey: "nav.work", icon: "clipboard", primary: true, prefix: true },
-    { href: "/teacher/practice", labelKey: "nav.practice", icon: "brain", prefix: true },
-    { href: "/teacher/exams", labelKey: "nav.exams", icon: "clipboard", prefix: true },
-    { href: "/teacher/meetings", labelKey: "nav.meetings", icon: "calendar", prefix: true },
-    { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true },
-    { href: "/teacher/leave", labelKey: "nav.leave", icon: "calendar", prefix: true },
-    { href: "/teacher/profile", labelKey: "nav.me", icon: "user", prefix: true },
-    { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true },
-    { href: "/experts", labelKey: "nav.experts", icon: "briefcase", prefix: true },
-    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true },
-    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true },
-    { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true },
+    { href: "/teacher/assignments", labelKey: "nav.assignments", icon: "clipboard", primary: true, prefix: true },
+    { href: "/teacher/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true },
+    { href: "/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "daily" },
+    { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
+    { href: "/teacher/practice", labelKey: "nav.practice", icon: "brain", prefix: true, group: "daily" },
+    { href: "/teacher/meetings", labelKey: "nav.meetings", icon: "calendar", prefix: true, group: "daily" },
+    { href: "/teacher/leave", labelKey: "nav.leave", icon: "calendar", prefix: true, group: "running" },
+    { href: "/teacher/profile", labelKey: "nav.me", icon: "user", prefix: true, group: "running" },
+    { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
+    { href: "/experts", labelKey: "nav.experts", icon: "briefcase", prefix: true, group: "school" },
+    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true, group: "school" },
+    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
+    { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
   ],
   STUDENT: [
     { href: "/student", labelKey: "nav.today", icon: "house", primary: true },
-    { href: "/student/work", labelKey: "nav.myWork", icon: "clipboard", primary: true, prefix: true },
-    { href: "/student/grades", labelKey: "nav.grades", icon: "chartLine", primary: true, prefix: true },
-    { href: "/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true },
-    { href: "/exams", labelKey: "nav.exams", icon: "clipboard", prefix: true },
+    // ONE place for "what do I owe": to do, handed in, marked — the old
+    // "My work" and "Grades" folded together.
+    { href: "/student/assignments", labelKey: "nav.assignments", icon: "clipboard", primary: true, prefix: true, also: ["/student/work", "/student/grades"] },
+    // ONE place for "how did I do": exam marks, the exams ahead, report cards.
+    { href: "/exams", labelKey: "nav.exams", icon: "chartLine", primary: true, prefix: true, also: ["/report-cards"] },
     { href: "/student/practice", labelKey: "nav.practice", icon: "brain", primary: true, prefix: true },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", primary: true, prefix: true },
-    // A pupil's own conversations with their teachers. Their guardians are in
-    // every one of them by construction — see assertRemarkAccess.
-    { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true },
-    // A pupil can now ASK for a mentor. The page was already theirs to read;
-    // without a link they had to be sent one.
-    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true },
-    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true },
-    { href: "/reviews", labelKey: "nav.feedback", icon: "star", prefix: true },
-    { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true },
-    { href: "/student/profile", labelKey: "nav.me", icon: "user", prefix: true },
+    { href: "/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "daily" },
+    { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
+    { href: "/reviews", labelKey: "nav.feedback", icon: "star", prefix: true, group: "daily" },
+    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true, group: "school" },
+    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
+    { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
+    { href: "/student/profile", labelKey: "nav.me", icon: "user", prefix: true, group: "running" },
   ],
   PARENT: [
     { href: "/parent", labelKey: "nav.overview", icon: "house", primary: true },
     { href: "/parent/attendance", labelKey: "nav.attendance", icon: "checks", primary: true, prefix: true },
-    { href: "/parent/grades", labelKey: "nav.grades", icon: "chartLine", primary: true, prefix: true },
-    { href: "/parent/practice", labelKey: "nav.practice", icon: "brain", primary: true, prefix: true },
-    { href: "/parent/homework", labelKey: "nav.homework", icon: "clipboard", prefix: true },
-    { href: "/parent/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true },
-    { href: "/exams", labelKey: "nav.exams", icon: "clipboard", prefix: true },
-    { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true },
-    { href: "/parent/meetings", labelKey: "nav.meetings", icon: "calendar", prefix: true },
+    // The homework diary and the grades page, folded into one Assignments.
+    { href: "/parent/assignments", labelKey: "nav.assignments", icon: "clipboard", primary: true, prefix: true, also: ["/parent/homework", "/parent/grades"] },
+    { href: "/exams", labelKey: "nav.exams", icon: "chartLine", primary: true, prefix: true, also: ["/report-cards"] },
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", primary: true, prefix: true },
-    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true },
-    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true },
-    { href: "/reviews", labelKey: "nav.feedback", icon: "star", prefix: true },
-    { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true },
-    { href: "/parent/settings", labelKey: "nav.settings", icon: "gear", prefix: true },
+    { href: "/parent/practice", labelKey: "nav.practice", icon: "brain", prefix: true, group: "daily" },
+    { href: "/parent/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "daily" },
+    { href: "/parent/meetings", labelKey: "nav.meetings", icon: "calendar", prefix: true, group: "daily" },
+    { href: "/reviews", labelKey: "nav.feedback", icon: "star", prefix: true, group: "daily" },
+    { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
+    { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
+    { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true, group: "school" },
+    { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },
+    { href: "/parent/settings", labelKey: "nav.settings", icon: "gear", prefix: true, group: "running" },
   ],
-  // An expert sees their own work and nothing resembling a school's internals:
-  // no directory, no register, no bulletin. Every entry here is either their own
-  // availability or a school that has actually booked them.
+  // An expert sees their own work and nothing resembling a school's internals.
   EXPERT: [
     { href: "/expert", labelKey: "nav.bookings", icon: "house", primary: true },
     { href: "/expert/availability", labelKey: "nav.availability", icon: "calendar", primary: true, prefix: true },
     { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", primary: true, prefix: true },
-    { href: "/expert/profile", labelKey: "nav.profile", icon: "user", prefix: true },
-    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true },
+    { href: "/expert/profile", labelKey: "nav.profile", icon: "user", prefix: true, group: "running" },
+    { href: "/account", labelKey: "nav.account", icon: "gear", prefix: true, group: "running" },
   ],
 };
 
@@ -175,6 +182,7 @@ export const QUICK_ACTIONS: Record<Role, QuickAction[]> = {
     { href: "/admin/invites/new", labelKey: "action.inviteTeacher", icon: "userPlus", descriptionKey: "action.inviteTeacherHint" },
     { href: "/admin/classes/new", labelKey: "action.createClass", icon: "plus", descriptionKey: "action.createClassHint" },
     { href: "/admin/timetable", labelKey: "action.buildTimetable", icon: "clock", descriptionKey: "action.buildTimetableHint" },
+    { href: "/admin/exams", labelKey: "action.scheduleExam", icon: "clipboard", descriptionKey: "action.scheduleExamHint" },
     { href: "/principal/leave", labelKey: "action.reviewLeave", icon: "calendar", descriptionKey: "action.reviewLeaveHint" },
     { href: "/admin/settings", labelKey: "action.schoolBranding", icon: "palette", descriptionKey: "action.schoolBrandingHint" },
   ],
@@ -187,15 +195,19 @@ export const QUICK_ACTIONS: Record<Role, QuickAction[]> = {
     { href: "/teacher/assignments/new", labelKey: "action.newAssignment", icon: "plus", descriptionKey: "action.newAssignmentHint" },
     { href: "/remarks/new", labelKey: "action.messageParent", icon: "chat", descriptionKey: "action.messageParentHint" },
     { href: "/teacher/leave", labelKey: "action.applyLeave", icon: "calendar", descriptionKey: "action.applyLeaveHint" },
+    { href: "/teacher/exams", labelKey: "action.enterMarks", icon: "clipboard", descriptionKey: "action.enterMarksHint" },
+    { href: "/teacher/classes", labelKey: "action.reportCards", icon: "clipboard", descriptionKey: "action.reportCardsHint" },
   ],
   STUDENT: [
-    { href: "/student/work", labelKey: "action.whatIsDue", icon: "clipboard", descriptionKey: "action.whatIsDueHint" },
+    { href: "/student/assignments", labelKey: "action.whatIsDue", icon: "clipboard", descriptionKey: "action.whatIsDueHint" },
     { href: "/remarks/new", labelKey: "action.messageTeacher", icon: "chat", descriptionKey: "action.messageTeacherHint" },
     { href: "/bulletin/new", labelKey: "action.shareSomething", icon: "plus", descriptionKey: "action.shareSomethingHint" },
+    { href: "/exams", labelKey: "action.myExamMarks", icon: "clipboard", descriptionKey: "action.myExamMarksHint" },
   ],
   PARENT: [
     { href: "/remarks/new", labelKey: "action.messageTeacher", icon: "chat", descriptionKey: "action.messageTeacherHint" },
     { href: "/parent/settings", labelKey: "action.notificationSettings", icon: "bell", descriptionKey: "action.notificationSettingsHint" },
+    { href: "/exams", labelKey: "action.childExamMarks", icon: "clipboard", descriptionKey: "action.childExamMarksHint" },
   ],
   EXPERT: [
     { href: "/expert/availability", labelKey: "action.offerTime", icon: "calendar", descriptionKey: "action.offerTimeHint" },
@@ -204,6 +216,7 @@ export const QUICK_ACTIONS: Record<Role, QuickAction[]> = {
 };
 
 export function isActive(pathname: string, item: NavItem): boolean {
-  if (item.prefix) return pathname === item.href || pathname.startsWith(`${item.href}/`);
-  return pathname === item.href;
+  const hits = (href: string) =>
+    item.prefix ? pathname === href || pathname.startsWith(`${href}/`) : pathname === href;
+  return hits(item.href) || (item.also ?? []).some(hits);
 }

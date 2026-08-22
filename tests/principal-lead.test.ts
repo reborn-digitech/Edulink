@@ -67,6 +67,7 @@ function ctx(over: Partial<ActiveContext> & { userId: string }): ActiveContext {
 let riversideId: string;
 let classId: string;
 let assignmentId: string;
+let seriesId: string;
 
 let head: ActiveContext;
 let admin: ActiveContext;
@@ -130,13 +131,23 @@ beforeAll(async () => {
     update: { status: "ACTIVE", removedAt: null },
   });
 
+  // A scheduled paper, not a plain assignment: cards are built from exams.
+  const series = await db.examSeries.create({
+    data: { schoolId: riversideId, name: "ZZ Principal-lead exams", gradeLevel: "5", kind: "UNIT_TEST", publishedAt: new Date() },
+  });
+  seriesId = series.id;
+  const slot = await db.examSlot.create({
+    data: { schoolId: riversideId, seriesId: series.id, subject: "ZZ Tuesday Test", dateKey: "2026-03-02", pointsMilli: 100_000 },
+  });
   const assignment = await db.assignment.create({
     data: {
       schoolId: riversideId,
       classId,
       authorMembershipId: h.membershipId,
       title: "ZZ Tuesday Test",
+      category: "Exam",
       pointsMilli: 100_000,
+      examSlotId: slot.id,
       publishedAt: new Date(),
     },
   });
@@ -147,6 +158,7 @@ afterAll(async () => {
   await db.reportCard.deleteMany({ where: { classId } });
   await db.grade.deleteMany({ where: { assignmentId } });
   await db.assignment.deleteMany({ where: { classId } });
+  await db.examSeries.deleteMany({ where: { id: seriesId } });
   await db.enrollment.deleteMany({ where: { classId } });
   await db.classTeacher.deleteMany({ where: { classId } });
   await db.class.deleteMany({ where: { id: classId } });

@@ -9,6 +9,7 @@ import {
   EnvelopeSimpleIcon,
   GraduationCapIcon,
   UsersThreeIcon,
+  ExamIcon,
 } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { getChecklist } from "@/lib/onboarding";
@@ -16,7 +17,7 @@ import { db } from "@/lib/db";
 import { currentAcademicYear } from "@/lib/academic-year";
 import { listHolidays, nextEntry } from "@/lib/holidays";
 import { todayKey, formatDateKey } from "@/lib/dates";
-import { Card, CardHeader, CardBody, StatTile } from "@/components/ui/card";
+import { Card, CardHeader, CardBody } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { Badge } from "@/components/ui/badge";
@@ -44,6 +45,11 @@ export default async function AdminDashboard({
   });
 
   const dateKey = todayKey(school.timezone);
+  const [examSeriesCount, examPublishedCount, reportCardsPublished] = await Promise.all([
+    db.examSeries.count({ where: { schoolId: ctx.schoolId, archivedAt: null } }),
+    db.examSeries.count({ where: { schoolId: ctx.schoolId, archivedAt: null, publishedAt: { not: null } } }),
+    db.reportCard.count({ where: { schoolId: ctx.schoolId, status: "PUBLISHED" } }),
+  ]);
 
   const [
     checklist,
@@ -237,53 +243,71 @@ export default async function AdminDashboard({
         </Card>
       )}
 
-      {/* ---------------- at a glance ---------------- */}
-      <section aria-labelledby="glance">
-        <h2 id="glance" className="mb-3 text-sm font-semibold uppercase tracking-wide text-fg-muted">
-          {t("admin.atAGlance")}
-        </h2>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <StatTile
-            label={t("admin.teachers")}
-            value={teacherCount}
-            icon={<ChalkboardTeacherIcon weight="duotone" className="size-5" />}
-            hint={
-              pendingInvites > 0
-                ? t("admin.invitesPending", { count: pendingInvites })
-                : t("admin.allInvitesAccepted")
+      {/* ---------------- what needs the office today ---------------- */}
+      {/* Two doors, not four counts. "48 pupils" is a fact the directory
+          already holds; "7 of 8 registers taken" and "3 invitations waiting"
+          are things somebody can act on before lunch. */}
+      <div className="grid gap-3 sm:grid-cols-2">
+        <Card className={classesTotal > 0 && attendanceTaken < 100 ? "border-warn/40" : undefined}>
+          <Link href="/admin/attendance" className="flex items-center gap-3 p-4">
+            <span className="grid size-11 shrink-0 place-items-center rounded-full bg-accent-soft text-accent-strong">
+              <EnvelopeSimpleIcon weight="duotone" className="size-6" />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block font-semibold text-fg">{t("admin.registerTaken")}</span>
+              <span className="block text-xs text-fg-muted">
+                {classesTotal === 0
+                  ? t("admin.noClassesYet")
+                  : t("admin.takenToday", { done: todaySessions, total: classesTotal })}
+              </span>
+            </span>
+            <span className="shrink-0 text-lg font-bold tabular-nums text-fg">
+              {classesTotal === 0 ? "—" : `${attendanceTaken}%`}
+            </span>
+          </Link>
+        </Card>
+        <Card className={pendingInvites > 0 ? "border-warn/40" : undefined}>
+          <Link href="/admin/invites" className="flex items-center gap-3 p-4">
+            <span className="grid size-11 shrink-0 place-items-center rounded-full bg-accent-soft text-accent-strong">
+              <UsersThreeIcon weight="duotone" className="size-6" />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block font-semibold text-fg">{t("nav.people")}</span>
+              <span className="block text-xs text-fg-muted">
+                {pendingInvites > 0
+                  ? t("admin.invitesPending", { count: pendingInvites })
+                  : t("admin.peopleSummary", { teachers: teacherCount, students: studentCount, classes: classCount })}
+              </span>
+            </span>
+          </Link>
+        </Card>
+      </div>
+
+      {/* ---------------- exams & report cards ---------------- */}
+      {classCount > 0 && (
+        <Card>
+          <CardHeader
+            icon={<ExamIcon weight="duotone" className="size-5" />}
+            title={t("exams.adminCardTitle")}
+            description={
+              examSeriesCount === 0
+                ? t("exams.adminCardNone")
+                : t("exams.adminCardBody", { scheduled: examSeriesCount, published: examPublishedCount, cards: reportCardsPublished })
             }
           />
-          <StatTile
-            label={t("admin.students")}
-            value={studentCount}
-            icon={<GraduationCapIcon weight="duotone" className="size-5" />}
-            hint={
-              studentCount === 0
-                ? t("admin.noneYet")
-                : classCount === 1
-                  ? t("admin.acrossClassesOne")
-                  : t("admin.acrossClassesMany", { count: classCount })
-            }
-          />
-          <StatTile
-            label={t("admin.classes")}
-            value={classCount}
-            icon={<UsersThreeIcon weight="duotone" className="size-5" />}
-            hint={classCount === 0 ? t("admin.noneYet") : t("admin.activeThisTerm")}
-          />
-          <StatTile
-            label={t("admin.registerTaken")}
-            value={classesTotal === 0 ? "—" : `${attendanceTaken}%`}
-            tone={attendanceTaken === 100 ? "ok" : attendanceTaken > 0 ? "warn" : "neutral"}
-            icon={<EnvelopeSimpleIcon weight="duotone" className="size-5" />}
-            hint={
-              classesTotal === 0
-                ? t("admin.noClassesYet")
-                : t("admin.takenToday", { done: todaySessions, total: classesTotal })
-            }
-          />
-        </div>
-      </section>
+          <CardBody className="flex flex-wrap gap-2 pt-0">
+            <Button asChild size="sm">
+              <Link href="/admin/exams">{t("exams.scheduleExams")}</Link>
+            </Button>
+            <Button asChild size="sm" variant="secondary">
+              <Link href="/teacher/exams">{t("exams.enterMarks")}</Link>
+            </Button>
+            <Button asChild size="sm" variant="secondary">
+              <Link href="/admin/classes">{t("classes.reportCards")}</Link>
+            </Button>
+          </CardBody>
+        </Card>
+      )}
 
       {/* ---------------- next steps ---------------- */}
       {teacherCount === 0 && (

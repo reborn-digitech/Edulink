@@ -61,7 +61,7 @@ export function WelcomeTour() {
 
   const doors = [
     { href: "/parent/attendance", icon: ChecksIcon, label: t("welcomeTour.doorAttendance") },
-    { href: "/parent/homework", icon: ClipboardTextIcon, label: t("welcomeTour.doorHomework") },
+    { href: "/parent/assignments", icon: ClipboardTextIcon, label: t("welcomeTour.doorHomework") },
     { href: "/parent/practice", icon: BrainIcon, label: t("welcomeTour.doorPractice") },
     { href: "/parent/meetings", icon: CalendarCheckIcon, label: t("welcomeTour.doorMeetings") },
   ];

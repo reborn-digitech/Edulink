@@ -210,8 +210,14 @@ export function formatUtcTime(instant: Date): string {
 }
 
 /** "in 3 days", "2 hours ago" — for due dates and activity feeds. */
-export function relativeTime(target: Date, now: Date = new Date()): string {
-  const rtf = new Intl.RelativeTimeFormat(LOCALE, { numeric: "auto" });
+/**
+ * "in 5 days", "3 hours ago". A PHRASE, not a date — so unlike every formatter
+ * above it takes the reader's locale: a Hindi screen reading "देय in 5 days"
+ * is two languages in one breath. `Intl.RelativeTimeFormat` speaks hi and mr
+ * natively; callers that do not pass a locale keep the English they had.
+ */
+export function relativeTime(target: Date, now: Date = new Date(), locale: string = LOCALE): string {
+  const rtf = new Intl.RelativeTimeFormat(locale, { numeric: "auto" });
   const diffMs = target.getTime() - now.getTime();
   const units: [Intl.RelativeTimeFormatUnit, number][] = [
     ["year", 31_536_000_000],

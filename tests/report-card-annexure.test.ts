@@ -22,6 +22,7 @@ let classId: string;
 let pupil: ActiveContext;
 let teacher: ActiveContext;
 let pupilMembershipId: string;
+let seriesId: string;
 
 function ctxFor(userId: string, name: string, membershipId: string, role: "STUDENT" | "TEACHER"): ActiveContext {
   return {
@@ -86,13 +87,23 @@ beforeAll(async () => {
   teacher = ctxFor(teacherUser.id, "ZZ Annexure Teacher", teacherMembership.id, "TEACHER");
 
   // One marked assessment, so the card has something conventional to report.
+  // A scheduled paper, not a plain assignment: cards are built from exams.
+  const series = await db.examSeries.create({
+    data: { schoolId, name: "ZZ Annexure exams", gradeLevel: "3", kind: "UNIT_TEST", publishedAt: new Date() },
+  });
+  seriesId = series.id;
+  const slot = await db.examSlot.create({
+    data: { schoolId, seriesId: series.id, subject: "ZZ Spelling test", dateKey: "2026-03-02", pointsMilli: 10_000 },
+  });
   const assignment = await db.assignment.create({
     data: {
       schoolId,
       classId,
       authorMembershipId: teacherMembership.id,
       title: "ZZ Spelling test",
+      category: "Exam",
       pointsMilli: 10_000,
+      examSlotId: slot.id,
       publishedAt: new Date(),
     },
   });
@@ -113,6 +124,7 @@ afterAll(async () => {
     await db.reportCard.deleteMany({ where: { classId } });
     await db.grade.deleteMany({ where: { assignment: { classId } } });
     await db.assignment.deleteMany({ where: { classId } });
+    await db.examSeries.deleteMany({ where: { id: seriesId } });
     await db.quizResponse.deleteMany({ where: { attempt: { studentMembershipId: pupilMembershipId } } });
     await db.quizAttempt.deleteMany({ where: { studentMembershipId: pupilMembershipId } });
     await db.quizMastery.deleteMany({ where: { studentMembershipId: pupilMembershipId } });

@@ -218,6 +218,18 @@ export default async function ClassDetailPage({
         </Link>
       </Card>
 
+      {/* The marks grid, one click from the class — the same door the Exams
+          menu and the Today page open, because a feature with one entrance is
+          a feature half the staff room never finds. */}
+      <Card>
+        <Link href={`/teacher/exams?classId=${klass.id}`} className="flex items-center gap-3 p-4">
+          <span className="min-w-0 flex-1">
+            <span className="block font-semibold text-fg">{t("exams.enterMarks")}</span>
+            <span className="block text-xs text-fg-muted">{t("exams.enterMarksBlurb")}</span>
+          </span>
+        </Link>
+      </Card>
+
       <ClassCode joinCode={klass.joinCode} className={klass.name} />
 
       {/* ---------------- roster ---------------- */}

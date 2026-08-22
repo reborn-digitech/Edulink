@@ -158,7 +158,7 @@ export async function attachToSubmission(formData: FormData): Promise<AttachResu
     meta: { added: result.stored.length },
   });
 
-  revalidatePath("/student/work");
+  revalidatePath("/student/assignments");
   return { ok: true, attachments };
 }
 
@@ -218,7 +218,7 @@ export async function detach(input: {
     data: { attachments: writeJson(remaining) },
   });
   await deleteStoredFile(input.fileId);
-  revalidatePath("/student/work");
+  revalidatePath("/student/assignments");
   return { ok: true, attachments: remaining };
 }
 

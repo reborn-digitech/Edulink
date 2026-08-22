@@ -125,7 +125,7 @@ export async function submitWork(input: unknown): Promise<SubmitState> {
     meta: { assignmentId, late: Boolean(assignment.dueAt && submittedAt > assignment.dueAt) },
   });
 
-  revalidatePath("/student/work");
+  revalidatePath("/student/assignments");
   revalidatePath(`/teacher/assignments/${assignmentId}`);
 
   return { ok: true, submittedAt: submittedAt.toISOString() };

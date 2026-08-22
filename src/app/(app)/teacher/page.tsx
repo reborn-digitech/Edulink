@@ -11,6 +11,8 @@ import {
 import { requireRole, teacherClassIds } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { formatDateKey, relativeTime, todayKey, weekdayOfKey } from "@/lib/dates";
+import { marksTodoFor } from "@/lib/exams";
+import { EXAM_KIND_KEY } from "@/lib/constants";
 import { teacherWeek } from "@/lib/timetable";
 import { formatTimeRange } from "@/lib/school-day";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
@@ -32,6 +34,50 @@ export default async function TeacherHome() {
     select: { timezone: true, name: true },
   });
   const dateKey = todayKey(school.timezone);
+
+  /* Papers sat and not yet marked — the Exams grid brought to the page a
+     teacher already opens every morning, in BOTH shapes of this page: the
+     form teacher's and the subject teacher's. Absent when there is nothing
+     to do, because an empty "to do" is noise. */
+  const marksTodo = await marksTodoFor(ctx, dateKey);
+  const marksCard = marksTodo.length > 0 && (
+        <Card>
+          <CardHeader
+            title={t("exams.marksTodoTitle")}
+            description={t("exams.marksTodoBody")}
+            action={
+              <Link href="/teacher/exams" className="text-sm font-medium text-accent hover:underline">
+                {t("exams.openGrid")}
+              </Link>
+            }
+          />
+          <CardBody className="p-0">
+            <ul className="divide-y divide-border">
+              {marksTodo.slice(0, 8).map((row) => (
+                <li key={`${row.classId}:${row.slotId}`}>
+                  <Link
+                    href={`/teacher/exams?classId=${row.classId}&slotId=${row.slotId}`}
+                    className="flex items-center justify-between gap-3 px-5 py-2.5 text-sm hover:bg-surface-muted"
+                  >
+                    <span className="min-w-0">
+                      <span className="block truncate font-medium text-fg">
+                        {row.className} · {row.subject}
+                      </span>
+                      <span className="block truncate text-xs text-fg-muted">
+                        {row.seriesName} · {t(EXAM_KIND_KEY[row.kind])} · {formatDateKey(row.dateKey)}
+                      </span>
+                    </span>
+                    <span className="shrink-0 text-xs font-semibold tabular-nums text-warn">
+                      {t("teacher.markedOf", { marked: row.marked, total: row.classSize })}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </CardBody>
+        </Card>
+  );
+
 
   const classIds = await teacherClassIds(ctx.schoolId, ctx.membershipId);
 
@@ -87,6 +133,8 @@ export default async function TeacherHome() {
             {school.name}
           </p>
         </div>
+
+        {marksCard}
 
         <div className="grid gap-3 sm:grid-cols-3">
           <StatTile
@@ -213,6 +261,8 @@ export default async function TeacherHome() {
           {school.name}
         </p>
       </div>
+
+      {marksCard}
 
       <div className="grid gap-3 sm:grid-cols-3">
         <StatTile

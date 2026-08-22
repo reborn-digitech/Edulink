@@ -14,6 +14,7 @@ import { DirectoryMenu } from "./directory-menu";
 import { relativeTime } from "@/lib/dates";
 import { readJsonArray } from "@/lib/json";
 import { getT } from "@/lib/i18n/server";
+import { TabBar } from "@/components/ui/tabs";
 import { ROLE_META, SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -143,7 +144,7 @@ export default async function DirectoryPage({
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("people.title")}</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("nav.people")}</h1>
           <p className="mt-1 text-sm text-fg-muted">
             {roleCounts
               .map((c) =>
@@ -159,6 +160,15 @@ export default async function DirectoryPage({
           <a href={exportHref}>{t("people.exportCsv")}</a>
         </Button>
       </div>
+
+      <TabBar
+        ariaLabel={t("nav.people")}
+        current="directory"
+        tabs={[
+          { key: "directory", href: "/admin/people", label: t("people.tabDirectory") },
+          { key: "invites", href: "/admin/invites", label: t("people.tabInvites") },
+        ]}
+      />
 
       <DirectoryControls
         query={query}

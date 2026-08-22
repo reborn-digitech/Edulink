@@ -1,8 +1,9 @@
 import "server-only";
 import { db } from "./db";
 import { audit } from "./audit";
-import { AccessError, assertClassAccess } from "./tenancy";
+import { AccessError } from "./tenancy";
 import { isDateKey } from "./dates";
+import { EXAM_KINDS, type ExamKind } from "./constants";
 import type { ActiveContext } from "./session";
 
 /**
@@ -47,13 +48,16 @@ export async function listSeries(ctx: ActiveContext) {
 
 export async function createSeries(
   ctx: ActiveContext,
-  input: { name: string; gradeLevel: string },
+  input: { name: string; gradeLevel: string; kind?: string },
 ): Promise<string> {
   const { schoolId } = requireAdmin(ctx);
   const name = input.name.trim().slice(0, 120);
   const gradeLevel = input.gradeLevel.trim().slice(0, 20);
   if (name.length < 2) throw new AccessError("access.giveTheExamAName");
   if (!gradeLevel) throw new AccessError("access.chooseAGradeForTheExam");
+  // UNIT_TEST when unsaid — what most rounds are, and what every series
+  // scheduled before kinds existed is recorded as.
+  const kind: ExamKind = EXAM_KINDS.includes(input.kind as ExamKind) ? (input.kind as ExamKind) : "UNIT_TEST";
 
   const existing = await db.examSeries.findUnique({
     where: { schoolId_gradeLevel_name: { schoolId, gradeLevel, name } },
@@ -62,14 +66,14 @@ export async function createSeries(
   if (existing) {
     // Same name, same grade: an archived one comes back rather than colliding.
     if (existing.archivedAt) {
-      await db.examSeries.update({ where: { id: existing.id }, data: { archivedAt: null } });
+      await db.examSeries.update({ where: { id: existing.id }, data: { archivedAt: null, kind } });
       return existing.id;
     }
     throw new AccessError("access.thatExamAlreadyExists");
   }
 
   const series = await db.examSeries.create({
-    data: { schoolId, name, gradeLevel, createdByMembershipId: ctx.membershipId },
+    data: { schoolId, name, gradeLevel, kind, createdByMembershipId: ctx.membershipId },
     select: { id: true },
   });
   await audit({
@@ -200,6 +204,7 @@ export async function archiveSeries(ctx: ActiveContext, seriesId: string): Promi
 export type DateSheet = {
   id: string;
   name: string;
+  kind: ExamKind;
   gradeLevel: string;
   /** Which school's sheet this is — a family can straddle two. */
   schoolName: string;
@@ -280,6 +285,7 @@ export async function dateSheetsFor(ctx: ActiveContext): Promise<DateSheet[]> {
   return series.map((s) => ({
     id: s.id,
     name: s.name,
+    kind: s.kind as ExamKind,
     gradeLevel: s.gradeLevel,
     schoolName: s.school.name,
     slots: s.slots.map((slot) => ({
@@ -309,15 +315,84 @@ function requireStaffScope(ctx: ActiveContext): {
   return { schoolId, membershipId, role };
 }
 
+/**
+ * EVERY TEACHER OF THE LESSON MAY ENTER ITS MARKS. The class teachers (LEAD or
+ * CO) may enter any paper for their class, as before — and, new, the teacher
+ * the timetable puts in that room for that subject may enter THAT paper,
+ * because the mathematician who taught 7A its Maths is the person who marked
+ * the Maths paper, whether or not they take 7A's register. Admins may enter
+ * anything. Anybody else is told the class is not theirs.
+ */
+export async function assertMayEnterMarks(
+  ctx: { schoolId: string; membershipId: string; role: "ADMIN" | "TEACHER" },
+  classId: string,
+  slotId: string,
+): Promise<void> {
+  if (ctx.role === "ADMIN") {
+    const klass = await db.class.findFirst({ where: { id: classId, schoolId: ctx.schoolId }, select: { id: true } });
+    if (!klass) throw new AccessError("access.classNotFoundInYourSchool", "NOT_FOUND");
+    return;
+  }
+  const slot = await db.examSlot.findFirst({
+    where: { id: slotId, schoolId: ctx.schoolId },
+    select: { subject: true },
+  });
+  if (!slot) throw new AccessError("access.examNotFound", "NOT_FOUND");
+
+  const [classTeacher, lesson] = await Promise.all([
+    db.classTeacher.findFirst({
+      where: { classId, schoolId: ctx.schoolId, teacherMembershipId: ctx.membershipId },
+      select: { id: true },
+    }),
+    db.timetableSlot.findFirst({
+      where: {
+        classId,
+        schoolId: ctx.schoolId,
+        teacherMembershipId: ctx.membershipId,
+        subject: { equals: slot.subject, mode: "insensitive" },
+      },
+      select: { id: true },
+    }),
+  ]);
+  if (!classTeacher && !lesson) throw new AccessError("access.notYourPaperToMark");
+}
+
 /** The classes this teacher can enter exam marks for, with the series that fit. */
 export async function examClassesFor(ctx: ActiveContext) {
   const { schoolId, membershipId, role } = requireStaffScope(ctx);
+
+  /* A teacher's classes for marks are the union of two lists: the classes
+   * they take the register for (every paper) and the classes the timetable
+   * sends them to (that subject's paper). `subjects` is null where every
+   * paper is theirs, else the lower-cased subjects they may mark. */
+  const subjectsBy = new Map<string, Set<string> | null>();
+  if (role === "TEACHER") {
+    const [taught, timetabled] = await Promise.all([
+      db.classTeacher.findMany({
+        where: { schoolId, teacherMembershipId: membershipId },
+        select: { classId: true },
+      }),
+      db.timetableSlot.findMany({
+        where: { schoolId, teacherMembershipId: membershipId },
+        select: { classId: true, subject: true },
+      }),
+    ]);
+    for (const row of taught) subjectsBy.set(row.classId, null);
+    for (const row of timetabled) {
+      if (subjectsBy.has(row.classId) && subjectsBy.get(row.classId) === null) continue;
+      const set = subjectsBy.get(row.classId) ?? new Set<string>();
+      set.add(row.subject.toLowerCase());
+      subjectsBy.set(row.classId, set);
+    }
+    if (subjectsBy.size === 0) return [];
+  }
+
   const classes = await db.class.findMany({
     where: {
       schoolId,
       archivedAt: null,
       gradeLevel: { not: null },
-      ...(role === "TEACHER" ? { teachers: { some: { teacherMembershipId: membershipId } } } : {}),
+      ...(role === "TEACHER" ? { id: { in: [...subjectsBy.keys()] } } : {}),
     },
     orderBy: { name: "asc" },
     select: { id: true, name: true, gradeLevel: true },
@@ -330,10 +405,22 @@ export async function examClassesFor(ctx: ActiveContext) {
     include: { slots: { orderBy: [{ dateKey: "asc" }, { position: "asc" }] } },
   });
 
-  return classes.map((klass) => ({
-    ...klass,
-    series: series.filter((s) => s.gradeLevel === klass.gradeLevel),
-  }));
+  return classes.map((klass) => {
+    const allowed = role === "TEACHER" ? (subjectsBy.get(klass.id) ?? null) : null;
+    return {
+      ...klass,
+      series: series
+        .filter((s) => s.gradeLevel === klass.gradeLevel)
+        .map((s) => ({
+          ...s,
+          kind: s.kind as ExamKind,
+          // Only the papers this person may mark; a series with none left is
+          // dropped rather than shown empty.
+          slots: allowed ? s.slots.filter((slot) => allowed.has(slot.subject.toLowerCase())) : s.slots,
+        }))
+        .filter((s) => s.slots.length > 0),
+    };
+  });
 }
 
 export type MarksGrid = {
@@ -346,7 +433,7 @@ export type MarksGrid = {
 
 export async function marksGrid(ctx: ActiveContext, slotId: string, classId: string): Promise<MarksGrid> {
   const { schoolId, membershipId, role } = requireStaffScope(ctx);
-  await assertClassAccess({ schoolId, membershipId, role }, classId);
+  await assertMayEnterMarks({ schoolId, membershipId, role }, classId, slotId);
 
   const slot = await db.examSlot.findFirst({
     where: { id: slotId, schoolId },
@@ -423,7 +510,7 @@ export async function saveMarks(
   entries: { membershipId: string; marks: number | null }[],
 ): Promise<{ saved: number; cleared: number }> {
   const { schoolId, membershipId, role } = requireStaffScope(ctx);
-  await assertClassAccess({ schoolId, membershipId, role }, classId);
+  await assertMayEnterMarks({ schoolId, membershipId, role }, classId, slotId);
 
   const slot = await db.examSlot.findFirst({
     where: { id: slotId, schoolId },
@@ -518,4 +605,335 @@ export async function saveMarks(
   });
 
   return { saved, cleared };
+}
+
+/* -------------------------------------------------------------------------- */
+/* The reader's marks — what a pupil or a family sees                          */
+/* -------------------------------------------------------------------------- */
+
+export type ExamMarks = {
+  /** Whose marks, for a parent with several children; the pupil's own name otherwise. */
+  studentMembershipId: string;
+  studentName: string;
+  schoolName: string;
+  className: string;
+  series: {
+    id: string;
+    name: string;
+    kind: ExamKind;
+    papers: { subject: string; dateKey: string; marks: number | null; maxMarks: number }[];
+    /** Summed over the papers that have a mark — an unsat paper is absent, not nought. */
+    totalMarks: number;
+    totalMax: number;
+    percent: number | null;
+  }[];
+};
+
+/**
+ * Exam marks as the pupil and their guardians read them: every published
+ * series of their grade, paper by paper, AS SOON AS A TEACHER SAVES THEM. No
+ * waiting for a report card — the card is the term's document; this is the
+ * week's news. Assignment marks are deliberately not here: they live on the
+ * grades page as the running picture, and mixing the two is how a parent
+ * mistakes a homework score for an exam result.
+ */
+export async function examMarksFor(ctx: ActiveContext): Promise<ExamMarks[]> {
+  const { schoolId, membershipId, role, user } = ctx;
+
+  type Target = { studentMembershipId: string; schoolId: string; classId: string };
+  let targets: Target[] = [];
+  if (role === "STUDENT" && membershipId && schoolId) {
+    const rows = await db.enrollment.findMany({
+      where: { studentMembershipId: membershipId, status: "ACTIVE", schoolId },
+      select: { classId: true },
+    });
+    targets = rows.map((r) => ({ studentMembershipId: membershipId, schoolId, classId: r.classId }));
+  } else if (role === "PARENT") {
+    const rows = await db.enrollment.findMany({
+      where: {
+        status: "ACTIVE",
+        student: { guardianships: { some: { parentUserId: user.id, status: "ACTIVE" } } },
+      },
+      select: { studentMembershipId: true, schoolId: true, classId: true },
+    });
+    targets = rows;
+  }
+  if (targets.length === 0) return [];
+
+  const out: ExamMarks[] = [];
+  for (const target of targets) {
+    const klass = await db.class.findFirst({
+      where: { id: target.classId, schoolId: target.schoolId },
+      select: { name: true, gradeLevel: true, school: { select: { name: true } } },
+    });
+    if (!klass?.gradeLevel) continue;
+    const student = await db.membership.findUnique({
+      where: { id: target.studentMembershipId },
+      select: { user: { select: { name: true, preferredName: true } } },
+    });
+    if (!student) continue;
+
+    const series = await db.examSeries.findMany({
+      where: {
+        schoolId: target.schoolId,
+        gradeLevel: klass.gradeLevel,
+        archivedAt: null,
+        publishedAt: { not: null },
+      },
+      orderBy: { createdAt: "asc" },
+      include: {
+        slots: {
+          orderBy: [{ dateKey: "asc" }, { position: "asc" }],
+          include: {
+            assignments: {
+              where: { classId: target.classId },
+              select: {
+                grades: {
+                  where: { studentMembershipId: target.studentMembershipId },
+                  select: { scoreMilli: true },
+                },
+              },
+            },
+          },
+        },
+      },
+    });
+
+    out.push({
+      studentMembershipId: target.studentMembershipId,
+      studentName: student.user.preferredName ?? student.user.name,
+      schoolName: klass.school.name,
+      className: klass.name,
+      series: series.map((s) => {
+        const papers = s.slots.map((slot) => {
+          const milli = slot.assignments[0]?.grades[0]?.scoreMilli ?? null;
+          return {
+            subject: slot.subject,
+            dateKey: slot.dateKey,
+            marks: milli === null ? null : milli / 1000,
+            maxMarks: slot.pointsMilli / 1000,
+          };
+        });
+        const marked = papers.filter((p) => p.marks !== null);
+        const totalMarks = marked.reduce((a, p) => a + (p.marks ?? 0), 0);
+        const totalMax = marked.reduce((a, p) => a + p.maxMarks, 0);
+        return {
+          id: s.id,
+          name: s.name,
+          kind: s.kind as ExamKind,
+          papers,
+          totalMarks,
+          totalMax,
+          percent: totalMax > 0 ? Math.round((totalMarks / totalMax) * 1000) / 10 : null,
+        };
+      }),
+    });
+  }
+  return out;
+}
+
+/* -------------------------------------------------------------------------- */
+/* The teacher's to-do — papers still waiting for marks                        */
+/* -------------------------------------------------------------------------- */
+
+export type MarksTodo = {
+  classId: string;
+  className: string;
+  slotId: string;
+  seriesName: string;
+  kind: ExamKind;
+  subject: string;
+  dateKey: string;
+  marked: number;
+  classSize: number;
+};
+
+/**
+ * Every paper this teacher may mark whose date has passed and whose marks are
+ * not all in. The Today page's "marks to enter" card — the redundancy the
+ * feature asks for: the grid is one click from the place a teacher already
+ * looks every morning, not only from the Exams menu.
+ */
+export async function marksTodoFor(ctx: ActiveContext, todayKey: string): Promise<MarksTodo[]> {
+  const classes = await examClassesFor(ctx);
+  const out: MarksTodo[] = [];
+  for (const klass of classes) {
+    const classSize = await db.enrollment.count({ where: { classId: klass.id, status: "ACTIVE" } });
+    if (classSize === 0) continue;
+    for (const series of klass.series) {
+      for (const slot of series.slots) {
+        if (slot.dateKey > todayKey) continue;
+        const sitting = await db.assignment.findUnique({
+          where: { examSlotId_classId: { examSlotId: slot.id, classId: klass.id } },
+          select: { _count: { select: { grades: true } } },
+        });
+        const marked = sitting?._count.grades ?? 0;
+        if (marked >= classSize) continue;
+        out.push({
+          classId: klass.id,
+          className: klass.name,
+          slotId: slot.id,
+          seriesName: series.name,
+          kind: series.kind,
+          subject: slot.subject,
+          dateKey: slot.dateKey,
+          marked,
+          classSize,
+        });
+      }
+    }
+  }
+  return out.sort((a, b) => a.dateKey.localeCompare(b.dateKey) || a.className.localeCompare(b.className));
+}
+
+/**
+ * Make sure every scheduled paper of this class's grade has its sitting row,
+ * so a report card built from the schedule lists every subject — marked or
+ * still blank — rather than only the ones whose grid somebody happened to
+ * open. Idempotent on the (slot, class) unique key.
+ */
+export async function ensureSittings(
+  schoolId: string,
+  classId: string,
+  authorMembershipId: string,
+): Promise<void> {
+  const klass = await db.class.findFirst({ where: { id: classId, schoolId }, select: { gradeLevel: true } });
+  if (!klass?.gradeLevel) return;
+  const slots = await db.examSlot.findMany({
+    where: { schoolId, series: { gradeLevel: klass.gradeLevel, archivedAt: null } },
+    select: { id: true, subject: true, pointsMilli: true, series: { select: { name: true } } },
+  });
+  for (const slot of slots) {
+    await db.assignment.upsert({
+      where: { examSlotId_classId: { examSlotId: slot.id, classId } },
+      update: {},
+      create: {
+        schoolId,
+        classId,
+        authorMembershipId,
+        title: `${slot.series.name} · ${slot.subject}`,
+        category: EXAM_CATEGORY,
+        pointsMilli: slot.pointsMilli,
+        examSlotId: slot.id,
+        publishedAt: new Date(),
+      },
+    });
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* The reader's assignments — the running picture, beside the exams           */
+/* -------------------------------------------------------------------------- */
+
+export type AssignmentOverview = {
+  studentMembershipId: string;
+  studentName: string;
+  /** Marked homework and classwork, newest first. Exam sittings excluded —
+   * those are the exam-marks card's business. */
+  graded: {
+    id: string;
+    title: string;
+    className: string;
+    category: string | null;
+    marks: number;
+    maxMarks: number | null;
+    gradedAt: Date;
+  }[];
+  /** Published work due later than now that has not been handed in. */
+  upcoming: {
+    id: string;
+    title: string;
+    className: string;
+    category: string | null;
+    dueAt: Date;
+    maxMarks: number | null;
+  }[];
+};
+
+/**
+ * Assignment marks and what is due, for a pupil or for each of a parent's
+ * children — the ongoing-progress half of the Exams & Assignments page. Kept
+ * deliberately separate from exam marks: the same page shows both, under
+ * different headings, so a homework score is never mistaken for a result.
+ */
+export async function assignmentOverviewFor(ctx: ActiveContext): Promise<AssignmentOverview[]> {
+  const { schoolId, membershipId, role, user } = ctx;
+
+  let targets: { studentMembershipId: string; schoolId: string }[] = [];
+  if (role === "STUDENT" && membershipId && schoolId) {
+    targets = [{ studentMembershipId: membershipId, schoolId }];
+  } else if (role === "PARENT") {
+    const rows = await db.guardianship.findMany({
+      where: { parentUserId: user.id, status: "ACTIVE" },
+      select: { studentMembershipId: true, studentSchoolId: true },
+    });
+    targets = rows.map((r) => ({ studentMembershipId: r.studentMembershipId, schoolId: r.studentSchoolId }));
+  }
+  if (targets.length === 0) return [];
+
+  const now = new Date();
+  const out: AssignmentOverview[] = [];
+  for (const target of targets) {
+    const student = await db.membership.findUnique({
+      where: { id: target.studentMembershipId },
+      select: { user: { select: { name: true, preferredName: true } } },
+    });
+    if (!student) continue;
+
+    const [grades, due] = await Promise.all([
+      db.grade.findMany({
+        where: {
+          schoolId: target.schoolId,
+          studentMembershipId: target.studentMembershipId,
+          scoreMilli: { not: null },
+          assignment: { examSlotId: null },
+        },
+        select: {
+          scoreMilli: true,
+          gradedAt: true,
+          assignment: {
+            select: { id: true, title: true, category: true, pointsMilli: true, class: { select: { name: true } } },
+          },
+        },
+        orderBy: { gradedAt: "desc" },
+        take: 20,
+      }),
+      db.assignment.findMany({
+        where: {
+          schoolId: target.schoolId,
+          publishedAt: { not: null },
+          examSlotId: null,
+          dueAt: { gte: now },
+          class: { enrollments: { some: { studentMembershipId: target.studentMembershipId, status: "ACTIVE" } } },
+          submissions: { none: { studentMembershipId: target.studentMembershipId, submittedAt: { not: null } } },
+        },
+        select: { id: true, title: true, category: true, pointsMilli: true, dueAt: true, class: { select: { name: true } } },
+        orderBy: { dueAt: "asc" },
+        take: 20,
+      }),
+    ]);
+
+    out.push({
+      studentMembershipId: target.studentMembershipId,
+      studentName: student.user.preferredName ?? student.user.name,
+      graded: grades.map((g) => ({
+        id: g.assignment.id,
+        title: g.assignment.title,
+        className: g.assignment.class.name,
+        category: g.assignment.category,
+        marks: g.scoreMilli! / 1000,
+        maxMarks: g.assignment.pointsMilli === null ? null : g.assignment.pointsMilli / 1000,
+        gradedAt: g.gradedAt,
+      })),
+      upcoming: due.map((a) => ({
+        id: a.id,
+        title: a.title,
+        className: a.class.name,
+        category: a.category,
+        dueAt: a.dueAt!,
+        maxMarks: a.pointsMilli === null ? null : a.pointsMilli / 1000,
+      })),
+    });
+  }
+  return out;
 }
