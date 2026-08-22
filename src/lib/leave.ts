@@ -157,7 +157,8 @@ export async function applyForLeave(
       schoolId: ctx.schoolId,
       kind: "SYSTEM",
       titleKey: "notifTitle.leaveWaiting",
-      body: `${applicantName} has asked for leave from ${input.fromDateKey}.`,
+      bodyKey: "notifBody.leaveAskedFrom",
+      bodyVars: { name: applicantName, from: input.fromDateKey },
       url: "/principal/leave",
     });
   }
@@ -406,11 +407,14 @@ export async function decideLeave(
     userId: request.teacher.userId,
     schoolId: ctx.schoolId,
     kind: "SYSTEM",
-    title: decision === "APPROVED" ? "Your leave was approved" : "Your leave was declined",
-    body:
-      decision === "APPROVED"
-        ? `${request.fromDateKey} to ${request.toDateKey}.${coversCreated > 0 ? ` Cover arranged for ${coversCreated} class${coversCreated === 1 ? "" : "es"}.` : ""}`
-        : opts.note?.trim() || "Speak to the office if you need to.",
+    titleKey: decision === "APPROVED" ? "notifTitle.leaveApproved" : "notifTitle.leaveDeclined",
+    ...(decision === "APPROVED"
+      ? coversCreated > 0
+        ? { bodyKey: "notifBody.leaveApprovedCover" as const, bodyVars: { from: request.fromDateKey, to: request.toDateKey, count: coversCreated } }
+        : { bodyKey: "notifBody.leaveApprovedDates" as const, bodyVars: { from: request.fromDateKey, to: request.toDateKey } }
+      : opts.note?.trim()
+        ? { body: opts.note.trim() }
+        : { bodyKey: "notifBody.leaveDeclinedOffice" as const }),
     url: "/teacher/leave",
   });
 
@@ -508,7 +512,8 @@ export async function cancelLeave(ctx: ActiveContext, leaveId: string): Promise<
       kind: "SYSTEM",
       titleKey: "notifTitle.noLongerMarking",
       titleVars: { class: cover.class.name },
-      body: `The leave that arranged it, from ${cover.fromDateKey}, was cancelled.`,
+      bodyKey: "notifBody.coverLeaveCancelled",
+      bodyVars: { from: cover.fromDateKey },
       url: "/teacher/attendance",
       urgent: true,
     });

@@ -306,10 +306,9 @@ export async function arrangeCover(
     kind: "SYSTEM",
     titleKey: "notifTitle.nowMarking",
     titleVars: { class: klass.name },
-    body:
-      input.fromDateKey === input.toDateKey
-        ? `On ${input.fromDateKey}.${input.reason?.trim() ? ` ${input.reason.trim()}` : ""}`
-        : `From ${input.fromDateKey} to ${input.toDateKey}.${input.reason?.trim() ? ` ${input.reason.trim()}` : ""}`,
+    ...(input.fromDateKey === input.toDateKey
+      ? { bodyKey: "notifBody.coverOn" as const, bodyVars: { date: input.fromDateKey, reason: input.reason?.trim() ?? "" } }
+      : { bodyKey: "notifBody.coverFromTo" as const, bodyVars: { from: input.fromDateKey, to: input.toDateKey, reason: input.reason?.trim() ?? "" } }),
     url: "/teacher/attendance",
     urgent: true,
   });
@@ -361,10 +360,9 @@ export async function cancelCover(
     kind: "SYSTEM",
     titleKey: "notifTitle.noLongerMarking",
     titleVars: { class: cover.class.name },
-    body:
-      cover.fromDateKey === cover.toDateKey
-        ? `The cover on ${cover.fromDateKey} was cancelled.`
-        : `The cover from ${cover.fromDateKey} to ${cover.toDateKey} was cancelled.`,
+    ...(cover.fromDateKey === cover.toDateKey
+      ? { bodyKey: "notifBody.coverCancelledOn" as const, bodyVars: { date: cover.fromDateKey } }
+      : { bodyKey: "notifBody.coverCancelledFromTo" as const, bodyVars: { from: cover.fromDateKey, to: cover.toDateKey } }),
     url: "/teacher/attendance",
     urgent: true,
   });

@@ -900,7 +900,8 @@ export async function reportContent(
           schoolId: session.schoolId,
           kind: "SYSTEM",
           titleKey: "bulletin.notifReported",
-          body: `A ${input.targetType.toLowerCase()} was reported as ${input.reason.toLowerCase().replace(/_/g, " ")}.`,
+          bodyKey: "notifBody.reportedAs",
+          bodyVars: { type: input.targetType.toLowerCase(), reason: input.reason.toLowerCase().replace(/_/g, " ") },
           url: "/bulletin?filter=pending",
           urgent: true, // safeguarding: bypasses quiet hours
         }),

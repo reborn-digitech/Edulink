@@ -152,7 +152,8 @@ export async function cancelSlot(ctx: ActiveContext, slotId: string): Promise<vo
       schoolId,
       kind: "SYSTEM",
       titleKey: "notifTitle.meetingCancelled",
-      body: `${teacherName} has had to cancel your meeting. Please pick another time.`,
+      bodyKey: "notifBody.teacherCancelledMeeting",
+      bodyVars: { name: teacherName },
       url: "/parent/meetings",
     });
   }
@@ -314,7 +315,8 @@ export async function bookSlot(
     schoolId: guardianship.studentSchoolId,
     kind: "SYSTEM",
     titleKey: "notifTitle.meetingBooked",
-    body: `${childName}'s family has booked your slot.`,
+    bodyKey: "notifBody.familyBookedSlot",
+    bodyVars: { name: childName },
     url: "/teacher/meetings",
   });
 
@@ -372,7 +374,8 @@ export async function cancelBooking(parentUserId: string, bookingId: string): Pr
     schoolId: booking.slot.schoolId,
     kind: "SYSTEM",
     titleKey: "notifTitle.meetingCancelled",
-    body: `${childName}'s family can no longer make their slot. It is open again.`,
+    bodyKey: "notifBody.familyCancelledSlot",
+    bodyVars: { name: childName },
     url: "/teacher/meetings",
   });
 

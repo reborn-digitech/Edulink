@@ -145,3 +145,58 @@ describe("⚠ quiet hours silence the interruption, never the record", () => {
     expect(await send(true)).toBe(0);
   });
 });
+
+/**
+ * ⚠ THE WORDS ARE CHOSEN BY THE RECIPIENT'S LANGUAGE, AT WRITE TIME. A title or
+ * body passed as a key is resolved against the user's saved locale before the
+ * row exists — the same event writes Hindi for a Hindi reader and English for
+ * an English one, and the stored row is what the reader later sees.
+ */
+describe("⚠ keys resolve into the recipient's language when the row is written", () => {
+  async function latest() {
+    return db.notification.findFirstOrThrow({
+      where: { userId },
+      orderBy: { createdAt: "desc" },
+      select: { title: true, body: true },
+    });
+  }
+
+  it("writes Hindi for a Hindi reader — title and body, with the variables in", async () => {
+    await setPrefs({ locale: "hi", channels: { push: false } });
+    await notify({
+      userId,
+      kind: "SYSTEM",
+      titleKey: "notifTitle.markedLate",
+      titleVars: { name: "ZZ Asha" },
+      bodyKey: "notifBody.attendanceTap",
+      bodyVars: { date: "Monday 3 March" },
+    });
+    const row = await latest();
+    expect(row.title).toBe("ZZ Asha को देर से आया दर्ज किया गया");
+    expect(row.body).toContain("Monday 3 March");
+    expect(row.body).toContain("टैप करें");
+  });
+
+  it("writes English for an English reader from the same call", async () => {
+    await setPrefs({ locale: "en", channels: { push: false } });
+    await notify({
+      userId,
+      kind: "SYSTEM",
+      titleKey: "notifTitle.markedLate",
+      titleVars: { name: "ZZ Asha" },
+      bodyKey: "notifBody.attendanceTap",
+      bodyVars: { date: "Monday 3 March" },
+    });
+    const row = await latest();
+    expect(row.title).toBe("ZZ Asha was marked late");
+    expect(row.body).toBe("Monday 3 March. Tap to see the details or message the teacher.");
+  });
+
+  it("a literal body is stored as data, untranslated", async () => {
+    await setPrefs({ locale: "hi", channels: { push: false } });
+    await notify({ userId, kind: "SYSTEM", titleKey: "notifTitle.newWorkSet", body: "ZZ Chapter 4 questions" });
+    const row = await latest();
+    expect(row.title).toBe("नया काम दिया गया");
+    expect(row.body).toBe("ZZ Chapter 4 questions");
+  });
+});

@@ -2,6 +2,10 @@ import "server-only";
 import { db } from "./db";
 import { notify } from "./notify";
 import { addDaysToKey, todayKey } from "./dates";
+import { readJson } from "./json";
+import { DEFAULT_PREFS, type UserPrefs } from "./session";
+import { translator, type Translate } from "./i18n/dictionary";
+import { normaliseLocale } from "./i18n/locales";
 
 /**
  * The parent weekly digest: one message per family, once a week, saying what
@@ -106,16 +110,21 @@ async function childWeek(studentMembershipId: string): Promise<ChildDigest | nul
   };
 }
 
-function lineFor(week: ChildDigest): string {
+/**
+ * One child's line, in the PARENT's language — the digest is composed here
+ * rather than through bodyKey because it is several sentences joined, and
+ * the recipient is known before it is written.
+ */
+function lineFor(week: ChildDigest, t: Translate): string {
   const parts: string[] = [];
-  if (week.attended !== null) parts.push(`attended ${week.attended}/${week.attendanceTotal} days`);
-  if (week.practiceAnswers > 0) parts.push(`answered ${week.practiceAnswers} practice questions`);
-  if (week.badges > 0) parts.push(`earned ${week.badges} badge${week.badges === 1 ? "" : "s"}`);
+  if (week.attended !== null) parts.push(t("digest.attendedDays", { n: week.attended, total: week.attendanceTotal }));
+  if (week.practiceAnswers > 0) parts.push(t("digest.answeredPractice", { n: week.practiceAnswers }));
+  if (week.badges > 0) parts.push(week.badges === 1 ? t("digest.earnedBadgeOne") : t("digest.earnedBadges", { n: week.badges }));
   if (week.homeworkDue > 0)
-    parts.push(`${week.homeworkDue} homework item${week.homeworkDue === 1 ? "" : "s"} due this week`);
+    parts.push(week.homeworkDue === 1 ? t("digest.homeworkDueOne") : t("digest.homeworkDue", { n: week.homeworkDue }));
   if (week.examsSoon > 0)
-    parts.push(`${week.examsSoon} exam paper${week.examsSoon === 1 ? "" : "s"} in the next fortnight`);
-  if (parts.length === 0) parts.push("a quiet week");
+    parts.push(week.examsSoon === 1 ? t("digest.examsSoonOne") : t("digest.examsSoon", { n: week.examsSoon }));
+  if (parts.length === 0) parts.push(t("digest.quietWeek"));
   return `${week.childName}: ${parts.join(", ")}.`;
 }
 
@@ -178,12 +187,14 @@ export async function sendWeeklyDigests(
       continue;
     }
 
+    const parent = await db.user.findUnique({ where: { id: parentUserId }, select: { prefs: true } });
+    const t = translator(normaliseLocale(readJson<UserPrefs>(parent?.prefs ?? "{}", DEFAULT_PREFS).locale));
     await notify({
       userId: parentUserId,
       schoolId: weeks[0]!.schoolId,
       kind: "SYSTEM",
       titleKey: "notifTitle.thisWeekAtSchool",
-      body: weeks.map(lineFor).join("\n"),
+      body: weeks.map((week) => lineFor(week, t)).join("\n"),
       url: "/parent",
       meta: { flag: DIGEST_FLAG },
     });

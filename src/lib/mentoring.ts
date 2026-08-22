@@ -351,7 +351,8 @@ export async function createMentorship(
     kind: "EXPERT",
     titleKey: "notifTitle.mentorSuggested",
     titleVars: { name: childName },
-    body: `${expert.user.name} — ${purpose}. They cannot message ${childName} until you agree.`,
+    bodyKey: "notifBody.mentorNeedsConsent",
+    bodyVars: { name: expert.user.name, purpose, child: childName },
     url: `/mentoring/${thread.id}`,
   }));
 
@@ -551,7 +552,7 @@ export async function postMentorMessage(
       kind: "EXPERT",
       titleKey: "notifTitle.personMessagedChild",
       titleVars: { name: expert.user.name, child: childName },
-      body: "You can read the whole conversation at any time.",
+      bodyKey: "notifBody.readWholeConversation",
       url: `/mentoring/${threadId}`,
     }));
   } else {
@@ -954,7 +955,8 @@ export async function decideMentorRequest(
     kind: "EXPERT",
     titleKey: "notifTitle.childAskedMentorAgreed",
     titleVars: { name: childName },
-    body: `${thread.expert.user.name} — ${thread.purpose}. They cannot message ${childName} until you agree.`,
+    bodyKey: "notifBody.mentorNeedsConsent",
+    bodyVars: { name: thread.expert.user.name, purpose: thread.purpose, child: childName },
     url: `/mentoring/${thread.id}`,
   }));
 

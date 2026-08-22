@@ -335,7 +335,7 @@ export async function enterCompetition(
       kind: "COMPETITION",
       titleKey: "notifTitle.childWantsToEnter",
       titleVars: { name: childName, competition: competition.title },
-      body: "They cannot take part until you say yes.",
+      bodyKey: "notifBody.untilYouSayYes",
       url: `/competitions/${competitionId}`,
     }));
   }
@@ -388,7 +388,7 @@ export async function giveConsent(session: ActiveContext, entryId: string): Prom
       kind: "COMPETITION",
       titleKey: "notifTitle.youAreEntered",
       titleVars: { competition: entry.competition.title },
-      body: "A grown-up said yes.",
+      bodyKey: "notifBody.grownUpSaidYes",
       url: `/competitions/${entry.competitionId}`,
     });
   }
@@ -651,7 +651,9 @@ export async function recordResult(
       kind: "COMPETITION",
       titleKey: "notifTitle.yourResult",
       titleVars: { competition: entry.competition.title },
-      body: result.rank ? `You came ${ordinal(result.rank)}.` : "Your score has been recorded.",
+      ...(result.rank
+        ? { bodyKey: "notifBody.youPlaced" as const, bodyVars: { rank: result.rank } }
+        : { bodyKey: "notifBody.yourScoreRecorded" as const }),
       url: `/competitions/${entry.competitionId}`,
     });
   }
@@ -662,7 +664,9 @@ export async function recordResult(
     kind: "COMPETITION",
     titleKey: "notifTitle.childResult",
     titleVars: { name: childName, competition: entry.competition.title },
-    body: result.rank ? `They came ${ordinal(result.rank)}.` : "Their score has been recorded.",
+    ...(result.rank
+      ? { bodyKey: "notifBody.theyPlaced" as const, bodyVars: { rank: result.rank } }
+      : { bodyKey: "notifBody.theirScoreRecorded" as const }),
     url: `/competitions/${entry.competitionId}`,
   }));
 }

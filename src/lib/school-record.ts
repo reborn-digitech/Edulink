@@ -270,7 +270,7 @@ export async function recordDeparture(
     kind: "SYSTEM",
     titleKey: "notifTitle.childRecordedLeaving",
     titleVars: { name: childName, school: school.name },
-    body: "Their school record is here. You can show it to their next school.",
+    bodyKey: "notifBody.recordHere",
     // The progress report, because that is the page the record is ON. Pointing
     // at /parent would have been a notification that lands one click short of
     // the thing it is about — the exact failure the last release spent a

@@ -216,7 +216,7 @@ export async function reinstateMembership(
     schoolId,
     kind: "SYSTEM",
     titleKey: "notifTitle.accessRestored",
-    body: "You can use your school on EduLink again.",
+    bodyKey: "notifBody.accessRestored",
     url: "/",
   });
 

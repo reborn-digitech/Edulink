@@ -42,7 +42,13 @@ export type NotifyInput = NotifyTitle & {
   userId: string;
   schoolId?: string | null;
   kind: NotificationKind;
+  /** Literal body — for DATA: a post's title, an assignment's name, a
+   * teacher's own note. Prose goes through `bodyKey`. */
   body?: string;
+  /** A body that is a sentence, resolved like the title into the recipient's
+   * language at write time. Wins over `body` when both are given. */
+  bodyKey?: TranslationKey;
+  bodyVars?: Record<string, string | number>;
   url?: string;
   meta?: Record<string, unknown>;
   /** Bypasses quiet hours. Reserved for safeguarding-critical messages. */
@@ -58,9 +64,9 @@ export async function notify(input: NotifyInput): Promise<void> {
 
   const prefs = readJson<UserPrefs>(user.prefs, DEFAULT_PREFS);
 
-  const title = input.titleKey
-    ? translator(normaliseLocale(prefs.locale))(input.titleKey, input.titleVars)
-    : input.title;
+  const t = translator(normaliseLocale(prefs.locale));
+  const title = input.titleKey ? t(input.titleKey, input.titleVars) : input.title;
+  const body = input.bodyKey ? t(input.bodyKey, input.bodyVars) : (input.body ?? "");
 
   // The in-app row is always written. Quiet hours silence the *interruption*,
   // never the record — a parent must still find the message in the morning.
@@ -70,7 +76,7 @@ export async function notify(input: NotifyInput): Promise<void> {
       schoolId: input.schoolId ?? null,
       kind: input.kind,
       title,
-      body: input.body ?? "",
+      body,
       url: input.url ?? null,
       meta: writeJson(input.meta ?? {}),
     },
@@ -83,7 +89,7 @@ export async function notify(input: NotifyInput): Promise<void> {
 
   await sendPush(input.userId, {
     title,
-    body: input.body ?? "",
+    body,
     url: input.url ?? "/notifications",
     tag: `${input.kind}:${row.id}`,
   });
