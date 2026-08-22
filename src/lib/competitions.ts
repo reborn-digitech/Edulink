@@ -333,7 +333,8 @@ export async function enterCompetition(
     await notifyGuardians(session.membershipId, (childName) => ({
       schoolId: session.schoolId,
       kind: "COMPETITION",
-      title: `${childName} wants to enter ${competition.title}`,
+      titleKey: "notifTitle.childWantsToEnter",
+      titleVars: { name: childName, competition: competition.title },
       body: "They cannot take part until you say yes.",
       url: `/competitions/${competitionId}`,
     }));
@@ -385,7 +386,8 @@ export async function giveConsent(session: ActiveContext, entryId: string): Prom
       userId: student.userId,
       schoolId: entry.schoolId,
       kind: "COMPETITION",
-      title: `You are entered for ${entry.competition.title}`,
+      titleKey: "notifTitle.youAreEntered",
+      titleVars: { competition: entry.competition.title },
       body: "A grown-up said yes.",
       url: `/competitions/${entry.competitionId}`,
     });
@@ -647,7 +649,8 @@ export async function recordResult(
       userId: student.userId,
       schoolId: entry.schoolId,
       kind: "COMPETITION",
-      title: `Your result for ${entry.competition.title}`,
+      titleKey: "notifTitle.yourResult",
+      titleVars: { competition: entry.competition.title },
       body: result.rank ? `You came ${ordinal(result.rank)}.` : "Your score has been recorded.",
       url: `/competitions/${entry.competitionId}`,
     });
@@ -657,7 +660,8 @@ export async function recordResult(
   await notifyGuardians(entry.studentMembershipId, (childName) => ({
     schoolId: entry.schoolId,
     kind: "COMPETITION",
-    title: `${childName}'s result for ${entry.competition.title}`,
+    titleKey: "notifTitle.childResult",
+    titleVars: { name: childName, competition: entry.competition.title },
     body: result.rank ? `They came ${ordinal(result.rank)}.` : "Their score has been recorded.",
     url: `/competitions/${entry.competitionId}`,
   }));

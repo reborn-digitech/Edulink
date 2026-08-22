@@ -268,7 +268,8 @@ export async function recordDeparture(
   await notifyGuardians(membership.id, (childName) => ({
     schoolId,
     kind: "SYSTEM",
-    title: `${childName} has been recorded as leaving ${school.name}`,
+    titleKey: "notifTitle.childRecordedLeaving",
+    titleVars: { name: childName, school: school.name },
     body: "Their school record is here. You can show it to their next school.",
     // The progress report, because that is the page the record is ON. Pointing
     // at /parent would have been a notification that lands one click short of

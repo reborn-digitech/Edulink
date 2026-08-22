@@ -349,7 +349,8 @@ export async function createMentorship(
   await notifyGuardians(student.id, (childName) => ({
     schoolId: session.schoolId,
     kind: "EXPERT",
-    title: `A mentor has been suggested for ${childName}`,
+    titleKey: "notifTitle.mentorSuggested",
+    titleVars: { name: childName },
     body: `${expert.user.name} — ${purpose}. They cannot message ${childName} until you agree.`,
     url: `/mentoring/${thread.id}`,
   }));
@@ -391,7 +392,7 @@ export async function consentToMentorship(
     userId: thread.expertUserId,
     schoolId: thread.schoolId,
     kind: "EXPERT",
-    title: "A mentorship has been approved",
+    titleKey: "notifTitle.mentorshipApproved",
     body: thread.purpose,
     url: `/mentoring/${threadId}`,
   });
@@ -540,14 +541,16 @@ export async function postMentorMessage(
       userId: student.user.id,
       schoolId: thread.schoolId,
       kind: "EXPERT",
-      title: `${expert.user.name} sent you a message`,
+      titleKey: "notifTitle.personSentYouMessage",
+      titleVars: { name: expert.user.name },
       body: clean.slice(0, 120),
       url: `/mentoring/${threadId}`,
     });
     await notifyGuardians(thread.studentMembershipId, (childName) => ({
       schoolId: thread.schoolId,
       kind: "EXPERT",
-      title: `${expert.user.name} messaged ${childName}`,
+      titleKey: "notifTitle.personMessagedChild",
+      titleVars: { name: expert.user.name, child: childName },
       body: "You can read the whole conversation at any time.",
       url: `/mentoring/${threadId}`,
     }));
@@ -556,7 +559,8 @@ export async function postMentorMessage(
       userId: thread.expertUserId,
       schoolId: thread.schoolId,
       kind: "EXPERT",
-      title: `${student.user.name} replied`,
+      titleKey: "notifTitle.personReplied",
+      titleVars: { name: student.user.name },
       body: clean.slice(0, 120),
       url: `/mentoring/${threadId}`,
     });
@@ -760,7 +764,8 @@ export async function requestMentor(
         userId: member.userId,
         schoolId: session.schoolId!,
         kind: "EXPERT",
-        title: `${childName} has asked for a mentor`,
+        titleKey: "notifTitle.childAskedMentor",
+        titleVars: { name: childName },
         body: purpose,
         url: `/mentoring`,
       }),
@@ -893,7 +898,7 @@ export async function decideMentorRequest(
         userId: student.userId,
         schoolId: session.schoolId,
         kind: "EXPERT",
-        title: "Your school has answered your mentor request",
+        titleKey: "notifTitle.mentorRequestAnswered",
         body: reason || "Talk to your teacher about it.",
         url: "/mentoring",
       });
@@ -947,7 +952,8 @@ export async function decideMentorRequest(
   await notifyGuardians(thread.studentMembershipId, (childName) => ({
     schoolId: session.schoolId!,
     kind: "EXPERT",
-    title: `${childName} has asked for a mentor, and the school agrees`,
+    titleKey: "notifTitle.childAskedMentorAgreed",
+    titleVars: { name: childName },
     body: `${thread.expert.user.name} — ${thread.purpose}. They cannot message ${childName} until you agree.`,
     url: `/mentoring/${thread.id}`,
   }));

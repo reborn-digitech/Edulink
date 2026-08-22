@@ -304,7 +304,8 @@ export async function arrangeCover(
     userId: covering.userId,
     schoolId: ctx.schoolId,
     kind: "SYSTEM",
-    title: `You are marking ${klass.name}`,
+    titleKey: "notifTitle.nowMarking",
+    titleVars: { class: klass.name },
     body:
       input.fromDateKey === input.toDateKey
         ? `On ${input.fromDateKey}.${input.reason?.trim() ? ` ${input.reason.trim()}` : ""}`
@@ -358,7 +359,8 @@ export async function cancelCover(
     userId: cover.covering.userId,
     schoolId: ctx.schoolId,
     kind: "SYSTEM",
-    title: `You are no longer marking ${cover.class.name}`,
+    titleKey: "notifTitle.noLongerMarking",
+    titleVars: { class: cover.class.name },
     body:
       cover.fromDateKey === cover.toDateKey
         ? `The cover on ${cover.fromDateKey} was cancelled.`

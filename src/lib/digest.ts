@@ -182,7 +182,7 @@ export async function sendWeeklyDigests(
       userId: parentUserId,
       schoolId: weeks[0]!.schoolId,
       kind: "SYSTEM",
-      title: "This week at school",
+      titleKey: "notifTitle.thisWeekAtSchool",
       body: weeks.map(lineFor).join("\n"),
       url: "/parent",
       meta: { flag: DIGEST_FLAG },

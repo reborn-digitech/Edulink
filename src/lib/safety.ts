@@ -229,7 +229,7 @@ export async function removeContent(
       userId: post.authorUserId,
       schoolId: session.schoolId,
       kind: "POST",
-      title: "A post of yours was taken down",
+      titleKey: "notifTitle.postTakenDown",
       body: `${post.title} — ${note}`,
       url: "/bulletin?filter=mine",
     });
@@ -246,7 +246,7 @@ export async function removeContent(
       userId: comment.authorUserId,
       schoolId: session.schoolId,
       kind: "POST",
-      title: "A comment of yours was removed",
+      titleKey: "notifTitle.commentRemoved",
       body: note,
       url: "/bulletin",
     });

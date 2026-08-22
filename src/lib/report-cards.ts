@@ -523,7 +523,7 @@ export async function publishCards(
       userId: draft.student.userId,
       schoolId: ctx.schoolId,
       kind: "GRADE",
-      title: "Your report card is ready",
+      titleKey: "notifTitle.reportCardReady",
       body: title,
       url: "/exams?tab=cards",
     });
@@ -538,7 +538,8 @@ export async function publishCards(
         userId: guardian.parentUserId,
         schoolId: ctx.schoolId,
         kind: "GRADE",
-        title: `${childName}'s report card is ready`,
+        titleKey: "notifTitle.childReportCardReady",
+        titleVars: { name: childName },
         body: title,
         url: "/exams?tab=cards",
       });

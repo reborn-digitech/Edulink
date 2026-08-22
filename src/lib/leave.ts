@@ -156,7 +156,7 @@ export async function applyForLeave(
       userId: decider.userId,
       schoolId: ctx.schoolId,
       kind: "SYSTEM",
-      title: "Leave request waiting",
+      titleKey: "notifTitle.leaveWaiting",
       body: `${applicantName} has asked for leave from ${input.fromDateKey}.`,
       url: "/principal/leave",
     });
@@ -506,7 +506,8 @@ export async function cancelLeave(ctx: ActiveContext, leaveId: string): Promise<
       userId: cover.covering.userId,
       schoolId: ctx.schoolId,
       kind: "SYSTEM",
-      title: `You are no longer marking ${cover.class.name}`,
+      titleKey: "notifTitle.noLongerMarking",
+      titleVars: { class: cover.class.name },
       body: `The leave that arranged it, from ${cover.fromDateKey}, was cancelled.`,
       url: "/teacher/attendance",
       urgent: true,

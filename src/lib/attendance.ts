@@ -1,10 +1,21 @@
 import "server-only";
+import type { TranslationKey } from "./i18n/dictionary";
 import { db } from "./db";
 import { publish, channel } from "./realtime";
 import { notifyGuardians } from "./notify";
 import { audit } from "./audit";
 import { formatDateKey } from "./dates";
-import { ATTENDANCE_STATUS_EN, type AttendanceStatus } from "./constants";
+import type { AttendanceStatus } from "./constants";
+
+/** Per-status notification titles — one key each, so "was marked late"
+ * reaches a Hindi parent as a sentence, not an English word in a Hindi one. */
+const ATTENDANCE_NOTIF_KEY: Record<AttendanceStatus, TranslationKey> = {
+  PRESENT: "notifTitle.markedPresent",
+  LATE: "notifTitle.markedLate",
+  ABSENT: "notifTitle.markedAbsent",
+  EXCUSED: "notifTitle.markedExcused",
+};
+
 
 /**
  * Attendance write path.
@@ -189,7 +200,8 @@ export async function saveAttendanceBatch(opts: {
         notifyGuardians(studentMembershipId, (childName) => ({
           kind: "ATTENDANCE",
           schoolId,
-          title: `${childName} was marked ${ATTENDANCE_STATUS_EN[status].toLowerCase()}`,
+          titleKey: ATTENDANCE_NOTIF_KEY[status] ?? "notifTitle.markedAbsent",
+          titleVars: { name: childName },
           body: `${pretty}. Tap to see the details or message the teacher.`,
           url: "/parent/attendance",
           meta: { dateKey, status },

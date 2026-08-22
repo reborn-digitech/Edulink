@@ -390,7 +390,7 @@ export async function bookSlot(
       userId: slot.expert.userId,
       schoolId: session.schoolId,
       kind: "EXPERT",
-      title: "A school has booked you",
+      titleKey: "notifTitle.schoolBookedYou",
       body: cleanTopic,
       url: `/expert/bookings/${booking.id}`,
     });
@@ -693,7 +693,8 @@ export async function postMessage(
           userId: booker.userId,
           schoolId: booking.schoolId,
           kind: "EXPERT",
-          title: `${booking.expert.user.name} replied`,
+          titleKey: "notifTitle.personReplied",
+          titleVars: { name: booking.expert.user.name },
           body: clean.slice(0, 120),
           url: `/experts/bookings/${bookingId}`,
         });
@@ -704,7 +705,8 @@ export async function postMessage(
       userId: booking.expert.userId,
       schoolId: booking.schoolId,
       kind: "EXPERT",
-      title: `${booking.school.name} sent a message`,
+      titleKey: "notifTitle.schoolSentMessage",
+      titleVars: { school: booking.school.name },
       body: clean.slice(0, 120),
       url: `/expert/bookings/${bookingId}`,
     });

@@ -415,14 +415,14 @@ export async function createAssignment(
           userId: enrollment.student.userId,
           schoolId: ctx.schoolId,
           kind: "ASSIGNMENT",
-          title: "New work set",
+          titleKey: "notifTitle.newWorkSet",
           body: input.title,
           url: "/student/assignments",
         });
         await notifyGuardians(enrollment.studentMembershipId, () => ({
           kind: "ASSIGNMENT",
           schoolId: ctx.schoolId,
-          title: "New work set",
+          titleKey: "notifTitle.newWorkSet",
           body: input.title,
           url: "/parent",
         }));
@@ -661,14 +661,15 @@ export async function saveGrades(
           userId: student.userId,
           schoolId: ctx.schoolId,
           kind: "GRADE",
-          title: "Your work has been marked",
+          titleKey: "notifTitle.workMarked",
           body: assignment.title,
           url: "/student/assignments?tab=marked",
         });
         await notifyGuardians(student.id, (childName) => ({
           kind: "GRADE",
           schoolId: ctx.schoolId,
-          title: `${childName}'s work has been marked`,
+          titleKey: "notifTitle.childWorkMarked",
+          titleVars: { name: childName },
           body: assignment.title,
           url: "/parent/assignments?tab=marked",
         }));
@@ -711,14 +712,14 @@ export async function publishAssignment(
         userId: enrollment.student.userId,
         schoolId: ctx.schoolId,
         kind: "ASSIGNMENT",
-        title: "New work set",
+        titleKey: "notifTitle.newWorkSet",
         body: assignment.title,
         url: "/student/assignments",
       });
       await notifyGuardians(enrollment.studentMembershipId, () => ({
         kind: "ASSIGNMENT",
         schoolId: ctx.schoolId,
-        title: "New work set",
+        titleKey: "notifTitle.newWorkSet",
         body: assignment.title,
         url: "/parent",
       }));

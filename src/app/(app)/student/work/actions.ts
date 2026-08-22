@@ -104,7 +104,8 @@ export async function submitWork(input: unknown): Promise<SubmitState> {
       userId: author.userId,
       schoolId: ctx.schoolId,
       kind: "ASSIGNMENT",
-      title: `${student.user.preferredName ?? student.user.name} handed work in`,
+      titleKey: "notifTitle.handedWorkIn",
+      titleVars: { name: student.user.preferredName ?? student.user.name },
       body: assignment.title,
       url: `/teacher/assignments/${assignmentId}`,
     });

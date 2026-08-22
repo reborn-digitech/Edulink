@@ -1,4 +1,5 @@
 import "server-only";
+import type { TranslationKey } from "./i18n/dictionary";
 import { db } from "./db";
 import { readJsonArray, writeJson } from "./json";
 import { publish, channel } from "./realtime";
@@ -232,12 +233,12 @@ async function notifyParticipants(
   const childName = student?.user.preferredName ?? student?.user.name ?? "your child";
   const url = `/remarks/${thread.threadId}`;
 
-  const targets: { userId: string; title: string }[] = [];
-  if (teacher) targets.push({ userId: teacher.userId, title: `New message about ${childName}` });
+  const targets: { userId: string; titleKey: TranslationKey; titleVars?: Record<string, string> }[] = [];
+  if (teacher) targets.push({ userId: teacher.userId, titleKey: "notifTitle.newMessageAbout", titleVars: { name: childName } });
   // The child is told in the second person; everybody else is told about them.
-  if (student) targets.push({ userId: student.userId, title: "New message from your school" });
+  if (student) targets.push({ userId: student.userId, titleKey: "notifTitle.newMessageFromSchool" });
   for (const guardian of guardians) {
-    targets.push({ userId: guardian.parentUserId, title: `New message about ${childName}` });
+    targets.push({ userId: guardian.parentUserId, titleKey: "notifTitle.newMessageAbout", titleVars: { name: childName } });
   }
 
   await Promise.all(
@@ -248,7 +249,8 @@ async function notifyParticipants(
           userId: target.userId,
           schoolId: thread.schoolId,
           kind: "REMARK",
-          title: target.title,
+          titleKey: target.titleKey,
+          titleVars: target.titleVars,
           body: subject,
           url,
         }),
