@@ -5,6 +5,7 @@ import { requireUser } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { postableClasses } from "@/lib/bulletin";
 import { ComposeForm } from "./form";
+import { POST_CATEGORIES, type PostCategory } from "@/lib/constants";
 import { EmptyState } from "@/components/ui/states";
 import { Button } from "@/components/ui/button";
 import { getT } from "@/lib/i18n/server";
@@ -14,7 +15,14 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: t("meta.newPost") };
 }
 
-export default async function NewPostPage() {
+export default async function NewPostPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ title?: string; tag?: string; category?: string }>;
+}) {
+  // Prefill from a "Post a wish" link — a title, a tag, a category. Plain
+  // query parameters so the link can be bookmarked; the form still validates.
+  const prefill = await searchParams;
   const t = await getT();
   const session = await requireUser();
 
@@ -76,6 +84,9 @@ export default async function NewPostPage() {
       </p>
 
       <ComposeForm
+        initialTitle={prefill.title?.slice(0, 120)}
+        initialTags={prefill.tag ? [prefill.tag.replace(/^#/, "").slice(0, 40)] : undefined}
+        initialCategory={POST_CATEGORIES.includes(prefill.category as PostCategory) ? (prefill.category as PostCategory) : undefined}
         className="mt-7"
         classes={classes}
         grades={grades}

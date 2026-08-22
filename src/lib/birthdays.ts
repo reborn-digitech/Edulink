@@ -1,6 +1,6 @@
 import "server-only";
 import { db } from "./db";
-import { dateKeyRange } from "./dates";
+import { addDaysToKey, dateKeyInZone, dateKeyRange, todayKey } from "./dates";
 import type { ActiveContext } from "./session";
 
 /**
@@ -20,15 +20,15 @@ import type { ActiveContext } from "./session";
  * birthday by a day for half the world, which is exactly the bug the rest of
  * this codebase spends `dateKey` avoiding.
  *
- * STAFF-ONLY, BY WHERE IT IS RENDERED. This feeds `/admin/calendar`, which
- * `requireRole("ADMIN", "PRINCIPAL")` guards; pupils and guardians have no
- * calendar page at all. That matters more than it looks: a child's date of
- * birth is the SECOND FACTOR when a parent claims them with a student code
- * (`claimChild`), and publishing dates of birth to classmates would quietly
- * reduce that to one factor. An admin can already read the whole directory and
- * link a guardian by hand, so showing them a birthday tells them nothing new —
- * showing a pupil would. If this ever moves to a page pupils can open, that
- * decision has to be made deliberately and the claim gate revisited.
+ * WHO SEES WHOSE. `/admin/calendar` (staff) shows everybody. The Celebrations
+ * page on Social Media, which every role can open, shows STAFF birthdays and
+ * work anniversaries to everyone and PUPILS' birthdays to staff only — and
+ * that split is deliberate, not timid: a child's date of birth is the SECOND
+ * FACTOR when a parent claims them with a student code (`claimChild`), and
+ * the claim rate limits assume the day and month are not on a page every
+ * classmate can read. A teacher's birthday guards nothing. See
+ * `celebrationsFor`, which is where the rule is enforced rather than merely
+ * described.
  */
 
 export type Birthday = {
@@ -59,15 +59,17 @@ export async function birthdaysBetween(
   ctx: ActiveContext,
   fromDateKey: string,
   toDateKey: string,
+  opts: { schoolId?: string; roles?: string[] } = {},
 ): Promise<Birthday[]> {
-  if (!ctx.schoolId) return [];
+  const schoolId = opts.schoolId ?? ctx.schoolId;
+  if (!schoolId) return [];
 
   const members = await db.membership.findMany({
     where: {
-      schoolId: ctx.schoolId,
+      schoolId,
       status: "ACTIVE",
       leftAt: null,
-      role: { in: ["STUDENT", "TEACHER", "ADMIN", "PRINCIPAL"] },
+      role: { in: opts.roles ?? ["STUDENT", "TEACHER", "ADMIN", "PRINCIPAL"] },
       user: { birthdate: { not: null } },
     },
     select: {
@@ -133,4 +135,102 @@ export async function birthdaysBetween(
 
   // By date, then by name, so the same day always reads in the same order.
   return out.sort((a, b) => a.dateKey.localeCompare(b.dateKey) || a.name.localeCompare(b.name));
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Celebrations — the Social Media page everyone can open                      */
+/* -------------------------------------------------------------------------- */
+
+export type Celebration = {
+  kind: "BIRTHDAY" | "ANNIVERSARY";
+  membershipId: string;
+  name: string;
+  role: string;
+  /** The day it falls on, as a school-timezone date key. */
+  dateKey: string;
+  /** Work anniversaries only: the number of years completed. */
+  years: number | null;
+  schoolName: string;
+};
+
+const STAFF_ROLES = ["TEACHER", "ADMIN", "PRINCIPAL"];
+
+/**
+ * Upcoming birthdays and work anniversaries for the viewer's school — or, for
+ * a guardian, each child's school. Staff see every birthday; pupils and
+ * families see the staff's (see the note at the top of this file). Work
+ * anniversaries are derived from `joinedAt`, one year or more on, and shown
+ * to everyone: the day somebody joined a school is a public fact about the
+ * school, not a secret about the person.
+ */
+export async function celebrationsFor(ctx: ActiveContext, days = 30): Promise<Celebration[]> {
+  let schoolIds: string[] = [];
+  if (ctx.role === "PARENT") {
+    const rows = await db.guardianship.findMany({
+      where: { parentUserId: ctx.user.id, status: "ACTIVE" },
+      select: { studentSchoolId: true },
+      distinct: ["studentSchoolId"],
+    });
+    schoolIds = rows.map((r) => r.studentSchoolId);
+  } else if (ctx.schoolId) {
+    schoolIds = [ctx.schoolId];
+  }
+  if (schoolIds.length === 0) return [];
+
+  const isStaff = STAFF_ROLES.includes(ctx.role ?? "");
+  const out: Celebration[] = [];
+
+  for (const schoolId of schoolIds) {
+    const school = await db.school.findUnique({ where: { id: schoolId }, select: { name: true, timezone: true } });
+    if (!school) continue;
+    const from = todayKey(school.timezone);
+    const to = addDaysToKey(from, days);
+
+    const birthdays = await birthdaysBetween(ctx, from, to, {
+      schoolId,
+      roles: isStaff ? ["STUDENT", ...STAFF_ROLES] : STAFF_ROLES,
+    });
+    for (const b of birthdays) {
+      out.push({ kind: "BIRTHDAY", membershipId: b.membershipId, name: b.name, role: b.role, dateKey: b.dateKey, years: null, schoolName: school.name });
+    }
+
+    const staff = await db.membership.findMany({
+      where: { schoolId, status: "ACTIVE", leftAt: null, role: { in: STAFF_ROLES } },
+      select: { id: true, role: true, joinedAt: true, user: { select: { name: true, preferredName: true } } },
+    });
+    const window = new Set(dateKeyRange(from, to));
+    for (const member of staff) {
+      const joined = member.joinedAt;
+      // The anniversary is a calendar date in the SCHOOL's zone — joinedAt is
+      // an instant, so it is read in that zone, not in UTC.
+      const joinedKey = dateKeyInZone(joined, school.timezone);
+      const [jy, jm, jd] = joinedKey.split("-").map(Number) as [number, number, number];
+      for (const year of [Number(from.slice(0, 4)), Number(to.slice(0, 4))]) {
+        const years = year - jy;
+        if (years < 1) continue;
+        const key = `${year}-${String(jm).padStart(2, "0")}-${String(jd).padStart(2, "0")}`;
+        if (!window.has(key)) continue;
+        out.push({
+          kind: "ANNIVERSARY",
+          membershipId: member.id,
+          name: member.user.preferredName ?? member.user.name,
+          role: member.role,
+          dateKey: key,
+          years,
+          schoolName: school.name,
+        });
+      }
+    }
+  }
+
+  const seen = new Set<string>();
+  return out
+    .filter((c) => {
+      const k = `${c.kind}:${c.membershipId}:${c.dateKey}`;
+      if (seen.has(k)) return false;
+      seen.add(k);
+      return true;
+    })
+    .sort((a, b) => a.dateKey.localeCompare(b.dateKey) || a.name.localeCompare(b.name));
 }

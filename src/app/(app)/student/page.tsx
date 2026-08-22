@@ -8,6 +8,7 @@ import {
 import { requireRole } from "@/lib/tenancy";
 import { examMarksFor } from "@/lib/exams";
 import { ExamMarksCards } from "@/components/exams/exam-marks";
+import { CelebrationsLink } from "@/components/celebrations/celebrations-link";
 import { db } from "@/lib/db";
 import { getAttendanceSummary, computeStreak } from "@/lib/attendance";
 import { addDaysToKey, formatDateKey, isWithin, relativeTime, todayKey } from "@/lib/dates";
@@ -192,6 +193,8 @@ export default async function StudentHome({
       {examMarks.map((m) => (
         <ExamMarksCards key={m.studentMembershipId} marks={m} compact />
       ))}
+
+      <CelebrationsLink session={ctx} />
     </div>
   );
 }

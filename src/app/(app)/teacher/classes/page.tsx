@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { Badge } from "@/components/ui/badge";
 import { getT } from "@/lib/i18n/server";
+import { CelebrationsLink } from "@/components/celebrations/celebrations-link";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -74,6 +75,8 @@ export default async function TeacherClassesPage() {
           {classes.reduce((sum, c) => sum + c._count.enrollments, 0)} students
         </p>
       </div>
+
+      <CelebrationsLink session={ctx} />
 
       <ul className="space-y-2">
         {classes.map((klass) => (

@@ -18,11 +18,14 @@ export async function FeedFilters({
   basePath,
   category,
   q,
+  tag,
   extra = {},
 }: {
   basePath: string;
   category?: PostCategory;
   q?: string;
+  /** The active tag filter, so the celebrations chip can show as pressed. */
+  tag?: string;
   extra?: Record<string, string>;
 }) {
   const t = await getT();
@@ -91,6 +94,26 @@ export async function FeedFilters({
             {t(CATEGORY_KEYS[key].name)}
           </Link>
         ))}
+        {/* Not a category — a TAG, #celebrations, which every birthday wish
+            carries. The chip sits with the categories because that is where a
+            reader looks for "just the birthdays". */}
+        <Link
+          href={`${basePath}?${new URLSearchParams({ ...extra, tag: "celebrations" }).toString()}`}
+          aria-current={tag === "celebrations" ? "page" : undefined}
+          className={
+            tag === "celebrations"
+              ? "rounded-full bg-accent px-3 py-1.5 text-xs font-semibold text-accent-fg"
+              : "rounded-full bg-surface-muted px-3 py-1.5 text-xs font-medium text-fg-muted hover:text-fg"
+          }
+        >
+          🎂 {t("celebrations.chip")}
+        </Link>
+        <Link
+          href="/bulletin/celebrations"
+          className="rounded-full border border-dashed border-border px-3 py-1.5 text-xs font-medium text-fg-muted hover:text-fg"
+        >
+          {t("celebrations.upcomingLink")}
+        </Link>
       </nav>
     </div>
   );

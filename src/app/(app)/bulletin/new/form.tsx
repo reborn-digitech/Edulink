@@ -30,12 +30,19 @@ export function ComposeForm({
   role,
   allowSchoolWide,
   className,
+  initialTitle,
+  initialTags,
+  initialCategory,
 }: {
   classes: { id: string; name: string }[];
   grades: string[];
   role: Role;
   allowSchoolWide: boolean;
   className?: string;
+  /** From a "Post a wish" link: the title written, the tag on, the category chosen. */
+  initialTitle?: string;
+  initialTags?: string[];
+  initialCategory?: PostCategory;
 }) {
   const t = useT();
   const router = useRouter();
@@ -47,14 +54,14 @@ export function ComposeForm({
   );
   // Deliberately unset until chosen — every post carries one of the five, and
   // an unnoticed default would put half the school's life under "Updates".
-  const [category, setCategory] = useState<PostCategory | "">("");
+  const [category, setCategory] = useState<PostCategory | "">(initialCategory ?? "");
   const [classId, setClassId] = useState(classes[0]?.id ?? "");
   const [audience, setAudience] = useState<"ALL" | "PARENTS" | "TEACHERS" | "STUDENTS">("ALL");
   const [audienceGrade, setAudienceGrade] = useState("");
   const [requiresAck, setRequiresAck] = useState(false);
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState(initialTitle ?? "");
   const [body, setBody] = useState("");
-  const [tags, setTags] = useState<string[]>([]);
+  const [tags, setTags] = useState<string[]>(initialTags ?? []);
   const [tagDraft, setTagDraft] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
 

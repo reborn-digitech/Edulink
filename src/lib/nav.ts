@@ -115,10 +115,12 @@ export const NAV: Record<Role, NavItem[]> = {
     // ONE place for "how did I do": exam marks, the exams ahead, report cards.
     { href: "/exams", labelKey: "nav.exams", icon: "chartLine", primary: true, prefix: true, also: ["/report-cards"] },
     { href: "/student/practice", labelKey: "nav.practice", icon: "brain", primary: true, prefix: true },
-    { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", primary: true, prefix: true },
     { href: "/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "daily" },
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
     { href: "/reviews", labelKey: "nav.feedback", icon: "star", prefix: true, group: "daily" },
+    // Social Media sits with school life for a pupil — the bottom bar keeps
+    // the four things a school day is made of.
+    { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
     { href: "/mentoring", labelKey: "nav.mentoring", icon: "chat", prefix: true, group: "school" },
     { href: "/competitions", labelKey: "nav.competitions", icon: "trophy", prefix: true, group: "school" },
     { href: "/archive", labelKey: "nav.pastYears", icon: "archive", prefix: true, group: "school" },

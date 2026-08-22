@@ -157,6 +157,7 @@ export default async function BulletinPage({
         basePath="/bulletin"
         category={category}
         q={q}
+        tag={tag}
         extra={{
           ...(filter ? { filter } : {}),
           ...(requestedSchool ? { school: requestedSchool } : {}),
