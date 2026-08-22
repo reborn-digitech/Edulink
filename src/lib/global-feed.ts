@@ -75,7 +75,7 @@ export type GlobalPost = {
  */
 export async function listGlobalFeed(
   session: ActiveContext,
-  opts: { includeHidden?: boolean; category?: PostCategory; q?: string } = {},
+  opts: { includeHidden?: boolean; category?: PostCategory; q?: string; tag?: string } = {},
 ): Promise<GlobalPost[]> {
   const schoolId = session.schoolId;
   const isStaff = session.role === "ADMIN" || session.role === "TEACHER";
@@ -87,6 +87,8 @@ export async function listGlobalFeed(
         status: "APPROVED",
         ...(opts.category ? { category: opts.category } : {}),
         ...(opts.q ? { AND: [searchWhere(opts.q)] } : {}),
+        // Same rule as the school feed: a tag is a quoted JSON member.
+        ...(opts.tag ? { tags: { contains: `"${opts.tag}"` } } : {}),
       },
       include: {
         author: { select: { name: true, preferredName: true } },

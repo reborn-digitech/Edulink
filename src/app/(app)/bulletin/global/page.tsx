@@ -32,19 +32,20 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function GlobalFeedPage({
   searchParams,
 }: {
-  searchParams: Promise<{ category?: string; q?: string }>;
+  searchParams: Promise<{ category?: string; q?: string; tag?: string }>;
 }) {
   const t = await getT();
   const ctx = await requireRole("ADMIN", "TEACHER", "STUDENT", "PARENT");
   const isAdmin = ctx.role === "ADMIN";
 
-  const { category: rawCategory, q: rawQ } = await searchParams;
+  const { category: rawCategory, q: rawQ, tag: rawTag } = await searchParams;
   const category = POST_CATEGORIES.includes(rawCategory as PostCategory)
     ? (rawCategory as PostCategory)
     : undefined;
   const q = rawQ?.trim() || undefined;
+  const tag = rawTag?.trim().replace(/^#/, "").slice(0, 40) || undefined;
 
-  const posts = await listGlobalFeed(ctx, { category, q });
+  const posts = await listGlobalFeed(ctx, { category, q, tag });
 
   return (
     <div className="space-y-5">
@@ -61,13 +62,13 @@ export default async function GlobalFeedPage({
         <p className="mt-1 max-w-prose text-sm text-fg-muted">{t("bulletin.globalIntro")}</p>
       </div>
 
-      <FeedFilters basePath="/bulletin/global" category={category} q={q} />
+      <FeedFilters basePath="/bulletin/global" category={category} q={q} tag={tag} />
 
       {posts.length === 0 ? (
         <EmptyState
           icon={<GlobeIcon weight="duotone" className="size-8" />}
-          title={category || q ? t("bulletin.noMatchesTitle") : t("bulletin.nothingShared")}
-          description={category || q ? t("bulletin.noMatchesBody") : t("bulletin.nothingSharedBody")}
+          title={category || q || tag ? t("bulletin.noMatchesTitle") : t("bulletin.nothingShared")}
+          description={category || q || tag ? t("bulletin.noMatchesBody") : t("bulletin.nothingSharedBody")}
         />
       ) : (
         <ul className="space-y-3">

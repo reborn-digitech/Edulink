@@ -828,8 +828,15 @@ async function alumniRecord(schoolId: string) {
 }
 
 async function staffingAndDuty(schoolId: string) {
+  /* THE OLDEST CLASS, NOT ANY CLASS. `findFirst` with no order picked whatever
+   * Postgres offered — three runs in a row that was a disposable class some
+   * other section (or the unit suite, which shares this database) had just
+   * made and was about to delete, and this check failed with a 404 or a
+   * bounced session that looked like an app bug. The seed's first class
+   * outlives every fixture. */
   const klass = await db.class.findFirst({
-    where: { schoolId, archivedAt: null },
+    where: { schoolId, archivedAt: null, NOT: { name: { startsWith: "ZZ" } } },
+    orderBy: { createdAt: "asc" },
     select: { id: true },
   });
   if (!klass) return;
