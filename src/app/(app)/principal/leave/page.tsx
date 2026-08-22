@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { DecideCard } from "./decide-card";
 import { getT } from "@/lib/i18n/server";
+import { formatDateKey } from "@/lib/dates";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -216,10 +217,10 @@ export default async function PrincipalLeavePage() {
                   <span className="block truncate text-xs text-fg-muted">
                     {request.toDateKey !== request.fromDateKey
                       ? t("calendar.rangeTo", {
-                          from: request.fromDateKey,
-                          to: request.toDateKey,
+                          from: formatDateKey(request.fromDateKey, { day: "numeric", month: "short" }),
+                          to: formatDateKey(request.toDateKey, { day: "numeric", month: "short" }),
                         })
-                      : request.fromDateKey}{" "}
+                      : formatDateKey(request.fromDateKey, { day: "numeric", month: "short" })}{" "}
                     ·{" "}
                     {LEAVE_KIND_LABEL_KEY[request.kind as LeaveKind]
                       ? t(LEAVE_KIND_LABEL_KEY[request.kind as LeaveKind])

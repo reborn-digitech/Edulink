@@ -86,7 +86,7 @@ export type AttendanceHistory = {
   percent: number | null;
 };
 
-export const MONTH_KEY = /^\d{4}-\d{2}$/;
+export const MONTH_KEY = /^\d{4}-(0[1-9]|1[0-2])$/;
 
 /**
  * The month's grid. Refuses — rather than returning empty — when the class is

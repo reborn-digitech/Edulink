@@ -231,7 +231,8 @@ export async function attendanceTrend(ctx: ActiveContext): Promise<TrendPoint[]>
       }
     }
     points.push({
-      label: end.slice(5), // MM-DD, a data value — dates stay English
+      // dd/mm, like every date — a week is named by the day it ends on.
+      label: [end.slice(8, 10), end.slice(5, 7)].join("/"),
       percent: marks === 0 ? null : Math.round((attended * 100) / marks),
       marks,
     });

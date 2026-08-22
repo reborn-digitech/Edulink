@@ -10,6 +10,7 @@ import { LEAVE_KIND_LABEL_KEY, LEAVE_STATUS_KEY, type LeaveKind, type LeaveStatu
 import { actionError } from "@/lib/action-error";
 import { decide } from "./actions";
 import { useT } from "@/lib/i18n";
+import { formatDateKey } from "@/lib/dates";
 
 /**
  * One request, and the decision.
@@ -117,8 +118,11 @@ export function DecideCard({
           <p className="font-semibold text-fg">{request.applicantName}</p>
           <p className="text-xs text-fg-muted">
             {request.toDateKey !== request.fromDateKey
-              ? t("calendar.rangeTo", { from: request.fromDateKey, to: request.toDateKey })
-              : request.fromDateKey}{" "}
+              ? t("calendar.rangeTo", {
+                  from: formatDateKey(request.fromDateKey, { day: "numeric", month: "short" }),
+                  to: formatDateKey(request.toDateKey, { day: "numeric", month: "short" }),
+                })
+              : formatDateKey(request.fromDateKey, { day: "numeric", month: "short" })}{" "}
             ·{" "}
             {LEAVE_KIND_LABEL_KEY[request.kind as LeaveKind]
               ? t(LEAVE_KIND_LABEL_KEY[request.kind as LeaveKind])

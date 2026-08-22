@@ -19,6 +19,7 @@ import { apply, withdraw } from "./actions";
 import { DateField } from "@/components/ui/field";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
+import { formatDateKey } from "@/lib/dates";
 
 /**
  * Applying to be away.
@@ -213,10 +214,10 @@ export function LeaveForm({
                   <p className="font-semibold text-fg">
                     {request.toDateKey !== request.fromDateKey
                       ? t("calendar.rangeTo", {
-                          from: request.fromDateKey,
-                          to: request.toDateKey,
+                          from: formatDateKey(request.fromDateKey, { day: "numeric", month: "short" }),
+                          to: formatDateKey(request.toDateKey, { day: "numeric", month: "short" }),
                         })
-                      : request.fromDateKey}
+                      : formatDateKey(request.fromDateKey, { day: "numeric", month: "short" })}
                   </p>
                   <p className="text-xs text-fg-muted">
                     {LEAVE_KIND_LABEL_KEY[request.kind as LeaveKind]
