@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
+  ClockCounterClockwiseIcon,
   ArrowLeftIcon,
   ArrowSquareOutIcon,
   CertificateIcon,
@@ -121,7 +122,16 @@ export default async function PrincipalClassPage({
             })}
           </p>
         </div>
-        <WindowPicker days={span} />
+        <div className="flex flex-wrap items-center gap-2">
+          <Link
+            href={`/attendance/history?classId=${classId}`}
+            className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-sm font-medium text-fg hover:bg-surface-muted"
+          >
+            <ClockCounterClockwiseIcon weight="bold" className="size-4" />
+            {t("attendanceHistory.link")}
+          </Link>
+          <WindowPicker days={span} />
+        </div>
       </div>
 
       {lead && (

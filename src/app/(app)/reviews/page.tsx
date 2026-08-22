@@ -6,6 +6,7 @@ import { db } from "@/lib/db";
 import { pendingReviews, type PendingReview } from "@/lib/reviews";
 import { EmptyState } from "@/components/ui/states";
 import { RateCard } from "./rate-card";
+import { formatDateKey } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -70,7 +71,7 @@ export default async function MyReviewsPage() {
                 roundId={entry.roundId}
                 teacherMembershipId={entry.teacherMembershipId}
                 teacherName={entry.teacherName}
-                closesDateKey={entry.closesDateKey}
+                closesDateKey={formatDateKey(entry.closesDateKey)}
                 initial={entry.myScores}
               />
             </li>

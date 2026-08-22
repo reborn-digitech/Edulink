@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ChalkboardTeacherIcon, CaretRightIcon, WarningIcon } from "@phosphor-icons/react/ssr";
+import {
+  ChalkboardTeacherIcon,
+  CaretRightIcon,
+  ClockCounterClockwiseIcon,
+  WarningIcon,
+} from "@phosphor-icons/react/ssr";
 import { requireRole, assertClassAccess } from "@/lib/tenancy";
 import { classesIMayTake, registerDuty } from "@/lib/register-duty";
 import { getRegister } from "@/lib/attendance";
@@ -85,11 +90,14 @@ export default async function AttendancePage({
 
     return (
       <div className="space-y-4">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg">{t("teacher.takeRegister")}</h1>
-          <p className="mt-1 text-sm text-fg-muted">
-            {formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })}
-          </p>
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <h1 className="text-2xl font-bold tracking-tight text-fg">{t("teacher.takeRegister")}</h1>
+            <p className="mt-1 text-sm text-fg-muted">
+              {formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })}
+            </p>
+          </div>
+          <PastRegistersLink label={t("attendanceHistory.link")} />
         </div>
 
         <ClosedDayNotice calendar={calendar} dateKey={dateKey} />
@@ -157,6 +165,14 @@ export default async function AttendancePage({
 
   return (
     <div className="space-y-4">
+      {/* Past registers belong to the class teacher, not to whoever is
+          covering this week — so a cover teacher is not shown a door that
+          would only refuse them. */}
+      {duty.reason !== "COVER" && (
+        <div className="flex justify-end">
+          <PastRegistersLink classId={selectedId} label={t("attendanceHistory.link")} />
+        </div>
+      )}
       <ClosedDayNotice calendar={calendar} dateKey={dateKey} />
       {duty.reason === "COVER" && (
         // Said out loud, because somebody marking a register they do not
@@ -176,6 +192,17 @@ export default async function AttendancePage({
         readOnly={dateKey > today}
       />
     </div>
+  );
+}
+
+/** The one door to the month grid — on the register, never in the nav. */
+function PastRegistersLink({ classId, label }: { classId?: string; label: string }) {
+  return (
+    <Button asChild variant="ghost" size="sm" icon={<ClockCounterClockwiseIcon weight="bold" />}>
+      <Link href={classId ? `/attendance/history?classId=${classId}` : "/attendance/history"}>
+        {label}
+      </Link>
+    </Button>
   );
 }
 

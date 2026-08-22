@@ -91,7 +91,15 @@ export default async function PrincipalDashboard({
         <StatTile
           label={t("principal.attendance")}
           value={summary.attendancePercent === null ? "—" : `${summary.attendancePercent}%`}
-          hint={t("principal.attendanceHint")}
+          hint={
+            <>
+              {t("principal.attendanceHint")}
+              {" · "}
+              <Link href="/attendance/history" className="font-medium text-accent-strong hover:underline">
+                {t("attendanceHistory.link")}
+              </Link>
+            </>
+          }
           tone={
             summary.attendancePercent !== null &&
             summary.attendancePercent < ATTENDANCE_CONCERN_PERCENT

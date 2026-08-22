@@ -6,7 +6,7 @@ import { AccessError, requireUser } from "@/lib/tenancy";
 import { buildProgressReport } from "@/lib/reports";
 import { recordsForStudentMembership } from "@/lib/school-record";
 import { SchoolRecordList } from "@/components/school-record-list";
-import { formatDateKey } from "@/lib/dates";
+import { formatDate, formatDateKey } from "@/lib/dates";
 import { formatMilli } from "@/lib/validation";
 import { Avatar } from "@/components/ui/avatar";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
@@ -231,11 +231,7 @@ export default async function ReportPage({
         <p>
           {t("reportView.generatedOn", {
             school: report.school.name,
-            date: report.generatedAt.toLocaleDateString("en-GB", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            }),
+            date: formatDate(report.generatedAt),
           })}
         </p>
         <p className="mt-0.5">

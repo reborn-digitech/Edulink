@@ -1503,6 +1503,8 @@ export const hi: Dictionary = {
   },
 
   access: {
+    monthMustBeYearMonth: "कोई महीना चुनें।",
+    notYourClassHistory: "इस कक्षा की हाज़िरियाँ सिर्फ़ कक्षा-शिक्षक, प्रशासक या प्रधानाचार्य ही देख सकते हैं।",
     notYourPaperToMark: "आप केवल उन्हीं कक्षाओं के अंक भर सकते हैं जिन्हें आप पढ़ाते हैं या जिनका रजिस्टर लेते हैं",
     onlyAdminsSetExams: "केवल एडमिन ही परीक्षाएँ व्यवस्थित कर सकते हैं।",
     giveTheExamAName: "परीक्षा शृंखला को नाम दें।",
@@ -2289,6 +2291,12 @@ export const hi: Dictionary = {
 
     sundaySession: "रविवार का सत्र",
     dayByDay: "दिन-प्रतिदिन",
+    previousMonth: "पिछला महीना",
+    nextMonth: "अगला महीना",
+    thisMonth: "यह महीना",
+    thereOfDays: "{total} में से {there} दिन",
+    nothingInMonth: "{month} में {name} की कोई हाज़िरी नहीं ली गई।",
+    changesAppearImmediately: "शिक्षक जो भी बदलें, वह यहाँ तुरंत दिखता है।",
     noAttendanceYet: "अभी कोई हाज़िरी दर्ज नहीं",
     attendanceLongEmpty: "शिक्षक के हाज़िरी लेते ही हर दिन यहाँ सूचीबद्ध हो जाएगा।",
 
@@ -3265,6 +3273,29 @@ export const hi: Dictionary = {
     notYet: "अभी जमा नहीं हुआ",
   },
 
+  attendanceHistory: {
+    title: "पिछली हाज़िरियाँ",
+    intro: "किसी कक्षा की ली गई हर हाज़िरी, एक महीने में एक बार। जिस दिन किसी बच्चे का निशान नहीं लगा, वहाँ खाली दिखेगा — अनुपस्थिति नहीं।",
+    link: "पिछली हाज़िरियाँ",
+    linkHint: "पहले ली गई हाज़िरियाँ देखें",
+    chooseClass: "कक्षा चुनें",
+    noClasses: "दिखाने को कोई कक्षा-इतिहास नहीं",
+    noClassesBody: "किसी कक्षा की हाज़िरियाँ सिर्फ़ उसके कक्षा-शिक्षक, प्रशासक या प्रधानाचार्य ही देख सकते हैं।",
+    fieldClass: "कक्षा",
+    fieldMonth: "महीना",
+    show: "दिखाएँ",
+    previousMonth: "पिछला महीना",
+    nextMonth: "अगला महीना",
+    nothingTaken: "{month} में {className} की कोई हाज़िरी नहीं ली गई।",
+    registersTaken: "{count} हाज़िरियाँ ली गईं",
+    registersTakenOne: "1 हाज़िरी ली गई",
+    monthRate: "पूरे महीने में {percent}% उपस्थित या देर से",
+    pupil: "विद्यार्थी",
+    rate: "दर",
+    dayTotals: "हर दिन उपस्थित या देर से",
+    legend: "P उपस्थित · L देर से · A अनुपस्थित · E छूट · खाली = निशान नहीं",
+    exportCsv: "यह महीना CSV में डाउनलोड करें",
+  },
   attendanceIntel: {
     title: "उपस्थिति अंतर्दृष्टि",
     intro:
@@ -3359,7 +3390,7 @@ export const hi: Dictionary = {
     openGrid: "अंक तालिका खोलें",
     adminCardTitle: "परीक्षाएँ और रिपोर्ट कार्ड",
     adminCardNone: "अभी कोई परीक्षा तय नहीं। यूनिट टेस्ट, अर्धवार्षिक और वार्षिक तय करें; रिपोर्ट कार्ड इन्हीं से बनते हैं।",
-    adminCardBody: "{scheduled} परीक्षाएँ तय, {published} प्रकाशित · {cards} रिपोर्ट कार्ड जारी",
+    adminCardBody: "परीक्षाएँ: {scheduled} तय, {published} प्रकाशित · रिपोर्ट कार्ड: {cards} जारी",
     scheduleExams: "परीक्षाएँ तय करें",
     progressBanner: "ये अंक चल रहे काम की तस्वीर हैं। परीक्षा के अंक और रिपोर्ट कार्ड 'परीक्षाएँ' में हैं।",
     progressBannerLink: "परीक्षाएँ खोलें",
@@ -4267,6 +4298,7 @@ export const hi: Dictionary = {
     noneSoon: "अगले महीने कुछ नहीं — देखें अगला कौन",
   },
   meta: {
+    pastRegisters: "पिछली हाज़िरियाँ",
     appDescription:
       "स्कूलों, विद्यार्थियों और अभिभावकों के लिए उपस्थिति, काम, अंक और शिक्षक संदेश। ऐप की तरह इंस्टॉल होता है और ऑफ़लाइन चलता है।",
     ogDescription: "उपस्थिति, काम, अंकों और स्कूल के संदेशों के लिए एक शांत जगह।",

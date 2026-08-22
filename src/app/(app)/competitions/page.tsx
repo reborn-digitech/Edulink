@@ -7,6 +7,7 @@ import { Card, CardBody } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { Button } from "@/components/ui/button";
 import { ConsentControls } from "./entry-controls";
+import { formatDate } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -62,7 +63,7 @@ export default async function CompetitionsPage({
                 ? ` · ${competition.gradeLow}${competition.gradeHigh && competition.gradeHigh !== competition.gradeLow ? `–${competition.gradeHigh}` : ""}`
                 : ""}
               {competition.registrationClosesAt
-                ? ` · ${t("competitions.closesShort", { date: competition.registrationClosesAt.toLocaleDateString("en-GB", { day: "numeric", month: "long" }) })}`
+                ? ` · ${t("competitions.closesShort", { date: formatDate(competition.registrationClosesAt) })}`
                 : ""}
             </p>
           </Link>

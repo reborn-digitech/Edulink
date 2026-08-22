@@ -66,8 +66,16 @@ export default async function ParentDashboard({
       where: { studentMembershipId: selectedId, session: { dateKey: today } },
       select: { status: true, note: true },
     }),
+    // Homework only: an exam paper is also stored as a Grade, but its marks
+    // belong to the exam card below, and the tile's "pieces" are the ongoing
+    // work a parent monitors — mixing the two would average a unit test into
+    // a reading log.
     db.grade.findMany({
-      where: { studentMembershipId: selectedId, schoolId: student.schoolId },
+      where: {
+        studentMembershipId: selectedId,
+        schoolId: student.schoolId,
+        assignment: { examSlotId: null },
+      },
       include: { assignment: { select: { title: true, pointsMilli: true, category: true, classId: true } } },
       orderBy: { gradedAt: "desc" },
       take: 5,

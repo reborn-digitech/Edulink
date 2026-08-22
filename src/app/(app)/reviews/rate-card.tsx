@@ -27,6 +27,7 @@ export function RateCard({
   roundId: string;
   teacherMembershipId: string;
   teacherName: string;
+  /** Already formatted for display — the page formats it on the server. */
   closesDateKey: string;
   initial: Partial<Record<ReviewQuestion, number>> | null;
 }) {

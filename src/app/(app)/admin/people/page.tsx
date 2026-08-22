@@ -150,7 +150,12 @@ export default async function DirectoryPage({
               .map((c) =>
                 t("people.countOfRole", {
                   count: c._count,
-                  role: t(ROLE_META[c.role as SchoolRole].pluralKey).toLowerCase(),
+                  // "1 admin", not "1 admins" — the role has a singular.
+                  role: t(
+                    c._count === 1
+                      ? ROLE_META[c.role as SchoolRole].labelKey
+                      : ROLE_META[c.role as SchoolRole].pluralKey,
+                  ).toLowerCase(),
                 }),
               )
               .join(" · ") || t("people.nobodyYet")}

@@ -854,6 +854,15 @@ async function staffingAndDuty(schoolId: string) {
 
   const teacherActor = await mint(link.teacher.user.email, "TEACHER", schoolId, "duty-teacher");
   await check(teacherActor, "/teacher/attendance", 200, "the class teacher reaches the register");
+  // Past registers: the class teacher reads their own class back, with a
+  // month or without one; a class they are not on is refused with a
+  // sentence, not a blank month.
+  await check(teacherActor, `/attendance/history?classId=${klass.id}`, 200, "…and reads its past registers");
+  await check(teacherActor, `/attendance/history?classId=${klass.id}&month=2026-07`, 200, "…for any month");
+  await check(teacherActor, "/attendance/history", 200, "…from the history page itself");
+  if (adminActor) {
+    await check(adminActor, `/attendance/history?classId=${klass.id}`, 200, "an admin reads any class's past registers");
+  }
   if (adminActor) {
     await check(teacherActor, `/admin/classes/${klass.id}`, 307, "…but not the staffing page");
   }
@@ -1295,6 +1304,7 @@ async function leaveAndPrincipal(schoolId: string) {
     await check(studentActor, "/teacher/leave", 307, "⚠ a pupil has no leave page");
     await check(studentActor, "/principal/leave", 307, "⚠ …and cannot read staff leave");
     await check(studentActor, "/admin/calendar", 307, "⚠ …nor the staff calendar it appears on");
+    await check(studentActor, "/attendance/history", 307, "⚠ …nor any class's past registers");
   }
 
   // A principal, made for the sweep and removed afterwards.
@@ -1325,6 +1335,7 @@ async function leaveAndPrincipal(schoolId: string) {
     await check(head, "/teacher/leave", 200, "a principal takes leave like anybody else");
     // A principal READS the school; they do not mark registers or set it up.
     await check(head, "/teacher/attendance", 307, "⚠ …but does not take a register");
+    await check(head, "/attendance/history", 200, "…yet reads every class's past registers");
     await check(head, "/admin/people", 307, "⚠ …nor run the directory");
     await check(head, "/admin/classes/new", 307, "⚠ …nor create classes");
 

@@ -5,11 +5,13 @@ import {
   CheckCircleIcon,
   BellRingingIcon,
   DownloadSimpleIcon,
+  ClockCounterClockwiseIcon,
 } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { absenceFlags, attendanceTrend } from "@/lib/attendance-intel";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { getT } from "@/lib/i18n/server";
@@ -57,11 +59,16 @@ export default async function AdminAttendancePage({
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("attendanceIntel.title")}
-        </h1>
-        <p className="mt-1 text-sm text-fg-muted">{t("attendanceIntel.intro")}</p>
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
+            {t("attendanceIntel.title")}
+          </h1>
+          <p className="mt-1 text-sm text-fg-muted">{t("attendanceIntel.intro")}</p>
+        </div>
+        <Button asChild variant="secondary" size="sm" icon={<ClockCounterClockwiseIcon weight="bold" />}>
+          <Link href="/attendance/history">{t("attendanceHistory.link")}</Link>
+        </Button>
       </div>
 
       {error && (

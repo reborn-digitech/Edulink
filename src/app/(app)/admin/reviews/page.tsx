@@ -3,7 +3,7 @@ import { StarIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { listReviewRounds, schoolReviewDashboard } from "@/lib/reviews";
-import { todayKey } from "@/lib/dates";
+import { formatDateKey, todayKey } from "@/lib/dates";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { OpenRoundForm } from "./open-round-form";
@@ -82,7 +82,7 @@ export default async function AdminReviewsPage() {
               >
                 <span className="min-w-0 flex-1">
                   <span className="block text-sm font-medium text-fg">
-                    {t(AUDIENCE_KEY[round.audience])} · {t("reviews.openUntil", { date: round.closesDateKey })}
+                    {t(AUDIENCE_KEY[round.audience])} · {t("reviews.openUntil", { date: formatDateKey(round.closesDateKey) })}
                   </span>
                   <span className="block text-xs text-fg-muted">
                     {t("reviews.teachersN", { count: round.teacherCount })} ·{" "}

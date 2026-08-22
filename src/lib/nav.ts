@@ -58,7 +58,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true },
     { href: "/admin/timetable", labelKey: "nav.timetable", icon: "clock", primary: true, prefix: true },
     { href: "/admin/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true },
-    { href: "/admin/attendance", labelKey: "nav.attendance", icon: "checks", prefix: true, group: "running" },
+    { href: "/admin/attendance", labelKey: "nav.attendance", icon: "checks", prefix: true, group: "running", also: ["/attendance/history"] },
     { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true, group: "running" },
     // The leave queue is genuinely an admin's to work — a school whose
     // principal is the one on leave still has to approve somebody's.
@@ -76,7 +76,7 @@ export const NAV: Record<Role, NavItem[]> = {
   // those belong to the teacher and the admin respectively, and handing all
   // three to one role is how "principal" quietly becomes "can do anything".
   PRINCIPAL: [
-    { href: "/principal", labelKey: "nav.dashboard", icon: "chartLine", primary: true },
+    { href: "/principal", labelKey: "nav.dashboard", icon: "chartLine", primary: true, also: ["/attendance/history"] },
     { href: "/principal/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true },
     { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", primary: true, prefix: true },
     { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", primary: true, prefix: true },
@@ -91,7 +91,7 @@ export const NAV: Record<Role, NavItem[]> = {
   ],
   TEACHER: [
     { href: "/teacher", labelKey: "nav.today", icon: "house", primary: true },
-    { href: "/teacher/attendance", labelKey: "nav.register", icon: "checks", primary: true, prefix: true },
+    { href: "/teacher/attendance", labelKey: "nav.register", icon: "checks", primary: true, prefix: true, also: ["/attendance/history"] },
     { href: "/teacher/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true },
     { href: "/teacher/assignments", labelKey: "nav.assignments", icon: "clipboard", primary: true, prefix: true },
     { href: "/teacher/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true },

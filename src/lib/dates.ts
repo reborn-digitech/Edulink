@@ -168,14 +168,65 @@ export function isTeachingDay(dateKey: string): boolean {
  */
 const LOCALE = "en";
 
+/**
+ * ⚠ EVERY DATE IS dd/mm/yyyy.
+ *
+ * The school reads dates the way the country writes them on a form: day,
+ * month, year, with slashes. So any formatter asked for a DAY answers in that
+ * one shape — "23/08/2026" — and the caller's other options become a prefix
+ * or a suffix around it: a weekday ("Sun, 23/08/2026"), a time
+ * ("23/08/2026, 9:00 AM"). Options WITHOUT a full date are left to Intl: a
+ * month heading ("August 2026"), a lone weekday atop a column, a day number
+ * in a dense grid. Those are labels, not dates.
+ *
+ * This is why `formatDateKey(key, { day: "numeric", month: "long" })` and
+ * `formatDateKey(key)` now read the same: the option shape was describing
+ * how much of the date to show, and the answer is always all of it.
+ */
+function wantsDay(opts: Intl.DateTimeFormatOptions): boolean {
+  // A day WITH a month or year is a date. A day alone is a number in a grid.
+  return (
+    opts.dateStyle !== undefined ||
+    (opts.day !== undefined && (opts.month !== undefined || opts.year !== undefined))
+  );
+}
+
+function assemble(parts: Intl.DateTimeFormatPart[], opts: Intl.DateTimeFormatOptions): string {
+  const get = (type: Intl.DateTimeFormatPartTypes) => parts.find((p) => p.type === type)?.value ?? "";
+  const date = `${get("day").padStart(2, "0")}/${get("month").padStart(2, "0")}/${get("year")}`;
+  const weekday = opts.weekday ? `${get("weekday")}, ` : "";
+  const time =
+    opts.timeStyle !== undefined || opts.hour !== undefined
+      ? `, ${get("hour")}:${get("minute")}${get("dayPeriod") ? ` ${get("dayPeriod")}` : ""}`
+      : "";
+  return `${weekday}${date}${time}`;
+}
+
+/** The Intl options that yield every part `assemble` may need. */
+function partsOptions(opts: Intl.DateTimeFormatOptions): Intl.DateTimeFormatOptions {
+  const wantsTime = opts.timeStyle !== undefined || opts.hour !== undefined;
+  return {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    ...(opts.weekday ? { weekday: opts.weekday } : {}),
+    ...(wantsTime ? { hour: "numeric", minute: "2-digit" } : {}),
+  };
+}
+
 export function formatDateKey(
   dateKey: string,
   opts: Intl.DateTimeFormatOptions = { weekday: "short", day: "numeric", month: "short" },
 ): string {
   const [y, m, d] = dateKey.split("-").map(Number) as [number, number, number];
-  return new Intl.DateTimeFormat(LOCALE, { ...opts, timeZone: "UTC" }).format(
-    new Date(Date.UTC(y, m - 1, d)),
-  );
+  const instant = new Date(Date.UTC(y, m - 1, d));
+  if (wantsDay(opts)) {
+    return assemble(
+      new Intl.DateTimeFormat(LOCALE, { ...partsOptions(opts), timeZone: "UTC" }).formatToParts(instant),
+      opts,
+    );
+  }
+  return new Intl.DateTimeFormat(LOCALE, { ...opts, timeZone: "UTC" }).format(instant);
 }
 
 export function formatInZone(
@@ -183,7 +234,18 @@ export function formatInZone(
   timeZone: string,
   opts: Intl.DateTimeFormatOptions = { dateStyle: "medium", timeStyle: "short" },
 ): string {
+  if (wantsDay(opts)) {
+    return assemble(
+      new Intl.DateTimeFormat(LOCALE, { ...partsOptions(opts), timeZone }).formatToParts(instant),
+      opts,
+    );
+  }
   return new Intl.DateTimeFormat(LOCALE, { ...opts, timeZone }).format(instant);
+}
+
+/** A plain calendar date — "23/08/2026" — for an instant read in a zone. */
+export function formatDate(instant: Date, timeZone: string = "UTC"): string {
+  return formatInZone(instant, timeZone, { day: "numeric", month: "numeric", year: "numeric" });
 }
 
 /**

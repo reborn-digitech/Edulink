@@ -13,6 +13,7 @@ import {
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
+import { formatDate } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { setPractice, removePractice } from "./actions";
 
@@ -293,7 +294,7 @@ export default async function TeacherPracticePage({
                     <p className="font-semibold text-fg">{a.topicName}</p>
                     <p className="text-xs text-fg-muted">
                       {t("practice.assignedTarget", { tier: a.targetTierName, level: a.targetLevel })}
-                      {a.dueAt ? ` · ${a.dueAt.toDateString()}` : ""}
+                      {a.dueAt ? ` · ${formatDate(a.dueAt)}` : ""}
                       {a.note ? ` · ${a.note}` : ""}
                     </p>
                   </div>

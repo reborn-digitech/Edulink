@@ -8,6 +8,7 @@ import {
   SealCheckIcon,
   ShieldCheckIcon,
 } from "@phosphor-icons/react/ssr";
+import { formatDate } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { requireUser } from "@/lib/tenancy";
 import { AccessError } from "@/lib/tenancy";
@@ -30,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 function when(date: Date | null): string | null {
   if (!date) return null;
-  return date.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+  return formatDate(date);
 }
 
 export default async function CompetitionPage({

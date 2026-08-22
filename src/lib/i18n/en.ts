@@ -1678,6 +1678,8 @@ export const en = {
   /* boundary. One key per distinct sentence; the sentence is the value.    */
   /* ---------------------------------------------------------------------- */
   access: {
+    monthMustBeYearMonth: "Pick a month.",
+    notYourClassHistory: "Only the class teacher, an admin or the principal can read this class's registers back.",
     notYourPaperToMark: "You can enter marks only for classes you teach or take the register for",
     onlyAdminsSetExams: "Only an admin can set up exams.",
     giveTheExamAName: "Give the exam series a name.",
@@ -2515,6 +2517,12 @@ export const en = {
 
     sundaySession: "Sunday session",
     dayByDay: "Day by day",
+    previousMonth: "Previous month",
+    nextMonth: "Next month",
+    thisMonth: "This month",
+    thereOfDays: "{there} of {total} days",
+    nothingInMonth: "No register was taken for {name} in {month}.",
+    changesAppearImmediately: "Anything a teacher changes appears here immediately.",
     noAttendanceYet: "No attendance recorded yet",
     attendanceLongEmpty: "As soon as a teacher takes the register, every day will be listed here.",
 
@@ -3644,6 +3652,29 @@ export const en = {
     notYet: "Not handed in yet",
   },
 
+  attendanceHistory: {
+    title: "Past registers",
+    intro: "Every register taken for a class, one month at a time. A child who was not marked on a day shows a blank, not an absence.",
+    link: "Past registers",
+    linkHint: "Read back the registers already taken",
+    chooseClass: "Choose a class",
+    noClasses: "No class history to show",
+    noClassesBody: "Only the class teacher of a class, an admin or the principal can read its registers back.",
+    fieldClass: "Class",
+    fieldMonth: "Month",
+    show: "Show",
+    previousMonth: "Previous month",
+    nextMonth: "Next month",
+    nothingTaken: "No register was taken for {className} in {month}.",
+    registersTaken: "{count} registers taken",
+    registersTakenOne: "1 register taken",
+    monthRate: "{percent}% present or late across the month",
+    pupil: "Pupil",
+    rate: "Rate",
+    dayTotals: "Present or late, each day",
+    legend: "P present · L late · A absent · E excused · blank not marked",
+    exportCsv: "Download this month as CSV",
+  },
   attendanceIntel: {
     title: "Attendance insights",
     intro:
@@ -3738,7 +3769,7 @@ export const en = {
     openGrid: "Open the marks grid",
     adminCardTitle: "Exams & report cards",
     adminCardNone: "No exams scheduled yet. Schedule unit tests, mid-terms and finals; report cards are built from them.",
-    adminCardBody: "{scheduled} exams scheduled, {published} published · {cards} report cards issued",
+    adminCardBody: "Exams: {scheduled} scheduled, {published} published · Report cards: {cards} issued",
     scheduleExams: "Schedule exams",
     progressBanner: "These marks track ongoing work. Exam marks and report cards live under Exams.",
     progressBannerLink: "Open Exams",
@@ -4701,6 +4732,7 @@ export const en = {
     noneSoon: "Nothing in the next month — see who's next",
   },
   meta: {
+    pastRegisters: "Past registers",
     appDescription:
       "Attendance, assignments, grades and teacher messages for schools, students and parents. Installs as an app and works offline.",
     ogDescription: "One calm place for attendance, assignments, grades and school messages.",

@@ -1500,6 +1500,8 @@ export const mr: Dictionary = {
   },
 
   access: {
+    monthMustBeYearMonth: "महिना निवडा.",
+    notYourClassHistory: "या वर्गाच्या हजेऱ्या फक्त वर्गशिक्षक, प्रशासक किंवा मुख्याध्यापकच पाहू शकतात.",
     notYourPaperToMark: "तुम्ही फक्त तुम्ही शिकवता किंवा हजेरी घेता त्या वर्गांचेच गुण भरू शकता",
     onlyAdminsSetExams: "फक्त प्रशासकच परीक्षा व्यवस्थित करू शकतात.",
     giveTheExamAName: "परीक्षा मालिकेला नाव द्या.",
@@ -2286,6 +2288,12 @@ export const mr: Dictionary = {
 
     sundaySession: "रविवारचे सत्र",
     dayByDay: "दिवसागणिक",
+    previousMonth: "मागील महिना",
+    nextMonth: "पुढील महिना",
+    thisMonth: "हा महिना",
+    thereOfDays: "{total} पैकी {there} दिवस",
+    nothingInMonth: "{month} मध्ये {name} ची हजेरी घेतली गेली नाही.",
+    changesAppearImmediately: "शिक्षकांनी काही बदलले तर ते इथे लगेच दिसते.",
     noAttendanceYet: "अजून हजेरी नोंदवलेली नाही",
     attendanceLongEmpty: "शिक्षकाने हजेरी घेताच प्रत्येक दिवस इथे दिसेल.",
 
@@ -3262,6 +3270,29 @@ export const mr: Dictionary = {
     notYet: "अजून जमा झाले नाही",
   },
 
+  attendanceHistory: {
+    title: "मागील हजेऱ्या",
+    intro: "एखाद्या वर्गाची घेतलेली प्रत्येक हजेरी, एका वेळी एक महिना. ज्या दिवशी मुलाची नोंद झाली नाही तिथे रिकामे दिसेल — गैरहजेरी नाही.",
+    link: "मागील हजेऱ्या",
+    linkHint: "आधी घेतलेल्या हजेऱ्या पाहा",
+    chooseClass: "वर्ग निवडा",
+    noClasses: "दाखवण्यासाठी वर्गाचा इतिहास नाही",
+    noClassesBody: "वर्गाच्या हजेऱ्या फक्त त्याचे वर्गशिक्षक, प्रशासक किंवा मुख्याध्यापकच पाहू शकतात.",
+    fieldClass: "वर्ग",
+    fieldMonth: "महिना",
+    show: "दाखवा",
+    previousMonth: "मागील महिना",
+    nextMonth: "पुढील महिना",
+    nothingTaken: "{month} मध्ये {className} ची हजेरी घेतली गेली नाही.",
+    registersTaken: "{count} हजेऱ्या घेतल्या",
+    registersTakenOne: "1 हजेरी घेतली",
+    monthRate: "संपूर्ण महिन्यात {percent}% हजर किंवा उशिरा",
+    pupil: "विद्यार्थी",
+    rate: "दर",
+    dayTotals: "दररोज हजर किंवा उशिरा",
+    legend: "P हजर · L उशिरा · A गैरहजर · E सूट · रिकामे = नोंद नाही",
+    exportCsv: "हा महिना CSV मध्ये डाउनलोड करा",
+  },
   attendanceIntel: {
     title: "हजेरी अंतर्दृष्टी",
     intro:
@@ -3356,7 +3387,7 @@ export const mr: Dictionary = {
     openGrid: "गुण तक्ता उघडा",
     adminCardTitle: "परीक्षा आणि प्रगतिपत्रके",
     adminCardNone: "अजून परीक्षा ठरवलेली नाही. युनिट टेस्ट, सहामाही आणि वार्षिक ठरवा; प्रगतिपत्रके त्यांवरूनच तयार होतात.",
-    adminCardBody: "{scheduled} परीक्षा ठरल्या, {published} प्रकाशित · {cards} प्रगतिपत्रके दिली",
+    adminCardBody: "परीक्षा: {scheduled} ठरल्या, {published} प्रकाशित · प्रगतिपत्रके: {cards} दिली",
     scheduleExams: "परीक्षा ठरवा",
     progressBanner: "हे गुण चालू कामाचे चित्र आहेत. परीक्षेचे गुण आणि प्रगतिपत्रके 'परीक्षा' मध्ये आहेत.",
     progressBannerLink: "परीक्षा उघडा",
@@ -4262,6 +4293,7 @@ export const mr: Dictionary = {
     noneSoon: "पुढच्या महिन्यात काही नाही — पुढचे कोण ते पाहा",
   },
   meta: {
+    pastRegisters: "मागील हजेऱ्या",
     appDescription:
       "शाळा, विद्यार्थी आणि पालकांसाठी उपस्थिती, कामे, गुण आणि शिक्षकांचे संदेश. ॲपसारखे इंस्टॉल होते आणि ऑफलाइनही चालते.",
     ogDescription: "उपस्थिती, कामे, गुण आणि शाळेच्या संदेशांसाठी एक शांत जागा.",

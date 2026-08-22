@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { requireUser } from "@/lib/tenancy";
 import { getCard } from "@/lib/report-cards";
 import { SUBJECT_KEY, type QuizSubject } from "@/lib/quiz";
-import { formatDateKey } from "@/lib/dates";
+import { formatDate, formatDateKey } from "@/lib/dates";
 import { formatMilli } from "@/lib/validation";
 import { getT } from "@/lib/i18n/server";
 
@@ -229,7 +229,7 @@ export default async function ReportCardPage({
           {/* Whole sentences with placeholders; the date is a value. */}
           {card.authorName ? `${t("reportView.writtenBy", { name: card.authorName })} ` : ""}
           {card.publishedAt
-            ? t("reportView.issuedOn", { date: card.publishedAt.toLocaleDateString() })
+            ? t("reportView.issuedOn", { date: formatDate(card.publishedAt) })
             : t("reportView.notYetIssued")}
         </footer>
       </div>

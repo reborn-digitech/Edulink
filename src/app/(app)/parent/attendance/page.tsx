@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeftIcon, CalendarCheckIcon } from "@phosphor-icons/react/ssr";
+import { ArrowLeftIcon, CalendarCheckIcon, CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react/ssr";
 import { requireParent, assertGuardianAccess } from "@/lib/tenancy";
 import { listContexts } from "@/lib/session";
 import { getAttendanceSummary } from "@/lib/attendance";
-import { addDaysToKey, formatDateKey, isTeachingDay, todayKey } from "@/lib/dates";
+import { formatDateKey, isTeachingDay, todayKey } from "@/lib/dates";
+import { MONTH_KEY, shiftMonth } from "@/lib/attendance-history";
+import { Button } from "@/components/ui/button";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { AttendanceBadge } from "@/components/ui/badge";
 import { ChildSwitcher } from "../child-switcher";
@@ -17,16 +19,14 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: t("meta.attendance") };
 }
 
-const RANGE_DAYS = 60;
-
 export default async function ParentAttendancePage({
   searchParams,
 }: {
-  searchParams: Promise<{ child?: string }>;
+  searchParams: Promise<{ child?: string; month?: string }>;
 }) {
   const session = await requireParent();
   const t = await getT();
-  const { child: requested } = await searchParams;
+  const { child: requested, month: requestedMonth } = await searchParams;
 
   const { children } = await listContexts(session.user.id);
   const selectedId =
@@ -38,15 +38,24 @@ export default async function ParentAttendancePage({
   const student = link.student;
   const childName = student.user.preferredName ?? student.user.name;
 
+  // ONE MONTH AT A TIME, any month. A rolling "last 60 days" answered "how
+  // is it going" and nothing else; a parent asked in March about January
+  // had nowhere to look. The month is in the URL so it can be bookmarked,
+  // and the switcher keeps the child while the arrows keep the month.
   const today = todayKey(student.school.timezone);
-  const from = addDaysToKey(today, -RANGE_DAYS);
-  const summary = await getAttendanceSummary(student.schoolId, selectedId, from, today);
-
-  const byDate = new Map(summary.recent.map((r) => [r.dateKey, r]));
+  const thisMonth = today.slice(0, 7);
+  const month =
+    requestedMonth && MONTH_KEY.test(requestedMonth) && requestedMonth <= thisMonth
+      ? requestedMonth
+      : thisMonth;
+  const monthLabel = formatDateKey(`${month}-01`, { month: "long", year: "numeric" });
+  const summary = await getAttendanceSummary(student.schoolId, selectedId, `${month}-01`, `${month}-31`);
 
   // Only days that actually have a record, newest first — showing a blank row
   // for every weekend and holiday would bury the days that matter.
-  const days = summary.recent;
+  const days = [...summary.recent].sort((a, b) => (a.dateKey < b.dateKey ? 1 : -1));
+  const monthHref = (m: string) => `/parent/attendance?child=${selectedId}&month=${m}`;
+  const next = shiftMonth(month, 1);
 
   return (
     <div className="space-y-5">
@@ -65,8 +74,28 @@ export default async function ParentAttendancePage({
           {t("parent.childsAttendance", { name: childName })}
         </h1>
         <p className="mt-1 text-sm text-fg-muted">
-          {student.school.name} · last {RANGE_DAYS} days
+          {[student.school.name, monthLabel].join(" · ")}
         </p>
+      </div>
+
+      <div className="flex flex-wrap items-center gap-2">
+        <Button asChild variant="secondary" size="sm" icon={<CaretLeftIcon weight="bold" />}>
+          <Link href={monthHref(shiftMonth(month, -1))}>{t("parent.previousMonth")}</Link>
+        </Button>
+        {next <= thisMonth ? (
+          <Button asChild variant="secondary" size="sm" iconRight={<CaretRightIcon weight="bold" />}>
+            <Link href={monthHref(next)}>{t("parent.nextMonth")}</Link>
+          </Button>
+        ) : (
+          <Button variant="secondary" size="sm" disabled iconRight={<CaretRightIcon weight="bold" />}>
+            {t("parent.nextMonth")}
+          </Button>
+        )}
+        {month !== thisMonth && (
+          <Button asChild variant="ghost" size="sm">
+            <Link href={monthHref(thisMonth)}>{t("parent.thisMonth")}</Link>
+          </Button>
+        )}
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -86,7 +115,7 @@ export default async function ParentAttendancePage({
           hint={
             summary.total === 0
               ? t("parent.noRecords")
-              : `${summary.counts.PRESENT + summary.counts.LATE} of ${summary.total} days`
+              : t("parent.thereOfDays", { there: summary.counts.PRESENT + summary.counts.LATE, total: summary.total })
           }
         />
         {ATTENDANCE_STATUSES.filter((s) => s !== "PRESENT").map((status) => (
@@ -125,7 +154,7 @@ export default async function ParentAttendancePage({
             <EmptyState
               className="border-0 bg-transparent py-6"
               title={t("parent.noAttendanceYet")}
-              description={t("parent.attendanceLongEmpty")}
+              description={t("parent.nothingInMonth", { name: childName, month: monthLabel })}
             />
           ) : (
             <ul className="divide-y divide-border">
@@ -172,10 +201,7 @@ export default async function ParentAttendancePage({
         </p>
       )}
 
-      <p className="pb-4 text-xs text-fg-subtle">
-        {byDate.size} record{byDate.size === 1 ? "" : "s"} shown. Anything a teacher changes
-        appears here immediately.
-      </p>
+      <p className="pb-4 text-xs text-fg-subtle">{t("parent.changesAppearImmediately")}</p>
     </div>
   );
 }

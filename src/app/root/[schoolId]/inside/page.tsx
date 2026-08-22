@@ -6,6 +6,7 @@ import { accessHistory, getSchool } from "@/lib/superuser";
 import { listPeople, listPosts, schoolOverview } from "@/lib/operator-oversight";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { OversightPanel } from "./oversight-panel";
+import { formatUtcMoment } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 
 export async function generateMetadata() {
@@ -104,7 +105,7 @@ export default async function InsideSchoolPage({
                     {row.live && ` · ${t("root.openNow")}`}
                   </p>
                   <p className="mt-0.5 text-xs text-fg-muted">
-                    {row.startedAt.toUTCString().slice(0, 22)} — {row.reason}
+                    {formatUtcMoment(row.startedAt)} — {row.reason}
                   </p>
                 </li>
               ))}

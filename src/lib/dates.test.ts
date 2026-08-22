@@ -5,6 +5,10 @@ import {
   dateKeyInZone,
   dateKeyRange,
   displayDateToIso,
+  formatDate,
+  formatDateKey,
+  formatInZone,
+  formatUtcMoment,
   isDateKey,
   isFuture,
   isPast,
@@ -349,5 +353,33 @@ describe("isPast / isFuture / isWithin", () => {
     // week is more urgent than one due tomorrow, not less — so the past side
     // of the window is deliberately open.
     expect(isWithin(new Date("2026-08-06T12:00:00Z"), 2 * 86_400_000, now)).toBe(true);
+  });
+});
+
+describe("every date reads dd/mm/yyyy", () => {
+  it("a date key, with whatever shape the caller asked for", () => {
+    expect(formatDateKey("2026-08-23")).toBe("Sun, 23/08/2026");
+    expect(formatDateKey("2026-08-23", { weekday: "long", day: "numeric", month: "long" })).toBe(
+      "Sunday, 23/08/2026",
+    );
+    expect(formatDateKey("2026-08-03", { day: "numeric", month: "short" })).toBe("03/08/2026");
+    expect(formatDateKey("2026-08-03", { day: "numeric", month: "long", year: "numeric" })).toBe(
+      "03/08/2026",
+    );
+  });
+
+  it("leaves labels that are not dates alone", () => {
+    expect(formatDateKey("2026-08-01", { month: "long", year: "numeric" })).toBe("August 2026");
+    expect(formatDateKey("2026-08-03", { day: "numeric" })).toBe("3");
+    expect(formatDateKey("2026-08-03", { weekday: "short" })).toBe("Mon");
+  });
+
+  it("an instant in a zone, with its time after the date", () => {
+    const instant = new Date("2026-09-14T03:30:00Z");
+    expect(formatInZone(instant, "Asia/Kolkata")).toBe("14/09/2026, 9:00 AM");
+    expect(formatInZone(instant, "Asia/Kolkata", { timeStyle: "short" })).toBe("9:00 AM");
+    expect(formatUtcMoment(instant)).toBe("14/09/2026, 3:30 AM");
+    // Midnight UTC is still the 13th in New York.
+    expect(formatDate(new Date("2026-09-14T00:30:00Z"), "America/New_York")).toBe("13/09/2026");
   });
 });
