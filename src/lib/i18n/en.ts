@@ -2820,6 +2820,8 @@ export const en = {
 
     sundayRegister: "No school on a Sunday. You can still take the register if a class really is running, but everyone you mark absent will be counted absent.",
     takeRegister: "Take the register",
+    thisYear: "This year ({name})",
+    allYears: "All years",
     createClass: "Create a class",
     done: "Done",
     toDo: "To do",

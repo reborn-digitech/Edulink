@@ -10,15 +10,22 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
+import { currentAcademicYear } from "@/lib/academic-year";
+import { TabBar } from "@/components/ui/tabs";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
   return { title: t("meta.assignments") };
 }
 
-export default async function AssignmentsPage() {
+export default async function AssignmentsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ years?: string }>;
+}) {
   const t = await getT();
   const ctx = await requireRole("TEACHER", "ADMIN");
+  const { years } = await searchParams;
 
   const classIds =
     ctx.role === "ADMIN"
@@ -40,8 +47,26 @@ export default async function AssignmentsPage() {
     );
   }
 
+  /**
+   * THIS YEAR BY DEFAULT. A class row lives for years, and a teacher who
+   * has taught it for three saw every piece of work ever set on it — 99 on
+   * one class in the simulation — with this year's somewhere in the middle.
+   * The list is the current academic year's unless "All years" is chosen;
+   * a school with no year set up sees everything, as before.
+   */
+  const year = await currentAcademicYear(ctx.schoolId!);
+  const thisYear = year
+    ? { createdAt: { gte: year.startDate, lte: new Date(year.endDate.getTime() + 86_400_000) } }
+    : {};
+  const showAll = years === "all" || !year;
+  const baseWhere = { schoolId: ctx.schoolId, classId: { in: classIds } };
+  const [thisYearCount, allCount] = await Promise.all([
+    db.assignment.count({ where: { ...baseWhere, ...thisYear } }),
+    db.assignment.count({ where: baseWhere }),
+  ]);
+
   const assignments = await db.assignment.findMany({
-    where: { schoolId: ctx.schoolId, classId: { in: classIds } },
+    where: { ...baseWhere, ...(showAll ? {} : thisYear) },
     include: {
       class: { select: { name: true, color: true, _count: { select: { enrollments: { where: { status: "ACTIVE" } } } } } },
       _count: { select: { submissions: true, grades: true } },
@@ -67,6 +92,17 @@ export default async function AssignmentsPage() {
           <Link href="/teacher/assignments/new">{t("teacher.newAssignment")}</Link>
         </Button>
       </div>
+
+      {year && allCount > thisYearCount && (
+        <TabBar
+          ariaLabel={t("teacher.assignments")}
+          current={showAll ? "all" : "year"}
+          tabs={[
+            { key: "year", href: "/teacher/assignments", label: t("teacher.thisYear", { name: year.name }), count: thisYearCount },
+            { key: "all", href: "/teacher/assignments?years=all", label: t("teacher.allYears"), count: allCount },
+          ]}
+        />
+      )}
 
       {assignments.length === 0 ? (
         <EmptyState

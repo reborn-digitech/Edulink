@@ -2572,6 +2572,8 @@ export const mr: Dictionary = {
     studentsCount: "{count} विद्यार्थी",
     studentsCountOne: "1 विद्यार्थी",
     sundayRegister: "रविवारी शाळा नाही. वर्ग खरोखर चालू असेल तर हजेरी घेऊ शकता, पण ज्यांना गैरहजर नोंदवाल ते गैरहजरच धरले जातील.",
+    thisYear: "हे वर्ष ({name})",
+    allYears: "सर्व वर्षे",
     takeRegister: "हजेरी घ्या", createClass: "वर्ग तयार करा", done: "झाले", toDo: "बाकी",
     noRegisterToday: "आज तुमची हजेरी नाही",
     noRegisterBody: "आज तुम्हाला कोणतीही हजेरी घ्यायची नाही. प्रशासक वर्गशिक्षक ठरवतात आणि कोणी नसल्यास व्यवस्था करू शकतात.",
