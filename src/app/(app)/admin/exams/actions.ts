@@ -49,6 +49,7 @@ export async function addSlotAction(formData: FormData): Promise<void> {
       maxMarks: Number(formData.get("maxMarks") ?? 0),
       startMinute: parseTime(String(formData.get("startTime") ?? "")),
       endMinute: parseTime(String(formData.get("endTime") ?? "")),
+      evenIfClosed: formData.get("evenIfClosed") === "on",
     }),
   );
 }

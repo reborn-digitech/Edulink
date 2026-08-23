@@ -1711,6 +1711,10 @@ export const en = {
   /* boundary. One key per distinct sentence; the sentence is the value.    */
   /* ---------------------------------------------------------------------- */
   access: {
+    paperOnHoliday: "{date} is inside {name} — the school is shut. Tick “Even if the school is closed that day” if the paper really sits then.",
+    paperOnSunday: "{date} is a Sunday — the school is shut. Tick “Even if the school is closed that day” if the paper really sits then.",
+    papersClash: "That clashes with {subject} ({series}) at the same time — no pupil can sit both.",
+    paperHasMarks: "{count} marks are saved against this paper — it cannot be removed. Withdraw the marks first if it really must go.",
     onlyAnAdminCanEditStaffRecords: "Only a school admin can edit staff records.",
     termNotFound: "No such term at this school.",
     onlyAnAdminCanSetTerms: "Only a school admin can set up terms.",
@@ -3851,6 +3855,7 @@ export const en = {
   },
 
   exams: {
+    evenIfClosed: "Even if the school is closed that day (a Sunday or a holiday)",
     tabDateSheet: "Date sheet",
     tabMarksEntry: "Enter marks",
     tabMarks: "Marks",

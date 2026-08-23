@@ -1536,6 +1536,10 @@ export const hi: Dictionary = {
   },
 
   access: {
+    paperOnHoliday: "{date} {name} के भीतर है — स्कूल बंद है। यदि पर्चा सचमुच उसी दिन है तो “स्कूल बंद होने पर भी” टिक करें।",
+    paperOnSunday: "{date} रविवार है — स्कूल बंद है। यदि पर्चा सचमुच उसी दिन है तो “स्कूल बंद होने पर भी” टिक करें।",
+    papersClash: "यह उसी समय {subject} ({series}) से टकराता है — कोई विद्यार्थी दोनों नहीं दे सकता।",
+    paperHasMarks: "इस पर्चे पर {count} अंक सहेजे हैं — इसे हटाया नहीं जा सकता। सचमुच हटाना हो तो पहले अंक वापस लें।",
     onlyAnAdminCanEditStaffRecords: "केवल स्कूल एडमिन ही स्टाफ रिकॉर्ड बदल सकता है।",
     termNotFound: "इस स्कूल में ऐसा कोई सत्र नहीं।",
     onlyAnAdminCanSetTerms: "केवल स्कूल एडमिन ही सत्र (टर्म) तय कर सकता है।",
@@ -3472,6 +3476,7 @@ export const hi: Dictionary = {
   },
 
   exams: {
+    evenIfClosed: "स्कूल बंद होने पर भी (रविवार या छुट्टी)",
     tabDateSheet: "डेटशीट",
     tabMarksEntry: "अंक भरें",
     tabMarks: "अंक",

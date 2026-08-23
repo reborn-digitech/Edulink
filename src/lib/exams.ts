@@ -1,6 +1,8 @@
 import "server-only";
 import { db } from "./db";
 import { termForDate } from "./terms";
+import { listHolidays, isSchoolClosed } from "./holidays";
+import { formatDateKey } from "./dates";
 import { audit } from "./audit";
 import { AccessError } from "./tenancy";
 import { isDateKey } from "./dates";
@@ -106,7 +108,15 @@ export async function createSeries(
 export async function addSlot(
   ctx: ActiveContext,
   seriesId: string,
-  input: { subject: string; dateKey: string; maxMarks: number; startMinute?: number | null; endMinute?: number | null },
+  input: {
+    subject: string;
+    dateKey: string;
+    maxMarks: number;
+    startMinute?: number | null;
+    endMinute?: number | null;
+    /** The office insists: an entrance test on a Sunday, a board paper in a break. */
+    evenIfClosed?: boolean;
+  },
 ): Promise<void> {
   const { schoolId } = requireAdmin(ctx);
   const series = await db.examSeries.findFirst({
@@ -121,6 +131,26 @@ export async function addSlot(
   if (!Number.isFinite(input.maxMarks) || input.maxMarks <= 0 || input.maxMarks > 1000) {
     throw new AccessError("access.maxMarksOutOfRange");
   }
+  /**
+   * THE DATE SHEET WARNS LIKE THE REGISTER DOES. Science went onto
+   * 10/11/2026 — the middle of the Diwali break — without a murmur, and the
+   * school found out when families did. A paper on a closed day is refused
+   * BY NAME, with an override for the school that truly sits one then; a
+   * paper that CLASHES with another of the same grade at the same time is
+   * refused outright, because no child can sit two.
+   */
+  if (!input.evenIfClosed) {
+    const spans = await listHolidays(schoolId, { fromKey: input.dateKey, toKey: input.dateKey });
+    if (isSchoolClosed(spans, input.dateKey)) {
+      const holiday = spans.find((h) => h.kind === "HOLIDAY");
+      throw new AccessError(
+        holiday ? "access.paperOnHoliday" : "access.paperOnSunday",
+        "FORBIDDEN",
+        { date: formatDateKey(input.dateKey, { dateStyle: "medium" }), name: holiday?.name ?? "" },
+      );
+    }
+  }
+
   const startMinute =
     input.startMinute != null && input.startMinute >= 0 && input.startMinute < 1440
       ? Math.round(input.startMinute)
@@ -146,6 +176,24 @@ export async function addSlot(
       position: series._count.slots,
     },
   });
+  if (startMinute !== null && endMinute !== null) {
+    const sameDay = await db.examSlot.findMany({
+      where: {
+        schoolId,
+        dateKey: input.dateKey,
+        seriesId: { not: seriesId },
+        series: { gradeLevel: (await db.examSeries.findUniqueOrThrow({ where: { id: seriesId }, select: { gradeLevel: true } })).gradeLevel, archivedAt: null },
+        startMinute: { not: null },
+        endMinute: { not: null },
+      },
+      select: { subject: true, startMinute: true, endMinute: true, series: { select: { name: true } } },
+    });
+    const clash = sameDay.find((other) => other.startMinute! < endMinute && startMinute < other.endMinute!);
+    if (clash) {
+      throw new AccessError("access.papersClash", "FORBIDDEN", { subject: clash.subject, series: clash.series.name });
+    }
+  }
+
   // A round with no term yet takes the term its first paper falls in.
   if (!series.termId) {
     const term = await termForDate(schoolId, input.dateKey);
@@ -169,8 +217,17 @@ export async function removeSlot(ctx: ActiveContext, slotId: string): Promise<vo
     select: { id: true, seriesId: true, subject: true },
   });
   if (!slot) throw new AccessError("access.examNotFound", "NOT_FOUND");
-  // Entered marks survive: the sitting's Assignment keeps its rows, its
-  // examSlotId simply becomes null (SetNull on the relation).
+  /**
+   * A PAPER WITH MARKS IS A FACT, NOT FURNITURE. Removing the slot used to
+   * orphan the sitting's assignment quietly (SetNull) — with thirty marks
+   * saved, that is thirty results whose paper vanished from the sheet the
+   * marks were entered against. Refused with the count; the school that
+   * really wants it gone withdraws the marks first, on the record.
+   */
+  const marked = await db.grade.count({ where: { schoolId, assignment: { examSlotId: slot.id } } });
+  if (marked > 0) throw new AccessError("access.paperHasMarks", "FORBIDDEN", { count: marked });
+  // An unmarked sitting's Assignment survives; its examSlotId becomes null
+  // (SetNull on the relation).
   await db.examSlot.delete({ where: { id: slot.id } });
   await audit({
     schoolId,

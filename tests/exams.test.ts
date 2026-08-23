@@ -3,6 +3,7 @@ import { PrismaClient } from "@prisma/client";
 import {
   createSeries,
   addSlot,
+  removeSlot,
   publishSeries,
   dateSheetsFor,
   examClassesFor,
@@ -234,5 +235,72 @@ describe("a series name comes round every year", () => {
     expect(old.archivedAt).not.toBeNull();
     expect(old.name).toBe("ZZ Unit Test 1 (2025-04-30)");
     await db.examSeries.deleteMany({ where: { id: { in: [first, second] } } });
+  });
+});
+
+
+describe("the date sheet warns like the register", () => {
+  let guardSeriesId: string;
+  const cleanup = async () => {
+    await db.holiday.deleteMany({ where: { schoolId, name: "ZZ Guard Break" } });
+    if (guardSeriesId) await db.examSeries.deleteMany({ where: { id: guardSeriesId } });
+    await db.examSeries.deleteMany({ where: { schoolId, name: { in: ["ZZ Guard Round", "ZZ Guard Rival"] } } });
+  };
+  beforeAll(async () => {
+    await cleanup();
+    guardSeriesId = await createSeries(admin, { name: "ZZ Guard Round", gradeLevel: GRADE });
+  });
+  afterAll(cleanup);
+
+  it("⚠ refuses a paper inside a holiday BY NAME, and a Sunday — unless the office insists", async () => {
+    await db.holiday.create({ data: { schoolId, name: "ZZ Guard Break", startDateKey: "2026-11-09", endDateKey: "2026-11-13", kind: "HOLIDAY" } });
+    await expect(addSlot(admin, guardSeriesId, { subject: "Science", dateKey: "2026-11-10", maxMarks: 50 }))
+      .rejects.toMatchObject({ key: "access.paperOnHoliday", vars: { name: "ZZ Guard Break" } });
+    // 2026-11-15 is a Sunday.
+    await expect(addSlot(admin, guardSeriesId, { subject: "Science", dateKey: "2026-11-15", maxMarks: 50 }))
+      .rejects.toMatchObject({ key: "access.paperOnSunday" });
+    // An EXAM span is on the calendar but the school is OPEN — no refusal.
+    await addSlot(admin, guardSeriesId, { subject: "Science", dateKey: "2026-11-16", maxMarks: 50 });
+    // The office insists: the override schedules it.
+    await addSlot(admin, guardSeriesId, { subject: "Drawing", dateKey: "2026-11-10", maxMarks: 50, evenIfClosed: true });
+    expect(await db.examSlot.count({ where: { seriesId: guardSeriesId } })).toBe(2);
+  });
+
+  it("⚠ refuses two papers of one grade at the same time; different times on one day are fine", async () => {
+    await addSlot(admin, guardSeriesId, { subject: "Maths", dateKey: "2026-11-17", maxMarks: 80, startMinute: 540, endMinute: 660 });
+    const rival = await createSeries(admin, { name: "ZZ Guard Rival", gradeLevel: GRADE });
+    await expect(
+      addSlot(admin, rival, { subject: "History", dateKey: "2026-11-17", maxMarks: 50, startMinute: 600, endMinute: 720 }),
+    ).rejects.toMatchObject({ key: "access.papersClash", vars: { subject: "Maths" } });
+    // Afternoon after the morning paper: no overlap, no refusal.
+    await addSlot(admin, rival, { subject: "History", dateKey: "2026-11-17", maxMarks: 50, startMinute: 780, endMinute: 900 });
+  });
+
+  it("⚠ refuses to remove a paper with marks saved", async () => {
+    // A mark of our own, on our own paper — the guard must fire on one row.
+    const slot = await db.examSlot.findFirstOrThrow({ where: { seriesId: guardSeriesId, subject: "Science" }, select: { id: true } });
+    const assignment = await db.assignment.create({
+      data: {
+        schoolId,
+        classId,
+        title: "ZZ Guard Sitting",
+        pointsMilli: 50_000,
+        examSlotId: slot.id,
+        publishedAt: new Date(),
+        authorMembershipId: (await db.classTeacher.findFirstOrThrow({ where: { classId } })).teacherMembershipId,
+      },
+    });
+    await db.grade.create({
+      data: { schoolId, assignmentId: assignment.id, studentMembershipId: pupilMembershipId, scoreMilli: 40_000, gradedByMembershipId: null },
+    });
+    try {
+      await expect(removeSlot(admin, slot.id)).rejects.toMatchObject({ key: "access.paperHasMarks", vars: { count: 1 } });
+    } finally {
+      await db.grade.deleteMany({ where: { assignmentId: assignment.id } });
+      await db.assignment.deleteMany({ where: { id: assignment.id } });
+    }
+    // An unmarked one goes quietly.
+    const unmarked = await db.examSlot.findFirstOrThrow({ where: { seriesId: guardSeriesId, subject: "Drawing" } });
+    await removeSlot(admin, unmarked.id);
   });
 });

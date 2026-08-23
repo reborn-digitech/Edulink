@@ -1533,6 +1533,10 @@ export const mr: Dictionary = {
   },
 
   access: {
+    paperOnHoliday: "{date} {name} मध्ये आहे — शाळा बंद आहे. पेपर खरोखर त्याच दिवशी असेल तर “शाळा बंद असली तरी” टिक करा.",
+    paperOnSunday: "{date} रविवार आहे — शाळा बंद आहे. पेपर खरोखर त्याच दिवशी असेल तर “शाळा बंद असली तरी” टिक करा.",
+    papersClash: "हे त्याच वेळी {subject} ({series}) शी जुळते — कोणताही विद्यार्थी दोन्ही देऊ शकत नाही.",
+    paperHasMarks: "या पेपरवर {count} गुण जतन आहेत — तो काढता येत नाही. खरोखर काढायचा असेल तर आधी गुण मागे घ्या.",
     onlyAnAdminCanEditStaffRecords: "फक्त शाळेचा अ‍ॅडमिनच कर्मचारी नोंदी बदलू शकतो.",
     termNotFound: "या शाळेत असे सत्र नाही.",
     onlyAnAdminCanSetTerms: "फक्त शाळेचा अ‍ॅडमिनच सत्रे ठरवू शकतो.",
@@ -3469,6 +3473,7 @@ export const mr: Dictionary = {
   },
 
   exams: {
+    evenIfClosed: "शाळा बंद असली तरी (रविवार किंवा सुट्टी)",
     tabDateSheet: "वेळापत्रक",
     tabMarksEntry: "गुण भरा",
     tabMarks: "गुण",
