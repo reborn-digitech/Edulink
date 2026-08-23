@@ -223,3 +223,16 @@ describe("term exams", () => {
     ).rejects.toThrow(AccessError);
   });
 });
+
+describe("a series name comes round every year", () => {
+  it("⚠ a new 'Unit Test 1' never resurrects last year's archived one", async () => {
+    const first = await createSeries(admin, { name: "ZZ Unit Test 1", gradeLevel: GRADE });
+    await db.examSeries.update({ where: { id: first }, data: { archivedAt: new Date("2025-04-30T00:00:00Z") } });
+    const second = await createSeries(admin, { name: "ZZ Unit Test 1", gradeLevel: GRADE });
+    expect(second).not.toBe(first);
+    const old = await db.examSeries.findUniqueOrThrow({ where: { id: first } });
+    expect(old.archivedAt).not.toBeNull();
+    expect(old.name).toBe("ZZ Unit Test 1 (2025-04-30)");
+    await db.examSeries.deleteMany({ where: { id: { in: [first, second] } } });
+  });
+});

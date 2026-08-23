@@ -141,7 +141,7 @@ export async function startAcademicYear(input: {
 export async function rollOverAcademicYear(
   closingYearId: string,
   nextYearId: string,
-): Promise<ActionResult & { studentsArchived?: number; badgesArchived?: number }> {
+): Promise<ActionResult & { studentsArchived?: number; badgesArchived?: number; seriesArchived?: number; roundsClosed?: number }> {
   try {
     const ctx = await requireApiRole("ADMIN");
     const result = await closeAcademicYear(ctx, closingYearId, nextYearId);

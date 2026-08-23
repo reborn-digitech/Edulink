@@ -64,12 +64,16 @@ export async function createSeries(
     select: { id: true, archivedAt: true },
   });
   if (existing) {
-    // Same name, same grade: an archived one comes back rather than colliding.
+    // Same name, same grade, ARCHIVED: last year's "Unit Test 1". Bringing it
+    // back would put last year's papers and marks on this year's sheet, so
+    // the old one is renamed with the year it was archived in and this one
+    // is made fresh. Collision with a live series is still a refusal.
     if (existing.archivedAt) {
-      await db.examSeries.update({ where: { id: existing.id }, data: { archivedAt: null, kind } });
-      return existing.id;
+      const stamp = existing.archivedAt.toISOString().slice(0, 10);
+      await db.examSeries.update({ where: { id: existing.id }, data: { name: [name, " (", stamp, ")"].join("") } });
+    } else {
+      throw new AccessError("access.thatExamAlreadyExists");
     }
-    throw new AccessError("access.thatExamAlreadyExists");
   }
 
   const series = await db.examSeries.create({

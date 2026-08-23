@@ -108,7 +108,7 @@ export async function closeAcademicYear(
   session: ActiveContext,
   closingYearId: string,
   nextYearId: string,
-): Promise<{ studentsArchived: number; badgesArchived: number }> {
+): Promise<{ studentsArchived: number; badgesArchived: number; seriesArchived: number; roundsClosed: number }> {
   if (session.role !== "ADMIN" || !session.schoolId) {
     throw new AccessError("access.onlyASchoolAdminCanCloseThe");
   }
@@ -162,6 +162,38 @@ export async function closeAcademicYear(
     }
   }
 
+  /**
+   * THE YEAR TIDIES ITSELF. Three years on, an admin's exams page listed
+   * every series the school had ever run and a pupil's Marks tab carried
+   * nine, because nothing ever archived a series or closed a round. Now the
+   * closing year takes its own furniture with it: every live exam series
+   * whose papers all fall on or before the year's last day, and every open
+   * review round due to close by then. The marks and the cards are untouched
+   * — an archived series is one the exams page no longer offers, not one
+   * whose results are gone — and the archive page lists them by year.
+   */
+  const endKey = closing.endDate.toISOString().slice(0, 10);
+  const liveSeries = await db.examSeries.findMany({
+    where: { schoolId, archivedAt: null },
+    select: { id: true, createdAt: true, slots: { select: { dateKey: true } } },
+  });
+  const toArchive = liveSeries
+    .filter((series) =>
+      series.slots.length > 0
+        ? series.slots.every((slot) => slot.dateKey <= endKey)
+        : series.createdAt <= closing.endDate,
+    )
+    .map((series) => series.id);
+  const seriesArchived = toArchive.length
+    ? (await db.examSeries.updateMany({ where: { id: { in: toArchive } }, data: { archivedAt: new Date() } })).count
+    : 0;
+  const roundsClosed = (
+    await db.reviewRound.updateMany({
+      where: { schoolId, status: "OPEN", closesDateKey: { lte: endKey } },
+      data: { status: "CLOSED" },
+    })
+  ).count;
+
   // Only now does the year change. Anything above this line still sees the year
   // it is preserving.
   await db.academicYear.updateMany({ where: { schoolId }, data: { isCurrent: false } });
@@ -177,10 +209,10 @@ export async function closeAcademicYear(
     action: "year.close",
     targetType: "AcademicYear",
     targetId: closing.id,
-    meta: { closed: closing.name, opened: next.name, students: students.length, badgesArchived },
+    meta: { closed: closing.name, opened: next.name, students: students.length, badgesArchived, seriesArchived, roundsClosed },
   });
 
-  return { studentsArchived: students.length, badgesArchived };
+  return { studentsArchived: students.length, badgesArchived, seriesArchived, roundsClosed };
 }
 
 /**

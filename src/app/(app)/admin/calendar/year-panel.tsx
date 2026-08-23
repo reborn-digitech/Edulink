@@ -97,10 +97,16 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
       toast({
         tone: "ok",
         title: t("calendar.yearClosed", { name: current.name }),
-        description: t("calendar.badgesKept", {
-          badges: result.badgesArchived ?? 0,
-          students: result.studentsArchived ?? 0,
-        }),
+        description: [
+          t("calendar.badgesKept", {
+            badges: result.badgesArchived ?? 0,
+            students: result.studentsArchived ?? 0,
+          }),
+          t("calendar.yearTidied", {
+            series: result.seriesArchived ?? 0,
+            rounds: result.roundsClosed ?? 0,
+          }),
+        ].join(" "),
       });
       setConfirming(false);
       setNextYearId("");
@@ -235,6 +241,7 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
                 will press it in the middle of term.
               */}
               <p className="text-sm text-fg-muted">{t("calendar.endYearBody")}</p>
+              <p className="text-sm text-fg-muted">{t("calendar.endYearTidy")}</p>
               {/* Closing the year flips the date; it moves nobody. The move
                   is its own page, linked here because this is where an admin
                   stands at the end of the year. */}

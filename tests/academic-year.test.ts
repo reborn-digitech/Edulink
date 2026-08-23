@@ -67,6 +67,8 @@ const sessionIds: string[] = [];
 async function cleanup() {
   await db.earnedBadge.deleteMany({ where: { schoolId } });
   await db.academicYear.deleteMany({ where: { schoolId, name: { startsWith: "TEST " } } });
+  await db.examSeries.deleteMany({ where: { schoolId, name: { startsWith: "TEST " } } });
+  await db.reviewRound.deleteMany({ where: { schoolId, closesDateKey: { startsWith: "1999" } } });
 }
 
 beforeAll(async () => {
@@ -333,5 +335,31 @@ describe("permanent badges", () => {
 
     const history = await badgeHistory(schoolId, subjectMembershipId);
     expect(history.filter((b) => b.badgeId === "abhyaas:x")).toHaveLength(1);
+  });
+});
+
+describe("the year tidies itself", () => {
+  it("archives the year's exam series and closes its open rounds — and leaves next year's alone", async () => {
+    const { first, second } = await twoYears();
+    const today = todayKey(timezone);
+    // Two series: one whose papers sat in the outgoing year, one dated after it.
+    const gone = await db.examSeries.create({
+      data: { schoolId, name: "TEST last year's final", gradeLevel: "5", slots: { create: [{ schoolId, subject: "Maths", dateKey: today, pointsMilli: 50_000, position: 0 }] } },
+    });
+    const stays = await db.examSeries.create({
+      data: { schoolId, name: "TEST next year's unit test", gradeLevel: "5", slots: { create: [{ schoolId, subject: "Maths", dateKey: "2999-01-01", pointsMilli: 50_000, position: 0 }] } },
+    });
+    const round = await db.reviewRound.create({
+      data: { schoolId, audience: "STUDENTS", closesDateKey: "1999-12-31", status: "OPEN" },
+    });
+
+    const result = await closeAcademicYear(admin, first, second);
+    expect(result.seriesArchived).toBeGreaterThanOrEqual(1);
+    expect(result.roundsClosed).toBeGreaterThanOrEqual(1);
+
+    expect((await db.examSeries.findUniqueOrThrow({ where: { id: gone.id } })).archivedAt).not.toBeNull();
+    expect((await db.examSeries.findUniqueOrThrow({ where: { id: stays.id } })).archivedAt).toBeNull();
+    expect((await db.reviewRound.findUniqueOrThrow({ where: { id: round.id } })).status).toBe("CLOSED");
+    await db.examSeries.deleteMany({ where: { id: { in: [gone.id, stays.id] } } });
   });
 });

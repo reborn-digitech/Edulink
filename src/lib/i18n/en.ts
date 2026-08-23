@@ -3130,6 +3130,8 @@ export const en = {
     couldNotClose: "Could not close the year",
     yearClosed: "{name} is closed",
     badgesKept: "{badges} badges kept for good across {students} students.",
+    yearTidied: "Exam series archived: {series}. Review rounds closed: {rounds}.",
+    endYearTidy: "The year's exam series go to the archive and any review round still open is closed; marks, cards and averages stay exactly as they are.",
     endYear: "End {name}",
     endYearBody:
       "Every badge each child holds right now is written into their profile and kept forever. The new year then starts empty — nobody holds an attendance badge until they have built one up again.",
