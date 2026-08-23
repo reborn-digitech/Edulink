@@ -1,4 +1,5 @@
-import { GraduationCapIcon } from "@phosphor-icons/react/ssr";
+import Link from "next/link";
+import { GraduationCapIcon, PrinterIcon } from "@phosphor-icons/react/ssr";
 import type { SchoolRecordView } from "@/lib/school-record";
 import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
 
@@ -101,6 +102,13 @@ export function SchoolRecordList({
           {record.note && (
             <p className="mt-2.5 text-sm leading-relaxed text-fg-muted">{record.note}</p>
           )}
+          <Link
+            href={`/certificate/${record.id}`}
+            className="mt-2.5 inline-flex items-center gap-1.5 text-sm font-medium text-accent-strong hover:underline"
+          >
+            <PrinterIcon weight="bold" className="size-4" aria-hidden="true" />
+            {t("tc.openDocument")}
+          </Link>
         </li>
       ))}
     </ul>

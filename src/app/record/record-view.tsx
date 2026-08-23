@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CertificateIcon, MedalIcon, SealCheckIcon } from "@phosphor-icons/react/ssr";
+import { CertificateIcon, MedalIcon, PrinterIcon, SealCheckIcon } from "@phosphor-icons/react/ssr";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar } from "@/components/ui/avatar";
@@ -164,6 +164,13 @@ function SchoolBlock({ school, t }: { school: RecordSchool; t: Translate }) {
                 “{school.certificate.note}”
               </p>
             )}
+            <Link
+              href={`/certificate/${school.certificate.id}`}
+              className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-accent-strong hover:underline"
+            >
+              <PrinterIcon weight="bold" className="size-4" aria-hidden="true" />
+              {t("tc.openDocument")}
+            </Link>
           </div>
         )}
 

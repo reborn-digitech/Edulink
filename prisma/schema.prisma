@@ -2468,6 +2468,18 @@ model SchoolRecord {
   joinedAt   DateTime
   leftAt     DateTime
 
+  /// THE DOCUMENT'S OWN FIELDS, frozen at issue like the school's name: what a
+  /// receiving school's office asks to see on paper. The serial is the
+  /// school's own numbering — TC/2026/0042 — one per school per certificate.
+  serial      String?
+  studentName String?
+  /// The admission number on this platform: the student code.
+  studentCode String?
+  birthdate   DateTime?
+  className   String?
+  /// EXCELLENT | GOOD | SATISFACTORY — the one word a TC carries about conduct.
+  conduct     String?
+
   /// TRANSFERRED | GRADUATED | LEFT
   reason      String
   /// Where they went, if the school knows. Free text: the receiving school is
@@ -2487,6 +2499,7 @@ model SchoolRecord {
   student    User       @relation(fields: [studentUserId], references: [id], onDelete: Cascade)
   membership Membership @relation(fields: [studentMembershipId], references: [id], onDelete: Cascade)
 
+  @@unique([schoolId, serial])
   @@index([studentUserId])
   @@index([schoolId, leftAt])
 }

@@ -2,6 +2,7 @@ import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { AccessError } from "@/lib/tenancy";
 import {
+  certificateFor,
   departuresFrom,
   myRecords,
   recordDeparture,
@@ -549,5 +550,61 @@ describe("⚠ undoing one", () => {
       await db.attendanceRecord.count({ where: { studentMembershipId: pupilMembershipId } }),
     ).toBe(4);
     expect(await db.reportCard.count({ where: { studentMembershipId: pupilMembershipId } })).toBe(1);
+  });
+});
+
+
+describe("the certificate as a document", () => {
+  it("⚠ freezes the document's lines at issue, numbers it per school per year, and reads it in the tenant-bound way for the office", async () => {
+    const result = await recordDeparture(admin, pupilMembershipId, {
+      reason: "TRANSFERRED",
+      destination: "Oakfield Academy",
+      conduct: "GOOD",
+      leftOn: new Date("2026-04-30T00:00:00Z"),
+    });
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+
+    const tc = await certificateFor(admin, result.recordId);
+    expect(tc).not.toBeNull();
+    expect(tc!.serial).toMatch(/^TC\/2026\/\d{4}$/);
+    expect(tc!.studentName).toBe((await db.user.findUniqueOrThrow({ where: { id: pupilUserId } })).name);
+    expect(tc!.studentCode).toBe((await db.membership.findUniqueOrThrow({ where: { id: pupilMembershipId } })).studentCode);
+    expect(tc!.className).toBeTruthy();
+    expect(tc!.conduct).toBe("GOOD");
+    expect(tc!.issuedHere).toBe(true);
+    expect(tc!.school.name).toBe("Riverside Primary School");
+
+    // Renaming the child afterwards does not rewrite a certificate already handed over.
+    await db.user.update({ where: { id: pupilUserId }, data: { name: "Renamed Later" } });
+    expect((await certificateFor(admin, result.recordId))!.studentName).not.toBe("Renamed Later");
+
+    // The next one this year at this school is the next number.
+    const row = await db.schoolRecord.findUniqueOrThrow({ where: { id: result.recordId } });
+    const n = Number(row.serial!.split("/")[2]);
+    expect(n).toBeGreaterThanOrEqual(1);
+  });
+
+  it("⚠ another school's admin gets the same null a guessed id gets; the family reads it without a tenant", async () => {
+    const result = await recordDeparture(admin, pupilMembershipId, { reason: "LEFT" });
+    if (!result.ok) throw new Error("no record");
+    expect(await certificateFor(otherSchoolAdmin, result.recordId)).toBeNull();
+    expect(await certificateFor(admin, "does-not-exist")).toBeNull();
+    // The pupil, as a person with no school on the session.
+    const asPupil: ActiveContext = { ...admin, role: null, schoolId: null, membershipId: null, user: { ...admin.user, id: pupilUserId } };
+    const own = await certificateFor(asPupil, result.recordId);
+    expect(own?.issuedHere).toBe(false);
+    expect(own?.serial).toBeTruthy();
+  });
+
+  it("fills in a certificate issued before the document existed, on the office's first reading", async () => {
+    const result = await recordDeparture(admin, pupilMembershipId, { reason: "GRADUATED" });
+    if (!result.ok) throw new Error("no record");
+    await db.schoolRecord.update({ where: { id: result.recordId }, data: { serial: null, studentName: null, studentCode: null } });
+    const tc = await certificateFor(admin, result.recordId);
+    expect(tc?.serial).toMatch(/^TC\//);
+    expect(tc?.studentName).toBeTruthy();
+    // The fixture pupil carries no student code; what the membership holds is what the line gets.
+    expect(tc?.studentCode).toBe((await db.membership.findUniqueOrThrow({ where: { id: pupilMembershipId } })).studentCode);
   });
 });

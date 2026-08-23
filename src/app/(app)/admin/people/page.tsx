@@ -108,7 +108,7 @@ export default async function DirectoryPage({
           include: { class: { select: { name: true } } },
         },
         classTeachers: { include: { class: { select: { name: true } } } },
-        schoolRecord: { select: { destination: true } },
+        schoolRecord: { select: { id: true, destination: true } },
       },
       orderBy:
         sort === "recent" ? { joinedAt: "desc" } : [{ user: { name: "asc" } }],
@@ -289,6 +289,14 @@ export default async function DirectoryPage({
                             {member.schoolRecord?.destination
                               ? ` · ${t("people.wentTo", { where: member.schoolRecord.destination })}`
                               : ""}
+                            {member.schoolRecord && (
+                              <>
+                                {" · "}
+                                <Link href={`/certificate/${member.schoolRecord.id}`} className="font-medium text-accent-strong hover:underline">
+                                  {t("tc.openDocument")}
+                                </Link>
+                              </>
+                            )}
                           </p>
                         )}
                         {role === "STUDENT" && !member.leftAt && (

@@ -83,12 +83,13 @@ export async function reinstate(membershipId: string): Promise<Result> {
  */
 export async function recordLeaving(
   membershipId: string,
-  input: { reason: string; destination: string; note: string; leftOn: string },
+  input: { reason: string; destination: string; note: string; leftOn: string; conduct?: string },
 ): Promise<Result & { recordId?: string }> {
   try {
     const ctx = await requireApiRole("ADMIN");
     const result = await recordDeparture(ctx, membershipId, {
       reason: input.reason as DepartureInput["reason"],
+      conduct: (input.conduct || null) as DepartureInput["conduct"],
       destination: input.destination,
       note: input.note,
       // An empty date box means today, which is what it means on paper. A

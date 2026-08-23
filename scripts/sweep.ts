@@ -331,7 +331,16 @@ async function transfer(fromSchoolId: string, toSchoolId: string) {
         404,
         "⚠ …but not the old school's own page about them",
       );
+
+      // THE DOCUMENT ITSELF. The child opens it from their new school; the
+      // receiving head does not — a certificate is the family's to hand over,
+      // the office that reads /reports sees its figures there. Same 404 as a
+      // guessed id.
+      await check(atNewSchool, `/certificate/${record.id}`, 200, "⚠ the child opens the certificate as a document");
+      await check(head, `/certificate/${record.id}`, 404, "⚠ …the receiving office cannot, by id");
     }
+    await check(atOldSchool, `/certificate/${record.id}`, 200, "⚠ …and from the old cookie too: it is theirs, not the school's");
+    await check(null, `/certificate/${record.id}`, 307, "signed-out certificate redirects to login");
   } finally {
     if (newMembershipId) await db.membership.deleteMany({ where: { id: newMembershipId } });
     await db.schoolRecord.deleteMany({ where: { id: record.id } });

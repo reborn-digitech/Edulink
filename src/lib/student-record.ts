@@ -73,6 +73,7 @@ export type RecordSchool = {
   /** NULL, never 0, when nothing was ever marked. Unmarked is not absent. */
   attendancePercent: number | null;
   certificate: {
+    id: string;
     reason: string;
     destination: string | null;
     note: string | null;
@@ -244,6 +245,7 @@ export async function recordFor(
     db.schoolRecord.findMany({
       where: { studentMembershipId: { in: membershipIds } },
       select: {
+        id: true,
         studentMembershipId: true,
         schoolName: true,
         reason: true,
@@ -284,6 +286,7 @@ export async function recordFor(
       attendancePercent: marked === 0 ? null : Math.round((present * 1000) / marked) / 10,
       certificate: certificate
         ? {
+            id: certificate.id,
             reason: certificate.reason,
             destination: certificate.destination,
             note: certificate.note,

@@ -113,6 +113,29 @@ describe("joining with a code on an existing account", () => {
     expect(await db.membership.count({ where: { userId: pupilUserId, schoolId: riversideId, role: "STUDENT" } })).toBe(1);
   });
 
+  it("⚠ coming back after leaving withdraws the old certificate, so a later departure can be recorded", async () => {
+    const { joinWithMyAccount } = await import("@/app/join/actions");
+    const { recordDeparture } = await import("@/lib/school-record");
+    const priya = await db.user.findUniqueOrThrow({ where: { email: "priya@riverside.school" } });
+    const priyaAdmin = await db.membership.findFirstOrThrow({ where: { userId: priya.id, schoolId: riversideId, role: "ADMIN" } });
+    const admin = ctx({ userId: priya.id, name: "Priya", membershipId: priyaAdmin.id, schoolId: riversideId, role: "ADMIN" });
+    const m = await db.membership.findFirstOrThrow({ where: { userId: pupilUserId, schoolId: riversideId, role: "STUDENT" } });
+
+    expect((await recordDeparture(admin, m.id, { reason: "LEFT" })).ok).toBe(true);
+    expect(await db.schoolRecord.count({ where: { studentMembershipId: m.id } })).toBe(1);
+
+    current = ctx({ userId: pupilUserId, name: "ZZ Join Pupil" });
+    expect(await joinWithMyAccount(classCode)).toMatchObject({ ok: true });
+    expect((await db.membership.findUniqueOrThrow({ where: { id: m.id } })).leftAt).toBeNull();
+    expect(await db.schoolRecord.count({ where: { studentMembershipId: m.id } })).toBe(0);
+
+    // And leaving again writes one fresh certificate, not a unique-index error.
+    expect((await recordDeparture(admin, m.id, { reason: "TRANSFERRED" })).ok).toBe(true);
+    expect(await db.schoolRecord.count({ where: { studentMembershipId: m.id } })).toBe(1);
+    await db.schoolRecord.deleteMany({ where: { studentMembershipId: m.id } });
+    await db.membership.update({ where: { id: m.id }, data: { leftAt: null } });
+  });
+
   it("⚠ refuses a parent's account", async () => {
     const { joinWithMyAccount } = await import("@/app/join/actions");
     current = ctx({ userId: parentUserId, name: "ZZ Join Parent" });

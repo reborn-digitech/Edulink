@@ -604,7 +604,13 @@ export async function joinWithMyAccount(rawCode: string): Promise<JoinState> {
           alreadyHere = true;
         } else if (existing) {
           // Came back after leaving: the same membership returns to the roll,
-          // so their history here is theirs again.
+          // so their history here is theirs again. The leaving certificate
+          // goes with the leaving: "left on the 30th" is no longer true of a
+          // child on tomorrow's register, and one certificate per membership
+          // is the rule — the next departure, if there is one, writes a fresh
+          // one over the whole stay. (A battery found the old row blocking
+          // every later departure.)
+          await tx.schoolRecord.deleteMany({ where: { studentMembershipId: existing.id, schoolId: lookup.schoolId } });
           await tx.membership.update({
             where: { id: existing.id },
             data: { status: "ACTIVE", leftAt: null, studentCode: studentCode() },

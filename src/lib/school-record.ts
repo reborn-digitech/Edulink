@@ -1,6 +1,7 @@
 import "server-only";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "./db";
+import { forOwnSchools } from "./tenant-context";
 import { audit } from "./audit";
 import { notifyGuardians } from "./notify";
 import { AccessError } from "./tenancy";
@@ -58,8 +59,14 @@ type TenantTx = {
 export const LEAVING_REASONS = ["TRANSFERRED", "GRADUATED", "LEFT"] as const;
 export type LeavingReason = (typeof LEAVING_REASONS)[number];
 
+/** The one word a transfer certificate carries about conduct. */
+export const CONDUCTS = ["EXCELLENT", "GOOD", "SATISFACTORY"] as const;
+export type Conduct = (typeof CONDUCTS)[number];
+
 export type DepartureInput = {
   reason: LeavingReason;
+  /** Printed on the certificate; omitted, the line reads "—". */
+  conduct?: Conduct | null;
   /** Where they went, if the school knows. Very often not on this server. */
   destination?: string | null;
   note?: string | null;
@@ -140,9 +147,17 @@ export async function recordDeparture(
       gradeLevel: true,
       joinedAt: true,
       leftAt: true,
+      studentCode: true,
+      user: { select: { name: true, birthdate: true } },
+      enrollments: {
+        where: { status: "ACTIVE" },
+        select: { class: { select: { name: true, section: true } } },
+        take: 1,
+      },
     },
   });
   if (!membership) return { ok: false, errorKey: "refusal.pupilNotHere" };
+  if (input.conduct && !CONDUCTS.includes(input.conduct)) return { ok: false, errorKey: "refusal.sayTransferReason" };
 
   // PUPILS ONLY, and this is a real guard rather than a type narrowing. Staff
   // leave schools too, and when they do the school owes them a payslip and a
@@ -195,6 +210,13 @@ export async function recordDeparture(
 
   const destination = input.destination?.trim().slice(0, 200) || null;
   const note = input.note?.trim().slice(0, 1000) || null;
+  const klass = membership.enrollments[0]?.class ?? null;
+  const className = klass
+    ? klass.section && !klass.name.toLowerCase().endsWith(klass.section.toLowerCase())
+      ? `${klass.name} ${klass.section}`
+      : klass.name
+    : null;
+  const serial = await nextSerial(schoolId, leftAt);
 
   // `$tenantTransaction`, never `$transaction`. The plain form opens a
   // transaction that nothing has bound `app.school_ids` on, so every statement
@@ -202,6 +224,11 @@ export async function recordDeparture(
   // as zero rows rather than an error. See db.ts.
   const record = await db.$tenantTransaction(async (tx: unknown) => {
     const t = tx as TenantTx;
+    // A certificate from an earlier stay — a pupil who left, came back and is
+    // leaving again — is replaced, not tripped over: one per membership, and
+    // this one covers the whole stay (joinedAt is the first day, the counts
+    // are cumulative).
+    await t.schoolRecord.deleteMany({ where: { studentMembershipId: membership.id, schoolId } });
     const created = await t.schoolRecord.create({
       data: {
         schoolId,
@@ -211,6 +238,15 @@ export async function recordDeparture(
         gradeLevel: membership.gradeLevel,
         joinedAt: membership.joinedAt,
         leftAt,
+        // The document's own lines, frozen now — a renamed class or a
+        // corrected birthday later does not rewrite a certificate already
+        // handed to another school.
+        serial,
+        studentName: membership.user.name,
+        studentCode: membership.studentCode,
+        birthdate: membership.user.birthdate,
+        className,
+        conduct: input.conduct ?? null,
         reason: input.reason,
         destination,
         note,
@@ -279,6 +315,141 @@ export async function recordDeparture(
   }));
 
   return { ok: true, recordId: record.id };
+}
+
+/**
+ * The school's own numbering: TC/<year of leaving>/<n>, n counting from one
+ * each year, per school. Read the highest issued and add one; the unique
+ * index on (schoolId, serial) turns a race into a retry, not a duplicate.
+ */
+async function nextSerial(schoolId: string, leftAt: Date): Promise<string> {
+  const year = leftAt.getUTCFullYear();
+  const prefix = `TC/${year}/`;
+  const last = await db.schoolRecord.findFirst({
+    where: { schoolId, serial: { startsWith: prefix } },
+    orderBy: { serial: "desc" },
+    select: { serial: true },
+  });
+  const n = last?.serial ? Number(last.serial.slice(prefix.length)) + 1 : 1;
+  return `${prefix}${String(n).padStart(4, "0")}`;
+}
+
+/* -------------------------------------------------------------------------- */
+/* The certificate as a document                                               */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Everything the printed transfer certificate says. Frozen fields come off
+ * the row; the issuing school's address and logo are read live, because a
+ * school that moved still wants its letterhead right, and nothing on the
+ * letterhead is a fact about the child.
+ */
+export type CertificateView = {
+  id: string;
+  serial: string | null;
+  school: { name: string; addressLine: string | null; logoPath: string | null; code: string };
+  studentName: string;
+  studentCode: string | null;
+  birthdate: Date | null;
+  className: string | null;
+  gradeLevel: string | null;
+  joinedAt: Date;
+  leftAt: Date;
+  reason: LeavingReason;
+  conduct: Conduct | null;
+  destination: string | null;
+  note: string | null;
+  attendanceMarked: number;
+  attendancePresent: number;
+  attendancePercent: number | null;
+  reportCardCount: number;
+  issuedAt: Date;
+  issuedBy: string | null;
+  /** The reader is the issuing school's office, not the family. */
+  issuedHere: boolean;
+};
+
+/**
+ * Who may see the document: the child, an active guardian, or an admin of
+ * the school that issued it. The first two are settled by the row policy —
+ * the record is read with NO tenant bound, and Postgres opens it to the
+ * person it is about (student-record.ts explains why that is not a
+ * shortcut). The office reads its own rows with its school bound, the
+ * ordinary way. A guessed id is null in every case, never "not yours".
+ */
+export async function certificateFor(ctx: ActiveContext, recordId: string): Promise<CertificateView | null> {
+  const asOffice = ctx.role === "ADMIN" && ctx.schoolId;
+  const row = asOffice
+    ? await db.schoolRecord.findFirst({ where: { id: recordId, schoolId: ctx.schoolId! } })
+    : await db.schoolRecord.findFirst({ where: { id: recordId } });
+  if (!row) return null;
+
+  // A row from before the document existed gets its lines filled on first
+  // reading by the office — the serial, the name, the code — from what the
+  // school still holds. The family's reading changes nothing.
+  if (asOffice && row.serial === null) {
+    const m = await db.membership.findUnique({
+      where: { id: row.studentMembershipId },
+      select: { studentCode: true, user: { select: { name: true, birthdate: true } } },
+    });
+    const serial = await nextSerial(row.schoolId, row.leftAt);
+    await db.schoolRecord.update({
+      where: { id: row.id },
+      data: {
+        serial,
+        studentName: row.studentName ?? m?.user.name ?? null,
+        studentCode: row.studentCode ?? m?.studentCode ?? null,
+        birthdate: row.birthdate ?? m?.user.birthdate ?? null,
+      },
+    });
+    row.serial = serial;
+    row.studentName = row.studentName ?? m?.user.name ?? null;
+    row.studentCode = row.studentCode ?? m?.studentCode ?? null;
+    row.birthdate = row.birthdate ?? m?.user.birthdate ?? null;
+  }
+
+  // Letterhead and signatory: the issuing school's, read with that school
+  // bound — the one narrow widening student-record.ts allows for names.
+  // The school id came back out of a row Postgres already opened to this
+  // reader, so the widening is to exactly that school — the switcher's rule.
+  const [school, issuer, student] = await forOwnSchools(ctx.user.id, [row.schoolId], async () => {
+    return Promise.all([
+      db.school.findUnique({ where: { id: row.schoolId }, select: { name: true, addressLine: true, logoPath: true, code: true } }),
+      row.issuedByMembershipId
+        ? db.membership.findUnique({ where: { id: row.issuedByMembershipId }, select: { user: { select: { name: true } } } })
+        : Promise.resolve(null),
+      row.studentName ? Promise.resolve(null) : db.user.findUnique({ where: { id: row.studentUserId }, select: { name: true } }),
+    ]);
+  });
+
+  return {
+    id: row.id,
+    serial: row.serial,
+    school: {
+      name: row.schoolName,
+      addressLine: school?.addressLine ?? null,
+      logoPath: school?.logoPath ?? null,
+      code: school?.code ?? "",
+    },
+    studentName: row.studentName ?? student?.name ?? "",
+    studentCode: row.studentCode,
+    birthdate: row.birthdate,
+    className: row.className,
+    gradeLevel: row.gradeLevel,
+    joinedAt: row.joinedAt,
+    leftAt: row.leftAt,
+    reason: row.reason as LeavingReason,
+    conduct: (row.conduct as Conduct | null) ?? null,
+    destination: row.destination,
+    note: row.note,
+    attendanceMarked: row.attendanceMarked,
+    attendancePresent: row.attendancePresent,
+    attendancePercent: row.attendanceMarked === 0 ? null : Math.round((row.attendancePresent * 100) / row.attendanceMarked),
+    reportCardCount: row.reportCardCount,
+    issuedAt: row.createdAt,
+    issuedBy: issuer?.user.name ?? null,
+    issuedHere: Boolean(asOffice),
+  };
 }
 
 /**

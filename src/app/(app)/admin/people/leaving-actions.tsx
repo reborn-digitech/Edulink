@@ -44,6 +44,7 @@ export function LeavingPanel({
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
   const [reason, setReason] = useState<string>("TRANSFERRED");
+  const [conduct, setConduct] = useState<string>("GOOD");
   const [destination, setDestination] = useState("");
   const [note, setNote] = useState("");
   const [leftOn, setLeftOn] = useState("");
@@ -66,6 +67,21 @@ export function LeavingPanel({
               {t(option.labelKey)}
             </option>
           ))}
+        </select>
+      </label>
+
+      <label className="mt-2 block">
+        <span className="block text-xs font-medium text-fg">{t("tc.conductLabel")}</span>
+        <select
+          value={conduct}
+          data-testid="leaving-conduct"
+          onChange={(event) => setConduct(event.target.value)}
+          className="mt-1 min-h-11 w-full rounded-[--radius-sm] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+        >
+          <option value="EXCELLENT">{t("tc.conductExcellent")}</option>
+          <option value="GOOD">{t("tc.conductGood")}</option>
+          <option value="SATISFACTORY">{t("tc.conductSatisfactory")}</option>
+          <option value="">{t("tc.conductNone")}</option>
         </select>
       </label>
 
@@ -122,6 +138,7 @@ export function LeavingPanel({
             startTransition(async () => {
               const result = await recordLeaving(membershipId, {
                 reason,
+                conduct,
                 destination,
                 note,
                 leftOn,
