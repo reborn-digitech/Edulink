@@ -204,7 +204,11 @@ export function PromotionPlanner({ plan }: { plan: PromotionClass[] }) {
         {plan.map((klass) => {
           const row = rows[klass.id]!;
           const goes = klass.pupils.length - row.holdBack.size;
-          const pupilOptions = destinations.filter((d) => d.key !== `new:from:${klass.id}` || row.kind !== "NEW");
+          // Not the class's own new row (that is "with the class"), and never
+          // the class itself — a pupil cannot move into where they already are.
+          const pupilOptions = destinations.filter(
+            (d) => (d.key !== `new:from:${klass.id}` || row.kind !== "NEW") && d.key !== `class:${klass.id}`,
+          );
           return (
             <li key={klass.id} data-testid={`promo-row-${klass.id}`}>
               <Card>
@@ -385,7 +389,7 @@ export function PromotionPlanner({ plan }: { plan: PromotionClass[] }) {
                                     />
                                     <span className={cn("truncate", held ? "text-fg" : "text-fg-muted")}>{p.name}</span>
                                   </label>
-                                  {!held && row.kind !== "STAY" && (
+                                  {!held && (
                                     <select
                                       aria-label={t("promotion.pupilGoesTo", { name: p.name })}
                                       data-testid={`promo-pupil-${p.membershipId}`}
@@ -398,7 +402,7 @@ export function PromotionPlanner({ plan }: { plan: PromotionClass[] }) {
                                       }}
                                       className="max-w-[11rem] rounded-[--radius-sm] border border-border bg-surface px-1.5 py-0.5 text-xs text-fg"
                                     >
-                                      <option value={WITH}>{t("promotion.withTheClass")}</option>
+                                      <option value={WITH}>{row.kind === "STAY" ? t("promotion.staysHere") : t("promotion.withTheClass")}</option>
                                       {pupilOptions.map((d) => (
                                         <option key={d.key} value={d.key}>{d.label}</option>
                                       ))}

@@ -149,10 +149,13 @@ export async function recordDeparture(
       leftAt: true,
       studentCode: true,
       user: { select: { name: true, birthdate: true } },
+      // The class line on the certificate. ACTIVE first; failing that, the
+      // most recently CLOSED one — promotion closes a graduate's enrolment
+      // inside its transaction and writes the certificate after it, and a
+      // battery found every graduate's "Class at leaving" blank because of it.
       enrollments: {
-        where: { status: "ACTIVE" },
-        select: { class: { select: { name: true, section: true } } },
-        take: 1,
+        orderBy: [{ status: "asc" }, { removedAt: "desc" }, { enrolledAt: "desc" }],
+        select: { status: true, removedAt: true, enrolledAt: true, class: { select: { name: true, section: true } } },
       },
     },
   });
@@ -210,7 +213,11 @@ export async function recordDeparture(
 
   const destination = input.destination?.trim().slice(0, 200) || null;
   const note = input.note?.trim().slice(0, 1000) || null;
-  const klass = membership.enrollments[0]?.class ?? null;
+  const lastEnrolment =
+    membership.enrollments.find((e) => e.status === "ACTIVE") ??
+    [...membership.enrollments].sort((a, b) => (b.removedAt ?? b.enrolledAt).getTime() - (a.removedAt ?? a.enrolledAt).getTime())[0] ??
+    null;
+  const klass = lastEnrolment?.class ?? null;
   const className = klass
     ? klass.section && !klass.name.toLowerCase().endsWith(klass.section.toLowerCase())
       ? `${klass.name} ${klass.section}`

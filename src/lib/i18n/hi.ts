@@ -3339,6 +3339,7 @@ export const hi: Dictionary = {
   },
 
   promotion: {
+    staysHere: "यहीं रहता है",
     sectionLabel: "सेक्शन {section}",
     reassignedCount: "{count} कहीं और जा रहे",
     newClassSection: "सेक्शन",

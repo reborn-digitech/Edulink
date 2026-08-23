@@ -378,11 +378,17 @@ export async function promoteSchool(
       );
     }
 
-    // New classes first, one per key, so a split and a merge both land in
-    // one row. A fresh join code each, because the old one is written on
-    // last year's board; a retry on the rare collision rather than a failed year.
+    // New classes are made ON FIRST ARRIVAL, one per key, so a split and a
+    // merge both land in one row — and a row nobody ends up in is never
+    // made: a class whose every pupil was sent elsewhere does not leave an
+    // empty "Class 8 B" behind (a battery found it would have). A fresh join
+    // code each, because the old one is written on last year's board; a
+    // retry on the rare collision rather than a failed year.
     const createdByKey = new Map<string, { id: string; name: string }>();
-    for (const [key, spec] of newSpecs) {
+    const ensureCreated = async (key: string): Promise<{ id: string; name: string }> => {
+      const have = createdByKey.get(key);
+      if (have) return have;
+      const spec = newSpecs.get(key)!;
       // The old class this key was first named from lends its colour and subject.
       const origin = byId.get(spec.originClassId);
       let made: { id: string; name: string } | null = null;
@@ -407,11 +413,12 @@ export async function promoteSchool(
       }
       createdByKey.set(key, made!);
       created += 1;
-    }
+      return made!;
+    };
 
-    const resolve = (to: Destination, fallbackKey: string): { id: string; name: string } | null => {
+    const resolve = async (to: Destination, fallbackKey: string): Promise<{ id: string; name: string } | null> => {
       if (to.kind === "CLASS") return { id: to.classId, name: byId.get(to.classId)!.name };
-      if (to.kind === "NEW") return createdByKey.get(keyOf(to, fallbackKey))!;
+      if (to.kind === "NEW") return ensureCreated(keyOf(to, fallbackKey));
       return null; // LEAVE / STAY
     };
 
@@ -433,7 +440,7 @@ export async function promoteSchool(
         const own = move.reassign?.some((r) => r.membershipId === e.studentMembershipId)
           ? `move:${move.fromClassId}:${e.studentMembershipId}`
           : `move:${move.fromClassId}`;
-        const target = resolve(dest, own);
+        const target = await resolve(dest, own);
         if (!target) {
           leavers.push({ membershipId: e.studentMembershipId, fromClassName: from.name });
           continue;
@@ -455,8 +462,9 @@ export async function promoteSchool(
       }
 
       // Nobody left behind and nobody arriving → the class is last year's,
-      // and goes to the archive.
-      if (roll.length - moving.length === 0 && !receiving.has(from.id)) {
+      // and goes to the archive. A STAY class is never archived, whoever
+      // was streamed out of it: the office said it stays, and it does.
+      if (move.to.kind !== "STAY" && roll.length - moving.length === 0 && !receiving.has(from.id)) {
         await tx.class.update({ where: { id: from.id }, data: { archivedAt: now } });
         archived += 1;
       }

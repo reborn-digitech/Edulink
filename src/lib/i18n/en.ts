@@ -3718,6 +3718,7 @@ export const en = {
   },
 
   promotion: {
+    staysHere: "Stays here",
     sectionLabel: "Section {section}",
     reassignedCount: "{count} going elsewhere",
     newClassSection: "Section",

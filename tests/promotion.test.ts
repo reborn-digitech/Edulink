@@ -196,10 +196,15 @@ describe("the move", () => {
     const p3 = await db.enrollment.findFirst({ where: { studentMembershipId: pupils[2], classId: six.id } });
     expect(p3).toMatchObject({ status: "ACTIVE" });
 
-    // p4 graduated: recorded as left, on the given day.
+    // p4 graduated: recorded as left, on the given day — and the certificate
+    // names the class they graduated FROM, although that enrolment was closed
+    // a moment before the certificate was written.
     const p4 = await db.membership.findUniqueOrThrow({ where: { id: pupils[3] } });
     expect(p4.leftAt).not.toBeNull();
     expect(p4.leftAt?.toISOString().slice(0, 10)).toBe("2027-04-30");
+    const tc = await db.schoolRecord.findUniqueOrThrow({ where: { studentMembershipId: pupils[3]! } });
+    expect(tc.className).toBe("ZZ Promo 10 A");
+    expect(tc.serial).toMatch(/^TC\/2027\//);
 
     // 4 kept its repeater, so it stays; 10 emptied, so it is archived; the
     // existing 5 sent its old roll on to 6 but RECEIVED p1, so it is next
@@ -247,6 +252,34 @@ describe("sections and streams", () => {
     expect((await where(pupils[4]!)).classId).toBe(nineA.id);
     expect((await where(pupils[5]!)).classId).toBe(nineB.id); // the split
     expect((await where(pupils[6]!)).classId).toBe(nineB.id); // the merge
+  });
+
+  it("⚠ a new class nobody lands in is never created — a STAY class can still send one pupil on", async () => {
+    // 9A (from the split above) stays; its one pupil is sent to a NEW 10 stream.
+    const nineA = await db.class.findFirstOrThrow({ where: { schoolId: riversideId, name: "ZZ Promo 9A", archivedAt: null } });
+    const nineB = await db.class.findFirstOrThrow({ where: { schoolId: riversideId, name: "ZZ Promo 9B", archivedAt: null } });
+    const before = await db.class.count({ where: { schoolId: riversideId, name: { startsWith: "ZZ Promo 10" }, archivedAt: null } });
+    const result = await promoteSchool(admin, [
+      {
+        fromClassId: nineA.id,
+        to: { kind: "STAY" },
+        holdBack: [],
+        reassign: [{ membershipId: pupils[4]!, to: { kind: "NEW", key: "sci", name: "ZZ Promo 10 Science", gradeLevel: "10", section: "Sci" } }],
+      },
+      {
+        // 9B says NEW, but its only pupil is reassigned into the same stream — so "ZZ Promo 10 B" must NOT be made.
+        fromClassId: nineB.id,
+        to: { kind: "NEW", key: "10B", name: "ZZ Promo 10 B", gradeLevel: "10", section: "B" },
+        holdBack: [],
+        reassign: [{ membershipId: pupils[5]!, to: { kind: "NEW", key: "sci", name: "ignored", gradeLevel: "10" } }, { membershipId: pupils[6]!, to: { kind: "NEW", key: "sci", name: "ignored", gradeLevel: "10" } }],
+      },
+    ]);
+    expect(result).toMatchObject({ ok: true, moved: 3, created: 1 });
+    expect(await db.class.count({ where: { schoolId: riversideId, name: { startsWith: "ZZ Promo 10" }, archivedAt: null } })).toBe(before + 1);
+    expect(await db.class.count({ where: { schoolId: riversideId, name: "ZZ Promo 10 B" } })).toBe(0);
+    // 9A stayed (STAY, empty now but not archived); 9B emptied and went.
+    expect((await db.class.findUniqueOrThrow({ where: { id: nineA.id } })).archivedAt).toBeNull();
+    expect((await db.class.findUniqueOrThrow({ where: { id: nineB.id } })).archivedAt).not.toBeNull();
   });
 
   it("⚠ a pupil cannot be both held back and reassigned", async () => {

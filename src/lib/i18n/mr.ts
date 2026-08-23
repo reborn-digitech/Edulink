@@ -3336,6 +3336,7 @@ export const mr: Dictionary = {
   },
 
   promotion: {
+    staysHere: "इथेच राहतो",
     sectionLabel: "तुकडी {section}",
     reassignedCount: "{count} इतरत्र जात आहेत",
     newClassSection: "तुकडी",

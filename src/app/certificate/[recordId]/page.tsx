@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { requireUser } from "@/lib/tenancy";
 import { certificateFor } from "@/lib/school-record";
 import { formatDate } from "@/lib/dates";
-import { getT } from "@/lib/i18n/server";
+import { getT, getLocale } from "@/lib/i18n/server";
 import { PrintButton } from "./print-button";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 
@@ -42,6 +42,8 @@ const CONDUCT_KEY: Record<string, TranslationKey> = {
 export default async function CertificatePage({ params }: { params: Promise<{ recordId: string }> }) {
   const session = await requireUser();
   const t = await getT();
+  // Tracking splits Devanagari conjuncts ("स्था नां तरण"); it is a Latin flourish only.
+  const latin = (await getLocale()) === "en";
   const { recordId } = await params;
   const tc = await certificateFor(session, recordId);
   if (!tc) notFound();
@@ -92,12 +94,12 @@ export default async function CertificatePage({ params }: { params: Promise<{ re
             {tc.school.addressLine && <p className="text-sm text-[#444]">{tc.school.addressLine}</p>}
           </div>
           <div className="text-right text-xs text-[#444]">
-            <p className="font-semibold uppercase tracking-widest">{t("tc.serialLabel")}</p>
+            <p className={`font-semibold uppercase ${latin ? "tracking-widest" : ""}`}>{t("tc.serialLabel")}</p>
             <p className="font-mono text-sm text-[#111]" data-testid="tc-serial">{tc.serial ?? dash}</p>
           </div>
         </header>
 
-        <h2 className="mt-8 text-center text-xl font-bold uppercase tracking-[0.2em]">{t("tc.heading")}</h2>
+        <h2 className={`mt-8 text-center text-xl font-bold uppercase ${latin ? "tracking-[0.2em]" : ""}`}>{t("tc.heading")}</h2>
         <p className="mx-auto mt-4 max-w-prose text-center text-sm leading-relaxed text-[#333]">
           {t("tc.certify", { name: tc.studentName || dash, school: tc.school.name })}
         </p>
@@ -118,7 +120,7 @@ export default async function CertificatePage({ params }: { params: Promise<{ re
             {tc.issuedBy && <p className="mt-1 text-xs text-[#444]">{t("tc.issuedBy", { name: tc.issuedBy })}</p>}
           </div>
           <div className="text-right">
-            <div className="mt-8 border-t border-[#111] pt-1 text-xs uppercase tracking-widest text-[#444]">{t("tc.signature")}</div>
+            <div className={`mt-8 border-t border-[#111] pt-1 text-xs uppercase text-[#444] ${latin ? "tracking-widest" : ""}`}>{t("tc.signature")}</div>
           </div>
         </div>
 
