@@ -2013,6 +2013,12 @@ export const mr: Dictionary = {
     everySchool: "या सर्व्हरवरील प्रत्येक शाळा",
   },
   join: {
+    waitingTitle: "तुमच्यासाठी एक निमंत्रण वाट पाहत आहे",
+    waitingTitleMany: "तुमच्यासाठी {count} निमंत्रणे वाट पाहत आहेत",
+    waitingBody: "तुमच्या स्वतःच्या पत्त्यावर पाठवलेले. स्वीकारल्यास तुम्ही साइन इन असलेल्या खात्यानेच जोडले जाता — काही पुन्हा लिहावे लागत नाही.",
+    waitingAs: "{school} — {role} म्हणून",
+    openInvite: "हे निमंत्रण स्वीकारा",
+    waitingGone: "ते निमंत्रण आता वैध नाही.",
     signedInAsBody: "तुम्ही {name} म्हणून साइन इन आहात. तुमचा कोड याच खात्यात शाळा जोडतो — तुमचा रेकॉर्ड तुमच्यासोबत येतो.",
     joinClassAs: "{name} म्हणून {className} मध्ये सामील व्हा",
     joinSchoolAs: "{name} म्हणून {school} मध्ये सामील व्हा",
@@ -3562,6 +3568,7 @@ export const mr: Dictionary = {
   },
 
   audit: {
+    inviteOpenSelf: "स्वतःच्या ईमेलवर आलेले निमंत्रण उघडले",
     studentLeaveSchedule: "विद्यार्थ्याचे सोडणे भविष्यातील दिवसासाठी ठरवले",
     studentLeaveUnschedule: "विद्यार्थ्याचे ठरलेले सोडणे रद्द केले",
     staffRecordSet: "एका कर्मचाऱ्याची नोंद अद्ययावत केली",

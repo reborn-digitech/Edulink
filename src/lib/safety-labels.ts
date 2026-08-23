@@ -113,6 +113,7 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "invite.accept": "audit.inviteAccept",
   "invite.revoke": "audit.inviteRevoke",
   "invite.resend": "audit.inviteResend",
+  "invite.open.self": "audit.inviteOpenSelf",
   "class.create": "audit.classCreate",
   "class.archive": "audit.classArchive",
   "class.restore": "audit.classRestore",

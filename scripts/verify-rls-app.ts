@@ -137,6 +137,19 @@ async function main() {
        ('verify-global-pending','verify-a','verify-u','GLOBAL','A unapproved global','PENDING','[]','[]',now());`,
   );
 
+  // The addressee bootstrap's fixtures: a pending invitation in school A,
+  // addressed to a VERIFIED user, and another addressed to an UNVERIFIED one.
+  psql(
+    DB,
+    `INSERT INTO "User" (id,name,email,"emailVerifiedAt",prefs,"updatedAt") VALUES
+       ('verify-addr','Addressee','addressee@x.test',now(),'{}',now()),
+       ('verify-addr-unv','Unverified','unv@x.test',NULL,'{}',now());
+     INSERT INTO "Invite" (id,"schoolId",role,email,"tokenHash","expiresAt",status) VALUES
+       ('verify-inv-addr','verify-a','TEACHER','addressee@x.test','verify-hash-addr',now() + interval '7 day','PENDING'),
+       ('verify-inv-unv','verify-a','TEACHER','unv@x.test','verify-hash-unv',now() + interval '7 day','PENDING');`,
+  );
+
+
   process.stdout.write(`\nVerifying the application half against ${DB}\n\n`);
 
   // ---- through Prisma, as the unprivileged role ---------------------------
@@ -257,6 +270,49 @@ async function main() {
       "app.user_id does not survive its transaction either",
       stillBlind === 0,
       `saw ${stillBlind} membership(s) with nothing set`,
+    );
+
+    // ---- the addressee clause: your own VERIFIED email's pending invites ---
+    // The one thing this opens is what /join offers a signed-in user; shown
+    // to be exactly that wide: verified sees their own, unverified sees
+    // nothing, and nobody writes through it.
+    const asAddr = <T,>(userId: string, sql: (tx: TxLike) => Promise<T>) =>
+      client.$transaction(async (tx: TxLike) => {
+        await tx.$executeRawUnsafe(`SELECT set_config('app.user_id', $1, true)`, userId);
+        return sql(tx);
+      });
+    type InviteRow = { id: string };
+    const mine = (await asAddr("verify-addr", (tx) =>
+      (tx as unknown as { invite: { findMany: (a?: unknown) => Promise<InviteRow[]> } }).invite.findMany({ select: { id: true } }),
+    )) as InviteRow[];
+    check(
+      "a VERIFIED address reads exactly the pending invitations addressed to it",
+      mine.length === 1 && mine[0]?.id === "verify-inv-addr",
+      `saw ${JSON.stringify(mine.map((i) => i.id))} — expected only verify-inv-addr`,
+    );
+    const unv = (await asAddr("verify-addr-unv", (tx) =>
+      (tx as unknown as { invite: { findMany: (a?: unknown) => Promise<InviteRow[]> } }).invite.findMany({ select: { id: true } }),
+    )) as InviteRow[];
+    check(
+      "⚠ an UNVERIFIED address reads none — a claim is not a fact",
+      unv.length === 0,
+      `saw ${JSON.stringify(unv.map((i) => i.id))} for an unverified email`,
+    );
+    let inviteWriteRefused = false;
+    try {
+      await asAddr("verify-addr", (tx) =>
+        (tx as unknown as { invite: { update: (a: unknown) => Promise<unknown> } }).invite.update({
+          where: { id: "verify-inv-addr" },
+          data: { status: "ACCEPTED" },
+        }),
+      );
+    } catch {
+      inviteWriteRefused = true;
+    }
+    check(
+      "⚠ …and cannot WRITE the invitation through that clause",
+      inviteWriteRefused,
+      "the addressee clause reached WITH CHECK — an invitee could accept or revoke rows directly",
     );
 
     // ---- the join-code bootstrap: app.join_code, reads, exactly one row ----

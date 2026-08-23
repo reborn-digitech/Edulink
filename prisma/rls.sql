@@ -545,11 +545,21 @@ CREATE POLICY "Invite_tenant_isolation" ON "Invite"
 
   -- …and the single row whose code somebody has just typed in, which is
   -- how a join code names the school it belongs to.
-  -- It is in a SELECT-ONLY policy: readable, never writable.
+  -- …and a PENDING invitation addressed to the caller's own VERIFIED
+  -- email — what lets /join offer the invitation instead of "go back
+  -- to your inbox". See ADDRESSEE_READABLE in scripts/gen-rls.ts.
+  -- All are in a SELECT-ONLY policy: readable, never writable.
 CREATE POLICY "Invite_readable" ON "Invite"
   FOR SELECT
   USING (("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')) OR current_setting('app.is_superuser', true) = '1')
          OR "tokenHash" = current_setting('app.join_code', true)
+         OR ("Invite"."status" = 'PENDING'
+            AND current_setting('app.user_id', true) <> ''
+            AND lower("Invite"."email") = (
+              SELECT lower(u."email") FROM "User" u
+              WHERE u."id" = current_setting('app.user_id', true)
+                AND u."emailVerifiedAt" IS NOT NULL
+            ))
         );
 
 -- Notification

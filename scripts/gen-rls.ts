@@ -472,6 +472,27 @@ const MEMBER_READABLE: Record<string, string> = {
  * the code is the authorisation, which is precisely what a join code was for
  * before any of this was school-scoped.
  */
+/**
+ * Rows ADDRESSED to the signed-in person, by their own verified email.
+ *
+ * The one case: a signed-in user with no school lands on /join, and a
+ * pending invitation to their own address sits in a school's tenant where
+ * they cannot see it — so the page used to say "go back to your email".
+ * This opens exactly the PENDING invitations whose address equals the
+ * caller's OWN, and only when that address is VERIFIED: an unverified
+ * address is a claim, not a fact, and a claim must not read another
+ * school's rows. Read-only; accepting still goes through the token.
+ */
+const ADDRESSEE_READABLE: Record<string, string> = {
+  Invite: `"Invite"."status" = 'PENDING'
+            AND current_setting('app.user_id', true) <> ''
+            AND lower("Invite"."email") = (
+              SELECT lower(u."email") FROM "User" u
+              WHERE u."id" = current_setting('app.user_id', true)
+                AND u."emailVerifiedAt" IS NOT NULL
+            )`,
+};
+
 const CODE_READABLE: Record<string, string> = {
   Class: "joinCode",
   School: "code",
@@ -569,6 +590,8 @@ function generate(): string {
     if (recordClause) alsoReadable.push(`(${recordClause})`);
     const guardianClause = GUARDIAN_READABLE[table];
     if (guardianClause) alsoReadable.push(`(${guardianClause})`);
+    const addresseeClause = ADDRESSEE_READABLE[table];
+    if (addresseeClause) alsoReadable.push(`(${addresseeClause})`);
     if (SUPERUSER_NULL_READABLE.has(table)) {
       alsoReadable.push(
         `("${column}" IS NULL AND current_setting('app.is_superuser', true) = '1')`,
@@ -601,6 +624,13 @@ function generate(): string {
               `  -- predicate below. See GLOBALLY_READABLE in scripts/gen-rls.ts for`,
               `  -- what that predicate opens and why it is safe to open it.`,
             ]),
+      );
+    }
+    if (ADDRESSEE_READABLE[table]) {
+      usingNote.push(
+        `  -- …and a PENDING invitation addressed to the caller's own VERIFIED`,
+        `  -- email — what lets /join offer the invitation instead of "go back`,
+        `  -- to your inbox". See ADDRESSEE_READABLE in scripts/gen-rls.ts.`,
       );
     }
     if (memberClause) {

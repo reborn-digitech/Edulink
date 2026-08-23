@@ -1,12 +1,14 @@
 "use server";
 
+import { redirect } from "next/navigation";
+
 import { db } from "@/lib/db";
-import { fakePasswordWork, hashPassword, passwordProblems } from "@/lib/crypto";
+import { fakePasswordWork, generateToken, hashPassword, hashToken, passwordProblems } from "@/lib/crypto";
 import { createSession, getSession, setActiveContext } from "@/lib/session";
 import { normalizeCode, studentCode } from "@/lib/codes";
 import { ageInYears, parseDateOnly, sameCalendarDay } from "@/lib/dates";
 import { audit } from "@/lib/audit";
-import { forJoinCode, forSchool } from "@/lib/tenant-context";
+import { forJoinCode, forSchool, forUser } from "@/lib/tenant-context";
 import { writeJson } from "@/lib/json";
 import { sendParentClaimNotice } from "@/lib/email";
 import { syncStandinGuardian } from "@/lib/standin-guardian";
@@ -32,6 +34,49 @@ import { getT, getLocale } from "@/lib/i18n/server";
 import type { Translate } from "@/lib/i18n/dictionary";
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+
+/**
+ * Opens an invitation ADDRESSED TO the signed-in person, from /join.
+ *
+ * The emailed link carries the only copy of the token; the database holds a
+ * hash. So "offer the invitation right there" cannot rebuild the URL — it
+ * mints a fresh token instead, exactly as Resend does, and sends the person
+ * to the same /invite/<token> page every other acceptance goes through,
+ * with all its branches intact. The old emailed link stops working, which
+ * is fine: the person it was addressed to is the one who pressed this.
+ *
+ * PROOF OF ADDRESS: the session's own email, VERIFIED, equal to the
+ * invitation's — the same standard the row policy applies, checked again
+ * here because a policy is a fence, not an argument.
+ */
+export async function openMyInvite(inviteId: string): Promise<{ ok: false; errorKey: "invite.noLongerValid" } | never> {
+  const session = await getSession();
+  if (!session) redirect("/login");
+
+  const me = await db.user.findUnique({ where: { id: session.user.id }, select: { email: true, emailVerifiedAt: true } });
+  const invite = me?.email && me.emailVerifiedAt
+    ? await forUser(session.user.id, () =>
+        db.invite.findFirst({
+          where: { id: inviteId, email: me.email!.toLowerCase(), status: "PENDING", expiresAt: { gt: new Date() } },
+          select: { id: true, schoolId: true },
+        }),
+      )
+    : null;
+  if (!invite) return { ok: false, errorKey: "invite.noLongerValid" };
+
+  const token = generateToken();
+  await forSchool(invite.schoolId, () =>
+    db.invite.update({ where: { id: invite.id }, data: { tokenHash: hashToken(token) } }),
+  );
+  await audit({
+    schoolId: invite.schoolId,
+    actorUserId: session.user.id,
+    action: "invite.open.self",
+    targetType: "Invite",
+    targetId: invite.id,
+  });
+  redirect(`/invite/${token}`);
+}
 
 /**
  * "in about 5 minutes", in the reader's language.

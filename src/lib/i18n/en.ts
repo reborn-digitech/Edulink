@@ -2225,6 +2225,12 @@ export const en = {
     everySchool: "Every school on this server",
   },
   join: {
+    waitingTitle: "An invitation is waiting for you",
+    waitingTitleMany: "{count} invitations are waiting for you",
+    waitingBody: "Sent to your own address. Accepting joins with the account you are signed in as — nothing to retype.",
+    waitingAs: "{school} — as {role}",
+    openInvite: "Accept this invitation",
+    waitingGone: "That invitation is no longer valid.",
     signedInAsBody: "You are signed in as {name}. Your code adds the school to this account — your record comes with you.",
     joinClassAs: "Join {className} as {name}",
     joinSchoolAs: "Join {school} as {name}",
@@ -3944,6 +3950,7 @@ export const en = {
   },
 
   audit: {
+    inviteOpenSelf: "Opened an invitation addressed to their own email",
     studentLeaveSchedule: "Scheduled a pupil's leaving for a future day",
     studentLeaveUnschedule: "Cancelled a pupil's scheduled leaving",
     staffRecordSet: "Updated a member of staff's record",

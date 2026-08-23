@@ -10,6 +10,10 @@ import { Wordmark } from "@/components/brand";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getSession } from "@/lib/session";
+import { pendingInvitesFor } from "@/lib/my-invites";
+import { openMyInvite } from "./actions";
+import { ROLE_META, type SchoolRole } from "@/lib/constants";
+import { EnvelopeSimpleOpenIcon } from "@phosphor-icons/react/ssr";
 import { ROLE_HOME, type Role } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
 
@@ -47,6 +51,10 @@ export default async function JoinPage({
     ? (session.user.preferredName ?? session.user.name)
     : null;
 
+  // The invitations waiting at this person's own (verified) address — the
+  // screen that used to say "go back to your email" now offers them here.
+  const waiting = session ? await pendingInvitesFor(session.user.id) : [];
+
   return (
     <div className="min-h-safe bg-bg">
       <header className="border-b border-border bg-surface">
@@ -69,6 +77,43 @@ export default async function JoinPage({
         <p className="mt-2 text-fg-muted">
           {first === "1" ? t("join.accountReady") : t("join.pickOne")}
         </p>
+
+        {waiting.length > 0 && (
+          <Card className="mt-6 border-accent/40 p-4" data-testid="waiting-invites">
+            <p className="flex items-center gap-2 font-semibold text-fg">
+              <EnvelopeSimpleOpenIcon weight="duotone" className="size-5 text-accent-strong" />
+              {waiting.length === 1 ? t("join.waitingTitle") : t("join.waitingTitleMany", { count: waiting.length })}
+            </p>
+            <p className="mt-1 text-sm text-fg-muted">{t("join.waitingBody")}</p>
+            <ul className="mt-3 space-y-2">
+              {waiting.map((invite) => (
+                <li key={invite.id} className="flex flex-wrap items-center justify-between gap-2 rounded-[--radius-md] border border-border p-3">
+                  <span className="text-sm font-medium text-fg">
+                    {t("join.waitingAs", {
+                      school: invite.schoolName,
+                      role:
+                        invite.role === "PARENT"
+                          ? t("role.parent")
+                          : ROLE_META[invite.role as SchoolRole]
+                            ? t(ROLE_META[invite.role as SchoolRole].labelKey)
+                            : invite.role,
+                    })}
+                  </span>
+                  <form
+                    action={async () => {
+                      "use server";
+                      await openMyInvite(invite.id);
+                    }}
+                  >
+                    <Button type="submit" size="sm" icon={<ArrowRightIcon weight="bold" />}>
+                      {t("join.openInvite")}
+                    </Button>
+                  </form>
+                </li>
+              ))}
+            </ul>
+          </Card>
+        )}
 
         {signedInAs && (
           /* A SECTION named by its own first line, which gives the warning an
