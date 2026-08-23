@@ -100,7 +100,7 @@ export default async function AttendanceHistoryPage({
             {!selectedId && <option value="">{t("attendanceHistory.chooseClass")}</option>}
             {classes.map((klass) => (
               <option key={klass.id} value={klass.id}>
-                {klass.name}
+                {klass.archived ? t("attendanceHistory.archivedName", { name: klass.name }) : klass.name}
               </option>
             ))}
           </select>
@@ -138,7 +138,9 @@ export default async function AttendanceHistoryPage({
                     className="h-8 w-1.5 shrink-0 rounded-full"
                     style={{ backgroundColor: klass.color ?? "var(--accent)" }}
                   />
-                  <span className="min-w-0 flex-1 truncate font-semibold text-fg">{klass.name}</span>
+                  <span className="min-w-0 flex-1 truncate font-semibold text-fg">
+                    {klass.archived ? t("attendanceHistory.archivedName", { name: klass.name }) : klass.name}
+                  </span>
                   <CaretRightIcon className="size-4 shrink-0 text-fg-subtle" aria-hidden="true" />
                 </Link>
               </Card>

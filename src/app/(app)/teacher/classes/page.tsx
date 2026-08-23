@@ -54,7 +54,7 @@ export default async function TeacherClassesPage() {
         subject: true,
         room: true,
         color: true,
-        _count: { select: { enrollments: true, assignments: true } },
+        _count: { select: { enrollments: { where: { status: "ACTIVE" } }, assignments: true } },
       },
       orderBy: { name: "asc" },
     }),

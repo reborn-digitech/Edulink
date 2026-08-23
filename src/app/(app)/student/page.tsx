@@ -7,6 +7,7 @@ import {
 } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { examMarksFor } from "@/lib/exams";
+import { ownWorkScope } from "@/lib/grading";
 import { ExamMarksCards } from "@/components/exams/exam-marks";
 import { CelebrationsLink } from "@/components/celebrations/celebrations-link";
 import { db } from "@/lib/db";
@@ -64,7 +65,7 @@ export default async function StudentHome({
         examSlotId: null,
         submissions: { none: { studentMembershipId: ctx.membershipId, submittedAt: { not: null } } },
         grades: { none: { studentMembershipId: ctx.membershipId } },
-        class: { enrollments: { some: { studentMembershipId: ctx.membershipId, status: "ACTIVE" } } },
+        ...(await ownWorkScope(ctx.schoolId, ctx.membershipId)),
       },
       select: { id: true, title: true, dueAt: true, class: { select: { name: true } } },
       orderBy: [{ dueAt: { sort: "asc", nulls: "last" } }],

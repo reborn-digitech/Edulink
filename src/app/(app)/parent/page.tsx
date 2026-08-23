@@ -27,6 +27,7 @@ import { ChildSwitcher } from "./child-switcher";
 import { WelcomeTour } from "./welcome-tour";
 import { ConsentControls } from "../competitions/entry-controls";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
+import { ownWorkScope } from "@/lib/grading";
 import { getT } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -89,7 +90,7 @@ export default async function ParentDashboard({
         examSlotId: null,
         submissions: { none: { studentMembershipId: selectedId, submittedAt: { not: null } } },
         grades: { none: { studentMembershipId: selectedId } },
-        class: { enrollments: { some: { studentMembershipId: selectedId, status: "ACTIVE" } } },
+        ...(await ownWorkScope(student.schoolId, selectedId)),
       },
       select: { id: true, title: true, dueAt: true, class: { select: { name: true } } },
       orderBy: [{ dueAt: { sort: "asc", nulls: "last" } }],

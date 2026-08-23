@@ -158,7 +158,9 @@ export function PromotionPlanner({ plan }: { plan: PromotionClass[] }) {
                         >
                           {klass.candidates.map((c) => (
                             <option key={c.id} value={c.id}>
-                              {c.name}
+                              {c.pupils === 0
+                                ? c.name
+                                : t("promotion.candidateWithPupils", { name: c.name, count: c.pupils })}
                             </option>
                           ))}
                         </SelectField>

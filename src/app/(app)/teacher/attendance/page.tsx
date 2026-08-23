@@ -78,7 +78,7 @@ export default async function AttendancePage({
   if (!selectedId) {
     const classes = await db.class.findMany({
       where: { id: { in: classIds }, schoolId: ctx.schoolId },
-      select: { id: true, name: true, subject: true, color: true, _count: { select: { enrollments: true } } },
+      select: { id: true, name: true, subject: true, color: true, _count: { select: { enrollments: { where: { status: "ACTIVE" } } } } },
       orderBy: { name: "asc" },
     });
 

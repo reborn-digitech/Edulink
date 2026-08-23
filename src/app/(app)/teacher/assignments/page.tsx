@@ -43,7 +43,7 @@ export default async function AssignmentsPage() {
   const assignments = await db.assignment.findMany({
     where: { schoolId: ctx.schoolId, classId: { in: classIds } },
     include: {
-      class: { select: { name: true, color: true, _count: { select: { enrollments: true } } } },
+      class: { select: { name: true, color: true, _count: { select: { enrollments: { where: { status: "ACTIVE" } } } } } },
       _count: { select: { submissions: true, grades: true } },
     },
     orderBy: [{ publishedAt: "desc" }, { createdAt: "desc" }],

@@ -263,12 +263,6 @@ export async function generateCards(
     where: { id: ctx.schoolId! },
     select: { timezone: true },
   });
-  const toDateKey = input.toDateKey ?? todayKey(school.timezone);
-  const fromDateKey = input.fromDateKey ?? addDaysToKey(toDateKey, -DEFAULT_WINDOW_DAYS);
-  if (fromDateKey > toDateKey) {
-    return { ok: false, errorKey: "reportCards.windowBackwards" };
-  }
-
   // Re-queried against THIS class. An assignment id from another class — or
   // another school — is simply not found, so a forged form cannot put somebody
   // else's test on this school's report cards.
@@ -289,6 +283,38 @@ export async function generateCards(
   // Keep the teacher's chosen order rather than the database's.
   const order = new Map(input.assignmentIds.map((id, index) => [id, index]));
   assignments.sort((a, b) => (order.get(a.id) ?? 0) - (order.get(b.id) ?? 0));
+
+  /**
+   * THE CARD'S PERIOD IS THE EXAM'S, NOT TODAY'S. A card generated a week
+   * after the final — or a year later, from the archive — used to carry
+   * "the last 120 days from whenever the button was pressed", which printed
+   * 2026 dates on a 2023–24 card and an attendance line of "0 of 0 days".
+   * Unless the office says otherwise, the window runs from the start of
+   * the academic year the papers fall in (or 120 days before the first
+   * paper, when no year is set up) to the last paper.
+   */
+  const paperDays = (
+    await db.examSlot.findMany({
+      where: { assignments: { some: { id: { in: assignments.map((a) => a.id) } } } },
+      select: { dateKey: true },
+    })
+  ).map((slot) => slot.dateKey).sort();
+  const lastPaper = paperDays.at(-1) ?? todayKey(school.timezone);
+  const firstPaper = paperDays[0] ?? lastPaper;
+  const yearOfPapers = await db.academicYear.findFirst({
+    where: { schoolId: ctx.schoolId!, startDate: { lte: new Date(`${lastPaper}T23:59:59Z`) } },
+    orderBy: { startDate: "desc" },
+    select: { startDate: true },
+  });
+  const toDateKey = input.toDateKey ?? lastPaper;
+  const fromDateKey =
+    input.fromDateKey ??
+    (yearOfPapers && yearOfPapers.startDate.toISOString().slice(0, 10) <= firstPaper
+      ? yearOfPapers.startDate.toISOString().slice(0, 10)
+      : addDaysToKey(firstPaper, -DEFAULT_WINDOW_DAYS));
+  if (fromDateKey > toDateKey) {
+    return { ok: false, errorKey: "reportCards.windowBackwards" };
+  }
 
   const roll = await db.enrollment.findMany({
     where: { schoolId: ctx.schoolId!, classId, status: "ACTIVE" },

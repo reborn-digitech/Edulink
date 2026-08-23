@@ -1,0 +1,100 @@
+
+ RUN  v3.2.4 /Users/chinmaykulkarni/Edulink
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+setup: north 10 classes, south 9 classes
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+FINDING: ZZ Sim North School: openReviewRound failed reviews.closeDateInPast
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+ZZ Sim North School 2023–24: 276 teaching days
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+ZZ Sim North School: closed 2023–24 — 250 pupils, 852 badges
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+ZZ Sim North School: promoted — {"ok":true,"moved":216,"left":24,"heldBack":10,"created":0,"archived":0} [ZZ Sim Class 1→CLASS, ZZ Sim Class 2→CLASS, ZZ Sim Class 3→CLASS, ZZ Sim Class 4→CLASS, ZZ Sim Class 5→CLASS, ZZ Sim Class 6→CLASS, ZZ Sim Class 7→CLASS, ZZ Sim Class 8→CLASS, ZZ Sim Class 9→CLASS, ZZ Sim Class 10→LEAVE]
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+FINDING: ZZ Sim South School: openReviewRound failed reviews.closeDateInPast
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+ZZ Sim South School 2023–24: 276 teaching days
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+ZZ Sim South School: closed 2023–24 — 180 pupils, 615 badges
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+ZZ Sim South School: promoted — {"ok":true,"moved":152,"left":19,"heldBack":9,"created":0,"archived":0} [ZZ Sim Class K→CLASS, ZZ Sim Class 1→CLASS, ZZ Sim Class 2→CLASS, ZZ Sim Class 3→CLASS, ZZ Sim Class 4→CLASS, ZZ Sim Class 5→CLASS, ZZ Sim Class 6→CLASS, ZZ Sim Class 7→CLASS, ZZ Sim Class 8→LEAVE]
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+ZZ Sim North School 2024–25: 274 teaching days
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+ZZ Sim North School: closed 2024–25 — 251 pupils, 854 badges
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+ZZ Sim North School: promoted — {"ok":true,"moved":217,"left":24,"heldBack":10,"created":0,"archived":0} [ZZ Sim Class 1→CLASS, ZZ Sim Class 2→CLASS, ZZ Sim Class 3→CLASS, ZZ Sim Class 4→CLASS, ZZ Sim Class 5→CLASS, ZZ Sim Class 6→CLASS, ZZ Sim Class 7→CLASS, ZZ Sim Class 8→CLASS, ZZ Sim Class 9→CLASS, ZZ Sim Class 10→LEAVE]
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+ZZ Sim South School 2024–25: 274 teaching days
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+ZZ Sim South School: closed 2024–25 — 181 pupils, 615 badges
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+ZZ Sim South School: promoted — {"ok":true,"moved":153,"left":19,"heldBack":9,"created":0,"archived":0} [ZZ Sim Class K→CLASS, ZZ Sim Class 1→CLASS, ZZ Sim Class 2→CLASS, ZZ Sim Class 3→CLASS, ZZ Sim Class 4→CLASS, ZZ Sim Class 5→CLASS, ZZ Sim Class 6→CLASS, ZZ Sim Class 7→CLASS, ZZ Sim Class 8→LEAVE]
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+FINDING: ZZ Sim North School: openReviewRound failed reviews.closeDateInPast
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+ZZ Sim North School 2025–26: 273 teaching days
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+ZZ Sim North School: closed 2025–26 — 252 pupils, 858 badges
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+ZZ Sim North School: promoted — {"ok":true,"moved":218,"left":24,"heldBack":10,"created":0,"archived":0} [ZZ Sim Class 1→CLASS, ZZ Sim Class 2→CLASS, ZZ Sim Class 3→CLASS, ZZ Sim Class 4→CLASS, ZZ Sim Class 5→CLASS, ZZ Sim Class 6→CLASS, ZZ Sim Class 7→CLASS, ZZ Sim Class 8→CLASS, ZZ Sim Class 9→CLASS, ZZ Sim Class 10→LEAVE]
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+FINDING: ZZ Sim South School: openReviewRound failed reviews.closeDateInPast
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+ZZ Sim South School 2025–26: 273 teaching days
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+ZZ Sim South School: closed 2025–26 — 182 pupils, 633 badges
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+ZZ Sim South School: promoted — {"ok":true,"moved":154,"left":19,"heldBack":9,"created":0,"archived":0} [ZZ Sim Class K→CLASS, ZZ Sim Class 1→CLASS, ZZ Sim Class 2→CLASS, ZZ Sim Class 3→CLASS, ZZ Sim Class 4→CLASS, ZZ Sim Class 5→CLASS, ZZ Sim Class 6→CLASS, ZZ Sim Class 7→CLASS, ZZ Sim Class 8→LEAVE]
+
+stdout | scripts/sim/school.sim.ts > three academic years of two schools > runs
+
+enrolStudents: n=19 avg=30.3ms max=51ms total=0.6s
+createSeries: n=171 avg=2.2ms max=12ms total=0.4s
+addSlot: n=684 avg=2.2ms max=11ms total=1.5s
+createPost: n=66 avg=4.8ms max=10ms total=0.3s
+saveAttendanceBatch: n=15637 avg=22.9ms max=96ms total=358.3s
+createAssignment: n=1254 avg=18.9ms max=90ms total=23.6s
+saveGrades: n=1254 avg=28.9ms max=85ms total=36.3s
+createThread: n=52 avg=11.3ms max=17ms total=0.6s
+publishSlots: n=52 avg=0.2ms max=1ms total=0.0s
+applyForLeave: n=12 avg=8.9ms max=13ms total=0.1s
+decideLeave: n=12 avg=14.5ms max=24ms total=0.2s
+saveMarks: n=627 avg=24.0ms max=49ms total=15.1s
+generateCards: n=76 avg=136.4ms max=200ms total=10.4s
+publishCards: n=76 avg=81.0ms max=103ms total=6.2s
+closeAcademicYear: n=6 avg=4082.7ms max=5900ms total=24.5s
+promoteSchool: n=6 avg=1094.5ms max=1529ms total=6.6s
+
+ ✓ scripts/sim/school.sim.ts (1 test) 491348ms
+   ✓ three academic years of two schools > runs  491346ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  19:31:01
+   Duration  492.05s (transform 378ms, setup 50ms, collect 509ms, tests 491.35s, environment 0ms, prepare 30ms)
+
+EXIT 0

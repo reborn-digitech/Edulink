@@ -20,7 +20,7 @@ import type { ActiveContext } from "./session";
  *
  * Four destinations, deliberately no fifth:
  *   - an EXISTING class (a school that already made next year's classes);
- *   - a NEW class, created here with the same section and room and a fresh
+ *   - a NEW class, created here with the same section and colour and a fresh
  *     join code, never a copied teacher — staffing is next year's decision;
  *   - LEAVING: the top grade graduates, each pupil recorded as having left
  *     with the same certificate a mid-year leaver gets;
@@ -42,8 +42,10 @@ export type PromotionClass = {
   pupils: { membershipId: string; name: string }[];
   /** What the office will most likely want, worked out from the grade. */
   suggested: Destination;
-  /** Existing unarchived classes one grade up, offered in the picker. */
-  candidates: { id: string; name: string }[];
+  /** Existing unarchived classes one grade up, offered in the picker. A
+   * class that already has pupils is offered but never suggested — see the
+   * plan for why. */
+  candidates: { id: string; name: string; pupils: number }[];
 };
 
 export type Destination =
@@ -73,12 +75,36 @@ function requireAdmin(ctx: ActiveContext): string {
   return ctx.schoolId;
 }
 
-/** "5" → "6", "10" → "11"; "K", "LKG", "Nursery" → null (no arithmetic on words). */
-export function nextGrade(grade: string | null | undefined): string | null {
+/**
+ * The rungs below the numbers, in the order Indian schools climb them. A
+ * school uses whichever it uses; the ladder only says what comes after what.
+ */
+const EARLY_YEARS = ["PLAYGROUP", "NURSERY", "PRE-KG", "LKG", "JR KG", "JR. KG", "KG", "K", "UKG", "SR KG", "SR. KG", "PREP"];
+
+function rung(grade: string): number | null {
+  const g = grade.trim().toUpperCase();
+  if (/^\d{1,2}$/.test(g)) return 100 + Number(g);
+  const i = EARLY_YEARS.indexOf(g);
+  return i >= 0 ? i : null;
+}
+
+/**
+ * "5" → "6", "10" → "11"; a word grade steps to the NEXT RUNG THE SCHOOL HAS —
+ * "K" goes to "1" in a school with K and 1, to "UKG" in a school with both —
+ * and to nothing the school does not run. No arithmetic on words.
+ */
+export function nextGrade(grade: string | null | undefined, ladder: readonly string[] = []): string | null {
   if (!grade) return null;
   const trimmed = grade.trim();
-  if (!/^\d{1,2}$/.test(trimmed)) return null;
-  return String(Number(trimmed) + 1);
+  const here = rung(trimmed);
+  if (here === null) return null;
+  // A number is arithmetic: 5 goes to 6 whether or not a 6 exists yet.
+  if (/^\d{1,2}$/.test(trimmed)) return String(Number(trimmed) + 1);
+  const above = ladder
+    .map((g) => ({ g: g.trim(), r: rung(g) }))
+    .filter((x): x is { g: string; r: number } => x.r !== null && x.r > here)
+    .sort((a, b) => a.r - b.r);
+  return above.length > 0 ? above[0]!.g : null;
 }
 
 /**
@@ -120,13 +146,31 @@ export async function promotionPlan(ctx: ActiveContext): Promise<PromotionClass[
   ]);
 
   const top = school.gradeHigh?.trim() ?? null;
+  const ladder = [...new Set(classes.map((c) => c.gradeLevel?.trim()).filter((g): g is string => Boolean(g)))];
+  const taken = new Set(classes.map((c) => c.name.trim().toLowerCase()));
+  // A bumped name that an active class already wears gets the year on it,
+  // so the office is not left with two "Class 1"s to tell apart.
+  const year = await db.academicYear.findFirst({ where: { schoolId, isCurrent: true }, select: { name: true } });
+  const unique = (name: string) => (taken.has(name.trim().toLowerCase()) ? `${name} (${year?.name ?? "new"})` : name);
 
   return classes
     .map((klass) => {
-      const next = nextGrade(klass.gradeLevel);
+      const next = nextGrade(klass.gradeLevel, ladder);
       const candidates = classes
         .filter((c) => c.id !== klass.id && next !== null && c.gradeLevel?.trim() === next)
-        .map((c) => ({ id: c.id, name: c.name }));
+        .map((c) => ({ id: c.id, name: c.name, pupils: c.enrollments.length }));
+
+      /**
+       * A CLASS ROW IS ONE YEAR'S COHORT. Its homework, date sheets, report
+       * cards and registers hang off the row; move this year's 9 into the
+       * row that was this year's 10 and they inherit every piece of work
+       * that cohort was ever set. So an existing class is suggested only
+       * when it is EMPTY — a class the office made ahead for next year —
+       * and otherwise the pupils get a fresh class and the old row goes to
+       * the archive with its year intact. The office can still choose a
+       * full class from the picker; the page says how many are in it.
+       */
+      const empty = candidates.filter((c) => c.pupils === 0);
 
       let suggested: Destination;
       if (klass.enrollments.length === 0) {
@@ -134,14 +178,14 @@ export async function promotionPlan(ctx: ActiveContext): Promise<PromotionClass[
         suggested = { kind: "STAY" };
       } else if (top !== null && klass.gradeLevel?.trim() === top) {
         suggested = { kind: "LEAVE" };
-      } else if (candidates.length > 0) {
+      } else if (empty.length > 0) {
         // Prefer the same section; otherwise the first.
-        const same = candidates.find((c) =>
+        const same = empty.find((c) =>
           classes.find((x) => x.id === c.id)?.section === klass.section,
         );
-        suggested = { kind: "CLASS", classId: (same ?? candidates[0]!).id };
+        suggested = { kind: "CLASS", classId: (same ?? empty[0]!).id };
       } else if (next !== null) {
-        suggested = { kind: "NEW", name: nextClassName(klass.name, klass.gradeLevel, next), gradeLevel: next };
+        suggested = { kind: "NEW", name: unique(nextClassName(klass.name, klass.gradeLevel, next)), gradeLevel: next };
       } else {
         suggested = { kind: "STAY" };
       }
@@ -161,8 +205,8 @@ export async function promotionPlan(ctx: ActiveContext): Promise<PromotionClass[
         candidates,
       };
     })
-    // Top grade first when it leaves, otherwise the school's own order.
-    .sort((a, b) => Number(a.gradeLevel ?? 0) - Number(b.gradeLevel ?? 0) || a.name.localeCompare(b.name));
+    // The school's own order, early years before the numbers.
+    .sort((a, b) => (rung(a.gradeLevel ?? "") ?? -1) - (rung(b.gradeLevel ?? "") ?? -1) || a.name.localeCompare(b.name));
 }
 
 /**
@@ -198,6 +242,27 @@ export async function promoteSchool(
   }
 
   const now = new Date();
+  const leftOn = opts.lastDayKey ? new Date(`${opts.lastDayKey}T00:00:00.000Z`) : undefined;
+
+  // LEAVERS ARE CHECKED BEFORE ANYTHING IS WRITTEN. The departure is recorded
+  // after the transaction (a certificate must not roll back a school), so
+  // anything the departure would refuse — a last day before a pupil joined,
+  // a pupil already recorded as left — has to be refused HERE, or the
+  // graduates' enrolments close and the refusal leaves them on the roll of
+  // no class at all.
+  for (const move of moves) {
+    if (move.to.kind !== "LEAVE") continue;
+    const hold = new Set(move.holdBack);
+    const roll = await db.enrollment.findMany({
+      where: { schoolId, classId: move.fromClassId, status: "ACTIVE", student: { status: "ACTIVE", leftAt: null } },
+      select: { studentMembershipId: true, student: { select: { joinedAt: true } } },
+    });
+    const tooEarly = roll.filter((e) => !hold.has(e.studentMembershipId) && leftOn && e.student.joinedAt > leftOn);
+    if (tooEarly.length > 0) {
+      throw new AccessError("access.leaversLastDayBeforeJoin", "FORBIDDEN", { count: tooEarly.length });
+    }
+  }
+
   const leavers: { membershipId: string; fromClassName: string }[] = [];
   const movedTo: { membershipId: string; className: string }[] = [];
   let created = 0;
@@ -258,7 +323,7 @@ export async function promoteSchool(
                 name: move.to.name.trim(),
                 gradeLevel: move.to.gradeLevel,
                 section: from.section,
-                room: from.room,
+                // The room is the old class's; next year's is the office's to set.
                 color: from.color,
                 subject: from.subject,
                 joinCode: classCode(),
@@ -308,7 +373,6 @@ export async function promoteSchool(
   // after the transaction so a certificate's failure is a line in the log,
   // not a rollback of the whole school.
   let left = 0;
-  const leftOn = opts.lastDayKey ? new Date(`${opts.lastDayKey}T00:00:00.000Z`) : undefined;
   for (const leaver of leavers) {
     try {
       const result = await recordDeparture(ctx, leaver.membershipId, {

@@ -222,7 +222,7 @@ export default async function TeacherHome() {
   const [classes, sessionsToday, dueSoon, ungraded] = await Promise.all([
     db.class.findMany({
       where: { id: { in: classIds } },
-      select: { id: true, name: true, color: true, _count: { select: { enrollments: true } } },
+      select: { id: true, name: true, color: true, _count: { select: { enrollments: { where: { status: "ACTIVE" } } } } },
       orderBy: { name: "asc" },
     }),
     db.attendanceSession.findMany({

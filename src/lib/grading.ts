@@ -741,6 +741,26 @@ export async function publishAssignment(
   });
 }
 
+/**
+ * WORK SET TO A CLASS BEFORE YOU JOINED IT IS NOT YOURS. A class row lives
+ * for years; a pupil promoted into it this June must not inherit the
+ * homework its last cohort was set in 2023 — which is exactly what a list
+ * keyed on "published, in a class I am in" did. The pupil's active
+ * enrolments, each with the day it began, turn into an OR of (class,
+ * published on or after the day they arrived).
+ */
+export async function ownWorkScope(
+  schoolId: string,
+  studentMembershipId: string,
+): Promise<{ OR: { classId: string; publishedAt: { gte: Date } }[] } | { id: { in: never[] } }> {
+  const enrolments = await db.enrollment.findMany({
+    where: { schoolId, studentMembershipId, status: "ACTIVE" },
+    select: { classId: true, enrolledAt: true },
+  });
+  if (enrolments.length === 0) return { id: { in: [] } };
+  return { OR: enrolments.map((e) => ({ classId: e.classId, publishedAt: { gte: e.enrolledAt } })) };
+}
+
 /** A student's own work, upcoming first. */
 export async function getStudentWork(session: ActiveContext) {
   const { schoolId, membershipId } = session;
@@ -750,7 +770,7 @@ export async function getStudentWork(session: ActiveContext) {
     where: {
       schoolId,
       publishedAt: { not: null },
-      class: { enrollments: { some: { studentMembershipId: membershipId, status: "ACTIVE" } } },
+      ...(await ownWorkScope(schoolId, membershipId)),
     },
     include: {
       class: { select: { name: true, color: true } },
@@ -819,7 +839,7 @@ export async function childWork(parentUserId: string, studentMembershipId: strin
     where: {
       schoolId,
       publishedAt: { not: null },
-      class: { enrollments: { some: { studentMembershipId, status: "ACTIVE" } } },
+      ...(await ownWorkScope(schoolId, studentMembershipId)),
     },
     include: {
       class: { select: { name: true } },

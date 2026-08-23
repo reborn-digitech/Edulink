@@ -32,7 +32,7 @@ export default async function ClassesPage({
     },
     include: {
       teachers: { include: { teacher: { include: { user: { select: { name: true, preferredName: true } } } } } },
-      _count: { select: { enrollments: true } },
+      _count: { select: { enrollments: { where: { status: "ACTIVE" } } } },
     },
     orderBy: { name: "asc" },
   });

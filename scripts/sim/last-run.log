@@ -1,0 +1,22 @@
+enrolStudents: n=19 avg=30.3ms max=51ms total=0.6s
+createSeries: n=171 avg=2.2ms max=12ms total=0.4s
+addSlot: n=684 avg=2.2ms max=11ms total=1.5s
+createPost: n=66 avg=4.8ms max=10ms total=0.3s
+saveAttendanceBatch: n=15637 avg=22.9ms max=96ms total=358.3s
+createAssignment: n=1254 avg=18.9ms max=90ms total=23.6s
+saveGrades: n=1254 avg=28.9ms max=85ms total=36.3s
+createThread: n=52 avg=11.3ms max=17ms total=0.6s
+publishSlots: n=52 avg=0.2ms max=1ms total=0.0s
+applyForLeave: n=12 avg=8.9ms max=13ms total=0.1s
+decideLeave: n=12 avg=14.5ms max=24ms total=0.2s
+saveMarks: n=627 avg=24.0ms max=49ms total=15.1s
+generateCards: n=76 avg=136.4ms max=200ms total=10.4s
+publishCards: n=76 avg=81.0ms max=103ms total=6.2s
+closeAcademicYear: n=6 avg=4082.7ms max=5900ms total=24.5s
+promoteSchool: n=6 avg=1094.5ms max=1529ms total=6.6s
+
+FINDINGS
+ZZ Sim North School: openReviewRound failed reviews.closeDateInPast
+ZZ Sim South School: openReviewRound failed reviews.closeDateInPast
+ZZ Sim North School: openReviewRound failed reviews.closeDateInPast
+ZZ Sim South School: openReviewRound failed reviews.closeDateInPast

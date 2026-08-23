@@ -52,7 +52,7 @@ export default async function ClassStaffingPage({
       gradeLevel: true,
       subject: true,
       archivedAt: true,
-      _count: { select: { enrollments: true } },
+      _count: { select: { enrollments: { where: { status: "ACTIVE" } } } },
     },
   });
   if (!klass) notFound();

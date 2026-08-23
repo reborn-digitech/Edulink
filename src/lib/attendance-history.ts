@@ -26,18 +26,25 @@ import type { AttendanceStatus } from "./constants";
  * here and not in the page: whoever links to it next cannot forget it.
  */
 
-export type HistoryClass = { id: string; name: string; color: string | null };
+export type HistoryClass = { id: string; name: string; color: string | null; archived: boolean };
 
 /** The classes this person may read the history of, in name order. */
 export async function historyClassesFor(ctx: ActiveContext): Promise<HistoryClass[]> {
   if (!ctx.schoolId || !ctx.membershipId) return [];
 
+  // ARCHIVED CLASSES ARE INCLUDED. Last year's class is exactly the one the
+  // office is asked about in September, and promotion archives every class
+  // it empties — reading back was the whole point of keeping the rows.
+  // Current classes first, then the archive, each in name order.
+  const order = (rows: HistoryClass[]) =>
+    rows.sort((a, b) => Number(a.archived) - Number(b.archived) || a.name.localeCompare(b.name));
+
   if (ctx.role === "ADMIN" || ctx.role === "PRINCIPAL") {
-    return db.class.findMany({
-      where: { schoolId: ctx.schoolId, archivedAt: null },
-      select: { id: true, name: true, color: true },
-      orderBy: { name: "asc" },
+    const rows = await db.class.findMany({
+      where: { schoolId: ctx.schoolId },
+      select: { id: true, name: true, color: true, archivedAt: true },
     });
+    return order(rows.map((c) => ({ id: c.id, name: c.name, color: c.color, archived: c.archivedAt !== null })));
   }
 
   if (ctx.role !== "TEACHER") return [];
@@ -47,11 +54,10 @@ export async function historyClassesFor(ctx: ActiveContext): Promise<HistoryClas
       schoolId: ctx.schoolId,
       teacherMembershipId: ctx.membershipId,
       canTakeAttendance: true,
-      class: { archivedAt: null },
     },
-    select: { class: { select: { id: true, name: true, color: true } } },
+    select: { class: { select: { id: true, name: true, color: true, archivedAt: true } } },
   });
-  return rows.map((r) => r.class).sort((a, b) => a.name.localeCompare(b.name));
+  return order(rows.map((r) => ({ id: r.class.id, name: r.class.name, color: r.class.color, archived: r.class.archivedAt !== null })));
 }
 
 export type HistoryDay = {

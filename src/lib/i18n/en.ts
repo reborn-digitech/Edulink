@@ -1684,6 +1684,7 @@ export const en = {
   /* boundary. One key per distinct sentence; the sentence is the value.    */
   /* ---------------------------------------------------------------------- */
   access: {
+    leaversLastDayBeforeJoin: "The leavers' last day is before {count} of them joined the school. Pick a later last day.",
     onlyTheOfficeSetsBirthdates: "Only a school admin can set a date of birth.",
     onlyAnAdminCanLinkAParent: "Only a school admin can link a parent.",
     onlyAnAdminCanPromote: "Only a school admin can move the school up a year.",
@@ -3685,6 +3686,7 @@ export const en = {
   },
 
   promotion: {
+    candidateWithPupils: "{name} — already has {count} pupils",
     title: "Move the school up a year",
     intro: "Every class, and where its pupils go next: an existing class, a new one made here, or leaving the school from the top grade. Pupils can be held back. Nothing is deleted — last year's classes are archived with their registers and marks intact.",
     metaTitle: "Move up a year",
@@ -3718,6 +3720,7 @@ export const en = {
     emptyClass: "Nobody on the roll",
   },
   attendanceHistory: {
+    archivedName: "{name} (archived)",
     title: "Past registers",
     intro: "Every register taken for a class, one month at a time. A child who was not marked on a day shows a blank, not an absence.",
     link: "Past registers",

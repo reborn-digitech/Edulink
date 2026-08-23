@@ -107,8 +107,14 @@ describe("the arithmetic of a grade", () => {
   it("counts numbers and leaves words alone", () => {
     expect(nextGrade("5")).toBe("6");
     expect(nextGrade("10")).toBe("11");
-    expect(nextGrade("K")).toBeNull();
     expect(nextGrade(null)).toBeNull();
+    // A word grade climbs the school's own ladder, never arithmetic.
+    expect(nextGrade("K")).toBeNull();
+    expect(nextGrade("K", ["K", "1", "2"])).toBe("1");
+    expect(nextGrade("LKG", ["Nursery", "LKG", "UKG", "1"])).toBe("UKG");
+    expect(nextGrade("UKG", ["LKG", "UKG", "1"])).toBe("1");
+    expect(nextGrade("Playgroup", ["Playgroup"])).toBeNull();
+    expect(nextGrade("5", ["K", "1", "5", "7"])).toBe("6");
   });
   it("renames the first grade number in a class name", () => {
     expect(nextClassName("Class 5", "5", "6")).toBe("Class 6");
@@ -125,10 +131,20 @@ describe("the plan", () => {
     const rowFour = plan.find((p) => p.id === four)!;
     const rowFive = plan.find((p) => p.id === fiveExisting)!;
     const rowTen = plan.find((p) => p.id === ten)!;
-    expect(rowFour.suggested).toEqual({ kind: "CLASS", classId: fiveExisting });
+    // The existing 5 already holds a pupil, so 4 is offered it but NOT
+    // suggested it — a full class is last year's cohort, not next year's room.
+    expect(rowFour.candidates).toContainEqual({ id: fiveExisting, name: "ZZ Promo 5", pupils: 1 });
+    if (rowFour.candidates.some((c) => c.pupils === 0)) {
+      expect(rowFour.suggested).toMatchObject({ kind: "CLASS" });
+      expect(rowFour.suggested).not.toEqual({ kind: "CLASS", classId: fiveExisting });
+    } else {
+      // "ZZ Promo 5" is taken by the full class, so the fresh one wears the year.
+      expect(rowFour.suggested).toMatchObject({ kind: "NEW", gradeLevel: "5" });
+      expect((rowFour.suggested as { name: string }).name).toMatch(/^ZZ Promo 5 \(/);
+    }
     // Riverside's seed may or may not already hold a grade 6; either way the
     // suggestion follows from it.
-    if (rowFive.candidates.length > 0) {
+    if (rowFive.candidates.some((c) => c.pupils === 0)) {
       expect(rowFive.suggested).toMatchObject({ kind: "CLASS" });
     } else {
       expect(rowFive.suggested).toMatchObject({ kind: "NEW", name: "ZZ Promo 6", gradeLevel: "6" });
