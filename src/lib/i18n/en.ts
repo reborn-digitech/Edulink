@@ -1678,6 +1678,11 @@ export const en = {
   /* boundary. One key per distinct sentence; the sentence is the value.    */
   /* ---------------------------------------------------------------------- */
   access: {
+    onlyAnAdminCanPromote: "Only a school admin can move the school up a year.",
+    nothingToPromote: "Choose where at least one class goes.",
+    aClassMovesOnce: "Each class can be moved only once in a plan.",
+    aClassCannotMoveIntoItself: "A class cannot move into itself.",
+    giveTheNewClassAName: "Give the new class a name.",
     monthMustBeYearMonth: "Pick a month.",
     notYourClassHistory: "Only the class teacher, an admin or the principal can read this class's registers back.",
     notYourPaperToMark: "You can enter marks only for classes you teach or take the register for",
@@ -3656,6 +3661,39 @@ export const en = {
     notYet: "Not handed in yet",
   },
 
+  promotion: {
+    title: "Move the school up a year",
+    intro: "Every class, and where its pupils go next: an existing class, a new one made here, or leaving the school from the top grade. Pupils can be held back. Nothing is deleted — last year's classes are archived with their registers and marks intact.",
+    metaTitle: "Move up a year",
+    link: "Move the school up a year",
+    linkHint: "Promote every class at once, with exceptions",
+    fromClass: "Class",
+    pupilsCount: "{count} pupils",
+    pupilsCountOne: "1 pupil",
+    goesTo: "Goes to",
+    destExisting: "Existing class",
+    destNew: "New class",
+    destLeave: "Leaving the school (top grade)",
+    destStay: "Stays as it is",
+    newClassName: "New class name",
+    newClassGrade: "Grade",
+    holdBack: "Hold back",
+    holdBackHint: "Ticked pupils stay in this class; everyone else moves.",
+    heldBackCount: "{count} held back",
+    lastDay: "Leavers' last day",
+    lastDayHint: "Written on each graduating pupil's certificate. Leave empty for today.",
+    summary: "Moving up: {moving} · Leaving: {leaving} · Held back: {held} · New classes: {newClasses}",
+    go: "Move the school up",
+    confirm: "Pupils moving up: {moving}. Recorded as having left: {leaving}. This cannot be undone from this screen.",
+    confirmGo: "Yes, move them up",
+    notYet: "Not yet",
+    done: "Moved up",
+    doneBody: "{moved} pupils moved, {left} left the school, {held} held back, {created} classes created, {archived} archived.",
+    notDone: "Could not move the school up",
+    noClasses: "No classes to move",
+    noClassesBody: "Create classes and enrol pupils first; this page moves them at the end of the year.",
+    emptyClass: "Nobody on the roll",
+  },
   attendanceHistory: {
     title: "Past registers",
     intro: "Every register taken for a class, one month at a time. A child who was not marked on a day shows a blank, not an absence.",
@@ -3822,6 +3860,7 @@ export const en = {
   },
 
   audit: {
+    schoolPromote: "Moved the school up a year",
     attendanceAlert: "Told a family about attendance",
     authSsoLink: "Linked an external sign-in",
     complianceExport: "Exported a compliance file",
@@ -4637,6 +4676,8 @@ export const en = {
      time by notify(); see titleKey. Every stored notification title lives
      here, so the list is the complete vocabulary of what the app tells people. */
   notifTitle: {
+    promoted: "You have moved up",
+    childPromoted: "{name} has moved up",
     newWorkSet: "New work set",
     workMarked: "Your work has been marked",
     childWorkMarked: "{name}'s work has been marked",
@@ -4680,6 +4721,8 @@ export const en = {
   /* Notification bodies that are sentences — see notifBody in notify(). Data
      bodies (a post's title, a teacher's note) stay literal. */
   notifBody: {
+    promoted: "You are now in {className}. Your timetable and register will show it from today.",
+    childPromoted: "{name} is now in {className}.",
     leaveAskedFrom: "{name} has asked for leave from {from}.",
     leaveApprovedDates: "{from} to {to}.",
     leaveApprovedCover: "{from} to {to}. Cover arranged for {count} class(es).",

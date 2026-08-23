@@ -175,6 +175,7 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "auth.reset.failed": "audit.authResetFailed",
   "auth.reset.requested": "audit.authResetRequested",
   "class.cohort.add": "audit.classCohortAdd",
+  "school.promote": "audit.schoolPromote",
   "class.cohort.remove": "audit.classCohortRemove",
   "competition.consent": "audit.competitionConsent",
   "competition.create": "audit.competitionCreate",

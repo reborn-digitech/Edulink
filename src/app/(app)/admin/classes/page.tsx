@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ChalkboardTeacherIcon, PlusIcon } from "@phosphor-icons/react/ssr";
+import { ChalkboardTeacherIcon, PlusIcon, GraduationCapIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { Card } from "@/components/ui/card";
@@ -54,9 +54,14 @@ export default async function ClassesPage({
                 : t("classes.activeCountMany", { count: classes.length })}
           </p>
         </div>
-        <Button asChild icon={<PlusIcon weight="bold" />}>
-          <Link href="/admin/classes/new">{t("classes.newClass")}</Link>
-        </Button>
+        <div className="flex flex-wrap gap-2">
+          <Button asChild variant="secondary" icon={<GraduationCapIcon weight="bold" />}>
+            <Link href="/admin/promotion">{t("promotion.link")}</Link>
+          </Button>
+          <Button asChild icon={<PlusIcon weight="bold" />}>
+            <Link href="/admin/classes/new">{t("classes.newClass")}</Link>
+          </Button>
+        </div>
       </div>
 
       {archivedCount > 0 && (

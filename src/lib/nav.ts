@@ -55,7 +55,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin", labelKey: "nav.overview", icon: "house", primary: true },
     // Invites are a tab of People: one door for "who is in this school".
     { href: "/admin/people", labelKey: "nav.people", icon: "users", primary: true, prefix: true, also: ["/admin/invites"] },
-    { href: "/admin/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true },
+    { href: "/admin/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true, also: ["/admin/promotion"] },
     { href: "/admin/timetable", labelKey: "nav.timetable", icon: "clock", primary: true, prefix: true },
     { href: "/admin/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true },
     { href: "/admin/attendance", labelKey: "nav.attendance", icon: "checks", prefix: true, group: "running", also: ["/attendance/history"] },

@@ -2,7 +2,8 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { CheckCircleIcon, WarningIcon } from "@phosphor-icons/react";
+import Link from "next/link";
+import { CheckCircleIcon, GraduationCapIcon, WarningIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { DateField, SelectField, TextField } from "@/components/ui/field";
 import { Badge } from "@/components/ui/badge";
@@ -234,6 +235,16 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
                 will press it in the middle of term.
               */}
               <p className="text-sm text-fg-muted">{t("calendar.endYearBody")}</p>
+              {/* Closing the year flips the date; it moves nobody. The move
+                  is its own page, linked here because this is where an admin
+                  stands at the end of the year. */}
+              <Link
+                href="/admin/promotion"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-accent-strong hover:underline"
+              >
+                <GraduationCapIcon weight="bold" className="size-4" />
+                {t("promotion.link")}
+              </Link>
             </div>
           </div>
 
