@@ -1556,6 +1556,10 @@ export const en = {
   /* Server refusals — minted as keys in libs, translated at the boundary    */
   /* ---------------------------------------------------------------------- */
   refusal: {
+    thatIsNotAnEmailAddress: "That is not an email address.",
+    sayHowTheyAreRelated: "Say how they are related to the child.",
+    thatIsTheChildsOwnAddress: "That is the child's own address.",
+    alreadyLinkedToThisChild: "That address is already linked to this child.",
     fileEmpty: "That file is empty.",
     fileTooLargeLimit: "That file is too large. The limit is {mb} MB.",
     fileTypeUnsupported: "That file type is not supported. Use PNG, JPEG, WebP, GIF or PDF.",
@@ -1678,6 +1682,7 @@ export const en = {
   /* boundary. One key per distinct sentence; the sentence is the value.    */
   /* ---------------------------------------------------------------------- */
   access: {
+    onlyAnAdminCanLinkAParent: "Only a school admin can link a parent.",
     onlyAnAdminCanPromote: "Only a school admin can move the school up a year.",
     nothingToPromote: "Choose where at least one class goes.",
     aClassMovesOnce: "Each class can be moved only once in a plan.",
@@ -2036,6 +2041,11 @@ export const en = {
   /* the page that decides which of those you are.                            */
   /* ---------------------------------------------------------------------- */
   invite: {
+    parentHasAccountNote: "That address already has an EduLink account. Accepting adds this child to it — your password does not change.",
+    parentSignupNote: "Set a password and you are in. You can unlink from your settings at any time.",
+    seeChildsDay: "See {child}'s day at {school}",
+    parentLinkBody: "{name} has linked you to {child}. Accept, and you will see their attendance, homework, exam marks and teachers' messages.",
+    acceptTheLink: "Accept the link",
     addThisSchool: "Add this school to my account",
     alreadyHavePassword: "You already have a password for this email. Accepting adds this school to that account — nothing about your login changes.",
     useRealDate: "Use a real date.",
@@ -3860,6 +3870,8 @@ export const en = {
   },
 
   audit: {
+    parentInvite: "Sent a parent a link to a child",
+    parentLinkAccept: "A parent accepted the school's link",
     schoolPromote: "Moved the school up a year",
     attendanceAlert: "Told a family about attendance",
     authSsoLink: "Linked an external sign-in",
@@ -3996,6 +4008,17 @@ export const en = {
   /* The directory — everyone in the school, and the three ways out of it     */
   /* ---------------------------------------------------------------------- */
   people: {
+    linkParent: "Link a parent…",
+    linkParentTitle: "Link a parent to {name}",
+    linkParentBody: "We email them a link. Nothing about {name} is shared until they accept it — accepting is their consent.",
+    parentEmail: "Parent's email",
+    parentName: "Their name (optional)",
+    parentRelation: "They are the child's…",
+    sendLink: "Send the link",
+    linkSent: "Link sent",
+    linkSentBody: "{email} will see {name} as soon as they accept.",
+    linkNotSent: "Could not send the link",
+    parentInvited: "Parent invited · {email}",
     tabDirectory: "Directory",
     tabInvites: "Invites",
     title: "Directory",

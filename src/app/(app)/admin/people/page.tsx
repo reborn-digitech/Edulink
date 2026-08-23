@@ -16,6 +16,7 @@ import { readJsonArray } from "@/lib/json";
 import { getT } from "@/lib/i18n/server";
 import { TabBar } from "@/components/ui/tabs";
 import { ROLE_META, SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
+import { pendingParentInvites } from "@/lib/parent-link";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -91,6 +92,10 @@ export default async function DirectoryPage({
         }
       : {}),
   };
+
+  // Parents the office has invited and who have not yet accepted, per pupil —
+  // shown on the row so nobody sends a second link.
+  const parentInvites = await pendingParentInvites(ctx);
 
   const [members, total, classes, roleCounts, suspendedCount, leftCount] = await Promise.all([
     db.membership.findMany({
@@ -280,6 +285,13 @@ export default async function DirectoryPage({
                               : ""}
                           </p>
                         )}
+                        {role === "STUDENT" &&
+                          !member.leftAt &&
+                          (parentInvites.get(member.id) ?? []).map((inv) => (
+                            <p key={inv.email} className="mt-1 text-xs leading-relaxed text-fg-muted">
+                              {t("people.parentInvited", { email: inv.email })}
+                            </p>
+                          ))}
                         {member.status === "SUSPENDED" && !member.leftAt && (
                           <p className="mt-1 text-xs leading-relaxed text-warn">
                             {t("people.pausedAgo", {

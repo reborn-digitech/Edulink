@@ -224,6 +224,32 @@ export async function sendTeacherInvite(
   });
 }
 
+/**
+ * The office linking a family, rather than the family claiming a child. The
+ * sentence names the child and the school because the recipient may never
+ * have heard of EduLink — the school is the thing they trust.
+ */
+export async function sendParentLinkInvite(
+  to: string,
+  url: string,
+  childName: string,
+  schoolName: string,
+  inviterName: string,
+) {
+  await sendEmail({
+    to,
+    purpose: "INVITE",
+    subject: `${schoolName} has linked you to ${childName} on EduLink`,
+    text: `${inviterName} at ${schoolName} has linked you to ${childName} on EduLink, so you can see their attendance, homework and marks.\n\nAccept: ${url}`,
+    html: layout(
+      `See ${escapeHtml(childName)}'s day at ${escapeHtml(schoolName)}`,
+      `<p><strong>${escapeHtml(inviterName)}</strong> at <strong>${escapeHtml(schoolName)}</strong> has linked you to <strong>${escapeHtml(childName)}</strong> on EduLink.</p>
+       <p>Accept and you will see their attendance, homework, exam marks and teachers' messages. If you were not expecting this, ignore it — nothing is shared until you accept.</p>`,
+      { label: "Accept the link", url },
+    ),
+  });
+}
+
 export async function sendParentClaimNotice(
   to: string,
   childName: string,

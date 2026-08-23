@@ -144,6 +144,87 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
 
   let userId: string;
 
+  // A PARENT invitation links a family to a child: a guardianship, never a
+  // membership. Accepting IS the consent — the office vouched, the parent
+  // agreed — so the consents are stamped here the way a claim stamps them.
+  if (role === "PARENT") {
+    if (!invite.studentMembershipId) return { ok: false, errors: { _form: t("invite.invalidBody") } };
+    try {
+      userId = await forSchool(invite.schoolId, () =>
+        db.$tenantTransaction(async (rawTx) => {
+          const tx = rawTx as typeof db;
+          const fresh = await tx.invite.findUnique({ where: { id: invite.id }, select: { status: true } });
+          if (fresh?.status !== "PENDING") throw new Error("ALREADY_USED");
+
+          const existing = await tx.user.findUnique({ where: { email }, select: { id: true, passwordHash: true } });
+          let user = existing;
+          if (!user) {
+            if (!passwordHash) throw new Error("NEEDS_PASSWORD");
+            user = await tx.user.create({
+              data: { email, name, passwordHash, emailVerifiedAt: new Date(), prefs: writeJson({ theme: "system", locale }) },
+              select: { id: true, passwordHash: true },
+            });
+          } else if (!user.passwordHash && passwordHash) {
+            await tx.user.update({ where: { id: user.id }, data: { passwordHash, emailVerifiedAt: new Date() } });
+          }
+
+          const pupil = await tx.membership.findFirst({
+            where: { id: invite.studentMembershipId!, schoolId: invite.schoolId, role: "STUDENT" },
+            select: { id: true, schoolId: true },
+          });
+          if (!pupil) throw new Error("ALREADY_USED");
+
+          await tx.guardianship.upsert({
+            where: { parentUserId_studentMembershipId: { parentUserId: user.id, studentMembershipId: pupil.id } },
+            create: {
+              parentUserId: user.id,
+              studentMembershipId: pupil.id,
+              studentSchoolId: pupil.schoolId,
+              relation: invite.relation ?? "PARENT",
+              status: "ACTIVE",
+              consentSharingAt: new Date(),
+              consentNotificationsAt: new Date(),
+            },
+            update: { status: "ACTIVE", relation: invite.relation ?? "PARENT", consentSharingAt: new Date() },
+          });
+
+          await tx.invite.update({
+            where: { id: invite.id },
+            data: { status: "ACCEPTED", acceptedAt: new Date(), acceptedByUserId: user.id },
+          });
+          return user.id;
+        }),
+      );
+    } catch (error) {
+      if (error instanceof Error && error.message === "ALREADY_USED") {
+        return { ok: false, errors: { _form: t("invite.alreadyUsed") } };
+      }
+      if (error instanceof Error && error.message === "NEEDS_PASSWORD") {
+        return { ok: false, errors: { password: t("invite.choosePassword") } };
+      }
+      console.error("[acceptInvite parent]", error);
+      return { ok: false, errors: { _form: t("invite.couldNotComplete") } };
+    }
+
+    await audit({
+      schoolId: invite.schoolId,
+      actorUserId: userId,
+      action: "parent.link.accept",
+      targetType: "Membership",
+      targetId: invite.studentMembershipId,
+      meta: { inviteId: invite.id },
+    });
+    // A real guardian now exists; the school's stand-in steps aside.
+    await syncStandinGuardian({
+      schoolId: invite.schoolId,
+      studentMembershipId: invite.studentMembershipId,
+      actorUserId: userId,
+    }).catch((error) => console.error("[acceptInvite parent] standin sync failed", error));
+
+    await createSession(userId, { schoolId: null, role: "PARENT" });
+    return { ok: true, errors: {}, redirectTo: ROLE_HOME.PARENT };
+  }
+
   try {
     // Bound to the school the invitation is for, and through
     // `$tenantTransaction` — the callback of a plain `db.$transaction` gets a

@@ -1394,6 +1394,10 @@ export const mr: Dictionary = {
   },
 
   refusal: {
+    thatIsNotAnEmailAddress: "हा ईमेल पत्ता नाही.",
+    sayHowTheyAreRelated: "ते मुलाचे कोण आहेत ते सांगा.",
+    thatIsTheChildsOwnAddress: "हा तर मुलाचाच पत्ता आहे.",
+    alreadyLinkedToThisChild: "हा पत्ता या मुलाशी आधीच जोडलेला आहे.",
     fileEmpty: "ती फाइल रिकामी आहे.",
     fileTooLargeLimit: "ती फाइल खूप मोठी आहे. मर्यादा {mb} MB आहे.",
     fileTypeUnsupported: "त्या प्रकारची फाइल चालत नाही. PNG, JPEG, WebP, GIF किंवा PDF वापरा.",
@@ -1500,6 +1504,7 @@ export const mr: Dictionary = {
   },
 
   access: {
+    onlyAnAdminCanLinkAParent: "फक्त शाळा प्रशासकच पालक जोडू शकतात.",
     onlyAnAdminCanPromote: "फक्त शाळा प्रशासकच शाळेला पुढच्या वर्गात नेऊ शकतात.",
     nothingToPromote: "किमान एक वर्ग कुठे जाईल ते निवडा.",
     aClassMovesOnce: "एका योजनेत प्रत्येक वर्ग एकदाच हलवता येतो.",
@@ -1831,6 +1836,11 @@ export const mr: Dictionary = {
   },
 
   invite: {
+    parentHasAccountNote: "या पत्त्याचे EduLink खाते आधीच आहे. स्वीकारल्यावर हे मूल त्यात जोडले जाते — तुमचा पासवर्ड बदलत नाही.",
+    parentSignupNote: "पासवर्ड ठरवा आणि तुम्ही आत. तुमच्या सेटिंगमधून कधीही जोड काढू शकता.",
+    seeChildsDay: "{school} मधला {child} चा दिवस पाहा",
+    parentLinkBody: "{name} ने तुम्हाला {child} शी जोडले आहे. स्वीकारा, म्हणजे त्यांची हजेरी, गृहपाठ, परीक्षेचे गुण आणि शिक्षकांचे संदेश तुम्हाला दिसतील.",
+    acceptTheLink: "जोड स्वीकारा",
     addThisSchool: "ही शाळा माझ्या खात्यात जोडा",
     alreadyHavePassword: "या ईमेलसाठी तुमच्याकडे आधीच पासवर्ड आहे. स्वीकारल्याने ही शाळा त्याच खात्यात जोडली जाते — तुमच्या लॉगिनमध्ये काहीही बदलत नाही.",
     useRealDate: "खरी तारीख भरा.",
@@ -3478,6 +3488,8 @@ export const mr: Dictionary = {
   },
 
   audit: {
+    parentInvite: "पालकाला मुलाशी जोडण्याचा दुवा पाठवला",
+    parentLinkAccept: "पालकाने शाळेची जोड स्वीकारली",
     schoolPromote: "शाळेला पुढच्या वर्गात नेले",
     attendanceAlert: "कुटुंबाला हजेरीबद्दल सांगितले",
     authSsoLink: "बाह्य साइन-इन जोडले",
@@ -3611,6 +3623,17 @@ export const mr: Dictionary = {
     expertProfileUpdate: "एका तज्ज्ञाने आपली प्रोफाइल बदलली",
   },
   people: {
+    linkParent: "पालक जोडा…",
+    linkParentTitle: "{name} शी पालक जोडा",
+    linkParentBody: "आम्ही त्यांना एक दुवा ईमेल करतो. ते स्वीकारेपर्यंत {name} बद्दल काहीही सामायिक होत नाही — स्वीकारणे हीच त्यांची संमती.",
+    parentEmail: "पालकांचा ईमेल",
+    parentName: "त्यांचे नाव (ऐच्छिक)",
+    parentRelation: "ते मुलाचे…",
+    sendLink: "दुवा पाठवा",
+    linkSent: "दुवा पाठवला",
+    linkSentBody: "स्वीकारताच {email} ला {name} दिसेल.",
+    linkNotSent: "दुवा पाठवता आला नाही",
+    parentInvited: "पालकाला निमंत्रण · {email}",
     tabDirectory: "निर्देशिका",
     tabInvites: "निमंत्रणे",
     title: "निर्देशिका",

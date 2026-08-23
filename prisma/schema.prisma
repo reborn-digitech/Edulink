@@ -1483,11 +1483,16 @@ model Session {
 model Invite {
   id       String  @id @default(cuid())
   schoolId String
-  role     String // TEACHER | STUDENT | ADMIN
+  role     String // TEACHER | STUDENT | ADMIN | PRINCIPAL | PARENT
   email    String?
   name     String?
   classId  String?
   subjects String? // JSON string[]
+  /// For a PARENT invitation: the child it links to, and how. The office
+  /// sends it from the pupil's directory row; accepting creates the
+  /// guardianship, with consent, instead of a membership.
+  studentMembershipId String?
+  relation            String? // PARENT | GUARDIAN | OTHER
 
   tokenHash String @unique
   status    String @default("PENDING") // PENDING | ACCEPTED | REVOKED | EXPIRED

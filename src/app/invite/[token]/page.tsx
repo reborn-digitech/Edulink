@@ -46,6 +46,13 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
               include: { user: { select: { name: true, preferredName: true } } },
             })
           : null,
+        // A parent invitation names the child; the page says who.
+        child: invite.studentMembershipId
+          ? await db.membership.findUnique({
+              where: { id: invite.studentMembershipId },
+              select: { user: { select: { name: true, preferredName: true } } },
+            })
+          : null,
       }))
     : null;
 
@@ -115,9 +122,14 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
         </span>
 
         <h1 className="mt-4 text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {hasAccount
-            ? t("invite.addSchoolToAccount", { school: context?.school.name ?? "" })
-            : t("invite.joinSchool", { school: context?.school.name ?? "" })}
+          {role === "PARENT"
+            ? t("invite.seeChildsDay", {
+                child: context?.child?.user.preferredName ?? context?.child?.user.name ?? "",
+                school: context?.school.name ?? "",
+              })
+            : hasAccount
+              ? t("invite.addSchoolToAccount", { school: context?.school.name ?? "" })
+              : t("invite.joinSchool", { school: context?.school.name ?? "" })}
         </h1>
         {/*
           THE ADDRESS IS SHOWN WHETHER OR NOT THERE IS A SENDER, and that split
@@ -132,7 +144,12 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
           informative. Found by walking the onboarding in a browser.
         */}
         <p className="mt-2 text-sm leading-relaxed text-fg-muted">
-          {inviter
+          {role === "PARENT"
+            ? t("invite.parentLinkBody", {
+                name: inviter ?? context?.school.name ?? "",
+                child: context?.child?.user.preferredName ?? context?.child?.user.name ?? "",
+              })
+            : inviter
             ? invite.email
               ? t("invite.invitedByAt", { name: inviter, email: invite.email })
               : t("invite.invitedBy", { name: inviter })
@@ -157,7 +174,13 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
           id={hasAccount ? "password-unchanged" : undefined}
           className="mt-2 text-sm leading-relaxed text-fg-muted"
         >
-          {hasAccount ? t("invite.transferNote") : t("invite.signupNote")}
+          {role === "PARENT"
+            ? hasAccount
+              ? t("invite.parentHasAccountNote")
+              : t("invite.parentSignupNote")
+            : hasAccount
+              ? t("invite.transferNote")
+              : t("invite.signupNote")}
         </p>
 
         {/*

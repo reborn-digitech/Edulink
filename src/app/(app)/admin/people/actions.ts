@@ -10,6 +10,8 @@ import {
   type RemovalBlocker,
 } from "@/lib/membership";
 import { setTeacherSubjects } from "@/lib/reviews";
+import { inviteParent } from "@/lib/parent-link";
+import type { GuardianRelation } from "@/lib/constants";
 import {
   recordDeparture,
   undoDeparture,
@@ -151,6 +153,30 @@ export async function setSubjects(membershipId: string, subjects: string[]): Pro
     const result = await setTeacherSubjects(ctx, membershipId, subjects);
     if (!result.ok) return { ok: false, errorKey: result.errorKey };
     revalidatePath("/admin/people");
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/**
+ * The office links a parent: an invitation to the address it has, which
+ * creates the guardianship when — and only when — that person accepts.
+ */
+export async function inviteParentAction(
+  studentMembershipId: string,
+  input: { email: string; name: string; relation: string },
+): Promise<Result> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const result = await inviteParent(ctx, studentMembershipId, {
+      email: input.email,
+      name: input.name,
+      relation: input.relation as GuardianRelation,
+    });
+    if (!result.ok) return { ok: false, errorKey: result.errorKey };
+    revalidatePath("/admin/people");
+    revalidatePath("/admin/invites");
     return { ok: true };
   } catch (error) {
     return failure(error);

@@ -8,6 +8,7 @@ import {
   DotsThreeIcon,
   PauseCircleIcon,
   SignOutIcon,
+  UsersThreeIcon,
   TrashIcon,
 } from "@phosphor-icons/react";
 import { useToast } from "@/components/ui/toast";
@@ -16,11 +17,12 @@ import { PausePanel } from "./row-actions";
 import { LeavingPanel } from "./leaving-actions";
 import { RemovePanel } from "./remove-actions";
 import { SubjectsPanel } from "./subjects-panel";
+import { ParentLinkPanel } from "./parent-link-panel";
 import { cn } from "@/lib/cn";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 
-type Panel = "pause" | "left" | "remove" | "subjects" | null;
+type Panel = "pause" | "left" | "remove" | "subjects" | "parent" | null;
 
 /**
  * One quiet kebab per directory row, holding every verb that used to sit in
@@ -144,6 +146,15 @@ export function DirectoryMenu({
                 </MenuItem>
               )}
 
+              {isStudent && !hasLeft && !suspended && (
+                <MenuItem
+                  icon={<UsersThreeIcon className="size-4" />}
+                  onClick={() => show("parent")}
+                >
+                  {t("people.linkParent")}
+                </MenuItem>
+              )}
+
               {isStudent &&
                 (hasLeft ? (
                   <MenuItem
@@ -187,6 +198,9 @@ export function DirectoryMenu({
       )}
       {panel === "remove" && (
         <RemovePanel membershipId={membershipId} name={name} onClose={() => setPanel(null)} />
+      )}
+      {panel === "parent" && (
+        <ParentLinkPanel membershipId={membershipId} name={name} onClose={() => setPanel(null)} />
       )}
       {panel === "subjects" && (
         <SubjectsPanel

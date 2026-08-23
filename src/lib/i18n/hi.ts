@@ -1397,6 +1397,10 @@ export const hi: Dictionary = {
   },
 
   refusal: {
+    thatIsNotAnEmailAddress: "यह ईमेल पता नहीं है।",
+    sayHowTheyAreRelated: "बताएँ कि वे बच्चे के क्या लगते हैं।",
+    thatIsTheChildsOwnAddress: "यह तो बच्चे का अपना पता है।",
+    alreadyLinkedToThisChild: "यह पता इस बच्चे से पहले से जुड़ा है।",
     fileEmpty: "वह फ़ाइल खाली है।",
     fileTooLargeLimit: "वह फ़ाइल बहुत बड़ी है। सीमा {mb} MB है।",
     fileTypeUnsupported: "उस प्रकार की फ़ाइल समर्थित नहीं है। PNG, JPEG, WebP, GIF या PDF इस्तेमाल करें।",
@@ -1503,6 +1507,7 @@ export const hi: Dictionary = {
   },
 
   access: {
+    onlyAnAdminCanLinkAParent: "केवल स्कूल प्रशासक ही अभिभावक को जोड़ सकते हैं।",
     onlyAnAdminCanPromote: "केवल स्कूल प्रशासक ही स्कूल को अगली कक्षा में ले जा सकते हैं।",
     nothingToPromote: "कम से कम एक कक्षा कहाँ जाएगी, यह चुनें।",
     aClassMovesOnce: "एक योजना में हर कक्षा सिर्फ़ एक बार ही जा सकती है।",
@@ -1834,6 +1839,11 @@ export const hi: Dictionary = {
   },
 
   invite: {
+    parentHasAccountNote: "इस पते का EduLink खाता पहले से है। स्वीकार करने पर यह बच्चा उसमें जुड़ जाता है — आपका पासवर्ड नहीं बदलता।",
+    parentSignupNote: "पासवर्ड तय करें और आप अंदर हैं। अपनी सेटिंग से कभी भी अलग हो सकते हैं।",
+    seeChildsDay: "{school} में {child} का दिन देखें",
+    parentLinkBody: "{name} ने आपको {child} से जोड़ा है। स्वीकार करें, और आप उनकी हाज़िरी, गृहकार्य, परीक्षा के अंक और शिक्षकों के संदेश देख सकेंगे।",
+    acceptTheLink: "जोड़ स्वीकार करें",
     addThisSchool: "यह स्कूल मेरे खाते में जोड़ें",
     alreadyHavePassword: "इस ईमेल के लिए आपके पास पहले से पासवर्ड है। स्वीकार करने से यह स्कूल उसी खाते में जुड़ जाता है — आपके लॉगिन में कुछ नहीं बदलता।",
     useRealDate: "सही तारीख़ भरें।",
@@ -3481,6 +3491,8 @@ export const hi: Dictionary = {
   },
 
   audit: {
+    parentInvite: "अभिभावक को बच्चे से जुड़ने का लिंक भेजा",
+    parentLinkAccept: "अभिभावक ने स्कूल का जोड़ स्वीकार किया",
     schoolPromote: "स्कूल को अगली कक्षा में ले गए",
     attendanceAlert: "परिवार को उपस्थिति के बारे में बताया",
     authSsoLink: "बाहरी साइन-इन जोड़ा",
@@ -3614,6 +3626,17 @@ export const hi: Dictionary = {
     expertProfileUpdate: "एक विशेषज्ञ ने अपनी प्रोफ़ाइल बदली",
   },
   people: {
+    linkParent: "अभिभावक जोड़ें…",
+    linkParentTitle: "{name} से अभिभावक जोड़ें",
+    linkParentBody: "हम उन्हें एक लिंक ईमेल करते हैं। जब तक वे स्वीकार न करें, {name} के बारे में कुछ साझा नहीं होता — स्वीकार करना ही उनकी सहमति है।",
+    parentEmail: "अभिभावक का ईमेल",
+    parentName: "उनका नाम (वैकल्पिक)",
+    parentRelation: "वे बच्चे के…",
+    sendLink: "लिंक भेजें",
+    linkSent: "लिंक भेजा गया",
+    linkSentBody: "स्वीकार करते ही {email} को {name} दिखेगा।",
+    linkNotSent: "लिंक नहीं भेजा जा सका",
+    parentInvited: "अभिभावक को न्योता · {email}",
     tabDirectory: "निर्देशिका",
     tabInvites: "निमंत्रण",
     title: "निर्देशिका",

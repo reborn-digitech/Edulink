@@ -138,6 +138,7 @@ export function AcceptForm({
         thing somebody does on a Monday morning, and a date they would rather
         not give must not be what stops them accepting a job.
       */}
+      {role !== "PARENT" && (
       <DateField
         name="birthdate"
         label={t("invite.birthdate")}
@@ -146,6 +147,7 @@ export function AcceptForm({
         error={errors.birthdate}
         onChange={(e) => setBirthdate(e.target.value)}
       />
+      )}
 
       {!hasAccount && (
       <div>
@@ -269,9 +271,11 @@ export function AcceptForm({
           ? hasAccount
             ? t("invite.addingIt")
             : t("invite.settingYouUp")
-          : hasAccount
-            ? t("invite.addThisSchool")
-            : t("invite.acceptAndJoin")}
+          : role === "PARENT"
+            ? t("invite.acceptTheLink")
+            : hasAccount
+              ? t("invite.addThisSchool")
+              : t("invite.acceptAndJoin")}
       </Button>
     </form>
   );
