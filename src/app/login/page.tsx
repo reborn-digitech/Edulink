@@ -47,7 +47,10 @@ export default async function LoginPage({
             <Link href="/join" className="font-medium text-accent-strong underline underline-offset-4">
               {t("login.joinWithCode")}
             </Link>
-            .
+            .{" "}
+            <Link href="/first-signin" className="font-medium text-accent-strong underline underline-offset-4">
+              {t("firstSignin.fromLogin")}
+            </Link>
           </p>
 
           {expired === "1" && (

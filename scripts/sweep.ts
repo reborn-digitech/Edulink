@@ -1798,7 +1798,7 @@ async function main() {
     // Getting back in, which by definition nobody signed in is doing — and
     // which has to work for somebody whose sessions their own reset just
     // revoked.
-    "/forgot", "/forgot?id=someone%40example.test", "/login?reset=1",
+    "/forgot", "/first-signin", "/first-signin?handle=amara.k4f9", "/forgot?id=someone%40example.test", "/login?reset=1",
     /**
      * ⚠ THE TWO ROUTES THAT DID NOT EXIST while the app emailed links to them.
      * Registration sent `/verify?token=…` and the login page sent

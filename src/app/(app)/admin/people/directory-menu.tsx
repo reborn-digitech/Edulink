@@ -6,6 +6,7 @@ import {
   ArrowCounterClockwiseIcon,
   BooksIcon,
   CakeIcon,
+  KeyIcon,
   DotsThreeIcon,
   PauseCircleIcon,
   SignOutIcon,
@@ -20,11 +21,12 @@ import { RemovePanel } from "./remove-actions";
 import { SubjectsPanel } from "./subjects-panel";
 import { ParentLinkPanel } from "./parent-link-panel";
 import { BirthdatePanel } from "./birthdate-panel";
+import { FirstSignInPanel } from "./first-signin-panel";
 import { cn } from "@/lib/cn";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 
-type Panel = "pause" | "left" | "remove" | "subjects" | "parent" | "birthdate" | null;
+type Panel = "pause" | "left" | "remove" | "subjects" | "parent" | "birthdate" | "firstSignin" | null;
 
 /**
  * One quiet kebab per directory row, holding every verb that used to sit in
@@ -45,6 +47,7 @@ export function DirectoryMenu({
   isTeacher,
   subjects,
   birthdate,
+  handleOnly,
   suspended,
   hasLeft,
 }: {
@@ -56,6 +59,8 @@ export function DirectoryMenu({
   subjects?: string[];
   /** ISO date on file, "" when none — the office may set or correct it. */
   birthdate?: string;
+  /** A pupil on a login handle with no address: the office can issue a first sign-in code. */
+  handleOnly?: boolean;
   suspended: boolean;
   hasLeft: boolean;
 }) {
@@ -157,6 +162,12 @@ export function DirectoryMenu({
                 </MenuItem>
               )}
 
+              {isStudent && handleOnly && !hasLeft && !suspended && (
+                <MenuItem icon={<KeyIcon className="size-4" />} onClick={() => show("firstSignin")}>
+                  {t("people.firstSigninAction")}
+                </MenuItem>
+              )}
+
               {isStudent && !hasLeft && !suspended && (
                 <MenuItem
                   icon={<UsersThreeIcon className="size-4" />}
@@ -217,6 +228,9 @@ export function DirectoryMenu({
           initial={birthdate ?? ""}
           onClose={() => setPanel(null)}
         />
+      )}
+      {panel === "firstSignin" && (
+        <FirstSignInPanel membershipId={membershipId} name={name} onClose={() => setPanel(null)} />
       )}
       {panel === "parent" && (
         <ParentLinkPanel membershipId={membershipId} name={name} onClose={() => setPanel(null)} />

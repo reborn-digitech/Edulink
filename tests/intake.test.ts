@@ -113,6 +113,9 @@ describe("admitting pupils from a list", () => {
     const meera = result.outcomes.find((o) => o.name === `${TAG} Meera`)!;
     expect(meera).toMatchObject({ status: "admitted", guardian: "none", className: "ZZ Intake Class" });
     expect(meera.handle).toMatch(/^zzintakemeer\.[a-z0-9]{4}$/);
+    // A handle pupil leaves with a first sign-in code; one with an address does not.
+    expect(meera.firstSignInCode).toMatch(/^[A-Z2-9]{4}-[A-Z2-9]{4}$/);
+    expect(devOutcome.firstSignInCode).toBeUndefined();
   });
 
   it("⚠ uploading the same list again admits nobody twice", async () => {

@@ -14,6 +14,7 @@ import { DirectoryMenu } from "./directory-menu";
 import { relativeTime, formatDate } from "@/lib/dates";
 import { readJsonArray } from "@/lib/json";
 import { getT } from "@/lib/i18n/server";
+import { isDeliverableEmail } from "@/lib/login-name";
 import { TabBar } from "@/components/ui/tabs";
 import { ROLE_META, SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
 import { pendingParentInvites } from "@/lib/parent-link";
@@ -341,6 +342,7 @@ export default async function DirectoryPage({
                           isTeacher={role === "TEACHER"}
                           subjects={subjects}
                           birthdate={member.user.birthdate?.toISOString().slice(0, 10) ?? ""}
+                          handleOnly={!isDeliverableEmail(member.user.email)}
                           suspended={member.status === "SUSPENDED"}
                           hasLeft={member.leftAt !== null}
                         />

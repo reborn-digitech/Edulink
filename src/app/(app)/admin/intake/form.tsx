@@ -20,6 +20,7 @@ import { runIntake, type IntakeState } from "./actions";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 import type { IntakeOutcome } from "@/lib/intake";
+import { FIRST_SIGNIN_TTL_DAYS } from "@/lib/first-signin-constants";
 
 const EXAMPLE =
   "name,date of birth,class,guardian email,guardian name,relation\n" +
@@ -96,6 +97,7 @@ export function IntakeForm({
       class: o.className ?? "",
       "student code": o.studentCode ?? "",
       "sign-in handle": o.handle ?? "",
+      "sign-in code": o.firstSignInCode ?? "",
       guardian: o.guardian ? t(guardianKey(o.guardian)) : "",
     }));
     const blob = new Blob([toCsv(rows)], { type: "text/csv;charset=utf-8" });
@@ -130,6 +132,9 @@ export function IntakeForm({
             <p className="mt-1 text-sm font-medium text-fg">{result.guardiansInvited === 1 ? t("intake.guardiansInvitedOne") : t("intake.guardiansInvited", { count: result.guardiansInvited })}</p>
           )}
           <p className="mx-auto mt-2 max-w-md text-sm text-fg-muted">{t("intake.doneBody")}</p>
+          {admitted.some((o) => o.firstSignInCode) && (
+            <p className="mx-auto mt-1 max-w-md text-sm font-medium text-warn">{t("firstSignin.intakeNote", { days: FIRST_SIGNIN_TTL_DAYS })}</p>
+          )}
           <div className="mt-6 flex flex-col gap-2 sm:flex-row">
             <Button block variant="secondary" icon={<DownloadSimpleIcon weight="bold" />} onClick={() => download(result.outcomes)}>
               {t("intake.downloadResult")}
@@ -159,6 +164,7 @@ export function IntakeForm({
                   <th className="px-3 py-2">{t("intake.colClass")}</th>
                   <th className="px-3 py-2">{t("intake.colStudentCode")}</th>
                   <th className="px-3 py-2">{t("intake.colHandle")}</th>
+                  <th className="px-3 py-2">{t("firstSignin.colCode")}</th>
                   <th className="px-3 py-2">{t("intake.colGuardian")}</th>
                 </tr>
               </thead>
@@ -169,6 +175,7 @@ export function IntakeForm({
                     <td className="px-3 py-2 text-fg-muted">{o.className ?? "—"}</td>
                     <td className="px-3 py-2 font-mono text-fg">{o.studentCode}</td>
                     <td className="px-3 py-2 font-mono text-fg-muted">{o.handle ?? "—"}</td>
+                    <td className="px-3 py-2 font-mono font-semibold tracking-wider text-fg">{o.firstSignInCode ?? "—"}</td>
                     <td className="px-3 py-2">
                       {o.guardian === "invited" ? (
                         <Badge tone="ok" size="sm">{t("intake.guardianInvited")}</Badge>

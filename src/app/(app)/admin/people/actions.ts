@@ -11,6 +11,7 @@ import {
 } from "@/lib/membership";
 import { setTeacherSubjects } from "@/lib/reviews";
 import { inviteParent } from "@/lib/parent-link";
+import { issueFirstSignIn } from "@/lib/first-signin";
 import { setMemberBirthdate } from "@/lib/birthdate";
 import type { GuardianRelation } from "@/lib/constants";
 import {
@@ -195,5 +196,19 @@ export async function setBirthdateAction(membershipId: string, dateKey: string):
     return { ok: true };
   } catch (error) {
     return failure(error);
+  }
+}
+
+/** A pupil's first sign-in code, for the slip that goes home. Shown once. */
+export async function issueFirstSignInAction(
+  studentMembershipId: string,
+): Promise<{ ok: true; issued: { code: string; handle: string; expiresAt: string } } | (Result & { ok: false })> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const result = await issueFirstSignIn(ctx, studentMembershipId);
+    if (!result.ok) return { ok: false, errorKey: result.errorKey };
+    return { ok: true, issued: { ...result.issued, expiresAt: result.issued.expiresAt.toISOString() } };
+  } catch (error) {
+    return failure(error) as Result & { ok: false };
   }
 }

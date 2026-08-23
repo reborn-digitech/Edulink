@@ -1559,6 +1559,7 @@ export const en = {
   /* Server refusals — minted as keys in libs, translated at the boundary    */
   /* ---------------------------------------------------------------------- */
   refusal: {
+    accountDisabled: "That account is disabled.",
     notAMemberHere: "That person is not a member of this school.",
     askTheOfficeToChangeYourBirthday: "A parent is linked to you, so only the school office can change your date of birth now.",
     thatIsNotAnEmailAddress: "That is not an email address.",
@@ -1588,6 +1589,7 @@ export const en = {
     useHexColour: "Use a hex colour like #2563eb.",
     startWithHttp: "Start with http:// or https://",
     enterIdentifier: "Enter your email, mobile number or username.",
+    enterHandle: "Enter your handle.",
     enterPassword: "Enter your password.",
     enterCode: "Enter the code you were sent.",
     pasteOneRow: "Paste at least one row.",
@@ -1687,6 +1689,7 @@ export const en = {
   /* boundary. One key per distinct sentence; the sentence is the value.    */
   /* ---------------------------------------------------------------------- */
   access: {
+    onlyAnAdminCanIssueASignIn: "Only a school admin can issue a sign-in code.",
     onlyASchoolAdminCanAdmit: "Only a school admin can admit pupils.",
     tooManyPupilsAtOnce: "That is more than {max} pupils at once. Split the list.",
     leaversLastDayBeforeJoin: "The leavers' last day is before {count} of them joined the school. Pick a later last day.",
@@ -3722,7 +3725,7 @@ export const en = {
     confirmGo: "Yes, move them up",
     notYet: "Not yet",
     done: "Moved up",
-    doneBody: "{moved} pupils moved, {left} left the school, {held} held back, {created} classes created, {archived} archived.",
+    doneBody: "Parents get a link to accept; the guardianship exists when they do. A pupil with no address signs in at /first-signin with their handle and code, and chooses a password there.",
     notDone: "Could not move the school up",
     noClasses: "No classes to move",
     noClassesBody: "Create classes and enrol pupils first; this page moves them at the end of the year.",
@@ -3895,6 +3898,9 @@ export const en = {
   },
 
   audit: {
+    authFirstSigninIssue: "Issued a pupil a first sign-in code",
+    authFirstSigninFailed: "A first sign-in code was entered wrongly",
+    authFirstSigninCompleted: "A pupil signed in for the first time with a code",
     studentAdmit: "A pupil was admitted from a list",
     intakeRun: "Ran an admissions intake",
     userBirthdateSet: "Set a date of birth",
@@ -4036,6 +4042,7 @@ export const en = {
   /* The directory — everyone in the school, and the three ways out of it     */
   /* ---------------------------------------------------------------------- */
   people: {
+    firstSigninAction: "Issue sign-in code",
     birthdateAction: "Date of birth…",
     birthdateTitle: "Date of birth for {name}",
     birthdateBody: "From the admission form. A parent links to a pupil with the student code and this date, so it has to be right. {name} is told when it changes.",
@@ -4890,7 +4897,39 @@ export const en = {
     seePeople: "See the directory",
     fromPeople: "Admit pupils from a list",
   },
+  firstSignin: {
+    done: "Done",
+    hasAddressUseForgot: "{name} has an email address — they set a password with \"Forgotten your password?\" instead.",
+    noHandle: "This account has no sign-in handle.",
+    noMatch: "That handle and code do not match, or the code has been used. Ask your school for a new one.",
+    panelTitle: "A first sign-in for {name}",
+    panelBody: "A one-time code, shown once. {name} types it with their handle at {url} to choose a password. It works for {days} days and for one sign-in; issuing another replaces it.",
+    issue: "Issue a code",
+    reissue: "Issue a new code",
+    codeLabel: "Code",
+    handleLabel: "Handle",
+    expires: "Works until {when}",
+    shownOnce: "Write this down now — it is not shown again.",
+    issued: "Code issued",
+    notIssued: "Could not issue a code",
+    title: "Your first sign-in",
+    subtitle: "Your school gave you a handle and a code. Type them here and choose a password — then you are in.",
+    handleField: "Your handle",
+    handleHint: "Like amara.k4f9 — your school has it.",
+    codeField: "Your code",
+    codeHint: "Eight letters and numbers, like ABCD-2345.",
+    passwordField: "Choose a password",
+    passwordHint: "At least 8 characters. Nobody else should know it.",
+    submit: "Sign in",
+    signingIn: "Signing in…",
+    haveOne: "Already have a password?",
+    signIn: "Sign in",
+    fromLogin: "First time here with a code from your school?",
+    colCode: "Sign-in code",
+    intakeNote: "Sign-in codes work for {days} days and are shown only here — download the list.",
+  },
   meta: {
+    firstSignin: "First sign-in",
     intake: "Admit pupils",
     pastRegisters: "Past registers",
     appDescription:

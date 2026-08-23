@@ -9,6 +9,7 @@ import { writeJson } from "./json";
 import { ageInYears, parseDateOnly } from "./dates";
 import { syncStandinGuardian } from "./standin-guardian";
 import { inviteParent } from "./parent-link";
+import { issueFirstSignIn } from "./first-signin";
 import { CONSENT_AGE } from "./constants";
 import type { IntakeRow } from "./csv";
 import type { ActiveContext } from "./session";
@@ -41,11 +42,11 @@ import type { TranslationKey } from "./i18n/dictionary";
  * the result, including the ones that went nowhere — a silent skip is how
  * a school finds out in September that a child was never on the roll.
  *
- * A PUPIL WITHOUT AN ADDRESS HAS NO PASSWORD YET. That is the same state a
- * parent-managed account is in, and the honest one: the office does not
- * carry children's passwords around on a list. The result page shows each
- * child's handle and student code, which is what a parent claims with and
- * what the child signs in with once a password is set.
+ * A PUPIL WITHOUT AN ADDRESS GETS A FIRST SIGN-IN CODE, not a password: the
+ * office does not carry children's passwords around on a list, but it can
+ * carry a one-time code that lets the child choose one (first-signin.ts).
+ * The result page shows each child's handle, student code and sign-in code
+ * once; the code goes home on a slip, the handle is what the child types.
  */
 
 export type IntakeOutcome = {
@@ -56,6 +57,8 @@ export type IntakeOutcome = {
   /** For an admitted pupil. */
   studentCode?: string;
   handle?: string;
+  /** Issued with the handle, for the slip that goes home. Shown once — here. */
+  firstSignInCode?: string;
   className?: string | null;
   guardian?: "invited" | "none" | "notSent";
   guardianReasonKey?: TranslationKey;
@@ -225,6 +228,16 @@ export async function admitPupils(
       className: klass?.name ?? null,
       guardian: "none",
     };
+
+    if (!row.pupilEmail) {
+      // One code per handle pupil, minted with the account so the list the
+      // office prints is the whole of what the child needs.
+      const issued = await issueFirstSignIn(ctx, membershipId).catch((error) => {
+        console.error("[admitPupils] first sign-in not issued for line", row.line, error);
+        return null;
+      });
+      if (issued?.ok) outcome.firstSignInCode = issued.issued.code;
+    }
 
     if (row.guardianEmail) {
       try {
