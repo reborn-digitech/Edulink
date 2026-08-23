@@ -2186,6 +2186,12 @@ export const en = {
     everySchool: "Every school on this server",
   },
   join: {
+    signedInAsBody: "You are signed in as {name}. Your code adds the school to this account — your record comes with you.",
+    joinClassAs: "Join {className} as {name}",
+    joinSchoolAs: "Join {school} as {name}",
+    sameAccountNote: "No new login, no new password. Everything already on your account stays yours.",
+    thisIsAParentsAccount: "This account is linked to a child as a parent, so it cannot join a class as a pupil. Sign out and use the pupil's own account.",
+    youWorkHere: "This account already holds a staff post at this school, so it cannot join as a pupil.",
     metaDescription: "Join EduLink with a code from your school, or link to your child.",
     almostThere: "Almost there",
     letsGetYouIn: "Let's get you in",

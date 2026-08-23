@@ -187,8 +187,8 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
           THE SENTENCE A TRANSFERRING FAMILY NEEDS, said before the button.
           The whole reason a leaving certificate is worth writing is that the
           next school can read it, and the only thing that makes that true is
-          arriving on the SAME account. A child who joins with a code instead
-          gets a second one, and nothing on this page would have told them.
+          arriving on the SAME account — which an invitation does, and which
+          the class code now also does for somebody already signed in.
         */}
         {hasAccount && role === "STUDENT" && (
           <p className="mt-3 rounded-[--radius-md] border border-ok/30 bg-ok-soft px-3.5 py-2.5 text-xs leading-relaxed text-fg">

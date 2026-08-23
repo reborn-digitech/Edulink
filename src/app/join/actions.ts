@@ -545,3 +545,118 @@ export async function claimChild(input: unknown): Promise<ClaimState> {
     child: { name: childName, schoolName: membership.school.name },
   };
 }
+
+/* -------------------------------------------------------------------------- */
+/* Join with a code ON THE ACCOUNT YOU ALREADY HAVE                            */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * A signed-in person joins a school or a class as a pupil with their own
+ * account — no new user, no password, no second identity.
+ *
+ * THE WIZARD ABOVE MINTS AN ACCOUNT. That is right for a child with nothing,
+ * and wrong for everyone who already has something: a pupil changing school,
+ * or one a parent set up, who was told "join with the class code" and got a
+ * second login with an empty record. The leaving certificate, the report
+ * cards and the badges are on THIS user id, so this is where the membership
+ * goes.
+ *
+ * Refused, with a sentence, when the account is plainly not a pupil's: it
+ * guards a child, or it already holds a staff post at this school. A pupil
+ * already on the roll here is simply enrolled in the class the code names.
+ */
+export async function joinWithMyAccount(rawCode: string): Promise<JoinState> {
+  const t = await getT();
+  const session = await getSession();
+  if (!session) return { ok: false, errors: { _form: t("common.logInAgain") } };
+
+  const lookup = await lookupCode(rawCode);
+  if (!lookup.ok) return { ok: false, errors: { code: lookup.error } };
+
+  const [guards, postHere, user] = await Promise.all([
+    db.guardianship.count({ where: { parentUserId: session.user.id, status: "ACTIVE" } }),
+    forSchool(lookup.schoolId, () =>
+      db.membership.findFirst({
+        where: { userId: session.user.id, schoolId: lookup.schoolId, role: { not: "STUDENT" }, status: { not: "REMOVED" } },
+        select: { id: true },
+      }),
+    ),
+    db.user.findUniqueOrThrow({ where: { id: session.user.id }, select: { birthdate: true } }),
+  ]);
+  if (guards > 0) return { ok: false, errors: { _form: t("join.thisIsAParentsAccount") } };
+  if (postHere) return { ok: false, errors: { _form: t("join.youWorkHere") } };
+
+  const age = user.birthdate ? ageInYears(user.birthdate) : null;
+  let membershipId: string;
+  let alreadyHere = false;
+
+  try {
+    const result = await forSchool(lookup.schoolId, () =>
+      db.$tenantTransaction(async (rawTx) => {
+        const tx = rawTx as typeof db;
+        const existing = await tx.membership.findFirst({
+          where: { userId: session.user.id, schoolId: lookup.schoolId, role: "STUDENT" },
+          select: { id: true, status: true, leftAt: true },
+        });
+        let id: string;
+        if (existing && existing.status === "ACTIVE" && !existing.leftAt) {
+          id = existing.id;
+          alreadyHere = true;
+        } else if (existing) {
+          // Came back after leaving: the same membership returns to the roll,
+          // so their history here is theirs again.
+          await tx.membership.update({
+            where: { id: existing.id },
+            data: { status: "ACTIVE", leftAt: null, studentCode: studentCode() },
+          });
+          id = existing.id;
+        } else {
+          const made = await tx.membership.create({
+            data: {
+              userId: session.user.id,
+              schoolId: lookup.schoolId,
+              role: "STUDENT",
+              status: "ACTIVE",
+              studentCode: studentCode(),
+            },
+            select: { id: true },
+          });
+          id = made.id;
+        }
+
+        if (lookup.kind === "class") {
+          await tx.enrollment.upsert({
+            where: { classId_studentMembershipId: { classId: lookup.classId, studentMembershipId: id } },
+            create: { classId: lookup.classId, schoolId: lookup.schoolId, studentMembershipId: id, status: "ACTIVE" },
+            update: { status: "ACTIVE", removedAt: null },
+          });
+        }
+
+        if (age !== null) {
+          await tx.user.update({ where: { id: session.user.id }, data: { isMinor: age < 18 } });
+        }
+        return id;
+      }),
+    );
+    membershipId = result;
+  } catch (error) {
+    console.error("[joinWithMyAccount]", error);
+    return { ok: false, errors: { _form: t("join.couldNotSetUp") } };
+  }
+
+  await audit({
+    schoolId: lookup.schoolId,
+    actorUserId: session.user.id,
+    action: "student.join",
+    meta: { via: lookup.kind, existingAccount: true, alreadyHere },
+  });
+
+  await syncStandinGuardian({
+    schoolId: lookup.schoolId,
+    studentMembershipId: membershipId,
+    actorUserId: session.user.id,
+  }).catch((error) => console.error("[joinWithMyAccount] standin sync failed", error));
+
+  await createSession(session.user.id, { schoolId: lookup.schoolId, role: "STUDENT" });
+  return { ok: true, errors: {}, redirectTo: "/student" };
+}
