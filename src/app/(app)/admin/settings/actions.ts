@@ -8,11 +8,39 @@ import { requireApiRole, AccessError } from "@/lib/tenancy";
 import { deleteStoredFile, storeFile, UploadError } from "@/lib/storage";
 import { schoolDetailsSchema, fieldErrors, type FieldErrors } from "@/lib/validation";
 import { audit } from "@/lib/audit";
+import { setNotifThresholds, AUTO_READ_RANGE, EXPIRE_RANGE } from "@/lib/notification-housekeeping";
 
 export type SettingsState = { ok: boolean; errors: FieldErrors };
 
 /** Logos are small by nature; a 2 MB cap stops someone uploading a poster. */
 const LOGO_MAX_BYTES = 2 * 1024 * 1024;
+
+export async function saveNotifThresholds(input: {
+  autoReadDays: string;
+  expireDays: string;
+}): Promise<{ ok: boolean; error?: string }> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const parse = (v: string) => (v.trim() === "" ? null : Number(v));
+    const result = await setNotifThresholds(ctx, { autoReadDays: parse(input.autoReadDays), expireDays: parse(input.expireDays) });
+    if (!result.ok) {
+      const t = await getT();
+      return {
+        ok: false,
+        error: t(result.errorKey, {
+          min: result.errorKey === "notif.autoReadOutOfRange" ? AUTO_READ_RANGE.min : EXPIRE_RANGE.min,
+          max: result.errorKey === "notif.autoReadOutOfRange" ? AUTO_READ_RANGE.max : EXPIRE_RANGE.max,
+        }),
+      };
+    }
+    revalidatePath("/admin/settings");
+    revalidatePath("/notifications");
+    return { ok: true };
+  } catch (error) {
+    if (error instanceof AccessError) return { ok: false, error: (await getT())(error.key, error.vars) };
+    throw error;
+  }
+}
 
 export async function saveSchoolDetails(input: unknown): Promise<SettingsState> {
   let ctx;

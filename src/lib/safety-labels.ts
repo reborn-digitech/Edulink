@@ -226,6 +226,7 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "school.logo.remove": "audit.schoolLogoRemove",
   "school.logo.update": "audit.schoolLogoUpdate",
   "school.settings.update": "audit.schoolSettingsUpdate",
+  "school.notifTidy.set": "audit.schoolNotifTidySet",
   "student.leave": "audit.studentLeave",
   "student.leave.undo": "audit.studentLeaveUndo",
   "submission.attach": "audit.submissionAttach",

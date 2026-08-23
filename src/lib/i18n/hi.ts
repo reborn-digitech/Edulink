@@ -915,6 +915,16 @@ export const hi: Dictionary = {
   },
 
   notif: {
+    thresholdNotWhole: "दिन पूर्ण संख्या में हों।",
+    autoReadOutOfRange: "स्वतः-पठित {min} से {max} दिनों के बीच हो।",
+    expireOutOfRange: "हटाना {min} से {max} दिनों के बीच हो।",
+    expireBeforeAutoRead: "सूचनाएँ पढ़ी मानी जाने से पहले हटाई नहीं जा सकतीं।",
+    tidyTitle: "सूचना-सफ़ाई",
+    tidyBody: "इस स्कूल की सूचनाएँ कितने दिन रहती हैं। पहली संख्या के बाद बिना पढ़ी सूचनाएँ पढ़ी मान ली जाती हैं; दूसरी के बाद पढ़ी हुई हटा दी जाती हैं। खाली का अर्थ प्लेटफ़ॉर्म डिफ़ॉल्ट ({read} / {expire} दिन)। बिना पढ़ी सूचनाएँ कभी नहीं हटतीं।",
+    autoReadField: "इतने दिनों बाद बिना पढ़ी को पढ़ी मानें (दिन)",
+    expireField: "इतने दिनों बाद पढ़ी हुई हटाएँ (दिन)",
+    tidySaved: "सफ़ाई सहेजी गई",
+    tidyNotSaved: "सहेजा नहीं जा सका",
     housekeeping: "{read} दिनों बाद बिना पढ़ी सूचनाएँ पढ़ी हुई मान ली जाती हैं; पढ़ी हुई {expire} दिनों बाद हटा दी जाती हैं।",
     nothingYet: "अभी कुछ नहीं",
     allCaughtUp: "सब पढ़ लिया",
@@ -1536,6 +1546,7 @@ export const hi: Dictionary = {
   },
 
   access: {
+    onlyAnAdminCanSetThresholds: "केवल स्कूल एडमिन ही सूचना-सफ़ाई बदल सकता है।",
     paperOnHoliday: "{date} {name} के भीतर है — स्कूल बंद है। यदि पर्चा सचमुच उसी दिन है तो “स्कूल बंद होने पर भी” टिक करें।",
     paperOnSunday: "{date} रविवार है — स्कूल बंद है। यदि पर्चा सचमुच उसी दिन है तो “स्कूल बंद होने पर भी” टिक करें।",
     papersClash: "यह उसी समय {subject} ({series}) से टकराता है — कोई विद्यार्थी दोनों नहीं दे सकता।",
@@ -3571,6 +3582,7 @@ export const hi: Dictionary = {
   },
 
   audit: {
+    schoolNotifTidySet: "स्कूल की सूचना-सफ़ाई बदली",
     inviteOpenSelf: "अपने ईमेल पर भेजा निमंत्रण खोला",
     studentLeaveSchedule: "विद्यार्थी का छोड़ना भविष्य के दिन के लिए निर्धारित किया",
     studentLeaveUnschedule: "विद्यार्थी का निर्धारित छोड़ना रद्द किया",

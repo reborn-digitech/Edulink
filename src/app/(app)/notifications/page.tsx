@@ -11,7 +11,7 @@ import { NotificationList } from "./list";
 import { BulkActions } from "./bulk-actions";
 import type { NotificationKind } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
-import { AUTO_READ_AFTER_DAYS, EXPIRE_READ_AFTER_DAYS } from "@/lib/notification-housekeeping";
+import { effectiveThresholds } from "@/lib/notification-housekeeping";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -33,6 +33,14 @@ export default async function NotificationsPage({
   const session = await requireUser();
   const { filter } = await searchParams;
   const showUnreadOnly = filter === "unread";
+
+  // The rule line quotes the reader's OWN school's numbers when it has set
+  // its own; a parent or a school on the defaults reads the defaults.
+  const thresholds = effectiveThresholds(
+    session.schoolId
+      ? await db.school.findUnique({ where: { id: session.schoolId }, select: { notifAutoReadDays: true, notifExpireDays: true } })
+      : null,
+  );
 
   const [rows, unreadCount, totalCount] = await Promise.all([
     db.notification.findMany({
@@ -85,7 +93,7 @@ export default async function NotificationsPage({
 
           <BulkActions unreadCount={unreadCount} readCount={totalCount - unreadCount} />
           <p className="text-xs text-fg-subtle">
-            {t("notif.housekeeping", { read: AUTO_READ_AFTER_DAYS, expire: EXPIRE_READ_AFTER_DAYS })}
+            {t("notif.housekeeping", { read: thresholds.autoReadDays, expire: thresholds.expireDays })}
           </p>
         </>
       )}

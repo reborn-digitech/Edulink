@@ -1035,6 +1035,16 @@ export const en = {
   /* The notifications page                                                  */
   /* ---------------------------------------------------------------------- */
   notif: {
+    thresholdNotWhole: "Days must be whole numbers.",
+    autoReadOutOfRange: "Auto-read must be between {min} and {max} days.",
+    expireOutOfRange: "Removal must be between {min} and {max} days.",
+    expireBeforeAutoRead: "Notices cannot be removed before they would be marked read.",
+    tidyTitle: "Notification housekeeping",
+    tidyBody: "How long this school\u2019s notices live. Unread ones are marked read after the first number; read ones are removed after the second. Blank means the platform default ({read} / {expire} days). Unread notices are never deleted.",
+    autoReadField: "Mark unread as read after (days)",
+    expireField: "Remove read notices after (days)",
+    tidySaved: "Housekeeping saved",
+    tidyNotSaved: "Could not save",
     housekeeping: "Unread notices are marked read after {read} days; read ones are removed after {expire} days.",
     nothingYet: "Nothing yet",
     allCaughtUp: "All caught up",
@@ -1711,6 +1721,7 @@ export const en = {
   /* boundary. One key per distinct sentence; the sentence is the value.    */
   /* ---------------------------------------------------------------------- */
   access: {
+    onlyAnAdminCanSetThresholds: "Only a school admin can change notification housekeeping.",
     paperOnHoliday: "{date} is inside {name} — the school is shut. Tick “Even if the school is closed that day” if the paper really sits then.",
     paperOnSunday: "{date} is a Sunday — the school is shut. Tick “Even if the school is closed that day” if the paper really sits then.",
     papersClash: "That clashes with {subject} ({series}) at the same time — no pupil can sit both.",
@@ -3950,6 +3961,7 @@ export const en = {
   },
 
   audit: {
+    schoolNotifTidySet: "Changed the school's notification housekeeping",
     inviteOpenSelf: "Opened an invitation addressed to their own email",
     studentLeaveSchedule: "Scheduled a pupil's leaving for a future day",
     studentLeaveUnschedule: "Cancelled a pupil's scheduled leaving",

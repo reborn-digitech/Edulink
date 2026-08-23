@@ -58,6 +58,13 @@ model School {
 
   // Setup checklist progress. JSON: { "inviteTeachers": true, ... }
   onboardingState String @default("{}")
+
+  /// Notification housekeeping, per school. Null means the platform default
+  /// (90 / 365 — see notification-housekeeping.ts). A school that wants a
+  /// shorter memory or a longer one sets its own; the tidy applies each
+  /// school's numbers to that school's notices and the defaults to the rest.
+  notifAutoReadDays Int?
+  notifExpireDays   Int?
   // Privacy defaults applied to new members. JSON.
   privacyDefaults String @default("{}")
 

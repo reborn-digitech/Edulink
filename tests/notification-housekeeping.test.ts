@@ -1,6 +1,8 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
-import { tidyNotificationsFor, AUTO_READ_AFTER_DAYS, EXPIRE_READ_AFTER_DAYS } from "@/lib/notification-housekeeping";
+import { tidyNotificationsFor, setNotifThresholds, effectiveThresholds, AUTO_READ_AFTER_DAYS, EXPIRE_READ_AFTER_DAYS } from "@/lib/notification-housekeeping";
+import { AccessError } from "@/lib/tenancy";
+import type { ActiveContext } from "@/lib/session";
 
 /**
  * Notifications do not live forever: unread ones are read at ninety days,
@@ -65,5 +67,64 @@ describe("tidying one person's notifications", () => {
     await db.notification.deleteMany({ where: { userId } });
     await db.notification.create({ data: { userId, kind: "SYSTEM", title: "today", readAt: null } });
     expect(await tidyNotificationsFor(userId)).toEqual({ autoRead: 0, expired: 0 });
+  });
+});
+
+
+describe("per-school thresholds", () => {
+  let schoolId: string;
+  let admin: ActiveContext;
+  let teacher: ActiveContext;
+  const ctx = (userId: string, membershipId: string, role: "ADMIN" | "TEACHER"): ActiveContext => ({
+    sessionId: "test", membershipId, schoolId, role,
+    user: { id: userId, name: "T", preferredName: null, email: null, avatarKey: null, isMinor: false, isSuperuser: false, isAppAdmin: false,
+      prefs: { theme: "system", contrast: "normal", font: "default", motion: "full", locale: "en", channels: { push: false, email: false }, quietHours: null } },
+  });
+
+  beforeAll(async () => {
+    const school = await db.school.findFirstOrThrow({ where: { name: "Riverside Primary School" } });
+    schoolId = school.id;
+    const priya = await db.user.findUniqueOrThrow({ where: { email: "priya@riverside.school" } });
+    const tom = await db.user.findUniqueOrThrow({ where: { email: "tom@riverside.school" } });
+    admin = ctx(priya.id, (await db.membership.findFirstOrThrow({ where: { userId: priya.id, schoolId, role: "ADMIN" } })).id, "ADMIN");
+    teacher = ctx(tom.id, (await db.membership.findFirstOrThrow({ where: { userId: tom.id, schoolId, role: "TEACHER" } })).id, "TEACHER");
+  });
+
+  afterAll(async () => {
+    await db.school.update({ where: { id: schoolId }, data: { notifAutoReadDays: null, notifExpireDays: null } });
+  });
+
+  it("⚠ the setter validates, the teacher is refused, and null clears to defaults", async () => {
+    await expect(setNotifThresholds(teacher, { autoReadDays: 30, expireDays: null })).rejects.toBeInstanceOf(AccessError);
+    expect(await setNotifThresholds(admin, { autoReadDays: 3, expireDays: null })).toMatchObject({ ok: false, errorKey: "notif.autoReadOutOfRange" });
+    expect(await setNotifThresholds(admin, { autoReadDays: 30.5, expireDays: null })).toMatchObject({ ok: false, errorKey: "notif.thresholdNotWhole" });
+    expect(await setNotifThresholds(admin, { autoReadDays: 200, expireDays: 90 })).toMatchObject({ ok: false, errorKey: "notif.expireBeforeAutoRead" });
+    expect(await setNotifThresholds(admin, { autoReadDays: 30, expireDays: 60 })).toEqual({ ok: true });
+    expect(effectiveThresholds(await db.school.findUnique({ where: { id: schoolId }, select: { notifAutoReadDays: true, notifExpireDays: true } }))).toEqual({ autoReadDays: 30, expireDays: 60 });
+    expect(await setNotifThresholds(admin, { autoReadDays: null, expireDays: null })).toEqual({ ok: true });
+    expect(effectiveThresholds(await db.school.findUnique({ where: { id: schoolId }, select: { notifAutoReadDays: true, notifExpireDays: true } }))).toEqual({ autoReadDays: AUTO_READ_AFTER_DAYS, expireDays: EXPIRE_READ_AFTER_DAYS });
+  });
+
+  it("⚠ the tidy applies the school's own numbers to its notices and the defaults to the rest", async () => {
+    const now = new Date("2026-08-24T10:00:00Z");
+    await db.school.update({ where: { id: schoolId }, data: { notifAutoReadDays: 30, notifExpireDays: 60 } });
+    const mk = (title: string, daysAgo: number, school: boolean, read: boolean) =>
+      db.notification.create({ data: { userId, schoolId: school ? schoolId : null, kind: "SYSTEM", title, createdAt: at(daysAgo, now), readAt: read ? at(daysAgo, now) : null } });
+    await db.notification.deleteMany({ where: { userId } });
+    await mk("school stale 40d", 40, true, false);   // 40 > 30 → auto-read under the school's number
+    await mk("school fresh 20d", 20, true, false);   // stays unread
+    await mk("school old read 70d", 70, true, true); // 70 > 60 → expired
+    await mk("platform 40d", 40, false, false);      // default 90 → untouched
+    await mk("platform read 100d", 100, false, true); // default 365 → untouched
+
+    const result = await tidyNotificationsFor(userId, now);
+    expect(result).toEqual({ autoRead: 1, expired: 1 });
+    const rows = await db.notification.findMany({ where: { userId }, orderBy: { title: "asc" } });
+    const byTitle = Object.fromEntries(rows.map((r) => [r.title, r.readAt]));
+    expect(Object.keys(byTitle).sort()).toEqual(["platform 40d", "platform read 100d", "school fresh 20d", "school stale 40d"]);
+    expect(byTitle["school stale 40d"]).not.toBeNull();
+    expect(byTitle["school fresh 20d"]).toBeNull();
+    expect(byTitle["platform 40d"]).toBeNull();
+    await db.school.update({ where: { id: schoolId }, data: { notifAutoReadDays: null, notifExpireDays: null } });
   });
 });

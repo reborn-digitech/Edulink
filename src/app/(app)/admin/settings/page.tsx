@@ -5,6 +5,9 @@ import { db } from "@/lib/db";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { LogoPicker } from "./logo-picker";
 import { DetailsForm } from "./details-form";
+import { NotifTidyForm } from "./notif-tidy-form";
+import { AUTO_READ_AFTER_DAYS, EXPIRE_READ_AFTER_DAYS } from "@/lib/notification-housekeeping";
+import { BroomIcon } from "@phosphor-icons/react/ssr";
 import { getT } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -19,6 +22,8 @@ export default async function SettingsPage() {
   const school = await db.school.findUniqueOrThrow({
     where: { id: ctx.schoolId },
     select: {
+      notifAutoReadDays: true,
+      notifExpireDays: true,
       name: true,
       code: true,
       logoPath: true,
@@ -58,6 +63,20 @@ export default async function SettingsPage() {
         />
         <CardBody>
           <LogoPicker schoolName={school.name} logoPath={school.logoPath} />
+        </CardBody>
+      </Card>
+
+      <Card>
+        <CardHeader
+          icon={<BroomIcon weight="duotone" className="size-5" />}
+          title={t("notif.tidyTitle")}
+        />
+        <CardBody>
+          <NotifTidyForm
+            initialAutoRead={school.notifAutoReadDays}
+            initialExpire={school.notifExpireDays}
+            defaults={{ read: AUTO_READ_AFTER_DAYS, expire: EXPIRE_READ_AFTER_DAYS }}
+          />
         </CardBody>
       </Card>
 
