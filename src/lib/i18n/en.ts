@@ -1262,6 +1262,7 @@ export const en = {
     jobFailedLast: "Last run failed",
     jobsFailedOne: "Every job is on time, but the last run of 1 failed.",
     jobsFailedMany: "Every job is on time, but the last run of {count} failed.",
+    jobDescDepartures: "Runs pupils\u2019 scheduled leavings the morning after their last day.",
     jobDescTidy: "Marks unread notices read after 90 days and removes read ones after a year.",
     jobDescDigest: "Sends every family one message a week saying what happened.",
     jobDescReclaim: "Deletes stored files no record points at any more.",
@@ -1578,6 +1579,8 @@ export const en = {
   /* Server refusals — minted as keys in libs, translated at the boundary    */
   /* ---------------------------------------------------------------------- */
   refusal: {
+    leaveDateNotFuture: "That date is not in the future — record the leaving now instead.",
+    nothingScheduled: "No leaving is scheduled for them.",
     accountDisabled: "That account is disabled.",
     notAMemberHere: "That person is not a member of this school.",
     askTheOfficeToChangeYourBirthday: "A parent is linked to you, so only the school office can change your date of birth now.",
@@ -3936,6 +3939,8 @@ export const en = {
   },
 
   audit: {
+    studentLeaveSchedule: "Scheduled a pupil's leaving for a future day",
+    studentLeaveUnschedule: "Cancelled a pupil's scheduled leaving",
     staffRecordSet: "Updated a member of staff's record",
     termCreate: "Added a term to the year",
     termDelete: "Removed a term",
@@ -4083,6 +4088,11 @@ export const en = {
   /* The directory — everyone in the school, and the three ways out of it     */
   /* ---------------------------------------------------------------------- */
   people: {
+    leavingOn: "Leaving on {date}",
+    cancelLeaving: "Cancel scheduled leaving",
+    leavingScheduled: "{name} is recorded as leaving on {date}. They keep full access until then.",
+    leavingCancelled: "Scheduled leaving cancelled",
+    futureDayHint: "A future date schedules it — they keep access through that day and come off the roll the morning after.",
     staffRecordAction: "Staff record…",
     firstSigninAction: "Issue sign-in code",
     birthdateAction: "Date of birth…",

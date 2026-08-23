@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { DirectoryControls } from "./controls";
 import { DirectoryMenu } from "./directory-menu";
-import { relativeTime, formatDate } from "@/lib/dates";
+import { relativeTime, formatDate, formatDateKey } from "@/lib/dates";
 import { readJsonArray } from "@/lib/json";
 import { getT } from "@/lib/i18n/server";
 import { isDeliverableEmail } from "@/lib/login-name";
@@ -110,6 +110,7 @@ export default async function DirectoryPage({
         classTeachers: { include: { class: { select: { name: true } } } },
         schoolRecord: { select: { id: true, destination: true } },
         staffRecord: true,
+        scheduledDeparture: { select: { leaveOnKey: true } },
       },
       orderBy:
         sort === "recent" ? { joinedAt: "desc" } : [{ user: { name: "asc" } }],
@@ -305,6 +306,11 @@ export default async function DirectoryPage({
                             {[member.staffRecord.designation, member.staffRecord.joinedOn ? t("staff.joined", { date: formatDate(member.staffRecord.joinedOn) }) : null].filter(Boolean).join(" · ")}
                           </p>
                         )}
+                        {role === "STUDENT" && !member.leftAt && member.scheduledDeparture && (
+                          <p className="mt-1 text-xs font-medium text-warn">
+                            {t("people.leavingOn", { date: formatDateKey(member.scheduledDeparture.leaveOnKey, { dateStyle: "medium" }) })}
+                          </p>
+                        )}
                         {role === "STUDENT" && !member.leftAt && (
                           <p className="mt-0.5 text-xs text-fg-subtle">
                             {member.user.birthdate
@@ -357,6 +363,7 @@ export default async function DirectoryPage({
                           subjects={subjects}
                           birthdate={member.user.birthdate?.toISOString().slice(0, 10) ?? ""}
                           handleOnly={!isDeliverableEmail(member.user.email)}
+                          leavingOnKey={member.scheduledDeparture?.leaveOnKey ?? null}
                           staffRecord={
                             role === "STUDENT"
                               ? undefined

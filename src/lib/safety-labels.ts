@@ -129,6 +129,8 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "student.admit": "audit.studentAdmit",
   "term.create": "audit.termCreate",
   "staff.record.set": "audit.staffRecordSet",
+  "student.leave.schedule": "audit.studentLeaveSchedule",
+  "student.leave.unschedule": "audit.studentLeaveUnschedule",
   "term.delete": "audit.termDelete",
   "intake.run": "audit.intakeRun",
   "parent.signup": "audit.parentSignup",

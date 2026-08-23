@@ -1122,6 +1122,7 @@ export const hi: Dictionary = {
     jobFailedLast: "पिछला रन विफल",
     jobsFailedOne: "हर जॉब समय पर है, पर 1 का पिछला रन विफल रहा।",
     jobsFailedMany: "हर जॉब समय पर है, पर {count} का पिछला रन विफल रहा।",
+    jobDescDepartures: "विद्यार्थियों के निर्धारित छोड़ने उनके अंतिम दिन के अगली सुबह पूरे करता है।",
     jobDescTidy: "90 दिनों बाद बिना पढ़ी सूचनाओं को पढ़ा हुआ मानता है और एक साल बाद पढ़ी हुई हटाता है।",
     jobDescDigest: "हर परिवार को हफ़्ते में एक संदेश भेजता है कि क्या हुआ।",
     jobDescReclaim: "ऐसी संग्रहीत फ़ाइलें हटाता है जिनकी ओर अब कोई रिकॉर्ड इशारा नहीं करता।",
@@ -1419,6 +1420,8 @@ export const hi: Dictionary = {
   },
 
   refusal: {
+    leaveDateNotFuture: "यह तारीख भविष्य में नहीं है — इसके बजाय अभी छोड़ना दर्ज करें।",
+    nothingScheduled: "इनके लिए कोई छोड़ना निर्धारित नहीं है।",
     accountDisabled: "वह खाता अक्षम है।",
     notAMemberHere: "वह व्यक्ति इस स्कूल का सदस्य नहीं है।",
     askTheOfficeToChangeYourBirthday: "आपसे एक अभिभावक जुड़े हैं, इसलिए अब आपकी जन्मतिथि केवल स्कूल कार्यालय ही बदल सकता है।",
@@ -3557,6 +3560,8 @@ export const hi: Dictionary = {
   },
 
   audit: {
+    studentLeaveSchedule: "विद्यार्थी का छोड़ना भविष्य के दिन के लिए निर्धारित किया",
+    studentLeaveUnschedule: "विद्यार्थी का निर्धारित छोड़ना रद्द किया",
     staffRecordSet: "एक स्टाफ सदस्य का रिकॉर्ड अपडेट किया",
     termCreate: "वर्ष में एक सत्र जोड़ा",
     termDelete: "एक सत्र हटाया",
@@ -3701,6 +3706,11 @@ export const hi: Dictionary = {
     expertProfileUpdate: "एक विशेषज्ञ ने अपनी प्रोफ़ाइल बदली",
   },
   people: {
+    leavingOn: "{date} को छोड़ेंगे",
+    cancelLeaving: "निर्धारित छोड़ना रद्द करें",
+    leavingScheduled: "{name} का {date} को छोड़ना दर्ज है। तब तक उनकी पूरी पहुँच बनी रहेगी।",
+    leavingCancelled: "निर्धारित छोड़ना रद्द हुआ",
+    futureDayHint: "भविष्य की तारीख इसे निर्धारित करती है — उस दिन तक पहुँच रहती है और अगली सुबह रोल से हटते हैं।",
     staffRecordAction: "स्टाफ रिकॉर्ड…",
     firstSigninAction: "साइन-इन कोड जारी करें",
     birthdateAction: "जन्मतिथि…",

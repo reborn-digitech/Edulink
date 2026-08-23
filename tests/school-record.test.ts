@@ -2,8 +2,11 @@ import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { AccessError } from "@/lib/tenancy";
 import {
+  cancelScheduledDeparture,
   certificateFor,
   departuresFrom,
+  runDueDepartures,
+  scheduleDeparture,
   myRecords,
   recordDeparture,
   recordsForStudentMembership,
@@ -634,5 +637,47 @@ describe("what the family is left holding", () => {
       await db.guardianship.deleteMany({ where: { parentUserId: parent.id } });
       await db.user.delete({ where: { id: parent.id } });
     }
+  });
+});
+
+
+describe("a last day in the future schedules, and the job executes it the morning after", () => {
+  it("⚠ scheduling keeps the pupil fully on the roll; re-scheduling corrects; cancelling deletes", async () => {
+    expect(await scheduleDeparture(admin, pupilMembershipId, { reason: "TRANSFERRED", leaveOnKey: "2020-01-01" })).toMatchObject({ ok: false, errorKey: "refusal.leaveDateNotFuture" });
+    expect(await scheduleDeparture(admin, pupilMembershipId, { reason: "TRANSFERRED", destination: "Oakfield", conduct: "GOOD", leaveOnKey: "2999-03-31" })).toEqual({ ok: true, leaveOnKey: "2999-03-31" });
+    // Fully on the roll: membership open, enrolment untouched.
+    const m = await db.membership.findUniqueOrThrow({ where: { id: pupilMembershipId } });
+    expect(m.leftAt).toBeNull();
+    expect(await db.enrollment.count({ where: { studentMembershipId: pupilMembershipId, status: "ACTIVE" } })).toBe(1);
+    // Corrected, not duplicated.
+    expect(await scheduleDeparture(admin, pupilMembershipId, { reason: "LEFT", leaveOnKey: "2999-04-15" })).toMatchObject({ ok: true });
+    const rows = await db.scheduledDeparture.findMany({ where: { membershipId: pupilMembershipId } });
+    expect(rows).toHaveLength(1);
+    expect(rows[0]).toMatchObject({ leaveOnKey: "2999-04-15", reason: "LEFT" });
+
+    expect(await cancelScheduledDeparture(admin, pupilMembershipId)).toEqual({ ok: true });
+    expect(await cancelScheduledDeparture(admin, pupilMembershipId)).toMatchObject({ ok: false, errorKey: "refusal.nothingScheduled" });
+    await expect(scheduleDeparture(teacher, pupilMembershipId, { reason: "LEFT", leaveOnKey: "2999-04-15" })).rejects.toBeInstanceOf(AccessError);
+  });
+
+  it("⚠ the due job runs the real departure — certificate dated the last day, conduct carried — and drops a stale row", async () => {
+    expect((await scheduleDeparture(admin, pupilMembershipId, { reason: "TRANSFERRED", destination: "Oakfield Academy", conduct: "EXCELLENT", leaveOnKey: "2999-03-31" })).ok).toBe(true);
+    // Not due yet: nothing happens.
+    expect(await runDueDepartures(new Date("2999-03-31T12:00:00Z"))).toEqual({ executed: 0, skippedStale: 0 });
+    expect((await db.membership.findUniqueOrThrow({ where: { id: pupilMembershipId } })).leftAt).toBeNull();
+    // The morning after the last day, it runs.
+    const result = await runDueDepartures(new Date("2999-04-01T02:00:00Z"));
+    expect(result.executed).toBe(1);
+    const m = await db.membership.findUniqueOrThrow({ where: { id: pupilMembershipId } });
+    expect(m.leftAt?.toISOString().slice(0, 10)).toBe("2999-03-31");
+    const record = await db.schoolRecord.findUniqueOrThrow({ where: { studentMembershipId: pupilMembershipId } });
+    expect(record).toMatchObject({ reason: "TRANSFERRED", destination: "Oakfield Academy", conduct: "EXCELLENT" });
+    expect(await db.scheduledDeparture.count({ where: { membershipId: pupilMembershipId } })).toBe(0);
+
+    // A schedule whose pupil was already recorded by hand is dropped as stale.
+    await db.scheduledDeparture.create({ data: { schoolId: riversideId, membershipId: pupilMembershipId, leaveOnKey: "2999-04-02", reason: "LEFT" } });
+    const stale = await runDueDepartures(new Date("2999-04-10T02:00:00Z"));
+    expect(stale).toMatchObject({ executed: 0, skippedStale: 1 });
+    expect(await db.scheduledDeparture.count({ where: { membershipId: pupilMembershipId } })).toBe(0);
   });
 });

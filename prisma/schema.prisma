@@ -124,6 +124,7 @@ model School {
 
   terms           Term[]
   staffRecords    StaffRecord[]
+  scheduledDepartures ScheduledDeparture[]
   @@index([code])
 }
 
@@ -305,6 +306,7 @@ model Membership {
   @@index([schoolId, role, status])
   @@index([userId])
   staffRecord StaffRecord?
+  scheduledDeparture ScheduledDeparture?
 }
 
 model Guardianship {
@@ -1706,6 +1708,33 @@ model OperatorAccess {
 /// Dev-only outbox. EMAIL_TRANSPORT="devbox" writes here instead of sending,
 /// and /dev/mailbox renders it. Keeps magic-link and invite flows fully
 /// exercisable with no SMTP credentials.
+/// A departure the office has dated ahead: the pupil keeps full access until
+/// the last day, and the morning after it the daily job executes the real
+/// departure — certificate, roll, notifications — exactly as if the office
+/// had pressed the button that day. One per membership; re-scheduling
+/// corrects it, cancelling deletes it, and nothing else changes until it runs.
+model ScheduledDeparture {
+  id           String @id @default(cuid())
+  schoolId     String
+  membershipId String @unique
+
+  /// The pupil's LAST DAY (YYYY-MM-DD, school-timezone date). Access ends after it.
+  leaveOnKey  String
+  reason      String
+  destination String?
+  note        String?
+  conduct     String?
+
+  scheduledByMembershipId String?
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+
+  school     School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  membership Membership @relation(fields: [membershipId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, leaveOnKey])
+}
+
 /// A member of staff's record, as the office keeps it: the official joining
 /// date (the membership's `joinedAt` is when they joined the PLATFORM, which a
 /// school migrating in September does not want on a letter), what they are

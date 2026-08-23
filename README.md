@@ -228,6 +228,7 @@ race itself. They live in one table, `src/lib/jobs.ts`, with their schedules:
 | Job | When | Does |
 |---|---|---|
 | `notifications:tidy` | 03:30 daily | Unread notices read after 90 days; read ones removed after a year |
+| `departures:run` | 01:00 daily | Executes pupils' scheduled leavings the morning after their last day |
 | `files:reclaim` | 03:00 daily | Deletes stored files no record points at |
 | `digest:weekly` | Friday 16:00 | One message a week to every family |
 

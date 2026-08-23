@@ -4,6 +4,7 @@ import { db } from "./db";
 import { tidyAllNotifications } from "./notification-housekeeping";
 import { sendWeeklyDigests } from "./digest";
 import { reclaimOrphans } from "./orphans";
+import { runDueDepartures } from "./school-record";
 import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
@@ -29,7 +30,7 @@ import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
  * the same door migrations and seeds use.
  */
 
-export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim";
+export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run";
 
 export type JobSpec = {
   name: JobName;
@@ -63,6 +64,14 @@ export const JOBS: Record<JobName, JobSpec> = {
     maxRunMs: 2 * HOUR,
     expectEveryMs: 8 * DAY,
     run: () => sendWeeklyDigests(),
+  },
+  "departures:run": {
+    name: "departures:run",
+    schedule: "0 1 * * *",
+    describeKey: "root.jobDescDepartures",
+    maxRunMs: HOUR,
+    expectEveryMs: 2 * DAY,
+    run: () => runDueDepartures(),
   },
   "files:reclaim": {
     name: "files:reclaim",

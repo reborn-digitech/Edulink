@@ -1,5 +1,7 @@
 "use client";
 
+import { formatDateKey } from "@/lib/dates";
+
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -103,6 +105,7 @@ export function LeavingPanel({
         <div className="min-w-[11rem]">
           <DateField
             label={t("people.lastDay")}
+            hint={t("people.futureDayHint")}
             value={leftOn}
             onChange={(event) => setLeftOn(event.target.value)}
           />
@@ -145,6 +148,15 @@ export function LeavingPanel({
               });
               if (!result.ok) {
                 setError(actionError(t, result, "people.didNotWork"));
+                return;
+              }
+              if ("scheduledFor" in result && result.scheduledFor) {
+                toast({
+                  tone: "ok",
+                  title: t("people.leavingScheduled", { name, date: formatDateKey(result.scheduledFor, { dateStyle: "medium" }) }),
+                });
+                onClose();
+                router.refresh();
                 return;
               }
               toast({

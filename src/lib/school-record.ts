@@ -1,8 +1,9 @@
 import "server-only";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "./db";
-import { forOwnSchools } from "./tenant-context";
+import { forOwnSchools, forSchool } from "./tenant-context";
 import { audit } from "./audit";
+import { todayKey } from "./dates";
 import { notifyGuardians } from "./notify";
 import { AccessError } from "./tenancy";
 import type { ActiveContext } from "./session";
@@ -322,6 +323,168 @@ export async function recordDeparture(
   }));
 
   return { ok: true, recordId: record.id };
+}
+
+/* -------------------------------------------------------------------------- */
+/* Scheduling a departure ahead of its day                                     */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * A LAST DAY IN THE FUTURE SCHEDULES; IT DOES NOT EXECUTE. The first
+ * functional test typed 31/08 into the leaving panel and the pupil lost
+ * access on the 23rd — the date was written on the certificate and ignored
+ * by everything else. Now the office's intent is stored whole (date,
+ * reason, destination, conduct), the pupil keeps every bit of access
+ * through their last day, and the daily job runs the real departure the
+ * MORNING AFTER it — same certificate, same roll-closing, same
+ * notifications, same audit trail as if the office had pressed the button
+ * that day. Cancelling before the day deletes the intent and nothing else
+ * ever knows; re-scheduling corrects the one row.
+ */
+
+export type ScheduleInput = DepartureInput & { leaveOnKey: string };
+
+export type ScheduledView = {
+  membershipId: string;
+  leaveOnKey: string;
+  reason: LeavingReason;
+  destination: string | null;
+  note: string | null;
+  conduct: Conduct | null;
+};
+
+export async function scheduleDeparture(
+  ctx: ActiveContext,
+  membershipId: string,
+  input: ScheduleInput,
+): Promise<{ ok: true; leaveOnKey: string } | { ok: false; errorKey: TranslationKey }> {
+  if (ctx.role !== "ADMIN" || !ctx.schoolId) throw new AccessError("access.onlyAnAdminCanRecordAPupil");
+  const schoolId = ctx.schoolId;
+  if (!LEAVING_REASONS.includes(input.reason)) return { ok: false, errorKey: "refusal.sayTransferReason" };
+  if (input.conduct && !CONDUCTS.includes(input.conduct)) return { ok: false, errorKey: "refusal.sayTransferReason" };
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(input.leaveOnKey)) return { ok: false, errorKey: "refusal.leaveDateInvalid" };
+
+  const school = await db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true } });
+  if (input.leaveOnKey <= todayKey(school.timezone)) {
+    // Today or the past is not a schedule — the caller should record it now.
+    return { ok: false, errorKey: "refusal.leaveDateNotFuture" };
+  }
+
+  const membership = await db.membership.findFirst({
+    where: { id: membershipId, schoolId },
+    select: { id: true, role: true, leftAt: true },
+  });
+  if (!membership) return { ok: false, errorKey: "refusal.pupilNotHere" };
+  if (membership.role !== "STUDENT") return { ok: false, errorKey: "refusal.onlyPupilLeaves" };
+  if (membership.leftAt) return { ok: false, errorKey: "refusal.alreadyLeft" };
+
+  const data = {
+    leaveOnKey: input.leaveOnKey,
+    reason: input.reason,
+    destination: input.destination?.trim().slice(0, 200) || null,
+    note: input.note?.trim().slice(0, 1000) || null,
+    conduct: input.conduct ?? null,
+    scheduledByMembershipId: ctx.membershipId,
+  };
+  await db.scheduledDeparture.upsert({
+    where: { membershipId: membership.id },
+    create: { schoolId, membershipId: membership.id, ...data },
+    update: data,
+  });
+
+  await audit({
+    schoolId,
+    actorUserId: ctx.user.id,
+    action: "student.leave.schedule",
+    targetType: "Membership",
+    targetId: membership.id,
+    meta: { leaveOn: input.leaveOnKey, reason: input.reason },
+  });
+  return { ok: true, leaveOnKey: input.leaveOnKey };
+}
+
+export async function cancelScheduledDeparture(
+  ctx: ActiveContext,
+  membershipId: string,
+): Promise<{ ok: true } | { ok: false; errorKey: TranslationKey }> {
+  if (ctx.role !== "ADMIN" || !ctx.schoolId) throw new AccessError("access.onlyAnAdminCanRecordAPupil");
+  const removed = await db.scheduledDeparture.deleteMany({ where: { membershipId, schoolId: ctx.schoolId } });
+  if (removed.count === 0) return { ok: false, errorKey: "refusal.nothingScheduled" };
+  await audit({
+    schoolId: ctx.schoolId,
+    actorUserId: ctx.user.id,
+    action: "student.leave.unschedule",
+    targetType: "Membership",
+    targetId: membershipId,
+  });
+  return { ok: true };
+}
+
+/**
+ * Executes every scheduled departure whose last day has PASSED in its
+ * school's own timezone — the morning after, not the morning of, because a
+ * child attends their last day. Runs as the daily job; each departure goes
+ * through `recordDeparture` under the scheduling admin's identity (or any
+ * active admin's, if they have gone), so the certificate, audit row and
+ * notifications are indistinguishable from a hand-recorded one. A row whose
+ * pupil already left by hand in the meantime is dropped as stale.
+ */
+export async function runDueDepartures(now: Date = new Date()): Promise<{ executed: number; skippedStale: number }> {
+  const due = await db.scheduledDeparture.findMany({
+    include: { school: { select: { id: true, timezone: true } } },
+    orderBy: { leaveOnKey: "asc" },
+  });
+  let executed = 0;
+  let skippedStale = 0;
+  for (const row of due) {
+    if (row.leaveOnKey >= todayKey(row.school.timezone, now)) continue; // not yet past
+    const actorMembership =
+      (row.scheduledByMembershipId
+        ? await db.membership.findFirst({
+            where: { id: row.scheduledByMembershipId, schoolId: row.schoolId, role: "ADMIN", status: "ACTIVE", leftAt: null },
+            select: { id: true, userId: true },
+          })
+        : null) ??
+      (await db.membership.findFirst({
+        where: { schoolId: row.schoolId, role: "ADMIN", status: "ACTIVE", leftAt: null },
+        select: { id: true, userId: true },
+      }));
+    if (!actorMembership) {
+      console.error("[departures] no active admin to act for school", row.schoolId);
+      continue;
+    }
+    const ctx: ActiveContext = {
+      sessionId: "scheduled-departure",
+      membershipId: actorMembership.id,
+      schoolId: row.schoolId,
+      role: "ADMIN",
+      user: {
+        id: actorMembership.userId, name: "", preferredName: null, email: null, avatarKey: null,
+        isMinor: false, isSuperuser: false, isAppAdmin: false,
+        prefs: { theme: "system", contrast: "normal", font: "default", motion: "full", locale: "en", channels: { push: false, email: false }, quietHours: null },
+      },
+    };
+    const result = await forSchool(row.schoolId, () =>
+      recordDeparture(ctx, row.membershipId, {
+        reason: row.reason as LeavingReason,
+        destination: row.destination,
+        note: row.note,
+        conduct: (row.conduct as Conduct | null) ?? null,
+        leftOn: new Date(`${row.leaveOnKey}T00:00:00.000Z`),
+      }),
+    ).catch((error) => {
+      console.error("[departures] failed for", row.membershipId, error);
+      return { ok: false as const, errorKey: "common.somethingWrong" as TranslationKey };
+    });
+    if (result.ok) executed++;
+    else {
+      // Already left by hand, or otherwise unactionable: the intent is stale.
+      skippedStale++;
+      console.error("[departures] stale schedule dropped for", row.membershipId, "errorKey" in result ? result.errorKey : "");
+    }
+    await db.scheduledDeparture.deleteMany({ where: { id: row.id } });
+  }
+  return { executed, skippedStale };
 }
 
 /**

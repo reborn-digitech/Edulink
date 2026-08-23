@@ -1119,6 +1119,7 @@ export const mr: Dictionary = {
     jobFailedLast: "शेवटचा रन अयशस्वी",
     jobsFailedOne: "प्रत्येक जॉब वेळेवर आहे, पण 1 चा शेवटचा रन अयशस्वी झाला.",
     jobsFailedMany: "प्रत्येक जॉब वेळेवर आहे, पण {count} चा शेवटचा रन अयशस्वी झाला.",
+    jobDescDepartures: "विद्यार्थ्यांची ठरलेली सोडणी त्यांच्या शेवटच्या दिवसाच्या दुसऱ्या सकाळी पार पाडतो.",
     jobDescTidy: "90 दिवसांनंतर न वाचलेल्या सूचना वाचल्या म्हणून नोंदवतो आणि वर्षानंतर वाचलेल्या काढतो.",
     jobDescDigest: "प्रत्येक कुटुंबाला आठवड्यातून एक संदेश पाठवतो की काय झाले.",
     jobDescReclaim: "ज्या साठवलेल्या फाइलींकडे आता कोणताही रेकॉर्ड निर्देश करत नाही त्या काढतो.",
@@ -1416,6 +1417,8 @@ export const mr: Dictionary = {
   },
 
   refusal: {
+    leaveDateNotFuture: "ही तारीख भविष्यातली नाही — त्याऐवजी आत्ताच सोडणे नोंदवा.",
+    nothingScheduled: "त्यांच्यासाठी सोडणे ठरलेले नाही.",
     accountDisabled: "ते खाते बंद आहे.",
     notAMemberHere: "ती व्यक्ती या शाळेची सदस्य नाही.",
     askTheOfficeToChangeYourBirthday: "तुमच्याशी पालक जोडलेले आहेत, त्यामुळे आता तुमची जन्मतारीख फक्त शाळेचे कार्यालयच बदलू शकते.",
@@ -3554,6 +3557,8 @@ export const mr: Dictionary = {
   },
 
   audit: {
+    studentLeaveSchedule: "विद्यार्थ्याचे सोडणे भविष्यातील दिवसासाठी ठरवले",
+    studentLeaveUnschedule: "विद्यार्थ्याचे ठरलेले सोडणे रद्द केले",
     staffRecordSet: "एका कर्मचाऱ्याची नोंद अद्ययावत केली",
     termCreate: "वर्षात सत्र जोडले",
     termDelete: "सत्र काढले",
@@ -3698,6 +3703,11 @@ export const mr: Dictionary = {
     expertProfileUpdate: "एका तज्ज्ञाने आपली प्रोफाइल बदलली",
   },
   people: {
+    leavingOn: "{date} रोजी सोडणार",
+    cancelLeaving: "ठरलेले सोडणे रद्द करा",
+    leavingScheduled: "{name} यांचे {date} रोजी सोडणे नोंदले आहे. तोपर्यंत त्यांचा पूर्ण प्रवेश राहील.",
+    leavingCancelled: "ठरलेले सोडणे रद्द झाले",
+    futureDayHint: "भविष्यातली तारीख ते ठरवते — त्या दिवसापर्यंत प्रवेश राहतो आणि दुसऱ्या सकाळी पटावरून निघतात.",
     staffRecordAction: "कर्मचारी नोंद…",
     firstSigninAction: "साइन-इन कोड द्या",
     birthdateAction: "जन्मतारीख…",

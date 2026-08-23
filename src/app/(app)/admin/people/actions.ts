@@ -13,6 +13,9 @@ import { setTeacherSubjects } from "@/lib/reviews";
 import { inviteParent } from "@/lib/parent-link";
 import { issueFirstSignIn } from "@/lib/first-signin";
 import { setStaffRecord, type StaffRecordInput } from "@/lib/staff-records";
+import { scheduleDeparture, cancelScheduledDeparture } from "@/lib/school-record";
+import { todayKey } from "@/lib/dates";
+import { db } from "@/lib/db";
 import { setMemberBirthdate } from "@/lib/birthdate";
 import type { GuardianRelation } from "@/lib/constants";
 import {
@@ -85,9 +88,30 @@ export async function reinstate(membershipId: string): Promise<Result> {
 export async function recordLeaving(
   membershipId: string,
   input: { reason: string; destination: string; note: string; leftOn: string; conduct?: string },
-): Promise<Result & { recordId?: string }> {
+): Promise<Result & { recordId?: string; scheduledFor?: string }> {
   try {
     const ctx = await requireApiRole("ADMIN");
+    /**
+     * A LAST DAY IN THE FUTURE SCHEDULES. The pupil keeps access through
+     * that day; the daily job records the departure the morning after —
+     * the first functional test found the date being written on the
+     * certificate and ignored by everything else.
+     */
+    if (input.leftOn) {
+      const school = await db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } });
+      if (input.leftOn > todayKey(school.timezone)) {
+        const scheduled = await scheduleDeparture(ctx, membershipId, {
+          reason: input.reason as DepartureInput["reason"],
+          conduct: (input.conduct || null) as DepartureInput["conduct"],
+          destination: input.destination,
+          note: input.note,
+          leaveOnKey: input.leftOn,
+        });
+        if (!scheduled.ok) return { ok: false, errorKey: scheduled.errorKey };
+        revalidatePath("/admin/people");
+        return { ok: true, scheduledFor: scheduled.leaveOnKey };
+      }
+    }
     const result = await recordDeparture(ctx, membershipId, {
       reason: input.reason as DepartureInput["reason"],
       conduct: (input.conduct || null) as DepartureInput["conduct"],
@@ -222,6 +246,18 @@ export async function setStaffRecordAction(membershipId: string, input: StaffRec
     if (!result.ok) return { ok: false, errorKey: result.errorKey };
     revalidatePath("/admin/people");
     revalidatePath("/teacher/profile");
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export async function cancelLeavingAction(membershipId: string): Promise<Result> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const result = await cancelScheduledDeparture(ctx, membershipId);
+    if (!result.ok) return { ok: false, errorKey: result.errorKey };
+    revalidatePath("/admin/people");
     return { ok: true };
   } catch (error) {
     return failure(error);

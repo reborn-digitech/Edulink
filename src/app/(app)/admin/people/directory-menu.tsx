@@ -15,7 +15,7 @@ import {
   TrashIcon,
 } from "@phosphor-icons/react";
 import { useToast } from "@/components/ui/toast";
-import { reinstate, undoLeaving } from "./actions";
+import { cancelLeavingAction, reinstate, undoLeaving } from "./actions";
 import { PausePanel } from "./row-actions";
 import { LeavingPanel } from "./leaving-actions";
 import { RemovePanel } from "./remove-actions";
@@ -50,6 +50,7 @@ export function DirectoryMenu({
   subjects,
   birthdate,
   handleOnly,
+  leavingOnKey,
   staffRecord,
   suspended,
   hasLeft,
@@ -64,6 +65,8 @@ export function DirectoryMenu({
   birthdate?: string;
   /** A pupil on a login handle with no address: the office can issue a first sign-in code. */
   handleOnly?: boolean;
+  /** A leaving already dated ahead — offers Cancel instead of Record as left. */
+  leavingOnKey?: string | null;
   /** Staff rows carry the office's record; undefined for pupils. */
   staffRecord?: StaffRecordInitial;
   suspended: boolean;
@@ -89,6 +92,19 @@ export function DirectoryMenu({
         return;
       }
       toast({ tone: "ok", title: t("people.canSignInAgain", { name }) });
+      setOpen(false);
+      router.refresh();
+    });
+  }
+
+  function doCancelLeaving() {
+    startTransition(async () => {
+      const result = await cancelLeavingAction(membershipId);
+      if (!result.ok) {
+        toast({ tone: "warn", title: actionError(t, result, "people.didNotWork") });
+        return;
+      }
+      toast({ tone: "ok", title: t("people.leavingCancelled") });
       setOpen(false);
       router.refresh();
     });
@@ -196,6 +212,14 @@ export function DirectoryMenu({
                     onClick={doUndoLeaving}
                   >
                     {t("people.undoLeaving")}
+                  </MenuItem>
+                ) : leavingOnKey ? (
+                  <MenuItem
+                    icon={<ArrowCounterClockwiseIcon className="size-4" />}
+                    disabled={pending}
+                    onClick={doCancelLeaving}
+                  >
+                    {t("people.cancelLeaving")}
                   </MenuItem>
                 ) : (
                   <MenuItem icon={<SignOutIcon className="size-4" />} onClick={() => show("left")}>
