@@ -912,6 +912,7 @@ export const mr: Dictionary = {
   },
 
   notif: {
+    housekeeping: "{read} दिवसांनंतर न वाचलेल्या सूचना वाचल्या म्हणून नोंदवल्या जातात; वाचलेल्या {expire} दिवसांनंतर काढल्या जातात.",
     nothingYet: "अजून काही नाही",
     allCaughtUp: "सगळे वाचून झाले",
     unreadCount: "{count} न वाचलेल्या",

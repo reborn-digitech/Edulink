@@ -3,6 +3,7 @@ import { listContexts, type ActiveContext } from "@/lib/session";
 import { getT } from "@/lib/i18n/server";
 import { db } from "@/lib/db";
 import { anyOpenReviews } from "@/lib/reviews";
+import { tidyNotificationsFor } from "@/lib/notification-housekeeping";
 import type { Role } from "@/lib/constants";
 
 /**
@@ -27,6 +28,12 @@ export async function SignedInShell({
 }) {
   const role = session.role as Role;
   const t = await getT();
+
+  // Before the badge is counted: a notice nobody opened in a term is read,
+  // one read a year ago is gone. Probes first, so this is free on most days.
+  await tidyNotificationsFor(session.user.id).catch((error) =>
+    console.error("[shell] notification tidy failed", error),
+  );
 
   const contexts = await listContexts(session.user.id);
   const contextCount = contexts.memberships.length + (contexts.children.length > 0 ? 1 : 0);

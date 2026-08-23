@@ -11,6 +11,7 @@ import { NotificationList } from "./list";
 import { BulkActions } from "./bulk-actions";
 import type { NotificationKind } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
+import { AUTO_READ_AFTER_DAYS, EXPIRE_READ_AFTER_DAYS } from "@/lib/notification-housekeeping";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -83,6 +84,9 @@ export default async function NotificationsPage({
           </nav>
 
           <BulkActions unreadCount={unreadCount} readCount={totalCount - unreadCount} />
+          <p className="text-xs text-fg-subtle">
+            {t("notif.housekeeping", { read: AUTO_READ_AFTER_DAYS, expire: EXPIRE_READ_AFTER_DAYS })}
+          </p>
         </>
       )}
 

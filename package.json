@@ -29,6 +29,7 @@
     "quiz:generate": "tsx --tsconfig scripts/tsconfig.json scripts/quiz2/gen-quiz2.ts",
     "expert:invite": "tsx --tsconfig scripts/tsconfig.json scripts/invite-expert.ts",
     "digest:weekly": "tsx --tsconfig scripts/tsconfig.json scripts/send-weekly-digest.ts",
+    "notifications:tidy": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/tidy-notifications.ts",
     "demo:seed": "tsx --tsconfig scripts/tsconfig.json scripts/demo-seed.ts",
     "zz:fixtures": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/zz-fixtures.ts",
     "db:grants": "node scripts/db-grants.mjs",

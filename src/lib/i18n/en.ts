@@ -1035,6 +1035,7 @@ export const en = {
   /* The notifications page                                                  */
   /* ---------------------------------------------------------------------- */
   notif: {
+    housekeeping: "Unread notices are marked read after {read} days; read ones are removed after {expire} days.",
     nothingYet: "Nothing yet",
     allCaughtUp: "All caught up",
     unreadCount: "{count} unread",
