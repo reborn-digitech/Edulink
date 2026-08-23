@@ -21,8 +21,11 @@ type Assessment = {
   seriesId: string;
   seriesName: string;
   seriesKind: ExamKind;
+  termId: string | null;
   subject: string;
 };
+
+type TermOption = { id: string; name: string; current: boolean };
 
 type CardRow = {
   id: string;
@@ -53,12 +56,15 @@ export function Builder({
   existingTitles,
   cards,
   selectedTitle,
+  terms,
 }: {
   classId: string;
   assessments: Assessment[];
   existingTitles: string[];
   cards: CardRow[];
   selectedTitle: string | null;
+  /** The current year's terms; empty for a school that reports once a year. */
+  terms: TermOption[];
 }) {
   const t = useT();
   const router = useRouter();
@@ -66,6 +72,18 @@ export function Builder({
   const [pending, startTransition] = useTransition();
   const [title, setTitle] = useState(selectedTitle ?? "Term 1");
   const [picked, setPicked] = useState<string[]>([]);
+  /* BUILT FROM A TERM when the school has them: the term fixes the title
+   * and the attendance window server-side, and ticks its own papers here.
+   * "" means the old way — a typed title and the papers chosen by hand. */
+  const [termId, setTermId] = useState<string>("");
+  function chooseTerm(id: string) {
+    setTermId(id);
+    const term = terms.find((x) => x.id === id);
+    if (term) {
+      setTitle(term.name);
+      setPicked(assessments.filter((a) => a.termId === id).map((a) => a.assignmentId));
+    }
+  }
   const [error, setError] = useState<string | null>(null);
   const [remarks, setRemarks] = useState<Record<string, string>>({});
 
@@ -99,7 +117,7 @@ export function Builder({
   function build() {
     setError(null);
     startTransition(async () => {
-      const result = await generate(classId, { title, assignmentIds: picked });
+      const result = await generate(classId, { title, assignmentIds: picked, termId: termId || null });
       if (!result.ok) {
         setError(result.error ?? t("teacher.thatDidNotWork"));
         return;
@@ -225,6 +243,29 @@ export function Builder({
       {/* ---------------- 2. generate ---------------- */}
       <section className="border-t border-border pt-5">
         <h2 className="text-sm font-semibold text-fg">{t("teacher.builderStepTwo")}</h2>
+        {terms.length > 0 && (
+          <div className="mt-3">
+            <label className="block max-w-xs">
+              <span className="block text-xs font-medium text-fg">{t("terms.cardTerm")}</span>
+              <select
+                value={termId}
+                data-testid="card-term"
+                onChange={(e) => chooseTerm(e.target.value)}
+                className="mt-1 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
+              >
+                <option value="">{t("terms.cardNoTerm")}</option>
+                {terms.map((term) => (
+                  <option key={term.id} value={term.id}>
+                    {term.name}
+                    {" · "}
+                    {t("terms.inTerm", { count: assessments.filter((a) => a.termId === term.id).length })}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <p className="mt-1 text-xs text-fg-muted">{t("terms.builderTermHint")}</p>
+          </div>
+        )}
         <div className="mt-3 flex flex-wrap items-end gap-3">
           <label className="min-w-[12rem] flex-1">
             <span className="block text-xs font-medium text-fg">{t("teacher.reportName")}</span>
@@ -233,6 +274,7 @@ export function Builder({
               value={title}
               maxLength={120}
               list="report-titles"
+              disabled={termId !== ""}
               onChange={(e) => setTitle(e.target.value)}
               className="mt-1 min-h-11 w-full rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
             />

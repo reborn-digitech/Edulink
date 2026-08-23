@@ -46,6 +46,8 @@ export type Assessment = {
   seriesId: string;
   seriesName: string;
   seriesKind: ExamKind;
+  /** The term the exam reports into, when the school has one. */
+  termId: string | null;
   subject: string;
   dateKey: string;
   /** How many of the class have a mark — a teacher should not report on an unmarked test. */
@@ -186,7 +188,7 @@ export async function assessmentsFor(
             subject: true,
             dateKey: true,
             position: true,
-            series: { select: { id: true, name: true, kind: true, createdAt: true } },
+            series: { select: { id: true, name: true, kind: true, createdAt: true, termId: true } },
           },
         },
       },
@@ -204,6 +206,7 @@ export async function assessmentsFor(
       seriesId: a.examSlot!.series.id,
       seriesName: a.examSlot!.series.name,
       seriesKind: a.examSlot!.series.kind as ExamKind,
+      termId: a.examSlot!.series.termId,
       subject: a.examSlot!.subject,
       dateKey: a.examSlot!.dateKey,
       gradedCount: a._count.grades,
@@ -234,6 +237,12 @@ export type GenerateInput = {
   assignmentIds: string[];
   fromDateKey?: string;
   toDateKey?: string;
+  /**
+   * Built FROM a term: the term's name is the title, its dates the
+   * attendance window, and the card carries the term. A title or window
+   * typed alongside is ignored — the term is the authority on both.
+   */
+  termId?: string | null;
 };
 
 /** ⚠ `errorKey`, not a sentence — the leave.ts pattern. The action boundary
@@ -253,7 +262,12 @@ export async function generateCards(
 ): Promise<GenerateResult> {
   await assertMayWriteCards(ctx, classId);
 
-  const title = input.title.trim().slice(0, 120);
+  const term = input.termId
+    ? await db.term.findFirst({ where: { id: input.termId, schoolId: ctx.schoolId! }, select: { id: true, name: true, startDate: true, endDate: true } })
+    : null;
+  if (input.termId && !term) return { ok: false, errorKey: "terms.notFound" };
+
+  const title = (term ? term.name : input.title).trim().slice(0, 120);
   if (title.length < 2) return { ok: false, errorKey: "reportCards.giveName" };
   if (input.assignmentIds.length === 0) {
     return { ok: false, errorKey: "reportCards.chooseOne" };
@@ -306,9 +320,10 @@ export async function generateCards(
     orderBy: { startDate: "desc" },
     select: { startDate: true },
   });
-  const toDateKey = input.toDateKey ?? lastPaper;
-  const fromDateKey =
-    input.fromDateKey ??
+  const toDateKey = term ? term.endDate.toISOString().slice(0, 10) : (input.toDateKey ?? lastPaper);
+  const fromDateKey = term
+    ? term.startDate.toISOString().slice(0, 10)
+    : input.fromDateKey ??
     (yearOfPapers && yearOfPapers.startDate.toISOString().slice(0, 10) <= firstPaper
       ? yearOfPapers.startDate.toISOString().slice(0, 10)
       : addDaysToKey(firstPaper, -DEFAULT_WINDOW_DAYS));
@@ -428,6 +443,7 @@ export async function generateCards(
       classId,
       studentMembershipId: row.studentMembershipId,
       title,
+      termId: term?.id ?? null,
       status: "DRAFT",
       fromDateKey,
       toDateKey,

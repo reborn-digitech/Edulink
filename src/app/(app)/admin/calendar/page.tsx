@@ -11,6 +11,8 @@ import { Card, CardHeader, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { YearPanel } from "./year-panel";
+import { TermsPanel } from "./terms-panel";
+import { termsOfYear } from "@/lib/terms";
 import { EntryForm } from "./entry-form";
 import { EntryList } from "./entry-list";
 import { getT } from "@/lib/i18n/server";
@@ -51,6 +53,7 @@ export default async function CalendarPage() {
   ]);
 
   const current = years.find((year) => year.isCurrent) ?? null;
+  const terms = current ? await termsOfYear(ctx.schoolId!, current.id, school.timezone) : [];
 
   // Staff leave for the next term or so. STAFF-ONLY BY CONSTRUCTION: it comes
   // from LeaveRequest, which no student or parent page reads, rather than from a
@@ -183,6 +186,16 @@ export default async function CalendarPage() {
               }))}
               today={today}
             />
+            {current && (
+              <div className="mt-6 border-t border-border pt-5">
+                <TermsPanel
+                  academicYearId={current.id}
+                  yearStartKey={current.startDate.toISOString().slice(0, 10)}
+                  yearEndKey={current.endDate.toISOString().slice(0, 10)}
+                  terms={terms}
+                />
+              </div>
+            )}
           </CardBody>
         </Card>
       </section>

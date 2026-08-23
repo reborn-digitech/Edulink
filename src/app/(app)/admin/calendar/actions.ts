@@ -10,6 +10,7 @@ import {
   type HolidayKind,
 } from "@/lib/holidays";
 import { createAcademicYear, closeAcademicYear } from "@/lib/academic-year";
+import { createTerm, deleteTerm } from "@/lib/terms";
 
 /**
  * The school calendar and the academic year, from the admin's side.
@@ -149,6 +150,35 @@ export async function rollOverAcademicYear(
     revalidatePath("/student");
     revalidatePath("/student/profile");
     return { ok: true, ...result };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export async function addTerm(
+  academicYearId: string,
+  input: { name: string; startDateKey: string; endDateKey: string },
+): Promise<ActionResult & { termId?: string }> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const result = await createTerm(ctx, academicYearId, input);
+    if (!result.ok) return { ok: false, errorKey: result.errorKey };
+    refresh();
+    revalidatePath("/admin/exams");
+    return { ok: true, termId: result.termId };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export async function removeTerm(termId: string): Promise<ActionResult> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const result = await deleteTerm(ctx, termId);
+    if (!result.ok) return { ok: false, errorKey: result.errorKey };
+    refresh();
+    revalidatePath("/admin/exams");
+    return { ok: true };
   } catch (error) {
     return failure(error);
   }

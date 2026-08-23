@@ -122,6 +122,7 @@ model School {
   meetingSlots         MeetingSlot[]
   meetingBookings      MeetingBooking[]
 
+  terms           Term[]
   @@index([code])
 }
 
@@ -470,6 +471,8 @@ model ReportCard {
   classId             String
   studentMembershipId String
   academicYearId      String?
+  /// The term the card reports, when built from one; its name is the title.
+  termId              String?
 
   /// "Term 1", "Half-yearly 2026" — whatever the school calls it. Unique per
   /// child per class, so pressing generate twice updates rather than duplicates.
@@ -511,6 +514,7 @@ model ReportCard {
   class     Class            @relation(fields: [classId], references: [id], onDelete: Cascade)
   student   Membership       @relation("ReportCardStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
   createdBy Membership?      @relation("ReportCardAuthor", fields: [createdByMembershipId], references: [id], onDelete: SetNull)
+  term      Term?            @relation(fields: [termId], references: [id], onDelete: SetNull)
   items     ReportCardItem[]
 
   @@unique([classId, studentMembershipId, title])
@@ -801,6 +805,8 @@ model ExamSeries {
   /// card is built from these, and a reader should be told which weight of
   /// paper a mark came from without decoding the name.
   kind       String @default("UNIT_TEST")
+  /// The term this round reports into, when the school has terms.
+  termId     String?
 
   publishedAt DateTime?
   archivedAt  DateTime?
@@ -812,6 +818,7 @@ model ExamSeries {
 
   school    School      @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   createdBy Membership? @relation("ExamSeriesAuthor", fields: [createdByMembershipId], references: [id], onDelete: SetNull)
+  term      Term?       @relation(fields: [termId], references: [id], onDelete: SetNull)
   slots     ExamSlot[]
 
   @@unique([schoolId, gradeLevel, name])
@@ -1802,9 +1809,34 @@ model AcademicYear {
   school       School        @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   holidays     Holiday[]
   earnedBadges EarnedBadge[]
+  terms        Term[]
 
   @@unique([schoolId, name])
   @@index([schoolId, isCurrent])
+}
+
+/// A term inside an academic year — "Term 1", "Half-yearly" — the unit a
+/// school reports in. Exam series and report cards hang off it; a date falls
+/// in at most one term of a year, which the library enforces (no overlaps,
+/// inside the year). A school that reports once a year simply has none.
+model Term {
+  id             String   @id @default(cuid())
+  schoolId       String
+  academicYearId String
+  name           String
+  startDate      DateTime
+  endDate        DateTime
+  /// Display order within the year; the library keeps it equal to the start order.
+  position       Int      @default(0)
+  createdAt      DateTime @default(now())
+
+  school       School       @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  academicYear AcademicYear @relation(fields: [academicYearId], references: [id], onDelete: Cascade)
+  examSeries   ExamSeries[]
+  reportCards  ReportCard[]
+
+  @@unique([academicYearId, name])
+  @@index([schoolId, startDate])
 }
 
 /// A day the school is shut, or otherwise not teaching.

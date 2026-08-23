@@ -3,6 +3,7 @@ import { ExamIcon, PlusIcon, WarningIcon, CalendarCheckIcon } from "@phosphor-ic
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { listSeries } from "@/lib/exams";
+import { currentTerms } from "@/lib/terms";
 import { formatDateKey } from "@/lib/dates";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -38,13 +39,15 @@ export default async function AdminExamsPage({
   const t = await getT();
   const { error } = await searchParams;
 
-  const [series, gradeRows] = await Promise.all([
+  const school = await db.school.findUniqueOrThrow({ where: { id: ctx.schoolId! }, select: { timezone: true } });
+  const [series, gradeRows, terms] = await Promise.all([
     listSeries(ctx),
     db.class.findMany({
       where: { schoolId: ctx.schoolId!, archivedAt: null, gradeLevel: { not: null } },
       select: { gradeLevel: true },
       distinct: ["gradeLevel"],
     }),
+    currentTerms(ctx.schoolId!, school.timezone),
   ]);
   const grades = gradeRows
     .map((c) => c.gradeLevel!)
@@ -113,6 +116,17 @@ export default async function AdminExamsPage({
                 ))}
               </select>
             </label>
+            {terms.length > 0 && (
+              <label className="block text-sm">
+                <span className="mb-1 block font-medium text-fg">{t("terms.examTerm")}</span>
+                <select name="termId" className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-fg" defaultValue={terms.find((x) => x.current)?.id ?? ""}>
+                  <option value="">{t("terms.examNoTerm")}</option>
+                  {terms.map((term) => (
+                    <option key={term.id} value={term.id}>{term.name}</option>
+                  ))}
+                </select>
+              </label>
+            )}
             <div className="sm:col-span-3">
               <Button type="submit">{t("exams.createSeries")}</Button>
             </div>
@@ -132,7 +146,7 @@ export default async function AdminExamsPage({
           <Card key={s.id}>
             <CardHeader
               icon={<CalendarCheckIcon weight="duotone" className="size-5" />}
-              title={`${s.name} · ${t(EXAM_KIND_KEY[s.kind as ExamKind])} · ${t("practice.classN", { n: s.gradeLevel })}`}
+              title={[s.name, t(EXAM_KIND_KEY[s.kind as ExamKind]), t("practice.classN", { n: s.gradeLevel }), s.term?.name].filter(Boolean).join(" · ")}
               description={
                 s.publishedAt ? t("exams.publishedHint") : t("exams.draftHint")
               }

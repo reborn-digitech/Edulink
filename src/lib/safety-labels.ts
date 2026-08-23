@@ -127,6 +127,8 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "remark.create": "audit.remarkCreate",
   "student.join": "audit.studentJoin",
   "student.admit": "audit.studentAdmit",
+  "term.create": "audit.termCreate",
+  "term.delete": "audit.termDelete",
   "intake.run": "audit.intakeRun",
   "parent.signup": "audit.parentSignup",
   "parent.claim": "audit.parentClaim",

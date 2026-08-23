@@ -35,6 +35,7 @@ export async function createSeriesAction(formData: FormData): Promise<void> {
       name: String(formData.get("name") ?? ""),
       gradeLevel: String(formData.get("gradeLevel") ?? ""),
       kind: String(formData.get("kind") ?? ""),
+      termId: String(formData.get("termId") ?? "") || null,
     }).then(() => undefined),
   );
 }

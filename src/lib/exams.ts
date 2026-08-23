@@ -1,5 +1,6 @@
 import "server-only";
 import { db } from "./db";
+import { termForDate } from "./terms";
 import { audit } from "./audit";
 import { AccessError } from "./tenancy";
 import { isDateKey } from "./dates";
@@ -42,13 +43,14 @@ export async function listSeries(ctx: ActiveContext) {
     orderBy: [{ gradeLevel: "asc" }, { createdAt: "desc" }],
     include: {
       slots: { orderBy: [{ dateKey: "asc" }, { position: "asc" }] },
+      term: { select: { id: true, name: true } },
     },
   });
 }
 
 export async function createSeries(
   ctx: ActiveContext,
-  input: { name: string; gradeLevel: string; kind?: string },
+  input: { name: string; gradeLevel: string; kind?: string; termId?: string | null },
 ): Promise<string> {
   const { schoolId } = requireAdmin(ctx);
   const name = input.name.trim().slice(0, 120);
@@ -76,8 +78,18 @@ export async function createSeries(
     }
   }
 
+  // A term, if named; verified to be this school's. An unnamed term is
+  // filled in when the first paper is dated (see addSlot) — the term the
+  // paper falls in is the term the round reports into.
+  let termId: string | null = null;
+  if (input.termId) {
+    const term = await db.term.findFirst({ where: { id: input.termId, schoolId }, select: { id: true } });
+    if (!term) throw new AccessError("access.termNotFound", "NOT_FOUND");
+    termId = term.id;
+  }
+
   const series = await db.examSeries.create({
-    data: { schoolId, name, gradeLevel, kind, createdByMembershipId: ctx.membershipId },
+    data: { schoolId, name, gradeLevel, kind, termId, createdByMembershipId: ctx.membershipId },
     select: { id: true },
   });
   await audit({
@@ -99,7 +111,7 @@ export async function addSlot(
   const { schoolId } = requireAdmin(ctx);
   const series = await db.examSeries.findFirst({
     where: { id: seriesId, schoolId, archivedAt: null },
-    select: { id: true, _count: { select: { slots: true } } },
+    select: { id: true, termId: true, _count: { select: { slots: true } } },
   });
   if (!series) throw new AccessError("access.examNotFound", "NOT_FOUND");
 
@@ -134,6 +146,12 @@ export async function addSlot(
       position: series._count.slots,
     },
   });
+  // A round with no term yet takes the term its first paper falls in.
+  if (!series.termId) {
+    const term = await termForDate(schoolId, input.dateKey);
+    if (term) await db.examSeries.update({ where: { id: series.id }, data: { termId: term.id } });
+  }
+
   await audit({
     schoolId,
     actorUserId: ctx.user.id,

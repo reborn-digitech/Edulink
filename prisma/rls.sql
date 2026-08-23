@@ -622,6 +622,15 @@ CREATE POLICY "AcademicYear_tenant_isolation" ON "AcademicYear"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- Term
+ALTER TABLE "Term" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "Term" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Term_tenant_isolation" ON "Term";
+DROP POLICY IF EXISTS "Term_readable" ON "Term";
+CREATE POLICY "Term_tenant_isolation" ON "Term"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- Holiday
 ALTER TABLE "Holiday" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "Holiday" FORCE ROW LEVEL SECURITY;

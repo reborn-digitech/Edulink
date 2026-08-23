@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { currentTerms } from "@/lib/terms";
 import { nameCarriesSection } from "@/lib/codes";
 import Link from "next/link";
 import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
@@ -44,9 +45,10 @@ export default async function ReportCardsPage({
     throw error;
   }
 
-  const [assessments, all] = await Promise.all([
+  const [assessments, all, terms] = await Promise.all([
     assessmentsFor(ctx, classId),
     cardsForClass(ctx, classId),
+    currentTerms(ctx.schoolId!),
   ]);
 
   const titles = [...new Set(all.map((c) => c.title))];
@@ -94,6 +96,7 @@ export default async function ReportCardsPage({
         classId={classId}
         assessments={assessments}
         existingTitles={titles}
+        terms={terms.map((x) => ({ id: x.id, name: x.name, current: x.current }))}
         selectedTitle={selected}
         cards={cards.map((card) => ({
           id: card.id,

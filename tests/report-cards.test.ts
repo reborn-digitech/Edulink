@@ -458,6 +458,31 @@ describe("generating", () => {
   });
 });
 
+describe("built from a term", () => {
+  it("⚠ the term fixes the title and the attendance window, and the card carries it", async () => {
+    const year = await db.academicYear.create({
+      data: { schoolId: riversideId, name: "ZZ RC TERMS 1998", startDate: new Date("1998-06-01T00:00:00Z"), endDate: new Date("1999-04-30T00:00:00Z") },
+    });
+    try {
+      const term = await db.term.create({
+        data: { schoolId: riversideId, academicYearId: year.id, name: "ZZ Half-yearly", startDate: new Date("1998-06-01T00:00:00Z"), endDate: new Date("1998-11-30T00:00:00Z") },
+      });
+      await mark(assignmentA, 80_000);
+      const result = await generateCards(lead, classId, { title: "typed title is ignored", assignmentIds: [assignmentA], termId: term.id });
+      expect(result.ok).toBe(true);
+      const card = await db.reportCard.findFirstOrThrow({ where: { classId, termId: term.id } });
+      expect(card.title).toBe("ZZ Half-yearly");
+      expect(card.fromDateKey).toBe("1998-06-01");
+      expect(card.toDateKey).toBe("1998-11-30");
+      // Somebody else's term id is refused, not silently dropped.
+      expect(await generateCards(lead, classId, { title: "x", assignmentIds: [assignmentA], termId: "not-a-term" })).toMatchObject({ ok: false, errorKey: "terms.notFound" });
+      await db.reportCard.deleteMany({ where: { classId, termId: term.id } });
+    } finally {
+      await db.academicYear.delete({ where: { id: year.id } });
+    }
+  });
+});
+
 describe("⚠ a published card keeps saying what it said", () => {
   async function publishOne() {
     await mark(assignmentA, 80_000);
