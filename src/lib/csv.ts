@@ -267,3 +267,188 @@ function reparseHeaderless(input: string): { row: CsvRow; line: number }[] {
     line: (lineNumbers[index] ?? index + 2) - 1,
   }));
 }
+
+/* -------------------------------------------------------------------------- */
+/* Admissions intake                                                           */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * One pupil off an admission list. Only the name is required: a school's
+ * register of new admissions is a name, a date of birth, a class and a
+ * guardian, and any of the last three may be missing on the day — the
+ * office fills them in later from the directory, which already knows how.
+ */
+export type IntakeRow = {
+  line: number;
+  name: string;
+  /** YYYY-MM-DD, already validated; null when the cell was empty. */
+  birthdateKey: string | null;
+  className: string | null;
+  pupilEmail: string | null;
+  guardianEmail: string | null;
+  guardianName: string | null;
+  relation: "PARENT" | "GUARDIAN" | "OTHER";
+};
+
+export type IntakeCsvResult = {
+  valid: IntakeRow[];
+  problems: InviteCsvResult["problems"];
+  /** The headers the file was read with — shown back so a silent mis-mapping is visible. */
+  recognised: { name: boolean; birthdate: boolean; className: boolean; pupilEmail: boolean; guardianEmail: boolean };
+};
+
+const INTAKE_HEADERS = {
+  name: ["name", "pupil", "student", "full name", "pupil name", "student name", "child"],
+  birthdate: ["dob", "date of birth", "birthdate", "birth date", "born", "d.o.b.", "d.o.b"],
+  className: ["class", "grade", "section", "form", "class name"],
+  pupilEmail: ["pupil email", "student email", "email", "email address", "e-mail"],
+  guardianEmail: ["guardian email", "parent email", "guardian", "parent", "parent/guardian email", "guardian e-mail", "parent e-mail"],
+  guardianName: ["guardian name", "parent name", "parent/guardian name", "father", "mother"],
+  relation: ["relation", "relationship", "guardian relation"],
+} as const;
+
+/**
+ * A date the way an office types it: dd/mm/yyyy (the format every date in
+ * this app is shown in), or ISO yyyy-mm-dd, which is what a spreadsheet
+ * exports. Anything else is a problem on that row, not a guess — a birthday
+ * is what a parent proves a claim with, and 03/04 read the American way
+ * locks a real parent out.
+ */
+export function parseIntakeDate(raw: string): string | null {
+  const text = raw.trim();
+  if (!text) return null;
+  let y: number, m: number, d: number;
+  let match = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(text);
+  if (match) {
+    [y, m, d] = [Number(match[1]), Number(match[2]), Number(match[3])];
+  } else {
+    match = /^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{4})$/.exec(text);
+    if (!match) return null;
+    [d, m, y] = [Number(match[1]), Number(match[2]), Number(match[3])];
+  }
+  if (m < 1 || m > 12 || d < 1 || d > 31) return null;
+  const date = new Date(Date.UTC(y, m - 1, d));
+  if (date.getUTCMonth() !== m - 1 || date.getUTCDate() !== d) return null; // 31/02
+  return `${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+}
+
+/**
+ * Maps an admission list onto intake rows.
+ *
+ * HEADERS ARE REQUIRED HERE, unlike the invite paste: with seven optional
+ * columns there is no sensible positional fallback, and guessing which
+ * column is the child's address and which the parent's is how a child gets
+ * their parent's invitation. A file with no recognisable name column is
+ * reported as such rather than read as names.
+ */
+export function parseIntakeCsv(input: string, today: string): IntakeCsvResult {
+  const { headers, rows, lineNumbers } = parseCsv(input);
+  const key = (aliases: readonly string[]) => headers.find((h) => aliases.includes(h));
+  const col = {
+    name: key(INTAKE_HEADERS.name),
+    birthdate: key(INTAKE_HEADERS.birthdate),
+    className: key(INTAKE_HEADERS.className),
+    // "email" alone means the pupil's only when a separate guardian column exists
+    // to disambiguate it; a lone "email" column on an admission list is far more
+    // often the parent's. Ask for "pupil email" to mean the child.
+    pupilEmail: key(INTAKE_HEADERS.pupilEmail),
+    guardianEmail: key(INTAKE_HEADERS.guardianEmail),
+    guardianName: key(INTAKE_HEADERS.guardianName),
+    relation: key(INTAKE_HEADERS.relation),
+  };
+  if (col.pupilEmail && ["email", "email address", "e-mail"].includes(col.pupilEmail) && !col.guardianEmail) {
+    col.guardianEmail = col.pupilEmail;
+    col.pupilEmail = undefined;
+  }
+
+  const recognised = {
+    name: !!col.name,
+    birthdate: !!col.birthdate,
+    className: !!col.className,
+    pupilEmail: !!col.pupilEmail,
+    guardianEmail: !!col.guardianEmail,
+  };
+  const valid: IntakeRow[] = [];
+  const problems: IntakeCsvResult["problems"] = [];
+  if (!col.name) {
+    if (rows.length > 0 || headers.length > 0) problems.push({ line: 1, value: headers.join(", "), reasonKey: "intake.noNameColumn" });
+    return { valid, problems, recognised };
+  }
+
+  const seenEmails = new Map<string, number>();
+  const seenPeople = new Map<string, number>();
+
+  rows.forEach((row, index) => {
+    const line = lineNumbers[index] ?? index + 2;
+    const cell = (k: string | undefined) => (k ? (row[k] ?? "").trim() : "");
+    const name = cell(col.name).slice(0, 120);
+    if (!name) {
+      problems.push({ line, value: "", reasonKey: "intake.noName" });
+      return;
+    }
+
+    const dobRaw = cell(col.birthdate);
+    const birthdateKey = parseIntakeDate(dobRaw);
+    if (dobRaw && !birthdateKey) {
+      problems.push({ line, value: `${name} · ${dobRaw}`, reasonKey: "intake.badDate" });
+      return;
+    }
+    if (birthdateKey && birthdateKey > today) {
+      problems.push({ line, value: `${name} · ${dobRaw}`, reasonKey: "intake.dateInFuture" });
+      return;
+    }
+
+    const pupilEmail = cell(col.pupilEmail).toLowerCase() || null;
+    if (pupilEmail && !EMAIL_RE.test(pupilEmail)) {
+      problems.push({ line, value: pupilEmail, reasonKey: "invites.invalidEmail" });
+      return;
+    }
+    const guardianEmail = cell(col.guardianEmail).toLowerCase() || null;
+    if (guardianEmail && !EMAIL_RE.test(guardianEmail)) {
+      problems.push({ line, value: guardianEmail, reasonKey: "intake.badGuardianEmail" });
+      return;
+    }
+    if (pupilEmail && guardianEmail && pupilEmail === guardianEmail) {
+      problems.push({ line, value: pupilEmail, reasonKey: "intake.sameAddress" });
+      return;
+    }
+    if (pupilEmail) {
+      const first = seenEmails.get(pupilEmail);
+      if (first !== undefined) {
+        problems.push({ line, value: pupilEmail, reasonKey: "invites.duplicateOfLine", reasonVars: { line: first } });
+        return;
+      }
+      seenEmails.set(pupilEmail, line);
+    }
+    // The same child twice — same name and birthday — is a pasted-twice row,
+    // and two accounts for one child is the mess the office least wants.
+    if (birthdateKey) {
+      const personKey = `${name.toLowerCase()}|${birthdateKey}`;
+      const first = seenPeople.get(personKey);
+      if (first !== undefined) {
+        problems.push({ line, value: name, reasonKey: "invites.duplicateOfLine", reasonVars: { line: first } });
+        return;
+      }
+      seenPeople.set(personKey, line);
+    }
+
+    const relRaw = cell(col.relation).toUpperCase();
+    const relation =
+      relRaw === "GUARDIAN" ? "GUARDIAN"
+      : relRaw === "OTHER" ? "OTHER"
+      : "PARENT";
+
+    valid.push({
+      line,
+      name,
+      birthdateKey,
+      className: cell(col.className).slice(0, 80) || null,
+      pupilEmail,
+      guardianEmail,
+      guardianName: cell(col.guardianName).slice(0, 120) || null,
+      relation,
+    });
+  });
+
+  return { valid, problems, recognised };
+}

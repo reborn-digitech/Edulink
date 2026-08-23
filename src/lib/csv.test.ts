@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { parseCsv, parseInviteCsv, toCsv, toCsvValue } from "./csv";
+import { parseCsv, parseInviteCsv, parseIntakeCsv, toCsv, toCsvValue } from "./csv";
 
 /**
  * Expected values are written out by hand, never derived by running the parser
@@ -182,5 +182,58 @@ describe("parseInviteCsv — one email per line", () => {
     const result = parseInviteCsv("Priya Nair,p@school.test,Maths\nnot-an-email\n");
     expect(result.valid).toMatchObject([{ email: "p@school.test", name: "Priya Nair", subjects: ["Maths"] }]);
     expect(result.problems.map((p) => p.reasonKey)).toEqual(["invites.invalidEmail"]);
+  });
+});
+
+describe("parseIntakeCsv — an admission list", () => {
+  const TODAY = "2026-08-22";
+
+  it("reads name, date of birth (dd/mm/yyyy), class and guardian by header", () => {
+    const result = parseIntakeCsv(
+      "name,date of birth,class,guardian email,guardian name,relation\n" +
+        'Aarav Patel,14/06/2019,Class 1,rekha@example.com,Rekha Patel,parent\n' +
+        '"Joshi, Meera",2019-11-02,Class 1,,,\n',
+      TODAY,
+    );
+    expect(result.problems).toEqual([]);
+    expect(result.valid).toMatchObject([
+      { line: 2, name: "Aarav Patel", birthdateKey: "2019-06-14", className: "Class 1", guardianEmail: "rekha@example.com", guardianName: "Rekha Patel", relation: "PARENT" },
+      { line: 3, name: "Joshi, Meera", birthdateKey: "2019-11-02", className: "Class 1", guardianEmail: null, guardianName: null },
+    ]);
+    expect(result.recognised).toMatchObject({ name: true, birthdate: true, className: true, guardianEmail: true, pupilEmail: false });
+  });
+
+  it("⚠ refuses a file with no name column rather than guessing", () => {
+    const result = parseIntakeCsv("Aarav Patel,14/06/2019\nMeera Joshi,02/11/2019\n", TODAY);
+    expect(result.valid).toEqual([]);
+    expect(result.problems.map((p) => p.reasonKey)).toEqual(["intake.noNameColumn"]);
+  });
+
+  it("⚠ a date it cannot read is a problem on that row, never a guess", () => {
+    const result = parseIntakeCsv("name,dob\nA,31/02/2019\nB,June 2019\nC,14/06/2031\nD,\n", TODAY);
+    expect(result.valid.map((r) => r.name)).toEqual(["D"]);
+    expect(result.problems.map((p) => p.reasonKey)).toEqual(["intake.badDate", "intake.badDate", "intake.dateInFuture"]);
+  });
+
+  it("⚠ a lone \"email\" column on an admission list is the guardian's, not the child's", () => {
+    const result = parseIntakeCsv("name,email\nAarav,rekha@example.com\n", TODAY);
+    expect(result.valid[0]).toMatchObject({ guardianEmail: "rekha@example.com", pupilEmail: null });
+    const both = parseIntakeCsv("name,pupil email,parent email\nAarav,aarav@example.com,rekha@example.com\n", TODAY);
+    expect(both.valid[0]).toMatchObject({ guardianEmail: "rekha@example.com", pupilEmail: "aarav@example.com" });
+  });
+
+  it("⚠ the same child twice, and a shared address, are reported", () => {
+    const result = parseIntakeCsv(
+      "name,dob,pupil email,guardian email\n" +
+        "Aarav Patel,14/06/2019,,\n" +
+        "aarav patel,14/06/2019,,\n" +
+        "Meera,,same@example.com,same@example.com\n",
+      TODAY,
+    );
+    expect(result.valid).toHaveLength(1);
+    expect(result.problems).toMatchObject([
+      { line: 3, reasonKey: "invites.duplicateOfLine", reasonVars: { line: 2 } },
+      { line: 4, reasonKey: "intake.sameAddress" },
+    ]);
   });
 });

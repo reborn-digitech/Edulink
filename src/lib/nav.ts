@@ -54,7 +54,7 @@ export const NAV: Record<Role, NavItem[]> = {
   ADMIN: [
     { href: "/admin", labelKey: "nav.overview", icon: "house", primary: true },
     // Invites are a tab of People: one door for "who is in this school".
-    { href: "/admin/people", labelKey: "nav.people", icon: "users", primary: true, prefix: true, also: ["/admin/invites"] },
+    { href: "/admin/people", labelKey: "nav.people", icon: "users", primary: true, prefix: true, also: ["/admin/invites", "/admin/intake"] },
     { href: "/admin/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true, also: ["/admin/promotion"] },
     { href: "/admin/timetable", labelKey: "nav.timetable", icon: "clock", primary: true, prefix: true },
     { href: "/admin/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true },
@@ -182,6 +182,7 @@ export const PRIMARY_ACTION: Record<Role, QuickAction | null> = {
 export const QUICK_ACTIONS: Record<Role, QuickAction[]> = {
   ADMIN: [
     { href: "/admin/invites/new", labelKey: "action.inviteTeacher", icon: "userPlus", descriptionKey: "action.inviteTeacherHint" },
+    { href: "/admin/intake", labelKey: "action.admitPupils", icon: "userPlus", descriptionKey: "action.admitPupilsHint" },
     { href: "/admin/classes/new", labelKey: "action.createClass", icon: "plus", descriptionKey: "action.createClassHint" },
     { href: "/admin/timetable", labelKey: "action.buildTimetable", icon: "clock", descriptionKey: "action.buildTimetableHint" },
     { href: "/admin/exams", labelKey: "action.scheduleExam", icon: "clipboard", descriptionKey: "action.scheduleExamHint" },

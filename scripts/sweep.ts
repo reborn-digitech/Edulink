@@ -863,8 +863,10 @@ async function staffingAndDuty(schoolId: string) {
   if (adminActor) {
     await check(adminActor, `/attendance/history?classId=${klass.id}`, 200, "an admin reads any class's past registers");
     await check(adminActor, "/admin/promotion", 200, "…and plans the year-end move");
+    await check(adminActor, "/admin/intake", 200, "…and admits pupils from a list");
   }
   await check(teacherActor, "/admin/promotion", 307, "⚠ a teacher does not move the school up");
+  await check(teacherActor, "/admin/intake", 307, "⚠ …nor admit pupils");
   if (adminActor) {
     await check(teacherActor, `/admin/classes/${klass.id}`, 307, "…but not the staffing page");
   }
@@ -1341,6 +1343,7 @@ async function leaveAndPrincipal(schoolId: string) {
     await check(head, "/admin/people", 307, "⚠ …nor run the directory");
     await check(head, "/admin/classes/new", 307, "⚠ …nor create classes");
     await check(head, "/admin/promotion", 307, "⚠ …nor move the school up a year");
+    await check(head, "/admin/intake", 307, "⚠ …nor admit pupils from a list");
 
     const anyClass = await db.class.findFirst({
       where: { schoolId, archivedAt: null },

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { DownloadSimpleIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
+import { DownloadSimpleIcon, UserPlusIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
 import type { Prisma } from "@prisma/client";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
@@ -166,9 +166,14 @@ export default async function DirectoryPage({
               .join(" · ") || t("people.nobodyYet")}
           </p>
         </div>
-        <Button asChild variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
-          <a href={exportHref}>{t("people.exportCsv")}</a>
-        </Button>
+        <div className="flex flex-wrap gap-2">
+          <Button asChild variant="secondary" icon={<UserPlusIcon weight="bold" />}>
+            <Link href="/admin/intake">{t("intake.fromPeople")}</Link>
+          </Button>
+          <Button asChild variant="secondary" icon={<DownloadSimpleIcon weight="bold" />}>
+            <a href={exportHref}>{t("people.exportCsv")}</a>
+          </Button>
+        </div>
       </div>
 
       <TabBar
