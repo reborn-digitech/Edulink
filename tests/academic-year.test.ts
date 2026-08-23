@@ -8,7 +8,7 @@ import {
   createAcademicYear,
   currentAcademicYear,
 } from "@/lib/academic-year";
-import { getBadges } from "@/lib/badges";
+import { getBadges, getBadgesForMany } from "@/lib/badges";
 import { addDaysToKey, todayKey } from "@/lib/dates";
 import type { ActiveContext } from "@/lib/session";
 
@@ -284,10 +284,40 @@ describe("closing a year", () => {
     await closeAcademicYear(admin, first, second);
     const once = await badgeHistory(schoolId, subjectMembershipId);
 
-    await closeAcademicYear(admin, first, second);
+    const again = await closeAcademicYear(admin, first, second);
     const twice = await badgeHistory(schoolId, subjectMembershipId);
 
     expect(twice.length).toBe(once.length);
+    // And it SAYS so: the count is rows this run added, not rows that exist.
+    expect(again.badgesArchived).toBe(0);
+  });
+
+  it("⚠ the batch the close reads is the profile the child sees — same function, list of one", async () => {
+    // The snapshot now reads the whole school in chunks. If the batched read
+    // and the single read ever disagreed, the archive would quietly record a
+    // different year from the one the child watched.
+    const pupils = await db.membership.findMany({
+      where: { schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null },
+      select: { id: true },
+    });
+    const ids = pupils.map((p) => p.id);
+    expect(ids).toContain(subjectMembershipId);
+
+    const batch = await getBadgesForMany(schoolId, ids, timezone);
+    expect(batch.size).toBe(ids.length);
+    for (const id of ids.slice(0, 25).concat(subjectMembershipId)) {
+      expect(batch.get(id)).toEqual(await getBadges(schoolId, id, timezone));
+    }
+    expect(batch.get(subjectMembershipId)!.find((b) => b.id === "here-all-week")!.earned).toBe(true);
+  });
+
+  it("⚠ archives every pupil in the school, not only the first chunk", async () => {
+    const { first, second } = await twoYears();
+    const pupils = await db.membership.count({ where: { schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null } });
+    const result = await closeAcademicYear(admin, first, second);
+    expect(result.studentsArchived).toBe(pupils);
+    // The subject's clean month is in there, whichever chunk it landed in.
+    expect((await badgeHistory(schoolId, subjectMembershipId)).map((a) => a.badgeId)).toContain("here-all-week");
   });
 
   it("⚠ refuses everyone who is not an admin", async () => {

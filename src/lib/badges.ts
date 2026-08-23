@@ -1,10 +1,7 @@
 import "server-only";
 import { db } from "./db";
-import {
-  getAttendanceSummary,
-  computeStreak,
-  currentAttendanceRate,
-} from "./attendance";
+import { computeStreak, currentAttendanceRate } from "./attendance";
+import type { AttendanceStatus } from "./constants";
 import { addDaysToKey, todayKey } from "./dates";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 
@@ -67,6 +64,44 @@ export async function getBadges(
   membershipId: string,
   timezone: string,
 ): Promise<Badge[]> {
+  const all = await getBadgesForMany(schoolId, [membershipId], timezone);
+  return all.get(membershipId) ?? assemble(EMPTY_FACTS);
+}
+
+/** What the badges are computed from, per pupil. */
+type BadgeFacts = {
+  days: { dateKey: string; status: AttendanceStatus }[];
+  handedIn: number;
+  gradedCount: number;
+  bestPercent: number;
+  approvedPosts: number;
+};
+
+const EMPTY_FACTS: BadgeFacts = { days: [], handedIn: 0, gradedCount: 0, bestPercent: 0, approvedPosts: 0 };
+
+/**
+ * The same badges for MANY pupils in a handful of queries.
+ *
+ * WHY A BATCH EXISTS. Closing the academic year snapshots every pupil's badges,
+ * and doing that one pupil at a time meant five queries per child: at 1,500
+ * pupils the close ran for half a minute inside one request, which is long
+ * enough for an admin to assume it failed and press again. Asked for the whole
+ * school at once, the same facts are five queries per chunk of pupils, and the
+ * single-pupil `getBadges` above is this with a list of one — so the profile a
+ * child looks at and the copy the year close writes down can never disagree,
+ * because they are the same function.
+ *
+ * Facts are gathered per pupil, then handed to `assemble`, which is the only
+ * place a badge's rule is written.
+ */
+export async function getBadgesForMany(
+  schoolId: string,
+  membershipIds: string[],
+  timezone: string,
+): Promise<Map<string, Badge[]>> {
+  const result = new Map<string, Badge[]>();
+  if (membershipIds.length === 0) return result;
+
   const today = todayKey(timezone);
 
   /**
@@ -92,28 +127,62 @@ export async function getBadges(
     ? year.startDate.toISOString().slice(0, 10)
     : addDaysToKey(today, -60);
 
-  const [attendance, handedIn, gradedCount, approvedPosts, bestPercent] = await Promise.all([
-    getAttendanceSummary(schoolId, membershipId, windowStart, today),
-    db.submission.count({
-      where: { studentMembershipId: membershipId, submittedAt: { not: null } },
+  const facts = new Map<string, BadgeFacts>();
+  const factsFor = (id: string): BadgeFacts => {
+    let f = facts.get(id);
+    if (!f) {
+      f = { ...EMPTY_FACTS, days: [] };
+      facts.set(id, f);
+    }
+    return f;
+  };
+  for (const id of membershipIds) factsFor(id);
+
+  const [records, submissions, grades, posts] = await Promise.all([
+    db.attendanceRecord.findMany({
+      where: {
+        schoolId,
+        studentMembershipId: { in: membershipIds },
+        session: { dateKey: { gte: windowStart, lte: today } },
+      },
+      select: { studentMembershipId: true, status: true, session: { select: { dateKey: true } } },
     }),
-    db.grade.count({ where: { studentMembershipId: membershipId, scoreMilli: { not: null } } }),
-    db.post.count({
-      where: { authorMembershipId: membershipId, status: "APPROVED" },
+    db.submission.groupBy({
+      by: ["studentMembershipId"],
+      where: { studentMembershipId: { in: membershipIds }, submittedAt: { not: null } },
+      _count: { _all: true },
     }),
-    db.grade
-      .findMany({
-        where: { studentMembershipId: membershipId, scoreMilli: { not: null } },
-        include: { assignment: { select: { pointsMilli: true } } },
-      })
-      .then((grades) =>
-        grades.reduce((best, g) => {
-          if (!g.assignment.pointsMilli || g.scoreMilli === null) return best;
-          return Math.max(best, Math.round((g.scoreMilli * 100) / g.assignment.pointsMilli));
-        }, 0),
-      ),
+    db.grade.findMany({
+      where: { studentMembershipId: { in: membershipIds }, scoreMilli: { not: null } },
+      select: { studentMembershipId: true, scoreMilli: true, assignment: { select: { pointsMilli: true } } },
+    }),
+    db.post.groupBy({
+      by: ["authorMembershipId"],
+      where: { authorMembershipId: { in: membershipIds }, status: "APPROVED" },
+      _count: { _all: true },
+    }),
   ]);
 
+  for (const r of records) {
+    factsFor(r.studentMembershipId).days.push({ dateKey: r.session.dateKey, status: r.status as AttendanceStatus });
+  }
+  for (const s of submissions) factsFor(s.studentMembershipId).handedIn = s._count._all;
+  for (const g of grades) {
+    const f = factsFor(g.studentMembershipId);
+    f.gradedCount++;
+    if (g.assignment.pointsMilli && g.scoreMilli !== null) {
+      f.bestPercent = Math.max(f.bestPercent, Math.round((g.scoreMilli * 100) / g.assignment.pointsMilli));
+    }
+  }
+  for (const p of posts) {
+    if (p.authorMembershipId) factsFor(p.authorMembershipId).approvedPosts = p._count._all;
+  }
+
+  for (const id of membershipIds) result.set(id, assemble(factsFor(id)));
+  return result;
+}
+
+function assemble({ days, handedIn, gradedCount, bestPercent, approvedPosts }: BadgeFacts): Badge[] {
   // CURRENT, not best — and this reversed a decision, so the reasoning matters.
   //
   // These used to be "best ever in the window", so that a child who was ill for
@@ -127,8 +196,8 @@ export async function getBadges(
   // good (academic-year.ts). Badges can be lost DURING a year and never after
   // it. Quiz badges sit outside this entirely and are permanent from the moment
   // they are earned.
-  const currentStreak = computeStreak(attendance.days);
-  const spell = currentAttendanceRate(attendance.days, MIN_DAYS_FOR_ATTENDANCE_BADGE);
+  const currentStreak = computeStreak(days);
+  const spell = currentAttendanceRate(days, MIN_DAYS_FOR_ATTENDANCE_BADGE);
 
   return [
     {

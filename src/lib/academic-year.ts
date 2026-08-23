@@ -2,7 +2,8 @@ import "server-only";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
-import { getBadges } from "./badges";
+import { getBadgesForMany } from "./badges";
+import type { Prisma } from "@prisma/client";
 import type { ActiveContext } from "./session";
 import { translator } from "@/lib/i18n/dictionary";
 
@@ -30,6 +31,9 @@ const tEn = translator("en");
  * child's badges in the middle of an exam week because somebody typed the wrong
  * date in August.
  */
+
+/** Pupils per snapshot round-trip; 250 keeps the `IN` lists and the insert comfortably sized. */
+const SNAPSHOT_CHUNK = 250;
 
 export type AcademicYearInput = {
   name: string;
@@ -129,25 +133,30 @@ export async function closeAcademicYear(
     select: { id: true },
   });
 
+  /**
+   * IN CHUNKS, NOT ONE CHILD AT A TIME. The first version of this loop asked
+   * for each pupil's badges separately and wrote each badge with its own
+   * upsert: five reads and up to seven writes per child, which the three-year
+   * simulation measured at thirty-five seconds for a school of 1,500 — one
+   * request, long enough to look broken. Now every chunk of pupils is read in
+   * a handful of school-wide queries (`getBadgesForMany`, the same function
+   * the profile page uses with a list of one) and written with a single
+   * createMany. The unique key on (student, badge, year) still makes a second
+   * press harmless: `skipDuplicates` leaves the first run's rows alone and
+   * counts only what this run actually added, which is the honest number for
+   * the audit row.
+   */
   let badgesArchived = 0;
-
-  for (const student of students) {
-    // Derived, live, as the child's own profile shows them right now.
-    const badges = await getBadges(schoolId, student.id, school.timezone);
-    const earned = badges.filter((b) => b.earned);
-
-    for (const badge of earned) {
-      const created = await db.earnedBadge.upsert({
-        where: {
-          studentMembershipId_badgeId_academicYearId: {
-            studentMembershipId: student.id,
-            badgeId: badge.id,
-            academicYearId: closing.id,
-          },
-        },
-        create: {
+  for (let at = 0; at < students.length; at += SNAPSHOT_CHUNK) {
+    const chunk = students.slice(at, at + SNAPSHOT_CHUNK).map((s) => s.id);
+    const badgesByStudent = await getBadgesForMany(schoolId, chunk, school.timezone);
+    const rows: Prisma.EarnedBadgeCreateManyInput[] = [];
+    for (const studentId of chunk) {
+      for (const badge of badgesByStudent.get(studentId) ?? []) {
+        if (!badge.earned) continue;
+        rows.push({
           schoolId,
-          studentMembershipId: student.id,
+          studentMembershipId: studentId,
           academicYearId: closing.id,
           badgeId: badge.id,
           // Stored artifacts keep the English rendering — the notify()/email
@@ -155,10 +164,12 @@ export async function closeAcademicYear(
           label: tEn(badge.labelKey),
           description: tEn(badge.descriptionKey),
           permanent: false,
-        },
-        update: {},
-      });
-      if (created.createdAt.getTime() > Date.now() - 5_000) badgesArchived++;
+        });
+      }
+    }
+    if (rows.length > 0) {
+      const written = await db.earnedBadge.createMany({ data: rows, skipDuplicates: true });
+      badgesArchived += written.count;
     }
   }
 
