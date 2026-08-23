@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { DirectoryControls } from "./controls";
 import { DirectoryMenu } from "./directory-menu";
-import { relativeTime } from "@/lib/dates";
+import { relativeTime, formatDate } from "@/lib/dates";
 import { readJsonArray } from "@/lib/json";
 import { getT } from "@/lib/i18n/server";
 import { TabBar } from "@/components/ui/tabs";
@@ -101,7 +101,7 @@ export default async function DirectoryPage({
     db.membership.findMany({
       where,
       include: {
-        user: { select: { name: true, preferredName: true, email: true, avatarKey: true } },
+        user: { select: { name: true, preferredName: true, email: true, avatarKey: true, birthdate: true } },
         enrollments: {
           where: { status: "ACTIVE" },
           include: { class: { select: { name: true } } },
@@ -285,6 +285,13 @@ export default async function DirectoryPage({
                               : ""}
                           </p>
                         )}
+                        {role === "STUDENT" && !member.leftAt && (
+                          <p className="mt-0.5 text-xs text-fg-subtle">
+                            {member.user.birthdate
+                              ? t("people.born", { date: formatDate(member.user.birthdate) })
+                              : t("people.noBirthdate")}
+                          </p>
+                        )}
                         {role === "STUDENT" &&
                           !member.leftAt &&
                           (parentInvites.get(member.id) ?? []).map((inv) => (
@@ -328,6 +335,7 @@ export default async function DirectoryPage({
                           isStudent={role === "STUDENT"}
                           isTeacher={role === "TEACHER"}
                           subjects={subjects}
+                          birthdate={member.user.birthdate?.toISOString().slice(0, 10) ?? ""}
                           suspended={member.status === "SUSPENDED"}
                           hasLeft={member.leftAt !== null}
                         />

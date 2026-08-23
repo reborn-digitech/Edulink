@@ -177,6 +177,7 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "class.cohort.add": "audit.classCohortAdd",
   "school.promote": "audit.schoolPromote",
   "parent.invite": "audit.parentInvite",
+  "user.birthdate.set": "audit.userBirthdateSet",
   "parent.link.accept": "audit.parentLinkAccept",
   "class.cohort.remove": "audit.classCohortRemove",
   "competition.consent": "audit.competitionConsent",

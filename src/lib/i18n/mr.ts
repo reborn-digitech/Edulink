@@ -1394,6 +1394,8 @@ export const mr: Dictionary = {
   },
 
   refusal: {
+    notAMemberHere: "ती व्यक्ती या शाळेची सदस्य नाही.",
+    askTheOfficeToChangeYourBirthday: "तुमच्याशी पालक जोडलेले आहेत, त्यामुळे आता तुमची जन्मतारीख फक्त शाळेचे कार्यालयच बदलू शकते.",
     thatIsNotAnEmailAddress: "हा ईमेल पत्ता नाही.",
     sayHowTheyAreRelated: "ते मुलाचे कोण आहेत ते सांगा.",
     thatIsTheChildsOwnAddress: "हा तर मुलाचाच पत्ता आहे.",
@@ -1504,6 +1506,7 @@ export const mr: Dictionary = {
   },
 
   access: {
+    onlyTheOfficeSetsBirthdates: "फक्त शाळा प्रशासकच जन्मतारीख ठरवू शकतात.",
     onlyAnAdminCanLinkAParent: "फक्त शाळा प्रशासकच पालक जोडू शकतात.",
     onlyAnAdminCanPromote: "फक्त शाळा प्रशासकच शाळेला पुढच्या वर्गात नेऊ शकतात.",
     nothingToPromote: "किमान एक वर्ग कुठे जाईल ते निवडा.",
@@ -2347,6 +2350,10 @@ export const mr: Dictionary = {
     excusedHint: "ज्ञात कारणाने गैरहजर",
   },
   student: {
+    birthdate: "जन्मतारीख",
+    birthdateHint: "घरच्या मोठ्या व्यक्तीला तुमच्याशी जोडण्यासाठी तुमच्या विद्यार्थी कोडसोबत हे लागते.",
+    birthdateLocked: "तुमच्याशी मोठी व्यक्ती जोडलेली आहे, त्यामुळे आता हे फक्त शाळेचे कार्यालयच बदलू शकते.",
+    birthdateNone: "नोंदलेली नाही — शाळेच्या कार्यालयाला सांगा.",
     hiName: "नमस्कार {name} 👋",
     notYet: "अजून नाही",
     registerTaken: "हजेरी झाली",
@@ -3488,6 +3495,7 @@ export const mr: Dictionary = {
   },
 
   audit: {
+    userBirthdateSet: "जन्मतारीख ठरवली",
     parentInvite: "पालकाला मुलाशी जोडण्याचा दुवा पाठवला",
     parentLinkAccept: "पालकाने शाळेची जोड स्वीकारली",
     schoolPromote: "शाळेला पुढच्या वर्गात नेले",
@@ -3623,6 +3631,15 @@ export const mr: Dictionary = {
     expertProfileUpdate: "एका तज्ज्ञाने आपली प्रोफाइल बदलली",
   },
   people: {
+    birthdateAction: "जन्मतारीख…",
+    birthdateTitle: "{name} ची जन्मतारीख",
+    birthdateBody: "प्रवेश अर्जावरून. पालक विद्यार्थी कोड आणि याच तारखेने मुलाशी जोडले जातात, म्हणून ती बरोबर हवी. बदलल्यावर {name} ला कळवले जाते.",
+    birthdateField: "जन्मतारीख",
+    birthdateClear: "तारीख काढा",
+    birthdateSaved: "जन्मतारीख जतन केली",
+    birthdateNotSaved: "जन्मतारीख जतन करता आली नाही",
+    born: "जन्म {date}",
+    noBirthdate: "जन्मतारीख नोंदलेली नाही",
     linkParent: "पालक जोडा…",
     linkParentTitle: "{name} शी पालक जोडा",
     linkParentBody: "आम्ही त्यांना एक दुवा ईमेल करतो. ते स्वीकारेपर्यंत {name} बद्दल काहीही सामायिक होत नाही — स्वीकारणे हीच त्यांची संमती.",
@@ -4262,6 +4279,7 @@ export const mr: Dictionary = {
     forChild: "{name} साठी",
   },
   notifTitle: {
+    birthdateSet: "तुमची जन्मतारीख बदलली",
     promoted: "तुम्ही पुढच्या वर्गात गेलात",
     childPromoted: "{name} पुढच्या वर्गात गेला/गेली",
     newWorkSet: "नवे काम दिले",
@@ -4305,6 +4323,8 @@ export const mr: Dictionary = {
     newMessageFromSchool: "तुमच्या शाळेकडून नवा संदेश",
   },
   notifBody: {
+    birthdateSet: "शाळेच्या कार्यालयाने तुमची जन्मतारीख नोंदवली. चुकीची असेल तर कार्यालयाला सांगा.",
+    birthdateCleared: "शाळेच्या कार्यालयाने तुमची जन्मतारीख काढली. ते चुकीचे असेल तर कार्यालयाला सांगा.",
     promoted: "आता तुम्ही {className} मध्ये आहात. आजपासून तुमचे वेळापत्रक आणि हजेरी तेच दाखवतील.",
     childPromoted: "{name} आता {className} मध्ये आहे.",
     leaveAskedFrom: "{name} ने {from} पासून रजा मागितली आहे.",

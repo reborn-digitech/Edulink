@@ -1556,6 +1556,8 @@ export const en = {
   /* Server refusals — minted as keys in libs, translated at the boundary    */
   /* ---------------------------------------------------------------------- */
   refusal: {
+    notAMemberHere: "That person is not a member of this school.",
+    askTheOfficeToChangeYourBirthday: "A parent is linked to you, so only the school office can change your date of birth now.",
     thatIsNotAnEmailAddress: "That is not an email address.",
     sayHowTheyAreRelated: "Say how they are related to the child.",
     thatIsTheChildsOwnAddress: "That is the child's own address.",
@@ -1682,6 +1684,7 @@ export const en = {
   /* boundary. One key per distinct sentence; the sentence is the value.    */
   /* ---------------------------------------------------------------------- */
   access: {
+    onlyTheOfficeSetsBirthdates: "Only a school admin can set a date of birth.",
     onlyAnAdminCanLinkAParent: "Only a school admin can link a parent.",
     onlyAnAdminCanPromote: "Only a school admin can move the school up a year.",
     nothingToPromote: "Choose where at least one class goes.",
@@ -2582,6 +2585,10 @@ export const en = {
   /* A pupil's own pages                                                     */
   /* ---------------------------------------------------------------------- */
   student: {
+    birthdate: "Date of birth",
+    birthdateHint: "A grown-up at home needs this, with your student code, to link to you.",
+    birthdateLocked: "A grown-up is linked to you, so only the school office can change this now.",
+    birthdateNone: "Not on file — ask the school office.",
     hiName: "Hi {name} 👋",
     notYet: "Not yet",
     registerTaken: "Register taken",
@@ -3870,6 +3877,7 @@ export const en = {
   },
 
   audit: {
+    userBirthdateSet: "Set a date of birth",
     parentInvite: "Sent a parent a link to a child",
     parentLinkAccept: "A parent accepted the school's link",
     schoolPromote: "Moved the school up a year",
@@ -4008,6 +4016,15 @@ export const en = {
   /* The directory — everyone in the school, and the three ways out of it     */
   /* ---------------------------------------------------------------------- */
   people: {
+    birthdateAction: "Date of birth…",
+    birthdateTitle: "Date of birth for {name}",
+    birthdateBody: "From the admission form. A parent links to a pupil with the student code and this date, so it has to be right. {name} is told when it changes.",
+    birthdateField: "Date of birth",
+    birthdateClear: "Remove the date",
+    birthdateSaved: "Date of birth saved",
+    birthdateNotSaved: "Could not save the date of birth",
+    born: "Born {date}",
+    noBirthdate: "No date of birth on file",
     linkParent: "Link a parent…",
     linkParentTitle: "Link a parent to {name}",
     linkParentBody: "We email them a link. Nothing about {name} is shared until they accept it — accepting is their consent.",
@@ -4699,6 +4716,7 @@ export const en = {
      time by notify(); see titleKey. Every stored notification title lives
      here, so the list is the complete vocabulary of what the app tells people. */
   notifTitle: {
+    birthdateSet: "Your date of birth was updated",
     promoted: "You have moved up",
     childPromoted: "{name} has moved up",
     newWorkSet: "New work set",
@@ -4744,6 +4762,8 @@ export const en = {
   /* Notification bodies that are sentences — see notifBody in notify(). Data
      bodies (a post's title, a teacher's note) stay literal. */
   notifBody: {
+    birthdateSet: "The school office set your date of birth. If it is wrong, tell the office.",
+    birthdateCleared: "The school office removed your date of birth. If that is wrong, tell the office.",
     promoted: "You are now in {className}. Your timetable and register will show it from today.",
     childPromoted: "{name} is now in {className}.",
     leaveAskedFrom: "{name} has asked for leave from {from}.",

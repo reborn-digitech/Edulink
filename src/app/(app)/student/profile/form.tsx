@@ -4,10 +4,11 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { FloppyDiskIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
-import { TextAreaField, TextField } from "@/components/ui/field";
+import { DateField, TextAreaField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { AVATAR_PRESETS, Avatar, describeAvatar } from "@/components/ui/avatar";
 import { cn } from "@/lib/cn";
+import { formatDateKey } from "@/lib/dates";
 import { saveProfile } from "./actions";
 import { useT } from "@/lib/i18n";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
@@ -20,6 +21,8 @@ export function ProfileForm({
   handle,
   studentCode,
   bioHintKey,
+  birthdate,
+  birthdateEditable,
 }: {
   fullName: string;
   preferredName: string;
@@ -30,6 +33,10 @@ export function ProfileForm({
   /** The teacher profile reuses this form; its bio is read by colleagues,
    * not classmates, and the hint must say so. */
   bioHintKey?: TranslationKey;
+  /** ISO date on file, "" when none. */
+  birthdate: string;
+  /** Staff always; a pupil only while no guardian is linked (birthdate.ts). */
+  birthdateEditable: boolean;
 }) {
   const t = useT();
   const router = useRouter();
@@ -40,6 +47,7 @@ export function ProfileForm({
     preferredName,
     bio,
     avatarKey: avatarKey ?? AVATAR_PRESETS[0]!,
+    birthdate,
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [picking, setPicking] = useState(false);
@@ -47,7 +55,8 @@ export function ProfileForm({
   const dirty =
     draft.preferredName !== preferredName ||
     draft.bio !== bio ||
-    draft.avatarKey !== (avatarKey ?? AVATAR_PRESETS[0]!);
+    draft.avatarKey !== (avatarKey ?? AVATAR_PRESETS[0]!) ||
+    draft.birthdate !== birthdate;
 
   function submit(event: React.FormEvent) {
     event.preventDefault();
@@ -170,6 +179,29 @@ export function ProfileForm({
         )}
       </dl>
       <p className="text-xs text-fg-muted">{t("student.nameHint")}</p>
+
+      {birthdateEditable ? (
+        <DateField
+          className="max-w-xs"
+          label={t("student.birthdate")}
+          hint={t("student.birthdateHint")}
+          value={draft.birthdate}
+          error={errors.birthdate}
+          onChange={(e) => setDraft((d) => ({ ...d, birthdate: e.target.value }))}
+        />
+      ) : (
+        <dl className="divide-y divide-border rounded-[--radius-md] border border-border">
+          <div className="flex items-baseline justify-between gap-4 px-4 py-3">
+            <dt className="text-sm text-fg-muted">
+              {t("student.birthdate")}
+              <span className="mt-0.5 block text-xs text-fg-subtle">
+                {birthdate ? t("student.birthdateLocked") : t("student.birthdateNone")}
+              </span>
+            </dt>
+            <dd className="text-right text-sm font-medium text-fg">{birthdate ? formatDateKey(birthdate, { day: "numeric", month: "short", year: "numeric" }) : "—"}</dd>
+          </div>
+        </dl>
+      )}
 
       {dirty && (
         <div className="sticky bottom-[calc(env(safe-area-inset-bottom,0px)+4.5rem)] flex items-center gap-3 rounded-[--radius-lg] border border-accent bg-surface p-3 shadow-lg lg:bottom-4">

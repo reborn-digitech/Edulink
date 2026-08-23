@@ -11,6 +11,7 @@ import {
 } from "@/lib/membership";
 import { setTeacherSubjects } from "@/lib/reviews";
 import { inviteParent } from "@/lib/parent-link";
+import { setMemberBirthdate } from "@/lib/birthdate";
 import type { GuardianRelation } from "@/lib/constants";
 import {
   recordDeparture,
@@ -177,6 +178,20 @@ export async function inviteParentAction(
     if (!result.ok) return { ok: false, errorKey: result.errorKey };
     revalidatePath("/admin/people");
     revalidatePath("/admin/invites");
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** The office sets or clears a member's date of birth — audited, and told. */
+export async function setBirthdateAction(membershipId: string, dateKey: string): Promise<Result> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const result = await setMemberBirthdate(ctx, membershipId, dateKey.trim() === "" ? null : dateKey);
+    if (!result.ok) return { ok: false, errorKey: result.errorKey };
+    revalidatePath("/admin/people");
+    revalidatePath("/admin/calendar");
     return { ok: true };
   } catch (error) {
     return failure(error);

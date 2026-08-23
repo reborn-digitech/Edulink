@@ -6,6 +6,7 @@ import { db } from "@/lib/db";
 import { getSession } from "@/lib/session";
 import { AVATAR_PRESETS } from "@/components/ui/avatar";
 import { audit } from "@/lib/audit";
+import { setOwnBirthdate } from "@/lib/birthdate";
 
 export type ProfileState = { ok: boolean; errors: Record<string, string> };
 
@@ -25,6 +26,7 @@ export async function saveProfile(input: {
   preferredName: string;
   bio: string;
   avatarKey: string;
+  birthdate?: string;
 }): Promise<ProfileState> {
   const session = await getSession();
   if (!session) return { ok: false, errors: { _form: (await getT())("common.logInAgain") } };
@@ -42,6 +44,21 @@ export async function saveProfile(input: {
 
   if (!AVATAR_PRESETS.includes(input.avatarKey)) {
     errors.avatarKey = "Pick one of the avatars.";
+  }
+
+  // The date of birth has its own rule (birthdate.ts): staff always, a pupil
+  // only while nobody is linked to them. Saved only when it changed.
+  if (typeof input.birthdate === "string") {
+    const current = await db.user.findUniqueOrThrow({ where: { id: session.user.id }, select: { birthdate: true } });
+    const before = current.birthdate?.toISOString().slice(0, 10) ?? "";
+    if (input.birthdate !== before) {
+      if (input.birthdate === "") {
+        errors.birthdate = (await getT())("invite.useRealDate");
+      } else {
+        const result = await setOwnBirthdate(session, input.birthdate);
+        if (!result.ok) errors.birthdate = (await getT())(result.errorKey);
+      }
+    }
   }
 
   if (Object.keys(errors).length > 0) return { ok: false, errors };

@@ -9,6 +9,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { ProfileForm } from "./form";
 import { BadgeGrid } from "./badges";
 import { getT } from "@/lib/i18n/server";
+import { mayEditOwnBirthdate } from "@/lib/birthdate";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -23,7 +24,7 @@ export default async function StudentProfilePage() {
     where: { id: ctx.membershipId },
     include: {
       user: {
-        select: { name: true, preferredName: true, bio: true, avatarKey: true, email: true },
+        select: { name: true, preferredName: true, bio: true, avatarKey: true, email: true, birthdate: true },
       },
       school: { select: { name: true, timezone: true } },
       enrollments: {
@@ -67,6 +68,8 @@ export default async function StudentProfilePage() {
             fullName={membership.user.name}
             preferredName={membership.user.preferredName ?? ""}
             bio={membership.user.bio ?? ""}
+            birthdate={membership.user.birthdate?.toISOString().slice(0, 10) ?? ""}
+            birthdateEditable={await mayEditOwnBirthdate(ctx)}
             avatarKey={membership.user.avatarKey}
             handle={handle}
             studentCode={membership.studentCode}
