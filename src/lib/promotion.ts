@@ -28,6 +28,16 @@ import type { ActiveContext } from "./session";
  *     children, or a class the office wants to sort by hand).
  * Any pupil can be HELD BACK out of a move, and stays where they are.
  *
+ * SECTIONS AND STREAMS. A school with 5A, 5B and 5C is three class rows in
+ * one grade, and the year-end rarely maps them one to one: a big 5 splits
+ * into 6A and 6B, two small 8s merge into one 9, the science stream forms
+ * at 11 out of three 10s. So a move may name a destination PER PUPIL
+ * (`reassign`), and a NEW destination carries a KEY: two moves — or two
+ * pupils — that name the same key pour into the same new class, which is
+ * how a split and a merge are the same mechanism. A new class may also
+ * name its section, so "6A" and "6B" are sections on record and not just
+ * letters in a name.
+ *
  * Old classes whose pupils all moved are archived, so the register and the
  * timetable stop offering them. Nothing is deleted: every old enrolment is
  * closed (REMOVED, dated), which is exactly what the archive and the report
@@ -45,12 +55,25 @@ export type PromotionClass = {
   /** Existing unarchived classes one grade up, offered in the picker. A
    * class that already has pupils is offered but never suggested — see the
    * plan for why. */
-  candidates: { id: string; name: string; pupils: number }[];
+  candidates: { id: string; name: string; section: string | null; pupils: number }[];
 };
 
 export type Destination =
   | { kind: "CLASS"; classId: string }
-  | { kind: "NEW"; name: string; gradeLevel: string | null }
+  | {
+      kind: "NEW";
+      /**
+       * Identifies the new class ACROSS the plan: every destination with
+       * this key is the same class. Absent, the class is private to the
+       * move that names it. The first move to name a key fixes its name,
+       * grade and section.
+       */
+      key?: string;
+      name: string;
+      gradeLevel: string | null;
+      /** Explicit section for the new class; undefined inherits the old class's. */
+      section?: string | null;
+    }
   | { kind: "LEAVE" }
   | { kind: "STAY" };
 
@@ -59,6 +82,8 @@ export type PromotionMove = {
   to: Destination;
   /** Pupils who stay behind in the old class — repeaters. */
   holdBack: string[];
+  /** Pupils who go somewhere other than the class's destination: a split, a stream, an early leaver. */
+  reassign?: { membershipId: string; to: Exclude<Destination, { kind: "STAY" }> }[];
 };
 
 export type PromotionResult = {
@@ -158,7 +183,7 @@ export async function promotionPlan(ctx: ActiveContext): Promise<PromotionClass[
       const next = nextGrade(klass.gradeLevel, ladder);
       const candidates = classes
         .filter((c) => c.id !== klass.id && next !== null && c.gradeLevel?.trim() === next)
-        .map((c) => ({ id: c.id, name: c.name, pupils: c.enrollments.length }));
+        .map((c) => ({ id: c.id, name: c.name, section: c.section, pupils: c.enrollments.length }));
 
       /**
        * A CLASS ROW IS ONE YEAR'S COHORT. Its homework, date sheets, report
@@ -185,7 +210,13 @@ export async function promotionPlan(ctx: ActiveContext): Promise<PromotionClass[
         );
         suggested = { kind: "CLASS", classId: (same ?? empty[0]!).id };
       } else if (next !== null) {
-        suggested = { kind: "NEW", name: unique(nextClassName(klass.name, klass.gradeLevel, next)), gradeLevel: next };
+        suggested = {
+          kind: "NEW",
+          key: `from:${klass.id}`,
+          name: unique(nextClassName(klass.name, klass.gradeLevel, next)),
+          gradeLevel: next,
+          section: klass.section,
+        };
       } else {
         suggested = { kind: "STAY" };
       }
@@ -239,6 +270,42 @@ export async function promoteSchool(
     if (move.to.kind === "NEW" && move.to.name.trim().length === 0) {
       throw new AccessError("access.giveTheNewClassAName");
     }
+    const hold = new Set(move.holdBack);
+    for (const r of move.reassign ?? []) {
+      if (hold.has(r.membershipId)) throw new AccessError("access.aPupilHeldBackCannotAlsoMove");
+      if (r.to.kind === "CLASS") {
+        if (!byId.has(r.to.classId)) throw new AccessError("access.classNotFoundInYourSchool", "NOT_FOUND");
+        if (r.to.classId === move.fromClassId) throw new AccessError("access.aClassCannotMoveIntoItself");
+      }
+      if (r.to.kind === "NEW" && r.to.name.trim().length === 0) throw new AccessError("access.giveTheNewClassAName");
+    }
+  }
+
+  /**
+   * NEW CLASSES ARE COLLECTED BY KEY BEFORE ANYTHING MOVES, so a key named
+   * from three places makes one class. An unkeyed NEW is private to its
+   * move (or its pupil) and gets a key of its own here.
+   */
+  type NewSpec = { name: string; gradeLevel: string | null; section: string | null; originClassId: string };
+  const newSpecs = new Map<string, NewSpec>();
+  const keyOf = (to: Destination, fallback: string): string =>
+    to.kind === "NEW" ? (to.key ?? fallback) : fallback;
+  for (const move of moves) {
+    const from = byId.get(move.fromClassId)!;
+    const register = (to: Destination, fallback: string) => {
+      if (to.kind !== "NEW") return;
+      const key = keyOf(to, fallback);
+      if (!newSpecs.has(key)) {
+        newSpecs.set(key, {
+          name: to.name.trim(),
+          gradeLevel: to.gradeLevel,
+          section: to.section === undefined ? from.section : to.section,
+          originClassId: from.id,
+        });
+      }
+    };
+    register(move.to, `move:${move.fromClassId}`);
+    for (const r of move.reassign ?? []) register(r.to, `move:${move.fromClassId}:${r.membershipId}`);
   }
 
   const now = new Date();
@@ -250,14 +317,23 @@ export async function promoteSchool(
   // a pupil already recorded as left — has to be refused HERE, or the
   // graduates' enrolments close and the refusal leaves them on the roll of
   // no class at all.
+  const destinationOf = (move: PromotionMove, membershipId: string): Destination =>
+    move.reassign?.find((r) => r.membershipId === membershipId)?.to ?? move.to;
   for (const move of moves) {
-    if (move.to.kind !== "LEAVE") continue;
+    const anyLeave = move.to.kind === "LEAVE" || (move.reassign ?? []).some((r) => r.to.kind === "LEAVE");
+    if (!anyLeave) continue;
     const hold = new Set(move.holdBack);
     const roll = await db.enrollment.findMany({
       where: { schoolId, classId: move.fromClassId, status: "ACTIVE", student: { status: "ACTIVE", leftAt: null } },
       select: { studentMembershipId: true, student: { select: { joinedAt: true } } },
     });
-    const tooEarly = roll.filter((e) => !hold.has(e.studentMembershipId) && leftOn && e.student.joinedAt > leftOn);
+    const tooEarly = roll.filter(
+      (e) =>
+        !hold.has(e.studentMembershipId) &&
+        destinationOf(move, e.studentMembershipId).kind === "LEAVE" &&
+        leftOn &&
+        e.student.joinedAt > leftOn,
+    );
     if (tooEarly.length > 0) {
       throw new AccessError("access.leaversLastDayBeforeJoin", "FORBIDDEN", { count: tooEarly.length });
     }
@@ -271,7 +347,11 @@ export async function promoteSchool(
 
   // Classes that RECEIVE pupils in this plan are next year's and are never
   // archived, however empty they were a moment ago.
-  const receiving = new Set(moves.filter((m) => m.to.kind === "CLASS").map((m) => (m.to as { classId: string }).classId));
+  const receiving = new Set<string>();
+  for (const m of moves) {
+    if (m.to.kind === "CLASS") receiving.add(m.to.classId);
+    for (const r of m.reassign ?? []) if (r.to.kind === "CLASS") receiving.add(r.to.classId);
+  }
 
   // `$tenantTransaction`, never a plain `$transaction`: the tenant is bound
   // once at the top so every statement inside runs under the school's own
@@ -283,7 +363,7 @@ export async function promoteSchool(
     // would sweep the children who had just arrived in 5 on into 6.
     const rolls = new Map<string, { id: string; studentMembershipId: string }[]>();
     for (const move of moves) {
-      if (move.to.kind === "STAY") continue;
+      if (move.to.kind === "STAY" && (move.reassign ?? []).length === 0) continue;
       rolls.set(
         move.fromClassId,
         await tx.enrollment.findMany({
@@ -298,58 +378,72 @@ export async function promoteSchool(
       );
     }
 
+    // New classes first, one per key, so a split and a merge both land in
+    // one row. A fresh join code each, because the old one is written on
+    // last year's board; a retry on the rare collision rather than a failed year.
+    const createdByKey = new Map<string, { id: string; name: string }>();
+    for (const [key, spec] of newSpecs) {
+      // The old class this key was first named from lends its colour and subject.
+      const origin = byId.get(spec.originClassId);
+      let made: { id: string; name: string } | null = null;
+      for (let attempt = 0; attempt < 5 && !made; attempt++) {
+        try {
+          made = await tx.class.create({
+            data: {
+              schoolId,
+              name: spec.name,
+              gradeLevel: spec.gradeLevel,
+              section: spec.section,
+              // The room is the old class's; next year's is the office's to set.
+              color: origin?.color ?? null,
+              subject: origin?.subject ?? null,
+              joinCode: classCode(),
+            },
+            select: { id: true, name: true },
+          });
+        } catch (error) {
+          if (attempt === 4) throw error;
+        }
+      }
+      createdByKey.set(key, made!);
+      created += 1;
+    }
+
+    const resolve = (to: Destination, fallbackKey: string): { id: string; name: string } | null => {
+      if (to.kind === "CLASS") return { id: to.classId, name: byId.get(to.classId)!.name };
+      if (to.kind === "NEW") return createdByKey.get(keyOf(to, fallbackKey))!;
+      return null; // LEAVE / STAY
+    };
+
     for (const move of moves) {
-      if (move.to.kind === "STAY") continue;
       const from = byId.get(move.fromClassId)!;
       const hold = new Set(move.holdBack);
-      const roll = rolls.get(from.id)!;
-      const moving = roll.filter((e) => !hold.has(e.studentMembershipId));
+      // A STAY class still moves its reassigned pupils — a stream forming
+      // out of a class that otherwise keeps its children.
+      if (move.to.kind === "STAY" && (move.reassign ?? []).length === 0) continue;
+      const roll = rolls.get(from.id) ?? [];
+      const moving = roll.filter((e) => {
+        if (hold.has(e.studentMembershipId)) return false;
+        return destinationOf(move, e.studentMembershipId).kind !== "STAY";
+      });
       heldBack += roll.length - moving.length;
 
-      let targetId: string | null = null;
-      let targetName = "";
-      if (move.to.kind === "CLASS") {
-        targetId = move.to.classId;
-        targetName = byId.get(targetId)!.name;
-      } else if (move.to.kind === "NEW") {
-        // A fresh join code, because the old one is written on last year's
-        // board; a retry on the rare collision rather than a failed year.
-        let made: { id: string; name: string } | null = null;
-        for (let attempt = 0; attempt < 5 && !made; attempt++) {
-          try {
-            made = await tx.class.create({
-              data: {
-                schoolId,
-                name: move.to.name.trim(),
-                gradeLevel: move.to.gradeLevel,
-                section: from.section,
-                // The room is the old class's; next year's is the office's to set.
-                color: from.color,
-                subject: from.subject,
-                joinCode: classCode(),
-              },
-              select: { id: true, name: true },
-            });
-          } catch (error) {
-            if (attempt === 4) throw error;
-          }
+      for (const e of moving) {
+        const dest = destinationOf(move, e.studentMembershipId);
+        const own = move.reassign?.some((r) => r.membershipId === e.studentMembershipId)
+          ? `move:${move.fromClassId}:${e.studentMembershipId}`
+          : `move:${move.fromClassId}`;
+        const target = resolve(dest, own);
+        if (!target) {
+          leavers.push({ membershipId: e.studentMembershipId, fromClassName: from.name });
+          continue;
         }
-        targetId = made!.id;
-        targetName = made!.name;
-        created += 1;
-      }
-
-      if (move.to.kind === "LEAVE") {
-        for (const e of moving) leavers.push({ membershipId: e.studentMembershipId, fromClassName: from.name });
-      } else {
-        for (const e of moving) {
-          await tx.enrollment.upsert({
-            where: { classId_studentMembershipId: { classId: targetId!, studentMembershipId: e.studentMembershipId } },
-            create: { classId: targetId!, schoolId, studentMembershipId: e.studentMembershipId, status: "ACTIVE" },
-            update: { status: "ACTIVE", removedAt: null },
-          });
-          movedTo.push({ membershipId: e.studentMembershipId, className: targetName });
-        }
+        await tx.enrollment.upsert({
+          where: { classId_studentMembershipId: { classId: target.id, studentMembershipId: e.studentMembershipId } },
+          create: { classId: target.id, schoolId, studentMembershipId: e.studentMembershipId, status: "ACTIVE" },
+          update: { status: "ACTIVE", removedAt: null },
+        });
+        movedTo.push({ membershipId: e.studentMembershipId, className: target.name });
       }
 
       // The old enrolments close, dated — what the archive reads.

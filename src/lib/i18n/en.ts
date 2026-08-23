@@ -1708,6 +1708,7 @@ export const en = {
   /* boundary. One key per distinct sentence; the sentence is the value.    */
   /* ---------------------------------------------------------------------- */
   access: {
+    aPupilHeldBackCannotAlsoMove: "A pupil held back cannot also be moved.",
     onlyAnAdminCanIssueASignIn: "Only a school admin can issue a sign-in code.",
     onlyASchoolAdminCanAdmit: "Only a school admin can admit pupils.",
     tooManyPupilsAtOnce: "That is more than {max} pupils at once. Split the list.",
@@ -3717,6 +3718,15 @@ export const en = {
   },
 
   promotion: {
+    sectionLabel: "Section {section}",
+    reassignedCount: "{count} going elsewhere",
+    newClassSection: "Section",
+    removeSection: "Remove this section",
+    sortPupils: "Hold back or sort pupils",
+    sortPupilsHint: "Tick a pupil to keep them in this class. Pick where a pupil goes when it is not with the class — another section, a stream, or leaving.",
+    addSection: "Add a section",
+    withTheClass: "With the class",
+    pupilGoesTo: "Where {name} goes",
     candidateWithPupils: "{name} — already has {count} pupils",
     title: "Move the school up a year",
     intro: "Every class, and where its pupils go next: an existing class, a new one made here, or leaving the school from the top grade. Pupils can be held back. Nothing is deleted — last year's classes are archived with their registers and marks intact.",

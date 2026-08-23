@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { nameCarriesSection } from "@/lib/codes";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -95,7 +96,7 @@ export default async function ClassStaffingPage({
     listCohort(ctx, classId),
   ]);
 
-  const title = [klass.name, klass.section ? t("classes.section", { section: klass.section }) : null]
+  const title = [klass.name, klass.section && !nameCarriesSection(klass.name, klass.section) ? t("classes.section", { section: klass.section }) : null]
     .filter(Boolean)
     .join(" · ");
 

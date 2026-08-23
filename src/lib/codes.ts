@@ -62,3 +62,20 @@ export function slugify(input: string): string {
 export function normalizeCode(input: string): string {
   return input.toUpperCase().replace(/\s+/g, "").trim();
 }
+
+/**
+ * Whether a class name already carries its section — "Class 7A", "7 A",
+ * "Grade 3 · A" — so a page that appends the section does not print "7A · A".
+ * The year-end planner names sections this way on purpose; the fixtures did it
+ * by accident; either way the letter should appear once.
+ */
+export function nameCarriesSection(name: string, section: string | null | undefined): boolean {
+  if (!section) return false;
+  const s = section.trim().toLowerCase();
+  const n = name.trim().toLowerCase();
+  if (!s || !n.endsWith(s)) return false;
+  const before = n.slice(0, -s.length);
+  // A letter section needs a boundary before it ("7a", "7 a", "· a"); a longer
+  // section ("sunflower") is a word and needs a space or the start.
+  return before === "" || /[\s\d·\-–(]$/.test(before);
+}

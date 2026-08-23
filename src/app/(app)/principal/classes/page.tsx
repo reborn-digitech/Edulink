@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { nameCarriesSection } from "@/lib/codes";
 import Link from "next/link";
 import { CaretRightIcon, ChalkboardTeacherIcon, WarningIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
@@ -81,7 +82,7 @@ export default async function PrincipalClassesPage({
                       <span className="min-w-0 flex-1">
                         <span className="block truncate font-semibold text-fg">
                           {klass.name}
-                          {klass.section ? ` · ${klass.section}` : ""}
+                          {klass.section && !nameCarriesSection(klass.name, klass.section) ? ` · ${klass.section}` : ""}
                         </span>
                         <span className="block text-xs text-fg-muted">
                           {klass.pupils === 1

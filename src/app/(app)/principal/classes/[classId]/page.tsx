@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { nameCarriesSection } from "@/lib/codes";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -109,7 +110,7 @@ export default async function PrincipalClassPage({
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
             {data.klass.name}
-            {data.klass.section ? ` · ${data.klass.section}` : ""}
+            {data.klass.section && !nameCarriesSection(data.klass.name, data.klass.section) ? ` · ${data.klass.section}` : ""}
           </h1>
           <p className="mt-1 text-sm text-fg-muted">
             {data.pupils.length === 1

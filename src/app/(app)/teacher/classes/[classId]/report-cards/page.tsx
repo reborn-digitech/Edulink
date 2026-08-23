@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { nameCarriesSection } from "@/lib/codes";
 import Link from "next/link";
 import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import { notFound } from "next/navigation";
@@ -52,7 +53,7 @@ export default async function ReportCardsPage({
   const selected = title && titles.includes(title) ? title : (titles[0] ?? null);
   const cards = selected ? all.filter((c) => c.title === selected) : [];
 
-  const heading = [klass.name, klass.section ? `Section ${klass.section}` : null]
+  const heading = [klass.name, klass.section && !nameCarriesSection(klass.name, klass.section) ? `Section ${klass.section}` : null]
     .filter(Boolean)
     .join(" · ");
 

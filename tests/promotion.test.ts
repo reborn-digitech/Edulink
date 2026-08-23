@@ -29,8 +29,8 @@ function ctx(over: Partial<ActiveContext> & { userId: string }): ActiveContext {
   };
 }
 
-const EMAILS = ["p1.promo.unit@riverside.test", "p2.promo.unit@riverside.test", "p3.promo.unit@riverside.test", "p4.promo.unit@riverside.test"];
-const CODES = ["ZZZ-PRM4", "ZZZ-PRM5", "ZZZ-PRMX"];
+const EMAILS = ["p1.promo.unit@riverside.test", "p2.promo.unit@riverside.test", "p3.promo.unit@riverside.test", "p4.promo.unit@riverside.test", "p5.promo.unit@riverside.test", "p6.promo.unit@riverside.test", "p7.promo.unit@riverside.test"];
+const CODES = ["ZZZ-PRM4", "ZZZ-PRM5", "ZZZ-PRMX", "ZZZ-PRM8A", "ZZZ-PRM8B"];
 
 let riversideId: string;
 let admin: ActiveContext;
@@ -38,6 +38,8 @@ let teacher: ActiveContext;
 let four: string;
 let fiveExisting: string;
 let ten: string;
+let eightA: string;
+let eightB: string;
 let pupils: string[] = [];
 let previousGradeHigh: string | null = null;
 
@@ -63,6 +65,8 @@ beforeAll(async () => {
   four = await mk(CODES[0]!, "ZZ Promo 4", "4");
   fiveExisting = await mk(CODES[1]!, "ZZ Promo 5", "5");
   ten = await mk(CODES[2]!, "ZZ Promo 10", "10");
+  eightA = await mk(CODES[3]!, "ZZ Promo 8A", "8");
+  eightB = await mk(CODES[4]!, "ZZ Promo 8B", "8");
 
   pupils = [];
   for (const email of EMAILS) {
@@ -87,6 +91,9 @@ beforeAll(async () => {
   await enrol(four, pupils[1]!);
   await enrol(fiveExisting, pupils[2]!);
   await enrol(ten, pupils[3]!);
+  await enrol(eightA, pupils[4]!);
+  await enrol(eightA, pupils[5]!);
+  await enrol(eightB, pupils[6]!);
 });
 
 afterAll(async () => {
@@ -133,7 +140,7 @@ describe("the plan", () => {
     const rowTen = plan.find((p) => p.id === ten)!;
     // The existing 5 already holds a pupil, so 4 is offered it but NOT
     // suggested it — a full class is last year's cohort, not next year's room.
-    expect(rowFour.candidates).toContainEqual({ id: fiveExisting, name: "ZZ Promo 5", pupils: 1 });
+    expect(rowFour.candidates).toContainEqual({ id: fiveExisting, name: "ZZ Promo 5", section: "A", pupils: 1 });
     if (rowFour.candidates.some((c) => c.pupils === 0)) {
       expect(rowFour.suggested).toMatchObject({ kind: "CLASS" });
       expect(rowFour.suggested).not.toEqual({ kind: "CLASS", classId: fiveExisting });
@@ -208,6 +215,51 @@ describe("the move", () => {
     await expect(
       promoteSchool(admin, [{ fromClassId: four, to: { kind: "CLASS", classId: four }, holdBack: [] }]),
     ).rejects.toBeInstanceOf(AccessError);
+  });
+});
+
+describe("sections and streams", () => {
+  it("⚠ splits one class into two new sections and merges another into one of them, by key", async () => {
+    // 8A's two pupils: one to the new 9A, one reassigned to the new 9B.
+    // 8B's pupil goes to 9B too — the SAME key, so one class is made, not two.
+    const result = await promoteSchool(admin, [
+      {
+        fromClassId: eightA,
+        to: { kind: "NEW", key: "9A", name: "ZZ Promo 9A", gradeLevel: "9", section: "A" },
+        holdBack: [],
+        reassign: [{ membershipId: pupils[5]!, to: { kind: "NEW", key: "9B", name: "ZZ Promo 9B", gradeLevel: "9", section: "B" } }],
+      },
+      {
+        fromClassId: eightB,
+        to: { kind: "NEW", key: "9B", name: "ignored — first naming wins", gradeLevel: "9", section: "B" },
+        holdBack: [],
+      },
+    ]);
+    expect(result).toMatchObject({ ok: true, moved: 3, created: 2, archived: 2, heldBack: 0 });
+
+    const nineA = await db.class.findFirstOrThrow({ where: { schoolId: riversideId, name: "ZZ Promo 9A", archivedAt: null } });
+    const nineB = await db.class.findFirstOrThrow({ where: { schoolId: riversideId, name: "ZZ Promo 9B", archivedAt: null } });
+    expect(nineA).toMatchObject({ gradeLevel: "9", section: "A" });
+    expect(nineB).toMatchObject({ gradeLevel: "9", section: "B" });
+    expect(await db.class.count({ where: { schoolId: riversideId, name: { startsWith: "ZZ Promo 9" }, archivedAt: null } })).toBe(2);
+
+    const where = (id: string) => db.enrollment.findFirstOrThrow({ where: { studentMembershipId: id, status: "ACTIVE" }, select: { classId: true } });
+    expect((await where(pupils[4]!)).classId).toBe(nineA.id);
+    expect((await where(pupils[5]!)).classId).toBe(nineB.id); // the split
+    expect((await where(pupils[6]!)).classId).toBe(nineB.id); // the merge
+  });
+
+  it("⚠ a pupil cannot be both held back and reassigned", async () => {
+    await expect(
+      promoteSchool(admin, [
+        {
+          fromClassId: four,
+          to: { kind: "LEAVE" },
+          holdBack: [pupils[1]!],
+          reassign: [{ membershipId: pupils[1]!, to: { kind: "LEAVE" } }],
+        },
+      ]),
+    ).rejects.toMatchObject({ key: "access.aPupilHeldBackCannotAlsoMove" });
   });
 });
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { nameCarriesSection } from "@/lib/codes";
 import Link from "next/link";
 import { CalendarBlankIcon, WarningIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
@@ -96,7 +97,7 @@ export default async function ClassTimetablesPage({
                 }
               >
                 {klass.name}
-                {klass.section ? ` ${klass.section}` : ""}
+                {klass.section && !nameCarriesSection(klass.name, klass.section) ? ` ${klass.section}` : ""}
               </Link>
             ))}
           </nav>
