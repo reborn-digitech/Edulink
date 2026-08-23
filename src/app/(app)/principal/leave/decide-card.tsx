@@ -142,7 +142,7 @@ export function DecideCard({
                     {t("staff.deskBalance", { used: balance.used, entitlement: balance.entitlement, remaining: balance.remaining ?? 0 })}
                   </span>
                   {balance.remaining !== null && balance.remaining - balance.thisRequest < 0 && (
-                    <span className="ml-1 font-semibold text-danger">· {t("staff.deskOver", { over: balance.thisRequest - balance.remaining })}</span>
+                    <span className="font-semibold text-danger"> · {t("staff.deskOver", { over: balance.thisRequest - balance.remaining })}</span>
                   )}
                 </>
               )}
