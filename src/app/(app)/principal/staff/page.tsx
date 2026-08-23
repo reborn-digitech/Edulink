@@ -105,9 +105,9 @@ export default async function PrincipalStaffPage() {
                       {facts.length > 0 ? (
                         <dl className="mt-2 grid gap-x-6 gap-y-0.5 text-sm sm:grid-cols-2">
                           {facts.map(([label, value]) => (
-                            <div key={label} className="flex gap-2">
-                              <dt className="shrink-0 text-fg-muted">{label}</dt>
-                              <dd className="min-w-0 truncate font-medium text-fg">{value}</dd>
+                            <div key={label} className="flex flex-wrap gap-x-2">
+                              <dt className="text-fg-muted">{label}</dt>
+                              <dd className="min-w-0 break-words font-medium text-fg">{value}</dd>
                             </div>
                           ))}
                         </dl>
@@ -116,7 +116,7 @@ export default async function PrincipalStaffPage() {
                       )}
                     </div>
                     {showBalance && (
-                      <div className="shrink-0 rounded-[--radius-md] bg-surface-muted px-3 py-2 text-right">
+                      <div className="w-full rounded-[--radius-md] bg-surface-muted px-3 py-2 sm:w-auto sm:shrink-0 sm:text-right">
                         <p className="text-[0.65rem] font-semibold uppercase tracking-wide text-fg-subtle">{t("staff.balanceTitle")}</p>
                         <p className="mt-0.5 text-sm font-semibold text-fg">
                           {balance.entitlement === null
