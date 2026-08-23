@@ -5033,6 +5033,13 @@ export const en = {
     inTerm: "{count} in this term",
   },
   staff: {
+    rosterTitle: "Staff",
+    rosterSubtitle: "Everyone on the staff, with the record the office keeps and their leave this year.",
+    rosterEmpty: "No staff yet",
+    rosterEmptyBody: "Teachers and office staff appear here as they join.",
+    leadOf: "Class teacher of {classes}",
+    rosterReadOnly: "The office keeps these records; this page only reads them.",
+    rosterEditLink: "Edit in the directory",
     title: "Staff record for {name}",
     body: "What the office keeps on file. {name} can read it; only the office can change it. The joining date here is the one a letter quotes — not the day they joined the app.",
     staffNumber: "Staff number",

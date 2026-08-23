@@ -62,7 +62,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true, group: "running" },
     // The leave queue is genuinely an admin's to work — a school whose
     // principal is the one on leave still has to approve somebody's.
-    { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", prefix: true, group: "running" },
+    { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", prefix: true, group: "running", also: ["/principal/staff"] },
     { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", prefix: true, group: "running" },
     { href: "/admin/safety", labelKey: "nav.safety", icon: "shield", prefix: true, group: "running" },
     { href: "/admin/settings", labelKey: "nav.settings", icon: "gear", prefix: true, group: "running" },
@@ -78,7 +78,7 @@ export const NAV: Record<Role, NavItem[]> = {
   PRINCIPAL: [
     { href: "/principal", labelKey: "nav.dashboard", icon: "chartLine", primary: true, also: ["/attendance/history"] },
     { href: "/principal/classes", labelKey: "nav.classes", icon: "chalkboard", primary: true, prefix: true },
-    { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", primary: true, prefix: true },
+    { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", primary: true, prefix: true, also: ["/principal/staff"] },
     { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", primary: true, prefix: true },
     { href: "/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true },
     { href: "/principal/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "running" },

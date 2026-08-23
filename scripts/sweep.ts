@@ -1310,6 +1310,7 @@ async function leaveAndPrincipal(schoolId: string) {
   if (teacherActor) {
     await check(teacherActor, "/teacher/leave", 200, "a teacher may apply for leave");
     await check(teacherActor, "/principal/leave", 307, "…but not decide anybody's");
+    await check(teacherActor, "/principal/staff", 307, "⚠ …nor read colleagues' staff records");
     await check(teacherActor, "/principal", 307, "…nor open the principal's dashboard");
     await check(teacherActor, "/principal/classes", 307, "⚠ …nor the whole-school class figures");
   }
@@ -1346,6 +1347,7 @@ async function leaveAndPrincipal(schoolId: string) {
     await check(head, "/principal?days=99999", 200, "…and a nonsense window falls back");
     await check(head, "/principal/classes", 200, "…the class list");
     await check(head, "/principal/leave", 200, "…and the requests waiting for them");
+    await check(head, "/principal/staff", 200, "…and the staff roster with its records");
     await check(head, "/admin/calendar", 200, "…and the staff calendar, where leave shows");
     await check(head, "/teacher/leave", 200, "a principal takes leave like anybody else");
     // A principal READS the school; they do not mark registers or set it up.

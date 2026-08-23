@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import { leaveBalancesFor, leaveDays } from "@/lib/staff-records";
-import { CalendarCheckIcon } from "@phosphor-icons/react/ssr";
+import { CalendarCheckIcon , UsersThreeIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import {
@@ -163,9 +165,14 @@ export default async function PrincipalLeavePage() {
   return (
     <div className="mx-auto max-w-2xl space-y-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("principal.staffLeave")}
-        </h1>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
+            {t("principal.staffLeave")}
+          </h1>
+          <Button asChild variant="secondary" size="sm" icon={<UsersThreeIcon weight="bold" />}>
+            <Link href="/principal/staff">{t("staff.rosterTitle")}</Link>
+          </Button>
+        </div>
         <p className="mt-1 text-sm leading-relaxed text-fg-muted">{t("principal.staffLeaveBody")}</p>
       </div>
 
