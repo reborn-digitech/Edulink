@@ -4,8 +4,8 @@ import { requireSuperuser } from "@/lib/tenancy";
 import { jobStatuses } from "@/lib/jobs";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { formatInZone, relativeTime } from "@/lib/dates";
-import { getT } from "@/lib/i18n/server";
+import { formatInZone } from "@/lib/dates";
+import { getT, getRelativeTime } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -20,16 +20,22 @@ export async function generateMetadata(): Promise<Metadata> {
  */
 export default async function JobsPage() {
   const t = await getT();
+  const relativeTime = await getRelativeTime();
   await requireSuperuser();
   const statuses = await jobStatuses();
   const overdue = statuses.filter((s) => s.overdue).length;
+  const failed = statuses.filter((s) => !s.overdue && s.lastFailed).length;
 
   return (
     <div className="space-y-5">
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("root.jobs")}</h1>
         <p className="mt-1 text-sm text-fg-muted">
-          {overdue === 0
+          {overdue === 0 && failed > 0
+            ? failed === 1
+              ? t("root.jobsFailedOne")
+              : t("root.jobsFailedMany", { count: failed })
+            : overdue === 0
             ? t("root.jobsAllRunning")
             : overdue === 1
               ? t("root.jobsOverdueOne")
@@ -53,6 +59,8 @@ export default async function JobsPage() {
                       <Badge tone="info" size="sm">{t("root.jobRunning")}</Badge>
                     ) : job.overdue ? (
                       <Badge tone="danger" size="sm">{t("root.jobOverdue")}</Badge>
+                    ) : job.lastFailed ? (
+                      <Badge tone="warn" size="sm">{t("root.jobFailedLast")}</Badge>
                     ) : (
                       <Badge tone="ok" size="sm">{t("root.jobOnTime")}</Badge>
                     )}

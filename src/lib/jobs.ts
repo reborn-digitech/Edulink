@@ -143,6 +143,8 @@ export type JobStatus = {
   lastSuccessAt: Date | null;
   /** Never run, or last success older than the job expects. */
   overdue: boolean;
+  /** The most recent finished run did not succeed — on time or not, somebody should look. */
+  lastFailed: boolean;
   running: boolean;
 };
 
@@ -163,6 +165,7 @@ export async function jobStatuses(now: Date = new Date()): Promise<JobStatus[]> 
         : null,
       lastSuccessAt: lastOk?.startedAt ?? null,
       overdue: !lastOk || now.getTime() - lastOk.startedAt.getTime() > spec.expectEveryMs,
+      lastFailed: !!last && last.ok === false,
       running,
     });
   }

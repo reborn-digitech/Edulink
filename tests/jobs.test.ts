@@ -22,13 +22,17 @@ vi.mock("@/lib/notification-housekeeping", () => ({
   },
 }));
 
-// Only the rows THIS run wrote go — a job's real history is the operator's.
-const testStart = new Date();
+// Only the rows THIS file wrote go — a job's real history is the operator's.
+const mine: string[] = [];
+function track<T extends { status: string }>(out: T): T {
+  if ("runId" in out && typeof out.runId === "string") mine.push(out.runId);
+  return out;
+}
 beforeAll(async () => {
-  await db.jobRun.deleteMany({ where: { job: "notifications:tidy", finishedAt: null } });
+  await db.jobRun.deleteMany({ where: { job: "notifications:tidy", finishedAt: null, host: "test-stuck" } });
 });
 afterAll(async () => {
-  await db.jobRun.deleteMany({ where: { job: "notifications:tidy", startedAt: { gte: new Date(testStart.getTime() - 7 * 86_400_000) } } });
+  await db.jobRun.deleteMany({ where: { id: { in: mine } } });
   await db.$disconnect();
 });
 
@@ -36,7 +40,7 @@ describe("running a job", () => {
   it("records the run and its summary", async () => {
     const { runJob } = await import("@/lib/jobs");
     const now = new Date();
-    const out = await runJob("notifications:tidy", now);
+    const out = track(await runJob("notifications:tidy", now));
     expect(out).toMatchObject({ status: "done", summary: { autoRead: 3, expired: 1 } });
     const row = await db.jobRun.findFirstOrThrow({ where: { job: "notifications:tidy" }, orderBy: { startedAt: "desc" } });
     expect(row.ok).toBe(true);
@@ -48,7 +52,7 @@ describe("running a job", () => {
   it("⚠ a failure is recorded and reported, and does not throw", async () => {
     const { runJob } = await import("@/lib/jobs");
     fail = true;
-    const out = await runJob("notifications:tidy");
+    const out = track(await runJob("notifications:tidy"));
     fail = false;
     expect(out).toMatchObject({ status: "failed", error: "Error: boom" });
     const row = await db.jobRun.findFirstOrThrow({ where: { job: "notifications:tidy" }, orderBy: { startedAt: "desc" } });
@@ -59,14 +63,15 @@ describe("running a job", () => {
   it("⚠ a second copy while one is running is skipped; a crashed one is overridden", async () => {
     const { runJob, JOBS } = await import("@/lib/jobs");
     const before = calls.length;
-    const stuck = await db.jobRun.create({ data: { job: "notifications:tidy", startedAt: new Date(Date.now() - 60_000) } });
+    const stuck = await db.jobRun.create({ data: { job: "notifications:tidy", host: "test-stuck", startedAt: new Date(Date.now() - 60_000) } });
+    mine.push(stuck.id);
     const skipped = await runJob("notifications:tidy");
     expect(skipped).toMatchObject({ status: "skipped", reason: "running" });
     expect(calls.length).toBe(before); // the job did not run
 
     // Older than the ceiling: a crash, not a run.
     await db.jobRun.update({ where: { id: stuck.id }, data: { startedAt: new Date(Date.now() - JOBS["notifications:tidy"].maxRunMs - 1) } });
-    const ran = await runJob("notifications:tidy");
+    const ran = track(await runJob("notifications:tidy"));
     expect(ran.status).toBe("done");
     const overridden = await db.jobRun.findUniqueOrThrow({ where: { id: stuck.id } });
     expect(overridden.ok).toBe(false);
@@ -80,6 +85,7 @@ describe("what the operator sees", () => {
     const tidyNow = (await jobStatuses()).find((s) => s.name === "notifications:tidy")!;
     expect(tidyNow.overdue).toBe(false);
     expect(tidyNow.lastRun?.ok).toBe(true);
+    expect(tidyNow.lastFailed).toBe(false);
     const later = new Date(Date.now() + JOBS["notifications:tidy"].expectEveryMs + 1);
     const tidyLater = (await jobStatuses(later)).find((s) => s.name === "notifications:tidy")!;
     expect(tidyLater.overdue).toBe(true);

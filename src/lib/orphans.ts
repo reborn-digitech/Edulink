@@ -99,12 +99,16 @@ async function referencedFileIds(): Promise<Set<string>> {
 }
 
 /** Everything under the shard directories, with the size and mtime of each. */
-async function listStored(): Promise<{ files: OrphanCandidate[]; unrecognised: string[] }> {
+async function listStored(): Promise<{ files: OrphanCandidate[]; unrecognised: string[]; rootReadable: boolean }> {
   const files: OrphanCandidate[] = [];
   const unrecognised: string[] = [];
 
   const root = storageRoot();
-  const shards = await readdir(root).catch(() => [] as string[]);
+  let rootReadable = true;
+  const shards = await readdir(root).catch(() => {
+    rootReadable = false;
+    return [] as string[];
+  });
   for (const shard of shards) {
     const shardPath = join(root, shard);
     const entries = await readdir(shardPath).catch(() => [] as string[]);
@@ -119,7 +123,7 @@ async function listStored(): Promise<{ files: OrphanCandidate[]; unrecognised: s
     }
   }
 
-  return { files, unrecognised };
+  return { files, unrecognised, rootReadable };
 }
 
 /**
@@ -136,8 +140,21 @@ export async function reclaimOrphans(
   const graceMs = opts.graceMs ?? DEFAULT_GRACE_MS;
 
   // Disk first — see the note at the top of this file.
-  const { files, unrecognised } = await listStored();
+  const { files, unrecognised, rootReadable } = await listStored();
   const referenced = await referencedFileIds();
+
+  /**
+   * AN UNREADABLE DISK IS NOT AN EMPTY ONE. Reading a root that is not there
+   * as "no files" is right on a fresh deployment with nothing uploaded yet,
+   * and wrong the moment the database says files exist: then the sweep has
+   * been pointed at the wrong path, or the volume is not mounted, and a
+   * nightly "done, nothing to reclaim" would keep the jobs page green while
+   * the real disk fills. Deleting nothing is still the safe outcome; saying
+   * "done" is not. A battery found this reporting a clean sweep of a file.
+   */
+  if (!rootReadable && referenced.size > 0) {
+    throw new Error(`Storage root ${storageRoot()} is not readable, but ${referenced.size} file(s) are on record — nothing swept`);
+  }
 
   const cutoff = Date.now() - graceMs;
   let skippedRecent = 0;

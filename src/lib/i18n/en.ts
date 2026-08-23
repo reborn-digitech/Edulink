@@ -1259,6 +1259,9 @@ export const en = {
   /* The operator's console — /root, and the refusals its libs mint          */
   /* ---------------------------------------------------------------------- */
   root: {
+    jobFailedLast: "Last run failed",
+    jobsFailedOne: "Every job is on time, but the last run of 1 failed.",
+    jobsFailedMany: "Every job is on time, but the last run of {count} failed.",
     jobDescTidy: "Marks unread notices read after 90 days and removes read ones after a year.",
     jobDescDigest: "Sends every family one message a week saying what happened.",
     jobDescReclaim: "Deletes stored files no record points at any more.",

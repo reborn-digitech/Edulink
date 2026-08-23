@@ -47,9 +47,13 @@ if (!command) {
   process.exit(1);
 }
 
+// The ENVIRONMENT WINS over .env, the way dotenv itself works: a crontab line
+// that says STORAGE_DIR=/mnt/files must mean it. The file fills gaps; it does
+// not override what the operator set on the command line. (A battery found
+// the spread the other way round, with a job sweeping the wrong disk.)
 const child = spawn(command, args, {
   stdio: "inherit",
-  env: { ...process.env, ...fileEnv, DATABASE_URL: adminUrl },
+  env: { ...fileEnv, ...process.env, DATABASE_URL: adminUrl },
   shell: process.platform === "win32",
 });
 

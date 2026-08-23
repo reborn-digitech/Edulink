@@ -204,3 +204,17 @@ describe("what goes", () => {
     expect(report.deleted).not.toContain(ORPHAN); // already gone
   });
 });
+
+describe("⚠ an unreadable disk is not an empty one", () => {
+  it("refuses to report a clean sweep when files are on record but the root cannot be read", async () => {
+    const saved = process.env.STORAGE_DIR;
+    process.env.STORAGE_DIR = join(ROOT, "does-not-exist");
+    try {
+      // The seed's school logos are on record, so the sweep must refuse.
+      expect(await db.school.count({ where: { logoPath: { not: null } } })).toBeGreaterThan(0);
+      await expect(reclaimOrphans({ dryRun: true })).rejects.toThrow(/not readable/);
+    } finally {
+      process.env.STORAGE_DIR = saved;
+    }
+  });
+});
