@@ -23,7 +23,7 @@ export function ChildSwitcher({
   selectedId,
   basePath = "/parent",
 }: {
-  pupils: { studentMembershipId: string; name: string; schoolName: string }[];
+  pupils: { studentMembershipId: string; name: string; schoolName: string; leftAt?: Date | null }[];
   selectedId: string;
   basePath?: string;
 }) {
@@ -55,7 +55,10 @@ export function ChildSwitcher({
                   >
                     {child.name}
                   </span>
-                  <span className="block truncate text-xs text-fg-muted">{child.schoolName}</span>
+                  <span className="block truncate text-xs text-fg-muted">
+                    {child.schoolName}
+                    {child.leftAt ? ` · ${t("record.left")}` : ""}
+                  </span>
                 </span>
               </Link>
             </li>

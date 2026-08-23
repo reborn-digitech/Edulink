@@ -2259,6 +2259,11 @@ export const hi: Dictionary = {
     academicYear: "शैक्षणिक वर्ष",
   },
   parent: {
+    childLeftTitle: "{name} ने {date} को {school} छोड़ा",
+    childLeftBody: "स्कूल ने जो कुछ लिखा — रिपोर्ट कार्ड, उपस्थिति, बैज, स्थानांतरण प्रमाणपत्र — वह {name} के स्कूल रिकॉर्ड में सुरक्षित है, और अगले स्कूल को दिखाने के लिए आपका है।",
+    childLeftRecord: "{name} का स्कूल रिकॉर्ड",
+    childLeftBanner: "{name} ने {date} को स्कूल छोड़ा। यह पृष्ठ वही दिखाता है जो उनके यहाँ रहते हुआ।",
+    childLeftBannerLink: "उनका स्कूल रिकॉर्ड",
     youreLinkedTo: "आप {name} से जुड़ गए हैं",
     canNowSeeAt: "अब आप {school} में उनकी उपस्थिति, अंक और शिक्षक के संदेश देख सकते हैं।",
     issuedWhen: "जारी: {when}",

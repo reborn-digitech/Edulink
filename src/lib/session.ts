@@ -305,7 +305,7 @@ async function readContexts(userId: string) {
       where: { parentUserId: userId, status: "ACTIVE" },
       include: {
         student: {
-          include: { school: { select: { id: true, name: true } }, user: { select: { name: true, preferredName: true } } },
+          include: { school: { select: { id: true, name: true } }, user: { select: { id: true, name: true, preferredName: true } } },
         },
       },
       // `children[0]` is the child every parent page opens on. Without an
@@ -328,9 +328,14 @@ async function readContexts(userId: string) {
     children: guardianships.map((g) => ({
       guardianshipId: g.id,
       studentMembershipId: g.studentMembershipId,
+      studentUserId: g.student.user.id,
       name: g.student.user.preferredName ?? g.student.user.name,
       schoolId: g.student.schoolId,
       schoolName: g.student.school.name,
+      /** The child has LEFT this school. The guardianship deliberately survives
+       *  (it is what keeps the record reachable), so the pages must say so
+       *  rather than render an ordinary day. */
+      leftAt: g.student.leftAt,
     })),
   };
 }

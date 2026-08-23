@@ -24,6 +24,7 @@ import { AttendanceBadge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { ChildSwitcher } from "./child-switcher";
+import { ChildLeftPanel } from "./child-left";
 import { WelcomeTour } from "./welcome-tour";
 import { ConsentControls } from "../competitions/entry-controls";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
@@ -57,6 +58,29 @@ export default async function ParentDashboard({
   const student = link.student;
   const childName = student.user.preferredName ?? student.user.name;
   const timezone = student.school.timezone;
+
+  /**
+   * A CHILD WHO HAS LEFT DOES NOT GET AN ORDINARY DASHBOARD. The day-to-day
+   * cards — today's status, the streak, what is due — would all be
+   * rendering a world that has ended, which is worse than saying so. The
+   * switcher stays, so a family with one child still here loses nothing.
+   */
+  if (student.leftAt) {
+    return (
+      <div className="space-y-6">
+        {children.length > 1 && <ChildSwitcher pupils={children} selectedId={selectedId} />}
+        <ChildLeftPanel
+          child={{
+            studentMembershipId: selectedId,
+            studentUserId: student.user.id,
+            name: childName,
+            schoolName: student.school.name,
+            leftAt: student.leftAt,
+          }}
+        />
+      </div>
+    );
+  }
 
   const today = todayKey(timezone);
   const fourWeeksAgo = addDaysToKey(today, -28);

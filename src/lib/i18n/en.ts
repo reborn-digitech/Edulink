@@ -2483,6 +2483,11 @@ export const en = {
   /* A guardian's pages â the screens this product exists to put in a hand    */
   /* ---------------------------------------------------------------------- */
   parent: {
+    childLeftTitle: "{name} left {school} on {date}",
+    childLeftBody: "Everything the school wrote — report cards, attendance, badges, the leaving certificate — is kept on {name}’s school record, and it stays yours to show a next school.",
+    childLeftRecord: "{name}’s school record",
+    childLeftBanner: "{name} left the school on {date}. This page shows what happened while they were here.",
+    childLeftBannerLink: "Their school record",
     youreLinkedTo: "You’re linked to {name}",
     canNowSeeAt: "You can now see their attendance, grades and teacher messages at {school}.",
     issuedWhen: "Issued {when}",

@@ -608,3 +608,31 @@ describe("the certificate as a document", () => {
     expect(tc?.studentCode).toBe((await db.membership.findUniqueOrThrow({ where: { id: pupilMembershipId } })).studentCode);
   });
 });
+
+
+describe("what the family is left holding", () => {
+  it("⚠ the parent's child list says the child has LEFT rather than dropping them or pretending", async () => {
+    const { listContexts } = await import("@/lib/session");
+    const parent = await db.user.create({ data: { email: "zz.leftvis.parent@riverside.test", name: "ZZ LeftVis Parent", prefs: "{}" } });
+    try {
+      await db.guardianship.create({
+        data: { parentUserId: parent.id, studentMembershipId: pupilMembershipId, studentSchoolId: riversideId, status: "ACTIVE" },
+      });
+      const before = await listContexts(parent.id);
+      expect(before.children.find((c) => c.studentMembershipId === pupilMembershipId)?.leftAt).toBeNull();
+
+      const result = await recordDeparture(admin, pupilMembershipId, { reason: "TRANSFERRED", leftOn: new Date("2026-04-30T00:00:00Z") });
+      expect(result.ok).toBe(true);
+
+      const after = await listContexts(parent.id);
+      const child = after.children.find((c) => c.studentMembershipId === pupilMembershipId);
+      // Still listed — the guardianship survives — and honestly marked.
+      expect(child).toBeDefined();
+      expect(child?.leftAt?.toISOString().slice(0, 10)).toBe("2026-04-30");
+      expect(child?.studentUserId).toBe(pupilUserId);
+    } finally {
+      await db.guardianship.deleteMany({ where: { parentUserId: parent.id } });
+      await db.user.delete({ where: { id: parent.id } });
+    }
+  });
+});

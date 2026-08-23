@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ChildLeftBanner } from "../child-left";
 import { BrainIcon, MedalIcon, CheckCircleIcon } from "@phosphor-icons/react/ssr";
 import { requireParent } from "@/lib/tenancy";
 import { listContexts } from "@/lib/session";
@@ -57,6 +58,12 @@ export default async function ParentPracticePage({
       {children.length > 1 && (
         <ChildSwitcher pupils={children} selectedId={selectedId} basePath="/parent/practice" />
       )}
+      {(() => {
+        const sel = children.find((c) => c.studentMembershipId === selectedId);
+        return sel?.leftAt ? (
+          <ChildLeftBanner child={{ studentMembershipId: sel.studentMembershipId, studentUserId: sel.studentUserId, name: sel.name, schoolName: sel.schoolName, leftAt: sel.leftAt }} />
+        ) : null;
+      })()}
 
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
