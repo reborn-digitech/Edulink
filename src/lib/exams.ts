@@ -160,6 +160,30 @@ export async function addSlot(
       ? Math.round(input.endMinute)
       : null;
 
+  if (startMinute !== null && endMinute !== null) {
+    // EVERY series of the grade, INCLUDING this one — a child cannot sit
+    // Maths and History at once whichever sheet they are filed under. Only
+    // the very paper being written is excluded, so moving a subject's own
+    // time never clashes with its old self. (A battery scheduled an
+    // overlapping paper into the same series and the first guard let it by.)
+    const sameDay = await db.examSlot.findMany({
+      where: {
+        schoolId,
+        dateKey: input.dateKey,
+        NOT: { seriesId, subject },
+        series: { gradeLevel: (await db.examSeries.findUniqueOrThrow({ where: { id: seriesId }, select: { gradeLevel: true } })).gradeLevel, archivedAt: null },
+        startMinute: { not: null },
+        endMinute: { not: null },
+      },
+      select: { subject: true, startMinute: true, endMinute: true, series: { select: { name: true } } },
+    });
+    const clash = sameDay.find((other) => other.startMinute! < endMinute && startMinute < other.endMinute!);
+    if (clash) {
+      throw new AccessError("access.papersClash", "FORBIDDEN", { subject: clash.subject, series: clash.series.name });
+    }
+  }
+
+
   await db.examSlot.upsert({
     where: { seriesId_subject: { seriesId, subject } },
     // Re-adding a subject updates its paper rather than refusing: "we moved
@@ -176,24 +200,6 @@ export async function addSlot(
       position: series._count.slots,
     },
   });
-  if (startMinute !== null && endMinute !== null) {
-    const sameDay = await db.examSlot.findMany({
-      where: {
-        schoolId,
-        dateKey: input.dateKey,
-        seriesId: { not: seriesId },
-        series: { gradeLevel: (await db.examSeries.findUniqueOrThrow({ where: { id: seriesId }, select: { gradeLevel: true } })).gradeLevel, archivedAt: null },
-        startMinute: { not: null },
-        endMinute: { not: null },
-      },
-      select: { subject: true, startMinute: true, endMinute: true, series: { select: { name: true } } },
-    });
-    const clash = sameDay.find((other) => other.startMinute! < endMinute && startMinute < other.endMinute!);
-    if (clash) {
-      throw new AccessError("access.papersClash", "FORBIDDEN", { subject: clash.subject, series: clash.series.name });
-    }
-  }
-
   // A round with no term yet takes the term its first paper falls in.
   if (!series.termId) {
     const term = await termForDate(schoolId, input.dateKey);

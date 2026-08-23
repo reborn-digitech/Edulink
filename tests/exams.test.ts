@@ -274,6 +274,17 @@ describe("the date sheet warns like the register", () => {
     ).rejects.toMatchObject({ key: "access.papersClash", vars: { subject: "Maths" } });
     // Afternoon after the morning paper: no overlap, no refusal.
     await addSlot(admin, rival, { subject: "History", dateKey: "2026-11-17", maxMarks: 50, startMinute: 780, endMinute: 900 });
+
+    // ⚠ The SAME series clashes too — a battery scheduled an overlapping
+    // paper into its own series and the first guard let it by.
+    await expect(
+      addSlot(admin, guardSeriesId, { subject: "Geography", dateKey: "2026-11-17", maxMarks: 50, startMinute: 600, endMinute: 700 }),
+    ).rejects.toMatchObject({ key: "access.papersClash", vars: { subject: "Maths" } });
+    // Moving a subject's OWN time never clashes with its old self.
+    await addSlot(admin, guardSeriesId, { subject: "Maths", dateKey: "2026-11-17", maxMarks: 80, startMinute: 555, endMinute: 675 });
+    // ⚠ And the refused Geography was never written — a refusal that
+    // persists its row is worse than no refusal at all.
+    expect(await db.examSlot.count({ where: { seriesId: guardSeriesId, subject: "Geography" } })).toBe(0);
   });
 
   it("⚠ refuses to remove a paper with marks saved", async () => {
