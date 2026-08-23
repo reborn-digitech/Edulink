@@ -1203,6 +1203,7 @@ async function operatorArea() {
   // The server log is as closed as the rest of it — it names every school on
   // the installation, which is precisely what a tenant must not see.
   await check(actor, "/root/audit", 307, "⚠ …as is the server log");
+  await check(actor, "/root/jobs", 307, "⚠ …and the jobs page");
   await check(null, "/root/audit", 307, "…to nobody at all either");
   // The marketplace queue names every expert on the installation, so it is as
   // closed as the rest of this area.
@@ -1220,6 +1221,7 @@ async function operatorArea() {
     // The operator's own trail. Written with schoolId NULL since superusers
     // existed, and until now nothing in the app could read it.
     await check(actor, "/root/audit", 200, "⚠ …and may read what they have done");
+    await check(actor, "/root/jobs", 200, "…and whether the scheduled jobs have run");
     // THE DOOR THAT HAD NO HANDLE. `publishedAt` has always gated the
     // marketplace and nothing in the app could set it — only the seed — so no
     // expert could ever be listed on a real installation.

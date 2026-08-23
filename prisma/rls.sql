@@ -852,6 +852,7 @@ CREATE POLICY "OperatorAccess_operator_update" ON "OperatorAccess"
 --   ExpertProfile
 --   ExpertSlot
 --   Guardianship
+--   JobRun
 --   OutboundEmail
 --   PushSubscription
 --   QuizQuestion

@@ -1697,6 +1697,25 @@ model OperatorAccess {
 /// Dev-only outbox. EMAIL_TRANSPORT="devbox" writes here instead of sending,
 /// and /dev/mailbox renders it. Keeps magic-link and invite flows fully
 /// exercisable with no SMTP credentials.
+/// One run of a scheduled job — the tidy, the digest, the file sweep. The
+/// row is written when the run starts and finished when it ends, so an
+/// unfinished row is the lock that stops a second copy starting, and the
+/// operator can read on /root/jobs whether Friday's digest went out. No
+/// tenant: a job runs for the whole server.
+model JobRun {
+  id         String    @id @default(cuid())
+  job        String
+  startedAt  DateTime  @default(now())
+  finishedAt DateTime?
+  ok         Boolean?
+  /// JSON: whatever the job returned (counts), or nothing.
+  summary    String    @default("{}")
+  error      String?
+  host       String?
+
+  @@index([job, startedAt])
+}
+
 model OutboundEmail {
   id        String   @id @default(cuid())
   to        String

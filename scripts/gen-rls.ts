@@ -35,6 +35,8 @@ const NO_SCHOOL_POLICY = new Set([
   "Guardianship",
   "Competition",
   "OutboundEmail",
+  // A scheduled job runs for the whole server, not for a school.
+  "JobRun",
   // Counts attempts, and every one of them happens before there is a session
   // or a tenant — which is precisely the moment a limit is needed. It holds no
   // school data: a bucket name and an integer.

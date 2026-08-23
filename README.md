@@ -174,6 +174,8 @@ applies here: you cannot revoke the only one.
 | `npm run guardians:backfill` | Give every unclaimed pupil their stand-in guardian (class teacher/admin). `--dry` to preview. Idempotent |
 | `npm run files:check` | List stored files no record references — **deletes nothing** |
 | `npm run files:reclaim` | Actually delete them. Read the check output first |
+| `npm run job -- <name>` | Run one scheduled job now: `notifications:tidy`, `digest:weekly` or `files:reclaim`. `--json` for one line a monitor can read. The JobRun row is the lock — a second copy while one runs is skipped |
+| `npm run cron:install` | Put every scheduled job into this user's crontab, generated from `src/lib/jobs.ts`. Idempotent; leaves the rest of the crontab alone. `cron:show` checks what is installed is current; `cron:remove` takes the block out |
 | `npm run backfill:school-id` | Add/fill the denormalised schoolId on an existing dev DB |
 | `npm run quiz:verify` | Check the hand-written question bank. Structure + arithmetic. **Says what it cannot check** |
 | `npm run quiz:import` | Load `content/quiz/*.json`. Verifies first and refuses the run if anything fails |
@@ -216,6 +218,33 @@ which is the same blind spot in a different costume. Skips are now listed and
 counted under the table. Where a fixture can reasonably be made, it is: the
 sweep creates a published expert and a stand-in principal for the length of a
 run and removes both in a `finally`.
+
+### Running the scheduled jobs
+
+Three things have to happen on a clock and nothing in the app starts a timer
+for them — two instances would mean two sweeps, and a deletion pass should never
+race itself. They live in one table, `src/lib/jobs.ts`, with their schedules:
+
+| Job | When | Does |
+|---|---|---|
+| `notifications:tidy` | 03:30 daily | Unread notices read after 90 days; read ones removed after a year |
+| `files:reclaim` | 03:00 daily | Deletes stored files no record points at |
+| `digest:weekly` | Friday 16:00 | One message a week to every family |
+
+On the server, once:
+
+```bash
+npm run cron:install
+```
+
+That generates the crontab block from the table, installs it under marker lines
+in the operator's crontab (everything else there is left as found), and writes
+the operator's copy to `ops/crontab`. Each entry runs `npm run job -- <name>
+--json` and appends a line to `logs/jobs.log`. Every run writes a `JobRun` row —
+start, finish, counts or the error — and `/root/jobs` shows the operator whether
+each job is on time, with OVERDUE in red when the last success is older than the
+job expects. `npm run cron:show` says whether what is installed still matches
+the table; edit a schedule and forget to reinstall and it says so.
 
 ### Running the file sweep on a schedule
 

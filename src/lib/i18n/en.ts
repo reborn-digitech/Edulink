@@ -1259,6 +1259,22 @@ export const en = {
   /* The operator's console — /root, and the refusals its libs mint          */
   /* ---------------------------------------------------------------------- */
   root: {
+    jobDescTidy: "Marks unread notices read after 90 days and removes read ones after a year.",
+    jobDescDigest: "Sends every family one message a week saying what happened.",
+    jobDescReclaim: "Deletes stored files no record points at any more.",
+    jobs: "Jobs",
+    jobsAllRunning: "Every scheduled job has run when it should.",
+    jobsOverdueOne: "1 job is overdue.",
+    jobsOverdueMany: "{count} jobs are overdue.",
+    jobsHow: "Nothing in the app runs these on its own. On the server, once:",
+    jobRunning: "Running",
+    jobOverdue: "Overdue",
+    jobOnTime: "On time",
+    jobLastRun: "Last run",
+    jobOk: "ok",
+    jobFailed: "failed",
+    jobNever: "Never",
+    jobLastSuccess: "Last success",
     serverAdministration: "Server administration",
     newSchoolIntro: "Creating a school does not give it anybody to run it. Invite an administrator afterwards — that is the next screen.",
     auditIntro: "Everything done from outside a school — schools added, details corrected, administrators invited. A school’s own history stays inside that school.",

@@ -129,6 +129,7 @@ const NOT_TENANT_SCOPED: Record<string, string> = {
   Guardianship: "deliberately cross-school: it is the link between a parent and a child",
   Competition: "organizerSchoolId is nullable because a competition may be run by nobody's school",
   OutboundEmail: "a dev mailbox of sent mail; has no tenant and holds no school data",
+  JobRun: "a scheduled job runs for the whole server; the row is the lock and the log",
   RateLimit: "counts attempts made before any session exists; a bucket name and an integer",
   QuizTopic: "a shared practice catalogue, like Competition — a chapter belongs to no school",
   QuizQuestion: "belongs to a QuizTopic, which belongs to no school",
@@ -159,7 +160,7 @@ describe("the schema parses at all", () => {
       "If this FELL, the regex above has stopped matching and every assertion " +
         "below is passing vacuously. If it ROSE, a model was added — say how it " +
         "is scoped in one of the three lists and update this number.",
-    ).toBe(66);
+    ).toBe(67);
   });
 });
 
