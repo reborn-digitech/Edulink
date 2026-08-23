@@ -45,6 +45,9 @@ const ENGLISH = flatten(en);
  */
 const SHARED_WITH_ENGLISH = new Set([
   "login.emailPlaceholder",
+  // A degree abbreviation — "M.Sc., B.Ed." is how an Indian staff file writes
+  // it in any language; the label beside it is translated.
+  "staff.qualificationPlaceholder",
   /**
    * A DATE MASK IS NOT PROSE. `dd/mm/yyyy` is the shape of what to type, and the
    * letters are the widely-understood mnemonic — translating them to दद/मम/वववव

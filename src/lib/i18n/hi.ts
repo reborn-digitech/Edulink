@@ -1533,6 +1533,7 @@ export const hi: Dictionary = {
   },
 
   access: {
+    onlyAnAdminCanEditStaffRecords: "केवल स्कूल एडमिन ही स्टाफ रिकॉर्ड बदल सकता है।",
     termNotFound: "इस स्कूल में ऐसा कोई सत्र नहीं।",
     onlyAnAdminCanSetTerms: "केवल स्कूल एडमिन ही सत्र (टर्म) तय कर सकता है।",
     aPupilHeldBackCannotAlsoMove: "रोके गए विद्यार्थी को साथ ही आगे नहीं भेजा जा सकता।",
@@ -3551,6 +3552,7 @@ export const hi: Dictionary = {
   },
 
   audit: {
+    staffRecordSet: "एक स्टाफ सदस्य का रिकॉर्ड अपडेट किया",
     termCreate: "वर्ष में एक सत्र जोड़ा",
     termDelete: "एक सत्र हटाया",
     authFirstSigninIssue: "विद्यार्थी को पहला साइन-इन कोड जारी किया",
@@ -3694,6 +3696,7 @@ export const hi: Dictionary = {
     expertProfileUpdate: "एक विशेषज्ञ ने अपनी प्रोफ़ाइल बदली",
   },
   people: {
+    staffRecordAction: "स्टाफ रिकॉर्ड…",
     firstSigninAction: "साइन-इन कोड जारी करें",
     birthdateAction: "जन्मतिथि…",
     birthdateTitle: "{name} की जन्मतिथि",
@@ -4345,6 +4348,7 @@ export const hi: Dictionary = {
     forChild: "{name} के लिए",
   },
   notifTitle: {
+    staffRecordUpdated: "आपका स्टाफ रिकॉर्ड अपडेट हुआ",
     birthdateSet: "आपकी जन्मतिथि बदली गई",
     promoted: "आप अगली कक्षा में पहुँच गए",
     childPromoted: "{name} अगली कक्षा में पहुँच गया/गई",
@@ -4389,6 +4393,7 @@ export const hi: Dictionary = {
     newMessageFromSchool: "आपके स्कूल से नया संदेश",
   },
   notifBody: {
+    staffRecordUpdated: "कार्यालय ने आपका स्टाफ रिकॉर्ड अपडेट किया। देखने के लिए अपनी प्रोफ़ाइल खोलें।",
     birthdateSet: "स्कूल कार्यालय ने आपकी जन्मतिथि दर्ज की। अगर ग़लत है तो कार्यालय को बताएँ।",
     birthdateCleared: "स्कूल कार्यालय ने आपकी जन्मतिथि हटा दी। अगर यह ग़लत है तो कार्यालय को बताएँ।",
     promoted: "अब आप {className} में हैं। आज से आपकी समय-सारणी और हाज़िरी वही दिखाएगी।",
@@ -4592,6 +4597,35 @@ export const hi: Dictionary = {
     cardNoTerm: "किसी सत्र से नहीं",
     builderTermHint: "सत्र चुनें: उसका नाम शीर्षक बनता है, उसकी तिथियाँ उपस्थिति की अवधि, और उसकी परीक्षाएँ टिक हो जाती हैं।",
     inTerm: "इस सत्र में {count}",
+  },
+  staff: {
+    title: "{name} का स्टाफ रिकॉर्ड",
+    body: "कार्यालय जो फ़ाइल में रखता है। {name} इसे पढ़ सकते हैं; केवल कार्यालय बदल सकता है। यहाँ की नियुक्ति तिथि वही है जो पत्र में लिखी जाती है — ऐप से जुड़ने का दिन नहीं।",
+    staffNumber: "स्टाफ संख्या",
+    designation: "पदनाम",
+    designationPlaceholder: "PGT गणित",
+    qualification: "योग्यता",
+    qualificationPlaceholder: "M.Sc., B.Ed.",
+    joinedOn: "स्कूल में नियुक्ति तिथि",
+    leaveDays: "प्रति वर्ष छुट्टी के दिन",
+    leaveDaysHint: "आकस्मिक और बीमारी की छुट्टी इसी में से कटती है। तय हक़ न हो तो खाली छोड़ें।",
+    saved: "स्टाफ रिकॉर्ड सहेजा",
+    notSaved: "रिकॉर्ड सहेजा नहीं जा सका",
+    notStaffHere: "वह इस स्कूल का स्टाफ सदस्य नहीं है।",
+    badDate: "यह सही तारीख नहीं है।",
+    joinedInFuture: "नियुक्ति तिथि भविष्य में नहीं हो सकती।",
+    badLeaveDays: "छुट्टी के दिन 365 तक की पूर्ण संख्या होनी चाहिए।",
+    yourRecord: "आपका स्टाफ रिकॉर्ड",
+    nothingOnFile: "अभी फ़ाइल में कुछ नहीं — कार्यालय इसे भरता है।",
+    joined: "{date} को नियुक्त",
+    balanceTitle: "इस वर्ष की छुट्टी",
+    balance: "{entitlement} में से {used} दिन लिए · {remaining} बचे",
+    balancePending: "{pending} और माँगे गए",
+    noEntitlement: "कोई हक़ तय नहीं — इस वर्ष {used} दिन स्वीकृत",
+    balanceYear: "शैक्षणिक वर्ष {year}",
+    deskBalance: "इस वर्ष {entitlement} में से {used} लिए · {remaining} बचे",
+    deskNoEntitlement: "फ़ाइल में कोई हक़ नहीं · इस वर्ष {used} दिन स्वीकृत",
+    deskOver: "यह अनुरोध {over} दिन ऊपर ले जाएगा",
   },
   meta: {
     firstSignin: "पहला साइन-इन",

@@ -1530,6 +1530,7 @@ export const mr: Dictionary = {
   },
 
   access: {
+    onlyAnAdminCanEditStaffRecords: "फक्त शाळेचा अ‍ॅडमिनच कर्मचारी नोंदी बदलू शकतो.",
     termNotFound: "या शाळेत असे सत्र नाही.",
     onlyAnAdminCanSetTerms: "फक्त शाळेचा अ‍ॅडमिनच सत्रे ठरवू शकतो.",
     aPupilHeldBackCannotAlsoMove: "मागे ठेवलेल्या विद्यार्थ्याला सोबतच पुढे पाठवता येत नाही.",
@@ -3548,6 +3549,7 @@ export const mr: Dictionary = {
   },
 
   audit: {
+    staffRecordSet: "एका कर्मचाऱ्याची नोंद अद्ययावत केली",
     termCreate: "वर्षात सत्र जोडले",
     termDelete: "सत्र काढले",
     authFirstSigninIssue: "विद्यार्थ्याला पहिला साइन-इन कोड दिला",
@@ -3691,6 +3693,7 @@ export const mr: Dictionary = {
     expertProfileUpdate: "एका तज्ज्ञाने आपली प्रोफाइल बदलली",
   },
   people: {
+    staffRecordAction: "कर्मचारी नोंद…",
     firstSigninAction: "साइन-इन कोड द्या",
     birthdateAction: "जन्मतारीख…",
     birthdateTitle: "{name} ची जन्मतारीख",
@@ -4340,6 +4343,7 @@ export const mr: Dictionary = {
     forChild: "{name} साठी",
   },
   notifTitle: {
+    staffRecordUpdated: "तुमची कर्मचारी नोंद अद्ययावत झाली",
     birthdateSet: "तुमची जन्मतारीख बदलली",
     promoted: "तुम्ही पुढच्या वर्गात गेलात",
     childPromoted: "{name} पुढच्या वर्गात गेला/गेली",
@@ -4384,6 +4388,7 @@ export const mr: Dictionary = {
     newMessageFromSchool: "तुमच्या शाळेकडून नवा संदेश",
   },
   notifBody: {
+    staffRecordUpdated: "कार्यालयाने तुमची कर्मचारी नोंद अद्ययावत केली. पाहण्यासाठी तुमची प्रोफाइल उघडा.",
     birthdateSet: "शाळेच्या कार्यालयाने तुमची जन्मतारीख नोंदवली. चुकीची असेल तर कार्यालयाला सांगा.",
     birthdateCleared: "शाळेच्या कार्यालयाने तुमची जन्मतारीख काढली. ते चुकीचे असेल तर कार्यालयाला सांगा.",
     promoted: "आता तुम्ही {className} मध्ये आहात. आजपासून तुमचे वेळापत्रक आणि हजेरी तेच दाखवतील.",
@@ -4587,6 +4592,35 @@ export const mr: Dictionary = {
     cardNoTerm: "सत्रातून नाही",
     builderTermHint: "सत्र निवडा: त्याचे नाव शीर्षक बनते, त्याच्या तारखा उपस्थितीचा कालावधी, आणि त्याच्या परीक्षा टिक होतात.",
     inTerm: "या सत्रात {count}",
+  },
+  staff: {
+    title: "{name} यांची कर्मचारी नोंद",
+    body: "कार्यालय जे फाइलीत ठेवते. {name} ते वाचू शकतात; फक्त कार्यालय बदलू शकते. इथली रुजू तारीख तीच जी पत्रात लिहिली जाते — अ‍ॅपमध्ये आल्याचा दिवस नव्हे.",
+    staffNumber: "कर्मचारी क्रमांक",
+    designation: "पदनाम",
+    designationPlaceholder: "PGT गणित",
+    qualification: "पात्रता",
+    qualificationPlaceholder: "M.Sc., B.Ed.",
+    joinedOn: "शाळेत रुजू झाल्याची तारीख",
+    leaveDays: "वर्षाला रजेचे दिवस",
+    leaveDaysHint: "किरकोळ आणि आजारपणाची रजा यातून वजा होते. ठरलेला हक्क नसेल तर रिकामे ठेवा.",
+    saved: "कर्मचारी नोंद जतन केली",
+    notSaved: "नोंद जतन करता आली नाही",
+    notStaffHere: "ती व्यक्ती या शाळेची कर्मचारी नाही.",
+    badDate: "ही खरी तारीख नाही.",
+    joinedInFuture: "रुजू तारीख भविष्यातली असू शकत नाही.",
+    badLeaveDays: "रजेचे दिवस 365 पर्यंतची पूर्ण संख्या हवी.",
+    yourRecord: "तुमची कर्मचारी नोंद",
+    nothingOnFile: "अजून फाइलीत काही नाही — कार्यालय हे भरते.",
+    joined: "{date} रोजी रुजू",
+    balanceTitle: "या वर्षीची रजा",
+    balance: "{entitlement} पैकी {used} दिवस घेतले · {remaining} शिल्लक",
+    balancePending: "आणखी {pending} मागितले",
+    noEntitlement: "हक्क ठरलेला नाही — या वर्षी {used} दिवस मंजूर",
+    balanceYear: "शैक्षणिक वर्ष {year}",
+    deskBalance: "या वर्षी {entitlement} पैकी {used} घेतले · {remaining} शिल्लक",
+    deskNoEntitlement: "फाइलीत हक्क नाही · या वर्षी {used} दिवस मंजूर",
+    deskOver: "ही विनंती {over} दिवस जास्त जाईल",
   },
   meta: {
     firstSignin: "पहिले साइन-इन",

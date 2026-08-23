@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { leaveBalanceFor } from "@/lib/staff-records";
+import { LeaveBalanceCard } from "@/components/leave-balance-card";
 import { CalendarIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
@@ -21,7 +23,7 @@ export default async function TeacherLeavePage() {
     select: { timezone: true },
   });
 
-  const [requests, staff] = await Promise.all([
+  const [requests, staff, balance] = await Promise.all([
     myLeave(ctx),
     db.membership.findMany({
       where: {
@@ -35,6 +37,7 @@ export default async function TeacherLeavePage() {
       select: { id: true, user: { select: { name: true, preferredName: true } } },
       orderBy: { joinedAt: "asc" },
     }),
+    leaveBalanceFor(ctx.schoolId!, ctx.membershipId!),
   ]);
 
   return (
@@ -50,6 +53,8 @@ export default async function TeacherLeavePage() {
           </p>
         </div>
       </div>
+
+      <LeaveBalanceCard balance={balance} t={t} />
 
       <LeaveForm
         requests={requests}

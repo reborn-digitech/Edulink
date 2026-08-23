@@ -109,6 +109,7 @@ export default async function DirectoryPage({
         },
         classTeachers: { include: { class: { select: { name: true } } } },
         schoolRecord: { select: { id: true, destination: true } },
+        staffRecord: true,
       },
       orderBy:
         sort === "recent" ? { joinedAt: "desc" } : [{ user: { name: "asc" } }],
@@ -299,6 +300,11 @@ export default async function DirectoryPage({
                             )}
                           </p>
                         )}
+                        {role !== "STUDENT" && member.staffRecord && (member.staffRecord.designation || member.staffRecord.joinedOn) && (
+                          <p className="mt-0.5 text-xs text-fg-subtle">
+                            {[member.staffRecord.designation, member.staffRecord.joinedOn ? t("staff.joined", { date: formatDate(member.staffRecord.joinedOn) }) : null].filter(Boolean).join(" · ")}
+                          </p>
+                        )}
                         {role === "STUDENT" && !member.leftAt && (
                           <p className="mt-0.5 text-xs text-fg-subtle">
                             {member.user.birthdate
@@ -351,6 +357,17 @@ export default async function DirectoryPage({
                           subjects={subjects}
                           birthdate={member.user.birthdate?.toISOString().slice(0, 10) ?? ""}
                           handleOnly={!isDeliverableEmail(member.user.email)}
+                          staffRecord={
+                            role === "STUDENT"
+                              ? undefined
+                              : {
+                                  staffNumber: member.staffRecord?.staffNumber ?? "",
+                                  designation: member.staffRecord?.designation ?? "",
+                                  qualification: member.staffRecord?.qualification ?? "",
+                                  joinedOnKey: member.staffRecord?.joinedOn?.toISOString().slice(0, 10) ?? "",
+                                  leaveDaysPerYear: member.staffRecord?.leaveDaysPerYear?.toString() ?? "",
+                                }
+                          }
                           suspended={member.status === "SUSPENDED"}
                           hasLeft={member.leftAt !== null}
                         />

@@ -12,6 +12,7 @@ import {
 import { setTeacherSubjects } from "@/lib/reviews";
 import { inviteParent } from "@/lib/parent-link";
 import { issueFirstSignIn } from "@/lib/first-signin";
+import { setStaffRecord, type StaffRecordInput } from "@/lib/staff-records";
 import { setMemberBirthdate } from "@/lib/birthdate";
 import type { GuardianRelation } from "@/lib/constants";
 import {
@@ -211,5 +212,18 @@ export async function issueFirstSignInAction(
     return { ok: true, issued: { ...result.issued, expiresAt: result.issued.expiresAt.toISOString() } };
   } catch (error) {
     return failure(error) as Result & { ok: false };
+  }
+}
+
+export async function setStaffRecordAction(membershipId: string, input: StaffRecordInput): Promise<Result> {
+  try {
+    const ctx = await requireApiRole("ADMIN");
+    const result = await setStaffRecord(ctx, membershipId, input);
+    if (!result.ok) return { ok: false, errorKey: result.errorKey };
+    revalidatePath("/admin/people");
+    revalidatePath("/teacher/profile");
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
   }
 }

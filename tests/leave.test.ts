@@ -12,6 +12,7 @@ import {
 import { registerDuty } from "@/lib/register-duty";
 import { forSchool } from "@/lib/tenant-context";
 import type { ActiveContext } from "@/lib/session";
+import { leaveBalanceFor, leaveDays, setStaffRecord, staffRecordFor } from "@/lib/staff-records";
 
 /**
  * Staff leave, and the cover that must follow it.
@@ -557,5 +558,50 @@ describe("⚠ staff-only by construction", () => {
     await applyForLeave(applicant, BASE);
     expect(await myLeave(applicant)).toHaveLength(1);
     expect(await myLeave(coverStaff)).toHaveLength(0);
+  });
+});
+
+
+describe("the staff record, and the balance the desk reads from it", () => {
+  it("⚠ the office writes it, the member reads their own, nobody else sees it", async () => {
+    await expect(setStaffRecord(applicant, applicantMembershipId, { designation: "x" })).rejects.toBeInstanceOf(AccessError);
+    expect(await setStaffRecord(otherSchoolAdmin, applicantMembershipId, { designation: "x" })).toMatchObject({ ok: false, errorKey: "staff.notStaffHere" });
+    expect(await setStaffRecord(admin, applicantMembershipId, { joinedOnKey: "2999-01-01" })).toMatchObject({ ok: false, errorKey: "staff.joinedInFuture" });
+    expect(await setStaffRecord(admin, applicantMembershipId, { leaveDaysPerYear: 400 })).toMatchObject({ ok: false, errorKey: "staff.badLeaveDays" });
+    expect(
+      await setStaffRecord(admin, applicantMembershipId, { staffNumber: "T-042", designation: "PGT Maths", qualification: "M.Sc., B.Ed.", joinedOnKey: "2019-06-03", leaveDaysPerYear: 12 }),
+    ).toEqual({ ok: true });
+    const own = await staffRecordFor(applicant, applicantMembershipId);
+    expect(own).toMatchObject({ staffNumber: "T-042", designation: "PGT Maths", joinedOnKey: "2019-06-03", leaveDaysPerYear: 12 });
+    expect(await staffRecordFor(coverStaff, applicantMembershipId)).toBeNull(); // a colleague, not the office
+    expect(await staffRecordFor(principal, applicantMembershipId)).not.toBeNull(); // the desk
+    expect(await staffRecordFor(otherSchoolAdmin, applicantMembershipId)).toBeNull();
+  });
+
+  it("counts weekdays, and only the kinds that draw on the entitlement", async () => {
+    expect(leaveDays("2026-05-01", "2026-05-04")).toBe(2); // Fri → Mon
+    expect(leaveDays("2026-05-04", "2026-05-08")).toBe(5);
+    await setStaffRecord(admin, applicantMembershipId, { leaveDaysPerYear: 12 });
+    // Balance is against the CURRENT year; BASE's dates may sit outside it, so ask with a window of this year's.
+    const year = await db.academicYear.findFirst({ where: { schoolId: riversideId, isCurrent: true } });
+    const inYear = year ? year.startDate.toISOString().slice(0, 10) : `${new Date().getUTCFullYear()}-02-02`;
+    const mon = (() => { const d = new Date(`${inYear}T00:00:00Z`); while (d.getUTCDay() !== 1) d.setUTCDate(d.getUTCDate() + 1); return d.toISOString().slice(0, 10); })();
+    const fri = (() => { const d = new Date(`${mon}T00:00:00Z`); d.setUTCDate(d.getUTCDate() + 4); return d.toISOString().slice(0, 10); })();
+    const before = await leaveBalanceFor(riversideId, applicantMembershipId);
+    const r = await applyForLeave(applicant, { fromDateKey: mon, toDateKey: fri, kind: "CASUAL", reason: "Wedding" });
+    expect(r.ok).toBe(true);
+    const pendingNow = await leaveBalanceFor(riversideId, applicantMembershipId);
+    expect(pendingNow.pending).toBe(before.pending + 5);
+    expect(pendingNow.used).toBe(before.used);
+    const id = (await db.leaveRequest.findFirstOrThrow({ where: { teacherMembershipId: applicantMembershipId, status: "PENDING" } })).id;
+    expect((await decideLeave(principal, id, "APPROVED", { note: undefined, coverMembershipId: null })).ok).toBe(true);
+    const after = await leaveBalanceFor(riversideId, applicantMembershipId);
+    expect(after.used).toBe(before.used + 5);
+    expect(after.remaining).toBe(12 - after.used);
+    // Unpaid leave does not draw on it.
+    const nextMon = (() => { const d = new Date(`${mon}T00:00:00Z`); d.setUTCDate(d.getUTCDate() + 7); return d.toISOString().slice(0, 10); })();
+    expect((await applyForLeave(applicant, { fromDateKey: nextMon, toDateKey: nextMon, kind: "UNPAID", reason: "Travel" })).ok).toBe(true);
+    expect((await leaveBalanceFor(riversideId, applicantMembershipId)).pending).toBe(0);
+    await db.staffRecord.deleteMany({ where: { membershipId: applicantMembershipId } });
   });
 });

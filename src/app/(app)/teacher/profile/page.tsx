@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { staffRecordFor, leaveBalanceFor } from "@/lib/staff-records";
+import { LeaveBalanceCard } from "@/components/leave-balance-card";
+import { formatDateKey } from "@/lib/dates";
 import { BooksIcon, StarIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
@@ -37,7 +40,20 @@ export default async function TeacherProfilePage() {
   });
 
   const subjects = readJsonArray<string>(membership.subjects);
-  const agg = await teacherReviewAggregate(ctx, ctx.membershipId!);
+  const [agg, record, balance] = await Promise.all([
+    teacherReviewAggregate(ctx, ctx.membershipId!),
+    staffRecordFor(ctx, ctx.membershipId!),
+    leaveBalanceFor(ctx.schoolId!, ctx.membershipId!),
+  ]);
+  const recordRows = record
+    ? [
+        [t("staff.staffNumber"), record.staffNumber],
+        [t("staff.designation"), record.designation],
+        [t("staff.qualification"), record.qualification],
+        [t("staff.joinedOn"), record.joinedOnKey ? formatDateKey(record.joinedOnKey, { dateStyle: "medium" }) : null],
+        [t("staff.leaveDays"), record.leaveDaysPerYear === null ? null : String(record.leaveDaysPerYear)],
+      ].filter((r): r is [string, string] => Boolean(r[1]))
+    : [];
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
@@ -69,6 +85,26 @@ export default async function TeacherProfilePage() {
           />
         </CardBody>
       </Card>
+
+      <Card data-testid="staff-record-card">
+        <CardHeader title={t("staff.yourRecord")} />
+        <CardBody>
+          {recordRows.length === 0 ? (
+            <p className="text-sm text-fg-muted">{t("staff.nothingOnFile")}</p>
+          ) : (
+            <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-sm">
+              {recordRows.map(([label, value]) => (
+                <div key={label} className="contents">
+                  <dt className="text-fg-muted">{label}</dt>
+                  <dd className="font-medium text-fg">{value}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
+        </CardBody>
+      </Card>
+
+      <LeaveBalanceCard balance={balance} t={t} />
 
       <Card>
         <CardHeader

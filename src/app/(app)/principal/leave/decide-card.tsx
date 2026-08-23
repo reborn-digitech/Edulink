@@ -10,6 +10,7 @@ import { LEAVE_KIND_LABEL_KEY, LEAVE_STATUS_KEY, type LeaveKind, type LeaveStatu
 import { actionError } from "@/lib/action-error";
 import { decide } from "./actions";
 import { useT } from "@/lib/i18n";
+import { cn } from "@/lib/cn";
 import { formatDateKey } from "@/lib/dates";
 
 /**
@@ -44,6 +45,7 @@ export function DecideCard({
   staff,
   groups,
   classesCovered,
+  balance,
 }: {
   request: LeaveRow;
   /** Ranked by the timetable: free people first, each with a why. */
@@ -62,6 +64,8 @@ export function DecideCard({
    * approving will write.
    */
   classesCovered: number;
+  /** The applicant's leave this year, from the staff record. Null when the desk has no record at all. */
+  balance?: { entitlement: number | null; used: number; pending: number; remaining: number | null; thisRequest: number } | null;
 }) {
   const t = useT();
   const router = useRouter();
@@ -128,6 +132,22 @@ export function DecideCard({
               ? t(LEAVE_KIND_LABEL_KEY[request.kind as LeaveKind])
               : request.kind}
           </p>
+          {balance && (
+            <p className="mt-1 text-xs" data-testid="leave-balance">
+              {balance.entitlement === null ? (
+                <span className="text-fg-muted">{t("staff.deskNoEntitlement", { used: balance.used })}</span>
+              ) : (
+                <>
+                  <span className={cn(balance.remaining !== null && balance.remaining - balance.thisRequest < 0 ? "text-danger" : "text-fg-muted")}>
+                    {t("staff.deskBalance", { used: balance.used, entitlement: balance.entitlement, remaining: balance.remaining ?? 0 })}
+                  </span>
+                  {balance.remaining !== null && balance.remaining - balance.thisRequest < 0 && (
+                    <span className="ml-1 font-semibold text-danger">· {t("staff.deskOver", { over: balance.thisRequest - balance.remaining })}</span>
+                  )}
+                </>
+              )}
+            </p>
+          )}
           <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-fg">
             {request.reason}
           </p>

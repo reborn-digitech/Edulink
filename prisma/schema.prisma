@@ -123,6 +123,7 @@ model School {
   meetingBookings      MeetingBooking[]
 
   terms           Term[]
+  staffRecords    StaffRecord[]
   @@index([code])
 }
 
@@ -303,6 +304,7 @@ model Membership {
   @@unique([userId, schoolId, role])
   @@index([schoolId, role, status])
   @@index([userId])
+  staffRecord StaffRecord?
 }
 
 model Guardianship {
@@ -1704,6 +1706,30 @@ model OperatorAccess {
 /// Dev-only outbox. EMAIL_TRANSPORT="devbox" writes here instead of sending,
 /// and /dev/mailbox renders it. Keeps magic-link and invite flows fully
 /// exercisable with no SMTP credentials.
+/// A member of staff's record, as the office keeps it: the official joining
+/// date (the membership's `joinedAt` is when they joined the PLATFORM, which a
+/// school migrating in September does not want on a letter), what they are
+/// called on the board, what they hold, and how many days' leave a year they
+/// are entitled to — which is what the leave desk needs before it approves.
+model StaffRecord {
+  id               String    @id @default(cuid())
+  schoolId         String
+  membershipId     String    @unique
+  staffNumber      String?
+  designation      String?
+  qualification    String?
+  joinedOn         DateTime?
+  /// Entitlement per academic year. Null means the school has not said.
+  leaveDaysPerYear Int?
+  updatedAt        DateTime  @updatedAt
+  createdAt        DateTime  @default(now())
+
+  school     School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  membership Membership @relation(fields: [membershipId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId])
+}
+
 /// One run of a scheduled job — the tidy, the digest, the file sweep. The
 /// row is written when the run starts and finished when it ends, so an
 /// unfinished row is the lock that stops a second copy starting, and the

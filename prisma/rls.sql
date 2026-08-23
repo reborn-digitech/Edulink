@@ -613,6 +613,15 @@ CREATE POLICY "AuditLog_readable" ON "AuditLog"
          OR ("schoolId" IS NULL AND current_setting('app.is_superuser', true) = '1')
         );
 
+-- StaffRecord
+ALTER TABLE "StaffRecord" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "StaffRecord" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "StaffRecord_tenant_isolation" ON "StaffRecord";
+DROP POLICY IF EXISTS "StaffRecord_readable" ON "StaffRecord";
+CREATE POLICY "StaffRecord_tenant_isolation" ON "StaffRecord"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- AcademicYear
 ALTER TABLE "AcademicYear" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "AcademicYear" FORCE ROW LEVEL SECURITY;

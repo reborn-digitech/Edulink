@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { leaveBalancesFor, leaveDays } from "@/lib/staff-records";
 import { CalendarCheckIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
@@ -48,6 +49,8 @@ export default async function PrincipalLeavePage() {
   ]);
 
   const pending = all.filter((row) => row.status === "PENDING");
+  // What the desk was approving blind: each applicant's leave this year.
+  const balances = await leaveBalancesFor(ctx.schoolId!, pending.map((r) => r.applicantMembershipId));
   const decided = all.filter((row) => row.status !== "PENDING");
 
   /**
@@ -194,6 +197,12 @@ export default async function PrincipalLeavePage() {
                   }
                   groups={suggestionsBy.get(request.id)?.groups ?? []}
                   classesCovered={dutyCounts.get(request.applicantMembershipId) ?? 0}
+                  balance={(() => {
+                    const b = balances.get(request.applicantMembershipId);
+                    if (!b) return null;
+                    const counted = request.kind === "CASUAL" || request.kind === "SICK";
+                    return { ...b, thisRequest: counted ? leaveDays(request.fromDateKey, request.toDateKey) : 0 };
+                  })()}
                 />
               </li>
             ))}

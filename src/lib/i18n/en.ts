@@ -1708,6 +1708,7 @@ export const en = {
   /* boundary. One key per distinct sentence; the sentence is the value.    */
   /* ---------------------------------------------------------------------- */
   access: {
+    onlyAnAdminCanEditStaffRecords: "Only a school admin can edit staff records.",
     termNotFound: "No such term at this school.",
     onlyAnAdminCanSetTerms: "Only a school admin can set up terms.",
     aPupilHeldBackCannotAlsoMove: "A pupil held back cannot also be moved.",
@@ -3930,6 +3931,7 @@ export const en = {
   },
 
   audit: {
+    staffRecordSet: "Updated a member of staff's record",
     termCreate: "Added a term to the year",
     termDelete: "Removed a term",
     authFirstSigninIssue: "Issued a pupil a first sign-in code",
@@ -4076,6 +4078,7 @@ export const en = {
   /* The directory — everyone in the school, and the three ways out of it     */
   /* ---------------------------------------------------------------------- */
   people: {
+    staffRecordAction: "Staff record…",
     firstSigninAction: "Issue sign-in code",
     birthdateAction: "Date of birth…",
     birthdateTitle: "Date of birth for {name}",
@@ -4777,6 +4780,7 @@ export const en = {
      time by notify(); see titleKey. Every stored notification title lives
      here, so the list is the complete vocabulary of what the app tells people. */
   notifTitle: {
+    staffRecordUpdated: "Your staff record was updated",
     birthdateSet: "Your date of birth was updated",
     promoted: "You have moved up",
     childPromoted: "{name} has moved up",
@@ -4823,6 +4827,7 @@ export const en = {
   /* Notification bodies that are sentences — see notifBody in notify(). Data
      bodies (a post's title, a teacher's note) stay literal. */
   notifBody: {
+    staffRecordUpdated: "The office updated your staff record. Open your profile to see it.",
     birthdateSet: "The school office set your date of birth. If it is wrong, tell the office.",
     birthdateCleared: "The school office removed your date of birth. If that is wrong, tell the office.",
     promoted: "You are now in {className}. Your timetable and register will show it from today.",
@@ -5026,6 +5031,35 @@ export const en = {
     cardNoTerm: "Not from a term",
     builderTermHint: "Pick a term: its name becomes the title, its dates the attendance window, and its exams are ticked.",
     inTerm: "{count} in this term",
+  },
+  staff: {
+    title: "Staff record for {name}",
+    body: "What the office keeps on file. {name} can read it; only the office can change it. The joining date here is the one a letter quotes — not the day they joined the app.",
+    staffNumber: "Staff number",
+    designation: "Designation",
+    designationPlaceholder: "PGT Mathematics",
+    qualification: "Qualification",
+    qualificationPlaceholder: "M.Sc., B.Ed.",
+    joinedOn: "Joined the school on",
+    leaveDays: "Leave days a year",
+    leaveDaysHint: "Casual and sick leave draw on this. Leave blank if the school has no fixed entitlement.",
+    saved: "Staff record saved",
+    notSaved: "Could not save the record",
+    notStaffHere: "That is not a member of staff at this school.",
+    badDate: "That is not a real date.",
+    joinedInFuture: "A joining date cannot be in the future.",
+    badLeaveDays: "Leave days must be a whole number up to 365.",
+    yourRecord: "Your staff record",
+    nothingOnFile: "Nothing on file yet — the office fills this in.",
+    joined: "Joined {date}",
+    balanceTitle: "Leave this year",
+    balance: "{used} of {entitlement} days used · {remaining} left",
+    balancePending: "{pending} more being asked for",
+    noEntitlement: "No entitlement set — {used} days approved this year",
+    balanceYear: "Academic year {year}",
+    deskBalance: "{used} of {entitlement} used this year · {remaining} left",
+    deskNoEntitlement: "No entitlement on file · {used} days approved this year",
+    deskOver: "This request would go {over} days over",
   },
   meta: {
     firstSignin: "First sign-in",

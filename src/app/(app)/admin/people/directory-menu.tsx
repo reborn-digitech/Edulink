@@ -7,6 +7,7 @@ import {
   BooksIcon,
   CakeIcon,
   KeyIcon,
+  IdentificationCardIcon,
   DotsThreeIcon,
   PauseCircleIcon,
   SignOutIcon,
@@ -22,11 +23,12 @@ import { SubjectsPanel } from "./subjects-panel";
 import { ParentLinkPanel } from "./parent-link-panel";
 import { BirthdatePanel } from "./birthdate-panel";
 import { FirstSignInPanel } from "./first-signin-panel";
+import { StaffRecordPanel, type StaffRecordInitial } from "./staff-record-panel";
 import { cn } from "@/lib/cn";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 
-type Panel = "pause" | "left" | "remove" | "subjects" | "parent" | "birthdate" | "firstSignin" | null;
+type Panel = "pause" | "left" | "remove" | "subjects" | "parent" | "birthdate" | "firstSignin" | "staff" | null;
 
 /**
  * One quiet kebab per directory row, holding every verb that used to sit in
@@ -48,6 +50,7 @@ export function DirectoryMenu({
   subjects,
   birthdate,
   handleOnly,
+  staffRecord,
   suspended,
   hasLeft,
 }: {
@@ -61,6 +64,8 @@ export function DirectoryMenu({
   birthdate?: string;
   /** A pupil on a login handle with no address: the office can issue a first sign-in code. */
   handleOnly?: boolean;
+  /** Staff rows carry the office's record; undefined for pupils. */
+  staffRecord?: StaffRecordInitial;
   suspended: boolean;
   hasLeft: boolean;
 }) {
@@ -156,6 +161,12 @@ export function DirectoryMenu({
                 </MenuItem>
               )}
 
+              {staffRecord && !hasLeft && (
+                <MenuItem icon={<IdentificationCardIcon className="size-4" />} onClick={() => show("staff")}>
+                  {t("people.staffRecordAction")}
+                </MenuItem>
+              )}
+
               {!hasLeft && (
                 <MenuItem icon={<CakeIcon className="size-4" />} onClick={() => show("birthdate")}>
                   {t("people.birthdateAction")}
@@ -228,6 +239,9 @@ export function DirectoryMenu({
           initial={birthdate ?? ""}
           onClose={() => setPanel(null)}
         />
+      )}
+      {panel === "staff" && staffRecord && (
+        <StaffRecordPanel membershipId={membershipId} name={name} initial={staffRecord} onClose={() => setPanel(null)} />
       )}
       {panel === "firstSignin" && (
         <FirstSignInPanel membershipId={membershipId} name={name} onClose={() => setPanel(null)} />
