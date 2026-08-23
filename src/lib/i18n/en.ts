@@ -961,8 +961,8 @@ export const en = {
   /* Remarks — private school-to-home messages                               */
   /* ---------------------------------------------------------------------- */
   remarks: {
-    goesToGuardiansOnly: "This goes to the student’s guardians only. Other teachers cannot see it, and neither can the student.",
-    onlyVisibleTo: "Only {student}, {teacher}, {student}’s guardians and school admins can see this",
+    goesToGuardiansOnly: "This goes to the student and their guardians. Other teachers cannot see it; school admins can.",
+    onlyVisibleTo: "Only {student}, {teacher}, {student}’s guardians and the school office can see this",
     writeSomethingFirst: "Write something first.",
     charactersLeft: "{count} characters left",
     introTeacher: "One conversation per pupil, with them and their guardians.",
@@ -970,7 +970,7 @@ export const en = {
     introStudent: "Your teachers, and the grown-ups at home. Everyone sees everything.",
     introParent: "Your child's teachers, with your child in the conversation.",
     emptyTeacher:
-      "Start a private thread about a student and their guardians will be notified. Nobody else at the school sees it, and the student never does.",
+      "Start a private thread about a student — they and their guardians are told. No other teacher sees it.",
     emptyOther: "If a teacher wants a quiet word about your child, it will arrive here — and you can reply.",
     checkHighlighted: "Check the highlighted fields.",
     chooseStudentDot: "Choose a student.",
@@ -2466,6 +2466,7 @@ export const en = {
     acrossPiecesOne: "Across 1 piece",
     streakStart: "Starts on the next day in",
     streakDays: "{count} school days in a row",
+    streakDaysOne: "1 school day in a row",
     recentAttendance: "Recent attendance",
     nothingRecordedYet: "Nothing recorded yet",
     attendanceEmpty: "Once the register is taken, it will show up here the moment it happens.",
@@ -2776,6 +2777,7 @@ export const en = {
     noClassesYet: "No classes assigned yet",
     noClassesBody: "Ask an admin to add you to a class, and your day will appear here.",
     studentsCount: "{count} students",
+    studentsCountOne: "1 student",
 
     lessonsToday: "Lessons today",
     acrossTheWeek: "Across the week",
@@ -2787,6 +2789,7 @@ export const en = {
     closedToday: "School is closed today — {name}.",
     openTimetable: "Open the timetable",
 
+    sundayRegister: "No school on a Sunday. You can still take the register if a class really is running, but everyone you mark absent will be counted absent.",
     takeRegister: "Take the register",
     createClass: "Create a class",
     done: "Done",
@@ -3372,6 +3375,7 @@ export const en = {
     freeAtThisTime: "Free at this time",
     alreadyTeaching: "Already teaching then",
     lessonsAWeek: " · {count} lessons a week",
+    lessonsAWeekOne: " · 1 lesson a week",
     room: "Room",
     roomPlaceholder: "Optional — lab, hall, field",
     couldNotRemove: "Could not remove that.",

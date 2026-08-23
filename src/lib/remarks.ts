@@ -38,7 +38,10 @@ export async function listThreads(session: ActiveContext): Promise<ThreadSummary
   let where;
   if (role === "TEACHER" && schoolId && membershipId) {
     where = { schoolId, teacherMembershipId: membershipId };
-  } else if (role === "ADMIN" && schoolId) {
+  } else if ((role === "ADMIN" || role === "PRINCIPAL") && schoolId) {
+    // The principal reads what the office reads. Left to the parent branch,
+    // a principal was shown "your child's teachers" and a New message button
+    // that could not work.
     where = { schoolId };
   } else if (role === "STUDENT" && schoolId && membershipId) {
     // Their own conversations, and only those. A pupil is one participant in a

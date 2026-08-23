@@ -170,3 +170,17 @@ describe("parseInviteCsv", () => {
     expect(result.valid).toHaveLength(1);
   });
 });
+
+describe("parseInviteCsv — one email per line", () => {
+  it("accepts the paste the page itself suggests", () => {
+    const result = parseInviteCsv("a@school.test\nb@school.test\n");
+    expect(result.valid.map((r) => r.email)).toEqual(["a@school.test", "b@school.test"]);
+    expect(result.problems).toEqual([]);
+  });
+
+  it("still reads name,email,subjects and flags the row with no address", () => {
+    const result = parseInviteCsv("Priya Nair,p@school.test,Maths\nnot-an-email\n");
+    expect(result.valid).toMatchObject([{ email: "p@school.test", name: "Priya Nair", subjects: ["Maths"] }]);
+    expect(result.problems.map((p) => p.reasonKey)).toEqual(["invites.invalidEmail"]);
+  });
+});

@@ -5,7 +5,7 @@ import { approvedLeaveBetween, LEAVE_KIND_LABEL_KEY, type LeaveKind } from "@/li
 import { db } from "@/lib/db";
 import { listHolidays, type HolidayKind } from "@/lib/holidays";
 import { listAcademicYears } from "@/lib/academic-year";
-import { todayKey, addDaysToKey, isoToDisplayDate } from "@/lib/dates";
+import { todayKey, addDaysToKey, isoToDisplayDate, formatDateKey } from "@/lib/dates";
 import { birthdaysBetween } from "@/lib/birthdays";
 import { Card, CardHeader, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -97,8 +97,11 @@ export default async function CalendarPage() {
                       </span>
                       <span className="block truncate text-xs text-fg-muted">
                         {row.toDateKey !== row.fromDateKey
-                          ? t("calendar.rangeTo", { from: row.fromDateKey, to: row.toDateKey })
-                          : row.fromDateKey}{" "}
+                          ? t("calendar.rangeTo", {
+                              from: formatDateKey(row.fromDateKey, { day: "numeric", month: "short" }),
+                              to: formatDateKey(row.toDateKey, { day: "numeric", month: "short" }),
+                            })
+                          : formatDateKey(row.fromDateKey, { day: "numeric", month: "short" })}{" "}
                         ·{" "}
                         {LEAVE_KIND_LABEL_KEY[row.kind as LeaveKind]
                           ? t(LEAVE_KIND_LABEL_KEY[row.kind as LeaveKind])

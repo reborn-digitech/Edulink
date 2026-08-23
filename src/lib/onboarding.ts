@@ -38,7 +38,7 @@ export async function getChecklist(schoolId: string): Promise<{
   total: number;
   complete: boolean;
 }> {
-  const [teachers, classes, students, invites, school, posts] = await Promise.all([
+  const [teachers, classes, students, invites, school, posts, verifiedAdmins] = await Promise.all([
     db.membership.count({ where: { schoolId, role: "TEACHER", status: "ACTIVE" } }),
     db.class.count({ where: { schoolId, archivedAt: null } }),
     db.membership.count({ where: { schoolId, role: "STUDENT", status: "ACTIVE" } }),
@@ -48,6 +48,13 @@ export async function getChecklist(schoolId: string): Promise<{
       select: { logoPath: true, brandPrimary: true, verifiedAt: true },
     }),
     db.post.count({ where: { schoolId, status: "APPROVED" } }),
+    // The verification link an admin is sent stamps THEIR account, not the
+    // school; `school.verifiedAt` is the operator's own mark. The step is
+    // done by either, otherwise a school that registered itself could never
+    // tick it and "Finish setting up" sat at five of six forever.
+    db.membership.count({
+      where: { schoolId, role: "ADMIN", status: "ACTIVE", user: { emailVerifiedAt: { not: null } } },
+    }),
   ]);
 
   const steps: ChecklistStep[] = [
@@ -57,7 +64,7 @@ export async function getChecklist(schoolId: string): Promise<{
       descriptionKey: "checklist.verifyBody",
       href: "/account/verify",
       ctaKey: "checklist.verifyCta",
-      done: Boolean(school?.verifiedAt),
+      done: Boolean(school?.verifiedAt) || verifiedAdmins > 0,
     },
     {
       id: "teachers",

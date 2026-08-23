@@ -11,7 +11,7 @@ import { classesIMayTake, registerDuty } from "@/lib/register-duty";
 import { getRegister } from "@/lib/attendance";
 import { closedOn } from "@/lib/holidays";
 import { db } from "@/lib/db";
-import { formatDateKey, todayKey, isDateKey } from "@/lib/dates";
+import { formatDateKey, todayKey, isDateKey, isTeachingDay } from "@/lib/dates";
 import { Register } from "./register";
 import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
@@ -100,7 +100,7 @@ export default async function AttendancePage({
           <PastRegistersLink label={t("attendanceHistory.link")} />
         </div>
 
-        <ClosedDayNotice calendar={calendar} dateKey={dateKey} />
+        <ClosedDayNotice calendar={calendar} dateKey={dateKey} sundayNote={isTeachingDay(dateKey) ? null : t("teacher.sundayRegister")} />
 
         <ul className="space-y-2">
           {classes.map((klass) => (
@@ -118,8 +118,9 @@ export default async function AttendancePage({
                   <span className="min-w-0 flex-1">
                     <span className="block truncate font-semibold text-fg">{klass.name}</span>
                     <span className="block text-xs text-fg-muted">
-                      {klass._count.enrollments} student
-                      {klass._count.enrollments === 1 ? "" : "s"}
+                      {klass._count.enrollments === 1
+                        ? t("teacher.studentsCountOne")
+                        : t("teacher.studentsCount", { count: klass._count.enrollments })}
                       {klass.subject ? ` · ${klass.subject}` : ""}
                     </span>
                   </span>
@@ -173,7 +174,7 @@ export default async function AttendancePage({
           <PastRegistersLink classId={selectedId} label={t("attendanceHistory.link")} />
         </div>
       )}
-      <ClosedDayNotice calendar={calendar} dateKey={dateKey} />
+      <ClosedDayNotice calendar={calendar} dateKey={dateKey} sundayNote={isTeachingDay(dateKey) ? null : t("teacher.sundayRegister")} />
       {duty.reason === "COVER" && (
         // Said out loud, because somebody marking a register they do not
         // normally mark should know why they can, and until when.
@@ -225,11 +226,27 @@ function PastRegistersLink({ classId, label }: { classId?: string; label: string
 function ClosedDayNotice({
   calendar,
   dateKey,
+  sundayNote,
 }: {
   calendar: { closed: boolean; entries: { name: string; kind: string }[] };
   dateKey: string;
+  /** Set on a day the school week does not include — the same warning as a
+   * closed day, for the same reason: a register taken by habit on a Sunday
+   * marks a whole class absent. */
+  sundayNote: string | null;
 }) {
-  if (calendar.entries.length === 0) return null;
+  if (calendar.entries.length === 0) {
+    if (!sundayNote) return null;
+    return (
+      <div
+        role="status"
+        className="flex items-start gap-2.5 rounded-[--radius-md] border border-warn/40 bg-warn-soft/50 p-3.5"
+      >
+        <WarningIcon weight="fill" className="mt-0.5 size-5 shrink-0 text-warn" aria-hidden="true" />
+        <p className="text-sm text-fg">{sundayNote}</p>
+      </div>
+    );
+  }
 
   const names = calendar.entries.map((entry) => entry.name).join(" · ");
   const pretty = formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" });

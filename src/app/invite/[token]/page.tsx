@@ -99,7 +99,13 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
   // read here rather than guessed in the client, because the banner below is
   // about a session.
   const current = await getSession();
-  const signedInAs = current ? (current.user.preferredName ?? current.user.name) : null;
+  // The warning is for SOMEBODY ELSE's session on this browser — a staffroom
+  // machine still signed in as a colleague. The invitee already signed in as
+  // themselves is not being signed out of anything worth a warning.
+  const someoneElse =
+    current !== null &&
+    (current.user.email ?? "").toLowerCase() !== (invite?.email ?? "").toLowerCase();
+  const signedInAs = someoneElse ? (current.user.preferredName ?? current.user.name) : null;
 
   return (
     <Shell t={t} brand={context?.school.brandPrimary ?? null}>
@@ -161,7 +167,7 @@ export default async function InvitePage({ params }: { params: Promise<{ token: 
           arriving on the SAME account. A child who joins with a code instead
           gets a second one, and nothing on this page would have told them.
         */}
-        {hasAccount && (
+        {hasAccount && role === "STUDENT" && (
           <p className="mt-3 rounded-[--radius-md] border border-ok/30 bg-ok-soft px-3.5 py-2.5 text-xs leading-relaxed text-fg">
             {t("invite.changedSchool", { school: context?.school.name ?? "" })}
           </p>

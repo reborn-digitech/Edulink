@@ -455,7 +455,7 @@ function LessonDialog({
                 {free.map((option) => (
                   <option key={option.membershipId} value={option.membershipId}>
                     {option.name}
-                    {option.load > 0 ? t("timetable.lessonsAWeek", { count: option.load }) : ""}
+                    {option.load === 1 ? t("timetable.lessonsAWeekOne") : option.load > 1 ? t("timetable.lessonsAWeek", { count: option.load }) : ""}
                   </option>
                 ))}
               </optgroup>

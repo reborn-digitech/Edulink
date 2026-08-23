@@ -183,15 +183,30 @@ export async function acceptInvite(input: unknown): Promise<AcceptState> {
           },
           select: { id: true, passwordHash: true },
         });
-      } else if (!user.passwordHash && passwordHash) {
-        // Account existed without a password (e.g. created by a parent link).
-        // Setting one here is legitimate; overwriting an existing one is not —
-        // and is refused above rather than skipped, so nobody types one into a
-        // field that does nothing.
-        await tx.user.update({
+      } else {
+        // An existing account. The page still ASKED for a date of birth and a
+        // bio, and used to validate both and then write neither — every
+        // transferring pupil's birthday was lost on the way in, and a parent
+        // needs exactly that date to claim them. Fill what is empty; never
+        // overwrite what the person already set elsewhere.
+        const profile = await tx.user.findUniqueOrThrow({
           where: { id: user.id },
-          data: { passwordHash, emailVerifiedAt: new Date() },
+          select: { birthdate: true, bio: true },
         });
+        const data: { passwordHash?: string; emailVerifiedAt?: Date; birthdate?: Date; bio?: string } = {};
+        if (!user.passwordHash && passwordHash) {
+          // Account existed without a password (e.g. created by a parent
+          // link). Setting one here is legitimate; overwriting an existing one
+          // is not — and is refused above rather than skipped, so nobody
+          // types one into a field that does nothing.
+          data.passwordHash = passwordHash;
+          data.emailVerifiedAt = new Date();
+        }
+        if (birthDate && !profile.birthdate) data.birthdate = birthDate;
+        if (bio && !profile.bio) data.bio = bio;
+        if (Object.keys(data).length > 0) {
+          await tx.user.update({ where: { id: user.id }, data });
+        }
       }
 
       await tx.membership.upsert({

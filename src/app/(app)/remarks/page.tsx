@@ -32,7 +32,7 @@ export default async function RemarksPage() {
           <p className="mt-1 text-sm text-fg-muted">
             {isTeacher
               ? t("remarks.introTeacher")
-              : session.role === "ADMIN"
+              : session.role === "ADMIN" || session.role === "PRINCIPAL"
                 ? t("remarks.introAdmin")
                 : session.role === "STUDENT"
                   ? t("remarks.introStudent")
@@ -41,7 +41,7 @@ export default async function RemarksPage() {
         </div>
         {/* All three can start one now — a pupil and a guardian previously had
             to wait to be messaged first. */}
-        {session.role !== "ADMIN" && (
+        {session.role !== "ADMIN" && session.role !== "PRINCIPAL" && (
           <Button asChild icon={<PlusIcon weight="bold" />}>
             <Link href="/remarks/new">{t("remarks.newMessage")}</Link>
           </Button>

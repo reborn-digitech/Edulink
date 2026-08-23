@@ -276,7 +276,7 @@ export default async function TeacherHome() {
           label={t("teacher.classes")}
           value={classes.length}
           icon={<ClipboardTextIcon weight="duotone" className="size-5" />}
-          hint={t("teacher.studentsCount", { count: classes.reduce((sum, c) => sum + c._count.enrollments, 0) })}
+          hint={(() => { const n = classes.reduce((sum, c) => sum + c._count.enrollments, 0); return n === 1 ? t("teacher.studentsCountOne") : t("teacher.studentsCount", { count: n }); })()}
         />
         <StatTile
           label={t("teacher.toGrade")}
@@ -319,7 +319,7 @@ export default async function TeacherHome() {
                         {klass.name}
                       </span>
                       <span className="block text-xs text-fg-muted">
-                        {t("teacher.studentsCount", { count: klass._count.enrollments })}
+                        {klass._count.enrollments === 1 ? t("teacher.studentsCountOne") : t("teacher.studentsCount", { count: klass._count.enrollments })}
                       </span>
                     </span>
                     <span

@@ -191,9 +191,24 @@ export function parseInviteCsv(input: string): InviteCsvResult {
     : rows.map((row, index) => ({ row, line: lineNumbers[index] ?? index + 2 }));
 
   for (const { row, line } of allRows) {
-    const email = (headerless ? row.__1 : row[emailKey!])?.trim().toLowerCase() ?? "";
-    const name = (headerless ? row.__0 : nameKey ? row[nameKey] : "")?.trim() ?? "";
-    const subjectsRaw = (headerless ? row.__2 : subjectsKey ? row[subjectsKey] : "") ?? "";
+    // Headerless: the email is WHICHEVER cell looks like one. "One email per
+    // line" is the format the page itself suggests, and it puts the address
+    // in the first column; "name,email,subjects" puts it in the second.
+    // Reading a fixed column rejected the simplest paste with "No email".
+    const cells = headerless ? [row.__0 ?? "", row.__1 ?? "", row.__2 ?? ""] : [];
+    const emailIndex = headerless ? cells.findIndex((c) => EMAIL_RE.test(c.trim())) : -1;
+    // A lone cell that is not an address is still "their email, mistyped" —
+    // reported as invalid with the value shown, not as a blank row.
+    const nonEmpty = cells.filter((c) => c.trim().length > 0);
+    const email = (headerless
+      ? (emailIndex >= 0 ? cells[emailIndex] : nonEmpty.length === 1 ? nonEmpty[0] : row.__1)
+      : row[emailKey!])?.trim().toLowerCase() ?? "";
+    const name = (headerless
+      ? (emailIndex === 0 ? "" : cells[0])
+      : nameKey ? row[nameKey] : "")?.trim() ?? "";
+    const subjectsRaw = (headerless
+      ? (emailIndex === 0 ? cells[1] : cells[2])
+      : subjectsKey ? row[subjectsKey] : "") ?? "";
 
     if (!email) {
       // Empty `value` means "there was nothing on this row to show" — the

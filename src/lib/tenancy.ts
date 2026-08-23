@@ -301,7 +301,7 @@ export async function assertRemarkAccess(
   if (role === "TEACHER" && schoolId === thread.schoolId && membershipId === thread.teacherMembershipId) {
     return thread;
   }
-  if (role === "ADMIN" && schoolId === thread.schoolId) return thread;
+  if ((role === "ADMIN" || role === "PRINCIPAL") && schoolId === thread.schoolId) return thread;
 
   /**
    * THE CHILD THE THREAD IS ABOUT, who was the one participant missing from
