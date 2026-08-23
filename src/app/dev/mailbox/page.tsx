@@ -6,6 +6,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { Badge } from "@/components/ui/badge";
 import { getT } from "@/lib/i18n/server";
+import { formatInZone } from "@/lib/dates";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -60,7 +61,7 @@ export default async function MailboxPage() {
                 <Card>
                   <CardHeader
                     title={email.subject}
-                    description={`To ${email.to} · ${email.createdAt.toLocaleString()}`}
+                    description={["To", email.to, "·", formatInZone(email.createdAt, "Asia/Kolkata")].join(" ")}
                     action={email.purpose ? <Badge tone="accent" size="sm">{email.purpose}</Badge> : null}
                   />
                   <CardBody>

@@ -210,3 +210,15 @@ describe("the move", () => {
     ).rejects.toBeInstanceOf(AccessError);
   });
 });
+
+describe("the summary the admin reads afterwards", () => {
+  it("⚠ names every count in every language — a battery once found it overwritten by another page's sentence", async () => {
+    const { DICTIONARIES } = await import("@/lib/i18n/dictionary");
+    for (const [locale, dict] of Object.entries(DICTIONARIES)) {
+      const body = (dict as { promotion: { doneBody: string } }).promotion.doneBody;
+      for (const v of ["{moved}", "{left}", "{held}", "{created}", "{archived}"]) {
+        expect(body, `${locale} promotion.doneBody`).toContain(v);
+      }
+    }
+  });
+});
