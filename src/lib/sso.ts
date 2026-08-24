@@ -28,6 +28,22 @@ import { audit } from "./audit";
 export type SsoProviderId = "google" | "microsoft" | "apple";
 export const SSO_PROVIDERS: SsoProviderId[] = ["google", "microsoft", "apple"];
 
+/**
+ * The redirect URI, built in ONE place.
+ *
+ * ⚠ IT MUST BE BYTE-IDENTICAL AT START AND AT CALLBACK or the code exchange
+ * is rejected by the provider — and it must equal what is registered in the
+ * provider's console, or the person is refused after they have already typed
+ * their password. It was previously assembled by the same expression written
+ * out three times: in the start route, in the callback route, and again in
+ * `sso:check`, which exists precisely to tell an operator what that string
+ * is. Three copies of a value whose whole requirement is being identical is
+ * the drift waiting to happen, so there is now one function and no copies.
+ */
+export function ssoRedirectUri(origin: string, provider: SsoProviderId): string {
+  return `${origin.trim().replace(/\/$/, "")}/api/sso/${provider}/callback`;
+}
+
 export const SSO_COOKIE = "edulink.sso";
 /** Ten minutes to come back from the provider — generous, then gone. */
 export const SSO_COOKIE_MAX_AGE = 600;

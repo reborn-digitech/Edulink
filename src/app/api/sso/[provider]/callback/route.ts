@@ -8,6 +8,7 @@ import {
   signInWithSso,
   SSO_COOKIE,
   SSO_PROVIDERS,
+  ssoRedirectUri,
   type SsoProviderId,
 } from "@/lib/sso";
 
@@ -41,7 +42,7 @@ async function handle(
   // The person pressed "cancel" at the provider. Not an error — a decision.
   if (params.error) return away("denied");
 
-  const redirectUri = `${origin.replace(/\/$/, "")}/api/sso/${id}/callback`;
+  const redirectUri = ssoRedirectUri(origin, id);
   const result = await completeSso(
     id,
     params,

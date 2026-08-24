@@ -69,6 +69,45 @@ export function readSmtpConfig():
 }
 
 /**
+ * The SSO contract, and it differs from the other three in one way that
+ * matters: ABSENCE IS LEGITIMATE. `sso.ts` makes a provider exist only when
+ * its variables do, so an installation with no SSO at all is correct and
+ * silent. What is NOT correct is a HALF-configured provider — a client id
+ * pasted without its secret — because `providerConfig` returns null for that
+ * too, so the button simply never appears and nothing anywhere says why.
+ * That is the failure this reports: never fatal, always loud.
+ *
+ * ⚠ THESE NAMES MUST MATCH THE ONES `sso.ts` ACTUALLY READS. A variable
+ * renamed there and not here would make this file certify a provider that
+ * cannot start; `tests/sso-check.test.ts` reads sso.ts's source and asserts
+ * every name below appears in it, the same way the db.$transaction ban is
+ * enforced by a grep rather than by hope.
+ */
+export const SSO_REQUIRED_VARS = {
+  google: ["SSO_GOOGLE_CLIENT_ID", "SSO_GOOGLE_CLIENT_SECRET"],
+  microsoft: ["SSO_MICROSOFT_CLIENT_ID", "SSO_MICROSOFT_CLIENT_SECRET"],
+  apple: ["SSO_APPLE_CLIENT_ID", "SSO_APPLE_TEAM_ID", "SSO_APPLE_KEY_ID", "SSO_APPLE_PRIVATE_KEY"],
+} as const;
+
+export type SsoProviderStatus =
+  /** No variable set at all — this installation does not offer this provider. */
+  | { provider: string; state: "absent" }
+  /** Every variable present. Whether the values WORK is `npm run sso:check`. */
+  | { provider: string; state: "configured" }
+  /** Some set, some not: a typo wearing the costume of a deliberate choice. */
+  | { provider: string; state: "partial"; missing: string[]; present: string[] };
+
+export function ssoStatus(): SsoProviderStatus[] {
+  return Object.entries(SSO_REQUIRED_VARS).map(([provider, vars]) => {
+    const present = vars.filter((v) => (process.env[v] ?? "").trim() !== "");
+    const missing = vars.filter((v) => (process.env[v] ?? "").trim() === "");
+    if (present.length === 0) return { provider, state: "absent" as const };
+    if (missing.length === 0) return { provider, state: "configured" as const };
+    return { provider, state: "partial" as const, missing, present };
+  });
+}
+
+/**
  * The Web Push contract.
  *
  * ⚠ THE PAIR IS CHECKED AS A PAIR, which is the whole reason this exists as
@@ -300,6 +339,20 @@ export function checkEnv(): EnvProblem[] {
     if (!twilio.ok) {
       for (const problem of twilio.problems) problems.push({ ...problem, fatal: isProd });
     }
+  }
+
+  /**
+   * A half-configured provider is never fatal — refusing to boot over an
+   * optional feature would be worse than the bug — but it is always said,
+   * because the symptom otherwise is a button that is simply not there.
+   */
+  for (const status of ssoStatus()) {
+    if (status.state !== "partial") continue;
+    problems.push({
+      key: `SSO_${status.provider.toUpperCase()}`,
+      message: `SSO for ${status.provider} is half-configured: ${status.present.join(", ")} set, ${status.missing.join(", ")} missing. The sign-in button will not appear at all. Set the rest, or clear them to turn the provider off deliberately.`,
+      fatal: false,
+    });
   }
 
   return problems;

@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { beginSso, SSO_COOKIE, SSO_COOKIE_MAX_AGE, SSO_PROVIDERS, type SsoProviderId } from "@/lib/sso";
+import { beginSso, ssoRedirectUri, SSO_COOKIE, SSO_COOKIE_MAX_AGE, SSO_PROVIDERS, type SsoProviderId } from "@/lib/sso";
 
 /**
  * Kicks off one provider's sign-in: mint state/nonce/PKCE, park them in a
@@ -16,9 +16,11 @@ export async function GET(
   }
   const id = provider as SsoProviderId;
 
-  // Must be byte-identical at start and callback, or the code exchange fails.
+  // Must be byte-identical at start and callback, or the code exchange fails —
+  // which is why both call the same function. `sso:check` prints what it
+  // returns, so what an operator registers is what the app actually sends.
   const origin = process.env.NEXT_PUBLIC_APP_URL?.trim() || request.nextUrl.origin;
-  const redirectUri = `${origin.replace(/\/$/, "")}/api/sso/${id}/callback`;
+  const redirectUri = ssoRedirectUri(origin, id);
 
   const begun = beginSso(id, redirectUri);
   if (!begun) return new NextResponse(null, { status: 404 });

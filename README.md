@@ -94,6 +94,22 @@ placeholder is refused in production. `npm run push:test` checks the
 configuration and, given an email, pushes to that person's devices and says
 honestly how many endpoints survived.
 
+**SSO is the one item a script cannot finish**, and the tooling is shaped
+around admitting that. `npm run sso:check` does everything before the human
+step: it reports each provider as configured, half-configured or deliberately
+off; prints **the exact redirect URI this installation will send**, to be
+compared character by character against the provider console (`redirect_uri_
+mismatch` is the commonest way a correct setup fails, and it fails *after* the
+person has typed their password); fetches each provider's JWKS to prove the
+keys every sign-in depends on are reachable and parse; and for Apple mints the
+client secret, which is the only way to know the `.p8` survived being pasted
+into an env file as a single line with literal `\n`. What is left is genuinely
+a person's job: open the printed start URL, sign in with a real account whose
+**verified email already exists on this installation**, and confirm you land
+back signed in — SSO signs people in and never signs them up, so an unknown
+identity is refused by design and that refusal is the correct outcome to see
+if you test with the wrong account.
+
 The hazard: **rotating VAPID keys invalidates every existing subscription.** A
 browser subscribes against one public key, so a new pair silently stops every
 device already signed up — they do not error, they simply never hear again
