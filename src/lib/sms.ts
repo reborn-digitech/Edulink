@@ -39,6 +39,9 @@ import { readTwilioConfig } from "./env";
  * requested — and they will keep asking.
  */
 
+/** How long a provider gets to answer before the person waiting is told. */
+const SEND_TIMEOUT_MS = 15_000;
+
 type TextMessage = {
   /** E.164. Normalise before calling; this does not guess. */
   to: string;
@@ -102,19 +105,49 @@ export async function sendSms(message: TextMessage): Promise<void> {
      */
     const apiBase = process.env.TWILIO_API_BASE?.trim().replace(/\/$/, "") || "https://api.twilio.com";
 
-    const response = await fetch(
-      `${apiBase}/2010-04-01/Accounts/${encodeURIComponent(accountSid)}/Messages.json`,
-      {
-        method: "POST",
-        headers: {
-          // Basic auth, built here rather than pulled in: the token must not
-          // reach a log, so it is never interpolated into a string that is.
-          Authorization: `Basic ${Buffer.from(`${accountSid}:${authToken}`).toString("base64")}`,
-          "Content-Type": "application/x-www-form-urlencoded",
+    /**
+     * A CEILING, because `fetch` has none. This runs inside the request a
+     * person made by pressing "Send me a code": a provider that accepts the
+     * connection and then says nothing would hold that request open until
+     * something upstream gives up, and the person watching a spinner learns
+     * nothing. Fifteen seconds is far longer than a healthy Twilio call and
+     * far shorter than anybody's patience.
+     */
+    let response: Response;
+    try {
+      response = await fetch(
+        `${apiBase}/2010-04-01/Accounts/${encodeURIComponent(accountSid)}/Messages.json`,
+        {
+          method: "POST",
+          headers: {
+            // Basic auth, built here rather than pulled in: the token must not
+            // reach a log, so it is never interpolated into a string that is.
+            Authorization: `Basic ${Buffer.from(`${accountSid}:${authToken}`).toString("base64")}`,
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body,
+          signal: AbortSignal.timeout(SEND_TIMEOUT_MS),
         },
-        body,
-      },
-    );
+      );
+    } catch (error) {
+      /**
+       * ⚠ `fetch` REPORTS "fetch failed" AND HIDES THE REASON IN `.cause`.
+       * A wrong host, a firewall, an expired certificate and a DNS typo all
+       * arrive as that same useless sentence, while the actionable one —
+       * "connect ECONNREFUSED 10.0.0.5:443" — sits one level down. The SMTP
+       * transport next door reports the real thing because nodemailer does
+       * not wrap; this makes the two match. Found by pointing `sms:test` at a
+       * closed port and reading what it said.
+       */
+      const cause = (error as { cause?: { message?: string; code?: string } }).cause;
+      const detail = cause?.message ?? (error instanceof Error ? error.message : String(error));
+      const timedOut = (error as { name?: string }).name === "TimeoutError";
+      throw new Error(
+        timedOut
+          ? `Twilio did not answer within ${SEND_TIMEOUT_MS / 1000}s (${apiBase})`
+          : `Could not reach Twilio at ${apiBase}: ${detail}`,
+      );
+    }
 
     if (!response.ok) {
       // Twilio's own message is the useful part — "The 'To' number is not a

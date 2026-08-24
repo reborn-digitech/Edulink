@@ -113,6 +113,31 @@ describe("the Twilio branch", () => {
     expect(calls).toHaveLength(0);
   });
 
+  it("⚠ reports WHY the provider could not be reached — fetch hides it in .cause", async () => {
+    // Node's fetch throws "fetch failed" for a wrong host, a firewall, a DNS
+    // typo and an expired certificate alike, with the one useful sentence one
+    // level down. Reported as-is it tells an operator nothing.
+    vi.stubGlobal("fetch", async () => {
+      const error = new TypeError("fetch failed");
+      (error as { cause?: unknown }).cause = Object.assign(new Error("connect ECONNREFUSED 10.0.0.5:443"), { code: "ECONNREFUSED" });
+      throw error;
+    });
+    const { sendSms } = await import("@/lib/sms");
+    await expect(sendSms({ to: TO, text: "hello" })).rejects.toThrow(/ECONNREFUSED 10\.0\.0\.5:443/);
+  });
+
+  it("⚠ gives a hung provider a ceiling rather than holding the request open", async () => {
+    // The person pressed "Send me a code" and is watching a spinner; a
+    // provider that accepts and never answers must not hold that open.
+    vi.stubGlobal("fetch", async () => {
+      const error = new Error("The operation was aborted due to timeout");
+      error.name = "TimeoutError";
+      throw error;
+    });
+    const { sendSms } = await import("@/lib/sms");
+    await expect(sendSms({ to: TO, text: "hello" })).rejects.toThrow(/did not answer within 15s/);
+  });
+
   it("honours a regional or stand-in API base", async () => {
     process.env.TWILIO_API_BASE = "http://127.0.0.1:2530/";
     const calls = stubFetch({ ok: true });
