@@ -1742,6 +1742,7 @@ export const en = {
   /* ---------------------------------------------------------------------- */
   access: {
     onlyAnAdminCanSetThresholds: "Only a school admin can change notification housekeeping.",
+    onlyAnAdminReadsTheJobStory: "Only a school admin can read the housekeeping story.",
     paperOnHoliday: "{date} is inside {name} — the school is shut. Tick “Even if the school is closed that day” if the paper really sits then.",
     paperOnSunday: "{date} is a Sunday — the school is shut. Tick “Even if the school is closed that day” if the paper really sits then.",
     papersClash: "That clashes with {subject} ({series}) at the same time — no pupil can sit both.",
@@ -3261,6 +3262,9 @@ export const en = {
     peopleSummary: "{teachers} teachers · {students} pupils · {classes} classes",
 
     noTeachersYet: "No teachers yet",
+    jobStoryTitle: "Overnight housekeeping",
+    jobStoryBody: "What the platform’s scheduled jobs last did for this school — leavings run on their day, notices tidied under this school’s numbers, weekly digests to families. Nothing shows on a quiet day.",
+    jobStoryStuck: "A scheduled leaving was due but could not run — the school had no active admin at the time. It is retried every night; now that you are here, tomorrow’s run should clear it.",
     noTeachersBody:
       "Teachers are the fastest way to bring the rest of the school in — they create classes, and their students follow.",
     inviteFirstTeacher: "Invite your first teacher",

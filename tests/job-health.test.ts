@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
-import { crossSchoolJobHealth } from "@/lib/job-health";
+import { crossSchoolJobHealth, schoolJobStory } from "@/lib/job-health";
 import { AccessError } from "@/lib/tenancy";
 import type { ActiveContext } from "@/lib/session";
 
@@ -15,12 +15,12 @@ import type { ActiveContext } from "@/lib/session";
 
 const db = new PrismaClient();
 
-function session(isSuperuser: boolean): ActiveContext {
+function session(isSuperuser: boolean, over: Partial<ActiveContext> = {}): ActiveContext {
   return {
     sessionId: "test-session",
-    membershipId: null,
-    schoolId: null,
-    role: null,
+    membershipId: over.membershipId ?? null,
+    schoolId: over.schoolId ?? null,
+    role: over.role ?? null,
     user: {
       id: "job-health-test-user",
       name: "Op",
@@ -114,6 +114,28 @@ describe("the operator's cross-school view", () => {
     // The context line knows when each job last succeeded.
     const depRun = view.runs.find((r) => r.job === "departures:run")!;
     expect(depRun.at?.toISOString()).toBe(FUTURE.toISOString());
+  });
+
+  it("⚠ the school's own card shows exactly its own story and nobody else's", async () => {
+    // A teacher is refused: the story is the office's reading.
+    await expect(
+      schoolJobStory(session(false, { role: "TEACHER", schoolId: schoolAId, membershipId: "m" })),
+    ).rejects.toBeInstanceOf(AccessError);
+
+    const a = await schoolJobStory(session(false, { role: "ADMIN", schoolId: schoolAId, membershipId: "m" }));
+    expect(a.attention).toBe(false);
+    expect(a.entries.find((e) => e.job === "departures:run")!.counts).toEqual({ executed: 1 });
+    expect(a.entries.find((e) => e.job === "digest:weekly")!.counts).toEqual({ digests: 1, children: 2 });
+    // B's stuck leaks nowhere into A's story.
+    expect(JSON.stringify(a.entries)).not.toContain("stuck");
+
+    const b = await schoolJobStory(session(false, { role: "ADMIN", schoolId: schoolBId, membershipId: "m" }));
+    expect(b.attention).toBe(true);
+    expect(b.entries).toEqual([expect.objectContaining({ job: "departures:run", counts: { stuck: 1 } })]);
+
+    // A school the runs had nothing for gets a quiet, honest empty.
+    const quiet = await schoolJobStory(session(false, { role: "ADMIN", schoolId: "no-such-school-id", membershipId: "m" }));
+    expect(quiet).toEqual({ entries: [], attention: false });
   });
 
   it("a school no latest run had work for is quiet, not listed", async () => {

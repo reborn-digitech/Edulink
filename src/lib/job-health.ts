@@ -2,7 +2,9 @@ import "server-only";
 import { db } from "./db";
 import { JOB_NAMES, type JobName } from "./jobs";
 import { assertSuperuser } from "./superuser";
+import { AccessError } from "./tenancy";
 import type { ActiveContext } from "./session";
+import type { TranslationKey } from "./i18n/dictionary";
 
 /**
  * The operator's cross-school view of job health.
@@ -31,6 +33,21 @@ import type { ActiveContext } from "./session";
 /** Counts that mean somebody should look, not just that work happened. */
 const ATTENTION_KEYS = new Set(["stuck"]);
 
+/**
+ * What each count key is called on a page — one map, used by the operator's
+ * view and the school's card alike, so a count never wears two names.
+ * A key not listed renders as itself: future jobs stay legible, just plain.
+ */
+export const JOB_COUNT_LABELS: Record<string, TranslationKey> = {
+  executed: "root.jobCountExecuted",
+  stale: "root.jobCountStale",
+  stuck: "root.jobCountStuck",
+  autoRead: "root.jobCountAutoRead",
+  expired: "root.jobCountExpired",
+  digests: "root.jobCountDigests",
+  children: "root.jobCountChildren",
+};
+
 export type SchoolJobCounts = { job: JobName; at: Date; counts: Record<string, number> };
 
 export type SchoolJobHealth = {
@@ -51,9 +68,15 @@ export type CrossSchoolJobHealth = {
   runs: { job: JobName; at: Date | null }[];
 };
 
-export async function crossSchoolJobHealth(session: ActiveContext): Promise<CrossSchoolJobHealth> {
-  assertSuperuser(session);
-
+/**
+ * Each job's latest successful run, parsed into per-school stories. Shared by
+ * the operator's view and the school's own — the two must never disagree,
+ * so there is one reader.
+ */
+async function latestRunStories(): Promise<{
+  runs: { job: JobName; at: Date | null }[];
+  bySchool: Map<string, SchoolJobCounts[]>;
+}> {
   const bySchool = new Map<string, SchoolJobCounts[]>();
   const runs: { job: JobName; at: Date | null }[] = [];
 
@@ -91,6 +114,13 @@ export async function crossSchoolJobHealth(session: ActiveContext): Promise<Cros
       bySchool.set(schoolId, list);
     }
   }
+  return { runs, bySchool };
+}
+
+export async function crossSchoolJobHealth(session: ActiveContext): Promise<CrossSchoolJobHealth> {
+  assertSuperuser(session);
+
+  const { runs, bySchool } = await latestRunStories();
 
   // Superuser sight of the School table is the same policy /root's school list
   // stands on; nothing else is read.
@@ -113,4 +143,33 @@ export async function crossSchoolJobHealth(session: ActiveContext): Promise<Cros
 
   const quiet = allSchools.filter((s) => !bySchool.has(s.id) && !s.removedAt).length;
   return { schools, quiet, runs };
+}
+
+/** What the platform's machinery did for ONE school, told to that school. */
+export type SchoolJobStory = {
+  /** Jobs whose latest successful run had work for this school; empty = quiet. */
+  entries: SchoolJobCounts[];
+  /** A scheduled leaving could not run — the school should know first. */
+  attention: boolean;
+};
+
+/**
+ * The school's own side of the same record.
+ *
+ * JobRun deliberately has no tenant policy — it is a whole-server row holding
+ * counts and nothing else — so THE FILTER HERE IS THE PROMISE: only the
+ * calling admin's own school's story leaves this function, the way review
+ * reads aggregate in their lib. The counts shown are exactly the operator's,
+ * because both views come from `latestRunStories` and cannot drift apart.
+ */
+export async function schoolJobStory(ctx: ActiveContext): Promise<SchoolJobStory> {
+  if (ctx.role !== "ADMIN" || !ctx.schoolId) {
+    throw new AccessError("access.onlyAnAdminReadsTheJobStory");
+  }
+  const { bySchool } = await latestRunStories();
+  const entries = bySchool.get(ctx.schoolId) ?? [];
+  return {
+    entries,
+    attention: entries.some((e) => (e.counts.stuck ?? 0) > 0),
+  };
 }

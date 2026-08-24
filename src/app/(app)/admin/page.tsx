@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRightIcon,
+  BroomIcon,
   CalendarBlankIcon,
   CheckCircleIcon,
   ChalkboardTeacherIcon,
@@ -10,6 +11,7 @@ import {
   GraduationCapIcon,
   UsersThreeIcon,
   ExamIcon,
+  WarningIcon,
 } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { getChecklist } from "@/lib/onboarding";
@@ -23,7 +25,8 @@ import { EmptyState } from "@/components/ui/states";
 import { Badge } from "@/components/ui/badge";
 import { WelcomeBanner } from "./welcome-banner";
 import { cn } from "@/lib/cn";
-import { getT } from "@/lib/i18n/server";
+import { getT, getRelativeTime } from "@/lib/i18n/server";
+import { schoolJobStory, JOB_COUNT_LABELS } from "@/lib/job-health";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -36,13 +39,17 @@ export default async function AdminDashboard({
   searchParams: Promise<{ welcome?: string }>;
 }) {
   const t = await getT();
+  const when = await getRelativeTime();
   const ctx = await requireRole("ADMIN");
   const { welcome } = await searchParams;
 
-  const school = await db.school.findUniqueOrThrow({
-    where: { id: ctx.schoolId },
-    select: { name: true, code: true, timezone: true },
-  });
+  const [school, jobStory] = await Promise.all([
+    db.school.findUniqueOrThrow({
+      where: { id: ctx.schoolId },
+      select: { name: true, code: true, timezone: true },
+    }),
+    schoolJobStory(ctx),
+  ]);
 
   const dateKey = todayKey(school.timezone);
   const [examSeriesCount, examPublishedCount, reportCardsPublished] = await Promise.all([
@@ -305,6 +312,46 @@ export default async function AdminDashboard({
             <Button asChild size="sm" variant="secondary">
               <Link href="/admin/classes">{t("classes.reportCards")}</Link>
             </Button>
+          </CardBody>
+        </Card>
+      )}
+
+      {/* ---------------- overnight housekeeping ----------------
+          Shown ONLY when the latest runs actually touched this school — a
+          permanent card pointing at a permanent "nothing happened" teaches
+          people to stop looking, the Feedback-menu rule. */}
+      {jobStory.entries.length > 0 && (
+        <Card>
+          <CardHeader
+            icon={<BroomIcon weight="duotone" className="size-5" />}
+            title={t("admin.jobStoryTitle")}
+            description={t("admin.jobStoryBody")}
+          />
+          <CardBody className="pt-0">
+            {jobStory.attention && (
+              <p className="mb-3 flex items-start gap-2 rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium leading-relaxed text-danger">
+                <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+                {t("admin.jobStoryStuck")}
+              </p>
+            )}
+            <dl className="grid gap-x-6 gap-y-1.5 text-sm sm:grid-cols-[auto_1fr]">
+              {jobStory.entries.map((entry) => (
+                <div key={entry.job} className="contents">
+                  <dt className="font-mono text-xs leading-6 text-fg-muted">{entry.job}</dt>
+                  <dd className="flex flex-wrap items-center gap-x-3 gap-y-1 text-fg">
+                    {Object.entries(entry.counts).map(([key, value]) => (
+                      <span key={key} className={key === "stuck" ? "inline-flex items-center gap-1 font-semibold text-danger" : "inline-flex items-center gap-1"}>
+                        <span className="font-semibold tabular-nums">{value}</span>
+                        <span className={key === "stuck" ? "" : "text-fg-muted"}>
+                          {JOB_COUNT_LABELS[key] ? t(JOB_COUNT_LABELS[key]) : key}
+                        </span>
+                      </span>
+                    ))}
+                    <span className="text-xs text-fg-subtle">{when(entry.at)}</span>
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </CardBody>
         </Card>
       )}

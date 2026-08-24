@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeftIcon, BuildingsIcon, WarningIcon } from "@phosphor-icons/react/ssr";
 import { requireSuperuser } from "@/lib/tenancy";
-import { crossSchoolJobHealth } from "@/lib/job-health";
+import { crossSchoolJobHealth, JOB_COUNT_LABELS } from "@/lib/job-health";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { getT, getRelativeTime } from "@/lib/i18n/server";
-import type { TranslationKey } from "@/lib/i18n/dictionary";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -21,16 +20,6 @@ export async function generateMetadata(): Promise<Metadata> {
  * hundred empty rows. `stuck` turns a card red because it is the one count
  * that accumulates a real leaver nobody executes.
  */
-const COUNT_LABELS: Record<string, TranslationKey> = {
-  executed: "root.jobCountExecuted",
-  stale: "root.jobCountStale",
-  stuck: "root.jobCountStuck",
-  autoRead: "root.jobCountAutoRead",
-  expired: "root.jobCountExpired",
-  digests: "root.jobCountDigests",
-  children: "root.jobCountChildren",
-};
-
 export default async function JobHealthBySchoolPage() {
   const t = await getT();
   const relativeTime = await getRelativeTime();
@@ -108,7 +97,7 @@ export default async function JobHealthBySchoolPage() {
                               {key === "stuck" && <WarningIcon weight="fill" className="size-3.5" aria-hidden="true" />}
                               <span className="font-semibold tabular-nums">{value}</span>
                               <span className={key === "stuck" ? "" : "text-fg-muted"}>
-                                {COUNT_LABELS[key] ? t(COUNT_LABELS[key]) : key}
+                                {JOB_COUNT_LABELS[key] ? t(JOB_COUNT_LABELS[key]) : key}
                               </span>
                             </span>
                           ))}
