@@ -26,7 +26,7 @@ import { Badge } from "@/components/ui/badge";
 import { WelcomeBanner } from "./welcome-banner";
 import { cn } from "@/lib/cn";
 import { getT, getRelativeTime } from "@/lib/i18n/server";
-import { schoolJobStory, JOB_COUNT_LABELS } from "@/lib/job-health";
+import { schoolJobStory, JOB_COUNT_LABELS, JOB_ATTENTION_KEYS } from "@/lib/job-health";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -328,10 +328,16 @@ export default async function AdminDashboard({
             description={t("admin.jobStoryBody")}
           />
           <CardBody className="pt-0">
-            {jobStory.attention && (
+            {jobStory.entries.some((e) => (e.counts.stuck ?? 0) > 0) && (
               <p className="mb-3 flex items-start gap-2 rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium leading-relaxed text-danger">
                 <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
                 {t("admin.jobStoryStuck")}
+              </p>
+            )}
+            {jobStory.entries.some((e) => (e.counts.missing ?? 0) > 0) && (
+              <p className="mb-3 flex items-start gap-2 rounded-[--radius-md] border border-danger/30 bg-danger-soft px-3 py-2 text-sm font-medium leading-relaxed text-danger">
+                <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+                {t("admin.jobStoryMissing")}
               </p>
             )}
             <dl className="grid gap-x-6 gap-y-1.5 text-sm sm:grid-cols-[auto_1fr]">
@@ -340,9 +346,9 @@ export default async function AdminDashboard({
                   <dt className="font-mono text-xs leading-6 text-fg-muted">{entry.job}</dt>
                   <dd className="flex flex-wrap items-center gap-x-3 gap-y-1 text-fg">
                     {Object.entries(entry.counts).map(([key, value]) => (
-                      <span key={key} className={key === "stuck" ? "inline-flex items-center gap-1 font-semibold text-danger" : "inline-flex items-center gap-1"}>
+                      <span key={key} className={JOB_ATTENTION_KEYS.has(key) ? "inline-flex items-center gap-1 font-semibold text-danger" : "inline-flex items-center gap-1"}>
                         <span className="font-semibold tabular-nums">{value}</span>
-                        <span className={key === "stuck" ? "" : "text-fg-muted"}>
+                        <span className={JOB_ATTENTION_KEYS.has(key) ? "" : "text-fg-muted"}>
                           {JOB_COUNT_LABELS[key] ? t(JOB_COUNT_LABELS[key]) : key}
                         </span>
                       </span>

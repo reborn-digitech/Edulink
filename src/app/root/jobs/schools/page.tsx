@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeftIcon, BuildingsIcon, WarningIcon } from "@phosphor-icons/react/ssr";
 import { requireSuperuser } from "@/lib/tenancy";
-import { crossSchoolJobHealth, JOB_COUNT_LABELS } from "@/lib/job-health";
+import { crossSchoolJobHealth, JOB_COUNT_LABELS, JOB_ATTENTION_KEYS } from "@/lib/job-health";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
@@ -26,6 +26,9 @@ export default async function JobHealthBySchoolPage() {
   const session = await requireSuperuser();
   const { schools, quiet, runs } = await crossSchoolJobHealth(session);
   const attention = schools.filter((s) => s.attention).length;
+  const has = (key: string) => schools.some((s) => s.jobs.some((j) => (j.counts[key] ?? 0) > 0));
+  const hasStuck = has("stuck");
+  const hasMissing = has("missing");
 
   return (
     <div className="space-y-5">
@@ -55,10 +58,16 @@ export default async function JobHealthBySchoolPage() {
         </p>
       </div>
 
-      {attention > 0 && (
+      {hasStuck && (
         <p className="flex items-start gap-2 rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm leading-relaxed text-fg">
           <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0 text-danger" aria-hidden="true" />
           {t("root.jobHealthStuckHint")}
+        </p>
+      )}
+      {hasMissing && (
+        <p className="flex items-start gap-2 rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm leading-relaxed text-fg">
+          <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0 text-danger" aria-hidden="true" />
+          {t("root.jobHealthMissingHint")}
         </p>
       )}
 
@@ -89,14 +98,14 @@ export default async function JobHealthBySchoolPage() {
                             <span
                               key={key}
                               className={
-                                key === "stuck"
+                                JOB_ATTENTION_KEYS.has(key)
                                   ? "inline-flex items-center gap-1 font-semibold text-danger"
                                   : "inline-flex items-center gap-1"
                               }
                             >
-                              {key === "stuck" && <WarningIcon weight="fill" className="size-3.5" aria-hidden="true" />}
+                              {JOB_ATTENTION_KEYS.has(key) && <WarningIcon weight="fill" className="size-3.5" aria-hidden="true" />}
                               <span className="font-semibold tabular-nums">{value}</span>
-                              <span className={key === "stuck" ? "" : "text-fg-muted"}>
+                              <span className={JOB_ATTENTION_KEYS.has(key) ? "" : "text-fg-muted"}>
                                 {JOB_COUNT_LABELS[key] ? t(JOB_COUNT_LABELS[key]) : key}
                               </span>
                             </span>

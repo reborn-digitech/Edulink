@@ -104,11 +104,13 @@ export const JOBS: Record<JobName, JobSpec> = {
     run: async () => {
       const report = await reclaimOrphans({ dryRun: false });
       // Counts only — the report lists keys, which are not for a log line.
-      // No perSchool: an orphaned storage key belongs to nobody by definition.
+      // The per-school story is MISSING files, not orphans: an orphan belongs
+      // to nobody by definition, but a record whose bytes are gone has an
+      // owner, and that owner's card should say so. See OrphanReport.
       const summary = Object.fromEntries(
         Object.entries(report).filter(([, v]) => typeof v === "number" || typeof v === "boolean"),
       ) as Record<string, number | boolean>;
-      return { summary };
+      return { summary, perSchool: report.perSchool };
     },
   },
 };

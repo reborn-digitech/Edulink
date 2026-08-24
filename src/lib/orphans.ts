@@ -70,6 +70,17 @@ export type OrphanReport = {
   /** Empty unless `dryRun` was false. */
   deleted: string[];
   bytesReclaimed: number;
+  /** Files some record points at whose bytes are NOT on disk. See below. */
+  missing: number;
+  /**
+   * The sweep's per-school story, and it is the INVERSE of the orphans. An
+   * orphan belongs to nobody by definition — no record claims it, so there is
+   * no school to tell. But a reference whose bytes are gone is the opposite
+   * failure, it has an owner, and it is the one a school must hear about: a
+   * submission or an attachment somebody will one day click is not there.
+   * Zero-missing schools are absent, so absence stays health.
+   */
+  perSchool: Record<string, { missing: number }>;
 };
 
 /**
@@ -80,20 +91,28 @@ export type OrphanReport = {
  * this sweep delete live files. `tests/orphans.test.ts` pins one of each kind so
  * that dropping one of these queries fails loudly.
  */
-async function referencedFileIds(): Promise<Set<string>> {
-  const ids = new Set<string>();
+async function referencedFileIds(): Promise<Map<string, string>> {
+  // fileId → the school whose record claims it, so a reference whose bytes
+  // are gone can be told to its owner. First claimer wins the label; every
+  // claimer keeps the file alive either way. The empty string labels a
+  // reference with no school to tell (a null-school post) — still referenced,
+  // still counted missing when gone, just nobody's card to land on.
+  const ids = new Map<string, string>();
+  const claim = (fileId: string, schoolId: string | null) => {
+    if (!ids.has(fileId)) ids.set(fileId, schoolId ?? "");
+  };
 
   const [schools, assignments, submissions, posts] = await Promise.all([
-    db.school.findMany({ where: { logoPath: { not: null } }, select: { logoPath: true } }),
-    db.assignment.findMany({ select: { attachments: true } }),
-    db.submission.findMany({ select: { attachments: true } }),
-    db.post.findMany({ select: { media: true } }),
+    db.school.findMany({ where: { logoPath: { not: null } }, select: { id: true, logoPath: true } }),
+    db.assignment.findMany({ select: { schoolId: true, attachments: true } }),
+    db.submission.findMany({ select: { schoolId: true, attachments: true } }),
+    db.post.findMany({ select: { schoolId: true, media: true } }),
   ]);
 
-  for (const school of schools) if (school.logoPath) ids.add(school.logoPath);
-  for (const row of assignments) for (const a of readAttachments(row.attachments)) ids.add(a.fileId);
-  for (const row of submissions) for (const a of readAttachments(row.attachments)) ids.add(a.fileId);
-  for (const row of posts) for (const m of readMedia(row.media)) ids.add(m.fileId);
+  for (const school of schools) if (school.logoPath) claim(school.logoPath, school.id);
+  for (const row of assignments) for (const a of readAttachments(row.attachments)) claim(a.fileId, row.schoolId);
+  for (const row of submissions) for (const a of readAttachments(row.attachments)) claim(a.fileId, row.schoolId);
+  for (const row of posts) for (const m of readMedia(row.media)) claim(m.fileId, row.schoolId);
 
   return ids;
 }
@@ -156,6 +175,19 @@ export async function reclaimOrphans(
     throw new Error(`Storage root ${storageRoot()} is not readable, but ${referenced.size} file(s) are on record — nothing swept`);
   }
 
+  // The other direction: a record whose bytes are not there. Only judged when
+  // the disk actually answered — the unreadable-root case threw above.
+  const onDisk = new Set(files.map((file) => file.fileId));
+  let missing = 0;
+  const perSchool: Record<string, { missing: number }> = {};
+  if (rootReadable) {
+    for (const [fileId, schoolId] of referenced) {
+      if (onDisk.has(fileId)) continue;
+      missing++;
+      if (schoolId) (perSchool[schoolId] ??= { missing: 0 }).missing++;
+    }
+  }
+
   const cutoff = Date.now() - graceMs;
   let skippedRecent = 0;
   const orphans: OrphanCandidate[] = [];
@@ -196,5 +228,7 @@ export async function reclaimOrphans(
     unrecognised,
     deleted,
     bytesReclaimed,
+    missing,
+    perSchool,
   };
 }

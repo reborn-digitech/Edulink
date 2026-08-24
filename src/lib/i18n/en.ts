@@ -1292,6 +1292,8 @@ export const en = {
     jobCountChildren: "children covered",
     jobCountQuietFams: "families with a quiet week",
     jobCountSkippedFams: "families already served this week",
+    jobCountMissing: "files on record, gone from disk",
+    jobHealthMissingHint: "Missing means a record points at a file whose bytes are not on disk — lost, or on a volume that is not mounted. Nothing was deleted; the sweep reports it nightly until the bytes are found.",
     jobsFailedOne: "Every job is on time, but the last run of 1 failed.",
     jobsFailedMany: "Every job is on time, but the last run of {count} failed.",
     jobDescDepartures: "Runs pupils\u2019 scheduled leavings the morning after their last day.",
@@ -3267,6 +3269,7 @@ export const en = {
     jobStoryTitle: "Overnight housekeeping",
     jobStoryBody: "What the platform’s scheduled jobs last did for this school — leavings run on their day, notices tidied under this school’s numbers, weekly digests to families. Nothing shows on a quiet day.",
     jobStoryStuck: "A scheduled leaving was due but could not run — the school had no active admin at the time. It is retried every night; now that you are here, tomorrow’s run should clear it.",
+    jobStoryMissing: "Some files this school’s records point at could not be found on disk. Nothing has been deleted; the operator sees the same count and is the right person to ask.",
     noTeachersBody:
       "Teachers are the fastest way to bring the rest of the school in — they create classes, and their students follow.",
     inviteFirstTeacher: "Invite your first teacher",

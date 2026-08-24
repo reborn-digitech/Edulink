@@ -44,6 +44,7 @@ const EARLIER = new Date("2999-05-31T03:30:00Z");
 
 let schoolAId: string;
 let schoolBId: string;
+let schoolCId: string;
 
 async function seedRun(job: string, startedAt: Date, summary: Record<string, unknown>, ok = true) {
   const row = await db.jobRun.create({
@@ -61,8 +62,12 @@ beforeAll(async () => {
   const b = await db.school.create({
     data: { name: "ZZ Job Health B", slug: `zz-jobhealth-b-${suffix}`, code: `ZJB${suffix.slice(0, 5).toUpperCase()}`, contactEmail: `b-${suffix}@zz-jobhealth.test` },
   });
+  const c = await db.school.create({
+    data: { name: "ZZ Job Health C", slug: `zz-jobhealth-c-${suffix}`, code: `ZJC${suffix.slice(0, 5).toUpperCase()}`, contactEmail: `c-${suffix}@zz-jobhealth.test` },
+  });
   schoolAId = a.id;
   schoolBId = b.id;
+  schoolCId = c.id;
 
   // NOT notifications:tidy — jobs.test writes real JobRun rows for that job
   // in a parallel file and asserts on its recency; these two jobs get JobRun
@@ -75,11 +80,14 @@ beforeAll(async () => {
   await seedRun("departures:run", new Date(FUTURE.getTime() + 3_600_000), {}, false);
   // The latest digest run: coverage for A, so A wears two jobs' chips.
   await seedRun("digest:weekly", FUTURE, { sent: 1, skipped: 0, quiet: 0, perSchool: { [schoolAId]: { digests: 1, children: 2 } } });
+  // The latest reclaim run: C's records point at bytes that are gone — the
+  // other attention count, on a school with no other story at all.
+  await seedRun("files:reclaim", FUTURE, { scanned: 40, referenced: 12, missing: 3, perSchool: { [schoolCId]: { missing: 3 } } });
 });
 
 afterAll(async () => {
   await db.jobRun.deleteMany({ where: { id: { in: mine } } });
-  await db.school.deleteMany({ where: { id: { in: [schoolAId, schoolBId] } } });
+  await db.school.deleteMany({ where: { id: { in: [schoolAId, schoolBId, schoolCId] } } });
   await db.$disconnect();
 });
 
@@ -111,6 +119,12 @@ describe("the operator's cross-school view", () => {
     expect(a.attention).toBe(false);
     expect(view.schools.indexOf(b)).toBeLessThan(view.schools.indexOf(a));
 
+    // missing → attention too: a record whose bytes are gone needs a person.
+    const c = view.schools.find((s) => s.schoolId === schoolCId)!;
+    expect(c.attention).toBe(true);
+    expect(c.jobs).toEqual([expect.objectContaining({ job: "files:reclaim", counts: { missing: 3 } })]);
+    expect(view.schools.indexOf(c)).toBeLessThan(view.schools.indexOf(a));
+
     // The context line knows when each job last succeeded.
     const depRun = view.runs.find((r) => r.job === "departures:run")!;
     expect(depRun.at?.toISOString()).toBe(FUTURE.toISOString());
@@ -132,6 +146,11 @@ describe("the operator's cross-school view", () => {
     const b = await schoolJobStory(session(false, { role: "ADMIN", schoolId: schoolBId, membershipId: "m" }));
     expect(b.attention).toBe(true);
     expect(b.entries).toEqual([expect.objectContaining({ job: "departures:run", counts: { stuck: 1 } })]);
+
+    // A school whose only trouble is missing bytes still gets the flag.
+    const cStory = await schoolJobStory(session(false, { role: "ADMIN", schoolId: schoolCId, membershipId: "m" }));
+    expect(cStory.attention).toBe(true);
+    expect(cStory.entries).toEqual([expect.objectContaining({ counts: { missing: 3 } })]);
 
     // A school the runs had nothing for gets a quiet, honest empty.
     const quiet = await schoolJobStory(session(false, { role: "ADMIN", schoolId: "no-such-school-id", membershipId: "m" }));

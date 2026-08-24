@@ -30,8 +30,15 @@ import type { TranslationKey } from "./i18n/dictionary";
  * red. New count keys default to unremarkable until listed here.
  */
 
-/** Counts that mean somebody should look, not just that work happened. */
-const ATTENTION_KEYS = new Set(["stuck"]);
+/**
+ * Counts that mean somebody should look, not just that work happened —
+ * `stuck` is a leaver nobody can execute, `missing` a record whose bytes are
+ * gone from disk. Exported so the two pages colour exactly these red.
+ */
+export const JOB_ATTENTION_KEYS = new Set(["stuck", "missing"]);
+
+const needsAttention = (counts: Record<string, number>) =>
+  Object.entries(counts).some(([key, value]) => JOB_ATTENTION_KEYS.has(key) && value > 0);
 
 /**
  * What each count key is called on a page — one map, used by the operator's
@@ -48,6 +55,7 @@ export const JOB_COUNT_LABELS: Record<string, TranslationKey> = {
   children: "root.jobCountChildren",
   quiet: "root.jobCountQuietFams",
   skipped: "root.jobCountSkippedFams",
+  missing: "root.jobCountMissing",
 };
 
 export type SchoolJobCounts = { job: JobName; at: Date; counts: Record<string, number> };
@@ -136,7 +144,7 @@ export async function crossSchoolJobHealth(session: ActiveContext): Promise<Cros
       name: school?.name ?? null,
       removedAt: school?.removedAt ?? null,
       jobs,
-      attention: jobs.some((j) => Object.entries(j.counts).some(([k, v]) => ATTENTION_KEYS.has(k) && v > 0)),
+      attention: jobs.some((j) => needsAttention(j.counts)),
     };
   });
   schools.sort(
@@ -172,6 +180,6 @@ export async function schoolJobStory(ctx: ActiveContext): Promise<SchoolJobStory
   const entries = bySchool.get(ctx.schoolId) ?? [];
   return {
     entries,
-    attention: entries.some((e) => (e.counts.stuck ?? 0) > 0),
+    attention: entries.some((e) => needsAttention(e.counts)),
   };
 }

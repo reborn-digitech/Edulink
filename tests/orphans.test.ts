@@ -38,6 +38,8 @@ const ASSIGNMENT_FILE = "aaaa1111-2222-3333-4444-000000000002.pdf";
 const SUBMISSION_FILE = "aaaa1111-2222-3333-4444-000000000003.pdf";
 const POST_FILE = "aaaa1111-2222-3333-4444-000000000004.png";
 const ORPHAN = "aaaa1111-2222-3333-4444-000000000005.png";
+/** Referenced by the assignment but never written to disk — the missing case. */
+const MISSING_FILE = "aaaa1111-2222-3333-4444-000000000007.pdf";
 const FRESH_ORPHAN = "aaaa1111-2222-3333-4444-000000000006.png";
 const NOT_OURS = "notes.txt";
 
@@ -97,6 +99,7 @@ beforeAll(async () => {
       publishedAt: new Date(),
       attachments: JSON.stringify([
         { fileId: ASSIGNMENT_FILE, name: "sheet.pdf", size: 5, mime: "application/pdf" },
+        { fileId: MISSING_FILE, name: "answers.pdf", size: 5, mime: "application/pdf" },
       ]),
     },
   });
@@ -202,6 +205,19 @@ describe("what goes", () => {
   it("is safe to run twice", async () => {
     const report = await reclaimOrphans({ dryRun: false, graceMs: 0 });
     expect(report.deleted).not.toContain(ORPHAN); // already gone
+  });
+});
+
+describe("⚠ a record whose bytes are gone is told to its school", () => {
+  it("counts the referenced-but-absent file as missing, attributed per school, and never deletes for it", async () => {
+    const report = await reclaimOrphans({ dryRun: true, graceMs: 0 });
+    // Everything the real database references is absent from this scratch
+    // store, so the totals are large; what is pinned is OUR file landing on
+    // OUR school, which is the attribution path.
+    expect(report.missing).toBeGreaterThanOrEqual(1);
+    expect(report.perSchool[schoolId]?.missing ?? 0).toBeGreaterThanOrEqual(1);
+    // Missing is a report, never an action: nothing about it reaches deleted.
+    expect(report.deleted).toEqual([]);
   });
 });
 
