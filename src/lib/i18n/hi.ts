@@ -1152,6 +1152,8 @@ export const hi: Dictionary = {
     jobCountExpired: "सूचनाएँ हटीं",
     jobCountDigests: "साप्ताहिक संदेश",
     jobCountChildren: "बच्चे शामिल",
+    jobCountQuietFams: "परिवार जिनका सप्ताह शांत रहा",
+    jobCountSkippedFams: "परिवार जिन्हें इस सप्ताह पहले ही मिल चुका",
     jobDescDepartures: "विद्यार्थियों के निर्धारित छोड़ने उनके अंतिम दिन के अगली सुबह पूरे करता है।",
     jobDescTidy: "90 दिनों बाद बिना पढ़ी सूचनाओं को पढ़ा हुआ मानता है और एक साल बाद पढ़ी हुई हटाता है।",
     jobDescDigest: "हर परिवार को हफ़्ते में एक संदेश भेजता है कि क्या हुआ।",

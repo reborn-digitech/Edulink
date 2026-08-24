@@ -131,6 +131,18 @@ function lineFor(week: ChildDigest, t: Translate): string {
 /**
  * Send this week's digest to every family that has not had one in six days.
  * Returns honest counts; a caller (or a cron log) can see what happened.
+ *
+ * COVERAGE, NOT JUST SENDS. Per school, every family the run considered lands
+ * in exactly one bucket: `digests`/`children` when a message went, `quiet`
+ * when there was nothing worth saying, `skipped` when this week's had already
+ * arrived — so "3 digests" can finally be read against how many families
+ * there were to reach, on the school's own card and the operator's page
+ * alike. Quiet and skipped families are attributed through the membership's
+ * school (one batched read), which also catches the family whose child holds
+ * a membership but no active enrolment. The one deliberate asymmetry: a SENT
+ * digest counts only toward the schools it actually mentions — a family
+ * served about one school's child is not "quiet" at the sibling's school,
+ * it is simply not counted there, because saying either number would lie.
  */
 export async function sendWeeklyDigests(
   opts: { onlyParentUserIds?: string[] } = {},
@@ -138,8 +150,7 @@ export async function sendWeeklyDigests(
   sent: number;
   skipped: number;
   quiet: number;
-  /** Which schools the sent digests covered: a digest counts once per school it mentions, a child once each. Schools nothing was sent about are absent. */
-  perSchool: Record<string, { digests?: number; children?: number }>;
+  perSchool: Record<string, { digests?: number; children?: number; quiet?: number; skipped?: number }>;
 }> {
   const parents = await db.guardianship.findMany({
     where: {
@@ -160,7 +171,26 @@ export async function sendWeeklyDigests(
   let sent = 0;
   let skipped = 0;
   let quiet = 0;
-  const perSchool: Record<string, { digests?: number; children?: number }> = {};
+  const perSchool: Record<string, { digests?: number; children?: number; quiet?: number; skipped?: number }> = {};
+  const bump = (schoolId: string, key: "digests" | "children" | "quiet" | "skipped") => {
+    const row = (perSchool[schoolId] ??= {});
+    row[key] = (row[key] ?? 0) + 1;
+  };
+
+  // One batched read of every child's school, chunked for the large platform,
+  // so quiet and skipped families can be attributed without a query each.
+  const childSchool = new Map<string, string>();
+  const allChildIds = [...new Set(parents.map((link) => link.studentMembershipId))];
+  for (let i = 0; i < allChildIds.length; i += 1000) {
+    const rows = await db.membership.findMany({
+      where: { id: { in: allChildIds.slice(i, i + 1000) } },
+      select: { id: true, schoolId: true },
+    });
+    for (const row of rows) childSchool.set(row.id, row.schoolId);
+  }
+  const familySchools = (childIds: string[]) =>
+    new Set(childIds.map((id) => childSchool.get(id)).filter((x): x is string => x !== undefined));
+
   const window = new Date(Date.now() - 6 * 24 * 60 * 60 * 1000);
 
   for (const [parentUserId, childIds] of byParent) {
@@ -174,6 +204,7 @@ export async function sendWeeklyDigests(
     });
     if (recent) {
       skipped += 1;
+      for (const schoolId of familySchools(childIds)) bump(schoolId, "skipped");
       continue;
     }
 
@@ -182,6 +213,7 @@ export async function sendWeeklyDigests(
     );
     if (weeks.length === 0) {
       quiet += 1;
+      for (const schoolId of familySchools(childIds)) bump(schoolId, "quiet");
       continue;
     }
     // A week with nothing at all to report for any child sends nothing —
@@ -191,6 +223,7 @@ export async function sendWeeklyDigests(
     );
     if (!somethingHappened) {
       quiet += 1;
+      for (const schoolId of familySchools(childIds)) bump(schoolId, "quiet");
       continue;
     }
 
@@ -206,14 +239,8 @@ export async function sendWeeklyDigests(
       meta: { flag: DIGEST_FLAG },
     });
     sent += 1;
-    for (const schoolId of new Set(weeks.map((w) => w.schoolId))) {
-      const row = (perSchool[schoolId] ??= {});
-      row.digests = (row.digests ?? 0) + 1;
-    }
-    for (const week of weeks) {
-      const row = (perSchool[week.schoolId] ??= {});
-      row.children = (row.children ?? 0) + 1;
-    }
+    for (const schoolId of new Set(weeks.map((w) => w.schoolId))) bump(schoolId, "digests");
+    for (const week of weeks) bump(week.schoolId, "children");
   }
 
   return { sent, skipped, quiet, perSchool };

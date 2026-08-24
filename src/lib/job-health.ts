@@ -46,6 +46,8 @@ export const JOB_COUNT_LABELS: Record<string, TranslationKey> = {
   expired: "root.jobCountExpired",
   digests: "root.jobCountDigests",
   children: "root.jobCountChildren",
+  quiet: "root.jobCountQuietFams",
+  skipped: "root.jobCountSkippedFams",
 };
 
 export type SchoolJobCounts = { job: JobName; at: Date; counts: Record<string, number> };

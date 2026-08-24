@@ -1290,6 +1290,8 @@ export const en = {
     jobCountExpired: "notices removed",
     jobCountDigests: "digests",
     jobCountChildren: "children covered",
+    jobCountQuietFams: "families with a quiet week",
+    jobCountSkippedFams: "families already served this week",
     jobsFailedOne: "Every job is on time, but the last run of 1 failed.",
     jobsFailedMany: "Every job is on time, but the last run of {count} failed.",
     jobDescDepartures: "Runs pupils\u2019 scheduled leavings the morning after their last day.",
