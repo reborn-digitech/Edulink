@@ -6,12 +6,11 @@ import { getSchool, listAdminInvites } from "@/lib/superuser";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { relativeTime } from "@/lib/dates";
 import { SchoolForm } from "../school-form";
 import { InvitePanel } from "./invite-panel";
 import { RemoveSchool } from "./remove-school";
 import { RestoreSchool } from "./restore-school";
-import { getT } from "@/lib/i18n/server";
+import { getT, getRelativeTime } from "@/lib/i18n/server";
 
 export async function generateMetadata() {
   const t = await getT();
@@ -20,6 +19,7 @@ export async function generateMetadata() {
 
 export default async function SchoolPage({ params }: { params: Promise<{ schoolId: string }> }) {
   const t = await getT();
+  const relativeTime = await getRelativeTime();
   const session = await requireSuperuser();
   const { schoolId } = await params;
 

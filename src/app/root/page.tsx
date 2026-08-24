@@ -6,8 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
-import { relativeTime } from "@/lib/dates";
-import { getT } from "@/lib/i18n/server";
+import { getT, getRelativeTime } from "@/lib/i18n/server";
 
 export async function generateMetadata() {
   const t = await getT();
@@ -16,6 +15,7 @@ export async function generateMetadata() {
 
 export default async function RootPage() {
   const t = await getT();
+  const relativeTime = await getRelativeTime();
   const session = await requireSuperuser();
   const schools = await listSchools(session);
 
