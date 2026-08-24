@@ -225,6 +225,24 @@ export async function sendTeacherInvite(
 }
 
 /**
+ * The operator's health digest — sent ONLY when something needs a person.
+ * English like every transactional email here, and like the crontab whose
+ * jobs it reports on.
+ */
+export async function sendHealthDigestEmail(to: string, subject: string, text: string, bodyHtml: string) {
+  await sendEmail({
+    to,
+    purpose: "HEALTH",
+    subject,
+    text,
+    html: layout("The platform needs a person", bodyHtml, {
+      label: "Open the jobs page",
+      url: `${APP}/root/jobs`,
+    }),
+  });
+}
+
+/**
  * The office linking a family, rather than the family claiming a child. The
  * sentence names the child and the school because the recipient may never
  * have heard of EduLink — the school is the thing they trust.

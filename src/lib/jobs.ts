@@ -5,6 +5,7 @@ import { tidyAllNotifications } from "./notification-housekeeping";
 import { sendWeeklyDigests } from "./digest";
 import { reclaimOrphans } from "./orphans";
 import { runDueDepartures } from "./school-record";
+import { sendOperatorHealthDigest } from "./job-health";
 import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
@@ -30,7 +31,7 @@ import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
  * the same door migrations and seeds use.
  */
 
-export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run";
+export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest";
 
 /**
  * What one run of a job hands back: the log line, and — for jobs whose work
@@ -93,6 +94,19 @@ export const JOBS: Record<JobName, JobSpec> = {
     run: async () => {
       const { executed, skippedStale, stuck, perSchool } = await runDueDepartures();
       return { summary: { executed, skippedStale, stuck }, perSchool };
+    },
+  },
+  "health:digest": {
+    name: "health:digest",
+    // Morning, AFTER the overnight jobs (01:00, 03:00, 03:30) — so the email
+    // reports on runs a few hours old, not yesterday's.
+    schedule: "0 7 * * *",
+    describeKey: "root.jobDescHealth",
+    maxRunMs: 15 * 60_000,
+    expectEveryMs: 2 * DAY,
+    run: async () => {
+      const { emailed, overdue, failed, attention, quiet } = await sendOperatorHealthDigest();
+      return { summary: { emailed, overdue, failed, attention, quiet } };
     },
   },
   "files:reclaim": {

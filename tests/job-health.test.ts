@@ -1,6 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
-import { crossSchoolJobHealth, schoolJobStory } from "@/lib/job-health";
+import { composeHealthDigest, crossSchoolJobHealth, schoolJobStory, sendOperatorHealthDigest } from "@/lib/job-health";
+import type { JobStatus } from "@/lib/jobs";
 import { AccessError } from "@/lib/tenancy";
 import type { ActiveContext } from "@/lib/session";
 
@@ -86,6 +87,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
+  await db.outboundEmail.deleteMany({ where: { purpose: "HEALTH" } });
   await db.jobRun.deleteMany({ where: { id: { in: mine } } });
   await db.school.deleteMany({ where: { id: { in: [schoolAId, schoolBId, schoolCId] } } });
   await db.$disconnect();
@@ -167,5 +169,61 @@ describe("the operator's cross-school view", () => {
       expect(school.jobs.length).toBeGreaterThan(0);
       for (const entry of school.jobs) expect(Object.keys(entry.counts).length).toBeGreaterThan(0);
     }
+  });
+});
+
+/** A minimal healthy status; override what a case needs. */
+function status(over: Partial<JobStatus> & { name: JobStatus["name"] }): JobStatus {
+  return {
+    schedule: "0 0 * * *",
+    describeKey: "root.jobDescTidy",
+    lastRun: null,
+    lastSuccessAt: new Date(),
+    overdue: false,
+    lastFailed: false,
+    running: false,
+    ...over,
+  };
+}
+
+describe("the operator's health digest", () => {
+  it("⚠ says nothing at all when all is well — and does not report on itself", () => {
+    const green = [status({ name: "notifications:tidy" }), status({ name: "departures:run" })];
+    expect(composeHealthDigest(green, [])).toBeNull();
+    // The messenger's own overdue is not news the messenger can carry.
+    expect(composeHealthDigest([...green, status({ name: "health:digest", overdue: true })], [])).toBeNull();
+  });
+
+  it("names the overdue job, the failure, and the school — with the counts in words", () => {
+    const digest = composeHealthDigest(
+      [
+        status({ name: "digest:weekly", overdue: true, lastSuccessAt: null }),
+        status({
+          name: "files:reclaim",
+          lastFailed: true,
+          lastRun: { startedAt: new Date(), finishedAt: new Date(), ok: false, summary: "", error: "disk fell off", host: null },
+        }),
+      ],
+      [{ schoolId: "s1", name: "ZZ Digest School", jobs: [{ job: "departures:run", at: new Date(), counts: { stuck: 2 } }] }],
+    )!;
+    expect(digest.subject).toBe("EduLink health: 1 job overdue · 1 failed · 1 school needs attention");
+    expect(digest.text).toContain("digest:weekly: overdue (last success never)");
+    expect(digest.text).toContain("files:reclaim: last run failed — disk fell off");
+    expect(digest.text).toContain("ZZ Digest School: 2 stuck");
+    expect(digest.bodyHtml).toContain("ZZ Digest School");
+  });
+
+  it("⚠ the real gatherer emails every operator when the fixtures hold trouble, counts honest", async () => {
+    await db.outboundEmail.deleteMany({ where: { purpose: "HEALTH" } });
+    const out = await sendOperatorHealthDigest();
+    // Schools B (stuck) and C (missing) are this file's own seeded trouble.
+    expect(out.attention).toBeGreaterThanOrEqual(2);
+    expect(out.quiet).toBe(false);
+    expect(out.emailed).toBeGreaterThanOrEqual(1);
+    const sent = await db.outboundEmail.findMany({ where: { purpose: "HEALTH" }, select: { to: true, subject: true, text: true } });
+    expect(sent.length).toBe(out.emailed);
+    expect(sent[0]!.subject).toMatch(/EduLink health:/);
+    expect(sent[0]!.text).toContain("ZZ Job Health B: 1 stuck");
+    expect(sent[0]!.text).toContain("ZZ Job Health C: 3 files on record, gone from disk");
   });
 });

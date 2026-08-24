@@ -1300,6 +1300,7 @@ export const en = {
     jobDescTidy: "Marks unread notices read after 90 days and removes read ones after a year.",
     jobDescDigest: "Sends every family one message a week saying what happened.",
     jobDescReclaim: "Deletes stored files no record points at any more.",
+    jobDescHealth: "Emails whoever runs the server when a job is overdue or a school needs attention. Quiet days send nothing.",
     jobs: "Jobs",
     jobsAllRunning: "Every scheduled job has run when it should.",
     jobsOverdueOne: "1 job is overdue.",

@@ -1,8 +1,15 @@
 import "server-only";
 import { db } from "./db";
-import { JOB_NAMES, type JobName } from "./jobs";
+// A deliberate import cycle with jobs.ts: the registry's health:digest job
+// calls sendOperatorHealthDigest below, and this file reads jobStatuses from
+// the registry. Both sides touch the other only inside function bodies, never
+// at module init, so the live bindings are settled by the time either runs.
+import { JOB_NAMES, jobStatuses, type JobName, type JobStatus } from "./jobs";
 import { assertSuperuser } from "./superuser";
 import { AccessError } from "./tenancy";
+import { sendHealthDigestEmail } from "./email";
+import { relativeTime } from "./dates";
+import { translator } from "./i18n/dictionary";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "./i18n/dictionary";
 
@@ -182,4 +189,124 @@ export async function schoolJobStory(ctx: ActiveContext): Promise<SchoolJobStory
     entries,
     attention: entries.some((e) => needsAttention(e.counts)),
   };
+}
+
+/* -------------------------------------------------------------------------- */
+/* The operator's health digest email                                          */
+/* -------------------------------------------------------------------------- */
+
+type AttentionSchool = { schoolId: string; name: string | null; jobs: SchoolJobCounts[] };
+
+/**
+ * The email's words, from the numbers — pure, so a test can hold it still.
+ *
+ * NULL WHEN ALL IS WELL, and then no email goes: an all-green message every
+ * morning teaches the operator to ignore the red one, the same rule that
+ * keeps an empty family digest unsent and a quiet school's card absent.
+ * /root/jobs remains the standing view; this is the alarm.
+ */
+export function composeHealthDigest(
+  statuses: JobStatus[],
+  attentionSchools: AttentionSchool[],
+): { subject: string; text: string; bodyHtml: string } | null {
+  // The messenger does not report on itself: if health:digest is broken, no
+  // email comes, and no email it could send would say so.
+  const jobs = statuses.filter((s) => s.name !== "health:digest");
+  const overdue = jobs.filter((s) => s.overdue);
+  const failed = jobs.filter((s) => !s.overdue && s.lastFailed);
+  if (overdue.length === 0 && failed.length === 0 && attentionSchools.length === 0) return null;
+
+  const tEn = translator("en");
+  const esc = (v: string) => v.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+  const parts: string[] = [];
+  if (overdue.length > 0) parts.push(`${overdue.length} job${overdue.length === 1 ? "" : "s"} overdue`);
+  if (failed.length > 0) parts.push(`${failed.length} failed`);
+  if (attentionSchools.length > 0) {
+    parts.push(`${attentionSchools.length} school${attentionSchools.length === 1 ? "" : "s"} need${attentionSchools.length === 1 ? "s" : ""} attention`);
+  }
+  const subject = `EduLink health: ${parts.join(" · ")}`;
+
+  const jobLine = (s: JobStatus): string =>
+    s.overdue
+      ? `${s.name}: overdue (last success ${s.lastSuccessAt ? relativeTime(s.lastSuccessAt) : "never"})`
+      : `${s.name}: last run failed${s.lastRun?.error ? ` — ${s.lastRun.error}` : ""}`;
+  const schoolLine = (school: AttentionSchool): string => {
+    const bits = school.jobs.flatMap((j) =>
+      Object.entries(j.counts)
+        .filter(([key]) => JOB_ATTENTION_KEYS.has(key))
+        .map(([key, value]) => `${value} ${JOB_COUNT_LABELS[key] ? tEn(JOB_COUNT_LABELS[key]) : key}`),
+    );
+    return `${school.name ?? school.schoolId}: ${bits.join(", ")}`;
+  };
+
+  const jobLines = [...overdue, ...failed].map(jobLine);
+  const schoolLines = attentionSchools.map(schoolLine);
+
+  const text = [
+    "The overnight machinery needs a person.",
+    ...(jobLines.length > 0 ? ["", "Jobs:", ...jobLines.map((l) => `- ${l}`)] : []),
+    ...(schoolLines.length > 0 ? ["", "Schools:", ...schoolLines.map((l) => `- ${l}`)] : []),
+    "",
+    "This email is sent only when something needs attention — a quiet platform sends nothing.",
+  ].join("\n");
+
+  const section = (title: string, lines: string[]) =>
+    lines.length === 0
+      ? ""
+      : `<p style="margin:16px 0 4px"><strong>${title}</strong></p><ul style="margin:0;padding-left:20px">${lines
+          .map((l) => `<li>${esc(l)}</li>`)
+          .join("")}</ul>`;
+  const bodyHtml =
+    `<p>The overnight machinery needs a person.</p>` +
+    section("Jobs", jobLines) +
+    section("Schools", schoolLines) +
+    `<p style="margin-top:16px;font-size:13px">This email is sent only when something needs attention — a quiet platform sends nothing.</p>`;
+
+  return { subject, text, bodyHtml };
+}
+
+/**
+ * Gathers the platform's health and emails every operator — or, on a quiet
+ * day, deliberately nobody. Runs from the health:digest job, as the owner,
+ * which is why it reads schools directly rather than through a session door.
+ */
+export async function sendOperatorHealthDigest(now: Date = new Date()): Promise<{
+  emailed: number;
+  overdue: number;
+  failed: number;
+  attention: number;
+  quiet: boolean;
+}> {
+  const statuses = await jobStatuses(now);
+  const { bySchool } = await latestRunStories();
+  const schoolRows = await db.school.findMany({ select: { id: true, name: true } });
+  const nameById = new Map(schoolRows.map((s) => [s.id, s.name]));
+
+  const attentionSchools: AttentionSchool[] = [...bySchool.entries()]
+    .filter(([, jobs]) => jobs.some((j) => needsAttention(j.counts)))
+    .map(([schoolId, jobs]) => ({
+      schoolId,
+      name: nameById.get(schoolId) ?? null,
+      jobs: jobs.filter((j) => needsAttention(j.counts)),
+    }))
+    .sort((a, b) => (a.name ?? "￿").localeCompare(b.name ?? "￿"));
+
+  const digest = composeHealthDigest(statuses, attentionSchools);
+  const jobs = statuses.filter((s) => s.name !== "health:digest");
+  const counts = {
+    overdue: jobs.filter((s) => s.overdue).length,
+    failed: jobs.filter((s) => !s.overdue && s.lastFailed).length,
+    attention: attentionSchools.length,
+  };
+  if (!digest) return { emailed: 0, ...counts, quiet: true };
+
+  const operators = await db.user.findMany({
+    where: { isSuperuser: true, email: { not: null }, disabledAt: null },
+    select: { email: true },
+  });
+  for (const op of operators) {
+    await sendHealthDigestEmail(op.email!, digest.subject, digest.text, digest.bodyHtml);
+  }
+  return { emailed: operators.length, ...counts, quiet: false };
 }
