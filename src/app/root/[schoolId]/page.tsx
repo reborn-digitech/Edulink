@@ -10,6 +10,7 @@ import { relativeTime } from "@/lib/dates";
 import { SchoolForm } from "../school-form";
 import { InvitePanel } from "./invite-panel";
 import { RemoveSchool } from "./remove-school";
+import { RestoreSchool } from "./restore-school";
 import { getT } from "@/lib/i18n/server";
 
 export async function generateMetadata() {
@@ -62,9 +63,13 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
       {/* A removed school keeps its page — the operator may still need to read
           what it was — but every door that would grow it again is gone. */}
       {school.removedAt ? (
-        <p className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg-muted">
-          {t("root.removeExplainer")}
-        </p>
+        <div className="space-y-4">
+          <p className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg-muted">
+            {t("root.removeExplainer")}
+          </p>
+          <p className="text-sm leading-relaxed text-fg-muted">{t("root.restoreExplainer")}</p>
+          <RestoreSchool schoolId={school.id} />
+        </div>
       ) : (
         <>
       <Card>

@@ -10,6 +10,7 @@ import { generateToken, hashToken } from "./crypto";
 import { schoolCode, slugify } from "./codes";
 import { sendTeacherInvite } from "./email";
 import { readJson, writeJson } from "./json";
+import { syncStandinGuardian } from "./standin-guardian";
 import { INVITE_TTL_DAYS } from "./constants";
 import type { ActiveContext } from "./session";
 
@@ -378,6 +379,19 @@ type RemovalTx = {
   guardianship: { updateMany(args: unknown): Promise<unknown> };
 };
 
+type RestoreTx = {
+  schoolRecord: { deleteMany(args: unknown): Promise<{ count: number }> };
+  membership: { updateMany(args: unknown): Promise<{ count: number }> };
+  enrollment: { updateMany(args: unknown): Promise<{ count: number }> };
+};
+
+/**
+ * Written onto every certificate a removal mints, and the marker `restoreSchool`
+ * uses to take back exactly those and no other — an organic leaver's
+ * certificate never carries it. One constant so the two can never drift.
+ */
+const REMOVAL_NOTE = "The school was removed from this EduLink installation.";
+
 /**
  * Takes a school off the installation.
  *
@@ -469,7 +483,7 @@ export async function removeSchool(
           leftAt,
           reason: "LEFT",
           destination: null,
-          note: "The school was removed from this EduLink installation.",
+          note: REMOVAL_NOTE,
           attendanceMarked: marked.get(s.id) ?? 0,
           attendancePresent: present.get(s.id) ?? 0,
           reportCardCount: cards.get(s.id) ?? 0,
@@ -479,10 +493,13 @@ export async function removeSchool(
       });
 
       // REMOVED rather than deleted, as cohort.ts does it, so last term's marks
-      // still have a class to belong to.
+      // still have a class to belong to. Stamped with the removal moment —
+      // the same instant every membership gets — which is both the house
+      // style (cohort and promotion stamp too) and what lets `restoreSchool`
+      // revive exactly these enrolments and no organically-removed one.
       await t.enrollment.updateMany({
         where: { schoolId, status: "ACTIVE" },
-        data: { status: "REMOVED" },
+        data: { status: "REMOVED", removedAt: leftAt },
       });
 
       // Staff and pupils alike: everybody's post at this school has ended.
@@ -511,6 +528,99 @@ export async function removeSchool(
     schoolId: null,
     actorUserId: session.user.id,
     action: "superuser.school.remove",
+    targetType: "School",
+    targetId: schoolId,
+    meta: { schoolId, name: school.name, ...counts },
+  });
+
+  return { ok: true };
+}
+
+/**
+ * Puts a removed school back.
+ *
+ * THE REMOVAL MOMENT IS THE UNDO LIST. `removeSchool` stamps one timestamp —
+ * `School.removedAt` — onto every membership it closes and every enrolment it
+ * removes, and writes `REMOVAL_NOTE` onto every certificate it mints. So the
+ * restore needs no bookkeeping table: everything carrying exactly that stamp
+ * is the removal's work and comes back; everything else — the pupil who left
+ * in June with a real certificate, the enrolment a teacher ended by hand — is
+ * somebody's decision and stays exactly as they left it.
+ *
+ * STAND-INS ARE REBUILT, NOT REVIVED. The removal revoked the school-relation
+ * guardianships, and Guardianship carries no revocation stamp — but reviving
+ * old rows would be wrong anyway: the right stand-in is whoever teaches the
+ * child NOW, and `syncStandinGuardian` already computes that from scratch.
+ * Reconcile, don't choreograph — the rule that file wrote down.
+ *
+ * Schools removed before enrolment stamping existed restore their people but
+ * not their class lists — the counts in the audit row say so honestly, and
+ * the admin re-enrols from the class pages.
+ */
+export async function restoreSchool(
+  session: ActiveContext,
+  schoolId: string,
+): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
+  assertSuperuser(session);
+
+  const school = await db.school.findUnique({
+    where: { id: schoolId },
+    select: { id: true, name: true, removedAt: true },
+  });
+  if (!school) return { ok: false, errorKey: "root.noSuchSchool" };
+  const removedAt = school.removedAt;
+  if (!removedAt) return { ok: false, errorKey: "root.schoolNotRemoved" };
+
+  const counts = await withSchoolAccess(session, schoolId, async () => {
+    const revived = await db.membership.findMany({
+      where: { schoolId, leftAt: removedAt },
+      select: { id: true, role: true },
+    });
+
+    const result = { members: revived.length, certificates: 0, enrollments: 0 };
+    await db.$tenantTransaction(async (tx: unknown) => {
+      const t = tx as RestoreTx;
+      result.certificates = (
+        await t.schoolRecord.deleteMany({
+          where: { schoolId, leftAt: removedAt, note: REMOVAL_NOTE },
+        })
+      ).count;
+      await t.membership.updateMany({
+        where: { schoolId, leftAt: removedAt },
+        data: { leftAt: null },
+      });
+      result.enrollments = (
+        await t.enrollment.updateMany({
+          where: { schoolId, status: "REMOVED", removedAt },
+          data: { status: "ACTIVE", removedAt: null },
+        })
+      ).count;
+    });
+
+    // Every revived pupil gets the stand-in reconciler, which puts a school
+    // guardian back only where no family holds one — the ordinary rule.
+    for (const membership of revived) {
+      if (membership.role !== "STUDENT") continue;
+      await syncStandinGuardian({
+        schoolId,
+        studentMembershipId: membership.id,
+        actorUserId: session.user.id,
+      });
+    }
+
+    return result;
+  });
+
+  // The flag comes off LAST — the mirror of removal, which flags last too. A
+  // restore that fails midway leaves the school still marked removed, so the
+  // operator can simply run it again: every predicate above keys on the stamp
+  // and is idempotent, and nothing here checks the flag once inside.
+  await db.school.update({ where: { id: schoolId }, data: { removedAt: null } });
+
+  await audit({
+    schoolId: null,
+    actorUserId: session.user.id,
+    action: "superuser.school.restore",
     targetType: "School",
     targetId: schoolId,
     meta: { schoolId, name: school.name, ...counts },

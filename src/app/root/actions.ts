@@ -7,6 +7,7 @@ import {
   createSchool,
   updateSchool,
   removeSchool,
+  restoreSchool,
   inviteAdmin,
   revokeInvite,
   appointAppAdmin,
@@ -74,6 +75,21 @@ export async function removeSchoolAction(schoolId: string): Promise<Result> {
     const session = await requireApiUser();
     assertSuperuser(session);
     const result = await removeSchool(session, schoolId);
+    if (!result.ok && result.errorKey) return { ok: false, error: (await getT())(result.errorKey) };
+    revalidatePath("/root");
+    revalidatePath(`/root/${schoolId}`);
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/** Puts a removed school back — the lib revives exactly what removal ended. */
+export async function restoreSchoolAction(schoolId: string): Promise<Result> {
+  try {
+    const session = await requireApiUser();
+    assertSuperuser(session);
+    const result = await restoreSchool(session, schoolId);
     if (!result.ok && result.errorKey) return { ok: false, error: (await getT())(result.errorKey) };
     revalidatePath("/root");
     revalidatePath(`/root/${schoolId}`);

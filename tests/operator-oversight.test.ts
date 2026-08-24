@@ -1,6 +1,6 @@
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
-import { accessHistory, removeSchool, withSchoolAccess } from "@/lib/superuser";
+import { accessHistory, removeSchool, restoreSchool, withSchoolAccess } from "@/lib/superuser";
 import {
   findPeople,
   listPeople,
@@ -401,33 +401,34 @@ describe("the directory", () => {
   });
 });
 
-describe("⚠ removing a school", () => {
-  async function buildDoomedSchool() {
-    const school = await db.school.create({
-      data: {
-        name: "ZZ Doomed School",
-        slug: DOOMED_SLUG,
-        code: "ZZDOOM",
-        contactEmail: `doomed${SUFFIX}`,
-      },
-    });
-    const pupilUser = await makeUser(`doomedpupil${SUFFIX}`, "Meera Leaver");
-    const staffUser = await makeUser(`doomedstaff${SUFFIX}`, "Doomed Teacher");
-    const pupil = await db.membership.create({
-      data: {
-        userId: pupilUser.id,
-        schoolId: school.id,
-        role: "STUDENT",
-        status: "ACTIVE",
-        gradeLevel: "7",
-      },
-    });
-    const staff = await db.membership.create({
-      data: { userId: staffUser.id, schoolId: school.id, role: "TEACHER", status: "ACTIVE" },
-    });
-    return { school, pupil, staff, pupilUser };
+/** A disposable school with a pupil and a teacher, built fresh per test. */
+async function buildDoomedSchool() {
+  const school = await db.school.create({
+    data: {
+      name: "ZZ Doomed School",
+      slug: DOOMED_SLUG,
+      code: "ZZDOOM",
+      contactEmail: `doomed${SUFFIX}`,
+    },
+  });
+  const pupilUser = await makeUser(`doomedpupil${SUFFIX}`, "Meera Leaver");
+  const staffUser = await makeUser(`doomedstaff${SUFFIX}`, "Doomed Teacher");
+  const pupil = await db.membership.create({
+    data: {
+      userId: pupilUser.id,
+      schoolId: school.id,
+      role: "STUDENT",
+      status: "ACTIVE",
+      gradeLevel: "7",
+    },
+  });
+  const staff = await db.membership.create({
+    data: { userId: staffUser.id, schoolId: school.id, role: "TEACHER", status: "ACTIVE" },
+  });
+  return { school, pupil, staff, pupilUser };
   }
 
+describe("⚠ removing a school", () => {
   it("⚠ turns every pupil into a leaver with a certificate, and keeps their account", async () => {
     await rebuild();
     const { school, pupil, staff, pupilUser } = await buildDoomedSchool();
@@ -485,5 +486,75 @@ describe("⚠ removing a school", () => {
     await rebuild();
     const { school } = await buildDoomedSchool();
     await expect(removeSchool(notOperator, school.id)).rejects.toBeInstanceOf(AccessError);
+  });
+});
+
+describe("⚠ restoring a removed school", () => {
+  it("⚠ revives exactly what removal ended — and nothing anybody decided before it", async () => {
+    await rebuild();
+    const { school, pupil, staff } = await buildDoomedSchool();
+
+    // A class the pupil sits in, so the class list has something to lose.
+    const klass = await db.class.create({
+      data: { schoolId: school.id, name: "ZZ Doomed 7A", gradeLevel: "7", joinCode: "ZZDM-RESTORE1" },
+    });
+    const enrolment = await db.enrollment.create({
+      data: { classId: klass.id, schoolId: school.id, studentMembershipId: pupil.id },
+    });
+    // An enrolment a teacher ended BY HAND long before the removal.
+    const oldPupilUser = await makeUser(`doomedold${SUFFIX}`, "Old Class Pupil");
+    const oldMember = await db.membership.create({
+      data: { userId: oldPupilUser.id, schoolId: school.id, role: "STUDENT", status: "ACTIVE", gradeLevel: "7" },
+    });
+    const byHand = await db.enrollment.create({
+      data: { classId: klass.id, schoolId: school.id, studentMembershipId: oldMember.id, status: "REMOVED", removedAt: new Date("2026-01-05T00:00:00Z") },
+    });
+    // A pupil who genuinely left in June, certificate and all.
+    const juneUser = await makeUser(`doomedjune${SUFFIX}`, "June Leaver");
+    const juneLeft = new Date("2026-06-30T00:00:00Z");
+    const june = await db.membership.create({
+      data: { userId: juneUser.id, schoolId: school.id, role: "STUDENT", status: "ACTIVE", gradeLevel: "7", leftAt: juneLeft },
+    });
+    await db.schoolRecord.create({
+      data: {
+        schoolId: school.id, studentUserId: juneUser.id, studentMembershipId: june.id,
+        schoolName: "ZZ Doomed School", gradeLevel: "7", joinedAt: new Date("2025-06-01T00:00:00Z"),
+        leftAt: juneLeft, reason: "TRANSFERRED", destination: "Elsewhere",
+        attendanceMarked: 10, attendancePresent: 9, reportCardCount: 1,
+      },
+    });
+
+    expect(await removeSchool(operator, school.id)).toEqual({ ok: true });
+    expect(await restoreSchool(operator, school.id)).toEqual({ ok: true });
+
+    // The school is back…
+    expect((await db.school.findUniqueOrThrow({ where: { id: school.id } })).removedAt).toBeNull();
+    // …with its people…
+    expect((await db.membership.findUniqueOrThrow({ where: { id: pupil.id } })).leftAt).toBeNull();
+    expect((await db.membership.findUniqueOrThrow({ where: { id: staff.id } })).leftAt).toBeNull();
+    // …their removal-minted certificates withdrawn…
+    expect(await db.schoolRecord.count({ where: { studentMembershipId: pupil.id } })).toBe(0);
+    // …and the class list refilled, stamp cleared.
+    const back = await db.enrollment.findUniqueOrThrow({ where: { id: enrolment.id } });
+    expect(back.status).toBe("ACTIVE");
+    expect(back.removedAt).toBeNull();
+
+    // What people decided before the removal is untouched: the June leaver is
+    // still a leaver with the certificate they were given, and the enrolment a
+    // teacher ended by hand is still ended.
+    expect((await db.membership.findUniqueOrThrow({ where: { id: june.id } })).leftAt?.toISOString()).toBe(juneLeft.toISOString());
+    const juneRecord = await db.schoolRecord.findUniqueOrThrow({ where: { studentMembershipId: june.id } });
+    expect(juneRecord.reason).toBe("TRANSFERRED");
+    expect((await db.enrollment.findUniqueOrThrow({ where: { id: byHand.id } })).status).toBe("REMOVED");
+  });
+
+  it("refuses a school that is not removed, and anybody who does not run the server", async () => {
+    await rebuild();
+    const { school } = await buildDoomedSchool();
+    const notRemoved = await restoreSchool(operator, school.id);
+    expect(notRemoved.ok).toBe(false);
+    expect(notRemoved.ok === false && notRemoved.errorKey).toBe("root.schoolNotRemoved");
+    await removeSchool(operator, school.id);
+    await expect(restoreSchool(notOperator, school.id)).rejects.toBeInstanceOf(AccessError);
   });
 });
