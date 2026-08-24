@@ -71,7 +71,12 @@ A seed cannot run as the app role, incidentally: its inserts are checked against
 messages to the database and renders them at `/dev/mailbox` — and `env.ts`
 refuses to boot a production origin with either still set that way, because "no
 message was actually sent" has no symptom until somebody cannot get into their
-account. `NEXT_PUBLIC_DEFAULT_COUNTRY_CODE` decides which country a bare mobile
+account. Going live with email is `EMAIL_TRANSPORT="smtp"` plus the `SMTP_*`
+block (any SMTP server — SES, Postmark, a district relay); the boot check
+validates the whole block at once and `npm run email:test -- you@example.com`
+sends one real message through whichever transport is configured, so the
+wiring is proven before the first parent registers. SMS still awaits a
+provider. `NEXT_PUBLIC_DEFAULT_COUNTRY_CODE` decides which country a bare mobile
 number belongs to; it defaults to `+91`, and getting it wrong does not fail
 loudly — it files everybody under the wrong country and turns two spellings of
 one number into two accounts.

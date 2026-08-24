@@ -18,6 +18,12 @@ const KEYS = [
   "EMAIL_TRANSPORT",
   "SMS_TRANSPORT",
   "NODE_ENV",
+  "SMTP_HOST",
+  "SMTP_PORT",
+  "SMTP_SECURE",
+  "SMTP_USER",
+  "SMTP_PASS",
+  "EMAIL_FROM",
 ] as const;
 
 const original = Object.fromEntries(KEYS.map((k) => [k, process.env[k]]));
@@ -38,6 +44,20 @@ function set(values: Partial<Record<(typeof KEYS)[number], string>>) {
 const GOOD_PUBLIC = "x".repeat(87);
 const GOOD_PRIVATE = "y".repeat(43);
 
+/** A complete, healthy SMTP block. Tests unset pieces of it deliberately. */
+const GOOD_SMTP = {
+  SMTP_HOST: "smtp.example.org",
+  SMTP_PORT: "587",
+  SMTP_SECURE: "false",
+  SMTP_USER: "mailer",
+  SMTP_PASS: "hunter2",
+  EMAIL_FROM: "EduLink <no-reply@edulink.example>",
+} as const;
+
+function unset(...keys: (typeof KEYS)[number][]) {
+  for (const key of keys) delete (process.env as Record<string, string | undefined>)[key];
+}
+
 describe("checkEnv — VAPID", () => {
   it("passes with well-formed keys", () => {
     set({
@@ -48,6 +68,7 @@ describe("checkEnv — VAPID", () => {
       NEXT_PUBLIC_APP_URL: "https://edulink.example",
       EMAIL_TRANSPORT: "smtp",
       SMS_TRANSPORT: "twilio",
+      ...GOOD_SMTP,
     });
     expect(checkEnv()).toEqual([]);
   });
@@ -278,5 +299,52 @@ describe("assertEnv", () => {
     // Guards against the checked-in .env drifting back to empty keys.
     expect(() => assertEnv()).not.toThrow();
     expect(checkEnv()).toEqual([]);
+  });
+});
+
+describe("⚠ checkEnv — the SMTP contract, validated at boot", () => {
+  const deployed = {
+    NODE_ENV: "production",
+    NEXT_PUBLIC_VAPID_PUBLIC_KEY: GOOD_PUBLIC,
+    VAPID_PRIVATE_KEY: GOOD_PRIVATE,
+    DATABASE_URL: "postgres://x",
+    NEXT_PUBLIC_APP_URL: "https://edulink.example",
+    EMAIL_TRANSPORT: "smtp",
+    SMS_TRANSPORT: "twilio",
+  } as const;
+
+  it("⚠ saying smtp without a host refuses to boot a deployment — every gap named at once", () => {
+    set({ ...deployed, ...GOOD_SMTP });
+    unset("SMTP_HOST", "EMAIL_FROM");
+    const problems = checkEnv();
+    expect(problems.find((p) => p.key === "SMTP_HOST")?.fatal).toBe(true);
+    expect(problems.find((p) => p.key === "EMAIL_FROM")?.fatal).toBe(true);
+  });
+
+  it("the same gaps are loud but not fatal on a laptop", () => {
+    set({ ...deployed, ...GOOD_SMTP, NODE_ENV: "development", NEXT_PUBLIC_APP_URL: "http://localhost:3000" });
+    unset("SMTP_HOST");
+    const problem = checkEnv().find((p) => p.key === "SMTP_HOST");
+    expect(problem).toBeTruthy();
+    expect(problem!.fatal).toBe(false);
+  });
+
+  it("catches the half-typed credential pair and the nonsense port", () => {
+    set({ ...deployed, ...GOOD_SMTP, SMTP_PORT: "yes please" });
+    unset("SMTP_PASS");
+    const problems = checkEnv();
+    expect(problems.some((p) => p.key === "SMTP_PORT")).toBe(true);
+    expect(problems.some((p) => p.key === "SMTP_USER")).toBe(true);
+  });
+
+  it("a from line without an @ is not an address", () => {
+    set({ ...deployed, ...GOOD_SMTP, EMAIL_FROM: "the school office" });
+    expect(checkEnv().some((p) => p.key === "EMAIL_FROM")).toBe(true);
+  });
+
+  it("devbox reads none of it — an empty SMTP block is not devbox's problem", () => {
+    set({ ...deployed, NODE_ENV: "development", NEXT_PUBLIC_APP_URL: "http://localhost:3000", EMAIL_TRANSPORT: "devbox" });
+    unset("SMTP_HOST", "SMTP_PORT", "SMTP_SECURE", "SMTP_USER", "SMTP_PASS", "EMAIL_FROM");
+    expect(checkEnv().some((p) => p.key.startsWith("SMTP") || p.key === "EMAIL_FROM")).toBe(false);
   });
 });

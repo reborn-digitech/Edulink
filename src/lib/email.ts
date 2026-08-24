@@ -1,15 +1,20 @@
 import "server-only";
+import { createTransport, type Transporter } from "nodemailer";
 import { db } from "./db";
+import { readSmtpConfig } from "./env";
 
 /**
  * Email transport.
  *
- * v1 ships the "devbox" transport only: messages are persisted and rendered at
- * /dev/mailbox. That is a deliberate choice, not a stub — it makes every
- * magic-link, invite and verification flow fully exercisable end to end with no
- * SMTP credentials, which is exactly what the self-contained build was chosen
- * for. Swapping in Resend/SES/Postmark means implementing `send` for the "smtp"
- * branch; nothing else in the app changes.
+ * TWO TRANSPORTS, ONE CONTRACT. "devbox" persists messages and renders them at
+ * /dev/mailbox — a deliberate choice, not a stub: it makes every magic-link,
+ * invite and verification flow fully exercisable end to end with no
+ * credentials. "smtp" hands the same messages to a real mail server through
+ * nodemailer — SES, Postmark, a school district's own relay; SMTP is the one
+ * door they all have. The config contract lives in env.ts (`readSmtpConfig`)
+ * so the boot check and this file can never disagree about what "configured"
+ * means, and `npm run email:test -- you@example.com` proves the wiring
+ * through whichever transport is set before a single person registers.
  */
 
 type Message = {
@@ -22,6 +27,31 @@ type Message = {
 
 const APP = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
+/**
+ * One transporter per process, built on first send. Nodemailer pools the
+ * connection; rebuilding it per message would renegotiate TLS for every
+ * digest. Config errors throw HERE, listing every missing variable at once —
+ * one failed deploy that names all three beats three that name one each.
+ */
+let smtpTransporter: Transporter | null = null;
+let smtpFrom: string | null = null;
+
+function smtp(): { transporter: Transporter; from: string } {
+  if (smtpTransporter && smtpFrom) return { transporter: smtpTransporter, from: smtpFrom };
+  const read = readSmtpConfig();
+  if (!read.ok) {
+    throw new Error(
+      `EMAIL_TRANSPORT is "smtp" but the config is incomplete — ${read.problems
+        .map((p) => p.message)
+        .join(" ")}`,
+    );
+  }
+  const { host, port, secure, auth, from } = read.config;
+  smtpTransporter = createTransport({ host, port, secure, auth: auth ?? undefined });
+  smtpFrom = from;
+  return { transporter: smtpTransporter, from };
+}
+
 export async function sendEmail(message: Message): Promise<void> {
   const transport = process.env.EMAIL_TRANSPORT ?? "devbox";
 
@@ -33,9 +63,22 @@ export async function sendEmail(message: Message): Promise<void> {
     return;
   }
 
+  if (transport === "smtp") {
+    const { transporter, from } = smtp();
+    // Errors propagate: a magic link that was not sent must not report sent.
+    await transporter.sendMail({
+      from,
+      to: message.to,
+      subject: message.subject,
+      text: message.text,
+      html: message.html,
+    });
+    return;
+  }
+
   // Fails loudly rather than silently dropping a password-reset email.
   throw new Error(
-    `EMAIL_TRANSPORT="${transport}" is not implemented in v1. Use "devbox", or add the transport in src/lib/email.ts.`,
+    `EMAIL_TRANSPORT="${transport}" is not implemented. Use "devbox" or "smtp" (see src/lib/email.ts).`,
   );
 }
 

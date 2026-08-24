@@ -15,6 +15,59 @@ import "server-only";
 export type EnvProblem = { key: string; message: string; fatal: boolean };
 
 /**
+ * The SMTP contract, in one place. `checkEnv` uses it so a deploy that says
+ * EMAIL_TRANSPORT=smtp but forgot the host fails AT BOOT, and email.ts uses
+ * the same function so the send path and the boot check can never disagree
+ * about what "configured" means.
+ */
+export type SmtpConfig = {
+  host: string;
+  port: number;
+  secure: boolean;
+  auth: { user: string; pass: string } | null;
+  from: string;
+};
+
+export function readSmtpConfig():
+  | { ok: true; config: SmtpConfig }
+  | { ok: false; problems: { key: string; message: string }[] } {
+  const problems: { key: string; message: string }[] = [];
+
+  const host = process.env.SMTP_HOST?.trim();
+  if (!host) problems.push({ key: "SMTP_HOST", message: "SMTP_HOST is not set — the mail server to hand messages to." });
+
+  const rawPort = process.env.SMTP_PORT?.trim();
+  const port = rawPort ? Number(rawPort) : 587;
+  if (!Number.isInteger(port) || port < 1 || port > 65535) {
+    problems.push({ key: "SMTP_PORT", message: `SMTP_PORT is "${rawPort}" — expected a port number (587 for STARTTLS, 465 for TLS).` });
+  }
+
+  // Implicit TLS on 465 by convention; anything else negotiates STARTTLS.
+  const rawSecure = process.env.SMTP_SECURE?.trim().toLowerCase();
+  const secure = rawSecure ? rawSecure === "true" : port === 465;
+  if (rawSecure && rawSecure !== "true" && rawSecure !== "false") {
+    problems.push({ key: "SMTP_SECURE", message: `SMTP_SECURE is "${rawSecure}" — use "true" or "false" (or leave it unset: 465 implies true).` });
+  }
+
+  const user = process.env.SMTP_USER?.trim();
+  const pass = process.env.SMTP_PASS?.trim();
+  if (!!user !== !!pass) {
+    problems.push({ key: "SMTP_USER", message: "SMTP_USER and SMTP_PASS must be set together — one without the other is a typo, not a choice." });
+  }
+
+  // "EduLink <no-reply@school.example>" or a bare address; either way an @.
+  const from = process.env.EMAIL_FROM?.trim();
+  if (!from) {
+    problems.push({ key: "EMAIL_FROM", message: 'EMAIL_FROM is not set — the address messages come from, e.g. "EduLink <no-reply@your-domain>".' });
+  } else if (!/@/.test(from)) {
+    problems.push({ key: "EMAIL_FROM", message: `EMAIL_FROM is "${from}" — that is not an email address.` });
+  }
+
+  if (problems.length > 0) return { ok: false, problems };
+  return { ok: true, config: { host: host!, port, secure, auth: user && pass ? { user, pass } : null, from: from! } };
+}
+
+/**
  * A production BUILD served from localhost is the documented way to test the
  * service worker, offline mode and push — `next start` sets NODE_ENV=production
  * even on a laptop. Treating that as a real deployment made the app refuse to
@@ -83,15 +136,26 @@ export function checkEnv(): EnvProblem[] {
     });
   }
 
-  if (isProd && (process.env.EMAIL_TRANSPORT ?? "devbox") === "devbox") {
+  const emailTransport = process.env.EMAIL_TRANSPORT ?? "devbox";
+  if (isProd && emailTransport === "devbox") {
     // Only fires for a genuinely deployed origin — a local production build
     // keeps the dev mailbox, which is how the email flows get tested at all.
     problems.push({
       key: "EMAIL_TRANSPORT",
       message:
-        'EMAIL_TRANSPORT is "devbox" in production: no email will actually be sent, and /dev/mailbox is disabled. Implement a real transport in src/lib/email.ts.',
+        'EMAIL_TRANSPORT is "devbox" in production: no email will actually be sent, and /dev/mailbox is disabled. Set EMAIL_TRANSPORT=smtp and the SMTP_* variables.',
       fatal: true,
     });
+  }
+
+  // Saying "smtp" is a promise; a boot that cannot keep it must say so NOW,
+  // not at the first parent's password reset. Fatal when deployed, loud
+  // locally — the VAPID rule.
+  if (emailTransport === "smtp") {
+    const smtp = readSmtpConfig();
+    if (!smtp.ok) {
+      for (const problem of smtp.problems) problems.push({ ...problem, fatal: isProd });
+    }
   }
 
   /**
