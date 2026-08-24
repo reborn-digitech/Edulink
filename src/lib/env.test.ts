@@ -27,6 +27,7 @@ const KEYS = [
   "TWILIO_ACCOUNT_SID",
   "TWILIO_AUTH_TOKEN",
   "TWILIO_FROM",
+  "VAPID_SUBJECT",
 ] as const;
 
 const original = Object.fromEntries(KEYS.map((k) => [k, process.env[k]]));
@@ -44,8 +45,15 @@ function set(values: Partial<Record<(typeof KEYS)[number], string>>) {
   }
 }
 
-const GOOD_PUBLIC = "x".repeat(87);
-const GOOD_PRIVATE = "y".repeat(43);
+/**
+ * A REAL pair from `npm run vapid`, not 87 and 43 filler characters — the
+ * boot check now derives one from the other, so filler no longer passes, and
+ * that is the point of the check rather than a nuisance of it.
+ */
+const GOOD_PUBLIC = "BKQNxEMs_lat-ElQkXtmpfQ5AZc9P0Ay8OkMNbMfKViOHOmcnYv2nFYGXf0vaRRz6XXyCvWJHMIFqydxqCHJn_M";
+const GOOD_PRIVATE = "K-K-Hv9Sd51taFimuH_c9likC2Ks-Y4-c6S6S5Szh9I";
+/** The public half of a DIFFERENT run — right length, wrong key. */
+const OTHER_PUBLIC = "BJxCC0dTfKzaCX8L1MraNIRPtVpFrJmLPRDGKPEz8lRDGCXKvTfUJTuLSt5oyFcVSTFCXQVBTVWmZfDCBDdEjkI";
 
 /** A complete, healthy SMTP block. Tests unset pieces of it deliberately. */
 const GOOD_SMTP = {
@@ -78,6 +86,9 @@ describe("checkEnv — VAPID", () => {
       NEXT_PUBLIC_APP_URL: "https://edulink.example",
       EMAIL_TRANSPORT: "smtp",
       SMS_TRANSPORT: "twilio",
+      // A real subject: the shipped placeholder is refused in production, and
+      // this case claims to be a healthy production configuration.
+      VAPID_SUBJECT: "mailto:ops@edulink.example",
       ...GOOD_SMTP,
       ...GOOD_TWILIO,
     });
@@ -407,5 +418,61 @@ describe("⚠ checkEnv — the Twilio contract, validated at boot", () => {
     set({ ...deployed, ...GOOD_SMTP, NODE_ENV: "development", NEXT_PUBLIC_APP_URL: "http://localhost:3000", SMS_TRANSPORT: "devbox" });
     unset("TWILIO_ACCOUNT_SID", "TWILIO_AUTH_TOKEN", "TWILIO_FROM");
     expect(checkEnv().some((p) => p.key.startsWith("TWILIO"))).toBe(false);
+  });
+});
+
+describe("⚠ checkEnv — the VAPID pair, checked as a pair", () => {
+  const deployed = {
+    NODE_ENV: "production",
+    DATABASE_URL: "postgres://x",
+    NEXT_PUBLIC_APP_URL: "https://edulink.example",
+    EMAIL_TRANSPORT: "smtp",
+    SMS_TRANSPORT: "twilio",
+    VAPID_SUBJECT: "mailto:ops@edulink.example",
+  } as const;
+
+  it("⚠ two right-length halves from DIFFERENT runs are refused — every push would fail", () => {
+    set({
+      ...deployed,
+      ...GOOD_SMTP,
+      ...GOOD_TWILIO,
+      NEXT_PUBLIC_VAPID_PUBLIC_KEY: OTHER_PUBLIC,
+      VAPID_PRIVATE_KEY: GOOD_PRIVATE,
+    });
+    const problem = checkEnv().find((p) => p.key === "VAPID");
+    expect(problem, "a mismatched pair must be caught").toBeTruthy();
+    expect(problem!.message).toMatch(/not a pair/);
+    expect(problem!.fatal).toBe(true);
+  });
+
+  it("the matching pair passes, and length is still checked first", () => {
+    set({ ...deployed, ...GOOD_SMTP, ...GOOD_TWILIO, NEXT_PUBLIC_VAPID_PUBLIC_KEY: GOOD_PUBLIC, VAPID_PRIVATE_KEY: GOOD_PRIVATE });
+    expect(checkEnv()).toEqual([]);
+
+    set({ ...deployed, ...GOOD_SMTP, ...GOOD_TWILIO, NEXT_PUBLIC_VAPID_PUBLIC_KEY: GOOD_PUBLIC, VAPID_PRIVATE_KEY: "tooshort" });
+    const problems = checkEnv();
+    expect(problems.some((p) => p.key === "VAPID_PRIVATE_KEY")).toBe(true);
+    // Not ALSO reported as a mismatch: one paste error, one message.
+    expect(problems.some((p) => p.key === "VAPID" && /not a pair/.test(p.message))).toBe(false);
+  });
+
+  it("⚠ refuses the shipped placeholder subject in production — nothing can reach a .local address", () => {
+    set({ ...deployed, ...GOOD_SMTP, ...GOOD_TWILIO, NEXT_PUBLIC_VAPID_PUBLIC_KEY: GOOD_PUBLIC, VAPID_PRIVATE_KEY: GOOD_PRIVATE, VAPID_SUBJECT: "mailto:admin@edulink.local" });
+    const problem = checkEnv().find((p) => p.key === "VAPID_SUBJECT");
+    expect(problem?.fatal).toBe(true);
+    expect(problem!.message).toMatch(/placeholder/);
+
+    // Same placeholder on a laptop is nobody's problem.
+    set({ ...deployed, ...GOOD_SMTP, ...GOOD_TWILIO, NEXT_PUBLIC_VAPID_PUBLIC_KEY: GOOD_PUBLIC, VAPID_PRIVATE_KEY: GOOD_PRIVATE, VAPID_SUBJECT: "mailto:admin@edulink.local", NODE_ENV: "development", NEXT_PUBLIC_APP_URL: "http://localhost:3000" });
+    expect(checkEnv().some((p) => p.key === "VAPID_SUBJECT")).toBe(false);
+  });
+
+  it("holds RFC 8292 on the subject: mailto: or https:, not a bare address", () => {
+    const base = { ...deployed, ...GOOD_SMTP, ...GOOD_TWILIO, NEXT_PUBLIC_VAPID_PUBLIC_KEY: GOOD_PUBLIC, VAPID_PRIVATE_KEY: GOOD_PRIVATE };
+    set({ ...base, VAPID_SUBJECT: "ops@edulink.example" });
+    expect(checkEnv().some((p) => p.key === "VAPID_SUBJECT")).toBe(true);
+
+    set({ ...base, VAPID_SUBJECT: "https://edulink.example/contact" });
+    expect(checkEnv().some((p) => p.key === "VAPID_SUBJECT")).toBe(false);
   });
 });

@@ -6,6 +6,7 @@ import { DEFAULT_PREFS, type UserPrefs } from "./session";
 import { channel, publish } from "./realtime";
 import { translator, type TranslationKey } from "./i18n/dictionary";
 import { normaliseLocale } from "./i18n/locales";
+import { readVapidConfig } from "./env";
 import type { NotificationKind } from "./constants";
 
 /**
@@ -13,13 +14,18 @@ import type { NotificationKind } from "./constants";
  * preferences and quiet hours.
  */
 
+/**
+ * Reads the same contract the boot check reads, so "configured" means one
+ * thing in this codebase. Before this shared it with env.ts, a mismatched
+ * pair passed the boot check and then failed here for every recipient with
+ * nothing said about why.
+ */
 let vapidConfigured = false;
 function configureVapid(): boolean {
   if (vapidConfigured) return true;
-  const publicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
-  const privateKey = process.env.VAPID_PRIVATE_KEY;
-  const subject = process.env.VAPID_SUBJECT ?? "mailto:admin@edulink.local";
-  if (!publicKey || !privateKey) return false;
+  const read = readVapidConfig();
+  if (!read.ok) return false;
+  const { subject, publicKey, privateKey } = read.config;
   webpush.setVapidDetails(subject, publicKey, privateKey);
   vapidConfigured = true;
   return true;
@@ -128,16 +134,40 @@ export async function notifyGuardians(
 
 type PushPayload = { title: string; body: string; url: string; tag?: string };
 
-export async function sendPush(userId: string, payload: PushPayload): Promise<void> {
+/**
+ * What a send actually did.
+ *
+ * ⚠ RETURNED RATHER THAN INFERRED, because inferring it was wrong. `push:test`
+ * used to report "sent to N devices" by counting the subscriptions still
+ * present afterwards — but a transient failure deliberately KEEPS its
+ * subscription (only 404/410 retire one), so a send that reached nothing at
+ * all reported success. A tool whose whole purpose is to stop a deployment
+ * believing it sends notifications when it does not must not itself say
+ * "sent" for a failure. Found by pointing it at a sink it could not reach.
+ */
+export type PushResult = {
+  /** Endpoints the push service accepted. */
+  delivered: number;
+  /** Endpoints that failed and were kept for a later try. */
+  failed: number;
+  /** Endpoints the browser had thrown away; deleted here. */
+  retired: number;
+  /** No usable VAPID configuration — nothing was attempted. */
+  skipped: boolean;
+};
+
+export async function sendPush(userId: string, payload: PushPayload): Promise<PushResult> {
+  const none: PushResult = { delivered: 0, failed: 0, retired: 0, skipped: false };
   if (!configureVapid()) {
-    console.warn("[push] VAPID keys not set — skipping push. Run `npm run vapid`.");
-    return;
+    console.warn("[push] VAPID is not correctly configured — skipping push. Run `npm run vapid`, or `npm run push:test` to see what is wrong.");
+    return { ...none, skipped: true };
   }
 
   const subscriptions = await db.pushSubscription.findMany({ where: { userId } });
-  if (subscriptions.length === 0) return;
+  if (subscriptions.length === 0) return none;
 
   const body = JSON.stringify(payload);
+  const result: PushResult = { delivered: 0, failed: 0, retired: 0, skipped: false };
 
   await Promise.all(
     subscriptions.map(async (sub) => {
@@ -151,29 +181,38 @@ export async function sendPush(userId: string, payload: PushPayload): Promise<vo
           where: { id: sub.id },
           data: { lastUsedAt: new Date(), failureCount: 0 },
         });
+        result.delivered++;
       } catch (error) {
         const status = (error as { statusCode?: number }).statusCode;
         // 404/410 mean the browser threw the subscription away (app removed,
         // permission revoked). Delete rather than retry forever.
         if (status === 404 || status === 410) {
           await db.pushSubscription.delete({ where: { id: sub.id } }).catch(() => {});
+          result.retired++;
           return;
         }
         // Anything else is transient (network, push service 5xx). Count it and
         // retire the endpoint after repeated failures so a dead device does not
         // slow every future send.
         const failures = sub.failureCount + 1;
+        result.failed++;
         if (failures >= 8) {
           await db.pushSubscription.delete({ where: { id: sub.id } }).catch(() => {});
+          result.retired++;
         } else {
           await db.pushSubscription
             .update({ where: { id: sub.id }, data: { failureCount: failures } })
             .catch(() => {});
         }
-        console.warn(`[push] send failed (status ${status ?? "?"}), failures=${failures}`);
+        // The status is often absent — a TLS or DNS failure never gets one —
+        // so the message is worth carrying too.
+        const detail = error instanceof Error ? error.message.split("\n")[0] : String(error);
+        console.warn(`[push] send failed (status ${status ?? "none"}), failures=${failures}: ${detail}`);
       }
     }),
   );
+
+  return result;
 }
 
 /* -------------------------------------------------------------------------- */

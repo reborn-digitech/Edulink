@@ -21,6 +21,7 @@
     "vapid": "tsx scripts/gen-vapid.ts",
     "email:test": "tsx --tsconfig scripts/tsconfig.json scripts/send-test-email.ts",
     "sms:test": "tsx --tsconfig scripts/tsconfig.json scripts/send-test-sms.ts",
+    "push:test": "tsx --tsconfig scripts/tsconfig.json scripts/send-test-push.ts",
     "files:check": "tsx --tsconfig scripts/tsconfig.json scripts/reclaim-files.ts",
     "files:reclaim": "tsx --tsconfig scripts/tsconfig.json scripts/reclaim-files.ts --delete",
     "rls:generate": "tsx --tsconfig scripts/tsconfig.json scripts/gen-rls.ts",

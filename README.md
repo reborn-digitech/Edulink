@@ -82,7 +82,24 @@ Twilio's and cannot be coded around: **sending to Indian numbers requires
 DLT-registered templates**, and an unregistered body is dropped by the carrier
 *after* Twilio reports it accepted. Register the two message bodies in
 `src/lib/sms.ts` verbatim, point `TWILIO_FROM` at a Messaging Service tied to
-that entity, and confirm on a real handset. `NEXT_PUBLIC_DEFAULT_COUNTRY_CODE` decides which country a bare mobile
+that entity, and confirm on a real handset.
+
+**Web Push has the same shape and one hazard the other two do not.** `npm run
+vapid` prints a keypair; both lines must come from the same run, and the boot
+check now derives the public key from the private one and refuses a mismatched
+pair rather than letting every send fail with an opaque error. `VAPID_SUBJECT`
+must be a real `mailto:` or `https:` address per RFC 8292 — it is how a push
+service reaches you about misbehaving traffic — and the shipped `.local`
+placeholder is refused in production. `npm run push:test` checks the
+configuration and, given an email, pushes to that person's devices and says
+honestly how many endpoints survived.
+
+The hazard: **rotating VAPID keys invalidates every existing subscription.** A
+browser subscribes against one public key, so a new pair silently stops every
+device already signed up — they do not error, they simply never hear again
+until each person toggles notifications off and on. If you must rotate, plan to
+clear `PushSubscription` and tell people to re-enable, rather than discovering
+it from a parent who stopped getting absence alerts. `NEXT_PUBLIC_DEFAULT_COUNTRY_CODE` decides which country a bare mobile
 number belongs to; it defaults to `+91`, and getting it wrong does not fail
 loudly — it files everybody under the wrong country and turns two spellings of
 one number into two accounts.

@@ -1,4 +1,5 @@
 import "server-only";
+import { createECDH } from "node:crypto";
 
 /**
  * Environment checks.
@@ -68,6 +69,92 @@ export function readSmtpConfig():
 }
 
 /**
+ * The Web Push contract.
+ *
+ * ⚠ THE PAIR IS CHECKED AS A PAIR, which is the whole reason this exists as
+ * more than a length test. Two keys of the right length from DIFFERENT runs of
+ * `npm run vapid` both pass a length check and then fail at every single send
+ * with an opaque crypto error — the exact shape of the bug env.ts was written
+ * for, one level subtler. A P-256 private key determines its public key, so
+ * deriving one from the other and comparing settles it before boot.
+ *
+ * The subject is not decoration either: RFC 8292 makes it the address a push
+ * service contacts about misbehaving traffic, so `mailto:` or `https:` is the
+ * spec, and the shipped placeholder — a `.local` address nothing on the
+ * internet can reach — is exactly what must not survive to production.
+ */
+export type VapidConfig = { publicKey: string; privateKey: string; subject: string };
+
+/** The address `.env.example` ships. Fine on a laptop, never in production. */
+const PLACEHOLDER_SUBJECT = "mailto:admin@edulink.local";
+
+export function readVapidConfig():
+  | { ok: true; config: VapidConfig }
+  | { ok: false; problems: { key: string; message: string }[] } {
+  const problems: { key: string; message: string }[] = [];
+
+  const publicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY?.trim();
+  const privateKey = process.env.VAPID_PRIVATE_KEY?.trim();
+
+  if (!publicKey || !privateKey) {
+    problems.push({
+      key: "VAPID",
+      message:
+        "Web Push is disabled: NEXT_PUBLIC_VAPID_PUBLIC_KEY and/or VAPID_PRIVATE_KEY are empty. Run `npm run vapid` and paste both into .env.",
+    });
+  } else {
+    // A P-256 public key is 65 bytes base64url-encoded (87 chars); the private
+    // key is 32 bytes (43 chars). Wrong lengths mean a truncated copy-paste,
+    // which fails later with an opaque crypto error.
+    if (publicKey.length !== 87) {
+      problems.push({
+        key: "NEXT_PUBLIC_VAPID_PUBLIC_KEY",
+        message: `Expected 87 characters, got ${publicKey.length}. It looks truncated — re-run \`npm run vapid\`.`,
+      });
+    }
+    if (privateKey.length !== 43) {
+      problems.push({
+        key: "VAPID_PRIVATE_KEY",
+        message: `Expected 43 characters, got ${privateKey.length}. It looks truncated — re-run \`npm run vapid\`.`,
+      });
+    }
+    if (publicKey.length === 87 && privateKey.length === 43) {
+      let derived: string | null = null;
+      try {
+        const ecdh = createECDH("prime256v1");
+        ecdh.setPrivateKey(Buffer.from(privateKey, "base64url"));
+        derived = ecdh.getPublicKey().toString("base64url");
+      } catch {
+        problems.push({ key: "VAPID_PRIVATE_KEY", message: "VAPID_PRIVATE_KEY is not a valid P-256 key — re-run `npm run vapid`." });
+      }
+      if (derived && derived !== publicKey) {
+        problems.push({
+          key: "VAPID",
+          message:
+            "The VAPID keys are not a pair: VAPID_PRIVATE_KEY does not match NEXT_PUBLIC_VAPID_PUBLIC_KEY. Both are the right length, so this is halves from two different `npm run vapid` runs — every push would fail. Paste both lines from one run.",
+        });
+      }
+    }
+  }
+
+  const subject = process.env.VAPID_SUBJECT?.trim() || PLACEHOLDER_SUBJECT;
+  if (!/^mailto:.+@.+/.test(subject) && !/^https:\/\/.+/.test(subject)) {
+    problems.push({
+      key: "VAPID_SUBJECT",
+      message: `VAPID_SUBJECT is "${subject}" — RFC 8292 wants "mailto:you@your-domain" or "https://your-domain".`,
+    });
+  }
+
+  if (problems.length > 0) return { ok: false, problems };
+  return { ok: true, config: { publicKey: publicKey!, privateKey: privateKey!, subject } };
+}
+
+/** True when the subject is still the one .env.example ships. */
+export function isPlaceholderVapidSubject(): boolean {
+  return (process.env.VAPID_SUBJECT?.trim() || PLACEHOLDER_SUBJECT) === PLACEHOLDER_SUBJECT;
+}
+
+/**
  * The Twilio contract, read the same way and for the same reason: one
  * function, so the boot check and `sms.ts` can never disagree about what
  * "configured" means.
@@ -126,34 +213,22 @@ export function checkEnv(): EnvProblem[] {
   const problems: EnvProblem[] = [];
   const isProd = isDeployed();
 
-  const publicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY?.trim();
-  const privateKey = process.env.VAPID_PRIVATE_KEY?.trim();
+  const vapid = readVapidConfig();
+  if (!vapid.ok) {
+    for (const problem of vapid.problems) problems.push({ ...problem, fatal: isProd });
+  }
 
-  if (!publicKey || !privateKey) {
+  // A real deployment pushing under the shipped placeholder is telling every
+  // push service to contact an address on the local network. Warned about
+  // separately from the malformed case, because the value is well-formed —
+  // it is simply nobody's.
+  if (isProd && isPlaceholderVapidSubject()) {
     problems.push({
-      key: "VAPID",
+      key: "VAPID_SUBJECT",
       message:
-        "Web Push is disabled: NEXT_PUBLIC_VAPID_PUBLIC_KEY and/or VAPID_PRIVATE_KEY are empty. Run `npm run vapid` and paste both into .env.",
-      fatal: isProd,
+        `VAPID_SUBJECT is still the shipped placeholder (${PLACEHOLDER_SUBJECT}) — a .local address no push service can reach. Set it to an address somebody reads.`,
+      fatal: true,
     });
-  } else {
-    // A P-256 public key is 65 bytes base64url-encoded (87 chars); the private
-    // key is 32 bytes (43 chars). Wrong lengths mean a truncated copy-paste,
-    // which fails later with an opaque crypto error.
-    if (publicKey.length !== 87) {
-      problems.push({
-        key: "NEXT_PUBLIC_VAPID_PUBLIC_KEY",
-        message: `Expected 87 characters, got ${publicKey.length}. It looks truncated — re-run \`npm run vapid\`.`,
-        fatal: isProd,
-      });
-    }
-    if (privateKey.length !== 43) {
-      problems.push({
-        key: "VAPID_PRIVATE_KEY",
-        message: `Expected 43 characters, got ${privateKey.length}. It looks truncated — re-run \`npm run vapid\`.`,
-        fatal: isProd,
-      });
-    }
   }
 
   if (!process.env.DATABASE_URL?.trim()) {
