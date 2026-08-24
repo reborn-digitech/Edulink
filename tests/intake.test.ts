@@ -148,3 +148,82 @@ describe("admitting pupils from a list", () => {
     expect(await db.user.count({ where: { name: `${TAG} Never` } })).toBe(0);
   });
 });
+
+describe("⚠ a transfer row links; it never mints", () => {
+  /**
+   * The fork this exists to prevent: a child arrives from another school
+   * holding a leaving certificate, the office types them into intake, and a
+   * SECOND account appears beside the first — so the certificate, which
+   * follows the person, is unreadable to the very school holding the paper.
+   * The code printed on that paper is the link; the birthdate is the check.
+   */
+  const CODE = "STU-ZZTR-0001";
+  let oldUserId: string;
+  let otherSchoolId: string;
+
+  beforeAll(async () => {
+    const other = await db.school.findFirstOrThrow({ where: { name: "Oakfield Academy" }, select: { id: true } });
+    otherSchoolId = other.id;
+    const user = await db.user.create({
+      data: { name: `${TAG} Transfer Child`, email: `transfer.child@intake.test`, prefs: "{}", birthdate: new Date("2013-03-13T00:00:00Z") },
+    });
+    oldUserId = user.id;
+    const oldMembership = await db.membership.create({
+      data: { userId: user.id, schoolId: otherSchoolId, role: "STUDENT", status: "ACTIVE", studentCode: CODE, leftAt: new Date("2026-04-30") },
+    });
+    await db.schoolRecord.create({
+      data: {
+        schoolId: otherSchoolId, studentUserId: user.id, studentMembershipId: oldMembership.id,
+        schoolName: "Oakfield Academy", joinedAt: new Date("2020-06-01"), leftAt: new Date("2026-04-30"),
+        reason: "TRANSFERRED", attendanceMarked: 100, attendancePresent: 92, reportCardCount: 3, studentCode: CODE, birthdate: new Date("2013-03-13T00:00:00Z"),
+      },
+    });
+  });
+
+  const transferRow = (over: Record<string, unknown> = {}) => [{
+    line: 1, name: `${TAG} Transfer Child`, birthdateKey: "2013-03-13", className: "zz intake class",
+    pupilEmail: null, guardianEmail: null, guardianName: null, relation: "PARENT", studentCode: CODE, ...over,
+  }];
+
+  it("⚠ attaches the membership to the existing account — one person, two schools, one login", async () => {
+    const before = await db.user.count();
+    const result = await admitPupils(admin, transferRow() as never, { locale: "en" });
+    expect(result.admitted).toBe(1);
+    expect(result.outcomes[0]).toMatchObject({ status: "admitted", linked: true });
+    // No new person was minted.
+    expect(await db.user.count()).toBe(before);
+    const membership = await db.membership.findFirstOrThrow({
+      where: { schoolId, userId: oldUserId, role: "STUDENT", leftAt: null }, select: { studentCode: true },
+    });
+    // A fresh per-school code; the old one still opens the old record.
+    expect(membership.studentCode).not.toBe(CODE);
+    // No new first sign-in: the child keeps the login they already know.
+    expect(result.outcomes[0]!.firstSignInCode).toBeUndefined();
+    // And the certificate now follows: the record is reachable through the person.
+    expect(await db.schoolRecord.count({ where: { studentUserId: oldUserId } })).toBe(1);
+  });
+
+  it("a second upload is already on the roll, not a second membership", async () => {
+    const result = await admitPupils(admin, transferRow() as never, { locale: "en" });
+    expect(result.outcomes[0]).toMatchObject({ status: "skipped", reasonKey: "intake.alreadyOnRoll" });
+  });
+
+  it("⚠ possession of the code alone is not enough: no birthdate, wrong birthdate, unknown code", async () => {
+    const noDob = await admitPupils(admin, transferRow({ birthdateKey: null, name: `${TAG} NoDob` }) as never, { locale: "en" });
+    expect(noDob.outcomes[0]).toMatchObject({ status: "skipped", reasonKey: "intake.codeNeedsBirthdate" });
+
+    const wrongDob = await admitPupils(admin, transferRow({ birthdateKey: "2013-03-14", name: `${TAG} WrongDob` }) as never, { locale: "en" });
+    expect(wrongDob.outcomes[0]).toMatchObject({ status: "skipped", reasonKey: "intake.codeMismatch" });
+
+    const unknown = await admitPupils(admin, transferRow({ studentCode: "STU-NONE-0000", name: `${TAG} Unknown` }) as never, { locale: "en" });
+    expect(unknown.outcomes[0]).toMatchObject({ status: "skipped", reasonKey: "intake.codeNotFound" });
+
+    // None of the refused rows minted anything.
+    expect(await db.membership.count({ where: { schoolId, user: { name: { in: [`${TAG} NoDob`, `${TAG} WrongDob`, `${TAG} Unknown`] } } } })).toBe(0);
+  });
+
+  it("the CSV parser recognises the column and uppercases the code", () => {
+    const parsed = parseIntakeCsv("name,dob,student code\nA Child,13/03/2013,stu-zztr-0001\n", "2026-08-24");
+    expect(parsed.valid[0]).toMatchObject({ studentCode: "STU-ZZTR-0001" });
+  });
+});

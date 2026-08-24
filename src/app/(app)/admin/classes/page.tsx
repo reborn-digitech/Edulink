@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { nameCarriesSection } from "@/lib/codes";
 import Link from "next/link";
-import { ChalkboardTeacherIcon, PlusIcon, GraduationCapIcon } from "@phosphor-icons/react/ssr";
+import { ChalkboardTeacherIcon, PlusIcon, GraduationCapIcon, WarningIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { Card } from "@/components/ui/card";
@@ -42,8 +42,33 @@ export default async function ClassesPage({
     where: { schoolId: ctx.schoolId, archivedAt: { not: null } },
   });
 
+  /**
+   * Classes running with nobody in charge. Promotion creates next year's
+   * classes with no teachers on purpose (guessing would re-add somebody the
+   * school moved out), and a teacher leaving orphans theirs — but nothing
+   * ever ASKED afterwards, so the stand-in machinery quietly made the admin
+   * guardian of every affected pupil and the login screen called them
+   * "Parent of 11". A functional audit walked into exactly that. The banner
+   * is the ask.
+   */
+  const leaderless = classes.filter(
+    (k) => !k.archivedAt && k._count.enrollments > 0 && !k.teachers.some((ct) => ct.role === "LEAD"),
+  );
+
   return (
     <div className="space-y-5">
+      {leaderless.length > 0 && !showArchived && (
+        <p className="flex items-start gap-2 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm leading-relaxed text-fg">
+          <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0 text-warn" aria-hidden="true" />
+          <span>
+            {leaderless.length === 1
+              ? t("classes.leaderlessOne", { name: leaderless[0]!.name })
+              : t("classes.leaderlessMany", { count: leaderless.length, names: leaderless.map((k) => k.name).join(", ") })}{" "}
+            {t("classes.leaderlessWhy")}
+          </span>
+        </p>
+      )}
+
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("classes.title")}</h1>

@@ -181,6 +181,23 @@ describe("setting up a year", () => {
     expect(current?.id).not.toBe(second);
   });
 
+  it("⚠ refuses a repeated name with a sentence, not a unique-constraint crash", async () => {
+    // The admin pressing "Add next year" twice saw a raw Prisma error. Found
+    // by a functional audit doing exactly that.
+    await createAcademicYear(admin, {
+      name: "TEST twice",
+      startDate: new Date("2030-06-01"),
+      endDate: new Date("2031-04-30"),
+    });
+    await expect(
+      createAcademicYear(admin, {
+        name: "TEST twice",
+        startDate: new Date("2031-06-01"),
+        endDate: new Date("2032-04-30"),
+      }),
+    ).rejects.toMatchObject({ key: "access.thatYearAlreadyExists" });
+  });
+
   it("refuses a year that ends before it starts", async () => {
     await expect(
       createAcademicYear(admin, {

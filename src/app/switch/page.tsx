@@ -88,26 +88,39 @@ export default async function SwitchPage() {
           </li>
         ))}
 
-        {children.length > 0 && (
-          <li>
-            <form action={switchContext}>
-              <input type="hidden" name="role" value="PARENT" />
-              <ContextButton
-                title={
-                  children.length === 1
-                    ? children[0]!.name
-                    : t("switch.childrenCount", { count: children.length })
-                }
-                subtitle={
-                  parentSchoolNames.size === 1
-                    ? t("switch.parentAt", { school: children[0]!.schoolName })
-                    : t("switch.parentSchools", { count: parentSchoolNames.size })
-                }
-                role="PARENT"
-              />
-            </form>
-          </li>
-        )}
+        {children.length > 0 && (() => {
+          /**
+           * Every entry being a SCHOOL stand-in means this person is not a
+           * parent at all — they are the school's fallback guardian for
+           * pupils whose classes have no teacher. Wearing "Parent" here made
+           * an admin read their own login screen as a data breach.
+           */
+          const standinsOnly = children.every((c) => c.relation === "SCHOOL");
+          return (
+            <li>
+              <form action={switchContext}>
+                <input type="hidden" name="role" value="PARENT" />
+                <ContextButton
+                  title={
+                    standinsOnly
+                      ? t("switch.standinCount", { count: children.length })
+                      : children.length === 1
+                        ? children[0]!.name
+                        : t("switch.childrenCount", { count: children.length })
+                  }
+                  subtitle={
+                    standinsOnly
+                      ? t("switch.standinHint")
+                      : parentSchoolNames.size === 1
+                        ? t("switch.parentAt", { school: children[0]!.schoolName })
+                        : t("switch.parentSchools", { count: parentSchoolNames.size })
+                  }
+                  role="PARENT"
+                />
+              </form>
+            </li>
+          );
+        })()}
       </ul>
 
       {/*

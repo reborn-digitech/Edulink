@@ -1862,6 +1862,7 @@ export const en = {
     onlyASchoolAdminCanPostA: "Only a school admin can post a competition",
     onlyASchoolAdminCanPublishTo: "Only a school admin can publish to the global feed",
     onlyASchoolAdminCanSetUp: "Only a school admin can set up an academic year",
+    thatYearAlreadyExists: "A year with that name already exists at this school. Pick a different name, or open the one that is there.",
     onlyASchoolAdminCanUnhideA: "Only a school admin can unhide a global post",
     onlyAStudentCanEnterACompetition: "Only a student can enter a competition",
     onlyATeacherAPupilOrTheir: "Only a teacher, a pupil or their guardian can start a conversation.",
@@ -2256,6 +2257,8 @@ export const en = {
       "Pages you have opened recently still work offline, including today's register and recent grades.",
   },
   switch: {
+    standinCount: "{count} pupils in your care",
+    standinHint: "As the school\u2019s stand-in guardian, not as a parent",
     notPartOfSchool: "You are not part of a school yet",
     notPartBody: "Join with a school or class code, or ask an admin to invite you.",
     joinWithCode: "Join with a code",
@@ -4374,6 +4377,9 @@ export const en = {
   /* Classes — the list, the one being created, and who staffs each          */
   /* ---------------------------------------------------------------------- */
   classes: {
+    leaderlessOne: "{name} has pupils but no class teacher.",
+    leaderlessMany: "{count} classes have pupils but no class teacher: {names}.",
+    leaderlessWhy: "Until one is assigned, the school admin stands in as guardian for consent — assign a teacher from each class\u2019s page.",
     title: "Classes",
     activeCountOne: "1 active class",
     activeCountMany: "{count} active classes",
@@ -4976,6 +4982,11 @@ export const en = {
     sameAddress: "Pupil and guardian cannot share an address",
     unknownClass: "No class by that name",
     alreadyOnRoll: "Already on the roll",
+    codeNotFound: "No pupil holds that student code. Check the certificate — the code reads STU-XXXX-XXXX.",
+    codeNeedsBirthdate: "A transfer row needs the date of birth as well as the code — the code alone is a piece of paper.",
+    codeMismatch: "The date of birth does not match the one the previous school has on file, so nothing was linked.",
+    linkedBadge: "Transferred in",
+    linkedExisting: "Transferred in — their existing account, record and login carried over.",
     emailHasAccount: "That address already has an account — invite them instead",
     couldNotAdmit: "Could not be admitted",
     readyToAdmit: "{count} ready to admit",

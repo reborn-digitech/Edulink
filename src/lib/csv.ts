@@ -288,6 +288,8 @@ export type IntakeRow = {
   guardianEmail: string | null;
   guardianName: string | null;
   relation: "PARENT" | "GUARDIAN" | "OTHER";
+  /** Present = a transfer: link to the existing account behind this code. */
+  studentCode: string | null;
 };
 
 export type IntakeCsvResult = {
@@ -305,6 +307,14 @@ const INTAKE_HEADERS = {
   guardianEmail: ["guardian email", "parent email", "guardian", "parent", "parent/guardian email", "guardian e-mail", "parent e-mail"],
   guardianName: ["guardian name", "parent name", "parent/guardian name", "father", "mother"],
   relation: ["relation", "relationship", "guardian relation"],
+  /**
+   * The pupil's own code from their PREVIOUS school — printed on the leaving
+   * certificate and on their profile as STU-XXXX-XXXX. A row that carries it
+   * is a TRANSFER: the new membership attaches to the child's existing
+   * account, so the certificate and the record follow the person instead of
+   * a second account being minted beside the first.
+   */
+  studentCode: ["student code", "pupil code", "transfer code", "code", "stu code", "student id"],
 } as const;
 
 /**
@@ -355,6 +365,7 @@ export function parseIntakeCsv(input: string, today: string): IntakeCsvResult {
     guardianEmail: key(INTAKE_HEADERS.guardianEmail),
     guardianName: key(INTAKE_HEADERS.guardianName),
     relation: key(INTAKE_HEADERS.relation),
+    studentCode: key(INTAKE_HEADERS.studentCode),
   };
   if (col.pupilEmail && ["email", "email address", "e-mail"].includes(col.pupilEmail) && !col.guardianEmail) {
     col.guardianEmail = col.pupilEmail;
@@ -447,6 +458,7 @@ export function parseIntakeCsv(input: string, today: string): IntakeCsvResult {
       guardianEmail,
       guardianName: cell(col.guardianName).slice(0, 120) || null,
       relation,
+      studentCode: cell(col.studentCode).toUpperCase().slice(0, 40) || null,
     });
   });
 

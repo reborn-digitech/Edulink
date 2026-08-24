@@ -23,9 +23,12 @@ import type { IntakeOutcome } from "@/lib/intake";
 import { FIRST_SIGNIN_TTL_DAYS } from "@/lib/first-signin-constants";
 
 const EXAMPLE =
-  "name,date of birth,class,guardian email,guardian name,relation\n" +
-  "Aarav Patel,14/06/2019,Class 1,rekha.patel@example.com,Rekha Patel,parent\n" +
-  "Meera Joshi,02/11/2019,Class 1,sunil.joshi@example.com,Sunil Joshi,parent";
+  "name,date of birth,class,guardian email,guardian name,relation,student code\n" +
+  "Aarav Patel,14/06/2019,Class 1,rekha.patel@example.com,Rekha Patel,parent,\n" +
+  "Meera Joshi,02/11/2019,Class 1,sunil.joshi@example.com,Sunil Joshi,parent,\n" +
+  // A TRANSFER row: the code from the previous school's leaving certificate
+  // links the child's existing account instead of minting a second one.
+  "Gita Kale,13/03/2013,Class 8,,,,STU-7K2M-9QDX";
 
 /**
  * The admission list, previewed by the same parser the server runs, so what
@@ -171,7 +174,12 @@ export function IntakeForm({
               <tbody>
                 {admitted.map((o) => (
                   <tr key={o.line} className="border-t border-border">
-                    <td className="px-3 py-2 font-medium text-fg">{o.name}</td>
+                    <td className="px-3 py-2 font-medium text-fg">
+                      {o.name}
+                      {o.linked && (
+                        <span className="ml-2 align-middle"><Badge tone="info" size="sm">{t("intake.linkedBadge")}</Badge></span>
+                      )}
+                    </td>
                     <td className="px-3 py-2 text-fg-muted">{o.className ?? "—"}</td>
                     <td className="px-3 py-2 font-mono text-fg">{o.studentCode}</td>
                     <td className="px-3 py-2 font-mono text-fg-muted">{o.handle ?? "—"}</td>

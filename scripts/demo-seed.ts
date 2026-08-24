@@ -39,6 +39,44 @@ async function main() {
     process.exit(1);
   }
 
+  /* ---- a principal for Riverside ---------------------------------------- */
+  // The main seed predates the PRINCIPAL role, so a fresh database has nobody
+  // to show the leave-approval and whole-school views. Same password as every
+  // other demo account, for the same reason as the expert below.
+  const passwordHash = await hash(PASSWORD, ARGON);
+  const principalUser = await db.user.upsert({
+    where: { email: "meera@riverside.school" },
+    create: {
+      email: "meera@riverside.school",
+      name: "Meera Nair",
+      prefs: "{}",
+      passwordHash,
+      emailVerifiedAt: new Date(),
+    },
+    update: { passwordHash },
+  });
+  const principalMembership = await db.membership.findUnique({
+    where: {
+      userId_schoolId_role: {
+        userId: principalUser.id,
+        schoolId: riverside.id,
+        role: "PRINCIPAL",
+      },
+    },
+  });
+  if (!principalMembership) {
+    await db.membership.create({
+      data: {
+        userId: principalUser.id,
+        schoolId: riverside.id,
+        role: "PRINCIPAL",
+        status: "ACTIVE",
+        title: "Principal",
+      },
+    });
+    done.push("principal Meera Nair at Riverside");
+  }
+
   /* ---- academic year + calendar ---------------------------------------- */
   // Keyed on the UNIQUE field (schoolId, name), not on `isCurrent` — a year that
   // exists but is not current is exactly the state a second run finds, and
@@ -115,7 +153,6 @@ async function main() {
   }
 
   /* ---- a published expert with free slots ------------------------------ */
-  const passwordHash = await hash(PASSWORD, ARGON);
   const expertUser = await db.user.upsert({
     where: { email: EXPERT_EMAIL },
     create: { email: EXPERT_EMAIL, name: "Dr Anjali Rao", prefs: "{}", passwordHash },
@@ -157,7 +194,17 @@ async function main() {
 
   console.log("\nDemo data ready:\n");
   for (const line of done) console.log(`  · ${line}`);
-  console.log(`\n  Expert login: ${EXPERT_EMAIL} / ${PASSWORD}\n`);
+  console.log(`
+  One account per role, all at Riverside Primary except the expert,
+  all with the password ${PASSWORD}:
+
+    PRINCIPAL  meera@riverside.school
+    ADMIN      priya@riverside.school
+    TEACHER    tom@riverside.school
+    STUDENT    amara@riverside.school
+    PARENT     parent@example.com        (children in both seeded schools)
+    EXPERT     ${EXPERT_EMAIL}
+`);
   await db.$disconnect();
 }
 

@@ -71,6 +71,19 @@ export async function createAcademicYear(
   const schoolId = session.schoolId;
   const existing = await currentAcademicYear(schoolId);
 
+  /**
+   * A repeated name was a raw unique-constraint crash: the admin pressing
+   * "Add next year" twice — or typing the year that already exists — saw
+   * "something went wrong" instead of the one sentence that explains it.
+   * Found by a functional audit doing exactly that. The unique index stays
+   * as the backstop for the write race; this is the door saying why.
+   */
+  const sameName = await db.academicYear.findFirst({
+    where: { schoolId, name: input.name.trim() },
+    select: { id: true },
+  });
+  if (sameName) throw new AccessError("access.thatYearAlreadyExists");
+
   const year = await db.academicYear.create({
     data: {
       schoolId,

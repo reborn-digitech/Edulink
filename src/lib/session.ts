@@ -336,6 +336,11 @@ async function readContexts(userId: string) {
        *  (it is what keeps the record reachable), so the pages must say so
        *  rather than render an ordinary day. */
       leftAt: g.student.leftAt,
+      /** "SCHOOL" is the stand-in the school holds for a guardianless pupil.
+       *  The chooser must not call that person a Parent — an admin whose
+       *  promoted classes had no teachers was greeted as "Parent · 11
+       *  children", which reads as a breach. */
+      relation: g.relation,
     })),
   };
 }

@@ -2,7 +2,7 @@ import "server-only";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
-import { forSchool } from "./tenant-context";
+import { forSchool, forJoinCode } from "./tenant-context";
 import { studentCode } from "./codes";
 import { HANDLE_DOMAIN } from "./login-name";
 import { writeJson } from "./json";
@@ -62,6 +62,8 @@ export type IntakeOutcome = {
   className?: string | null;
   guardian?: "invited" | "none" | "notSent";
   guardianReasonKey?: TranslationKey;
+  /** The row carried a transfer code and attached to the existing account. */
+  linked?: boolean;
 };
 
 export type IntakeResult = {
@@ -150,6 +152,125 @@ export async function admitPupils(
         });
         continue;
       }
+    }
+
+    /**
+     * ⚠ A TRANSFER LINKS; IT NEVER MINTS. A row carrying the pupil's code
+     * from their previous school attaches the new membership to the child's
+     * EXISTING account, so the leaving certificate — which follows the
+     * person — is readable to this school the moment the child is on its
+     * roll, and the child keeps the login they already know.
+     *
+     * This closed the fork a functional audit walked into: a real transfer
+     * typed into intake minted a second account, and the receiving school
+     * read zero records for a child who arrived holding a certificate. The
+     * invitation path cannot cover it, because a handle-only child has no
+     * email to invite — but every such child HAS a code, printed on the
+     * certificate itself.
+     *
+     * THE FENCE IS NOT WIDENED. `Membership.studentCode` is globally unique,
+     * high-entropy, and already CODE_READABLE under the join-code binding —
+     * the same mechanism a child typing a class code uses. Possession of the
+     * code alone is deliberately not enough: the row must also carry the
+     * birthdate the old school has on file, because a code is written on a
+     * paper document that changes hands.
+     */
+    if (row.studentCode) {
+      const transferCode = row.studentCode.trim().toUpperCase();
+      const previous = await forJoinCode(transferCode, () =>
+        db.membership.findFirst({
+          where: { studentCode: transferCode, role: "STUDENT" },
+          select: { userId: true, user: { select: { id: true, birthdate: true } } },
+        }),
+      );
+      if (!previous) {
+        outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.codeNotFound" });
+        continue;
+      }
+      if (!birthdate) {
+        outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.codeNeedsBirthdate" });
+        continue;
+      }
+      const known = previous.user.birthdate;
+      if (!known || known.toISOString().slice(0, 10) !== birthdate.toISOString().slice(0, 10)) {
+        outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.codeMismatch" });
+        continue;
+      }
+      const here = await db.membership.findFirst({
+        where: { userId: previous.userId, schoolId, role: "STUDENT", status: { in: ["ACTIVE", "PENDING"] }, leftAt: null },
+        select: { id: true },
+      });
+      if (here) {
+        outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.alreadyOnRoll" });
+        continue;
+      }
+
+      const newCode = studentCode();
+      let linkedMembershipId: string;
+      try {
+        const created = await forSchool(schoolId, () =>
+          db.$tenantTransaction(async (rawTx) => {
+            const tx = rawTx as typeof db;
+            const membership = await tx.membership.create({
+              data: { userId: previous.userId, schoolId, role: "STUDENT", status: "ACTIVE", studentCode: newCode },
+              select: { id: true },
+            });
+            if (klass) {
+              await tx.enrollment.create({
+                data: { classId: klass.id, schoolId, studentMembershipId: membership.id, status: "ACTIVE" },
+              });
+            }
+            return { membershipId: membership.id };
+          }),
+        );
+        linkedMembershipId = created.membershipId;
+      } catch (error) {
+        console.error("[admitPupils] transfer link failed for line", row.line, error);
+        outcomes.push({ line: row.line, name: row.name, status: "failed", reasonKey: "intake.couldNotAdmit" });
+        continue;
+      }
+
+      admitted++;
+      await audit({
+        schoolId,
+        actorUserId: ctx.user.id,
+        action: "student.admit",
+        targetType: "Membership",
+        targetId: linkedMembershipId,
+        meta: { line: row.line, classId: klass?.id ?? null, hasBirthdate: true, ownAddress: false, linkedByCode: true },
+      });
+      await syncStandinGuardian({ schoolId, studentMembershipId: linkedMembershipId, actorUserId: ctx.user.id }).catch(
+        (error) => console.error("[admitPupils] standin sync failed", error),
+      );
+
+      const linkedOutcome: IntakeOutcome = {
+        line: row.line,
+        name: row.name,
+        status: "admitted",
+        studentCode: newCode,
+        // NO new first sign-in and no handle on the slip: the child keeps the
+        // login they already use, which is the point of linking.
+        className: klass?.name ?? null,
+        guardian: "none",
+        linked: true,
+      };
+      if (row.guardianEmail) {
+        try {
+          const link = await inviteParent(ctx, linkedMembershipId, {
+            email: row.guardianEmail,
+            name: row.guardianName ?? undefined,
+            relation: row.relation,
+          });
+          if (link.ok) { linkedOutcome.guardian = "invited"; guardiansInvited++; }
+          else { linkedOutcome.guardian = "notSent"; linkedOutcome.guardianReasonKey = link.errorKey; }
+        } catch (error) {
+          console.error("[admitPupils] guardian invite failed for line", row.line, error);
+          linkedOutcome.guardian = "notSent";
+          linkedOutcome.guardianReasonKey = "invites.couldNotSendRow";
+        }
+      }
+      outcomes.push(linkedOutcome);
+      continue;
     }
 
     const age = birthdate ? ageInYears(birthdate) : null;

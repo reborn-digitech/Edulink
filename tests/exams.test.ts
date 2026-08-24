@@ -75,9 +75,39 @@ function ctxFor(
   };
 }
 
+/**
+ * Holidays quarantined for the suite's two date windows and put back after.
+ *
+ * ⚠ THE SUITE USED TO ASSUME RIVERSIDE'S CALENDAR WAS EMPTY where it
+ * scheduled papers — and `npm run demo:seed` puts Ganesh Chaturthi on the
+ * exact September day the first paper lands, so running the documented demo
+ * seed broke six exam tests with "paperOnHoliday". A test that depends on
+ * another tool never having run is a test that fails on somebody else's
+ * machine first. Rows are captured and restored, not deleted: the demo
+ * content is not this suite's to discard.
+ */
+type ParkedHoliday = { name: string; startDateKey: string; endDateKey: string; kind: string };
+let parkedHolidays: ParkedHoliday[] = [];
+
 beforeAll(async () => {
   const school = await db.school.findFirstOrThrow({ where: { name: "Riverside Primary School" } });
   schoolId = school.id;
+
+  const colliding = await db.holiday.findMany({
+    where: {
+      schoolId,
+      OR: [
+        { startDateKey: { lte: "2026-09-20" }, endDateKey: { gte: "2026-09-10" } },
+        { startDateKey: { lte: "2026-11-20" }, endDateKey: { gte: "2026-11-05" } },
+      ],
+      NOT: { name: "ZZ Guard Break" },
+    },
+    select: { name: true, startDateKey: true, endDateKey: true, kind: true },
+  });
+  parkedHolidays = colliding;
+  if (colliding.length > 0) {
+    await db.holiday.deleteMany({ where: { schoolId, name: { in: colliding.map((h) => h.name) } } });
+  }
 
   const [pupilUser, teacherUser, adminUser, parentUser] = await Promise.all([
     db.user.create({ data: { email: PUPIL_EMAIL, name: "ZZ Exams Pupil", prefs: "{}" } }),
@@ -123,6 +153,9 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
+  for (const h of parkedHolidays) {
+    await db.holiday.create({ data: { schoolId, ...h } }).catch(() => {});
+  }
   if (seriesId) {
     // Marks outlive the sheet by design; the fixture removes its own.
     await db.grade.deleteMany({ where: { assignment: { classId } } });
