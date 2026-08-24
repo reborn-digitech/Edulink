@@ -24,6 +24,9 @@ const KEYS = [
   "SMTP_USER",
   "SMTP_PASS",
   "EMAIL_FROM",
+  "TWILIO_ACCOUNT_SID",
+  "TWILIO_AUTH_TOKEN",
+  "TWILIO_FROM",
 ] as const;
 
 const original = Object.fromEntries(KEYS.map((k) => [k, process.env[k]]));
@@ -54,6 +57,13 @@ const GOOD_SMTP = {
   EMAIL_FROM: "EduLink <no-reply@edulink.example>",
 } as const;
 
+/** A complete, healthy Twilio block. */
+const GOOD_TWILIO = {
+  TWILIO_ACCOUNT_SID: "AC" + "0123456789abcdef".repeat(2),
+  TWILIO_AUTH_TOKEN: "sekrit",
+  TWILIO_FROM: "+15551234567",
+} as const;
+
 function unset(...keys: (typeof KEYS)[number][]) {
   for (const key of keys) delete (process.env as Record<string, string | undefined>)[key];
 }
@@ -69,6 +79,7 @@ describe("checkEnv — VAPID", () => {
       EMAIL_TRANSPORT: "smtp",
       SMS_TRANSPORT: "twilio",
       ...GOOD_SMTP,
+      ...GOOD_TWILIO,
     });
     expect(checkEnv()).toEqual([]);
   });
@@ -346,5 +357,55 @@ describe("⚠ checkEnv — the SMTP contract, validated at boot", () => {
     set({ ...deployed, NODE_ENV: "development", NEXT_PUBLIC_APP_URL: "http://localhost:3000", EMAIL_TRANSPORT: "devbox" });
     unset("SMTP_HOST", "SMTP_PORT", "SMTP_SECURE", "SMTP_USER", "SMTP_PASS", "EMAIL_FROM");
     expect(checkEnv().some((p) => p.key.startsWith("SMTP") || p.key === "EMAIL_FROM")).toBe(false);
+  });
+});
+
+describe("⚠ checkEnv — the Twilio contract, validated at boot", () => {
+  const deployed = {
+    NODE_ENV: "production",
+    NEXT_PUBLIC_VAPID_PUBLIC_KEY: GOOD_PUBLIC,
+    VAPID_PRIVATE_KEY: GOOD_PRIVATE,
+    DATABASE_URL: "postgres://x",
+    NEXT_PUBLIC_APP_URL: "https://edulink.example",
+    EMAIL_TRANSPORT: "smtp",
+    SMS_TRANSPORT: "twilio",
+  } as const;
+
+  it("⚠ saying twilio with nothing behind it refuses to boot, naming every gap", () => {
+    set({ ...deployed, ...GOOD_SMTP });
+    unset("TWILIO_ACCOUNT_SID", "TWILIO_AUTH_TOKEN", "TWILIO_FROM");
+    const problems = checkEnv();
+    for (const key of ["TWILIO_ACCOUNT_SID", "TWILIO_AUTH_TOKEN", "TWILIO_FROM"]) {
+      expect(problems.find((p) => p.key === key)?.fatal, key).toBe(true);
+    }
+  });
+
+  it("⚠ catches the API Key SID pasted where the Account SID goes — a 401 with no explanation otherwise", () => {
+    set({ ...deployed, ...GOOD_SMTP, ...GOOD_TWILIO, TWILIO_ACCOUNT_SID: "SK" + "0123456789abcdef".repeat(2) });
+    const problem = checkEnv().find((p) => p.key === "TWILIO_ACCOUNT_SID");
+    expect(problem).toBeTruthy();
+    expect(problem!.message).toMatch(/AC/);
+  });
+
+  it("takes a Messaging Service SID as a sender — the India route — but not free text", () => {
+    set({ ...deployed, ...GOOD_SMTP, ...GOOD_TWILIO, TWILIO_FROM: "MG" + "0123456789abcdef".repeat(2) });
+    expect(checkEnv().some((p) => p.key === "TWILIO_FROM")).toBe(false);
+
+    set({ ...deployed, ...GOOD_SMTP, ...GOOD_TWILIO, TWILIO_FROM: "EduLink" });
+    expect(checkEnv().some((p) => p.key === "TWILIO_FROM")).toBe(true);
+
+    // A local number without the country code is the other classic.
+    set({ ...deployed, ...GOOD_SMTP, ...GOOD_TWILIO, TWILIO_FROM: "9876543210" });
+    expect(checkEnv().some((p) => p.key === "TWILIO_FROM")).toBe(true);
+  });
+
+  it("the same gaps are loud but not fatal on a laptop, and devbox reads none of it", () => {
+    set({ ...deployed, ...GOOD_SMTP, NODE_ENV: "development", NEXT_PUBLIC_APP_URL: "http://localhost:3000" });
+    unset("TWILIO_ACCOUNT_SID", "TWILIO_AUTH_TOKEN", "TWILIO_FROM");
+    expect(checkEnv().find((p) => p.key === "TWILIO_FROM")?.fatal).toBe(false);
+
+    set({ ...deployed, ...GOOD_SMTP, NODE_ENV: "development", NEXT_PUBLIC_APP_URL: "http://localhost:3000", SMS_TRANSPORT: "devbox" });
+    unset("TWILIO_ACCOUNT_SID", "TWILIO_AUTH_TOKEN", "TWILIO_FROM");
+    expect(checkEnv().some((p) => p.key.startsWith("TWILIO"))).toBe(false);
   });
 });

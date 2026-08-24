@@ -68,6 +68,47 @@ export function readSmtpConfig():
 }
 
 /**
+ * The Twilio contract, read the same way and for the same reason: one
+ * function, so the boot check and `sms.ts` can never disagree about what
+ * "configured" means.
+ *
+ * `from` is EITHER an E.164 number or a Messaging Service SID (MG…). Both are
+ * things Twilio accepts in the same field, and a deployment sending to India
+ * will use the latter — see the DLT note in sms.ts.
+ */
+export type TwilioConfig = { accountSid: string; authToken: string; from: string };
+
+export function readTwilioConfig():
+  | { ok: true; config: TwilioConfig }
+  | { ok: false; problems: { key: string; message: string }[] } {
+  const problems: { key: string; message: string }[] = [];
+
+  const accountSid = process.env.TWILIO_ACCOUNT_SID?.trim();
+  if (!accountSid) {
+    problems.push({ key: "TWILIO_ACCOUNT_SID", message: "TWILIO_ACCOUNT_SID is not set — the account the messages are billed to." });
+  } else if (!/^AC[0-9a-f]{32}$/i.test(accountSid)) {
+    // Catches the commonest paste error of all: the API Key SID (SK…) or a
+    // truncated copy, both of which fail later as an opaque 401.
+    problems.push({ key: "TWILIO_ACCOUNT_SID", message: `TWILIO_ACCOUNT_SID is "${accountSid.slice(0, 6)}…" — expected an Account SID: "AC" followed by 32 hex characters.` });
+  }
+
+  const authToken = process.env.TWILIO_AUTH_TOKEN?.trim();
+  if (!authToken) {
+    problems.push({ key: "TWILIO_AUTH_TOKEN", message: "TWILIO_AUTH_TOKEN is not set." });
+  }
+
+  const from = process.env.TWILIO_FROM?.trim();
+  if (!from) {
+    problems.push({ key: "TWILIO_FROM", message: 'TWILIO_FROM is not set — either a sending number in E.164 ("+15551234567") or a Messaging Service SID ("MG…").' });
+  } else if (!/^\+[1-9]\d{6,14}$/.test(from) && !/^MG[0-9a-f]{32}$/i.test(from)) {
+    problems.push({ key: "TWILIO_FROM", message: `TWILIO_FROM is "${from}" — expected E.164 (starting +) or a Messaging Service SID (MG…).` });
+  }
+
+  if (problems.length > 0) return { ok: false, problems };
+  return { ok: true, config: { accountSid: accountSid!, authToken: authToken!, from: from! } };
+}
+
+/**
  * A production BUILD served from localhost is the documented way to test the
  * service worker, offline mode and push — `next start` sets NODE_ENV=production
  * even on a laptop. Treating that as a real deployment made the app refuse to
@@ -168,13 +209,22 @@ export function checkEnv(): EnvProblem[] {
    * code is late or was never sent. Fatal for the same reason: a school
    * discovering this from a parent who cannot get in has discovered it too late.
    */
-  if (isProd && (process.env.SMS_TRANSPORT ?? "devbox") === "devbox") {
+  const smsTransport = process.env.SMS_TRANSPORT ?? "devbox";
+  if (isProd && smsTransport === "devbox") {
     problems.push({
       key: "SMS_TRANSPORT",
       message:
-        'SMS_TRANSPORT is "devbox" in production: no text will actually be sent, so password reset by mobile number silently goes nowhere. Implement a real transport in src/lib/sms.ts.',
+        'SMS_TRANSPORT is "devbox" in production: no text will actually be sent, so password reset by mobile number silently goes nowhere. Set SMS_TRANSPORT=twilio and the TWILIO_* variables.',
       fatal: true,
     });
+  }
+
+  // The same promise as the SMTP block: saying "twilio" and meaning it.
+  if (smsTransport === "twilio") {
+    const twilio = readTwilioConfig();
+    if (!twilio.ok) {
+      for (const problem of twilio.problems) problems.push({ ...problem, fatal: isProd });
+    }
   }
 
   return problems;

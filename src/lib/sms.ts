@@ -1,24 +1,40 @@
 import "server-only";
 import { db } from "./db";
 import { formatPhone } from "./phone";
+import { readTwilioConfig } from "./env";
 
 /**
  * SMS transport.
  *
- * DELIBERATELY THE SAME SHAPE AS `email.ts`, including the honest bit: v1 ships
- * the "devbox" transport only, which persists the message and renders it at
- * /dev/mailbox alongside the emails. That is not a stub standing in for work not
- * done — it is what makes the whole password-reset flow exercisable end to end
- * with no provider account, which is the same reason the email transport was
- * built that way.
+ * DELIBERATELY THE SAME SHAPE AS `email.ts`: "devbox" persists the message and
+ * renders it at /dev/mailbox alongside the emails — not a stub standing in for
+ * work not done, but what makes the whole password-reset flow exercisable end
+ * to end with no provider account — and "twilio" hands it to a real carrier.
+ * The config contract lives in env.ts (`readTwilioConfig`) so the boot check
+ * and this file cannot disagree, and `npm run sms:test -- +15551234567` proves
+ * the wiring before the first person is locked out.
  *
- * WIRING A REAL PROVIDER IS ONE BRANCH. Twilio, MSG91, Gupshup — implement the
- * `send` for the non-devbox case and nothing else in the app changes. It is
- * deliberately not abstracted further than that: an interface with one
- * implementation is a guess about the second one.
+ * NO SDK. Twilio's send is one form-encoded POST with Basic auth; a dependency
+ * to build that would be a dependency to keep updated. `fetch` is native.
  *
- * IT FAILS LOUDLY. An unimplemented transport throws rather than returning, for
- * the reason spelled out next door: a password-reset code that is silently
+ * ⚠ INDIA NEEDS A REGISTERED TEMPLATE, AND THIS IS NOT A TWILIO DETAIL. Under
+ * TRAI's DLT rules every domestic transactional SMS must match a template
+ * registered against the sender's entity ID, and an unregistered body is
+ * dropped by the carrier — not by Twilio, which will happily report the
+ * message accepted. So a deployment serving Indian numbers registers the two
+ * bodies below verbatim (they are deliberately fixed strings with only the
+ * code and the minutes varying), points TWILIO_FROM at a Messaging Service
+ * configured with that entity, and — this is the part worth writing down —
+ * verifies with `npm run sms:test` to a real handset, because the API
+ * answering 201 proves Twilio accepted it and nothing more.
+ *
+ * WIRING A DIFFERENT PROVIDER IS ONE MORE BRANCH. MSG91 and Gupshup are
+ * template-first APIs rather than text-first ones, which is a different shape,
+ * not a harder one. Still not abstracted behind an interface: with one
+ * implementation an interface is a guess about the second.
+ *
+ * IT FAILS LOUDLY. A transport that cannot send throws rather than returning,
+ * for the reason spelled out next door: a password-reset code that is silently
  * dropped looks identical, to the person waiting for it, to one that was never
  * requested — and they will keep asking.
  */
@@ -62,8 +78,63 @@ export async function sendSms(message: TextMessage): Promise<void> {
     return;
   }
 
+  if (transport === "twilio") {
+    const read = readTwilioConfig();
+    if (!read.ok) {
+      throw new Error(
+        `SMS_TRANSPORT is "twilio" but the config is incomplete — ${read.problems.map((p) => p.message).join(" ")}`,
+      );
+    }
+    const { accountSid, authToken, from } = read.config;
+
+    // A Messaging Service SID goes in its own field; a number goes in From.
+    const body = new URLSearchParams({ To: message.to, Body: message.text });
+    if (/^MG/i.test(from)) body.set("MessagingServiceSid", from);
+    else body.set("From", from);
+
+    /**
+     * The API root, overridable for two real reasons and no invented one:
+     * Twilio publishes regional endpoints (api.sydney.au1.twilio.com and
+     * friends) for data-residency, and pointing `sms:test` at a local stand-in
+     * is how the wiring gets proven before it is aimed at a live account and a
+     * real handset. Unset — which is what almost every deployment leaves it —
+     * it is the global endpoint.
+     */
+    const apiBase = process.env.TWILIO_API_BASE?.trim().replace(/\/$/, "") || "https://api.twilio.com";
+
+    const response = await fetch(
+      `${apiBase}/2010-04-01/Accounts/${encodeURIComponent(accountSid)}/Messages.json`,
+      {
+        method: "POST",
+        headers: {
+          // Basic auth, built here rather than pulled in: the token must not
+          // reach a log, so it is never interpolated into a string that is.
+          Authorization: `Basic ${Buffer.from(`${accountSid}:${authToken}`).toString("base64")}`,
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body,
+      },
+    );
+
+    if (!response.ok) {
+      // Twilio's own message is the useful part — "The 'To' number is not a
+      // valid phone number" beats "request failed". The body is small and
+      // carries no secret; the token is in the header, which is not read back.
+      const detail = await response.text().catch(() => "");
+      let reason = detail.slice(0, 300);
+      try {
+        const parsed = JSON.parse(detail) as { message?: string; code?: number };
+        if (parsed.message) reason = `${parsed.message}${parsed.code ? ` (code ${parsed.code})` : ""}`;
+      } catch {
+        /* not JSON: the raw prefix above is what there is */
+      }
+      throw new Error(`Twilio refused the message: HTTP ${response.status} — ${reason}`);
+    }
+    return;
+  }
+
   throw new Error(
-    `SMS_TRANSPORT="${transport}" is not implemented. Use "devbox", or add the transport in src/lib/sms.ts.`,
+    `SMS_TRANSPORT="${transport}" is not implemented. Use "devbox" or "twilio" (see src/lib/sms.ts).`,
   );
 }
 

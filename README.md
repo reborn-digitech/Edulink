@@ -75,8 +75,14 @@ account. Going live with email is `EMAIL_TRANSPORT="smtp"` plus the `SMTP_*`
 block (any SMTP server — SES, Postmark, a district relay); the boot check
 validates the whole block at once and `npm run email:test -- you@example.com`
 sends one real message through whichever transport is configured, so the
-wiring is proven before the first parent registers. SMS still awaits a
-provider. `NEXT_PUBLIC_DEFAULT_COUNTRY_CODE` decides which country a bare mobile
+wiring is proven before the first parent registers. SMS is the same shape —
+`SMS_TRANSPORT="twilio"` plus the `TWILIO_*` block, validated at boot and
+proven with `npm run sms:test -- +15551234567` — with one caveat that is not
+Twilio's and cannot be coded around: **sending to Indian numbers requires
+DLT-registered templates**, and an unregistered body is dropped by the carrier
+*after* Twilio reports it accepted. Register the two message bodies in
+`src/lib/sms.ts` verbatim, point `TWILIO_FROM` at a Messaging Service tied to
+that entity, and confirm on a real handset. `NEXT_PUBLIC_DEFAULT_COUNTRY_CODE` decides which country a bare mobile
 number belongs to; it defaults to `+91`, and getting it wrong does not fail
 loudly — it files everybody under the wrong country and turns two spellings of
 one number into two accounts.
