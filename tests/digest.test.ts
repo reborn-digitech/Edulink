@@ -93,6 +93,8 @@ describe("the weekly digest", () => {
   it("sends one message naming the child's week, then refuses to repeat itself", async () => {
     const first = await sendWeeklyDigests({ onlyParentUserIds: [parentUserId] });
     expect(first.sent).toBe(1);
+    // The run tells which schools the digests covered, for /root/jobs/schools.
+    expect(first.perSchool[schoolId]).toEqual({ digests: 1, children: 1 });
 
     const digests = await db.notification.findMany({
       where: { userId: parentUserId, title: "This week at school" },

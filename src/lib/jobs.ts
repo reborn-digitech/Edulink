@@ -32,6 +32,19 @@ import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
 
 export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run";
 
+/**
+ * What one run of a job hands back: the log line, and — for jobs whose work
+ * is per-tenant — the same work told school by school. `perSchool` is stored
+ * inside the JobRun summary under its own key and read by /root/jobs/schools;
+ * schools with nothing to do are absent, so absence is health. Counts only,
+ * never names or content: a JobRun is a whole-server row outside the tenant
+ * fence, and it must stay safe to be one.
+ */
+export type JobWork = {
+  summary: Record<string, number | string | boolean>;
+  perSchool?: Record<string, Record<string, number>>;
+};
+
 export type JobSpec = {
   name: JobName;
   /** Five-field crontab schedule. */
@@ -42,7 +55,7 @@ export type JobSpec = {
   maxRunMs: number;
   /** The job is OVERDUE when the last success is older than this. */
   expectEveryMs: number;
-  run: () => Promise<Record<string, number | string | boolean>>;
+  run: () => Promise<JobWork>;
 };
 
 const HOUR = 3_600_000;
@@ -55,7 +68,10 @@ export const JOBS: Record<JobName, JobSpec> = {
     describeKey: "root.jobDescTidy",
     maxRunMs: HOUR,
     expectEveryMs: 2 * DAY,
-    run: () => tidyAllNotifications(),
+    run: async () => {
+      const { autoRead, expired, perSchool } = await tidyAllNotifications();
+      return { summary: { autoRead, expired }, perSchool };
+    },
   },
   "digest:weekly": {
     name: "digest:weekly",
@@ -63,7 +79,10 @@ export const JOBS: Record<JobName, JobSpec> = {
     describeKey: "root.jobDescDigest",
     maxRunMs: 2 * HOUR,
     expectEveryMs: 8 * DAY,
-    run: () => sendWeeklyDigests(),
+    run: async () => {
+      const { sent, skipped, quiet, perSchool } = await sendWeeklyDigests();
+      return { summary: { sent, skipped, quiet }, perSchool };
+    },
   },
   "departures:run": {
     name: "departures:run",
@@ -71,7 +90,10 @@ export const JOBS: Record<JobName, JobSpec> = {
     describeKey: "root.jobDescDepartures",
     maxRunMs: HOUR,
     expectEveryMs: 2 * DAY,
-    run: () => runDueDepartures(),
+    run: async () => {
+      const { executed, skippedStale, stuck, perSchool } = await runDueDepartures();
+      return { summary: { executed, skippedStale, stuck }, perSchool };
+    },
   },
   "files:reclaim": {
     name: "files:reclaim",
@@ -82,9 +104,11 @@ export const JOBS: Record<JobName, JobSpec> = {
     run: async () => {
       const report = await reclaimOrphans({ dryRun: false });
       // Counts only — the report lists keys, which are not for a log line.
-      return Object.fromEntries(
+      // No perSchool: an orphaned storage key belongs to nobody by definition.
+      const summary = Object.fromEntries(
         Object.entries(report).filter(([, v]) => typeof v === "number" || typeof v === "boolean"),
       ) as Record<string, number | boolean>;
+      return { summary };
     },
   },
 };
@@ -125,7 +149,14 @@ export async function runJob(name: JobName, now: Date = new Date()): Promise<Run
   });
   const started = Date.now();
   try {
-    const summary = await spec.run();
+    const work = await spec.run();
+    // One stored object: the counts, with the per-school map under its own
+    // key when there is one — so the record of a run is a single row, and a
+    // reader that only wants the line can drop `perSchool` and have it.
+    const summary: Record<string, unknown> =
+      work.perSchool && Object.keys(work.perSchool).length > 0
+        ? { ...work.summary, perSchool: work.perSchool }
+        : { ...work.summary };
     const ms = Date.now() - started;
     await db.jobRun.update({
       where: { id: run.id },

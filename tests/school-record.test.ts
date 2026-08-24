@@ -663,11 +663,13 @@ describe("a last day in the future schedules, and the job executes it the mornin
   it("⚠ the due job runs the real departure — certificate dated the last day, conduct carried — and drops a stale row", async () => {
     expect((await scheduleDeparture(admin, pupilMembershipId, { reason: "TRANSFERRED", destination: "Oakfield Academy", conduct: "EXCELLENT", leaveOnKey: "2999-03-31" })).ok).toBe(true);
     // Not due yet: nothing happens.
-    expect(await runDueDepartures(new Date("2999-03-31T12:00:00Z"))).toEqual({ executed: 0, skippedStale: 0 });
+    expect(await runDueDepartures(new Date("2999-03-31T12:00:00Z"))).toMatchObject({ executed: 0, skippedStale: 0, stuck: 0 });
     expect((await db.membership.findUniqueOrThrow({ where: { id: pupilMembershipId } })).leftAt).toBeNull();
     // The morning after the last day, it runs.
     const result = await runDueDepartures(new Date("2999-04-01T02:00:00Z"));
     expect(result.executed).toBe(1);
+    // The run tells its work per school, for /root/jobs/schools.
+    expect(result.perSchool[riversideId]).toEqual({ executed: 1 });
     const m = await db.membership.findUniqueOrThrow({ where: { id: pupilMembershipId } });
     expect(m.leftAt?.toISOString().slice(0, 10)).toBe("2999-03-31");
     const record = await db.schoolRecord.findUniqueOrThrow({ where: { studentMembershipId: pupilMembershipId } });
@@ -678,6 +680,43 @@ describe("a last day in the future schedules, and the job executes it the mornin
     await db.scheduledDeparture.create({ data: { schoolId: riversideId, membershipId: pupilMembershipId, leaveOnKey: "2999-04-02", reason: "LEFT" } });
     const stale = await runDueDepartures(new Date("2999-04-10T02:00:00Z"));
     expect(stale).toMatchObject({ executed: 0, skippedStale: 1 });
+    expect(stale.perSchool[riversideId]).toEqual({ stale: 1 });
     expect(await db.scheduledDeparture.count({ where: { membershipId: pupilMembershipId } })).toBe(0);
+  });
+
+  it("⚠ a school with no active admin leaves the departure STUCK — counted per school, row retained for the night an admin exists", async () => {
+    // A disposable school that deliberately has a pupil and NO admin at all:
+    // the exact shape the job used to reduce to a console.error and nothing.
+    const suffix = Math.random().toString(16).slice(2, 10);
+    const school = await db.school.create({
+      data: {
+        name: "ZZ Stuck Departure School",
+        slug: `zz-stuck-dept-${suffix}`,
+        code: `ZSD${suffix.slice(0, 5).toUpperCase()}`,
+        contactEmail: `office-${suffix}@zz-stuck.test`,
+      },
+    });
+    const pupil = await db.user.create({
+      data: { email: `pupil-${suffix}@zz-stuck.test`, name: "ZZ Stuck Pupil", prefs: "{}" },
+    });
+    const membership = await db.membership.create({
+      data: { userId: pupil.id, schoolId: school.id, role: "STUDENT", status: "ACTIVE" },
+    });
+    await db.scheduledDeparture.create({
+      data: { schoolId: school.id, membershipId: membership.id, leaveOnKey: "2999-04-01", reason: "LEFT" },
+    });
+    try {
+      const out = await runDueDepartures(new Date("2999-04-10T02:00:00Z"));
+      expect(out.stuck).toBe(1);
+      expect(out.perSchool[school.id]).toEqual({ stuck: 1 });
+      // The intent is preserved, not dropped: the row survives to be retried.
+      expect(await db.scheduledDeparture.count({ where: { membershipId: membership.id } })).toBe(1);
+      // And nothing happened to the pupil.
+      expect((await db.membership.findUniqueOrThrow({ where: { id: membership.id } })).leftAt).toBeNull();
+    } finally {
+      await db.scheduledDeparture.deleteMany({ where: { schoolId: school.id } });
+      await db.school.delete({ where: { id: school.id } });
+      await db.user.delete({ where: { id: pupil.id } });
+    }
   });
 });

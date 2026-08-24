@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
-import { tidyNotificationsFor, setNotifThresholds, effectiveThresholds, AUTO_READ_AFTER_DAYS, EXPIRE_READ_AFTER_DAYS } from "@/lib/notification-housekeeping";
+import { tidyNotificationsFor, tidyAllNotifications, setNotifThresholds, effectiveThresholds, AUTO_READ_AFTER_DAYS, EXPIRE_READ_AFTER_DAYS } from "@/lib/notification-housekeeping";
 import { AccessError } from "@/lib/tenancy";
 import type { ActiveContext } from "@/lib/session";
 
@@ -125,6 +125,25 @@ describe("per-school thresholds", () => {
     expect(byTitle["school stale 40d"]).not.toBeNull();
     expect(byTitle["school fresh 20d"]).toBeNull();
     expect(byTitle["platform 40d"]).toBeNull();
+    await db.school.update({ where: { id: schoolId }, data: { notifAutoReadDays: null, notifExpireDays: null } });
+  });
+
+  it("the whole-platform tidy tells its work per school — and platform strays count in the totals only", async () => {
+    const now = new Date("2026-08-24T10:00:00Z");
+    await db.school.update({ where: { id: schoolId }, data: { notifAutoReadDays: 30, notifExpireDays: 60 } });
+    const mk = (title: string, daysAgo: number, school: boolean, read: boolean) =>
+      db.notification.create({ data: { userId, schoolId: school ? schoolId : null, kind: "SYSTEM", title, createdAt: at(daysAgo, now), readAt: read ? at(daysAgo, now) : null } });
+    await db.notification.deleteMany({ where: { userId } });
+    await mk("school stale 40d", 40, true, false);      // the school's 30 → auto-read
+    await mk("school old read 70d", 70, true, true);    // the school's 60 → expired
+    await mk("platform old read 400d", 400, false, true); // default 365 → expired, but belongs to no school
+
+    // Fenced to this file's fixture user — the digest's onlyParentUserIds precedent.
+    const result = await tidyAllNotifications(now, { onlyUserIds: [userId] });
+    expect(result.autoRead).toBe(1);
+    expect(result.expired).toBe(2);
+    expect(result.perSchool).toEqual({ [schoolId]: { autoRead: 1, expired: 1 } });
+
     await db.school.update({ where: { id: schoolId }, data: { notifAutoReadDays: null, notifExpireDays: null } });
   });
 });

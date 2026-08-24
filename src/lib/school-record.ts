@@ -429,13 +429,25 @@ export async function cancelScheduledDeparture(
  * notifications are indistinguishable from a hand-recorded one. A row whose
  * pupil already left by hand in the meantime is dropped as stale.
  */
-export async function runDueDepartures(now: Date = new Date()): Promise<{ executed: number; skippedStale: number }> {
+export async function runDueDepartures(now: Date = new Date()): Promise<{
+  executed: number;
+  skippedStale: number;
+  /** Due, but nobody to act: the school has no active admin. The row STAYS and is retried nightly — and counted here, per school, so /root/jobs/schools can say which school is silently accumulating a leaver nobody executes. It used to be a console.error and nothing else. */
+  stuck: number;
+  perSchool: Record<string, { executed?: number; stale?: number; stuck?: number }>;
+}> {
   const due = await db.scheduledDeparture.findMany({
     include: { school: { select: { id: true, timezone: true } } },
     orderBy: { leaveOnKey: "asc" },
   });
   let executed = 0;
   let skippedStale = 0;
+  let stuck = 0;
+  const perSchool: Record<string, { executed?: number; stale?: number; stuck?: number }> = {};
+  const add = (schoolId: string, key: "executed" | "stale" | "stuck") => {
+    const row = (perSchool[schoolId] ??= {});
+    row[key] = (row[key] ?? 0) + 1;
+  };
   for (const row of due) {
     if (row.leaveOnKey >= todayKey(row.school.timezone, now)) continue; // not yet past
     const actorMembership =
@@ -451,6 +463,8 @@ export async function runDueDepartures(now: Date = new Date()): Promise<{ execut
       }));
     if (!actorMembership) {
       console.error("[departures] no active admin to act for school", row.schoolId);
+      stuck++;
+      add(row.schoolId, "stuck");
       continue;
     }
     const ctx: ActiveContext = {
@@ -476,15 +490,18 @@ export async function runDueDepartures(now: Date = new Date()): Promise<{ execut
       console.error("[departures] failed for", row.membershipId, error);
       return { ok: false as const, errorKey: "common.somethingWrong" as TranslationKey };
     });
-    if (result.ok) executed++;
-    else {
+    if (result.ok) {
+      executed++;
+      add(row.schoolId, "executed");
+    } else {
       // Already left by hand, or otherwise unactionable: the intent is stale.
       skippedStale++;
+      add(row.schoolId, "stale");
       console.error("[departures] stale schedule dropped for", row.membershipId, "errorKey" in result ? result.errorKey : "");
     }
     await db.scheduledDeparture.deleteMany({ where: { id: row.id } });
   }
-  return { executed, skippedStale };
+  return { executed, skippedStale, stuck, perSchool };
 }
 
 /**

@@ -134,7 +134,13 @@ function lineFor(week: ChildDigest, t: Translate): string {
  */
 export async function sendWeeklyDigests(
   opts: { onlyParentUserIds?: string[] } = {},
-): Promise<{ sent: number; skipped: number; quiet: number }> {
+): Promise<{
+  sent: number;
+  skipped: number;
+  quiet: number;
+  /** Which schools the sent digests covered: a digest counts once per school it mentions, a child once each. Schools nothing was sent about are absent. */
+  perSchool: Record<string, { digests?: number; children?: number }>;
+}> {
   const parents = await db.guardianship.findMany({
     where: {
       status: "ACTIVE",
@@ -154,6 +160,7 @@ export async function sendWeeklyDigests(
   let sent = 0;
   let skipped = 0;
   let quiet = 0;
+  const perSchool: Record<string, { digests?: number; children?: number }> = {};
   const window = new Date(Date.now() - 6 * 24 * 60 * 60 * 1000);
 
   for (const [parentUserId, childIds] of byParent) {
@@ -199,7 +206,15 @@ export async function sendWeeklyDigests(
       meta: { flag: DIGEST_FLAG },
     });
     sent += 1;
+    for (const schoolId of new Set(weeks.map((w) => w.schoolId))) {
+      const row = (perSchool[schoolId] ??= {});
+      row.digests = (row.digests ?? 0) + 1;
+    }
+    for (const week of weeks) {
+      const row = (perSchool[week.schoolId] ??= {});
+      row.children = (row.children ?? 0) + 1;
+    }
   }
 
-  return { sent, skipped, quiet };
+  return { sent, skipped, quiet, perSchool };
 }

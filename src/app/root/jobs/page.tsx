@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { ClockIcon } from "@phosphor-icons/react/ssr";
+import Link from "next/link";
+import { BuildingsIcon, ClockIcon } from "@phosphor-icons/react/ssr";
 import { requireSuperuser } from "@/lib/tenancy";
 import { jobStatuses } from "@/lib/jobs";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { formatInZone } from "@/lib/dates";
 import { getT, getRelativeTime } from "@/lib/i18n/server";
 
@@ -18,6 +20,21 @@ export async function generateMetadata(): Promise<Metadata> {
  * worked, and OVERDUE in red when the last success is older than the job
  * expects — which is the only line an operator actually needs.
  */
+/** The one-line summary without its per-school map — that story has its own page. */
+function summaryLine(summary: string): string {
+  try {
+    const parsed: unknown = JSON.parse(summary);
+    if (parsed && typeof parsed === "object" && "perSchool" in parsed) {
+      const rest = { ...(parsed as Record<string, unknown>) };
+      delete rest.perSchool;
+      return JSON.stringify(rest);
+    }
+  } catch {
+    /* an old row; show it as it is */
+  }
+  return summary;
+}
+
 export default async function JobsPage() {
   const t = await getT();
   const relativeTime = await getRelativeTime();
@@ -28,9 +45,10 @@ export default async function JobsPage() {
 
   return (
     <div className="space-y-5">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("root.jobs")}</h1>
-        <p className="mt-1 text-sm text-fg-muted">
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("root.jobs")}</h1>
+          <p className="mt-1 text-sm text-fg-muted">
           {overdue === 0 && failed > 0
             ? failed === 1
               ? t("root.jobsFailedOne")
@@ -40,7 +58,11 @@ export default async function JobsPage() {
             : overdue === 1
               ? t("root.jobsOverdueOne")
               : t("root.jobsOverdueMany", { count: overdue })}
-        </p>
+          </p>
+        </div>
+        <Button asChild variant="secondary" icon={<BuildingsIcon weight="bold" />}>
+          <Link href="/root/jobs/schools">{t("root.jobsPerSchool")}</Link>
+        </Button>
       </div>
 
       <p className="rounded-[--radius-md] bg-surface-muted p-3.5 text-sm leading-relaxed text-fg-muted">
@@ -80,7 +102,7 @@ export default async function JobsPage() {
                     <>
                       {formatInZone(job.lastRun.startedAt, "UTC")} UTC · {relativeTime(job.lastRun.startedAt)}
                       {job.lastRun.ok === true && (
-                        <span className="text-fg-muted"> · {t("root.jobOk")} · <code className="font-mono text-xs">{job.lastRun.summary}</code></span>
+                        <span className="text-fg-muted"> · {t("root.jobOk")} · <code className="font-mono text-xs">{summaryLine(job.lastRun.summary)}</code></span>
                       )}
                       {job.lastRun.ok === false && (
                         <span className="text-danger"> · {t("root.jobFailed")}{job.lastRun.error ? ` · ${job.lastRun.error}` : ""}</span>

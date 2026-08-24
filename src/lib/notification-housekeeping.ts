@@ -52,6 +52,14 @@ const DAY = 86_400_000;
 
 export type TidyResult = { autoRead: number; expired: number };
 
+/**
+ * The whole-platform tidy, with its work told per school as well as in
+ * total. Schools with nothing to do are absent from `perSchool`, and
+ * platform mail with no school is counted in the totals only — the
+ * cross-school view lists schools, and a stray with no tenant is not one.
+ */
+export type TidyAllResult = TidyResult & { perSchool: Record<string, TidyResult> };
+
 type Thresholds = { autoReadDays: number; expireDays: number };
 
 export function cutoffs(now: Date = new Date(), t: Thresholds = { autoReadDays: AUTO_READ_AFTER_DAYS, expireDays: EXPIRE_READ_AFTER_DAYS }) {
@@ -123,8 +131,22 @@ export async function tidyNotificationsFor(userId: string, now: Date = new Date(
   return { autoRead, expired };
 }
 
-/** Everyone's, for the script. The same buckets with no user clause. */
-export async function tidyAllNotifications(now: Date = new Date()): Promise<TidyResult> {
+/**
+ * Everyone's, for the script. The same buckets with no user clause — and the
+ * work counted PER SCHOOL before it is done, so /root/jobs/schools can say
+ * which schools the night's run actually touched. The count and the write are
+ * two statements, not one transaction: a row arriving between them is missed
+ * by the log line and caught by tomorrow's run, which is the right trade for
+ * a nightly job whose numbers are a report, not a ledger.
+ *
+ * `onlyUserIds` exists for tests alone — the digest's `onlyParentUserIds`
+ * precedent: the cron tidies everyone; a test tidies its own fixtures only.
+ */
+export async function tidyAllNotifications(
+  now: Date = new Date(),
+  opts: { onlyUserIds?: string[] } = {},
+): Promise<TidyAllResult> {
+  const userWhere = opts.onlyUserIds ? { userId: { in: opts.onlyUserIds } } : {};
   const custom = await customSchools();
   const customIds = custom.map((c) => c.id);
   const buckets: { schoolWhere: object; t: Thresholds }[] = [
@@ -133,16 +155,36 @@ export async function tidyAllNotifications(now: Date = new Date()): Promise<Tidy
   ];
   let expired = 0;
   let autoRead = 0;
+  const perSchool: Record<string, TidyResult> = {};
+  const add = (schoolId: string | null, key: keyof TidyResult, n: number) => {
+    if (!schoolId || n === 0) return;
+    const row = (perSchool[schoolId] ??= { autoRead: 0, expired: 0 });
+    row[key] += n;
+  };
   for (const bucket of buckets) {
     const { autoReadBefore, expireBefore } = cutoffs(now, bucket.t);
+    const [oldBySchool, staleBySchool] = await Promise.all([
+      db.notification.groupBy({
+        by: ["schoolId"],
+        where: { ...userWhere, readAt: { not: null }, createdAt: { lt: expireBefore }, ...bucket.schoolWhere },
+        _count: { _all: true },
+      }),
+      db.notification.groupBy({
+        by: ["schoolId"],
+        where: { ...userWhere, readAt: null, createdAt: { lt: autoReadBefore }, ...bucket.schoolWhere },
+        _count: { _all: true },
+      }),
+    ]);
+    for (const row of oldBySchool) add(row.schoolId, "expired", row._count._all);
+    for (const row of staleBySchool) add(row.schoolId, "autoRead", row._count._all);
     expired += (
-      await db.notification.deleteMany({ where: { readAt: { not: null }, createdAt: { lt: expireBefore }, ...bucket.schoolWhere } })
+      await db.notification.deleteMany({ where: { ...userWhere, readAt: { not: null }, createdAt: { lt: expireBefore }, ...bucket.schoolWhere } })
     ).count;
     autoRead += (
-      await db.notification.updateMany({ where: { readAt: null, createdAt: { lt: autoReadBefore }, ...bucket.schoolWhere }, data: { readAt: now } })
+      await db.notification.updateMany({ where: { ...userWhere, readAt: null, createdAt: { lt: autoReadBefore }, ...bucket.schoolWhere }, data: { readAt: now } })
     ).count;
   }
-  return { autoRead, expired };
+  return { autoRead, expired, perSchool };
 }
 
 

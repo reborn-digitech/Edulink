@@ -13,12 +13,13 @@ import { PrismaClient } from "@prisma/client";
 const db = new PrismaClient();
 const calls: string[] = [];
 let fail = false;
+let perSchool: Record<string, Record<string, number>> | undefined;
 
 vi.mock("@/lib/notification-housekeeping", () => ({
   tidyAllNotifications: async () => {
     calls.push("tidy");
     if (fail) throw new Error("boom");
-    return { autoRead: 3, expired: 1 };
+    return { autoRead: 3, expired: 1, perSchool };
   },
 }));
 
@@ -47,6 +48,20 @@ describe("running a job", () => {
     expect(row.finishedAt).not.toBeNull();
     expect(JSON.parse(row.summary)).toEqual({ autoRead: 3, expired: 1 });
     expect(row.host).toBeTruthy();
+  });
+
+  it("a run's per-school story is stored inside the summary, and only when there is one", async () => {
+    const { runJob } = await import("@/lib/jobs");
+    perSchool = { "school-a": { autoRead: 2 }, "school-b": { autoRead: 1, expired: 1 } };
+    const out = track(await runJob("notifications:tidy"));
+    perSchool = undefined;
+    expect(out.status).toBe("done");
+    const row = await db.jobRun.findFirstOrThrow({ where: { job: "notifications:tidy" }, orderBy: { startedAt: "desc" } });
+    expect(JSON.parse(row.summary)).toEqual({
+      autoRead: 3,
+      expired: 1,
+      perSchool: { "school-a": { autoRead: 2 }, "school-b": { autoRead: 1, expired: 1 } },
+    });
   });
 
   it("⚠ a failure is recorded and reported, and does not throw", async () => {
