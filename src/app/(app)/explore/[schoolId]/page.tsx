@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { ArrowSquareOutIcon, BriefcaseIcon } from "@phosphor-icons/react/ssr";
+import { ArrowSquareOutIcon, BriefcaseIcon, MegaphoneIcon, SealCheckIcon, TrophyIcon } from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
 import { readSchoolProfile } from "@/lib/school-profile";
 import { findMyOpenEnquiry } from "@/lib/enquiries";
@@ -48,6 +48,12 @@ export default async function SchoolProfilePage({
       <div>
         <div className="flex flex-wrap items-center gap-2">
           <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{school.name}</h1>
+          {school.verified && (
+            <Badge tone="accent" size="sm">
+              <SealCheckIcon weight="fill" className="mr-1 inline size-3" />
+              {t("explore.verifiedBadge")}
+            </Badge>
+          )}
           {school.ours && (
             <Badge tone="info" size="sm">
               {t("explore.yourSchool")}
@@ -56,6 +62,21 @@ export default async function SchoolProfilePage({
         </div>
         {place && <p className="mt-1 text-sm text-fg-muted">{place}</p>}
       </div>
+
+      {/* The prospectus numbers — counts and only counts; see school-profile.ts. */}
+      <dl className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+        {[
+          [t("explore.metricPupils"), school.metrics.pupils],
+          [t("explore.metricTeachers"), school.metrics.teachers],
+          [t("explore.metricClasses"), school.metrics.classes],
+          [t("explore.metricSince"), school.sinceYear],
+        ].map(([label, value]) => (
+          <div key={String(label)} className="rounded-[--radius-md] border border-border bg-surface px-3 py-2">
+            <dt className="text-xs uppercase tracking-wide text-fg-muted">{label}</dt>
+            <dd className="text-lg font-bold tabular-nums text-fg">{value}</dd>
+          </div>
+        ))}
+      </dl>
 
       <Card>
         <CardBody className="space-y-2 py-4">
@@ -85,6 +106,55 @@ export default async function SchoolProfilePage({
           </div>
         </CardBody>
       </Card>
+
+      {school.achievements.length > 0 && (
+        <Card>
+          <CardBody className="space-y-2 py-4">
+            <h2 className="flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-fg-muted">
+              <TrophyIcon weight="duotone" className="size-4" aria-hidden="true" />
+              {t("explore.achievementsTitle")}
+            </h2>
+            <ul className="space-y-1.5">
+              {school.achievements.map((a) => (
+                <li key={a.competitionTitle} className="flex flex-wrap items-baseline justify-between gap-2 text-sm">
+                  <span className="font-medium text-fg">{a.competitionTitle}</span>
+                  <span className="text-fg-muted">
+                    {a.bestRank !== null && t("explore.bestPlace", { rank: a.bestRank })}
+                    {a.participants > 0 && ` · ${
+                      a.participants === 1
+                        ? t("explore.entrantsOne")
+                        : t("explore.entrantsMany", { count: a.participants })
+                    }`}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p className="text-xs text-fg-muted">{t("explore.achievementsNote")}</p>
+          </CardBody>
+        </Card>
+      )}
+
+      {school.highlights.length > 0 && (
+        <Card>
+          <CardBody className="space-y-2 py-4">
+            <h2 className="flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-fg-muted">
+              <MegaphoneIcon weight="duotone" className="size-4" aria-hidden="true" />
+              {t("explore.highlightsTitle")}
+            </h2>
+            <ul className="space-y-1.5">
+              {school.highlights.map((post) => (
+                <li key={post.id} className="flex flex-wrap items-baseline justify-between gap-2 text-sm">
+                  <Link href={`/bulletin/${post.id}`} className="font-medium text-fg hover:underline">
+                    {post.title}
+                  </Link>
+                  <span className="text-xs text-fg-muted">{relative(post.createdAt)}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="text-xs text-fg-muted">{t("explore.highlightsNote")}</p>
+          </CardBody>
+        </Card>
+      )}
 
       {school.vacancies.length > 0 && (
         <section className="space-y-2">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { GraduationCapIcon, SealCheckIcon, UserIcon } from "@phosphor-icons/react/ssr";
+import { BrainIcon, GraduationCapIcon, SealCheckIcon, TrophyIcon, UserIcon } from "@phosphor-icons/react/ssr";
+import Link from "next/link";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { getBadges } from "@/lib/badges";
@@ -41,6 +42,32 @@ export default async function StudentProfilePage() {
 
   const badges = await getBadges(ctx.schoolId, ctx.membershipId, membership.school.timezone);
   const earned = badges.filter((b) => b.earned);
+
+  // What the practising has added up to, and where they have competed —
+  // numbers and titles only, the same aggregates their other pages show.
+  const [topicsPractised, topicsCompleted, competitionEntries] = await Promise.all([
+    db.quizMastery.count({
+      where: { schoolId: ctx.schoolId, studentMembershipId: ctx.membershipId, seenCount: { gt: 0 } },
+    }),
+    db.quizMastery.count({
+      where: {
+        schoolId: ctx.schoolId,
+        studentMembershipId: ctx.membershipId,
+        cleanCompletionAt: { not: null },
+      },
+    }),
+    db.competitionEntry.findMany({
+      where: { studentMembershipId: ctx.membershipId },
+      select: {
+        id: true,
+        status: true,
+        rank: true,
+        competition: { select: { title: true } },
+      },
+      orderBy: { createdAt: "desc" },
+      take: 3,
+    }),
+  ]);
 
   // A self-joined student's "email" is an internal handle, not a real address.
   const handle = membership.user.email?.endsWith("@edulink.local")
@@ -86,6 +113,62 @@ export default async function StudentProfilePage() {
           />
           <CardBody>
             <SchoolRecordList records={previous} t={t} />
+          </CardBody>
+        </Card>
+      )}
+
+      {topicsPractised > 0 && (
+        <Card>
+          <CardHeader
+            icon={<BrainIcon weight="duotone" className="size-5" />}
+            title={t("student.practiceCardTitle")}
+            description={t("student.practiceCardBody")}
+          />
+          <CardBody>
+            <dl className="grid grid-cols-2 gap-2">
+              {[
+                [t("student.topicsPractised"), topicsPractised],
+                [t("student.topicsCompleted"), topicsCompleted],
+              ].map(([label, value]) => (
+                <div key={String(label)} className="rounded-[--radius-md] border border-border bg-surface px-3 py-2">
+                  <dt className="text-xs uppercase tracking-wide text-fg-muted">{label}</dt>
+                  <dd className="text-lg font-bold tabular-nums text-fg">{value}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="mt-2 text-sm">
+              <Link href="/student/practice" className="font-medium text-accent hover:underline">
+                {t("student.keepPractising")}
+              </Link>
+            </p>
+          </CardBody>
+        </Card>
+      )}
+
+      {competitionEntries.length > 0 && (
+        <Card>
+          <CardHeader
+            icon={<TrophyIcon weight="duotone" className="size-5" />}
+            title={t("student.competitionsCardTitle")}
+            description={t("student.competitionsCardBody")}
+          />
+          <CardBody>
+            <ul className="space-y-1.5">
+              {competitionEntries.map((entry) => (
+                <li key={entry.id} className="flex flex-wrap items-baseline justify-between gap-2 text-sm">
+                  <span className="font-medium text-fg">{entry.competition.title}</span>
+                  <span className="text-fg-muted">
+                    {entry.rank !== null
+                      ? t("student.placedRank", { rank: entry.rank })
+                      : entry.status === "SUBMITTED"
+                        ? t("student.entrySubmitted")
+                        : entry.status === "RESULTS"
+                          ? t("student.entryResults")
+                          : t("student.entryRegistered")}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </CardBody>
         </Card>
       )}

@@ -807,6 +807,48 @@ export type OwnProfile = {
  * to tap. What made it survive is that the sweep only visits URLs somebody
  * thought to list; a link is now checked against the routes that exist.
  */
+/**
+ * What the work has added up to — the expert's own numbers, from rows their
+ * self clauses already open: their bookings (`expertUserId`), their profile,
+ * their slots. Counts only; the schools' names stay behind their fences.
+ */
+export async function ownImpact(session: ActiveContext): Promise<{
+  sessionsDone: number;
+  sessionsBooked: number;
+  schoolsServed: number;
+  activeMentorships: number;
+  mentorCapacity: number | null;
+  upcomingSlots: number;
+}> {
+  if (session.role !== "EXPERT") throw new AccessError("access.notAnExpert");
+  const profile = await db.expertProfile.findUnique({
+    where: { userId: session.user.id },
+    select: { id: true, activeMentorships: true, mentorCapacity: true },
+  });
+  if (!profile) throw new AccessError("access.noExpertProfile", "NOT_FOUND");
+
+  const bookings = await db.expertBooking.findMany({
+    where: { expertUserId: session.user.id, status: { in: ["CONFIRMED", "COMPLETED"] } },
+    select: { schoolId: true, status: true },
+  });
+  const upcomingSlots = await db.expertSlot.count({
+    where: {
+      expertProfileId: profile.id,
+      startsAt: { gt: new Date() },
+      cancelledAt: null,
+      bookedAt: null,
+    },
+  });
+  return {
+    sessionsDone: bookings.filter((b) => b.status === "COMPLETED").length,
+    sessionsBooked: bookings.filter((b) => b.status === "CONFIRMED").length,
+    schoolsServed: new Set(bookings.map((b) => b.schoolId)).size,
+    activeMentorships: profile.activeMentorships,
+    mentorCapacity: profile.mentorCapacity,
+    upcomingSlots,
+  };
+}
+
 export async function getOwnProfile(session: ActiveContext): Promise<OwnProfile> {
   if (session.role !== "EXPERT") throw new AccessError("access.notAnExpert");
 

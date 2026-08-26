@@ -46,6 +46,7 @@ type Draft = {
   contactEmail: string;
   contactPhone: string;
   website: string;
+  about: string;
   city: string;
   country: string;
   gradeLow: string;
@@ -60,6 +61,7 @@ const EMPTY: Draft = {
   contactEmail: "",
   contactPhone: "",
   website: "",
+  about: "",
   city: "",
   country: "",
   gradeLow: "",
@@ -202,6 +204,7 @@ export function RegisterWizard() {
           contactEmail: draft.contactEmail.trim().toLowerCase(),
           contactPhone: draft.contactPhone.trim(),
           website: draft.website.trim(),
+          about: draft.about.trim(),
           city: draft.city.trim(),
           country: draft.country.trim(),
           gradeLow: draft.gradeLow.trim(),
@@ -391,6 +394,20 @@ export function RegisterWizard() {
               error={errors.website}
               onChange={(e) => set("website", e.target.value)}
             />
+
+            <label className="block text-sm font-medium text-fg">
+              {t("register.about")}
+              <textarea
+                value={draft.about}
+                onChange={(e) => set("about", e.target.value)}
+                rows={3}
+                placeholder={t("register.aboutHint")}
+                className="mt-1 w-full rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg"
+              />
+              <span className="mt-1 block text-xs font-normal text-fg-muted">
+                {t("register.aboutWhy")}
+              </span>
+            </label>
 
             <div className="grid gap-5 sm:grid-cols-2">
               <TextField

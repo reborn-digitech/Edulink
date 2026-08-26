@@ -94,6 +94,29 @@ export const en = {
     postedAgo: "Posted {when}",
   },
   explore: {
+    searchPlaceholder: "Search by name or city",
+    countryFilter: "Country",
+    regionFilter: "State or region",
+    anyCountry: "Any country",
+    anyRegion: "Any state",
+    filterCta: "Filter",
+    clearFilters: "Clear",
+    noMatchesTitle: "No schools match",
+    noMatchesBody: "Loosen the filters or search for something else — new schools publish all the time.",
+    resultsOne: "1 school",
+    resultsMany: "{count} schools",
+    verifiedBadge: "Verified",
+    metricPupils: "Pupils",
+    metricTeachers: "Teachers",
+    metricClasses: "Classes",
+    metricSince: "Since",
+    achievementsTitle: "Achievements",
+    achievementsNote: "Standings from platform competitions whose organiser switched the public leaderboard on.",
+    bestPlace: "Best place: {rank}",
+    entrantsOne: "1 entrant",
+    entrantsMany: "{count} entrants",
+    highlightsTitle: "From their noticeboard",
+    highlightsNote: "The school’s latest posts on the platform-wide feed, in its own words.",
     title: "Explore schools",
     metaTitle: "Explore schools",
     intro: "Schools on this platform that have opened their doors to enquiries. Each profile is written by the school itself.",
@@ -2518,6 +2541,9 @@ export const en = {
   },
 
   register: {
+    about: "About your school",
+    aboutHint: "A sentence or two: what you teach, in which languages, what makes the school itself.",
+    aboutWhy: "Optional — it becomes the draft of your directory profile, which you publish later from Settings.",
     metaDescription: "Set up your school on EduLink in about five minutes.",
     alreadyHaveAccount: "Already have an account?",
 
@@ -2818,6 +2844,17 @@ export const en = {
   /* A pupil's own pages                                                     */
   /* ---------------------------------------------------------------------- */
   student: {
+    practiceCardTitle: "Your practice",
+    practiceCardBody: "What the practising has added up to.",
+    topicsPractised: "Topics tried",
+    topicsCompleted: "Topics completed",
+    keepPractising: "Keep practising →",
+    competitionsCardTitle: "Your competitions",
+    competitionsCardBody: "Where you have entered, and how it went.",
+    placedRank: "Placed {rank}",
+    entrySubmitted: "Submitted",
+    entryResults: "Results out",
+    entryRegistered: "Registered",
     birthdate: "Date of birth",
     birthdateHint: "A grown-up at home needs this, with your student code, to link to you.",
     birthdateLocked: "A grown-up is linked to you, so only the school office can change this now.",
@@ -4692,6 +4729,18 @@ export const en = {
   /* halves of "up to N at a time" in different namespaces.                  */
   /* ---------------------------------------------------------------------- */
   expert: {
+    impactTitle: "Your impact",
+    impactBody: "What your time on the platform has added up to.",
+    statSessionsDone: "Sessions held",
+    statSessionsBooked: "Booked ahead",
+    statSchools: "Schools",
+    statMentees: "Mentees",
+    getBookedTitle: "Get booked",
+    getBookedBody: "What a school weighs before booking you. Ticked lines are done.",
+    stepBio: "Write a short bio — who you are and what you bring.",
+    stepSpecialisms: "Add your specialisms so the right school finds you.",
+    stepSlots: "Offer some availability — a school books a time, not a promise.",
+    stepPublished: "Get listed — the platform team publishes checked profiles.",
     /* -- the expert's own bookings -- */
     bookings: "Bookings",
     bookingsBody:
@@ -4910,6 +4959,9 @@ export const en = {
   /* a component, because `metadata` is a static export.                     */
   /* ---------------------------------------------------------------------- */
   reviews: {
+    statClasses: "Classes",
+    statPupils: "Pupils",
+    statSince: "Since",
     title: "Teacher reviews",
     intro:
       "Ask students or parents to rate teachers on a fixed questionnaire. Answers are anonymous — everyone only ever sees averages, never who said what.",

@@ -5,6 +5,7 @@ import {
   updateSchoolProfile,
   setProfilePublished,
   listDirectory,
+  directoryPlaces,
   readSchoolProfile,
 } from "@/lib/school-profile";
 import { createPosting, closePosting, listBoard, readPosting } from "@/lib/vacancies";
@@ -174,6 +175,39 @@ describe("⚠ the directory opens by the school's own act", () => {
     // And the words on record were not half-applied.
     const school = await db.school.findUniqueOrThrow({ where: { id: riversideId } });
     expect(school.admissionsContactMembershipId).toBe(contactMembershipId);
+  });
+
+  it("narrows by place and words, and offers only places that exist", async () => {
+    const byName = await listDirectory(oakfieldAdmin, { q: "riverside" });
+    expect(byName.some((s) => s.schoolId === riversideId)).toBe(true);
+    const byNonsense = await listDirectory(oakfieldAdmin, { q: "zzz-no-such-school" });
+    expect(byNonsense).toHaveLength(0);
+
+    const riverside = await db.school.findUniqueOrThrow({
+      where: { id: riversideId },
+      select: { country: true },
+    });
+    if (riverside.country) {
+      const byCountry = await listDirectory(oakfieldAdmin, { country: riverside.country });
+      expect(byCountry.some((s) => s.schoolId === riversideId)).toBe(true);
+      const elsewhere = await listDirectory(oakfieldAdmin, { country: "ZZ Nowhere" });
+      expect(elsewhere.some((s) => s.schoolId === riversideId)).toBe(false);
+      const places = await directoryPlaces();
+      expect(places.countries).toContain(riverside.country);
+    }
+  });
+
+  it("the profile carries the prospectus numbers — counts, a year, a verified flag", async () => {
+    const profile = await readSchoolProfile(oakfieldAdmin, riversideId);
+    expect(profile).not.toBeNull();
+    // Riverside's seed has pupils, teachers and a class; the exact numbers
+    // belong to the seed, the SHAPE and the floor belong to this test.
+    expect(profile!.metrics.pupils).toBeGreaterThan(0);
+    expect(profile!.metrics.teachers).toBeGreaterThan(0);
+    expect(profile!.metrics.classes).toBeGreaterThan(0);
+    expect(profile!.sinceYear).toBeGreaterThanOrEqual(2020);
+    expect(Array.isArray(profile!.achievements)).toBe(true);
+    expect(Array.isArray(profile!.highlights)).toBe(true);
   });
 
   it("offers each person once in the contact picker, however many posts they hold", async () => {

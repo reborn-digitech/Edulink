@@ -68,6 +68,10 @@ export const schoolDetailsSchema = z.object({
   country: trimmed(0, 100).optional(),
   gradeLow: trimmed(0, 12).optional(),
   gradeHigh: trimmed(0, 12).optional(),
+  // Seeds the directory profile (school-profile.ts). Optional at
+  // registration on purpose: a founder mid-signup should not be made to
+  // write marketing copy before they have a school.
+  about: trimmed(0, 4000).optional(),
   timezone: timeZoneSchema.default("UTC"),
   brandPrimary: hexColorSchema.optional().or(z.literal("")),
 });

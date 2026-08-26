@@ -40,6 +40,20 @@ export default async function TeacherProfilePage() {
   });
 
   const subjects = readJsonArray<string>(membership.subjects);
+  // The numbers a teacher's year is made of: the classes on their door, the
+  // children in them, and how long they have been on this staff.
+  const classIds = membership.classTeachers.map((row) => row.classId);
+  const pupilsTaught =
+    classIds.length > 0
+      ? await db.enrollment
+          .findMany({
+            where: { classId: { in: classIds }, status: "ACTIVE" },
+            select: { studentMembershipId: true },
+            distinct: ["studentMembershipId"],
+          })
+          .then((rows) => rows.length)
+      : 0;
+  const sinceYear = membership.joinedAt.getFullYear();
   const [agg, record, balance] = await Promise.all([
     teacherReviewAggregate(ctx, ctx.membershipId!),
     staffRecordFor(ctx, ctx.membershipId!),
@@ -69,6 +83,19 @@ export default async function TeacherProfilePage() {
             : ""}
         </p>
       </div>
+
+      <dl className="grid grid-cols-3 gap-2">
+        {[
+          [t("reviews.statClasses"), membership.classTeachers.length],
+          [t("reviews.statPupils"), pupilsTaught],
+          [t("reviews.statSince"), sinceYear],
+        ].map(([label, value]) => (
+          <div key={String(label)} className="rounded-[--radius-md] border border-border bg-surface px-3 py-2">
+            <dt className="text-xs uppercase tracking-wide text-fg-muted">{label}</dt>
+            <dd className="text-lg font-bold tabular-nums text-fg">{value}</dd>
+          </div>
+        ))}
+      </dl>
 
       <Card>
         <CardBody>

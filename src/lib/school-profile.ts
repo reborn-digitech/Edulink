@@ -3,6 +3,7 @@ import { db } from "./db";
 import { audit } from "./audit";
 import { AccessError } from "./tenancy";
 import { CONTACTABLE_ROLES } from "./constants";
+import { forSchool } from "./tenant-context";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "./i18n/dictionary";
 
@@ -181,10 +182,33 @@ export type DirectoryEntry = {
  * RLS clause already enforces — deliberately, so the list means the same
  * thing even read by a member whose own (unpublished) school the tenant
  * clause would otherwise let through.
+ *
+ * FILTERS ARE PLACE AND WORDS, nothing cleverer: a parent choosing a school
+ * is choosing somewhere the child can physically go, so country and region
+ * narrow the list, and the free-text search covers name and city. The
+ * filter options themselves come from the published set (see
+ * `directoryPlaces`), so the country dropdown never offers an empty page.
  */
-export async function listDirectory(ctx: ActiveContext): Promise<DirectoryEntry[]> {
+export async function listDirectory(
+  ctx: ActiveContext,
+  filters: { q?: string; country?: string; region?: string } = {},
+): Promise<DirectoryEntry[]> {
+  const q = filters.q?.trim();
   const rows = await db.school.findMany({
-    where: { profilePublishedAt: { not: null }, removedAt: null },
+    where: {
+      profilePublishedAt: { not: null },
+      removedAt: null,
+      ...(filters.country ? { country: filters.country } : {}),
+      ...(filters.region ? { region: filters.region } : {}),
+      ...(q
+        ? {
+            OR: [
+              { name: { contains: q, mode: "insensitive" } },
+              { city: { contains: q, mode: "insensitive" } },
+            ],
+          }
+        : {}),
+    },
     select: {
       id: true,
       name: true,
@@ -215,6 +239,27 @@ export async function listDirectory(ctx: ActiveContext): Promise<DirectoryEntry[
   }));
 }
 
+/** The filter options: where the published schools actually are. */
+export async function directoryPlaces(): Promise<{
+  countries: string[];
+  regionsByCountry: Record<string, string[]>;
+}> {
+  const rows = await db.school.findMany({
+    where: { profilePublishedAt: { not: null }, removedAt: null },
+    select: { country: true, region: true },
+  });
+  const countries = [...new Set(rows.map((r) => r.country).filter((c): c is string => Boolean(c)))].sort();
+  const regionsByCountry: Record<string, string[]> = {};
+  for (const row of rows) {
+    if (!row.country || !row.region) continue;
+    (regionsByCountry[row.country] ??= []).push(row.region);
+  }
+  for (const key of Object.keys(regionsByCountry)) {
+    regionsByCountry[key] = [...new Set(regionsByCountry[key])].sort();
+  }
+  return { countries, regionsByCountry };
+}
+
 export type SchoolProfile = DirectoryEntry & {
   addressLine: string | null;
   postalCode: string | null;
@@ -222,6 +267,30 @@ export type SchoolProfile = DirectoryEntry & {
   contactEmail: string;
   contactPhone: string | null;
   published: boolean;
+  verified: boolean;
+  /** The year the school joined the platform. */
+  sinceYear: number;
+  /**
+   * THE PROSPECTUS NUMBERS — counts and only counts, computed by the server
+   * under the school's own binding (`forSchool`) because Membership rows
+   * correctly never cross the boundary. What a paper prospectus prints:
+   * how many pupils, how many teachers, how many classes. No name, no id,
+   * no row of any person leaves the fence — the CompetitionStanding
+   * precedent, "what crosses is a school, not a child."
+   */
+  metrics: { pupils: number; teachers: number; classes: number };
+  /**
+   * Platform-competition standings whose organiser switched the leaderboard
+   * on — ALREADY readable across schools by the standing policy; this only
+   * surfaces on the profile what the competition pages could always show.
+   */
+  achievements: { competitionTitle: string; bestRank: number | null; participants: number }[];
+  /**
+   * The school's own APPROVED GLOBAL posts — the three latest things it
+   * chose to say to every school. Readable across the boundary by the
+   * global feed's own clause; the profile just quotes the noticeboard.
+   */
+  highlights: { id: string; title: string; category: string; createdAt: Date }[];
   /** Whether THIS reader may open an admissions enquiry here. */
   canEnquire: boolean;
   vacancies: { id: string; title: string; employmentType: string; createdAt: Date }[];
@@ -262,6 +331,8 @@ export async function readSchoolProfile(
       gradeHigh: true,
       profileAbout: true,
       profilePublishedAt: true,
+      verifiedAt: true,
+      createdAt: true,
       jobPostings: {
         where: { status: "OPEN" },
         select: { id: true, title: true, employmentType: true, createdAt: true },
@@ -270,6 +341,40 @@ export async function readSchoolProfile(
     },
   });
   if (!school) return null;
+
+  // Counts under the school's own binding — see the note on `metrics`.
+  const metrics = await forSchool(schoolId, async () => {
+    const [pupils, teachers, classes] = await Promise.all([
+      db.membership.count({ where: { schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null } }),
+      db.membership.count({
+        where: { schoolId, role: { in: ["TEACHER", "PRINCIPAL"] }, status: "ACTIVE", leftAt: null },
+      }),
+      db.class.count({ where: { schoolId, archivedAt: null } }),
+    ]);
+    return { pupils, teachers, classes };
+  });
+
+  // Standings cross on their own policy (board on, platform competition);
+  // the reader's session sees exactly what that clause admits, so no
+  // widening happens here — an empty list for a school with the boards off.
+  const standings = await db.competitionStanding.findMany({
+    where: { schoolId, bestRank: { not: null } },
+    select: {
+      bestRank: true,
+      entrants: true,
+      competition: { select: { title: true } },
+    },
+    orderBy: { bestRank: "asc" },
+    take: 3,
+  });
+
+  const highlights = await db.post.findMany({
+    where: { schoolId, scope: "GLOBAL", status: "APPROVED" },
+    select: { id: true, title: true, category: true, createdAt: true },
+    orderBy: { createdAt: "desc" },
+    take: 3,
+  });
+
   return {
     schoolId: school.id,
     name: school.name,
@@ -288,6 +393,15 @@ export async function readSchoolProfile(
     openVacancies: school.jobPostings.length,
     ours: school.id === ctx.schoolId,
     published: Boolean(school.profilePublishedAt),
+    verified: Boolean(school.verifiedAt),
+    sinceYear: school.createdAt.getFullYear(),
+    metrics,
+    achievements: standings.map((row) => ({
+      competitionTitle: row.competition.title,
+      bestRank: row.bestRank,
+      participants: row.entrants,
+    })),
+    highlights,
     // A parent may knock only on a door that is open — published, and not
     // their own school's (their own school already has /remarks for them).
     canEnquire: ctx.role === "PARENT" && Boolean(school.profilePublishedAt),

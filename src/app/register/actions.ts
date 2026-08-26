@@ -112,6 +112,9 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
           country: school.country || null,
           gradeLow: school.gradeLow || null,
           gradeHigh: school.gradeHigh || null,
+          // The words become the directory profile's draft; publishing stays
+          // a deliberate later act behind the checklist's directory step.
+          profileAbout: school.about || "",
           timezone: school.timezone,
           brandPrimary: school.brandPrimary || null,
           onboardingState: writeJson({ createdSchool: true }),
