@@ -377,6 +377,8 @@ type RemovalTx = {
   membership: { updateMany(args: unknown): Promise<unknown> };
   enrollment: { updateMany(args: unknown): Promise<unknown> };
   guardianship: { updateMany(args: unknown): Promise<unknown> };
+  jobPosting: { updateMany(args: unknown): Promise<unknown> };
+  enquiry: { updateMany(args: unknown): Promise<unknown> };
 };
 
 type RestoreTx = {
@@ -516,6 +518,25 @@ export async function removeSchool(
       await t.guardianship.updateMany({
         where: { studentSchoolId: schoolId, relation: "SCHOOL", status: "ACTIVE" },
         data: { status: "REVOKED" },
+      });
+
+      // The school leaves the marketplace with the same stamp. This is not
+      // just tidiness: JobPosting's global-read clause is `status = 'OPEN'`
+      // and DELIBERATELY does not check the school (a policy pair that
+      // reference each other is infinite recursion — see gen-rls.ts), so
+      // closing here is what actually takes a removed school's vacancies off
+      // every teacher's board. Enquiries close with the same stamp: the desk
+      // that would have answered them has just stopped existing, and an
+      // OPEN thread nobody can ever answer is a promise the platform would
+      // be making on behalf of nobody. Restore reopens neither — a vacancy
+      // is timely, and a school that returns can post and answer afresh.
+      await t.jobPosting.updateMany({
+        where: { schoolId, status: "OPEN" },
+        data: { status: "CLOSED", closedAt: leftAt },
+      });
+      await t.enquiry.updateMany({
+        where: { schoolId, status: "OPEN" },
+        data: { status: "CLOSED", closedAt: leftAt },
       });
     });
 

@@ -1359,6 +1359,13 @@ async function leaveAndPrincipal(schoolId: string) {
     await check(head, "/admin/classes/new", 307, "⚠ …nor create classes");
     await check(head, "/admin/promotion", 307, "⚠ …nor move the school up a year");
     await check(head, "/admin/intake", 307, "⚠ …nor admit pupils from a list");
+    // Hiring is the principal's desk alongside the admin's; the directory
+    // profile stays the admin's alone.
+    await check(head, "/admin/vacancies", 200, "…and the principal runs the vacancy desk");
+    await check(head, "/admin/vacancies/new", 200, "…including posting one");
+    await check(head, "/vacancies", 200, "…and reads the platform board");
+    await check(head, "/enquiries", 200, "…and the school's enquiries");
+    await check(head, "/admin/directory", 307, "⚠ …but does not edit the directory profile");
 
     const anyClass = await db.class.findFirst({
       where: { schoolId, archivedAt: null },
@@ -1877,6 +1884,8 @@ async function main() {
     "/admin/settings", "/admin/calendar", "/bulletin", "/bulletin/global", "/experts", "/mentoring", "/bulletin?filter=mine", "/bulletin?filter=pending",
     "/bulletin/new", "/notifications", "/notifications?tab=unread", "/account", "/account/merge", "/switch",
     "/remarks", "/admin/people/export",
+    // Cross-school outreach: the directory desk, the vacancy desk, the board.
+    "/admin/directory", "/admin/vacancies", "/admin/vacancies/new", "/vacancies", "/explore", "/enquiries",
   ]) {
     await check(admin, p);
   }
@@ -1890,6 +1899,8 @@ async function main() {
     "/teacher", "/teacher/attendance", "/teacher/assignments", "/teacher/assignments/new",
     "/teacher/classes", "/bulletin", "/bulletin/global", "/experts", "/mentoring", "/bulletin/new", "/remarks", "/remarks/new",
     "/notifications", "/account", "/account/merge", "/switch", "/mentoring",
+    // A teacher browses the platform-wide board and their own enquiries.
+    "/vacancies", "/explore", "/enquiries",
   ]) {
     await check(teacher, p);
   }
@@ -1935,6 +1946,8 @@ async function main() {
     "/notifications", "/account", "/account/merge", "/switch", "/record",
     // A guardian can now START a conversation, not only reply to one.
     "/remarks/new",
+    // A parent explores other schools and keeps their enquiry threads.
+    "/explore", "/enquiries",
   ]) {
     await check(parent, p);
   }
@@ -1951,6 +1964,12 @@ async function main() {
   if (thread) await check(otherAdmin, `/remarks/${thread.id}`, 404, "other school's remark thread");
   await check(teacher, "/admin/people/export", 403, "teacher on the admin export");
   await check(student, "/admin/people", 307, "student on an admin page");
+  // Outreach edges: the board is staff's, the directory desk the admin's.
+  await check(student, "/vacancies", 307, "⚠ a pupil is not on the job market");
+  await check(parent, "/vacancies", 307, "⚠ nor is a guardian");
+  await check(student, "/explore", 200, "a pupil may read the public directory");
+  await check(teacher, "/admin/directory", 307, "⚠ a teacher does not run the directory profile");
+  await check(teacher, "/admin/vacancies", 307, "⚠ …nor the vacancy desk");
 
   await reportCards(riverside.id);
   await leaveAndPrincipal(riverside.id);

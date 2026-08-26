@@ -93,6 +93,22 @@ const SELF_READABLE: Record<string, string> = {
   // to show it to somebody. Keyed on their user id it opens theirs and nobody
   // else's, read-only like every other clause here.
   SchoolRecord: "studentUserId",
+  // The opener of a cross-school enquiry. The row lives in the TARGET
+  // school's tenant so the school can answer it; this is how the parent or
+  // teacher who opened it keeps reading it — and how their enquiries page
+  // can list them before any school of theirs is known.
+  Enquiry: "fromUserId",
+  /**
+   * A NOTIFICATION BELONGS TO ITS PERSON. It was tenant-only for as long as
+   * every notification's school was one of its reader's — and the enquiry
+   * desk broke that comfortable accident: "the school replied to your
+   * enquiry" carries the TARGET school's id, and a parent exploring a school
+   * their child does not attend has no binding there, so the one row telling
+   * them they were answered was unreadable to exactly them. Read-only, keyed
+   * on their own user id, like every clause in this map — writes stay
+   * tenant-scoped, so nobody can mint a notification into another school.
+   */
+  Notification: "userId",
 };
 
 /**
@@ -404,6 +420,53 @@ const GLOBALLY_READABLE: Record<string, string> = {
               AND c."organizerSchoolId" IS NULL
               AND c."leaderboardEnabled" = true
          )`,
+
+  /**
+   * THE DIRECTORY, AND THE JOB BOARD BEHIND IT. A school becomes readable
+   * across the platform by its own act and by nothing else: publishing its
+   * profile (an explicit admin decision — see school-profile.ts) or holding
+   * an open vacancy. Both arms sit under `removedAt IS NULL`, so a school
+   * taken off the installation vanishes from the directory with it.
+   *
+   * WHAT CROSSES IS THE PROSPECTUS, NOT THE SCHOOL. The School row holds a
+   * name, an address, a website, a grade range and the profile text — the
+   * things a school prints on paper and hands to strangers. Its people, its
+   * classes and everything else remain ordinary school-scoped rows this
+   * clause cannot reach.
+   *
+   * THE SUBQUERY IS ONE-WAY ON PURPOSE. JobPosting's own global clause below
+   * is `status = 'OPEN'` and deliberately does not join School back — a
+   * policy pair that each reference the other is infinite recursion in
+   * Postgres. The removal machinery closes a removed school's postings
+   * instead (superuser.ts), which keeps both clauses honest without the
+   * cycle.
+   */
+  School: `"removedAt" IS NULL
+          AND ("profilePublishedAt" IS NOT NULL
+           OR EXISTS (
+           SELECT 1 FROM "JobPosting" j
+            WHERE j."schoolId" = "School"."id"
+              AND j."status" = 'OPEN'))`,
+  /**
+   * An open vacancy is the marketplace, like an expert's slot: the board only
+   * works if every school's teachers see the same one. See the School clause
+   * above for why this does not join School — removal CLOSES postings rather
+   * than a policy filtering them.
+   */
+  JobPosting: `"status" = 'OPEN'`,
+  /**
+   * NOT GLOBAL AT ALL — the opener of an enquiry reading the school's
+   * replies. The Enquiry row itself crosses through SELF_READABLE on
+   * `fromUserId`; its messages have no user column of the opener's to key
+   * on, so the predicate walks up to the parent enquiry. Read only, like
+   * everything in this map: the opener REPLYING is a separate INSERT policy
+   * below, pinned to their own authorship on their own enquiry.
+   */
+  EnquiryMessage: `current_setting('app.user_id', true) <> ''
+          AND EXISTS (
+           SELECT 1 FROM "Enquiry" e
+            WHERE e."id" = "EnquiryMessage"."enquiryId"
+              AND e."fromUserId" = current_setting('app.user_id', true))`,
 };
 
 /**
@@ -762,6 +825,76 @@ function generate(): string {
           `     AND ${globalPost});`,
         );
       }
+    }
+
+    /**
+     * THE OTHER TWO CROSS-TENANT WRITES: opening an enquiry with a school
+     * that invited it, and replying on your own thread. Pinned the same way
+     * the global-feed writes are — to the acting user, and to the target's
+     * own opt-in being live at the moment of writing:
+     *
+     *   - An ADMISSION enquiry requires the school's profile to be published
+     *     (and the school not removed). Unpublishing closes the door to NEW
+     *     enquiries in the database, not in a page's `if`.
+     *   - A JOB enquiry requires the named posting to be OPEN and to belong
+     *     to the school the row claims — without that equality a crafted
+     *     insert could ride any school's open vacancy into a different
+     *     school's tenant.
+     *   - A reply requires the parent enquiry to be the writer's OWN and
+     *     still OPEN, and to sit in the same school as the message claims.
+     *     The school side needs no policy here: their replies are ordinary
+     *     tenant-scoped writes.
+     *
+     * INSERT only. No cross-tenant UPDATE or DELETE exists for either table:
+     * a sent enquiry is the school's to answer, close and keep — the sender
+     * cannot rewrite what the school has already read, exactly as a Comment
+     * cannot be unsaid.
+     */
+    if (table === "Enquiry") {
+      lines.push(
+        ``,
+        `  -- A cross-school enquiry: your own row, against a school that has`,
+        `  -- opened the door (published profile, or the open vacancy named on`,
+        `  -- the row). See the note in scripts/gen-rls.ts above the Enquiry`,
+        `  -- write policy.`,
+        `DROP POLICY IF EXISTS "${table}_outreach_insert" ON "${table}";`,
+        `CREATE POLICY "${table}_outreach_insert" ON "${table}"`,
+        `  FOR INSERT`,
+        `  WITH CHECK (current_setting('app.user_id', true) <> ''`,
+        `          AND "fromUserId" = current_setting('app.user_id', true)`,
+        `          AND (("kind" = 'ADMISSION'`,
+        `                AND "jobPostingId" IS NULL`,
+        `                AND EXISTS (`,
+        `           SELECT 1 FROM "School" s`,
+        `            WHERE s."id" = "Enquiry"."schoolId"`,
+        `              AND s."profilePublishedAt" IS NOT NULL`,
+        `              AND s."removedAt" IS NULL))`,
+        `           OR ("kind" = 'JOB'`,
+        `                AND EXISTS (`,
+        `           SELECT 1 FROM "JobPosting" j`,
+        `            WHERE j."id" = "Enquiry"."jobPostingId"`,
+        `              AND j."schoolId" = "Enquiry"."schoolId"`,
+        `              AND j."status" = 'OPEN'))));`,
+      );
+    }
+    if (table === "EnquiryMessage") {
+      lines.push(
+        ``,
+        `  -- A reply on your OWN still-open enquiry, in the school it belongs`,
+        `  -- to, signed by you. See the note in scripts/gen-rls.ts above the`,
+        `  -- Enquiry write policy.`,
+        `DROP POLICY IF EXISTS "${table}_outreach_insert" ON "${table}";`,
+        `CREATE POLICY "${table}_outreach_insert" ON "${table}"`,
+        `  FOR INSERT`,
+        `  WITH CHECK (current_setting('app.user_id', true) <> ''`,
+        `          AND "authorUserId" = current_setting('app.user_id', true)`,
+        `          AND EXISTS (`,
+        `           SELECT 1 FROM "Enquiry" e`,
+        `            WHERE e."id" = "EnquiryMessage"."enquiryId"`,
+        `              AND e."schoolId" = "EnquiryMessage"."schoolId"`,
+        `              AND e."fromUserId" = current_setting('app.user_id', true)`,
+        `              AND e."status" = 'OPEN'));`,
+      );
     }
 
     lines.push("");

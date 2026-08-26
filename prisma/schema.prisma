@@ -56,6 +56,21 @@ model School {
   timezone     String  @default("UTC") // IANA zone; all date-keys resolve against this
   locale       String  @default("en")
 
+  /// The school's face in the cross-school directory. NULL means invisible
+  /// there — publishing is an explicit admin act, never a side effect of
+  /// registering, because appearing in a list every parent on the platform
+  /// can browse is a decision the school makes, not one made for it.
+  /// Publishing REQUIRES an admissions contact (enforced in school-profile.ts):
+  /// a profile with nobody behind it invites enquiries into a void.
+  profilePublishedAt            DateTime?
+  /// The school's own words on its profile page. Plain text.
+  profileAbout                  String    @default("")
+  /// Where a parent's admissions enquiry lands: an ACTIVE ADMIN, PRINCIPAL or
+  /// TEACHER membership of this school. Named by the school, usually from the
+  /// setup checklist. SetNull so ending that person's membership can never
+  /// block ending it — the enquiry machinery falls back to the admins.
+  admissionsContactMembershipId String?
+
   // Setup checklist progress. JSON: { "inviteTeachers": true, ... }
   onboardingState String @default("{}")
 
@@ -66,7 +81,7 @@ model School {
   notifAutoReadDays Int?
   notifExpireDays   Int?
   // Privacy defaults applied to new members. JSON.
-  privacyDefaults String @default("{}")
+  privacyDefaults   String @default("{}")
 
   verifiedAt DateTime?
 
@@ -129,9 +144,14 @@ model School {
   meetingSlots         MeetingSlot[]
   meetingBookings      MeetingBooking[]
 
-  terms           Term[]
-  staffRecords    StaffRecord[]
+  admissionsContact   Membership?          @relation("AdmissionsContact", fields: [admissionsContactMembershipId], references: [id], onDelete: SetNull)
+  jobPostings         JobPosting[]
+  enquiries           Enquiry[]
+  enquiryMessages     EnquiryMessage[]
+  terms               Term[]
+  staffRecords        StaffRecord[]
   scheduledDepartures ScheduledDeparture[]
+
   @@index([code])
 }
 
@@ -231,6 +251,8 @@ model User {
   mentorMessages    MentorMessage[]
   schoolRecords     SchoolRecord[]
   operatorAccess    OperatorAccess[]
+  enquiries         Enquiry[]          @relation("EnquiryOpener")
+  enquiryMessages   EnquiryMessage[]   @relation("EnquiryMessageAuthor")
   postAcks          PostAck[]
   meetingBookings   MeetingBooking[]
 
@@ -296,6 +318,9 @@ model Membership {
   postsReviewed          Post[]               @relation("PostReviewer")
   globalPostsHidden      GlobalPostHide[]     @relation("GlobalPostHider")
   expertBookingsMade     ExpertBooking[]      @relation("ExpertBookingBooker")
+  admissionsContactFor   School[]             @relation("AdmissionsContact")
+  jobPostingsContact     JobPosting[]         @relation("JobPostingContact")
+  jobPostingsPosted      JobPosting[]         @relation("JobPostingPoster")
   expertInvitesCreated   ExpertInvite[]       @relation("ExpertInviteCreator")
   schoolRecord           SchoolRecord?
   mentorshipsAsStudent   MentorThread[]       @relation("MentorStudent")
@@ -308,12 +333,12 @@ model Membership {
   examSeriesCreated      ExamSeries[]         @relation("ExamSeriesAuthor")
   meetingSlots           MeetingSlot[]        @relation("MeetingTeacher")
   meetingsAsStudent      MeetingBooking[]     @relation("MeetingStudent")
+  staffRecord            StaffRecord?
+  scheduledDeparture     ScheduledDeparture?
 
   @@unique([userId, schoolId, role])
   @@index([schoolId, role, status])
   @@index([userId])
-  staffRecord StaffRecord?
-  scheduledDeparture ScheduledDeparture?
 }
 
 model Guardianship {
@@ -815,7 +840,7 @@ model ExamSeries {
   /// UNIT_TEST | MID_TERM | FINAL — what kind of round this is. The report
   /// card is built from these, and a reader should be told which weight of
   /// paper a mark came from without decoding the name.
-  kind       String @default("UNIT_TEST")
+  kind       String  @default("UNIT_TEST")
   /// The term this round reports into, when the school has terms.
   termId     String?
 
@@ -851,7 +876,7 @@ model ExamSlot {
   startMinute Int?
   endMinute   Int?
   pointsMilli Int // max marks, thousandths: out of 80 -> 80000
-  position    Int @default(0)
+  position    Int    @default(0)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -1101,8 +1126,8 @@ model MeetingSlot {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  school  School         @relation(fields: [schoolId], references: [id], onDelete: Cascade)
-  teacher Membership     @relation("MeetingTeacher", fields: [teacherMembershipId], references: [id], onDelete: Cascade)
+  school  School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  teacher Membership      @relation("MeetingTeacher", fields: [teacherMembershipId], references: [id], onDelete: Cascade)
   booking MeetingBooking?
 
   @@index([schoolId, teacherMembershipId, startsAt])
@@ -1499,13 +1524,13 @@ model Session {
 }
 
 model Invite {
-  id       String  @id @default(cuid())
-  schoolId String
-  role     String // TEACHER | STUDENT | ADMIN | PRINCIPAL | PARENT
-  email    String?
-  name     String?
-  classId  String?
-  subjects String? // JSON string[]
+  id                  String  @id @default(cuid())
+  schoolId            String
+  role                String // TEACHER | STUDENT | ADMIN | PRINCIPAL | PARENT
+  email               String?
+  name                String?
+  classId             String?
+  subjects            String? // JSON string[]
   /// For a PARENT invitation: the child it links to, and how. The office
   /// sends it from the pupil's directory row; accepting creates the
   /// guardianship, with consent, instead of a membership.
@@ -2596,4 +2621,130 @@ model SchoolRecord {
   @@unique([schoolId, serial])
   @@index([studentUserId])
   @@index([schoolId, leftAt])
+}
+
+// ---------------------------------------------------------------------------
+// Cross-school outreach — the directory, the job board, and the enquiries
+// both of them invite. The one corner of the schema where a person who is
+// nobody at a school writes a row into that school's tenant, and the writes
+// are pinned in scripts/gen-rls.ts exactly the way the global feed's are.
+// ---------------------------------------------------------------------------
+
+/// One vacancy a school has put on the platform-wide board.
+///
+/// GLOBALLY READABLE WHILE OPEN, like an expert's slot: the marketplace only
+/// works if every school sees the same board. The clause is `status = 'OPEN'`
+/// and DELIBERATELY does not join School — School's own global clause joins
+/// this table (a school with an open vacancy is discoverable), and a policy
+/// pair that each reference the other is infinite recursion in Postgres. So a
+/// removed school's postings are CLOSED by the removal machinery
+/// (superuser.ts) instead of being filtered by policy, and restore does not
+/// reopen them — a vacancy is timely, and the school that comes back can post
+/// it again if it is still real.
+model JobPosting {
+  id       String @id @default(cuid())
+  schoolId String
+
+  title          String
+  /// The school's own words: duties, requirements, how to apply. Plain text.
+  body           String
+  /// JSON string[] — the same subject vocabulary Membership.subjects uses, so
+  /// a teacher's profile and a vacancy can one day be matched mechanically.
+  subjects       String @default("[]")
+  /// FULL_TIME | PART_TIME | TEMPORARY — EMPLOYMENT_TYPES in constants.ts.
+  employmentType String @default("FULL_TIME")
+
+  /// Where a teacher's enquiry lands: an ACTIVE ADMIN, PRINCIPAL or TEACHER
+  /// membership of this school, named when the vacancy is posted. Required —
+  /// a vacancy with nobody behind it invites enquiries into a void.
+  hiringContactMembershipId String
+  postedByMembershipId      String?
+
+  status   String    @default("OPEN") // OPEN | CLOSED
+  closedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school        School      @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  hiringContact Membership  @relation("JobPostingContact", fields: [hiringContactMembershipId], references: [id], onDelete: Cascade)
+  postedBy      Membership? @relation("JobPostingPoster", fields: [postedByMembershipId], references: [id], onDelete: SetNull)
+  enquiries     Enquiry[]
+
+  @@index([schoolId, status])
+  @@index([status, createdAt])
+}
+
+/// One person's conversation with a school they do not belong to.
+///
+/// A parent asking about admission, or a teacher asking about a vacancy. The
+/// row lives in the TARGET school's tenant — the school answers it from its
+/// own desk — and the opener keeps reading it through a self clause on
+/// `fromUserId`, exactly the way a leaver keeps reading their own
+/// SchoolRecord. Deliberately a thread and not a one-shot ping: an enquiry
+/// whose answer cannot be replied to just moves the conversation to a phone
+/// number, which is the thing this feature exists to replace.
+///
+/// WHAT THIS IS NOT: free-mail between schools. The insert policy admits an
+/// enquiry only against a school that published its profile (ADMISSION) or a
+/// vacancy that is open (JOB) — the school's own opt-in is the door, and
+/// closing the profile or the vacancy closes it for new enquiries while the
+/// existing threads live on.
+model Enquiry {
+  id       String @id @default(cuid())
+  schoolId String
+
+  /// ADMISSION | JOB — ENQUIRY_KINDS in constants.ts.
+  kind         String
+  jobPostingId String?
+  fromUserId   String
+
+  status   String    @default("OPEN") // OPEN | CLOSED
+  closedAt DateTime?
+
+  /// Copies that SURVIVE THE BOUNDARY, the `globalSchoolName` precedent: the
+  /// school's name, and the vacancy's title (or "" for an admission
+  /// enquiry), taken at the moment of writing. The live School and
+  /// JobPosting rows stop being readable to the opener the moment the school
+  /// unpublishes or the vacancy closes — correctly — and without the copies
+  /// their own enquiries page would list conversations with nobody about
+  /// nothing.
+  schoolName String
+  subject    String @default("")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school     School           @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  jobPosting JobPosting?      @relation(fields: [jobPostingId], references: [id], onDelete: SetNull)
+  fromUser   User             @relation("EnquiryOpener", fields: [fromUserId], references: [id], onDelete: Cascade)
+  messages   EnquiryMessage[]
+
+  @@index([schoolId, status, createdAt])
+  @@index([fromUserId, createdAt])
+}
+
+/// One message on an enquiry, from either side.
+///
+/// Same shape as RemarkMessage. `readBy` is the school side's read marker;
+/// the opener is told about replies by notification instead, because marking
+/// a row read would be a cross-tenant UPDATE and the notification already
+/// carries the news.
+model EnquiryMessage {
+  id           String @id @default(cuid())
+  schoolId     String
+  enquiryId    String
+  authorUserId String
+
+  body   String
+  /// JSON string[] of userIds, same shape as RemarkMessage.readBy.
+  readBy String @default("[]")
+
+  createdAt DateTime @default(now())
+
+  school  School  @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  enquiry Enquiry @relation(fields: [enquiryId], references: [id], onDelete: Cascade)
+  author  User    @relation("EnquiryMessageAuthor", fields: [authorUserId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, enquiryId, createdAt])
 }

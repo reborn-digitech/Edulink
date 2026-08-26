@@ -45,7 +45,12 @@ export async function getChecklist(schoolId: string): Promise<{
     db.invite.count({ where: { schoolId, status: "PENDING" } }),
     db.school.findUnique({
       where: { id: schoolId },
-      select: { logoPath: true, brandPrimary: true, verifiedAt: true },
+      select: {
+        logoPath: true,
+        brandPrimary: true,
+        verifiedAt: true,
+        profilePublishedAt: true,
+      },
     }),
     db.post.count({ where: { schoolId, status: "APPROVED" } }),
     // The verification link an admin is sent stamps THEIR account, not the
@@ -123,6 +128,16 @@ export async function getChecklist(schoolId: string): Promise<{
       href: "/admin/settings",
       ctaKey: "checklist.brandingCta",
       done: Boolean(school?.logoPath || school?.brandPrimary),
+    },
+    {
+      id: "directory",
+      titleKey: "checklist.directoryTitle",
+      descriptionKey: school?.profilePublishedAt
+        ? "checklist.directoryDone"
+        : "checklist.directoryBody",
+      href: "/admin/directory",
+      ctaKey: "checklist.directoryCta",
+      done: Boolean(school?.profilePublishedAt),
     },
     {
       id: "bulletin",

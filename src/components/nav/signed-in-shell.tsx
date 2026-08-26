@@ -3,6 +3,7 @@ import { listContexts, type ActiveContext } from "@/lib/session";
 import { getT } from "@/lib/i18n/server";
 import { db } from "@/lib/db";
 import { anyOpenReviews } from "@/lib/reviews";
+import { anyEnquiries } from "@/lib/enquiries";
 import { tidyNotificationsFor } from "@/lib/notification-housekeeping";
 import type { Role } from "@/lib/constants";
 
@@ -64,6 +65,17 @@ export async function SignedInShell({
   const hiddenHrefs: string[] = [];
   if (role === "STUDENT" || role === "PARENT") {
     if (!(await anyOpenReviews(session))) hiddenHrefs.push("/reviews");
+  }
+
+  /**
+   * Enquiries obey the same rule as Feedback: the entry exists only while
+   * there is a conversation to show. A parent who never enquired, a teacher
+   * who is nobody's contact and an admin whose school has drawn none all see
+   * no menu item — the notification that announces the first one is what
+   * makes the entry appear.
+   */
+  if (role === "PARENT" || role === "TEACHER" || role === "ADMIN" || role === "PRINCIPAL") {
+    if (!(await anyEnquiries(session))) hiddenHrefs.push("/enquiries");
   }
 
   return (

@@ -143,6 +143,7 @@ export const NOTIFICATION_KINDS = [
   "POST",
   "INVITE",
   "COMPETITION",
+  "ENQUIRY",
   "SYSTEM",
 ] as const;
 export type NotificationKind = (typeof NOTIFICATION_KINDS)[number];
@@ -151,6 +152,26 @@ export const COMPETITION_ENTRY_STATUSES = ["REGISTERED", "SUBMITTED", "RESULTS"]
 export type CompetitionEntryStatus = (typeof COMPETITION_ENTRY_STATUSES)[number];
 
 export const GUARDIAN_RELATIONS = ["PARENT", "GUARDIAN", "OTHER"] as const;
+
+/** What a vacancy is offering. Kept to three: a school hiring a physics
+ *  teacher and a school hiring maternity cover both fit, and a finer taxonomy
+ *  is a form field nobody fills honestly. */
+export const EMPLOYMENT_TYPES = ["FULL_TIME", "PART_TIME", "TEMPORARY"] as const;
+export type EmploymentType = (typeof EMPLOYMENT_TYPES)[number];
+
+/** Dictionary keys for the three, so pages cannot disagree about the words. */
+export const EMPLOYMENT_TYPE_KEYS = {
+  FULL_TIME: "vacancies.typeFullTime",
+  PART_TIME: "vacancies.typePartTime",
+  TEMPORARY: "vacancies.typeTemporary",
+} as const;
+
+/** The two doors an outsider may knock on. */
+export const ENQUIRY_KINDS = ["ADMISSION", "JOB"] as const;
+export type EnquiryKind = (typeof ENQUIRY_KINDS)[number];
+
+/** Who may be named as a school's admissions or hiring contact. */
+export const CONTACTABLE_ROLES = ["ADMIN", "PRINCIPAL", "TEACHER"] as const;
 
 /**
  * What an expert is offering, which is not one thing.

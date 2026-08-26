@@ -38,6 +38,7 @@ const ICONS: Record<NotificationKind, React.ComponentType<{ className?: string; 
   POST: MegaphoneIcon,
   INVITE: EnvelopeSimpleIcon,
   COMPETITION: TrophyIcon,
+  ENQUIRY: ChatCircleDotsIcon,
   SYSTEM: BellIcon,
 };
 

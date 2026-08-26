@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { BuildingsIcon, PaletteIcon } from "@phosphor-icons/react/ssr";
+import Link from "next/link";
+import { BuildingsIcon, GlobeHemisphereEastIcon, PaletteIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
@@ -88,6 +89,22 @@ export default async function SettingsPage() {
         />
         <CardBody>
           <DetailsForm school={school} />
+        </CardBody>
+      </Card>
+
+      <Card>
+        <CardHeader
+          icon={<GlobeHemisphereEastIcon weight="duotone" className="size-5" />}
+          title={t("explore.directoryTitle")}
+          description={t("explore.directoryBody")}
+        />
+        <CardBody>
+          <Link
+            href="/admin/directory"
+            className="text-sm font-medium text-accent hover:underline"
+          >
+            {t("checklist.directoryCta")} →
+          </Link>
         </CardBody>
       </Card>
     </div>

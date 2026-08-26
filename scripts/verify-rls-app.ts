@@ -1437,6 +1437,251 @@ async function main() {
       "a school rewrote another school's standing — the global clause reached WITH CHECK",
     );
 
+    /* ---------------------------------------------------------------- *
+     * OUTREACH: the directory, the job board, and the enquiry policies.
+     *
+     * The three clauses and two pinned INSERTs added for cross-school
+     * outreach, each asked of Postgres directly — because every one of them
+     * is a claim about what a NON-member can and cannot do, which is exactly
+     * the state the unit suite (owner connection, policies off) cannot see.
+     * ---------------------------------------------------------------- */
+
+    psql(
+      DB,
+      `UPDATE "School" SET "profilePublishedAt" = now() WHERE id = 'verify-b';
+       INSERT INTO "JobPosting" (id,"schoolId",title,body,subjects,"employmentType","hiringContactMembershipId",status,"updatedAt") VALUES
+         ('verify-job-open','verify-b','Maths teacher','x','[]','FULL_TIME','verify-m-b','OPEN',now()),
+         ('verify-job-closed','verify-b','Old vacancy','x','[]','FULL_TIME','verify-m-b','CLOSED',now());`,
+    );
+
+    const asPerson = async <T>(userId: string, work: (tx: TxLike) => Promise<T>): Promise<T> =>
+      client.$transaction(async (tx: TxLike) => {
+        await tx.$executeRawUnsafe(`SELECT set_config('app.user_id', $1, true)`, userId);
+        return work(tx);
+      });
+    const outreachTx = (tx: TxLike) =>
+      tx as unknown as Record<
+        string,
+        {
+          count: (a?: unknown) => Promise<number>;
+          create: (a: unknown) => Promise<unknown>;
+          updateMany: (a: unknown) => Promise<{ count: number }>;
+          deleteMany: (a: unknown) => Promise<{ count: number }>;
+        }
+      >;
+
+    // The directory: with NOTHING bound, exactly the published school shows.
+    const directorySchools = await client.school.findMany({});
+    check(
+      "⚠ with nothing bound, the directory shows the PUBLISHED school and only it",
+      directorySchools.length === 1 &&
+        (directorySchools[0] as { id: string }).id === "verify-b",
+      `saw ${JSON.stringify((directorySchools as { id: string }[]).map((s) => s.id))} — either an unpublished school leaked into the directory or a published one is missing from it`,
+    );
+
+    // The board: the OPEN posting crosses, the closed one does not.
+    const board = (await (
+      client as unknown as { jobPosting: { findMany: (a?: unknown) => Promise<{ id: string }[]> } }
+    ).jobPosting.findMany({})) as { id: string }[];
+    check(
+      "⚠ the board shows the OPEN vacancy to everyone and the closed one to nobody outside",
+      board.length === 1 && board[0]?.id === "verify-job-open",
+      `saw ${JSON.stringify(board.map((p) => p.id))}`,
+    );
+
+    // Opening an enquiry: your own row, against the published school — the
+    // write a parent with NO school binding performs.
+    let openedOwn = 0;
+    try {
+      await asPerson("verify-other", (tx) =>
+        outreachTx(tx).enquiry!.create({
+          data: {
+            id: "verify-enq",
+            schoolId: "verify-b",
+            kind: "ADMISSION",
+            fromUserId: "verify-other",
+            schoolName: "B",
+          },
+        }),
+      );
+      openedOwn = 1;
+    } catch {
+      openedOwn = 0;
+    }
+    check(
+      "⚠ a school-less user CAN open an enquiry with a school that published",
+      openedOwn === 1,
+      "the outreach INSERT policy refused the one write it exists to allow — no parent can ever enquire",
+    );
+
+    const refusedInsert = async (label: string, data: Record<string, unknown>, why: string) => {
+      let inserted = 0;
+      try {
+        await asPerson("verify-other", (tx) => outreachTx(tx).enquiry!.create({ data }));
+        inserted = 1;
+      } catch {
+        inserted = 0;
+      }
+      check(label, inserted === 0, why);
+    };
+
+    await refusedInsert(
+      "⚠ …but cannot SIGN somebody else's name on one",
+      { id: "verify-enq-forged", schoolId: "verify-b", kind: "ADMISSION", fromUserId: "verify-u", schoolName: "B" },
+      "an enquiry was written naming a different user as its opener — enquiries can be forged",
+    );
+    await refusedInsert(
+      "⚠ …and not at a school that has NOT published",
+      { id: "verify-enq-unpub", schoolId: "verify-a", kind: "ADMISSION", fromUserId: "verify-other", schoolName: "A" },
+      "an admissions enquiry landed at an unpublished school — the opt-in is ornamental",
+    );
+    await refusedInsert(
+      "⚠ …and cannot ride one school's vacancy into ANOTHER school's tenant",
+      { id: "verify-enq-ride", schoolId: "verify-a", kind: "JOB", jobPostingId: "verify-job-open", fromUserId: "verify-other", schoolName: "A" },
+      "a JOB enquiry named school A while riding school B's vacancy — the school equality is missing from the policy",
+    );
+    await refusedInsert(
+      "⚠ …and not against a CLOSED vacancy",
+      { id: "verify-enq-closed", schoolId: "verify-b", kind: "JOB", jobPostingId: "verify-job-closed", fromUserId: "verify-other", schoolName: "B" },
+      "an enquiry rode a closed vacancy — closing a posting does not close its door",
+    );
+
+    // Replying: the opener on their OWN open thread, and nobody else's name.
+    let replied = 0;
+    try {
+      await asPerson("verify-other", (tx) =>
+        outreachTx(tx).enquiryMessage!.create({
+          data: {
+            id: "verify-msg-own",
+            schoolId: "verify-b",
+            enquiryId: "verify-enq",
+            authorUserId: "verify-other",
+            body: "hello",
+          },
+        }),
+      );
+      replied = 1;
+    } catch {
+      replied = 0;
+    }
+    check(
+      "⚠ the opener can write a message on their own open enquiry",
+      replied === 1,
+      "the opener cannot reply on their own thread — every enquiry is a single shout into a well",
+    );
+
+    let strangerWrote = 0;
+    try {
+      await asPerson("verify-u", (tx) =>
+        outreachTx(tx).enquiryMessage!.create({
+          data: {
+            id: "verify-msg-stranger",
+            schoolId: "verify-b",
+            enquiryId: "verify-enq",
+            authorUserId: "verify-u",
+            body: "me too",
+          },
+        }),
+      );
+      strangerWrote = 1;
+    } catch {
+      strangerWrote = 0;
+    }
+    check(
+      "⚠ …and a STRANGER cannot write onto somebody else's enquiry",
+      strangerWrote === 0,
+      "a user wrote a message on an enquiry they did not open, from outside the school — enquiries are a public wall",
+    );
+
+    // Reads: the opener alone outside the school; the target school inside.
+    const openerReads = await asPerson("verify-other", async (tx) => ({
+      enquiries: await outreachTx(tx).enquiry!.count(),
+      messages: await outreachTx(tx).enquiryMessage!.count(),
+    }));
+    check(
+      "⚠ the opener reads their enquiry and its messages with no school bound",
+      openerReads.enquiries === 1 && openerReads.messages === 1,
+      `opener saw ${openerReads.enquiries} enquiry(ies) and ${openerReads.messages} message(s)`,
+    );
+    const strangerReads = await asPerson("verify-u", async (tx) => ({
+      enquiries: await outreachTx(tx).enquiry!.count(),
+      messages: await outreachTx(tx).enquiryMessage!.count(),
+    }));
+    check(
+      "⚠ …and a stranger reads NEITHER",
+      strangerReads.enquiries === 0 && strangerReads.messages === 0,
+      `a third user saw ${strangerReads.enquiries} enquiry(ies) and ${strangerReads.messages} message(s) that are not theirs`,
+    );
+    const targetReads = await withTenantOn(client, "verify-b", (tx) =>
+      outreachTx(tx as TxLike).enquiry!.count(),
+    );
+    const otherSchoolReads = await withTenantOn(client, "verify-a", (tx) =>
+      outreachTx(tx as TxLike).enquiry!.count(),
+    );
+    check(
+      "⚠ the TARGET school reads the enquiry as an ordinary tenant row; the school next door reads nothing",
+      targetReads === 1 && otherSchoolReads === 0,
+      `target school saw ${targetReads}, another school saw ${otherSchoolReads}`,
+    );
+
+    // The opener holds INSERT and nothing else: a sent enquiry cannot be
+    // rewritten or unsent from outside the school.
+    const rewrote = await asPerson("verify-other", (tx) =>
+      outreachTx(tx).enquiry!.updateMany({ where: { id: "verify-enq" }, data: { status: "CLOSED" } }),
+    );
+    const unsent = await asPerson("verify-other", (tx) =>
+      outreachTx(tx).enquiryMessage!.deleteMany({ where: { id: "verify-msg-own" } }),
+    );
+    check(
+      "⚠ the opener cannot rewrite or unsend what the school has received",
+      rewrote.count === 0 && unsent.count === 0,
+      `updated ${rewrote.count} enquiry(ies), deleted ${unsent.count} message(s) — the outreach write is wider than INSERT`,
+    );
+
+    // The answer must be READABLE to the person it answers: notifications
+    // are self-readable, and only your own — the clause the enquiry desk
+    // forced into existence (see SELF_READABLE.Notification in gen-rls.ts).
+    psql(
+      DB,
+      `INSERT INTO "Notification" (id,"userId","schoolId",kind,title,body,meta,"createdAt") VALUES
+         ('verify-notif-own','verify-other','verify-b','ENQUIRY','Reply','','{}',now()),
+         ('verify-notif-stranger','verify-u','verify-b','ENQUIRY','Reply','','{}',now());`,
+    );
+    const ownNotifs = await asPerson("verify-other", (tx) =>
+      outreachTx(tx).notification!.count(),
+    );
+    check(
+      "⚠ the opener reads the notification that answers them, with no school bound",
+      ownNotifs === 1,
+      `saw ${ownNotifs} notification(s) — either the school's reply never reaches a school-less opener, or they can read somebody else's notices`,
+    );
+
+    // Closure closes the DATABASE's door, not a page's: once the school
+    // closes the thread, the opener's reply is refused by the policy itself.
+    psql(DB, `UPDATE "Enquiry" SET status = 'CLOSED' WHERE id = 'verify-enq'`);
+    let wroteAfterClose = 0;
+    try {
+      await asPerson("verify-other", (tx) =>
+        outreachTx(tx).enquiryMessage!.create({
+          data: {
+            id: "verify-msg-late",
+            schoolId: "verify-b",
+            enquiryId: "verify-enq",
+            authorUserId: "verify-other",
+            body: "one more thing",
+          },
+        }),
+      );
+      wroteAfterClose = 1;
+    } catch {
+      wroteAfterClose = 0;
+    }
+    check(
+      "⚠ a CLOSED enquiry takes no more words from outside, in the database itself",
+      wroteAfterClose === 0,
+      "the opener wrote onto a closed enquiry — closure is a page decoration, not a policy",
+    );
+
     // LAST, because it deliberately poisons the connection: the mistake this
     // design exists to prevent, demonstrated rather than described — a plain
     // SET, outside a transaction, on a pooled connection. Anything added after

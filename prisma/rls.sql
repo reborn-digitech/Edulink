@@ -47,6 +47,9 @@ CREATE POLICY "School_tenant_isolation" ON "School"
 
   -- …and the single row whose code somebody has just typed in, which is
   -- how a join code names the school it belongs to.
+  -- …and one row of this table belonging to ANOTHER school, by the
+  -- predicate below. See GLOBALLY_READABLE in scripts/gen-rls.ts for
+  -- what that predicate opens and why it is safe to open it.
   -- All are in a SELECT-ONLY policy: readable, never writable.
 CREATE POLICY "School_readable" ON "School"
   FOR SELECT
@@ -57,6 +60,12 @@ CREATE POLICY "School_readable" ON "School"
              WHERE cm."schoolId" = "School"."id"
                AND cm."studentCode" = current_setting('app.join_code', true)
           ))
+         OR ("removedAt" IS NULL
+          AND ("profilePublishedAt" IS NOT NULL
+           OR EXISTS (
+           SELECT 1 FROM "JobPosting" j
+            WHERE j."schoolId" = "School"."id"
+              AND j."status" = 'OPEN')))
         );
 
 -- Membership
@@ -568,8 +577,18 @@ ALTER TABLE "Notification" FORCE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Notification_tenant_isolation" ON "Notification";
 DROP POLICY IF EXISTS "Notification_readable" ON "Notification";
 CREATE POLICY "Notification_tenant_isolation" ON "Notification"
+  FOR ALL
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- Reads also allow your OWN rows, which is what lets a login ask
+  -- which schools you belong to before any school is known.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "Notification_readable" ON "Notification"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR "userId" = current_setting('app.user_id', true)
+        );
 
 -- ReviewRound
 ALTER TABLE "ReviewRound" ENABLE ROW LEVEL SECURITY;
@@ -850,6 +869,107 @@ CREATE POLICY "SchoolRecord_readable" ON "SchoolRecord"
                AND g."status" = 'ACTIVE'
           ))
         );
+
+-- JobPosting
+ALTER TABLE "JobPosting" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "JobPosting" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "JobPosting_tenant_isolation" ON "JobPosting";
+DROP POLICY IF EXISTS "JobPosting_readable" ON "JobPosting";
+CREATE POLICY "JobPosting_tenant_isolation" ON "JobPosting"
+  FOR ALL
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- …and one row of this table belonging to ANOTHER school, by the
+  -- predicate below. See GLOBALLY_READABLE in scripts/gen-rls.ts for
+  -- what that predicate opens and why it is safe to open it.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "JobPosting_readable" ON "JobPosting"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR ("status" = 'OPEN')
+        );
+
+-- Enquiry
+ALTER TABLE "Enquiry" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "Enquiry" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Enquiry_tenant_isolation" ON "Enquiry";
+DROP POLICY IF EXISTS "Enquiry_readable" ON "Enquiry";
+CREATE POLICY "Enquiry_tenant_isolation" ON "Enquiry"
+  FOR ALL
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- Reads also allow your OWN rows, which is what lets a login ask
+  -- which schools you belong to before any school is known.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "Enquiry_readable" ON "Enquiry"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR "fromUserId" = current_setting('app.user_id', true)
+        );
+
+  -- A cross-school enquiry: your own row, against a school that has
+  -- opened the door (published profile, or the open vacancy named on
+  -- the row). See the note in scripts/gen-rls.ts above the Enquiry
+  -- write policy.
+DROP POLICY IF EXISTS "Enquiry_outreach_insert" ON "Enquiry";
+CREATE POLICY "Enquiry_outreach_insert" ON "Enquiry"
+  FOR INSERT
+  WITH CHECK (current_setting('app.user_id', true) <> ''
+          AND "fromUserId" = current_setting('app.user_id', true)
+          AND (("kind" = 'ADMISSION'
+                AND "jobPostingId" IS NULL
+                AND EXISTS (
+           SELECT 1 FROM "School" s
+            WHERE s."id" = "Enquiry"."schoolId"
+              AND s."profilePublishedAt" IS NOT NULL
+              AND s."removedAt" IS NULL))
+           OR ("kind" = 'JOB'
+                AND EXISTS (
+           SELECT 1 FROM "JobPosting" j
+            WHERE j."id" = "Enquiry"."jobPostingId"
+              AND j."schoolId" = "Enquiry"."schoolId"
+              AND j."status" = 'OPEN'))));
+
+-- EnquiryMessage
+ALTER TABLE "EnquiryMessage" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "EnquiryMessage" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "EnquiryMessage_tenant_isolation" ON "EnquiryMessage";
+DROP POLICY IF EXISTS "EnquiryMessage_readable" ON "EnquiryMessage";
+CREATE POLICY "EnquiryMessage_tenant_isolation" ON "EnquiryMessage"
+  FOR ALL
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+  -- …and one row of this table belonging to ANOTHER school, by the
+  -- predicate below. See GLOBALLY_READABLE in scripts/gen-rls.ts for
+  -- what that predicate opens and why it is safe to open it.
+  -- It is in a SELECT-ONLY policy: readable, never writable.
+CREATE POLICY "EnquiryMessage_readable" ON "EnquiryMessage"
+  FOR SELECT
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ','))
+         OR (current_setting('app.user_id', true) <> ''
+          AND EXISTS (
+           SELECT 1 FROM "Enquiry" e
+            WHERE e."id" = "EnquiryMessage"."enquiryId"
+              AND e."fromUserId" = current_setting('app.user_id', true)))
+        );
+
+  -- A reply on your OWN still-open enquiry, in the school it belongs
+  -- to, signed by you. See the note in scripts/gen-rls.ts above the
+  -- Enquiry write policy.
+DROP POLICY IF EXISTS "EnquiryMessage_outreach_insert" ON "EnquiryMessage";
+CREATE POLICY "EnquiryMessage_outreach_insert" ON "EnquiryMessage"
+  FOR INSERT
+  WITH CHECK (current_setting('app.user_id', true) <> ''
+          AND "authorUserId" = current_setting('app.user_id', true)
+          AND EXISTS (
+           SELECT 1 FROM "Enquiry" e
+            WHERE e."id" = "EnquiryMessage"."enquiryId"
+              AND e."schoolId" = "EnquiryMessage"."schoolId"
+              AND e."fromUserId" = current_setting('app.user_id', true)
+              AND e."status" = 'OPEN'));
 
 -- OperatorAccess
 --
