@@ -176,6 +176,16 @@ describe("⚠ the directory opens by the school's own act", () => {
     expect(school.admissionsContactMembershipId).toBe(contactMembershipId);
   });
 
+  it("offers each person once in the contact picker, however many posts they hold", async () => {
+    // Priya holds an ADMIN and a TEACHER membership at Riverside; the picker
+    // must offer the person, not the posts.
+    const { listContactCandidates } = await import("@/lib/school-profile");
+    const candidates = await listContactCandidates(riversideAdmin);
+    const priyas = candidates.filter((c) => c.name === "Priya Raman");
+    expect(priyas).toHaveLength(1);
+    expect(priyas[0]!.role).toBe("ADMIN");
+  });
+
   it("only an admin edits any of it", async () => {
     await expect(setProfilePublished(contact, false)).rejects.toThrow(AccessError);
     await expect(

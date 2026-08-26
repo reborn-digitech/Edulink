@@ -68,14 +68,23 @@ export async function listContactCandidates(
   const schoolId = ctx.schoolId;
   const rows = await db.membership.findMany({
     where: { schoolId, status: "ACTIVE", role: { in: [...CONTACTABLE_ROLES] } },
-    select: { id: true, role: true, user: { select: { name: true, preferredName: true } } },
+    select: { id: true, role: true, userId: true, user: { select: { name: true, preferredName: true } } },
     orderBy: [{ role: "asc" }, { joinedAt: "asc" }],
   });
-  return rows.map((m) => ({
-    membershipId: m.id,
-    name: m.user.preferredName ?? m.user.name,
-    role: m.role,
-  }));
+  // ONE ROW PER PERSON, not per membership: an admin who also teaches held
+  // two rows here and the picker showed their name twice with nothing to
+  // tell them apart. Enquiries land on a person either way; role-ascending
+  // order makes the kept membership their most senior post.
+  const seen = new Set<string>();
+  return rows.flatMap((m) => {
+    if (seen.has(m.userId)) return [];
+    seen.add(m.userId);
+    return [{
+      membershipId: m.id,
+      name: m.user.preferredName ?? m.user.name,
+      role: m.role,
+    }];
+  });
 }
 
 export async function updateSchoolProfile(

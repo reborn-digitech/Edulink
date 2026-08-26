@@ -15,10 +15,26 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function AdminDirectoryPage() {
   const t = await getT();
   const ctx = await requireRole("ADMIN");
-  const [settings, candidates] = await Promise.all([
+  const [settings, freshCandidates] = await Promise.all([
     readOwnProfileSettings(ctx),
     listContactCandidates(ctx),
   ]);
+  // The named contact stays selectable even when the fresh list no longer
+  // carries their membership (deduped to a sibling one, or role changed):
+  // otherwise the select silently shows "Not named" over a set contact.
+  const candidates =
+    settings.admissionsContactMembershipId &&
+    settings.contactName &&
+    !freshCandidates.some((c) => c.membershipId === settings.admissionsContactMembershipId)
+      ? [
+          {
+            membershipId: settings.admissionsContactMembershipId,
+            name: settings.contactName,
+            role: "",
+          },
+          ...freshCandidates,
+        ]
+      : freshCandidates;
 
   return (
     <div className="mx-auto max-w-2xl space-y-6">

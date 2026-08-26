@@ -1656,6 +1656,39 @@ async function main() {
       `saw ${ownNotifs} notification(s) — either the school's reply never reaches a school-less opener, or they can read somebody else's notices`,
     );
 
+    // …and the answer is theirs to FINISH: marking read, clearing, and
+    // housekeeping are all `userId`-scoped writes, silently skipped by a
+    // tenant-only policy — which left the cross-school notice permanently
+    // unread. Own rows only, both directions.
+    const markedOwn = await asPerson("verify-other", (tx) =>
+      outreachTx(tx).notification!.updateMany({
+        where: { id: "verify-notif-own" },
+        data: { readAt: new Date() },
+      }),
+    );
+    const markedStranger = await asPerson("verify-other", (tx) =>
+      outreachTx(tx).notification!.updateMany({
+        where: { id: "verify-notif-stranger" },
+        data: { readAt: new Date() },
+      }),
+    );
+    check(
+      "⚠ …and can mark it read — their own and nobody else's",
+      markedOwn.count === 1 && markedStranger.count === 0,
+      `marked ${markedOwn.count} of their own, ${markedStranger.count} of a stranger's — either the unread badge is permanent or read-state is forgeable`,
+    );
+    const clearedOwn = await asPerson("verify-other", (tx) =>
+      outreachTx(tx).notification!.deleteMany({ where: { id: "verify-notif-own" } }),
+    );
+    const clearedStranger = await asPerson("verify-other", (tx) =>
+      outreachTx(tx).notification!.deleteMany({ where: { id: "verify-notif-stranger" } }),
+    );
+    check(
+      "⚠ …and clear it — their own and nobody else's",
+      clearedOwn.count === 1 && clearedStranger.count === 0,
+      `cleared ${clearedOwn.count} of their own, ${clearedStranger.count} of a stranger's — housekeeping can never retire the row, or can retire somebody else's`,
+    );
+
     // Closure closes the DATABASE's door, not a page's: once the school
     // closes the thread, the opener's reply is refused by the policy itself.
     psql(DB, `UPDATE "Enquiry" SET status = 'CLOSED' WHERE id = 'verify-enq'`);

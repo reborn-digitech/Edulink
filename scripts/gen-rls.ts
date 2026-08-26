@@ -877,6 +877,38 @@ function generate(): string {
         `              AND j."status" = 'OPEN'))));`,
       );
     }
+    /**
+     * A NOTIFICATION'S LIFECYCLE BELONGS TO ITS PERSON, like its readability
+     * (see SELF_READABLE.Notification). The self-read clause alone left a
+     * trap the enquiry desk walked straight into: "the school replied" from
+     * a school the reader has no binding at could be READ but never marked
+     * read, cleared, or expired — every one of those writes is scoped by
+     * `userId` in the app and was silently skipped by the tenant-only write
+     * policy, leaving a permanently unread badge and a row housekeeping
+     * could never retire. So UPDATE and DELETE of your OWN rows are allowed,
+     * pinned to `app.user_id` on both sides. INSERT stays tenant-scoped:
+     * reading, finishing and discarding your mail is yours; minting mail
+     * into a school's tenant is not.
+     */
+    if (table === "Notification") {
+      const own = `current_setting('app.user_id', true) <> ''
+          AND "userId" = current_setting('app.user_id', true)`;
+      lines.push(
+        ``,
+        `  -- Your own notices are yours to finish and discard, whichever`,
+        `  -- school wrote them. See the note in scripts/gen-rls.ts above the`,
+        `  -- Notification self policies.`,
+        `DROP POLICY IF EXISTS "${table}_self_update" ON "${table}";`,
+        `CREATE POLICY "${table}_self_update" ON "${table}"`,
+        `  FOR UPDATE`,
+        `  USING (${own})`,
+        `  WITH CHECK (${own});`,
+        `DROP POLICY IF EXISTS "${table}_self_delete" ON "${table}";`,
+        `CREATE POLICY "${table}_self_delete" ON "${table}"`,
+        `  FOR DELETE`,
+        `  USING (${own});`,
+      );
+    }
     if (table === "EnquiryMessage") {
       lines.push(
         ``,

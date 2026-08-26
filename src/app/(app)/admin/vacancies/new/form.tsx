@@ -30,7 +30,13 @@ export function NewVacancyForm({
   const [body, setBody] = useState("");
   const [subjects, setSubjects] = useState("");
   const [employmentType, setEmploymentType] = useState("FULL_TIME");
-  const [contactId, setContactId] = useState(defaultContactId);
+  const [contactId, setContactId] = useState(
+    // The select must show what will be submitted: a default that the
+    // deduped candidate list does not carry falls back to the first option.
+    candidates.some((c) => c.membershipId === defaultContactId)
+      ? defaultContactId
+      : (candidates[0]?.membershipId ?? ""),
+  );
   const [error, setError] = useState<string | null>(null);
 
   const inputClass =

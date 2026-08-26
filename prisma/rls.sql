@@ -590,6 +590,22 @@ CREATE POLICY "Notification_readable" ON "Notification"
          OR "userId" = current_setting('app.user_id', true)
         );
 
+  -- Your own notices are yours to finish and discard, whichever
+  -- school wrote them. See the note in scripts/gen-rls.ts above the
+  -- Notification self policies.
+DROP POLICY IF EXISTS "Notification_self_update" ON "Notification";
+CREATE POLICY "Notification_self_update" ON "Notification"
+  FOR UPDATE
+  USING (current_setting('app.user_id', true) <> ''
+          AND "userId" = current_setting('app.user_id', true))
+  WITH CHECK (current_setting('app.user_id', true) <> ''
+          AND "userId" = current_setting('app.user_id', true));
+DROP POLICY IF EXISTS "Notification_self_delete" ON "Notification";
+CREATE POLICY "Notification_self_delete" ON "Notification"
+  FOR DELETE
+  USING (current_setting('app.user_id', true) <> ''
+          AND "userId" = current_setting('app.user_id', true));
+
 -- ReviewRound
 ALTER TABLE "ReviewRound" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "ReviewRound" FORCE ROW LEVEL SECURITY;
