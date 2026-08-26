@@ -909,6 +909,34 @@ function generate(): string {
         `  USING (${own});`,
       );
     }
+    /**
+     * ACCEPTING AN EXPERT INVITATION IS A WRITE BY SOMEBODY WHO IS NOBODY
+     * YET — no school, no membership; the unguessable token is the whole
+     * authorisation, exactly as it is for reading the row (CODE_READABLE).
+     * For as long as only the read half existed, acceptance was impossible:
+     * the three-school simulation watched `acceptedAt` refuse to stamp
+     * (P2025), roll back the profile, and strand a half-made account. The
+     * UPDATE is pinned to the presented token on BOTH sides and to the
+     * invite being still live, so the holder can consume their own
+     * invitation and touch nothing else — not a used one, not a revoked
+     * one, not anybody else's.
+     */
+    if (table === "ExpertInvite") {
+      const held = `current_setting('app.join_code', true) <> ''
+          AND "tokenHash" = current_setting('app.join_code', true)`;
+      lines.push(
+        ``,
+        `  -- The token-holder consuming their own live invitation. See the`,
+        `  -- note in scripts/gen-rls.ts above the ExpertInvite write policy.`,
+        `DROP POLICY IF EXISTS "${table}_accept_update" ON "${table}";`,
+        `CREATE POLICY "${table}_accept_update" ON "${table}"`,
+        `  FOR UPDATE`,
+        `  USING (${held}`,
+        `     AND "acceptedAt" IS NULL`,
+        `     AND "revokedAt" IS NULL)`,
+        `  WITH CHECK (${held});`,
+      );
+    }
     if (table === "EnquiryMessage") {
       lines.push(
         ``,

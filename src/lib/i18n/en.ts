@@ -588,6 +588,13 @@ export const en = {
   /* The bulletin — feed, one post, compose, moderation, the global feed     */
   /* ---------------------------------------------------------------------- */
   bulletin: {
+    bulkTitle: "One person, many posts",
+    bulkWaiting: "{count} waiting",
+    bulkApproveCta: "Approve all {count}",
+    bulkRejectCta: "Reject all {count}",
+    bulkReasonPlaceholder: "One reason, written on every rejected post…",
+    bulkApproved: "{count} posts approved.",
+    bulkRejected: "{count} posts rejected.",
     hideExplainer: "Hiding a post removes it for your school only — the school that published it is not notified and no other school is affected. There is no way to remove another school’s post for everyone: that would need someone with authority over every school, and no such role exists in EduLink.",
     unknownSchool: "Unknown school",
     title: "Social Media",
@@ -1898,6 +1905,7 @@ export const en = {
   /* boundary. One key per distinct sentence; the sentence is the value.    */
   /* ---------------------------------------------------------------------- */
   access: {
+    youArePostingALot: "You are posting a lot — try again in about {minutes} minutes.",
     onlyAnAdminEditsTheProfile: "Only a school admin edits the directory profile.",
     onlySchoolStaffReadTheBoard: "Only school staff read the vacancies board.",
     onlyAParentAsksAboutAdmission: "Only a parent asks a school about admission.",
@@ -5164,6 +5172,9 @@ export const en = {
     noneSoon: "Nothing in the next month — see who's next",
   },
   intake: {
+    classWasPromoted: "This class’s cohort has already moved up a year — check this is really the class you mean.",
+    promotedBadge: "Last year’s class",
+    badBirthdate: "The birthdate could not be read — use dd/mm/yyyy.",
     title: "Admit pupils",
     subtitle: "Paste or upload the admission list. Each row becomes a pupil on the roll, with their date of birth, their class and an invitation to their parent.",
     backToPeople: "People",

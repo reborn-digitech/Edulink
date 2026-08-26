@@ -1689,6 +1689,45 @@ async function main() {
       `cleared ${clearedOwn.count} of their own, ${clearedStranger.count} of a stranger's — housekeeping can never retire the row, or can retire somebody else's`,
     );
 
+    // Accepting an expert invitation: the token-holder consumes their OWN
+    // live invite and nothing else — the write half the three-school
+    // simulation found missing (P2025 mid-accept, stranded account).
+    psql(
+      DB,
+      `INSERT INTO "ExpertInvite" (id,"schoolId","tokenHash","expiresAt") VALUES
+         ('verify-xinv-live','verify-b','verify-xinv-hash-live', now() + interval '7 day'),
+         ('verify-xinv-used','verify-b','verify-xinv-hash-used', now() + interval '7 day');
+       UPDATE "ExpertInvite" SET "acceptedAt" = now() WHERE id = 'verify-xinv-used';`,
+    );
+    const asTokenHolder = async <T>(hash: string, work: (tx: TxLike) => Promise<T>): Promise<T> =>
+      client.$transaction(async (tx: TxLike) => {
+        await tx.$executeRawUnsafe(`SELECT set_config('app.join_code', $1, true)`, hash);
+        return work(tx);
+      });
+    const accepted = await asTokenHolder("verify-xinv-hash-live", (tx) =>
+      outreachTx(tx).expertInvite!.updateMany({
+        where: { id: "verify-xinv-live" },
+        data: { acceptedAt: new Date(), acceptedUserId: "verify-u" },
+      }),
+    );
+    const wrongToken = await asTokenHolder("verify-xinv-hash-live", (tx) =>
+      outreachTx(tx).expertInvite!.updateMany({
+        where: { id: "verify-xinv-used" },
+        data: { revokedAt: new Date() },
+      }),
+    );
+    const reused = await asTokenHolder("verify-xinv-hash-live", (tx) =>
+      outreachTx(tx).expertInvite!.updateMany({
+        where: { id: "verify-xinv-live" },
+        data: { acceptedUserId: "verify-other" },
+      }),
+    );
+    check(
+      "⚠ an expert invitation can be ACCEPTED by its token-holder — once, and only itself",
+      accepted.count === 1 && wrongToken.count === 0 && reused.count === 0,
+      `accepted ${accepted.count} (want 1), touched another invite ${wrongToken.count} (want 0), rewrote a consumed one ${reused.count} (want 0)`,
+    );
+
     // Closure closes the DATABASE's door, not a page's: once the school
     // closes the thread, the opener's reply is refused by the policy itself.
     psql(DB, `UPDATE "Enquiry" SET status = 'CLOSED' WHERE id = 'verify-enq'`);

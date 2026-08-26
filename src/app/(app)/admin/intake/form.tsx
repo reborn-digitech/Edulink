@@ -179,6 +179,9 @@ export function IntakeForm({
                       {o.linked && (
                         <span className="ml-2 align-middle"><Badge tone="info" size="sm">{t("intake.linkedBadge")}</Badge></span>
                       )}
+                      {o.warnKey && (
+                        <span className="ml-2 align-middle" title={t(o.warnKey)}><Badge tone="warn" size="sm">{t("intake.promotedBadge")}</Badge></span>
+                      )}
                     </td>
                     <td className="px-3 py-2 text-fg-muted">{o.className ?? "—"}</td>
                     <td className="px-3 py-2 font-mono text-fg">{o.studentCode}</td>

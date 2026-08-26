@@ -464,9 +464,17 @@ export async function promoteSchool(
       // Nobody left behind and nobody arriving → the class is last year's,
       // and goes to the archive. A STAY class is never archived, whoever
       // was streamed out of it: the office said it stays, and it does.
+      //
+      // A class whose cohort moved but which SURVIVES (repeaters held back,
+      // or a receiving class) is stamped `promotedAt` instead: it is last
+      // year's room still standing, and intake warns before admitting a new
+      // pupil into it — the ghost-class trap the three-school simulation
+      // walked into.
       if (move.to.kind !== "STAY" && roll.length - moving.length === 0 && !receiving.has(from.id)) {
-        await tx.class.update({ where: { id: from.id }, data: { archivedAt: now } });
+        await tx.class.update({ where: { id: from.id }, data: { archivedAt: now, promotedAt: now } });
         archived += 1;
+      } else if (move.to.kind !== "STAY" && moving.length > 0) {
+        await tx.class.update({ where: { id: from.id }, data: { promotedAt: now } });
       }
     }
   });

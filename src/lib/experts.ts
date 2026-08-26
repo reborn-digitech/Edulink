@@ -3,6 +3,7 @@ import { randomBytes, createHash } from "node:crypto";
 import { db } from "./db";
 import { audit } from "./audit";
 import { AccessError } from "./tenancy";
+import { sendExpertInvite } from "./email";
 import { EXPERT_OFFERINGS, type ExpertOffering } from "./constants";
 import { notify } from "./notify";
 import { readJsonArray, writeJson } from "./json";
@@ -90,13 +91,26 @@ export async function inviteExpert(
   if ((session.role !== "ADMIN" && session.role !== "TEACHER") || !session.schoolId) {
     throw new AccessError("access.onlyATeacherOrAnAdminCan2");
   }
-  return createExpertInvite({
+  const created = await createExpertInvite({
     schoolId: session.schoolId,
     invitedByMembershipId: session.membershipId,
     actorUserId: session.user.id,
     email: input.email,
     name: input.name,
   });
+  // The link stays the artefact on screen; an address given also gets it
+  // sent — best-effort, because the copyable link is the reliable half.
+  const to = input.email?.trim();
+  if (to) {
+    const app = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+    const school = await db.school.findUnique({ where: { id: session.schoolId }, select: { name: true } });
+    await sendExpertInvite(
+      to,
+      `${app}/expert/invite/${created.token}`,
+      `${school?.name ?? "A school"} on EduLink would like you as a visiting expert.`,
+    ).catch((error) => console.error("[expert-invite] email failed", error));
+  }
+  return created;
 }
 
 export type InviteState =
@@ -149,6 +163,9 @@ export async function readExpertInvite(token: string): Promise<InviteState> {
 
 /** The delegates `acceptExpertInvite` touches, and only those. */
 type AcceptTx = {
+  user: {
+    create(args: unknown): Promise<{ id: string }>;
+  };
   expertInvite: {
     findUnique(args: unknown): Promise<{
       id: string;
@@ -179,9 +196,18 @@ type AcceptTx = {
  */
 export async function acceptExpertInvite(
   token: string,
-  userId: string,
+  /**
+   * WHO IS ACCEPTING — either an account that already exists (a signed-in
+   * person attaching an expert profile) or the makings of a new one, CREATED
+   * INSIDE THE SAME TRANSACTION as the profile and the consumed invite. The
+   * first version created the user in the ACTION and called this after, and
+   * the three-school simulation showed what that costs: when the invite
+   * update was refused, the profile rolled back and the User row survived —
+   * an account that can neither finish accepting nor start over.
+   */
+  person: { userId: string } | { create: { email: string; name: string; passwordHash: string; prefs: string } },
   profile: { headline: string; bio?: string; organisation?: string },
-): Promise<{ expertProfileId: string }> {
+): Promise<{ expertProfileId: string; userId: string }> {
   const headline = profile.headline.trim();
   if (headline.length < 3) throw new AccessError("access.sayWhatYouDoInAFew");
 
@@ -213,6 +239,24 @@ export async function acceptExpertInvite(
         throw new AccessError("access.thatInvitationHasExpired", "NOT_FOUND");
       }
 
+      const userId =
+        "userId" in person
+          ? person.userId
+          : (await tx.user.create({ data: person.create })).id;
+
+      /**
+       * ONE update, stamping acceptance and acceptor together — the
+       * acceptance policy admits an update only while `acceptedAt` is still
+       * NULL, so a second write to the same row inside this transaction
+       * would refuse its own first half. And because the user above was
+       * created in THIS transaction, a refusal here takes the account with
+       * it: nothing is left stranded.
+       */
+      await tx.expertInvite.update({
+        where: { id: invite.id },
+        data: { acceptedAt: new Date(), acceptedUserId: userId },
+      });
+
       const existing = await tx.expertProfile.findUnique({
         where: { userId },
         select: { id: true },
@@ -229,12 +273,7 @@ export async function acceptExpertInvite(
           select: { id: true },
         }));
 
-      await tx.expertInvite.update({
-        where: { id: invite.id },
-        data: { acceptedAt: new Date(), acceptedUserId: userId },
-      });
-
-      return { expertProfileId: created.id };
+      return { expertProfileId: created.id, userId };
     }),
   );
 }

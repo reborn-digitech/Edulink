@@ -268,6 +268,32 @@ export async function sendTeacherInvite(
 }
 
 /**
+ * The expert invitation. It existed as a copyable link long before it was an
+ * email — the invite form collected an address and quietly never used it,
+ * which the three-school simulation flagged as a promise the control never
+ * kept. The link stays copyable on screen; when an address was given, this
+ * now travels too.
+ */
+export async function sendExpertInvite(
+  to: string,
+  url: string,
+  inviterLine: string,
+) {
+  await sendEmail({
+    to,
+    purpose: "INVITE",
+    subject: `You are invited to EduLink as an expert`,
+    text: `${inviterLine}\n\nAccept: ${url}\n\nYour profile is reviewed before any school can see or book you.`,
+    html: layout(
+      `You are invited as an expert`,
+      `<p>${escapeHtml(inviterLine)}</p>
+       <p>Accepting takes a minute: say what you do, set a password, and the platform team reviews your profile before any school can see or book you.</p>`,
+      { label: "Accept invitation", url },
+    ),
+  });
+}
+
+/**
  * The operator's health digest — sent ONLY when something needs a person.
  * English like every transactional email here, and like the crontab whose
  * jobs it reports on.

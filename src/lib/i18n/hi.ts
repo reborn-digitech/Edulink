@@ -700,6 +700,13 @@ export const hi: Dictionary = {
   },
 
   bulletin: {
+    bulkTitle: "एक व्यक्ति, कई पोस्ट",
+    bulkWaiting: "{count} प्रतीक्षा में",
+    bulkApproveCta: "सभी {count} स्वीकारें",
+    bulkRejectCta: "सभी {count} अस्वीकारें",
+    bulkReasonPlaceholder: "एक कारण, जो हर अस्वीकृत पोस्ट पर लिखा जाएगा…",
+    bulkApproved: "{count} पोस्ट स्वीकृत हुईं।",
+    bulkRejected: "{count} पोस्ट अस्वीकृत हुईं।",
     hideExplainer: "किसी पोस्ट को छिपाने से वह केवल आपके स्कूल के लिए हटती है — जिस स्कूल ने उसे प्रकाशित किया उसे सूचित नहीं किया जाता और किसी दूसरे स्कूल पर असर नहीं पड़ता। किसी दूसरे स्कूल की पोस्ट को सबके लिए हटाने का कोई तरीक़ा नहीं है: उसके लिए हर स्कूल पर अधिकार रखने वाला कोई चाहिए, और EduLink में ऐसी कोई भूमिका नहीं है।",
     unknownSchool: "अनजान स्कूल",
     title: "सोशल मीडिया",
@@ -1723,6 +1730,7 @@ export const hi: Dictionary = {
   },
 
   access: {
+    youArePostingALot: "आप बहुत सारी पोस्ट कर रहे हैं — लगभग {minutes} मिनट बाद फिर कोशिश करें।",
     onlyAnAdminEditsTheProfile: "निर्देशिका प्रोफ़ाइल केवल स्कूल का व्यवस्थापक बदलता है।",
     onlySchoolStaffReadTheBoard: "रिक्तियों का बोर्ड केवल स्कूल स्टाफ़ देखता है।",
     onlyAParentAsksAboutAdmission: "प्रवेश के बारे में केवल अभिभावक पूछते हैं।",
@@ -4730,6 +4738,9 @@ export const hi: Dictionary = {
     noneSoon: "अगले महीने कुछ नहीं — देखें अगला कौन",
   },
   intake: {
+    classWasPromoted: "इस कक्षा का समूह पहले ही अगले वर्ष में जा चुका है — जाँच लें कि आपका आशय यही कक्षा है।",
+    promotedBadge: "पिछले वर्ष की कक्षा",
+    badBirthdate: "जन्मतिथि पढ़ी नहीं जा सकी — dd/mm/yyyy लिखें।",
     title: "विद्यार्थियों को प्रवेश दें",
     subtitle: "प्रवेश सूची चिपकाएँ या अपलोड करें। हर पंक्ति रोल पर एक विद्यार्थी बनती है — जन्मतिथि, कक्षा और अभिभावक को निमंत्रण के साथ।",
     backToPeople: "लोग",

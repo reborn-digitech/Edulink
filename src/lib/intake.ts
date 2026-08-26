@@ -64,6 +64,13 @@ export type IntakeOutcome = {
   guardianReasonKey?: TranslationKey;
   /** The row carried a transfer code and attached to the existing account. */
   linked?: boolean;
+  /**
+   * Admitted, but into a class whose cohort a promotion has already moved
+   * on — last year's room still standing. The admission is NOT refused
+   * (repeaters legitimately live there); the office is told so a transfer
+   * landing mid-year-turn is a decision, not an accident.
+   */
+  warnKey?: TranslationKey;
 };
 
 export type IntakeResult = {
@@ -90,7 +97,9 @@ function handleFor(name: string, code: string): string {
 export async function admitPupils(
   ctx: ActiveContext,
   rows: IntakeRow[],
-  opts: { locale: string },
+  // Defaulted, so a programmatic caller who forgets it gets English pupils
+  // rather than a TypeError dressed as "could not admit".
+  opts: { locale: string } = { locale: "en" },
 ): Promise<IntakeResult> {
   const schoolId = requireAdmin(ctx);
   if (rows.length > INTAKE_MAX_ROWS) throw new AccessError("access.tooManyPupilsAtOnce", "FORBIDDEN", { max: INTAKE_MAX_ROWS });
@@ -99,7 +108,7 @@ export async function admitPupils(
   // archived class is naming a class the school no longer runs.
   const classes = await db.class.findMany({
     where: { schoolId, archivedAt: null },
-    select: { id: true, name: true },
+    select: { id: true, name: true, promotedAt: true },
   });
   const classByName = new Map(classes.map((c) => [c.name.trim().toLowerCase(), c]));
 
@@ -115,6 +124,14 @@ export async function admitPupils(
     }
 
     const birthdate = row.birthdateKey ? parseDateOnly(row.birthdateKey) : null;
+    // A birthdate that is PRESENT but unreadable is named as such — the CSV
+    // parser normalises real uploads, but a programmatic caller handing this
+    // function raw rows used to get "code needs a birthdate" for a format
+    // problem, which sent the fix hunting in the wrong place.
+    if (row.birthdateKey && !birthdate) {
+      outcomes.push({ line: row.line, name: row.name, status: "skipped", reasonKey: "intake.badBirthdate" });
+      continue;
+    }
 
     // Already on the roll: same name and birthday, here, active. Without a
     // birthday a name alone is not enough to refuse — two children called
@@ -243,7 +260,9 @@ export async function admitPupils(
         (error) => console.error("[admitPupils] standin sync failed", error),
       );
 
+      const promotedWarn = klass?.promotedAt ? ("intake.classWasPromoted" as const) : undefined;
       const linkedOutcome: IntakeOutcome = {
+        warnKey: promotedWarn,
         line: row.line,
         name: row.name,
         status: "admitted",
@@ -341,6 +360,7 @@ export async function admitPupils(
     );
 
     const outcome: IntakeOutcome = {
+      warnKey: klass?.promotedAt ? "intake.classWasPromoted" : undefined,
       line: row.line,
       name: row.name,
       status: "admitted",

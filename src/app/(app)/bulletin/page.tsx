@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MegaphoneIcon, PlusIcon, GlobeIcon} from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
-import { listFeed, pendingCount, parentBulletinSchools } from "@/lib/bulletin";
+import { listFeed, pendingCount, parentBulletinSchools, pendingByAuthor } from "@/lib/bulletin";
 import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { PostCard } from "./post-card";
+import { BulkReview } from "./bulk-review";
 import { FeedFilters } from "./feed-filters";
 import { POST_CATEGORIES, type PostCategory, type PostStatus } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
@@ -181,6 +182,10 @@ export default async function BulletinPage({
           );
         })}
       </nav>
+
+      {showPending && session.role === "ADMIN" && (
+        <BulkReview authors={await pendingByAuthor(session)} />
+      )}
 
       {posts.length === 0 ? (
         <EmptyState

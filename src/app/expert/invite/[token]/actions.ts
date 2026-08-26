@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
 import { AccessError } from "@/lib/tenancy";
 import { hashPassword, passwordProblems } from "@/lib/crypto";
-import { createSession } from "@/lib/session";
+import { createSession, getSession } from "@/lib/session";
 import { acceptExpertInvite, readExpertInvite } from "@/lib/experts";
 import { audit } from "@/lib/audit";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
@@ -52,36 +52,47 @@ export async function acceptInvite(
     const problems = passwordProblems(input.password, [name, email]);
     if (problems.length > 0) return { ok: false, error: (await getT())(problems[0]!) };
 
-    // An email already in use is refused rather than merged: silently attaching
-    // an expert profile to somebody else's account would be an account takeover
-    // by whoever holds the invite link.
+    /**
+     * An email already in use is refused rather than merged — silently
+     * attaching an expert profile to somebody else's account would be an
+     * account takeover by whoever holds the link — with ONE exception that
+     * makes the refusal's own advice true: the SIGNED-IN owner of that very
+     * account may attach the profile to themselves. "Log in first, then
+     * open this link" used to be a promise with no path behind it.
+     */
     const taken = await db.user.findUnique({ where: { email }, select: { id: true } });
-    if (taken) return { ok: false, errorKey: "expert.emailTaken" };
+    const session = await getSession();
+    if (taken && session?.user.id !== taken.id) {
+      return { ok: false, errorKey: "expert.emailTaken" };
+    }
 
-    const user = await db.user.create({
-      data: {
-        email,
-        name,
-        passwordHash: await hashPassword(input.password),
-        // The language they accepted in. `"{}"` here meant every expert account
-        // came out English whatever page they had just read.
-        prefs: writeJson({ locale: await getLocale() }),
-      },
-      select: { id: true },
-    });
+    // Created INSIDE the acceptance transaction, so a refused invite strands
+    // nothing — see acceptExpertInvite.
+    const person = taken
+      ? { userId: taken.id }
+      : {
+          create: {
+            email,
+            name,
+            passwordHash: await hashPassword(input.password),
+            // The language they accepted in. `"{}"` here meant every expert
+            // account came out English whatever page they had just read.
+            prefs: writeJson({ locale: await getLocale() }),
+          },
+        };
 
-    await acceptExpertInvite(token, user.id, { headline });
+    const accepted = await acceptExpertInvite(token, person, { headline });
 
     await audit({
       schoolId: null,
-      actorUserId: user.id,
+      actorUserId: accepted.userId,
       action: "expert.acceptInvite",
       targetType: "User",
-      targetId: user.id,
+      targetId: accepted.userId,
       meta: { email },
     });
 
-    await createSession(user.id, { schoolId: null, role: "EXPERT" });
+    await createSession(accepted.userId, { schoolId: null, role: "EXPERT" });
   } catch (error) {
     if (error instanceof AccessError)
       return { ok: false, error: (await getT())(error.key, error.vars) };

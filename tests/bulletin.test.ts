@@ -1,4 +1,4 @@
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { PrismaClient } from "@prisma/client";
 import { AccessError } from "@/lib/tenancy";
 import {
@@ -140,6 +140,22 @@ beforeAll(async () => {
 afterAll(async () => {
   await cleanup();
   await db.$disconnect();
+});
+
+/**
+ * The posting ceiling (access.youArePostingALot) counts per membership per
+ * hour, and this suite's one pupil posts far more than five times across its
+ * tests — each of which is about MODERATION, not about the limiter, which
+ * has its own suite. The bucket is cleared before each test, scoped to this
+ * suite's own actors so a parallel file's buckets are untouched.
+ */
+beforeEach(async () => {
+  const ids = [author, classmate, owningTeacher, otherTeacher, admin, otherSchoolAdmin]
+    .map((a) => a?.membershipId)
+    .filter((x): x is string => Boolean(x));
+  if (ids.length > 0) {
+    await db.rateLimit.deleteMany({ where: { bucket: { in: ids.map((id) => `post:${id}`) } } });
+  }
 });
 
 async function cleanup() {

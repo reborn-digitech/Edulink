@@ -6,6 +6,7 @@ import { publish, channel } from "./realtime";
 import { notify } from "./notify";
 import { audit } from "./audit";
 import { AccessError, assertClassAccess } from "./tenancy";
+import { consume } from "./rate-limit";
 import type { ActiveContext } from "./session";
 import type { PostCategory, PostScope, PostStatus, ReactionKind, Role } from "./constants";
 
@@ -520,6 +521,22 @@ export async function createPost(
     throw new AccessError("access.postingToTheGlobalFeedIsNot");
   }
 
+  /**
+   * A CEILING ON ENTHUSIASM. The three-school simulation fired fifteen posts
+   * from one pupil in a few seconds and every one entered the review queue —
+   * one bored child could bury a school's moderation desk. Pupils get five
+   * an hour; staff get thirty, because a circular-writing morning is real
+   * and a staff account spamming is a compromised account, which thirty an
+   * hour still caps. The window rides the same RateLimit table sign-in uses.
+   */
+  const postLimit = role === "STUDENT" ? 5 : 30;
+  const limiter = await consume(`post:${membershipId ?? user.id}`, postLimit, 60 * 60 * 1000);
+  if (!limiter.allowed) {
+    throw new AccessError("access.youArePostingALot", "FORBIDDEN", {
+      minutes: Math.max(1, Math.ceil(limiter.retryAfterSeconds / 60)),
+    });
+  }
+
   if (input.scope === "CLASS") {
     if (!input.classId) throw new AccessError("access.chooseAClass");
     if (role === "STUDENT") {
@@ -698,6 +715,60 @@ export async function moderatePost(
     targetId: postId,
     meta: { reason: reason?.trim() ?? null },
   });
+}
+
+/**
+ * The review queue, grouped by author — the shape a FLOOD has.
+ *
+ * Fifteen posts waiting are almost never fifteen children; they are one
+ * child fifteen times, and clearing them one click each is what made the
+ * simulation's spam incident thirty clicks of admin time. Admin only: a
+ * teacher's queue is one class and stays per-post.
+ */
+export async function pendingByAuthor(
+  session: ActiveContext,
+): Promise<{ authorUserId: string; name: string; count: number }[]> {
+  const { schoolId, role } = session;
+  if (role !== "ADMIN" || !schoolId) return [];
+  const groups = await db.post.groupBy({
+    by: ["authorUserId"],
+    where: { schoolId, status: "PENDING" },
+    _count: { _all: true },
+  });
+  const authors = await db.user.findMany({
+    where: { id: { in: groups.map((g) => g.authorUserId) } },
+    select: { id: true, name: true, preferredName: true },
+  });
+  const nameOf = new Map(authors.map((a) => [a.id, a.preferredName ?? a.name]));
+  return groups
+    .map((g) => ({ authorUserId: g.authorUserId, name: nameOf.get(g.authorUserId) ?? "?", count: g._count._all }))
+    .sort((a, b) => b.count - a.count);
+}
+
+/**
+ * One decision over everything an author has waiting. Runs the ordinary
+ * `moderatePost` per post — same status writes, same notification to the
+ * author per post, same audit line — so a bulk decision is exactly many
+ * single ones, not a second reviewing code path that could drift.
+ */
+export async function moderateAuthorPending(
+  session: ActiveContext,
+  authorUserId: string,
+  decision: "APPROVE" | "REJECT",
+  reason?: string,
+): Promise<{ decided: number }> {
+  const { schoolId, role } = session;
+  if (role !== "ADMIN" || !schoolId) throw new AccessError("access.youCannotReviewPosts");
+  const pending = await db.post.findMany({
+    where: { schoolId, status: "PENDING", authorUserId },
+    select: { id: true },
+  });
+  let decided = 0;
+  for (const post of pending) {
+    await moderatePost(session, post.id, decision, reason);
+    decided++;
+  }
+  return { decided };
 }
 
 /** Pin / unpin. Admin-only: pinning is a whole-school editorial decision. */

@@ -697,6 +697,13 @@ export const mr: Dictionary = {
   },
 
   bulletin: {
+    bulkTitle: "एक व्यक्ती, अनेक पोस्ट",
+    bulkWaiting: "{count} प्रतीक्षेत",
+    bulkApproveCta: "सर्व {count} स्वीकारा",
+    bulkRejectCta: "सर्व {count} नाकारा",
+    bulkReasonPlaceholder: "एक कारण, प्रत्येक नाकारलेल्या पोस्टवर लिहिले जाईल…",
+    bulkApproved: "{count} पोस्ट स्वीकारल्या.",
+    bulkRejected: "{count} पोस्ट नाकारल्या.",
     hideExplainer: "एखादी पोस्ट लपवल्याने ती फक्त तुमच्या शाळेसाठी हटते — ती प्रकाशित करणाऱ्या शाळेला कळवले जात नाही आणि इतर कोणत्याही शाळेवर परिणाम होत नाही. दुसऱ्या शाळेची पोस्ट सर्वांसाठी काढण्याचा मार्ग नाही: त्यासाठी प्रत्येक शाळेवर अधिकार असलेले कोणीतरी लागेल, आणि EduLink मध्ये अशी भूमिका नाही.",
     unknownSchool: "अज्ञात शाळा",
     title: "सोशल मीडिया",
@@ -1720,6 +1727,7 @@ export const mr: Dictionary = {
   },
 
   access: {
+    youArePostingALot: "तुम्ही खूप पोस्ट करत आहात — सुमारे {minutes} मिनिटांनी पुन्हा प्रयत्न करा.",
     onlyAnAdminEditsTheProfile: "निर्देशिका प्रोफाइल फक्त शाळेचा प्रशासक बदलतो.",
     onlySchoolStaffReadTheBoard: "जागांचा बोर्ड फक्त शाळेचे कर्मचारी पाहतात.",
     onlyAParentAsksAboutAdmission: "प्रवेशाबद्दल फक्त पालक विचारतात.",
@@ -4725,6 +4733,9 @@ export const mr: Dictionary = {
     noneSoon: "पुढच्या महिन्यात काही नाही — पुढचे कोण ते पाहा",
   },
   intake: {
+    classWasPromoted: "या वर्गाचा गट आधीच पुढच्या वर्षात गेला आहे — तुम्हाला हाच वर्ग हवा आहे का ते तपासा.",
+    promotedBadge: "मागील वर्षाचा वर्ग",
+    badBirthdate: "जन्मतारीख वाचता आली नाही — dd/mm/yyyy लिहा.",
     title: "विद्यार्थ्यांना प्रवेश द्या",
     subtitle: "प्रवेश यादी चिकटवा किंवा अपलोड करा. प्रत्येक ओळ पटावरचा एक विद्यार्थी बनते — जन्मतारीख, वर्ग आणि पालकाला निमंत्रणासह.",
     backToPeople: "लोक",

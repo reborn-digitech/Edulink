@@ -819,6 +819,18 @@ CREATE POLICY "ExpertInvite_readable" ON "ExpertInvite"
          OR "tokenHash" = current_setting('app.join_code', true)
         );
 
+  -- The token-holder consuming their own live invitation. See the
+  -- note in scripts/gen-rls.ts above the ExpertInvite write policy.
+DROP POLICY IF EXISTS "ExpertInvite_accept_update" ON "ExpertInvite";
+CREATE POLICY "ExpertInvite_accept_update" ON "ExpertInvite"
+  FOR UPDATE
+  USING (current_setting('app.join_code', true) <> ''
+          AND "tokenHash" = current_setting('app.join_code', true)
+     AND "acceptedAt" IS NULL
+     AND "revokedAt" IS NULL)
+  WITH CHECK (current_setting('app.join_code', true) <> ''
+          AND "tokenHash" = current_setting('app.join_code', true));
+
 -- MentorThread
 ALTER TABLE "MentorThread" ENABLE ROW LEVEL SECURITY;
 ALTER TABLE "MentorThread" FORCE ROW LEVEL SECURITY;

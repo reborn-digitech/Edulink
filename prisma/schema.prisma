@@ -389,6 +389,14 @@ model Class {
   color      String? // accent for the class card
   joinCode   String  @unique // student self-join code, also encoded in the room QR
 
+  /// Stamped when a promotion moved this class's cohort on (promotion.ts).
+  /// Not cleared until the class is archived or reused for a new year: while
+  /// it stands, this is LAST year's class, and admitting a pupil into it
+  /// deserves the warning the intake results now carry. The three-school
+  /// simulation put a transferred child into exactly such a ghost class with
+  /// nothing flagging it.
+  promotedAt DateTime?
+
   archivedAt DateTime?
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt

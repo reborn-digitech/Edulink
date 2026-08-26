@@ -9,6 +9,7 @@ import {
   addComment,
   createPost,
   moderatePost,
+  moderateAuthorPending,
   reportContent,
   toggleReaction,
   togglePin,
@@ -152,6 +153,26 @@ export async function review(
     if (error instanceof AccessError)
       return { ok: false, error: (await getT())(error.key, error.vars) };
     console.error("[review]", error);
+    return { ok: false, error: (await getT())("common.somethingWrong") };
+  }
+}
+
+/** One decision over everything an author has waiting — see bulk-review.tsx. */
+export async function reviewAllFrom(
+  authorUserId: string,
+  decision: "APPROVE" | "REJECT",
+  reason?: string,
+): Promise<{ ok: boolean; decided?: number; error?: string }> {
+  const session = await getSession();
+  if (!session) return { ok: false, error: (await getT())("common.logInAgain") };
+  try {
+    const { decided } = await moderateAuthorPending(session, authorUserId, decision, reason);
+    revalidatePath("/bulletin");
+    return { ok: true, decided };
+  } catch (error) {
+    if (error instanceof AccessError)
+      return { ok: false, error: (await getT())(error.key, error.vars) };
+    console.error("[review-all]", error);
     return { ok: false, error: (await getT())("common.somethingWrong") };
   }
 }

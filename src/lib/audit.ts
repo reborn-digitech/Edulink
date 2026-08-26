@@ -42,8 +42,19 @@ export async function audit(entry: {
   meta?: Record<string, unknown>;
 }): Promise<void> {
   try {
-    const hdrs = await headers();
-    const ip = hdrs.get("x-forwarded-for")?.split(",")[0]?.trim() ?? null;
+    /**
+     * The IP is best-effort CONTEXT, not the record. `headers()` throws
+     * outside a request scope — cron jobs, scripts, the simulation harness —
+     * and for as long as that throw sat inside this function's main try, it
+     * took the WHOLE entry with it: every audit line written from outside a
+     * request was lost, loudly, a full stack per call. The three-school
+     * simulation showed the cost — enquiries opened, marks saved and pupils
+     * departing, none of it on the record. An audit row with a null IP is a
+     * record; a stack trace instead of a row is not.
+     */
+    const ip = await headers()
+      .then((hdrs) => hdrs.get("x-forwarded-for")?.split(",")[0]?.trim() ?? null)
+      .catch(() => null);
     const meta = writeJson(entry.meta ?? {});
 
     if (entry.schoolId) {
