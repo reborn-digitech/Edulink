@@ -2617,6 +2617,8 @@ export const mr: Dictionary = {
     excusedHint: "ज्ञात कारणाने गैरहजर",
   },
   student: {
+    todayLessons: "आजचे तास",
+    todayLessonsBody: "तुमचा दिवस, तासागणिक. संपूर्ण आठवडा वेळापत्रकावर आहे.",
     practiceCardTitle: "तुमचा सराव",
     practiceCardBody: "सरावातून आतापर्यंत काय जमले.",
     topicsPractised: "हाताळलेले विषय",

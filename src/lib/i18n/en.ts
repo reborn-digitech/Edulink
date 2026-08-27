@@ -2852,6 +2852,8 @@ export const en = {
   /* A pupil's own pages                                                     */
   /* ---------------------------------------------------------------------- */
   student: {
+    todayLessons: "Today’s lessons",
+    todayLessonsBody: "Your day, period by period. The whole week is on your timetable.",
     practiceCardTitle: "Your practice",
     practiceCardBody: "What the practising has added up to.",
     topicsPractised: "Topics tried",

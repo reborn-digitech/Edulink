@@ -2620,6 +2620,8 @@ export const hi: Dictionary = {
     excusedHint: "ज्ञात कारण से गैर-हाज़िर",
   },
   student: {
+    todayLessons: "आज के पीरियड",
+    todayLessonsBody: "आपका दिन, पीरियड दर पीरियड। पूरा सप्ताह समय-सारणी पर है।",
     practiceCardTitle: "आपका अभ्यास",
     practiceCardBody: "अभ्यास से अब तक क्या जुड़ा।",
     topicsPractised: "आज़माए विषय",

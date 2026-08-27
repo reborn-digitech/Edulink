@@ -1,18 +1,22 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   CalendarCheckIcon,
   ChartLineUpIcon,
   ClipboardTextIcon,
   FireIcon,
+  ClockIcon,
 } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { examMarksFor } from "@/lib/exams";
+import { studentWeek } from "@/lib/timetable";
+import { formatTimeRange } from "@/lib/school-day";
 import { ownWorkScope } from "@/lib/grading";
 import { ExamMarksCards } from "@/components/exams/exam-marks";
 import { CelebrationsLink } from "@/components/celebrations/celebrations-link";
 import { db } from "@/lib/db";
 import { getAttendanceSummary, computeStreak } from "@/lib/attendance";
-import { addDaysToKey, formatDateKey, isWithin, relativeTime, todayKey } from "@/lib/dates";
+import { addDaysToKey, formatDateKey, isWithin, relativeTime, todayKey, weekdayOfKey } from "@/lib/dates";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -77,6 +81,28 @@ export default async function StudentHome({
 
   const examMarks = await examMarksFor(ctx);
 
+  /**
+   * THE DAY'S LESSONS, FIRST-CLASS ON THE DASHBOARD. The pupil's Today page
+   * showed attendance, homework due and exam marks — and not one word about
+   * which lessons the day actually holds, while /timetable rendered the
+   * whole week happily. The same gap the teacher's page had the day before,
+   * reported by the same person testing; the same shape of fix.
+   */
+  const week = await studentWeek(ctx, ctx.membershipId, { weekOf: today, todayKey: today });
+  const weekday = weekdayOfKey(today);
+  const dayColumn = week.days.find((day) => day.weekday === weekday);
+  const closedToday = dayColumn?.closed ?? false;
+  const periodOrder = new Map(week.periods.map((period) => [period.id, period]));
+  const lessonsToday = closedToday
+    ? []
+    : week.slots
+        .filter((slot) => slot.weekday === weekday)
+        .sort(
+          (a, b) =>
+            (periodOrder.get(a.periodId)?.position ?? 0) -
+            (periodOrder.get(b.periodId)?.position ?? 0),
+        );
+
   return (
     <div className="space-y-6">
       {welcome === "1" && <StudentWelcome name={name} handle={handle ?? null} />}
@@ -137,6 +163,56 @@ export default async function StudentHome({
           hint={t("student.lastFourWeeks")}
         />
       </div>
+
+      <Card>
+        <CardHeader
+          icon={<ClockIcon weight="duotone" className="size-5" />}
+          title={t("student.todayLessons")}
+          description={
+            closedToday
+              ? t("teacher.closedToday", { name: dayColumn?.closedName ?? "" })
+              : t("student.todayLessonsBody")
+          }
+          action={
+            <Link href="/timetable" className="text-sm font-medium text-accent hover:underline">
+              {t("teacher.openTimetable")}
+            </Link>
+          }
+        />
+        <CardBody>
+          {lessonsToday.length === 0 ? (
+            <p className="py-4 text-center text-sm text-fg-muted">
+              {closedToday
+                ? t("teacher.closedToday", { name: dayColumn?.closedName ?? "" })
+                : t("teacher.noLessonsToday")}
+            </p>
+          ) : (
+            <ul className="divide-y divide-border">
+              {lessonsToday.map((slot) => {
+                const period = periodOrder.get(slot.periodId);
+                return (
+                  <li key={slot.id} className="flex items-center gap-3 py-2.5">
+                    <span className="w-28 shrink-0">
+                      <span className="block text-sm font-medium text-fg">{period?.name}</span>
+                      <span className="block text-xs tabular-nums text-fg-muted">
+                        {period ? formatTimeRange(period.startMinute, period.endMinute) : null}
+                      </span>
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate text-sm font-semibold text-fg">
+                        {slot.subject}
+                      </span>
+                      <span className="block truncate text-xs text-fg-muted">
+                        {[slot.teacherName, slot.room].filter(Boolean).join(" · ")}
+                      </span>
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </CardBody>
+      </Card>
 
       <Card>
         <CardHeader
