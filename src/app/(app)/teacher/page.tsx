@@ -82,17 +82,97 @@ export default async function TeacherHome() {
   const classIds = await teacherClassIds(ctx.schoolId, ctx.membershipId);
 
   /**
+   * EVERY TEACHER'S DAY STARTS WITH THE TIMETABLE. This block used to live
+   * only inside the no-form-class branch below — the fix that gave a subject
+   * teacher their lessons quietly left every CLASS teacher without them: a
+   * form teacher's Today page showed registers and grading and not one word
+   * about what they were teaching, which a person testing as one reported
+   * within a day. Computed once, rendered on both shapes of the page.
+   */
+  const week = await teacherWeek(ctx, ctx.membershipId, { weekOf: dateKey, todayKey: dateKey });
+  const weekday = weekdayOfKey(dateKey);
+  const today = week.days.find((day) => day.weekday === weekday);
+  const closed = today?.closed ?? false;
+  const periodOrder = new Map(week.periods.map((period) => [period.id, period]));
+  const lessons = closed
+    ? []
+    : week.slots
+        .filter((slot) => slot.weekday === weekday)
+        .sort(
+          (a, b) =>
+            (periodOrder.get(a.periodId)?.position ?? 0) -
+            (periodOrder.get(b.periodId)?.position ?? 0),
+        );
+  const coveringToday = lessons.filter((slot) => slot.borrowed).length;
+  const classesTaught = new Set(week.slots.map((slot) => slot.classId)).size;
+  const first = lessons[0] && periodOrder.get(lessons[0].periodId);
+  const last = lessons[lessons.length - 1] && periodOrder.get(lessons[lessons.length - 1]!.periodId);
+
+  const lessonsCard = (
+    <Card>
+      <CardHeader
+        icon={<CalendarBlankIcon weight="duotone" className="size-5" />}
+        title={t("teacher.yourLessons")}
+        description={
+          closed
+            ? t("teacher.closedToday", { name: today?.closedName ?? "" })
+            : t("teacher.lessonsInPeriodOrder")
+        }
+        action={
+          <Button asChild size="sm" variant="ghost">
+            <Link href="/timetable">{t("teacher.openTimetable")}</Link>
+          </Button>
+        }
+      />
+      <CardBody>
+        {lessons.length === 0 ? (
+          <p className="py-4 text-center text-sm text-fg-muted">
+            {closed
+              ? t("teacher.closedToday", { name: today?.closedName ?? "" })
+              : t("teacher.noLessonsToday")}
+          </p>
+        ) : (
+          <ul className="divide-y divide-border">
+            {lessons.map((slot) => {
+              const period = periodOrder.get(slot.periodId);
+              return (
+                <li key={slot.id} className="flex items-center gap-3 py-2.5">
+                  <span className="w-28 shrink-0">
+                    <span className="block text-sm font-medium text-fg">{period?.name}</span>
+                    <span className="block text-xs tabular-nums text-fg-muted">
+                      {period ? formatTimeRange(period.startMinute, period.endMinute) : null}
+                    </span>
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate text-sm font-semibold text-fg">
+                      {slot.subject}
+                    </span>
+                    <span className="block truncate text-xs text-fg-muted">
+                      {slot.className}
+                      {slot.room ? ` · ${slot.room}` : ""}
+                    </span>
+                  </span>
+                  {slot.borrowed ? (
+                    <span className="shrink-0 rounded-full bg-warn-soft px-2.5 py-1 text-xs font-semibold text-warn">
+                      {t("teacher.covering")}
+                    </span>
+                  ) : null}
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </CardBody>
+    </Card>
+  );
+
+  /**
    * NO FORM CLASS IS NOT NO DAY. A subject teacher holds no class of their own
    * — no register, no roll — and everything below this branch is built on the
-   * form-class list, so they used to fall straight into "no classes assigned
-   * yet" while their timetable showed twenty-nine lessons. Their day is the
-   * timetable's, so that is what this renders: today's lessons in period
-   * order, cover included. The empty state survives only for a teacher with
-   * no form class AND no timetabled lesson, where it is finally true.
+   * form-class list. The empty state survives only for a teacher with no form
+   * class AND no timetabled lesson, where it is finally true.
    */
   if (classIds.length === 0) {
-    const week = await teacherWeek(ctx, ctx.membershipId, { weekOf: dateKey, todayKey: dateKey });
-
     if (week.slots.length === 0) {
       return (
         <EmptyState
@@ -102,25 +182,6 @@ export default async function TeacherHome() {
         />
       );
     }
-
-    const weekday = weekdayOfKey(dateKey);
-    const today = week.days.find((day) => day.weekday === weekday);
-    const closed = today?.closed ?? false;
-
-    const periodOrder = new Map(week.periods.map((period) => [period.id, period]));
-    const lessons = closed
-      ? []
-      : week.slots
-          .filter((slot) => slot.weekday === weekday)
-          .sort(
-            (a, b) =>
-              (periodOrder.get(a.periodId)?.position ?? 0) -
-              (periodOrder.get(b.periodId)?.position ?? 0),
-          );
-    const coveringToday = lessons.filter((slot) => slot.borrowed).length;
-    const classesTaught = new Set(week.slots.map((slot) => slot.classId)).size;
-    const first = lessons[0] && periodOrder.get(lessons[0].periodId);
-    const last = lessons[lessons.length - 1] && periodOrder.get(lessons[lessons.length - 1]!.periodId);
 
     return (
       <div className="space-y-6">
@@ -160,61 +221,7 @@ export default async function TeacherHome() {
           />
         </div>
 
-        <Card>
-          <CardHeader
-            icon={<CalendarBlankIcon weight="duotone" className="size-5" />}
-            title={t("teacher.yourLessons")}
-            description={
-              closed
-                ? t("teacher.closedToday", { name: today?.closedName ?? "" })
-                : t("teacher.lessonsInPeriodOrder")
-            }
-            action={
-              <Button asChild size="sm" variant="ghost">
-                <Link href="/timetable">{t("teacher.openTimetable")}</Link>
-              </Button>
-            }
-          />
-          <CardBody>
-            {lessons.length === 0 ? (
-              <p className="py-4 text-center text-sm text-fg-muted">
-                {closed
-                  ? t("teacher.closedToday", { name: today?.closedName ?? "" })
-                  : t("teacher.noLessonsToday")}
-              </p>
-            ) : (
-              <ul className="divide-y divide-border">
-                {lessons.map((slot) => {
-                  const period = periodOrder.get(slot.periodId);
-                  return (
-                    <li key={slot.id} className="flex items-center gap-3 py-2.5">
-                      <span className="w-28 shrink-0">
-                        <span className="block text-sm font-medium text-fg">{period?.name}</span>
-                        <span className="block text-xs tabular-nums text-fg-muted">
-                          {period ? formatTimeRange(period.startMinute, period.endMinute) : null}
-                        </span>
-                      </span>
-                      <span className="min-w-0 flex-1">
-                        <span className="block truncate text-sm font-semibold text-fg">
-                          {slot.subject}
-                        </span>
-                        <span className="block truncate text-xs text-fg-muted">
-                          {slot.className}
-                          {slot.room ? ` · ${slot.room}` : ""}
-                        </span>
-                      </span>
-                      {slot.borrowed ? (
-                        <span className="shrink-0 rounded-full bg-warn-soft px-2.5 py-1 text-xs font-semibold text-warn">
-                          {t("teacher.covering")}
-                        </span>
-                      ) : null}
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
-          </CardBody>
-        </Card>
+        {lessonsCard}
       </div>
     );
   }
@@ -263,6 +270,8 @@ export default async function TeacherHome() {
       </div>
 
       {marksCard}
+
+      {lessonsCard}
 
       <div className="grid gap-3 sm:grid-cols-3">
         <StatTile
