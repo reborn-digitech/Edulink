@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeftIcon, ChatCircleIcon, GlobeIcon, EyeSlashIcon } from "@phosphor-icons/react/ssr";
-import { requireRole } from "@/lib/tenancy";
+import { requireRole, requireParent, requireUser } from "@/lib/tenancy";
 import { listGlobalFeed } from "@/lib/global-feed";
 import { relativeTime } from "@/lib/dates";
 import { Card, CardBody } from "@/components/ui/card";
@@ -35,7 +35,17 @@ export default async function GlobalFeedPage({
   searchParams: Promise<{ category?: string; q?: string; tag?: string }>;
 }) {
   const t = await getT();
-  const ctx = await requireRole("ADMIN", "TEACHER", "STUDENT", "PARENT");
+  /* A parent's session deliberately carries NO active school, so requireRole's
+   * school demand bounced every guardian to a switcher that had no school to
+   * offer them — the global feed was unreachable for exactly the people with
+   * children at more than one school. Same guard split as /reviews: parents
+   * through the guard shaped for them, everyone else through requireRole —
+   * which also now admits the PRINCIPAL, who was locked out by omission. */
+  const who = await requireUser();
+  const ctx =
+    who.role === "PARENT"
+      ? await requireParent()
+      : await requireRole("ADMIN", "PRINCIPAL", "TEACHER", "STUDENT");
   const isAdmin = ctx.role === "ADMIN";
 
   const { category: rawCategory, q: rawQ, tag: rawTag } = await searchParams;

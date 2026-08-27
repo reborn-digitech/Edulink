@@ -80,6 +80,33 @@ export async function listGlobalFeed(
   const schoolId = session.schoolId;
   const isStaff = session.role === "ADMIN" || session.role === "TEACHER";
 
+  /**
+   * A GUARDIAN READS THROUGH THEIR CHILDREN'S SCHOOLS. A parent binds no
+   * school of their own, and for as long as this function keyed hides on
+   * `session.schoolId` alone, the page above it had to demand a school —
+   * which sent every parent to the switcher, which offered them no school
+   * to pick: a locked door with a sign saying "use the door". The parent of
+   * two children at two schools is exactly who reported it.
+   *
+   * Their hide set is the UNION across their children's schools: a school
+   * hiding a post is curating what its community sees, and a guardian
+   * belongs to every community their children do — content one child's
+   * school deliberately took down does not become fine because the other
+   * child's school never looked at it. Their guardianship schools are
+   * already their tenant set, so these hide rows are theirs to read.
+   */
+  const hideScopeSchoolIds: string[] = schoolId
+    ? [schoolId]
+    : session.role === "PARENT"
+      ? (
+          await db.guardianship.findMany({
+            where: { parentUserId: session.user.id, status: "ACTIVE" },
+            select: { studentSchoolId: true },
+            distinct: ["studentSchoolId"],
+          })
+        ).map((g) => g.studentSchoolId)
+      : [];
+
   const [posts, hides] = await Promise.all([
     db.post.findMany({
       where: {
@@ -105,8 +132,11 @@ export async function listGlobalFeed(
       orderBy: [{ pinnedAt: "desc" }, { createdAt: "desc" }],
       take: 100,
     }),
-    schoolId
-      ? db.globalPostHide.findMany({ where: { schoolId }, select: { postId: true } })
+    hideScopeSchoolIds.length > 0
+      ? db.globalPostHide.findMany({
+          where: { schoolId: { in: hideScopeSchoolIds } },
+          select: { postId: true },
+        })
       : Promise.resolve([]),
   ]);
 
@@ -140,7 +170,8 @@ export async function listGlobalFeed(
       // Empty when the school is gone; the page renders its own words for that.
       schoolName: post.globalSchoolName ?? post.school?.name ?? "",
       schoolId: post.school?.id ?? "",
-      ours: post.schoolId === schoolId,
+      // For a guardian, "ours" means a school one of their children attends.
+      ours: schoolId ? post.schoolId === schoolId : hideScopeSchoolIds.includes(post.schoolId ?? ""),
       hiddenHere: hidden.has(post.id),
       };
     });

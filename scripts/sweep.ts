@@ -1366,6 +1366,7 @@ async function leaveAndPrincipal(schoolId: string) {
     await check(head, "/vacancies", 200, "…and reads the platform board");
     await check(head, "/enquiries", 200, "…and the school's enquiries");
     await check(head, "/admin/directory", 307, "⚠ …but does not edit the directory profile");
+    await check(head, "/bulletin/global", 200, "…and reads the global feed, which once locked principals out by omission");
 
     const anyClass = await db.class.findFirst({
       where: { schoolId, archivedAt: null },
@@ -1952,11 +1953,12 @@ async function main() {
     await check(parent, p);
   }
 
-  // A parent has no Membership and so no active school until they pick one, and
-  // the global feed needs one: which posts are HIDDEN is a per-school decision,
-  // so serving the feed with no school bound would show a guardian content their
-  // child's school had deliberately taken down. Sent to the switcher instead.
-  await check(parent, "/bulletin/global", 307, "needs a school for that school's hides to apply");
+  // A guardian reads the global feed through their CHILDREN'S schools: the
+  // hide set is the union across them, so nothing a child's school took down
+  // is shown. The old answer here — 307 to a switcher that had no school to
+  // offer a parent — was a locked door with a sign saying "use the door",
+  // found by a person testing with children at two schools.
+  await check(parent, "/bulletin/global", 200, "⚠ a guardian reads the global feed through their children's schools");
   if (thread) await check(parent, `/remarks/${thread.id}`, 200, "own thread");
 
   /* ---- negative: cross-tenant and cross-role ---- */
