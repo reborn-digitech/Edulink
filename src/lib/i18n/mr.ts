@@ -2480,6 +2480,8 @@ export const mr: Dictionary = {
     academicYear: "शैक्षणिक वर्ष",
   },
   parent: {
+    todayLessons: "{name}चे आजचे तास",
+    todayLessonsBody: "तासागणिक. संपूर्ण आठवडा वेळापत्रक पानावर आहे.",
     childLeftTitle: "{name} यांनी {date} रोजी {school} सोडली",
     childLeftBody: "शाळेने जे लिहिले — प्रगतीपत्रके, उपस्थिती, बॅज, स्थानांतरण प्रमाणपत्र — ते {name} च्या शाळा नोंदीत जपले आहे, आणि पुढच्या शाळेला दाखवण्यासाठी तुमचेच आहे.",
     childLeftRecord: "{name} ची शाळा नोंद",

@@ -8,14 +8,17 @@ import {
   FireIcon,
   PlusIcon,
   TrophyIcon,
+  ClockIcon,
 } from "@phosphor-icons/react/ssr";
 import { requireParent, assertGuardianAccess } from "@/lib/tenancy";
 import { examMarksFor } from "@/lib/exams";
+import { childWeek } from "@/lib/timetable";
+import { formatTimeRange } from "@/lib/school-day";
 import { ExamMarksCards } from "@/components/exams/exam-marks";
 import { listContexts } from "@/lib/session";
 import { db } from "@/lib/db";
 import { getAttendanceSummary, computeStreak } from "@/lib/attendance";
-import { addDaysToKey, formatDateKey, relativeTime, todayKey } from "@/lib/dates";
+import { addDaysToKey, formatDateKey, relativeTime, todayKey, weekdayOfKey } from "@/lib/dates";
 import { overallForStudent } from "@/lib/grading";
 import { pendingConsents } from "@/lib/competitions";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
@@ -84,6 +87,28 @@ export default async function ParentDashboard({
 
   const today = todayKey(timezone);
   const fourWeeksAgo = addDaysToKey(today, -28);
+
+  /**
+   * THE CHILD'S DAY, ON THE PARENT'S OVERVIEW. Third page of the same
+   * family in three days — teacher, pupil, and now guardian: the timetable
+   * page rendered the week while the dashboard said nothing about which
+   * lessons TODAY holds. Same card, the child's name on it, switching with
+   * the child switcher because it is computed off the selected child.
+   */
+  const week = await childWeek(session, selectedId, { weekOf: today, todayKey: today });
+  const weekday = weekdayOfKey(today);
+  const dayColumn = week.days.find((day) => day.weekday === weekday);
+  const closedToday = dayColumn?.closed ?? false;
+  const periodOrder = new Map(week.periods.map((period) => [period.id, period]));
+  const lessonsToday = closedToday
+    ? []
+    : week.slots
+        .filter((slot) => slot.weekday === weekday)
+        .sort(
+          (a, b) =>
+            (periodOrder.get(a.periodId)?.position ?? 0) -
+            (periodOrder.get(b.periodId)?.position ?? 0),
+        );
 
   const [attendance, todayRecord, grades, upcoming, threads, awaitingConsent] = await Promise.all([
     getAttendanceSummary(student.schoolId, selectedId, fourWeeksAgo, today),
@@ -296,6 +321,57 @@ export default async function ParentDashboard({
       {/* Attendance detail lives on Attendance and marks on Assignments →
           Marked; the overview keeps what needs a parent NOW — today's status,
           what is due, messages, and the latest exam marks. */}
+
+      {/* ---------------- today's lessons ---------------- */}
+      <Card>
+        <CardHeader
+          icon={<ClockIcon weight="duotone" className="size-5" />}
+          title={t("parent.todayLessons", { name: childName })}
+          description={
+            closedToday
+              ? t("teacher.closedToday", { name: dayColumn?.closedName ?? "" })
+              : t("parent.todayLessonsBody")
+          }
+          action={
+            <Link href="/parent/timetable" className="text-sm font-medium text-accent hover:underline">
+              {t("teacher.openTimetable")}
+            </Link>
+          }
+        />
+        <CardBody>
+          {lessonsToday.length === 0 ? (
+            <p className="py-4 text-center text-sm text-fg-muted">
+              {closedToday
+                ? t("teacher.closedToday", { name: dayColumn?.closedName ?? "" })
+                : t("teacher.noLessonsToday")}
+            </p>
+          ) : (
+            <ul className="divide-y divide-border">
+              {lessonsToday.map((slot) => {
+                const period = periodOrder.get(slot.periodId);
+                return (
+                  <li key={slot.id} className="flex items-center gap-3 py-2.5">
+                    <span className="w-28 shrink-0">
+                      <span className="block text-sm font-medium text-fg">{period?.name}</span>
+                      <span className="block text-xs tabular-nums text-fg-muted">
+                        {period ? formatTimeRange(period.startMinute, period.endMinute) : null}
+                      </span>
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate text-sm font-semibold text-fg">
+                        {slot.subject}
+                      </span>
+                      <span className="block truncate text-xs text-fg-muted">
+                        {[slot.teacherName, slot.room].filter(Boolean).join(" · ")}
+                      </span>
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </CardBody>
+      </Card>
 
       {/* ---------------- upcoming ---------------- */}
       <Card>

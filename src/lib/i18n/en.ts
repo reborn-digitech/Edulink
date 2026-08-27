@@ -2707,6 +2707,8 @@ export const en = {
   /* A guardian's pages â the screens this product exists to put in a hand    */
   /* ---------------------------------------------------------------------- */
   parent: {
+    todayLessons: "{name}’s lessons today",
+    todayLessonsBody: "Period by period. The whole week is on the Timetable page.",
     childLeftTitle: "{name} left {school} on {date}",
     childLeftBody: "Everything the school wrote — report cards, attendance, badges, the leaving certificate — is kept on {name}’s school record, and it stays yours to show a next school.",
     childLeftRecord: "{name}’s school record",

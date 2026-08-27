@@ -2483,6 +2483,8 @@ export const hi: Dictionary = {
     academicYear: "शैक्षणिक वर्ष",
   },
   parent: {
+    todayLessons: "{name} के आज के पीरियड",
+    todayLessonsBody: "पीरियड दर पीरियड। पूरा सप्ताह समय-सारणी पृष्ठ पर है।",
     childLeftTitle: "{name} ने {date} को {school} छोड़ा",
     childLeftBody: "स्कूल ने जो कुछ लिखा — रिपोर्ट कार्ड, उपस्थिति, बैज, स्थानांतरण प्रमाणपत्र — वह {name} के स्कूल रिकॉर्ड में सुरक्षित है, और अगले स्कूल को दिखाने के लिए आपका है।",
     childLeftRecord: "{name} का स्कूल रिकॉर्ड",
