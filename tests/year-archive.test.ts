@@ -3,6 +3,7 @@ import { PrismaClient } from "@prisma/client";
 import { AccessError } from "@/lib/tenancy";
 import {
   listClosedYears,
+  closedYearsForPupil,
   pupilYearArchive,
   teacherYearArchive,
   schoolYearArchive,
@@ -238,6 +239,62 @@ describe("listing years", () => {
   it("⚠ lists only CLOSED years — the current one belongs to the ordinary pages", async () => {
     const years = await listClosedYears(schoolId);
     expect(years.map((y) => y.name)).toEqual(["ZZ 2024–25"]);
+  });
+
+  /**
+   * ⚠ A pupil's chips are THEIR years, not the school's history. A child who
+   * joined in the school's third year was offered every earlier closed year,
+   * each opening a page of "nothing was recorded" — accurate about the school,
+   * baffling about the child. Found by a person testing a three-year archive.
+   */
+  it("⚠ a pupil is offered only the years they lived", async () => {
+    // The fixture pupil joined at the year's start and is still here.
+    const lived = await closedYearsForPupil(schoolId, pupilM);
+    expect(lived.map((y) => y.name)).toEqual(["ZZ 2024–25"]);
+
+    // Joined AFTER the closed year ended: the chip is not theirs.
+    const late = await db.user.create({
+      data: { name: "ZZ Late Joiner", email: `zz-archive-late-${STAMP}@test.invalid`, prefs: "{}" },
+    });
+    const lateM = await db.membership.create({
+      data: { userId: late.id, schoolId, role: "STUDENT", status: "ACTIVE", joinedAt: new Date("2026-04-01T00:00:00Z") },
+      select: { id: true },
+    });
+    expect(await closedYearsForPupil(schoolId, lateM.id)).toEqual([]);
+
+    // Left BEFORE the closed year began: not theirs either.
+    const early = await db.user.create({
+      data: { name: "ZZ Early Leaver", email: `zz-archive-early-${STAMP}@test.invalid`, prefs: "{}" },
+    });
+    const earlyM = await db.membership.create({
+      data: {
+        userId: early.id, schoolId, role: "STUDENT", status: "ACTIVE",
+        joinedAt: new Date("2023-06-01T00:00:00Z"), leftAt: new Date("2024-03-31T00:00:00Z"),
+      },
+      select: { id: true },
+    });
+    expect(await closedYearsForPupil(schoolId, earlyM.id)).toEqual([]);
+
+    // A leaver who lived the year keeps it — leaving does not erase.
+    const grad = await db.user.create({
+      data: { name: "ZZ Graduate", email: `zz-archive-grad-${STAMP}@test.invalid`, prefs: "{}" },
+    });
+    const gradM = await db.membership.create({
+      data: {
+        userId: grad.id, schoolId, role: "STUDENT", status: "ACTIVE",
+        joinedAt: Y_START, leftAt: Y_END,
+      },
+      select: { id: true },
+    });
+    expect((await closedYearsForPupil(schoolId, gradM.id)).map((y) => y.name)).toEqual(["ZZ 2024–25"]);
+
+    // A membership of another school reads as nothing, not as the school list.
+    expect(await closedYearsForPupil(schoolId, "not-a-membership")).toEqual([]);
+
+    // These four are this test's own; the office-numbers test downstream
+    // counts the fixture roll and must not find them.
+    await db.membership.deleteMany({ where: { id: { in: [lateM.id, earlyM.id, gradM.id] } } });
+    await db.user.deleteMany({ where: { id: { in: [late.id, early.id, grad.id] } } });
   });
 });
 

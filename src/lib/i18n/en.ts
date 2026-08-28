@@ -168,6 +168,7 @@ export const en = {
     noYearsTitle: "No closed years yet",
     noYearsBody: "The archive fills when the school closes its first academic year. Until then, everything is on the ordinary pages.",
     noYearsAdminBody: "Promoting classes moves children up; it does not file the year. Close an academic year from the calendar page and it appears here.",
+    noYearsPupilBody: "The first year here is still running — a year appears here once the school closes it.",
     closeYearCta: "Open the calendar",
     yearLabel: "Academic year",
     childLabel: "Child",

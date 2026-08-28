@@ -45,6 +45,31 @@ export async function listClosedYears(schoolId: string): Promise<ArchiveYear[]> 
   return years.map((y) => ({ ...y, closedAt: y.closedAt! }));
 }
 
+/**
+ * The closed years ONE PUPIL actually lived at the school.
+ *
+ * The school's list is not the child's list: a pupil who joined in the third
+ * year was being offered the first two as chips, each opening a page of
+ * honest-but-baffling "nothing was recorded" — the school's history dressed
+ * up as gaps in the child's. A year makes this list only if it overlaps the
+ * pupil's own time on the roll, [joinedAt, leftAt or still-here]. Staff keep
+ * the full school list; this is for the pupil's and the guardian's view.
+ */
+export async function closedYearsForPupil(
+  schoolId: string,
+  studentMembershipId: string,
+): Promise<ArchiveYear[]> {
+  const membership = await db.membership.findFirst({
+    where: { id: studentMembershipId, schoolId },
+    select: { joinedAt: true, leftAt: true },
+  });
+  if (!membership) return [];
+  const years = await listClosedYears(schoolId);
+  return years.filter(
+    (y) => y.endDate >= membership.joinedAt && (membership.leftAt === null || y.startDate <= membership.leftAt),
+  );
+}
+
 async function yearOf(schoolId: string, yearId: string) {
   const year = await db.academicYear.findFirst({
     where: { id: yearId, schoolId, closedAt: { not: null } },

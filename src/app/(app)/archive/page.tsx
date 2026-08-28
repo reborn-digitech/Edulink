@@ -13,6 +13,7 @@ import { requireUser } from "@/lib/tenancy";
 import { listContexts } from "@/lib/session";
 import {
   listClosedYears,
+  closedYearsForPupil,
   pupilYearArchive,
   teacherYearArchive,
   schoolYearArchive,
@@ -81,7 +82,12 @@ export default async function ArchivePage({
   }
   if (!schoolId) redirect("/");
 
-  const years = await listClosedYears(schoolId);
+  // A pupil's (or guardian's) chips are the years THAT CHILD lived here, not
+  // the school's whole history — and with the child switcher, each child
+  // brings their own list.
+  const years = pupilMembershipId
+    ? await closedYearsForPupil(schoolId, pupilMembershipId)
+    : await listClosedYears(schoolId);
 
   return (
     <div className="mx-auto max-w-3xl space-y-5">
@@ -116,7 +122,11 @@ export default async function ArchivePage({
           // so their empty state says how — promotion alone never files a
           // year, which is precisely the hole a full year-end walk fell into.
           description={
-            session.role === "ADMIN" ? t("archive.noYearsAdminBody") : t("archive.noYearsBody")
+            session.role === "ADMIN"
+              ? t("archive.noYearsAdminBody")
+              : pupilMembershipId
+                ? t("archive.noYearsPupilBody")
+                : t("archive.noYearsBody")
           }
           action={
             session.role === "ADMIN" ? (
