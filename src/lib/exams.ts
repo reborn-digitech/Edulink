@@ -73,8 +73,25 @@ export async function createSeries(
     // the old one is renamed with the year it was archived in and this one
     // is made fresh. Collision with a live series is still a refusal.
     if (existing.archivedAt) {
+      /**
+       * The stamp is the ARCHIVE date, and two years can share one: a school
+       * closing two overdue years on the same afternoon archives both years'
+       * "Unit Test 1" with the same date, and the second rename collided with
+       * the first — a unique-constraint crash that shut series creation for
+       * that grade and name for good. Found by the third year of a three-year
+       * simulation. A counter breaks the tie the way the eye expects.
+       */
       const stamp = existing.archivedAt.toISOString().slice(0, 10);
-      await db.examSeries.update({ where: { id: existing.id }, data: { name: [name, " (", stamp, ")"].join("") } });
+      let renamed = `${name} (${stamp})`;
+      for (let n = 2; ; n++) {
+        const taken = await db.examSeries.findFirst({
+          where: { schoolId, gradeLevel, name: renamed },
+          select: { id: true },
+        });
+        if (!taken) break;
+        renamed = `${name} (${stamp}) ${n}`;
+      }
+      await db.examSeries.update({ where: { id: existing.id }, data: { name: renamed } });
     } else {
       throw new AccessError("access.thatExamAlreadyExists");
     }

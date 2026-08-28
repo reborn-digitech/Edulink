@@ -434,6 +434,11 @@ export async function setSlot(ctx: ActiveContext, input: SlotInput): Promise<Res
         periodId: input.periodId,
         teacherMembershipId,
         classId: { not: input.classId },
+        // A LIVING class's lesson. Archived classes release their teachers
+        // when they archive, so this filter is normally redundant — but it
+        // states the rule, and it keeps the refusal from naming a class the
+        // school can no longer see anywhere.
+        class: { archivedAt: null },
       },
       select: { subject: true, class: { select: { name: true } } },
     });
@@ -444,6 +449,24 @@ export async function setSlot(ctx: ActiveContext, input: SlotInput): Promise<Res
         errorVars: { class: clash.class.name, subject: clash.subject },
       };
     }
+    /**
+     * SELF-HEAL FOR ROWS ARCHIVED BEFORE RELEASING EXISTED. A class archived
+     * under the old code still holds its teachers, and the database unique on
+     * (school, weekday, period, teacher) would refuse the row below with a
+     * crash the clash filter above no longer predicts. Freeing the dead
+     * class's claim here — exactly where it is contested, one row at a time —
+     * fixes deployed data without a migration.
+     */
+    await db.timetableSlot.updateMany({
+      where: {
+        schoolId: ctx.schoolId,
+        weekday: input.weekday,
+        periodId: input.periodId,
+        teacherMembershipId,
+        class: { archivedAt: { not: null } },
+      },
+      data: { teacherMembershipId: null },
+    });
   }
 
   const slot = await db.timetableSlot.upsert({

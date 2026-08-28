@@ -472,6 +472,19 @@ export async function promoteSchool(
       // walked into.
       if (move.to.kind !== "STAY" && roll.length - moving.length === 0 && !receiving.has(from.id)) {
         await tx.class.update({ where: { id: from.id }, data: { archivedAt: now, promotedAt: now } });
+        /**
+         * An archived class holds nobody's Tuesday. Its slots stay — the
+         * subjects and rooms are the record of what was taught — but the
+         * TEACHER is released, because both the clash check and the database
+         * unique on (school, weekday, period, teacher) count every slot row,
+         * and a dead class's grip on third period blocked the same teacher
+         * from third period in every year that followed. Year two of a
+         * three-year simulation could not build its timetable at all.
+         */
+        await tx.timetableSlot.updateMany({
+          where: { classId: from.id, teacherMembershipId: { not: null } },
+          data: { teacherMembershipId: null },
+        });
         archived += 1;
       } else if (move.to.kind !== "STAY" && moving.length > 0) {
         await tx.class.update({ where: { id: from.id }, data: { promotedAt: now } });

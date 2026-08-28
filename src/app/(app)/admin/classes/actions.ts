@@ -211,6 +211,14 @@ export async function archiveClass(classId: string): Promise<ClassActionResult> 
     await assertClassAccess(ctx, classId, { write: true });
 
     await db.class.update({ where: { id: classId }, data: { archivedAt: new Date() } });
+    // The archived class releases its teachers: slots keep subject and room
+    // as history, but must not block the living timetable's clash checks.
+    // (Restoring the class brings back its shape, not its staffing — the
+    // classes page already flags unstaffed lessons.)
+    await db.timetableSlot.updateMany({
+      where: { classId, teacherMembershipId: { not: null } },
+      data: { teacherMembershipId: null },
+    });
     await audit({
       schoolId: ctx.schoolId,
       actorUserId: ctx.user.id,

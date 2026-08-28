@@ -52,9 +52,20 @@ export async function audit(entry: {
      * departing, none of it on the record. An audit row with a null IP is a
      * record; a stack trace instead of a row is not.
      */
-    const ip = await headers()
-      .then((hdrs) => hdrs.get("x-forwarded-for")?.split(",")[0]?.trim() ?? null)
-      .catch(() => null);
+    let ip: string | null = null;
+    try {
+      // A plain try/catch, NOT a promise .catch(): outside a request scope
+      // Next throws from the headers() CALL itself, synchronously, before any
+      // promise exists — so the .catch this used to be never engaged and the
+      // throw fell through to the outer try, taking the whole entry with it
+      // again. The three-year simulation caught the regression on its first
+      // write.
+      ip = await headers().then(
+        (hdrs) => hdrs.get("x-forwarded-for")?.split(",")[0]?.trim() ?? null,
+      );
+    } catch {
+      ip = null;
+    }
     const meta = writeJson(entry.meta ?? {});
 
     if (entry.schoolId) {

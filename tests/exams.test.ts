@@ -269,6 +269,28 @@ describe("a series name comes round every year", () => {
     expect(old.name).toBe("ZZ Unit Test 1 (2025-04-30)");
     await db.examSeries.deleteMany({ where: { id: { in: [first, second] } } });
   });
+
+  it("⚠ two years archived on the SAME DAY still both step aside", async () => {
+    // A school catching up on two overdue year-closes archives both years'
+    // "Unit Test 1" with the same date-stamp — and the second rename used to
+    // collide with the first on the unique, killing series creation for that
+    // grade and name for good. The third year of a three-year simulation hit
+    // it on its first exam.
+    const sameDay = new Date("2026-08-28T00:00:00Z");
+    const first = await createSeries(admin, { name: "ZZ Unit Test 1", gradeLevel: GRADE });
+    await db.examSeries.update({ where: { id: first }, data: { archivedAt: sameDay } });
+    const second = await createSeries(admin, { name: "ZZ Unit Test 1", gradeLevel: GRADE });
+    await db.examSeries.update({ where: { id: second }, data: { archivedAt: sameDay } });
+    const third = await createSeries(admin, { name: "ZZ Unit Test 1", gradeLevel: GRADE });
+
+    const oldFirst = await db.examSeries.findUniqueOrThrow({ where: { id: first } });
+    const oldSecond = await db.examSeries.findUniqueOrThrow({ where: { id: second } });
+    expect(oldFirst.name).toBe("ZZ Unit Test 1 (2026-08-28)");
+    expect(oldSecond.name).toBe("ZZ Unit Test 1 (2026-08-28) 2");
+    const fresh = await db.examSeries.findUniqueOrThrow({ where: { id: third } });
+    expect(fresh.name).toBe("ZZ Unit Test 1");
+    await db.examSeries.deleteMany({ where: { id: { in: [first, second, third] } } });
+  });
 });
 
 
