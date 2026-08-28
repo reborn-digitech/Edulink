@@ -112,7 +112,22 @@ export default async function ArchivePage({
         <EmptyState
           icon={<ArchiveIcon weight="duotone" className="size-8" />}
           title={t("archive.noYearsTitle")}
-          description={t("archive.noYearsBody")}
+          // The admin is the one person who can change this page's emptiness,
+          // so their empty state says how — promotion alone never files a
+          // year, which is precisely the hole a full year-end walk fell into.
+          description={
+            session.role === "ADMIN" ? t("archive.noYearsAdminBody") : t("archive.noYearsBody")
+          }
+          action={
+            session.role === "ADMIN" ? (
+              <Link
+                href="/admin/calendar"
+                className="text-sm font-medium text-accent-strong hover:underline"
+              >
+                {t("archive.closeYearCta")}
+              </Link>
+            ) : undefined
+          }
         />
       ) : (
         <YearView

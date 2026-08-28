@@ -183,13 +183,16 @@ export function PromotionPlanner({ plan }: { plan: PromotionClass[] }) {
       toast({
         tone: "ok",
         title: t("promotion.done"),
-        description: t("promotion.doneBody", {
-          moved: result.moved,
-          left: result.left,
-          held: result.heldBack,
-          created: result.created,
-          archived: result.archived,
-        }),
+        description: [
+          t("promotion.doneBody", {
+            moved: result.moved,
+            left: result.left,
+            held: result.heldBack,
+            created: result.created,
+            archived: result.archived,
+          }),
+          t("promotion.doneCloseYear"),
+        ].join(" "),
       });
       router.push("/admin/classes");
       router.refresh();
