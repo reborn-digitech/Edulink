@@ -108,16 +108,40 @@ afterAll(async () => {
 describe("the term milestone", () => {
   it("⚠ the principal marks a term finished, and can take it back", async () => {
     const done = await finishTerm(principal, termId);
-    expect(done.ok).toBe(true);
+    expect(done.termId).toBe(termId);
     expect((await db.term.findUniqueOrThrow({ where: { id: termId } })).finishedAt).not.toBeNull();
 
     const undone = await reopenTerm(principal, termId);
-    expect(undone.ok).toBe(true);
+    expect(undone.termId).toBe(termId);
     expect((await db.term.findUniqueOrThrow({ where: { id: termId } })).finishedAt).toBeNull();
   });
 
   it("⚠ a teacher may not", async () => {
     await expect(finishTerm(teacher, termId)).rejects.toBeInstanceOf(AccessError);
+  });
+
+  /**
+   * ⚠ A refusal is THROWN, not soft-returned — the contract the two-school
+   * stress test flagged as inconsistent with every neighbouring guard. A term
+   * id from ANOTHER school (or one that does not exist) throws NOT_FOUND, and
+   * the real term is never touched.
+   */
+  it("⚠ refuses a term from another school by throwing, and touches nothing", async () => {
+    const other = await db.school.create({
+      data: { name: `ZZ LC Other ${STAMP}`, slug: `zz-lc-other-${STAMP}`, code: `ZO${String(STAMP).slice(-6)}`, contactEmail: `zz-lc-other-${STAMP}@test.invalid`, timezone: "Asia/Kolkata" },
+    });
+    const otherYear = await db.academicYear.create({ data: { schoolId: other.id, name: "ZZ Other Year", startDate: Y1_START, endDate: Y1_END } });
+    const otherTerm = await db.term.create({ data: { schoolId: other.id, academicYearId: otherYear.id, name: "ZZ Other Term", startDate: Y1_START, endDate: Y1_END } });
+
+    await expect(finishTerm(admin, otherTerm.id)).rejects.toMatchObject({ key: "access.termNotFound", code: "NOT_FOUND" });
+    await expect(reopenTerm(admin, otherTerm.id)).rejects.toMatchObject({ key: "access.termNotFound", code: "NOT_FOUND" });
+    // The other school's term is untouched by the refused cross-tenant call.
+    expect((await db.term.findUniqueOrThrow({ where: { id: otherTerm.id } })).finishedAt).toBeNull();
+
+    // A wholly unknown id throws the same way.
+    await expect(finishTerm(admin, "not-a-real-term-id")).rejects.toMatchObject({ key: "access.termNotFound" });
+
+    await db.school.delete({ where: { id: other.id } });
   });
 });
 

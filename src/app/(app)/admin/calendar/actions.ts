@@ -178,8 +178,10 @@ export async function reopenYear(
 export async function markTermFinished(termId: string, finished: boolean): Promise<ActionResult> {
   try {
     const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
-    const result = finished ? await finishTerm(ctx, termId) : await reopenTerm(ctx, termId);
-    if (!result.ok) return { ok: false, errorKey: result.errorKey };
+    // finishTerm/reopenTerm throw on a refusal (wrong role, or a term from
+    // another school) — the catch below routes that AccessError to the toast.
+    if (finished) await finishTerm(ctx, termId);
+    else await reopenTerm(ctx, termId);
     refresh();
     revalidatePath("/admin/exams");
     return { ok: true };

@@ -79,22 +79,37 @@ export async function termsOfYear(schoolId: string, academicYearId: string, time
  * paths themselves. Reversible here because a term marked done by accident
  * should not need anyone beyond the same page that marked it.
  */
-export async function finishTerm(ctx: ActiveContext, termId: string): Promise<TermResult> {
+/**
+ * Marking a term finished, and taking that mark back.
+ *
+ * ⚠ THESE THROW ON A REFUSAL, they do not soft-return one. Every neighbouring
+ * guard — assignTeacher, promoteSchool, the marks freeze, reopenAcademicYear —
+ * answers a wrong role or an id from another school by THROWING an AccessError,
+ * and these two answered the same forged id with a quiet { ok: false } instead.
+ * The soft return was safe (the term was refused and untouched — the two-school
+ * adversarial pass proved it), but a caller reasoning about the guards
+ * uniformly could not, and a not-found that is a soft value one place and an
+ * exception everywhere else is exactly the inconsistency that hides the next
+ * bug. So they now refuse by name like the rest: `requireAdmin` already threw
+ * for the wrong role, and a term that is not this school's throws NOT_FOUND.
+ * A success returns the term id.
+ */
+export async function finishTerm(ctx: ActiveContext, termId: string): Promise<{ termId: string }> {
   const schoolId = requireAdmin(ctx);
   const term = await db.term.findFirst({ where: { id: termId, schoolId }, select: { id: true, name: true } });
-  if (!term) return { ok: false, errorKey: "terms.notFound" };
+  if (!term) throw new AccessError("access.termNotFound", "NOT_FOUND");
   await db.term.update({ where: { id: term.id }, data: { finishedAt: new Date() } });
   await audit({ schoolId, actorUserId: ctx.user.id, action: "term.finish", targetType: "Term", targetId: term.id, meta: { name: term.name } });
-  return { ok: true, termId: term.id };
+  return { termId: term.id };
 }
 
-export async function reopenTerm(ctx: ActiveContext, termId: string): Promise<TermResult> {
+export async function reopenTerm(ctx: ActiveContext, termId: string): Promise<{ termId: string }> {
   const schoolId = requireAdmin(ctx);
   const term = await db.term.findFirst({ where: { id: termId, schoolId }, select: { id: true, name: true } });
-  if (!term) return { ok: false, errorKey: "terms.notFound" };
+  if (!term) throw new AccessError("access.termNotFound", "NOT_FOUND");
   await db.term.update({ where: { id: term.id }, data: { finishedAt: null } });
   await audit({ schoolId, actorUserId: ctx.user.id, action: "term.reopen", targetType: "Term", targetId: term.id, meta: { name: term.name } });
-  return { ok: true, termId: term.id };
+  return { termId: term.id };
 }
 
 /** The current year's terms — what the exams page and the card builder offer. */
