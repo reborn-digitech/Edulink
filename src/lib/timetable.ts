@@ -111,6 +111,28 @@ function assertAdmin(ctx: ActiveContext): asserts ctx is ActiveContext & { schoo
  * the builder wants the day as it is now — and a grid that renders a retired
  * period as an empty row looks like a bug rather than like history.
  */
+/**
+ * How much of the timetable has no teacher — the gap between a grid that is
+ * drawn and a grid that is staffed.
+ *
+ * A slot with a subject and no `teacherMembershipId` is a lesson on the board
+ * that nobody is down to teach: the honest vacancy a school of ten grades and
+ * five teachers necessarily carries. The grid editor shows this per class; the
+ * office needs the school-wide number, because the answer to "nobody teaches
+ * these fourteen periods" is to HIRE, and the hire lives on the vacancies
+ * board, a page away. Counted over LIVING classes only — an archived class's
+ * empty slots are history, not a vacancy — and reported as both the raw slot
+ * count and the number of distinct classes affected, which is the sentence a
+ * head actually thinks in ("four classes are short a teacher").
+ */
+export async function unstaffedLessons(schoolId: string): Promise<{ slots: number; classes: number }> {
+  const rows = await db.timetableSlot.findMany({
+    where: { schoolId, teacherMembershipId: null, class: { archivedAt: null }, period: { kind: "LESSON", archivedAt: null } },
+    select: { classId: true },
+  });
+  return { slots: rows.length, classes: new Set(rows.map((r) => r.classId)).size };
+}
+
 export async function listPeriods(
   schoolId: string,
   opts: { includeArchived?: boolean } = {},

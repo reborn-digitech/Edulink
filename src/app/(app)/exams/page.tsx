@@ -5,6 +5,7 @@ import { requireUser } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { dateSheetsFor, examMarksFor } from "@/lib/exams";
 import { myCards, cardsForChild } from "@/lib/report-cards";
+import { currentTerms } from "@/lib/terms";
 import { listContexts } from "@/lib/session";
 import { ExamMarksCards } from "@/components/exams/exam-marks";
 import { EXAM_KIND_KEY, EXAM_KINDS, type ExamKind } from "@/lib/constants";
@@ -68,6 +69,39 @@ export default async function ExamsPage({
       })),
     );
   }
+  /**
+   * When a reader has no cards yet, it matters WHY: a card is prepared once
+   * the school marks the term finished (the milestone on the calendar), so a
+   * parent looking mid-term should be told the cards are coming, not left to
+   * read an empty tab as broken. Resolve the reader's school(s) — the pupil's
+   * own, or every school their children attend — and see whether any is
+   * running a term that has not been marked finished. One distinct term name
+   * is named; a mix stays generic.
+   */
+  let awaitingTermName: string | null = null;
+  let termIsRunning = false;
+  if (isReader && cards.reduce((n, c) => n + c.rows.length, 0) === 0) {
+    const readerSchoolIds =
+      session.role === "PARENT"
+        ? [...new Set((await listContexts(session.user.id)).children.map((c) => c.schoolId))]
+        : session.schoolId
+          ? [session.schoolId]
+          : [];
+    if (readerSchoolIds.length > 0) {
+      const zones = new Map(
+        (await db.school.findMany({ where: { id: { in: readerSchoolIds } }, select: { id: true, timezone: true } })).map((s) => [s.id, s.timezone]),
+      );
+      const runningNames = new Set<string>();
+      for (const schoolId of readerSchoolIds) {
+        for (const term of await currentTerms(schoolId, zones.get(schoolId) ?? "UTC")) {
+          if (term.current && !term.finishedAt) runningNames.add(term.name);
+        }
+      }
+      termIsRunning = runningNames.size > 0;
+      awaitingTermName = runningNames.size === 1 ? [...runningNames][0]! : null;
+    }
+  }
+
   const staffClasses = isStaff && session.schoolId
     ? await db.class.findMany({
         where: {
@@ -209,7 +243,16 @@ export default async function ExamsPage({
           <EmptyState
             icon={<CertificateIcon weight="duotone" className="size-8" />}
             title={t("exams.noCardsTitle")}
-            description={t("exams.noCardsBody")}
+            // A running term explains the emptiness — cards are prepared when
+            // the school marks the term finished. Named when one term is
+            // running, generic when several are, and the plain line otherwise.
+            description={
+              termIsRunning
+                ? awaitingTermName
+                  ? t("exams.cardsAfterTermNamed", { term: awaitingTermName })
+                  : t("exams.cardsAfterTerm")
+                : t("exams.noCardsBody")
+            }
           />
         ) : (
           <div className="space-y-3">

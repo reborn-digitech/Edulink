@@ -18,6 +18,7 @@ import { getChecklist } from "@/lib/onboarding";
 import { db } from "@/lib/db";
 import { currentAcademicYear } from "@/lib/academic-year";
 import { currentTerms } from "@/lib/terms";
+import { unstaffedLessons } from "@/lib/timetable";
 import { listHolidays, nextEntry } from "@/lib/holidays";
 import { todayKey, formatDateKey } from "@/lib/dates";
 import { Card, CardHeader, CardBody } from "@/components/ui/card";
@@ -95,6 +96,9 @@ export default async function AdminDashboard({
   // run out) — finishing and closing both live on the calendar page.
   const terms = academicYear ? await currentTerms(ctx.schoolId, school.timezone) : [];
   const runningTerm = terms.find((term) => term.current && !term.finishedAt) ?? terms.filter((term) => !term.finishedAt).at(-1) ?? null;
+  // The gap between a drawn timetable and a staffed one — the office's cue to
+  // hire, shown only when there is a hole and there are classes to have one.
+  const staffing = classCount > 0 ? await unstaffedLessons(ctx.schoolId) : { slots: 0, classes: 0 };
 
   return (
     <div className="space-y-6">
@@ -333,6 +337,33 @@ export default async function AdminDashboard({
             </Button>
             <Button asChild size="sm" variant="secondary">
               <Link href="/admin/classes">{t("classes.reportCards")}</Link>
+            </Button>
+          </CardBody>
+        </Card>
+      )}
+
+      {/* ---------------- lessons nobody teaches ----------------
+          Shown only when the grid has a hole. A lesson with no teacher is a
+          vacancy, and the answer is to hire — so this card names the gap and
+          points at both doors: the timetable, to fill it from existing staff,
+          and the vacancies board, to advertise for someone new. */}
+      {staffing.slots > 0 && (
+        <Card className="border-warn/40">
+          <CardHeader
+            icon={<ChalkboardTeacherIcon weight="duotone" className="size-5" />}
+            title={t("admin.staffingGapTitle")}
+            description={
+              staffing.classes === 1
+                ? t("admin.staffingGapBodyOne", { slots: staffing.slots })
+                : t("admin.staffingGapBody", { slots: staffing.slots, classes: staffing.classes })
+            }
+          />
+          <CardBody className="flex flex-wrap gap-2 pt-0">
+            <Button asChild size="sm">
+              <Link href="/admin/vacancies/new">{t("admin.staffingPostVacancy")}</Link>
+            </Button>
+            <Button asChild size="sm" variant="secondary">
+              <Link href="/admin/timetable">{t("admin.staffingOpenTimetable")}</Link>
             </Button>
           </CardBody>
         </Card>
