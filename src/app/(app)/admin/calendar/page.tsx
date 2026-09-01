@@ -192,7 +192,14 @@ export default async function CalendarPage() {
                   academicYearId={current.id}
                   yearStartKey={current.startDate.toISOString().slice(0, 10)}
                   yearEndKey={current.endDate.toISOString().slice(0, 10)}
-                  terms={terms}
+                  terms={terms.map((term) => ({
+                    id: term.id,
+                    name: term.name,
+                    startDateKey: term.startDateKey,
+                    endDateKey: term.endDateKey,
+                    current: term.current,
+                    finished: term.finishedAt !== null,
+                  }))}
                 />
               </div>
             )}

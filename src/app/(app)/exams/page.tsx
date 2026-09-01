@@ -7,7 +7,7 @@ import { dateSheetsFor, examMarksFor } from "@/lib/exams";
 import { myCards, cardsForChild } from "@/lib/report-cards";
 import { listContexts } from "@/lib/session";
 import { ExamMarksCards } from "@/components/exams/exam-marks";
-import { EXAM_KIND_KEY } from "@/lib/constants";
+import { EXAM_KIND_KEY, EXAM_KINDS, type ExamKind } from "@/lib/constants";
 import { formatDateKey, todayKey } from "@/lib/dates";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
@@ -36,11 +36,16 @@ type CardRow = { id: string; title: string; publishedAt: Date | null; overallPer
 export default async function ExamsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ tab?: string }>;
+  searchParams: Promise<{ tab?: string; kind?: string }>;
 }) {
   const session = await requireUser();
   const t = await getT();
-  const { tab: rawTab } = await searchParams;
+  const { tab: rawTab, kind: rawKind } = await searchParams;
+  // The Indian-year toggle: a term is two unit tests and a mid-term or a
+  // final, and a parent asking "how did the half-yearly go" should not have
+  // to scroll past every unit test to find out. A GET param, so the filtered
+  // view is a link.
+  const kind = EXAM_KINDS.includes(rawKind as ExamKind) ? (rawKind as ExamKind) : null;
   const isReader = session.role === "STUDENT" || session.role === "PARENT";
   const isStaff = session.role === "ADMIN" || session.role === "PRINCIPAL" || session.role === "TEACHER";
 
@@ -120,9 +125,24 @@ export default async function ExamsPage({
         anyMarks ? (
           <div className="space-y-3">
             <p className="text-xs leading-relaxed text-fg-muted">{t("exams.myMarksIntro")}</p>
-            {marks.map((m) => (
-              <ExamMarksCards key={m.studentMembershipId} marks={m} showStudent={marks.length > 1} />
-            ))}
+            <nav aria-label={t("exams.kindFilterLabel")} className="flex flex-wrap gap-2">
+              {[null, ...EXAM_KINDS].map((k) => (
+                <Link
+                  key={k ?? "all"}
+                  href={k ? `/exams?tab=marks&kind=${k}` : "/exams?tab=marks"}
+                  className={`rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
+                    kind === k ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted hover:text-fg"
+                  }`}
+                >
+                  {k ? t(EXAM_KIND_KEY[k]) : t("exams.allKinds")}
+                </Link>
+              ))}
+            </nav>
+            {marks
+              .map((m) => (kind ? { ...m, series: m.series.filter((s) => s.kind === kind) } : m))
+              .map((m) => (
+                <ExamMarksCards key={m.studentMembershipId} marks={m} showStudent={marks.length > 1} />
+              ))}
           </div>
         ) : (
           <EmptyState

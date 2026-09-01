@@ -6,6 +6,7 @@ import { writeJson, type Attachment } from "./json";
 import { publish, channel } from "./realtime";
 import { notify, notifyGuardians } from "./notify";
 import { audit } from "./audit";
+import { finishedYearContaining } from "./academic-year";
 import { AccessError, assertAssignmentAccess, assertClassAccess, assertGuardianAccess } from "./tenancy";
 import type { ActiveContext } from "./session";
 
@@ -539,6 +540,15 @@ export async function saveGrades(
 ): Promise<{ saved: number; cleared: number; rejected: string[] }> {
   const assignment = await assertAssignmentAccess(ctx, assignmentId);
   const maxMilli = assignment.pointsMilli;
+
+  // A finished year's marks are the record — same rule as the exam grid. The
+  // assignment's own creation date says which year's work this is.
+  if (ctx.role === "TEACHER") {
+    const finished = await finishedYearContaining(ctx.schoolId, assignment.createdAt);
+    if (finished) {
+      throw new AccessError("access.yearFinishedMarksLocked", "FORBIDDEN", { year: finished.name });
+    }
+  }
 
   // Only students actually enrolled in this assignment's class.
   const enrolled = await db.enrollment.findMany({

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ExamIcon, PlusIcon, WarningIcon, CalendarCheckIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
@@ -33,11 +34,13 @@ const hhmm = (m: number) => `${String(Math.floor(m / 60)).padStart(2, "0")}:${St
 export default async function AdminExamsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ error?: string }>;
+  searchParams: Promise<{ error?: string; kind?: string }>;
 }) {
   const ctx = await requireRole("ADMIN");
   const t = await getT();
-  const { error } = await searchParams;
+  const { error, kind: rawKind } = await searchParams;
+  // The same toggle the reader's marks page has: unit tests, mid-term, final.
+  const kindFilter = EXAM_KINDS.includes(rawKind as ExamKind) ? (rawKind as ExamKind) : null;
 
   const school = await db.school.findUniqueOrThrow({ where: { id: ctx.schoolId! }, select: { timezone: true } });
   const [series, gradeRows, terms] = await Promise.all([
@@ -134,6 +137,22 @@ export default async function AdminExamsPage({
         </CardBody>
       </Card>
 
+      {series.length > 0 && (
+        <nav aria-label={t("exams.kindFilterLabel")} className="flex flex-wrap gap-2">
+          {[null, ...EXAM_KINDS].map((k) => (
+            <Link
+              key={k ?? "all"}
+              href={k ? `/admin/exams?kind=${k}` : "/admin/exams"}
+              className={`rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
+                kindFilter === k ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted hover:text-fg"
+              }`}
+            >
+              {k ? t(EXAM_KIND_KEY[k]) : t("exams.allKinds")}
+            </Link>
+          ))}
+        </nav>
+      )}
+
       {series.length === 0 ? (
         <Card>
           <CardBody className="flex flex-col items-center gap-2 py-10 text-center text-sm text-fg-muted">
@@ -142,7 +161,7 @@ export default async function AdminExamsPage({
           </CardBody>
         </Card>
       ) : (
-        series.map((s) => (
+        series.filter((s) => !kindFilter || s.kind === kindFilter).map((s) => (
           <Card key={s.id}>
             <CardHeader
               icon={<CalendarCheckIcon weight="duotone" className="size-5" />}

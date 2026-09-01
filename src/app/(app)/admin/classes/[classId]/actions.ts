@@ -86,7 +86,7 @@ export async function removeCover(classId: string, coverId: string): Promise<Res
 export async function addTeacher(
   classId: string,
   teacherMembershipId: string,
-  role: "LEAD" | "CO",
+  role: "LEAD" | "CO" | "SUBJECT",
 ): Promise<Result> {
   try {
     const ctx = await requireApiRole("ADMIN");

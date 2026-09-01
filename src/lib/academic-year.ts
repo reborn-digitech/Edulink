@@ -41,6 +41,22 @@ export type AcademicYearInput = {
   endDate: Date;
 };
 
+/**
+ * The CLOSED year a moment falls inside, if any — the question every marks
+ * path asks before letting a teacher write. A finished year's marks are the
+ * record; corrections go through reopening the year, which is a head's or an
+ * office's deliberate act, not a Tuesday-afternoon edit.
+ */
+export async function finishedYearContaining(
+  schoolId: string,
+  when: Date,
+): Promise<{ id: string; name: string } | null> {
+  return db.academicYear.findFirst({
+    where: { schoolId, closedAt: { not: null }, startDate: { lte: when }, endDate: { gte: when } },
+    select: { id: true, name: true },
+  });
+}
+
 /** The year a school is currently running, if it has said. */
 export async function currentAcademicYear(schoolId: string) {
   return db.academicYear.findFirst({
@@ -50,7 +66,7 @@ export async function currentAcademicYear(schoolId: string) {
 }
 
 export async function listAcademicYears(session: ActiveContext) {
-  if (session.role !== "ADMIN" || !session.schoolId) return [];
+  if ((session.role !== "ADMIN" && session.role !== "PRINCIPAL") || !session.schoolId) return [];
   return db.academicYear.findMany({
     where: { schoolId: session.schoolId },
     orderBy: { startDate: "desc" },
@@ -61,7 +77,9 @@ export async function createAcademicYear(
   session: ActiveContext,
   input: AcademicYearInput,
 ): Promise<string> {
-  if (session.role !== "ADMIN" || !session.schoolId) {
+  // The principal starts and ends years alongside the admin — in most Indian
+  // schools the head's word is exactly what "the year is over" means.
+  if ((session.role !== "ADMIN" && session.role !== "PRINCIPAL") || !session.schoolId) {
     throw new AccessError("access.onlyASchoolAdminCanSetUp");
   }
   if (input.endDate <= input.startDate) {
@@ -126,7 +144,7 @@ export async function closeAcademicYear(
   closingYearId: string,
   nextYearId: string,
 ): Promise<{ studentsArchived: number; badgesArchived: number; seriesArchived: number; roundsClosed: number }> {
-  if (session.role !== "ADMIN" || !session.schoolId) {
+  if ((session.role !== "ADMIN" && session.role !== "PRINCIPAL") || !session.schoolId) {
     throw new AccessError("access.onlyASchoolAdminCanCloseThe");
   }
   const schoolId = session.schoolId;
@@ -237,6 +255,61 @@ export async function closeAcademicYear(
   });
 
   return { studentsArchived: students.length, badgesArchived, seriesArchived, roundsClosed };
+}
+
+/**
+ * Takes back an accidental close.
+ *
+ * ONLY THE MOST RECENTLY CLOSED YEAR, because reopening an older one would
+ * leave a closed year running AFTER a still-closed one — a timeline no page
+ * knows how to read. What comes back: the year is current again, the one that
+ * replaced it goes back to waiting, and the exam series the close archived (in
+ * the same breath — a two-minute window around the close stamp) return to the
+ * exams page. What deliberately stays: the badge snapshot. Those rows are
+ * keyed to the year and closing again is idempotent by the unique, so keeping
+ * them loses nothing and deleting them could destroy a snapshot an earlier,
+ * REAL close had made.
+ */
+export async function reopenAcademicYear(
+  session: ActiveContext,
+  yearId: string,
+): Promise<{ seriesRestored: number }> {
+  if ((session.role !== "ADMIN" && session.role !== "PRINCIPAL") || !session.schoolId) {
+    throw new AccessError("access.onlyASchoolAdminCanCloseThe");
+  }
+  const schoolId = session.schoolId;
+
+  const year = await db.academicYear.findFirst({ where: { id: yearId, schoolId, closedAt: { not: null } } });
+  if (!year) throw new AccessError("access.academicYearNotFound", "NOT_FOUND");
+  const newerClosed = await db.academicYear.findFirst({
+    where: { schoolId, closedAt: { gt: year.closedAt! } },
+    select: { id: true },
+  });
+  if (newerClosed) throw new AccessError("access.onlyTheLatestClosedYearReopens");
+
+  const seriesRestored = (
+    await db.examSeries.updateMany({
+      where: {
+        schoolId,
+        archivedAt: { gte: new Date(year.closedAt!.getTime() - 120_000), lte: year.closedAt! },
+      },
+      data: { archivedAt: null },
+    })
+  ).count;
+
+  await db.academicYear.updateMany({ where: { schoolId }, data: { isCurrent: false } });
+  await db.academicYear.update({ where: { id: year.id }, data: { closedAt: null, isCurrent: true } });
+
+  await audit({
+    schoolId,
+    actorUserId: session.user.id,
+    action: "year.reopen",
+    targetType: "AcademicYear",
+    targetId: year.id,
+    meta: { name: year.name, seriesRestored },
+  });
+
+  return { seriesRestored };
 }
 
 /**

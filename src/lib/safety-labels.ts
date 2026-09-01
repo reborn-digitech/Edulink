@@ -248,6 +248,9 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "timetable.slot.set": "audit.timetableSlotSet",
   "year.close": "audit.yearClose",
   "year.create": "audit.yearCreate",
+  "year.reopen": "audit.yearReopen",
+  "term.finish": "audit.termFinish",
+  "term.reopen": "audit.termReopen",
   "expert.profile.update": "audit.expertProfileUpdate",
 };
 

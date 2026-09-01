@@ -31,6 +31,8 @@ export type TermView = {
   position: number;
   /** Today falls inside it. */
   current: boolean;
+  /** The office marked it done — a milestone, not a lock. */
+  finishedAt: Date | null;
 };
 
 export type TermResult = { ok: true; termId: string } | { ok: false; errorKey: TranslationKey };
@@ -40,7 +42,12 @@ function key(d: Date): string {
 }
 
 function requireAdmin(ctx: ActiveContext): string {
-  if (ctx.role !== "ADMIN" || !ctx.schoolId) throw new AccessError("access.onlyAnAdminCanSetTerms");
+  // The principal shares the year's milestones: starting a year, marking a
+  // term finished, closing a year. In most Indian schools those are the
+  // head's calls as much as the office's.
+  if ((ctx.role !== "ADMIN" && ctx.role !== "PRINCIPAL") || !ctx.schoolId) {
+    throw new AccessError("access.onlyAnAdminCanSetTerms");
+  }
   return ctx.schoolId;
 }
 
@@ -59,7 +66,35 @@ export async function termsOfYear(schoolId: string, academicYearId: string, time
     endDateKey: key(t.endDate),
     position: i + 1,
     current: key(t.startDate) <= today && today <= key(t.endDate),
+    finishedAt: t.finishedAt,
   }));
+}
+
+/**
+ * Marks a term done, or takes the mark back.
+ *
+ * A MILESTONE, NOT A LOCK. Finishing a term is the office saying "we are done
+ * reporting this stretch" — the dashboards show it, nothing is frozen by it.
+ * The freeze belongs to finishing the YEAR, where it is enforced in the marks
+ * paths themselves. Reversible here because a term marked done by accident
+ * should not need anyone beyond the same page that marked it.
+ */
+export async function finishTerm(ctx: ActiveContext, termId: string): Promise<TermResult> {
+  const schoolId = requireAdmin(ctx);
+  const term = await db.term.findFirst({ where: { id: termId, schoolId }, select: { id: true, name: true } });
+  if (!term) return { ok: false, errorKey: "terms.notFound" };
+  await db.term.update({ where: { id: term.id }, data: { finishedAt: new Date() } });
+  await audit({ schoolId, actorUserId: ctx.user.id, action: "term.finish", targetType: "Term", targetId: term.id, meta: { name: term.name } });
+  return { ok: true, termId: term.id };
+}
+
+export async function reopenTerm(ctx: ActiveContext, termId: string): Promise<TermResult> {
+  const schoolId = requireAdmin(ctx);
+  const term = await db.term.findFirst({ where: { id: termId, schoolId }, select: { id: true, name: true } });
+  if (!term) return { ok: false, errorKey: "terms.notFound" };
+  await db.term.update({ where: { id: term.id }, data: { finishedAt: null } });
+  await audit({ schoolId, actorUserId: ctx.user.id, action: "term.reopen", targetType: "Term", targetId: term.id, meta: { name: term.name } });
+  return { ok: true, termId: term.id };
 }
 
 /** The current year's terms — what the exams page and the card builder offer. */

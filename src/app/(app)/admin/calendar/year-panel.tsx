@@ -9,7 +9,7 @@ import { DateField, SelectField, TextField } from "@/components/ui/field";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/toast";
 import { formatDateKey } from "@/lib/dates";
-import { startAcademicYear, rollOverAcademicYear } from "./actions";
+import { startAcademicYear, rollOverAcademicYear, reopenYear } from "./actions";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 
@@ -52,6 +52,31 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
 
   const [nextYearId, setNextYearId] = useState<string>("");
   const [confirming, setConfirming] = useState(false);
+  const [confirmingReopen, setConfirmingReopen] = useState(false);
+
+  // The undo lives on the LATEST closed year only — reopening an older one
+  // would leave a running year after a still-closed one.
+  const lastClosed = years
+    .filter((year) => year.closedAt !== null)
+    .sort((a, b) => (b.closedAt! < a.closedAt! ? -1 : 1))[0];
+
+  function reopen() {
+    if (!lastClosed) return;
+    startTransition(async () => {
+      const result = await reopenYear(lastClosed.id);
+      if (!result.ok) {
+        toast({ tone: "warn", title: t("calendar.couldNotReopen"), description: actionError(t, result) });
+        return;
+      }
+      toast({
+        tone: "ok",
+        title: t("calendar.yearReopened", { name: lastClosed.name }),
+        description: t("calendar.reopenedBody", { series: result.seriesRestored ?? 0 }),
+      });
+      setConfirmingReopen(false);
+      router.refresh();
+    });
+  }
 
   function submit(event: React.FormEvent) {
     event.preventDefault();
@@ -165,6 +190,24 @@ export function YearPanel({ years, today }: { years: Year[]; today: string }) {
                 <Badge tone={year.closedAt ? "neutral" : "info"} size="sm">
                   {year.closedAt ? t("calendar.closed") : t("calendar.waiting")}
                 </Badge>
+                {/* The undo for a close pressed by mistake, offered only on
+                    the latest closed year. It confirms, because reopening
+                    unfreezes marks a teacher may believe are final. */}
+                {lastClosed && year.id === lastClosed.id && !confirmingReopen && (
+                  <Button variant="ghost" size="sm" disabled={pending} onClick={() => setConfirmingReopen(true)}>
+                    {t("calendar.reopenCta")}
+                  </Button>
+                )}
+                {lastClosed && year.id === lastClosed.id && confirmingReopen && (
+                  <span className="flex flex-wrap items-center gap-1.5">
+                    <Button variant="danger" size="sm" loading={pending} onClick={reopen}>
+                      {t("calendar.confirmReopen", { name: lastClosed.name })}
+                    </Button>
+                    <Button variant="ghost" size="sm" onClick={() => setConfirmingReopen(false)}>
+                      {t("calendar.notYet")}
+                    </Button>
+                  </span>
+                )}
               </li>
             ))}
         </ul>

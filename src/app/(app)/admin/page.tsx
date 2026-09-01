@@ -17,6 +17,7 @@ import { requireRole } from "@/lib/tenancy";
 import { getChecklist } from "@/lib/onboarding";
 import { db } from "@/lib/db";
 import { currentAcademicYear } from "@/lib/academic-year";
+import { currentTerms } from "@/lib/terms";
 import { listHolidays, nextEntry } from "@/lib/holidays";
 import { todayKey, formatDateKey } from "@/lib/dates";
 import { Card, CardHeader, CardBody } from "@/components/ui/card";
@@ -84,6 +85,11 @@ export default async function AdminDashboard({
 
   const attendanceTaken = classesTotal === 0 ? 0 : Math.round((todaySessions / classesTotal) * 100);
   const coming = nextEntry(calendar, dateKey);
+  // The running term, for the year strip's milestone CTA. The one to offer is
+  // the term today falls in (or the last unfinished one once the dates have
+  // run out) — finishing and closing both live on the calendar page.
+  const terms = academicYear ? await currentTerms(ctx.schoolId, school.timezone) : [];
+  const runningTerm = terms.find((term) => term.current && !term.finishedAt) ?? terms.filter((term) => !term.finishedAt).at(-1) ?? null;
 
   return (
     <div className="space-y-6">
@@ -150,7 +156,18 @@ export default async function AdminDashboard({
                 </span>
               </p>
             </div>
+            {/* The year's milestone CTAs, shared with the principal's page:
+                finish the running term, finish the year. Both are links —
+                the calendar page carries the confirmations. */}
+            {runningTerm && (
+              <Button asChild variant="secondary" size="sm">
+                <Link href="/admin/calendar">{t("admin.finishTermCta", { name: runningTerm.name })}</Link>
+              </Button>
+            )}
             <Button asChild variant="secondary" size="sm">
+              <Link href="/admin/calendar">{t("admin.finishYearCta", { name: academicYear.name })}</Link>
+            </Button>
+            <Button asChild variant="ghost" size="sm">
               <Link href="/admin/calendar">{t("admin.updateCalendar")}</Link>
             </Button>
           </CardBody>

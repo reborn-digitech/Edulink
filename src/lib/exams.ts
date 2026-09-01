@@ -1,6 +1,7 @@
 import "server-only";
 import { db } from "./db";
 import { termForDate } from "./terms";
+import { finishedYearContaining } from "./academic-year";
 import { listHolidays, isSchoolClosed } from "./holidays";
 import { formatDateKey } from "./dates";
 import { audit } from "./audit";
@@ -631,6 +632,19 @@ export async function saveMarks(
   });
   if (!klass || klass.gradeLevel !== slot.series.gradeLevel) {
     throw new AccessError("access.thatPaperIsForAnotherGrade");
+  }
+
+  /**
+   * A FINISHED YEAR'S MARKS ARE THE RECORD. Once the office closes the year,
+   * a teacher's edit here is refused by name; the office and the head keep
+   * the pen, and the reopen door on the calendar page is the correction path
+   * for everyone else.
+   */
+  if (role === "TEACHER") {
+    const finished = await finishedYearContaining(schoolId, new Date(`${slot.dateKey}T00:00:00.000Z`));
+    if (finished) {
+      throw new AccessError("access.yearFinishedMarksLocked", "FORBIDDEN", { year: finished.name });
+    }
   }
 
   const max = slot.pointsMilli / 1000;

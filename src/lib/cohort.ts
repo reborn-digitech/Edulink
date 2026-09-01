@@ -280,7 +280,11 @@ export async function assignTeacher(
   ctx: ActiveContext,
   classId: string,
   teacherMembershipId: string,
-  opts: { role?: "LEAD" | "CO"; canTakeAttendance?: boolean } = {},
+  // SUBJECT is the visiting-specialist shape: teaches lessons on the
+  // timetable, never marks the register. Per class, deliberately — the same
+  // person is often the class teacher of one class and the subject teacher of
+  // three others.
+  opts: { role?: "LEAD" | "CO" | "SUBJECT"; canTakeAttendance?: boolean } = {},
 ): Promise<{ ok: boolean; errorKey?: TranslationKey }> {
   await assertAdminOfClass(ctx, classId);
 

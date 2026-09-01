@@ -64,7 +64,7 @@ export function Staffing({
   const [reason, setReason] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [newTeacher, setNewTeacher] = useState("");
-  const [newRole, setNewRole] = useState<"LEAD" | "CO">("LEAD");
+  const [newRole, setNewRole] = useState<"LEAD" | "CO" | "SUBJECT">("LEAD");
 
   const takers = teachers.filter((t) => t.canTakeAttendance).length + covers.length;
 
@@ -161,7 +161,11 @@ export function Staffing({
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-sm font-medium text-fg">{row.name}</span>
                   <span className="block text-xs text-fg-muted">
-                    {row.role === "LEAD" ? t("classes.classTeacher") : t("classes.alsoTeaches")}
+                    {row.role === "LEAD"
+                      ? t("classes.classTeacher")
+                      : row.role === "SUBJECT"
+                        ? t("classes.subjectTeacher")
+                        : t("classes.alsoTeaches")}
                   </span>
                 </span>
                 <Button
@@ -217,11 +221,14 @@ export function Staffing({
             <span className="block text-xs font-medium text-fg">{t("classes.asRole")}</span>
             <select
               value={newRole}
-              onChange={(e) => setNewRole(e.target.value as "LEAD" | "CO")}
+              onChange={(e) => setNewRole(e.target.value as "LEAD" | "CO" | "SUBJECT")}
               className="mt-1 min-h-11 rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg outline-none focus:border-accent"
             >
               <option value="LEAD">{t("classes.classTeacher")}</option>
               <option value="CO">{t("classes.alsoTeachesShort")}</option>
+              {/* Teaches lessons, never marks the register — and the same
+                  person may be the class teacher of a different class. */}
+              <option value="SUBJECT">{t("classes.subjectTeacher")}</option>
             </select>
           </label>
           <Button type="submit" size="sm" variant="secondary" loading={pending} disabled={!newTeacher}>

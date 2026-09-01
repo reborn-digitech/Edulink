@@ -1923,6 +1923,10 @@ model Term {
   endDate        DateTime
   /// Display order within the year; the library keeps it equal to the start order.
   position       Int      @default(0)
+  /// The office said this term is done — a milestone, set from the calendar
+  /// page by the admin or the principal. Reversible there, because a term
+  /// marked done by accident should not need a database admin to unmark.
+  finishedAt     DateTime?
   createdAt      DateTime @default(now())
 
   school       School       @relation(fields: [schoolId], references: [id], onDelete: Cascade)

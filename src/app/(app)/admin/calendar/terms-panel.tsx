@@ -8,11 +8,11 @@ import { Badge } from "@/components/ui/badge";
 import { DateField, TextField } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
 import { formatDateKey } from "@/lib/dates";
-import { addTerm, removeTerm } from "./actions";
+import { addTerm, removeTerm, markTermFinished } from "./actions";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 
-type Term = { id: string; name: string; startDateKey: string; endDateKey: string; current: boolean };
+type Term = { id: string; name: string; startDateKey: string; endDateKey: string; current: boolean; finished: boolean };
 
 /**
  * The current year's terms. A short list and a one-line form: name, from,
@@ -71,6 +71,21 @@ export function TermsPanel({
     });
   }
 
+  function setFinished(term: Term, finished: boolean) {
+    startTransition(async () => {
+      const result = await markTermFinished(term.id, finished);
+      if (!result.ok) {
+        toast({ tone: "warn", title: actionError(t, result, "common.tryAgain") });
+        return;
+      }
+      toast({
+        tone: "ok",
+        title: finished ? t("terms.finishedToast", { name: term.name }) : t("terms.reopenedToast", { name: term.name }),
+      });
+      router.refresh();
+    });
+  }
+
   return (
     <div className="space-y-3" data-testid="terms-panel">
       <div>
@@ -88,7 +103,23 @@ export function TermsPanel({
               <span className="text-fg-muted">
                 {formatDateKey(term.startDateKey, { day: "numeric", month: "short" })} – {formatDateKey(term.endDateKey, { day: "numeric", month: "short", year: "numeric" })}
               </span>
-              {term.current && <Badge tone="ok" size="sm">{t("terms.current")}</Badge>}
+              {term.finished ? (
+                <Badge tone="neutral" size="sm">{t("terms.finished")}</Badge>
+              ) : (
+                term.current && <Badge tone="ok" size="sm">{t("terms.current")}</Badge>
+              )}
+              {/* The milestone CTA: mark a term done, or take it back. A
+                  milestone, not a lock — the freeze belongs to closing the
+                  YEAR, below. */}
+              <Button
+                type="button"
+                variant={term.finished ? "ghost" : "secondary"}
+                size="sm"
+                disabled={pending}
+                onClick={() => setFinished(term, !term.finished)}
+              >
+                {term.finished ? t("terms.reopenCta") : t("terms.finishCta")}
+              </Button>
               <Button type="button" variant="ghost" size="sm" icon={<XIcon />} aria-label={t("terms.remove")} disabled={pending} onClick={() => remove(term.id)} />
             </li>
           ))}

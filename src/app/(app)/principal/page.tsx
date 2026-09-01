@@ -20,6 +20,10 @@ import { formatDateKey } from "@/lib/dates";
 import { WindowPicker } from "./window-picker";
 import { schoolReviewDashboard } from "@/lib/reviews";
 import { ReviewDashboard } from "@/components/reviews/review-dashboard";
+import { currentAcademicYear } from "@/lib/academic-year";
+import { currentTerms } from "@/lib/terms";
+import { db } from "@/lib/db";
+import { Button } from "@/components/ui/button";
 import { getT } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -56,6 +60,13 @@ export default async function PrincipalDashboard({
   const insights = await classInsights(ctx, window);
   const summary = await schoolSummary(ctx, insights);
   const reviews = await schoolReviewDashboard(ctx);
+  // The head shares the year's milestones with the office: start it, finish a
+  // term, finish the year, take an accidental close back. The controls live on
+  // the calendar page; this card is the head's door to them.
+  const school = await db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } });
+  const academicYear = await currentAcademicYear(ctx.schoolId);
+  const terms = academicYear ? await currentTerms(ctx.schoolId, school.timezone) : [];
+  const runningTerm = terms.find((term) => term.current && !term.finishedAt) ?? terms.filter((term) => !term.finishedAt).at(-1) ?? null;
   const concerns = insights.filter(
     (k) => k.attendance.percent !== null && k.attendance.percent < ATTENDANCE_CONCERN_PERCENT,
   );
@@ -76,6 +87,44 @@ export default async function PrincipalDashboard({
         </div>
         <WindowPicker days={span} />
       </div>
+
+      {/* ---------------- the year's milestones ---------------- */}
+      <Card>
+        <CardBody className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-5">
+          <CalendarCheckIcon weight="duotone" className="size-6 shrink-0 text-fg-muted" />
+          <div className="min-w-0 flex-1">
+            <p className="text-sm font-semibold text-fg">
+              {academicYear ? academicYear.name : t("admin.startYear")}
+              <span className="ml-2 font-normal text-fg-muted">
+                {academicYear
+                  ? runningTerm
+                    ? t("principal.termRuns", {
+                        name: runningTerm.name,
+                        date: formatDateKey(runningTerm.endDateKey, { day: "numeric", month: "long" }),
+                      })
+                    : t("principal.allTermsFinished")
+                  : t("admin.startYearBody")}
+              </span>
+            </p>
+          </div>
+          {!academicYear ? (
+            <Button asChild size="sm">
+              <Link href="/admin/calendar">{t("admin.setUpYear")}</Link>
+            </Button>
+          ) : (
+            <>
+              {runningTerm && (
+                <Button asChild variant="secondary" size="sm">
+                  <Link href="/admin/calendar">{t("admin.finishTermCta", { name: runningTerm.name })}</Link>
+                </Button>
+              )}
+              <Button asChild variant="secondary" size="sm">
+                <Link href="/admin/calendar">{t("admin.finishYearCta", { name: academicYear.name })}</Link>
+              </Button>
+            </>
+          )}
+        </CardBody>
+      </Card>
 
       {/* ---------------- what can still be fixed today ---------------- */}
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

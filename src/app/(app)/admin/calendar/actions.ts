@@ -9,8 +9,8 @@ import {
   deleteHoliday,
   type HolidayKind,
 } from "@/lib/holidays";
-import { createAcademicYear, closeAcademicYear } from "@/lib/academic-year";
-import { createTerm, deleteTerm } from "@/lib/terms";
+import { createAcademicYear, closeAcademicYear, reopenAcademicYear } from "@/lib/academic-year";
+import { createTerm, deleteTerm, finishTerm, reopenTerm } from "@/lib/terms";
 
 /**
  * The school calendar and the academic year, from the admin's side.
@@ -115,7 +115,10 @@ export async function startAcademicYear(input: {
   endDateKey: string;
 }): Promise<ActionResult> {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    // The year's milestones are shared with the principal — starting, closing,
+    // reopening, and the terms inside it. The holiday calendar above stays the
+    // office's alone.
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
     const id = await createAcademicYear(ctx, {
       name: input.name.trim(),
       startDate: asUtcDate(input.startDateKey),
@@ -144,7 +147,7 @@ export async function rollOverAcademicYear(
   nextYearId: string,
 ): Promise<ActionResult & { studentsArchived?: number; badgesArchived?: number; seriesArchived?: number; roundsClosed?: number }> {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
     const result = await closeAcademicYear(ctx, closingYearId, nextYearId);
     refresh();
     revalidatePath("/student");
@@ -155,12 +158,42 @@ export async function rollOverAcademicYear(
   }
 }
 
+/** The undo for a close pressed by mistake — the year runs again. */
+export async function reopenYear(
+  yearId: string,
+): Promise<ActionResult & { seriesRestored?: number }> {
+  try {
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const result = await reopenAcademicYear(ctx, yearId);
+    refresh();
+    revalidatePath("/student");
+    revalidatePath("/student/profile");
+    revalidatePath("/archive");
+    return { ok: true, ...result };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export async function markTermFinished(termId: string, finished: boolean): Promise<ActionResult> {
+  try {
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
+    const result = finished ? await finishTerm(ctx, termId) : await reopenTerm(ctx, termId);
+    if (!result.ok) return { ok: false, errorKey: result.errorKey };
+    refresh();
+    revalidatePath("/admin/exams");
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
 export async function addTerm(
   academicYearId: string,
   input: { name: string; startDateKey: string; endDateKey: string },
 ): Promise<ActionResult & { termId?: string }> {
   try {
-    const ctx = await requireApiRole("ADMIN");
+    const ctx = await requireApiRole("ADMIN", "PRINCIPAL");
     const result = await createTerm(ctx, academicYearId, input);
     if (!result.ok) return { ok: false, errorKey: result.errorKey };
     refresh();
