@@ -12,7 +12,7 @@ import { useToast } from "@/components/ui/toast";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 import { cn } from "@/lib/cn";
-import { nameCarriesSection } from "@/lib/codes";
+import { nameCarriesSection, withSection } from "@/lib/codes";
 import { promoteSchoolAction } from "./actions";
 
 /** A new class this row owns beyond its own destination — the B to its A. */
@@ -61,13 +61,6 @@ function nextLetter(used: string[]): string {
   return String(used.length + 1);
 }
 
-/** "Class 6A" from "Class 6" + "A"; a name already ending in the section is left alone. */
-function withSection(name: string, section: string): string {
-  const trimmed = name.trim();
-  if (!section) return trimmed;
-  if (trimmed.toUpperCase().endsWith(section.toUpperCase())) return trimmed;
-  return /\d$/.test(trimmed) ? `${trimmed}${section}` : `${trimmed} ${section}`;
-}
 
 /**
  * One row per class. The suggestion is pre-chosen — the top grade leaves,

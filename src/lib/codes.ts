@@ -79,3 +79,25 @@ export function nameCarriesSection(name: string, section: string | null | undefi
   // section ("sunflower") is a word and needs a space or the start.
   return before === "" || /[\s\d·\-–(]$/.test(before);
 }
+
+/**
+ * Adds a section to a class name — "Class 6" + "A" → "Class 6A" — leaving a
+ * name that already carries the section alone.
+ *
+ * A STREAM IS NOT A LETTER. When the section is a short code the name already
+ * spells out — "Sci" under "Grade 11 Science", "Com" under "Grade 11 Commerce"
+ * — suffixing produced "Grade 11 Science Sci", which a real senior-school split
+ * walkthrough hit at the promotion planner's "Add a section" button. A last
+ * word longer than the code and beginning with it is treated as already
+ * carrying the section; only bare letters (or codes the name does not already
+ * express) are appended, and a trailing digit binds the letter tight ("6A").
+ */
+export function withSection(name: string, section: string): string {
+  const trimmed = name.trim();
+  if (!section) return trimmed;
+  const upperSection = section.toUpperCase();
+  if (trimmed.toUpperCase().endsWith(upperSection)) return trimmed;
+  const lastWord = trimmed.split(/\s+/).pop() ?? "";
+  if (lastWord.length > section.length && lastWord.toUpperCase().startsWith(upperSection)) return trimmed;
+  return /\d$/.test(trimmed) ? `${trimmed}${section}` : `${trimmed} ${section}`;
+}
