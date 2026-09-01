@@ -44,10 +44,7 @@ export default async function ParentLinkPage() {
         <h1 className="text-3xl font-bold tracking-tight text-fg">
           {children.length > 0 ? t("parent.addAnotherChild") : t("parent.linkToYourChild")}
         </h1>
-        <p className="mt-2 text-fg-muted">
-          You need their student code and their date of birth. The school sends the code
-          home — ask the office if you cannot find it.
-        </p>
+        <p className="mt-2 text-fg-muted">{t("parent.linkNeedCode")}</p>
 
         {children.length > 0 && (
           <div className="mt-6 rounded-[--radius-lg] border border-border bg-surface p-4">

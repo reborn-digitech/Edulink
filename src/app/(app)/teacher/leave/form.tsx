@@ -150,14 +150,11 @@ export function LeaveForm({
           </fieldset>
 
           <label className="mt-4 block">
-            <span className="block text-sm font-medium text-fg">Why</span>
+            <span className="block text-sm font-medium text-fg">{t("teacher.whyLabel")}</span>
             {/* Says who reads it, right next to the box. Without that, people
                 either write nothing useful or write something private they did
                 not mean the whole staff room to see. */}
-            <span className="mt-0.5 block text-xs text-fg-muted">
-              The principal reads this. It is not shown to other staff, and never to students or
-              parents.
-            </span>
+            <span className="mt-0.5 block text-xs text-fg-muted">{t("teacher.whyHint")}</span>
             <textarea
               required
               rows={3}
