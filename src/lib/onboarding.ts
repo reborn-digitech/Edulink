@@ -39,9 +39,9 @@ export async function getChecklist(schoolId: string): Promise<{
   complete: boolean;
 }> {
   const [teachers, classes, students, invites, school, posts, verifiedAdmins] = await Promise.all([
-    db.membership.count({ where: { schoolId, role: "TEACHER", status: "ACTIVE" } }),
+    db.membership.count({ where: { schoolId, role: "TEACHER", status: "ACTIVE", leftAt: null } }),
     db.class.count({ where: { schoolId, archivedAt: null } }),
-    db.membership.count({ where: { schoolId, role: "STUDENT", status: "ACTIVE" } }),
+    db.membership.count({ where: { schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null } }),
     db.invite.count({ where: { schoolId, status: "PENDING" } }),
     db.school.findUnique({
       where: { id: schoolId },

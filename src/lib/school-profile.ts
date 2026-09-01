@@ -68,7 +68,9 @@ export async function listContactCandidates(
   }
   const schoolId = ctx.schoolId;
   const rows = await db.membership.findMany({
-    where: { schoolId, status: "ACTIVE", role: { in: [...CONTACTABLE_ROLES] } },
+    // A public admissions contact must be someone still at the school — a
+    // departed principal must not be offered to a parent, nor be pinged.
+    where: { schoolId, status: "ACTIVE", leftAt: null, role: { in: [...CONTACTABLE_ROLES] } },
     select: { id: true, role: true, userId: true, user: { select: { name: true, preferredName: true } } },
     orderBy: [{ role: "asc" }, { joinedAt: "asc" }],
   });

@@ -616,11 +616,13 @@ async function notifyReviewers(
   const reviewers =
     scope === "CLASS" && classId
       ? await db.membership.findMany({
-          where: { schoolId, role: "TEACHER", status: "ACTIVE", classTeachers: { some: { classId } } },
+          // A post's reviewers are people still here — a left teacher or admin
+          // is not notified to moderate.
+          where: { schoolId, role: "TEACHER", status: "ACTIVE", leftAt: null, classTeachers: { some: { classId } } },
           select: { userId: true },
         })
       : await db.membership.findMany({
-          where: { schoolId, role: "ADMIN", status: "ACTIVE" },
+          where: { schoolId, role: "ADMIN", status: "ACTIVE", leftAt: null },
           select: { userId: true },
         });
 
@@ -961,7 +963,7 @@ export async function reportContent(
 
   if (session.schoolId) {
     const admins = await db.membership.findMany({
-      where: { schoolId: session.schoolId, role: "ADMIN", status: "ACTIVE" },
+      where: { schoolId: session.schoolId, role: "ADMIN", status: "ACTIVE", leftAt: null },
       select: { userId: true },
     });
     await Promise.all(
@@ -1056,7 +1058,7 @@ export async function ackReport(session: ActiveContext, postId: string): Promise
   if (post.audience === "TEACHERS") {
     // Staff notice: one group, every active teacher and admin by name.
     const staff = await db.membership.findMany({
-      where: { schoolId, role: { in: ["ADMIN", "TEACHER"] }, status: "ACTIVE" },
+      where: { schoolId, role: { in: ["ADMIN", "TEACHER"] }, status: "ACTIVE", leftAt: null },
       select: { userId: true, user: { select: { name: true, preferredName: true } } },
     });
     // A user with two staff memberships is still one reader.

@@ -608,7 +608,8 @@ export async function pairingOptions(session: ActiveContext): Promise<PairingOpt
     session.role === "TEACHER" && session.membershipId
       ? studentsForTeacher(session.schoolId, session.membershipId)
       : db.membership.findMany({
-          where: { schoolId: session.schoolId, role: "STUDENT", status: "ACTIVE" },
+          // On roll only — a graduate is not a mentee.
+          where: { schoolId: session.schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null },
           include: { user: { select: { name: true, preferredName: true } } },
         }),
   ]);

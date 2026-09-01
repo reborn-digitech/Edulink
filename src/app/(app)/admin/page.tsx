@@ -71,8 +71,13 @@ export default async function AdminDashboard({
     calendar,
   ] = await Promise.all([
       getChecklist(ctx.schoolId),
-      db.membership.count({ where: { schoolId: ctx.schoolId, role: "TEACHER", status: "ACTIVE" } }),
-      db.membership.count({ where: { schoolId: ctx.schoolId, role: "STUDENT", status: "ACTIVE" } }),
+      // ON ROLL / ON STAFF, not "ever": a leaver keeps status ACTIVE and gets
+      // a `leftAt` (school-record.ts is explicit that every "who is here" query
+      // filters leftAt), so a count without it silently grows by every pupil
+      // who ever graduated — the headline read 48 for a 40-pupil school after
+      // two years of a three-year simulation.
+      db.membership.count({ where: { schoolId: ctx.schoolId, role: "TEACHER", status: "ACTIVE", leftAt: null } }),
+      db.membership.count({ where: { schoolId: ctx.schoolId, role: "STUDENT", status: "ACTIVE", leftAt: null } }),
       db.class.count({ where: { schoolId: ctx.schoolId, archivedAt: null } }),
       db.invite.count({ where: { schoolId: ctx.schoolId, status: "PENDING" } }),
       db.attendanceSession.count({ where: { schoolId: ctx.schoolId, dateKey } }),

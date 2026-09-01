@@ -100,7 +100,7 @@ async function contactUserIdsBound(
   }
 
   const admins = await db.membership.findMany({
-    where: { schoolId, status: "ACTIVE", role: "ADMIN" },
+    where: { schoolId, status: "ACTIVE", leftAt: null, role: "ADMIN" },
     select: { userId: true },
   });
   return admins.map((a) => a.userId);
