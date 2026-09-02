@@ -5,6 +5,7 @@ import {
   assertSuperuser,
   checkGradeRange,
   createSchool,
+  deleteSchoolEntirely,
   gradeToNumber,
   gradesInRange,
   inviteAdmin,
@@ -391,5 +392,54 @@ describe("the server log", () => {
       where: { id: { in: ids }, schoolId: { not: null } },
     });
     expect(scoped).toBe(0);
+  });
+});
+
+describe("⚠ erasing a school for good", () => {
+  const ORPHAN = "orphan.erase.unit@edulink.test";
+  const KEPT = "kept.erase.unit@edulink.test";
+  afterEach(async () => {
+    await db.user.deleteMany({ where: { email: { in: [ORPHAN, KEPT] } } });
+  });
+
+  it("⚠ is the operator's alone, and refuses a name that does not match — leaving everything in place", async () => {
+    const made = await createSchool(operator, DETAILS);
+    if (!made.ok) throw new Error(`fixture school not created: ${made.errorKey}`);
+    const schoolId = made.schoolId;
+    await expect(deleteSchoolEntirely(ordinaryAdmin, schoolId, DETAILS.name)).rejects.toBeInstanceOf(AccessError);
+    const wrong = await deleteSchoolEntirely(operator, schoolId, "not the name");
+    expect(wrong).toMatchObject({ ok: false, errorKey: "root.deleteMismatch" });
+    expect(await db.school.findUnique({ where: { id: schoolId } })).not.toBeNull();
+  });
+
+  it("⚠ shreds the school's rows through the cascades, drops the accounts that belonged only to it, and keeps everyone else", async () => {
+    const made = await createSchool(operator, DETAILS);
+    if (!made.ok) throw new Error(`fixture school not created: ${made.errorKey}`);
+    const schoolId = made.schoolId;
+    const klass = await db.class.create({ data: { schoolId, name: "ZZ Erase 4A", gradeLevel: "4", joinCode: `ZZER${String(Date.now()).slice(-5)}` } });
+    // A pupil who exists only here — and a teacher who also works at Riverside.
+    const orphan = await db.user.create({ data: { email: ORPHAN, name: "ZZ Orphan", prefs: "{}", isMinor: true } });
+    const kept = await db.user.create({ data: { email: KEPT, name: "ZZ Kept", prefs: "{}" } });
+    const riverside = await db.school.findFirstOrThrow({ where: { name: "Riverside Primary School" } });
+    const om = await db.membership.create({ data: { userId: orphan.id, schoolId, role: "STUDENT", status: "ACTIVE" } });
+    await db.membership.create({ data: { userId: kept.id, schoolId, role: "TEACHER", status: "ACTIVE" } });
+    await db.membership.create({ data: { userId: kept.id, schoolId: riverside.id, role: "TEACHER", status: "ACTIVE" } });
+    await db.enrollment.create({ data: { classId: klass.id, schoolId, studentMembershipId: om.id, status: "ACTIVE" } });
+
+    const result = await deleteSchoolEntirely(operator, schoolId, DETAILS.name);
+    expect(result).toMatchObject({ ok: true, removedUsers: 1 });
+
+    expect(await db.school.findUnique({ where: { id: schoolId } })).toBeNull();
+    expect(await db.class.count({ where: { id: klass.id } })).toBe(0);
+    expect(await db.membership.count({ where: { schoolId } })).toBe(0);
+    // The orphan is gone; the two-school teacher keeps their account and their other school.
+    expect(await db.user.findUnique({ where: { email: ORPHAN } })).toBeNull();
+    const survivor = await db.user.findUnique({ where: { email: KEPT }, include: { memberships: true } });
+    expect(survivor).not.toBeNull();
+    expect(survivor!.memberships.map((m) => m.schoolId)).toEqual([riverside.id]);
+    // The audit row survives the cascade because it is unattributed.
+    const row = await db.auditLog.findFirst({ where: { action: "superuser.school.delete", targetId: schoolId } });
+    expect(row?.schoolId).toBeNull();
+    expect(row?.meta).toContain(DETAILS.name);
   });
 });

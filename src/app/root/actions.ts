@@ -8,6 +8,7 @@ import {
   updateSchool,
   removeSchool,
   restoreSchool,
+  deleteSchoolEntirely,
   inviteAdmin,
   revokeInvite,
   appointAppAdmin,
@@ -78,6 +79,23 @@ export async function removeSchoolAction(schoolId: string): Promise<Result> {
     if (!result.ok && result.errorKey) return { ok: false, error: (await getT())(result.errorKey) };
     revalidatePath("/root");
     revalidatePath(`/root/${schoolId}`);
+    return { ok: true };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+/**
+ * Erases a school for good. The typed name travels with the request and is
+ * checked in the lib, not only in the dialog — a POST is its own entry point.
+ */
+export async function deleteSchoolAction(schoolId: string, confirmName: string): Promise<Result> {
+  try {
+    const session = await requireApiUser();
+    assertSuperuser(session);
+    const result = await deleteSchoolEntirely(session, schoolId, confirmName);
+    if (!result.ok && result.errorKey) return { ok: false, error: (await getT())(result.errorKey) };
+    revalidatePath("/root");
     return { ok: true };
   } catch (error) {
     return failure(error);

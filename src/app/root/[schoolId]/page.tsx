@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeftIcon, BuildingsIcon, TrashIcon, UserPlusIcon } from "@phosphor-icons/react/ssr";
+import { ArrowLeftIcon, BuildingsIcon, EraserIcon, TrashIcon, UserPlusIcon } from "@phosphor-icons/react/ssr";
 import { requireSuperuser } from "@/lib/tenancy";
 import { getSchool, listAdminInvites } from "@/lib/superuser";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
@@ -10,6 +10,7 @@ import { SchoolForm } from "../school-form";
 import { InvitePanel } from "./invite-panel";
 import { RemoveSchool } from "./remove-school";
 import { RestoreSchool } from "./restore-school";
+import { DeleteSchool } from "./delete-school";
 import { getT, getRelativeTime } from "@/lib/i18n/server";
 
 export async function generateMetadata() {
@@ -137,6 +138,20 @@ export default async function SchoolPage({ params }: { params: Promise<{ schoolI
         />
         <CardBody>
           <RemoveSchool schoolId={school.id} schoolName={school.name} />
+        </CardBody>
+      </Card>
+
+      {/* The shredder — a separate card so the two irreversibilities are not
+          one button apart. Removal keeps every account and certificate and
+          can be undone; this keeps nothing and cannot. */}
+      <Card className="border-danger/60">
+        <CardHeader
+          icon={<EraserIcon weight="duotone" className="size-5 text-danger" />}
+          title={t("root.deleteTitle")}
+          description={t("root.deleteExplainer")}
+        />
+        <CardBody>
+          <DeleteSchool schoolId={school.id} schoolName={school.name} />
         </CardBody>
       </Card>
         </>

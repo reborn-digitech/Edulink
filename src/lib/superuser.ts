@@ -1157,6 +1157,83 @@ const recordVisit = cache(async (userId: string, schoolId: string): Promise<void
 });
 
 /**
+ * Erases a school and everything it owns. Permanently.
+ *
+ * NOT THE SAME AS removeSchool, and the difference is the whole reason both
+ * exist. Removal is a flag: the roll becomes leavers, each pupil keeps their
+ * account and certificate, and the operator can put it all back. This is the
+ * shredder — for a school that should never have existed on this server (a
+ * test school, a duplicate registered by mistake) — and there is no undo, so
+ * it asks for the school's exact name and refuses anything else.
+ *
+ * WHAT GOES: every row the school owns, through the schema's own cascades —
+ * memberships, classes, registers, marks, cards, series, posts, threads,
+ * postings, enquiries, alumni certificates issued BY this school. Nothing is
+ * enumerated here by hand: a table added tomorrow with the same
+ * `onDelete: Cascade` every school-owned table already carries goes with it.
+ *
+ * WHAT STAYS: people. A user is not school-owned — a teacher at two schools
+ * must keep the other one — so accounts survive the cascade. The one
+ * exception is the account that existed ONLY for this school: a pupil the
+ * school admitted who belongs nowhere else, guards nobody, holds no expert
+ * profile, no alumni record from any other school, and no platform flag.
+ * Those are shredded too, because leaving them is leaving the test school's
+ * children behind as ownerless logins. The audit row is written UNATTRIBUTED
+ * (schoolId null, the id in meta) — an attributed one would cascade away with
+ * the school it describes.
+ */
+export async function deleteSchoolEntirely(
+  session: ActiveContext,
+  schoolId: string,
+  confirmName: string,
+): Promise<{ ok: boolean; errorKey?: TranslationKey; removedUsers?: number }> {
+  assertSuperuser(session);
+
+  const school = await db.school.findUnique({ where: { id: schoolId }, select: { id: true, name: true } });
+  if (!school) return { ok: false, errorKey: "root.noSuchSchool" };
+  if (confirmName.trim() !== school.name) return { ok: false, errorKey: "root.deleteMismatch" };
+
+  // Who was here, read through the operator's one door into the school —
+  // needed after the cascade, when the memberships are already gone.
+  const { userIds, memberships, classes } = await withSchoolAccess(session, schoolId, async () => {
+    const roll = await db.membership.findMany({ where: { schoolId }, select: { userId: true } });
+    const classes = await db.class.count({ where: { schoolId } });
+    return { userIds: [...new Set(roll.map((m) => m.userId))], memberships: roll.length, classes };
+  });
+
+  await db.school.delete({ where: { id: schoolId } });
+
+  // Accounts that existed only for this school, and now belong to nothing.
+  const orphans = await db.user.findMany({
+    where: {
+      id: { in: userIds },
+      isSuperuser: false,
+      isAppAdmin: false,
+      memberships: { none: {} },
+      guardianships: { none: {} },
+      schoolRecords: { none: {} },
+      operatorAccess: { none: {} },
+      expertProfile: null,
+    },
+    select: { id: true },
+  });
+  const removedUsers = orphans.length
+    ? (await db.user.deleteMany({ where: { id: { in: orphans.map((u) => u.id) } } })).count
+    : 0;
+
+  await audit({
+    schoolId: null,
+    actorUserId: session.user.id,
+    action: "superuser.school.delete",
+    targetType: "School",
+    targetId: schoolId,
+    meta: { schoolId, name: school.name, memberships, classes, removedUsers },
+  });
+
+  return { ok: true, removedUsers };
+}
+
+/**
  * Runs `work` bound to one school, as the operator.
  *
  * THE ONLY WAY INTO A SCHOOL'S ROWS FROM THIS FILE, and everything that reads or
