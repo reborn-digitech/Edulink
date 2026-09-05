@@ -177,6 +177,30 @@ describe("creating a school", () => {
     expect(result.ok).toBe(false);
   });
 
+  it("⚠ saves a state typed into the country box as India plus that state", async () => {
+    // Three simulated schools were saved with "Maharashtra" as their country
+    // and no state, and the directory's India filter then missed them. The
+    // write path itself now puts the location in the one shape the filter
+    // groups on, so no form and no script can recreate the mistake.
+    const created = await createSchool(operator, { ...DETAILS, country: "Maharashtra", region: "" });
+    if (!created.ok) throw new Error("setup");
+    const row = await db.school.findUniqueOrThrow({
+      where: { id: created.schoolId },
+      select: { country: true, region: true },
+    });
+    expect(row).toEqual({ country: "India", region: "Maharashtra" });
+
+    // And a correction that touches only one half is normalised against
+    // the half the row already holds.
+    const fixed = await updateSchool(operator, created.schoolId, { region: "gujarat" });
+    expect(fixed.ok).toBe(true);
+    const after = await db.school.findUniqueOrThrow({
+      where: { id: created.schoolId },
+      select: { country: true, region: true },
+    });
+    expect(after).toEqual({ country: "India", region: "Gujarat" });
+  });
+
   it("writes an audit row that belongs to NO school", async () => {
     const result = await createSchool(operator, DETAILS);
     expect(result.ok).toBe(true);

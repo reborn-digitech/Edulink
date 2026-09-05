@@ -8,6 +8,7 @@ import { requireApiRole, AccessError } from "@/lib/tenancy";
 import { deleteStoredFile, storeFile, UploadError } from "@/lib/storage";
 import { schoolDetailsSchema, fieldErrors, type FieldErrors } from "@/lib/validation";
 import { audit } from "@/lib/audit";
+import { normaliseLocation } from "@/lib/places";
 import { setNotifThresholds, AUTO_READ_RANGE, EXPIRE_RANGE } from "@/lib/notification-housekeeping";
 
 export type SettingsState = { ok: boolean; errors: FieldErrors };
@@ -56,6 +57,9 @@ export async function saveSchoolDetails(input: unknown): Promise<SettingsState> 
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error, await getT()) };
 
   const d = parsed.data;
+  // A state typed into the country box, or "india" in lower case, is saved
+  // in the one shape the directory groups on. See lib/places.ts.
+  const location = normaliseLocation(d);
 
   await db.school.update({
     where: { id: ctx.schoolId },
@@ -66,9 +70,9 @@ export async function saveSchoolDetails(input: unknown): Promise<SettingsState> 
       website: d.website || null,
       addressLine: d.addressLine || null,
       city: d.city || null,
-      region: d.region || null,
+      region: location.region,
       postalCode: d.postalCode || null,
-      country: d.country || null,
+      country: location.country,
       gradeLow: d.gradeLow || null,
       gradeHigh: d.gradeHigh || null,
       timezone: d.timezone,

@@ -93,6 +93,9 @@ export const en = {
     closedNotice: "This vacancy is closed.",
     postedAgo: "Posted {when}",
   },
+  places: {
+    chooseState: "Choose a state or union territory",
+  },
   explore: {
     searchPlaceholder: "Search by name or city",
     countryFilter: "Country",
@@ -2598,6 +2601,7 @@ export const en = {
     website: "Website",
     websitePlaceholder: "https://riverside.school",
     city: "Town or city",
+    region: "State or union territory",
     country: "Country",
     gradeLow: "Lowest grade",
     gradeLowPlaceholder: "e.g. K",

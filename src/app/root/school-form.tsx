@@ -5,7 +5,9 @@ import { useRouter } from "next/navigation";
 import { FloppyDiskIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { TextField } from "@/components/ui/field";
+import { LocationFields } from "@/components/location-fields";
 import { useToast } from "@/components/ui/toast";
+import { INDIA } from "@/lib/places";
 import { createSchoolAction, updateSchoolAction } from "./actions";
 import type { SchoolDetails } from "@/lib/superuser";
 import { useT } from "@/lib/i18n";
@@ -45,7 +47,9 @@ export function SchoolForm({
     city: initial?.city ?? "",
     region: initial?.region ?? "",
     postalCode: initial?.postalCode ?? "",
-    country: initial?.country ?? "",
+    // A new school starts in India, the product's home; a correction shows
+    // whatever the row holds, so opening the form never changes an answer.
+    country: initial?.country ?? (schoolId ? "" : INDIA),
     gradeLow: initial?.gradeLow ?? "",
     gradeHigh: initial?.gradeHigh ?? "",
     timezone: initial?.timezone ?? "Asia/Kolkata",
@@ -152,19 +156,17 @@ export function SchoolForm({
             onChange={(e) => set("city", e.target.value)}
           />
           <TextField
-            label={t("root.stateRegion")}
-            value={form.region ?? ""}
-            onChange={(e) => set("region", e.target.value)}
-          />
-          <TextField
             label={t("root.postalCode")}
             value={form.postalCode ?? ""}
             onChange={(e) => set("postalCode", e.target.value)}
           />
-          <TextField
-            label={t("root.country")}
-            value={form.country ?? ""}
-            onChange={(e) => set("country", e.target.value)}
+          <LocationFields
+            country={form.country ?? ""}
+            region={form.region ?? ""}
+            onCountryChange={(value) => set("country", value)}
+            onRegionChange={(value) => set("region", value)}
+            countryLabel={t("root.country")}
+            regionLabel={t("root.stateRegion")}
           />
         </div>
         <TextField

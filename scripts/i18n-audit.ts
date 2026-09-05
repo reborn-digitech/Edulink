@@ -220,7 +220,13 @@ function userVisible(source: string): string[] {
 function scan(): Finding[] {
   const files = [
     ...ROOTS.flatMap((root) => walk(root, ".tsx")),
-    ...LIB_ROOTS.flatMap((root) => walk(root, ".ts")).filter((f) => !f.includes("i18n")),
+    // `places.ts` is a table of place names — "Tamil Nadu", "West Bengal" —
+    // which are VALUES the directory filters on, the same string in every
+    // language by the rule in the header, not sentences a reader is owed a
+    // translation of. Counting them would report a finished file unfinished.
+    ...LIB_ROOTS.flatMap((root) => walk(root, ".ts")).filter(
+      (f) => !f.includes("i18n") && !f.endsWith("/places.ts"),
+    ),
     ...APP_TS_ROOTS.flatMap((root) => walk(root, ".ts")),
   ].sort();
 

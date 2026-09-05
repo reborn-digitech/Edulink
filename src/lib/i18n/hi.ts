@@ -96,6 +96,9 @@ export const hi: Dictionary = {
     closedNotice: "यह रिक्ति बंद है।",
     postedAgo: "{when} डाली गई",
   },
+  places: {
+    chooseState: "राज्य या केंद्र शासित प्रदेश चुनें",
+  },
   explore: {
     searchPlaceholder: "नाम या शहर से खोजें",
     countryFilter: "देश",
@@ -2383,6 +2386,7 @@ export const hi: Dictionary = {
     website: "वेबसाइट",
     websitePlaceholder: "https://riverside.school",
     city: "शहर या क़स्बा",
+    region: "राज्य या केंद्र शासित प्रदेश",
     country: "देश",
     gradeLow: "सबसे छोटी कक्षा",
     gradeLowPlaceholder: "जैसे K",

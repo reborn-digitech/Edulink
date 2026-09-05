@@ -13,7 +13,9 @@ import {
 } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { CheckboxField, SelectField, TextField } from "@/components/ui/field";
+import { LocationFields } from "@/components/location-fields";
 import { useToast } from "@/components/ui/toast";
+import { INDIA } from "@/lib/places";
 import { cn } from "@/lib/cn";
 import { registerSchool, checkEmailAvailable } from "./actions";
 import { passwordStrength } from "@/lib/password-strength";
@@ -48,6 +50,7 @@ type Draft = {
   website: string;
   about: string;
   city: string;
+  region: string;
   country: string;
   gradeLow: string;
   gradeHigh: string;
@@ -63,7 +66,9 @@ const EMPTY: Draft = {
   website: "",
   about: "",
   city: "",
-  country: "",
+  region: "",
+  // India is the product's home; a school elsewhere overtypes it.
+  country: INDIA,
   gradeLow: "",
   gradeHigh: "",
   timezone: "UTC",
@@ -206,6 +211,7 @@ export function RegisterWizard() {
           website: draft.website.trim(),
           about: draft.about.trim(),
           city: draft.city.trim(),
+          region: draft.region.trim(),
           country: draft.country.trim(),
           gradeLow: draft.gradeLow.trim(),
           gradeHigh: draft.gradeHigh.trim(),
@@ -417,12 +423,13 @@ export function RegisterWizard() {
                 value={draft.city}
                 onChange={(e) => set("city", e.target.value)}
               />
-              <TextField
-                label={t("register.country")}
-                autoComplete="country-name"
-                placeholder={t("common.optional")}
-                value={draft.country}
-                onChange={(e) => set("country", e.target.value)}
+              <LocationFields
+                country={draft.country}
+                region={draft.region}
+                onCountryChange={(value) => set("country", value)}
+                onRegionChange={(value) => set("region", value)}
+                countryLabel={t("register.country")}
+                regionLabel={t("register.region")}
               />
             </div>
 
@@ -529,7 +536,7 @@ export function RegisterWizard() {
               {draft.city && (
                 <Row
                   label={t("register.rowLocation")}
-                  value={[draft.city, draft.country].filter(Boolean).join(", ")}
+                  value={[draft.city, draft.region, draft.country].filter(Boolean).join(", ")}
                 />
               )}
               <Row label={t("register.rowTimezone")} value={draft.timezone} />

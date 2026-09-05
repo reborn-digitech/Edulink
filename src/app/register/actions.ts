@@ -11,6 +11,7 @@ import { audit } from "@/lib/audit";
 import { forSchool } from "@/lib/tenant-context";
 import { EMAIL_VERIFY_TTL_HOURS } from "@/lib/constants";
 import { writeJson } from "@/lib/json";
+import { normaliseLocation } from "@/lib/places";
 import { getT, getLocale } from "@/lib/i18n/server";
 
 export type RegisterState = {
@@ -86,6 +87,9 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
    * clash.
    */
   const baseSlug = slugify(school.name);
+  // The directory groups on the exact string, so the country and state are
+  // saved in one shape whatever the wizard was handed. See lib/places.ts.
+  const location = normaliseLocation(school);
 
   for (let attempt = 0; attempt < 6; attempt++) {
     const schoolId = randomUUID();
@@ -107,9 +111,9 @@ export async function registerSchool(input: unknown): Promise<RegisterState> {
           website: school.website || null,
           addressLine: school.addressLine || null,
           city: school.city || null,
-          region: school.region || null,
+          region: location.region,
           postalCode: school.postalCode || null,
-          country: school.country || null,
+          country: location.country,
           gradeLow: school.gradeLow || null,
           gradeHigh: school.gradeHigh || null,
           // The words become the directory profile's draft; publishing stays

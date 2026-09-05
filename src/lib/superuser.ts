@@ -12,6 +12,7 @@ import { sendTeacherInvite } from "./email";
 import { readJson, writeJson } from "./json";
 import { syncStandinGuardian } from "./standin-guardian";
 import { INVITE_TTL_DAYS } from "./constants";
+import { normaliseLocation } from "./places";
 import type { ActiveContext } from "./session";
 
 /**
@@ -159,6 +160,7 @@ export async function createSchool(
   if (rangeProblem) return { ok: false, errorKey: rangeProblem };
 
   const baseSlug = slugify(name);
+  const location = normaliseLocation(details);
 
   for (let attempt = 0; attempt < 6; attempt++) {
     const schoolId = randomUUID();
@@ -177,9 +179,9 @@ export async function createSchool(
           website: details.website || null,
           addressLine: details.addressLine || null,
           city: details.city || null,
-          region: details.region || null,
+          region: location.region,
           postalCode: details.postalCode || null,
-          country: details.country || null,
+          country: location.country,
           gradeLow: details.gradeLow || null,
           gradeHigh: details.gradeHigh || null,
           timezone: details.timezone,
@@ -223,8 +225,22 @@ export async function updateSchool(
   const rangeProblem = checkGradeRange(details.gradeLow, details.gradeHigh);
   if (rangeProblem) return { ok: false, errorKey: rangeProblem };
 
-  const existing = await db.school.findUnique({ where: { id: schoolId }, select: { id: true } });
+  const existing = await db.school.findUnique({
+    where: { id: schoolId },
+    select: { id: true, country: true, region: true },
+  });
   if (!existing) return { ok: false, errorKey: "root.noSuchSchool" };
+
+  // A partial correction that touches either half of the location is
+  // normalised against the other half the row already holds, so "country:
+  // Gujarat" alone still lands as India / Gujarat.
+  const touchesLocation = details.country !== undefined || details.region !== undefined;
+  const location = touchesLocation
+    ? normaliseLocation({
+        country: details.country !== undefined ? details.country : existing.country,
+        region: details.region !== undefined ? details.region : existing.region,
+      })
+    : null;
 
   await db.school.update({
     where: { id: schoolId },
@@ -235,9 +251,8 @@ export async function updateSchool(
       ...(details.website !== undefined ? { website: details.website || null } : {}),
       ...(details.addressLine !== undefined ? { addressLine: details.addressLine || null } : {}),
       ...(details.city !== undefined ? { city: details.city || null } : {}),
-      ...(details.region !== undefined ? { region: details.region || null } : {}),
+      ...(location ? { region: location.region, country: location.country } : {}),
       ...(details.postalCode !== undefined ? { postalCode: details.postalCode || null } : {}),
-      ...(details.country !== undefined ? { country: details.country || null } : {}),
       ...(details.gradeLow !== undefined ? { gradeLow: details.gradeLow || null } : {}),
       ...(details.gradeHigh !== undefined ? { gradeHigh: details.gradeHigh || null } : {}),
       ...(details.timezone !== undefined ? { timezone: details.timezone } : {}),

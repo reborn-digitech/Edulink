@@ -93,6 +93,9 @@ export const mr: Dictionary = {
     closedNotice: "ही जागा बंद आहे.",
     postedAgo: "{when} टाकली",
   },
+  places: {
+    chooseState: "राज्य किंवा केंद्रशासित प्रदेश निवडा",
+  },
   explore: {
     searchPlaceholder: "नाव किंवा शहराने शोधा",
     countryFilter: "देश",
@@ -2380,6 +2383,7 @@ export const mr: Dictionary = {
     website: "संकेतस्थळ",
     websitePlaceholder: "https://riverside.school",
     city: "गाव किंवा शहर",
+    region: "राज्य किंवा केंद्रशासित प्रदेश",
     country: "देश",
     gradeLow: "सर्वात लहान इयत्ता",
     gradeLowPlaceholder: "उदा. K",

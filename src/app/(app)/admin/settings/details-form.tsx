@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { FloppyDiskIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { SelectField, TextField } from "@/components/ui/field";
+import { LocationFields } from "@/components/location-fields";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { saveSchoolDetails } from "./actions";
@@ -247,22 +248,20 @@ export function DetailsForm({ school }: { school: School }) {
           onChange={(e) => set("city", e.target.value)}
         />
         <TextField
-          label={t("settings.region")}
-          value={draft.region}
-          onChange={(e) => set("region", e.target.value)}
-        />
-      </div>
-
-      <div className="grid gap-5 sm:grid-cols-2">
-        <TextField
           label={t("settings.postcode")}
           value={draft.postalCode}
           onChange={(e) => set("postalCode", e.target.value)}
         />
-        <TextField
-          label={t("settings.country")}
-          value={draft.country}
-          onChange={(e) => set("country", e.target.value)}
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <LocationFields
+          country={draft.country}
+          region={draft.region}
+          onCountryChange={(value) => set("country", value)}
+          onRegionChange={(value) => set("region", value)}
+          countryLabel={t("settings.country")}
+          regionLabel={t("settings.region")}
         />
       </div>
 
