@@ -41,6 +41,9 @@ type Post = {
   authorName: string;
   authorAvatar: string | null;
   authorRole: Role | null;
+  /** The author's membership at this school, when they still hold one — the
+   * door to their profile. Null on the global feed and for a leaver. */
+  authorMembershipId?: string | null;
   className: string | null;
   commentCount: number;
   reactions: Record<ReactionKind, number>;
@@ -125,11 +128,26 @@ export function PostCard({ post, viewerRole }: { post: Post; viewerRole: Role | 
       )}
 
       <div className="p-4">
+        {/* The author is a door, not a caption: name and avatar open their
+            profile, where the "Message" button lives. A post from somebody
+            who has since left, or on the global feed, stays plain text. */}
         <header className="flex items-start gap-3">
-          <Avatar avatarKey={post.authorAvatar} name={post.authorName} size="sm" />
+          {post.authorMembershipId ? (
+            <Link href={`/people/${post.authorMembershipId}`} className="shrink-0 rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" aria-label={post.authorName}>
+              <Avatar avatarKey={post.authorAvatar} name={post.authorName} size="sm" />
+            </Link>
+          ) : (
+            <Avatar avatarKey={post.authorAvatar} name={post.authorName} size="sm" />
+          )}
           <div className="min-w-0 flex-1">
             <p className="flex flex-wrap items-center gap-x-2 text-sm">
-              <span className="font-semibold text-fg">{post.authorName}</span>
+              {post.authorMembershipId ? (
+                <Link href={`/people/${post.authorMembershipId}`} className="font-semibold text-fg hover:underline">
+                  {post.authorName}
+                </Link>
+              ) : (
+                <span className="font-semibold text-fg">{post.authorName}</span>
+              )}
               {post.authorRole && (
                 <Badge tone="neutral" size="sm">
                   {t(ROLE_META[post.authorRole].labelKey)}

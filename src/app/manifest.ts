@@ -38,7 +38,7 @@ export default function manifest(): MetadataRoute.Manifest {
       {
         name: "Take attendance",
         short_name: "Attendance",
-        description: "Mark today's register for your class",
+        description: "Mark today's attendance for your class",
         url: "/teacher/attendance?source=shortcut",
         icons: [{ src: "/icons/shortcut-attendance.png", sizes: "96x96", type: "image/png" }],
       },

@@ -11,10 +11,11 @@ import { requireRole } from "@/lib/tenancy";
 import {
   ATTENDANCE_CONCERN_PERCENT,
   classInsights,
-  defaultWindow,
+  parseSpan, windowFor,
   schoolSummary,
 } from "@/lib/insights";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
+import { CelebrationsLink } from "@/components/celebrations/celebrations-link";
 import { EmptyState } from "@/components/ui/states";
 import { formatDateKey } from "@/lib/dates";
 import { WindowPicker } from "./window-picker";
@@ -54,8 +55,8 @@ export default async function PrincipalDashboard({
   const { days } = await searchParams;
 
   // Clamped rather than trusted: this lands in a date range and then a query.
-  const span = [7, 30, 90, 180].includes(Number(days)) ? Number(days) : 30;
-  const window = await defaultWindow(ctx.schoolId, span);
+  const span = parseSpan(days);
+  const window = await windowFor(ctx.schoolId, span);
 
   const insights = await classInsights(ctx, window);
   const summary = await schoolSummary(ctx, insights);
@@ -85,7 +86,7 @@ export default async function PrincipalDashboard({
             })}
           </p>
         </div>
-        <WindowPicker days={span} />
+        <WindowPicker span={span} />
       </div>
 
       {/* ---------------- the year's milestones ---------------- */}
@@ -125,6 +126,9 @@ export default async function PrincipalDashboard({
           )}
         </CardBody>
       </Card>
+
+      {/* The head sends the wishes too. */}
+      <CelebrationsLink session={ctx} />
 
       {/* ---------------- what can still be fixed today ---------------- */}
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

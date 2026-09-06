@@ -5,6 +5,8 @@ import { db } from "@/lib/db";
 import { anyOpenReviews } from "@/lib/reviews";
 import { anyEnquiries } from "@/lib/enquiries";
 import { tidyNotificationsFor } from "@/lib/notification-housekeeping";
+import { unreadConversationCount } from "@/lib/conversations";
+import { listThreads } from "@/lib/remarks";
 import type { Role } from "@/lib/constants";
 
 /**
@@ -56,6 +58,23 @@ export async function SignedInShell({
   ]);
 
   /**
+   * The Messages entry wears its unread count. Two rooms feed it: people
+   * writing to people (conversations) and the pupil-centred threads. Both
+   * reads are bounded, and either failing must not take the shell down —
+   * a badge is the least important thing on the page.
+   */
+  let unreadMessages = 0;
+  try {
+    const [conversations, threads] = await Promise.all([
+      unreadConversationCount(session),
+      listThreads(session).then((list) => list.filter((th) => th.unread).length),
+    ]);
+    unreadMessages = conversations + threads;
+  } catch (error) {
+    console.error("[shell] unread message count failed", error);
+  }
+
+  /**
    * The Feedback entry EXISTS ONLY WHILE THE SCHOOL IS ASKING. The admin
    * opening a round is what puts it in a pupil's or parent's menu; closing
    * the last round takes it away again. A permanent item pointing at a
@@ -90,6 +109,7 @@ export async function SignedInShell({
       }}
       unreadCount={unreadCount}
       hiddenHrefs={hiddenHrefs}
+      badges={unreadMessages > 0 ? { "/remarks": unreadMessages } : {}}
     >
       {children}
     </AppShell>

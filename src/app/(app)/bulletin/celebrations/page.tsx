@@ -27,7 +27,14 @@ export const CELEBRATIONS_TAG = "celebrations";
 export default async function CelebrationsPage() {
   const session = await requireUser();
   const t = await getT();
-  const items = await celebrationsFor(session, 30);
+  // The month, and — when it is empty — the next half-year, labelled as
+  // such, so the page never says "nothing" while a birthday sits 33 days out.
+  let items = await celebrationsFor(session, 30);
+  let later = false;
+  if (items.length === 0) {
+    items = await celebrationsFor(session, 183);
+    later = items.length > 0;
+  }
   const multiSchool = new Set(items.map((i) => i.schoolName)).size > 1;
 
   // Grouped by day, so three birthdays on Friday read as one Friday.
@@ -76,6 +83,9 @@ export default async function CelebrationsPage() {
         />
       ) : (
         <div className="space-y-3">
+          {later && (
+            <p className="rounded-[--radius-md] bg-accent-soft p-3.5 text-sm text-fg-muted">{t("celebrations.laterNote")}</p>
+          )}
           {[...byDay.entries()].map(([dateKey, list]) => (
             <Card key={dateKey}>
               <CardBody className="p-0">

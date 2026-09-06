@@ -66,6 +66,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/reviews", labelKey: "nav.reviews", icon: "star", prefix: true, group: "running" },
     { href: "/admin/safety", labelKey: "nav.safety", icon: "shield", prefix: true, group: "running" },
     { href: "/admin/settings", labelKey: "nav.settings", icon: "gear", prefix: true, group: "running" },
+    // The office can now write to anyone at the school, so the inbox is theirs too.
+    { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
     { href: "/experts", labelKey: "nav.experts", icon: "briefcase", prefix: true, group: "school" },
     { href: "/admin/vacancies", labelKey: "nav.vacancies", icon: "briefcase", prefix: true, group: "school", also: ["/vacancies"] },

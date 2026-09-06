@@ -2,7 +2,7 @@ import "server-only";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { overallPercent, weightedPercent, weightsAreUsable, type CategoryWeight } from "./grading";
-import { addDaysToKey, todayKey } from "./dates";
+import { addDaysToKey, dateKeyInZone, todayKey } from "./dates";
 import type { ActiveContext } from "./session";
 import type { AttendanceStatus } from "./constants";
 
@@ -83,6 +83,46 @@ export async function defaultWindow(schoolId: string, days = DEFAULT_WINDOW_DAYS
   });
   const toDateKey = todayKey(school.timezone);
   return { fromDateKey: addDaysToKey(toDateKey, -days), toDateKey };
+}
+
+/**
+ * How far back the head's figures look.
+ *
+ * Three trailing spans and one that is not trailing at all: "the academic
+ * year so far" runs from the day the current year began to today. It used to
+ * be "half a year" — a flat 180 days — which in an Indian school answers a
+ * question nobody asks: in September it reached back into last year's
+ * classes, and in April it was mostly the summer holiday. The year is the
+ * unit the head thinks in, so the window is the year.
+ *
+ * Arrives from the URL, so it is PARSED rather than trusted — anything that
+ * is not one of the four becomes the default.
+ */
+export type Span = 7 | 30 | 90 | "year";
+export const SPANS: readonly Span[] = [7, 30, 90, "year"];
+
+export function parseSpan(raw: string | undefined): Span {
+  if (raw === "year") return "year";
+  const n = Number(raw);
+  return n === 7 || n === 90 ? n : DEFAULT_WINDOW_DAYS;
+}
+
+export async function windowFor(schoolId: string, span: Span): Promise<Window> {
+  if (span !== "year") return defaultWindow(schoolId, span);
+  const [school, year] = await Promise.all([
+    db.school.findUniqueOrThrow({ where: { id: schoolId }, select: { timezone: true } }),
+    db.academicYear.findFirst({
+      where: { schoolId, isCurrent: true },
+      orderBy: { startDate: "desc" },
+      select: { startDate: true },
+    }),
+  ]);
+  const toDateKey = todayKey(school.timezone);
+  // No year started yet: the honest fallback is a long trailing window, not
+  // an empty one — the head still wants to see the school.
+  if (!year) return { fromDateKey: addDaysToKey(toDateKey, -180), toDateKey };
+  const start = dateKeyInZone(year.startDate, school.timezone);
+  return { fromDateKey: start > toDateKey ? toDateKey : start, toDateKey };
 }
 
 /* -------------------------------------------------------------------------- */

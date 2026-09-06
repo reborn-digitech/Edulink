@@ -355,7 +355,7 @@ export async function listFeed(
     where,
     include: {
       author: { select: { name: true, preferredName: true, avatarKey: true } },
-      authorship: { select: { role: true } },
+      authorship: { select: { id: true, role: true } },
       class: { select: { name: true } },
       reactions: { select: { kind: true, userId: true } },
       acks: { where: { userId: session.user.id }, select: { id: true } },
@@ -392,6 +392,7 @@ export async function listFeed(
       authorName: post.author.preferredName ?? post.author.name,
       authorAvatar: post.author.avatarKey,
       authorRole: (post.authorship?.role as Role | undefined) ?? null,
+      authorMembershipId: post.authorship?.id ?? null,
       className: post.class?.name ?? null,
       commentCount: post._count.comments,
       reactions: reactions as Record<ReactionKind, number>,

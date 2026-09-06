@@ -1,5 +1,6 @@
 import "server-only";
 import { cache } from "react";
+import type { Prisma } from "@prisma/client";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { randomUUID } from "node:crypto";
 import { db } from "./db";
@@ -841,12 +842,47 @@ function isUniqueViolation(error: unknown): boolean {
 export type ServerAuditRow = {
   id: string;
   action: string;
-  actorName: string;
+  /** Null when the row was written by a script with no actor — the page says "System". */
+  actorUserId: string | null;
+  /** Null when the actor's account no longer exists — the page says "Deleted user". */
+  actorName: string | null;
   targetType: string | null;
   targetId: string | null;
   meta: Record<string, unknown>;
   ip: string | null;
   at: Date;
+};
+
+export type ServerAuditFilter = {
+  /** An exact action, or a family with a trailing dot: "superuser." */
+  action?: string;
+  /** Matches the actor's name, the target's name/email in meta, or the ip. */
+  q?: string;
+  from?: Date;
+  to?: Date;
+  /** Leave out rows whose actor account has since been deleted. */
+  liveActorsOnly?: boolean;
+  skip?: number;
+  take?: number;
+};
+
+export type ServerAuditPage = {
+  rows: ServerAuditRow[];
+  total: number;
+  skip: number;
+  take: number;
+  /** Every action present in the log, for the filter menu. */
+  actions: string[];
+};
+
+/** The families of action the server log shows. One place, so the filter menu and the query agree. */
+export const SERVER_AUDIT_WHERE: Prisma.AuditLogWhereInput = {
+  schoolId: null,
+  OR: [
+    { action: { startsWith: "superuser." } },
+    { action: { startsWith: "operator." } },
+    { action: { in: ["expert.invite", "expert.profile.update"] } },
+  ],
 };
 
 /**
@@ -862,54 +898,88 @@ export type ServerAuditRow = {
  * and it lets a superuser read exactly these rows. The filter is here so the
  * query says what it means, and so that a superuser who ALSO administers a
  * school does not find their own school's history mixed into the server log.
+ *
+ * "DELETED USER" ON EVERY ROW is not a lookup failing: it is what a server
+ * whose test suites create an operator, act, and delete the operator again
+ * looks like after a month. The actor id is kept on the row (there is no
+ * foreign key, on purpose — an audit row must outlive its actor), the name
+ * is resolved at read time, and a name that no longer resolves is reported
+ * as null so the page can say so honestly and the filter can hide it.
  */
 export async function listServerAudit(
   session: ActiveContext,
-  opts: { take?: number } = {},
-): Promise<ServerAuditRow[]> {
+  opts: ServerAuditFilter = {},
+): Promise<ServerAuditPage> {
   assertSuperuser(session);
 
-  const rows = await db.auditLog.findMany({
-    // ⚠ AN ALLOWLIST, NOT "everything with no school". Sign-ins, signups and
-    // account changes are also written with no schoolId — they belong to a
-    // PERSON, not a tenant — and `schoolId: null` alone poured every user's
-    // login history into the operator's log. The server log is what the
-    // OPERATOR did to the server: schools, their administrators, the flag
-    // itself, and the expert programme, which is the one thing that lives
-    // outside every school on purpose.
-    where: {
-      schoolId: null,
-      OR: [
-        { action: { startsWith: "superuser." } },
-        { action: { startsWith: "operator." } },
-        { action: { in: ["expert.invite", "expert.profile.update"] } },
-      ],
-    },
-    orderBy: { createdAt: "desc" },
-    take: Math.min(opts.take ?? 200, 500),
-  });
+  const take = Math.min(Math.max(opts.take ?? 50, 1), 200);
+  const skip = Math.max(opts.skip ?? 0, 0);
+  const q = opts.q?.trim();
 
-  // Same batch-lookup as the school-scoped reader: actorUserId has no relation,
-  // because the actor may be gone by the time anybody reads this.
-  const actorIds = [
-    ...new Set(rows.map((r) => r.actorUserId).filter((id): id is string => Boolean(id))),
-  ];
+  const where: Prisma.AuditLogWhereInput = {
+    AND: [
+      SERVER_AUDIT_WHERE,
+      ...(opts.action
+        ? [opts.action.endsWith(".") ? { action: { startsWith: opts.action } } : { action: opts.action }]
+        : []),
+      ...(opts.from ? [{ createdAt: { gte: opts.from } }] : []),
+      ...(opts.to ? [{ createdAt: { lte: opts.to } }] : []),
+    ],
+  };
+
+  // A text search has to see actor names, which live on User, not on the row.
+  // Resolve the matching people first and search by id; the meta string is
+  // searched as text because it is JSON in a text column.
+  if (q) {
+    const people = await db.user.findMany({
+      where: { OR: [{ name: { contains: q, mode: "insensitive" } }, { preferredName: { contains: q, mode: "insensitive" } }] },
+      select: { id: true },
+      take: 200,
+    });
+    (where.AND as Prisma.AuditLogWhereInput[]).push({
+      OR: [
+        { actorUserId: { in: people.map((p) => p.id) } },
+        { meta: { contains: q, mode: "insensitive" } },
+        { ip: { contains: q } },
+        { action: { contains: q, mode: "insensitive" } },
+      ],
+    });
+  }
+
+  const [candidates, actionRows] = await Promise.all([
+    db.auditLog.findMany({ where, orderBy: { createdAt: "desc" }, take: opts.liveActorsOnly ? 2000 : take, skip: opts.liveActorsOnly ? 0 : skip }),
+    db.auditLog.findMany({ where: SERVER_AUDIT_WHERE, distinct: ["action"], select: { action: true } }),
+  ]);
+
+  const actorIds = [...new Set(candidates.map((r) => r.actorUserId).filter((id): id is string => Boolean(id)))];
   const actors = await db.user.findMany({
     where: { id: { in: actorIds } },
     select: { id: true, name: true, preferredName: true },
   });
   const nameById = new Map(actors.map((a) => [a.id, a.preferredName ?? a.name]));
 
-  return rows.map((row) => ({
+  const shaped = candidates.map((row) => ({
     id: row.id,
     action: row.action,
-    actorName: row.actorUserId ? (nameById.get(row.actorUserId) ?? "Deleted user") : "System",
+    actorUserId: row.actorUserId,
+    actorName: row.actorUserId ? (nameById.get(row.actorUserId) ?? null) : null,
     targetType: row.targetType,
     targetId: row.targetId,
     meta: readJson<Record<string, unknown>>(row.meta, {}),
     ip: row.ip,
     at: row.createdAt,
   }));
+
+  if (opts.liveActorsOnly) {
+    // Filtered in memory over a bounded window: "live" is a property of the
+    // User table, not of the row, and joining the two is what an audit log
+    // deliberately does not do.
+    const live = shaped.filter((r) => r.actorUserId === null || r.actorName !== null);
+    return { rows: live.slice(skip, skip + take), total: live.length, skip, take, actions: actionRows.map((a) => a.action).sort() };
+  }
+
+  const total = await db.auditLog.count({ where });
+  return { rows: shaped, total, skip, take, actions: actionRows.map((a) => a.action).sort() };
 }
 
 /* -------------------------------------------------------------------------- */

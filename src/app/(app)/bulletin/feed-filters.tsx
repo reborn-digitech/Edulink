@@ -68,15 +68,20 @@ export async function FeedFilters({
         </button>
       </form>
 
-      <nav aria-label={t("bulletin.categoryLabel")} className="flex flex-wrap gap-1.5">
+      {/* ONE RAIL, NOT A WRAP. Six categories plus the celebrations chips
+          wrapped to four lines on a phone and pushed the first post below the
+          fold; a reader opening the feed saw filters and no feed. The rail
+          scrolls sideways, keeps the active chip visible, and takes one line
+          on every screen. */}
+      <nav aria-label={t("bulletin.categoryLabel")} className="-mx-1 flex snap-x gap-1.5 overflow-x-auto px-1 pb-1 no-scrollbar">
         <Link
           href={href(undefined)}
           aria-current={!category ? "page" : undefined}
-          className={
+          className={`shrink-0 snap-start ${
             !category
               ? "rounded-full bg-accent px-3 py-1.5 text-xs font-semibold text-accent-fg"
               : "rounded-full bg-surface-muted px-3 py-1.5 text-xs font-medium text-fg-muted hover:text-fg"
-          }
+          }`}
         >
           {t("bulletin.allCategories")}
         </Link>
@@ -85,11 +90,11 @@ export async function FeedFilters({
             key={key}
             href={href(key)}
             aria-current={category === key ? "page" : undefined}
-            className={
+            className={`shrink-0 snap-start ${
               category === key
                 ? "rounded-full bg-accent px-3 py-1.5 text-xs font-semibold text-accent-fg"
                 : "rounded-full bg-surface-muted px-3 py-1.5 text-xs font-medium text-fg-muted hover:text-fg"
-            }
+            }`}
           >
             {t(CATEGORY_KEYS[key].name)}
           </Link>
@@ -100,17 +105,17 @@ export async function FeedFilters({
         <Link
           href={`${basePath}?${new URLSearchParams({ ...extra, tag: "celebrations" }).toString()}`}
           aria-current={tag === "celebrations" ? "page" : undefined}
-          className={
+          className={`shrink-0 snap-start ${
             tag === "celebrations"
               ? "rounded-full bg-accent px-3 py-1.5 text-xs font-semibold text-accent-fg"
               : "rounded-full bg-surface-muted px-3 py-1.5 text-xs font-medium text-fg-muted hover:text-fg"
-          }
+          }`}
         >
           🎂 {t("celebrations.chip")}
         </Link>
         <Link
           href="/bulletin/celebrations"
-          className="rounded-full border border-dashed border-border px-3 py-1.5 text-xs font-medium text-fg-muted hover:text-fg"
+          className="shrink-0 snap-start rounded-full border border-dashed border-border px-3 py-1.5 text-xs font-medium text-fg-muted hover:text-fg"
         >
           {t("celebrations.upcomingLink")}
         </Link>

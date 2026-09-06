@@ -3,7 +3,7 @@ import { nameCarriesSection } from "@/lib/codes";
 import Link from "next/link";
 import { CaretRightIcon, ChalkboardTeacherIcon, WarningIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
-import { ATTENDANCE_CONCERN_PERCENT, classInsights, defaultWindow } from "@/lib/insights";
+import { ATTENDANCE_CONCERN_PERCENT, classInsights, parseSpan, windowFor } from "@/lib/insights";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { formatDateKey } from "@/lib/dates";
@@ -33,8 +33,8 @@ export default async function PrincipalClassesPage({
   const ctx = await requireRole("PRINCIPAL", "ADMIN");
   const { days } = await searchParams;
 
-  const span = [7, 30, 90, 180].includes(Number(days)) ? Number(days) : 30;
-  const window = await defaultWindow(ctx.schoolId, span);
+  const span = parseSpan(days);
+  const window = await windowFor(ctx.schoolId, span);
   const insights = await classInsights(ctx, window);
 
   return (
@@ -51,7 +51,7 @@ export default async function PrincipalClassesPage({
             })}
           </p>
         </div>
-        <WindowPicker days={span} />
+        <WindowPicker span={span} />
       </div>
 
       <Card>

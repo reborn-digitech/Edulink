@@ -20,6 +20,7 @@ export type RealtimeEvent =
   | { type: "grade.updated"; studentMembershipId: string; assignmentId: string }
   | { type: "assignment.published"; classId: string; assignmentId: string }
   | { type: "remark.message"; threadId: string }
+  | { type: "conversation.message"; conversationId: string }
   | { type: "post.status"; postId: string; status: string }
   | { type: "notification"; userId: string }
   | { type: "checklist.updated"; schoolId: string };

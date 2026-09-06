@@ -9,6 +9,7 @@ import {
   DeviceMobileIcon,
   UsersThreeIcon,
   CertificateIcon,
+  CaretRightIcon,
 } from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
 import { db } from "@/lib/db";
@@ -28,6 +29,7 @@ import { EmailForm } from "./email-form";
 import { MobileForm } from "./mobile-form";
 import { DeviceList } from "./device-list";
 import { ROLE_META, type Role } from "@/lib/constants";
+import { switchContext } from "@/app/switch/actions";
 import { getT } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -131,40 +133,55 @@ export default async function AccountPage() {
                 ? t("account.belongOne")
                 : t("account.belongMany")
           }
-          action={
-            contexts.memberships.length + (contexts.children.length > 0 ? 1 : 0) > 1 ? (
-              <Button asChild size="sm" variant="secondary">
-                <Link href="/switch">{t("account.switch")}</Link>
-              </Button>
-            ) : null
-          }
         />
         <CardBody>
           {contexts.memberships.length + contexts.children.length === 0 && (
             <p className="text-sm leading-relaxed text-fg-muted">{t("account.belongNoneBody")}</p>
           )}
+          {/* Each row IS the switch. This list used to be a picture of the
+              picker at /switch — the same schools, drawn again, with nothing
+              to press — so changing school from here was two clicks: Switch,
+              then the school. Now the row you are not on is a form that posts
+              the same server action the picker does, and the row you are on
+              says so instead of offering to take you where you already are. */}
           <ul className="space-y-1.5">
-            {contexts.memberships.map((membership) => (
-              <li
-                key={membership.membershipId}
-                className="flex items-center justify-between gap-3 rounded-[--radius-sm] bg-surface-muted p-3"
-              >
-                <span className="min-w-0 truncate text-sm font-medium text-fg">
-                  {membership.schoolName}
-                </span>
-                <Badge tone="accent" size="sm">
-                  {t(ROLE_META[membership.role as Role].labelKey)}
-                </Badge>
-              </li>
-            ))}
+            {contexts.memberships.map((membership) => {
+              const here =
+                live.role === membership.role && live.schoolId === membership.schoolId;
+              return (
+                <li key={membership.membershipId}>
+                  <BelongRow
+                    here={here}
+                    title={membership.schoolName}
+                    roleLabel={t(ROLE_META[membership.role as Role].labelKey)}
+                    hereLabel={t("account.hereNow")}
+                    goLabel={t("account.goThere")}
+                    schoolId={membership.schoolId}
+                    role={membership.role}
+                  />
+                </li>
+              );
+            })}
             {contexts.children.length > 0 && (
-              <li className="flex items-center justify-between gap-3 rounded-[--radius-sm] bg-surface-muted p-3">
-                <span className="min-w-0 truncate text-sm font-medium text-fg">
-                  {contexts.children.map((c) => c.name).join(", ")}
-                </span>
-                <Badge tone="accent" size="sm">
-                  {t("role.parent")}
-                </Badge>
+              <li>
+                <BelongRow
+                  here={live.role === "PARENT"}
+                  // The same words the switcher uses: one child by name, a
+                  // family by count, and a school's stand-in for forty
+                  // guardianless pupils as what it is — not forty names.
+                  title={
+                    contexts.children.every((c) => c.relation === "SCHOOL")
+                      ? t("switch.standinCount", { count: contexts.children.length })
+                      : contexts.children.length === 1
+                        ? contexts.children[0]!.name
+                        : t("switch.childrenCount", { count: contexts.children.length })
+                  }
+                  roleLabel={t("role.parent")}
+                  hereLabel={t("account.hereNow")}
+                  goLabel={t("account.goThere")}
+                  schoolId={null}
+                  role="PARENT"
+                />
               </li>
             )}
           </ul>
@@ -323,4 +340,73 @@ function describeDevice(userAgent: string | null): string | null {
           : "Browser";
 
   return `${browser} on ${os}`;
+}
+
+/**
+ * One place this person belongs, as a row that takes them there.
+ *
+ * The row they are already on is not a button: pressing "go" to where you
+ * already are is a round trip that changes nothing, and a row that cannot be
+ * pressed says "you're here" instead. Everything else posts `switchContext`,
+ * which re-checks the membership before it writes — the form is a request,
+ * not a fact, exactly as it is on /switch.
+ */
+function BelongRow({
+  here,
+  title,
+  roleLabel,
+  hereLabel,
+  goLabel,
+  schoolId,
+  role,
+}: {
+  here: boolean;
+  title: string;
+  roleLabel: string;
+  hereLabel: string;
+  goLabel: string;
+  schoolId: string | null;
+  role: Role;
+}) {
+  const body = (
+    <>
+      <span className="min-w-0 flex-1">
+        <span className="block truncate text-sm font-medium text-fg">{title}</span>
+        <span className="block text-xs text-fg-muted">{roleLabel}</span>
+      </span>
+      {here ? (
+        <Badge tone="accent" size="sm">
+          {hereLabel}
+        </Badge>
+      ) : (
+        <span className="inline-flex items-center gap-1 text-sm font-medium text-accent">
+          {goLabel}
+          <CaretRightIcon weight="bold" className="size-4" aria-hidden="true" />
+        </span>
+      )}
+    </>
+  );
+  if (here) {
+    return (
+      <div
+        aria-current="true"
+        className="flex items-center justify-between gap-3 rounded-[--radius-sm] border border-accent/40 bg-accent-soft/40 p-3"
+      >
+        {body}
+      </div>
+    );
+  }
+  return (
+    <form action={switchContext}>
+      {schoolId && <input type="hidden" name="schoolId" value={schoolId} />}
+      <input type="hidden" name="role" value={role} />
+      <button
+        type="submit"
+        aria-label={[roleLabel, title].join(" — ")}
+        className="flex w-full items-center justify-between gap-3 rounded-[--radius-sm] bg-surface-muted p-3 text-left transition-colors hover:bg-surface-muted/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+      >
+        {body}
+      </button>
+    </form>
+  );
 }

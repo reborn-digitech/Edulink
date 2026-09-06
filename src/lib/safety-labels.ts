@@ -133,6 +133,8 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "grade.save": "audit.gradeSave",
   "submission.create": "audit.submissionCreate",
   "remark.create": "audit.remarkCreate",
+  "conversation.open": "audit.conversationOpen",
+  "conversation.message": "audit.conversationMessage",
   "student.join": "audit.studentJoin",
   "student.admit": "audit.studentAdmit",
   "term.create": "audit.termCreate",

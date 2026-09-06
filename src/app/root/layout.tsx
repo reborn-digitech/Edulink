@@ -39,7 +39,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               {t("root.serverBadge")}
             </span>
           </Link>
-          <div className="flex items-center gap-1">
+          <div className="flex flex-wrap items-center gap-1">
             {/* The one other place in here. A trail written and never read is
                 not a trail, and until this link existed there was no page at
                 all that could show an operator what they had done. */}

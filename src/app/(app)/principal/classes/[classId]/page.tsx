@@ -13,7 +13,7 @@ import { requireRole, AccessError } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import {
   ATTENDANCE_CONCERN_PERCENT,
-  defaultWindow,
+  parseSpan, windowFor,
   pupilInsights,
   type PupilInsight,
 } from "@/lib/insights";
@@ -54,8 +54,8 @@ export default async function PrincipalClassPage({
   const { classId } = await params;
   const { days } = await searchParams;
 
-  const span = [7, 30, 90, 180].includes(Number(days)) ? Number(days) : 30;
-  const window = await defaultWindow(ctx.schoolId, span);
+  const span = parseSpan(days);
+  const window = await windowFor(ctx.schoolId, span);
 
   let data;
   try {
@@ -131,7 +131,7 @@ export default async function PrincipalClassPage({
             <ClockCounterClockwiseIcon weight="bold" className="size-4" />
             {t("attendanceHistory.link")}
           </Link>
-          <WindowPicker days={span} />
+          <WindowPicker span={span} />
         </div>
       </div>
 

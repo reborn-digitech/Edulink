@@ -123,6 +123,9 @@ model School {
   reportCardItems      ReportCardItem[]
   assignments          Assignment[]
   remarks              RemarkThread[]
+  conversations        Conversation[]
+  conversationMembers  ConversationParticipant[]
+  conversationMessages ConversationMessage[]
   reports              Report[]
   classTeachers        ClassTeacher[]
   enrollments          Enrollment[]
@@ -233,28 +236,30 @@ model User {
   mergedInto User?  @relation("AccountMerge", fields: [mergedIntoUserId], references: [id], onDelete: SetNull)
   mergedFrom User[] @relation("AccountMerge")
 
-  memberships       Membership[]
-  reviewResponses   ReviewResponse[]   @relation("ReviewRespondent")
-  sessions          Session[]
-  ssoIdentities     SsoIdentity[]
-  guardianships     Guardianship[]     @relation("ParentGuardianships")
-  authTokens        AuthToken[]
-  notifications     Notification[]
-  pushSubscriptions PushSubscription[]
-  posts             Post[]
-  comments          Comment[]
-  reactions         Reaction[]
-  remarkMessages    RemarkMessage[]
-  reportsFiled      Report[]           @relation("ReportsFiled")
-  expertProfile     ExpertProfile?
-  expertMessages    ExpertMessage[]
-  mentorMessages    MentorMessage[]
-  schoolRecords     SchoolRecord[]
-  operatorAccess    OperatorAccess[]
-  enquiries         Enquiry[]          @relation("EnquiryOpener")
-  enquiryMessages   EnquiryMessage[]   @relation("EnquiryMessageAuthor")
-  postAcks          PostAck[]
-  meetingBookings   MeetingBooking[]
+  memberships          Membership[]
+  reviewResponses      ReviewResponse[]          @relation("ReviewRespondent")
+  sessions             Session[]
+  ssoIdentities        SsoIdentity[]
+  guardianships        Guardianship[]            @relation("ParentGuardianships")
+  authTokens           AuthToken[]
+  notifications        Notification[]
+  pushSubscriptions    PushSubscription[]
+  posts                Post[]
+  comments             Comment[]
+  reactions            Reaction[]
+  remarkMessages       RemarkMessage[]
+  conversationMembers  ConversationParticipant[]
+  conversationMessages ConversationMessage[]
+  reportsFiled         Report[]                  @relation("ReportsFiled")
+  expertProfile        ExpertProfile?
+  expertMessages       ExpertMessage[]
+  mentorMessages       MentorMessage[]
+  schoolRecords        SchoolRecord[]
+  operatorAccess       OperatorAccess[]
+  enquiries            Enquiry[]                 @relation("EnquiryOpener")
+  enquiryMessages      EnquiryMessage[]          @relation("EnquiryMessageAuthor")
+  postAcks             PostAck[]
+  meetingBookings      MeetingBooking[]
 
   @@index([email])
 }
@@ -1915,19 +1920,19 @@ model AcademicYear {
 /// in at most one term of a year, which the library enforces (no overlaps,
 /// inside the year). A school that reports once a year simply has none.
 model Term {
-  id             String   @id @default(cuid())
+  id             String    @id @default(cuid())
   schoolId       String
   academicYearId String
   name           String
   startDate      DateTime
   endDate        DateTime
   /// Display order within the year; the library keeps it equal to the start order.
-  position       Int      @default(0)
+  position       Int       @default(0)
   /// The office said this term is done — a milestone, set from the calendar
   /// page by the admin or the principal. Reversible there, because a term
   /// marked done by accident should not need a database admin to unmark.
   finishedAt     DateTime?
-  createdAt      DateTime @default(now())
+  createdAt      DateTime  @default(now())
 
   school       School       @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   academicYear AcademicYear @relation(fields: [academicYearId], references: [id], onDelete: Cascade)
@@ -2759,4 +2764,70 @@ model EnquiryMessage {
   author  User    @relation("EnquiryMessageAuthor", fields: [authorUserId], references: [id], onDelete: Cascade)
 
   @@index([schoolId, enquiryId, createdAt])
+}
+
+// ---------------------------------------------------------------------------
+// Conversations — a person writing to a person, inside one school.
+//
+// RemarkThread is the room ABOUT A PUPIL: teacher, child and guardians, keyed
+// on the pupil so the family is in it by construction. It was the only
+// message shape the platform had, which meant a principal could not write to
+// a teacher, an admin could not answer a parent's question, and two teachers
+// planning a trip had to use WhatsApp. This is the other shape: two (or more)
+// people in one school, keyed on nothing but who is in it.
+//
+// The room belongs to the SCHOOL, not to the people — `schoolId` on all three
+// tables, so the one-line tenant policy applies as everywhere else, a parent
+// reaches it through the child's school binding, and a person who leaves the
+// school stops reading it the day they leave. Who may open one with whom is
+// the application's rule (lib/conversations.ts): a pupil only ever writes to
+// staff, never to another pupil or to somebody else's parent — the same
+// safeguarding line RemarkThread draws, drawn again here.
+// ---------------------------------------------------------------------------
+
+model Conversation {
+  id            String   @id @default(cuid())
+  schoolId      String
+  createdById   String
+  createdAt     DateTime @default(now())
+  lastMessageAt DateTime @default(now())
+
+  school       School                    @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  participants ConversationParticipant[]
+  messages     ConversationMessage[]
+
+  @@index([schoolId, lastMessageAt])
+}
+
+model ConversationParticipant {
+  id             String    @id @default(cuid())
+  conversationId String
+  schoolId       String
+  userId         String
+  /// The moment this person last opened the room. Unread = a message after it
+  /// that they did not write.
+  lastReadAt     DateTime?
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  school       School       @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([conversationId, userId])
+  @@index([schoolId, userId])
+}
+
+model ConversationMessage {
+  id             String   @id @default(cuid())
+  conversationId String
+  schoolId       String
+  authorUserId   String
+  body           String
+  createdAt      DateTime @default(now())
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  school       School       @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  author       User         @relation(fields: [authorUserId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId, createdAt])
+  @@index([schoolId])
 }

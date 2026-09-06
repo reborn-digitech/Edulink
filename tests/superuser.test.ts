@@ -394,7 +394,7 @@ describe("the server log", () => {
     // Newest first, so the action just taken is row zero. Counting the list
     // before and after would not work: it is capped, and on a server with any
     // history at all the cap is already reached.
-    const after = await listServerAudit(operator);
+    const { rows: after } = await listServerAudit(operator);
     expect(after[0]!.action).toBe("superuser.school.create");
     expect(after[0]!.targetId).toBe(result.schoolId);
     expect(after[0]!.actorName).toBe("The Operator");
@@ -408,7 +408,7 @@ describe("the server log", () => {
     // this list, the operator would be reading inside a school through the one
     // table that records everything that happens in one.
     await createSchool(operator, DETAILS);
-    const rows = await listServerAudit(operator, { take: 500 });
+    const { rows } = await listServerAudit(operator, { take: 200 });
     expect(rows.length).toBeGreaterThan(0);
 
     const ids = rows.map((r) => r.id);

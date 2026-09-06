@@ -44,10 +44,13 @@ export function AppShell({
   children,
   unreadCount = 0,
   hiddenHrefs = [],
+  badges = {},
 }: {
   user: ShellUser;
   children: React.ReactNode;
   unreadCount?: number;
+  /** Counts worn by nav entries, keyed by href — unread messages on /remarks. */
+  badges?: Record<string, number>;
   /** Nav entries that exist for the role but not for this person right now —
    * e.g. Feedback, which appears only while a review round is open. */
   hiddenHrefs?: string[];
@@ -98,7 +101,7 @@ export function AppShell({
 
         <nav aria-label={t("shell.mainNav")} className="flex-1 space-y-0.5 overflow-y-auto p-3 scrollbar-thin">
           {primaryItems.map((item) => (
-            <SideLink key={item.href} item={item} active={isActive(pathname, item)} t={t} />
+            <SideLink key={item.href} item={item} active={isActive(pathname, item)} t={t} badge={badges[item.href] ?? 0} />
           ))}
           {secondary.map(({ group, items: list }) => (
             <div key={group} className="pt-3">
@@ -106,7 +109,7 @@ export function AppShell({
                 {t(NAV_GROUP_KEY[group])}
               </p>
               {list.map((item) => (
-                <SideLink key={item.href} item={item} active={isActive(pathname, item)} t={t} />
+                <SideLink key={item.href} item={item} active={isActive(pathname, item)} t={t} badge={badges[item.href] ?? 0} />
               ))}
             </div>
           ))}
@@ -243,11 +246,18 @@ export function AppShell({
                     active ? "text-accent-strong" : "text-fg-muted",
                   )}
                 >
-                  <NavIcon
-                    name={item.icon}
-                    className="size-6"
-                    weight={active ? "fill" : "regular"}
-                  />
+                  <span className="relative">
+                    <NavIcon
+                      name={item.icon}
+                      className="size-6"
+                      weight={active ? "fill" : "regular"}
+                    />
+                    {(badges[item.href] ?? 0) > 0 && (
+                      <span className="absolute -right-2 -top-1 grid min-w-4 place-items-center rounded-full bg-accent px-1 text-[0.625rem] font-bold leading-4 text-accent-fg">
+                        {(badges[item.href] ?? 0) > 9 ? "9+" : badges[item.href]}
+                      </span>
+                    )}
+                  </span>
                   <span className="text-[0.6875rem] font-medium leading-none">{t(item.labelKey)}</span>
                 </Link>
               </li>
@@ -306,7 +316,7 @@ export function AppShell({
   );
 }
 
-function SideLink({ item, active, t }: { item: NavItem; active: boolean; t: Translate }) {
+function SideLink({ item, active, t, badge = 0 }: { item: NavItem; active: boolean; t: Translate; badge?: number }) {
   return (
     <Link
       href={item.href}
@@ -320,7 +330,12 @@ function SideLink({ item, active, t }: { item: NavItem; active: boolean; t: Tran
       )}
     >
       <NavIcon name={item.icon} className="size-5" weight={active ? "fill" : "regular"} />
-      {t(item.labelKey)}
+      <span className="flex-1">{t(item.labelKey)}</span>
+      {badge > 0 && (
+        <span className="grid min-w-5 place-items-center rounded-full bg-accent px-1.5 text-[0.6875rem] font-bold leading-5 text-accent-fg">
+          {badge > 9 ? "9+" : badge}
+        </span>
+      )}
     </Link>
   );
 }

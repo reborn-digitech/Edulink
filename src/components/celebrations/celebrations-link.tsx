@@ -13,7 +13,16 @@ import { getT } from "@/lib/i18n/server";
  */
 export async function CelebrationsLink({ session }: { session: ActiveContext }) {
   const t = await getT();
-  const upcoming = await celebrationsFor(session, 30);
+  // The month first; when the month is quiet, the next one anywhere in the
+  // half-year — "nothing this month" is true but a dead card, and the day
+  // somebody's birthday is 33 days away is exactly when a class starts
+  // planning for it.
+  let upcoming = await celebrationsFor(session, 30);
+  let later = false;
+  if (upcoming.length === 0) {
+    upcoming = await celebrationsFor(session, 183);
+    later = upcoming.length > 0;
+  }
   const next = upcoming[0];
 
   return (
@@ -28,11 +37,13 @@ export async function CelebrationsLink({ session }: { session: ActiveContext }) 
         <span className="block font-semibold text-fg">{t("celebrations.title")}</span>
         <span className="block truncate text-xs text-fg-muted">
           {next
-            ? t("celebrations.nextUp", {
-                name: next.name,
-                date: formatDateKey(next.dateKey),
-                count: upcoming.length,
-              })
+            ? later
+              ? t("celebrations.nextLater", { name: next.name, date: formatDateKey(next.dateKey) })
+              : t("celebrations.nextUp", {
+                  name: next.name,
+                  date: formatDateKey(next.dateKey),
+                  count: upcoming.length,
+                })
             : t("celebrations.noneSoon")}
         </span>
       </span>

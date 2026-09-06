@@ -108,15 +108,17 @@ export default async function BulletinPage({
             )}
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
-          <Button asChild variant="secondary" icon={<GlobeIcon weight="bold" />}>
+        {/* Two doors, one row, sized to the phone: the old stacked
+            full-width buttons put the first post a screen and a half down. */}
+        <div className="flex items-center gap-2">
+          <Button asChild variant="secondary" size="sm" icon={<GlobeIcon weight="bold" />}>
             <Link href="/bulletin/global">{t("bulletin.globalFeed")}</Link>
           </Button>
           {/* Guardians read; they do not post — no membership, no compose. A
               visible button that dead-ends on "pick a school" is worse than
               no button. */}
           {session.role !== "PARENT" && (
-            <Button asChild icon={<PlusIcon weight="bold" />}>
+            <Button asChild size="sm" icon={<PlusIcon weight="bold" />}>
               <Link href="/bulletin/new">
                 {session.role === "STUDENT" ? t("bulletin.shareSomething") : t("bulletin.newPost")}
               </Link>
@@ -154,17 +156,6 @@ export default async function BulletinPage({
         </p>
       )}
 
-      <FeedFilters
-        basePath="/bulletin"
-        category={category}
-        q={q}
-        tag={tag}
-        extra={{
-          ...(filter ? { filter } : {}),
-          ...(requestedSchool ? { school: requestedSchool } : {}),
-        }}
-      />
-
       <nav className="flex gap-1 rounded-[--radius-md] bg-surface-muted p-1" aria-label={t("bulletin.filter")}>
         {tabs.map((t) => {
           const active = (filter ?? "") === t.id;
@@ -182,6 +173,18 @@ export default async function BulletinPage({
           );
         })}
       </nav>
+
+      <FeedFilters
+        basePath="/bulletin"
+        category={category}
+        q={q}
+        tag={tag}
+        extra={{
+          ...(filter ? { filter } : {}),
+          ...(requestedSchool ? { school: requestedSchool } : {}),
+        }}
+      />
+
 
       {showPending && session.role === "ADMIN" && (
         <BulkReview authors={await pendingByAuthor(session)} />

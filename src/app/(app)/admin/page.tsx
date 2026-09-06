@@ -22,6 +22,7 @@ import { unstaffedLessons } from "@/lib/timetable";
 import { listHolidays, nextEntry } from "@/lib/holidays";
 import { todayKey, formatDateKey } from "@/lib/dates";
 import { Card, CardHeader, CardBody } from "@/components/ui/card";
+import { CelebrationsLink } from "@/components/celebrations/celebrations-link";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { Badge } from "@/components/ui/badge";
@@ -280,6 +281,10 @@ export default async function AdminDashboard({
       {/* Two doors, not four counts. "48 pupils" is a fact the directory
           already holds; "7 of 8 registers taken" and "3 invitations waiting"
           are things somebody can act on before lunch. */}
+      {/* Who to wish today: the office keeps the birthday list, and this is
+          where it looks for it. */}
+      <CelebrationsLink session={ctx} />
+
       <div className="grid gap-3 sm:grid-cols-2">
         <Card className={classesTotal > 0 && attendanceTaken < 100 ? "border-warn/40" : undefined}>
           <Link href="/admin/attendance" className="flex items-center gap-3 p-4">

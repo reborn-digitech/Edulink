@@ -461,3 +461,15 @@ export function formatMilli(value: number | null | undefined): string {
   if (frac === 0) return String(whole);
   return `${whole}.${String(frac).padStart(3, "0").replace(/0+$/, "")}`;
 }
+
+/* ---- conversations: a person writing to a person ------------------------- */
+
+export const openConversationSchema = z.object({
+  schoolId: z.string().cuid(),
+  userId: z.string().cuid(),
+});
+
+export const conversationMessageSchema = z.object({
+  conversationId: z.string().cuid(),
+  body: trimmed(1, 8_000),
+});

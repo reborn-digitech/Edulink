@@ -100,7 +100,14 @@ export default async function AttendancePage({
           <PastRegistersLink label={t("attendanceHistory.link")} />
         </div>
 
-        <ClosedDayNotice calendar={calendar} dateKey={dateKey} sundayNote={isTeachingDay(dateKey) ? null : t("teacher.sundayRegister")} />
+        <ClosedDayNotice
+        calendar={calendar}
+        dateKey={dateKey}
+        sundayNote={isTeachingDay(dateKey) ? null : t("teacher.sundayRegister")}
+        openDayNote={(date) => t("teacher.openDayNote", { date })}
+        closedDayTitle={(date) => t("teacher.closedDayTitle", { date })}
+        closedDayBody={t("teacher.closedDayBody")}
+      />
 
         <ul className="space-y-2">
           {classes.map((klass) => (
@@ -174,7 +181,14 @@ export default async function AttendancePage({
           <PastRegistersLink classId={selectedId} label={t("attendanceHistory.link")} />
         </div>
       )}
-      <ClosedDayNotice calendar={calendar} dateKey={dateKey} sundayNote={isTeachingDay(dateKey) ? null : t("teacher.sundayRegister")} />
+      <ClosedDayNotice
+        calendar={calendar}
+        dateKey={dateKey}
+        sundayNote={isTeachingDay(dateKey) ? null : t("teacher.sundayRegister")}
+        openDayNote={(date) => t("teacher.openDayNote", { date })}
+        closedDayTitle={(date) => t("teacher.closedDayTitle", { date })}
+        closedDayBody={t("teacher.closedDayBody")}
+      />
       {duty.reason === "COVER" && (
         // Said out loud, because somebody marking a register they do not
         // normally mark should know why they can, and until when.
@@ -227,9 +241,17 @@ function ClosedDayNotice({
   calendar,
   dateKey,
   sundayNote,
+  openDayNote,
+  closedDayTitle,
+  closedDayBody,
 }: {
   calendar: { closed: boolean; entries: { name: string; kind: string }[] };
   dateKey: string;
+  /** Translated on the server and handed down: this notice is the one place
+   * on the page that used to speak English whatever the teacher chose. */
+  openDayNote: (date: string) => string;
+  closedDayTitle: (date: string) => string;
+  closedDayBody: string;
   /** Set on a day the school week does not include — the same warning as a
    * closed day, for the same reason: a register taken by habit on a Sunday
    * marks a whole class absent. */
@@ -254,8 +276,7 @@ function ClosedDayNotice({
   if (!calendar.closed) {
     return (
       <p className="rounded-[--radius-md] border border-border bg-surface-muted px-3.5 py-2.5 text-sm text-fg-muted">
-        <span className="font-semibold text-fg">{names}</span> — {pretty}. School is open, so the
-        register is still taken as usual.
+        <span className="font-semibold text-fg">{names}</span> — {openDayNote(pretty)}
       </p>
     );
   }
@@ -267,9 +288,7 @@ function ClosedDayNotice({
     >
       <WarningIcon weight="fill" className="mt-0.5 size-5 shrink-0 text-warn" aria-hidden="true" />
       <p className="text-sm text-fg">
-        <span className="font-semibold">The school is shut on {pretty}</span> — {names}. You can
-        still take the register if a class really is running, but everyone you mark absent will be
-        counted absent.
+        <span className="font-semibold">{closedDayTitle(pretty)}</span> — {names}. {closedDayBody}
       </p>
     </div>
   );

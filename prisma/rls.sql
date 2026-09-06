@@ -999,6 +999,33 @@ CREATE POLICY "EnquiryMessage_outreach_insert" ON "EnquiryMessage"
               AND e."fromUserId" = current_setting('app.user_id', true)
               AND e."status" = 'OPEN'));
 
+-- Conversation
+ALTER TABLE "Conversation" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "Conversation" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Conversation_tenant_isolation" ON "Conversation";
+DROP POLICY IF EXISTS "Conversation_readable" ON "Conversation";
+CREATE POLICY "Conversation_tenant_isolation" ON "Conversation"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- ConversationParticipant
+ALTER TABLE "ConversationParticipant" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "ConversationParticipant" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "ConversationParticipant_tenant_isolation" ON "ConversationParticipant";
+DROP POLICY IF EXISTS "ConversationParticipant_readable" ON "ConversationParticipant";
+CREATE POLICY "ConversationParticipant_tenant_isolation" ON "ConversationParticipant"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- ConversationMessage
+ALTER TABLE "ConversationMessage" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "ConversationMessage" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "ConversationMessage_tenant_isolation" ON "ConversationMessage";
+DROP POLICY IF EXISTS "ConversationMessage_readable" ON "ConversationMessage";
+CREATE POLICY "ConversationMessage_tenant_isolation" ON "ConversationMessage"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- OperatorAccess
 --
 -- APPEND-ONLY, AND DELIBERATELY HAS NO DELETE POLICY. Postgres denies
