@@ -99,3 +99,7 @@ See `docs/runbooks/` (deploy, backup-restore, security), `docs/go-live-checklist
 ## Phase 2 record
 
 The accessibility gate and the viewport matrix live in `apps/web/e2e/` and run in the sweep job; the offline outbox covers attendance, marks and messages through the first two `/api/v1` handlers; sized image copies come from the file route (`?w=`). The Phase 2 report artifact carries the measurements and the list of what the gates found.
+
+## Phase 3 record
+
+`/api/v1` is documented in `docs/api/README.md` and generated into `docs/api/openapi.json` from `apps/web/src/lib/api-catalog`; the API sweep (`npm run api:sweep`) and the contract suites (`tests/api-v1-*.test.ts`) run in CI. The Phase 3 report artifact carries the endpoint counts and what the reviews found.
