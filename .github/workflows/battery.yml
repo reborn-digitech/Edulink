@@ -85,6 +85,10 @@ jobs:
             --shadow-database-url postgresql://postgres@localhost:5432/edulink_shadow \
             --exit-code
           node scripts/db-grants.mjs
+          # The seed is the fixture the integration suites stand on (two schools,
+          # so tenant isolation has something it must not see); ZZ rows on top.
+          npm run db:seed
+          npm run zz:fixtures
 
       - name: Typecheck
         working-directory: apps/web
@@ -96,7 +100,11 @@ jobs:
         run: npx eslint .
       - name: Unit and integration suite
         working-directory: apps/web
-        run: npx vitest run
+        # The storage suite proves a traversal id can never reach the repo's
+        # own .env, and needs that file to exist to prove it. The example is
+        # placeholders; the real settings are already in the environment,
+        # which dotenv never overrides.
+        run: cp .env.example .env && npx vitest run
       - name: Row-level security isolation
         working-directory: apps/web
         run: npm run rls:verify
