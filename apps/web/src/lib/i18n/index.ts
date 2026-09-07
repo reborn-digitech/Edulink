@@ -17,13 +17,9 @@ export {
   type Locale,
 } from "./locales";
 
-export {
-  DICTIONARIES,
-  format,
-  translator,
-  type Dictionary,
-  type Translate,
-  type TranslationKey,
-} from "./dictionary";
+// The client-safe translator: no dictionary file behind any of these. The
+// dictionaries themselves, `translator(locale)` and `dictionaryFor` stay in
+// ./dictionary, for server code and tests.
+export { format, translatorFor, type Dictionary, type Translate, type TranslationKey } from "./core";
 
 export { I18nProvider, useLocale, useT } from "./provider";

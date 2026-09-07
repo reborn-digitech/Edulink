@@ -5,6 +5,7 @@ import { ToastProvider } from "@/components/ui/toast";
 import { AppRuntime } from "@/components/app-runtime";
 import { I18nProvider } from "@/lib/i18n";
 import { getLocale, getT } from "@/lib/i18n/server";
+import { dictionaryFor } from "@/lib/i18n/dictionary";
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
@@ -90,7 +91,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         >
           {t("shell.skipToContent")}
         </a>
-        <I18nProvider locale={locale}>
+        <I18nProvider locale={locale} dictionary={dictionaryFor(locale)}>
           <ToastProvider>
             <AppRuntime />
             {children}

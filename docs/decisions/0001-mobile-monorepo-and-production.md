@@ -91,3 +91,7 @@ be replaced without losing files.
 - [x] `next build` green from `apps/web`. It had not been part of the battery and
       found two client/server boundary slips on its first run; Phase 1's CI runs it
       on every push.
+
+## Phase 1 record
+
+See `docs/runbooks/` (deploy, backup-restore, security), `docs/go-live-checklist.md`, `ops/` (backup, restore, load) and the CI workflow. The report with the measured numbers is the Phase 1 artifact; the standing battery ledger carries the summary.

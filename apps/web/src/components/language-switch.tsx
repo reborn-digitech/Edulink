@@ -83,7 +83,7 @@ export function LanguageSwitch({
             >
               <span className="block leading-tight">{language.native}</span>
               {language.native !== language.english && (
-                <span className="block text-[0.6875rem] leading-tight opacity-70">
+                <span className="block text-[0.6875rem] leading-tight opacity-90">
                   {language.english}
                 </span>
               )}

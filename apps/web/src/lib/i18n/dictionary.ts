@@ -2,6 +2,9 @@ import { en } from "./en";
 import { hi } from "./hi";
 import { mr } from "./mr";
 import { DEFAULT_LOCALE, type Locale } from "./locales";
+import { format, lookup, translatorFor, type Dictionary, type Translate, type TranslationKey } from "./core";
+
+export { format, translatorFor, type Dictionary, type Translate, type TranslationKey };
 
 /**
  * The translation engine. Client-safe by construction — no `server-only`, no
@@ -21,46 +24,9 @@ import { DEFAULT_LOCALE, type Locale } from "./locales";
  */
 
 /** Same shape as `en`, but every leaf widened from its literal to `string`. */
-type Stringify<T> = { [K in keyof T]: T[K] extends string ? string : Stringify<T[K]> };
-
-export type Dictionary = Stringify<typeof en>;
-
-type Join<K, P> = K extends string
-  ? P extends string
-    ? P extends ""
-      ? K
-      : `${K}.${P}`
-    : never
-  : never;
-
-type Paths<T> = T extends string
-  ? ""
-  : { [K in keyof T & string]: Join<K, Paths<T[K]>> }[keyof T & string];
-
-/** Every dotted key in the dictionary, e.g. `"nav.practice"`. */
-export type TranslationKey = Paths<typeof en>;
-
 export const DICTIONARIES: Record<Locale, Dictionary> = { en, hi, mr };
 
 /** Substitutes `{name}` placeholders. An unknown name is left alone, visibly. */
-export function format(template: string, vars?: Record<string, string | number>): string {
-  if (!vars) return template;
-  return template.replace(/\{(\w+)\}/g, (whole, name: string) =>
-    name in vars ? String(vars[name]) : whole,
-  );
-}
-
-function lookup(dictionary: Dictionary, key: string): string | undefined {
-  let node: unknown = dictionary;
-  for (const part of key.split(".")) {
-    if (typeof node !== "object" || node === null) return undefined;
-    node = (node as Record<string, unknown>)[part];
-  }
-  return typeof node === "string" && node.length > 0 ? node : undefined;
-}
-
-export type Translate = (key: TranslationKey, vars?: Record<string, string | number>) => string;
-
 /**
  * One lookup, with its fallbacks: this language, then English, then the key.
  *
@@ -87,4 +53,32 @@ export function resolve(
 export function translator(locale: Locale): Translate {
   const dictionary = DICTIONARIES[locale] ?? DICTIONARIES[DEFAULT_LOCALE];
   return (key, vars) => resolve(dictionary, key, vars);
+}
+
+/**
+ * One language with English folded underneath it, built once per language.
+ *
+ * This is what crosses to the browser: the provider gets THIS as a prop, so a
+ * Marathi reader downloads Marathi (with the English that fills any gap) and
+ * not Hindi as well. Every string is present, so the client never needs the
+ * English file to fall back to. Empty strings count as gaps, the same rule
+ * `resolve` applies on the server.
+ */
+const merged = new Map<Locale, Dictionary>();
+
+function fold(base: unknown, over: unknown): unknown {
+  if (typeof base === "string") return typeof over === "string" && over.length > 0 ? over : base;
+  const out: Record<string, unknown> = {};
+  const b = base as Record<string, unknown>;
+  const o = (typeof over === "object" && over !== null ? over : {}) as Record<string, unknown>;
+  for (const key of Object.keys(b)) out[key] = fold(b[key], o[key]);
+  return out;
+}
+
+export function dictionaryFor(locale: Locale): Dictionary {
+  const found = merged.get(locale);
+  if (found) return found;
+  const built = (locale === DEFAULT_LOCALE ? en : fold(en, DICTIONARIES[locale] ?? en)) as Dictionary;
+  merged.set(locale, built);
+  return built;
 }

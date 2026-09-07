@@ -29,6 +29,8 @@ import { EmptyState } from "@/components/ui/states";
 import { ChildSwitcher } from "./child-switcher";
 import { ChildLeftPanel } from "./child-left";
 import { WelcomeTour } from "./welcome-tour";
+import { cookies } from "next/headers";
+import { PARENT_WELCOME_COOKIE } from "@/lib/parent-welcome";
 import { ConsentControls } from "../competitions/entry-controls";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
 import { ownWorkScope } from "@/lib/grading";
@@ -191,9 +193,12 @@ export default async function ParentDashboard({
   );
   const averagePercent = overallResult.percent;
 
+  // Decided here, not in the browser, so the first paint does not move.
+  const welcomeDismissed = (await cookies()).has(PARENT_WELCOME_COOKIE);
+
   return (
     <div className="space-y-6">
-      <WelcomeTour />
+      {!welcomeDismissed && <WelcomeTour />}
 
       {children.length > 1 && (
         <ChildSwitcher pupils={children} selectedId={selectedId} />

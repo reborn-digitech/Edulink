@@ -1785,6 +1785,9 @@ async function main() {
   const otherAdmin = await mint("sam@oakfield.school", "ADMIN", oakfield.id, "oakfield-admin");
   const parent = await mint("parent@example.com", "PARENT", null, "parent");
 
+  // The uptime probe: signed out, 200, and it must say the database answered.
+  await check(null, "/api/health", 200, "the uptime probe answers signed out");
+
   // Students may have no email (self-joined), so mint straight off the user row.
   const studentUser = studentMembership!.user;
   const studentToken = randomBytes(32).toString("base64url");

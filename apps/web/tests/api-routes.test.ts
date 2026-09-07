@@ -6,6 +6,7 @@ import { POST as attendancePost, GET as attendanceGet } from "@/app/api/attendan
 import { POST as answerPost } from "@/app/api/practice/answer/route";
 import { POST as pushPost } from "@/app/api/push/route";
 import { GET as fileGet } from "@/app/api/files/[fileId]/route";
+import { GET as healthGet } from "@/app/api/health/route";
 
 /**
  * The route handlers themselves — the request/response shell, the auth gate
@@ -62,6 +63,17 @@ describe("signed out", () => {
     expect((await answerPost(json("/api/practice/answer", {}))).status).toBe(401);
     expect((await pushPost(json("/api/push", {}))).status).toBe(401);
     expect((await fileGet(new Request("http://localhost/api/files/nope"), { params: Promise.resolve({ fileId: "nope" }) })).status).toBe(404);
+  });
+
+  it("the health probe answers 200 signed out, names the database as ok, and says nothing personal", async () => {
+    __resetCookies();
+    const res = await healthGet();
+    expect(res.status).toBe(200);
+    expect(res.headers.get("cache-control")).toBe("no-store");
+    const body = (await res.json()) as Record<string, unknown>;
+    expect(body.ok).toBe(true);
+    expect(body.database).toBe("ok");
+    expect(Object.keys(body).sort()).toEqual(["commit", "database", "databaseMs", "ok", "uptimeSeconds"]);
   });
 });
 

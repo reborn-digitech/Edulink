@@ -12,8 +12,14 @@ import {
 import { Button } from "@/components/ui/button";
 import { LanguageSwitch } from "@/components/language-switch";
 import { useT } from "@/lib/i18n";
+import { PARENT_WELCOME_COOKIE } from "@/lib/parent-welcome";
 
 const STORAGE_KEY = "edulink.parentWelcome.v1";
+
+function rememberCookie() {
+  const year = 60 * 60 * 24 * 365;
+  document.cookie = `${PARENT_WELCOME_COOKIE}=1; Max-Age=${year}; Path=/; SameSite=Lax`;
+}
 
 function subscribeToStorage(onChange: () => void): () => void {
   window.addEventListener("storage", onChange);
@@ -30,25 +36,31 @@ function subscribeToStorage(onChange: () => void): () => void {
  *
  * Rendered only after mount so the server never guesses at localStorage.
  */
+/**
+ * Rendered only when the page found no dismissal cookie — the server decides
+ * (see lib/parent-welcome.ts), so the tour is in the first paint and nothing
+ * moves. The localStorage read remains for a guardian who pressed "got it"
+ * before the cookie existed: they are hidden after hydration once, and the
+ * cookie is written so every later visit is decided on the server like
+ * everyone else's. The server snapshot therefore says "not dismissed".
+ */
 export function WelcomeTour() {
   const t = useT();
-  // useSyncExternalStore rather than a set-state-in-effect: the server
-  // snapshot says "dismissed", so SSR renders nothing and the card appears
-  // only on a device whose storage says it has never been dismissed.
-  const dismissed = useSyncExternalStore(
+  const dismissedBefore = useSyncExternalStore(
     subscribeToStorage,
     () => {
       try {
         return window.localStorage.getItem(STORAGE_KEY) !== null;
       } catch {
-        return true; // storage blocked: never show, never crash
+        return false; // storage blocked: the cookie is the record now
       }
     },
-    () => true,
+    () => false,
   );
   const [hiddenNow, setHiddenNow] = useState(false);
 
-  if (dismissed || hiddenNow) return null;
+  if (dismissedBefore && !hiddenNow) rememberCookie();
+  if (dismissedBefore || hiddenNow) return null;
 
   function dismiss() {
     try {
@@ -56,6 +68,7 @@ export function WelcomeTour() {
     } catch {
       // If it cannot be remembered, hiding it now is still right.
     }
+    rememberCookie();
     setHiddenNow(true);
   }
 

@@ -241,7 +241,8 @@ function scan(): Finding[] {
   return out;
 }
 
-const target = process.argv[2];
+// A flag is not a path filter: `--max 189` gates, `-- expert` narrows.
+const target = process.argv[2]?.startsWith("--") ? undefined : process.argv[2];
 const findings = scan();
 
 if (target) {
@@ -270,6 +271,26 @@ if (target) {
 
 const total = findings.reduce((n, f) => n + f.strings.length, 0);
 console.log(`${findings.length} files still hold hardcoded English — ${total} strings.\n`);
+
+/**
+ * `--max N` turns the counter into a gate: CI asserts the floor and fails the
+ * build when a change adds English the dictionaries do not have. Lowering the
+ * floor is deliberate work and comes with the number in the workflow file.
+ */
+const maxFlag = process.argv.indexOf("--max");
+if (maxFlag !== -1) {
+  const max = Number.parseInt(process.argv[maxFlag + 1] ?? "", 10);
+  if (Number.isNaN(max)) {
+    console.error("--max needs a number, e.g. --max 189");
+    process.exit(2);
+  }
+  if (total > max) {
+    console.error(`i18n floor is ${max}; found ${total}. New hardcoded English — translate it or, if it is by design, exclude it in the audit.`);
+    process.exit(1);
+  }
+  console.log(`i18n floor held: ${total} ≤ ${max}.`);
+  process.exit(0);
+}
 for (const f of findings.slice(0, 25)) {
   console.log(`  ${String(f.strings.length).padStart(4)}  ${f.file}`);
 }

@@ -210,6 +210,9 @@ applies here: you cannot revoke the only one.
 | `npm run build && npm start` | Production build — **the only mode with a SW** |
 | `npm test` | Full suite (1,374 tests) |
 | `npm run typecheck` | `tsc --noEmit` |
+| `npm run db:migrate` | `prisma migrate deploy` then `db:grants` — the release step. `db:migrate:new` writes the next migration from a schema edit without applying it |
+| `npm run battery` | tsc ×2, eslint, vitest, rls:verify, quiz:verify, the i18n floor, the sweep — what CI runs (`.github/workflows/battery.yml`) |
+| `npm run load:check -- --base <url>` | The plan's load scenarios with plain fetch over the ZZ fixture; p50/p95/p99 per scenario. See `ops/load/` for the k6 versions |
 | `npm run db:reset` | Wipe and reseed. Restores grants + policies and checks the app role can read |
 | `npm run db:grants` | Restore schema grants + policies, then **prove the app role can read**. Run after any manual reset |
 | `npm run db:studio` | Browse the data |
