@@ -121,6 +121,9 @@ jobs:
       - name: i18n floor
         working-directory: apps/web
         run: npm run i18n -- --max "$I18N_FLOOR"
+      - name: OpenAPI document is current
+        working-directory: apps/web
+        run: npm run api:docs -- --check
       - name: Dependency audit
         run: pnpm audit --prod --audit-level high
       - name: Production build
@@ -185,6 +188,9 @@ jobs:
       - name: Sweep
         working-directory: apps/web
         run: npm run sweep
+      - name: API sweep · every endpoint as every role
+        working-directory: apps/web
+        run: npm run api:sweep
       - name: Playwright browsers
         working-directory: apps/web
         run: npx playwright install --with-deps chromium

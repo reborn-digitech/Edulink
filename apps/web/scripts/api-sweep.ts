@@ -53,7 +53,8 @@ async function fixture(): Promise<SweepFixture> {
     postId: await first(db.post.findFirst({ where: { schoolId: s }, select: { id: true } })),
     conversationId: await first(db.conversation.findFirst({ where: { schoolId: s }, select: { id: true } })),
     remarkThreadId: await first(db.remarkThread.findFirst({ where: { schoolId: s }, select: { id: true } })),
-    competitionId: await first(db.competition.findFirst({ select: { id: true } })),
+    // One a pupil could actually enter today, so the sweep's POST proves the door and not a closed date.
+    competitionId: await first(db.competition.findFirst({ where: { status: "PUBLISHED", registrationClosesAt: { gt: new Date() }, organizerSchoolId: null }, select: { id: true } })),
     vacancyId: await first(db.jobPosting.findFirst({ where: { schoolId: s }, select: { id: true } })),
     enquiryId: await first(db.enquiry.findFirst({ where: { schoolId: s }, select: { id: true } })),
     meetingSlotId: await first(db.meetingSlot.findFirst({ where: { schoolId: s }, select: { id: true } })),

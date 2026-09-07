@@ -1881,6 +1881,7 @@ export const mr: Dictionary = {
   },
 
   access: {
+    fileNotYours: "ती फाइल तुम्ही अपलोड केलेली नाही.",
     sessionNotFound: "ते डिव्हाइस येथे साइन-इन केलेले नाही.",
     notForYourGrade: "ही स्पर्धा इतर इयत्तांसाठी आहे.",
     resultAlreadyRecorded: "या नोंदीचा निकाल नोंदवला गेला आहे, त्यामुळे ती पुन्हा सादर करता येणार नाही.",

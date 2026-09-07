@@ -214,6 +214,8 @@ applies here: you cannot revoke the only one.
 | `npm run battery` | tsc ×2, eslint, vitest, rls:verify, quiz:verify, the i18n floor, the sweep — what CI runs (`.github/workflows/battery.yml`) |
 | `npm run load:check -- --base <url>` | The plan's load scenarios with plain fetch over the ZZ fixture; p50/p95/p99 per scenario. See `ops/load/` for the k6 versions |
 | `npm run e2e` | Playwright: the axe gate on every nav entry per role, and the viewport matrix (four phone and tablet sizes × light/dark × en/hi) on the register, the marks sheet, the timetable and a toolbar page. `e2e:update` writes this platform's screenshot baselines. See `e2e/README.md` |
+| `npm run api:docs` | Write `docs/api/openapi.json` from the endpoint catalog (`src/lib/api-catalog`). `-- --check` fails when it is stale; CI runs the check |
+| `npm run api:sweep` | Every `/api/v1` endpoint as every role and signed out, asserting the status alone, with bearer sessions minted on the ZZ fixture |
 | `npm run db:reset` | Wipe and reseed. Restores grants + policies and checks the app role can read |
 | `npm run db:grants` | Restore schema grants + policies, then **prove the app role can read**. Run after any manual reset |
 | `npm run db:studio` | Browse the data |

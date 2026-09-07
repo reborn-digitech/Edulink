@@ -1,4 +1,59 @@
+import * as c from "@edulink/contracts";
 import type { Endpoint } from "./types";
 
-/** shared: filled in Phase 3 — one entry per endpoint, in the order of the nav. */
-export const SHARED: Endpoint[] = [];
+const SCHOOL_ROLES: c.RoleCode[] = ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "PARENT"];
+
+/**
+ * shared: the pages every role reads, and the expert's own. Access says who
+ * answers 2xx; where it is "signed-in" the lib function behind the handler
+ * still refuses what a role may not see (a guardian cannot post, a pupil's
+ * comment is held), which the suites prove and the sweep does not need to.
+ */
+export const SHARED: Endpoint[] = [
+  // ---- bulletin -------------------------------------------------------------
+  { method: "GET", path: "/api/v1/shared/bulletin", summary: "The school feed, filtered and cursor paged", access: "signed-in", response: c.bulletinFeedSchema, sample: "/api/v1/shared/bulletin?limit=20" },
+  { method: "POST", path: "/api/v1/shared/bulletin", summary: "Compose a post (media ids from POST /api/v1/uploads)", access: "signed-in", request: c.bulletinCreatePostSchema, response: c.bulletinPostCreatedSchema, emptyBodyStatus: 422 },
+  { method: "GET", path: "/api/v1/shared/bulletin/global", summary: "Every school's shared posts, cursor paged", access: SCHOOL_ROLES, response: c.globalFeedSchema },
+  { method: "GET", path: "/api/v1/shared/bulletin/{postId}", summary: "One post with its comments and reactions", access: "signed-in", response: c.bulletinPostDetailSchema, sample: (f) => (f.postId ? `/api/v1/shared/bulletin/${f.postId}` : null) },
+  { method: "POST", path: "/api/v1/shared/bulletin/{postId}/react", summary: "Toggle a reaction on a post", access: "signed-in", request: c.bulletinReactBodySchema, response: c.bulletinReactResultSchema, emptyBodyStatus: 422, sample: (f) => (f.postId ? `/api/v1/shared/bulletin/${f.postId}/react` : null) },
+  { method: "POST", path: "/api/v1/shared/bulletin/{postId}/comments", summary: "Comment on a post; a pupil's is held for review", access: "signed-in", request: c.bulletinCommentBodySchema, response: c.bulletinCommentResultSchema, emptyBodyStatus: 422, sample: (f) => (f.postId ? `/api/v1/shared/bulletin/${f.postId}/comments` : null) },
+  { method: "POST", path: "/api/v1/shared/bulletin/{postId}/review", summary: "Approve or reject a pending pupil post", access: ["TEACHER", "ADMIN"], request: c.bulletinReviewBodySchema, response: c.okSchema, emptyBodyStatus: 422, sample: (f) => (f.postId ? `/api/v1/shared/bulletin/${f.postId}/review` : null) },
+  { method: "POST", path: "/api/v1/shared/bulletin/{postId}/hide", summary: "Hide a global post from this school, or unhide it", access: ["ADMIN"], request: c.bulletinHideBodySchema, response: c.okSchema, emptyBodyStatus: 422, sample: (f) => (f.postId ? `/api/v1/shared/bulletin/${f.postId}/hide` : null) },
+  // ---- inbox ----------------------------------------------------------------
+  { method: "GET", path: "/api/v1/shared/inbox", summary: "Conversations and remark threads in one list", access: "signed-in", response: c.inboxSchema },
+  { method: "GET", path: "/api/v1/shared/conversations/{conversationId}", summary: "A conversation's messages; opening it marks it read", access: "signed-in", response: c.inboxConversationDetailSchema, sample: (f) => (f.conversationId ? `/api/v1/shared/conversations/${f.conversationId}` : null) },
+  { method: "POST", path: "/api/v1/shared/conversations", summary: "Open (or find) the room with one person at one school", access: "signed-in", request: c.inboxOpenConversationSchema, response: c.inboxConversationOpenedSchema, emptyBodyStatus: 422 },
+  { method: "GET", path: "/api/v1/shared/threads/{threadId}", summary: "A remark thread about a pupil; opening it marks it read", access: "signed-in", response: c.inboxThreadDetailSchema, sample: (f) => (f.remarkThreadId ? `/api/v1/shared/threads/${f.remarkThreadId}` : null) },
+  { method: "POST", path: "/api/v1/shared/threads/{threadId}/reply", summary: "Reply in a remark thread", access: "signed-in", request: c.inboxThreadReplyBodySchema, response: c.inboxThreadReplyResultSchema, emptyBodyStatus: 422, sample: (f) => (f.remarkThreadId ? `/api/v1/shared/threads/${f.remarkThreadId}/reply` : null) },
+  { method: "GET", path: "/api/v1/shared/people", summary: "Who I may write to at a school", access: ["ADMIN", "PRINCIPAL", "TEACHER", "STUDENT", "PARENT"], response: c.inboxPeopleSchema },
+  // ---- notifications --------------------------------------------------------
+  { method: "GET", path: "/api/v1/shared/notifications", summary: "My notifications, newest first, cursor paged", access: "signed-in", response: c.notificationsSchema, sample: "/api/v1/shared/notifications?limit=20" },
+  { method: "POST", path: "/api/v1/shared/notifications/{notificationId}/read", summary: "Mark one of my notifications read", access: "signed-in", response: c.okSchema, sample: (f) => (f.notificationId ? `/api/v1/shared/notifications/${f.notificationId}/read` : null) },
+  { method: "POST", path: "/api/v1/shared/notifications/read-all", summary: "Mark all my notifications read", access: "signed-in", response: c.notificationsReadAllSchema },
+  // ---- competitions ---------------------------------------------------------
+  { method: "GET", path: "/api/v1/shared/competitions", summary: "The school's and the platform's competitions", access: "signed-in", response: c.competitionsPageSchema },
+  { method: "GET", path: "/api/v1/shared/competitions/{competitionId}", summary: "One competition, my entry, and the schools' board", access: "signed-in", response: c.competitionDetailSchema, sample: (f) => (f.competitionId ? `/api/v1/shared/competitions/${f.competitionId}` : null) },
+  { method: "POST", path: "/api/v1/shared/competitions/{competitionId}/enter", summary: "A pupil enters a competition", access: ["STUDENT"], response: c.competitionEnterResultSchema, sample: (f) => (f.competitionId ? `/api/v1/shared/competitions/${f.competitionId}/enter` : null) },
+  { method: "POST", path: "/api/v1/shared/competitions/entries/{entryId}/consent", summary: "A guardian consents to their child's entry", access: ["PARENT"], response: c.okSchema, sample: () => null },
+  // ---- enquiries ------------------------------------------------------------
+  { method: "GET", path: "/api/v1/shared/enquiries", summary: "Enquiries I opened, and my school's inbox", access: "signed-in", response: c.enquiriesPageSchema },
+  { method: "GET", path: "/api/v1/shared/enquiries/{enquiryId}", summary: "One enquiry thread", access: "signed-in", response: c.enquiryThreadSchema, sample: (f) => (f.enquiryId ? `/api/v1/shared/enquiries/${f.enquiryId}` : null) },
+  { method: "POST", path: "/api/v1/shared/enquiries", summary: "Ask a school about admission or a vacancy", access: "signed-in", request: c.enquiryOpenBodySchema, response: c.enquiryOpenedSchema, emptyBodyStatus: 422 },
+  { method: "POST", path: "/api/v1/shared/enquiries/{enquiryId}/reply", summary: "Reply in an enquiry thread", access: "signed-in", request: c.enquiryReplyBodySchema, response: c.enquiryOpenedSchema, emptyBodyStatus: 422, sample: (f) => (f.enquiryId ? `/api/v1/shared/enquiries/${f.enquiryId}/reply` : null) },
+  // ---- mentoring ------------------------------------------------------------
+  { method: "GET", path: "/api/v1/shared/mentoring", summary: "My mentorships, and the requests waiting on the office", access: "signed-in", response: c.mentoringPageSchema },
+  { method: "GET", path: "/api/v1/shared/mentoring/{threadId}", summary: "One mentorship and its messages", access: "signed-in", response: c.mentoringThreadDetailSchema, sample: () => null },
+  { method: "POST", path: "/api/v1/shared/mentoring/{threadId}/messages", summary: "The mentor or the pupil writes", access: "signed-in", request: c.mentoringMessageBodySchema, response: c.okSchema, emptyBodyStatus: 422, sample: () => null },
+  // ---- the year archive, the vacancies board ----------------------------------
+  { method: "GET", path: "/api/v1/shared/archive", summary: "The closed years, one opened as this role sees it", access: SCHOOL_ROLES, response: c.archivePageSchema },
+  { method: "GET", path: "/api/v1/shared/vacancies", summary: "The platform-wide board of open vacancies", access: ["TEACHER", "ADMIN", "PRINCIPAL"], response: c.vacanciesBoardSchema },
+  // ---- the expert's own pages -------------------------------------------------
+  { method: "GET", path: "/api/v1/shared/expert/bookings", summary: "The expert's bookings", access: ["EXPERT"], response: c.expertBookingsSchema },
+  { method: "GET", path: "/api/v1/shared/expert/availability", summary: "The windows the expert offers", access: ["EXPERT"], response: c.expertAvailabilitySchema },
+  { method: "POST", path: "/api/v1/shared/expert/availability", summary: "Offer a window", access: ["EXPERT"], request: c.expertAddSlotSchema, response: c.okSchema, emptyBodyStatus: 422 },
+  { method: "DELETE", path: "/api/v1/shared/expert/availability/{slotId}", summary: "Withdraw an unbooked window", access: ["EXPERT"], response: c.okSchema, sample: () => null },
+  { method: "GET", path: "/api/v1/shared/expert/profile", summary: "The expert's own profile and impact", access: ["EXPERT"], response: c.expertProfileSchema },
+  { method: "POST", path: "/api/v1/shared/expert/profile", summary: "Save the expert's own profile", access: ["EXPERT"], request: c.expertSaveProfileSchema, response: c.okSchema, emptyBodyStatus: 422 },
+  // ---- uploads ----------------------------------------------------------------
+  { method: "POST", path: "/api/v1/uploads", summary: "Upload one file (multipart `file`); read it back via /api/files/{fileId}", access: "signed-in", response: c.uploadResultSchema, emptyBodyStatus: 422 },
+];

@@ -225,7 +225,9 @@ function scan(): Finding[] {
     // language by the rule in the header, not sentences a reader is owed a
     // translation of. Counting them would report a finished file unfinished.
     ...LIB_ROOTS.flatMap((root) => walk(root, ".ts")).filter(
-      (f) => !f.includes("i18n") && !f.endsWith("/places.ts"),
+      // …and the endpoint catalog, whose `summary` lines are the OpenAPI
+      // document's prose for developers, in English by design like email.ts.
+      (f) => !f.includes("i18n") && !f.endsWith("/places.ts") && !f.includes("/api-catalog/"),
     ),
     ...APP_TS_ROOTS.flatMap((root) => walk(root, ".ts")),
   ].sort();

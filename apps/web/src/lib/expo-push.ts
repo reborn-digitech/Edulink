@@ -43,9 +43,9 @@ export async function sendExpoPush(
         body: JSON.stringify(batch.map((t) => ({ to: t.expoPushToken, title: message.title, body: message.body, data: message.data ?? {}, sound: "default" }))),
       });
       const json = (await res.json().catch(() => null)) as { data?: typeof tickets } | null;
-      tickets = res.ok && json?.data ? json.data : batch.map(() => ({ status: "error", details: { error: `HTTP ${res.status}` } }));
+      tickets = res.ok && json?.data ? json.data : batch.map(() => ({ status: "error", details: { error: `STATUS_${res.status}` } }));
     } catch (error) {
-      tickets = batch.map(() => ({ status: "error", details: { error: error instanceof Error ? error.message : "network" } }));
+      tickets = batch.map(() => ({ status: "error", details: { error: error instanceof Error ? error.message : "NETWORK" } }));
     }
     await Promise.all(
       batch.map(async (token, j) => {

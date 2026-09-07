@@ -245,6 +245,7 @@ model User {
   notifications        Notification[]
   pushSubscriptions    PushSubscription[]
   deviceTokens         DeviceToken[]
+  uploadTickets        UploadTicket[]
   posts                Post[]
   comments             Comment[]
   reactions            Reaction[]
@@ -1616,6 +1617,26 @@ model Notification {
 /// A phone registered for push through Expo's service: one row per device
 /// token, beside the browser's PushSubscription. Dropped when the service
 /// says the token is dead, or when the app asks on sign-out.
+/// A file the API stored for a person and nobody has attached yet. The web
+/// composes a post and its files in one multipart request, so a stored file
+/// is always somebody's; the phone uploads first and composes later, and
+/// without this row anyone who had SEEN a file id could put it in their own
+/// post and hand their audience access to it (files.ts authorises a file by
+/// the post that mentions it). The post endpoint spends the ticket.
+model UploadTicket {
+  id         String    @id @default(cuid())
+  userId     String
+  fileId     String    @unique
+  mime       String
+  size       Int
+  createdAt  DateTime  @default(now())
+  consumedAt DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, consumedAt])
+}
+
 model DeviceToken {
   id            String   @id @default(cuid())
   userId        String

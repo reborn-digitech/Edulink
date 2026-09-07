@@ -240,6 +240,9 @@ export const CODE_LOOKUPS = { limit: 120, windowMs: 15 * 60_000 };
  */
 export const SIGNUPS = { limit: 20, windowMs: 60 * 60_000 };
 
+/** Files through POST /api/v1/uploads, per person: up to 100 MB each, so the count is the cap that matters. */
+export const UPLOADS = { limit: 60, windowMs: 60 * 60_000 };
+
 /**
  * Redeeming an invitation link.
  *

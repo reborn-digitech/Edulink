@@ -315,6 +315,12 @@ export async function bookSlot(
     },
   });
   if (!slot) throw new AccessError("access.meetingNotFound", "NOT_FOUND");
+  // …and FOR THIS CHILD, not merely one of the family: the listing already
+  // offers each slot only for the children that teacher teaches, and the
+  // write path held the union of all the family's teachers, so a slot with
+  // child A's teacher could be booked "for" child B. Same map as the listing.
+  const teaches = (await relevantTeachers(parentUserId)).get(slot.teacherMembershipId);
+  if (!teaches?.has(studentMembershipId)) throw new AccessError("access.meetingNotFound", "NOT_FOUND");
 
   // A cancelled booking frees its slot; clear the wreck so the unique can take.
   if (slot.booking?.cancelledAt) {

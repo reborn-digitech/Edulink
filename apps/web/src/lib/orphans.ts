@@ -213,6 +213,10 @@ export async function reclaimOrphans(
         await unlink(target);
         deleted.push(orphan.fileId);
         bytesReclaimed += orphan.bytes;
+        // A phone's unattached upload is an orphan like any other once the
+        // grace has passed; its ticket must go with the bytes, or a later
+        // post could attach a file that no longer exists.
+        await db.uploadTicket.deleteMany({ where: { fileId: orphan.fileId } }).catch(() => {});
       } catch {
         // Already gone is the desired end state; anything else is reported by
         // simply not appearing in `deleted`.
