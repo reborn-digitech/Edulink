@@ -6,8 +6,8 @@ import {
   ClockCounterClockwiseIcon,
   WarningIcon,
 } from "@phosphor-icons/react/ssr";
-import { requireRole, assertClassAccess } from "@/lib/tenancy";
-import { classesIMayTake, registerDuty } from "@/lib/register-duty";
+import { requireRole } from "@/lib/tenancy";
+import { assertClassAccessForRegister, classesIMayTake, registerDuty } from "@/lib/register-duty";
 import { getRegister } from "@/lib/attendance";
 import { closedOn } from "@/lib/holidays";
 import { db } from "@/lib/db";
@@ -163,11 +163,9 @@ export default async function AttendancePage({
     );
   }
 
-  // Re-checks that this teacher may touch this class, scoped to their school.
-  await assertClassAccess(ctx, selectedId);
-  // …and separately, that they are down to mark it today. The list above is
-  // already filtered, so this is the belt to that braces: a hand-typed
-  // ?classId= reaches here without passing through it.
+  // That they are down to mark it today. The list above is already filtered,
+  // so this is the belt to that braces: a hand-typed ?classId= reaches here
+  // without passing through it.
   const duty = await registerDuty(ctx, selectedId, dateKey);
   if (!duty.may) {
     return (
@@ -179,6 +177,9 @@ export default async function AttendancePage({
     );
   }
 
+  // …and the tenant boundary, drawn so that a cover row counts for the
+  // teacher it names.
+  await assertClassAccessForRegister(ctx, selectedId, duty);
   const register = await getRegister(ctx.schoolId, selectedId, dateKey);
   if (!register) {
     return <EmptyState title={t("teacher.classNotFound")} description={t("teacher.mayBeArchived")} />;

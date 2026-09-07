@@ -110,7 +110,10 @@ export async function saveAttendanceBatch(opts: {
 
   for (const mark of valid) {
     const previous = byStudent.get(mark.studentMembershipId);
-    const markedAt = mark.markedAt ? new Date(mark.markedAt) : new Date();
+    const parsedAt = mark.markedAt ? new Date(mark.markedAt) : null;
+    // A device that sends garbage for its clock is not a reason to refuse
+    // the mark, and an Invalid Date would have thrown from the upsert.
+    const markedAt = parsedAt && !Number.isNaN(parsedAt.getTime()) ? parsedAt : new Date();
 
     if (previous) {
       // Exact replay of a mark we already stored.
@@ -152,9 +155,11 @@ export async function saveAttendanceBatch(opts: {
 
     applied++;
 
+    // Told on every change INTO an absence: present → late, and also late →
+    // absent, which used to slip through as "already not present".
     const becameNotPresent = mark.status !== "PRESENT";
-    const wasPresent = !previous || previous.status === "PRESENT";
-    if (becameNotPresent && wasPresent) {
+    const changed = !previous || previous.status !== mark.status;
+    if (becameNotPresent && changed) {
       newlyAbsent.push({ studentMembershipId: mark.studentMembershipId, status: mark.status });
     }
   }

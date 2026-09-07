@@ -153,6 +153,18 @@ export async function closeAcademicYear(
   const next = await db.academicYear.findFirst({ where: { id: nextYearId, schoolId } });
   if (!closing || !next) throw new AccessError("access.academicYearNotFound", "NOT_FOUND");
   if (closing.id === next.id) throw new AccessError("access.pickADifferentYearToMoveInto");
+  // A SECOND PRESS IS A NO-OP, said so in numbers: an admin unsure whether it
+  // worked will press it again, and the answer is "nothing more to do" — not
+  // a fresh closedAt stamp, which would move the two-minute window reopen
+  // uses to find the series the close archived.
+  if (closing.closedAt && !closing.isCurrent && next.isCurrent) {
+    return { studentsArchived: 0, badgesArchived: 0, seriesArchived: 0, roundsClosed: 0 };
+  }
+  // Closing a year that is not the running one would archive the live roll
+  // under the wrong name; moving into a year already closed would leave a
+  // year both current and closed, and freeze every mark in the live year.
+  if (!closing.isCurrent) throw new AccessError("access.onlyTheCurrentYearCloses");
+  if (next.closedAt) throw new AccessError("access.cannotMoveIntoAClosedYear");
 
   const school = await db.school.findUniqueOrThrow({
     where: { id: schoolId },

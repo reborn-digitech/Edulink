@@ -58,7 +58,7 @@ export default async function BankTopicPage({
         </Button>
       </div>
 
-      {allQuestions.length > 3 && (
+      {(allQuestions.length > 3 || narrowed) && (
         <DataToolbar
           facets={[
             ...(difficulties.length > 1

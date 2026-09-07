@@ -35,7 +35,7 @@ export default async function ExpertsPage({
   const ctx = await requireRole("ADMIN", "TEACHER");
   const [allExperts, bookings] = await Promise.all([listMarketplace(ctx), listBookings(ctx)]);
   const specialisms = [...new Set(allExperts.flatMap((e) => e.specialisms))].sort();
-  const offering = rawOffering && rawOffering in EXPERT_OFFERING_META ? (rawOffering as keyof typeof EXPERT_OFFERING_META) : null;
+  const offering = rawOffering && Object.hasOwn(EXPERT_OFFERING_META, rawOffering) ? (rawOffering as keyof typeof EXPERT_OFFERING_META) : null;
   const specialism = rawSpecialism && specialisms.includes(rawSpecialism) ? rawSpecialism : null;
   const needle = (q ?? "").trim().toLowerCase();
   const experts = allExperts.filter(
@@ -86,7 +86,7 @@ export default async function ExpertsPage({
           {t("expert.availableExperts")}
         </h2>
 
-        {allExperts.length > 2 && (
+        {(allExperts.length > 2 || narrowed) && (
           <DataToolbar
             search={{ value: q ?? "", placeholder: t("expert.searchPlaceholder"), label: t("common.searchLabel") }}
             facets={[

@@ -299,13 +299,16 @@ export async function createThread(
   session: ActiveContext,
   input: { studentMembershipId?: string; teacherMembershipId?: string; subject: string; body: string },
 ): Promise<{ threadId: string }> {
-  const { role, schoolId } = session;
-  if (!schoolId) throw new AccessError("access.noSchoolInContext");
+  const { role } = session;
+  // A guardian's session carries no school — the child's membership does.
+  // Every other role names one or is refused.
+  let schoolId = session.schoolId;
+  if (!schoolId && role !== "PARENT") throw new AccessError("access.noSchoolInContext");
 
   let studentMembershipId: string;
   let teacherMembershipId: string;
 
-  if (role === "TEACHER" && session.membershipId) {
+  if (role === "TEACHER" && session.membershipId && schoolId) {
     if (!input.studentMembershipId) throw new AccessError("access.chooseAPupil");
     // Re-checks that this teacher actually teaches this student, not merely that
     // they share a school. (§6)
@@ -315,7 +318,7 @@ export async function createThread(
     );
     studentMembershipId = input.studentMembershipId;
     teacherMembershipId = session.membershipId;
-  } else if (role === "STUDENT" && session.membershipId) {
+  } else if (role === "STUDENT" && session.membershipId && schoolId) {
     if (!input.teacherMembershipId) throw new AccessError("access.chooseATeacher");
     // The pupil proves the teacher teaches them, by the same join the teacher's
     // own check runs in the other direction.
@@ -333,9 +336,10 @@ export async function createThread(
         studentMembershipId: input.studentMembershipId,
         status: "ACTIVE",
       },
-      select: { id: true },
+      select: { id: true, studentSchoolId: true },
     });
     if (!guardian) throw new AccessError("access.thatIsNotYourChild", "NOT_FOUND");
+    schoolId = guardian.studentSchoolId;
     const teaches = await teacherTeaches(
       schoolId,
       input.teacherMembershipId,
@@ -347,6 +351,8 @@ export async function createThread(
   } else {
     throw new AccessError("access.onlyATeacherAPupilOrTheir");
   }
+  if (!schoolId) throw new AccessError("access.noSchoolInContext");
+  const threadSchoolId: string = schoolId;
 
   // `$tenantTransaction`, not `db.$transaction`: the per-query extension does
   // not reach inside an interactive transaction, so the callback's client sets
@@ -356,7 +362,7 @@ export async function createThread(
     const tx = rawTx as typeof db;
     const created = await tx.remarkThread.create({
       data: {
-        schoolId,
+        schoolId: threadSchoolId,
         studentMembershipId,
         teacherMembershipId,
         subject: input.subject,

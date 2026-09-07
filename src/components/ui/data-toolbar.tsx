@@ -37,6 +37,8 @@ export type ToolbarFacet = {
   defaultValue?: string;
   /** Chips (few options, one line) or a select (many options). Default: chips up to 5. */
   as?: "chips" | "select";
+  /** Parameters that stop meaning anything when this one changes (a state under a country). */
+  clears?: string[];
 };
 
 export type ToolbarSort = {
@@ -70,14 +72,21 @@ export function DataToolbar({
   const sortKey = sort?.key ?? "sort";
   const [text, setText] = useState(search?.value ?? "");
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // The last value THIS box sent to the URL, until the URL catches up with it.
+  // While it is set, a URL change is our own navigation landing (possibly
+  // trimmed by the page, possibly an older keystroke on a slow server) and
+  // must not overwrite what the person has typed since.
+  const [own, setOwn] = useState<string | null>(null);
 
   // Keep the box in step when the URL changes from elsewhere (back button,
   // a chip's clear). Adjusted during render, not in an effect, so the stale
   // text never paints for a frame.
   const [lastValue, setLastValue] = useState(search?.value ?? "");
   if ((search?.value ?? "") !== lastValue) {
-    setLastValue(search?.value ?? "");
-    setText(search?.value ?? "");
+    const incoming = search?.value ?? "";
+    setLastValue(incoming);
+    if (own === null) setText(incoming);
+    else if (incoming.trim() === own.trim()) setOwn(null);
   }
   useEffect(() => () => { if (timer.current) clearTimeout(timer.current); }, []);
 
@@ -93,6 +102,9 @@ export function DataToolbar({
 
   function navigate(next: Record<string, string | null>) {
     const merged = { ...current(), ...next };
+    for (const facet of facets) {
+      if (facet.key in next && facet.clears) for (const key of facet.clears) merged[key] = null;
+    }
     const params = new URLSearchParams();
     for (const [key, value] of Object.entries(merged)) if (value) params.set(key, value);
     const qs = params.toString();
@@ -102,7 +114,10 @@ export function DataToolbar({
   function onType(value: string) {
     setText(value);
     if (timer.current) clearTimeout(timer.current);
-    timer.current = setTimeout(() => navigate({ [searchKey]: value || null }), 300);
+    timer.current = setTimeout(() => {
+      setOwn(value);
+      navigate({ [searchKey]: value || null });
+    }, 300);
   }
 
   const active = facets.filter((f) => f.value !== (f.defaultValue ?? ""));
@@ -135,7 +150,7 @@ export function DataToolbar({
               ) : text ? (
                 <button
                   type="button"
-                  onClick={() => { setText(""); navigate({ [searchKey]: null }); }}
+                  onClick={() => { setText(""); setOwn(null); navigate({ [searchKey]: null }); }}
                   aria-label={labels.clearSearch}
                   className="absolute right-1.5 top-1/2 grid size-8 -translate-y-1/2 place-items-center rounded-full text-fg-subtle hover:bg-surface-muted hover:text-fg"
                 >
@@ -202,7 +217,7 @@ export function DataToolbar({
       {anyActive && (
         <div className="flex flex-wrap items-center gap-1.5 text-xs" aria-label={labels.activeFilters}>
           {search?.value && (
-            <button type="button" onClick={() => { setText(""); navigate({ [searchKey]: null }); }} className="inline-flex items-center gap-1 rounded-full bg-accent-soft px-2.5 py-1 font-medium text-accent-strong hover:opacity-80">
+            <button type="button" onClick={() => { setText(""); setOwn(null); navigate({ [searchKey]: null }); }} className="inline-flex items-center gap-1 rounded-full bg-accent-soft px-2.5 py-1 font-medium text-accent-strong hover:opacity-80">
               “{search.value}”
               <XIcon weight="bold" className="size-3" aria-hidden="true" />
             </button>
@@ -226,6 +241,7 @@ export function DataToolbar({
             type="button"
             onClick={() => {
               setText("");
+              setOwn(null);
               const cleared: Record<string, null> = { [searchKey]: null };
               for (const f of facets) cleared[f.key] = null;
               navigate(cleared);

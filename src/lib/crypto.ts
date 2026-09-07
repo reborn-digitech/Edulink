@@ -96,11 +96,16 @@ export function passwordProblems(password: string, context: string[] = []): Tran
   }
   if (/^(.)\1+$/.test(password)) problems.push("refusal.pwRepeats");
   const lower = password.toLowerCase();
-  for (const term of context) {
-    const t = term.trim().toLowerCase();
-    if (t.length >= 4 && lower.includes(t)) {
-      problems.push("refusal.pwContainsName");
-      break;
+  // The local part of an email counts as a name too — "priya@school.org"
+  // makes "priya12345" guessable — and the client meter already says so;
+  // the gate and the meter describe one rule (see password-strength.ts).
+  outer: for (const term of context) {
+    for (const piece of [term, term.split("@")[0] ?? ""]) {
+      const t = piece.trim().toLowerCase();
+      if (t.length >= 4 && lower.includes(t)) {
+        problems.push("refusal.pwContainsName");
+        break outer;
+      }
     }
   }
   return problems;

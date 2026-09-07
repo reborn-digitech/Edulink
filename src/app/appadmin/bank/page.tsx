@@ -49,7 +49,7 @@ export default async function BankPage({
     <div className="space-y-6">
       <PageHeader title={t("appadmin.questionBank")} description={t("appadmin.bankIntro")} />
 
-      {allTopics.length > 3 && (
+      {(allTopics.length > 3 || narrowed) && (
         <DataToolbar
           search={{ value: q ?? "", placeholder: t("appadmin.bankSearchPlaceholder"), label: t("common.searchLabel") }}
           facets={[

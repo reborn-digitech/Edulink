@@ -115,9 +115,20 @@ async function readerOf(session: ActiveContext, threadId: string) {
    */
   const isExpert = session.user.id === thread.expertUserId && thread.status !== "REQUESTED";
   const isStudent = session.membershipId === thread.studentMembershipId;
-  const isStaff =
-    (session.role === "ADMIN" || session.role === "TEACHER") &&
-    session.schoolId === thread.schoolId;
+  // The office reads every thread at the school. A TEACHER reads the threads
+  // of pupils they teach — the same narrowing `pairingOptions` applies to
+  // whom they may pair, because reading a child's conversation with an
+  // outside adult is at least as sensitive as arranging it.
+  const isOffice =
+    (session.role === "ADMIN" || session.role === "PRINCIPAL") && session.schoolId === thread.schoolId;
+  const isTeacherOfPupil =
+    session.role === "TEACHER" &&
+    session.schoolId === thread.schoolId &&
+    session.membershipId !== null &&
+    (await studentsForTeacher(thread.schoolId, session.membershipId)).some(
+      (pupil) => pupil.membershipId === thread.studentMembershipId,
+    );
+  const isStaff = isOffice || isTeacherOfPupil;
 
   // A guardian of THIS child, re-queried against the session rather than taken
   // from a route param — the same rule competitions.ts uses for consent.
@@ -179,6 +190,9 @@ export async function listMentorships(session: ActiveContext): Promise<MentorSum
       select: { studentMembershipId: true },
     });
     where = { studentMembershipId: { in: mine.map((g) => g.studentMembershipId) } };
+  } else if (session.role === "TEACHER" && session.schoolId && session.membershipId) {
+    const mine = await studentsForTeacher(session.schoolId, session.membershipId);
+    where = { schoolId: session.schoolId, studentMembershipId: { in: mine.map((p) => p.membershipId) } };
   } else {
     where = { schoolId: session.schoolId ?? "__none__" };
   }
@@ -298,9 +312,13 @@ export async function createMentorship(
         studentMembershipId: student.id,
       },
     },
-    select: { id: true },
+    select: { id: true, status: true },
   });
-  if (existing) return { threadId: existing.id };
+  // A live or pending pairing is simply found again. A CLOSED one is the
+  // pair's history, not its present: pairing them again revives the row —
+  // the unique key allows only one — as a fresh request for consent, claims a
+  // place, and asks the guardian, exactly as a first pairing would.
+  if (existing && existing.status !== "CLOSED") return { threadId: existing.id };
 
   /**
    * CLAIM A PLACE, and this is the same shape as claiming a slot in
@@ -333,18 +351,31 @@ export async function createMentorship(
     });
   }
 
-  const thread = await db.mentorThread.create({
-    data: {
-      schoolId: session.schoolId,
-      expertProfileId: expert.id,
-      expertUserId: expert.userId,
-      studentMembershipId: student.id,
-      createdByMembershipId: session.membershipId,
-      purpose,
-      status: "PENDING_CONSENT",
-    },
-    select: { id: true },
-  });
+  const thread = existing
+    ? await db.mentorThread.update({
+        where: { id: existing.id },
+        data: {
+          createdByMembershipId: session.membershipId,
+          purpose,
+          status: "PENDING_CONSENT",
+          closedAt: null,
+          parentConsentAt: null,
+          parentConsentUserId: null,
+        },
+        select: { id: true },
+      })
+    : await db.mentorThread.create({
+        data: {
+          schoolId: session.schoolId,
+          expertProfileId: expert.id,
+          expertUserId: expert.userId,
+          studentMembershipId: student.id,
+          createdByMembershipId: session.membershipId,
+          purpose,
+          status: "PENDING_CONSENT",
+        },
+        select: { id: true },
+      });
 
   // The link that proves it moved. Without this a guardian is never asked and
   // the mentorship sits pending forever, which reads as broken.
@@ -432,10 +463,12 @@ export async function closeMentorship(session: ActiveContext, threadId: string):
    */
   const heldAPlace = thread.status !== "REQUESTED";
 
-  await db.mentorThread.update({
-    where: { id: threadId },
+  // The claim is in the WHERE: two closers at once must release one place.
+  const closed = await db.mentorThread.updateMany({
+    where: { id: threadId, status: { not: "CLOSED" } },
     data: { status: "CLOSED", closedAt: new Date() },
   });
+  if (closed.count === 0) return;
 
   /**
    * The place goes back. A cap that only ever counts up silently retires an

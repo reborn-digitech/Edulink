@@ -96,7 +96,7 @@ export default async function EnquiriesPage({
     <div className="mx-auto max-w-2xl space-y-6">
       <PageHeader title={t("enquiries.title")} description={t("enquiries.intro")} />
 
-      {everything.length > 2 && (
+      {(everything.length > 2 || narrowed) && (
         <DataToolbar
           facets={[
             {

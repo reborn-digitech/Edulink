@@ -811,7 +811,19 @@ export async function cardsForChild(ctx: ActiveContext, studentMembershipId: str
     });
     if (!guardian) throw new AccessError("access.thatIsNotYourChild", "NOT_FOUND");
     schoolId = guardian.student.schoolId;
-  } else if (ctx.role !== "ADMIN" && ctx.role !== "PRINCIPAL" && ctx.role !== "TEACHER") {
+  } else if (ctx.role === "TEACHER") {
+    // Their own pupils only — the list carries draft status and the overall
+    // figure, which a teacher across the corridor has no business reading.
+    if (!ctx.membershipId || !schoolId) throw new AccessError("access.notAllowed");
+    const teaches = await db.classTeacher.count({
+      where: {
+        schoolId,
+        teacherMembershipId: ctx.membershipId,
+        class: { enrollments: { some: { studentMembershipId, status: "ACTIVE" } } },
+      },
+    });
+    if (teaches === 0) throw new AccessError("access.notYourPupil", "NOT_FOUND");
+  } else if (ctx.role !== "ADMIN" && ctx.role !== "PRINCIPAL") {
     throw new AccessError("access.notAllowed");
   }
 

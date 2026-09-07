@@ -53,7 +53,7 @@ export default async function RootExpertsPage({
         {t("expert.curationNote")}
       </p>
 
-      {experts.length > 2 && (
+      {(experts.length > 2 || narrowed) && (
         <DataToolbar
           search={{ value: q ?? "", placeholder: t("expert.searchPlaceholder"), label: t("common.searchLabel") }}
           facets={[

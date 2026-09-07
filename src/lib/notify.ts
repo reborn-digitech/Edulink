@@ -91,7 +91,12 @@ export async function notify(input: NotifyInput): Promise<void> {
   publish([channel.user(input.userId)], { type: "notification", userId: input.userId });
 
   if (!prefs.channels?.push) return;
-  if (!input.urgent && inQuietHours(prefs.quietHours)) return;
+  // Quiet hours are the person's evening, not the server's. The school's
+  // zone is the best fact we hold about where they are.
+  const zone = input.schoolId
+    ? (await db.school.findUnique({ where: { id: input.schoolId }, select: { timezone: true } }))?.timezone
+    : undefined;
+  if (!input.urgent && inQuietHours(prefs.quietHours, new Date(), zone)) return;
 
   await sendPush(input.userId, {
     title,
@@ -126,6 +131,32 @@ export async function notifyGuardians(
   await Promise.all(
     guardians.map((g) => notify({ ...build(childName), userId: g.parentUserId })),
   );
+}
+
+/**
+ * Tell every guardian of a WHOLE CLASS once.
+ *
+ * Publishing a piece of work used to call `notifyGuardians` once per pupil,
+ * so a guardian with two children in the class read the same "New work set"
+ * twice — and the school's stand-in guardian, who stands for every unclaimed
+ * pupil, read it once per pupil: four identical notices for one worksheet at
+ * a class of four, forty at a class of forty. The message is about the class,
+ * not about a child, so one guardian gets it once however many of the class
+ * are theirs. Where the message IS about a child (marked work, an absence),
+ * `notifyGuardians` per child remains the right shape.
+ */
+export async function notifyGuardiansOfClass(
+  studentMembershipIds: string[],
+  build: () => DistributiveOmit<NotifyInput, "userId">,
+): Promise<number> {
+  if (studentMembershipIds.length === 0) return 0;
+  const guardians = await db.guardianship.findMany({
+    where: { studentMembershipId: { in: studentMembershipIds }, status: "ACTIVE" },
+    select: { parentUserId: true },
+    distinct: ["parentUserId"],
+  });
+  await Promise.all(guardians.map((g) => notify({ ...build(), userId: g.parentUserId })));
+  return guardians.length;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -226,16 +257,30 @@ export async function sendPush(userId: string, payload: PushPayload): Promise<Pu
 export function inQuietHours(
   quiet: { start: string; end: string } | null | undefined,
   now: Date = new Date(),
+  timeZone?: string,
 ): boolean {
   if (!quiet) return false;
   const start = toMinutes(quiet.start);
   const end = toMinutes(quiet.end);
   if (start === null || end === null || start === end) return false;
 
-  const current = now.getHours() * 60 + now.getMinutes();
+  const current = timeZone ? minutesInZone(now, timeZone) : now.getHours() * 60 + now.getMinutes();
   return start < end
     ? current >= start && current < end
     : current >= start || current < end; // wraps past midnight
+}
+
+/** Wall-clock minutes since midnight in a zone; the server's clock if the zone is unknown. */
+function minutesInZone(now: Date, timeZone: string): number {
+  try {
+    const parts = new Intl.DateTimeFormat("en-GB", { timeZone, hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(now);
+    const hour = Number(parts.find((p) => p.type === "hour")?.value ?? NaN);
+    const minute = Number(parts.find((p) => p.type === "minute")?.value ?? NaN);
+    if (Number.isFinite(hour) && Number.isFinite(minute)) return hour * 60 + minute;
+  } catch {
+    // An unknown zone name falls through to the server's clock.
+  }
+  return now.getHours() * 60 + now.getMinutes();
 }
 
 function toMinutes(value: string): number | null {

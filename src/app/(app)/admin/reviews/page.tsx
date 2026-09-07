@@ -87,10 +87,16 @@ export default async function AdminReviewsPage({
           ]}
           labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
         />
-        {rounds.length === 0 ? (
+        {rounds.length === 0 && allRounds.length > 0 ? (
           <EmptyState
             icon={<StarIcon weight="duotone" className="size-8" />}
-            title={status === "OPEN" && allRounds.length > 0 ? t("reviews.noOpenRoundsTitle") : t("reviews.noRoundsTitle")}
+            title={status === "OPEN" ? t("reviews.noOpenRoundsTitle") : t("common.noResultsTitle")}
+            description={status === "OPEN" ? t("reviews.noRoundsBody") : t("common.noResultsBody")}
+          />
+        ) : rounds.length === 0 ? (
+          <EmptyState
+            icon={<StarIcon weight="duotone" className="size-8" />}
+            title={t("reviews.noRoundsTitle")}
             description={t("reviews.noRoundsBody")}
           />
         ) : (

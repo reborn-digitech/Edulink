@@ -191,7 +191,7 @@ export default async function ClassDetailPage({
           icon={<ClipboardTextIcon weight="duotone" className="size-5" />}
           hint={ungraded === 0 ? t("teacher.nothingWaiting") : t("teacher.handedInNotMarked")}
         />
-        <Link href={filter === "concern" ? `/teacher/classes/${klass.id}` : `/teacher/classes/${klass.id}?filter=concern#roster`} className="block rounded-[--radius-lg] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" aria-pressed={filter === "concern"}>
+        <Link href={filter === "concern" ? `/teacher/classes/${klass.id}` : `/teacher/classes/${klass.id}?filter=concern#roster`} className={`block rounded-[--radius-lg] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${filter === "concern" ? "ring-2 ring-accent" : ""}`} aria-current={filter === "concern" ? "true" : undefined}>
           <StatTile
             label={t("teacher.attendanceConcern")}
             value={ofConcern.length}
@@ -200,7 +200,7 @@ export default async function ClassDetailPage({
             hint={t("teacher.belowNinety", { days: RANGE_DAYS })}
           />
         </Link>
-        <Link href={filter === "noguardian" ? `/teacher/classes/${klass.id}` : `/teacher/classes/${klass.id}?filter=noguardian#roster`} className="block rounded-[--radius-lg] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" aria-pressed={filter === "noguardian"}>
+        <Link href={filter === "noguardian" ? `/teacher/classes/${klass.id}` : `/teacher/classes/${klass.id}?filter=noguardian#roster`} className={`block rounded-[--radius-lg] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent ${filter === "noguardian" ? "ring-2 ring-accent" : ""}`} aria-current={filter === "noguardian" ? "true" : undefined}>
           <StatTile
             label={t("teacher.noGuardian")}
             value={withoutGuardian}
@@ -236,7 +236,9 @@ export default async function ClassDetailPage({
           description={t("teacher.attendanceOver", { days: RANGE_DAYS })}
         />
         <CardBody>
-          {roster.length === 0 ? (
+          {roster.length > 0 && shownRoster.length === 0 ? (
+            <EmptyState title={t("common.noResultsTitle")} description={t("common.noResultsBody")} />
+          ) : roster.length === 0 ? (
             <EmptyState
               className="border-0 bg-transparent py-6"
               title={t("teacher.nobodyJoined")}

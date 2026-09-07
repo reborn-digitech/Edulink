@@ -86,7 +86,7 @@ export default async function InvitesPage({
         {TABS.map((tab) => (
           <Link
             key={tab.id}
-            href={`/admin/invites?status=${tab.id}`}
+            href={`/admin/invites?status=${tab.id}${q ? `&q=${encodeURIComponent(q)}` : ""}${roleFilter ? `&role=${roleFilter}` : ""}`}
             aria-current={active === tab.id ? "page" : undefined}
             className={`flex-1 rounded-[--radius-sm] px-3 py-2 text-center text-sm font-medium ${
               active === tab.id ? "bg-surface text-fg shadow-sm" : "text-fg-muted"
@@ -114,7 +114,9 @@ export default async function InvitesPage({
         labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
       />
 
-      {invites.length === 0 ? (
+      {invites.length === 0 && (q || roleFilter || expiredOnly) ? (
+        <EmptyState title={t("common.noResultsTitle")} description={t("common.noResultsBody")} />
+      ) : invites.length === 0 ? (
         <EmptyState
           icon={<EnvelopeSimpleIcon weight="duotone" className="size-8" />}
           title={

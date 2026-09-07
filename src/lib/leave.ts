@@ -32,6 +32,8 @@ import type { ActiveContext } from "./session";
 // not for callers. See leave-kinds.ts.
 import { LEAVE_KINDS, type LeaveKind, type LeaveRow } from "./leave-kinds";
 import type { TranslationKey } from "./i18n/dictionary";
+import { STAFF_ROLES } from "./staff-records";
+import { readJsonArray } from "./json";
 
 export { LEAVE_KINDS, LEAVE_KIND_LABEL_KEY, LEAVE_STATUSES, LEAVE_STATUS_KEY } from "./leave-kinds";
 export type { LeaveKind, LeaveStatus, LeaveRow } from "./leave-kinds";
@@ -231,8 +233,12 @@ export async function decideLeave(
     return { ok: false, errorKey: "leaveKind.notYourOwn" };
   }
 
-  await db.leaveRequest.update({
-    where: { id: request.id },
+  // THE CLAIM IS IN THE WHERE. Two people deciding at once — a double press,
+  // or the admin and the principal on the same afternoon — both passed the
+  // status read above; only one of them may write, and the other is told it
+  // was already decided rather than arranging a second full set of cover.
+  const claimed = await db.leaveRequest.updateMany({
+    where: { id: request.id, schoolId: ctx.schoolId, status: "PENDING" },
     data: {
       status: decision,
       decidedByMembershipId: ctx.membershipId,
@@ -240,6 +246,7 @@ export async function decideLeave(
       decisionNote: opts.note?.trim().slice(0, 1000) || null,
     },
   });
+  if (claimed.count === 0) return { ok: false, errorKey: "leaveKind.alreadyDecided" };
 
   let coversCreated = 0;
 
@@ -263,7 +270,10 @@ export async function decideLeave(
         where: {
           id: { in: staffIds },
           schoolId: ctx.schoolId,
-          role: { in: ["TEACHER", "PRINCIPAL"] },
+          // Anybody on the staff, the same set the nominee picker and
+          // `arrangeCover` accept — an admin standing in was silently dropped
+          // here and the class then counted as covered.
+          role: { in: [...STAFF_ROLES] },
           status: "ACTIVE",
           leftAt: null,
         },
@@ -307,7 +317,9 @@ export async function decideLeave(
         },
         select: { classId: true },
       });
-      const covered = new Set(assignments.map((a) => a.classId));
+      // Covered means a cover row was actually asked for: an assignment whose
+      // substitute failed validation must not hide its class from the fallback.
+      const covered = new Set([...pairs].map((pair) => pair.split("|")[0]!));
       const uncoveredRegisters = registerOnly.filter((r) => !covered.has(r.classId));
       if (uncoveredRegisters.length > 0) {
         const counts = new Map<string, number>();
@@ -794,7 +806,7 @@ export async function coverCandidates(
    * the one chosen at signup and kept by the office — see setTeacherSubjects. */
   const subjectsBy = new Map<string, Set<string>>();
   for (const person of staff) {
-    const list = person.subjects ? (JSON.parse(person.subjects) as string[]) : [];
+    const list = readJsonArray<string>(person.subjects);
     subjectsBy.set(person.id, new Set(list.map((s) => s.toLowerCase())));
   }
 

@@ -135,11 +135,12 @@ export default async function PrincipalLeavePage({
   // Every pending request's cover search at once; they are independent and
   // each one is several queries.
   const suggestions = await Promise.all(
-    pending.map((request) =>
+    (showDecided ? [] : pending).map((request) =>
       coverCandidates(ctx, request.applicantMembershipId, request.fromDateKey, request.toDateKey),
     ),
   );
   pending.forEach((request, i) => {
+    if (!suggestions[i]) return;
     const { lessonCount, candidates, groups } = suggestions[i]!;
     suggestionsBy.set(request.id, {
       lessonCount,

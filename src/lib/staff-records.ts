@@ -3,7 +3,7 @@ import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
 import { notify } from "./notify";
-import { dateKeyRange, isDateKey, weekdayOfKey } from "./dates";
+import { dateKeyRange, isDateKey, todayKey, weekdayOfKey } from "./dates";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "./i18n/dictionary";
 
@@ -105,7 +105,12 @@ export async function setStaffRecord(
 
   const trim = (v: string | null | undefined, max: number) => (v?.trim().slice(0, max) || null);
   if (input.joinedOnKey && !isDateKey(input.joinedOnKey)) return { ok: false, errorKey: "staff.badDate" };
-  if (input.joinedOnKey && input.joinedOnKey > new Date().toISOString().slice(0, 10)) return { ok: false, errorKey: "staff.joinedInFuture" };
+  if (input.joinedOnKey) {
+    // Today in the school's zone, not the server's: at 02:00 IST on the 1st a
+    // UTC server still thinks it is yesterday.
+    const school = await db.school.findUnique({ where: { id: schoolId }, select: { timezone: true } });
+    if (input.joinedOnKey > todayKey(school?.timezone ?? "UTC")) return { ok: false, errorKey: "staff.joinedInFuture" };
+  }
   const days = input.leaveDaysPerYear;
   if (days != null && (!Number.isInteger(days) || days < 0 || days > 365)) return { ok: false, errorKey: "staff.badLeaveDays" };
 

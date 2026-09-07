@@ -28,6 +28,7 @@ export default async function ClassesPage({
   const ctx = await requireRole("ADMIN");
   const { archived, q: rawQ, sort: rawSort, filter } = await searchParams;
   const showArchived = archived === "1";
+  const carry = `${rawQ ? `&q=${encodeURIComponent(rawQ)}` : ""}${rawSort && rawSort !== "name" ? `&sort=${rawSort}` : ""}`;
   const q = rawQ?.trim() ?? "";
   const sort = rawSort === "size" ? "size" : "name";
   const leaderlessOnly = filter === "leaderless";
@@ -98,7 +99,7 @@ export default async function ClassesPage({
       {archivedCount > 0 && (
         <nav className="flex gap-1 rounded-[--radius-md] bg-surface-muted p-1" aria-label={t("classes.filter")}>
           <Link
-            href="/admin/classes"
+            href={carry ? `/admin/classes?${carry.slice(1)}` : "/admin/classes"}
             aria-current={!showArchived ? "page" : undefined}
             className={`flex-1 rounded-[--radius-sm] px-3 py-2 text-center text-sm font-medium ${
               !showArchived ? "bg-surface text-fg shadow-sm" : "text-fg-muted"
@@ -107,7 +108,7 @@ export default async function ClassesPage({
             {t("classes.active")}
           </Link>
           <Link
-            href="/admin/classes?archived=1"
+            href={`/admin/classes?archived=1${carry}`}
             aria-current={showArchived ? "page" : undefined}
             className={`flex-1 rounded-[--radius-sm] px-3 py-2 text-center text-sm font-medium ${
               showArchived ? "bg-surface text-fg shadow-sm" : "text-fg-muted"

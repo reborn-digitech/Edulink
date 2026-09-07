@@ -63,6 +63,7 @@ export default async function PeoplePage({
     { key: "parents" as const, people: people.filter((p) => p.role === "PARENT") },
   ] satisfies { key: keyof typeof GROUP_KEY; people: Person[] }[];
   const groups = allGroups.filter((g) => g.people.length > 0 && (!roleFilter || g.key === roleFilter));
+  const narrowed = Boolean(roleFilter || q);
 
   const errorText =
     error === "invalid"
@@ -107,7 +108,7 @@ export default async function PeoplePage({
           {schools.map((s) => (
             <Link
               key={s.id}
-              href={`/remarks/people?school=${s.id}${q ? `&q=${encodeURIComponent(q)}` : ""}`}
+              href={`/remarks/people?school=${s.id}${q ? `&q=${encodeURIComponent(q)}` : ""}${roleFilter ? `&role=${roleFilter}` : ""}`}
               className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
                 s.id === schoolId ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted hover:text-fg"
               }`}
@@ -127,7 +128,7 @@ export default async function PeoplePage({
             value: roleFilter ?? "",
             options: [
               { value: "", label: t("vacancies.filterAll"), count: people.length },
-              ...allGroups.filter((g) => g.people.length > 0).map((g) => ({ value: g.key, label: t(GROUP_KEY[g.key]), count: g.people.length })),
+              ...allGroups.map((g) => ({ value: g.key, label: t(GROUP_KEY[g.key]), count: g.people.length })),
             ],
           },
         ]}
@@ -138,8 +139,8 @@ export default async function PeoplePage({
       {groups.length === 0 ? (
         <EmptyState
           icon={<UsersThreeIcon weight="duotone" className="size-8" />}
-          title={q ? t("convo.nothingMatches", { query: q }) : t("convo.emptyPeople")}
-          description={q ? undefined : t("convo.rule")}
+          title={q ? t("convo.nothingMatches", { query: q }) : narrowed ? t("common.noResultsTitle") : t("convo.emptyPeople")}
+          description={narrowed ? undefined : t("convo.rule")}
         />
       ) : (
         <div className="space-y-5">

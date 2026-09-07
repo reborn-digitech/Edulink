@@ -146,7 +146,7 @@ export default async function JobsPage({
           <Link
             key={tile.key}
             href={state === tile.key ? "/root/jobs" : `/root/jobs?state=${tile.key}`}
-            aria-pressed={state === tile.key}
+            aria-current={state === tile.key ? "true" : undefined}
             className="block rounded-[--radius-lg] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
           >
             <Card className={cn("p-3.5", state === tile.key && "ring-2 ring-accent")}>

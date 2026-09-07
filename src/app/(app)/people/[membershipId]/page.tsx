@@ -70,7 +70,7 @@ export default async function PersonPage({
   const { membershipId } = await params;
   const { from } = await searchParams;
   // Only a path of our own is a way back; anything else is the inbox.
-  const backHref = from && from.startsWith("/") && !from.startsWith("//") ? from : "/remarks";
+  const backHref = from && from.startsWith("/") && !from.startsWith("//") && !from.includes("\\") ? from : "/remarks";
 
   const member = await db.membership.findFirst({
     where: { id: membershipId, status: "ACTIVE", leftAt: null },

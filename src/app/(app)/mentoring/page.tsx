@@ -88,7 +88,7 @@ export default async function MentoringPage({
         </p>
       )}
 
-      {threads.length > 2 && (
+      {(threads.length > 2 || statusFilter) && (
         <DataToolbar
           facets={[
             {

@@ -3,8 +3,9 @@ import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { db } from "./db";
 import { audit } from "./audit";
 import { notify } from "./notify";
-import { AccessError } from "./tenancy";
+import { AccessError, assertClassAccess } from "./tenancy";
 import type { ActiveContext } from "./session";
+import type { Role } from "./constants";
 
 /**
  * Who may take a class's register today.
@@ -132,6 +133,35 @@ export async function assertMayTakeRegister(
 }
 
 /** Every class this person may mark today — the register page's own list. */
+/**
+ * The tenant boundary for a register, as `assertClassAccess` draws it — with
+ * one difference. `assertClassAccess` lets a TEACHER through only on a
+ * ClassTeacher row, and an AttendanceCover row does not create one; so a
+ * teacher covering a class they do not otherwise teach passed `registerDuty`
+ * (COVER) and then met "class not found" from the boundary check that ran
+ * first — the page 404'd and the offline outbox's POST was refused. The cover
+ * row IS the boundary for that teacher, for those days: `registerDuty` has
+ * already proven the class is in their school, and only an archived class
+ * still refuses a write.
+ */
+export async function assertClassAccessForRegister(
+  ctx: { schoolId: string; membershipId: string; role: Role },
+  classId: string,
+  duty: RegisterDuty,
+  opts: { write?: boolean } = {},
+): Promise<void> {
+  if (duty.may && duty.reason === "COVER") {
+    const klass = await db.class.findFirst({
+      where: { id: classId, schoolId: ctx.schoolId },
+      select: { archivedAt: true },
+    });
+    if (!klass) throw new AccessError("access.classNotFoundInYourSchool", "NOT_FOUND");
+    if (klass.archivedAt && opts.write) throw new AccessError("access.thisClassIsArchived");
+    return;
+  }
+  await assertClassAccess(ctx, classId, opts);
+}
+
 export async function classesIMayTake(
   ctx: Pick<ActiveContext, "role" | "schoolId" | "membershipId">,
   dateKey: string,

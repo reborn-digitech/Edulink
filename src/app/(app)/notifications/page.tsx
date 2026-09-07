@@ -76,7 +76,7 @@ export default async function NotificationsPage({
               return (
                 <Link
                   key={tab.id}
-                  href={tab.id === "unread" ? "/notifications?filter=unread" : "/notifications"}
+                  href={`${tab.id === "unread" ? "/notifications?filter=unread" : "/notifications"}${kind ? `${tab.id === "unread" ? "&" : "?"}kind=${kind}` : ""}`}
                   aria-current={active ? "page" : undefined}
                   className={`flex-1 rounded-[--radius-sm] px-3 py-2 text-center text-sm font-medium ${
                     active ? "bg-surface text-fg shadow-sm" : "text-fg-muted"
@@ -113,7 +113,9 @@ export default async function NotificationsPage({
         </>
       )}
 
-      {rows.length === 0 ? (
+      {rows.length === 0 && kind ? (
+        <EmptyState title={t("common.noResultsTitle")} description={t("common.noResultsBody")} />
+      ) : rows.length === 0 ? (
         <EmptyState
           icon={<BellIcon weight="duotone" className="size-8" />}
           title={showUnreadOnly ? t("notif.emptyUnreadTitle") : t("notif.emptyTitle")}

@@ -85,7 +85,7 @@ export default async function PrincipalStaffPage({
     <div className="space-y-5">
       <PageHeader title={t("staff.rosterTitle")} description={t("staff.rosterSubtitle")} />
 
-      {allStaff.length > 3 && (
+      {(allStaff.length > 3 || narrowed) && (
         <DataToolbar
           search={{ value: q ?? "", placeholder: t("staff.searchPlaceholder"), label: t("common.searchLabel") }}
           facets={[

@@ -4,7 +4,7 @@ import { toMilli } from "./validation";
 import { readAttachments } from "./files";
 import { writeJson, type Attachment } from "./json";
 import { publish, channel } from "./realtime";
-import { notify, notifyGuardians } from "./notify";
+import { notify, notifyGuardians, notifyGuardiansOfClass } from "./notify";
 import { audit } from "./audit";
 import { finishedYearContaining } from "./academic-year";
 import { AccessError, assertAssignmentAccess, assertClassAccess, assertGuardianAccess } from "./tenancy";
@@ -410,25 +410,30 @@ export async function createAssignment(
       include: { student: { select: { id: true, userId: true } } },
     });
 
-    await Promise.all(
-      enrollments.map(async (enrollment) => {
-        await notify({
+    // Every pupil once, and every guardian of the class once — see
+    // notifyGuardiansOfClass for why the guardians are not per pupil.
+    await Promise.all([
+      ...enrollments.map((enrollment) =>
+        notify({
           userId: enrollment.student.userId,
           schoolId: ctx.schoolId,
           kind: "ASSIGNMENT",
           titleKey: "notifTitle.newWorkSet",
           body: input.title,
           url: "/student/assignments",
-        });
-        await notifyGuardians(enrollment.studentMembershipId, () => ({
+        }),
+      ),
+      notifyGuardiansOfClass(
+        enrollments.map((e) => e.studentMembershipId),
+        () => ({
           kind: "ASSIGNMENT",
           schoolId: ctx.schoolId,
           titleKey: "notifTitle.newWorkSet",
           body: input.title,
-          url: "/parent",
-        }));
-      }),
-    );
+          url: "/parent/assignments",
+        }),
+      ),
+    ]);
     notified = enrollments.length;
 
     publish([channel.class(input.classId), channel.school(ctx.schoolId)], {
@@ -716,25 +721,28 @@ export async function publishAssignment(
     select: { studentMembershipId: true, student: { select: { userId: true } } },
   });
 
-  await Promise.all(
-    enrollments.map(async (enrollment) => {
-      await notify({
+  await Promise.all([
+    ...enrollments.map((enrollment) =>
+      notify({
         userId: enrollment.student.userId,
         schoolId: ctx.schoolId,
         kind: "ASSIGNMENT",
         titleKey: "notifTitle.newWorkSet",
         body: assignment.title,
         url: "/student/assignments",
-      });
-      await notifyGuardians(enrollment.studentMembershipId, () => ({
+      }),
+    ),
+    notifyGuardiansOfClass(
+      enrollments.map((e) => e.studentMembershipId),
+      () => ({
         kind: "ASSIGNMENT",
         schoolId: ctx.schoolId,
         titleKey: "notifTitle.newWorkSet",
         body: assignment.title,
-        url: "/parent",
-      }));
-    }),
-  );
+        url: "/parent/assignments",
+      }),
+    ),
+  ]);
 
   publish([channel.class(assignment.classId), channel.school(ctx.schoolId)], {
     type: "assignment.published",

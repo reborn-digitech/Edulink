@@ -2,7 +2,7 @@ import "server-only";
 import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { overallPercent, weightedPercent, weightsAreUsable, type CategoryWeight } from "./grading";
-import { addDaysToKey, dateKeyInZone, todayKey } from "./dates";
+import { addDaysToKey, todayKey } from "./dates";
 import type { ActiveContext } from "./session";
 import type { AttendanceStatus } from "./constants";
 
@@ -121,7 +121,11 @@ export async function windowFor(schoolId: string, span: Span): Promise<Window> {
   // No year started yet: the honest fallback is a long trailing window, not
   // an empty one — the head still wants to see the school.
   if (!year) return { fromDateKey: addDaysToKey(toDateKey, -180), toDateKey };
-  const start = dateKeyInZone(year.startDate, school.timezone);
+  // The same reading of `startDate` as badges, terms and report cards use:
+  // the row holds UTC midnight of the day the office typed, so the ISO date
+  // IS the day. Reading it in the school's zone put a school west of UTC one
+  // day early.
+  const start = year.startDate.toISOString().slice(0, 10);
   return { fromDateKey: start > toDateKey ? toDateKey : start, toDateKey };
 }
 

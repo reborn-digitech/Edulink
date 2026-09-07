@@ -461,6 +461,7 @@ export async function cancelBooking(session: ActiveContext, bookingId: string): 
       status: true,
       schoolId: true,
       expert: { select: { userId: true } },
+      bookedBy: { select: { userId: true } },
       slot: {
         select: { id: true, expertProfileId: true, startsAt: true, endsAt: true, note: true },
       },
@@ -477,8 +478,13 @@ export async function cancelBooking(session: ActiveContext, bookingId: string): 
   // Idempotent. Two people pressing cancel, or one pressing twice, must not
   // mint two replacement hours below.
   if (booking.status === "CANCELLED") return;
-
-  await db.expertBooking.update({ where: { id: bookingId }, data: { status: "CANCELLED" } });
+  // …and claimed in the WHERE, because two cancels a moment apart both pass
+  // the read above and each would mint a replacement hour below.
+  const claimed = await db.expertBooking.updateMany({
+    where: { id: bookingId, status: { not: "CANCELLED" } },
+    data: { status: "CANCELLED" },
+  });
+  if (claimed.count === 0) return;
 
   /**
    * ⚠ THE HOUR COMES BACK AS A NEW SLOT, and clearing `bookedAt` on the old one
@@ -515,6 +521,20 @@ export async function cancelBooking(session: ActiveContext, bookingId: string): 
       note: booking.slot.note,
     },
   });
+
+  // The other side is told — the link that proves it moved, which every
+  // other write in this file already carries.
+  const counterpart = isTheExpert ? booking.bookedBy?.userId : booking.expert.userId;
+  if (counterpart) {
+    await notify({
+      userId: counterpart,
+      schoolId: booking.schoolId,
+      kind: "EXPERT",
+      titleKey: "notifTitle.bookingCancelled",
+      body: booking.slot.startsAt.toISOString().slice(0, 16).replace("T", " ") + " UTC",
+      url: `/experts/bookings/${bookingId}`,
+    });
+  }
 
   await audit({
     schoolId: booking.schoolId,

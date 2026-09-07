@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import { AccessError, assertClassAccess, requireApiRole } from "@/lib/tenancy";
+import { AccessError, requireApiRole } from "@/lib/tenancy";
 import { attendanceBatchSchema, fieldErrors } from "@/lib/validation";
 import { saveAttendanceBatch, getRegister } from "@/lib/attendance";
-import { assertMayTakeRegister } from "@/lib/register-duty";
+import { assertClassAccessForRegister, assertMayTakeRegister, registerDuty } from "@/lib/register-duty";
 import { db } from "@/lib/db";
 import { todayKey } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
@@ -43,8 +43,8 @@ export async function POST(request: Request) {
     // "am I down to mark it today?" — the duty. A visiting music teacher
     // attached to six classes passes the first for all six and the second for
     // none of them, which is the right answer to both questions.
-    await assertClassAccess(ctx, classId, { write: true });
-    await assertMayTakeRegister(ctx, classId, dateKey);
+    const duty = await assertMayTakeRegister(ctx, classId, dateKey);
+    await assertClassAccessForRegister(ctx, classId, duty, { write: true });
 
     // A register cannot be taken for a future date — that is always a bug or a
     // wrong device clock, and silently accepting it corrupts the history.
@@ -90,13 +90,14 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: "classId is required." }, { status: 400 });
     }
 
-    await assertClassAccess(ctx, classId);
-
     const school = await db.school.findUniqueOrThrow({
       where: { id: ctx.schoolId },
       select: { timezone: true },
     });
     const dateKey = url.searchParams.get("date") ?? todayKey(school.timezone);
+    // The same boundary as the POST: a cover teacher reads the register they
+    // are down to mark.
+    await assertClassAccessForRegister(ctx, classId, await registerDuty(ctx, classId, dateKey));
 
     const register = await getRegister(ctx.schoolId, classId, dateKey);
     if (!register) return NextResponse.json({ error: (await getT())("attendance.classNotFound") }, { status: 404 });

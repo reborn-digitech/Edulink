@@ -75,12 +75,19 @@ export default async function AssignmentsPage({
     orderBy: { name: "asc" },
   });
 
+  // "To mark" means what the Today tile means: a piece with at least one
+  // hand-in that has no grade yet. Paper-marked work (grades with no
+  // submission) and drafts saved by a pupil never count. It is the query's
+  // WHERE, so it is not a filter over the first hundred rows.
+  const now = new Date();
   const fetched = await db.assignment.findMany({
     where: {
       ...baseWhere,
       ...(showAll ? {} : thisYear),
       ...(classFilter ? { classId: classFilter } : {}),
       ...(state === "draft" ? { publishedAt: null } : {}),
+      ...(state === "tomark" ? { submissions: { some: { status: "SUBMITTED", grade: { is: null } } } } : {}),
+      ...(state === "overdue" ? { dueAt: { lt: now } } : {}),
     },
     include: {
       class: { select: { name: true, color: true, _count: { select: { enrollments: { where: { status: "ACTIVE" } } } } } },
@@ -89,23 +96,22 @@ export default async function AssignmentsPage({
     orderBy: [{ publishedAt: "desc" }, { createdAt: "desc" }],
     take: 100,
   });
-  // "To mark" and "overdue" are arithmetic on counts the row already
-  // carries, so they narrow the fetched hundred rather than the query.
-  const now = new Date();
-  const assignments = fetched.filter((a) => {
-    if (state === "tomark") return a._count.submissions > a._count.grades;
-    if (state === "overdue") return a.dueAt !== null && a.dueAt < now && a._count.grades < a.class._count.enrollments;
-    return true;
-  });
+  // Overdue AND still unmarked for somebody: the second half is arithmetic on
+  // the counts the row carries.
+  const assignments = fetched.filter((a) =>
+    state === "overdue" ? a._count.grades < a.class._count.enrollments : true,
+  );
+  const total = showAll ? allCount : thisYearCount;
+  const carry = new URLSearchParams({ ...(state ? { state } : {}), ...(classFilter ? { classId: classFilter } : {}) }).toString();
 
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <PageHeader title={t("teacher.assignments")} description={assignments.length === 0
+        <PageHeader title={t("teacher.assignments")} description={total === 0
               ? t("teacher.nothingSetYetShort")
-              : assignments.length === 1
+              : total === 1
                 ? t("teacher.piecesOfWorkOne")
-                : t("teacher.piecesOfWorkMany", { count: assignments.length })} />
+                : t("teacher.piecesOfWorkMany", { count: total })} />
         <Button asChild icon={<PlusIcon weight="bold" />}>
           <Link href="/teacher/assignments/new">{t("teacher.newAssignment")}</Link>
         </Button>
@@ -116,8 +122,8 @@ export default async function AssignmentsPage({
           ariaLabel={t("teacher.assignments")}
           current={showAll ? "all" : "year"}
           tabs={[
-            { key: "year", href: "/teacher/assignments", label: t("teacher.thisYear", { name: year.name }), count: thisYearCount },
-            { key: "all", href: "/teacher/assignments?years=all", label: t("teacher.allYears"), count: allCount },
+            { key: "year", href: `/teacher/assignments${carry ? `?${carry}` : ""}`, label: t("teacher.thisYear", { name: year.name }), count: thisYearCount },
+            { key: "all", href: `/teacher/assignments?years=all${carry ? `&${carry}` : ""}`, label: t("teacher.allYears"), count: allCount },
           ]}
         />
       )}
@@ -149,11 +155,13 @@ export default async function AssignmentsPage({
         <EmptyState
           icon={<ClipboardTextIcon weight="duotone" className="size-8" />}
           title={classFilter || state ? t("common.noResultsTitle") : t("teacher.noAssignmentsYet")}
-          description={t("teacher.setWorkBlurb")}
+          description={classFilter || state ? t("common.noResultsBody") : t("teacher.setWorkBlurb")}
           action={
-            <Button asChild>
-              <Link href="/teacher/assignments/new">{t("teacher.setSomeWork")}</Link>
-            </Button>
+            classFilter || state ? undefined : (
+              <Button asChild>
+                <Link href="/teacher/assignments/new">{t("teacher.setSomeWork")}</Link>
+              </Button>
+            )
           }
         />
       ) : (

@@ -53,7 +53,7 @@ export default async function RootPage({
         {t("root.operatorIntro")}
       </p>
 
-      {totals.length > 1 && (
+      {(totals.length > 1 || narrowed) && (
         <DataToolbar
           search={{ value: q ?? "", placeholder: t("root.searchPlaceholder"), label: t("common.searchLabel") }}
           sort={{

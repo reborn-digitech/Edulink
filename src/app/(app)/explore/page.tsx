@@ -36,13 +36,13 @@ export default async function ExplorePage({
   const params = await searchParams;
   const q = params.q?.slice(0, 80) ?? "";
   const country = params.country ?? "";
-  const region = params.region ?? "";
-
-  const [schools, places] = await Promise.all([
-    listDirectory(ctx, { q, country: country || undefined, region: region || undefined }),
-    directoryPlaces(),
-  ]);
+  const places = await directoryPlaces();
   const regions = country ? (places.regionsByCountry[country] ?? []) : [];
+  // A state belongs to its country: "India + Gujarat" then a switch to Nepal
+  // must not carry Gujarat along and show nothing.
+  const region = params.region && regions.includes(params.region) ? params.region : "";
+
+  const schools = await listDirectory(ctx, { q, country: country || undefined, region: region || undefined });
   const filtered = Boolean(q || country || region);
 
   return (
@@ -55,7 +55,7 @@ export default async function ExplorePage({
       <DataToolbar
         search={{ value: q, placeholder: t("explore.searchPlaceholder"), label: t("explore.searchPlaceholder") }}
         facets={[
-          { key: "country", label: t("explore.countryFilter"), value: country, as: "select", options: [{ value: "", label: t("explore.anyCountry") }, ...places.countries.map((c) => ({ value: c, label: c }))] },
+          { key: "country", label: t("explore.countryFilter"), value: country, as: "select", clears: ["region"], options: [{ value: "", label: t("explore.anyCountry") }, ...places.countries.map((c) => ({ value: c, label: c }))] },
           ...(country && regions.length > 0
             ? [{ key: "region", label: t("explore.regionFilter"), value: region, as: "select" as const, options: [{ value: "", label: t("explore.anyRegion") }, ...regions.map((r) => ({ value: r, label: r }))] }]
             : []),

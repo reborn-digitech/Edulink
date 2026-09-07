@@ -1526,7 +1526,7 @@ export const en = {
     searchPlaceholder: "Search by name, city or join code",
     stateFilter: "State",
     stateLive: "Live",
-    stateNoAdmin: "No admin yet",
+    stateNoAdmin: "Admin invite pending",
     jobSchedule: "Schedule (cron)",
     jobErrorLabel: "Error",
     jobCountedLabel: "Counted",
@@ -2041,6 +2041,10 @@ export const en = {
   /* boundary. One key per distinct sentence; the sentence is the value.    */
   /* ---------------------------------------------------------------------- */
   access: {
+    resultAlreadyRecorded: "A result has already been recorded for this entry, so it cannot be handed in again.",
+    notYourPupil: "That pupil is not in a class you teach.",
+    onlyTheCurrentYearCloses: "Only the year that is running can be closed.",
+    cannotMoveIntoAClosedYear: "That year is already closed — choose the next year to move into.",
     youArePostingALot: "You are posting a lot — try again in about {minutes} minutes.",
     onlyAnAdminEditsTheProfile: "Only a school admin edits the directory profile.",
     onlySchoolStaffReadTheBoard: "Only school staff read the vacancies board.",
@@ -5304,6 +5308,7 @@ export const en = {
      time by notify(); see titleKey. Every stored notification title lives
      here, so the list is the complete vocabulary of what the app tells people. */
   notifTitle: {
+    bookingCancelled: "An expert booking was cancelled",
     staffRecordUpdated: "Your staff record was updated",
     birthdateSet: "Your date of birth was updated",
     promoted: "You have moved up",

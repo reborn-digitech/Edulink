@@ -1383,7 +1383,7 @@ export const mr: Dictionary = {
     searchPlaceholder: "नाव, शहर किंवा जॉइन कोडने शोधा",
     stateFilter: "स्थिती",
     stateLive: "चालू",
-    stateNoAdmin: "अजून ॲडमिन नाही",
+    stateNoAdmin: "ॲडमिन आमंत्रण प्रलंबित",
     jobSchedule: "वेळापत्रक (cron)",
     jobErrorLabel: "त्रुटी",
     jobCountedLabel: "मोजले",
@@ -1863,6 +1863,10 @@ export const mr: Dictionary = {
   },
 
   access: {
+    resultAlreadyRecorded: "या नोंदीचा निकाल नोंदवला गेला आहे, त्यामुळे ती पुन्हा सादर करता येणार नाही.",
+    notYourPupil: "तो विद्यार्थी तुम्ही शिकवत असलेल्या वर्गात नाही.",
+    onlyTheCurrentYearCloses: "फक्त सुरू असलेले वर्षच बंद करता येते.",
+    cannotMoveIntoAClosedYear: "ते वर्ष आधीच बंद आहे — पुढे जाण्यासाठी पुढील वर्ष निवडा.",
     youArePostingALot: "तुम्ही खूप पोस्ट करत आहात — सुमारे {minutes} मिनिटांनी पुन्हा प्रयत्न करा.",
     onlyAnAdminEditsTheProfile: "निर्देशिका प्रोफाइल फक्त शाळेचा प्रशासक बदलतो.",
     onlySchoolStaffReadTheBoard: "जागांचा बोर्ड फक्त शाळेचे कर्मचारी पाहतात.",
@@ -4867,6 +4871,7 @@ export const mr: Dictionary = {
     forChild: "{name} साठी",
   },
   notifTitle: {
+    bookingCancelled: "तज्ज्ञाची बुकिंग रद्द झाली",
     staffRecordUpdated: "तुमची कर्मचारी नोंद अद्ययावत झाली",
     birthdateSet: "तुमची जन्मतारीख बदलली",
     promoted: "तुम्ही पुढच्या वर्गात गेलात",

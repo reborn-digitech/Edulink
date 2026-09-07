@@ -52,7 +52,7 @@ export default async function AppAdminHome({
               value: status ?? "",
               options: [
                 { value: "", label: t("vacancies.filterAll"), count: allCompetitions.length },
-                ...statuses.map((st) => ({ value: st, label: st.charAt(0) + st.slice(1).toLowerCase(), count: allCompetitions.filter((c) => c.status === st).length })),
+                ...statuses.map((st) => ({ value: st, label: st === "PUBLISHED" ? t("appadmin.statusLive") : st === "ARCHIVED" ? t("appadmin.statusWithdrawn") : t("appadmin.statusDraft"), count: allCompetitions.filter((c) => c.status === st).length })),
               ],
             },
           ]}

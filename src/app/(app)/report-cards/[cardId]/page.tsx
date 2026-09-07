@@ -54,7 +54,7 @@ export default async function ReportCardPage({
   const { cardId } = await params;
   const { from } = await searchParams;
   // Only a path of our own is a way back; anything else is the cards tab.
-  const backHref = from && from.startsWith("/") && !from.startsWith("//") ? from : "/exams?tab=cards";
+  const backHref = from && from.startsWith("/") && !from.startsWith("//") && !from.includes("\\") ? from : "/exams?tab=cards";
 
   const card = await getCard(session, cardId);
   if (!card) notFound();

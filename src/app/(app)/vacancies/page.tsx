@@ -29,7 +29,7 @@ export default async function VacanciesBoardPage({
   const allPostings = await listBoard(ctx);
   const regions = [...new Set(allPostings.map((p) => p.region).filter((r): r is string => Boolean(r)))].sort();
   const subjects = [...new Set(allPostings.flatMap((p) => p.subjects))].sort();
-  const type = rawType && rawType in EMPLOYMENT_TYPE_KEYS ? (rawType as EmploymentType) : null;
+  const type = rawType && Object.hasOwn(EMPLOYMENT_TYPE_KEYS, rawType) ? (rawType as EmploymentType) : null;
   const region = rawRegion && regions.includes(rawRegion) ? rawRegion : null;
   const subject = rawSubject && subjects.includes(rawSubject) ? rawSubject : null;
   const needle = (q ?? "").trim().toLowerCase();
@@ -46,7 +46,7 @@ export default async function VacanciesBoardPage({
     <div className="space-y-6">
       <PageHeader title={t("vacancies.title")} description={t("vacancies.boardIntro")} />
 
-      {allPostings.length > 2 && (
+      {(allPostings.length > 2 || narrowed) && (
         <DataToolbar
           search={{ value: q ?? "", placeholder: t("vacancies.searchPlaceholder"), label: t("common.searchLabel") }}
           facets={[

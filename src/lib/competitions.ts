@@ -498,6 +498,11 @@ export async function submitEntry(
   if (competition.requiresParentConsent && entry.parentConsentAt === null) {
     throw new AccessError("access.aGrownUpNeedsToSayYes");
   }
+  // The comment below promised this and nothing did it: a hand-in after a
+  // result would leave a ranked entry reading as merely submitted.
+  if (entry.rank !== null || entry.scoreMilli !== null) {
+    throw new AccessError("access.resultAlreadyRecorded");
+  }
 
   await db.competitionEntry.update({
     where: { id: entry.id },
