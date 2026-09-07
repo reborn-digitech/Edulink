@@ -621,6 +621,61 @@ export async function removeSchool(
  * not their class lists — the counts in the audit row say so honestly, and
  * the admin re-enrols from the class pages.
  */
+/**
+ * MANY SCHOOLS, ONE PRESS, TWO DOORS — the same two the single-school page
+ * has. Removal is the flag that turns a roll into leavers and can be put
+ * back; erasure is the shredder. Each school goes through the door it would
+ * have gone through alone, so every refusal, audit row and cascade is the
+ * one already proven for one; this only loops, and reports per school.
+ */
+export type BulkOutcome = { done: number; failed: { id: string; name: string | null; errorKey: TranslationKey }[] };
+
+export async function removeSchools(session: ActiveContext, schoolIds: string[]): Promise<BulkOutcome> {
+  assertSuperuser(session);
+  const ids = [...new Set(schoolIds)].slice(0, 100);
+  const names = new Map((await db.school.findMany({ where: { id: { in: ids } }, select: { id: true, name: true } })).map((s) => [s.id, s.name]));
+  const out: BulkOutcome = { done: 0, failed: [] };
+  for (const id of ids) {
+    const result = await removeSchool(session, id);
+    if (result.ok) out.done++;
+    else out.failed.push({ id, name: names.get(id) ?? null, errorKey: result.errorKey ?? "root.noSuchSchool" });
+  }
+  return out;
+}
+
+/**
+ * The bulk shredder's gate is the COUNT, typed: "DELETE 3" for three
+ * schools. Checked here rather than only in the dialog, because a POST is
+ * its own entry point; each school's own name gate is then satisfied from
+ * the row, since the operator has already said, in words, how many go.
+ */
+export async function deleteSchoolsEntirely(
+  session: ActiveContext,
+  schoolIds: string[],
+  confirmPhrase: string,
+): Promise<BulkOutcome & { ok: boolean; errorKey?: TranslationKey }> {
+  assertSuperuser(session);
+  const ids = [...new Set(schoolIds)].slice(0, 100);
+  if (ids.length === 0) return { ok: false, errorKey: "root.noSuchSchool", done: 0, failed: [] };
+  if (confirmPhrase.trim().toUpperCase() !== `DELETE ${ids.length}`) {
+    return { ok: false, errorKey: "root.bulkDeleteMismatch", done: 0, failed: [] };
+  }
+  const rows = await db.school.findMany({ where: { id: { in: ids } }, select: { id: true, name: true } });
+  const names = new Map(rows.map((s) => [s.id, s.name]));
+  const out: BulkOutcome = { done: 0, failed: [] };
+  for (const id of ids) {
+    const name = names.get(id);
+    if (!name) {
+      out.failed.push({ id, name: null, errorKey: "root.noSuchSchool" });
+      continue;
+    }
+    const result = await deleteSchoolEntirely(session, id, name);
+    if (result.ok) out.done++;
+    else out.failed.push({ id, name, errorKey: result.errorKey ?? "root.noSuchSchool" });
+  }
+  return { ok: out.failed.length === 0, ...out };
+}
+
 export async function restoreSchool(
   session: ActiveContext,
   schoolId: string,

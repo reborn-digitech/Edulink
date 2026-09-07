@@ -1383,6 +1383,18 @@ export const hi: Dictionary = {
   },
 
   root: {
+    selectSchool: "{name} चुनें",
+    selectedCount: "{count} चुने गए",
+    removeSelected: "चुने हुए हटाएँ",
+    deleteSelected: "चुने हुए पूरी तरह मिटाएँ",
+    bulkRemoveTitle: "{count} स्कूल सर्वर से हटाएँ?",
+    bulkRemoveBody: "इनके रोल पूर्व-विद्यार्थी बन जाएँगे, हर खाता और प्रमाणपत्र रहेगा, और हर स्कूल अपने पेज से वापस लाया जा सकता है। पुष्टि के लिए स्कूलों की संख्या लिखें।",
+    bulkDeleteTitle: "{count} स्कूल हमेशा के लिए मिटाएँ?",
+    bulkDeleteBody: "हटाना नहीं। यह हर स्कूल की हर पंक्ति नष्ट कर देता है — सदस्यताएँ, कक्षाएँ, हाज़िरी, अंक, रिपोर्ट कार्ड, पोस्ट, प्रमाणपत्र — और वे खाते जो केवल उसी के लिए थे। कुछ वापस नहीं आता। पुष्टि के लिए वाक्यांश लिखें।",
+    typeToConfirm: "पुष्टि के लिए {phrase} लिखें",
+    bulkRemoved: "{count} स्कूल हटाए गए",
+    bulkDeleted: "{count} स्कूल मिटाए गए",
+    bulkDeleteMismatch: "यह वाक्यांश नहीं है। DELETE और फिर स्कूलों की संख्या लिखें।",
     searchPlaceholder: "नाम, शहर या जॉइन कोड से खोजें",
     stateFilter: "स्थिति",
     stateLive: "चालू",

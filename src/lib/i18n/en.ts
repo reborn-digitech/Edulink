@@ -1523,6 +1523,18 @@ export const en = {
   /* The operator's console — /root, and the refusals its libs mint          */
   /* ---------------------------------------------------------------------- */
   root: {
+    selectSchool: "Select {name}",
+    selectedCount: "{count} selected",
+    removeSelected: "Remove selected",
+    deleteSelected: "Delete selected entirely",
+    bulkRemoveTitle: "Remove {count} schools from the server?",
+    bulkRemoveBody: "Their rolls become leavers, every account and certificate is kept, and each can be restored from its own page. Type the number of schools to confirm.",
+    bulkDeleteTitle: "Delete {count} schools for good?",
+    bulkDeleteBody: "Not removal. This shreds every row each school owns — people's memberships, classes, registers, marks, report cards, posts, certificates — and the accounts that existed only for it. Nothing comes back. Type the phrase to confirm.",
+    typeToConfirm: "Type {phrase} to confirm",
+    bulkRemoved: "{count} schools removed",
+    bulkDeleted: "{count} schools deleted",
+    bulkDeleteMismatch: "That is not the phrase. Type DELETE followed by the number of schools.",
     searchPlaceholder: "Search by name, city or join code",
     stateFilter: "State",
     stateLive: "Live",

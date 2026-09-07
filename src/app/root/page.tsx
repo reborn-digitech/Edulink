@@ -9,6 +9,7 @@ import { EmptyState } from "@/components/ui/states";
 import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { DataToolbar } from "@/components/ui/data-toolbar";
 import { PageHeader } from "@/components/ui/page-header";
+import { BulkSelectProvider, SelectSchool } from "./bulk-select";
 
 export async function generateMetadata() {
   const t = await getT();
@@ -101,11 +102,15 @@ export default async function RootPage({
           }
         />
       ) : (
+        <BulkSelectProvider schools={schools.map((s) => ({ id: s.id, name: s.name }))}>
         <ul className="space-y-2">
           {schools.map((school) => (
             <li key={school.id}>
-              <Card className={school.removedAt ? "opacity-70" : undefined}>
-                <Link href={`/root/${school.id}`} className="block p-4">
+              <Card className={`flex items-stretch ${school.removedAt ? "opacity-70" : ""}`}>
+                <div className="flex items-center pl-2">
+                  <SelectSchool id={school.id} name={school.name} />
+                </div>
+                <Link href={`/root/${school.id}`} className="block min-w-0 flex-1 p-4 pl-2">
                   <div className="flex flex-wrap items-center gap-3">
                     <div className="min-w-0 flex-1">
                       <p className="truncate font-semibold text-fg">{school.name}</p>
@@ -155,6 +160,7 @@ export default async function RootPage({
             </li>
           ))}
         </ul>
+        </BulkSelectProvider>
       )}
     </div>
   );

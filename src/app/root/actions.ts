@@ -6,7 +6,7 @@ import { requireApiUser, AccessError } from "@/lib/tenancy";
 import {
   createSchool,
   updateSchool,
-  removeSchool,
+  removeSchools, deleteSchoolsEntirely, removeSchool,
   restoreSchool,
   deleteSchoolEntirely,
   inviteAdmin,
@@ -99,6 +99,39 @@ export async function deleteSchoolAction(schoolId: string, confirmName: string):
     return { ok: true };
   } catch (error) {
     return failure(error);
+  }
+}
+
+export type BulkResult = { ok: boolean; done: number; failed: string[]; error?: string };
+
+/** Removes several schools at once: each through the single door, reported per school. */
+export async function removeSchoolsAction(schoolIds: string[]): Promise<BulkResult> {
+  try {
+    const session = await requireApiUser();
+    assertSuperuser(session);
+    const t = await getT();
+    const outcome = await removeSchools(session, schoolIds);
+    revalidatePath("/root");
+    return { ok: outcome.failed.length === 0, done: outcome.done, failed: outcome.failed.map((f) => `${f.name ?? f.id}: ${t(f.errorKey)}`) };
+  } catch (error) {
+    return { ...(await failure(error)), done: 0, failed: [] };
+  }
+}
+
+/** Erases several schools for good, behind the typed "DELETE n" the lib checks. */
+export async function deleteSchoolsAction(schoolIds: string[], confirmPhrase: string): Promise<BulkResult> {
+  try {
+    const session = await requireApiUser();
+    assertSuperuser(session);
+    const t = await getT();
+    const outcome = await deleteSchoolsEntirely(session, schoolIds, confirmPhrase);
+    if (!outcome.ok && outcome.errorKey && outcome.done === 0 && outcome.failed.length === 0) {
+      return { ok: false, done: 0, failed: [], error: t(outcome.errorKey) };
+    }
+    revalidatePath("/root");
+    return { ok: outcome.ok, done: outcome.done, failed: outcome.failed.map((f) => `${f.name ?? f.id}: ${t(f.errorKey)}`) };
+  } catch (error) {
+    return { ...(await failure(error)), done: 0, failed: [] };
   }
 }
 
