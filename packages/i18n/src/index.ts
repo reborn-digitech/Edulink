@@ -1,9 +1,12 @@
 /**
  * @edulink/i18n — what both the web app and the mobile app say, in one place.
  *
- * Phase 0 moves the language list here and nothing else: it is the smallest
- * seam that proves a workspace package builds into Next, vitest, tsx and tsc.
- * The dictionaries (en/hi/mr) and the translator follow in Phase 2, once the
- * i18n audit has been taught to read them from this package.
+ * The language list, the three dictionaries (en, hi, mr — one nested object
+ * each, ~5,000 keys) and the translator core. The dictionaries are exported
+ * by path (@edulink/i18n/en …) so a bundle takes only the language it asks
+ * for; the web folds English under the reader's language on the server, the
+ * phone does the same in memory once per language (see ./dictionaries).
  */
 export * from "./locales";
+export * from "./core";
+export { dictionaryFor, DICTIONARIES } from "./dictionaries";

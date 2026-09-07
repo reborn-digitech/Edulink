@@ -1,6 +1,3 @@
-import { en } from "./en";
-import { hi } from "./hi";
-import { mr } from "./mr";
 import { DEFAULT_LOCALE, type Locale } from "./locales";
 import { format, lookup, translatorFor, type Dictionary, type Translate, type TranslationKey } from "./core";
 
@@ -24,22 +21,10 @@ export { format, translatorFor, type Dictionary, type Translate, type Translatio
  */
 
 /** Same shape as `en`, but every leaf widened from its literal to `string`. */
-export const DICTIONARIES: Record<Locale, Dictionary> = { en, hi, mr };
-
-/** Substitutes `{name}` placeholders. An unknown name is left alone, visibly. */
-/**
- * One lookup, with its fallbacks: this language, then English, then the key.
- *
- * SEPARATE FROM `translator` SO IT CAN BE TESTED. The fallback path is
- * unreachable while the `Dictionary` annotations hold, and a test that can only
- * reach it by mutating the shared dictionaries proves nothing about either. This
- * takes the dictionary as an argument, so a test can hand it a gutted one.
- *
- * The chain matters. The types already make a missing key a build error, so this
- * should never fire — but "should never fire" is how a blank button gets
- * shipped. A visible English word is a bug someone reports; a blank one is a bug
- * someone silently works around.
- */
+// The dictionaries and the fold live in @edulink/i18n now, shared with the
+// phone; the server-side translator with its English fallback stays here.
+export { DICTIONARIES, dictionaryFor } from "@edulink/i18n/dictionaries";
+import { DICTIONARIES } from "@edulink/i18n/dictionaries";
 export function resolve(
   dictionary: Dictionary,
   key: string,
@@ -55,30 +40,3 @@ export function translator(locale: Locale): Translate {
   return (key, vars) => resolve(dictionary, key, vars);
 }
 
-/**
- * One language with English folded underneath it, built once per language.
- *
- * This is what crosses to the browser: the provider gets THIS as a prop, so a
- * Marathi reader downloads Marathi (with the English that fills any gap) and
- * not Hindi as well. Every string is present, so the client never needs the
- * English file to fall back to. Empty strings count as gaps, the same rule
- * `resolve` applies on the server.
- */
-const merged = new Map<Locale, Dictionary>();
-
-function fold(base: unknown, over: unknown): unknown {
-  if (typeof base === "string") return typeof over === "string" && over.length > 0 ? over : base;
-  const out: Record<string, unknown> = {};
-  const b = base as Record<string, unknown>;
-  const o = (typeof over === "object" && over !== null ? over : {}) as Record<string, unknown>;
-  for (const key of Object.keys(b)) out[key] = fold(b[key], o[key]);
-  return out;
-}
-
-export function dictionaryFor(locale: Locale): Dictionary {
-  const found = merged.get(locale);
-  if (found) return found;
-  const built = (locale === DEFAULT_LOCALE ? en : fold(en, DICTIONARIES[locale] ?? en)) as Dictionary;
-  merged.set(locale, built);
-  return built;
-}

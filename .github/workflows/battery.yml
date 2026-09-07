@@ -102,6 +102,8 @@ jobs:
         run: npx tsc --noEmit && npx tsc --noEmit -p scripts/tsconfig.json
       - name: Packages
         run: pnpm --filter './packages/*' typecheck && pnpm --filter './packages/*' test
+      - name: Mobile battery · tsc, eslint, jest
+        run: pnpm --filter @edulink/mobile battery
       - name: ESLint
         working-directory: apps/web
         run: npx eslint .
@@ -191,6 +193,16 @@ jobs:
       - name: API sweep · every endpoint as every role
         working-directory: apps/web
         run: npm run api:sweep
+      - name: Mobile contract tests · the app's client against the API
+        working-directory: apps/web
+        # Bearer tokens minted on the ZZ fixture, the way the API sweep mints its own.
+        run: |
+          export EDULINK_API_BASE=http://localhost:3000
+          export EDULINK_TOKEN_TEACHER="$(npm run --silent zz:token -- TEACHER)"
+          export EDULINK_TOKEN_PARENT="$(npm run --silent zz:token -- PARENT)"
+          export EDULINK_TOKEN_STUDENT="$(npm run --silent zz:token -- STUDENT)"
+          pnpm --filter @edulink/mobile test:contract
+          npm run --silent zz:token -- --purge
       - name: Playwright browsers
         working-directory: apps/web
         run: npx playwright install --with-deps chromium

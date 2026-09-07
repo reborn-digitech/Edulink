@@ -1,15 +1,31 @@
 # @edulink/mobile
 
-The React Native (Expo) app. This directory is reserved in Phase 0 so the
-workspace, the shared packages and the CI layout are settled before a single
-screen exists; `create-expo-app` runs here in Phase 4, after the `/api/v1`
-surface (Phase 3) it will talk to is real.
+The EduLink phone app: Expo SDK 57, expo-router, React Query, the same
+dictionaries (`@edulink/i18n`), tokens (`@edulink/tokens`) and API contracts
+(`@edulink/contracts`, `@edulink/api-client`) as the web. It talks only to
+`/api/v1` (`docs/api/README.md`).
 
-What it will depend on, all already in the workspace:
+```bash
+pnpm --filter @edulink/mobile start          # Expo dev server; press w for the web target
+EXPO_PUBLIC_API_URL=http://localhost:3000    # where the API is (default)
+pnpm --filter @edulink/mobile battery        # tsc, eslint (expo + a11y), jest
+EDULINK_API_BASE=http://localhost:3000 EDULINK_TOKEN_TEACHER=… pnpm --filter @edulink/mobile test:contract
+```
 
-- `@edulink/i18n` — the language list today, the dictionaries after Phase 2
-- `@edulink/contracts` — zod schemas for every `/api/v1` request and response
-- `@edulink/api-client` — the bearer-token fetch wrapper
+What runs where:
 
-See `docs/decisions/0001-mobile-monorepo-and-production.md` for the decisions
-this layout follows and `docs/mobile-and-production-plan` for the phases.
+- **Phone** (Expo Go for anything without a native module; a development
+  build via `npx expo run:ios|android` or EAS for secure storage, SQLite,
+  push and biometrics) — the product.
+- **Web target** (`expo start --web`) — a development convenience for walking
+  screens in a browser; the session token then lives in localStorage and the
+  outbox in memory. Not a deployment.
+- **Jest** (`jest-expo` + React Native Testing Library) — every lib module and
+  every screen's empty, loading, error and populated states, with native
+  modules faked in `test/setup.ts`.
+- **Contract tests** (`test/contract/`) — the API client against a running
+  server, with bearer tokens minted on the ZZ fixture by the web's
+  `npm run zz:token -- TEACHER`; CI runs them in the sweep job.
+
+Layout: `src/app` (routes), `src/lib` (session, api, i18n, theme, outbox,
+links), `src/components` (the shared set: Screen, Text, Button, Card, states).

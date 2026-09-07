@@ -31,6 +31,7 @@
     "rls:verify": "tsx --tsconfig scripts/tsconfig.json scripts/verify-rls-app.ts",
     "sweep": "tsx --tsconfig scripts/tsconfig.json scripts/sweep.ts",
     "api:sweep": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/api-sweep.ts",
+    "zz:token": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/zz-token.ts",
     "api:docs": "tsx --tsconfig scripts/tsconfig.json scripts/gen-openapi.ts",
     "load:check": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/load-check.ts",
     "e2e": "playwright test",
@@ -77,6 +78,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "4.11.1",
+    "@edulink/tokens": "workspace:*",
     "@playwright/test": "1.58.2",
     "@serwist/next": "^9.5.12",
     "@tailwindcss/postcss": "^4.3.3",
