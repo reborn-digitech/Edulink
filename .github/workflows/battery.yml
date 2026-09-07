@@ -89,6 +89,8 @@ jobs:
           # so tenant isolation has something it must not see); ZZ rows on top.
           npm run db:seed
           npm run zz:fixtures
+          # The question bank: the content team's suite lists topics and expects some.
+          npm run quiz:import
 
       - name: Typecheck
         working-directory: apps/web
@@ -163,6 +165,8 @@ jobs:
           node scripts/db-grants.mjs
           npm run db:seed
           npm run zz:fixtures
+          # The question bank: the content team's suite lists topics and expects some.
+          npm run quiz:import
       - name: Build and start
         working-directory: apps/web
         run: |
