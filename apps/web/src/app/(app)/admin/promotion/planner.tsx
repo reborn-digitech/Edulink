@@ -12,7 +12,7 @@ import { useToast } from "@/components/ui/toast";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
 import { cn } from "@/lib/cn";
-import { nameCarriesSection, withSection } from "@/lib/codes";
+import { nameCarriesSection, withSection } from "@/lib/class-names";
 import { promoteSchoolAction } from "./actions";
 
 /** A new class this row owns beyond its own destination — the B to its A. */

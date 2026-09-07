@@ -2,6 +2,7 @@ node_modules/
 .next/
 out/
 build/
+dist/
 .DS_Store
 *.pem
 
@@ -10,25 +11,9 @@ build/
 .env.local
 .env*.local
 
-# database (dev)
-prisma/*.db
-prisma/*.db-journal
-
-# generated service worker + uploads
-public/sw.js
-public/sw.js.map
-public/swe-worker-*.js
-storage/
-
 # test + tooling
 coverage/
 *.tsbuildinfo
 next-env.d.ts
 .tmp-orphan-store/
 .pg-client/
-prisma/.pg-schema.prisma
-
-# Local walkthrough credentials — minted for browser testing, never committed.
-zz-logins.txt
-logs/
-ops/crontab

@@ -17,7 +17,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: t("celebrations.title") };
 }
 
-export const CELEBRATIONS_TAG = "celebrations";
+// Not exported: a page module may only export what the App Router names, and
+// the production type check refuses anything else. Nobody imported it anyway.
+const CELEBRATIONS_TAG = "celebrations";
 
 /**
  * Upcoming birthdays and work anniversaries, on Social Media where the wishes

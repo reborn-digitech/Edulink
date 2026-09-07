@@ -1,0 +1,13 @@
+# database (dev)
+prisma/*.db
+prisma/*.db-journal
+prisma/.pg-schema.prisma
+
+# generated service worker + uploads
+public/sw.js
+public/sw.js.map
+public/swe-worker-*.js
+storage/
+
+# the walk's throwaway sign-in list
+zz-logins.txt

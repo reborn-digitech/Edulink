@@ -15,6 +15,8 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   serverExternalPackages: ["@node-rs/argon2", "web-push"],
+  // Workspace packages ship TypeScript source, not a build; Next compiles them.
+  transpilePackages: ["@edulink/i18n", "@edulink/contracts", "@edulink/api-client"],
   async headers() {
     return [
       {

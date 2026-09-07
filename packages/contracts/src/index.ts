@@ -1,0 +1,60 @@
+/**
+ * @edulink/contracts — the request and response shapes of the versioned JSON
+ * API (`/api/v1`), written once as zod schemas so the route handler on the web
+ * side and the client on the phone parse the same thing.
+ *
+ * Phase 0 lays down the envelope every endpoint answers with and the two
+ * schemas every endpoint takes. Domain schemas (attendance, timetable, feed,
+ * messages) arrive in Phase 3, one per endpoint, beside the handler that uses
+ * them.
+ */
+import { z } from "zod";
+import { LOCALES } from "@edulink/i18n";
+
+/**
+ * Every failure looks the same: a sentence a person can read, in the caller's
+ * language, and — for a form — which fields were wrong. Mirrors what the web's
+ * server actions already return, so a screen ports rather than rewrites.
+ */
+export const apiErrorSchema = z.object({
+  error: z.string().min(1),
+  code: z
+    .enum(["BAD_REQUEST", "UNAUTHORIZED", "FORBIDDEN", "NOT_FOUND", "CONFLICT", "RATE_LIMITED", "SERVER"])
+    .optional(),
+  issues: z.record(z.string()).optional(),
+  retryAfterSeconds: z.number().int().positive().optional(),
+});
+export type ApiError = z.infer<typeof apiErrorSchema>;
+
+export type ApiResult<T> = { ok: true; data: T } | ({ ok: false; status: number } & ApiError);
+
+/** The locale codes as a schema, derived from the one list rather than retyped. */
+export const localeSchema = z.enum(
+  LOCALES.map((l) => l.code) as [(typeof LOCALES)[number]["code"], ...(typeof LOCALES)[number]["code"][]],
+);
+
+/**
+ * Cursor paging for every list. A phone scrolls; it never asks for page 7.
+ * The limit is capped here so a client cannot ask a school's whole feed at once.
+ */
+export const pageQuerySchema = z.object({
+  cursor: z.string().min(1).max(200).optional(),
+  limit: z.coerce.number().int().min(1).max(100).default(30),
+});
+export type PageQuery = z.infer<typeof pageQuerySchema>;
+
+export function page<T extends z.ZodTypeAny>(item: T) {
+  return z.object({ items: z.array(item), nextCursor: z.string().nullable() });
+}
+
+/**
+ * A bearer session as the app stores it. The token itself is opaque; the
+ * expiry is what tells the app to refresh before a request rather than after
+ * a 401.
+ */
+export const sessionTokenSchema = z.object({
+  token: z.string().min(32),
+  expiresAt: z.string().datetime(),
+  locale: localeSchema,
+});
+export type SessionToken = z.infer<typeof sessionTokenSchema>;
