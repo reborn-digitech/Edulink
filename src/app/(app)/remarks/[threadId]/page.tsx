@@ -7,6 +7,7 @@ import { getThread } from "@/lib/remarks";
 import { getT } from "@/lib/i18n/server";
 import { markRead } from "../actions";
 import { Avatar } from "@/components/ui/avatar";
+import { PersonLink } from "@/components/person-link";
 import { ReplyBox } from "./reply-box";
 import { formatInZone, relativeTime } from "@/lib/dates";
 import { db } from "@/lib/db";
@@ -52,14 +53,20 @@ export default async function ThreadPage({ params }: { params: Promise<{ threadI
       </Link>
 
       <header className="flex items-start gap-3 rounded-[--radius-lg] border border-border bg-surface p-4">
-        <Avatar avatarKey={thread.student.avatarKey} name={thread.student.fullName} size="md" />
+        <PersonLink membershipId={thread.student.membershipId} name={thread.student.fullName} className="shrink-0 rounded-full">
+          <Avatar avatarKey={thread.student.avatarKey} name={thread.student.fullName} size="md" />
+        </PersonLink>
         <div className="min-w-0 flex-1">
           <h1 className="text-lg font-bold tracking-tight text-fg">{thread.subject}</h1>
           {/* "About X, with Y" was true when this was a note a teacher wrote to
               a family. The child is in the room now, so it is a conversation
               BETWEEN people rather than one about somebody. */}
           <p className="text-sm text-fg-muted">
-            {thread.student.fullName} · {thread.teacher.name} · guardians
+            <PersonLink membershipId={thread.student.membershipId} name={thread.student.fullName} className="text-fg" />
+            {" · "}
+            <PersonLink membershipId={thread.teacher.membershipId} name={thread.teacher.name} className="text-fg" />
+            {" · "}
+            {t("remarks.guardiansWord")}
           </p>
         </div>
       </header>
@@ -81,9 +88,11 @@ export default async function ThreadPage({ params }: { params: Promise<{ threadI
             <Avatar avatarKey={message.authorAvatar} name={message.authorName} size="sm" />
             <div className={cn("min-w-0 max-w-[85%]", message.mine && "text-right")}>
               <p className="text-xs text-fg-muted">
-                <span className="font-semibold text-fg">
-                  {message.mine ? "You" : message.authorName}
-                </span>{" "}
+                <PersonLink
+                  membershipId={message.mine ? null : message.authorMembershipId}
+                  name={message.mine ? t("convo.you") : message.authorName}
+                  className="font-semibold text-fg"
+                />{" "}
                 · <time dateTime={message.createdAt.toISOString()}>
                   {relativeTime(message.createdAt)}
                 </time>
@@ -103,7 +112,7 @@ export default async function ThreadPage({ params }: { params: Promise<{ threadI
                   dateStyle: "medium",
                   timeStyle: "short",
                 })}
-                {message.mine && (message.readByOthers ? " · Read" : " · Sent")}
+                {message.mine && ` · ${message.readByOthers ? t("convo.readMark") : t("convo.sentMark")}`}
               </p>
             </div>
           </li>

@@ -11,6 +11,7 @@ import { toggleAttendanceRight, addCover, removeCover, addTeacher, dropTeacher }
 import { DateField } from "@/components/ui/field";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
+import { PersonLink } from "@/components/person-link";
 
 type ClassTeacherRow = {
   id: string;
@@ -159,7 +160,7 @@ export function Staffing({
                 className="flex flex-wrap items-center gap-3 rounded-[--radius-sm] bg-surface-muted p-3"
               >
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate text-sm font-medium text-fg">{row.name}</span>
+                  <PersonLink membershipId={row.membershipId} name={row.name} className="block truncate text-sm font-medium text-fg" />
                   <span className="block text-xs text-fg-muted">
                     {row.role === "LEAD"
                       ? t("classes.classTeacher")

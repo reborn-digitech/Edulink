@@ -10,6 +10,7 @@ import { cn } from "@/lib/cn";
 import { searchCandidates, addToCohort, dropFromCohort } from "./actions";
 import { actionError } from "@/lib/action-error";
 import { useT } from "@/lib/i18n";
+import { PersonLink } from "@/components/person-link";
 
 type Member = {
   membershipId: string;
@@ -250,7 +251,7 @@ export function CohortPanel({
               className="flex flex-wrap items-center gap-3 rounded-[--radius-sm] bg-surface-muted p-3"
             >
               <span className="min-w-0 flex-1">
-                <span className="block truncate text-sm font-medium text-fg">{member.name}</span>
+                <PersonLink membershipId={member.membershipId} name={member.name} className="block truncate text-sm font-medium text-fg" />
                 {member.gradeLevel && (
                   <span className="block text-xs text-fg-muted">
                     {t("classes.grade", { grade: member.gradeLevel })}

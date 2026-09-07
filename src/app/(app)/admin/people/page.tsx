@@ -18,6 +18,7 @@ import { isDeliverableEmail } from "@/lib/login-name";
 import { TabBar } from "@/components/ui/tabs";
 import { ROLE_META, SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
 import { pendingParentInvites } from "@/lib/parent-link";
+import { PersonLink } from "@/components/person-link";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -267,7 +268,7 @@ export default async function DirectoryPage({
                       <Avatar avatarKey={member.user.avatarKey} name={member.user.name} size="md" />
 
                       <div className="min-w-0 flex-1">
-                        <p className="truncate font-semibold text-fg">{displayName}</p>
+                        <PersonLink membershipId={member.id} name={displayName} className="block truncate font-semibold text-fg" />
                         {/* Student emails are school-issued but still PII; only
                             admins see this page, and it is never public. */}
                         <p className="truncate text-xs text-fg-muted">

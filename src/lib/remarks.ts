@@ -21,6 +21,8 @@ import type { ActiveContext } from "./session";
 export type ThreadSummary = {
   id: string;
   subject: string;
+  studentMembershipId: string;
+  teacherMembershipId: string;
   studentName: string;
   studentAvatar: string | null;
   teacherName: string;
@@ -74,6 +76,8 @@ export async function listThreads(session: ActiveContext): Promise<ThreadSummary
     return {
       id: thread.id,
       subject: thread.subject,
+      studentMembershipId: thread.studentMembershipId,
+      teacherMembershipId: thread.teacherMembershipId,
       studentName: thread.student.user.preferredName ?? thread.student.user.name,
       studentAvatar: thread.student.user.avatarKey,
       teacherName: thread.teacher.user.preferredName ?? thread.teacher.user.name,
@@ -101,6 +105,16 @@ export async function getThread(session: ActiveContext, threadId: string) {
     orderBy: { createdAt: "asc" },
   });
 
+  // A message author is a user; a profile is a membership. One lookup at the
+  // thread's school, so each name in the room can be a door (a guardian,
+  // who has no membership, stays a name).
+  const authorIds = [...new Set(messages.map((m) => m.author.id))];
+  const memberships = await db.membership.findMany({
+    where: { schoolId: thread.schoolId, userId: { in: authorIds }, status: "ACTIVE", leftAt: null },
+    select: { id: true, userId: true },
+  });
+  const membershipByUser = new Map(memberships.map((m) => [m.userId, m.id]));
+
   return {
     id: thread.id,
     subject: thread.subject,
@@ -124,6 +138,7 @@ export async function getThread(session: ActiveContext, threadId: string) {
         body: message.body,
         createdAt: message.createdAt,
         authorId: message.author.id,
+        authorMembershipId: membershipByUser.get(message.author.id) ?? null,
         authorName: message.author.preferredName ?? message.author.name,
         authorAvatar: message.author.avatarKey,
         mine: message.author.id === session.user.id,

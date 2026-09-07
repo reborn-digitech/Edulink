@@ -8,6 +8,7 @@ import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MentorPanel } from "./panel";
 import { getT } from "@/lib/i18n/server";
+import { PersonLink } from "@/components/person-link";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -46,7 +47,7 @@ export default async function MentorThreadPage({
 
       <div>
         <h1 className="text-2xl font-bold tracking-tight text-fg">
-          {thread.studentName} &amp; {thread.expertName}
+          <PersonLink membershipId={thread.studentMembershipId} name={thread.studentName} /> &amp; {thread.expertName}
         </h1>
         <p className="mt-1 text-sm text-fg-muted">{thread.purpose}</p>
       </div>

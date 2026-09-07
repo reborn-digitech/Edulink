@@ -33,6 +33,7 @@ import { ConsentControls } from "../competitions/entry-controls";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
 import { ownWorkScope } from "@/lib/grading";
 import { getT } from "@/lib/i18n/server";
+import { PersonLink } from "@/components/person-link";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -200,7 +201,7 @@ export default async function ParentDashboard({
         <Avatar avatarKey={student.user.avatarKey} name={student.user.name} size="lg" />
         <div className="min-w-0">
           <h1 className="truncate text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-            {childName}
+            <PersonLink membershipId={selectedId} name={childName} />
           </h1>
           <p className="text-sm text-fg-muted">
             {student.school.name}
@@ -362,7 +363,9 @@ export default async function ParentDashboard({
                         {slot.subject}
                       </span>
                       <span className="block truncate text-xs text-fg-muted">
-                        {[slot.teacherName, slot.room].filter(Boolean).join(" · ")}
+                        {slot.teacherName && <PersonLink membershipId={slot.teacherMembershipId} name={slot.teacherName} />}
+                        {slot.teacherName && slot.room ? " · " : ""}
+                        {slot.room}
                       </span>
                     </span>
                   </li>

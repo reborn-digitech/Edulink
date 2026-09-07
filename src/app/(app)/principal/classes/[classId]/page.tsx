@@ -24,6 +24,7 @@ import { formatDateKey } from "@/lib/dates";
 import { WindowPicker } from "../../window-picker";
 import { getT } from "@/lib/i18n/server";
 import type { Translate } from "@/lib/i18n/dictionary";
+import { PersonLink } from "@/components/person-link";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -228,7 +229,7 @@ function PupilRow({ pupil, t }: { pupil: PupilInsight; t: Translate }) {
   return (
     <li className="flex flex-wrap items-center gap-3 rounded-[--radius-sm] bg-surface-muted p-3">
       <span className="min-w-0 flex-1">
-        <span className="block truncate text-sm font-medium text-fg">{pupil.name}</span>
+        <PersonLink membershipId={pupil.membershipId} name={pupil.name} className="block truncate text-sm font-medium text-fg" />
         <span className="block text-xs text-fg-muted">
           {pupil.attendanceMarks === 0
             ? t("principal.noMarksInWindow")

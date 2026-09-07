@@ -67,6 +67,7 @@ export type MentorSummary = {
   id: string;
   status: string;
   purpose: string;
+  studentMembershipId: string;
   studentName: string;
   expertName: string;
   schoolName: string;
@@ -223,6 +224,7 @@ export async function listMentorships(session: ActiveContext): Promise<MentorSum
     id: thread.id,
     status: thread.status,
     purpose: thread.purpose,
+    studentMembershipId: thread.studentMembershipId,
     studentName: studentBy.get(thread.studentMembershipId) ?? "A pupil",
     expertName: expertBy.get(thread.expertProfileId) ?? "A mentor",
     schoolName: schoolBy.get(thread.schoolId) ?? "A school",
@@ -476,6 +478,7 @@ export async function getMentorship(session: ActiveContext, threadId: string) {
     status: thread.status,
     purpose: thread.purpose,
     schoolName: school?.name ?? "the school",
+    studentMembershipId: thread.studentMembershipId,
     studentName: student.user.preferredName ?? student.user.name,
     expertName: expert.user.preferredName ?? expert.user.name,
     awaitingConsent: thread.status === "PENDING_CONSENT",

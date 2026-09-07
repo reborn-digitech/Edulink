@@ -1041,6 +1041,12 @@ export const mr: Dictionary = {
     sendShortcut: "पाठवण्यासाठी ⌘↵",
   },
   person: {
+    since: "{date} पासून",
+    pupilsTaught: "{count} विद्यार्थ्यांना शिकवतात",
+    classTeacher: "वर्गशिक्षक:",
+    badges: "बॅज",
+    noBadgesYet: "अजून कोणताही बॅज मिळालेला नाही",
+    badgesEarned: "{count} मिळवले",
     meta: "प्रोफाइल",
     viewProfile: "प्रोफाइल पाहा",
     atSince: "{school} मध्ये {date} पासून",
@@ -1055,6 +1061,7 @@ export const mr: Dictionary = {
     noClassYet: "अजून कोणत्याही वर्गात नाही",
   },
   remarks: {
+    guardiansWord: "पालक",
     goesToGuardiansOnly: "हे विद्यार्थी आणि त्यांच्या पालकांपर्यंत जाते. इतर शिक्षक हे पाहू शकत नाहीत; शाळा प्रशासक पाहू शकतात.",
     onlyVisibleTo: "फक्त {student}, {teacher}, {student} चे पालक आणि शाळेचे कार्यालय हेच हे पाहू शकतात",
     writeSomethingFirst: "आधी काहीतरी लिहा.",

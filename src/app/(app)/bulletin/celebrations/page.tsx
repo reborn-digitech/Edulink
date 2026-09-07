@@ -7,6 +7,7 @@ import { formatDateKey } from "@/lib/dates";
 import { ROLE_META, type Role } from "@/lib/constants";
 import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { PersonLink } from "@/components/person-link";
 import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
 
@@ -107,7 +108,7 @@ export default async function CelebrationsPage() {
                           )}
                         </span>
                         <span className="min-w-0">
-                          <span className="block truncate font-medium text-fg">{item.name}</span>
+                          <PersonLink membershipId={item.membershipId} name={item.name} className="block truncate font-medium text-fg" />
                           <span className="block truncate text-xs text-fg-muted">
                             {item.kind === "BIRTHDAY"
                               ? t("celebrations.birthday")

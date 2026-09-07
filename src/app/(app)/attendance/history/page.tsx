@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
 import { cn } from "@/lib/cn";
+import { PersonLink } from "@/components/person-link";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -223,7 +224,7 @@ export default async function AttendanceHistoryPage({
                         scope="row"
                         className="sticky left-0 z-10 max-w-[14rem] truncate bg-surface px-4 py-1.5 text-left font-medium text-fg"
                       >
-                        {pupil.name}
+                        <PersonLink membershipId={pupil.membershipId} name={pupil.name} />
                       </th>
                       {history.days.map((day) => (
                         <td key={day.dateKey} className="px-1 py-1.5 text-center">

@@ -12,6 +12,7 @@ import { decide } from "./actions";
 import { useT } from "@/lib/i18n";
 import { cn } from "@/lib/cn";
 import { formatDateKey } from "@/lib/dates";
+import { PersonLink } from "@/components/person-link";
 
 /**
  * One request, and the decision.
@@ -119,7 +120,7 @@ export function DecideCard({
     <div className="rounded-[--radius-md] border border-border bg-surface p-4">
       <div className="flex flex-wrap items-start gap-3">
         <div className="min-w-0 flex-1">
-          <p className="font-semibold text-fg">{request.applicantName}</p>
+          <PersonLink membershipId={request.applicantMembershipId} name={request.applicantName} className="block font-semibold text-fg" />
           <p className="text-xs text-fg-muted">
             {request.toDateKey !== request.fromDateKey
               ? t("calendar.rangeTo", {

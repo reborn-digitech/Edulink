@@ -27,6 +27,7 @@ import { PairForm } from "./pair-form";
 import { AskForm } from "./ask-form";
 import { RequestQueue } from "./request-queue";
 import { getT } from "@/lib/i18n/server";
+import { PersonLink } from "@/components/person-link";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -113,7 +114,7 @@ export default async function MentoringPage() {
                           : t(MENTOR_STATUS_KEY[thread.status] ?? "mentoring.statusActive")}
                       </Badge>
                       <span className="text-sm font-semibold text-fg">
-                        {thread.studentName} &amp; {thread.expertName}
+                        <PersonLink membershipId={thread.studentMembershipId} name={thread.studentName} /> &amp; {thread.expertName}
                       </span>
                       {thread.unread > 0 && (
                         <Badge tone="accent" size="sm">{thread.unread} new</Badge>

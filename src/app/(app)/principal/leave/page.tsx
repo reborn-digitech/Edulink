@@ -18,6 +18,7 @@ import { EmptyState } from "@/components/ui/states";
 import { DecideCard } from "./decide-card";
 import { getT } from "@/lib/i18n/server";
 import { formatDateKey } from "@/lib/dates";
+import { PersonLink } from "@/components/person-link";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -227,9 +228,7 @@ export default async function PrincipalLeavePage() {
                 className="flex flex-wrap items-center gap-3 rounded-[--radius-sm] bg-surface-muted p-3"
               >
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate text-sm font-medium text-fg">
-                    {request.applicantName}
-                  </span>
+                  <PersonLink membershipId={request.applicantMembershipId} name={request.applicantName} className="block truncate text-sm font-medium text-fg" />
                   <span className="block truncate text-xs text-fg-muted">
                     {request.toDateKey !== request.fromDateKey
                       ? t("calendar.rangeTo", {

@@ -24,6 +24,7 @@ import { EmptyState } from "@/components/ui/states";
 import { StudentWelcome } from "./welcome";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
+import { PersonLink } from "@/components/person-link";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -203,7 +204,9 @@ export default async function StudentHome({
                         {slot.subject}
                       </span>
                       <span className="block truncate text-xs text-fg-muted">
-                        {[slot.teacherName, slot.room].filter(Boolean).join(" · ")}
+                        {slot.teacherName && <PersonLink membershipId={slot.teacherMembershipId} name={slot.teacherName} />}
+                        {slot.teacherName && slot.room ? " · " : ""}
+                        {slot.room}
                       </span>
                     </span>
                   </li>

@@ -16,6 +16,7 @@ import { termsOfYear } from "@/lib/terms";
 import { EntryForm } from "./entry-form";
 import { EntryList } from "./entry-list";
 import { getT } from "@/lib/i18n/server";
+import { PersonLink } from "@/components/person-link";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -95,9 +96,7 @@ export default async function CalendarPage() {
                     className="flex flex-wrap items-center gap-3 rounded-[--radius-sm] bg-surface-muted p-3"
                   >
                     <span className="min-w-0 flex-1">
-                      <span className="block truncate text-sm font-medium text-fg">
-                        {row.applicantName}
-                      </span>
+                      <PersonLink membershipId={row.applicantMembershipId} name={row.applicantName} className="block truncate text-sm font-medium text-fg" />
                       <span className="block truncate text-xs text-fg-muted">
                         {row.toDateKey !== row.fromDateKey
                           ? t("calendar.rangeTo", {
@@ -144,7 +143,7 @@ export default async function CalendarPage() {
                     className="flex flex-wrap items-center gap-3 rounded-[--radius-sm] bg-surface-muted p-3"
                   >
                     <span className="min-w-0 flex-1">
-                      <span className="block truncate text-sm font-medium text-fg">{row.name}</span>
+                      <PersonLink membershipId={row.membershipId} name={row.name} className="block truncate text-sm font-medium text-fg" />
                       <span className="block truncate text-xs text-fg-muted">
                         {isoToDisplayDate(row.dateKey)}
                         {row.turning !== null && <> · {t("calendar.turning", { age: row.turning })}</>}

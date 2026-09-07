@@ -82,7 +82,7 @@ export function ReplyBox({ threadId, className }: { threadId: string; className?
           </p>
         ) : (
           <p id="reply-hint" className="text-xs text-fg-subtle">
-            {body.length > MAX - 500 ? t("remarks.charactersLeft", { count: MAX - body.length }) : "⌘↵ to send"}
+            {body.length > MAX - 500 ? t("remarks.charactersLeft", { count: MAX - body.length }) : t("convo.sendShortcut")}
           </p>
         )}
         <Button

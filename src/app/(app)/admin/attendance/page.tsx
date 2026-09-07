@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { getT } from "@/lib/i18n/server";
 import { alertGuardiansAction } from "./actions";
+import { PersonLink } from "@/components/person-link";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -132,7 +133,7 @@ export default async function AdminAttendancePage({
                 >
                   <div className="min-w-0">
                     <p className="font-medium text-fg">
-                      {flag.name}
+                      <PersonLink membershipId={flag.studentMembershipId} name={flag.name} />
                       {flag.className && (
                         <span className="ml-2 text-xs text-fg-muted">{flag.className}</span>
                       )}

@@ -4,6 +4,7 @@ import { cn } from "@/lib/cn";
 import { formatTimeRange, weekdayName, weekdayShortName } from "@/lib/school-day";
 import { formatDateKey } from "@/lib/dates";
 import type { WeekGrid, SlotView, PeriodRow, DayColumn } from "@/lib/timetable";
+import { PersonLink } from "@/components/person-link";
 
 /**
  * A week, rendered twice.
@@ -96,7 +97,7 @@ export function SlotBody({
         <span className="block truncate text-xs text-fg-muted">{slot.className}</span>
       )}
       {showTeacher && slot.teacherName && !slot.coveringName && !slot.uncovered && (
-        <span className="block truncate text-xs text-fg-muted">{slot.teacherName}</span>
+        <PersonLink membershipId={slot.teacherMembershipId} name={slot.teacherName} className="block truncate text-xs text-fg-muted" />
       )}
       {slot.coveringName && (
         <span className="mt-0.5 block text-xs font-medium text-accent-strong">

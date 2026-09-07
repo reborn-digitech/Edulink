@@ -309,7 +309,7 @@ export type ConversationSummary = {
   id: string;
   schoolId: string;
   /** Everyone in the room but the viewer. */
-  others: { userId: string; name: string; avatarKey: string | null; role: Role | null }[];
+  others: { userId: string; membershipId: string | null; name: string; avatarKey: string | null; role: Role | null }[];
   lastMessageAt: Date;
   preview: string;
   previewMine: boolean;
@@ -338,9 +338,9 @@ export async function listConversations(ctx: ActiveContext): Promise<Conversatio
   const otherIds = [...new Set(rows.flatMap((r) => r.participants.map((p) => p.userId)))].filter((id) => id !== ctx.user.id);
   const memberships = await db.membership.findMany({
     where: { userId: { in: otherIds }, schoolId: { in: schoolIds }, status: "ACTIVE", leftAt: null },
-    select: { userId: true, schoolId: true, role: true },
+    select: { id: true, userId: true, schoolId: true, role: true },
   });
-  const roleOf = new Map(memberships.map((m) => [`${m.schoolId}:${m.userId}`, m.role as Role]));
+  const memberOf = new Map(memberships.map((m) => [`${m.schoolId}:${m.userId}`, { id: m.id, role: m.role as Role }]));
 
   return rows.map((row) => {
     const mine = row.participants.find((p) => p.userId === ctx.user.id);
@@ -352,9 +352,10 @@ export async function listConversations(ctx: ActiveContext): Promise<Conversatio
         .filter((p) => p.userId !== ctx.user.id)
         .map((p) => ({
           userId: p.userId,
+          membershipId: memberOf.get(`${row.schoolId}:${p.userId}`)?.id ?? null,
           name: p.user.preferredName ?? p.user.name,
           avatarKey: p.user.avatarKey,
-          role: roleOf.get(`${row.schoolId}:${p.userId}`) ?? ("PARENT" as Role),
+          role: memberOf.get(`${row.schoolId}:${p.userId}`)?.role ?? ("PARENT" as Role),
         })),
       lastMessageAt: row.lastMessageAt,
       preview: latest ? latest.body.slice(0, 140) : "",
@@ -397,6 +398,12 @@ export async function getConversation(ctx: ActiveContext, conversationId: string
   });
   const others = conversation.participants.filter((p) => p.userId !== ctx.user.id);
   const roles = await Promise.all(others.map((p) => roleOfAt(p.userId, conversation.schoolId)));
+  // Profiles are keyed on a membership; a parent has none and gets no link.
+  const memberships = await db.membership.findMany({
+    where: { schoolId: conversation.schoolId, userId: { in: conversation.participants.map((p) => p.userId) }, status: "ACTIVE", leftAt: null },
+    select: { id: true, userId: true },
+  });
+  const membershipByUser = new Map(memberships.map((m) => [m.userId, m.id]));
   // Read receipts: the newest moment anyone else opened the room.
   const othersReadAt = others.map((p) => p.lastReadAt).filter((d): d is Date => d !== null);
   const lastReadByOthers = othersReadAt.length ? new Date(Math.max(...othersReadAt.map((d) => d.getTime()))) : null;
@@ -406,6 +413,7 @@ export async function getConversation(ctx: ActiveContext, conversationId: string
     schoolId: conversation.schoolId,
     others: others.map((p, i) => ({
       userId: p.userId,
+      membershipId: membershipByUser.get(p.userId) ?? null,
       name: p.user.preferredName ?? p.user.name,
       avatarKey: p.user.avatarKey,
       role: roles[i] ?? null,
@@ -416,6 +424,7 @@ export async function getConversation(ctx: ActiveContext, conversationId: string
       body: m.body,
       createdAt: m.createdAt,
       mine: m.authorUserId === ctx.user.id,
+      authorMembershipId: membershipByUser.get(m.authorUserId) ?? null,
       authorName: m.author.preferredName ?? m.author.name,
       authorAvatar: m.author.avatarKey,
       readByOthers: lastReadByOthers !== null && m.createdAt <= lastReadByOthers,

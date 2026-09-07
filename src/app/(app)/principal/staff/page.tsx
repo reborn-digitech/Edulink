@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { formatDate } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
+import { PersonLink } from "@/components/person-link";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -91,7 +92,7 @@ export default async function PrincipalStaffPage() {
                     <Avatar name={name} avatarKey={member.user.avatarKey} size="md" />
                     <div className="min-w-0 flex-1">
                       <p className="flex flex-wrap items-center gap-2 font-semibold text-fg">
-                        {name}
+                        <PersonLink membershipId={member.id} name={name} />
                         <Badge tone="neutral" size="sm">{t(member.role === "TEACHER" ? "role.teacher" : member.role === "PRINCIPAL" ? "role.principal" : "role.admin")}</Badge>
                       </p>
                       <p className="mt-0.5 text-xs text-fg-muted">

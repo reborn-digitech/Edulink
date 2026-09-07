@@ -1044,6 +1044,12 @@ export const hi: Dictionary = {
     sendShortcut: "भेजने के लिए ⌘↵",
   },
   person: {
+    since: "{date} से",
+    pupilsTaught: "{count} विद्यार्थियों को पढ़ाते हैं",
+    classTeacher: "कक्षा शिक्षक:",
+    badges: "बैज",
+    noBadgesYet: "अभी कोई बैज नहीं मिला",
+    badgesEarned: "{count} अर्जित",
     meta: "प्रोफ़ाइल",
     viewProfile: "प्रोफ़ाइल देखें",
     atSince: "{school} में {date} से",
@@ -1058,6 +1064,7 @@ export const hi: Dictionary = {
     noClassYet: "अभी किसी कक्षा में नहीं",
   },
   remarks: {
+    guardiansWord: "अभिभावक",
     goesToGuardiansOnly: "यह विद्यार्थी और उनके अभिभावकों तक जाता है। दूसरे शिक्षक इसे नहीं देख सकते; स्कूल प्रशासक देख सकते हैं।",
     onlyVisibleTo: "केवल {student}, {teacher}, {student} के अभिभावक और स्कूल का कार्यालय ही इसे देख सकते हैं",
     writeSomethingFirst: "पहले कुछ लिखें।",

@@ -1160,6 +1160,12 @@ export const en = {
     sendShortcut: "⌘↵ to send",
   },
   person: {
+    since: "since {date}",
+    pupilsTaught: "{count} pupils taught",
+    classTeacher: "Class teacher:",
+    badges: "Badges",
+    noBadgesYet: "No badges earned yet",
+    badgesEarned: "{count} earned",
     meta: "Profile",
     viewProfile: "View profile",
     atSince: "At {school} since {date}",
@@ -1174,6 +1180,7 @@ export const en = {
     noClassYet: "Not in a class yet",
   },
   remarks: {
+    guardiansWord: "guardians",
     goesToGuardiansOnly: "This goes to the student and their guardians. Other teachers cannot see it; school admins can.",
     onlyVisibleTo: "Only {student}, {teacher}, {student}’s guardians and the school office can see this",
     writeSomethingFirst: "Write something first.",

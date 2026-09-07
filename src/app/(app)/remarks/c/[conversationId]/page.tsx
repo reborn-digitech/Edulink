@@ -6,6 +6,7 @@ import { requireUser, AccessError } from "@/lib/tenancy";
 import { getConversation, markConversationRead } from "@/lib/conversations";
 import { getT } from "@/lib/i18n/server";
 import { Avatar } from "@/components/ui/avatar";
+import { PersonLink } from "@/components/person-link";
 import { Badge } from "@/components/ui/badge";
 import { ConversationReplyBox } from "./reply-box";
 import { formatInZone, relativeTime } from "@/lib/dates";
@@ -53,10 +54,12 @@ export default async function ConversationPage({ params }: { params: Promise<{ c
       </Link>
 
       <header className="flex items-center gap-3 rounded-[--radius-lg] border border-border bg-surface p-4">
-        <Avatar avatarKey={other?.avatarKey} name={names} size="md" />
+        <PersonLink membershipId={other?.membershipId} name={names} className="shrink-0 rounded-full">
+          <Avatar avatarKey={other?.avatarKey} name={names} size="md" />
+        </PersonLink>
         <div className="min-w-0 flex-1">
           <h1 className="flex flex-wrap items-center gap-2 text-lg font-bold tracking-tight text-fg">
-            {names}
+            <PersonLink membershipId={other?.membershipId} name={names} />
             {other?.role && (
               <Badge tone="neutral" size="sm">
                 {t(ROLE_META[other.role].labelKey)}
@@ -83,7 +86,11 @@ export default async function ConversationPage({ params }: { params: Promise<{ c
               <Avatar avatarKey={message.authorAvatar} name={message.authorName} size="sm" />
               <div className={cn("min-w-0 max-w-[85%]", message.mine && "text-right")}>
                 <p className="text-xs text-fg-muted">
-                  <span className="font-semibold text-fg">{message.mine ? t("convo.you") : message.authorName}</span>{" "}
+                  <PersonLink
+                    membershipId={message.mine ? null : message.authorMembershipId}
+                    name={message.mine ? t("convo.you") : message.authorName}
+                    className="font-semibold text-fg"
+                  />{" "}
                   · <time dateTime={message.createdAt.toISOString()}>{relativeTime(message.createdAt)}</time>
                 </p>
                 <div

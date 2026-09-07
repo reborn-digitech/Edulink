@@ -8,6 +8,7 @@ import { AckButton } from "./ack-button";
 import { readJsonArray, type MediaItem } from "@/lib/json";
 import { relativeTime } from "@/lib/dates";
 import { Avatar } from "@/components/ui/avatar";
+import { PersonLink } from "@/components/person-link";
 import { Badge } from "@/components/ui/badge";
 import { CommentBox } from "./comment-box";
 import { ReplyToggle } from "./reply-toggle";
@@ -84,16 +85,20 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
 
       <article className="rounded-[--radius-lg] border border-border bg-surface p-5">
         <header className="flex items-start gap-3">
-          <Avatar
-            avatarKey={post.author.avatarKey}
-            name={post.author.name}
-            size="md"
-          />
+          <PersonLink membershipId={post.membershipByUser.get(post.author.id)} name={post.author.preferredName ?? post.author.name} className="shrink-0 rounded-full">
+            <Avatar
+              avatarKey={post.author.avatarKey}
+              name={post.author.name}
+              size="md"
+            />
+          </PersonLink>
           <div className="min-w-0 flex-1">
             <p className="flex flex-wrap items-center gap-x-2 text-sm">
-              <span className="font-semibold text-fg">
-                {post.author.preferredName ?? post.author.name}
-              </span>
+              <PersonLink
+                membershipId={post.membershipByUser.get(post.author.id)}
+                name={post.author.preferredName ?? post.author.name}
+                className="font-semibold text-fg"
+              />
               {post.authorship?.role && (
                 <Badge tone="neutral" size="sm">
                   {t(ROLE_META[post.authorship.role as Role].labelKey)}
@@ -248,16 +253,20 @@ export default async function PostPage({ params }: { params: Promise<{ postId: s
                     held ? "border-warn/40 bg-warn-soft/40" : "border-border bg-surface"
                   }`}
                 >
-                  <Avatar
-                    avatarKey={entry.author.avatarKey}
-                    name={entry.author.name}
-                    size={isReply ? "xs" : "sm"}
-                  />
+                  <PersonLink membershipId={post.membershipByUser.get(entry.author.id)} name={entry.author.preferredName ?? entry.author.name} className="shrink-0 rounded-full">
+                    <Avatar
+                      avatarKey={entry.author.avatarKey}
+                      name={entry.author.name}
+                      size={isReply ? "xs" : "sm"}
+                    />
+                  </PersonLink>
                   <div className="min-w-0 flex-1">
                     <p className="text-xs text-fg-muted">
-                      <span className="font-semibold text-fg">
-                        {mine ? t("common.you") : (entry.author.preferredName ?? entry.author.name)}
-                      </span>{" "}
+                      <PersonLink
+                        membershipId={post.membershipByUser.get(entry.author.id)}
+                        name={mine ? t("common.you") : (entry.author.preferredName ?? entry.author.name)}
+                        className="font-semibold text-fg"
+                      />{" "}
                       · {relativeTime(entry.createdAt)}
                     </p>
                     <p className="mt-0.5 whitespace-pre-wrap text-sm leading-relaxed text-fg">

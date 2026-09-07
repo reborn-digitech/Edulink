@@ -11,6 +11,7 @@ import { useT } from "@/lib/i18n";
 import { cn } from "@/lib/cn";
 import { QUESTION_KEY } from "@/lib/review-questions";
 import { REVIEW_QUESTIONS, REVIEW_SCALE_MAX, type ReviewQuestion } from "@/lib/constants";
+import { PersonLink } from "@/components/person-link";
 
 /**
  * One teacher's questionnaire: five fixed questions, five stars each, no
@@ -61,7 +62,7 @@ export function RateCard({
   return (
     <div className="rounded-[--radius-md] border border-border bg-surface p-4">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <p className="font-semibold text-fg">{teacherName}</p>
+        <PersonLink membershipId={teacherMembershipId} name={teacherName} className="font-semibold text-fg" />
         <p className="inline-flex items-center gap-1 text-xs text-fg-muted">
           {answered ? (
             <>

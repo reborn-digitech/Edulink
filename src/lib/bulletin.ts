@@ -462,7 +462,24 @@ export async function getPost(session: ActiveContext, postId: string) {
   });
 
   if (!post) throw new AccessError("access.postNotFound", "NOT_FOUND");
-  return post;
+
+  // A name on this page is a door to a profile, and a profile is keyed on a
+  // MEMBERSHIP. Comments carry only a user id, so the authors' live
+  // memberships at the post's school are looked up once here — one query,
+  // not one per comment — and a commenter with none (a parent, a leaver,
+  // a reader from another school on a global post) simply gets no link.
+  const authorIds = [...new Set([post.author.id, ...post.comments.map((c) => c.author.id)])];
+  // Profiles open only within the READER's own school: a global post's
+  // authors at another school are names, not doors.
+  const profileSchoolId = post.schoolId && post.schoolId === session.schoolId ? post.schoolId : null;
+  const memberships = profileSchoolId
+    ? await db.membership.findMany({
+        where: { schoolId: profileSchoolId, userId: { in: authorIds }, status: "ACTIVE", leftAt: null },
+        select: { id: true, userId: true },
+      })
+    : [];
+  const membershipByUser = new Map(memberships.map((m) => [m.userId, m.id]));
+  return { ...post, membershipByUser };
 }
 
 /* -------------------------------------------------------------------------- */

@@ -6,6 +6,7 @@ import { SUBJECT_KEY, type QuizSubject } from "@/lib/quiz";
 import { formatDate, formatDateKey } from "@/lib/dates";
 import { formatMilli } from "@/lib/validation";
 import { getT } from "@/lib/i18n/server";
+import { PersonLink } from "@/components/person-link";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -86,7 +87,9 @@ export default async function ReportCardPage({
 
         {/* ---------------- the child ---------------- */}
         <section className="flex flex-wrap items-baseline justify-between gap-3 py-5">
-          <h2 className="text-2xl font-bold text-fg print:text-black">{card.studentName}</h2>
+          <h2 className="text-2xl font-bold text-fg print:text-black">
+            <PersonLink membershipId={card.studentMembershipId} name={card.studentName} />
+          </h2>
           <p className="text-xs text-fg-muted print:text-black/70">
             {formatDateKey(card.fromDateKey, { day: "numeric", month: "short" })} –{" "}
             {formatDateKey(card.toDateKey, { day: "numeric", month: "short", year: "numeric" })}

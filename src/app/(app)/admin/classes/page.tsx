@@ -10,6 +10,7 @@ import { EmptyState } from "@/components/ui/states";
 import { Badge } from "@/components/ui/badge";
 import { ClassRowActions } from "./row-actions";
 import { getT } from "@/lib/i18n/server";
+import { PersonLink } from "@/components/person-link";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -135,9 +136,10 @@ export default async function ClassesPage({
       ) : (
         <ul className="space-y-2">
           {classes.map((klass) => {
-            const teacherNames = klass.teachers.map(
-              (t) => t.teacher.user.preferredName ?? t.teacher.user.name,
-            );
+            const teacherRows = klass.teachers.map((ct) => ({
+              membershipId: ct.teacherMembershipId,
+              name: ct.teacher.user.preferredName ?? ct.teacher.user.name,
+            }));
             return (
               <li key={klass.id}>
                 <Card className="overflow-hidden">
@@ -163,8 +165,13 @@ export default async function ClassesPage({
                         {klass.room ? ` · ${t("classes.room", { room: klass.room })}` : ""}
                       </p>
                       <p className="mt-0.5 truncate text-xs text-fg-subtle">
-                        {teacherNames.length > 0 ? (
-                          teacherNames.join(", ")
+                        {teacherRows.length > 0 ? (
+                          teacherRows.map((row, i) => (
+                            <span key={row.membershipId}>
+                              {i > 0 && ", "}
+                              <PersonLink membershipId={row.membershipId} name={row.name} />
+                            </span>
+                          ))
                         ) : (
                           <span className="text-warn">{t("classes.noTeacherAssigned")}</span>
                         )}{" "}

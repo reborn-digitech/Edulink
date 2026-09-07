@@ -23,6 +23,7 @@ import { listGradeCategories } from "@/lib/grading";
 import { ClassCode } from "./class-code";
 import { GradeWeights } from "./weights";
 import { getT } from "@/lib/i18n/server";
+import { PersonLink } from "@/components/person-link";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -252,7 +253,7 @@ export default async function ClassDetailPage({
                 <li key={student.membershipId} className="flex items-center gap-3 py-2.5">
                   <Avatar avatarKey={student.avatarKey} name={student.fullName} size="sm" />
                   <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-medium text-fg">{student.name}</p>
+                    <PersonLink membershipId={student.membershipId} name={student.name} className="block truncate text-sm font-medium text-fg" />
                     <p className="truncate text-xs text-fg-muted">{student.fullName}</p>
                   </div>
 
