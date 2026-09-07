@@ -9,7 +9,6 @@
  * them.
  */
 import { z } from "zod";
-import { LOCALES } from "@edulink/i18n";
 
 /**
  * Every failure looks the same: a sentence a person can read, in the caller's
@@ -28,10 +27,8 @@ export type ApiError = z.infer<typeof apiErrorSchema>;
 
 export type ApiResult<T> = { ok: true; data: T } | ({ ok: false; status: number } & ApiError);
 
-/** The locale codes as a schema, derived from the one list rather than retyped. */
-export const localeSchema = z.enum(
-  LOCALES.map((l) => l.code) as [(typeof LOCALES)[number]["code"], ...(typeof LOCALES)[number]["code"][]],
-);
+import { localeSchema } from "./locale";
+export { localeSchema };
 
 /**
  * Cursor paging for every list. A phone scrolls; it never asks for page 7.
@@ -92,3 +89,12 @@ export const conversationMessageSchema = z.object({
   clientId: z.string().min(8).max(64),
 });
 export type ConversationMessageBody = z.infer<typeof conversationMessageSchema>;
+
+export const marksSavedSchema = z.object({ saved: z.number().int(), cleared: z.number().int() });
+export const messageSentSchema = z.object({ messageId: z.string() });
+
+export * from "./v1/auth";
+export * from "./v1/admin";
+export * from "./v1/staff";
+export * from "./v1/family";
+export * from "./v1/shared";

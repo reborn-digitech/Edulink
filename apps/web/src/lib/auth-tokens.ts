@@ -51,7 +51,7 @@ export type TokenClaim =
  */
 export async function claimToken(
   rawToken: string | undefined | null,
-  purpose: "EMAIL_VERIFY" | "MAGIC_LINK",
+  purpose: "EMAIL_VERIFY" | "MAGIC_LINK" | "APP_EXCHANGE",
 ): Promise<TokenClaim> {
   const token = rawToken?.trim();
   if (!token) return { ok: false, reason: "UNKNOWN" };

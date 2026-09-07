@@ -29,8 +29,15 @@ export function __resetCookies(): void {
   jar.clear();
 }
 
+let requestHeaders = new Headers();
+
+/** The request headers a route handler sees — a bearer token, say. */
+export function __setHeaders(values: Record<string, string>): void {
+  requestHeaders = new Headers(values);
+}
+
 export async function headers(): Promise<Headers> {
-  return new Headers();
+  return requestHeaders;
 }
 
 export async function cookies() {

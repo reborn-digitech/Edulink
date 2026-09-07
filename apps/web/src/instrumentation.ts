@@ -41,5 +41,8 @@ export async function onRequestError(
     name: err.name ?? "Error",
     message: err.message ?? String(error),
   };
-  process.stderr.write(JSON.stringify(line) + "\n");
+  // console.error, not process.stderr: this file also loads in the edge
+  // runtime, which has no `process` streams, and the line lands on stderr
+  // either way.
+  console.error(JSON.stringify(line));
 }

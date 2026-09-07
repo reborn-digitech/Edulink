@@ -25,8 +25,14 @@ export async function GET(
   const begun = beginSso(id, redirectUri);
   if (!begun) return new NextResponse(null, { status: 404 });
 
+  // ?client=app: the phone opened this in the system browser. The marker rides
+  // in the state cookie, and the callback hands the result to the app's deep
+  // link instead of setting a browser session.
+  const fromApp = request.nextUrl.searchParams.get("client") === "app";
+  const cookieValue = fromApp ? JSON.stringify({ ...(JSON.parse(begun.cookieValue) as object), c: "app" }) : begun.cookieValue;
+
   const response = NextResponse.redirect(begun.authorizeUrl);
-  response.cookies.set(SSO_COOKIE, begun.cookieValue, {
+  response.cookies.set(SSO_COOKIE, cookieValue, {
     httpOnly: true,
     path: "/api/sso",
     maxAge: SSO_COOKIE_MAX_AGE,

@@ -2,6 +2,18 @@ import { NextResponse, type NextRequest } from "next/server";
 import { db } from "@/lib/db";
 import { audit } from "@/lib/audit";
 import { createSession } from "@/lib/session";
+import { generateToken, hashToken } from "@/lib/crypto";
+
+const APP_SCHEME = process.env.APP_DEEP_LINK_SCHEME?.trim() || "edulink";
+const APP_EXCHANGE_TTL_MS = 2 * 60_000;
+
+function fromApp(cookieValue: string | undefined): boolean {
+  try {
+    return (JSON.parse(cookieValue ?? "") as { c?: string }).c === "app";
+  } catch {
+    return false;
+  }
+}
 import { resolveContext } from "@/app/login/actions";
 import {
   completeSso,
@@ -59,6 +71,18 @@ async function handle(
     select: { id: true, lastRole: true, lastSchoolId: true },
   });
   if (!user) return away("noaccount");
+
+  // The phone's hand-off: no browser session, a one-time code on the deep
+  // link, and POST /api/v1/auth/sso/exchange turns it into a bearer session.
+  if (fromApp(request.cookies.get(SSO_COOKIE)?.value)) {
+    const code = generateToken();
+    await db.authToken.create({
+      data: { userId: user.id, purpose: "APP_EXCHANGE", tokenHash: hashToken(code), expiresAt: new Date(Date.now() + APP_EXCHANGE_TTL_MS) },
+    });
+    const response = NextResponse.redirect(`${APP_SCHEME}://sso?code=${encodeURIComponent(code)}&provider=${id}`);
+    response.cookies.delete(SSO_COOKIE);
+    return response;
+  }
 
   const context = await resolveContext(user.id, user.lastRole, user.lastSchoolId);
   await createSession(user.id, { schoolId: context.schoolId, role: context.role });

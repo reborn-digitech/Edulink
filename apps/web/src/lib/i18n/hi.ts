@@ -1884,6 +1884,7 @@ export const hi: Dictionary = {
   },
 
   access: {
+    sessionNotFound: "वह डिवाइस यहाँ साइन-इन नहीं है।",
     notForYourGrade: "यह प्रतियोगिता अन्य कक्षाओं के लिए है।",
     resultAlreadyRecorded: "इस प्रविष्टि का परिणाम दर्ज हो चुका है, इसलिए इसे दोबारा जमा नहीं किया जा सकता।",
     notYourPupil: "वह विद्यार्थी आपकी किसी कक्षा में नहीं है।",

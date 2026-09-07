@@ -1,6 +1,7 @@
 import { cache } from "react";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { hashToken } from "./crypto";
+import { bearerToken } from "./bearer";
 import { SESSION_COOKIE } from "./constants";
 import { NO_TENANT, type RequestTenant } from "./tenant-context";
 
@@ -76,6 +77,12 @@ export const resolveRequestTenant = cache(
     let token: string | undefined;
     try {
       token = (await cookies()).get(SESSION_COOKIE)?.value;
+      // The phone sends the same session token as a bearer instead of a
+      // cookie. Without this line every /api/v1 read ran as nobody: the
+      // handler's getSession saw the person, the row-level policy did not,
+      // and a school's own admin got "school is required, got null" from
+      // their own memberships.
+      if (!token) token = bearerToken(await headers()) ?? undefined;
     } catch {
       // No request scope at all: a script, a unit test, a build-time render.
       // Nothing to scope to, and every policied read will correctly return

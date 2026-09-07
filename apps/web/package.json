@@ -30,6 +30,8 @@
     "rls:generate": "tsx --tsconfig scripts/tsconfig.json scripts/gen-rls.ts",
     "rls:verify": "tsx --tsconfig scripts/tsconfig.json scripts/verify-rls-app.ts",
     "sweep": "tsx --tsconfig scripts/tsconfig.json scripts/sweep.ts",
+    "api:sweep": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/api-sweep.ts",
+    "api:docs": "tsx --tsconfig scripts/tsconfig.json scripts/gen-openapi.ts",
     "load:check": "node scripts/with-admin-db.mjs npx tsx --tsconfig scripts/tsconfig.json scripts/load-check.ts",
     "e2e": "playwright test",
     "e2e:update": "playwright test --update-snapshots",
@@ -70,7 +72,8 @@
     "sharp": "0.35.4",
     "tailwind-merge": "^2.6.0",
     "web-push": "^3.6.7",
-    "zod": "^3.25.76"
+    "zod": "^3.25.76",
+    "zod-to-json-schema": "3.24.6"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.11.1",

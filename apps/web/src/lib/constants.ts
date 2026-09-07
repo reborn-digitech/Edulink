@@ -123,6 +123,9 @@ export type InviteStatus = (typeof INVITE_STATUSES)[number];
 
 export const AUTH_TOKEN_PURPOSES = [
   "MAGIC_LINK",
+  // The SSO hand-off to the phone: minted by the web callback, spent once by
+  // POST /api/v1/auth/sso/exchange, two minutes long.
+  "APP_EXCHANGE",
   "EMAIL_VERIFY",
   "PASSWORD_RESET",
   "PARENT_CLAIM",

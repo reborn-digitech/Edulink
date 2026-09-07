@@ -1,6 +1,7 @@
 import "server-only";
 import webpush from "web-push";
 import { db } from "./db";
+import { sendExpoPush } from "./expo-push";
 import { readJson, writeJson } from "./json";
 import { DEFAULT_PREFS, type UserPrefs } from "./session";
 import { channel, publish } from "./realtime";
@@ -104,12 +105,17 @@ export async function notify(input: NotifyInput): Promise<void> {
     : undefined;
   if (!input.urgent && inQuietHours(prefs.quietHours, new Date(), zone)) return;
 
-  await sendPush(input.userId, {
-    title,
-    body,
-    url: input.url ?? "/notifications",
-    tag: `${input.kind}:${row.id}`,
-  });
+  await Promise.all([
+    sendPush(input.userId, {
+      title,
+      body,
+      url: input.url ?? "/notifications",
+      tag: `${input.kind}:${row.id}`,
+    }),
+    // The phone, through Expo, with the same words and the same quiet hours
+    // and preference already applied above; the app opens `url` on tap.
+    sendExpoPush(input.userId, { title, body, data: { url: input.url ?? "/notifications", kind: input.kind, id: row.id } }),
+  ]);
 }
 
 /**

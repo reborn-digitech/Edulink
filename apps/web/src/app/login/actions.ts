@@ -1,7 +1,8 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { fakePasswordWork, generateToken, hashToken, verifyPassword } from "@/lib/crypto";
+import { generateToken, hashToken } from "@/lib/crypto";
+import { signInWithPassword } from "@/lib/auth-login";
 import { createSession } from "@/lib/session";
 import {
   loginSchema,
@@ -12,7 +13,7 @@ import {
   type FieldErrors,
 } from "@/lib/validation";
 import { findAccount, requestPasswordReset, resetPassword } from "@/lib/passwords";
-import { consume, retryHintKey, LOGIN_ATTEMPTS, RESET_REQUESTS } from "@/lib/rate-limit";
+import { consume, retryHintKey, RESET_REQUESTS } from "@/lib/rate-limit";
 import { getT } from "@/lib/i18n/server";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { sendMagicLink } from "@/lib/email";
@@ -57,62 +58,18 @@ export async function login(input: unknown): Promise<LoginState> {
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error, t) };
 
   const { identifier, password } = parsed.data;
-  const generic = { ok: false, errors: { _form: t("login.noMatch") } };
 
-  /**
-   * ⚠ HOW MANY TIMES THIS LOGIN HAS BEEN TRIED LATELY.
-   *
-   * Argon2 and `fakePasswordWork` make each guess slow; they do not make an
-   * unlimited number of them impossible, and until now nothing did.
-   *
-   * THE MESSAGE SAYS SO, which does not leak anything BECAUSE the limit applies
-   * to identifiers that exist and identifiers that do not, identically — the
-   * bucket is built before any lookup. Hiding it behind the generic failure
-   * would leave somebody who mistyped their password ten times staring at "that
-   * does not match" for a password they know is right.
-   *
-   * The allowance is generous on purpose: this can be used to burn a real
-   * person's attempts and keep them out, so ten-in-fifteen-minutes has to sit
-   * well above what somebody fumbling their own password does.
-   */
-  const gate = await consume(
-    `login:${identifier.toLowerCase()}`,
-    LOGIN_ATTEMPTS.limit,
-    LOGIN_ATTEMPTS.windowMs,
-  );
-  if (!gate.allowed) {
-    return {
-      ok: false,
-      errors: { _form: t("login.tooManyAttempts", { when: hint(t, gate.retryAfterSeconds) }) },
-    };
+  // The check itself lives in lib/auth-login.ts, shared with the phone's
+  // sign-in endpoint; this action adds the words and the cookie.
+  const signIn = await signInWithPassword(identifier, password);
+  if (!signIn.ok) {
+    if (signIn.reason === "rate") {
+      return { ok: false, errors: { _form: t("login.tooManyAttempts", { when: hint(t, signIn.retryAfterSeconds) }) } };
+    }
+    return { ok: false, errors: { _form: t("login.noMatch") } };
   }
+  const user = { id: signIn.userId, lastRole: signIn.lastRole, lastSchoolId: signIn.lastSchoolId };
 
-  const account = await findAccount(identifier);
-  if (!account || account.disabled) {
-    await fakePasswordWork();
-    return generic;
-  }
-
-  const user = await db.user.findUnique({
-    where: { id: account.userId },
-    select: { id: true, passwordHash: true, lastRole: true, lastSchoolId: true },
-  });
-
-  if (!user?.passwordHash) {
-    await fakePasswordWork();
-    return generic;
-  }
-
-  const valid = await verifyPassword(user.passwordHash, password);
-  if (!valid) {
-    // The identifier is NOT recorded: a failed-login trail that stores what was
-    // typed accumulates other people's phone numbers and addresses in a table
-    // a school admin can read.
-    await audit({ actorUserId: user.id, action: "auth.login.failed" });
-    return generic;
-  }
-
-  // Restore the role they last used, but only if it is still valid.
   const context = await resolveContext(user.id, user.lastRole, user.lastSchoolId);
 
   await createSession(user.id, { schoolId: context.schoolId, role: context.role });

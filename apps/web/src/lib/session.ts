@@ -6,6 +6,8 @@ import { generateToken, hashToken } from "./crypto";
 import { SESSION_COOKIE, SESSION_TTL_DAYS, type Role } from "./constants";
 import { forOwnSchools } from "./tenant-context";
 import { readJson } from "./json";
+import { bearerToken } from "./bearer";
+export { bearerToken };
 
 /**
  * Opaque server-side sessions.
@@ -140,9 +142,53 @@ export async function revokeOtherSessions(userId: string, keepSessionId: string)
  * auth in the layout, the page and three server components still issues one
  * query per request.
  */
+/**
+ * A session for the phone: the same Session row a browser gets, handed back as
+ * a bearer token instead of set as a cookie. The app keeps it in secure
+ * storage and sends `Authorization: Bearer <token>`; `getSession` below reads
+ * either. Nothing else differs — device management, revocation and the
+ * per-school tenant binding all see one kind of session.
+ */
+export async function createApiSession(
+  userId: string,
+  opts: { schoolId?: string | null; role?: Role | null; userAgent?: string | null; ip?: string | null } = {},
+): Promise<{ sessionId: string; token: string; expiresAt: Date }> {
+  const token = generateToken();
+  const expiresAt = new Date(Date.now() + SESSION_TTL_DAYS * 86_400_000);
+  const session = await db.session.create({
+    data: {
+      userId,
+      tokenHash: hashToken(token),
+      activeSchoolId: opts.schoolId ?? null,
+      activeRole: opts.role ?? null,
+      userAgent: opts.userAgent?.slice(0, 400) ?? null,
+      ip: opts.ip ?? null,
+      expiresAt,
+    },
+    select: { id: true },
+  });
+  return { sessionId: session.id, token, expiresAt };
+}
+
+/**
+ * How far into a session's life a bearer read extends it. The phone never
+ * re-signs-in if it is used at least this often: a read past the midpoint
+ * pushes the expiry out to a full TTL again (a "sliding" expiry), and the
+ * write is skipped while lastSeenAt is fresh so a busy screen does not write
+ * the row on every request. Cookies keep their fixed thirty days — the
+ * browser's maxAge cannot be reset from a server-component read.
+ */
+const SLIDE_AFTER_MS = (SESSION_TTL_DAYS * 86_400_000) / 2;
+const SEEN_THROTTLE_MS = 60 * 60_000;
+
 export const getSession = cache(async (): Promise<ActiveContext | null> => {
   const jar = await cookies();
-  const token = jar.get(SESSION_COOKIE)?.value;
+  let token = jar.get(SESSION_COOKIE)?.value ?? null;
+  let viaBearer = false;
+  if (!token) {
+    token = bearerToken(await headers());
+    viaBearer = token !== null;
+  }
   if (!token) return null;
 
   const session = await db.session.findUnique({
@@ -154,6 +200,14 @@ export const getSession = cache(async (): Promise<ActiveContext | null> => {
   if (session.revokedAt) return null;
   if (session.expiresAt.getTime() < Date.now()) return null;
   if (session.user.disabledAt) return null;
+
+  if (viaBearer && Date.now() - session.lastSeenAt.getTime() > SEEN_THROTTLE_MS) {
+    const slide = session.expiresAt.getTime() - Date.now() < SLIDE_AFTER_MS;
+    await db.session.update({
+      where: { id: session.id },
+      data: { lastSeenAt: new Date(), ...(slide ? { expiresAt: new Date(Date.now() + SESSION_TTL_DAYS * 86_400_000) } : {}) },
+    });
+  }
 
   // The role/school on the cookie's session row is a *claim*. Verify the
   // membership still exists and is active before trusting it — a teacher

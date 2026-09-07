@@ -244,6 +244,7 @@ model User {
   authTokens           AuthToken[]
   notifications        Notification[]
   pushSubscriptions    PushSubscription[]
+  deviceTokens         DeviceToken[]
   posts                Post[]
   comments             Comment[]
   reactions            Reaction[]
@@ -1610,6 +1611,24 @@ model Notification {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId, readAt, createdAt])
+}
+
+/// A phone registered for push through Expo's service: one row per device
+/// token, beside the browser's PushSubscription. Dropped when the service
+/// says the token is dead, or when the app asks on sign-out.
+model DeviceToken {
+  id            String   @id @default(cuid())
+  userId        String
+  expoPushToken String   @unique
+  platform      String // ios | android
+  device        String?
+  failureCount  Int      @default(0)
+  createdAt     DateTime @default(now())
+  lastUsedAt    DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 model PushSubscription {
