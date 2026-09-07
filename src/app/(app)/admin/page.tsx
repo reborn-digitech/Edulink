@@ -28,7 +28,7 @@ import { EmptyState } from "@/components/ui/states";
 import { Badge } from "@/components/ui/badge";
 import { WelcomeBanner } from "./welcome-banner";
 import { cn } from "@/lib/cn";
-import { getT, getRelativeTime } from "@/lib/i18n/server";
+import { getT, getRelativeTime, getLocale } from "@/lib/i18n/server";
 import { schoolJobStory, JOB_COUNT_LABELS, JOB_ATTENTION_KEYS } from "@/lib/job-health";
 import { PageHeader } from "@/components/ui/page-header";
 
@@ -43,6 +43,7 @@ export default async function AdminDashboard({
   searchParams: Promise<{ welcome?: string }>;
 }) {
   const t = await getT();
+  const locale = await getLocale();
   const when = await getRelativeTime();
   const ctx = await requireRole("ADMIN");
   const { welcome } = await searchParams;
@@ -107,7 +108,7 @@ export default async function AdminDashboard({
       {welcome === "1" && <WelcomeBanner schoolName={school.name} schoolCode={school.code} />}
 
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <PageHeader title={school.name} description={<>{formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })} ·{" "}
+        <PageHeader title={school.name} description={<>{formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" }, locale)} ·{" "}
             {t("admin.schoolCode")}{" "}
             <code className="rounded bg-surface-muted px-1.5 py-0.5 font-semibold text-fg">
               {school.code}

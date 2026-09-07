@@ -13,7 +13,7 @@ import { AttendanceBadge } from "@/components/ui/badge";
 import { ChildSwitcher } from "../child-switcher";
 import { EmptyState } from "@/components/ui/states";
 import { ATTENDANCE_META, ATTENDANCE_STATUSES, type AttendanceStatus } from "@/lib/constants";
-import { getT } from "@/lib/i18n/server";
+import { getT, getLocale } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -28,6 +28,7 @@ export default async function ParentAttendancePage({
 }) {
   const session = await requireParent();
   const t = await getT();
+  const locale = await getLocale();
   const { child: requested, month: requestedMonth } = await searchParams;
 
   const { children } = await listContexts(session.user.id);
@@ -50,7 +51,7 @@ export default async function ParentAttendancePage({
     requestedMonth && MONTH_KEY.test(requestedMonth) && requestedMonth <= thisMonth
       ? requestedMonth
       : thisMonth;
-  const monthLabel = formatDateKey(`${month}-01`, { month: "long", year: "numeric" });
+  const monthLabel = formatDateKey(`${month}-01`, { month: "long", year: "numeric" }, locale);
   const summary = await getAttendanceSummary(student.schoolId, selectedId, `${month}-01`, `${month}-31`);
 
   // Only days that actually have a record, newest first — showing a blank row
@@ -167,7 +168,7 @@ export default async function ParentAttendancePage({
                         weekday: "long",
                         day: "numeric",
                         month: "long",
-                      })}
+                      }, locale)}
                     </p>
                     {day.note ? (
                       <p className="text-xs text-fg-muted">&ldquo;{day.note}&rdquo;</p>

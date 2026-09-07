@@ -32,7 +32,7 @@ import { WelcomeTour } from "./welcome-tour";
 import { ConsentControls } from "../competitions/entry-controls";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
 import { ownWorkScope } from "@/lib/grading";
-import { getT } from "@/lib/i18n/server";
+import { getT, getLocale } from "@/lib/i18n/server";
 import { PersonLink } from "@/components/person-link";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -47,6 +47,7 @@ export default async function ParentDashboard({
 }) {
   const session = await requireParent();
   const t = await getT();
+  const locale = await getLocale();
   const { child: requestedChild } = await searchParams;
 
   const { children } = await listContexts(session.user.id);
@@ -258,7 +259,7 @@ export default async function ParentDashboard({
             </span>
             <div>
               <p className="text-xs font-medium uppercase tracking-wide text-fg-muted">
-                {t("parent.today")} · {formatDateKey(today, { weekday: "long", day: "numeric", month: "long" })}
+                {t("parent.today")} · {formatDateKey(today, { weekday: "long", day: "numeric", month: "long" }, locale)}
               </p>
               {todayRecord ? (
                 <p className="mt-0.5 font-semibold text-fg">

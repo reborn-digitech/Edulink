@@ -23,7 +23,7 @@ import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { StudentWelcome } from "./welcome";
 import { ATTENDANCE_META, type AttendanceStatus } from "@/lib/constants";
-import { getT } from "@/lib/i18n/server";
+import { getT, getLocale } from "@/lib/i18n/server";
 import { PersonLink } from "@/components/person-link";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -38,6 +38,7 @@ export default async function StudentHome({
 }) {
   const ctx = await requireRole("STUDENT");
   const t = await getT();
+  const locale = await getLocale();
   const { welcome, handle } = await searchParams;
 
   const membership = await db.membership.findUniqueOrThrow({
@@ -114,7 +115,7 @@ export default async function StudentHome({
             {t("student.hiName", { name })}
           </h1>
           <p className="text-sm text-fg-muted">
-            {formatDateKey(today, { weekday: "long", day: "numeric", month: "long" })}
+            {formatDateKey(today, { weekday: "long", day: "numeric", month: "long" }, locale)}
             {membership.enrollments[0] ? ` · ${membership.enrollments[0].class.name}` : ""}
           </p>
         </div>

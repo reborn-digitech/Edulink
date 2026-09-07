@@ -9,7 +9,7 @@ import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PersonLink } from "@/components/person-link";
 import { EmptyState } from "@/components/ui/states";
-import { getT } from "@/lib/i18n/server";
+import { getT, getLocale } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -29,6 +29,7 @@ export const CELEBRATIONS_TAG = "celebrations";
 export default async function CelebrationsPage() {
   const session = await requireUser();
   const t = await getT();
+  const locale = await getLocale();
   // The month, and — when it is empty — the next half-year, labelled as
   // such, so the page never says "nothing" while a birthday sits 33 days out.
   let items = await celebrationsFor(session, 30);
@@ -89,7 +90,7 @@ export default async function CelebrationsPage() {
             <Card key={dateKey}>
               <CardBody className="p-0">
                 <p className="border-b border-border px-5 py-2.5 text-xs font-semibold uppercase tracking-wide text-fg-muted">
-                  {formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })}
+                  {formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" }, locale)}
                 </p>
                 <ul className="divide-y divide-border">
                   {list.map((item) => (

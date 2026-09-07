@@ -18,7 +18,7 @@ import { formatTimeRange } from "@/lib/school-day";
 import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
-import { getT } from "@/lib/i18n/server";
+import { getT, getLocale } from "@/lib/i18n/server";
 import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -28,6 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function TeacherHome() {
   const t = await getT();
+  const locale = await getLocale();
   const ctx = await requireRole("TEACHER", "ADMIN");
 
   const school = await db.school.findUniqueOrThrow({
@@ -186,7 +187,7 @@ export default async function TeacherHome() {
 
     return (
       <div className="space-y-6">
-        <PageHeader title={t("teacher.today")} description={<>{formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })} ·{" "}
+        <PageHeader title={t("teacher.today")} description={<>{formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" }, locale)} ·{" "}
             {school.name}</>} />
 
         {marksCard}
@@ -255,7 +256,7 @@ export default async function TeacherHome() {
 
   return (
     <div className="space-y-6">
-      <PageHeader title={t("teacher.today")} description={<>{formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })} ·{" "}
+      <PageHeader title={t("teacher.today")} description={<>{formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" }, locale)} ·{" "}
           {school.name}</>} />
 
       {marksCard}

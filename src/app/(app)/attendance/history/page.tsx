@@ -19,7 +19,7 @@ import { formatDateKey, todayKey } from "@/lib/dates";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
-import { getT } from "@/lib/i18n/server";
+import { getT, getLocale } from "@/lib/i18n/server";
 import { cn } from "@/lib/cn";
 import { PersonLink } from "@/components/person-link";
 import { PageHeader } from "@/components/ui/page-header";
@@ -42,6 +42,7 @@ export default async function AttendanceHistoryPage({
 }) {
   const ctx = await requireRole("TEACHER", "ADMIN", "PRINCIPAL");
   const t = await getT();
+  const locale = await getLocale();
   const params = await searchParams;
 
   const [classes, school] = await Promise.all([
@@ -71,7 +72,7 @@ export default async function AttendanceHistoryPage({
         ? classes[0]!.id
         : null;
 
-  const monthLabel = formatDateKey(`${month}-01`, { month: "long", year: "numeric" });
+  const monthLabel = formatDateKey(`${month}-01`, { month: "long", year: "numeric" }, locale);
   const hrefFor = (classId: string, m: string) => `/attendance/history?classId=${classId}&month=${m}`;
 
   const header = (
@@ -204,7 +205,7 @@ export default async function AttendanceHistoryPage({
                       <th key={day.dateKey} scope="col" className="px-1 py-2 text-center font-medium">
                         <span className="block">{formatDateKey(day.dateKey, { day: "numeric" })}</span>
                         <span className="block text-[10px] text-fg-subtle">
-                          {formatDateKey(day.dateKey, { weekday: "short" })}
+                          {formatDateKey(day.dateKey, { weekday: "short" }, locale)}
                         </span>
                       </th>
                     ))}

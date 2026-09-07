@@ -16,7 +16,7 @@ import { Register } from "./register";
 import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { Button } from "@/components/ui/button";
-import { getT } from "@/lib/i18n/server";
+import { getT, getLocale } from "@/lib/i18n/server";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { PageHeader } from "@/components/ui/page-header";
 
@@ -31,6 +31,7 @@ export default async function AttendancePage({
   searchParams: Promise<{ classId?: string; date?: string; only?: string }>;
 }) {
   const t = await getT();
+  const locale = await getLocale();
   const ctx = await requireRole("TEACHER", "ADMIN");
   const params = await searchParams;
 
@@ -96,7 +97,7 @@ export default async function AttendancePage({
     return (
       <div className="space-y-4">
         <div className="flex flex-wrap items-end justify-between gap-3">
-          <PageHeader title={t("teacher.takeRegister")} description={formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })} />
+          <PageHeader title={t("teacher.takeRegister")} description={formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" }, locale)} />
           <PastRegistersLink label={t("attendanceHistory.link")} />
         </div>
 
@@ -107,6 +108,7 @@ export default async function AttendancePage({
 
         <ClosedDayNotice
         calendar={calendar}
+        locale={locale}
         dateKey={dateKey}
         sundayNote={isTeachingDay(dateKey) ? null : t("teacher.sundayRegister")}
         openDayNote={(date) => t("teacher.openDayNote", { date })}
@@ -196,6 +198,7 @@ export default async function AttendancePage({
       </div>
       <ClosedDayNotice
         calendar={calendar}
+        locale={locale}
         dateKey={dateKey}
         sundayNote={isTeachingDay(dateKey) ? null : t("teacher.sundayRegister")}
         openDayNote={(date) => t("teacher.openDayNote", { date })}
@@ -215,7 +218,7 @@ export default async function AttendancePage({
         classId={selectedId}
       className={register.class.name}
       dateKey={dateKey}
-      dateLabel={formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })}
+      dateLabel={formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" }, locale)}
         initialRoster={register.roster}
         readOnly={dateKey > today}
       />
@@ -306,6 +309,7 @@ function PastRegistersLink({ classId, label }: { classId?: string; label: string
 function ClosedDayNotice({
   calendar,
   dateKey,
+  locale,
   sundayNote,
   openDayNote,
   closedDayTitle,
@@ -313,6 +317,7 @@ function ClosedDayNotice({
 }: {
   calendar: { closed: boolean; entries: { name: string; kind: string }[] };
   dateKey: string;
+  locale: string;
   /** Translated on the server and handed down: this notice is the one place
    * on the page that used to speak English whatever the teacher chose. */
   openDayNote: (date: string) => string;
@@ -337,7 +342,7 @@ function ClosedDayNotice({
   }
 
   const names = calendar.entries.map((entry) => entry.name).join(" · ");
-  const pretty = formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" });
+  const pretty = formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" }, locale);
 
   if (!calendar.closed) {
     return (

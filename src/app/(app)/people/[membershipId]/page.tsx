@@ -21,7 +21,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { PersonLink } from "@/components/person-link";
 import { ROLE_META, type Role } from "@/lib/constants";
-import { getT } from "@/lib/i18n/server";
+import { getT, getLocale } from "@/lib/i18n/server";
 import { openConversationAction } from "../../remarks/conversation-actions";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -66,6 +66,7 @@ export default async function PersonPage({
   searchParams: Promise<{ from?: string }>;
 }) {
   const t = await getT();
+  const locale = await getLocale();
   const session = await requireUser();
   const { membershipId } = await params;
   const { from } = await searchParams;
@@ -178,7 +179,7 @@ export default async function PersonPage({
             )}
             {member.school.city && <span>· {member.school.city}</span>}
             <span>
-              · {t("person.since", { date: formatInZone(member.joinedAt, member.school.timezone, { month: "long", year: "numeric" }) })}
+              · {t("person.since", { date: formatInZone(member.joinedAt, member.school.timezone, { month: "long", year: "numeric" }, locale) })}
             </span>
           </p>
           {member.user.bio && <p className="mt-2 max-w-prose text-sm leading-relaxed text-fg">{member.user.bio}</p>}

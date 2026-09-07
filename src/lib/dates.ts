@@ -163,10 +163,20 @@ export function isTeachingDay(dateKey: string): boolean {
  * `weekdayShortName` keep their locale, because "सोमवार" atop a timetable
  * column is a heading — a fixed set of seven labels, not a formatted value.
  *
- * So `LOCALE` below is a constant, not a parameter. If a locale parameter
- * grows back here, the mixed-digit line comes back with it.
+ * So `LOCALE` below is a constant for everything NUMERIC. What did grow back
+ * is narrower, and safe: a weekday name and a month name are LABELS — a Hindi
+ * screen reading "आज · MONDAY, 07/09/2026" had an untranslated word in it —
+ * so the formatters take an optional reader's locale for those words only,
+ * and ask Intl for Latin digits (`-u-nu-latn`) so "१४" never comes back with
+ * "सप्टेंबर". The date's shape stays dd/mm/yyyy whatever the language.
  */
 const LOCALE = "en";
+
+/** The reader's locale for the words in a date, with Latin digits pinned. */
+function labelLocale(locale?: string): string {
+  if (!locale || locale === "en") return LOCALE;
+  return `${locale}-u-nu-latn`;
+}
 
 /**
  * ⚠ EVERY DATE IS dd/mm/yyyy.
@@ -217,30 +227,32 @@ function partsOptions(opts: Intl.DateTimeFormatOptions): Intl.DateTimeFormatOpti
 export function formatDateKey(
   dateKey: string,
   opts: Intl.DateTimeFormatOptions = { weekday: "short", day: "numeric", month: "short" },
+  locale?: string,
 ): string {
   const [y, m, d] = dateKey.split("-").map(Number) as [number, number, number];
   const instant = new Date(Date.UTC(y, m - 1, d));
   if (wantsDay(opts)) {
     return assemble(
-      new Intl.DateTimeFormat(LOCALE, { ...partsOptions(opts), timeZone: "UTC" }).formatToParts(instant),
+      new Intl.DateTimeFormat(labelLocale(locale), { ...partsOptions(opts), timeZone: "UTC" }).formatToParts(instant),
       opts,
     );
   }
-  return new Intl.DateTimeFormat(LOCALE, { ...opts, timeZone: "UTC" }).format(instant);
+  return new Intl.DateTimeFormat(labelLocale(locale), { ...opts, timeZone: "UTC" }).format(instant);
 }
 
 export function formatInZone(
   instant: Date,
   timeZone: string,
   opts: Intl.DateTimeFormatOptions = { dateStyle: "medium", timeStyle: "short" },
+  locale?: string,
 ): string {
   if (wantsDay(opts)) {
     return assemble(
-      new Intl.DateTimeFormat(LOCALE, { ...partsOptions(opts), timeZone }).formatToParts(instant),
+      new Intl.DateTimeFormat(labelLocale(locale), { ...partsOptions(opts), timeZone }).formatToParts(instant),
       opts,
     );
   }
-  return new Intl.DateTimeFormat(LOCALE, { ...opts, timeZone }).format(instant);
+  return new Intl.DateTimeFormat(labelLocale(locale), { ...opts, timeZone }).format(instant);
 }
 
 /** A plain calendar date — "23/08/2026" — for an instant read in a zone. */
