@@ -1,5 +1,16 @@
 import "server-only";
-import { createECDH } from "node:crypto";
+import type { createECDH as CreateECDH } from "node:crypto";
+
+/**
+ * node:crypto fetched at call time rather than imported: with a middleware in
+ * the app, Next also compiles instrumentation.ts for the edge runtime and
+ * follows its dynamic import here, and webpack refuses a `node:` scheme it
+ * cannot bundle. A type import is erased; the built-in is asked for by name
+ * from Node itself (20.16+) only when the check runs, which is only on Node.
+ */
+function nodeCrypto(): { createECDH: typeof CreateECDH } {
+  return process.getBuiltinModule("node:crypto") as { createECDH: typeof CreateECDH };
+}
 
 /**
  * Environment checks.
@@ -160,7 +171,7 @@ export function readVapidConfig():
     if (publicKey.length === 87 && privateKey.length === 43) {
       let derived: string | null = null;
       try {
-        const ecdh = createECDH("prime256v1");
+        const ecdh = nodeCrypto().createECDH("prime256v1");
         ecdh.setPrivateKey(Buffer.from(privateKey, "base64url"));
         derived = ecdh.getPublicKey().toString("base64url");
       } catch {
