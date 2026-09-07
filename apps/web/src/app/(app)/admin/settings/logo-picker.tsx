@@ -220,6 +220,7 @@ export function LogoPicker({
           ref={fileRef}
           type="file"
           accept="image/png,image/jpeg,image/webp,image/gif"
+          aria-label={t("audit.schoolLogoUpdate")}
           className="sr-only"
           onChange={(e) => {
             const file = e.target.files?.[0];

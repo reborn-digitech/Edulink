@@ -207,7 +207,7 @@ export function DataToolbar({
                 )}
               >
                 {o.label}
-                {o.count !== undefined && <span className={cn("ml-1 tabular-nums", on ? "opacity-80" : "text-fg-subtle")}>{o.count}</span>}
+                {o.count !== undefined && <span className={cn("ml-1 tabular-nums", on ? "" : "text-fg-subtle")}>{o.count}</span>}
               </button>
             );
           })}

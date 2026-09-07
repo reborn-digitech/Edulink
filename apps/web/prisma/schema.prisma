@@ -2839,11 +2839,16 @@ model ConversationMessage {
   authorUserId   String
   body           String
   createdAt      DateTime @default(now())
+  // Idempotency key minted on the device before the message is queued, so a
+  // replay from the offline outbox lands once. Null for messages sent online
+  // before the key existed.
+  clientId       String?
 
   conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
   school       School       @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   author       User         @relation(fields: [authorUserId], references: [id], onDelete: Cascade)
 
+  @@unique([conversationId, clientId])
   @@index([conversationId, createdAt])
   @@index([schoolId])
 }

@@ -8,6 +8,7 @@ import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
 import { sendConversationReply } from "../../conversation-actions";
 import { useT } from "@/lib/i18n";
+import { enqueue, newClientId } from "@/lib/offline-queue";
 
 const MAX = 8000;
 
@@ -29,6 +30,22 @@ export function ConversationReplyBox({ conversationId, className }: { conversati
       return;
     }
     setError(null);
+    if (!navigator.onLine) {
+      // Into the outbox, with an id minted here so the replay lands once. The
+      // room shows it after the reconnection's refresh; the shell counts it
+      // until then.
+      void enqueue({
+        url: "/api/v1/messages",
+        method: "POST",
+        body: JSON.stringify({ conversationId, body: trimmed, clientId: newClientId() }),
+        tag: `message:${conversationId}`,
+      }).then(() => {
+        setBody("");
+        toast({ tone: "accent", title: t("common.queuedOffline") });
+        ref.current?.focus();
+      });
+      return;
+    }
     startTransition(async () => {
       const result = await sendConversationReply({ conversationId, body: trimmed });
       if (!result.ok) {

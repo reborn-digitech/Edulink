@@ -29,6 +29,7 @@ import { EmptyState } from "@/components/ui/states";
 import { ChildSwitcher } from "./child-switcher";
 import { ChildLeftPanel } from "./child-left";
 import { WelcomeTour } from "./welcome-tour";
+import { InstallCard } from "@/components/install-card";
 import { cookies } from "next/headers";
 import { PARENT_WELCOME_COOKIE } from "@/lib/parent-welcome";
 import { ConsentControls } from "../competitions/entry-controls";
@@ -478,6 +479,7 @@ export default async function ParentDashboard({
           <Link href="/parent/link">{t("parent.linkAnother")}</Link>
         </Button>
       </div>
+      <InstallCard />
     </div>
   );
 }

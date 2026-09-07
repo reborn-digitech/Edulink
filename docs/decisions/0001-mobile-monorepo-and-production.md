@@ -95,3 +95,7 @@ be replaced without losing files.
 ## Phase 1 record
 
 See `docs/runbooks/` (deploy, backup-restore, security), `docs/go-live-checklist.md`, `ops/` (backup, restore, load) and the CI workflow. The report with the measured numbers is the Phase 1 artifact; the standing battery ledger carries the summary.
+
+## Phase 2 record
+
+The accessibility gate and the viewport matrix live in `apps/web/e2e/` and run in the sweep job; the offline outbox covers attendance, marks and messages through the first two `/api/v1` handlers; sized image copies come from the file route (`?w=`). The Phase 2 report artifact carries the measurements and the list of what the gates found.

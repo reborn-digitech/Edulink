@@ -26,7 +26,7 @@
   /* --- text ------------------------------------------------------------- */
   --fg: #101420;
   --fg-muted: #57607a; /* 6.1:1 on --surface */
-  --fg-subtle: #7b849c; /* decorative / large text only */
+  --fg-subtle: #5f6983; /* 5.5:1 on --surface, 4.9:1 on --surface-muted — it is used at text-xs everywhere, so it must read */
   --fg-inverse: #ffffff;
 
   /* --- accent (default: EduLink brand blue, used on public pages) -------- */
@@ -108,7 +108,7 @@
 
   --fg: #edf0f7;
   --fg-muted: #a6b0c4; /* 7.0:1 on --surface */
-  --fg-subtle: #7d879c;
+  --fg-subtle: #8b95aa; /* 5.8:1 on --surface, 5.3:1 on --surface-muted */
   --fg-inverse: #0b0e15;
 
   --accent: #60a5fa;

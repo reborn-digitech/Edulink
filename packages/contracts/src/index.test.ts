@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { z } from "zod";
-import { apiErrorSchema, localeSchema, page, pageQuerySchema, sessionTokenSchema } from "./index";
+import { apiErrorSchema, conversationMessageSchema, localeSchema, marksBatchSchema, page, pageQuerySchema, sessionTokenSchema } from "./index";
 
 describe("@edulink/contracts", () => {
   it("accepts the error envelope the web actions already produce, and refuses an empty one", () => {
@@ -27,5 +27,13 @@ describe("@edulink/contracts", () => {
     const ok = sessionTokenSchema.safeParse({ token: "t".repeat(40), expiresAt: "2026-09-08T10:00:00.000Z", locale: "mr" });
     expect(ok.success).toBe(true);
     expect(sessionTokenSchema.safeParse({ token: "short", expiresAt: "tomorrow", locale: "en" }).success).toBe(false);
+  });
+
+  it("a marks batch needs real ids and a bounded sheet; a message needs its client id", () => {
+    const id = "c" + "k".repeat(24);
+    expect(marksBatchSchema.safeParse({ slotId: id, classId: id, entries: [{ membershipId: id, marks: 42.5 }, { membershipId: id, marks: null }] }).success).toBe(true);
+    expect(marksBatchSchema.safeParse({ slotId: "slot-1", classId: id, entries: [] }).success).toBe(false);
+    expect(conversationMessageSchema.safeParse({ conversationId: id, body: "  hello  ", clientId: "abcdefgh" }).data?.body).toBe("hello");
+    expect(conversationMessageSchema.safeParse({ conversationId: id, body: "hi", clientId: "short" }).success).toBe(false);
   });
 });

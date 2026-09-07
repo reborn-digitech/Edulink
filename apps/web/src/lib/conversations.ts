@@ -462,24 +462,45 @@ export async function sendConversationMessage(
   ctx: ActiveContext,
   conversationId: string,
   body: string,
+  opts: { clientId?: string } = {},
 ): Promise<{ messageId: string }> {
   const text = body.trim();
   if (!text) throw new AccessError("remarks.writeSomethingFirst");
   const { conversation, mine } = await assertParticipant(ctx, conversationId);
 
+  // A replay from the offline outbox carries the clientId the device minted
+  // before the message was queued. If that id already landed in this room,
+  // the answer is the message that landed — not a twin, and nobody is told
+  // twice. Checked before the write and again on the unique violation,
+  // because two replays can race.
+  if (opts.clientId) {
+    const landed = await findLanded(conversationId, opts.clientId);
+    if (landed) return { messageId: landed };
+  }
+
   // `$tenantTransaction`, never `$transaction`: the plain form opens a
   // transaction nothing has bound `app.school_ids` on, and the policy then
   // refuses every statement inside it as zero rows. See db.ts.
-  const message = await db.$tenantTransaction(async (rawTx: unknown) => {
-    const tx = rawTx as typeof db;
-    const created = await tx.conversationMessage.create({
-      data: { conversationId, schoolId: conversation.schoolId, authorUserId: ctx.user.id, body: text },
-      select: { id: true, createdAt: true },
+  let message: { id: string; createdAt: Date };
+  try {
+    message = await db.$tenantTransaction(async (rawTx: unknown) => {
+      const tx = rawTx as typeof db;
+      const created = await tx.conversationMessage.create({
+        data: { conversationId, schoolId: conversation.schoolId, authorUserId: ctx.user.id, body: text, clientId: opts.clientId ?? null },
+        select: { id: true, createdAt: true },
+      });
+      await tx.conversation.update({ where: { id: conversationId }, data: { lastMessageAt: created.createdAt } });
+      await tx.conversationParticipant.update({ where: { id: mine.id }, data: { lastReadAt: created.createdAt } });
+      return created;
     });
-    await tx.conversation.update({ where: { id: conversationId }, data: { lastMessageAt: created.createdAt } });
-    await tx.conversationParticipant.update({ where: { id: mine.id }, data: { lastReadAt: created.createdAt } });
-    return created;
-  });
+  } catch (error) {
+    const code = (error as { code?: string } | null)?.code;
+    if (opts.clientId && code === "P2002") {
+      const landed = await findLanded(conversationId, opts.clientId);
+      if (landed) return { messageId: landed };
+    }
+    throw error;
+  }
 
   const senderName = ctx.user.preferredName ?? ctx.user.name;
   const others = conversation.participants.filter((p) => p.userId !== ctx.user.id);
@@ -512,4 +533,12 @@ export async function sendConversationMessage(
   });
 
   return { messageId: message.id };
+}
+
+async function findLanded(conversationId: string, clientId: string): Promise<string | null> {
+  const row = await db.conversationMessage.findUnique({
+    where: { conversationId_clientId: { conversationId, clientId } },
+    select: { id: true },
+  });
+  return row?.id ?? null;
 }

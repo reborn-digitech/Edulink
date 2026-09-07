@@ -148,6 +148,10 @@ afterAll(async () => {
 
 describe("what must survive", () => {
   it("⚠ keeps every file a record still points at", async () => {
+    // Walks every file in the store and every record that could point at one;
+    // took 5.0 s once under a full battery with the dev server compiling
+    // beside it, which is the default budget to the millisecond. 30 s is the
+    // honest bound for a sweep, not a sign it is slow.
     const report = await reclaimOrphans({ dryRun: true, graceMs: 0 });
     const doomed = report.orphans.map((o) => o.fileId);
 
@@ -156,7 +160,7 @@ describe("what must survive", () => {
     expect(doomed).not.toContain(ASSIGNMENT_FILE);
     expect(doomed).not.toContain(SUBMISSION_FILE);
     expect(doomed).not.toContain(POST_FILE);
-  });
+  }, 30_000);
 
   it("⚠ leaves recently written files alone even though nothing references them", async () => {
     // An upload writes its bytes before the row that references them. Without

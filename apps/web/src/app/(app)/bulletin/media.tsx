@@ -76,7 +76,9 @@ export function PostMedia({ media }: { media: Item[] }) {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={`/api/files/${item.fileId}`}
+              src={`/api/files/${item.fileId}?w=1280`}
+              srcSet={`/api/files/${item.fileId}?w=640 640w, /api/files/${item.fileId}?w=1280 1280w`}
+              sizes="(min-width: 1024px) 640px, 100vw"
               alt={item.alt}
               loading="lazy"
               className="max-h-[28rem] w-full rounded-[--radius-md] border border-border bg-surface-muted object-contain"
@@ -128,7 +130,9 @@ export function PostMedia({ media }: { media: Item[] }) {
                 ) : (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
-                    src={`/api/files/${item.fileId}`}
+                    src={`/api/files/${item.fileId}?w=640`}
+                    srcSet={`/api/files/${item.fileId}?w=320 320w, /api/files/${item.fileId}?w=640 640w`}
+                    sizes="(min-width: 1024px) 320px, 50vw"
                     alt={item.alt}
                     loading="lazy"
                     className="size-full bg-surface-muted object-cover"

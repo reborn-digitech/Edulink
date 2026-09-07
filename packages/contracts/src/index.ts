@@ -58,3 +58,37 @@ export const sessionTokenSchema = z.object({
   locale: localeSchema,
 });
 export type SessionToken = z.infer<typeof sessionTokenSchema>;
+
+/* ------------------------------------------------------------------------- */
+/* /api/v1 request bodies. Each is the shape the offline outbox replays, so  */
+/* every one carries what makes a second delivery harmless.                  */
+/* ------------------------------------------------------------------------- */
+
+const cuid = z.string().regex(/^c[a-z0-9]{20,}$/, "id");
+
+/**
+ * A teacher's marks for one exam slot in one class. Replay-safe by nature:
+ * the server stores the batch as the current state of that sheet, so sending
+ * it twice leaves the same marks. `marks: null` clears a pupil's entry.
+ */
+export const marksBatchSchema = z.object({
+  slotId: cuid,
+  classId: cuid,
+  entries: z
+    .array(z.object({ membershipId: cuid, marks: z.number().min(0).max(100_000).nullable() }))
+    .min(1)
+    .max(500),
+});
+export type MarksBatch = z.infer<typeof marksBatchSchema>;
+
+/**
+ * One message into a room. `clientId` is minted on the device before the
+ * message is queued; the server keeps it unique per room, so a replay returns
+ * the message that already landed rather than a twin.
+ */
+export const conversationMessageSchema = z.object({
+  conversationId: cuid,
+  body: z.string().trim().min(1).max(8_000),
+  clientId: z.string().min(8).max(64),
+});
+export type ConversationMessageBody = z.infer<typeof conversationMessageSchema>;

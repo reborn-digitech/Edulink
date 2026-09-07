@@ -217,14 +217,14 @@ export function WeekGridView({
 
           return (
             <section key={day.weekday} aria-label={weekdayName(day.weekday, locale)}>
-              <h3
+              <h2
                 className={cn(
                   "mb-2 flex items-baseline gap-2 border-b border-border pb-1",
                   day.isToday && "border-accent",
                 )}
               >
                 <DayHeading day={day} locale={locale} t={t} />
-              </h3>
+              </h2>
               {onThisDay.length === 0 ? (
                 <p className="text-sm text-fg-muted">
                   {day.closed ? t("timetable.schoolIsShut") : t("timetable.nothingOnThisDay")}

@@ -69,14 +69,21 @@ export function newClientId(): string {
   return `cid-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
 }
 
+let lastCreatedAt = 0;
+
 export async function enqueue(item: Omit<QueuedRequest, "id" | "createdAt" | "attempts">): Promise<string> {
+  // Strictly increasing, so two items queued in the same millisecond replay
+  // in the order they were queued rather than in the order of their random ids
+  // — a register and then the note about it, not the note first.
+  lastCreatedAt = Math.max(Date.now(), lastCreatedAt + 1);
   const record: QueuedRequest = {
     ...item,
     id: newClientId(),
-    createdAt: Date.now(),
+    createdAt: lastCreatedAt,
     attempts: 0,
   };
   await tx("readwrite", (store) => store.put(record));
+  notifyListeners({ type: "queued", item: record, remaining: await countQueued() });
   await requestSync(item.tag);
   return record.id;
 }
@@ -171,7 +178,14 @@ export async function flushQueue(): Promise<{ sent: number; failed: number; rema
 async function requestSync(tag: string): Promise<void> {
   try {
     if (!("serviceWorker" in navigator)) return;
-    const registration = await navigator.serviceWorker.ready;
+    // getRegistration, NOT ready: `ready` is a promise that never settles
+    // while no worker is registered — dev mode, a browser that refused the
+    // script, Safari before the first install — and this function sits on the
+    // enqueue path, so the queued item's caller (the reply box clearing its
+    // textarea, the toast) hung with it. Found by walking the reply box in a
+    // browser with no worker: the message was queued and the box never cleared.
+    const registration = await navigator.serviceWorker.getRegistration();
+    if (!registration) return;
     const sync = (registration as ServiceWorkerRegistration & {
       sync?: { register: (tag: string) => Promise<void> };
     }).sync;
@@ -186,6 +200,7 @@ async function requestSync(tag: string): Promise<void> {
 /* -------------------------------------------------------------------------- */
 
 export type QueueEvent =
+  | { type: "queued"; item: QueuedRequest; remaining: number }
   | { type: "flushed"; sent: number; failed: number; remaining: number }
   | { type: "rejected"; item: QueuedRequest; status: number };
 

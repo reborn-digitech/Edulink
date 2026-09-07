@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { InstallCard } from "@/components/install-card";
 import Link from "next/link";
 import {
   CalendarCheckIcon,
@@ -277,6 +278,7 @@ export default async function StudentHome({
       ))}
 
       <CelebrationsLink session={ctx} />
+      <InstallCard />
     </div>
   );
 }

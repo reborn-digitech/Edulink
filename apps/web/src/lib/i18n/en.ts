@@ -336,6 +336,10 @@ export const en = {
   /* The shell around every signed-in page                                   */
   /* ---------------------------------------------------------------------- */
   shell: {
+    quickAction: "Quick action",
+    outboxCount: "{count} waiting to send",
+    outboxOne: "1 waiting to send",
+    outboxHint: "Saved on this device. It sends by itself when you are back online.",
     mainNav: "Main",
     search: "Search",
     switchRole: "Switch role",
@@ -1867,6 +1871,8 @@ export const en = {
   /* Shared UI atoms — toast, loading, files, install, offline sync          */
   /* ---------------------------------------------------------------------- */
   ui: {
+    installCardTitle: "Put EduLink on your home screen",
+    installCardBody: "Opens like an app, works offline, and keeps you signed in. No app store needed.",
     reasonTransferred: "Transferred",
     reasonGraduated: "Completed their schooling",
     reasonLeft: "Left",
@@ -3430,6 +3436,8 @@ export const en = {
   /* translation, and belongs in its own change.                             */
   /* ---------------------------------------------------------------------- */
   common: {
+    checkTheForm: "Some of this needs another look.",
+    queuedOffline: "You are offline. This is saved on your device and will send when you are back.",
     clearAll: "Clear all",
     clearSearch: "Clear search",
     activeFilters: "Active filters",

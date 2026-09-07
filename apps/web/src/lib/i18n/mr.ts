@@ -317,6 +317,10 @@ export const mr: Dictionary = {
   },
 
   shell: {
+    quickAction: "जलद कृती",
+    outboxCount: "{count} पाठवण्याच्या प्रतीक्षेत",
+    outboxOne: "1 पाठवण्याच्या प्रतीक्षेत",
+    outboxHint: "याच डिव्हाइसवर जतन केले आहे. ऑनलाइन आल्यावर आपोआप पाठवले जाईल.",
     mainNav: "मुख्य",
     search: "शोधा",
     switchRole: "भूमिका बदला",
@@ -1710,6 +1714,8 @@ export const mr: Dictionary = {
   },
 
   ui: {
+    installCardTitle: "EduLink तुमच्या होम स्क्रीनवर ठेवा",
+    installCardBody: "अ‍ॅपसारखे उघडते, ऑफलाइन चालते आणि तुम्हाला साइन-इन ठेवते. अ‍ॅप स्टोअरची गरज नाही.",
     reasonTransferred: "स्थलांतरित",
     reasonGraduated: "शिक्षण पूर्ण केले",
     reasonLeft: "सोडून गेले",
@@ -3105,6 +3111,8 @@ export const mr: Dictionary = {
     withdrawRequest: "हा अर्ज मागे घ्या", withdrawn: "मागे घेतले",
   },
   common: {
+    checkTheForm: "यातील काही पुन्हा पाहण्याची गरज आहे.",
+    queuedOffline: "तुम्ही ऑफलाइन आहात. हे तुमच्या डिव्हाइसवर जतन केले आहे आणि ऑनलाइन आल्यावर पाठवले जाईल.",
     clearAll: "सर्व काढा",
     clearSearch: "शोध साफ करा",
     activeFilters: "लागू फिल्टर",

@@ -11,3 +11,12 @@ storage/
 
 # the walk's throwaway sign-in list
 zz-logins.txt
+
+# e2e: per-platform screenshot baselines other than CI's Linux set, and run output
+e2e/.sessions.json
+e2e/results/
+e2e/report/
+e2e/__screenshots__/darwin*/
+
+# sized image copies, regenerated from the originals on demand
+storage-variants/

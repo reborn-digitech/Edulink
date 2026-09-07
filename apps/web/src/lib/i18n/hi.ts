@@ -320,6 +320,10 @@ export const hi: Dictionary = {
   },
 
   shell: {
+    quickAction: "त्वरित कार्रवाई",
+    outboxCount: "{count} भेजने के लिए प्रतीक्षा में",
+    outboxOne: "1 भेजने के लिए प्रतीक्षा में",
+    outboxHint: "इसी डिवाइस पर सहेजा गया है। ऑनलाइन आते ही अपने आप भेज दिया जाएगा।",
     mainNav: "मुख्य",
     search: "खोजें",
     switchRole: "भूमिका बदलें",
@@ -1713,6 +1717,8 @@ export const hi: Dictionary = {
   },
 
   ui: {
+    installCardTitle: "EduLink को अपनी होम स्क्रीन पर रखें",
+    installCardBody: "ऐप की तरह खुलता है, ऑफ़लाइन चलता है और आपको साइन-इन रखता है। ऐप स्टोर की ज़रूरत नहीं।",
     reasonTransferred: "स्थानांतरित",
     reasonGraduated: "पढ़ाई पूरी की",
     reasonLeft: "छोड़ गए",
@@ -3108,6 +3114,8 @@ export const hi: Dictionary = {
     withdrawRequest: "यह आवेदन वापस लें", withdrawn: "वापस लिया",
   },
   common: {
+    checkTheForm: "इसमें कुछ फिर से देखने की ज़रूरत है।",
+    queuedOffline: "आप ऑफ़लाइन हैं। यह आपके डिवाइस पर सहेज लिया गया है और ऑनलाइन आते ही भेज दिया जाएगा।",
     clearAll: "सभी हटाएँ",
     clearSearch: "खोज साफ़ करें",
     activeFilters: "लगे हुए फ़िल्टर",

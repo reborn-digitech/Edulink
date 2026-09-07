@@ -258,6 +258,7 @@ export function IntakeForm({
             ref={fileRef}
             type="file"
             accept=".csv,text/csv,text/plain"
+            aria-label={t("invites.uploadCsv")}
             className="sr-only"
             onChange={(e) => {
               const file = e.target.files?.[0];

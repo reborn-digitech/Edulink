@@ -11,6 +11,7 @@ import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
 import { TabBar } from "@/components/ui/tabs";
 import { saveMarksAction } from "./actions";
+import { MarksForm } from "./marks-form";
 import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -168,7 +169,7 @@ export default async function TeacherExamsPage({
             {grid.pupils.length === 0 ? (
               <p className="text-sm text-fg-muted">{t("exams.emptyRoll")}</p>
             ) : (
-              <form key={`${selectedClass.id}:${selectedSlot.id}`} action={saveMarksAction} className="space-y-4">
+              <MarksForm slotId={selectedSlot.id} classId={selectedClass.id} action={saveMarksAction}>
                 <input type="hidden" name="slotId" value={selectedSlot.id} />
                 <input type="hidden" name="classId" value={selectedClass.id} />
                 <ul className="divide-y divide-border">
@@ -196,7 +197,7 @@ export default async function TeacherExamsPage({
                 </ul>
                 <p className="text-xs text-fg-muted">{t("exams.blankMeansAbsent")}</p>
                 <Button type="submit">{t("exams.saveMarks")}</Button>
-              </form>
+              </MarksForm>
             )}
           </CardBody>
         </Card>

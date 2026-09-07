@@ -1,6 +1,6 @@
 import { getSession } from "@/lib/session";
 import { authorizeFileRead } from "@/lib/files";
-import { etagFor, readStoredFile } from "@/lib/storage";
+import { etagFor, readStoredFile, readStoredVariant, VARIANT_WIDTHS, type VariantWidth } from "@/lib/storage";
 
 /**
  * Serves a stored file.
@@ -27,7 +27,11 @@ export async function GET(
 
   if (!access.allowed) return new Response("Not found", { status: 404 });
 
-  const stored = await readStoredFile(fileId);
+  // ?w=640 asks for a sized copy — the feed's tiles, which used to download
+  // every phone photo at full size. Off the allow-list means the original.
+  const wanted = Number(new URL(request.url).searchParams.get("w"));
+  const width = (VARIANT_WIDTHS as readonly number[]).includes(wanted) ? (wanted as VariantWidth) : null;
+  const stored = width ? await readStoredVariant(fileId, width) : await readStoredFile(fileId);
   if (!stored) return new Response("Not found", { status: 404 });
 
   const etag = etagFor(stored.bytes);

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CommandIcon, DotsThreeOutlineIcon, MagnifyingGlassIcon, SignOutIcon } from "@phosphor-icons/react";
+import { OutboxBadge } from "./outbox-badge";
 import { NAV, NAV_GROUP_KEY, PRIMARY_ACTION, isActive, type NavGroup, type NavItem } from "@/lib/nav";
 import { NavIcon } from "./icons";
 import { CommandPalette } from "./command-palette";
@@ -114,6 +115,7 @@ export function AppShell({
             </div>
           ))}
         </nav>
+        <div className="px-3 pb-2"><OutboxBadge /></div>
 
         <div className="border-t border-border p-3">
           {user.isSuperuser && (
@@ -195,6 +197,7 @@ export function AppShell({
           >
             <MagnifyingGlassIcon className="size-5" aria-hidden="true" />
           </button>
+          <OutboxBadge className="mr-1" />
           <Link
             href="/notifications"
             aria-label={
@@ -229,6 +232,9 @@ export function AppShell({
 
       {/* ---------- floating action button ---------- */}
       {action && (
+        // A landmark of its own: the button floats outside <main>, and a
+        // screen reader's region list should still find it by name.
+        <nav aria-label={t("shell.quickAction")} className="contents">
         <Link
           href={action.href}
           className={cn(
@@ -242,6 +248,7 @@ export function AppShell({
           <span className="hidden sm:inline">{t(action.labelKey)}</span>
           <span className="sr-only sm:hidden">{t(action.labelKey)}</span>
         </Link>
+        </nav>
       )}
 
       {/* ---------- mobile bottom bar ---------- */}

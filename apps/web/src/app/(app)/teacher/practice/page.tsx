@@ -163,7 +163,7 @@ export default async function TeacherPracticePage({
           title={t("practice.heatmapTitle")}
           description={t("practice.heatmapHint")}
         />
-        <CardBody className="overflow-x-auto p-0">
+        <CardBody className="overflow-x-auto p-0" tabIndex={0} role="region" aria-label={t("nav.practice")}>
           {heatmap.rows.length === 0 ? (
             <p className="px-4 py-6 text-sm text-fg-muted">{t("practice.heatmapEmpty")}</p>
           ) : (

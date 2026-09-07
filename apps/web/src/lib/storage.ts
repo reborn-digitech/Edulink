@@ -1,6 +1,7 @@
 import "server-only";
 import { createHash, randomUUID } from "node:crypto";
 import { mkdir, readFile, unlink, writeFile } from "node:fs/promises";
+import sharp from "sharp";
 import { dirname, join, resolve } from "node:path";
 import { stripImageMetadata } from "./image-metadata";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
@@ -185,4 +186,56 @@ function pathFor(fileId: string): string {
 /** Stable ETag so the file route can answer 304 without re-reading. */
 export function etagFor(bytes: Buffer): string {
   return `"${createHash("sha1").update(bytes).digest("hex")}"`;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Sized variants, for the feed's tiles                                         */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The widths a caller may ask for. A short allow-list rather than any number:
+ * every distinct width is another file on disk, and the mosaic only has three
+ * shapes — a tile, a single photo, and the viewer, which takes the original.
+ */
+export const VARIANT_WIDTHS = [320, 640, 1280] as const;
+export type VariantWidth = (typeof VARIANT_WIDTHS)[number];
+
+/**
+ * Where variants live: BESIDE the store, not in it. `files:check` walks the
+ * store and reports anything it does not recognise, and a variant is not a
+ * record — it is a cache, regenerated from the original whenever it is
+ * missing. STORAGE_DIR=/mnt/files gives /mnt/files-variants.
+ */
+const VARIANTS_ROOT = `${ROOT}-variants`;
+
+/**
+ * The original resized to `width` (never enlarged) as WebP, made once and
+ * kept. Only images resize; a video, a PDF or a GIF answers with the original
+ * so a caller can ask for a width without first asking what the file is.
+ * sharp writes no metadata, so the upload's EXIF strip holds for the copy.
+ */
+export async function readStoredVariant(
+  fileId: string,
+  width: VariantWidth,
+): Promise<{ bytes: Buffer; mime: string } | null> {
+  const safe = sanitizeFileId(fileId);
+  if (!safe) return null;
+  const original = await readStoredFile(safe);
+  if (!original) return null;
+  if (!/^image\/(jpeg|png|webp)$/.test(original.mime)) return original;
+
+  const target = join(VARIANTS_ROOT, safe.slice(0, 2), `${safe}.w${width}.webp`);
+  try {
+    return { bytes: await readFile(target), mime: "image/webp" };
+  } catch {
+    /* not made yet */
+  }
+  const bytes = await sharp(original.bytes, { failOn: "none" })
+    .rotate()
+    .resize({ width, withoutEnlargement: true })
+    .webp({ quality: 80 })
+    .toBuffer();
+  await mkdir(join(VARIANTS_ROOT, safe.slice(0, 2)), { recursive: true });
+  await writeFile(target, bytes);
+  return { bytes, mime: "image/webp" };
 }
