@@ -65,6 +65,7 @@ jobs:
             -c "CREATE DATABASE edulink_shadow"
           node -e '
             const k = require("web-push").generateVAPIDKeys();
+            console.log(`::add-mask::${k.privateKey}`);
             require("fs").appendFileSync(process.env.GITHUB_ENV,
               `NEXT_PUBLIC_VAPID_PUBLIC_KEY=${k.publicKey}\nVAPID_PRIVATE_KEY=${k.privateKey}\n`);
           '
@@ -73,7 +74,9 @@ jobs:
         working-directory: apps/web
         run: |
           npx prisma generate
-          npx prisma migrate deploy
+          # The CLI reads DATABASE_URL, which is the unprivileged app role;
+          # migrations are owner work and go through the same wrapper as locally.
+          node scripts/with-admin-db.mjs npx prisma migrate deploy
           # A schema edit without a migration, or a migration that drifted from
           # the schema, fails here rather than on the release step.
           npx prisma migrate diff \
@@ -143,14 +146,15 @@ jobs:
             -c "CREATE DATABASE edulink_ci"
           node -e '
             const k = require("web-push").generateVAPIDKeys();
+            console.log(`::add-mask::${k.privateKey}`);
             require("fs").appendFileSync(process.env.GITHUB_ENV,
               `NEXT_PUBLIC_VAPID_PUBLIC_KEY=${k.publicKey}\nVAPID_PRIVATE_KEY=${k.privateKey}\n`);
           '
           npx prisma generate
-          npx prisma migrate deploy
+          node scripts/with-admin-db.mjs npx prisma migrate deploy
           node scripts/db-grants.mjs
-          npx tsx prisma/seed.ts
-          npx tsx --tsconfig scripts/tsconfig.json scripts/zz-fixtures.ts
+          npm run db:seed
+          npm run zz:fixtures
       - name: Build and start
         working-directory: apps/web
         run: |
