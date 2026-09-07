@@ -54,9 +54,10 @@ export default async function ClassesPage({
     orderBy: { name: "asc" },
   });
 
-  const archivedCount = await db.class.count({
-    where: { schoolId: ctx.schoolId, archivedAt: { not: null } },
-  });
+  const [archivedCount, activeCount] = await Promise.all([
+    db.class.count({ where: { schoolId: ctx.schoolId, archivedAt: { not: null } } }),
+    db.class.count({ where: { schoolId: ctx.schoolId, archivedAt: null } }),
+  ]);
 
   /**
    * Classes running with nobody in charge. Promotion creates next year's
@@ -83,9 +84,9 @@ export default async function ClassesPage({
       <div className="flex flex-wrap items-end justify-between gap-3">
         <PageHeader title={t("classes.title")} description={showArchived
               ? t("classes.archivedCount", { count: classes.length })
-              : allClasses.length === 1
+              : activeCount === 1
                 ? t("classes.activeCountOne")
-                : t("classes.activeCountMany", { count: allClasses.length })} />
+                : t("classes.activeCountMany", { count: activeCount })} />
         <div className="flex flex-wrap gap-2">
           <Button asChild variant="secondary" icon={<GraduationCapIcon weight="bold" />}>
             <Link href="/admin/promotion">{t("promotion.link")}</Link>

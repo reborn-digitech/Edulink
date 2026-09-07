@@ -6,6 +6,7 @@ import { notify } from "./notify";
 import { AccessError, assertClassAccess } from "./tenancy";
 import type { ActiveContext } from "./session";
 import type { Role } from "./constants";
+import { formatDateKey } from "./dates";
 
 /**
  * Who may take a class's register today.
@@ -255,7 +256,7 @@ const DATE_KEY = /^\d{4}-\d{2}-\d{2}$/;
 export async function arrangeCover(
   ctx: ActiveContext,
   input: CoverInput,
-  opts: { leaveRequestId?: string | null } = {},
+  opts: { leaveRequestId?: string | null; notify?: boolean } = {},
 ): Promise<{ ok: boolean; errorKey?: TranslationKey; coverId?: string }> {
   // A principal may arrange cover as part of approving leave; an admin may
   // arrange it at any time. A teacher may not hand their own register to
@@ -330,18 +331,22 @@ export async function arrangeCover(
    * tomorrow morning, and a notification that waits until eight is too late to
    * be a plan.
    */
-  await notify({
-    userId: covering.userId,
-    schoolId: ctx.schoolId,
-    kind: "SYSTEM",
-    titleKey: "notifTitle.nowMarking",
-    titleVars: { class: klass.name },
-    ...(input.fromDateKey === input.toDateKey
-      ? { bodyKey: "notifBody.coverOn" as const, bodyVars: { date: input.fromDateKey, reason: input.reason?.trim() ?? "" } }
-      : { bodyKey: "notifBody.coverFromTo" as const, bodyVars: { from: input.fromDateKey, to: input.toDateKey, reason: input.reason?.trim() ?? "" } }),
-    url: "/teacher/attendance",
-    urgent: true,
-  });
+  // A leave approval arranges many covers at once and tells each person
+  // ONCE, with the list — see decideLeave — so it asks for quiet here.
+  if (opts.notify !== false) {
+    await notify({
+      userId: covering.userId,
+      schoolId: ctx.schoolId,
+      kind: "SYSTEM",
+      titleKey: "notifTitle.nowMarking",
+      titleVars: { class: klass.name },
+      ...(input.fromDateKey === input.toDateKey
+        ? { bodyKey: "notifBody.coverOn" as const, bodyVars: { date: formatDateKey(input.fromDateKey), reason: input.reason?.trim() ?? "" } }
+        : { bodyKey: "notifBody.coverFromTo" as const, bodyVars: { from: formatDateKey(input.fromDateKey), to: formatDateKey(input.toDateKey), reason: input.reason?.trim() ?? "" } }),
+      url: "/teacher/attendance",
+      urgent: true,
+    });
+  }
 
   return { ok: true, coverId: cover.id };
 }

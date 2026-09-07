@@ -111,6 +111,19 @@ describe("leave days against the calendar", () => {
   });
 });
 
+describe("a school's own competitions", () => {
+  it("die with the school instead of becoming everybody's", async () => {
+    const other = await db.school.create({ data: { name: `ZZ Gone School ${STAMP}`, slug: `zz-gone-${STAMP}`, code: `ZG${String(STAMP).slice(-6)}`, contactEmail: `zz-gone-${STAMP}@test.invalid` }, select: { id: true } });
+    const admin = await db.user.create({ data: { name: "ZZ Gone Admin", email: `zz-gone-admin-${STAMP}@test.invalid` }, select: { id: true } });
+    const am = await db.membership.create({ data: { userId: admin.id, schoolId: other.id, role: "ADMIN", status: "ACTIVE" }, select: { id: true } });
+    const goneCtx = { ...ctx({ userId: admin.id, membershipId: am.id, role: "ADMIN" }), schoolId: other.id } as ActiveContext;
+    const id = await createCompetition(goneCtx, { title: "ZZ gone quiz", summary: "x", requiresParentConsent: false });
+    await db.school.delete({ where: { id: other.id } });
+    expect(await db.competition.count({ where: { id } })).toBe(0);
+    await db.user.delete({ where: { id: admin.id } });
+  });
+});
+
 describe("competitions", () => {
   let consentFree = "";
   let withConsent = "";

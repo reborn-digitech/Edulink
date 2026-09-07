@@ -9,6 +9,7 @@ import { windowFor } from "@/lib/insights";
 import { closeAcademicYear, createAcademicYear, currentAcademicYear } from "@/lib/academic-year";
 import { inQuietHours } from "@/lib/notify";
 import { saveAttendanceBatch } from "@/lib/attendance";
+import { openSlotsFor, publishSlots } from "@/lib/meetings";
 import { forSchool } from "@/lib/tenant-context";
 import type { ActiveContext } from "@/lib/session";
 
@@ -221,5 +222,19 @@ describe("attendance marks", () => {
     // Late → absent is a change into an absence, and the guardian is told.
     const told = await db.notification.count({ where: { schoolId, kind: "ATTENDANCE" } });
     expect(told).toBe(1);
+  });
+});
+
+describe("meeting slots reach the families the teacher teaches", () => {
+  it("a subject teacher on the timetable, on no class-teacher row, is offered — for the taught child only", async () => {
+    // Teacher B teaches class X one period a week on the timetable and marks no register.
+    const period = await db.timetablePeriod.create({ data: { schoolId, name: "ZZ P1", position: 1, startMinute: 540, endMinute: 585 }, select: { id: true } });
+    await db.timetableSlot.create({ data: { schoolId, classId, periodId: period.id, weekday: 1, subject: "Hindi", teacherMembershipId: teacherBMembershipId } });
+    const created = await publishSlots(teacherBCtx, { startsAt: new Date(Date.now() + 7 * 86_400_000), durationMinutes: 15, count: 1, location: "Room 9" });
+    expect(created.created).toBe(1);
+    const open = await openSlotsFor(parentCtx.user.id);
+    const theirs = open.filter((slot) => slot.location === "Room 9");
+    expect(theirs).toHaveLength(1);
+    expect(theirs[0]!.forStudentMembershipIds).toEqual([pupilMembershipId]);
   });
 });

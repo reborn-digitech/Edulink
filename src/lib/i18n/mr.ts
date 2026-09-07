@@ -4872,6 +4872,7 @@ export const mr: Dictionary = {
     forChild: "{name} साठी",
   },
   notifTitle: {
+    nowMarkingMany: "तुम्ही {count} वर्गांचा कव्हर करत आहात",
     bookingCancelled: "तज्ज्ञाची बुकिंग रद्द झाली",
     staffRecordUpdated: "तुमची कर्मचारी नोंद अद्ययावत झाली",
     birthdateSet: "तुमची जन्मतारीख बदलली",
@@ -4918,6 +4919,7 @@ export const mr: Dictionary = {
     newMessageFromSchool: "तुमच्या शाळेकडून नवा संदेश",
   },
   notifBody: {
+    coverForLeave: "{name} साठी, {from} ते {to}: {classes}.",
     staffRecordUpdated: "कार्यालयाने तुमची कर्मचारी नोंद अद्ययावत केली. पाहण्यासाठी तुमची प्रोफाइल उघडा.",
     birthdateSet: "शाळेच्या कार्यालयाने तुमची जन्मतारीख नोंदवली. चुकीची असेल तर कार्यालयाला सांगा.",
     birthdateCleared: "शाळेच्या कार्यालयाने तुमची जन्मतारीख काढली. ते चुकीचे असेल तर कार्यालयाला सांगा.",

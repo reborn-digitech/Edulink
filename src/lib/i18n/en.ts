@@ -5309,6 +5309,7 @@ export const en = {
      time by notify(); see titleKey. Every stored notification title lives
      here, so the list is the complete vocabulary of what the app tells people. */
   notifTitle: {
+    nowMarkingMany: "You are covering {count} classes",
     bookingCancelled: "An expert booking was cancelled",
     staffRecordUpdated: "Your staff record was updated",
     birthdateSet: "Your date of birth was updated",
@@ -5357,6 +5358,7 @@ export const en = {
   /* Notification bodies that are sentences — see notifBody in notify(). Data
      bodies (a post's title, a teacher's note) stay literal. */
   notifBody: {
+    coverForLeave: "For {name}, {from} to {to}: {classes}.",
     staffRecordUpdated: "The office updated your staff record. Open your profile to see it.",
     birthdateSet: "The school office set your date of birth. If it is wrong, tell the office.",
     birthdateCleared: "The school office removed your date of birth. If that is wrong, tell the office.",

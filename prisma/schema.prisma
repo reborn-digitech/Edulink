@@ -1381,7 +1381,11 @@ model Competition {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  organizerSchool School?               @relation(fields: [organizerSchoolId], references: [id], onDelete: SetNull)
+  /// CASCADE, not SetNull: a school's own competition is the school's, and
+  /// when the school goes the competition goes with it. SetNull turned a
+  /// deleted test school's competitions into platform-wide ones that every
+  /// school on the server could see and enter.
+  organizerSchool School?               @relation(fields: [organizerSchoolId], references: [id], onDelete: Cascade)
   entries         CompetitionEntry[]
   standings       CompetitionStanding[]
 

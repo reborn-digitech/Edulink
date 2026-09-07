@@ -12,6 +12,7 @@ import {
   setAttendanceRight,
 } from "@/lib/register-duty";
 import type { ActiveContext } from "@/lib/session";
+import { formatDateKey } from "@/lib/dates";
 
 /**
  * Who may take a class's register today.
@@ -520,8 +521,9 @@ describe("⚠ cover", () => {
     });
     expect(told).toHaveLength(1);
     expect(told[0]!.title).toContain("ZZ Register Duty Test Class");
-    expect(told[0]!.body).toContain(TODAY);
-    expect(told[0]!.body).toContain(NEXT_WEEK);
+    // Dates as the school reads them — dd/mm/yyyy — not the raw key.
+    expect(told[0]!.body).toContain(formatDateKey(TODAY));
+    expect(told[0]!.body).toContain(formatDateKey(NEXT_WEEK));
     // Somewhere they can act on it, not a dead end.
     expect(told[0]!.url).toBe("/teacher/attendance");
   });

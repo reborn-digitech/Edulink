@@ -34,6 +34,7 @@ import { LEAVE_KINDS, type LeaveKind, type LeaveRow } from "./leave-kinds";
 import type { TranslationKey } from "./i18n/dictionary";
 import { STAFF_ROLES } from "./staff-records";
 import { readJsonArray } from "./json";
+import { formatDateKey } from "./dates";
 
 export { LEAVE_KINDS, LEAVE_KIND_LABEL_KEY, LEAVE_STATUSES, LEAVE_STATUS_KEY } from "./leave-kinds";
 export type { LeaveKind, LeaveStatus, LeaveRow } from "./leave-kinds";
@@ -249,6 +250,14 @@ export async function decideLeave(
   if (claimed.count === 0) return { ok: false, errorKey: "leaveKind.alreadyDecided" };
 
   let coversCreated = 0;
+  // Who is now covering what, told once each with the whole list — the
+  // head covering ten classes read ten separate notices for one approval.
+  const coveredBy = new Map<string, string[]>();
+  const remember = (membershipId: string, classId: string) => {
+    const list = coveredBy.get(membershipId) ?? [];
+    list.push(classId);
+    coveredBy.set(membershipId, list);
+  };
 
   if (decision === "APPROVED") {
     // Whoever the DECIDER chose, falling back to the applicant's suggestion.
@@ -298,9 +307,12 @@ export async function decideLeave(
             toDateKey: request.toDateKey,
             reason: "Approved leave",
           },
-          { leaveRequestId: request.id },
+          { leaveRequestId: request.id, notify: false },
         );
-        if (result.ok) coversCreated++;
+        if (result.ok) {
+          coversCreated++;
+          remember(coveringMembershipId, classId);
+        }
       }
 
       /* Registers the assignments did not reach: a form class this person
@@ -340,9 +352,12 @@ export async function decideLeave(
                 toDateKey: request.toDateKey,
                 reason: "Approved leave",
               },
-              { leaveRequestId: request.id },
+              { leaveRequestId: request.id, notify: false },
             );
-            if (result.ok) coversCreated++;
+            if (result.ok) {
+              coversCreated++;
+              remember(registerCover, row.classId);
+            }
           }
         }
       }
@@ -399,9 +414,12 @@ export async function decideLeave(
             toDateKey: request.toDateKey,
             reason: "Approved leave",
           },
-          { leaveRequestId: request.id },
+          { leaveRequestId: request.id, notify: false },
         );
-        if (result.ok) coversCreated++;
+        if (result.ok) {
+          coversCreated++;
+          remember(coverId, classId);
+        }
       }
     }
   }
@@ -415,6 +433,32 @@ export async function decideLeave(
     meta: { coversCreated, teacherMembershipId: request.teacherMembershipId },
   });
 
+  if (coveredBy.size > 0) {
+    const ids = [...new Set([...coveredBy.values()].flat())];
+    const [classes, people] = await Promise.all([
+      db.class.findMany({ where: { id: { in: ids } }, select: { id: true, name: true } }),
+      db.membership.findMany({ where: { id: { in: [...coveredBy.keys()] } }, select: { id: true, userId: true } }),
+    ]);
+    const nameOf = new Map(classes.map((c) => [c.id, c.name]));
+    const applicantName = request.teacher.user.preferredName ?? request.teacher.user.name;
+    await Promise.all(
+      people.map((person) => {
+        const names = (coveredBy.get(person.id) ?? []).map((id) => nameOf.get(id) ?? id).sort();
+        return notify({
+          userId: person.userId,
+          schoolId: ctx.schoolId!,
+          kind: "SYSTEM",
+          titleKey: names.length === 1 ? "notifTitle.nowMarking" : "notifTitle.nowMarkingMany",
+          titleVars: names.length === 1 ? { class: names[0]! } : { count: names.length },
+          bodyKey: "notifBody.coverForLeave",
+          bodyVars: { name: applicantName, from: formatDateKey(request.fromDateKey), to: formatDateKey(request.toDateKey), classes: names.join(", ") },
+          url: "/teacher/attendance",
+          urgent: true,
+        });
+      }),
+    );
+  }
+
   await notify({
     userId: request.teacher.userId,
     schoolId: ctx.schoolId,
@@ -422,8 +466,8 @@ export async function decideLeave(
     titleKey: decision === "APPROVED" ? "notifTitle.leaveApproved" : "notifTitle.leaveDeclined",
     ...(decision === "APPROVED"
       ? coversCreated > 0
-        ? { bodyKey: "notifBody.leaveApprovedCover" as const, bodyVars: { from: request.fromDateKey, to: request.toDateKey, count: coversCreated } }
-        : { bodyKey: "notifBody.leaveApprovedDates" as const, bodyVars: { from: request.fromDateKey, to: request.toDateKey } }
+        ? { bodyKey: "notifBody.leaveApprovedCover" as const, bodyVars: { from: formatDateKey(request.fromDateKey), to: formatDateKey(request.toDateKey), count: coversCreated } }
+        : { bodyKey: "notifBody.leaveApprovedDates" as const, bodyVars: { from: formatDateKey(request.fromDateKey), to: formatDateKey(request.toDateKey) } }
       : opts.note?.trim()
         ? { body: opts.note.trim() }
         : { bodyKey: "notifBody.leaveDeclinedOffice" as const }),

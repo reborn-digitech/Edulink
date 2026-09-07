@@ -134,24 +134,26 @@ export default async function ParentMeetingsPage({
                       </p>
                     </div>
                     <div className="flex items-center gap-2">
-                      {children.length > 1 ? (
-                        <select
-                          name="studentMembershipId"
-                          className="rounded-lg border border-border bg-surface px-2 py-1.5 text-sm text-fg"
-                        >
-                          {children.map((child) => (
-                            <option key={child.studentMembershipId} value={child.studentMembershipId}>
-                              {child.name}
-                            </option>
-                          ))}
-                        </select>
-                      ) : (
-                        <input
-                          type="hidden"
-                          name="studentMembershipId"
-                          value={children[0]?.studentMembershipId ?? ""}
-                        />
-                      )}
+                      {/* Only the children THIS teacher teaches: a slot with
+                          the Hindi teacher of one child is not a meeting
+                          about the other, and the server refuses it anyway. */}
+                      {(() => {
+                        const mine = children.filter((child) => slot.forStudentMembershipIds.includes(child.studentMembershipId));
+                        return mine.length > 1 ? (
+                          <select
+                            name="studentMembershipId"
+                            className="rounded-lg border border-border bg-surface px-2 py-1.5 text-sm text-fg"
+                          >
+                            {mine.map((child) => (
+                              <option key={child.studentMembershipId} value={child.studentMembershipId}>
+                                {child.name}
+                              </option>
+                            ))}
+                          </select>
+                        ) : (
+                          <input type="hidden" name="studentMembershipId" value={mine[0]?.studentMembershipId ?? ""} />
+                        );
+                      })()}
                       <Button type="submit" size="sm">
                         {t("meetings.book")}
                       </Button>

@@ -179,6 +179,8 @@ export type OpenSlot = {
   endsAt: Date;
   location: string | null;
   note: string | null;
+  /** The caller's children this teacher teaches — the only ones a booking may name. */
+  forStudentMembershipIds: string[];
 };
 
 export type MyBooking = {
@@ -197,7 +199,8 @@ export type MyBooking = {
  * teacher who has never met the child is not what this page is for.
  */
 export async function openSlotsFor(parentUserId: string): Promise<OpenSlot[]> {
-  const teacherIds = await relevantTeacherIds(parentUserId);
+  const byTeacher = await relevantTeachers(parentUserId);
+  const teacherIds = [...byTeacher.keys()];
   if (teacherIds.length === 0) return [];
 
   const slots = await db.meetingSlot.findMany({
@@ -219,30 +222,64 @@ export async function openSlotsFor(parentUserId: string): Promise<OpenSlot[]> {
     endsAt: slot.endsAt,
     location: slot.location,
     note: slot.note,
+    forStudentMembershipIds: [...(byTeacher.get(slot.teacherMembershipId) ?? [])],
   }));
 }
 
 async function relevantTeacherIds(parentUserId: string): Promise<string[]> {
+  return [...(await relevantTeachers(parentUserId)).keys()];
+}
+
+/** Each teacher of any of the caller's children, with WHICH children. */
+async function relevantTeachers(parentUserId: string): Promise<Map<string, Set<string>>> {
   const links = await db.guardianship.findMany({
     where: { parentUserId, status: "ACTIVE" },
     select: {
+      studentMembershipId: true,
       student: {
         select: {
           enrollments: {
             where: { status: "ACTIVE" },
-            select: { class: { select: { teachers: { select: { teacherMembershipId: true } } } } },
+            select: { classId: true, class: { select: { teachers: { select: { teacherMembershipId: true } } } } },
           },
         },
       },
     },
   });
-  const ids = new Set<string>();
+  const out = new Map<string, Set<string>>();
+  const add = (teacherId: string, studentId: string) => {
+    const set = out.get(teacherId) ?? new Set<string>();
+    set.add(studentId);
+    out.set(teacherId, set);
+  };
+  const classToStudents = new Map<string, Set<string>>();
+  const classIds = new Set<string>();
   for (const link of links) {
     for (const enrollment of link.student.enrollments) {
-      for (const teacher of enrollment.class.teachers) ids.add(teacher.teacherMembershipId);
+      classIds.add(enrollment.classId);
+      const pupils = classToStudents.get(enrollment.classId) ?? new Set<string>();
+      pupils.add(link.studentMembershipId);
+      classToStudents.set(enrollment.classId, pupils);
+      for (const teacher of enrollment.class.teachers) add(teacher.teacherMembershipId, link.studentMembershipId);
     }
   }
-  return [...ids];
+  // WHO TEACHES THE CHILD, FROM BOTH LISTS — the same two the reviews page
+  // reads. A class-teacher row is who marks the register; the timetable is
+  // who stands in front of the class at 11:15, and the Hindi teacher who is
+  // on it for one period a week and on no class-teacher row at all was
+  // offering meeting slots nobody could see.
+  if (classIds.size > 0) {
+    const slots = await db.timetableSlot.findMany({
+      where: { classId: { in: [...classIds] }, teacherMembershipId: { not: null } },
+      select: { teacherMembershipId: true, classId: true },
+      distinct: ["teacherMembershipId", "classId"],
+    });
+    for (const slot of slots) {
+      if (!slot.teacherMembershipId) continue;
+      for (const pupil of classToStudents.get(slot.classId) ?? []) add(slot.teacherMembershipId, pupil);
+    }
+  }
+  return out;
 }
 
 /**
