@@ -5731,4 +5731,9 @@ export const en = {
     yourChildren: "Your children",
     yourRecord: "Your record",
   },
+  mobile: {
+    share: "Share",
+    loadMore: "Load more",
+    openOnWeb: "Open on the web",
+  },
 } as const;

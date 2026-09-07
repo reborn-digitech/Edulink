@@ -1,4 +1,4 @@
-import { Platform } from "react-native";
+import { platformKeyStore } from "./storage-platform";
 
 /**
  * Where the session token lives: the secure enclave on a phone, the browser's
@@ -53,26 +53,10 @@ function webStore(): KeyStore {
   };
 }
 
-function secureStore(): KeyStore {
-  // Loaded lazily so the web bundle and the test runner never touch the native module.
-  const load = () => import("expo-secure-store");
-  return {
-    async get(key) {
-      return (await load()).getItemAsync(key);
-    },
-    async set(key, value) {
-      await (await load()).setItemAsync(key, value);
-    },
-    async remove(key) {
-      await (await load()).deleteItemAsync(key);
-    },
-  };
-}
-
 let current: KeyStore | null = null;
 
 export function keyStore(): KeyStore {
-  if (!current) current = Platform.OS === "web" ? webStore() : secureStore();
+  if (!current) current = platformKeyStore() ?? webStore();
   return current;
 }
 

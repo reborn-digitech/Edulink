@@ -3,6 +3,7 @@ import type { Me, RoleCode, SessionResponse } from "@edulink/contracts";
 import { api } from "./api";
 import { KEYS, keyStore } from "./storage";
 import { unwrap } from "./query";
+import { unregisterPush } from "./push";
 
 /**
  * Who is signed in, from the phone's point of view.
@@ -73,6 +74,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         await loadMe();
       },
       async signOut() {
+        await unregisterPush();
         await api().post("/api/v1/auth/logout");
         await keyStore().remove(KEYS.token);
         await keyStore().remove(KEYS.session);

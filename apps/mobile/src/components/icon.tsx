@@ -1,9 +1,9 @@
 import type { ComponentProps } from "react";
 import {
-  ArchiveIcon, BellIcon, BrainIcon, BriefcaseIcon, BuildingsIcon, CalendarIcon, CameraIcon, ChalkboardIcon, ChartLineIcon, ChatIcon,
+  ArchiveIcon, BellIcon, BrainIcon, BriefcaseIcon, BuildingsIcon, CalendarIcon, CameraIcon, CaretRightIcon, ChalkboardIcon, ChartLineIcon, ChatIcon,
   CheckIcon, ChecksIcon, CircleIcon, ClipboardTextIcon, ClockIcon, DeviceMobileIcon, DotsThreeOutlineIcon, EnvelopeIcon, GearIcon,
-  HouseIcon, MegaphoneIcon, PaletteIcon, PaperPlaneTiltIcon, PlusIcon, ShieldIcon, SignOutIcon, StarIcon, TranslateIcon, TrophyIcon,
-  UserIcon, UsersIcon, WarningIcon, XIcon,
+  HouseIcon, MegaphoneIcon, PaletteIcon, PaperPlaneTiltIcon, PlusIcon, ShieldIcon, SignOutIcon, StarIcon, TranslateIcon, TrayIcon, TrophyIcon,
+  UserIcon, UsersIcon, WarningIcon, XIcon, HandsClappingIcon, LightbulbIcon, HeartIcon, ConfettiIcon, HandsPrayingIcon, MedalIcon,
 } from "phosphor-react-native";
 
 /**
@@ -17,6 +17,13 @@ const MAP = {
   star: StarIcon, trophy: TrophyIcon, archive: ArchiveIcon, briefcase: BriefcaseIcon, buildings: BuildingsIcon, envelope: EnvelopeIcon,
   megaphone: MegaphoneIcon, palette: PaletteIcon, plus: PlusIcon, shield: ShieldIcon, dots: DotsThreeOutlineIcon, signOut: SignOutIcon,
   translate: TranslateIcon, devices: DeviceMobileIcon, check: CheckIcon, x: XIcon, warning: WarningIcon, camera: CameraIcon, paperPlane: PaperPlaneTiltIcon,
+  tray: TrayIcon, caretRight: CaretRightIcon,
+  clap: HandsClappingIcon,
+  lightbulb: LightbulbIcon,
+  heart: HeartIcon,
+  confetti: ConfettiIcon,
+  handsPraying: HandsPrayingIcon,
+  medal: MedalIcon,
 } as const;
 
 export type IconName = keyof typeof MAP;

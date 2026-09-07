@@ -5297,4 +5297,9 @@ export const hi: Dictionary = {
     yourChildren: "आपके बच्चे",
     yourRecord: "आपका रिकॉर्ड",
   },
+  mobile: {
+    share: "साझा करें",
+    loadMore: "और दिखाएँ",
+    openOnWeb: "वेब पर खोलें",
+  },
 };

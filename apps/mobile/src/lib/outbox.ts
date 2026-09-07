@@ -1,4 +1,4 @@
-import { Platform } from "react-native";
+import { platformOutbox } from "./outbox-platform";
 
 /**
  * The offline outbox, the phone's twin of the web's lib/offline-queue.ts.
@@ -42,45 +42,9 @@ export function memoryOutbox(): OutboxStore {
   };
 }
 
-function sqliteOutbox(): OutboxStore {
-  type Db = { execAsync(sql: string): Promise<void>; runAsync(sql: string, ...params: unknown[]): Promise<unknown>; getAllAsync<T>(sql: string): Promise<T[]> };
-  let dbPromise: Promise<Db> | null = null;
-  const open = () => {
-    if (!dbPromise) {
-      dbPromise = import("expo-sqlite").then(async (sqlite) => {
-        const db = (await sqlite.openDatabaseAsync("edulink-outbox.db")) as unknown as Db;
-        await db.execAsync(
-          "CREATE TABLE IF NOT EXISTS outbox (id TEXT PRIMARY KEY, url TEXT NOT NULL, method TEXT NOT NULL, body TEXT NOT NULL, tag TEXT NOT NULL, createdAt INTEGER NOT NULL, attempts INTEGER NOT NULL DEFAULT 0, lastError TEXT)",
-        );
-        return db;
-      });
-    }
-    return dbPromise;
-  };
-  return {
-    async all() {
-      const db = await open();
-      return db.getAllAsync<QueuedRequest & { lastError: string | null }>("SELECT * FROM outbox ORDER BY createdAt ASC").then((rows) =>
-        rows.map((r) => ({ ...r, lastError: r.lastError ?? undefined })),
-      );
-    },
-    async put(item) {
-      const db = await open();
-      await db.runAsync(
-        "INSERT OR REPLACE INTO outbox (id, url, method, body, tag, createdAt, attempts, lastError) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-        item.id, item.url, item.method, item.body, item.tag, item.createdAt, item.attempts, item.lastError ?? null,
-      );
-    },
-    async remove(id) {
-      const db = await open();
-      await db.runAsync("DELETE FROM outbox WHERE id = ?", id);
-    },
-  };
-}
-
 let store: OutboxStore | null = null;
 function current(): OutboxStore {
-  if (!store) store = Platform.OS === "web" ? memoryOutbox() : sqliteOutbox();
+  if (!store) store = platformOutbox() ?? memoryOutbox();
   return store;
 }
 export function __setOutboxStore(next: OutboxStore | null): void {

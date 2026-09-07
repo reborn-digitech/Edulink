@@ -52,7 +52,7 @@ export function OutboxBadge({ tag }: { tag?: string }) {
       accessibilityRole="text"
       accessibilityLiveRegion="polite"
       accessibilityLabel={`${label}. ${t("shell.outboxHint")}`}
-      style={{ flexDirection: "row", alignItems: "center", gap: th.space[2], alignSelf: "flex-start", backgroundColor: th.warnSoft, borderRadius: th.radius.full, paddingHorizontal: th.space[3], minHeight: 32 }}
+      style={{ flexDirection: "row", alignItems: "center", gap: th.space[2], alignSelf: "flex-start", backgroundColor: th.warnSoft, borderRadius: 999, paddingHorizontal: th.space[3], minHeight: 32 }}
     >
       <Icon name="tray" color={th.warn} size={16} weight="bold" />
       <Text variant="xs" bold tone="warn">
@@ -87,25 +87,30 @@ export function throwIfRefused(outcome: WriteOutcome): Exclude<WriteOutcome, { k
   return outcome;
 }
 
-/** "Mon 7 Sep" from a YYYY-MM-DD key, in the reader's language. */
+/** The app's three languages as BCP 47 tags for the date formatter: India's day-month order. */
+function tagFor(locale: string): string {
+  return locale.includes("-") ? locale : `${locale}-IN`;
+}
+
+/** "Mon, 7 Sept" from a YYYY-MM-DD key, in the reader's language. */
 export function dayLabel(dateKey: string, locale: string): string {
   const d = new Date(`${dateKey}T00:00:00`);
   if (Number.isNaN(d.getTime())) return dateKey;
-  return d.toLocaleDateString(locale, { weekday: "short", day: "numeric", month: "short" });
+  return d.toLocaleDateString(tagFor(locale), { weekday: "short", day: "numeric", month: "short" });
 }
 
 /** "7 Sep, 14:05" from an ISO instant. */
 export function whenLabel(iso: string, locale: string): string {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return iso;
-  return d.toLocaleString(locale, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+  return d.toLocaleString(tagFor(locale), { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
 }
 
 /** "2 hours ago" / "in 3 days", the web's relativeTime. */
 export function relativeTime(iso: string, locale: string, now: Date = new Date()): string {
   const target = new Date(iso);
   if (Number.isNaN(target.getTime())) return iso;
-  const rtf = new Intl.RelativeTimeFormat(locale, { numeric: "auto" });
+  const rtf = new Intl.RelativeTimeFormat(tagFor(locale), { numeric: "auto" });
   const diffMs = target.getTime() - now.getTime();
   const units: [Intl.RelativeTimeFormatUnit, number][] = [
     ["year", 31_536_000_000],

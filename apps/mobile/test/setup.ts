@@ -12,3 +12,10 @@ jest.mock("expo-secure-store", () => {
 });
 jest.mock("expo-haptics", () => ({ impactAsync: async () => {}, notificationAsync: async () => {}, ImpactFeedbackStyle: { Light: "light", Medium: "medium" }, NotificationFeedbackType: { Success: "success", Error: "error" } }));
 jest.mock("expo-sqlite", () => ({ openDatabaseAsync: async () => { throw new Error("no sqlite in tests: use memoryOutbox"); } }));
+jest.mock("expo-notifications", () => ({
+  getPermissionsAsync: async () => ({ granted: false }),
+  requestPermissionsAsync: async () => ({ granted: false }),
+  getExpoPushTokenAsync: async () => ({ data: "ExponentPushToken[test]" }),
+  addNotificationResponseReceivedListener: () => ({ remove: () => {} }),
+}));
+jest.mock("expo-device", () => ({ isDevice: false, modelName: "Test" }));

@@ -10,7 +10,10 @@ import { useTheme } from "@/lib/theme";
  * The shell: a bottom tab bar per role mirroring the web NAV's primaries, and
  * "More" for the rest. Every tab screen is declared once; the ones a role
  * has no tab for are hidden (href: null) rather than absent, so a deep link
- * to /attendance still resolves for a guardian and a teacher alike.
+ * to /attendance still resolves for a guardian and a teacher alike. The
+ * detail routes nested under a tab (a class, a room, a thread) are named
+ * here too: the Tabs navigator lists every file it finds, and an unnamed
+ * one appears in the bar with a default icon on the web target.
  */
 export default function AppLayout() {
   const role = useRole();
@@ -48,7 +51,7 @@ export default function AppLayout() {
         );
       })}
       <Tabs.Screen name="notifications" options={{ href: null, title: t("shell.notifications") }} />
-      {["marks", "exams", "meetings", "bulletin", "timetable", "staff", "calendar", "reviews"].map((name) => (
+      {["marks", "exams", "meetings", "bulletin", "timetable", "staff", "calendar", "reviews", "classes/detail", "messages/room", "messages/thread"].map((name) => (
         <Tabs.Screen key={name} name={name} options={{ href: null }} />
       ))}
     </Tabs>

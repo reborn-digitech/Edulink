@@ -5292,4 +5292,9 @@ export const mr: Dictionary = {
     yourChildren: "तुमची मुले",
     yourRecord: "तुमची नोंद",
   },
+  mobile: {
+    share: "शेअर करा",
+    loadMore: "आणखी दाखवा",
+    openOnWeb: "वेबवर उघडा",
+  },
 };

@@ -7,6 +7,8 @@ import { makeQueryClient } from "@/lib/query";
 import { SessionProvider, useSession } from "@/lib/session";
 import { I18nProvider } from "@/lib/i18n";
 import { RoleThemeProvider } from "@/lib/theme";
+import { useDeepLinks } from "@/lib/deep-links";
+import { registerForPush } from "@/lib/push";
 
 /**
  * The root: providers, then the one rule of the router — no session, the
@@ -33,10 +35,14 @@ function Gate() {
   const scheme = useColorScheme();
   const inAuth = segments[0] === "(auth)";
 
+  useDeepLinks();
+
   useEffect(() => {
     if (session.status === "loading") return;
     if (session.status === "signed-out" && !inAuth) router.replace("/(auth)");
     if (session.status === "signed-in" && inAuth) router.replace("/(app)");
+    // Best-effort, every start while signed in: the token can rotate.
+    if (session.status === "signed-in") void registerForPush();
   }, [session.status, inAuth, router]);
 
   return (
