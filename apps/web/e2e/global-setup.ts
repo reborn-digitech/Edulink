@@ -42,13 +42,22 @@ export default async function globalSetup() {
   sessions.ADMIN = { role: "ADMIN", cookie: await mint(await byEmail("zz.admin@zz.test"), "ADMIN", school.id) };
   sessions.PRINCIPAL = { role: "PRINCIPAL", cookie: await mint(await byEmail("zz.principal@zz.test"), "PRINCIPAL", school.id) };
 
-  // An exam slot the fixture has, then a class of that grade with pupils and
-  // its lead teacher: one actor who can open both the register and the sheet.
-  const slot = await db.examSlot.findFirstOrThrow({ where: { schoolId: school.id }, select: { id: true, series: { select: { gradeLevel: true } } } });
+  // A lead teacher of a class with pupils, and an exam slot for that grade —
+  // made here if the fixture has none (a fresh CI database has none), ZZ-named
+  // and find-or-create so a second run reuses it. One actor who can open both
+  // the register and the marks sheet.
   const lead = await db.classTeacher.findFirstOrThrow({
-    where: { schoolId: school.id, role: "LEAD", class: { archivedAt: null, gradeLevel: slot.series.gradeLevel, enrollments: { some: { status: "ACTIVE" } } } },
-    include: { teacher: { select: { userId: true } }, class: { select: { id: true } } },
+    where: { schoolId: school.id, role: "LEAD", class: { archivedAt: null, gradeLevel: { not: null }, enrollments: { some: { status: "ACTIVE" } } } },
+    include: { teacher: { select: { userId: true } }, class: { select: { id: true, gradeLevel: true } } },
+    orderBy: { class: { name: "asc" } },
   });
+  const gradeLevel = lead.class.gradeLevel!;
+  const series =
+    (await db.examSeries.findFirst({ where: { schoolId: school.id, name: "ZZ E2E Unit Test", gradeLevel }, select: { id: true } })) ??
+    (await db.examSeries.create({ data: { schoolId: school.id, name: "ZZ E2E Unit Test", gradeLevel }, select: { id: true } }));
+  const slot =
+    (await db.examSlot.findFirst({ where: { seriesId: series.id }, select: { id: true } })) ??
+    (await db.examSlot.create({ data: { schoolId: school.id, seriesId: series.id, subject: "Mathematics", dateKey: "2026-09-01", pointsMilli: 50_000 }, select: { id: true } }));
   sessions.TEACHER = { role: "TEACHER", cookie: await mint(lead.teacher.userId, "TEACHER", school.id), classId: lead.class.id, slotId: slot.id };
 
   const pupil = await db.membership.findFirstOrThrow({ where: { schoolId: school.id, role: "STUDENT", status: "ACTIVE" }, select: { userId: true } });
