@@ -2041,6 +2041,7 @@ export const en = {
   /* boundary. One key per distinct sentence; the sentence is the value.    */
   /* ---------------------------------------------------------------------- */
   access: {
+    notForYourGrade: "This competition is for other grades.",
     resultAlreadyRecorded: "A result has already been recorded for this entry, so it cannot be handed in again.",
     notYourPupil: "That pupil is not in a class you teach.",
     onlyTheCurrentYearCloses: "Only the year that is running can be closed.",

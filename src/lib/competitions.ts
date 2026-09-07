@@ -199,7 +199,12 @@ export async function getCompetition(session: ActiveContext, competitionId: stri
     entry: entries.get(competition.id) ?? null,
     /** Only ever this school's, because CompetitionEntry is policied. */
     enteredCount: await db.competitionEntry.count({
-      where: { competitionId: competition.id, parentConsentAt: { not: null } },
+      where: {
+        competitionId: competition.id,
+        // Consent is the bar only where the competition asks for it; a
+        // consent-free competition never stamps it, and counted nobody.
+        ...(competition.requiresParentConsent ? { parentConsentAt: { not: null } } : {}),
+      },
     }),
   };
 }
@@ -297,6 +302,24 @@ export async function enterCompetition(
 
   if (!registrationOpen(competition)) {
     throw new AccessError("access.entriesForThisCompetitionHaveClosed");
+  }
+
+  // The grade band, when the organiser set one and the pupil's grade is
+  // known: a Class 3 child cannot enter a Classes 9–12 olympiad.
+  if (competition.gradeLow || competition.gradeHigh) {
+    const me = await db.membership.findUnique({
+      where: { id: session.membershipId },
+      select: {
+        gradeLevel: true,
+        enrollments: { where: { status: "ACTIVE" }, select: { class: { select: { gradeLevel: true } } }, take: 1 },
+      },
+    });
+    const grade = Number(me?.gradeLevel ?? me?.enrollments[0]?.class.gradeLevel ?? NaN);
+    const low = competition.gradeLow ? Number(competition.gradeLow) : NaN;
+    const high = competition.gradeHigh ? Number(competition.gradeHigh) : NaN;
+    if (Number.isFinite(grade) && ((Number.isFinite(low) && grade < low) || (Number.isFinite(high) && grade > high))) {
+      throw new AccessError("access.notForYourGrade");
+    }
   }
 
   const existing = await db.competitionEntry.findUnique({
@@ -906,14 +929,20 @@ export async function refreshStanding(
   schoolId: string,
   competitionId: string,
 ): Promise<void> {
+  const competition = await db.competition.findUnique({
+    where: { id: competitionId },
+    select: { requiresParentConsent: true },
+  });
   const scored = await db.competitionEntry.findMany({
     where: {
       competitionId,
       schoolId,
       // A result means a place, a score, or both. An entry that is merely
       // registered is not a standing — counting it would let a school climb the
-      // board by entering people.
+      // board by entering people. Nor is a result on an entry whose guardian
+      // never said yes, where the competition asked them to.
       OR: [{ rank: { not: null } }, { scoreMilli: { not: null } }],
+      ...(competition?.requiresParentConsent ? { parentConsentAt: { not: null } } : {}),
     },
     select: { rank: true, scoreMilli: true },
   });

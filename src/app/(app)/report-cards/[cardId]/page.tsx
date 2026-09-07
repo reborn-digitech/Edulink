@@ -131,7 +131,7 @@ export default async function ReportCardPage({
           <Figure
             label={t("reportView.attendance")}
             value={
-              card.attendancePercent === null ? "—" : `${card.attendancePercent.toFixed(1)}%`
+              card.attendancePercent === null ? "—" : `${card.attendancePercent}%`
             }
             hint={
               card.attendanceTotal === 0

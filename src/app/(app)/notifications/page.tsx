@@ -14,6 +14,8 @@ import { getT } from "@/lib/i18n/server";
 import { effectiveThresholds } from "@/lib/notification-housekeeping";
 import { DataToolbar } from "@/components/ui/data-toolbar";
 import { PageHeader } from "@/components/ui/page-header";
+import type { Translate, TranslationKey } from "@/lib/i18n/dictionary";
+import { readJson } from "@/lib/json";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -138,8 +140,10 @@ export default async function NotificationsPage({
             items={rows.map((row) => ({
               id: row.id,
               kind: row.kind as NotificationKind,
-              title: row.title,
-              body: row.body,
+              // Said again in the reader's language of today when the key
+              // was kept; the stored sentence otherwise.
+              title: sayAgain(t, row.titleKey, row.titleVars, row.title),
+              body: sayAgain(t, row.bodyKey, row.bodyVars, row.body),
               url: row.url,
               read: row.readAt !== null,
               when: relativeTime(row.createdAt),
@@ -149,4 +153,15 @@ export default async function NotificationsPage({
       )}
     </div>
   );
+}
+
+/**
+ * A stored notification's sentence, re-rendered from its key when it has
+ * one and the key is still in the dictionary; the sentence as written
+ * otherwise. Never the bare key.
+ */
+function sayAgain(t: Translate, key: string | null, vars: string, fallback: string): string {
+  if (!key) return fallback;
+  const rendered = t(key as TranslationKey, readJson<Record<string, string | number>>(vars, {}));
+  return rendered && rendered !== key ? rendered : fallback;
 }

@@ -85,6 +85,12 @@ export async function notify(input: NotifyInput): Promise<void> {
       body,
       url: input.url ?? null,
       meta: writeJson(input.meta ?? {}),
+      // The key and its variables travel with the sentence, so the page can
+      // say it again in whatever language the reader has since chosen.
+      titleKey: input.titleKey ?? null,
+      titleVars: writeJson(input.titleVars ?? {}),
+      bodyKey: input.bodyKey ?? null,
+      bodyVars: writeJson(input.bodyVars ?? {}),
     },
   });
 

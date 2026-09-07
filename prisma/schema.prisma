@@ -1592,6 +1592,13 @@ model Notification {
   body     String  @default("")
   url      String?
   meta     String  @default("{}")
+  /// The sentence's key and variables, kept beside the rendered text so a
+  /// reader who changes language reads old notices in the new one. Null on
+  /// rows written before the columns existed and on literal titles.
+  titleKey  String?
+  titleVars String  @default("{}")
+  bodyKey   String?
+  bodyVars  String  @default("{}")
 
   readAt    DateTime?
   createdAt DateTime  @default(now())
@@ -2791,6 +2798,11 @@ model Conversation {
   createdById   String
   createdAt     DateTime @default(now())
   lastMessageAt DateTime @default(now())
+  /// "<schoolId>:<userId>:<userId>" with the two ids sorted — the database's
+  /// own guarantee that two people share ONE room, which find-then-create
+  /// could not give under a double tap. Null on rooms made before the key
+  /// existed; they are keyed the first time they are found again.
+  pairKey       String?  @unique
 
   school       School                    @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   participants ConversationParticipant[]

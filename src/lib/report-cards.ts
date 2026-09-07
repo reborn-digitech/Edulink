@@ -716,7 +716,9 @@ export async function getCard(ctx: ActiveContext, cardId: string): Promise<Card 
     attendancePercent:
       card.attendanceTotal === 0
         ? null
-        : Math.round((card.attendancePresent / card.attendanceTotal) * 1000) / 10,
+        // Whole percent — the same rounding the attendance pages use, so the
+        // card and the page never disagree by a decimal.
+        : Math.round((card.attendancePresent / card.attendanceTotal) * 100),
     overallPercent:
       card.overallPercentMilli === null ? null : card.overallPercentMilli / 1000,
     gradingMethod: card.gradingMethod,

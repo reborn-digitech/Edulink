@@ -3,9 +3,10 @@ import { db } from "./db";
 import { AccessError } from "./tenancy";
 import { audit } from "./audit";
 import { notify } from "./notify";
-import { dateKeyRange, isDateKey, todayKey, weekdayOfKey } from "./dates";
+import { dateKeyRange, isDateKey, isTeachingDay, todayKey } from "./dates";
 import type { ActiveContext } from "./session";
 import type { TranslationKey } from "./i18n/dictionary";
+import { closedDayKeys, listHolidays } from "./holidays";
 
 /**
  * Staff records, and the leave balance that falls out of them.
@@ -147,12 +148,35 @@ export async function setStaffRecord(
   return { ok: true };
 }
 
-/** Weekdays in a range — what a school counts a leave as. */
-export function leaveDays(fromDateKey: string, toDateKey: string): number {
-  return dateKeyRange(fromDateKey, toDateKey, 400).filter((k) => {
-    const wd = weekdayOfKey(k);
-    return wd !== 0 && wd !== 6;
-  }).length;
+/**
+ * School days in a range — what a leave draws from the entitlement.
+ *
+ * THE SIX-DAY WEEK, the same rule `isTeachingDay` and `schoolDaysBetween`
+ * apply everywhere else: Sunday is the day off, Saturday is a school day.
+ * This used to count Monday to Friday, so a Saturday's sick leave drew
+ * nothing and Friday-to-Monday drew two where the school would count three.
+ * `closed` — the days the calendar shuts the school — are not leave either.
+ */
+export function leaveDays(fromDateKey: string, toDateKey: string, closed: ReadonlySet<string> = new Set()): number {
+  return dateKeyRange(fromDateKey, toDateKey, 400).filter((k) => isTeachingDay(k) && !closed.has(k)).length;
+}
+
+/**
+ * The same count against the school's calendar, and only the part of the
+ * span inside `within` when a window is given — a leave that straddles the
+ * year boundary belongs to each year for its own days.
+ */
+export async function leaveDaysFor(
+  schoolId: string,
+  fromDateKey: string,
+  toDateKey: string,
+  within?: { from: string; to: string },
+): Promise<number> {
+  const from = within && within.from > fromDateKey ? within.from : fromDateKey;
+  const to = within && within.to < toDateKey ? within.to : toDateKey;
+  if (from > to) return 0;
+  const spans = await listHolidays(schoolId, { fromKey: from, toKey: to });
+  return leaveDays(from, to, closedDayKeys(spans));
 }
 
 /** The balance for one member of staff, against the current academic year. */
@@ -163,14 +187,18 @@ export async function leaveBalanceFor(schoolId: string, membershipId: string): P
   ]);
   const from = year ? year.startDate.toISOString().slice(0, 10) : `${new Date().getUTCFullYear()}-01-01`;
   const to = year ? year.endDate.toISOString().slice(0, 10) : `${new Date().getUTCFullYear()}-12-31`;
+  // Overlapping the year, not starting in it: a leave across the boundary
+  // counts here for its days inside the year and nowhere else for the rest.
   const requests = await db.leaveRequest.findMany({
-    where: { schoolId, teacherMembershipId: membershipId, kind: { in: COUNTED_KINDS }, status: { in: ["APPROVED", "PENDING"] }, fromDateKey: { gte: from, lte: to } },
+    where: { schoolId, teacherMembershipId: membershipId, kind: { in: COUNTED_KINDS }, status: { in: ["APPROVED", "PENDING"] }, fromDateKey: { lte: to }, toDateKey: { gte: from } },
     select: { status: true, fromDateKey: true, toDateKey: true },
   });
+  const spans = await listHolidays(schoolId, { fromKey: from, toKey: to });
+  const closed = closedDayKeys(spans);
   let used = 0;
   let pending = 0;
   for (const r of requests) {
-    const n = leaveDays(r.fromDateKey, r.toDateKey);
+    const n = leaveDays(r.fromDateKey > from ? r.fromDateKey : from, r.toDateKey < to ? r.toDateKey : to, closed);
     if (r.status === "APPROVED") used += n;
     else pending += n;
   }

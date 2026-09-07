@@ -578,9 +578,11 @@ describe("the staff record, and the balance the desk reads from it", () => {
     expect(await staffRecordFor(otherSchoolAdmin, applicantMembershipId)).toBeNull();
   });
 
-  it("counts weekdays, and only the kinds that draw on the entitlement", async () => {
-    expect(leaveDays("2026-05-01", "2026-05-04")).toBe(2); // Fri → Mon
+  it("counts school days — Sunday off, Saturday a school day, the calendar's closures not leave — and only the kinds that draw on the entitlement", async () => {
+    expect(leaveDays("2026-05-01", "2026-05-04")).toBe(3); // Fri, Sat, Mon
     expect(leaveDays("2026-05-04", "2026-05-08")).toBe(5);
+    expect(leaveDays("2026-05-02", "2026-05-02")).toBe(1); // a Saturday alone draws a day
+    expect(leaveDays("2026-05-04", "2026-05-08", new Set(["2026-05-06"]))).toBe(4); // a closed Wednesday is not leave
     await setStaffRecord(admin, applicantMembershipId, { leaveDaysPerYear: 12 });
     // Balance is against the CURRENT year; BASE's dates may sit outside it, so ask with a window of this year's.
     const year = await db.academicYear.findFirst({ where: { schoolId: riversideId, isCurrent: true } });

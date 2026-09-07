@@ -186,19 +186,9 @@ export async function saveAttendanceBatch(opts: {
   if (opts.notify !== false) {
     const pretty = formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" });
     /**
-     * ⚠ THIS ONE STAYS ENGLISH, and that is a decision rather than an oversight.
-     *
-     * Every other reader of ATTENDANCE_META resolves the key at RENDER time, in
-     * the reader's language. A notification is written once by the TEACHER and
-     * read later by the GUARDIAN, and `Notification.title` stores the finished
-     * sentence — so translating here would stamp the teacher's language onto the
-     * guardian's notification. A Marathi-speaking parent would get Hindi because
-     * the teacher who took the register happens to read Hindi, which is worse
-     * than the English they get today.
-     *
-     * Fixing it properly means storing a key plus its parameters and rendering
-     * at read time — a schema change and a migration for every notification
-     * already written. Recorded in the README rather than bodged here.
+     * Rendered in the GUARDIAN's language by `notify` (it reads the
+     * recipient's prefs, not the teacher's), and the key is kept on the row
+     * so the notifications page can say it again if they change language.
      */
     await Promise.all(
       newlyAbsent.map(({ studentMembershipId, status }) =>

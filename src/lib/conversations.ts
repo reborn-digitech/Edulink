@@ -245,9 +245,18 @@ export async function openConversation(
   if (!them) throw new AccessError("access.personNotAtSchool", "NOT_FOUND");
   if (!mayConverse(me, them)) throw new AccessError("access.cannotMessageThisPerson");
 
+  // ONE ROOM PER PAIR IS THE DATABASE'S PROMISE, not this function's. The
+  // key is unique; two opens a moment apart both try to create, one wins,
+  // and the other finds the winner. Rooms from before the key existed are
+  // found by their participants and keyed on the way past.
+  const pairKey = `${schoolId}:${[ctx.user.id, otherUserId].sort().join(":")}`;
+  const keyed = await db.conversation.findUnique({ where: { pairKey }, select: { id: true } });
+  if (keyed) return { conversationId: keyed.id, created: false };
+
   const candidates = await db.conversation.findMany({
     where: {
       schoolId,
+      pairKey: null,
       AND: [
         { participants: { some: { userId: ctx.user.id } } },
         { participants: { some: { userId: otherUserId } } },
@@ -257,21 +266,33 @@ export async function openConversation(
     take: 5,
   });
   const existing = candidates.find((c) => c._count.participants === 2);
-  if (existing) return { conversationId: existing.id, created: false };
+  if (existing) {
+    await db.conversation.updateMany({ where: { id: existing.id, pairKey: null }, data: { pairKey } }).catch(() => {});
+    return { conversationId: existing.id, created: false };
+  }
 
-  const conversation = await db.conversation.create({
-    data: {
-      schoolId,
-      createdById: ctx.user.id,
-      participants: {
-        create: [
-          { schoolId, userId: ctx.user.id, lastReadAt: new Date() },
-          { schoolId, userId: otherUserId },
-        ],
+  let conversation: { id: string };
+  try {
+    conversation = await db.conversation.create({
+      data: {
+        schoolId,
+        pairKey,
+        createdById: ctx.user.id,
+        participants: {
+          create: [
+            { schoolId, userId: ctx.user.id, lastReadAt: new Date() },
+            { schoolId, userId: otherUserId },
+          ],
+        },
       },
-    },
-    select: { id: true },
-  });
+      select: { id: true },
+    });
+  } catch (error) {
+    // The other tap won the race: its room is ours too.
+    const winner = await db.conversation.findUnique({ where: { pairKey }, select: { id: true } });
+    if (!winner) throw error;
+    return { conversationId: winner.id, created: false };
+  }
 
   await audit({
     schoolId,

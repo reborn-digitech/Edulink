@@ -1863,6 +1863,7 @@ export const mr: Dictionary = {
   },
 
   access: {
+    notForYourGrade: "ही स्पर्धा इतर इयत्तांसाठी आहे.",
     resultAlreadyRecorded: "या नोंदीचा निकाल नोंदवला गेला आहे, त्यामुळे ती पुन्हा सादर करता येणार नाही.",
     notYourPupil: "तो विद्यार्थी तुम्ही शिकवत असलेल्या वर्गात नाही.",
     onlyTheCurrentYearCloses: "फक्त सुरू असलेले वर्षच बंद करता येते.",
