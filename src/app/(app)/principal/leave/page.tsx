@@ -19,6 +19,7 @@ import { DecideCard } from "./decide-card";
 import { getT } from "@/lib/i18n/server";
 import { formatDateKey } from "@/lib/dates";
 import { PersonLink } from "@/components/person-link";
+import { TabBar } from "@/components/ui/tabs";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -33,7 +34,12 @@ export async function generateMetadata(): Promise<Metadata> {
  * plain list — mixing them would bury the two that need a decision under thirty
  * that do not.
  */
-export default async function PrincipalLeavePage() {
+export default async function PrincipalLeavePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ tab?: string }>;
+}) {
+  const { tab } = await searchParams;
   const t = await getT();
   const ctx = await requireRole("PRINCIPAL", "ADMIN");
 
@@ -55,6 +61,9 @@ export default async function PrincipalLeavePage() {
   // What the desk was approving blind: each applicant's leave this year.
   const balances = await leaveBalancesFor(ctx.schoolId!, pending.map((r) => r.applicantMembershipId));
   const decided = all.filter((row) => row.status !== "PENDING");
+  // Only a tab that has something behind it: `?tab=decided` with nothing
+  // decided falls back to the queue rather than an empty page.
+  const showDecided = tab === "decided" && decided.length > 0;
 
   /**
    * How many classes each applicant is DUE IN, so the decision screen can say
@@ -123,13 +132,15 @@ export default async function PrincipalLeavePage() {
       groups: import("./decide-card").GroupPick[];
     }
   >();
-  for (const request of pending) {
-    const { lessonCount, candidates, groups } = await coverCandidates(
-      ctx,
-      request.applicantMembershipId,
-      request.fromDateKey,
-      request.toDateKey,
-    );
+  // Every pending request's cover search at once; they are independent and
+  // each one is several queries.
+  const suggestions = await Promise.all(
+    pending.map((request) =>
+      coverCandidates(ctx, request.applicantMembershipId, request.fromDateKey, request.toDateKey),
+    ),
+  );
+  pending.forEach((request, i) => {
+    const { lessonCount, candidates, groups } = suggestions[i]!;
     suggestionsBy.set(request.id, {
       lessonCount,
       options: candidates.map((candidate) => ({
@@ -161,7 +172,7 @@ export default async function PrincipalLeavePage() {
         })),
       })),
     });
-  }
+  });
 
   return (
     <div className="mx-auto max-w-2xl space-y-6">
@@ -177,7 +188,21 @@ export default async function PrincipalLeavePage() {
         <p className="mt-1 text-sm leading-relaxed text-fg-muted">{t("principal.staffLeaveBody")}</p>
       </div>
 
-      <section>
+      {/* Waiting and decided as two tabs: the decided list grew below the
+          fold and the one request that needed an answer sat above sixty
+          that did not. */}
+      {decided.length > 0 && (
+        <TabBar
+          ariaLabel={t("principal.staffLeave")}
+          current={showDecided ? "decided" : "waiting"}
+          tabs={[
+            { key: "waiting", href: "/principal/leave", label: t("principal.waitingForYou"), count: pending.length },
+            { key: "decided", href: "/principal/leave?tab=decided", label: t("principal.alreadyDecided"), count: decided.length },
+          ]}
+        />
+      )}
+
+      <section hidden={showDecided}>
         <h2 className="text-sm font-semibold text-fg">
           {pending.length > 0
             ? t("principal.waitingForYouCount", { count: pending.length })
@@ -218,8 +243,8 @@ export default async function PrincipalLeavePage() {
         )}
       </section>
 
-      {decided.length > 0 && (
-        <section className="border-t border-border pt-5">
+      {decided.length > 0 && showDecided && (
+        <section>
           <h2 className="text-sm font-semibold text-fg">{t("principal.alreadyDecided")}</h2>
           <ul className="mt-3 space-y-1.5">
             {decided.map((request) => (

@@ -19,6 +19,9 @@ import type { Dictionary } from "./dictionary";
 
 export const mr: Dictionary = {
   enquiries: {
+    statusFilter: "स्थिती",
+    statusOpen: "खुल्या",
+    kindFilter: "प्रकार",
     title: "चौकशी",
     metaTitle: "चौकशी",
     intro: "शाळांशी संभाषणे — तुम्ही सुरू केलेली, आणि तुमच्या शाळेच्या नावे आलेली.",
@@ -48,6 +51,13 @@ export const mr: Dictionary = {
     sentByYou: "तुम्ही",
   },
   vacancies: {
+    searchPlaceholder: "शीर्षक, शाळा किंवा शहराने शोधा",
+    typeFilter: "प्रकार",
+    filterLabel: "दाखवा",
+    filterAll: "सर्व",
+    emptyOpenTitle: "सध्या काही खुले नाही",
+    emptyOpenBody: "प्रत्येक पोस्टिंग बंद आहे. नवी पोस्ट करा, किंवा जुन्या वाचण्यासाठी बंद पाहा.",
+    emptyOwnBody: "रिक्त जागा पोस्ट करा आणि ती प्लॅटफॉर्म बोर्डवर दिसेल, जिथे इतर शाळांचे शिक्षक पाहतात.",
     title: "रिक्त जागा",
     metaTitle: "रिक्त जागा",
     boardIntro: "प्लॅटफॉर्मवरील शाळांमधील शिक्षकपदे. तुमची चौकशी शाळेने नेमलेल्या भरती संपर्काकडे जाते.",
@@ -360,6 +370,9 @@ export const mr: Dictionary = {
   },
 
   account: {
+    tabProfile: "साइन-इन आणि शाळा",
+    tabPrefs: "प्राधान्ये",
+    tabDevices: "डिव्हाइस",
     title: "तुमचे खाते",
     loginName: "लॉगिन नाव",
     noEmail: "ईमेल नाही",
@@ -529,6 +542,7 @@ export const mr: Dictionary = {
   },
 
   competitions: {
+    showFilter: "दाखवा",
     title: "स्पर्धा",
     intro: "EduLink वरील प्रत्येक शाळेच्या विद्यार्थ्यांसाठी खुल्या.",
     postOne: "एक पोस्ट करा",
@@ -935,6 +949,9 @@ export const mr: Dictionary = {
   },
 
   mentoring: {
+    needsYourAgreement: "कोणीही संदेश पाठवण्यापूर्वी {count} मार्गदर्शनांना तुमची संमती हवी आहे.",
+    newCount: "{count} नवीन",
+    statusFilter: "स्थिती",
     notPrivateNote: "हा संवाद खासगी नाही. {name} चे पालक आणि {school} प्रत्येक संदेश वाचू शकतात.",
     statusActive: "सक्रिय",
     statusClosed: "बंद",
@@ -1007,6 +1024,7 @@ export const mr: Dictionary = {
   },
 
   convo: {
+    writeAboutPupilHint: "एका विद्यार्थ्याबद्दल, कुटुंबासह",
     title: "संवाद",
     aboutPupil: "एखाद्या विद्यार्थ्याबद्दल",
     intro: "शाळेतील कोणालाही लिहा, किंवा एखाद्या विद्यार्थ्याबद्दल त्यांच्या कुटुंबासह संवाद सुरू करा.",
@@ -1130,6 +1148,18 @@ export const mr: Dictionary = {
   },
 
   notif: {
+    kindFilter: "प्रकार",
+    allKinds: "सर्व प्रकार",
+    kindExpert: "तज्ज्ञ",
+    kindAttendance: "उपस्थिती",
+    kindGrade: "गुण",
+    kindAssignment: "असाइनमेंट",
+    kindRemark: "संदेश",
+    kindPost: "सोशल मीडिया",
+    kindInvite: "आमंत्रणे",
+    kindCompetition: "स्पर्धा",
+    kindEnquiry: "चौकशी",
+    kindSystem: "सिस्टम",
     newMessageFrom: "{name} कडून नवा संदेश",
     admissionEnquiry: "प्रवेशाची नवी चौकशी",
     vacancyEnquiry: "तुमच्या जागेबद्दल नवी चौकशी",
@@ -1298,6 +1328,7 @@ export const mr: Dictionary = {
   },
 
   reportView: {
+    back: "मागे",
     examsOnly: "या प्रगतिपत्रकावरील परीक्षांमधील एकूण गुण भागिले कमाल",
     draftBanner: "मसुदा — प्रकाशित नाही. कुटुंबे हे अजून पाहू शकत नाहीत.",
     overall: "एकूण",
@@ -1349,6 +1380,10 @@ export const mr: Dictionary = {
   },
 
   root: {
+    searchPlaceholder: "नाव, शहर किंवा जॉइन कोडने शोधा",
+    stateFilter: "स्थिती",
+    stateLive: "चालू",
+    stateNoAdmin: "अजून ॲडमिन नाही",
     jobSchedule: "वेळापत्रक (cron)",
     jobErrorLabel: "त्रुटी",
     jobCountedLabel: "मोजले",
@@ -1585,6 +1620,12 @@ export const mr: Dictionary = {
   },
 
   appadmin: {
+    bankSearchPlaceholder: "विषय आणि प्रकरणे शोधा",
+    difficultyFilter: "काठिण्य",
+    difficultyN: "स्तर {n}",
+    missingFilter: "भाषांतर बाकी",
+    missingHindi: "हिंदी बाकी",
+    missingMarathi: "मराठी बाकी",
     areaTitle: "सामग्री प्रशासन",
     badge: "सामग्री",
     switchHint: "प्रश्न बँक आणि स्पर्धा, प्रत्येक शाळेसाठी",
@@ -2301,6 +2342,7 @@ export const mr: Dictionary = {
     resendFailed: "हे पाठवता आले नाही.",
   },
   offline: {
+    retry: "पुन्हा प्रयत्न करा",
     metaDescription: "तुम्ही ऑफलाइन आहात. जतन केलेली पाने आणि रांगेतील बदल अजूनही उपलब्ध आहेत.",
     title: "तुम्ही ऑफलाइन आहात",
     body:
@@ -2847,6 +2889,16 @@ export const mr: Dictionary = {
     hideMessage: "हा संदेश लपवा",
   },
   teacher: {
+    stateFilter: "दाखवा",
+    overdueFilter: "मुदत उलटलेली",
+    classFilter: "वर्ग",
+    allClasses: "सर्व वर्ग",
+    publishAndAnother: "प्रकाशित करा आणि आणखी एक द्या",
+    yesterday: "काल",
+    notMarkedOnly: "अजून भरली नाही",
+    dayLabel: "कोणता दिवस",
+    allMarkedTitle: "प्रत्येक वर्गाची उपस्थिती भरली आहे",
+    allMarkedBody: "या दिवसासाठी काही उरलेले नाही. आधीचा दिवस पाहण्यासाठी वर दुसरा दिवस निवडा.",
     openDayNote: "{date}. शाळा उघडी आहे, त्यामुळे हजेरी नेहमीप्रमाणे घेतली जाते.",
     closedDayTitle: "{date} रोजी शाळा बंद आहे",
     closedDayBody: "एखादा वर्ग खरोखर चालू असेल तर तुम्ही हजेरी घेऊ शकता, पण ज्यांना तुम्ही गैरहजर कराल ते गैरहजर मोजले जातील.",
@@ -3036,6 +3088,16 @@ export const mr: Dictionary = {
     withdrawRequest: "हा अर्ज मागे घ्या", withdrawn: "मागे घेतले",
   },
   common: {
+    clearAll: "सर्व काढा",
+    clearSearch: "शोध साफ करा",
+    activeFilters: "लागू फिल्टर",
+    sortBy: "क्रम",
+    searchLabel: "शोधा",
+    noResultsTitle: "काहीही जुळत नाही",
+    noResultsBody: "कमी फिल्टर किंवा लहान शोध वापरून पाहा.",
+    newest: "नवे आधी",
+    oldest: "जुने आधी",
+    byName: "नावाने",
     save: "जतन करा",
     saving: "जतन होत आहे…",
     send: "पाठवा",
@@ -3084,6 +3146,11 @@ export const mr: Dictionary = {
     other: "इतर",
   },
   calendar: {
+    whenLabel: "कोणत्या नोंदी",
+    upcoming: "आगामी",
+    wholeYear: "संपूर्ण वर्ष",
+    nothingAhead: "पुढे काही उरलेले नाही",
+    nothingAheadBody: "या वर्षातील सर्व नोंदी होऊन गेल्या आहेत. त्या पाहण्यासाठी संपूर्ण वर्ष निवडा.",
     subtitle: "शाळेचे वर्ष, आणि शाळा बंद असणारे दिवस.",
     rangeTo: "{from} ते {to}",
 
@@ -3312,6 +3379,7 @@ export const mr: Dictionary = {
     saveThisLogo: "हा लोगो जतन करा",
   },
   timetable: {
+    openClass: "उघडा",
     title: "वेळापत्रक",
     subtitle: "आधी शाळेचा दिवस, मग प्रत्येक वर्गाचा आठवडा. शिक्षक आणि विद्यार्थी आपापले पाहतात.",
     schoolDay: "शाळेचा दिवस",
@@ -3456,6 +3524,9 @@ export const mr: Dictionary = {
     cancelled: "रद्द",
   },
   principal: {
+    sortAttendance: "सर्वात कमी उपस्थिती प्रथम",
+    sortProgress: "सर्वात कमी प्रगती प्रथम",
+    gradeFilter: "इयत्ता",
     dashboard: "डॅशबोर्ड",
     rangeTo: "{from} ते {to}",
     howFarBack: "किती मागे",
@@ -3781,6 +3852,12 @@ export const mr: Dictionary = {
     exportCsv: "हा महिना CSV मध्ये डाउनलोड करा",
   },
   attendanceIntel: {
+    sortLowest: "सर्वात कमी हजेरी आधी",
+    sortRun: "सर्वात लांब गैरहजेरी आधी",
+    windowLabel: "कालावधी",
+    days30: "गेले 30 दिवस",
+    days60: "गेले 60 दिवस",
+    days90: "गेले 90 दिवस",
     title: "हजेरी अंतर्दृष्टी",
     intro:
       "हजेरीपट दिवसाऐवजी मुलाच्या नजरेने वाचणे: कल, हळूहळू मागे पडणारी मुले, आणि वैधानिक निर्यात.",
@@ -3835,6 +3912,9 @@ export const mr: Dictionary = {
   },
 
   exams: {
+    stateFilterLabel: "शीट",
+    draftLabel: "मसुदा",
+    allGrades: "प्रत्येक इयत्ता",
     evenIfClosed: "शाळा बंद असली तरी (रविवार किंवा सुट्टी)",
     tabDateSheet: "वेळापत्रक",
     tabMarksEntry: "गुण भरा",
@@ -4222,6 +4302,11 @@ export const mr: Dictionary = {
     blockerCardsMany: "{count} रिपोर्ट कार्ड",
   },
   invites: {
+    searchPlaceholder: "नाव किंवा ईमेलने निमंत्रणे शोधा",
+    roleFilter: "भूमिका",
+    expiredFilter: "लिंक",
+    expiredOnly: "कालबाह्य लिंक",
+    withdrawConfirm: "मागे घ्यायचे?",
     title: "निमंत्रणे",
     waitingCount: "{count} स्वीकारायची बाकी",
     invitePeople: "लोकांना बोलवा",
@@ -4304,6 +4389,9 @@ export const mr: Dictionary = {
     couldNotSendRow: "हे पाठवता आले नाही. पुन्हा प्रयत्न करा.",
   },
   classes: {
+    searchPlaceholder: "नाव, विषय किंवा खोलीने वर्ग शोधा",
+    sortSize: "सर्वात मोठे आधी",
+    filterLeaderless: "वर्गशिक्षक नाही",
     leaderlessOne: "{name} मध्ये विद्यार्थी आहेत पण वर्गशिक्षक नाही.",
     leaderlessMany: "{count} वर्गांत विद्यार्थी आहेत पण वर्गशिक्षक नाही: {names}.",
     leaderlessWhy: "कोणी नेमले जाईपर्यंत संमतीसाठी शाळेचा अ‍ॅडमिन पालकांच्या जागी उभा राहतो — प्रत्येक वर्गाच्या पानावरून शिक्षक नेमा.",
@@ -4469,6 +4557,13 @@ export const mr: Dictionary = {
       "या वर्गात अजून कोणीही नाही. त्यांना इथे जोडा, किंवा वर्गाचा जोडणी-कोड द्या म्हणजे ते स्वतः जोडले जातील.",
   },
   expert: {
+    inviteInvalidCta: "साइन इनकडे जा",
+    searchPlaceholder: "नाव किंवा शीर्षकाने शोधा",
+    offeringFilter: "सेवा",
+    specialismFilter: "विशेषज्ञता",
+    allSpecialisms: "सर्व विशेषज्ञता",
+    pendingCta: "दरम्यान तुमचे खाते सेट करा",
+    availabilityCta: "तुमची उपलब्धता उघडा",
     impactTitle: "तुमचा प्रभाव",
     impactBody: "प्लॅटफॉर्मवरील तुमच्या वेळेतून आतापर्यंत काय जमले.",
     statSessionsDone: "झालेली सत्रे",
@@ -4674,6 +4769,9 @@ export const mr: Dictionary = {
     bulletinCta: "सूचना लिहा",
   },
   reviews: {
+    roundsHeading: "पुनरावलोकन फेऱ्या",
+    openRoundHeading: "नवी फेरी उघडा",
+    noOpenRoundsTitle: "कोणतीही फेरी खुली नाही",
     statClasses: "वर्ग",
     statPupils: "विद्यार्थी",
     statSince: "कधीपासून",
@@ -4755,6 +4853,7 @@ export const mr: Dictionary = {
     noCover: "कव्हर नाही",
   },
   assignments: {
+    searchPlaceholder: "शीर्षकाने शोधा",
     tabTodo: "करायचे",
     tabHanded: "जमा केलेले",
     tabMarked: "तपासलेले",
@@ -5034,6 +5133,10 @@ export const mr: Dictionary = {
     inTerm: "या सत्रात {count}",
   },
   staff: {
+    searchPlaceholder: "नाव, कर्मचारी क्रमांक किंवा पदनामाने शोधा",
+    roleFilter: "भूमिका",
+    subjectFilter: "विषय",
+    allSubjects: "सर्व विषय",
     rosterTitle: "कर्मचारी",
     rosterSubtitle: "सर्व कर्मचारी — कार्यालयाने ठेवलेली नोंद आणि या वर्षीच्या रजेसह.",
     rosterEmpty: "अजून कर्मचारी नाहीत",

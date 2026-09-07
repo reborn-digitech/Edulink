@@ -8,6 +8,7 @@ import { requireRole, AccessError } from "@/lib/tenancy";
 import { assessmentsFor, assertMayWriteCards, cardsForClass } from "@/lib/report-cards";
 import { Builder } from "./builder";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -69,10 +70,7 @@ export default async function ReportCardsPage({
         {klass.name}
       </Link>
 
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("teacher.reportCards")}</h1>
-        <p className="mt-1 text-sm text-fg-muted">{heading}</p>
-      </div>
+      <PageHeader title={t("teacher.reportCards")} description={heading} />
 
       {titles.length > 1 && (
         <nav aria-label={t("teacher.reports")} className="flex flex-wrap gap-1.5">

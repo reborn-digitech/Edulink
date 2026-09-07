@@ -9,6 +9,8 @@ import { EmptyState } from "@/components/ui/states";
 import { formatDateKey } from "@/lib/dates";
 import { WindowPicker } from "../window-picker";
 import { getT } from "@/lib/i18n/server";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -27,30 +29,37 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function PrincipalClassesPage({
   searchParams,
 }: {
-  searchParams: Promise<{ days?: string }>;
+  searchParams: Promise<{ days?: string; sort?: string; grade?: string }>;
 }) {
   const t = await getT();
   const ctx = await requireRole("PRINCIPAL", "ADMIN");
-  const { days } = await searchParams;
+  const { days, sort: rawSort, grade } = await searchParams;
 
   const span = parseSpan(days);
   const window = await windowFor(ctx.schoolId, span);
-  const insights = await classInsights(ctx, window);
+  const allInsights = await classInsights(ctx, window);
+  // Lowest first for the two figures, because the head opens this page to
+  // find the class that needs a visit, not the one that is fine.
+  const sort = rawSort === "attendance" || rawSort === "progress" ? rawSort : "name";
+  const grades = [...new Set(allInsights.map((k) => k.gradeLevel).filter((g): g is string => Boolean(g)))].sort(
+    new Intl.Collator(undefined, { numeric: true }).compare,
+  );
+  const gradeFilter = grade && grades.includes(grade) ? grade : null;
+  const insights = allInsights
+    .filter((k) => !gradeFilter || k.gradeLevel === gradeFilter)
+    .sort((a, b) => {
+      if (sort === "attendance") return (a.attendance.percent ?? 101) - (b.attendance.percent ?? 101);
+      if (sort === "progress") return (a.progress.percent ?? 101) - (b.progress.percent ?? 101);
+      return 0;
+    });
 
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-            {t("principal.classes")}
-          </h1>
-          <p className="mt-1 text-sm text-fg-muted">
-            {t("principal.rangeTo", {
+        <PageHeader title={t("principal.classes")} description={<>{t("principal.rangeTo", {
               from: formatDateKey(window.fromDateKey, { day: "numeric", month: "short" }),
               to: formatDateKey(window.toDateKey, { day: "numeric", month: "short" }),
-            })}
-          </p>
-        </div>
+            })}</>} />
         <WindowPicker span={span} />
       </div>
 
@@ -60,7 +69,28 @@ export default async function PrincipalClassesPage({
           title={t("principal.classByClass")}
           description={t("principal.classByClassBody")}
         />
-        <CardBody>
+        <CardBody className="space-y-4">
+          {allInsights.length > 1 && (
+            <DataToolbar
+              sort={{
+                label: t("common.sortBy"),
+                value: sort,
+                defaultValue: "name",
+                options: [
+                  { value: "name", label: t("common.byName") },
+                  { value: "attendance", label: t("principal.sortAttendance") },
+                  { value: "progress", label: t("principal.sortProgress") },
+                ],
+              }}
+              facets={
+                grades.length > 1
+                  ? [{ key: "grade", label: t("principal.gradeFilter"), value: gradeFilter ?? "", options: [{ value: "", label: t("exams.allGrades") }, ...grades.map((g) => ({ value: g, label: g, count: allInsights.filter((k) => k.gradeLevel === g).length }))] }]
+                  : []
+              }
+              extra={days ? { days } : {}}
+              labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+            />
+          )}
           {insights.length === 0 ? (
             <EmptyState
               title={t("principal.noClasses")}

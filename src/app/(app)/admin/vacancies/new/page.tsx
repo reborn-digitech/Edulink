@@ -3,6 +3,7 @@ import { requireRole } from "@/lib/tenancy";
 import { listContactCandidates } from "@/lib/school-profile";
 import { getT } from "@/lib/i18n/server";
 import { NewVacancyForm } from "./form";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -16,12 +17,11 @@ export default async function NewVacancyPage() {
 
   return (
     <div className="mx-auto max-w-2xl space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("vacancies.newTitle")}
-        </h1>
-        <p className="mt-1 max-w-prose text-sm text-fg-muted">{t("vacancies.newIntro")}</p>
-      </div>
+      <PageHeader
+        back={{ href: "/admin/vacancies", label: t("vacancies.ourDeskTitle") }}
+        title={t("vacancies.newTitle")}
+        description={t("vacancies.newIntro")}
+      />
       <NewVacancyForm candidates={candidates} defaultContactId={ctx.membershipId} />
     </div>
   );

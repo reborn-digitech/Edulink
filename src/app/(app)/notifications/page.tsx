@@ -9,9 +9,11 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { NotificationList } from "./list";
 import { BulkActions } from "./bulk-actions";
-import type { NotificationKind } from "@/lib/constants";
+import { NOTIFICATION_KINDS, NOTIFICATION_KIND_KEY, type NotificationKind } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
 import { effectiveThresholds } from "@/lib/notification-housekeeping";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -27,12 +29,13 @@ const TABS = [
 export default async function NotificationsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ filter?: string }>;
+  searchParams: Promise<{ filter?: string; kind?: string }>;
 }) {
   const t = await getT();
   const session = await requireUser();
-  const { filter } = await searchParams;
+  const { filter, kind: rawKind } = await searchParams;
   const showUnreadOnly = filter === "unread";
+  const kind = NOTIFICATION_KINDS.includes(rawKind as NotificationKind) ? (rawKind as NotificationKind) : null;
 
   // The rule line quotes the reader's OWN school's numbers when it has set
   // its own; a parent or a school on the defaults reads the defaults.
@@ -44,7 +47,7 @@ export default async function NotificationsPage({
 
   const [rows, unreadCount, totalCount] = await Promise.all([
     db.notification.findMany({
-      where: { userId: session.user.id, ...(showUnreadOnly ? { readAt: null } : {}) },
+      where: { userId: session.user.id, ...(showUnreadOnly ? { readAt: null } : {}), ...(kind ? { kind } : {}) },
       orderBy: { createdAt: "desc" },
       take: 100,
     }),
@@ -55,16 +58,11 @@ export default async function NotificationsPage({
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("shell.notifications")}</h1>
-          <p className="mt-1 text-sm text-fg-muted">
-            {unreadCount === 0
+        <PageHeader title={t("shell.notifications")} description={unreadCount === 0
               ? totalCount === 0
                 ? t("notif.nothingYet")
                 : t("notif.allCaughtUp")
-              : t("notif.unreadCount", { count: unreadCount })}
-          </p>
-        </div>
+              : t("notif.unreadCount", { count: unreadCount })} />
         <Button asChild variant="secondary" size="sm" icon={<GearIcon weight="bold" />}>
           <Link href="/account">{t("notif.settings")}</Link>
         </Button>
@@ -92,6 +90,23 @@ export default async function NotificationsPage({
           </nav>
 
           <BulkActions unreadCount={unreadCount} readCount={totalCount - unreadCount} />
+          <DataToolbar
+            className="w-full"
+            facets={[
+              {
+                key: "kind",
+                label: t("notif.kindFilter"),
+                value: kind ?? "",
+                as: "select",
+                options: [
+                  { value: "", label: t("notif.allKinds") },
+                  ...NOTIFICATION_KINDS.map((k) => ({ value: k, label: t(NOTIFICATION_KIND_KEY[k]) })),
+                ],
+              },
+            ]}
+            extra={showUnreadOnly ? { filter: "unread" } : {}}
+            labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+          />
           <p className="text-xs text-fg-subtle">
             {t("notif.housekeeping", { read: thresholds.autoReadDays, expire: thresholds.expireDays })}
           </p>

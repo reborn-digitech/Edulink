@@ -3,7 +3,7 @@ import Link from "next/link";
 import { IdentificationCardIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
-import { leaveBalanceFor, STAFF_ROLES } from "@/lib/staff-records";
+import { leaveBalancesFor, STAFF_ROLES } from "@/lib/staff-records";
 import { readJsonArray } from "@/lib/json";
 import { Card } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
@@ -12,6 +12,9 @@ import { EmptyState } from "@/components/ui/states";
 import { formatDate } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { PersonLink } from "@/components/person-link";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { ROLE_META } from "@/lib/constants";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -34,11 +37,16 @@ export async function generateMetadata(): Promise<Metadata> {
  * entitlement AND no leave — a row of "no entitlement set" for a school
  * that does not use entitlements would be noise pretending to be warning.
  */
-export default async function PrincipalStaffPage() {
+export default async function PrincipalStaffPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string; role?: string; subject?: string }>;
+}) {
+  const { q, role: rawRole, subject: rawSubject } = await searchParams;
   const t = await getT();
   const ctx = await requireRole("PRINCIPAL", "ADMIN");
 
-  const staff = await db.membership.findMany({
+  const allStaff = await db.membership.findMany({
     where: { schoolId: ctx.schoolId, role: { in: [...STAFF_ROLES] }, status: "ACTIVE", leftAt: null },
     select: {
       id: true,
@@ -50,23 +58,59 @@ export default async function PrincipalStaffPage() {
     },
     orderBy: [{ role: "asc" }],
   });
-  staff.sort((a, b) => (a.user.preferredName ?? a.user.name).localeCompare(b.user.preferredName ?? b.user.name, undefined, { sensitivity: "base" }));
+  allStaff.sort((a, b) => (a.user.preferredName ?? a.user.name).localeCompare(b.user.preferredName ?? b.user.name, undefined, { sensitivity: "base" }));
 
-  const balances = new Map<string, Awaited<ReturnType<typeof leaveBalanceFor>>>();
-  for (const member of staff) balances.set(member.id, await leaveBalanceFor(ctx.schoolId!, member.id));
+  // The roster narrows by name, by role and by subject — a head looking
+  // for "who else teaches Maths" scanned thirty cards for it.
+  const roleFilter = rawRole && (STAFF_ROLES as readonly string[]).includes(rawRole) ? rawRole : null;
+  const subjectCounts = new Map<string, number>();
+  for (const member of allStaff) for (const subject of readJsonArray<string>(member.subjects)) subjectCounts.set(subject, (subjectCounts.get(subject) ?? 0) + 1);
+  const subjectOptions = [...subjectCounts.entries()].sort((a, b) => a[0].localeCompare(b[0]));
+  const subjectFilter = rawSubject && subjectCounts.has(rawSubject) ? rawSubject : null;
+  const needle = (q ?? "").trim().toLowerCase();
+  const staff = allStaff.filter((member) => {
+    if (roleFilter && member.role !== roleFilter) return false;
+    if (subjectFilter && !readJsonArray<string>(member.subjects).includes(subjectFilter)) return false;
+    if (needle) {
+      const hay = [member.user.name, member.user.preferredName ?? "", member.staffRecord?.staffNumber ?? "", member.staffRecord?.designation ?? ""].join(" ").toLowerCase();
+      if (!hay.includes(needle)) return false;
+    }
+    return true;
+  });
+  const narrowed = Boolean(roleFilter || subjectFilter || needle);
+
+  const balances = await leaveBalancesFor(ctx.schoolId!, staff.map((m) => m.id));
 
   return (
     <div className="space-y-5">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("staff.rosterTitle")}</h1>
-        <p className="mt-1 text-sm text-fg-muted">{t("staff.rosterSubtitle")}</p>
-      </div>
+      <PageHeader title={t("staff.rosterTitle")} description={t("staff.rosterSubtitle")} />
+
+      {allStaff.length > 3 && (
+        <DataToolbar
+          search={{ value: q ?? "", placeholder: t("staff.searchPlaceholder"), label: t("common.searchLabel") }}
+          facets={[
+            {
+              key: "role",
+              label: t("staff.roleFilter"),
+              value: roleFilter ?? "",
+              options: [
+                { value: "", label: t("vacancies.filterAll"), count: allStaff.length },
+                ...STAFF_ROLES.map((role) => ({ value: role, label: t(ROLE_META[role].labelKey), count: allStaff.filter((m) => m.role === role).length })).filter((o) => o.count > 0),
+              ],
+            },
+            ...(subjectOptions.length > 1
+              ? [{ key: "subject", label: t("staff.subjectFilter"), value: subjectFilter ?? "", as: "select" as const, options: [{ value: "", label: t("staff.allSubjects") }, ...subjectOptions.map(([subject, count]) => ({ value: subject, label: subject, count }))] }]
+              : []),
+          ]}
+          labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+        />
+      )}
 
       {staff.length === 0 ? (
         <EmptyState
           icon={<UsersThreeIcon weight="duotone" className="size-8" />}
-          title={t("staff.rosterEmpty")}
-          description={t("staff.rosterEmptyBody")}
+          title={narrowed ? t("common.noResultsTitle") : t("staff.rosterEmpty")}
+          description={narrowed ? t("common.noResultsBody") : t("staff.rosterEmptyBody")}
         />
       ) : (
         <ul className="space-y-3" data-testid="staff-roster">

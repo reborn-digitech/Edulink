@@ -13,6 +13,7 @@ import { ReportCard } from "./report-card";
 import { AuditTable } from "./audit-table";
 import { getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -63,16 +64,11 @@ export default async function SafetyPage({
 
   return (
     <div className="space-y-5">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{tr("safety.title")}</h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          {openCount === 0
+      <PageHeader title={tr("safety.title")} description={openCount === 0
             ? tr("safety.nothingNeeded")
             : openCount === 1
               ? tr("safety.toDealWithOne")
-              : tr("safety.toDealWithMany", { count: openCount })}
-        </p>
-      </div>
+              : tr("safety.toDealWithMany", { count: openCount })} />
 
       {visits.length > 0 && (
         <Card className="border-warn/40">

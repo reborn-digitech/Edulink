@@ -9,6 +9,7 @@ import { EmptyState } from "@/components/ui/states";
 import { Badge } from "@/components/ui/badge";
 import { getT } from "@/lib/i18n/server";
 import { CelebrationsLink } from "@/components/celebrations/celebrations-link";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -68,13 +69,8 @@ export default async function TeacherClassesPage() {
 
   return (
     <div className="space-y-5">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("teacher.myClasses")}</h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          {classes.length} class{classes.length === 1 ? "" : "es"} ·{" "}
-          {classes.reduce((sum, c) => sum + c._count.enrollments, 0)} students
-        </p>
-      </div>
+      <PageHeader title={t("teacher.myClasses")} description={<>{classes.length} class{classes.length === 1 ? "" : "es"} ·{" "}
+          {classes.reduce((sum, c) => sum + c._count.enrollments, 0)} students</>} />
 
       <CelebrationsLink session={ctx} />
 

@@ -19,6 +19,7 @@ import { TabBar } from "@/components/ui/tabs";
 import { ROLE_META, SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
 import { pendingParentInvites } from "@/lib/parent-link";
 import { PersonLink } from "@/components/person-link";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -97,9 +98,8 @@ export default async function DirectoryPage({
 
   // Parents the office has invited and who have not yet accepted, per pupil —
   // shown on the row so nobody sends a second link.
-  const parentInvites = await pendingParentInvites(ctx);
-
-  const [members, total, classes, roleCounts, suspendedCount, leftCount] = await Promise.all([
+  const [parentInvites, members, total, classes, roleCounts, suspendedCount, leftCount] = await Promise.all([
+    pendingParentInvites(ctx),
     db.membership.findMany({
       where,
       include: {
@@ -143,19 +143,19 @@ export default async function DirectoryPage({
   classes.sort((a, b) => classCollator.compare(a.name, b.name));
 
   const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  // The export is THE LIST ON SCREEN. Standing on "Left" and pressing Export
+  // used to download the active roll — the status never travelled.
   const exportHref = `/admin/people/export?${new URLSearchParams({
     ...(query ? { q: query } : {}),
     ...(roleFilter ? { role: roleFilter } : {}),
     ...(classFilter ? { classId: classFilter.id } : {}),
+    ...(status !== "ACTIVE" ? { status } : {}),
   })}`;
 
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("nav.people")}</h1>
-          <p className="mt-1 text-sm text-fg-muted">
-            {roleCounts
+        <PageHeader title={t("nav.people")} description={roleCounts
               .map((c) =>
                 t("people.countOfRole", {
                   count: c._count,
@@ -167,9 +167,7 @@ export default async function DirectoryPage({
                   ).toLowerCase(),
                 }),
               )
-              .join(" · ") || t("people.nobodyYet")}
-          </p>
-        </div>
+              .join(" · ") || t("people.nobodyYet")} />
         <div className="flex flex-wrap gap-2">
           <Button asChild variant="secondary" icon={<UserPlusIcon weight="bold" />}>
             <Link href="/admin/intake">{t("intake.fromPeople")}</Link>

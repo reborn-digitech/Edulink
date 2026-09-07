@@ -5,6 +5,8 @@ import { EmptyState } from "@/components/ui/states";
 import { CurationRow } from "./curation-row";
 import { getT } from "@/lib/i18n/server";
 import type { Metadata } from "next";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -21,30 +23,54 @@ export async function generateMetadata(): Promise<Metadata> {
  * may still invite an expert; what an invitation buys is a profile, not an
  * audience.
  */
-export default async function RootExpertsPage() {
+export default async function RootExpertsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string; state?: string }>;
+}) {
+  const { q, state: rawState } = await searchParams;
   const t = await getT();
   const session = await requireSuperuser();
   const experts = await listExpertsForCuration(session);
+  const state = rawState === "waiting" || rawState === "listed" ? rawState : null;
+  const needle = (q ?? "").trim().toLowerCase();
+  const matches = (e: (typeof experts)[number]) =>
+    !needle || [e.name, e.email ?? "", e.headline, ...e.specialisms].join(" ").toLowerCase().includes(needle);
 
-  const waiting = experts.filter((e) => e.publishedAt === null);
-  const listed = experts.filter((e) => e.publishedAt !== null);
+  const allWaiting = experts.filter((e) => e.publishedAt === null);
+  const allListed = experts.filter((e) => e.publishedAt !== null);
+  const waiting = state === "listed" ? [] : allWaiting.filter(matches);
+  const listed = state === "waiting" ? [] : allListed.filter(matches);
+  const narrowed = Boolean(state || needle);
 
   return (
     <div className="space-y-5">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("expert.curationTitle")}
-        </h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          {experts.length === 0
+      <PageHeader title={t("expert.curationTitle")} description={experts.length === 0
             ? t("expert.curationNobodyYet")
-            : t("expert.curationCount", { waiting: waiting.length, listed: listed.length })}
-        </p>
-      </div>
+            : t("expert.curationCount", { waiting: allWaiting.length, listed: allListed.length })} />
 
       <p className="rounded-[--radius-md] border border-border bg-surface-muted px-4 py-3 text-sm leading-relaxed text-fg-muted">
         {t("expert.curationNote")}
       </p>
+
+      {experts.length > 2 && (
+        <DataToolbar
+          search={{ value: q ?? "", placeholder: t("expert.searchPlaceholder"), label: t("common.searchLabel") }}
+          facets={[
+            {
+              key: "state",
+              label: t("root.stateFilter"),
+              value: state ?? "",
+              options: [
+                { value: "", label: t("vacancies.filterAll"), count: experts.length },
+                { value: "waiting", label: t("expert.waitingForYou"), count: allWaiting.length },
+                { value: "listed", label: t("expert.onMarketplace"), count: allListed.length },
+              ],
+            },
+          ]}
+          labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+        />
+      )}
 
       {experts.length === 0 ? (
         <EmptyState
@@ -52,6 +78,8 @@ export default async function RootExpertsPage() {
           title={t("expert.curationEmpty")}
           description={t("expert.curationEmptyBody")}
         />
+      ) : waiting.length === 0 && listed.length === 0 && narrowed ? (
+        <EmptyState title={t("common.noResultsTitle")} description={t("common.noResultsBody")} />
       ) : (
         <>
           {/* Waiting first, and under its own heading. A queue mixed into a

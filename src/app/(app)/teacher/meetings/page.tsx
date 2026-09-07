@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { getT } from "@/lib/i18n/server";
 import { publishSlotsAction, cancelSlotAction } from "./actions";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -36,12 +37,7 @@ export default async function TeacherMeetingsPage({
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("meetings.teacherTitle")}
-        </h1>
-        <p className="mt-1 text-sm text-fg-muted">{t("meetings.teacherIntro")}</p>
-      </div>
+      <PageHeader title={t("meetings.teacherTitle")} description={t("meetings.teacherIntro")} />
 
       {error && (
         <Card>

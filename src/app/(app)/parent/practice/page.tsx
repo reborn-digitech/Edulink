@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { ChildSwitcher } from "../child-switcher";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -65,14 +66,7 @@ export default async function ParentPracticePage({
         ) : null;
       })()}
 
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("practice.parentPracticeTitle", { name: childName })}
-        </h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          {t("practice.parentPracticeIntro", { name: childName })}
-        </p>
-      </div>
+      <PageHeader title={t("practice.parentPracticeTitle", { name: childName })} description={t("practice.parentPracticeIntro", { name: childName })} />
 
       {topics.length === 0 ? (
         <EmptyState

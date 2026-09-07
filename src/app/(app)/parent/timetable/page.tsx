@@ -12,6 +12,7 @@ import { WeekGridView } from "@/components/timetable/week-grid";
 import { ChildSwitcher } from "../child-switcher";
 import { getT } from "@/lib/i18n/server";
 import { getLocale } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -84,12 +85,7 @@ export default async function ParentTimetablePage({
         ) : null;
       })()}
 
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("parent.childsTimetable", { name: childName })}
-        </h1>
-        <p className="mt-1 text-sm text-fg-muted">{student.school.name}</p>
-      </div>
+      <PageHeader title={t("parent.childsTimetable", { name: childName })} description={student.school.name} />
 
       <nav aria-label={t("parent.week")} className="flex flex-wrap items-center gap-2">
         <Link

@@ -58,10 +58,19 @@ function classHref(viewer: Role, classId: string): string | null {
  * a pupil cannot browse other pupils, and a parent cannot browse the roll.
  * Refusals are 404s, so the page never confirms who is on the roll.
  */
-export default async function PersonPage({ params }: { params: Promise<{ membershipId: string }> }) {
+export default async function PersonPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ membershipId: string }>;
+  searchParams: Promise<{ from?: string }>;
+}) {
   const t = await getT();
   const session = await requireUser();
   const { membershipId } = await params;
+  const { from } = await searchParams;
+  // Only a path of our own is a way back; anything else is the inbox.
+  const backHref = from && from.startsWith("/") && !from.startsWith("//") ? from : "/remarks";
 
   const member = await db.membership.findFirst({
     where: { id: membershipId, status: "ACTIVE", leftAt: null },
@@ -141,9 +150,9 @@ export default async function PersonPage({ params }: { params: Promise<{ members
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
-      <Link href="/remarks" className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg">
+      <Link href={backHref} className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg">
         <ArrowLeftIcon weight="bold" className="size-4" />
-        {t("remarks.all")}
+        {backHref === "/remarks" ? t("remarks.all") : t("reportView.back")}
       </Link>
 
       {/* Stacked on a phone, a row on a desk: an avatar, a name and a button

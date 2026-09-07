@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ArrowLeftIcon, MagnifyingGlassIcon, PaperPlaneTiltIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
+import { ArrowLeftIcon, CaretRightIcon, PaperPlaneTiltIcon, UserCircleIcon, UsersThreeIcon } from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
 import { conversationSchools, peopleToMessage, type Person } from "@/lib/conversations";
 import { db } from "@/lib/db";
@@ -12,6 +12,8 @@ import { ROLE_META, type Role } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import { openConversationAction } from "../conversation-actions";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -37,11 +39,13 @@ const GROUP_KEY: Record<"staff" | "pupils" | "parents", TranslationKey> = {
 export default async function PeoplePage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string; school?: string; error?: string }>;
+  searchParams: Promise<{ q?: string; school?: string; error?: string; role?: string }>;
 }) {
   const t = await getT();
   const session = await requireUser();
-  const { q, school: requestedSchool, error } = await searchParams;
+  const { q, school: requestedSchool, error, role: rawRole } = await searchParams;
+  const roleFilter = rawRole === "staff" || rawRole === "pupils" || rawRole === "parents" ? rawRole : null;
+  const canWriteAboutPupil = session.role === "TEACHER" || session.role === "STUDENT" || session.role === "PARENT";
 
   const schoolIds = await conversationSchools(session);
   if (schoolIds.length === 0) redirect("/remarks");
@@ -53,11 +57,12 @@ export default async function PeoplePage({
       : [];
 
   const people = await peopleToMessage(session, schoolId, q ?? "");
-  const groups = ([
+  const allGroups = [
     { key: "staff" as const, people: people.filter((p) => p.role === "TEACHER" || p.role === "ADMIN" || p.role === "PRINCIPAL") },
     { key: "pupils" as const, people: people.filter((p) => p.role === "STUDENT") },
     { key: "parents" as const, people: people.filter((p) => p.role === "PARENT") },
-  ] satisfies { key: keyof typeof GROUP_KEY; people: Person[] }[]).filter((g) => g.people.length > 0);
+  ] satisfies { key: keyof typeof GROUP_KEY; people: Person[] }[];
+  const groups = allGroups.filter((g) => g.people.length > 0 && (!roleFilter || g.key === roleFilter));
 
   const errorText =
     error === "invalid"
@@ -73,10 +78,7 @@ export default async function PeoplePage({
         {t("remarks.all")}
       </Link>
 
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg">{t("convo.pickPerson")}</h1>
-        <p className="mt-1 text-sm text-fg-muted">{t("convo.rule")}</p>
-      </div>
+      <PageHeader title={t("convo.pickPerson")} description={t("convo.rule")} />
 
       {errorText && (
         <p role="alert" className="rounded-[--radius-md] border border-danger/30 bg-danger-soft px-4 py-3 text-sm font-medium text-danger">
@@ -84,39 +86,54 @@ export default async function PeoplePage({
         </p>
       )}
 
-      <form method="get" role="search" className="space-y-3">
-        {schools.length > 1 && (
-          <nav aria-label={t("convo.chooseSchool")} className="flex flex-wrap gap-2">
-            {schools.map((s) => (
-              <Link
-                key={s.id}
-                href={`/remarks/people?school=${s.id}${q ? `&q=${encodeURIComponent(q)}` : ""}`}
-                className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
-                  s.id === schoolId ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted hover:text-fg"
-                }`}
-              >
-                {s.name}
-              </Link>
-            ))}
-          </nav>
-        )}
-        <input type="hidden" name="school" value={schoolId} />
-        <div className="relative">
-          <MagnifyingGlassIcon
-            className="pointer-events-none absolute left-3.5 top-1/2 size-5 -translate-y-1/2 text-fg-subtle"
-            aria-hidden="true"
-          />
-          <input
-            type="search"
-            name="q"
-            defaultValue={q ?? ""}
-            autoFocus
-            placeholder={t("convo.searchPeople")}
-            aria-label={t("convo.searchPeople")}
-            className="min-h-12 w-full rounded-[--radius-md] border border-border bg-surface pl-11 pr-4 text-[0.9375rem] outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
-          />
-        </div>
-      </form>
+      {canWriteAboutPupil && (
+        <Link
+          href="/remarks/new"
+          className="flex items-center gap-3 rounded-[--radius-md] border border-border bg-surface p-3.5 hover:bg-surface-muted"
+        >
+          <span className="grid size-10 shrink-0 place-items-center rounded-full bg-accent-soft text-accent-strong">
+            <UserCircleIcon weight="duotone" className="size-5" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block font-semibold text-fg">{t("convo.writeAboutPupil")}</span>
+            <span className="block truncate text-xs text-fg-muted">{t("convo.writeAboutPupilHint")}</span>
+          </span>
+          <CaretRightIcon className="size-4 shrink-0 text-fg-subtle" aria-hidden="true" />
+        </Link>
+      )}
+
+      {schools.length > 1 && (
+        <nav aria-label={t("convo.chooseSchool")} className="flex flex-wrap gap-2">
+          {schools.map((s) => (
+            <Link
+              key={s.id}
+              href={`/remarks/people?school=${s.id}${q ? `&q=${encodeURIComponent(q)}` : ""}`}
+              className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
+                s.id === schoolId ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted hover:text-fg"
+              }`}
+            >
+              {s.name}
+            </Link>
+          ))}
+        </nav>
+      )}
+
+      <DataToolbar
+        search={{ value: q ?? "", placeholder: t("convo.searchPeople"), label: t("convo.searchPeople") }}
+        facets={[
+          {
+            key: "role",
+            label: t("staff.roleFilter"),
+            value: roleFilter ?? "",
+            options: [
+              { value: "", label: t("vacancies.filterAll"), count: people.length },
+              ...allGroups.filter((g) => g.people.length > 0).map((g) => ({ value: g.key, label: t(GROUP_KEY[g.key]), count: g.people.length })),
+            ],
+          },
+        ]}
+        extra={schools.length > 1 ? { school: schoolId } : {}}
+        labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+      />
 
       {groups.length === 0 ? (
         <EmptyState

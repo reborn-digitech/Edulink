@@ -6,6 +6,8 @@ import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { SUBJECT_KEY, type QuizSubject } from "@/lib/quiz";
 import { getT } from "@/lib/i18n/server";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata() {
   const t = await getT();
@@ -16,10 +18,24 @@ export async function generateMetadata() {
  * The shared question bank, chapter by chapter. Every school reads the same
  * bank; a question added here is served to every child at their level.
  */
-export default async function BankPage() {
+export default async function BankPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string; subject?: string }>;
+}) {
+  const { q, subject: rawSubject } = await searchParams;
   const t = await getT();
   const session = await requireAppAdmin();
-  const topics = await listBankTopics(session);
+  const allTopics = await listBankTopics(session);
+  const subjects = [...new Set(allTopics.map((topic) => topic.subject))];
+  const subject = rawSubject && subjects.includes(rawSubject) ? rawSubject : null;
+  const needle = (q ?? "").trim().toLowerCase();
+  const topics = allTopics.filter(
+    (topic) =>
+      (!subject || topic.subject === subject) &&
+      (!needle || [topic.name, topic.chapter, String(topic.classLevel)].join(" ").toLowerCase().includes(needle)),
+  );
+  const narrowed = Boolean(subject || needle);
 
   // Grouped as the syllabus reads: subject, then class.
   const bySubject = new Map<string, typeof topics>();
@@ -31,14 +47,29 @@ export default async function BankPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("appadmin.questionBank")}
-        </h1>
-        <p className="mt-1 text-sm text-fg-muted">{t("appadmin.bankIntro")}</p>
-      </div>
+      <PageHeader title={t("appadmin.questionBank")} description={t("appadmin.bankIntro")} />
 
-      {topics.length === 0 ? (
+      {allTopics.length > 3 && (
+        <DataToolbar
+          search={{ value: q ?? "", placeholder: t("appadmin.bankSearchPlaceholder"), label: t("common.searchLabel") }}
+          facets={[
+            {
+              key: "subject",
+              label: t("staff.subjectFilter"),
+              value: subject ?? "",
+              options: [
+                { value: "", label: t("staff.allSubjects"), count: allTopics.length },
+                ...subjects.map((sub) => ({ value: sub, label: SUBJECT_KEY[sub as QuizSubject] ? t(SUBJECT_KEY[sub as QuizSubject]) : sub, count: allTopics.filter((topic) => topic.subject === sub).length })),
+              ],
+            },
+          ]}
+          labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+        />
+      )}
+
+      {topics.length === 0 && narrowed ? (
+        <EmptyState title={t("common.noResultsTitle")} description={t("common.noResultsBody")} />
+      ) : topics.length === 0 ? (
         <EmptyState
           icon={<BooksIcon weight="duotone" className="size-8" />}
           title={t("appadmin.bankEmpty")}

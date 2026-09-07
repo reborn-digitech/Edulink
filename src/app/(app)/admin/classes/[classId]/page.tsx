@@ -4,7 +4,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   ArrowLeftIcon,
-  CaretRightIcon,
   CertificateIcon,
   ChalkboardTeacherIcon,
   UsersThreeIcon,
@@ -19,6 +18,7 @@ import { Staffing } from "./staffing";
 import { CohortPanel } from "./cohort-panel";
 import { listCohort } from "@/lib/cohort";
 import { getT } from "@/lib/i18n/server";
+import { Button } from "@/components/ui/button";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -163,39 +163,18 @@ export default async function ClassStaffingPage({
         </CardBody>
       </Card>
 
-      {/* `assertMayWriteCards` has always let an admin through — a class whose
-          teacher left mid-term still has to issue report cards — but nothing
-          linked to the builder from the admin's side, so the only route in was
-          typing a /teacher/ URL. This is that route, on the page an admin is
-          already on when they are thinking about this class. */}
-      <Card>
-        <Link
-          href={`/teacher/classes/${klass.id}/report-cards`}
-          className="flex items-center gap-3 p-4"
-        >
-          <span className="grid size-11 shrink-0 place-items-center rounded-full bg-accent-soft text-accent-strong">
-            <CertificateIcon weight="duotone" className="size-6" />
-          </span>
-          <span className="min-w-0 flex-1">
-            <span className="block font-semibold text-fg">{t("classes.reportCards")}</span>
-            <span className="block text-xs text-fg-muted">{t("classes.reportCardsBody")}</span>
-          </span>
-          <CaretRightIcon className="size-4 shrink-0 text-fg-subtle" aria-hidden="true" />
-        </Link>
-      </Card>
-
-      <Card>
-        <Link href={`/teacher/exams?classId=${klass.id}`} className="flex items-center gap-3 p-4">
-          <span className="grid size-11 shrink-0 place-items-center rounded-full bg-accent-soft text-accent-strong">
-            <CertificateIcon weight="duotone" className="size-6" />
-          </span>
-          <span className="min-w-0 flex-1">
-            <span className="block font-semibold text-fg">{t("exams.enterMarks")}</span>
-            <span className="block text-xs text-fg-muted">{t("exams.enterMarksBlurb")}</span>
-          </span>
-          <CaretRightIcon className="size-4 shrink-0 text-fg-subtle" aria-hidden="true" />
-        </Link>
-      </Card>
+      {/* Two doors into the teacher's side — report cards and marks — as one
+          row of buttons. They were two full-width cards with the same icon
+          and the same layout, which read as one control drawn twice and
+          pushed the roll below the fold. */}
+      <div className="flex flex-wrap gap-2">
+        <Button asChild variant="secondary" icon={<CertificateIcon weight="bold" />}>
+          <Link href={`/teacher/classes/${klass.id}/report-cards`}>{t("classes.reportCards")}</Link>
+        </Button>
+        <Button asChild variant="secondary" icon={<CertificateIcon weight="bold" />}>
+          <Link href={`/teacher/exams?classId=${klass.id}`}>{t("exams.enterMarks")}</Link>
+        </Button>
+      </div>
 
       <Card>
         <CardHeader
@@ -207,7 +186,9 @@ export default async function ClassStaffingPage({
           <CohortPanel
             classId={klass.id}
             gradeLevel={klass.gradeLevel}
-            members={cohort.map((member) => ({
+            members={[...cohort]
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((member) => ({
               membershipId: member.membershipId,
               name: member.name,
               gradeLevel: member.gradeLevel,

@@ -1,37 +1,48 @@
 import Link from "next/link";
 import { BuildingsIcon, PlusIcon, WarningIcon } from "@phosphor-icons/react/ssr";
 import { requireSuperuser } from "@/lib/tenancy";
-import { listSchools } from "@/lib/superuser";
+import { listSchools, schoolCountries } from "@/lib/superuser";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { getT, getRelativeTime } from "@/lib/i18n/server";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata() {
   const t = await getT();
   return { title: t("root.schools") };
 }
 
-export default async function RootPage() {
+export default async function RootPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string; state?: string; country?: string; sort?: string }>;
+}) {
+  const { q, state: rawState, country: rawCountry, sort: rawSort } = await searchParams;
   const t = await getT();
   const relativeTime = await getRelativeTime();
   const session = await requireSuperuser();
-  const schools = await listSchools(session);
+  const state = rawState === "removed" || rawState === "noadmin" || rawState === "all" ? rawState : "live";
+  const sort = rawSort === "oldest" || rawSort === "name" ? rawSort : "newest";
+  const countries = await schoolCountries(session);
+  const country = rawCountry && countries.includes(rawCountry) ? rawCountry : undefined;
+  const [schools, totals] = await Promise.all([
+    listSchools(session, { q, state, country, sort }),
+    listSchools(session, { state: "all" }),
+  ]);
+  const liveCount = totals.filter((s) => !s.removedAt).length;
+  const narrowed = Boolean(q || state !== "live" || country);
 
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("root.schools")}</h1>
-          <p className="mt-1 text-sm text-fg-muted">
-            {schools.length === 0
+        <PageHeader title={t("root.schools")} description={totals.length === 0
               ? t("root.nothingHereYet")
-              : schools.length === 1
+              : totals.length === 1
                 ? t("root.schoolsOnServerOne")
-                : t("root.schoolsOnServerMany", { count: schools.length })}
-          </p>
-        </div>
+                : t("root.schoolsOnServerMany", { count: totals.length })} />
         <Button asChild icon={<PlusIcon weight="bold" />}>
           <Link href="/root/new">{t("root.addSchool")}</Link>
         </Button>
@@ -42,7 +53,43 @@ export default async function RootPage() {
         {t("root.operatorIntro")}
       </p>
 
-      {schools.length === 0 ? (
+      {totals.length > 1 && (
+        <DataToolbar
+          search={{ value: q ?? "", placeholder: t("root.searchPlaceholder"), label: t("common.searchLabel") }}
+          sort={{
+            label: t("common.sortBy"),
+            value: sort,
+            defaultValue: "newest",
+            options: [
+              { value: "newest", label: t("common.newest") },
+              { value: "oldest", label: t("common.oldest") },
+              { value: "name", label: t("common.byName") },
+            ],
+          }}
+          facets={[
+            {
+              key: "state",
+              label: t("root.stateFilter"),
+              value: state,
+              defaultValue: "live",
+              options: [
+                { value: "live", label: t("root.stateLive"), count: liveCount },
+                { value: "noadmin", label: t("root.stateNoAdmin"), count: totals.filter((s) => !s.removedAt && s.pendingAdminInvites > 0).length },
+                { value: "removed", label: t("root.removedBadge"), count: totals.length - liveCount },
+                { value: "all", label: t("vacancies.filterAll"), count: totals.length },
+              ],
+            },
+            ...(countries.length > 1
+              ? [{ key: "country", label: t("explore.countryFilter"), value: country ?? "", as: "select" as const, options: [{ value: "", label: t("explore.anyCountry") }, ...countries.map((c) => ({ value: c, label: c }))] }]
+              : []),
+          ]}
+          labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+        />
+      )}
+
+      {schools.length === 0 && narrowed ? (
+        <EmptyState title={t("common.noResultsTitle")} description={t("common.noResultsBody")} />
+      ) : schools.length === 0 ? (
         <EmptyState
           icon={<BuildingsIcon weight="duotone" className="size-8" />}
           title={t("root.noSchoolsYet")}

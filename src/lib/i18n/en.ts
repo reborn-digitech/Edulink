@@ -19,6 +19,9 @@
 
 export const en = {
   enquiries: {
+    statusFilter: "Status",
+    statusOpen: "Open",
+    kindFilter: "Kind",
     title: "Enquiries",
     metaTitle: "Enquiries",
     intro: "Conversations with schools — the ones you opened, and the ones addressed to yours.",
@@ -48,6 +51,13 @@ export const en = {
     sentByYou: "You",
   },
   vacancies: {
+    searchPlaceholder: "Search by title, school or city",
+    typeFilter: "Type",
+    filterLabel: "Show",
+    filterAll: "All",
+    emptyOpenTitle: "Nothing open right now",
+    emptyOpenBody: "Every posting is closed. Post a new one, or switch to Closed to read the old ones.",
+    emptyOwnBody: "Post a vacancy and it appears on the platform board, where teachers at other schools browse.",
     title: "Vacancies",
     metaTitle: "Vacancies",
     boardIntro: "Teaching posts at schools across the platform. Your enquiry goes to the hiring contact the school named.",
@@ -394,6 +404,9 @@ export const en = {
   /* The account page                                                        */
   /* ---------------------------------------------------------------------- */
   account: {
+    tabProfile: "Sign-in and schools",
+    tabPrefs: "Preferences",
+    tabDevices: "Devices",
     title: "Your account",
     loginName: "Login name",
     noEmail: "No email",
@@ -844,6 +857,7 @@ export const en = {
   /* Competitions — the marketplace, one competition, entries, organising    */
   /* ---------------------------------------------------------------------- */
   competitions: {
+    showFilter: "Show",
     title: "Competitions",
     intro: "Open to pupils across every school on EduLink.",
     postOne: "Post one",
@@ -1043,6 +1057,9 @@ export const en = {
   /* Mentoring — asking, deciding, consenting, the thread                    */
   /* ---------------------------------------------------------------------- */
   mentoring: {
+    needsYourAgreement: "{count} mentorship(s) need your agreement before anyone can send a message.",
+    newCount: "{count} new",
+    statusFilter: "Status",
     notPrivateNote: "This conversation is not private. {name}’s guardians and {school} can read every message.",
     statusActive: "Active",
     statusClosed: "Closed",
@@ -1126,6 +1143,7 @@ export const en = {
   /* Remarks — private school-to-home messages                               */
   /* ---------------------------------------------------------------------- */
   convo: {
+    writeAboutPupilHint: "A room about one pupil, with the family in it",
     title: "Conversations",
     aboutPupil: "About a pupil",
     intro: "Write to anyone at the school, or open a thread about a pupil with their family in it.",
@@ -1253,6 +1271,18 @@ export const en = {
   /* The notifications page                                                  */
   /* ---------------------------------------------------------------------- */
   notif: {
+    kindFilter: "Kind",
+    allKinds: "All kinds",
+    kindExpert: "Experts",
+    kindAttendance: "Attendance",
+    kindGrade: "Marks",
+    kindAssignment: "Assignments",
+    kindRemark: "Messages",
+    kindPost: "Social media",
+    kindInvite: "Invitations",
+    kindCompetition: "Competitions",
+    kindEnquiry: "Enquiries",
+    kindSystem: "System",
     newMessageFrom: "New message from {name}",
     admissionEnquiry: "New admissions enquiry",
     vacancyEnquiry: "New enquiry about your vacancy",
@@ -1437,6 +1467,7 @@ export const en = {
   },
 
   reportView: {
+    back: "Back",
     examsOnly: "Marks over maximum across the exams on this card",
     draftBanner: "Draft — not published. Families cannot see this yet.",
     overall: "Overall",
@@ -1492,6 +1523,10 @@ export const en = {
   /* The operator's console — /root, and the refusals its libs mint          */
   /* ---------------------------------------------------------------------- */
   root: {
+    searchPlaceholder: "Search by name, city or join code",
+    stateFilter: "State",
+    stateLive: "Live",
+    stateNoAdmin: "No admin yet",
     jobSchedule: "Schedule (cron)",
     jobErrorLabel: "Error",
     jobCountedLabel: "Counted",
@@ -1739,6 +1774,12 @@ export const en = {
   /* The content team's area — question bank and platform competitions       */
   /* ---------------------------------------------------------------------- */
   appadmin: {
+    bankSearchPlaceholder: "Search topics and chapters",
+    difficultyFilter: "Difficulty",
+    difficultyN: "Level {n}",
+    missingFilter: "Missing a translation",
+    missingHindi: "No Hindi yet",
+    missingMarathi: "No Marathi yet",
     areaTitle: "Content administration",
     badge: "Content",
     switchHint: "The question bank and competitions, for every school",
@@ -2513,6 +2554,7 @@ export const en = {
     resendFailed: "That did not send.",
   },
   offline: {
+    retry: "Try again",
     metaDescription: "You are offline. Cached pages and queued changes are still available.",
     title: "You are offline",
     body:
@@ -3086,6 +3128,16 @@ export const en = {
   /* A teacher's pages — the role staff live in every day                    */
   /* ---------------------------------------------------------------------- */
   teacher: {
+    stateFilter: "Show",
+    overdueFilter: "Past due",
+    classFilter: "Class",
+    allClasses: "All classes",
+    publishAndAnother: "Publish and set another",
+    yesterday: "Yesterday",
+    notMarkedOnly: "Not marked yet",
+    dayLabel: "Which day",
+    allMarkedTitle: "Every class is marked",
+    allMarkedBody: "Nothing left for this day. Choose another day above to check an earlier one.",
     openDayNote: "{date}. School is open, so attendance is still marked as usual.",
     closedDayTitle: "The school is shut on {date}",
     closedDayBody: "You can still mark attendance if a class really is running, but everyone you mark absent will be counted absent.",
@@ -3361,6 +3413,16 @@ export const en = {
   /* translation, and belongs in its own change.                             */
   /* ---------------------------------------------------------------------- */
   common: {
+    clearAll: "Clear all",
+    clearSearch: "Clear search",
+    activeFilters: "Active filters",
+    sortBy: "Sort by",
+    searchLabel: "Search",
+    noResultsTitle: "Nothing matches",
+    noResultsBody: "Try fewer filters or a shorter search.",
+    newest: "Newest first",
+    oldest: "Oldest first",
+    byName: "By name",
     save: "Save",
     saving: "Saving…",
     send: "Send",
@@ -3431,6 +3493,11 @@ export const en = {
   /* The school year and the days the school is shut                         */
   /* ---------------------------------------------------------------------- */
   calendar: {
+    whenLabel: "Which entries",
+    upcoming: "Coming up",
+    wholeYear: "Whole year",
+    nothingAhead: "Nothing still to come",
+    nothingAheadBody: "Every entry this year has passed. Switch to the whole year to see them.",
     subtitle: "The school year, and the days the school is shut.",
     rangeTo: "{from} to {to}",
 
@@ -3672,6 +3739,7 @@ export const en = {
   /* The timetable builder — the school day, then a class's week             */
   /* ---------------------------------------------------------------------- */
   timetable: {
+    openClass: "Open",
     title: "Timetable",
     subtitle: "The school day, then the week for each class. Teachers and pupils see their own.",
     schoolDay: "The school day",
@@ -3829,6 +3897,9 @@ export const en = {
   /* The principal's surface — the school seen whole, and who may be away    */
   /* ---------------------------------------------------------------------- */
   principal: {
+    sortAttendance: "Lowest attendance first",
+    sortProgress: "Lowest progress first",
+    gradeFilter: "Grade",
     dashboard: "Dashboard",
     rangeTo: "{from} to {to}",
     howFarBack: "How far back",
@@ -4163,6 +4234,12 @@ export const en = {
     exportCsv: "Download this month as CSV",
   },
   attendanceIntel: {
+    sortLowest: "Lowest attendance first",
+    sortRun: "Longest run of absences first",
+    windowLabel: "Window",
+    days30: "Last 30 days",
+    days60: "Last 60 days",
+    days90: "Last 90 days",
     title: "Attendance insights",
     intro:
       "Attendance read for the child, not the day: the trend, the children quietly slipping, and the statutory exports.",
@@ -4217,6 +4294,9 @@ export const en = {
   },
 
   exams: {
+    stateFilterLabel: "Sheet",
+    draftLabel: "Draft",
+    allGrades: "Every grade",
     evenIfClosed: "Even if the school is closed that day (a Sunday or a holiday)",
     tabDateSheet: "Date sheet",
     tabMarksEntry: "Enter marks",
@@ -4614,6 +4694,11 @@ export const en = {
   /* Invitations — sending them, and chasing the ones nobody accepted        */
   /* ---------------------------------------------------------------------- */
   invites: {
+    searchPlaceholder: "Search invitations by name or email",
+    roleFilter: "Role",
+    expiredFilter: "Link",
+    expiredOnly: "Expired links",
+    withdrawConfirm: "Withdraw?",
     title: "Invitations",
     waitingCount: "{count} waiting to be accepted",
     invitePeople: "Invite people",
@@ -4701,6 +4786,9 @@ export const en = {
   /* Classes — the list, the one being created, and who staffs each          */
   /* ---------------------------------------------------------------------- */
   classes: {
+    searchPlaceholder: "Search classes by name, subject or room",
+    sortSize: "Largest first",
+    filterLeaderless: "No class teacher",
     leaderlessOne: "{name} has pupils but no class teacher.",
     leaderlessMany: "{count} classes have pupils but no class teacher: {names}.",
     leaderlessWhy: "Until one is assigned, the school admin stands in as guardian for consent — assign a teacher from each class\u2019s page.",
@@ -4878,6 +4966,13 @@ export const en = {
   /* halves of "up to N at a time" in different namespaces.                  */
   /* ---------------------------------------------------------------------- */
   expert: {
+    inviteInvalidCta: "Go to sign in",
+    searchPlaceholder: "Search by name or headline",
+    offeringFilter: "Offering",
+    specialismFilter: "Specialism",
+    allSpecialisms: "All specialisms",
+    pendingCta: "Set up your account meanwhile",
+    availabilityCta: "Open your availability",
     impactTitle: "Your impact",
     impactBody: "What your time on the platform has added up to.",
     statSessionsDone: "Sessions held",
@@ -5108,6 +5203,9 @@ export const en = {
   /* a component, because `metadata` is a static export.                     */
   /* ---------------------------------------------------------------------- */
   reviews: {
+    roundsHeading: "Review rounds",
+    openRoundHeading: "Open a new round",
+    noOpenRoundsTitle: "No round is open",
     statClasses: "Classes",
     statPupils: "Pupils",
     statSince: "Since",
@@ -5189,6 +5287,7 @@ export const en = {
     noCover: "No cover",
   },
   assignments: {
+    searchPlaceholder: "Search by title",
     tabTodo: "To do",
     tabHanded: "Handed in",
     tabMarked: "Marked",
@@ -5473,6 +5572,10 @@ export const en = {
     inTerm: "{count} in this term",
   },
   staff: {
+    searchPlaceholder: "Search by name, staff number or designation",
+    roleFilter: "Role",
+    subjectFilter: "Subject",
+    allSubjects: "All subjects",
     rosterTitle: "Staff",
     rosterSubtitle: "Everyone on the staff, with the record the office keeps and their leave this year.",
     rosterEmpty: "No staff yet",

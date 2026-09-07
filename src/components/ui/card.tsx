@@ -32,9 +32,12 @@ export function CardHeader({
   icon?: ReactNode;
   className?: string;
 }) {
+  // The action wraps beneath the title on a narrow screen rather than
+  // squeezing it to a word: a 311px pane once showed "Y…" for "Your lessons"
+  // beside an "Open the timetable" button.
   return (
-    <div className={cn("flex items-start justify-between gap-3 p-5 pb-3", className)}>
-      <div className="flex min-w-0 items-start gap-3">
+    <div className={cn("flex flex-wrap items-start justify-between gap-3 p-5 pb-3", className)}>
+      <div className="flex min-w-0 flex-1 basis-40 items-start gap-3">
         {icon && (
           <span className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-[--radius-sm] bg-accent-soft text-accent-strong">
             {icon}

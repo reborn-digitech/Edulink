@@ -147,6 +147,18 @@ export const NOTIFICATION_KINDS = [
   "SYSTEM",
 ] as const;
 export type NotificationKind = (typeof NOTIFICATION_KINDS)[number];
+export const NOTIFICATION_KIND_KEY: Record<NotificationKind, TranslationKey> = {
+  EXPERT: "notif.kindExpert",
+  ATTENDANCE: "notif.kindAttendance",
+  GRADE: "notif.kindGrade",
+  ASSIGNMENT: "notif.kindAssignment",
+  REMARK: "notif.kindRemark",
+  POST: "notif.kindPost",
+  INVITE: "notif.kindInvite",
+  COMPETITION: "notif.kindCompetition",
+  ENQUIRY: "notif.kindEnquiry",
+  SYSTEM: "notif.kindSystem",
+};
 
 export const COMPETITION_ENTRY_STATUSES = ["REGISTERED", "SUBMITTED", "RESULTS"] as const;
 export type CompetitionEntryStatus = (typeof COMPETITION_ENTRY_STATUSES)[number];

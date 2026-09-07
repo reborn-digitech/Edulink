@@ -1,0 +1,53 @@
+import Link from "next/link";
+import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
+import { cn } from "@/lib/cn";
+import type { ReactNode } from "react";
+
+/**
+ * The top of a page: one title, one line under it, the page's actions on
+ * the right. Every page used to hand-roll this — same three classes, same
+ * flex-wrap — and drifted a little each time (a 2xl here, a 3xl there, an
+ * action that sat below on one page and beside on the next). One component
+ * means the heading is the same weight everywhere and an action is always in
+ * the same corner, which is what lets a person stop reading and start
+ * recognising.
+ *
+ * `back` is a plain link to the parent, for pages that are one level deep.
+ * `meta` is a small badge-like slot beside the title (a count, a status).
+ */
+export function PageHeader({
+  title,
+  description,
+  actions,
+  meta,
+  back,
+  className,
+}: {
+  title: ReactNode;
+  description?: ReactNode;
+  actions?: ReactNode;
+  meta?: ReactNode;
+  back?: { href: string; label: string };
+  className?: string;
+}) {
+  return (
+    <header className={cn("space-y-3", className)}>
+      {back && (
+        <Link href={back.href} className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg">
+          <ArrowLeftIcon weight="bold" className="size-4" />
+          {back.label}
+        </Link>
+      )}
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div className="min-w-0">
+          <h1 className="flex flex-wrap items-center gap-2 text-2xl font-bold tracking-tight text-fg sm:text-3xl">
+            {title}
+            {meta}
+          </h1>
+          {description && <p className="mt-1 max-w-prose text-sm text-fg-muted">{description}</p>}
+        </div>
+        {actions && <div className="flex flex-wrap items-center gap-2">{actions}</div>}
+      </div>
+    </header>
+  );
+}

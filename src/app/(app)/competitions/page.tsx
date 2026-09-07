@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { ConsentControls } from "./entry-controls";
 import { formatDate } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
+import { DataToolbar } from "@/components/ui/data-toolbar";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -26,17 +27,21 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function CompetitionsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ show?: string }>;
+  searchParams: Promise<{ show?: string; subject?: string }>;
 }) {
   const t = await getT();
   const session = await requireUser();
-  const { show } = await searchParams;
+  const { show, subject: rawSubject } = await searchParams;
   const openOnly = show !== "all";
 
-  const [{ school, platform }, waiting] = await Promise.all([
+  const [{ school: allSchool, platform: allPlatform }, waiting] = await Promise.all([
     listCompetitions(session, { openOnly }),
     pendingConsents(session),
   ]);
+  const subjects = [...new Set([...allSchool, ...allPlatform].map((c) => c.subject).filter((x): x is string => Boolean(x)))].sort();
+  const subject = rawSubject && subjects.includes(rawSubject) ? rawSubject : null;
+  const school = subject ? allSchool.filter((c) => c.subject === subject) : allSchool;
+  const platform = subject ? allPlatform.filter((c) => c.subject === subject) : allPlatform;
   const nothing = school.length === 0 && platform.length === 0;
 
   // One card, two sections — the JSX is identical either side of the divide,
@@ -104,11 +109,6 @@ export default async function CompetitionsPage({
           <p className="text-sm text-fg-muted">{t("competitions.intro")}</p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Button asChild variant="ghost" size="sm">
-            <Link href={openOnly ? "/competitions?show=all" : "/competitions"}>
-              {openOnly ? t("competitions.showClosed") : t("competitions.onlyOpen")}
-            </Link>
-          </Button>
           {session.role === "ADMIN" && (
             <Button asChild size="sm">
               <Link href="/competitions/new">{t("competitions.postOne")}</Link>
@@ -149,7 +149,25 @@ export default async function CompetitionsPage({
         </section>
       )}
 
-      {nothing ? (
+      <DataToolbar
+        facets={[
+          {
+            key: "show",
+            label: t("competitions.showFilter"),
+            value: openOnly ? "" : "all",
+            options: [
+              { value: "", label: t("competitions.onlyOpen") },
+              { value: "all", label: t("competitions.showClosed") },
+            ],
+          },
+          ...(subjects.length > 1 ? [{ key: "subject", label: t("staff.subjectFilter"), value: subject ?? "", as: "select" as const, options: [{ value: "", label: t("staff.allSubjects") }, ...subjects.map((x) => ({ value: x, label: x }))] }] : []),
+        ]}
+        labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+      />
+
+      {nothing && subject ? (
+        <EmptyState title={t("common.noResultsTitle")} description={t("common.noResultsBody")} />
+      ) : nothing ? (
         <EmptyState
           icon={<TrophyIcon weight="duotone" className="size-8" />}
           title={openOnly ? t("competitions.emptyOpenTitle") : t("competitions.emptyTitle")}

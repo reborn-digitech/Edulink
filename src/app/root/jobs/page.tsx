@@ -17,6 +17,8 @@ import { formatInZone } from "@/lib/dates";
 import { cn } from "@/lib/cn";
 import { getT, getRelativeTime } from "@/lib/i18n/server";
 import type { Translate } from "@/lib/i18n/dictionary";
+import { PageHeader } from "@/components/ui/page-header";
+import { EmptyState } from "@/components/ui/states";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -73,7 +75,13 @@ function StatusBadge({ tone, t }: { tone: Tone; t: Translate }) {
   return <Badge tone="ok" size="sm">{t("root.jobOnTime")}</Badge>;
 }
 
-export default async function JobsPage() {
+export default async function JobsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ state?: string }>;
+}) {
+  const { state: rawState } = await searchParams;
+  const state = rawState === "ok" || rawState === "overdue" || rawState === "failed" ? rawState : null;
   const t = await getT();
   const relativeTime = await getRelativeTime();
   await requireSuperuser();
@@ -93,20 +101,30 @@ export default async function JobsPage() {
           ? t("root.jobsOverdueOne")
           : t("root.jobsOverdueMany", { count: overdue });
 
-  const tiles: { label: string; value: number; icon: React.ReactNode; className: string }[] = [
+  // Each tile narrows the list to its own jobs; pressing the lit one clears it.
+  const shownStatuses = statuses.filter((job) => {
+    if (state === "ok") return !job.overdue && !job.lastFailed;
+    if (state === "overdue") return job.overdue;
+    if (state === "failed") return !job.overdue && job.lastFailed;
+    return true;
+  });
+  const tiles: { key: "ok" | "overdue" | "failed"; label: string; value: number; icon: React.ReactNode; className: string }[] = [
     {
+      key: "ok",
       label: t("root.jobOnTime"),
       value: onTime,
       icon: <CheckCircleIcon weight="fill" className="size-5" />,
       className: "text-ok",
     },
     {
+      key: "overdue",
       label: t("root.jobOverdue"),
       value: overdue,
       icon: <WarningCircleIcon weight="fill" className="size-5" />,
       className: overdue > 0 ? "text-danger" : "text-fg-subtle",
     },
     {
+      key: "failed",
       label: t("root.jobFailedLast"),
       value: failed,
       icon: <XCircleIcon weight="fill" className="size-5" />,
@@ -117,29 +135,37 @@ export default async function JobsPage() {
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("root.jobs")}</h1>
-          <p className="mt-1 text-sm text-fg-muted">{headline}</p>
-        </div>
+        <PageHeader title={t("root.jobs")} description={headline} />
         <Button asChild variant="secondary" icon={<BuildingsIcon weight="bold" />}>
           <Link href="/root/jobs/schools">{t("root.jobsPerSchool")}</Link>
         </Button>
       </div>
 
-      <dl className="grid grid-cols-3 gap-2.5">
+      <div className="grid grid-cols-3 gap-2.5" role="group" aria-label={t("root.stateFilter")}>
         {tiles.map((tile) => (
-          <Card key={tile.label} className="p-3.5">
-            <dt className={cn("flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide", tile.className)}>
-              {tile.icon}
-              {tile.label}
-            </dt>
-            <dd className="mt-1 text-2xl font-bold tabular-nums tracking-tight text-fg">{tile.value}</dd>
-          </Card>
+          <Link
+            key={tile.key}
+            href={state === tile.key ? "/root/jobs" : `/root/jobs?state=${tile.key}`}
+            aria-pressed={state === tile.key}
+            className="block rounded-[--radius-lg] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+          >
+            <Card className={cn("p-3.5", state === tile.key && "ring-2 ring-accent")}>
+              <p className={cn("flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide", tile.className)}>
+                {tile.icon}
+                {tile.label}
+              </p>
+              <p className="mt-1 text-2xl font-bold tabular-nums tracking-tight text-fg">{tile.value}</p>
+            </Card>
+          </Link>
         ))}
-      </dl>
+      </div>
+
+      {shownStatuses.length === 0 && state && (
+        <EmptyState title={t("common.noResultsTitle")} description={t("common.noResultsBody")} />
+      )}
 
       <ul className="space-y-3" data-testid="jobs">
-        {statuses.map((job) => {
+        {shownStatuses.map((job) => {
           const tone = toneOf(job);
           const pairs = job.lastRun?.ok === true ? summaryPairs(job.lastRun.summary) : [];
           return (

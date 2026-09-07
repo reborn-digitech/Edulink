@@ -125,6 +125,23 @@ export function AppShell({
               {t("shell.serverAdmin")}
             </Link>
           )}
+          {/* The bell lived only in the phone's top bar; on a desk, the
+              unread count had nowhere to show. */}
+          <Link
+            href="/notifications"
+            className={cn(
+              "mb-2 flex items-center gap-2 rounded-[--radius-md] px-3 py-2.5 text-sm font-medium transition-colors hover:bg-surface-muted hover:text-fg",
+              pathname.startsWith("/notifications") ? "bg-accent-soft text-accent-strong" : "text-fg-muted",
+            )}
+          >
+            <NavIcon name="bell" className="size-5" />
+            <span className="flex-1">{t("shell.notifications")}</span>
+            {unreadCount > 0 && (
+              <span className="grid min-w-5 place-items-center rounded-full bg-danger px-1.5 text-[0.6875rem] font-bold text-white">
+                {unreadCount > 99 ? "99+" : unreadCount}
+              </span>
+            )}
+          </Link>
           <button
             type="button"
             onClick={() => setPaletteOpen(true)}

@@ -7,6 +7,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getT } from "@/lib/i18n/server";
 import { FreshSeedInput } from "./fresh-seed";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -28,10 +29,7 @@ export default async function WorksheetsPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("worksheets.title")}</h1>
-        <p className="mt-1 text-sm text-fg-muted">{t("worksheets.intro")}</p>
-      </div>
+      <PageHeader title={t("worksheets.title")} description={t("worksheets.intro")} />
 
       <Card>
         <CardHeader

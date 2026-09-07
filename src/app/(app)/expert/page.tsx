@@ -9,6 +9,8 @@ import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
 import { EXPERT_BOOKING_STATUS_KEY, type ExpertBookingStatus } from "@/lib/constants";
 import { formatUtcMoment } from "@/lib/dates";
+import { Button } from "@/components/ui/button";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -22,25 +24,25 @@ export default async function ExpertHome() {
 
   return (
     <div className="space-y-5">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("expert.bookings")}
-        </h1>
-        <p className="mt-1 text-sm text-fg-muted">{t("expert.bookingsBody")}</p>
-      </div>
+      <PageHeader title={t("expert.bookings")} description={t("expert.bookingsBody")} />
 
       {bookings.length === 0 ? (
         <EmptyState
           icon={<BriefcaseIcon weight="duotone" className="size-8" />}
           title={t("expert.noBookings")}
           description={t("expert.noBookingsBody")}
+          action={
+            <Button asChild variant="secondary">
+              <Link href="/expert/availability">{t("expert.availabilityCta")}</Link>
+            </Button>
+          }
         />
       ) : (
         <ul className="space-y-3">
           {bookings.map((booking) => (
             <li key={booking.id}>
               <Card interactive>
-                <Link href={`/expert/bookings/${booking.id}`} className="block">
+                <Link href={`/experts/bookings/${booking.id}`} className="block">
                   <CardBody className="space-y-2 pt-5">
                     <div className="flex flex-wrap items-center gap-2">
                       <Badge tone={booking.status === "CANCELLED" ? "danger" : "accent"} size="sm">

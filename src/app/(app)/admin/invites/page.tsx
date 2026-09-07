@@ -11,8 +11,10 @@ import { InviteRowActions } from "./row-actions";
 import { isPast, relativeTime } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { TabBar } from "@/components/ui/tabs";
-import { ROLE_META, type Role } from "@/lib/constants";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { ROLE_META, SCHOOL_ROLES, type Role, type SchoolRole } from "@/lib/constants";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -28,16 +30,25 @@ const TABS = [
 export default async function InvitesPage({
   searchParams,
 }: {
-  searchParams: Promise<{ status?: string }>;
+  searchParams: Promise<{ status?: string; q?: string; role?: string; expired?: string }>;
 }) {
   const ctx = await requireRole("ADMIN");
-  const { status } = await searchParams;
+  const { status, q: rawQ, role: rawRole, expired } = await searchParams;
   const t = await getT();
   const active = TABS.find((t) => t.id === status)?.id ?? "PENDING";
+  const q = rawQ?.trim() ?? "";
+  const roleFilter = SCHOOL_ROLES.includes(rawRole as SchoolRole) ? (rawRole as SchoolRole) : null;
+  const expiredOnly = active === "PENDING" && expired === "1";
 
   const [invites, counts] = await Promise.all([
     db.invite.findMany({
-      where: { schoolId: ctx.schoolId, status: active },
+      where: {
+        schoolId: ctx.schoolId,
+        status: active,
+        ...(roleFilter ? { role: roleFilter } : {}),
+        ...(expiredOnly ? { expiresAt: { lt: new Date() } } : {}),
+        ...(q ? { OR: [{ email: { contains: q, mode: "insensitive" } }, { name: { contains: q, mode: "insensitive" } }] } : {}),
+      },
       orderBy: { createdAt: "desc" },
       take: 200,
     }),
@@ -53,12 +64,7 @@ export default async function InvitesPage({
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("nav.people")}</h1>
-          <p className="mt-1 text-sm text-fg-muted">
-            {t("invites.waitingCount", { count: countFor("PENDING") })}
-          </p>
-        </div>
+        <PageHeader title={t("nav.people")} description={t("invites.waitingCount", { count: countFor("PENDING") })} />
         <Button asChild icon={<PlusIcon weight="bold" />}>
           <Link href="/admin/invites/new">{t("invites.invitePeople")}</Link>
         </Button>
@@ -90,6 +96,23 @@ export default async function InvitesPage({
           </Link>
         ))}
       </nav>
+
+      <DataToolbar
+        search={{ value: q, placeholder: t("invites.searchPlaceholder"), label: t("invites.searchPlaceholder") }}
+        facets={[
+          {
+            key: "role",
+            label: t("invites.roleFilter"),
+            value: roleFilter ?? "",
+            options: [{ value: "", label: t("people.everyone") }, ...SCHOOL_ROLES.map((r) => ({ value: r, label: t(ROLE_META[r].pluralKey) }))],
+          },
+          ...(active === "PENDING"
+            ? [{ key: "expired", label: t("invites.expiredFilter"), value: expiredOnly ? "1" : "", options: [{ value: "", label: t("vacancies.filterAll") }, { value: "1", label: t("invites.expiredOnly") }] }]
+            : []),
+        ]}
+        extra={active === "PENDING" ? {} : { status: active }}
+        labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+      />
 
       {invites.length === 0 ? (
         <EmptyState

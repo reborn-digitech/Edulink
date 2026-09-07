@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Wordmark } from "@/components/brand";
 import { getT } from "@/lib/i18n/server";
+import { RetryButton } from "./retry-button";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -41,6 +42,7 @@ export default async function OfflinePage() {
         <p className="mt-3 leading-relaxed text-fg-muted">{t("offline.body")}</p>
 
         <div className="mt-8 flex flex-col gap-2 sm:flex-row sm:justify-center">
+          <RetryButton label={t("offline.retry")} />
           <Button asChild variant="secondary">
             <Link href="/">{t("offline.goHome")}</Link>
           </Button>

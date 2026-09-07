@@ -3,6 +3,7 @@ import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
 import { requireSuperuser } from "@/lib/tenancy";
 import { SchoolForm } from "../school-form";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata() {
   const t = await getT();
@@ -23,10 +24,7 @@ export default async function NewSchoolPage() {
         {t("root.allSchools")}
       </Link>
 
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("root.addSchool")}</h1>
-        <p className="mt-1 text-sm text-fg-muted">{t("root.newSchoolIntro")}</p>
-      </div>
+      <PageHeader title={t("root.addSchool")} description={t("root.newSchoolIntro")} />
 
       <SchoolForm />
     </div>

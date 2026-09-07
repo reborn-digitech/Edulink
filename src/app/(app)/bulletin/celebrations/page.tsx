@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { PersonLink } from "@/components/person-link";
 import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -63,10 +64,7 @@ export default async function CelebrationsPage() {
       </Link>
 
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("celebrations.title")}</h1>
-          <p className="mt-1 max-w-prose text-sm text-fg-muted">{t("celebrations.intro")}</p>
-        </div>
+        <PageHeader title={t("celebrations.title")} description={t("celebrations.intro")} />
         <Link
           href={`/bulletin?tag=${CELEBRATIONS_TAG}`}
           className="inline-flex min-h-10 items-center gap-1.5 rounded-full bg-surface-muted px-3.5 text-sm font-medium text-fg hover:bg-border"

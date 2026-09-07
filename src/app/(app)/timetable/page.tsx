@@ -5,10 +5,11 @@ import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
 import { teacherWeek, studentWeek, weekStartKey } from "@/lib/timetable";
 import { todayKey, addDaysToKey, formatDateKey, isDateKey } from "@/lib/dates";
-import { Card, CardHeader, CardBody } from "@/components/ui/card";
+import { Card, CardBody } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { WeekGridView } from "@/components/timetable/week-grid";
 import { getLocale, getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -73,14 +74,7 @@ export default async function MyTimetablePage({
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("timetable.myTitle")}
-        </h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          {ctx.role === "TEACHER" ? t("timetable.myTeacherBody") : t("timetable.myBody")}
-        </p>
-      </div>
+      <PageHeader title={t("timetable.myTitle")} description={ctx.role === "TEACHER" ? t("timetable.myTeacherBody") : t("timetable.myBody")} />
 
       <nav aria-label={t("principal.week")} className="flex flex-wrap items-center gap-2">
         <Link
@@ -130,19 +124,12 @@ export default async function MyTimetablePage({
         />
       ) : (
         <Card>
-          <CardHeader
-            title={
-              isThisWeek
-                ? t("principal.thisWeek")
-                : t("principal.weekOf", { date: formatDateKey(monday) })
-            }
-            description={
-              ctx.role === "TEACHER"
-                ? t("timetable.coverShowsHere")
-                : t("timetable.coverInTheirPlace")
-            }
-          />
-          <CardBody>
+          {/* The week is named once, in the nav above; the card carries only
+              the note about cover. */}
+          <CardBody className="space-y-3">
+            <p className="text-xs text-fg-muted">
+              {ctx.role === "TEACHER" ? t("timetable.coverShowsHere") : t("timetable.coverInTheirPlace")}
+            </p>
             <WeekGridView
               locale={locale}
               {...grid}

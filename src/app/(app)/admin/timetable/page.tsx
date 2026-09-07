@@ -16,6 +16,8 @@ import { EmptyState } from "@/components/ui/states";
 import { DayPanel } from "./day-panel";
 import { GridEditor, type StaffOption } from "./grid-editor";
 import { getT } from "@/lib/i18n/server";
+import { Button } from "@/components/ui/button";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -83,10 +85,7 @@ export default async function AdminTimetablePage({
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("timetable.title")}</h1>
-        <p className="mt-1 text-sm text-fg-muted">{t("timetable.subtitle")}</p>
-      </div>
+      <PageHeader title={t("timetable.title")} description={t("timetable.subtitle")} />
 
       {/* ---------------- step one: the school day ---------------- */}
       <section aria-labelledby="day-heading">
@@ -124,6 +123,31 @@ export default async function AdminTimetablePage({
           />
         ) : (
           <>
+            {/* Twelve pills read at a glance; thirty do not. Past that the
+                picker is a select, which the keyboard and a thumb both like. */}
+            {classes.length > 12 ? (
+              <form method="get" className="flex flex-wrap items-center gap-2">
+                <label className="text-sm font-medium text-fg" htmlFor="class-picker">
+                  {t("timetable.chooseClass")}
+                </label>
+                <select
+                  id="class-picker"
+                  name="class"
+                  defaultValue={selected?.id ?? ""}
+                  className="min-h-11 min-w-[14rem] rounded-[--radius-md] border border-border bg-surface px-3 text-sm text-fg"
+                >
+                  {classes.map((klass) => (
+                    <option key={klass.id} value={klass.id}>
+                      {klass.name}
+                      {klass.section && !nameCarriesSection(klass.name, klass.section) ? ` ${klass.section}` : ""}
+                    </option>
+                  ))}
+                </select>
+                <Button type="submit" size="sm" variant="secondary">
+                  {t("timetable.openClass")}
+                </Button>
+              </form>
+            ) : (
             <nav aria-label={t("timetable.chooseClass")} className="flex flex-wrap gap-2">
               {classes.map((klass) => (
                 <Link
@@ -141,6 +165,7 @@ export default async function AdminTimetablePage({
                 </Link>
               ))}
             </nav>
+            )}
 
             {selected && grid && (
               <Card>

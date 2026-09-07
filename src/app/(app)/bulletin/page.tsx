@@ -11,6 +11,7 @@ import { BulkReview } from "./bulk-review";
 import { FeedFilters } from "./feed-filters";
 import { POST_CATEGORIES, type PostCategory, type PostStatus } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -93,10 +94,7 @@ export default async function BulletinPage({
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("bulletin.title")}</h1>
-          <p className="mt-1 text-sm text-fg-muted">
-            {tag ? (
+        <PageHeader title={t("bulletin.title")} description={tag ? (
               <>
                 {t("bulletin.tagged")} <strong className="text-fg">#{tag}</strong> ·{" "}
                 <Link href="/bulletin" className="text-accent-strong underline underline-offset-2">
@@ -105,9 +103,7 @@ export default async function BulletinPage({
               </>
             ) : (
               school.name
-            )}
-          </p>
-        </div>
+            )} />
         {/* Two doors, one row, sized to the phone: the old stacked
             full-width buttons put the first post a screen and a half down. */}
         <div className="flex items-center gap-2">

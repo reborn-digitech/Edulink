@@ -25,16 +25,17 @@ export default async function NewInvitePage({
     ? (role as SchoolRole)
     : "TEACHER";
 
-  const classes = await db.class.findMany({
-    where: { schoolId: ctx.schoolId, archivedAt: null },
-    select: { id: true, name: true },
-    orderBy: { name: "asc" },
-  });
-
-  const school = await db.school.findUniqueOrThrow({
-    where: { id: ctx.schoolId },
-    select: { code: true, name: true },
-  });
+  const [classes, school] = await Promise.all([
+    db.class.findMany({
+      where: { schoolId: ctx.schoolId, archivedAt: null },
+      select: { id: true, name: true },
+      orderBy: { name: "asc" },
+    }),
+    db.school.findUniqueOrThrow({
+      where: { id: ctx.schoolId },
+      select: { code: true, name: true },
+    }),
+  ]);
 
   return (
     <div className="mx-auto max-w-2xl">

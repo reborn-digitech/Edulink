@@ -1,76 +1,12 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
-import { requireApiUser, AccessError } from "@/lib/tenancy";
-import { getBooking } from "@/lib/experts";
-import { Card, CardBody } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { BookingThread } from "./thread";
-import { getT } from "@/lib/i18n/server";
-import { formatUtcMoment } from "@/lib/dates";
+import { redirect } from "next/navigation";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getT();
-  return { title: t("meta.booking"), robots: { index: false, follow: false } };
-}
-
-export default async function BookingPage({
-  params,
-}: {
-  params: Promise<{ bookingId: string }>;
-}) {
-  const t = await getT();
-  const ctx = await requireApiUser();
+/**
+ * Two pages showed one booking — this one for the expert, `/experts/bookings`
+ * for the school — and the school's already knew how to address an expert
+ * (its back link and its cancel rule check the role). One page, one URL;
+ * old links in notifications land here and go on.
+ */
+export default async function ExpertBookingRedirect({ params }: { params: Promise<{ bookingId: string }> }) {
   const { bookingId } = await params;
-
-  let booking;
-  try {
-    booking = await getBooking(ctx, bookingId);
-  } catch (error) {
-    if (error instanceof AccessError) notFound();
-    throw error;
-  }
-
-  const isExpert = ctx.role === "EXPERT";
-
-  return (
-    <div className="mx-auto max-w-2xl space-y-5">
-      <Link
-        href={isExpert ? "/expert" : "/experts"}
-        className="inline-flex items-center gap-1.5 text-sm text-fg-muted hover:text-fg"
-      >
-        <ArrowLeftIcon weight="bold" className="size-4" />
-        {t("common.back")}
-      </Link>
-
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg">{booking.topic}</h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          {isExpert ? booking.schoolName : booking.expertName} ·{" "}
-          {formatUtcMoment(booking.startsAt)}
-        </p>
-      </div>
-
-      {booking.status === "CANCELLED" && (
-        <Badge tone="danger" size="sm">{t("expert.bookingCancelled")}</Badge>
-      )}
-
-      <Card>
-        <CardBody className="pt-5">
-          <BookingThread
-            bookingId={booking.id}
-            disabled={booking.status === "CANCELLED"}
-            messages={booking.messages.map((m) => ({
-              id: m.id,
-              body: m.body,
-              createdAt: m.createdAt.toISOString(),
-              authorName: m.authorName,
-              mine: m.mine,
-            }))}
-          />
-        </CardBody>
-      </Card>
-    </div>
-  );
+  redirect(`/experts/bookings/${bookingId}`);
 }

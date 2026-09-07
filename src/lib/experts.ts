@@ -431,7 +431,7 @@ export async function bookSlot(
       kind: "EXPERT",
       titleKey: "notifTitle.schoolBookedYou",
       body: cleanTopic,
-      url: `/expert/bookings/${booking.id}`,
+      url: `/experts/bookings/${booking.id}`,
     });
 
     await audit({
@@ -747,7 +747,7 @@ export async function postMessage(
       titleKey: "notifTitle.schoolSentMessage",
       titleVars: { school: booking.school.name },
       body: clean.slice(0, 120),
-      url: `/expert/bookings/${bookingId}`,
+      url: `/experts/bookings/${bookingId}`,
     });
   }
 }

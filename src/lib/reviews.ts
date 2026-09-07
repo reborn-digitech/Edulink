@@ -135,10 +135,13 @@ export type RoundSummary = {
   responseCount: number;
 };
 
-export async function listReviewRounds(ctx: ActiveContext): Promise<RoundSummary[]> {
+export async function listReviewRounds(
+  ctx: ActiveContext,
+  opts: { status?: "OPEN" | "CLOSED" } = {},
+): Promise<RoundSummary[]> {
   const schoolId = requireAdmin(ctx);
   const rounds = await db.reviewRound.findMany({
-    where: { schoolId },
+    where: { schoolId, ...(opts.status ? { status: opts.status } : {}) },
     orderBy: { createdAt: "desc" },
     take: 50,
     include: { _count: { select: { teachers: true, responses: true } } },

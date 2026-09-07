@@ -16,6 +16,7 @@ import { EmptyState } from "@/components/ui/states";
 import { formatDate } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
 import { setPractice, removePractice } from "./actions";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -89,12 +90,7 @@ export default async function TeacherPracticePage({
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-            {t("practice.teacherTitle")}
-          </h1>
-          <p className="mt-1 text-sm text-fg-muted">{t("practice.teacherIntro")}</p>
-        </div>
+        <PageHeader title={t("practice.teacherTitle")} description={t("practice.teacherIntro")} />
         <Button asChild variant="secondary" size="sm">
           <Link href="/teacher/worksheets">{t("worksheets.title")}</Link>
         </Button>

@@ -17,6 +17,8 @@ import { Badge } from "@/components/ui/badge";
 import { getT } from "@/lib/i18n/server";
 import { alertGuardiansAction } from "./actions";
 import { PersonLink } from "@/components/person-link";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -32,15 +34,20 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function AdminAttendancePage({
   searchParams,
 }: {
-  searchParams: Promise<{ note?: string; error?: string }>;
+  searchParams: Promise<{ note?: string; error?: string; window?: string; sort?: string }>;
 }) {
   const ctx = await requireRole("ADMIN");
   const t = await getT();
-  const { note, error } = await searchParams;
+  const { note, error, window: rawWindow, sort: rawSort } = await searchParams;
+  // The window is the one control that changes the answer; the sort is the
+  // one that changes who is at the top. Lowest attendance first by default —
+  // that is the point of the list.
+  const days = rawWindow === "60" ? 60 : rawWindow === "90" ? 90 : 30;
+  const sort = rawSort === "run" ? "run" : rawSort === "name" ? "name" : "percent";
 
-  const [trend, flags, classes] = await Promise.all([
+  const [trend, rawFlags, classes] = await Promise.all([
     attendanceTrend(ctx),
-    absenceFlags(ctx),
+    absenceFlags(ctx, { days }),
     db.class.findMany({
       where: { schoolId: ctx.schoolId!, archivedAt: null },
       orderBy: { name: "asc" },
@@ -57,16 +64,14 @@ export default async function AdminAttendancePage({
   const barHeight = (percent: number | null) =>
     percent === null ? 4 : 12 + ((percent - lowest) / span) * 84;
   const thisMonth = new Date().toISOString().slice(0, 7);
+  const flags = [...rawFlags].sort((a, b) =>
+    sort === "run" ? b.currentRun - a.currentRun || a.percent - b.percent : sort === "name" ? a.name.localeCompare(b.name) : a.percent - b.percent || b.currentRun - a.currentRun,
+  );
 
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-            {t("attendanceIntel.title")}
-          </h1>
-          <p className="mt-1 text-sm text-fg-muted">{t("attendanceIntel.intro")}</p>
-        </div>
+        <PageHeader title={t("attendanceIntel.title")} description={t("attendanceIntel.intro")} />
         <Button asChild variant="secondary" size="sm" icon={<ClockCounterClockwiseIcon weight="bold" />}>
           <Link href="/attendance/history">{t("attendanceHistory.link")}</Link>
         </Button>
@@ -122,6 +127,33 @@ export default async function AdminAttendancePage({
           description={t("attendanceIntel.flagsHint")}
         />
         <CardBody className="p-0">
+          <div className="border-b border-border px-5 py-3">
+            <DataToolbar
+              sort={{
+                label: t("common.sortBy"),
+                value: sort,
+                defaultValue: "percent",
+                options: [
+                  { value: "percent", label: t("attendanceIntel.sortLowest") },
+                  { value: "run", label: t("attendanceIntel.sortRun") },
+                  { value: "name", label: t("common.byName") },
+                ],
+              }}
+              facets={[
+                {
+                  key: "window",
+                  label: t("attendanceIntel.windowLabel"),
+                  value: days === 30 ? "" : String(days),
+                  options: [
+                    { value: "", label: t("attendanceIntel.days30") },
+                    { value: "60", label: t("attendanceIntel.days60") },
+                    { value: "90", label: t("attendanceIntel.days90") },
+                  ],
+                },
+              ]}
+              labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+            />
+          </div>
           {flags.length === 0 ? (
             <p className="px-5 py-6 text-sm text-fg-muted">{t("attendanceIntel.flagsEmpty")}</p>
           ) : (

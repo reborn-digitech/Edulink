@@ -53,7 +53,7 @@ export default async function StudentHome({
   const timezone = membership.school.timezone;
   const today = todayKey(timezone);
 
-  const [attendance, todayRecord, upcoming] = await Promise.all([
+  const [attendance, todayRecord, upcoming, examMarks, week] = await Promise.all([
     getAttendanceSummary(ctx.schoolId, ctx.membershipId, addDaysToKey(today, -28), today),
     db.attendanceRecord.findFirst({
       where: { studentMembershipId: ctx.membershipId, session: { dateKey: today } },
@@ -76,11 +76,11 @@ export default async function StudentHome({
       orderBy: [{ dueAt: { sort: "asc", nulls: "last" } }],
       take: 5,
     }),
+    examMarksFor(ctx),
+    studentWeek(ctx, ctx.membershipId, { weekOf: today, todayKey: today }),
   ]);
 
   const streak = computeStreak(attendance.recent);
-
-  const examMarks = await examMarksFor(ctx);
 
   /**
    * THE DAY'S LESSONS, FIRST-CLASS ON THE DASHBOARD. The pupil's Today page
@@ -89,7 +89,6 @@ export default async function StudentHome({
    * whole week happily. The same gap the teacher's page had the day before,
    * reported by the same person testing; the same shape of fix.
    */
-  const week = await studentWeek(ctx, ctx.membershipId, { weekOf: today, todayKey: today });
   const weekday = weekdayOfKey(today);
   const dayColumn = week.days.find((day) => day.weekday === weekday);
   const closedToday = dayColumn?.closed ?? false;
@@ -243,20 +242,22 @@ export default async function StudentHome({
               {upcoming.map((assignment) => {
                 const dueSoon = assignment.dueAt && isWithin(assignment.dueAt, 2 * 86_400_000);
                 return (
-                  <li
-                    key={assignment.id}
-                    className="flex items-center justify-between gap-3 rounded-[--radius-md] border border-border p-3"
-                  >
-                    <span className="min-w-0">
-                      <span className="block truncate text-sm font-semibold text-fg">
-                        {assignment.title}
+                  <li key={assignment.id}>
+                    <Link
+                      href="/student/assignments"
+                      className="flex items-center justify-between gap-3 rounded-[--radius-md] border border-border p-3 hover:bg-surface-muted/60"
+                    >
+                      <span className="min-w-0">
+                        <span className="block truncate text-sm font-semibold text-fg">
+                          {assignment.title}
+                        </span>
+                        <span className="block text-xs text-fg-muted">{assignment.class.name}</span>
                       </span>
-                      <span className="block text-xs text-fg-muted">{assignment.class.name}</span>
-                    </span>
-                    {/* Gentle, never alarming — "soon", not "OVERDUE" in red. */}
-                    <Badge tone={dueSoon ? "warn" : "neutral"} size="sm">
-                      {assignment.dueAt ? relativeTime(assignment.dueAt) : t("student.noDate")}
-                    </Badge>
+                      {/* Gentle, never alarming — "soon", not "OVERDUE" in red. */}
+                      <Badge tone={dueSoon ? "warn" : "neutral"} size="sm">
+                        {assignment.dueAt ? relativeTime(assignment.dueAt) : t("student.noDate")}
+                      </Badge>
+                    </Link>
                   </li>
                 );
               })}

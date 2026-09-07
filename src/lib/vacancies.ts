@@ -283,10 +283,14 @@ export type OwnPosting = {
 };
 
 /** The school's own desk: every posting, any status, with enquiry counts. */
-export async function listOurPostings(ctx: ActiveContext): Promise<OwnPosting[]> {
+export async function listOurPostings(
+  ctx: ActiveContext,
+  opts: { status?: "OPEN" | "CLOSED" | "ALL" } = {},
+): Promise<OwnPosting[]> {
   const { schoolId } = requireStaffing(ctx);
+  const status = opts.status ?? "ALL";
   const rows = await db.jobPosting.findMany({
-    where: { schoolId },
+    where: { schoolId, ...(status === "ALL" ? {} : { status }) },
     select: {
       id: true,
       title: true,

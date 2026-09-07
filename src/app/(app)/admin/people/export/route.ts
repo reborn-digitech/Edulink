@@ -34,10 +34,17 @@ export async function GET(request: Request) {
         })
       : null;
 
+    // The same three views the page offers: here, paused, left. Anything
+    // else in the parameter means the default.
+    const statusParam = url.searchParams.get("status");
+    const view = statusParam === "SUSPENDED" || statusParam === "LEFT" ? statusParam : "ACTIVE";
     const where: Prisma.MembershipWhereInput = {
       schoolId: ctx.schoolId,
-      status: "ACTIVE",
-      leftAt: null,
+      ...(view === "LEFT"
+        ? { leftAt: { not: null } }
+        : view === "SUSPENDED"
+          ? { status: "SUSPENDED", leftAt: null }
+          : { status: "ACTIVE", leftAt: null }),
       ...(roleFilter ? { role: roleFilter } : {}),
       ...(klass
         ? {

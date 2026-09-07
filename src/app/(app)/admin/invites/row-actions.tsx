@@ -1,6 +1,6 @@
 "use client";
 
-import { useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowsClockwiseIcon, ProhibitIcon } from "@phosphor-icons/react";
 import { useToast } from "@/components/ui/toast";
@@ -22,6 +22,15 @@ export function InviteRowActions({
   const router = useRouter();
   const { toast } = useToast();
   const [pending, startTransition] = useTransition();
+  // Withdrawing kills a link somebody may be about to press. One extra
+  // press, in place, rather than an OS dialog: the button turns into its
+  // own confirmation and turns back if left alone.
+  const [confirming, setConfirming] = useState(false);
+  useEffect(() => {
+    if (!confirming) return;
+    const timer = setTimeout(() => setConfirming(false), 4000);
+    return () => clearTimeout(timer);
+  }, [confirming]);
 
   return (
     <div className="flex shrink-0 gap-1">
@@ -57,13 +66,18 @@ export function InviteRowActions({
       )}
 
       <Button
-        size="icon-sm"
-        variant="ghost"
-        aria-label={t("invites.withdrawFor", { name: label })}
+        size={confirming ? "sm" : "icon-sm"}
+        variant={confirming ? "danger" : "ghost"}
+        aria-label={confirming ? t("invites.withdrawConfirm") : t("invites.withdrawFor", { name: label })}
         title={t("invites.withdraw")}
         disabled={pending}
-        className="text-danger hover:bg-danger-soft"
-        onClick={() =>
+        className={confirming ? undefined : "text-danger hover:bg-danger-soft"}
+        onClick={() => {
+          if (!confirming) {
+            setConfirming(true);
+            return;
+          }
+          setConfirming(false);
           startTransition(async () => {
             const result = await revokeInvite(inviteId);
             toast(
@@ -80,10 +94,10 @@ export function InviteRowActions({
                   },
             );
             router.refresh();
-          })
-        }
+          });
+        }}
       >
-        <ProhibitIcon className="size-4" />
+        {confirming ? t("invites.withdrawConfirm") : <ProhibitIcon className="size-4" />}
       </Button>
     </div>
   );

@@ -7,6 +7,7 @@ import { translationConfigured } from "@/lib/translate";
 import { Card, CardBody } from "@/components/ui/card";
 import { QuestionForm } from "../../question-form";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata() {
   const t = await getT();
@@ -35,10 +36,7 @@ export default async function NewQuestionPage({
         {topic.name}
       </Link>
 
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg">{t("appadmin.addQuestion")}</h1>
-        <p className="mt-1 text-sm text-fg-muted">{t("appadmin.addQuestionIntro")}</p>
-      </div>
+      <PageHeader title={t("appadmin.addQuestion")} description={t("appadmin.addQuestionIntro")} />
 
       <Card>
         <CardBody>

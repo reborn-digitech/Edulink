@@ -11,12 +11,14 @@ import { classesIMayTake, registerDuty } from "@/lib/register-duty";
 import { getRegister } from "@/lib/attendance";
 import { closedOn } from "@/lib/holidays";
 import { db } from "@/lib/db";
-import { formatDateKey, todayKey, isDateKey, isTeachingDay } from "@/lib/dates";
+import { addDaysToKey, formatDateKey, todayKey, isDateKey, isTeachingDay } from "@/lib/dates";
 import { Register } from "./register";
 import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { Button } from "@/components/ui/button";
 import { getT } from "@/lib/i18n/server";
+import type { Translate } from "@/lib/i18n/dictionary";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -26,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function AttendancePage({
   searchParams,
 }: {
-  searchParams: Promise<{ classId?: string; date?: string }>;
+  searchParams: Promise<{ classId?: string; date?: string; only?: string }>;
 }) {
   const t = await getT();
   const ctx = await requireRole("TEACHER", "ADMIN");
@@ -87,18 +89,21 @@ export default async function AttendancePage({
       select: { classId: true },
     });
     const takenSet = new Set(taken.map((t) => t.classId));
+    const onlyUnmarked = params.only === "unmarked";
+    const shown = onlyUnmarked ? classes.filter((klass) => !takenSet.has(klass.id)) : classes;
+    const unmarkedCount = classes.filter((klass) => !takenSet.has(klass.id)).length;
 
     return (
       <div className="space-y-4">
         <div className="flex flex-wrap items-end justify-between gap-3">
-          <div>
-            <h1 className="text-2xl font-bold tracking-tight text-fg">{t("teacher.takeRegister")}</h1>
-            <p className="mt-1 text-sm text-fg-muted">
-              {formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })}
-            </p>
-          </div>
+          <PageHeader title={t("teacher.takeRegister")} description={formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })} />
           <PastRegistersLink label={t("attendanceHistory.link")} />
         </div>
+
+        {/* Yesterday's forgotten register was three clicks through the month
+            grid; now it is one chip. "Not marked" hides the classes already
+            done so the list is the to-do list. */}
+        <DayChips today={today} dateKey={dateKey} only={onlyUnmarked ? "unmarked" : null} unmarkedCount={unmarkedCount} t={t} />
 
         <ClosedDayNotice
         calendar={calendar}
@@ -109,8 +114,15 @@ export default async function AttendancePage({
         closedDayBody={t("teacher.closedDayBody")}
       />
 
+        {shown.length === 0 ? (
+          <EmptyState
+            icon={<ChalkboardTeacherIcon weight="duotone" className="size-8" />}
+            title={t("teacher.allMarkedTitle")}
+            description={t("teacher.allMarkedBody")}
+          />
+        ) : (
         <ul className="space-y-2">
-          {classes.map((klass) => (
+          {shown.map((klass) => (
             <li key={klass.id}>
               <Card interactive className="overflow-hidden">
                 <Link
@@ -146,6 +158,7 @@ export default async function AttendancePage({
             </li>
           ))}
         </ul>
+        )}
       </div>
     );
   }
@@ -176,11 +189,10 @@ export default async function AttendancePage({
       {/* Past registers belong to the class teacher, not to whoever is
           covering this week — so a cover teacher is not shown a door that
           would only refuse them. */}
-      {duty.reason !== "COVER" && (
-        <div className="flex justify-end">
-          <PastRegistersLink classId={selectedId} label={t("attendanceHistory.link")} />
-        </div>
-      )}
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <DayChips today={today} dateKey={dateKey} classId={selectedId} t={t} />
+        {duty.reason !== "COVER" && <PastRegistersLink classId={selectedId} label={t("attendanceHistory.link")} />}
+      </div>
       <ClosedDayNotice
         calendar={calendar}
         dateKey={dateKey}
@@ -206,6 +218,59 @@ export default async function AttendancePage({
         initialRoster={register.roster}
         readOnly={dateKey > today}
       />
+    </div>
+  );
+}
+
+/**
+ * Yesterday and today as two chips, the current one solid. Any other date
+ * (reached from the month grid) shows as a third chip so the person can see
+ * they are not on today and get back with one press.
+ */
+function DayChips({
+  today,
+  dateKey,
+  classId,
+  only,
+  unmarkedCount,
+  t,
+}: {
+  today: string;
+  dateKey: string;
+  classId?: string;
+  only?: string | null;
+  unmarkedCount?: number;
+  t: Translate;
+}) {
+  const yesterday = addDaysToKey(today, -1);
+  const base = classId ? `/teacher/attendance?classId=${classId}&date=` : "/teacher/attendance?date=";
+  const chips: { key: string; href: string; label: string; on: boolean; count?: number }[] = [
+    { key: "yesterday", href: `${base}${yesterday}`, label: t("teacher.yesterday"), on: dateKey === yesterday && !only },
+    { key: "today", href: classId ? `/teacher/attendance?classId=${classId}` : "/teacher/attendance", label: t("teacher.today"), on: dateKey === today && !only },
+  ];
+  if (dateKey !== today && dateKey !== yesterday) {
+    chips.push({ key: "other", href: `${base}${dateKey}`, label: formatDateKey(dateKey, { day: "numeric", month: "short" }), on: !only });
+  }
+  if (unmarkedCount !== undefined && unmarkedCount > 0 && !classId) {
+    chips.push({ key: "unmarked", href: `${base}${dateKey}&only=unmarked`, label: t("teacher.notMarkedOnly"), on: only === "unmarked", count: unmarkedCount });
+  }
+  return (
+    <div role="group" aria-label={t("teacher.dayLabel")} className="flex flex-wrap gap-1.5">
+      {chips.map((chip) => (
+        <Link
+          key={chip.key}
+          href={chip.href}
+          aria-current={chip.on ? "page" : undefined}
+          className={
+            chip.on
+              ? "inline-flex min-h-9 items-center rounded-full bg-accent px-3 text-xs font-medium text-accent-fg"
+              : "inline-flex min-h-9 items-center rounded-full border border-border bg-surface px-3 text-xs font-medium text-fg-muted hover:bg-surface-muted hover:text-fg"
+          }
+        >
+          {chip.label}
+          {chip.count !== undefined && <span className="ml-1 tabular-nums opacity-80">{chip.count}</span>}
+        </Link>
+      ))}
     </div>
   );
 }

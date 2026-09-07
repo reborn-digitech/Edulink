@@ -39,7 +39,7 @@ export function AssignmentForm({
 
   const selectedClass = classes.find((c) => c.id === classId);
 
-  function submit(publish: boolean) {
+  function submit(publish: boolean, another = false) {
     setErrors({});
 
     const next: Record<string, string> = {};
@@ -96,6 +96,17 @@ export function AssignmentForm({
             : t("teacher.studentsToldMany", { count: result.notified ?? 0 })
           : t("teacher.nobodyNotifiedYet"),
       });
+      if (another) {
+        // Same class, same category, fresh sheet: a teacher setting five
+        // pieces of work on a Monday should not walk back through the list.
+        setTitle("");
+        setBody("");
+        setFiles([]);
+        setDueDate("");
+        router.refresh();
+        window.scrollTo({ top: 0 });
+        return;
+      }
       router.push(`/teacher/assignments/${result.assignmentId}`);
       router.refresh();
     });
@@ -212,6 +223,15 @@ export function AssignmentForm({
           onClick={() => submit(false)}
         >
           {t("teacher.saveAsDraft")}
+        </Button>
+        <Button
+          type="button"
+          variant="secondary"
+          block
+          disabled={pending}
+          onClick={() => submit(true, true)}
+        >
+          {t("teacher.publishAndAnother")}
         </Button>
         <Button
           type="submit"

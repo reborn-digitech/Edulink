@@ -14,6 +14,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { TabBar } from "@/components/ui/tabs";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -78,9 +79,16 @@ export default async function ExamsPage({
    * running a term that has not been marked finished. One distinct term name
    * is named; a mix stays generic.
    */
+  // The tab is known here, and everything below is bought only by the tab
+  // that shows it — the cards tab's four lookups were paid on the marks tab.
+  const anyMarks = marks.some((m) => m.series.length > 0);
+  const cardCount = cards.reduce((n, c) => n + c.rows.length, 0);
+  const defaultTab: Tab = isReader ? (anyMarks ? "marks" : "upcoming") : "upcoming";
+  const tab: Tab = TABS.includes(rawTab as Tab) ? (rawTab as Tab) : defaultTab;
+
   let awaitingTermName: string | null = null;
   let termIsRunning = false;
-  if (isReader && cards.reduce((n, c) => n + c.rows.length, 0) === 0) {
+  if (tab === "cards" && isReader && cardCount === 0) {
     const readerSchoolIds =
       session.role === "PARENT"
         ? [...new Set((await listContexts(session.user.id)).children.map((c) => c.schoolId))]
@@ -102,7 +110,7 @@ export default async function ExamsPage({
     }
   }
 
-  const staffClasses = isStaff && session.schoolId
+  const staffClasses = tab === "cards" && isStaff && session.schoolId
     ? await db.class.findMany({
         where: {
           schoolId: session.schoolId,
@@ -120,9 +128,11 @@ export default async function ExamsPage({
    * nothing left to sit disappears. Staff see the whole sheet. */
   const schoolNames = [...new Set(sheets.map((s) => s.schoolName))];
   const zones = new Map(
-    (await db.school.findMany({ where: { name: { in: schoolNames } }, select: { name: true, timezone: true } })).map(
-      (s) => [s.name, s.timezone],
-    ),
+    tab === "upcoming" && isReader
+      ? (await db.school.findMany({ where: { name: { in: schoolNames } }, select: { name: true, timezone: true } })).map(
+          (s) => [s.name, s.timezone] as const,
+        )
+      : [],
   );
   const visibleSheets = isReader
     ? sheets
@@ -134,10 +144,6 @@ export default async function ExamsPage({
     : sheets;
   const multiSchool = schoolNames.length > 1;
 
-  const anyMarks = marks.some((m) => m.series.length > 0);
-  const cardCount = cards.reduce((n, c) => n + c.rows.length, 0);
-  const defaultTab: Tab = isReader ? (anyMarks ? "marks" : "upcoming") : "upcoming";
-  const tab: Tab = TABS.includes(rawTab as Tab) ? (rawTab as Tab) : defaultTab;
 
   const tabs = [
     ...(isReader ? [{ key: "marks", href: "/exams?tab=marks", label: t("exams.tabMarks") }] : []),
@@ -147,10 +153,7 @@ export default async function ExamsPage({
 
   return (
     <div className="space-y-5">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("nav.exams")}</h1>
-        <p className="mt-1 text-sm text-fg-muted">{isReader ? t("exams.readerIntro") : t("exams.sheetIntro")}</p>
-      </div>
+      <PageHeader title={t("nav.exams")} description={isReader ? t("exams.readerIntro") : t("exams.sheetIntro")} />
 
       <TabBar ariaLabel={t("nav.exams")} current={tab} tabs={tabs} />
 

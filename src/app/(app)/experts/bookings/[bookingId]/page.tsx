@@ -10,6 +10,7 @@ import { BookingThread } from "./thread";
 import { CancelButton } from "./cancel-button";
 import { getT } from "@/lib/i18n/server";
 import { formatUtcMoment, isFuture } from "@/lib/dates";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -45,13 +46,8 @@ export default async function BookingPage({
         {t("common.back")}
       </Link>
 
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg">{booking.topic}</h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          {isExpert ? booking.schoolName : booking.expertName} ·{" "}
-          {formatUtcMoment(booking.startsAt)}
-        </p>
-      </div>
+      <PageHeader title={booking.topic} description={<>{isExpert ? booking.schoolName : booking.expertName} ·{" "}
+          {formatUtcMoment(booking.startsAt)}</>} />
 
       {booking.status === "CANCELLED" && (
         <Badge tone="danger" size="sm">{t("expert.bookingCancelled")}</Badge>

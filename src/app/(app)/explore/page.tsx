@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BuildingsIcon, BriefcaseIcon, MagnifyingGlassIcon } from "@phosphor-icons/react/ssr";
+import { BuildingsIcon, BriefcaseIcon } from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
 import { redirect } from "next/navigation";
 import { listDirectory, directoryPlaces } from "@/lib/school-profile";
 import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -44,62 +45,23 @@ export default async function ExplorePage({
   const regions = country ? (places.regionsByCountry[country] ?? []) : [];
   const filtered = Boolean(q || country || region);
 
-  const inputClass =
-    "rounded-[--radius-md] border border-border bg-surface px-3 py-2 text-sm text-fg";
-
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("explore.title")}
-        </h1>
-        <p className="mt-1 max-w-prose text-sm text-fg-muted">{t("explore.intro")}</p>
-      </div>
+      <PageHeader title={t("explore.title")} description={t("explore.intro")} />
 
-      <form method="GET" className="flex flex-wrap items-center gap-2">
-        <label className="relative">
-          <MagnifyingGlassIcon
-            aria-hidden="true"
-            className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-fg-muted"
-          />
-          <input
-            type="search"
-            name="q"
-            defaultValue={q}
-            placeholder={t("explore.searchPlaceholder")}
-            aria-label={t("explore.searchPlaceholder")}
-            className={`${inputClass} pl-9`}
-          />
-        </label>
-        <select name="country" defaultValue={country} aria-label={t("explore.countryFilter")} className={inputClass}>
-          <option value="">{t("explore.anyCountry")}</option>
-          {places.countries.map((c) => (
-            <option key={c} value={c}>
-              {c}
-            </option>
-          ))}
-        </select>
-        {/* Regions only make sense inside a chosen country; the select
-            appears once one is picked and the page has reloaded with it. */}
-        {country && regions.length > 0 && (
-          <select name="region" defaultValue={region} aria-label={t("explore.regionFilter")} className={inputClass}>
-            <option value="">{t("explore.anyRegion")}</option>
-            {regions.map((r) => (
-              <option key={r} value={r}>
-                {r}
-              </option>
-            ))}
-          </select>
-        )}
-        <Button type="submit" size="sm" variant="secondary">
-          {t("explore.filterCta")}
-        </Button>
-        {filtered && (
-          <Link href="/explore" className="text-sm font-medium text-accent hover:underline">
-            {t("explore.clearFilters")}
-          </Link>
-        )}
-      </form>
+      {/* The directory narrows as you type or pick; there is no Filter
+          button and no reload between choosing a country and seeing its
+          states. */}
+      <DataToolbar
+        search={{ value: q, placeholder: t("explore.searchPlaceholder"), label: t("explore.searchPlaceholder") }}
+        facets={[
+          { key: "country", label: t("explore.countryFilter"), value: country, as: "select", options: [{ value: "", label: t("explore.anyCountry") }, ...places.countries.map((c) => ({ value: c, label: c }))] },
+          ...(country && regions.length > 0
+            ? [{ key: "region", label: t("explore.regionFilter"), value: region, as: "select" as const, options: [{ value: "", label: t("explore.anyRegion") }, ...regions.map((r) => ({ value: r, label: r }))] }]
+            : []),
+        ]}
+        labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+      />
 
       {schools.length === 0 ? (
         <EmptyState

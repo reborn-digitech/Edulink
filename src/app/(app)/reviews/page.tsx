@@ -8,6 +8,7 @@ import { EmptyState } from "@/components/ui/states";
 import { RateCard } from "./rate-card";
 import { formatDateKey } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -48,14 +49,7 @@ export default async function MyReviewsPage() {
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("reviews.yourReviews")}
-        </h1>
-        <p className="mt-1 max-w-prose text-sm leading-relaxed text-fg-muted">
-          {t("reviews.respondIntro")}
-        </p>
-      </div>
+      <PageHeader title={t("reviews.yourReviews")} description={t("reviews.respondIntro")} />
 
       {waiting.length === 0 ? (
         <EmptyState

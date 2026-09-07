@@ -11,6 +11,8 @@ import { TabBar } from "@/components/ui/tabs";
 import { SubmitPanel } from "../work/submit-panel";
 import { AttachmentList } from "@/components/attachment-list";
 import { getT, getRelativeTime } from "@/lib/i18n/server";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -30,30 +32,34 @@ type Tab = (typeof TABS)[number];
 export default async function StudentAssignmentsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ tab?: string }>;
+  searchParams: Promise<{ tab?: string; q?: string; class?: string }>;
 }) {
   await requireRole("STUDENT");
   const session = (await getSession())!;
   const t = await getT();
   const when = await getRelativeTime();
-  const { tab: rawTab } = await searchParams;
+  const { tab: rawTab, q, class: rawClass } = await searchParams;
   const tab: Tab = TABS.includes(rawTab as Tab) ? (rawTab as Tab) : "todo";
   const { todo, handedIn, marked } = await getStudentWork(session);
 
-  const list = tab === "todo" ? todo : tab === "handed" ? handedIn : marked;
+  const all = tab === "todo" ? todo : tab === "handed" ? handedIn : marked;
+  // A class and a word narrow the tab in hand; a pupil in six classes with
+  // forty pieces of work should not scroll for the one Maths sheet.
+  const classNames = [...new Set([...todo, ...handedIn, ...marked].map((item) => item.className))].sort();
+  const classFilter = rawClass && classNames.includes(rawClass) ? rawClass : null;
+  const needle = (q ?? "").trim().toLowerCase();
+  const list = all.filter(
+    (item) => (!classFilter || item.className === classFilter) && (!needle || item.title.toLowerCase().includes(needle)),
+  );
+  const narrowed = Boolean(classFilter || needle);
 
   return (
     <div className="space-y-5">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("nav.assignments")}</h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          {todo.length === 0
+      <PageHeader title={t("nav.assignments")} description={todo.length === 0
             ? t("student.nothingToDo")
             : todo.length === 1
               ? t("student.thingsToDoOne")
-              : t("student.thingsToDoMany", { count: todo.length })}
-        </p>
-      </div>
+              : t("student.thingsToDoMany", { count: todo.length })} />
 
       <TabBar
         ariaLabel={t("nav.assignments")}
@@ -65,7 +71,22 @@ export default async function StudentAssignmentsPage({
         ]}
       />
 
-      {list.length === 0 ? (
+      {(todo.length + handedIn.length + marked.length > 3 || narrowed) && (
+        <DataToolbar
+          search={{ value: q ?? "", placeholder: t("assignments.searchPlaceholder"), label: t("common.searchLabel") }}
+          facets={
+            classNames.length > 1
+              ? [{ key: "class", label: t("teacher.classFilter"), value: classFilter ?? "", options: [{ value: "", label: t("teacher.allClasses") }, ...classNames.map((name) => ({ value: name, label: name }))] }]
+              : []
+          }
+          extra={tab === "todo" ? {} : { tab }}
+          labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+        />
+      )}
+
+      {list.length === 0 && narrowed ? (
+        <EmptyState title={t("common.noResultsTitle")} description={t("common.noResultsBody")} />
+      ) : list.length === 0 ? (
         <EmptyState
           tone={tab === "todo" ? "celebrate" : "neutral"}
           icon={
@@ -93,7 +114,7 @@ export default async function StudentAssignmentsPage({
       ) : tab === "marked" ? (
         <Card>
           <ul className="divide-y divide-border px-4">
-            {marked.map((item) => {
+            {list.map((item) => {
               const percent =
                 item.scoreMilli !== null && item.pointsMilli
                   ? Math.round((item.scoreMilli * 100) / item.pointsMilli)

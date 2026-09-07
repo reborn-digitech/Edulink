@@ -66,3 +66,28 @@ export function EmptyState({
 export function Skeleton({ className }: { className?: string }) {
   return <div className={cn("skeleton", className)} aria-hidden="true" />;
 }
+
+/**
+ * What a page looks like while its queries run: the title's bar, a line of
+ * description, then three card-shaped blocks. Route-level `loading.tsx`
+ * files render this inside the shell, so a navigation shows the frame at
+ * once instead of a blank until the slowest query answers — and the shape
+ * matches every list page closely enough that nothing jumps when it lands.
+ * No words, so nothing to translate; `aria-busy` says what it is.
+ */
+export function PageSkeleton({ rows = 3 }: { rows?: number }) {
+  return (
+    <div className="space-y-5" aria-busy="true">
+      <div className="space-y-2">
+        <Skeleton className="h-8 w-56 rounded-[--radius-md]" />
+        <Skeleton className="h-4 w-80 max-w-full rounded-[--radius-sm]" />
+      </div>
+      <Skeleton className="h-11 w-full rounded-[--radius-md]" />
+      <div className="space-y-2.5">
+        {Array.from({ length: rows }, (_, i) => (
+          <Skeleton key={i} className="h-20 w-full rounded-[--radius-lg]" />
+        ))}
+      </div>
+    </div>
+  );
+}

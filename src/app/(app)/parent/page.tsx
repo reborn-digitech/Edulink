@@ -165,11 +165,14 @@ export default async function ParentDashboard({
   // Shared helper — weights by points available, never averages percentages.
   const scored = grades.filter((g) => g.scoreMilli !== null && g.assignment.pointsMilli);
   const classIds = [...new Set(grades.map((g) => g.assignment.classId))];
-  const weightRows = await db.gradeCategory.findMany({
-    where: { classId: { in: classIds } },
-    select: { classId: true, name: true, weightBps: true },
-    orderBy: { position: "asc" },
-  });
+  const [weightRows, examMarks] = await Promise.all([
+    db.gradeCategory.findMany({
+      where: { classId: { in: classIds } },
+      select: { classId: true, name: true, weightBps: true },
+      orderBy: { position: "asc" },
+    }),
+    examMarksFor(session),
+  ]);
   const weightsByClass = new Map<string, { name: string; weightBps: number }[]>();
   for (const row of weightRows) {
     const list = weightsByClass.get(row.classId) ?? [];
@@ -186,8 +189,6 @@ export default async function ParentDashboard({
     weightsByClass,
   );
   const averagePercent = overallResult.percent;
-
-  const examMarks = await examMarksFor(session);
 
   return (
     <div className="space-y-6">
@@ -391,16 +392,18 @@ export default async function ParentDashboard({
           ) : (
             <ul className="divide-y divide-border">
               {upcoming.map((assignment) => (
-                <li key={assignment.id} className="flex items-center justify-between gap-3 py-2.5">
-                  <span className="min-w-0">
-                    <span className="block truncate text-sm font-medium text-fg">
-                      {assignment.title}
+                <li key={assignment.id}>
+                  <Link href={`/parent/assignments?child=${selectedId}`} className="flex items-center justify-between gap-3 py-2.5 hover:bg-surface-muted/60">
+                    <span className="min-w-0">
+                      <span className="block truncate text-sm font-medium text-fg">
+                        {assignment.title}
+                      </span>
+                      <span className="block text-xs text-fg-muted">{assignment.class.name}</span>
                     </span>
-                    <span className="block text-xs text-fg-muted">{assignment.class.name}</span>
-                  </span>
-                  <span className="shrink-0 text-xs font-medium text-fg-muted">
-                    {assignment.dueAt ? relativeTime(assignment.dueAt) : t("parent.noDueDate")}
-                  </span>
+                    <span className="shrink-0 text-xs font-medium text-fg-muted">
+                      {assignment.dueAt ? relativeTime(assignment.dueAt) : t("parent.noDueDate")}
+                    </span>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -430,20 +433,22 @@ export default async function ParentDashboard({
           ) : (
             <ul className="divide-y divide-border">
               {threads.map((thread) => (
-                <li key={thread.id} className="flex items-center gap-3 py-2.5">
-                  <Avatar
-                    avatarKey={thread.teacher.user.avatarKey}
-                    name={thread.teacher.user.name}
-                    size="sm"
-                  />
-                  <span className="min-w-0 flex-1">
-                    <span className="block truncate text-sm font-medium text-fg">
-                      {thread.subject}
+                <li key={thread.id}>
+                  <Link href={`/remarks/${thread.id}`} className="flex items-center gap-3 py-2.5 hover:bg-surface-muted/60">
+                    <Avatar
+                      avatarKey={thread.teacher.user.avatarKey}
+                      name={thread.teacher.user.name}
+                      size="sm"
+                    />
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate text-sm font-medium text-fg">
+                        {thread.subject}
+                      </span>
+                      <span className="block truncate text-xs text-fg-muted">
+                        {thread.teacher.user.name} · {relativeTime(thread.lastMessageAt)}
+                      </span>
                     </span>
-                    <span className="block truncate text-xs text-fg-muted">
-                      {thread.teacher.user.name} · {relativeTime(thread.lastMessageAt)}
-                    </span>
-                  </span>
+                  </Link>
                 </li>
               ))}
             </ul>

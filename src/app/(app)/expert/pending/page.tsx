@@ -3,6 +3,8 @@ import { HourglassIcon } from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
 import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -25,6 +27,11 @@ export default async function ExpertPendingPage() {
         icon={<HourglassIcon weight="duotone" className="size-8" />}
         title={t("expert.underReview")}
         description={t("expert.underReviewBody")}
+        action={
+          <Button asChild variant="secondary">
+            <Link href="/account">{t("expert.pendingCta")}</Link>
+          </Button>
+        }
       />
     </div>
   );

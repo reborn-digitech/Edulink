@@ -10,6 +10,8 @@ import { BookButton } from "./book-button";
 import { getT } from "@/lib/i18n/server";
 import { EXPERT_OFFERING_META } from "@/lib/constants";
 import { formatUtcMoment, formatUtcTime } from "@/lib/dates";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -23,18 +25,31 @@ export async function generateMetadata(): Promise<Metadata> {
  * appear here, because the booking that would name the school is behind that
  * school's own policy.
  */
-export default async function ExpertsPage() {
+export default async function ExpertsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string; offering?: string; specialism?: string }>;
+}) {
+  const { q, offering: rawOffering, specialism: rawSpecialism } = await searchParams;
   const t = await getT();
   const ctx = await requireRole("ADMIN", "TEACHER");
-  const [experts, bookings] = await Promise.all([listMarketplace(ctx), listBookings(ctx)]);
+  const [allExperts, bookings] = await Promise.all([listMarketplace(ctx), listBookings(ctx)]);
+  const specialisms = [...new Set(allExperts.flatMap((e) => e.specialisms))].sort();
+  const offering = rawOffering && rawOffering in EXPERT_OFFERING_META ? (rawOffering as keyof typeof EXPERT_OFFERING_META) : null;
+  const specialism = rawSpecialism && specialisms.includes(rawSpecialism) ? rawSpecialism : null;
+  const needle = (q ?? "").trim().toLowerCase();
+  const experts = allExperts.filter(
+    (e) =>
+      (!offering || e.offering === offering) &&
+      (!specialism || e.specialisms.includes(specialism)) &&
+      (!needle || [e.name, e.headline, e.organisation ?? ""].join(" ").toLowerCase().includes(needle)),
+  );
+  const narrowed = Boolean(offering || specialism || needle);
   const live = bookings.filter((b) => b.status !== "CANCELLED");
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("feature.experts")}</h1>
-        <p className="mt-1 max-w-prose text-sm text-fg-muted">{t("expert.marketplaceBody")}</p>
-      </div>
+      <PageHeader title={t("feature.experts")} description={t("expert.marketplaceBody")} />
 
       {live.length > 0 && (
         <section className="space-y-2">
@@ -71,11 +86,30 @@ export default async function ExpertsPage() {
           {t("expert.availableExperts")}
         </h2>
 
+        {allExperts.length > 2 && (
+          <DataToolbar
+            search={{ value: q ?? "", placeholder: t("expert.searchPlaceholder"), label: t("common.searchLabel") }}
+            facets={[
+              {
+                key: "offering",
+                label: t("expert.offeringFilter"),
+                value: offering ?? "",
+                options: [
+                  { value: "", label: t("vacancies.filterAll"), count: allExperts.length },
+                  ...(Object.keys(EXPERT_OFFERING_META) as (keyof typeof EXPERT_OFFERING_META)[]).map((k) => ({ value: k, label: t(EXPERT_OFFERING_META[k].labelKey), count: allExperts.filter((e) => e.offering === k).length })).filter((o) => o.count > 0),
+                ],
+              },
+              ...(specialisms.length > 1 ? [{ key: "specialism", label: t("expert.specialismFilter"), value: specialism ?? "", as: "select" as const, options: [{ value: "", label: t("expert.allSpecialisms") }, ...specialisms.map((r) => ({ value: r, label: r }))] }] : []),
+            ]}
+            labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+          />
+        )}
+
         {experts.length === 0 ? (
           <EmptyState
             icon={<BriefcaseIcon weight="duotone" className="size-8" />}
-            title={t("expert.noneListed")}
-            description={t("expert.noneListedBody")}
+            title={narrowed ? t("common.noResultsTitle") : t("expert.noneListed")}
+            description={narrowed ? t("common.noResultsBody") : t("expert.noneListedBody")}
           />
         ) : (
           <ul className="space-y-3">
@@ -96,7 +130,7 @@ export default async function ExpertsPage() {
                       )}
                     </div>
                     <p className="text-[0.9375rem] text-fg">{expert.headline}</p>
-                    {expert.bio && <p className="text-sm text-fg-muted">{expert.bio}</p>}
+                    {expert.bio && <p className="line-clamp-3 text-sm text-fg-muted">{expert.bio}</p>}
 
                     {expert.specialisms.length > 0 && (
                       <div className="flex flex-wrap gap-1.5">

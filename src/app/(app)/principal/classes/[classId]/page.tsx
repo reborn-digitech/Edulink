@@ -25,6 +25,8 @@ import { WindowPicker } from "../../window-picker";
 import { getT } from "@/lib/i18n/server";
 import type { Translate } from "@/lib/i18n/dictionary";
 import { PersonLink } from "@/components/person-link";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -48,12 +50,13 @@ export default async function PrincipalClassPage({
   searchParams,
 }: {
   params: Promise<{ classId: string }>;
-  searchParams: Promise<{ days?: string }>;
+  searchParams: Promise<{ days?: string; filter?: string }>;
 }) {
   const t = await getT();
   const ctx = await requireRole("PRINCIPAL", "ADMIN");
   const { classId } = await params;
-  const { days } = await searchParams;
+  const { days, filter: rawFilter } = await searchParams;
+  const filter = rawFilter === "concern" || rawFilter === "unmarked" ? rawFilter : null;
 
   const span = parseSpan(days);
   const window = await windowFor(ctx.schoolId, span);
@@ -96,6 +99,9 @@ export default async function PrincipalClassPage({
     (p) => p.attendancePercent !== null && p.attendancePercent < ATTENDANCE_CONCERN_PERCENT,
   );
   const unmarked = data.pupils.filter((p) => !p.hasMarks);
+  // The worry lines were a comma-separated paragraph of names; now each is a
+  // chip that narrows the roll to those pupils.
+  const shownPupils = filter === "concern" ? concerns : filter === "unmarked" ? unmarked : data.pupils;
 
   return (
     <div className="space-y-5">
@@ -108,22 +114,15 @@ export default async function PrincipalClassPage({
       </Link>
 
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-            {data.klass.name}
-            {data.klass.section && !nameCarriesSection(data.klass.name, data.klass.section) ? ` · ${data.klass.section}` : ""}
-          </h1>
-          <p className="mt-1 text-sm text-fg-muted">
-            {data.pupils.length === 1
+        <PageHeader title={<>{data.klass.name}
+            {data.klass.section && !nameCarriesSection(data.klass.name, data.klass.section) ? ` · ${data.klass.section}` : ""}</>} description={<>{data.pupils.length === 1
               ? t("principal.pupilsOne")
               : t("principal.pupilsMany", { count: data.pupils.length })}{" "}
             ·{" "}
             {t("principal.rangeTo", {
               from: formatDateKey(window.fromDateKey, { day: "numeric", month: "short" }),
               to: formatDateKey(window.toDateKey, { day: "numeric", month: "short" }),
-            })}
-          </p>
-        </div>
+            })}</>} />
         <div className="flex flex-wrap items-center gap-2">
           <Link
             href={`/attendance/history?classId=${classId}`}
@@ -158,50 +157,32 @@ export default async function PrincipalClassPage({
         </Card>
       )}
 
-      {/* ---------------- what needs a look ---------------- */}
-      {(concerns.length > 0 || unmarked.length > 0) && (
-        <Card>
-          <CardHeader
-            icon={<WarningIcon weight="duotone" className="size-5" />}
-            title={t("principal.worthALook")}
-            description={t("principal.worthALookBody")}
-          />
-          <CardBody className="space-y-3">
-            {concerns.length > 0 && (
-              <div>
-                <p className="text-xs font-medium text-fg">
-                  {t("principal.attendanceBelow", { percent: ATTENDANCE_CONCERN_PERCENT })}
-                </p>
-                <p className="mt-1 text-sm text-fg-muted">
-                  {concerns
-                    .map((p) =>
-                      t("principal.pupilWithPercent", {
-                        name: p.name,
-                        percent: p.attendancePercent ?? 0,
-                      }),
-                    )
-                    .join(", ")}
-                </p>
-              </div>
-            )}
-            {unmarked.length > 0 && (
-              <div>
-                <p className="text-xs font-medium text-fg">{t("principal.noMarksRecorded")}</p>
-                <p className="mt-1 text-sm text-fg-muted">
-                  {unmarked.map((p) => p.name).join(", ")}
-                </p>
-                {/* Almost always a fact about the marking, not about the child. */}
-                <p className="mt-1 text-xs text-fg-subtle">{t("principal.usuallyMarking")}</p>
-              </div>
-            )}
-          </CardBody>
-        </Card>
-      )}
-
       {/* ---------------- everybody ---------------- */}
-      <Card>
-        <CardHeader title={t("principal.everybody")} description={t("principal.alphabetical")} />
-        <CardBody>
+      <Card id="everybody" className="scroll-mt-24">
+        <CardHeader
+          icon={concerns.length > 0 || unmarked.length > 0 ? <WarningIcon weight="duotone" className="size-5" /> : undefined}
+          title={t("principal.everybody")}
+          description={filter === "unmarked" ? t("principal.usuallyMarking") : t("principal.alphabetical")}
+        />
+        <CardBody className="space-y-3">
+          {data.pupils.length > 0 && (concerns.length > 0 || unmarked.length > 0) && (
+            <DataToolbar
+              facets={[
+                {
+                  key: "filter",
+                  label: t("principal.worthALook"),
+                  value: filter ?? "",
+                  options: [
+                    { value: "", label: t("principal.everybody"), count: data.pupils.length },
+                    ...(concerns.length > 0 ? [{ value: "concern", label: t("principal.attendanceBelow", { percent: ATTENDANCE_CONCERN_PERCENT }), count: concerns.length }] : []),
+                    ...(unmarked.length > 0 ? [{ value: "unmarked", label: t("principal.noMarksRecorded"), count: unmarked.length }] : []),
+                  ],
+                },
+              ]}
+              extra={days ? { days } : {}}
+              labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+            />
+          )}
           {data.pupils.length === 0 ? (
             <EmptyState
               title={t("principal.nobodyOnRoll")}
@@ -209,7 +190,7 @@ export default async function PrincipalClassPage({
             />
           ) : (
             <ul className="space-y-1.5">
-              {data.pupils.map((pupil) => (
+              {shownPupils.map((pupil) => (
                 <PupilRow key={pupil.membershipId} pupil={pupil} t={t} />
               ))}
             </ul>

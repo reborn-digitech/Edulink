@@ -39,10 +39,19 @@ function requireAdmin(ctx: ActiveContext): { schoolId: string; membershipId: str
 /* The admin's series                                                          */
 /* -------------------------------------------------------------------------- */
 
-export async function listSeries(ctx: ActiveContext) {
+export async function listSeries(
+  ctx: ActiveContext,
+  opts: { kind?: string; gradeLevel?: string; state?: "draft" | "published" } = {},
+) {
   const { schoolId } = requireAdmin(ctx);
   return db.examSeries.findMany({
-    where: { schoolId, archivedAt: null },
+    where: {
+      schoolId,
+      archivedAt: null,
+      ...(opts.kind ? { kind: opts.kind } : {}),
+      ...(opts.gradeLevel ? { gradeLevel: opts.gradeLevel } : {}),
+      ...(opts.state === "draft" ? { publishedAt: null } : opts.state === "published" ? { publishedAt: { not: null } } : {}),
+    },
     orderBy: [{ gradeLevel: "asc" }, { createdAt: "desc" }],
     include: {
       slots: { orderBy: [{ dateKey: "asc" }, { position: "asc" }] },

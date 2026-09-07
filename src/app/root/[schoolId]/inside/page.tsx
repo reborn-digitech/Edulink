@@ -8,6 +8,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { OversightPanel } from "./oversight-panel";
 import { formatUtcMoment } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata() {
   const t = await getT();
@@ -52,12 +53,7 @@ export default async function InsideSchoolPage({
         {school.name}
       </Link>
 
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("root.insideTitle", { school: school.name })}
-        </h1>
-        <p className="mt-1 text-sm text-fg-muted">{t("root.insideIntro")}</p>
-      </div>
+      <PageHeader title={t("root.insideTitle", { school: school.name })} description={t("root.insideIntro")} />
 
       <section aria-labelledby="numbers-heading">
         <Card>

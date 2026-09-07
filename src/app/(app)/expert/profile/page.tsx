@@ -7,6 +7,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ProfileForm } from "./profile-form";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -42,12 +43,7 @@ export default async function ExpertProfilePage() {
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("expert.yourProfile")}
-        </h1>
-        <p className="mt-1 text-sm text-fg-muted">{t("expert.yourProfileBody")}</p>
-      </div>
+      <PageHeader title={t("expert.yourProfile")} description={t("expert.yourProfileBody")} />
 
       <div className="flex flex-wrap items-center gap-2">
         <Badge tone={profile.published ? "ok" : "warn"} size="sm">

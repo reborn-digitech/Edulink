@@ -22,6 +22,7 @@ import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
 import { cn } from "@/lib/cn";
 import { PersonLink } from "@/components/person-link";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -75,12 +76,7 @@ export default async function AttendanceHistoryPage({
 
   const header = (
     <div className="flex flex-wrap items-end justify-between gap-3">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("attendanceHistory.title")}
-        </h1>
-        <p className="mt-1 max-w-prose text-sm text-fg-muted">{t("attendanceHistory.intro")}</p>
-      </div>
+      <PageHeader title={t("attendanceHistory.title")} description={t("attendanceHistory.intro")} />
       {/* Keyed, because the route is reused across months and classes and an
           uncontrolled select keeps its first defaultValue otherwise. */}
       <form

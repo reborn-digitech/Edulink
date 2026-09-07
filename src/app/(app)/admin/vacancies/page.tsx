@@ -7,9 +7,11 @@ import { Card, CardBody } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
+import { DataToolbar } from "@/components/ui/data-toolbar";
 import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { EMPLOYMENT_TYPE_KEYS, type EmploymentType } from "@/lib/constants";
 import { CloseButton } from "./close-button";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -17,21 +19,30 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 /** The school's own desk: what it has posted, and what each post has drawn. */
-export default async function AdminVacanciesPage() {
+export default async function AdminVacanciesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ status?: string }>;
+}) {
   const t = await getT();
   const relative = await getRelativeTime();
   const ctx = await requireRole("ADMIN", "PRINCIPAL");
-  const postings = await listOurPostings(ctx);
+  const { status: rawStatus } = await searchParams;
+  // Open is the default view: closed posts accumulate for years and the
+  // question this page answers is "what are we hiring for now".
+  const status = rawStatus === "closed" ? "CLOSED" : rawStatus === "all" ? "ALL" : "OPEN";
+  const [postings, counts] = await Promise.all([
+    listOurPostings(ctx, { status }),
+    listOurPostings(ctx, { status: "ALL" }).then((all) => ({
+      open: all.filter((p) => p.status === "OPEN").length,
+      closed: all.filter((p) => p.status !== "OPEN").length,
+    })),
+  ]);
 
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-            {t("vacancies.ourDeskTitle")}
-          </h1>
-          <p className="mt-1 max-w-prose text-sm text-fg-muted">{t("vacancies.ourDeskIntro")}</p>
-        </div>
+        <PageHeader title={t("vacancies.ourDeskTitle")} description={t("vacancies.ourDeskIntro")} />
         <div className="flex gap-2">
           <Button asChild variant="secondary" size="sm">
             <Link href="/vacancies">{t("vacancies.title")}</Link>
@@ -45,11 +56,32 @@ export default async function AdminVacanciesPage() {
         </div>
       </div>
 
+      <DataToolbar
+        facets={[
+          {
+            key: "status",
+            label: t("vacancies.filterLabel"),
+            value: status === "OPEN" ? "" : status === "CLOSED" ? "closed" : "all",
+            options: [
+              { value: "", label: t("vacancies.openBadge"), count: counts.open },
+              { value: "closed", label: t("vacancies.closedBadge"), count: counts.closed },
+              { value: "all", label: t("vacancies.filterAll") },
+            ],
+          },
+        ]}
+        labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+      />
+
       {postings.length === 0 ? (
         <EmptyState
           icon={<BriefcaseIcon className="size-8" aria-hidden="true" />}
-          title={t("vacancies.emptyTitle")}
-          description={t("vacancies.ourDeskIntro")}
+          title={status === "OPEN" && counts.closed > 0 ? t("vacancies.emptyOpenTitle") : t("vacancies.emptyTitle")}
+          description={status === "OPEN" && counts.closed > 0 ? t("vacancies.emptyOpenBody") : t("vacancies.emptyOwnBody")}
+          action={
+            <Button asChild size="sm">
+              <Link href="/admin/vacancies/new">{t("vacancies.postCta")}</Link>
+            </Button>
+          }
         />
       ) : (
         <ul className="space-y-2">
@@ -71,13 +103,16 @@ export default async function AdminVacanciesPage() {
                       ? t("vacancies.openBadge")
                       : t("vacancies.closedBadge")}
                   </Badge>
-                  <span className="text-xs text-fg-muted">
-                    {posting.enquiryCount === 0
-                      ? t("vacancies.enquiriesNone")
-                      : posting.enquiryCount === 1
+                  {/* The count is the door to the enquiries, not a caption. */}
+                  {posting.enquiryCount === 0 ? (
+                    <span className="text-xs text-fg-muted">{t("vacancies.enquiriesNone")}</span>
+                  ) : (
+                    <Link href={`/vacancies/${posting.id}#enquiries`} className="text-xs font-medium text-accent hover:underline">
+                      {posting.enquiryCount === 1
                         ? t("vacancies.enquiriesOne")
                         : t("vacancies.enquiriesMany", { count: posting.enquiryCount })}
-                  </span>
+                    </Link>
+                  )}
                   {posting.contactName && (
                     <span className="text-xs text-fg-muted">
                       {t("vacancies.contactCell", { name: posting.contactName })}

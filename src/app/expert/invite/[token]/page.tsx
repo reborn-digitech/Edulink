@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { readExpertInvite } from "@/lib/experts";
 import { AcceptForm } from "./form";
 import { getT } from "@/lib/i18n/server";
+import Link from "next/link";
+import { LinkBreakIcon } from "@phosphor-icons/react/ssr";
+import { Button } from "@/components/ui/button";
+import { EmptyState } from "@/components/ui/states";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -30,9 +34,17 @@ export default async function ExpertInvitePage({
 
   if (!state.ok) {
     return (
-      <main className="mx-auto max-w-md px-5 py-16 text-center">
-        <h1 className="text-xl font-bold text-fg">{t("expert.inviteInvalid")}</h1>
-        <p className="mt-2 text-sm text-fg-muted">{t("expert.inviteInvalidBody")}</p>
+      <main className="mx-auto max-w-md px-5 py-16">
+        <EmptyState
+          icon={<LinkBreakIcon weight="duotone" className="size-8" />}
+          title={t("expert.inviteInvalid")}
+          description={t("expert.inviteInvalidBody")}
+          action={
+            <Button asChild variant="secondary">
+              <Link href="/login">{t("expert.inviteInvalidCta")}</Link>
+            </Button>
+          }
+        />
       </main>
     );
   }

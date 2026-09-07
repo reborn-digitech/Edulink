@@ -10,6 +10,8 @@ import { EmptyState } from "@/components/ui/states";
 import { TabBar } from "@/components/ui/tabs";
 import { ChildSwitcher } from "../child-switcher";
 import { getT, getRelativeTime } from "@/lib/i18n/server";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -29,12 +31,12 @@ type Tab = (typeof TABS)[number];
 export default async function ParentAssignmentsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ child?: string; tab?: string }>;
+  searchParams: Promise<{ child?: string; tab?: string; q?: string; class?: string }>;
 }) {
   const session = await requireParent();
   const t = await getT();
   const when = await getRelativeTime();
-  const { child: requested, tab: rawTab } = await searchParams;
+  const { child: requested, tab: rawTab, q, class: rawClass } = await searchParams;
   const tab: Tab = TABS.includes(rawTab as Tab) ? (rawTab as Tab) : "todo";
 
   const { children } = await listContexts(session.user.id);
@@ -44,7 +46,14 @@ export default async function ParentAssignmentsPage({
       : children[0]!.studentMembershipId;
 
   const { childName, todo, handedIn, marked } = await childWork(session.user.id, selectedId);
-  const list = tab === "todo" ? todo : tab === "handed" ? handedIn : marked;
+  const all = tab === "todo" ? todo : tab === "handed" ? handedIn : marked;
+  const classNames = [...new Set([...todo, ...handedIn, ...marked].map((item) => item.className))].sort();
+  const classFilter = rawClass && classNames.includes(rawClass) ? rawClass : null;
+  const needle = (q ?? "").trim().toLowerCase();
+  const list = all.filter(
+    (item) => (!classFilter || item.className === classFilter) && (!needle || item.title.toLowerCase().includes(needle)),
+  );
+  const narrowed = Boolean(classFilter || needle);
   const base = `/parent/assignments?child=${selectedId}`;
 
   return (
@@ -59,12 +68,7 @@ export default async function ParentAssignmentsPage({
         ) : null;
       })()}
 
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("nav.assignments")}
-        </h1>
-        <p className="mt-1 text-sm text-fg-muted">{t("assignments.forChild", { name: childName })} · {t("diary.intro")}</p>
-      </div>
+      <PageHeader title={t("nav.assignments")} description={<>{t("assignments.forChild", { name: childName })} · {t("diary.intro")}</>} />
 
       <TabBar
         ariaLabel={t("nav.assignments")}
@@ -76,7 +80,22 @@ export default async function ParentAssignmentsPage({
         ]}
       />
 
-      {list.length === 0 ? (
+      {(todo.length + handedIn.length + marked.length > 3 || narrowed) && (
+        <DataToolbar
+          search={{ value: q ?? "", placeholder: t("assignments.searchPlaceholder"), label: t("common.searchLabel") }}
+          facets={
+            classNames.length > 1
+              ? [{ key: "class", label: t("teacher.classFilter"), value: classFilter ?? "", options: [{ value: "", label: t("teacher.allClasses") }, ...classNames.map((name) => ({ value: name, label: name }))] }]
+              : []
+          }
+          extra={{ child: selectedId, ...(tab === "todo" ? {} : { tab }) }}
+          labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+        />
+      )}
+
+      {list.length === 0 && narrowed ? (
+        <EmptyState title={t("common.noResultsTitle")} description={t("common.noResultsBody")} />
+      ) : list.length === 0 ? (
         <EmptyState
           icon={<ClipboardTextIcon weight="duotone" className="size-8" />}
           title={

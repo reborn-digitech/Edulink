@@ -30,6 +30,7 @@ import { WelcomeBanner } from "./welcome-banner";
 import { cn } from "@/lib/cn";
 import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { schoolJobStory, JOB_COUNT_LABELS, JOB_ATTENTION_KEYS } from "@/lib/job-health";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -106,16 +107,11 @@ export default async function AdminDashboard({
       {welcome === "1" && <WelcomeBanner schoolName={school.name} schoolCode={school.code} />}
 
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{school.name}</h1>
-          <p className="mt-1 text-sm text-fg-muted">
-            {formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })} ·{" "}
+        <PageHeader title={school.name} description={<>{formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })} ·{" "}
             {t("admin.schoolCode")}{" "}
             <code className="rounded bg-surface-muted px-1.5 py-0.5 font-semibold text-fg">
               {school.code}
-            </code>
-          </p>
-        </div>
+            </code></>} />
         <Button asChild variant="secondary" size="sm">
           <Link href="/admin/invites/new">{t("admin.invitePeople")}</Link>
         </Button>
@@ -171,14 +167,14 @@ export default async function AdminDashboard({
                 the calendar page carries the confirmations. */}
             {runningTerm && (
               <Button asChild variant="secondary" size="sm">
-                <Link href="/admin/calendar">{t("admin.finishTermCta", { name: runningTerm.name })}</Link>
+                <Link href="/admin/calendar#terms">{t("admin.finishTermCta", { name: runningTerm.name })}</Link>
               </Button>
             )}
             <Button asChild variant="secondary" size="sm">
-              <Link href="/admin/calendar">{t("admin.finishYearCta", { name: academicYear.name })}</Link>
+              <Link href="/admin/calendar#year-heading">{t("admin.finishYearCta", { name: academicYear.name })}</Link>
             </Button>
             <Button asChild variant="ghost" size="sm">
-              <Link href="/admin/calendar">{t("admin.updateCalendar")}</Link>
+              <Link href="/admin/calendar#calendar-heading">{t("admin.updateCalendar")}</Link>
             </Button>
           </CardBody>
         </Card>

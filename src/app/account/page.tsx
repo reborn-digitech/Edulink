@@ -31,13 +31,20 @@ import { DeviceList } from "./device-list";
 import { ROLE_META, type Role } from "@/lib/constants";
 import { switchContext } from "@/app/switch/actions";
 import { getT } from "@/lib/i18n/server";
+import { TabBar } from "@/components/ui/tabs";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
   return { title: t("meta.yourAccount") };
 }
 
-export default async function AccountPage() {
+export default async function AccountPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ tab?: string }>;
+}) {
+  const { tab: rawTab } = await searchParams;
+  const tab = rawTab === "prefs" || rawTab === "devices" ? rawTab : "profile";
   const session = await requireUser();
   const live = (await getSession())!;
   const t = await getT();
@@ -94,6 +101,19 @@ export default async function AccountPage() {
         </div>
       </div>
 
+      {/* Eight cards in a column made a scroll; three tabs make a page.
+          Anything that was here is still here, one press away. */}
+      <TabBar
+        ariaLabel={t("nav.account")}
+        current={tab}
+        tabs={[
+          { key: "profile", href: "/account", label: t("account.tabProfile") },
+          { key: "prefs", href: "/account?tab=prefs", label: t("account.tabPrefs") },
+          { key: "devices", href: "/account?tab=devices", label: t("account.tabDevices"), count: sessions.length },
+        ]}
+      />
+
+      <div hidden={tab !== "profile"} className="space-y-5">
       {/* ---------- how you sign in ---------- */}
       <Card>
         <CardHeader
@@ -229,44 +249,43 @@ export default async function AccountPage() {
         />
       </Card>
 
-      {/* ---------- notifications ---------- */}
-      <Card>
-        <CardHeader
-          icon={<BellIcon weight="duotone" className="size-5" />}
-          title={t("account.notificationsTitle")}
-          description={t("account.notificationsDescription")}
-        />
-        <CardBody className="space-y-4">
-          <PushToggle />
-          <AppearanceForm prefs={prefs} section="notifications" />
-        </CardBody>
-      </Card>
+      </div>
 
-      {/* ---------- language ---------- */}
-      <Card>
-        <CardHeader
-          icon={<TranslateIcon weight="duotone" className="size-5" />}
-          title={t("language.title")}
-          description={t("language.description")}
-        />
-        <CardBody>
-          <LanguageForm />
-        </CardBody>
-      </Card>
-
-      {/* ---------- appearance ---------- */}
-      <Card>
-        <CardHeader
-          icon={<PaletteIcon weight="duotone" className="size-5" />}
-          title={t("account.appearanceTitle")}
-          description={t("account.appearanceDescription")}
-        />
-        <CardBody>
-          <AppearanceForm prefs={prefs} section="appearance" />
-        </CardBody>
-      </Card>
+      {/* ---------- preferences: notifications, language, appearance ---------- */}
+      <div hidden={tab !== "prefs"} className="space-y-5">
+        <Card>
+          <CardHeader
+            icon={<BellIcon weight="duotone" className="size-5" />}
+            title={t("account.notificationsTitle")}
+            description={t("account.notificationsDescription")}
+          />
+          <CardBody className="space-y-4">
+            <PushToggle />
+            <AppearanceForm prefs={prefs} section="notifications" />
+          </CardBody>
+          <CardHeader
+            icon={<TranslateIcon weight="duotone" className="size-5" />}
+            title={t("language.title")}
+            description={t("language.description")}
+            className="border-t border-border"
+          />
+          <CardBody>
+            <LanguageForm />
+          </CardBody>
+          <CardHeader
+            icon={<PaletteIcon weight="duotone" className="size-5" />}
+            title={t("account.appearanceTitle")}
+            description={t("account.appearanceDescription")}
+            className="border-t border-border"
+          />
+          <CardBody>
+            <AppearanceForm prefs={prefs} section="appearance" />
+          </CardBody>
+        </Card>
+      </div>
 
       {/* ---------- devices ---------- */}
+      <div hidden={tab !== "devices"}>
       <Card>
         <CardHeader
           icon={<DevicesIcon weight="duotone" className="size-5" />}
@@ -290,6 +309,7 @@ export default async function AccountPage() {
           />
         </CardBody>
       </Card>
+      </div>
 
       <form action="/api/auth/logout" method="post" className="pb-4">
         <Button type="submit" variant="secondary" block>

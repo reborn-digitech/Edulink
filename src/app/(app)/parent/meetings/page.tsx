@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
 import { bookSlotAction, cancelBookingAction } from "./actions";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -45,12 +46,7 @@ export default async function ParentMeetingsPage({
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("meetings.parentTitle")}
-        </h1>
-        <p className="mt-1 text-sm text-fg-muted">{t("meetings.parentIntro")}</p>
-      </div>
+      <PageHeader title={t("meetings.parentTitle")} description={t("meetings.parentIntro")} />
 
       {error && (
         <Card>

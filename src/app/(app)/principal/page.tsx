@@ -26,6 +26,7 @@ import { currentTerms } from "@/lib/terms";
 import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -58,15 +59,21 @@ export default async function PrincipalDashboard({
   const span = parseSpan(days);
   const window = await windowFor(ctx.schoolId, span);
 
-  const insights = await classInsights(ctx, window);
-  const summary = await schoolSummary(ctx, insights);
-  const reviews = await schoolReviewDashboard(ctx);
+  // One wave, not six in a row: the summary needs the insights, everything
+  // else needs only the school.
+  const [insights, reviews, school, academicYear] = await Promise.all([
+    classInsights(ctx, window),
+    schoolReviewDashboard(ctx),
+    db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } }),
+    currentAcademicYear(ctx.schoolId),
+  ]);
   // The head shares the year's milestones with the office: start it, finish a
   // term, finish the year, take an accidental close back. The controls live on
   // the calendar page; this card is the head's door to them.
-  const school = await db.school.findUniqueOrThrow({ where: { id: ctx.schoolId }, select: { timezone: true } });
-  const academicYear = await currentAcademicYear(ctx.schoolId);
-  const terms = academicYear ? await currentTerms(ctx.schoolId, school.timezone) : [];
+  const [summary, terms] = await Promise.all([
+    schoolSummary(ctx, insights),
+    academicYear ? currentTerms(ctx.schoolId, school.timezone) : Promise.resolve([]),
+  ]);
   const runningTerm = terms.find((term) => term.current && !term.finishedAt) ?? terms.filter((term) => !term.finishedAt).at(-1) ?? null;
   const concerns = insights.filter(
     (k) => k.attendance.percent !== null && k.attendance.percent < ATTENDANCE_CONCERN_PERCENT,
@@ -75,17 +82,10 @@ export default async function PrincipalDashboard({
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-            {t("principal.dashboard")}
-          </h1>
-          <p className="mt-1 text-sm text-fg-muted">
-            {t("principal.rangeTo", {
+        <PageHeader title={t("principal.dashboard")} description={<>{t("principal.rangeTo", {
               from: formatDateKey(window.fromDateKey, { day: "numeric", month: "short" }),
               to: formatDateKey(window.toDateKey, { day: "numeric", month: "short" }),
-            })}
-          </p>
-        </div>
+            })}</>} />
         <WindowPicker span={span} />
       </div>
 
@@ -110,17 +110,17 @@ export default async function PrincipalDashboard({
           </div>
           {!academicYear ? (
             <Button asChild size="sm">
-              <Link href="/admin/calendar">{t("admin.setUpYear")}</Link>
+              <Link href="/admin/calendar#year-heading">{t("admin.setUpYear")}</Link>
             </Button>
           ) : (
             <>
               {runningTerm && (
                 <Button asChild variant="secondary" size="sm">
-                  <Link href="/admin/calendar">{t("admin.finishTermCta", { name: runningTerm.name })}</Link>
+                  <Link href="/admin/calendar#terms">{t("admin.finishTermCta", { name: runningTerm.name })}</Link>
                 </Button>
               )}
               <Button asChild variant="secondary" size="sm">
-                <Link href="/admin/calendar">{t("admin.finishYearCta", { name: academicYear.name })}</Link>
+                <Link href="/admin/calendar#year-heading">{t("admin.finishYearCta", { name: academicYear.name })}</Link>
               </Button>
             </>
           )}
@@ -131,16 +131,11 @@ export default async function PrincipalDashboard({
       <CelebrationsLink session={ctx} />
 
       {/* ---------------- what can still be fixed today ---------------- */}
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-3 sm:grid-cols-3">
         <StatTile
           label={t("principal.registersMissing")}
           value={String(summary.registersMissingToday)}
           tone={summary.registersMissingToday > 0 ? "warn" : "ok"}
-        />
-        <StatTile
-          label={t("principal.leaveWaiting")}
-          value={String(summary.pendingLeave)}
-          tone={summary.pendingLeave > 0 ? "warn" : "ok"}
         />
         <StatTile
           label={t("principal.attendance")}

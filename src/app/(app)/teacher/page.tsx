@@ -19,6 +19,7 @@ import { Card, CardBody, CardHeader, StatTile } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -185,15 +186,8 @@ export default async function TeacherHome() {
 
     return (
       <div className="space-y-6">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-            {t("teacher.today")}
-          </h1>
-          <p className="mt-1 text-sm text-fg-muted">
-            {formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })} ·{" "}
-            {school.name}
-          </p>
-        </div>
+        <PageHeader title={t("teacher.today")} description={<>{formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })} ·{" "}
+            {school.name}</>} />
 
         {marksCard}
 
@@ -261,13 +255,8 @@ export default async function TeacherHome() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("teacher.today")}</h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          {formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })} ·{" "}
-          {school.name}
-        </p>
-      </div>
+      <PageHeader title={t("teacher.today")} description={<>{formatDateKey(dateKey, { weekday: "long", day: "numeric", month: "long" })} ·{" "}
+          {school.name}</>} />
 
       {marksCard}
 
@@ -287,13 +276,17 @@ export default async function TeacherHome() {
           icon={<ClipboardTextIcon weight="duotone" className="size-5" />}
           hint={(() => { const n = classes.reduce((sum, c) => sum + c._count.enrollments, 0); return n === 1 ? t("teacher.studentsCountOne") : t("teacher.studentsCount", { count: n }); })()}
         />
-        <StatTile
-          label={t("teacher.toGrade")}
-          value={ungraded}
-          tone={ungraded > 0 ? "warn" : "neutral"}
-          icon={<WarningCircleIcon weight="duotone" className="size-5" />}
-          hint={ungraded === 0 ? t("teacher.nothingWaiting") : t("teacher.submissionsHandedIn")}
-        />
+        {/* A number with nowhere to go is a caption. The marking tile opens
+            the assignments list already narrowed to what needs marking. */}
+        <Link href="/teacher/assignments?state=tomark" className="block rounded-[--radius-lg] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent">
+          <StatTile
+            label={t("teacher.toGrade")}
+            value={ungraded}
+            tone={ungraded > 0 ? "warn" : "neutral"}
+            icon={<WarningCircleIcon weight="duotone" className="size-5" />}
+            hint={ungraded === 0 ? t("teacher.nothingWaiting") : t("teacher.submissionsHandedIn")}
+          />
+        </Link>
       </div>
 
       <Card>
@@ -368,16 +361,18 @@ export default async function TeacherHome() {
           ) : (
             <ul className="divide-y divide-border">
               {dueSoon.map((assignment) => (
-                <li key={assignment.id} className="flex items-center justify-between gap-3 py-2.5">
-                  <span className="min-w-0">
-                    <span className="block truncate text-sm font-medium text-fg">
-                      {assignment.title}
+                <li key={assignment.id}>
+                  <Link href={`/teacher/assignments/${assignment.id}`} className="flex items-center justify-between gap-3 py-2.5 hover:bg-surface-muted/60">
+                    <span className="min-w-0">
+                      <span className="block truncate text-sm font-medium text-fg">
+                        {assignment.title}
+                      </span>
+                      <span className="block text-xs text-fg-muted">{assignment.class.name}</span>
                     </span>
-                    <span className="block text-xs text-fg-muted">{assignment.class.name}</span>
-                  </span>
-                  <span className="shrink-0 text-xs font-medium text-fg-muted">
-                    {assignment.dueAt ? relativeTime(assignment.dueAt) : t("teacher.noDueDate")}
-                  </span>
+                    <span className="shrink-0 text-xs font-medium text-fg-muted">
+                      {assignment.dueAt ? relativeTime(assignment.dueAt) : t("teacher.noDueDate")}
+                    </span>
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -4,7 +4,6 @@ import {
   CaretRightIcon,
   ChatCircleDotsIcon,
   ChatsCircleIcon,
-  MagnifyingGlassIcon,
   PlusIcon,
   UserCircleIcon,
 } from "@phosphor-icons/react/ssr";
@@ -20,6 +19,8 @@ import { relativeTime } from "@/lib/dates";
 import { ROLE_META } from "@/lib/constants";
 import { cn } from "@/lib/cn";
 import { getT } from "@/lib/i18n/server";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -43,69 +44,62 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function RemarksPage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string }>;
+  searchParams: Promise<{ q?: string; unread?: string }>;
 }) {
   const t = await getT();
   const session = await requireUser();
-  const { q: rawQ } = await searchParams;
+  const { q: rawQ, unread } = await searchParams;
   const q = rawQ?.trim().toLowerCase() ?? "";
+  const unreadOnly = unread === "1";
 
   const [conversations, threads] = await Promise.all([listConversations(session), listThreads(session)]);
   const isTeacher = session.role === "TEACHER";
   const canWriteAboutPupil =
     session.role === "TEACHER" || session.role === "STUDENT" || session.role === "PARENT";
 
-  const shownConversations = q
-    ? conversations.filter(
-        (c) => c.others.some((o) => o.name.toLowerCase().includes(q)) || c.preview.toLowerCase().includes(q),
-      )
-    : conversations;
-  const shownThreads = q
-    ? threads.filter(
-        (th) =>
-          th.subject.toLowerCase().includes(q) ||
-          th.studentName.toLowerCase().includes(q) ||
-          th.teacherName.toLowerCase().includes(q),
-      )
-    : threads;
+  const shownConversations = conversations.filter(
+    (c) =>
+      (!unreadOnly || c.unread) &&
+      (!q || c.others.some((o) => o.name.toLowerCase().includes(q)) || c.preview.toLowerCase().includes(q)),
+  );
+  const shownThreads = threads.filter(
+    (th) =>
+      (!unreadOnly || th.unread) &&
+      (!q ||
+        th.subject.toLowerCase().includes(q) ||
+        th.studentName.toLowerCase().includes(q) ||
+        th.teacherName.toLowerCase().includes(q)),
+  );
   const unreadTotal = conversations.filter((c) => c.unread).length + threads.filter((th) => th.unread).length;
 
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("remarks.title")}</h1>
-          <p className="mt-1 text-sm text-fg-muted">
-            {unreadTotal > 0 ? t("convo.unreadCount", { count: unreadTotal }) : t("convo.intro")}
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {canWriteAboutPupil && (
-            <Button asChild variant="secondary" icon={<UserCircleIcon weight="bold" />}>
-              <Link href="/remarks/new">{t("convo.writeAboutPupil")}</Link>
-            </Button>
-          )}
-          <Button asChild icon={<PlusIcon weight="bold" />}>
-            <Link href="/remarks/people">{t("convo.newMessage")}</Link>
-          </Button>
-        </div>
+        <PageHeader title={t("remarks.title")} description={unreadTotal > 0 ? t("convo.unreadCount", { count: unreadTotal }) : t("convo.intro")} />
+        {/* One door. "Write about a pupil" lives on the people page as the
+            first row for those who may — two primary buttons on a phone
+            read as a choice nobody asked to make. */}
+        <Button asChild icon={<PlusIcon weight="bold" />}>
+          <Link href="/remarks/people">{t("convo.newMessage")}</Link>
+        </Button>
       </div>
 
       {(conversations.length > 0 || threads.length > 0) && (
-        <form method="get" role="search" className="relative">
-          <MagnifyingGlassIcon
-            className="pointer-events-none absolute left-3.5 top-1/2 size-5 -translate-y-1/2 text-fg-subtle"
-            aria-hidden="true"
-          />
-          <input
-            type="search"
-            name="q"
-            defaultValue={rawQ ?? ""}
-            placeholder={t("convo.searchMessages")}
-            aria-label={t("convo.searchMessages")}
-            className="min-h-11 w-full rounded-[--radius-md] border border-border bg-surface pl-11 pr-4 text-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent-ring/40"
-          />
-        </form>
+        <DataToolbar
+          search={{ value: rawQ ?? "", placeholder: t("convo.searchMessages"), label: t("convo.searchMessages") }}
+          facets={[
+            {
+              key: "unread",
+              label: t("remarks.unread"),
+              value: unreadOnly ? "1" : "",
+              options: [
+                { value: "", label: t("vacancies.filterAll"), count: conversations.length + threads.length },
+                { value: "1", label: t("notif.tabUnread"), count: unreadTotal },
+              ],
+            },
+          ]}
+          labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+        />
       )}
 
       {conversations.length === 0 && threads.length === 0 ? (

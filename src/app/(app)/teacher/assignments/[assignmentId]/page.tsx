@@ -10,6 +10,7 @@ import { AttachmentList } from "@/components/attachment-list";
 import { formatMilli } from "@/lib/validation";
 import { relativeTime } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -46,17 +47,10 @@ export default async function AssignmentPage({
         {t("teacher.allAssignments")}
       </Link>
 
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {assignment.title}
-        </h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          {assignment.className}
+      <PageHeader title={assignment.title} description={<>{assignment.className}
           {assignment.category ? ` · ${assignment.category}` : ""}
           {assignment.pointsMilli ? ` · ${t("teacher.outOfPoints", { points: formatMilli(assignment.pointsMilli) })}` : ""}
-          {assignment.dueAt ? ` · ${t("teacher.dueWhenLower", { when: relativeTime(assignment.dueAt) })}` : ""}
-        </p>
-      </div>
+          {assignment.dueAt ? ` · ${t("teacher.dueWhenLower", { when: relativeTime(assignment.dueAt) })}` : ""}</>} />
 
       {!assignment.publishedAt && <PublishBar assignmentId={assignment.id} />}
 

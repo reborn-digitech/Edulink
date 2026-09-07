@@ -9,6 +9,8 @@ import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { getT, getRelativeTime } from "@/lib/i18n/server";
 import type { Translate } from "@/lib/i18n/dictionary";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -68,25 +70,65 @@ function EnquiryRow({
 }
 
 /** One desk, both directions: what you asked, and what your school was asked. */
-export default async function EnquiriesPage() {
+export default async function EnquiriesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ status?: string; kind?: string }>;
+}) {
+  const { status: rawStatus, kind: rawKind } = await searchParams;
   const t = await getT();
   const relative = await getRelativeTime();
   const ctx = await requireUser();
   if (!ctx.role) redirect("/switch");
-  const { sent, inbox } = await listEnquiries(ctx);
+  const { sent: allSent, inbox: allInbox } = await listEnquiries(ctx);
+  const status = rawStatus === "open" || rawStatus === "closed" ? rawStatus : null;
+  const kind = rawKind === "ADMISSION" || rawKind === "VACANCY" ? rawKind : null;
+  const keep = (e: EnquiryListItem) =>
+    (!status || e.status === (status === "open" ? "OPEN" : "CLOSED")) && (!kind || e.kind === kind);
+  const sent = allSent.filter(keep);
+  const inbox = allInbox.filter(keep);
+  const everything = [...allSent, ...allInbox];
+  const narrowed = Boolean(status || kind);
 
   const isStaff = ctx.role === "ADMIN" || ctx.role === "PRINCIPAL" || ctx.role === "TEACHER";
 
   return (
     <div className="mx-auto max-w-2xl space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("enquiries.title")}
-        </h1>
-        <p className="mt-1 max-w-prose text-sm text-fg-muted">{t("enquiries.intro")}</p>
-      </div>
+      <PageHeader title={t("enquiries.title")} description={t("enquiries.intro")} />
 
-      {sent.length === 0 && inbox.length === 0 && (
+      {everything.length > 2 && (
+        <DataToolbar
+          facets={[
+            {
+              key: "status",
+              label: t("enquiries.statusFilter"),
+              value: status ?? "",
+              options: [
+                { value: "", label: t("vacancies.filterAll"), count: everything.length },
+                { value: "open", label: t("enquiries.statusOpen"), count: everything.filter((e) => e.status === "OPEN").length },
+                { value: "closed", label: t("enquiries.closedBadge"), count: everything.filter((e) => e.status === "CLOSED").length },
+              ],
+            },
+            {
+              key: "kind",
+              label: t("enquiries.kindFilter"),
+              value: kind ?? "",
+              options: [
+                { value: "", label: t("vacancies.filterAll") },
+                { value: "ADMISSION", label: t("enquiries.admissionTag"), count: everything.filter((e) => e.kind === "ADMISSION").length },
+                { value: "VACANCY", label: t("enquiries.vacancyTag"), count: everything.filter((e) => e.kind === "VACANCY").length },
+              ],
+            },
+          ]}
+          labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+        />
+      )}
+
+      {sent.length === 0 && inbox.length === 0 && narrowed && (
+        <EmptyState title={t("common.noResultsTitle")} description={t("common.noResultsBody")} />
+      )}
+
+      {allSent.length === 0 && allInbox.length === 0 && (
         <EmptyState
           icon={<EnvelopeSimpleIcon className="size-8" aria-hidden="true" />}
           title={t("enquiries.emptyTitle")}

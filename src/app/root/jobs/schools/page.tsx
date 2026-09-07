@@ -84,7 +84,11 @@ export default async function JobHealthBySchoolPage() {
               <li key={school.schoolId}>
                 <Card className="p-4">
                   <p className="flex flex-wrap items-center gap-2 font-semibold text-fg">
-                    {school.name ?? <code className="font-mono text-sm text-fg-muted">{school.schoolId}</code>}
+                    {school.name ? (
+                      <Link href={`/root/${school.schoolId}`} className="hover:underline">{school.name}</Link>
+                    ) : (
+                      <code className="font-mono text-sm text-fg-muted">{school.schoolId}</code>
+                    )}
                     {school.attention && <Badge tone="danger" size="sm">{t("root.jobHealthAttention")}</Badge>}
                     {school.removedAt && <Badge tone="neutral" size="sm">{t("root.removedBadge")}</Badge>}
                     {school.name === null && <Badge tone="neutral" size="sm">{t("root.jobHealthGoneSchool")}</Badge>}

@@ -11,6 +11,8 @@ import { Badge } from "@/components/ui/badge";
 import { ClassRowActions } from "./row-actions";
 import { getT } from "@/lib/i18n/server";
 import { PersonLink } from "@/components/person-link";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -20,17 +22,29 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function ClassesPage({
   searchParams,
 }: {
-  searchParams: Promise<{ archived?: string }>;
+  searchParams: Promise<{ archived?: string; q?: string; sort?: string; filter?: string }>;
 }) {
   const t = await getT();
   const ctx = await requireRole("ADMIN");
-  const { archived } = await searchParams;
+  const { archived, q: rawQ, sort: rawSort, filter } = await searchParams;
   const showArchived = archived === "1";
+  const q = rawQ?.trim() ?? "";
+  const sort = rawSort === "size" ? "size" : "name";
+  const leaderlessOnly = filter === "leaderless";
 
-  const classes = await db.class.findMany({
+  const allClasses = await db.class.findMany({
     where: {
       schoolId: ctx.schoolId,
       archivedAt: showArchived ? { not: null } : null,
+      ...(q
+        ? {
+            OR: [
+              { name: { contains: q, mode: "insensitive" } },
+              { subject: { contains: q, mode: "insensitive" } },
+              { room: { contains: q, mode: "insensitive" } },
+            ],
+          }
+        : {}),
     },
     include: {
       teachers: { include: { teacher: { include: { user: { select: { name: true, preferredName: true } } } } } },
@@ -52,35 +66,25 @@ export default async function ClassesPage({
    * "Parent of 11". A functional audit walked into exactly that. The banner
    * is the ask.
    */
-  const leaderless = classes.filter(
+  const leaderless = allClasses.filter(
     (k) => !k.archivedAt && k._count.enrollments > 0 && !k.teachers.some((ct) => ct.role === "LEAD"),
+  );
+  // "Grade 10" sorted before "Grade 3" in byte order; a numeric collator
+  // reads the number as a number, the way the office does.
+  const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
+  const classes = (leaderlessOnly ? leaderless : allClasses).sort((a, b) =>
+    sort === "size" ? b._count.enrollments - a._count.enrollments || collator.compare(a.name, b.name) : collator.compare(a.name, b.name),
   );
 
   return (
     <div className="space-y-5">
-      {leaderless.length > 0 && !showArchived && (
-        <p className="flex items-start gap-2 rounded-[--radius-md] border border-warn/30 bg-warn-soft px-4 py-3 text-sm leading-relaxed text-fg">
-          <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0 text-warn" aria-hidden="true" />
-          <span>
-            {leaderless.length === 1
-              ? t("classes.leaderlessOne", { name: leaderless[0]!.name })
-              : t("classes.leaderlessMany", { count: leaderless.length, names: leaderless.map((k) => k.name).join(", ") })}{" "}
-            {t("classes.leaderlessWhy")}
-          </span>
-        </p>
-      )}
 
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("classes.title")}</h1>
-          <p className="mt-1 text-sm text-fg-muted">
-            {showArchived
+        <PageHeader title={t("classes.title")} description={showArchived
               ? t("classes.archivedCount", { count: classes.length })
-              : classes.length === 1
+              : allClasses.length === 1
                 ? t("classes.activeCountOne")
-                : t("classes.activeCountMany", { count: classes.length })}
-          </p>
-        </div>
+                : t("classes.activeCountMany", { count: allClasses.length })} />
         <div className="flex flex-wrap gap-2">
           <Button asChild variant="secondary" icon={<GraduationCapIcon weight="bold" />}>
             <Link href="/admin/promotion">{t("promotion.link")}</Link>
@@ -114,12 +118,49 @@ export default async function ClassesPage({
         </nav>
       )}
 
+      {!showArchived && (allClasses.length > 0 || q || leaderlessOnly) && (
+        <DataToolbar
+          search={{ value: q, placeholder: t("classes.searchPlaceholder"), label: t("classes.searchPlaceholder") }}
+          sort={{
+            label: t("common.sortBy"),
+            value: sort,
+            defaultValue: "name",
+            options: [
+              { value: "name", label: t("common.byName") },
+              { value: "size", label: t("classes.sortSize") },
+            ],
+          }}
+          facets={
+            leaderless.length > 0 || leaderlessOnly
+              ? [
+                  {
+                    key: "filter",
+                    label: t("classes.filter"),
+                    value: leaderlessOnly ? "leaderless" : "",
+                    options: [
+                      { value: "", label: t("classes.active") },
+                      { value: "leaderless", label: t("classes.filterLeaderless"), count: leaderless.length },
+                    ],
+                  },
+                ]
+              : []
+          }
+          labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+        />
+      )}
+      {leaderlessOnly && leaderless.length > 0 && (
+        <p className="flex items-start gap-2 text-sm leading-relaxed text-fg-muted">
+          <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0 text-warn" aria-hidden="true" />
+          <span>{t("classes.leaderlessWhy")}</span>
+        </p>
+      )}
+
       {classes.length === 0 ? (
         <EmptyState
           icon={<ChalkboardTeacherIcon weight="duotone" className="size-8" />}
-          title={showArchived ? t("classes.nothingArchived") : t("classes.noClassesYet")}
+          title={q || leaderlessOnly ? t("common.noResultsTitle") : showArchived ? t("classes.nothingArchived") : t("classes.noClassesYet")}
           description={
-            showArchived ? t("classes.nothingArchivedBody") : t("classes.noClassesBody")
+            q || leaderlessOnly ? t("common.noResultsBody") : showArchived ? t("classes.nothingArchivedBody") : t("classes.noClassesBody")
           }
           action={
             !showArchived ? (
@@ -174,14 +215,7 @@ export default async function ClassesPage({
                           ))
                         ) : (
                           <span className="text-warn">{t("classes.noTeacherAssigned")}</span>
-                        )}{" "}
-                        ·{" "}
-                        <Link
-                          href={`/admin/classes/${klass.id}`}
-                          className="font-medium text-accent-strong hover:underline"
-                        >
-                          {t("classes.staffingLink")}
-                        </Link>
+                        )}
                       </p>
                     </div>
 

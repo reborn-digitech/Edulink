@@ -8,6 +8,7 @@ import { myLeave } from "@/lib/leave";
 import { todayKey } from "@/lib/dates";
 import { LeaveForm } from "./form";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -46,12 +47,7 @@ export default async function TeacherLeavePage() {
         <span className="grid size-11 shrink-0 place-items-center rounded-full bg-accent-soft text-accent-strong">
           <CalendarIcon weight="duotone" className="size-6" />
         </span>
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("teacher.leave")}</h1>
-          <p className="mt-1 text-sm leading-relaxed text-fg-muted">
-            {t("teacher.leaveExplainer")}
-          </p>
-        </div>
+        <PageHeader title={t("teacher.leave")} description={t("teacher.leaveExplainer")} />
       </div>
 
       <LeaveBalanceCard balance={balance} t={t} />

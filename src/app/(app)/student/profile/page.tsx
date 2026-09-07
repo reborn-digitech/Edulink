@@ -11,6 +11,7 @@ import { ProfileForm } from "./form";
 import { BadgeGrid } from "./badges";
 import { getT } from "@/lib/i18n/server";
 import { mayEditOwnBirthdate } from "@/lib/birthdate";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -76,13 +77,8 @@ export default async function StudentProfilePage() {
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("student.myProfile")}</h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          {membership.school.name}
-          {membership.enrollments[0] ? ` · ${membership.enrollments[0].class.name}` : ""}
-        </p>
-      </div>
+      <PageHeader title={t("student.myProfile")} description={<>{membership.school.name}
+          {membership.enrollments[0] ? ` · ${membership.enrollments[0].class.name}` : ""}</>} />
 
       <Card>
         <CardHeader

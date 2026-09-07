@@ -11,6 +11,7 @@ import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
 import { TabBar } from "@/components/ui/tabs";
 import { saveMarksAction } from "./actions";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -68,10 +69,7 @@ export default async function TeacherExamsPage({
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("nav.exams")}</h1>
-        <p className="mt-1 text-sm text-fg-muted">{t("exams.marksIntro")}</p>
-      </div>
+      <PageHeader title={t("nav.exams")} description={t("exams.marksIntro")} />
 
       {/* Marks and report cards are two tabs of one Exams — the cards tab is
           the shared staff view on /exams, which lists this teacher's classes. */}

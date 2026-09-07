@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { PushToggle } from "@/components/push-toggle";
 import { AppearanceForm } from "@/app/account/appearance-form";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -48,10 +49,7 @@ export default async function ParentSettingsPage() {
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("parent.settings")}</h1>
-        <p className="mt-1 text-sm text-fg-muted">{t("parent.settingsBody")}</p>
-      </div>
+      <PageHeader title={t("parent.settings")} description={t("parent.settingsBody")} />
 
       {/* ---------- notifications ---------- */}
       <Card>

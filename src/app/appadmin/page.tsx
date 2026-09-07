@@ -8,6 +8,8 @@ import { EmptyState } from "@/components/ui/states";
 import { relativeTime } from "@/lib/dates";
 import { CompetitionControls } from "./competition-controls";
 import { getT } from "@/lib/i18n/server";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata() {
   const t = await getT();
@@ -19,26 +21,48 @@ export async function generateMetadata() {
  * School-organised competitions are managed by their own admins and are
  * deliberately not listed here.
  */
-export default async function AppAdminHome() {
+export default async function AppAdminHome({
+  searchParams,
+}: {
+  searchParams: Promise<{ status?: string }>;
+}) {
+  const { status: rawStatus } = await searchParams;
   const t = await getT();
   const session = await requireAppAdmin();
-  const competitions = await listPlatformCompetitions(session);
+  const allCompetitions = await listPlatformCompetitions(session);
+  const statuses = [...new Set(allCompetitions.map((c) => c.status))];
+  const status = rawStatus && statuses.includes(rawStatus) ? rawStatus : null;
+  const competitions = status ? allCompetitions.filter((c) => c.status === status) : allCompetitions;
 
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-            {t("appadmin.competitions")}
-          </h1>
-          <p className="mt-1 text-sm text-fg-muted">{t("appadmin.competitionsIntro")}</p>
-        </div>
+        <PageHeader title={t("appadmin.competitions")} description={t("appadmin.competitionsIntro")} />
         <Button asChild icon={<PlusIcon weight="bold" />}>
           <Link href="/appadmin/new">{t("appadmin.postCompetition")}</Link>
         </Button>
       </div>
 
-      {competitions.length === 0 ? (
+      {statuses.length > 1 && (
+        <DataToolbar
+          facets={[
+            {
+              key: "status",
+              label: t("enquiries.statusFilter"),
+              value: status ?? "",
+              options: [
+                { value: "", label: t("vacancies.filterAll"), count: allCompetitions.length },
+                ...statuses.map((st) => ({ value: st, label: st.charAt(0) + st.slice(1).toLowerCase(), count: allCompetitions.filter((c) => c.status === st).length })),
+              ],
+            },
+          ]}
+          labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+        />
+      )}
+
+      {competitions.length === 0 && status ? (
+        <EmptyState title={t("common.noResultsTitle")} description={t("common.noResultsBody")} />
+      ) : competitions.length === 0 ? (
         <EmptyState
           icon={<TrophyIcon weight="duotone" className="size-8" />}
           title={t("appadmin.noCompetitionsYet")}

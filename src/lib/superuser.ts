@@ -71,11 +71,28 @@ export function assertSuperuser(session: ActiveContext): void {
  * returns the one school on their session, which is the whole point of the
  * tenancy model and is left completely intact.
  */
-export async function listSchools(session: ActiveContext): Promise<SchoolSummary[]> {
+export type SchoolListOpts = {
+  q?: string;
+  /** live (default): not removed; removed; noadmin: live with no admin yet; all. */
+  state?: "live" | "removed" | "noadmin" | "all";
+  country?: string;
+  sort?: "newest" | "oldest" | "name";
+};
+
+export async function listSchools(session: ActiveContext, opts: SchoolListOpts = {}): Promise<SchoolSummary[]> {
   assertSuperuser(session);
+  const q = opts.q?.trim();
+  const state = opts.state ?? "live";
 
   const schools = await db.school.findMany({
-    orderBy: { createdAt: "desc" },
+    where: {
+      ...(state === "removed" ? { removedAt: { not: null } } : state === "all" ? {} : { removedAt: null }),
+      ...(opts.country ? { country: opts.country } : {}),
+      ...(q
+        ? { OR: [{ name: { contains: q, mode: "insensitive" } }, { city: { contains: q, mode: "insensitive" } }, { code: { contains: q, mode: "insensitive" } }] }
+        : {}),
+    },
+    orderBy: opts.sort === "name" ? { name: "asc" } : { createdAt: opts.sort === "oldest" ? "asc" : "desc" },
     select: {
       id: true,
       name: true,
@@ -104,10 +121,20 @@ export async function listSchools(session: ActiveContext): Promise<SchoolSummary
   });
   const pending = new Map(invites.map((i) => [i.schoolId, i._count]));
 
-  return schools.map((school) => ({
+  const rows = schools.map((school) => ({
     ...school,
     pendingAdminInvites: pending.get(school.id) ?? 0,
   }));
+  // "No admin yet" is a fact about invitations, which the query above cannot
+  // join on, so it narrows the rows rather than the where clause.
+  return state === "noadmin" ? rows.filter((s) => s.pendingAdminInvites > 0) : rows;
+}
+
+/** Every country the server's schools name, for the operator's filter. */
+export async function schoolCountries(session: ActiveContext): Promise<string[]> {
+  assertSuperuser(session);
+  const rows = await db.school.findMany({ where: { country: { not: null } }, select: { country: true }, distinct: ["country"], orderBy: { country: "asc" } });
+  return rows.map((r) => r.country).filter((c): c is string => Boolean(c));
 }
 
 export async function getSchool(session: ActiveContext, schoolId: string) {

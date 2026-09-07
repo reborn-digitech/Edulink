@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { formatInZone, relativeTime } from "@/lib/dates";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata() {
   const t = await getT();
@@ -85,10 +86,7 @@ export default async function ServerAuditPage({
         {t("root.schools")}
       </Link>
 
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("root.serverLog")}</h1>
-        <p className="mt-1 text-sm text-fg-muted">{t("root.auditIntro")}</p>
-      </div>
+      <PageHeader title={t("root.serverLog")} description={t("root.auditIntro")} />
 
       <Card className="p-4">
         <form method="get" className="grid gap-3 sm:grid-cols-2 lg:grid-cols-[1fr_1.4fr_auto_auto_auto]">

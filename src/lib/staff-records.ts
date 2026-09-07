@@ -175,7 +175,9 @@ export async function leaveBalanceFor(schoolId: string, membershipId: string): P
 
 /** Balances for many, for the desk — one query each is fine at desk sizes. */
 export async function leaveBalancesFor(schoolId: string, membershipIds: string[]): Promise<Map<string, LeaveBalance>> {
-  const out = new Map<string, LeaveBalance>();
-  for (const id of [...new Set(membershipIds)]) out.set(id, await leaveBalanceFor(schoolId, id));
-  return out;
+  // One wave, not one round trip per person: a roster of thirty staff was
+  // ninety sequential queries before the page could paint.
+  const ids = [...new Set(membershipIds)];
+  const balances = await Promise.all(ids.map((id) => leaveBalanceFor(schoolId, id)));
+  return new Map(ids.map((id, i) => [id, balances[i]!]));
 }

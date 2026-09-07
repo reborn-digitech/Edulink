@@ -13,6 +13,7 @@ import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { ProfileForm } from "../../student/profile/form";
 import { getT } from "@/lib/i18n/server";
 import { mayEditOwnBirthdate } from "@/lib/birthdate";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -71,18 +72,11 @@ export default async function TeacherProfilePage() {
 
   return (
     <div className="mx-auto max-w-2xl space-y-5">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("meta.teacherProfile")}
-        </h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          {membership.school.name}
+      <PageHeader title={t("meta.teacherProfile")} description={<>{membership.school.name}
           {membership.title ? ` · ${membership.title}` : ""}
           {membership.classTeachers.length > 0
             ? ` · ${membership.classTeachers.map((row) => row.class.name).join(", ")}`
-            : ""}
-        </p>
-      </div>
+            : ""}</>} />
 
       <dl className="grid grid-cols-3 gap-2">
         {[

@@ -8,6 +8,7 @@ import { listTopics, normaliseLanguage } from "@/lib/quiz";
 import { LanguageSwitch } from "@/components/language-switch";
 import { Player } from "./player";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -42,10 +43,7 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
       </Link>
 
       <div className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg">{mine?.name ?? topic.name}</h1>
-          <p className="mt-1 text-sm text-fg-muted">{topic.chapter}</p>
-        </div>
+        <PageHeader title={mine?.name ?? topic.name} description={topic.chapter} />
         <LanguageSwitch showLabel />
       </div>
 

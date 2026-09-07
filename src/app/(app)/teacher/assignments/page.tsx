@@ -12,6 +12,8 @@ import { EmptyState } from "@/components/ui/states";
 import { getT } from "@/lib/i18n/server";
 import { currentAcademicYear } from "@/lib/academic-year";
 import { TabBar } from "@/components/ui/tabs";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -21,11 +23,11 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function AssignmentsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ years?: string }>;
+  searchParams: Promise<{ years?: string; classId?: string; state?: string }>;
 }) {
   const t = await getT();
   const ctx = await requireRole("TEACHER", "ADMIN");
-  const { years } = await searchParams;
+  const { years, classId: rawClassId, state: rawState } = await searchParams;
 
   const classIds =
     ctx.role === "ADMIN"
@@ -65,8 +67,21 @@ export default async function AssignmentsPage({
     db.assignment.count({ where: baseWhere }),
   ]);
 
-  const assignments = await db.assignment.findMany({
-    where: { ...baseWhere, ...(showAll ? {} : thisYear) },
+  const classFilter = classIds.includes(rawClassId ?? "") ? (rawClassId as string) : null;
+  const state = rawState === "tomark" || rawState === "draft" || rawState === "overdue" ? rawState : null;
+  const classOptions = await db.class.findMany({
+    where: { id: { in: classIds }, archivedAt: null },
+    select: { id: true, name: true },
+    orderBy: { name: "asc" },
+  });
+
+  const fetched = await db.assignment.findMany({
+    where: {
+      ...baseWhere,
+      ...(showAll ? {} : thisYear),
+      ...(classFilter ? { classId: classFilter } : {}),
+      ...(state === "draft" ? { publishedAt: null } : {}),
+    },
     include: {
       class: { select: { name: true, color: true, _count: { select: { enrollments: { where: { status: "ACTIVE" } } } } } },
       _count: { select: { submissions: true, grades: true } },
@@ -74,20 +89,23 @@ export default async function AssignmentsPage({
     orderBy: [{ publishedAt: "desc" }, { createdAt: "desc" }],
     take: 100,
   });
+  // "To mark" and "overdue" are arithmetic on counts the row already
+  // carries, so they narrow the fetched hundred rather than the query.
+  const now = new Date();
+  const assignments = fetched.filter((a) => {
+    if (state === "tomark") return a._count.submissions > a._count.grades;
+    if (state === "overdue") return a.dueAt !== null && a.dueAt < now && a._count.grades < a.class._count.enrollments;
+    return true;
+  });
 
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("teacher.assignments")}</h1>
-          <p className="mt-1 text-sm text-fg-muted">
-            {assignments.length === 0
+        <PageHeader title={t("teacher.assignments")} description={assignments.length === 0
               ? t("teacher.nothingSetYetShort")
               : assignments.length === 1
                 ? t("teacher.piecesOfWorkOne")
-                : t("teacher.piecesOfWorkMany", { count: assignments.length })}
-          </p>
-        </div>
+                : t("teacher.piecesOfWorkMany", { count: assignments.length })} />
         <Button asChild icon={<PlusIcon weight="bold" />}>
           <Link href="/teacher/assignments/new">{t("teacher.newAssignment")}</Link>
         </Button>
@@ -104,10 +122,33 @@ export default async function AssignmentsPage({
         />
       )}
 
+      {(allCount > 0 || classFilter || state) && (
+        <DataToolbar
+          facets={[
+            {
+              key: "state",
+              label: t("teacher.stateFilter"),
+              value: state ?? "",
+              options: [
+                { value: "", label: t("vacancies.filterAll") },
+                { value: "tomark", label: t("teacher.toMark") },
+                { value: "overdue", label: t("teacher.overdueFilter") },
+                { value: "draft", label: t("teacher.draft") },
+              ],
+            },
+            ...(classOptions.length > 1
+              ? [{ key: "classId", label: t("teacher.classFilter"), value: classFilter ?? "", as: "select" as const, options: [{ value: "", label: t("teacher.allClasses") }, ...classOptions.map((c) => ({ value: c.id, label: c.name }))] }]
+              : []),
+          ]}
+          extra={showAll ? { years: "all" } : {}}
+          labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+        />
+      )}
+
       {assignments.length === 0 ? (
         <EmptyState
           icon={<ClipboardTextIcon weight="duotone" className="size-8" />}
-          title={t("teacher.noAssignmentsYet")}
+          title={classFilter || state ? t("common.noResultsTitle") : t("teacher.noAssignmentsYet")}
           description={t("teacher.setWorkBlurb")}
           action={
             <Button asChild>

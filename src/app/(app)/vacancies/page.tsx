@@ -8,6 +8,8 @@ import { Badge } from "@/components/ui/badge";
 import { EmptyState } from "@/components/ui/states";
 import { getT, getRelativeTime } from "@/lib/i18n/server";
 import { EMPLOYMENT_TYPE_KEYS, type EmploymentType } from "@/lib/constants";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -15,26 +17,60 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 /** The platform-wide board. Staff only; the enquiry door is a teacher's. */
-export default async function VacanciesBoardPage() {
+export default async function VacanciesBoardPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string; type?: string; region?: string; subject?: string }>;
+}) {
+  const { q, type: rawType, region: rawRegion, subject: rawSubject } = await searchParams;
   const t = await getT();
   const relative = await getRelativeTime();
   const ctx = await requireRole("TEACHER", "ADMIN", "PRINCIPAL");
-  const postings = await listBoard(ctx);
+  const allPostings = await listBoard(ctx);
+  const regions = [...new Set(allPostings.map((p) => p.region).filter((r): r is string => Boolean(r)))].sort();
+  const subjects = [...new Set(allPostings.flatMap((p) => p.subjects))].sort();
+  const type = rawType && rawType in EMPLOYMENT_TYPE_KEYS ? (rawType as EmploymentType) : null;
+  const region = rawRegion && regions.includes(rawRegion) ? rawRegion : null;
+  const subject = rawSubject && subjects.includes(rawSubject) ? rawSubject : null;
+  const needle = (q ?? "").trim().toLowerCase();
+  const postings = allPostings.filter(
+    (p) =>
+      (!type || p.employmentType === type) &&
+      (!region || p.region === region) &&
+      (!subject || p.subjects.includes(subject)) &&
+      (!needle || [p.title, p.schoolName, p.city ?? ""].join(" ").toLowerCase().includes(needle)),
+  );
+  const narrowed = Boolean(type || region || subject || needle);
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("vacancies.title")}
-        </h1>
-        <p className="mt-1 max-w-prose text-sm text-fg-muted">{t("vacancies.boardIntro")}</p>
-      </div>
+      <PageHeader title={t("vacancies.title")} description={t("vacancies.boardIntro")} />
+
+      {allPostings.length > 2 && (
+        <DataToolbar
+          search={{ value: q ?? "", placeholder: t("vacancies.searchPlaceholder"), label: t("common.searchLabel") }}
+          facets={[
+            {
+              key: "type",
+              label: t("vacancies.typeFilter"),
+              value: type ?? "",
+              options: [
+                { value: "", label: t("vacancies.filterAll"), count: allPostings.length },
+                ...(Object.keys(EMPLOYMENT_TYPE_KEYS) as EmploymentType[]).map((k) => ({ value: k, label: t(EMPLOYMENT_TYPE_KEYS[k]), count: allPostings.filter((p) => p.employmentType === k).length })).filter((o) => o.count > 0),
+              ],
+            },
+            ...(regions.length > 1 ? [{ key: "region", label: t("explore.regionFilter"), value: region ?? "", as: "select" as const, options: [{ value: "", label: t("explore.anyRegion") }, ...regions.map((r) => ({ value: r, label: r }))] }] : []),
+            ...(subjects.length > 1 ? [{ key: "subject", label: t("staff.subjectFilter"), value: subject ?? "", as: "select" as const, options: [{ value: "", label: t("staff.allSubjects") }, ...subjects.map((r) => ({ value: r, label: r }))] }] : []),
+          ]}
+          labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+        />
+      )}
 
       {postings.length === 0 ? (
         <EmptyState
           icon={<BriefcaseIcon className="size-8" aria-hidden="true" />}
-          title={t("vacancies.emptyTitle")}
-          description={t("vacancies.emptyBody")}
+          title={narrowed ? t("common.noResultsTitle") : t("vacancies.emptyTitle")}
+          description={narrowed ? t("common.noResultsBody") : t("vacancies.emptyBody")}
         />
       ) : (
         <ul className="space-y-2">

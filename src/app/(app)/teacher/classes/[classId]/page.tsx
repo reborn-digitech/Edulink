@@ -34,12 +34,16 @@ const RANGE_DAYS = 28;
 
 export default async function ClassDetailPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ classId: string }>;
+  searchParams: Promise<{ filter?: string }>;
 }) {
   const t = await getT();
   const ctx = await requireRole("TEACHER", "ADMIN");
   const { classId } = await params;
+  const { filter: rawFilter } = await searchParams;
+  const filter = rawFilter === "concern" || rawFilter === "noguardian" ? rawFilter : null;
 
   let klass;
   try {
@@ -117,6 +121,10 @@ export default async function ClassDetailPage({
   const withoutGuardian = roster.filter((r) => !r.hasGuardian).length;
   // Below 90% is the threshold most schools act on.
   const ofConcern = roster.filter((r) => r.percent !== null && r.percent < 90);
+  // The tiles are the filters: a "3 of concern" that you cannot press is a
+  // number to scan forty rows for.
+  const shownRoster =
+    filter === "concern" ? ofConcern : filter === "noguardian" ? roster.filter((r) => !r.hasGuardian) : roster;
 
   const [weights, usedCategories] = await Promise.all([
     listGradeCategories(ctx, classId),
@@ -183,58 +191,45 @@ export default async function ClassDetailPage({
           icon={<ClipboardTextIcon weight="duotone" className="size-5" />}
           hint={ungraded === 0 ? t("teacher.nothingWaiting") : t("teacher.handedInNotMarked")}
         />
-        <StatTile
-          label={t("teacher.attendanceConcern")}
-          value={ofConcern.length}
-          tone={ofConcern.length > 0 ? "warn" : "ok"}
-          icon={<WarningCircleIcon weight="duotone" className="size-5" />}
-          hint={t("teacher.belowNinety", { days: RANGE_DAYS })}
-        />
-        <StatTile
-          label={t("teacher.noGuardian")}
-          value={withoutGuardian}
-          tone={withoutGuardian > 0 ? "warn" : "ok"}
-          icon={<UsersThreeIcon weight="duotone" className="size-5" />}
-          hint={
-            withoutGuardian === 0
-              ? t("teacher.everyChildLinked")
-              : t("teacher.nobodyReceivesNotifs")
-          }
-        />
+        <Link href={filter === "concern" ? `/teacher/classes/${klass.id}` : `/teacher/classes/${klass.id}?filter=concern#roster`} className="block rounded-[--radius-lg] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" aria-pressed={filter === "concern"}>
+          <StatTile
+            label={t("teacher.attendanceConcern")}
+            value={ofConcern.length}
+            tone={ofConcern.length > 0 ? "warn" : "ok"}
+            icon={<WarningCircleIcon weight="duotone" className="size-5" />}
+            hint={t("teacher.belowNinety", { days: RANGE_DAYS })}
+          />
+        </Link>
+        <Link href={filter === "noguardian" ? `/teacher/classes/${klass.id}` : `/teacher/classes/${klass.id}?filter=noguardian#roster`} className="block rounded-[--radius-lg] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" aria-pressed={filter === "noguardian"}>
+          <StatTile
+            label={t("teacher.noGuardian")}
+            value={withoutGuardian}
+            tone={withoutGuardian > 0 ? "warn" : "ok"}
+            icon={<UsersThreeIcon weight="duotone" className="size-5" />}
+            hint={
+              withoutGuardian === 0
+                ? t("teacher.everyChildLinked")
+                : t("teacher.nobodyReceivesNotifs")
+            }
+          />
+        </Link>
       </div>
 
-      {/* The class teacher writes this class's report cards. Offered here
-          because this is the page they are already on when the term ends. */}
-      <Card>
-        <Link
-          href={`/teacher/classes/${klass.id}/report-cards`}
-          className="flex items-center gap-3 p-4"
-        >
-          <span className="min-w-0 flex-1">
-            <span className="block font-semibold text-fg">{t("teacher.reportCards")}</span>
-            <span className="block text-xs text-fg-muted">
-              {t("teacher.reportCardsBlurb")}
-            </span>
-          </span>
-        </Link>
-      </Card>
-
-      {/* The marks grid, one click from the class — the same door the Exams
-          menu and the Today page open, because a feature with one entrance is
-          a feature half the staff room never finds. */}
-      <Card>
-        <Link href={`/teacher/exams?classId=${klass.id}`} className="flex items-center gap-3 p-4">
-          <span className="min-w-0 flex-1">
-            <span className="block font-semibold text-fg">{t("exams.enterMarks")}</span>
-            <span className="block text-xs text-fg-muted">{t("exams.enterMarksBlurb")}</span>
-          </span>
-        </Link>
-      </Card>
+      {/* Report cards and the marks grid, as one row of buttons — they were
+          two full-width cards that read as one control drawn twice. */}
+      <div className="flex flex-wrap gap-2">
+        <Button asChild variant="secondary">
+          <Link href={`/teacher/classes/${klass.id}/report-cards`}>{t("teacher.reportCards")}</Link>
+        </Button>
+        <Button asChild variant="secondary">
+          <Link href={`/teacher/exams?classId=${klass.id}`}>{t("exams.enterMarks")}</Link>
+        </Button>
+      </div>
 
       <ClassCode joinCode={klass.joinCode} className={klass.name} />
 
       {/* ---------------- roster ---------------- */}
-      <Card>
+      <Card id="roster" className="scroll-mt-24">
         <CardHeader
           icon={<UsersThreeIcon weight="duotone" className="size-5" />}
           title={t("teacher.whoIsInClass")}
@@ -249,7 +244,7 @@ export default async function ClassDetailPage({
             />
           ) : (
             <ul className="divide-y divide-border">
-              {roster.map((student) => (
+              {shownRoster.map((student) => (
                 <li key={student.membershipId} className="flex items-center gap-3 py-2.5">
                   <Avatar avatarKey={student.avatarKey} name={student.fullName} size="sm" />
                   <div className="min-w-0 flex-1">

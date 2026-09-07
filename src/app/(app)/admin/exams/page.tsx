@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ExamIcon, PlusIcon, WarningIcon, CalendarCheckIcon } from "@phosphor-icons/react/ssr";
 import { requireRole } from "@/lib/tenancy";
 import { db } from "@/lib/db";
@@ -11,6 +10,9 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { getT } from "@/lib/i18n/server";
 import { EXAM_KINDS, EXAM_KIND_KEY, type ExamKind } from "@/lib/constants";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { EmptyState } from "@/components/ui/states";
+import { PageHeader } from "@/components/ui/page-header";
 import {
   createSeriesAction,
   addSlotAction,
@@ -34,17 +36,23 @@ const hhmm = (m: number) => `${String(Math.floor(m / 60)).padStart(2, "0")}:${St
 export default async function AdminExamsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ error?: string; kind?: string }>;
+  searchParams: Promise<{ error?: string; kind?: string; grade?: string; state?: string }>;
 }) {
   const ctx = await requireRole("ADMIN");
   const t = await getT();
-  const { error, kind: rawKind } = await searchParams;
-  // The same toggle the reader's marks page has: unit tests, mid-term, final.
+  const { error, kind: rawKind, grade: rawGrade, state: rawState } = await searchParams;
+  // The same toggle the reader's marks page has: unit tests, mid-term, final —
+  // plus the two the office actually narrows by: which grade, and whether
+  // the sheet is out yet. All three are the query's WHERE, not a filter over
+  // a list already fetched.
   const kindFilter = EXAM_KINDS.includes(rawKind as ExamKind) ? (rawKind as ExamKind) : null;
+  const stateFilter = rawState === "draft" || rawState === "published" ? rawState : null;
 
   const school = await db.school.findUniqueOrThrow({ where: { id: ctx.schoolId! }, select: { timezone: true } });
-  const [series, gradeRows, terms] = await Promise.all([
-    listSeries(ctx),
+  const gradeFilter = rawGrade?.trim() || null;
+  const [series, total, gradeRows, terms] = await Promise.all([
+    listSeries(ctx, { kind: kindFilter ?? undefined, gradeLevel: gradeFilter ?? undefined, state: stateFilter ?? undefined }),
+    db.examSeries.count({ where: { schoolId: ctx.schoolId!, archivedAt: null } }),
     db.class.findMany({
       where: { schoolId: ctx.schoolId!, archivedAt: null, gradeLevel: { not: null } },
       select: { gradeLevel: true },
@@ -58,10 +66,7 @@ export default async function AdminExamsPage({
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("exams.adminTitle")}</h1>
-        <p className="mt-1 text-sm text-fg-muted">{t("exams.adminIntro")}</p>
-      </div>
+      <PageHeader title={t("exams.adminTitle")} description={t("exams.adminIntro")} />
 
       {error && (
         <Card>
@@ -72,6 +77,14 @@ export default async function AdminExamsPage({
         </Card>
       )}
 
+      {/* Used once a term, read every day: once the office has a series,
+          the form folds away behind its own heading so the list is what a
+          visit opens on. */}
+      <details open={total === 0} className="group">
+        <summary className="cursor-pointer list-none rounded-[--radius-md] border border-border bg-surface px-4 py-3 text-sm font-semibold text-fg hover:bg-surface-muted [&::-webkit-details-marker]:hidden">
+          + {t("exams.newSeriesTitle")}
+        </summary>
+        <div className="mt-3">
       <Card>
         <CardHeader
           icon={<PlusIcon weight="bold" className="size-5" />}
@@ -136,32 +149,48 @@ export default async function AdminExamsPage({
           </form>
         </CardBody>
       </Card>
+        </div>
+      </details>
 
-      {series.length > 0 && (
-        <nav aria-label={t("exams.kindFilterLabel")} className="flex flex-wrap gap-2">
-          {[null, ...EXAM_KINDS].map((k) => (
-            <Link
-              key={k ?? "all"}
-              href={k ? `/admin/exams?kind=${k}` : "/admin/exams"}
-              className={`rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
-                kindFilter === k ? "bg-accent text-accent-fg" : "bg-surface-muted text-fg-muted hover:text-fg"
-              }`}
-            >
-              {k ? t(EXAM_KIND_KEY[k]) : t("exams.allKinds")}
-            </Link>
-          ))}
-        </nav>
+      {total > 0 && (
+        <DataToolbar
+          facets={[
+            {
+              key: "kind",
+              label: t("exams.kindFilterLabel"),
+              value: kindFilter ?? "",
+              options: [{ value: "", label: t("exams.allKinds") }, ...EXAM_KINDS.map((k) => ({ value: k, label: t(EXAM_KIND_KEY[k]) }))],
+            },
+            {
+              key: "state",
+              label: t("exams.stateFilterLabel"),
+              value: stateFilter ?? "",
+              options: [
+                { value: "", label: t("vacancies.filterAll") },
+                { value: "draft", label: t("exams.draftLabel") },
+                { value: "published", label: t("exams.published") },
+              ],
+            },
+            {
+              key: "grade",
+              label: t("exams.fieldGrade"),
+              value: gradeFilter ?? "",
+              as: "select",
+              options: [{ value: "", label: t("exams.allGrades") }, ...grades.map((g) => ({ value: g, label: t("practice.classN", { n: g }) }))],
+            },
+          ]}
+          labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+        />
       )}
 
       {series.length === 0 ? (
-        <Card>
-          <CardBody className="flex flex-col items-center gap-2 py-10 text-center text-sm text-fg-muted">
-            <ExamIcon weight="duotone" className="size-8" />
-            {t("exams.noneYet")}
-          </CardBody>
-        </Card>
+        <EmptyState
+          icon={<ExamIcon weight="duotone" className="size-8" />}
+          title={total > 0 ? t("common.noResultsTitle") : t("exams.noneYet")}
+          description={total > 0 ? t("common.noResultsBody") : t("exams.newSeriesHint")}
+        />
       ) : (
-        series.filter((s) => !kindFilter || s.kind === kindFilter).map((s) => (
+        series.map((s) => (
           <Card key={s.id}>
             <CardHeader
               icon={<CalendarCheckIcon weight="duotone" className="size-5" />}

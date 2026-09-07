@@ -14,6 +14,7 @@ import { ChildSwitcher } from "../child-switcher";
 import { EmptyState } from "@/components/ui/states";
 import { ATTENDANCE_META, ATTENDANCE_STATUSES, type AttendanceStatus } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -76,14 +77,7 @@ export default async function ParentAttendancePage({
         ) : null;
       })()}
 
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("parent.childsAttendance", { name: childName })}
-        </h1>
-        <p className="mt-1 text-sm text-fg-muted">
-          {[student.school.name, monthLabel].join(" · ")}
-        </p>
-      </div>
+      <PageHeader title={t("parent.childsAttendance", { name: childName })} description={[student.school.name, monthLabel].join(" · ")} />
 
       <div className="flex flex-wrap items-center gap-2">
         <Button asChild variant="secondary" size="sm" icon={<CaretLeftIcon weight="bold" />}>

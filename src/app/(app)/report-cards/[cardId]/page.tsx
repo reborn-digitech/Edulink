@@ -7,6 +7,9 @@ import { formatDate, formatDateKey } from "@/lib/dates";
 import { formatMilli } from "@/lib/validation";
 import { getT } from "@/lib/i18n/server";
 import { PersonLink } from "@/components/person-link";
+import Link from "next/link";
+import { ArrowLeftIcon } from "@phosphor-icons/react/ssr";
+import { PrintButton } from "../../reports/[studentMembershipId]/print-button";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -37,8 +40,10 @@ export async function generateMetadata(): Promise<Metadata> {
  */
 export default async function ReportCardPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ cardId: string }>;
+  searchParams: Promise<{ from?: string }>;
 }) {
   const t = await getT();
   const subjectName = (code: string) => {
@@ -47,6 +52,9 @@ export default async function ReportCardPage({
   };
   const session = await requireUser();
   const { cardId } = await params;
+  const { from } = await searchParams;
+  // Only a path of our own is a way back; anything else is the cards tab.
+  const backHref = from && from.startsWith("/") && !from.startsWith("//") ? from : "/exams?tab=cards";
 
   const card = await getCard(session, cardId);
   if (!card) notFound();
@@ -55,6 +63,15 @@ export default async function ReportCardPage({
 
   return (
     <article className="mx-auto max-w-2xl print:max-w-none">
+      {/* Off the sheet: the way back and the way onto paper. The page is
+          designed for print and had neither. */}
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-2 print:hidden">
+        <Link href={backHref} className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted hover:text-fg">
+          <ArrowLeftIcon weight="bold" className="size-4" />
+          {t("reportView.back")}
+        </Link>
+        <PrintButton />
+      </div>
       {card.status !== "PUBLISHED" && (
         // Only staff can see a draft at all, but a teacher printing one by
         // mistake and handing it to a parent is the accident worth preventing.

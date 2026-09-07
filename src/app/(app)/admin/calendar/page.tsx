@@ -17,6 +17,8 @@ import { EntryForm } from "./entry-form";
 import { EntryList } from "./entry-list";
 import { getT } from "@/lib/i18n/server";
 import { PersonLink } from "@/components/person-link";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -35,7 +37,11 @@ export async function generateMetadata(): Promise<Metadata> {
  * whichever year is running and an admin who adds Diwali before setting the year
  * up gets an entry attached to nothing.
  */
-export default async function CalendarPage() {
+export default async function CalendarPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ when?: string }>;
+}) {
   const t = await getT();
   // PRINCIPAL reads it too — approved staff leave shows here, and deciding it
   // without being able to see the term dates around it is half a job. Editing
@@ -72,14 +78,123 @@ export default async function CalendarPage() {
    * pupils have no calendar at all.
    */
   const birthdays = await birthdaysBetween(ctx, today, addDaysToKey(today, 120));
+  const { when } = await searchParams;
+  const showAll = when === "all";
+  const upcomingEntries = entries.filter((entry) => entry.endDateKey >= today);
+  const shownEntries = showAll ? entries : upcomingEntries;
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("feature.calendar")}</h1>
-        <p className="mt-1 text-sm text-fg-muted">{t("calendar.subtitle")}</p>
-      </div>
+      <PageHeader title={t("feature.calendar")} description={t("calendar.subtitle")} />
 
+      {/* ---------------- the academic year ---------------- */}
+      <section aria-labelledby="year-heading">
+        <Card>
+          <CardHeader
+            icon={<GraduationCapIcon weight="duotone" className="size-5" />}
+            title={<span id="year-heading">{t("feature.academicYear")}</span>}
+            description={
+              current ? t("calendar.yearRunning", { name: current.name }) : t("calendar.yearNone")
+            }
+          />
+          <CardBody>
+            <YearPanel
+              years={years.map((year) => ({
+                id: year.id,
+                name: year.name,
+                startDateKey: year.startDate.toISOString().slice(0, 10),
+                endDateKey: year.endDate.toISOString().slice(0, 10),
+                isCurrent: year.isCurrent,
+                closedAt: year.closedAt ? year.closedAt.toISOString() : null,
+              }))}
+              today={today}
+            />
+            {current && (
+              <div id="terms" className="mt-6 scroll-mt-24 border-t border-border pt-5">
+                <TermsPanel
+                  academicYearId={current.id}
+                  yearStartKey={current.startDate.toISOString().slice(0, 10)}
+                  yearEndKey={current.endDate.toISOString().slice(0, 10)}
+                  terms={terms.map((term) => ({
+                    id: term.id,
+                    name: term.name,
+                    startDateKey: term.startDateKey,
+                    endDateKey: term.endDateKey,
+                    current: term.current,
+                    finished: term.finishedAt !== null,
+                  }))}
+                />
+              </div>
+            )}
+          </CardBody>
+        </Card>
+      </section>
+
+      {/* ---------------- the calendar itself ---------------- */}
+      <section aria-labelledby="calendar-heading" className="grid gap-6 lg:grid-cols-[22rem_1fr]">
+        <Card className="lg:sticky lg:top-4 lg:self-start">
+          <CardHeader
+            icon={<CalendarBlankIcon weight="duotone" className="size-5" />}
+            title={t("calendar.addTitle")}
+            description={t("calendar.addBody")}
+          />
+          <CardBody>
+            <EntryForm today={today} />
+          </CardBody>
+        </Card>
+
+        <div className="space-y-3">
+          <h2 id="calendar-heading" className="text-sm font-semibold uppercase tracking-wide text-fg-muted">
+            {t("calendar.listTitle")}
+          </h2>
+
+          {/* A school in March scrolled eight dead months to reach next
+              term; the list opens on what is still to come, with the past
+              one chip away. */}
+          {entries.length > 0 && (
+            <DataToolbar
+              facets={[
+                {
+                  key: "when",
+                  label: t("calendar.whenLabel"),
+                  value: showAll ? "all" : "",
+                  options: [
+                    { value: "", label: t("calendar.upcoming"), count: upcomingEntries.length },
+                    { value: "all", label: t("calendar.wholeYear"), count: entries.length },
+                  ],
+                },
+              ]}
+              labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+            />
+          )}
+          {shownEntries.length === 0 ? (
+            <EmptyState
+              icon={<CalendarBlankIcon weight="duotone" className="size-8" />}
+              title={entries.length > 0 ? t("calendar.nothingAhead") : t("calendar.nothingYet")}
+              description={entries.length > 0 ? t("calendar.nothingAheadBody") : t("calendar.nothingYetBody")}
+            />
+          ) : (
+            <EntryList
+              today={today}
+              entries={shownEntries.map((entry) => ({
+                id: entry.id,
+                name: entry.name,
+                startDateKey: entry.startDateKey,
+                endDateKey: entry.endDateKey,
+                /* The KIND crosses over, not a label. `EntryList` is a client
+                   component with the reader's `t`; resolving the word here
+                   would resolve it in nobody's language in particular. */
+                kind: entry.kind as HolidayKind,
+                note: entry.note,
+              }))}
+            />
+          )}
+        </div>
+      </section>
+      {/* ---------------- who is away, and whose birthday ----------------
+          Below the calendar, not above it: both are read a few times a term,
+          the calendar every week, and for a year they pushed the thing the
+          page is named after under the fold. */}
       {/* ---------------- staff away ---------------- */}
       {leave.length > 0 && (
         <section aria-labelledby="leave-heading">
@@ -163,91 +278,6 @@ export default async function CalendarPage() {
         </Card>
       </section>
 
-      {/* ---------------- the academic year ---------------- */}
-      <section aria-labelledby="year-heading">
-        <Card>
-          <CardHeader
-            icon={<GraduationCapIcon weight="duotone" className="size-5" />}
-            title={<span id="year-heading">{t("feature.academicYear")}</span>}
-            description={
-              current ? t("calendar.yearRunning", { name: current.name }) : t("calendar.yearNone")
-            }
-          />
-          <CardBody>
-            <YearPanel
-              years={years.map((year) => ({
-                id: year.id,
-                name: year.name,
-                startDateKey: year.startDate.toISOString().slice(0, 10),
-                endDateKey: year.endDate.toISOString().slice(0, 10),
-                isCurrent: year.isCurrent,
-                closedAt: year.closedAt ? year.closedAt.toISOString() : null,
-              }))}
-              today={today}
-            />
-            {current && (
-              <div className="mt-6 border-t border-border pt-5">
-                <TermsPanel
-                  academicYearId={current.id}
-                  yearStartKey={current.startDate.toISOString().slice(0, 10)}
-                  yearEndKey={current.endDate.toISOString().slice(0, 10)}
-                  terms={terms.map((term) => ({
-                    id: term.id,
-                    name: term.name,
-                    startDateKey: term.startDateKey,
-                    endDateKey: term.endDateKey,
-                    current: term.current,
-                    finished: term.finishedAt !== null,
-                  }))}
-                />
-              </div>
-            )}
-          </CardBody>
-        </Card>
-      </section>
-
-      {/* ---------------- the calendar itself ---------------- */}
-      <section aria-labelledby="calendar-heading" className="grid gap-6 lg:grid-cols-[22rem_1fr]">
-        <Card className="lg:sticky lg:top-4 lg:self-start">
-          <CardHeader
-            icon={<CalendarBlankIcon weight="duotone" className="size-5" />}
-            title={t("calendar.addTitle")}
-            description={t("calendar.addBody")}
-          />
-          <CardBody>
-            <EntryForm today={today} />
-          </CardBody>
-        </Card>
-
-        <div className="space-y-3">
-          <h2 id="calendar-heading" className="text-sm font-semibold uppercase tracking-wide text-fg-muted">
-            {t("calendar.listTitle")}
-          </h2>
-
-          {entries.length === 0 ? (
-            <EmptyState
-              icon={<CalendarBlankIcon weight="duotone" className="size-8" />}
-              title={t("calendar.nothingYet")}
-              description={t("calendar.nothingYetBody")}
-            />
-          ) : (
-            <EntryList
-              today={today}
-              entries={entries.map((entry) => ({
-                id: entry.id,
-                name: entry.name,
-                startDateKey: entry.startDateKey,
-                endDateKey: entry.endDateKey,
-                /* The KIND crosses over, not a label. `EntryList` is a client
-                   component with the reader's `t`; resolving the word here
-                   would resolve it in nobody's language in particular. */
-                kind: entry.kind as HolidayKind,
-                note: entry.note,
-              }))}
-            />
-          )}
-        </div>
-      </section>
     </div>
   );
 }

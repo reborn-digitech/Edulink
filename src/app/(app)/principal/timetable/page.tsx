@@ -10,6 +10,7 @@ import { Card, CardHeader, CardBody } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/states";
 import { WeekGridView } from "@/components/timetable/week-grid";
 import { getLocale, getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -69,12 +70,7 @@ export default async function ClassTimetablesPage({
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-          {t("principal.classTimetables")}
-        </h1>
-        <p className="mt-1 text-sm text-fg-muted">{t("principal.classTimetablesBody")}</p>
-      </div>
+      <PageHeader title={t("principal.classTimetables")} description={t("principal.classTimetablesBody")} />
 
       {classes.length === 0 ? (
         <EmptyState

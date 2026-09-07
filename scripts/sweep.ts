@@ -436,6 +436,23 @@ async function expertBooking(
 
     for (const spelling of ["/experts/bookings", "/expert/bookings"]) {
       const path = `${spelling}/${booking.id}`;
+      if (spelling === "/expert/bookings") {
+        // ONE PAGE NOW. This spelling reads nothing and sends everybody on to
+        // the other before any lookup, so every actor sees the same 307 and
+        // the boundary is asserted once, on the page that actually renders.
+        for (const [actor, note] of [
+          [admin, "the school that booked it"],
+          [expert, "and the expert it is with"],
+          [student, "a pupil is sent on, to be refused there"],
+          [guardianInSchool, "a guardian likewise"],
+          [parent, "a guardian without a school likewise"],
+          [otherAdmin, "another school likewise"],
+          [null, "signed out"],
+        ] as const) {
+          await check(actor, path, 307, `redirects to /experts/bookings — ${note}`);
+        }
+        continue;
+      }
       await check(admin, path, 200, "the school that booked it");
       await check(expert, path, 200, "and the expert it is with");
       // ⚠ THE BOUNDARY. Both of these were 200 before it was fixed.
@@ -1886,10 +1903,12 @@ async function main() {
     "/bulletin/new", "/notifications", "/notifications?tab=unread", "/account", "/account/merge", "/switch",
     "/remarks", "/admin/people/export",
     // Cross-school outreach: the directory desk, the vacancy desk, the board.
-    "/admin/directory", "/admin/vacancies", "/admin/vacancies/new", "/vacancies", "/explore", "/enquiries",
+    "/admin/vacancies", "/admin/vacancies/new", "/vacancies", "/explore", "/enquiries",
   ]) {
     await check(admin, p);
   }
+  // The directory profile moved onto Settings; the old route lands on the card.
+  await check(admin, "/admin/directory", 307, "directory profile edited on Settings now");
   // Messages are teacher↔parent, so an admin is sent to pick a role rather than
   // shown a compose box they cannot post from.
   await check(admin, "/remarks/new", 307, "admin is not a teacher here");

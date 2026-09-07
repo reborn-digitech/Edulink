@@ -14,6 +14,7 @@ import { ReactionRow } from "../reactions";
 import { CATEGORY_KEYS } from "../categories";
 import { POST_CATEGORIES, type PostCategory } from "@/lib/constants";
 import { getT } from "@/lib/i18n/server";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -67,10 +68,7 @@ export default async function GlobalFeedPage({
         {t("bulletin.ourBulletin")}
       </Link>
 
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("bulletin.globalFeed")}</h1>
-        <p className="mt-1 max-w-prose text-sm text-fg-muted">{t("bulletin.globalIntro")}</p>
-      </div>
+      <PageHeader title={t("bulletin.globalFeed")} description={t("bulletin.globalIntro")} />
 
       <FeedFilters basePath="/bulletin/global" category={category} q={q} tag={tag} />
 

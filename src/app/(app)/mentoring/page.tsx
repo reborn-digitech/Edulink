@@ -28,6 +28,8 @@ import { AskForm } from "./ask-form";
 import { RequestQueue } from "./request-queue";
 import { getT } from "@/lib/i18n/server";
 import { PersonLink } from "@/components/person-link";
+import { DataToolbar } from "@/components/ui/data-toolbar";
+import { PageHeader } from "@/components/ui/page-header";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getT();
@@ -42,7 +44,12 @@ export async function generateMetadata(): Promise<Metadata> {
  * `listMentorships` does that filtering from the session. A separate page per
  * role would be four places for the visibility rule to drift.
  */
-export default async function MentoringPage() {
+export default async function MentoringPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ status?: string }>;
+}) {
+  const { status: rawStatus } = await searchParams;
   const t = await getT();
   const ctx = await requireUser();
   const isStaff = ctx.role === "ADMIN" || ctx.role === "TEACHER";
@@ -59,13 +66,12 @@ export default async function MentoringPage() {
   ]);
   const waiting = threads.filter((t) => t.awaitingConsent);
   const myOpenRequests = threads.filter((t) => t.status === "REQUESTED").length;
+  const statusFilter = rawStatus === "ACTIVE" || rawStatus === "CLOSED" || rawStatus === "REQUESTED" ? rawStatus : null;
+  const shown = statusFilter ? threads.filter((t) => t.status === statusFilter) : threads;
 
   return (
     <div className="space-y-5">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">{t("feature.mentoring")}</h1>
-        <p className="mt-1 max-w-prose text-sm text-fg-muted">{t("mentoring.intro")}</p>
-      </div>
+      <PageHeader title={t("feature.mentoring")} description={t("mentoring.intro")} />
 
       {isStaff && <PairForm experts={options.experts} pupils={options.pupils} />}
 
@@ -78,11 +84,25 @@ export default async function MentoringPage() {
       {ctx.role === "PARENT" && waiting.length > 0 && (
         <p className="flex items-start gap-2 rounded-[--radius-md] border border-warn/40 bg-warn-soft/40 p-3 text-sm text-fg">
           <WarningIcon weight="fill" className="mt-0.5 size-4 shrink-0 text-warn" />
-          <span>
-            {waiting.length} mentorship{waiting.length === 1 ? "" : "s"} need your agreement before
-            anyone can send a message.
-          </span>
+          <span>{t("mentoring.needsYourAgreement", { count: waiting.length })}</span>
         </p>
+      )}
+
+      {threads.length > 2 && (
+        <DataToolbar
+          facets={[
+            {
+              key: "status",
+              label: t("mentoring.statusFilter"),
+              value: statusFilter ?? "",
+              options: [
+                { value: "", label: t("vacancies.filterAll"), count: threads.length },
+                ...(["ACTIVE", "REQUESTED", "CLOSED"] as const).map((st) => ({ value: st, label: t(MENTOR_STATUS_KEY[st] ?? "mentoring.statusActive"), count: threads.filter((th) => th.status === st).length })).filter((o) => o.count > 0),
+              ],
+            },
+          ]}
+          labels={{ clearAll: t("common.clearAll"), clearSearch: t("common.clearSearch"), activeFilters: t("common.activeFilters") }}
+        />
       )}
 
       {threads.length === 0 ? (
@@ -91,9 +111,11 @@ export default async function MentoringPage() {
           title={t("mentoring.emptyTitle")}
           description={t("mentoring.emptyBody")}
         />
+      ) : shown.length === 0 ? (
+        <EmptyState title={t("common.noResultsTitle")} description={t("common.noResultsBody")} />
       ) : (
         <ul className="space-y-3">
-          {threads.map((thread) => (
+          {shown.map((thread) => (
             <li key={thread.id}>
               <Card interactive>
                 <Link href={`/mentoring/${thread.id}`} className="block">
@@ -117,7 +139,7 @@ export default async function MentoringPage() {
                         <PersonLink membershipId={thread.studentMembershipId} name={thread.studentName} /> &amp; {thread.expertName}
                       </span>
                       {thread.unread > 0 && (
-                        <Badge tone="accent" size="sm">{thread.unread} new</Badge>
+                        <Badge tone="accent" size="sm">{t("mentoring.newCount", { count: thread.unread })}</Badge>
                       )}
                     </div>
                     <p className="text-[0.9375rem] text-fg-muted">{thread.purpose}</p>
