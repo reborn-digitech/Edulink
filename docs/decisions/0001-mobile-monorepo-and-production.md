@@ -103,3 +103,7 @@ The accessibility gate and the viewport matrix live in `apps/web/e2e/` and run i
 ## Phase 3 record
 
 `/api/v1` is documented in `docs/api/README.md` and generated into `docs/api/openapi.json` from `apps/web/src/lib/api-catalog`; the API sweep (`npm run api:sweep`) and the contract suites (`tests/api-v1-*.test.ts`) run in CI. The Phase 3 report artifact carries the endpoint counts and what the reviews found.
+
+## Phase 4 record
+
+`apps/mobile` is the Expo app (SDK 57, expo-router, React Query, expo-secure-store, an expo-sqlite outbox, expo-notifications), sharing `@edulink/i18n` (the three dictionaries moved there from the web), `@edulink/tokens` (mirrors `globals.css`, with a drift test on the web side), `@edulink/contracts` and `@edulink/api-client`. Screens live in `src/screens/{teacher,family,staff}`; the routes in `src/app/(app)` only switch on role. Native-only modules sit in `.native.ts` files with a web twin beside them, because expo-router's static web render cannot carry expo-sqlite. This machine has no Xcode or simulator: the mobile battery (`pnpm battery:mobile`: tsc, eslint, jest-expo with Testing Library) runs in CI, the contract suite runs against the API in the sweep job with `zz:token`, and the screens were walked on the web target against the local API. The device layers of the mobile battery, the first development build and the twenty-device internal test wait for an Expo account or a Mac with Xcode; the Phase 4 report artifact lists what each unblocks.
