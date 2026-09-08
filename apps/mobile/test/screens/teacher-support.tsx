@@ -6,7 +6,7 @@ import { __setApiClient } from "@/lib/api";
 import { __setOutboxStore, memoryOutbox } from "@/lib/outbox";
 import { __setKeyStore, KEYS, memoryStore } from "@/lib/storage";
 import { __setReplayFetch, __stopOutboxRunner } from "@/lib/outbox-runner";
-import { renderApp } from "../utils";
+import { renderApp, untilRendered } from "../utils";
 
 /**
  * The teacher screens' test bench: a fake API keyed by pathname (the handler
@@ -34,6 +34,7 @@ export function offline(): Response {
 export function fakeApi(answers: Record<string, Answer>): jest.Mock {
   const fetch: jest.Mock = jest.fn(async (input: string | URL | Request, init?: RequestInit) => {
     const url = new URL(String(input));
+    if (url.pathname !== "/api/v1/me") await untilRendered();
     const answer = answers[url.pathname];
     if (!answer) return json({ error: `No answer for ${url.pathname}` }, 404);
     return answer(url, init);

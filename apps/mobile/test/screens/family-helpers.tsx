@@ -5,7 +5,7 @@ import { createApiClient } from "@edulink/api-client";
 import { __setApiClient } from "@/lib/api";
 import { __setKeyStore, KEYS, memoryStore } from "@/lib/storage";
 import { SessionProvider } from "@/lib/session";
-import { renderApp } from "../utils";
+import { renderApp, untilRendered } from "../utils";
 
 /**
  * What every family screen test needs: a signed-in PARENT or STUDENT, a
@@ -62,6 +62,7 @@ export const refused =
 export function fakeApi(answers: Record<string, Answer>): jest.Mock {
   const fetch = jest.fn(async (input: string | URL | Request, init?: RequestInit) => {
     const url = new URL(String(input));
+    if (url.pathname !== "/api/v1/me") await untilRendered();
     const answer = answers[url.pathname];
     if (!answer) return new Response(JSON.stringify({ error: `No answer for ${url.pathname}`, code: "NOT_FOUND" }), { status: 404 });
     const out = await answer(init, url);

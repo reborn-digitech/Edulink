@@ -2,7 +2,7 @@ import type { ReactElement } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { createApiClient } from "@edulink/api-client";
 import type { RoleCode } from "@edulink/contracts";
-import { renderApp } from "../utils";
+import { renderApp, untilRendered } from "../utils";
 import { __setApiClient } from "@/lib/api";
 import { __setKeyStore, KEYS, memoryStore } from "@/lib/storage";
 import { SessionProvider } from "@/lib/session";
@@ -52,6 +52,7 @@ export async function mountStaff(ui: ReactElement, role: RoleCode, answers: Answ
   __setKeyStore(memoryStore({ [KEYS.token]: "t" }));
   const fetch = jest.fn(async (input: string | URL | Request, init?: RequestInit) => {
     const url = new URL(String(input));
+    if (url.pathname !== "/api/v1/me") await untilRendered();
     const method = init?.method ?? "GET";
     const answer = answers[`${method} ${url.pathname}`];
     if (answer) return answer({ url, init: init ?? {} });
