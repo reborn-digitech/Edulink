@@ -106,6 +106,9 @@
     "coverageReporters": [
       "text-summary",
       "json-summary"
-    ]
+    ],
+    "moduleNameMapper": {
+      "^phosphor\\-react\\-native/src/icons/(.*)$": "<rootDir>/node_modules/phosphor-react-native/src/icons/$1"
+    }
   }
 }
