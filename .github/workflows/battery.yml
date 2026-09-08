@@ -217,6 +217,32 @@ jobs:
       - name: Playwright browsers
         working-directory: apps/web
         run: npx playwright install --with-deps chromium
+      - name: Accessibility gate and viewport matrix
+        working-directory: apps/web
+        env:
+          BASE: http://localhost:3000
+          CI: "true"
+        # `update_snapshots` writes a fresh Linux baseline set instead of
+        # comparing; download the artifact and commit e2e/__screenshots__/linux.
+        run: |
+          if [ "${{ github.event.inputs.update_snapshots }}" = "true" ]; then
+            npx playwright test --update-snapshots
+          else
+            npx playwright test
+          fi
+      - name: Playwright report and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-${{ github.run_number }}
+          path: |
+            apps/web/e2e/report
+            apps/web/e2e/results
+            apps/web/e2e/__screenshots__
+          if-no-files-found: ignore
+          retention-days: 14
+      # After the web suite on purpose: its global set-up creates the ZZ exam
+      # series and paper the phone's offline flow enters a mark on.
       - name: Mobile web target · export and serve on :8081
         working-directory: apps/mobile
         run: |
@@ -248,30 +274,6 @@ jobs:
             apps/mobile/e2e/screens
             apps/mobile/e2e/report
             apps/mobile/e2e/results
-          if-no-files-found: ignore
-          retention-days: 14
-      - name: Accessibility gate and viewport matrix
-        working-directory: apps/web
-        env:
-          BASE: http://localhost:3000
-          CI: "true"
-        # `update_snapshots` writes a fresh Linux baseline set instead of
-        # comparing; download the artifact and commit e2e/__screenshots__/linux.
-        run: |
-          if [ "${{ github.event.inputs.update_snapshots }}" = "true" ]; then
-            npx playwright test --update-snapshots
-          else
-            npx playwright test
-          fi
-      - name: Playwright report and screenshots
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: e2e-${{ github.run_number }}
-          path: |
-            apps/web/e2e/report
-            apps/web/e2e/results
-            apps/web/e2e/__screenshots__
           if-no-files-found: ignore
           retention-days: 14
       - name: Server log
