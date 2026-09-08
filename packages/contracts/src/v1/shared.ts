@@ -675,3 +675,29 @@ export const expertSaveProfileSchema = z.object({
 
 /** POST /api/v1/uploads — multipart, one `file` field; read back through /api/files/{fileId}. */
 export const uploadResultSchema = z.object({ fileId: z.string(), mime: z.string(), size: count });
+
+// ---- app release ------------------------------------------------------------
+/** The kill switch: the oldest app version the API still serves, per platform, and where the newer one is. */
+export const appVersionSchema = z.object({
+  minimum: z.object({ ios: z.string(), android: z.string() }),
+  latest: z.object({ ios: z.string(), android: z.string() }),
+  storeUrls: z.object({ ios: z.string().nullable(), android: z.string().nullable() }),
+  /** An operator's sentence for the update screen, or null for the standard one. */
+  message: z.string().nullable(),
+});
+
+/** "Report a problem" from the app, and the app's own crash report on its next start. */
+export const appReportBodySchema = z.object({
+  kind: z.enum(["PROBLEM", "CRASH"]),
+  message: z.string().trim().min(1).max(2000),
+  screen: z.string().max(200).optional(),
+  stack: z.string().max(8000).optional(),
+  device: z.object({
+    platform: z.enum(["ios", "android", "web"]),
+    os: z.string().max(60).optional(),
+    model: z.string().max(80).optional(),
+    appVersion: z.string().max(30),
+    build: z.string().max(30).optional(),
+  }),
+});
+export const appReportResultSchema = z.object({ reportId: z.string(), reference: z.string() });

@@ -1,3 +1,4 @@
+import { __setOutboxStore, countQueued, enqueue, memoryOutbox } from "@/lib/outbox";
 import { act, renderHook, waitFor } from "@testing-library/react-native";
 import type { ReactNode } from "react";
 import { createApiClient } from "@edulink/api-client";
@@ -52,9 +53,16 @@ describe("the session", () => {
     await act(() => result.current.accept({ token: "tok-2", expiresAt: new Date(Date.now() + 1e7).toISOString(), sessionId: "s", context: { schoolId: "s1", role: "TEACHER" } }));
     expect(result.current.status).toBe("signed-in");
     expect(await store.get(KEYS.token)).toBe("tok-2");
+    // What this person left on the phone: a queued write and an unsent crash.
+    __setOutboxStore(memoryOutbox());
+    await enqueue({ method: "POST", url: "/api/v1/marks", body: "{}", tag: "marks" });
+    await store.set(KEYS.crash, JSON.stringify({ message: "boom" }));
+    expect(await countQueued()).toBe(1);
     await act(() => result.current.signOut());
     expect(result.current.status).toBe("signed-out");
     expect(await store.get(KEYS.token)).toBeNull();
+    expect(await countQueued()).toBe(0);
+    expect(await store.get(KEYS.crash)).toBeNull();
     const logoutCall = fetch.mock.calls.find((c) => String(c[0]).endsWith("/auth/logout"));
     expect((logoutCall![1] as RequestInit).headers).toMatchObject({ Authorization: "Bearer tok-2" });
   });

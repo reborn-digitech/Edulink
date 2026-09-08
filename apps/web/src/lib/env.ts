@@ -252,6 +252,87 @@ export function readTwilioConfig():
  * boot for its own verification workflow, so "deployed" means production build
  * AND a non-localhost origin.
  */
+/**
+ * The app-release contract: the kill switch the phone reads at every start.
+ *
+ * NOTHING IS REFUSED UNTIL AN OPERATOR SAYS SO. Every variable has a default —
+ * a minimum of 0.0.0 admits every build ever shipped, the latest defaults to
+ * the minimum, the store links and the message to null — so an installation
+ * that has never heard of these variables answers the phone truthfully and
+ * refuses nobody. Read here, beside SMTP and VAPID, for the same reason those
+ * are: `appVersionPolicy()` in app-release.ts and `checkEnv` below read ONE
+ * function, so a value the boot check accepts is a value the endpoint serves,
+ * and a value it flags is one the endpoint has already fallen back from.
+ *
+ * NEVER FATAL. A typo in a version string must not stop the server that
+ * serves the web app too; it is said at boot, and the malformed value is
+ * treated as unset so the phone is not locked out by a stray character.
+ */
+export const APP_RELEASE_VARS = [
+  "APP_MIN_VERSION_IOS",
+  "APP_MIN_VERSION_ANDROID",
+  "APP_LATEST_VERSION_IOS",
+  "APP_LATEST_VERSION_ANDROID",
+  "APP_STORE_URL_IOS",
+  "APP_STORE_URL_ANDROID",
+  "APP_UPDATE_MESSAGE",
+] as const;
+
+export type AppReleaseConfig = {
+  minimum: { ios: string; android: string };
+  latest: { ios: string; android: string };
+  storeUrls: { ios: string | null; android: string | null };
+  message: string | null;
+};
+
+/** "1.4.2" or "1.4": digits and dots, nothing else — what the phone compares part by part. */
+const DOTTED_VERSION = /^\d+\.\d+(\.\d+)?$/;
+
+/** Part-by-part comparison of two dotted versions: negative when a < b. */
+function compareVersions(a: string, b: string): number {
+  const as = a.split(".").map(Number);
+  const bs = b.split(".").map(Number);
+  for (let i = 0; i < Math.max(as.length, bs.length); i++) {
+    const diff = (as[i] ?? 0) - (bs[i] ?? 0);
+    if (diff !== 0) return diff;
+  }
+  return 0;
+}
+
+export function readAppReleaseConfig(): { config: AppReleaseConfig; problems: { key: string; message: string }[] } {
+  const problems: { key: string; message: string }[] = [];
+  const raw = (key: (typeof APP_RELEASE_VARS)[number]) => process.env[key]?.trim() || "";
+
+  const version = (key: (typeof APP_RELEASE_VARS)[number], fallback: string): string => {
+    const value = raw(key);
+    if (!value) return fallback;
+    if (DOTTED_VERSION.test(value)) return value;
+    problems.push({ key, message: `${key} is "${value}" — expected a dotted version like "1.4.2". Treated as unset until it is fixed.` });
+    return fallback;
+  };
+  const url = (key: (typeof APP_RELEASE_VARS)[number]): string | null => {
+    const value = raw(key);
+    if (!value) return null;
+    if (/^https?:\/\/\S+$/.test(value)) return value;
+    problems.push({ key, message: `${key} is "${value}" — expected an https:// store link. Treated as unset until it is fixed.` });
+    return null;
+  };
+  const latestOf = (key: (typeof APP_RELEASE_VARS)[number], minimum: string): string => {
+    const value = version(key, minimum);
+    if (compareVersions(value, minimum) < 0) {
+      problems.push({ key, message: `${key} is "${value}", older than the minimum the API still serves (${minimum}). The latest cannot be older than the oldest; answering ${minimum}.` });
+      return minimum;
+    }
+    return value;
+  };
+
+  const minimum = { ios: version("APP_MIN_VERSION_IOS", "0.0.0"), android: version("APP_MIN_VERSION_ANDROID", "0.0.0") };
+  const latest = { ios: latestOf("APP_LATEST_VERSION_IOS", minimum.ios), android: latestOf("APP_LATEST_VERSION_ANDROID", minimum.android) };
+  const storeUrls = { ios: url("APP_STORE_URL_IOS"), android: url("APP_STORE_URL_ANDROID") };
+  const message = raw("APP_UPDATE_MESSAGE") || null;
+  return { config: { minimum, latest, storeUrls, message }, problems };
+}
+
 function isDeployed(): boolean {
   if (process.env.NODE_ENV !== "production") return false;
   const url = process.env.NEXT_PUBLIC_APP_URL?.trim() ?? "";
@@ -365,6 +446,14 @@ export function checkEnv(): EnvProblem[] {
       fatal: false,
     });
   }
+
+  /**
+   * The phone's kill switch, read from the same function the endpoint reads.
+   * Never fatal — see readAppReleaseConfig — but always said, because the
+   * symptom of a malformed minimum is otherwise an update screen that never
+   * appears, discovered the day an old build must be turned off.
+   */
+  for (const problem of readAppReleaseConfig().problems) problems.push({ ...problem, fatal: false });
 
   return problems;
 }

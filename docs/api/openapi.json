@@ -24691,6 +24691,278 @@
           }
         }
       }
+    },
+    "/api/v1/app/version": {
+      "get": {
+        "summary": "The oldest app build the API still serves, per platform, and where the newer one is",
+        "description": "No session needed.",
+        "security": [],
+        "x-access": "anyone",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "minimum": {
+                      "type": "object",
+                      "properties": {
+                        "ios": {
+                          "type": "string"
+                        },
+                        "android": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "ios",
+                        "android"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "latest": {
+                      "type": "object",
+                      "properties": {
+                        "ios": {
+                          "type": "string"
+                        },
+                        "android": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "ios",
+                        "android"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "storeUrls": {
+                      "type": "object",
+                      "properties": {
+                        "ios": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "android": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "ios",
+                        "android"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "minimum",
+                    "latest",
+                    "storeUrls",
+                    "message"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/app/report": {
+      "post": {
+        "summary": "Report a problem from the app, or the app's own crash report; answers a reference the person can quote",
+        "description": "Any signed-in session.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "signed-in",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "reportId": {
+                      "type": "string"
+                    },
+                    "reference": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "reportId",
+                    "reference"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "PROBLEM",
+                      "CRASH"
+                    ]
+                  },
+                  "message": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2000
+                  },
+                  "screen": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "stack": {
+                    "type": "string",
+                    "maxLength": 8000
+                  },
+                  "device": {
+                    "type": "object",
+                    "properties": {
+                      "platform": {
+                        "type": "string",
+                        "enum": [
+                          "ios",
+                          "android",
+                          "web"
+                        ]
+                      },
+                      "os": {
+                        "type": "string",
+                        "maxLength": 60
+                      },
+                      "model": {
+                        "type": "string",
+                        "maxLength": 80
+                      },
+                      "appVersion": {
+                        "type": "string",
+                        "maxLength": 30
+                      },
+                      "build": {
+                        "type": "string",
+                        "maxLength": 30
+                      }
+                    },
+                    "required": [
+                      "platform",
+                      "appVersion"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "kind",
+                  "message",
+                  "device"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

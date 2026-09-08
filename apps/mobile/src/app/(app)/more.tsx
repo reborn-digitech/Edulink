@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { useRouter } from "expo-router";
+import { usePathname, useRouter } from "expo-router";
 import { Button, Card, Row, Screen, Text } from "@/components";
 import { useSession } from "@/lib/session";
 import { useT } from "@/lib/i18n";
@@ -8,13 +8,14 @@ import { LanguageRow } from "@/components/language-row";
 
 /**
  * More: switch school or role (the account page's "Where you belong"),
- * the language, notifications, and sign out. The heavy settings stay on the
+ * the language, notifications, a way to report a problem, and sign out. The heavy settings stay on the
  * web, as the plan says, and this links out.
  */
 export default function More() {
   const t = useT();
   const th = useTheme();
   const router = useRouter();
+  const pathname = usePathname();
   const session = useSession();
   if (session.status !== "signed-in") return null;
   const { me } = session;
@@ -39,6 +40,7 @@ export default function More() {
       </Card>
       <View style={{ gap: th.space[2] }}>
         <Button label={t("shell.notifications")} variant="secondary" onPress={() => router.push("/(app)/notifications")} />
+        <Button label={t("report.title")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/report", params: { from: pathname } })} />
         <Button label={t("shell.signOut")} variant="danger" onPress={() => void session.signOut()} />
       </View>
     </Screen>

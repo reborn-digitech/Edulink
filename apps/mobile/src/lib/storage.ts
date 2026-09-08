@@ -71,4 +71,6 @@ export const KEYS = {
   session: "edulink.session.meta",
   locale: "edulink.locale",
   lock: "edulink.lock",
+  /** The last crash, kept until the next start has posted it (see lib/crash.ts). */
+  crash: "edulink.crash",
 } as const;

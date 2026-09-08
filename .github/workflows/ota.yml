@@ -1,0 +1,52 @@
+name: mobile over-the-air update
+
+# A JS-only fix ships to the build already in people's hands, within the same
+# native version. Every update passes the mobile battery first, and the guard
+# refuses one that touches a native module (that is a store release: bump the
+# version, build, tag mobile-vX.Y.Z). Needs the EXPO_TOKEN secret and an EAS
+# project id; until those exist this workflow is documented, not exercised.
+on:
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: "staging or production"
+        required: true
+        default: staging
+        type: choice
+        options: [staging, production]
+      message:
+        description: "What this update carries, in one line"
+        required: true
+        type: string
+
+concurrency: ota-${{ inputs.channel }}
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: The update is JS only
+        run: pnpm --filter @edulink/mobile ota:guard
+      - name: The mobile battery
+        run: pnpm --filter @edulink/mobile battery
+      - name: Bundle size
+        run: pnpm --filter @edulink/mobile bundle:check
+      - name: Publish the update
+        working-directory: apps/mobile
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          EAS_PROJECT_ID: ${{ vars.EAS_PROJECT_ID }}
+        run: |
+          test -n "$EXPO_TOKEN" || { echo "EXPO_TOKEN is not set: add the Expo account's token to the repository secrets"; exit 1; }
+          test -n "$EAS_PROJECT_ID" || { echo "EAS_PROJECT_ID is not set: add the project id to the repository variables"; exit 1; }
+          npx eas-cli@latest update --channel "${{ inputs.channel }}" --message "${{ inputs.message }}" --non-interactive

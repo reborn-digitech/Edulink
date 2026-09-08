@@ -244,6 +244,17 @@ export const SIGNUPS = { limit: 20, windowMs: 60 * 60_000 };
 export const UPLOADS = { limit: 60, windowMs: 60 * 60_000 };
 
 /**
+ * "Report a problem" and crash reports from the phone, per person.
+ *
+ * A report is cheap to send and a crash loop sends one per app start, so
+ * without this a single broken phone fills a school's audit log by lunchtime.
+ * Ten is far more than a person with something to say sends in an hour, and
+ * the eleventh is refused with a 429 the app reads rather than a row nobody
+ * wanted.
+ */
+export const APP_REPORTS = { limit: 10, windowMs: 60 * 60_000 };
+
+/**
  * Redeeming an invitation link.
  *
  * The token is 32 random bytes, so this is NOT about guessing it — that is

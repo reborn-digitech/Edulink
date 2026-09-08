@@ -82,6 +82,19 @@ export async function enqueue(item: Omit<QueuedRequest, "id" | "createdAt" | "at
   return record.id;
 }
 
+/**
+ * Everything queued, gone — on sign-out. A queued write belongs to the person
+ * who made it; left behind on a shared phone it would replay under the next
+ * person's token. Nothing is sent: what was not sent while they were signed
+ * in is theirs to redo, and the screen said it was waiting.
+ */
+export async function clearQueue(): Promise<number> {
+  const items = await current().all();
+  for (const item of items) await current().remove(item.id);
+  if (items.length) emit({ type: "flushed", sent: 0, failed: 0, remaining: 0 });
+  return items.length;
+}
+
 export async function listQueued(tag?: string): Promise<QueuedRequest[]> {
   const all = (await current().all()).sort((a, b) => a.createdAt - b.createdAt);
   return tag ? all.filter((i) => i.tag === tag) : all;

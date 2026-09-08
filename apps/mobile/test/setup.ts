@@ -41,4 +41,33 @@ jest.mock("expo-device", () => {
     __state: state,
   };
 });
+// The store's version and build, and the OTA update that may be running:
+// getters over shared state for the same reason as expo-device above.
+jest.mock("expo-application", () => {
+  const state = { nativeApplicationVersion: "0.1.0" as string | null, nativeBuildVersion: "1" as string | null };
+  return {
+    get nativeApplicationVersion() {
+      return state.nativeApplicationVersion;
+    },
+    get nativeBuildVersion() {
+      return state.nativeBuildVersion;
+    },
+    __state: state,
+  };
+});
+jest.mock("expo-updates", () => {
+  const state = { updateId: null as string | null, channel: null as string | null, runtimeVersion: "0.1.0" as string | null };
+  return {
+    get updateId() {
+      return state.updateId;
+    },
+    get channel() {
+      return state.channel;
+    },
+    get runtimeVersion() {
+      return state.runtimeVersion;
+    },
+    __state: state,
+  };
+});
 jest.mock("expo-screen-capture", () => ({ usePreventScreenCapture: jest.fn(), preventScreenCaptureAsync: jest.fn(async () => {}), allowScreenCaptureAsync: jest.fn(async () => {}) }));

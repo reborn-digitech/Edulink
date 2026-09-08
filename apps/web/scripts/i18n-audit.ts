@@ -227,7 +227,14 @@ function scan(): Finding[] {
     ...LIB_ROOTS.flatMap((root) => walk(root, ".ts")).filter(
       // …and the endpoint catalog, whose `summary` lines are the OpenAPI
       // document's prose for developers, in English by design like email.ts.
-      (f) => !f.includes("i18n") && !f.endsWith("/places.ts") && !f.includes("/api-catalog/"),
+      //
+      // …and the boot check. Every string in env.ts is a `message:` for the
+      // operator's console — assertEnv prints them with console.warn/error,
+      // the channel the header already excludes — and none is read through a
+      // locale. They were counted only because the server-action rule reads
+      // the same `message:` key; the release's kill-switch variables added
+      // three more and made the accident visible.
+      (f) => !f.includes("i18n") && !f.endsWith("/places.ts") && !f.includes("/api-catalog/") && !f.endsWith("/lib/env.ts"),
     ),
     ...APP_TS_ROOTS.flatMap((root) => walk(root, ".ts")),
   ].sort();

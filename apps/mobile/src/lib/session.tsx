@@ -2,6 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState, t
 import type { Me, RoleCode, SessionResponse } from "@edulink/contracts";
 import { api } from "./api";
 import { KEYS, keyStore } from "./storage";
+import { clearQueue } from "./outbox";
 import { unwrap } from "./query";
 import { unregisterPush } from "./push";
 
@@ -76,6 +77,11 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       async signOut() {
         await unregisterPush();
         await api().post("/api/v1/auth/logout");
+        // What this person left on the phone goes with them: queued writes
+        // (they would replay under the next person's token) and a crash
+        // report not yet sent (it would be posted as the next person's).
+        await clearQueue();
+        await keyStore().remove(KEYS.crash);
         await keyStore().remove(KEYS.token);
         await keyStore().remove(KEYS.session);
         setState({ status: "signed-out", me: null });

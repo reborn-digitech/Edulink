@@ -40,7 +40,13 @@ export async function audit(entry: {
   targetType?: string;
   targetId?: string;
   meta?: Record<string, unknown>;
-}): Promise<void> {
+}): Promise<string | null> {
+  /**
+   * Returns the row's id, or null when nothing was written. Almost every
+   * caller ignores it; the app's problem report hands it back to the phone as
+   * the report's id, and needs to know when the swallowed failure below has
+   * left it with nothing to hand back.
+   */
   try {
     /**
      * The IP is best-effort CONTEXT, not the record. `headers()` throws
@@ -69,7 +75,7 @@ export async function audit(entry: {
     const meta = writeJson(entry.meta ?? {});
 
     if (entry.schoolId) {
-      await forSchool(entry.schoolId, () =>
+      const row = await forSchool(entry.schoolId, () =>
         db.auditLog.create({
           data: {
             schoolId: entry.schoolId ?? null,
@@ -80,9 +86,10 @@ export async function audit(entry: {
             meta,
             ip,
           },
+          select: { id: true },
         }),
       );
-      return;
+      return row.id;
     }
 
     /**
@@ -106,13 +113,16 @@ export async function audit(entry: {
     // parameter is converted to that session's zone on the way in. Both landed
     // these rows seven hours in the past next to every other row in the table,
     // in a log where "when" is half of what is being recorded.
+    const id = randomUUID();
     await db.$executeRaw`
       INSERT INTO "AuditLog" ("id", "schoolId", "actorUserId", "action", "targetType", "targetId", "meta", "ip", "createdAt")
-      VALUES (${randomUUID()}, NULL, ${entry.actorUserId ?? null}, ${entry.action},
+      VALUES (${id}, NULL, ${entry.actorUserId ?? null}, ${entry.action},
               ${entry.targetType ?? null}, ${entry.targetId ?? null}, ${meta}, ${ip},
               ${new Date().toISOString()}::timestamp)
     `;
+    return id;
   } catch (error) {
     console.error("[audit] failed to record", entry.action, error);
+    return null;
   }
 }

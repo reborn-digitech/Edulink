@@ -56,4 +56,16 @@ export const SHARED: Endpoint[] = [
   { method: "POST", path: "/api/v1/shared/expert/profile", summary: "Save the expert's own profile", access: ["EXPERT"], request: c.expertSaveProfileSchema, response: c.okSchema, emptyBodyStatus: 422 },
   // ---- uploads ----------------------------------------------------------------
   { method: "POST", path: "/api/v1/uploads", summary: "Upload one file (multipart `file`); read it back via /api/files/{fileId}", access: "signed-in", response: c.uploadResultSchema, emptyBodyStatus: 422 },
+  // ---- the app itself: the kill switch, and reporting a problem ---------------
+  { method: "GET", path: "/api/v1/app/version", summary: "The oldest app build the API still serves, per platform, and where the newer one is", access: "anyone", response: c.appVersionSchema },
+  {
+    method: "POST",
+    path: "/api/v1/app/report",
+    summary: "Report a problem from the app, or the app's own crash report; answers a reference the person can quote",
+    access: "signed-in",
+    request: c.appReportBodySchema,
+    response: c.appReportResultSchema,
+    emptyBodyStatus: 422,
+    sampleBody: () => ({ kind: "PROBLEM", message: "ZZ sweep: the sweep reporting a problem on purpose", screen: "sweep", device: { platform: "android", appVersion: "0.0.0" } }),
+  },
 ];

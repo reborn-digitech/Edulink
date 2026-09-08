@@ -52,7 +52,7 @@ export default function AppLayout() {
         );
       })}
       <Tabs.Screen name="notifications" options={{ href: null, title: t("shell.notifications") }} />
-      {["marks", "exams", "meetings", "bulletin", "timetable", "staff", "calendar", "reviews", "classes/detail", "messages/room", "messages/thread"].map((name) => (
+      {["marks", "exams", "meetings", "bulletin", "timetable", "staff", "calendar", "reviews", "report", "classes/detail", "messages/room", "messages/thread"].map((name) => (
         <Tabs.Screen key={name} name={name} options={{ href: null }} />
       ))}
     </Tabs>

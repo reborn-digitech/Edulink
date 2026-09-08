@@ -5382,6 +5382,7 @@ export const en = {
     thisWeekAtSchool: "This week at school",
     newMessageAbout: "New message about {name}",
     newMessageFromSchool: "New message from your school",
+    appProblem: "{name} reported a problem with the app",
   },
   /* Notification bodies that are sentences — see notifBody in notify(). Data
      bodies (a post's title, a teacher's note) stay literal. */
@@ -5417,6 +5418,7 @@ export const en = {
     coverFromTo: "From {from} to {to}. {reason}",
     coverCancelledOn: "The cover on {date} was cancelled.",
     coverCancelledFromTo: "The cover from {from} to {to} was cancelled.",
+    appProblem: "Reference {reference}. What {name} wrote is in the Safety centre's audit log.",
   },
   digest: {
     attendedDays: "attended {n}/{total} days",
@@ -5737,6 +5739,29 @@ export const en = {
     loadMore: "Load more",
     openOnWeb: "Open on the web",
     writeFirstMessage: "Write the first message",
+  },
+  update: {
+    title: "EduLink needs an update",
+    body: "The version on this phone ({version}) is older than the school's systems now support. Install the latest version ({latest}) to carry on.",
+    open: "Update EduLink",
+    openWeb: "Open on the web",
+    noStore: "The app store is not available on this phone yet, so EduLink opens in the browser instead.",
+  },
+  report: {
+    title: "Report a problem",
+    explainer: "Tell us what went wrong and where. The school's EduLink team reads every report.",
+    messageLabel: "What happened",
+    messageHint: "What you were doing, what you expected, and what you saw instead.",
+    sayWhat: "Say what happened, in a sentence or two.",
+    attachTitle: "What we attach",
+    attachLine: "We attach: {device}, {os}, {app}, and the screen you came from ({screen}). Nothing else.",
+    screenUnknown: "not recorded",
+    send: "Send",
+    sentTitle: "Sent",
+    sentBody: "Sent. Your reference is {reference} — quote it if the school asks.",
+    backToMore: "Back to More",
+    offline: "It could not be sent — you look offline. Your words are kept here; try again when you are connected.",
+    failed: "The report could not be sent.",
   },
   security: {
     rootedTitle: "This phone has been altered",

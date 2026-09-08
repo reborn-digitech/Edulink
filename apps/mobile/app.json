@@ -10,27 +10,51 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "school.edulink.app",
-      "infoPlist": { "NSCameraUsageDescription": "To photograph handouts and hand in work.", "NSPhotoLibraryUsageDescription": "To attach a photo to a post or a hand-in.", "NSFaceIDUsageDescription": "To lock the app on this phone." }
+      "bundleIdentifier": "school.edulink.app"
     },
     "android": {
       "package": "school.edulink.app",
-      "adaptiveIcon": { "backgroundColor": "#2563eb", "foregroundImage": "./assets/images/android-icon-foreground.png", "backgroundImage": "./assets/images/android-icon-background.png", "monochromeImage": "./assets/images/android-icon-monochrome.png" },
+      "adaptiveIcon": {
+        "backgroundColor": "#2563eb",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "backgroundImage": "./assets/images/android-icon-background.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+      },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false,
-      "permissions": ["CAMERA", "USE_BIOMETRIC", "USE_FINGERPRINT"]
+      "predictiveBackGestureEnabled": false
     },
-    "web": { "output": "static", "favicon": "./assets/images/favicon.png", "bundler": "metro" },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/favicon.png",
+      "bundler": "metro"
+    },
     "plugins": [
       "expo-router",
-      ["expo-splash-screen", { "image": "./assets/images/splash-icon.png", "imageWidth": 200, "resizeMode": "contain", "backgroundColor": "#ffffff", "dark": { "backgroundColor": "#0b0e15" } }],
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff",
+          "dark": {
+            "backgroundColor": "#0b0e15"
+          }
+        }
+      ],
       "expo-secure-store",
       "expo-sqlite",
       "expo-localization",
-      "expo-local-authentication",
-      ["expo-notifications", { "color": "#2563eb" }],
-      ["expo-image-picker", { "photosPermission": "To attach a photo to a post or a hand-in." }]
+      [
+        "expo-notifications",
+        {
+          "color": "#2563eb"
+        }
+      ]
     ],
-    "experiments": { "typedRoutes": true, "reactCompiler": true }
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
   }
 }

@@ -33,7 +33,7 @@ env:
   NEXT_PUBLIC_DEFAULT_COUNTRY_CODE: "+91"
   STORAGE_DIR: ./storage
   # The floor the i18n audit asserts. Lowering it is a deliberate change here.
-  I18N_FLOOR: "189"
+  I18N_FLOOR: "157"
 
 jobs:
   battery:
@@ -272,6 +272,7 @@ jobs:
           name: mobile-e2e-${{ github.run_number }}
           path: |
             apps/mobile/e2e/screens
+            apps/mobile/e2e/store
             apps/mobile/e2e/report
             apps/mobile/e2e/results
           if-no-files-found: ignore

@@ -103,9 +103,11 @@ describe("audit()", () => {
 
   it("never throws, whatever happens — an audit line must not fail the action", async () => {
     // A target id far longer than anything real; whatever the database makes of
-    // it, the caller must not find out by way of an exception.
-    await expect(
-      audit({ action: "test.audit.unattributed", targetId: "x".repeat(5000) }),
-    ).resolves.toBeUndefined();
+    // it, the caller must not find out by way of an exception. Since Phase 6 the
+    // call answers the row's id when a row was written (the app's problem report
+    // quotes it) and null when nothing was, never a rejection.
+    const written = await audit({ action: "test.audit.unattributed", targetId: "x".repeat(5000) });
+    expect(written === null || typeof written === "string").toBe(true);
+    // The actor column is not a foreign key (a deleted account's rows survive), so a write cannot be made to fail from here.
   });
 });

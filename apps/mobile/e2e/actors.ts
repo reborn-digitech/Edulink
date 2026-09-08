@@ -101,10 +101,15 @@ export function slugFor(route: string): string {
  * reads; the language through the key store and the browser locale both, so
  * the first paint and the saved preference agree.
  */
-export async function contextFor(browser: Browser, token: string, opts: { theme: Theme; locale: Locale }): Promise<BrowserContext> {
+export async function contextFor(
+  browser: Browser,
+  token: string,
+  opts: { theme: Theme; locale: Locale; viewport?: { width: number; height: number }; deviceScaleFactor?: number },
+): Promise<BrowserContext> {
   const context = await browser.newContext({
     baseURL: BASE,
-    viewport: PHONE,
+    viewport: opts.viewport ?? PHONE,
+    deviceScaleFactor: opts.deviceScaleFactor,
     isMobile: true,
     hasTouch: true,
     colorScheme: opts.theme,

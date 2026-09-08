@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { Stack, useRouter, useSegments } from "expo-router";
+import { QueryClientProvider, useQueryClient } from "@tanstack/react-query";
+import { Stack, usePathname, useRouter, useSegments } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { Platform, useColorScheme, View } from "react-native";
 import * as Device from "expo-device";
@@ -10,6 +10,9 @@ import { I18nProvider, useT } from "@/lib/i18n";
 import { RoleThemeProvider, useTheme } from "@/lib/theme";
 import { useDeepLinks } from "@/lib/deep-links";
 import { registerForPush } from "@/lib/push";
+import { useVersionGate } from "@/lib/version";
+import { installCrashReporter, sendPendingCrash, setCurrentScreen } from "@/lib/crash";
+import { UpdateRequired } from "@/screens/shared/update-required";
 import { Text } from "@/components";
 
 /**
@@ -65,21 +68,50 @@ function RootedBanner() {
 
 function Gate() {
   const session = useSession();
+  const queryClient = useQueryClient();
   const rooted = useRootedWarning();
   const segments = useSegments();
   const router = useRouter();
   const scheme = useColorScheme();
   const inAuth = segments[0] === "(auth)";
+  const pathname = usePathname();
+  const version = useVersionGate();
 
   useDeepLinks();
 
+  // The crash reporter chains onto the global handler once, at mount, and
+  // learns the route that is up so a crash can say where it happened.
+  useEffect(() => {
+    installCrashReporter();
+  }, []);
+  useEffect(() => {
+    setCurrentScreen(pathname);
+  }, [pathname]);
+
   useEffect(() => {
     if (session.status === "loading") return;
+    // A signed-out phone remembers nothing of the last person: the cache goes with them.
+    if (session.status === "signed-out") queryClient.clear();
     if (session.status === "signed-out" && !inAuth) router.replace("/(auth)");
     if (session.status === "signed-in" && inAuth) router.replace("/(app)");
-    // Best-effort, every start while signed in: the token can rotate.
-    if (session.status === "signed-in") void registerForPush();
+    // Best-effort, every start while signed in: the token can rotate; and
+    // the last start's crash, if there was one, goes to the server now.
+    if (session.status === "signed-in") {
+      void registerForPush();
+      void sendPendingCrash();
+    }
   }, [session.status, inAuth, router]);
+
+  // Below the store's minimum: the update screen, and nothing else. The
+  // theme still follows the role so the screen looks like the app it replaces.
+  if (version.state === "update-required" && version.policy) {
+    return (
+      <RoleThemeProvider role={session.status === "signed-in" ? session.me.active.role : null}>
+        <StatusBar style={scheme === "dark" ? "light" : "dark"} />
+        <UpdateRequired policy={version.policy} />
+      </RoleThemeProvider>
+    );
+  }
 
   return (
     <RoleThemeProvider role={session.status === "signed-in" ? session.me.active.role : null}>
