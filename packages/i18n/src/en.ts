@@ -3372,6 +3372,7 @@ export const en = {
     whoIsInClass: "Who is in this class",
     nobodyJoined: "Nobody has joined yet",
     shareCodeBlurb: "Share the class code above and students can add themselves.",
+    nobodyJoinedBody: "The class code students use to add themselves is on the class page on the web.",
     recentWork: "Recent work",
     attendanceOver: "Attendance over the last {days} days",
     registerToday: "Attendance today",
@@ -5735,5 +5736,10 @@ export const en = {
     share: "Share",
     loadMore: "Load more",
     openOnWeb: "Open on the web",
+    writeFirstMessage: "Write the first message",
+  },
+  security: {
+    rootedTitle: "This phone has been altered",
+    rootedBody: "It looks jailbroken or rooted. EduLink still works, but the marks and messages on it are less protected than the school expects. Use another phone for anything private if you can.",
   },
 } as const;

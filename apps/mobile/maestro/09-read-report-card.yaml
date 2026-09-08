@@ -1,0 +1,32 @@
+# Read a report card as the ZZ guardian: the family Exams screen (no tab; the
+# deep link a "report card issued" notification carries), the Report cards
+# tab, one card, then back. REPORT_CARD_TITLE is the card's name as the class
+# teacher published it (the fixtures publish none; the web's report-card
+# builder does). Untested: needs a simulator and Maestro.
+appId: school.edulink.app
+name: Read a report card
+tags: [parent, exams]
+---
+- runFlow:
+    file: common/sign-in.yaml
+    env:
+      EMAIL: "${ZZ_EMAIL_PARENT}"
+      MAGIC_TOKEN: "${MAGIC_TOKEN_PARENT}"
+- openLink: "edulink:///report-cards"
+- extendedWaitUntil:
+    visible: "Exam marks as they come in, the exams still ahead, and how the homework is going."
+    timeout: 10000
+- tapOn: "Report cards.*"
+- extendedWaitUntil:
+    visible: "${REPORT_CARD_TITLE}"
+    timeout: 10000
+- tapOn: "${REPORT_CARD_TITLE}"
+- extendedWaitUntil:
+    visible: "What this covers"
+    timeout: 10000
+- assertVisible: "Overall"
+- assertVisible: "Attendance"
+- assertVisible: "Share"
+- assertNotVisible: "Draft — not published. Families cannot see this yet."
+- tapOn: "Back"
+- assertVisible: "Report cards.*"

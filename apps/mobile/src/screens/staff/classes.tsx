@@ -68,7 +68,11 @@ function PrincipalClasses() {
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         d.classes.length === 0 ? (
-          <Empty title={t("principal.noClasses")} body={t("principal.noClassesBody")} />
+          <Empty
+            title={t("principal.noClasses")}
+            body={t("principal.noClassesBody")}
+            action={grade ? <Button label={t("exams.allGrades")} variant="secondary" onPress={() => setGrade("")} /> : <Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />}
+          />
         ) : (
           <Card title={t("principal.classByClass")}>
             {d.classes.map((c) => {

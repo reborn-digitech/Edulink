@@ -1,0 +1,37 @@
+# Shared sign-in: the magic-link screen, with the token given as a parameter.
+# Never a password. Called by every flow through runFlow with:
+#   EMAIL        the ZZ account's address (the "paste the code" box only appears
+#                after a link has been requested for an address)
+#   MAGIC_TOKEN  a MAGIC_LINK AuthToken minted for that account (see README)
+#
+# Where a label appears twice on the screen (the Field's label text sits above
+# the input that carries the same accessibilityLabel; the screen title and the
+# button share "Email me a link"), index: 1 picks the second — the input or
+# the button. Untested: needs a simulator and Maestro.
+appId: school.edulink.app
+---
+- launchApp:
+    clearState: true
+    permissions:
+      notifications: allow
+- assertVisible: "Welcome back"
+- tapOn: "Email me a link"
+- assertVisible: "Email me a sign-in link instead"
+- tapOn:
+    text: "Email"
+    index: 1
+- inputText: "${EMAIL}"
+- hideKeyboard
+- tapOn:
+    text: "Email me a link"
+    index: 1
+- assertVisible: "Check your email"
+- tapOn:
+    text: "Paste the code from the email"
+    index: 1
+- inputText: "${MAGIC_TOKEN}"
+- hideKeyboard
+- tapOn: "Log in"
+- extendedWaitUntil:
+    visible: "More"
+    timeout: 20000

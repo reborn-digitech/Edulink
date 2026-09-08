@@ -1,0 +1,14 @@
+# Sign in as the ZZ teacher by pasting a magic-link token, and land on Today.
+# Untested: needs a simulator and Maestro.
+appId: school.edulink.app
+name: Sign in with a magic-link token
+tags: [teacher, auth]
+---
+- runFlow:
+    file: common/sign-in.yaml
+    env:
+      EMAIL: "${ZZ_EMAIL_TEACHER}"
+      MAGIC_TOKEN: "${MAGIC_TOKEN_TEACHER}"
+- assertVisible: "Today"
+- assertVisible: "ZZ Northgate School.*"
+- assertNotVisible: "Welcome back"

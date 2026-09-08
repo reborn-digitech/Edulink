@@ -2,6 +2,10 @@ import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { LeaveDesk } from "@/screens/staff/leave";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 
+/** The screen's empty state has a door into the app's own tabs; the router is the harness's, so a test can read where it went. */
+const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
+jest.mock("expo-router", () => ({ useRouter: () => mockRouter, useLocalSearchParams: () => mockRouter.params }));
+
 const candidate = (membershipId: string, name: string, clashes: number) => ({ membershipId, name, clashes, load: 10, teachesSubject: clashes === 0 });
 const PENDING = {
   id: "l1",
@@ -68,6 +72,9 @@ describe("the leave desk", () => {
   it("nothing waiting says so", async () => {
     await mountStaff(<LeaveDesk />, "PRINCIPAL", { "GET /api/v1/admin/leave": () => json({ pending: [], decided: [], staff: [] }) });
     expect(await screen.findByText("Nothing waiting")).toBeTruthy();
+    // The door out: the calendar, where approved leave shows who is away.
+    await fireEvent.press(screen.getByRole("button", { name: "Calendar" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/calendar");
   });
 
   it("a refusal is an alert with a retry", async () => {

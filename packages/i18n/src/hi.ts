@@ -3087,6 +3087,7 @@ export const hi: Dictionary = {
     nothingSetYet: "इस कक्षा के लिए अभी कुछ नहीं दिया गया।",
     whoIsInClass: "इस कक्षा में कौन है", nobodyJoined: "अभी कोई नहीं जुड़ा",
     shareCodeBlurb: "ऊपर दिया कक्षा कोड बाँटें और विद्यार्थी खुद जुड़ सकते हैं।",
+    nobodyJoinedBody: "जिस कक्षा कोड से विद्यार्थी खुद जुड़ते हैं, वह वेब पर कक्षा के पेज पर है।",
     recentWork: "हाल का काम", attendanceOver: "पिछले {days} दिनों की हाज़िरी",
     registerToday: "आज की हाज़िरी", toMark: "जाँचना है",
     attendanceConcern: "हाज़िरी की चिंता", belowNinety: "{days} दिनों में 90% से कम",
@@ -5301,5 +5302,10 @@ export const hi: Dictionary = {
     share: "साझा करें",
     loadMore: "और दिखाएँ",
     openOnWeb: "वेब पर खोलें",
+    writeFirstMessage: "पहला संदेश लिखें",
+  },
+  security: {
+    rootedTitle: "इस फ़ोन में बदलाव किया गया है",
+    rootedBody: "यह जेलब्रोकन या रूटेड लगता है। EduLink फिर भी चलता है, लेकिन इस पर अंक और संदेश उतने सुरक्षित नहीं हैं जितना स्कूल अपेक्षा करता है। हो सके तो निजी कामों के लिए दूसरा फ़ोन इस्तेमाल करें।",
   },
 };

@@ -65,6 +65,9 @@ describe("a remark thread", () => {
     await screen.findByText("This conversation has been closed.");
     expect(screen.getByText("No messages yet")).toBeTruthy();
     expect(screen.queryByRole("button", { name: "Send" })).toBeNull();
+    // Nothing to reply to and nowhere to write: the door leads back to the inbox.
+    await tap(screen.getByRole("button", { name: "Messages" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/messages");
   });
 
   it("a refused reply is shown with a retry", async () => {

@@ -70,7 +70,7 @@ function Overview({ d }: { d: PrincipalOverview }) {
         />
       </Card>
       {d.classes.length === 0 ? (
-        <Empty title={t("principal.noClasses")} body={t("principal.noClassesBody")} />
+        <Empty title={t("principal.noClasses")} body={t("principal.noClassesBody")} action={<Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />} />
       ) : (
         <>
           <Card title={t("principal.classesWorthALook")}>

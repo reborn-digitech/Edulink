@@ -14,6 +14,14 @@ export function setApiLocale(next: string): void {
 
 export const API_BASE = (process.env.EXPO_PUBLIC_API_URL ?? "http://localhost:3000").replace(/\/+$/, "");
 
+// A release build talks to the API over TLS or not at all: a plain-http base
+// in a production bundle is a misconfiguration, and the app refuses to start
+// rather than send a session token in the clear. Development and the tests
+// (where __DEV__ is true) may point at localhost.
+if (!__DEV__ && !API_BASE.startsWith("https://")) {
+  throw new Error(`EXPO_PUBLIC_API_URL must be https:// in a release build (got ${API_BASE})`);
+}
+
 let client: ApiClient | null = null;
 export function api(): ApiClient {
   if (!client) {

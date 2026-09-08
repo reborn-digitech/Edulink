@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { View } from "react-native";
+import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { familyParentMeetingsSchema } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Loading, Row, Screen, Text } from "@/components";
@@ -8,7 +9,7 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
-import { Chips, formatInstant, Note } from "./shared";
+import { Chips, formatInstant, Note, openWeb } from "./shared";
 
 /**
  * Meet the teacher — the web's /parent/meetings: the open windows of the
@@ -19,10 +20,13 @@ import { Chips, formatInstant, Note } from "./shared";
 export function FamilyMeetings() {
   const role = useRole();
   const t = useT();
+  const router = useRouter();
   if (role === "PARENT") return <ParentMeetings />;
+  // A teacher's meeting windows are kept on the web; anyone else here goes to their messages.
+  const door = role === "TEACHER" ? <Button label={t("mobile.openOnWeb")} variant="secondary" onPress={() => openWeb("/teacher/meetings")} /> : <Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />;
   return (
     <Screen title={t("meetings.parentTitle")}>
-      {role === null ? <Loading /> : <Empty title={t("meetings.openEmptyTitle")} body={t("meetings.openEmptyBody")} />}
+      {role === null ? <Loading /> : <Empty title={t("meetings.openEmptyTitle")} body={t("meetings.openEmptyBody")} action={door} />}
     </Screen>
   );
 }
@@ -32,6 +36,7 @@ function ParentMeetings() {
   const th = useTheme();
   const { locale } = useLocale();
   const qc = useQueryClient();
+  const router = useRouter();
   const [choice, setChoice] = useState<Record<string, string>>({});
   const [booked, setBooked] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -97,7 +102,7 @@ function ParentMeetings() {
 
           <Card title={t("meetings.openTitle")}>
             {d.open.length === 0 ? (
-              <Empty title={t("meetings.openEmptyTitle")} body={t("meetings.openEmptyBody")} />
+              <Empty title={t("meetings.openEmptyTitle")} body={t("meetings.openEmptyBody")} action={<Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />} />
             ) : (
               d.open.map((slot) => {
                 // Only the children THIS teacher teaches; the server refuses any other.

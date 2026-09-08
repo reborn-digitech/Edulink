@@ -80,7 +80,7 @@ function ChildAttendance() {
               {summary.total === 0 ? t("parent.nothingRecordedYet") : summary.total === 1 ? t("parent.daysRecordedOne") : t("parent.daysRecordedMany", { count: summary.total })}
             </Text>
             {days.length === 0 ? (
-              <Empty title={t("parent.noAttendanceYet")} body={t("parent.nothingInMonth", { name, month: monthLabel })} />
+              <Empty title={t("parent.noAttendanceYet")} body={t("parent.nothingInMonth", { name, month: monthLabel })} action={<Button label={t("parent.previousMonth")} variant="secondary" onPress={() => setMonth(d.previousMonth)} />} />
             ) : (
               days.map((day) => (
                 <Row
@@ -114,6 +114,7 @@ function PupilAttendance() {
   const t = useT();
   const th = useTheme();
   const { locale } = useLocale();
+  const router = useRouter();
   const query = useQuery({
     queryKey: ["family", "student", "overview"],
     queryFn: async () => familyStudentOverviewSchema.parse(unwrap(await api().get("/api/v1/family/student/overview"))),
@@ -137,7 +138,7 @@ function PupilAttendance() {
           </View>
           <Card title={t("parent.dayByDay")}>
             {days.length === 0 ? (
-              <Empty title={t("parent.noAttendanceYet")} body={t("student.registerNotTakenYet")} />
+              <Empty title={t("parent.noAttendanceYet")} body={t("student.registerNotTakenYet")} action={<Button label={t("teacher.openTimetable")} variant="secondary" onPress={() => router.push("/(app)/timetable" as never)} />} />
             ) : (
               days.map((day) => (
                 <Row key={day.dateKey} title={formatDateKey(day.dateKey, locale, { weekday: "long", day: "numeric", month: "long" })} caption={day.note ? `“${day.note}”` : undefined} right={<StatusBadge status={day.status} />} />

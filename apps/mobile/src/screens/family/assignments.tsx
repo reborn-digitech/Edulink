@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View } from "react-native";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { z } from "zod";
 import { familyParentAssignmentsSchema, familyStudentAssignmentsSchema, familyStudentSubmittedSchema } from "@edulink/contracts";
@@ -39,6 +39,7 @@ function ChildAssignments() {
   const params = useLocalSearchParams() as Record<string, string | string[] | undefined>;
   const [childId, setChildId] = useState<string | null>(param(params.childId) ?? param(params.child) ?? null);
   const [tab, setTab] = useState<Tab>("todo");
+  const router = useRouter();
   const query = useQuery({
     queryKey: ["family", "assignments", childId],
     queryFn: async () => familyParentAssignmentsSchema.parse(unwrap(await api().get(`/api/v1/family/assignments${childQuery(childId)}`))),
@@ -46,6 +47,8 @@ function ChildAssignments() {
   const d = query.data;
   const name = d?.childName ?? "";
   const list = d ? (tab === "todo" ? d.todo : tab === "handed" ? d.handedIn : d.marked) : [];
+  // The door out of an empty tab: the neighbouring tab with something in it, else the child's overview.
+  const elsewhere = d ? ([{ key: "todo", label: t("assignments.tabDue"), count: d.todo.length }, { key: "handed", label: t("assignments.tabHanded"), count: d.handedIn.length }, { key: "marked", label: t("assignments.tabMarked"), count: d.marked.length }] as const).find((x) => x.key !== tab && x.count > 0) ?? null : null;
   return (
     <Screen title={t("nav.assignments")} description={d ? `${t("assignments.forChild", { name })} · ${t("diary.intro")}` : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {d ? <ChildSwitcher pupils={d.children} selectedId={childId ?? d.children[0]?.studentMembershipId ?? null} onSelect={setChildId} /> : null}
@@ -64,7 +67,17 @@ function ChildAssignments() {
             ]}
           />
           {list.length === 0 ? (
-            <Empty title={tab === "todo" ? t("diary.openEmpty") : tab === "handed" ? t("assignments.nothingHanded") : t("diary.markedEmpty")} body={t("diary.emptyBody", { name })} />
+            <Empty
+              title={tab === "todo" ? t("diary.openEmpty") : tab === "handed" ? t("assignments.nothingHanded") : t("diary.markedEmpty")}
+              body={t("diary.emptyBody", { name })}
+              action={
+                elsewhere ? (
+                  <Button label={elsewhere.label} variant="secondary" onPress={() => setTab(elsewhere.key)} />
+                ) : (
+                  <Button label={t("nav.overview")} variant="secondary" onPress={() => router.push({ pathname: "/(app)", params: { child: childId ?? d.children[0]?.studentMembershipId ?? "" } } as never)} />
+                )
+              }
+            />
           ) : (
             <Card>
               {list.map((item) => (
@@ -104,6 +117,7 @@ function ChildAssignments() {
 function PupilAssignments() {
   const t = useT();
   const th = useTheme();
+  const router = useRouter();
   const [tab, setTab] = useState<Tab>("todo");
   const query = useQuery({
     queryKey: ["family", "student", "assignments"],
@@ -136,6 +150,13 @@ function PupilAssignments() {
             <Empty
               title={tab === "todo" ? t("student.nothingDue") : tab === "handed" ? t("assignments.nothingHanded") : t("assignments.nothingMarked")}
               body={tab === "todo" ? t("student.workEmpty") : tab === "handed" ? t("assignments.nothingHandedBody") : t("assignments.nothingMarkedBody")}
+              action={
+                tab === "todo" ? (
+                  <Button label={t("nav.practice")} variant="secondary" onPress={() => router.push("/(app)/practice" as never)} />
+                ) : (
+                  <Button label={t("assignments.tabTodo")} variant="secondary" onPress={() => setTab("todo")} />
+                )
+              }
             />
           ) : tab === "marked" ? (
             <Card>
@@ -182,7 +203,7 @@ function WorkCard({ item }: { item: StudentWork }) {
     <Card>
       <View style={{ flexDirection: "row", gap: th.space[3], alignItems: "flex-start" }}>
         {/* The class's own colour is data from the server, not a colour of ours. */}
-        <View style={{ width: 6, alignSelf: "stretch", borderRadius: 3, backgroundColor: item.classColor ?? th.accent }} />
+        <View style={{ width: 6, alignSelf: "stretch", borderRadius: th.radius.sm, backgroundColor: item.classColor ?? th.accent }} />
         <View style={{ flex: 1, gap: th.space[2] }}>
           <Text variant="base" bold>
             {item.title}

@@ -28,6 +28,9 @@ function build() {
       summary: e.summary,
       description: describeAccess(e),
       security: e.access === "anyone" ? [] : [{ bearer: [] }],
+      // The catalog's access list as data, so the phone's contract suite can
+      // predict every role's status for every endpoint the app calls.
+      "x-access": e.access,
       responses: {
         "200": { description: "OK", content: { "application/json": { schema: zodToJsonSchema(e.response, { target: "openApi3" }) } } },
         "401": { description: "No or invalid session", content: { "application/json": { schema: { $ref: "#/components/schemas/ApiError" } } } },

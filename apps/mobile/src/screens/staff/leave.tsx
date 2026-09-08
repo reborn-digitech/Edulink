@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { View } from "react-native";
+import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { adminLeaveSchema, leaveDecidedSchema, type AdminLeave } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text } from "@/components";
@@ -23,6 +24,7 @@ export type DecideBody = { decision: Decision; note?: string; coverMembershipId?
 export function LeaveDesk() {
   const t = useT();
   const qc = useQueryClient();
+  const router = useRouter();
   const [notice, setNotice] = useState<{ text: string; tone: "ok" | "danger" } | null>(null);
   const query = useQuery({
     queryKey: ["admin", "leave"],
@@ -57,7 +59,7 @@ export function LeaveDesk() {
             {t("principal.waitingForYouCount", { count: d.pending.length })}
           </Text>
           {d.pending.length === 0 ? (
-            <Empty title={t("principal.nothingWaiting")} body={t("principal.nothingWaitingBody")} />
+            <Empty title={t("principal.nothingWaiting")} body={t("principal.nothingWaitingBody")} action={<Button label={t("nav.calendar")} variant="secondary" onPress={() => router.push("/(app)/calendar" as never)} />} />
           ) : (
             d.pending.map((r) => <DecideCard key={r.id} request={r} staff={d.staff} busy={decide.isPending && decide.variables?.id === r.id} onDecide={(body) => decide.mutate({ id: r.id, body })} />)
           )}

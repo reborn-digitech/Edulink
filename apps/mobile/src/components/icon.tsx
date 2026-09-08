@@ -1,15 +1,52 @@
 import type { ComponentProps } from "react";
-import {
-  ArchiveIcon, BellIcon, BrainIcon, BriefcaseIcon, BuildingsIcon, CalendarIcon, CameraIcon, CaretRightIcon, ChalkboardIcon, ChartLineIcon, ChatIcon,
-  CheckIcon, ChecksIcon, CircleIcon, ClipboardTextIcon, ClockIcon, DeviceMobileIcon, DotsThreeOutlineIcon, EnvelopeIcon, GearIcon,
-  HouseIcon, MegaphoneIcon, PaletteIcon, PaperPlaneTiltIcon, PlusIcon, ShieldIcon, SignOutIcon, StarIcon, TranslateIcon, TrayIcon, TrophyIcon,
-  UserIcon, UsersIcon, WarningIcon, XIcon, HandsClappingIcon, LightbulbIcon, HeartIcon, ConfettiIcon, HandsPrayingIcon, MedalIcon,
-} from "phosphor-react-native";
+import { ArchiveIcon } from "phosphor-react-native/src/icons/Archive";
+import { BellIcon } from "phosphor-react-native/src/icons/Bell";
+import { BrainIcon } from "phosphor-react-native/src/icons/Brain";
+import { BriefcaseIcon } from "phosphor-react-native/src/icons/Briefcase";
+import { BuildingsIcon } from "phosphor-react-native/src/icons/Buildings";
+import { CalendarIcon } from "phosphor-react-native/src/icons/Calendar";
+import { CameraIcon } from "phosphor-react-native/src/icons/Camera";
+import { CaretRightIcon } from "phosphor-react-native/src/icons/CaretRight";
+import { ChalkboardIcon } from "phosphor-react-native/src/icons/Chalkboard";
+import { ChartLineIcon } from "phosphor-react-native/src/icons/ChartLine";
+import { ChatIcon } from "phosphor-react-native/src/icons/Chat";
+import { CheckIcon } from "phosphor-react-native/src/icons/Check";
+import { ChecksIcon } from "phosphor-react-native/src/icons/Checks";
+import { CircleIcon } from "phosphor-react-native/src/icons/Circle";
+import { ClipboardTextIcon } from "phosphor-react-native/src/icons/ClipboardText";
+import { ClockIcon } from "phosphor-react-native/src/icons/Clock";
+import { DeviceMobileIcon } from "phosphor-react-native/src/icons/DeviceMobile";
+import { DotsThreeOutlineIcon } from "phosphor-react-native/src/icons/DotsThreeOutline";
+import { EnvelopeIcon } from "phosphor-react-native/src/icons/Envelope";
+import { GearIcon } from "phosphor-react-native/src/icons/Gear";
+import { HouseIcon } from "phosphor-react-native/src/icons/House";
+import { MegaphoneIcon } from "phosphor-react-native/src/icons/Megaphone";
+import { PaletteIcon } from "phosphor-react-native/src/icons/Palette";
+import { PaperPlaneTiltIcon } from "phosphor-react-native/src/icons/PaperPlaneTilt";
+import { PlusIcon } from "phosphor-react-native/src/icons/Plus";
+import { ShieldIcon } from "phosphor-react-native/src/icons/Shield";
+import { SignOutIcon } from "phosphor-react-native/src/icons/SignOut";
+import { StarIcon } from "phosphor-react-native/src/icons/Star";
+import { TranslateIcon } from "phosphor-react-native/src/icons/Translate";
+import { TrayIcon } from "phosphor-react-native/src/icons/Tray";
+import { TrophyIcon } from "phosphor-react-native/src/icons/Trophy";
+import { UserIcon } from "phosphor-react-native/src/icons/User";
+import { UsersIcon } from "phosphor-react-native/src/icons/Users";
+import { WarningIcon } from "phosphor-react-native/src/icons/Warning";
+import { XIcon } from "phosphor-react-native/src/icons/X";
+import { HandsClappingIcon } from "phosphor-react-native/src/icons/HandsClapping";
+import { LightbulbIcon } from "phosphor-react-native/src/icons/Lightbulb";
+import { HeartIcon } from "phosphor-react-native/src/icons/Heart";
+import { ConfettiIcon } from "phosphor-react-native/src/icons/Confetti";
+import { HandsPrayingIcon } from "phosphor-react-native/src/icons/HandsPraying";
+import { MedalIcon } from "phosphor-react-native/src/icons/Medal";
 
 /**
  * The web's nav icon names (lib/nav.ts) in Phosphor — the same family the web
- * draws — imported one by one, because the package holds 1,500 icons and a
- * star import would put every one of them in the bundle.
+ * draws — each from its own file, because the package holds 1,512 icons and
+ * Metro does not tree-shake: a named import from the package index put every
+ * one of them in the bundle (10.5 MB of Hermes bytecode per platform before
+ * this, measured by the bundle-size gate).
  */
 const MAP = {
   house: HouseIcon, checks: ChecksIcon, chalkboard: ChalkboardIcon, chat: ChatIcon, clipboard: ClipboardTextIcon, brain: BrainIcon,

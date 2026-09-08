@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Pressable, View } from "react-native";
+import { useRef, useState } from "react";
+import { Pressable, TextInput, View } from "react-native";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { applyLeaveSchema, leaveAppliedSchema, staffLeaveSchema, type ApplyLeaveBody } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text } from "@/components";
@@ -33,6 +33,7 @@ export function TeacherLeave() {
   const [cover, setCover] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sent, setSent] = useState(false);
+  const firstDay = useRef<TextInput>(null);
   const apply = useMutation({
     mutationFn: async (body: ApplyLeaveBody) => leaveAppliedSchema.parse(unwrap(await api().post("/api/v1/staff/leave", body))),
     onSuccess: () => {
@@ -94,7 +95,7 @@ export function TeacherLeave() {
           </Card>
 
           <Card title={t("teacher.applyForLeave")}>
-            <Field label={t("teacher.firstDay")} value={from} onChangeText={setFrom} placeholder="YYYY-MM-DD" autoCapitalize="none" error={errors.fromDateKey} />
+            <Field ref={firstDay} label={t("teacher.firstDay")} value={from} onChangeText={setFrom} placeholder="YYYY-MM-DD" autoCapitalize="none" error={errors.fromDateKey} />
             <Field label={t("teacher.lastDay")} value={to} onChangeText={setTo} placeholder="YYYY-MM-DD" autoCapitalize="none" error={errors.toDateKey} />
             <Text variant="sm" bold>
               {t("teacher.kindOfLeave")}
@@ -132,7 +133,7 @@ export function TeacherLeave() {
 
           <Card title={t("nav.leave")}>
             {data.requests.length === 0 ? (
-              <Empty title={t("teacher.nothingWaiting")} />
+              <Empty title={t("teacher.nothingWaiting")} action={<Button label={t("teacher.applyForLeave")} variant="secondary" onPress={() => firstDay.current?.focus()} />} />
             ) : (
               data.requests.map((r) => (
                 <Row

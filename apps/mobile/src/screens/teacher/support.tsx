@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { View } from "react-native";
+import { Linking, View } from "react-native";
 import type { ApiResult } from "@edulink/contracts";
 import { Icon, Text } from "@/components";
+import { API_BASE } from "@/lib/api";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { countQueued, enqueue, onQueueEvent } from "@/lib/outbox";
@@ -13,6 +14,11 @@ import { ApiRefused } from "@/lib/query";
  * the web's OutboxBadge), the write-or-queue rule, and the few date words a
  * phone shows without a calendar library.
  */
+
+/** Opens the same page on the web, signed in there — the class page with its code, a new message to anyone at the school. */
+export function openWeb(path: string): void {
+  void Linking.openURL(`${API_BASE}${path}`);
+}
 
 /** How many items wait in the outbox, for one tag or all; live. */
 export function useQueuedCount(tag?: string): number {
@@ -52,7 +58,7 @@ export function OutboxBadge({ tag }: { tag?: string }) {
       accessibilityRole="text"
       accessibilityLiveRegion="polite"
       accessibilityLabel={`${label}. ${t("shell.outboxHint")}`}
-      style={{ flexDirection: "row", alignItems: "center", gap: th.space[2], alignSelf: "flex-start", backgroundColor: th.warnSoft, borderRadius: 999, paddingHorizontal: th.space[3], minHeight: 32 }}
+      style={{ flexDirection: "row", alignItems: "center", gap: th.space[2], alignSelf: "flex-start", backgroundColor: th.warnSoft, borderRadius: th.radius.xl, paddingHorizontal: th.space[3], minHeight: 32 }}
     >
       <Icon name="tray" color={th.warn} size={16} weight="bold" />
       <Text variant="xs" bold tone="warn">

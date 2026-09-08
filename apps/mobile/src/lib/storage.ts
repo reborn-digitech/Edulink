@@ -27,7 +27,8 @@ export function memoryStore(initial: Record<string, string> = {}): KeyStore {
   };
 }
 
-function webStore(): KeyStore {
+/** The web target's store, exported so a test can reach it on a runner that resolves the native twin. */
+export function webStore(): KeyStore {
   return {
     async get(key) {
       try {

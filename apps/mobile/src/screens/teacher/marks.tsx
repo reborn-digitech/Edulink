@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { Pressable, View } from "react-native";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { marksBatchSchema, marksGridSchema, staffExamsSchema } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text } from "@/components";
@@ -8,7 +9,7 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { OutboxBadge, dayLabel, throwIfRefused, useOutboxRunner, writeOrQueue } from "./support";
+import { OutboxBadge, dayLabel, openWeb, throwIfRefused, useOutboxRunner, writeOrQueue } from "./support";
 
 /**
  * The marks grid, the web's /teacher/exams: pick a class, pick a paper, type
@@ -18,11 +19,14 @@ import { OutboxBadge, dayLabel, throwIfRefused, useOutboxRunner, writeOrQueue } 
 const KIND_KEY = { UNIT_TEST: "exams.kindUnitTest", MID_TERM: "exams.kindMidTerm", FINAL: "exams.kindFinal" } as const;
 
 export function MarksGrid() {
+  // Marks and report cards are a child's private record: no screenshots, no screen recording, while this screen is up.
+  usePrivateScreen();
   const params = useLocalSearchParams<{ classId?: string; slotId?: string }>();
   const t = useT();
   const { locale } = useLocale();
   const th = useTheme();
   const qc = useQueryClient();
+  const router = useRouter();
   const [classId, setClassId] = useState<string | null>(params.classId ?? null);
   const [slotId, setSlotId] = useState<string | null>(params.slotId ?? null);
   const [entries, setEntries] = useState<Record<string, string>>({});
@@ -92,7 +96,7 @@ export function MarksGrid() {
       {exams.isError ? <Failed message={exams.error.message} onRetry={() => void exams.refetch()} /> : null}
       {exams.data && !klass ? (
         exams.data.classes.length === 0 ? (
-          <Empty title={t("teacher.noClassesYet")} body={t("teacher.noClassesBody")} />
+          <Empty title={t("teacher.noClassesYet")} body={t("teacher.noClassesBody")} action={<Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />} />
         ) : (
           <Card title={t("nav.classes")}>
             {exams.data.classes.map((c) => (
@@ -104,7 +108,7 @@ export function MarksGrid() {
       {klass ? (
         <Card title={klass.name} action={<Button label={t("nav.classes")} variant="ghost" onPress={() => pick(null, null)} />}>
           {klass.series.length === 0 ? (
-            <Empty title={t("exams.noPapersTitle")} body={t("exams.noPapersBody")} />
+            <Empty title={t("exams.noPapersTitle")} body={t("exams.noPapersBody")} action={<Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />} />
           ) : (
             <>
               <Text variant="sm" bold>
@@ -119,6 +123,7 @@ export function MarksGrid() {
                       <Pressable
                         key={slot.id}
                         accessibilityRole="radio"
+                        aria-checked={on}
                         accessibilityLabel={label}
                         accessibilityState={{ checked: on }}
                         onPress={() => pick(klass.id, slot.id)}
@@ -149,7 +154,7 @@ export function MarksGrid() {
             </Text>
           ) : null}
           {sheet.pupils.length === 0 ? (
-            <Empty title={t("exams.emptyRoll")} />
+            <Empty title={t("exams.emptyRoll")} action={<Button label={t("mobile.openOnWeb")} variant="secondary" onPress={() => openWeb(`/teacher/classes/${classId}`)} />} />
           ) : (
             <>
               {sheet.pupils.map((p) => (

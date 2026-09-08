@@ -14,7 +14,15 @@ export function makeQueryClient(): QueryClient {
         gcTime: 30 * 60_000,
         retry: (count, error) => !(error instanceof ApiRefused && error.status === 401) && count < 1,
         refetchOnWindowFocus: true,
+        // Try once even when the browser says it is offline (the web target's
+        // navigator.onLine; a phone never wires onlineManager): a cached screen
+        // shows its data and the one attempt fails fast into the outbox rule.
+        networkMode: "offlineFirst",
       },
+      // A mutation must always run: the outbox is what handles "offline", and
+      // React Query's default of pausing the mutation until the browser is
+      // back online would skip the outbox and post directly on reconnect.
+      mutations: { networkMode: "always" },
     },
   });
 }

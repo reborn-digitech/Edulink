@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from "expo-router";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { adminCalendarSchema } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
@@ -28,6 +29,7 @@ function kindLabel(t: (key: TranslationKey) => string, kind: string): string {
 export function StaffCalendar() {
   const t = useT();
   const role = useRole();
+  const router = useRouter();
   const { locale } = useLocale();
   const [when, setWhen] = useState<When>("");
   const query = useQuery({
@@ -62,7 +64,19 @@ export function StaffCalendar() {
             ))}
           </Card>
           {d.entries.length === 0 ? (
-            <Empty title={when === "all" ? t("calendar.nothingYet") : t("calendar.nothingAhead")} body={when === "all" ? t("calendar.nothingYetBody") : t("calendar.nothingAheadBody")} />
+            <Empty
+              title={when === "all" ? t("calendar.nothingYet") : t("calendar.nothingAhead")}
+              body={when === "all" ? t("calendar.nothingYetBody") : t("calendar.nothingAheadBody")}
+              action={
+                when !== "all" ? (
+                  <Button label={t("calendar.wholeYear")} variant="secondary" onPress={() => setWhen("all")} />
+                ) : role === "ADMIN" ? (
+                  <Button label={t("calendar.addTitle")} variant="secondary" onPress={() => openWeb("/admin/calendar")} />
+                ) : (
+                  <Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />
+                )
+              }
+            />
           ) : (
             <Card title={t("calendar.listTitle")}>
               {d.entries.map((e) => (

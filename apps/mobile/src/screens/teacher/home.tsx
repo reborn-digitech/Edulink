@@ -31,7 +31,19 @@ export function TeacherHome() {
     <Screen title={t("teacher.today")} description={data ? `${data.schoolName} · ${dayLabel(data.dateKey, locale)}` : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
-      {nothingAtAll ? <Empty title={t("teacher.noClassesYet")} body={t("teacher.noClassesBody")} /> : null}
+      {nothingAtAll ? (
+        <Empty
+          title={t("teacher.noClassesYet")}
+          body={t("teacher.noClassesBody")}
+          action={
+            data.lessons.classesTaughtThisWeek > 0 ? (
+              <Button label={t("teacher.openTimetable")} variant="secondary" onPress={() => router.push("/(app)/timetable" as never)} />
+            ) : (
+              <Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />
+            )
+          }
+        />
+      ) : null}
       {data && !nothingAtAll ? (
         <>
           <View style={{ flexDirection: "row", gap: th.space[3], flexWrap: "wrap" }}>

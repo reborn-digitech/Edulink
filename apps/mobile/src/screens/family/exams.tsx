@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { usePrivateScreen } from "@/lib/private-screen";
 import { Share, View } from "react-native";
 import { useQuery } from "@tanstack/react-query";
 import type { z } from "zod";
@@ -21,6 +22,8 @@ const KINDS: ExamKind[] = ["UNIT_TEST", "MID_TERM", "FINAL"];
  * cards, one of which opens natively with a Share button.
  */
 export function FamilyExams() {
+  // Marks and report cards are a child's private record: no screenshots, no screen recording, while this screen is up.
+  usePrivateScreen();
   const t = useT();
   const { locale } = useLocale();
   const [cardId, setCardId] = useState<string | null>(null);
@@ -75,13 +78,13 @@ export function FamilyExams() {
             ))}
           </>
         ) : (
-          <Empty title={t("exams.noMarksYet")} body={t("exams.myMarksIntro")} />
+          <Empty title={t("exams.noMarksYet")} body={t("exams.myMarksIntro")} action={<Button label={t("exams.tabUpcoming")} variant="secondary" onPress={() => setTab("upcoming")} />} />
         )
       ) : null}
 
       {d && tab === "upcoming" ? (
         d.upcoming.length === 0 ? (
-          <Empty title={t("exams.noUpcomingTitle")} body={t("exams.noUpcomingBody")} />
+          <Empty title={t("exams.noUpcomingTitle")} body={t("exams.noUpcomingBody")} action={anyMarks ? <Button label={t("exams.tabMarks")} variant="secondary" onPress={() => setTab("marks")} /> : <Button label={t("exams.tabCards")} variant="secondary" onPress={() => setTab("cards")} />} />
         ) : (
           d.upcoming.map((sheet) => (
             <Card key={sheet.id} title={`${sheet.name} · ${t("practice.classN", { n: sheet.gradeLevel })}`}>
@@ -111,7 +114,11 @@ export function FamilyExams() {
           {cards.isError ? <Failed message={cards.error.message} onRetry={() => void cards.refetch()} /> : null}
           {cards.data ? (
             count(cards.data.groups) === 0 ? (
-              <Empty title={t("exams.noCardsTitle")} body={d?.termIsRunning ? (d.awaitingTermName ? t("exams.cardsAfterTermNamed", { term: d.awaitingTermName }) : t("exams.cardsAfterTerm")) : t("exams.noCardsBody")} />
+              <Empty
+                title={t("exams.noCardsTitle")}
+                body={d?.termIsRunning ? (d.awaitingTermName ? t("exams.cardsAfterTermNamed", { term: d.awaitingTermName }) : t("exams.cardsAfterTerm")) : t("exams.noCardsBody")}
+                action={anyMarks ? <Button label={t("exams.tabMarks")} variant="secondary" onPress={() => setTab("marks")} /> : <Button label={t("exams.tabUpcoming")} variant="secondary" onPress={() => setTab("upcoming")} />}
+              />
             ) : (
               cards.data.groups
                 .filter((group) => group.rows.length > 0)

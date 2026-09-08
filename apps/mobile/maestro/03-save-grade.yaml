@@ -1,0 +1,45 @@
+# Save a grade in the marks grid: Classes → ZZ Grade 3 · A → Enter exam marks →
+# the first Unit test paper → 42 for ZZ Divya Desai → Save marks.
+# Precondition: the office has set up an exam series for grade 3 with at least
+# one Unit test paper (the ZZ fixtures create none; the web's /admin/exams
+# does). Untested: needs a simulator and Maestro.
+appId: school.edulink.app
+name: Save a grade
+tags: [teacher, marks]
+---
+- runFlow:
+    file: common/sign-in.yaml
+    env:
+      EMAIL: "${ZZ_EMAIL_TEACHER}"
+      MAGIC_TOKEN: "${MAGIC_TOKEN_TEACHER}"
+- tapOn: "Classes"
+- assertVisible: "My classes"
+- tapOn: "ZZ Grade 3 · A.*"
+- extendedWaitUntil:
+    visible: "Enter exam marks"
+    timeout: 10000
+- tapOn: "Enter exam marks"
+- assertVisible: "Exam marks"
+- extendedWaitUntil:
+    visible: "Papers"
+    timeout: 10000
+- tapOn: ".*Unit test.*"
+- extendedWaitUntil:
+    visible: "Save marks"
+    timeout: 10000
+- scrollUntilVisible:
+    element:
+      text: "ZZ Divya Desai"
+- tapOn:
+    text: "ZZ Divya Desai"
+    index: 1
+- eraseText
+- inputText: "42"
+- hideKeyboard
+- scrollUntilVisible:
+    element:
+      text: "Save marks"
+- tapOn: "Save marks"
+- extendedWaitUntil:
+    visible: "Marks saved."
+    timeout: 10000

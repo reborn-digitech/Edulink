@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Linking, View } from "react-native";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 import { familyParentPracticeSchema, familyStudentPracticeSchema } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Icon, Loading, Row, Screen, Text } from "@/components";
@@ -33,6 +33,7 @@ const openWeb = (path: string) => void Linking.openURL(`${API_BASE}${path}`);
 
 function ChildPractice() {
   const t = useT();
+  const router = useRouter();
   const params = useLocalSearchParams() as Record<string, string | string[] | undefined>;
   const [childId, setChildId] = useState<string | null>(param(params.childId) ?? param(params.child) ?? null);
   const query = useQuery({
@@ -49,7 +50,7 @@ function ChildPractice() {
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         d.topics.length === 0 ? (
-          <Empty title={t("feature.practice")} body={t("practice.parentPracticeEmpty", { name })} />
+          <Empty title={t("feature.practice")} body={t("practice.parentPracticeEmpty", { name })} action={<Button label={t("nav.assignments")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/assignments", params: { child: childId ?? d.children[0]?.studentMembershipId ?? "" } } as never)} />} />
         ) : (
           <>
             <Note tone="accent">
@@ -78,6 +79,7 @@ function ChildPractice() {
 function PupilPractice() {
   const t = useT();
   const th = useTheme();
+  const router = useRouter();
   const [grade, setGrade] = useState<number | "all" | null>(null);
   const [subject, setSubject] = useState<string>("all");
   const query = useQuery({
@@ -99,7 +101,7 @@ function PupilPractice() {
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         topics.length === 0 ? (
-          <Empty title={t("student.noTopics")} body={t("student.noTopicsBody")} />
+          <Empty title={t("student.noTopics")} body={t("student.noTopicsBody")} action={<Button label={t("nav.assignments")} variant="secondary" onPress={() => router.push("/(app)/assignments" as never)} />} />
         ) : (
           <>
             {resume ? (
@@ -115,7 +117,7 @@ function PupilPractice() {
                 {`${Math.min(d.weekly, d.weeklyGoal)}`}
                 <Text variant="sm" tone="muted">{` / ${d.weeklyGoal}`}</Text>
               </Text>
-              <View accessible accessibilityRole="progressbar" accessibilityLabel={t("practice.goalHint", { n: d.weekly, goal: d.weeklyGoal })} style={{ height: 6, borderRadius: 3, backgroundColor: th.surfaceMuted, overflow: "hidden" }}>
+              <View accessible accessibilityRole="progressbar" accessibilityLabel={t("practice.goalHint", { n: d.weekly, goal: d.weeklyGoal })} style={{ height: 6, borderRadius: th.radius.sm, backgroundColor: th.surfaceMuted, overflow: "hidden" }}>
                 <View style={{ height: 6, width: `${Math.min(100, Math.round((d.weekly * 100) / Math.max(1, d.weeklyGoal)))}%`, backgroundColor: th.accent }} />
               </View>
               <Text variant="xs" tone="muted">

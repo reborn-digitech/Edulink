@@ -4,6 +4,10 @@ import { StaffCalendar } from "@/screens/staff/calendar";
 import { API_BASE } from "@/lib/api";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 
+/** The screen's empty state has a door into the app's own tabs; the router is the harness's, so a test can read where it went. */
+const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
+jest.mock("expo-router", () => ({ useRouter: () => mockRouter, useLocalSearchParams: () => mockRouter.params }));
+
 const CALENDAR = {
   todayKey: "2026-09-07",
   years: [{ id: "y1", name: "2026-27", startDateKey: "2026-06-01", endDateKey: "2027-04-30", isCurrent: true, closedAt: null }],
@@ -53,6 +57,11 @@ describe("the school calendar", () => {
     expect(screen.getByText(/^Nothing set up yet\./)).toBeTruthy();
     expect(screen.getByText(/^Nobody has a birthday coming up on file\./)).toBeTruthy();
     expect(screen.queryByText("Staff away")).toBeNull();
+    // The empty state's door: the whole year first, and from a year with nothing on it a principal goes to the office by message.
+    await fireEvent.press(screen.getByRole("button", { name: "Whole year" }));
+    expect(await screen.findByText("Nothing on the calendar yet")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Messages" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/messages");
   });
 
   it("a refusal is an alert with a retry", async () => {

@@ -1,0 +1,33 @@
+# Hand in work as the ZZ pupil (zz.pupil01, ZZ Aarav Apte). Precondition: a
+# published assignment for ZZ Grade 3 · A that this pupil has not handed in
+# (the fixtures create none; the teacher sets one on the web).
+# The first "Hand it in" opens the panel on the first card; the panel's own
+# button, also "Hand it in", is then the first match again.
+# Untested: needs a simulator and Maestro.
+appId: school.edulink.app
+name: Hand in work
+tags: [student, assignments]
+---
+- runFlow:
+    file: common/sign-in.yaml
+    env:
+      EMAIL: "${ZZ_EMAIL_STUDENT}"
+      MAGIC_TOKEN: "${MAGIC_TOKEN_STUDENT}"
+- tapOn: "Assignments"
+- extendedWaitUntil:
+    visible: "To do.*"
+    timeout: 10000
+- assertNotVisible: "Nothing due right now."
+- tapOn: "Hand it in"
+- assertVisible: "Your answer"
+- tapOn:
+    text: "Your answer"
+    index: 1
+- inputText: "ZZ Maestro test answer"
+- hideKeyboard
+- tapOn: "Hand it in"
+- extendedWaitUntil:
+    visible: "Handed in 🎉"
+    timeout: 10000
+- assertVisible: "Your teacher has been told about .*"
+- assertVisible: "Change it"

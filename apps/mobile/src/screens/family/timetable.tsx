@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View } from "react-native";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 import type { z } from "zod";
 import { familyTimetableSchema } from "@edulink/contracts";
@@ -26,6 +26,7 @@ export function FamilyTimetable() {
   const t = useT();
   const th = useTheme();
   const { locale } = useLocale();
+  const router = useRouter();
   const params = useLocalSearchParams() as Record<string, string | string[] | undefined>;
   const [childId, setChildId] = useState<string | null>(param(params.childId) ?? param(params.child) ?? null);
   const [week, setWeek] = useState<string | null>(param(params.week) ?? null);
@@ -63,9 +64,23 @@ export function FamilyTimetable() {
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         d.grid.periods.length === 0 ? (
-          <Empty title={isParent ? t("parent.noTimetableYet") : t("timetable.noTimetableYet")} body={isParent ? t("parent.noSchoolDay", { school: d.child?.schoolName ?? "" }) : t("timetable.noTimetableYetBody")} />
+          <Empty
+            title={isParent ? t("parent.noTimetableYet") : t("timetable.noTimetableYet")}
+            body={isParent ? t("parent.noSchoolDay", { school: d.child?.schoolName ?? "" }) : t("timetable.noTimetableYetBody")}
+            action={<Button label={isParent ? t("nav.overview") : t("nav.today")} variant="secondary" onPress={() => router.push((isParent && d.child ? { pathname: "/(app)", params: { child: d.child.studentMembershipId } } : "/(app)") as never)} />}
+          />
         ) : d.grid.slots.length === 0 ? (
-          <Empty title={isParent ? t("parent.nothingTimetabled") : t("timetable.nothingYet")} body={isParent ? t("parent.noLessonsThisWeek", { name }) : t("timetable.nothingYetBody")} />
+          <Empty
+            title={isParent ? t("parent.nothingTimetabled") : t("timetable.nothingYet")}
+            body={isParent ? t("parent.noLessonsThisWeek", { name }) : t("timetable.nothingYetBody")}
+            action={
+              d.isThisWeek ? (
+                <Button label={isParent ? t("parent.nextWeek") : t("principal.next")} variant="secondary" onPress={() => setWeek(d.next)} />
+              ) : (
+                <Button label={isParent ? t("parent.thisWeek") : t("principal.thisWeek")} variant="secondary" onPress={() => setWeek(null)} />
+              )
+            }
+          />
         ) : (
           <>
             <Text variant="xs" tone="muted">

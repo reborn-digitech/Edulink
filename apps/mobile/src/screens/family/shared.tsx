@@ -1,9 +1,10 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { Pressable, ScrollView, View } from "react-native";
+import { Linking, Pressable, ScrollView, View } from "react-native";
 import type { z } from "zod";
 import type { FamilyChild, familyExamsSchema } from "@edulink/contracts";
 import type { Translate, TranslationKey } from "@edulink/i18n";
 import { Button, Card, Row, Text } from "@/components";
+import { API_BASE } from "@/lib/api";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { KEYS, keyStore } from "@/lib/storage";
@@ -15,6 +16,11 @@ import { KEYS, keyStore } from "@/lib/storage";
  * helpers the web keeps in lib/dates — written here because a screen may not
  * reach into src/lib, and Intl is the same on both sides.
  */
+
+/** Opens the same page on the web, signed in there — for what the phone does not carry (practice questions, linking a child, a new post). */
+export function openWeb(path: string): void {
+  void Linking.openURL(`${API_BASE}${path}`);
+}
 
 /* ------------------------------------------------------------------------- */
 /* Route params and query strings                                            */
@@ -266,7 +272,7 @@ export function Tabs<K extends string>({ tabs, current, onChange, label }: { tab
             accessibilityLabel={tab.count !== undefined ? `${tab.label} (${tab.count})` : tab.label}
             accessibilityState={{ selected: on }}
             onPress={() => onChange(tab.key)}
-            style={{ flex: 1, minHeight: th.tap, alignItems: "center", justifyContent: "center", borderRadius: th.radius.sm, backgroundColor: on ? th.surface : "transparent" }}
+            style={{ flex: 1, minHeight: th.tap, alignItems: "center", justifyContent: "center", borderRadius: th.radius.sm, backgroundColor: on ? th.surface : undefined }}
           >
             <Text variant="sm" bold={on} tone={on ? "fg" : "muted"}>
               {tab.count !== undefined ? `${tab.label} ${tab.count}` : tab.label}

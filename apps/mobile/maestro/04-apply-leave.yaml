@@ -1,0 +1,43 @@
+# Apply for leave as the ZZ teacher. Leave is not on the teacher's tab bar, so
+# the flow enters through the same deep link a notification would carry.
+# Parameters LEAVE_FROM / LEAVE_TO are YYYY-MM-DD, in the future, and must not
+# overlap a request already waiting (the server refuses a clash).
+# Untested: needs a simulator and Maestro.
+appId: school.edulink.app
+name: Apply for leave
+tags: [teacher, leave]
+---
+- runFlow:
+    file: common/sign-in.yaml
+    env:
+      EMAIL: "${ZZ_EMAIL_TEACHER}"
+      MAGIC_TOKEN: "${MAGIC_TOKEN_TEACHER}"
+- openLink: "edulink:///teacher/leave"
+- extendedWaitUntil:
+    visible: "Apply for leave"
+    timeout: 10000
+- assertVisible: "Leave this year"
+- tapOn:
+    text: "First day away"
+    index: 1
+- inputText: "${LEAVE_FROM}"
+- tapOn:
+    text: "Last day away"
+    index: 1
+- inputText: "${LEAVE_TO}"
+- hideKeyboard
+- tapOn: "Sick leave"
+- tapOn:
+    text: "Why"
+    index: 1
+- inputText: "ZZ Maestro test request"
+- hideKeyboard
+- scrollUntilVisible:
+    element:
+      text: "Send to the principal"
+- tapOn: "Send to the principal"
+- extendedWaitUntil:
+    visible: "Sent to the principal"
+    timeout: 10000
+- assertVisible: "Sick leave.*"
+- assertVisible: "waiting"

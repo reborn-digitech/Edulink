@@ -3,6 +3,7 @@ import { RefreshControl, ScrollView, View, type ViewProps } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "@/lib/theme";
 import { Text } from "./text";
+import { PageTitle } from "./page-title";
 
 /**
  * The page: safe area, the ground colour, a title the screen reader hears
@@ -37,7 +38,8 @@ export function Screen({
     </View>
   );
   return (
-    <SafeAreaView edges={["top", "left", "right"]} style={{ flex: 1, backgroundColor: t.bg }}>
+    <SafeAreaView role="main" edges={["top", "left", "right"]} style={{ flex: 1, backgroundColor: t.bg }}>
+      <PageTitle title={title} />
       {scroll ? (
         <ScrollView keyboardShouldPersistTaps="handled" refreshControl={onRefresh ? <RefreshControl refreshing={Boolean(refreshing)} onRefresh={onRefresh} tintColor={t.accent} /> : undefined}>
           {header}

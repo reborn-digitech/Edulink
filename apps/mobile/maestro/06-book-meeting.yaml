@@ -1,0 +1,28 @@
+# Book a meeting as the ZZ guardian (zz.parent01, linked to ZZ Aarav Apte in
+# ZZ Grade 3 · A). Meetings has no tab, so the flow enters by the deep link a
+# notification carries. Precondition: a teacher who teaches that child has
+# offered a slot on the web's /teacher/meetings (the fixtures create none).
+# Untested: needs a simulator and Maestro.
+appId: school.edulink.app
+name: Book a meeting
+tags: [parent, meetings]
+---
+- runFlow:
+    file: common/sign-in.yaml
+    env:
+      EMAIL: "${ZZ_EMAIL_PARENT}"
+      MAGIC_TOKEN: "${MAGIC_TOKEN_PARENT}"
+- assertVisible: "Overview"
+- openLink: "edulink:///parent/meetings"
+- extendedWaitUntil:
+    visible: "Meet the teacher"
+    timeout: 10000
+- assertVisible: "Open times"
+- assertNotVisible: "No open times right now"
+- tapOn: "Book"
+- extendedWaitUntil:
+    visible: "Booked. The teacher has been told."
+    timeout: 10000
+- assertVisible: "Your meetings"
+- assertVisible: "With .*"
+- assertVisible: "Cancel"

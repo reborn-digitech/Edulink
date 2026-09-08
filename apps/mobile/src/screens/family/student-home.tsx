@@ -62,7 +62,7 @@ export function StudentHome() {
               {d.upcoming.length === 0 ? t("student.nothingDueShort") : d.upcoming.length === 1 ? t("student.toDoCountOne") : t("student.toDoCountMany", { count: d.upcoming.length })}
             </Text>
             {d.upcoming.length === 0 ? (
-              <Empty title={t("student.nothingDue")} body={t("student.nothingDueBody")} />
+              <Empty title={t("student.nothingDue")} body={t("student.nothingDueBody")} action={<Button label={t("nav.practice")} variant="secondary" onPress={() => router.push("/(app)/practice" as never)} />} />
             ) : (
               d.upcoming.map((item) => (
                 <Row

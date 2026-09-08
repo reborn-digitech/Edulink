@@ -5,6 +5,7 @@ import { ChooseContext } from "@/components/choose-context";
 import { ALL_TAB_SCREENS, TABS } from "@/lib/nav";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
+import { type } from "@edulink/tokens";
 
 /**
  * The shell: a bottom tab bar per role mirroring the web NAV's primaries, and
@@ -29,7 +30,7 @@ export default function AppLayout() {
         tabBarActiveTintColor: th.accentStrong,
         tabBarInactiveTintColor: th.fgMuted,
         tabBarStyle: { backgroundColor: th.surface, borderTopColor: th.border, minHeight: 56 },
-        tabBarLabelStyle: { fontSize: 11, fontWeight: "600" },
+        tabBarLabelStyle: { fontSize: type.xs.size, fontWeight: "600" },
       }}
     >
       {ALL_TAB_SCREENS.map((name) => {

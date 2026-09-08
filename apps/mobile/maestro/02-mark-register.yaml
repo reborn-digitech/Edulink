@@ -1,0 +1,34 @@
+# Mark a register: from Today, open ZZ Grade 3 · A (the first ZZ teacher's
+# form class), mark everyone present, then mark ZZ Divya Desai absent, and see
+# the sheet save. The status chips show "P/L/A/E" and carry the full word as
+# their accessibility label. Precondition: run on a weekday.
+# Untested: needs a simulator and Maestro.
+appId: school.edulink.app
+name: Mark a register
+tags: [teacher, attendance]
+---
+- runFlow:
+    file: common/sign-in.yaml
+    env:
+      EMAIL: "${ZZ_EMAIL_TEACHER}"
+      MAGIC_TOKEN: "${MAGIC_TOKEN_TEACHER}"
+- assertVisible: "Today"
+- tapOn: "ZZ Grade 3 · A.*"
+- extendedWaitUntil:
+    visible: "Mark the attendance|Edit today's attendance|ZZ Grade 3 · A"
+    timeout: 10000
+- runFlow:
+    when:
+      visible: "Mark all .* present"
+    commands:
+      - tapOn: "Mark all .* present"
+- assertVisible: "ZZ Divya Desai"
+- tapOn:
+    text: "Absent"
+    below:
+      text: "ZZ Divya Desai"
+- extendedWaitUntil:
+    visible: "Saved|Saved on this device"
+    timeout: 10000
+- assertVisible: "Attendance complete"
+- assertNotVisible: "That did not save"

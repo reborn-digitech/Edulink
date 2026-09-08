@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Pressable, View } from "react-native";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import * as Haptics from "expo-haptics";
 import { attendanceClassesSchema, registerSchema, type RegisterBody } from "@edulink/contracts";
@@ -10,7 +10,7 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { newClientId } from "@/lib/outbox";
-import { OutboxBadge, dayLabel, useOutboxRunner, writeOrQueue } from "./support";
+import { OutboxBadge, dayLabel, openWeb, useOutboxRunner, writeOrQueue } from "./support";
 
 /**
  * The register, the web's /teacher/attendance, with the outbox first: a tap
@@ -31,6 +31,7 @@ export function Register() {
   const params = useLocalSearchParams<{ classId?: string; date?: string }>();
   const t = useT();
   const { locale } = useLocale();
+  const router = useRouter();
   const [classId, setClassId] = useState<string | null>(params.classId ?? null);
   const date = params.date;
   useOutboxRunner();
@@ -57,7 +58,7 @@ export function Register() {
             </Text>
           ) : null}
           {data.classes.length === 0 ? (
-            <Empty title={t("teacher.noRegisterToday")} body={t("teacher.noRegisterBody")} />
+            <Empty title={t("teacher.noRegisterToday")} body={t("teacher.noRegisterBody")} action={<Button label={t("nav.classes")} variant="secondary" onPress={() => router.push("/(app)/classes" as never)} />} />
           ) : (
             <Card title={t("teacher.takeRegister")}>
               {data.unmarkedCount === 0 ? (
@@ -199,7 +200,7 @@ function ClassRegister({ classId, date, onBack }: { classId: string; date?: stri
           {state === "error" ? <Failed message={error ?? t("teacher.didNotSave")} onRetry={() => void flush()} /> : null}
           {!data.readOnly && unmarked.length > 0 ? <Button label={t("teacher.markAllPresent", { count: unmarked.length })} variant="secondary" onPress={markAllPresent} /> : null}
           {data.roster.length === 0 ? (
-            <Empty title={t("teacher.nobodyInClassYet")} body={t("teacher.addStudentsAppear")} />
+            <Empty title={t("teacher.nobodyInClassYet")} body={t("teacher.addStudentsAppear")} action={<Button label={t("mobile.openOnWeb")} variant="secondary" onPress={() => openWeb(`/teacher/classes/${classId}`)} />} />
           ) : (
             <Card>
               {data.roster.map((p) => {
@@ -237,6 +238,7 @@ function StatusChip({ status, selected, disabled, label, short, onPress }: { sta
   return (
     <Pressable
       accessibilityRole="radio"
+      aria-checked={selected}
       accessibilityLabel={label}
       accessibilityState={{ checked: selected, disabled }}
       disabled={disabled}

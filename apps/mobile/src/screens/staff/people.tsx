@@ -190,7 +190,7 @@ function Invites({ onTab }: { onTab: (next: "directory" | "invites") => void }) 
       </Card>
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
-      {d ? d.invites.length === 0 ? <Empty title={t("invites.nonePending")} body={t("invites.nonePendingBody")} /> : <PendingInvites invites={d.invites} busyId={revoke.isPending ? revoke.variables : null} onRevoke={(id) => revoke.mutate(id)} locale={locale} /> : null}
+      {d ? d.invites.length === 0 ? <Empty title={t("invites.nonePending")} body={t("invites.nonePendingBody")} action={<Button label={t("people.tabDirectory")} variant="secondary" onPress={() => onTab("directory")} />} /> : <PendingInvites invites={d.invites} busyId={revoke.isPending ? revoke.variables : null} onRevoke={(id) => revoke.mutate(id)} locale={locale} /> : null}
     </Screen>
   );
 }

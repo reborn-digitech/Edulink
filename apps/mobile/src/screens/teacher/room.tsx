@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { View } from "react-native";
+import { useRef, useState } from "react";
+import { TextInput, View } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { conversationMessageSchema, inboxConversationDetailSchema } from "@edulink/contracts";
@@ -25,6 +25,7 @@ export function Room() {
   const [draft, setDraft] = useState("");
   const [formError, setFormError] = useState<string | null>(null);
   const [note, setNote] = useState<string | null>(null);
+  const replyBox = useRef<TextInput>(null);
   useOutboxRunner();
 
   const query = useQuery({
@@ -71,7 +72,7 @@ export function Room() {
       {data ? (
         <>
           {data.messages.length === 0 ? (
-            <Empty title={t("convo.noMessagesInRoom")} body={t("convo.sayHello", { name: names })} />
+            <Empty title={t("convo.noMessagesInRoom")} body={t("convo.sayHello", { name: names })} action={<Button label={t("mobile.writeFirstMessage")} variant="secondary" onPress={() => replyBox.current?.focus()} />} />
           ) : (
             <View style={{ gap: th.space[2] }}>
               {data.messages.map((m) => (
@@ -94,7 +95,7 @@ export function Room() {
             </View>
           )}
           <OutboxBadge tag={tag} />
-          <Field label={t("remarks.writeReply")} placeholder={t("remarks.writeReplyPlaceholder")} value={draft} onChangeText={setDraft} multiline error={formError} style={{ minHeight: 96, textAlignVertical: "top", paddingTop: th.space[3] }} />
+          <Field ref={replyBox} label={t("remarks.writeReply")} placeholder={t("remarks.writeReplyPlaceholder")} value={draft} onChangeText={setDraft} multiline error={formError} style={{ minHeight: 96, textAlignVertical: "top", paddingTop: th.space[3] }} />
           {send.isError ? <Failed message={`${t("remarks.couldNotSend")}: ${send.error.message}`} onRetry={submit} /> : null}
           {note ? (
             <Text variant="sm" tone="ok" accessibilityLiveRegion="polite">

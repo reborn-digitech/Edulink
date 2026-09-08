@@ -63,6 +63,7 @@
         "summary": "Sign in with a password",
         "description": "No session needed.",
         "security": [],
+        "x-access": "anyone",
         "responses": {
           "200": {
             "description": "OK",
@@ -198,6 +199,7 @@
         "summary": "Email a sign-in link",
         "description": "No session needed.",
         "security": [],
+        "x-access": "anyone",
         "responses": {
           "200": {
             "description": "OK",
@@ -290,6 +292,7 @@
         "summary": "Turn a sign-in link's token into a session",
         "description": "No session needed.",
         "security": [],
+        "x-access": "anyone",
         "responses": {
           "200": {
             "description": "OK",
@@ -419,6 +422,7 @@
         "summary": "A pupil's first sign-in with the code the school issued",
         "description": "No session needed.",
         "security": [],
+        "x-access": "anyone",
         "responses": {
           "200": {
             "description": "OK",
@@ -560,6 +564,7 @@
         "summary": "Exchange the one-time code from the SSO deep link for a session",
         "description": "No session needed.",
         "security": [],
+        "x-access": "anyone",
         "responses": {
           "200": {
             "description": "OK",
@@ -693,6 +698,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -768,6 +774,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -939,6 +946,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -1142,6 +1150,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -1245,6 +1254,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -1330,6 +1340,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -1435,6 +1446,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -1531,6 +1543,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -1605,6 +1618,10 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -1731,6 +1748,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -1834,6 +1852,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -2163,6 +2184,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -2583,6 +2607,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "ADMIN"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -2778,6 +2805,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "ADMIN"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -2955,6 +2985,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "ADMIN"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -3039,6 +3072,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -3235,6 +3271,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -3440,6 +3479,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "ADMIN"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -3580,6 +3622,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "ADMIN"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -3683,6 +3728,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -3793,6 +3841,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -4045,6 +4096,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -4387,6 +4441,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "ADMIN"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -4507,6 +4564,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -4637,6 +4697,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -4884,6 +4947,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "ADMIN"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -4998,6 +5064,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -5132,6 +5201,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "ADMIN"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -5216,6 +5288,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -5414,6 +5489,10 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
         ],
         "responses": {
           "200": {
@@ -5653,6 +5732,10 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
         ],
         "responses": {
           "200": {
@@ -5975,6 +6058,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "ADMIN"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -6091,6 +6177,10 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
         ],
         "responses": {
           "200": {
@@ -6356,6 +6446,10 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -6466,6 +6560,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -6931,6 +7028,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "ADMIN"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -7161,6 +7261,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "ADMIN"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -7330,6 +7433,10 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -7488,6 +7595,10 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -7614,6 +7725,10 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -7698,6 +7813,10 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
         ],
         "responses": {
           "200": {
@@ -8028,6 +8147,10 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -8174,6 +8297,10 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
         ],
         "responses": {
           "200": {
@@ -8434,6 +8561,10 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -8728,6 +8859,10 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -8900,6 +9035,10 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -9153,6 +9292,10 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -9271,6 +9414,10 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -9550,6 +9697,10 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -9673,6 +9824,10 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -9928,6 +10083,10 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -10052,6 +10211,10 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -10146,6 +10309,10 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -10314,6 +10481,10 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -10469,6 +10640,11 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "TEACHER",
+          "PRINCIPAL",
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -10637,6 +10813,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "TEACHER"
         ],
         "responses": {
           "200": {
@@ -10891,6 +11070,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "TEACHER"
         ],
         "responses": {
           "200": {
@@ -11235,6 +11417,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -11347,6 +11532,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -11441,6 +11629,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "TEACHER"
         ],
         "responses": {
           "200": {
@@ -11570,6 +11761,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -11683,6 +11877,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -11777,6 +11974,10 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "TEACHER",
+          "PRINCIPAL"
         ],
         "responses": {
           "200": {
@@ -11966,6 +12167,10 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "TEACHER",
+          "PRINCIPAL"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -12082,6 +12287,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "TEACHER"
         ],
         "responses": {
           "200": {
@@ -12332,6 +12540,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -12441,6 +12652,10 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "ADMIN",
+          "TEACHER"
         ],
         "responses": {
           "200": {
@@ -12682,6 +12897,10 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "ADMIN",
+          "TEACHER"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -12779,6 +12998,10 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "PRINCIPAL",
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -13211,6 +13434,10 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "PRINCIPAL",
+          "ADMIN"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -13511,6 +13738,10 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "PRINCIPAL",
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -13818,6 +14049,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "STUDENT"
         ],
         "responses": {
           "200": {
@@ -14199,6 +14433,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -14397,6 +14634,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -14495,6 +14735,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "STUDENT"
         ],
         "responses": {
           "200": {
@@ -14751,6 +14994,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -14860,6 +15106,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "STUDENT"
         ],
         "responses": {
           "200": {
@@ -15142,6 +15391,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "PARENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -15255,6 +15507,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "PARENT"
         ],
         "responses": {
           "200": {
@@ -15873,6 +16128,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "PARENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -16182,6 +16440,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "PARENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -16401,6 +16662,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "PARENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -16587,6 +16851,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "PARENT"
         ],
         "responses": {
           "200": {
@@ -16791,6 +17058,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "PARENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -16894,6 +17164,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "PARENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -16988,6 +17261,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "PARENT"
         ],
         "responses": {
           "200": {
@@ -17138,6 +17414,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "PARENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -17264,6 +17543,10 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT"
         ],
         "responses": {
           "200": {
@@ -17626,6 +17909,10 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "STUDENT",
+          "PARENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -17925,6 +18212,10 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "STUDENT",
+          "PARENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -18044,6 +18335,10 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT"
         ],
         "responses": {
           "200": {
@@ -18277,6 +18572,10 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "STUDENT",
+          "PARENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -18379,6 +18678,10 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "STUDENT",
+          "PARENT"
         ],
         "responses": {
           "200": {
@@ -18487,6 +18790,14 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL",
+          "TEACHER",
+          "STUDENT",
+          "PARENT",
+          "EXPERT"
         ],
         "responses": {
           "200": {
@@ -18660,6 +18971,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -18972,6 +19284,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -19166,6 +19479,13 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL",
+          "TEACHER",
+          "STUDENT",
+          "PARENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -19358,6 +19678,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -19733,6 +20054,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -19843,6 +20165,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -19949,6 +20272,10 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN"
         ],
         "responses": {
           "200": {
@@ -20062,6 +20389,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "ADMIN"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -20170,6 +20500,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -20389,6 +20720,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -20570,6 +20902,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -20670,6 +21003,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -20864,6 +21198,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -20966,6 +21301,13 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL",
+          "TEACHER",
+          "STUDENT",
+          "PARENT"
         ],
         "responses": {
           "200": {
@@ -21106,6 +21448,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -21230,6 +21573,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -21315,6 +21659,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -21388,6 +21733,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -21618,6 +21964,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -21926,6 +22273,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "STUDENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -22012,6 +22362,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "PARENT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -22097,6 +22450,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -22219,6 +22573,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -22328,6 +22683,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -22479,6 +22835,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -22582,6 +22939,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -22744,6 +23102,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -22899,6 +23258,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",
@@ -23004,6 +23364,13 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL",
+          "TEACHER",
+          "STUDENT",
+          "PARENT"
         ],
         "responses": {
           "200": {
@@ -23377,6 +23744,11 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "TEACHER",
+          "ADMIN",
+          "PRINCIPAL"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -23508,6 +23880,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -23621,6 +23996,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "EXPERT"
         ],
         "responses": {
           "200": {
@@ -23749,6 +24127,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -23852,6 +24233,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -23936,6 +24320,9 @@
           {
             "bearer": []
           }
+        ],
+        "x-access": [
+          "EXPERT"
         ],
         "responses": {
           "200": {
@@ -24093,6 +24480,9 @@
             "bearer": []
           }
         ],
+        "x-access": [
+          "EXPERT"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -24229,6 +24619,7 @@
             "bearer": []
           }
         ],
+        "x-access": "signed-in",
         "responses": {
           "200": {
             "description": "OK",

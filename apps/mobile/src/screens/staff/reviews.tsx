@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useRef, useState, type RefObject } from "react";
+import { TextInput } from "react-native";
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { adminReviewsSchema, reviewRoundOpenedSchema, type AdminReviews } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text } from "@/components";
@@ -26,6 +27,7 @@ export function ReviewDesk() {
   const { locale } = useLocale();
   const [status, setStatus] = useState<RoundStatus>("open");
   const [notice, setNotice] = useState<{ text: string; tone: "ok" | "danger" } | null>(null);
+  const closesOn = useRef<TextInput>(null);
   const query = useQuery({
     queryKey: ["admin", "reviews", status],
     placeholderData: keepPreviousData,
@@ -73,7 +75,11 @@ export function ReviewDesk() {
               onChange={setStatus}
             />
             {d.rounds.length === 0 ? (
-              <Empty title={status === "open" ? t("reviews.noOpenRoundsTitle") : t("reviews.noRoundsTitle")} body={t("reviews.noRoundsBody")} />
+              <Empty
+                title={status === "open" ? t("reviews.noOpenRoundsTitle") : t("reviews.noRoundsTitle")}
+                body={t("reviews.noRoundsBody")}
+                action={status !== "all" ? <Button label={t("vacancies.filterAll")} variant="secondary" onPress={() => setStatus("all")} /> : <Button label={t("reviews.openRoundHeading")} variant="secondary" onPress={() => closesOn.current?.focus()} />}
+              />
             ) : (
               d.rounds.map((r) => (
                 <Row
@@ -85,7 +91,7 @@ export function ReviewDesk() {
               ))
             )}
           </Card>
-          <OpenRound teachers={d.teacherOptions} defaultClose={d.defaultCloseDateKey} busy={open.isPending} onOpen={(body) => open.mutate(body)} />
+          <OpenRound closesRef={closesOn} teachers={d.teacherOptions} defaultClose={d.defaultCloseDateKey} busy={open.isPending} onOpen={(body) => open.mutate(body)} />
         </>
       ) : null}
     </Screen>
@@ -99,7 +105,7 @@ function trend(t: ReturnType<typeof useT>, r: AdminReviews["dashboard"][number])
   return r.delta > 0 ? t("reviews.trendUp", vars) : t("reviews.trendDown", vars);
 }
 
-function OpenRound({ teachers, defaultClose, busy, onOpen }: { teachers: AdminReviews["teacherOptions"]; defaultClose: string; busy: boolean; onOpen: (body: { teacherMembershipIds: string[]; audience: Audience; closesDateKey: string }) => void }) {
+function OpenRound({ closesRef, teachers, defaultClose, busy, onOpen }: { closesRef: RefObject<TextInput | null>; teachers: AdminReviews["teacherOptions"]; defaultClose: string; busy: boolean; onOpen: (body: { teacherMembershipIds: string[]; audience: Audience; closesDateKey: string }) => void }) {
   const t = useT();
   const [chosen, setChosen] = useState<string[]>([]);
   const [audience, setAudience] = useState<Audience>("BOTH");
@@ -119,7 +125,7 @@ function OpenRound({ teachers, defaultClose, busy, onOpen }: { teachers: AdminRe
         ]}
         onChange={setAudience}
       />
-      <Field label={t("reviews.closesOn")} value={closes} onChangeText={setCloses} hint="YYYY-MM-DD" error={validDate ? null : t("leaveKind.giveBothDates")} autoCapitalize="none" keyboardType="numbers-and-punctuation" />
+      <Field ref={closesRef} label={t("reviews.closesOn")} value={closes} onChangeText={setCloses} hint="YYYY-MM-DD" error={validDate ? null : t("leaveKind.giveBothDates")} autoCapitalize="none" keyboardType="numbers-and-punctuation" />
       <Button label={t("reviews.openRound")} disabled={chosen.length === 0 || !validDate} busy={busy} onPress={() => onOpen({ teacherMembershipIds: chosen, audience, closesDateKey: closes })} />
     </Card>
   );

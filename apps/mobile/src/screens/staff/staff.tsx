@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from "expo-router";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { adminStaffSchema } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text } from "@/components";
@@ -23,6 +24,7 @@ export function staffPath(q: string, role: StaffRole, subject: string): string {
 export function StaffRoster() {
   const t = useT();
   const role = useRole();
+  const router = useRouter();
   const { locale } = useLocale();
   const [typed, setTyped] = useState("");
   const [q, setQ] = useState("");
@@ -63,7 +65,17 @@ export function StaffRoster() {
           filtered ? (
             <Empty title={t("common.noResultsTitle")} body={t("common.noResultsBody")} action={<Button label={t("common.clearAll")} variant="secondary" onPress={clear} />} />
           ) : (
-            <Empty title={t("staff.rosterEmpty")} body={t("staff.rosterEmptyBody")} />
+            <Empty
+              title={t("staff.rosterEmpty")}
+              body={t("staff.rosterEmptyBody")}
+              action={
+                role === "ADMIN" ? (
+                  <Button label={t("people.invitePeople")} variant="secondary" onPress={() => openWeb("/admin/invites")} />
+                ) : (
+                  <Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />
+                )
+              }
+            />
           )
         ) : (
           <Card title={d.roleCounts.map((r) => `${r.count} ${roleLabel(t, r.role, r.count !== 1)}`).join(" · ")}>

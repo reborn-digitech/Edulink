@@ -9,6 +9,19 @@
 import { createApiClient } from "@edulink/api-client";
 import { meSchema, sessionsListSchema } from "@edulink/contracts";
 
+/**
+ * The role matrix: every parameterless GET the app's screens call, as every
+ * role the suite has a token for and signed out, against what the catalog's
+ * access list (published in the document as x-access) says. A permitted role
+ * answers 2xx; a refused one 403; no session 401 unless the endpoint is for
+ * anyone. A permitted role may also answer 422 — the endpoint wanted a query
+ * the bare path does not carry (a class id, a paper) — which is the sweep's
+ * rule too: an input problem is a door that opened. Run from the app's own client.
+ */
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { callsInSource } from "../lib/api-catalog.test";
+
 const BASE = process.env.EDULINK_API_BASE;
 const TOKENS = { TEACHER: process.env.EDULINK_TOKEN_TEACHER, PARENT: process.env.EDULINK_TOKEN_PARENT, STUDENT: process.env.EDULINK_TOKEN_STUDENT };
 const describeIf = BASE ? describe : describe.skip;
@@ -54,4 +67,37 @@ describeIf("the app's client against /api/v1", () => {
     expect(refused.ok).toBe(false);
     if (!refused.ok) expect(refused.status).toBe(403);
   });
+});
+
+type Access = "anyone" | "signed-in" | string[];
+type Doc = { paths: Record<string, Record<string, { "x-access": Access }>> };
+
+describeIf("the role matrix, from the app's client", () => {
+  const doc = JSON.parse(readFileSync(join(__dirname, "..", "..", "..", "..", "docs", "api", "openapi.json"), "utf8")) as Doc;
+  const gets = [...new Set(callsInSource().filter((c) => c.method === "GET" && !c.path.includes("/x")).map((c) => c.path))].filter((p) => doc.paths[p]?.get);
+  const allowed = (path: string, role: string | null): "2xx" | 401 | 403 => {
+    const access = doc.paths[path]!.get!["x-access"];
+    if (access === "anyone") return "2xx";
+    if (role === null) return 401;
+    if (access === "signed-in" || access.includes(role)) return "2xx";
+    return 403;
+  };
+  const actors: [string | null, string | null][] = [[null, null], ...Object.entries(TOKENS).filter(([, t]) => t).map(([r, t]) => [r, t!] as [string, string])];
+
+  it("has endpoints to walk", () => {
+    expect(gets.length).toBeGreaterThan(10);
+  });
+
+  for (const [role, token] of actors) {
+    it(`${role ?? "signed out"}: every GET the app makes answers as the catalog says`, async () => {
+      const wrong: string[] = [];
+      for (const path of gets) {
+        const res = await client(token).get(path);
+        const want = allowed(path, role);
+        const got = res.ok || (want === "2xx" && res.status === 422) ? "2xx" : res.status;
+        if (got !== want) wrong.push(`${path}: wanted ${want}, got ${got}${res.ok ? "" : ` (${res.code})`}`);
+      }
+      expect(wrong).toEqual([]);
+    }, 60_000);
+  }
 });

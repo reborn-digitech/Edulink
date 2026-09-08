@@ -102,8 +102,18 @@ jobs:
         run: npx tsc --noEmit && npx tsc --noEmit -p scripts/tsconfig.json
       - name: Packages
         run: pnpm --filter './packages/*' typecheck && pnpm --filter './packages/*' test
-      - name: Mobile battery · tsc, eslint, jest
+      - name: Mobile battery · tsc, eslint, jest with the lib coverage gate, the Maestro flow check
         run: pnpm --filter @edulink/mobile battery
+      - name: Mobile bundle size · both platforms, target 4 MB, ceiling 4.5 MB
+        run: pnpm --filter @edulink/mobile bundle:check
+      - name: Mobile bundle size record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bundle-size-${{ github.run_number }}
+          path: apps/mobile/bundle-size.json
+          if-no-files-found: ignore
+          retention-days: 90
       - name: ESLint
         working-directory: apps/web
         run: npx eslint .
@@ -181,7 +191,8 @@ jobs:
         working-directory: apps/web
         run: |
           npx next build
-          nohup npx next start -p 3000 > server.log 2>&1 &
+          # The phone's web target is served on :8081 below; the API admits that origin.
+          API_CORS_ORIGINS=http://localhost:8081 nohup npx next start -p 3000 > server.log 2>&1 &
           for i in $(seq 1 60); do
             curl -sf http://localhost:3000/api/health && break
             sleep 1
@@ -206,6 +217,39 @@ jobs:
       - name: Playwright browsers
         working-directory: apps/web
         run: npx playwright install --with-deps chromium
+      - name: Mobile web target · export and serve on :8081
+        working-directory: apps/mobile
+        run: |
+          EXPO_PUBLIC_API_URL=http://localhost:3000 npx expo export --platform web
+          nohup npx expo serve --port 8081 > serve.log 2>&1 &
+          for i in $(seq 1 30); do
+            curl -sf http://localhost:8081/ > /dev/null && break
+            sleep 1
+          done
+          curl -sf http://localhost:8081/ > /dev/null
+      - name: Mobile accessibility gate, screenshots, offline and slow-network flows
+        working-directory: apps/web
+        # The same ZZ tokens the contract step mints; the app signs in with them on its web target.
+        run: |
+          export BASE=http://localhost:8081
+          export API=http://localhost:3000
+          export CI=true
+          export EDULINK_TOKEN_TEACHER="$(npm run --silent zz:token -- TEACHER)"
+          export EDULINK_TOKEN_PARENT="$(npm run --silent zz:token -- PARENT)"
+          export EDULINK_TOKEN_STUDENT="$(npm run --silent zz:token -- STUDENT)"
+          pnpm --filter @edulink/mobile e2e
+          npm run --silent zz:token -- --purge
+      - name: Mobile screenshots, report and traces
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-e2e-${{ github.run_number }}
+          path: |
+            apps/mobile/e2e/screens
+            apps/mobile/e2e/report
+            apps/mobile/e2e/results
+          if-no-files-found: ignore
+          retention-days: 14
       - name: Accessibility gate and viewport matrix
         working-directory: apps/web
         env:

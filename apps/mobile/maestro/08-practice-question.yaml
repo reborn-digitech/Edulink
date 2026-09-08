@@ -1,0 +1,22 @@
+# Answer a practice question: the pupil's Practice screen keeps the questions
+# on the web, so the flow asserts the door and the ladder around it rather
+# than the question itself (the door opens the system browser; Maestro
+# cannot follow it back). Untested: needs a simulator and Maestro.
+appId: school.edulink.app
+name: Practice opens the question on the web
+tags: [student, practice]
+---
+- runFlow:
+    file: common/sign-in.yaml
+    env:
+      EMAIL: "${ZZ_EMAIL_STUDENT}"
+      MAGIC_TOKEN: "${MAGIC_TOKEN_STUDENT}"
+- tapOn: "Practice"
+- extendedWaitUntil:
+    visible: "Open on the web"
+    timeout: 10000
+- assertVisible: "Practice that follows you. Get two right and it gets harder; get two wrong and it eases off."
+- extendedWaitUntil:
+    visible: "Your week|No practice topics yet"
+    timeout: 10000
+- assertVisible: "Open on the web"

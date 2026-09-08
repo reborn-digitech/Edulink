@@ -1,0 +1,31 @@
+# Approve the ZZ teacher's request as the ZZ principal (ZZ Rohan Iyer). Run
+# after 04-apply-leave so there is something waiting from ZZ Sunita Kale.
+# "Approve.*" matches "Approve" and "Approve and arrange cover" — the label
+# depends on whether a cover name is chosen and the teacher has classes.
+# Untested: needs a simulator and Maestro.
+appId: school.edulink.app
+name: Approve a leave request
+tags: [principal, leave]
+---
+- runFlow:
+    file: common/sign-in.yaml
+    env:
+      EMAIL: "${ZZ_EMAIL_PRINCIPAL}"
+      MAGIC_TOKEN: "${MAGIC_TOKEN_PRINCIPAL}"
+- assertVisible: "Dashboard"
+- tapOn: "Leave"
+- extendedWaitUntil:
+    visible: "Staff leave"
+    timeout: 10000
+- assertVisible: "Waiting for you .*"
+- assertVisible: "ZZ Sunita Kale"
+- assertVisible: "Who covers their classes"
+- tapOn:
+    text: "Approve.*"
+    below:
+      text: "ZZ Sunita Kale"
+- extendedWaitUntil:
+    visible: "Leave approved.*"
+    timeout: 10000
+- assertVisible: "Already decided"
+- assertVisible: "approved"

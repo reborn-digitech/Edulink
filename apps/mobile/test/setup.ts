@@ -20,10 +20,25 @@ jest.mock("expo-secure-store", () => {
 });
 jest.mock("expo-haptics", () => ({ impactAsync: async () => {}, notificationAsync: async () => {}, ImpactFeedbackStyle: { Light: "light", Medium: "medium" }, NotificationFeedbackType: { Success: "success", Error: "error" } }));
 jest.mock("expo-sqlite", () => ({ openDatabaseAsync: async () => { throw new Error("no sqlite in tests: use memoryOutbox"); } }));
+// jest.fn so a test can give one call a different answer; Babel's namespace
+// interop copies the function reference, so a spy made on the copy works too.
 jest.mock("expo-notifications", () => ({
-  getPermissionsAsync: async () => ({ granted: false }),
-  requestPermissionsAsync: async () => ({ granted: false }),
-  getExpoPushTokenAsync: async () => ({ data: "ExponentPushToken[test]" }),
-  addNotificationResponseReceivedListener: () => ({ remove: () => {} }),
+  getPermissionsAsync: jest.fn(async () => ({ granted: false })),
+  requestPermissionsAsync: jest.fn(async () => ({ granted: false })),
+  getExpoPushTokenAsync: jest.fn(async () => ({ data: "ExponentPushToken[test]" })),
+  addNotificationResponseReceivedListener: jest.fn(() => ({ remove: () => {} })),
 }));
-jest.mock("expo-device", () => ({ isDevice: false, modelName: "Test" }));
+// isDevice is a getter over shared state, because the interop copies a plain
+// value and a test's assignment would never reach the module under test.
+jest.mock("expo-device", () => {
+  const state = { isDevice: false, rooted: false };
+  return {
+    get isDevice() {
+      return state.isDevice;
+    },
+    modelName: "Test",
+    isRootedExperimentalAsync: jest.fn(async () => state.rooted),
+    __state: state,
+  };
+});
+jest.mock("expo-screen-capture", () => ({ usePreventScreenCapture: jest.fn(), preventScreenCaptureAsync: jest.fn(async () => {}), allowScreenCaptureAsync: jest.fn(async () => {}) }));

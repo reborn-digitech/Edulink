@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "expo-router";
 import { inboxSchema } from "@edulink/contracts";
-import { Card, Empty, Failed, Loading, Row, Screen, Text } from "@/components";
+import { Button, Card, Empty, Failed, Loading, Row, Screen, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
-import { relativeTime } from "./support";
+import { openWeb, relativeTime } from "./support";
 
 /**
  * The inbox, the web's /remarks, for every role: rooms (a conversation with
@@ -38,7 +38,7 @@ export function Inbox() {
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {data ? (
         data.conversations.length === 0 && data.threads.length === 0 ? (
-          <Empty title={t("remarks.noMessagesYet")} body={t("convo.emptyBody")} />
+          <Empty title={t("remarks.noMessagesYet")} body={t("convo.emptyBody")} action={<Button label={t("convo.newMessage")} variant="secondary" onPress={() => openWeb("/remarks/people")} />} />
         ) : (
           <>
             {data.conversations.length > 0 ? (

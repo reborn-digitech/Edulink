@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 import { adminClassesSchema, attendanceHistorySchema, principalClassesSchema } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Loading, Row, Screen, Stat, Text } from "@/components";
@@ -23,6 +23,7 @@ export function StaffClassDetail({ classId: classIdProp }: { classId?: string } 
   const params = useLocalSearchParams<{ classId?: string }>();
   const classId = classIdProp ?? (typeof params.classId === "string" ? params.classId : "");
   const role = useRole();
+  const router = useRouter();
   const t = useT();
   const th = useTheme();
   const roll = useQuery({
@@ -91,7 +92,17 @@ export function StaffClassDetail({ classId: classIdProp }: { classId?: string } 
       ) : null}
       {roll.data ? (
         !history || history.pupils.length === 0 ? (
-          <Empty title={t("principal.nobodyOnRoll")} body={t("principal.nobodyOnRollBody")} />
+          <Empty
+            title={t("principal.nobodyOnRoll")}
+            body={t("principal.nobodyOnRollBody")}
+            action={
+              role === "ADMIN" ? (
+                <Button label={t("meta.classStaffing")} variant="secondary" onPress={() => openWeb(`/admin/classes/${classId}`)} />
+              ) : (
+                <Button label={t("nav.classes")} variant="secondary" onPress={() => router.push("/(app)/classes" as never)} />
+              )
+            }
+          />
         ) : (
           <Card title={role === "ADMIN" ? t("classes.whoIsIn") : t("principal.everybody")} action={<Button label={t("attendanceHistory.link")} variant="ghost" onPress={() => openWeb(`/admin/attendance/history?classId=${encodeURIComponent(classId)}`)} />}>
             <Text variant="xs" tone="subtle">

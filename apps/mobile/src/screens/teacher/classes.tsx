@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "expo-router";
 import { staffClassesSchema } from "@edulink/contracts";
-import { Card, Empty, Failed, Icon, Loading, Row, Screen, Text } from "@/components";
+import { Button, Card, Empty, Failed, Icon, Loading, Row, Screen, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
@@ -23,7 +23,7 @@ export function TeacherClasses() {
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {data ? (
         data.classes.length === 0 ? (
-          <Empty title={t("teacher.noClassesAssigned")} body={t("teacher.noClassesAssignedBody")} />
+          <Empty title={t("teacher.noClassesAssigned")} body={t("teacher.noClassesAssignedBody")} action={<Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />} />
         ) : (
           <Card>
             {data.classes.map((c) => (

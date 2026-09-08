@@ -2,6 +2,10 @@ import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { People } from "@/screens/staff/people";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 
+/** The screen's empty state has a door into the app's own tabs; the router is the harness's, so a test can read where it went. */
+const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
+jest.mock("expo-router", () => ({ useRouter: () => mockRouter, useLocalSearchParams: () => mockRouter.params }));
+
 const person = (membershipId: string, role: string, name: string, extra: Record<string, unknown> = {}) => ({
   membershipId, role, status: "ACTIVE", name, preferredName: null, email: `${membershipId}@zz.test`, avatarKey: null, birthdateKey: null, studentCode: null, title: null, subjects: [], joinedAt: "2026-06-01T00:00:00.000Z", leftAt: null, suspendedAt: null, suspendedReason: null, enrolledIn: [], teaches: [], staffRecord: null, schoolRecord: null, scheduledDeparture: null, pendingParentInvites: [], ...extra,
 });
@@ -66,6 +70,9 @@ describe("people for the office", () => {
   it("a principal's People is the staff roster", async () => {
     await mountStaff(<People />, "PRINCIPAL", { "GET /api/v1/admin/staff": () => json({ staff: [], total: 0, roleCounts: [], subjectOptions: [] }) });
     expect(await screen.findByText("No staff yet")).toBeTruthy();
+    // An empty roster is the office's to fill; the head's door is a message to them.
+    await fireEvent.press(screen.getByRole("button", { name: "Messages" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/messages");
   });
 
   it("a refusal is an alert with a retry", async () => {

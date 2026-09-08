@@ -172,7 +172,7 @@ function ChildDay({ data }: { data: Overview }) {
           {t("parent.teacherMessagesBody")}
         </Text>
         {data.threads.length === 0 ? (
-          <Empty title={t("parent.noMessages")} body={t("parent.noMessagesBody")} />
+          <Empty title={t("parent.noMessages")} body={t("parent.noMessagesBody")} action={<Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />} />
         ) : (
           data.threads.map((thread) => (
             <Row

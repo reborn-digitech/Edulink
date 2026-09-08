@@ -3084,6 +3084,7 @@ export const mr: Dictionary = {
     nothingSetYet: "या वर्गासाठी अजून काही दिलेले नाही.",
     whoIsInClass: "या वर्गात कोण आहे", nobodyJoined: "अजून कोणी सामील झालेले नाही",
     shareCodeBlurb: "वरचा वर्ग कोड द्या आणि विद्यार्थी स्वतः सामील होऊ शकतात.",
+    nobodyJoinedBody: "विद्यार्थी ज्या वर्ग कोडने स्वतः सामील होतात, तो वेबवरील वर्गाच्या पानावर आहे.",
     recentWork: "अलीकडचे काम", attendanceOver: "मागच्या {days} दिवसांची हजेरी",
     registerToday: "आजची हजेरी", toMark: "तपासायचे",
     attendanceConcern: "हजेरीची चिंता", belowNinety: "{days} दिवसांत 90% पेक्षा कमी",
@@ -5296,5 +5297,10 @@ export const mr: Dictionary = {
     share: "शेअर करा",
     loadMore: "आणखी दाखवा",
     openOnWeb: "वेबवर उघडा",
+    writeFirstMessage: "पहिला संदेश लिहा",
+  },
+  security: {
+    rootedTitle: "या फोनमध्ये बदल केला गेला आहे",
+    rootedBody: "हा जेलब्रोकन किंवा रूटेड दिसतो. EduLink तरीही चालते, पण यावरील गुण आणि संदेश शाळेच्या अपेक्षेइतके सुरक्षित नाहीत. शक्य असल्यास खाजगी कामांसाठी दुसरा फोन वापरा.",
   },
 };

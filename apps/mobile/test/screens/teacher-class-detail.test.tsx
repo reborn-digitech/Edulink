@@ -1,6 +1,8 @@
+import { Linking } from "react-native";
 import { screen } from "@testing-library/react-native";
 import { staffClassDetailSchema } from "@edulink/contracts";
 import { TeacherClassDetail } from "@/screens/teacher/class-detail";
+import { API_BASE } from "@/lib/api";
 import { callsTo, fakeApi, ID, json, refusal, renderTeacher, resetOutbox, tap } from "./teacher-support";
 
 const mockRouter = { push: jest.fn(), params: {} as Record<string, string> };
@@ -63,6 +65,12 @@ describe("one class", () => {
     await renderTeacher(<TeacherClassDetail />);
     await screen.findByRole("button", { name: "Edit today's attendance" });
     expect(screen.getByText("Nobody has joined yet")).toBeTruthy();
+    // The phone shows no class code, so the copy sends the teacher to the class page on the web, and the door opens it.
+    expect(screen.getByText("The class code students use to add themselves is on the class page on the web.")).toBeTruthy();
+    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+    await tap(screen.getByRole("button", { name: "Open on the web" }));
+    expect(open).toHaveBeenCalledWith(`${API_BASE}/teacher/classes/${ID.class1}`);
+    open.mockRestore();
     expect(screen.getByText("Nothing set yet for this class.")).toBeTruthy();
   });
 

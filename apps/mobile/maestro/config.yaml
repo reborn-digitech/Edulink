@@ -1,0 +1,14 @@
+# Maestro workspace: run the flows in this order — 05 needs 04's request.
+executionOrder:
+  continueOnFailure: true
+  flowsOrder:
+    - 01-sign-in
+    - 02-mark-register
+    - 03-save-grade
+    - 04-apply-leave
+    - 05-approve-leave
+    - 06-book-meeting
+    - 07-hand-in-work
+    - 08-practice-question
+    - 09-read-report-card
+    - 10-switch-language

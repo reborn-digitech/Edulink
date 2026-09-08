@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { View } from "react-native";
-import { useLocalSearchParams } from "expo-router";
+import { useRef, useState } from "react";
+import { TextInput, View } from "react-native";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { inboxThreadDetailSchema, inboxThreadReplyBodySchema, inboxThreadReplyResultSchema } from "@edulink/contracts";
 import { Button, Empty, Failed, Field, Loading, Screen, Text } from "@/components";
@@ -21,9 +21,11 @@ export function Thread() {
   const { locale } = useLocale();
   const th = useTheme();
   const qc = useQueryClient();
+  const router = useRouter();
   const [draft, setDraft] = useState("");
   const [formError, setFormError] = useState<string | null>(null);
   const [sent, setSent] = useState(false);
+  const replyBox = useRef<TextInput>(null);
 
   const query = useQuery({
     queryKey: ["shared", "threads", threadId],
@@ -66,7 +68,16 @@ export function Thread() {
       {data ? (
         <>
           {data.messages.length === 0 ? (
-            <Empty title={t("remarks.noMessagesYet")} />
+            <Empty
+              title={t("remarks.noMessagesYet")}
+              action={
+                data.closedAt ? (
+                  <Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />
+                ) : (
+                  <Button label={t("mobile.writeFirstMessage")} variant="secondary" onPress={() => replyBox.current?.focus()} />
+                )
+              }
+            />
           ) : (
             <View style={{ gap: th.space[2] }}>
               {data.messages.map((m) => (
@@ -94,7 +105,7 @@ export function Thread() {
             </Text>
           ) : (
             <>
-              <Field label={t("remarks.writeReply")} placeholder={t("remarks.writeReplyPlaceholder")} value={draft} onChangeText={setDraft} multiline error={formError} style={{ minHeight: 96, textAlignVertical: "top", paddingTop: th.space[3] }} />
+              <Field ref={replyBox} label={t("remarks.writeReply")} placeholder={t("remarks.writeReplyPlaceholder")} value={draft} onChangeText={setDraft} multiline error={formError} style={{ minHeight: 96, textAlignVertical: "top", paddingTop: th.space[3] }} />
               {reply.isError ? <Failed message={`${t("remarks.couldNotSend")}: ${reply.error.message}`} onRetry={submit} /> : null}
               {sent ? (
                 <Text variant="sm" tone="ok" accessibilityLiveRegion="polite">

@@ -2,6 +2,10 @@ import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { StaffRoster } from "@/screens/staff/staff";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 
+/** The screen's empty state has a door into the app's own tabs; the router is the harness's, so a test can read where it went. */
+const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
+jest.mock("expo-router", () => ({ useRouter: () => mockRouter, useLocalSearchParams: () => mockRouter.params }));
+
 const ROSTER = {
   staff: [
     {

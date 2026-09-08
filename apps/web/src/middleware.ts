@@ -39,4 +39,6 @@ export function middleware(request: NextRequest) {
   return response;
 }
 
-export const config = { matcher: "/api/v1/:path*" };
+// /api/attendance as well: the phone posts the same body the web form does,
+// on purpose, so the outbox replay is byte-identical to the web's.
+export const config = { matcher: ["/api/v1/:path*", "/api/attendance"] };

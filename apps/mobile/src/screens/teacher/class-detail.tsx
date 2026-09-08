@@ -7,7 +7,7 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { relativeTime } from "./support";
+import { openWeb, relativeTime } from "./support";
 
 /**
  * One class, the web's /teacher/classes/[classId]: today's register, the
@@ -54,7 +54,7 @@ export function TeacherClassDetail() {
               {t("teacher.attendanceOver", { days: 28 })}
             </Text>
             {data.roster.length === 0 ? (
-              <Empty title={t("teacher.nobodyJoined")} body={t("teacher.shareCodeBlurb")} />
+              <Empty title={t("teacher.nobodyJoined")} body={t("teacher.nobodyJoinedBody")} action={<Button label={t("mobile.openOnWeb")} variant="secondary" onPress={() => openWeb(`/teacher/classes/${classId}`)} />} />
             ) : (
               data.roster.map((p) => {
                 const concern = p.percent !== null && p.percent < 90;

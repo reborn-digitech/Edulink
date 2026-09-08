@@ -1,0 +1,27 @@
+# Switch language: More → हिन्दी → the Today tab reads आज → English → Today.
+# The language chips show the language's own name and carry its English name
+# as the accessibility label, so either may be what the platform exposes.
+# Untested: needs a simulator and Maestro.
+appId: school.edulink.app
+name: Switch language and back
+tags: [teacher, i18n]
+---
+- runFlow:
+    file: common/sign-in.yaml
+    env:
+      EMAIL: "${ZZ_EMAIL_TEACHER}"
+      MAGIC_TOKEN: "${MAGIC_TOKEN_TEACHER}"
+- tapOn: "More"
+- assertVisible: "Choose a language"
+- tapOn: "हिन्दी|Hindi"
+- extendedWaitUntil:
+    visible: "आज"
+    timeout: 10000
+- assertVisible: "और"
+- assertNotVisible: "Today"
+- tapOn: "English"
+- extendedWaitUntil:
+    visible: "Today"
+    timeout: 10000
+- assertVisible: "More"
+- assertNotVisible: "आज"

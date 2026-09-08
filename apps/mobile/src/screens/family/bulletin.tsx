@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Pressable, View } from "react-native";
+import { useRouter } from "expo-router";
 import { Image } from "expo-image";
 import { keepPreviousData, useInfiniteQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import type { z } from "zod";
@@ -10,7 +11,8 @@ import { api, API_BASE, errorText } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { Chips, Note, Pill, relativeTime, useAuthHeaders } from "./shared";
+import { useRole } from "@/lib/session";
+import { Chips, Note, openWeb, Pill, relativeTime, useAuthHeaders } from "./shared";
 
 type Feed = z.infer<typeof bulletinFeedSchema>;
 type Post = Feed["items"][number];
@@ -46,6 +48,8 @@ function feedPath(schoolId: string | null, cursor: string | null): string {
 export function FamilyBulletin() {
   const t = useT();
   const qc = useQueryClient();
+  const role = useRole();
+  const router = useRouter();
   const [schoolId, setSchoolId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const feed = useInfiniteQuery({
@@ -80,9 +84,29 @@ export function FamilyBulletin() {
       {feed.isError ? <Failed message={feed.error.message} onRetry={() => void feed.refetch()} /> : null}
       {first ? (
         first.schoolId === null ? (
-          <Empty title={t("bulletin.noSchool")} body={t("bulletin.noSchoolBody")} />
+          <Empty
+            title={t("bulletin.noSchool")}
+            body={t("bulletin.noSchoolBody")}
+            action={
+              role === "PARENT" ? (
+                <Button label={t("parent.linkAnother")} variant="secondary" onPress={() => openWeb("/parent/link")} />
+              ) : (
+                <Button label={t("nav.more")} variant="secondary" onPress={() => router.push("/(app)/more" as never)} />
+              )
+            }
+          />
         ) : posts.length === 0 ? (
-          <Empty title={t("bulletin.emptyTitle")} body={t("bulletin.emptyBody")} />
+          <Empty
+            title={t("bulletin.emptyTitle")}
+            body={t("bulletin.emptyBody")}
+            action={
+              role === "PARENT" ? (
+                <Button label={t("nav.overview")} variant="secondary" onPress={() => router.push("/(app)" as never)} />
+              ) : (
+                <Button label={t("bulletin.newPost")} variant="secondary" onPress={() => openWeb("/bulletin/new")} />
+              )
+            }
+          />
         ) : (
           posts.map((post) => <PostCard key={post.id} post={post} headers={headers} onReact={(kind) => react.mutate({ postId: post.id, kind })} />)
         )
@@ -177,7 +201,7 @@ function PostCard({ post, headers, onReact }: { post: Post; headers: Record<stri
                 accessibilityLabel={n > 0 ? `${label} (${n})` : label}
                 accessibilityState={{ selected: on }}
                 onPress={() => onReact(reaction.kind)}
-                style={{ minHeight: th.tap, minWidth: th.tap, paddingHorizontal: th.space[3], borderRadius: th.radius.xl, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: th.space[1], backgroundColor: on ? th.accentSoft : "transparent" }}
+                style={{ minHeight: th.tap, minWidth: th.tap, paddingHorizontal: th.space[3], borderRadius: th.radius.xl, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: th.space[1], backgroundColor: on ? th.accentSoft : undefined }}
               >
                 <Icon name={reaction.icon} size={18} color={on ? th.accentStrong : th.fgMuted} weight={on ? "fill" : "bold"} />
                 {n > 0 ? (
