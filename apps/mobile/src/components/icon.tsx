@@ -46,7 +46,10 @@ import { MedalIcon } from "phosphor-react-native/src/icons/Medal";
  * draws — each from its own file, because the package holds 1,512 icons and
  * Metro does not tree-shake: a named import from the package index put every
  * one of them in the bundle (10.5 MB of Hermes bytecode per platform before
- * this, measured by the bundle-size gate).
+ * this, measured by the bundle-size gate). The types for these paths come
+ * from the package's declaration files (tsconfig paths), not its .tsx source,
+ * which the exports map would otherwise hand to tsc and which does not pass
+ * a strict check on every machine.
  */
 const MAP = {
   house: HouseIcon, checks: ChecksIcon, chalkboard: ChalkboardIcon, chat: ChatIcon, clipboard: ClipboardTextIcon, brain: BrainIcon,
