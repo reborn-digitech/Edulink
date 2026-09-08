@@ -17,8 +17,11 @@ export const API_BASE = (process.env.EXPO_PUBLIC_API_URL ?? "http://localhost:30
 // A release build talks to the API over TLS or not at all: a plain-http base
 // in a production bundle is a misconfiguration, and the app refuses to start
 // rather than send a session token in the clear. Development and the tests
-// (where __DEV__ is true) may point at localhost.
-if (!__DEV__ && !API_BASE.startsWith("https://")) {
+// (where __DEV__ is true) may point anywhere; a release export may point at
+// the loopback, which never leaves the machine — that is how the CI sweep
+// exports the web target against its own API.
+const LOOPBACK = /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?(\/|$)/;
+if (!__DEV__ && !API_BASE.startsWith("https://") && !LOOPBACK.test(API_BASE)) {
   throw new Error(`EXPO_PUBLIC_API_URL must be https:// in a release build (got ${API_BASE})`);
 }
 

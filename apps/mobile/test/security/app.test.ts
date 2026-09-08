@@ -56,6 +56,14 @@ describe("the session token", () => {
       process.env.EXPO_PUBLIC_API_URL = "https://api.example";
       // eslint-disable-next-line @typescript-eslint/no-require-imports -- a fresh module instance per case
       expect(() => jest.isolateModules(() => require("@/lib/api"))).not.toThrow();
+      // The loopback never leaves the machine: a release export may point at it (the CI sweep does).
+      process.env.EXPO_PUBLIC_API_URL = "http://localhost:3000";
+      // eslint-disable-next-line @typescript-eslint/no-require-imports -- a fresh module instance per case
+      expect(() => jest.isolateModules(() => require("@/lib/api"))).not.toThrow();
+      // A LAN address is the network, not the machine.
+      process.env.EXPO_PUBLIC_API_URL = "http://192.168.1.10:3000";
+      // eslint-disable-next-line @typescript-eslint/no-require-imports -- a fresh module instance per case
+      expect(() => jest.isolateModules(() => require("@/lib/api"))).toThrow(/https:\/\//);
     } finally {
       (globalThis as { __DEV__?: boolean }).__DEV__ = original;
       if (env === undefined) delete process.env.EXPO_PUBLIC_API_URL;
