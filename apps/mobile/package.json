@@ -63,7 +63,7 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "jest --ci",
-    "test:contract": "jest --ci --testPathIgnorePatterns=/node_modules/ --testPathPattern=contract",
+    "test:contract": "jest --ci --config test/contract/jest.config.cjs",
     "battery": "tsc --noEmit && eslint . && jest --ci"
   },
   "private": true,
