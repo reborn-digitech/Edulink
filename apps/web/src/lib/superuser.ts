@@ -1120,13 +1120,15 @@ export type CurationEntry = {
  *
  * UNPUBLISHED FIRST because that is the queue. A list sorted by name buries the
  * three people waiting to be looked at underneath forty who were dealt with
- * months ago, and a queue nobody can find is a queue nobody works.
+ * months ago, and a queue nobody can find is a queue nobody works. Postgres
+ * puts NULL last in an ascending sort, so "first" has to be said: without it
+ * the queue sat under everyone already dealt with.
  */
 export async function listExpertsForCuration(session: ActiveContext): Promise<CurationEntry[]> {
   assertSuperuser(session);
 
   const profiles = await db.expertProfile.findMany({
-    orderBy: [{ publishedAt: "asc" }, { createdAt: "asc" }],
+    orderBy: [{ publishedAt: { sort: "asc", nulls: "first" } }, { createdAt: "asc" }],
     take: 500,
     select: {
       id: true,
