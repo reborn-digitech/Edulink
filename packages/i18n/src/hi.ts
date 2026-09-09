@@ -1272,6 +1272,7 @@ export const hi: Dictionary = {
     setSubmit: "अभ्यास तय करें",
     assignmentsTitle: "आपके तय किए अध्याय",
     assignmentsEmpty: "इस कक्षा के लिए अभी कोई अध्याय तय नहीं।",
+    setDone: "अध्याय तय हो गया। कक्षा इसे अपने अभ्यास पेज पर देखेगी।",
     reachedCount: "{total} में से {reached} पहुँचे",
     remove: "हटाएँ",
     intro: "अभ्यास जो तुम्हारे साथ चलता है। दो सही करो तो कठिन होता है; दो गलत तो आसान।",
@@ -3793,6 +3794,9 @@ export const hi: Dictionary = {
     aboutChild: "{child} के बारे में",
     book: "बुक करें",
     bookedNote: "बुक हो गया। शिक्षक को बता दिया गया है।",
+    offeredOne: "1 स्लॉट दिया गया। परिवार अब इसे बुक कर सकते हैं।",
+    offeredMany: "{count} स्लॉट दिए गए। परिवार अब इन्हें बुक कर सकते हैं।",
+    cancelAsk: "यह स्लॉट रद्द करें? परिवार को तुरंत बता दिया जाएगा।",
   },
 
   principalCover: {

@@ -10,6 +10,7 @@ import { ADMIN } from "./api-catalog/admin";
 import { STAFF } from "./api-catalog/staff";
 import { FAMILY } from "./api-catalog/family";
 import { SHARED } from "./api-catalog/shared";
+import { OPERATOR } from "./api-catalog/operator";
 import type { Endpoint } from "./api-catalog/types";
 
-export const ENDPOINTS: Endpoint[] = [...CORE, ...ADMIN, ...STAFF, ...FAMILY, ...SHARED];
+export const ENDPOINTS: Endpoint[] = [...CORE, ...ADMIN, ...STAFF, ...FAMILY, ...SHARED, ...OPERATOR];

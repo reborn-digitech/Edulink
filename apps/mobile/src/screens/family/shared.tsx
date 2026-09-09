@@ -269,6 +269,7 @@ export function Tabs<K extends string>({ tabs, current, onChange, label }: { tab
           <Pressable
             key={tab.key}
             accessibilityRole="tab"
+            aria-selected={on}
             accessibilityLabel={tab.count !== undefined ? `${tab.label} (${tab.count})` : tab.label}
             accessibilityState={{ selected: on }}
             onPress={() => onChange(tab.key)}

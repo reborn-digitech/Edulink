@@ -7,8 +7,9 @@ import { contextFor, settle, tokenFor } from "./actors";
  * deterministic one in twenty requests dropped — the count decides, never a
  * random number, so a run that fails can be re-run to the same request.
  *
- * A cold load of the teacher's Today makes exactly two requests, in order:
- * /api/v1/me (the session) and /api/v1/staff/today (the screen). The tests
+ * A cold load of the teacher's Today makes exactly two requests of its own,
+ * in order: /api/v1/me (the session) and /api/v1/staff/today (the screen);
+ * the tab bar's badge counts are let through uncounted. The tests
  * start the counter where the rule lands on the screen's own fetch, and
  * assert which URL was dropped, so a change in the app's request order
  * shows up as a failed assertion rather than a silently different test.
@@ -27,6 +28,13 @@ async function harshNetwork(page: Page, opts: { from?: number; drop: (n: number)
   let n = opts.from ?? 0;
   await page.route("**/api/v1/**", async (route) => {
     const path = new URL(route.request().url()).pathname;
+    // The bar's two badge counts (unread messages, unread notices) ride
+    // along on every cold load; they are neither counted nor delayed here,
+    // so the twentieth request stays the screen's own fetch.
+    if (BADGES.has(path)) {
+      await route.continue();
+      return;
+    }
     const index = ++n;
     await new Promise((resolve) => setTimeout(resolve, DELAY_MS));
     if (opts.drop(index)) {
@@ -40,6 +48,7 @@ async function harshNetwork(page: Page, opts: { from?: number; drop: (n: number)
   return log;
 }
 
+const BADGES = new Set(["/api/v1/shared/inbox", "/api/v1/shared/notifications"]);
 const everyTwentieth = (n: number) => n % DROP_EVERY === 0;
 
 test("slow: Today still renders with every response 2 s late", async ({ browser }) => {

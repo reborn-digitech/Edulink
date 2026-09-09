@@ -23,7 +23,14 @@ import { join } from "node:path";
 import { callsInSource } from "../lib/api-catalog.test";
 
 const BASE = process.env.EDULINK_API_BASE;
-const TOKENS = { TEACHER: process.env.EDULINK_TOKEN_TEACHER, PARENT: process.env.EDULINK_TOKEN_PARENT, STUDENT: process.env.EDULINK_TOKEN_STUDENT };
+const TOKENS = {
+  TEACHER: process.env.EDULINK_TOKEN_TEACHER,
+  PARENT: process.env.EDULINK_TOKEN_PARENT,
+  STUDENT: process.env.EDULINK_TOKEN_STUDENT,
+  ADMIN: process.env.EDULINK_TOKEN_ADMIN,
+  PRINCIPAL: process.env.EDULINK_TOKEN_PRINCIPAL,
+  EXPERT: process.env.EDULINK_TOKEN_EXPERT,
+};
 const describeIf = BASE ? describe : describe.skip;
 
 function client(token: string | null) {
@@ -69,7 +76,7 @@ describeIf("the app's client against /api/v1", () => {
   });
 });
 
-type Access = "anyone" | "signed-in" | string[];
+type Access = "anyone" | "signed-in" | "operator" | "app-admin" | string[];
 type Doc = { paths: Record<string, Record<string, { "x-access": Access }>> };
 
 describeIf("the role matrix, from the app's client", () => {
@@ -79,6 +86,8 @@ describeIf("the role matrix, from the app's client", () => {
     const access = doc.paths[path]!.get!["x-access"];
     if (access === "anyone") return "2xx";
     if (role === null) return 401;
+    // The operator's and the content team's endpoints: no school role opens them.
+    if (access === "operator" || access === "app-admin") return 403;
     if (access === "signed-in" || access.includes(role)) return "2xx";
     return 403;
   };

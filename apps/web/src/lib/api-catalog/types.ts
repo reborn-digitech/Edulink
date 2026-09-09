@@ -8,16 +8,19 @@
  * a handler nobody documents and nobody sweeps, which is how the web app's
  * two "routes that did not exist" happened.
  *
- * `roles` is who may call it: which roles answer 2xx/422 rather than 403.
- * `"anyone"` means signed-out too; `"signed-in"` means any session. The sweep
- * sends every listed role and asserts the status alone. `sample` gives a
+ * `access` is who may call it: which roles answer 2xx/422 rather than 403.
+ * `"anyone"` means signed-out too; `"signed-in"` means any session;
+ * `"operator"` is the server operator alone (User.isSuperuser) and
+ * `"app-admin"` the content team (User.isAppAdmin, the operator too) — neither
+ * is a school role, so every role token the sweep holds expects 403 there. The
+ * sweep sends every listed role and asserts the status alone. `sample` gives a
  * concrete path for endpoints with a parameter, filled from the ZZ fixture
  * by the sweep; without one the sweep skips the endpoint and says so.
  */
 import type { ZodTypeAny } from "zod";
 import type { RoleCode } from "@edulink/contracts";
 
-export type Access = "anyone" | "signed-in" | RoleCode[];
+export type Access = "anyone" | "signed-in" | "operator" | "app-admin" | RoleCode[];
 
 export type Endpoint = {
   method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";

@@ -38,6 +38,24 @@ const POST = {
 const page = (items: object[], nextCursor: string | null) => ({ schoolId: "s1", schoolName: "ZZ School", schools: [], filter: null, pendingCount: 0, items, nextCursor });
 const PATH = "/api/v1/shared/bulletin";
 const REACT = `/api/v1/shared/bulletin/${ID.post}/react`;
+const GLOBAL = "/api/v1/shared/bulletin/global";
+const GLOBAL_POST = {
+  id: "czz00000000000000000gpost1",
+  category: "LEARNING",
+  title: "ZZ Far post",
+  body: "Shared with every school.",
+  media: [],
+  tags: ["science"],
+  reactions: { CLAP: 1 },
+  myReactions: [],
+  commentCount: 0,
+  createdAt: "2026-09-05T10:00:00.000Z",
+  authorName: "ZZ Author",
+  schoolName: "ZZ Far School",
+  schoolId: "s2",
+  ours: false,
+  hiddenHere: false,
+};
 
 describe("the bulletin", () => {
   it("is loading while the feed is on its way", async () => {
@@ -82,5 +100,34 @@ describe("the bulletin", () => {
     await renderFamily(<FamilyBulletin />, ME_STUDENT, { [PATH]: refused(500, "ZZ broke") });
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ broke");
     expect(screen.getByRole("button", { name: "Try again" })).toBeTruthy();
+  });
+
+  it("every school: the global feed names each post's school, reacts the same way, and with nothing shared the door is our own feed", async () => {
+    const { fetch } = await renderFamily(<FamilyBulletin />, ME_STUDENT, {
+      [PATH]: () => page([POST], null),
+      [GLOBAL]: () => ({ items: [GLOBAL_POST], nextCursor: null }),
+      [`/api/v1/shared/bulletin/${GLOBAL_POST.id}/react`]: () => ({ added: true }),
+    });
+    await screen.findByText("ZZ Sports day");
+    await press(screen.getByRole("button", { name: "Global feed" }));
+    expect(await screen.findByText("ZZ Far post")).toBeTruthy();
+    expect(screen.getByText("ZZ Far School")).toBeTruthy();
+    expect(screen.getByText("by ZZ Author")).toBeTruthy();
+    expect(screen.getByText("Learning & Academics")).toBeTruthy();
+    expect(screen.queryByText("ZZ Sports day")).toBeNull();
+    expect(calls(fetch, GLOBAL).some((c) => c.url.searchParams.get("limit") === "20")).toBe(true);
+    await press(screen.getByRole("button", { name: "Well done (1)" }));
+    await waitFor(() => expect(calls(fetch, `/api/v1/shared/bulletin/${GLOBAL_POST.id}/react`)).toHaveLength(1));
+    await press(screen.getByRole("button", { name: "Our school’s feed" }));
+    expect(await screen.findByText("ZZ Sports day")).toBeTruthy();
+  });
+
+  it("with nothing shared by any school, says so, and the door is our own feed", async () => {
+    await renderFamily(<FamilyBulletin />, ME_STUDENT, { [PATH]: () => page([POST], null), [GLOBAL]: () => ({ items: [], nextCursor: null }) });
+    await press(await screen.findByRole("button", { name: "Global feed" }));
+    expect(await screen.findByText("Nothing shared yet")).toBeTruthy();
+    // The chip and the empty state's door share the label; the door is the last one on the page.
+    await press(screen.getAllByRole("button", { name: "Our school’s feed" }).at(-1)!);
+    expect(await screen.findByText("ZZ Sports day")).toBeTruthy();
   });
 });

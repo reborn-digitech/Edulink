@@ -160,6 +160,7 @@ function Chip({ label, on, onPress }: { label: string; on: boolean; onPress: () 
   return (
     <Pressable
       accessibilityRole="radio"
+      aria-checked={on}
       accessibilityLabel={label}
       accessibilityState={{ checked: on }}
       onPress={onPress}

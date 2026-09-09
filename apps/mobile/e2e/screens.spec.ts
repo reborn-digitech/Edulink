@@ -18,7 +18,7 @@ const OUT = join(__dirname, "screens");
 const actors = rolesWithTokens();
 
 if (actors.length === 0) {
-  test.skip("no role tokens in the environment (EDULINK_TOKEN_TEACHER, _PARENT, _STUDENT)", () => {});
+  test.skip("no role tokens in the environment (EDULINK_TOKEN_TEACHER, _PARENT, _STUDENT, _ADMIN, _PRINCIPAL, _EXPERT)", () => {});
 }
 
 for (const { role, token } of actors) {

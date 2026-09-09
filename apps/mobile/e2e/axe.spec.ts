@@ -1,24 +1,24 @@
 import { test, expect } from "@playwright/test";
 import { AxeBuilder } from "@axe-core/playwright";
-import { THEMES, contextFor, rolesWithTokens, routesFor, settle } from "./actors";
+import { THEMES, allRoutesFor, contextFor, rolesWithTokens, settle } from "./actors";
 
 /**
  * The accessibility gate on the web target: every route of the role's tab
- * bar, plus More and the bell, as every role with a token, in both colour
- * schemes. Zero serious or critical violations is the assertion; moderate
+ * bar, plus More, the bell and every screen More opens, as every role with
+ * a token, in both colour schemes. Zero serious or critical violations is the assertion; moderate
  * and minor ones are printed, not failed — the number should fall, not be
  * hidden. The page must also have answered under 400.
  */
 const actors = rolesWithTokens();
 
 if (actors.length === 0) {
-  test.skip("no role tokens in the environment (EDULINK_TOKEN_TEACHER, _PARENT, _STUDENT)", () => {});
+  test.skip("no role tokens in the environment (EDULINK_TOKEN_TEACHER, _PARENT, _STUDENT, _ADMIN, _PRINCIPAL, _EXPERT)", () => {});
 }
 
 for (const { role, token } of actors) {
   for (const theme of THEMES) {
     test.describe(`${role} · ${theme}`, () => {
-      for (const route of routesFor(role)) {
+      for (const route of allRoutesFor(role)) {
         test(`${route}`, async ({ browser }) => {
           const context = await contextFor(browser, token, { theme, locale: "en" });
           const page = await context.newPage();

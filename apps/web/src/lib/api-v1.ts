@@ -110,6 +110,8 @@ export async function meBody(ctx: ActiveContext) {
       avatarKey: ctx.user.avatarKey,
       isMinor: ctx.user.isMinor,
       locale: ctx.user.prefs.locale ?? "en",
+      isSuperuser: ctx.user.isSuperuser,
+      isAppAdmin: ctx.user.isAppAdmin,
     },
     active: { schoolId: ctx.schoolId, role: ctx.role as Role | null, membershipId: ctx.membershipId },
     contexts,

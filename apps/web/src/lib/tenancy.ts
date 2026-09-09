@@ -136,6 +136,27 @@ export async function requireApiRole<R extends Role>(
   return session as ActiveContext & { role: R; schoolId: string; membershipId: string };
 }
 
+/**
+ * The operator, for a ROUTE HANDLER: 401 with no session, 403 without the
+ * flag — a refusal the phone can show, not the page gate's redirect home.
+ * No school context is required or returned: the operator's endpoints read
+ * the whole server through SUPERUSER_TABLES, never one tenant.
+ */
+export async function requireApiOperator(): Promise<ActiveContext> {
+  const session = await getSession();
+  if (!session) throw new AccessError("access.notSignedIn", "UNAUTHENTICATED");
+  if (!session.user.isSuperuser) throw new AccessError("access.wrongRoleForThisAction");
+  return session;
+}
+
+/** The content team, for a route handler; the operator passes too, as on `requireAppAdmin`. */
+export async function requireApiAppAdmin(): Promise<ActiveContext> {
+  const session = await getSession();
+  if (!session) throw new AccessError("access.notSignedIn", "UNAUTHENTICATED");
+  if (!session.user.isAppAdmin && !session.user.isSuperuser) throw new AccessError("access.wrongRoleForThisAction");
+  return session;
+}
+
 function roleHome(role: Role): string {
   return ROLE_HOME[role];
 }

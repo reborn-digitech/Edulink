@@ -49,6 +49,10 @@ export const meSchema = z.object({
     avatarKey: z.string().nullable(),
     isMinor: z.boolean(),
     locale: localeSchema,
+    /** Runs the server: the web's /root. No school, no role — the app shows the operator's own screen. */
+    isSuperuser: z.boolean().default(false),
+    /** The content team: the web's /appadmin. The operator holds this too. */
+    isAppAdmin: z.boolean().default(false),
   }),
   active: z.object({ schoolId: z.string().nullable(), role: roleSchema.nullable(), membershipId: z.string().nullable() }),
   contexts: z.array(z.object({ schoolId: z.string().nullable(), schoolName: z.string().nullable(), role: roleSchema })),

@@ -3,6 +3,7 @@ import type { RoleCode } from "@edulink/contracts";
 import { Button, Card, Row, Screen, Text } from "@/components";
 import { useSession } from "@/lib/session";
 import { useT } from "@/lib/i18n";
+import { NoSchool } from "@/screens/shared/no-school";
 
 /**
  * "Choose where to go": a person who belongs to more than one school, or is
@@ -10,13 +11,15 @@ import { useT } from "@/lib/i18n";
  * sends them to /switch for the same reason. One tap binds the session to
  * a school and a role through /me/context; the tab bar appears after it.
  */
-export function ChooseContext() {
+export function ChooseContext({ consoles = [], onConsole }: { consoles?: ("operator" | "appadmin")[]; onConsole?: (which: "operator" | "appadmin") => void }) {
   const t = useT();
   const session = useSession();
   const [busy, setBusy] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   if (session.status !== "signed-in") return null;
   const { me } = session;
+  // Nobody to be at any school: the web's /switch says so and offers the join page.
+  if (me.contexts.length === 0) return <NoSchool />;
   return (
     <Screen title={t("switch.whereToGo")} description={t("switch.switchAnyTime")}>
       <Card>
@@ -43,6 +46,12 @@ export function ChooseContext() {
           );
         })}
       </Card>
+      {consoles.length > 0 ? (
+        <Card title={t("root.serverBadge")}>
+          {consoles.includes("operator") ? <Row title={t("root.serverAdministration")} caption={t("root.serverBadge")} onPress={() => onConsole?.("operator")} /> : null}
+          {consoles.includes("appadmin") ? <Row title={t("root.contentTeam")} caption={t("root.serverBadge")} onPress={() => onConsole?.("appadmin")} /> : null}
+        </Card>
+      ) : null}
       {error ? (
         <Text variant="sm" tone="danger" accessibilityRole="alert">
           {error}

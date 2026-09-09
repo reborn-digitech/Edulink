@@ -48,7 +48,14 @@ export function gated(): { answer: Answer; open: (make: () => Response) => void 
   };
 }
 
-export async function mountStaff(ui: ReactElement, role: RoleCode, answers: Answers) {
+/**
+ * What a test may change about the harness: `me` replaces the whole /api/v1/me
+ * answer, for a person with no school context at all — the server operator or
+ * the content team, whose `active` is empty and whose flag sits on `user`.
+ */
+export type MountOptions = { me?: unknown };
+
+export async function mountStaff(ui: ReactElement, role: RoleCode, answers: Answers, options: MountOptions = {}) {
   __setKeyStore(memoryStore({ [KEYS.token]: "t" }));
   const fetch = jest.fn(async (input: string | URL | Request, init?: RequestInit) => {
     const url = new URL(String(input));
@@ -56,7 +63,7 @@ export async function mountStaff(ui: ReactElement, role: RoleCode, answers: Answ
     const method = init?.method ?? "GET";
     const answer = answers[`${method} ${url.pathname}`];
     if (answer) return answer({ url, init: init ?? {} });
-    if (url.pathname === "/api/v1/me") return json(me(role));
+    if (url.pathname === "/api/v1/me") return json(options.me ?? me(role));
     return json({ error: "Not found", code: "NOT_FOUND" }, 404);
   });
   __setApiClient(createApiClient({ baseUrl: "http://api.test", getToken: () => "t", fetch: fetch as unknown as typeof globalThis.fetch }));

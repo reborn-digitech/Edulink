@@ -4,7 +4,7 @@ import { lookup, type Locale } from "@edulink/i18n";
 import { en } from "@edulink/i18n/en";
 import { hi } from "@edulink/i18n/hi";
 import { mr } from "@edulink/i18n/mr";
-import { TABS } from "../src/lib/nav";
+import { MENU, TABS } from "../src/lib/nav";
 
 /**
  * Who the battery signs in as, and how.
@@ -16,13 +16,14 @@ import { TABS } from "../src/lib/nav";
  * loads /api/v1/me the way it would on a phone that was already signed in.
  *
  * Tokens come from the environment, minted on the ZZ Northgate fixture by
- * the web's `npm run zz:token -- TEACHER` (also PARENT, STUDENT). A role
+ * the web's `npm run zz:token -- TEACHER` (also PARENT, STUDENT, ADMIN,
+ * PRINCIPAL, EXPERT). A role
  * whose token is absent is skipped with a printed line, never failed.
  */
 export const BASE = process.env.BASE ?? "http://localhost:8081";
 export const API = process.env.API ?? "http://localhost:3000";
 
-export const ROLES = ["TEACHER", "PARENT", "STUDENT"] as const satisfies readonly RoleCode[];
+export const ROLES = ["TEACHER", "PARENT", "STUDENT", "ADMIN", "PRINCIPAL", "EXPERT"] as const satisfies readonly RoleCode[];
 export type Role = (typeof ROLES)[number];
 
 export const LOCALES = ["en", "hi", "mr"] as const satisfies readonly Locale[];
@@ -63,6 +64,16 @@ export function rolesWithTokens(): { role: Role; token: string }[] {
 export function routesFor(role: Role): string[] {
   const tabs = TABS[role].map((tab) => (tab.name === "index" ? "/" : `/${tab.name}`));
   return Array.from(new Set([...tabs, "/more", "/notifications"]));
+}
+
+/**
+ * The bar's routes and every screen the role's More sheet opens in the app
+ * (the entries that open the web are not routes here). The accessibility
+ * gate walks this set; the screenshot set keeps to the bar.
+ */
+export function allRoutesFor(role: Role): string[] {
+  const more = MENU[role].flatMap((item) => (item.screen ? [item.screen.replace("/(app)", "")] : []));
+  return Array.from(new Set([...routesFor(role), ...more]));
 }
 
 export const DICTIONARIES = { en, hi, mr } as const;

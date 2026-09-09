@@ -98,3 +98,4 @@ export * from "./v1/admin";
 export * from "./v1/staff";
 export * from "./v1/family";
 export * from "./v1/shared";
+export * from "./v1/operator";

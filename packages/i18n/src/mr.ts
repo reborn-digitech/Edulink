@@ -1269,6 +1269,7 @@ export const mr: Dictionary = {
     setSubmit: "सराव ठरवा",
     assignmentsTitle: "तुम्ही ठरवलेले धडे",
     assignmentsEmpty: "या वर्गासाठी अजून धडा ठरवलेला नाही.",
+    setDone: "धडा ठरवला. वर्गाला तो त्यांच्या सराव पानावर दिसेल.",
     reachedCount: "{total} पैकी {reached} पोहोचले",
     remove: "काढा",
     intro: "तुझ्यासोबत चालणारा सराव. दोन बरोबर आले की कठीण होते; दोन चुकले की सोपे.",
@@ -3790,6 +3791,9 @@ export const mr: Dictionary = {
     aboutChild: "{child} बद्दल",
     book: "बुक करा",
     bookedNote: "बुक झाले. शिक्षकांना कळवले आहे.",
+    offeredOne: "1 स्लॉट दिला. कुटुंबे आता तो बुक करू शकतात.",
+    offeredMany: "{count} स्लॉट दिले. कुटुंबे आता ते बुक करू शकतात.",
+    cancelAsk: "हा स्लॉट रद्द करायचा? कुटुंबाला लगेच कळवले जाईल.",
   },
 
   principalCover: {

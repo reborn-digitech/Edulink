@@ -212,6 +212,9 @@ jobs:
           export EDULINK_TOKEN_TEACHER="$(npm run --silent zz:token -- TEACHER)"
           export EDULINK_TOKEN_PARENT="$(npm run --silent zz:token -- PARENT)"
           export EDULINK_TOKEN_STUDENT="$(npm run --silent zz:token -- STUDENT)"
+          export EDULINK_TOKEN_ADMIN="$(npm run --silent zz:token -- ADMIN)"
+          export EDULINK_TOKEN_PRINCIPAL="$(npm run --silent zz:token -- PRINCIPAL)"
+          export EDULINK_TOKEN_EXPERT="$(npm run --silent zz:token -- EXPERT)"
           pnpm --filter @edulink/mobile test:contract
           npm run --silent zz:token -- --purge
       - name: Playwright browsers
@@ -255,7 +258,7 @@ jobs:
           curl -sf http://localhost:8081/ > /dev/null
       - name: Mobile accessibility gate, screenshots, offline and slow-network flows
         working-directory: apps/web
-        # The same ZZ tokens the contract step mints; the app signs in with them on its web target.
+        # The same ZZ tokens the contract step mints, one per role; the app signs in with them on its web target.
         run: |
           export BASE=http://localhost:8081
           export API=http://localhost:3000
@@ -263,6 +266,9 @@ jobs:
           export EDULINK_TOKEN_TEACHER="$(npm run --silent zz:token -- TEACHER)"
           export EDULINK_TOKEN_PARENT="$(npm run --silent zz:token -- PARENT)"
           export EDULINK_TOKEN_STUDENT="$(npm run --silent zz:token -- STUDENT)"
+          export EDULINK_TOKEN_ADMIN="$(npm run --silent zz:token -- ADMIN)"
+          export EDULINK_TOKEN_PRINCIPAL="$(npm run --silent zz:token -- PRINCIPAL)"
+          export EDULINK_TOKEN_EXPERT="$(npm run --silent zz:token -- EXPERT)"
           pnpm --filter @edulink/mobile e2e
           npm run --silent zz:token -- --purge
       - name: Mobile screenshots, report and traces

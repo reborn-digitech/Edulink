@@ -89,6 +89,8 @@ async function actors(): Promise<Record<Role, string>> {
 
 function expected(e: Endpoint, role: Role | null): number | number[] {
   if (role === null) return e.access === "anyone" ? (e.emptyBodyStatus ?? 200) : 401;
+  // The operator and the content team hold no school role: every role token is refused.
+  if (e.access === "operator" || e.access === "app-admin") return 403;
   const permitted = e.access === "anyone" || e.access === "signed-in" || e.access.includes(role);
   if (!permitted) return 403;
   if (e.method === "GET") return e.path === "/api/v1/events" ? 200 : [200, 404];

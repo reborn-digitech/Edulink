@@ -814,6 +814,14 @@
                             "hi",
                             "mr"
                           ]
+                        },
+                        "isSuperuser": {
+                          "type": "boolean",
+                          "default": false
+                        },
+                        "isAppAdmin": {
+                          "type": "boolean",
+                          "default": false
                         }
                       },
                       "required": [
@@ -986,6 +994,14 @@
                             "hi",
                             "mr"
                           ]
+                        },
+                        "isSuperuser": {
+                          "type": "boolean",
+                          "default": false
+                        },
+                        "isAppAdmin": {
+                          "type": "boolean",
+                          "default": false
                         }
                       },
                       "required": [
@@ -24958,6 +24974,665 @@
                   "device"
                 ],
                 "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/overview": {
+      "get": {
+        "summary": "The server: its schools (narrowed by q and state), the counts, and the scheduled jobs' health",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "counts": {
+                      "type": "object",
+                      "properties": {
+                        "live": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "removed": {
+                          "$ref": "#/properties/counts/properties/live"
+                        },
+                        "noAdmin": {
+                          "$ref": "#/properties/counts/properties/live"
+                        },
+                        "appAdmins": {
+                          "$ref": "#/properties/counts/properties/live"
+                        },
+                        "expertsWaiting": {
+                          "$ref": "#/properties/counts/properties/live"
+                        }
+                      },
+                      "required": [
+                        "live",
+                        "removed",
+                        "noAdmin",
+                        "appAdmins",
+                        "expertsWaiting"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "schools": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "city": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "country": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "code": {
+                            "type": "string"
+                          },
+                          "gradeLow": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "gradeHigh": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "removedAt": {
+                            "allOf": [
+                              {
+                                "$ref": "#/properties/schools/items/properties/createdAt"
+                              }
+                            ],
+                            "nullable": true
+                          },
+                          "pendingAdminInvites": {
+                            "$ref": "#/properties/counts/properties/live"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "city",
+                          "country",
+                          "code",
+                          "gradeLow",
+                          "gradeHigh",
+                          "createdAt",
+                          "removedAt",
+                          "pendingAdminInvites"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "jobs": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "schedule": {
+                            "type": "string"
+                          },
+                          "describeKey": {
+                            "type": "string"
+                          },
+                          "lastRun": {
+                            "type": "object",
+                            "properties": {
+                              "startedAt": {
+                                "$ref": "#/properties/schools/items/properties/createdAt"
+                              },
+                              "finishedAt": {
+                                "$ref": "#/properties/schools/items/properties/removedAt"
+                              },
+                              "ok": {
+                                "type": "boolean",
+                                "nullable": true
+                              },
+                              "summary": {
+                                "type": "string"
+                              },
+                              "error": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "startedAt",
+                              "finishedAt",
+                              "ok",
+                              "summary",
+                              "error"
+                            ],
+                            "additionalProperties": false,
+                            "nullable": true
+                          },
+                          "lastSuccessAt": {
+                            "$ref": "#/properties/schools/items/properties/removedAt"
+                          },
+                          "overdue": {
+                            "type": "boolean"
+                          },
+                          "lastFailed": {
+                            "type": "boolean"
+                          },
+                          "running": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "schedule",
+                          "describeKey",
+                          "lastRun",
+                          "lastSuccessAt",
+                          "overdue",
+                          "lastFailed",
+                          "running"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "counts",
+                    "schools",
+                    "jobs"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "q": {
+                    "type": "string",
+                    "maxLength": 200
+                  },
+                  "state": {
+                    "type": "string",
+                    "enum": [
+                      "live",
+                      "removed",
+                      "noadmin",
+                      "all"
+                    ],
+                    "default": "live"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/audit": {
+      "get": {
+        "summary": "The server log: everything done from outside any school, newest first",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "at": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "action": {
+                            "type": "string"
+                          },
+                          "actorName": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "system": {
+                            "type": "boolean"
+                          },
+                          "schoolName": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "ip": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "summary": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "at",
+                          "action",
+                          "actorName",
+                          "system",
+                          "schoolName",
+                          "ip",
+                          "summary"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 200,
+                    "default": 50
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/operator/experts": {
+      "get": {
+        "summary": "The expert curation queue, unpublished first",
+        "description": "The server operator.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "operator",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "profileId": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "email": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "headline": {
+                            "type": "string"
+                          },
+                          "organisation": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "specialisms": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "offering": {
+                            "type": "string"
+                          },
+                          "mentorCapacity": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "activeMentorships": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "publishedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "verifiedAt": {
+                            "$ref": "#/properties/items/items/properties/publishedAt"
+                          },
+                          "createdAt": {
+                            "$ref": "#/properties/items/items/properties/publishedAt"
+                          }
+                        },
+                        "required": [
+                          "profileId",
+                          "name",
+                          "email",
+                          "headline",
+                          "organisation",
+                          "specialisms",
+                          "offering",
+                          "mentorCapacity",
+                          "activeMentorships",
+                          "publishedAt",
+                          "verifiedAt",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/appadmin/competitions": {
+      "get": {
+        "summary": "The platform competitions, posted for every school at once",
+        "description": "The content team.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": "app-admin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 64
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "summary": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "DRAFT",
+                              "PUBLISHED",
+                              "ARCHIVED"
+                            ]
+                          },
+                          "organizerName": {
+                            "type": "string"
+                          },
+                          "registrationClosesAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "createdAt": {
+                            "$ref": "#/properties/items/items/properties/registrationClosesAt"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "title",
+                          "summary",
+                          "status",
+                          "organizerName",
+                          "registrationClosesAt",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
               }
             }
           }

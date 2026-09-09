@@ -1399,6 +1399,7 @@ export const en = {
     setSubmit: "Set practice",
     assignmentsTitle: "Chapters you set",
     assignmentsEmpty: "You have not set a chapter for this class yet.",
+    setDone: "Chapter set. The class sees it on their practice page.",
     reachedCount: "{reached} of {total} reached",
     remove: "Remove",
     /* Level labels are language-specific: each dictionary carries only its own
@@ -4172,6 +4173,9 @@ export const en = {
     aboutChild: "about {child}",
     book: "Book",
     bookedNote: "Booked. The teacher has been told.",
+    offeredOne: "1 slot offered. Families can book it now.",
+    offeredMany: "{count} slots offered. Families can book them now.",
+    cancelAsk: "Cancel this slot? The family is told straight away.",
   },
 
   principalCover: {

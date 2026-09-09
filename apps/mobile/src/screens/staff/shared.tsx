@@ -97,6 +97,7 @@ export function Chips<T extends string>({
             <Pressable
               key={o.value}
               accessibilityRole="radio"
+              aria-checked={on}
               accessibilityState={{ checked: on, disabled: Boolean(disabled) }}
               accessibilityLabel={o.label}
               disabled={disabled}
@@ -138,6 +139,7 @@ export function MultiChips<T extends string>({ label, values, options, onToggle 
             <Pressable
               key={o.value}
               accessibilityRole="checkbox"
+              aria-checked={on}
               accessibilityState={{ checked: on }}
               accessibilityLabel={o.label}
               onPress={() => onToggle(o.value)}
@@ -179,4 +181,23 @@ export function Notice({ text, tone = "ok" }: { text: string; tone?: "ok" | "dan
       </Text>
     </View>
   );
+}
+
+/** A date key moved by whole days — "2026-09-07" + 7 → "2026-09-14"; the key itself if it cannot be read. */
+export function addDaysToKey(key: string, days: number): string {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(key);
+  if (!m) return key;
+  return new Date(Date.UTC(Number(m[1]), Number(m[2]) - 1, Number(m[3]) + days)).toISOString().slice(0, 10);
+}
+
+/** A month key moved by whole months — "2026-09" − 1 → "2026-08"; the key itself if it cannot be read. */
+export function shiftMonth(month: string, delta: number): string {
+  const m = /^(\d{4})-(\d{2})$/.exec(month);
+  if (!m) return month;
+  return new Date(Date.UTC(Number(m[1]), Number(m[2]) - 1 + delta, 1)).toISOString().slice(0, 7);
+}
+
+/** This month as the school day counts it, for "no further forward than now". */
+export function thisMonthKey(now: Date = new Date()): string {
+  return now.toISOString().slice(0, 7);
 }
