@@ -202,7 +202,7 @@ export function DataToolbar({
                 aria-pressed={on}
                 onClick={() => navigate({ [facet.key]: o.value === (facet.defaultValue ?? "") ? null : o.value })}
                 className={cn(
-                  "min-h-9 shrink-0 snap-start rounded-full px-3 text-xs font-medium transition-colors",
+                  "min-h-11 shrink-0 snap-start rounded-full px-3 text-xs font-medium transition-colors",
                   on ? "bg-accent text-accent-fg" : "border border-border bg-surface text-fg-muted hover:bg-surface-muted hover:text-fg",
                 )}
               >

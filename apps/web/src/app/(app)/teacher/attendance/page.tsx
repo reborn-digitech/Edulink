@@ -267,8 +267,8 @@ function DayChips({
           aria-current={chip.on ? "page" : undefined}
           className={
             chip.on
-              ? "inline-flex min-h-9 items-center rounded-full bg-accent px-3 text-xs font-medium text-accent-fg"
-              : "inline-flex min-h-9 items-center rounded-full border border-border bg-surface px-3 text-xs font-medium text-fg-muted hover:bg-surface-muted hover:text-fg"
+              ? "inline-flex min-h-11 items-center rounded-full bg-accent px-3 text-xs font-medium text-accent-fg"
+              : "inline-flex min-h-11 items-center rounded-full border border-border bg-surface px-3 text-xs font-medium text-fg-muted hover:bg-surface-muted hover:text-fg"
           }
         >
           {chip.label}
