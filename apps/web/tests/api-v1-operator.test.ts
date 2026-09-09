@@ -25,6 +25,8 @@ let removedSchoolId = "";
 let teacherUserId = "";
 let operatorUserId = "";
 let curatorUserId = "";
+let listedExpertUserId = "";
+let waitingExpertUserId = "";
 let competitionId = "";
 
 const get = (path: string) => new Request(`http://localhost${path}`);
@@ -68,6 +70,19 @@ beforeAll(async () => {
   curatorUserId = curator.id;
   await db.membership.create({ data: { userId: teacherUserId, schoolId, role: "TEACHER", status: "ACTIVE" } });
 
+  // Two experts, so the queue's order is asserted on every run and not only
+  // on a database that happens to hold somebody waiting: one listed a year
+  // ago, one still waiting — and the waiting one was created later, which is
+  // exactly the case a "publishedAt asc" sort gets wrong.
+  const [listedUser, waitingUser] = await Promise.all([
+    db.user.create({ data: { name: "ZZ V1O Listed Expert", email: `zz-v1o-listed-${STAMP}@test.invalid` }, select: { id: true } }),
+    db.user.create({ data: { name: "ZZ V1O Waiting Expert", email: `zz-v1o-waiting-${STAMP}@test.invalid` }, select: { id: true } }),
+  ]);
+  listedExpertUserId = listedUser.id;
+  waitingExpertUserId = waitingUser.id;
+  await db.expertProfile.create({ data: { userId: listedUser.id, headline: "ZZ V1O listed", publishedAt: new Date(Date.now() - 365 * 86_400_000), createdAt: new Date(Date.now() - 400 * 86_400_000) } });
+  await db.expertProfile.create({ data: { userId: waitingUser.id, headline: "ZZ V1O waiting", publishedAt: null } });
+
   const competition = await db.competition.create({
     data: { organizerSchoolId: null, organizerName: "ZZ V1O Platform", title: `ZZ V1O Olympiad ${STAMP}`, summary: "For every school.", status: "DRAFT" },
     select: { id: true },
@@ -77,8 +92,9 @@ beforeAll(async () => {
 
 afterAll(async () => {
   __resetCookies();
-  const ids = [teacherUserId, operatorUserId, curatorUserId].filter(Boolean);
+  const ids = [teacherUserId, operatorUserId, curatorUserId, listedExpertUserId, waitingExpertUserId].filter(Boolean);
   await db.session.deleteMany({ where: { userId: { in: ids } } });
+  await db.expertProfile.deleteMany({ where: { userId: { in: ids } } });
   await db.membership.deleteMany({ where: { userId: { in: ids } } });
   if (competitionId) await db.competition.deleteMany({ where: { id: competitionId } });
   await db.user.deleteMany({ where: { id: { in: ids } } });
@@ -145,13 +161,19 @@ describe("as the operator", () => {
     expect((await auditGet(get(`${P}/operator/audit?limit=999`))).status).toBe(422);
   });
 
-  it("experts: the queue parses, unpublished first", async () => {
+  it("experts: the queue parses, and everyone waiting comes before anyone listed", async () => {
     const res = await expertsGet();
     expect(res.status).toBe(200);
     const body = operatorExpertsSchema.parse(await res.json());
+    const waiting = body.items.findIndex((e) => e.headline === "ZZ V1O waiting");
+    const listed = body.items.findIndex((e) => e.headline === "ZZ V1O listed");
+    expect(waiting).toBeGreaterThanOrEqual(0);
+    expect(listed).toBeGreaterThanOrEqual(0);
+    expect(waiting).toBeLessThan(listed);
+    // Not just those two: no listed profile anywhere above a waiting one.
     const firstListed = body.items.findIndex((e) => e.publishedAt !== null);
     const lastWaiting = body.items.map((e) => e.publishedAt === null).lastIndexOf(true);
-    if (firstListed !== -1 && lastWaiting !== -1) expect(lastWaiting).toBeLessThan(firstListed);
+    expect(lastWaiting).toBeLessThan(firstListed);
   });
 
   it("competitions: the operator reads the content team's list too", async () => {
