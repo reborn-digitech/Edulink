@@ -12,7 +12,7 @@ import {
   fieldErrors,
   type FieldErrors,
 } from "@/lib/validation";
-import { findAccount, requestPasswordReset, resetPassword } from "@/lib/passwords";
+import { requestPasswordReset, resetPassword } from "@/lib/passwords";
 import { consume, retryHintKey, RESET_REQUESTS } from "@/lib/rate-limit";
 import { getT } from "@/lib/i18n/server";
 import type { Translate } from "@/lib/i18n/dictionary";

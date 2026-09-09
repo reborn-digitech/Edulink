@@ -42,7 +42,7 @@ export default function SignIn() {
     <Screen title={t("login.title")} description={t("login.welcome")}>
       <View style={{ gap: th.space[3] }}>
         <Field label={t("login.emailOrLoginName")} value={identifier} onChangeText={setIdentifier} autoCapitalize="none" autoCorrect={false} keyboardType="email-address" textContentType="username" autoComplete="username" />
-        <Field label={t("login.password")} value={password} onChangeText={setPassword} secureTextEntry textContentType="password" autoComplete="password" error={error} onSubmitEditing={submit} returnKeyType="go" />
+        <Field label={t("login.password")} value={password} onChangeText={setPassword} secureTextEntry textContentType="password" autoComplete="current-password" error={error} onSubmitEditing={submit} returnKeyType="go" />
         <Button label={t("login.submit")} onPress={submit} busy={busy} disabled={!identifier.trim() || !password} />
       </View>
       <View style={{ gap: th.space[2], marginTop: th.space[3] }}>

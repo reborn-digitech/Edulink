@@ -1,5 +1,34 @@
 import { test, expect, type Page } from "@playwright/test";
+import { PrismaClient } from "@prisma/client";
+import { config } from "dotenv";
 import { contextFor, sessions, VIEWPORTS } from "./actors";
+
+config({ path: ".env" });
+const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL ?? process.env.DATABASE_URL });
+
+/**
+ * The language of a signed-in page is the ACCOUNT's preference, not the
+ * cookie (src/lib/i18n/server.ts: the user row wins), so the Hindi half of
+ * this matrix was rendering English until the actor's own preference was
+ * set for the test — and set back to English after it. This file runs in one
+ * worker, test after test (fullyParallel is off), so the two never overlap.
+ */
+async function preferLocale(email: string | undefined, locale: "en" | "hi"): Promise<void> {
+  if (!email) return;
+  const user = await db.user.findUnique({ where: { email }, select: { prefs: true } });
+  if (!user) return;
+  let prefs: Record<string, unknown> = {};
+  try {
+    prefs = JSON.parse(user.prefs) as Record<string, unknown>;
+  } catch {
+    prefs = {};
+  }
+  await db.user.update({ where: { email }, data: { prefs: JSON.stringify({ ...prefs, locale }) } });
+}
+
+test.afterAll(async () => {
+  await db.$disconnect();
+});
 
 /**
  * The viewport matrix: the four pages most likely to regress on a phone, at
@@ -52,6 +81,7 @@ for (const { name, actor, path } of PAGES) {
     for (const theme of ["light", "dark"] as const) {
       for (const locale of ["en", "hi"] as const) {
         test(`${name} · ${vpName} · ${theme} · ${locale}`, async ({ browser, baseURL }) => {
+          await preferLocale(actor.email, locale);
           const context = await contextFor(browser, actor.cookie, { viewport, theme, locale }, baseURL!);
           const page = await context.newPage();
           const response = await page.goto(path(), { waitUntil: "networkidle" });
@@ -64,6 +94,7 @@ for (const { name, actor, path } of PAGES) {
 
           await expect(page).toHaveScreenshot(`${name}-${vpName}-${theme}-${locale}.png`, { fullPage: false });
           await context.close();
+          await preferLocale(actor.email, "en");
         });
       }
     }

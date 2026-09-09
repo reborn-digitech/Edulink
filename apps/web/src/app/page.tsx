@@ -50,11 +50,16 @@ export default async function LandingPage() {
             </Button>
             {home ? (
               <Button asChild size="sm" iconRight={<ArrowRightIcon weight="bold" />}>
-                <Link href={home}>{t("landing.goToDashboard")}</Link>
+                {/* "Go to my dashboard" is 182 px; beside the wordmark it overflowed a 320 px bar. Under 360 px the bar says "Dashboard". */}
+                <Link href={home} aria-label={t("landing.goToDashboard")}>
+                  <span className="min-[360px]:hidden">{t("nav.dashboard")}</span>
+                  <span className="hidden min-[360px]:inline">{t("landing.goToDashboard")}</span>
+                </Link>
               </Button>
             ) : (
               <>
-                <Button asChild variant="ghost" size="sm">
+                {/* Under 360 px the pair overflowed the bar by 60 px and the whole page scrolled sideways; the footer keeps the link. */}
+                <Button asChild variant="ghost" size="sm" className="hidden min-[360px]:inline-flex">
                   <Link href="/login">{t("login.title")}</Link>
                 </Button>
                 <Button asChild size="sm">

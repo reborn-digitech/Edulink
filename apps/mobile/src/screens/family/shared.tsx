@@ -22,6 +22,11 @@ export function openWeb(path: string): void {
   void Linking.openURL(`${API_BASE}${path}`);
 }
 
+/** The reader's locale with Latin digits pinned — the web's labelLocale: "१४" never comes back beside "सप्टेंबर", and a date's digits match the counts around it. */
+export function latn(locale = "en"): string {
+  return locale === "en" ? "en" : `${locale}-u-nu-latn`;
+}
+
 /* ------------------------------------------------------------------------- */
 /* Route params and query strings                                            */
 /* ------------------------------------------------------------------------- */
@@ -84,7 +89,7 @@ export function formatDateKey(dateKey: string, locale = "en", opts: Intl.DateTim
   const [y, m, d] = dateKey.split("-").map(Number);
   if (!y || !m || !d) return dateKey;
   try {
-    return new Intl.DateTimeFormat(locale, { ...opts, timeZone: "UTC" }).format(new Date(Date.UTC(y, m - 1, d)));
+    return new Intl.DateTimeFormat(latn(locale), { ...opts, timeZone: "UTC" }).format(new Date(Date.UTC(y, m - 1, d)));
   } catch {
     return dateKey;
   }
@@ -95,10 +100,10 @@ export function formatInstant(iso: string, locale = "en", opts: Intl.DateTimeFor
   const date = new Date(iso);
   if (Number.isNaN(date.getTime())) return iso;
   try {
-    return new Intl.DateTimeFormat(locale, { ...opts, ...(timeZone ? { timeZone } : {}) }).format(date);
+    return new Intl.DateTimeFormat(latn(locale), { ...opts, ...(timeZone ? { timeZone } : {}) }).format(date);
   } catch {
     try {
-      return new Intl.DateTimeFormat(locale, opts).format(date);
+      return new Intl.DateTimeFormat(latn(locale), opts).format(date);
     } catch {
       return date.toISOString().slice(0, 16).replace("T", " ");
     }
@@ -112,7 +117,7 @@ export function relativeTime(iso: string, locale = "en", now: Date = new Date())
   const diffMs = target.getTime() - now.getTime();
   const units: [Intl.RelativeTimeFormatUnit, number][] = [["year", 31_536_000_000], ["month", 2_592_000_000], ["week", 604_800_000], ["day", 86_400_000], ["hour", 3_600_000], ["minute", 60_000]];
   try {
-    const rtf = new Intl.RelativeTimeFormat(locale, { numeric: "auto" });
+    const rtf = new Intl.RelativeTimeFormat(latn(locale), { numeric: "auto" });
     for (const [unit, ms] of units) if (Math.abs(diffMs) >= ms) return rtf.format(Math.round(diffMs / ms), unit);
     return rtf.format(Math.round(diffMs / 1000), "second");
   } catch {
@@ -141,7 +146,7 @@ export function formatMilli(value: number | null | undefined): string {
 /** 0 = Sunday … 6 = Saturday, as the timetable's weekday numbers run. */
 export function weekdayName(weekday: number, locale = "en"): string {
   try {
-    return new Intl.DateTimeFormat(locale, { weekday: "long", timeZone: "UTC" }).format(new Date(Date.UTC(2023, 0, 1 + weekday)));
+    return new Intl.DateTimeFormat(latn(locale), { weekday: "long", timeZone: "UTC" }).format(new Date(Date.UTC(2023, 0, 1 + weekday)));
   } catch {
     return String(weekday);
   }

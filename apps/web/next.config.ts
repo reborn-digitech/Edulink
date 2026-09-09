@@ -8,6 +8,11 @@ import path from "node:path";
 const withSerwist = withSerwistInit({
   swSrc: "src/sw.ts",
   swDest: "public/sw.js",
+  // The navigation fallback must itself be precached, or a page the phone
+  // has never opened fails with a browser error offline instead of the
+  // offline page (found by the campaign's offline probe: /offline was not in
+  // the manifest). A fresh revision per build keeps it current.
+  additionalPrecacheEntries: [{ url: "/offline", revision: `${Date.now()}` }],
   disable: process.env.NODE_ENV === "development",
   reloadOnOnline: true,
 });

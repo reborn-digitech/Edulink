@@ -363,13 +363,17 @@ function StudentRow({
   return (
     <div
       className={cn(
-        "flex items-center gap-3 rounded-[--radius-lg] border bg-surface p-2.5 pl-3 transition-colors",
+        // Wraps: on a phone the four status buttons (188 px) plus the note
+        // button left the name 18 px — "Z…" at 390 px, nothing at 360 px —
+        // so the name keeps at least 7 rem and the buttons drop to a second
+        // line, right-aligned, when the row cannot hold them all.
+        "flex flex-wrap items-center gap-3 rounded-[--radius-lg] border bg-surface p-2.5 pl-3 transition-colors",
         entry.status ? "border-border" : "border-dashed border-border-strong",
       )}
     >
       <Avatar avatarKey={entry.avatarKey} name={entry.fullName} size="sm" />
 
-      <div className="min-w-0 flex-1">
+      <div className="min-w-0 flex-1 basis-28">
         <p className="truncate text-sm font-semibold text-fg">{entry.name}</p>
         {entry.note ? (
           <p className="truncate text-xs text-fg-muted">{entry.note}</p>
@@ -403,7 +407,7 @@ function StudentRow({
       <div
         role="group"
         aria-label={t("teacher.attendanceFor", { name: entry.name })}
-        className="flex shrink-0 gap-1"
+        className="ml-auto flex shrink-0 gap-1"
       >
         {ATTENDANCE_STATUSES.map((status) => {
           const meta = ATTENDANCE_META[status];

@@ -44,7 +44,10 @@ export default function AppLayout() {
         tabBarActiveTintColor: th.accentStrong,
         tabBarInactiveTintColor: th.fgMuted,
         tabBarStyle: { backgroundColor: th.surface, borderTopColor: th.border, minHeight: 56 },
-        tabBarLabelStyle: { fontSize: type.xs.size, fontWeight: "600" },
+        // Five labels share 390 pt and the library pads each pressable 5 pt on
+        // a style the item prop cannot reach, so "Attendance" ended in an
+        // ellipsis; the label takes that padding back.
+        tabBarLabelStyle: { fontSize: type.xs.size, fontWeight: "600", marginHorizontal: -th.space[1], maxWidth: "120%" },
         tabBarBadgeStyle: { backgroundColor: th.danger, color: th.fgInverse, fontSize: type.xs.size },
       }}
     >

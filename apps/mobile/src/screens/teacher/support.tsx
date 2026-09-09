@@ -95,7 +95,11 @@ export function throwIfRefused(outcome: WriteOutcome): Exclude<WriteOutcome, { k
 
 /** The app's three languages as BCP 47 tags for the date formatter: India's day-month order. */
 function tagFor(locale: string): string {
-  return locale.includes("-") ? locale : `${locale}-IN`;
+  // Latin digits pinned (the web's labelLocale does the same): Marathi's
+  // default numbering is Devanagari, and a date's digits should match the
+  // counts drawn beside it.
+  const tag = locale.includes("-") ? locale : `${locale}-IN`;
+  return locale.startsWith("en") ? tag : `${tag}-u-nu-latn`;
 }
 
 /** "Mon, 7 Sept" from a YYYY-MM-DD key, in the reader's language. */

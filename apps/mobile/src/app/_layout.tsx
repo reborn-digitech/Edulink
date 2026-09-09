@@ -100,7 +100,7 @@ function Gate() {
       void registerForPush();
       void sendPendingCrash();
     }
-  }, [session.status, inAuth, router]);
+  }, [session.status, inAuth, router, queryClient]);
 
   // Below the store's minimum: the update screen, and nothing else. The
   // theme still follows the role so the screen looks like the app it replaces.

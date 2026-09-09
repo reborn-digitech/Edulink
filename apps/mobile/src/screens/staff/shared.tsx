@@ -31,7 +31,7 @@ export function formatDateKey(key: string, locale?: string, options: Intl.DateTi
   const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(key);
   if (!m) return key;
   try {
-    return new Date(Date.UTC(Number(m[1]), Number(m[2]) - 1, Number(m[3]))).toLocaleDateString(locale, { ...options, timeZone: "UTC" });
+    return new Date(Date.UTC(Number(m[1]), Number(m[2]) - 1, Number(m[3]))).toLocaleDateString(locale && locale !== "en" ? `${locale}-u-nu-latn` : locale, { ...options, timeZone: "UTC" });
   } catch {
     return key;
   }
