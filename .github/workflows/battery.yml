@@ -258,6 +258,13 @@ jobs:
             sleep 1
           done
           curl -sf http://localhost:8081/ > /dev/null
+      - name: Roboto, the font an Android phone draws
+        # The phone's UI/UX audit measures tab labels in the phone's own font;
+        # without Roboto the runner draws DejaVu Sans, which no phone uses.
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q --no-install-recommends fonts-roboto
+          fc-match Roboto
       - name: Mobile accessibility gate, screenshots, offline and slow-network flows
         working-directory: apps/web
         # The same ZZ tokens the contract step mints, one per role; the app signs in with them on its web target.

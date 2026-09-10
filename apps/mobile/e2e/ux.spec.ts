@@ -24,7 +24,17 @@ const WIDTHS = [
 
 type Measure = { overflow: number; short: string[]; clippedTabs: string[]; clippedOther: string[] };
 
+/**
+ * Measured in the phone's own UI font: San Francisco where the browser has it
+ * (a Mac draws what an iPhone does), otherwise Roboto, Android's, which CI
+ * installs. Left alone, Linux Chromium draws system-ui in DejaVu Sans — a font
+ * no phone uses, wider than both — and "Assignments" clipped only on the runner.
+ * Devanagari still falls back glyph by glyph; the icons are SVG, not a font.
+ */
+const PHONE_FONT = "* { font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif !important; }";
+
 async function measure(page: import("@playwright/test").Page): Promise<Measure> {
+  await page.addStyleTag({ content: PHONE_FONT });
   return page.evaluate(() => {
     const root = document.documentElement;
     const overflow = root.scrollWidth - root.clientWidth;
