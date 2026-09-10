@@ -2,7 +2,7 @@ import { useWindowDimensions } from "react-native";
 import { Stack, Tabs } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 import { inboxSchema, notificationsSchema } from "@edulink/contracts";
-import { Icon, Loading } from "@/components";
+import { Icon, Loading, TabLabel } from "@/components";
 import { useRole, useSession } from "@/lib/session";
 import { ChooseContext } from "@/components/choose-context";
 import { ALL_TAB_SCREENS, HIDDEN_SCREENS, TABS } from "@/lib/nav";
@@ -56,10 +56,14 @@ export default function AppLayout() {
         tabBarActiveTintColor: th.accentStrong,
         tabBarInactiveTintColor: th.fgMuted,
         tabBarStyle: { backgroundColor: th.surface, borderTopColor: th.border, minHeight: 56 },
-        // Five labels share 390 pt and the library pads each pressable 5 pt on
-        // a style the item prop cannot reach, so "Attendance" ended in an
-        // ellipsis; the label takes that padding back.
-        tabBarLabelStyle: { fontSize: labelSize, fontWeight: "600", marginHorizontal: -th.space[1], maxWidth: "120%" },
+        // Our own label, so it shrinks to fit instead of ending in "…" — large
+        // text on Android — and takes back the library's 5 pt pressable padding
+        // that once cut off "Attendance" (components/tab-label.tsx).
+        tabBarLabel: ({ color, children, position }) => (
+          <TabLabel color={String(color)} position={position} size={labelSize}>
+            {children}
+          </TabLabel>
+        ),
         tabBarBadgeStyle: { backgroundColor: th.danger, color: th.fgInverse, fontSize: type.xs.size },
       }}
     >

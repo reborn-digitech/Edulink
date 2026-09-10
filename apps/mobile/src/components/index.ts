@@ -8,3 +8,4 @@ export { Icon } from "./icon";
 export { useBack, ToastProvider, useToast, Bone } from "./chrome";
 export { QuickActions } from "./quick-actions";
 export { SwitchRow } from "./switch-row";
+export { TabLabel } from "./tab-label";
