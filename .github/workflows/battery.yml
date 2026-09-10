@@ -147,7 +147,9 @@ jobs:
     needs: battery
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    # Set-up, the sweeps and the web suite take about 24 minutes; the phone's 887
+    # browser tests about 21 more on two workers (679 in 16 minutes when 40 cut them off).
+    timeout-minutes: 60
     services:
       postgres:
         image: postgres:16
