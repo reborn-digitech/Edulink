@@ -1,28 +1,33 @@
 import { useState } from "react";
 import { View } from "react-native";
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { assignmentCreatedSchema, newAssignmentSchema, staffAssignmentsSchema, type NewAssignmentBody } from "@edulink/contracts";
-import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Stat, Text } from "@/components";
+import { staffAssignmentsSchema, teachingAssignmentCreatedSchema, teachingNewAssignmentSchema, type TeachingNewAssignmentBody } from "@edulink/contracts";
+import { Button, Card, Empty, Failed, Field, Icon, Loading, Row, Screen, Stat, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { Chips, Notice, openWeb } from "../staff/shared";
+import { PickError, pickAndUpload, type Picked } from "@/lib/pick-file";
+import { Chips, Notice } from "../staff/shared";
 import { Pill, formatMilli } from "../family/shared";
 import { relativeTime } from "./support";
+import { fileSize } from "./assignment-detail";
 
 /**
  * Assignments, the web's /teacher/assignments: this year's work by default
  * (all years on request), the same three filters — to mark, past due, draft —
  * a class filter when there is more than one class, and the form that sets a
- * new piece of work. Handouts travel as files, so they stay on the web; the
- * gradebook for one assignment opens there too. An admin sees every class.
+ * new piece of work with its handouts (uploaded first, then named by id). A
+ * row opens that assignment's gradebook. An admin sees every class. From a
+ * class page (?classId=&compose=1) the form opens with that class chosen.
  */
 type State = "" | "tomark" | "overdue" | "draft";
 
 /** The web form's category list — stored values, so they stay in English. */
 const CATEGORIES = ["Homework", "Classwork", "Quiz", "Test", "Project", "Reading"];
+/** The web form's own ceiling on handouts. */
+const MAX_HANDOUTS = 5;
 
 export function assignmentsPath(allYears: boolean, classId: string | null, state: State): string {
   const parts: string[] = [];
@@ -37,11 +42,12 @@ export function TeacherAssignments() {
   const { locale } = useLocale();
   const th = useTheme();
   const router = useRouter();
+  const params = useLocalSearchParams<{ classId?: string; compose?: string }>();
   const qc = useQueryClient();
   const [allYears, setAllYears] = useState(false);
   const [classId, setClassId] = useState<string | null>(null);
   const [state, setState] = useState<State>("");
-  const [composing, setComposing] = useState(false);
+  const [composing, setComposing] = useState(params.compose === "1");
   const [note, setNote] = useState<string | null>(null);
   const query = useQuery({
     queryKey: ["staff", "assignments", allYears, classId, state],
@@ -83,6 +89,7 @@ export function TeacherAssignments() {
           {composing ? (
             <NewAssignment
               classes={d.classOptions}
+              initialClassId={d.classOptions.some((c) => c.id === params.classId) ? params.classId! : undefined}
               onDone={(sentence) => {
                 setNote(sentence);
                 setComposing(false);
@@ -146,7 +153,7 @@ export function TeacherAssignments() {
                       title={a.title}
                       caption={`${details} · ${when} · ${t("teacher.markedOf", { marked: a.graded, total: roster })}`}
                       right={!a.publishedAt ? <Pill label={t("teacher.draft")} tone="warn" /> : allGraded ? <Pill label={t("teacher.marked")} tone="ok" /> : <Pill label={`${roster - a.graded} · ${t("teacher.toMark")}`} tone="accent" />}
-                      onPress={() => openWeb(`/teacher/assignments/${a.id}`)}
+                      onPress={() => router.push({ pathname: "/(app)/assignment", params: { assignmentId: a.id } } as never)}
                     />
                     {!a.publishedAt ? <Button label={t("teacher.publishNow")} variant="ghost" busy={publish.isPending && publish.variables === a.id} onPress={() => publish.mutate(a.id)} /> : null}
                   </View>
@@ -160,27 +167,44 @@ export function TeacherAssignments() {
   );
 }
 
-/** The web's AssignmentForm without the file picker: the same fields, the same two ways out (draft, publish). */
-function NewAssignment({ classes, onDone, onClose }: { classes: { id: string; name: string }[]; onDone: (sentence: string) => void; onClose: () => void }) {
+/** The web's AssignmentForm: the same fields, handouts picked and uploaded one at a time, and the same two ways out (draft, publish). */
+function NewAssignment({ classes, initialClassId, onDone, onClose }: { classes: { id: string; name: string }[]; initialClassId?: string; onDone: (sentence: string) => void; onClose: () => void }) {
   const t = useT();
   const th = useTheme();
   const qc = useQueryClient();
-  const [classId, setClassId] = useState(classes[0]?.id ?? "");
+  const [classId, setClassId] = useState(initialClassId ?? classes[0]?.id ?? "");
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [category, setCategory] = useState("Homework");
   const [points, setPoints] = useState("20");
   const [dueDate, setDueDate] = useState("");
   const [dueTime, setDueTime] = useState("16:00");
+  const [handouts, setHandouts] = useState<Picked[]>([]);
+  const [attaching, setAttaching] = useState(false);
+  const [attachError, setAttachError] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const create = useMutation({
-    mutationFn: async (body: NewAssignmentBody) => assignmentCreatedSchema.parse(unwrap(await api().post("/api/v1/staff/assignments", body))),
+    mutationFn: async (body: TeachingNewAssignmentBody) => teachingAssignmentCreatedSchema.parse(unwrap(await api().post("/api/v1/teaching/assignments", body))),
     onSuccess: (created, body) => {
       void qc.invalidateQueries({ queryKey: ["staff", "assignments"] });
       void qc.invalidateQueries({ queryKey: ["staff", "today"] });
+      void qc.invalidateQueries({ queryKey: ["staff", "classes"] });
       onDone(body.publish ? `${t("teacher.workSetToast")}. ${created.notified === 1 ? t("teacher.studentsToldOne") : t("teacher.studentsToldMany", { count: created.notified })}` : `${t("teacher.savedAsDraft")}. ${t("teacher.nobodyNotifiedYet")}`);
     },
   });
+
+  const attach = async () => {
+    setAttachError(null);
+    setAttaching(true);
+    try {
+      const file = await pickAndUpload("document", t("common.somethingWrong"));
+      if (file) setHandouts((all) => [...all, file]);
+    } catch (e) {
+      setAttachError(e instanceof PickError ? e.message : t("common.somethingWrong"));
+    } finally {
+      setAttaching(false);
+    }
+  };
 
   const submit = (publish: boolean) => {
     const next: Record<string, string> = {};
@@ -192,7 +216,16 @@ function NewAssignment({ classes, onDone, onClose }: { classes: { id: string; na
       if (Number.isNaN(combined.getTime())) next.dueDate = t("teacher.checkHighlighted");
       else dueAt = combined.toISOString();
     }
-    const parsed = newAssignmentSchema.safeParse({ classId, title: title.trim(), body: body.trim(), category: category || undefined, points: pointsValue, dueAt, publish });
+    const parsed = teachingNewAssignmentSchema.safeParse({
+      classId,
+      title: title.trim(),
+      body: body.trim(),
+      category: category || undefined,
+      points: pointsValue,
+      dueAt,
+      publish,
+      handouts: handouts.map((h) => ({ fileId: h.fileId, name: h.name })),
+    });
     if (!parsed.success) for (const issue of parsed.error.issues) next[String(issue.path[0] ?? "")] = t("teacher.checkHighlighted");
     setErrors(next);
     if (Object.keys(next).length > 0) return;
@@ -208,14 +241,46 @@ function NewAssignment({ classes, onDone, onClose }: { classes: { id: string; na
       <Field label={t("teacher.pointsAvailable")} hint={t("teacher.pointsHint")} value={points} onChangeText={setPoints} keyboardType="decimal-pad" error={errors.points} />
       <Field label={t("teacher.dueDate")} value={dueDate} onChangeText={setDueDate} placeholder="YYYY-MM-DD" autoCapitalize="none" error={errors.dueDate ?? errors.dueAt} />
       <Field label={t("teacher.dueTime")} hint={t("teacher.dueTimeHint")} value={dueTime} onChangeText={setDueTime} placeholder="16:00" autoCapitalize="none" />
-      <Text variant="xs" tone="subtle">
-        {t("teacher.handoutsHint")}
-      </Text>
-      <Button label={t("teacher.handouts")} variant="ghost" onPress={() => openWeb("/teacher/assignments/new")} />
+
+      <View style={{ gap: th.space[1] }}>
+        <Text variant="sm" bold>
+          {t("teacher.handouts")}
+        </Text>
+        <Text variant="xs" tone="subtle">
+          {t("teacher.handoutsHint")}
+        </Text>
+      </View>
+      {handouts.map((h) => (
+        <Row
+          key={h.fileId}
+          icon="paperclip"
+          title={h.name}
+          caption={fileSize(h.size)}
+          right={<Button label={t("common.remove")} accessibilityLabel={t("teaching.removeFile", { name: h.name })} variant="ghost" onPress={() => setHandouts((all) => all.filter((x) => x.fileId !== h.fileId))} />}
+        />
+      ))}
+      {attachError ? (
+        <Text variant="xs" tone="danger" accessibilityRole="alert" accessibilityLiveRegion="polite">
+          {attachError}
+        </Text>
+      ) : null}
+      {handouts.length < MAX_HANDOUTS ? (
+        <Button label={t("teaching.attachFile")} variant="secondary" busy={attaching} icon={<Icon name="paperclip" size={18} color={th.fg} weight="bold" />} onPress={() => void attach()} />
+      ) : (
+        <Text variant="xs" tone="muted">
+          {t("teaching.handoutsFull")}
+        </Text>
+      )}
+      {errors.handouts ? (
+        <Text variant="xs" tone="danger">
+          {errors.handouts}
+        </Text>
+      ) : null}
+
       {create.isError ? <Failed message={create.error.message} onRetry={() => submit(true)} /> : null}
       <View style={{ flexDirection: "row", gap: th.space[2], flexWrap: "wrap" }}>
-        <Button label={t("teacher.saveAsDraft")} variant="secondary" onPress={() => submit(false)} busy={create.isPending && create.variables?.publish === false} style={{ flexGrow: 1 }} />
-        <Button label={t("teacher.publishNow")} onPress={() => submit(true)} busy={create.isPending && create.variables?.publish === true} style={{ flexGrow: 1 }} />
+        <Button label={t("teacher.saveAsDraft")} variant="secondary" onPress={() => submit(false)} busy={create.isPending && create.variables?.publish === false} disabled={attaching} style={{ flexGrow: 1 }} />
+        <Button label={t("teacher.publishNow")} onPress={() => submit(true)} busy={create.isPending && create.variables?.publish === true} disabled={attaching} style={{ flexGrow: 1 }} />
       </View>
     </Card>
   );

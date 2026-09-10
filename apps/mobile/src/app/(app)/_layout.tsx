@@ -1,10 +1,8 @@
-import { useState } from "react";
-import { View } from "react-native";
-import { Tabs } from "expo-router";
+import { useWindowDimensions } from "react-native";
+import { Stack, Tabs } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
-import type { Me } from "@edulink/contracts";
 import { inboxSchema, notificationsSchema } from "@edulink/contracts";
-import { Button, Icon, Loading } from "@/components";
+import { Icon, Loading } from "@/components";
 import { useRole, useSession } from "@/lib/session";
 import { ChooseContext } from "@/components/choose-context";
 import { ALL_TAB_SCREENS, HIDDEN_SCREENS, TABS } from "@/lib/nav";
@@ -13,8 +11,7 @@ import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { type } from "@edulink/tokens";
-import { OperatorHome } from "@/screens/operator/home";
-import { AppAdminHome } from "@/screens/operator/app-admin";
+import { consolesFor } from "@/screens/shared/console-home";
 
 /**
  * The shell: a bottom tab bar per role mirroring the web NAV's primaries, and
@@ -27,7 +24,8 @@ import { AppAdminHome } from "@/screens/operator/app-admin";
  *
  * No role: the operator and the content team have none by design (the web's
  * /root and /appadmin sit outside the school shell for the same reason), so
- * they get their own screen; everyone else chooses where to go.
+ * they get a stack whose index is their console; everyone else chooses where
+ * to go.
  */
 export default function AppLayout() {
   const role = useRole();
@@ -35,10 +33,24 @@ export default function AppLayout() {
   const t = useT();
   const th = useTheme();
   const badges = useBadges(Boolean(role));
-  if (!role) return session.status === "signed-in" ? <NoRole me={session.me} /> : <Loading />;
+  // Five labels share the width. At 320 px a tab is 64 px and "Assignments"
+  // ended in an ellipsis (measured by e2e/ux.spec.ts), so the label steps
+  // down on narrow screens — to 10 below 340 px, which is the size iOS's own
+  // tab bars use — rather than being cut off.
+  const { width } = useWindowDimensions();
+  const labelSize = width < 340 ? type.xs.size - 2 : width < 375 ? type.xs.size - 1 : type.xs.size;
+  if (!role) {
+    if (session.status !== "signed-in") return <Loading />;
+    // The operator and the content team: a stack, whose index is their console
+    // (screens/shared/console-home.tsx), so what they open from it renders.
+    if (consolesFor(session.me).length > 0) return <Stack screenOptions={{ headerShown: false }} />;
+    return <ChooseContext />;
+  }
   const tabs = TABS[role];
   return (
     <Tabs
+      // "Back" from a screen opened from More goes to More, not to the first tab.
+      backBehavior="history"
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: th.accentStrong,
@@ -47,7 +59,7 @@ export default function AppLayout() {
         // Five labels share 390 pt and the library pads each pressable 5 pt on
         // a style the item prop cannot reach, so "Attendance" ended in an
         // ellipsis; the label takes that padding back.
-        tabBarLabelStyle: { fontSize: type.xs.size, fontWeight: "600", marginHorizontal: -th.space[1], maxWidth: "120%" },
+        tabBarLabelStyle: { fontSize: labelSize, fontWeight: "600", marginHorizontal: -th.space[1], maxWidth: "120%" },
         tabBarBadgeStyle: { backgroundColor: th.danger, color: th.fgInverse, fontSize: type.xs.size },
       }}
     >
@@ -112,29 +124,4 @@ function useBadges(enabled: boolean): { messages: number; notifications: number 
     refetchInterval: 120_000,
   });
   return { messages: inbox.data?.unreadTotal ?? 0, notifications: notices.data?.unreadCount ?? 0 };
-}
-
-type Console = "operator" | "appadmin";
-
-/** Signed in with no active role: the operator's or content team's screen, or the picker. */
-function NoRole({ me }: { me: Me }) {
-  const t = useT();
-  const th = useTheme();
-  const [open, setOpen] = useState<Console | null>(null);
-  const consoles: Console[] = [...(me.user.isSuperuser ? ["operator" as const] : []), ...(me.user.isAppAdmin ? ["appadmin" as const] : [])];
-  // Nobody to be at any school: the console is the whole app for them.
-  const only = me.contexts.length === 0 ? (consoles[0] ?? null) : open;
-  if (only === "operator" || only === "appadmin") {
-    return (
-      <View style={{ flex: 1 }}>
-        {me.contexts.length > 0 ? (
-          <View style={{ paddingHorizontal: th.space[4], paddingTop: th.space[3] }}>
-            <Button label={t("switch.whereToGo")} variant="ghost" onPress={() => setOpen(null)} />
-          </View>
-        ) : null}
-        {only === "operator" ? <OperatorHome /> : <AppAdminHome />}
-      </View>
-    );
-  }
-  return <ChooseContext consoles={consoles} onConsole={setOpen} />;
 }

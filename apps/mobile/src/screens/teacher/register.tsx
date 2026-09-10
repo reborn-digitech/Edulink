@@ -10,7 +10,7 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { newClientId } from "@/lib/outbox";
-import { OutboxBadge, dayLabel, openWeb, useOutboxRunner, writeOrQueue } from "./support";
+import { OutboxBadge, dayLabel, useOutboxRunner, writeOrQueue } from "./support";
 
 /**
  * The register, the web's /teacher/attendance, with the outbox first: a tap
@@ -91,6 +91,7 @@ function ClassRegister({ classId, date, onBack }: { classId: string; date?: stri
   const t = useT();
   const { locale } = useLocale();
   const th = useTheme();
+  const router = useRouter();
   const qc = useQueryClient();
   const register = useQuery({
     queryKey: ["staff", "attendance", "register", classId, date ?? "today"],
@@ -200,7 +201,7 @@ function ClassRegister({ classId, date, onBack }: { classId: string; date?: stri
           {state === "error" ? <Failed message={error ?? t("teacher.didNotSave")} onRetry={() => void flush()} /> : null}
           {!data.readOnly && unmarked.length > 0 ? <Button label={t("teacher.markAllPresent", { count: unmarked.length })} variant="secondary" onPress={markAllPresent} /> : null}
           {data.roster.length === 0 ? (
-            <Empty title={t("teacher.nobodyInClassYet")} body={t("teacher.addStudentsAppear")} action={<Button label={t("mobile.openOnWeb")} variant="secondary" onPress={() => openWeb(`/teacher/classes/${classId}`)} />} />
+            <Empty title={t("teacher.nobodyInClassYet")} body={t("teacher.addStudentsAppear")} action={<Button label={t("teacher.classJoinCode")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/classes/detail", params: { classId } } as never)} />} />
           ) : (
             <Card>
               {data.roster.map((p) => {

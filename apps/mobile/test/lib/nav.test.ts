@@ -1,7 +1,7 @@
 import { readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { en } from "@edulink/i18n/en";
-import { ALL_TAB_SCREENS, HIDDEN_SCREENS, MENU, menuFor, TABS } from "@/lib/nav";
+import { ALL_TAB_SCREENS, HIDDEN_SCREENS, MENU, menuFor, QUICK, TABS } from "@/lib/nav";
 
 const flat = JSON.stringify(en);
 const hasKey = (key: string) => flat.includes(`"${key.split(".").pop()!}":`);
@@ -69,5 +69,18 @@ describe("the navigator's screen list", () => {
     const stale = [...HIDDEN_SCREENS].filter((name) => !routeNames().includes(name));
     expect(stale).toEqual([]);
     expect(new Set([...ALL_TAB_SCREENS, ...HIDDEN_SCREENS]).size).toBe(ALL_TAB_SCREENS.length + HIDDEN_SCREENS.length);
+  });
+});
+
+describe("the quick actions", () => {
+  it("each opens a route file that exists, with a label and a hint the dictionary has", () => {
+    const routes = new Set(routeNames());
+    for (const [role, actions] of Object.entries(QUICK)) {
+      for (const a of actions ?? []) {
+        const name = a.href.replace("/(app)/", "");
+        expect({ role, href: a.href, exists: routes.has(name) }).toEqual({ role, href: a.href, exists: true });
+        expect({ role, key: a.labelKey, present: hasKey(a.labelKey) && hasKey(a.hintKey) }).toEqual({ role, key: a.labelKey, present: true });
+      }
+    }
   });
 });

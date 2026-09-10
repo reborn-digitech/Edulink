@@ -1,8 +1,6 @@
-import { Linking } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { bodyOf, calls, ME_STUDENT, mockRouter, pending, refused, renderFamily, press } from "./family-helpers";
 import { StudentProfile } from "@/screens/family/student-profile";
-import { API_BASE } from "@/lib/api";
 
 const PROFILE = {
   name: "ZZ Pupil Full",
@@ -64,14 +62,13 @@ describe("the pupil's profile", () => {
     expect(bodyOf(calls(fetch, PATH).find((c) => c.init?.method === "POST")!)).toEqual({ preferredName: "", bio: "", avatarKey: "preset:cat-mint", birthdate: "2015-03-04" });
   });
 
-  it("the avatar picker is the web's; practising is the app's own screen", async () => {
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
-    await renderFamily(<StudentProfile />, ME_STUDENT, { [PATH]: () => PROFILE });
-    await press(await screen.findByRole("button", { name: "Change my look" }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/student/profile`);
+  it("the avatar is drawn; the picker and practising are the app's own screens", async () => {
+    await renderFamily(<StudentProfile />, ME_STUDENT, { [PATH]: () => ({ ...PROFILE, avatarKey: "preset:cat-mint" }) });
+    expect(await screen.findByRole("image", { name: "ZZ Pupil Full" })).toBeTruthy();
+    await press(screen.getByRole("button", { name: "Change my look" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/avatar");
     await press(screen.getByRole("button", { name: "Keep practising →" }));
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/practice");
-    open.mockRestore();
   });
 
   it("a refused save is an alert", async () => {

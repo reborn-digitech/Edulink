@@ -12,7 +12,7 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
-import { Chips, Note, openWeb, Pill, relativeTime, useAuthHeaders } from "./shared";
+import { Chips, Note, Pill, relativeTime, useAuthHeaders } from "./shared";
 
 type Feed = z.infer<typeof bulletinFeedSchema>;
 type Post = Feed["items"][number];
@@ -20,8 +20,8 @@ type GlobalPost = z.infer<typeof globalFeedSchema>["items"][number];
 type Reaction = Post["myReactions"][number];
 type Scope = "school" | "global";
 
-const CATEGORY: Record<Post["category"], TranslationKey> = { PEOPLE: "bulletin.catPeople", CAMPUS: "bulletin.catCampus", EVENTS: "bulletin.catEvents", LEARNING: "bulletin.catLearning", UPDATES: "bulletin.catUpdates" };
-const AUDIENCE: Record<"PARENTS" | "TEACHERS" | "STUDENTS", TranslationKey> = { PARENTS: "bulletin.forParents", TEACHERS: "bulletin.forTeachers", STUDENTS: "bulletin.forStudents" };
+export const CATEGORY: Record<Post["category"], TranslationKey> = { PEOPLE: "bulletin.catPeople", CAMPUS: "bulletin.catCampus", EVENTS: "bulletin.catEvents", LEARNING: "bulletin.catLearning", UPDATES: "bulletin.catUpdates" };
+export const AUDIENCE: Record<"PARENTS" | "TEACHERS" | "STUDENTS", TranslationKey> = { PARENTS: "bulletin.forParents", TEACHERS: "bulletin.forTeachers", STUDENTS: "bulletin.forStudents" };
 /** The web's REACTION_META: keys, not words, in the same order. */
 const REACTIONS: { kind: Reaction; icon: string; label: TranslationKey }[] = [
   { kind: "CLAP", icon: "clap", label: "bulletin.reactClap" },
@@ -53,6 +53,7 @@ function feedPath(schoolId: string | null, cursor: string | null): string {
 export function FamilyBulletin() {
   const t = useT();
   const qc = useQueryClient();
+  const th = useTheme();
   const role = useRole();
   const router = useRouter();
   const [scope, setScope] = useState<Scope>("school");
@@ -90,6 +91,11 @@ export function FamilyBulletin() {
   const posts = feed.data?.pages.flatMap((page) => page.items) ?? [];
   const globalPosts = global.data?.pages.flatMap((page) => page.items) ?? [];
   const active = scope === "school" ? feed : global;
+  // Who may write: the web's /bulletin/new takes a pupil (read by a teacher first) and the school's staff.
+  const canPost = role === "STUDENT" || role === "TEACHER" || role === "ADMIN" || role === "PRINCIPAL";
+  const newPostLabel = role === "STUDENT" ? t("bulletin.shareSomething") : t("bulletin.newPost");
+  const compose = () => router.push("/(app)/post-new" as never);
+  const open = (postId: string) => router.push({ pathname: "/(app)/post", params: { postId } } as never);
   const ourFeed = <Button label={t("bulletin.ourBulletin")} variant="secondary" onPress={() => setScope("school")} />;
   return (
     <Screen title={scope === "school" ? t("bulletin.title") : t("bulletin.globalFeed")} description={scope === "school" ? (first?.schoolName ?? undefined) : t("bulletin.globalIntro")} refreshing={active.isRefetching && !active.isFetchingNextPage} onRefresh={() => void active.refetch()}>
@@ -117,7 +123,7 @@ export function FamilyBulletin() {
             body={t("bulletin.noSchoolBody")}
             action={
               role === "PARENT" ? (
-                <Button label={t("parent.linkAnother")} variant="secondary" onPress={() => openWeb("/parent/link")} />
+                <Button label={t("parent.linkAnother")} variant="secondary" onPress={() => router.push("/(app)/link-child" as never)} />
               ) : (
                 <Button label={t("nav.more")} variant="secondary" onPress={() => router.push("/(app)/more" as never)} />
               )
@@ -131,19 +137,24 @@ export function FamilyBulletin() {
               role === "PARENT" ? (
                 <Button label={t("nav.overview")} variant="secondary" onPress={() => router.push("/(app)" as never)} />
               ) : (
-                <Button label={t("bulletin.newPost")} variant="secondary" onPress={() => openWeb("/bulletin/new")} />
+                <Button label={newPostLabel} variant="secondary" onPress={compose} />
               )
             }
           />
         ) : (
-          posts.map((post) => <PostCard key={post.id} post={post} headers={headers} onReact={(kind) => react.mutate({ postId: post.id, kind })} />)
+          <>
+            {canPost ? <Button label={newPostLabel} icon={<Icon name="plus" size={18} color={th.accentFg} weight="bold" />} onPress={compose} /> : null}
+            {posts.map((post) => (
+              <PostCard key={post.id} post={post} headers={headers} onOpen={() => open(post.id)} onReact={(kind) => react.mutate({ postId: post.id, kind })} />
+            ))}
+          </>
         )
       ) : null}
       {scope === "global" && global.data ? (
         globalPosts.length === 0 ? (
           <Empty title={t("bulletin.nothingShared")} body={t("bulletin.nothingSharedBody")} action={ourFeed} />
         ) : (
-          globalPosts.map((post) => <GlobalPostCard key={post.id} post={post} headers={headers} onReact={(kind) => react.mutate({ postId: post.id, kind })} />)
+          globalPosts.map((post) => <GlobalPostCard key={post.id} post={post} headers={headers} onOpen={() => open(post.id)} onReact={(kind) => react.mutate({ postId: post.id, kind })} />)
         )
       ) : null}
       {active.hasNextPage ? <Button variant="secondary" label={t("mobile.loadMore")} busy={active.isFetchingNextPage} onPress={() => void active.fetchNextPage()} /> : null}
@@ -151,7 +162,7 @@ export function FamilyBulletin() {
   );
 }
 
-function PostCard({ post, headers, onReact }: { post: Post; headers: Record<string, string> | null; onReact: (kind: Reaction) => void }) {
+function PostCard({ post, headers, onReact, onOpen }: { post: Post; headers: Record<string, string> | null; onReact: (kind: Reaction) => void; onOpen: () => void }) {
   const t = useT();
   const th = useTheme();
   const { locale } = useLocale();
@@ -175,9 +186,7 @@ function PostCard({ post, headers, onReact }: { post: Post; headers: Record<stri
           {meta}
         </Text>
       </View>
-      <Text variant="lg" bold accessibilityRole="header">
-        {post.title}
-      </Text>
+      <OpenTitle title={post.title} onOpen={onOpen} />
       <Pill tone="accent" label={t(CATEGORY[post.category])} />
       {post.body ? (
         <Text variant="sm" tone="muted">
@@ -202,13 +211,25 @@ function PostCard({ post, headers, onReact }: { post: Post; headers: Record<stri
           {t("bulletin.ackDone")}
         </Text>
       ) : null}
-      {post.status === "APPROVED" ? <Reactions reactions={post.reactions} myReactions={post.myReactions} commentCount={post.commentCount} onReact={onReact} /> : null}
+      {post.status === "APPROVED" ? <Reactions reactions={post.reactions} myReactions={post.myReactions} commentCount={post.commentCount} onReact={onReact} onOpen={onOpen} /> : null}
     </Card>
   );
 }
 
+/** A post's title, pressed to open the whole post with its comments. */
+function OpenTitle({ title, onOpen }: { title: string; onOpen: () => void }) {
+  const th = useTheme();
+  return (
+    <Pressable accessibilityRole="button" accessibilityLabel={title} onPress={onOpen} style={({ pressed }) => ({ opacity: pressed ? 0.7 : 1, minHeight: th.tap, justifyContent: "center" })}>
+      <Text variant="lg" bold>
+        {title}
+      </Text>
+    </Pressable>
+  );
+}
+
 /** One of every school's shared posts — the web's /bulletin/global card: the school first, then the post, then the same reaction row. */
-function GlobalPostCard({ post, headers, onReact }: { post: GlobalPost; headers: Record<string, string> | null; onReact: (kind: Reaction) => void }) {
+function GlobalPostCard({ post, headers, onReact, onOpen }: { post: GlobalPost; headers: Record<string, string> | null; onReact: (kind: Reaction) => void; onOpen: () => void }) {
   const t = useT();
   const th = useTheme();
   const { locale } = useLocale();
@@ -223,9 +244,7 @@ function GlobalPostCard({ post, headers, onReact }: { post: GlobalPost; headers:
         </Text>
       </View>
       <View style={{ gap: 2 }}>
-        <Text variant="lg" bold accessibilityRole="header">
-          {post.title}
-        </Text>
+        <OpenTitle title={post.title} onOpen={onOpen} />
         <Text variant="xs" tone="muted">
           {t("bulletin.byAuthor", { name: post.authorName })}
         </Text>
@@ -238,12 +257,12 @@ function GlobalPostCard({ post, headers, onReact }: { post: GlobalPost; headers:
       ) : null}
       <Media media={post.media} headers={headers} />
       <Tags tags={post.tags} />
-      <Reactions reactions={post.reactions} myReactions={post.myReactions} commentCount={post.commentCount} onReact={onReact} />
+      <Reactions reactions={post.reactions} myReactions={post.myReactions} commentCount={post.commentCount} onReact={onReact} onOpen={onOpen} />
     </Card>
   );
 }
 
-function Media({ media, headers }: { media: Post["media"]; headers: Record<string, string> | null }) {
+export function Media({ media, headers }: { media: Post["media"]; headers: Record<string, string> | null }) {
   const th = useTheme();
   return (
     <>
@@ -269,7 +288,7 @@ function Media({ media, headers }: { media: Post["media"]; headers: Record<strin
   );
 }
 
-function Tags({ tags }: { tags: string[] }) {
+export function Tags({ tags }: { tags: string[] }) {
   if (tags.length === 0) return null;
   return (
     <Text variant="xs" tone="muted">
@@ -278,8 +297,8 @@ function Tags({ tags }: { tags: string[] }) {
   );
 }
 
-/** The web's ReactionRow, and the comment count beside it. */
-function Reactions({ reactions, myReactions, commentCount, onReact }: { reactions: Record<string, number>; myReactions: string[]; commentCount: number; onReact: (kind: Reaction) => void }) {
+/** The web's ReactionRow, and the comment count beside it — which opens the post when `onOpen` is given. */
+export function Reactions({ reactions, myReactions, commentCount, onReact, onOpen }: { reactions: Record<string, number>; myReactions: string[]; commentCount: number; onReact: (kind: Reaction) => void; onOpen?: () => void }) {
   const t = useT();
   const th = useTheme();
   return (
@@ -306,12 +325,26 @@ function Reactions({ reactions, myReactions, commentCount, onReact }: { reaction
           </Pressable>
         );
       })}
-      <View style={{ flexDirection: "row", alignItems: "center", gap: th.space[1], paddingHorizontal: th.space[2] }}>
-        <Icon name="chat" size={18} color={th.fgMuted} />
-        <Text variant="sm" tone="muted">
-          {commentCount > 0 ? String(commentCount) : t("bulletin.comment")}
-        </Text>
-      </View>
+      {onOpen ? (
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={commentCount > 0 ? `${t("bulletin.comments")} (${commentCount})` : t("bulletin.comment")}
+          onPress={onOpen}
+          style={{ minHeight: th.tap, flexDirection: "row", alignItems: "center", gap: th.space[1], paddingHorizontal: th.space[2] }}
+        >
+          <Icon name="chat" size={18} color={th.fgMuted} />
+          <Text variant="sm" tone="muted">
+            {commentCount > 0 ? String(commentCount) : t("bulletin.comment")}
+          </Text>
+        </Pressable>
+      ) : (
+        <View style={{ flexDirection: "row", alignItems: "center", gap: th.space[1], paddingHorizontal: th.space[2] }}>
+          <Icon name="chat" size={18} color={th.fgMuted} />
+          <Text variant="sm" tone="muted">
+            {commentCount > 0 ? String(commentCount) : t("bulletin.comment")}
+          </Text>
+        </View>
+      )}
     </View>
   );
 }

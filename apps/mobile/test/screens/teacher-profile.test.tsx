@@ -1,8 +1,6 @@
-import { Linking } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { saveProfileSchema, staffProfileSchema } from "@edulink/contracts";
 import { TeacherProfile } from "@/screens/teacher/profile";
-import { API_BASE } from "@/lib/api";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 import { ID } from "./teacher-support";
 
@@ -48,8 +46,7 @@ describe("the teacher's profile", () => {
     expect(screen.getByRole("button", { name: "Save" })).toBeDisabled();
   });
 
-  it("saves the name and the line about you with the body the contract takes; the avatar picker is the web's", async () => {
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+  it("saves the name and the line about you with the body the contract takes; the avatar picker is the app's own", async () => {
     const { calls } = await mountStaff(<TeacherProfile />, "TEACHER", {
       "GET /api/v1/staff/profile": () => json(PROFILE),
       "POST /api/v1/staff/profile": () => json({ ok: true }),
@@ -62,9 +59,9 @@ describe("the teacher's profile", () => {
     const post = calls().find((c) => c.line === "POST /api/v1/staff/profile")!;
     expect(saveProfileSchema.parse(post.body)).toEqual({ preferredName: "ZZ Tee", bio: "ZZ bio", avatarKey: "preset:fox-sunset", birthdate: "1988-04-02" });
     await waitFor(() => expect(calls().filter((c) => c.line === "GET /api/v1/staff/profile")).toHaveLength(2));
+    expect(screen.getByRole("image", { name: PROFILE.user.name })).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Change my look" }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/teacher/profile`);
-    open.mockRestore();
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/avatar");
   });
 
   it("nothing on file, no subjects, no ratings, a locked birthdate: each says so", async () => {

@@ -116,3 +116,53 @@ describe("replay-safe answering", () => {
     ).toBe(1);
   });
 });
+
+describe("a replay of the answer that finished the topic", () => {
+  /**
+   * A phone that answered offline only ever sees the replay: the first
+   * delivery happened while it had no signal, and its answer came back from
+   * the outbox later. So the replay of the LAST answer must say what the
+   * first delivery said — finished, and the badge won — or a pupil who
+   * earned it sees a plain "finished". The replay of any earlier answer must
+   * not claim the finish.
+   */
+  it("says finished and names the badge; an earlier answer's replay does not", async () => {
+    if (!hasBank) return;
+    // A fresh attempt of its own: the test above left an attempt open on this topic.
+    await db.quizResponse.deleteMany({ where: { attempt: { studentMembershipId: pupilMembershipId } } });
+    await db.quizAttempt.deleteMany({ where: { studentMembershipId: pupilMembershipId } });
+    await db.earnedBadge.deleteMany({ where: { studentMembershipId: pupilMembershipId } });
+
+    const { attemptId } = await startAttempt(pupil, SLUG);
+    const answered: { questionId: string; answerIndex: number }[] = [];
+    let last: Awaited<ReturnType<typeof submitAnswerIdempotent>> | null = null;
+    for (let guard = 0; guard < 200; guard++) {
+      const served = await nextQuestion(pupil, attemptId);
+      if (!served) break;
+      const row = await db.quizQuestion.findUniqueOrThrow({ where: { id: served.questionId }, select: { answerIndex: true } });
+      last = await submitAnswerIdempotent(pupil, attemptId, served.questionId, row.answerIndex);
+      answered.push({ questionId: served.questionId, answerIndex: row.answerIndex });
+    }
+    expect(answered.length).toBeGreaterThan(1);
+    // The first delivery of the last answer finished the topic cleanly and won the badge.
+    expect(last?.replayed).toBe(false);
+    expect(last?.result).toMatchObject({ finished: true, badgeAwarded: true });
+
+    // Finishing awards the topic's badge and the tier badges met on the way; count them before replaying.
+    const badgesBefore = await db.earnedBadge.count({ where: { studentMembershipId: pupilMembershipId } });
+    expect(badgesBefore).toBeGreaterThanOrEqual(1);
+
+    const final = answered[answered.length - 1]!;
+    const replayOfLast = await submitAnswerIdempotent(pupil, attemptId, final.questionId, final.answerIndex);
+    expect(replayOfLast.replayed).toBe(true);
+    expect(replayOfLast.result).toMatchObject({ correct: true, finished: true, badgeAwarded: true });
+
+    const firstAnswer = answered[0]!;
+    const replayOfFirst = await submitAnswerIdempotent(pupil, attemptId, firstAnswer.questionId, firstAnswer.answerIndex);
+    expect(replayOfFirst.replayed).toBe(true);
+    expect(replayOfFirst.result).toMatchObject({ finished: false, badgeAwarded: false });
+
+    // Replays award nothing twice.
+    expect(await db.earnedBadge.count({ where: { studentMembershipId: pupilMembershipId } })).toBe(badgesBefore);
+  });
+});

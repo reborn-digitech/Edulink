@@ -73,8 +73,23 @@ export function routesFor(role: Role): string[] {
  */
 export function allRoutesFor(role: Role): string[] {
   const more = MENU[role].flatMap((item) => (item.screen ? [item.screen.replace("/(app)", "")] : []));
-  return Array.from(new Set([...routesFor(role), ...more]));
+  return Array.from(new Set([...routesFor(role), ...more, ...(EXTRA[role] ?? [])]));
 }
+
+/**
+ * The screens opened from a row, a tile or a button rather than from the bar
+ * or More, that need no id to open — so the section walk, the accessibility
+ * gate and the UI/UX audit reach them too. (Screens that need an id — a
+ * class, a post, a booking — are covered by their jest tests.)
+ */
+const EXTRA: Partial<Record<Role, string[]>> = {
+  TEACHER: ["/worksheets", "/report-cards", "/remark-new", "/mentoring-setup", "/avatar"],
+  STUDENT: ["/quiz?mode=revision", "/post-new", "/mentoring-setup", "/avatar"],
+  PARENT: ["/link-child", "/mentoring-setup"],
+  ADMIN: ["/invites", "/intake", "/directory-profile", "/class-new", "/timetable-editor", "/competition-new", "/post-new"],
+  PRINCIPAL: ["/post-new"],
+  EXPERT: ["/avatar"],
+};
 
 export const DICTIONARIES = { en, hi, mr } as const;
 

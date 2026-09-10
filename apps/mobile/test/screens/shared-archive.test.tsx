@@ -1,7 +1,5 @@
-import { Linking } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { Archive } from "@/screens/shared/archive";
-import { API_BASE } from "@/lib/api";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
@@ -46,16 +44,14 @@ describe("past years", () => {
     await waitFor(() => expect(calls().some((c) => c.line === "GET /api/v1/shared/archive?year=y2")).toBe(true));
   });
 
-  it("a pupil's year: the report cards open on the web, the badges and the marks are listed", async () => {
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+  it("a pupil's year: a report card opens in the app's exams screen, the badges and the marks are listed", async () => {
     await mountStaff(<Archive />, "STUDENT", { [PATH]: () => json(PUPIL) });
     await screen.findByText("ZZ Term 1 report");
     expect(screen.getByText("ZZ Early bird")).toBeTruthy();
     expect(screen.getByText("14 pieces of work graded, averaging 81%")).toBeTruthy();
     expect(screen.getByText("190 of 200 marked days present")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: /^ZZ Term 1 report/ }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/report-cards/rc1`);
-    open.mockRestore();
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/exams", params: { cardId: "rc1" } });
   });
 
   it("a teacher's year: each class with what it left behind", async () => {

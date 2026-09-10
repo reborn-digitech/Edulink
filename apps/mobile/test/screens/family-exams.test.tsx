@@ -85,4 +85,19 @@ describe("exams and report cards", () => {
     await press(screen.getByRole("button", { name: "Back" }));
     expect(await screen.findByRole("tab", { name: "Report cards (1)" })).toBeTruthy();
   });
+
+  it("given a card's id (a past year's card from the archive), opens on that card, and Back is the exams", async () => {
+    const router = jest.requireMock("expo-router") as { useLocalSearchParams: () => Record<string, string> };
+    const original = router.useLocalSearchParams;
+    router.useLocalSearchParams = () => ({ cardId: ID.card });
+    try {
+      await renderFamily(<FamilyExams />, ME_STUDENT, { [PATH]: () => EXAMS, [ONE]: () => CARD });
+      expect(await screen.findByText("What this covers")).toBeTruthy();
+      expect(screen.getByText("Keep it up.")).toBeTruthy();
+      await press(screen.getByRole("button", { name: "Back" }));
+      expect(await screen.findByRole("tab", { name: "Marks" })).toBeTruthy();
+    } finally {
+      router.useLocalSearchParams = original;
+    }
+  });
 });

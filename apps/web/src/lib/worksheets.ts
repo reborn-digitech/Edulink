@@ -37,7 +37,7 @@ export type Worksheet = {
   questions: WorksheetQuestion[];
 };
 
-const MAX_QUESTIONS = 30;
+export const MAX_QUESTIONS = 30;
 
 function rank(seed: string, id: string): string {
   return createHash("sha1").update(`${seed}|${id}`).digest("hex");

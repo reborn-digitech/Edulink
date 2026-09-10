@@ -488,6 +488,8 @@ export type EnquiryListItem = {
   status: string;
   schoolName: string;
   subject: string;
+  /** The vacancy a JOB enquiry is about, so one posting's page can list what it drew. */
+  jobPostingId: string | null;
   fromName: string;
   lastMessageAt: Date;
   lastMessagePreview: string;
@@ -510,6 +512,7 @@ export async function listEnquiries(
       status: string;
       schoolName: string;
       subject: string;
+      jobPostingId: string | null;
       fromUser: { name: string; preferredName: string | null };
       createdAt: Date;
       messages: { body: string; authorUserId: string; readBy: string; createdAt: Date }[];
@@ -525,6 +528,7 @@ export async function listEnquiries(
           status: e.status,
           schoolName: e.schoolName,
           subject: e.subject,
+          jobPostingId: e.jobPostingId,
           fromName: e.fromUser.preferredName ?? e.fromUser.name,
           lastMessageAt: last?.createdAt ?? e.createdAt,
           lastMessagePreview: last?.body.slice(0, 140) ?? "",
@@ -550,6 +554,7 @@ export async function listEnquiries(
     status: true,
     schoolName: true,
     subject: true,
+    jobPostingId: true,
     createdAt: true,
     fromUser: { select: { name: true, preferredName: true } },
     messages: messageSelect,

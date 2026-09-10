@@ -2,12 +2,9 @@
 
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
-import { db } from "@/lib/db";
-import { getSession, DEFAULT_PREFS, type UserPrefs } from "@/lib/session";
+import { getSession } from "@/lib/session";
 import { prefsSchema, fieldErrors, type FieldErrors } from "@/lib/validation";
-import { readJson, writeJson } from "@/lib/json";
-import { audit } from "@/lib/audit";
-import { revokeOtherSessions, revokeSession } from "@/lib/session";
+import { saveUserPrefs, setUserLocale, signOutOneDevice, signOutOtherDevices } from "@/lib/account";
 import { LOCALE_COOKIE, normaliseLocale, type Locale } from "@/lib/i18n";
 import { getT } from "@/lib/i18n/server";
 import { refusalText } from "@/lib/i18n/refusal";
@@ -37,34 +34,10 @@ export async function savePrefs(input: unknown): Promise<PrefsState> {
   const parsed = prefsSchema.safeParse(input);
   if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error, t) };
 
-  const next = parsed.data;
-
-  // Quiet hours with identical start and end would silence everything forever
-  // — almost certainly not what someone means by "22:00 to 22:00".
-  if (next.quietHours && next.quietHours.start === next.quietHours.end) {
-    return {
-      ok: false,
-      errors: { "quietHours.end": t("account.quietSameTime") },
-    };
-  }
-
-  const current = readJson<UserPrefs>(
-    (await db.user.findUniqueOrThrow({ where: { id: session.user.id }, select: { prefs: true } }))
-      .prefs,
-    DEFAULT_PREFS,
-  );
-
-  await db.user.update({
-    where: { id: session.user.id },
-    data: { prefs: writeJson({ ...current, ...next }) },
-  });
-
-  await audit({
-    schoolId: session.schoolId,
-    actorUserId: session.user.id,
-    action: "prefs.update",
-    meta: { theme: next.theme, contrast: next.contrast, font: next.font },
-  });
+  // The rule and the write live in lib/account.ts, which the phone's
+  // /api/v1/account/prefs calls too.
+  const result = await saveUserPrefs(session, parsed.data);
+  if (!result.ok) return { ok: false, errors: { [result.field]: t(result.errorKey) } };
 
   revalidatePath("/account");
   return { ok: true, errors: {} };
@@ -92,17 +65,7 @@ export async function setLocale(raw: string): Promise<{ ok: boolean; locale: Loc
   const locale = normaliseLocale(raw);
   const session = await getSession();
 
-  if (session) {
-    const current = readJson<UserPrefs>(
-      (await db.user.findUniqueOrThrow({ where: { id: session.user.id }, select: { prefs: true } }))
-        .prefs,
-      DEFAULT_PREFS,
-    );
-    await db.user.update({
-      where: { id: session.user.id },
-      data: { prefs: writeJson({ ...current, locale }) },
-    });
-  }
+  if (session) await setUserLocale(session.user.id, locale);
 
   // Set even when signed out, so the login page can be read in the language the
   // reader picked on the way in. Not httpOnly and not a security boundary: the
@@ -126,19 +89,8 @@ export async function signOutDevice(sessionId: string): Promise<{ ok: boolean; e
   const session = await getSession();
   if (!session) return { ok: false, error: t("common.logInAgain") };
 
-  if (sessionId === session.sessionId) {
-    return { ok: false, error: t("account.thisDeviceUseSignOut") };
-  }
-
-  const revoked = await revokeSession(sessionId, session.user.id);
-  if (!revoked) return { ok: false, error: t("account.deviceAlreadyOut") };
-
-  await audit({
-    actorUserId: session.user.id,
-    action: "session.revoke",
-    targetType: "Session",
-    targetId: sessionId,
-  });
+  const result = await signOutOneDevice(session, sessionId);
+  if (!result.ok) return { ok: false, error: t(result.errorKey) };
 
   revalidatePath("/account");
   return { ok: true };
@@ -148,13 +100,7 @@ export async function signOutEverywhereElse(): Promise<{ ok: boolean; count: num
   const session = await getSession();
   if (!session) return { ok: false, count: 0 };
 
-  const count = await revokeOtherSessions(session.user.id, session.sessionId);
-
-  await audit({
-    actorUserId: session.user.id,
-    action: "session.revoke.others",
-    meta: { count },
-  });
+  const count = await signOutOtherDevices(session);
 
   revalidatePath("/account");
   return { ok: true, count };

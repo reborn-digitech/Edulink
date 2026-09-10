@@ -7,7 +7,7 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
-import { Chips, formatDateKey, openWeb, roleLabel } from "./shared";
+import { Chips, formatDateKey, roleLabel } from "./shared";
 
 type StaffRole = "" | "TEACHER" | "PRINCIPAL" | "ADMIN";
 
@@ -70,7 +70,7 @@ export function StaffRoster() {
               body={t("staff.rosterEmptyBody")}
               action={
                 role === "ADMIN" ? (
-                  <Button label={t("people.invitePeople")} variant="secondary" onPress={() => openWeb("/admin/invites")} />
+                  <Button label={t("people.invitePeople")} variant="secondary" onPress={() => router.push("/(app)/invites" as never)} />
                 ) : (
                   <Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />
                 )
@@ -99,7 +99,7 @@ export function StaffRoster() {
       <Text variant="xs" tone="subtle">
         {t("staff.rosterReadOnly")}
       </Text>
-      {role === "ADMIN" ? <Button label={t("staff.rosterEditLink")} variant="secondary" onPress={() => openWeb("/admin/people")} /> : null}
+      {role === "ADMIN" ? <Button label={t("staff.rosterEditLink")} variant="secondary" onPress={() => router.push("/(app)/people" as never)} /> : null}
     </Screen>
   );
 }

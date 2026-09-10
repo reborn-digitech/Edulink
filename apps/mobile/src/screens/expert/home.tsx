@@ -9,7 +9,7 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { formatInstant, Note, openWeb, Pill } from "../family/shared";
+import { formatInstant, Note, Pill } from "../family/shared";
 
 /**
  * Bookings — the web's /expert: the schools that have booked one of this
@@ -50,7 +50,7 @@ export function ExpertHome() {
       key={b.id}
       title={b.schoolName}
       caption={`${b.topic} · ${when(b.startsAt)}`}
-      onPress={() => openWeb(`/experts/bookings/${b.id}`)}
+      onPress={() => router.push({ pathname: "/(app)/booking", params: { bookingId: b.id } } as never)}
       right={
         <View style={{ alignItems: "flex-end", gap: th.space[1] }}>
           <Pill label={statusLabel(b.status)} tone={STATUS_TONE[b.status] ?? "muted"} />

@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { View } from "react-native";
+import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { adminSettingsSchema, okSchema, type AdminSettings as AdminSettingsData } from "@edulink/contracts";
+import { adminSettingsSchema, officeLogoSchema, okSchema, type AdminSettings as AdminSettingsData } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
-import { Button, Card, Failed, Field, Loading, Screen, Text } from "@/components";
+import { Button, Card, Failed, Field, Icon, Loading, Screen, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
+import { pickAndUpload } from "@/lib/pick-file";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { Pill } from "../family/shared";
-import { Chips, Notice, openWeb } from "./shared";
+import { Chips, Notice } from "./shared";
 
 /** The web's swatches — names, not colours, so a screen reader says "Teal" and the chips stay in the theme's colours. */
 const COLOURS: { value: string; nameKey: TranslationKey }[] = [
@@ -61,14 +63,17 @@ function draftFrom(d: AdminSettingsData): SchoolDetailsBody {
   };
 }
 
+export type HousekeepingBody = { autoReadDays: number | null; expireDays: number | null };
+
 /**
  * School settings — the web's /admin/settings: the details every invitation
- * and directory entry carries, saved from the phone; the logo, the directory
- * profile and the notification housekeeping open on the web, where the
- * cropper and the publish switch live.
+ * and directory entry carries; the logo, chosen from the phone's files and
+ * uploaded; the door to the public directory profile; and how long the
+ * school's notices live.
  */
 export function AdminSettings() {
   const t = useT();
+  const router = useRouter();
   const query = useQuery({
     queryKey: ["admin", "settings"],
     queryFn: async () => adminSettingsSchema.parse(unwrap(await api().get("/api/v1/admin/settings"))),
@@ -81,15 +86,7 @@ export function AdminSettings() {
       {d ? (
         <>
           <DetailsForm key={d.school.code} d={d} />
-          <Card title={t("settings.logo")}>
-            <Text variant="xs" tone="subtle">
-              {t("settings.logoBody")}
-            </Text>
-            <Text variant="sm" tone="muted">
-              {d.school.logoPath ? t("settings.currentLogo") : t("settings.noLogoYet")}
-            </Text>
-            <Button label={t("settings.chooseImage")} variant="secondary" onPress={() => openWeb("/admin/settings")} />
-          </Card>
+          <LogoCard logoPath={d.school.logoPath} />
           <Card title={t("explore.directoryTitle")} action={<Pill label={d.directory.published ? t("explore.publishedBadge") : t("explore.unpublishedBadge")} tone={d.directory.published ? "ok" : "muted"} />}>
             <Text variant="xs" tone="subtle">
               {t("explore.directoryBody")}
@@ -102,17 +99,109 @@ export function AdminSettings() {
                 {t("explore.contactGoneWarning")}
               </Text>
             ) : null}
-            <Button label={d.directory.published ? t("explore.unpublishCta") : t("explore.publishCta")} variant="secondary" onPress={() => openWeb("/admin/settings#directory")} />
+            <Button label={t("explore.editProfile")} variant="secondary" onPress={() => router.push("/(app)/directory-profile" as never)} />
           </Card>
-          <Card title={t("notif.tidyTitle")}>
-            <Text variant="sm" tone="muted">
-              {t("notif.housekeeping", { read: d.school.notifAutoReadDays ?? d.notifDefaults.autoReadDays, expire: d.school.notifExpireDays ?? d.notifDefaults.expireDays })}
-            </Text>
-            <Button label={t("common.edit")} variant="secondary" onPress={() => openWeb("/admin/settings")} />
-          </Card>
+          <Housekeeping key={`${d.school.notifAutoReadDays}:${d.school.notifExpireDays}`} d={d} />
         </>
       ) : null}
     </Screen>
+  );
+}
+
+/** The logo: an image chosen from the phone's files, uploaded, and made the school's; taking it off asks first. */
+function LogoCard({ logoPath }: { logoPath: string | null }) {
+  const t = useT();
+  const th = useTheme();
+  const toast = useToast();
+  const qc = useQueryClient();
+  const [confirming, setConfirming] = useState(false);
+  const refresh = () => {
+    void qc.invalidateQueries({ queryKey: ["admin", "settings"] });
+    void qc.invalidateQueries({ queryKey: ["admin", "overview"] });
+  };
+  const choose = useMutation({
+    mutationFn: async () => {
+      const picked = await pickAndUpload("image", t("settings.couldNotSaveLogo"));
+      return picked ? officeLogoSchema.parse(unwrap(await api().post("/api/v1/office/logo", { fileId: picked.fileId }))) : null;
+    },
+    onSuccess: (r) => {
+      if (!r) return;
+      toast.show(t("settings.logoSaved"));
+      refresh();
+    },
+    onError: (e) => toast.show(e.message, "danger"),
+  });
+  const remove = useMutation({
+    mutationFn: async () => officeLogoSchema.parse(unwrap(await api().post("/api/v1/office/logo", { fileId: null }))),
+    onSuccess: () => {
+      setConfirming(false);
+      toast.show(t("settings.logoRemoved"));
+      refresh();
+    },
+    onError: (e) => toast.show(e.message, "danger"),
+  });
+  return (
+    <Card title={t("settings.logo")}>
+      <Text variant="xs" tone="subtle">
+        {t("settings.logoBody")}
+      </Text>
+      <Text variant="sm" tone="muted">
+        {logoPath ? t("settings.currentLogo") : t("settings.noLogoYet")}
+      </Text>
+      <Button label={logoPath ? t("settings.chooseAnother") : t("settings.chooseImage")} variant="secondary" icon={<Icon name="image" size={20} color={th.fg} />} busy={choose.isPending} onPress={() => choose.mutate()} />
+      {logoPath ? (
+        confirming ? (
+          <View style={{ flexDirection: "row", gap: th.space[2] }}>
+            <Button label={t("common.remove")} variant="danger" busy={remove.isPending} onPress={() => remove.mutate()} accessibilityLabel={`${t("common.confirm")}: ${t("common.remove")} ${t("settings.logo")}`} style={{ flexGrow: 1 }} />
+            <Button label={t("common.cancel")} variant="ghost" onPress={() => setConfirming(false)} />
+          </View>
+        ) : (
+          <Button label={t("common.remove")} variant="ghost" onPress={() => setConfirming(true)} accessibilityLabel={`${t("common.remove")} ${t("settings.logo")}`} />
+        )
+      ) : null}
+    </Card>
+  );
+}
+
+/** How long the school's notices live: whole days, or blank for the platform's defaults. The server names the range it allows. */
+function Housekeeping({ d }: { d: AdminSettingsData }) {
+  const t = useT();
+  const toast = useToast();
+  const qc = useQueryClient();
+  const [read, setRead] = useState(d.school.notifAutoReadDays === null ? "" : String(d.school.notifAutoReadDays));
+  const [expire, setExpire] = useState(d.school.notifExpireDays === null ? "" : String(d.school.notifExpireDays));
+  const [error, setError] = useState<string | null>(null);
+  const save = useMutation({
+    mutationFn: async (body: HousekeepingBody) => okSchema.parse(unwrap(await api().post("/api/v1/office/notifications/housekeeping", body))),
+    onSuccess: () => {
+      toast.show(t("notif.tidySaved"));
+      void qc.invalidateQueries({ queryKey: ["admin", "settings"] });
+    },
+    onError: (e) => toast.show(e.message, "danger"),
+  });
+  const days = (text: string): number | null | undefined => (text.trim() === "" ? null : /^\d+$/.test(text.trim()) ? Number(text.trim()) : undefined);
+  function submit() {
+    const autoReadDays = days(read);
+    const expireDays = days(expire);
+    if (autoReadDays === undefined || expireDays === undefined) {
+      setError(t("notif.thresholdNotWhole"));
+      return;
+    }
+    setError(null);
+    save.mutate({ autoReadDays, expireDays });
+  }
+  return (
+    <Card title={t("notif.tidyTitle")}>
+      <Text variant="sm" tone="muted">
+        {t("notif.housekeeping", { read: d.school.notifAutoReadDays ?? d.notifDefaults.autoReadDays, expire: d.school.notifExpireDays ?? d.notifDefaults.expireDays })}
+      </Text>
+      <Text variant="xs" tone="subtle">
+        {t("notif.tidyBody")}
+      </Text>
+      <Field label={t("notif.autoReadField")} value={read} onChangeText={setRead} placeholder={String(d.notifDefaults.autoReadDays)} keyboardType="number-pad" maxLength={4} error={error} />
+      <Field label={t("notif.expireField")} value={expire} onChangeText={setExpire} placeholder={String(d.notifDefaults.expireDays)} keyboardType="number-pad" maxLength={4} />
+      <Button label={t("common.save")} busy={save.isPending} onPress={submit} accessibilityLabel={`${t("common.save")}: ${t("notif.tidyTitle")}`} />
+    </Card>
   );
 }
 

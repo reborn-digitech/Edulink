@@ -231,6 +231,7 @@ const ACTION_KEYS: Record<string, TranslationKey> = {
   "operator.school.close": "audit.operatorSchoolClose",
   "operator.school.open": "audit.operatorSchoolOpen",
   "profile.update": "audit.profileUpdate",
+  "profile.avatar": "audit.profileAvatar",
   "quiz.badge": "audit.quizBadge",
   "quiz.tierBadge": "audit.quizTierBadge",
   "practice.assign": "audit.practiceAssign",

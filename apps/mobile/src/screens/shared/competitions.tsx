@@ -10,7 +10,7 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
-import { Chips, openWeb } from "../staff/shared";
+import { Chips } from "../staff/shared";
 import { formatInstant, Pill } from "../family/shared";
 
 type Show = "" | "all";
@@ -22,8 +22,8 @@ const DATE: Intl.DateTimeFormatOptions = { day: "numeric", month: "short", year:
 /**
  * The marketplace, the web's /competitions, for every role: the school's
  * own and the platform's, open ones unless asked for the closed too, and
- * next to each what the reader's family has done about it. Posting one is
- * the web's form.
+ * next to each what the reader's family has done about it. A school's admin
+ * posts one from here (the app's own form, saved as a draft).
  */
 export function Competitions() {
   const t = useT();
@@ -44,10 +44,11 @@ export function Competitions() {
   const platform = data?.platform.filter(keep) ?? [];
   const nothing = school.length === 0 && platform.length === 0;
   const open = (competitionId: string) => router.push({ pathname: "/(app)/competitions/detail", params: { competitionId } } as never);
+  const post = () => router.push("/(app)/competition-new" as never);
 
   return (
     <Screen title={t("competitions.title")} description={t("competitions.intro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
-      {role === "ADMIN" ? <Button label={t("competitions.postOne")} variant="secondary" onPress={() => openWeb("/competitions/new")} /> : null}
+      {role === "ADMIN" ? <Button label={t("competitions.postOne")} variant="secondary" onPress={post} /> : null}
       <Chips
         label={t("competitions.showFilter")}
         value={show}
@@ -79,7 +80,7 @@ export function Competitions() {
                 !show ? (
                   <Button label={t("competitions.showClosed")} variant="secondary" onPress={() => setShow("all")} />
                 ) : role === "ADMIN" ? (
-                  <Button label={t("competitions.postOne")} variant="secondary" onPress={() => openWeb("/competitions/new")} />
+                  <Button label={t("competitions.postOne")} variant="secondary" onPress={post} />
                 ) : (
                   <Button label={t("nav.bulletin")} variant="secondary" onPress={() => router.push("/(app)/bulletin" as never)} />
                 )

@@ -5,13 +5,14 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { familyStudentProfileSchema, okSchema } from "@edulink/contracts";
 import type { z } from "zod";
 import type { TranslationKey } from "@edulink/i18n";
-import { Button, Card, Empty, Failed, Field, Icon, Loading, Row, Screen, Stat, Text } from "@/components";
+import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Stat, Text } from "@/components";
+import { Avatar } from "@/components/avatar";
 import { api, errorText } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
-import { formatDateKey, formatInstant, Note, openWeb, Pill } from "./shared";
+import { formatDateKey, formatInstant, Note, Pill } from "./shared";
 
 type Profile = z.infer<typeof familyStudentProfileSchema>;
 const DATE_KEY = /^\d{4}-\d{2}-\d{2}$/;
@@ -23,7 +24,7 @@ const FIRST_AVATAR = "preset:fox-sunset";
  * (preferred name, a line about them, their date of birth while they may
  * still set it), the names only the school can change, and what they have
  * done: the schools before this one, their practice, their competitions and
- * their badges. Choosing an avatar is the web's picker.
+ * their badges. Choosing an avatar is the app's own picker ("/(app)/avatar").
  */
 export function StudentProfile() {
   const t = useT();
@@ -88,6 +89,7 @@ function ProfileForm({ profile }: { profile: Profile }) {
   const t = useT();
   const th = useTheme();
   const qc = useQueryClient();
+  const router = useRouter();
   const { locale } = useLocale();
   const [preferredName, setPreferredName] = useState(profile.preferredName ?? "");
   const [bio, setBio] = useState(profile.bio ?? "");
@@ -129,14 +131,12 @@ function ProfileForm({ profile }: { profile: Profile }) {
         </Note>
       ) : null}
       <View style={{ flexDirection: "row", alignItems: "center", gap: th.space[3] }}>
-        <View style={{ width: th.space[12], height: th.space[12], borderRadius: th.radius.xl, backgroundColor: th.accentSoft, alignItems: "center", justifyContent: "center" }}>
-          <Icon name="user" size={28} color={th.accentStrong} weight="duotone" />
-        </View>
+        <Avatar avatarKey={profile.avatarKey} name={profile.name} size={64} />
         <View style={{ flex: 1, gap: th.space[1] }}>
           <Text variant="lg" bold>
             {preferredName.trim() || profile.name}
           </Text>
-          <Button label={t("student.changeMyLook")} variant="secondary" onPress={() => openWeb("/student/profile")} />
+          <Button label={t("student.changeMyLook")} variant="secondary" onPress={() => router.push("/(app)/avatar" as never)} />
         </View>
       </View>
       <Field label={t("student.callYou")} hint={t("student.nameYoullSee")} placeholder={profile.name.split(" ")[0]} value={preferredName} maxLength={60} onChangeText={(next) => { setPreferredName(next); setSaved(false); }} />

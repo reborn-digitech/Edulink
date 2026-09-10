@@ -1,9 +1,9 @@
-import { Linking } from "react-native";
-import { screen } from "@testing-library/react-native";
-import { staffClassDetailSchema } from "@edulink/contracts";
+import { Share } from "react-native";
+import { screen, waitFor } from "@testing-library/react-native";
+import { classWeightsSchema, staffClassDetailSchema } from "@edulink/contracts";
+import { ToastProvider } from "@/components";
 import { TeacherClassDetail } from "@/screens/teacher/class-detail";
-import { API_BASE } from "@/lib/api";
-import { callsTo, fakeApi, ID, json, refusal, renderTeacher, resetOutbox, tap } from "./teacher-support";
+import { callsTo, fakeApi, ID, json, refusal, renderTeacher, resetOutbox, tap, typeInto } from "./teacher-support";
 
 const mockRouter = { push: jest.fn(), params: {} as Record<string, string> };
 jest.mock("expo-router", () => ({ useRouter: () => mockRouter, useLocalSearchParams: () => mockRouter.params }));
@@ -23,8 +23,14 @@ const DETAIL = staffClassDetailSchema.parse({
     { id: "a2", title: "ZZ Draft quiz", dueAt: null, publishedAt: null, graded: 0 },
   ],
   weights: [],
-  categoriesInUse: [],
+  categoriesInUse: ["Homework"],
 });
+const PATH = `/api/v1/staff/classes/${ID.class1}`;
+const page = () => (
+  <ToastProvider>
+    <TeacherClassDetail />
+  </ToastProvider>
+);
 
 beforeEach(() => {
   resetOutbox();
@@ -33,57 +39,110 @@ beforeEach(() => {
 });
 
 describe("one class", () => {
-  it("loads the class named in the URL, with today's register, the roster and the recent work", async () => {
-    const fetch = fakeApi({ [`/api/v1/staff/classes/${ID.class1}`]: () => json(DETAIL) });
-    await renderTeacher(<TeacherClassDetail />);
+  it("loads the class named in the URL, with today's register, the code, the roster and the recent work", async () => {
+    const fetch = fakeApi({ [PATH]: () => json(DETAIL) });
+    await renderTeacher(page());
     expect(screen.getByRole("progressbar")).toBeTruthy();
-    await screen.findByText("Maths · 5 · Room 3");
-    expect(callsTo(fetch, `/api/v1/staff/classes/${ID.class1}`)).toHaveLength(1);
+    await screen.findByText("2 on the roll · Maths · 5 · Room 3");
+    expect(callsTo(fetch, PATH)).toHaveLength(1);
     expect(screen.getByLabelText("Attendance today: To do")).toBeTruthy();
     expect(screen.getByLabelText("To mark: 3")).toBeTruthy();
     expect(screen.getByLabelText("Attendance concern: 1")).toBeTruthy();
+    expect(screen.getByText("ZZ-CODE")).toBeTruthy();
     expect(screen.getByText("96%")).toBeTruthy();
     expect(screen.getByText("82% · Below 90% in 28 days")).toBeTruthy();
     expect(screen.getByText("Absent: 5")).toBeTruthy();
     expect(screen.getAllByText("No guardian").length).toBeGreaterThanOrEqual(2);
     expect(screen.getByText("ZZ Fractions sheet")).toBeTruthy();
-    expect(screen.getByText("Due in 3 days")).toBeTruthy();
-    expect(screen.getByText("Draft")).toBeTruthy();
+    expect(screen.getByText("Due in 3 days · 1 of 2 marked")).toBeTruthy();
+    expect(screen.getByText("Draft · 0 of 2 marked")).toBeTruthy();
   });
 
-  it("the register button opens today's register for this class; the marks button the grid", async () => {
-    fakeApi({ [`/api/v1/staff/classes/${ID.class1}`]: () => json(DETAIL) });
-    await renderTeacher(<TeacherClassDetail />);
+  it("the register, the marks grid, the report cards, setting work, a piece of work and a pupil's family each open on the phone", async () => {
+    fakeApi({ [PATH]: () => json(DETAIL) });
+    await renderTeacher(page());
     await tap(await screen.findByRole("button", { name: "Mark the attendance" }));
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/attendance", params: { classId: ID.class1 } });
     await tap(screen.getByRole("button", { name: "Enter exam marks" }));
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/marks", params: { classId: ID.class1 } });
+    await tap(screen.getByRole("button", { name: "Report cards" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/report-cards", params: { classId: ID.class1 } });
+    await tap(screen.getByRole("button", { name: "Set work" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/assignments", params: { classId: ID.class1, compose: "1" } });
+    await tap(screen.getByRole("button", { name: /^ZZ Fractions sheet/ }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/assignment", params: { assignmentId: "a1" } });
+    await tap(screen.getByRole("button", { name: "Message ZZ Asha’s guardians" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/remark-new", params: { membershipId: ID.pupil1 } });
   });
 
-  it("a register already taken offers to edit it; an empty roster and no work say so", async () => {
-    fakeApi({ [`/api/v1/staff/classes/${ID.class1}`]: () => json({ ...DETAIL, today: { ...DETAIL.today, registerTakenAt: new Date().toISOString() }, roster: [], recentAssignments: [] }) });
-    await renderTeacher(<TeacherClassDetail />);
+  it("the figures about pupils filter the roster", async () => {
+    fakeApi({ [PATH]: () => json(DETAIL) });
+    await renderTeacher(page());
+    await tap(await screen.findByRole("radio", { name: "No guardian · 1" }));
+    expect(screen.queryByText("ZZ Asha")).toBeNull();
+    expect(screen.getByText("ZZ Bhavesh")).toBeTruthy();
+    await tap(screen.getByRole("radio", { name: "Attendance concern · 1" }));
+    expect(screen.getByText("ZZ Bhavesh")).toBeTruthy();
+    await tap(screen.getByRole("radio", { name: "All · 2" }));
+    expect(screen.getByText("ZZ Asha")).toBeTruthy();
+  });
+
+  it("the class code is shared from the phone; an empty roster says so and its door is the same share", async () => {
+    const share = jest.spyOn(Share, "share").mockResolvedValue({ action: "sharedAction" });
+    fakeApi({ [PATH]: () => json({ ...DETAIL, today: { ...DETAIL.today, registerTakenAt: new Date().toISOString() }, roster: [], recentAssignments: [] }) });
+    await renderTeacher(page());
     await screen.findByRole("button", { name: "Edit today's attendance" });
     expect(screen.getByText("Nobody has joined yet")).toBeTruthy();
-    // The phone shows no class code, so the copy sends the teacher to the class page on the web, and the door opens it.
-    expect(screen.getByText("The class code students use to add themselves is on the class page on the web.")).toBeTruthy();
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
-    await tap(screen.getByRole("button", { name: "Open on the web" }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/teacher/classes/${ID.class1}`);
-    open.mockRestore();
+    expect(screen.getByText("Share the class code above and students can add themselves.")).toBeTruthy();
+    const buttons = screen.getAllByRole("button", { name: "Share" });
+    expect(buttons).toHaveLength(2);
+    await tap(buttons[1]!);
+    expect(share).toHaveBeenCalledWith({ message: expect.stringContaining("ZZ-CODE") });
+    share.mockRestore();
     expect(screen.getByText("Nothing set yet for this class.")).toBeTruthy();
+  });
+
+  it("grade weights must add to 100 before they save, and save as the contract takes them", async () => {
+    const fetch = fakeApi({ [PATH]: () => json(DETAIL), [`${PATH}/weights`]: () => json({ ok: true }) });
+    await renderTeacher(page());
+    expect(await screen.findByText("No weighting")).toBeTruthy();
+    await tap(screen.getByRole("button", { name: "Add a category" }));
+    await typeInto(screen.getByLabelText("Category 1 name"), "Homework");
+    await typeInto(screen.getByLabelText("Category 1 weight, percent"), "60");
+    expect(screen.getByText("Total 60% — must be 100%")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Save weights" })).toBeDisabled();
+    await tap(screen.getByRole("button", { name: "Add a category" }));
+    await typeInto(screen.getByLabelText("Category 2 name"), "Classwork");
+    await typeInto(screen.getByLabelText("Category 2 weight, percent"), "40");
+    expect(screen.getByText("Total 100%")).toBeTruthy();
+    await tap(screen.getByRole("button", { name: "Save weights" }));
+    expect(await screen.findByText("Weights saved.")).toBeTruthy();
+    const [call] = callsTo(fetch, `${PATH}/weights`);
+    expect(call!.method).toBe("POST");
+    expect(classWeightsSchema.parse(call!.body)).toEqual({ rows: [{ name: "Homework", percent: 60 }, { name: "Classwork", percent: 40 }] });
+    await tap(screen.getByRole("button", { name: "Remove category 2" }));
+    expect(screen.queryByLabelText("Category 2 name")).toBeNull();
+  });
+
+  it("a refused save of the weights is an alert with a retry", async () => {
+    const fetch = fakeApi({ [PATH]: () => json({ ...DETAIL, weights: [{ id: "w1", name: "Homework", weightBps: 10_000, position: 0 }] }), [`${PATH}/weights`]: () => refusal("ZZ weights locked", 422) });
+    await renderTeacher(page());
+    await tap(await screen.findByRole("button", { name: "Save weights" }));
+    expect(await screen.findByRole("alert")).toHaveTextContent("ZZ weights locked");
+    await tap(screen.getByRole("button", { name: "Try again" }));
+    await waitFor(() => expect(callsTo(fetch, `${PATH}/weights`)).toHaveLength(2));
   });
 
   it("without a class id it says so", async () => {
     mockRouter.params = {};
     fakeApi({});
-    await renderTeacher(<TeacherClassDetail />);
+    await renderTeacher(page());
     expect(screen.getByRole("alert")).toHaveTextContent("That class could not be found");
   });
 
   it("a refusal is an alert with a retry", async () => {
-    fakeApi({ [`/api/v1/staff/classes/${ID.class1}`]: () => refusal("ZZ not yours", 403) });
-    await renderTeacher(<TeacherClassDetail />);
+    fakeApi({ [PATH]: () => refusal("ZZ not yours", 403) });
+    await renderTeacher(page());
     expect(await screen.findByRole("alert")).toHaveTextContent("ZZ not yours");
     expect(screen.getByRole("button", { name: "Try again" })).toBeTruthy();
   });

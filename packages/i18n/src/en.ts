@@ -165,6 +165,7 @@ export const en = {
     saved: "Profile saved.",
     publishCta: "Publish to the directory",
     unpublishCta: "Remove from the directory",
+    editProfile: "Edit the directory profile",
     published: "Your school is now in the directory.",
     unpublished: "Your school has left the directory. Existing enquiries stay answerable.",
     publishNeedsAContact: "Name an admissions contact before publishing — enquiries need somewhere to land.",
@@ -500,6 +501,11 @@ export const en = {
 
     /* ------------------------------ preferences --------------------------- */
     quietSameTime: "Start and end cannot be the same time.",
+
+    /* ------------------------------ the phone's confirmations ------------- */
+    signOutDeviceConfirm: "Sign out {device}? Whoever has it will need to sign in again.",
+    signOutOthersConfirm: "Sign out every other device? You stay signed in on this one.",
+    removeMobileConfirm: "Take this number off your account? You will not be able to sign in with it or get a reset code on it.",
   },
 
   /* ---------------------------------------------------------------------- */
@@ -842,6 +848,8 @@ export const en = {
     byAuthor: "by {name}",
     showAgain: "Show at our school again",
     hideHere: "Hide at our school",
+    hideConfirm: "Hide this post at our school? Nobody here will see it on the global feed until it is shown again.",
+    preview: "Preview",
     takeOffGlobal: "Take off the global feed",
 
     /* ------------------------------- actions ------------------------------ */
@@ -1056,6 +1064,13 @@ export const en = {
     exampleUrlPlaceholder: "https://example.org/…",
     giveTitle: "Give it a title.",
     oneLinePlease: "One line about it, please.",
+
+    /* ------------------------------- the phone ------------------------------ */
+    onlyAdminsPost: "Only a school's admins, or EduLink's content team, can post a competition.",
+    postingFor: "Posting for",
+    /** The example date is a VALUE and stays as written. */
+    dateHint: "Year-month-day, e.g. 2026-10-01. Leave a date empty if there is none.",
+    declineConfirm: "{child} will be taken out of {title}. They can always ask again.",
   },
 
   /* ---------------------------------------------------------------------- */
@@ -1142,6 +1157,13 @@ export const en = {
     openRequests: "You already have {count} requests waiting. Talk to your school about those first.",
     noLongerWaiting: "That request is no longer waiting.",
     filledUp: "{name} filled up while this was waiting. Decline it and suggest somebody else.",
+
+    /* The phone's set-up screen and thread (September 2026). */
+    nobodyToAsk: "Nobody is taking mentoring requests just now. Have a look again soon.",
+    noRequests: "Nobody is waiting on a decision just now.",
+    reviewRequests: "Review the requests",
+    agreedToast: "Agreed. They can start writing to each other now.",
+    endConfirm: "End this mentorship? Nobody will be able to send a message after this.",
   },
 
   /* ---------------------------------------------------------------------- */
@@ -1452,6 +1474,19 @@ export const en = {
     showMeHow: "Show me how it works",
     allPractice: "All practice",
     finished: "Finished",
+    childPlaysOwn: "Practice questions are answered on the child's own sign-in. What they have done shows here.",
+    pickChapter: "Pick a chapter on Practice to start.",
+    resumedNote: "Picking up where you left off.",
+    streak: "{n} right in a row",
+    youAreOn: "You are on L{level} · {name}",
+    rightAnswer: "the right answer",
+    yourAnswer: "your answer",
+    summaryAnswered: "Answered this time",
+    summaryRight: "Right",
+    playAgain: "Start a fresh run",
+    offlineStart: "You're offline. The questions come from the school's server — connect, then try again.",
+    dueOn: "Due {date}",
+    setNoChapters: "The practice bank has no chapters for this class yet.",
   },
 
   /* ---------------------------------------------------------------------- */
@@ -1755,6 +1790,11 @@ export const en = {
     invitationSent: "Invitation sent",
     notRevoked: "Not revoked",
     revoke: "Revoke",
+    revokeConfirm: "Withdraw the invitation to {email}? The link in it stops working.",
+    invitationRevoked: "Invitation withdrawn",
+    deleteOnWeb: "Erasing stays on the web on purpose: nothing comes back, so it asks for the school's exact name there.",
+    auditDateHint: "Year-month-day, e.g. 2026-09-01",
+    auditDateWrong: "Write the date as year-month-day, e.g. 2026-09-01.",
 
     /* ------------------------------- inside ------------------------------- */
     insideTitle: "Inside {school}",
@@ -2614,6 +2654,7 @@ export const en = {
     joinClassAs: "Join {className} as {name}",
     joinSchoolAs: "Join {school} as {name}",
     sameAccountNote: "No new login, no new password. Everything already on your account stays yours.",
+    youJoinAsPupil: "You will join as a pupil.",
     thisIsAParentsAccount: "This account is linked to a child as a parent, so it cannot join a class as a pupil. Sign out and use the pupil's own account.",
     youWorkHere: "This account already holds a staff post at this school, so it cannot join as a pupil.",
     metaDescription: "Join EduLink with a code from your school, or link to your child.",
@@ -3002,6 +3043,8 @@ export const en = {
     relationOther: "Other family member",
     today: "Today",
     gradeLevel: "Grade {level}",
+    enterFullCode: "Enter the full student code.",
+    enterDob: "Enter their date of birth.",
   },
   /* ---------------------------------------------------------------------- */
   /* The four marks a register can carry — shown to staff and to families     */
@@ -4328,6 +4371,10 @@ export const en = {
     nameLine: "Name:",
     dateLine: "Date:",
     keyTitle: "Answer key",
+    noChapters: "The practice bank has no chapters yet, so there is nothing to print.",
+    countRange: "Choose between 1 and {max} questions.",
+    showKey: "Show the answer key",
+    hideKey: "Hide the answer key",
   },
 
   exams: {
@@ -4397,6 +4444,7 @@ export const en = {
     published: "Published",
     publish: "Publish",
     archive: "Archive",
+    archivedToast: "{name} archived",
     colSubject: "Subject",
     colDay: "Day",
     colTime: "Time",
@@ -4564,6 +4612,7 @@ export const en = {
     operatorSchoolClose: "An operator closed your school",
     operatorSchoolOpen: "An operator opened your school",
     profileUpdate: "Changed their profile",
+    profileAvatar: "Changed their picture",
     quizBadge: "Earned a practice badge",
     quizTierBadge: "Proved a practice ladder level",
     practiceAssign: "Set a practice chapter for a class",
@@ -4787,6 +4836,7 @@ export const en = {
     sendOne: "Send 1 invitation",
     sendMany: "Send {count} invitations",
     sendInvitations: "Send invitations",
+    checkList: "Check the list",
     sentOne: "1 invitation sent",
     sentMany: "{count} invitations sent",
     onTheWayOne: "1 invitation on the way",
@@ -4916,6 +4966,7 @@ export const en = {
     readyBody:
       "Students join by entering this class code. Write it on the board, or share it in your next newsletter.",
     copyClassCode: "Copy class code",
+    shareCode: "Share the class code",
     selectToCopy: "Select the code to copy it.",
     createAnother: "Create another",
     done: "Done",
@@ -4954,6 +5005,7 @@ export const en = {
     notAssigned: "Not assigned",
     teacherAssigned: "Class teacher assigned",
     teacherAdded: "Teacher added",
+    teacherRemoved: "{name} is no longer on this class",
     notRemoved: "Not removed",
     notChanged: "Not changed",
     noLeadWarning: "This class has no class teacher. Nobody is down to write its report cards.",
@@ -5187,6 +5239,11 @@ export const en = {
     markedCheckedToast: "Marked as identity checked",
     takeOffNote:
       "Taking somebody off the list stops schools finding them. It does not end a session already booked or a mentorship already agreed — those stay exactly as they are.",
+    /* The phone asks before each curation decision; the web's buttons act at once. */
+    confirmList: "List {name}? Every school on this server will be able to find and book them.",
+    confirmListAndCheck: "List {name} and mark their identity checked? Only if you have checked who they are.",
+    confirmTakeOff: "Take {name} off the list? Schools stop finding them; what is already agreed stays.",
+    confirmCheck: "Mark {name}'s identity as checked? Schools will see the badge.",
   },
   /* ---------------------------------------------------------------------- */
   /* The setup checklist. Its steps are BUILT IN `lib/onboarding.ts`, which  */
@@ -5508,6 +5565,7 @@ export const en = {
     skipped: "Skipped",
     failed: "Failed",
     downloadResult: "Download this list",
+    shareResult: "Share this list",
     admitMore: "Admit more",
     seePeople: "See the directory",
     fromPeople: "Admit pupils from a list",
@@ -5766,6 +5824,33 @@ export const en = {
     backToMore: "Back to More",
     offline: "It could not be sent — you look offline. Your words are kept here; try again when you are connected.",
     failed: "The report could not be sent.",
+  },
+  /** The phone's teaching screens: one assignment's marking, handouts, the report-card builder, writing to a family. */
+  teaching: {
+    assignmentNotFound: "That assignment could not be found",
+    publishConfirm: "Publish it now? The class and their guardians are told straight away.",
+    startMarking: "Start marking",
+    nextPupil: "Next pupil",
+    previousPupil: "Previous pupil",
+    allPupils: "All pupils",
+    pupilOf: "{n} of {total}",
+    theirWork: "What they handed in",
+    unsavedCount: "{count} not saved yet",
+    unsaved: "not saved yet",
+    attachFile: "Attach a file",
+    removeFile: "Remove {name}",
+    handoutsFull: "Five files is the most one piece of work can carry.",
+    pickClassForCards: "Choose the class whose report cards you are writing.",
+    builderStepThree: "3. Review and publish — {title}",
+    familiesSeeNothing: "Families see nothing until you publish.",
+    publishCardsConfirm: "Send {count} report cards to the families now? Each child and their guardians are told.",
+    withdrawCardsConfirm: "Take these cards back to draft? Families who opened them may already have read them.",
+    daysPresent: "{present} of {total} days",
+    remarkFor: "Remark for {name}",
+    saveRemark: "Save remark",
+    remarkSaved: "Remark saved",
+    changePupil: "Choose another pupil",
+    subjectIdeas: "Ideas for a subject",
   },
   security: {
     rootedTitle: "This phone has been altered",

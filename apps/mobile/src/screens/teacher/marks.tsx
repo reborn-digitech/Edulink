@@ -9,7 +9,7 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { OutboxBadge, dayLabel, openWeb, throwIfRefused, useOutboxRunner, writeOrQueue } from "./support";
+import { OutboxBadge, dayLabel, throwIfRefused, useOutboxRunner, writeOrQueue } from "./support";
 
 /**
  * The marks grid, the web's /teacher/exams: pick a class, pick a paper, type
@@ -154,7 +154,7 @@ export function MarksGrid() {
             </Text>
           ) : null}
           {sheet.pupils.length === 0 ? (
-            <Empty title={t("exams.emptyRoll")} action={<Button label={t("mobile.openOnWeb")} variant="secondary" onPress={() => openWeb(`/teacher/classes/${classId}`)} />} />
+            <Empty title={t("exams.emptyRoll")} action={<Button label={t("teacher.classJoinCode")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/classes/detail", params: { classId } } as never)} />} />
           ) : (
             <>
               {sheet.pupils.map((p) => (

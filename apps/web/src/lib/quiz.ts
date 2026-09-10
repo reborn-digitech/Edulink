@@ -874,6 +874,17 @@ export async function submitAnswerIdempotent(
   });
 
   if (existing && existing.chosenIndex !== null) {
+    // The first delivery may have been the answer that finished the topic and
+    // won its badge; a phone that answered offline only ever sees the replay,
+    // so the replay says what the first delivery said. finishIfComplete
+    // awards the badge exactly when it closes the attempt on its last answer
+    // with nothing revealed — so: the attempt is closed, this was its latest
+    // answer, and nothing was revealed.
+    const [closed, latest] = await Promise.all([
+      db.quizAttempt.findUniqueOrThrow({ where: { id: attemptId }, select: { finishedAt: true, revealedAny: true } }),
+      db.quizResponse.findFirst({ where: { attemptId }, orderBy: { answeredAt: "desc" }, select: { questionId: true } }),
+    ]);
+    const finishedHere = closed.finishedAt !== null && latest?.questionId === questionId;
     const lang = normaliseLocale(language);
     const translation =
       lang === "en"
@@ -889,8 +900,8 @@ export async function submitAnswerIdempotent(
         answerIndex: existing.question.answerIndex,
         solution: translation?.solution ?? existing.question.solution ?? "",
         newLevel: 0,
-        finished: false,
-        badgeAwarded: false,
+        finished: finishedHere,
+        badgeAwarded: finishedHere && !closed.revealedAny,
       },
     };
   }

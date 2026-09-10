@@ -19,7 +19,7 @@ async function main() {
     process.stderr.write(`purged ${gone.count}\n`);
     return;
   }
-  if (!role) throw new Error("usage: zz-token <ADMIN|PRINCIPAL|TEACHER|STUDENT|PARENT|EXPERT> | --purge");
+  if (!role) throw new Error("usage: zz-token <ADMIN|PRINCIPAL|TEACHER|STUDENT|PARENT|EXPERT|OPERATOR|APPADMIN> | --purge");
   const school = await db.school.findUniqueOrThrow({ where: { slug: "zz-northgate-school" } });
   let userId: string;
   let schoolId: string | null = school.id;
@@ -33,10 +33,16 @@ async function main() {
   } else if (role === "EXPERT") {
     userId = (await db.expertProfile.findFirstOrThrow({ where: { user: { email: { endsWith: "@zz.test" } } }, select: { userId: true } })).userId;
     schoolId = null;
+  } else if (role === "OPERATOR" || role === "APPADMIN") {
+    // The server operator and the content team: the ZZ fixture's flagged
+    // accounts, with no school and no role — the way they really sign in.
+    userId = (await db.user.findUniqueOrThrow({ where: { email: role === "OPERATOR" ? "zz.operator@zz.test" : "zz.appadmin@zz.test" }, select: { id: true } })).id;
+    schoolId = null;
   } else throw new Error(`unknown role ${role}`);
+  const activeRole = role === "OPERATOR" || role === "APPADMIN" ? null : role;
   const token = randomBytes(32).toString("base64url");
   await db.session.create({
-    data: { userId, tokenHash: createHash("sha256").update(token).digest("hex"), activeSchoolId: schoolId, activeRole: role, userAgent: "zz-token", expiresAt: new Date(Date.now() + 3_600_000) },
+    data: { userId, tokenHash: createHash("sha256").update(token).digest("hex"), activeSchoolId: schoolId, activeRole, userAgent: "zz-token", expiresAt: new Date(Date.now() + 3_600_000) },
   });
   process.stdout.write(token + "\n");
 }

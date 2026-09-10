@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { usePrivateScreen } from "@/lib/private-screen";
 import { Share, View } from "react-native";
+import { useLocalSearchParams } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 import type { z } from "zod";
 import { familyExamsSchema, familyReportCardSchema, familyReportCardsSchema } from "@edulink/contracts";
@@ -10,7 +11,7 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { Chips, EXAM_KIND, ExamMarksCards, formatDateKey, formatMilli, hhmm, Note, subjectName, Tabs, type ExamKind } from "./shared";
+import { Chips, EXAM_KIND, ExamMarksCards, formatDateKey, formatMilli, hhmm, Note, param, subjectName, Tabs, type ExamKind } from "./shared";
 
 type Tab = "marks" | "upcoming" | "cards";
 type ReportCard = z.infer<typeof familyReportCardSchema>;
@@ -19,14 +20,23 @@ const KINDS: ExamKind[] = ["UNIT_TEST", "MID_TERM", "FINAL"];
 /**
  * "How did I do" — the web's /exams for a pupil or across a guardian's
  * children: marks as they come in, the sittings still ahead, and the report
- * cards, one of which opens natively with a Share button.
+ * cards, one of which opens natively with a Share button. Given
+ * `?cardId=` (the archive's past report cards) it opens on that card.
  */
 export function FamilyExams() {
   // Marks and report cards are a child's private record: no screenshots, no screen recording, while this screen is up.
   usePrivateScreen();
   const t = useT();
   const { locale } = useLocale();
-  const [cardId, setCardId] = useState<string | null>(null);
+  const params = useLocalSearchParams() as Record<string, string | string[] | undefined>;
+  const asked = param(params.cardId) ?? null;
+  const [cardId, setCardId] = useState<string | null>(asked);
+  // A card asked for again while this screen is still mounted (it may be a tab) opens too.
+  const [lastAsked, setLastAsked] = useState<string | null>(asked);
+  if (asked !== lastAsked) {
+    setLastAsked(asked);
+    setCardId(asked);
+  }
   const [tabChoice, setTab] = useState<Tab | null>(null);
   const [kind, setKind] = useState<ExamKind | "all">("all");
   const exams = useQuery({

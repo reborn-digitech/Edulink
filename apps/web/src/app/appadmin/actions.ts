@@ -6,6 +6,7 @@ import { requireApiUser, AccessError } from "@/lib/tenancy";
 import {
   assertAppAdmin,
   createPlatformCompetition,
+  readPlatformCompetitionForm,
   setPlatformCompetitionStatus,
   createBankQuestion,
   updateBankQuestion,
@@ -34,12 +35,6 @@ async function failure(error: unknown): Promise<Result> {
   return { ok: false, error: (await getT())("common.tryAgainMoment") };
 }
 
-function parseDate(value: unknown): Date | null {
-  if (typeof value !== "string" || !value.trim()) return null;
-  const date = new Date(value);
-  return Number.isNaN(date.getTime()) ? null : date;
-}
-
 export async function createPlatformCompetitionAction(
   form: Record<string, unknown>,
 ): Promise<Result> {
@@ -47,30 +42,10 @@ export async function createPlatformCompetitionAction(
     const session = await requireApiUser();
     assertAppAdmin(session);
 
-    const title = String(form.title ?? "").trim();
-    const summary = String(form.summary ?? "").trim();
-    const t = await getT();
-    if (title.length < 3) return { ok: false, error: t("appadmin.titleTooShort") };
-    if (summary.length < 3) return { ok: false, error: t("appadmin.summaryTooShort") };
+    const read = readPlatformCompetitionForm(form);
+    if (!read.ok) return { ok: false, error: (await getT())(read.errorKey) };
 
-    const competitionId = await createPlatformCompetition(session, {
-      title,
-      summary,
-      body: String(form.body ?? "") || null,
-      organizerName: String(form.organizerName ?? "") || null,
-      subject: String(form.subject ?? "") || null,
-      gradeLow: String(form.gradeLow ?? "") || null,
-      gradeHigh: String(form.gradeHigh ?? "") || null,
-      eligibility: String(form.eligibility ?? "") || null,
-      rules: String(form.rules ?? "") || null,
-      prizes: String(form.prizes ?? "") || null,
-      externalUrl: String(form.externalUrl ?? "") || null,
-      registrationClosesAt: parseDate(form.registrationClosesAt),
-      startsAt: parseDate(form.startsAt),
-      endsAt: parseDate(form.endsAt),
-      requiresParentConsent: form.requiresParentConsent === "on",
-      leaderboardEnabled: form.leaderboardEnabled === "on",
-    });
+    const competitionId = await createPlatformCompetition(session, read.input);
 
     revalidatePath("/appadmin");
     revalidatePath("/competitions");

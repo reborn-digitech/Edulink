@@ -8,14 +8,14 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { Chips, Notice, openWeb } from "../staff/shared";
+import { Chips, Notice } from "../staff/shared";
 import { formatDateKey, levelName, subjectName } from "../family/shared";
 
 /**
  * Practice insights, the web's /teacher/practice: where one class stands on
  * the drill ladders, chapter by rung — counts, never rankings — the chapters
  * set for it with attainment the ladder proved itself, and the form that sets
- * another. Worksheets stay on the web.
+ * another. Worksheets open the phone's own screen (route "worksheets").
  */
 const LEVELS = [1, 2, 3, 4, 5, 6];
 
@@ -102,7 +102,7 @@ export function TeacherPractice() {
 
           {archive.isError ? <Failed message={archive.error.message} onRetry={() => (confirming ? archive.mutate(confirming) : archive.reset())} /> : null}
           {d.assignments.length === 0 ? (
-            <Empty title={t("practice.assignmentsTitle")} body={t("practice.assignmentsEmpty")} action={<Button label={t("worksheets.title")} variant="secondary" onPress={() => openWeb("/teacher/worksheets")} />} />
+            <Empty title={t("practice.assignmentsTitle")} body={t("practice.assignmentsEmpty")} action={<Button label={t("worksheets.title")} variant="secondary" onPress={() => router.push("/(app)/worksheets" as never)} />} />
           ) : (
             <Card title={t("practice.assignmentsTitle")}>
               {d.assignments.map((a) => (
@@ -135,7 +135,7 @@ export function TeacherPractice() {
               ))}
             </Card>
           )}
-          <Button label={t("worksheets.title")} variant="secondary" onPress={() => openWeb("/teacher/worksheets")} />
+          <Button label={t("worksheets.title")} variant="secondary" onPress={() => router.push("/(app)/worksheets" as never)} />
         </>
       ) : null}
     </Screen>
@@ -182,7 +182,9 @@ function SetChapter({ classId, topics, note, onDone }: { classId: string; topics
         {t("practice.setHint")}
       </Text>
       {topics.length === 0 ? (
-        <Button label={t("mobile.openOnWeb")} variant="secondary" onPress={() => openWeb("/teacher/practice")} />
+        <Text variant="sm" tone="muted">
+          {t("practice.setNoChapters")}
+        </Text>
       ) : (
         <>
           {subjects.length > 1 ? <Chips label={t("nav.practice")} value={subjects.includes(subject) ? subject : subjects[0]!} options={subjects.map((s) => ({ value: s, label: subjectName(t, s) }))} onChange={setSubject} /> : null}

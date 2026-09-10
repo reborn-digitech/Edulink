@@ -61,10 +61,12 @@ describe("the inbox", () => {
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/messages/thread", params: { threadId: ID.thread1 } });
   });
 
-  it("nothing yet is an empty state", async () => {
+  it("nothing yet is an empty state whose door is the people to write to", async () => {
     fakeApi({ "/api/v1/me": () => json(ME), "/api/v1/shared/inbox": () => json({ conversations: [], threads: [], unreadTotal: 0 }) });
     await renderTeacher(inbox());
     await screen.findByText("No messages yet");
+    await tap(screen.getByRole("button", { name: "New message" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/people");
   });
 
   it("a refusal is an alert with a retry", async () => {

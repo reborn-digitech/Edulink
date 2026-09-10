@@ -64,7 +64,41 @@ const FLAT: Record<string, string> = {
   "/enquiries": "/(app)/enquiries",
   "/root": "/(app)/operator",
   "/appadmin": "/(app)/appadmin",
+  // The screens that used to open the web (September 2026).
+  "/account": "/(app)/account",
+  "/parent/link": "/(app)/link-child",
+  "/competitions/new": "/(app)/competition-new",
+  "/appadmin/new": "/(app)/competition-new",
+  "/appadmin/bank": "/(app)/question-bank",
+  "/teacher/assignments/new": "/(app)/assignments",
+  "/remarks/new": "/(app)/remark-new",
+  "/remarks/people": "/(app)/people",
+  "/admin/invites": "/(app)/invites",
+  "/admin/invites/new": "/(app)/invites",
+  "/admin/intake": "/(app)/intake",
+  "/admin/directory": "/(app)/directory-profile",
+  "/admin/classes/new": "/(app)/class-new",
+  "/bulletin/new": "/(app)/post-new",
+  "/bulletin/celebrations": "/(app)/bulletin",
+  "/student/practice/journey": "/(app)/practice",
+  "/teacher/worksheets": "/(app)/worksheets",
+  "/root/new": "/(app)/operator-new-school",
+  "/root/experts": "/(app)",
+  "/root/audit": "/(app)",
+  "/root/jobs": "/(app)",
+  "/root/content-team": "/(app)",
 };
+
+/** Paths under these prefixes whose second segment is an id, and the screen and param that id becomes. */
+const BY_ID: { prefix: string; pathname: string; param: string; not?: string[] }[] = [
+  { prefix: "/teacher/assignments/", pathname: "/(app)/assignment", param: "assignmentId", not: ["new"] },
+  { prefix: "/explore/", pathname: "/(app)/school", param: "schoolId" },
+  { prefix: "/vacancies/", pathname: "/(app)/vacancy", param: "postingId" },
+  { prefix: "/experts/bookings/", pathname: "/(app)/booking", param: "bookingId" },
+  { prefix: "/expert/bookings/", pathname: "/(app)/booking", param: "bookingId" },
+  { prefix: "/bulletin/", pathname: "/(app)/post", param: "postId", not: ["new", "global", "celebrations"] },
+  { prefix: "/root/", pathname: "/(app)/operator-school", param: "schoolId", not: ["new", "experts", "audit", "jobs", "content-team"] },
+];
 
 export function screenFor(url: string): ScreenTarget | null {
   const u = new URL(url, "https://app.local");
@@ -74,6 +108,16 @@ export function screenFor(url: string): ScreenTarget | null {
   const flat = FLAT[p];
   if (flat) return withQuery(flat);
   const seg = p.split("/");
+  if (p === "/student/practice/revision") return { pathname: "/(app)/quiz", params: { ...q, mode: "revision" } };
+  if (p.startsWith("/student/practice/") && seg[3] && seg.length === 4) return { pathname: "/(app)/quiz", params: { ...q, mode: "topic", slug: seg[3] } };
+  if (p.startsWith("/teacher/classes/") && seg[3] && seg[4] === "report-cards") return { pathname: "/(app)/report-cards", params: { classId: seg[3] } };
+  if (p.startsWith("/competitions/") && seg[2] && seg[3] === "entries") return { pathname: "/(app)/competition-entries", params: { competitionId: seg[2] } };
+  if (p.startsWith("/appadmin/bank/") && seg[3]) return { pathname: "/(app)/question-bank", params: seg[4] ? { topicId: seg[3], questionId: seg[4] } : { topicId: seg[3] } };
+  for (const rule of BY_ID) {
+    if (!p.startsWith(rule.prefix)) continue;
+    const rest = p.slice(rule.prefix.length).split("/");
+    if (rest.length === 1 && rest[0] && !(rule.not ?? []).includes(rest[0])) return { pathname: rule.pathname, params: { [rule.param]: rest[0] } };
+  }
   if (p.startsWith("/remarks/c/") && seg[3]) return { pathname: "/(app)/messages/room", params: { conversationId: seg[3] } };
   if (p.startsWith("/remarks/") && seg[2] && seg.length === 3) return { pathname: "/(app)/messages/thread", params: { threadId: seg[2] } };
   if ((p.startsWith("/teacher/classes/") || p.startsWith("/principal/classes/") || p.startsWith("/admin/classes/")) && seg[3] && seg.length === 4 && seg[3] !== "new") return { pathname: "/(app)/classes/detail", params: { classId: seg[3] } };

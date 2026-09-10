@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { View } from "react-native";
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { adminSafetySchema, type AdminSafety } from "@edulink/contracts";
+import { useRouter } from "expo-router";
+import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { adminSafetySchema, okSchema, type AdminSafety } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
-import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Stat, Text } from "@/components";
+import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Stat, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
+import { screenFor, type ScreenTarget } from "@/lib/links";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { Pill, relativeTime } from "../family/shared";
-import { Chips, openWeb } from "./shared";
+import { Chips } from "./shared";
 
 type Tab = "open" | "closed" | "audit";
 type Report = AdminSafety["reports"][number];
@@ -75,7 +77,8 @@ function isSensitiveAction(action: string): boolean {
  * looked inside it (above everything, because nothing else tells a school
  * that), then the reports to deal with, the ones resolved, and the
  * append-only audit trail. Deciding a report — taking content down with a
- * note the author sees, or closing it as alright — is the web's form.
+ * note the author sees, or closing it as alright with a note only staff
+ * see — happens here, after the note is written.
  */
 export function Safety() {
   const t = useT();
@@ -155,10 +158,44 @@ export function Safety() {
   );
 }
 
+/** Where a reported thing opens in the app: its own screen, or — for a person — the directory, where their access is paused. */
+function doorFor(href: string | null, kind: "POST" | "COMMENT" | "USER"): ScreenTarget | null {
+  if (!href) return null;
+  return screenFor(href) ?? (kind === "USER" ? { pathname: "/(app)/people" } : null);
+}
+
+/**
+ * One reported thing and its reports. Deciding it is two steps, as on the
+ * web: choose "take it down" or "nothing wrong", write the note (the author
+ * reads a take-down's; only staff read a dismissal's), then confirm.
+ */
 function ReportCard({ group, readOnly }: { group: Report; readOnly?: boolean }) {
   const t = useT();
   const th = useTheme();
+  const toast = useToast();
+  const qc = useQueryClient();
+  const router = useRouter();
   const { locale } = useLocale();
+  const [deciding, setDeciding] = useState<"remove" | "dismiss" | null>(null);
+  const [note, setNote] = useState("");
+  const decide = useMutation({
+    mutationFn: async (kind: "remove" | "dismiss") => {
+      const body = { targetType: group.targetType, targetId: group.targetId, note: note.trim() };
+      return okSchema.parse(unwrap(kind === "remove" ? await api().post("/api/v1/office/safety/take-down", body) : await api().post("/api/v1/office/safety/dismiss", body)));
+    },
+    onSuccess: (_r, kind) => {
+      toast.show(kind === "remove" ? t("safety.takenDown") : group.count === 1 ? t("safety.closedOne") : t("safety.closedMany", { count: group.count }));
+      setDeciding(null);
+      setNote("");
+      void qc.invalidateQueries({ queryKey: ["admin", "safety"] });
+      void qc.invalidateQueries({ queryKey: ["admin", "overview"] });
+    },
+    onError: (e) => toast.show(e.message, "danger"),
+  });
+  const open = (href: string | null) => {
+    const target = doorFor(href, group.targetType);
+    if (target) router.push(target as never);
+  };
   const reasonText = (reason: string) => {
     const key = REASON_KEYS[reason];
     return key ? t(key) : reason;
@@ -189,7 +226,7 @@ function ReportCard({ group, readOnly }: { group: Report; readOnly?: boolean }) 
                   {target.body}
                 </Text>
               ) : null}
-              <Button label={t("safety.openIt")} variant="secondary" onPress={() => openWeb(target.href)} />
+              {doorFor(target.href, "POST") ? <Button label={t("safety.openIt")} variant="secondary" onPress={() => open(target.href)} /> : null}
             </>
           ) : null}
           {target.kind === "COMMENT" ? (
@@ -198,7 +235,7 @@ function ReportCard({ group, readOnly }: { group: Report; readOnly?: boolean }) 
                 {`${target.authorName} ${t("safety.commentedOn")} ${target.postTitle} · ${relativeTime(target.createdAt, locale)}${target.status !== "APPROVED" ? ` · ${target.status.toLowerCase()}` : ""}`}
               </Text>
               <Text variant="sm">{target.body}</Text>
-              <Button label={t("safety.openThePost")} variant="secondary" onPress={() => openWeb(target.href)} />
+              {doorFor(target.href, "COMMENT") ? <Button label={t("safety.openThePost")} variant="secondary" onPress={() => open(target.href)} /> : null}
             </>
           ) : null}
           {target.kind === "USER" ? (
@@ -212,7 +249,7 @@ function ReportCard({ group, readOnly }: { group: Report; readOnly?: boolean }) 
               <Text variant="xs" tone={target.suspended ? "warn" : "muted"}>
                 {target.suspended ? t("safety.alreadyPaused") : t("safety.canPauseBody")}
               </Text>
-              {target.href ? <WebDoor label={target.suspended ? t("safety.openInDirectory") : t("safety.pauseTheirAccess")} href={target.href} /> : null}
+              {doorFor(target.href, "USER") ? <Button label={target.suspended ? t("safety.openInDirectory") : t("safety.pauseTheirAccess")} variant="secondary" onPress={() => open(target.href)} /> : null}
             </>
           ) : null}
         </View>
@@ -240,18 +277,37 @@ function ReportCard({ group, readOnly }: { group: Report; readOnly?: boolean }) 
           <Text variant="sm">{group.resolutionNote}</Text>
         </View>
       ) : null}
-      {!readOnly ? (
-        <View style={{ flexDirection: "row", gap: th.space[2], flexWrap: "wrap" }}>
-          {removable ? <Button label={t("safety.takeItDown")} variant="danger" onPress={() => openWeb("/admin/safety")} style={{ flexGrow: 1 }} /> : null}
-          <Button label={t("safety.nothingWrong")} variant="secondary" onPress={() => openWeb("/admin/safety")} style={{ flexGrow: 1 }} />
+      {readOnly ? null : deciding ? (
+        <View style={{ gap: th.space[2] }}>
+          <Field
+            label={deciding === "remove" ? t("safety.whyComingDown") : t("safety.whyAlright")}
+            value={note}
+            onChangeText={setNote}
+            placeholder={deciding === "remove" ? t("safety.removePlaceholder") : t("safety.dismissPlaceholder")}
+            multiline
+            maxLength={1000}
+            style={{ minHeight: 96, textAlignVertical: "top" }}
+          />
+          <View style={{ flexDirection: "row", gap: th.space[2], flexWrap: "wrap" }}>
+            <Button label={deciding === "remove" ? t("safety.takeItDown") : t("safety.closeTheReports")} variant={deciding === "remove" ? "danger" : "primary"} busy={decide.isPending} disabled={!note.trim()} onPress={() => decide.mutate(deciding)} style={{ flexGrow: 1 }} />
+            <Button
+              label={t("common.cancel")}
+              variant="ghost"
+              onPress={() => {
+                setDeciding(null);
+                setNote("");
+              }}
+            />
+          </View>
         </View>
-      ) : null}
+      ) : (
+        <View style={{ flexDirection: "row", gap: th.space[2], flexWrap: "wrap" }}>
+          {removable ? <Button label={t("safety.takeItDown")} variant="danger" onPress={() => setDeciding("remove")} style={{ flexGrow: 1 }} /> : null}
+          <Button label={t("safety.nothingWrong")} variant="secondary" onPress={() => setDeciding("dismiss")} style={{ flexGrow: 1 }} />
+        </View>
+      )}
     </Card>
   );
-}
-
-function WebDoor({ label, href }: { label: string; href: string }) {
-  return <Button label={label} variant="secondary" onPress={() => openWeb(href)} />;
 }
 
 function AuditList({ rows }: { rows: AdminSafety["audit"] }) {

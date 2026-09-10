@@ -6,7 +6,7 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
-import { openWeb, relativeTime } from "./support";
+import { relativeTime } from "./support";
 
 /**
  * The inbox, the web's /remarks, for every role: rooms (a conversation with
@@ -38,7 +38,7 @@ export function Inbox() {
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {data ? (
         data.conversations.length === 0 && data.threads.length === 0 ? (
-          <Empty title={t("remarks.noMessagesYet")} body={t("convo.emptyBody")} action={<Button label={t("convo.newMessage")} variant="secondary" onPress={() => openWeb("/remarks/people")} />} />
+          <Empty title={t("remarks.noMessagesYet")} body={t("convo.emptyBody")} action={<Button label={t("convo.newMessage")} variant="secondary" onPress={() => router.push("/(app)/people" as never)} />} />
         ) : (
           <>
             {data.conversations.length > 0 ? (

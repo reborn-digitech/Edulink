@@ -1,8 +1,6 @@
-import { Linking } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { enquiriesPageSchema } from "@edulink/contracts";
 import { Enquiries } from "@/screens/shared/enquiries";
-import { API_BASE } from "@/lib/api";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
@@ -62,14 +60,15 @@ describe("enquiries", () => {
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/messages");
   });
 
-  it("nothing yet: a guardian is sent to Explore on the web", async () => {
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+  it("nothing yet: a guardian is sent to Explore, where a new enquiry starts", async () => {
     await mountStaff(<Enquiries />, "PARENT", { [`GET ${PATH}`]: () => json({ sent: [], inbox: [] }) });
     await screen.findByText("Find a school in Explore and ask about admission — the conversation will live here.");
-    // Two doors for a guardian: the standing button and the empty state's own; either opens Explore on the web.
+    // Two doors for a guardian: the standing button and the empty state's own; either opens Explore.
     await fireEvent.press(screen.getAllByRole("button", { name: "Explore schools" })[1]!);
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/explore`);
-    open.mockRestore();
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/explore");
+    mockRouter.push.mockClear();
+    await fireEvent.press(screen.getAllByRole("button", { name: "Explore schools" })[0]!);
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/explore");
   });
 
   it("a refusal is an alert with a retry", async () => {

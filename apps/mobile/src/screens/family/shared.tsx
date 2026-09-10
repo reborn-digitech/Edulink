@@ -228,6 +228,28 @@ export function Note({ tone, children }: { tone: "warn" | "ok" | "accent" | "dan
   return <View style={{ backgroundColor: bg, borderRadius: th.radius.md, padding: th.space[3], gap: th.space[2] }}>{children}</View>;
 }
 
+/**
+ * A step that cannot be undone, asked about where it was pressed: the
+ * sentence, the step named again on a danger button, and a way back. In
+ * place rather than a system dialog — Alert does nothing on the web target,
+ * and a question beside the row it is about needs no context to read.
+ */
+export function Confirm({ question, confirmLabel, onConfirm, onCancel, busy, cancelLabel }: { question: string; confirmLabel: string; onConfirm: () => void; onCancel: () => void; busy?: boolean; cancelLabel?: string }) {
+  const th = useTheme();
+  const t = useT();
+  return (
+    <Note tone="warn">
+      <Text variant="sm" bold accessibilityLiveRegion="polite">
+        {question}
+      </Text>
+      <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+        <Button label={confirmLabel} variant="danger" busy={busy} onPress={onConfirm} />
+        <Button label={cancelLabel ?? t("common.cancel")} variant="secondary" disabled={busy} onPress={onCancel} />
+      </View>
+    </Note>
+  );
+}
+
 /** A small label pill — the web's Badge. */
 export function Pill({ label, tone = "muted" }: { label: string; tone?: "muted" | "ok" | "warn" | "danger" | "accent" }) {
   const th = useTheme();

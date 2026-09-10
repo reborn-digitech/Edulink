@@ -8,15 +8,16 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { Chips, formatDateKey, openWeb } from "../staff/shared";
+import { Chips, formatDateKey } from "../staff/shared";
 import { Pill } from "../family/shared";
 import { clock } from "./support";
 
 /**
  * Exams, the web's /teacher/exams: the classes this person may enter marks
  * for, each class's series and the papers in them. A paper opens the marks
- * grid (src/screens/teacher/marks.tsx) with the class and the paper picked.
- * Report cards are the shared /exams page on the web. An admin sees every class.
+ * grid (src/screens/teacher/marks.tsx) with the class and the paper picked;
+ * report cards open the builder (src/screens/teacher/report-cards.tsx) for the
+ * class on screen. An admin sees every class.
  */
 const KIND_KEY = { UNIT_TEST: "exams.kindUnitTest", MID_TERM: "exams.kindMidTerm", FINAL: "exams.kindFinal" } as const;
 
@@ -33,7 +34,7 @@ export function TeacherExams() {
   const d = query.data;
   const klass = d?.classes.find((c) => c.id === picked) ?? d?.classes[0] ?? null;
   const papers = klass ? klass.series.reduce((n, s) => n + s.slots.length, 0) : 0;
-  const cards = <Button label={t("exams.tabCards")} variant="secondary" onPress={() => openWeb("/exams?tab=cards")} />;
+  const cards = <Button label={t("exams.tabCards")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/report-cards", params: klass ? { classId: klass.id } : {} } as never)} />;
 
   return (
     <Screen title={t("nav.exams")} description={t("exams.marksIntro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>

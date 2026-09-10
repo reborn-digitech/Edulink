@@ -1,8 +1,7 @@
-import { Linking } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
+import { ToastProvider } from "@/components";
 import { Safety } from "@/screens/staff/safety";
-import { API_BASE } from "@/lib/api";
-import { gated, json, mountStaff, refused, type Answer } from "./staff-harness";
+import { gated, json, mountStaff, refused, type Answer, type Answers } from "./staff-harness";
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
 jest.mock("expo-router", () => ({ useRouter: () => mockRouter, useLocalSearchParams: () => mockRouter.params }));
@@ -45,6 +44,16 @@ const answer: Answer = ({ url }) => {
   const tab = url.searchParams.get("tab") ?? "open";
   return json({ openCount: 2, visits: [VISIT], reports: tab === "open" ? [POST_REPORT, USER_REPORT] : tab === "closed" ? [CLOSED_REPORT] : [], audit: tab === "audit" ? AUDIT : [] });
 };
+const deciding = (answers: Answers) =>
+  mountStaff(
+    <ToastProvider>
+      <Safety />
+    </ToastProvider>,
+    "ADMIN",
+    { "GET /api/v1/admin/safety": answer, ...answers },
+  );
+
+beforeEach(() => mockRouter.push.mockClear());
 
 describe("the safety centre", () => {
   it("loads, then shows who opened the school, the open reports and what was reported", async () => {
@@ -64,16 +73,47 @@ describe("the safety centre", () => {
     expect(calls().some((c) => c.line === "GET /api/v1/admin/safety?tab=open")).toBe(true);
   });
 
-  it("deciding a report and opening the content are the web's", async () => {
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+  it("the reported post and the reported person open the app's own screens", async () => {
     await mountStaff(<Safety />, "ADMIN", { "GET /api/v1/admin/safety": answer });
     await fireEvent.press(await screen.findByRole("button", { name: "Open it" }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/bulletin/p1`);
-    await fireEvent.press(screen.getByRole("button", { name: "Take it down" }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/admin/safety`);
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/post", params: { postId: "p1" } });
     await fireEvent.press(screen.getByRole("button", { name: "Pause their access" }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/admin/directory/m9`);
-    open.mockRestore();
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/people" });
+  });
+
+  it("taking it down needs the note the author will read, then posts it and says so", async () => {
+    const { calls } = await deciding({ "POST /api/v1/office/safety/take-down": () => json({ ok: true }) });
+    await fireEvent.press(await screen.findByRole("button", { name: "Take it down" }));
+    expect(calls().some((c) => c.line.startsWith("POST"))).toBe(false);
+    expect(screen.getByRole("button", { name: "Take it down" })).toBeDisabled();
+    await fireEvent.changeText(screen.getByLabelText("Why is it coming down? The author sees this."), "ZZ Please repost without the name.");
+    await fireEvent.press(screen.getByRole("button", { name: "Take it down" }));
+    expect(await screen.findByText("Taken down and the author told")).toBeTruthy();
+    expect(calls().find((c) => c.line === "POST /api/v1/office/safety/take-down")?.body).toEqual({ targetType: "POST", targetId: "p1", note: "ZZ Please repost without the name." });
+    await waitFor(() => expect(calls().filter((c) => c.line === "GET /api/v1/admin/safety?tab=open").length).toBe(2));
+  });
+
+  it("nothing wrong closes the reports with a note only staff see; cancelling sends nothing", async () => {
+    const { calls } = await deciding({ "POST /api/v1/office/safety/dismiss": () => json({ ok: true }) });
+    await screen.findByText("ZZ Person");
+    const [onPost, onPerson] = screen.getAllByRole("button", { name: "Nothing wrong — close it" });
+    await fireEvent.press(onPost!);
+    await fireEvent.press(screen.getByRole("button", { name: "Cancel" }));
+    expect(calls().some((c) => c.line.startsWith("POST"))).toBe(false);
+    await fireEvent.press(onPerson!);
+    await fireEvent.changeText(screen.getByLabelText("Why is this alright? Only staff see this."), "ZZ Checked with the class teacher.");
+    await fireEvent.press(screen.getByRole("button", { name: "Close the reports" }));
+    expect(await screen.findByText("1 report closed")).toBeTruthy();
+    expect(calls().find((c) => c.line === "POST /api/v1/office/safety/dismiss")?.body).toEqual({ targetType: "USER", targetId: "m9", note: "ZZ Checked with the class teacher." });
+  });
+
+  it("a refused decision is the server's sentence, and the note stays", async () => {
+    await deciding({ "POST /api/v1/office/safety/take-down": refused("That content no longer exists.", 404) });
+    await fireEvent.press(await screen.findByRole("button", { name: "Take it down" }));
+    await fireEvent.changeText(screen.getByLabelText("Why is it coming down? The author sees this."), "ZZ note");
+    await fireEvent.press(screen.getByRole("button", { name: "Take it down" }));
+    expect(await screen.findByText("That content no longer exists.")).toBeTruthy();
+    expect(screen.getByLabelText("Why is it coming down? The author sees this.")).toHaveDisplayValue("ZZ note");
   });
 
   it("the resolved and audit tabs ask the API; an action with no wording shows its raw key", async () => {
@@ -83,6 +123,7 @@ describe("the safety centre", () => {
     await waitFor(() => expect(calls().some((c) => c.line === "GET /api/v1/admin/safety?tab=closed")).toBe(true));
     expect(await screen.findByText("This content is no longer available")).toBeTruthy();
     expect(screen.getByText("ZZ taken down.")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Take it down" })).toBeNull();
     await fireEvent.press(screen.getByRole("radio", { name: "Audit log" }));
     await waitFor(() => expect(calls().some((c) => c.line === "GET /api/v1/admin/safety?tab=audit")).toBe(true));
     expect(await screen.findByText("Exported a compliance file")).toBeTruthy();

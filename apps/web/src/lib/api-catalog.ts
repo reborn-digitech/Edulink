@@ -11,6 +11,13 @@ import { STAFF } from "./api-catalog/staff";
 import { FAMILY } from "./api-catalog/family";
 import { SHARED } from "./api-catalog/shared";
 import { OPERATOR } from "./api-catalog/operator";
+import { PRACTICE } from "./api-catalog/practice";
+import { COMMUNITY } from "./api-catalog/community";
+import { TEACHING } from "./api-catalog/teaching";
+import { OFFICE } from "./api-catalog/office";
+import { ACCOUNT } from "./api-catalog/account";
+import { CONTEST } from "./api-catalog/contest";
+import { JOIN } from "./api-catalog/join";
 import type { Endpoint } from "./api-catalog/types";
 
-export const ENDPOINTS: Endpoint[] = [...CORE, ...ADMIN, ...STAFF, ...FAMILY, ...SHARED, ...OPERATOR];
+export const ENDPOINTS: Endpoint[] = [...CORE, ...ADMIN, ...STAFF, ...FAMILY, ...SHARED, ...OPERATOR, ...PRACTICE, ...COMMUNITY, ...TEACHING, ...OFFICE, ...ACCOUNT, ...CONTEST, ...JOIN];

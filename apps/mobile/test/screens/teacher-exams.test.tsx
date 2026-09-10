@@ -1,8 +1,6 @@
-import { Linking } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { staffExamsSchema } from "@edulink/contracts";
 import { TeacherExams } from "@/screens/teacher/exams";
-import { API_BASE } from "@/lib/api";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 import { ID } from "./teacher-support";
 
@@ -52,15 +50,13 @@ describe("the teacher's exams", () => {
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/marks", params: { classId: ID.class1, slotId: ID.slot1 } });
   });
 
-  it("a class with no papers says so and offers the report cards on the web; an admin sees the same", async () => {
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+  it("a class with no papers says so and offers that class's report cards on the phone; an admin sees the same", async () => {
     await mountStaff(<TeacherExams />, "ADMIN", { "GET /api/v1/staff/exams": () => json(EXAMS) });
     await screen.findByText("ZZ Term 1");
     await fireEvent.press(screen.getByRole("radio", { name: "ZZ 6B" }));
     expect(await screen.findByText("No papers for this class yet")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Report cards" }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/exams?tab=cards`);
-    open.mockRestore();
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/report-cards", params: { classId: ID.class2 } });
   });
 
   it("no classes at all has a door to messages", async () => {

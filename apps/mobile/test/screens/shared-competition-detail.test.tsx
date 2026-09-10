@@ -2,7 +2,6 @@ import { Linking } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { competitionDetailSchema } from "@edulink/contracts";
 import { CompetitionDetail, ordinal } from "@/screens/shared/competition-detail";
-import { API_BASE } from "@/lib/api";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
@@ -12,6 +11,9 @@ const ID = "co1";
 const PATH = `/api/v1/shared/competitions/${ID}`;
 const ENTER = `${PATH}/enter`;
 const CONSENT = "/api/v1/shared/competitions/entries/en1/consent";
+const SUBMIT = `/api/v1/contest/competitions/${ID}/submit`;
+const STATUS = `/api/v1/contest/competitions/${ID}/status`;
+const ENTRY_PATH = "/api/v1/contest/entries/en1";
 const DETAIL = competitionDetailSchema.parse({
   id: ID,
   title: "ZZ Maths Bee",
@@ -45,6 +47,7 @@ const DETAIL = competitionDetailSchema.parse({
   ],
 });
 const ENTRY = { id: "en1", status: "ENTERED", awaitingConsent: false, consentedAt: "2026-09-07T00:00:00.000Z", studentMembershipId: "p1", studentName: "ZZ Asha", submissionUrl: null, scoreMilli: 67500, rank: 3 };
+const WAITING = [{ entryId: "en1", competitionId: ID, title: "ZZ Maths Bee", organizerName: "ZZ School", closesAt: "2026-09-20T00:00:00.000Z", childName: "ZZ Asha" }];
 
 beforeEach(() => {
   mockRouter.push.mockReset();
@@ -52,7 +55,7 @@ beforeEach(() => {
 });
 
 describe("one competition", () => {
-  it("loads the one in the route: who runs it, the dates, the brief, the board and the rules", async () => {
+  it("loads the one in the route: who runs it, the dates, the brief, the board and the rules; staff open the entries in the app", async () => {
     const gate = gated();
     const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
     const { calls } = await mountStaff(<CompetitionDetail />, "TEACHER", { [`GET ${PATH}`]: gate.answer });
@@ -73,7 +76,7 @@ describe("one competition", () => {
     expect(screen.getByText("3 pupils from your school are taking part.")).toBeTruthy();
     expect(calls().filter((c) => c.line === `GET ${PATH}`)).toHaveLength(1);
     await fireEvent.press(screen.getByRole("button", { name: "Your school's entries and results" }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/competitions/${ID}/entries`);
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/competition-entries", params: { competitionId: ID } });
     await fireEvent.press(screen.getByRole("button", { name: "Organiser's own page" }));
     expect(open).toHaveBeenCalledWith("https://example.org/bee");
     open.mockRestore();
@@ -88,14 +91,56 @@ describe("one competition", () => {
     await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}`)).toHaveLength(2));
   });
 
-  it("a pupil already in sees their standing and result, and hands work in on the web", async () => {
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
-    await mountStaff(<CompetitionDetail />, "STUDENT", { [`GET ${PATH}`]: () => json({ ...DETAIL, entry: ENTRY }) });
+  it("a pupil already in sees their standing and result, and hands the link to their work in", async () => {
+    const { calls } = await mountStaff(<CompetitionDetail />, "STUDENT", { [`GET ${PATH}`]: () => json({ ...DETAIL, entry: ENTRY }), [`POST ${SUBMIT}`]: () => json({ ok: true }) });
     expect(await screen.findByText("You are entered")).toBeTruthy();
     expect(screen.getByText("3rd place · 67.5 points")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Hand it in" })).toBeDisabled();
+    await fireEvent.changeText(screen.getByLabelText("Hand in your entry"), " https://example.org/asha ");
     await fireEvent.press(screen.getByRole("button", { name: "Hand it in" }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/competitions/${ID}`);
-    open.mockRestore();
+    await waitFor(() => expect(calls().find((c) => c.line === `POST ${SUBMIT}`)?.body).toEqual({ url: "https://example.org/asha" }));
+    await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}`)).toHaveLength(2));
+  });
+
+  it("changing a hand-in starts from the saved link, and waits for a change", async () => {
+    const handed = { ...ENTRY, status: "SUBMITTED", submissionUrl: "https://example.org/old" };
+    const { calls } = await mountStaff(<CompetitionDetail />, "STUDENT", { [`GET ${PATH}`]: () => json({ ...DETAIL, entry: handed }), [`POST ${SUBMIT}`]: () => json({ ok: true }) });
+    expect(await screen.findByLabelText("Your entry")).toHaveDisplayValue("https://example.org/old");
+    expect(screen.getByRole("button", { name: "Change it" })).toBeDisabled();
+    await fireEvent.changeText(screen.getByLabelText("Your entry"), "https://example.org/new");
+    await fireEvent.press(screen.getByRole("button", { name: "Change it" }));
+    await waitFor(() => expect(calls().find((c) => c.line === `POST ${SUBMIT}`)?.body).toEqual({ url: "https://example.org/new" }));
+  });
+
+  it("an http link is refused under the box, in the server's words", async () => {
+    const sentence = "Links must start with https://";
+    await mountStaff(<CompetitionDetail />, "STUDENT", { [`GET ${PATH}`]: () => json({ ...DETAIL, entry: ENTRY }), [`POST ${SUBMIT}`]: () => json({ error: sentence, code: "BAD_REQUEST", issues: { url: sentence } }, 422) });
+    await fireEvent.changeText(await screen.findByLabelText("Hand in your entry"), "http://example.org/asha");
+    await fireEvent.press(screen.getByRole("button", { name: "Hand it in" }));
+    expect(await screen.findByText(sentence)).toBeTruthy();
+    expect(screen.queryByRole("alert")).toBeNull();
+  });
+
+  it("a pupil withdraws after a second tap — Cancel keeps the entry — and the page re-reads", async () => {
+    const { calls } = await mountStaff(<CompetitionDetail />, "STUDENT", { [`GET ${PATH}`]: () => json({ ...DETAIL, entry: ENTRY }), [`DELETE ${ENTRY_PATH}`]: () => json({ ok: true }) });
+    await fireEvent.press(await screen.findByRole("button", { name: "Withdraw" }));
+    expect(screen.getByText("You can always ask again.")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Cancel" }));
+    expect(screen.queryByText("You can always ask again.")).toBeNull();
+    expect(calls().some((c) => c.line.startsWith("DELETE"))).toBe(false);
+    await fireEvent.press(screen.getByRole("button", { name: "Withdraw" }));
+    await fireEvent.press(screen.getByRole("button", { name: "Withdraw" }));
+    await waitFor(() => expect(calls().filter((c) => c.line === `DELETE ${ENTRY_PATH}`)).toHaveLength(1));
+    await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}`)).toHaveLength(2));
+  });
+
+  it("a refused withdrawal is the server's sentence with a retry", async () => {
+    const { calls } = await mountStaff(<CompetitionDetail />, "STUDENT", { [`GET ${PATH}`]: () => json({ ...DETAIL, entry: ENTRY }), [`DELETE ${ENTRY_PATH}`]: refused("ZZ a result is recorded", 409) });
+    await fireEvent.press(await screen.findByRole("button", { name: "Withdraw" }));
+    await fireEvent.press(screen.getByRole("button", { name: "Withdraw" }));
+    expect(await screen.findByRole("alert")).toHaveTextContent("ZZ a result is recorded");
+    await fireEvent.press(screen.getByRole("button", { name: "Try again" }));
+    await waitFor(() => expect(calls().filter((c) => c.line === `DELETE ${ENTRY_PATH}`)).toHaveLength(2));
   });
 
   it("closed entries say so, with no button to press", async () => {
@@ -105,8 +150,7 @@ describe("one competition", () => {
   });
 
   it("a guardian allows the child's entry through the consent endpoint", async () => {
-    const waiting = [{ entryId: "en1", competitionId: ID, title: "ZZ Maths Bee", organizerName: "ZZ School", closesAt: "2026-09-20T00:00:00.000Z", childName: "ZZ Asha" }];
-    const { calls } = await mountStaff(<CompetitionDetail />, "PARENT", { [`GET ${PATH}`]: () => json({ ...DETAIL, waiting }), [`POST ${CONSENT}`]: () => json({ ok: true }) });
+    const { calls } = await mountStaff(<CompetitionDetail />, "PARENT", { [`GET ${PATH}`]: () => json({ ...DETAIL, waiting: WAITING }), [`POST ${CONSENT}`]: () => json({ ok: true }) });
     await screen.findByText("ZZ Asha would like to take part.");
     await fireEvent.press(screen.getByRole("button", { name: "Allow" }));
     await screen.findByText("Consent given ZZ Asha can take part in ZZ Maths Bee.");
@@ -114,9 +158,57 @@ describe("one competition", () => {
     await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}`)).toHaveLength(2));
   });
 
+  it("a guardian says not this time after a second tap, through the same DELETE", async () => {
+    const { calls } = await mountStaff(<CompetitionDetail />, "PARENT", { [`GET ${PATH}`]: () => json({ ...DETAIL, waiting: WAITING }), [`DELETE ${ENTRY_PATH}`]: () => json({ ok: true }) });
+    await fireEvent.press(await screen.findByRole("button", { name: "Not this time" }));
+    expect(screen.getByText("ZZ Asha will be taken out of ZZ Maths Bee. They can always ask again.")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Allow" })).toBeNull();
+    await fireEvent.press(screen.getByRole("button", { name: "Not this time: ZZ Asha" }));
+    await waitFor(() => expect(calls().filter((c) => c.line === `DELETE ${ENTRY_PATH}`)).toHaveLength(1));
+    expect(calls().some((c) => c.line === `POST ${CONSENT}`)).toBe(false);
+    await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}`)).toHaveLength(2));
+  });
+
   it("a guardian with nobody asking is told so", async () => {
     await mountStaff(<CompetitionDetail />, "PARENT", { [`GET ${PATH}`]: () => json(DETAIL) });
     expect(await screen.findByText("None of your children have asked to enter this one.")).toBeTruthy();
+  });
+
+  it("the organising school's admin publishes a draft after a second tap", async () => {
+    const { calls } = await mountStaff(<CompetitionDetail />, "ADMIN", { [`GET ${PATH}`]: () => json({ ...DETAIL, isOrganiser: true, status: "DRAFT" }), [`POST ${STATUS}`]: () => json({ ok: true, status: "PUBLISHED" }) });
+    expect(await screen.findByText("Your school is organising this one. Nobody else can see it yet.")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Publish it" }));
+    expect(screen.getByText("Once you publish it, pupils at every school on EduLink can see it and ask to enter.")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Publish it" }));
+    await waitFor(() => expect(calls().find((c) => c.line === `POST ${STATUS}`)?.body).toEqual({ status: "PUBLISHED" }));
+    await waitFor(() => expect(calls().filter((c) => c.line === `GET ${PATH}`)).toHaveLength(2));
+  });
+
+  it("withdrawing a published one says what it keeps, and Cancel keeps it live", async () => {
+    const { calls } = await mountStaff(<CompetitionDetail />, "ADMIN", { [`GET ${PATH}`]: () => json({ ...DETAIL, isOrganiser: true }), [`POST ${STATUS}`]: () => json({ ok: true, status: "ARCHIVED" }) });
+    await fireEvent.press(await screen.findByRole("button", { name: "Withdraw it" }));
+    expect(screen.getByText("Withdrawing keeps the 3 entries already made — it just takes it off the list.")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Cancel" }));
+    expect(calls().some((c) => c.line === `POST ${STATUS}`)).toBe(false);
+    await fireEvent.press(screen.getByRole("button", { name: "Withdraw it" }));
+    await fireEvent.press(screen.getByRole("button", { name: "Withdraw it" }));
+    await waitFor(() => expect(calls().find((c) => c.line === `POST ${STATUS}`)?.body).toEqual({ status: "ARCHIVED" }));
+  });
+
+  it("an archived one goes back to a draft in one press; a refusal is the server's sentence with a retry", async () => {
+    const { calls } = await mountStaff(<CompetitionDetail />, "ADMIN", { [`GET ${PATH}`]: () => json({ ...DETAIL, isOrganiser: true, status: "ARCHIVED" }), [`POST ${STATUS}`]: refused("ZZ not now.") });
+    expect(await screen.findByRole("button", { name: "Publish it" })).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Put it back as a draft" }));
+    expect(await screen.findByRole("alert")).toHaveTextContent("ZZ not now.");
+    expect(calls().find((c) => c.line === `POST ${STATUS}`)?.body).toEqual({ status: "DRAFT" });
+    await fireEvent.press(screen.getByRole("button", { name: "Try again" }));
+    await waitFor(() => expect(calls().filter((c) => c.line === `POST ${STATUS}`)).toHaveLength(2));
+  });
+
+  it("a teacher at the organising school is told so, without the admin's buttons", async () => {
+    await mountStaff(<CompetitionDetail />, "TEACHER", { [`GET ${PATH}`]: () => json({ ...DETAIL, isOrganiser: true }) });
+    expect(await screen.findByText("Your school is organising this one.")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Withdraw it" })).toBeNull();
   });
 
   it("a refused entry is the server's sentence with a retry", async () => {

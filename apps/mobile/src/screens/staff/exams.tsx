@@ -10,13 +10,13 @@ import { useLocale, useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { EXAM_KIND, formatTimeRange, hhmm, Pill, type ExamKind } from "../family/shared";
-import { Chips, formatDateKey, Notice, openWeb } from "./shared";
+import { Chips, formatDateKey, MultiChips, Notice, parseClock } from "./shared";
 
 type Kind = "" | ExamKind;
 type State = "" | "draft" | "published";
 type Series = AdminExamsData["series"][number];
 export type SeriesCreateBody = { name: string; gradeLevel: string; kind: ExamKind; termId?: string | null };
-export type SlotCreateBody = { subject: string; dateKey: string; maxMarks: number };
+export type SlotCreateBody = { subject: string; dateKey: string; maxMarks: number; startMinute?: number; endMinute?: number; evenIfClosed?: boolean };
 
 const KINDS: ExamKind[] = ["UNIT_TEST", "MID_TERM", "FINAL"];
 const DATE_KEY = /^\d{4}-\d{2}-\d{2}$/;
@@ -42,9 +42,9 @@ function examsQuery(kind: Kind, state: State, grade: string): string {
 
 /**
  * The exam office — the web's /admin/exams: one series per grade per term, a
- * dated paper per subject; publishing puts the sheet in front of pupils and
- * families, after a confirm. Creating a series and adding a paper happen
- * here; archiving, times and "even if the school is closed" are the web's.
+ * dated paper per subject with its times; publishing puts the sheet in front
+ * of pupils and families, after a confirm, and archiving — also after a
+ * confirm — sends a finished series off the page with its papers and marks kept.
  */
 export function AdminExams() {
   const t = useT();
@@ -65,6 +65,7 @@ export function AdminExams() {
   const refresh = () => {
     void qc.invalidateQueries({ queryKey: ["admin", "exams"] });
     void qc.invalidateQueries({ queryKey: ["admin", "overview"] });
+    void qc.invalidateQueries({ queryKey: ["staff", "exams"] });
   };
   const create = useMutation({
     mutationFn: async (body: SeriesCreateBody) => examSeriesCreatedSchema.parse(unwrap(await api().post("/api/v1/admin/exams", body))),
@@ -79,6 +80,14 @@ export function AdminExams() {
     mutationFn: async (seriesId: string) => okSchema.parse(unwrap(await api().post(`/api/v1/admin/exams/${seriesId}/publish`))),
     onSuccess: () => {
       setNotice({ tone: "ok", text: t("exams.publishedHint") });
+      refresh();
+    },
+    onError: (e) => setNotice({ tone: "danger", text: e.message }),
+  });
+  const archive = useMutation({
+    mutationFn: async (series: Series) => okSchema.parse(unwrap(await api().post(`/api/v1/office/exams/${series.id}/archive`))),
+    onSuccess: (_r, series) => {
+      setNotice({ tone: "ok", text: t("exams.archivedToast", { name: series.name }) });
       refresh();
     },
     onError: (e) => setNotice({ tone: "danger", text: e.message }),
@@ -132,7 +141,18 @@ export function AdminExams() {
               action={filtered ? <Button label={t("common.clearAll")} variant="secondary" onPress={clear} /> : <Button label={t("exams.newSeriesTitle")} variant="secondary" onPress={() => nameRef.current?.focus()} />}
             />
           ) : (
-            d.series.map((s) => <SeriesCard key={s.id} series={s} publishing={publish.isPending && publish.variables === s.id} adding={addSlot.isPending && addSlot.variables?.seriesId === s.id} onPublish={() => publish.mutate(s.id)} onAddSlot={(body) => addSlot.mutate({ seriesId: s.id, body })} />)
+            d.series.map((s) => (
+              <SeriesCard
+                key={s.id}
+                series={s}
+                publishing={publish.isPending && publish.variables === s.id}
+                archiving={archive.isPending && archive.variables?.id === s.id}
+                adding={addSlot.isPending && addSlot.variables?.seriesId === s.id}
+                onPublish={() => publish.mutate(s.id)}
+                onArchive={() => archive.mutate(s)}
+                onAddSlot={(body) => addSlot.mutate({ seriesId: s.id, body })}
+              />
+            ))
           )}
           <CreateSeries key={formKey} nameRef={nameRef} grades={d.grades} terms={d.terms} busy={create.isPending} onCreate={(body) => create.mutate(body)} />
         </>
@@ -141,12 +161,30 @@ export function AdminExams() {
   );
 }
 
-function SeriesCard({ series: s, publishing, adding, onPublish, onAddSlot }: { series: Series; publishing: boolean; adding: boolean; onPublish: () => void; onAddSlot: (body: SlotCreateBody) => void }) {
+function SeriesCard({
+  series: s,
+  publishing,
+  archiving,
+  adding,
+  onPublish,
+  onArchive,
+  onAddSlot,
+}: {
+  series: Series;
+  publishing: boolean;
+  archiving: boolean;
+  adding: boolean;
+  onPublish: () => void;
+  onArchive: () => void;
+  onAddSlot: (body: SlotCreateBody) => void;
+}) {
   const t = useT();
   const th = useTheme();
   const { locale } = useLocale();
-  const [confirming, setConfirming] = useState(false);
+  const [asking, setConfirming] = useState<"publish" | "archive" | null>(null);
   const [addingPaper, setAddingPaper] = useState(false);
+  // Once the sheet is out, there is nothing left to confirm publishing.
+  const confirming = asking === "publish" && s.publishedAt ? null : asking;
   return (
     <Card title={[s.name, kindLabel(t, s.kind), t("practice.classN", { n: s.gradeLevel }), s.term?.name].filter(Boolean).join(" · ")} action={s.publishedAt ? <Pill label={t("exams.published")} tone="ok" /> : <Pill label={t("exams.draftLabel")} tone="warn" />}>
       <Text variant="xs" tone="subtle">
@@ -157,29 +195,47 @@ function SeriesCard({ series: s, publishing, adding, onPublish, onAddSlot }: { s
       ))}
       {addingPaper ? <AddPaper busy={adding} onAdd={onAddSlot} onCancel={() => setAddingPaper(false)} /> : <Button label={t("exams.addPaper")} variant="secondary" onPress={() => setAddingPaper(true)} />}
       <View style={{ flexDirection: "row", gap: th.space[2], flexWrap: "wrap" }}>
-        {s.publishedAt ? null : confirming ? (
+        {confirming === "publish" ? (
           <>
             <Button label={t("common.confirm")} busy={publishing} onPress={onPublish} style={{ flexGrow: 1 }} accessibilityLabel={`${t("exams.publish")}: ${s.name}`} />
-            <Button label={t("common.cancel")} variant="ghost" onPress={() => setConfirming(false)} />
+            <Button label={t("common.cancel")} variant="ghost" onPress={() => setConfirming(null)} />
+          </>
+        ) : confirming === "archive" ? (
+          <>
+            <Button label={t("exams.archive")} variant="danger" busy={archiving} onPress={onArchive} style={{ flexGrow: 1 }} accessibilityLabel={`${t("exams.archive")}: ${s.name}`} />
+            <Button label={t("common.cancel")} variant="ghost" onPress={() => setConfirming(null)} />
           </>
         ) : (
-          <Button label={t("exams.publish")} disabled={s.slots.length === 0} onPress={() => setConfirming(true)} style={{ flexGrow: 1 }} />
+          <>
+            {s.publishedAt ? null : <Button label={t("exams.publish")} disabled={s.slots.length === 0} onPress={() => setConfirming("publish")} style={{ flexGrow: 1 }} />}
+            <Button label={t("exams.archive")} variant="secondary" onPress={() => setConfirming("archive")} />
+          </>
         )}
-        <Button label={t("exams.archive")} variant="secondary" onPress={() => openWeb("/admin/exams")} />
       </View>
     </Card>
   );
 }
 
+/** A paper: its subject and day, what it is out of, when it starts and ends if the sheet says, and whether it may fall on a closed day. */
 function AddPaper({ busy, onAdd, onCancel }: { busy: boolean; onAdd: (body: SlotCreateBody) => void; onCancel: () => void }) {
   const t = useT();
   const th = useTheme();
   const [subject, setSubject] = useState("");
   const [dateKey, setDateKey] = useState("");
   const [maxMarks, setMaxMarks] = useState("80");
+  const [starts, setStarts] = useState("");
+  const [ends, setEnds] = useState("");
+  const [evenIfClosed, setEvenIfClosed] = useState(false);
   const marks = Number(maxMarks);
   const validDate = DATE_KEY.test(dateKey);
   const validMarks = Number.isFinite(marks) && marks > 0 && marks <= 1000;
+  const start = starts.trim() ? parseClock(starts) : null;
+  const end = ends.trim() ? parseClock(ends) : null;
+  const startError = starts.trim() && start === null ? t("timetable.startNotATime") : null;
+  const endError = ends.trim() && end === null ? t("timetable.endNotATime") : start !== null && end !== null && end <= start ? t("timetable.endAfterStart") : null;
+  function add() {
+    onAdd({ subject: subject.trim(), dateKey, maxMarks: marks, ...(start !== null ? { startMinute: start } : {}), ...(end !== null ? { endMinute: end } : {}), ...(evenIfClosed ? { evenIfClosed: true } : {}) });
+  }
   return (
     <View style={{ backgroundColor: th.surfaceMuted, borderRadius: th.radius.md, padding: th.space[3], gap: th.space[3] }}>
       <Text variant="sm" bold>
@@ -187,9 +243,18 @@ function AddPaper({ busy, onAdd, onCancel }: { busy: boolean; onAdd: (body: Slot
       </Text>
       <Field label={t("exams.colSubject")} value={subject} onChangeText={setSubject} maxLength={80} />
       <Field label={t("exams.colDay")} value={dateKey} onChangeText={setDateKey} hint="YYYY-MM-DD" error={dateKey && !validDate ? t("leaveKind.giveBothDates") : null} autoCapitalize="none" keyboardType="numbers-and-punctuation" />
+      <View style={{ flexDirection: "row", gap: th.space[3] }}>
+        <View style={{ flex: 1 }}>
+          <Field label={t("exams.fieldStart")} value={starts} onChangeText={setStarts} placeholder="09:00" error={startError} keyboardType="numbers-and-punctuation" maxLength={5} />
+        </View>
+        <View style={{ flex: 1 }}>
+          <Field label={t("exams.fieldEnd")} value={ends} onChangeText={setEnds} placeholder="11:00" error={endError} keyboardType="numbers-and-punctuation" maxLength={5} />
+        </View>
+      </View>
       <Field label={t("exams.colMaxMarks")} value={maxMarks} onChangeText={setMaxMarks} keyboardType="decimal-pad" />
+      <MultiChips label={t("common.optional")} values={evenIfClosed ? ["closed"] : []} options={[{ value: "closed", label: t("exams.evenIfClosed") }]} onToggle={() => setEvenIfClosed((v) => !v)} />
       <View style={{ flexDirection: "row", gap: th.space[2] }}>
-        <Button label={t("exams.addPaper")} busy={busy} disabled={!subject.trim() || !validDate || !validMarks} onPress={() => onAdd({ subject: subject.trim(), dateKey, maxMarks: marks })} style={{ flexGrow: 1 }} />
+        <Button label={t("exams.addPaper")} busy={busy} disabled={!subject.trim() || !validDate || !validMarks || Boolean(startError) || Boolean(endError)} onPress={add} style={{ flexGrow: 1 }} />
         <Button label={t("common.cancel")} variant="ghost" onPress={onCancel} />
       </View>
     </View>
@@ -218,8 +283,8 @@ function CreateSeries({ nameRef, grades, terms, busy, onCreate }: { nameRef: Ref
 
 /**
  * The head's exams — the web's /exams for staff: every published date sheet,
- * and the classes whose report cards may be built, with how many are out.
- * Building a card is the class teacher's page on the web.
+ * and the classes whose report cards may be built, with how many are out;
+ * a class opens its report cards.
  */
 export function PrincipalExams() {
   const t = useT();
@@ -255,7 +320,7 @@ export function PrincipalExams() {
           />
           {tab === "sheet" ? (
             d.sheets.length === 0 ? (
-              <Empty title={t("exams.sheetEmptyTitle")} body={t("exams.sheetEmptyBody")} action={role === "ADMIN" ? <Button label={t("exams.scheduleExams")} variant="secondary" onPress={() => openWeb("/admin/exams")} /> : <Button label={t("nav.classes")} variant="secondary" onPress={() => router.push("/(app)/classes" as never)} />} />
+              <Empty title={t("exams.sheetEmptyTitle")} body={t("exams.sheetEmptyBody")} action={role === "ADMIN" ? <Button label={t("exams.scheduleExams")} variant="secondary" onPress={() => router.push("/(app)/exams" as never)} /> : <Button label={t("nav.classes")} variant="secondary" onPress={() => router.push("/(app)/classes" as never)} />} />
             ) : (
               d.sheets.map((sheet) => (
                 <Card key={sheet.id} title={`${sheet.name} · ${t("practice.classN", { n: sheet.gradeLevel })}`} action={<Text variant="xs" tone="muted">{[t(EXAM_KIND[sheet.kind]), multiSchool ? sheet.schoolName : null].filter(Boolean).join(" · ")}</Text>}>
@@ -270,7 +335,7 @@ export function PrincipalExams() {
           ) : (
             <Card title={t("exams.tabCards")}>
               {d.classes.map((klass) => (
-                <Row key={klass.id} title={klass.name} caption={klass.publishedCards === 1 ? t("exams.cardsIssuedOne") : t("exams.cardsIssuedMany", { count: klass.publishedCards })} onPress={() => openWeb(`/teacher/classes/${klass.id}/report-cards`)} />
+                <Row key={klass.id} title={klass.name} caption={klass.publishedCards === 1 ? t("exams.cardsIssuedOne") : t("exams.cardsIssuedMany", { count: klass.publishedCards })} onPress={() => router.push({ pathname: "/(app)/report-cards", params: { classId: klass.id } } as never)} />
               ))}
             </Card>
           )}

@@ -9,7 +9,7 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
-import { Chips, formatInstant, Note, openWeb } from "./shared";
+import { Chips, formatInstant, Note } from "./shared";
 
 /**
  * Meet the teacher — the web's /parent/meetings: the open windows of the
@@ -22,8 +22,8 @@ export function FamilyMeetings() {
   const t = useT();
   const router = useRouter();
   if (role === "PARENT") return <ParentMeetings />;
-  // A teacher's meeting windows are kept on the web; anyone else here goes to their messages.
-  const door = role === "TEACHER" ? <Button label={t("mobile.openOnWeb")} variant="secondary" onPress={() => openWeb("/teacher/meetings")} /> : <Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />;
+  // A teacher's meeting windows are the app's own screen (the meetings route draws TeacherMeetings for a teacher); anyone else here goes to their messages.
+  const door = role === "TEACHER" ? <Button label={t("nav.meetings")} variant="secondary" onPress={() => router.push("/(app)/meetings" as never)} /> : <Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />;
   return (
     <Screen title={t("meetings.parentTitle")}>
       {role === null ? <Loading /> : <Empty title={t("meetings.openEmptyTitle")} body={t("meetings.openEmptyBody")} action={door} />}

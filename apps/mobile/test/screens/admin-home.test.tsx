@@ -1,7 +1,5 @@
-import { Linking } from "react-native";
 import { fireEvent, screen } from "@testing-library/react-native";
 import { AdminHome } from "@/screens/staff/admin-home";
-import { API_BASE } from "@/lib/api";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 
 const mockRouter = { push: jest.fn(), params: {} as Record<string, string> };
@@ -18,7 +16,8 @@ const OVERVIEW = {
     complete: false,
     steps: [
       { id: "year", done: true, href: "/admin/calendar", titleKey: "admin.setUpYear", descriptionKey: "admin.setupProgress", ctaKey: "admin.setUpYear", blockedBy: null },
-      { id: "invite", done: false, href: "/admin/invites/new", titleKey: "admin.invitePeople", descriptionKey: "admin.setupProgress", ctaKey: "admin.invitePeople", blockedBy: null },
+      { id: "teachers", done: false, href: "/admin/invites/new?role=TEACHER", titleKey: "admin.invitePeople", descriptionKey: "admin.setupProgress", ctaKey: "admin.invitePeople", blockedBy: null },
+      { id: "verify", done: false, href: "/account/verify", titleKey: "meta.confirmEmail", descriptionKey: "admin.setupProgress", ctaKey: "meta.confirmEmail", blockedBy: null },
     ],
   },
   counts: { teachers: 8, students: 120, classes: 4, pendingInvites: 3, registersTakenToday: 3, examSeries: 2, examSeriesPublished: 1, reportCardsPublished: 0 },
@@ -26,6 +25,8 @@ const OVERVIEW = {
   staffingGap: { slots: 5, classes: 2 },
   jobStory: { attention: false, entries: [] },
 };
+
+beforeEach(() => mockRouter.push.mockClear());
 
 describe("the admin's overview", () => {
   it("loads, then shows the school, the checklist, the counts and the staffing gap", async () => {
@@ -42,14 +43,20 @@ describe("the admin's overview", () => {
     expect(screen.getByText("5 lessons across 2 classes have no teacher yet. Assign a teacher, or post a vacancy to hire one.")).toBeTruthy();
   });
 
-  it("the heavy pages open on the web: the timetable and an undone checklist step", async () => {
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+  it("every door is the app's own screen: a checklist step with its role, its section for a step with no screen, the editor, exams and invitations", async () => {
     await mountStaff(<AdminHome />, "ADMIN", { "GET /api/v1/admin/overview": () => json(OVERVIEW) });
-    await fireEvent.press(await screen.findByRole("button", { name: "Open the timetable" }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/admin/timetable`);
-    await fireEvent.press(screen.getByRole("button", { name: "Invite people, Setup progress" }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/admin/invites/new`);
-    open.mockRestore();
+    await fireEvent.press(await screen.findByRole("button", { name: "Invite people, Setup progress" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/invites", params: { role: "TEACHER" } });
+    await fireEvent.press(screen.getByRole("button", { name: "Confirm your email, Setup progress" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/account" });
+    await fireEvent.press(screen.getByRole("button", { name: "Open the timetable" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/timetable-editor");
+    await fireEvent.press(screen.getByRole("button", { name: "Schedule exams" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/exams");
+    await fireEvent.press(screen.getByRole("button", { name: "Invite people" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/invites");
+    // A step already done is not a door.
+    expect(screen.queryByRole("button", { name: "Set up the year, Setup progress" })).toBeNull();
   });
 
   it("a school with nothing yet is told to start the year and invite a teacher", async () => {
@@ -61,6 +68,8 @@ describe("the admin's overview", () => {
     expect(screen.getByText("No teachers yet")).toBeTruthy();
     expect(screen.getByLabelText("Attendance marked: No classes yet")).toBeTruthy();
     expect(screen.queryByText("Lessons without a teacher")).toBeNull();
+    await fireEvent.press(screen.getByRole("button", { name: "Set up the year" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/calendar");
   });
 
   it("a refusal is an alert with a retry", async () => {

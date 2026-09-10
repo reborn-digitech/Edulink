@@ -1,3 +1,4 @@
+import { BackTo } from "@/components/back-to";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { View } from "react-native";
 import { notificationsSchema } from "@edulink/contracts";
@@ -8,7 +9,7 @@ import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 
 /** The bell: the person's notices, newest first, with mark-all-read. */
-export default function Notifications() {
+function NotificationsInner() {
   const t = useT();
   const th = useTheme();
   const qc = useQueryClient();
@@ -37,5 +38,14 @@ export default function Notifications() {
         )
       ) : null}
     </Screen>
+  );
+}
+
+/** Not a tab: "‹ Back" above the title. */
+export default function Notifications() {
+  return (
+    <BackTo fallback="/(app)/more">
+      <NotificationsInner />
+    </BackTo>
   );
 }

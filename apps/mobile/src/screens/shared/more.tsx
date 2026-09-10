@@ -3,6 +3,7 @@ import { usePathname, useRouter } from "expo-router";
 import type { RoleCode } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
 import { Button, Card, Icon, Row, Screen, Text } from "@/components";
+import { Avatar } from "@/components/avatar";
 import { useSession } from "@/lib/session";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
@@ -33,6 +34,24 @@ export function More() {
   const description = [role ? t(`role.${role.toLowerCase()}` as TranslationKey) : null, school].filter(Boolean).join(" · ");
   return (
     <Screen title={t("nav.more")} description={description ? `${name} · ${description}` : name}>
+      {/* The person first — their avatar and name, which open their account. */}
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={`${name}, ${t("nav.account")}`}
+        onPress={() => router.push("/(app)/account" as never)}
+        style={({ pressed }) => ({ opacity: pressed ? 0.7 : 1, minHeight: th.tap, flexDirection: "row", alignItems: "center", gap: th.space[3] })}
+      >
+        <Avatar avatarKey={me.user.avatarKey} name={name} size={56} decorative />
+        <View style={{ flex: 1, gap: 2 }}>
+          <Text variant="lg" bold>
+            {name}
+          </Text>
+          <Text variant="sm" tone="muted">
+            {t("nav.account")}
+          </Text>
+        </View>
+        <Icon name="caretRight" size={18} color={th.fgSubtle} weight="bold" />
+      </Pressable>
       {role
         ? menuFor(role).map(({ group, items }) => (
             <Card key={group} title={t(MENU_GROUP_KEY[group])}>

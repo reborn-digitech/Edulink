@@ -5,3 +5,6 @@ export { Card, Stat } from "./card";
 export { Loading, Empty, Failed, Row } from "./states";
 export { Field } from "./field";
 export { Icon } from "./icon";
+export { useBack, ToastProvider, useToast, Bone } from "./chrome";
+export { QuickActions } from "./quick-actions";
+export { SwitchRow } from "./switch-row";

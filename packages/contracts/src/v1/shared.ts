@@ -676,6 +676,9 @@ export const expertSaveProfileSchema = z.object({
 /** POST /api/v1/uploads — multipart, one `file` field; read back through /api/files/{fileId}. */
 export const uploadResultSchema = z.object({ fileId: z.string(), mime: z.string(), size: count });
 
+/** POST /api/v1/files/{fileId}/link — a five-minute URL (relative to the API) that opens one file outside the app. */
+export const fileLinkSchema = z.object({ url: z.string().startsWith("/api/files/"), expiresAt: z.string().datetime() });
+
 // ---- app release ------------------------------------------------------------
 /** The kill switch: the oldest app version the API still serves, per platform, and where the newer one is. */
 export const appVersionSchema = z.object({

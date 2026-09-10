@@ -18,7 +18,8 @@ const DIRECTORY = {
   filters: { q: "", role: null, status: "ACTIVE", classId: null, sort: "name" },
 };
 const EMPTY = { ...DIRECTORY, members: [], total: 0, roleCounts: [] };
-const INVITES = { invites: [{ id: "i1", role: "TEACHER", email: "new@zz.test", name: "ZZ Newcomer", classId: null, status: "PENDING", expiresAt: "2026-09-20T00:00:00.000Z", expired: false, createdAt: "2026-09-06T00:00:00.000Z", acceptedAt: null }], counts: { PENDING: 1, ACCEPTED: 4, REVOKED: 0 } };
+
+beforeEach(() => mockRouter.push.mockClear());
 
 describe("people for the office", () => {
   it("the directory loads with counts, rows, and a search that asks the API", async () => {
@@ -38,33 +39,25 @@ describe("people for the office", () => {
     await waitFor(() => expect(calls().some((c) => c.line === "GET /api/v1/admin/people?q=pupil&role=STUDENT&status=ACTIVE&page=1")).toBe(true));
   });
 
+  it("inviting people and admitting pupils are their own screens", async () => {
+    await mountStaff(<People />, "ADMIN", { "GET /api/v1/admin/people": () => json(DIRECTORY) });
+    await screen.findByText("ZZ Teacher");
+    await fireEvent.press(screen.getByRole("button", { name: "Invite people" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/invites");
+    await fireEvent.press(screen.getByRole("button", { name: "Admit pupils from a list" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/intake");
+  });
+
   it("nobody yet offers the invitations; nobody matching offers to clear", async () => {
     await mountStaff(<People />, "ADMIN", { "GET /api/v1/admin/people": () => json(EMPTY) });
     expect(await screen.findByText("Nobody here yet")).toBeTruthy();
+    const doors = screen.getAllByRole("button", { name: "Invite people" });
+    await fireEvent.press(doors[doors.length - 1]!);
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/invites");
     await fireEvent.press(screen.getByRole("radio", { name: "Left (1)" }));
     expect(await screen.findByText("Nobody matches those filters")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Clear filters" }));
     expect(await screen.findByText("Nobody here yet")).toBeTruthy();
-  });
-
-  it("invites: the pending list, sending a pasted list, and withdrawing one", async () => {
-    const { calls } = await mountStaff(<People />, "ADMIN", {
-      "GET /api/v1/admin/people": () => json(DIRECTORY),
-      "GET /api/v1/admin/people/invites": () => json(INVITES),
-      "POST /api/v1/admin/people/invites": () => json({ sent: 2, outcomes: [{ email: "a@zz.test", name: "", status: "sent" }, { email: "b@zz.test", name: "", status: "sent" }], problems: [] }),
-      "POST /api/v1/admin/people/invites/i1/revoke": () => json({ ok: true }),
-    });
-    await fireEvent.press(await screen.findByRole("radio", { name: "Invites" }));
-    await screen.findByText("ZZ Newcomer");
-    expect(screen.getByText("1 waiting to be accepted")).toBeTruthy();
-    await fireEvent.press(screen.getByRole("radio", { name: "Student" }));
-    await fireEvent.changeText(screen.getByLabelText("Emails"), "a@zz.test\nb@zz.test");
-    await fireEvent.press(screen.getByRole("button", { name: "Send invitations" }));
-    await screen.findByText("2 invitations sent");
-    expect(calls().find((c) => c.line === "POST /api/v1/admin/people/invites")?.body).toEqual({ role: "STUDENT", csv: "a@zz.test\nb@zz.test" });
-    await fireEvent.press(screen.getByRole("button", { name: "Withdraw invitation for ZZ Newcomer" }));
-    await screen.findByText("Invitation withdrawn");
-    expect(calls().some((c) => c.line === "POST /api/v1/admin/people/invites/i1/revoke")).toBe(true);
   });
 
   it("a principal's People is the staff roster", async () => {

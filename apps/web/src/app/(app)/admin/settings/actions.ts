@@ -10,11 +10,10 @@ import { schoolDetailsSchema, fieldErrors, type FieldErrors } from "@/lib/valida
 import { audit } from "@/lib/audit";
 import { normaliseLocation } from "@/lib/places";
 import { setNotifThresholds, AUTO_READ_RANGE, EXPIRE_RANGE } from "@/lib/notification-housekeeping";
+import { LOGO_MAX_BYTES, removeSchoolLogo, setSchoolLogo } from "@/lib/school-logo";
 
 export type SettingsState = { ok: boolean; errors: FieldErrors };
 
-/** Logos are small by nature; a 2 MB cap stops someone uploading a poster. */
-const LOGO_MAX_BYTES = 2 * 1024 * 1024;
 
 export async function saveNotifThresholds(input: {
   autoReadDays: string;
@@ -143,34 +142,9 @@ export async function uploadLogo(formData: FormData): Promise<LogoState> {
     return { ok: false, errorKey: "settings.couldNotSaveImage" };
   }
 
-  const previous = await db.school.findUniqueOrThrow({
-    where: { id: ctx.schoolId },
-    select: { logoPath: true },
-  });
-
-  try {
-    await db.school.update({
-      where: { id: ctx.schoolId },
-      data: { logoPath: storedFileId },
-    });
-  } catch (error) {
-    // Do not leave an orphan on disk if the row did not take.
-    await deleteStoredFile(storedFileId);
-    console.error("[uploadLogo] db write failed", error);
-    return { ok: false, errorKey: "settings.couldNotSaveImage" };
-  }
-
-  if (previous.logoPath && previous.logoPath !== storedFileId) {
-    await deleteStoredFile(previous.logoPath);
-  }
-
-  await audit({
-    schoolId: ctx.schoolId,
-    actorUserId: ctx.user.id,
-    action: "school.logo.update",
-    targetType: "School",
-    targetId: ctx.schoolId,
-  });
+  // The row, the old file and the audit line are the library's, shared with the phone's upload.
+  const saved = await setSchoolLogo(ctx, storedFileId);
+  if (!saved.ok) return { ok: false, errorKey: saved.errorKey };
 
   revalidatePath("/admin/settings");
   revalidatePath("/admin");
@@ -181,22 +155,7 @@ export async function removeLogo(): Promise<LogoState> {
   try {
     const ctx = await requireApiRole("ADMIN");
 
-    const school = await db.school.findUniqueOrThrow({
-      where: { id: ctx.schoolId },
-      select: { logoPath: true },
-    });
-    if (!school.logoPath) return { ok: true };
-
-    await db.school.update({ where: { id: ctx.schoolId }, data: { logoPath: null } });
-    await deleteStoredFile(school.logoPath);
-
-    await audit({
-      schoolId: ctx.schoolId,
-      actorUserId: ctx.user.id,
-      action: "school.logo.remove",
-      targetType: "School",
-      targetId: ctx.schoolId,
-    });
+    await removeSchoolLogo(ctx);
 
     revalidatePath("/admin/settings");
     revalidatePath("/admin");

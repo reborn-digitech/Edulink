@@ -64,6 +64,9 @@ describe("the marks grid", () => {
     mockRouter.params = { classId: ID.class1, slotId: ID.slot1 };
     await renderTeacher(<MarksGrid />);
     await screen.findByText("Nobody is enrolled in this class yet.");
+    // The door is the class page, where the join code is.
+    await tap(screen.getByRole("button", { name: "Class join code" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/classes/detail", params: { classId: ID.class1 } });
   });
 
   it("saves the whole sheet as one batch the contract accepts, blank meaning cleared", async () => {

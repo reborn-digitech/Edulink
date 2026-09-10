@@ -1,3 +1,4 @@
+import { BackTo } from "@/components/back-to";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useRole } from "@/lib/session";
 import { useT } from "@/lib/i18n";
@@ -13,7 +14,7 @@ import { AttendanceHistory } from "@/screens/staff/attendance-history";
  * /admin/attendance) and reaches the register and the history from there,
  * by `view`; the head reads the history (the web's /attendance/history).
  */
-export default function Route() {
+function RouteInner() {
   const role = useRole();
   const t = useT();
   const router = useRouter();
@@ -32,4 +33,13 @@ export default function Route() {
   }
   if (role === "PRINCIPAL") return <AttendanceHistory initialClassId={params.classId ?? null} />;
   return <GenericScreen title={t("nav.attendance")} />;
+}
+
+/** Not a tab for this role: "‹ Back" above the title. */
+export default function Route() {
+  return (
+    <BackTo fallback="/(app)/more" unlessTab="attendance">
+      <RouteInner />
+    </BackTo>
+  );
 }

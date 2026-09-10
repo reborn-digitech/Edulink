@@ -2,7 +2,7 @@ import "server-only";
 import { db } from "./db";
 import { AccessError, assertClassAccess, assertGuardianAccess } from "./tenancy";
 import type { ActiveContext } from "./session";
-import { clampLevel, MAX_LEVEL, MIN_LEVEL, PROMOTE_AFTER, TIER_NAMES, type QuizLanguage } from "./quiz";
+import { clampLevel, MAX_LEVEL, MIN_LEVEL, PROMOTE_AFTER, startAttempt, TIER_NAMES, type QuizLanguage } from "./quiz";
 import { normaliseLocale } from "./i18n/locales";
 import { audit } from "./audit";
 
@@ -257,6 +257,25 @@ export async function reviseQuestion(
     choices,
     difficulty: question.difficulty,
   };
+}
+
+/**
+ * The sitting a revision answer is marked in: the question's own chapter,
+ * opened or resumed exactly as practice opens it, so revision moves the same
+ * ladder and earns the same badges — revision is practice, not a parallel
+ * scoring system. The question is re-checked against the pupil's own history
+ * first (reviseQuestion), so a revision answer is never a way into a question
+ * they were not served. The web's reviseAnswer and the phone's endpoint both
+ * start here, then mark with submitAnswer.
+ */
+export async function revisionAttempt(
+  ctx: ActiveContext,
+  questionId: string,
+  language: QuizLanguage = "en",
+): Promise<{ attemptId: string; topicSlug: string }> {
+  const q = await reviseQuestion(ctx, questionId, language);
+  const { attemptId } = await startAttempt(ctx, q.topicSlug);
+  return { attemptId, topicSlug: q.topicSlug };
 }
 
 /* -------------------------------------------------------------------------- */

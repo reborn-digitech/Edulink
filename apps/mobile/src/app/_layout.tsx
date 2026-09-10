@@ -13,7 +13,7 @@ import { registerForPush } from "@/lib/push";
 import { useVersionGate } from "@/lib/version";
 import { installCrashReporter, sendPendingCrash, setCurrentScreen } from "@/lib/crash";
 import { UpdateRequired } from "@/screens/shared/update-required";
-import { Text } from "@/components";
+import { Text, ToastProvider } from "@/components";
 
 /**
  * The root: providers, then the one rule of the router — no session, the
@@ -116,13 +116,15 @@ function Gate() {
   return (
     <RoleThemeProvider role={session.status === "signed-in" ? session.me.active.role : null}>
       <StatusBar style={scheme === "dark" ? "light" : "dark"} />
-      <View style={{ flex: 1 }}>
-        {rooted ? <RootedBanner /> : null}
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="(auth)" />
-          <Stack.Screen name="(app)" />
-        </Stack>
-      </View>
+      <ToastProvider>
+        <View style={{ flex: 1 }}>
+          {rooted ? <RootedBanner /> : null}
+          <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="(auth)" />
+            <Stack.Screen name="(app)" />
+          </Stack>
+        </View>
+      </ToastProvider>
     </RoleThemeProvider>
   );
 }

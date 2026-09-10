@@ -1,8 +1,6 @@
-import { Linking } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { competitionsPageSchema } from "@edulink/contracts";
 import { Competitions } from "@/screens/shared/competitions";
-import { API_BASE } from "@/lib/api";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
@@ -75,17 +73,17 @@ describe("competitions", () => {
     expect(screen.getByText("ZZ Spelling Bee")).toBeTruthy();
   });
 
-  it("nothing open offers the closed ones; nothing at all sends an admin to post one on the web", async () => {
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+  it("nothing open offers the closed ones; nothing at all sends an admin to the app's own form", async () => {
     const empty = { school: [], platform: [], waiting: [] };
     await mountStaff(<Competitions />, "ADMIN", { [`GET ${PATH}`]: () => json(empty) });
     expect(await screen.findByText("Nothing open just now")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Show closed ones too" }));
     expect(await screen.findByText("No competitions yet")).toBeTruthy();
-    // The admin's two doors, the standing one and the empty state's, both open the web's form.
+    // The admin's two doors, the standing one and the empty state's, both open the form.
     await fireEvent.press(screen.getAllByRole("button", { name: "Post one" })[1]!);
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/competitions/new`);
-    open.mockRestore();
+    expect(mockRouter.push).toHaveBeenLastCalledWith("/(app)/competition-new");
+    await fireEvent.press(screen.getAllByRole("button", { name: "Post one" })[0]!);
+    expect(mockRouter.push).toHaveBeenCalledTimes(2);
   });
 
   it("nothing at all sends everyone else to the bulletin", async () => {

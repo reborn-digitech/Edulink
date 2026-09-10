@@ -3,27 +3,22 @@
 import { redirect } from "next/navigation";
 
 import { db } from "@/lib/db";
-import { fakePasswordWork, generateToken, hashPassword, hashToken, passwordProblems } from "@/lib/crypto";
-import { createSession, getSession, setActiveContext } from "@/lib/session";
-import { normalizeCode, studentCode } from "@/lib/codes";
-import { ageInYears, parseDateOnly, sameCalendarDay } from "@/lib/dates";
+import { generateToken, hashPassword, hashToken, passwordProblems } from "@/lib/crypto";
+import { createSession, getSession } from "@/lib/session";
+import { studentCode } from "@/lib/codes";
+import { ageInYears, parseDateOnly } from "@/lib/dates";
 import { audit } from "@/lib/audit";
-import { forJoinCode, forSchool, forUser } from "@/lib/tenant-context";
+import { forSchool, forUser } from "@/lib/tenant-context";
 import { writeJson } from "@/lib/json";
-import { sendParentClaimNotice } from "@/lib/email";
 import { syncStandinGuardian } from "@/lib/standin-guardian";
 import { HANDLE_DOMAIN } from "@/lib/login-name";
 import {
-  consume,
   consumeByCaller,
   retryHintKey,
-  CLAIM_ATTEMPTS,
-  CLAIM_PER_CODE,
-  CODE_LOOKUPS,
   SIGNUPS,
 } from "@/lib/rate-limit";
+import { joinWithAccount, lookupJoinCode, type CodeLookup } from "@/lib/join";
 import {
-  claimChildSchema,
   fieldErrors,
   parentSignupSchema,
   studentJoinSchema,
@@ -32,8 +27,7 @@ import {
 import { CONSENT_AGE } from "@/lib/constants";
 import { getT, getLocale } from "@/lib/i18n/server";
 import type { Translate } from "@/lib/i18n/dictionary";
-
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+import { claimChildFor, type ClaimState } from "@/lib/claim-child";
 
 /**
  * Opens an invitation ADDRESSED TO the signed-in person, from /join.
@@ -93,107 +87,18 @@ function hint(t: Translate, seconds: number): string {
 /* Code lookup                                                                 */
 /* -------------------------------------------------------------------------- */
 
-export type CodeLookup =
-  | { ok: true; kind: "school"; schoolId: string; schoolName: string; logoPath: string | null; brandPrimary: string | null }
-  | { ok: true; kind: "class"; schoolId: string; schoolName: string; classId: string; className: string; logoPath: string | null; brandPrimary: string | null }
-  | { ok: false; error: string };
 
 /**
- * Resolves a school code OR a class code from the same box.
- *
- * One input rather than two: a child holding a code off the whiteboard does not
- * know, and should not have to know, which kind it is. (§7 no dead ends)
+ * Resolves a school code OR a class code from the same box — the rules, and
+ * the limit on grinding through codes, are `lookupJoinCode` in lib/join.ts,
+ * which the phone's POST /api/v1/join/lookup calls too.
  */
 export async function lookupCode(raw: string): Promise<CodeLookup> {
   const t = await getT();
-  const code = normalizeCode(raw ?? "");
-  if (code.length < 4) return { ok: false, error: t("join.codeTooShort") };
-  if (code.length > 32) return { ok: false, error: t("join.codeTooLong") };
-
-  /**
-   * ⚠ NOT A SECRET, BUT NOT ENUMERABLE EITHER.
-   *
-   * A class code is printed on a poster and photographed off a whiteboard, and
-   * this function is deliberately readable with no session because working out
-   * which school a code belongs to IS the question. What it must not be is a
-   * loop: grind the space, find a real class, and `joinAsStudent` turns that
-   * into a pupil account inside somebody's school.
-   *
-   * Keyed on the client address, with the caveat spelled out on CODE_LOOKUPS —
-   * behind a proxy that sets `x-forwarded-for` this is the caller; in front of
-   * one it is forgeable. It raises the cost of enumeration from nothing to
-   * something rather than being a wall, and the reason that is tolerable is
-   * that a code grants a PENDING membership and sight of nothing.
-   */
-  const gate = await consumeByCaller("code-lookup", CODE_LOOKUPS);
-  if (!gate.allowed) {
-    return { ok: false, error: t("join.tooManyTries", { when: hint(t, gate.retryAfterSeconds) }) };
-  }
-
-  // BOTH lookups run under the code itself. There is no school to scope them to
-  // — working out which school this code belongs to is the entire question — so
-  // the policies let exactly the row whose code matches come back, and nothing
-  // else. Without this every join code on the installation reads as "we could
-  // not find that code", which is what it did.
-  //
-  // TWO PASSES for the class, and NOT one query with `include: { school }`. The
-  // code opens exactly the row it names: a CLASS join code does not match the
-  // school's own code, so the joined school came back null and Prisma refused
-  // the required relation — a 500 in place of a welcome screen. The class names
-  // its school, and having been shown the class is what earns the right to read
-  // it, so the second pass is scoped to that school by id.
-  const klass = await forJoinCode(code, () =>
-    db.class.findUnique({ where: { joinCode: code } }),
-  );
-
-  if (klass && !klass.archivedAt) {
-    const school = await forSchool(klass.schoolId, () =>
-      db.school.findUniqueOrThrow({
-        where: { id: klass.schoolId },
-        select: { id: true, name: true, logoPath: true, brandPrimary: true, removedAt: true },
-      }),
-    );
-
-    // A removed school's codes keep circulating on paper; they must stop
-    // working here. "Not found" rather than an explanation — the code is dead.
-    if (school.removedAt) return { ok: false, error: t("join.codeNotFound") };
-
-    return {
-      ok: true,
-      kind: "class",
-      schoolId: klass.schoolId,
-      schoolName: school.name,
-      classId: klass.id,
-      className: klass.name,
-      logoPath: school.logoPath,
-      brandPrimary: school.brandPrimary,
-    };
-  }
-
-  const school = await forJoinCode(code, () =>
-    db.school.findUnique({
-      where: { code },
-      select: { id: true, name: true, logoPath: true, brandPrimary: true, removedAt: true },
-    }),
-  );
-
-  if (school && school.removedAt) return { ok: false, error: t("join.codeNotFound") };
-
-  if (school) {
-    return {
-      ok: true,
-      kind: "school",
-      schoolId: school.id,
-      schoolName: school.name,
-      logoPath: school.logoPath,
-      brandPrimary: school.brandPrimary,
-    };
-  }
-
-  return {
-    ok: false,
-    error: t("join.codeNotFound"),
-  };
+  const result = await lookupJoinCode(raw, t);
+  // The web's shape exactly: the limit's wait is already in the sentence.
+  if (!result.ok) return { ok: false, error: result.error };
+  return result;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -394,201 +299,17 @@ export async function signUpParent(input: unknown): Promise<JoinState> {
   return { ok: true, errors: {}, redirectTo: "/parent/link" };
 }
 
-export type ClaimState = {
-  ok: boolean;
-  errors: FieldErrors;
-  child?: { name: string; schoolName: string };
-};
 
 /**
- * Links a signed-in parent to a child.
- *
- * Requires BOTH the student code and the child's date of birth. The code alone
- * is not treated as a credential — it gets written on things, photographed, and
- * read aloud — so the birthdate is the second factor.
- *
- * Every failure returns the same message and does the same work, so this cannot
- * be used to test whether a code is real.
- *
- * ⚠ THAT SENTENCE USED TO CONTINUE "…or to brute-force a birthdate against a
- * known-good code", AND IT WAS WRONG. Indistinguishable failures stop an
- * attacker learning WHICH guess was close; they do nothing about how many
- * guesses are possible. A schoolchild's date of birth has a few thousand
- * plausible values, and there was no limit at all — so a known-good code plus a
- * loop got somebody a guardianship over another family's child in minutes, with
- * their attendance, marks, messages and record behind it. That is the most
- * serious thing an unlimited form in this app could do.
- *
- * The rate is now bounded from both directions — see CLAIM_ATTEMPTS and
- * CLAIM_PER_CODE, which stop different attacks and neither of which is
- * sufficient alone.
+ * Links a signed-in parent to a child: the web's /parent/link form. The rules
+ * — both factors, both rate limits, indistinguishable failures — live in
+ * `claimChildFor` (lib/claim-child.ts), which the phone's endpoint calls too.
  */
 export async function claimChild(input: unknown): Promise<ClaimState> {
   const t = await getT();
   const session = await getSession();
   if (!session) return { ok: false, errors: { _form: t("common.logInAgain") } };
-
-  const parsed = claimChildSchema.safeParse(input);
-  if (!parsed.success) return { ok: false, errors: fieldErrors(parsed.error, t) };
-
-  const { studentCode: rawCode, birthdate, relation } = parsed.data;
-  const generic: ClaimState = {
-    ok: false,
-    errors: {
-      _form: t("join.claimMismatch"),
-    },
-  };
-
-  const code = normalizeCode(rawCode);
-  const birthDate = parseDateOnly(birthdate);
-  if (!birthDate) return { ok: false, errors: { birthdate: t("join.useRealDate") } };
-
-  /**
-   * BOTH LIMITS BEFORE ANY LOOKUP, so a refusal costs the same whether the code
-   * is real or not — the same reason the failures below are indistinguishable.
-   *
-   * Per CALLER first: every attempt costs a signed-in account, which is what
-   * makes grinding expensive. Per CODE second, and loosely, so many accounts
-   * cannot grind one child — loose because a tight limit here would let an
-   * attacker lock a real parent out of claiming their own child.
-   */
-  const perCaller = await consume(
-    `claim:user:${session.user.id}`,
-    CLAIM_ATTEMPTS.limit,
-    CLAIM_ATTEMPTS.windowMs,
-  );
-  if (!perCaller.allowed) {
-    return {
-      ok: false,
-      errors: { _form: t("join.tooManyAttempts", { when: hint(t, perCaller.retryAfterSeconds) }) },
-    };
-  }
-
-  const perCode = await consume(`claim:code:${code}`, CLAIM_PER_CODE.limit, CLAIM_PER_CODE.windowMs);
-  if (!perCode.allowed) {
-    return {
-      ok: false,
-      errors: { _form: t("join.tooManyForCode", { when: hint(t, perCode.retryAfterSeconds) }) },
-    };
-  }
-
-  // Same bootstrap as a join code: a parent claiming their child has no
-  // membership of that school and cannot be scoped to it, so the student code
-  // itself is what opens exactly the one row. The date of birth checked below is
-  // the second factor — the code alone gets a look, never a link.
-  const membership = await forJoinCode(code, () =>
-    db.membership.findUnique({
-      where: { studentCode: code },
-      include: {
-        user: { select: { id: true, name: true, preferredName: true, birthdate: true } },
-        school: { select: { id: true, name: true } },
-      },
-    }),
-  );
-
-  if (!membership || membership.role !== "STUDENT" || membership.status !== "ACTIVE") {
-    await fakePasswordWork(); // keep the timing indistinguishable
-    return generic;
-  }
-
-  // No birthdate on file means the code alone would be enough — refuse rather
-  // than silently downgrading to single-factor.
-  if (!membership.user.birthdate) {
-    await fakePasswordWork();
-    return {
-      ok: false,
-      errors: {
-        _form: t("join.noBirthdateOnFile"),
-      },
-    };
-  }
-
-  if (!sameCalendarDay(membership.user.birthdate, birthDate)) {
-    await fakePasswordWork();
-    await audit({
-      schoolId: membership.schoolId,
-      actorUserId: session.user.id,
-      action: "parent.claim.failed",
-      targetType: "Membership",
-      targetId: membership.id,
-    });
-    return generic;
-  }
-
-  const existing = await db.guardianship.findUnique({
-    where: {
-      parentUserId_studentMembershipId: {
-        parentUserId: session.user.id,
-        studentMembershipId: membership.id,
-      },
-    },
-    select: { id: true, status: true },
-  });
-
-  if (existing?.status === "ACTIVE") {
-    return {
-      ok: false,
-      errors: { _form: t("join.alreadyLinked") },
-    };
-  }
-
-  await db.guardianship.upsert({
-    where: {
-      parentUserId_studentMembershipId: {
-        parentUserId: session.user.id,
-        studentMembershipId: membership.id,
-      },
-    },
-    create: {
-      parentUserId: session.user.id,
-      studentMembershipId: membership.id,
-      studentSchoolId: membership.schoolId,
-      relation,
-      status: "ACTIVE",
-      consentSharingAt: new Date(),
-      consentNotificationsAt: new Date(),
-    },
-    update: { status: "ACTIVE", relation, consentSharingAt: new Date() },
-  });
-
-  await audit({
-    schoolId: membership.schoolId,
-    actorUserId: session.user.id,
-    action: "parent.claim",
-    targetType: "Membership",
-    targetId: membership.id,
-  });
-
-  // A real guardian now exists, so the school's stand-in (the class teacher
-  // or an admin holding guardian rights while no parent was on the app) is
-  // revoked in the same breath. The parent replaces; they never share.
-  await syncStandinGuardian({
-    schoolId: membership.schoolId,
-    studentMembershipId: membership.id,
-    actorUserId: session.user.id,
-  }).catch((error) => console.error("[claimChild] standin sync failed", error));
-
-  // Switch the live session into the parent role. Without this a brand-new
-  // parent lands on the role picker immediately after claiming, which reads as
-  // "did that work?" rather than as success.
-  await setActiveContext(session.sessionId, session.user.id, { schoolId: null, role: "PARENT" });
-
-  const childName = membership.user.preferredName ?? membership.user.name;
-
-  if (session.user.email) {
-    await sendParentClaimNotice(
-      session.user.email,
-      childName,
-      membership.school.name,
-      `${APP_URL}/parent`,
-    ).catch((error) => console.error("[claimChild] notice failed", error));
-  }
-
-  return {
-    ok: true,
-    errors: {},
-    child: { name: childName, schoolName: membership.school.name },
-  };
+  return claimChildFor(session, input, t);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -597,117 +318,20 @@ export async function claimChild(input: unknown): Promise<ClaimState> {
 
 /**
  * A signed-in person joins a school or a class as a pupil with their own
- * account — no new user, no password, no second identity.
- *
- * THE WIZARD ABOVE MINTS AN ACCOUNT. That is right for a child with nothing,
- * and wrong for everyone who already has something: a pupil changing school,
- * or one a parent set up, who was told "join with the class code" and got a
- * second login with an empty record. The leaving certificate, the report
- * cards and the badges are on THIS user id, so this is where the membership
- * goes.
- *
- * Refused, with a sentence, when the account is plainly not a pupil's: it
- * guards a child, or it already holds a staff post at this school. A pupil
- * already on the roll here is simply enrolled in the class the code names.
+ * account — no new user, no password, no second identity. The rules (a
+ * parent's account and a staff post here are refused; a left membership
+ * returns; the class enrolment; the stand-in guardian) are `joinWithAccount`
+ * in lib/join.ts, which the phone's POST /api/v1/join calls too. What stays
+ * here is the web's own ending: a fresh cookie session as the pupil.
  */
 export async function joinWithMyAccount(rawCode: string): Promise<JoinState> {
   const t = await getT();
   const session = await getSession();
   if (!session) return { ok: false, errors: { _form: t("common.logInAgain") } };
 
-  const lookup = await lookupCode(rawCode);
-  if (!lookup.ok) return { ok: false, errors: { code: lookup.error } };
+  const joined = await joinWithAccount(session, rawCode, t);
+  if (!joined.ok) return { ok: false, errors: joined.errors };
 
-  const [guards, postHere, user] = await Promise.all([
-    db.guardianship.count({ where: { parentUserId: session.user.id, status: "ACTIVE" } }),
-    forSchool(lookup.schoolId, () =>
-      db.membership.findFirst({
-        where: { userId: session.user.id, schoolId: lookup.schoolId, role: { not: "STUDENT" }, status: { not: "REMOVED" } },
-        select: { id: true },
-      }),
-    ),
-    db.user.findUniqueOrThrow({ where: { id: session.user.id }, select: { birthdate: true } }),
-  ]);
-  if (guards > 0) return { ok: false, errors: { _form: t("join.thisIsAParentsAccount") } };
-  if (postHere) return { ok: false, errors: { _form: t("join.youWorkHere") } };
-
-  const age = user.birthdate ? ageInYears(user.birthdate) : null;
-  let membershipId: string;
-  let alreadyHere = false;
-
-  try {
-    const result = await forSchool(lookup.schoolId, () =>
-      db.$tenantTransaction(async (rawTx) => {
-        const tx = rawTx as typeof db;
-        const existing = await tx.membership.findFirst({
-          where: { userId: session.user.id, schoolId: lookup.schoolId, role: "STUDENT" },
-          select: { id: true, status: true, leftAt: true },
-        });
-        let id: string;
-        if (existing && existing.status === "ACTIVE" && !existing.leftAt) {
-          id = existing.id;
-          alreadyHere = true;
-        } else if (existing) {
-          // Came back after leaving: the same membership returns to the roll,
-          // so their history here is theirs again. The leaving certificate
-          // goes with the leaving: "left on the 30th" is no longer true of a
-          // child on tomorrow's register, and one certificate per membership
-          // is the rule — the next departure, if there is one, writes a fresh
-          // one over the whole stay. (A battery found the old row blocking
-          // every later departure.)
-          await tx.schoolRecord.deleteMany({ where: { studentMembershipId: existing.id, schoolId: lookup.schoolId } });
-          await tx.membership.update({
-            where: { id: existing.id },
-            data: { status: "ACTIVE", leftAt: null, studentCode: studentCode() },
-          });
-          id = existing.id;
-        } else {
-          const made = await tx.membership.create({
-            data: {
-              userId: session.user.id,
-              schoolId: lookup.schoolId,
-              role: "STUDENT",
-              status: "ACTIVE",
-              studentCode: studentCode(),
-            },
-            select: { id: true },
-          });
-          id = made.id;
-        }
-
-        if (lookup.kind === "class") {
-          await tx.enrollment.upsert({
-            where: { classId_studentMembershipId: { classId: lookup.classId, studentMembershipId: id } },
-            create: { classId: lookup.classId, schoolId: lookup.schoolId, studentMembershipId: id, status: "ACTIVE" },
-            update: { status: "ACTIVE", removedAt: null },
-          });
-        }
-
-        if (age !== null) {
-          await tx.user.update({ where: { id: session.user.id }, data: { isMinor: age < 18 } });
-        }
-        return id;
-      }),
-    );
-    membershipId = result;
-  } catch (error) {
-    console.error("[joinWithMyAccount]", error);
-    return { ok: false, errors: { _form: t("join.couldNotSetUp") } };
-  }
-
-  await audit({
-    schoolId: lookup.schoolId,
-    actorUserId: session.user.id,
-    action: "student.join",
-    meta: { via: lookup.kind, existingAccount: true, alreadyHere },
-  });
-
-  await syncStandinGuardian({
-    schoolId: lookup.schoolId,
-    studentMembershipId: membershipId,
-    actorUserId: session.user.id,
-  }).catch((error) => console.error("[joinWithMyAccount] standin sync failed", error));
-
-  await createSession(session.user.id, { schoolId: lookup.schoolId, role: "STUDENT" });
+  await createSession(session.user.id, { schoolId: joined.schoolId, role: "STUDENT" });
   return { ok: true, errors: {}, redirectTo: "/student" };
 }

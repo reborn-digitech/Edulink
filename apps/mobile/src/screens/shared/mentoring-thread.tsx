@@ -3,20 +3,19 @@ import { TextInput, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { mentoringMessageBodySchema, mentoringThreadDetailSchema, okSchema } from "@edulink/contracts";
-import { Button, Empty, Failed, Field, Loading, Screen, Text } from "@/components";
+import { Button, Empty, Failed, Field, Loading, Screen, Text, useToast } from "@/components";
 import { api, errorText } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { openWeb } from "../staff/shared";
 import { Note, param, Pill, relativeTime } from "../family/shared";
 
 /**
  * One mentorship, the web's /mentoring/[threadId]: the pupil and the expert
  * writing to each other, read by the guardians and the school — said to
  * every reader before the first message. Who may write arrives as a flag
- * from the server; the guardian's consent and ending the mentorship are the
- * web's buttons, so those open the same page there.
+ * from the server. So are the guardian's consent (only then may anybody
+ * write) and ending it — the school's or a guardian's — after a confirm.
  */
 export function MentoringThread() {
   const params = useLocalSearchParams<{ threadId?: string }>();
@@ -29,6 +28,8 @@ export function MentoringThread() {
   const [draft, setDraft] = useState("");
   const [formError, setFormError] = useState<string | null>(null);
   const [sent, setSent] = useState(false);
+  const [confirming, setConfirming] = useState(false);
+  const toast = useToast();
   const box = useRef<TextInput>(null);
 
   const query = useQuery({
@@ -47,6 +48,21 @@ export function MentoringThread() {
       setSent(true);
       void qc.invalidateQueries({ queryKey: ["shared", "mentoring"] });
     },
+  });
+  /** The web's consent and close: a guardian's yes, or the school or a guardian ending it. */
+  const act = useMutation({
+    mutationFn: async (what: "consent" | "close") => {
+      const result = what === "consent" ? await api().post(`/api/v1/community/mentoring/${threadId}/consent`) : await api().post(`/api/v1/community/mentoring/${threadId}/close`);
+      if (!result.ok) throw new Error(errorText(result, t("mentoring.couldNotDo")));
+      return okSchema.parse(result.data);
+    },
+    onSuccess: (_data, what) => {
+      setConfirming(false);
+      toast.show(what === "consent" ? t("mentoring.agreedToast") : t("mentoring.ended"));
+      void qc.invalidateQueries({ queryKey: ["shared", "mentoring"] });
+      void qc.invalidateQueries({ queryKey: ["community", "mentoring"] });
+    },
+    onError: (e) => toast.show(e.message, "danger"),
   });
 
   const submit = () => {
@@ -69,6 +85,18 @@ export function MentoringThread() {
     );
   }
   const canClose = Boolean(data && (data.isGuardian || data.isStaff));
+  /** Ending is for good: said first, then a red button beside a cancel. */
+  const endConfirm = (
+    <Note tone="danger">
+      <Text variant="sm" bold>
+        {t("mentoring.endConfirm")}
+      </Text>
+      <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+        <Button label={t("mentoring.endThis")} variant="danger" busy={act.isPending && act.variables === "close"} onPress={() => act.mutate("close")} />
+        <Button label={t("common.cancel")} variant="ghost" onPress={() => setConfirming(false)} />
+      </View>
+    </Note>
+  );
   return (
     <Screen title={data ? `${data.studentName} & ${data.expertName}` : t("feature.mentoring")} description={data?.purpose} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {query.isPending ? <Loading /> : null}
@@ -90,7 +118,11 @@ export function MentoringThread() {
               <Text variant="xs" tone="muted">
                 {t("mentoring.canReadAndEnd")}
               </Text>
-              <Button label={t("mentoring.yesGoAhead")} variant="secondary" onPress={() => openWeb(`/mentoring/${threadId}`)} />
+              <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+                <Button label={t("mentoring.yesGoAhead")} busy={act.isPending && act.variables === "consent"} disabled={act.isPending} onPress={() => act.mutate("consent")} />
+                {confirming ? null : <Button label={t("mentoring.noEndIt")} variant="ghost" disabled={act.isPending} onPress={() => setConfirming(true)} />}
+              </View>
+              {confirming ? endConfirm : null}
             </Note>
           ) : null}
           {data.messages.length === 0 ? (
@@ -136,7 +168,8 @@ export function MentoringThread() {
               <Button label={t("expert.send")} onPress={submit} busy={send.isPending} />
             </>
           ) : null}
-          {canClose && !data.awaitingConsent && data.status !== "CLOSED" ? <Button label={t("mentoring.endThis")} variant="ghost" onPress={() => openWeb(`/mentoring/${threadId}`)} /> : null}
+          {act.isError ? <Failed message={act.error.message} /> : null}
+          {canClose && !data.awaitingConsent && data.status !== "CLOSED" ? confirming ? endConfirm : <Button label={t("mentoring.endThis")} variant="ghost" onPress={() => setConfirming(true)} /> : null}
         </>
       ) : null}
     </Screen>

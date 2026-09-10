@@ -14,7 +14,8 @@ import { useToast } from "@/components/ui/toast";
 import { AVATAR_PRESETS, Avatar, describeAvatar } from "@/components/ui/avatar";
 import { passwordStrength } from "@/lib/password-strength";
 import { cn } from "@/lib/cn";
-import { joinAsStudent, lookupCode, type CodeLookup } from "../actions";
+import { joinAsStudent, lookupCode } from "../actions";
+import type { CodeLookup } from "@/lib/join";
 import { useT } from "@/lib/i18n";
 
 /**

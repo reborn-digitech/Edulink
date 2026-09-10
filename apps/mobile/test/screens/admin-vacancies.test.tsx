@@ -1,7 +1,5 @@
-import { Linking } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { Vacancies } from "@/screens/staff/vacancies";
-import { API_BASE } from "@/lib/api";
 import { gated, json, mountStaff, refused, type Answer } from "./staff-harness";
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
@@ -23,8 +21,7 @@ const desk: Answer = ({ url }) => {
 };
 
 describe("the vacancies board, for a teacher", () => {
-  it("loads, then lists the postings; opening one and enquiring are the web's", async () => {
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+  it("loads, then lists the postings; a posting opens its own screen", async () => {
     const gate = gated();
     const { calls } = await mountStaff(<Vacancies />, "TEACHER", { "GET /api/v1/shared/vacancies": gate.answer });
     expect(screen.getByRole("progressbar")).toBeTruthy();
@@ -34,22 +31,19 @@ describe("the vacancies board, for a teacher", () => {
     expect(screen.getByText("Your school")).toBeTruthy();
     expect(calls().some((c) => c.line === "GET /api/v1/shared/vacancies")).toBe(true);
     await fireEvent.press(screen.getByRole("button", { name: /^ZZ Maths teacher, / }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/vacancies/v1`);
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/vacancy", params: { postingId: "v1" } });
     // The type filter narrows on the phone; nothing matching offers to clear it.
     await fireEvent.press(screen.getByRole("radio", { name: "Temporary" }));
     expect(screen.getByText("Nothing matches")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Clear all" }));
     expect(screen.getByText("ZZ Art teacher")).toBeTruthy();
-    open.mockRestore();
   });
 
   it("an empty board points at the schools", async () => {
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
     await mountStaff(<Vacancies />, "TEACHER", { "GET /api/v1/shared/vacancies": () => json({ items: [] }) });
     expect(await screen.findByText("No open vacancies")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Explore schools" }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/explore`);
-    open.mockRestore();
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/explore");
   });
 
   it("a refusal is an alert with a retry", async () => {
@@ -69,7 +63,9 @@ describe("the school's vacancies desk", () => {
     await screen.findByText("ZZ Science teacher");
     expect(screen.getByLabelText("Open: 1")).toBeTruthy();
     expect(screen.getByText(/^Part-time · 2 enquiries · Contact: ZZ Head · Posted /)).toBeTruthy();
-    expect(screen.getByRole("button", { name: "2 enquiries" })).toBeTruthy();
+    // The count is the door to the enquiries: the posting's own screen lists them, as does the row.
+    await fireEvent.press(screen.getByRole("button", { name: "2 enquiries" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/vacancy", params: { postingId: "p1" } });
     expect(calls().some((c) => c.line === "GET /api/v1/admin/vacancies?status=open")).toBe(true);
     await fireEvent.press(screen.getByRole("radio", { name: "All" }));
     await waitFor(() => expect(calls().some((c) => c.line === "GET /api/v1/admin/vacancies?status=all")).toBe(true));

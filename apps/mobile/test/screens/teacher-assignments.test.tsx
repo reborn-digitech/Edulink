@@ -1,13 +1,18 @@
-import { Linking } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
-import { newAssignmentSchema, staffAssignmentsSchema } from "@edulink/contracts";
+import { staffAssignmentsSchema, teachingNewAssignmentSchema } from "@edulink/contracts";
 import { TeacherAssignments } from "@/screens/teacher/assignments";
-import { API_BASE } from "@/lib/api";
+import { PickError, pickAndUpload } from "@/lib/pick-file";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 import { ID } from "./teacher-support";
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
 jest.mock("expo-router", () => ({ useRouter: () => mockRouter, useLocalSearchParams: () => mockRouter.params }));
+/* The system picker and the upload are the phone's; here a picked file is whatever the test says it is. */
+jest.mock("@/lib/pick-file", () => {
+  class PickError extends Error {}
+  return { PickError, pickAndUpload: jest.fn() };
+});
+const pick = pickAndUpload as jest.Mock;
 
 const A1 = "czz00000000000000000a1";
 const A2 = "czz00000000000000000a2";
@@ -48,7 +53,11 @@ const LIST = staffAssignmentsSchema.parse({
   ],
 });
 
-beforeEach(() => mockRouter.push.mockClear());
+beforeEach(() => {
+  mockRouter.push.mockClear();
+  mockRouter.params = {};
+  pick.mockReset();
+});
 
 describe("the teacher's assignments", () => {
   it("loads, then shows the list with its class, due date, marking and drafts; filters ask the API", async () => {
@@ -73,40 +82,76 @@ describe("the teacher's assignments", () => {
     await waitFor(() => expect(calls().some((c) => c.line === `GET /api/v1/staff/assignments?years=all&classId=${ID.class2}&state=tomark`)).toBe(true));
   });
 
-  it("a row opens the gradebook on the web; a draft publishes with its id", async () => {
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+  it("a row opens the gradebook on the phone; a draft publishes with its id", async () => {
     const { calls } = await mountStaff(<TeacherAssignments />, "ADMIN", {
       "GET /api/v1/staff/assignments": () => json(LIST),
       "POST /api/v1/staff/assignments/publish": () => json({ ok: true }),
     });
     await fireEvent.press(await screen.findByText("ZZ Fractions worksheet"));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/teacher/assignments/${A1}`);
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/assignment", params: { assignmentId: A1 } });
     await fireEvent.press(screen.getByRole("button", { name: "Publish now" }));
     await screen.findByText(/^Published The class and their guardians have been told\./);
     expect(calls().find((c) => c.line === "POST /api/v1/staff/assignments/publish")?.body).toEqual({ assignmentId: A2 });
-    open.mockRestore();
   });
 
   it("sets a new piece of work with the body the contract takes", async () => {
     const { calls } = await mountStaff(<TeacherAssignments />, "TEACHER", {
       "GET /api/v1/staff/assignments": () => json({ ...LIST, assignments: [LIST.assignments[0]] }),
-      "POST /api/v1/staff/assignments": () => json({ assignmentId: A2, notified: 24 }),
+      "POST /api/v1/teaching/assignments": () => json({ assignmentId: A2, notified: 24, handouts: 0 }, 201),
     });
     await fireEvent.press(await screen.findByRole("button", { name: "New assignment" }));
     // Nothing sent with an empty title.
     await fireEvent.press(screen.getByRole("button", { name: "Publish now" }));
     expect(screen.getByText("Check the highlighted fields.")).toBeTruthy();
-    expect(calls().filter((c) => c.line === "POST /api/v1/staff/assignments")).toHaveLength(0);
+    expect(calls().filter((c) => c.line === "POST /api/v1/teaching/assignments")).toHaveLength(0);
     await fireEvent.changeText(screen.getByLabelText("Title"), "ZZ Quiz on fractions");
     await fireEvent.press(screen.getByRole("radio", { name: "Quiz" }));
     await fireEvent.changeText(screen.getByLabelText("Due date"), "2026-09-20");
     await fireEvent.press(screen.getByRole("button", { name: "Publish now" }));
     await screen.findByText("Work set. 24 students and their guardians were told.");
-    const post = calls().find((c) => c.line === "POST /api/v1/staff/assignments")!;
-    const body = newAssignmentSchema.parse(post.body);
-    expect(body).toMatchObject({ classId: ID.class1, title: "ZZ Quiz on fractions", body: "", category: "Quiz", points: 20, publish: true });
+    const post = calls().find((c) => c.line === "POST /api/v1/teaching/assignments")!;
+    const body = teachingNewAssignmentSchema.parse(post.body);
+    expect(body).toMatchObject({ classId: ID.class1, title: "ZZ Quiz on fractions", body: "", category: "Quiz", points: 20, publish: true, handouts: [] });
     expect(body.dueAt).toBe(new Date("2026-09-20T16:00:00").toISOString());
     expect(screen.queryByLabelText("Title")).toBeNull();
+  });
+
+  it("attaches handouts through the picker and sends their ids; a refused file says why; a closed picker adds nothing", async () => {
+    const { calls } = await mountStaff(<TeacherAssignments />, "TEACHER", {
+      "GET /api/v1/staff/assignments": () => json(LIST),
+      "POST /api/v1/teaching/assignments": () => json({ assignmentId: A2, notified: 0, handouts: 1 }, 201),
+    });
+    await fireEvent.press(await screen.findByRole("button", { name: "New assignment" }));
+    pick.mockResolvedValueOnce({ fileId: "zz-f1", mime: "application/pdf", size: 2048, name: "ZZ sheet.pdf" });
+    await fireEvent.press(screen.getByRole("button", { name: "Attach a file" }));
+    expect(await screen.findByText("ZZ sheet.pdf")).toBeTruthy();
+    expect(screen.getByText("2 KB")).toBeTruthy();
+    expect(pick).toHaveBeenCalledWith("document", "Something went wrong");
+    pick.mockResolvedValueOnce({ fileId: "zz-f2", mime: "image/png", size: 4096, name: "ZZ diagram.png" });
+    await fireEvent.press(screen.getByRole("button", { name: "Attach a file" }));
+    await fireEvent.press(await screen.findByRole("button", { name: "Remove ZZ diagram.png" }));
+    expect(screen.queryByText("ZZ diagram.png")).toBeNull();
+    pick.mockRejectedValueOnce(new PickError("ZZ That file is too big."));
+    await fireEvent.press(screen.getByRole("button", { name: "Attach a file" }));
+    expect(await screen.findByRole("alert")).toHaveTextContent("ZZ That file is too big.");
+    pick.mockResolvedValueOnce(null);
+    await fireEvent.press(screen.getByRole("button", { name: "Attach a file" }));
+    await waitFor(() => expect(pick).toHaveBeenCalledTimes(4));
+
+    await fireEvent.changeText(screen.getByLabelText("Title"), "ZZ Sheet homework");
+    await fireEvent.press(screen.getByRole("button", { name: "Save as draft" }));
+    await screen.findByText(/^Saved as a draft/);
+    const body = teachingNewAssignmentSchema.parse(calls().find((c) => c.line === "POST /api/v1/teaching/assignments")!.body);
+    expect(body).toMatchObject({ title: "ZZ Sheet homework", publish: false, handouts: [{ fileId: "zz-f1", name: "ZZ sheet.pdf" }] });
+  });
+
+  it("from a class page the form opens with that class chosen", async () => {
+    mockRouter.params = { classId: ID.class2, compose: "1" };
+    await mountStaff(<TeacherAssignments />, "TEACHER", { "GET /api/v1/staff/assignments": () => json(LIST) });
+    expect(await screen.findByLabelText("Title")).toBeTruthy();
+    // The form's class chips come first on the screen, above the list's filter.
+    expect(screen.getAllByRole("radio", { name: "ZZ 6B" })[0]).toBeChecked();
+    expect(screen.getAllByRole("radio", { name: "ZZ 5A" })[0]).not.toBeChecked();
   });
 
   it("no classes, nothing set, nothing matching: each has a door", async () => {

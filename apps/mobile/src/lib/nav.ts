@@ -80,6 +80,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.mentoring", icon: "chat", group: "school", screen: "/(app)/mentoring" },
     { labelKey: "nav.competitions", icon: "trophy", group: "school", screen: "/(app)/competitions" },
     { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
+    { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
   ],
   STUDENT: [
     { labelKey: "nav.exams", icon: "chartLine", group: "daily", screen: "/(app)/exams" },
@@ -90,6 +91,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.competitions", icon: "trophy", group: "school", screen: "/(app)/competitions" },
     { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
     { labelKey: "nav.me", icon: "user", group: "running", screen: "/(app)/profile" },
+    { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
   ],
   PARENT: [
     { labelKey: "nav.exams", icon: "chartLine", group: "daily", screen: "/(app)/exams" },
@@ -104,6 +106,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.mentoring", icon: "chat", group: "school", screen: "/(app)/mentoring" },
     { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
     { labelKey: "nav.settings", icon: "gear", group: "running", screen: "/(app)/settings" },
+    { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
   ],
   ADMIN: [
     { labelKey: "nav.classes", icon: "chalkboard", group: "daily", screen: "/(app)/classes" },
@@ -115,8 +118,8 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.reviews", icon: "star", group: "running", screen: "/(app)/reviews" },
     { labelKey: "nav.safety", icon: "shield", group: "running", screen: "/(app)/safety" },
     { labelKey: "nav.settings", icon: "gear", group: "running", screen: "/(app)/settings" },
-    { labelKey: "nav.invites", icon: "plus", group: "running", web: "/admin/invites/new" },
-    { labelKey: "nav.directory", icon: "users", group: "running", web: "/admin/directory" },
+    { labelKey: "nav.invites", icon: "plus", group: "running", screen: "/(app)/invites" },
+    { labelKey: "nav.directory", icon: "buildings", group: "running", screen: "/(app)/directory-profile" },
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
     { labelKey: "nav.experts", icon: "briefcase", group: "school", screen: "/(app)/experts" },
     { labelKey: "nav.vacancies", icon: "briefcase", group: "school", screen: "/(app)/vacancies" },
@@ -124,6 +127,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.mentoring", icon: "chat", group: "school", screen: "/(app)/mentoring" },
     { labelKey: "nav.competitions", icon: "trophy", group: "school", screen: "/(app)/competitions" },
     { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
+    { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
   ],
   PRINCIPAL: [
     { labelKey: "nav.reviews", icon: "star", group: "daily", screen: "/(app)/reviews" },
@@ -137,10 +141,11 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.enquiries", icon: "envelope", group: "school", screen: "/(app)/enquiries" },
     { labelKey: "nav.competitions", icon: "trophy", group: "school", screen: "/(app)/competitions" },
     { labelKey: "nav.pastYears", icon: "archive", group: "school", screen: "/(app)/archive" },
+    { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
   ],
   EXPERT: [
     { labelKey: "nav.profile", icon: "user", group: "running", screen: "/(app)/profile" },
-    { labelKey: "nav.account", icon: "gear", group: "running", web: "/account" },
+    { labelKey: "nav.account", icon: "user", group: "running", screen: "/(app)/account" },
   ],
 };
 
@@ -178,9 +183,68 @@ export const HIDDEN_SCREENS = [
   "competitions/detail",
   "enquiries",
   "enquiries/detail",
+  "quiz",
+  "worksheets",
+  "mentoring-setup",
+  "school",
+  "vacancy",
+  "link-child",
+  "competition-new",
+  "competition-entries",
+  "question-bank",
+  "assignment",
+  "report-cards",
+  "remark-new",
+  "invites",
+  "intake",
+  "directory-profile",
+  "class-new",
+  "timetable-editor",
+  "account",
+  "avatar",
+  "booking",
+  "post-new",
+  "post",
+  "operator-school",
+  "operator-new-school",
 ] as const;
 
 /** The More sheet's entries for a role, grouped in the web's order. */
 export function menuFor(role: RoleCode): { group: MenuGroup; items: MenuItem[] }[] {
   return MENU_GROUPS.map((group) => ({ group, items: MENU[role].filter((item) => item.group === group) })).filter((g) => g.items.length > 0);
 }
+
+/**
+ * The one-tap shortcuts on a role's home screen — the web's QUICK_ACTIONS,
+ * made phone-sized: the three or four things this person does most, as big
+ * tiles under the day's numbers, each going straight to the screen that does
+ * it. The hint is what a screen reader says after the label.
+ */
+export type QuickAction = { labelKey: TranslationKey; hintKey: TranslationKey; icon: string; href: string };
+
+export const QUICK: Partial<Record<RoleCode, QuickAction[]>> = {
+  TEACHER: [
+    { labelKey: "action.takeRegister", hintKey: "action.takeRegisterHint", icon: "checks", href: "/(app)/attendance" },
+    { labelKey: "action.newAssignment", hintKey: "action.newAssignmentHint", icon: "plus", href: "/(app)/assignments" },
+    { labelKey: "action.messageParent", hintKey: "action.messageParentHint", icon: "chat", href: "/(app)/remark-new" },
+    { labelKey: "action.applyLeave", hintKey: "action.applyLeaveHint", icon: "calendar", href: "/(app)/leave" },
+  ],
+  STUDENT: [
+    { labelKey: "action.whatIsDue", hintKey: "action.whatIsDueHint", icon: "clipboard", href: "/(app)/assignments" },
+    { labelKey: "action.myExamMarks", hintKey: "action.myExamMarksHint", icon: "chartLine", href: "/(app)/exams" },
+    { labelKey: "action.shareSomething", hintKey: "action.shareSomethingHint", icon: "megaphone", href: "/(app)/post-new" },
+    { labelKey: "action.messageTeacher", hintKey: "action.messageTeacherHint", icon: "chat", href: "/(app)/messages" },
+  ],
+  ADMIN: [
+    { labelKey: "action.admitPupils", hintKey: "action.admitPupilsHint", icon: "users", href: "/(app)/intake" },
+    { labelKey: "action.createClass", hintKey: "action.createClassHint", icon: "chalkboard", href: "/(app)/class-new" },
+    { labelKey: "action.buildTimetable", hintKey: "action.buildTimetableHint", icon: "clock", href: "/(app)/timetable-editor" },
+    // Not "Invite people": the People card on the same screen already has that button.
+    { labelKey: "action.schoolBranding", hintKey: "action.schoolBrandingHint", icon: "palette", href: "/(app)/settings" },
+  ],
+  PARENT: [
+    { labelKey: "action.messageTeacher", hintKey: "action.messageTeacherHint", icon: "chat", href: "/(app)/messages" },
+    { labelKey: "action.childExamMarks", hintKey: "action.childExamMarksHint", icon: "chartLine", href: "/(app)/exams" },
+    { labelKey: "action.notificationSettings", hintKey: "action.notificationSettingsHint", icon: "bell", href: "/(app)/settings" },
+  ],
+};

@@ -20,6 +20,9 @@ const ROSTER = {
   roleCounts: [{ role: "TEACHER", count: 1 }, { role: "ADMIN", count: 1 }],
   subjectOptions: [{ subject: "Maths", count: 1 }, { subject: "Physics", count: 1 }],
 };
+const EMPTY = { staff: [], total: 0, roleCounts: [], subjectOptions: [] };
+
+beforeEach(() => mockRouter.push.mockClear());
 
 describe("the staff roster", () => {
   it("loads, then shows each person with the record and their leave this year", async () => {
@@ -38,10 +41,11 @@ describe("the staff roster", () => {
     expect(calls().some((c) => c.line === "GET /api/v1/admin/staff")).toBe(true);
   });
 
-  it("the role and subject chips and the search ask the API", async () => {
+  it("the role and subject chips and the search ask the API; the office edits in the directory", async () => {
     const { calls } = await mountStaff(<StaffRoster />, "ADMIN", { "GET /api/v1/admin/staff": () => json(ROSTER) });
     await screen.findByText("ZZ Teacher");
-    expect(screen.getByRole("button", { name: "Edit in the directory" })).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Edit in the directory" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/people");
     await fireEvent.press(screen.getByRole("radio", { name: "Teachers" }));
     await waitFor(() => expect(calls().some((c) => c.line === "GET /api/v1/admin/staff?role=TEACHER")).toBe(true));
     await fireEvent.press(await screen.findByRole("radio", { name: "Physics (1)" }));
@@ -52,22 +56,19 @@ describe("the staff roster", () => {
   });
 
   it("no staff yet says so; nothing matching offers to clear", async () => {
-    let first = true;
-    await mountStaff(<StaffRoster />, "PRINCIPAL", {
-      "GET /api/v1/admin/staff": () => {
-        const empty = { staff: [], total: 0, roleCounts: [], subjectOptions: [] };
-        if (first) {
-          first = false;
-          return json(empty);
-        }
-        return json(empty);
-      },
-    });
+    await mountStaff(<StaffRoster />, "PRINCIPAL", { "GET /api/v1/admin/staff": () => json(EMPTY) });
     expect(await screen.findByText("No staff yet")).toBeTruthy();
     await fireEvent.press(screen.getByRole("radio", { name: "Admins" }));
     expect(await screen.findByText("Nothing matches")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Clear all" }));
     expect(await screen.findByText("No staff yet")).toBeTruthy();
+  });
+
+  it("an office with no staff yet is sent to invite them", async () => {
+    await mountStaff(<StaffRoster />, "ADMIN", { "GET /api/v1/admin/staff": () => json(EMPTY) });
+    expect(await screen.findByText("No staff yet")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Invite people" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/invites");
   });
 
   it("a refusal is an alert with a retry", async () => {

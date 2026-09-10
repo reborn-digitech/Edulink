@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { View } from "react-native";
+import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { saveProfileSchema, staffProfileSchema, type SaveProfileBody } from "@edulink/contracts";
 import { Button, Card, Failed, Field, Loading, Row, Screen, Stat, Text } from "@/components";
+import { Avatar } from "@/components/avatar";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { Notice, formatDateKey, openWeb } from "../staff/shared";
+import { Notice, formatDateKey } from "../staff/shared";
 import { Pill } from "../family/shared";
 
 /**
@@ -15,7 +17,7 @@ import { Pill } from "../family/shared";
  * by, a line about themselves, their date of birth while they may edit it,
  * and then what only a teacher has — the staff record the office keeps, this
  * year's leave, the subjects they teach and the ratings their review rounds
- * gathered, aggregates only. The avatar picker is the web's.
+ * gathered, aggregates only. The avatar is chosen on the app's own picker.
  */
 const QUESTIONS = [
   ["CLARITY", "reviews.qClarity"],
@@ -35,6 +37,7 @@ export function TeacherProfile() {
   const { locale } = useLocale();
   const th = useTheme();
   const qc = useQueryClient();
+  const router = useRouter();
   const query = useQuery({
     queryKey: ["staff", "profile"],
     queryFn: async () => staffProfileSchema.parse(unwrap(await api().get("/api/v1/staff/profile"))),
@@ -102,7 +105,12 @@ export function TeacherProfile() {
           </View>
 
           <Card title={preferredName.trim() || d.user.name}>
-            <Button label={t("student.changeMyLook")} variant="secondary" onPress={() => openWeb("/teacher/profile")} />
+            <View style={{ flexDirection: "row", alignItems: "center", gap: th.space[3] }}>
+              <Avatar avatarKey={d.user.avatarKey} name={d.user.name} size={56} />
+              <View style={{ flex: 1 }}>
+                <Button label={t("student.changeMyLook")} variant="secondary" onPress={() => router.push("/(app)/avatar" as never)} />
+              </View>
+            </View>
             <Field label={t("student.callYou")} hint={t("student.nameYoullSee")} value={preferredName} onChangeText={(v) => edit({ preferredName: v })} placeholder={d.user.name.split(" ")[0]} maxLength={60} error={errors.preferredName} />
             <Field label={t("student.aboutYou")} hint={t("reviews.bioHintTeacher")} value={bio} onChangeText={(v) => edit({ bio: v })} placeholder={t("student.aboutPlaceholder")} multiline maxLength={600} error={errors.bio} style={{ minHeight: th.space[12] * 2, textAlignVertical: "top", paddingTop: th.space[3] }} />
             <Row title={t("student.fullName")} caption={t("student.nameHint")} right={<Text variant="sm" bold>{d.user.name}</Text>} />

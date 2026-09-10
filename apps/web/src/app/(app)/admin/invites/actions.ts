@@ -8,6 +8,7 @@ import { generateToken, hashToken } from "@/lib/crypto";
 import { parseInviteCsv } from "@/lib/csv";
 import { sendTeacherInvite } from "@/lib/email";
 import { audit } from "@/lib/audit";
+import { resendInviteFor } from "@/lib/invites";
 import { INVITE_TTL_DAYS, SCHOOL_ROLES, type SchoolRole } from "@/lib/constants";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 import type { InviteCsvResult } from "@/lib/csv";
@@ -242,35 +243,8 @@ export async function resendInvite(
   try {
     const ctx = await requireApiRole("ADMIN");
 
-    const invite = await db.invite.findFirst({
-      where: { id: inviteId, schoolId: ctx.schoolId, status: "PENDING" },
-      include: { school: { select: { name: true } } },
-    });
-    if (!invite?.email) return { ok: false, errorKey: "invites.cannotResend" };
-
-    const token = generateToken();
-    await db.invite.update({
-      where: { id: invite.id },
-      data: {
-        tokenHash: hashToken(token),
-        expiresAt: new Date(Date.now() + INVITE_TTL_DAYS * 86_400_000),
-      },
-    });
-
-    await sendTeacherInvite(
-      invite.email,
-      `${APP_URL}/invite/${token}`,
-      invite.school.name,
-      ctx.user.preferredName ?? ctx.user.name,
-    );
-
-    await audit({
-      schoolId: ctx.schoolId,
-      actorUserId: ctx.user.id,
-      action: "invite.resend",
-      targetType: "Invite",
-      targetId: invite.id,
-    });
+    const result = await resendInviteFor(ctx, inviteId);
+    if (!result.ok) return { ok: false, errorKey: result.errorKey };
 
     revalidatePath("/admin/invites");
     return { ok: true };

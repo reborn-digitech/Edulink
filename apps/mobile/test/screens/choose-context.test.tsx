@@ -1,7 +1,6 @@
 import { Linking } from "react-native";
 import { fireEvent, screen } from "@testing-library/react-native";
 import { ChooseContext } from "@/components/choose-context";
-import { API_BASE } from "@/lib/api";
 import { json, me, mountStaff } from "./staff-harness";
 
 jest.mock("expo-router", () => ({ useRouter: () => ({ push: jest.fn(), replace: jest.fn() }), useLocalSearchParams: () => ({}) }));
@@ -14,13 +13,15 @@ const noRole = (extra: Record<string, unknown> = {}, contexts = me("TEACHER").co
 });
 
 describe("signed in with no active role", () => {
-  it("part of no school: says so, and the door is the web's join page", async () => {
+  it("part of no school: says so, and the code is taken right here — no door to the web", async () => {
     const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
     await mountStaff(<ChooseContext />, "TEACHER", {}, { me: noRole({}, []) });
     expect(await screen.findByText("You are not part of a school yet")).toBeTruthy();
-    await fireEvent.press(screen.getByRole("button", { name: "Join with a code" }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/join`);
+    expect(screen.getByLabelText("School or class code")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Check my code" })).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Join with a code" })).toBeNull();
     expect(screen.getByRole("button", { name: "Sign out" })).toBeTruthy();
+    expect(open).not.toHaveBeenCalled();
     open.mockRestore();
   });
 

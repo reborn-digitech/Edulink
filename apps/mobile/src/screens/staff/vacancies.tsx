@@ -1,5 +1,6 @@
 import { useRef, useState, type RefObject } from "react";
 import { TextInput, View } from "react-native";
+import { useRouter } from "expo-router";
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { adminVacanciesSchema, okSchema, vacanciesBoardSchema, vacancyCreatedSchema, type AdminVacancies } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
@@ -10,7 +11,7 @@ import { useLocale, useT } from "@/lib/i18n";
 import { useRole, useSession } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { Pill, relativeTime } from "../family/shared";
-import { Chips, Notice, openWeb } from "./shared";
+import { Chips, Notice } from "./shared";
 
 type EmploymentType = "FULL_TIME" | "PART_TIME" | "TEMPORARY";
 type TypeFilter = "" | EmploymentType;
@@ -25,7 +26,7 @@ function typeLabel(t: ReturnType<typeof useT>, type: string): string {
 }
 
 /**
- * Vacancies: a teacher reads the platform-wide board and enquires on the web;
+ * Vacancies: a teacher reads the platform-wide board and opens a post to ask;
  * the office and the head run their school's desk — what it has posted, what
  * each post has drawn, closing one after a confirm, posting a new one with
  * themselves as the hiring contact — and may read the board too.
@@ -61,6 +62,7 @@ function DeskTabs({ tab, onTab }: { tab: "desk" | "board"; onTab: (next: "desk" 
 
 function Board({ onDesk }: { onDesk?: () => void }) {
   const t = useT();
+  const router = useRouter();
   const th = useTheme();
   const { locale } = useLocale();
   const [type, setType] = useState<TypeFilter>("");
@@ -98,7 +100,7 @@ function Board({ onDesk }: { onDesk?: () => void }) {
               }
             />
           ) : (
-            <Empty title={t("vacancies.emptyTitle")} body={t("vacancies.emptyBody")} action={onDesk ? <Button label={t("vacancies.postCta")} variant="secondary" onPress={onDesk} /> : <Button label={t("explore.title")} variant="secondary" onPress={() => openWeb("/explore")} />} />
+            <Empty title={t("vacancies.emptyTitle")} body={t("vacancies.emptyBody")} action={onDesk ? <Button label={t("vacancies.postCta")} variant="secondary" onPress={onDesk} /> : <Button label={t("explore.title")} variant="secondary" onPress={() => router.push("/(app)/explore" as never)} />} />
           )
         ) : (
           <Card title={t("vacancies.title")}>
@@ -108,7 +110,7 @@ function Board({ onDesk }: { onDesk?: () => void }) {
                 title={p.title}
                 caption={[typeLabel(t, p.employmentType), [p.schoolName, p.city, p.region].filter(Boolean).join(", "), p.subjects.join(", ") || null, t("vacancies.postedAgo", { when: relativeTime(p.createdAt, locale) })].filter(Boolean).join(" · ")}
                 right={p.ours ? <Pill label={t("explore.yourSchool")} tone="accent" /> : <Icon name="caretRight" color={th.fgSubtle} size={20} />}
-                onPress={() => openWeb(`/vacancies/${p.id}`)}
+                onPress={() => router.push({ pathname: "/(app)/vacancy", params: { postingId: p.id } } as never)}
               />
             ))}
           </Card>
@@ -203,15 +205,17 @@ function Desk({ onBoard }: { onBoard: () => void }) {
 function PostingRow({ posting: p, locale, busy, onClose }: { posting: AdminVacancies["postings"][number]; locale: string; busy: boolean; onClose: () => void }) {
   const t = useT();
   const th = useTheme();
+  const router = useRouter();
   const [confirming, setConfirming] = useState(false);
   const open = p.status === "OPEN";
+  const toPosting = () => router.push({ pathname: "/(app)/vacancy", params: { postingId: p.id } } as never);
   const enquiries = p.enquiryCount === 0 ? t("vacancies.enquiriesNone") : p.enquiryCount === 1 ? t("vacancies.enquiriesOne") : t("vacancies.enquiriesMany", { count: p.enquiryCount });
   return (
     <View style={{ gap: th.space[2] }}>
-      <Row title={p.title} caption={[typeLabel(t, p.employmentType), enquiries, p.contactName ? t("vacancies.contactCell", { name: p.contactName }) : null, t("vacancies.postedAgo", { when: relativeTime(p.createdAt, locale) })].filter(Boolean).join(" · ")} right={<Pill label={open ? t("vacancies.openBadge") : t("vacancies.closedBadge")} tone={open ? "ok" : "muted"} />} onPress={() => openWeb(`/vacancies/${p.id}`)} />
+      <Row title={p.title} caption={[typeLabel(t, p.employmentType), enquiries, p.contactName ? t("vacancies.contactCell", { name: p.contactName }) : null, t("vacancies.postedAgo", { when: relativeTime(p.createdAt, locale) })].filter(Boolean).join(" · ")} right={<Pill label={open ? t("vacancies.openBadge") : t("vacancies.closedBadge")} tone={open ? "ok" : "muted"} />} onPress={toPosting} />
       <View style={{ flexDirection: "row", gap: th.space[2], flexWrap: "wrap" }}>
         {/* The count is the door to the enquiries, not a caption — as on the web. */}
-        {p.enquiryCount > 0 ? <Button label={enquiries} variant="ghost" onPress={() => openWeb(`/vacancies/${p.id}#enquiries`)} /> : null}
+        {p.enquiryCount > 0 ? <Button label={enquiries} variant="ghost" onPress={toPosting} /> : null}
         {open ? (
           confirming ? (
             <>

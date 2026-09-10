@@ -1,7 +1,7 @@
 import "server-only";
 import type { ActiveContext } from "@/lib/session";
 import type { OperatorOverviewQuery } from "@edulink/contracts";
-import { listAppAdmins, listExpertsForCuration, listSchools, listServerAudit } from "@/lib/superuser";
+import { listAppAdmins, listExpertsForCuration, listSchools } from "@/lib/superuser";
 import { jobStatuses } from "@/lib/jobs";
 import { listPlatformCompetitions } from "@/lib/app-admin";
 
@@ -19,7 +19,6 @@ import { listPlatformCompetitions } from "@/lib/app-admin";
 
 const iso = (d: Date) => d.toISOString();
 const isoOrNull = (d: Date | null | undefined) => (d ? d.toISOString() : null);
-const text = (v: unknown): string | null => (typeof v === "string" && v.trim() ? v : null);
 
 /* -------------------------------------------------------------------------- */
 /* /root                                                                       */
@@ -67,23 +66,6 @@ export async function operatorOverview(ctx: ActiveContext, query: OperatorOvervi
       overdue: j.overdue,
       lastFailed: j.lastFailed,
       running: j.running,
-    })),
-  };
-}
-
-/** The server log's first page: what listServerAudit gives, with the row's meta folded into one line. */
-export async function operatorAudit(ctx: ActiveContext, limit: number) {
-  const page = await listServerAudit(ctx, { take: limit });
-  return {
-    items: page.rows.map((row) => ({
-      id: row.id,
-      at: iso(row.at),
-      action: row.action,
-      actorName: row.actorName,
-      system: row.actorUserId === null,
-      schoolName: text(row.meta.name),
-      ip: row.ip,
-      summary: [text(row.meta.email), text(row.meta.role), text(row.meta.reason)].filter((s): s is string => s !== null).join(" · ") || null,
     })),
   };
 }

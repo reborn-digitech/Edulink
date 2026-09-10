@@ -10,7 +10,7 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
-import { Chips, openWeb } from "../staff/shared";
+import { Chips } from "../staff/shared";
 import { formatInstant, Pill } from "../family/shared";
 
 type ArchivePage = z.infer<typeof archivePageSchema>;
@@ -32,7 +32,7 @@ function percent(present: number, marked: number): string {
  * one picked, and what it left behind as this role may see it — a pupil's
  * own year (or a guardian's child's), a teacher's classes, the school's
  * numbers. Nothing here changes again, so the page is a reader: a report
- * card opens on the web, where it is printed.
+ * card opens in the app's own report-card view (Exams, given its id).
  */
 export function Archive() {
   const t = useT();
@@ -95,6 +95,7 @@ function Figures({ children }: { children: ReactNode }) {
 
 function PupilYear({ data, when }: { data: NonNullable<NonNullable<ArchivePage["selected"]>["pupil"]>; when: (iso: string) => string }) {
   const t = useT();
+  const router = useRouter();
   return (
     <>
       <Figures>
@@ -109,7 +110,7 @@ function PupilYear({ data, when }: { data: NonNullable<NonNullable<ArchivePage["
             {t("archive.noReportCards")}
           </Text>
         ) : (
-          data.reportCards.map((card) => <Row key={card.id} title={card.title} caption={[card.className, card.publishedAt ? when(card.publishedAt) : null].filter(Boolean).join(" · ")} onPress={() => openWeb(`/report-cards/${card.id}`)} />)
+          data.reportCards.map((card) => <Row key={card.id} title={card.title} caption={[card.className, card.publishedAt ? when(card.publishedAt) : null].filter(Boolean).join(" · ")} onPress={() => router.push({ pathname: "/(app)/exams", params: { cardId: card.id } } as never)} />)
         )}
       </Card>
       <Card title={t("archive.attendance")}>

@@ -7,7 +7,7 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
-import { Chips, DEFAULT_SPAN, formatDateKey, openWeb, pct, WindowPicker, type Span } from "./shared";
+import { Chips, DEFAULT_SPAN, formatDateKey, pct, WindowPicker, type Span } from "./shared";
 
 export type PrincipalSort = "name" | "attendance" | "progress";
 
@@ -19,7 +19,7 @@ export function adminClassesPath(q: string): string {
   return `/api/v1/admin/classes${q ? `?q=${encodeURIComponent(q)}` : ""}`;
 }
 
-/** Classes: the head's insights over a window, or the office's list with leads and sizes. */
+/** Classes: the head's insights over a window, or the office's list with leads and sizes — and its door to a new class. */
 export function StaffClasses() {
   const role = useRole();
   const t = useT();
@@ -116,11 +116,12 @@ function AdminClasses() {
     queryFn: async () => adminClassesSchema.parse(unwrap(await api().get(adminClassesPath(q)))),
   });
   const d = query.data;
+  const newClass = () => router.push("/(app)/class-new" as never);
   const description = d ? [d.activeCount === 1 ? t("classes.activeCountOne") : t("classes.activeCountMany", { count: d.activeCount }), d.archivedCount > 0 ? t("classes.archivedCount", { count: d.archivedCount }) : null].filter(Boolean).join(" · ") : undefined;
   return (
     <Screen title={t("classes.title")} description={description} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       <Field label={t("common.searchLabel")} placeholder={t("classes.searchPlaceholder")} value={typed} onChangeText={setTyped} onSubmitEditing={() => setQ(typed.trim())} returnKeyType="search" autoCapitalize="none" />
-      <Button label={t("classes.newClass")} variant="secondary" onPress={() => openWeb("/admin/classes/new")} />
+      <Button label={t("classes.newClass")} variant="secondary" onPress={newClass} />
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {d ? (
@@ -128,7 +129,7 @@ function AdminClasses() {
           q ? (
             <Empty title={t("common.noResultsTitle")} body={t("common.noResultsBody")} action={<Button label={t("common.clearSearch")} variant="secondary" onPress={() => { setTyped(""); setQ(""); }} />} />
           ) : (
-            <Empty title={t("classes.noClassesYet")} body={t("classes.noClassesBody")} action={<Button label={t("classes.createClass")} onPress={() => openWeb("/admin/classes/new")} />} />
+            <Empty title={t("classes.noClassesYet")} body={t("classes.noClassesBody")} action={<Button label={t("classes.createClass")} onPress={newClass} />} />
           )
         ) : (
           <Card title={t("classes.title")}>

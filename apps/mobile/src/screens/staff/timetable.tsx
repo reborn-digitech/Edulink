@@ -10,7 +10,7 @@ import { useLocale, useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { formatTimeRange, weekdayName } from "../family/shared";
-import { addDaysToKey, Chips, formatDateKey, openWeb } from "./shared";
+import { addDaysToKey, Chips, formatDateKey } from "./shared";
 
 type Grid = NonNullable<PrincipalTimetable["grid"]>;
 type Slot = Grid["slots"][number];
@@ -27,7 +27,7 @@ function timetableQuery(classId: string | null, week: string | null): string {
  * Any class's week, read-only — the web's /principal/timetable, which the
  * office reads too: dated, so the uncovered lessons are real ones, with the
  * gaps counted above the grid rather than left to be spotted in forty cells.
- * Building the week (periods, slots) stays the web's editor.
+ * The office builds the week (periods, slots) in the timetable editor.
  */
 export function StaffTimetable() {
   const t = useT();
@@ -47,9 +47,10 @@ export function StaffTimetable() {
   const selected = d ? (d.classes.find((k) => k.id === d.selectedClassId) ?? null) : null;
   const className = (k: { name: string; section: string | null }) => (k.section && !k.name.toLowerCase().includes(k.section.toLowerCase()) ? `${k.name} ${k.section}` : k.name);
   const weekOf = d ? formatDateKey(d.weekOf, locale, { day: "numeric", month: "long" }) : "";
+  const editTimetable = () => router.push({ pathname: "/(app)/timetable-editor", params: d?.selectedClassId ? { classId: d.selectedClassId } : {} } as never);
   return (
     <Screen title={t("principal.classTimetables")} description={t("principal.classTimetablesBody")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
-      {role === "ADMIN" ? <Button label={t("admin.staffingOpenTimetable")} variant="secondary" onPress={() => openWeb("/admin/timetable")} /> : null}
+      {role === "ADMIN" ? <Button label={t("admin.staffingOpenTimetable")} variant="secondary" onPress={editTimetable} /> : null}
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {d ? (
@@ -57,7 +58,7 @@ export function StaffTimetable() {
           <Empty
             title={t("principal.noClasses")}
             body={t("principal.nothingToTimetable")}
-            action={role === "ADMIN" ? <Button label={t("timetable.createClass")} variant="secondary" onPress={() => openWeb("/admin/classes/new")} /> : <Button label={t("nav.classes")} variant="secondary" onPress={() => router.push("/(app)/classes" as never)} />}
+            action={role === "ADMIN" ? <Button label={t("timetable.createClass")} variant="secondary" onPress={() => router.push("/(app)/class-new" as never)} /> : <Button label={t("nav.classes")} variant="secondary" onPress={() => router.push("/(app)/classes" as never)} />}
           />
         ) : (
           <>
@@ -86,7 +87,7 @@ export function StaffTimetable() {
               <Empty
                 title={t("timetable.noTimetableYet")}
                 body={t("timetable.noPeriodsSetUp")}
-                action={role === "ADMIN" ? <Button label={t("admin.staffingOpenTimetable")} variant="secondary" onPress={() => openWeb("/admin/timetable")} /> : <Button label={t("nav.calendar")} variant="secondary" onPress={() => router.push("/(app)/calendar" as never)} />}
+                action={role === "ADMIN" ? <Button label={t("admin.staffingOpenTimetable")} variant="secondary" onPress={editTimetable} /> : <Button label={t("nav.calendar")} variant="secondary" onPress={() => router.push("/(app)/calendar" as never)} />}
               />
             ) : grid.slots.length === 0 ? (
               <Empty

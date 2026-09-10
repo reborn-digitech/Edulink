@@ -29,6 +29,8 @@ const ADMIN = {
   leaderlessCount: 1,
 };
 
+beforeEach(() => mockRouter.push.mockClear());
+
 describe("classes for the office", () => {
   it("for a principal: insights over a window, and the sort asks the API", async () => {
     const gate = gated();
@@ -44,7 +46,7 @@ describe("classes for the office", () => {
     await waitFor(() => expect(calls().some((c) => c.line === "GET /api/v1/staff/principal/classes?days=30&sort=attendance&grade=7")).toBe(true));
   });
 
-  it("for an admin: the list with leads and sizes, and a search on submit", async () => {
+  it("for an admin: the list with leads and sizes, a search on submit, and a new class in the app", async () => {
     const { calls } = await mountStaff(<StaffClasses />, "ADMIN", { "GET /api/v1/admin/classes": () => json(ADMIN) });
     await screen.findByText("ZZ Class B");
     expect(screen.getByText("2 active classes · 1 archived")).toBeTruthy();
@@ -53,12 +55,15 @@ describe("classes for the office", () => {
     await fireEvent.changeText(screen.getByLabelText("Search"), "class b");
     await fireEvent(screen.getByLabelText("Search"), "submitEditing");
     await waitFor(() => expect(calls().some((c) => c.line === "GET /api/v1/admin/classes?q=class%20b")).toBe(true));
+    await fireEvent.press(screen.getByRole("button", { name: "New class" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/class-new");
   });
 
   it("an admin with no classes is offered to create one", async () => {
     await mountStaff(<StaffClasses />, "ADMIN", { "GET /api/v1/admin/classes": () => json({ classes: [], activeCount: 0, archivedCount: 0, leaderlessCount: 0 }) });
     expect(await screen.findByText("No classes yet")).toBeTruthy();
-    expect(screen.getByRole("button", { name: "Create a class" })).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Create a class" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/class-new");
   });
 
   it("a principal with no classes sees the same empty state", async () => {

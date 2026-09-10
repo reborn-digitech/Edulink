@@ -1,8 +1,9 @@
 import { View } from "react-native";
 import { useRouter } from "expo-router";
+import { QUICK } from "@/lib/nav";
 import { useQuery } from "@tanstack/react-query";
 import { familyStudentOverviewSchema } from "@edulink/contracts";
-import { Button, Card, Empty, Failed, Loading, Row, Screen, Stat, Text } from "@/components";
+import { Button, Card, Empty, Failed, Loading, QuickActions, Row, Screen, Stat, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
@@ -42,6 +43,7 @@ export function StudentHome() {
             <Stat label={t("student.streak")} value={streak} tone={streak >= 5 ? "ok" : "fg"} />
             <Stat label={t("student.attendance")} value={d.attendance.percent === null ? "—" : `${d.attendance.percent}%`} tone={d.attendance.percent !== null && d.attendance.percent >= 95 ? "ok" : "fg"} />
           </View>
+          <QuickActions actions={QUICK.STUDENT ?? []} onOpen={(href) => router.push(href as never)} />
           <Text variant="xs" tone="muted">
             {[
               d.todayStatus ? t("student.registerTaken") : t("student.registerNotTakenYet"),

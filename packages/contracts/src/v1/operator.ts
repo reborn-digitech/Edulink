@@ -2,9 +2,11 @@ import { z } from "zod";
 
 /**
  * operator: the server operator's pages (the web's /root) and the content
- * team's (the web's /appadmin) as read-only JSON for the phone. Neither
- * person has a school role, so these are the only endpoints they can reach;
- * every write stays on the web. Dates are ISO strings, ids are strings.
+ * team's (the web's /appadmin) as JSON for the phone. Neither person has a
+ * school role, so these are the only endpoints they can reach. The operator's
+ * writes — a school's details, its admin invitations, removing and restoring
+ * it, the expert queue, the content team — are here too; erasing a school
+ * entirely stays on the web on purpose. Dates are ISO strings, ids strings.
  */
 
 const iso = z.string().datetime();
@@ -65,7 +67,24 @@ export type OperatorOverview = z.infer<typeof operatorOverviewSchema>;
 /* /root/audit — the server log                                            */
 /* ---------------------------------------------------------------------- */
 
-export const operatorAuditQuerySchema = z.object({ limit: z.coerce.number().int().min(1).max(200).default(50) });
+const dayKey = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
+
+/**
+ * The web's /root/audit filters, in the query: an exact action or a family
+ * with a trailing dot ("superuser."), a search over person, school, email and
+ * IP, a UTC date range (both ends inclusive), only accounts that still exist,
+ * and a 1-based page of `limit` rows. `?limit=` alone still means what it did.
+ */
+export const operatorAuditQuerySchema = z.object({
+  limit: z.coerce.number().int().min(1).max(200).default(50),
+  page: z.coerce.number().int().min(1).max(10_000).default(1),
+  action: z.string().trim().max(120).optional(),
+  q: z.string().trim().max(200).optional(),
+  from: dayKey.optional(),
+  to: dayKey.optional(),
+  live: z.enum(["0", "1"]).optional(),
+});
+export type OperatorAuditQuery = z.infer<typeof operatorAuditQuerySchema>;
 
 export const operatorAuditSchema = z.object({
   items: z.array(
@@ -73,6 +92,8 @@ export const operatorAuditSchema = z.object({
       id,
       at: iso,
       action: z.string(),
+      /** A dictionary key (audit.…) naming the action in the reader's language; null for one with no label. */
+      actionKey: z.string().nullable(),
       /** Null for a script with no actor (system) and for an actor whose account is gone. */
       actorName: z.string().nullable(),
       /** True when no account did this — a script or a job. */
@@ -84,6 +105,10 @@ export const operatorAuditSchema = z.object({
       summary: z.string().nullable(),
     }),
   ),
+  /** Every row the filters match, across pages. */
+  total: count,
+  /** Every action present in the server log, for the filter menu. */
+  actions: z.array(z.string()),
 });
 export type OperatorAudit = z.infer<typeof operatorAuditSchema>;
 
@@ -111,6 +136,128 @@ export const operatorExpertsSchema = z.object({
   ),
 });
 export type OperatorExperts = z.infer<typeof operatorExpertsSchema>;
+
+/* ---------------------------------------------------------------------- */
+/* /root/[schoolId] — one school: details, invitations, removal            */
+/* ---------------------------------------------------------------------- */
+
+const optionalText = (max: number) => z.string().trim().max(max).nullable().optional();
+
+/**
+ * The web's school form (root/school-form.tsx): creating and correcting are
+ * the same fields. The lib is the gate for what a sentence can say better —
+ * a name under two letters, an empty contact email, a lowest grade above the
+ * highest — so those arrive as 422 with its words, not as a bare "check the form".
+ */
+export const operatorSchoolDetailsBodySchema = z.object({
+  name: z.string().max(200),
+  contactEmail: z.string().trim().max(320),
+  contactPhone: optionalText(40),
+  website: optionalText(300),
+  addressLine: optionalText(300),
+  city: optionalText(120),
+  region: optionalText(120),
+  postalCode: optionalText(20),
+  country: optionalText(120),
+  gradeLow: optionalText(20),
+  gradeHigh: optionalText(20),
+  /** An IANA zone; every attendance date is resolved against it. */
+  timezone: z.string().trim().min(1).max(64),
+});
+export type OperatorSchoolDetailsBody = z.infer<typeof operatorSchoolDetailsBodySchema>;
+
+/** A correction sends only what it changes — updateSchool takes a partial. */
+export const operatorSchoolUpdateBodySchema = operatorSchoolDetailsBodySchema.partial();
+export type OperatorSchoolUpdateBody = z.infer<typeof operatorSchoolUpdateBodySchema>;
+
+export const operatorSchoolCreatedSchema = z.object({ ok: z.literal(true), schoolId: id, code: z.string() });
+export type OperatorSchoolCreated = z.infer<typeof operatorSchoolCreatedSchema>;
+
+export const operatorSchoolDetailSchema = z.object({
+  school: z.object({
+    id,
+    name: z.string(),
+    code: z.string(),
+    contactEmail: z.string(),
+    contactPhone: z.string().nullable(),
+    website: z.string().nullable(),
+    addressLine: z.string().nullable(),
+    city: z.string().nullable(),
+    region: z.string().nullable(),
+    postalCode: z.string().nullable(),
+    country: z.string().nullable(),
+    gradeLow: z.string().nullable(),
+    gradeHigh: z.string().nullable(),
+    timezone: z.string(),
+    createdAt: iso,
+    removedAt: isoOrNull,
+  }),
+  /** Its administrator and principal invitations, newest first, at most 50. */
+  invites: z.array(
+    z.object({
+      id,
+      email: z.string().nullable(),
+      name: z.string().nullable(),
+      /** ADMIN or PRINCIPAL. */
+      role: z.string(),
+      /** PENDING, ACCEPTED, REVOKED or EXPIRED. */
+      status: z.string(),
+      createdAt: iso,
+      expiresAt: iso,
+    }),
+  ),
+  /** Every time the school has been opened by the operator, newest first — the list the school reads too. */
+  access: z.array(z.object({ id, operatorName: z.string(), reason: z.string(), startedAt: iso, live: z.boolean() })),
+});
+export type OperatorSchoolDetail = z.infer<typeof operatorSchoolDetailSchema>;
+
+/**
+ * Removal asks for the school's exact name, and the name travels with the
+ * request so the server checks it too: the dialog is a courtesy, the handler
+ * is the gate — a POST is its own entry point.
+ */
+export const operatorSchoolRemoveBodySchema = z.object({ confirmName: z.string().max(200) });
+export type OperatorSchoolRemoveBody = z.infer<typeof operatorSchoolRemoveBodySchema>;
+
+export const operatorInviteAdminBodySchema = z.object({
+  email: z.string().trim().max(320),
+  name: z.string().trim().max(120).optional(),
+  role: z.enum(["ADMIN", "PRINCIPAL"]).default("ADMIN"),
+});
+export type OperatorInviteAdminBody = z.infer<typeof operatorInviteAdminBodySchema>;
+
+/* ---------------------------------------------------------------------- */
+/* /root/experts — an expert's standing                                    */
+/* ---------------------------------------------------------------------- */
+
+/** Published ("may schools find them") and verified ("has a human checked who they are") travel together, as on the web. */
+export const operatorExpertStandingBodySchema = z.object({ published: z.boolean(), verified: z.boolean() });
+export type OperatorExpertStandingBody = z.infer<typeof operatorExpertStandingBodySchema>;
+
+/* ---------------------------------------------------------------------- */
+/* /root/content-team — who holds the content-team flag                    */
+/* ---------------------------------------------------------------------- */
+
+export const operatorContentTeamSchema = z.object({
+  items: z.array(
+    z.object({
+      id,
+      name: z.string(),
+      email: z.string().nullable(),
+      /** The account is disabled; the flag is still on it. */
+      disabled: z.boolean(),
+      /** Also runs the server. */
+      isOperator: z.boolean(),
+      /** The person asking. */
+      you: z.boolean(),
+    }),
+  ),
+});
+export type OperatorContentTeam = z.infer<typeof operatorContentTeamSchema>;
+
+/** Appoint by email, to an account that already exists — the person registers first. */
+export const operatorAppointBodySchema = z.object({ email: z.string().trim().max(320) });
+export type OperatorAppointBody = z.infer<typeof operatorAppointBodySchema>;
 
 /* ---------------------------------------------------------------------- */
 /* /appadmin — platform competitions                                       */

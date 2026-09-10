@@ -8,7 +8,7 @@ import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { Chips, openWeb } from "../staff/shared";
+import { Chips } from "../staff/shared";
 import { Pill } from "../family/shared";
 
 /** `?q=&country=&region=` — the server filters, as the web page does from its URL. */
@@ -23,8 +23,8 @@ export function exploreQuery(q: string, country: string, region: string): string
 /**
  * Explore schools — the web's /explore: the directory of schools that have
  * published a profile, narrowed by a search, a country and a state. A school
- * opens on the web, where its profile and the enquiry form live; the
- * enquiries a guardian has already opened are the app's own screen.
+ * opens its profile, where a guardian asks about admission; the enquiries
+ * they have already opened are a tap away.
  */
 export function Explore() {
   const t = useT();
@@ -105,7 +105,7 @@ export function Explore() {
                       {facts.join(" · ")}
                     </Text>
                   ) : null}
-                  <Button label={t("mobile.openOnWeb")} variant="secondary" accessibilityLabel={`${t("mobile.openOnWeb")}: ${school.name}`} onPress={() => openWeb(`/explore/${school.schoolId}`)} />
+                  <Button label={t("vacancies.viewProfile")} variant="secondary" accessibilityLabel={`${t("vacancies.viewProfile")}: ${school.name}`} onPress={() => router.push({ pathname: "/(app)/school", params: { schoolId: school.schoolId } } as never)} />
                 </Card>
               );
             })}

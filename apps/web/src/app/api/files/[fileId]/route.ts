@@ -1,5 +1,6 @@
 import { getSession } from "@/lib/session";
-import { authorizeFileRead } from "@/lib/files";
+import { authorizeFileRead, type FileAccess } from "@/lib/files";
+import { verifyFileLink } from "@/lib/file-links";
 import { etagFor, readStoredFile, readStoredVariant, VARIANT_WIDTHS, type VariantWidth } from "@/lib/storage";
 
 /**
@@ -20,16 +21,24 @@ export async function GET(
 ) {
   const { fileId } = await params;
 
+  const url = new URL(request.url);
+
+  // ?t= is a five-minute link made by POST /api/v1/files/{id}/link, which ran
+  // the read rule below for the person who asked (see lib/file-links.ts). It
+  // opens this one file, privately cached, and nothing else.
+  const linked = verifyFileLink(fileId, url.searchParams.get("t"));
+
   // A logo is public, so the session is only fetched when it might be needed —
   // authorizeFileRead checks the logo case before anything else.
-  const session = await getSession();
-  const access = await authorizeFileRead(fileId, session);
+  const access: FileAccess = linked
+    ? { allowed: true, kind: "submission", public: false }
+    : await authorizeFileRead(fileId, await getSession());
 
   if (!access.allowed) return new Response("Not found", { status: 404 });
 
   // ?w=640 asks for a sized copy — the feed's tiles, which used to download
   // every phone photo at full size. Off the allow-list means the original.
-  const wanted = Number(new URL(request.url).searchParams.get("w"));
+  const wanted = Number(url.searchParams.get("w"));
   const width = (VARIANT_WIDTHS as readonly number[]).includes(wanted) ? (wanted as VariantWidth) : null;
   const stored = width ? await readStoredVariant(fileId, width) : await readStoredFile(fileId);
   if (!stored) return new Response("Not found", { status: 404 });

@@ -9,7 +9,7 @@ import { api, errorText } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { Chips, openWeb } from "../staff/shared";
+import { Chips } from "../staff/shared";
 import { formatInstant, Pill } from "../family/shared";
 
 type Offering = "" | "SESSIONS" | "MENTORING" | "BOTH";
@@ -82,7 +82,7 @@ export function Experts() {
       {live.length > 0 ? (
         <Card title={t("expert.yourBookings")}>
           {live.map((b) => (
-            <Row key={b.id} title={b.expertName} caption={`${b.topic} · ${when(b.startsAt)}`} right={b.unread > 0 ? <Pill tone="accent" label={t("expert.newCount", { count: b.unread })} /> : null} onPress={() => openWeb(`/experts/bookings/${b.id}`)} />
+            <Row key={b.id} title={b.expertName} caption={`${b.topic} · ${when(b.startsAt)}`} right={b.unread > 0 ? <Pill tone="accent" label={t("expert.newCount", { count: b.unread })} /> : null} onPress={() => router.push({ pathname: "/(app)/booking", params: { bookingId: b.id } } as never)} />
           ))}
         </Card>
       ) : null}

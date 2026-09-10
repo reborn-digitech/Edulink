@@ -1,8 +1,6 @@
-import { Linking } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { setPracticeSchema, staffPracticeSchema } from "@edulink/contracts";
 import { TeacherPractice } from "@/screens/teacher/practice";
-import { API_BASE } from "@/lib/api";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 import { ID } from "./teacher-support";
 
@@ -104,15 +102,13 @@ describe("the teacher's practice insights", () => {
     await fireEvent.press(screen.getByRole("button", { name: "Messages" }));
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/messages");
 
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
     await mountStaff(<TeacherPractice />, "TEACHER", { "GET /api/v1/staff/practice": () => json({ ...PRACTICE, assignments: [], topicOptions: [] }) });
     await screen.findByText("You have not set a chapter for this class yet.");
     await fireEvent.press(screen.getAllByRole("button", { name: "Worksheets" })[0]!);
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/teacher/worksheets`);
-    // With no chapters to offer, setting one is the web's form.
-    await fireEvent.press(screen.getByRole("button", { name: "Open on the web" }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/teacher/practice`);
-    open.mockRestore();
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/worksheets");
+    // With no chapters in the bank there is nothing to set, and the screen says so instead of sending the teacher to the web.
+    expect(screen.getByText("The practice bank has no chapters for this class yet.")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Open on the web" })).toBeNull();
   });
 
   it("a refusal is an alert with a retry", async () => {

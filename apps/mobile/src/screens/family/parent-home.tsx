@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { QUICK } from "@/lib/nav";
 import { Linking, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 import type { z } from "zod";
 import { familyChildrenSchema, familyParentOverviewSchema } from "@edulink/contracts";
-import { Button, Card, Empty, Failed, Loading, Row, Screen, Stat, Text } from "@/components";
+import { Button, Card, Empty, Failed, Loading, QuickActions, Row, Screen, Stat, Text } from "@/components";
 import { api, API_BASE } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
@@ -127,6 +128,7 @@ function ChildDay({ data }: { data: Overview }) {
         <Stat label={t("parent.averageGrade")} value={data.averagePercent === null ? "—" : `${data.averagePercent}%`} tone={data.averagePercent === null ? "fg" : data.averagePercent >= 70 ? "ok" : "warn"} />
         <Stat label={t("parent.streak")} value={streak} tone={streak >= 5 ? "ok" : "fg"} />
       </View>
+      <QuickActions actions={QUICK.PARENT ?? []} onOpen={(href) => router.push(href as never)} />
       <Text variant="xs" tone="muted">
         {[
           !attendance || attendance.total === 0 ? t("parent.noRecordsYet") : t("parent.lastFourWeeks"),

@@ -91,6 +91,51 @@ export type PlatformCompetitionInput = {
 };
 
 /**
+ * The "Post a competition" form of the content team's area, read into the
+ * input `createPlatformCompetition` takes: the web's server action and the
+ * phone's POST /api/v1/appadmin/competitions/drafts both come through here, so
+ * the two doors refuse the same things in the same words. A checkbox is "on"
+ * from a web form and `true` from the phone's JSON; empty text is "not given".
+ */
+export function readPlatformCompetitionForm(
+  form: Record<string, unknown>,
+): { ok: true; input: PlatformCompetitionInput } | { ok: false; errorKey: TranslationKey } {
+  const title = String(form.title ?? "").trim();
+  const summary = String(form.summary ?? "").trim();
+  if (title.length < 3) return { ok: false, errorKey: "appadmin.titleTooShort" };
+  if (summary.length < 3) return { ok: false, errorKey: "appadmin.summaryTooShort" };
+  const text = (value: unknown) => String(value ?? "") || null;
+  const checked = (value: unknown) => value === "on" || value === true;
+  return {
+    ok: true,
+    input: {
+      title,
+      summary,
+      body: text(form.body),
+      organizerName: text(form.organizerName),
+      subject: text(form.subject),
+      gradeLow: text(form.gradeLow),
+      gradeHigh: text(form.gradeHigh),
+      eligibility: text(form.eligibility),
+      rules: text(form.rules),
+      prizes: text(form.prizes),
+      externalUrl: text(form.externalUrl),
+      registrationClosesAt: parseFormDate(form.registrationClosesAt),
+      startsAt: parseFormDate(form.startsAt),
+      endsAt: parseFormDate(form.endsAt),
+      requiresParentConsent: checked(form.requiresParentConsent),
+      leaderboardEnabled: checked(form.leaderboardEnabled),
+    },
+  };
+}
+
+function parseFormDate(value: unknown): Date | null {
+  if (typeof value !== "string" || !value.trim()) return null;
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+/**
  * Posts a competition for every school.
  *
  * DRAFT first, like the school path — publishing puts this in front of every

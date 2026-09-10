@@ -1,18 +1,22 @@
 import { useState } from "react";
 import { Linking, View } from "react-native";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { competitionDetailSchema, competitionEnterResultSchema, okSchema } from "@edulink/contracts";
-import { Button, Card, Failed, Loading, Row, Screen, Text } from "@/components";
+import { competitionDetailSchema, competitionEnterResultSchema, contestStatusSetSchema, okSchema } from "@edulink/contracts";
+import { Button, Card, Failed, Field, Loading, Row, Screen, Text, useToast } from "@/components";
 import { api, errorText } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
-import { openWeb } from "../staff/shared";
+import { must, Refusal } from "../staff/shared";
 import { formatInstant, formatMilli, Note, param, Pill } from "../family/shared";
 
 const DATE: Intl.DateTimeFormatOptions = { day: "numeric", month: "short", year: "numeric" };
+
+type Status = "PUBLISHED" | "ARCHIVED" | "DRAFT";
+/** The far-reaching press waiting on its second tap: withdrawing, a guardian's no, publishing or withdrawing the competition. */
+type Confirming = { kind: "withdraw" } | { kind: "decline"; entryId: string } | { kind: "status"; next: Status } | null;
 
 /** "3rd" — an English value, like a date; the label around it is what translates. */
 export function ordinal(n: number): string {
@@ -24,9 +28,11 @@ export function ordinal(n: number): string {
 
 /**
  * One competition, the web's /competitions/[competitionId]: what the reader
- * can do about it first (a pupil enters, a guardian says yes), then the
- * dates, the brief, the schools' board and the rules. Handing work in,
- * withdrawing and organising are the web's forms and open there.
+ * can do about it first — a pupil enters, hands in the link to their work,
+ * changes it or withdraws; a guardian says yes or "Not this time"; the
+ * organising school's admin publishes or withdraws it; staff go to their
+ * school's entries — then the dates, the brief, the schools' board and the
+ * rules. Withdrawing, a guardian's no and publishing ask twice.
  */
 export function CompetitionDetail() {
   const params = useLocalSearchParams<{ competitionId?: string }>();
@@ -34,9 +40,12 @@ export function CompetitionDetail() {
   const t = useT();
   const th = useTheme();
   const role = useRole();
+  const router = useRouter();
+  const toast = useToast();
   const qc = useQueryClient();
   const { locale } = useLocale();
   const [note, setNote] = useState<string | null>(null);
+  const [confirming, setConfirming] = useState<Confirming>(null);
 
   const query = useQuery({
     queryKey: ["shared", "competitions", competitionId],
@@ -45,6 +54,7 @@ export function CompetitionDetail() {
   });
   const refresh = () => {
     void qc.invalidateQueries({ queryKey: ["shared", "competitions"] });
+    void qc.invalidateQueries({ queryKey: ["contest"] });
   };
   const enter = useMutation({
     mutationFn: async () => {
@@ -69,6 +79,24 @@ export function CompetitionDetail() {
       refresh();
     },
   });
+  /** The pupil withdrawing (childName null) and a guardian's "Not this time" are the same DELETE: the entry goes, and the child may ask again. */
+  const withdraw = useMutation({
+    mutationFn: async ({ entryId }: { entryId: string; childName: string | null }) => okSchema.parse(must(await api().request("DELETE", `/api/v1/contest/entries/${entryId}`), t("competitions.thatDidNotGo"))),
+    onSuccess: (_res, { childName }) => {
+      setConfirming(null);
+      setNote(null);
+      toast.show(childName ? t("competitions.childTakenOut", { child: childName, title: query.data?.title ?? "" }) : t("competitions.withdrawnDot"));
+      refresh();
+    },
+  });
+  const status = useMutation({
+    mutationFn: async (next: Status) => contestStatusSetSchema.parse(must(await api().post(`/api/v1/contest/competitions/${competitionId}/status`, { status: next }), t("competitions.thatDidNotGo"))),
+    onSuccess: (res) => {
+      setConfirming(null);
+      toast.show(res.status === "PUBLISHED" ? t("competitions.publishedMsg") : res.status === "ARCHIVED" ? t("competitions.withdrawnFromList") : t("competitions.backToADraft"));
+      refresh();
+    },
+  });
 
   const c = query.data;
   if (!competitionId) {
@@ -86,6 +114,10 @@ export function CompetitionDetail() {
   const external = c?.externalUrl ?? null;
   const hasActions = Boolean(c && (role === "STUDENT" || role === "PARENT" || c.isOrganiser || staff || external));
   const retryConsent = consent.variables;
+  const retryWithdraw = withdraw.variables;
+  const retryStatus = status.variables;
+  const next = confirming?.kind === "status" ? confirming.next : null;
+  const withdrawFailed = withdraw.isError ? <Failed message={withdraw.error.message} onRetry={retryWithdraw ? () => withdraw.mutate(retryWithdraw) : undefined} /> : null;
   const entryPill = (awaiting: boolean) => <Pill tone={awaiting ? "warn" : "ok"} label={awaiting ? t("competitions.waitingForGrownUp") : t("competitions.youAreEntered")} />;
   const result = (scoreMilli: number | null, rank: number | null) =>
     scoreMilli === null && rank === null ? null : <Pill tone="ok" label={[rank !== null ? t("competitions.placeLabel", { n: ordinal(rank) }) : null, scoreMilli !== null ? t("competitions.pointsLabel", { n: formatMilli(scoreMilli) }) : null].filter(Boolean).join(" · ")} />;
@@ -111,84 +143,122 @@ export function CompetitionDetail() {
             </Note>
           ) : null}
           {hasActions ? (
-          <Card>
-            {role === "STUDENT" ? (
-              c.entry ? (
+            <Card>
+              {role === "STUDENT" ? (
+                c.entry ? (
+                  <>
+                    {entryPill(c.entry.awaitingConsent)}
+                    {result(c.entry.scoreMilli, c.entry.rank)}
+                    {!c.entry.awaitingConsent && c.acceptingWork ? (
+                      <HandIn key={c.entry.submissionUrl ?? ""} competitionId={competitionId} existingUrl={c.entry.submissionUrl} onDone={refresh} />
+                    ) : (
+                      <Text variant="sm" tone="muted">
+                        {c.entry.awaitingConsent ? t("competitions.handInOnceYes") : t("competitions.finished")}
+                      </Text>
+                    )}
+                    {withdrawFailed}
+                    {confirming?.kind === "withdraw" ? (
+                      <Confirm sentence={t("competitions.canAskAgain")} label={t("competitions.withdraw")} danger busy={withdraw.isPending} onConfirm={() => withdraw.mutate({ entryId: c.entry!.id, childName: null })} onCancel={() => setConfirming(null)} />
+                    ) : (
+                      <Button label={t("competitions.withdraw")} variant="ghost" onPress={() => setConfirming({ kind: "withdraw" })} style={{ alignSelf: "flex-start" }} />
+                    )}
+                  </>
+                ) : c.open ? (
+                  <>
+                    {enter.isError ? <Failed message={enter.error.message} onRetry={() => enter.mutate()} /> : null}
+                    <Button label={t("competitions.enterThis")} onPress={() => enter.mutate()} busy={enter.isPending} />
+                    {c.requiresParentConsent ? (
+                      <Text variant="sm" tone="muted">
+                        {t("competitions.grownUpAskedFirst")}
+                      </Text>
+                    ) : null}
+                  </>
+                ) : (
+                  <Text variant="sm" tone="muted">
+                    {t("competitions.entriesClosed")}
+                  </Text>
+                )
+              ) : null}
+              {role === "PARENT" ? (
+                c.waiting.length > 0 ? (
+                  <>
+                    {consent.isError ? <Failed message={consent.error.message} onRetry={retryConsent ? () => consent.mutate(retryConsent) : undefined} /> : null}
+                    {withdrawFailed}
+                    {c.waiting.map((item) => (
+                      <View key={item.entryId} style={{ gap: th.space[2] }}>
+                        <Text variant="base">{t("competitions.wouldLikeToTakePart", { child: item.childName })}</Text>
+                        <Text variant="xs" tone="muted">
+                          {t("competitions.cannotUntilYes")}
+                        </Text>
+                        {confirming?.kind === "decline" && confirming.entryId === item.entryId ? (
+                          <Confirm
+                            sentence={t("competitions.declineConfirm", { child: item.childName, title: c.title })}
+                            label={t("competitions.notThisTime")}
+                            accessibilityLabel={`${t("competitions.notThisTime")}: ${item.childName}`}
+                            danger
+                            busy={withdraw.isPending}
+                            onConfirm={() => withdraw.mutate({ entryId: item.entryId, childName: item.childName })}
+                            onCancel={() => setConfirming(null)}
+                          />
+                        ) : (
+                          <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+                            <Button label={t("competitions.allow")} onPress={() => consent.mutate({ entryId: item.entryId, childName: item.childName })} busy={consent.isPending} />
+                            <Button label={t("competitions.notThisTime")} variant="secondary" onPress={() => setConfirming({ kind: "decline", entryId: item.entryId })} />
+                          </View>
+                        )}
+                      </View>
+                    ))}
+                  </>
+                ) : c.entry ? (
+                  <>
+                    {entryPill(c.entry.awaitingConsent)}
+                    {result(c.entry.scoreMilli, c.entry.rank)}
+                  </>
+                ) : (
+                  <Text variant="sm" tone="muted">
+                    {t("competitions.noChildAsked")}
+                  </Text>
+                )
+              ) : null}
+              {c.isOrganiser ? (
                 <>
-                  {entryPill(c.entry.awaitingConsent)}
-                  {result(c.entry.scoreMilli, c.entry.rank)}
-                  {!c.entry.awaitingConsent && c.acceptingWork ? (
-                    <Button label={c.entry.submissionUrl ? t("competitions.changeIt") : t("competitions.handItIn")} variant="secondary" onPress={() => openWeb(`/competitions/${competitionId}`)} />
-                  ) : (
-                    <Text variant="sm" tone="muted">
-                      {c.entry.awaitingConsent ? t("competitions.handInOnceYes") : t("competitions.finished")}
-                    </Text>
-                  )}
-                  <Button label={t("competitions.withdraw")} variant="ghost" onPress={() => openWeb(`/competitions/${competitionId}`)} />
-                </>
-              ) : c.open ? (
-                <>
-                  {enter.isError ? <Failed message={enter.error.message} onRetry={() => enter.mutate()} /> : null}
-                  <Button label={t("competitions.enterThis")} onPress={() => enter.mutate()} busy={enter.isPending} />
-                  {c.requiresParentConsent ? (
-                    <Text variant="sm" tone="muted">
-                      {t("competitions.grownUpAskedFirst")}
-                    </Text>
+                  <Text variant="sm" tone="muted">
+                    {t("competitions.yourSchoolOrganising")}
+                    {c.status === "DRAFT" ? ` ${t("competitions.nobodyElseSeesYet")}` : ""}
+                  </Text>
+                  {role === "ADMIN" ? (
+                    <>
+                      {status.isError ? <Failed message={status.error.message} onRetry={retryStatus ? () => status.mutate(retryStatus) : undefined} /> : null}
+                      {next ? (
+                        <Confirm
+                          sentence={next === "PUBLISHED" ? t("competitions.postIntro") : c.enteredCount === 0 ? null : c.enteredCount === 1 ? t("competitions.withdrawKeepsOne") : t("competitions.withdrawKeepsMany", { count: c.enteredCount })}
+                          label={next === "PUBLISHED" ? t("competitions.publishIt") : t("competitions.withdrawIt")}
+                          danger={next === "ARCHIVED"}
+                          busy={status.isPending}
+                          onConfirm={() => status.mutate(next)}
+                          onCancel={() => setConfirming(null)}
+                        />
+                      ) : (
+                        <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+                          {c.status !== "PUBLISHED" ? <Button label={t("competitions.publishIt")} onPress={() => setConfirming({ kind: "status", next: "PUBLISHED" })} /> : null}
+                          {c.status === "PUBLISHED" ? <Button label={t("competitions.withdrawIt")} variant="secondary" onPress={() => setConfirming({ kind: "status", next: "ARCHIVED" })} /> : null}
+                          {c.status === "ARCHIVED" ? <Button label={t("competitions.backToDraft")} variant="ghost" busy={status.isPending} onPress={() => status.mutate("DRAFT")} /> : null}
+                        </View>
+                      )}
+                    </>
                   ) : null}
                 </>
-              ) : (
-                <Text variant="sm" tone="muted">
-                  {t("competitions.entriesClosed")}
-                </Text>
-              )
-            ) : null}
-            {role === "PARENT" ? (
-              c.waiting.length > 0 ? (
+              ) : null}
+              {staff ? (
                 <>
-                  {consent.isError ? <Failed message={consent.error.message} onRetry={retryConsent ? () => consent.mutate(retryConsent) : undefined} /> : null}
-                  {c.waiting.map((item) => (
-                    <View key={item.entryId} style={{ gap: th.space[2] }}>
-                      <Text variant="base">{t("competitions.wouldLikeToTakePart", { child: item.childName })}</Text>
-                      <Text variant="xs" tone="muted">
-                        {t("competitions.cannotUntilYes")}
-                      </Text>
-                      <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
-                        <Button label={t("competitions.allow")} onPress={() => consent.mutate({ entryId: item.entryId, childName: item.childName })} busy={consent.isPending} />
-                        <Button label={t("competitions.notThisTime")} variant="secondary" onPress={() => openWeb(`/competitions/${competitionId}`)} />
-                      </View>
-                    </View>
-                  ))}
+                  <Button label={t("competitions.entriesAndResultsLink")} variant="secondary" onPress={() => router.push({ pathname: "/(app)/competition-entries", params: { competitionId } } as never)} />
+                  <Text variant="sm" tone="muted">
+                    {c.enteredCount === 0 ? t("competitions.noPupilsYet") : c.enteredCount === 1 ? t("competitions.pupilsTakingPartOne") : t("competitions.pupilsTakingPartMany", { count: c.enteredCount })}
+                  </Text>
                 </>
-              ) : c.entry ? (
-                <>
-                  {entryPill(c.entry.awaitingConsent)}
-                  {result(c.entry.scoreMilli, c.entry.rank)}
-                </>
-              ) : (
-                <Text variant="sm" tone="muted">
-                  {t("competitions.noChildAsked")}
-                </Text>
-              )
-            ) : null}
-            {c.isOrganiser ? (
-              <>
-                <Text variant="sm" tone="muted">
-                  {t("competitions.yourSchoolOrganising")}
-                  {c.status === "DRAFT" ? ` ${t("competitions.nobodyElseSeesYet")}` : ""}
-                </Text>
-                <Button label={c.status === "PUBLISHED" ? t("competitions.withdrawIt") : t("competitions.publishIt")} variant="secondary" onPress={() => openWeb(`/competitions/${competitionId}`)} />
-              </>
-            ) : null}
-            {staff ? (
-              <>
-                <Button label={t("competitions.entriesAndResultsLink")} variant="secondary" onPress={() => openWeb(`/competitions/${competitionId}/entries`)} />
-                <Text variant="sm" tone="muted">
-                  {c.enteredCount === 0 ? t("competitions.noPupilsYet") : c.enteredCount === 1 ? t("competitions.pupilsTakingPartOne") : t("competitions.pupilsTakingPartMany", { count: c.enteredCount })}
-                </Text>
-              </>
-            ) : null}
-            {external ? <Button label={t("competitions.organiserPage")} variant="secondary" onPress={() => void Linking.openURL(external)} /> : null}
-          </Card>
+              ) : null}
+              {external ? <Button label={t("competitions.organiserPage")} variant="secondary" onPress={() => void Linking.openURL(external)} /> : null}
+            </Card>
           ) : null}
           {closes || starts || ends ? (
             <Card title={t("competitions.dates")}>
@@ -247,5 +317,66 @@ export function CompetitionDetail() {
         </>
       ) : null}
     </Screen>
+  );
+}
+
+/**
+ * The pupil's hand-in: the link to their work, https only. A LINK, not a
+ * file — the submit endpoint holds `submissionUrl` and nothing else, because
+ * competition work goes to the organiser's own site and a child's work stored
+ * here for somebody who cannot read it would be worse than useless. Keyed by
+ * the saved link, so a change that lands starts it again from the server's.
+ */
+function HandIn({ competitionId, existingUrl, onDone }: { competitionId: string; existingUrl: string | null; onDone: () => void }) {
+  const t = useT();
+  const th = useTheme();
+  const toast = useToast();
+  const [url, setUrl] = useState(existingUrl ?? "");
+  const submit = useMutation({
+    mutationFn: async (value: string) => okSchema.parse(must(await api().post(`/api/v1/contest/competitions/${competitionId}/submit`, { url: value }), t("competitions.thatDidNotGo"))),
+    onSuccess: () => {
+      toast.show(existingUrl ? t("competitions.changed") : t("competitions.handedInToast"));
+      onDone();
+    },
+  });
+  const fieldError = submit.error instanceof Refusal ? (submit.error.issues.url ?? null) : null;
+  const value = url.trim();
+  return (
+    <View style={{ gap: th.space[2] }}>
+      <Field
+        label={existingUrl ? t("competitions.yourEntry") : t("competitions.handInYourEntry")}
+        value={url}
+        onChangeText={setUrl}
+        placeholder={t("competitions.urlPlaceholder")}
+        hint={t("competitions.linkToWork")}
+        error={fieldError}
+        keyboardType="url"
+        autoCapitalize="none"
+        autoCorrect={false}
+        maxLength={500}
+        returnKeyType="send"
+        onSubmitEditing={() => (value && value !== existingUrl ? submit.mutate(value) : undefined)}
+      />
+      {submit.isError && !fieldError ? <Failed message={submit.error.message} onRetry={() => submit.mutate(value)} /> : null}
+      <Button label={existingUrl ? t("competitions.changeIt") : t("competitions.handItIn")} busy={submit.isPending} disabled={value.length === 0 || value === existingUrl} onPress={() => submit.mutate(value)} />
+      <Text variant="xs" tone="muted">
+        {t("competitions.teacherCanSee")}
+      </Text>
+    </View>
+  );
+}
+
+/** The second tap of a far-reaching press: what it will do, then the same verb again, or Cancel. */
+function Confirm({ sentence, label, accessibilityLabel, danger, busy, onConfirm, onCancel }: { sentence: string | null; label: string; accessibilityLabel?: string; danger?: boolean; busy: boolean; onConfirm: () => void; onCancel: () => void }) {
+  const t = useT();
+  const th = useTheme();
+  return (
+    <View style={{ gap: th.space[2] }}>
+      {sentence ? <Text variant="sm">{sentence}</Text> : null}
+      <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+        <Button label={label} {...(accessibilityLabel ? { accessibilityLabel } : {})} variant={danger ? "danger" : "primary"} busy={busy} onPress={onConfirm} style={{ flexGrow: 1 }} />
+        <Button label={t("common.cancel")} variant="ghost" onPress={onCancel} />
+      </View>
+    </View>
   );
 }

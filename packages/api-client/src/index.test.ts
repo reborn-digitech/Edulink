@@ -42,3 +42,21 @@ describe("@edulink/api-client", () => {
     expect(await api.get("/api/v1/x")).toEqual({ ok: false, status: 0, error: "Network request failed", code: "SERVER" });
   });
 });
+
+describe("uploads", () => {
+  it("sends a FormData body untouched, with no JSON content type, and keeps the bearer", async () => {
+    let seen: { headers: Record<string, string>; body: unknown } | null = null;
+    const fetch = (async (_url: string, init: RequestInit) => {
+      seen = { headers: init.headers as Record<string, string>, body: init.body };
+      return new Response(JSON.stringify({ fileId: "f1", mime: "image/png", size: 3 }), { status: 201 });
+    }) as unknown as typeof globalThis.fetch;
+    const client = createApiClient({ baseUrl: "http://api.test", getToken: () => "tok", fetch });
+    const form = new FormData();
+    form.append("file", new Blob(["abc"], { type: "image/png" }), "a.png");
+    const result = await client.post("/api/v1/uploads", form);
+    expect(result).toEqual({ ok: true, data: { fileId: "f1", mime: "image/png", size: 3 } });
+    expect(seen!.body).toBe(form);
+    expect(seen!.headers["Content-Type"]).toBeUndefined();
+    expect(seen!.headers.Authorization).toBe("Bearer tok");
+  });
+});

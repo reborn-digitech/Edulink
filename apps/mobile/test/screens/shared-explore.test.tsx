@@ -1,7 +1,5 @@
-import { Linking } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { Explore } from "@/screens/shared/explore";
-import { API_BASE } from "@/lib/api";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
@@ -18,8 +16,7 @@ const PATH = "GET /api/v1/family/explore";
 describe("explore schools", () => {
   beforeEach(() => mockRouter.push.mockClear());
 
-  it("loads, then lists the schools with where they are and what they offer; a school opens on the web", async () => {
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+  it("loads, then lists the schools with where they are and what they offer; a school opens its profile", async () => {
     const gate = gated();
     await mountStaff(<Explore />, "PARENT", { [PATH]: gate.answer });
     expect(screen.getByRole("progressbar")).toBeTruthy();
@@ -30,9 +27,8 @@ describe("explore schools", () => {
     expect(screen.getByText("Grades 1–10 · 2 open vacancies")).toBeTruthy();
     expect(screen.getByText("ZZ A school on a hill.")).toBeTruthy();
     expect(screen.getByText("Your school")).toBeTruthy();
-    await fireEvent.press(screen.getByRole("button", { name: "Open on the web: ZZ Hillside" }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/explore/s9`);
-    open.mockRestore();
+    await fireEvent.press(screen.getByRole("button", { name: "View school profile: ZZ Hillside" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/school", params: { schoolId: "s9" } });
   });
 
   it("a country, then its state, then another country (the state dropped) and a search each ask the API", async () => {

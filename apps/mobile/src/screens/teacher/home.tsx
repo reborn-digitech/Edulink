@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
+import { QUICK } from "@/lib/nav";
 import { staffTodaySchema } from "@edulink/contracts";
-import { Button, Card, Empty, Failed, Loading, Row, Screen, Stat, Text } from "@/components";
+import { Button, Card, Empty, Failed, Loading, QuickActions, Row, Screen, Stat, Text } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
@@ -52,6 +53,7 @@ export function TeacherHome() {
             <Stat label={t("teacher.acrossTheWeek")} value={data.lessons.classesTaughtThisWeek} />
             {data.lessons.coveringToday > 0 ? <Stat label={t("teacher.covering")} value={data.lessons.coveringToday} tone="accent" /> : null}
           </View>
+          <QuickActions actions={QUICK.TEACHER ?? []} onOpen={(href) => router.push(href as never)} />
 
           {form ? (
             <Card title={t("teacher.registers")}>

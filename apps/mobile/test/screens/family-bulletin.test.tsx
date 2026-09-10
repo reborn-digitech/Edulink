@@ -1,5 +1,5 @@
 import { screen, waitFor } from "@testing-library/react-native";
-import { bodyOf, calls, ID, ME_STUDENT, pending, refused, renderFamily, press } from "./family-helpers";
+import { bodyOf, calls, ID, ME_PARENT, ME_STUDENT, mockRouter, pending, refused, renderFamily, press } from "./family-helpers";
 import { FamilyBulletin } from "@/screens/family/bulletin";
 
 jest.mock("expo-image", () => {
@@ -58,6 +58,30 @@ const GLOBAL_POST = {
 };
 
 describe("the bulletin", () => {
+  beforeEach(() => mockRouter.push.mockClear());
+
+  it("a post opens whole from its title or its comments; a pupil's new-post button is the app's composer", async () => {
+    await renderFamily(<FamilyBulletin />, ME_STUDENT, { [PATH]: () => page([POST], null) });
+    await press(await screen.findByRole("button", { name: "ZZ Sports day" }));
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/post", params: { postId: ID.post } });
+    await press(screen.getByRole("button", { name: "Comments (2)" }));
+    expect(mockRouter.push).toHaveBeenCalledTimes(2);
+    await press(screen.getByRole("button", { name: "Share something" }));
+    expect(mockRouter.push).toHaveBeenLastCalledWith("/(app)/post-new");
+  });
+
+  it("with nothing posted, the door is a new post in the app", async () => {
+    await renderFamily(<FamilyBulletin />, ME_STUDENT, { [PATH]: () => page([], null) });
+    await press(await screen.findByRole("button", { name: "Share something" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/post-new");
+  });
+
+  it("a guardian with no school is sent to link a child, in the app", async () => {
+    await renderFamily(<FamilyBulletin />, ME_PARENT, { [PATH]: () => ({ ...page([], null), schoolId: null, schoolName: null }) });
+    await press(await screen.findByRole("button", { name: "Link another child" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/link-child");
+  });
+
   it("is loading while the feed is on its way", async () => {
     await renderFamily(<FamilyBulletin />, ME_STUDENT, { [PATH]: pending });
     expect(await screen.findByRole("progressbar")).toBeTruthy();

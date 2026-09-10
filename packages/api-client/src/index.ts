@@ -34,14 +34,17 @@ export function createApiClient(options: ApiClientOptions): ApiClient {
     const token = await options.getToken();
     if (token) headers.Authorization = `Bearer ${token}`;
     if (options.getLocale) headers["Accept-Language"] = options.getLocale();
-    if (body !== undefined) headers["Content-Type"] = "application/json";
+    // A FormData body (an upload) goes as it is: fetch writes the multipart
+    // boundary into Content-Type itself, and setting it here would break it.
+    const multipart = typeof FormData !== "undefined" && body instanceof FormData;
+    if (body !== undefined && !multipart) headers["Content-Type"] = "application/json";
 
     let response: Response;
     try {
       response = await doFetch(`${base}${path.startsWith("/") ? path : `/${path}`}`, {
         method,
         headers,
-        body: body === undefined ? undefined : JSON.stringify(body),
+        body: body === undefined ? undefined : multipart ? (body as FormData) : JSON.stringify(body),
       });
     } catch (cause) {
       // Offline, DNS, a dropped connection: the caller gets a shape it can show,

@@ -10,7 +10,7 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
-import { Chips, openWeb } from "../staff/shared";
+import { Chips } from "../staff/shared";
 import { Pill, relativeTime } from "../family/shared";
 
 type Status = "" | "open" | "closed";
@@ -20,7 +20,7 @@ type Enquiry = z.infer<typeof enquiriesPageSchema>["sent"][number];
 /**
  * The enquiries desk, the web's /enquiries, both directions: what you asked
  * a school, and what your school was asked. Opening a new one starts from a
- * school's page in Explore, on the web, as the web's own empty state says.
+ * school's profile in Explore, as the web's own empty state says.
  */
 export function Enquiries() {
   const t = useT();
@@ -64,7 +64,7 @@ export function Enquiries() {
 
   return (
     <Screen title={t("enquiries.title")} description={t("enquiries.intro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
-      {!isStaff ? <Button label={t("nav.explore")} variant="secondary" onPress={() => openWeb("/explore")} /> : null}
+      {!isStaff ? <Button label={t("nav.explore")} variant="secondary" onPress={() => router.push("/(app)/explore" as never)} /> : null}
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {data ? (
@@ -97,7 +97,7 @@ export function Enquiries() {
             <Empty
               title={t("enquiries.emptyTitle")}
               body={isStaff ? t("enquiries.emptyBodyStaff") : t("enquiries.emptyBodyParent")}
-              action={isStaff ? <Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} /> : <Button label={t("nav.explore")} variant="secondary" onPress={() => openWeb("/explore")} />}
+              action={isStaff ? <Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} /> : <Button label={t("nav.explore")} variant="secondary" onPress={() => router.push("/(app)/explore" as never)} />}
             />
           ) : sent.length === 0 && inbox.length === 0 ? (
             <Empty

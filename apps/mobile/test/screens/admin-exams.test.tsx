@@ -1,7 +1,5 @@
-import { Linking } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { AdminExams, PrincipalExams } from "@/screens/staff/exams";
-import { API_BASE } from "@/lib/api";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 
 /** The screen's empty state has a door into the app's own tabs; the router is the harness's, so a test can read where it went. */
@@ -16,6 +14,8 @@ const SHEETS = {
   sheets: [{ id: "s2", name: "ZZ Half-yearly", kind: "MID_TERM", gradeLevel: "6", schoolName: "ZZ School", slots: [{ id: "x2", subject: "ZZ Science", dateKey: "2026-10-05", startMinute: null, endMinute: null, maxMarks: 50 }] }],
   classes: [{ id: "c1", name: "ZZ Class A", publishedCards: 1 }, { id: "c2", name: "ZZ Class B", publishedCards: 0 }],
 };
+
+beforeEach(() => mockRouter.push.mockClear());
 
 describe("the exam office", () => {
   it("loads, then shows each series with its papers and state, and a filter asks the API", async () => {
@@ -37,20 +37,27 @@ describe("the exam office", () => {
     await waitFor(() => expect(calls().some((c) => c.line === "GET /api/v1/admin/exams?state=draft&grade=6")).toBe(true));
   });
 
-  it("publishing asks first, then posts; archiving is the web's", async () => {
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+  it("publishing asks first, then posts", async () => {
     const { calls } = await mountStaff(<AdminExams />, "ADMIN", { "GET /api/v1/admin/exams": () => json(EXAMS), "POST /api/v1/admin/exams/s1/publish": () => json({ ok: true }) });
     await fireEvent.press(await screen.findByRole("button", { name: "Publish" }));
     expect(calls().some((c) => c.line === "POST /api/v1/admin/exams/s1/publish")).toBe(false);
     await fireEvent.press(screen.getByRole("button", { name: "Publish: ZZ Term 1" }));
     await waitFor(() => expect(calls().some((c) => c.line === "POST /api/v1/admin/exams/s1/publish")).toBe(true));
     await waitFor(() => expect(calls().filter((c) => c.line === "GET /api/v1/admin/exams").length).toBe(2));
-    await fireEvent.press(screen.getAllByRole("button", { name: "Archive" })[0]!);
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/admin/exams`);
-    open.mockRestore();
   });
 
-  it("creating a series and adding a paper post the simple bodies", async () => {
+  it("archiving asks first, then sends the series to the archive and says so", async () => {
+    const { calls } = await mountStaff(<AdminExams />, "ADMIN", { "GET /api/v1/admin/exams": () => json(EXAMS), "POST /api/v1/office/exams/s1/archive": () => json({ ok: true }) });
+    await screen.findByText("ZZ Maths");
+    await fireEvent.press(screen.getAllByRole("button", { name: "Archive" })[0]!);
+    expect(calls().some((c) => c.line.endsWith("/archive"))).toBe(false);
+    await fireEvent.press(screen.getByRole("button", { name: "Archive: ZZ Term 1" }));
+    expect(await screen.findByText("ZZ Term 1 archived")).toBeTruthy();
+    expect(calls().some((c) => c.line === "POST /api/v1/office/exams/s1/archive")).toBe(true);
+    await waitFor(() => expect(calls().filter((c) => c.line === "GET /api/v1/admin/exams").length).toBe(2));
+  });
+
+  it("creating a series, and a paper with its times and a closed day allowed, post their bodies", async () => {
     const { calls } = await mountStaff(<AdminExams />, "ADMIN", {
       "GET /api/v1/admin/exams": () => json(EXAMS),
       "POST /api/v1/admin/exams": () => json({ seriesId: "s3" }, 201),
@@ -64,10 +71,25 @@ describe("the exam office", () => {
     await fireEvent.press(screen.getAllByRole("button", { name: "Add a paper" })[0]!);
     await fireEvent.changeText(screen.getByLabelText("Subject"), "ZZ Hindi");
     await fireEvent.changeText(screen.getByLabelText("Day"), "2026-09-22");
+    await fireEvent.changeText(screen.getByLabelText("Starts"), "25:00");
+    expect(screen.getByText("That start time is not a time.")).toBeTruthy();
+    await fireEvent.changeText(screen.getByLabelText("Starts"), "9:30");
+    await fireEvent.changeText(screen.getByLabelText("Ends"), "11:00");
     await fireEvent.changeText(screen.getByLabelText("Out of"), "50");
+    await fireEvent.press(screen.getByRole("checkbox", { name: "Even if the school is closed that day (a Sunday or a holiday)" }));
     await fireEvent.press(screen.getAllByRole("button", { name: "Add a paper" })[0]!);
     await screen.findByText("Add a paper: ZZ Hindi");
-    expect(calls().find((c) => c.line === "POST /api/v1/admin/exams/s1/slots")?.body).toEqual({ subject: "ZZ Hindi", dateKey: "2026-09-22", maxMarks: 50 });
+    expect(calls().find((c) => c.line === "POST /api/v1/admin/exams/s1/slots")?.body).toEqual({ subject: "ZZ Hindi", dateKey: "2026-09-22", maxMarks: 50, startMinute: 570, endMinute: 660, evenIfClosed: true });
+  });
+
+  it("a paper without times posts the simple body", async () => {
+    const { calls } = await mountStaff(<AdminExams />, "ADMIN", { "GET /api/v1/admin/exams": () => json(EXAMS), "POST /api/v1/admin/exams/s1/slots": () => json({ ok: true }, 201) });
+    await fireEvent.press((await screen.findAllByRole("button", { name: "Add a paper" }))[0]!);
+    await fireEvent.changeText(screen.getByLabelText("Subject"), "ZZ Art");
+    await fireEvent.changeText(screen.getByLabelText("Day"), "2026-09-23");
+    await fireEvent.press(screen.getAllByRole("button", { name: "Add a paper" })[0]!);
+    await screen.findByText("Add a paper: ZZ Art");
+    expect(calls().find((c) => c.line === "POST /api/v1/admin/exams/s1/slots")?.body).toEqual({ subject: "ZZ Art", dateKey: "2026-09-23", maxMarks: 80 });
   });
 
   it("a refused publish is said", async () => {
@@ -94,8 +116,7 @@ describe("the exam office", () => {
 });
 
 describe("the head's exams", () => {
-  it("loads, then shows the date sheets and the classes whose cards may be built", async () => {
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+  it("loads, then shows the date sheets; a class opens its report cards", async () => {
     const gate = gated();
     await mountStaff(<PrincipalExams />, "PRINCIPAL", { "GET /api/v1/staff/exams/sheets": gate.answer });
     expect(screen.getByRole("progressbar")).toBeTruthy();
@@ -106,8 +127,7 @@ describe("the head's exams", () => {
     expect(screen.getByLabelText("Report cards: 1")).toBeTruthy();
     await fireEvent.press(screen.getByRole("radio", { name: "Report cards" }));
     await fireEvent.press(await screen.findByRole("button", { name: "ZZ Class A, 1 card issued" }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/teacher/classes/c1/report-cards`);
-    open.mockRestore();
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/report-cards", params: { classId: "c1" } });
   });
 
   it("nothing announced and no classes: each says so, with a door to the classes", async () => {

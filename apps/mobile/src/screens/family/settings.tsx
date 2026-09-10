@@ -1,16 +1,16 @@
 import { useState } from "react";
-import { Switch, View } from "react-native";
+import { View } from "react-native";
 import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { familySettingsSchema, okSchema } from "@edulink/contracts";
 import type { z } from "zod";
-import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text } from "@/components";
+import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, SwitchRow, Text } from "@/components";
 import { api, errorText } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
-import { Note, openWeb, Pill } from "./shared";
+import { Note, Pill } from "./shared";
 
 type Settings = z.infer<typeof familySettingsSchema>;
 const HHMM = /^\d{1,2}:\d{2}$/;
@@ -44,11 +44,11 @@ export function ParentSettings() {
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {d ? (
         d.children.length === 0 ? (
-          <Empty title={t("parent.linkToYourChild")} body={t("parent.linkNeedCode")} action={<Button label={t("parent.linkToMyChild")} onPress={() => openWeb("/parent/link")} />} />
+          <Empty title={t("parent.linkToYourChild")} body={t("parent.linkNeedCode")} action={<Button label={t("parent.linkToMyChild")} onPress={() => router.push("/(app)/link-child" as never)} />} />
         ) : (
           <>
             <NotificationsForm key={`${d.channels.push}:${d.channels.email}:${d.quietHours?.start ?? ""}:${d.quietHours?.end ?? ""}`} initial={d} />
-            <Card title={t("parent.whoYouHearAbout")} action={<Button label={t("parent.linkAnotherShort")} variant="secondary" onPress={() => openWeb("/parent/link")} />}>
+            <Card title={t("parent.whoYouHearAbout")} action={<Button label={t("parent.linkAnotherShort")} variant="secondary" onPress={() => router.push("/(app)/link-child" as never)} />}>
               <Text variant="xs" tone="muted">
                 {d.children.length === 1 ? t("parent.oneChildLinked") : t("parent.childrenLinked", { count: d.children.length })}
               </Text>
@@ -101,19 +101,7 @@ function NotificationsForm({ initial }: { initial: Settings }) {
       setError(e.message);
     },
   });
-  const toggle = (label: string, hint: string, value: boolean, onChange: (next: boolean) => void) => (
-    <View style={{ flexDirection: "row", alignItems: "center", gap: th.space[3], minHeight: th.tap }}>
-      <View style={{ flex: 1, gap: 2 }}>
-        <Text variant="base" bold>
-          {label}
-        </Text>
-        <Text variant="xs" tone="muted">
-          {hint}
-        </Text>
-      </View>
-      <Switch accessibilityLabel={label} value={value} onValueChange={onChange} trackColor={{ true: th.accent, false: th.border }} thumbColor={th.surface} />
-    </View>
-  );
+  const toggle = (label: string, hint: string, value: boolean, onChange: (next: boolean) => void) => <SwitchRow label={label} hint={hint} value={value} onChange={onChange} />;
   return (
     <Card title={t("parent.notifications")}>
       <Text variant="xs" tone="muted">

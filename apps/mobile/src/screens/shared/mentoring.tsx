@@ -10,7 +10,7 @@ import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
-import { Chips, openWeb } from "../staff/shared";
+import { Chips } from "../staff/shared";
 import { Note, Pill, relativeTime } from "../family/shared";
 
 type Status = "" | "ACTIVE" | "REQUESTED" | "CLOSED";
@@ -22,7 +22,7 @@ const STATUS_KEY: Partial<Record<string, TranslationKey>> = { ACTIVE: "mentoring
  * Mentoring, the web's /mentoring, from whichever side you are on: one list
  * for the expert, the pupil, the guardian and the school, filtered by who
  * they are on the server. Pairing a pupil, asking for a mentor and deciding
- * a request are the web's forms; the phone reads, filters and opens a thread.
+ * a request are the set-up screen's; this one reads, filters and opens a thread.
  */
 export function Mentoring() {
   const t = useT();
@@ -42,10 +42,11 @@ export function Mentoring() {
   const isStaff = role === "ADMIN" || role === "TEACHER";
   const reviews = role === "ADMIN" || role === "PRINCIPAL";
   const requests = reviews ? (data?.requests ?? []) : [];
+  const setUp = () => router.push("/(app)/mentoring-setup" as never);
 
   const door = () => {
-    if (role === "STUDENT") return <Button label={t("mentoring.askTitle")} variant="secondary" onPress={() => openWeb("/mentoring")} />;
-    if (isStaff) return <Button label={t("mentoring.setUp")} variant="secondary" onPress={() => openWeb("/mentoring")} />;
+    if (role === "STUDENT") return <Button label={t("mentoring.askTitle")} variant="secondary" onPress={setUp} />;
+    if (isStaff) return <Button label={t("mentoring.setUp")} variant="secondary" onPress={setUp} />;
     if (role === "PARENT") return <Button label={t("nav.experts")} variant="secondary" onPress={() => router.push("/(app)/experts" as never)} />;
     return <Button label={t("nav.messages")} variant="secondary" onPress={() => router.push("/(app)/messages" as never)} />;
   };
@@ -56,8 +57,8 @@ export function Mentoring() {
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {data ? (
         <>
-          {isStaff ? <Button label={t("mentoring.setUp")} variant="secondary" onPress={() => openWeb("/mentoring")} /> : null}
-          {role === "STUDENT" ? <Button label={t("mentoring.askTitle")} variant="secondary" onPress={() => openWeb("/mentoring")} /> : null}
+          {isStaff ? <Button label={t("mentoring.setUp")} variant="secondary" onPress={setUp} /> : null}
+          {role === "STUDENT" ? <Button label={t("mentoring.askTitle")} variant="secondary" onPress={setUp} /> : null}
           {requests.length > 0 ? (
             <Card title={requests.length === 1 ? t("mentoring.askingOne") : t("mentoring.askingMany", { count: requests.length })}>
               <Text variant="xs" tone="muted">
@@ -66,7 +67,7 @@ export function Mentoring() {
               {requests.map((r) => (
                 <Row key={r.threadId} title={`${r.studentName} & ${r.expertName}`} caption={`${r.purpose} · ${t("mentoring.askedAgo", { when: relativeTime(r.askedAt, locale) })}`} right={r.expertVerified ? <Text variant="xs" tone="accent" bold>{t("mentoring.checked")}</Text> : null} />
               ))}
-              <Button label={t("mobile.openOnWeb")} variant="secondary" onPress={() => openWeb("/mentoring")} />
+              <Button label={t("mentoring.reviewRequests")} onPress={setUp} />
             </Card>
           ) : null}
           {role === "PARENT" && waiting > 0 ? (

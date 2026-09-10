@@ -1,24 +1,29 @@
 import { useState } from "react";
-import { View } from "react-native";
+import { Share, View } from "react-native";
 import { useRouter } from "expo-router";
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { adminAttendanceSchema, type AdminAttendance as AdminAttendanceData } from "@edulink/contracts";
-import { Button, Card, Empty, Failed, Icon, Loading, Row, Screen, Stat, Text } from "@/components";
+import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { adminAttendanceSchema, officeAbsenceAlertSchema, officeCsvExportSchema, type AdminAttendance as AdminAttendanceData, type OfficeCsvExport } from "@edulink/contracts";
+import { Button, Card, Empty, Failed, Icon, Loading, Row, Screen, Stat, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
-import { useT } from "@/lib/i18n";
+import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { Chips, openWeb, pct } from "./shared";
+import { Chips, formatDateKey, pct, shiftMonth, thisMonthKey } from "./shared";
 
 type Window = "30" | "60" | "90";
 type Sort = "percent" | "run" | "name";
 
+/** A compliance file to the system share sheet — saved to Files, mailed, or sent on: the same bytes the web downloads. */
+export function shareCsv(file: OfficeCsvExport): void {
+  void Share.share({ title: file.filename, message: file.csv }).catch(() => {});
+}
+
 /**
  * The office's attendance landing — the web's /admin/attendance, read for the
  * child rather than the day: eight weeks of the whole school, the children
- * quietly slipping over the chosen window, and the classes whose register
- * the office may take itself. Telling a family and the statutory exports are
- * the web's: one audited tap per child, and files a phone has nowhere to put.
+ * quietly slipping over the chosen window with the audited "tell the family"
+ * (one tap per child, never twice in a week), the classes whose register the
+ * office may take itself, and the compliance files through the share sheet.
  */
 export function AdminAttendance({ onOpenRegister, onOpenHistory }: { onOpenRegister?: (classId: string) => void; onOpenHistory?: () => void }) {
   const t = useT();
@@ -32,7 +37,7 @@ export function AdminAttendance({ onOpenRegister, onOpenHistory }: { onOpenRegis
     queryFn: async () => adminAttendanceSchema.parse(unwrap(await api().get(`/api/v1/admin/attendance?window=${window}&sort=${sort}`))),
   });
   const d = query.data;
-  const history = onOpenHistory ?? (() => router.push("/(app)/attendance/history" as never));
+  const history = onOpenHistory ?? (() => router.push({ pathname: "/(app)/attendance", params: { view: "history" } } as never));
   const latest = d ? [...d.trend].reverse().find((p) => p.percent !== null) : undefined;
   return (
     <Screen title={t("attendanceIntel.title")} description={t("attendanceIntel.intro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
@@ -101,36 +106,68 @@ export function AdminAttendance({ onOpenRegister, onOpenHistory }: { onOpenRegis
               ))
             )}
           </Card>
-          <Card title={t("attendanceIntel.exportsTitle")}>
-            <Text variant="xs" tone="subtle">
-              {t("attendanceIntel.exportsHint")}
-            </Text>
-            <Button label={t("attendanceIntel.exportRegister")} variant="secondary" onPress={() => openWeb("/admin/attendance")} />
-            <Button label={t("attendanceIntel.exportEnrolment")} variant="secondary" onPress={() => openWeb("/admin/attendance")} />
-          </Card>
+          <Exports classes={d.classes} />
         </>
       ) : null}
     </Screen>
   );
 }
 
-/** One child worth a conversation: the chips the web shows, and the audited "tell the family", which is the web's. */
+/** One child worth a conversation: the chips the web shows, and "tell the family" — one audited tap, and a family told this week is not told again. */
 function FlagRow({ flag }: { flag: AdminAttendanceData["flags"][number] }) {
   const t = useT();
+  const toast = useToast();
+  const qc = useQueryClient();
+  const alert = useMutation({
+    mutationFn: async () => officeAbsenceAlertSchema.parse(unwrap(await api().post("/api/v1/office/attendance/alert", { studentMembershipId: flag.studentMembershipId }))),
+    onSuccess: (r) => {
+      toast.show(r.skipped ? t("attendanceIntel.alreadyNotified") : t("attendanceIntel.notified", { n: r.notified }), r.skipped ? "info" : "ok");
+      void qc.invalidateQueries({ queryKey: ["admin", "safety"] });
+    },
+    onError: (e) => toast.show(e.message, "danger"),
+  });
   const caption = [flag.className, flag.chronic ? t("attendanceIntel.chronicChip", { percent: flag.percent }) : null, flag.consecutive ? t("attendanceIntel.runChip", { n: flag.currentRun }) : null, t("attendanceIntel.marksCount", { n: flag.marks })].filter(Boolean).join(" · ");
+  const label = flag.guardianCount === 0 ? t("attendanceIntel.noGuardians") : t("attendanceIntel.notify");
   return (
     <Row
       title={flag.name}
       caption={caption}
-      right={
-        <Button
-          label={flag.guardianCount === 0 ? t("attendanceIntel.noGuardians") : t("attendanceIntel.notify")}
-          variant="secondary"
-          disabled={flag.guardianCount === 0}
-          accessibilityLabel={`${flag.guardianCount === 0 ? t("attendanceIntel.noGuardians") : t("attendanceIntel.notify")}: ${flag.name}`}
-          onPress={() => openWeb("/admin/attendance")}
-        />
-      }
+      right={<Button label={label} variant="secondary" disabled={flag.guardianCount === 0} busy={alert.isPending} accessibilityLabel={`${label}: ${flag.name}`} onPress={() => alert.mutate()} />}
     />
+  );
+}
+
+/** The two inspection-shaped files: one class's month of attendance, and the enrolment summary. Each is audited on the server. */
+function Exports({ classes }: { classes: { id: string; name: string }[] }) {
+  const t = useT();
+  const toast = useToast();
+  const { locale } = useLocale();
+  const months = [0, -1, -2].map((n) => shiftMonth(thisMonthKey(), n));
+  const [classId, setClassId] = useState(classes[0]?.id ?? "");
+  const [month, setMonth] = useState(months[0]!);
+  const register = useMutation({
+    mutationFn: async (input: { classId: string; month: string }) => officeCsvExportSchema.parse(unwrap(await api().get(`/api/v1/office/attendance/export/register?classId=${encodeURIComponent(input.classId)}&month=${input.month}`))),
+    onSuccess: shareCsv,
+    onError: (e) => toast.show(e.message, "danger"),
+  });
+  const enrolment = useMutation({
+    mutationFn: async () => officeCsvExportSchema.parse(unwrap(await api().get("/api/v1/office/attendance/export/enrolment"))),
+    onSuccess: shareCsv,
+    onError: (e) => toast.show(e.message, "danger"),
+  });
+  return (
+    <Card title={t("attendanceIntel.exportsTitle")}>
+      <Text variant="xs" tone="subtle">
+        {t("attendanceIntel.exportsHint")}
+      </Text>
+      {classes.length > 0 ? (
+        <>
+          <Chips label={t("attendanceHistory.fieldClass")} value={classId} options={classes.map((k) => ({ value: k.id, label: k.name }))} onChange={setClassId} />
+          <Chips label={t("attendanceIntel.fieldMonth")} value={month} options={months.map((m) => ({ value: m, label: formatDateKey(`${m}-01`, locale, { month: "long", year: "numeric" }) }))} onChange={setMonth} />
+          <Button label={t("attendanceIntel.exportRegister")} variant="secondary" busy={register.isPending} disabled={!classId} onPress={() => register.mutate({ classId, month })} />
+        </>
+      ) : null}
+      <Button label={t("attendanceIntel.exportEnrolment")} variant="secondary" busy={enrolment.isPending} onPress={() => enrolment.mutate()} />
+    </Card>
   );
 }

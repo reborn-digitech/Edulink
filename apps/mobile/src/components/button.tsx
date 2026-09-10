@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { ActivityIndicator, Pressable, View, type PressableProps } from "react-native";
 import { useTheme } from "@/lib/theme";
+import { haptics } from "@/lib/haptics";
 import { Text } from "./text";
 
 type Variant = "primary" | "secondary" | "ghost" | "danger";
@@ -23,6 +24,7 @@ export function Button({
   const bg = { primary: t.accent, secondary: t.surfaceMuted, ghost: "transparent", danger: t.dangerSoft }[variant];
   const fg = { primary: t.accentFg, secondary: t.fg, ghost: t.accentStrong, danger: t.danger }[variant];
   const off = disabled || busy;
+  const { onPress, ...pressable } = rest;
   return (
     <Pressable
       accessibilityRole="button"
@@ -35,7 +37,11 @@ export function Button({
         variant === "secondary" ? { borderWidth: 1, borderColor: t.border } : null,
         style,
       ]}
-      {...rest}
+      {...pressable}
+      onPress={(e) => {
+        haptics.tap();
+        onPress?.(e);
+      }}
     >
       {busy ? <ActivityIndicator color={fg} /> : icon ? <View>{icon}</View> : null}
       <Text variant="base" bold style={{ color: fg }}>

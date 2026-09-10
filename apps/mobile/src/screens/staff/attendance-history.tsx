@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { View } from "react-native";
 import { useRouter } from "expo-router";
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { attendanceHistorySchema, type AttendanceHistoryResponse } from "@edulink/contracts";
-import { Button, Card, Empty, Failed, Loading, Row, Screen, Stat, Text } from "@/components";
+import { keepPreviousData, useMutation, useQuery } from "@tanstack/react-query";
+import { attendanceHistorySchema, officeCsvExportSchema, type AttendanceHistoryResponse } from "@edulink/contracts";
+import { Button, Card, Empty, Failed, Loading, Row, Screen, Stat, Text, useToast } from "@/components";
 import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
-import { Chips, formatDateKey, openWeb, pct, shiftMonth, thisMonthKey } from "./shared";
+import { shareCsv } from "./attendance";
+import { Chips, formatDateKey, pct, shiftMonth, thisMonthKey } from "./shared";
 
 type History = NonNullable<AttendanceHistoryResponse["history"]>;
 
@@ -25,7 +26,7 @@ function historyQuery(classId: string | null, month: string | null): string {
  * Past registers, on screen — the web's /attendance/history: one class, one
  * month at a time, the days and then each pupil's month. The office and the
  * head read any class of the school's; a blank is "not marked", never an
- * absence. The CSV is the web's — a phone has nowhere to put a file.
+ * absence. The office's CSV of the month goes to the share sheet.
  */
 export function AttendanceHistory({ initialClassId = null }: { initialClassId?: string | null }) {
   const t = useT();
@@ -72,7 +73,7 @@ export function AttendanceHistory({ initialClassId = null }: { initialClassId?: 
             ) : h.days.length === 0 ? (
               <Empty title={t("attendanceHistory.nothingTaken", { className: h.class.name, month: monthLabel })} action={<Button label={t("attendanceHistory.previousMonth")} variant="secondary" onPress={() => setMonth(shiftMonth(shown, -1))} />} />
             ) : (
-              <Month history={h} monthLabel={monthLabel} exportHref={role === "ADMIN" ? `/admin/attendance/export/register?classId=${h.class.id}&month=${shown}` : null} />
+              <Month history={h} monthLabel={monthLabel} exportMonth={role === "ADMIN" ? shown : null} />
             )}
           </>
         )
@@ -81,10 +82,16 @@ export function AttendanceHistory({ initialClassId = null }: { initialClassId?: 
   );
 }
 
-function Month({ history, monthLabel, exportHref }: { history: History; monthLabel: string; exportHref: string | null }) {
+function Month({ history, monthLabel, exportMonth }: { history: History; monthLabel: string; exportMonth: string | null }) {
   const t = useT();
   const th = useTheme();
+  const toast = useToast();
   const { locale } = useLocale();
+  const exportCsv = useMutation({
+    mutationFn: async (month: string) => officeCsvExportSchema.parse(unwrap(await api().get(`/api/v1/office/attendance/export/register?classId=${encodeURIComponent(history.class.id)}&month=${month}`))),
+    onSuccess: shareCsv,
+    onError: (e) => toast.show(e.message, "danger"),
+  });
   const totals = history.days.reduce((acc, day) => ({ present: acc.present + day.present, late: acc.late + day.late, absent: acc.absent + day.absent, excused: acc.excused + day.excused }), { present: 0, late: 0, absent: 0, excused: 0 });
   const counts = (row: { present: number; late: number; absent: number; excused: number }) =>
     [`${t("attendance.presentShort")} ${row.present}`, `${t("attendance.lateShort")} ${row.late}`, `${t("attendance.absentShort")} ${row.absent}`, `${t("attendance.excusedShort")} ${row.excused}`].join(" · ");
@@ -125,7 +132,7 @@ function Month({ history, monthLabel, exportHref }: { history: History; monthLab
         <Text variant="xs" tone="subtle">
           {t("attendanceHistory.legend")}
         </Text>
-        {exportHref ? <Button label={t("attendanceHistory.exportCsv")} variant="secondary" onPress={() => openWeb(exportHref)} /> : null}
+        {exportMonth ? <Button label={t("attendanceHistory.exportCsv")} variant="secondary" busy={exportCsv.isPending} onPress={() => exportCsv.mutate(exportMonth)} /> : null}
       </Card>
     </>
   );

@@ -1,7 +1,5 @@
-import { Linking } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { Experts } from "@/screens/shared/experts";
-import { API_BASE } from "@/lib/api";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
@@ -57,8 +55,7 @@ describe("the expert marketplace", () => {
     await waitFor(() => expect(screen.queryByRole("button", { name: "Confirm booking" })).toBeNull());
   });
 
-  it("the filters and the search ask the API; a booking opens on the web", async () => {
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+  it("the filters and the search ask the API; a booking opens in the app", async () => {
     const { calls } = await mountStaff(<Experts />, "TEACHER", { [PATH]: () => json(EXPERTS) });
     await screen.findByText("ZZ Careers adviser");
     await fireEvent.press(screen.getByRole("radio", { name: "Mentoring one child at a time" }));
@@ -69,8 +66,7 @@ describe("the expert marketplace", () => {
     await fireEvent(screen.getByLabelText("Search"), "submitEditing");
     await waitFor(() => expect(calls().some((c) => c.line === "GET /api/v1/staff/experts?q=robot&offering=MENTORING&specialism=Robotics")).toBe(true));
     await fireEvent.press(screen.getByRole("button", { name: /^ZZ Booked/ }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/experts/bookings/b1`);
-    open.mockRestore();
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/booking", params: { bookingId: "b1" } });
   });
 
   it("with nobody listed, says so, and the door is Mentoring", async () => {

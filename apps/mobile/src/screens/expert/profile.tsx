@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { Pressable, View } from "react-native";
+import { useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { z } from "zod";
 import { expertProfileSchema, expertSaveProfileSchema, okSchema } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
 import { Button, Card, Failed, Field, Icon, Loading, Screen, Stat, Text } from "@/components";
+import { Avatar } from "@/components/avatar";
 import { api, errorText } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
+import { useSession } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
 import { Pill } from "../family/shared";
 import { Chips } from "../staff/shared";
@@ -34,6 +37,9 @@ const MAX_SPECIALISMS = 12;
 export function ExpertProfile() {
   const t = useT();
   const th = useTheme();
+  const router = useRouter();
+  const session = useSession();
+  const me = session.status === "signed-in" ? session.me.user : null;
   const query = useQuery({
     queryKey: ["expert", "profile"],
     queryFn: async () => expertProfileSchema.parse(unwrap(await api().get("/api/v1/shared/expert/profile"))),
@@ -50,6 +56,17 @@ export function ExpertProfile() {
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {d && p && impact ? (
         <>
+          {me ? (
+            <View style={{ flexDirection: "row", alignItems: "center", gap: th.space[3] }}>
+              <Avatar avatarKey={me.avatarKey} name={me.name} size={56} />
+              <View style={{ flex: 1, gap: th.space[1] }}>
+                <Text variant="lg" bold>
+                  {me.preferredName ?? me.name}
+                </Text>
+                <Button label={t("student.changeMyLook")} variant="secondary" onPress={() => router.push("/(app)/avatar" as never)} />
+              </View>
+            </View>
+          ) : null}
           <View style={{ gap: th.space[2] }}>
             <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
               <Pill label={p.published ? t("expert.listed") : t("expert.notListedYet")} tone={p.published ? "ok" : "warn"} />

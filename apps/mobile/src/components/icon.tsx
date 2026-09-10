@@ -40,6 +40,31 @@ import { HeartIcon } from "phosphor-react-native/src/icons/Heart";
 import { ConfettiIcon } from "phosphor-react-native/src/icons/Confetti";
 import { HandsPrayingIcon } from "phosphor-react-native/src/icons/HandsPraying";
 import { MedalIcon } from "phosphor-react-native/src/icons/Medal";
+import { CaretLeftIcon } from "phosphor-react-native/src/icons/CaretLeft";
+import { CheckCircleIcon } from "phosphor-react-native/src/icons/CheckCircle";
+import { WarningCircleIcon } from "phosphor-react-native/src/icons/WarningCircle";
+import { InfoIcon } from "phosphor-react-native/src/icons/Info";
+import { EyeIcon } from "phosphor-react-native/src/icons/Eye";
+import { PrinterIcon } from "phosphor-react-native/src/icons/Printer";
+import { WifiSlashIcon } from "phosphor-react-native/src/icons/WifiSlash";
+import { XCircleIcon } from "phosphor-react-native/src/icons/XCircle";
+import { ArrowsClockwiseIcon } from "phosphor-react-native/src/icons/ArrowsClockwise";
+import { ClockCounterClockwiseIcon } from "phosphor-react-native/src/icons/ClockCounterClockwise";
+import { FlagIcon } from "phosphor-react-native/src/icons/Flag";
+import { PlayIcon } from "phosphor-react-native/src/icons/Play";
+import { PaperclipIcon } from "phosphor-react-native/src/icons/Paperclip";
+import { FileTextIcon } from "phosphor-react-native/src/icons/FileText";
+import { ExportIcon } from "phosphor-react-native/src/icons/Export";
+import { ChatCircleDotsIcon } from "phosphor-react-native/src/icons/ChatCircleDots";
+import { HandshakeIcon } from "phosphor-react-native/src/icons/Handshake";
+import { GlobeIcon } from "phosphor-react-native/src/icons/Globe";
+import { HandHeartIcon } from "phosphor-react-native/src/icons/HandHeart";
+import { BooksIcon } from "phosphor-react-native/src/icons/Books";
+import { SealQuestionIcon } from "phosphor-react-native/src/icons/SealQuestion";
+import { PencilSimpleIcon } from "phosphor-react-native/src/icons/PencilSimple";
+import { ArrowSquareOutIcon } from "phosphor-react-native/src/icons/ArrowSquareOut";
+import { UserPlusIcon } from "phosphor-react-native/src/icons/UserPlus";
+import { ImageIcon } from "phosphor-react-native/src/icons/Image";
 
 /**
  * The web's nav icon names (lib/nav.ts) in Phosphor — the same family the web
@@ -64,6 +89,32 @@ const MAP = {
   confetti: ConfettiIcon,
   handsPraying: HandsPrayingIcon,
   medal: MedalIcon,
+  caretLeft: CaretLeftIcon,
+  checkCircle: CheckCircleIcon,
+  warningCircle: WarningCircleIcon,
+  info: InfoIcon,
+  eye: EyeIcon,
+  printer: PrinterIcon,
+  wifiSlash: WifiSlashIcon,
+  xCircle: XCircleIcon,
+  arrowsClockwise: ArrowsClockwiseIcon,
+  clockCounterClockwise: ClockCounterClockwiseIcon,
+  flag: FlagIcon,
+  play: PlayIcon,
+  paperclip: PaperclipIcon,
+  fileText: FileTextIcon,
+  share: ExportIcon,
+  chatDots: ChatCircleDotsIcon,
+  handshake: HandshakeIcon,
+  globe: GlobeIcon,
+  handHeart: HandHeartIcon,
+  books: BooksIcon,
+  sealQuestion: SealQuestionIcon,
+  pencil: PencilSimpleIcon,
+  arrowSquareOut: ArrowSquareOutIcon,
+  userPlus: UserPlusIcon,
+  image: ImageIcon,
+  circle: CircleIcon,
 } as const;
 
 export type IconName = keyof typeof MAP;

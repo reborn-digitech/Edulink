@@ -1,7 +1,5 @@
-import { Linking } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { Directory } from "@/screens/shared/directory";
-import { API_BASE } from "@/lib/api";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
@@ -20,7 +18,6 @@ describe("who to write to", () => {
   beforeEach(() => mockRouter.push.mockClear());
 
   it("loads, then groups everyone by what they are; a name opens the room with them", async () => {
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
     const gate = gated();
     const { calls } = await mountStaff(<Directory />, "TEACHER", { [PATH]: gate.answer, [OPEN]: () => json({ conversationId: "c1", created: true }) });
     expect(screen.getByRole("progressbar")).toBeTruthy();
@@ -36,8 +33,7 @@ describe("who to write to", () => {
     expect(calls().find((c) => c.line === "POST /api/v1/shared/conversations")?.body).toEqual({ schoolId: "s1", userId: "u-pupil" });
     await waitFor(() => expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/messages/room", params: { conversationId: "c1" } }));
     await fireEvent.press(screen.getByRole("button", { name: /^About a pupil/ }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/remarks/new`);
-    open.mockRestore();
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/remark-new", params: {} });
   });
 
   it("a group narrows the list on the phone; a search asks the API", async () => {

@@ -13,7 +13,7 @@ import {
   type QuizLanguage,
 } from "@/lib/quiz";
 import type { ActiveContext } from "@/lib/session";
-import { reviseQuestion } from "@/lib/practice-insights";
+import { reviseQuestion, revisionAttempt } from "@/lib/practice-insights";
 
 /**
  * Practice, from the child's side.
@@ -123,8 +123,7 @@ export async function reviseAnswer(
 ): Promise<Ok<{ result: AnswerResult }> | Failure> {
   try {
     const ctx = await requireApiRole("STUDENT");
-    const q = await reviseQuestion(ctx, questionId, languageOf(ctx));
-    const { attemptId } = await startAttempt(ctx, q.topicSlug);
+    const { attemptId } = await revisionAttempt(ctx, questionId, languageOf(ctx));
     const result = await submitAnswer(ctx, attemptId, questionId, chosenIndex, languageOf(ctx));
     return { ok: true, result };
   } catch (error) {

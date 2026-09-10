@@ -1,7 +1,8 @@
-import { Linking } from "react-native";
+import { Share } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
+import { ToastProvider } from "@/components";
 import { AdminAttendance } from "@/screens/staff/attendance";
-import { API_BASE } from "@/lib/api";
+import { formatDateKey, shiftMonth, thisMonthKey } from "@/screens/staff/shared";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 
 /** The screen's doors go into the app's own tabs; the router is the harness's, so a test can read where it went. */
@@ -42,19 +43,59 @@ describe("the office's attendance landing", () => {
     await waitFor(() => expect(calls().some((c) => c.line === "GET /api/v1/admin/attendance?window=60&sort=name")).toBe(true));
   });
 
-  it("telling a family and the exports open on the web; a class row opens the register through the caller", async () => {
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+  it("telling a family posts for that child and says so; a class row opens the register; past attendance is the app's", async () => {
     const onOpenRegister = jest.fn();
-    await mountStaff(<AdminAttendance onOpenRegister={onOpenRegister} />, "ADMIN", { "GET /api/v1/admin/attendance": () => json(DATA) });
+    const { calls } = await mountStaff(
+      <ToastProvider>
+        <AdminAttendance onOpenRegister={onOpenRegister} />
+      </ToastProvider>,
+      "ADMIN",
+      { "GET /api/v1/admin/attendance": () => json(DATA), "POST /api/v1/office/attendance/alert": () => json({ notified: 1, skipped: false }) },
+    );
     await fireEvent.press(await screen.findByRole("button", { name: "Tell the family: ZZ Pupil" }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/admin/attendance`);
-    await fireEvent.press(screen.getByRole("button", { name: "Download attendance (CSV)" }));
-    expect(open).toHaveBeenCalledTimes(2);
+    expect(await screen.findByText("Told 1 guardians.")).toBeTruthy();
+    expect(calls().find((c) => c.line === "POST /api/v1/office/attendance/alert")?.body).toEqual({ studentMembershipId: "m7" });
     await fireEvent.press(screen.getByRole("button", { name: "ZZ Class A, Mark the attendance" }));
     expect(onOpenRegister).toHaveBeenCalledWith("c1");
     await fireEvent.press(screen.getByRole("button", { name: "Past attendance" }));
-    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/attendance/history");
-    open.mockRestore();
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/attendance", params: { view: "history" } });
+  });
+
+  it("a family told this week is not told again, and a refusal is the server's sentence", async () => {
+    let sent = 0;
+    await mountStaff(
+      <ToastProvider>
+        <AdminAttendance />
+      </ToastProvider>,
+      "ADMIN",
+      {
+        "GET /api/v1/admin/attendance": () => json(DATA),
+        "POST /api/v1/office/attendance/alert": () => (sent++ === 0 ? json({ notified: 0, skipped: true }) : json({ error: "That pupil is not in this school.", code: "NOT_FOUND" }, 404)),
+      },
+    );
+    await fireEvent.press(await screen.findByRole("button", { name: "Tell the family: ZZ Pupil" }));
+    expect(await screen.findByText("This family was told within the last week — not sent again.")).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Tell the family: ZZ Pupil" }));
+    expect(await screen.findByText("That pupil is not in this school.")).toBeTruthy();
+  });
+
+  it("the compliance files go to the share sheet: a class's month (this one or earlier), and the enrolment summary", async () => {
+    const share = jest.spyOn(Share, "share").mockResolvedValue({ action: "sharedAction" } as never);
+    const earlier = shiftMonth(thisMonthKey(), -1);
+    const { calls } = await mountStaff(<AdminAttendance />, "ADMIN", {
+      "GET /api/v1/admin/attendance": () => json(DATA),
+      "GET /api/v1/office/attendance/export/register": () => json({ filename: "edulink-register-ZZ.csv", csv: "student_code,name\n,ZZ Pupil\n", rows: 1 }),
+      "GET /api/v1/office/attendance/export/enrolment": () => json({ filename: "edulink-enrolment.csv", csv: "grade_level,classes\n6,1\n", rows: 1 }),
+    });
+    await fireEvent.press(await screen.findByRole("button", { name: "Download attendance (CSV)" }));
+    await waitFor(() => expect(share).toHaveBeenCalledWith({ title: "edulink-register-ZZ.csv", message: "student_code,name\n,ZZ Pupil\n" }));
+    expect(calls().some((c) => c.line === `GET /api/v1/office/attendance/export/register?classId=c1&month=${thisMonthKey()}`)).toBe(true);
+    await fireEvent.press(screen.getByRole("radio", { name: formatDateKey(`${earlier}-01`, "en", { month: "long", year: "numeric" }) }));
+    await fireEvent.press(screen.getByRole("button", { name: "Download attendance (CSV)" }));
+    await waitFor(() => expect(calls().some((c) => c.line === `GET /api/v1/office/attendance/export/register?classId=c1&month=${earlier}`)).toBe(true));
+    await fireEvent.press(screen.getByRole("button", { name: "Download enrolment summary (CSV)" }));
+    await waitFor(() => expect(share).toHaveBeenCalledWith({ title: "edulink-enrolment.csv", message: "grade_level,classes\n6,1\n" }));
+    share.mockRestore();
   });
 
   it("nobody flagged and no classes: each says so, with a door", async () => {

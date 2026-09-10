@@ -1,7 +1,5 @@
-import { Linking } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { StaffTimetable } from "@/screens/staff/timetable";
-import { API_BASE } from "@/lib/api";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 
 /** The screen's doors go into the app's own tabs; the router is the harness's, so a test can read where it went. */
@@ -54,8 +52,7 @@ describe("class timetables", () => {
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/leave");
   });
 
-  it("another class and another week ask the API; an admin's editor is the web's", async () => {
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+  it("another class and another week ask the API; an admin opens the editor on the class shown", async () => {
     const { calls } = await mountStaff(<StaffTimetable />, "ADMIN", { "GET /api/v1/staff/principal/timetable": () => json(WEEK) });
     await screen.findByText("ZZ Maths");
     await fireEvent.press(screen.getByRole("radio", { name: "ZZ Class B" }));
@@ -63,8 +60,7 @@ describe("class timetables", () => {
     await fireEvent.press(screen.getByRole("button", { name: "Next →" }));
     await waitFor(() => expect(calls().some((c) => c.line === "GET /api/v1/staff/principal/timetable?classId=c2&week=2026-09-14")).toBe(true));
     await fireEvent.press(screen.getByRole("button", { name: "Open the timetable" }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/admin/timetable`);
-    open.mockRestore();
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/timetable-editor", params: { classId: "c1" } });
   });
 
   it("no classes, no school day, nothing timetabled: each says so, with a door", async () => {
@@ -72,6 +68,20 @@ describe("class timetables", () => {
     expect(await screen.findByText("No classes yet")).toBeTruthy();
     await fireEvent.press(screen.getByRole("button", { name: "Classes" }));
     expect(mockRouter.push).toHaveBeenCalledWith("/(app)/classes");
+  });
+
+  it("an office with no classes is offered a new one, and one with no day the editor", async () => {
+    await mountStaff(<StaffTimetable />, "ADMIN", { "GET /api/v1/staff/principal/timetable": () => json({ ...WEEK, classes: [], selectedClassId: null, grid: null, gaps: 0, unstaffed: 0 }) });
+    await fireEvent.press(await screen.findByRole("button", { name: "Create a class" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/class-new");
+  });
+
+  it("an office whose school has no day yet is sent to the editor", async () => {
+    await mountStaff(<StaffTimetable />, "ADMIN", { "GET /api/v1/staff/principal/timetable": () => json({ ...WEEK, grid: null, gaps: 0 }) });
+    expect(await screen.findByText("No timetable yet")).toBeTruthy();
+    const doors = screen.getAllByRole("button", { name: "Open the timetable" });
+    await fireEvent.press(doors[doors.length - 1]!);
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/timetable-editor", params: { classId: "c1" } });
   });
 
   it("a week with nothing on it offers the next week", async () => {

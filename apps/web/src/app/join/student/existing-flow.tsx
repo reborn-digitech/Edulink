@@ -6,7 +6,8 @@ import { ArrowRightIcon, CheckCircleIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
-import { joinWithMyAccount, lookupCode, type CodeLookup } from "../actions";
+import { joinWithMyAccount, lookupCode } from "../actions";
+import type { CodeLookup } from "@/lib/join";
 import { useT } from "@/lib/i18n";
 
 /** Same shaping as the sign-up wizard: 5+4 for a school, 3+4 for a class. */

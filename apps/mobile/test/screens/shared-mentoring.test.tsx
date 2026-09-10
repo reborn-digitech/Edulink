@@ -1,14 +1,13 @@
-import { Linking } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { mentoringPageSchema } from "@edulink/contracts";
 import { Mentoring } from "@/screens/shared/mentoring";
-import { API_BASE } from "@/lib/api";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 
 const mockRouter = { push: jest.fn(), replace: jest.fn(), back: jest.fn(), params: {} as Record<string, string> };
 jest.mock("expo-router", () => ({ useRouter: () => mockRouter, useLocalSearchParams: () => mockRouter.params }));
 
 const PATH = "/api/v1/shared/mentoring";
+const SETUP = "/(app)/mentoring-setup";
 const hourAgo = new Date(Date.now() - 3_600_000).toISOString();
 const PAGE = mentoringPageSchema.parse({
   threads: [
@@ -53,17 +52,24 @@ describe("mentoring", () => {
     expect(screen.getByText("ZZ Asha & ZZ Mentor")).toBeTruthy();
   });
 
-  it("the office sees the requests waiting on it and decides them on the web", async () => {
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+  it("the office sees the requests waiting on it; reviewing them and setting up open the set-up screen", async () => {
     await mountStaff(<Mentoring />, "ADMIN", { [`GET ${PATH}`]: () => json(PAGE) });
     await screen.findByText("1 pupil asking for a mentor");
     expect(screen.getByText("ZZ Kiran & ZZ Guide")).toBeTruthy();
     expect(screen.getByText(/^ZZ Robotics help · asked 1 hour ago$/)).toBeTruthy();
-    await fireEvent.press(screen.getByRole("button", { name: "Open on the web" }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/mentoring`);
+    await fireEvent.press(screen.getByRole("button", { name: "Review the requests" }));
+    expect(mockRouter.push).toHaveBeenCalledWith(SETUP);
+    mockRouter.push.mockClear();
     await fireEvent.press(screen.getByRole("button", { name: "Set up mentoring" }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/mentoring`);
-    open.mockRestore();
+    expect(mockRouter.push).toHaveBeenCalledWith(SETUP);
+  });
+
+  it("the head decides requests but does not pair: no set-up button, the review door only", async () => {
+    await mountStaff(<Mentoring />, "PRINCIPAL", { [`GET ${PATH}`]: () => json(PAGE) });
+    await screen.findByText("1 pupil asking for a mentor");
+    expect(screen.queryByRole("button", { name: "Set up mentoring" })).toBeNull();
+    await fireEvent.press(screen.getByRole("button", { name: "Review the requests" }));
+    expect(mockRouter.push).toHaveBeenCalledWith(SETUP);
   });
 
   it("a guardian is told how many are waiting on their yes", async () => {
@@ -71,14 +77,12 @@ describe("mentoring", () => {
     expect(await screen.findByText("1 mentorship(s) need your agreement before anyone can send a message.")).toBeTruthy();
   });
 
-  it("nothing yet: a pupil asks on the web", async () => {
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
+  it("nothing yet: a pupil is sent to ask for a mentor", async () => {
     await mountStaff(<Mentoring />, "STUDENT", { [`GET ${PATH}`]: () => json({ threads: [], requests: [] }) });
     expect(await screen.findByText("No mentoring yet")).toBeTruthy();
-    // Two doors for a pupil: the standing button and the empty state's own; either opens the web's form.
+    // Two doors for a pupil: the standing button and the empty state's own; either opens the set-up screen.
     await fireEvent.press(screen.getAllByRole("button", { name: "Ask for a mentor" })[1]!);
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/mentoring`);
-    open.mockRestore();
+    expect(mockRouter.push).toHaveBeenCalledWith(SETUP);
   });
 
   it("nothing yet: a guardian is sent to the experts", async () => {

@@ -3,17 +3,29 @@ import { useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 import { adminOverviewSchema, type AdminOverview } from "@edulink/contracts";
 import type { TranslationKey } from "@edulink/i18n";
-import { Button, Card, Failed, Icon, Loading, Row, Screen, Stat, Text } from "@/components";
+import { Button, Card, Failed, Icon, Loading, QuickActions, Row, Screen, Stat, Text } from "@/components";
+import { QUICK } from "@/lib/nav";
 import { api } from "@/lib/api";
+import { screenFor, type ScreenTarget } from "@/lib/links";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { formatDateKey, openWeb, pct } from "./shared";
+import { formatDateKey, pct } from "./shared";
+
+/**
+ * Where a checklist step's page lives in the app. The steps carry the web's
+ * hrefs (/admin/invites/new?role=TEACHER); the app's link map turns each into
+ * its screen, query and all, and a step whose page has no screen of its own
+ * (the account's verify step) lands on its section rather than on the web.
+ */
+export function stepTarget(href: string): ScreenTarget {
+  return screenFor(href) ?? screenFor(`/${href.split(/[/?#]/)[1] ?? ""}`) ?? { pathname: "/(app)" };
+}
 
 /**
  * The office's overview: the year and what comes next, the setup checklist
- * until it is done, today's counts, and the staffing gap. Each checklist
- * step and the heavy pages it points at open on the web.
+ * until it is done, today's counts, and the staffing gap. Every step and
+ * every door opens the app's own screen.
  */
 export function AdminHome() {
   const t = useT();
@@ -51,7 +63,7 @@ function Overview({ d }: { d: AdminOverview }) {
           <Text variant="sm" tone="muted">
             {t("admin.startYearBody")}
           </Text>
-          <Button label={t("admin.setUpYear")} onPress={() => openWeb("/admin/calendar")} />
+          <Button label={t("admin.setUpYear")} onPress={() => router.push("/(app)/calendar" as never)} />
         </Card>
       )}
       {checklist.complete ? null : (
@@ -65,7 +77,7 @@ function Overview({ d }: { d: AdminOverview }) {
               title={t(s.titleKey as TranslationKey)}
               caption={t(s.descriptionKey as TranslationKey, s.descriptionVars)}
               right={<Icon name={s.done ? "check" : "dots"} color={s.done ? th.ok : th.fgSubtle} size={22} weight="bold" />}
-              onPress={s.done || s.blockedBy ? undefined : () => openWeb(s.href)}
+              onPress={s.done || s.blockedBy ? undefined : () => router.push(stepTarget(s.href) as never)}
             />
           ))}
         </Card>
@@ -74,7 +86,8 @@ function Overview({ d }: { d: AdminOverview }) {
         <Stat label={t("admin.registerTaken")} value={counts.classes === 0 ? t("admin.noClassesYet") : t("admin.takenToday", { done: counts.registersTakenToday, total: counts.classes })} tone={d.attendanceTakenPercent === null ? "fg" : d.attendanceTakenPercent >= 100 ? "ok" : "warn"} />
         <Stat label={t("principal.attendance")} value={pct(d.attendanceTakenPercent)} />
       </View>
-      <Card title={t("nav.people")} action={<Button label={t("admin.invitePeople")} variant="ghost" onPress={() => router.push("/(app)/people" as never)} />}>
+      <QuickActions actions={QUICK.ADMIN ?? []} onOpen={(href) => router.push(href as never)} />
+      <Card title={t("nav.people")} action={<Button label={t("admin.invitePeople")} variant="ghost" onPress={() => router.push("/(app)/invites" as never)} />}>
         <Text variant="sm" tone="muted">
           {t("admin.peopleSummary", { teachers: counts.teachers, students: counts.students, classes: counts.classes })}
         </Text>
@@ -94,7 +107,7 @@ function Overview({ d }: { d: AdminOverview }) {
           </>
         ) : null}
       </Card>
-      <Card title={t("exams.adminCardTitle")} action={<Button label={t("exams.scheduleExams")} variant="ghost" onPress={() => openWeb("/admin/exams")} />}>
+      <Card title={t("exams.adminCardTitle")} action={<Button label={t("exams.scheduleExams")} variant="ghost" onPress={() => router.push("/(app)/exams" as never)} />}>
         <Text variant="sm" tone="muted">
           {counts.examSeries === 0 ? t("exams.adminCardNone") : t("exams.adminCardBody", { scheduled: counts.examSeries, published: counts.examSeriesPublished, cards: counts.reportCardsPublished })}
         </Text>
@@ -104,7 +117,7 @@ function Overview({ d }: { d: AdminOverview }) {
           <Text variant="sm" tone="muted">
             {d.staffingGap.classes === 1 ? t("admin.staffingGapBodyOne", { slots: d.staffingGap.slots }) : t("admin.staffingGapBody", { slots: d.staffingGap.slots, classes: d.staffingGap.classes })}
           </Text>
-          <Button label={t("admin.staffingOpenTimetable")} variant="secondary" onPress={() => openWeb("/admin/timetable")} />
+          <Button label={t("admin.staffingOpenTimetable")} variant="secondary" onPress={() => router.push("/(app)/timetable-editor" as never)} />
         </Card>
       ) : null}
       {d.jobStory.attention ? (

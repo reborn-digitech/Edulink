@@ -1,7 +1,8 @@
 import { Linking, Pressable, View } from "react-native";
 import type { TranslationKey } from "@edulink/i18n";
+import type { ApiResult } from "@edulink/contracts";
 import { Text } from "@/components";
-import { API_BASE } from "@/lib/api";
+import { API_BASE, errorText } from "@/lib/api";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 
@@ -200,4 +201,43 @@ export function shiftMonth(month: string, delta: number): string {
 /** This month as the school day counts it, for "no further forward than now". */
 export function thisMonthKey(now: Date = new Date()): string {
   return now.toISOString().slice(0, 7);
+}
+
+/** A pasted-list row the server could not use, in the reader's language: the parser sends a key and its numbers, never a sentence. */
+export function problemLine(
+  t: (key: TranslationKey, vars?: Record<string, string | number>) => string,
+  p: { line: number; value: string; reasonKey: string; reasonVars?: Record<string, string | number> },
+): { title: string; caption: string } {
+  return { title: `${t("invites.line", { line: p.line })} · ${p.value || t("invites.blankRow")}`, caption: t(p.reasonKey as TranslationKey, p.reasonVars) };
+}
+
+/** "09:30" → 570, the minutes after midnight the server counts in; null for anything that is not a 24-hour time. */
+export function parseClock(text: string): number | null {
+  const m = /^(\d{1,2})[:.](\d{2})$/.exec(text.trim());
+  if (!m) return null;
+  const hours = Number(m[1]);
+  const minutes = Number(m[2]);
+  return hours > 23 || minutes > 59 ? null : hours * 60 + minutes;
+}
+
+/**
+ * A write the server refused: its sentence, its status (0 when the phone
+ * never reached it) and the fields it named in `issues`, so a form can put
+ * each sentence under its own field and the rest above the button.
+ */
+export class Refusal extends Error {
+  constructor(
+    message: string,
+    public readonly status: number,
+    public readonly issues: Record<string, string>,
+  ) {
+    super(message);
+    this.name = "Refusal";
+  }
+}
+
+/** A write's data, or a Refusal carrying the server's sentence (the fallback when it gave none) and its fields. */
+export function must<T>(result: ApiResult<T>, fallback: string): T {
+  if (result.ok) return result.data;
+  throw new Refusal(errorText(result, fallback), result.status, result.issues ?? {});
 }

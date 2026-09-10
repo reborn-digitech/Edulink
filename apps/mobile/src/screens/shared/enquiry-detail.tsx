@@ -2,20 +2,19 @@ import { useRef, useState } from "react";
 import { TextInput, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { enquiryOpenedSchema, enquiryReplyBodySchema, enquiryThreadSchema } from "@edulink/contracts";
-import { Button, Empty, Failed, Field, Loading, Screen, Text } from "@/components";
+import { enquiryOpenedSchema, enquiryReplyBodySchema, enquiryThreadSchema, okSchema } from "@edulink/contracts";
+import { Button, Empty, Failed, Field, Loading, Screen, Text, useToast } from "@/components";
 import { api, errorText } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
-import { openWeb } from "../staff/shared";
 import { param, Pill, relativeTime } from "../family/shared";
 
 /**
  * One enquiry, the web's /enquiries/[enquiryId], read from whichever side
  * this session stands on: the messages oldest first, a reply box while it
- * is open, and — on the school's side — closing it, which is the web's
- * confirm-and-close and opens there.
+ * is open, and — on the school's side — closing it, after a confirm: nobody
+ * can reply after.
  */
 export function EnquiryDetail() {
   const params = useLocalSearchParams<{ enquiryId?: string }>();
@@ -28,6 +27,8 @@ export function EnquiryDetail() {
   const [draft, setDraft] = useState("");
   const [formError, setFormError] = useState<string | null>(null);
   const [sent, setSent] = useState(false);
+  const [confirming, setConfirming] = useState(false);
+  const toast = useToast();
   const box = useRef<TextInput>(null);
 
   const query = useQuery({
@@ -46,6 +47,19 @@ export function EnquiryDetail() {
       setSent(true);
       void qc.invalidateQueries({ queryKey: ["shared", "enquiries"] });
     },
+  });
+  const close = useMutation({
+    mutationFn: async () => {
+      const result = await api().post(`/api/v1/community/enquiries/${enquiryId}/close`);
+      if (!result.ok) throw new Error(errorText(result, t("common.somethingWrong")));
+      return okSchema.parse(result.data);
+    },
+    onSuccess: () => {
+      setConfirming(false);
+      toast.show(t("enquiries.closedToast"));
+      void qc.invalidateQueries({ queryKey: ["shared", "enquiries"] });
+    },
+    onError: (e) => toast.show(e.message, "danger"),
   });
 
   const submit = () => {
@@ -117,7 +131,17 @@ export function EnquiryDetail() {
                 </Text>
               ) : null}
               <Button label={t("enquiries.replyCta")} onPress={submit} busy={reply.isPending} />
-              {data.side === "school" ? <Button label={t("enquiries.closeCta")} variant="ghost" onPress={() => openWeb(`/enquiries/${enquiryId}`)} /> : null}
+              {close.isError ? <Failed message={close.error.message} /> : null}
+              {data.side === "school" ? (
+                confirming ? (
+                  <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }}>
+                    <Button label={t("enquiries.closeCta")} variant="danger" busy={close.isPending} onPress={() => close.mutate()} />
+                    <Button label={t("common.cancel")} variant="ghost" onPress={() => setConfirming(false)} />
+                  </View>
+                ) : (
+                  <Button label={t("enquiries.closeCta")} variant="ghost" onPress={() => setConfirming(true)} />
+                )
+              ) : null}
             </>
           ) : (
             <Text variant="sm" tone="muted" accessibilityLiveRegion="polite">

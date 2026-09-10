@@ -10,7 +10,7 @@ import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useRole } from "@/lib/session";
 import { useTheme } from "@/lib/theme";
-import { Chips, openWeb, roleLabel } from "../staff/shared";
+import { Chips, roleLabel } from "../staff/shared";
 
 type People = z.infer<typeof inboxPeopleSchema>;
 type Person = People["people"][number];
@@ -81,7 +81,7 @@ export function Directory() {
       {error ? <Failed message={error} /> : null}
       {canWriteAboutPupil ? (
         <Card>
-          <Row title={t("convo.writeAboutPupil")} caption={t("convo.writeAboutPupilHint")} right={<Icon name="caretRight" size={18} color={th.fgSubtle} />} onPress={() => openWeb("/remarks/new")} />
+          <Row title={t("convo.writeAboutPupil")} caption={t("convo.writeAboutPupilHint")} right={<Icon name="caretRight" size={18} color={th.fgSubtle} />} onPress={() => router.push({ pathname: "/(app)/remark-new", params: {} } as never)} />
         </Card>
       ) : null}
       {d && d.schools.length > 1 ? <Chips label={t("convo.chooseSchool")} value={schoolId ?? d.schoolId} options={d.schools.map((s) => ({ value: s.id, label: s.name }))} onChange={setSchoolId} /> : null}

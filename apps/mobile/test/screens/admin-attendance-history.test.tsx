@@ -1,7 +1,7 @@
-import { Linking } from "react-native";
+import { Share } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
+import { ToastProvider } from "@/components";
 import { AttendanceHistory } from "@/screens/staff/attendance-history";
-import { API_BASE } from "@/lib/api";
 import { gated, json, mountStaff, refused, type Answer } from "./staff-harness";
 
 /** The screen's empty state has a door into the app's own tabs; the router is the harness's, so a test can read where it went. */
@@ -31,6 +31,7 @@ const answer: Answer = ({ url }) => {
   const month = url.searchParams.get("month") ?? "2026-09";
   return json({ classes: CLASSES, month, history: classId ? { ...HISTORY, month, class: CLASSES.find((c) => c.id === classId) ?? CLASSES[0], days: month === "2026-09" ? HISTORY.days : [] } : null });
 };
+const FILE = { filename: "edulink-register-ZZ_Class_A-2026-09.csv", csv: "student_code,name,2026-09-01\n,ZZ Pupil,P\n", rows: 2 };
 
 describe("past attendance", () => {
   it("loads, offers the classes, then shows one class's month with totals, days and pupils", async () => {
@@ -63,12 +64,25 @@ describe("past attendance", () => {
     expect(await screen.findByText("No attendance was marked for ZZ Class A in August 2026.")).toBeTruthy();
   });
 
-  it("an admin's CSV opens on the web", async () => {
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
-    await mountStaff(<AttendanceHistory initialClassId="c1" />, "ADMIN", { "GET /api/v1/admin/attendance/history": answer });
+  it("an admin's CSV of the month goes to the share sheet", async () => {
+    const share = jest.spyOn(Share, "share").mockResolvedValue({ action: "sharedAction" } as never);
+    const { calls } = await mountStaff(<AttendanceHistory initialClassId="c1" />, "ADMIN", { "GET /api/v1/admin/attendance/history": answer, "GET /api/v1/office/attendance/export/register": () => json(FILE) });
     await fireEvent.press(await screen.findByRole("button", { name: "Download this month as CSV" }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/admin/attendance/export/register?classId=c1&month=2026-09`);
-    open.mockRestore();
+    await waitFor(() => expect(share).toHaveBeenCalledWith({ title: FILE.filename, message: FILE.csv }));
+    expect(calls().some((c) => c.line === "GET /api/v1/office/attendance/export/register?classId=c1&month=2026-09")).toBe(true);
+    share.mockRestore();
+  });
+
+  it("a refused export is the server's sentence", async () => {
+    await mountStaff(
+      <ToastProvider>
+        <AttendanceHistory initialClassId="c1" />
+      </ToastProvider>,
+      "ADMIN",
+      { "GET /api/v1/admin/attendance/history": answer, "GET /api/v1/office/attendance/export/register": refused("Class not found in your school.", 404) },
+    );
+    await fireEvent.press(await screen.findByRole("button", { name: "Download this month as CSV" }));
+    expect(await screen.findByText("Class not found in your school.")).toBeTruthy();
   });
 
   it("no classes to read says so, with a door to the classes", async () => {

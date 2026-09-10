@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Linking, View } from "react-native";
+import { View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useQuery } from "@tanstack/react-query";
 import { familyParentPracticeSchema, familyStudentPracticeSchema } from "@edulink/contracts";
 import { Button, Card, Empty, Failed, Icon, Loading, Row, Screen, Text } from "@/components";
-import { api, API_BASE } from "@/lib/api";
+import { api } from "@/lib/api";
 import { unwrap } from "@/lib/query";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
@@ -13,9 +13,11 @@ import { ChildSwitcher, childQuery, Chips, levelName, Note, param, subjectName }
 
 /**
  * Practice. A pupil sees the topic list and the cards above it (the web's
- * /student/practice); answering questions stays on the web for now, so every
- * topic opens there. A guardian sees every chapter their child has touched
- * and the rung they stand on — this child against this ladder, nobody else's.
+ * /student/practice), and every chapter, the one left half-way, the chapters
+ * a teacher set and smart revision open the phone's own player (route
+ * "quiz"). A guardian sees every chapter their child has touched and the rung
+ * they stand on — this child against this ladder, nobody else's — and has no
+ * player: the questions are the child's to answer on their own sign-in.
  */
 export function FamilyPractice() {
   const role = useRole();
@@ -29,7 +31,7 @@ export function FamilyPractice() {
   );
 }
 
-const openWeb = (path: string) => void Linking.openURL(`${API_BASE}${path}`);
+type QuizParams = { mode: "topic" | "revision" | "assigned"; slug?: string; assignmentId?: string };
 
 function ChildPractice() {
   const t = useT();
@@ -46,6 +48,11 @@ function ChildPractice() {
   return (
     <Screen title={d ? t("practice.parentPracticeTitle", { name }) : t("nav.practice")} description={d ? t("practice.parentPracticeIntro", { name }) : undefined} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
       {d ? <ChildSwitcher pupils={d.children} selectedId={childId ?? d.children[0]?.studentMembershipId ?? null} onSelect={setChildId} /> : null}
+      {d ? (
+        <Note tone="accent">
+          <Text variant="sm">{t("practice.childPlaysOwn")}</Text>
+        </Note>
+      ) : null}
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {d ? (
@@ -94,9 +101,9 @@ function PupilPractice() {
   const subjectsShown = [...new Set(topics.filter((topic) => gradeNum === null || topic.classLevel === gradeNum).map((topic) => topic.subject))];
   const shown = topics.filter((topic) => (subject === "all" || topic.subject === subject) && (gradeNum === null || topic.classLevel === gradeNum));
   const resume = d?.resume ?? null;
+  const play = (params: QuizParams) => router.push({ pathname: "/(app)/quiz", params } as never);
   return (
     <Screen title={t("feature.practice")} description={t("practice.intro")} refreshing={query.isRefetching} onRefresh={() => void query.refetch()}>
-      <Button label={t("mobile.openOnWeb")} onPress={() => openWeb("/student/practice")} />
       {query.isPending ? <Loading /> : null}
       {query.isError ? <Failed message={query.error.message} onRetry={() => void query.refetch()} /> : null}
       {d ? (
@@ -106,7 +113,7 @@ function PupilPractice() {
           <>
             {resume ? (
               <Card title={t("practice.continueTitle")}>
-                <Row title={resume.name} caption={`${levelName(t, resume.level)}${resume.tierCount > 0 ? ` · ${resume.tierCount}/6` : ""}`} onPress={() => openWeb(`/student/practice/${resume.slug}`)} />
+                <Row title={resume.name} caption={`${levelName(t, resume.level)}${resume.tierCount > 0 ? ` · ${resume.tierCount}/6` : ""}`} onPress={() => play({ mode: "topic", slug: resume.slug })} />
                 <Text variant="xs" tone="muted">
                   {resume.remainingForBadge !== null && resume.nextTierName ? t("practice.continueBadgeHint", { n: resume.remainingForBadge, tier: resume.nextTierName }) : t("practice.continueAllProven")}
                 </Text>
@@ -132,7 +139,7 @@ function PupilPractice() {
                 <Text variant="xs" tone="muted">
                   {t("practice.revisionHint", { n: d.revision.length })}
                 </Text>
-                <Button variant="ghost" label={t("practice.revisionStart")} onPress={() => openWeb("/student/practice/revision")} />
+                <Button variant="secondary" label={t("practice.revisionStart")} onPress={() => play({ mode: "revision" })} />
               </Card>
             ) : null}
             {d.assigned.length > 0 ? (
@@ -142,7 +149,7 @@ function PupilPractice() {
                     key={a.id}
                     title={a.topicName}
                     caption={`${t("practice.assignedTarget", { tier: a.targetTierName, level: a.targetLevel })} · ${a.reached ? t("practice.assignedReached") : t("practice.assignedKeepGoing")}`}
-                    onPress={() => openWeb(`/student/practice/${a.topicSlug}`)}
+                    onPress={() => play({ mode: "assigned", assignmentId: a.id })}
                   />
                 ))}
               </Card>
@@ -172,7 +179,7 @@ function PupilPractice() {
                       </View>
                     ) : null
                   }
-                  onPress={() => openWeb(`/student/practice/${topic.slug}`)}
+                  onPress={() => play({ mode: "topic", slug: topic.slug })}
                 />
                 {topic.summary ? (
                   <Text variant="sm" tone="muted">

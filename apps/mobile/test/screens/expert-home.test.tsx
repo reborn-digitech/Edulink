@@ -1,8 +1,6 @@
-import { Linking } from "react-native";
 import { fireEvent, screen, waitFor } from "@testing-library/react-native";
 import { expertBookingsSchema, expertProfileSchema } from "@edulink/contracts";
 import { ExpertHome } from "@/screens/expert/home";
-import { API_BASE } from "@/lib/api";
 import { gated, json, mountStaff, refused } from "./staff-harness";
 
 /** The screen's empty state has a door into the app's own tabs; the router is the harness's, so a test can read where it went. */
@@ -30,7 +28,6 @@ describe("the expert's bookings", () => {
 
   it("loads, then leads with the counts and lists what is coming up before the rest", async () => {
     const gate = gated();
-    const open = jest.spyOn(Linking, "openURL").mockResolvedValue(true);
     const { calls } = await mountStaff(<ExpertHome />, "EXPERT", { [PATH]: gate.answer });
     expect(screen.getByRole("progressbar")).toBeTruthy();
     gate.open(() => json(BOOKINGS));
@@ -46,10 +43,9 @@ describe("the expert's bookings", () => {
     expect(screen.getByText("cancelled")).toBeTruthy();
     expect(screen.getByText("2 new")).toBeTruthy();
     expect(calls().some((c) => c.line === "GET /api/v1/shared/expert/bookings")).toBe(true);
-    // A booking's conversation is the web's page.
+    // A booking's conversation is the app's own booking screen.
     await fireEvent.press(screen.getByRole("button", { name: /^ZZ School b1, ZZ Topic b1/ }));
-    expect(open).toHaveBeenCalledWith(`${API_BASE}/experts/bookings/b1`);
-    open.mockRestore();
+    expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/booking", params: { bookingId: "b1" } });
   });
 
   it("no bookings: says so, and the door is the availability tab", async () => {

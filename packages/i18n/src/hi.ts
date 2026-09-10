@@ -168,6 +168,7 @@ export const hi: Dictionary = {
     saved: "प्रोफ़ाइल सहेजी गई।",
     publishCta: "निर्देशिका में प्रकाशित करें",
     unpublishCta: "निर्देशिका से हटाएँ",
+    editProfile: "निर्देशिका प्रोफ़ाइल संपादित करें",
     published: "आपका स्कूल अब निर्देशिका में है।",
     unpublished: "आपका स्कूल निर्देशिका से हट गया है। चल रही पूछताछ के उत्तर दिए जा सकते हैं।",
     publishNeedsAContact: "प्रकाशित करने से पहले प्रवेश संपर्क नामित करें — पूछताछ को कहीं पहुँचना होता है।",
@@ -452,6 +453,10 @@ export const hi: Dictionary = {
     nothingSavedUntilCode: "जब तक कोड वापस नहीं आता, कुछ सहेजा नहीं जाता।",
 
     quietSameTime: "शुरुआत और अंत एक ही समय नहीं हो सकते।",
+
+    signOutDeviceConfirm: "{device} से साइन आउट करें? जिसके पास भी यह है, उसे फिर से साइन इन करना होगा।",
+    signOutOthersConfirm: "बाकी सभी डिवाइस से साइन आउट करें? आप इस डिवाइस पर साइन इन रहेंगे।",
+    removeMobileConfirm: "यह नंबर अपने खाते से हटाएँ? फिर आप इससे साइन इन नहीं कर पाएँगे, और न ही इस पर रीसेट कोड पा सकेंगे।",
   },
 
   merge: {
@@ -729,6 +734,11 @@ export const hi: Dictionary = {
     exampleUrlPlaceholder: "https://example.org/…",
     giveTitle: "इसे एक शीर्षक दीजिए।",
     oneLinePlease: "इसके बारे में एक पंक्ति लिखिए।",
+
+    onlyAdminsPost: "प्रतियोगिता सिर्फ़ स्कूल के एडमिन या EduLink की सामग्री टीम ही पोस्ट कर सकती है।",
+    postingFor: "किसके लिए पोस्ट कर रहे हैं",
+    dateHint: "वर्ष-महीना-दिन, जैसे 2026-10-01। कोई तारीख न हो तो उसे खाली छोड़ दें।",
+    declineConfirm: "{child} को {title} से हटा दिया जाएगा। वे कभी भी फिर से पूछ सकते हैं।",
   },
 
   bulletin: {
@@ -943,6 +953,8 @@ export const hi: Dictionary = {
     byAuthor: "लेखक: {name}",
     showAgain: "हमारे स्कूल में फिर दिखाएँ",
     hideHere: "हमारे स्कूल में छिपाएँ",
+    hideConfirm: "यह पोस्ट हमारे स्कूल में छिपाएँ? जब तक इसे फिर से दिखाया नहीं जाता, यहाँ कोई इसे ग्लोबल फ़ीड पर नहीं देखेगा।",
+    preview: "पूर्वावलोकन",
     takeOffGlobal: "ग्लोबल फ़ीड से हटाएँ",
 
     unknownReaction: "अनजानी प्रतिक्रिया।",
@@ -1029,6 +1041,12 @@ export const hi: Dictionary = {
     openRequests: "आपके {count} अनुरोध पहले से प्रतीक्षा में हैं। पहले उनके बारे में स्कूल से बात करें।",
     noLongerWaiting: "वह अनुरोध अब प्रतीक्षा में नहीं है।",
     filledUp: "प्रतीक्षा के दौरान {name} की जगहें भर गईं। इसे अस्वीकार करें और किसी और का सुझाव दें।",
+
+    nobodyToAsk: "अभी कोई मेंटरिंग के अनुरोध नहीं ले रहा है। कुछ समय बाद फिर देखें।",
+    noRequests: "अभी किसी निर्णय की प्रतीक्षा नहीं है।",
+    reviewRequests: "अनुरोध देखें",
+    agreedToast: "सहमति दे दी गई। अब वे एक-दूसरे को लिख सकते हैं।",
+    endConfirm: "यह मेंटरशिप समाप्त करें? इसके बाद कोई संदेश नहीं भेज सकेगा।",
   },
 
   convo: {
@@ -1322,6 +1340,19 @@ export const hi: Dictionary = {
     showMeHow: "मुझे हल दिखाइए",
     allPractice: "सारा अभ्यास",
     finished: "पूरा",
+    childPlaysOwn: "अभ्यास के प्रश्न बच्चा अपने ही साइन-इन से हल करता है। उसने जो किया है, वह यहाँ दिखता है।",
+    pickChapter: "शुरू करने के लिए अभ्यास में से कोई अध्याय चुनें।",
+    resumedNote: "जहाँ छोड़ा था, वहीं से आगे।",
+    streak: "लगातार {n} सही",
+    youAreOn: "आप L{level} · {name} पर हैं",
+    rightAnswer: "सही उत्तर",
+    yourAnswer: "आपका उत्तर",
+    summaryAnswered: "इस बार हल किए",
+    summaryRight: "सही",
+    playAgain: "नई शुरुआत करें",
+    offlineStart: "आप ऑफ़लाइन हैं। प्रश्न स्कूल के सर्वर से आते हैं — इंटरनेट से जुड़ें, फिर दोबारा कोशिश करें।",
+    dueOn: "अंतिम तिथि {date}",
+    setNoChapters: "अभ्यास-कोष में अभी इस कक्षा के लिए कोई अध्याय नहीं है।",
   },
 
   reportCards: {
@@ -1609,6 +1640,11 @@ export const hi: Dictionary = {
     invitationSent: "निमंत्रण भेज दिया",
     notRevoked: "रद्द नहीं हुआ",
     revoke: "रद्द करें",
+    revokeConfirm: "{email} को भेजा निमंत्रण वापस लें? उसमें दिया लिंक काम करना बंद कर देगा।",
+    invitationRevoked: "निमंत्रण वापस ले लिया",
+    deleteOnWeb: "मिटाना जान-बूझकर वेब पर ही रखा गया है: कुछ भी वापस नहीं आता, इसलिए वहाँ स्कूल का सटीक नाम पूछा जाता है।",
+    auditDateHint: "वर्ष-महीना-दिन, जैसे 2026-09-01",
+    auditDateWrong: "तारीख़ वर्ष-महीना-दिन के रूप में लिखें, जैसे 2026-09-01।",
 
     insideTitle: "{school} के भीतर",
     insideIntro: "आप यह स्कूल पूरा देख सकते हैं, हर व्यक्ति तक। हर झाँकी और हर कार्रवाई वहीं दर्ज होती है जहाँ स्कूल उसे पढ़ता है।",
@@ -2405,6 +2441,7 @@ export const hi: Dictionary = {
     joinClassAs: "{name} के रूप में {className} में शामिल हों",
     joinSchoolAs: "{name} के रूप में {school} में शामिल हों",
     sameAccountNote: "कोई नया लॉगिन नहीं, कोई नया पासवर्ड नहीं। आपके खाते में जो है वह आपका ही रहता है।",
+    youJoinAsPupil: "आप विद्यार्थी के रूप में शामिल होंगे।",
     thisIsAParentsAccount: "यह खाता अभिभावक के रूप में एक बच्चे से जुड़ा है, इसलिए यह विद्यार्थी के रूप में कक्षा में शामिल नहीं हो सकता। साइन आउट करके विद्यार्थी का अपना खाता इस्तेमाल करें।",
     youWorkHere: "इस खाते का इस स्कूल में पहले से स्टाफ़ पद है, इसलिए यह विद्यार्थी के रूप में शामिल नहीं हो सकता।",
     metaDescription: "अपने स्कूल से मिले कोड से EduLink से जुड़िए, या अपने बच्चे से जुड़िए।",
@@ -2776,6 +2813,8 @@ export const hi: Dictionary = {
     relationOther: "परिवार का अन्य सदस्य",
     today: "आज",
     gradeLevel: "कक्षा {level}",
+    enterFullCode: "पूरा विद्यार्थी कोड लिखें।",
+    enterDob: "उनकी जन्मतिथि लिखें।",
   },
   attendance: {
     futureRegister: "आने वाली तारीख़ की हाज़िरी नहीं ली जा सकती।",
@@ -3949,6 +3988,10 @@ export const hi: Dictionary = {
     nameLine: "नाम:",
     dateLine: "दिनांक:",
     keyTitle: "उत्तर-कुंजी",
+    noChapters: "अभ्यास-कोष में अभी कोई अध्याय नहीं है, इसलिए छापने के लिए कुछ नहीं है।",
+    countRange: "1 से {max} के बीच प्रश्न चुनें।",
+    showKey: "उत्तर-कुंजी दिखाएँ",
+    hideKey: "उत्तर-कुंजी छिपाएँ",
   },
 
   exams: {
@@ -4018,6 +4061,7 @@ export const hi: Dictionary = {
     published: "प्रकाशित",
     publish: "प्रकाशित करें",
     archive: "संग्रहित करें",
+    archivedToast: "{name} संग्रहित की गई",
     colSubject: "विषय",
     colDay: "दिन",
     colTime: "समय",
@@ -4185,6 +4229,7 @@ export const hi: Dictionary = {
     operatorSchoolClose: "एक ऑपरेटर ने आपका स्कूल बंद किया",
     operatorSchoolOpen: "एक ऑपरेटर ने आपका स्कूल खोला",
     profileUpdate: "अपनी प्रोफ़ाइल बदली",
+    profileAvatar: "अपनी तस्वीर बदली",
     quizBadge: "अभ्यास का बैज कमाया",
     quizTierBadge: "अभ्यास सीढ़ी का स्तर सिद्ध किया",
     practiceAssign: "कक्षा के लिए अभ्यास अध्याय तय किया",
@@ -4398,6 +4443,7 @@ export const hi: Dictionary = {
     sendOne: "1 निमंत्रण भेजें",
     sendMany: "{count} निमंत्रण भेजें",
     sendInvitations: "निमंत्रण भेजें",
+    checkList: "सूची जाँचें",
     sentOne: "1 निमंत्रण भेजा गया",
     sentMany: "{count} निमंत्रण भेजे गए",
     onTheWayOne: "1 निमंत्रण रास्ते में",
@@ -4521,6 +4567,7 @@ export const hi: Dictionary = {
     readyBody:
       "विद्यार्थी यह कक्षा कोड डालकर जुड़ते हैं। इसे बोर्ड पर लिखिए, या अपने अगले पत्र में साझा कीजिए।",
     copyClassCode: "कक्षा का कोड कॉपी करें",
+    shareCode: "कक्षा का कोड साझा करें",
     selectToCopy: "कोड चुनकर कॉपी करें।",
     createAnother: "एक और बनाएँ",
     done: "हो गया",
@@ -4558,6 +4605,7 @@ export const hi: Dictionary = {
     notAssigned: "नियुक्त नहीं हुए",
     teacherAssigned: "कक्षा शिक्षक नियुक्त हो गए",
     teacherAdded: "शिक्षक जुड़ गए",
+    teacherRemoved: "{name} अब इस कक्षा में नहीं हैं",
     notRemoved: "हटाए नहीं गए",
     notChanged: "बदला नहीं गया",
     noLeadWarning:
@@ -4767,6 +4815,10 @@ export const hi: Dictionary = {
     markedCheckedToast: "पहचान जाँची हुई लिख दी गई",
     takeOffNote:
       "किसी को सूची से हटाने पर स्कूल उन्हें खोज नहीं पाएँगे। इससे पहले से बुक कोई सत्र या पहले से तय कोई मार्गदर्शन समाप्त नहीं होता — वे जैसे हैं वैसे ही रहते हैं।",
+    confirmList: "{name} को सूची में डालें? इस सर्वर का हर स्कूल उन्हें खोज और बुक कर सकेगा।",
+    confirmListAndCheck: "{name} को सूची में डालें और उनकी पहचान जाँची हुई लिखें? ऐसा तभी करें जब आपने सच में जाँचा हो कि वे कौन हैं।",
+    confirmTakeOff: "{name} को सूची से हटाएँ? स्कूल उन्हें खोज नहीं पाएँगे; जो पहले से तय है वह बना रहेगा।",
+    confirmCheck: "{name} की पहचान जाँची हुई लिखें? स्कूलों को यह बैज दिखेगा।",
   },
   checklist: {
     directoryTitle: "स्कूल निर्देशिका से जुड़ें",
@@ -5074,6 +5126,7 @@ export const hi: Dictionary = {
     skipped: "छोड़ा गया",
     failed: "विफल",
     downloadResult: "यह सूची डाउनलोड करें",
+    shareResult: "यह सूची साझा करें",
     admitMore: "और प्रवेश दें",
     seePeople: "निर्देशिका देखें",
     fromPeople: "सूची से विद्यार्थियों को प्रवेश दें",
@@ -5332,6 +5385,32 @@ export const hi: Dictionary = {
     backToMore: "'और' पर वापस",
     offline: "भेजा नहीं जा सका — लगता है आप ऑफ़लाइन हैं। आपके शब्द यहीं रखे हैं; कनेक्ट होने पर फिर कोशिश करें।",
     failed: "रिपोर्ट भेजी नहीं जा सकी।",
+  },
+  teaching: {
+    assignmentNotFound: "वह असाइनमेंट नहीं मिला",
+    publishConfirm: "अभी प्रकाशित करें? कक्षा और उनके अभिभावकों को तुरंत बताया जाएगा।",
+    startMarking: "जाँचना शुरू करें",
+    nextPupil: "अगला विद्यार्थी",
+    previousPupil: "पिछला विद्यार्थी",
+    allPupils: "सभी विद्यार्थी",
+    pupilOf: "{total} में से {n}",
+    theirWork: "उन्होंने क्या जमा किया",
+    unsavedCount: "{count} अभी सहेजे नहीं गए",
+    unsaved: "अभी सहेजा नहीं गया",
+    attachFile: "फ़ाइल जोड़ें",
+    removeFile: "{name} हटाएँ",
+    handoutsFull: "एक काम के साथ अधिकतम पाँच फ़ाइलें जा सकती हैं।",
+    pickClassForCards: "वह कक्षा चुनें जिसके रिपोर्ट कार्ड आप लिख रहे हैं।",
+    builderStepThree: "3. देखें और प्रकाशित करें — {title}",
+    familiesSeeNothing: "जब तक आप प्रकाशित नहीं करते, परिवारों को कुछ नहीं दिखता।",
+    publishCardsConfirm: "अभी परिवारों को {count} रिपोर्ट कार्ड भेजें? हर बच्चे और उसके अभिभावकों को बताया जाएगा।",
+    withdrawCardsConfirm: "ये कार्ड वापस मसौदे में ले जाएँ? जिन परिवारों ने इन्हें खोला, वे शायद पढ़ चुके हों।",
+    daysPresent: "{total} में से {present} दिन",
+    remarkFor: "{name} के लिए टिप्पणी",
+    saveRemark: "टिप्पणी सहेजें",
+    remarkSaved: "टिप्पणी सहेजी गई",
+    changePupil: "दूसरा विद्यार्थी चुनें",
+    subjectIdeas: "विषय के लिए सुझाव",
   },
   security: {
     rootedTitle: "इस फ़ोन में बदलाव किया गया है",

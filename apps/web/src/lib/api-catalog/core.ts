@@ -18,6 +18,7 @@ export const CORE: Endpoint[] = [
   { method: "POST", path: "/api/v1/me/devices", summary: "Register this device for push", access: "signed-in", request: c.deviceRegisterSchema, response: c.okSchema, emptyBodyStatus: 422 },
   { method: "DELETE", path: "/api/v1/me/devices", summary: "Stop push to this device", access: "signed-in", request: c.deviceRemoveSchema, response: c.okSchema, emptyBodyStatus: 422 },
   { method: "GET", path: "/api/v1/events", summary: "Live events for this session (server-sent events)", access: "signed-in", response: c.okSchema },
+  { method: "POST", path: "/api/v1/files/{fileId}/link", summary: "A five-minute link that opens one file outside the app (a PDF in the phone's browser), for someone allowed to read it", access: "signed-in", response: c.fileLinkSchema },
   // ---- writes the outbox replays -------------------------------------------
   { method: "POST", path: "/api/v1/marks", summary: "Save one exam sheet for one class", access: ["TEACHER", "ADMIN"], request: c.marksBatchSchema, response: c.marksSavedSchema, emptyBodyStatus: 422 },
   { method: "POST", path: "/api/v1/messages", summary: "Send one message into a room", access: "signed-in", request: c.conversationMessageSchema, response: c.messageSentSchema, emptyBodyStatus: 422 },

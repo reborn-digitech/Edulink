@@ -37,6 +37,13 @@ describe("the expert's profile", () => {
     expect(screen.queryByLabelText("How many children at once?")).toBeNull();
   });
 
+  it("draws the expert's avatar beside their name; changing it is the app's own picker", async () => {
+    await mountStaff(<ExpertProfile />, "EXPERT", { [`GET ${PATH}`]: () => json(PROFILE) });
+    expect(await screen.findByRole("image", { name: "ZZ Head" })).toBeTruthy();
+    await fireEvent.press(screen.getByRole("button", { name: "Change my look" }));
+    expect(mockRouter.push).toHaveBeenCalledWith("/(app)/avatar");
+  });
+
   it("not listed yet reads as such, and nothing yet hides the impact card", async () => {
     await mountStaff(<ExpertProfile />, "EXPERT", { [`GET ${PATH}`]: () => json(UNLISTED) });
     expect(await screen.findByText("Not listed yet")).toBeTruthy();
