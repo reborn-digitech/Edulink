@@ -27,6 +27,11 @@
  *     one class each and two attached to nothing, ten pupils across two of its
  *     three classes, and four of those pupils claimed by a parent. Grade 8 is
  *     left with no pupils on purpose: a zero-row register still needs a home.
+ *   ZZ Banyan School — one person, several hats. Its admin also teaches a
+ *     class and has a child in another; a teacher and the principal each have
+ *     a child at the school; one parent has a child here and one at Southbank;
+ *     one teacher is on the staff of both schools. Every account is a reason
+ *     for the role switcher to exist, so the switcher can be walked as each.
  *   Four experts spanning the curation states: published+verified, published
  *     unverified, and one still unpublished.
  *   One operator account, already carrying the superuser flag.
@@ -42,8 +47,12 @@ import { classCode, schoolCode, studentCode } from "../src/lib/codes";
 config();
 const db = new PrismaClient({ datasourceUrl: process.env.DATABASE_ADMIN_URL });
 
-/** Same dev password as `prisma/seed.ts`, so ZZ accounts log in by hand too. */
-const PASSWORD = "copper-lantern-47-brook";
+/**
+ * Same dev password as `prisma/seed.ts`, so ZZ accounts log in by hand too.
+ * ZZ_PASSWORD overrides it for the accounts this run CREATES; an account that
+ * already exists keeps whatever hash it has (upsertUser never rewrites one).
+ */
+const PASSWORD = process.env.ZZ_PASSWORD ?? "copper-lantern-47-brook";
 const ARGON = { memoryCost: 19_456, timeCost: 2, parallelism: 1 } as const;
 const DOMAIN = "zz.test";
 /** Fixed so birthdates do not drift between runs and break a claim mid-test. */
@@ -602,6 +611,121 @@ async function buildSouthbank(ctx: Ctx) {
 }
 
 /* -------------------------------------------------------------------------- */
+/* school C — one person, several hats                                         */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Every adult here holds more than one context, which is what the switcher
+ * (/switch on the web, "Where you belong" on the phone) exists for:
+ *
+ *   admin      ADMIN + TEACHER at Banyan, and a parent of a Banyan pupil
+ *   principal  PRINCIPAL at Banyan, and a parent of a Banyan pupil
+ *   teacher 1  TEACHER at Banyan, and a parent of a Banyan pupil in ANOTHER
+ *              class — so they are never their own child's teacher
+ *   teacher 2  TEACHER at Banyan AND at Southbank
+ *   parent     a child at Banyan and a child at Southbank — the parent whose
+ *              one PARENT context has to span two schools
+ *
+ * The Southbank child is zz.sb.pupil01, who already has a parent: a second
+ * guardian is ordinary, and it leaves Southbank's unclaimed list untouched.
+ */
+async function buildBanyan(ctx: Ctx, southbankSchoolId: string) {
+  const school = await upsertSchool({
+    name: "ZZ Banyan School",
+    slug: "zz-banyan-school",
+    city: "Kolhapur",
+    contactEmail: `office.banyan@${DOMAIN}`,
+    gradeLow: "3",
+    gradeHigh: "5",
+    brandPrimary: "#6d28d9",
+  });
+
+  const admin = await upsertUser(ctx, `zz.admin.c@${DOMAIN}`, "ZZ Priya Naik");
+  await upsertMembership(admin.id, school.id, "ADMIN", { title: "School administrator" });
+  const adminAsTeacher = await upsertMembership(admin.id, school.id, "TEACHER", {
+    title: "Class teacher",
+    subjects: JSON.stringify(["Mathematics"]),
+  });
+
+  const principal = await upsertUser(ctx, `zz.principal.c@${DOMAIN}`, "ZZ Lata Bhonsle");
+  await upsertMembership(principal.id, school.id, "PRINCIPAL", { title: "Principal" });
+
+  const teacher1 = await upsertUser(ctx, `zz.teacher.c1@${DOMAIN}`, "ZZ Suresh Kale");
+  const teacher1Membership = await upsertMembership(teacher1.id, school.id, "TEACHER", {
+    title: "Class teacher",
+    subjects: JSON.stringify(["English"]),
+  });
+
+  const teacher2 = await upsertUser(ctx, `zz.teacher.c2@${DOMAIN}`, "ZZ Nilesh Gaikwad");
+  const teacher2Membership = await upsertMembership(teacher2.id, school.id, "TEACHER", {
+    title: "Class teacher",
+    subjects: JSON.stringify(["Science"]),
+  });
+  await upsertMembership(teacher2.id, southbankSchoolId, "TEACHER", {
+    title: "Visiting teacher",
+    subjects: JSON.stringify(["Science"]),
+  });
+
+  const parent = await upsertUser(ctx, `zz.parent.c@${DOMAIN}`, "ZZ Rekha Sawant");
+
+  // Three classes, one per grade; who leads which is the point of the school.
+  const classSpecs = [
+    { name: "ZZ Grade 3 · A", gradeLevel: "3", color: "#f59e0b", room: "B301", pupils: 4, lead: teacher1Membership.id },
+    { name: "ZZ Grade 4 · A", gradeLevel: "4", color: "#10b981", room: "B401", pupils: 4, lead: adminAsTeacher.id },
+    { name: "ZZ Grade 5 · A", gradeLevel: "5", color: "#6366f1", room: "B501", pupils: 3, lead: teacher2Membership.id },
+  ];
+
+  const pupils: { email: string; name: string; membershipId: string; grade: string }[] = [];
+  let studentSeq = 0;
+  // Offset past Northgate's 48 and Southbank's 10, so no pupil shares a name.
+  let nameIndex = GRADES.length * PER_CLASS + 10;
+
+  for (const spec of classSpecs) {
+    const cls = await upsertClass(school.id, spec.name, {
+      subject: "Form group",
+      gradeLevel: spec.gradeLevel,
+      section: "A",
+      color: spec.color,
+      room: spec.room,
+    });
+    await attachTeacher(cls.id, school.id, spec.lead);
+
+    for (let seat = 0; seat < spec.pupils; seat++) {
+      studentSeq++;
+      const name = studentName(nameIndex++);
+      const email = `zz.by.pupil${String(studentSeq).padStart(2, "0")}@${DOMAIN}`;
+      const birthYear = THIS_YEAR - (Number(spec.gradeLevel) + 5);
+      const birthdate = new Date(Date.UTC(birthYear, (seat * 3) % 12, 12 + seat));
+      const user = await upsertUser(ctx, email, name, { birthdate, isMinor: true });
+      const existing = await db.membership.findUnique({
+        where: { userId_schoolId_role: { userId: user.id, schoolId: school.id, role: "STUDENT" } },
+      });
+      const membership =
+        existing ??
+        (await db.membership.create({
+          data: { userId: user.id, schoolId: school.id, role: "STUDENT", status: "ACTIVE", gradeLevel: spec.gradeLevel, studentCode: studentCode() },
+        }));
+      await enrol(cls.id, school.id, membership.id);
+      pupils.push({ email, name, membershipId: membership.id, grade: spec.gradeLevel });
+    }
+  }
+
+  // Who is whose parent. Grade 3 · A is pupils 1–4, Grade 4 · A is 5–8, Grade 5 · A is 9–11.
+  const [p1, p2, , , p5, , , , p9] = pupils;
+  await link(admin.id, p1!.membershipId, school.id); //     admin's child, Grade 3 (not the class they lead)
+  await link(principal.id, p9!.membershipId, school.id); // principal's child, Grade 5
+  await link(teacher1.id, p5!.membershipId, school.id); //  teacher 1's child, Grade 4 (they lead Grade 3)
+  await link(parent.id, p2!.membershipId, school.id); //    the two-school parent's Banyan child
+  const southbankChild = await db.membership.findFirst({
+    where: { schoolId: southbankSchoolId, role: "STUDENT", user: { email: `zz.sb.pupil01@${DOMAIN}` } },
+    select: { id: true },
+  });
+  if (southbankChild) await link(parent.id, southbankChild.id, southbankSchoolId);
+
+  return { school, pupils, hats: { admin, principal, teacher1, teacher2, parent }, children: { p1: p1!, p2: p2!, p5: p5!, p9: p9! }, southbankChild: Boolean(southbankChild) };
+}
+
+/* -------------------------------------------------------------------------- */
 /* experts + operator                                                          */
 /* -------------------------------------------------------------------------- */
 
@@ -753,6 +877,7 @@ async function main() {
 
   const northgate = await buildNorthgate(ctx);
   const southbank = await buildSouthbank(ctx);
+  const banyan = await buildBanyan(ctx, southbank.school.id);
   const experts = await buildExperts(ctx);
   const operator = await buildOperator(ctx);
   const contentTeam = await buildContentTeam(ctx);
@@ -797,6 +922,15 @@ async function main() {
      pupils      ${sbPupils}  (zz.sb.pupil01..${String(sbPupils).padStart(2, "0")}@${DOMAIN})
      guardians   ${sbGuardians} link(s) — zz.sb.parentNN matches zz.sb.pupilNN
      unclaimed   ${southbank.unclaimed.length} pupil(s), codes listed below
+
+  ── ZZ Banyan School (one person, several hats) ──────────────────────
+     join code   ${banyan.school.code}
+     admin       zz.admin.c@${DOMAIN}       (ZZ Priya Naik)     admin + teacher of Grade 4 · A + parent of ${banyan.children.p1.name} (grade 3)
+     principal   zz.principal.c@${DOMAIN}   (ZZ Lata Bhonsle)   principal + parent of ${banyan.children.p9.name} (grade 5)
+     teacher     zz.teacher.c1@${DOMAIN}    (ZZ Suresh Kale)    teacher of Grade 3 · A + parent of ${banyan.children.p5.name} (grade 4)
+     teacher     zz.teacher.c2@${DOMAIN}    (ZZ Nilesh Gaikwad) teacher of Grade 5 · A + teacher at Southbank
+     parent      zz.parent.c@${DOMAIN}      (ZZ Rekha Sawant)   parent of ${banyan.children.p2.name} here and zz.sb.pupil01 at Southbank${banyan.southbankChild ? "" : " (Southbank child NOT found)"}
+     pupils      ${banyan.pupils.length}  (zz.by.pupil01..${String(banyan.pupils.length).padStart(2, "0")}@${DOMAIN}), grades 3–5, one class each
 
   ── Experts ──────────────────────────────────────────────────────────
 ${experts.map((e) => `     ${e}`).join("\n")}
