@@ -20,7 +20,7 @@ dies in the release step rather than serving.
 | `NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT` | `npm run vapid` once; never rotate casually — every subscription is bound to the pair |
 | `EMAIL_TRANSPORT=smtp` + `SMTP_*`, `EMAIL_FROM` | proven with `npm run email:test -- you@example.com` |
 | `SMS_TRANSPORT=twilio` + `TWILIO_*` | proven with `npm run sms:test -- +91…` |
-| `STORAGE_DIR` | a mounted volume today; the S3 adapter is the open item below |
+| `STORAGE_BUCKET` + `STORAGE_S3_*` | uploads in an S3-compatible bucket (R2, S3, B2); all five or none. Without them `STORAGE_DIR` on a mounted volume, one machine only |
 | `APP_COMMIT` | set by the build (`--build-arg APP_COMMIT=$(git rev-parse --short HEAD)`); `/api/health` reports it |
 | `SSO_*` | per provider; `npm run sso:check` before the first sign-in |
 
@@ -66,11 +66,22 @@ opening the app in the same second is not, and needs either more processes
 or the overview cached. Start at two machines of `shared-cpu-2x` and read the
 p95 from the platform's metrics for a week before deciding.
 
+## Uploads
+
+With `STORAGE_BUCKET` and the four `STORAGE_S3_*` variables set, uploads go to
+the bucket (originals under `files/`, resized copies under `variants/`, both
+below `STORAGE_S3_PREFIX` if set) and the machines are stateless: scale to two,
+replace one, no volume to mount. `src/lib/s3.ts` signs the requests itself,
+so the image gains no dependency. Turn on the bucket's own replication or
+versioning; `ops/backup.sh` covers the database only. Without the variables
+the app writes to `STORAGE_DIR`, which on Fly means a `[mounts]` volume and
+`min_machines_running = 1` with no second machine. Moving from a volume to a
+bucket is a copy of `<STORAGE_DIR>/` to `files/` (same shard layout) and a
+redeploy with the variables; `npm run files:check` afterwards should report
+zero missing.
+
 ## Open items before the first real school
 
-- **Uploads to a bucket.** `storage.ts` writes to `STORAGE_DIR`. A single
-  volume works for one machine; the S3 adapter is what lets the process be
-  replaced without moving files.
 - **Error tracking.** The structured log line on every request error is in
   `instrumentation.ts`; a Sentry DSN plugs into the same hook once the
   account exists.

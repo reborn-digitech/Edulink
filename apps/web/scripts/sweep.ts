@@ -531,6 +531,9 @@ async function storedFile(
     select: { id: true, attachments: true },
   });
   if (!assignment) return skip("the file route", "no assignment outside the teacher's classes");
+  // With a bucket configured the layout below is not where the app reads from;
+  // the S3 suite covers that path, and this check keeps proving the disk one.
+  if (process.env.STORAGE_BUCKET?.trim()) return skip("the file route", "uploads go to a bucket here; the storage-s3 suite covers that path");
 
   // A 1×1 PNG, small enough to inline and real enough to sniff as an image.
   const png = Buffer.from(

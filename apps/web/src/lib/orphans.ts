@@ -1,8 +1,7 @@
 import "server-only";
-import { readdir, stat, unlink } from "node:fs/promises";
-import { join, resolve } from "node:path";
 import { db } from "./db";
 import { readAttachments, readMedia } from "./files";
+import { blobStore } from "./blob-store";
 
 /**
  * Reclaiming stored files that nothing references any more.
@@ -14,8 +13,8 @@ import { readAttachments, readMedia } from "./files";
  * that fires on the wrong delete destroys a child's work with no way back,
  * whereas an unreferenced file costs kilobytes until someone runs this.
  *
- * THE ORDER BELOW IS THE SAFETY PROPERTY. The disk is listed BEFORE the
- * references are read:
+ * THE ORDER BELOW IS THE SAFETY PROPERTY. The store — a disk or a bucket,
+ * blob-store.ts decides — is listed BEFORE the references are read:
  *
  *   * list disk (t0) → read references (t1)
  *   * a file written after t0 is not a candidate at all;
@@ -27,17 +26,11 @@ import { readAttachments, readMedia } from "./files";
  * a candidate, however the scan interleaved.
  */
 
-/**
- * Resolved per call rather than at import.
- *
- * `storage.ts` can bind its root once because it only ever writes where the app
- * is configured to write. This one DELETES, and a test that cannot point it at
- * a scratch directory has to be run against the real store — which is how a
- * suite ends up quietly reclaiming files it did not create.
+/*
+ * The store is resolved per call (blob-store.ts reads the environment when
+ * asked), which is what lets the test point this sweep — the one thing here
+ * that DELETES — at a scratch directory rather than the real store.
  */
-function storageRoot(): string {
-  return resolve(process.cwd(), process.env.STORAGE_DIR ?? "./storage");
-}
 
 /** Only ever a UUID plus a known extension — the same shape storage.ts writes. */
 const STORED_NAME = /^[0-9a-f-]{36}\.[a-z0-9]{2,5}$/i;
@@ -117,28 +110,21 @@ async function referencedFileIds(): Promise<Map<string, string>> {
   return ids;
 }
 
-/** Everything under the shard directories, with the size and mtime of each. */
+/** Everything in the originals namespace, with the size and mtime of each. */
 async function listStored(): Promise<{ files: OrphanCandidate[]; unrecognised: string[]; rootReadable: boolean }> {
   const files: OrphanCandidate[] = [];
   const unrecognised: string[] = [];
 
-  const root = storageRoot();
-  let rootReadable = true;
-  const shards = await readdir(root).catch(() => {
-    rootReadable = false;
-    return [] as string[];
-  });
-  for (const shard of shards) {
-    const shardPath = join(root, shard);
-    const entries = await readdir(shardPath).catch(() => [] as string[]);
-    for (const entry of entries) {
-      if (!STORED_NAME.test(entry)) {
-        unrecognised.push(join(shard, entry));
+  const store = blobStore("files");
+  const rootReadable = await store.probe();
+  if (rootReadable) {
+    for await (const object of store.list()) {
+      const entry = object.name.split("/").pop() ?? object.name;
+      if (!STORED_NAME.test(entry) || object.name !== `${entry.slice(0, 2)}/${entry}`) {
+        unrecognised.push(object.name);
         continue;
       }
-      const info = await stat(join(shardPath, entry)).catch(() => null);
-      if (!info?.isFile()) continue;
-      files.push({ fileId: entry, bytes: info.size, modifiedAt: info.mtime });
+      files.push({ fileId: entry, bytes: object.size, modifiedAt: object.modifiedAt });
     }
   }
 
@@ -172,7 +158,7 @@ export async function reclaimOrphans(
    * "done" is not. A battery found this reporting a clean sweep of a file.
    */
   if (!rootReadable && referenced.size > 0) {
-    throw new Error(`Storage root ${storageRoot()} is not readable, but ${referenced.size} file(s) are on record — nothing swept`);
+    throw new Error(`Storage (${blobStore("files").describe()}) is not readable, but ${referenced.size} file(s) are on record — nothing swept`);
   }
 
   // The other direction: a record whose bytes are not there. Only judged when
@@ -207,10 +193,9 @@ export async function reclaimOrphans(
   if (!dryRun) {
     for (const orphan of orphans) {
       // Rebuilt from the validated name, never from anything user-supplied, so
-      // this cannot address a path outside the storage root.
-      const target = join(storageRoot(), orphan.fileId.slice(0, 2), orphan.fileId);
+      // this cannot address anything outside the originals namespace.
       try {
-        await unlink(target);
+        await blobStore("files").delete(`${orphan.fileId.slice(0, 2)}/${orphan.fileId}`);
         deleted.push(orphan.fileId);
         bytesReclaimed += orphan.bytes;
         // A phone's unattached upload is an orphan like any other once the

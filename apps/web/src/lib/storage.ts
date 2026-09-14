@@ -1,13 +1,14 @@
 import "server-only";
 import { createHash, randomUUID } from "node:crypto";
-import { mkdir, readFile, unlink, writeFile } from "node:fs/promises";
 import sharp from "sharp";
-import { dirname, join, resolve } from "node:path";
+import { blobStore } from "./blob-store";
 import { stripImageMetadata } from "./image-metadata";
 import type { TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
- * Local file storage.
+ * File storage: what may be stored and under what name. WHERE the bytes go —
+ * this machine's disk, or a bucket when STORAGE_BUCKET is set — is
+ * blob-store.ts's business, and nothing in here knows the difference.
  *
  * Files are written OUTSIDE ./public on purpose. Anything under public/ is
  * served by the web server with no auth check at all, so a school logo would be
@@ -19,8 +20,6 @@ import type { TranslationKey } from "@/lib/i18n/dictionary";
  * called "../../.env" or "index.html" cannot escape the directory or be served
  * as something executable.
  */
-
-const ROOT = resolve(process.cwd(), process.env.STORAGE_DIR ?? "./storage");
 
 /** Whitelist. Anything not on this list is refused, rather than blacklisted. */
 const ALLOWED: Record<string, { ext: string; kind: "image" | "file" | "video" }> = {
@@ -132,10 +131,7 @@ export async function storeFile(file: File, opts: { maxBytes?: number } = {}): P
   const clean = stripImageMetadata(buffer, detected);
 
   const fileId = `${randomUUID()}.${spec.ext}`;
-  const target = pathFor(fileId);
-
-  await mkdir(dirname(target), { recursive: true });
-  await writeFile(target, clean);
+  await blobStore("files").put(nameFor(fileId), clean, detected);
 
   return {
     fileId,
@@ -151,23 +147,18 @@ export async function storeFile(file: File, opts: { maxBytes?: number } = {}): P
 export async function readStoredFile(fileId: string): Promise<{ bytes: Buffer; mime: string } | null> {
   const safe = sanitizeFileId(fileId);
   if (!safe) return null;
-  try {
-    const bytes = await readFile(pathFor(safe));
-    const ext = safe.split(".").pop() ?? "";
-    const mime =
-      Object.entries(ALLOWED).find(([, spec]) => spec.ext === ext)?.[0] ?? "application/octet-stream";
-    return { bytes, mime };
-  } catch {
-    return null;
-  }
+  const bytes = await blobStore("files").get(nameFor(safe));
+  if (!bytes) return null;
+  const ext = safe.split(".").pop() ?? "";
+  const mime =
+    Object.entries(ALLOWED).find(([, spec]) => spec.ext === ext)?.[0] ?? "application/octet-stream";
+  return { bytes, mime };
 }
 
 export async function deleteStoredFile(fileId: string): Promise<void> {
   const safe = sanitizeFileId(fileId);
   if (!safe) return;
-  await unlink(pathFor(safe)).catch(() => {
-    // Already gone is the desired end state.
-  });
+  await blobStore("files").delete(nameFor(safe));
 }
 
 /**
@@ -178,9 +169,9 @@ function sanitizeFileId(fileId: string): string | null {
   return /^[0-9a-f-]{36}\.[a-z0-9]{2,5}$/i.test(fileId) ? fileId : null;
 }
 
-/** Shards into 2-char prefix directories so one flat dir never holds 100k files. */
-function pathFor(fileId: string): string {
-  return join(ROOT, fileId.slice(0, 2), fileId);
+/** Shards into 2-char prefixes so one flat directory (or listing) never holds 100k files. */
+export function nameFor(fileId: string): string {
+  return `${fileId.slice(0, 2)}/${fileId}`;
 }
 
 /** Stable ETag so the file route can answer 304 without re-reading. */
@@ -200,13 +191,13 @@ export function etagFor(bytes: Buffer): string {
 export const VARIANT_WIDTHS = [320, 640, 1280] as const;
 export type VariantWidth = (typeof VARIANT_WIDTHS)[number];
 
-/**
- * Where variants live: BESIDE the store, not in it. `files:check` walks the
- * store and reports anything it does not recognise, and a variant is not a
- * record — it is a cache, regenerated from the original whenever it is
- * missing. STORAGE_DIR=/mnt/files gives /mnt/files-variants.
+/*
+ * Variants live BESIDE the store, not in it — the "variants" namespace of
+ * blob-store.ts (STORAGE_DIR=/mnt/files gives /mnt/files-variants; a bucket
+ * gets a variants/ prefix). `files:check` walks the originals and reports
+ * anything it does not recognise, and a variant is not a record — it is a
+ * cache, regenerated from the original whenever it is missing.
  */
-const VARIANTS_ROOT = `${ROOT}-variants`;
 
 /**
  * The original resized to `width` (never enlarged) as WebP, made once and
@@ -224,18 +215,15 @@ export async function readStoredVariant(
   if (!original) return null;
   if (!/^image\/(jpeg|png|webp)$/.test(original.mime)) return original;
 
-  const target = join(VARIANTS_ROOT, safe.slice(0, 2), `${safe}.w${width}.webp`);
-  try {
-    return { bytes: await readFile(target), mime: "image/webp" };
-  } catch {
-    /* not made yet */
-  }
+  const variants = blobStore("variants");
+  const name = `${safe.slice(0, 2)}/${safe}.w${width}.webp`;
+  const cached = await variants.get(name);
+  if (cached) return { bytes: cached, mime: "image/webp" };
   const bytes = await sharp(original.bytes, { failOn: "none" })
     .rotate()
     .resize({ width, withoutEnlargement: true })
     .webp({ quality: 80 })
     .toBuffer();
-  await mkdir(join(VARIANTS_ROOT, safe.slice(0, 2)), { recursive: true });
-  await writeFile(target, bytes);
+  await variants.put(name, bytes, "image/webp");
   return { bytes, mime: "image/webp" };
 }

@@ -340,6 +340,56 @@ function isDeployed(): boolean {
   return !/^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(:|\/|$)/.test(url);
 }
 
+/**
+ * Where uploads go. Nothing set means this machine's disk under STORAGE_DIR,
+ * which is right on a laptop and on one machine with a volume. A bucket is
+ * five variables, ALL-OR-NOTHING like an SSO provider: a half-set block is
+ * not a choice, it is a typo — and, unlike SSO, the consequence of ignoring
+ * it is silent: uploads would land on a disk the next deploy throws away. So
+ * `checkEnv` makes a half-set bucket fatal when deployed.
+ *
+ *   STORAGE_BUCKET                 the bucket name
+ *   STORAGE_S3_ENDPOINT            https://s3.ap-south-1.amazonaws.com, https://<account>.r2.cloudflarestorage.com, …
+ *   STORAGE_S3_REGION              ap-south-1 for AWS, "auto" for R2, the endpoint's region for B2
+ *   STORAGE_S3_ACCESS_KEY_ID
+ *   STORAGE_S3_SECRET_ACCESS_KEY
+ *   STORAGE_S3_PREFIX              optional, "edulink/" to share a bucket
+ *   STORAGE_S3_PATH_STYLE          optional, "false" for virtual-hosted addressing; path-style otherwise
+ */
+export const STORAGE_BUCKET_VARS = ["STORAGE_BUCKET", "STORAGE_S3_ENDPOINT", "STORAGE_S3_REGION", "STORAGE_S3_ACCESS_KEY_ID", "STORAGE_S3_SECRET_ACCESS_KEY"] as const;
+
+export type StorageConfig = {
+  dir: string;
+  bucket: { bucket: string; endpoint: string; region: string; accessKeyId: string; secretAccessKey: string; prefix: string; pathStyle: boolean } | null;
+  problems: { key: string; message: string }[];
+};
+
+export function readStorageConfig(): StorageConfig {
+  const dir = process.env.STORAGE_DIR?.trim() || "./storage";
+  const values = Object.fromEntries(STORAGE_BUCKET_VARS.map((k) => [k, process.env[k]?.trim() ?? ""])) as Record<(typeof STORAGE_BUCKET_VARS)[number], string>;
+  const set = STORAGE_BUCKET_VARS.filter((k) => values[k]);
+  if (set.length === 0) return { dir, bucket: null, problems: [] };
+  const problems: { key: string; message: string }[] = [];
+  for (const k of STORAGE_BUCKET_VARS) {
+    if (!values[k]) problems.push({ key: k, message: `${k} is not set, but ${set[0]} is — a bucket needs all five of ${STORAGE_BUCKET_VARS.join(", ")}. Uploads are going to the disk at ${dir} until it does.` });
+  }
+  let endpoint = values.STORAGE_S3_ENDPOINT;
+  if (endpoint && !/^https?:\/\//.test(endpoint)) problems.push({ key: "STORAGE_S3_ENDPOINT", message: `STORAGE_S3_ENDPOINT is "${endpoint}" — expected a URL such as https://s3.ap-south-1.amazonaws.com.` });
+  if (endpoint && /^http:\/\//.test(endpoint) && !/^http:\/\/(localhost|127\.0\.0\.1)(:|\/|$)/.test(endpoint) && isDeployed()) {
+    problems.push({ key: "STORAGE_S3_ENDPOINT", message: "STORAGE_S3_ENDPOINT is http:// — every upload and its credentials would cross the network in the clear." });
+  }
+  if (problems.length) return { dir, bucket: null, problems };
+  endpoint = endpoint.replace(/\/+$/, "");
+  const prefixRaw = process.env.STORAGE_S3_PREFIX?.trim().replace(/^\/+/, "") ?? "";
+  const prefix = prefixRaw && !prefixRaw.endsWith("/") ? `${prefixRaw}/` : prefixRaw;
+  const pathStyle = (process.env.STORAGE_S3_PATH_STYLE?.trim().toLowerCase() ?? "true") !== "false";
+  return {
+    dir,
+    bucket: { bucket: values.STORAGE_BUCKET, endpoint, region: values.STORAGE_S3_REGION, accessKeyId: values.STORAGE_S3_ACCESS_KEY_ID, secretAccessKey: values.STORAGE_S3_SECRET_ACCESS_KEY, prefix, pathStyle },
+    problems: [],
+  };
+}
+
 export function checkEnv(): EnvProblem[] {
   const problems: EnvProblem[] = [];
   const isProd = isDeployed();
@@ -365,6 +415,11 @@ export function checkEnv(): EnvProblem[] {
   if (!process.env.DATABASE_URL?.trim()) {
     problems.push({ key: "DATABASE_URL", message: "DATABASE_URL is not set.", fatal: true });
   }
+
+  // A half-set bucket: fatal when deployed (the disk it falls back to is the
+  // one the next deploy throws away), loud on a laptop.
+  const storage = readStorageConfig();
+  for (const problem of storage.problems) problems.push({ ...problem, fatal: isProd });
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL?.trim();
   if (!appUrl) {

@@ -6,8 +6,10 @@ Two kinds, both required:
   to five minutes before the mistake. Enable it on day one; it is a checkbox.
 - **Nightly logical dump** with `ops/backup.sh` — restores to a laptop, to
   staging, to a different provider. Kept fourteen days locally and copied to a
-  second bucket when `BACKUP_BUCKET` is set. Uploads (`STORAGE_DIR`) are
-  replicated by the bucket's own rule once the S3 adapter lands.
+  second bucket when `BACKUP_BUCKET` is set. Uploads live in their own bucket
+  (`STORAGE_BUCKET`, `docs/runbooks/deploy.md` "Uploads") and are covered by
+  that bucket's versioning or replication rule, not by this dump; on a
+  single-volume deployment they are covered by the volume's snapshots.
 
 ## The drill
 
