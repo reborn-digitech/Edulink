@@ -24,7 +24,7 @@ Counts are Unicode code points, which is what both consoles count for Devanagari
 
 ## Placeholders the founder fills
 
-Written in ALL CAPS so a search finds them: `SUPPORT_EMAIL`, `PRIVACY_URL`, `ACCOUNT_DELETION_URL`, `REVIEWER_LOGIN`, `REVIEWER_PASSWORD`, `MARKETING_URL` (optional). The Apple `ascAppId` / `appleTeamId` and the Play service-account path live in `apps/mobile/eas.json`, not here.
+Written in ALL CAPS so a search finds them: `SUPPORT_EMAIL`, `PRIVACY_URL`, `ACCOUNT_DELETION_URL`, `REVIEWER_LOGIN`, `REVIEWER_PASSWORD`, `MARKETING_URL` (optional). The two URLs are pages the web app serves signed out: `PRIVACY_URL` is `<NEXT_PUBLIC_APP_URL>/privacy` and `ACCOUNT_DELETION_URL` is `<NEXT_PUBLIC_APP_URL>/delete-account`; `SUPPORT_EMAIL` is the same address the web app reads from its `SUPPORT_EMAIL` variable. The Apple `ascAppId` / `appleTeamId` and the Play service-account path live in `apps/mobile/eas.json`, not here.
 
 ## Screenshots
 

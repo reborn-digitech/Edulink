@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import {
@@ -560,6 +562,11 @@ export function RegisterWizard() {
 
             <p className="rounded-[--radius-md] bg-surface-muted p-4 text-xs leading-relaxed text-fg-muted">
               {t("register.dataNote")}
+            </p>
+            <p className="text-xs">
+              <Link href="/privacy" className="font-medium text-accent-strong underline underline-offset-4">
+                {t("register.privacyLink")}
+              </Link>
             </p>
           </div>
         )}

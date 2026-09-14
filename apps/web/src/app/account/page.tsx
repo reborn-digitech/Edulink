@@ -10,6 +10,7 @@ import {
   UsersThreeIcon,
   CertificateIcon,
   CaretRightIcon,
+  UserMinusIcon,
 } from "@phosphor-icons/react/ssr";
 import { requireUser } from "@/lib/tenancy";
 import { db } from "@/lib/db";
@@ -228,6 +229,23 @@ export default async function AccountPage({
           />
         </Card>
       )}
+
+      {/* ---------- closing the account ----------
+        No button, on purpose: the school is the fiduciary and closes an
+        account by ending the membership (docs/decisions/0002). The page says
+        how; Play's deletion requirement points at the same page signed out. */}
+      <Card>
+        <CardHeader
+          icon={<UserMinusIcon weight="duotone" className="size-5" />}
+          title={t("account.closeTitle")}
+          description={t("account.closeDescription")}
+          action={
+            <Button asChild size="sm" variant="secondary">
+              <Link href="/delete-account">{t("account.closeAction")}</Link>
+            </Button>
+          }
+        />
+      </Card>
 
       {/* ---------- another account ---------- */}
       {/*

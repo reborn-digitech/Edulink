@@ -1837,6 +1837,8 @@ async function main() {
   /* ---- public routes, signed out ---- */
   for (const p of [
     "/", "/login", "/register", "/join", "/join/student", "/join/parent", "/offline",
+    // The two pages the stores need a signed-out URL for: PRIVACY_URL and ACCOUNT_DELETION_URL in apps/mobile/store.
+    "/privacy", "/delete-account",
     "/manifest.webmanifest",
     // Getting back in, which by definition nobody signed in is doing — and
     // which has to work for somebody whose sessions their own reset just
