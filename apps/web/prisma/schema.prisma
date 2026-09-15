@@ -156,6 +156,7 @@ model School {
   scheduledDepartures ScheduledDeparture[]
 
   @@index([code])
+  @@index([admissionsContactMembershipId])
 }
 
 // ---------------------------------------------------------------------------
@@ -264,6 +265,8 @@ model User {
   meetingBookings      MeetingBooking[]
 
   @@index([email])
+  // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
+  @@index([mergedIntoUserId])
 }
 
 model Membership {
@@ -501,6 +504,7 @@ model AttendanceSession {
 
   @@unique([classId, dateKey])
   @@index([schoolId, dateKey])
+  @@index([takenByMembershipId])
 }
 
 /// A child's report card for a term, as the class teacher issued it.
@@ -571,6 +575,7 @@ model ReportCard {
   @@unique([classId, studentMembershipId, title])
   @@index([schoolId, classId, status])
   @@index([studentMembershipId, status])
+  @@index([createdByMembershipId])
 }
 
 /// One assessment on a report card, as it stood when the card was made.
@@ -642,6 +647,8 @@ model LeaveRequest {
 
   @@index([schoolId, status, fromDateKey])
   @@index([teacherMembershipId])
+  @@index([nominatedCoverMembershipId])
+  @@index([decidedByMembershipId])
 }
 
 /// Somebody else may take this class's register, for these days.
@@ -682,6 +689,8 @@ model AttendanceCover {
   @@index([schoolId, classId, fromDateKey])
   @@index([coveringMembershipId])
   @@index([leaveRequestId])
+  @@index([createdByMembershipId])
+  @@index([classId])
 }
 
 model AttendanceRecord {
@@ -705,6 +714,7 @@ model AttendanceRecord {
   @@unique([sessionId, studentMembershipId])
   @@index([schoolId, studentMembershipId])
   @@index([clientId])
+  @@index([studentMembershipId])
 }
 
 // ---------------------------------------------------------------------------
@@ -821,6 +831,7 @@ model TimetableSlot {
   @@unique([schoolId, weekday, periodId, teacherMembershipId])
   @@index([schoolId, teacherMembershipId, weekday])
   @@index([schoolId, classId])
+  @@index([teacherMembershipId])
 }
 
 // ---------------------------------------------------------------------------
@@ -874,6 +885,7 @@ model ExamSeries {
 
   @@unique([schoolId, gradeLevel, name])
   @@index([schoolId, gradeLevel])
+  @@index([createdByMembershipId])
 }
 
 /// One subject's paper on the date sheet: what, when, out of how much.
@@ -955,6 +967,7 @@ model Assignment {
   @@unique([examSlotId, classId])
   @@index([schoolId, dueAt])
   @@index([classId, publishedAt])
+  @@index([authorMembershipId])
 }
 
 model Submission {
@@ -975,6 +988,7 @@ model Submission {
 
   @@unique([assignmentId, studentMembershipId])
   @@index([schoolId, status])
+  @@index([studentMembershipId])
 }
 
 /// How a class weights its categories of work: Homework 20%, Exam 50%, and so on.
@@ -1044,6 +1058,7 @@ model GlobalPostHide {
 
   @@unique([schoolId, postId])
   @@index([schoolId])
+  @@index([hiddenByMembershipId])
 }
 
 model Grade {
@@ -1067,6 +1082,8 @@ model Grade {
 
   @@unique([assignmentId, studentMembershipId])
   @@index([schoolId, studentMembershipId])
+  @@index([studentMembershipId])
+  @@index([gradedByMembershipId])
 }
 
 // ---------------------------------------------------------------------------
@@ -1091,6 +1108,7 @@ model RemarkThread {
 
   @@index([schoolId, lastMessageAt])
   @@index([studentMembershipId])
+  @@index([teacherMembershipId])
 }
 
 model RemarkMessage {
@@ -1111,6 +1129,8 @@ model RemarkMessage {
 
   @@index([threadId, createdAt])
   @@index([schoolId])
+  // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
+  @@index([authorUserId])
 }
 
 // ---------------------------------------------------------------------------
@@ -1147,6 +1167,7 @@ model MeetingSlot {
 
   @@index([schoolId, teacherMembershipId, startsAt])
   @@index([schoolId, startsAt])
+  @@index([teacherMembershipId])
 }
 
 /// One family's claim on one slot, about one child.
@@ -1178,6 +1199,8 @@ model MeetingBooking {
 
   @@index([schoolId, parentUserId])
   @@index([studentMembershipId])
+  // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
+  @@index([parentUserId])
 }
 
 // ---------------------------------------------------------------------------
@@ -1253,6 +1276,10 @@ model Post {
   @@index([schoolId, status, createdAt])
   @@index([scope, status, createdAt])
   @@index([classId, status])
+  // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
+  @@index([authorUserId])
+  @@index([reviewedByMembershipId])
+  @@index([authorMembershipId])
 }
 
 model Comment {
@@ -1282,6 +1309,8 @@ model Comment {
   @@index([postId, createdAt])
   @@index([parentCommentId])
   @@index([schoolId])
+  // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
+  @@index([authorUserId])
 }
 
 model Reaction {
@@ -1301,6 +1330,8 @@ model Reaction {
 
   @@unique([postId, userId, kind])
   @@index([schoolId])
+  // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
+  @@index([userId])
 }
 
 /// One person's "seen and understood" on one circular.
@@ -1328,6 +1359,8 @@ model PostAck {
 
   @@unique([postId, userId])
   @@index([schoolId])
+  // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
+  @@index([userId])
 }
 
 model Report {
@@ -1348,6 +1381,8 @@ model Report {
 
   @@index([schoolId, status])
   @@index([targetType, targetId])
+  // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
+  @@index([reporterUserId])
 }
 
 // ---------------------------------------------------------------------------
@@ -1392,6 +1427,7 @@ model Competition {
   standings       CompetitionStanding[]
 
   @@index([status, registrationClosesAt])
+  @@index([organizerSchoolId])
 }
 
 /// How one SCHOOL is doing in a competition. The cross-school surface.
@@ -1478,6 +1514,7 @@ model CompetitionEntry {
 
   @@unique([competitionId, studentMembershipId])
   @@index([schoolId])
+  @@index([studentMembershipId])
 }
 
 // ---------------------------------------------------------------------------
@@ -1570,6 +1607,7 @@ model Invite {
 
   @@index([schoolId, status])
   @@index([email])
+  @@index([createdByMembershipId])
 }
 
 model AuthToken {
@@ -1587,17 +1625,19 @@ model AuthToken {
   user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([email, purpose])
+  // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
+  @@index([userId])
 }
 
 model Notification {
-  id       String  @id @default(cuid())
-  userId   String
-  schoolId String?
-  kind     String // ATTENDANCE | GRADE | ASSIGNMENT | REMARK | POST | INVITE | SYSTEM
-  title    String
-  body     String  @default("")
-  url      String?
-  meta     String  @default("{}")
+  id        String  @id @default(cuid())
+  userId    String
+  schoolId  String?
+  kind      String // ATTENDANCE | GRADE | ASSIGNMENT | REMARK | POST | INVITE | SYSTEM
+  title     String
+  body      String  @default("")
+  url       String?
+  meta      String  @default("{}")
   /// The sentence's key and variables, kept beside the rendered text so a
   /// reader who changes language reads old notices in the new one. Null on
   /// rows written before the columns existed and on literal titles.
@@ -1699,6 +1739,7 @@ model ReviewRound {
   responses ReviewResponse[]
 
   @@index([schoolId, status])
+  @@index([createdByMembershipId])
 }
 
 /// Which teachers a round asks about. Explicit rows, not "everyone at open
@@ -1718,6 +1759,7 @@ model ReviewRoundTeacher {
 
   @@unique([roundId, teacherMembershipId])
   @@index([teacherMembershipId])
+  @@index([schoolId])
 }
 
 /// One person's ratings of one teacher in one round.
@@ -1745,6 +1787,9 @@ model ReviewResponse {
 
   @@unique([roundId, teacherMembershipId, respondentUserId])
   @@index([schoolId, teacherMembershipId])
+  // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
+  @@index([respondentUserId])
+  @@index([teacherMembershipId])
 }
 
 model AuditLog {
@@ -2234,6 +2279,7 @@ model QuizAttempt {
   responses QuizResponse[]
 
   @@index([schoolId, studentMembershipId, topicId])
+  @@index([studentMembershipId])
 }
 
 /// One answer to one question inside an attempt.
@@ -2319,6 +2365,8 @@ model PracticeAssignment {
   createdBy Membership @relation("PracticeAssigner", fields: [createdById], references: [id], onDelete: Cascade)
 
   @@index([schoolId, classId, archivedAt])
+  @@index([createdById])
+  @@index([classId])
 }
 
 // ---------------------------------------------------------------------------
@@ -2464,6 +2512,7 @@ model ExpertBooking {
 
   @@index([schoolId, status])
   @@index([expertProfileId])
+  @@index([bookedByMembershipId])
 }
 
 /// A message on a booking, between school staff and the expert.
@@ -2488,6 +2537,8 @@ model ExpertMessage {
   author  User          @relation(fields: [authorUserId], references: [id], onDelete: Cascade)
 
   @@index([schoolId, bookingId, createdAt])
+  // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
+  @@index([authorUserId])
 }
 
 /// An invitation to become an expert, by link.
@@ -2520,6 +2571,7 @@ model ExpertInvite {
   invitedBy Membership? @relation("ExpertInviteCreator", fields: [invitedByMembershipId], references: [id], onDelete: SetNull)
 
   @@index([schoolId])
+  @@index([invitedByMembershipId])
 }
 
 /// Mentoring — one expert mentoring one child.
@@ -2583,6 +2635,7 @@ model MentorThread {
   @@unique([expertProfileId, studentMembershipId])
   @@index([schoolId, status])
   @@index([studentMembershipId])
+  @@index([createdByMembershipId])
 }
 
 /// One message in a mentorship. Same shape as RemarkMessage, deliberately.
@@ -2603,6 +2656,8 @@ model MentorMessage {
   author User         @relation(fields: [authorUserId], references: [id], onDelete: Cascade)
 
   @@index([schoolId, threadId, createdAt])
+  // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
+  @@index([authorUserId])
 }
 
 /// A single-use way back in when the phone with the authenticator is gone.
@@ -2741,6 +2796,8 @@ model JobPosting {
 
   @@index([schoolId, status])
   @@index([status, createdAt])
+  @@index([hiringContactMembershipId])
+  @@index([postedByMembershipId])
 }
 
 /// One person's conversation with a school they do not belong to.
@@ -2815,6 +2872,8 @@ model EnquiryMessage {
   author  User    @relation("EnquiryMessageAuthor", fields: [authorUserId], references: [id], onDelete: Cascade)
 
   @@index([schoolId, enquiryId, createdAt])
+  // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
+  @@index([authorUserId])
 }
 
 // ---------------------------------------------------------------------------
@@ -2870,6 +2929,8 @@ model ConversationParticipant {
 
   @@unique([conversationId, userId])
   @@index([schoolId, userId])
+  // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
+  @@index([userId])
 }
 
 model ConversationMessage {
@@ -2891,4 +2952,6 @@ model ConversationMessage {
   @@unique([conversationId, clientId])
   @@index([conversationId, createdAt])
   @@index([schoolId])
+  // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
+  @@index([authorUserId])
 }

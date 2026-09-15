@@ -48,6 +48,16 @@ export type MergeResult = {
   sessionId: string;
 };
 
+/** The slice of the transaction client the register uses; the same idiom as `TenantTx` in membership.ts. */
+type RegisterTx = {
+  enrollment: { findMany(args: unknown): Promise<{ studentMembershipId: string }[]> };
+  attendanceSession: { upsert(args: unknown): Promise<{ id: string }> };
+  attendanceRecord: {
+    findMany(args: unknown): Promise<{ id: string; studentMembershipId: string; status: string; clientId: string | null; markedAt: Date }[]>;
+    upsert(args: unknown): Promise<unknown>;
+  };
+};
+
 export async function saveAttendanceBatch(opts: {
   schoolId: string;
   classId: string;
@@ -60,109 +70,128 @@ export async function saveAttendanceBatch(opts: {
 }): Promise<MergeResult> {
   const { schoolId, classId, dateKey, marks, takenByMembershipId, actorUserId } = opts;
 
-  // Only students actually enrolled in THIS class, in THIS school, may be
-  // marked. Anything else in the payload is rejected rather than silently
-  // dropped, so a bug upstream is visible instead of quietly losing a child.
-  const enrolled = await db.enrollment.findMany({
-    where: {
-      classId,
-      status: "ACTIVE",
-      class: { schoolId },
-      studentMembershipId: { in: marks.map((m) => m.studentMembershipId) },
-    },
-    select: { studentMembershipId: true },
-  });
-  const allowed = new Set(enrolled.map((e) => e.studentMembershipId));
+  /**
+   * ONE TRANSACTION FOR THE WHOLE REGISTER. Each call on `db` sets the
+   * tenant and runs in a transaction of its own — four round-trips before
+   * the statement, and a wait for a pooled connection every time. Written as
+   * fifty separate upserts, a fifty-pupil register was fifty of those, and
+   * under a fleet's parent traffic each one queued behind the pool: the
+   * load test measured 12 s per register at thirty teachers, 64 s at fifty.
+   * Inside `$tenantTransaction` the tenant is set once and the marks ride one
+   * connection; the notifications and the live-update publish stay outside,
+   * after the commit, so a guardian is never told about a mark that rolled
+   * back. Nothing about which marks apply changes: the replay and stale-mark
+   * rules below are the same, only now they run on `tx`.
+   */
+  const { rejected, session, applied, skipped, newlyAbsent } = await db.$tenantTransaction(async (raw: unknown) => {
+    const tx = raw as RegisterTx;
 
-  const rejected: MergeResult["rejected"] = [];
-  const valid = marks.filter((mark) => {
-    if (allowed.has(mark.studentMembershipId)) return true;
-    rejected.push({
-      studentMembershipId: mark.studentMembershipId,
-      reason: "Not enrolled in this class",
-    });
-    return false;
-  });
-
-  // The session row is the unit that makes (class, date) unique. upsert rather
-  // than create so two teachers opening the register at once do not collide.
-  const session = await db.attendanceSession.upsert({
-    where: { classId_dateKey: { classId, dateKey } },
-    create: { schoolId, classId, dateKey, takenByMembershipId },
-    update: { takenByMembershipId, takenAt: new Date() },
-  });
-
-  const existing = await db.attendanceRecord.findMany({
-    where: { sessionId: session.id, studentMembershipId: { in: valid.map((m) => m.studentMembershipId) } },
-    select: {
-      id: true,
-      studentMembershipId: true,
-      status: true,
-      clientId: true,
-      markedAt: true,
-    },
-  });
-  const byStudent = new Map(existing.map((row) => [row.studentMembershipId, row]));
-
-  let applied = 0;
-  let skipped = 0;
-  const newlyAbsent: { studentMembershipId: string; status: AttendanceStatus }[] = [];
-
-  for (const mark of valid) {
-    const previous = byStudent.get(mark.studentMembershipId);
-    const parsedAt = mark.markedAt ? new Date(mark.markedAt) : null;
-    // A device that sends garbage for its clock is not a reason to refuse
-    // the mark, and an Invalid Date would have thrown from the upsert.
-    const markedAt = parsedAt && !Number.isNaN(parsedAt.getTime()) ? parsedAt : new Date();
-
-    if (previous) {
-      // Exact replay of a mark we already stored.
-      if (previous.clientId && previous.clientId === mark.clientId) {
-        skipped++;
-        continue;
-      }
-      // A stale replay must not overwrite a newer correction. Equal timestamps
-      // fall through and apply, so a same-millisecond retry still converges.
-      if (previous.markedAt.getTime() > markedAt.getTime()) {
-        skipped++;
-        continue;
-      }
-    }
-
-    await db.attendanceRecord.upsert({
+    // Only students actually enrolled in THIS class, in THIS school, may be
+    // marked. Anything else in the payload is rejected rather than silently
+    // dropped, so a bug upstream is visible instead of quietly losing a child.
+    const enrolled = await tx.enrollment.findMany({
       where: {
-        sessionId_studentMembershipId: {
-          sessionId: session.id,
-          studentMembershipId: mark.studentMembershipId,
-        },
+        classId,
+        status: "ACTIVE",
+        class: { schoolId },
+        studentMembershipId: { in: marks.map((m) => m.studentMembershipId) },
       },
-      create: {
-        sessionId: session.id,
-        schoolId,
+      select: { studentMembershipId: true },
+    });
+    const allowed = new Set(enrolled.map((e) => e.studentMembershipId));
+
+    const rejected: MergeResult["rejected"] = [];
+    const valid = marks.filter((mark) => {
+      if (allowed.has(mark.studentMembershipId)) return true;
+      rejected.push({
         studentMembershipId: mark.studentMembershipId,
-        status: mark.status,
-        note: mark.note?.trim() || null,
-        clientId: mark.clientId,
-        markedAt,
-      },
-      update: {
-        status: mark.status,
-        note: mark.note?.trim() || null,
-        clientId: mark.clientId,
-        markedAt,
-      },
+        reason: "Not enrolled in this class",
+      });
+      return false;
     });
 
-    applied++;
+    // The session row is the unit that makes (class, date) unique. upsert rather
+    // than create so two teachers opening the register at once do not collide.
+    const session = await tx.attendanceSession.upsert({
+      where: { classId_dateKey: { classId, dateKey } },
+      create: { schoolId, classId, dateKey, takenByMembershipId },
+      update: { takenByMembershipId, takenAt: new Date() },
+    });
 
-    // Told on every change INTO an absence: present → late, and also late →
-    // absent, which used to slip through as "already not present".
-    const becameNotPresent = mark.status !== "PRESENT";
-    const changed = !previous || previous.status !== mark.status;
-    if (becameNotPresent && changed) {
-      newlyAbsent.push({ studentMembershipId: mark.studentMembershipId, status: mark.status });
+    const existing = await tx.attendanceRecord.findMany({
+      where: { sessionId: session.id, studentMembershipId: { in: valid.map((m) => m.studentMembershipId) } },
+      select: {
+        id: true,
+        studentMembershipId: true,
+        status: true,
+        clientId: true,
+        markedAt: true,
+      },
+    });
+    const byStudent = new Map(existing.map((row) => [row.studentMembershipId, row]));
+
+    let applied = 0;
+    let skipped = 0;
+    const newlyAbsent: { studentMembershipId: string; status: AttendanceStatus }[] = [];
+
+    for (const mark of valid) {
+      const previous = byStudent.get(mark.studentMembershipId);
+      const parsedAt = mark.markedAt ? new Date(mark.markedAt) : null;
+      // A device that sends garbage for its clock is not a reason to refuse
+      // the mark, and an Invalid Date would have thrown from the upsert.
+      const markedAt = parsedAt && !Number.isNaN(parsedAt.getTime()) ? parsedAt : new Date();
+
+      if (previous) {
+        // Exact replay of a mark we already stored.
+        if (previous.clientId && previous.clientId === mark.clientId) {
+          skipped++;
+          continue;
+        }
+        // A stale replay must not overwrite a newer correction. Equal timestamps
+        // fall through and apply, so a same-millisecond retry still converges.
+        if (previous.markedAt.getTime() > markedAt.getTime()) {
+          skipped++;
+          continue;
+        }
+      }
+
+      await tx.attendanceRecord.upsert({
+        where: {
+          sessionId_studentMembershipId: {
+            sessionId: session.id,
+            studentMembershipId: mark.studentMembershipId,
+          },
+        },
+        create: {
+          sessionId: session.id,
+          schoolId,
+          studentMembershipId: mark.studentMembershipId,
+          status: mark.status,
+          note: mark.note?.trim() || null,
+          clientId: mark.clientId,
+          markedAt,
+        },
+        update: {
+          status: mark.status,
+          note: mark.note?.trim() || null,
+          clientId: mark.clientId,
+          markedAt,
+        },
+      });
+
+      applied++;
+
+      // Told on every change INTO an absence: present → late, and also late →
+      // absent, which used to slip through as "already not present".
+      const becameNotPresent = mark.status !== "PRESENT";
+      const changed = !previous || previous.status !== mark.status;
+      if (becameNotPresent && changed) {
+        newlyAbsent.push({ studentMembershipId: mark.studentMembershipId, status: mark.status });
+      }
     }
-  }
+
+    return { rejected, session, applied, skipped, newlyAbsent };
+  });
 
   if (applied > 0) {
     publish([channel.class(classId), channel.school(schoolId)], {
