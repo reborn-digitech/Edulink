@@ -11,11 +11,23 @@ primary_region = "bom"
   release_command = "npm run db:migrate"
   strategy = "rolling"
 
+# Two process groups from one image. `web` serves; `jobs` starts the same
+# server on loopback (127.0.0.1:3999, nothing routes to it) and kicks the
+# in-process schedule (scripts/jobs-runner.mjs -> src/lib/job-scheduler.ts)
+# on the owner connection; it is kept out of the http service below. Run one
+# jobs machine: `fly scale count web=2 jobs=1`.
+[processes]
+  web = "node server.js"
+  jobs = "node scripts/jobs-runner.mjs"
+
 [env]
   NODE_ENV = "production"
   PORT = "3000"
+  # The job schedules are read in this zone: 03:30 is 03:30 in India.
+  TZ = "Asia/Kolkata"
 
 [http_service]
+  processes = ["web"]
   internal_port = 3000
   force_https = true
   auto_stop_machines = false

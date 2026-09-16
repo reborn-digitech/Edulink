@@ -421,6 +421,18 @@ export function checkEnv(): EnvProblem[] {
   const storage = readStorageConfig();
   for (const problem of storage.problems) problems.push({ ...problem, fatal: isProd });
 
+  // The jobs runner without the owner connection would run every job under
+  // the app role, and every cross-tenant sweep would quietly find nothing.
+  if (process.env.JOBS_RUNNER === "1") {
+    if (!process.env.DATABASE_ADMIN_URL?.trim()) {
+      problems.push({ key: "DATABASE_ADMIN_URL", message: "JOBS_RUNNER=1 but DATABASE_ADMIN_URL is not set — a job is operator work and reaches every tenant, so the runner must connect as the owner.", fatal: true });
+    }
+    const host = process.env.HOSTNAME?.trim();
+    if (isProd && host !== "127.0.0.1" && host !== "localhost") {
+      problems.push({ key: "HOSTNAME", message: `JOBS_RUNNER=1 with HOSTNAME=${host || "(unset, 0.0.0.0)"} — a server on the owner connection must listen on loopback only. Set HOSTNAME=127.0.0.1.`, fatal: true });
+    }
+  }
+
   const appUrl = process.env.NEXT_PUBLIC_APP_URL?.trim();
   if (!appUrl) {
     problems.push({

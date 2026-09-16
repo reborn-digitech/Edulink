@@ -42,6 +42,11 @@ const globalForPrisma = globalThis as unknown as { prisma?: ExtendedClient };
 function createClient() {
   const base = new PrismaClient({
     log: process.env.NODE_ENV === "development" ? ["warn", "error"] : ["error"],
+    // The jobs runner (JOBS_RUNNER=1, see job-scheduler.ts) is operator
+    // work and reaches every tenant, so it connects as the owner — the same
+    // door `npm run job` takes through with-admin-db. Every other process
+    // connects as the app role and stays inside the row-level policies.
+    ...(process.env.JOBS_RUNNER === "1" && process.env.DATABASE_ADMIN_URL ? { datasourceUrl: process.env.DATABASE_ADMIN_URL } : {}),
   });
 
   /**

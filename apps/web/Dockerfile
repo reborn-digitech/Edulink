@@ -41,7 +41,7 @@ COPY --from=build --chown=app:app /repo/apps/web/.next/standalone ./
 COPY --from=build --chown=app:app /repo/apps/web/.next/static ./apps/web/.next/static
 COPY --from=build --chown=app:app /repo/apps/web/public ./apps/web/public
 COPY --from=build --chown=app:app /repo/apps/web/prisma ./apps/web/prisma
-COPY --from=build --chown=app:app /repo/apps/web/scripts/with-admin-db.mjs /repo/apps/web/scripts/db-grants.mjs ./apps/web/scripts/
+COPY --from=build --chown=app:app /repo/apps/web/scripts/with-admin-db.mjs /repo/apps/web/scripts/db-grants.mjs /repo/apps/web/scripts/jobs-runner.mjs ./apps/web/scripts/
 COPY --from=build --chown=app:app /repo/node_modules/.pnpm/node_modules/.bin/prisma /usr/local/bin/prisma
 USER app
 WORKDIR /app/apps/web

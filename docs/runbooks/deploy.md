@@ -50,11 +50,32 @@ release and note the time it took beside the restore drill in
 
 ## Scheduled jobs
 
-`src/lib/jobs.ts` is the registry. On a VM, `npm run cron:install` on the
-host puts the block in the operator's crontab. On Fly, run the same
-schedule from a second process group or a scheduled machine that executes
-`npm run job -- <name>`; the JobRun row is the lock, so two machines firing
-the same minute is safe. `/root/jobs` shows whether each one has run.
+`src/lib/jobs.ts` is the registry. On a VM with a checkout, `npm run
+cron:install` puts the block in the operator's crontab. In the container —
+which has no crontab, no tsx and no scripts directory — a second process
+group from the same image runs the schedule in-process:
+`node scripts/jobs-runner.mjs`, which starts the server on loopback with
+`JOBS_RUNNER=1` and kicks `POST /api/internal/jobs` (a route that answers
+404 in any other process) to start `src/lib/job-scheduler.ts`. `fly.toml`
+declares it as the `jobs` process and keeps it out of the http service;
+`fly scale count web=2 jobs=1`. The runner connects as the owner
+(`DATABASE_ADMIN_URL`, which the release step already needs), which is why it
+binds to loopback and `env.ts` refuses to start it any other way when
+deployed. Schedules are read in `TZ` (Asia/Kolkata in `fly.toml`). The JobRun
+row is still the lock, so a crontab and a runner firing the same minute is
+safe; `/root/jobs` shows whether each job has run. CI's `image` job starts
+the runner from the built image and asserts the schedule came up.
+
+## The image
+
+CI's `image` job builds `apps/web/Dockerfile` on every push to master, runs
+`npm run db:migrate` inside the container against a fresh Postgres (the
+release step, exactly as `fly.toml` runs it), serves it and checks
+`/api/health` reports the commit, then starts the jobs runner from the same
+image. With the repository variable `PUBLISH_IMAGE` set to `true` it also
+pushes `ghcr.io/<owner>/edulink-web:<sha>` and `:latest`, so a deploy is
+`fly deploy --image ghcr.io/<owner>/edulink-web:<sha>` rather than a remote
+build.
 
 ## Capacity
 

@@ -298,3 +298,93 @@ jobs:
         if: always()
         working-directory: apps/web
         run: tail -n 200 server.log
+
+  image:
+    name: container image · release step · health · jobs runner
+    needs: battery
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      packages: write
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      # The image nobody had built: apps/web/Dockerfile, from the repository
+      # root, with the commit stamped in the way the deploy runbook says.
+      - name: Build the image
+        run: docker build -f apps/web/Dockerfile --build-arg APP_COMMIT=${GITHUB_SHA::7} -t edulink-web:ci .
+      - name: Database role and push keys
+        run: |
+          psql -h localhost -U postgres -d postgres -v ON_ERROR_STOP=1 \
+            -c "CREATE ROLE edulink_app LOGIN PASSWORD 'edulink-ci'" \
+            -c "CREATE DATABASE edulink_ci"
+          docker run --rm edulink-web:ci node -e '
+            const k = require("web-push").generateVAPIDKeys();
+            console.log(`::add-mask::${k.privateKey}`);
+            console.log(`NEXT_PUBLIC_VAPID_PUBLIC_KEY=${k.publicKey}`);
+            console.log(`VAPID_PRIVATE_KEY=${k.privateKey}`);
+          ' | tee -a "$GITHUB_ENV" | grep -v PRIVATE
+      # The release step, inside the container, the way fly.toml runs it before
+      # the new machines take traffic: migrations, then the grants and policies.
+      - name: Release step in the container
+        run: docker run --rm --network host -e DATABASE_URL -e DATABASE_ADMIN_URL edulink-web:ci npm run db:migrate
+      - name: Serve, and answer health with the commit
+        run: |
+          docker run -d --name web --network host \
+            -e DATABASE_URL -e DATABASE_ADMIN_URL -e NEXT_PUBLIC_APP_URL -e VAPID_SUBJECT \
+            -e NEXT_PUBLIC_VAPID_PUBLIC_KEY -e VAPID_PRIVATE_KEY -e EMAIL_TRANSPORT -e EMAIL_FROM -e SMS_TRANSPORT \
+            -e NEXT_PUBLIC_DEFAULT_COUNTRY_CODE -e STORAGE_DIR=/tmp/storage \
+            edulink-web:ci
+          for i in $(seq 1 30); do curl -sf http://localhost:3000/api/health && break; sleep 2; done
+          body=$(curl -sf http://localhost:3000/api/health)
+          echo "$body"
+          echo "$body" | grep -q "\"commit\":\"${GITHUB_SHA::7}\""
+          curl -sf -o /dev/null -w "/login %{http_code}\n" http://localhost:3000/login
+          curl -sf -o /dev/null -w "/privacy %{http_code}\n" http://localhost:3000/privacy
+          curl -sf http://localhost:3000/api/v1/app/version | head -c 200; echo
+      # The second process group from the same image: the schedule starts
+      # in-process, on the owner connection, on loopback.
+      - name: The jobs runner starts its schedule
+        run: |
+          docker run -d --name jobs --network host \
+            -e JOBS_RUNNER=1 -e HOSTNAME=127.0.0.1 -e PORT=3999 -e TZ=Asia/Kolkata \
+            -e DATABASE_URL -e DATABASE_ADMIN_URL -e NEXT_PUBLIC_APP_URL -e VAPID_SUBJECT \
+            -e NEXT_PUBLIC_VAPID_PUBLIC_KEY -e VAPID_PRIVATE_KEY -e EMAIL_TRANSPORT -e EMAIL_FROM -e SMS_TRANSPORT \
+            -e NEXT_PUBLIC_DEFAULT_COUNTRY_CODE -e STORAGE_DIR=/tmp/storage \
+            edulink-web:ci node scripts/jobs-runner.mjs
+          for i in $(seq 1 45); do docker logs jobs 2>&1 | grep -q '"scheduler":"in-process","started":true' && break; sleep 2; done
+          docker logs jobs 2>&1 | grep -E '"scheduler":"(in-process|kick)"' | head -2
+          docker logs jobs 2>&1 | grep -q '"scheduler":"in-process","started":true'
+          # And it is not reachable on the web port: the schedule runs, the pages do not.
+          if curl -sf -o /dev/null http://localhost:3999/login; then echo "jobs runner answered a page on loopback (expected: from inside only)"; fi
+      - name: Container logs
+        if: always()
+        run: |
+          echo "== web"; docker logs web 2>&1 | tail -40
+          echo "== jobs"; docker logs jobs 2>&1 | tail -20
+      # Opt-in publish: set the repository variable PUBLISH_IMAGE to "true" and
+      # every green push to master lands as ghcr.io/<owner>/edulink-web:<sha>
+      # and :latest, which is what `fly deploy --image` deploys.
+      - name: Push to GHCR
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master' && vars.PUBLISH_IMAGE == 'true'
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+          owner=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          docker tag edulink-web:ci ghcr.io/$owner/edulink-web:${GITHUB_SHA::7}
+          docker tag edulink-web:ci ghcr.io/$owner/edulink-web:latest
+          docker push ghcr.io/$owner/edulink-web:${GITHUB_SHA::7}
+          docker push ghcr.io/$owner/edulink-web:latest
+
