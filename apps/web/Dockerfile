@@ -8,7 +8,11 @@
 # one. Migrations run as a release step, never at container start.
 FROM node:20-bookworm-slim AS base
 ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0 PNPM_HOME=/pnpm PATH=/pnpm:$PATH
-RUN corepack enable
+# openssl in every stage: Prisma detects the OpenSSL version to pick its query
+# engine, and without it the build stage guessed 1.1.x for a runtime that has 3.0.
+RUN apt-get update && apt-get install -y --no-install-recommends openssl ca-certificates \
+  && rm -rf /var/lib/apt/lists/* \
+  && corepack enable
 
 FROM base AS deps
 WORKDIR /repo

@@ -25,6 +25,9 @@
 
 generator client {
   provider = "prisma-client-js"
+  // The container runs on Debian bookworm (OpenSSL 3). Pinned rather than detected: the
+  // build stage once guessed 1.1.x and the served image could not find its query engine.
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 datasource db {
