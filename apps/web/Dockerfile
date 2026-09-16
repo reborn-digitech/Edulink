@@ -32,9 +32,16 @@ WORKDIR /app
 ENV NODE_ENV=production PORT=3000 HOSTNAME=0.0.0.0 NEXT_TELEMETRY_DISABLED=1
 ARG APP_COMMIT=unknown
 ENV APP_COMMIT=$APP_COMMIT
-# psql for the release step's grants script; nothing else from apt.
-RUN apt-get update && apt-get install -y --no-install-recommends postgresql-client ca-certificates \
+# psql for the release step's grants script, openssl for Prisma's engine (it
+# warns and guesses without it); nothing else from apt.
+RUN apt-get update && apt-get install -y --no-install-recommends postgresql-client ca-certificates openssl \
   && rm -rf /var/lib/apt/lists/*
+# The Prisma CLI for the release step, installed as a package rather than
+# copied: pnpm's `.bin/prisma` is a shim whose relative path points nowhere
+# once it leaves the store (the first CI run of this image found
+# /usr/local/prisma/build/index.js missing). Pinned to the client's version.
+RUN npm install -g prisma@6.19.3
+
 RUN groupadd --system app && useradd --system --gid app --create-home app
 # The traced server, its static assets, and the pieces the release step needs.
 COPY --from=build --chown=app:app /repo/apps/web/.next/standalone ./
@@ -42,7 +49,6 @@ COPY --from=build --chown=app:app /repo/apps/web/.next/static ./apps/web/.next/s
 COPY --from=build --chown=app:app /repo/apps/web/public ./apps/web/public
 COPY --from=build --chown=app:app /repo/apps/web/prisma ./apps/web/prisma
 COPY --from=build --chown=app:app /repo/apps/web/scripts/with-admin-db.mjs /repo/apps/web/scripts/db-grants.mjs /repo/apps/web/scripts/jobs-runner.mjs ./apps/web/scripts/
-COPY --from=build --chown=app:app /repo/node_modules/.pnpm/node_modules/.bin/prisma /usr/local/bin/prisma
 USER app
 WORKDIR /app/apps/web
 EXPOSE 3000
