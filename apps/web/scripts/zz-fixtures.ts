@@ -413,6 +413,120 @@ async function buildNorthgate(ctx: Ctx) {
 }
 
 /* -------------------------------------------------------------------------- */
+/* fees                                                                        */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Northgate's fees: the current academic year (the fixture had none, and a
+ * structure needs one), three heads, one published structure for grade 3
+ * with a past and a future instalment, every grade-3 pupil on it, and one
+ * cash payment with its receipt so the API sweep has a PAID payment and a
+ * receipt to read. Written directly in the shapes fees.ts produces, so a
+ * second run finds the same rows and adds nothing.
+ */
+async function buildFees(school: { id: string }, adminUserId: string) {
+  const year =
+    (await db.academicYear.findFirst({ where: { schoolId: school.id, isCurrent: true } })) ??
+    (await db.academicYear.create({
+      data: { schoolId: school.id, name: "2026–27", startDate: new Date("2026-06-01T00:00:00Z"), endDate: new Date("2027-04-30T00:00:00Z"), isCurrent: true },
+    }));
+  const headSpecs = [
+    { code: "TUI", name: "Tuition", kind: "TUITION", sortOrder: 0 },
+    { code: "TRN", name: "Transport", kind: "TRANSPORT", sortOrder: 1 },
+    { code: "EXM", name: "Examination", kind: "EXAM", sortOrder: 2 },
+  ];
+  const heads: Record<string, string> = {};
+  for (const spec of headSpecs) {
+    const row = await db.feeHead.upsert({ where: { schoolId_code: { schoolId: school.id, code: spec.code } }, update: {}, create: { schoolId: school.id, ...spec } });
+    heads[spec.code] = row.id;
+  }
+  let structure = await db.feeStructure.findFirst({ where: { schoolId: school.id, academicYearId: year.id, name: "ZZ Grade 3 fees" }, include: { instalments: true } });
+  if (!structure) {
+    structure = await db.feeStructure.create({
+      data: {
+        schoolId: school.id,
+        academicYearId: year.id,
+        name: "ZZ Grade 3 fees",
+        gradeLevel: "3",
+        publishedAt: new Date(),
+        instalments: {
+          create: [
+            { schoolId: school.id, label: "Term 1", sortOrder: 0, dueDate: new Date("2026-07-15T00:00:00Z"), lines: { create: [{ schoolId: school.id, headId: heads.TUI!, amountPaise: 12_000_00 }, { schoolId: school.id, headId: heads.TRN!, amountPaise: 3_000_00 }] } },
+            { schoolId: school.id, label: "Term 2", sortOrder: 1, dueDate: new Date("2026-12-15T00:00:00Z"), lines: { create: [{ schoolId: school.id, headId: heads.TUI!, amountPaise: 12_000_00 }, { schoolId: school.id, headId: heads.EXM!, amountPaise: 500_00 }] } },
+          ],
+        },
+      },
+      include: { instalments: true },
+    });
+  }
+  const klass = await db.class.findFirst({ where: { schoolId: school.id, gradeLevel: "3", archivedAt: null }, select: { id: true } });
+  const pupils = klass ? await db.enrollment.findMany({ where: { classId: klass.id, status: "ACTIVE" }, select: { studentMembershipId: true } }) : [];
+  const lines = await db.feeLine.findMany({ where: { instalmentId: { in: structure.instalments.map((i) => i.id) } }, include: { head: { select: { code: true, name: true } } } });
+  for (const { studentMembershipId } of pupils) {
+    await db.studentFeePlan.upsert({
+      where: { studentMembershipId_academicYearId: { studentMembershipId, academicYearId: year.id } },
+      update: {},
+      create: { schoolId: school.id, studentMembershipId, structureId: structure.id, academicYearId: year.id },
+    });
+    for (const inst of structure.instalments) {
+      const mine = lines.filter((l) => l.instalmentId === inst.id);
+      const gross = mine.reduce((a, l) => a + l.amountPaise, 0);
+      await db.feeDemand.upsert({
+        where: { studentMembershipId_instalmentId: { studentMembershipId, instalmentId: inst.id } },
+        update: {},
+        create: {
+          schoolId: school.id,
+          studentMembershipId,
+          academicYearId: year.id,
+          instalmentId: inst.id,
+          label: inst.label,
+          dueDate: inst.dueDate,
+          grossPaise: gross,
+          concessionPaise: 0,
+          netPaise: gross,
+          linesJson: JSON.stringify(mine.map((l) => ({ headId: l.headId, code: l.head.code, name: l.head.name, grossPaise: l.amountPaise, concessionPaise: 0 }))),
+        },
+      });
+    }
+  }
+  // One cash payment from the first pupil against Term 1, with its receipt.
+  const first = pupils[0]?.studentMembershipId;
+  let receipts = await db.feeReceipt.count({ where: { schoolId: school.id } });
+  if (first && receipts === 0) {
+    const term1 = structure.instalments.find((i) => i.label === "Term 1")!;
+    const demand = await db.feeDemand.findUniqueOrThrow({ where: { studentMembershipId_instalmentId: { studentMembershipId: first, instalmentId: term1.id } } });
+    const payment = await db.feePayment.create({
+      data: { schoolId: school.id, studentMembershipId: first, amountPaise: demand.netPaise, method: "CASH", status: "PAID", clientId: "zz-fixture-term1", collectedByUserId: adminUserId, paidAt: new Date("2026-07-10T05:30:00Z"), intentJson: "[]" },
+    });
+    await db.feeAllocation.create({ data: { schoolId: school.id, paymentId: payment.id, demandId: demand.id, amountPaise: demand.netPaise } });
+    await db.feeDemand.update({ where: { id: demand.id }, data: { paidPaise: demand.netPaise, status: "PAID" } });
+    const pupil = await db.membership.findUniqueOrThrow({ where: { id: first }, select: { studentCode: true, gradeLevel: true, user: { select: { name: true } } } });
+    const number = year.feeReceiptNext;
+    await db.academicYear.update({ where: { id: year.id }, data: { feeReceiptNext: number + 1 } });
+    await db.feeReceipt.create({
+      data: {
+        schoolId: school.id,
+        paymentId: payment.id,
+        academicYearId: year.id,
+        number,
+        serial: `RCPT/${year.name}/${String(number).padStart(6, "0")}`,
+        issuedAt: new Date("2026-07-10T05:30:00Z"),
+        snapshotJson: JSON.stringify({
+          school: { name: "ZZ Northgate School", addressLine: null, city: "Pune", contactPhone: null, bankNote: null },
+          pupil: { name: pupil.user.name, studentCode: pupil.studentCode, className: "Grade 3 · A", gradeLevel: pupil.gradeLevel },
+          payment: { amountPaise: demand.netPaise, method: "CASH", reference: null, gatewayMethod: null, paidAt: "2026-07-10T05:30:00.000Z", collectedBy: "ZZ Anita Deshmukh", note: null },
+          year: year.name,
+          lines: [{ demandLabel: "Term 1", head: "Tuition", code: "TUI", amountPaise: 12_000_00 }, { demandLabel: "Term 1", head: "Transport", code: "TRN", amountPaise: 3_000_00 }],
+          allocations: [{ demandLabel: "Term 1", amountPaise: demand.netPaise }],
+        }),
+      },
+    });
+    receipts = 1;
+  }
+  return { year, structure, pupils: pupils.length, receipts };
+}
+
+/* -------------------------------------------------------------------------- */
 /* timetable                                                                   */
 /* -------------------------------------------------------------------------- */
 
@@ -876,6 +990,7 @@ async function main() {
   const ctx: Ctx = { passwordHash };
 
   const northgate = await buildNorthgate(ctx);
+  const fees = await buildFees(northgate.school, northgate.admin.id);
   const southbank = await buildSouthbank(ctx);
   const banyan = await buildBanyan(ctx, southbank.school.id);
   const experts = await buildExperts(ctx);
@@ -910,6 +1025,8 @@ async function main() {
                  ${northgate.timetable.slots} slots (${northgate.timetable.unstaffed} left unstaffed on Friday, last period)
      pupils      ${studentCount}  (zz.pupil01..${String(studentCount).padStart(2, "0")}@${DOMAIN})
      guardians   ${guardianCount} link(s) — zz.parentNN@${DOMAIN} matches zz.pupilNN
+     fees        year ${fees.year.name}; "${fees.structure.name}" published, ${fees.pupils} grade-3 pupils on it,
+                 ${fees.receipts} receipt (zz.pupil01's Term 1, cash) — /admin/fees, /parent/fees
 
   ── ZZ Southbank School (small) ──────────────────────────────────────
      join code   ${southbank.school.code}

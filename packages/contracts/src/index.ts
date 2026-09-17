@@ -106,3 +106,4 @@ export * from "./v1/office";
 export * from "./v1/account";
 export * from "./v1/contest";
 export * from "./v1/join";
+export * from "./v1/fees";

@@ -147,6 +147,7 @@ export const NOTIFICATION_KINDS = [
   "INVITE",
   "COMPETITION",
   "ENQUIRY",
+  "FEES",
   "SYSTEM",
 ] as const;
 export type NotificationKind = (typeof NOTIFICATION_KINDS)[number];
@@ -160,8 +161,39 @@ export const NOTIFICATION_KIND_KEY: Record<NotificationKind, TranslationKey> = {
   INVITE: "notif.kindInvite",
   COMPETITION: "notif.kindCompetition",
   ENQUIRY: "notif.kindEnquiry",
+  FEES: "notif.kindFees",
   SYSTEM: "notif.kindSystem",
 };
+
+/* -------------------------------------------------------------------------- */
+/* Fees                                                                        */
+/* -------------------------------------------------------------------------- */
+
+/** A grouping for reports, not behaviour: every head is charged the same way. */
+export const FEE_HEAD_KINDS = ["TUITION", "TRANSPORT", "EXAM", "ACTIVITY", "OTHER"] as const;
+export type FeeHeadKind = (typeof FEE_HEAD_KINDS)[number];
+
+/** ONLINE is the school's gateway; UPI is the school's own UPI id, confirmed by the office; the rest are taken at the counter. */
+export const FEE_METHODS = ["ONLINE", "UPI", "CASH", "CHEQUE", "BANK"] as const;
+export type FeeMethod = (typeof FEE_METHODS)[number];
+/** What the office may record itself. ONLINE only ever arrives through the gateway. */
+export const COUNTER_METHODS = ["CASH", "CHEQUE", "BANK", "UPI"] as const;
+
+export const FEE_PAYMENT_STATUSES = ["INITIATED", "CLAIMED", "PAID", "FAILED", "REVERSED", "REFUNDED"] as const;
+export type FeePaymentStatus = (typeof FEE_PAYMENT_STATUSES)[number];
+
+export const FEE_DEMAND_STATUSES = ["OPEN", "PART", "PAID", "WAIVED", "CANCELLED", "CARRIED"] as const;
+export type FeeDemandStatus = (typeof FEE_DEMAND_STATUSES)[number];
+
+export const FEE_CONCESSION_KINDS = ["PERCENT", "AMOUNT"] as const;
+export type FeeConcessionKind = (typeof FEE_CONCESSION_KINDS)[number];
+
+/** A UPI claim the office has not confirmed after this many days is flagged on the overview. */
+export const FEE_CLAIM_STALE_DAYS = 3;
+/** An online order nobody paid within this long is closed as failed by the reconcile job. */
+export const FEE_ORDER_EXPIRY_MS = 24 * 60 * 60_000;
+/** …and one older than this is asked about at the gateway, in case the webhook never arrived. */
+export const FEE_ORDER_RECONCILE_AFTER_MS = 30 * 60_000;
 
 export const COMPETITION_ENTRY_STATUSES = ["REGISTERED", "SUBMITTED", "RESULTS"] as const;
 export type CompetitionEntryStatus = (typeof COMPETITION_ENTRY_STATUSES)[number];

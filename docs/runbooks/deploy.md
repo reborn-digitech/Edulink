@@ -23,6 +23,8 @@ dies in the release step rather than serving.
 | `STORAGE_BUCKET` + `STORAGE_S3_*` | uploads in an S3-compatible bucket (R2, S3, B2); all five or none. Without them `STORAGE_DIR` on a mounted volume, one machine only |
 | `APP_COMMIT` | set by the build (`--build-arg APP_COMMIT=$(git rev-parse --short HEAD)`); `/api/health` reports it |
 | `SSO_*` | per provider; `npm run sso:check` before the first sign-in |
+| `FEES_SECRET_KEY` | `openssl rand -base64 32`; seals each school's gateway secrets at rest. Without it no school can save gateway keys (UPI-id and counter payments still work). Never rotate casually: every school re-enters its keys |
+| `FEES_GATEWAY_TRANSPORT=razorpay` | real orders at each school's *own* Razorpay account; `devbox` (the default) is refused when deployed. There is no platform gateway key — see decision 0003 |
 
 ## Release
 
@@ -100,6 +102,19 @@ the app writes to `STORAGE_DIR`, which on Fly means a `[mounts]` volume and
 bucket is a copy of `<STORAGE_DIR>/` to `files/` (same shard layout) and a
 redeploy with the variables; `npm run files:check` afterwards should report
 zero missing.
+
+## Fees
+
+The platform holds no money (decision 0003). A school that wants online
+payment opens its own gateway account, enters its keys on
+`/admin/fees/settings`, and registers
+`https://app.example/api/webhooks/razorpay/<schoolId>` in its gateway
+dashboard for `payment.captured`, `payment.failed` and `refund.processed`.
+The route checks the signature with that school's own webhook secret before
+it reads a byte; a redelivery answers "already". Two jobs join the registry:
+`fees:remind` at 09:00 `TZ` and `fees:reconcile` hourly, the second asking
+each school's gateway about orders the webhook never reported and closing
+day-old ones nobody paid. `/root/jobs` shows both.
 
 ## Open items before the first real school
 

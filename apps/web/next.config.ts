@@ -29,19 +29,25 @@ const isDev = process.env.NODE_ENV === "development";
  * step. What this policy does close, today: any script, style, font, image or
  * fetch to a host that is not this one; framing by any other site; forms
  * posting anywhere but here; plugins. The app serves every asset itself — no
- * font host, no CDN, no analytics — so 'self' is the honest allow-list.
+ * font host, no CDN, no analytics — so 'self' is the honest allow-list, with
+ * one named exception: the gateway checkout, below.
  *
  * Dev needs 'unsafe-eval' and a websocket for Turbopack's HMR; production gets
  * neither.
  */
 const csp = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
+  // checkout.razorpay.com is the ONE outside script: the school's own gateway's
+  // checkout, loaded by the family's fees page when a school has entered its
+  // keys, and by nothing else. Its frame and its calls come from the razorpay
+  // hosts below; the money goes to the school (docs/decisions/0003).
+  `script-src 'self' 'unsafe-inline' https://checkout.razorpay.com${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "media-src 'self' blob:",
   "font-src 'self' data:",
-  `connect-src 'self'${isDev ? " ws: wss:" : ""}`,
+  `connect-src 'self' https://api.razorpay.com https://checkout.razorpay.com https://lumberjack.razorpay.com${isDev ? " ws: wss:" : ""}`,
+  "frame-src 'self' https://api.razorpay.com https://checkout.razorpay.com",
   "worker-src 'self'",
   "manifest-src 'self'",
   "frame-ancestors 'none'",

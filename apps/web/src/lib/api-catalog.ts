@@ -18,6 +18,7 @@ import { OFFICE } from "./api-catalog/office";
 import { ACCOUNT } from "./api-catalog/account";
 import { CONTEST } from "./api-catalog/contest";
 import { JOIN } from "./api-catalog/join";
+import { FEES } from "./api-catalog/fees";
 import type { Endpoint } from "./api-catalog/types";
 
-export const ENDPOINTS: Endpoint[] = [...CORE, ...ADMIN, ...STAFF, ...FAMILY, ...SHARED, ...OPERATOR, ...PRACTICE, ...COMMUNITY, ...TEACHING, ...OFFICE, ...ACCOUNT, ...CONTEST, ...JOIN];
+export const ENDPOINTS: Endpoint[] = [...CORE, ...ADMIN, ...STAFF, ...FAMILY, ...SHARED, ...OPERATOR, ...PRACTICE, ...COMMUNITY, ...TEACHING, ...OFFICE, ...ACCOUNT, ...CONTEST, ...JOIN, ...FEES];

@@ -316,6 +316,7 @@ export const notificationKindSchema = z.enum([
   "INVITE",
   "COMPETITION",
   "ENQUIRY",
+  "FEES",
   "SYSTEM",
 ]);
 

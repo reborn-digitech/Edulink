@@ -60,6 +60,9 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/admin/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true },
     { href: "/admin/attendance", labelKey: "nav.attendance", icon: "checks", prefix: true, group: "running", also: ["/attendance/history"] },
     { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true, group: "running" },
+    // Fees: what the school asked its families for and what arrived. The
+    // office writes; the principal reads the same pages (see fees.ts officeOrHead).
+    { href: "/admin/fees", labelKey: "nav.fees", icon: "receipt", prefix: true, group: "running" },
     // The leave queue is genuinely an admin's to work — a school whose
     // principal is the one on leave still has to approve somebody's.
     { href: "/principal/leave", labelKey: "nav.leave", icon: "calendar", prefix: true, group: "running", also: ["/principal/staff"] },
@@ -88,6 +91,8 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/exams", labelKey: "nav.exams", icon: "clipboard", primary: true, prefix: true },
     { href: "/principal/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "running" },
     { href: "/admin/calendar", labelKey: "nav.calendar", icon: "calendar", prefix: true, group: "running" },
+    // Read-only for the head: the overview, the dues and the structures.
+    { href: "/admin/fees", labelKey: "nav.fees", icon: "receipt", prefix: true, group: "running" },
     { href: "/remarks", labelKey: "nav.messages", icon: "chat", prefix: true, group: "daily" },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
     { href: "/admin/vacancies", labelKey: "nav.vacancies", icon: "briefcase", prefix: true, group: "school", also: ["/vacancies"] },
@@ -145,6 +150,7 @@ export const NAV: Record<Role, NavItem[]> = {
     { href: "/parent/practice", labelKey: "nav.practice", icon: "brain", prefix: true, group: "daily" },
     { href: "/parent/timetable", labelKey: "nav.timetable", icon: "clock", prefix: true, group: "daily" },
     { href: "/parent/meetings", labelKey: "nav.meetings", icon: "calendar", prefix: true, group: "daily" },
+    { href: "/parent/fees", labelKey: "nav.fees", icon: "receipt", prefix: true, group: "daily" },
     { href: "/reviews", labelKey: "nav.feedback", icon: "star", prefix: true, group: "daily" },
     { href: "/bulletin", labelKey: "nav.bulletin", icon: "megaphone", prefix: true, group: "school" },
     { href: "/explore", labelKey: "nav.explore", icon: "buildings", prefix: true, group: "school" },

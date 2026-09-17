@@ -1026,6 +1026,123 @@ CREATE POLICY "ConversationMessage_tenant_isolation" ON "ConversationMessage"
   USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
   WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
 
+-- FeeHead
+ALTER TABLE "FeeHead" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "FeeHead" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "FeeHead_tenant_isolation" ON "FeeHead";
+DROP POLICY IF EXISTS "FeeHead_readable" ON "FeeHead";
+CREATE POLICY "FeeHead_tenant_isolation" ON "FeeHead"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- FeeStructure
+ALTER TABLE "FeeStructure" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "FeeStructure" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "FeeStructure_tenant_isolation" ON "FeeStructure";
+DROP POLICY IF EXISTS "FeeStructure_readable" ON "FeeStructure";
+CREATE POLICY "FeeStructure_tenant_isolation" ON "FeeStructure"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- FeeInstalment
+ALTER TABLE "FeeInstalment" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "FeeInstalment" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "FeeInstalment_tenant_isolation" ON "FeeInstalment";
+DROP POLICY IF EXISTS "FeeInstalment_readable" ON "FeeInstalment";
+CREATE POLICY "FeeInstalment_tenant_isolation" ON "FeeInstalment"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- FeeLine
+ALTER TABLE "FeeLine" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "FeeLine" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "FeeLine_tenant_isolation" ON "FeeLine";
+DROP POLICY IF EXISTS "FeeLine_readable" ON "FeeLine";
+CREATE POLICY "FeeLine_tenant_isolation" ON "FeeLine"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- StudentFeePlan
+ALTER TABLE "StudentFeePlan" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "StudentFeePlan" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "StudentFeePlan_tenant_isolation" ON "StudentFeePlan";
+DROP POLICY IF EXISTS "StudentFeePlan_readable" ON "StudentFeePlan";
+CREATE POLICY "StudentFeePlan_tenant_isolation" ON "StudentFeePlan"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- FeeConcession
+ALTER TABLE "FeeConcession" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "FeeConcession" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "FeeConcession_tenant_isolation" ON "FeeConcession";
+DROP POLICY IF EXISTS "FeeConcession_readable" ON "FeeConcession";
+CREATE POLICY "FeeConcession_tenant_isolation" ON "FeeConcession"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- FeeDemand
+ALTER TABLE "FeeDemand" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "FeeDemand" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "FeeDemand_tenant_isolation" ON "FeeDemand";
+DROP POLICY IF EXISTS "FeeDemand_readable" ON "FeeDemand";
+CREATE POLICY "FeeDemand_tenant_isolation" ON "FeeDemand"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- FeePayment
+ALTER TABLE "FeePayment" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "FeePayment" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "FeePayment_tenant_isolation" ON "FeePayment";
+DROP POLICY IF EXISTS "FeePayment_readable" ON "FeePayment";
+CREATE POLICY "FeePayment_tenant_isolation" ON "FeePayment"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- FeeAllocation
+ALTER TABLE "FeeAllocation" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "FeeAllocation" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "FeeAllocation_tenant_isolation" ON "FeeAllocation";
+DROP POLICY IF EXISTS "FeeAllocation_readable" ON "FeeAllocation";
+CREATE POLICY "FeeAllocation_tenant_isolation" ON "FeeAllocation"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- FeeReceipt
+ALTER TABLE "FeeReceipt" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "FeeReceipt" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "FeeReceipt_tenant_isolation" ON "FeeReceipt";
+DROP POLICY IF EXISTS "FeeReceipt_readable" ON "FeeReceipt";
+CREATE POLICY "FeeReceipt_tenant_isolation" ON "FeeReceipt"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- FeeRefund
+ALTER TABLE "FeeRefund" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "FeeRefund" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "FeeRefund_tenant_isolation" ON "FeeRefund";
+DROP POLICY IF EXISTS "FeeRefund_readable" ON "FeeRefund";
+CREATE POLICY "FeeRefund_tenant_isolation" ON "FeeRefund"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- FeeGatewayAccount
+ALTER TABLE "FeeGatewayAccount" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "FeeGatewayAccount" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "FeeGatewayAccount_tenant_isolation" ON "FeeGatewayAccount";
+DROP POLICY IF EXISTS "FeeGatewayAccount_readable" ON "FeeGatewayAccount";
+CREATE POLICY "FeeGatewayAccount_tenant_isolation" ON "FeeGatewayAccount"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
+-- GatewayEvent
+ALTER TABLE "GatewayEvent" ENABLE ROW LEVEL SECURITY;
+ALTER TABLE "GatewayEvent" FORCE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "GatewayEvent_tenant_isolation" ON "GatewayEvent";
+DROP POLICY IF EXISTS "GatewayEvent_readable" ON "GatewayEvent";
+CREATE POLICY "GatewayEvent_tenant_isolation" ON "GatewayEvent"
+  USING ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')))
+  WITH CHECK ("schoolId" = ANY (string_to_array(current_setting('app.school_ids', true), ',')));
+
 -- OperatorAccess
 --
 -- APPEND-ONLY, AND DELIBERATELY HAS NO DELETE POLICY. Postgres denies

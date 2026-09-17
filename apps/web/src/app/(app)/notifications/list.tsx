@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 import {
   BellIcon,
+  ReceiptIcon,
   CalendarCheckIcon,
   ChartLineUpIcon,
   ChatCircleDotsIcon,
@@ -39,6 +40,7 @@ const ICONS: Record<NotificationKind, React.ComponentType<{ className?: string; 
   INVITE: EnvelopeSimpleIcon,
   COMPETITION: TrophyIcon,
   ENQUIRY: ChatCircleDotsIcon,
+  FEES: ReceiptIcon,
   SYSTEM: BellIcon,
 };
 

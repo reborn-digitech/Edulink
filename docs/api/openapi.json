@@ -37070,6 +37070,6021 @@
           }
         }
       }
+    },
+    "/api/v1/fees/overview": {
+      "get": {
+        "summary": "The fees overview: asked, collected, outstanding and overdue, by grade and by age, with the claims queue",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "year": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "todayKey": {
+                      "type": "string",
+                      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                    },
+                    "totals": {
+                      "type": "object",
+                      "properties": {
+                        "demandedPaise": {
+                          "type": "integer",
+                          "minimum": 0
+                        },
+                        "collectedPaise": {
+                          "$ref": "#/properties/totals/properties/demandedPaise"
+                        },
+                        "outstandingPaise": {
+                          "$ref": "#/properties/totals/properties/demandedPaise"
+                        },
+                        "overduePaise": {
+                          "$ref": "#/properties/totals/properties/demandedPaise"
+                        }
+                      },
+                      "required": [
+                        "demandedPaise",
+                        "collectedPaise",
+                        "outstandingPaise",
+                        "overduePaise"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "pupils": {
+                      "type": "object",
+                      "properties": {
+                        "onPlan": {
+                          "type": "integer"
+                        },
+                        "withoutPlan": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "onPlan",
+                        "withoutPlan"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "byGrade": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "gradeLevel": {
+                            "type": "string"
+                          },
+                          "pupils": {
+                            "type": "integer"
+                          },
+                          "demandedPaise": {
+                            "$ref": "#/properties/totals/properties/demandedPaise"
+                          },
+                          "collectedPaise": {
+                            "$ref": "#/properties/totals/properties/demandedPaise"
+                          },
+                          "outstandingPaise": {
+                            "$ref": "#/properties/totals/properties/demandedPaise"
+                          },
+                          "overduePaise": {
+                            "$ref": "#/properties/totals/properties/demandedPaise"
+                          }
+                        },
+                        "required": [
+                          "gradeLevel",
+                          "pupils",
+                          "demandedPaise",
+                          "collectedPaise",
+                          "outstandingPaise",
+                          "overduePaise"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "ageing": {
+                      "type": "object",
+                      "properties": {
+                        "current": {
+                          "$ref": "#/properties/totals/properties/demandedPaise"
+                        },
+                        "d30": {
+                          "$ref": "#/properties/totals/properties/demandedPaise"
+                        },
+                        "d90": {
+                          "$ref": "#/properties/totals/properties/demandedPaise"
+                        },
+                        "d90plus": {
+                          "$ref": "#/properties/totals/properties/demandedPaise"
+                        }
+                      },
+                      "required": [
+                        "current",
+                        "d30",
+                        "d90",
+                        "d90plus"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "methodsThisMonth": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "method": {
+                            "type": "string"
+                          },
+                          "count": {
+                            "type": "integer"
+                          },
+                          "amountPaise": {
+                            "$ref": "#/properties/totals/properties/demandedPaise"
+                          }
+                        },
+                        "required": [
+                          "method",
+                          "count",
+                          "amountPaise"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "recent": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "paymentId": {
+                            "type": "string"
+                          },
+                          "pupilName": {
+                            "type": "string"
+                          },
+                          "amountPaise": {
+                            "$ref": "#/properties/totals/properties/demandedPaise"
+                          },
+                          "method": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "when": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "serial": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "receiptId": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "paymentId",
+                          "pupilName",
+                          "amountPaise",
+                          "method",
+                          "status",
+                          "when",
+                          "serial",
+                          "receiptId"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "claims": {
+                      "type": "object",
+                      "properties": {
+                        "waiting": {
+                          "type": "integer"
+                        },
+                        "stale": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "waiting",
+                        "stale"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "initiatedOnline": {
+                      "type": "integer"
+                    },
+                    "structures": {
+                      "type": "integer"
+                    },
+                    "heads": {
+                      "type": "integer"
+                    },
+                    "options": {
+                      "type": "object",
+                      "properties": {
+                        "online": {
+                          "type": "boolean"
+                        },
+                        "upi": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "online",
+                        "upi"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "year",
+                    "todayKey",
+                    "totals",
+                    "pupils",
+                    "byGrade",
+                    "ageing",
+                    "methodsThisMonth",
+                    "recent",
+                    "claims",
+                    "initiatedOnline",
+                    "structures",
+                    "heads",
+                    "options"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/dues": {
+      "get": {
+        "summary": "Every pupil with their dues, paid and overdue, filtered and paged",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "rows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "studentMembershipId": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "studentCode": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "className": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "gradeLevel": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "netPaise": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "paidPaise": {
+                            "$ref": "#/properties/rows/items/properties/netPaise"
+                          },
+                          "outstandingPaise": {
+                            "$ref": "#/properties/rows/items/properties/netPaise"
+                          },
+                          "overduePaise": {
+                            "$ref": "#/properties/rows/items/properties/netPaise"
+                          },
+                          "nextDueKey": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                            "nullable": true
+                          },
+                          "hasPlan": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "studentMembershipId",
+                          "name",
+                          "studentCode",
+                          "className",
+                          "gradeLevel",
+                          "netPaise",
+                          "paidPaise",
+                          "outstandingPaise",
+                          "overduePaise",
+                          "nextDueKey",
+                          "hasPlan"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "total": {
+                      "type": "integer"
+                    },
+                    "page": {
+                      "type": "integer"
+                    },
+                    "pageSize": {
+                      "type": "integer"
+                    },
+                    "year": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "todayKey": {
+                      "$ref": "#/properties/rows/items/properties/nextDueKey"
+                    },
+                    "classes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "rows",
+                    "total",
+                    "page",
+                    "pageSize",
+                    "year",
+                    "todayKey",
+                    "classes"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "all",
+                      "open",
+                      "overdue",
+                      "paid"
+                    ],
+                    "default": "all"
+                  },
+                  "classId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "q": {
+                    "type": "string",
+                    "maxLength": 80
+                  },
+                  "page": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 1000,
+                    "default": 1
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "minimum": 10,
+                    "maximum": 200,
+                    "default": 50
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/remind": {
+      "post": {
+        "summary": "Tell every overdue family (or the pupils named) now",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "families": {
+                      "type": "integer"
+                    },
+                    "demands": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "families",
+                    "demands"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "studentMembershipIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    },
+                    "maxItems": 2000
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/export/collections": {
+      "get": {
+        "summary": "The collection register between two days, as CSV text",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "filename": {
+                      "type": "string"
+                    },
+                    "csv": {
+                      "type": "string"
+                    },
+                    "rows": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "filename",
+                    "csv",
+                    "rows"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fromKey": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                  },
+                  "toKey": {
+                    "$ref": "#/properties/fromKey"
+                  }
+                },
+                "required": [
+                  "fromKey",
+                  "toKey"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/export/outstanding": {
+      "get": {
+        "summary": "Everyone with something outstanding this year, with ageing, as CSV text",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "filename": {
+                      "type": "string"
+                    },
+                    "csv": {
+                      "type": "string"
+                    },
+                    "rows": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "filename",
+                    "csv",
+                    "rows"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/carry-forward": {
+      "post": {
+        "summary": "Move every pupil's outstanding from one year into an opening balance in the next",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pupils": {
+                      "type": "integer"
+                    },
+                    "carriedPaise": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "pupils",
+                    "carriedPaise"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fromYearId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "toYearId": {
+                    "$ref": "#/properties/fromYearId"
+                  }
+                },
+                "required": [
+                  "fromYearId",
+                  "toYearId"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/settings": {
+      "get": {
+        "summary": "How this school's families pay: UPI id, gateway (key id only), receipt series, bank note",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "upiId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "upiPayee": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "receiptPrefix": {
+                      "type": "string"
+                    },
+                    "bankNote": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "gateway": {
+                      "type": "object",
+                      "properties": {
+                        "provider": {
+                          "type": "string"
+                        },
+                        "keyId": {
+                          "type": "string"
+                        },
+                        "mode": {
+                          "type": "string",
+                          "enum": [
+                            "TEST",
+                            "LIVE"
+                          ]
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "format": "date-time"
+                        }
+                      },
+                      "required": [
+                        "provider",
+                        "keyId",
+                        "mode",
+                        "updatedAt"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "sealingAvailable": {
+                      "type": "boolean"
+                    },
+                    "transport": {
+                      "type": "string",
+                      "enum": [
+                        "devbox",
+                        "razorpay",
+                        "off"
+                      ]
+                    },
+                    "webhookUrl": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "upiId",
+                    "upiPayee",
+                    "receiptPrefix",
+                    "bankNote",
+                    "gateway",
+                    "sealingAvailable",
+                    "transport",
+                    "webhookUrl"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Save the UPI id, payee name, receipt prefix and bank note",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "upiId": {
+                    "type": "string",
+                    "maxLength": 256,
+                    "nullable": true
+                  },
+                  "upiPayee": {
+                    "type": "string",
+                    "maxLength": 80,
+                    "nullable": true
+                  },
+                  "receiptPrefix": {
+                    "type": "string",
+                    "maxLength": 12
+                  },
+                  "bankNote": {
+                    "type": "string",
+                    "maxLength": 600,
+                    "nullable": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/settings/gateway": {
+      "post": {
+        "summary": "Save the school's own gateway keys; the secrets are sealed and never shown again",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "keyId": {
+                    "type": "string",
+                    "minLength": 8,
+                    "maxLength": 60
+                  },
+                  "secret": {
+                    "type": "string",
+                    "minLength": 8,
+                    "maxLength": 200
+                  },
+                  "webhookSecret": {
+                    "type": "string",
+                    "minLength": 8,
+                    "maxLength": 200
+                  },
+                  "mode": {
+                    "type": "string",
+                    "enum": [
+                      "TEST",
+                      "LIVE"
+                    ],
+                    "default": "TEST"
+                  }
+                },
+                "required": [
+                  "keyId",
+                  "secret",
+                  "webhookSecret"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Remove the school's gateway keys; online payment stops",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/heads": {
+      "get": {
+        "summary": "The fee heads, retired ones included",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "heads": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "code": {
+                            "type": "string"
+                          },
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "TUITION",
+                              "TRANSPORT",
+                              "EXAM",
+                              "ACTIVITY",
+                              "OTHER"
+                            ]
+                          },
+                          "sortOrder": {
+                            "type": "integer"
+                          },
+                          "retiredAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "inUse": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "code",
+                          "kind",
+                          "sortOrder",
+                          "retiredAt",
+                          "inUse"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "heads"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Add a fee head, or rename one by id",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 60
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 8
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "TUITION",
+                      "TRANSPORT",
+                      "EXAM",
+                      "ACTIVITY",
+                      "OTHER"
+                    ],
+                    "default": "OTHER"
+                  },
+                  "sortOrder": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 999
+                  }
+                },
+                "required": [
+                  "name",
+                  "code"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/heads/{headId}/retire": {
+      "post": {
+        "summary": "Retire a head from the picker (restore: true brings it back)",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "restore": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "headId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/fees/structures": {
+      "get": {
+        "summary": "The year's fee structures with totals and how many pupils are on each",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "structures": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "gradeLevel": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "academicYearId": {
+                            "type": "string"
+                          },
+                          "yearName": {
+                            "type": "string"
+                          },
+                          "instalments": {
+                            "type": "integer"
+                          },
+                          "totalPaise": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "pupils": {
+                            "type": "integer"
+                          },
+                          "publishedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "archivedAt": {
+                            "$ref": "#/properties/structures/items/properties/publishedAt"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "gradeLevel",
+                          "academicYearId",
+                          "yearName",
+                          "instalments",
+                          "totalPaise",
+                          "pupils",
+                          "publishedAt",
+                          "archivedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "year": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "heads": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "structures",
+                    "year",
+                    "heads"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "academicYearId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "includeArchived": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a draft structure: instalments, each with head lines",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 80
+                  },
+                  "gradeLevel": {
+                    "type": "string",
+                    "maxLength": 12,
+                    "nullable": true
+                  },
+                  "academicYearId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "instalments": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 40
+                        },
+                        "dueDateKey": {
+                          "type": "string",
+                          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                        },
+                        "lines": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "headId": {
+                                "$ref": "#/properties/academicYearId"
+                              },
+                              "amountPaise": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 10000000000
+                              }
+                            },
+                            "required": [
+                              "headId",
+                              "amountPaise"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "minItems": 1,
+                          "maxItems": 30
+                        }
+                      },
+                      "required": [
+                        "label",
+                        "dueDateKey",
+                        "lines"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 1,
+                    "maxItems": 12
+                  }
+                },
+                "required": [
+                  "name",
+                  "instalments"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/structures/{structureId}": {
+      "get": {
+        "summary": "One structure in full, with the classes it could be assigned to",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "gradeLevel": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "academicYearId": {
+                      "type": "string"
+                    },
+                    "yearName": {
+                      "type": "string"
+                    },
+                    "instalments": {
+                      "type": "integer"
+                    },
+                    "totalPaise": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "pupils": {
+                      "type": "integer"
+                    },
+                    "publishedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "archivedAt": {
+                      "$ref": "#/properties/publishedAt"
+                    },
+                    "instalmentRows": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "sortOrder": {
+                            "type": "integer"
+                          },
+                          "dueDateKey": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                          },
+                          "totalPaise": {
+                            "$ref": "#/properties/totalPaise"
+                          },
+                          "lines": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                },
+                                "headId": {
+                                  "type": "string"
+                                },
+                                "headName": {
+                                  "type": "string"
+                                },
+                                "headCode": {
+                                  "type": "string"
+                                },
+                                "amountPaise": {
+                                  "$ref": "#/properties/totalPaise"
+                                }
+                              },
+                              "required": [
+                                "id",
+                                "headId",
+                                "headName",
+                                "headCode",
+                                "amountPaise"
+                              ],
+                              "additionalProperties": false
+                            }
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "label",
+                          "sortOrder",
+                          "dueDateKey",
+                          "totalPaise",
+                          "lines"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "paidDemands": {
+                      "type": "integer"
+                    },
+                    "classes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "gradeLevel": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "gradeLevel"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "gradeLevel",
+                    "academicYearId",
+                    "yearName",
+                    "instalments",
+                    "totalPaise",
+                    "pupils",
+                    "publishedAt",
+                    "archivedAt",
+                    "instalmentRows",
+                    "paidDemands",
+                    "classes"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "structureId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "summary": "Rewrite a DRAFT structure",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 2,
+                    "maxLength": 80
+                  },
+                  "gradeLevel": {
+                    "type": "string",
+                    "maxLength": 12,
+                    "nullable": true
+                  },
+                  "academicYearId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "instalments": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 40
+                        },
+                        "dueDateKey": {
+                          "type": "string",
+                          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                        },
+                        "lines": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "headId": {
+                                "$ref": "#/properties/academicYearId"
+                              },
+                              "amountPaise": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "maximum": 10000000000
+                              }
+                            },
+                            "required": [
+                              "headId",
+                              "amountPaise"
+                            ],
+                            "additionalProperties": false
+                          },
+                          "minItems": 1,
+                          "maxItems": 30
+                        }
+                      },
+                      "required": [
+                        "label",
+                        "dueDateKey",
+                        "lines"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 1,
+                    "maxItems": 12
+                  }
+                },
+                "required": [
+                  "name",
+                  "instalments"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "structureId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/fees/structures/{structureId}/publish": {
+      "post": {
+        "summary": "Publish a structure; its numbers are frozen from here",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "structureId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/fees/structures/{structureId}/archive": {
+      "post": {
+        "summary": "Archive a structure; pupils on it keep their demands",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "structureId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/fees/plans": {
+      "post": {
+        "summary": "Put a class or named pupils on a published structure and generate their dues",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "assigned": {
+                      "type": "integer"
+                    },
+                    "moved": {
+                      "type": "integer"
+                    },
+                    "unchanged": {
+                      "type": "integer"
+                    },
+                    "refused": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "studentMembershipId": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "studentMembershipId",
+                          "name"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "assigned",
+                    "moved",
+                    "unchanged",
+                    "refused"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "structureId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "classId": {
+                    "$ref": "#/properties/structureId"
+                  },
+                  "studentMembershipIds": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/properties/structureId"
+                    },
+                    "maxItems": 2000
+                  }
+                },
+                "required": [
+                  "structureId"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/plans/remove": {
+      "post": {
+        "summary": "Take a pupil off their plan for a year, while nothing is paid",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "studentMembershipId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "academicYearId": {
+                    "$ref": "#/properties/studentMembershipId"
+                  }
+                },
+                "required": [
+                  "studentMembershipId",
+                  "academicYearId"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/classes/roster": {
+      "get": {
+        "summary": "A class's pupils with their plan and totals — the assignment screen",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "klass": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "gradeLevel": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "gradeLevel"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "year": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "pupils": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "studentMembershipId": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "studentCode": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "structureId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "structureName": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "netPaise": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "paidPaise": {
+                            "$ref": "#/properties/pupils/items/properties/netPaise"
+                          },
+                          "outstandingPaise": {
+                            "$ref": "#/properties/pupils/items/properties/netPaise"
+                          },
+                          "overduePaise": {
+                            "$ref": "#/properties/pupils/items/properties/netPaise"
+                          }
+                        },
+                        "required": [
+                          "studentMembershipId",
+                          "name",
+                          "studentCode",
+                          "structureId",
+                          "structureName",
+                          "netPaise",
+                          "paidPaise",
+                          "outstandingPaise",
+                          "overduePaise"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "klass",
+                    "year",
+                    "pupils"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "classId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  }
+                },
+                "required": [
+                  "classId"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/pupils/{studentMembershipId}": {
+      "get": {
+        "summary": "One pupil's ledger: plan, instalments, payments, concessions, receipts",
+        "description": "Roles: ADMIN, PRINCIPAL.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PRINCIPAL"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pupil": {
+                      "type": "object",
+                      "properties": {
+                        "studentMembershipId": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "studentCode": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "gradeLevel": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "className": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "leftAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "studentMembershipId",
+                        "name",
+                        "studentCode",
+                        "gradeLevel",
+                        "className",
+                        "leftAt"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "year": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "plan": {
+                      "type": "object",
+                      "properties": {
+                        "structureId": {
+                          "type": "string"
+                        },
+                        "structureName": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "structureId",
+                        "structureName"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    },
+                    "demands": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "dueDateKey": {
+                            "type": "string",
+                            "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                          },
+                          "grossPaise": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "concessionPaise": {
+                            "$ref": "#/properties/demands/items/properties/grossPaise"
+                          },
+                          "netPaise": {
+                            "$ref": "#/properties/demands/items/properties/grossPaise"
+                          },
+                          "paidPaise": {
+                            "$ref": "#/properties/demands/items/properties/grossPaise"
+                          },
+                          "outstandingPaise": {
+                            "$ref": "#/properties/demands/items/properties/grossPaise"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "overdue": {
+                            "type": "boolean"
+                          },
+                          "lines": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "headId": {
+                                  "type": "string"
+                                },
+                                "code": {
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "grossPaise": {
+                                  "$ref": "#/properties/demands/items/properties/grossPaise"
+                                },
+                                "concessionPaise": {
+                                  "$ref": "#/properties/demands/items/properties/grossPaise"
+                                }
+                              },
+                              "required": [
+                                "headId",
+                                "code",
+                                "name",
+                                "grossPaise",
+                                "concessionPaise"
+                              ],
+                              "additionalProperties": false
+                            }
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "label",
+                          "dueDateKey",
+                          "grossPaise",
+                          "concessionPaise",
+                          "netPaise",
+                          "paidPaise",
+                          "outstandingPaise",
+                          "status",
+                          "overdue",
+                          "lines"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "concessions": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "headId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "headName": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "kind": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": "integer"
+                          },
+                          "reason": {
+                            "type": "string"
+                          },
+                          "grantedBy": {
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "$ref": "#/properties/pupil/properties/leftAt"
+                          },
+                          "revokedAt": {
+                            "$ref": "#/properties/pupil/properties/leftAt"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "headId",
+                          "headName",
+                          "kind",
+                          "value",
+                          "reason",
+                          "grantedBy",
+                          "createdAt",
+                          "revokedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "payments": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "amountPaise": {
+                            "$ref": "#/properties/demands/items/properties/grossPaise"
+                          },
+                          "method": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "reference": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "note": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "paidAt": {
+                            "$ref": "#/properties/pupil/properties/leftAt"
+                          },
+                          "claimedAt": {
+                            "$ref": "#/properties/pupil/properties/leftAt"
+                          },
+                          "createdAt": {
+                            "$ref": "#/properties/pupil/properties/leftAt"
+                          },
+                          "collectedBy": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "payer": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "receipt": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "serial": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "serial"
+                            ],
+                            "additionalProperties": false,
+                            "nullable": true
+                          },
+                          "reversalReason": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "refundedPaise": {
+                            "$ref": "#/properties/demands/items/properties/grossPaise"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "amountPaise",
+                          "method",
+                          "status",
+                          "reference",
+                          "note",
+                          "paidAt",
+                          "claimedAt",
+                          "createdAt",
+                          "collectedBy",
+                          "payer",
+                          "receipt",
+                          "reversalReason",
+                          "refundedPaise"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "totals": {
+                      "type": "object",
+                      "properties": {
+                        "netPaise": {
+                          "$ref": "#/properties/demands/items/properties/grossPaise"
+                        },
+                        "paidPaise": {
+                          "$ref": "#/properties/demands/items/properties/grossPaise"
+                        },
+                        "outstandingPaise": {
+                          "$ref": "#/properties/demands/items/properties/grossPaise"
+                        },
+                        "overduePaise": {
+                          "$ref": "#/properties/demands/items/properties/grossPaise"
+                        }
+                      },
+                      "required": [
+                        "netPaise",
+                        "paidPaise",
+                        "outstandingPaise",
+                        "overduePaise"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "heads": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "structures": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "gradeLevel": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "gradeLevel"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "todayKey": {
+                      "$ref": "#/properties/demands/items/properties/dueDateKey"
+                    }
+                  },
+                  "required": [
+                    "pupil",
+                    "year",
+                    "plan",
+                    "demands",
+                    "concessions",
+                    "payments",
+                    "totals",
+                    "heads",
+                    "structures",
+                    "todayKey"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "academicYearId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "studentMembershipId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/fees/concessions": {
+      "post": {
+        "summary": "Grant a concession and recalculate the pupil's open instalments",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "studentMembershipId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "academicYearId": {
+                    "$ref": "#/properties/studentMembershipId"
+                  },
+                  "headId": {
+                    "allOf": [
+                      {
+                        "$ref": "#/properties/studentMembershipId"
+                      }
+                    ],
+                    "nullable": true
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "PERCENT",
+                      "AMOUNT"
+                    ]
+                  },
+                  "value": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 200
+                  }
+                },
+                "required": [
+                  "studentMembershipId",
+                  "kind",
+                  "value",
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/concessions/{concessionId}/revoke": {
+      "post": {
+        "summary": "Revoke a concession and recalculate",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "concessionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/fees/payments": {
+      "post": {
+        "summary": "Record cash, cheque, bank transfer or counter UPI and issue the receipt (replay-safe by clientId)",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "paymentId": {
+                      "type": "string"
+                    },
+                    "receiptId": {
+                      "type": "string"
+                    },
+                    "serial": {
+                      "type": "string"
+                    },
+                    "already": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "paymentId",
+                    "receiptId",
+                    "serial",
+                    "already"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "studentMembershipId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "amountPaise": {
+                    "type": "integer",
+                    "minimum": 100,
+                    "maximum": 10000000000
+                  },
+                  "method": {
+                    "type": "string",
+                    "enum": [
+                      "CASH",
+                      "CHEQUE",
+                      "BANK",
+                      "UPI"
+                    ]
+                  },
+                  "reference": {
+                    "type": "string",
+                    "maxLength": 60,
+                    "nullable": true
+                  },
+                  "note": {
+                    "type": "string",
+                    "maxLength": 300,
+                    "nullable": true
+                  },
+                  "demandIds": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/properties/studentMembershipId"
+                    },
+                    "maxItems": 24
+                  },
+                  "clientId": {
+                    "type": "string",
+                    "minLength": 8,
+                    "maxLength": 80
+                  },
+                  "paidAtKey": {
+                    "type": "string",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+                    "nullable": true
+                  }
+                },
+                "required": [
+                  "studentMembershipId",
+                  "amountPaise",
+                  "method"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/payments/{paymentId}/reverse": {
+      "post": {
+        "summary": "Reverse a paid payment, keeping the row and its receipt on file",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "paymentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/fees/payments/{paymentId}/refund": {
+      "post": {
+        "summary": "Refund part or all of a payment from the school's funds",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "refundId": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "refundId",
+                    "status"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "amountPaise": {
+                    "type": "integer",
+                    "minimum": 100
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "amountPaise",
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "paymentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/fees/receipts/{receiptId}": {
+      "get": {
+        "summary": "A receipt as issued: the frozen document, for the office or the family",
+        "description": "Roles: ADMIN, PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN",
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "serial": {
+                      "type": "string"
+                    },
+                    "issuedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "reversed": {
+                      "type": "boolean"
+                    },
+                    "reversalReason": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "refundedPaise": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "snapshot": {
+                      "type": "object",
+                      "properties": {
+                        "school": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "addressLine": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "city": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "contactPhone": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "bankNote": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "addressLine",
+                            "city",
+                            "contactPhone",
+                            "bankNote"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "pupil": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "studentCode": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "className": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "gradeLevel": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "studentCode",
+                            "className",
+                            "gradeLevel"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "payment": {
+                          "type": "object",
+                          "properties": {
+                            "amountPaise": {
+                              "$ref": "#/properties/refundedPaise"
+                            },
+                            "method": {
+                              "type": "string"
+                            },
+                            "reference": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "gatewayMethod": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "paidAt": {
+                              "$ref": "#/properties/issuedAt"
+                            },
+                            "collectedBy": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "note": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "amountPaise",
+                            "method",
+                            "reference",
+                            "gatewayMethod",
+                            "paidAt",
+                            "collectedBy",
+                            "note"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "year": {
+                          "type": "string"
+                        },
+                        "lines": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "demandLabel": {
+                                "type": "string"
+                              },
+                              "head": {
+                                "type": "string"
+                              },
+                              "code": {
+                                "type": "string"
+                              },
+                              "amountPaise": {
+                                "$ref": "#/properties/refundedPaise"
+                              }
+                            },
+                            "required": [
+                              "demandLabel",
+                              "head",
+                              "code",
+                              "amountPaise"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "allocations": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "demandLabel": {
+                                "type": "string"
+                              },
+                              "amountPaise": {
+                                "$ref": "#/properties/refundedPaise"
+                              }
+                            },
+                            "required": [
+                              "demandLabel",
+                              "amountPaise"
+                            ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "required": [
+                        "school",
+                        "pupil",
+                        "payment",
+                        "year",
+                        "lines",
+                        "allocations"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "serial",
+                    "issuedAt",
+                    "reversed",
+                    "reversalReason",
+                    "refundedPaise",
+                    "snapshot"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "receiptId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/fees/claims": {
+      "get": {
+        "summary": "UPI payments families say they made, waiting for the office to confirm",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "claims": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "paymentId": {
+                            "type": "string"
+                          },
+                          "studentMembershipId": {
+                            "type": "string"
+                          },
+                          "pupilName": {
+                            "type": "string"
+                          },
+                          "className": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "amountPaise": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "utr": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "reference": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "claimedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          },
+                          "createdAt": {
+                            "$ref": "#/properties/claims/items/properties/claimedAt"
+                          },
+                          "payer": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "stale": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "paymentId",
+                          "studentMembershipId",
+                          "pupilName",
+                          "className",
+                          "amountPaise",
+                          "utr",
+                          "reference",
+                          "claimedAt",
+                          "createdAt",
+                          "payer",
+                          "stale"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "waitingForUtr": {
+                      "type": "integer"
+                    },
+                    "staleAfterDays": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "claims",
+                    "waitingForUtr",
+                    "staleAfterDays"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/claims/{paymentId}/confirm": {
+      "post": {
+        "summary": "Confirm a claim against the bank statement and issue the receipt",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "receiptId": {
+                      "type": "string"
+                    },
+                    "serial": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "receiptId",
+                    "serial"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "paymentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/fees/claims/{paymentId}/reject": {
+      "post": {
+        "summary": "Reject a claim, telling the family why",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "reason": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "reason"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "paymentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/fees/claims/match": {
+      "post": {
+        "summary": "Match a pasted bank statement to waiting claims by UTR and amount (writes nothing)",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "matches": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "row": {
+                            "type": "integer"
+                          },
+                          "utr": {
+                            "type": "string"
+                          },
+                          "amountPaise": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "nullable": true
+                          },
+                          "paymentId": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "pupilName": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "problem": {
+                            "type": "string",
+                            "enum": [
+                              "no-utr",
+                              "no-amount",
+                              "no-claim",
+                              "amount-differs"
+                            ],
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "row",
+                          "utr",
+                          "amountPaise",
+                          "paymentId",
+                          "pupilName",
+                          "problem"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "matches"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "csv": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200000
+                  }
+                },
+                "required": [
+                  "csv"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/claims/match/apply": {
+      "post": {
+        "summary": "Confirm the matched claims together",
+        "description": "Roles: ADMIN.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "ADMIN"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "confirmed": {
+                      "type": "integer"
+                    },
+                    "failed": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "paymentId": {
+                            "type": "string"
+                          },
+                          "error": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "paymentId",
+                          "error"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "confirmed",
+                    "failed"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "paymentIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    },
+                    "minItems": 1,
+                    "maxItems": 500
+                  }
+                },
+                "required": [
+                  "paymentIds"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/family": {
+      "get": {
+        "summary": "A guardian's child: dues, what has been paid, and the ways this school takes payment",
+        "description": "Roles: PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "children": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "studentMembershipId": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "schoolId": {
+                            "type": "string"
+                          },
+                          "schoolName": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "studentMembershipId",
+                          "name",
+                          "schoolId",
+                          "schoolName"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "child": {
+                      "type": "object",
+                      "properties": {
+                        "studentMembershipId": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "schoolId": {
+                          "type": "string"
+                        },
+                        "schoolName": {
+                          "type": "string"
+                        },
+                        "year": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "name"
+                          ],
+                          "additionalProperties": false,
+                          "nullable": true
+                        },
+                        "options": {
+                          "type": "object",
+                          "properties": {
+                            "online": {
+                              "type": "boolean"
+                            },
+                            "upi": {
+                              "type": "object",
+                              "properties": {
+                                "vpa": {
+                                  "type": "string"
+                                },
+                                "payee": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "vpa",
+                                "payee"
+                              ],
+                              "additionalProperties": false,
+                              "nullable": true
+                            },
+                            "bankNote": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "online",
+                            "upi",
+                            "bankNote"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "demands": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "label": {
+                                "type": "string"
+                              },
+                              "dueDateKey": {
+                                "type": "string",
+                                "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+                              },
+                              "grossPaise": {
+                                "type": "integer",
+                                "minimum": 0
+                              },
+                              "concessionPaise": {
+                                "$ref": "#/properties/child/properties/demands/items/properties/grossPaise"
+                              },
+                              "netPaise": {
+                                "$ref": "#/properties/child/properties/demands/items/properties/grossPaise"
+                              },
+                              "paidPaise": {
+                                "$ref": "#/properties/child/properties/demands/items/properties/grossPaise"
+                              },
+                              "outstandingPaise": {
+                                "$ref": "#/properties/child/properties/demands/items/properties/grossPaise"
+                              },
+                              "status": {
+                                "type": "string"
+                              },
+                              "overdue": {
+                                "type": "boolean"
+                              },
+                              "lines": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "headId": {
+                                      "type": "string"
+                                    },
+                                    "code": {
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "type": "string"
+                                    },
+                                    "grossPaise": {
+                                      "$ref": "#/properties/child/properties/demands/items/properties/grossPaise"
+                                    },
+                                    "concessionPaise": {
+                                      "$ref": "#/properties/child/properties/demands/items/properties/grossPaise"
+                                    }
+                                  },
+                                  "required": [
+                                    "headId",
+                                    "code",
+                                    "name",
+                                    "grossPaise",
+                                    "concessionPaise"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "label",
+                              "dueDateKey",
+                              "grossPaise",
+                              "concessionPaise",
+                              "netPaise",
+                              "paidPaise",
+                              "outstandingPaise",
+                              "status",
+                              "overdue",
+                              "lines"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "totals": {
+                          "type": "object",
+                          "properties": {
+                            "outstandingPaise": {
+                              "$ref": "#/properties/child/properties/demands/items/properties/grossPaise"
+                            },
+                            "overduePaise": {
+                              "$ref": "#/properties/child/properties/demands/items/properties/grossPaise"
+                            },
+                            "paidPaise": {
+                              "$ref": "#/properties/child/properties/demands/items/properties/grossPaise"
+                            }
+                          },
+                          "required": [
+                            "outstandingPaise",
+                            "overduePaise",
+                            "paidPaise"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "payments": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "amountPaise": {
+                                "$ref": "#/properties/child/properties/demands/items/properties/grossPaise"
+                              },
+                              "method": {
+                                "type": "string"
+                              },
+                              "status": {
+                                "type": "string"
+                              },
+                              "reference": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "paidAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "nullable": true
+                              },
+                              "createdAt": {
+                                "$ref": "#/properties/child/properties/payments/items/properties/paidAt"
+                              },
+                              "receiptId": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "serial": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "failedReason": {
+                                "type": "string",
+                                "nullable": true
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "amountPaise",
+                              "method",
+                              "status",
+                              "reference",
+                              "paidAt",
+                              "createdAt",
+                              "receiptId",
+                              "serial",
+                              "failedReason"
+                            ],
+                            "additionalProperties": false
+                          }
+                        }
+                      },
+                      "required": [
+                        "studentMembershipId",
+                        "name",
+                        "schoolId",
+                        "schoolName",
+                        "year",
+                        "options",
+                        "demands",
+                        "totals",
+                        "payments"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "children",
+                    "child"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "childId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/family/checkout": {
+      "post": {
+        "summary": "Start an online payment: an order at the SCHOOL'S gateway for the chosen dues",
+        "description": "Roles: PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "paymentId": {
+                      "type": "string"
+                    },
+                    "orderId": {
+                      "type": "string"
+                    },
+                    "keyId": {
+                      "type": "string"
+                    },
+                    "amountPaise": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "currency": {
+                      "type": "string",
+                      "enum": [
+                        "INR"
+                      ]
+                    },
+                    "schoolName": {
+                      "type": "string"
+                    },
+                    "pupilName": {
+                      "type": "string"
+                    },
+                    "payerName": {
+                      "type": "string"
+                    },
+                    "payerEmail": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "transport": {
+                      "type": "string",
+                      "enum": [
+                        "devbox",
+                        "razorpay",
+                        "off"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "paymentId",
+                    "orderId",
+                    "keyId",
+                    "amountPaise",
+                    "currency",
+                    "schoolName",
+                    "pupilName",
+                    "payerName",
+                    "payerEmail",
+                    "transport"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "studentMembershipId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "demandIds": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/properties/studentMembershipId"
+                    },
+                    "minItems": 1,
+                    "maxItems": 24
+                  }
+                },
+                "required": [
+                  "studentMembershipId",
+                  "demandIds"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/family/checkout/confirm": {
+      "post": {
+        "summary": "The checkout's own confirmation, verified with the school's key secret (the webhook remains the record)",
+        "description": "Roles: PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "outcome": {
+                      "type": "string",
+                      "enum": [
+                        "settled",
+                        "already",
+                        "unknown-order",
+                        "amount-mismatch",
+                        "not-settleable"
+                      ]
+                    },
+                    "receiptId": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "outcome",
+                    "receiptId"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "paymentId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "gatewayPaymentId": {
+                    "type": "string",
+                    "minLength": 4,
+                    "maxLength": 80
+                  },
+                  "signature": {
+                    "type": "string",
+                    "minLength": 16,
+                    "maxLength": 200
+                  }
+                },
+                "required": [
+                  "paymentId",
+                  "gatewayPaymentId",
+                  "signature"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/family/upi": {
+      "post": {
+        "summary": "Start a UPI payment to the school's own id: an intent link and a reference",
+        "description": "Roles: PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "paymentId": {
+                      "type": "string"
+                    },
+                    "link": {
+                      "type": "string"
+                    },
+                    "amountPaise": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "payeeVpa": {
+                      "type": "string"
+                    },
+                    "payeeName": {
+                      "type": "string"
+                    },
+                    "reference": {
+                      "type": "string"
+                    },
+                    "schoolName": {
+                      "type": "string"
+                    },
+                    "pupilName": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "paymentId",
+                    "link",
+                    "amountPaise",
+                    "payeeVpa",
+                    "payeeName",
+                    "reference",
+                    "schoolName",
+                    "pupilName"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "studentMembershipId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "demandIds": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/properties/studentMembershipId"
+                    },
+                    "minItems": 1,
+                    "maxItems": 24
+                  }
+                },
+                "required": [
+                  "studentMembershipId",
+                  "demandIds"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/family/upi/claim": {
+      "post": {
+        "summary": "Say the UPI payment went through and give its UTR for the office to confirm",
+        "description": "Roles: PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "paymentId": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64
+                  },
+                  "utr": {
+                    "type": "string",
+                    "minLength": 12,
+                    "maxLength": 22
+                  }
+                },
+                "required": [
+                  "paymentId",
+                  "utr"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/fees/family/payments/{paymentId}": {
+      "get": {
+        "summary": "One of my payments: where it is, and its receipt once issued",
+        "description": "Roles: PARENT.",
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "x-access": [
+          "PARENT"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "paymentId": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "method": {
+                      "type": "string"
+                    },
+                    "amountPaise": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "receiptId": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "serial": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "failedReason": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "checkout": {
+                      "type": "object",
+                      "properties": {
+                        "paymentId": {
+                          "type": "string"
+                        },
+                        "orderId": {
+                          "type": "string"
+                        },
+                        "keyId": {
+                          "type": "string"
+                        },
+                        "amountPaise": {
+                          "$ref": "#/properties/amountPaise"
+                        },
+                        "currency": {
+                          "type": "string",
+                          "enum": [
+                            "INR"
+                          ]
+                        },
+                        "schoolName": {
+                          "type": "string"
+                        },
+                        "pupilName": {
+                          "type": "string"
+                        },
+                        "payerName": {
+                          "type": "string"
+                        },
+                        "payerEmail": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "transport": {
+                          "type": "string",
+                          "enum": [
+                            "devbox",
+                            "razorpay",
+                            "off"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "paymentId",
+                        "orderId",
+                        "keyId",
+                        "amountPaise",
+                        "currency",
+                        "schoolName",
+                        "pupilName",
+                        "payerName",
+                        "payerEmail",
+                        "transport"
+                      ],
+                      "additionalProperties": false,
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "paymentId",
+                    "status",
+                    "method",
+                    "amountPaise",
+                    "receiptId",
+                    "serial",
+                    "failedReason",
+                    "checkout"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "No or invalid session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "This role may not",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found, or not yours",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "paymentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
     }
   }
 }

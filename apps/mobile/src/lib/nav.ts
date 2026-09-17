@@ -98,6 +98,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.practice", icon: "brain", group: "daily", screen: "/(app)/practice" },
     { labelKey: "nav.timetable", icon: "clock", group: "daily", screen: "/(app)/timetable" },
     { labelKey: "nav.meetings", icon: "calendar", group: "daily", screen: "/(app)/meetings" },
+    { labelKey: "nav.fees", icon: "receipt", group: "daily", screen: "/(app)/fees" },
     { labelKey: "nav.feedback", icon: "star", group: "daily", screen: "/(app)/reviews" },
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
     { labelKey: "nav.explore", icon: "buildings", group: "school", screen: "/(app)/explore" },
@@ -113,6 +114,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.timetable", icon: "clock", group: "daily", screen: "/(app)/timetable" },
     { labelKey: "nav.exams", icon: "clipboard", group: "daily", screen: "/(app)/exams" },
     { labelKey: "nav.attendance", icon: "checks", group: "running", screen: "/(app)/attendance" },
+    { labelKey: "nav.fees", icon: "receipt", group: "running", screen: "/(app)/fees" },
     { labelKey: "nav.calendar", icon: "calendar", group: "running", screen: "/(app)/calendar" },
     { labelKey: "nav.staff", icon: "users", group: "running", screen: "/(app)/staff" },
     { labelKey: "nav.reviews", icon: "star", group: "running", screen: "/(app)/reviews" },
@@ -134,6 +136,7 @@ export const MENU: Record<RoleCode, MenuItem[]> = {
     { labelKey: "nav.exams", icon: "clipboard", group: "daily", screen: "/(app)/exams" },
     { labelKey: "nav.attendance", icon: "checks", group: "daily", screen: "/(app)/attendance" },
     { labelKey: "nav.timetable", icon: "clock", group: "running", screen: "/(app)/timetable" },
+    { labelKey: "nav.fees", icon: "receipt", group: "running", screen: "/(app)/fees" },
     { labelKey: "nav.calendar", icon: "calendar", group: "running", screen: "/(app)/calendar" },
     { labelKey: "nav.staff", icon: "users", group: "running", screen: "/(app)/staff" },
     { labelKey: "nav.bulletin", icon: "megaphone", group: "school", screen: "/(app)/bulletin" },
@@ -207,6 +210,10 @@ export const HIDDEN_SCREENS = [
   "post",
   "operator-school",
   "operator-new-school",
+  "fees",
+  "fees-dues",
+  "fee-pupil",
+  "fee-claims",
 ] as const;
 
 /** The More sheet's entries for a role, grouped in the web's order. */

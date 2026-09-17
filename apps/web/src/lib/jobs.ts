@@ -6,6 +6,8 @@ import { sendWeeklyDigests } from "./digest";
 import { reclaimOrphans } from "./orphans";
 import { runDueDepartures } from "./school-record";
 import { sendOperatorHealthDigest } from "./job-health";
+import { sendFeeReminders } from "./fees-reports";
+import { reconcileOnlinePayments } from "./fees-payments";
 import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
 
 /**
@@ -31,7 +33,7 @@ import { translator, type TranslationKey } from "@/lib/i18n/dictionary";
  * the same door migrations and seeds use.
  */
 
-export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest";
+export type JobName = "notifications:tidy" | "digest:weekly" | "files:reclaim" | "departures:run" | "health:digest" | "fees:remind" | "fees:reconcile";
 
 /**
  * What one run of a job hands back: the log line, and — for jobs whose work
@@ -125,6 +127,30 @@ export const JOBS: Record<JobName, JobSpec> = {
         Object.entries(report).filter(([, v]) => typeof v === "number" || typeof v === "boolean"),
       ) as Record<string, number | boolean>;
       return { summary, perSchool: report.perSchool };
+    },
+  },
+  "fees:remind": {
+    name: "fees:remind",
+    // 09:00 in the process's zone (Asia/Kolkata in fly.toml): a reminder
+    // that lands at breakfast, not at three in the morning.
+    schedule: "0 9 * * *",
+    describeKey: "root.jobDescFeesRemind",
+    maxRunMs: HOUR,
+    expectEveryMs: 2 * DAY,
+    run: async () => {
+      const { sent, perSchool } = await sendFeeReminders();
+      return { summary: { sent }, perSchool };
+    },
+  },
+  "fees:reconcile": {
+    name: "fees:reconcile",
+    schedule: "15 * * * *",
+    describeKey: "root.jobDescFeesReconcile",
+    maxRunMs: 30 * 60_000,
+    expectEveryMs: 3 * HOUR,
+    run: async () => {
+      const { checked, settled, expired, perSchool } = await reconcileOnlinePayments();
+      return { summary: { checked, settled, expired }, perSchool };
     },
   },
 };

@@ -87,6 +87,11 @@ const FLAT: Record<string, string> = {
   "/root/audit": "/(app)",
   "/root/jobs": "/(app)",
   "/root/content-team": "/(app)",
+  // Fees (September 2026): the family's page and the office's overview, dues and claims.
+  "/parent/fees": "/(app)/fees",
+  "/admin/fees": "/(app)/fees",
+  "/admin/fees/claims": "/(app)/fee-claims",
+  "/admin/fees/dues": "/(app)/fees-dues",
 };
 
 /** Paths under these prefixes whose second segment is an id, and the screen and param that id becomes. */

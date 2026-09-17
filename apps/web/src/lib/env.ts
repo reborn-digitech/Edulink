@@ -356,6 +356,37 @@ function isDeployed(): boolean {
  *   STORAGE_S3_PREFIX              optional, "edulink/" to share a bucket
  *   STORAGE_S3_PATH_STYLE          optional, "false" for virtual-hosted addressing; path-style otherwise
  */
+/**
+ * The key that seals every school's gateway secrets (secret-box.ts). Absent
+ * means no school can save a gateway account — the settings page says so —
+ * and nothing else stops working: a school taking fees by UPI id or at the
+ * counter never needs it. 32 bytes, base64; `openssl rand -base64 32`.
+ */
+export function readFeesSecretKey(): { ok: true; key: Buffer } | { ok: false; problem: string } {
+  const raw = process.env.FEES_SECRET_KEY?.trim();
+  if (!raw) return { ok: false, problem: "FEES_SECRET_KEY is not set — the key that seals each school's gateway secrets. Generate one with `openssl rand -base64 32`." };
+  const key = Buffer.from(raw, "base64");
+  if (key.length !== 32) return { ok: false, problem: `FEES_SECRET_KEY decodes to ${key.length} bytes — expected 32 (base64 of \`openssl rand -base64 32\`).` };
+  return { ok: true, key };
+}
+
+/**
+ * How online fee orders reach a gateway. "devbox" (the local default) mints
+ * local order ids and /dev/payments settles them, so the whole checkout runs
+ * with no account anywhere; "razorpay" talks to the real API with each
+ * school's own keys; "off" is what a deployed server gets when it names
+ * neither — online payment unavailable, everything else unchanged.
+ */
+export type FeesGatewayTransport = "devbox" | "razorpay" | "off";
+export function readFeesGatewayTransport(): FeesGatewayTransport {
+  if (process.env.FEES_GATEWAY_TRANSPORT === "razorpay") return "razorpay";
+  // A deployed server never mints pretend orders: with no real transport
+  // named, online payment is simply OFF — the settings page says so and the
+  // checkout refuses — and UPI-id and counter payments carry on. Not a boot
+  // failure, because a school taking fees at the counter never needs this.
+  return isDeployed() ? "off" : "devbox";
+}
+
 export const STORAGE_BUCKET_VARS = ["STORAGE_BUCKET", "STORAGE_S3_ENDPOINT", "STORAGE_S3_REGION", "STORAGE_S3_ACCESS_KEY_ID", "STORAGE_S3_SECRET_ACCESS_KEY"] as const;
 
 export type StorageConfig = {
@@ -490,6 +521,15 @@ export function checkEnv(): EnvProblem[] {
         'SMS_TRANSPORT is "devbox" in production: no text will actually be sent, so password reset by mobile number silently goes nowhere. Set SMS_TRANSPORT=twilio and the TWILIO_* variables.',
       fatal: true,
     });
+  }
+
+  // Fees: a key that is set must be a key. Nothing else is required — a
+  // school on UPI id or the counter alone never touches a gateway, and a
+  // deployed server with no transport named simply has online payment off
+  // (readFeesGatewayTransport).
+  if (process.env.FEES_SECRET_KEY !== undefined) {
+    const feesKey = readFeesSecretKey();
+    if (!feesKey.ok) problems.push({ key: "FEES_SECRET_KEY", message: feesKey.problem, fatal: isProd });
   }
 
   // The same promise as the SMTP block: saying "twilio" and meaning it.

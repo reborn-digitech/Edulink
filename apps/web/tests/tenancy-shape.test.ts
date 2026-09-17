@@ -108,6 +108,27 @@ const DIRECT = [
   "ExamSlot",
   "MeetingSlot",
   "MeetingBooking",
+  /**
+   * The fees ledger. Every table carries the school's id directly — a
+   * demand, a payment, a receipt, an allocation are the school's rows about
+   * one of its pupils — and none opens to anybody else by policy: a guardian
+   * reads their child's dues through the API, which checks the guardianship
+   * itself, and the webhook writes under forSchool(schoolId) after proving
+   * the signature with that school's own secret.
+   */
+  "FeeHead",
+  "FeeStructure",
+  "FeeInstalment",
+  "FeeLine",
+  "StudentFeePlan",
+  "FeeConcession",
+  "FeeDemand",
+  "FeePayment",
+  "FeeAllocation",
+  "FeeReceipt",
+  "FeeRefund",
+  "FeeGatewayAccount",
+  "GatewayEvent",
   "RemarkMessage",
   "Conversation",
   "ConversationParticipant",
@@ -178,7 +199,7 @@ describe("the schema parses at all", () => {
       "If this FELL, the regex above has stopped matching and every assertion " +
         "below is passing vacuously. If it ROSE, a model was added — say how it " +
         "is scoped in one of the three lists and update this number.",
-    ).toBe(78);
+    ).toBe(91);
   });
 });
 

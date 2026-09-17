@@ -10,3 +10,4 @@
 export * from "./locales";
 export * from "./core";
 export { dictionaryFor, DICTIONARIES } from "./dictionaries";
+export * from "./money";

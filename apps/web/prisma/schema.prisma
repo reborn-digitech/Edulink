@@ -24,7 +24,7 @@
 // row, never from the session: it is only worth having if it provably agrees.
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
   // The container runs on Debian bookworm (OpenSSL 3). Pinned rather than detected: the
   // build stage once guessed 1.1.x and the served image could not find its query engine.
   binaryTargets = ["native", "debian-openssl-3.0.x"]
@@ -85,6 +85,18 @@ model School {
   notifExpireDays   Int?
   // Privacy defaults applied to new members. JSON.
   privacyDefaults   String @default("{}")
+
+  /// Fees. The school's own UPI id and the payee name a parent's UPI app
+  /// shows — the gateway-free way to pay, confirmed by the office against the
+  /// bank statement. Null means the school does not take UPI directly.
+  feeUpiId         String?
+  feeUpiPayee      String?
+  /// The receipt serial's prefix: "RCPT/2026-27/000123". Per school, so a
+  /// school moving from paper keeps the series its auditor knows.
+  feeReceiptPrefix String  @default("RCPT")
+  /// Printed at the foot of every receipt and shown to a parent paying by
+  /// bank transfer — the account name, number and IFSC, in the school's words.
+  feeBankNote      String?
 
   verifiedAt DateTime?
 
@@ -157,6 +169,19 @@ model School {
   terms               Term[]
   staffRecords        StaffRecord[]
   scheduledDepartures ScheduledDeparture[]
+  feeHeads            FeeHead[]
+  feeStructures       FeeStructure[]
+  feeInstalments      FeeInstalment[]
+  feeLines            FeeLine[]
+  studentFeePlans     StudentFeePlan[]
+  feeConcessions      FeeConcession[]
+  feeDemands          FeeDemand[]
+  feePayments         FeePayment[]
+  feeAllocations      FeeAllocation[]
+  feeReceipts         FeeReceipt[]
+  feeRefunds          FeeRefund[]
+  feeGatewayAccount   FeeGatewayAccount?
+  gatewayEvents       GatewayEvent[]
 
   @@index([code])
   @@index([admissionsContactMembershipId])
@@ -266,6 +291,12 @@ model User {
   enquiryMessages      EnquiryMessage[]          @relation("EnquiryMessageAuthor")
   postAcks             PostAck[]
   meetingBookings      MeetingBooking[]
+  feePaymentsMade      FeePayment[]              @relation("FeePayer")
+  feePaymentsTaken     FeePayment[]              @relation("FeeCollector")
+  feePaymentsConfirmed FeePayment[]              @relation("FeeConfirmer")
+  feePaymentsReversed  FeePayment[]              @relation("FeeReverser")
+  feeConcessionsGiven  FeeConcession[]           @relation("FeeConcessionGranter")
+  feeRefundsRequested  FeeRefund[]               @relation("FeeRefundRequester")
 
   @@index([email])
   // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
@@ -346,6 +377,10 @@ model Membership {
   examSeriesCreated      ExamSeries[]         @relation("ExamSeriesAuthor")
   meetingSlots           MeetingSlot[]        @relation("MeetingTeacher")
   meetingsAsStudent      MeetingBooking[]     @relation("MeetingStudent")
+  feePlans               StudentFeePlan[]     @relation("FeePlanStudent")
+  feeConcessions         FeeConcession[]      @relation("FeeConcessionStudent")
+  feeDemands             FeeDemand[]          @relation("FeeDemandStudent")
+  feePayments            FeePayment[]         @relation("FeePaymentStudent")
   staffRecord            StaffRecord?
   scheduledDeparture     ScheduledDeparture?
 
@@ -2005,10 +2040,21 @@ model AcademicYear {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  school       School        @relation(fields: [schoolId], references: [id], onDelete: Cascade)
-  holidays     Holiday[]
-  earnedBadges EarnedBadge[]
-  terms        Term[]
+  /// The next receipt number for this year. Read and bumped under a row lock
+  /// in the same transaction that posts the payment (fees-payments.ts), so
+  /// two counters never issue the same serial — the number is allocated by
+  /// the database, never guessed from a count.
+  feeReceiptNext Int @default(1)
+
+  school          School           @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  holidays        Holiday[]
+  earnedBadges    EarnedBadge[]
+  terms           Term[]
+  feeStructures   FeeStructure[]
+  studentFeePlans StudentFeePlan[]
+  feeConcessions  FeeConcession[]
+  feeDemands      FeeDemand[]
+  feeReceipts     FeeReceipt[]
 
   @@unique([schoolId, name])
   @@index([schoolId, isCurrent])
@@ -2957,4 +3003,374 @@ model ConversationMessage {
   @@index([schoolId])
   // A foreign key to User needs its own index, or deleting a person scans this table once per row (found by the fleet load test).
   @@index([authorUserId])
+}
+
+// ---------------------------------------------------------------------------
+// Fees
+//
+// THE MONEY NEVER PASSES THROUGH THIS PLATFORM. A parent pays the school —
+// into the school's own gateway account or straight to the school's UPI id —
+// and these tables are the school's ledger of what was asked for and what
+// arrived. There is no platform account, no fee, share or markup column, and
+// no table that could hold funds in transit; docs/decisions/0003 says why and
+// tests/fees-invariants.test.ts keeps it so.
+//
+// Every amount is INTEGER PAISE. Never a float, never rupees: ₹1,250.50 is
+// 125050. Sums happen in the database.
+//
+// The ledger is APPEND-ONLY. A posted payment is never edited: a mistake is
+// reversed (status REVERSED, with who and why), and its receipt stays on file
+// marked as such. A demand's `paidPaise` is derived from its PAID allocations.
+// ---------------------------------------------------------------------------
+
+/// A line a school prints on its receipt: Tuition, Transport, Exam, Library.
+model FeeHead {
+  id        String    @id @default(cuid())
+  schoolId  String
+  name      String
+  /// Short, stable, unique per school — "TUI", "TRN". Referenced by exports.
+  code      String
+  /// TUITION | TRANSPORT | EXAM | ACTIVITY | OTHER — a grouping for reports, not behaviour.
+  kind      String    @default("OTHER")
+  sortOrder Int       @default(0)
+  retiredAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school      School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  lines       FeeLine[]
+  concessions FeeConcession[]
+
+  @@unique([schoolId, code])
+  @@index([schoolId, retiredAt])
+}
+
+/// What a grade pays in a year, in instalments. Published structures are
+/// frozen: a change after publishing is a new structure, so a demand already
+/// generated can always be traced to the lines that produced it.
+model FeeStructure {
+  id             String    @id @default(cuid())
+  schoolId       String
+  academicYearId String
+  name           String
+  /// Null means every grade; otherwise the grade level it applies to, as the
+  /// school names grades ("5", "K").
+  gradeLevel     String?
+  publishedAt    DateTime?
+  archivedAt     DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school      School           @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  year        AcademicYear     @relation(fields: [academicYearId], references: [id], onDelete: Cascade)
+  instalments FeeInstalment[]
+  plans       StudentFeePlan[]
+
+  @@index([schoolId, academicYearId])
+  @@index([academicYearId])
+}
+
+/// "Term 1, due 15 June" — one due date within a structure.
+model FeeInstalment {
+  id          String   @id @default(cuid())
+  schoolId    String
+  structureId String
+  label       String
+  sortOrder   Int      @default(0)
+  /// A calendar day in the school's zone, stored at UTC midnight of that day.
+  dueDate     DateTime
+
+  school    School       @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  structure FeeStructure @relation(fields: [structureId], references: [id], onDelete: Cascade)
+  lines     FeeLine[]
+  demands   FeeDemand[]
+
+  @@index([structureId, sortOrder])
+  @@index([schoolId])
+}
+
+/// One head's amount within one instalment.
+model FeeLine {
+  id           String @id @default(cuid())
+  schoolId     String
+  instalmentId String
+  headId       String
+  amountPaise  Int
+
+  school     School        @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  instalment FeeInstalment @relation(fields: [instalmentId], references: [id], onDelete: Cascade)
+  head       FeeHead       @relation(fields: [headId], references: [id], onDelete: NoAction)
+
+  @@unique([instalmentId, headId])
+  @@index([headId])
+  @@index([schoolId])
+}
+
+/// Which structure a pupil is on for a year. One per pupil per year.
+model StudentFeePlan {
+  id                  String @id @default(cuid())
+  schoolId            String
+  studentMembershipId String
+  structureId         String
+  academicYearId      String
+
+  createdAt DateTime @default(now())
+
+  school    School       @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student   Membership   @relation("FeePlanStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  structure FeeStructure @relation(fields: [structureId], references: [id], onDelete: Cascade)
+  year      AcademicYear @relation(fields: [academicYearId], references: [id], onDelete: Cascade)
+
+  @@unique([studentMembershipId, academicYearId])
+  @@index([structureId])
+  @@index([schoolId, academicYearId])
+  @@index([academicYearId])
+}
+
+/// A reduction for one pupil in one year: a percentage or a fixed amount,
+/// on one head or on everything. Applied per line, rounded half up to the
+/// paisa, when the pupil's demands are generated or regenerated.
+model FeeConcession {
+  id                  String    @id @default(cuid())
+  schoolId            String
+  studentMembershipId String
+  academicYearId      String
+  /// Null means every head.
+  headId              String?
+  /// PERCENT | AMOUNT
+  kind                String
+  /// Basis points for PERCENT (10000 = 100 %), paise for AMOUNT — per instalment line.
+  value               Int
+  reason              String
+  grantedByUserId     String
+  revokedAt           DateTime?
+
+  createdAt DateTime @default(now())
+
+  school    School       @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student   Membership   @relation("FeeConcessionStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  year      AcademicYear @relation(fields: [academicYearId], references: [id], onDelete: Cascade)
+  head      FeeHead?     @relation(fields: [headId], references: [id], onDelete: NoAction)
+  grantedBy User         @relation("FeeConcessionGranter", fields: [grantedByUserId], references: [id], onDelete: Cascade)
+
+  @@index([schoolId, studentMembershipId])
+  @@index([studentMembershipId])
+  @@index([academicYearId])
+  @@index([headId])
+  @@index([grantedByUserId])
+}
+
+/// What one pupil owes for one instalment — the materialised due. Generated
+/// when a plan is assigned; regenerated only while nothing has been paid
+/// against it. `linesJson` freezes the head-by-head breakdown so the receipt
+/// can print it after the structure moves on.
+model FeeDemand {
+  id                  String   @id @default(cuid())
+  schoolId            String
+  studentMembershipId String
+  academicYearId      String
+  /// Null for an opening balance carried in from the previous year.
+  instalmentId        String?
+  label               String
+  dueDate             DateTime
+  grossPaise          Int
+  concessionPaise     Int      @default(0)
+  netPaise            Int
+  paidPaise           Int      @default(0)
+  /// OPEN | PART | PAID | WAIVED | CANCELLED | CARRIED
+  status              String   @default("OPEN")
+  /// JSON: [{ headId, code, name, grossPaise, concessionPaise }]
+  linesJson           String   @default("[]")
+  /// The last reminder bucket sent for this demand ("D-7:2026-06-08"), so a
+  /// daily job sends each once.
+  lastReminderKey     String?
+  /// When CARRIED: the opening-balance demand in the next year.
+  carriedToDemandId   String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school      School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student     Membership      @relation("FeeDemandStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  year        AcademicYear    @relation(fields: [academicYearId], references: [id], onDelete: Cascade)
+  instalment  FeeInstalment?  @relation(fields: [instalmentId], references: [id], onDelete: Cascade)
+  allocations FeeAllocation[]
+
+  @@unique([studentMembershipId, instalmentId])
+  @@index([schoolId, status, dueDate])
+  @@index([schoolId, studentMembershipId])
+  @@index([instalmentId])
+  @@index([academicYearId])
+}
+
+/// Money that arrived (or was claimed to have, or was asked for).
+///
+/// ONLINE: an order at the school's gateway, settled by its webhook.
+/// UPI: paid to the school's UPI id by the parent, who enters the UTR; the
+///      office confirms it against the bank statement before a receipt exists.
+/// CASH | CHEQUE | BANK: taken at the counter and recorded by the office.
+///
+/// INITIATED → (CLAIMED →) PAID | FAILED; PAID → REVERSED | REFUNDED.
+model FeePayment {
+  id                  String    @id @default(cuid())
+  schoolId            String
+  studentMembershipId String
+  amountPaise         Int
+  /// ONLINE | UPI | CASH | CHEQUE | BANK
+  method              String
+  /// INITIATED | CLAIMED | PAID | FAILED | REVERSED | REFUNDED
+  status              String    @default("INITIATED")
+  /// The caller's idempotency key: the office's form replayed twice records once.
+  clientId            String?
+  /// A UTR, a cheque number, a bank reference — whatever proves it.
+  reference           String?
+  gatewayOrderId      String?   @unique
+  gatewayPaymentId    String?   @unique
+  /// How the gateway says it was paid (upi, card, netbanking), for the receipt.
+  gatewayMethod       String?
+  note                String?
+  /// The demands this payment was started for, in order; allocated on settlement.
+  intentJson          String    @default("[]")
+  /// The guardian who paid online or claimed a UPI transfer.
+  payerUserId         String?
+  /// The office person who took it at the counter.
+  collectedByUserId   String?
+  /// The office person who confirmed a UPI claim.
+  confirmedByUserId   String?
+  claimedAt           DateTime?
+  paidAt              DateTime?
+  failedReason        String?
+  reversedAt          DateTime?
+  reversedByUserId    String?
+  reversalReason      String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school      School          @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  student     Membership      @relation("FeePaymentStudent", fields: [studentMembershipId], references: [id], onDelete: Cascade)
+  payer       User?           @relation("FeePayer", fields: [payerUserId], references: [id], onDelete: SetNull)
+  collectedBy User?           @relation("FeeCollector", fields: [collectedByUserId], references: [id], onDelete: SetNull)
+  confirmedBy User?           @relation("FeeConfirmer", fields: [confirmedByUserId], references: [id], onDelete: SetNull)
+  reversedBy  User?           @relation("FeeReverser", fields: [reversedByUserId], references: [id], onDelete: SetNull)
+  allocations FeeAllocation[]
+  receipt     FeeReceipt?
+  refunds     FeeRefund[]
+
+  @@unique([schoolId, clientId])
+  @@index([schoolId, status, createdAt])
+  @@index([schoolId, studentMembershipId])
+  @@index([studentMembershipId])
+  @@index([payerUserId])
+  @@index([collectedByUserId])
+  @@index([confirmedByUserId])
+  @@index([reversedByUserId])
+}
+
+/// Which demand a payment settled, and how much of it — so a part payment
+/// and one payment across several dues are both plain rows.
+model FeeAllocation {
+  id          String @id @default(cuid())
+  schoolId    String
+  paymentId   String
+  demandId    String
+  amountPaise Int
+
+  school  School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  payment FeePayment @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+  demand  FeeDemand  @relation(fields: [demandId], references: [id], onDelete: Cascade)
+
+  @@index([paymentId])
+  @@index([demandId])
+  @@index([schoolId])
+}
+
+/// The numbered receipt for a PAID payment. `snapshotJson` is the document —
+/// school, pupil, class, lines, method, reference — frozen at issue, so a
+/// later rename or a reversed structure never changes what was printed.
+model FeeReceipt {
+  id             String   @id @default(cuid())
+  schoolId       String
+  paymentId      String   @unique
+  academicYearId String
+  number         Int
+  /// "RCPT/2026-27/000123"
+  serial         String
+  issuedAt       DateTime @default(now())
+  snapshotJson   String
+
+  school  School       @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  payment FeePayment   @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+  year    AcademicYear @relation(fields: [academicYearId], references: [id], onDelete: Cascade)
+
+  @@unique([schoolId, academicYearId, number])
+  @@index([schoolId, issuedAt])
+  @@index([academicYearId])
+}
+
+/// A refund against a PAID payment. ONLINE ones go back to the instrument
+/// through the school's gateway; the rest are recorded here after the office
+/// has paid the family back itself.
+model FeeRefund {
+  id                String    @id @default(cuid())
+  schoolId          String
+  paymentId         String
+  amountPaise       Int
+  reason            String
+  /// REQUESTED | DONE | FAILED
+  status            String    @default("REQUESTED")
+  gatewayRefundId   String?
+  requestedByUserId String
+  settledAt         DateTime?
+
+  createdAt DateTime @default(now())
+
+  school      School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  payment     FeePayment @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+  requestedBy User       @relation("FeeRefundRequester", fields: [requestedByUserId], references: [id], onDelete: Cascade)
+
+  @@index([paymentId])
+  @@index([schoolId])
+  @@index([requestedByUserId])
+}
+
+/// The school's OWN gateway account — its key id and, encrypted at rest with
+/// FEES_SECRET_KEY, its secret and webhook secret. One per school. There is
+/// deliberately no platform-level row: the platform holds no account.
+model FeeGatewayAccount {
+  id               String @id @default(cuid())
+  schoolId         String @unique
+  /// RAZORPAY
+  provider         String @default("RAZORPAY")
+  keyId            String
+  secretEnc        String
+  webhookSecretEnc String
+  /// TEST | LIVE
+  mode             String @default("TEST")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+}
+
+/// Every webhook the gateway delivered, by its event id — so a redelivery is
+/// answered "already" and never settles a payment twice.
+model GatewayEvent {
+  id          String    @id @default(cuid())
+  schoolId    String
+  provider    String
+  eventId     String
+  kind        String
+  receivedAt  DateTime  @default(now())
+  processedAt DateTime?
+  outcome     String?
+  payloadJson String
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
+  @@unique([schoolId, provider, eventId])
+  @@index([schoolId, receivedAt])
 }

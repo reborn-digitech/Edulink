@@ -343,6 +343,11 @@ src/lib/                  All business logic. Pages are thin.
   register-duty.ts        ★ Who may mark a register today. Cover ADDS a taker, never removes one.
   leave.ts                ★ Staff leave. Approving arranges the cover in the same breath.
   leave-kinds.ts          Client-safe half of the above — a form cannot import `server-only`.
+  fees.ts                 ★ Fees, the asking side: heads, structures, plans, concessions, DEMANDS. Integer paise. See decision 0003.
+  fees-payments.ts        ★ Fees, the receiving side: counter, receipts under a row lock, reversal, refund, the school's gateway, UPI claims. Append-only.
+  fees-reports.ts         Fees, the reading side: overview, dues, CSV exports, the reminder and reconcile jobs, year-end carry-forward.
+  gateway.ts              ★ The school's OWN gateway, four allowed calls and no more — the platform never touches the money.
+  secret-box.ts           AES-GCM under FEES_SECRET_KEY for the gateway secrets at rest.
   report-cards.ts         ★ A DOCUMENT, not a query. Publishing freezes it. Read the header.
   insights.ts             ★ The principal's figures. Flags children against a threshold, never ranks them.
   competitions.ts         ★ Cross-school catalogue, school-scoped entries, parent consent.
@@ -2203,6 +2208,46 @@ One line each, with the default rejected.
   All three fixed, the audit reads the shape now, and the poster's Print
   button prints the POSTER — `.print-isolate` blanks the rest of the class
   page, which previously came along for the ride.
+
+### Fees — a school asks, a family pays the school, the platform holds nothing
+
+Added 17 September 2026. Decision [0003](../../docs/decisions/0003-fees-money-never-touches-platform.md)
+is the frame: EduLink records what a school asked for and what arrived, and
+never receives, holds, splits or pays out any of it, and takes no share. A
+school takes money three ways — into its own gateway account (Razorpay, keys
+sealed with `FEES_SECRET_KEY`), straight to its own UPI id (a `upi://pay`
+intent, the parent types the UTR, the office confirms against the statement
+with a CSV matcher), or at the counter — and every one ends in a numbered
+receipt issued in the school's name.
+
+What is built: fee heads; structures of instalments with head lines,
+published and frozen; plans by class or by pupil, generating one demand per
+instalment; concessions per head or across the board, per line, rounded half
+up; the counter with replay-safe recording and oldest-due-first allocation;
+receipts numbered per school per year under `SELECT … FOR UPDATE` on the
+year row; reversal that keeps the row; refunds through the school's gateway
+or recorded after the fact; the online checkout with the gateway's own
+signature and the webhook at `/api/webhooks/razorpay/<schoolId>` as the
+settlement of record, idempotent by event id; the UPI claims queue; the
+overview, dues, two exports, a daily reminder job (a week before, on the
+day, a week and a month after, once each) and an hourly reconcile job;
+year-end carry-forward into an opening balance. `/admin/fees/*`,
+`/parent/fees`, `/fees/receipts/[id]` (print-ready), `/dev/payments` (devbox
+settlement), and the phone's fees, dues, pupil and claims screens.
+
+Verified: `tests/fees.test.ts` (the ledger end to end, including twenty
+counter payments at once getting twenty different serials — which found a
+lost-update and then a lock-order deadlock before it passed),
+`tests/fees-webhook.test.ts`, `tests/api-v1-fees.test.ts`,
+`tests/gateway.test.ts`, `tests/secret-box.test.ts` and
+`tests/fees-invariants.test.ts`, which reads the schema, `env.ts`,
+`gateway.ts` and the dictionaries and fails the moment a platform account, a
+fee column or a transfer call appears.
+
+Not built, on purpose: late-fee formulas (a flat late charge is a head on the
+next instalment), split settlement to several bank accounts, GST invoicing
+(school fees are exempt), and a payments partner programme — the platform
+earns nothing from a payment.
 
 ### Built but not click-through verified
 

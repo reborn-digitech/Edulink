@@ -45,6 +45,14 @@ const ENGLISH = flatten(en);
  */
 const SHARED_WITH_ENGLISH = new Set([
   "login.emailPlaceholder",
+  /**
+   * UPI and UTR are the acronyms every Indian bank app, receipt and
+   * statement prints in Latin letters whatever language the rest is in; a
+   * parent looks for "UTR" on their UPI app's screen, and "यूटीआर" would be a
+   * word they have never seen. The sentences around them are translated.
+   */
+  "fees.methodUpi",
+  "fees.claimColUtr",
   // A degree abbreviation — "M.Sc., B.Ed." is how an Indian staff file writes
   // it in any language; the label beside it is translated.
   "staff.qualificationPlaceholder",
