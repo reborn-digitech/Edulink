@@ -38,7 +38,7 @@ const CHILD = {
 const FAMILY = { children: [{ studentMembershipId: ID.child, name: "ZZ Asha", schoolId: "s1", schoolName: "ZZ School" }], child: CHILD };
 const UPI_START = { paymentId: PAYMENT, link: "upi://pay?pa=zzschool%40upi&am=12500.00", amountPaise: 1250000, payeeVpa: "zzschool@upi", payeeName: "ZZ School Trust", reference: "ZZ-REF-42", schoolName: "ZZ School", pupilName: "ZZ Asha" };
 const CHECKOUT = (transport: "devbox" | "razorpay") => ({ paymentId: PAYMENT, orderId: "order_zz1", keyId: "rzp_test_zz", amountPaise: 1250000, currency: "INR", schoolName: "ZZ School", pupilName: "ZZ Asha", payerName: "ZZ Parent", payerEmail: null, transport });
-const STATUS = (status: string) => ({ paymentId: PAYMENT, status, method: "ONLINE", amountPaise: 1250000, receiptId: status === "PAID" ? "r2" : null, serial: status === "PAID" ? "ZZ/2026/000002" : null, failedReason: null });
+const STATUS = (status: string) => ({ paymentId: PAYMENT, status, method: "ONLINE", amountPaise: 1250000, receiptId: status === "PAID" ? "r2" : null, serial: status === "PAID" ? "ZZ/2026/000002" : null, failedReason: null, checkout: null });
 
 const PATH = "/api/v1/fees/family";
 const CHECKOUT_PATH = "/api/v1/fees/family/checkout";
