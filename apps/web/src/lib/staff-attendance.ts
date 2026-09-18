@@ -159,7 +159,7 @@ export async function saveStaffAttendanceSettings(ctx: ActiveContext, input: { c
   await audit({ schoolId: caller.schoolId, actorUserId: caller.user.id, action: "staffAttendance.settings", targetType: "School", targetId: caller.schoolId, meta: input });
 }
 
-/** "I'm in": present, or late after the grace; once a day, never on a closed day. */
+/** "I'm in": present, or late after the grace; a second time in the day is a no-op that says what stands; never on a closed day. */
 export async function checkIn(ctx: ActiveContext): Promise<{ status: StaffAttendanceStatus; checkedInAt: Date; late: boolean }> {
   const caller = staff(ctx);
   const school = await schoolOf(caller.schoolId);
@@ -167,7 +167,9 @@ export async function checkIn(ctx: ActiveContext): Promise<{ status: StaffAttend
   const closure = await closedOn(caller.schoolId, today);
   if (!isTeachingDay(today) || closure.closed) throw new AccessError("staffAttendance.refuseClosed");
   const existing = await db.staffAttendance.findUnique({ where: { membershipId_dateKey: { membershipId: caller.membershipId, dateKey: today } } });
-  if (existing) throw new AccessError("staffAttendance.alreadyToday");
+  // A second tap in the day, or a check-in after the office already marked
+  // the person, changes nothing and says what stands: not a refusal.
+  if (existing) return { status: existing.status as StaffAttendanceStatus, checkedInAt: existing.checkedInAt ?? existing.createdAt, late: existing.status === "LATE" };
   const now = new Date();
   const late = minuteOfDayIn(school.timezone, now) > school.staffCheckInMinute + school.staffLateGraceMinutes;
   const status: StaffAttendanceStatus = late ? "LATE" : "PRESENT";

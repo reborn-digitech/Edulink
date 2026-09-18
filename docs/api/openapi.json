@@ -49309,7 +49309,7 @@
     },
     "/api/v1/staff/attendance/check-in": {
       "post": {
-        "summary": "\"I'm in\": present, or late after the school's grace; once a day, never on a closed day",
+        "summary": "\"I'm in\": present, or late after the school's grace; a second time in the day is a no-op that answers what stands; never on a closed day",
         "description": "Roles: TEACHER, ADMIN, PRINCIPAL.",
         "security": [
           {

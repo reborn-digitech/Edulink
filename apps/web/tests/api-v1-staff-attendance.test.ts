@@ -126,7 +126,7 @@ describe("the register", () => {
     expect(JSON.stringify(audits[0]!.meta)).not.toContain("Bus");
   });
 
-  it("a teacher checks in once — present or late by the school's clock — never on leave or twice; the office sees the check-in; the month is theirs", async () => {
+  it("a teacher checks in — present or late by the school's clock — a second tap a no-op, never on a closed day; the office sees the check-in; the month is theirs", async () => {
     await as("ADMIN");
     // Whether the check-in lands present or late depends on the wall clock; pin it by setting the day's start around now.
     const nowMinute = minuteOfDayIn(TZ);
@@ -139,7 +139,11 @@ describe("the register", () => {
     expect(res.status).toBe(200);
     const out = await res.json();
     expect(out).toMatchObject({ status: "LATE", late: true });
-    expect((await checkInPost()).status).toBe(403);
+    // A second tap is a no-op that says what stands, not a refusal.
+    const twice = await checkInPost();
+    expect(twice.status).toBe(200);
+    expect(await twice.json()).toMatchObject({ status: "LATE", late: true, checkedInAt: out.checkedInAt });
+    expect(await db.staffAttendance.count({ where: { membershipId: teacherMembershipId, dateKey: today } })).toBe(1);
     const after = await (await meGet(get("/api/v1/staff/attendance/me"))).json();
     expect(after).toMatchObject({ todayStatus: "LATE", canCheckIn: false });
     expect(after.days[0]).toMatchObject({ dateKey: today, status: "LATE", source: "SELF" });
