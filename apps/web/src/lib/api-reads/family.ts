@@ -14,6 +14,10 @@ import { listDirectory, directoryPlaces } from "@/lib/school-profile";
 import { currentTerms } from "@/lib/terms";
 import { getBadges } from "@/lib/badges";
 import { myRecords } from "@/lib/school-record";
+import { readAttachments } from "@/lib/files";
+import type { Attachment } from "@/lib/json";
+import { discard, MAX_ATTACHMENTS } from "@/lib/uploads";
+import { spendTickets } from "@/lib/api-reads/teaching";
 import { mayEditOwnBirthdate, setOwnBirthdate } from "@/lib/birthdate";
 import { listTopics, normaliseLanguage } from "@/lib/quiz";
 import {
@@ -248,7 +252,12 @@ export async function studentAssignments(ctx: StudentCtx) {
  * replaces the body until the teacher has marked it; after that it is refused,
  * because a new body would silently orphan the mark.
  */
-export async function submitStudentWork(ctx: StudentCtx, assignmentId: string, body: string): Promise<{ submittedAt: Date }> {
+export async function submitStudentWork(
+  ctx: StudentCtx,
+  assignmentId: string,
+  body: string,
+  wanted?: { fileId: string; name: string }[],
+): Promise<{ submittedAt: Date; attachments: Attachment[] }> {
   let assignment;
   try {
     assignment = await assertAssignmentAccess(ctx, assignmentId);
@@ -263,12 +272,24 @@ export async function submitStudentWork(ctx: StudentCtx, assignmentId: string, b
   });
   if (existingGrade) throw new AccessError("student.alreadyMarked");
 
+  const current = await db.submission.findUnique({
+    where: { assignmentId_studentMembershipId: { assignmentId, studentMembershipId: ctx.membershipId } },
+    select: { attachments: true },
+  });
+  const existing = readAttachments(current?.attachments);
+  const { attachments, added, removed } = await reconcileHandInFiles(ctx.user.id, existing, wanted);
+  if (body.length === 0 && attachments.length === 0) throw new AccessError("student.writeBeforeHandIn", "FORBIDDEN");
+
   const submittedAt = new Date();
   const submission = await db.submission.upsert({
     where: { assignmentId_studentMembershipId: { assignmentId, studentMembershipId: ctx.membershipId } },
-    create: { schoolId: ctx.schoolId, assignmentId, studentMembershipId: ctx.membershipId, body, status: "SUBMITTED", submittedAt },
-    update: { body, status: "SUBMITTED", submittedAt },
+    create: { schoolId: ctx.schoolId, assignmentId, studentMembershipId: ctx.membershipId, body, status: "SUBMITTED", submittedAt, attachments: writeJson(attachments) },
+    update: { body, status: "SUBMITTED", submittedAt, attachments: writeJson(attachments) },
   });
+  // The row now names the new files, so their tickets are spent; the files it
+  // no longer names are nobody's and go now rather than waiting for the reclaim job.
+  await spendTickets(added);
+  if (removed.length > 0) await discard(removed);
 
   // Tell the author of the assignment, not every teacher at the school.
   const [author, student] = await Promise.all([
@@ -297,9 +318,43 @@ export async function submitStudentWork(ctx: StudentCtx, assignmentId: string, b
     action: "submission.create",
     targetType: "Submission",
     targetId: submission.id,
-    meta: { assignmentId, late: Boolean(assignment.dueAt && submittedAt > assignment.dueAt), api: true },
+    meta: { assignmentId, late: Boolean(assignment.dueAt && submittedAt > assignment.dueAt), api: true, files: attachments.length, added: added.length, removed: removed.length },
   });
-  return { submittedAt };
+  return { submittedAt, attachments };
+}
+
+/**
+ * The hand-in's files after a delivery. `wanted` omitted keeps them as they
+ * are. Otherwise each wanted id is either already on this hand-in (kept, its
+ * stored name and size untouched) or an unspent upload ticket THIS pupil
+ * holds (added, with the sniffed type and size from the ticket, never the
+ * phone's word) — any other id is refused as not theirs, because files.ts
+ * would otherwise grant the class's teachers a file the pupil merely saw.
+ * Files on the hand-in that are not wanted any more are removed.
+ */
+async function reconcileHandInFiles(
+  userId: string,
+  existing: Attachment[],
+  wanted: { fileId: string; name: string }[] | undefined,
+): Promise<{ attachments: Attachment[]; added: string[]; removed: string[] }> {
+  if (!wanted) return { attachments: existing, added: [], removed: [] };
+  const ids = [...new Set(wanted.map((w) => w.fileId))];
+  if (ids.length > MAX_ATTACHMENTS) throw new AccessError("ui.upToFilesMany", "FORBIDDEN", { max: MAX_ATTACHMENTS });
+  const have = new Map(existing.map((a) => [a.fileId, a]));
+  const fresh = ids.filter((id) => !have.has(id));
+  const tickets = fresh.length
+    ? await db.uploadTicket.findMany({ where: { fileId: { in: fresh }, userId, consumedAt: null }, select: { fileId: true, mime: true, size: true } })
+    : [];
+  if (tickets.length !== fresh.length) throw new AccessError("access.fileNotYours", "NOT_FOUND");
+  const byTicket = new Map(tickets.map((t) => [t.fileId, t]));
+  const attachments = ids.map((id) => {
+    const kept = have.get(id);
+    if (kept) return kept;
+    const ticket = byTicket.get(id)!;
+    const name = wanted.find((w) => w.fileId === id)!.name.slice(0, 200).replace(/[\r\n]/g, "");
+    return { fileId: id, name, size: ticket.size, mime: ticket.mime };
+  });
+  return { attachments, added: fresh, removed: existing.map((a) => a.fileId).filter((id) => !ids.includes(id)) };
 }
 
 /** /student/profile — how the pupil looks, and what the practising and competing added up to. */

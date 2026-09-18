@@ -215,6 +215,58 @@ describe("the pupil's pages", () => {
     expect(work.handedIn.map((a: { id: string; submissionBody: string }) => [a.id, a.submissionBody])).toEqual([[assignmentId, "Read chapters one and two."]]);
   });
 
+  it("photographs of the work: the pupil's own unspent uploads attach, a merely-seen id is refused, a photo alone is an answer, and an unlisted photo is removed", async () => {
+    const mine = `zz-fam-mine-${STAMP}`;
+    const mine2 = `zz-fam-mine2-${STAMP}`;
+    const theirs = `zz-fam-theirs-${STAMP}`;
+    await db.uploadTicket.createMany({
+      data: [
+        { userId: pupilUserId, fileId: mine, mime: "image/jpeg", size: 2048 },
+        { userId: pupilUserId, fileId: mine2, mime: "image/jpeg", size: 4096 },
+        { userId: otherPupilUserId, fileId: theirs, mime: "image/jpeg", size: 2048 },
+      ],
+    });
+    try {
+      // Nothing at all is not a hand-in.
+      const empty = await submissionsPost(json("/api/v1/family/student/submissions", { assignmentId, body: "", attachments: [] }));
+      expect(empty.status).toBe(422);
+
+      // Somebody else's upload, even with a real id, is not theirs to hand in.
+      const stolen = await submissionsPost(json("/api/v1/family/student/submissions", { assignmentId, body: "", attachments: [{ fileId: theirs, name: "page.jpg" }] }));
+      expect(stolen.status).toBe(404);
+      expect(await stolen.json()).toMatchObject({ code: "NOT_FOUND" });
+      expect((await db.uploadTicket.findUniqueOrThrow({ where: { fileId: theirs } })).consumedAt).toBeNull();
+
+      // A photo with no words is a whole answer; the type and size come from the ticket, the name from the phone.
+      const photo = await submissionsPost(json("/api/v1/family/student/submissions", { assignmentId, body: "", attachments: [{ fileId: mine, name: "Page 1.jpg" }, { fileId: mine2, name: "Page 2\n.jpg" }] }));
+      expect(photo.status).toBe(200);
+      const first = await photo.json();
+      expect(first.attachments).toEqual([
+        { fileId: mine, name: "Page 1.jpg", size: 2048, mime: "image/jpeg" },
+        { fileId: mine2, name: "Page 2.jpg", size: 4096, mime: "image/jpeg" },
+      ]);
+      expect((await db.uploadTicket.findUniqueOrThrow({ where: { fileId: mine } })).consumedAt).not.toBeNull();
+      const listed = await (await studentAssignmentsGet()).json();
+      expect(listed.handedIn[0].submissionAttachments.map((a: { fileId: string }) => a.fileId)).toEqual([mine, mine2]);
+
+      // Listing a photo again keeps it as stored (the spent ticket is not needed, the new name is ignored), and words alone leave the photos as they were.
+      const kept = await (await submissionsPost(json("/api/v1/family/student/submissions", { assignmentId, body: "", attachments: [{ fileId: mine, name: "again.jpg" }, { fileId: mine2, name: "Page 2.jpg" }] }))).json();
+      expect(kept.attachments[0]).toEqual({ fileId: mine, name: "Page 1.jpg", size: 2048, mime: "image/jpeg" });
+      const wordsOnly = await (await submissionsPost(json("/api/v1/family/student/submissions", { assignmentId, body: "See the pages." }))).json();
+      expect(wordsOnly.attachments.map((a: { fileId: string }) => a.fileId)).toEqual([mine, mine2]);
+
+      // Dropping the second page removes it from the hand-in.
+      const trimmed = await (await submissionsPost(json("/api/v1/family/student/submissions", { assignmentId, body: "See the page.", attachments: [{ fileId: mine, name: "Page 1.jpg" }] }))).json();
+      expect(trimmed.attachments.map((a: { fileId: string }) => a.fileId)).toEqual([mine]);
+      const row = await db.submission.findFirstOrThrow({ where: { assignmentId, studentMembershipId: pupilMembershipId } });
+      expect(JSON.parse(row.attachments)).toHaveLength(1);
+      expect(row.body).toBe("See the page.");
+    } finally {
+      await submissionsPost(json("/api/v1/family/student/submissions", { assignmentId, body: "Read chapters one and two.", attachments: [] }));
+      await db.uploadTicket.deleteMany({ where: { fileId: { in: [mine, mine2, theirs] } } });
+    }
+  });
+
   it("another school's assignment is 404, never a leak", async () => {
     const res = await submissionsPost(json("/api/v1/family/student/submissions", { assignmentId: otherAssignmentId, body: "Hello" }));
     expect(res.status).toBe(404);

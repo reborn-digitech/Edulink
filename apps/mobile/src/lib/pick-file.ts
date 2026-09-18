@@ -14,6 +14,8 @@ import { api, errorText } from "./api";
  * system document picker asks for no permission at all — the person picks
  * one file in the system's own sheet and only that file is handed over — so
  * it fits the policy and still reaches Photos on iOS and Files everywhere.
+ * The camera alone returned for photo hand-ins (lib/camera.ts); the library
+ * permission did not.
  *
  * The bytes go to POST /api/v1/uploads, which sniffs the type, caps the size
  * and strips EXIF; what comes back is the id a later request names. The
@@ -40,14 +42,18 @@ export async function pickAndUpload(kind: PickKind, fallbackError: string): Prom
   const picked = await DocumentPicker.getDocumentAsync({ type: TYPES[kind], copyToCacheDirectory: true, multiple: false });
   if (picked.canceled || !picked.assets?.length) return null;
   const asset = picked.assets[0]!;
-  const name = asset.name || "file";
-  const mime = asset.mimeType ?? "application/octet-stream";
+  return uploadPicked({ uri: asset.uri, name: asset.name || "file", mime: asset.mimeType ?? "application/octet-stream", file: asset.file }, fallbackError);
+}
+
+/** One local file — from the picker or the camera (lib/camera.ts) — posted to /api/v1/uploads. */
+export async function uploadPicked(asset: { uri: string; name: string; mime: string; file?: File }, fallbackError: string): Promise<Picked> {
+  const { uri, name, mime } = asset;
   const form = new FormData();
   if (Platform.OS === "web" && asset.file) {
     form.append("file", asset.file, name);
   } else {
     // React Native's FormData streams a file from its uri; the object shape is RN's, not the DOM's.
-    form.append("file", { uri: asset.uri, name, type: mime } as unknown as Blob);
+    form.append("file", { uri, name, type: mime } as unknown as Blob);
   }
   const result = await api().post("/api/v1/uploads", form);
   if (!result.ok) {

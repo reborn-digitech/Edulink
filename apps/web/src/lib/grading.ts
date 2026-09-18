@@ -497,6 +497,12 @@ export async function getGradebook(
         late: Boolean(
           submission?.submittedAt && assignment.dueAt && submission.submittedAt > assignment.dueAt,
         ),
+        // What was handed in, beside the mark field: the words and the
+        // photographs of the notebook. A draft (files attached, not yet handed
+        // in) is still the pupil's, so only handed-in work shows.
+        work: submission?.submittedAt
+          ? { submissionId: submission.id, body: submission.body, attachments: readAttachments(submission.attachments) }
+          : null,
       };
     })
     .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }));

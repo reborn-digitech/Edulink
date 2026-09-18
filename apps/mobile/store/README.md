@@ -33,5 +33,5 @@ Six screens per language, portrait, taken on a device or simulator (this machine
 ## Honesty notes
 
 - The Hindi and Marathi copy was written by the same hand as the app's dictionaries and has not been read by a native speaker (see the header of `packages/i18n/src/hi.ts`). Have one read it before it is pasted into a console.
-- The listings promise nothing the code does not do: no photo upload from the phone, no app lock, no camera — those permissions are in `app.json` ahead of the features (policy Gap 1) and the listing does not mention them.
+- The listings promise nothing the code does not do: no app lock, no photo library. The camera is asked for at a pupil's first photo hand-in and for nothing else (`app.json`, policy row 8); a bulletin picture or a hand-in page comes through the system's own picker or that camera, one file at a time.
 - Both stores require a working sign-in for review because nobody can create an account in the app. Provide `REVIEWER_LOGIN` / `REVIEWER_PASSWORD` on a demo school in the review notes (Apple Guideline 2.1; Play "App access").

@@ -21,7 +21,14 @@
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "blockedPermissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_MEDIA_IMAGES",
+        "android.permission.READ_MEDIA_VIDEO",
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "output": "static",
@@ -44,6 +51,14 @@
       ],
       "expo-secure-store",
       "expo-sqlite",
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "EduLink uses the camera only to photograph work you hand in.",
+          "photosPermission": false,
+          "microphonePermission": false
+        }
+      ],
       "expo-localization",
       [
         "expo-notifications",

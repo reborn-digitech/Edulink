@@ -186,11 +186,22 @@ export const familyStudentAssignmentsSchema = z.object({
 });
 
 /** POST /api/v1/family/student/submissions — hand a piece of work in (again, until it is marked). */
-export const familyStudentSubmissionSchema = z.object({
-  assignmentId: cuid,
-  body: z.string().trim().min(1).max(20_000),
-});
-export const familyStudentSubmittedSchema = z.object({ submittedAt: iso });
+export const familyStudentSubmissionSchema = z
+  .object({
+    assignmentId: cuid,
+    body: z.string().trim().max(20_000),
+    /**
+     * The hand-in's files after this delivery, in order: ids already on the
+     * hand-in are kept, new ids must be this pupil's own unspent uploads
+     * (POST /api/v1/uploads), and anything on the hand-in but not listed is
+     * removed. Omitted, the files stay as they are — an older phone that
+     * sends text alone changes nothing it cannot see.
+     */
+    attachments: z.array(z.object({ fileId: z.string().min(1).max(80), name: z.string().trim().min(1).max(200) })).max(5).optional(),
+  })
+  // Words or a photograph of the work: an empty hand-in with no files says nothing.
+  .refine((v) => v.body.length > 0 || (v.attachments?.length ?? 0) > 0, { message: "body", path: ["body"] });
+export const familyStudentSubmittedSchema = z.object({ submittedAt: iso, attachments: z.array(attachmentSchema) });
 
 const badgeSchema = z.object({
   id: z.string(),

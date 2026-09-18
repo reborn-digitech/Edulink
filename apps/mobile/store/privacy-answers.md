@@ -13,7 +13,7 @@ What the phone actually transmits, from the code (`apps/mobile/src`):
 | Problem report text; crash report (message, screen name, stack, platform, OS version, model, app version, build) | `lib/crash.ts`, `lib/version.ts` → `POST /api/v1/app/report` | 24 |
 | The chosen language, as a request header | `lib/api.ts` | 25 |
 
-Not sent by the app: name, date of birth, photos or videos (no picker or upload code in this release — policy Gap 1), location, contacts, any advertising identifier, any analytics event. The server additionally records the connection's IP for each session and audit line (Gap 7).
+Sent by the app when the person chooses to: a photo or video for a bulletin post, and a photograph of a pupil's own work for a hand-in — one file at a time through the system picker or, for hand-ins, the camera; the server strips EXIF (including location) before storing it. Not sent by the app: name, date of birth, anything from the photo library it was not handed, location, contacts, any advertising identifier, any analytics event. The server additionally records the connection's IP for each session and audit line (Gap 7).
 
 ## Apple — App Privacy ("nutrition label")
 
@@ -32,7 +32,7 @@ Tracking (as Apple defines it, linking with third-party data for advertising or 
 | Sensitive Info | No | — | — | — | Date of birth is never sent by the app (row 2) |
 | Contacts | No | — | — | — | |
 | User Content — Emails or Text Messages | Yes | Yes | No | App Functionality | In-app messages and remark replies (rows 9–10) |
-| User Content — Photos or Videos | No | — | — | — | Displayed, not uploaded, in this release (row 11; Gap 1) |
+| User Content — Photos or Videos | Yes | Yes | No | App Functionality | A bulletin picture or video, or a photograph of a pupil's own work handed in; chosen one at a time, EXIF stripped on the server (rows 8 and 11) |
 | User Content — Audio Data | No | — | — | — | |
 | User Content — Gameplay Content | No | — | — | — | |
 | User Content — Customer Support | Yes | Yes | No | App Functionality | "Report a problem" text (row 24) |
@@ -86,7 +86,7 @@ Notes for the form:
 | Messages — Emails | No | No | — | — | |
 | Messages — SMS or MMS | No | No | — | — | |
 | Messages — Other in-app messages | Yes | No | Optional (a person may never send one) | App functionality | Rows 9–10 |
-| Photos and videos — Photos, Videos | No | No | — | — | Not uploaded in this release (row 11; Gap 1) |
+| Photos and videos — Photos, Videos | Yes | No | Optional: a bulletin picture or a photographed page of work | App functionality | One file at a time through the system picker or the camera; EXIF stripped on the server (rows 8 and 11) |
 | Audio — Voice or sound recordings, Music files, Other audio | No | No | — | — | |
 | Files and docs | No | No | — | — | Hand-ins are text (row 8) |
 | Calendar | No | No | — | — | |

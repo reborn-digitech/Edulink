@@ -70,4 +70,8 @@ jest.mock("expo-updates", () => {
     __state: state,
   };
 });
+jest.mock("expo-image-picker", () => ({
+  requestCameraPermissionsAsync: jest.fn(async () => ({ granted: true, status: "granted" })),
+  launchCameraAsync: jest.fn(async () => ({ canceled: true, assets: null })),
+}));
 jest.mock("expo-screen-capture", () => ({ usePreventScreenCapture: jest.fn(), preventScreenCaptureAsync: jest.fn(async () => {}), allowScreenCaptureAsync: jest.fn(async () => {}) }));

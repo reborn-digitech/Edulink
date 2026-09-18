@@ -14732,7 +14732,7 @@
     },
     "/api/v1/family/student/submissions": {
       "post": {
-        "summary": "Hand a piece of work in (replaces the body until it is marked)",
+        "summary": "Hand a piece of work in: words and/or photographs of it (ids from POST /api/v1/uploads); replaces the body and the file list until it is marked",
         "description": "Roles: STUDENT.",
         "security": [
           {
@@ -14753,10 +14753,38 @@
                     "submittedAt": {
                       "type": "string",
                       "format": "date-time"
+                    },
+                    "attachments": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fileId": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "size": {
+                            "type": "number"
+                          },
+                          "mime": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "fileId",
+                          "name",
+                          "size",
+                          "mime"
+                        ],
+                        "additionalProperties": false
+                      }
                     }
                   },
                   "required": [
-                    "submittedAt"
+                    "submittedAt",
+                    "attachments"
                   ],
                   "additionalProperties": false
                 }
@@ -14817,8 +14845,31 @@
                   },
                   "body": {
                     "type": "string",
-                    "minLength": 1,
                     "maxLength": 20000
+                  },
+                  "attachments": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "fileId": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 80
+                        },
+                        "name": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200
+                        }
+                      },
+                      "required": [
+                        "fileId",
+                        "name"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "maxItems": 5
                   }
                 },
                 "required": [

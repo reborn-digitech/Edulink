@@ -1,16 +1,19 @@
 import { useState } from "react";
-import { View } from "react-native";
+import { Pressable, View } from "react-native";
+import { Image } from "expo-image";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { z } from "zod";
 import { familyParentAssignmentsSchema, familyStudentAssignmentsSchema, familyStudentSubmittedSchema } from "@edulink/contracts";
-import { Button, Card, Empty, Failed, Field, Loading, Row, Screen, Text } from "@/components";
-import { api, errorText } from "@/lib/api";
+import { Button, Card, Empty, Failed, Field, Icon, Loading, Row, Screen, Text } from "@/components";
+import { api, API_BASE, errorText } from "@/lib/api";
+import { CAMERA_AVAILABLE, openAppSettings, takePhotoAndUpload } from "@/lib/camera";
+import { pickAndUpload } from "@/lib/pick-file";
 import { unwrap } from "@/lib/query";
 import { useLocale, useT } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
 import { useRole } from "@/lib/session";
-import { ChildSwitcher, childQuery, formatMilli, Note, param, Pill, relativeTime, SectionTitle, Tabs } from "./shared";
+import { ChildSwitcher, childQuery, formatMilli, Note, param, Pill, relativeTime, SectionTitle, Tabs, useAuthHeaders } from "./shared";
 
 type Tab = "todo" | "handed" | "marked";
 type StudentWork = z.infer<typeof familyStudentAssignmentsSchema>["todo"][number];
@@ -226,17 +229,7 @@ function WorkCard({ item }: { item: StudentWork }) {
               ))}
             </View>
           ) : null}
-          {item.submissionAttachments.length > 0 ? (
-            <View style={{ gap: 2 }}>
-              <SectionTitle>{t("student.yourFiles")}</SectionTitle>
-              {item.submissionAttachments.map((file) => (
-                <Text key={file.fileId} variant="sm">
-                  {file.name}
-                </Text>
-              ))}
-            </View>
-          ) : null}
-          <SubmitPanel assignmentId={item.id} title={item.title} submittedAt={item.submittedAt} existingBody={item.submissionBody} />
+          <SubmitPanel assignmentId={item.id} title={item.title} submittedAt={item.submittedAt} existingBody={item.submissionBody} existingFiles={item.submissionAttachments} />
         </View>
         {/* Gentle: "3 days ago", never a red OVERDUE stamp. */}
         <Pill tone={item.overdue ? "warn" : "muted"} label={item.dueAt ? relativeTime(item.dueAt, locale) : t("student.noDate")} />
@@ -245,40 +238,85 @@ function WorkCard({ item }: { item: StudentWork }) {
   );
 }
 
-/** Hand-in, collapsed until the pupil opens it: a text box and one button, as on the web. */
-function SubmitPanel({ assignmentId, title, submittedAt, existingBody }: { assignmentId: string; title: string; submittedAt: string | null; existingBody: string }) {
+/**
+ * Hand-in, collapsed until the pupil opens it: the words, and the photographs
+ * of the notebook — taken there and then with the camera (lib/camera.ts), or
+ * one picture chosen through the system's own picker. Each photo is uploaded
+ * as it is taken and shown back from the server, so what the pupil sees is
+ * what the teacher will; the hand-in itself is one POST naming the text and
+ * every file to keep, and until it is sent nothing has changed. Either words
+ * or a photo is enough.
+ */
+type HandInFile = { fileId: string; name: string; mime: string; size: number };
+const MAX_PHOTOS = 5;
+
+function SubmitPanel({ assignmentId, title, submittedAt, existingBody, existingFiles }: { assignmentId: string; title: string; submittedAt: string | null; existingBody: string; existingFiles: HandInFile[] }) {
   const t = useT();
   const th = useTheme();
   const qc = useQueryClient();
+  const headers = useAuthHeaders();
   const [open, setOpen] = useState(false);
   const [body, setBody] = useState(existingBody);
+  const [files, setFiles] = useState<HandInFile[]>(existingFiles);
+  const [uploading, setUploading] = useState(false);
+  const [cameraDenied, setCameraDenied] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [cheer, setCheer] = useState(false);
   const done = Boolean(submittedAt);
   const submit = useMutation({
-    mutationFn: async (text: string) => {
-      const result = await api().post("/api/v1/family/student/submissions", { assignmentId, body: text });
+    mutationFn: async (input: { body: string; files: HandInFile[] }) => {
+      const result = await api().post("/api/v1/family/student/submissions", { assignmentId, body: input.body, attachments: input.files.map((f) => ({ fileId: f.fileId, name: f.name })) });
       if (!result.ok) throw new Error(errorText(result, t("student.notGoThrough")));
       return familyStudentSubmittedSchema.parse(result.data);
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
       setOpen(false);
       setCheer(true);
       setError(null);
+      setFiles(data.attachments);
       void qc.invalidateQueries({ queryKey: ["family", "student"] });
     },
     onError: (e) => setError(e.message),
   });
   const send = () => {
     const text = body.trim();
-    if (!text) {
-      setError(t("student.writeBeforeHandIn"));
+    if (!text && files.length === 0) {
+      setError(t("student.photoOrWords"));
       return;
     }
     setError(null);
-    submit.mutate(text);
+    submit.mutate({ body: text, files });
   };
+  const addFile = async (take: boolean) => {
+    if (files.length >= MAX_PHOTOS) {
+      setError(t("ui.upToFilesMany", { max: MAX_PHOTOS }));
+      return;
+    }
+    setUploading(true);
+    setError(null);
+    try {
+      if (take) {
+        const outcome = await takePhotoAndUpload(t("student.notGoThrough"));
+        if (outcome && "denied" in outcome) {
+          setCameraDenied(true);
+          return;
+        }
+        if (outcome) setFiles((current) => [...current, outcome.picked]);
+      } else {
+        const picked = await pickAndUpload("image", t("student.notGoThrough"));
+        if (picked) setFiles((current) => [...current, picked]);
+      }
+    } catch (e) {
+      // The server's own sentence (too big, not a picture), under the box where the pupil is looking.
+      setError(e instanceof Error ? e.message : t("student.notGoThrough"));
+    } finally {
+      setUploading(false);
+    }
+  };
+  const remove = (fileId: string) => setFiles((current) => current.filter((f) => f.fileId !== fileId));
+
   if (!open) {
+    const thumbs = files.length > 0 ? <Thumbnails files={files} headers={headers} /> : null;
     if (cheer) {
       return (
         <Note tone="ok">
@@ -288,6 +326,7 @@ function SubmitPanel({ assignmentId, title, submittedAt, existingBody }: { assig
           <Text variant="xs" tone="muted">
             {t("student.teacherTold", { title })}
           </Text>
+          {thumbs}
           <Button variant="ghost" label={t("student.changeIt")} onPress={() => setOpen(true)} />
         </Note>
       );
@@ -298,11 +337,17 @@ function SubmitPanel({ assignmentId, title, submittedAt, existingBody }: { assig
           <Text variant="sm" bold tone="ok">
             {t("student.handedIn")}
           </Text>
+          {thumbs}
           <Button variant="ghost" label={t("student.changeIt")} onPress={() => setOpen(true)} />
         </Note>
       );
     }
-    return <Button variant="secondary" label={t("student.handItIn")} onPress={() => setOpen(true)} />;
+    return (
+      <View style={{ gap: th.space[2] }}>
+        {thumbs}
+        <Button variant="secondary" label={t("student.handItIn")} onPress={() => setOpen(true)} />
+      </View>
+    );
   }
   return (
     <Note tone="accent">
@@ -318,6 +363,22 @@ function SubmitPanel({ assignmentId, title, submittedAt, existingBody }: { assig
         error={error}
         style={{ minHeight: 120, textAlignVertical: "top", paddingTop: th.space[3] }}
       />
+      <Text variant="xs" tone="muted">
+        {t("student.photosHint", { max: MAX_PHOTOS })}
+      </Text>
+      <Thumbnails files={files} headers={headers} onRemove={remove} />
+      {cameraDenied ? (
+        <Note tone="warn">
+          <Text variant="sm">{t("student.cameraDenied")}</Text>
+          <Button variant="ghost" label={t("student.openSettings")} onPress={openAppSettings} />
+        </Note>
+      ) : null}
+      <View style={{ flexDirection: "row", gap: th.space[2], flexWrap: "wrap" }}>
+        {CAMERA_AVAILABLE ? (
+          <Button variant="secondary" label={uploading ? t("student.uploadingPhoto") : t("student.takePhoto")} icon={<Icon name="camera" size={18} color={th.fg} weight="bold" />} busy={uploading} disabled={files.length >= MAX_PHOTOS} onPress={() => void addFile(true)} style={{ flex: 1 }} />
+        ) : null}
+        <Button variant="secondary" label={t("student.choosePicture")} icon={<Icon name="image" size={18} color={th.fg} weight="bold" />} busy={uploading} disabled={files.length >= MAX_PHOTOS} onPress={() => void addFile(false)} style={{ flex: 1 }} />
+      </View>
       <View style={{ flexDirection: "row", gap: th.space[2] }}>
         <Button
           variant="ghost"
@@ -326,11 +387,42 @@ function SubmitPanel({ assignmentId, title, submittedAt, existingBody }: { assig
           onPress={() => {
             setOpen(false);
             setBody(existingBody);
+            setFiles(existingFiles);
             setError(null);
           }}
         />
-        <Button label={done || cheer ? t("student.changeIt") : t("student.handItIn")} style={{ flex: 1 }} busy={submit.isPending} onPress={send} />
+        <Button label={done || cheer ? t("student.changeIt") : t("student.handItIn")} style={{ flex: 1 }} busy={submit.isPending || uploading} onPress={send} />
       </View>
     </Note>
+  );
+}
+
+/** The hand-in's photographs, drawn from the server with the bearer token; a file that is not a picture is named. */
+function Thumbnails({ files, headers, onRemove }: { files: HandInFile[]; headers: Record<string, string> | null; onRemove?: (fileId: string) => void }) {
+  const t = useT();
+  const th = useTheme();
+  if (files.length === 0) return null;
+  return (
+    <View style={{ flexDirection: "row", flexWrap: "wrap", gap: th.space[2] }} accessibilityLabel={t("student.yourFiles")}>
+      {files.map((file) => (
+        <View key={file.fileId} style={{ width: th.tap * 2, gap: 2 }}>
+          {file.mime.startsWith("image/") && headers ? (
+            <Image source={{ uri: `${API_BASE}/api/files/${encodeURIComponent(file.fileId)}?w=320`, headers }} accessible accessibilityLabel={file.name} contentFit="cover" style={{ width: th.tap * 2, height: th.tap * 2, borderRadius: th.radius.sm, backgroundColor: th.surfaceMuted }} />
+          ) : (
+            <View style={{ width: th.tap * 2, height: th.tap * 2, borderRadius: th.radius.sm, backgroundColor: th.surfaceMuted, alignItems: "center", justifyContent: "center" }}>
+              <Icon name="paperclip" size={22} color={th.fgMuted} weight="duotone" />
+            </View>
+          )}
+          <Text variant="xs" tone="muted" numberOfLines={1}>
+            {file.name}
+          </Text>
+          {onRemove ? (
+            <Pressable onPress={() => onRemove(file.fileId)} accessibilityRole="button" accessibilityLabel={t("student.removePhoto", { name: file.name })} hitSlop={8} style={{ position: "absolute", top: -6, right: -6, backgroundColor: th.surface, borderRadius: th.radius.lg }}>
+              <Icon name="xCircle" size={22} color={th.danger} weight="fill" />
+            </Pressable>
+          ) : null}
+        </View>
+      ))}
+    </View>
   );
 }

@@ -12,20 +12,23 @@ import { useT } from "@/lib/i18n";
 /**
  * Hand-in panel, collapsed until the student opens it.
  *
- * Kept deliberately plain: a text box and one button. File attachments are a
- * later increment, and pretending to offer them with a disabled control would
- * be worse than not showing them.
+ * Kept deliberately plain: a text box and one button. The photographs of the
+ * work go through the attachment strip above it, and once one is there the
+ * words are optional.
  */
 export function SubmitPanel({
   assignmentId,
   title,
   submittedAt,
   existingBody,
+  hasFiles = false,
 }: {
   assignmentId: string;
   title: string;
   submittedAt: Date | null;
   existingBody: string;
+  /** Photographs already attached above the box count as an answer. */
+  hasFiles?: boolean;
 }) {
   const t = useT();
   const router = useRouter();
@@ -37,7 +40,7 @@ export function SubmitPanel({
   const [done, setDone] = useState<boolean>(Boolean(submittedAt));
 
   function submit() {
-    if (body.trim().length === 0) {
+    if (body.trim().length === 0 && !hasFiles) {
       setError(t("student.writeBeforeHandIn"));
       return;
     }

@@ -209,6 +209,7 @@ export default async function StudentAssignmentsPage({
                       title={item.title}
                       submittedAt={item.submittedAt}
                       existingBody={item.submissionBody}
+                      hasFiles={item.submissionAttachments.length > 0}
                     />
                   </div>
                   {/* Gentle: "3 days late", never a red OVERDUE stamp. (§6) */}

@@ -5,9 +5,12 @@ import { useRouter } from "next/navigation";
 import {
   CheckCircleIcon,
   FloppyDiskIcon,
+  ImagesIcon,
   MagnifyingGlassIcon,
   NoteIcon,
 } from "@phosphor-icons/react";
+import { AttachmentList } from "@/components/attachment-list";
+import type { Attachment } from "@/lib/json";
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -31,6 +34,8 @@ export type GradeRow = {
   comment: string | null;
   gradedAt: Date | null;
   late: boolean;
+  /** The hand-in itself — words and photographs — once it has been handed in. */
+  work: { submissionId: string; body: string; attachments: Attachment[] } | null;
 };
 
 type Draft = { score: string; comment: string };
@@ -72,6 +77,7 @@ export function Gradebook({
   );
   const [query, setQuery] = useState("");
   const [openComment, setOpenComment] = useState<string | null>(null);
+  const [openWork, setOpenWork] = useState<string | null>(null);
 
   const original = useMemo(
     () =>
@@ -265,6 +271,21 @@ export function Gradebook({
                       </Badge>
                     )}
 
+                    {row.work && (
+                      <button
+                        type="button"
+                        onClick={() => setOpenWork((w) => (w === row.membershipId ? null : row.membershipId))}
+                        aria-label={openWork === row.membershipId ? t("teacher.hideWork", { name: row.name }) : t("teacher.seeWork", { name: row.name })}
+                        aria-expanded={openWork === row.membershipId}
+                        className={cn(
+                          "tap grid shrink-0 place-items-center rounded-[--radius-sm]",
+                          row.work.attachments.length > 0 ? "text-accent-strong" : "text-fg-subtle hover:text-fg",
+                        )}
+                      >
+                        <ImagesIcon weight={row.work.attachments.length > 0 ? "fill" : "regular"} className="size-5" />
+                      </button>
+                    )}
+
                     <button
                       type="button"
                       onClick={() =>
@@ -309,6 +330,26 @@ export function Gradebook({
                       )}
                     </div>
                   </div>
+
+                  {openWork === row.membershipId && row.work && (
+                    <div className="mt-2.5 border-t border-border pt-2.5">
+                      {row.work.body ? (
+                        <p className="whitespace-pre-wrap text-sm leading-relaxed text-fg">{row.work.body}</p>
+                      ) : (
+                        <p className="text-xs text-fg-muted">{t("teacher.noWords")}</p>
+                      )}
+                      {row.work.attachments.length > 0 && (
+                        <AttachmentList
+                          className="mt-2"
+                          target="submission"
+                          assignmentId={assignmentId}
+                          recordId={row.work.submissionId}
+                          attachments={row.work.attachments}
+                          canEdit={false}
+                        />
+                      )}
+                    </div>
+                  )}
 
                   {openComment === row.membershipId && (
                     <div className="mt-2.5 border-t border-border pt-2.5">

@@ -8,6 +8,7 @@ import { requireApiRole, assertAssignmentAccess, AccessError } from "@/lib/tenan
 import { notify } from "@/lib/notify";
 import { audit } from "@/lib/audit";
 import { publish, channel } from "@/lib/realtime";
+import { readAttachments } from "@/lib/files";
 
 const submitSchema = z.object({
   assignmentId: z.string().cuid(),
@@ -41,7 +42,6 @@ export async function submitWork(input: unknown): Promise<SubmitState> {
   if (!parsed.success) return { ok: false, error: (await getT())("student.submissionNotValid") };
 
   const { assignmentId, body } = parsed.data;
-  if (body.length === 0) return { ok: false, error: (await getT())("student.writeBeforeHandIn") };
 
   let assignment;
   try {
@@ -49,6 +49,17 @@ export async function submitWork(input: unknown): Promise<SubmitState> {
   } catch (error) {
     if (error instanceof AccessError) return { ok: false, error: (await getT())("student.workNotAvailable") };
     throw error;
+  }
+
+  // Words, or the photographs already attached above the box: a page from
+  // the notebook is a whole answer, and a pupil who has nothing to add to it
+  // should not have to type "see photo".
+  if (body.length === 0) {
+    const draft = await db.submission.findUnique({
+      where: { assignmentId_studentMembershipId: { assignmentId, studentMembershipId: ctx.membershipId } },
+      select: { attachments: true },
+    });
+    if (readAttachments(draft?.attachments).length === 0) return { ok: false, error: (await getT())("student.writeBeforeHandIn") };
   }
 
   // Already marked? Re-submitting would silently orphan the grade the teacher
