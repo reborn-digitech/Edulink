@@ -152,6 +152,8 @@ describe("reach", () => {
     expect(reach.canRemind).toBe(true);
     expect(reach.remindBlocked).toBe("none");
     await as("TEACHER");
+    // A circular to families is the class teacher's to chase: they read it although it is addressed to parents.
+    expect((await postGet(get("/x"), params(postId))).status).toBe(200);
     const teacherView = await (await reachGet(get("/x"), params(postId))).json();
     expect(teacherView.groups[0].outstanding[0].guardians[0].phone).toBeNull();
     expect(teacherView.canRemind).toBe(false);

@@ -196,8 +196,11 @@ export async function addIncidentNote(ctx: ActiveContext, incidentId: string, bo
 /** Closing: the office and the head, once follow-up is done. */
 export async function closeIncident(ctx: ActiveContext, incidentId: string): Promise<IncidentView> {
   const view = await incidentFor(ctx, incidentId);
-  if (!view.canClose) throw new AccessError("access.notAllowed");
   const staff = staffOf(ctx);
+  // Closing what is already closed is a no-op for the office, not a refusal:
+  // two people at the desk, or a double tap, should not see an error.
+  if (view.status === "CLOSED" && OFFICE.includes(staff.role)) return view;
+  if (!view.canClose) throw new AccessError("access.notAllowed");
   await db.incident.update({ where: { id: incidentId }, data: { status: "CLOSED", closedAt: new Date(), closedByUserId: staff.user.id } });
   await audit({ schoolId: staff.schoolId, actorUserId: staff.user.id, action: "incident.close", targetType: "Incident", targetId: incidentId, meta: { studentMembershipId: view.studentMembershipId } });
   return incidentFor(ctx, incidentId);

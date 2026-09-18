@@ -184,7 +184,10 @@ function visibilityWhere(
 function audienceWhere(role: Role | null, grades: string[]): Prisma.PostWhereInput[] {
   if (role === "ADMIN") return [];
   if (role === "TEACHER" || role === "PRINCIPAL") {
-    return [{ audience: { in: ["ALL", "TEACHERS"] } }];
+    // A circular to families is the class teacher's to chase, so a staff
+    // member reads every post that asks for an acknowledgement, whoever it
+    // was addressed to; a plain post for parents stays out of their feed.
+    return [{ OR: [{ audience: { in: ["ALL", "TEACHERS"] } }, { requiresAck: true }] }];
   }
   const audiences = role === "PARENT" ? ["ALL", "PARENTS"] : ["ALL", "STUDENTS"];
   return [

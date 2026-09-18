@@ -158,6 +158,10 @@ describe("reading and following up", () => {
     expect(closed).toMatchObject({ status: "CLOSED", closedByName: "ZZ Incident Principal", canNote: false, canClose: false });
     expect(closed.closedAt).toEqual(expect.any(String));
     expect((await notePost(json("/x", { body: "Too late." }), params(incidentId))).status).toBe(403);
+    // Closing it again is a no-op for the office, not a refusal.
+    const twice = await closePost(get("/x"), params(incidentId));
+    expect(twice.status).toBe(200);
+    expect((await twice.json()).status).toBe("CLOSED");
     // The record itself is what was written on the day.
     const row = await db.incident.findUniqueOrThrow({ where: { id: incidentId } });
     expect(row.body).toBe("Slipped on the wet steps at break.");
