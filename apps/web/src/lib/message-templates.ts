@@ -40,9 +40,9 @@ export const MESSAGE_TEMPLATES = {
     vars: ["child", "school"],
     event: "absence",
     text: {
-      en: "{child} has been missing school lately. Please speak to the office at {school}. - EduLink",
-      hi: "{child} इन दिनों स्कूल नहीं आ रहे/रही हैं। कृपया {school} के कार्यालय से बात करें। - EduLink",
-      mr: "{child} सध्या शाळेत येत नाही. कृपया {school} च्या कार्यालयाशी बोला. - EduLink",
+      en: "{child} has been missing school lately. Please speak to the office at {school}. - Relay",
+      hi: "{child} इन दिनों स्कूल नहीं आ रहे/रही हैं। कृपया {school} के कार्यालय से बात करें। - Relay",
+      mr: "{child} सध्या शाळेत येत नाही. कृपया {school} च्या कार्यालयाशी बोला. - Relay",
     },
   },
   feeDueSoon: {
@@ -50,9 +50,9 @@ export const MESSAGE_TEMPLATES = {
     vars: ["child", "amount", "date", "school"],
     event: "feeReminders",
     text: {
-      en: "Fees of {amount} for {child} are due on {date} at {school}. Pay in the EduLink app or at the office. - EduLink",
-      hi: "{school} में {child} की {amount} फ़ीस {date} को देय है। EduLink ऐप में या कार्यालय में भुगतान करें। - EduLink",
-      mr: "{school} मध्ये {child} ची {amount} फी {date} रोजी देय आहे. EduLink ॲपमध्ये किंवा कार्यालयात भरा. - EduLink",
+      en: "Fees of {amount} for {child} are due on {date} at {school}. Pay in the Relay app or at the office. - Relay",
+      hi: "{school} में {child} की {amount} फ़ीस {date} को देय है। Relay ऐप में या कार्यालय में भुगतान करें। - Relay",
+      mr: "{school} मध्ये {child} ची {amount} फी {date} रोजी देय आहे. Relay ॲपमध्ये किंवा कार्यालयात भरा. - Relay",
     },
   },
   feeOverdue: {
@@ -60,9 +60,9 @@ export const MESSAGE_TEMPLATES = {
     vars: ["child", "amount", "date", "school"],
     event: "feeReminders",
     text: {
-      en: "Fees of {amount} for {child} at {school} were due on {date} and are still unpaid. Pay in the EduLink app or at the office. - EduLink",
-      hi: "{school} में {child} की {amount} फ़ीस {date} को देय थी और अभी बाक़ी है। EduLink ऐप में या कार्यालय में भुगतान करें। - EduLink",
-      mr: "{school} मध्ये {child} ची {amount} फी {date} रोजी देय होती आणि अजून बाकी आहे. EduLink ॲपमध्ये किंवा कार्यालयात भरा. - EduLink",
+      en: "Fees of {amount} for {child} at {school} were due on {date} and are still unpaid. Pay in the Relay app or at the office. - Relay",
+      hi: "{school} में {child} की {amount} फ़ीस {date} को देय थी और अभी बाक़ी है। Relay ऐप में या कार्यालय में भुगतान करें। - Relay",
+      mr: "{school} मध्ये {child} ची {amount} फी {date} रोजी देय होती आणि अजून बाकी आहे. Relay ॲपमध्ये किंवा कार्यालयात भरा. - Relay",
     },
   },
   feeReceived: {
@@ -70,9 +70,9 @@ export const MESSAGE_TEMPLATES = {
     vars: ["child", "amount", "serial", "school"],
     event: "feeReceipts",
     text: {
-      en: "{school} received {amount} for {child}. Receipt {serial} is in the EduLink app. Thank you. - EduLink",
-      hi: "{school} को {child} के लिए {amount} मिले। रसीद {serial} EduLink ऐप में है। धन्यवाद। - EduLink",
-      mr: "{school} ला {child} साठी {amount} मिळाले. पावती {serial} EduLink ॲपमध्ये आहे. धन्यवाद. - EduLink",
+      en: "{school} received {amount} for {child}. Receipt {serial} is in the Relay app. Thank you. - Relay",
+      hi: "{school} को {child} के लिए {amount} मिले। रसीद {serial} Relay ऐप में है। धन्यवाद। - Relay",
+      mr: "{school} ला {child} साठी {amount} मिळाले. पावती {serial} Relay ॲपमध्ये आहे. धन्यवाद. - Relay",
     },
   },
   circular: {
@@ -80,9 +80,9 @@ export const MESSAGE_TEMPLATES = {
     vars: ["school", "notice"],
     event: "circulars",
     text: {
-      en: "Notice from {school}: {notice} - EduLink",
-      hi: "{school} से सूचना: {notice} - EduLink",
-      mr: "{school} कडून सूचना: {notice} - EduLink",
+      en: "Notice from {school}: {notice} - Relay",
+      hi: "{school} से सूचना: {notice} - Relay",
+      mr: "{school} कडून सूचना: {notice} - Relay",
     },
   },
   incident: {
@@ -90,9 +90,9 @@ export const MESSAGE_TEMPLATES = {
     vars: ["child", "summary", "school"],
     event: "incidents",
     text: {
-      en: "{school}: {child} - {summary}. Details and what was done are in the EduLink app; the office can be called. - EduLink",
-      hi: "{school}: {child} - {summary}। विवरण और क्या किया गया, EduLink ऐप में है; कार्यालय को फ़ोन कर सकते हैं। - EduLink",
-      mr: "{school}: {child} - {summary}. तपशील आणि काय केले ते EduLink ॲपमध्ये आहे; कार्यालयाला फोन करता येईल. - EduLink",
+      en: "{school}: {child} - {summary}. Details and what was done are in the Relay app; the office can be called. - Relay",
+      hi: "{school}: {child} - {summary}। विवरण और क्या किया गया, Relay ऐप में है; कार्यालय को फ़ोन कर सकते हैं। - Relay",
+      mr: "{school}: {child} - {summary}. तपशील आणि काय केले ते Relay ॲपमध्ये आहे; कार्यालयाला फोन करता येईल. - Relay",
     },
   },
   test: {
@@ -100,9 +100,9 @@ export const MESSAGE_TEMPLATES = {
     vars: ["school"],
     event: null,
     text: {
-      en: "This is a test message from {school} on EduLink. No action is needed. - EduLink",
-      hi: "यह EduLink पर {school} की ओर से एक परीक्षण संदेश है। कुछ करने की ज़रूरत नहीं है। - EduLink",
-      mr: "हा EduLink वर {school} कडून एक चाचणी संदेश आहे. काही करण्याची गरज नाही. - EduLink",
+      en: "This is a test message from {school} on Relay. No action is needed. - Relay",
+      hi: "यह Relay पर {school} की ओर से एक परीक्षण संदेश है। कुछ करने की ज़रूरत नहीं है। - Relay",
+      mr: "हा Relay वर {school} कडून एक चाचणी संदेश आहे. काही करण्याची गरज नाही. - Relay",
     },
   },
 } as const satisfies Record<string, MessageTemplate>;

@@ -34,7 +34,7 @@ export function useDeepLinks() {
       if (parsed.hostname === "sso" || parsed.path === "sso") {
         const code = typeof parsed.queryParams?.code === "string" ? parsed.queryParams.code : null;
         if (!code) return;
-        const res = await api().post<SessionResponse>("/api/v1/auth/sso/exchange", { code, device: "EduLink app" });
+        const res = await api().post<SessionResponse>("/api/v1/auth/sso/exchange", { code, device: "Relay app" });
         if (res.ok) await acceptRef.current(res.data);
         return;
       }

@@ -20,9 +20,9 @@ describe("the update screen", () => {
 
   it("names the version and opens the store for this phone", async () => {
     await renderApp(<UpdateRequired policy={POLICY} />);
-    expect(screen.getByRole("header", { name: "EduLink needs an update" })).toBeTruthy();
+    expect(screen.getByRole("header", { name: "Relay needs an update" })).toBeTruthy();
     expect(screen.getByText("The version on this phone (0.1.0) is older than the school's systems now support. Install the latest version (0.3.0) to carry on.")).toBeTruthy();
-    fireEvent.press(screen.getByRole("button", { name: "Update EduLink" }));
+    fireEvent.press(screen.getByRole("button", { name: "Update Relay" }));
     expect(open).toHaveBeenCalledWith("https://apps.apple.com/app/id1");
     expect(screen.getAllByRole("button")).toHaveLength(1);
   });
@@ -31,7 +31,7 @@ describe("the update screen", () => {
     Platform.OS = "android";
     await renderApp(<UpdateRequired policy={POLICY} />);
     expect(screen.getByText(/Install the latest version \(0\.3\.1\)/)).toBeTruthy();
-    fireEvent.press(screen.getByRole("button", { name: "Update EduLink" }));
+    fireEvent.press(screen.getByRole("button", { name: "Update Relay" }));
     expect(open).toHaveBeenCalledWith("https://play.google.com/store/apps/details?id=zz");
   });
 
@@ -43,8 +43,8 @@ describe("the update screen", () => {
 
   it("falls back to the web when the store has no listing", async () => {
     await renderApp(<UpdateRequired policy={{ ...POLICY, storeUrls: { ios: null, android: null } }} />);
-    expect(screen.getByText("The app store is not available on this phone yet, so EduLink opens in the browser instead.")).toBeTruthy();
-    expect(screen.queryByRole("button", { name: "Update EduLink" })).toBeNull();
+    expect(screen.getByText("The app store is not available on this phone yet, so Relay opens in the browser instead.")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Update Relay" })).toBeNull();
     fireEvent.press(screen.getByRole("button", { name: "Open on the web" }));
     expect(open).toHaveBeenCalledWith(API_BASE);
   });

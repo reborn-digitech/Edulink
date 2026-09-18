@@ -107,7 +107,7 @@ export async function inviteExpert(
     await sendExpertInvite(
       to,
       `${app}/expert/invite/${created.token}`,
-      `${school?.name ?? "A school"} on EduLink would like you as a visiting expert.`,
+      `${school?.name ?? "A school"} on Relay would like you as a visiting expert.`,
     ).catch((error) => console.error("[expert-invite] email failed", error));
   }
   return created;

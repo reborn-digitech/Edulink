@@ -435,7 +435,7 @@ type RestoreTx = {
  * uses to take back exactly those and no other — an organic leaver's
  * certificate never carries it. One constant so the two can never drift.
  */
-const REMOVAL_NOTE = "The school was removed from this EduLink installation.";
+const REMOVAL_NOTE = "The school was removed from this Relay installation.";
 
 /**
  * Takes a school off the installation.
@@ -803,7 +803,7 @@ export async function inviteAdmin(
   });
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
-  await sendTeacherInvite(email, `${appUrl}/invite/${token}`, school.name, "EduLink");
+  await sendTeacherInvite(email, `${appUrl}/invite/${token}`, school.name, "Relay");
 
   await audit({
     schoolId: null,

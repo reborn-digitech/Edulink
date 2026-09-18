@@ -7,7 +7,7 @@ What the phone actually transmits, from the code (`apps/mobile/src`):
 | Sent by the app | Where | Row |
 |---|---|---|
 | Sign-in identifier (email address, phone number or login handle) and password, or a magic-link / first-sign-in code, or an SSO exchange code | `POST /api/v1/auth/*` (`app/(auth)/*.tsx`) | 1, 21 |
-| The literal string "EduLink app" as the session's device name | `(auth)/index.tsx` → `Session.userAgent` | 20 |
+| The literal string "Relay app" as the session's device name | `(auth)/index.tsx` → `Session.userAgent` | 20 |
 | Expo push token, platform, device model | `lib/push.ts` → `POST /api/v1/me/devices` | 19 |
 | Attendance marks, exam marks, homework text, messages, leave requests, meeting bookings, review scores — the person's own entries about pupils or themselves | screen mutations and the SQLite outbox | 5, 6, 8, 10, 14, 15 |
 | Problem report text; crash report (message, screen name, stack, platform, OS version, model, app version, build) | `lib/crash.ts`, `lib/version.ts` → `POST /api/v1/app/report` | 24 |

@@ -317,7 +317,7 @@ describe("pausing somebody", () => {
     expect(paused.status).toBe("SUSPENDED");
     // The school reads this on the directory row, so it has to say the pause
     // came from outside rather than looking like their own decision.
-    expect(paused.suspendedReason).toContain("EduLink team");
+    expect(paused.suspendedReason).toContain("Relay team");
 
     await setMembershipSuspension(operator, schoolId, pupilMembershipId, {
       suspended: false,

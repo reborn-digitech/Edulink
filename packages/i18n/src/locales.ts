@@ -1,5 +1,5 @@
 /**
- * The languages EduLink speaks.
+ * The languages Relay speaks.
  *
  * ITS OWN FILE, and deliberately free of `server-only`. Choosing a language is a
  * click, so the switcher is a client component, and a client component that

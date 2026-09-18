@@ -62,7 +62,7 @@ const GOOD_SMTP = {
   SMTP_SECURE: "false",
   SMTP_USER: "mailer",
   SMTP_PASS: "hunter2",
-  EMAIL_FROM: "EduLink <no-reply@edulink.example>",
+  EMAIL_FROM: "Relay <no-reply@edulink.example>",
 } as const;
 
 /** A complete, healthy Twilio block. */
@@ -402,7 +402,7 @@ describe("⚠ checkEnv — the Twilio contract, validated at boot", () => {
     set({ ...deployed, ...GOOD_SMTP, ...GOOD_TWILIO, TWILIO_FROM: "MG" + "0123456789abcdef".repeat(2) });
     expect(checkEnv().some((p) => p.key === "TWILIO_FROM")).toBe(false);
 
-    set({ ...deployed, ...GOOD_SMTP, ...GOOD_TWILIO, TWILIO_FROM: "EduLink" });
+    set({ ...deployed, ...GOOD_SMTP, ...GOOD_TWILIO, TWILIO_FROM: "Relay" });
     expect(checkEnv().some((p) => p.key === "TWILIO_FROM")).toBe(true);
 
     // A local number without the country code is the other classic.

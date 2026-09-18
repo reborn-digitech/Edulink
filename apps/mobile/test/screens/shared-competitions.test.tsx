@@ -27,10 +27,10 @@ const card = (over: Record<string, unknown>) => ({
 const ENTRY = { id: "en1", status: "ENTERED", awaitingConsent: false, consentedAt: "2026-09-07T00:00:00.000Z", studentMembershipId: "p1", studentName: "ZZ Asha", submissionUrl: null, scoreMilli: null, rank: null };
 const PAGE = competitionsPageSchema.parse({
   school: [card({ entry: ENTRY })],
-  platform: [card({ id: "co2", title: "ZZ Spelling Bee", organizerName: "EduLink", organizerSchoolId: null, subject: "English", verified: false, entry: { ...ENTRY, id: "en2", awaitingConsent: true, consentedAt: null } })],
+  platform: [card({ id: "co2", title: "ZZ Spelling Bee", organizerName: "Relay", organizerSchoolId: null, subject: "English", verified: false, entry: { ...ENTRY, id: "en2", awaitingConsent: true, consentedAt: null } })],
   waiting: [],
 });
-const WAITING = { entryId: "en2", competitionId: "co2", title: "ZZ Spelling Bee", organizerName: "EduLink", closesAt: "2026-09-20T00:00:00.000Z", childName: "ZZ Asha" };
+const WAITING = { entryId: "en2", competitionId: "co2", title: "ZZ Spelling Bee", organizerName: "Relay", closesAt: "2026-09-20T00:00:00.000Z", childName: "ZZ Asha" };
 
 beforeEach(() => {
   mockRouter.push.mockReset();
@@ -45,7 +45,7 @@ describe("competitions", () => {
     await screen.findByText("ZZ Maths Bee");
     expect(screen.getByText("From your school")).toBeTruthy();
     expect(screen.getByText("For every school")).toBeTruthy();
-    expect(screen.getByText("Checked by EduLink")).toBeTruthy();
+    expect(screen.getByText("Checked by Relay")).toBeTruthy();
     expect(screen.getByText(/^ZZ School · Maths · 4–6 · closes /)).toBeTruthy();
     expect(screen.getByText("You are entered")).toBeTruthy();
     expect(screen.getByText("Waiting for a grown-up to say yes")).toBeTruthy();
@@ -59,7 +59,7 @@ describe("competitions", () => {
     await screen.findByText("Waiting for you");
     expect(screen.getByText("ZZ Asha is entered")).toBeTruthy();
     expect(screen.getByText("ZZ Asha is waiting on you")).toBeTruthy();
-    await fireEvent.press(screen.getByRole("button", { name: /ZZ Asha would like to enter ZZ Spelling Bee, run by EduLink\./ }));
+    await fireEvent.press(screen.getByRole("button", { name: /ZZ Asha would like to enter ZZ Spelling Bee, run by Relay\./ }));
     expect(mockRouter.push).toHaveBeenCalledWith({ pathname: "/(app)/competitions/detail", params: { competitionId: "co2" } });
   });
 

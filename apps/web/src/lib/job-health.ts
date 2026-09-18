@@ -225,7 +225,7 @@ export function composeHealthDigest(
   if (attentionSchools.length > 0) {
     parts.push(`${attentionSchools.length} school${attentionSchools.length === 1 ? "" : "s"} need${attentionSchools.length === 1 ? "s" : ""} attention`);
   }
-  const subject = `EduLink health: ${parts.join(" · ")}`;
+  const subject = `Relay health: ${parts.join(" · ")}`;
 
   const jobLine = (s: JobStatus): string =>
     s.overdue

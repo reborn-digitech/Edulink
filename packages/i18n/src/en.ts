@@ -362,7 +362,7 @@ export const en = {
     serverAdmin: "Server administration",
     serverAdminHint: "Schools on this server",
     offline: "Offline — your changes are saved and will sync",
-    homeLink: "EduLink home",
+    homeLink: "Relay home",
   },
 
   /* ---------------------------------------------------------------------- */
@@ -411,7 +411,7 @@ export const en = {
         navigation and login were done, and later undersold the rest. Dates,
         times and other values stay English by design in every language. */
     partial:
-      "Most of EduLink is translated. Anything not yet translated — and all dates and times — appears in English.",
+      "Most of Relay is translated. Anything not yet translated — and all dates and times — appears in English.",
   },
 
   /* ---------------------------------------------------------------------- */
@@ -428,7 +428,7 @@ export const en = {
     belongOne: "One place",
     belongMany: "You can switch at any time",
     belongNone: "Not at a school just now",
-    belongNoneBody: "You are not an active member of any school on EduLink. Your account, and anything a school recorded about you, stays yours.",
+    belongNoneBody: "You are not an active member of any school on Relay. Your account, and anything a school recorded about you, stays yours.",
     switch: "Switch",
     hereNow: "You are here",
     goThere: "Go",
@@ -597,9 +597,9 @@ export const en = {
     /** One neutral voice for three readers — see the note on `REASON_LABEL`
         in record-view. The bold "yours" was given up for the placeholder rule. */
     selfIntro:
-      "This is yours, and it stays here whether or not you are at a school on EduLink. Report cards, attendance and badges are kept exactly as each school wrote them — no school can change what another one said, and neither can you.",
+      "This is yours, and it stays here whether or not you are at a school on Relay. Report cards, attendance and badges are kept exactly as each school wrote them — no school can change what another one said, and neither can you.",
     otherIntro:
-      "{name}’s record across every school you are linked to, kept exactly as each school wrote it. It stays here whether or not they are currently at a school on EduLink.",
+      "{name}’s record across every school you are linked to, kept exactly as each school wrote it. It stays here whether or not they are currently at a school on Relay.",
     attendance: "Attendance",
     reportCards: "Report cards",
     badges: "Badges",
@@ -607,7 +607,7 @@ export const en = {
     emptyTitle: "Nothing here yet",
     emptyBody: "A school record appears once a school has marked attendance or issued a report card.",
     /* Three standalone pieces, not one sentence split around a link. */
-    joiningPrompt: "Joining a school on EduLink?",
+    joiningPrompt: "Joining a school on Relay?",
     appearsAutomatically: "It will appear here automatically.",
     /** The open end of a date range — "Sep 2025 – now". */
     now: "now",
@@ -626,7 +626,7 @@ export const en = {
 
     noRecordYet: "No record yet",
     noRecordBody:
-      "A record appears once a school on EduLink has marked attendance, issued a report card, or recorded that you have left. If you are joining a school, log in when they invite you and it will build itself.",
+      "A record appears once a school on Relay has marked attendance, issued a report card, or recorded that you have left. If you are joining a school, log in when they invite you and it will build itself.",
     joinWithCode: "Join a school with a code",
     childrenRecords: "Your children's records",
     childrenIntro: "Everything each school has written, across every school you are linked to.",
@@ -643,7 +643,7 @@ export const en = {
     bulkReasonPlaceholder: "One reason, written on every rejected post…",
     bulkApproved: "{count} posts approved.",
     bulkRejected: "{count} posts rejected.",
-    hideExplainer: "Hiding a post removes it for your school only — the school that published it is not notified and no other school is affected. There is no way to remove another school’s post for everyone: that would need someone with authority over every school, and no such role exists in EduLink.",
+    hideExplainer: "Hiding a post removes it for your school only — the school that published it is not notified and no other school is affected. There is no way to remove another school’s post for everyone: that would need someone with authority over every school, and no such role exists in Relay.",
     unknownSchool: "Unknown school",
     title: "Social Media",
     categoryLabel: "Category",
@@ -884,7 +884,7 @@ export const en = {
   competitions: {
     showFilter: "Show",
     title: "Competitions",
-    intro: "Open to pupils across every school on EduLink.",
+    intro: "Open to pupils across every school on Relay.",
     postOne: "Post one",
     showClosed: "Show closed ones too",
     onlyOpen: "Only ones I can still enter",
@@ -897,13 +897,13 @@ export const en = {
       "Nothing is taking entries at the moment. Have a look at the closed ones to see the sort of thing that comes up.",
     emptyTitle: "No competitions yet",
     emptyBody: "When a school or an organiser posts a competition, it will show up here for every school.",
-    verified: "Checked by EduLink",
+    verified: "Checked by Relay",
     /** The date is a VALUE and renders in English. */
     closesShort: "closes {date}",
     fromYourSchool: "From your school",
     fromYourSchoolHint: "Posted by your school's admins — only students here can join.",
     forEverySchool: "For every school",
-    forEverySchoolHint: "Posted by EduLink — students from every school on this server can join.",
+    forEverySchoolHint: "Posted by Relay — students from every school on this server can join.",
     childWaitingOnYou: "{child} is waiting on you",
     childEntered: "{child} is entered",
     waitingForGrownUp: "Waiting for a grown-up to say yes",
@@ -1019,7 +1019,7 @@ export const en = {
 
     /* ------------------------------ new form ------------------------------ */
     postACompetition: "Post a competition",
-    postIntro: "Once you publish it, pupils at every school on EduLink can see it and ask to enter.",
+    postIntro: "Once you publish it, pupils at every school on Relay can see it and ask to enter.",
     notSaved: "Not saved",
     lookAtHighlighted: "Have a look at the highlighted fields.",
     savedDraft: "Saved as a draft",
@@ -1078,7 +1078,7 @@ export const en = {
     oneLinePlease: "One line about it, please.",
 
     /* ------------------------------- the phone ------------------------------ */
-    onlyAdminsPost: "Only a school's admins, or EduLink's content team, can post a competition.",
+    onlyAdminsPost: "Only a school's admins, or Relay's content team, can post a competition.",
     postingFor: "Posting for",
     /** The example date is a VALUE and stays as written. */
     dateHint: "Year-month-day, e.g. 2026-10-01. Leave a date empty if there is none.",
@@ -1861,7 +1861,7 @@ export const en = {
     switchHint: "The question bank and competitions, for every school",
     competitions: "Competitions",
     competitionsIntro:
-      "Posted by EduLink and visible to every school on this server. Schools post their own from their own admin area.",
+      "Posted by Relay and visible to every school on this server. Schools post their own from their own admin area.",
     postCompetition: "Post a competition",
     postIntro:
       "Saved as a draft. Publishing is a separate press on the list, because published means every child on this server can see it.",
@@ -1876,7 +1876,7 @@ export const en = {
     withdraw: "Withdraw",
     withdrawn: "Withdrawn from the catalogue",
     organiserName: "Organiser name",
-    organiserHint: "Shown on the card. Left empty, it says EduLink.",
+    organiserHint: "Shown on the card. Left empty, it says Relay.",
     everySchoolSees: "Every school on this server will see it once published.",
     titleTooShort: "Give it a title.",
     summaryTooShort: "Give it a one-line summary.",
@@ -1931,7 +1931,7 @@ export const en = {
   /* Shared UI atoms — toast, loading, files, install, offline sync          */
   /* ---------------------------------------------------------------------- */
   ui: {
-    installCardTitle: "Put EduLink on your home screen",
+    installCardTitle: "Put Relay on your home screen",
     installCardBody: "Opens like an app, works offline, and keeps you signed in. No app store needed.",
     reasonTransferred: "Transferred",
     reasonGraduated: "Completed their schooling",
@@ -1968,8 +1968,8 @@ export const en = {
     installedApp: "Running as an installed app",
     /** The iOS button names inside are translated the way iOS itself does. */
     installHowTo: "To install: tap Share, then Add to Home Screen",
-    install: "Install EduLink",
-    newVersion: "A new version of EduLink is ready.",
+    install: "Install Relay",
+    newVersion: "A new version of Relay is ready.",
     refresh: "Refresh",
     syncedOne: "Synced 1 change",
     syncedMany: "Synced {count} changes",
@@ -2331,7 +2331,7 @@ export const en = {
     theEndDateCannotBeBeforeThe: "The end date cannot be before the start date",
     theYearHasToEndAfterIt: "The year has to end after it starts",
     thisAreaBelongsToWhoeverRunsThe: "This area belongs to whoever runs the server",
-    thisAreaBelongsToTheContentTeam: "This area belongs to the EduLink content team",
+    thisAreaBelongsToTheContentTeam: "This area belongs to the Relay content team",
     thisBookingWasCancelled: "This booking was cancelled",
     thisClassIsArchived: "This class is archived",
     thisCompetitionHasFinished: "This competition has finished",
@@ -2452,7 +2452,7 @@ export const en = {
     noCardNeeded: "No card needed. Set up in about five minutes.",
 
     rolesTitle: "One app. Four very different days.",
-    rolesBody: "EduLink shows each person exactly what they need and nothing they do not.",
+    rolesBody: "Relay shows each person exactly what they need and nothing they do not.",
 
     teachers: "Teachers",
     teachersLead: "Ten seconds, not ten minutes.",
@@ -2523,7 +2523,7 @@ export const en = {
   /* the page that decides which of those you are.                            */
   /* ---------------------------------------------------------------------- */
   invite: {
-    parentHasAccountNote: "That address already has an EduLink account. Accepting adds this child to it — your password does not change.",
+    parentHasAccountNote: "That address already has an Relay account. Accepting adds this child to it — your password does not change.",
     parentSignupNote: "Set a password and you are in. You can unlink from your settings at any time.",
     seeChildsDay: "See {child}'s day at {school}",
     parentLinkBody: "{name} has linked you to {child}. Accept, and you will see their attendance, homework, exam marks and teachers' messages.",
@@ -2557,7 +2557,7 @@ export const en = {
     invitedToJoin: "You have been invited to join this school.",
     invitedToJoinAt: "You have been invited to join this school, at {email}.",
     transferNote:
-      "That address already has an EduLink account. Accepting adds this school to it — your password does not change, and everything already on your account comes with you.",
+      "That address already has an Relay account. Accepting adds this school to it — your password does not change, and everything already on your account comes with you.",
     signupNote: "Set a password and you are in.",
     changedSchool:
       "Changed school? This is the right way to do it. Your record from your last school travels with your account, so {school} can see where you came from.",
@@ -2681,7 +2681,7 @@ export const en = {
     youJoinAsPupil: "You will join as a pupil.",
     thisIsAParentsAccount: "This account is linked to a child as a parent, so it cannot join a class as a pupil. Sign out and use the pupil's own account.",
     youWorkHere: "This account already holds a staff post at this school, so it cannot join as a pupil.",
-    metaDescription: "Join EduLink with a code from your school, or link to your child.",
+    metaDescription: "Join Relay with a code from your school, or link to your child.",
     almostThere: "Almost there",
     letsGetYouIn: "Let's get you in",
     accountReady: "Your account is ready — now connect it to a school or a child.",
@@ -2788,7 +2788,7 @@ export const en = {
     about: "About your school",
     aboutHint: "A sentence or two: what you teach, in which languages, what makes the school itself.",
     aboutWhy: "Optional — it becomes the draft of your directory profile, which you publish later from Settings.",
-    metaDescription: "Set up your school on EduLink in about five minutes.",
+    metaDescription: "Set up your school on Relay in about five minutes.",
     alreadyHaveAccount: "Already have an account?",
 
     progress: "Progress",
@@ -2845,12 +2845,12 @@ export const en = {
     rowLocation: "Location",
     rowTimezone: "Timezone",
     rowAdmin: "Admin",
-    authorisedLabel: "I am authorised to set up EduLink for this school",
-    privacyLink: "How EduLink handles pupils' data: the privacy policy",
+    authorisedLabel: "I am authorised to set up Relay for this school",
+    privacyLink: "How Relay handles pupils' data: the privacy policy",
     authorisedDescription:
       "You will be the first admin. You can add more admins straight afterwards.",
     dataNote:
-      "EduLink stores children's data on behalf of your school. Student profiles are never public, posts to the wider feed are reviewed before anyone outside the school sees them, and you can export or delete everything at any time from your settings.",
+      "Relay stores children's data on behalf of your school. Student profiles are never public, posts to the wider feed are reviewed before anyone outside the school sees them, and you can export or delete everything at any time from your settings.",
 
     continue: "Continue",
     creating: "Creating your school…",
@@ -2876,7 +2876,7 @@ export const en = {
     ssoContinue: "Continue with {provider}",
     ssoDenied: "You cancelled the sign-in. Nothing happened. Use the password box, or try the button again.",
     ssoNoAccount:
-      "No EduLink account uses that email address. Signing in this way needs an account first — ask your school for an invite, join with a code, or register a school.",
+      "No Relay account uses that email address. Signing in this way needs an account first — ask your school for an invite, join with a code, or register a school.",
     ssoDisabled: "That account is not able to sign in. Speak to your school.",
     ssoFailed: "That sign-in did not complete. Nothing happened — try again, or use your password.",
     title: "Log in",
@@ -2925,7 +2925,7 @@ export const en = {
     whatToDo:
       "Only the school can restore it. Contact the school office if you think this is a mistake.",
     stillYours:
-      "This affects these schools only. Anything else you use EduLink for still works as normal.",
+      "This affects these schools only. Anything else you use Relay for still works as normal.",
     signOut: "Sign out",
   },
 
@@ -3188,7 +3188,7 @@ export const en = {
     photoOrWords: "Type your answer or add a photo of your work first.",
     uploadingPhoto: "Uploading…",
     removePhoto: "Remove {name}",
-    cameraDenied: "EduLink cannot use the camera. Allow it in your phone's settings, or choose a picture instead.",
+    cameraDenied: "Relay cannot use the camera. Allow it in your phone's settings, or choose a picture instead.",
     openSettings: "Open settings",
     cancel: "Cancel",
     handedInCheer: "Handed in 🎉",
@@ -3463,7 +3463,7 @@ export const en = {
     classJoinCode: "Class join code",
     studentsEnterAt: "Students join this class straight away by typing the code at:",
     copy: "Copy",
-    joinEduLink: "Join EduLink",
+    joinEduLink: "Join Relay",
     typeCodeAt: "Type this code at:",
     printIt: "Print it",
     noQr: "No QR code yet — students type the code above.",
@@ -3564,7 +3564,7 @@ export const en = {
        its readers are the ones least able to work around it. */
     mainContent: "Main",
     footerNav: "Footer",
-    homeLink: "EduLink home",
+    homeLink: "Relay home",
     /** As a placeholder in a field nobody has to fill in. */
     optional: "Optional",
 
@@ -3766,7 +3766,7 @@ export const en = {
     inviteFirstTeacher: "Invite your first teacher",
     orCreateClass: "Or create a class first",
 
-    welcomeTitle: "Welcome to EduLink, {name}",
+    welcomeTitle: "Welcome to Relay, {name}",
     welcomeBody:
       "Your school is live. Share this code with teachers and students so they can join — and work through the checklist below whenever you have a moment.",
     copyCode: "Copy code",
@@ -4129,7 +4129,7 @@ export const en = {
     tabAudit: "Audit log",
     tabOpenCount: "To deal with ({count})",
 
-    operatorTitle: "When the EduLink team opened your school",
+    operatorTitle: "When the Relay team opened your school",
     operatorBody: "They cannot see inside without opening it, and cannot open it without saying why.",
     operatorLive: "In your school now",
     operatorFootPrefix: "Anything they did while they were in is in the trail below, marked",
@@ -4146,7 +4146,7 @@ export const en = {
     nothingLogged: "Nothing logged yet",
     nothingLoggedBody: "Actions taken in your school appear here.",
     auditNote:
-      "Append-only, and scoped to your school. This is how you answer “who changed this?” after the fact, so nothing in EduLink can edit or delete it.",
+      "Append-only, and scoped to your school. This is how you answer “who changed this?” after the fact, so nothing in Relay can edit or delete it.",
 
     searchAudit: "Search the audit log",
     searchAuditPlaceholder: "Search by person or action…",
@@ -4511,7 +4511,7 @@ export const en = {
     sheetHint: "Or download the sheet, enter marks in its last column, fill the boxes from it and then save.",
     sheetDownload: "Download marks sheet (Excel)",
     sheetFill: "Fill from Excel",
-    sheetColId: "EduLink id (leave as is)",
+    sheetColId: "Relay id (leave as is)",
     sheetColStudent: "Student",
     sheetColMarks: "Marks (out of {max})",
     sheetFilled: "{filled} of {total} boxes filled from the sheet. Check them, then save.",
@@ -4864,7 +4864,7 @@ export const en = {
       "That keeps everything and gives the family a school record to hand to their next school — this does neither.",
     changedSchoolUse: "Use",
     accountUntouched:
-      "Their EduLink account is not touched. They may be a pupil somewhere else, or somebody’s parent.",
+      "Their Relay account is not touched. They may be a pupil somewhere else, or somebody’s parent.",
     removeThem: "Remove them",
     removed: "{name} has been removed",
     removedBody: "Their account is untouched — only this school’s row is gone.",
@@ -5195,7 +5195,7 @@ export const en = {
     /* -- waiting to be listed -- */
     underReview: "Your profile is being reviewed",
     underReviewBody:
-      "Your account is set up. Schools cannot see or book you until someone at EduLink has checked your profile — you will not need to do anything else.",
+      "Your account is set up. Schools cannot see or book you until someone at Relay has checked your profile — you will not need to do anything else.",
 
     /* -- availability -- */
     availability: "Availability",
@@ -5219,7 +5219,7 @@ export const en = {
     verified: "Verified",
     listedBody: "Schools can find you and book your times.",
     notListedBody:
-      "Nobody can see you yet. Whoever runs EduLink lists a profile once they have checked it.",
+      "Nobody can see you yet. Whoever runs Relay lists a profile once they have checked it.",
     aboutYou: "About you",
     profileCardBody: "Saved as soon as you press the button — there is no draft",
     headline: "Headline",
@@ -5296,7 +5296,7 @@ export const en = {
     inviteInvalid: "That invitation cannot be used",
     inviteInvalidBody:
       "It may have expired, or already been used. Ask whoever sent it for a new link.",
-    joinTitle: "Join EduLink as an expert",
+    joinTitle: "Join Relay as an expert",
     joinBody:
       "Tell schools what you do. Your profile is reviewed before any school can see or book you.",
     yourName: "Your name",
@@ -5581,7 +5581,7 @@ export const en = {
     yourScoreRecorded: "Your score has been recorded.",
     theyPlaced: "They came in position {rank}.",
     theirScoreRecorded: "Their score has been recorded.",
-    accessRestored: "You can use your school on EduLink again.",
+    accessRestored: "You can use your school on Relay again.",
     reportedAs: "A {type} was reported as {reason}.",
     missingSchoolLately: "{name} has been missing school lately. Please talk to the class teacher — the school would like to help.",
     teacherCancelledMeeting: "{name} has had to cancel your meeting. Please pick another time.",
@@ -5755,7 +5755,7 @@ export const en = {
     issuedBy: "Issued by {name}",
     signature: "Head of school",
     print: "Print",
-    footer: "Issued on EduLink by the school with code {code}. Certificate {serial}. The figures are as the school recorded them on the day of issue and are not recalculated.",
+    footer: "Issued on Relay by the school with code {code}. Certificate {serial}. The figures are as the school recorded them on the day of issue and are not recalculated.",
     openDocument: "Open the certificate",
     conductLabel: "Conduct on the certificate",
     conductNone: "Leave blank",
@@ -6101,7 +6101,7 @@ export const en = {
     matchDone: "{count} confirmed.",
     /* Settings. */
     settingsTitle: "How families pay",
-    settingsIntro: "Money goes to the school and only the school. Set the UPI id parents pay to, or enter the school's own gateway keys, or both. EduLink holds none of it and takes no share.",
+    settingsIntro: "Money goes to the school and only the school. Set the UPI id parents pay to, or enter the school's own gateway keys, or both. Relay holds none of it and takes no share.",
     upiTitle: "UPI id",
     upiIntro: "Parents' UPI apps open with this as payee and the amount filled in. They type the UTR back; the office confirms it against the statement.",
     upiId: "UPI id",
@@ -6145,7 +6145,7 @@ export const en = {
     parentPayUpi: "Pay by UPI",
     parentPayBank: "Bank transfer",
     parentPayBankHint: "Transfer to the school's account below, then bring the reference to the office.",
-    parentPayeeNote: "You are paying {school}. EduLink does not receive or hold this payment; the money goes to the school's own account.",
+    parentPayeeNote: "You are paying {school}. Relay does not receive or hold this payment; the money goes to the school's own account.",
     parentTotal: "Total",
     parentHistory: "Payments",
     parentNoHistory: "No payments yet.",
@@ -6193,7 +6193,7 @@ export const en = {
     receiptTakenBy: "Received by",
     receiptReversedBanner: "REVERSED — {reason}",
     receiptRefundedBanner: "Refunded: {amount}",
-    receiptFooter: "Generated by EduLink for {school}. The school is the payee; EduLink neither receives nor holds fees.",
+    receiptFooter: "Generated by Relay for {school}. The school is the payee; Relay neither receives nor holds fees.",
     receiptPrint: "Print",
     receiptBack: "Back",
     /* Year end. */
@@ -6449,7 +6449,7 @@ export const en = {
     writeOne: "Write a notice",
     print: "Print for the notice board",
     printTitle: "Notice",
-    printFooter: "Please acknowledge this notice in the EduLink app, or tell the class teacher.",
+    printFooter: "Please acknowledge this notice in the Relay app, or tell the class teacher.",
     exportOutstanding: "Download the waiting list",
     exportOutstandingXlsx: "Download the waiting list (Excel)",
     columnFamily: "Pupil",
@@ -6770,7 +6770,7 @@ export const en = {
     createClass: "Create a class",
     dashboard: "Dashboard",
     devMailbox: "Dev mailbox",
-    eduLink: "EduLink",
+    eduLink: "Relay",
     entries: "Entries",
     expertInvite: "Expert invitation",
     experts: "Experts",
@@ -6817,7 +6817,7 @@ export const en = {
     setPassword: "Set a new password",
     settings: "Settings",
     staffLeave: "Staff leave",
-    tagline: "EduLink — school, home, connected",
+    tagline: "Relay — school, home, connected",
     takeRegister: "Mark the attendance",
     timetable: "Timetable",
     today: "Today",
@@ -6832,15 +6832,15 @@ export const en = {
     writeFirstMessage: "Write the first message",
   },
   update: {
-    title: "EduLink needs an update",
+    title: "Relay needs an update",
     body: "The version on this phone ({version}) is older than the school's systems now support. Install the latest version ({latest}) to carry on.",
-    open: "Update EduLink",
+    open: "Update Relay",
     openWeb: "Open on the web",
-    noStore: "The app store is not available on this phone yet, so EduLink opens in the browser instead.",
+    noStore: "The app store is not available on this phone yet, so Relay opens in the browser instead.",
   },
   report: {
     title: "Report a problem",
-    explainer: "Tell us what went wrong and where. The school's EduLink team reads every report.",
+    explainer: "Tell us what went wrong and where. The school's Relay team reads every report.",
     messageLabel: "What happened",
     messageHint: "What you were doing, what you expected, and what you saw instead.",
     sayWhat: "Say what happened, in a sentence or two.",
@@ -6883,17 +6883,17 @@ export const en = {
   },
   security: {
     rootedTitle: "This phone has been altered",
-    rootedBody: "It looks jailbroken or rooted. EduLink still works, but the marks and messages on it are less protected than the school expects. Use another phone for anything private if you can.",
+    rootedBody: "It looks jailbroken or rooted. Relay still works, but the marks and messages on it are less protected than the school expects. Use another phone for anything private if you can.",
   },
   /** The public privacy policy at /privacy, written for a parent from docs/decisions/0002. */
   privacy: {
     metaTitle: "Privacy policy",
     title: "Privacy policy",
     updated: "Last changed 14 September 2026.",
-    intro: "EduLink keeps a school's record of attendance, marks, assignments and messages, and shows it only to the people the school allows: its staff, each child's guardians and the child. This page says what is held, who can see it, where it goes and what you can ask for. It is written for a parent; the school's office can answer anything it does not.",
+    intro: "Relay keeps a school's record of attendance, marks, assignments and messages, and shows it only to the people the school allows: its staff, each child's guardians and the child. This page says what is held, who can see it, where it goes and what you can ask for. It is written for a parent; the school's office can answer anything it does not.",
     s1Title: "The school is responsible for the data",
     s1a: "Every record about a pupil belongs to one school. The school creates the account, or issues the code that does, and decides which of its staff may see what. Under India's Digital Personal Data Protection Act 2023 the school is the data fiduciary, and a child is anyone under 18.",
-    s1b: "Whoever runs the EduLink server works for the school as a processor. The operator can see the list of schools and invitations and nothing inside a school: not a register, not a mark, not a message. Any look inside a school is time-limited, recorded with a reason, and shown to that school in its Safety Centre.",
+    s1b: "Whoever runs the Relay server works for the school as a processor. The operator can see the list of schools and invitations and nothing inside a school: not a register, not a mark, not a message. Any look inside a school is time-limited, recorded with a reason, and shown to that school in its Safety Centre.",
     s2Title: "What is held",
     s2Intro: "Only what running a school needs:",
     i1: "Identity: name, preferred name, login name or email, a chosen avatar or uploaded picture, and a short bio.",
@@ -6912,7 +6912,7 @@ export const en = {
     s3b: "A guardian sees everything the school holds about their child, once the school has linked them. Linking needs the child's code together with the child's date of birth, or an invitation from the school that only the parent can accept.",
     s3c: "A pupil sees their own record. Classmates see a name and avatar on bulletin posts a teacher has approved, and nothing else.",
     s3d: "Nobody outside the school sees a pupil's data. An outside mentor exchanges messages with a pupil only after a guardian has agreed to it, and a competition entry leaves the school only with the same agreement.",
-    s4Title: "What EduLink does not do",
+    s4Title: "What Relay does not do",
     s4a: "No advertising, no analytics, no tracking, no profiling of behaviour, and no data sold or shared for anyone else's purposes.",
     s4b: "No location, no contacts, no advertising identifier. Location and camera details are removed from photos when they are uploaded; videos are shared as recorded.",
     s4c: "The only adaptive logic in the app chooses a pupil's next practice question.",
@@ -6947,7 +6947,7 @@ export const en = {
   deletion: {
     metaTitle: "Closing an account",
     title: "Closing an account",
-    intro: "EduLink accounts are made by a school, and the school is responsible for the records behind them. That is why an account is closed by asking the school rather than by a button in the app: a register or a report card that names a pupil is the school's record, and the school decides what it must keep.",
+    intro: "Relay accounts are made by a school, and the school is responsible for the records behind them. That is why an account is closed by asking the school rather than by a button in the app: a register or a report card that names a pupil is the school's record, and the school decides what it must keep.",
     howTitle: "How to close an account",
     step1: "Ask the school's office, in person or by whatever means you normally use. Say who you are and which account: your own, or your child's.",
     step2: "The office ends the membership. Access ends the same day, on the web and in the app, and every signed-in device is signed out.",

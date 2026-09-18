@@ -91,7 +91,7 @@ function layout(heading: string, bodyHtml: string, cta?: { label: string; url: s
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center">
     <table role="presentation" width="100%" style="max-width:520px;background:#fff;border-radius:18px;padding:32px;box-shadow:0 1px 3px rgba(16,20,32,.06)">
       <tr><td>
-        <div style="font-size:20px;font-weight:700;letter-spacing:-.02em;margin-bottom:4px">EduLink</div>
+        <div style="font-size:20px;font-weight:700;letter-spacing:-.02em;margin-bottom:4px">Relay</div>
         <h1 style="font-size:22px;line-height:1.25;margin:16px 0 12px">${escapeHtml(heading)}</h1>
         <div style="font-size:15px;line-height:1.6;color:#57607a">${bodyHtml}</div>
         ${
@@ -125,12 +125,12 @@ export async function sendMagicLink(to: string, url: string, minutes: number) {
   await sendEmail({
     to,
     purpose: "MAGIC_LINK",
-    subject: "Your EduLink sign-in link",
-    text: `Sign in to EduLink: ${url}\n\nThis link expires in ${minutes} minutes and can only be used once.`,
+    subject: "Your Relay sign-in link",
+    text: `Sign in to Relay: ${url}\n\nThis link expires in ${minutes} minutes and can only be used once.`,
     html: layout(
       "Here is your sign-in link",
       `<p>Tap the button below to sign in. The link expires in <strong>${minutes} minutes</strong> and works once.</p>`,
-      { label: "Sign in to EduLink", url },
+      { label: "Sign in to Relay", url },
     ),
   });
 }
@@ -147,9 +147,9 @@ export async function sendMagicLink(to: string, url: string, minutes: number) {
 export async function sendResetCode(to: string, code: string, minutes: number) {
   await sendEmail({
     to,
-    subject: `${code} is your EduLink code`,
+    subject: `${code} is your Relay code`,
     text:
-      `${code} is your code to set a new EduLink password.\n\n` +
+      `${code} is your code to set a new Relay password.\n\n` +
       `It works once and expires in ${minutes} minutes.\n\n` +
       `If you did not ask for it, you can ignore this email — nothing has changed.`,
     html: layout(
@@ -167,7 +167,7 @@ export async function sendVerifyEmail(to: string, url: string, schoolName: strin
     to,
     purpose: "EMAIL_VERIFY",
     subject: `Confirm your email for ${schoolName}`,
-    text: `Confirm your email to finish setting up ${schoolName} on EduLink: ${url}`,
+    text: `Confirm your email to finish setting up ${schoolName} on Relay: ${url}`,
     html: layout(
       `Confirm your email for ${schoolName}`,
       `<p>One tap and your school is ready to set up.</p>`,
@@ -195,15 +195,15 @@ export async function sendEmailChangeCode(to: string, code: string, minutes: num
   await sendEmail({
     to,
     purpose: "EMAIL_CHANGE",
-    subject: `${code} is your EduLink code`,
+    subject: `${code} is your Relay code`,
     text:
-      `${code} is your code to confirm this email address on EduLink.\n\n` +
+      `${code} is your code to confirm this email address on Relay.\n\n` +
       `It works once and expires in ${minutes} minutes.\n\n` +
       `If you did not ask for it, ignore this email — nothing will change, and ` +
       `this address has not been added to any account.`,
     html: layout(
       "Confirm this email address",
-      `<p>Use this code to confirm this address on your EduLink account. It works once and expires in ${minutes} minutes.</p>
+      `<p>Use this code to confirm this address on your Relay account. It works once and expires in ${minutes} minutes.</p>
        <p style="font-size:30px;font-weight:700;letter-spacing:.18em;margin:24px 0;font-family:ui-monospace,monospace">${escapeHtml(code)}</p>
        <p>If you did not ask for it, ignore this email. Nothing will change, and this address has not been added to any account.</p>`,
     ),
@@ -232,15 +232,15 @@ export async function sendEmailChangedNotice(to: string, newEmail: string) {
   await sendEmail({
     to,
     purpose: "EMAIL_CHANGE",
-    subject: "The email on your EduLink account was changed",
+    subject: "The email on your Relay account was changed",
     text:
-      `The email address on your EduLink account was changed to ${newEmail}.\n\n` +
+      `The email address on your Relay account was changed to ${newEmail}.\n\n` +
       `Sign-in and password-reset messages will go there from now on.\n\n` +
       `If you did not do this, contact your school straight away — whoever made ` +
       `the change can now reset the password on this account.`,
     html: layout(
-      "Your EduLink email was changed",
-      `<p>The email address on your EduLink account was changed to <strong>${escapeHtml(newEmail)}</strong>.</p>
+      "Your Relay email was changed",
+      `<p>The email address on your Relay account was changed to <strong>${escapeHtml(newEmail)}</strong>.</p>
        <p>Sign-in and password-reset messages will go there from now on.</p>
        <p><strong>If you did not do this</strong>, contact your school straight away — whoever made the change can now reset the password on this account.</p>`,
     ),
@@ -256,11 +256,11 @@ export async function sendTeacherInvite(
   await sendEmail({
     to,
     purpose: "INVITE",
-    subject: `${inviterName} invited you to ${schoolName} on EduLink`,
-    text: `${inviterName} invited you to join ${schoolName} on EduLink.\n\nAccept: ${url}`,
+    subject: `${inviterName} invited you to ${schoolName} on Relay`,
+    text: `${inviterName} invited you to join ${schoolName} on Relay.\n\nAccept: ${url}`,
     html: layout(
       `You are invited to ${schoolName}`,
-      `<p><strong>${escapeHtml(inviterName)}</strong> has invited you to join <strong>${escapeHtml(schoolName)}</strong> on EduLink as a teacher.</p>
+      `<p><strong>${escapeHtml(inviterName)}</strong> has invited you to join <strong>${escapeHtml(schoolName)}</strong> on Relay as a teacher.</p>
        <p>Accepting takes about a minute: set a password, add your subjects, and your classes are waiting.</p>`,
       { label: "Accept invitation", url },
     ),
@@ -282,7 +282,7 @@ export async function sendExpertInvite(
   await sendEmail({
     to,
     purpose: "INVITE",
-    subject: `You are invited to EduLink as an expert`,
+    subject: `You are invited to Relay as an expert`,
     text: `${inviterLine}\n\nAccept: ${url}\n\nYour profile is reviewed before any school can see or book you.`,
     html: layout(
       `You are invited as an expert`,
@@ -314,7 +314,7 @@ export async function sendHealthDigestEmail(to: string, subject: string, text: s
 /**
  * The office linking a family, rather than the family claiming a child. The
  * sentence names the child and the school because the recipient may never
- * have heard of EduLink — the school is the thing they trust.
+ * have heard of Relay — the school is the thing they trust.
  */
 export async function sendParentLinkInvite(
   to: string,
@@ -326,11 +326,11 @@ export async function sendParentLinkInvite(
   await sendEmail({
     to,
     purpose: "INVITE",
-    subject: `${schoolName} has linked you to ${childName} on EduLink`,
-    text: `${inviterName} at ${schoolName} has linked you to ${childName} on EduLink, so you can see their attendance, homework and marks.\n\nAccept: ${url}`,
+    subject: `${schoolName} has linked you to ${childName} on Relay`,
+    text: `${inviterName} at ${schoolName} has linked you to ${childName} on Relay, so you can see their attendance, homework and marks.\n\nAccept: ${url}`,
     html: layout(
       `See ${escapeHtml(childName)}'s day at ${escapeHtml(schoolName)}`,
-      `<p><strong>${escapeHtml(inviterName)}</strong> at <strong>${escapeHtml(schoolName)}</strong> has linked you to <strong>${escapeHtml(childName)}</strong> on EduLink.</p>
+      `<p><strong>${escapeHtml(inviterName)}</strong> at <strong>${escapeHtml(schoolName)}</strong> has linked you to <strong>${escapeHtml(childName)}</strong> on Relay.</p>
        <p>Accept and you will see their attendance, homework, exam marks and teachers' messages. If you were not expecting this, ignore it — nothing is shared until you accept.</p>`,
       { label: "Accept the link", url },
     ),

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ===========================================================================
-   EduLink design tokens.
+   Relay design tokens.
 
    Three independent switches, all driven by data-attributes on <html> so a
    single server-rendered attribute set avoids the flash-of-wrong-theme:
@@ -29,7 +29,7 @@
   --fg-subtle: #5f6983; /* 5.5:1 on --surface, 4.9:1 on --surface-muted — it is used at text-xs everywhere, so it must read */
   --fg-inverse: #ffffff;
 
-  /* --- accent (default: EduLink brand blue, used on public pages) -------- */
+  /* --- accent (default: Relay brand blue, used on public pages) -------- */
   --accent: #2563eb;
   --accent-strong: #1d4ed8; /* text + borders: AA on --surface */
   --accent-soft: #eff6ff; /* tinted fills */

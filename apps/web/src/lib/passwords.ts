@@ -961,7 +961,7 @@ export async function resendVerification(
       select: { school: { select: { name: true } } },
       orderBy: { joinedAt: "asc" },
     });
-    return membership?.school.name ?? "EduLink";
+    return membership?.school.name ?? "Relay";
   });
 
   const fresh = generateToken();

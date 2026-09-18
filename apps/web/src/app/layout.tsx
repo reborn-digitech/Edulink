@@ -15,10 +15,10 @@ export async function generateMetadata(): Promise<Metadata> {
   metadataBase: new URL(APP_URL),
   title: {
     default: t("meta.tagline"),
-    template: "%s · EduLink",
+    template: "%s · Relay",
   },
   description: t("meta.appDescription"),
-  applicationName: "EduLink",
+  applicationName: "Relay",
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
@@ -39,7 +39,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: t("meta.tagline"),
     description: t("meta.ogDescription"),
     type: "website",
-    siteName: "EduLink",
+    siteName: "Relay",
   },
   robots: { index: true, follow: true },
 };

@@ -35,7 +35,7 @@ export default async function MailboxPage() {
         <Badge tone="warn">Development only</Badge>
         <h1 className="mt-2 text-2xl font-bold tracking-tight text-fg">Mailbox</h1>
         <p className="mt-1 text-sm text-fg-muted">
-          Every email EduLink would have sent. Set <code>EMAIL_TRANSPORT</code> to a real transport
+          Every email Relay would have sent. Set <code>EMAIL_TRANSPORT</code> to a real transport
           to deliver them for real.
         </p>
       </div>

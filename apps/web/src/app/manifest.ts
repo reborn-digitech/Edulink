@@ -9,8 +9,8 @@ import type { MetadataRoute } from "next";
  */
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "EduLink — school, home, connected",
-    short_name: "EduLink",
+    name: "Relay — school, home, connected",
+    short_name: "Relay",
     description:
       "Attendance, assignments, grades and teacher messages for schools, students and parents. Works offline.",
     id: "/",

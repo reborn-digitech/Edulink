@@ -260,7 +260,7 @@ export async function setMembershipSuspension(
         data: {
           status: "SUSPENDED",
           suspendedAt: new Date(),
-          suspendedReason: `Paused by the EduLink team: ${clean}`,
+          suspendedReason: `Paused by the Relay team: ${clean}`,
         },
       });
     } else {

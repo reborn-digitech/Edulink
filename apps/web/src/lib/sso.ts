@@ -362,7 +362,7 @@ export type SignInResult =
   | { ok: false; reason: "no-account" | "disabled" };
 
 /**
- * Turn a verified external identity into an EduLink user, or refuse.
+ * Turn a verified external identity into an Relay user, or refuse.
  *
  *   1. (provider, sub) already linked  -> that user, always — email may have
  *      changed at the provider and must not matter.

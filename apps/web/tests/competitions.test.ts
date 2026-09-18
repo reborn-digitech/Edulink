@@ -524,7 +524,7 @@ describe("organising one", () => {
     expect(row.organizerName).toBe("Riverside Primary School");
   });
 
-  it("⚠ cannot mark its own competition as checked by EduLink", async () => {
+  it("⚠ cannot mark its own competition as checked by Relay", async () => {
     const id = await createCompetition(admin, {
       title: "TEST Not Verified",
       summary: "x",

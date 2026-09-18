@@ -29,7 +29,7 @@ export default function SignIn() {
   async function submit() {
     setBusy(true);
     setError(null);
-    const res = await api().post<SessionResponse>("/api/v1/auth/login", { identifier: identifier.trim(), password, device: "EduLink app" });
+    const res = await api().post<SessionResponse>("/api/v1/auth/login", { identifier: identifier.trim(), password, device: "Relay app" });
     setBusy(false);
     if (!res.ok) {
       setError(res.status === 429 && res.retryAfterSeconds ? `${res.error} (${res.retryAfterSeconds}s)` : errorText(res, t("login.noMatch")));

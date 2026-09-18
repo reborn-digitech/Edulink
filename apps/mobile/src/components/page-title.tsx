@@ -8,7 +8,7 @@ import Head from "expo-router/head";
 export function PageTitle({ title }: { title?: string }) {
   return (
     <Head>
-      <title>{title ? `${title} · EduLink` : "EduLink"}</title>
+      <title>{title ? `${title} · Relay` : "Relay"}</title>
     </Head>
   );
 }

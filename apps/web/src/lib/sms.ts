@@ -186,7 +186,7 @@ export async function sendResetCode(to: string, code: string, minutes: number): 
     // Short, and the code first: a phone shows the first line in the
     // notification, and somebody holding a laptop wants to read it without
     // unlocking anything.
-    text: `${code} is your EduLink code to set a new password. It works once and expires in ${minutes} minutes. If you did not ask for it, ignore this message.`,
+    text: `${code} is your Relay code to set a new password. It works once and expires in ${minutes} minutes. If you did not ask for it, ignore this message.`,
     purpose: "PASSWORD_RESET",
   });
 }
@@ -195,7 +195,7 @@ export async function sendResetCode(to: string, code: string, minutes: number): 
 export async function sendPhoneCode(to: string, code: string, minutes: number): Promise<void> {
   await sendSms({
     to,
-    text: `${code} is your EduLink code to confirm this mobile number. It expires in ${minutes} minutes. If you did not add your number to EduLink, ignore this message — nothing will happen.`,
+    text: `${code} is your Relay code to confirm this mobile number. It expires in ${minutes} minutes. If you did not add your number to Relay, ignore this message — nothing will happen.`,
     purpose: "PHONE_VERIFY",
   });
 }

@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
  *
  * THE MONEY GOES TO THE SCHOOL. The payee note under the chooser says so on
  * every render, whatever the options: a parent paying from here is paying
- * the school's own gateway account or the school's own UPI id, and EduLink
+ * the school's own gateway account or the school's own UPI id, and Relay
  * neither receives nor holds it. See docs/decisions/0003.
  */
 export default async function ParentFeesPage({ searchParams }: { searchParams: Promise<{ child?: string; childId?: string; checkout?: string }> }) {

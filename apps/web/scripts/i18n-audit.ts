@@ -19,7 +19,7 @@ import { join } from "node:path";
  * see where things stand, `-- <path>` to see one file's strings.
  *
  * WHAT IT DOES NOT COUNT, on purpose:
- *   - product nouns that are the same in every language (EduLink, Chrome, PDF)
+ *   - product nouns that are the same in every language (Relay, Chrome, PDF)
  *   - anything already inside t("…")
  *   - `console.*`, thrown Error messages, and comments: not read by a parent
  */
@@ -69,7 +69,7 @@ function actionMessages(source: string): string[] {
 
 /** Same in every language, or not shown to a reader. */
 const SKIP_EXACT = new Set([
-  "EduLink", "Chrome", "Safari", "Firefox", "Edge", "Android", "iPhone", "iPad",
+  "Relay", "Chrome", "Safari", "Firefox", "Edge", "Android", "iPhone", "iPad",
   "Mac", "Windows", "Linux", "PDF", "PNG", "JPEG", "WebP", "GIF", "CSV", "SMS",
 ]);
 

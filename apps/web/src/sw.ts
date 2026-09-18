@@ -15,7 +15,7 @@ declare global {
 declare const self: ServiceWorkerGlobalScope;
 
 /**
- * EduLink service worker.
+ * Relay service worker.
  *
  * Caching strategy is chosen per resource by how bad stale data would be:
  *   * app shell / build assets — precached, immutable, hashed filenames
@@ -186,7 +186,7 @@ self.addEventListener("push", (event) => {
   try {
     payload = event.data.json();
   } catch {
-    payload = { title: "EduLink", body: event.data.text(), url: "/notifications" };
+    payload = { title: "Relay", body: event.data.text(), url: "/notifications" };
   }
 
   event.waitUntil(

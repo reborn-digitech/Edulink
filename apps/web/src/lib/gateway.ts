@@ -8,7 +8,7 @@ import { readFeesGatewayTransport } from "./env";
  * ⚠ THE PLATFORM NEVER TOUCHES THE MONEY, and this file is where that is
  * enforced in code rather than in prose. A parent's payment goes from the
  * parent to the SCHOOL'S OWN gateway account and from there to the school's
- * bank. EduLink creates the order, shows the checkout and hears the webhook;
+ * bank. Relay creates the order, shows the checkout and hears the webhook;
  * it holds no account, pools nothing, splits nothing, pays nothing out. So
  * this adapter can make exactly the calls in ALLOWED_CALLS — create an order,
  * read a payment, read an order's payments, refund a payment back to its own

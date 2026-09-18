@@ -31,7 +31,7 @@ export default function MagicLink() {
   async function consume() {
     setBusy(true);
     setError(null);
-    const res = await api().post<SessionResponse>("/api/v1/auth/magic-link/consume", { token: token.trim(), device: "EduLink app" });
+    const res = await api().post<SessionResponse>("/api/v1/auth/magic-link/consume", { token: token.trim(), device: "Relay app" });
     setBusy(false);
     if (!res.ok) return setError(errorText(res, t("login.noMatch")));
     await session.accept(res.data);

@@ -6,7 +6,7 @@ import { InstallButton } from "@/components/install-button";
 import { useT } from "@/lib/i18n";
 
 /**
- * "Put EduLink on your home screen", on the guardian's and the pupil's
+ * "Put Relay on your home screen", on the guardian's and the pupil's
  * overview — the two people most likely to be on a phone browser, and the
  * bridge until the store app ships.
  *
